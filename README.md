@@ -4,6 +4,7 @@ Go bindings for the gstreamer C library
 
 [![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white&style=flat-rounded)](https://pkg.go.dev/github.com/tinyzimmer/go-gst/gst)
 [![godoc reference](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/tinyzimmer/go-gst/gst)
+[![GoReportCard example](https://goreportcard.com/badge/github.com/nanomsg/mangos)](https://goreportcard.com/report/github.com/tinyzimmer/go-gst)
 
 This package was originally written to aid the audio support in [`kvdi`](https://github.com/tinyzimmer/kvdi). 
 But it made sense to turn it into an independent, consumable package. The intention now is to progressively implement the entire API.
