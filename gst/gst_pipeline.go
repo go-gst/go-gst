@@ -42,9 +42,8 @@ const (
 // has returns true if these flags contain the given flag.
 func (p PipelineFlags) has(b PipelineFlags) bool { return p&b != 0 }
 
-// Pipeline is the base implementation of a GstPipeline using CGO to wrap
-// gstreamer API calls. It provides methods to be inherited by the extending
-// PlaybackPipeline and RecordingPipeline objects. The struct itself implements
+// Pipeline is a go implementation of a GstPipeline. Helper methods are provided for constructing
+// pipelines either using file descriptors or the Appsrc/Appsink APIs. The struct itself implements
 // a ReadWriteCloser.
 type Pipeline struct {
 	*Bin
