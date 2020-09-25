@@ -8,7 +8,9 @@ package gst
 */
 import "C"
 
-import "sync"
+import (
+	"sync"
+)
 
 // Bus is a Go wrapper around a GstBus. It provides convenience methods for
 // popping messages from the queue.
@@ -68,11 +70,4 @@ func (b *Bus) BlockPopMessage() *Message {
 		return nil
 	}
 	return wrapMessage(msg)
-}
-
-func wrapBus(bus *C.GstBus) *Bus {
-	return &Bus{
-		Object:      wrapObject(&bus.object),
-		msgChannels: make([]chan *Message, 0),
-	}
 }

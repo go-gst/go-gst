@@ -9,12 +9,35 @@ import "C"
 import (
 	"errors"
 	"unsafe"
+
+	"github.com/gotk3/gotk3/glib"
 )
 
-// Init runs `gst_init`. It currently does not support arguments. This should
-// be called before building any pipelines.
-func Init() {
-	C.gst_init(nil, nil)
+// Init is a wrapper around gst_init() and must be called before any
+// other gstreamer calls and is used to initialize everything necessary.
+// In addition to setting up gstreamer for usage, a pointer to a slice of
+// strings may be passed in to parse standard gst command line arguments.
+// args will be modified to remove any flags that were handled.
+// Alternatively, nil may be passed in to not perform any command line
+// parsing.
+func Init(args *[]string) {
+	if args != nil {
+		argc := C.int(len(*args))
+		argv := make([]*C.char, argc)
+		for i, arg := range *args {
+			argv[i] = C.CString(arg)
+		}
+		C.gst_init((*C.int)(unsafe.Pointer(&argc)),
+			(***C.char)(unsafe.Pointer(&argv)))
+		unhandled := make([]string, argc)
+		for i := 0; i < int(argc); i++ {
+			unhandled[i] = C.GoString(argv[i])
+			C.free(unsafe.Pointer(argv[i]))
+		}
+		*args = unhandled
+	} else {
+		C.gst_init(nil, nil)
+	}
 }
 
 // gobool provides an easy type conversion between C.gboolean and a go bool.
@@ -43,27 +66,6 @@ func structureToGoMap(st *C.GstStructure) map[string]string {
 	return goDetails
 }
 
-// MessageType is an alias to the C equivalent of GstMessageType.
-type MessageType C.GstMessageType
-
-// Type casting of GstMessageTypes
-const (
-	MessageAny          MessageType = C.GST_MESSAGE_ANY
-	MessageStreamStart              = C.GST_MESSAGE_STREAM_START
-	MessageEOS                      = C.GST_MESSAGE_EOS
-	MessageInfo                     = C.GST_MESSAGE_INFO
-	MessageWarning                  = C.GST_MESSAGE_WARNING
-	MessageError                    = C.GST_MESSAGE_ERROR
-	MessageStateChanged             = C.GST_MESSAGE_STATE_CHANGED
-	MessageElement                  = C.GST_MESSAGE_ELEMENT
-	MessageStreamStatus             = C.GST_MESSAGE_STREAM_STATUS
-	MessageBuffering                = C.GST_MESSAGE_BUFFERING
-	MessageLatency                  = C.GST_MESSAGE_LATENCY
-	MessageNewClock                 = C.GST_MESSAGE_NEW_CLOCK
-	MessageAsyncDone                = C.GST_MESSAGE_ASYNC_DONE
-	MessageTag                      = C.GST_MESSAGE_TAG
-)
-
 func iteratorToElementSlice(iterator *C.GstIterator) ([]*Element, error) {
 	elems := make([]*Element, 0)
 	gval := new(C.GValue)
@@ -78,7 +80,7 @@ func iteratorToElementSlice(iterator *C.GstIterator) ([]*Element, error) {
 		case C.GST_ITERATOR_OK:
 			cElemVoid := C.g_value_get_object((*C.GValue)(gval))
 			cElem := (*C.GstElement)(cElemVoid)
-			elems = append(elems, wrapElement(cElem))
+			elems = append(elems, wrapElement(glib.Take(unsafe.Pointer(cElem))))
 			C.g_value_reset((*C.GValue)(gval))
 		default:
 			return nil, errors.New("Element iterator failed")

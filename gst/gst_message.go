@@ -19,9 +19,6 @@ type Message struct {
 	msg *C.GstMessage
 }
 
-// wrapMessage returns a new Message from the given GstMessage.
-func wrapMessage(msg *C.GstMessage) *Message { return &Message{msg: msg} }
-
 // Native returns the underlying GstMessage object.
 func (m *Message) Native() *C.GstMessage { return C.toGstMessage(unsafe.Pointer(m.msg)) }
 

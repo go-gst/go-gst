@@ -11,6 +11,8 @@ import "C"
 import (
 	"fmt"
 	"unsafe"
+
+	"github.com/gotk3/gotk3/glib"
 )
 
 // NewElement is a generic wrapper around `gst_element_factory_make`.
@@ -21,7 +23,7 @@ func NewElement(name string) (*Element, error) {
 	if elem == nil {
 		return nil, fmt.Errorf("Could not create element: %s", name)
 	}
-	return wrapElement(elem), nil
+	return wrapElement(glib.Take(unsafe.Pointer(elem))), nil
 }
 
 // NewElementMany is a convenience wrapper around building many GstElements in a
@@ -40,7 +42,7 @@ func NewElementMany(elemNames ...string) (map[int]*Element, error) {
 }
 
 // ElementFactory wraps the GstElementFactory
-type ElementFactory struct{ *Object }
+type ElementFactory struct{ *PluginFeature }
 
 // Find returns the factory for the given plugin, or nil if it doesn't exist. Unref after usage.
 func Find(name string) *ElementFactory {
@@ -50,7 +52,7 @@ func Find(name string) *ElementFactory {
 	if factory == nil {
 		return nil
 	}
-	return wrapElementFactory(factory)
+	return wrapElementFactory(glib.Take(unsafe.Pointer(factory)))
 }
 
 // Instance returns the C GstFactory instance
@@ -94,8 +96,4 @@ func (e *ElementFactory) GetMetadataKeys() []string {
 	defer C.g_strfreev(keys)
 	size := C.sizeOfGCharArray(keys)
 	return goStrings(size, keys)
-}
-
-func wrapElementFactory(factory *C.GstElementFactory) *ElementFactory {
-	return &ElementFactory{wrapObject(C.toGstObject(unsafe.Pointer(factory)))}
 }

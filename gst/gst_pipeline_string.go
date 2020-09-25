@@ -4,6 +4,9 @@ import (
 	"errors"
 	"fmt"
 	"strings"
+	"unsafe"
+
+	"github.com/gotk3/gotk3/glib"
 )
 
 // NewPipelineFromLaunchString returns a new GstPipeline from the given launch string. If flags
@@ -53,7 +56,7 @@ func NewPipelineFromLaunchString(launchStr string, flags PipelineFlags) (*Pipeli
 		return nil, err
 	}
 
-	pipeline := wrapPipeline(pipelineElement)
+	pipeline := wrapPipeline(glib.Take(unsafe.Pointer(pipelineElement)))
 
 	if err := applyFlags(pipeline, flags); err != nil {
 		return nil, err

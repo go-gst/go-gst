@@ -60,7 +60,7 @@ func (e *Element) GetBus() (*Bus, error) {
 	if bus == nil {
 		return nil, errors.New("Could not retrieve bus from element")
 	}
-	return wrapBus(bus), nil
+	return wrapBus(glib.Take(unsafe.Pointer(bus))), nil
 }
 
 // GetState returns the current state of this element.
@@ -100,7 +100,7 @@ func (e *Element) GetFactory() *ElementFactory {
 	if factory == nil {
 		return nil
 	}
-	return wrapElementFactory(factory)
+	return wrapElementFactory(glib.Take(unsafe.Pointer(factory)))
 }
 
 // GetPads retrieves a list of pads associated with the element.
@@ -109,7 +109,7 @@ func (e *Element) GetPads() []*Pad {
 	out := make([]*Pad, 0)
 	goList.Foreach(func(item interface{}) {
 		pt := item.(unsafe.Pointer)
-		out = append(out, wrapPad(C.toGstPad(pt)))
+		out = append(out, wrapPad(glib.Take(pt)))
 	})
 	return out
 }
@@ -125,7 +125,7 @@ func (e *Element) GetPadTemplates() []*PadTemplate {
 	out := make([]*PadTemplate, 0)
 	goList.Foreach(func(item interface{}) {
 		pt := item.(unsafe.Pointer)
-		out = append(out, wrapPadTemplate(C.toGstPadTemplate(pt)))
+		out = append(out, wrapPadTemplate(glib.Take(pt)))
 	})
 	return out
 }
@@ -136,7 +136,7 @@ func (e *Element) GetClock() *Clock {
 	if clock == nil {
 		return nil
 	}
-	return wrapClock(clock)
+	return wrapClock(glib.Take(unsafe.Pointer(clock)))
 }
 
 // Has returns true if this element has the given flags.
@@ -172,21 +172,3 @@ func (e *Element) GetURIProtocols() []string {
 	size := C.sizeOfGCharArray(protocols)
 	return goStrings(size, protocols)
 }
-
-func wrapElement(elem *C.GstElement) *Element {
-	return &Element{wrapObject(&elem.object)}
-}
-
-// ElementFlags casts C GstElementFlags to a go type
-type ElementFlags C.GstElementFlags
-
-// Type casting of element flags
-const (
-	ElementFlagLockedState  ElementFlags = C.GST_ELEMENT_FLAG_LOCKED_STATE  // (16) – ignore state changes from parent
-	ElementFlagSink                      = C.GST_ELEMENT_FLAG_SINK          // (32) – the element is a sink
-	ElementFlagSource                    = C.GST_ELEMENT_FLAG_SOURCE        // (64) – the element is a source.
-	ElementFlagProvideClock              = C.GST_ELEMENT_FLAG_PROVIDE_CLOCK // (128) – the element can provide a clock
-	ElementFlagRequireClock              = C.GST_ELEMENT_FLAG_REQUIRE_CLOCK // (256) – the element requires a clock
-	ElementFlagIndexable                 = C.GST_ELEMENT_FLAG_INDEXABLE     // (512) – the element can use an index
-	ElementFlagLast                      = C.GST_ELEMENT_FLAG_LAST          // (16384) – offset to define more flags
-)

@@ -16,6 +16,8 @@ import (
 	"os"
 	"strings"
 	"unsafe"
+
+	"github.com/gotk3/gotk3/glib"
 )
 
 // PipelineFlags represents arguments passed to a new Pipeline.
@@ -39,22 +41,6 @@ const (
 
 // has returns true if these flags contain the given flag.
 func (p PipelineFlags) has(b PipelineFlags) bool { return p&b != 0 }
-
-// State is a type cast of the C GstState
-type State int
-
-// Type casting for GstStates
-const (
-	VoidPending  State = C.GST_STATE_VOID_PENDING // (0) – no pending state.
-	StateNull          = C.GST_STATE_NULL         // (1) – the NULL state or initial state of an element.
-	StateReady         = C.GST_STATE_READY        // (2) – the element is ready to go to PAUSED.
-	StatePaused        = C.GST_STATE_PAUSED       // (3) – the element is PAUSED, it is ready to accept and process data. Sink elements however only accept one buffer and then block.
-	StatePlaying       = C.GST_STATE_PLAYING      // (4) – the element is PLAYING, the GstClock is running and the data is flowing.
-)
-
-func (s State) String() string {
-	return C.GoString(C.gst_element_state_get_name((C.GstState)(s)))
-}
 
 // Pipeline is the base implementation of a GstPipeline using CGO to wrap
 // gstreamer API calls. It provides methods to be inherited by the extending
@@ -129,7 +115,7 @@ func NewPipeline(flags PipelineFlags) (*Pipeline, error) {
 		return nil, err
 	}
 
-	pipeline := wrapPipeline(pipelineElement)
+	pipeline := wrapPipeline(glib.Take(unsafe.Pointer(pipelineElement)))
 
 	if err := applyFlags(pipeline, flags); err != nil {
 		return nil, err
@@ -158,8 +144,6 @@ func applyFlags(pipeline *Pipeline, flags PipelineFlags) error {
 
 	return nil
 }
-
-func wrapPipeline(elem *C.GstPipeline) *Pipeline { return &Pipeline{Bin: wrapBin(&elem.bin)} }
 
 func (p *Pipeline) setupWriters() error {
 	var err error
@@ -262,7 +246,7 @@ func (p *Pipeline) GetAppSink() *AppSink {
 func (p *Pipeline) GetBus() *Bus {
 	if p.bus == nil {
 		cBus := C.gst_pipeline_get_bus((*C.GstPipeline)(p.Instance()))
-		p.bus = wrapBus(cBus)
+		p.bus = wrapBus(glib.Take(unsafe.Pointer(cBus)))
 	}
 	return p.bus
 }

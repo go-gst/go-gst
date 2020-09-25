@@ -26,7 +26,7 @@ encoders/decoders.
 )
 
 func init() {
-	gst.Init()
+	gst.Init(nil)
 
 	rootCmd.PersistentFlags().StringVarP(&srcFile, "input", "i", "", "An input file, defaults to the first element in the pipeline.")
 	rootCmd.PersistentFlags().StringVarP(&destFile, "output", "o", "", "An output file, defaults to the last element in the pipeline.")

@@ -10,6 +10,8 @@ import "C"
 import (
 	"fmt"
 	"unsafe"
+
+	"github.com/gotk3/gotk3/glib"
 )
 
 // Bin is a go wrapper arounds a GstBin.
@@ -26,18 +28,16 @@ func (b *Bin) GetElementByName(name string) (*Element, error) {
 	if elem == nil {
 		return nil, fmt.Errorf("Could not find element with name %s", name)
 	}
-	return wrapElement(elem), nil
+	return wrapElement(glib.Take(unsafe.Pointer(elem))), nil
 }
 
-// GetElements returns a list of the elements added to this pipeline. Unref
-// elements after usage.
+// GetElements returns a list of the elements added to this pipeline.
 func (b *Bin) GetElements() ([]*Element, error) {
 	iterator := C.gst_bin_iterate_elements((*C.GstBin)(b.Instance()))
 	return iteratorToElementSlice(iterator)
 }
 
-// GetSourceElements returns a list of all the source elements in this pipeline. Unref
-// elements after usafe.
+// GetSourceElements returns a list of all the source elements in this pipeline.
 func (b *Bin) GetSourceElements() ([]*Element, error) {
 	iterator := C.gst_bin_iterate_sources((*C.GstBin)(b.Instance()))
 	return iteratorToElementSlice(iterator)
@@ -68,5 +68,3 @@ func (b *Bin) AddMany(elems ...*Element) error {
 	}
 	return nil
 }
-
-func wrapBin(bin *C.GstBin) *Bin { return &Bin{wrapElement(&bin.element)} }

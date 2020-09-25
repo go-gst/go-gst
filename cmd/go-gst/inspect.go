@@ -209,12 +209,7 @@ func printPadTemplates(elem *gst.Element) {
 		colorBlue.printIndent(4, "Capabilities")
 		colorReset.print(": ")
 
-		caps := tmpl.Caps()
-		if len(caps) == 0 {
-			colorOrange.printIndent(6, "ANY")
-		} else {
-			printCaps(&caps, 6)
-		}
+		printCaps(tmpl.Caps(), 6)
 	}
 	fmt.Println()
 	fmt.Println()
@@ -234,7 +229,7 @@ func printClockingInfo(elem *gst.Element) {
 	if elem.Has(gst.ElementFlagProvideClock) {
 		clock := elem.GetClock()
 		if clock == nil {
-			colorLightGray.printIndent(2, "selement is supposed to provide a clock but returned NULL%s\n")
+			colorLightGray.printIndent(2, "element is supposed to provide a clock but returned NULL%s\n")
 		} else {
 			defer clock.Unref()
 			colorLightGray.printIndent(2, "element provides a clock: ")
@@ -251,7 +246,6 @@ func printURIHandlerInfo(elem *gst.Element) {
 		fmt.Println()
 	}
 
-	fmt.Println()
 	colorOrange.print("URI handling capabilities:\n")
 	colorLightGray.printfIndent(2, "Element can act as %s.\n", strings.ToLower(elem.GetURIType().String()))
 
@@ -295,7 +289,7 @@ func printPadInfo(elem *gst.Element) {
 
 		if caps := pad.CurrentCaps(); caps != nil {
 			colorBlue.printIndent(2, "Capabilities:\n")
-			printCaps(&caps, 4)
+			printCaps(caps, 4)
 		}
 	}
 
@@ -309,17 +303,3 @@ func printElementPropertiesInfo(elem *gst.Element) {
 func printSignalInfo(elem *gst.Element)   {}
 func printChildrenInfo(elem *gst.Element) {}
 func printPresentList(elem *gst.Element)  {}
-
-func printCaps(caps *gst.Caps, indent int) {
-	for _, cap := range *caps {
-		colorReset.print("\n")
-		colorOrange.printfIndent(indent, "%s", cap.Name)
-		for k, v := range cap.Data {
-			colorReset.print("\n")
-			colorOrange.printfIndent(indent+2, "%s", k)
-			colorReset.print(": ")
-			colorLightGray.print(fmt.Sprint(v))
-		}
-	}
-	fmt.Println()
-}
