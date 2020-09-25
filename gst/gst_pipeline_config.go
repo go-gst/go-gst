@@ -40,7 +40,7 @@ func (p *PipelineConfig) pushPluginToTop(elem *PipelineElement) {
 // element.
 type PipelineElement struct {
 	Name     string
-	SinkCaps Caps
+	SinkCaps *Caps
 	Data     map[string]interface{}
 }
 
@@ -51,7 +51,7 @@ func (p *PipelineElement) GetName() string { return p.Name }
 // in the configuration will be linked in the order they are given.
 // If using PipelineWrite, you can optionally pass a Caps object to filter between the write-buffer
 // and the start of the pipeline.
-func NewPipelineFromConfig(cfg *PipelineConfig, flags PipelineFlags, caps Caps) (pipeline *Pipeline, err error) {
+func NewPipelineFromConfig(cfg *PipelineConfig, flags PipelineFlags, caps *Caps) (pipeline *Pipeline, err error) {
 	// create a new empty pipeline instance
 	pipeline, err = NewPipeline(flags)
 	if err != nil {

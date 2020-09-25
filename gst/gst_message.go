@@ -32,9 +32,9 @@ func (m *Message) TypeName() string {
 	return C.GoString(C.gst_message_type_get_name((C.GstMessageType)(m.Type())))
 }
 
-// getStructure returns the GstStructure in this message, using the type of the message
-// to determine the method to use.
-func (m *Message) getStructure() map[string]string {
+// GetStructure returns the GstStructure of this message, using the type of the message
+// to determine the method to use. The returned structure must not be freed.
+func (m *Message) GetStructure() *Structure {
 	var st *C.GstStructure
 
 	switch m.Type() {
@@ -53,7 +53,7 @@ func (m *Message) getStructure() map[string]string {
 
 	// The returned structure must not be freed. Applies to all methods.
 	// https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#gst_message_parse_error_details
-	return structureToGoMap(st)
+	return wrapStructure(st)
 }
 
 // parseToError returns a new GoGError from this message instance. There are multiple
@@ -81,9 +81,9 @@ func (m *Message) parseToError() *GoGError {
 	defer C.g_error_free((*C.GError)(gerr))
 	defer C.g_free((C.gpointer)(debugInfo))
 	return &GoGError{
-		errMsg:   C.GoString(gerr.message),
-		details:  m.getStructure(),
-		debugStr: strings.TrimSpace(C.GoString((*C.gchar)(debugInfo))),
+		errMsg:    C.GoString(gerr.message),
+		structure: m.GetStructure(),
+		debugStr:  strings.TrimSpace(C.GoString((*C.gchar)(debugInfo))),
 	}
 }
 
@@ -136,7 +136,7 @@ func (m *Message) Copy() *Message {
 // and provides additional functions for retrieving debug strings and details.
 type GoGError struct {
 	errMsg, debugStr string
-	details          map[string]string
+	structure        *Structure
 }
 
 // Message is an alias to `Error()`. It's for clarity when this object
@@ -149,5 +149,5 @@ func (e *GoGError) Error() string { return e.errMsg }
 // DebugString returns any debug info alongside the error.
 func (e *GoGError) DebugString() string { return e.debugStr }
 
-// Details contains additional metadata about the error if available.
-func (e *GoGError) Details() map[string]string { return e.details }
+// Structure returns the structure of the error message which may contain additional metadata.
+func (e *GoGError) Structure() *Structure { return e.structure }

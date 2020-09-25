@@ -71,7 +71,7 @@ type Pipeline struct {
 	// The element that represents the source/dest pipeline
 	// and any caps to apply to it.
 	srcElement  *Element
-	srcCaps     Caps
+	srcCaps     *Caps
 	destElement *Element
 
 	// whether or not the pipeline was built from a string. this is checked when
@@ -207,7 +207,7 @@ func (p *Pipeline) writerFd() uintptr {
 // SetWriterCaps sets the caps on the write-buffer. You will usually want to call this
 // on a custom pipeline, unless you are using downstream elements that do dynamic pad
 // linking.
-func (p *Pipeline) SetWriterCaps(caps Caps) { p.srcCaps = caps }
+func (p *Pipeline) SetWriterCaps(caps *Caps) { p.srcCaps = caps }
 
 // LinkWriterTo links the write buffer on this Pipeline to the given element. This must
 // be called when the pipeline is constructed with PipelineWrite or PipelineReadWrite.

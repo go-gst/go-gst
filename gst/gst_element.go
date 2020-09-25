@@ -47,8 +47,8 @@ func (e *Element) Link(elem *Element) error {
 
 // LinkFiltered wraps gst_element_link_filtered and link this element to the given one
 // using the provided sink caps.
-func (e *Element) LinkFiltered(elem *Element, caps Caps) error {
-	if ok := C.gst_element_link_filtered((*C.GstElement)(e.Instance()), (*C.GstElement)(elem.Instance()), (*C.GstCaps)(caps.ToGstCaps())); !gobool(ok) {
+func (e *Element) LinkFiltered(elem *Element, caps *Caps) error {
+	if ok := C.gst_element_link_filtered((*C.GstElement)(e.Instance()), (*C.GstElement)(elem.Instance()), (*C.GstCaps)(caps.Instance())); !gobool(ok) {
 		return fmt.Errorf("Failed to link %s to %s with provider caps", e.Name(), elem.Name())
 	}
 	return nil

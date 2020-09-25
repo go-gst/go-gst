@@ -53,19 +53,6 @@ func gboolean(b bool) C.gboolean {
 	return C.gboolean(0)
 }
 
-// structureToGoMap converts a GstStructure into a Go map of strings.
-func structureToGoMap(st *C.GstStructure) map[string]string {
-	goDetails := make(map[string]string)
-	numFields := int(C.gst_structure_n_fields((*C.GstStructure)(st)))
-	for i := 0; i < numFields-1; i++ {
-		fieldName := C.gst_structure_nth_field_name((*C.GstStructure)(st), (C.guint)(i))
-		fieldValue := C.gst_structure_get_value((*C.GstStructure)(st), (*C.gchar)(fieldName))
-		strValueDup := C.g_strdup_value_contents((*C.GValue)(fieldValue))
-		goDetails[C.GoString(fieldName)] = C.GoString(strValueDup)
-	}
-	return goDetails
-}
-
 func iteratorToElementSlice(iterator *C.GstIterator) ([]*Element, error) {
 	elems := make([]*Element, 0)
 	gval := new(C.GValue)
@@ -96,4 +83,11 @@ func goStrings(argc C.int, argv **C.gchar) []string {
 		gostrings[i] = C.GoString(s)
 	}
 	return gostrings
+}
+
+func newQuarkFromString(str string) C.uint {
+	cstr := C.CString(str)
+	defer C.free(unsafe.Pointer(cstr))
+	quark := C.g_quark_from_string(cstr)
+	return quark
 }

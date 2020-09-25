@@ -76,13 +76,13 @@ func setupVerbosePipelineListeners(gstPipeline *gst.Pipeline, name string) {
 			case gst.MessageInfo:
 				info := msg.ParseInfo()
 				logInfo(name, info.Message())
-				for k, v := range info.Details() {
+				for k, v := range info.Structure().Values() {
 					logInfo(name, k, ":", v)
 				}
 			case gst.MessageWarning:
 				info := msg.ParseWarning()
 				logInfo(name, "WARNING:", info.Message())
-				for k, v := range info.Details() {
+				for k, v := range info.Structure().Values() {
 					logInfo(name, k, ":", v)
 				}
 

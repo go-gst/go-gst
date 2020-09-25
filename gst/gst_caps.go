@@ -10,97 +10,179 @@ package gst
 import "C"
 
 import (
+	"errors"
 	"fmt"
 	"strings"
 	"unsafe"
-
-	"github.com/gotk3/gotk3/glib"
 )
 
-// Caps is a wrapper around GstCaps. It provides a function for easy type
-// conversion.
-type Caps []*Structure
-
-// NewRawCaps returns new GstCaps with the given format, sample-rate, and channels.
-func NewRawCaps(format string, rate, channels int) Caps {
-	return Caps{
-		{
-			Name: "audio/x-raw",
-			Data: map[string]interface{}{
-				"format":   format,
-				"rate":     rate,
-				"channels": channels,
-			},
-		},
-	}
+// Caps is a go wrapper around GstCaps.
+type Caps struct {
+	native *C.GstCaps
 }
 
-// FromGstCaps converts a C GstCaps objects to a go type.
-func FromGstCaps(caps *C.GstCaps) Caps {
-	out := make(Caps, 0)
-	size := int(C.gst_caps_get_size((*C.GstCaps)(caps)))
-	for i := 0; i < size-1; i++ {
-		s := C.gst_caps_get_structure((*C.GstCaps)(caps), (C.guint(i)))
-		out = append(out, FromGstStructure(s))
-	}
-	return out
+// NewAnyCaps creates a new caps that indicate compatibility with any format.
+func NewAnyCaps() *Caps { return wrapCaps(C.gst_caps_new_any()) }
+
+// NewEmptyCaps creates a new empty caps object. This is essentially the opposite of
+// NewAnyCamps.
+func NewEmptyCaps() *Caps { return wrapCaps(C.gst_caps_new_empty()) }
+
+// NewEmptySimpleCaps returns a new empty caps object with the given media format.
+func NewEmptySimpleCaps(mediaFormat string) *Caps {
+	cFormat := C.CString(mediaFormat)
+	defer C.free(unsafe.Pointer(cFormat))
+	caps := C.gst_caps_new_empty_simple(cFormat)
+	return wrapCaps(caps)
 }
 
-// ToGstCaps returns the GstCaps representation of this Caps instance.
-func (g Caps) ToGstCaps() *C.GstCaps {
-	// create a new empty caps object
-	caps := C.gst_caps_new_empty()
-	if caps == nil {
-		// extra nil check but this would only happen when larger issues are present
-		return nil
-	}
-	for _, st := range g {
-		// append the structure to the caps
-		C.gst_caps_append_structure((*C.GstCaps)(caps), (*C.GstStructure)(st.ToGstStructure()))
+// NewFullCaps creates a new caps from the given structures.
+func NewFullCaps(structures ...*Structure) *Caps {
+	caps := NewEmptyCaps()
+	for _, st := range structures {
+		caps.AppendStructure(st)
 	}
 	return caps
 }
 
-// Structure is a go implementation of a C GstStructure.
-type Structure struct {
-	Name string
-	Data map[string]interface{}
-}
-
-// ToGstStructure converts this structure to a C GstStructure.
-func (s *Structure) ToGstStructure() *C.GstStructure {
-	var structStr string
-	structStr = s.Name
-	// build a structure string from the data
-	if s.Data != nil {
-		elems := make([]string, 0)
-		for k, v := range s.Data {
-			elems = append(elems, fmt.Sprintf("%s=%v", k, v))
+// NewSimpleCaps creates new caps with the given media format and key value pairs.
+// The key of each pair must be a string, followed by any field that can be converted
+// to a GType.
+func NewSimpleCaps(mediaFormat string, fieldVals ...interface{}) (*Caps, error) {
+	if len(fieldVals)%2 != 0 {
+		return nil, errors.New("Received odd number of key/value pairs")
+	}
+	caps := NewEmptySimpleCaps(mediaFormat)
+	strParts := make([]string, 0)
+	for i := 0; i < len(fieldVals); i = i + 2 {
+		fieldKey, ok := fieldVals[i].(string)
+		if !ok {
+			return nil, errors.New("One or more field keys are not a valid string")
 		}
-		structStr = fmt.Sprintf("%s, %s", s.Name, strings.Join(elems, ", "))
+		strParts = append(strParts, fmt.Sprintf("%s=%v", fieldKey, fieldVals[i+1]))
 	}
-	// convert the structure string to a cstring
-	cstr := C.CString(structStr)
-	defer C.free(unsafe.Pointer(cstr))
-	// a small buffer for garbage
-	p := C.malloc(C.size_t(128))
-	defer C.free(p)
-	// create a structure from the string
-	cstruct := C.gst_structure_from_string((*C.gchar)(cstr), (**C.gchar)(p))
-	return cstruct
+	structure := NewStructureFromString(strings.Join(strParts, ", "))
+	if structure == nil {
+		return nil, errors.New("Could not build structure from the provided arguments")
+	}
+	caps.AppendStructure(structure)
+	return caps, nil
 }
 
-// FromGstStructure converts the given C GstStructure into a go structure.
-func FromGstStructure(s *C.GstStructure) *Structure {
-	v := &Structure{}
-	v.Name = C.GoString((*C.char)(C.gst_structure_get_name((*C.GstStructure)(s))))
-	n := uint(C.gst_structure_n_fields(s))
-	v.Data = make(map[string]interface{})
-	for i := uint(0); i < n; i++ {
-		fn := C.gst_structure_nth_field_name((*C.GstStructure)(s), C.guint(i))
-		fv := glib.ValueFromNative(unsafe.Pointer(C.gst_structure_id_get_value((*C.GstStructure)(s), C.g_quark_from_string(fn))))
-		val, _ := fv.GoValue()
-		v.Data[C.GoString((*C.char)(fn))] = val
+// NewCapsFromString creates a new Caps object from the given string.
+func NewCapsFromString(capsStr string) *Caps {
+	cStr := C.CString(capsStr)
+	defer C.free(unsafe.Pointer(cStr))
+	caps := C.gst_caps_from_string(cStr)
+	if caps == nil {
+		return nil
 	}
-	return v
+	return wrapCaps(caps)
+}
+
+// NewRawCaps returns new GstCaps with the given format, sample-rate, and channels.
+func NewRawCaps(format string, rate, channels int) *Caps {
+	capsStr := fmt.Sprintf("audio/x-raw, format=%s, rate=%d, channels=%d", format, rate, channels)
+	return NewCapsFromString(capsStr)
+}
+
+func (c *Caps) unsafe() unsafe.Pointer { return unsafe.Pointer(c.native) }
+
+// Ref increases the ref count on these caps by one.
+func (c *Caps) Ref() { C.gst_caps_ref(c.Instance()) }
+
+// Unref decreases the ref count on these caps by one.
+func (c *Caps) Unref() { C.gst_caps_unref(c.Instance()) }
+
+// Instance returns the native GstCaps instance
+func (c *Caps) Instance() *C.GstCaps { return C.toGstCaps(c.unsafe()) }
+
+// IsAny returns true if these caps match any media format.
+func (c *Caps) IsAny() bool { return gobool(C.gst_caps_is_any(c.Instance())) }
+
+// IsEmpty returns true if these caps are empty.
+func (c *Caps) IsEmpty() bool { return gobool(C.gst_caps_is_empty(c.Instance())) }
+
+// AppendStructure appends the given structure to this caps instance.
+func (c *Caps) AppendStructure(st *Structure) {
+	C.gst_caps_append_structure(c.Instance(), st.Instance())
+}
+
+// Append appends the given caps element to these caps. These caps take ownership
+// over the given object. If either caps are ANY, the resulting caps will be ANY.
+func (c *Caps) Append(caps *Caps) {
+	C.gst_caps_append(c.Instance(), caps.Instance())
+}
+
+// Size returns the number of structures inside this caps instance.
+func (c *Caps) Size() int { return int(C.gst_caps_get_size(c.Instance())) }
+
+// GetStructureAt returns the structure at the given index, or nil if none exists.
+func (c *Caps) GetStructureAt(idx int) *Structure {
+	st := C.gst_caps_get_structure(c.Instance(), C.guint(idx))
+	if st == nil {
+		return nil
+	}
+	return wrapStructure(st)
+}
+
+// GetFeaturesAt returns the feature at the given index, or nil if none exists.
+func (c *Caps) GetFeaturesAt(idx int) *CapsFeatures {
+	feats := C.gst_caps_get_features(c.Instance(), C.guint(idx))
+	if feats == nil {
+		return nil
+	}
+	return wrapCapsFeatures(feats)
+}
+
+func wrapCaps(caps *C.GstCaps) *Caps { return &Caps{native: caps} }
+
+// CapsFeatures is a go representation of GstCapsFeatures.
+type CapsFeatures struct{ native *C.GstCapsFeatures }
+
+// NewCapsFeaturesFromString creates new CapsFeatures from the given string.
+func NewCapsFeaturesFromString(features string) *CapsFeatures {
+	cStr := C.CString(features)
+	defer C.free(unsafe.Pointer(cStr))
+	capsFeatures := C.gst_caps_features_from_string(cStr)
+	if capsFeatures == nil {
+		return nil
+	}
+	return wrapCapsFeatures(capsFeatures)
+}
+
+// Instance returns the native underlying GstCapsFeatures instance.
+func (c *CapsFeatures) Instance() *C.GstCapsFeatures {
+	return C.toGstCapsFeatures(unsafe.Pointer(c.native))
+}
+
+// String implements a stringer on caps features.
+func (c *CapsFeatures) String() string {
+	return C.GoString(C.gst_caps_features_to_string(c.Instance()))
+}
+
+// IsAny returns true if these features match any.
+func (c *CapsFeatures) IsAny() bool { return gobool(C.gst_caps_features_is_any(c.Instance())) }
+
+// Equal returns true if the given CapsFeatures are equal to the provided ones.
+// If the provided structure is nil, this function immediately returns false.
+func (c *CapsFeatures) Equal(feats *CapsFeatures) bool {
+	if feats == nil {
+		return false
+	}
+	return gobool(C.gst_caps_features_is_equal(c.Instance(), feats.Instance()))
+}
+
+// Go casting of pre-baked caps features
+var (
+	CapsFeaturesAny = wrapCapsFeatures(C.gst_caps_features_new_any())
+)
+
+// Go casting of caps features constants
+const (
+	CapsFeatureMemorySystemMemory = C.GST_CAPS_FEATURE_MEMORY_SYSTEM_MEMORY
+)
+
+func wrapCapsFeatures(features *C.GstCapsFeatures) *CapsFeatures {
+	return &CapsFeatures{native: features}
 }

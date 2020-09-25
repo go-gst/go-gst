@@ -1,8 +1,11 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"sort"
+	"strconv"
+	"text/tabwriter"
 
 	"github.com/gotk3/gotk3/glib"
 	"github.com/tinyzimmer/go-gst-launch/gst"
@@ -27,6 +30,13 @@ type ByName []*gst.ParameterSpec
 func (a ByName) Len() int           { return len(a) }
 func (a ByName) Less(i, j int) bool { return a[i].Name < a[j].Name }
 func (a ByName) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
+
+// ByValue implements sort. Interface based on the Value field.
+type ByValue []*gst.FlagsValue
+
+func (a ByValue) Len() int           { return len(a) }
+func (a ByValue) Less(i, j int) bool { return a[i].Value < a[j].Value }
+func (a ByValue) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 
 func printObjectPropertiesInfo(obj *gst.Object, description string) {
 	colorOrange.printf("%s:\n", description)
@@ -180,9 +190,112 @@ func printObjectPropertiesInfo(obj *gst.Object, description string) {
 
 		default:
 			if param.IsCaps() {
+
 				if caps := param.GetCaps(); caps != nil {
 					printCaps(caps, 24)
 				}
+
+			} else if param.IsEnum() {
+
+				enumValues := param.GetEnumValues()
+				iface, _ := param.DefaultValue.GoValue()
+				var curVal string
+				if iface == nil {
+					curVal = "-1"
+				} else {
+					curVal = fmt.Sprintf("%v", iface)
+				}
+				var defaultStr string
+				for _, val := range enumValues {
+					if curVal == strconv.Itoa(val.Value) {
+						defaultStr = val.ValueNick
+					}
+				}
+				printFieldType(fmt.Sprintf(`Enum "%s" `, param.ValueType.Name()))
+				printFieldName("Default")
+				printFieldValue(fmt.Sprintf(`%s "%s"`, curVal, defaultStr))
+				colorReset.print("\n")
+				for idx, val := range enumValues {
+					w := new(tabwriter.Writer)
+					buf := new(bytes.Buffer)
+					w.Init(buf, 100, 73, 0, '\t', 0)
+					colorOrange.fprintfIndent(w, 27, "(%d)", val.Value)
+					colorReset.fprint(w, ": ")
+					colorCyan.fprint(w, val.ValueNick)
+					colorReset.fprint(w, "\t - ")
+					colorLightGray.fprint(w, val.ValueName)
+					w.Flush()
+					fmt.Print(buf.String())
+					if idx < len(enumValues)-1 {
+						colorReset.print("\n")
+					}
+				}
+
+			} else if param.IsFlags() {
+
+				flags := param.GetFlagValues()
+				sort.Sort(ByValue(flags))
+				flagStr := "+"
+				for _, flag := range flags {
+					flagStr += fmt.Sprintf(" %s", flag.ValueNick)
+				}
+				if flagStr == "+" {
+					flagStr = "(none)"
+				}
+				printFieldType(fmt.Sprintf(`Flags "%s" `, param.ValueType.Name()))
+				printFieldName("Default")
+				printFieldValue(fmt.Sprintf(`0x%08x "%s"`, param.GetDefaultFlags(), flagStr))
+
+				for idx, flag := range flags {
+					w := new(tabwriter.Writer)
+					buf := new(bytes.Buffer)
+					w.Init(buf, 100, 73, 0, '\t', 0)
+					colorOrange.fprintfIndent(w, 27, "(%d)", flag.Value)
+					colorReset.fprint(w, ": ")
+					colorCyan.fprint(w, flag.ValueNick)
+					colorReset.fprint(w, "\t - ")
+					colorLightGray.fprint(w, flag.ValueName)
+					w.Flush()
+					fmt.Print(buf.String())
+					if idx < len(flags)-1 {
+						colorReset.print("\n")
+					}
+				}
+
+			} else if param.IsObject() {
+
+				colorLightGray.printIndent(24, "Object of type ")
+				colorGreen.printf(`"%s"`, param.ValueType.Name())
+
+			} else if param.IsBoxed() {
+
+				colorLightGray.printIndent(24, "Boxed pointer of type ")
+				colorGreen.printf(`"%s"`, param.ValueType.Name())
+				if param.ValueType.Name() == "GstStructure" {
+					structure := gst.StructureFromGValue(param.DefaultValue)
+					for key, val := range structure.Values() {
+						colorReset.printIndent(26, "(gpointer)       ")
+						colorYellow.printf("%15s:", key)
+						colorBlue.printf("%v", val)
+					}
+				}
+
+			} else if param.IsPointer() {
+
+				colorLightGray.printIndent(24, "Pointer of type ")
+				colorGreen.printf(`"%s`, param.ValueType.Name())
+
+			} else if param.IsFraction() {
+
+				colorGreen.printIndent(24, "Fraction.")
+
+			} else if param.IsGstArray() {
+
+				colorGreen.printIndent(24, "GstArray.")
+
+			} else {
+				colorReset.printIndent(24, "Unknown type ")
+				colorGreen.printf(`"%s`, param.ValueType.Name())
 			}
 		}
 
@@ -193,184 +306,46 @@ func printObjectPropertiesInfo(obj *gst.Object, description string) {
 	fmt.Println()
 }
 
-func printCaps(caps gst.Caps, indent int) {
-	if len(caps) == 0 {
-		colorReset.print("\n")
+func printCaps(caps *gst.Caps, indent int) {
+	if caps == nil {
+		return
+	}
+
+	colorReset.print("\n")
+	defer func() { colorReset.print("\n") }()
+
+	if caps.IsAny() {
 		colorOrange.printIndent(indent, "ANY")
 		return
 	}
-	for _, cap := range caps {
+
+	if caps.IsEmpty() {
+		colorOrange.printIndent(indent, "EMPTY")
+		return
+	}
+
+	for i := 0; i < caps.Size(); i++ {
+		structure := caps.GetStructureAt(i)
+		features := caps.GetFeaturesAt(i)
+
+		if features != nil && features.IsAny() {
+			colorOrange.printIndent(indent+20, structure.Name())
+			colorLightGray.print(" (")
+			colorGreen.print(features.String())
+			colorLightGray.print(")")
+		} else {
+			colorOrange.printIndent(indent+20, structure.Name())
+		}
+
 		colorReset.print("\n")
-		colorOrange.printfIndent(indent, "%s", cap.Name)
-		for k, v := range cap.Data {
-			colorReset.print("\n")
-			colorOrange.printfIndent(indent+2, "%s", k)
+		for k, v := range structure.Values() {
+			colorCyan.printIndent(indent+10, k)
 			colorReset.print(": ")
-			colorLightGray.print(fmt.Sprint(v))
+			colorBlue.printf("%v\n", v)
 		}
 	}
 }
 
-/*
-static void
-print_caps (const GstCaps * caps, const gchar * pfx)
-{
-  guint i;
-
-  g_return_if_fail (caps != NULL);
-
-  if (gst_caps_is_any (caps)) {
-    n_print ("%s%sANY%s\n", CAPS_TYPE_COLOR, pfx, RESET_COLOR);
-    return;
-  }
-  if (gst_caps_is_empty (caps)) {
-    n_print ("%s%sEMPTY%s\n", CAPS_TYPE_COLOR, pfx, RESET_COLOR);
-    return;
-  }
-
-  for (i = 0; i < gst_caps_get_size (caps); i++) {
-    GstStructure *structure = gst_caps_get_structure (caps, i);
-    GstCapsFeatures *features = gst_caps_get_features (caps, i);
-
-    if (features && (gst_caps_features_is_any (features) ||
-            !gst_caps_features_is_equal (features,
-                GST_CAPS_FEATURES_MEMORY_SYSTEM_MEMORY))) {
-      gchar *features_string = gst_caps_features_to_string (features);
-
-      n_print ("%s%s%s%s(%s%s%s)\n", pfx, STRUCT_NAME_COLOR,
-          gst_structure_get_name (structure), RESET_COLOR,
-          CAPS_FEATURE_COLOR, features_string, RESET_COLOR);
-      g_free (features_string);
-    } else {
-      n_print ("%s%s%s%s\n", pfx, STRUCT_NAME_COLOR,
-          gst_structure_get_name (structure), RESET_COLOR);
-    }
-    gst_structure_foreach (structure, print_field, (gpointer) pfx);
-  }
-}
-
-*/
-
-// /* obj will be NULL if we're printing properties of pad template pads */
-// static void
-// print_object_properties_info (GObject * obj, GObjectClass * obj_class,
-//     const gchar * desc)
-// {
-//   GParamSpec **property_specs;
-//   guint num_properties, i;
-//   gboolean readable;
-//   gboolean first_flag;
-
-//   property_specs = g_object_class_list_properties (obj_class, &num_properties);
-//   g_qsort_with_data (property_specs, num_properties, sizeof (gpointer),
-//       (GCompareDataFunc) sort_gparamspecs, NULL);
-
-//   n_print ("%s%s%s:\n", HEADING_COLOR, desc, RESET_COLOR);
-
-//   push_indent ();
-
-//   for (i = 0; i < num_properties; i++) {
-//     GValue value = { 0, };
-//     GParamSpec *param = property_specs[i];
-//     GType owner_type = param->owner_type;
-
-//       default:
-//         if (param->value_type == GST_TYPE_CAPS) {
-//           const GstCaps *caps = gst_value_get_caps (&value);
-
-//           if (!caps)
-//             n_print ("%sCaps%s (NULL)", DATATYPE_COLOR, RESET_COLOR);
-//           else {
-//             print_caps (caps, "                           ");
-//           }
-//         } else if (G_IS_PARAM_SPEC_ENUM (param)) {
-//           GEnumValue *values;
-//           guint j = 0;
-//           gint enum_value;
-//           const gchar *value_nick = "";
-
-//           values = G_ENUM_CLASS (g_type_class_ref (param->value_type))->values;
-//           enum_value = g_value_get_enum (&value);
-
-//           while (values[j].value_name) {
-//             if (values[j].value == enum_value)
-//               value_nick = values[j].value_nick;
-//             j++;
-//           }
-
-//           n_print ("%sEnum \"%s\"%s %sDefault%s: %s%d, \"%s\"%s",
-//               DATATYPE_COLOR, g_type_name (G_VALUE_TYPE (&value)), RESET_COLOR,
-//               PROP_ATTR_NAME_COLOR, RESET_COLOR, PROP_ATTR_VALUE_COLOR,
-//               enum_value, value_nick, RESET_COLOR);
-
-//           j = 0;
-//           while (values[j].value_name) {
-//             g_print ("\n");
-//             n_print ("   %s(%d)%s: %s%-16s%s - %s%s%s",
-//                 PROP_ATTR_NAME_COLOR, values[j].value, RESET_COLOR,
-//                 PROP_ATTR_VALUE_COLOR, values[j].value_nick, RESET_COLOR,
-//                 DESC_COLOR, values[j].value_name, RESET_COLOR);
-//             j++;
-//           }
-//           /* g_type_class_unref (ec); */
-//         } else if (G_IS_PARAM_SPEC_FLAGS (param)) {
-//           GParamSpecFlags *pflags = G_PARAM_SPEC_FLAGS (param);
-//           GFlagsValue *vals;
-//           gchar *cur;
-
-//           vals = pflags->flags_class->values;
-
-//           cur = flags_to_string (vals, g_value_get_flags (&value));
-
-//           n_print ("%sFlags \"%s\"%s %sDefault%s: %s0x%08x, \"%s\"%s",
-//               DATATYPE_COLOR, g_type_name (G_VALUE_TYPE (&value)), RESET_COLOR,
-//               PROP_ATTR_NAME_COLOR, RESET_COLOR, PROP_ATTR_VALUE_COLOR,
-//               g_value_get_flags (&value), cur, RESET_COLOR);
-
-//           while (vals[0].value_name) {
-//             g_print ("\n");
-//             n_print ("   %s(0x%08x)%s: %s%-16s%s - %s%s%s",
-//                 PROP_ATTR_NAME_COLOR, vals[0].value, RESET_COLOR,
-//                 PROP_ATTR_VALUE_COLOR, vals[0].value_nick, RESET_COLOR,
-//                 DESC_COLOR, vals[0].value_name, RESET_COLOR);
-//             ++vals;
-//           }
-
-//           g_free (cur);
-//         } else if (G_IS_PARAM_SPEC_OBJECT (param)) {
-//           n_print ("%sObject of type%s %s\"%s\"%s", PROP_VALUE_COLOR,
-//               RESET_COLOR, DATATYPE_COLOR,
-//               g_type_name (param->value_type), RESET_COLOR);
-//         } else if (G_IS_PARAM_SPEC_BOXED (param)) {
-//           n_print ("%sBoxed pointer of type%s %s\"%s\"%s", PROP_VALUE_COLOR,
-//               RESET_COLOR, DATATYPE_COLOR,
-//               g_type_name (param->value_type), RESET_COLOR);
-//           if (param->value_type == GST_TYPE_STRUCTURE) {
-//             const GstStructure *s = gst_value_get_structure (&value);
-//             if (s) {
-//               g_print ("\n");
-//               gst_structure_foreach (s, print_field,
-//                   (gpointer) "                           ");
-//             }
-//           }
-//         } else if (G_IS_PARAM_SPEC_POINTER (param)) {
-//           if (param->value_type != G_TYPE_POINTER) {
-//             n_print ("%sPointer of type%s %s\"%s\"%s.", PROP_VALUE_COLOR,
-//                 RESET_COLOR, DATATYPE_COLOR, g_type_name (param->value_type),
-//                 RESET_COLOR);
-//           } else {
-//             n_print ("%sPointer.%s", PROP_VALUE_COLOR, RESET_COLOR);
-//           }
-//         } else if (param->value_type == G_TYPE_VALUE_ARRAY) {
-//           GParamSpecValueArray *pvarray = G_PARAM_SPEC_VALUE_ARRAY (param);
-
-//           if (pvarray->element_spec) {
-//             n_print ("%sArray of GValues of type%s %s\"%s\"%s",
-//                 PROP_VALUE_COLOR, RESET_COLOR, DATATYPE_COLOR,
-//                 g_type_name (pvarray->element_spec->value_type), RESET_COLOR);
-//           } else {
-//             n_print ("%sArray of GValues%s", PROP_VALUE_COLOR, RESET_COLOR);
-//           }
 //         } else if (GST_IS_PARAM_SPEC_FRACTION (param)) {
 //           GstParamSpecFraction *pfraction = GST_PARAM_SPEC_FRACTION (param);
 
@@ -399,20 +374,3 @@ print_caps (const GstCaps * caps, const gchar * pfx)
 //               g_type_name (param->value_type), RESET_COLOR);
 //         }
 //         break;
-//     }
-//     if (!readable)
-//       g_print (" %sWrite only%s\n", PROP_VALUE_COLOR, RESET_COLOR);
-//     else
-//       g_print ("\n");
-
-//     pop_indent_n (11);
-
-//     g_value_reset (&value);
-//   }
-//   if (num_properties == 0)
-//     n_print ("%snone%s\n", PROP_VALUE_COLOR, RESET_COLOR);
-
-//   pop_indent ();
-
-//   g_free (property_specs);
-// }

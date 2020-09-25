@@ -30,13 +30,12 @@ func (p *Pad) Template() *PadTemplate {
 }
 
 // CurrentCaps returns the caps for this Pad or nil.
-func (p *Pad) CurrentCaps() Caps {
+func (p *Pad) CurrentCaps() *Caps {
 	caps := C.gst_pad_get_current_caps((*C.GstPad)(p.Instance()))
 	if caps == nil {
 		return nil
 	}
-	defer C.gst_caps_unref(caps)
-	return FromGstCaps(caps)
+	return wrapCaps(caps)
 }
 
 // PadTemplate is a go representation of a GstPadTemplate
@@ -55,7 +54,7 @@ func (p *PadTemplate) Direction() PadDirection { return PadDirection(p.Instance(
 func (p *PadTemplate) Presence() PadPresence { return PadPresence(p.Instance().presence) }
 
 // Caps returns the caps of the pad template.
-func (p *PadTemplate) Caps() Caps { return FromGstCaps(p.Instance().caps) }
+func (p *PadTemplate) Caps() *Caps { return wrapCaps(p.Instance().caps) }
 
 // GhostPad is a go representation of a GstGhostPad
 type GhostPad struct{ *Pad }

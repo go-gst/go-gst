@@ -2,188 +2,62 @@
 #include <gst/app/gstappsink.h>
 #include <gst/app/gstappsrc.h>
 
-/*
-	Utilitits
-*/
-static GObjectClass *
-getGObjectClass(void * p) {
-	return G_OBJECT_GET_CLASS (p);
-}
+extern gboolean structForEachCb  (GQuark field_id, GValue * value, gpointer user_data);
 
-static int 
-sizeOfGCharArray(gchar ** arr) {
-	int i;
-	for (i = 0 ; 1 ; i = i + 1) {
-		if (arr[i] == NULL) { return i; };
-	}
-}
+gboolean        structureForEach (GQuark field_id, GValue * value, gpointer user_data);
 
-static gboolean
-gstObjectFlagIsSet(GstObject * obj, GstElementFlags flags)
-{
-	return GST_OBJECT_FLAG_IS_SET (obj, flags);
-}
+GEnumValue *        getEnumValues      (GParamSpec * p, guint * size);
+GFlagsValue *       getParamSpecFlags  (GParamSpec * p, guint * size);
 
-static gboolean
-gstElementIsURIHandler(GstElement * elem)
-{
-	return GST_IS_URI_HANDLER (elem);
-}
+int             sizeOfGCharArray (gchar ** arr);
+
+gboolean        isParamSpecTypeCaps   (GParamSpec * p);
+gboolean        isParamSpecEnum       (GParamSpec * p);
+gboolean        isParamSpecFlags      (GParamSpec * p);
+gboolean        isParamSpecObject     (GParamSpec * p);
+gboolean        isParamSpecBoxed      (GParamSpec * p);
+gboolean        isParamSpecPointer    (GParamSpec * p);
+gboolean        isParamSpecFraction   (GParamSpec * p);
+gboolean        isParamSpecGstArray   (GParamSpec * p);
+
+GObjectClass *  getGObjectClass (void * p);
+
+gboolean        gstObjectFlagIsSet      (GstObject * obj, GstElementFlags flags);
+gboolean        gstElementIsURIHandler  (GstElement * elem);
 
 /*
 	Number functions
 */
 
-static GParamSpecUInt *
-getParamUInt(GParamSpec * param)
-{
-	return G_PARAM_SPEC_UINT (param);
-}
-
-static GParamSpecInt *
-getParamInt(GParamSpec * param)
-{
-	return G_PARAM_SPEC_INT (param);
-}
-
-static GParamSpecUInt64 *
-getParamUInt64(GParamSpec * param)
-{
-	return G_PARAM_SPEC_UINT64 (param);
-}
-
-static GParamSpecInt64 *
-getParamInt64(GParamSpec * param)
-{
-	return G_PARAM_SPEC_INT64 (param);
-}
-
-static GParamSpecFloat *
-getParamFloat(GParamSpec * param)
-{
-	return G_PARAM_SPEC_FLOAT (param);
-}
-
-static GParamSpecDouble *
-getParamDouble(GParamSpec * param)
-{
-	return G_PARAM_SPEC_DOUBLE (param);
-}
+GParamSpecUInt *    getParamUInt    (GParamSpec * param);
+GParamSpecInt *     getParamInt     (GParamSpec * param);
+GParamSpecUInt64 *  getParamUInt64  (GParamSpec * param);
+GParamSpecInt64 *   getParamInt64   (GParamSpec * param);
+GParamSpecFloat *   getParamFloat   (GParamSpec * param);
+GParamSpecDouble *  getParamDouble  (GParamSpec * param);
 
 /*
 	Type Castings
 */
 
-static GstUri *
-toGstURI(void *p)
-{
-	return (GST_URI(p));
-}
-
-static GstURIHandler *
-toGstURIHandler(void *p)
-{
-	return (GST_URI_HANDLER(p));
-}
-
-static GstRegistry *
-toGstRegistry(void *p)
-{
-	return (GST_REGISTRY(p));
-}
-
-static GstPlugin *
-toGstPlugin(void *p)
-{
-	return (GST_PLUGIN(p));
-}
-
-static GstPluginFeature *
-toGstPluginFeature(void *p)
-{
-	return (GST_PLUGIN_FEATURE(p));
-}
-
-static GstObject *
-toGstObject(void *p)
-{
-	return (GST_OBJECT(p));
-}
-
-static GstElementFactory *
-toGstElementFactory(void *p)
-{
-	return (GST_ELEMENT_FACTORY(p));
-}
-
-static GstElement *
-toGstElement(void *p)
-{
-	return (GST_ELEMENT(p));
-}
-
-static GstAppSink *
-toGstAppSink(void *p)
-{
-	return (GST_APP_SINK(p));
-}
-
-static GstAppSrc *
-toGstAppSrc(void *p)
-{
-	return (GST_APP_SRC(p));
-}
-
-static GstBin *
-toGstBin(void *p)
-{
-	return (GST_BIN(p));
-}
-
-static GstBus *
-toGstBus(void *p)
-{
-	return (GST_BUS(p));
-}
-
-static GstMessage *
-toGstMessage(void *p)
-{
-	return (GST_MESSAGE(p));
-}
-
-static GstPipeline *
-toGstPipeline(void *p)
-{
-	return (GST_PIPELINE(p));
-}
-
-static GstPad *
-toGstPad(void *p)
-{
-	return (GST_PAD(p));
-}
-
-static GstPadTemplate *
-toGstPadTemplate(void *p)
-{
-	return (GST_PAD_TEMPLATE(p));
-}
-
-static GstStructure *
-toGstStructure(void *p)
-{
-	return (GST_STRUCTURE(p));
-}
-
-static GstClock *
-toGstClock(void *p)
-{
-	return (GST_CLOCK(p));
-}
-
-static GstMiniObject *
-toGstMiniObject(void *p)
-{
-	return (GST_MINI_OBJECT(p));
-}
+GstUri *             toGstURI               (void *p);
+GstURIHandler *      toGstURIHandler        (void *p);
+GstRegistry *        toGstRegistry          (void *p);
+GstPlugin *          toGstPlugin            (void *p);
+GstPluginFeature *   toGstPluginFeature     (void *p);
+GstObject *          toGstObject            (void *p);
+GstElementFactory *  toGstElementFactory    (void *p);
+GstElement *         toGstElement           (void *p);
+GstAppSink *         toGstAppSink           (void *p);
+GstAppSrc *          toGstAppSrc            (void *p);
+GstBin *             toGstBin               (void *p);
+GstBus *             toGstBus               (void *p);
+GstMessage *         toGstMessage           (void *p);
+GstPipeline *        toGstPipeline          (void *p);
+GstPad *             toGstPad               (void *p);
+GstPadTemplate *     toGstPadTemplate       (void *p);
+GstStructure *       toGstStructure         (void *p);
+GstClock *           toGstClock             (void *p);
+GstMiniObject *      toGstMiniObject        (void *p);
+GstCaps *            toGstCaps              (void *p);
+GstCapsFeatures *    toGstCapsFeatures      (void *p);

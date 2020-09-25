@@ -5,12 +5,6 @@ package gst
 #cgo CFLAGS: -Wno-deprecated-declarations -g -Wall
 #include <gst/gst.h>
 #include "gst.go.h"
-
-static gboolean
-isTypeCaps(GParamSpec * p)
-{
-	return p->value_type == GST_TYPE_CAPS;
-}
 */
 import "C"
 
@@ -72,21 +66,89 @@ func (p *ParameterSpec) DoubleRange() (float64, float64) {
 }
 
 // IsCaps returns true if this parameter contains a caps object.
-func (p *ParameterSpec) IsCaps() bool {
-	return gobool(C.isTypeCaps(p.paramSpec))
+func (p *ParameterSpec) IsCaps() bool { return gobool(C.isParamSpecTypeCaps(p.paramSpec)) }
+
+// IsEnum returns true if this parameter contains an enum.
+func (p *ParameterSpec) IsEnum() bool { return gobool(C.isParamSpecEnum(p.paramSpec)) }
+
+// IsFlags returns true if this paramater contains flags.
+func (p *ParameterSpec) IsFlags() bool { return gobool(C.isParamSpecFlags(p.paramSpec)) }
+
+// IsObject returns true if this parameter contains an object.
+func (p *ParameterSpec) IsObject() bool { return gobool(C.isParamSpecObject(p.paramSpec)) }
+
+// IsBoxed returns true if this parameter contains a boxed object.
+func (p *ParameterSpec) IsBoxed() bool { return gobool(C.isParamSpecBoxed(p.paramSpec)) }
+
+// IsPointer returns true if this paramater contains a pointer.
+func (p *ParameterSpec) IsPointer() bool { return gobool(C.isParamSpecPointer(p.paramSpec)) }
+
+// IsFraction returns true if this parameter contains a fraction.
+func (p *ParameterSpec) IsFraction() bool { return gobool(C.isParamSpecFraction(p.paramSpec)) }
+
+// IsGstArray returns true if this parameter contains a Gst array.
+func (p *ParameterSpec) IsGstArray() bool { return gobool(C.isParamSpecGstArray(p.paramSpec)) }
+
+// EnumValue is a go representation of a GEnumValue
+type EnumValue struct {
+	Value                int
+	ValueNick, ValueName string
+}
+
+// GetEnumValues returns the possible enum values for this parameter.
+func (p *ParameterSpec) GetEnumValues() []*EnumValue {
+	var gsize C.guint
+	gEnumValues := C.getEnumValues(p.paramSpec, &gsize)
+	size := int(gsize)
+	out := make([]*EnumValue, size)
+	for idx, enumVal := range (*[1 << 30]C.GEnumValue)(unsafe.Pointer(gEnumValues))[:size:size] {
+		out[idx] = &EnumValue{
+			Value:     int(enumVal.value),
+			ValueNick: C.GoString(enumVal.value_nick),
+			ValueName: C.GoString(enumVal.value_name),
+		}
+	}
+	return out
+}
+
+// FlagsValue is a go representation of GFlagsValue
+type FlagsValue struct {
+	Value                int
+	ValueName, ValueNick string
+}
+
+// GetDefaultFlags returns the default flags for this parameter spec.
+func (p *ParameterSpec) GetDefaultFlags() int {
+	return int(C.g_value_get_flags((*C.GValue)(p.DefaultValue.Native())))
+}
+
+// GetFlagValues returns the possible flags for this parameter.
+func (p *ParameterSpec) GetFlagValues() []*FlagsValue {
+	var gSize C.guint
+	gFlags := C.getParamSpecFlags(p.paramSpec, &gSize)
+	size := int(gSize)
+	out := make([]*FlagsValue, size)
+	for idx, flag := range (*[1 << 30]C.GFlagsValue)(unsafe.Pointer(gFlags))[:size:size] {
+		out[idx] = &FlagsValue{
+			Value:     int(flag.value),
+			ValueNick: C.GoString(flag.value_nick),
+			ValueName: C.GoString(flag.value_name),
+		}
+	}
+	return out
 }
 
 // GetCaps returns the caps in this parameter if it is of type GST_TYPE_CAPS.
-func (p *ParameterSpec) GetCaps() Caps {
+func (p *ParameterSpec) GetCaps() *Caps {
 	caps := C.gst_value_get_caps((*C.GValue)(unsafe.Pointer(p.DefaultValue.Native())))
 	if caps == nil {
 		return nil
 	}
-	return FromGstCaps(caps)
+	return wrapCaps(caps)
 }
 
 // ParameterFlags is a go cast of GParamFlags.
-type ParameterFlags C.GParamFlags
+type ParameterFlags int
 
 // Has returns true if these flags contain the provided ones.
 func (p ParameterFlags) Has(b ParameterFlags) bool { return p&b != 0 }
