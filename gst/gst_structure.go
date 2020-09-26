@@ -42,9 +42,13 @@ func NewStructureFromString(stStr string) *Structure {
 	return wrapStructure(structure)
 }
 
-// StructureFromGValue extracts the GstStructure from a glib.Value.
+// StructureFromGValue extracts the GstStructure from a glib.Value, or nil
+// if one does not exist.
 func StructureFromGValue(gval *glib.Value) *Structure {
 	st := C.gst_value_get_structure((*C.GValue)(gval.Native()))
+	if st == nil {
+		return nil
+	}
 	return wrapStructure(st)
 }
 

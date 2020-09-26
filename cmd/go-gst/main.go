@@ -8,8 +8,8 @@ import (
 )
 
 var (
-	srcFile, destFile, pipelineStr string
-	verbose, fromStdin, toStdout   bool
+	srcFile, destFile            string
+	verbose, fromStdin, toStdout bool
 
 	rootCmd = &cobra.Command{
 		Use:   "go-gst",

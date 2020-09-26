@@ -39,8 +39,11 @@ func NewMiniObject(flags MiniObjectFlags, gtype glib.Type) *MiniObject {
 // native returns the pointer to the underlying object.
 func (m *MiniObject) unsafe() unsafe.Pointer { return m.ptr }
 
+// Parent returns the parent of this MiniObject
+func (m *MiniObject) Parent() *MiniObject { return m.parent }
+
 // Instance returns the native GstMiniObject instance.
-func (m *MiniObject) Instance() *C.GstMiniObject { return C.toGstMiniObject(m.ptr) }
+func (m *MiniObject) Instance() *C.GstMiniObject { return C.toGstMiniObject(m.unsafe()) }
 
 // Ref increases the ref count on this object by one.
 func (m *MiniObject) Ref() { C.gst_mini_object_ref(m.Instance()) }

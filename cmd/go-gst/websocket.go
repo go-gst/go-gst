@@ -11,6 +11,7 @@ import (
 
 	"github.com/spf13/cobra"
 	"github.com/tinyzimmer/go-gst-launch/gst"
+	"github.com/tinyzimmer/go-gst-launch/gst/gstauto"
 	"golang.org/x/net/websocket"
 )
 
@@ -109,72 +110,69 @@ func handleWebsocketConnection(wsconn *websocket.Conn) {
 	logInfo("websocket", "New connection from", wsconn.Request().RemoteAddr)
 	wsconn.PayloadType = websocket.BinaryFrame
 
-	var playbackPipeline, recordingPipeline, sinkPipeline *gst.Pipeline
-	var err error
-
-	playbackPipeline, err = newPlaybackPipeline()
+	playbackPipeline, err := newPlaybackPipeline()
 	if err != nil {
 		logInfo("websocket", "ERROR:", err.Error())
 		return
 	}
 
-	playbackPipeline.SetAutoFlush(true)
-
 	logInfo("websocket", "Starting playback pipeline")
 
-	if err = playbackPipeline.Start(); err != nil {
+	if err = playbackPipeline.Pipeline().Start(); err != nil {
 		logInfo("websocket", "ERROR:", err.Error())
 		return
 	}
 
 	if verbose {
-		setupVerbosePipelineListeners(playbackPipeline, "playback")
+		setupVerbosePipelineListeners(playbackPipeline.Pipeline(), "playback")
 	}
 
+	var recordingPipeline gstauto.WritePipeliner
+	var sinkPipeline gstauto.Pipeliner
 	if micFifo != "" {
-		recordingPipeline, err = newRecordingPipeline()
+		recordingPipeline, err := newRecordingPipeline()
 		if err != nil {
 			logInfo("websocket", "Could not open pipeline for recording:", err.Error())
 			return
 		}
 		defer recordingPipeline.Close()
-		sinkPipeline, err = newSinkPipeline()
+		sinkPipeline, err := newSinkPipeline()
 		if err != nil {
 			logInfo("websocket", "Could not open null sink pipeling. Disabling recording.")
 			return
 		}
-		defer sinkPipeline.Close()
+		defer sinkPipeline.Pipeline().Destroy()
 	}
 
 	if recordingPipeline != nil && sinkPipeline != nil {
 		logInfo("websocket", "Starting recording pipeline")
-		if err = recordingPipeline.Start(); err != nil {
+		if err = recordingPipeline.Pipeline().Start(); err != nil {
 			logInfo("websocket", "Could not start recording pipeline")
 			return
 		}
 		logInfo("websocket", "Starting sink pipeline")
-		if err = sinkPipeline.Start(); err != nil {
+		if err = sinkPipeline.Pipeline().Start(); err != nil {
 			logInfo("websocket", "Could not start sink pipeline")
 			return
 		}
 
 		if verbose {
-			setupVerbosePipelineListeners(sinkPipeline, "mic-null-sink")
+			setupVerbosePipelineListeners(sinkPipeline.Pipeline(), "mic-null-sink")
 		}
 
 		var runMicFunc func()
 		runMicFunc = func() {
 			if verbose {
-				setupVerbosePipelineListeners(recordingPipeline, "recorder")
+				setupVerbosePipelineListeners(recordingPipeline.Pipeline(), "recorder")
 			}
 			go io.Copy(recordingPipeline, wsconn)
 			go func() {
 				var lastState gst.State
-				for msg := range recordingPipeline.GetBus().MessageChan() {
+				for msg := range recordingPipeline.Pipeline().GetBus().MessageChan() {
 					defer msg.Unref()
 					switch msg.Type() {
 					case gst.MessageStateChanged:
-						if lastState == gst.StatePlaying && recordingPipeline.GetState() != gst.StatePlaying {
+						if lastState == gst.StatePlaying && recordingPipeline.Pipeline().GetState() != gst.StatePlaying {
 							var nerr error
 							recordingPipeline.Close()
 							recordingPipeline, nerr = newRecordingPipeline()
@@ -183,13 +181,13 @@ func handleWebsocketConnection(wsconn *websocket.Conn) {
 								return
 							}
 							logInfo("websocket", "Restarting recording pipeline")
-							if nerr = recordingPipeline.Start(); nerr != nil {
+							if nerr = recordingPipeline.Pipeline().Start(); nerr != nil {
 								logInfo("websocket", "Could not start new recording pipeline, stopping input stream")
 							}
 							runMicFunc()
 							return
 						}
-						lastState = recordingPipeline.GetState()
+						lastState = recordingPipeline.Pipeline().GetState()
 					}
 				}
 			}()
@@ -208,25 +206,17 @@ func handleWebsocketConnection(wsconn *websocket.Conn) {
 			return
 		}
 		defer srcFile.Close()
-		stat, err := srcFile.Stat()
-		if err != nil {
-			return
-		}
-		appSrc := playbackPipeline.GetAppSrc()
-		appSrc.SetSize(stat.Size())
-		appSrc.PushBuffer(srcFile)
-		for {
-			if ret := appSrc.EndStream(); ret == gst.FlowOK {
-				break
-			}
-		}
-
+		// stat, err := srcFile.Stat()
+		// if err != nil {
+		// 	return
+		// }
+		go io.Copy(playbackPipeline.(gstauto.ReadWritePipeliner), srcFile)
 	}
 
-	gst.Wait(playbackPipeline)
+	gst.Wait(playbackPipeline.Pipeline())
 }
 
-func newPlaybackPipelineFromString() (*gst.Pipeline, error) {
+func newPlaybackPipelineFromString() (gstauto.ReadWritePipeliner, error) {
 	pipelineString := "decodebin ! audioconvert ! audioresample"
 
 	switch encoding {
@@ -240,18 +230,18 @@ func newPlaybackPipelineFromString() (*gst.Pipeline, error) {
 		logInfo("playback", "Using pipeline string", pipelineString)
 	}
 
-	return gst.NewPipelineFromLaunchString(pipelineString, gst.PipelineReadWrite|gst.PipelineUseGstApp)
+	return gstauto.NewPipelineReadWriterSimpleFromString(pipelineString)
 }
 
-func newPlaybackPipeline() (*gst.Pipeline, error) {
+func newPlaybackPipeline() (gstauto.ReadPipeliner, error) {
 
 	if srcFile != "" {
 		return newPlaybackPipelineFromString()
 	}
 
-	cfg := &gst.PipelineConfig{Elements: []*gst.PipelineElement{}}
+	cfg := &gstauto.PipelineConfig{Elements: []*gstauto.PipelineElement{}}
 
-	pulseSrc := &gst.PipelineElement{
+	pulseSrc := &gstauto.PipelineElement{
 		Name:     "pulsesrc",
 		Data:     map[string]interface{}{"server": pulseServer},
 		SinkCaps: gst.NewRawCaps("S16LE", 24000, 2),
@@ -265,19 +255,19 @@ func newPlaybackPipeline() (*gst.Pipeline, error) {
 
 	switch encoding {
 	case "opus":
-		cfg.Elements = append(cfg.Elements, &gst.PipelineElement{Name: "cutter"})
-		cfg.Elements = append(cfg.Elements, &gst.PipelineElement{Name: "opusenc"})
-		cfg.Elements = append(cfg.Elements, &gst.PipelineElement{Name: "webmmux"})
+		cfg.Elements = append(cfg.Elements, &gstauto.PipelineElement{Name: "cutter"})
+		cfg.Elements = append(cfg.Elements, &gstauto.PipelineElement{Name: "opusenc"})
+		cfg.Elements = append(cfg.Elements, &gstauto.PipelineElement{Name: "webmmux"})
 	case "vorbis":
-		cfg.Elements = append(cfg.Elements, &gst.PipelineElement{Name: "vorbisenc"})
-		cfg.Elements = append(cfg.Elements, &gst.PipelineElement{Name: "oggmux"})
+		cfg.Elements = append(cfg.Elements, &gstauto.PipelineElement{Name: "vorbisenc"})
+		cfg.Elements = append(cfg.Elements, &gstauto.PipelineElement{Name: "oggmux"})
 	}
 
-	return gst.NewPipelineFromConfig(cfg, gst.PipelineRead|gst.PipelineUseGstApp, nil)
+	return gstauto.NewPipelineReaderSimpleFromConfig(cfg)
 }
 
-func newRecordingPipeline() (*gst.Pipeline, error) {
-	return gst.NewPipelineFromLaunchString(newPipelineStringFromOpts(), gst.PipelineWrite)
+func newRecordingPipeline() (gstauto.WritePipeliner, error) {
+	return gstauto.NewPipelineWriterSimpleFromString(newPipelineStringFromOpts())
 }
 
 func newPipelineStringFromOpts() string {
@@ -290,9 +280,9 @@ func newPipelineStringFromOpts() string {
 	)
 }
 
-func newSinkPipeline() (*gst.Pipeline, error) {
-	cfg := &gst.PipelineConfig{
-		Elements: []*gst.PipelineElement{
+func newSinkPipeline() (gstauto.Pipeliner, error) {
+	cfg := &gstauto.PipelineConfig{
+		Elements: []*gstauto.PipelineElement{
 			{
 				Name:     "pulsesrc",
 				Data:     map[string]interface{}{"server": pulseServer, "device": micName},
@@ -304,5 +294,5 @@ func newSinkPipeline() (*gst.Pipeline, error) {
 			},
 		},
 	}
-	return gst.NewPipelineFromConfig(cfg, gst.PipelineInternalOnly, nil)
+	return gstauto.NewPipelinerSimpleFromConfig(cfg)
 }

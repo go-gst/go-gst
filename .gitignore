@@ -16,3 +16,4 @@ vendor/
 # Build outputs
 dist/
 .vscode/
+_bin/

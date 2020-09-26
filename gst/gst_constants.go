@@ -196,3 +196,17 @@ const (
 	MiniObjectFlagMayBeLeaked  MiniObjectFlags = C.GST_MINI_OBJECT_FLAG_MAY_BE_LEAKED // (4) – the object is expected to stay alive even after gst_deinit has been called and so should be ignored by leak detection tools. (Since: 1.10)
 	MiniObjectFlagLast         MiniObjectFlags = C.GST_MINI_OBJECT_FLAG_LAST          // (16) – first flag that can be used by subclasses.
 )
+
+// FlowReturn is go type casting for GstFlowReturn.
+type FlowReturn int
+
+// Type casting of the GstFlowReturn types. Custom ones are omitted for now.
+const (
+	FlowOK            FlowReturn = C.GST_FLOW_OK             // Data passing was ok
+	FlowNotLinked     FlowReturn = C.GST_FLOW_NOT_LINKED     // Pad is not linked
+	FlowFlushing      FlowReturn = C.GST_FLOW_FLUSHING       // Pad is flushing
+	FlowEOS           FlowReturn = C.GST_FLOW_EOS            // Pad is EOS
+	FlowNotNegotiated FlowReturn = C.GST_FLOW_NOT_NEGOTIATED // Pad is not negotiated
+	FlowError         FlowReturn = C.GST_FLOW_ERROR          // Some (fatal) error occurred
+	FlowNotSupported  FlowReturn = C.GST_FLOW_NOT_SUPPORTED  // The operation is not supported.
+)

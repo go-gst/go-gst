@@ -273,10 +273,12 @@ func printObjectPropertiesInfo(obj *gst.Object, description string) {
 				colorGreen.printf(`"%s"`, param.ValueType.Name())
 				if param.ValueType.Name() == "GstStructure" {
 					structure := gst.StructureFromGValue(param.DefaultValue)
-					for key, val := range structure.Values() {
-						colorReset.printIndent(26, "(gpointer)       ")
-						colorYellow.printf("%15s:", key)
-						colorBlue.printf("%v", val)
+					if structure != nil {
+						for key, val := range structure.Values() {
+							colorReset.printIndent(26, "(gpointer)       ")
+							colorYellow.printf("%15s:", key)
+							colorBlue.printf("%v", val)
+						}
 					}
 				}
 

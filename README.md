@@ -2,8 +2,8 @@
 
 Go bindings for the gstreamer C library
 
-[![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white&style=flat-rounded)](https://pkg.go.dev/github.com/tinyzimmer/go-gst/gst)
-[![godoc reference](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/tinyzimmer/go-gst/gst)
+[![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white&style=flat-rounded)](https://pkg.go.dev/github.com/tinyzimmer/go-gst)
+[![godoc reference](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/tinyzimmer/go-gst)
 [![GoReportCard example](https://goreportcard.com/badge/github.com/nanomsg/mangos)](https://goreportcard.com/report/github.com/tinyzimmer/go-gst)
 
 This package was originally written to aid the audio support in [`kvdi`](https://github.com/tinyzimmer/kvdi). 
@@ -34,7 +34,7 @@ For now the functionality is limitted to GIF encoing and other arbitrary pipelin
 If I extend it further I'll publish releases, but for now, you can retrieve it with `go get`.
 
 ```bash
-go get github.com/tinyzimmer/go-gst-launch/cmd/go-gst-launch
+go get github.com/tinyzimmer/go-gst/cmd/go-gst
 ```
 
 The usage is described below:

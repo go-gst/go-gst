@@ -67,18 +67,4 @@ func (a *AppSrc) PushBuffer(data io.Reader) FlowReturn {
 	return FlowReturn(ret)
 }
 
-// FlowReturn is go type casting for GstFlowReturn.
-type FlowReturn C.GstFlowReturn
-
-// Type casting of the GstFlowReturn types. Custom ones are omitted for now.
-const (
-	FlowOK            FlowReturn = C.GST_FLOW_OK             // Data passing was ok
-	FlowNotLinked                = C.GST_FLOW_NOT_LINKED     // Pad is not linked
-	FlowFlushing                 = C.GST_FLOW_FLUSHING       // Pad is flushing
-	FlowEOS                      = C.GST_FLOW_EOS            // Pad is EOS
-	FlowNotNegotiated            = C.GST_FLOW_NOT_NEGOTIATED // Pad is not negotiated
-	FlowError                    = C.GST_FLOW_ERROR          // Some (fatal) error occurred
-	FlowNotSupported             = C.GST_FLOW_NOT_SUPPORTED  // The operation is not supported.
-)
-
 func wrapAppSrc(elem *Element) *AppSrc { return &AppSrc{elem} }

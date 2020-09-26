@@ -66,6 +66,9 @@ func gifEncode(cmd *cobra.Command, args []string) error {
 	}
 
 	tmpDir, err := ioutil.TempDir("", "")
+	if err != nil {
+		return err
+	}
 	defer os.RemoveAll(tmpDir)
 
 	launchStr := fmt.Sprintf(
@@ -75,11 +78,11 @@ func gifEncode(cmd *cobra.Command, args []string) error {
 
 	logInfo("gif", "Converting video to image frames")
 
-	gstPipeline, err := gst.NewPipelineFromLaunchString(launchStr, gst.PipelineInternalOnly)
+	gstPipeline, err := gst.NewPipelineFromString(launchStr)
 	if err != nil {
 		return err
 	}
-	defer gstPipeline.Close()
+	defer gstPipeline.Destroy()
 
 	if err := gstPipeline.Start(); err != nil {
 		return err
