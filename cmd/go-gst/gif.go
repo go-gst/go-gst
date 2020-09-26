@@ -9,14 +9,11 @@ import (
 	"image/jpeg"
 	"image/png"
 	"io"
-	"io/ioutil"
-	"os"
-	"path/filepath"
 	"strings"
 
-	"github.com/tinyzimmer/go-gst-launch/gst"
-
 	"github.com/spf13/cobra"
+	"github.com/tinyzimmer/go-gst-launch/gst"
+	"github.com/tinyzimmer/go-gst-launch/gst/gstauto"
 )
 
 var framesPerSecond int
@@ -49,6 +46,11 @@ Requires libav be installed.`,
 
 func gifEncode(cmd *cobra.Command, args []string) error {
 
+	dest, err := getDestFile()
+	if err != nil {
+		return err
+	}
+
 	var imageEncoder string
 	var decoder func(io.Reader) (image.Image, error)
 	switch strings.ToLower(imageFormat) {
@@ -65,74 +67,57 @@ func gifEncode(cmd *cobra.Command, args []string) error {
 		return fmt.Errorf("Invalid image format %s: Valid options [ png | jpg ]", strings.ToLower(imageFormat))
 	}
 
-	tmpDir, err := ioutil.TempDir("", "")
-	if err != nil {
-		return err
-	}
-	defer os.RemoveAll(tmpDir)
-
 	launchStr := fmt.Sprintf(
-		`filesrc location=%s ! decodebin ! videoconvert ! videoscale ! videorate ! video/x-raw,framerate=%d/1 ! %s ! multifilesink location="%s/%%04d.%s"`,
-		srcFile, framesPerSecond, imageEncoder, tmpDir, strings.ToLower(imageFormat),
+		`filesrc location="%s" ! decodebin ! videoconvert ! videoscale ! videorate ! video/x-raw,framerate=%d/1 ! %s`,
+		srcFile, framesPerSecond, imageEncoder,
 	)
 
 	logInfo("gif", "Converting video to image frames")
 
-	gstPipeline, err := gst.NewPipelineFromString(launchStr)
+	gstPipeline, err := gstauto.NewPipelineReaderAppFromString(launchStr)
 	if err != nil {
 		return err
 	}
-	defer gstPipeline.Destroy()
-
-	if err := gstPipeline.Start(); err != nil {
-		return err
-	}
+	defer gstPipeline.Close()
 
 	if verbose {
-		setupVerbosePipelineListeners(gstPipeline, "gif")
+		setupVerbosePipelineListeners(gstPipeline.Pipeline(), "gif")
 	}
 
-	gst.Wait(gstPipeline)
-
-	logInfo("gif", "Building output gif:", destFile)
-
-	dest, err := getDestFile()
-	if err != nil {
-		return err
-	}
-
-	files, err := ioutil.ReadDir(tmpDir)
-	if err != nil {
-		return err
-	}
+	sink := gstPipeline.GetAppSink()
 
 	outGif := &gif.GIF{
 		Image: make([]*image.Paletted, 0),
 		Delay: make([]int, 0),
 	}
 
-	numFrames := len(files)
-	for idx, file := range files {
-		if !toStdout {
-			fmt.Printf("\rEncoding frame %d/%d", idx, numFrames)
-		}
-		f, err := os.Open(filepath.Join(tmpDir, file.Name()))
-		if err != nil {
-			return err
-		}
-		img, err := decoder(f)
-		if err != nil {
-			return err
-		}
-		frame := image.NewPaletted(img.Bounds(), palette.Plan9)
-		for x := 1; x <= img.Bounds().Dx(); x++ {
-			for y := 1; y <= img.Bounds().Dy(); y++ {
-				frame.Set(x, y, img.At(x, y))
+	go func() {
+		for {
+			sample, err := sink.BlockPullSample()
+			if err != nil {
+				return
 			}
+			img, err := decoder(sample.GetBuffer())
+			if err != nil {
+				logInfo("gif", "ERROR:", err.Error())
+				return
+			}
+			frame := image.NewPaletted(img.Bounds(), palette.Plan9)
+			for x := 1; x <= img.Bounds().Dx(); x++ {
+				for y := 1; y <= img.Bounds().Dy(); y++ {
+					frame.Set(x, y, img.At(x, y))
+				}
+			}
+			outGif.Image = append(outGif.Image, frame)
+			outGif.Delay = append(outGif.Delay, 0)
 		}
-		outGif.Image = append(outGif.Image, frame)
-		outGif.Delay = append(outGif.Delay, 0)
+	}()
+
+	if err := gstPipeline.Pipeline().Start(); err != nil {
+		return err
 	}
+
+	gst.Wait(gstPipeline.Pipeline())
 
 	if err := gif.EncodeAll(dest, outGif); err != nil {
 		return err
