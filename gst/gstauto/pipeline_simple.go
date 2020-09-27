@@ -18,6 +18,12 @@ type PipelinerSimple struct {
 // Pipeline implements the Pipeliner interface.
 func (s *PipelinerSimple) Pipeline() *gst.Pipeline { return s.pipeline }
 
+// Start sets the underlying Pipeline state to PLAYING.
+func (s *PipelinerSimple) Start() error { return s.Pipeline().Start() }
+
+// Close stops and unrefs the underlying pipeline.
+func (s *PipelinerSimple) Close() error { return s.Pipeline().Destroy() }
+
 // NewPipelinerSimple returns a new empty PipelinerSimple. Pass an empty string
 // for name to use an auto-generated one.
 func NewPipelinerSimple(name string) (*PipelinerSimple, error) {

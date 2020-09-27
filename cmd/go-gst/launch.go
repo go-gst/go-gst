@@ -49,21 +49,19 @@ func launch(cmd *cobra.Command, args []string) error {
 	}
 
 	logInfo("pipeline", "Starting pipeline")
-	if err := pipeliner.Pipeline().Start(); err != nil {
+	if err := pipeliner.Start(); err != nil {
 		return err
 	}
+
+	defer pipeliner.Close()
 
 	if src != nil {
 		pipelineWriter := pipeliner.(gstauto.WritePipeliner)
 		go io.Copy(pipelineWriter, src)
-		defer pipelineWriter.Close()
 	}
 	if dest != nil {
 		pipelineReader := pipeliner.(gstauto.ReadPipeliner)
 		go io.Copy(dest, pipelineReader)
-		defer pipelineReader.Close()
-	} else {
-		defer pipeliner.Pipeline().Destroy()
 	}
 
 	gst.Wait(pipeliner.Pipeline())

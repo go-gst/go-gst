@@ -55,6 +55,9 @@ func NewPipelineReaderFromString(launchStr string) (*PipelineReader, error) {
 // Pipeliner interface.
 func (r *PipelineReader) Pipeline() *gst.Pipeline { return r.pipeline }
 
+// Start sets the underlying Pipeline state to PLAYING.
+func (r *PipelineReader) Start() error { return r.Pipeline().Start() }
+
 // ReaderFd returns the file descriptor that can be written to for the read-buffer. This value
 // is used when wanting to allow an underlying pipeline to write to the internal buffer (e.g. when using a fdsink).
 func (r *PipelineReader) ReaderFd() int { return int(r.readCloser.rWriter.Fd()) }

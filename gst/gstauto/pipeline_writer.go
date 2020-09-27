@@ -55,6 +55,9 @@ func NewPipelineWriterFromString(launchStr string) (*PipelineWriter, error) {
 // Pipeliner interface.
 func (w *PipelineWriter) Pipeline() *gst.Pipeline { return w.pipeline }
 
+// Start sets the underlying Pipeline state to PLAYING.
+func (w *PipelineWriter) Start() error { return w.Pipeline().Start() }
+
 // WriterFd returns the file descriptor that can be used to read from the write-buffer. This value
 // is used when wanting to allow an underlying pipeline the ability to read data written to
 // the buffer (e.g. when using a fdsrc).

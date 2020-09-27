@@ -113,7 +113,7 @@ func gifEncode(cmd *cobra.Command, args []string) error {
 		}
 	}()
 
-	if err := gstPipeline.Pipeline().Start(); err != nil {
+	if err := gstPipeline.Start(); err != nil {
 		return err
 	}
 

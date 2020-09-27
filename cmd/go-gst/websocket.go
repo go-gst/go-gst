@@ -118,7 +118,7 @@ func handleWebsocketConnection(wsconn *websocket.Conn) {
 
 	logInfo("websocket", "Starting playback pipeline")
 
-	if err = playbackPipeline.Pipeline().Start(); err != nil {
+	if err = playbackPipeline.Start(); err != nil {
 		logInfo("websocket", "ERROR:", err.Error())
 		return
 	}
@@ -141,17 +141,17 @@ func handleWebsocketConnection(wsconn *websocket.Conn) {
 			logInfo("websocket", "Could not open null sink pipeling. Disabling recording.")
 			return
 		}
-		defer sinkPipeline.Pipeline().Destroy()
+		defer sinkPipeline.Close()
 	}
 
 	if recordingPipeline != nil && sinkPipeline != nil {
 		logInfo("websocket", "Starting recording pipeline")
-		if err = recordingPipeline.Pipeline().Start(); err != nil {
+		if err = recordingPipeline.Start(); err != nil {
 			logInfo("websocket", "Could not start recording pipeline")
 			return
 		}
 		logInfo("websocket", "Starting sink pipeline")
-		if err = sinkPipeline.Pipeline().Start(); err != nil {
+		if err = sinkPipeline.Start(); err != nil {
 			logInfo("websocket", "Could not start sink pipeline")
 			return
 		}
@@ -181,7 +181,7 @@ func handleWebsocketConnection(wsconn *websocket.Conn) {
 								return
 							}
 							logInfo("websocket", "Restarting recording pipeline")
-							if nerr = recordingPipeline.Pipeline().Start(); nerr != nil {
+							if nerr = recordingPipeline.Start(); nerr != nil {
 								logInfo("websocket", "Could not start new recording pipeline, stopping input stream")
 							}
 							runMicFunc()

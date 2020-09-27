@@ -10,23 +10,27 @@ import (
 // the Pipeline object. It provides a single method which returns the underlying
 // Pipeline object.
 type Pipeliner interface {
+	io.Closer
+	// Pipeline should return the underlying pipeline
 	Pipeline() *gst.Pipeline
+	// Start should start the underlying pipeline.
+	Start() error
 }
 
 // ReadPipeliner is a Pipeliner that also implements a ReadCloser.
 type ReadPipeliner interface {
 	Pipeliner
-	io.ReadCloser
+	io.Reader
 }
 
 // WritePipeliner is a Pipeliner that also implements a WriteCloser.
 type WritePipeliner interface {
 	Pipeliner
-	io.WriteCloser
+	io.Writer
 }
 
 // ReadWritePipeliner is a Pipeliner that also implements a ReadWriteCloser.
 type ReadWritePipeliner interface {
-	ReadPipeliner
-	WritePipeliner
+	Pipeliner
+	io.ReadWriter
 }
