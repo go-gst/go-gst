@@ -103,7 +103,7 @@ func wrapElementFactory(obj *glib.Object) *ElementFactory {
 
 func wrapPluginFeature(obj *glib.Object) *PluginFeature { return &PluginFeature{wrapObject(obj)} }
 
-func wrapPipeline(obj *glib.Object) *Pipeline { return &Pipeline{wrapBin(obj)} }
+func wrapPipeline(obj *glib.Object) *Pipeline { return &Pipeline{Bin: wrapBin(obj)} }
 func wrapElement(obj *glib.Object) *Element   { return &Element{wrapObject(obj)} }
 func wrapBin(obj *glib.Object) *Bin           { return &Bin{wrapElement(obj)} }
 func wrapClock(obj *glib.Object) *Clock       { return &Clock{wrapObject(obj)} }

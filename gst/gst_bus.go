@@ -10,6 +10,7 @@ import "C"
 
 import (
 	"sync"
+	"time"
 )
 
 // Bus is a Go wrapper around a GstBus. It provides convenience methods for
@@ -56,18 +57,33 @@ func (b *Bus) MessageChan() chan *Message {
 	return ch
 }
 
-// BlockPopMessage blocks until a message is available on the bus and then returns it.
-// This function can return nil if the bus is closed. The message should be unreffed
-// after usage.
-func (b *Bus) BlockPopMessage() *Message {
-	// I think this is ok since no other main loop is running
-	msg := C.gst_bus_poll(
-		(*C.GstBus)(b.Instance()),
-		C.GST_MESSAGE_ANY,
-		C.GST_CLOCK_TIME_NONE,
-	)
+// PopMessage attempts to pop a message from the bus. It returns nil if none are available.
+// The message should be unreffed after usage.
+func (b *Bus) PopMessage(timeout int) *Message {
+	if b.Instance() == nil {
+		return nil
+	}
+	dur := time.Duration(timeout) * time.Second
+	cTimeout := C.GstClockTime(dur.Nanoseconds())
+	msg := C.gst_bus_timed_pop(b.Instance(), cTimeout)
 	if msg == nil {
 		return nil
 	}
 	return wrapMessage(msg)
+}
+
+// BlockPopMessage blocks until a message is available on the bus and then returns it.
+// This function can return nil if the bus is closed. The message should be unreffed
+// after usage.
+func (b *Bus) BlockPopMessage() *Message {
+	for {
+		if b.Instance() == nil {
+			return nil
+		}
+		msg := b.PopMessage(1)
+		if msg == nil {
+			continue
+		}
+		return msg
+	}
 }

@@ -58,7 +58,7 @@ func setupVerbosePipelineListeners(gstPipeline *gst.Pipeline, name string) {
 	logInfo(name, "Starting message listeners")
 	go func() {
 		var currentState gst.State
-		for msg := range gstPipeline.GetBus().MessageChan() {
+		for msg := range gstPipeline.GetPipelineBus().MessageChan() {
 
 			defer msg.Unref()
 

@@ -195,9 +195,11 @@ func handleWebsocketConnection(wsconn *websocket.Conn) {
 		runMicFunc()
 	}
 
+	defer playbackPipeline.Close()
+
 	go func() {
 		io.Copy(wsconn, playbackPipeline)
-		playbackPipeline.Close()
+		playbackPipeline.Pipeline().SetState(gst.StateNull)
 	}()
 
 	if srcFile != "" {
