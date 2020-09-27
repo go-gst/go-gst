@@ -9,7 +9,6 @@ package gst
 import "C"
 
 import (
-	"errors"
 	"fmt"
 	"unsafe"
 
@@ -54,13 +53,24 @@ func (e *Element) LinkFiltered(elem *Element, caps *Caps) error {
 	return nil
 }
 
-// GetBus returns the GstBus for retrieving messages from this element.
-func (e *Element) GetBus() (*Bus, error) {
+// GetBus returns the GstBus for retrieving messages from this element. This function returns
+// nil unless the element is a Pipeline.
+func (e *Element) GetBus() *Bus {
 	bus := C.gst_element_get_bus((*C.GstElement)(e.Instance()))
 	if bus == nil {
-		return nil, errors.New("Could not retrieve bus from element")
+		return nil
 	}
-	return wrapBus(glib.Take(unsafe.Pointer(bus))), nil
+	return wrapBus(glib.Take(unsafe.Pointer(bus)))
+}
+
+// GetClock returns the Clock for this element. This is the clock as was last set with gst_element_set_clock.
+// Elements in a pipeline will only have their clock set when the pipeline is in the PLAYING state.
+func (e *Element) GetClock() *Clock {
+	cClock := C.gst_element_get_clock((*C.GstElement)(e.Instance()))
+	if cClock == nil {
+		return nil
+	}
+	return wrapClock(glib.Take(unsafe.Pointer(cClock)))
 }
 
 // GetState returns the current state of this element.
@@ -128,15 +138,6 @@ func (e *Element) GetPadTemplates() []*PadTemplate {
 		out = append(out, wrapPadTemplate(glib.Take(pt)))
 	})
 	return out
-}
-
-// GetClock returns the clock for this element or nil. Unref after usage.
-func (e *Element) GetClock() *Clock {
-	clock := C.gst_element_get_clock((*C.GstElement)(e.Instance()))
-	if clock == nil {
-		return nil
-	}
-	return wrapClock(glib.Take(unsafe.Pointer(clock)))
 }
 
 // Has returns true if this element has the given flags.
