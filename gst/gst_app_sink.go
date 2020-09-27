@@ -63,5 +63,3 @@ func (a *AppSink) PullSample() (*Sample, error) {
 	}
 	return nil, nil
 }
-
-func wrapAppSink(elem *Element) *AppSink { return &AppSink{elem} }

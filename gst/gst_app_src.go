@@ -53,5 +53,3 @@ func (a *AppSrc) PushBuffer(buf *Buffer) FlowReturn {
 	ret := C.gst_app_src_push_buffer((*C.GstAppSrc)(a.Instance()), (*C.GstBuffer)(buf.Instance()))
 	return FlowReturn(ret)
 }
-
-func wrapAppSrc(elem *Element) *AppSrc { return &AppSrc{elem} }

@@ -38,8 +38,6 @@ func NewBufferFromReader(rdr io.Reader) (*Buffer, error) {
 	return NewBufferFromBytes(out), nil
 }
 
-func wrapBuffer(buf *C.GstBuffer) *Buffer { return &Buffer{ptr: buf} }
-
 // Instance returns the underlying GstBuffer instance.
 func (b *Buffer) Instance() *C.GstBuffer { return C.toGstBuffer(unsafe.Pointer(b.ptr)) }
 

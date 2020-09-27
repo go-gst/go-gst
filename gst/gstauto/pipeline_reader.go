@@ -63,7 +63,7 @@ func (r *PipelineReader) Pipeline() *gst.Pipeline { return r.pipeline }
 
 // ReaderFd returns the file descriptor that can be written to for the read-buffer. This value
 // is used when wanting to allow an underlying pipeline to write to the internal buffer (e.g. when using a fdsink).
-func (r *PipelineReader) ReaderFd() uintptr { return r.readCloser.rWriter.Fd() }
+func (r *PipelineReader) ReaderFd() int { return int(r.readCloser.rWriter.Fd()) }
 
 // Close will stop and unref the underlying pipeline.
 func (r *PipelineReader) Close() error {

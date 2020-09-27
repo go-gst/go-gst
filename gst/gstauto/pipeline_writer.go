@@ -64,7 +64,7 @@ func (w *PipelineWriter) Pipeline() *gst.Pipeline { return w.pipeline }
 // WriterFd returns the file descriptor that can be used to read from the write-buffer. This value
 // is used when wanting to allow an underlying pipeline the ability to read data written to
 // the buffer (e.g. when using a fdsrc).
-func (w *PipelineWriter) WriterFd() uintptr { return w.writeCloser.wReader.Fd() }
+func (w *PipelineWriter) WriterFd() int { return int(w.writeCloser.wReader.Fd()) }
 
 // Close will stop and unref the underlying pipeline.
 func (w *PipelineWriter) Close() error {

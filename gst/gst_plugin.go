@@ -7,17 +7,12 @@ package gst
 #include "gst.go.h"
 */
 import "C"
-import "github.com/gotk3/gotk3/glib"
 
 // Plugin is a go representation of a GstPlugin.
 type Plugin struct{ *Object }
 
 // Instance returns the underlying GstPlugin instance.
 func (p *Plugin) Instance() *C.GstPlugin { return C.toGstPlugin(p.unsafe()) }
-
-func wrapPlugin(obj *glib.Object) *Plugin {
-	return &Plugin{wrapObject(obj)}
-}
 
 // Description returns the description for this plugin.
 func (p *Plugin) Description() string {

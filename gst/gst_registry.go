@@ -47,7 +47,3 @@ func (r *Registry) LookupFeature(name string) (*PluginFeature, error) {
 	}
 	return wrapPluginFeature(glib.Take(unsafe.Pointer(feat))), nil
 }
-
-func wrapRegistry(obj *glib.Object) *Registry {
-	return &Registry{wrapObject(obj)}
-}

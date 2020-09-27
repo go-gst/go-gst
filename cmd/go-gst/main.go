@@ -1,3 +1,10 @@
+// Go-gst is a CLI utility aiming to implement the core functionality
+// of the core gstreamer-tools. It's primary purpose is to showcase the functionality of
+// the underlying go-gst library.
+
+// There are also additional commands showing some of the things you can do with the library,
+// such as websocket servers reading/writing to/from local audio servers and audio/video/image
+// encoders/decoders.
 package main
 
 import (

@@ -14,9 +14,6 @@ type Sample struct {
 	sample *C.GstSample
 }
 
-// wrapSample creates a new Sample from the given *GstSample.
-func wrapSample(sample *C.GstSample) *Sample { return &Sample{sample: sample} }
-
 // Instance returns the underlying *GstSample instance.
 func (s *Sample) Instance() *C.GstSample { return s.sample }
 
