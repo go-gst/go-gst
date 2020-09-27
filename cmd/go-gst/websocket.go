@@ -199,6 +199,8 @@ func handleWebsocketConnection(wsconn *websocket.Conn) {
 
 	go func() {
 		io.Copy(wsconn, playbackPipeline)
+		// signal the pipeline to do a clean close. This will cause the
+		// wait below to break.
 		playbackPipeline.Pipeline().SetState(gst.StateNull)
 	}()
 

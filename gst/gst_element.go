@@ -85,15 +85,15 @@ func (e *Element) SetState(state State) error {
 // BlockSetState is like SetState except it will block until the transition
 // is complete.
 func (e *Element) BlockSetState(state State) error {
-	stateRet := C.gst_element_set_state((*C.GstElement)(e.Instance()), C.GST_STATE_PLAYING)
-	if stateRet == C.GST_STATE_CHANGE_FAILURE {
-		return fmt.Errorf("Failed to change state to %s", state.String())
+	if err := e.SetState(state); err != nil {
+		return err
 	}
+	cState := C.GstState(state)
 	var curState C.GstState
 	C.gst_element_get_state(
 		(*C.GstElement)(e.Instance()),
 		(*C.GstState)(unsafe.Pointer(&curState)),
-		(*C.GstState)(unsafe.Pointer(&state)),
+		(*C.GstState)(unsafe.Pointer(&cState)),
 		C.GST_CLOCK_TIME_NONE,
 	)
 	return nil
