@@ -48,7 +48,7 @@ func (b *Bin) GetSinkElements() ([]*Element, error) {
 
 // Add wraps `gst_bin_add`.
 func (b *Bin) Add(elem *Element) error {
-	if ok := C.gst_bin_add((*C.GstBin)(b.Instance()), (*C.GstElement)(elem.Instance())); gobool(ok) {
+	if ok := C.gst_bin_add((*C.GstBin)(b.Instance()), (*C.GstElement)(elem.Instance())); !gobool(ok) {
 		return fmt.Errorf("Failed to add element to pipeline: %s", elem.Name())
 	}
 	return nil

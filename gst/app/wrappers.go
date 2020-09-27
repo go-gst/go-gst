@@ -10,7 +10,7 @@ func wrapAppSrc(elem *gst.Element) *Source { return &Source{elem} }
 
 // gobool provides an easy type conversion between C.gboolean and a go bool.
 func gobool(b C.gboolean) bool {
-	return b != 0
+	return int(b) > 0
 }
 
 // gboolean converts a go bool to a C.gboolean.
