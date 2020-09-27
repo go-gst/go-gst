@@ -7,7 +7,7 @@ import "C"
 type Plugin struct{ *Object }
 
 // Instance returns the underlying GstPlugin instance.
-func (p *Plugin) Instance() *C.GstPlugin { return C.toGstPlugin(p.unsafe()) }
+func (p *Plugin) Instance() *C.GstPlugin { return C.toGstPlugin(p.Unsafe()) }
 
 // Description returns the description for this plugin.
 func (p *Plugin) Description() string {

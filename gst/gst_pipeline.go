@@ -51,7 +51,7 @@ func NewPipelineFromString(launchv string) (*Pipeline, error) {
 }
 
 // Instance returns the native GstPipeline instance.
-func (p *Pipeline) Instance() *C.GstPipeline { return C.toGstPipeline(p.unsafe()) }
+func (p *Pipeline) Instance() *C.GstPipeline { return C.toGstPipeline(p.Unsafe()) }
 
 // GetPipelineBus returns the message bus for this pipeline.
 func (p *Pipeline) GetPipelineBus() *Bus {

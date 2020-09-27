@@ -25,9 +25,7 @@ func NewPipelineReaderSimpleFromString(launchStr string) (*PipelineReaderSimple,
 
 	defer func() {
 		if err != nil {
-			if destroyErr := pipelineReader.Pipeline().Destroy(); destroyErr != nil {
-				fmt.Println("[go-gst] Error while destroying failed pipeline instance:", destroyErr.Error())
-			}
+			runOrPrintErr(pipelineReader.Pipeline().Destroy)
 		}
 	}()
 
@@ -69,9 +67,7 @@ func NewPipelineReaderSimpleFromConfig(cfg *PipelineConfig) (*PipelineReaderSimp
 		},
 	})
 	if err := cfg.Apply(pipelineReader.Pipeline()); err != nil {
-		if destroyErr := pipelineReader.Pipeline().Destroy(); destroyErr != nil {
-			fmt.Println("[go-gst] Error while destroying failed pipeline instance:", destroyErr.Error())
-		}
+		runOrPrintErr(pipelineReader.Pipeline().Destroy)
 		return nil, err
 	}
 	return &PipelineReaderSimple{pipelineReader}, nil

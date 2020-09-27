@@ -13,7 +13,7 @@ import (
 
 	"github.com/spf13/cobra"
 	"github.com/tinyzimmer/go-gst/gst"
-	"github.com/tinyzimmer/go-gst/gst/gstauto"
+	"github.com/tinyzimmer/go-gst/gst/gstauto/app"
 )
 
 var framesPerSecond int
@@ -74,7 +74,7 @@ func gifEncode(cmd *cobra.Command, args []string) error {
 
 	logInfo("gif", "Converting video to image frames")
 
-	gstPipeline, err := gstauto.NewPipelineReaderAppFromString(launchStr)
+	gstPipeline, err := app.NewPipelineReaderAppFromString(launchStr)
 	if err != nil {
 		return err
 	}

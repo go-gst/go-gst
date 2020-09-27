@@ -1,11 +1,12 @@
-package gstauto
+package app
 
 import (
 	"errors"
-	"fmt"
 	"strings"
 
 	"github.com/tinyzimmer/go-gst/gst"
+	"github.com/tinyzimmer/go-gst/gst/app"
+	"github.com/tinyzimmer/go-gst/gst/gstauto"
 )
 
 // PipelineReadWriterApp implements a ReadPipeliner that configures gstreamer
@@ -13,10 +14,10 @@ import (
 // at the end of the pipeline, and the appsrc allows for control over the data
 // at the start.
 type PipelineReadWriterApp struct {
-	*PipelineReadWriter
+	*gstauto.PipelineReadWriter
 
-	appSrc  *gst.AppSrc
-	appSink *gst.AppSink
+	appSrc  *app.Source
+	appSink *app.Sink
 }
 
 // NewPipelineReadWriterAppFromString returns a new PipelineReadWriterApp populated from
@@ -24,16 +25,14 @@ type PipelineReadWriterApp struct {
 // available via the GetAppSink method, and an appsrc is added to the end and made
 // available via the GetAppSource method.
 func NewPipelineReadWriterAppFromString(launchStr string) (*PipelineReadWriterApp, error) {
-	pipelineReadWriter, err := NewPipelineReadWriterFromString(addAppSourceToStr(addAppSinkToStr(launchStr)))
+	pipelineReadWriter, err := gstauto.NewPipelineReadWriterFromString(addAppSourceToStr(addAppSinkToStr(launchStr)))
 	if err != nil {
 		return nil, err
 	}
 
 	defer func() {
 		if err != nil {
-			if destroyErr := pipelineReadWriter.Pipeline().Destroy(); destroyErr != nil {
-				fmt.Println("[go-gst] Error while destroying failed pipeline instance:", destroyErr.Error())
-			}
+			runOrPrintErr(pipelineReadWriter.Pipeline().Destroy)
 		}
 	}()
 
@@ -49,7 +48,7 @@ func NewPipelineReadWriterAppFromString(launchStr string) (*PipelineReadWriterAp
 	// Fetch the appsrc and make a local reference to it
 	for _, src := range sources {
 		if strings.Contains(src.Name(), "appsrc") {
-			appPipeline.appSrc = &gst.AppSrc{Element: src}
+			appPipeline.appSrc = &app.Source{Element: src}
 		}
 	}
 
@@ -63,7 +62,7 @@ func NewPipelineReadWriterAppFromString(launchStr string) (*PipelineReadWriterAp
 	// Fetch the appsink and make a local reference to it
 	for _, sink := range sinks {
 		if strings.Contains(sink.Name(), "appsink") {
-			appPipeline.appSink = &gst.AppSink{Element: sink}
+			appPipeline.appSink = &app.Sink{Element: sink}
 		}
 	}
 
@@ -75,24 +74,22 @@ func NewPipelineReadWriterAppFromString(launchStr string) (*PipelineReadWriterAp
 // the given launch config. An appsink is added to the end of the launch config and
 // made available via the GetAppSink method, and an appsrc is added at the front and made
 // available via the GetAppSource method.
-func NewPipelineReadWriterAppFromConfig(cfg *PipelineConfig) (*PipelineReadWriterApp, error) {
+func NewPipelineReadWriterAppFromConfig(cfg *gstauto.PipelineConfig) (*PipelineReadWriterApp, error) {
 	if cfg.Elements == nil {
 		return nil, errors.New("Elements cannot be nil in the config")
 	}
-	pipelineReadWriter, err := NewPipelineReadWriter("")
+	pipelineReadWriter, err := gstauto.NewPipelineReadWriter("")
 	if err != nil {
 		return nil, err
 	}
 
 	defer func() {
 		if err != nil {
-			if destroyErr := pipelineReadWriter.Pipeline().Destroy(); destroyErr != nil {
-				fmt.Println("[go-gst] Error while destroying failed pipeline instance:", destroyErr.Error())
-			}
+			runOrPrintErr(pipelineReadWriter.Pipeline().Destroy)
 		}
 	}()
 
-	cfg.Elements = append(cfg.Elements, &PipelineElement{Name: "appsink"})
+	cfg.Elements = append(cfg.Elements, &gstauto.PipelineElement{Name: "appsink"})
 
 	if err = cfg.Apply(pipelineReadWriter.Pipeline()); err != nil {
 		return nil, err
@@ -110,7 +107,7 @@ func NewPipelineReadWriterAppFromConfig(cfg *PipelineConfig) (*PipelineReadWrite
 	// Fetch the appsrc and make a local reference to it
 	for _, src := range sources {
 		if strings.Contains(src.Name(), "appsrc") {
-			appPipeline.appSrc = &gst.AppSrc{Element: src}
+			appPipeline.appSrc = &app.Source{Element: src}
 		}
 	}
 
@@ -124,7 +121,7 @@ func NewPipelineReadWriterAppFromConfig(cfg *PipelineConfig) (*PipelineReadWrite
 	// Fetch the appsink and make a local reference to it
 	for _, sink := range sinks {
 		if strings.Contains(sink.Name(), "appsink") {
-			appPipeline.appSink = &gst.AppSink{Element: sink}
+			appPipeline.appSink = &app.Sink{Element: sink}
 		}
 	}
 
@@ -132,7 +129,7 @@ func NewPipelineReadWriterAppFromConfig(cfg *PipelineConfig) (*PipelineReadWrite
 }
 
 // GetAppSink returns the app sink for this pipeline.
-func (p *PipelineReadWriterApp) GetAppSink() *gst.AppSink { return p.appSink }
+func (p *PipelineReadWriterApp) GetAppSink() *app.Sink { return p.appSink }
 
 // GetAppSource returns the app src for this pipeline.
-func (p *PipelineReadWriterApp) GetAppSource() *gst.AppSrc { return p.appSrc }
+func (p *PipelineReadWriterApp) GetAppSource() *app.Source { return p.appSrc }

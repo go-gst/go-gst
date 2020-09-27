@@ -12,7 +12,7 @@ import (
 type Pad struct{ *Object }
 
 // Instance returns the underlying C GstPad.
-func (p *Pad) Instance() *C.GstPad { return C.toGstPad(p.unsafe()) }
+func (p *Pad) Instance() *C.GstPad { return C.toGstPad(p.Unsafe()) }
 
 // Direction returns the direction of this pad.
 func (p *Pad) Direction() PadDirection {
@@ -37,7 +37,7 @@ func (p *Pad) CurrentCaps() *Caps {
 type PadTemplate struct{ *Object }
 
 // Instance returns the underlying C GstPadTemplate.
-func (p *PadTemplate) Instance() *C.GstPadTemplate { return C.toGstPadTemplate(p.unsafe()) }
+func (p *PadTemplate) Instance() *C.GstPadTemplate { return C.toGstPadTemplate(p.Unsafe()) }
 
 // Name returns the name of the pad template.
 func (p *PadTemplate) Name() string { return C.GoString(p.Instance().name_template) }

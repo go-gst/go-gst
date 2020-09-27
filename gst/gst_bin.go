@@ -3,6 +3,7 @@ package gst
 // #include "gst.go.h"
 import "C"
 import (
+	"errors"
 	"fmt"
 	"unsafe"
 
@@ -13,7 +14,7 @@ import (
 type Bin struct{ *Element }
 
 // Instance returns the underlying GstBin instance.
-func (b *Bin) Instance() *C.GstBin { return C.toGstBin(b.unsafe()) }
+func (b *Bin) Instance() *C.GstBin { return C.toGstBin(b.Unsafe()) }
 
 // GetElementByName returns the element with the given name. Unref after usage.
 func (b *Bin) GetElementByName(name string) (*Element, error) {
@@ -47,7 +48,7 @@ func (b *Bin) GetSinkElements() ([]*Element, error) {
 
 // Add wraps `gst_bin_add`.
 func (b *Bin) Add(elem *Element) error {
-	if ok := C.gst_bin_add((*C.GstBin)(b.Instance()), (*C.GstElement)(elem.Instance())); !gobool(ok) {
+	if ok := C.gst_bin_add((*C.GstBin)(b.Instance()), (*C.GstElement)(elem.Instance())); gobool(ok) {
 		return fmt.Errorf("Failed to add element to pipeline: %s", elem.Name())
 	}
 	return nil
@@ -62,4 +63,26 @@ func (b *Bin) AddMany(elems ...*Element) error {
 		}
 	}
 	return nil
+}
+
+func iteratorToElementSlice(iterator *C.GstIterator) ([]*Element, error) {
+	elems := make([]*Element, 0)
+	gval := new(C.GValue)
+
+	for {
+		switch C.gst_iterator_next((*C.GstIterator)(iterator), (*C.GValue)(unsafe.Pointer(gval))) {
+		case C.GST_ITERATOR_DONE:
+			C.gst_iterator_free((*C.GstIterator)(iterator))
+			return elems, nil
+		case C.GST_ITERATOR_RESYNC:
+			C.gst_iterator_resync((*C.GstIterator)(iterator))
+		case C.GST_ITERATOR_OK:
+			cElemVoid := C.g_value_get_object((*C.GValue)(gval))
+			cElem := (*C.GstElement)(cElemVoid)
+			elems = append(elems, wrapElement(glib.Take(unsafe.Pointer(cElem))))
+			C.g_value_reset((*C.GValue)(gval))
+		default:
+			return nil, errors.New("Element iterator failed")
+		}
+	}
 }

@@ -1,15 +1,20 @@
-package gst
+package app
 
 // #include "gst.go.h"
 import "C"
-import "time"
+import (
+	"time"
+	"unsafe"
 
-// AppSrc wraps an Element object with additional methods for pushing samples.
-type AppSrc struct{ *Element }
+	"github.com/tinyzimmer/go-gst/gst"
+)
+
+// Source wraps an Element made with the appsrc plugin with additional methods for pushing samples.
+type Source struct{ *gst.Element }
 
 // NewAppSrc returns a new AppSrc element.
-func NewAppSrc() (*AppSrc, error) {
-	elem, err := NewElement("appsrc")
+func NewAppSrc() (*Source, error) {
+	elem, err := gst.NewElement("appsrc")
 	if err != nil {
 		return nil, err
 	}
@@ -17,33 +22,36 @@ func NewAppSrc() (*AppSrc, error) {
 }
 
 // Instance returns the native GstAppSink instance.
-func (a *AppSrc) Instance() *C.GstAppSrc { return C.toGstAppSrc(a.unsafe()) }
+func (a *Source) Instance() *C.GstAppSrc { return C.toGstAppSrc(a.Unsafe()) }
 
 // SetSize sets the size of the source stream in bytes. You should call this for
 // streams of fixed length.
-func (a *AppSrc) SetSize(size int64) {
+func (a *Source) SetSize(size int64) {
 	C.gst_app_src_set_size((*C.GstAppSrc)(a.Instance()), (C.gint64)(size))
 }
 
 // SetDuration sets the duration of the source stream. You should call
 // this if the value is known.
-func (a *AppSrc) SetDuration(dur time.Duration) {
+func (a *Source) SetDuration(dur time.Duration) {
 	C.gst_app_src_set_duration((*C.GstAppSrc)(a.Instance()), (C.ulong)(dur.Nanoseconds()))
 }
 
 // EndStream signals to the app source that the stream has ended after the last queued
 // buffer.
-func (a *AppSrc) EndStream() FlowReturn {
+func (a *Source) EndStream() gst.FlowReturn {
 	ret := C.gst_app_src_end_of_stream((*C.GstAppSrc)(a.Instance()))
-	return FlowReturn(ret)
+	return gst.FlowReturn(ret)
 }
 
 // SetLive sets whether or not this is a live stream.
-func (a *AppSrc) SetLive(b bool) error { return a.Set("is-live", b) }
+func (a *Source) SetLive(b bool) error { return a.Set("is-live", b) }
 
 // PushBuffer pushes a buffer to the appsrc. Currently by default this will block
 // until the source is ready to accept the buffer.
-func (a *AppSrc) PushBuffer(buf *Buffer) FlowReturn {
-	ret := C.gst_app_src_push_buffer((*C.GstAppSrc)(a.Instance()), (*C.GstBuffer)(buf.Instance()))
-	return FlowReturn(ret)
+func (a *Source) PushBuffer(buf *gst.Buffer) gst.FlowReturn {
+	ret := C.gst_app_src_push_buffer(
+		(*C.GstAppSrc)(a.Instance()),
+		(*C.GstBuffer)(unsafe.Pointer(buf.Instance())),
+	)
+	return gst.FlowReturn(ret)
 }

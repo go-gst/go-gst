@@ -1,6 +1,4 @@
 #include <gst/gst.h>
-#include <gst/app/gstappsink.h>
-#include <gst/app/gstappsrc.h>
 #include "gst.go.h"
 
 /*
@@ -183,18 +181,6 @@ toGstElement(void *p)
 	return (GST_ELEMENT(p));
 }
 
-GstAppSink *
-toGstAppSink(void *p)
-{
-	return (GST_APP_SINK(p));
-}
-
-GstAppSrc *
-toGstAppSrc(void *p)
-{
-	return (GST_APP_SRC(p));
-}
-
 GstBin *
 toGstBin(void *p)
 {
@@ -271,4 +257,10 @@ GstBufferPool *
 toGstBufferPool(void *p)
 {
 	return (GST_BUFFER_POOL(p));
+}
+
+GstSample *
+toGstSample(void *p)
+{
+	return (GST_SAMPLE(p));
 }

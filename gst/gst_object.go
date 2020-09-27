@@ -13,14 +13,15 @@ import (
 // and we do not descend into the glib library.
 type Object struct{ *glib.InitiallyUnowned }
 
-// native returns the pointer to the underlying object.
-func (o *Object) unsafe() unsafe.Pointer { return unsafe.Pointer(o.InitiallyUnowned.Native()) }
+// Unsafe returns the unsafe pointer to the underlying object. This method is primarily
+// for internal usage and is exposed for visibility in other packages.
+func (o *Object) Unsafe() unsafe.Pointer { return unsafe.Pointer(o.InitiallyUnowned.Native()) }
 
 // Instance returns the native C GstObject.
-func (o *Object) Instance() *C.GstObject { return C.toGstObject(o.unsafe()) }
+func (o *Object) Instance() *C.GstObject { return C.toGstObject(o.Unsafe()) }
 
 // Class returns the GObjectClass of this instance.
-func (o *Object) Class() *C.GObjectClass { return C.getGObjectClass(o.unsafe()) }
+func (o *Object) Class() *C.GObjectClass { return C.getGObjectClass(o.Unsafe()) }
 
 // Name returns the name of this object.
 func (o *Object) Name() string {
@@ -61,7 +62,7 @@ func (o *Object) ListProperties() []*ParameterSpec {
 		var gval C.GValue
 		flags := ParameterFlags(prop.flags)
 		if flags.Has(ParameterReadable) {
-			C.g_object_get_property((*C.GObject)(o.unsafe()), prop.name, &gval)
+			C.g_object_get_property((*C.GObject)(o.Unsafe()), prop.name, &gval)
 		} else {
 			C.g_param_value_set_default((*C.GParamSpec)(prop), &gval)
 		}

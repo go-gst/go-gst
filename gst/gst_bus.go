@@ -18,7 +18,7 @@ type Bus struct {
 }
 
 // Instance returns the underlying GstBus instance.
-func (b *Bus) Instance() *C.GstBus { return C.toGstBus(b.unsafe()) }
+func (b *Bus) Instance() *C.GstBus { return C.toGstBus(b.Unsafe()) }
 
 func (b *Bus) deliverMessages() {
 	for {

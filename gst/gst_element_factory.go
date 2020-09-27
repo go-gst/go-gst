@@ -51,7 +51,7 @@ func Find(name string) *ElementFactory {
 }
 
 // Instance returns the C GstFactory instance
-func (e *ElementFactory) Instance() *C.GstElementFactory { return C.toGstElementFactory(e.unsafe()) }
+func (e *ElementFactory) Instance() *C.GstElementFactory { return C.toGstElementFactory(e.Unsafe()) }
 
 // CanSinkAllCaps checks if the factory can sink all possible capabilities.
 func (e *ElementFactory) CanSinkAllCaps(caps *C.GstCaps) bool {

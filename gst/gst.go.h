@@ -1,6 +1,4 @@
 #include <gst/gst.h>
-#include <gst/app/gstappsink.h>
-#include <gst/app/gstappsrc.h>
 
 extern gboolean structForEachCb  (GQuark field_id, GValue * value, gpointer user_data);
 
@@ -48,8 +46,6 @@ GstPluginFeature *   toGstPluginFeature     (void *p);
 GstObject *          toGstObject            (void *p);
 GstElementFactory *  toGstElementFactory    (void *p);
 GstElement *         toGstElement           (void *p);
-GstAppSink *         toGstAppSink           (void *p);
-GstAppSrc *          toGstAppSrc            (void *p);
 GstBin *             toGstBin               (void *p);
 GstBus *             toGstBus               (void *p);
 GstMessage *         toGstMessage           (void *p);
@@ -63,3 +59,4 @@ GstCaps *            toGstCaps              (void *p);
 GstCapsFeatures *    toGstCapsFeatures      (void *p);
 GstBuffer *          toGstBuffer            (void *p);
 GstBufferPool *      toGstBufferPool        (void *p);
+GstSample *          toGstSample            (void *p);

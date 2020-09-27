@@ -29,7 +29,7 @@ func ElementLinkMany(elems ...*Element) error {
 }
 
 // Instance returns the underlying GstElement instance.
-func (e *Element) Instance() *C.GstElement { return C.toGstElement(e.unsafe()) }
+func (e *Element) Instance() *C.GstElement { return C.toGstElement(e.Unsafe()) }
 
 // Link wraps gst_element_link and links this element to the given one.
 func (e *Element) Link(elem *Element) error {
@@ -137,7 +137,7 @@ func (e *Element) GetPadTemplates() []*PadTemplate {
 
 // Has returns true if this element has the given flags.
 func (e *Element) Has(flags ElementFlags) bool {
-	return gobool(C.gstObjectFlagIsSet(C.toGstObject(e.unsafe()), C.GstElementFlags(flags)))
+	return gobool(C.gstObjectFlagIsSet(C.toGstObject(e.Unsafe()), C.GstElementFlags(flags)))
 }
 
 // IsURIHandler returns true if this element can handle URIs.
@@ -145,7 +145,7 @@ func (e *Element) IsURIHandler() bool {
 	return gobool(C.gstElementIsURIHandler(e.Instance()))
 }
 
-func (e *Element) uriHandler() *C.GstURIHandler { return C.toGstURIHandler(e.unsafe()) }
+func (e *Element) uriHandler() *C.GstURIHandler { return C.toGstURIHandler(e.Unsafe()) }
 
 // GetURIType returns the type of URI this element can handle.
 func (e *Element) GetURIType() URIType {

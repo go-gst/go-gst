@@ -1,8 +1,6 @@
 package gstauto
 
 import (
-	"fmt"
-
 	"github.com/tinyzimmer/go-gst/gst"
 )
 
@@ -25,9 +23,7 @@ func NewPipelineWriter(name string) (*PipelineWriter, error) {
 	}
 	wCloser, err := newWriteCloser()
 	if err != nil {
-		if closeErr := pipeline.Destroy(); closeErr != nil {
-			fmt.Println("[gst-auto] Failed to destroy errored pipeline:", closeErr.Error())
-		}
+		runOrPrintErr(pipeline.Destroy)
 		return nil, err
 	}
 	return &PipelineWriter{
@@ -46,9 +42,7 @@ func NewPipelineWriterFromString(launchStr string) (*PipelineWriter, error) {
 	}
 	wCloser, err := newWriteCloser()
 	if err != nil {
-		if closeErr := pipeline.Destroy(); closeErr != nil {
-			fmt.Println("[gst-auto] Failed to destroy errored pipeline:", closeErr.Error())
-		}
+		runOrPrintErr(pipeline.Destroy)
 		return nil, err
 	}
 	return &PipelineWriter{

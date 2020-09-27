@@ -2,7 +2,6 @@ package gstauto
 
 import (
 	"errors"
-	"fmt"
 	"strings"
 
 	"github.com/tinyzimmer/go-gst/gst"
@@ -26,9 +25,7 @@ func NewPipelineReadWriterSimpleFromString(launchStr string) (*PipelineReadWrite
 
 	defer func() {
 		if err != nil {
-			if destroyErr := pipelineReadWriter.Pipeline().Destroy(); destroyErr != nil {
-				fmt.Println("[go-gst] Error while destroying failed pipeline instance:", destroyErr.Error())
-			}
+			runOrPrintErr(pipelineReadWriter.Pipeline().Destroy)
 		}
 	}()
 
@@ -79,7 +76,7 @@ func NewPipelineReadWriterSimpleFromConfig(cfg *PipelineConfig) (*PipelineReadWr
 	if err != nil {
 		return nil, err
 	}
-	cfg.pushPluginToTop(&PipelineElement{
+	cfg.PushPluginToTop(&PipelineElement{
 		Name: "fdsrc",
 		Data: map[string]interface{}{
 			"fd": pipelineReadWriter.WriterFd(),
@@ -92,9 +89,7 @@ func NewPipelineReadWriterSimpleFromConfig(cfg *PipelineConfig) (*PipelineReadWr
 		},
 	})
 	if err := cfg.Apply(pipelineReadWriter.Pipeline()); err != nil {
-		if destroyErr := pipelineReadWriter.Pipeline().Destroy(); destroyErr != nil {
-			fmt.Println("[go-gst] Error while destroying failed pipeline instance:", destroyErr.Error())
-		}
+		runOrPrintErr(pipelineReadWriter.Pipeline().Destroy)
 		return nil, err
 	}
 	return &PipelineReadWriterSimple{pipelineReadWriter}, nil

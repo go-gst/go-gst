@@ -14,12 +14,12 @@ type Message struct {
 	msg *C.GstMessage
 }
 
-// Native returns the underlying GstMessage object.
-func (m *Message) Native() *C.GstMessage { return C.toGstMessage(unsafe.Pointer(m.msg)) }
+// Instance returns the underlying GstMessage object.
+func (m *Message) Instance() *C.GstMessage { return C.toGstMessage(unsafe.Pointer(m.msg)) }
 
 // Type returns the MessageType of the message.
 func (m *Message) Type() MessageType {
-	return MessageType(m.Native()._type)
+	return MessageType(m.Instance()._type)
 }
 
 // TypeName returns a Go string of the GstMessageType name.
@@ -34,11 +34,11 @@ func (m *Message) GetStructure() *Structure {
 
 	switch m.Type() {
 	case MessageError:
-		C.gst_message_parse_error_details((*C.GstMessage)(m.Native()), (**C.GstStructure)(unsafe.Pointer(&st)))
+		C.gst_message_parse_error_details((*C.GstMessage)(m.Instance()), (**C.GstStructure)(unsafe.Pointer(&st)))
 	case MessageInfo:
-		C.gst_message_parse_info_details((*C.GstMessage)(m.Native()), (**C.GstStructure)(unsafe.Pointer(&st)))
+		C.gst_message_parse_info_details((*C.GstMessage)(m.Instance()), (**C.GstStructure)(unsafe.Pointer(&st)))
 	case MessageWarning:
-		C.gst_message_parse_warning_details((*C.GstMessage)(m.Native()), (**C.GstStructure)(unsafe.Pointer(&st)))
+		C.gst_message_parse_warning_details((*C.GstMessage)(m.Instance()), (**C.GstStructure)(unsafe.Pointer(&st)))
 	}
 
 	// if no structure was returned, immediately return nil
@@ -59,11 +59,11 @@ func (m *Message) parseToError() *GoGError {
 
 	switch m.Type() {
 	case MessageError:
-		C.gst_message_parse_error((*C.GstMessage)(m.Native()), (**C.GError)(unsafe.Pointer(&gerr)), (**C.gchar)(unsafe.Pointer(&debugInfo)))
+		C.gst_message_parse_error((*C.GstMessage)(m.Instance()), (**C.GError)(unsafe.Pointer(&gerr)), (**C.gchar)(unsafe.Pointer(&debugInfo)))
 	case MessageInfo:
-		C.gst_message_parse_info((*C.GstMessage)(m.Native()), (**C.GError)(unsafe.Pointer(&gerr)), (**C.gchar)(unsafe.Pointer(&debugInfo)))
+		C.gst_message_parse_info((*C.GstMessage)(m.Instance()), (**C.GError)(unsafe.Pointer(&gerr)), (**C.gchar)(unsafe.Pointer(&debugInfo)))
 	case MessageWarning:
-		C.gst_message_parse_warning((*C.GstMessage)(m.Native()), (**C.GError)(unsafe.Pointer(&gerr)), (**C.gchar)(unsafe.Pointer(&debugInfo)))
+		C.gst_message_parse_warning((*C.GstMessage)(m.Instance()), (**C.GError)(unsafe.Pointer(&gerr)), (**C.gchar)(unsafe.Pointer(&debugInfo)))
 	}
 
 	// if error was nil return immediately
@@ -104,26 +104,26 @@ func (m *Message) ParseError() *GoGError {
 // if the GstMessageType is `GST_MESSAGE_STATE_CHANGED`.
 func (m *Message) ParseStateChanged() (oldState, newState State) {
 	var gOldState, gNewState C.GstState
-	C.gst_message_parse_state_changed((*C.GstMessage)(m.Native()), (*C.GstState)(unsafe.Pointer(&gOldState)), (*C.GstState)(unsafe.Pointer(&gNewState)), nil)
+	C.gst_message_parse_state_changed((*C.GstMessage)(m.Instance()), (*C.GstState)(unsafe.Pointer(&gOldState)), (*C.GstState)(unsafe.Pointer(&gNewState)), nil)
 	oldState = State(gOldState)
 	newState = State(gNewState)
 	return
 }
 
 // Unref will call `gst_message_unref` on the underlying GstMessage, freeing it from memory.
-func (m *Message) Unref() { C.gst_message_unref((*C.GstMessage)(m.Native())) }
+func (m *Message) Unref() { C.gst_message_unref((*C.GstMessage)(m.Instance())) }
 
 // Ref will increase the ref count on this message. This increases the total amount of times
 // Unref needs to be called before the object is freed from memory. It returns the underlying
 // message object for convenience.
 func (m *Message) Ref() *Message {
-	C.gst_message_ref((*C.GstMessage)(m.Native()))
+	C.gst_message_ref((*C.GstMessage)(m.Instance()))
 	return m
 }
 
 // Copy will copy this object into a new Message that can be Unrefed separately.
 func (m *Message) Copy() *Message {
-	newNative := C.gst_message_copy((*C.GstMessage)(m.Native()))
+	newNative := C.gst_message_copy((*C.GstMessage)(m.Instance()))
 	return wrapMessage(newNative)
 }
 

@@ -1,4 +1,4 @@
-package gstauto
+package app
 
 import (
 	"errors"
@@ -6,33 +6,27 @@ import (
 	"strings"
 
 	"github.com/tinyzimmer/go-gst/gst"
+	"github.com/tinyzimmer/go-gst/gst/app"
+	"github.com/tinyzimmer/go-gst/gst/gstauto"
 )
 
 // PipelineWriterApp implements a WritePipeliner that configures gstreamer
 // with an appsrc. The appsrc allows for more granular control over the data
 // at the start of the pipeline.
 type PipelineWriterApp struct {
-	*PipelineWriter
+	*gstauto.PipelineWriter
 
-	appSrc *gst.AppSrc
+	appSrc *app.Source
 }
 
 // NewPipelineWriterAppFromString returns a new PipelineWriterApp populated from
 // the given launch string. An appsrc is added to the start of the launch string and made
 // available via the GetAppSource method.
 func NewPipelineWriterAppFromString(launchStr string) (*PipelineWriterApp, error) {
-	pipelineWriter, err := NewPipelineWriterFromString(addAppSourceToStr(launchStr))
+	pipelineWriter, err := gstauto.NewPipelineWriterFromString(addAppSourceToStr(launchStr))
 	if err != nil {
 		return nil, err
 	}
-
-	defer func() {
-		if err != nil {
-			if destroyErr := pipelineWriter.Pipeline().Destroy(); destroyErr != nil {
-				fmt.Println("[go-gst] Error while destroying failed pipeline instance:", destroyErr.Error())
-			}
-		}
-	}()
 
 	appPipeline := &PipelineWriterApp{PipelineWriter: pipelineWriter}
 
@@ -40,13 +34,14 @@ func NewPipelineWriterAppFromString(launchStr string) (*PipelineWriterApp, error
 	var sources []*gst.Element
 	sources, err = pipelineWriter.Pipeline().GetSourceElements()
 	if err != nil {
+		runOrPrintErr(pipelineWriter.Pipeline().Destroy)
 		return nil, err
 	}
 
 	// Fetch the appsrc and make a local reference to it
 	for _, src := range sources {
 		if strings.Contains(src.Name(), "appsrc") {
-			appPipeline.appSrc = &gst.AppSrc{Element: src}
+			appPipeline.appSrc = &app.Source{Element: src}
 		}
 	}
 
@@ -57,24 +52,22 @@ func NewPipelineWriterAppFromString(launchStr string) (*PipelineWriterApp, error
 // NewPipelineWriterAppFromConfig returns a new PipelineWriterApp populated from
 // the given launch config. An appsrc is added to the start of the launch config and
 // made available via the GetAppSource method.
-func NewPipelineWriterAppFromConfig(cfg *PipelineConfig) (*PipelineWriterApp, error) {
+func NewPipelineWriterAppFromConfig(cfg *gstauto.PipelineConfig) (*PipelineWriterApp, error) {
 	if cfg.Elements == nil {
 		return nil, errors.New("Elements cannot be nil in the config")
 	}
-	pipelineWriter, err := NewPipelineWriter("")
+	pipelineWriter, err := gstauto.NewPipelineWriter("")
 	if err != nil {
 		return nil, err
 	}
 
 	defer func() {
 		if err != nil {
-			if destroyErr := pipelineWriter.Pipeline().Destroy(); destroyErr != nil {
-				fmt.Println("[go-gst] Error while destroying failed pipeline instance:", destroyErr.Error())
-			}
+			runOrPrintErr(pipelineWriter.Pipeline().Destroy)
 		}
 	}()
 
-	cfg.pushPluginToTop(&PipelineElement{Name: "appsrc"})
+	cfg.PushPluginToTop(&gstauto.PipelineElement{Name: "appsrc"})
 
 	if err = cfg.Apply(pipelineWriter.Pipeline()); err != nil {
 		return nil, err
@@ -92,7 +85,7 @@ func NewPipelineWriterAppFromConfig(cfg *PipelineConfig) (*PipelineWriterApp, er
 	// Fetch the appsrc and make a local reference to it
 	for _, src := range sources {
 		if strings.Contains(src.Name(), "appsrc") {
-			appPipeline.appSrc = &gst.AppSrc{Element: src}
+			appPipeline.appSrc = &app.Source{Element: src}
 		}
 	}
 
@@ -107,4 +100,4 @@ func addAppSourceToStr(pstr string) string {
 }
 
 // GetAppSource returns the app src for this pipeline.
-func (p *PipelineWriterApp) GetAppSource() *gst.AppSrc { return p.appSrc }
+func (p *PipelineWriterApp) GetAppSource() *app.Source { return p.appSrc }

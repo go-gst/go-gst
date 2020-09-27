@@ -1,4 +1,4 @@
-package gstauto
+package app
 
 import (
 	"errors"
@@ -6,15 +6,17 @@ import (
 	"strings"
 
 	"github.com/tinyzimmer/go-gst/gst"
+	"github.com/tinyzimmer/go-gst/gst/app"
+	"github.com/tinyzimmer/go-gst/gst/gstauto"
 )
 
 // PipelineReaderApp implements a ReadPipeliner that configures gstreamer
 // with an appsink. The appsink allows for more granular control over the data
 // at the end of the pipeline.
 type PipelineReaderApp struct {
-	*PipelineReader
+	*gstauto.PipelineReader
 
-	appSink *gst.AppSink
+	appSink *app.Sink
 }
 
 // NewPipelineReaderAppFromString returns a new PipelineReaderApp populated from
@@ -22,18 +24,10 @@ type PipelineReaderApp struct {
 // available via the GetAppSink method.
 func NewPipelineReaderAppFromString(launchStr string) (*PipelineReaderApp, error) {
 	fmt.Println(addAppSinkToStr(launchStr))
-	pipelineReader, err := NewPipelineReaderFromString(addAppSinkToStr(launchStr))
+	pipelineReader, err := gstauto.NewPipelineReaderFromString(addAppSinkToStr(launchStr))
 	if err != nil {
 		return nil, err
 	}
-
-	defer func() {
-		if err != nil {
-			if destroyErr := pipelineReader.Pipeline().Destroy(); destroyErr != nil {
-				fmt.Println("[go-gst] Error while destroying failed pipeline instance:", destroyErr.Error())
-			}
-		}
-	}()
 
 	appPipeline := &PipelineReaderApp{PipelineReader: pipelineReader}
 
@@ -41,13 +35,14 @@ func NewPipelineReaderAppFromString(launchStr string) (*PipelineReaderApp, error
 	var sinks []*gst.Element
 	sinks, err = pipelineReader.Pipeline().GetSinkElements()
 	if err != nil {
+		runOrPrintErr(pipelineReader.Pipeline().Destroy)
 		return nil, err
 	}
 
 	// Fetch the appsink and make a local reference to it
 	for _, sink := range sinks {
 		if strings.Contains(sink.Name(), "appsink") {
-			appPipeline.appSink = &gst.AppSink{Element: sink}
+			appPipeline.appSink = &app.Sink{Element: sink}
 		}
 	}
 
@@ -58,24 +53,22 @@ func NewPipelineReaderAppFromString(launchStr string) (*PipelineReaderApp, error
 // NewPipelineReaderAppFromConfig returns a new PipelineReaderApp populated from
 // the given launch config. An appsink is added to the end of the launch config and
 // made available via the GetAppSink method.
-func NewPipelineReaderAppFromConfig(cfg *PipelineConfig) (*PipelineReaderApp, error) {
+func NewPipelineReaderAppFromConfig(cfg *gstauto.PipelineConfig) (*PipelineReaderApp, error) {
 	if cfg.Elements == nil {
 		return nil, errors.New("Elements cannot be nil in the config")
 	}
-	pipelineReader, err := NewPipelineReader("")
+	pipelineReader, err := gstauto.NewPipelineReader("")
 	if err != nil {
 		return nil, err
 	}
 
 	defer func() {
 		if err != nil {
-			if destroyErr := pipelineReader.Pipeline().Destroy(); destroyErr != nil {
-				fmt.Println("[go-gst] Error while destroying failed pipeline instance:", destroyErr.Error())
-			}
+			runOrPrintErr(pipelineReader.Pipeline().Destroy)
 		}
 	}()
 
-	cfg.Elements = append(cfg.Elements, &PipelineElement{Name: "appsink"})
+	cfg.Elements = append(cfg.Elements, &gstauto.PipelineElement{Name: "appsink"})
 
 	if err = cfg.Apply(pipelineReader.Pipeline()); err != nil {
 		return nil, err
@@ -93,7 +86,7 @@ func NewPipelineReaderAppFromConfig(cfg *PipelineConfig) (*PipelineReaderApp, er
 	// Fetch the appsink and make a local reference to it
 	for _, sink := range sinks {
 		if strings.Contains(sink.Name(), "appsink") {
-			appPipeline.appSink = &gst.AppSink{Element: sink}
+			appPipeline.appSink = &app.Sink{Element: sink}
 		}
 	}
 
@@ -108,4 +101,4 @@ func addAppSinkToStr(pstr string) string {
 }
 
 // GetAppSink returns the app sink for this pipeline.
-func (p *PipelineReaderApp) GetAppSink() *gst.AppSink { return p.appSink }
+func (p *PipelineReaderApp) GetAppSink() *app.Sink { return p.appSink }

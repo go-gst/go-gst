@@ -8,7 +8,7 @@ import "time"
 type Clock struct{ *Object }
 
 // Instance returns the underlying GstClock instance.
-func (c *Clock) Instance() *C.GstClock { return C.toGstClock(c.unsafe()) }
+func (c *Clock) Instance() *C.GstClock { return C.toGstClock(c.Unsafe()) }
 
 // IsSynced returns true if the clock is synced.
 func (c *Clock) IsSynced() bool { return gobool(C.gst_clock_is_synced(c.Instance())) }

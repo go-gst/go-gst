@@ -2,7 +2,6 @@ package gstauto
 
 import (
 	"errors"
-	"fmt"
 
 	"github.com/tinyzimmer/go-gst/gst"
 )
@@ -45,8 +44,8 @@ func (p *PipelineConfig) ElementNames() []string {
 	return names
 }
 
-// pushPluginToTop pushes a plugin to the top of the list.
-func (p *PipelineConfig) pushPluginToTop(elem *PipelineElement) {
+// PushPluginToTop pushes a plugin to the top of the list of elements.
+func (p *PipelineConfig) PushPluginToTop(elem *PipelineElement) {
 	newSlc := []*PipelineElement{elem}
 	newSlc = append(newSlc, p.Elements...)
 	p.Elements = newSlc
@@ -124,16 +123,8 @@ func NewPipelineFromConfig(cfg *PipelineConfig) (*gst.Pipeline, error) {
 		return nil, err
 	}
 
-	// if any error happens while setting up the pipeline, immediately free it
-	defer func() {
-		if err != nil {
-			if destroyErr := pipeline.Destroy(); destroyErr != nil {
-				fmt.Println("[go-gst] Error while destroying failed pipeline instance:", err.Error())
-			}
-		}
-	}()
-
 	if err = cfg.Apply(pipeline); err != nil {
+		runOrPrintErr(pipeline.Destroy)
 		return nil, err
 	}
 

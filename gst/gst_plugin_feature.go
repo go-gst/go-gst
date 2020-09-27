@@ -12,7 +12,7 @@ import (
 type PluginFeature struct{ *Object }
 
 // Instance returns the underlying GstPluginFeature instance
-func (p *PluginFeature) Instance() *C.GstPluginFeature { return C.toGstPluginFeature(p.unsafe()) }
+func (p *PluginFeature) Instance() *C.GstPluginFeature { return C.toGstPluginFeature(p.Unsafe()) }
 
 // GetPlugin returns the plugin that provides this feature or  nil. Unref after usage.
 func (p *PluginFeature) GetPlugin() *Plugin {

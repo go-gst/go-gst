@@ -25,9 +25,7 @@ func NewPipelineWriterSimpleFromString(launchStr string) (*PipelineWriterSimple,
 
 	defer func() {
 		if err != nil {
-			if destroyErr := pipelineWriter.Pipeline().Destroy(); destroyErr != nil {
-				fmt.Println("[go-gst] Error while destroying failed pipeline instance:", destroyErr.Error())
-			}
+			runOrPrintErr(pipelineWriter.Pipeline().Destroy)
 		}
 	}()
 
@@ -62,16 +60,14 @@ func NewPipelineWriterSimpleFromConfig(cfg *PipelineConfig) (*PipelineWriterSimp
 	if err != nil {
 		return nil, err
 	}
-	cfg.pushPluginToTop(&PipelineElement{
+	cfg.PushPluginToTop(&PipelineElement{
 		Name: "fdsrc",
 		Data: map[string]interface{}{
 			"fd": pipelineWriter.WriterFd(),
 		},
 	})
 	if err := cfg.Apply(pipelineWriter.Pipeline()); err != nil {
-		if destroyErr := pipelineWriter.Pipeline().Destroy(); destroyErr != nil {
-			fmt.Println("[go-gst] Error while destroying failed pipeline instance:", destroyErr.Error())
-		}
+		runOrPrintErr(pipelineWriter.Pipeline().Destroy)
 		return nil, err
 	}
 	return &PipelineWriterSimple{pipelineWriter}, nil

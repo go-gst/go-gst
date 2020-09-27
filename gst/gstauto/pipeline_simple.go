@@ -1,8 +1,6 @@
 package gstauto
 
 import (
-	"fmt"
-
 	"github.com/tinyzimmer/go-gst/gst"
 )
 
@@ -48,9 +46,7 @@ func NewPipelinerSimpleFromConfig(cfg *PipelineConfig) (*PipelinerSimple, error)
 		return nil, err
 	}
 	if err := cfg.Apply(pipeline); err != nil {
-		if destroyErr := pipeline.Destroy(); destroyErr != nil {
-			fmt.Println("[go-gst] Error while destroying failed pipeline instance:", destroyErr.Error())
-		}
+		runOrPrintErr(pipeline.Destroy)
 		return nil, err
 	}
 	return &PipelinerSimple{pipeline: pipeline}, nil

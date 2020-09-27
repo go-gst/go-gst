@@ -1,15 +1,20 @@
-package gst
+package app
 
 // #include "gst.go.h"
 import "C"
-import "errors"
+import (
+	"errors"
+	"unsafe"
 
-// AppSink wraps an Element object with additional methods for pulling samples.
-type AppSink struct{ *Element }
+	"github.com/tinyzimmer/go-gst/gst"
+)
+
+// Sink wraps an Element made with the appsink plugin with additional methods for pulling samples.
+type Sink struct{ *gst.Element }
 
 // NewAppSink returns a new appsink element. Unref after usage.
-func NewAppSink() (*AppSink, error) {
-	elem, err := NewElement("appsink")
+func NewAppSink() (*Sink, error) {
+	elem, err := gst.NewElement("appsink")
 	if err != nil {
 		return nil, err
 	}
@@ -17,19 +22,19 @@ func NewAppSink() (*AppSink, error) {
 }
 
 // Instance returns the native GstAppSink instance.
-func (a *AppSink) Instance() *C.GstAppSink { return C.toGstAppSink(a.unsafe()) }
+func (a *Sink) Instance() *C.GstAppSink { return C.toGstAppSink(a.Unsafe()) }
 
 // ErrEOS represents that the stream has ended.
 var ErrEOS = errors.New("Pipeline has reached end-of-stream")
 
 // IsEOS returns true if this AppSink has reached the end-of-stream.
-func (a *AppSink) IsEOS() bool {
+func (a *Sink) IsEOS() bool {
 	return gobool(C.gst_app_sink_is_eos((*C.GstAppSink)(a.Instance())))
 }
 
 // BlockPullSample will block until a sample becomes available or the stream
 // is ended.
-func (a *AppSink) BlockPullSample() (*Sample, error) {
+func (a *Sink) BlockPullSample() (*gst.Sample, error) {
 	for {
 		if a.IsEOS() {
 			return nil, ErrEOS
@@ -39,12 +44,12 @@ func (a *AppSink) BlockPullSample() (*Sample, error) {
 		if sample == nil {
 			continue
 		}
-		return wrapSample(sample), nil
+		return gst.FromGstSampleUnsafe(unsafe.Pointer(sample)), nil
 	}
 }
 
 // PullSample will try to pull a sample or return nil if none is available.
-func (a *AppSink) PullSample() (*Sample, error) {
+func (a *Sink) PullSample() (*gst.Sample, error) {
 	if a.IsEOS() {
 		return nil, ErrEOS
 	}
@@ -53,7 +58,7 @@ func (a *AppSink) PullSample() (*Sample, error) {
 		C.GST_SECOND,
 	)
 	if sample != nil {
-		return wrapSample(sample), nil
+		return gst.FromGstSampleUnsafe(unsafe.Pointer(sample)), nil
 	}
 	return nil, nil
 }

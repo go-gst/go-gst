@@ -113,9 +113,6 @@ func wrapGhostPad(obj *glib.Object) *GhostPad       { return &GhostPad{wrapPad(o
 func wrapPlugin(obj *glib.Object) *Plugin     { return &Plugin{wrapObject(obj)} }
 func wrapRegistry(obj *glib.Object) *Registry { return &Registry{wrapObject(obj)} }
 
-func wrapAppSink(elem *Element) *AppSink { return &AppSink{elem} }
-func wrapAppSrc(elem *Element) *AppSrc   { return &AppSrc{elem} }
-
 func wrapSample(sample *C.GstSample) *Sample { return &Sample{sample: sample} }
 func wrapBuffer(buf *C.GstBuffer) *Buffer    { return &Buffer{ptr: buf} }
 
