@@ -8,13 +8,7 @@ package gst
 #include "gst.go.h"
 */
 import "C"
-
-import (
-	"bytes"
-	"errors"
-	"io"
-	"unsafe"
-)
+import "errors"
 
 // AppSink wraps an Element object with additional methods for pulling samples.
 type AppSink struct{ *Element }
@@ -51,7 +45,7 @@ func (a *AppSink) BlockPullSample() (*Sample, error) {
 		if sample == nil {
 			continue
 		}
-		return NewSample(sample), nil
+		return wrapSample(sample), nil
 	}
 }
 
@@ -65,36 +59,9 @@ func (a *AppSink) PullSample() (*Sample, error) {
 		C.GST_SECOND,
 	)
 	if sample != nil {
-		return NewSample(sample), nil
+		return wrapSample(sample), nil
 	}
 	return nil, nil
-}
-
-// Sample is a go wrapper around a GstSample object.
-type Sample struct {
-	sample *C.GstSample
-}
-
-// NewSample creates a new Sample from the given *GstSample.
-func NewSample(sample *C.GstSample) *Sample { return &Sample{sample: sample} }
-
-// Instance returns the underlying *GstSample instance.
-func (s *Sample) Instance() *C.GstSample { return s.sample }
-
-// Unref calls gst_sample_unref on the sample.
-func (s *Sample) Unref() { C.gst_sample_unref((*C.GstSample)(s.Instance())) }
-
-// GetBuffer returns a Reader for the buffer inside this sample.
-func (s *Sample) GetBuffer() io.Reader {
-	buffer := C.gst_sample_get_buffer((*C.GstSample)(s.Instance()))
-	var mapInfo C.GstMapInfo
-	C.gst_buffer_map(
-		(*C.GstBuffer)(buffer),
-		(*C.GstMapInfo)(unsafe.Pointer(&mapInfo)),
-		C.GST_MAP_READ,
-	)
-	defer C.gst_buffer_unmap((*C.GstBuffer)(buffer), (*C.GstMapInfo)(unsafe.Pointer(&mapInfo)))
-	return bytes.NewBuffer(C.GoBytes(unsafe.Pointer(mapInfo.data), (C.int)(mapInfo.size)))
 }
 
 func wrapAppSink(elem *Element) *AppSink { return &AppSink{elem} }

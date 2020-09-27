@@ -260,3 +260,15 @@ toGstCapsFeatures(void *p)
 {
 	return (GST_CAPS_FEATURES(p));
 }
+
+GstBuffer *
+toGstBuffer(void *p)
+{
+	return (GST_BUFFER(p));
+}
+
+GstBufferPool *
+toGstBufferPool(void *p)
+{
+	return (GST_BUFFER_POOL(p));
+}

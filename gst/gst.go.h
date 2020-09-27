@@ -61,3 +61,5 @@ GstClock *           toGstClock             (void *p);
 GstMiniObject *      toGstMiniObject        (void *p);
 GstCaps *            toGstCaps              (void *p);
 GstCapsFeatures *    toGstCapsFeatures      (void *p);
+GstBuffer *          toGstBuffer            (void *p);
+GstBufferPool *      toGstBufferPool        (void *p);

@@ -97,7 +97,7 @@ func gifEncode(cmd *cobra.Command, args []string) error {
 			if err != nil {
 				return
 			}
-			img, err := decoder(sample.GetBuffer())
+			img, err := decoder(sample.GetBuffer().Reader())
 			if err != nil {
 				logInfo("gif", "ERROR:", err.Error())
 				return

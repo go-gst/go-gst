@@ -8,12 +8,7 @@ package gst
 #include "gst.go.h"
 */
 import "C"
-import (
-	"io"
-	"io/ioutil"
-	"time"
-	"unsafe"
-)
+import "time"
 
 // AppSrc wraps an Element object with additional methods for pushing samples.
 type AppSrc struct{ *Element }
@@ -54,16 +49,8 @@ func (a *AppSrc) SetLive(b bool) error { return a.Set("is-live", b) }
 
 // PushBuffer pushes a buffer to the appsrc. Currently by default this will block
 // until the source is ready to accept the buffer.
-func (a *AppSrc) PushBuffer(data io.Reader) FlowReturn {
-	out, err := ioutil.ReadAll(data)
-	if err != nil {
-		return FlowError
-	}
-	str := string(out)
-	p := unsafe.Pointer(C.CString(str))
-	defer C.free(p)
-	buf := C.gst_buffer_new_wrapped((C.gpointer)(p), C.ulong(len(str)))
-	ret := C.gst_app_src_push_buffer((*C.GstAppSrc)(a.Instance()), (*C.GstBuffer)(buf))
+func (a *AppSrc) PushBuffer(buf *Buffer) FlowReturn {
+	ret := C.gst_app_src_push_buffer((*C.GstAppSrc)(a.Instance()), (*C.GstBuffer)(buf.Instance()))
 	return FlowReturn(ret)
 }
 

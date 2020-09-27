@@ -9,6 +9,8 @@ package gst
 import "C"
 
 const (
+	// ClockFormat is the string used when formatting clock strings
+	ClockFormat string = "u:%02u:%02u.%09u"
 	// ClockTimeNone means infinite timeout (unsigned representation of -1)
 	ClockTimeNone uint64 = 18446744073709551615
 )
@@ -209,4 +211,14 @@ const (
 	FlowNotNegotiated FlowReturn = C.GST_FLOW_NOT_NEGOTIATED // Pad is not negotiated
 	FlowError         FlowReturn = C.GST_FLOW_ERROR          // Some (fatal) error occurred
 	FlowNotSupported  FlowReturn = C.GST_FLOW_NOT_SUPPORTED  // The operation is not supported.
+)
+
+// MapFlags is a go casting of GstMapFlags
+type MapFlags int
+
+// Type casting of the map flag types
+const (
+	MapRead     MapFlags = C.GST_MAP_READ      //  (1) – map for read access
+	MapWrite    MapFlags = C.GST_MAP_WRITE     // (2) - map for write access
+	MapFlagLast MapFlags = C.GST_MAP_FLAG_LAST // (65536) – first flag that can be used for custom purposes
 )
