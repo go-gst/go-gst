@@ -15,10 +15,24 @@ type Object struct{ *glib.InitiallyUnowned }
 
 // Unsafe returns the unsafe pointer to the underlying object. This method is primarily
 // for internal usage and is exposed for visibility in other packages.
-func (o *Object) Unsafe() unsafe.Pointer { return unsafe.Pointer(o.InitiallyUnowned.Native()) }
+func (o *Object) Unsafe() unsafe.Pointer {
+	if o == nil || o.GObject == nil {
+		return nil
+	}
+	return unsafe.Pointer(o.GObject)
+}
 
 // Instance returns the native C GstObject.
 func (o *Object) Instance() *C.GstObject { return C.toGstObject(o.Unsafe()) }
+
+// Unref wraps the underlying Unref from glib, and performs an extra check that the
+// object has not already been destroyed.
+func (o *Object) Unref() {
+	if o.GObject == nil {
+		return
+	}
+	o.Object.Unref()
+}
 
 // Class returns the GObjectClass of this instance.
 func (o *Object) Class() *C.GObjectClass { return C.getGObjectClass(o.Unsafe()) }
