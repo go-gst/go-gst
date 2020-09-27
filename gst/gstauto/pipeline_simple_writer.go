@@ -81,5 +81,5 @@ func addFdSrcToStr(pstr string) string {
 	if pstr == "" {
 		return "fdsrc"
 	}
-	return fmt.Sprintf("fdsink ! %s", pstr)
+	return fmt.Sprintf("fdsrc ! %s", pstr)
 }
