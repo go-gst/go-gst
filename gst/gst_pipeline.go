@@ -17,9 +17,7 @@ import (
 	"github.com/gotk3/gotk3/glib"
 )
 
-// Pipeline is a go implementation of a GstPipeline. Helper methods are provided for constructing
-// pipelines either using file descriptors or the Appsrc/Appsink APIs. The struct itself implements
-// a ReadWriteCloser.
+// Pipeline is a go implementation of a GstPipeline.
 type Pipeline struct {
 	*Bin
 	bus *Bus
