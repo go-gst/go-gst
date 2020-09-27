@@ -3,7 +3,7 @@ package gstauto
 import (
 	"io"
 
-	"github.com/tinyzimmer/go-gst-launch/gst"
+	"github.com/tinyzimmer/go-gst/gst"
 )
 
 // Pipeliner is a the base interface for structs extending the functionality of

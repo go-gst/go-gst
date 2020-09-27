@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/tinyzimmer/go-gst-launch/gst"
+	"github.com/tinyzimmer/go-gst/gst"
 )
 
 func getSrcFile() (*os.File, error) {

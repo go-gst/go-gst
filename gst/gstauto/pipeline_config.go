@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/tinyzimmer/go-gst-launch/gst"
+	"github.com/tinyzimmer/go-gst/gst"
 )
 
 // PipelineElement represents an `GstElement` in a `GstPipeline` when building a Pipeline with `NewPipelineFromConfig`.

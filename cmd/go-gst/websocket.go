@@ -10,8 +10,8 @@ import (
 	"strings"
 
 	"github.com/spf13/cobra"
-	"github.com/tinyzimmer/go-gst-launch/gst"
-	"github.com/tinyzimmer/go-gst-launch/gst/gstauto"
+	"github.com/tinyzimmer/go-gst/gst"
+	"github.com/tinyzimmer/go-gst/gst/gstauto"
 	"golang.org/x/net/websocket"
 )
 

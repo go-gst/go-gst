@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/tinyzimmer/go-gst-launch/gst"
+	"github.com/tinyzimmer/go-gst/gst"
 )
 
 // PipelineWriterSimple implements a WritePipeliner that configures gstreamer

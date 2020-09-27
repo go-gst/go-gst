@@ -8,7 +8,7 @@ import (
 	"text/tabwriter"
 
 	"github.com/gotk3/gotk3/glib"
-	"github.com/tinyzimmer/go-gst-launch/gst"
+	"github.com/tinyzimmer/go-gst/gst"
 )
 
 func printFieldType(s string) {

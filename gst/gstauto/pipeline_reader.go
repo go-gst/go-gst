@@ -3,7 +3,7 @@ package gstauto
 import (
 	"fmt"
 
-	"github.com/tinyzimmer/go-gst-launch/gst"
+	"github.com/tinyzimmer/go-gst/gst"
 )
 
 // Empty assignment to ensure PipelineReader satisfies the ReadPipeliner interface.
