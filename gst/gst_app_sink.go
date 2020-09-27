@@ -1,12 +1,6 @@
 package gst
 
-/*
-#cgo pkg-config: gstreamer-1.0 gstreamer-app-1.0
-#cgo CFLAGS: -Wno-deprecated-declarations -Wno-unused-function -g
-#include <gst/gst.h>
-#include <gst/app/gstappsink.h>
-#include "gst.go.h"
-*/
+// #include "gst.go.h"
 import "C"
 import "errors"
 

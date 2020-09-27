@@ -1,11 +1,6 @@
 package gst
 
-/*
-#cgo pkg-config: gstreamer-1.0
-#cgo CFLAGS: -Wno-deprecated-declarations -Wno-incompatible-pointer-types -g
-#include <gst/gst.h>
-#include "gst.go.h"
-*/
+// #include "gst.go.h"
 import "C"
 
 import (
