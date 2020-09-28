@@ -116,6 +116,9 @@ func wrapRegistry(obj *glib.Object) *Registry { return &Registry{wrapObject(obj)
 func wrapSample(sample *C.GstSample) *Sample { return &Sample{sample: sample} }
 func wrapBuffer(buf *C.GstBuffer) *Buffer    { return &Buffer{ptr: buf} }
 
+func wrapMainLoop(loop *C.GMainLoop) *MainLoop         { return &MainLoop{ptr: loop} }
+func wrapMainContext(ctx *C.GMainContext) *MainContext { return &MainContext{ptr: ctx} }
+
 // Enums/Constants
 
 func marshalBufferingMode(p uintptr) (interface{}, error) {

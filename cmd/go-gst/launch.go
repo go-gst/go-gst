@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/spf13/cobra"
+
 	"github.com/tinyzimmer/go-gst/gst"
 	"github.com/tinyzimmer/go-gst/gst/gstauto"
 )
@@ -14,6 +15,8 @@ import (
 func init() {
 	rootCmd.AddCommand(launchCmd)
 }
+
+var launchSrc, launchDest *os.File
 
 var launchCmd = &cobra.Command{
 	Use:   "launch",
@@ -23,23 +26,25 @@ var launchCmd = &cobra.Command{
 		if len(args) == 0 {
 			return errors.New("The pipeline string cannot be empty")
 		}
-		return nil
+		var err error
+		launchSrc, launchDest, err = getCLIFiles()
+		return err
 	},
 	RunE: launch,
 }
 
 func launch(cmd *cobra.Command, args []string) error {
 
-	src, dest, err := getCLIFiles()
-	if err != nil {
-		return err
-	}
+	mainLoop := gst.NewMainLoop(nil, false)
+
+	defer mainLoop.Unref()
+	defer mainLoop.Quit()
 
 	pipelineString := strings.Join(args, " ")
 
 	logInfo("pipeline", "Creating pipeline")
 
-	pipeliner, err := getPipeline(src, dest, pipelineString)
+	pipeliner, err := getPipeline(launchSrc, launchDest, pipelineString)
 	if err != nil {
 		return err
 	}
@@ -55,17 +60,16 @@ func launch(cmd *cobra.Command, args []string) error {
 
 	defer pipeliner.Close()
 
-	if src != nil {
+	if launchSrc != nil {
 		pipelineWriter := pipeliner.(gstauto.WritePipeliner)
-		go io.Copy(pipelineWriter, src)
+		go io.Copy(pipelineWriter, launchSrc)
 	}
-	if dest != nil {
+	if launchDest != nil {
 		pipelineReader := pipeliner.(gstauto.ReadPipeliner)
-		go io.Copy(dest, pipelineReader)
+		go io.Copy(launchDest, pipelineReader)
 	}
 
-	gst.Wait(pipeliner.Pipeline())
-	return nil
+	return mainLoop.RunError()
 }
 
 func getPipeline(src, dest *os.File, pipelineString string) (gstauto.Pipeliner, error) {
