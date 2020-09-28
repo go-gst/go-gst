@@ -69,6 +69,11 @@ GFlagsValue * getParamSpecFlags (GParamSpec * p, guint * size)
 	return vals;
 }
 
+gboolean cgoBusFunc (GstBus * bus, GstMessage * msg, gpointer user_data)
+{
+	return goBusFunc(bus, msg, user_data);
+}
+
 gboolean structureForEach (GQuark field_id, GValue * value, gpointer user_data)
 {
 	return structForEachCb(field_id, value, user_data);

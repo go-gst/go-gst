@@ -1,8 +1,10 @@
 #include <gst/gst.h>
 
-extern gboolean structForEachCb  (GQuark field_id, GValue * value, gpointer user_data);
+extern gboolean   structForEachCb  (GQuark field_id, GValue * value, gpointer user_data);
+extern gboolean   goBusFunc        (GstBus * bus, GstMessage * msg, gpointer user_data);
 
 gboolean        structureForEach (GQuark field_id, GValue * value, gpointer user_data);
+gboolean        cgoBusFunc       (GstBus * bus, GstMessage * msg, gpointer user_data);
 
 GEnumValue *        getEnumValues      (GParamSpec * p, guint * size);
 GFlagsValue *       getParamSpecFlags  (GParamSpec * p, guint * size);
