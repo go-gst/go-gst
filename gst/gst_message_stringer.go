@@ -169,10 +169,15 @@ func (m *Message) String() string {
 		}
 
 	case MessageStreamCollection:
+		collection := m.ParseStreamCollection()
+		msg += fmt.Sprintf("New stream collection with upstream id: %s", collection.GetUpstreamID())
 
 	case MessageStreamsSelected:
+		collection := m.ParseStreamsSelected()
+		msg += fmt.Sprintf("Stream with upstream id '%s' has selected new streams", collection.GetUpstreamID())
 
 	case MessageRedirect:
+		msg += fmt.Sprintf("Received redirect message with %d entries", m.NumRedirectEntries())
 
 	case MessageUnknown:
 		msg += "Unknown message type"

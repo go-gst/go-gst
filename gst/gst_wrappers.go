@@ -117,6 +117,10 @@ func wrapSample(sample *C.GstSample) *Sample            { return &Sample{sample:
 func wrapBuffer(buf *C.GstBuffer) *Buffer               { return &Buffer{ptr: buf} }
 func wrapMainLoop(loop *C.GMainLoop) *MainLoop          { return &MainLoop{ptr: loop} }
 func wrapMainContext(ctx *C.GMainContext) *MainContext  { return &MainContext{ptr: ctx} }
+func wrapStream(obj *glib.Object) *Stream               { return &Stream{wrapObject(obj)} }
+func wrapStreamCollection(obj *glib.Object) *StreamCollection {
+	return &StreamCollection{wrapObject(obj)}
+}
 
 // Clock wrappers
 

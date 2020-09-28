@@ -275,3 +275,15 @@ toGstDevice(void *p)
 {
 	return (GST_DEVICE_CAST(p));
 }
+
+GstStreamCollection *
+toGstStreamCollection(void *p)
+{
+	return (GST_STREAM_COLLECTION_CAST(p));
+}
+
+GstStream *
+toGstStream(void *p)
+{
+	return (GST_STREAM_CAST(p));
+}

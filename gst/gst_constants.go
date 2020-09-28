@@ -2,6 +2,7 @@ package gst
 
 // #include "gst.go.h"
 import "C"
+import "unsafe"
 
 // ClockTime is a go representation of a GstClockTime. Most of the time these are casted
 // to time.Duration objects. It represents a time value in nanoseconds.
@@ -368,3 +369,33 @@ func (p ProgressType) String() string {
 	}
 	return ""
 }
+
+// StreamType is a go representation of a GstStreamType
+type StreamType int
+
+// Type castings of stream types
+const (
+	StreamTypeUnknown   StreamType = C.GST_STREAM_TYPE_UNKNOWN   // (1) – The stream is of unknown (unclassified) type.
+	StreamTypeAudio     StreamType = C.GST_STREAM_TYPE_AUDIO     // (2) – The stream is of audio data
+	StreamTypeVideo     StreamType = C.GST_STREAM_TYPE_VIDEO     // (4) – The stream carries video data
+	StreamTypeContainer StreamType = C.GST_STREAM_TYPE_CONTAINER // (8) – The stream is a muxed container type
+	StreamTypeText      StreamType = C.GST_STREAM_TYPE_TEXT      // (16) – The stream contains subtitle / subpicture data.
+)
+
+// String implements a stringer on StreamTypes.
+func (s StreamType) String() string {
+	name := C.gst_stream_type_get_name((C.GstStreamType)(s))
+	defer C.free(unsafe.Pointer(name))
+	return C.GoString(name)
+}
+
+// StreamFlags represent configuration options for a new stream.
+type StreamFlags int
+
+// Type castings of StreamFlags
+const (
+	StreamFlagNone     StreamFlags = C.GST_STREAM_FLAG_NONE     // (0) – This stream has no special attributes
+	StreamFlagSparse   StreamFlags = C.GST_STREAM_FLAG_SPARSE   // (1) – This stream is a sparse stream (e.g. a subtitle stream), data may flow only in irregular intervals with large gaps in between.
+	StreamFlagSelect   StreamFlags = C.GST_STREAM_FLAG_SELECT   // (2) – This stream should be selected by default. This flag may be used by demuxers to signal that a stream should be selected by default in a playback scenario.
+	StreamFlagUnselect StreamFlags = C.GST_STREAM_FLAG_UNSELECT // (4) – This stream should not be selected by default. This flag may be used by demuxers to signal that a stream should not be selected by default in a playback scenario, but only if explicitly selected by the user (e.g. an audio track for the hard of hearing or a director's commentary track).
+)

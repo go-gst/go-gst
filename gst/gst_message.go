@@ -424,3 +424,46 @@ func (m *Message) ParsePropertyNotify() (obj *Object, propertName string, proper
 		string(C.GoBytes(namePtr, C.sizeOfGCharArray((**C.gchar)(namePtr)))),
 		glib.ValueFromNative(unsafe.Pointer(gval))
 }
+
+// ParseStreamCollection parses a stream-collection message.
+func (m *Message) ParseStreamCollection() *StreamCollection {
+	var collection *C.GstStreamCollection
+	C.gst_message_parse_stream_collection(
+		(*C.GstMessage)(m.Instance()),
+		&collection,
+	)
+	return wrapStreamCollection(glib.Take(unsafe.Pointer(collection)))
+}
+
+// ParseStreamsSelected parses a streams-selected message.
+func (m *Message) ParseStreamsSelected() *StreamCollection {
+	var collection *C.GstStreamCollection
+	C.gst_message_parse_streams_selected(
+		(*C.GstMessage)(m.Instance()),
+		&collection,
+	)
+	return wrapStreamCollection(glib.Take(unsafe.Pointer(collection)))
+}
+
+// NumRedirectEntries returns the number of redirect entries in a MessageRedirect.
+func (m *Message) NumRedirectEntries() int64 {
+	return int64(C.gst_message_get_num_redirect_entries((*C.GstMessage)(m.Instance())))
+}
+
+// ParseRedirectEntryAt parses the redirect entry at the given index. Total indices can be retrieved
+// with NumRedirectEntries().
+func (m *Message) ParseRedirectEntryAt(idx int64) (location string, tags *TagList, structure *Structure) {
+	locPtr := C.malloc(C.sizeof_char * 1024)
+	defer C.free(unsafe.Pointer(locPtr))
+	var tagList *C.GstTagList
+	var entryStruct *C.GstStructure
+	C.gst_message_parse_redirect_entry(
+		(*C.GstMessage)(m.Instance()),
+		C.gsize(idx),
+		(**C.char)(locPtr),
+		&tagList,
+		&entryStruct,
+	)
+	return string(C.GoBytes(locPtr, C.sizeOfGCharArray((**C.gchar)(locPtr)))),
+		wrapTagList(tagList), wrapStructure(entryStruct)
+}
