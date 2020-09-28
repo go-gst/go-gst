@@ -15,6 +15,42 @@ For other examples see the command line implementation [here](cmd/go-gst).
 
 _TODO: Write examples on programatically building the pipeline yourself_
 
+## Quickstart
+
+```go
+package main
+
+import (
+	"io"
+	"os"
+
+	"github.com/tinyzimmer/go-gst/gst"
+	"github.com/tinyzimmer/go-gst/gst/gstauto"
+)
+
+var srcFile, destFile *os.File
+
+func main() {
+	gst.Init(nil)
+
+	pipeline, err := gstauto.NewPipelineReadWriterSimpleFromString("opusenc ! webmmux")
+	if err != nil {
+		panic(err)
+	}
+	defer pipeline.Close()
+
+	pipeline.Start()
+
+	// Write RAW audio data to the pipeline
+	go io.Copy(pipeline, srcFile)
+	// Write opus/webm to a destination file
+	go io.Copy(destFile, pipeline)
+
+	gst.Wait(pipeline.Pipeline())
+}
+
+```
+
 ## Requirements
 
 For building applications with this library you need the following:
@@ -26,6 +62,7 @@ For building applications with this library you need the following:
  - To use the `app` or `gstauto/app` packages you will need additional dependencies:
    - `libgstreamer-app-1.0-dev`: This package name may also be different depending on your os. You need the `gstappsink.h` and `gstappsrc.h`
      - In some distributions (such as alpine linux) this is in the `gst-plugins-base-dev` package.
+     - In Ubuntu this is in `libgstreamer-plugins-base1.0-0`.
  - You may need platform specific headers also. For example, in alpine linux, you will most likely also need the `musl-dev` package.
 
 For running applications with this library you'll need to have `libgstreamer-1.0` installed. Again, this package may be different depending on your OS.
