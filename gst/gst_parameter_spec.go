@@ -193,7 +193,7 @@ var allFlagStrings = []string{
 	"static name",
 	"static nick",
 	"static blurb",
-	"explicity notify",
+	"explicitly notify",
 	"deprecated",
 	"controllable",
 	"changeable in NULL, READY, PAUSED or PLAYING state",
