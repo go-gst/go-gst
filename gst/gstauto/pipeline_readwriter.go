@@ -61,12 +61,12 @@ func (rw *PipelineReadWriter) Start() error { return rw.Pipeline().Start() }
 // ReaderFd returns the file descriptor that can be written to for the read-buffer. This value
 // is used when wanting to allow an underlying pipeline to write to the internal buffer
 // (e.g. when using a fdsink).
-func (rw *PipelineReadWriter) ReaderFd() uintptr { return rw.readWriteCloser.readCloser.rWriter.Fd() }
+func (rw *PipelineReadWriter) ReaderFd() int { return int(rw.readWriteCloser.readCloser.rWriter.Fd()) }
 
 // WriterFd returns the file descriptor that can be used to read from the write-buffer. This value
 // is used when wanting to allow an underlying pipeline the ability to read data written to the buffer
 // (e.g. when using a fdsrc).
-func (rw *PipelineReadWriter) WriterFd() uintptr { return rw.readWriteCloser.writeCloser.wReader.Fd() }
+func (rw *PipelineReadWriter) WriterFd() int { return int(rw.readWriteCloser.writeCloser.wReader.Fd()) }
 
 // Close will stop and unref the underlying pipeline and read/write buffers.
 func (rw *PipelineReadWriter) Close() error {
