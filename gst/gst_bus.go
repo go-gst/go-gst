@@ -44,6 +44,9 @@ func (b *Bus) deliverMessages() {
 //
 // While a message is being delivered to created channels, there is a lock on creating
 // new ones.
+//
+// It is much safer and easier to use the AddWatch method. Only use this method if you
+// are unable to also run a MainLoop.
 func (b *Bus) MessageChan() chan *Message {
 	b.mux.Lock()
 	defer b.mux.Unlock()
@@ -57,6 +60,9 @@ func (b *Bus) MessageChan() chan *Message {
 
 // PopMessage attempts to pop a message from the bus. It returns nil if none are available.
 // The message should be unreffed after usage.
+//
+// It is much safer and easier to use the AddWatch method. Only use this method if you
+// are unable to also run a MainLoop.
 func (b *Bus) PopMessage(timeout int) *Message {
 	if b.Instance() == nil {
 		return nil
@@ -73,6 +79,9 @@ func (b *Bus) PopMessage(timeout int) *Message {
 // BlockPopMessage blocks until a message is available on the bus and then returns it.
 // This function can return nil if the bus is closed. The message should be unreffed
 // after usage.
+//
+// It is much safer and easier to use the AddWatch method. Only use this method if you
+// are unable to also run a MainLoop.
 func (b *Bus) BlockPopMessage() *Message {
 	for {
 		if b.Instance() == nil {
@@ -120,7 +129,7 @@ func goBusFunc(bus *C.GstBus, cMsg *C.GstMessage, userData C.gpointer) C.gboolea
 // It is safe to unref the Bus after setting this watch, since the watch itself will take
 // it's own reference to the Bus.
 //
-// The watch can be removed either by returning false from the function or using RemoveWatch.
+// The watch can be removed either by returning false from the function or by using RemoveWatch().
 // A MainLoop must be running for bus watches to work.
 //
 // The return value reflects whether the watch was successfully added. False is returned if there
