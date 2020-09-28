@@ -4,7 +4,7 @@ package gst
 import "C"
 
 // MainLoop is a go representation of a GMainLoop. It can be used to block execution
-// while a pipeline is running, and also allowed for event sources and signals to be used
+// while a pipeline is running, and also allows for event sources and signals to be used
 // across gstreamer objects.
 type MainLoop struct {
 	ptr *C.GMainLoop
@@ -12,7 +12,11 @@ type MainLoop struct {
 
 // NewMainLoop creates a new GMainLoop. If ctx is nil then the default context is used.
 // If isRunning is true the loop will automatically start, however, this function will not
-// block. To block on the loop itself you will still need to call MainLoop.Run()..
+// block. To block on the loop itself you will still need to call MainLoop.Run().
+//
+// A MainLoop is required when wishing to handle signals to/from elements asynchronously.
+// Otherwise you will need to iterate on the DefaultMainContext (or an external created one)
+// manually.
 func NewMainLoop(ctx *MainContext, isRunning bool) *MainLoop {
 	var gCtx *C.GMainContext
 	if ctx != nil {
