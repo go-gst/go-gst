@@ -269,3 +269,9 @@ toGstSample(void *p)
 {
 	return (GST_SAMPLE(p));
 }
+
+GstDevice *
+toGstDevice(void *p)
+{
+	return (GST_DEVICE_CAST(p));
+}

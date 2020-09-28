@@ -15,22 +15,22 @@ func (c *Clock) IsSynced() bool { return gobool(C.gst_clock_is_synced(c.Instance
 
 // Time gets the current time of the given clock in nanoseconds or ClockTimeNone if invalid.
 // The time is always monotonically increasing and adjusted according to the current offset and rate.
-func (c *Clock) Time() uint64 {
+func (c *Clock) Time() ClockTime {
 	res := C.gst_clock_get_time(c.Instance())
-	if uint64(res) == ClockTimeNone {
+	if ClockTime(res) == ClockTimeNone {
 		return ClockTimeNone
 	}
-	return uint64(res)
+	return ClockTime(res)
 }
 
 // InternalTime gets the current internal time of the given clock in nanoseconds
 // or ClockTimeNone if invalid. The time is returned unadjusted for the offset and the rate.
-func (c *Clock) InternalTime() uint64 {
+func (c *Clock) InternalTime() ClockTime {
 	res := C.gst_clock_get_internal_time(c.Instance())
-	if uint64(res) == ClockTimeNone {
+	if ClockTime(res) == ClockTimeNone {
 		return ClockTimeNone
 	}
-	return uint64(res)
+	return ClockTime(res)
 }
 
 // Duration returns the time.Duration equivalent of this clock time.
@@ -39,7 +39,7 @@ func (c *Clock) Duration() time.Duration {
 	if tm == ClockTimeNone {
 		return time.Duration(-1)
 	}
-	return nanosecondsToDuration(tm)
+	return clockTimeToDuration(tm)
 }
 
 // InternalDuration returns the time.Duration equivalent of this clock's internal time.
@@ -48,7 +48,7 @@ func (c *Clock) InternalDuration() time.Duration {
 	if tm == ClockTimeNone {
 		return time.Duration(-1)
 	}
-	return nanosecondsToDuration(tm)
+	return clockTimeToDuration(tm)
 }
 
 // String returns the string representation of this clock value.
@@ -56,5 +56,3 @@ func (c *Clock) String() string { return c.Duration().String() }
 
 // InternalString returns the string representation of this clock's internal value.
 func (c *Clock) InternalString() string { return c.InternalDuration().String() }
-
-func nanosecondsToDuration(n uint64) time.Duration { return time.Duration(n) * time.Nanosecond }

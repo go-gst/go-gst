@@ -4,7 +4,6 @@ package gst
 import "C"
 
 import (
-	"fmt"
 	"strings"
 	"time"
 	"unsafe"
@@ -18,82 +17,25 @@ type Message struct {
 	msg *C.GstMessage
 }
 
-// String implements a stringer on the message. It iterates over the type of the message
-// and applies the correct parser, then dumps a string of the basic contents of the
-// message. This function can be expensive and should only be used for debugging purposes
-// or in routines where latency is not a concern.
-func (m *Message) String() string {
-	msg := fmt.Sprintf("[%s] %s - ", m.Source(), strings.ToUpper(m.TypeName()))
-	switch m.Type() {
-	case MessageEOS:
-		msg += "End-of-stream reached in the pipeline"
-	case MessageInfo:
-		msg += m.parseToError().Message()
-	case MessageWarning:
-		msg += m.parseToError().Message()
-	case MessageError:
-		msg += m.parseToError().Message()
-	case MessageTag:
-		tags := m.ParseTags()
-		if tags != nil {
-			defer tags.Unref()
-			msg += tags.String()
-		}
-	case MessageBuffering:
-	case MessageStateChanged:
-		oldState, newState := m.ParseStateChanged()
-		msg += fmt.Sprintf("State changed from %s to %s", oldState.String(), newState.String())
-	case MessageStateDirty:
-	case MessageStepDone:
-	case MessageClockProvide:
-	case MessageClockLost:
-		msg += "Lost a clock"
-	case MessageNewClock:
-		msg += "Received a new clock"
-	case MessageStructureChange:
-	case MessageStreamStatus:
-		statusType, elem := m.ParseStreamStatus()
-		msg += fmt.Sprintf("Stream status from %s: %s", elem.Name(), statusType.String())
-	case MessageApplication:
-	case MessageElement:
-	case MessageSegmentStart:
-	case MessageSegmentDone:
-	case MessageDurationChanged:
-	case MessageLatency:
-	case MessageAsyncStart:
-	case MessageAsyncDone:
-		msg += "Async task completed"
-		if dur := m.ParseAsyncDone(); dur > 0 {
-			msg += fmt.Sprintf(" in %s", dur.String())
-		}
-	case MessageRequestState:
-	case MessageStepStart:
-	case MessageQOS:
-	case MessageProgress:
-	case MessageTOC:
-	case MessageResetTime:
-	case MessageStreamStart:
-		msg += "Pipeline stream is starting"
-	case MessageNeedContext:
-	case MessageHaveContext:
-	case MessageExtended:
-	case MessageDeviceAdded:
-	case MessageDeviceRemoved:
-	case MessagePropertyNotify:
-	case MessageStreamCollection:
-	case MessageStreamsSelected:
-	case MessageRedirect:
-	case MessageDeviceChanged:
-	case MessageUnknown:
-		msg += "Unknown message type"
-	case MessageAny:
-		msg += "Message did not match any known types"
-	}
-	return msg
-}
-
 // Instance returns the underlying GstMessage object.
 func (m *Message) Instance() *C.GstMessage { return C.toGstMessage(unsafe.Pointer(m.msg)) }
+
+// Unref will call `gst_message_unref` on the underlying GstMessage, freeing it from memory.
+func (m *Message) Unref() { C.gst_message_unref((*C.GstMessage)(m.Instance())) }
+
+// Ref will increase the ref count on this message. This increases the total amount of times
+// Unref needs to be called before the object is freed from memory. It returns the underlying
+// message object for convenience.
+func (m *Message) Ref() *Message {
+	C.gst_message_ref((*C.GstMessage)(m.Instance()))
+	return m
+}
+
+// Copy will copy this object into a new Message that can be Unrefed separately.
+func (m *Message) Copy() *Message {
+	newNative := C.gst_message_copy((*C.GstMessage)(m.Instance()))
+	return wrapMessage(newNative)
+}
 
 // Source returns the source of the message.
 func (m *Message) Source() string { return C.GoString(m.Instance().src.name) }
@@ -219,42 +161,266 @@ func (m *Message) ParseStreamStatus() (StreamStatusType, *Element) {
 func (m *Message) ParseAsyncDone() time.Duration {
 	var clockTime C.GstClockTime
 	C.gst_message_parse_async_done((*C.GstMessage)(m.Instance()), &clockTime)
-	return nanosecondsToDuration(uint64(clockTime))
+	return clockTimeToDuration(ClockTime(clockTime))
 }
 
-// Unref will call `gst_message_unref` on the underlying GstMessage, freeing it from memory.
-func (m *Message) Unref() { C.gst_message_unref((*C.GstMessage)(m.Instance())) }
-
-// Ref will increase the ref count on this message. This increases the total amount of times
-// Unref needs to be called before the object is freed from memory. It returns the underlying
-// message object for convenience.
-func (m *Message) Ref() *Message {
-	C.gst_message_ref((*C.GstMessage)(m.Instance()))
-	return m
+// BufferingStats represents the buffering stats as retrieved from a GST_MESSAGE_TYPE_BUFFERING.
+type BufferingStats struct {
+	// The buffering mode
+	BufferingMode BufferingMode
+	// The average input rate
+	AverageIn int
+	// The average output rate
+	AverageOut int
+	// Amount of time until buffering is complete
+	BufferingLeft time.Duration
 }
 
-// Copy will copy this object into a new Message that can be Unrefed separately.
-func (m *Message) Copy() *Message {
-	newNative := C.gst_message_copy((*C.GstMessage)(m.Instance()))
-	return wrapMessage(newNative)
+// ParseBuffering extracts the buffering percent from the GstMessage.
+func (m *Message) ParseBuffering() int {
+	var cInt C.gint
+	C.gst_message_parse_buffering((*C.GstMessage)(m.Instance()), &cInt)
+	return int(cInt)
 }
 
-// GError is a Go wrapper for a C GError. It implements the error interface
-// and provides additional functions for retrieving debug strings and details.
-type GError struct {
-	errMsg, debugStr string
-	structure        *Structure
+// ParseBufferingStats extracts the buffering stats values from message.
+func (m *Message) ParseBufferingStats() *BufferingStats {
+	var mode C.GstBufferingMode
+	var avgIn, avgOut C.gint
+	var bufLeft C.gint64
+	C.gst_message_parse_buffering_stats(
+		(*C.GstMessage)(m.Instance()),
+		&mode, &avgIn, &avgOut, &bufLeft,
+	)
+	return &BufferingStats{
+		BufferingMode: BufferingMode(mode),
+		AverageIn:     int(avgIn),
+		AverageOut:    int(avgOut),
+		BufferingLeft: time.Duration(int64(bufLeft)) * time.Millisecond,
+	}
 }
 
-// Message is an alias to `Error()`. It's for clarity when this object
-// is parsed from a `GST_MESSAGE_INFO` or `GST_MESSAGE_WARNING`.
-func (e *GError) Message() string { return e.Error() }
+// StepStartValues represents the values inside a StepStart message.
+type StepStartValues struct {
+	Active       bool
+	Format       Format
+	Amount       uint64
+	Rate         float64
+	Flush        bool
+	Intermediate bool
+}
 
-// Error implements the error interface and returns the error message.
-func (e *GError) Error() string { return e.errMsg }
+// ParseStepStart extracts the values for the StepStart message.
+func (m *Message) ParseStepStart() *StepStartValues {
+	var active, flush, intermediate C.gboolean
+	var amount C.guint64
+	var rate C.gdouble
+	var format C.GstFormat
+	C.gst_message_parse_step_start(
+		(*C.GstMessage)(m.Instance()),
+		&active, &format, &amount, &rate, &flush, &intermediate,
+	)
+	return &StepStartValues{
+		Active:       gobool(active),
+		Format:       Format(format),
+		Amount:       uint64(amount),
+		Rate:         float64(rate),
+		Flush:        gobool(flush),
+		Intermediate: gobool(intermediate),
+	}
+}
 
-// DebugString returns any debug info alongside the error.
-func (e *GError) DebugString() string { return e.debugStr }
+// StepDoneValues represents the values inside a StepDone message.
+type StepDoneValues struct {
+	Format       Format
+	Amount       uint64
+	Rate         float64
+	Flush        bool
+	Intermediate bool
+	Duration     time.Duration
+	EOS          bool
+}
 
-// Structure returns the structure of the error message which may contain additional metadata.
-func (e *GError) Structure() *Structure { return e.structure }
+// ParseStepDone extracts the values for the StepDone message.
+func (m *Message) ParseStepDone() *StepDoneValues {
+	var format C.GstFormat
+	var amount, duration C.guint64
+	var rate C.gdouble
+	var flush, intermediate, eos C.gboolean
+	C.gst_message_parse_step_done(
+		(*C.GstMessage)(m.Instance()),
+		&format,
+		&amount,
+		&rate,
+		&flush,
+		&intermediate,
+		&duration,
+		&eos,
+	)
+	return &StepDoneValues{
+		Format:       Format(format),
+		Amount:       uint64(amount),
+		Rate:         float64(rate),
+		Flush:        gobool(flush),
+		Intermediate: gobool(intermediate),
+		Duration:     time.Duration(uint64(duration)) * time.Nanosecond,
+		EOS:          gobool(eos),
+	}
+}
+
+// ParseNewClock parses the new Clock in the message. The clock object returned
+// remains valid until the message is freed.
+func (m *Message) ParseNewClock() *Clock {
+	var clock *C.GstClock
+	C.gst_message_parse_new_clock((*C.GstMessage)(m.Instance()), &clock)
+	return wrapClock(glib.Take(unsafe.Pointer(clock)))
+}
+
+// ParseClockProvide extracts the clock and ready flag from the GstMessage.
+// The clock object returned remains valid until the message is freed.
+func (m *Message) ParseClockProvide() (clock *Clock, ready bool) {
+	var gclock *C.GstClock
+	var gready C.gboolean
+	C.gst_message_parse_clock_provide((*C.GstMessage)(m.Instance()), &gclock, &gready)
+	return wrapClock(glib.Take(unsafe.Pointer(clock))), gobool(gready)
+}
+
+// ParseStructureChange extracts the change type and completion status from the GstMessage.
+// If the returned bool is true, the change is still in progress.
+func (m *Message) ParseStructureChange() (chgType StructureChangeType, owner *Element, busy bool) {
+	var gElem *C.GstElement
+	var gbusy C.gboolean
+	var gchgType C.GstStructureChangeType
+	C.gst_message_parse_structure_change(
+		(*C.GstMessage)(m.Instance()),
+		&gchgType, &gElem, &gbusy,
+	)
+	return StructureChangeType(gchgType), wrapElement(glib.Take(unsafe.Pointer(gElem))), gobool(gbusy)
+}
+
+// ParseSegmentStart extracts the position and format of the SegmentStart message.
+func (m *Message) ParseSegmentStart() (Format, int64) {
+	var format C.GstFormat
+	var position C.gint64
+	C.gst_message_parse_segment_start((*C.GstMessage)(m.Instance()), &format, &position)
+	return Format(format), int64(position)
+}
+
+// ParseSegmentDone extracts the position and format of the SegmentDone message.
+func (m *Message) ParseSegmentDone() (Format, int64) {
+	var format C.GstFormat
+	var position C.gint64
+	C.gst_message_parse_segment_done((*C.GstMessage)(m.Instance()), &format, &position)
+	return Format(format), int64(position)
+}
+
+// ParseRequestState parses the requests state from the message.
+func (m *Message) ParseRequestState() State {
+	var state C.GstState
+	C.gst_message_parse_request_state((*C.GstMessage)(m.Instance()), &state)
+	return State(state)
+}
+
+// QoSValues represents the values inside a QoS message.
+type QoSValues struct {
+	// If the message was generated by a live element
+	Live bool
+	// The running time of the buffer that generated the message
+	RunningTime time.Duration
+	// The stream time of the buffer that generated the message
+	StreamTime time.Duration
+	//  The timestamps of the buffer that generated the message
+	Timestamp ClockTime
+	//  The duration of the buffer that generated the message
+	Duration time.Duration
+}
+
+// ParseQoS extracts the timestamps and live status from the QoS message.
+// The values reflect those of the dropped buffer. Values of ClockTimeNone
+// or -1 mean unknown values.
+func (m *Message) ParseQoS() *QoSValues {
+	var live C.gboolean
+	var runningTime, streamTime, timestamp, duration C.guint64
+	C.gst_message_parse_qos(
+		(*C.GstMessage)(m.Instance()),
+		&live, &runningTime, &streamTime, &timestamp, &duration,
+	)
+	return &QoSValues{
+		Live:        gobool(live),
+		RunningTime: guint64ToDuration(runningTime),
+		StreamTime:  guint64ToDuration(streamTime),
+		Timestamp:   ClockTime(timestamp),
+		Duration:    guint64ToDuration(duration),
+	}
+}
+
+// ParseProgress parses the progress type, code and text.
+func (m *Message) ParseProgress() (progressType ProgressType, code, text string) {
+	codePtr := C.malloc(C.sizeof_char * 1024)
+	defer C.free(unsafe.Pointer(codePtr))
+	textPtr := C.malloc(C.sizeof_char * 1024)
+	defer C.free(unsafe.Pointer(textPtr))
+	var gpType C.GstProgressType
+	C.gst_message_parse_progress(
+		(*C.GstMessage)(m.Instance()),
+		&gpType,
+		(**C.gchar)(unsafe.Pointer(codePtr)),
+		(**C.gchar)(unsafe.Pointer(textPtr)),
+	)
+	return ProgressType(gpType),
+		string(C.GoBytes(codePtr, C.sizeOfGCharArray((**C.gchar)(codePtr)))),
+		string(C.GoBytes(textPtr, C.sizeOfGCharArray((**C.gchar)(textPtr))))
+}
+
+// ParseResetTime extracts the running-time from the ResetTime message.
+func (m *Message) ParseResetTime() time.Duration {
+	var clockTime C.GstClockTime
+	C.gst_message_parse_reset_time((*C.GstMessage)(m.Instance()), &clockTime)
+	return clockTimeToDuration(ClockTime(clockTime))
+}
+
+// ParseDeviceAdded parses a device-added message. The device-added message is
+// produced by GstDeviceProvider or a GstDeviceMonitor. It announces the appearance
+// of monitored devices.
+func (m *Message) ParseDeviceAdded() *Device {
+	var device *C.GstDevice
+	C.gst_message_parse_device_added((*C.GstMessage)(m.Instance()), &device)
+	return wrapDevice(glib.Take(unsafe.Pointer(device)))
+}
+
+// ParseDeviceRemoved parses a device-removed message. The device-removed message
+// is produced by GstDeviceProvider or a GstDeviceMonitor. It announces the disappearance
+// of monitored devices.
+func (m *Message) ParseDeviceRemoved() *Device {
+	var device *C.GstDevice
+	C.gst_message_parse_device_removed((*C.GstMessage)(m.Instance()), &device)
+	return wrapDevice(glib.Take(unsafe.Pointer(device)))
+}
+
+// ParseDeviceChanged Parses a device-changed message. The device-changed message is
+// produced by GstDeviceProvider or a GstDeviceMonitor. It announces that a device's properties
+// have changed.
+// The first device returned is the updated Device, and the second changedDevice represents
+// the old state of the device.
+func (m *Message) ParseDeviceChanged() (newDevice, oldDevice *Device) {
+	var gstNewDevice, gstOldDevice *C.GstDevice
+	C.gst_message_parse_device_changed((*C.GstMessage)(m.Instance()), &gstNewDevice, &gstOldDevice)
+	return wrapDevice(glib.Take(unsafe.Pointer(gstNewDevice))),
+		wrapDevice(glib.Take(unsafe.Pointer(gstOldDevice)))
+}
+
+// ParsePropertyNotify parses a property-notify message. These will be posted on the bus only
+// when set up with Element.AddPropertyNotifyWatch (TODO) or Element.AddPropertyDeepNotifyWatch (TODO).
+func (m *Message) ParsePropertyNotify() (obj *Object, propertName string, propertyValue *glib.Value) {
+	var gstobj *C.GstObject
+	var gval *C.GValue
+	namePtr := C.malloc(C.sizeof_char * 1024)
+	defer C.free(unsafe.Pointer(namePtr))
+	C.gst_message_parse_property_notify(
+		(*C.GstMessage)(m.Instance()),
+		&gstobj, (**C.gchar)(unsafe.Pointer(namePtr)), &gval,
+	)
+	return wrapObject(glib.Take(unsafe.Pointer(gstobj))),
+		string(C.GoBytes(namePtr, C.sizeOfGCharArray((**C.gchar)(namePtr)))),
+		glib.ValueFromNative(unsafe.Pointer(gval))
+}

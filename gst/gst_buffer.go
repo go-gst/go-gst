@@ -51,30 +51,30 @@ func (b *Buffer) Bytes() []byte {
 // presented to the user.
 func (b *Buffer) PresentationTimestamp() time.Duration {
 	pts := b.Instance().pts
-	if uint64(pts) == ClockTimeNone {
+	if ClockTime(pts) == ClockTimeNone {
 		return time.Duration(-1)
 	}
-	return nanosecondsToDuration(uint64(pts))
+	return guint64ToDuration(pts)
 }
 
 // DecodingTimestamp returns the decoding timestamp of the buffer, or a negative duration if not known
 // or relevant. This value contains the timestamp when the media should be processed.
 func (b *Buffer) DecodingTimestamp() time.Duration {
 	dts := b.Instance().dts
-	if uint64(dts) == ClockTimeNone {
+	if ClockTime(dts) == ClockTimeNone {
 		return time.Duration(-1)
 	}
-	return nanosecondsToDuration(uint64(dts))
+	return guint64ToDuration(dts)
 }
 
 // Duration returns the length of the data inside this buffer, or a negative duration if not known
 // or relevant.
 func (b *Buffer) Duration() time.Duration {
 	dur := b.Instance().duration
-	if uint64(dur) == ClockTimeNone {
+	if ClockTime(dur) == ClockTimeNone {
 		return time.Duration(-1)
 	}
-	return nanosecondsToDuration(uint64(dur))
+	return guint64ToDuration(dur)
 }
 
 // Offset returns a media specific offset for the buffer data. For video frames, this is the frame

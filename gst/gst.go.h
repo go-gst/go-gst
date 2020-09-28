@@ -62,3 +62,4 @@ GstCapsFeatures *    toGstCapsFeatures      (void *p);
 GstBuffer *          toGstBuffer            (void *p);
 GstBufferPool *      toGstBufferPool        (void *p);
 GstSample *          toGstSample            (void *p);
+GstDevice *          toGstDevice            (void *p);

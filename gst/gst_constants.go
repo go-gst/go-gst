@@ -3,11 +3,15 @@ package gst
 // #include "gst.go.h"
 import "C"
 
+// ClockTime is a go representation of a GstClockTime. Most of the time these are casted
+// to time.Duration objects. It represents a time value in nanoseconds.
+type ClockTime uint64
+
 const (
 	// ClockFormat is the string used when formatting clock strings
 	ClockFormat string = "u:%02u:%02u.%09u"
-	// ClockTimeNone means infinite timeout (unsigned representation of -1)
-	ClockTimeNone uint64 = 18446744073709551615
+	// ClockTimeNone means infinite timeout (unsigned representation of -1) or an otherwise unknown value.
+	ClockTimeNone ClockTime = C.GST_CLOCK_TIME_NONE
 )
 
 // BufferingMode is a representation of GstBufferingMode
@@ -15,24 +19,52 @@ type BufferingMode int
 
 // Type casts of buffering modes
 const (
-	BufferingStream    BufferingMode = C.GST_BUFFERING_STREAM
-	BufferingDownload  BufferingMode = C.GST_BUFFERING_DOWNLOAD
-	BufferingTimeshift BufferingMode = C.GST_BUFFERING_TIMESHIFT
-	BufferingLive      BufferingMode = C.GST_BUFFERING_LIVE
+	BufferingStream    BufferingMode = C.GST_BUFFERING_STREAM    // (0) – a small amount of data is buffered
+	BufferingDownload  BufferingMode = C.GST_BUFFERING_DOWNLOAD  // (1) – the stream is being downloaded
+	BufferingTimeshift BufferingMode = C.GST_BUFFERING_TIMESHIFT //  (2) – the stream is being downloaded in a ringbuffer
+	BufferingLive      BufferingMode = C.GST_BUFFERING_LIVE      // (3) – the stream is a live stream
 )
+
+// String implements a stringer on a BufferingMode.
+func (b BufferingMode) String() string {
+	switch b {
+	case BufferingStream:
+		return "A small amount of data is buffered"
+	case BufferingDownload:
+		return "The stream is being downloaded"
+	case BufferingTimeshift:
+		return "The stream is being downloaded in a ringbuffer"
+	case BufferingLive:
+		return "The stream is live"
+	}
+	return ""
+}
 
 // Format is a representation of GstFormat.
 type Format int
 
 // Type casts of formats
 const (
-	FormatUndefined Format = C.GST_FORMAT_UNDEFINED
-	FormatDefault   Format = C.GST_FORMAT_DEFAULT
-	FormatBytes     Format = C.GST_FORMAT_BYTES
-	FormatTime      Format = C.GST_FORMAT_TIME
-	FormatBuffer    Format = C.GST_FORMAT_BUFFERS
-	FormatPercent   Format = C.GST_FORMAT_PERCENT
+	FormatUndefined Format = C.GST_FORMAT_UNDEFINED // (0) – undefined format
+	FormatDefault   Format = C.GST_FORMAT_DEFAULT   // (1) – the default format of the pad/element. This can be samples for raw audio, or frames/fields for raw video.
+	FormatBytes     Format = C.GST_FORMAT_BYTES     // (2) - bytes
+	FormatTime      Format = C.GST_FORMAT_TIME      // (3) – time in nanoseconds
 )
+
+// String implements a stringer on GstFormat types
+func (f Format) String() string {
+	switch f {
+	case FormatUndefined:
+		return "undefined"
+	case FormatDefault:
+		return "default"
+	case FormatBytes:
+		return "bytes"
+	case FormatTime:
+		return "time"
+	}
+	return ""
+}
 
 // MessageType is an alias to the C equivalent of GstMessageType.
 // See the official documentation for definitions of the messages:
@@ -68,7 +100,7 @@ const (
 	MessageAsyncDone        MessageType = C.GST_MESSAGE_ASYNC_DONE
 	MessageRequestState     MessageType = C.GST_MESSAGE_REQUEST_STATE
 	MessageStepStart        MessageType = C.GST_MESSAGE_STEP_START
-	MessageQOS              MessageType = C.GST_MESSAGE_QOS
+	MessageQoS              MessageType = C.GST_MESSAGE_QOS
 	MessageProgress         MessageType = C.GST_MESSAGE_PROGRESS
 	MessageTOC              MessageType = C.GST_MESSAGE_TOC
 	MessageResetTime        MessageType = C.GST_MESSAGE_RESET_TIME
@@ -85,6 +117,11 @@ const (
 	MessageDeviceChanged    MessageType = C.GST_MESSAGE_DEVICE_CHANGED
 	MessageAny              MessageType = C.GST_MESSAGE_ANY
 )
+
+// String implements a stringer on MessageTypes
+func (m MessageType) String() string {
+	return C.GoString(C.gst_message_type_get_name((C.GstMessageType)(m)))
+}
 
 // PadDirection is a cast of GstPadDirection to a go type.
 type PadDirection int
@@ -254,13 +291,13 @@ type StreamStatusType int
 
 // Type castings of the stream status types
 const (
-	StreamStatusCreate  = C.GST_STREAM_STATUS_TYPE_CREATE  // (0) – A new thread need to be created.
-	StreamStatusEnter   = C.GST_STREAM_STATUS_TYPE_ENTER   // (1) – a thread entered its loop function
-	StreamStatusLeave   = C.GST_STREAM_STATUS_TYPE_LEAVE   // (2) – a thread left its loop function
-	StreamStatusDestroy = C.GST_STREAM_STATUS_TYPE_DESTROY // (3) – a thread is destroyed
-	StreamStatusStart   = C.GST_STREAM_STATUS_TYPE_START   // (8) – a thread is started
-	StreamStatusPause   = C.GST_STREAM_STATUS_TYPE_PAUSE   // (9) – a thread is paused
-	StreamStatusStop    = C.GST_STREAM_STATUS_TYPE_STOP    // (10) – a thread is stopped
+	StreamStatusCreate  StreamStatusType = C.GST_STREAM_STATUS_TYPE_CREATE  // (0) – A new thread need to be created.
+	StreamStatusEnter   StreamStatusType = C.GST_STREAM_STATUS_TYPE_ENTER   // (1) – a thread entered its loop function
+	StreamStatusLeave   StreamStatusType = C.GST_STREAM_STATUS_TYPE_LEAVE   // (2) – a thread left its loop function
+	StreamStatusDestroy StreamStatusType = C.GST_STREAM_STATUS_TYPE_DESTROY // (3) – a thread is destroyed
+	StreamStatusStart   StreamStatusType = C.GST_STREAM_STATUS_TYPE_START   // (8) – a thread is started
+	StreamStatusPause   StreamStatusType = C.GST_STREAM_STATUS_TYPE_PAUSE   // (9) – a thread is paused
+	StreamStatusStop    StreamStatusType = C.GST_STREAM_STATUS_TYPE_STOP    // (10) – a thread is stopped
 )
 
 func (s StreamStatusType) String() string {
@@ -279,6 +316,55 @@ func (s StreamStatusType) String() string {
 		return "A thread has paused"
 	case StreamStatusStop:
 		return "A thread has stopped"
+	}
+	return ""
+}
+
+// StructureChangeType is a go representation of a GstStructureChangeType
+type StructureChangeType int
+
+// Type castings of StructureChangeTypes
+const (
+	StructureChangePadLink   StructureChangeType = C.GST_STRUCTURE_CHANGE_TYPE_PAD_LINK   // (0) – Pad linking is starting or done.
+	StructureChangePadUnlink StructureChangeType = C.GST_STRUCTURE_CHANGE_TYPE_PAD_UNLINK // (1) – Pad unlinking is starting or done.
+)
+
+// String implements a stringer on StructureChangeTypes.
+func (s StructureChangeType) String() string {
+	switch s {
+	case StructureChangePadLink:
+		return "pad link"
+	case StructureChangePadUnlink:
+		return "pad unlink"
+	}
+	return ""
+}
+
+// ProgressType is a go representation of a GstProgressType
+type ProgressType int
+
+// Type castings of ProgressTypes
+const (
+	ProgressTypeStart     ProgressType = C.GST_PROGRESS_TYPE_START    // (0) – A new task started.
+	ProgressTypeContinue  ProgressType = C.GST_PROGRESS_TYPE_CONTINUE // (1) – A task completed and a new one continues.
+	ProgressTypeComplete  ProgressType = C.GST_PROGRESS_TYPE_COMPLETE // (2) – A task completed.
+	ProgressTypeCancelled ProgressType = C.GST_PROGRESS_TYPE_CANCELED // (3) – A task was canceled.
+	ProgressTypeError     ProgressType = C.GST_PROGRESS_TYPE_ERROR    // (4) – A task caused an error. An error message is also posted on the bus.
+)
+
+// String implements a stringer on ProgressTypes
+func (p ProgressType) String() string {
+	switch p {
+	case ProgressTypeStart:
+		return "started"
+	case ProgressTypeContinue:
+		return "continuing"
+	case ProgressTypeComplete:
+		return "completed"
+	case ProgressTypeCancelled:
+		return "cancelled"
+	case ProgressTypeError:
+		return "error"
 	}
 	return ""
 }
