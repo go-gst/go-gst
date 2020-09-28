@@ -104,7 +104,8 @@ func wrapBin(obj *glib.Object) *Bin           { return &Bin{wrapElement(obj)} }
 func wrapClock(obj *glib.Object) *Clock       { return &Clock{wrapObject(obj)} }
 func wrapBus(obj *glib.Object) *Bus           { return &Bus{Object: wrapObject(obj)} }
 
-func wrapMessage(msg *C.GstMessage) *Message { return &Message{msg: msg} }
+func wrapMessage(msg *C.GstMessage) *Message     { return &Message{msg: msg} }
+func wrapTagList(tagList *C.GstTagList) *TagList { return &TagList{ptr: tagList} }
 
 func wrapPad(obj *glib.Object) *Pad                 { return &Pad{wrapObject(obj)} }
 func wrapPadTemplate(obj *glib.Object) *PadTemplate { return &PadTemplate{wrapObject(obj)} }

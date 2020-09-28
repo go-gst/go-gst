@@ -2,9 +2,12 @@ package main
 
 import (
 	"errors"
+	"fmt"
 	"io"
 	"os"
+	"os/signal"
 	"strings"
+	"syscall"
 
 	"github.com/spf13/cobra"
 
@@ -36,30 +39,28 @@ var launchCmd = &cobra.Command{
 func launch(cmd *cobra.Command, args []string) error {
 
 	mainLoop := gst.NewMainLoop(nil, false)
-
 	defer mainLoop.Unref()
-	defer mainLoop.Quit()
 
 	pipelineString := strings.Join(args, " ")
-
-	logInfo("pipeline", "Creating pipeline")
 
 	pipeliner, err := getPipeline(launchSrc, launchDest, pipelineString)
 	if err != nil {
 		return err
 	}
 
-	if verbose {
-		setupVerbosePipelineListeners(pipeliner.Pipeline(), "pipeline")
+	// If the pipeline is not dumping to stdout, dump messages to stdout instead.
+	if !toStdout {
+		pipeliner.Pipeline().GetBus().AddWatch(func(msg *gst.Message) bool {
+			fmt.Println(msg)
+			return true
+		})
 	}
 
-	logInfo("pipeline", "Starting pipeline")
 	if err := pipeliner.Start(); err != nil {
 		return err
 	}
 
-	defer pipeliner.Close()
-
+	// If there are src or dest files, spawn off copies of the data
 	if launchSrc != nil {
 		pipelineWriter := pipeliner.(gstauto.WritePipeliner)
 		go io.Copy(pipelineWriter, launchSrc)
@@ -69,7 +70,31 @@ func launch(cmd *cobra.Command, args []string) error {
 		go io.Copy(launchDest, pipelineReader)
 	}
 
-	return mainLoop.RunError()
+	// Catch SIGINT and SIGTERM
+	sigc := make(chan os.Signal, 1)
+	signal.Notify(sigc, syscall.SIGINT, syscall.SIGTERM)
+
+	go func() {
+		// Catch SIGINT so the pipeline can close cleanly
+		<-sigc
+		pipeliner.Pipeline().BlockSetState(gst.StateNull) // Do an extra call to stop the state
+		// Increases the likelihood the user will get
+		// final messages.
+		mainLoop.Quit()
+	}()
+
+	go func() {
+		// If the pipeline finishes, close the main loop
+		gst.Wait(pipeliner.Pipeline())
+		mainLoop.Quit()
+	}()
+
+	// Block on the main loop until either the pipeline finishes
+	// or a signal is received
+	mainLoop.Run()
+
+	// Close the pipeline
+	return pipeliner.Close()
 }
 
 func getPipeline(src, dest *os.File, pipelineString string) (gstauto.Pipeliner, error) {

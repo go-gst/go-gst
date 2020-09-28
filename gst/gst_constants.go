@@ -35,24 +35,55 @@ const (
 )
 
 // MessageType is an alias to the C equivalent of GstMessageType.
+// See the official documentation for definitions of the messages:
+// https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html?gi-language=c#GstMessageType
 type MessageType int
 
 // Type casting of GstMessageTypes
+// See the official documentation for definitions of the messages:
+// https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html?gi-language=c#GstMessageType
 const (
-	MessageAny          MessageType = C.GST_MESSAGE_ANY
-	MessageStreamStart  MessageType = C.GST_MESSAGE_STREAM_START
-	MessageEOS          MessageType = C.GST_MESSAGE_EOS
-	MessageInfo         MessageType = C.GST_MESSAGE_INFO
-	MessageWarning      MessageType = C.GST_MESSAGE_WARNING
-	MessageError        MessageType = C.GST_MESSAGE_ERROR
-	MessageStateChanged MessageType = C.GST_MESSAGE_STATE_CHANGED
-	MessageElement      MessageType = C.GST_MESSAGE_ELEMENT
-	MessageStreamStatus MessageType = C.GST_MESSAGE_STREAM_STATUS
-	MessageBuffering    MessageType = C.GST_MESSAGE_BUFFERING
-	MessageLatency      MessageType = C.GST_MESSAGE_LATENCY
-	MessageNewClock     MessageType = C.GST_MESSAGE_NEW_CLOCK
-	MessageAsyncDone    MessageType = C.GST_MESSAGE_ASYNC_DONE
-	MessageTag          MessageType = C.GST_MESSAGE_TAG
+	MessageUnknown          MessageType = C.GST_MESSAGE_UNKNOWN
+	MessageEOS              MessageType = C.GST_MESSAGE_EOS
+	MessageError            MessageType = C.GST_MESSAGE_ERROR
+	MessageWarning          MessageType = C.GST_MESSAGE_WARNING
+	MessageInfo             MessageType = C.GST_MESSAGE_INFO
+	MessageTag              MessageType = C.GST_MESSAGE_TAG
+	MessageBuffering        MessageType = C.GST_MESSAGE_BUFFERING
+	MessageStateChanged     MessageType = C.GST_MESSAGE_STATE_CHANGED
+	MessageStateDirty       MessageType = C.GST_MESSAGE_STATE_DIRTY
+	MessageStepDone         MessageType = C.GST_MESSAGE_STEP_DONE
+	MessageClockProvide     MessageType = C.GST_MESSAGE_CLOCK_PROVIDE
+	MessageClockLost        MessageType = C.GST_MESSAGE_CLOCK_LOST
+	MessageNewClock         MessageType = C.GST_MESSAGE_NEW_CLOCK
+	MessageStructureChange  MessageType = C.GST_MESSAGE_STRUCTURE_CHANGE
+	MessageStreamStatus     MessageType = C.GST_MESSAGE_STREAM_STATUS
+	MessageApplication      MessageType = C.GST_MESSAGE_APPLICATION
+	MessageElement          MessageType = C.GST_MESSAGE_ELEMENT
+	MessageSegmentStart     MessageType = C.GST_MESSAGE_SEGMENT_START
+	MessageSegmentDone      MessageType = C.GST_MESSAGE_SEGMENT_DONE
+	MessageDurationChanged  MessageType = C.GST_MESSAGE_DURATION_CHANGED
+	MessageLatency          MessageType = C.GST_MESSAGE_LATENCY
+	MessageAsyncStart       MessageType = C.GST_MESSAGE_ASYNC_START
+	MessageAsyncDone        MessageType = C.GST_MESSAGE_ASYNC_DONE
+	MessageRequestState     MessageType = C.GST_MESSAGE_REQUEST_STATE
+	MessageStepStart        MessageType = C.GST_MESSAGE_STEP_START
+	MessageQOS              MessageType = C.GST_MESSAGE_QOS
+	MessageProgress         MessageType = C.GST_MESSAGE_PROGRESS
+	MessageTOC              MessageType = C.GST_MESSAGE_TOC
+	MessageResetTime        MessageType = C.GST_MESSAGE_RESET_TIME
+	MessageStreamStart      MessageType = C.GST_MESSAGE_STREAM_START
+	MessageNeedContext      MessageType = C.GST_MESSAGE_NEED_CONTEXT
+	MessageHaveContext      MessageType = C.GST_MESSAGE_HAVE_CONTEXT
+	MessageExtended         MessageType = C.GST_MESSAGE_EXTENDED
+	MessageDeviceAdded      MessageType = C.GST_MESSAGE_DEVICE_ADDED
+	MessageDeviceRemoved    MessageType = C.GST_MESSAGE_DEVICE_REMOVED
+	MessagePropertyNotify   MessageType = C.GST_MESSAGE_PROPERTY_NOTIFY
+	MessageStreamCollection MessageType = C.GST_MESSAGE_STREAM_COLLECTION
+	MessageStreamsSelected  MessageType = C.GST_MESSAGE_STREAMS_SELECTED
+	MessageRedirect         MessageType = C.GST_MESSAGE_REDIRECT
+	MessageDeviceChanged    MessageType = C.GST_MESSAGE_DEVICE_CHANGED
+	MessageAny              MessageType = C.GST_MESSAGE_ANY
 )
 
 // PadDirection is a cast of GstPadDirection to a go type.
@@ -217,3 +248,37 @@ const (
 	MapWrite    MapFlags = C.GST_MAP_WRITE     // (2) - map for write access
 	MapFlagLast MapFlags = C.GST_MAP_FLAG_LAST // (65536) – first flag that can be used for custom purposes
 )
+
+// StreamStatusType represents a type of change in a stream's status
+type StreamStatusType int
+
+// Type castings of the stream status types
+const (
+	StreamStatusCreate  = C.GST_STREAM_STATUS_TYPE_CREATE  // (0) – A new thread need to be created.
+	StreamStatusEnter   = C.GST_STREAM_STATUS_TYPE_ENTER   // (1) – a thread entered its loop function
+	StreamStatusLeave   = C.GST_STREAM_STATUS_TYPE_LEAVE   // (2) – a thread left its loop function
+	StreamStatusDestroy = C.GST_STREAM_STATUS_TYPE_DESTROY // (3) – a thread is destroyed
+	StreamStatusStart   = C.GST_STREAM_STATUS_TYPE_START   // (8) – a thread is started
+	StreamStatusPause   = C.GST_STREAM_STATUS_TYPE_PAUSE   // (9) – a thread is paused
+	StreamStatusStop    = C.GST_STREAM_STATUS_TYPE_STOP    // (10) – a thread is stopped
+)
+
+func (s StreamStatusType) String() string {
+	switch s {
+	case StreamStatusCreate:
+		return "A new thread needs to be created"
+	case StreamStatusEnter:
+		return "A thread has entered its loop function"
+	case StreamStatusLeave:
+		return "A thread has left its loop function"
+	case StreamStatusDestroy:
+		return "A thread has been destroyed"
+	case StreamStatusStart:
+		return "A thread has started"
+	case StreamStatusPause:
+		return "A thread has paused"
+	case StreamStatusStop:
+		return "A thread has stopped"
+	}
+	return ""
+}

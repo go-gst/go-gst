@@ -4,8 +4,12 @@ package gst
 import "C"
 
 import (
+	"fmt"
 	"strings"
+	"time"
 	"unsafe"
+
+	"github.com/gotk3/gotk3/glib"
 )
 
 // Message is a Go wrapper around a GstMessage. It provides convenience methods for
@@ -14,8 +18,85 @@ type Message struct {
 	msg *C.GstMessage
 }
 
+// String implements a stringer on the message. It iterates over the type of the message
+// and applies the correct parser, then dumps a string of the basic contents of the
+// message. This function can be expensive and should only be used for debugging purposes
+// or in routines where latency is not a concern.
+func (m *Message) String() string {
+	msg := fmt.Sprintf("[%s] %s - ", m.Source(), strings.ToUpper(m.TypeName()))
+	switch m.Type() {
+	case MessageEOS:
+		msg += "End-of-stream reached in the pipeline"
+	case MessageInfo:
+		msg += m.parseToError().Message()
+	case MessageWarning:
+		msg += m.parseToError().Message()
+	case MessageError:
+		msg += m.parseToError().Message()
+	case MessageTag:
+		tags := m.ParseTags()
+		if tags != nil {
+			defer tags.Unref()
+			msg += tags.String()
+		}
+	case MessageBuffering:
+	case MessageStateChanged:
+		oldState, newState := m.ParseStateChanged()
+		msg += fmt.Sprintf("State changed from %s to %s", oldState.String(), newState.String())
+	case MessageStateDirty:
+	case MessageStepDone:
+	case MessageClockProvide:
+	case MessageClockLost:
+		msg += "Lost a clock"
+	case MessageNewClock:
+		msg += "Received a new clock"
+	case MessageStructureChange:
+	case MessageStreamStatus:
+		statusType, elem := m.ParseStreamStatus()
+		msg += fmt.Sprintf("Stream status from %s: %s", elem.Name(), statusType.String())
+	case MessageApplication:
+	case MessageElement:
+	case MessageSegmentStart:
+	case MessageSegmentDone:
+	case MessageDurationChanged:
+	case MessageLatency:
+	case MessageAsyncStart:
+	case MessageAsyncDone:
+		msg += "Async task completed"
+		if dur := m.ParseAsyncDone(); dur > 0 {
+			msg += fmt.Sprintf(" in %s", dur.String())
+		}
+	case MessageRequestState:
+	case MessageStepStart:
+	case MessageQOS:
+	case MessageProgress:
+	case MessageTOC:
+	case MessageResetTime:
+	case MessageStreamStart:
+		msg += "Pipeline stream is starting"
+	case MessageNeedContext:
+	case MessageHaveContext:
+	case MessageExtended:
+	case MessageDeviceAdded:
+	case MessageDeviceRemoved:
+	case MessagePropertyNotify:
+	case MessageStreamCollection:
+	case MessageStreamsSelected:
+	case MessageRedirect:
+	case MessageDeviceChanged:
+	case MessageUnknown:
+		msg += "Unknown message type"
+	case MessageAny:
+		msg += "Message did not match any known types"
+	}
+	return msg
+}
+
 // Instance returns the underlying GstMessage object.
 func (m *Message) Instance() *C.GstMessage { return C.toGstMessage(unsafe.Pointer(m.msg)) }
+
+// Source returns the source of the message.
+func (m *Message) Source() string { return C.GoString(m.Instance().src.name) }
 
 // Type returns the MessageType of the message.
 func (m *Message) Type() MessageType {
@@ -51,9 +132,9 @@ func (m *Message) GetStructure() *Structure {
 	return wrapStructure(st)
 }
 
-// parseToError returns a new GoGError from this message instance. There are multiple
+// parseToError returns a new GError from this message instance. There are multiple
 // message types that parse to this interface.
-func (m *Message) parseToError() *GoGError {
+func (m *Message) parseToError() *GError {
 	var gerr *C.GError
 	var debugInfo *C.gchar
 
@@ -75,7 +156,7 @@ func (m *Message) parseToError() *GoGError {
 	// take over from here.
 	defer C.g_error_free((*C.GError)(gerr))
 	defer C.g_free((C.gpointer)(debugInfo))
-	return &GoGError{
+	return &GError{
 		errMsg:    C.GoString(gerr.message),
 		structure: m.GetStructure(),
 		debugStr:  strings.TrimSpace(C.GoString((*C.gchar)(debugInfo))),
@@ -84,19 +165,19 @@ func (m *Message) parseToError() *GoGError {
 
 // ParseInfo is identical to ParseError. The returned types are the same. However,
 // this is intended for use with GstMessageType `GST_MESSAGE_INFO`.
-func (m *Message) ParseInfo() *GoGError {
+func (m *Message) ParseInfo() *GError {
 	return m.parseToError()
 }
 
 // ParseWarning is identical to ParseError. The returned types are the same. However,
 // this is intended for use with GstMessageType `GST_MESSAGE_WARNING`.
-func (m *Message) ParseWarning() *GoGError {
+func (m *Message) ParseWarning() *GError {
 	return m.parseToError()
 }
 
-// ParseError will return a GoGError from the contents of this message. This will only work
+// ParseError will return a GError from the contents of this message. This will only work
 // if the GstMessageType is `GST_MESSAGE_ERROR`.
-func (m *Message) ParseError() *GoGError {
+func (m *Message) ParseError() *GError {
 	return m.parseToError()
 }
 
@@ -108,6 +189,37 @@ func (m *Message) ParseStateChanged() (oldState, newState State) {
 	oldState = State(gOldState)
 	newState = State(gNewState)
 	return
+}
+
+// ParseTags extracts the tag list from the GstMessage. Tags are copied and should be
+// unrefed after usage.
+func (m *Message) ParseTags() *TagList {
+	var tagList *C.GstTagList
+	C.gst_message_parse_tag((*C.GstMessage)(m.Instance()), &tagList)
+	if tagList == nil {
+		return nil
+	}
+	return wrapTagList(tagList)
+}
+
+// ParseStreamStatus parses the stream status type of the message as well as the element
+// that produced it. The element returned should NOT be unrefed.
+func (m *Message) ParseStreamStatus() (StreamStatusType, *Element) {
+	var cElem *C.GstElement
+	var cStatusType C.GstStreamStatusType
+	C.gst_message_parse_stream_status(
+		(*C.GstMessage)(m.Instance()),
+		(*C.GstStreamStatusType)(&cStatusType),
+		(**C.GstElement)(&cElem),
+	)
+	return StreamStatusType(cStatusType), wrapElement(glib.Take(unsafe.Pointer(cElem)))
+}
+
+// ParseAsyncDone extracts the running time from the async task done message.
+func (m *Message) ParseAsyncDone() time.Duration {
+	var clockTime C.GstClockTime
+	C.gst_message_parse_async_done((*C.GstMessage)(m.Instance()), &clockTime)
+	return nanosecondsToDuration(uint64(clockTime))
 }
 
 // Unref will call `gst_message_unref` on the underlying GstMessage, freeing it from memory.
@@ -127,22 +239,22 @@ func (m *Message) Copy() *Message {
 	return wrapMessage(newNative)
 }
 
-// GoGError is a Go wrapper for a C GError. It implements the error interface
+// GError is a Go wrapper for a C GError. It implements the error interface
 // and provides additional functions for retrieving debug strings and details.
-type GoGError struct {
+type GError struct {
 	errMsg, debugStr string
 	structure        *Structure
 }
 
 // Message is an alias to `Error()`. It's for clarity when this object
 // is parsed from a `GST_MESSAGE_INFO` or `GST_MESSAGE_WARNING`.
-func (e *GoGError) Message() string { return e.Error() }
+func (e *GError) Message() string { return e.Error() }
 
 // Error implements the error interface and returns the error message.
-func (e *GoGError) Error() string { return e.errMsg }
+func (e *GError) Error() string { return e.errMsg }
 
 // DebugString returns any debug info alongside the error.
-func (e *GoGError) DebugString() string { return e.debugStr }
+func (e *GError) DebugString() string { return e.debugStr }
 
 // Structure returns the structure of the error message which may contain additional metadata.
-func (e *GoGError) Structure() *Structure { return e.structure }
+func (e *GError) Structure() *Structure { return e.structure }
