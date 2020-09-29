@@ -28,6 +28,9 @@ import (
 	gopointer "github.com/mattn/go-pointer"
 )
 
+// GetMaxBufferMemory returns the maximum amount of memory a buffer can hold.
+func GetMaxBufferMemory() uint64 { return uint64(C.gst_buffer_get_max_memory()) }
+
 // Buffer is a go representation of a GstBuffer.
 type Buffer struct {
 	ptr *C.GstBuffer
@@ -128,7 +131,7 @@ func (b *Buffer) Reader() io.Reader { return bytes.NewBuffer(b.Bytes()) }
 
 // Bytes returns a byte slice of the data inside this buffer.
 func (b *Buffer) Bytes() []byte {
-	mapInfo := b.Map()
+	mapInfo := b.Map(MapRead)
 	if mapInfo.ptr == nil {
 		return nil
 	}
@@ -175,19 +178,6 @@ func (b *Buffer) Offset() int64 { return int64(b.Instance().offset) }
 // OffsetEnd returns the last offset contained in this buffer. It has the same format as Offset.
 func (b *Buffer) OffsetEnd() int64 { return int64(b.Instance().offset_end) }
 
-// Map will map the data inside this buffer.
-func (b *Buffer) Map() *MapInfo {
-	var mapInfo C.GstMapInfo
-	C.gst_buffer_map(
-		(*C.GstBuffer)(b.Instance()),
-		(*C.GstMapInfo)(unsafe.Pointer(&mapInfo)),
-		C.GST_MAP_READ,
-	)
-	return wrapMapInfo(&mapInfo, func() {
-		C.gst_buffer_unmap(b.Instance(), (*C.GstMapInfo)(unsafe.Pointer(&mapInfo)))
-	})
-}
-
 // AddMeta adds metadata for info to the buffer using the parameters in params. The given
 // parameters are passed to the MetaInfo's init function, and as such will only work
 // for MetaInfo objects created from the go runtime.
@@ -218,13 +208,6 @@ func (b *Buffer) AddMeta(info *MetaInfo, params interface{}) *Meta {
 	if meta == nil {
 		return nil
 	}
-	return wrapMeta(meta)
-}
-
-// GetMeta retrieves the metadata on the buffer for the given api. If none exists
-// then nil is returned.
-func (b *Buffer) GetMeta(api glib.Type) *Meta {
-	meta := C.gst_buffer_get_meta(b.Instance(), C.GType(api))
 	return wrapMeta(meta)
 }
 
@@ -393,4 +376,234 @@ func (b *Buffer) ForEachMeta(f func(meta *Meta) bool) bool {
 		C.GstBufferForeachMetaFunc(C.cgoBufferMetaForEachCb),
 		(C.gpointer)(unsafe.Pointer(fPtr)),
 	))
+}
+
+// GetAllMemory retrieves all the memory inside this buffer.
+func (b *Buffer) GetAllMemory() *Memory {
+	return wrapMemory(C.gst_buffer_get_all_memory(b.Instance()))
+}
+
+// GetFlags returns the flags on this buffer.
+func (b *Buffer) GetFlags() BufferFlags {
+	return BufferFlags(C.gst_buffer_get_flags(b.Instance()))
+}
+
+// GetMemory retrieves the memory block at the given index in the buffer.
+func (b *Buffer) GetMemory(idx uint) *Memory {
+	mem := C.gst_buffer_get_memory(b.Instance(), C.guint(idx))
+	if mem == nil {
+		return nil
+	}
+	return wrapMemory(mem)
+}
+
+// GetMemoryRange retrieves length memory blocks in buffer starting at idx. The memory blocks
+// will be merged into one large Memory. If length is -1, all memory starting from idx is merged.
+func (b *Buffer) GetMemoryRange(idx uint, length int) *Memory {
+	mem := C.gst_buffer_get_memory_range(b.Instance(), C.guint(idx), C.gint(length))
+	if mem == nil {
+		return nil
+	}
+	return wrapMemory(mem)
+}
+
+// GetMeta retrieves the metadata for the given api on buffer. When there is no such metadata,
+// nil is returned. If multiple metadata with the given api are attached to this buffer only the
+// first one is returned. To handle multiple metadata with a given API use ForEachMeta instead
+// and check the type.
+func (b *Buffer) GetMeta(api glib.Type) *Meta {
+	meta := C.gst_buffer_get_meta(b.Instance(), C.GType(api))
+	if meta == nil {
+		return nil
+	}
+	return wrapMeta(meta)
+}
+
+// GetNumMetas returns the number of metas for the given api type on the buffer.
+func (b *Buffer) GetNumMetas(api glib.Type) uint {
+	return uint(C.gst_buffer_get_n_meta(b.Instance(), C.GType(api)))
+}
+
+// GetReferenceTimestampMeta finds the first ReferenceTimestampMeta on the buffer that conforms to
+// reference. Conformance is tested by checking if the meta's reference is a subset of reference.
+//
+// Buffers can contain multiple ReferenceTimestampMeta metadata items.
+func (b *Buffer) GetReferenceTimestampMeta(caps *Caps) *ReferenceTimestampMeta {
+	meta := C.gst_buffer_get_reference_timestamp_meta(b.Instance(), caps.Instance())
+	if meta == nil {
+		return nil
+	}
+	return &ReferenceTimestampMeta{
+		Parent:    wrapMeta(&meta.parent),
+		Reference: wrapCaps(meta.reference),
+		Timestamp: clockTimeToDuration(ClockTime(meta.timestamp)),
+		Duration:  clockTimeToDuration(ClockTime(meta.duration)),
+	}
+}
+
+// GetSize retrieves the number of Memory blocks in the bffer.
+func (b *Buffer) GetSize() int64 {
+	return int64(C.gst_buffer_get_size(b.Instance()))
+}
+
+// GetSizes will retrieve the size of the buffer, the offset of the first memory block in the buffer,
+// and the sum of the size of the buffer, the offset, and any padding. These values can be used to
+// resize the buffer with Resize.
+func (b *Buffer) GetSizes() (size, offset, maxsize int64) {
+	var goffset, gmaxsize C.gsize
+	gsize := C.gst_buffer_get_sizes(b.Instance(), &goffset, &gmaxsize)
+	return int64(gsize), int64(goffset), int64(gmaxsize)
+}
+
+// GetSizesRange will get the total size of length memory blocks stating from idx in buffer.
+//
+// Offset will contain the offset of the data in the memory block in buffer at idx and maxsize will
+// contain the sum of the size and offset and the amount of extra padding on the memory block at
+// idx + length -1. Offset and maxsize can be used to resize the buffer memory blocks with ResizeRange.
+func (b *Buffer) GetSizesRange(idx uint, length int) (offset, maxsize int64) {
+	var goffset, gmaxsize C.gsize
+	C.gst_buffer_get_sizes_range(b.Instance(), C.guint(idx), C.gint(length), &goffset, &gmaxsize)
+	return int64(goffset), int64(gmaxsize)
+}
+
+// HasFlags returns true if this Buffer has the given BufferFlags.
+func (b *Buffer) HasFlags(flags BufferFlags) bool {
+	return gobool(C.gst_buffer_has_flags(b.Instance(), C.GstBufferFlags(flags)))
+}
+
+// InsertMemory insert the memory block to the buffer at idx. This function takes ownership of the Memory
+// and thus doesn't increase its refcount.
+//
+// Only the value from GetMaxBufferMemory can be added to a buffer. If more memory is added, existing memory
+// blocks will automatically be merged to make room for the new memory.
+func (b *Buffer) InsertMemory(mem *Memory, idx int) {
+	C.gst_buffer_insert_memory(b.Instance(), C.gint(idx), mem.Instance())
+}
+
+// IsAllMemoryWritable checks if all memory blocks in buffer are writable.
+//
+// Note that this function does not check if buffer is writable, use IsWritable to check that if needed.
+func (b *Buffer) IsAllMemoryWritable() bool {
+	return gobool(C.gst_buffer_is_all_memory_writable(b.Instance()))
+}
+
+// IsMemoryRangeWritable checks if length memory blocks in the buffer starting from idx are writable.
+//
+// Length can be -1 to check all the memory blocks after idx.
+//
+// Note that this function does not check if buffer is writable, use IsWritable to check that if needed.
+func (b *Buffer) IsMemoryRangeWritable(idx uint, length int) bool {
+	return gobool(C.gst_buffer_is_memory_range_writable(b.Instance(), C.guint(idx), C.gint(length)))
+}
+
+// IsWritable returns true if this buffer is writable.
+func (b *Buffer) IsWritable() bool {
+	return gobool(C.bufferIsWritable(b.Instance()))
+}
+
+// MakeWritable returns a writable copy of this buffer. If the source buffer is already writable,
+// this will simply return the same buffer.
+//
+// Use this function to ensure that a buffer can be safely modified before making changes to it,
+// including changing the metadata such as PTS/DTS.
+//
+// If the reference count of the source buffer buf is exactly one, the caller is the sole owner and
+// this function will return the buffer object unchanged.
+//
+// If there is more than one reference on the object, a copy will be made using gst_buffer_copy. The passed-in buf
+// will be unreffed in that case, and the caller will now own a reference to the new returned buffer object. Note that
+// this just copies the buffer structure itself, the underlying memory is not copied if it can be shared amongst
+// multiple buffers.
+//
+// In short, this function unrefs the buf in the argument and refs the buffer that it returns. Don't access the argument
+// after calling this function unless you have an additional reference to it.
+func (b *Buffer) MakeWritable() *Buffer {
+	return wrapBuffer(C.makeBufferWritable(b.Instance()))
+}
+
+// IterateMeta retrieves the next Meta after the given one. If state points to nil, the first Meta is returned.
+func (b *Buffer) IterateMeta(meta *Meta) *Meta {
+	ptr := unsafe.Pointer(meta.Instance())
+	return wrapMeta(C.gst_buffer_iterate_meta(b.Instance(), (*C.gpointer)(&ptr)))
+}
+
+// IterateMetaFiltered is similar to IterateMeta except it will filter on the api type.
+func (b *Buffer) IterateMetaFiltered(meta *Meta, apiType glib.Type) *Meta {
+	ptr := unsafe.Pointer(meta.Instance())
+	return wrapMeta(C.gst_buffer_iterate_meta_filtered(b.Instance(), (*C.gpointer)(&ptr), C.GType(apiType)))
+}
+
+// Map will map the data inside this buffer. Unmap after usage.
+func (b *Buffer) Map(flags MapFlags) *MapInfo {
+	var mapInfo C.GstMapInfo
+	C.gst_buffer_map(
+		(*C.GstBuffer)(b.Instance()),
+		(*C.GstMapInfo)(unsafe.Pointer(&mapInfo)),
+		C.GstMapFlags(flags),
+	)
+	return wrapMapInfo(&mapInfo, func() {
+		C.gst_buffer_unmap(b.Instance(), (*C.GstMapInfo)(unsafe.Pointer(&mapInfo)))
+	})
+}
+
+// MapRange maps the info of length merged memory blocks starting at idx in buffer.
+// When length is -1, all memory blocks starting from idx are merged and mapped.
+//
+// Flags describe the desired access of the memory. When flags is MapWrite, buffer should be writable (as returned from IsWritable).
+//
+// When the buffer is writable but the memory isn't, a writable copy will automatically be
+// created and returned. The readonly copy of the buffer memory will then also be replaced with this writable copy.
+//
+// Unmap after usage.
+func (b *Buffer) MapRange(idx uint, length int, flags MapFlags) *MapInfo {
+	var mapInfo C.GstMapInfo
+	C.gst_buffer_map_range(
+		(*C.GstBuffer)(b.Instance()),
+		C.guint(idx), C.gint(length),
+		(*C.GstMapInfo)(unsafe.Pointer(&mapInfo)),
+		C.GstMapFlags(flags),
+	)
+	return wrapMapInfo(&mapInfo, func() {
+		C.gst_buffer_unmap(b.Instance(), (*C.GstMapInfo)(unsafe.Pointer(&mapInfo)))
+	})
+}
+
+// Memset fills buf with size bytes with val starting from offset. It returns the
+// size written to the buffer.
+func (b *Buffer) Memset(offset int64, val uint8, size int64) int64 {
+	return int64(C.gst_buffer_memset(b.Instance(), C.gsize(offset), C.guint8(val), C.gsize(size)))
+}
+
+// NumMemoryBlocks returns the number of memory blocks this buffer has.
+func (b *Buffer) NumMemoryBlocks() uint { return uint(C.gst_buffer_n_memory(b.Instance())) }
+
+// PeekMemory gets the memory block at idx in buffer. The memory block stays valid until the
+// memory block is removed, replaced, or merged. Typically with any call that modifies the memory in buffer.
+func (b *Buffer) PeekMemory(idx uint) *Memory {
+	mem := C.gst_buffer_peek_memory(b.Instance(), C.guint(idx))
+	if mem == nil {
+		return nil
+	}
+	return wrapMemory(mem)
+}
+
+// PrependMemory prepends the memory block mem to this buffer. This function takes ownership of
+// mem and thus doesn't increase its refcount.
+//
+// This function is identical to InsertMemory with an index of 0.
+func (b *Buffer) PrependMemory(mem *Memory) {
+	C.gst_buffer_prepend_memory(b.Instance(), mem.Instance())
+}
+
+// RemoveAllMemory removes all memory blocks in the buffer.
+func (b *Buffer) RemoveAllMemory() { C.gst_buffer_remove_all_memory(b.Instance()) }
+
+// RemoveMemoryAt removes the memory block at the given index.
+func (b *Buffer) RemoveMemoryAt(idx uint) { C.gst_buffer_remove_memory(b.Instance(), C.guint(idx)) }
+
+// RemoveMemoryRange removes length memory blocks in buffer starting from idx.
+//
+// Length can be -1, in which case all memory starting from idx is removed.
+func (b *Buffer) RemoveMemoryRange(idx uint, length int) {
+	C.gst_buffer_remove_memory_range(b.Instance(), C.guint(idx), C.gint(length))
 }

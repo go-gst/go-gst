@@ -48,6 +48,10 @@ func init() {
 
 		// Objects/Interfaces
 		{
+			T: glib.Type(C.gst_buffer_get_type()),
+			F: marshalBuffer,
+		},
+		{
 			T: glib.Type(C.gst_pipeline_get_type()),
 			F: marshalPipeline,
 		},
@@ -270,4 +274,9 @@ func marshalAtomicQueue(p uintptr) (interface{}, error) {
 	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
 	obj := (*C.GstAtomicQueue)(unsafe.Pointer(c))
 	return wrapAtomicQueue(obj), nil
+}
+
+func marshalBuffer(p uintptr) (interface{}, error) {
+	c := C.getBufferValue((*C.GValue)(unsafe.Pointer(p)))
+	return wrapBuffer(c), nil
 }

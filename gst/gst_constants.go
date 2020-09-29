@@ -18,6 +18,26 @@ const (
 	BufferOffsetNone ClockTime = C.GST_BUFFER_OFFSET_NONE
 )
 
+// BufferFlags casts GstBufferFlags to a go type.
+type BufferFlags int
+
+// Type castings of BufferFlags
+const (
+	BufferFlagLive         BufferFlags = C.GST_BUFFER_FLAG_LIVE          // (16) – the buffer is live data and should be discarded in the PAUSED state.
+	BufferFlagDecodeOnly   BufferFlags = C.GST_BUFFER_FLAG_DECODE_ONLY   // (32) – the buffer contains data that should be dropped because it will be clipped against the segment boundaries or because it does not contain data that should be shown to the user.
+	BufferFlagDiscont      BufferFlags = C.GST_BUFFER_FLAG_DISCONT       // (64) – the buffer marks a data discontinuity in the stream. This typically occurs after a seek or a dropped buffer from a live or network source.
+	BufferFlagResync       BufferFlags = C.GST_BUFFER_FLAG_RESYNC        // (128) – the buffer timestamps might have a discontinuity and this buffer is a good point to resynchronize.
+	BufferFlagCorrupted    BufferFlags = C.GST_BUFFER_FLAG_CORRUPTED     // (256) – the buffer data is corrupted.
+	BufferFlagMarker       BufferFlags = C.GST_BUFFER_FLAG_MARKER        // (512) – the buffer contains a media specific marker. for video this is the end of a frame boundary, for audio this is the start of a talkspurt.
+	BufferFlagHeader       BufferFlags = C.GST_BUFFER_FLAG_HEADER        // (1024) – the buffer contains header information that is needed to decode the following data.
+	BufferFlagGap          BufferFlags = C.GST_BUFFER_FLAG_GAP           // (2048) – the buffer has been created to fill a gap in the stream and contains media neutral data (elements can switch to optimized code path that ignores the buffer content).
+	BufferFlagDroppable    BufferFlags = C.GST_BUFFER_FLAG_DROPPABLE     // (4096) – the buffer can be dropped without breaking the stream, for example to reduce bandwidth.
+	BufferFlagDeltaUnit    BufferFlags = C.GST_BUFFER_FLAG_DELTA_UNIT    // (8192) – this unit cannot be decoded independently.
+	BufferFlagSyncAfter    BufferFlags = C.GST_BUFFER_FLAG_SYNC_AFTER    // (32768) – Elements which write to disk or permanent storage should ensure the data is synced after writing the contents of this buffer. (Since: 1.6)
+	BufferFlagNonDroppable BufferFlags = C.GST_BUFFER_FLAG_NON_DROPPABLE // (65536) – This buffer is important and should not be dropped. This can be used to mark important buffers, e.g. to flag RTP packets carrying keyframes or codec setup data for RTP Forward Error Correction purposes, or to prevent still video frames from being dropped by elements due to QoS. (Since: 1.14)
+	BufferFlagLast         BufferFlags = C.GST_BUFFER_FLAG_LAST          // (1048576) – additional media specific flags can be added starting from this flag.
+)
+
 // BufferCopyFlags casts GstBufferCopyFlags to a go type.
 type BufferCopyFlags int
 

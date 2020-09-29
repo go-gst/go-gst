@@ -36,6 +36,23 @@ inline GstStructure *         toGstStructure         (void *p) { return (GST_STR
 inline GstURIHandler *        toGstURIHandler        (void *p) { return (GST_URI_HANDLER(p)); }
 inline GstUri *               toGstURI               (void *p) { return (GST_URI(p)); }
 
+/* Buffer Utilities */
+
+inline GstBuffer * getBufferValue (GValue * val)
+{
+	return gst_value_get_buffer(val);
+}
+
+inline gboolean bufferIsWritable (GstBuffer * buf)
+{
+	return (gst_buffer_is_writable(buf));
+}
+
+inline GstBuffer * makeBufferWritable (GstBuffer * buf)
+{
+	return (gst_buffer_make_writable(buf));
+}
+
 /* Object Utilities */
 
 inline GObjectClass *  getGObjectClass         (void * p)                               { return (G_OBJECT_GET_CLASS(p)); }
