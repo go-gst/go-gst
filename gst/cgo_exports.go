@@ -13,6 +13,13 @@ import (
 	gopointer "github.com/mattn/go-pointer"
 )
 
+//export goBufferMetaForEachCb
+func goBufferMetaForEachCb(buf *C.GstBuffer, meta **C.GstMeta, userData C.gpointer) C.gboolean {
+	cbIface := gopointer.Restore(unsafe.Pointer(userData))
+	cbFunc := cbIface.(func(*Meta) bool)
+	return gboolean(cbFunc(wrapMeta(*meta)))
+}
+
 //export structForEachCb
 func structForEachCb(fieldID C.GQuark, val *C.GValue, chPtr C.gpointer) C.gboolean {
 	ptr := gopointer.Restore(unsafe.Pointer(chPtr))

@@ -3,10 +3,16 @@ package gst
 /*
 #include "gst.go.h"
 
-extern void goGDestroyNotifyFunc (gpointer data);
+extern void      goGDestroyNotifyFunc  (gpointer data);
+extern gboolean  goBufferMetaForEachCb (GstBuffer * buffer, GstMeta ** meta, gpointer user_data);
 
 void cgoDestroyNotifyFunc (gpointer data) {
 	goGDestroyNotifyFunc(data);
+}
+
+gboolean cgoBufferMetaForEachCb (GstBuffer * buffer, GstMeta ** meta, gpointer user_data)
+{
+	return goBufferMetaForEachCb(buffer, meta, user_data);
 }
 */
 import "C"
@@ -220,4 +226,171 @@ func (b *Buffer) AddMeta(info *MetaInfo, params interface{}) *Meta {
 func (b *Buffer) GetMeta(api glib.Type) *Meta {
 	meta := C.gst_buffer_get_meta(b.Instance(), C.GType(api))
 	return wrapMeta(meta)
+}
+
+// ParentBufferMeta is a go representation of a GstParentBufferMeta
+type ParentBufferMeta struct {
+	Parent *Meta
+	Buffer *Buffer
+}
+
+// AddParentMeta adds a ParentBufferMeta to this buffer that holds a parent reference
+// on the given buffer until the it is freed.
+func (b *Buffer) AddParentMeta(buf *Buffer) *ParentBufferMeta {
+	meta := C.gst_buffer_add_parent_buffer_meta(b.Instance(), buf.Instance())
+	return &ParentBufferMeta{
+		Parent: wrapMeta(&meta.parent),
+		Buffer: wrapBuffer(meta.buffer),
+	}
+}
+
+// AddProtectionMeta attaches ProtectionMeta to this buffer. The structure contains
+// cryptographic information relating to the sample contained in the buffer. This
+// function takes ownership of the structure.
+func (b *Buffer) AddProtectionMeta(info *Structure) *ProtectionMeta {
+	meta := C.gst_buffer_add_protection_meta(b.Instance(), info.Instance())
+	return &ProtectionMeta{
+		Meta: wrapMeta(&meta.meta),
+		Info: wrapStructure(meta.info),
+	}
+}
+
+// ReferenceTimestampMeta is a go representation of a GstReferenceTimestampMeta.
+type ReferenceTimestampMeta struct {
+	Parent              *Meta
+	Reference           *Caps
+	Timestamp, Duration time.Duration
+}
+
+// AddReferenceTimestampMeta adds a ReferenceTimestampMeta to this buffer that holds a
+// timestamp and optional duration (specify -1 to omit) based on a specific timestamp reference.
+//
+// See the documentation of GstReferenceTimestampMeta for details.
+// https://gstreamer.freedesktop.org/documentation/gstreamer/gstbuffer.html?gi-language=c#GstReferenceTimestampMeta
+func (b *Buffer) AddReferenceTimestampMeta(ref *Caps, timestamp, duration time.Duration) *ReferenceTimestampMeta {
+	durClockTime := C.GstClockTime(C.GST_CLOCK_TIME_NONE)
+	if duration > time.Duration(0) {
+		durClockTime = C.GstClockTime(duration.Nanoseconds())
+	}
+	tsClockTime := C.GstClockTime(timestamp.Nanoseconds())
+	meta := C.gst_buffer_add_reference_timestamp_meta(b.Instance(), ref.Instance(), tsClockTime, durClockTime)
+	return &ReferenceTimestampMeta{
+		Parent:    wrapMeta(&meta.parent),
+		Reference: wrapCaps(meta.reference),
+		Timestamp: clockTimeToDuration(ClockTime(meta.timestamp)),
+		Duration:  clockTimeToDuration(ClockTime(meta.duration)),
+	}
+}
+
+// Append will append all the memory from the given buffer to this one. The result buffer will
+// contain a concatenation of the memory of the two buffers.
+func (b *Buffer) Append(buf *Buffer) *Buffer {
+	return wrapBuffer(C.gst_buffer_append(b.Instance(), buf.Instance()))
+}
+
+// AppendMemory append the memory block to this buffer. This function takes ownership of
+// the memory and thus doesn't increase its refcount.
+//
+// This function is identical to InsertMemory with an index of -1.
+func (b *Buffer) AppendMemory(mem *Memory) {
+	C.gst_buffer_append_memory(b.Instance(), mem.Instance())
+}
+
+// AppendRegion will append size bytes at offset from the given buffer to this one. The result
+// buffer will contain a concatenation of the memory of this buffer and the requested region of
+// the one provided.
+func (b *Buffer) AppendRegion(buf *Buffer, offset, size int64) *Buffer {
+	newbuf := C.gst_buffer_append_region(b.Instance(), buf.Instance(), C.gssize(offset), C.gssize(size))
+	return wrapBuffer(newbuf)
+}
+
+// Copy creates a copy of this buffer. This will only copy the buffer's data to a newly allocated
+// Memory if needed (if the type of memory requires it), otherwise the underlying data is just referenced.
+// Check DeepCopy if you want to force the data to be copied to newly allocated Memory.
+func (b *Buffer) Copy() *Buffer { return wrapBuffer(C.gst_buffer_copy(b.Instance())) }
+
+// DeepCopy creates a copy of the given buffer. This will make a newly allocated copy of the data
+// the source buffer contains.
+func (b *Buffer) DeepCopy() *Buffer { return wrapBuffer(C.gst_buffer_copy_deep(b.Instance())) }
+
+// CopyInto copies the information from this buffer into the given one. If the given buffer already
+// contains memory and flags contains BufferCopyMemory, the memory from this one will be appended to
+// that provided.
+//
+// Flags indicate which fields will be copied. Offset and size dictate from where and how much memory
+// is copied. If size is -1 then all data is copied. The function returns true if the copy was successful.
+func (b *Buffer) CopyInto(dest *Buffer, flags BufferCopyFlags, offset, size int64) bool {
+	ok := C.gst_buffer_copy_into(
+		dest.Instance(),
+		b.Instance(),
+		C.GstBufferCopyFlags(flags),
+		C.gsize(offset),
+		C.gsize(size),
+	)
+	return gobool(ok)
+}
+
+// CopyRegion creates a sub-buffer from this one at offset and size. This sub-buffer uses the actual memory
+// space of the parent buffer. This function will copy the offset and timestamp fields when the offset is 0.
+// If not, they will be set to ClockTimeNone and BufferOffsetNone.
+//
+// If offset equals 0 and size equals the total size of buffer, the duration and offset end fields are also
+// copied. If not they will be set to ClockTimeNone and BufferOffsetNone.
+func (b *Buffer) CopyRegion(flags BufferCopyFlags, offset, size int64) *Buffer {
+	newbuf := C.gst_buffer_copy_region(
+		b.Instance(),
+		C.GstBufferCopyFlags(flags),
+		C.gsize(offset),
+		C.gsize(size),
+	)
+	return wrapBuffer(newbuf)
+}
+
+// Extract extracts size bytes starting from offset in this buffer. The data extracted may be lower
+// than the actual size if the buffer did not contain enough data.
+func (b *Buffer) Extract(offset, size int64) []byte {
+	dest := C.malloc(C.sizeof_char * C.ulong(size))
+	defer C.free(dest)
+	C.gst_buffer_extract(b.Instance(), C.gsize(offset), (C.gpointer)(unsafe.Pointer(dest)), C.gsize(size))
+	return C.GoBytes(dest, C.int(size))
+}
+
+// Fill adds the given byte slice to the buffer at the given offset. The return value reflects the amount
+// of data added to the buffer.
+func (b *Buffer) Fill(offset int64, data []byte) int64 {
+	str := string(data)
+	cStr := C.CString(str)
+	gsize := C.gst_buffer_fill(b.Instance(), C.gsize(offset), (C.gconstpointer)(unsafe.Pointer(cStr)), C.gsize(len(str)))
+	return int64(gsize)
+}
+
+// FindMemory looks for the memory blocks that span size bytes starting from offset in buffer. Size can be -1
+// to retrieve all the memory blocks.
+//
+// Index will contain the index of the first memory block where the byte for offset can be found and length
+// contains the number of memory blocks containing the size remaining bytes. Skip contains the number of bytes
+// to skip in the memory block at index to get to the byte for offset. All values will be 0 if the memory blocks
+// could not be read.
+func (b *Buffer) FindMemory(offset, size int64) (index, length uint, skip int64) {
+	var gindex, glength C.uint
+	var gskip C.gsize
+	ok := C.gst_buffer_find_memory(b.Instance(), C.gsize(offset), C.gsize(size), &gindex, &glength, &gskip)
+	if !gobool(ok) {
+		return
+	}
+	return uint(gindex), uint(glength), int64(gskip)
+}
+
+// ForEachMeta calls the given function for each Meta in this buffer.
+//
+// The function can modify the passed meta pointer or its contents. The return value defines if this function continues
+// or if the remaining metadata items in the buffer should be skipped.
+func (b *Buffer) ForEachMeta(f func(meta *Meta) bool) bool {
+	fPtr := gopointer.Save(f)
+	defer gopointer.Unref(fPtr)
+	return gobool(C.gst_buffer_foreach_meta(
+		b.Instance(),
+		C.GstBufferForeachMetaFunc(C.cgoBufferMetaForEachCb),
+		(C.gpointer)(unsafe.Pointer(fPtr)),
+	))
 }

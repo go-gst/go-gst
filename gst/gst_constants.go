@@ -14,6 +14,22 @@ const (
 	ClockFormat string = "u:%02u:%02u.%09u"
 	// ClockTimeNone means infinite timeout (unsigned representation of -1) or an otherwise unknown value.
 	ClockTimeNone ClockTime = C.GST_CLOCK_TIME_NONE
+	// BufferOffsetNone is a constant for no-offset return results.
+	BufferOffsetNone ClockTime = C.GST_BUFFER_OFFSET_NONE
+)
+
+// BufferCopyFlags casts GstBufferCopyFlags to a go type.
+type BufferCopyFlags int
+
+// Type castings of BufferCopyFlags
+const (
+	BufferCopyNone        BufferCopyFlags = C.GST_BUFFER_COPY_NONE       // (0) – copy nothing
+	BufferCopyBufferFlags BufferCopyFlags = C.GST_BUFFER_COPY_FLAGS      // (1) – flag indicating that buffer flags should be copied
+	BufferCopyTimestamps  BufferCopyFlags = C.GST_BUFFER_COPY_TIMESTAMPS // (2) – flag indicating that buffer pts, dts, duration, offset and offset_end should be copied
+	BufferCopyMeta        BufferCopyFlags = C.GST_BUFFER_COPY_META       // (4) – flag indicating that buffer meta should be copied
+	BufferCopyMemory      BufferCopyFlags = C.GST_BUFFER_COPY_MEMORY     // (8) – flag indicating that buffer memory should be reffed and appended to already existing memory. Unless the memory is marked as NO_SHARE, no actual copy of the memory is made but it is simply reffed. Add GST_BUFFER_COPY_DEEP to force a real copy.
+	BufferCopyMerge       BufferCopyFlags = C.GST_BUFFER_COPY_MERGE      // (16) – flag indicating that buffer memory should be merged
+	BufferCopyDeep        BufferCopyFlags = C.GST_BUFFER_COPY_DEEP       // (32) – flag indicating that memory should always be copied instead of reffed (Since: 1.2)
 )
 
 // BufferingMode is a representation of GstBufferingMode
