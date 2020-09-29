@@ -52,6 +52,18 @@ const (
 	BufferCopyDeep        BufferCopyFlags = C.GST_BUFFER_COPY_DEEP       // (32) – flag indicating that memory should always be copied instead of reffed (Since: 1.2)
 )
 
+// BufferPoolAcquireFlags casts GstBufferPoolAcquireFlags to a go type.
+type BufferPoolAcquireFlags int
+
+// Type castings of BufferPoolAcquireFlags
+const (
+	BufferPoolAcquireFlagNone     BufferPoolAcquireFlags = C.GST_BUFFER_POOL_ACQUIRE_FLAG_NONE     // (0) – no flags
+	BufferPoolAcquireFlagKeyUnit  BufferPoolAcquireFlags = C.GST_BUFFER_POOL_ACQUIRE_FLAG_KEY_UNIT // (1) – buffer is keyframe
+	BufferPoolAcquireFlagDontWait BufferPoolAcquireFlags = C.GST_BUFFER_POOL_ACQUIRE_FLAG_DONTWAIT // (2) – when the bufferpool is empty, acquire_buffer will by default block until a buffer is released into the pool again. Setting this flag makes acquire_buffer return GST_FLOW_EOS instead of blocking.
+	BufferPoolAcquireFlagDiscont  BufferPoolAcquireFlags = C.GST_BUFFER_POOL_ACQUIRE_FLAG_DISCONT  // (4) – buffer is discont
+	BufferPoolAcquireFlagLast     BufferPoolAcquireFlags = C.GST_BUFFER_POOL_ACQUIRE_FLAG_LAST     // (65536) – last flag, subclasses can use private flags starting from this value.
+)
+
 // BufferingMode is a representation of GstBufferingMode
 type BufferingMode int
 

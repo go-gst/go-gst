@@ -13,6 +13,13 @@ import (
 	gopointer "github.com/mattn/go-pointer"
 )
 
+//export goBufferListForEachCb
+func goBufferListForEachCb(buf **C.GstBuffer, idx C.guint, userData C.gpointer) C.gboolean {
+	cbIface := gopointer.Restore(unsafe.Pointer(userData))
+	cbFunc := cbIface.(func(*Buffer, uint) bool)
+	return gboolean(cbFunc(wrapBuffer(*buf), uint(idx)))
+}
+
 //export goBufferMetaForEachCb
 func goBufferMetaForEachCb(buf *C.GstBuffer, meta **C.GstMeta, userData C.gpointer) C.gboolean {
 	cbIface := gopointer.Restore(unsafe.Pointer(userData))

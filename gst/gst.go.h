@@ -9,6 +9,7 @@
 
 inline GstAllocator *         toGstAllocator         (void *p) { return (GST_ALLOCATOR_CAST(p)); }
 inline GstBin *               toGstBin               (void *p) { return (GST_BIN(p)); }
+inline GstBufferList *        toGstBufferList        (void *p) { return (GST_BUFFER_LIST(p)); }
 inline GstBufferPool *        toGstBufferPool        (void *p) { return (GST_BUFFER_POOL(p)); }
 inline GstBuffer *            toGstBuffer            (void *p) { return (GST_BUFFER(p)); }
 inline GstBus *               toGstBus               (void *p) { return (GST_BUS(p)); }
@@ -51,6 +52,35 @@ inline gboolean bufferIsWritable (GstBuffer * buf)
 inline GstBuffer * makeBufferWritable (GstBuffer * buf)
 {
 	return (gst_buffer_make_writable(buf));
+}
+
+inline GType bufferListType ()
+{
+	return GST_TYPE_BUFFER_LIST;
+}
+
+/* BufferList Utilities */
+
+inline gboolean bufferListIsWritable (GstBufferList * bufList)
+{
+	return gst_buffer_list_is_writable(bufList);
+}
+
+inline GstBufferList * makeBufferListWritable (GstBufferList * bufList)
+{
+	return gst_buffer_list_make_writable(bufList);
+}
+
+inline void addToBufferList (GstBufferList * bufList, GstBuffer * buf)
+{
+	gst_buffer_list_add(bufList, buf);
+}
+
+/* BufferPool utilities */
+
+inline gboolean bufferPoolIsFlushing (GstBufferPool * pool)
+{
+	return GST_BUFFER_POOL_IS_FLUSHING(pool);
 }
 
 /* Object Utilities */

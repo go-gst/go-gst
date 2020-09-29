@@ -99,6 +99,10 @@ func init() {
 			T: glib.Type(C.gst_atomic_queue_get_type()),
 			F: marshalAtomicQueue,
 		},
+		{
+			T: glib.Type(C.bufferListType()),
+			F: marshalBufferList,
+		},
 
 		// Boxed
 		{T: glib.Type(C.gst_message_get_type()), F: marshalMessage},
@@ -112,6 +116,8 @@ func wrapAllocator(obj *glib.Object) *Allocator            { return &Allocator{w
 func wrapAtomicQueue(queue *C.GstAtomicQueue) *AtomicQueue { return &AtomicQueue{ptr: queue} }
 func wrapBin(obj *glib.Object) *Bin                        { return &Bin{wrapElement(obj)} }
 func wrapBuffer(buf *C.GstBuffer) *Buffer                  { return &Buffer{ptr: buf} }
+func wrapBufferList(bufList *C.GstBufferList) *BufferList  { return &BufferList{ptr: bufList} }
+func wrapBufferPool(obj *glib.Object) *BufferPool          { return &BufferPool{wrapObject(obj)} }
 func wrapBus(obj *glib.Object) *Bus                        { return &Bus{Object: wrapObject(obj)} }
 func wrapClock(obj *glib.Object) *Clock                    { return &Clock{wrapObject(obj)} }
 func wrapDevice(obj *glib.Object) *Device                  { return &Device{wrapObject(obj)} }
@@ -279,4 +285,10 @@ func marshalAtomicQueue(p uintptr) (interface{}, error) {
 func marshalBuffer(p uintptr) (interface{}, error) {
 	c := C.getBufferValue((*C.GValue)(unsafe.Pointer(p)))
 	return wrapBuffer(c), nil
+}
+
+func marshalBufferList(p uintptr) (interface{}, error) {
+	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
+	obj := (*C.GstBufferList)(unsafe.Pointer(c))
+	return wrapBufferList(obj), nil
 }
