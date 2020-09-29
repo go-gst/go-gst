@@ -14,8 +14,33 @@ type AtomicQueue struct {
 	ptr *C.GstAtomicQueue
 }
 
-// NewAtomicQueue creates a new atomic queue with the given size. The size will
-// be rounded up to the nearest power of 2 and used as the initial size of the queue.
+/*
+NewAtomicQueue creates a new atomic queue with the given size. The size will
+be rounded up to the nearest power of 2 and used as the initial size of the queue.
+
+Example
+
+	queue := gst.NewAtomicQueue(2)
+
+	defer queue.Unref()
+
+	queue.Push("hello world")
+
+	fmt.Println("There are", queue.Length(), "item(s) in the queue")
+
+	peeked := queue.Peek()
+	str := peeked.(string)
+	fmt.Println("Head item in queue is:", str)
+
+	fmt.Println("There are", queue.Length(), "item(s) in the queue")
+
+	popped := queue.Pop()
+	str = popped.(string)
+	fmt.Println("Head item in queue was:", str)
+
+	fmt.Println("There are", queue.Length(), "item(s) in the queue")
+
+*/
 func NewAtomicQueue(size int) *AtomicQueue {
 	return wrapAtomicQueue(C.gst_atomic_queue_new(C.guint(size)))
 }
