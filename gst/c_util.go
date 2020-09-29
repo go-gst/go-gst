@@ -31,6 +31,16 @@ func goStrings(argc C.int, argv **C.gchar) []string {
 	return gostrings
 }
 
+func gcharStrings(strs []string) **C.gchar {
+	gcharSlc := make([]*C.gchar, len(strs))
+	for _, s := range strs {
+		cStr := C.CString(s)
+		defer C.free(unsafe.Pointer(cStr))
+		gcharSlc = append(gcharSlc, cStr)
+	}
+	return &gcharSlc[0]
+}
+
 // newQuarkFromString creates a new GQuark (or returns an existing one) for the given
 // string
 func newQuarkFromString(str string) C.uint {
@@ -38,4 +48,8 @@ func newQuarkFromString(str string) C.uint {
 	defer C.free(unsafe.Pointer(cstr))
 	quark := C.g_quark_from_string(cstr)
 	return quark
+}
+
+func quarkToString(q C.GQuark) string {
+	return C.GoString(C.g_quark_to_string(q))
 }

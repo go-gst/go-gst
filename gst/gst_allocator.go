@@ -24,6 +24,9 @@ func NewAllocationParams() *AllocationParams {
 	return params
 }
 
+// Instance returns the underlying GstAllocationParams.
+func (a *AllocationParams) Instance() *C.GstAllocationParams { return a.ptr }
+
 // Init initializes these AllocationParams to their original values.
 func (a *AllocationParams) Init() { C.gst_allocation_params_init(a.ptr) }
 

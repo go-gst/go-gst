@@ -56,3 +56,55 @@ func goBusFunc(bus *C.GstBus, cMsg *C.GstMessage, userData C.gpointer) C.gboolea
 
 	return gboolean(true)
 }
+
+func getMetaInfoCbFuncs(meta *C.GstMeta) *MetaInfoCallbackFuncs {
+	return registeredMetas[glib.Type(meta.info._type)]
+}
+
+//export goMetaFreeFunc
+func goMetaFreeFunc(meta *C.GstMeta, buf *C.GstBuffer) {
+	cbFuncs := getMetaInfoCbFuncs(meta)
+	if cbFuncs != nil && cbFuncs.FreeFunc != nil {
+		cbFuncs.FreeFunc(wrapBuffer(buf))
+	}
+}
+
+//export goMetaInitFunc
+func goMetaInitFunc(meta *C.GstMeta, params C.gpointer, buf *C.GstBuffer) C.gboolean {
+	cbFuncs := getMetaInfoCbFuncs(meta)
+	if cbFuncs != nil && cbFuncs.InitFunc != nil {
+		paramsIface := gopointer.Restore(unsafe.Pointer(params))
+		defer gopointer.Unref(unsafe.Pointer(params))
+		return gboolean(cbFuncs.InitFunc(paramsIface, wrapBuffer(buf)))
+	}
+	return gboolean(true)
+}
+
+//export goMetaTransformFunc
+func goMetaTransformFunc(transBuf *C.GstBuffer, meta *C.GstMeta, buffer *C.GstBuffer, mType C.GQuark, data C.gpointer) C.gboolean {
+	cbFuncs := getMetaInfoCbFuncs(meta)
+	if cbFuncs != nil && cbFuncs.TransformFunc != nil {
+		transformData := (*C.GstMetaTransformCopy)(unsafe.Pointer(data))
+		return gboolean(cbFuncs.TransformFunc(
+			wrapBuffer(transBuf),
+			wrapBuffer(buffer),
+			quarkToString(mType),
+			&MetaTransformCopy{
+				Region: gobool(transformData.region),
+				Offset: int64(transformData.offset),
+				Size:   int64(transformData.size),
+			},
+		))
+	}
+	return gboolean(true)
+}
+
+//export goGDestroyNotifyFunc
+func goGDestroyNotifyFunc(ptr C.gpointer) {
+	funcIface := gopointer.Restore(unsafe.Pointer(ptr))
+	defer gopointer.Unref(unsafe.Pointer(ptr))
+	f := funcIface.(func())
+	if f != nil {
+		f()
+	}
+}
