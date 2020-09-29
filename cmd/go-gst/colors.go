@@ -1,9 +1,12 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"io"
+	"regexp"
 	"strings"
+	"text/tabwriter"
 )
 
 type color string
@@ -49,6 +52,7 @@ func disableColor() {
 }
 
 func (c color) print(s string)                       { fmt.Printf("%s%s%s", c, s, colorReset) }
+func (c color) sprint(s string) string               { return fmt.Sprintf("%s%s%s", c, s, colorReset) }
 func (c color) printIndent(i int, s string)          { c.print(fmt.Sprintf("%s%s", strings.Repeat(" ", i), s)) }
 func (c color) printf(f string, args ...interface{}) { c.print(fmt.Sprintf(f, args...)) }
 func (c color) printfIndent(i int, f string, args ...interface{}) {
@@ -63,4 +67,23 @@ func (c color) fprintIndent(w io.Writer, i int, s string) {
 }
 func (c color) fprintfIndent(w io.Writer, i int, f string, args ...interface{}) {
 	c.fprint(w, fmt.Sprintf("%s%s", strings.Repeat(" ", i), fmt.Sprintf(f, args...)))
+}
+
+var srcRegex = regexp.MustCompile("^\\[.*?\\]")
+var typeRegex = regexp.MustCompile("[A-Z\\-]+")
+var msgRegex = regexp.MustCompile("[^\\-]+$")
+
+// colorify adds color to a string in the format of "[src] TYPE - MESSAGE"
+func colorify(str string) string {
+	buf := new(bytes.Buffer)
+	w := new(tabwriter.Writer)
+	w.Init(buf, 4, 24, 0, '\t', 0)
+	fmt.Fprintf(w,
+		"%s \t %s \t %s",
+		colorBlue.sprint(srcRegex.FindString(str)),
+		colorGreen.sprint(typeRegex.FindString(str)),
+		colorLightGray.sprint(msgRegex.FindString(str)),
+	)
+	w.Flush()
+	return buf.String()
 }

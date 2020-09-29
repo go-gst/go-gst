@@ -51,7 +51,7 @@ func launch(cmd *cobra.Command, args []string) error {
 	// If the pipeline is not dumping to stdout, dump messages to stdout instead.
 	if !toStdout {
 		pipeliner.Pipeline().GetBus().AddWatch(func(msg *gst.Message) bool {
-			fmt.Println(msg)
+			fmt.Println(colorify(msg.String()))
 			return true
 		})
 	}

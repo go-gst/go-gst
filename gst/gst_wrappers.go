@@ -82,6 +82,14 @@ func init() {
 			T: glib.Type(C.gst_plugin_feature_get_type()),
 			F: marshalPluginFeature,
 		},
+		{
+			T: glib.Type(C.gst_allocation_params_get_type()),
+			F: marshalAllocationParams,
+		},
+		{
+			T: glib.Type(C.GST_TYPE_MEMORY),
+			F: marshalMemory,
+		},
 
 		// Boxed
 		{T: glib.Type(C.gst_message_get_type()), F: marshalMessage},
@@ -118,8 +126,15 @@ func wrapBuffer(buf *C.GstBuffer) *Buffer               { return &Buffer{ptr: bu
 func wrapMainLoop(loop *C.GMainLoop) *MainLoop          { return &MainLoop{ptr: loop} }
 func wrapMainContext(ctx *C.GMainContext) *MainContext  { return &MainContext{ptr: ctx} }
 func wrapStream(obj *glib.Object) *Stream               { return &Stream{wrapObject(obj)} }
+func wrapAllocator(obj *glib.Object) *Allocator         { return &Allocator{wrapObject(obj)} }
+func wrapMemory(mem *C.GstMemory) *Memory               { return &Memory{ptr: mem} }
+
 func wrapStreamCollection(obj *glib.Object) *StreamCollection {
 	return &StreamCollection{wrapObject(obj)}
+}
+
+func wrapAllocationParams(obj *C.GstAllocationParams) *AllocationParams {
+	return &AllocationParams{ptr: obj}
 }
 
 // Clock wrappers
@@ -229,4 +244,16 @@ func marshalBin(p uintptr) (interface{}, error) {
 	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
 	obj := &glib.Object{GObject: glib.ToGObject(unsafe.Pointer(c))}
 	return wrapBin(obj), nil
+}
+
+func marshalAllocationParams(p uintptr) (interface{}, error) {
+	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
+	obj := (*C.GstAllocationParams)(unsafe.Pointer(c))
+	return wrapAllocationParams(obj), nil
+}
+
+func marshalMemory(p uintptr) (interface{}, error) {
+	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
+	obj := (*C.GstMemory)(unsafe.Pointer(c))
+	return wrapMemory(obj), nil
 }

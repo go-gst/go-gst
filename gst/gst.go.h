@@ -40,6 +40,7 @@ GParamSpecDouble *  getParamDouble  (GParamSpec * param);
 	Type Castings
 */
 
+GstAllocator *         toGstAllocator         (void *p);
 GstUri *               toGstURI               (void *p);
 GstURIHandler *        toGstURIHandler        (void *p);
 GstRegistry *          toGstRegistry          (void *p);
@@ -65,3 +66,4 @@ GstSample *            toGstSample            (void *p);
 GstDevice *            toGstDevice            (void *p);
 GstStreamCollection *  toGstStreamCollection  (void *p);
 GstStream *            toGstStream            (void *p);
+GstMemory *            toGstMemory            (void *p);

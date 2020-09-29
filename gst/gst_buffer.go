@@ -41,9 +41,12 @@ func (b *Buffer) Reader() io.Reader { return bytes.NewBuffer(b.Bytes()) }
 
 // Bytes returns a byte slice of the data inside this buffer.
 func (b *Buffer) Bytes() []byte {
-	mapInfo := MapBuffer(b)
+	mapInfo := b.Map()
+	if mapInfo.ptr == nil {
+		return nil
+	}
 	defer mapInfo.Unmap()
-	return C.GoBytes(mapInfo.Data, (C.int)(mapInfo.Size))
+	return mapInfo.Bytes()
 }
 
 // PresentationTimestamp returns the presentation timestamp of the buffer, or a negative duration
@@ -84,3 +87,16 @@ func (b *Buffer) Offset() int64 { return int64(b.Instance().offset) }
 
 // OffsetEnd returns the last offset contained in this buffer. It has the same format as Offset.
 func (b *Buffer) OffsetEnd() int64 { return int64(b.Instance().offset_end) }
+
+// Map will map the data inside this buffer.
+func (b *Buffer) Map() *MapInfo {
+	var mapInfo C.GstMapInfo
+	C.gst_buffer_map(
+		(*C.GstBuffer)(b.Instance()),
+		(*C.GstMapInfo)(unsafe.Pointer(&mapInfo)),
+		C.GST_MAP_READ,
+	)
+	return wrapMapInfo(&mapInfo, func() {
+		C.gst_buffer_unmap(b.Instance(), (*C.GstMapInfo)(unsafe.Pointer(&mapInfo)))
+	})
+}

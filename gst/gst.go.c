@@ -138,6 +138,12 @@ GParamSpecDouble * getParamDouble(GParamSpec * param)
 	Type Castings
 */
 
+GstAllocator *
+toGstAllocator(void *p)
+{
+	return (GST_ALLOCATOR_CAST(p));
+}
+
 GstUri *
 toGstURI(void *p)
 {
@@ -286,4 +292,10 @@ GstStream *
 toGstStream(void *p)
 {
 	return (GST_STREAM_CAST(p));
+}
+
+GstMemory *
+toGstMemory(void *p)
+{
+	return (GST_MEMORY_CAST(p));
 }

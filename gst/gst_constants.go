@@ -399,3 +399,17 @@ const (
 	StreamFlagSelect   StreamFlags = C.GST_STREAM_FLAG_SELECT   // (2) – This stream should be selected by default. This flag may be used by demuxers to signal that a stream should be selected by default in a playback scenario.
 	StreamFlagUnselect StreamFlags = C.GST_STREAM_FLAG_UNSELECT // (4) – This stream should not be selected by default. This flag may be used by demuxers to signal that a stream should not be selected by default in a playback scenario, but only if explicitly selected by the user (e.g. an audio track for the hard of hearing or a director's commentary track).
 )
+
+// MemoryFlags represent flags for wrapped memory
+type MemoryFlags int
+
+// Type castins of MemoryFlags
+const (
+	MemoryFlagReadOnly             MemoryFlags = C.GST_MEMORY_FLAG_READONLY              // (2) – memory is readonly. It is not allowed to map the memory with GST_MAP_WRITE.
+	MemoryFlagNoShare              MemoryFlags = C.GST_MEMORY_FLAG_NO_SHARE              // (16) – memory must not be shared. Copies will have to be made when this memory needs to be shared between buffers. (DEPRECATED: do not use in new code, instead you should create a custom GstAllocator for memory pooling instead of relying on the GstBuffer they were originally attached to.)
+	MemoryFlagZeroPrefixed         MemoryFlags = C.GST_MEMORY_FLAG_ZERO_PREFIXED         // (32) – the memory prefix is filled with 0 bytes
+	MemoryFlagZeroPadded           MemoryFlags = C.GST_MEMORY_FLAG_ZERO_PADDED           // (64) – the memory padding is filled with 0 bytes
+	MemoryFlagPhysicallyContiguous MemoryFlags = C.GST_MEMORY_FLAG_PHYSICALLY_CONTIGUOUS // (128) – the memory is physically contiguous. (Since: 1.2)
+	MemoryFlagNotMappable          MemoryFlags = C.GST_MEMORY_FLAG_NOT_MAPPABLE          // (256) – the memory can't be mapped via gst_memory_map without any preconditions. (Since: 1.2)
+	MemoryFlagLast                 MemoryFlags = 1048576                                 // first flag that can be used for custom purposes
+)
