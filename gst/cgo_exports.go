@@ -58,7 +58,13 @@ func goBusFunc(bus *C.GstBus, cMsg *C.GstMessage, userData C.gpointer) C.gboolea
 }
 
 func getMetaInfoCbFuncs(meta *C.GstMeta) *MetaInfoCallbackFuncs {
-	return registeredMetas[glib.Type(meta.info._type)]
+	gapi := glib.Type(meta.info.api)
+	gtype := glib.Type(meta.info._type)
+	typeCbs := registeredMetas[gapi]
+	if typeCbs == nil {
+		return nil
+	}
+	return typeCbs[gtype.Name()]
 }
 
 //export goMetaFreeFunc

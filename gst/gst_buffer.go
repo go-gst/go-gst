@@ -188,7 +188,7 @@ func (b *Buffer) Map() *MapInfo {
 //
 // Example
 //
-//     metaInfo := gst.RegisterMeta(glib.TypeFromName("GstObject"), "my-meta", 1024, &gst.MetaInfoCallbackFuncs{
+//     metaInfo := gst.RegisterMeta(glib.TypeFromName("MyObjectType"), "my-meta", 1024, &gst.MetaInfoCallbackFuncs{
 //         InitFunc: func(params interface{}, buffer *gst.Buffer) bool {
 //             paramStr := params.(string)
 //             fmt.Println("Buffer initialized with params:", paramStr)

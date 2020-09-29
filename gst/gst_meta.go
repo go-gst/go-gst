@@ -107,8 +107,9 @@ type MetaInfoCallbackFuncs struct {
 	TransformFunc MetaTransformFunc
 }
 
-// Register metas internally as well so we can track callback functions
-var registeredMetas = make(map[glib.Type]*MetaInfoCallbackFuncs)
+// Register meta callbacks internally as well so we can track them. Not all
+// GstMeta callbacks include userdata.
+var registeredMetas = make(map[glib.Type]map[string]*MetaInfoCallbackFuncs)
 
 // RegisterMeta registers and returns a new MetaInfo instance denoting the
 // given type, name, and size.
@@ -127,7 +128,10 @@ func RegisterMeta(api glib.Type, name string, size int64, cbFuncs *MetaInfoCallb
 		return nil
 	}
 	wrapped := wrapMetaInfo(metaInfo)
-	registeredMetas[wrapped.Type()] = cbFuncs
+	if registeredMetas[api] == nil {
+		registeredMetas[api] = make(map[string]*MetaInfoCallbackFuncs)
+	}
+	registeredMetas[api][name] = cbFuncs
 	return wrapped
 }
 
