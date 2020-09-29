@@ -2,6 +2,7 @@ package gst
 
 // #include "gst.go.h"
 import "C"
+
 import "unsafe"
 
 // TagList is a go wrapper around a GstTagList. For now, until the rest of the methods are

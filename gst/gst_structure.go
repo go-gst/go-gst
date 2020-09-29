@@ -1,6 +1,15 @@
 package gst
 
-// #include "gst.go.h"
+/*
+#include "gst.go.h"
+
+extern gboolean structForEachCb  (GQuark field_id, GValue * value, gpointer user_data);
+
+gboolean structureForEach (GQuark field_id, GValue * value, gpointer user_data)
+{
+	return structForEachCb(field_id, value, user_data);
+}
+*/
 import "C"
 
 import (
@@ -99,27 +108,6 @@ func (s *Structure) RemoveValue(key string) {
 	cKey := C.CString(key)
 	defer C.free(unsafe.Pointer(cKey))
 	C.gst_structure_remove_field(s.Instance(), cKey)
-}
-
-//export structForEachCb
-func structForEachCb(fieldID C.GQuark, val *C.GValue, chPtr C.gpointer) C.gboolean {
-	ptr := gopointer.Restore(unsafe.Pointer(chPtr))
-	resCh := ptr.(chan interface{})
-	fieldName := C.GoString(C.g_quark_to_string(fieldID))
-
-	var resValue interface{}
-
-	gVal := glib.ValueFromNative(unsafe.Pointer(val))
-	if resValue, _ = gVal.GoValue(); resValue == nil {
-		// serialize the value if we can't do anything else with it
-		serialized := C.gst_value_serialize(val)
-		defer C.free(unsafe.Pointer(serialized))
-		resValue = C.GoString(serialized)
-	}
-
-	resCh <- fieldName
-	resCh <- resValue
-	return gboolean(true)
 }
 
 // Values returns a map of all the values inside this structure. If values cannot be

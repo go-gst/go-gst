@@ -1,7 +1,8 @@
 package gst
 
-// #include <gst/gst.h>
+// #include "gst.go.h"
 import "C"
+
 import (
 	"unsafe"
 )

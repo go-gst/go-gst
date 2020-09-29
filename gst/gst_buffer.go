@@ -2,12 +2,15 @@ package gst
 
 // #include "gst.go.h"
 import "C"
+
 import (
 	"bytes"
 	"io"
 	"io/ioutil"
 	"time"
 	"unsafe"
+
+	"github.com/gotk3/gotk3/glib"
 )
 
 // Buffer is a go representation of a GstBuffer.
@@ -99,4 +102,11 @@ func (b *Buffer) Map() *MapInfo {
 	return wrapMapInfo(&mapInfo, func() {
 		C.gst_buffer_unmap(b.Instance(), (*C.GstMapInfo)(unsafe.Pointer(&mapInfo)))
 	})
+}
+
+// GetMeta retrieves the metadata on the buffer for the given api. If none exists
+// then nil is returned.
+func (b *Buffer) GetMeta(api glib.Type) *Meta {
+	meta := C.gst_buffer_get_meta(b.Instance(), C.GType(api))
+	return wrapMeta(meta)
 }

@@ -54,23 +54,23 @@ func Find(name string) *ElementFactory {
 func (e *ElementFactory) Instance() *C.GstElementFactory { return C.toGstElementFactory(e.Unsafe()) }
 
 // CanSinkAllCaps checks if the factory can sink all possible capabilities.
-func (e *ElementFactory) CanSinkAllCaps(caps *C.GstCaps) bool {
-	return gobool(C.gst_element_factory_can_sink_all_caps((*C.GstElementFactory)(e.Instance()), (*C.GstCaps)(caps)))
+func (e *ElementFactory) CanSinkAllCaps(caps *Caps) bool {
+	return gobool(C.gst_element_factory_can_sink_all_caps((*C.GstElementFactory)(e.Instance()), (*C.GstCaps)(caps.Instance())))
 }
 
 // CanSinkAnyCaps checks if the factory can sink any possible capability.
-func (e *ElementFactory) CanSinkAnyCaps(caps *C.GstCaps) bool {
-	return gobool(C.gst_element_factory_can_sink_any_caps((*C.GstElementFactory)(e.Instance()), (*C.GstCaps)(caps)))
+func (e *ElementFactory) CanSinkAnyCaps(caps *Caps) bool {
+	return gobool(C.gst_element_factory_can_sink_any_caps((*C.GstElementFactory)(e.Instance()), (*C.GstCaps)(caps.Instance())))
 }
 
 // CanSourceAllCaps checks if the factory can src all possible capabilities.
-func (e *ElementFactory) CanSourceAllCaps(caps *C.GstCaps) bool {
-	return gobool(C.gst_element_factory_can_src_all_caps((*C.GstElementFactory)(e.Instance()), (*C.GstCaps)(caps)))
+func (e *ElementFactory) CanSourceAllCaps(caps *Caps) bool {
+	return gobool(C.gst_element_factory_can_src_all_caps((*C.GstElementFactory)(e.Instance()), (*C.GstCaps)(caps.Instance())))
 }
 
 // CanSourceAnyCaps checks if the factory can src any possible capability.
-func (e *ElementFactory) CanSourceAnyCaps(caps *C.GstCaps) bool {
-	return gobool(C.gst_element_factory_can_src_any_caps((*C.GstElementFactory)(e.Instance()), (*C.GstCaps)(caps)))
+func (e *ElementFactory) CanSourceAnyCaps(caps *Caps) bool {
+	return gobool(C.gst_element_factory_can_src_any_caps((*C.GstElementFactory)(e.Instance()), (*C.GstCaps)(caps.Instance())))
 }
 
 // GetMetadata gets the metadata on this factory with key.

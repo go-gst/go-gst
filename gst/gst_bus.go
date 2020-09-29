@@ -1,6 +1,15 @@
 package gst
 
-// #include "gst.go.h"
+/*
+#include "gst.go.h"
+
+extern gboolean goBusFunc  (GstBus * bus, GstMessage * msg, gpointer user_data);
+
+gboolean cgoBusFunc (GstBus * bus, GstMessage * msg, gpointer user_data)
+{
+	return goBusFunc(bus, msg, user_data);
+}
+*/
 import "C"
 
 import (
@@ -99,29 +108,6 @@ func (b *Bus) BlockPopMessage() *Message {
 // and returns a bool value for whether to continue processing messages or not. There is no need to unref
 // the message unless addtional references are placed on it during processing.
 type BusWatchFunc func(msg *Message) bool
-
-//export goBusFunc
-func goBusFunc(bus *C.GstBus, cMsg *C.GstMessage, userData C.gpointer) C.gboolean {
-	// wrap the message
-	msg := wrapMessage(cMsg)
-
-	// retrieve the ptr to the function
-	ptr := unsafe.Pointer(userData)
-	funcIface := gopointer.Restore(ptr)
-	busFunc, ok := funcIface.(BusWatchFunc)
-	if !ok {
-		gopointer.Unref(ptr)
-		return gboolean(false)
-	}
-
-	// run the call back
-	if cont := busFunc(msg); !cont {
-		gopointer.Unref(ptr)
-		return gboolean(false)
-	}
-
-	return gboolean(true)
-}
 
 // AddWatch adds a watch to the default MainContext for messages emitted on this bus.
 // This function is used to receive asynchronous messages in the main loop. There can

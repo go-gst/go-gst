@@ -2,6 +2,7 @@ package gst
 
 // #include "gst.go.h"
 import "C"
+
 import "unsafe"
 
 // Sample is a go wrapper around a GstSample object.

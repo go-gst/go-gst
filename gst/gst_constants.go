@@ -2,6 +2,7 @@ package gst
 
 // #include "gst.go.h"
 import "C"
+
 import "unsafe"
 
 // ClockTime is a go representation of a GstClockTime. Most of the time these are casted
@@ -412,4 +413,38 @@ const (
 	MemoryFlagPhysicallyContiguous MemoryFlags = C.GST_MEMORY_FLAG_PHYSICALLY_CONTIGUOUS // (128) – the memory is physically contiguous. (Since: 1.2)
 	MemoryFlagNotMappable          MemoryFlags = C.GST_MEMORY_FLAG_NOT_MAPPABLE          // (256) – the memory can't be mapped via gst_memory_map without any preconditions. (Since: 1.2)
 	MemoryFlagLast                 MemoryFlags = 1048576                                 // first flag that can be used for custom purposes
+)
+
+// URIType casts C GstURIType to a go type
+type URIType int
+
+// Type cast URI types
+const (
+	URIUnknown URIType = C.GST_URI_UNKNOWN // (0) – The URI direction is unknown
+	URISink    URIType = C.GST_URI_SINK    // (1) – The URI is a consumer.
+	URISource  URIType = C.GST_URI_SRC     // (2) - The URI is a producer.
+)
+
+func (u URIType) String() string {
+	switch u {
+	case URIUnknown:
+		return "Unknown"
+	case URISink:
+		return "Sink"
+	case URISource:
+		return "Source"
+	}
+	return ""
+}
+
+// MetaFlags casts C GstMetaFlags to a go type.
+type MetaFlags int
+
+// Type casts of GstMetaFlags
+const (
+	MetaFlagNone     MetaFlags = C.GST_META_FLAG_NONE     // (0) – no flags
+	MetaFlagReadOnly MetaFlags = C.GST_META_FLAG_READONLY // (1) – metadata should not be modified
+	MetaFlagPooled   MetaFlags = C.GST_META_FLAG_POOLED   // (2) – metadata is managed by a bufferpool
+	MetaFlagLocked   MetaFlags = C.GST_META_FLAG_LOCKED   // (4) – metadata should not be removed
+	MetaFlagLast     MetaFlags = C.GST_META_FLAG_LAST     // (65536) – additional flags can be added starting from this flag.
 )

@@ -2,6 +2,7 @@ package gst
 
 // #include "gst.go.h"
 import "C"
+
 import (
 	"time"
 	"unsafe"
@@ -103,6 +104,31 @@ func init() {
 
 // Object wrappers
 
+func wrapAllocator(obj *glib.Object) *Allocator            { return &Allocator{wrapObject(obj)} }
+func wrapAtomicQueue(queue *C.GstAtomicQueue) *AtomicQueue { return &AtomicQueue{ptr: queue} }
+func wrapBin(obj *glib.Object) *Bin                        { return &Bin{wrapElement(obj)} }
+func wrapBuffer(buf *C.GstBuffer) *Buffer                  { return &Buffer{ptr: buf} }
+func wrapBus(obj *glib.Object) *Bus                        { return &Bus{Object: wrapObject(obj)} }
+func wrapClock(obj *glib.Object) *Clock                    { return &Clock{wrapObject(obj)} }
+func wrapDevice(obj *glib.Object) *Device                  { return &Device{wrapObject(obj)} }
+func wrapElement(obj *glib.Object) *Element                { return &Element{wrapObject(obj)} }
+func wrapGhostPad(obj *glib.Object) *GhostPad              { return &GhostPad{wrapPad(obj)} }
+func wrapMainContext(ctx *C.GMainContext) *MainContext     { return &MainContext{ptr: ctx} }
+func wrapMainLoop(loop *C.GMainLoop) *MainLoop             { return &MainLoop{ptr: loop} }
+func wrapMemory(mem *C.GstMemory) *Memory                  { return &Memory{ptr: mem} }
+func wrapMessage(msg *C.GstMessage) *Message               { return &Message{msg: msg} }
+func wrapMeta(meta *C.GstMeta) *Meta                       { return &Meta{ptr: meta} }
+func wrapMetaInfo(info *C.GstMetaInfo) *MetaInfo           { return &MetaInfo{ptr: info} }
+func wrapPad(obj *glib.Object) *Pad                        { return &Pad{wrapObject(obj)} }
+func wrapPadTemplate(obj *glib.Object) *PadTemplate        { return &PadTemplate{wrapObject(obj)} }
+func wrapPipeline(obj *glib.Object) *Pipeline              { return &Pipeline{Bin: wrapBin(obj)} }
+func wrapPluginFeature(obj *glib.Object) *PluginFeature    { return &PluginFeature{wrapObject(obj)} }
+func wrapPlugin(obj *glib.Object) *Plugin                  { return &Plugin{wrapObject(obj)} }
+func wrapRegistry(obj *glib.Object) *Registry              { return &Registry{wrapObject(obj)} }
+func wrapSample(sample *C.GstSample) *Sample               { return &Sample{sample: sample} }
+func wrapStream(obj *glib.Object) *Stream                  { return &Stream{wrapObject(obj)} }
+func wrapTagList(tagList *C.GstTagList) *TagList           { return &TagList{ptr: tagList} }
+
 func wrapObject(obj *glib.Object) *Object {
 	return &Object{InitiallyUnowned: &glib.InitiallyUnowned{Object: obj}}
 }
@@ -110,29 +136,6 @@ func wrapObject(obj *glib.Object) *Object {
 func wrapElementFactory(obj *glib.Object) *ElementFactory {
 	return &ElementFactory{wrapPluginFeature(obj)}
 }
-
-func wrapAtomicQueue(queue *C.GstAtomicQueue) *AtomicQueue { return &AtomicQueue{ptr: queue} }
-func wrapDevice(obj *glib.Object) *Device                  { return &Device{wrapObject(obj)} }
-func wrapPluginFeature(obj *glib.Object) *PluginFeature    { return &PluginFeature{wrapObject(obj)} }
-func wrapPipeline(obj *glib.Object) *Pipeline              { return &Pipeline{Bin: wrapBin(obj)} }
-func wrapElement(obj *glib.Object) *Element                { return &Element{wrapObject(obj)} }
-func wrapBin(obj *glib.Object) *Bin                        { return &Bin{wrapElement(obj)} }
-func wrapClock(obj *glib.Object) *Clock                    { return &Clock{wrapObject(obj)} }
-func wrapBus(obj *glib.Object) *Bus                        { return &Bus{Object: wrapObject(obj)} }
-func wrapMessage(msg *C.GstMessage) *Message               { return &Message{msg: msg} }
-func wrapTagList(tagList *C.GstTagList) *TagList           { return &TagList{ptr: tagList} }
-func wrapPad(obj *glib.Object) *Pad                        { return &Pad{wrapObject(obj)} }
-func wrapPadTemplate(obj *glib.Object) *PadTemplate        { return &PadTemplate{wrapObject(obj)} }
-func wrapGhostPad(obj *glib.Object) *GhostPad              { return &GhostPad{wrapPad(obj)} }
-func wrapPlugin(obj *glib.Object) *Plugin                  { return &Plugin{wrapObject(obj)} }
-func wrapRegistry(obj *glib.Object) *Registry              { return &Registry{wrapObject(obj)} }
-func wrapSample(sample *C.GstSample) *Sample               { return &Sample{sample: sample} }
-func wrapBuffer(buf *C.GstBuffer) *Buffer                  { return &Buffer{ptr: buf} }
-func wrapMainLoop(loop *C.GMainLoop) *MainLoop             { return &MainLoop{ptr: loop} }
-func wrapMainContext(ctx *C.GMainContext) *MainContext     { return &MainContext{ptr: ctx} }
-func wrapStream(obj *glib.Object) *Stream                  { return &Stream{wrapObject(obj)} }
-func wrapAllocator(obj *glib.Object) *Allocator            { return &Allocator{wrapObject(obj)} }
-func wrapMemory(mem *C.GstMemory) *Memory                  { return &Memory{ptr: mem} }
 
 func wrapStreamCollection(obj *glib.Object) *StreamCollection {
 	return &StreamCollection{wrapObject(obj)}
