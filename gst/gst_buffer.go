@@ -86,16 +86,16 @@ func NewBufferFromReader(rdr io.Reader) (*Buffer, error) {
 //
 // The prefix/padding must be filled with 0 if flags contains MemoryFlagZeroPrefixed and MemoryFlagZeroPadded respectively.
 //
-// Example
+//   // Example
 //
-//     buf := gst.NewBufferFull(0, []byte("hello-world"), 1024, 0, 1024, func() {
-// 	       fmt.Println("buffer was destroyed")
-//     })
-//     if buf != nil {
-// 	       buf.Unref()
-//     }
+//   buf := gst.NewBufferFull(0, []byte("hello-world"), 1024, 0, 1024, func() {
+//       fmt.Println("buffer was destroyed")
+//   })
+//   if buf != nil {
+//       buf.Unref()
+//   }
 //
-//     // > buffer was destroyed
+//  // > buffer was destroyed
 func NewBufferFull(flags MemoryFlags, data []byte, maxSize, offset, size int64, notifyFunc func()) *Buffer {
 	var notifyData unsafe.Pointer
 	var gnotifyFunc C.GDestroyNotify
@@ -182,26 +182,26 @@ func (b *Buffer) OffsetEnd() int64 { return int64(b.Instance().offset_end) }
 // parameters are passed to the MetaInfo's init function, and as such will only work
 // for MetaInfo objects created from the go runtime.
 //
-// Example
+//   // Example
 //
-//     metaInfo := gst.RegisterMeta(glib.TypeFromName("MyObjectType"), "my-meta", 1024, &gst.MetaInfoCallbackFuncs{
-//         InitFunc: func(params interface{}, buffer *gst.Buffer) bool {
-//             paramStr := params.(string)
-//             fmt.Println("Buffer initialized with params:", paramStr)
-//             return true
-// 	       },
-//         FreeFunc: func(buffer *gst.Buffer) {
-// 		       fmt.Println("Buffer was destroyed")
-// 	       },
-//     })
+//   metaInfo := gst.RegisterMeta(glib.TypeFromName("MyObjectType"), "my-meta", 1024, &gst.MetaInfoCallbackFuncs{
+//       InitFunc: func(params interface{}, buffer *gst.Buffer) bool {
+//           paramStr := params.(string)
+//           fmt.Println("Buffer initialized with params:", paramStr)
+//           return true
+//       },
+//       FreeFunc: func(buffer *gst.Buffer) {
+//           fmt.Println("Buffer was destroyed")
+//       },
+//   })
 //
-//     buf := gst.NewEmptyBuffer()
-//     buf.AddMeta(metaInfo, "hello world")
+//   buf := gst.NewEmptyBuffer()
+//   buf.AddMeta(metaInfo, "hello world")
 //
-//     buf.Unref()
+//   buf.Unref()
 //
-//     // > Buffer initialized with params: hello world
-//     // > Buffer was destroyed
+//   // > Buffer initialized with params: hello world
+//   // > Buffer was destroyed
 //
 func (b *Buffer) AddMeta(info *MetaInfo, params interface{}) *Meta {
 	meta := C.gst_buffer_add_meta(b.Instance(), info.Instance(), (C.gpointer)(gopointer.Save(params)))
@@ -606,4 +606,58 @@ func (b *Buffer) RemoveMemoryAt(idx uint) { C.gst_buffer_remove_memory(b.Instanc
 // Length can be -1, in which case all memory starting from idx is removed.
 func (b *Buffer) RemoveMemoryRange(idx uint, length int) {
 	C.gst_buffer_remove_memory_range(b.Instance(), C.guint(idx), C.gint(length))
+}
+
+// RemoveMeta removes the given metadata from the buffer.
+func (b *Buffer) RemoveMeta(meta *Meta) bool {
+	return gobool(C.gst_buffer_remove_meta(b.Instance(), meta.Instance()))
+}
+
+// ReplaceAllMemory replaces all the memory in this buffer with that provided.
+func (b *Buffer) ReplaceAllMemory(mem *Memory) {
+	C.gst_buffer_replace_all_memory(b.Instance(), mem.Instance())
+}
+
+// ReplaceMemory replaces the memory at the given index with the given memory.
+func (b *Buffer) ReplaceMemory(mem *Memory, idx uint) {
+	C.gst_buffer_replace_memory(b.Instance(), C.guint(idx), mem.Instance())
+}
+
+// ReplaceMemoryRange replaces length memory blocks in the buffer starting at idx with
+// the given memory.
+//
+// If length is -1, all memory starting from idx will be removed and replaced.
+//
+// The buffer should be writable.
+func (b *Buffer) ReplaceMemoryRange(idx uint, length int, mem *Memory) {
+	C.gst_buffer_replace_memory_range(b.Instance(), C.guint(idx), C.gint(length), mem.Instance())
+}
+
+// Resize sets the offset and total size of the memory blocks in this buffer.
+func (b *Buffer) Resize(offset, size int64) {
+	C.gst_buffer_resize(b.Instance(), C.gssize(offset), C.gssize(size))
+}
+
+// ResizeRange sets the total size of the length memory blocks starting at idx in this buffer.
+func (b *Buffer) ResizeRange(idx uint, length int, offset, size int64) bool {
+	return gobool(C.gst_buffer_resize_range(
+		b.Instance(),
+		C.guint(idx),
+		C.gint(length),
+		C.gssize(offset),
+		C.gssize(size),
+	))
+}
+
+// SetFlags sets one or more buffer flags on the buffer.
+func (b *Buffer) SetFlags(flags BufferFlags) bool {
+	return gobool(C.gst_buffer_set_flags(b.Instance(), C.GstBufferFlags(flags)))
+}
+
+// SetSize sets the total size of the memory blocks in buffer.
+func (b *Buffer) SetSize(size int64) { C.gst_buffer_set_size(b.Instance(), C.gssize(size)) }
+
+// UnsetFlags removes one or more flags from the buffer.
+func (b *Buffer) UnsetFlags(flags BufferFlags) bool {
+	return gobool(C.gst_buffer_unset_flags(b.Instance(), C.GstBufferFlags(flags)))
 }
