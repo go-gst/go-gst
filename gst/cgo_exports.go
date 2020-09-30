@@ -147,6 +147,11 @@ func goGDestroyNotifyFunc(ptr C.gpointer) {
 	}
 }
 
+//export goGDestroyNotifyFuncNoRun
+func goGDestroyNotifyFuncNoRun(ptr C.gpointer) {
+	gopointer.Unref(unsafe.Pointer(ptr))
+}
+
 //export goCapsMapFunc
 func goCapsMapFunc(features *C.GstCapsFeatures, structure *C.GstStructure, userData C.gpointer) C.gboolean {
 	// retrieve the ptr to the function
@@ -160,4 +165,20 @@ func goCapsMapFunc(features *C.GstCapsFeatures, structure *C.GstStructure, userD
 	}
 
 	return gboolean(mapFunc(wrapCapsFeatures(features), wrapStructure(structure)))
+}
+
+//export goClockCb
+func goClockCb(gclock *C.GstClock, clockTime C.GstClockTime, clockID C.GstClockID, userData C.gpointer) C.gboolean {
+	// retrieve the ptr to the function
+	ptr := unsafe.Pointer(userData)
+	funcIface := gopointer.Restore(ptr)
+	cb, ok := funcIface.(ClockCallback)
+
+	if !ok {
+		gopointer.Unref(ptr)
+		return gboolean(false)
+	}
+
+	clock := wrapClock(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(gclock))})
+	return gboolean(cb(clock, ClockTime(clockTime)))
 }

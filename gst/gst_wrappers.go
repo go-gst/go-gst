@@ -111,6 +111,11 @@ func init() {
 			T: glib.Type(C.GST_TYPE_CAPS_FEATURES),
 			F: marshalCapsFeatures,
 		},
+		{
+			T: glib.Type(C.GST_TYPE_CHILD_PROXY),
+			F: marshalChildProxy,
+		},
+
 		// Boxed
 		{T: glib.Type(C.gst_message_get_type()), F: marshalMessage},
 	}
@@ -127,6 +132,7 @@ func wrapBufferList(bufList *C.GstBufferList) *BufferList  { return &BufferList{
 func wrapBufferPool(obj *glib.Object) *BufferPool          { return &BufferPool{wrapObject(obj)} }
 func wrapBus(obj *glib.Object) *Bus                        { return &Bus{Object: wrapObject(obj)} }
 func wrapCaps(caps *C.GstCaps) *Caps                       { return &Caps{native: caps} }
+func wrapChildProxy(c *C.GstChildProxy) *ChildProxy        { return &ChildProxy{ptr: c} }
 func wrapClock(obj *glib.Object) *Clock                    { return &Clock{wrapObject(obj)} }
 func wrapDevice(obj *glib.Object) *Device                  { return &Device{wrapObject(obj)} }
 func wrapElement(obj *glib.Object) *Element                { return &Element{wrapObject(obj)} }
@@ -315,4 +321,10 @@ func marshalCapsFeatures(p uintptr) (interface{}, error) {
 	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
 	obj := (*C.GstCapsFeatures)(unsafe.Pointer(c))
 	return wrapCapsFeatures(obj), nil
+}
+
+func marshalChildProxy(p uintptr) (interface{}, error) {
+	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
+	obj := (*C.GstChildProxy)(unsafe.Pointer(c))
+	return wrapChildProxy(obj), nil
 }

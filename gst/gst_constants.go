@@ -9,6 +9,9 @@ import "unsafe"
 // to time.Duration objects. It represents a time value in nanoseconds.
 type ClockTime uint64
 
+// ClockTimeDiff is a datatype to hold a time difference, measured in nanoseconds.
+type ClockTimeDiff int64
+
 const (
 	// ClockFormat is the string used when formatting clock strings
 	ClockFormat string = "u:%02u:%02u.%09u"
@@ -16,6 +19,45 @@ const (
 	ClockTimeNone ClockTime = C.GST_CLOCK_TIME_NONE
 	// BufferOffsetNone is a constant for no-offset return results.
 	BufferOffsetNone ClockTime = C.GST_BUFFER_OFFSET_NONE
+)
+
+// ClockEntryType wraps GstClockEntryType
+type ClockEntryType int
+
+// Type castings of ClockEntryTypes
+const (
+	ClockEntrySingle   ClockEntryType = C.GST_CLOCK_ENTRY_SINGLE   // (0) – a single shot timeout
+	ClockEntryPeriodic ClockEntryType = C.GST_CLOCK_ENTRY_PERIODIC // (1) – a periodic timeout request
+)
+
+// ClockFlags wraps GstClockFlags
+type ClockFlags int
+
+// Type castings of ClockFlags
+const (
+	ClockFlagCanDoSingleSync    ClockFlags = C.GST_CLOCK_FLAG_CAN_DO_SINGLE_SYNC    // (16) – clock can do a single sync timeout request
+	ClockFlagCanDoSingleAsync   ClockFlags = C.GST_CLOCK_FLAG_CAN_DO_SINGLE_ASYNC   // (32) – clock can do a single async timeout request
+	ClockFlagCanDoPeriodicSync  ClockFlags = C.GST_CLOCK_FLAG_CAN_DO_PERIODIC_SYNC  // (64) – clock can do sync periodic timeout requests
+	ClockFlagCanDoPeriodicAsync ClockFlags = C.GST_CLOCK_FLAG_CAN_DO_PERIODIC_ASYNC // (128) – clock can do async periodic timeout callbacks
+	ClockFlagCanSetResolution   ClockFlags = C.GST_CLOCK_FLAG_CAN_SET_RESOLUTION    // (256) – clock's resolution can be changed
+	ClockFlagCanSetMaster       ClockFlags = C.GST_CLOCK_FLAG_CAN_SET_MASTER        // (512) – clock can be slaved to a master clock
+	ClockFlagNeedsStartupSync   ClockFlags = C.GST_CLOCK_FLAG_NEEDS_STARTUP_SYNC    // (1024) – clock needs to be synced before it can be used (Since: 1.6)
+	ClockFlagLast               ClockFlags = C.GST_CLOCK_FLAG_LAST                  // (4096) – subclasses can add additional flags starting from this flag
+)
+
+// ClockReturn wraps a GstClockReturn
+type ClockReturn int
+
+// Type castings of clock returns
+const (
+	ClockOK          ClockReturn = C.GST_CLOCK_OK          // (0) – The operation succeeded.
+	ClockEarly       ClockReturn = C.GST_CLOCK_EARLY       // (1) – The operation was scheduled too late.
+	ClockUnscheduled ClockReturn = C.GST_CLOCK_UNSCHEDULED // (2) – The clockID was unscheduled
+	ClockBusy        ClockReturn = C.GST_CLOCK_BUSY        // (3) – The ClockID is busy
+	ClockBadTime     ClockReturn = C.GST_CLOCK_BADTIME     // (4) – A bad time was provided to a function.
+	ClockError       ClockReturn = C.GST_CLOCK_ERROR       // (5) – An error occurred
+	ClockUnsupported ClockReturn = C.GST_CLOCK_UNSUPPORTED // (6) – Operation is not supported
+	ClockDone        ClockReturn = C.GST_CLOCK_DONE        // (7) – The ClockID is done waiting
 )
 
 // BusSyncReply casts GstBusSyncReply to a go type
