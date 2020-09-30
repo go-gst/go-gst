@@ -11,10 +11,10 @@ func main() {
 
 	caps := gst.NewCapsFromString("audio/x-raw")
 
-	caps.ForEach(func(features *gst.CapsFeatures, structure *gst.Structure) bool {
-		fmt.Println(features)
-		return true
-	})
+	// caps.ForEach(func(features *gst.CapsFeatures, structure *gst.Structure) bool {
+	// 	fmt.Println(features)
+	// 	return true
+	// })
 
 	caps.FilterAndMapInPlace(func(features *gst.CapsFeatures, structure *gst.Structure) bool {
 		fmt.Println(features)

@@ -218,7 +218,7 @@ func (c *Caps) FilterAndMapInPlace(f CapsMapFunc) {
 func (c *Caps) Fixate() *Caps { return wrapCaps(C.gst_caps_fixate(c.Instance())) }
 
 // ForEach calls the provided function once for each structure and caps feature in the GstCaps. The function must not
-// modify the fields.
+// modify the fields. There is an unresolved bug in this function currently and it is better to use MapInPlace instead.
 //
 //   caps := gst.NewCapsFromString("audio/x-raw")
 //
