@@ -16,6 +16,7 @@ inline GstBus *               toGstBus               (void *p) { return (GST_BUS
 inline GstCapsFeatures *      toGstCapsFeatures      (void *p) { return (GST_CAPS_FEATURES(p)); }
 inline GstCaps *              toGstCaps              (void *p) { return (GST_CAPS(p)); }
 inline GstClock *             toGstClock             (void *p) { return (GST_CLOCK(p)); }
+inline GstContext *           toGstContext           (void *p) { return (GST_CONTEXT_CAST(p)); }
 inline GstDevice *            toGstDevice            (void *p) { return (GST_DEVICE_CAST(p)); }
 inline GstElementFactory *    toGstElementFactory    (void *p) { return (GST_ELEMENT_FACTORY(p)); }
 inline GstElement *           toGstElement           (void *p) { return (GST_ELEMENT(p)); }
@@ -98,6 +99,18 @@ inline GstCaps * makeCapsWritable (GstCaps * caps)
 inline GType getCapsType ()
 {
 	return GST_TYPE_CAPS;
+}
+
+/* Context utilities */
+
+inline gboolean contextIsWritable (GstContext * ctx)
+{
+	return gst_context_is_writable(ctx);
+}
+
+inline GstContext * makeContextWritable (GstContext * ctx)
+{
+	return gst_context_make_writable(ctx);
 }
 
 /* Object Utilities */

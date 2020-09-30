@@ -7,7 +7,7 @@ import (
 	"github.com/tinyzimmer/go-gst/gst"
 )
 
-func main() {
+func wait() {
 	gst.Init(nil)
 
 	clock := gst.ObtainSystemClock()

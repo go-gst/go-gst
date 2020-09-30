@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func main() {
+func sleep() {
 	go func() {
 		C.sleep(1000000000)
 		fmt.Println("I slept")

@@ -6,7 +6,7 @@ import (
 	"github.com/tinyzimmer/go-gst/gst"
 )
 
-func main() {
+func capsWeirdness() {
 	gst.Init(nil)
 
 	caps := gst.NewCapsFromString("audio/x-raw")

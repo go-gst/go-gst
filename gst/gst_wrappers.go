@@ -115,6 +115,10 @@ func init() {
 			T: glib.Type(C.GST_TYPE_CHILD_PROXY),
 			F: marshalChildProxy,
 		},
+		{
+			T: glib.Type(C.GST_TYPE_CONTEXT),
+			F: marshalContext,
+		},
 
 		// Boxed
 		{T: glib.Type(C.gst_message_get_type()), F: marshalMessage},
@@ -134,6 +138,7 @@ func wrapBus(obj *glib.Object) *Bus                        { return &Bus{Object:
 func wrapCaps(caps *C.GstCaps) *Caps                       { return &Caps{native: caps} }
 func wrapChildProxy(c *C.GstChildProxy) *ChildProxy        { return &ChildProxy{ptr: c} }
 func wrapClock(obj *glib.Object) *Clock                    { return &Clock{wrapObject(obj)} }
+func wrapContext(ctx *C.GstContext) *Context               { return &Context{ptr: ctx} }
 func wrapDevice(obj *glib.Object) *Device                  { return &Device{wrapObject(obj)} }
 func wrapElement(obj *glib.Object) *Element                { return &Element{wrapObject(obj)} }
 func wrapGhostPad(obj *glib.Object) *GhostPad              { return &GhostPad{wrapPad(obj)} }
@@ -327,4 +332,10 @@ func marshalChildProxy(p uintptr) (interface{}, error) {
 	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
 	obj := (*C.GstChildProxy)(unsafe.Pointer(c))
 	return wrapChildProxy(obj), nil
+}
+
+func marshalContext(p uintptr) (interface{}, error) {
+	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
+	obj := (*C.GstContext)(unsafe.Pointer(c))
+	return wrapContext(obj), nil
 }

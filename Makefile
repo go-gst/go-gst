@@ -17,4 +17,4 @@ $(GOLANGCI_LINT):
 	ln -s golangci-lint-$(GOLANGCI_VERSION)-$(shell uname | tr A-Z a-z)-amd64/golangci-lint $(GOLANGCI_LINT)
 
 lint: $(GOLANGCI_LINT)
-	$(GOLANGCI_LINT) run -v --timeout 300s --skip-dirs cmd/ --skip-files hack/*
+	$(GOLANGCI_LINT) run -v
