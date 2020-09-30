@@ -160,8 +160,8 @@ func wrapAllocationParams(obj *C.GstAllocationParams) *AllocationParams {
 func clockTimeToDuration(n ClockTime) time.Duration {
 	return time.Duration(uint64(n)) * time.Nanosecond
 }
-
-func guint64ToDuration(n C.guint64) time.Duration { return clockTimeToDuration(ClockTime(n)) }
+func guint64ToDuration(n C.guint64) time.Duration     { return clockTimeToDuration(ClockTime(n)) }
+func durationToClockTime(dur time.Duration) ClockTime { return ClockTime(dur.Nanoseconds()) }
 
 // Enums/Constants
 

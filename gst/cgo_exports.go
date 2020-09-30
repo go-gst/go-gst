@@ -48,6 +48,24 @@ func structForEachCb(fieldID C.GQuark, val *C.GValue, chPtr C.gpointer) C.gboole
 	return gboolean(true)
 }
 
+//export goBusSyncHandler
+func goBusSyncHandler(bus *C.GstBus, cMsg *C.GstMessage, userData C.gpointer) C.GstBusSyncReply {
+	// wrap the message
+	msg := wrapMessage(cMsg)
+
+	// retrieve the ptr to the function
+	ptr := unsafe.Pointer(userData)
+	funcIface := gopointer.Restore(ptr)
+	busFunc, ok := funcIface.(BusSyncHandler)
+
+	if !ok {
+		gopointer.Unref(ptr)
+		return C.GstBusSyncReply(BusPass)
+	}
+
+	return C.GstBusSyncReply(busFunc(msg))
+}
+
 //export goBusFunc
 func goBusFunc(bus *C.GstBus, cMsg *C.GstMessage, userData C.gpointer) C.gboolean {
 	// wrap the message

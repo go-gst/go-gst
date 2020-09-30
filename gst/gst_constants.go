@@ -18,6 +18,16 @@ const (
 	BufferOffsetNone ClockTime = C.GST_BUFFER_OFFSET_NONE
 )
 
+// BusSyncReply casts GstBusSyncReply to a go type
+type BusSyncReply int
+
+// Type castings of SyncReplies
+const (
+	BusDrop  BusSyncReply = C.GST_BUS_DROP  // (0) – drop the message
+	BusPass  BusSyncReply = C.GST_BUS_PASS  // (1) – pass the message to the async queue
+	BusAsync BusSyncReply = C.GST_BUS_ASYNC // (2) – pass message to async queue, continue if message is handled
+)
+
 // BufferFlags casts GstBufferFlags to a go type.
 type BufferFlags int
 
