@@ -4,6 +4,7 @@ package main
 import "C"
 import (
 	"fmt"
+	"time"
 )
 
 func main() {
@@ -12,4 +13,5 @@ func main() {
 		fmt.Println("I slept")
 	}()
 	fmt.Println("Hello world")
+	time.Sleep(time.Minute)
 }

@@ -9,19 +9,19 @@ import (
 
 func main() {
 	gst.Init(nil)
-	pipeline, _ := gst.NewPipelineFromString("fakesrc ! fakesink")
-	defer pipeline.Unref()
 
-	clock := pipeline.GetPipelineClock()
+	clock := gst.ObtainSystemClock()
 
-	id := clock.NewSingleShotID(gst.ClockTime(time.Minute.Nanoseconds()))
+	id := clock.NewSingleShotID(clock.GetTime() + gst.ClockTime(time.Minute.Nanoseconds()))
 
 	go func() {
-		id.Wait(gst.ClockTimeDiff(time.Minute.NanoSeconds()))
-		fmt.Println("I returned")
+		res, _ := id.Wait()
+		if res != gst.ClockOK {
+			panic(res)
+		}
+		fmt.Println("I waited")
 	}()
 
-	pipeline.SetState(gst.StatePlaying)
 	fmt.Println("I am waiting")
-	gst.Wait(pipeline)
+	time.Sleep(time.Minute)
 }

@@ -67,12 +67,11 @@ func (c *ClockID) UsesClock(clock *Clock) bool {
 // If the jitter argument is not 0 and this function returns ClockOK or ClockEarly, it will contain the difference against the clock and the
 // time of id when this method was called. Positive values indicate how late id was relative to the clock (in which case this function will
 // return ClockEarly). Negative values indicate how much time was spent waiting on the clock before this function returned.
-func (c *ClockID) Wait(jitter ClockTimeDiff) ClockReturn {
+func (c *ClockID) Wait() (ret ClockReturn, jitter ClockTimeDiff) {
 	var gjitter C.GstClockTimeDiff
-	if jitter > ClockTimeDiff(0) {
-		gjitter = C.GstClockTimeDiff(jitter)
-	}
-	return ClockReturn(C.gst_clock_id_wait(c.Instance(), &gjitter))
+	ret = ClockReturn(C.gst_clock_id_wait(c.Instance(), &gjitter))
+	jitter = ClockTimeDiff(gjitter)
+	return
 }
 
 // WaitAsync registers a callback on the given ClockID id with the given function and user_data. When passing a ClockID with an invalid time to
