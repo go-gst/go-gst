@@ -79,6 +79,26 @@ func (c *ClockID) Wait(jitter ClockTimeDiff) ClockReturn {
 // this function, the callback will be called immediately with a time set to ClockTimeNone. The callback will be called when the time of id has been reached.
 //
 // The callback func can be invoked from any thread, either provided by the core or from a streaming thread. The application should be prepared for this.
+//
+//   // Example
+//
+//   pipeline, _ := gst.NewPipelineFromString("fakesrc ! fakesink")
+//   defer pipeline.Unref()
+//
+//   clock := pipeline.GetPipelineClock()
+//
+//   id := clock.NewSingleShotID(gst.ClockTime(1000000000)) // 1 second
+//
+//   id.WaitAsync(func(clock *gst.Clock, clockTime gst.ClockTime) bool {
+//       fmt.Println("Single shot triggered at", clockTime)
+//       pipeline.SetState(gst.StateNull)
+//       return true
+//   })
+//
+//   pipeline.SetState(gst.StatePlaying)
+//   gst.Wait(pipeline)
+//
+//   // Single shot triggered at 1000000000
 func (c *ClockID) WaitAsync(f ClockCallback) ClockReturn {
 	ptr := gopointer.Save(f)
 	return ClockReturn(C.gst_clock_id_wait_async(
