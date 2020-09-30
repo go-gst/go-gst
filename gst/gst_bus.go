@@ -39,6 +39,39 @@ type Bus struct {
 }
 
 // NewBus returns a new Bus instance.
+//
+//   // Example of using the bus instance
+//
+//   package main
+//
+//   import (
+//       "fmt"
+//
+//       "github.com/tinyzimmer/go-gst/gst"
+//   )
+//
+//   func main() {
+//       gst.Init(nil)
+//
+//       bus := gst.NewBus()
+//       defer bus.Unref()
+//
+//       elem, err := gst.NewElement("fakesrc")
+//       if err != nil {
+//           panic(err)
+//       }
+//       defer elem.Unref()
+//
+//       bus.Post(gst.NewAsyncStartMessage(elem))
+//
+//       msg := bus.Pop()
+//       defer msg.Unref()
+//
+//       fmt.Println(msg)
+//   }
+//
+//   // > [fakesrc0] ASYNC-START - Async task started
+//
 func NewBus() *Bus {
 	bus := C.gst_bus_new()
 	return wrapBus(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(bus))})

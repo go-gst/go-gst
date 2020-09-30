@@ -9,8 +9,7 @@ import (
 	"github.com/gotk3/gotk3/glib"
 )
 
-// Object is a go representation of a GstObject. Type casting stops here
-// and we do not descend into the glib library.
+// Object is a go representation of a GstObject.
 type Object struct{ *glib.InitiallyUnowned }
 
 // Unsafe returns the unsafe pointer to the underlying object. This method is primarily
@@ -25,14 +24,8 @@ func (o *Object) Unsafe() unsafe.Pointer {
 // Instance returns the native C GstObject.
 func (o *Object) Instance() *C.GstObject { return C.toGstObject(o.Unsafe()) }
 
-// Unref wraps the underlying Unref from glib, and performs an extra check that the
-// object has not already been destroyed.
-func (o *Object) Unref() {
-	if o.GObject == nil {
-		return
-	}
-	o.Object.Unref()
-}
+// Object is an alias to Instance on the underlying GstObject of any extending struct.
+func (o *Object) Object() *C.GstObject { return C.toGstObject(o.Unsafe()) }
 
 // Class returns the GObjectClass of this instance.
 func (o *Object) Class() *C.GObjectClass { return C.getGObjectClass(o.Unsafe()) }
