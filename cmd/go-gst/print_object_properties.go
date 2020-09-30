@@ -326,7 +326,7 @@ func printCaps(caps *gst.Caps, indent int) {
 		return
 	}
 
-	for i := 0; i < caps.Size(); i++ {
+	for i := 0; i < caps.GetSize(); i++ {
 		structure := caps.GetStructureAt(i)
 		features := caps.GetFeaturesAt(i)
 

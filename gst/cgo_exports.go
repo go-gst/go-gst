@@ -146,3 +146,18 @@ func goGDestroyNotifyFunc(ptr C.gpointer) {
 		f()
 	}
 }
+
+//export goCapsMapFunc
+func goCapsMapFunc(features *C.GstCapsFeatures, structure *C.GstStructure, userData C.gpointer) C.gboolean {
+	// retrieve the ptr to the function
+	ptr := unsafe.Pointer(userData)
+	funcIface := gopointer.Restore(ptr)
+	mapFunc, ok := funcIface.(CapsMapFunc)
+
+	if !ok {
+		gopointer.Unref(ptr)
+		return gboolean(false)
+	}
+
+	return gboolean(mapFunc(wrapCapsFeatures(features), wrapStructure(structure)))
+}

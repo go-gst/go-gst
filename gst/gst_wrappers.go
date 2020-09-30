@@ -103,7 +103,14 @@ func init() {
 			T: glib.Type(C.bufferListType()),
 			F: marshalBufferList,
 		},
-
+		{
+			T: glib.Type(C.getCapsType()),
+			F: marshalCaps,
+		},
+		{
+			T: glib.Type(C.GST_TYPE_CAPS_FEATURES),
+			F: marshalCapsFeatures,
+		},
 		// Boxed
 		{T: glib.Type(C.gst_message_get_type()), F: marshalMessage},
 	}
@@ -119,6 +126,7 @@ func wrapBuffer(buf *C.GstBuffer) *Buffer                  { return &Buffer{ptr:
 func wrapBufferList(bufList *C.GstBufferList) *BufferList  { return &BufferList{ptr: bufList} }
 func wrapBufferPool(obj *glib.Object) *BufferPool          { return &BufferPool{wrapObject(obj)} }
 func wrapBus(obj *glib.Object) *Bus                        { return &Bus{Object: wrapObject(obj)} }
+func wrapCaps(caps *C.GstCaps) *Caps                       { return &Caps{native: caps} }
 func wrapClock(obj *glib.Object) *Clock                    { return &Clock{wrapObject(obj)} }
 func wrapDevice(obj *glib.Object) *Device                  { return &Device{wrapObject(obj)} }
 func wrapElement(obj *glib.Object) *Element                { return &Element{wrapObject(obj)} }
@@ -138,6 +146,10 @@ func wrapRegistry(obj *glib.Object) *Registry              { return &Registry{wr
 func wrapSample(sample *C.GstSample) *Sample               { return &Sample{sample: sample} }
 func wrapStream(obj *glib.Object) *Stream                  { return &Stream{wrapObject(obj)} }
 func wrapTagList(tagList *C.GstTagList) *TagList           { return &TagList{ptr: tagList} }
+
+func wrapCapsFeatures(features *C.GstCapsFeatures) *CapsFeatures {
+	return &CapsFeatures{native: features}
+}
 
 func wrapObject(obj *glib.Object) *Object {
 	return &Object{InitiallyUnowned: &glib.InitiallyUnowned{Object: obj}}
@@ -291,4 +303,16 @@ func marshalBufferList(p uintptr) (interface{}, error) {
 	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
 	obj := (*C.GstBufferList)(unsafe.Pointer(c))
 	return wrapBufferList(obj), nil
+}
+
+func marshalCaps(p uintptr) (interface{}, error) {
+	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
+	obj := (*C.GstCaps)(unsafe.Pointer(c))
+	return wrapCaps(obj), nil
+}
+
+func marshalCapsFeatures(p uintptr) (interface{}, error) {
+	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
+	obj := (*C.GstCapsFeatures)(unsafe.Pointer(c))
+	return wrapCapsFeatures(obj), nil
 }

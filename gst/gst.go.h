@@ -83,6 +83,23 @@ inline gboolean bufferPoolIsFlushing (GstBufferPool * pool)
 	return GST_BUFFER_POOL_IS_FLUSHING(pool);
 }
 
+/* Caps utilties */
+
+inline gboolean capsIsWritable (GstCaps * caps)
+{
+	return gst_caps_is_writable(caps);
+}
+
+inline GstCaps * makeCapsWritable (GstCaps * caps)
+{
+	return gst_caps_make_writable(caps);
+}
+
+inline GType getCapsType ()
+{
+	return GST_TYPE_CAPS;
+}
+
 /* Object Utilities */
 
 inline GObjectClass *  getGObjectClass         (void * p)                               { return (G_OBJECT_GET_CLASS(p)); }

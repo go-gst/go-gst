@@ -256,14 +256,13 @@ func NewLatencyMessage(src interface{}) *Message {
 	return wrapMessage(C.gst_message_new_latency(srcObj))
 }
 
-// NewNeedContextMessage creates a message tjat is posted when an element needs a specific Context.
+// NewNeedContextMessage creates a message that is posted when an element needs a specific Context.
 func NewNeedContextMessage(src interface{}, ctxType string) *Message {
 	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
 	cStr := C.CString(ctxType)
-	// TODO: I think message needs the string to stay in memory
 	return wrapMessage(C.gst_message_new_need_context(srcObj, (*C.gchar)(unsafe.Pointer(cStr))))
 }
 
