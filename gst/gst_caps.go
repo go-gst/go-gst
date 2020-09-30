@@ -14,9 +14,7 @@ gboolean cgoCapsMapFunc (GstCapsFeatures * features, GstStructure * structure, g
 import "C"
 
 import (
-	"errors"
 	"fmt"
-	"strings"
 	"unsafe"
 
 	"github.com/gotk3/gotk3/glib"
@@ -32,13 +30,28 @@ type Caps struct {
 type CapsMapFunc func(features *CapsFeatures, structure *Structure) bool
 
 // NewAnyCaps creates a new caps that indicate compatibility with any format.
+//
+//   caps := gst.NewAnyCaps()
+//   fmt.Println(caps.IsAny())
+//   // true
+//
 func NewAnyCaps() *Caps { return wrapCaps(C.gst_caps_new_any()) }
 
 // NewEmptyCaps creates a new empty caps object. This is essentially the opposite of
 // NewAnyCamps.
+//
+//   caps := gst.NewEmptyCaps()
+//   fmt.Println(caps.IsEmpty())
+//   // true
+//
 func NewEmptyCaps() *Caps { return wrapCaps(C.gst_caps_new_empty()) }
 
 // NewEmptySimpleCaps returns a new empty caps object with the given media format.
+//
+//   caps := gst.NewEmptySimpleCaps("audio/x-raw")
+//   fmt.Println(caps.String())
+//   // audio/x-raw
+//
 func NewEmptySimpleCaps(mediaFormat string) *Caps {
 	cFormat := C.CString(mediaFormat)
 	defer C.free(unsafe.Pointer(cFormat))
@@ -55,31 +68,36 @@ func NewFullCaps(structures ...*Structure) *Caps {
 	return caps
 }
 
-// NewSimpleCaps creates new caps with the given media format and key value pairs.
-// The key of each pair must be a string, followed by any field that can be converted
-// to a GType.
-func NewSimpleCaps(mediaFormat string, fieldVals ...interface{}) (*Caps, error) {
-	if len(fieldVals)%2 != 0 {
-		return nil, errors.New("Received odd number of key/value pairs")
-	}
-	caps := NewEmptySimpleCaps(mediaFormat)
-	strParts := make([]string, 0)
-	for i := 0; i < len(fieldVals); i = i + 2 {
-		fieldKey, ok := fieldVals[i].(string)
-		if !ok {
-			return nil, errors.New("One or more field keys are not a valid string")
-		}
-		strParts = append(strParts, fmt.Sprintf("%s=%v", fieldKey, fieldVals[i+1]))
-	}
-	structure := NewStructureFromString(strings.Join(strParts, ", "))
-	if structure == nil {
-		return nil, errors.New("Could not build structure from the provided arguments")
-	}
-	caps.AppendStructure(structure)
-	return caps, nil
-}
+// // NewSimpleCaps creates new caps with the given media format and key value pairs.
+// // The key of each pair must be a string, followed by any field that can be converted
+// // to a GType.
+// func NewSimpleCaps(mediaFormat string, fieldVals ...interface{}) (*Caps, error) {
+// 	if len(fieldVals)%2 != 0 {
+// 		return nil, errors.New("Received odd number of key/value pairs")
+// 	}
+// 	caps := NewEmptySimpleCaps(mediaFormat)
+// 	strParts := make([]string, 0)
+// 	for i := 0; i < len(fieldVals); i = i + 2 {
+// 		fieldKey, ok := fieldVals[i].(string)
+// 		if !ok {
+// 			return nil, errors.New("One or more field keys are not a valid string")
+// 		}
+// 		strParts = append(strParts, fmt.Sprintf("%s=%v", fieldKey, fieldVals[i+1]))
+// 	}
+// 	structure := NewStructureFromString(strings.Join(strParts, ", "))
+// 	if structure == nil {
+// 		return nil, errors.New("Could not build structure from the provided arguments")
+// 	}
+// 	caps.AppendStructure(structure)
+// 	return caps, nil
+// }
 
 // NewCapsFromString creates a new Caps object from the given string.
+//
+//   caps := gst.NewCapsFromString("audio/x-raw, channels=2")
+//   fmt.Println(caps.String())
+//   // audio/x-raw, channels=(int)2
+//
 func NewCapsFromString(capsStr string) *Caps {
 	cStr := C.CString(capsStr)
 	defer C.free(unsafe.Pointer(cStr))
@@ -161,6 +179,22 @@ func (c *Caps) CopyNth(n uint) *Caps { return wrapCaps(C.gst_caps_copy_nth(c.Ins
 // FilterAndMapInPlace calls the provided function once for each structure and caps feature in the Caps.
 // In contrast to ForEach, the function may modify the structure and features. In contrast to MapInPlace,
 // the structure and features are removed from the caps if FALSE is returned from the function. The caps must be mutable.
+//
+//   caps := gst.NewCapsFromString("audio/x-raw")
+//
+//   caps.FilterAndMapInPlace(func(features *gst.CapsFeatures, structure *gst.Structure) bool {
+//       if features.Contains(gst.CapsFeatureMemorySystemMemory) {
+//           fmt.Println("Removing system memory feature")
+//           return false
+//       }
+//       return true
+//   })
+//
+//   fmt.Println(caps.IsEmpty())
+//
+//   // Removing system memory feature
+//   // true
+//
 func (c *Caps) FilterAndMapInPlace(f CapsMapFunc) {
 	ptr := gopointer.Save(f)
 	defer gopointer.Unref(ptr)
@@ -185,6 +219,16 @@ func (c *Caps) Fixate() *Caps { return wrapCaps(C.gst_caps_fixate(c.Instance()))
 
 // ForEach calls the provided function once for each structure and caps feature in the GstCaps. The function must not
 // modify the fields.
+//
+//   caps := gst.NewCapsFromString("audio/x-raw")
+//
+//   caps.ForEach(func(features *gst.CapsFeatures, structure *gst.Structure) bool {
+//       fmt.Println(structure)
+//       return true
+//   })
+//
+//   // audio/x-raw;
+//
 func (c *Caps) ForEach(f CapsMapFunc) bool {
 	ptr := gopointer.Save(f)
 	defer gopointer.Unref(ptr)
