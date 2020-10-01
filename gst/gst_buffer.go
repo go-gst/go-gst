@@ -251,12 +251,15 @@ type ReferenceTimestampMeta struct {
 // See the documentation of GstReferenceTimestampMeta for details.
 // https://gstreamer.freedesktop.org/documentation/gstreamer/gstbuffer.html?gi-language=c#GstReferenceTimestampMeta
 func (b *Buffer) AddReferenceTimestampMeta(ref *Caps, timestamp, duration time.Duration) *ReferenceTimestampMeta {
-	durClockTime := C.GstClockTime(C.GST_CLOCK_TIME_NONE)
+	durClockTime := C.GstClockTime(ClockTimeNone)
 	if duration > time.Duration(0) {
 		durClockTime = C.GstClockTime(duration.Nanoseconds())
 	}
 	tsClockTime := C.GstClockTime(timestamp.Nanoseconds())
 	meta := C.gst_buffer_add_reference_timestamp_meta(b.Instance(), ref.Instance(), tsClockTime, durClockTime)
+	if meta == nil {
+		return nil
+	}
 	return &ReferenceTimestampMeta{
 		Parent:    wrapMeta(&meta.parent),
 		Reference: wrapCaps(meta.reference),

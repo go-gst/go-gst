@@ -346,7 +346,7 @@ func (b *Bus) SetSyncHandler(f BusSyncHandler) {
 func (b *Bus) TimedPop(dur time.Duration) *Message {
 	var cTime C.GstClockTime
 	if dur.Nanoseconds() < 0 {
-		cTime = C.GST_CLOCK_TIME_NONE
+		cTime = C.GstClockTime(ClockTimeNone)
 	} else {
 		cTime = C.GstClockTime(durationToClockTime(dur))
 	}
@@ -365,7 +365,7 @@ func (b *Bus) TimedPop(dur time.Duration) *Message {
 func (b *Bus) TimedPopFiltered(dur time.Duration, msgTypes MessageType) *Message {
 	var cTime C.GstClockTime
 	if dur.Nanoseconds() < 0 {
-		cTime = C.GST_CLOCK_TIME_NONE
+		cTime = C.GstClockTime(ClockTimeNone)
 	} else {
 		cTime = C.GstClockTime(durationToClockTime(dur))
 	}

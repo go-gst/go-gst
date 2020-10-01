@@ -16,9 +16,9 @@ const (
 	// ClockFormat is the string used when formatting clock strings
 	ClockFormat string = "u:%02u:%02u.%09u"
 	// ClockTimeNone means infinite timeout (unsigned representation of -1) or an otherwise unknown value.
-	ClockTimeNone ClockTime = C.GST_CLOCK_TIME_NONE
+	ClockTimeNone ClockTime = 0xffffffffffffffff
 	// BufferOffsetNone is a constant for no-offset return results.
-	BufferOffsetNone ClockTime = C.GST_BUFFER_OFFSET_NONE
+	BufferOffsetNone ClockTime = 0xffffffffffffffff
 )
 
 // ClockEntryType wraps GstClockEntryType

@@ -7,8 +7,8 @@ import "unsafe"
 
 // Go casting of pre-baked caps features
 var (
-	CapsFeaturesAny               *CapsFeatures = wrapCapsFeatures(C.gst_caps_features_new_any())
-	CapsFeatureMemorySystemMemory string        = C.GST_CAPS_FEATURE_MEMORY_SYSTEM_MEMORY
+	CapsFeaturesAny                      = wrapCapsFeatures(C.gst_caps_features_new_any())
+	CapsFeatureMemorySystemMemory string = C.GST_CAPS_FEATURE_MEMORY_SYSTEM_MEMORY
 )
 
 // CapsFeatures is a go representation of GstCapsFeatures.

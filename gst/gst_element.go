@@ -94,7 +94,7 @@ func (e *Element) BlockSetState(state State) error {
 		(*C.GstElement)(e.Instance()),
 		(*C.GstState)(unsafe.Pointer(&curState)),
 		(*C.GstState)(unsafe.Pointer(&cState)),
-		C.GST_CLOCK_TIME_NONE,
+		C.GstClockTime(ClockTimeNone),
 	)
 	return nil
 }

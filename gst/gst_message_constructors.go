@@ -41,7 +41,7 @@ func NewAsyncDoneMessage(src interface{}, runningTime time.Duration) *Message {
 	}
 	var cTime C.GstClockTime
 	if runningTime.Nanoseconds() < 0 {
-		cTime = C.GST_CLOCK_TIME_NONE
+		cTime = C.GstClockTime(ClockTimeNone)
 	} else {
 		cTime = C.GstClockTime(durationToClockTime(runningTime))
 	}

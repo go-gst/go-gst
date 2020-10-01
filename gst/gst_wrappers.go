@@ -1,6 +1,13 @@
 package gst
 
-// #include "gst.go.h"
+/*
+#include "gst.go.h"
+
+GValue * gvalPtrToGval (uintptr_t p)
+{
+	return (GValue*)(p);
+}
+*/
 import "C"
 
 import (
@@ -196,168 +203,172 @@ func clockTimeToDuration(n ClockTime) time.Duration {
 func guint64ToDuration(n C.guint64) time.Duration     { return clockTimeToDuration(ClockTime(n)) }
 func durationToClockTime(dur time.Duration) ClockTime { return ClockTime(dur.Nanoseconds()) }
 
-// Enums/Constants
+// Marshallers
+
+func uintptrToGVal(p uintptr) *C.GValue {
+	return C.gvalPtrToGval(C.ulong(p))
+}
 
 func marshalBufferingMode(p uintptr) (interface{}, error) {
-	c := C.g_value_get_enum((*C.GValue)(unsafe.Pointer(p)))
+	c := C.g_value_get_enum(uintptrToGVal(p))
 	return BufferingMode(c), nil
 }
 
 func marshalFormat(p uintptr) (interface{}, error) {
-	c := C.g_value_get_enum((*C.GValue)(unsafe.Pointer(p)))
+	c := C.g_value_get_enum(uintptrToGVal(p))
 	return Format(c), nil
 }
 
 func marshalMessageType(p uintptr) (interface{}, error) {
-	c := C.g_value_get_enum((*C.GValue)(unsafe.Pointer(p)))
+	c := C.g_value_get_enum(uintptrToGVal(p))
 	return MessageType(c), nil
 }
 
 func marshalPadLinkReturn(p uintptr) (interface{}, error) {
-	c := C.g_value_get_enum((*C.GValue)(unsafe.Pointer(p)))
+	c := C.g_value_get_enum(uintptrToGVal(p))
 	return PadLinkReturn(c), nil
 }
 
 func marshalState(p uintptr) (interface{}, error) {
-	c := C.g_value_get_enum((*C.GValue)(unsafe.Pointer(p)))
+	c := C.g_value_get_enum(uintptrToGVal(p))
 	return State(c), nil
 }
 
 func marshalSeekFlags(p uintptr) (interface{}, error) {
-	c := C.g_value_get_enum((*C.GValue)(unsafe.Pointer(p)))
+	c := C.g_value_get_enum(uintptrToGVal(p))
 	return SeekFlags(c), nil
 }
 
 func marshalSeekType(p uintptr) (interface{}, error) {
-	c := C.g_value_get_enum((*C.GValue)(unsafe.Pointer(p)))
+	c := C.g_value_get_enum(uintptrToGVal(p))
 	return SeekType(c), nil
 }
 
 func marshalStateChangeReturn(p uintptr) (interface{}, error) {
-	c := C.g_value_get_enum((*C.GValue)(unsafe.Pointer(p)))
+	c := C.g_value_get_enum(uintptrToGVal(p))
 	return StateChangeReturn(c), nil
 }
 
 func marshalGhostPad(p uintptr) (interface{}, error) {
-	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
+	c := C.g_value_get_object(uintptrToGVal(p))
 	obj := &glib.Object{GObject: glib.ToGObject(unsafe.Pointer(c))}
 	return wrapGhostPad(obj), nil
 }
 
 func marshalPad(p uintptr) (interface{}, error) {
-	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
+	c := C.g_value_get_object(uintptrToGVal(p))
 	obj := &glib.Object{GObject: glib.ToGObject(unsafe.Pointer(c))}
 	return wrapPad(obj), nil
 }
 
 func marshalMessage(p uintptr) (interface{}, error) {
-	c := C.g_value_get_boxed((*C.GValue)(unsafe.Pointer(p)))
+	c := C.g_value_get_boxed(uintptrToGVal(p))
 	return &Message{(*C.GstMessage)(unsafe.Pointer(c))}, nil
 }
 
 func marshalObject(p uintptr) (interface{}, error) {
-	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
+	c := C.g_value_get_object(uintptrToGVal(p))
 	obj := &glib.Object{GObject: glib.ToGObject(unsafe.Pointer(c))}
 	return wrapObject(obj), nil
 }
 
 func marshalBus(p uintptr) (interface{}, error) {
-	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
+	c := C.g_value_get_object(uintptrToGVal(p))
 	obj := &glib.Object{GObject: glib.ToGObject(unsafe.Pointer(c))}
 	return wrapBus(obj), nil
 }
 
 func marshalElementFactory(p uintptr) (interface{}, error) {
-	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
+	c := C.g_value_get_object(uintptrToGVal(p))
 	obj := &glib.Object{GObject: glib.ToGObject(unsafe.Pointer(c))}
 	return wrapElementFactory(obj), nil
 }
 
 func marshalPipeline(p uintptr) (interface{}, error) {
-	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
+	c := C.g_value_get_object(uintptrToGVal(p))
 	obj := &glib.Object{GObject: glib.ToGObject(unsafe.Pointer(c))}
 	return wrapPipeline(obj), nil
 }
 
 func marshalPluginFeature(p uintptr) (interface{}, error) {
-	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
+	c := C.g_value_get_object(uintptrToGVal(p))
 	obj := &glib.Object{GObject: glib.ToGObject(unsafe.Pointer(c))}
 	return wrapPluginFeature(obj), nil
 }
 
 func marshalElement(p uintptr) (interface{}, error) {
-	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
+	c := C.g_value_get_object(uintptrToGVal(p))
 	obj := &glib.Object{GObject: glib.ToGObject(unsafe.Pointer(c))}
 	return wrapElement(obj), nil
 }
 
 func marshalBin(p uintptr) (interface{}, error) {
-	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
+	c := C.g_value_get_object(uintptrToGVal(p))
 	obj := &glib.Object{GObject: glib.ToGObject(unsafe.Pointer(c))}
 	return wrapBin(obj), nil
 }
 
 func marshalAllocationParams(p uintptr) (interface{}, error) {
-	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
+	c := C.g_value_get_object(uintptrToGVal(p))
 	obj := (*C.GstAllocationParams)(unsafe.Pointer(c))
 	return wrapAllocationParams(obj), nil
 }
 
 func marshalMemory(p uintptr) (interface{}, error) {
-	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
+	c := C.g_value_get_object(uintptrToGVal(p))
 	obj := (*C.GstMemory)(unsafe.Pointer(c))
 	return wrapMemory(obj), nil
 }
 
 func marshalAtomicQueue(p uintptr) (interface{}, error) {
-	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
+	c := C.g_value_get_object(uintptrToGVal(p))
 	obj := (*C.GstAtomicQueue)(unsafe.Pointer(c))
 	return wrapAtomicQueue(obj), nil
 }
 
 func marshalBuffer(p uintptr) (interface{}, error) {
-	c := C.getBufferValue((*C.GValue)(unsafe.Pointer(p)))
+	c := C.getBufferValue(uintptrToGVal(p))
 	return wrapBuffer(c), nil
 }
 
 func marshalBufferList(p uintptr) (interface{}, error) {
-	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
+	c := C.g_value_get_object(uintptrToGVal(p))
 	obj := (*C.GstBufferList)(unsafe.Pointer(c))
 	return wrapBufferList(obj), nil
 }
 
 func marshalCaps(p uintptr) (interface{}, error) {
-	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
+	c := C.g_value_get_object(uintptrToGVal(p))
 	obj := (*C.GstCaps)(unsafe.Pointer(c))
 	return wrapCaps(obj), nil
 }
 
 func marshalCapsFeatures(p uintptr) (interface{}, error) {
-	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
+	c := C.g_value_get_object(uintptrToGVal(p))
 	obj := (*C.GstCapsFeatures)(unsafe.Pointer(c))
 	return wrapCapsFeatures(obj), nil
 }
 
 func marshalChildProxy(p uintptr) (interface{}, error) {
-	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
+	c := C.g_value_get_object(uintptrToGVal(p))
 	obj := (*C.GstChildProxy)(unsafe.Pointer(c))
 	return wrapChildProxy(obj), nil
 }
 
 func marshalContext(p uintptr) (interface{}, error) {
-	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
+	c := C.g_value_get_object(uintptrToGVal(p))
 	obj := (*C.GstContext)(unsafe.Pointer(c))
 	return wrapContext(obj), nil
 }
 
 func marshalTOC(p uintptr) (interface{}, error) {
-	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
+	c := C.g_value_get_object(uintptrToGVal(p))
 	obj := (*C.GstToc)(unsafe.Pointer(c))
 	return wrapTOC(obj), nil
 }
 
 func marshalTOCEntry(p uintptr) (interface{}, error) {
-	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
+	c := C.g_value_get_object(uintptrToGVal(p))
 	obj := (*C.GstTocEntry)(unsafe.Pointer(c))
 	return wrapTOCEntry(obj), nil
 }
