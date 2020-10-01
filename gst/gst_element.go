@@ -168,3 +168,23 @@ func (e *Element) GetURIProtocols() []string {
 	size := C.sizeOfGCharArray(protocols)
 	return goStrings(size, protocols)
 }
+
+// TOCSetter returns a TOCSetter interface if implemented by this element. Otherwise it
+// returns nil. Currently this only supports elements built through this package, however,
+// inner application elements could still use the interface as a reference implementation.
+func (e *Element) TOCSetter() TOCSetter {
+	if C.toTocSetter(e.Instance()) == nil {
+		return nil
+	}
+	return &gstTOCSetter{ptr: e.Instance()}
+}
+
+// TagSetter returns a TagSetter interface if implemented by this element. Otherwise it returns nil.
+// This currently only supports elements built through this package's bindings, however, inner application
+// elements can still implement the interface themselves if they want.
+func (e *Element) TagSetter() TagSetter {
+	if C.toTagSetter(e.Instance()) == nil {
+		return nil
+	}
+	return &gstTagSetter{ptr: e.Instance()}
+}

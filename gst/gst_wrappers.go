@@ -3,7 +3,7 @@ package gst
 /*
 #include "gst.go.h"
 
-GValue * gvalPtrToGval (uintptr_t p)
+GValue * gvalPtrToGval (gpointer p)
 {
 	return (GValue*)(p);
 }
@@ -141,6 +141,10 @@ func init() {
 	glib.RegisterGValueMarshalers(tm)
 }
 
+func uintptrToGVal(p uintptr) *C.GValue {
+	return (*C.GValue)(unsafe.Pointer(p))
+}
+
 // Object wrappers
 
 func wrapAllocator(obj *glib.Object) *Allocator            { return &Allocator{wrapObject(obj)} }
@@ -204,10 +208,6 @@ func guint64ToDuration(n C.guint64) time.Duration     { return clockTimeToDurati
 func durationToClockTime(dur time.Duration) ClockTime { return ClockTime(dur.Nanoseconds()) }
 
 // Marshallers
-
-func uintptrToGVal(p uintptr) *C.GValue {
-	return C.gvalPtrToGval(C.ulong(p))
-}
 
 func marshalBufferingMode(p uintptr) (interface{}, error) {
 	c := C.g_value_get_enum(uintptrToGVal(p))
