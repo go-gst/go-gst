@@ -119,6 +119,14 @@ func init() {
 			T: glib.Type(C.GST_TYPE_CONTEXT),
 			F: marshalContext,
 		},
+		{
+			T: glib.Type(C.GST_TYPE_TOC_ENTRY),
+			F: marshalTOCEntry,
+		},
+		{
+			T: glib.Type(C.GST_TYPE_TOC),
+			F: marshalTOC,
+		},
 
 		// Boxed
 		{T: glib.Type(C.gst_message_get_type()), F: marshalMessage},
@@ -157,6 +165,8 @@ func wrapRegistry(obj *glib.Object) *Registry              { return &Registry{wr
 func wrapSample(sample *C.GstSample) *Sample               { return &Sample{sample: sample} }
 func wrapStream(obj *glib.Object) *Stream                  { return &Stream{wrapObject(obj)} }
 func wrapTagList(tagList *C.GstTagList) *TagList           { return &TagList{ptr: tagList} }
+func wrapTOC(toc *C.GstToc) *TOC                           { return &TOC{ptr: toc} }
+func wrapTOCEntry(toc *C.GstTocEntry) *TOCEntry            { return &TOCEntry{ptr: toc} }
 
 func wrapCapsFeatures(features *C.GstCapsFeatures) *CapsFeatures {
 	return &CapsFeatures{native: features}
@@ -338,4 +348,16 @@ func marshalContext(p uintptr) (interface{}, error) {
 	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
 	obj := (*C.GstContext)(unsafe.Pointer(c))
 	return wrapContext(obj), nil
+}
+
+func marshalTOC(p uintptr) (interface{}, error) {
+	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
+	obj := (*C.GstToc)(unsafe.Pointer(c))
+	return wrapTOC(obj), nil
+}
+
+func marshalTOCEntry(p uintptr) (interface{}, error) {
+	c := C.g_value_get_object((*C.GValue)(unsafe.Pointer(p)))
+	obj := (*C.GstTocEntry)(unsafe.Pointer(c))
+	return wrapTOCEntry(obj), nil
 }

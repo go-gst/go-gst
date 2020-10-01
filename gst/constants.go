@@ -548,3 +548,171 @@ const (
 	MetaFlagLocked   MetaFlags = C.GST_META_FLAG_LOCKED   // (4) – metadata should not be removed
 	MetaFlagLast     MetaFlags = C.GST_META_FLAG_LAST     // (65536) – additional flags can be added starting from this flag.
 )
+
+// TOCScope represents the scope of a TOC.
+type TOCScope int
+
+// Type castings of TOCScopes.
+const (
+	// (1) – global TOC representing all selectable options (this is what applications are usually interested in)
+	TOCScopeGlobal TOCScope = C.GST_TOC_SCOPE_GLOBAL
+	// (2) – TOC for the currently active/selected stream (this is a TOC representing the current stream from start
+	// to EOS, and is what a TOC writer / muxer is usually interested in; it will usually be a subset of the global
+	// TOC, e.g. just the chapters of the current title, or the chapters selected for playback from the current title)
+	TOCScopeCurrent TOCScope = C.GST_TOC_SCOPE_CURRENT
+)
+
+// TOCLoopType represents a GstTocLoopType
+type TOCLoopType int
+
+// Type castings of TOCLoopTypes
+const (
+	TOCLoopNone     TOCLoopType = C.GST_TOC_LOOP_NONE      // (0) – single forward playback
+	TOCLoopForward  TOCLoopType = C.GST_TOC_LOOP_FORWARD   // (1) – repeat forward
+	TOCLoopReverse  TOCLoopType = C.GST_TOC_LOOP_REVERSE   // (2) – repeat backward
+	TOCLoopPingPong TOCLoopType = C.GST_TOC_LOOP_PING_PONG // (3) – repeat forward and backward
+)
+
+// TOCEntryType represents a GstTocEntryType.
+type TOCEntryType int
+
+// Type castings of TOCEntryTypes
+const (
+	TOCEntryTypeAngle   TOCEntryType = C.GST_TOC_ENTRY_TYPE_ANGLE   // (-3) – entry is an angle (i.e. an alternative)
+	TOCEntryTypeVersion TOCEntryType = C.GST_TOC_ENTRY_TYPE_VERSION // (-2) – entry is a version (i.e. alternative)
+	TOCEntryTypeEdition TOCEntryType = C.GST_TOC_ENTRY_TYPE_EDITION // (-1) – entry is an edition (i.e. alternative)
+	TOCEntryTypeInvalid TOCEntryType = C.GST_TOC_ENTRY_TYPE_INVALID // (0) – invalid entry type value
+	TOCEntryTypeTitle   TOCEntryType = C.GST_TOC_ENTRY_TYPE_TITLE   // (1) – entry is a title (i.e. a part of a sequence)
+	TOCEntryTypeTrack   TOCEntryType = C.GST_TOC_ENTRY_TYPE_TRACK   // (2) – entry is a track (i.e. a part of a sequence)
+	TOCEntryTypeChapter TOCEntryType = C.GST_TOC_ENTRY_TYPE_CHAPTER // (3) – entry is a chapter (i.e. a part of a sequence)
+)
+
+// TagFlag represents a GstTagFlag
+type TagFlag int
+
+// Type castins of TagFlags
+const (
+	TagFlagUndefined TagFlag = C.GST_TAG_FLAG_UNDEFINED // (0) – undefined flag
+	TagFlagMeta      TagFlag = C.GST_TAG_FLAG_META      // (1) – tag is meta data
+	TagFlagEncoded   TagFlag = C.GST_TAG_FLAG_ENCODED   // (2) – tag is encoded
+	TagFlagDecoded   TagFlag = C.GST_TAG_FLAG_DECODED   // (3) – tag is decoded
+	TagFlagCount     TagFlag = C.GST_TAG_FLAG_COUNT     // (4) – number of tag flags
+)
+
+// TagMergeMode represents a GstTagMergeMode.
+// See: https://gstreamer.freedesktop.org/documentation/gstreamer/gsttaglist.html#GstTagMergeMode
+type TagMergeMode int
+
+// Type castings of TagMergeModes
+const (
+	TagMergeUndefined  TagMergeMode = C.GST_TAG_MERGE_UNDEFINED   // (0) – undefined merge mode
+	TagMergeReplaceAll TagMergeMode = C.GST_TAG_MERGE_REPLACE_ALL // (1) – replace all tags (clear list and append)
+	TagMergeReplace    TagMergeMode = C.GST_TAG_MERGE_REPLACE     // (2) – replace tags
+	TagMergeAppend     TagMergeMode = C.GST_TAG_MERGE_APPEND      // (3) – append tags
+	TagMergePrepend    TagMergeMode = C.GST_TAG_MERGE_PREPEND     // (4) – prepend tags
+	TagMergeKeep       TagMergeMode = C.GST_TAG_MERGE_KEEP        // (5) – keep existing tags
+	TagMergeKeepAll    TagMergeMode = C.GST_TAG_MERGE_KEEP_ALL    // (6) – keep all existing tags
+	TagMergeCount      TagMergeMode = C.GST_TAG_MERGE_COUNT       // (7) – the number of merge modes
+)
+
+// TagScope represents a GstTagScope
+type TagScope int
+
+// Type castings of tag scopes
+const (
+	TagScopeStream TagScope = C.GST_TAG_SCOPE_STREAM // (0) – tags specific to this single stream
+	TagScopeGlobal TagScope = C.GST_TAG_SCOPE_GLOBAL // (1) – global tags for the complete medium
+)
+
+// Tag wraps the builtin gstreamer tags
+type Tag string
+
+// Type castings of Tags
+// For more information see: https://gstreamer.freedesktop.org/documentation/gstreamer/gsttaglist.html?gi-language=c#constants
+const (
+	TagAlbum                        Tag = C.GST_TAG_ALBUM
+	TagAlbumArtist                  Tag = C.GST_TAG_ALBUM_ARTIST
+	TagAlbumArtistSortName          Tag = C.GST_TAG_ALBUM_ARTIST_SORTNAME
+	TagAlbumGain                    Tag = C.GST_TAG_ALBUM_GAIN
+	TagAlbumPeak                    Tag = C.GST_TAG_ALBUM_PEAK
+	TagAlbumSortName                Tag = C.GST_TAG_ALBUM_SORTNAME
+	TagAlbumVolumeCount             Tag = C.GST_TAG_ALBUM_VOLUME_COUNT
+	TagAlbumVolumeNumber            Tag = C.GST_TAG_ALBUM_VOLUME_NUMBER
+	TagApplicationData              Tag = C.GST_TAG_APPLICATION_DATA
+	TagApplicationName              Tag = C.GST_TAG_APPLICATION_NAME
+	TagArtist                       Tag = C.GST_TAG_ARTIST
+	TagArtistSortName               Tag = C.GST_TAG_ARTIST_SORTNAME
+	TagAttachment                   Tag = C.GST_TAG_ATTACHMENT
+	TagAudioCodec                   Tag = C.GST_TAG_AUDIO_CODEC
+	TagBeatsPerMinute               Tag = C.GST_TAG_BEATS_PER_MINUTE
+	TagBitrate                      Tag = C.GST_TAG_BITRATE
+	TagCodec                        Tag = C.GST_TAG_CODEC
+	TagComment                      Tag = C.GST_TAG_COMMENT
+	TagComposer                     Tag = C.GST_TAG_COMPOSER
+	TagComposerSortName             Tag = C.GST_TAG_COMPOSER_SORTNAME
+	TagConductor                    Tag = C.GST_TAG_CONDUCTOR
+	TagContact                      Tag = C.GST_TAG_CONTACT
+	TagContainerFormat              Tag = C.GST_TAG_CONTAINER_FORMAT
+	TagCopyright                    Tag = C.GST_TAG_COPYRIGHT
+	TagCopyrightURI                 Tag = C.GST_TAG_COPYRIGHT_URI
+	TagDate                         Tag = C.GST_TAG_DATE
+	TagDateTime                     Tag = C.GST_TAG_DATE_TIME
+	TagDescription                  Tag = C.GST_TAG_DESCRIPTION
+	TagDeviceManufacturer           Tag = C.GST_TAG_DEVICE_MANUFACTURER
+	TagDeviceModel                  Tag = C.GST_TAG_DEVICE_MODEL
+	TagDuration                     Tag = C.GST_TAG_DURATION
+	TagEncodedBy                    Tag = C.GST_TAG_ENCODED_BY
+	TagEncoder                      Tag = C.GST_TAG_ENCODER
+	TagEncoderVersion               Tag = C.GST_TAG_ENCODER_VERSION
+	TagExtendedComment              Tag = C.GST_TAG_EXTENDED_COMMENT
+	TagGenre                        Tag = C.GST_TAG_GENRE
+	TagGeoLocationCaptureDirection  Tag = C.GST_TAG_GEO_LOCATION_CAPTURE_DIRECTION
+	TagGeoLocationCity              Tag = C.GST_TAG_GEO_LOCATION_CITY
+	TagGeoLocationCountry           Tag = C.GST_TAG_GEO_LOCATION_COUNTRY
+	TagGeoLocationElevation         Tag = C.GST_TAG_GEO_LOCATION_ELEVATION
+	TagGeoLocationHoriozontalError  Tag = C.GST_TAG_GEO_LOCATION_HORIZONTAL_ERROR
+	TagGeoLocationLatitude          Tag = C.GST_TAG_GEO_LOCATION_LATITUDE
+	TagGeoLocationLongitude         Tag = C.GST_TAG_GEO_LOCATION_LONGITUDE
+	TagGeoLocationMovementDirection Tag = C.GST_TAG_GEO_LOCATION_MOVEMENT_DIRECTION
+	TagGeoLocationMovementSpeed     Tag = C.GST_TAG_GEO_LOCATION_MOVEMENT_SPEED
+	TagGeoLocationName              Tag = C.GST_TAG_GEO_LOCATION_NAME
+	TagGeoLocationSubLocation       Tag = C.GST_TAG_GEO_LOCATION_SUBLOCATION
+	TagGrouping                     Tag = C.GST_TAG_GROUPING
+	TagHomepage                     Tag = C.GST_TAG_HOMEPAGE
+	TagImage                        Tag = C.GST_TAG_IMAGE
+	TagImageOrientation             Tag = C.GST_TAG_IMAGE_ORIENTATION
+	TagInterpretedBy                Tag = C.GST_TAG_INTERPRETED_BY
+	TagISRC                         Tag = C.GST_TAG_ISRC
+	TagKeywords                     Tag = C.GST_TAG_KEYWORDS
+	TagLanguageCode                 Tag = C.GST_TAG_LANGUAGE_CODE
+	TagLanguageName                 Tag = C.GST_TAG_LANGUAGE_NAME
+	TagLicense                      Tag = C.GST_TAG_LICENSE
+	TagLicenseURI                   Tag = C.GST_TAG_LICENSE_URI
+	TagLocation                     Tag = C.GST_TAG_LOCATION
+	TagLyrics                       Tag = C.GST_TAG_LYRICS
+	TagMaximumBitrate               Tag = C.GST_TAG_MAXIMUM_BITRATE
+	TagMIDIBaseNote                 Tag = C.GST_TAG_MIDI_BASE_NOTE
+	TagMinimumBitrate               Tag = C.GST_TAG_MINIMUM_BITRATE
+	TagNominalBitrate               Tag = C.GST_TAG_NOMINAL_BITRATE
+	TagOrganization                 Tag = C.GST_TAG_ORGANIZATION
+	TagPerformer                    Tag = C.GST_TAG_PERFORMER
+	TagPreviewImage                 Tag = C.GST_TAG_PREVIEW_IMAGE
+	TagPrivateData                  Tag = C.GST_TAG_PRIVATE_DATA
+	TagPublisher                    Tag = C.GST_TAG_PUBLISHER
+	TagReferenceLevel               Tag = C.GST_TAG_REFERENCE_LEVEL
+	TagSerial                       Tag = C.GST_TAG_SERIAL
+	TagShowEpisodeNumber            Tag = C.GST_TAG_SHOW_EPISODE_NUMBER
+	TagShowName                     Tag = C.GST_TAG_SHOW_NAME
+	TagShowSeasonNumber             Tag = C.GST_TAG_SHOW_SEASON_NUMBER
+	TagShowSortName                 Tag = C.GST_TAG_SHOW_SORTNAME
+	TagSubtitleCodec                Tag = C.GST_TAG_SUBTITLE_CODEC
+	TagTitle                        Tag = C.GST_TAG_TITLE
+	TagTitleSortName                Tag = C.GST_TAG_TITLE_SORTNAME
+	TagTrackCount                   Tag = C.GST_TAG_TRACK_COUNT
+	TagTrackGain                    Tag = C.GST_TAG_TRACK_GAIN
+	TagTrackNumber                  Tag = C.GST_TAG_TRACK_NUMBER
+	TagTrackPeak                    Tag = C.GST_TAG_TRACK_PEAK
+	TagUserRating                   Tag = C.GST_TAG_USER_RATING
+	TagVersion                      Tag = C.GST_TAG_VERSION
+	TagVideoCodec                   Tag = C.GST_TAG_VIDEO_CODEC
+)

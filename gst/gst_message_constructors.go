@@ -580,8 +580,8 @@ func NewTagMessage(src interface{}, tagList *TagList) *Message {
 	return wrapMessage(C.gst_message_new_tag(srcObj, tagList.Instance()))
 }
 
-// NewToCMessage creates a new TOC message. The message is posted by elements that discovered or updated a TOC.
-func NewToCMessage(src interface{}, toc *ToC, updated bool) *Message {
+// NewTOCMessage creates a new TOC message. The message is posted by elements that discovered or updated a TOC.
+func NewTOCMessage(src interface{}, toc *TOC, updated bool) *Message {
 	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil

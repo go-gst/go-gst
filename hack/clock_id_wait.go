@@ -23,5 +23,10 @@ func wait() {
 	}()
 
 	fmt.Println("I am waiting")
-	time.Sleep(time.Minute)
+	time.Sleep(time.Second)
+	fmt.Println("Still waiting")
+}
+
+func main() {
+	wait()
 }

@@ -113,6 +113,18 @@ inline GstContext * makeContextWritable (GstContext * ctx)
 	return gst_context_make_writable(ctx);
 }
 
+/* TOC Utilities */
+
+inline gboolean entryTypeIsAlternative (GstTocEntryType * type)
+{
+	return GST_TOC_ENTRY_TYPE_IS_ALTERNATIVE(type);
+}
+
+inline gboolean entryTypeIsSequence (GstTocEntryType * type)
+{
+	return GST_TOC_ENTRY_TYPE_IS_SEQUENCE(type);
+}
+
 /* Object Utilities */
 
 inline GObjectClass *  getGObjectClass         (void * p)                               { return (G_OBJECT_GET_CLASS(p)); }
@@ -164,6 +176,12 @@ inline GFlagsValue *   getParamSpecFlags     (GParamSpec * p, guint * size)
 }
 
 /* Misc */
+
+inline gpointer glistNext (GList * list)
+{
+	return g_list_next(list);
+}
+
 inline int sizeOfGCharArray (gchar ** arr)
 {
 	int i;
