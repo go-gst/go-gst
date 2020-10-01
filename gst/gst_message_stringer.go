@@ -139,7 +139,8 @@ func (m *Message) String() string {
 		msg += "Element needs context"
 
 	case MessageHaveContext:
-		// TODO
+		ctx := m.ParseHaveContext()
+		msg += fmt.Sprintf("Received context of type %s", ctx.GetType())
 
 	case MessageExtended:
 		msg += "Extended message type"

@@ -467,3 +467,10 @@ func (m *Message) ParseRedirectEntryAt(idx int64) (location string, tags *TagLis
 	return string(C.GoBytes(locPtr, C.sizeOfGCharArray((**C.gchar)(locPtr)))),
 		wrapTagList(tagList), wrapStructure(entryStruct)
 }
+
+// ParseHaveContext parses the context from a HaveContext message.
+func (m *Message) ParseHaveContext() *Context {
+	var ctx *C.GstContext
+	C.gst_message_parse_have_context(m.Instance(), &ctx)
+	return wrapContext(ctx)
+}
