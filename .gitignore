@@ -17,3 +17,4 @@ vendor/
 dist/
 .vscode/
 _bin/
+.devcontainer/

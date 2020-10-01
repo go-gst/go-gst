@@ -33,7 +33,7 @@ func (a *Source) SetSize(size int64) {
 // SetDuration sets the duration of the source stream. You should call
 // this if the value is known.
 func (a *Source) SetDuration(dur time.Duration) {
-	C.gst_app_src_set_duration((*C.GstAppSrc)(a.Instance()), (C.ulong)(dur.Nanoseconds()))
+	C.gst_app_src_set_duration((*C.GstAppSrc)(a.Instance()), (C.ulonglong)(dur.Nanoseconds()))
 }
 
 // EndStream signals to the app source that the stream has ended after the last queued

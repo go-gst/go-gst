@@ -115,21 +115,27 @@ inline GstContext * makeContextWritable (GstContext * ctx)
 
 /* TOC Utilities */
 
-inline gboolean entryTypeIsAlternative (GstTocEntryType * type)
-{
-	return GST_TOC_ENTRY_TYPE_IS_ALTERNATIVE(type);
-}
-
-inline gboolean entryTypeIsSequence (GstTocEntryType * type)
-{
-	return GST_TOC_ENTRY_TYPE_IS_SEQUENCE(type);
-}
+inline gboolean         entryTypeIsAlternative (GstTocEntryType * type) { return GST_TOC_ENTRY_TYPE_IS_ALTERNATIVE(type); }
+inline gboolean         entryTypeIsSequence    (GstTocEntryType * type) { return GST_TOC_ENTRY_TYPE_IS_SEQUENCE(type); }
+inline GstTocEntry *    copyTocEntry           (GstTocEntry * entry)    { return gst_toc_entry_copy(entry); }
+inline GstTocEntry *    makeTocEntryWritable   (GstTocEntry * entry)    { return gst_toc_entry_make_writable(entry); }
+inline GstTocEntry *    tocEntryRef            (GstTocEntry * entry)    { return gst_toc_entry_ref(entry); }
+inline void             tocEntryUnref          (GstTocEntry * entry)    { gst_toc_entry_unref(entry); }
+inline GstToc *         copyToc                (GstToc * toc)           { return gst_toc_copy(toc); }
+inline GstToc *         makeTocWritable        (GstToc * toc)           { return gst_toc_make_writable(toc); }
+inline GstToc *         tocRef                 (GstToc * toc)           { return gst_toc_ref(toc); }
+inline void             tocUnref               (GstToc * toc)           { gst_toc_unref(toc); }
 
 /* Object Utilities */
 
 inline GObjectClass *  getGObjectClass         (void * p)                               { return (G_OBJECT_GET_CLASS(p)); }
 inline gboolean        gstElementIsURIHandler  (GstElement * elem)                      { return (GST_IS_URI_HANDLER(elem)); }
 inline gboolean        gstObjectFlagIsSet      (GstObject * obj, GstElementFlags flags) { return (GST_OBJECT_FLAG_IS_SET(obj, flags)); }
+
+/* Element utilities */
+
+inline GstTocSetter *  toTocSetter (GstElement * elem) { return GST_TOC_SETTER(elem); }
+inline GstTagSetter *  toTagSetter (GstElement *elem)  { return GST_TAG_SETTER(elem); }
 
 /*
 	ParamSpec Utilities

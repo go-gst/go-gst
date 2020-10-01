@@ -21,6 +21,27 @@ func NewTOC(scope TOCScope) *TOC {
 // Instance returns the underlying GstToc instance.
 func (t *TOC) Instance() *C.GstToc { return t.ptr }
 
+// Ref increases the ref count on the TOC by one.
+func (t *TOC) Ref() *TOC {
+	C.tocRef(t.Instance())
+	return t
+}
+
+// Unref decreases the ref count on the TOC by one.
+func (t *TOC) Unref() {
+	C.tocUnref(t.Instance())
+}
+
+// MakeWritable returns a writable copy of the TOC if it isn't already,
+func (t *TOC) MakeWritable() *TOC {
+	return wrapTOC(C.makeTocWritable(t.Instance()))
+}
+
+// Copy creates a copy of the TOC.
+func (t *TOC) Copy() *TOC {
+	return wrapTOC(C.copyToc(t.Instance()))
+}
+
 // AppendEntry appends the given TOCEntry to this TOC.
 func (t *TOC) AppendEntry(entry *TOCEntry) {
 	C.gst_toc_append_entry(t.Instance(), entry.Instance())
@@ -104,6 +125,27 @@ func NewTOCEntry(entryType TOCEntryType, uid string) *TOCEntry {
 
 // Instance returns the underlying GstTocEntry instance.
 func (t *TOCEntry) Instance() *C.GstTocEntry { return t.ptr }
+
+// Ref increases the ref count on the TOCEntry by one.
+func (t *TOCEntry) Ref() *TOCEntry {
+	C.tocEntryRef(t.Instance())
+	return t
+}
+
+// Unref decreases the ref count on the TOCEntry by one.
+func (t *TOCEntry) Unref() {
+	C.tocEntryUnref(t.Instance())
+}
+
+// MakeWritable returns a writable copy of the TOCEntry if it is not already so.
+func (t *TOCEntry) MakeWritable() *TOCEntry {
+	return wrapTOCEntry(C.makeTocEntryWritable(t.Instance()))
+}
+
+// Copy creates a copy of the TOCEntry
+func (t *TOCEntry) Copy() *TOCEntry {
+	return wrapTOCEntry(C.copyTocEntry(t.Instance()))
+}
 
 // AppendSubEntry appends the given entry as a subentry to this one.
 func (t *TOCEntry) AppendSubEntry(subEntry *TOCEntry) {
