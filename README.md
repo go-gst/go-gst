@@ -70,7 +70,7 @@ For running applications with this library you'll need to have `libgstreamer-1.0
 
 There is a CLI utility included with this package that demonstrates some of the things you can do.
 
-For now the functionality is limitted to GIF encoing and other arbitrary pipelines.
+For now the functionality is limitted to GIF encoing, inspection, and other arbitrary pipelines.
 If I extend it further I'll publish releases, but for now, you can retrieve it with `go get`.
 
 ```bash
