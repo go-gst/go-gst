@@ -219,8 +219,16 @@ func NewErrorMessage(src interface{}, err *GError, debugStr string, structure *S
 }
 
 // NewHaveContextMessage creates a message that is posted when an element has a new local Context.
-// TODO:
-// func NewHaveContextMessage()
+func NewHaveContextMessage(src interface{}, ctx *Context) *Message {
+	srcObj := getMessageSourceObj(src)
+	if srcObj == nil {
+		return nil
+	}
+	return wrapMessage(C.gst_message_new_have_context(
+		srcObj,
+		ctx.Instance(),
+	))
+}
 
 // NewInfoMessage creates a new info message. Structure can be nil.
 func NewInfoMessage(src interface{}, err *GError, debugStr string, structure *Structure) *Message {

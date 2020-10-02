@@ -142,6 +142,90 @@ func (b BufferingMode) String() string {
 	return ""
 }
 
+// SegmentFlags casts GstSegmentFlags
+type SegmentFlags int
+
+// Type castings
+const (
+	SegmentFlagNone      SegmentFlags = C.GST_SEGMENT_FLAG_NONE                // (0) – no flags
+	SegmentFlagReset     SegmentFlags = C.GST_SEGMENT_FLAG_RESET               // (1) – reset the pipeline running_time to the segment running_time
+	SegmentFlagTrickMode SegmentFlags = C.GST_SEGMENT_FLAG_TRICKMODE           // (16) – perform skip playback (Since: 1.6)
+	SegmentFlagSkip      SegmentFlags = C.GST_SEGMENT_FLAG_SKIP                // (16) – Deprecated backward compatibility flag, replaced by GST_SEGMENT_FLAG_TRICKMODE
+	SegmentFlagSegment   SegmentFlags = C.GST_SEGMENT_FLAG_SEGMENT             // (8) – send SEGMENT_DONE instead of EOS
+	SegmentFlagKeyUnits  SegmentFlags = C.GST_SEGMENT_FLAG_TRICKMODE_KEY_UNITS // (128) – Decode only keyframes, where possible (Since: 1.6)
+	// SegmentFlagTrickModeForwardPredicted SegmentFlags = C.GST_SEGMENT_FLAG_TRICKMODE_FORWARD_PREDICTED // (512) – Decode only keyframes or forward predicted frames, where possible (Since: 1.18)
+	SegmentFlagTrickModeNoAudio SegmentFlags = C.GST_SEGMENT_FLAG_TRICKMODE_NO_AUDIO // (256) – Do not decode any audio, where possible (Since: 1.6)
+)
+
+// EventType is a go cast for a GstEventType
+type EventType int
+
+// Type casts for EventTypes
+const (
+	EventTypeUnknown          EventType = C.GST_EVENT_UNKNOWN           //(0) – unknown event.
+	EventTypeFlushStart       EventType = C.GST_EVENT_FLUSH_START       // (2563) – Start a flush operation. This event clears all data from the pipeline and unblock all streaming threads.
+	EventTypeFlushStop        EventType = C.GST_EVENT_FLUSH_STOP        // (5127) – Stop a flush operation. This event resets the running-time of the pipeline.
+	EventTypeStreamStart      EventType = C.GST_EVENT_STREAM_START      // (10254) – Event to mark the start of a new stream. Sent before any other serialized event and only sent at the start of a new stream, not after flushing seeks.
+	EventTypeCaps             EventType = C.GST_EVENT_CAPS              // (12814) – GstCaps event. Notify the pad of a new media type.
+	EventTypeSegment          EventType = C.GST_EVENT_SEGMENT           // (17934) – A new media segment follows in the dataflow. The segment events contains information for clipping buffers and converting buffer timestamps to running-time and stream-time.
+	EventTypeStreamCollection EventType = C.GST_EVENT_STREAM_COLLECTION // (19230) – A new GstStreamCollection is available (Since: 1.10)
+	EventTypeTag              EventType = C.GST_EVENT_TAG               // (20510) – A new set of metadata tags has been found in the stream.
+	EventTypeBufferSize       EventType = C.GST_EVENT_BUFFERSIZE        // (23054) – Notification of buffering requirements. Currently not used yet.
+	EventTypeSinkMessage      EventType = C.GST_EVENT_SINK_MESSAGE      // (25630) – An event that sinks turn into a message. Used to send messages that should be emitted in sync with rendering.
+	EventTypeStreamGroupDone  EventType = C.GST_EVENT_STREAM_GROUP_DONE // (26894) – Indicates that there is no more data for the stream group ID in the message. Sent before EOS in some instances and should be handled mostly the same. (Since: 1.10)
+	EventTypeEOS              EventType = C.GST_EVENT_EOS               // (28174) – End-Of-Stream. No more data is to be expected to follow without either a STREAM_START event, or a FLUSH_STOP and a SEGMENT event.
+	EventTypeTOC              EventType = C.GST_EVENT_TOC               // (30750) – An event which indicates that a new table of contents (TOC) was found or updated.
+	EventTypeProtection       EventType = C.GST_EVENT_PROTECTION        // (33310) – An event which indicates that new or updated encryption information has been found in the stream.
+	EventTypeSegmentDone      EventType = C.GST_EVENT_SEGMENT_DONE      // (38406) – Marks the end of a segment playback.
+	EventTypeGap              EventType = C.GST_EVENT_GAP               // (40966) – Marks a gap in the datastream.
+	// EventTypeInstantRateChange      EventType = C.GST_EVENT_INSTANT_RATE_CHANGE      // (46090) – Notify downstream that a playback rate override should be applied as soon as possible. (Since: 1.18)
+	EventTypeQOS           EventType = C.GST_EVENT_QOS            // (48641) – A quality message. Used to indicate to upstream elements that the downstream elements should adjust their processing rate.
+	EventTypeSeek          EventType = C.GST_EVENT_SEEK           // (51201) – A request for a new playback position and rate.
+	EventTypeNavigation    EventType = C.GST_EVENT_NAVIGATION     // (53761) – Navigation events are usually used for communicating user requests, such as mouse or keyboard movements, to upstream elements.
+	EventTypeLatency       EventType = C.GST_EVENT_LATENCY        // (56321) – Notification of new latency adjustment. Sinks will use the latency information to adjust their synchronisation.
+	EventTypeStep          EventType = C.GST_EVENT_STEP           // (58881) – A request for stepping through the media. Sinks will usually execute the step operation.
+	EventTypeReconfigure   EventType = C.GST_EVENT_RECONFIGURE    // (61441) – A request for upstream renegotiating caps and reconfiguring.
+	EventTypeTOCSelect     EventType = C.GST_EVENT_TOC_SELECT     // (64001) – A request for a new playback position based on TOC entry's UID.
+	EventTypeSelectStreams EventType = C.GST_EVENT_SELECT_STREAMS // (66561) – A request to select one or more streams (Since: 1.10)
+	// EventTypeInstantRateSyncTime    EventType = C.GST_EVENT_INSTANT_RATE_SYNC_TIME   // (66817) – Sent by the pipeline to notify elements that handle the instant-rate-change event about the running-time when the rate multiplier should be applied (or was applied). (Since: 1.18)
+	EventTypeCustomUpstream         EventType = C.GST_EVENT_CUSTOM_UPSTREAM          // (69121) – Upstream custom event
+	EventTypeCustomDownstream       EventType = C.GST_EVENT_CUSTOM_DOWNSTREAM        // (71686) – Downstream custom event that travels in the data flow.
+	EventTypeCustomOOB              EventType = C.GST_EVENT_CUSTOM_DOWNSTREAM_OOB    // (74242) – Custom out-of-band downstream event.
+	EventTypeCustomDownstreamSticky EventType = C.GST_EVENT_CUSTOM_DOWNSTREAM_STICKY // (76830) – Custom sticky downstream event.
+	EventTypeCustomBoth             EventType = C.GST_EVENT_CUSTOM_BOTH              // (79367) – Custom upstream or downstream event. In-band when travelling downstream.
+	EventTypeCustomBothOOB          EventType = C.GST_EVENT_CUSTOM_BOTH_OOB          // (81923) – Custom upstream or downstream out-of-band event.
+)
+
+// EventTypeFlags casts GstEventTypeFlags
+type EventTypeFlags int
+
+// Type castings
+const (
+	EventTypeFlagUpstream    EventTypeFlags = C.GST_EVENT_TYPE_UPSTREAM     // (1) – Set if the event can travel upstream.
+	EventTypeFlagDownstream  EventTypeFlags = C.GST_EVENT_TYPE_DOWNSTREAM   // (2) – Set if the event can travel downstream.
+	EventTypeFlagSerialized  EventTypeFlags = C.GST_EVENT_TYPE_SERIALIZED   // (4) – Set if the event should be serialized with data flow.
+	EventTypeFlagSticky      EventTypeFlags = C.GST_EVENT_TYPE_STICKY       // (8) – Set if the event is sticky on the pads.
+	EventTypeFlagStickyMulti EventTypeFlags = C.GST_EVENT_TYPE_STICKY_MULTI // (16) – Multiple sticky events can be on a pad, each identified by the event name.
+)
+
+// GapFlags casts GstGapFlags
+type GapFlags int
+
+// Type castings
+const (
+	GapFlagMissingData GapFlags = 1
+)
+
+// QOSType casts GstQOSType
+type QOSType int
+
+// Type castings
+const (
+	QOSTypeOverflow  QOSType = C.GST_QOS_TYPE_OVERFLOW  // (0) – The QoS event type that is produced when upstream elements are producing data too quickly and the element can't keep up processing the data. Upstream should reduce their production rate. This type is also used when buffers arrive early or in time.
+	QOSTypeUnderflow QOSType = C.GST_QOS_TYPE_UNDERFLOW // (1) – The QoS event type that is produced when upstream elements are producing data too slowly and need to speed up their production rate.
+	QOSTypeThrottle  QOSType = C.GST_QOS_TYPE_THROTTLE  // (2) – The QoS event type that is produced when the application enabled throttling to limit the data rate.
+)
+
 // Format is a representation of GstFormat.
 type Format int
 

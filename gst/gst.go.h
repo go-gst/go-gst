@@ -20,6 +20,7 @@ inline GstContext *           toGstContext           (void *p) { return (GST_CON
 inline GstDevice *            toGstDevice            (void *p) { return (GST_DEVICE_CAST(p)); }
 inline GstElementFactory *    toGstElementFactory    (void *p) { return (GST_ELEMENT_FACTORY(p)); }
 inline GstElement *           toGstElement           (void *p) { return (GST_ELEMENT(p)); }
+inline GstEvent *             toGstEvent             (void *p) { return (GST_EVENT(p)); }
 inline GstGhostPad *          toGstGhostPad          (void *p) { return (GST_GHOST_PAD(p)); }
 inline GstMemory *            toGstMemory            (void *p) { return (GST_MEMORY_CAST(p)); }
 inline GstMessage *           toGstMessage           (void *p) { return (GST_MESSAGE(p)); }
@@ -32,6 +33,7 @@ inline GstPipeline *          toGstPipeline          (void *p) { return (GST_PIP
 inline GstPluginFeature *     toGstPluginFeature     (void *p) { return (GST_PLUGIN_FEATURE(p)); }
 inline GstPlugin *            toGstPlugin            (void *p) { return (GST_PLUGIN(p)); }
 inline GstProxyPad *          toGstProxyPad          (void *p) { return (GST_PROXY_PAD(p)); }
+inline GstQuery *             toGstQuery             (void *p) { return (GST_QUERY(p)); }
 inline GstRegistry *          toGstRegistry          (void *p) { return (GST_REGISTRY(p)); }
 inline GstSample *            toGstSample            (void *p) { return (GST_SAMPLE(p)); }
 inline GstStreamCollection *  toGstStreamCollection  (void *p) { return (GST_STREAM_COLLECTION_CAST(p)); }
@@ -114,6 +116,18 @@ inline gboolean contextIsWritable (GstContext * ctx)
 inline GstContext * makeContextWritable (GstContext * ctx)
 {
 	return gst_context_make_writable(ctx);
+}
+
+/* Event Utilities */
+
+inline gboolean eventIsWritable (GstEvent * event)
+{
+	return gst_event_is_writable(event);
+}
+
+inline GstEvent * makeEventWritable (GstEvent * event)
+{
+	return gst_event_make_writable(event);
 }
 
 /* TOC Utilities */

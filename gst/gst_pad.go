@@ -64,3 +64,23 @@ func (p *Pad) CurrentCaps() *Caps {
 	}
 	return wrapCaps(caps)
 }
+
+// ActivateMode activates or deactivates the given pad in mode via dispatching to the pad's activatemodefunc.
+// For use from within pad activation functions only.
+//
+// If you don't know what this is, you probably don't want to call it.
+func (p *Pad) ActivateMode(mode PadMode, active bool) {
+	C.gst_pad_activate_mode(p.Instance(), C.GstPadMode(mode), gboolean(active))
+}
+
+// PadProbeInfo represents the info passed to a PadProbeCallback.
+type PadProbeInfo struct {
+	ID   uint32
+	Type PadProbeType
+	// The data in the interface depends on the Type in the probe info
+	Data         interface{}
+	Offset, Size uint64
+}
+
+// PadProbeCallback is a callback used by Pad AddProbe. It gets called to notify about the current blocking type.
+type PadProbeCallback func(*Pad, *PadProbeInfo) PadProbeReturn

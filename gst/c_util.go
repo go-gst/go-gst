@@ -7,6 +7,8 @@ import (
 	"fmt"
 	"time"
 	"unsafe"
+
+	"github.com/gotk3/gotk3/glib"
 )
 
 // gobool provides an easy type conversion between C.gboolean and a go bool.
@@ -85,4 +87,13 @@ func newQuarkFromString(str string) C.uint {
 
 func quarkToString(q C.GQuark) string {
 	return C.GoString(C.g_quark_to_string(q))
+}
+
+func streamSliceToGlist(streams []*Stream) *C.GList {
+	var glist C.GList
+	wrapped := glib.WrapList(uintptr(unsafe.Pointer(&glist)))
+	for _, stream := range streams {
+		wrapped = wrapped.Append(uintptr(stream.Unsafe()))
+	}
+	return (*C.GList)(unsafe.Pointer(wrapped.Native()))
 }

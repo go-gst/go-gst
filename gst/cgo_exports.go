@@ -13,14 +13,52 @@ import (
 	gopointer "github.com/mattn/go-pointer"
 )
 
+//export goPadProbeFunc
+func goPadProbeFunc(gstPad *C.GstPad, gstProbeInfo *C.GstPadProbeInfo, userData C.gpointer) C.GstPadProbeReturn {
+	cbIface := gopointer.Restore(unsafe.Pointer(userData))
+	cbFunc := cbIface.(PadProbeCallback)
+	pad := wrapPad(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(gstPad))})
+	probeInfo := &PadProbeInfo{
+		ID:     uint32(gstProbeInfo.id),
+		Type:   PadProbeType(gstProbeInfo._type),
+		Offset: uint64(gstProbeInfo.offset),
+		Size:   uint64(gstProbeInfo.size),
+	}
+	populateProbeInfoData(probeInfo, gstProbeInfo.data)
+	return C.GstPadProbeReturn(cbFunc(pad, probeInfo))
+}
+
+func populateProbeInfoData(probeInfo *PadProbeInfo, data C.gpointer) {
+	switch probeInfo.Type {
+
+	// Buffer
+	case PadProbeTypeBuffer:
+		probeInfo.Data = wrapBuffer((*C.GstBuffer)(unsafe.Pointer(data)))
+
+	// BufferList
+	case PadProbeTypeBufferList:
+		probeInfo.Data = wrapBufferList((*C.GstBufferList)(unsafe.Pointer(data)))
+
+	// Events
+	case PadProbeTypeEventDownstream:
+	case PadProbeTypeEventUpstream:
+	case PadProbeTypeEventFlush:
+	case PadProbeTypeEventBoth:
+
+	// Queries
+	case PadProbeTypeQueryDownstream:
+	case PadProbeTypeQueryUpstream:
+	case PadProbeTypeQueryBoth:
+
+	}
+}
+
 //export goTagForEachFunc
 func goTagForEachFunc(tagList *C.GstTagList, tag *C.gchar, userData C.gpointer) {
 	cbIface := gopointer.Restore(unsafe.Pointer(userData))
 	cbFunc := cbIface.(TagListForEachFunc)
 	cbFunc(wrapTagList(tagList), Tag(C.GoString(tag)))
 }
-
-// func goTagMergeFunc(dest, src *C.GValue) {}
 
 //export goBufferListForEachCb
 func goBufferListForEachCb(buf **C.GstBuffer, idx C.guint, userData C.gpointer) C.gboolean {

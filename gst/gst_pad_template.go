@@ -64,14 +64,14 @@ func (p *PadTemplate) PadCreated(pad *Pad) {
 	C.gst_pad_template_pad_created(p.Instance(), pad.Instance())
 }
 
-// GetDocumentationCaps gets the documentation caps for the template. See SetDocumentationCaps for more information.
-func (p *PadTemplate) GetDocumentationCaps() *Caps {
-	return wrapCaps(C.gst_pad_template_get_documentation_caps(p.Instance()))
-}
+// // GetDocumentationCaps gets the documentation caps for the template. See SetDocumentationCaps for more information.
+// func (p *PadTemplate) GetDocumentationCaps() *Caps {
+// 	return wrapCaps(C.gst_pad_template_get_documentation_caps(p.Instance()))
+// }
 
-// SetDocumentationCaps sets caps to be exposed to a user. Certain elements will dynamically construct the caps of
-// their pad templates. In order not to let environment-specific information into the documentation, element authors
-// should use this method to expose "stable" caps to the reader.
-func (p *PadTemplate) SetDocumentationCaps(caps *Caps) {
-	C.gst_pad_template_set_documentation_caps(p.Instance(), caps.Instance())
-}
+// // SetDocumentationCaps sets caps to be exposed to a user. Certain elements will dynamically construct the caps of
+// // their pad templates. In order not to let environment-specific information into the documentation, element authors
+// // should use this method to expose "stable" caps to the reader.
+// func (p *PadTemplate) SetDocumentationCaps(caps *Caps) {
+// 	C.gst_pad_template_set_documentation_caps(p.Instance(), caps.Instance())
+// }

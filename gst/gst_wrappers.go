@@ -137,6 +137,14 @@ func init() {
 			T: glib.Type(C.GST_TYPE_TAG_LIST),
 			F: marsalTagList,
 		},
+		{
+			T: glib.Type(C.GST_TYPE_EVENT),
+			F: marshalEvent,
+		},
+		{
+			T: glib.Type(C.GST_TYPE_SEGMENT),
+			F: marshalSegment,
+		},
 
 		// Boxed
 		{T: glib.Type(C.gst_message_get_type()), F: marshalMessage},
@@ -164,6 +172,7 @@ func wrapClock(obj *glib.Object) *Clock                    { return &Clock{wrapO
 func wrapContext(ctx *C.GstContext) *Context               { return &Context{ptr: ctx} }
 func wrapDevice(obj *glib.Object) *Device                  { return &Device{wrapObject(obj)} }
 func wrapElement(obj *glib.Object) *Element                { return &Element{wrapObject(obj)} }
+func wrapEvent(ev *C.GstEvent) *Event                      { return &Event{ptr: ev} }
 func wrapGhostPad(obj *glib.Object) *GhostPad              { return &GhostPad{wrapProxyPad(obj)} }
 func wrapMainContext(ctx *C.GMainContext) *MainContext     { return &MainContext{ptr: ctx} }
 func wrapMainLoop(loop *C.GMainLoop) *MainLoop             { return &MainLoop{ptr: loop} }
@@ -179,6 +188,7 @@ func wrapPlugin(obj *glib.Object) *Plugin                  { return &Plugin{wrap
 func wrapProxyPad(obj *glib.Object) *ProxyPad              { return &ProxyPad{wrapPad(obj)} }
 func wrapRegistry(obj *glib.Object) *Registry              { return &Registry{wrapObject(obj)} }
 func wrapSample(sample *C.GstSample) *Sample               { return &Sample{sample: sample} }
+func wrapSegment(segment *C.GstSegment) *Segment           { return &Segment{ptr: segment} }
 func wrapStream(obj *glib.Object) *Stream                  { return &Stream{wrapObject(obj)} }
 func wrapTagList(tagList *C.GstTagList) *TagList           { return &TagList{ptr: tagList} }
 func wrapTOC(toc *C.GstToc) *TOC                           { return &TOC{ptr: toc} }
@@ -207,10 +217,20 @@ func wrapAllocationParams(obj *C.GstAllocationParams) *AllocationParams {
 // Clock wrappers
 
 func clockTimeToDuration(n ClockTime) time.Duration {
+	if n == ClockTimeNone {
+		return time.Duration(-1)
+	}
 	return time.Duration(uint64(n)) * time.Nanosecond
 }
-func guint64ToDuration(n C.guint64) time.Duration     { return clockTimeToDuration(ClockTime(n)) }
-func durationToClockTime(dur time.Duration) ClockTime { return ClockTime(dur.Nanoseconds()) }
+
+func guint64ToDuration(n C.guint64) time.Duration { return clockTimeToDuration(ClockTime(n)) }
+
+func durationToClockTime(dur time.Duration) ClockTime {
+	if dur.Nanoseconds() < 0 {
+		return ClockTimeNone
+	}
+	return ClockTime(dur.Nanoseconds())
+}
 
 // Marshallers
 
@@ -388,4 +408,16 @@ func marsalTagList(p uintptr) (interface{}, error) {
 	c := C.g_value_get_object(uintptrToGVal(p))
 	obj := (*C.GstTagList)(unsafe.Pointer(c))
 	return wrapTagList(obj), nil
+}
+
+func marshalEvent(p uintptr) (interface{}, error) {
+	c := C.g_value_get_object(uintptrToGVal(p))
+	obj := (*C.GstEvent)(unsafe.Pointer(c))
+	return wrapEvent(obj), nil
+}
+
+func marshalSegment(p uintptr) (interface{}, error) {
+	c := C.g_value_get_object(uintptrToGVal(p))
+	obj := (*C.GstSegment)(unsafe.Pointer(c))
+	return wrapSegment(obj), nil
 }
