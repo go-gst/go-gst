@@ -392,12 +392,17 @@ func (c *Caps) SetFeaturesSimple(features *CapsFeatures) {
 }
 
 // SetValue sets the given field on all structures of caps to the given value. This is a convenience
-// function for calling SetValue on all structures of caps.
-func (c *Caps) SetValue(field string, val *glib.Value) {
+// function for calling SetValue on all structures of caps. If the value cannot be coerced to a C type,
+// then nothing will happen.
+func (c *Caps) SetValue(field string, val interface{}) {
+	gVal, err := glib.GValue(val)
+	if err != nil {
+		return
+	}
 	C.gst_caps_set_value(
 		c.Instance(),
 		(*C.gchar)(unsafe.Pointer(C.CString(field))),
-		(*C.GValue)(val.GetPointer()),
+		(*C.GValue)(gVal.Native()),
 	)
 }
 

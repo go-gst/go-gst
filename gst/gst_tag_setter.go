@@ -12,9 +12,9 @@ import (
 type TagSetter interface {
 	// Returns the current list of tags the setter uses. The list should not be modified or freed.
 	GetTagList() *TagList
-	// Adds the given tag/value pair using the given merge mode.
-	// TODO: Either an additional function or this one should be modified to accept go types.
-	AddTagValue(mergeMode TagMergeMode, tagKey string, tagValue *glib.Value)
+	// Adds the given tag/value pair using the given merge mode. If the tag value cannot be coerced
+	// to a GValue when dealing with C elements, nothing will happen.
+	AddTagValue(mergeMode TagMergeMode, tagKey string, tagValue interface{})
 	// Merges a tag list with the given merge mode
 	MergeTags(*TagList, TagMergeMode)
 	// Resets the internal tag list. Elements should call this from within the state-change handler.
@@ -42,14 +42,18 @@ func (t *gstTagSetter) GetTagList() *TagList {
 	return wrapTagList(tagList)
 }
 
-func (t *gstTagSetter) AddTagValue(mergeMode TagMergeMode, tagKey string, tagValue *glib.Value) {
+func (t *gstTagSetter) AddTagValue(mergeMode TagMergeMode, tagKey string, tagValue interface{}) {
 	ckey := C.CString(tagKey)
 	defer C.free(unsafe.Pointer(ckey))
+	gVal, err := glib.GValue(tagValue)
+	if err != nil {
+		return
+	}
 	C.gst_tag_setter_add_tag_value(
 		t.Instance(),
 		C.GstTagMergeMode(mergeMode),
 		(*C.gchar)(unsafe.Pointer(ckey)),
-		(*C.GValue)(tagValue.GetPointer()),
+		(*C.GValue)(gVal.Native()),
 	)
 }
 

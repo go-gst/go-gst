@@ -13,6 +13,15 @@ import (
 	gopointer "github.com/mattn/go-pointer"
 )
 
+//export goTagForEachFunc
+func goTagForEachFunc(tagList *C.GstTagList, tag *C.gchar, userData C.gpointer) {
+	cbIface := gopointer.Restore(unsafe.Pointer(userData))
+	cbFunc := cbIface.(TagListForEachFunc)
+	cbFunc(wrapTagList(tagList), Tag(C.GoString(tag)))
+}
+
+// func goTagMergeFunc(dest, src *C.GValue) {}
+
 //export goBufferListForEachCb
 func goBufferListForEachCb(buf **C.GstBuffer, idx C.guint, userData C.gpointer) C.gboolean {
 	cbIface := gopointer.Restore(unsafe.Pointer(userData))

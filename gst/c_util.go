@@ -4,6 +4,8 @@ package gst
 import "C"
 
 import (
+	"fmt"
+	"time"
 	"unsafe"
 )
 
@@ -18,6 +20,37 @@ func gboolean(b bool) C.gboolean {
 		return C.gboolean(1)
 	}
 	return C.gboolean(0)
+}
+
+// gdateToTime converts a GDate to a time object.
+func gdateToTime(gdate *C.GDate) time.Time {
+	tm := time.Time{}
+	tm.AddDate(int(C.g_date_get_year(gdate)), int(C.g_date_get_month(gdate)), int(C.g_date_get_day(gdate)))
+	return tm
+}
+
+// gstDateTimeToTime converts a GstDateTime to a time object. If the datetime object could not be parsed,
+// an empty time object is returned.
+func gstDateTimeToTime(gstdatetime *C.GstDateTime) time.Time {
+	dateStr := fmt.Sprintf(
+		"%s %s %d:%d:%d %s %d",
+		time.Weekday(C.gst_date_time_get_day(gstdatetime)).String(),
+		time.Month(C.gst_date_time_get_month(gstdatetime)).String(),
+		int(C.gst_date_time_get_hour(gstdatetime)),
+		int(C.gst_date_time_get_minute(gstdatetime)),
+		int(C.gst_date_time_get_second(gstdatetime)),
+		formatOffset(C.gst_date_time_get_time_zone_offset(gstdatetime)),
+		int(C.gst_date_time_get_year(gstdatetime)),
+	)
+	tm, _ := time.Parse("Mon Jan 2 15:04:05 -0700 2006", dateStr)
+	return tm
+}
+
+func formatOffset(offset C.gfloat) string {
+	if offset < 0 {
+		return fmt.Sprintf("-0%d00", int(offset))
+	}
+	return fmt.Sprintf("+0%d00", int(offset))
 }
 
 // goStrings returns a string slice for an array of size argc starting at the address argv.

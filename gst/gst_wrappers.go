@@ -2,11 +2,6 @@ package gst
 
 /*
 #include "gst.go.h"
-
-GValue * gvalPtrToGval (gpointer p)
-{
-	return (GValue*)(p);
-}
 */
 import "C"
 
@@ -134,6 +129,10 @@ func init() {
 			T: glib.Type(C.GST_TYPE_TOC),
 			F: marshalTOC,
 		},
+		{
+			T: glib.Type(C.GST_TYPE_TAG_LIST),
+			F: marsalTagList,
+		},
 
 		// Boxed
 		{T: glib.Type(C.gst_message_get_type()), F: marshalMessage},
@@ -142,7 +141,8 @@ func init() {
 }
 
 func uintptrToGVal(p uintptr) *C.GValue {
-	return (*C.GValue)(unsafe.Pointer(p))
+	return (*C.GValue)(unsafe.Pointer(p)) // vet thinks this is unsafe and there is no way around it for now.
+	// but the given ptr is an address to a C object so go's concerns are misplaced.
 }
 
 // Object wrappers
@@ -371,4 +371,10 @@ func marshalTOCEntry(p uintptr) (interface{}, error) {
 	c := C.g_value_get_object(uintptrToGVal(p))
 	obj := (*C.GstTocEntry)(unsafe.Pointer(c))
 	return wrapTOCEntry(obj), nil
+}
+
+func marsalTagList(p uintptr) (interface{}, error) {
+	c := C.g_value_get_object(uintptrToGVal(p))
+	obj := (*C.GstTagList)(unsafe.Pointer(c))
+	return wrapTagList(obj), nil
 }

@@ -87,7 +87,7 @@ func (s *Structure) SetValue(key string, value interface{}) error {
 	}
 	cKey := C.CString(key)
 	defer C.free(unsafe.Pointer(cKey))
-	C.gst_structure_set_value(s.Instance(), cKey, (*C.GValue)(gVal.GetPointer()))
+	C.gst_structure_set_value(s.Instance(), cKey, (*C.GValue)(unsafe.Pointer(gVal.GValue)))
 	return nil
 }
 

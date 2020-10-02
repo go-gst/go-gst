@@ -35,6 +35,7 @@ inline GstSample *            toGstSample            (void *p) { return (GST_SAM
 inline GstStreamCollection *  toGstStreamCollection  (void *p) { return (GST_STREAM_COLLECTION_CAST(p)); }
 inline GstStream *            toGstStream            (void *p) { return (GST_STREAM_CAST(p)); }
 inline GstStructure *         toGstStructure         (void *p) { return (GST_STRUCTURE(p)); }
+inline GstTagList   *         toGstTagList           (void *p) { return (GST_TAG_LIST(p)); }
 inline GstURIHandler *        toGstURIHandler        (void *p) { return (GST_URI_HANDLER(p)); }
 inline GstUri *               toGstURI               (void *p) { return (GST_URI(p)); }
 
@@ -125,6 +126,11 @@ inline GstToc *         copyToc                (GstToc * toc)           { return
 inline GstToc *         makeTocWritable        (GstToc * toc)           { return gst_toc_make_writable(toc); }
 inline GstToc *         tocRef                 (GstToc * toc)           { return gst_toc_ref(toc); }
 inline void             tocUnref               (GstToc * toc)           { gst_toc_unref(toc); }
+
+/* TagList utilities */
+
+inline gboolean         tagListIsWritable     (GstTagList * tagList)   { return gst_tag_list_is_writable(tagList); }
+inline GstTagList *     makeTagListWritable   (GstTagList * tagList)   { return gst_tag_list_make_writable(tagList); }
 
 /* Object Utilities */
 

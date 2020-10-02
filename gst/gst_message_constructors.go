@@ -288,17 +288,22 @@ func NewProgressMessage(src interface{}, progressType ProgressType, code, text s
 	return wrapMessage(C.gst_message_new_progress(srcObj, C.GstProgressType(progressType), cCode, cText))
 }
 
-// NewPropertyNotifyMessage creates a new message notifying an object's properties have changed.
-func NewPropertyNotifyMessage(src interface{}, propName string, val *glib.Value) *Message {
+// NewPropertyNotifyMessage creates a new message notifying an object's properties have changed. If the
+// source OR the value cannot be coereced to C types, the function will return nil.
+func NewPropertyNotifyMessage(src interface{}, propName string, val interface{}) *Message {
 	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
+		return nil
+	}
+	gVal, err := glib.GValue(val)
+	if err != nil {
 		return nil
 	}
 	cName := (*C.gchar)(unsafe.Pointer(C.CString(propName)))
 	return wrapMessage(C.gst_message_new_property_notify(
 		srcObj,
 		cName,
-		(*C.GValue)(val.GetPointer()),
+		(*C.GValue)(gVal.Native()),
 	))
 }
 
