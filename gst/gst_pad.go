@@ -12,6 +12,37 @@ import (
 // Pad is a go representation of a GstPad
 type Pad struct{ *Object }
 
+// NewPad returns a new pad with the given direction. If name is empty, one will be generated for you.
+func NewPad(name string, direction PadDirection) *Pad {
+	var cName *C.gchar
+	if name != "" {
+		cStr := C.CString(name)
+		defer C.free(unsafe.Pointer(cStr))
+		cName = (*C.gchar)(unsafe.Pointer(cStr))
+	}
+	pad := C.gst_pad_new(cName, C.GstPadDirection(direction))
+	if pad == nil {
+		return nil
+	}
+	return wrapPad(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(pad))})
+}
+
+// NewPadFromTemplate creates a new pad with the given name from the given template. If name is empty, one will
+// be generated for you.
+func NewPadFromTemplate(tmpl *PadTemplate, name string) *Pad {
+	var cName *C.gchar
+	if name != "" {
+		cStr := C.CString(name)
+		defer C.free(unsafe.Pointer(cStr))
+		cName = (*C.gchar)(unsafe.Pointer(cStr))
+	}
+	pad := C.gst_pad_new_from_template(tmpl.Instance(), cName)
+	if pad == nil {
+		return nil
+	}
+	return wrapPad(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(pad))})
+}
+
 // Instance returns the underlying C GstPad.
 func (p *Pad) Instance() *C.GstPad { return C.toGstPad(p.Unsafe()) }
 
@@ -33,24 +64,3 @@ func (p *Pad) CurrentCaps() *Caps {
 	}
 	return wrapCaps(caps)
 }
-
-// PadTemplate is a go representation of a GstPadTemplate
-type PadTemplate struct{ *Object }
-
-// Instance returns the underlying C GstPadTemplate.
-func (p *PadTemplate) Instance() *C.GstPadTemplate { return C.toGstPadTemplate(p.Unsafe()) }
-
-// Name returns the name of the pad template.
-func (p *PadTemplate) Name() string { return C.GoString(p.Instance().name_template) }
-
-// Direction returns the direction of the pad template.
-func (p *PadTemplate) Direction() PadDirection { return PadDirection(p.Instance().direction) }
-
-// Presence returns the presence of the pad template.
-func (p *PadTemplate) Presence() PadPresence { return PadPresence(p.Instance().presence) }
-
-// Caps returns the caps of the pad template.
-func (p *PadTemplate) Caps() *Caps { return wrapCaps(p.Instance().caps) }
-
-// GhostPad is a go representation of a GstGhostPad
-type GhostPad struct{ *Pad }

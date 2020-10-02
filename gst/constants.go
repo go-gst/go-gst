@@ -225,6 +225,55 @@ func (m MessageType) String() string {
 	return C.GoString(C.gst_message_type_get_name((C.GstMessageType)(m)))
 }
 
+// PadFlags is a go cast of GstPadFlags
+type PadFlags int
+
+// Type casts of PadFlags
+const (
+	PadFlagBlocked         PadFlags = C.GST_PAD_FLAG_BLOCKED          // (16) – is dataflow on a pad blocked
+	PadFlagFlushing        PadFlags = C.GST_PAD_FLAG_FLUSHING         // (32) – is pad flushing
+	PadFlagEOS             PadFlags = C.GST_PAD_FLAG_EOS              // (64) – is pad in EOS state
+	PadFlagBlocking        PadFlags = C.GST_PAD_FLAG_BLOCKING         // (128) – is pad currently blocking on a buffer or event
+	PadFlagParent          PadFlags = C.GST_PAD_FLAG_NEED_PARENT      // (256) – ensure that there is a parent object before calling into the pad callbacks.
+	PadFlagReconfigure     PadFlags = C.GST_PAD_FLAG_NEED_RECONFIGURE // (512) – the pad should be reconfigured/renegotiated. The flag has to be unset manually after reconfiguration happened.
+	PadFlagPendingEvents   PadFlags = C.GST_PAD_FLAG_PENDING_EVENTS   // (1024) – the pad has pending events
+	PadFlagFixedCaps       PadFlags = C.GST_PAD_FLAG_FIXED_CAPS       // (2048) – the pad is using fixed caps. This means that once the caps are set on the pad, the default caps query function will only return those caps.
+	PadFlagProxyCaps       PadFlags = C.GST_PAD_FLAG_PROXY_CAPS       // (4096) – the default event and query handler will forward all events and queries to the internally linked pads instead of discarding them.
+	PadFlagProxyAllocation PadFlags = C.GST_PAD_FLAG_PROXY_ALLOCATION // (8192) – the default query handler will forward allocation queries to the internally linked pads instead of discarding them.
+	PadFlagProxyScheduling PadFlags = C.GST_PAD_FLAG_PROXY_SCHEDULING // (16384) – the default query handler will forward scheduling queries to the internally linked pads instead of discarding them.
+	PadFlagAcceptIntersect PadFlags = C.GST_PAD_FLAG_ACCEPT_INTERSECT // (32768) – the default accept-caps handler will check it the caps intersect the query-caps result instead of checking for a subset. This is interesting for parsers that can accept incompletely specified caps.
+	PadFlagAcceptTemplate  PadFlags = C.GST_PAD_FLAG_ACCEPT_TEMPLATE  // (65536) – the default accept-caps handler will use the template pad caps instead of query caps to compare with the accept caps. Use this in combination with GST_PAD_FLAG_ACCEPT_INTERSECT. (Since: 1.6)
+	PadFlagLast            PadFlags = C.GST_PAD_FLAG_LAST             // (1048576) – offset to define more flags
+)
+
+// PadLinkCheck is a go cast of GstPadLinkCheck
+type PadLinkCheck int
+
+// Type casts of PadLinkChecks
+const (
+	PadLinkCheckNothing       PadLinkCheck = C.GST_PAD_LINK_CHECK_NOTHING        // (0) – Don't check hierarchy or caps compatibility.
+	PadLinkCheckHierarchy     PadLinkCheck = C.GST_PAD_LINK_CHECK_HIERARCHY      // (1) – Check the pads have same parents/grandparents. Could be omitted if it is already known that the two elements that own the pads are in the same bin.
+	PadLinkCheckTemplateCaps  PadLinkCheck = C.GST_PAD_LINK_CHECK_TEMPLATE_CAPS  // (2) – Check if the pads are compatible by using their template caps. This is much faster than GST_PAD_LINK_CHECK_CAPS, but would be unsafe e.g. if one pad has GST_CAPS_ANY.
+	PadLinkCheckCaps          PadLinkCheck = C.GST_PAD_LINK_CHECK_CAPS           // (4) – Check if the pads are compatible by comparing the caps returned by gst_pad_query_caps.
+	PadLinkCheckNoReconfigure PadLinkCheck = C.GST_PAD_LINK_CHECK_NO_RECONFIGURE // (8) – Disables pushing a reconfigure event when pads are linked.
+	PadLinkCheckDefault       PadLinkCheck = C.GST_PAD_LINK_CHECK_DEFAULT        // (5) – The default checks done when linking pads (i.e. the ones used by gst_pad_link).
+)
+
+// PadMode is a cast of GstPadMode.
+type PadMode int
+
+// Type casts of PadModes
+const (
+	PadModeNone PadMode = C.GST_PAD_MODE_NONE // (0) – Pad will not handle dataflow
+	PadModePush PadMode = C.GST_PAD_MODE_PUSH // (1) – Pad handles dataflow in downstream push mode
+	PadModePull PadMode = C.GST_PAD_MODE_PULL // (2) – Pad handles dataflow in upstream pull mode
+)
+
+// String implements a stringer on PadMode
+func (p PadMode) String() string {
+	return C.GoString(C.gst_pad_mode_get_name(C.GstPadMode(p)))
+}
+
 // PadDirection is a cast of GstPadDirection to a go type.
 type PadDirection int
 
@@ -284,6 +333,47 @@ func (p PadPresence) String() string {
 	}
 	return ""
 }
+
+// PadProbeReturn casts GstPadProbeReturn
+type PadProbeReturn int
+
+// Type castings of ProbeReturns
+const (
+	PadProbeDrop      PadProbeReturn = C.GST_PAD_PROBE_DROP    // (0) – drop data in data probes. For push mode this means that the data item is not sent downstream. For pull mode, it means that the data item is not passed upstream. In both cases, no other probes are called for this item and GST_FLOW_OK or TRUE is returned to the caller.
+	PadProbeOK        PadProbeReturn = C.GST_PAD_PROBE_OK      // (1) – normal probe return value. This leaves the probe in place, and defers decisions about dropping or passing data to other probes, if any. If there are no other probes, the default behaviour for the probe type applies ('block' for blocking probes, and 'pass' for non-blocking probes).
+	PadProbeRemove    PadProbeReturn = C.GST_PAD_PROBE_REMOVE  // (2) – remove this probe.
+	PadProbePass      PadProbeReturn = C.GST_PAD_PROBE_PASS    // (3) – pass the data item in the block probe and block on the next item.
+	PadProbeUnhandled PadProbeReturn = C.GST_PAD_PROBE_HANDLED // (4) – Data has been handled in the probe and will not be forwarded further. For events and buffers this is the same behaviour as GST_PAD_PROBE_DROP (except that in this case you need to unref the buffer or event yourself). For queries it will also return TRUE to the caller. The probe can also modify the GstFlowReturn value by using the GST_PAD_PROBE_INFO_FLOW_RETURN() accessor. Note that the resulting query must contain valid entries. Since: 1.6
+)
+
+// PadProbeType casts GstPadProbeType
+type PadProbeType int
+
+// Type castings of PadProbeTypes
+const (
+	PadProbeTypeInvalid         PadProbeType = C.GST_PAD_PROBE_TYPE_INVALID          // (0) – invalid probe type
+	PadProbeTypeIdle            PadProbeType = C.GST_PAD_PROBE_TYPE_IDLE             // (1) – probe idle pads and block while the callback is called
+	PadProbeTypeBlock           PadProbeType = C.GST_PAD_PROBE_TYPE_BLOCK            // (2) – probe and block pads
+	PadProbeTypeBuffer          PadProbeType = C.GST_PAD_PROBE_TYPE_BUFFER           // (16) – probe buffers
+	PadProbeTypeBufferList      PadProbeType = C.GST_PAD_PROBE_TYPE_BUFFER_LIST      // (32) – probe buffer lists
+	PadProbeTypeEventDownstream PadProbeType = C.GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM // (64) – probe downstream events
+	PadProbeTypeEventUpstream   PadProbeType = C.GST_PAD_PROBE_TYPE_EVENT_UPSTREAM   // (128) – probe upstream events
+	PadProbeTypeEventFlush      PadProbeType = C.GST_PAD_PROBE_TYPE_EVENT_FLUSH      // (256) – probe flush events. This probe has to be explicitly enabled and is not included in the @GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM or @GST_PAD_PROBE_TYPE_EVENT_UPSTREAM probe types.
+	PadProbeTypeQueryDownstream PadProbeType = C.GST_PAD_PROBE_TYPE_QUERY_DOWNSTREAM // (512) – probe downstream queries
+	PadProbeTypeQueryUpstream   PadProbeType = C.GST_PAD_PROBE_TYPE_QUERY_UPSTREAM   // (1024) – probe upstream queries
+	PadProbeTypePush            PadProbeType = C.GST_PAD_PROBE_TYPE_PUSH             // (4096) – probe push
+	PadProbeTypePull            PadProbeType = C.GST_PAD_PROBE_TYPE_PULL             // (8192) – probe pull
+	PadProbeTypeBlocking        PadProbeType = C.GST_PAD_PROBE_TYPE_BLOCKING         // (3) – probe and block at the next opportunity, at data flow or when idle
+	PadProbeTypeDataDownstream  PadProbeType = C.GST_PAD_PROBE_TYPE_DATA_DOWNSTREAM  // (112) – probe downstream data (buffers, buffer lists, and events)
+	PadProbeTypeDataUpstream    PadProbeType = C.GST_PAD_PROBE_TYPE_DATA_UPSTREAM    // (128) – probe upstream data (events)
+	PadProbeTypeDataBoth        PadProbeType = C.GST_PAD_PROBE_TYPE_DATA_BOTH        // (240) – probe upstream and downstream data (buffers, buffer lists, and events)
+	PadProbeTypeBlockDownstream PadProbeType = C.GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM // (114) – probe and block downstream data (buffers, buffer lists, and events)
+	PadProbeTypeBlockUpstream   PadProbeType = C.GST_PAD_PROBE_TYPE_BLOCK_UPSTREAM   // (130) – probe and block upstream data (events)
+	PadProbeTypeEventBoth       PadProbeType = C.GST_PAD_PROBE_TYPE_EVENT_BOTH       // (192) – probe upstream and downstream events
+	PadProbeTypeQueryBoth       PadProbeType = C.GST_PAD_PROBE_TYPE_QUERY_BOTH       // (1536) – probe upstream and downstream queries
+	PadProbeTypeAllBoth         PadProbeType = C.GST_PAD_PROBE_TYPE_ALL_BOTH         // (1776) – probe upstream events and queries and downstream buffers, buffer lists, events and queries
+	PadProbeTypeScheduling      PadProbeType = C.GST_PAD_PROBE_TYPE_SCHEDULING       // (12288) – probe push and pull
+)
 
 // State is a type cast of the C GstState
 type State int
@@ -377,6 +467,11 @@ const (
 	FlowError         FlowReturn = C.GST_FLOW_ERROR          // Some (fatal) error occurred
 	FlowNotSupported  FlowReturn = C.GST_FLOW_NOT_SUPPORTED  // The operation is not supported.
 )
+
+// String impelements a stringer on FlowReturn
+func (f FlowReturn) String() string {
+	return C.GoString(C.gst_flow_get_name(C.GstFlowReturn(f)))
+}
 
 // MapFlags is a go casting of GstMapFlags
 type MapFlags int

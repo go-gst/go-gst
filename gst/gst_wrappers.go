@@ -74,6 +74,10 @@ func init() {
 			F: marshalElementFactory,
 		},
 		{
+			T: glib.Type(C.gst_proxy_pad_get_type()),
+			F: marshalProxyPad,
+		},
+		{
 			T: glib.Type(C.gst_ghost_pad_get_type()),
 			F: marshalGhostPad,
 		},
@@ -160,7 +164,7 @@ func wrapClock(obj *glib.Object) *Clock                    { return &Clock{wrapO
 func wrapContext(ctx *C.GstContext) *Context               { return &Context{ptr: ctx} }
 func wrapDevice(obj *glib.Object) *Device                  { return &Device{wrapObject(obj)} }
 func wrapElement(obj *glib.Object) *Element                { return &Element{wrapObject(obj)} }
-func wrapGhostPad(obj *glib.Object) *GhostPad              { return &GhostPad{wrapPad(obj)} }
+func wrapGhostPad(obj *glib.Object) *GhostPad              { return &GhostPad{wrapProxyPad(obj)} }
 func wrapMainContext(ctx *C.GMainContext) *MainContext     { return &MainContext{ptr: ctx} }
 func wrapMainLoop(loop *C.GMainLoop) *MainLoop             { return &MainLoop{ptr: loop} }
 func wrapMemory(mem *C.GstMemory) *Memory                  { return &Memory{ptr: mem} }
@@ -172,6 +176,7 @@ func wrapPadTemplate(obj *glib.Object) *PadTemplate        { return &PadTemplate
 func wrapPipeline(obj *glib.Object) *Pipeline              { return &Pipeline{Bin: wrapBin(obj)} }
 func wrapPluginFeature(obj *glib.Object) *PluginFeature    { return &PluginFeature{wrapObject(obj)} }
 func wrapPlugin(obj *glib.Object) *Plugin                  { return &Plugin{wrapObject(obj)} }
+func wrapProxyPad(obj *glib.Object) *ProxyPad              { return &ProxyPad{wrapPad(obj)} }
 func wrapRegistry(obj *glib.Object) *Registry              { return &Registry{wrapObject(obj)} }
 func wrapSample(sample *C.GstSample) *Sample               { return &Sample{sample: sample} }
 func wrapStream(obj *glib.Object) *Stream                  { return &Stream{wrapObject(obj)} }
@@ -253,6 +258,12 @@ func marshalGhostPad(p uintptr) (interface{}, error) {
 	c := C.g_value_get_object(uintptrToGVal(p))
 	obj := &glib.Object{GObject: glib.ToGObject(unsafe.Pointer(c))}
 	return wrapGhostPad(obj), nil
+}
+
+func marshalProxyPad(p uintptr) (interface{}, error) {
+	c := C.g_value_get_object(uintptrToGVal(p))
+	obj := &glib.Object{GObject: glib.ToGObject(unsafe.Pointer(c))}
+	return wrapProxyPad(obj), nil
 }
 
 func marshalPad(p uintptr) (interface{}, error) {
