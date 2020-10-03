@@ -81,6 +81,19 @@ func createPipeline() (*gst.Pipeline, error) {
 	return pipeline, nil
 }
 
+func handleMessage(msg *gst.Message) error {
+	defer msg.Unref() // Messages are a good candidate for trying out runtime finalizers
+
+	switch msg.Type() {
+	case gst.MessageEOS:
+		return app.ErrEOS
+	case gst.MessageError:
+		return msg.ParseError()
+	}
+
+	return nil
+}
+
 func mainLoop(pipeline *gst.Pipeline) error {
 
 	defer pipeline.Destroy() // Will stop and unref the pipeline when this function returns
@@ -97,16 +110,9 @@ func mainLoop(pipeline *gst.Pipeline) error {
 		if msg == nil {
 			break
 		}
-		switch msg.Type() {
-		case gst.MessageEOS:
-			msg.Unref() // Messsages are a good candidate for trying out runtime finalizers
-			break
-		case gst.MessageError:
-			err := msg.ParseError()
-			msg.Unref()
+		if err := handleMessage(msg); err != nil {
 			return err
 		}
-		msg.Unref()
 	}
 
 	return nil
