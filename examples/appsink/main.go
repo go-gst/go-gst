@@ -82,12 +82,16 @@ func createPipeline() (*gst.Pipeline, error) {
 }
 
 func mainLoop(pipeline *gst.Pipeline) error {
-	defer pipeline.Destroy()
 
+	defer pipeline.Destroy() // Will stop and unref the pipeline when this function returns
+
+	// Start the pipeline
 	pipeline.SetState(gst.StatePlaying)
 
+	// Retrieve the bus from the pipeline
 	bus := pipeline.GetPipelineBus()
 
+	// Loop over messsages from the pipeline
 	for {
 		msg := bus.TimedPop(time.Duration(-1))
 		if msg == nil {
@@ -95,10 +99,14 @@ func mainLoop(pipeline *gst.Pipeline) error {
 		}
 		switch msg.Type() {
 		case gst.MessageEOS:
+			msg.Unref() // Messsages are a good candidate for trying out runtime finalizers
 			break
 		case gst.MessageError:
-			return msg.ParseError()
+			err := msg.ParseError()
+			msg.Unref()
+			return err
 		}
+		msg.Unref()
 	}
 
 	return nil
