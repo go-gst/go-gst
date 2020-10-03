@@ -123,6 +123,78 @@ func (m *MapInfo) Bytes() []byte {
 	return C.GoBytes(m.Data, (C.int)(m.Size))
 }
 
+// AsInt8Slice returns the contents of this map as a slice of signed 8-bit integers.
+func (m *MapInfo) AsInt8Slice() []int8 {
+	out := make([]int8, m.Size)
+	for i, t := range (*[1 << 30]int8)(m.Data)[:m.Size:m.Size] {
+		out[i] = int8(t)
+	}
+	return out
+}
+
+// AsInt16Slice returns the contents of this map as a slice of signed 16-bit integers.
+func (m *MapInfo) AsInt16Slice() []int16 {
+	out := make([]int16, m.Size)
+	for i, t := range (*[1 << 30]int16)(m.Data)[:m.Size:m.Size] {
+		out[i] = int16(t)
+	}
+	return out
+}
+
+// AsInt32Slice returns the contents of this map as a slice of signed 32-bit integers.
+func (m *MapInfo) AsInt32Slice() []int32 {
+	out := make([]int32, m.Size)
+	for i, t := range (*[1 << 30]int32)(m.Data)[:m.Size:m.Size] {
+		out[i] = int32(t)
+	}
+	return out
+}
+
+// AsInt64Slice returns the contents of this map as a slice of signed 64-bit integers.
+func (m *MapInfo) AsInt64Slice() []int64 {
+	out := make([]int64, m.Size)
+	for i, t := range (*[1 << 30]int64)(m.Data)[:m.Size:m.Size] {
+		out[i] = int64(t)
+	}
+	return out
+}
+
+// AsUint8Slice returns the contents of this map as a slice of unsigned 8-bit integers.
+func (m *MapInfo) AsUint8Slice() []uint8 {
+	out := make([]uint8, m.Size)
+	for i, t := range (*[1 << 30]uint8)(m.Data)[:m.Size:m.Size] {
+		out[i] = uint8(t)
+	}
+	return out
+}
+
+// AsUint16Slice returns the contents of this map as a slice of unsigned 16-bit integers.
+func (m *MapInfo) AsUint16Slice() []uint16 {
+	out := make([]uint16, m.Size)
+	for i, t := range (*[1 << 30]uint16)(m.Data)[:m.Size:m.Size] {
+		out[i] = uint16(t)
+	}
+	return out
+}
+
+// AsUint32Slice returns the contents of this map as a slice of unsigned 32-bit integers.
+func (m *MapInfo) AsUint32Slice() []uint32 {
+	out := make([]uint32, m.Size)
+	for i, t := range (*[1 << 30]uint32)(m.Data)[:m.Size:m.Size] {
+		out[i] = uint32(t)
+	}
+	return out
+}
+
+// AsUint64Slice returns the contents of this map as a slice of unsigned 64-bit integers.
+func (m *MapInfo) AsUint64Slice() []uint64 {
+	out := make([]uint64, m.Size)
+	for i, t := range (*[1 << 30]uint64)(m.Data)[:m.Size:m.Size] {
+		out[i] = uint64(t)
+	}
+	return out
+}
+
 func wrapMapInfo(mapInfo *C.GstMapInfo, unmapFunc func()) *MapInfo {
 	return &MapInfo{
 		ptr:       mapInfo,

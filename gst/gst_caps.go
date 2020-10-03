@@ -26,6 +26,10 @@ type Caps struct {
 	native *C.GstCaps
 }
 
+// FromGstCapsUnsafe wraps the pointer to the given C GstCaps with the go type.
+// This is meant for internal usage and is exported for visibility to other packages.
+func FromGstCapsUnsafe(caps unsafe.Pointer) *Caps { return wrapCaps(C.toGstCaps(caps)) }
+
 // CapsMapFunc represents a function passed to the Caps MapInPlace, ForEach, and FilterAndMapInPlace methods.
 type CapsMapFunc func(features *CapsFeatures, structure *Structure) bool
 

@@ -10,6 +10,10 @@ import (
 	"github.com/gotk3/gotk3/glib"
 )
 
+// FromGstElementUnsafe wraps the pointer to the given C GstElement with the go type.
+// This is meant for internal usage and is exported for visibility to other packages.
+func FromGstElementUnsafe(elem unsafe.Pointer) *Element { return wrapElement(toGObject(elem)) }
+
 // NewElement is a generic wrapper around `gst_element_factory_make`.
 func NewElement(name string) (*Element, error) {
 	elemName := C.CString(name)
@@ -23,17 +27,17 @@ func NewElement(name string) (*Element, error) {
 
 // NewElementMany is a convenience wrapper around building many GstElements in a
 // single function call. It returns an error if the creation of any element fails. A
-// map containing the ordinal of the argument to the Element created is returned.
-func NewElementMany(elemNames ...string) (map[int]*Element, error) {
-	elemMap := make(map[int]*Element)
+// slice in the order the names were given is returned.
+func NewElementMany(elemNames ...string) ([]*Element, error) {
+	elems := make([]*Element, len(elemNames))
 	for idx, name := range elemNames {
 		elem, err := NewElement(name)
 		if err != nil {
 			return nil, err
 		}
-		elemMap[idx] = elem
+		elems[idx] = elem
 	}
-	return elemMap, nil
+	return elems, nil
 }
 
 // ElementFactory wraps the GstElementFactory
