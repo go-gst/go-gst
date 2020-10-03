@@ -775,6 +775,16 @@ const (
 	QueryTypeSerialized QueryTypeFlags = C.GST_QUERY_TYPE_SERIALIZED // (4) – Set if the query should be serialized with data flow.
 )
 
+// TaskState casts GstTaskState
+type TaskState int
+
+// Type castings
+const (
+	TaskStarted TaskState = C.GST_TASK_STARTED // (0) – the task is started and running
+	TaskStopped TaskState = C.GST_TASK_STOPPED // (1) – the task is stopped
+	TaskPaused  TaskState = C.GST_TASK_PAUSED  // (2) – the task is paused
+)
+
 // TOCScope represents the scope of a TOC.
 type TOCScope int
 

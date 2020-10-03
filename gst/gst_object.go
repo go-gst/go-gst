@@ -24,8 +24,11 @@ func (o *Object) Unsafe() unsafe.Pointer {
 // Instance returns the native C GstObject.
 func (o *Object) Instance() *C.GstObject { return C.toGstObject(o.Unsafe()) }
 
-// Object is an alias to Instance on the underlying GstObject of any extending struct.
-func (o *Object) Object() *C.GstObject { return C.toGstObject(o.Unsafe()) }
+// BaseObject returns this object for embedding structs.
+func (o *Object) BaseObject() *Object { return o }
+
+// GstObject is an alias to Instance on the underlying GstObject of any extending struct.
+func (o *Object) GstObject() *C.GstObject { return C.toGstObject(o.Unsafe()) }
 
 // Class returns the GObjectClass of this instance.
 func (o *Object) Class() *C.GObjectClass { return C.getGObjectClass(o.Unsafe()) }

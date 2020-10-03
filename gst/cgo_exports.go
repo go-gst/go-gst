@@ -14,51 +14,19 @@ import (
 )
 
 //export goPadProbeFunc
-func goPadProbeFunc(gstPad *C.GstPad, gstProbeInfo *C.GstPadProbeInfo, userData C.gpointer) C.GstPadProbeReturn {
+func goPadProbeFunc(gstPad *C.GstPad, info *C.GstPadProbeInfo, userData C.gpointer) C.GstPadProbeReturn {
 	cbIface := gopointer.Restore(unsafe.Pointer(userData))
 	cbFunc := cbIface.(PadProbeCallback)
 	pad := wrapPad(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(gstPad))})
-	probeInfo := &PadProbeInfo{
-		ID:     uint32(gstProbeInfo.id),
-		Type:   PadProbeType(gstProbeInfo._type),
-		Offset: uint64(gstProbeInfo.offset),
-		Size:   uint64(gstProbeInfo.size),
-	}
-	populateProbeInfoData(probeInfo, gstProbeInfo.data)
-	return C.GstPadProbeReturn(cbFunc(pad, probeInfo))
+	return C.GstPadProbeReturn(cbFunc(pad, &PadProbeInfo{info}))
 }
 
-// Figures out what to populate the probe info data with based on the type.
-func populateProbeInfoData(probeInfo *PadProbeInfo, data C.gpointer) {
-	switch probeInfo.Type {
-
-	// Buffer
-	case PadProbeTypeBuffer:
-		probeInfo.Data = wrapBuffer((*C.GstBuffer)(unsafe.Pointer(data)))
-
-	// BufferList
-	case PadProbeTypeBufferList:
-		probeInfo.Data = wrapBufferList((*C.GstBufferList)(unsafe.Pointer(data)))
-
-	// Events
-	case PadProbeTypeEventDownstream:
-		probeInfo.Data = wrapEvent((*C.GstEvent)(unsafe.Pointer(data)))
-	case PadProbeTypeEventUpstream:
-		probeInfo.Data = wrapEvent((*C.GstEvent)(unsafe.Pointer(data)))
-	case PadProbeTypeEventFlush:
-		probeInfo.Data = wrapEvent((*C.GstEvent)(unsafe.Pointer(data)))
-	case PadProbeTypeEventBoth:
-		probeInfo.Data = wrapEvent((*C.GstEvent)(unsafe.Pointer(data)))
-
-	// Queries
-	case PadProbeTypeQueryDownstream:
-		probeInfo.Data = wrapQuery((*C.GstQuery)(unsafe.Pointer(data)))
-	case PadProbeTypeQueryUpstream:
-		probeInfo.Data = wrapQuery((*C.GstQuery)(unsafe.Pointer(data)))
-	case PadProbeTypeQueryBoth:
-		probeInfo.Data = wrapQuery((*C.GstQuery)(unsafe.Pointer(data)))
-
-	}
+//export goPadForwardFunc
+func goPadForwardFunc(gpad *C.GstPad, userData C.gpointer) C.gboolean {
+	cbIface := gopointer.Restore(unsafe.Pointer(userData))
+	cbFunc := cbIface.(PadForwardFunc)
+	pad := wrapPad(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(gpad))})
+	return gboolean(cbFunc(pad))
 }
 
 //export goTagForEachFunc

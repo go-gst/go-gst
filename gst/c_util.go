@@ -11,6 +11,10 @@ import (
 	"github.com/gotk3/gotk3/glib"
 )
 
+func toGObject(data unsafe.Pointer) *glib.Object {
+	return &glib.Object{GObject: glib.ToGObject(data)}
+}
+
 // gobool provides an easy type conversion between C.gboolean and a go bool.
 func gobool(b C.gboolean) bool {
 	return int(b) > 0
@@ -103,7 +107,7 @@ func glistToStreamSlice(glist *C.GList) []*Stream {
 	out := make([]*Stream, 0)
 	l.FreeFull(func(item interface{}) {
 		st := item.(*C.GstStream)
-		out = append(out, wrapStream(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(st))}))
+		out = append(out, wrapStream(toGObject(unsafe.Pointer(st))))
 	})
 	return out
 }
