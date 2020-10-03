@@ -23,6 +23,8 @@ func createPipeline() (*gst.Pipeline, error) {
 		return nil, err
 	}
 
+	// Should this actually be a *gst.Element that produces an Appsink interface like the
+	// rust examples?
 	sink, err := app.NewAppSink()
 	if err != nil {
 		return nil, err
