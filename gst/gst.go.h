@@ -40,6 +40,8 @@ inline GstStreamCollection *  toGstStreamCollection  (void *p) { return (GST_STR
 inline GstStream *            toGstStream            (void *p) { return (GST_STREAM_CAST(p)); }
 inline GstStructure *         toGstStructure         (void *p) { return (GST_STRUCTURE(p)); }
 inline GstTagList   *         toGstTagList           (void *p) { return (GST_TAG_LIST(p)); }
+inline GstTask *              toGstTask              (void *p) { return (GST_TASK_CAST(p)); }
+inline GstTaskPool *          toGstTaskPool          (void *p) { return (GST_TASK_POOL_CAST(p)); }
 inline GstURIHandler *        toGstURIHandler        (void *p) { return (GST_URI_HANDLER(p)); }
 inline GstUri *               toGstURI               (void *p) { return (GST_URI(p)); }
 

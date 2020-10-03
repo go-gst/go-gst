@@ -18,6 +18,20 @@ type Event struct {
 // Instance returns the underlying GstEvent instance.
 func (e *Event) Instance() *C.GstEvent { return C.toGstEvent(unsafe.Pointer(e.ptr)) }
 
+// Type returns the type of the event
+func (e *Event) Type() EventType { return EventType(e.Instance()._type) }
+
+// Timestamp returns the timestamp of the event.
+func (e *Event) Timestamp() time.Duration {
+	ts := e.Instance().timestamp
+	return time.Duration(uint64(ts)) * time.Nanosecond
+}
+
+// Seqnum returns the sequence number of the event.
+func (e *Event) Seqnum() uint32 {
+	return uint32(e.Instance().seqnum)
+}
+
 // Copy copies the event using the event specific copy function.
 func (e *Event) Copy() *Event { return wrapEvent(C.gst_event_copy(e.Instance())) }
 

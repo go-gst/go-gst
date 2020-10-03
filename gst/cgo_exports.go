@@ -13,19 +13,28 @@ import (
 	gopointer "github.com/mattn/go-pointer"
 )
 
+//export goPadStickyEventForEachFunc
+func goPadStickyEventForEachFunc(gpad *C.GstPad, event **C.GstEvent, userData C.gpointer) C.gboolean {
+	cbIface := gopointer.Restore(unsafe.Pointer(userData))
+	cbFunc := cbIface.(StickyEventsForEachFunc)
+	pad := wrapPad(toGObject(unsafe.Pointer(gpad)))
+	ev := wrapEvent(*event)
+	return gboolean(cbFunc(pad, ev))
+}
+
 //export goPadProbeFunc
 func goPadProbeFunc(gstPad *C.GstPad, info *C.GstPadProbeInfo, userData C.gpointer) C.GstPadProbeReturn {
 	cbIface := gopointer.Restore(unsafe.Pointer(userData))
 	cbFunc := cbIface.(PadProbeCallback)
-	pad := wrapPad(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(gstPad))})
+	pad := wrapPad(toGObject(unsafe.Pointer(gstPad)))
 	return C.GstPadProbeReturn(cbFunc(pad, &PadProbeInfo{info}))
 }
 
 //export goPadForwardFunc
-func goPadForwardFunc(gpad *C.GstPad, userData C.gpointer) C.gboolean {
+func goPadForwardFunc(gstPad *C.GstPad, userData C.gpointer) C.gboolean {
 	cbIface := gopointer.Restore(unsafe.Pointer(userData))
 	cbFunc := cbIface.(PadForwardFunc)
-	pad := wrapPad(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(gpad))})
+	pad := wrapPad(toGObject(unsafe.Pointer(gstPad)))
 	return gboolean(cbFunc(pad))
 }
 

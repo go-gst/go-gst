@@ -395,6 +395,11 @@ const (
 	PadLinkRefused        PadLinkReturn = C.GST_PAD_LINK_REFUSED
 )
 
+// String implemeents a stringer on PadLinkReturn
+func (p PadLinkReturn) String() string {
+	return C.GoString(C.gst_pad_link_get_name(C.GstPadLinkReturn(p)))
+}
+
 // PadPresence is a cast of GstPadPresence to a go type.
 type PadPresence int
 
