@@ -13,7 +13,9 @@ gboolean structureForEach (GQuark field_id, GValue * value, gpointer user_data)
 import "C"
 
 import (
+	"errors"
 	"fmt"
+	"reflect"
 	"sync"
 	"unsafe"
 
@@ -54,6 +56,38 @@ func StructureFromGValue(gval *glib.Value) *Structure {
 		return nil
 	}
 	return wrapStructure(st)
+}
+
+func MarshalStructure(data interface{}) *Structure {
+	typeOf := reflect.TypeOf(data)
+	valsOf := reflect.ValueOf(data)
+	st := NewStructure(typeOf.Name())
+	for i := 0; i < valsOf.NumField(); i++ {
+		gval := valsOf.Field(i).Interface()
+		fieldName := typeOf.Field(i).Name
+		st.SetValue(fieldName, gval)
+	}
+	return st
+}
+
+func (s *Structure) UnmarshalInto(data interface{}) error {
+	rv := reflect.ValueOf(data)
+	if rv.Kind() != reflect.Ptr || rv.IsNil() {
+		return errors.New("Data is invalid (nil or non-pointer)")
+	}
+
+	val := reflect.ValueOf(data).Elem()
+	nVal := rv.Elem()
+	for i := 0; i < val.NumField(); i++ {
+		nvField := nVal.Field(i)
+		fieldName := val.Type().Field(i).Name
+		val, err := s.GetValue(fieldName)
+		if err == nil {
+			nvField.Set(reflect.ValueOf(val))
+		}
+	}
+
+	return nil
 }
 
 // Instance returns the native GstStructure instance.

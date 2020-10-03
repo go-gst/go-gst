@@ -119,6 +119,18 @@ func (e *Element) GetPads() []*Pad {
 	return out
 }
 
+// GetStaticPad retrieves a pad from element by name. This version only retrieves
+// already-existing (i.e. 'static') pads.
+func (e *Element) GetStaticPad(name string) *Pad {
+	cname := C.CString(name)
+	defer C.free(unsafe.Pointer(cname))
+	pad := C.gst_element_get_static_pad(e.Instance(), (*C.gchar)(unsafe.Pointer(cname)))
+	if pad == nil {
+		return nil
+	}
+	return wrapPad(toGObject(unsafe.Pointer(pad)))
+}
+
 // GetPadTemplates retrieves a list of the pad templates associated with this element.
 // The list must not be modified by the calling code.
 func (e *Element) GetPadTemplates() []*PadTemplate {
@@ -229,4 +241,13 @@ func (e *Element) QueryPosition(format Format) (bool, int64) {
 	var out C.gint64
 	gok := C.gst_element_query_position(e.Instance(), C.GstFormat(format), &out)
 	return gobool(gok), int64(out)
+}
+
+// SendEvent sends an event to an element. If the element doesn't implement an event handler, the event will
+// be pushed on a random linked sink pad for downstream events or a random linked source pad for upstream events.
+//
+// This function takes ownership of the provided event so you should gst_event_ref it if you want to reuse the event
+// after this call.
+func (e *Element) SendEvent(ev *Event) bool {
+	return gobool(C.gst_element_send_event(e.Instance(), ev.Instance()))
 }

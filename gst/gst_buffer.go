@@ -65,7 +65,7 @@ func NewBufferFromBytes(b []byte) *Buffer {
 	str := string(b)
 	p := unsafe.Pointer(C.CString(str))
 	// memory is freed by gstreamer after building the new buffer
-	buf := C.gst_buffer_new_wrapped((C.gpointer)(p), C.ulong(len(str)))
+	buf := C.gst_buffer_new_wrapped((C.gpointer)(p), C.gulong(len(str)))
 	return wrapBuffer(buf)
 }
 
@@ -150,6 +150,12 @@ func (b *Buffer) PresentationTimestamp() time.Duration {
 	return guint64ToDuration(pts)
 }
 
+// SetPresentationTimestamp sets the presentation timestamp on the buffer.
+func (b *Buffer) SetPresentationTimestamp(dur time.Duration) {
+	ins := b.Instance()
+	ins.pts = C.GstClockTime(durationToClockTime(dur))
+}
+
 // DecodingTimestamp returns the decoding timestamp of the buffer, or a negative duration if not known
 // or relevant. This value contains the timestamp when the media should be processed.
 func (b *Buffer) DecodingTimestamp() time.Duration {
@@ -168,6 +174,12 @@ func (b *Buffer) Duration() time.Duration {
 		return time.Duration(-1)
 	}
 	return guint64ToDuration(dur)
+}
+
+// SetDuration sets the duration on the buffer.
+func (b *Buffer) SetDuration(dur time.Duration) {
+	ins := b.Instance()
+	ins.duration = C.GstClockTime(durationToClockTime(dur))
 }
 
 // Offset returns a media specific offset for the buffer data. For video frames, this is the frame
@@ -341,12 +353,68 @@ func (b *Buffer) Extract(offset, size int64) []byte {
 	return C.GoBytes(dest, C.int(size))
 }
 
-// Fill adds the given byte slice to the buffer at the given offset. The return value reflects the amount
+// FillBytes adds the given byte slice to the buffer at the given offset. The return value reflects the amount
 // of data added to the buffer.
-func (b *Buffer) Fill(offset int64, data []byte) int64 {
+func (b *Buffer) FillBytes(offset int64, data []byte) int64 {
 	str := string(data)
 	cStr := C.CString(str)
 	gsize := C.gst_buffer_fill(b.Instance(), C.gsize(offset), (C.gconstpointer)(unsafe.Pointer(cStr)), C.gsize(len(str)))
+	return int64(gsize)
+}
+
+// FillInt8Slice adds the given slice to the buffer at the given offset. The return value reflects the amount
+// of data added to the buffer.
+func (b *Buffer) FillInt8Slice(offset int64, data []int8) int64 {
+	gsize := C.gst_buffer_fill(b.Instance(), C.gsize(offset), (C.gconstpointer)(unsafe.Pointer(&data[0])), C.gsize(len(data)))
+	return int64(gsize)
+}
+
+// FillInt16Slice adds the given slice to the buffer at the given offset. The return value reflects the amount
+// of data added to the buffer.
+func (b *Buffer) FillInt16Slice(offset int64, data []int16) int64 {
+	gsize := C.gst_buffer_fill(b.Instance(), C.gsize(offset), (C.gconstpointer)(unsafe.Pointer(&data[0])), C.gsize(len(data)))
+	return int64(gsize)
+}
+
+// FillInt32Slice adds the given slice to the buffer at the given offset. The return value reflects the amount
+// of data added to the buffer.
+func (b *Buffer) FillInt32Slice(offset int64, data []int32) int64 {
+	gsize := C.gst_buffer_fill(b.Instance(), C.gsize(offset), (C.gconstpointer)(unsafe.Pointer(&data[0])), C.gsize(len(data)))
+	return int64(gsize)
+}
+
+// FillInt64Slice adds the given slice to the buffer at the given offset. The return value reflects the amount
+// of data added to the buffer.
+func (b *Buffer) FillInt64Slice(offset int64, data []int64) int64 {
+	gsize := C.gst_buffer_fill(b.Instance(), C.gsize(offset), (C.gconstpointer)(unsafe.Pointer(&data[0])), C.gsize(len(data)))
+	return int64(gsize)
+}
+
+// FillUint8Slice adds the given slice to the buffer at the given offset. The return value reflects the amount
+// of data added to the buffer.
+func (b *Buffer) FillUint8Slice(offset int64, data []uint8) int64 {
+	gsize := C.gst_buffer_fill(b.Instance(), C.gsize(offset), (C.gconstpointer)(unsafe.Pointer(&data[0])), C.gsize(len(data)))
+	return int64(gsize)
+}
+
+// FillUint16Slice adds the given slice to the buffer at the given offset. The return value reflects the amount
+// of data added to the buffer.
+func (b *Buffer) FillUint16Slice(offset int64, data []uint16) int64 {
+	gsize := C.gst_buffer_fill(b.Instance(), C.gsize(offset), (C.gconstpointer)(unsafe.Pointer(&data[0])), C.gsize(len(data)))
+	return int64(gsize)
+}
+
+// FillUint32Slice adds the given slice to the buffer at the given offset. The return value reflects the amount
+// of data added to the buffer.
+func (b *Buffer) FillUint32Slice(offset int64, data []uint32) int64 {
+	gsize := C.gst_buffer_fill(b.Instance(), C.gsize(offset), (C.gconstpointer)(unsafe.Pointer(&data[0])), C.gsize(len(data)))
+	return int64(gsize)
+}
+
+// FillUint64Slice adds the given slice to the buffer at the given offset. The return value reflects the amount
+// of data added to the buffer.
+func (b *Buffer) FillUint64Slice(offset int64, data []uint64) int64 {
+	gsize := C.gst_buffer_fill(b.Instance(), C.gsize(offset), (C.gconstpointer)(unsafe.Pointer(&data[0])), C.gsize(len(data)))
 	return int64(gsize)
 }
 

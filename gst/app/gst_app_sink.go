@@ -48,6 +48,15 @@ func NewAppSink() (*Sink, error) {
 	return wrapAppSink(elem), nil
 }
 
+// SinkFromElement checks if the given element is an appsink and if so returns
+// a Sink interace.
+func SinkFromElement(elem *gst.Element) *Sink {
+	if appSink := C.toGstAppSink(elem.Unsafe()); appSink != nil {
+		return wrapAppSink(elem)
+	}
+	return nil
+}
+
 // Instance returns the native GstAppSink instance.
 func (a *Sink) Instance() *C.GstAppSink { return C.toGstAppSink(a.Unsafe()) }
 

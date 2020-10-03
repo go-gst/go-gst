@@ -54,6 +54,15 @@ func NewAppSrc() (*Source, error) {
 	return wrapAppSrc(elem), nil
 }
 
+// SrcFromElement checks if the given element is an appsrc and if so returns
+// a Source interace.
+func SrcFromElement(elem *gst.Element) *Source {
+	if appSrc := C.toGstAppSrc(elem.Unsafe()); appSrc != nil {
+		return wrapAppSrc(elem)
+	}
+	return nil
+}
+
 // Instance returns the native GstAppSink instance.
 func (a *Source) Instance() *C.GstAppSrc { return C.toGstAppSrc(a.Unsafe()) }
 
