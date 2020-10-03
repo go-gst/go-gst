@@ -459,6 +459,16 @@ const (
 	PadProbeTypeScheduling      PadProbeType = C.GST_PAD_PROBE_TYPE_SCHEDULING       // (12288) – probe push and pull
 )
 
+// SchedulingFlags casts GstSchedulingFlags
+type SchedulingFlags int
+
+// Type casts
+const (
+	SchedulingFlagSeekable         SchedulingFlags = C.GST_SCHEDULING_FLAG_SEEKABLE          // (1) – if seeking is possible
+	SchedulingFlagSequential       SchedulingFlags = C.GST_SCHEDULING_FLAG_SEQUENTIAL        // (2) – if sequential access is recommended
+	SchedulingFlagBandwidthLimited SchedulingFlags = C.GST_SCHEDULING_FLAG_BANDWIDTH_LIMITED // (4) – if bandwidth is limited and buffering possible (since 1.2)
+)
+
 // State is a type cast of the C GstState
 type State int
 
@@ -726,6 +736,43 @@ const (
 	MetaFlagPooled   MetaFlags = C.GST_META_FLAG_POOLED   // (2) – metadata is managed by a bufferpool
 	MetaFlagLocked   MetaFlags = C.GST_META_FLAG_LOCKED   // (4) – metadata should not be removed
 	MetaFlagLast     MetaFlags = C.GST_META_FLAG_LAST     // (65536) – additional flags can be added starting from this flag.
+)
+
+// QueryType casts GstQueryType
+type QueryType int
+
+// Type casts
+const (
+	QueryUnknown    QueryType = C.GST_QUERY_UNKNOWN     // (0) – unknown query type
+	QueryPosition   QueryType = C.GST_QUERY_POSITION    // (2563) – current position in stream
+	QueryDuration   QueryType = C.GST_QUERY_DURATION    // (5123) – total duration of the stream
+	QueryLatency    QueryType = C.GST_QUERY_LATENCY     // (7683) – latency of stream
+	QueryJitter     QueryType = C.GST_QUERY_JITTER      // (10243) – current jitter of stream
+	QueryRate       QueryType = C.GST_QUERY_RATE        // (12803) – current rate of the stream
+	QuerySeeking    QueryType = C.GST_QUERY_SEEKING     // (15363) – seeking capabilities
+	QuerySegment    QueryType = C.GST_QUERY_SEGMENT     // (17923) – segment start/stop positions
+	QueryConvert    QueryType = C.GST_QUERY_CONVERT     // (20483) – convert values between formats
+	QueryFormats    QueryType = C.GST_QUERY_FORMATS     // (23043) – query supported formats for convert
+	QueryBuffering  QueryType = C.GST_QUERY_BUFFERING   // (28163) – query available media for efficient seeking.
+	QueryCustom     QueryType = C.GST_QUERY_CUSTOM      // (30723) – a custom application or element defined que	QueryType = C.ry.
+	QueryURI        QueryType = C.GST_QUERY_URI         // (33283) – query the URI of the source or sink.
+	QueryAllocation QueryType = C.GST_QUERY_ALLOCATION  // (35846) – the buffer allocation properties
+	QueryScheduling QueryType = C.GST_QUERY_SCHEDULING  // (38401) – the scheduling properties
+	QueryAcceptCaps QueryType = C.GST_QUERY_ACCEPT_CAPS // (40963) – the accept caps query
+	QueryCaps       QueryType = C.GST_QUERY_CAPS        // (43523) – the caps query
+	QueryDrain      QueryType = C.GST_QUERY_DRAIN       // (46086) – wait till all serialized data is consumed downstream
+	QueryContext    QueryType = C.GST_QUERY_CONTEXT     // (48643) – query the pipeline-local context from downstream or upstream (since 1.2)
+	QueryBitrate    QueryType = C.GST_QUERY_BITRATE     // (51202) – the bitrate query (since 1.16)
+)
+
+// QueryTypeFlags casts GstQueryTypeFlags
+type QueryTypeFlags int
+
+// Type casts
+const (
+	QueryTypeUpstream   QueryTypeFlags = C.GST_QUERY_TYPE_UPSTREAM   // (1) – Set if the query can travel upstream.
+	QueryTypeDownstream QueryTypeFlags = C.GST_QUERY_TYPE_DOWNSTREAM // (2) – Set if the query can travel downstream.
+	QueryTypeSerialized QueryTypeFlags = C.GST_QUERY_TYPE_SERIALIZED // (4) – Set if the query should be serialized with data flow.
 )
 
 // TOCScope represents the scope of a TOC.

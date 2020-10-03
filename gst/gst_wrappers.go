@@ -145,6 +145,10 @@ func init() {
 			T: glib.Type(C.GST_TYPE_SEGMENT),
 			F: marshalSegment,
 		},
+		{
+			T: glib.Type(C.GST_TYPE_QUERY),
+			F: marshalQuery,
+		},
 
 		// Boxed
 		{T: glib.Type(C.gst_message_get_type()), F: marshalMessage},
@@ -186,6 +190,7 @@ func wrapPipeline(obj *glib.Object) *Pipeline              { return &Pipeline{Bi
 func wrapPluginFeature(obj *glib.Object) *PluginFeature    { return &PluginFeature{wrapObject(obj)} }
 func wrapPlugin(obj *glib.Object) *Plugin                  { return &Plugin{wrapObject(obj)} }
 func wrapProxyPad(obj *glib.Object) *ProxyPad              { return &ProxyPad{wrapPad(obj)} }
+func wrapQuery(query *C.GstQuery) *Query                   { return &Query{ptr: query} }
 func wrapRegistry(obj *glib.Object) *Registry              { return &Registry{wrapObject(obj)} }
 func wrapSample(sample *C.GstSample) *Sample               { return &Sample{sample: sample} }
 func wrapSegment(segment *C.GstSegment) *Segment           { return &Segment{ptr: segment} }
@@ -420,4 +425,10 @@ func marshalSegment(p uintptr) (interface{}, error) {
 	c := C.g_value_get_object(uintptrToGVal(p))
 	obj := (*C.GstSegment)(unsafe.Pointer(c))
 	return wrapSegment(obj), nil
+}
+
+func marshalQuery(p uintptr) (interface{}, error) {
+	c := C.g_value_get_object(uintptrToGVal(p))
+	obj := (*C.GstQuery)(unsafe.Pointer(c))
+	return wrapQuery(obj), nil
 }

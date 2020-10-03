@@ -28,6 +28,7 @@ func goPadProbeFunc(gstPad *C.GstPad, gstProbeInfo *C.GstPadProbeInfo, userData 
 	return C.GstPadProbeReturn(cbFunc(pad, probeInfo))
 }
 
+// Figures out what to populate the probe info data with based on the type.
 func populateProbeInfoData(probeInfo *PadProbeInfo, data C.gpointer) {
 	switch probeInfo.Type {
 
@@ -41,14 +42,21 @@ func populateProbeInfoData(probeInfo *PadProbeInfo, data C.gpointer) {
 
 	// Events
 	case PadProbeTypeEventDownstream:
+		probeInfo.Data = wrapEvent((*C.GstEvent)(unsafe.Pointer(data)))
 	case PadProbeTypeEventUpstream:
+		probeInfo.Data = wrapEvent((*C.GstEvent)(unsafe.Pointer(data)))
 	case PadProbeTypeEventFlush:
+		probeInfo.Data = wrapEvent((*C.GstEvent)(unsafe.Pointer(data)))
 	case PadProbeTypeEventBoth:
+		probeInfo.Data = wrapEvent((*C.GstEvent)(unsafe.Pointer(data)))
 
 	// Queries
 	case PadProbeTypeQueryDownstream:
+		probeInfo.Data = wrapQuery((*C.GstQuery)(unsafe.Pointer(data)))
 	case PadProbeTypeQueryUpstream:
+		probeInfo.Data = wrapQuery((*C.GstQuery)(unsafe.Pointer(data)))
 	case PadProbeTypeQueryBoth:
+		probeInfo.Data = wrapQuery((*C.GstQuery)(unsafe.Pointer(data)))
 
 	}
 }

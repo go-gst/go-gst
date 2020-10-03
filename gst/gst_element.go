@@ -145,6 +145,8 @@ func (e *Element) IsURIHandler() bool {
 	return gobool(C.gstElementIsURIHandler(e.Instance()))
 }
 
+// TODO: Go back over URI and implement as interface
+
 func (e *Element) uriHandler() *C.GstURIHandler { return C.toGstURIHandler(e.Unsafe()) }
 
 // GetURIType returns the type of URI this element can handle.
@@ -187,4 +189,44 @@ func (e *Element) TagSetter() TagSetter {
 		return nil
 	}
 	return &gstTagSetter{ptr: e.Instance()}
+}
+
+// Query performs a query on the given element.
+//
+// For elements that don't implement a query handler, this function forwards the query to a random srcpad or
+// to the peer of a random linked sinkpad of this element.
+//
+// Please note that some queries might need a running pipeline to work.
+func (e *Element) Query(q *Query) bool {
+	return gobool(C.gst_element_query(e.Instance(), q.Instance()))
+}
+
+// QueryConvert queries an element to convert src_val in src_format to dest_format.
+func (e *Element) QueryConvert(srcFormat Format, srcValue int64, destFormat Format) (bool, int64) {
+	var out C.gint64
+	gok := C.gst_element_query_convert(e.Instance(), C.GstFormat(srcFormat), C.gint64(srcValue), C.GstFormat(destFormat), &out)
+	return gobool(gok), int64(out)
+}
+
+// QueryDuration queries an element (usually top-level pipeline or playbin element) for the total stream
+// duration in nanoseconds. This query will only work once the pipeline is prerolled (i.e. reached PAUSED
+// or PLAYING state). The application will receive an ASYNC_DONE message on the pipeline bus when that is
+// the case.
+//
+// If the duration changes for some reason, you will get a DURATION_CHANGED message on the pipeline bus,
+// in which case you should re-query the duration using this function.
+func (e *Element) QueryDuration(format Format) (bool, int64) {
+	var out C.gint64
+	gok := C.gst_element_query_duration(e.Instance(), C.GstFormat(format), &out)
+	return gobool(gok), int64(out)
+}
+
+// QueryPosition queries an element (usually top-level pipeline or playbin element) for the stream position
+// in nanoseconds. This will be a value between 0 and the stream duration (if the stream duration is known).
+// This query will usually only work once the pipeline is prerolled (i.e. reached PAUSED or PLAYING state).
+// The application will receive an ASYNC_DONE message on the pipeline bus when that is the case.
+func (e *Element) QueryPosition(format Format) (bool, int64) {
+	var out C.gint64
+	gok := C.gst_element_query_position(e.Instance(), C.GstFormat(format), &out)
+	return gobool(gok), int64(out)
 }

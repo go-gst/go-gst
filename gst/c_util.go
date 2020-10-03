@@ -97,3 +97,13 @@ func streamSliceToGlist(streams []*Stream) *C.GList {
 	}
 	return (*C.GList)(unsafe.Pointer(wrapped.Native()))
 }
+
+func glistToStreamSlice(glist *C.GList) []*Stream {
+	l := glib.WrapList(uintptr(unsafe.Pointer(&glist)))
+	out := make([]*Stream, 0)
+	l.FreeFull(func(item interface{}) {
+		st := item.(*C.GstStream)
+		out = append(out, wrapStream(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(st))}))
+	})
+	return out
+}
