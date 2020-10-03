@@ -10,22 +10,22 @@ import (
 	"github.com/tinyzimmer/go-gst/gst/app"
 )
 
-func createPipeline() *gst.Pipeline {
+func createPipeline() (*gst.Pipeline, error) {
 	gst.Init(nil)
 
 	pipeline, err := gst.NewPipeline("")
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	src, err := gst.NewElement("audiotestsrc")
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	sink, err := app.NewAppSink()
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
 
 	pipeline.AddMany(src, sink.Element)
@@ -78,7 +78,7 @@ func createPipeline() *gst.Pipeline {
 		},
 	})
 
-	return pipeline
+	return pipeline, nil
 }
 
 func mainLoop(pipeline *gst.Pipeline) error {
@@ -106,7 +106,11 @@ func mainLoop(pipeline *gst.Pipeline) error {
 
 func main() {
 	examples.Run(func() error {
-		pipeline := createPipeline()
+		var pipeline *gst.Pipeline
+		var err error
+		if pipeline, err = createPipeline(); err != nil {
+			return err
+		}
 		return mainLoop(pipeline)
 	})
 
