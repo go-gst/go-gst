@@ -9,9 +9,19 @@ import (
 	"github.com/tinyzimmer/go-gst/gst"
 )
 
-func getCbsFromPtr(userData C.gpointer) *SinkCallbacks {
+func getSinkCbsFromPtr(userData C.gpointer) *SinkCallbacks {
 	ptr := gopointer.Restore(unsafe.Pointer(userData))
 	cbs, ok := ptr.(*SinkCallbacks)
+	if !ok {
+		gopointer.Unref(unsafe.Pointer(userData))
+		return nil
+	}
+	return cbs
+}
+
+func getSrcCbsFromPtr(userData C.gpointer) *SourceCallbacks {
+	ptr := gopointer.Restore(unsafe.Pointer(userData))
+	cbs, ok := ptr.(*SourceCallbacks)
 	if !ok {
 		gopointer.Unref(unsafe.Pointer(userData))
 		return nil
@@ -23,9 +33,49 @@ func wrapCSink(sink *C.GstAppSink) *Sink {
 	return wrapAppSink(gst.FromGstElementUnsafe(unsafe.Pointer(sink)))
 }
 
+func wrapCSource(src *C.GstAppSrc) *Source {
+	return wrapAppSrc(gst.FromGstElementUnsafe(unsafe.Pointer(src)))
+}
+
+//export goNeedDataCb
+func goNeedDataCb(src *C.GstAppSrc, length C.guint, userData C.gpointer) {
+	cbs := getSrcCbsFromPtr(userData)
+	if cbs == nil {
+		return
+	}
+	if cbs.NeedDataFunc == nil {
+		return
+	}
+	cbs.NeedDataFunc(wrapCSource(src), uint(length))
+}
+
+//export goEnoughDataDb
+func goEnoughDataDb(src *C.GstAppSrc, userData C.gpointer) {
+	cbs := getSrcCbsFromPtr(userData)
+	if cbs == nil {
+		return
+	}
+	if cbs.EnoughDataFunc == nil {
+		return
+	}
+	cbs.EnoughDataFunc(wrapCSource(src))
+}
+
+//export goSeekDataCb
+func goSeekDataCb(src *C.GstAppSrc, offset C.guint64, userData C.gpointer) C.gboolean {
+	cbs := getSrcCbsFromPtr(userData)
+	if cbs == nil {
+		return gboolean(false)
+	}
+	if cbs.SeekDataFunc == nil {
+		return gboolean(true)
+	}
+	return gboolean(cbs.SeekDataFunc(wrapCSource(src), uint64(offset)))
+}
+
 //export goSinkEOSCb
 func goSinkEOSCb(sink *C.GstAppSink, userData C.gpointer) {
-	cbs := getCbsFromPtr(userData)
+	cbs := getSinkCbsFromPtr(userData)
 	if cbs == nil {
 		return
 	}
@@ -37,7 +87,7 @@ func goSinkEOSCb(sink *C.GstAppSink, userData C.gpointer) {
 
 //export goSinkNewPrerollCb
 func goSinkNewPrerollCb(sink *C.GstAppSink, userData C.gpointer) C.GstFlowReturn {
-	cbs := getCbsFromPtr(userData)
+	cbs := getSinkCbsFromPtr(userData)
 	if cbs == nil {
 		return C.GstFlowReturn(gst.FlowError)
 	}
@@ -49,7 +99,7 @@ func goSinkNewPrerollCb(sink *C.GstAppSink, userData C.gpointer) C.GstFlowReturn
 
 //export goSinkNewSampleCb
 func goSinkNewSampleCb(sink *C.GstAppSink, userData C.gpointer) C.GstFlowReturn {
-	cbs := getCbsFromPtr(userData)
+	cbs := getSinkCbsFromPtr(userData)
 	if cbs == nil {
 		return C.GstFlowReturn(gst.FlowError)
 	}
@@ -59,7 +109,7 @@ func goSinkNewSampleCb(sink *C.GstAppSink, userData C.gpointer) C.GstFlowReturn 
 	return C.GstFlowReturn(cbs.NewSampleFunc(wrapCSink(sink)))
 }
 
-//export goSinkGDestroyNotifyFunc
-func goSinkGDestroyNotifyFunc(ptr C.gpointer) {
+//export goAppGDestroyNotifyFunc
+func goAppGDestroyNotifyFunc(ptr C.gpointer) {
 	gopointer.Unref(unsafe.Pointer(ptr))
 }

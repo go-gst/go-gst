@@ -3,13 +3,13 @@ package app
 /*
 #include "gst.go.h"
 
-extern void          goSinkGDestroyNotifyFunc (gpointer user_data);
+extern void          goAppGDestroyNotifyFunc (gpointer user_data);
 
 extern void          goSinkEOSCb        (GstAppSink * sink, gpointer user_data);
 extern GstFlowReturn goSinkNewPrerollCb (GstAppSink * sink, gpointer user_data);
 extern GstFlowReturn goSinkNewSampleCb  (GstAppSink * sink, gpointer user_data);
 
-void          cgoGDestroyNotifyFunc (gpointer user_data) { goSinkGDestroyNotifyFunc(user_data); }
+void          cgoSinkGDestroyNotifyFunc (gpointer user_data) { goAppGDestroyNotifyFunc(user_data); }
 void          cgoSinkEOSCb        (GstAppSink * sink, gpointer user_data) { return goSinkEOSCb(sink, user_data); }
 GstFlowReturn cgoSinkNewPrerollCb (GstAppSink * sink, gpointer user_data) { return goSinkNewPrerollCb(sink, user_data); }
 GstFlowReturn cgoSinkNewSampleCb  (GstAppSink * sink, gpointer user_data) { return goSinkNewSampleCb(sink, user_data); }
@@ -149,7 +149,7 @@ func (a *Sink) SetCallbacks(cbs *SinkCallbacks) {
 		a.Instance(),
 		appSinkCallbacks,
 		(C.gpointer)(unsafe.Pointer(ptr)),
-		C.GDestroyNotify(C.cgoGDestroyNotifyFunc),
+		C.GDestroyNotify(C.cgoSinkGDestroyNotifyFunc),
 	)
 }
 
