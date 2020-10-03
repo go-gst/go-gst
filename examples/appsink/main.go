@@ -129,5 +129,4 @@ func main() {
 		}
 		return mainLoop(pipeline)
 	})
-
 }
