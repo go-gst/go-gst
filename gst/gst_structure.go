@@ -58,6 +58,8 @@ func StructureFromGValue(gval *glib.Value) *Structure {
 	return wrapStructure(st)
 }
 
+// MarshalStructure will convert the given go struct into a GstStructure. Currently nested
+// structs are not supported.
 func MarshalStructure(data interface{}) *Structure {
 	typeOf := reflect.TypeOf(data)
 	valsOf := reflect.ValueOf(data)
@@ -70,6 +72,8 @@ func MarshalStructure(data interface{}) *Structure {
 	return st
 }
 
+// UnmarshalInto will unmarshal this structure into the given pointer. The object
+// reflected by the pointer must be non-nil.
 func (s *Structure) UnmarshalInto(data interface{}) error {
 	rv := reflect.ValueOf(data)
 	if rv.Kind() != reflect.Ptr || rv.IsNil() {

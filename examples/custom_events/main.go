@@ -9,6 +9,8 @@ import (
 	"github.com/tinyzimmer/go-gst/gst"
 )
 
+// ExampleCustomEvent demonstrates a custom event structue. Currerntly nested structs
+// are not supported.
 type ExampleCustomEvent struct {
 	Count   int
 	SendEOS bool

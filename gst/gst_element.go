@@ -251,3 +251,19 @@ func (e *Element) QueryPosition(format Format) (bool, int64) {
 func (e *Element) SendEvent(ev *Event) bool {
 	return gobool(C.gst_element_send_event(e.Instance(), ev.Instance()))
 }
+
+// Connect connects to the given signal on this element, and applies f as the callback. The callback must
+// match the signature of the expected callback from the documentation. However, instead of specifying C types
+// for arguments specify the go-gst equivalent (e.g. *gst.Element for almost all GstElement derivitives).
+func (e *Element) Connect(signal string, f interface{}) (glib.SignalHandle, error) {
+	// Elements are sometimes their own type unique from TYPE_ELEMENT. So make sure a type marshaler
+	// is registered for whatever this type is. Use the built-in element marshaler.
+	glib.RegisterGValueMarshalers([]glib.TypeMarshaler{{T: e.TypeFromInstance(), F: marshalElement}})
+	return e.Object.Connect(signal, f, nil)
+}
+
+// SyncStateWithParent tries to change the state of the element to the same as its parent. If this function returns
+// FALSE, the state of element is undefined.
+func (e *Element) SyncStateWithParent() bool {
+	return gobool(C.gst_element_sync_state_with_parent(e.Instance()))
+}
