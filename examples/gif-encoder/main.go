@@ -102,11 +102,11 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 		}
 
 		// Fetch the result from the query.
-		_, val := query.ParseDuration()
+		_, duration := query.ParseDuration()
 
-		// This value is in nanoseconds. Since we told theee videorate element to produce 5 frames
-		// per second, we can use this value to calculate the total number of frames to expect.
-		totalFrames := int((time.Duration(val) * time.Nanosecond).Seconds()) * 5
+		// This value is in nanoseconds. Since we told the videorate element to produce 5 frames
+		// per second, we know the total frames will be (duration / 1e+9) * 5.
+		totalFrames := int((time.Duration(duration) * time.Nanosecond).Seconds()) * 5
 
 		// Getting data out of the sink is done by setting callbacks. Each new sample
 		// will be a new jpeg image from the pipeline.
