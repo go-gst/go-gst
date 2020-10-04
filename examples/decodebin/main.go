@@ -71,9 +71,10 @@ func buildPipeline() (*gst.Pipeline, error) {
 			// play it on the default audio playback device (using autoaudiosink).
 			elements, err := gst.NewElementMany("queue", "audioconvert", "audioresample", "autoaudiosink")
 			if err != nil {
-				msg := gst.NewErrorMessage(self, gst.NewGError(2, err), "", nil)
+				// We can create custom errors (with optional structures) and send them to the pipeline bus.
+				// The first argument reflects the source of the error, th second is the error itself, followed by a debug string.
+				msg := gst.NewErrorMessage(self, gst.NewGError(2, err), "Could not create elements for audio pipeline", nil)
 				pipeline.GetPipelineBus().Post(msg)
-				fmt.Println("ERROR: Could not create elements for audio pipeline")
 				return
 			}
 			pipeline.AddMany(elements...)
@@ -99,9 +100,8 @@ func buildPipeline() (*gst.Pipeline, error) {
 			// display it using the autovideosink.
 			elements, err := gst.NewElementMany("queue", "videoconvert", "videoscale", "autovideosink")
 			if err != nil {
-				msg := gst.NewErrorMessage(self, gst.NewGError(2, err), "", nil)
+				msg := gst.NewErrorMessage(self, gst.NewGError(2, err), "Could not create elements for video pipeline", nil)
 				pipeline.GetPipelineBus().Post(msg)
-				fmt.Println("ERROR: Could not create elements for audio pipeline")
 				return
 			}
 			pipeline.AddMany(elements...)
