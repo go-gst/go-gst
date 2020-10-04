@@ -7,47 +7,11 @@ Go bindings for the gstreamer C library
 [![GoReportCard](https://goreportcard.com/badge/github.com/nanomsg/mangos)](https://goreportcard.com/report/github.com/tinyzimmer/go-gst)
 ![](https://github.com/tinyzimmer/go-gst/workflows/Tests/badge.svg)
 
-See the go.dev reference for documentation and examples.
+See the [godoc.org](https://godoc.org/github.com/tinyzimmer/go-gst) or [pkg.go.dev](https://pkg.go.dev/github.com/tinyzimmer/go-gst) referencea for documentation and examples.
+As the latter requires published tags, see godoc.org for the latest documentation of master at any point in time.
 
-For other examples see the command line implementation [here](cmd/go-gst).
+For more examples see the `examples` folder [here](examples/) and command line implementation [here](cmd/go-gst).
 
-_TODO: Write examples on programatically building the pipeline yourself_
-
-## Quickstart
-
-```go
-package main
-
-import (
-	"io"
-	"os"
-
-	"github.com/tinyzimmer/go-gst/gst"
-	"github.com/tinyzimmer/go-gst/gst/gstauto"
-)
-
-var srcFile, destFile *os.File
-
-func main() {
-	gst.Init(nil)
-
-	pipeline, err := gstauto.NewPipelineReadWriterSimpleFromString("opusenc ! webmmux")
-	if err != nil {
-		panic(err)
-	}
-	defer pipeline.Close()
-
-	pipeline.Start()
-
-	// Write RAW audio data to the pipeline
-	go io.Copy(pipeline, srcFile)
-	// Write opus/webm to a destination file
-	go io.Copy(destFile, pipeline)
-
-	gst.Wait(pipeline.Pipeline())
-}
-
-```
 
 ## Requirements
 
@@ -57,7 +21,7 @@ For building applications with this library you need the following:
  - `gcc` and `pkg-config`
  - `libgstreamer-1.0-dev`: This package name may be different depending on your OS. You need the `gst.h` header files.
    - In some distributions (such as alpine linux) this is in the `gstreamer-dev` package.
- - To use the `app` or `gstauto/app` packages you will need additional dependencies:
+ - To use the `pbutils`, `app`, `gstauto/app` packages you will need additional dependencies:
    - `libgstreamer-app-1.0-dev`: This package name may also be different depending on your os. You need the `gstappsink.h` and `gstappsrc.h`
      - In some distributions (such as alpine linux) this is in the `gst-plugins-base-dev` package.
      - In Ubuntu this is in `libgstreamer-plugins-base1.0-0`.
