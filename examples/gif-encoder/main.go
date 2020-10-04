@@ -232,7 +232,5 @@ func main() {
 		outFile = outFile + ".gif"
 	}
 
-	examples.RunLoop(func(mainLoop *gst.MainLoop) error {
-		return encodeGif(mainLoop)
-	})
+	examples.RunLoop(encodeGif)
 }
