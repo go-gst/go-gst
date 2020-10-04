@@ -3,6 +3,7 @@
 package main
 
 import (
+	"errors"
 	"flag"
 	"fmt"
 	"image"
@@ -12,6 +13,7 @@ import (
 	"os"
 	"path"
 	"strings"
+	"time"
 
 	"github.com/tinyzimmer/go-gst/examples"
 	"github.com/tinyzimmer/go-gst/gst"
@@ -90,6 +92,22 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 		pipeline.Add(appSink.Element)
 		jpegenc.Link(appSink.Element)
 
+		// Wee can query the decodebin for the duration of the video it received. We can then
+		// use this value to calculate the total number of frames we expect to produce.
+		query := gst.NewDurationQuery(gst.FormatTime)
+		if ok := self.Query(query); !ok {
+			err := gst.NewGError(3, errors.New("Failed to query video duration from decodebin"))
+			pipeline.GetPipelineBus().
+				Post(gst.NewErrorMessage(self, err, "", nil))
+		}
+
+		// Fetch the result from the query.
+		_, val := query.ParseDuration()
+
+		// This value is in nanoseconds. Since we told theee videorate element to produce 5 frames
+		// per second, we can use this value to calculate the total number of frames to expect.
+		totalFrames := int((time.Duration(val) * time.Nanosecond).Seconds()) * 5
+
 		// Getting data out of the sink is done by setting callbacks. Each new sample
 		// will be a new jpeg image from the pipeline.
 		var frameNum int
@@ -99,15 +117,23 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 				// sink.
 				imgReader := sink.PullSample().GetBuffer().Reader()
 
+				// Increment the frame number counter
+				frameNum++
+
+				if frameNum > totalFrames {
+					// If we've reached the total number of frames we are expecting. We can
+					// signal the main loop to quit.
+					mainLoop.Quit()
+					return gst.FlowEOS
+				}
+
+				fmt.Printf("\033[2K\rProcessing image frame %d/%d", frameNum, totalFrames)
+
 				img, err := jpeg.Decode(imgReader)
 				if err != nil {
 					fmt.Println("Error decoding jpeg frame:", err)
 					return gst.FlowError
 				}
-
-				frameNum++
-				fmt.Printf("\033[2K\rProcessing image frame %d", frameNum)
-				// fmt.Printf("Processing image frame %d\n", frameNum)
 
 				// Create a new paletted image with the same bounds as the pulled one
 				frame := image.NewPaletted(img.Bounds(), palette.Plan9)
@@ -130,17 +156,14 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 		srcPad.Link(queue.GetStaticPad("sink"))
 	})
 
-	// Add a watch on the bus on the pipeline and wait for any errors
-	// or the end of the stream.
+	// Now that the pipeline is all set up we can start it.
+	pipeline.SetState(gst.StatePlaying)
+
+	// Add a watch on the bus on the pipeline and catch any errors
+	// that happen.
 	var isError bool
 	pipeline.GetPipelineBus().AddWatch(func(msg *gst.Message) bool {
 		switch msg.Type() {
-		// Uncomment this for very debuggy output
-		// default:
-		// 	fmt.Println(msg)
-		case gst.MessageEOS:
-			mainLoop.Quit()
-			return false
 		case gst.MessageError:
 			err := msg.ParseError()
 			fmt.Println("ERROR:", err.Error())
@@ -157,12 +180,11 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 
 	fmt.Println("Encoding video to gif")
 
-	// Now that the pipeline is all set up we can start it.
-	pipeline.SetState(gst.StatePlaying)
-
 	// Iterate on the main loop until the pipeline is finished.
 	mainLoop.Run()
 
+	// Print an extra line since we were doing fancy carriage return stuff
+	// from th app sink
 	fmt.Println()
 
 	// If no error happened on the pipeline. Write the results of the gif
@@ -179,7 +201,7 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 		}
 	}
 
-	return nil
+	return pipeline.Destroy()
 }
 
 func main() {
@@ -206,6 +228,7 @@ func main() {
 		} else {
 			outFile = strings.Join(spl[:len(spl)-2], ".")
 		}
+		outFile = outFile + ".gif"
 	}
 
 	examples.RunLoop(func(mainLoop *gst.MainLoop) error {
