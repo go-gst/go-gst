@@ -20,7 +20,10 @@ GstBusSyncReply cgoBusSyncHandler (GstBus * bus, GstMessage * message, gpointer 
 import "C"
 
 import (
+	"errors"
+	"fmt"
 	"reflect"
+	"runtime/debug"
 	"sync"
 	"time"
 	"unsafe"
@@ -313,6 +316,22 @@ func (b *Bus) PopFiltered(msgTypes MessageType) *Message {
 // Post a new message on the bus. The bus takes ownership of the message.
 func (b *Bus) Post(msg *Message) bool {
 	return gobool(C.gst_bus_post(b.Instance(), msg.Instance()))
+}
+
+// PostError is a wrapper for creating a new error mesesage and then posting it to the bus.
+// It gathers stack info from the caller and appends it to the debug info in the error. And optional
+// error object can be provided and will be added to the structure of the error.
+func (b *Bus) PostError(src interface{}, msg string, err error) bool {
+	gerr := NewGError(1, errors.New(msg))
+	var st *Structure
+	if err != nil {
+		st = NewStructure("go-error")
+		if addErr := st.SetValue("error", err.Error()); addErr != nil {
+			fmt.Println("go-gst-warning: failed to set error message to structure")
+		}
+	}
+	gstMsg := NewErrorMessage(src, gerr, string(debug.Stack()), st)
+	return b.Post(gstMsg)
 }
 
 // SetFlushing sets whether to flush out and unref any messages queued in the bus. Releases references to the message origin

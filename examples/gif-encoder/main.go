@@ -3,7 +3,6 @@
 package main
 
 import (
-	"errors"
 	"flag"
 	"fmt"
 	"image"
@@ -62,9 +61,7 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 		// Build out the rest of the elements for the pipeline pipeline.
 		elements, err := gst.NewElementMany("queue", "videoconvert", "videoscale", "videorate", "jpegenc")
 		if err != nil {
-			err := gst.NewGError(2, err)
-			pipeline.GetPipelineBus().
-				Post(gst.NewErrorMessage(self, err, "", nil))
+			pipeline.GetPipelineBus().PostError(self, "Failed to build elements for the linked pipeline", err)
 			return
 		}
 
@@ -97,9 +94,7 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 		// use this value to calculate the total number of frames we expect to produce.
 		query := gst.NewDurationQuery(gst.FormatTime)
 		if ok := self.Query(query); !ok {
-			err := gst.NewGError(3, errors.New("Failed to query video duration from decodebin"))
-			pipeline.GetPipelineBus().
-				Post(gst.NewErrorMessage(self, err, "", nil))
+			pipeline.GetPipelineBus().PostError(self, "Failed to query video duration from decodebin", nil)
 			return
 		}
 
@@ -115,10 +110,6 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 		var frameNum int
 		appSink.SetCallbacks(&app.SinkCallbacks{
 			NewSampleFunc: func(sink *app.Sink) gst.FlowReturn {
-				// We can retrieve a reader with the raw bytes of the image directly from the
-				// sink.
-				imgReader := sink.PullSample().GetBuffer().Reader()
-
 				// Increment the frame number counter
 				frameNum++
 
@@ -131,9 +122,13 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 
 				fmt.Printf("\033[2K\rProcessing image frame %d/%d", frameNum, totalFrames)
 
+				// We can retrieve a reader with the raw bytes of the image directly from the
+				// sink.
+				imgReader := sink.PullSample().GetBuffer().Reader()
+
 				img, err := jpeg.Decode(imgReader)
 				if err != nil {
-					fmt.Println("Error decoding jpeg frame:", err)
+					pipeline.GetPipelineBus().PostError(sink, "Error decoding jpeg frame", err)
 					return gst.FlowError
 				}
 
@@ -170,7 +165,8 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 			err := msg.ParseError()
 			fmt.Println("ERROR:", err.Error())
 			if debug := err.DebugString(); debug != "" {
-				fmt.Println("DEBUG:", debug)
+				fmt.Println("DEBUG")
+				fmt.Println(debug)
 			}
 			mainLoop.Quit()
 			isError = true
