@@ -65,6 +65,7 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 			err := gst.NewGError(2, err)
 			pipeline.GetPipelineBus().
 				Post(gst.NewErrorMessage(self, err, "", nil))
+			return
 		}
 
 		// Add the elements to the pipeline and sync their state with the pipeline
@@ -99,6 +100,7 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 			err := gst.NewGError(3, errors.New("Failed to query video duration from decodebin"))
 			pipeline.GetPipelineBus().
 				Post(gst.NewErrorMessage(self, err, "", nil))
+			return
 		}
 
 		// Fetch the result from the query.
