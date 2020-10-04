@@ -347,32 +347,3 @@ func printCaps(caps *gst.Caps, indent int) {
 		}
 	}
 }
-
-//         } else if (GST_IS_PARAM_SPEC_FRACTION (param)) {
-//           GstParamSpecFraction *pfraction = GST_PARAM_SPEC_FRACTION (param);
-
-//           n_print ("%sFraction%s. %sRange%s: %s%d/%d - %d/%d%s "
-//               "%sDefault%s: %s%d/%d%s ", DATATYPE_COLOR, RESET_COLOR,
-//               PROP_ATTR_NAME_COLOR, RESET_COLOR, PROP_ATTR_VALUE_COLOR,
-//               pfraction->min_num, pfraction->min_den, pfraction->max_num,
-//               pfraction->max_den, RESET_COLOR, PROP_ATTR_NAME_COLOR,
-//               RESET_COLOR, PROP_ATTR_VALUE_COLOR,
-//               gst_value_get_fraction_numerator (&value),
-//               gst_value_get_fraction_denominator (&value), RESET_COLOR);
-//         } else if (param->value_type == GST_TYPE_ARRAY) {
-//           GstParamSpecArray *parray = GST_PARAM_SPEC_ARRAY_LIST (param);
-
-//           if (parray->element_spec) {
-//             n_print ("%sGstValueArray of GValues of type%s %s\"%s\"%s",
-//                 PROP_VALUE_COLOR, RESET_COLOR, DATATYPE_COLOR,
-//                 g_type_name (parray->element_spec->value_type), RESET_COLOR);
-//           } else {
-//             n_print ("%sGstValueArray of GValues%s", PROP_VALUE_COLOR,
-//                 RESET_COLOR);
-//           }
-//         } else {
-//           n_print ("%sUnknown type %ld%s %s\"%s\"%s", PROP_VALUE_COLOR,
-//               (glong) param->value_type, RESET_COLOR, DATATYPE_COLOR,
-//               g_type_name (param->value_type), RESET_COLOR);
-//         }
-//         break;

@@ -1,44 +1,41 @@
+// Inspect is a simplified version of gst-inspect-<version>. It parses
+// the name of a plugin on the command line and dumps the element's properties
+// to stdout.
 package main
 
 import (
 	"bytes"
-	"errors"
 	"fmt"
+	"os"
 	"strings"
 	"text/tabwriter"
 
 	"github.com/gotk3/gotk3/glib"
-	"github.com/spf13/cobra"
 	"github.com/tinyzimmer/go-gst/gst"
 )
 
-func init() {
-	rootCmd.AddCommand(inspectCmd)
+func main() {
+	if len(os.Args) == 1 {
+		fmt.Println("You must provide an element to inspect")
+		os.Exit(1)
+	}
+
+	gst.Init(nil)
+
+	if err := inspect(os.Args[1]); err != nil {
+		fmt.Println(err)
+		os.Exit(2)
+	}
 }
 
-var inspectCmd = &cobra.Command{
-	Use:   "inspect",
-	Short: "Inspect the elements of the given pipeline string",
-	PreRunE: func(cmd *cobra.Command, args []string) error {
-		if len(args) == 0 {
-			return errors.New("You must specify an object to inspect")
-		}
-		return nil
-	},
-	RunE: inspect,
-}
-
-func inspect(cmd *cobra.Command, args []string) error {
-
-	name := args[0]
-
+func inspect(name string) error {
 	// load the registry
 	registry := gst.GetRegistry()
 	// get the factory for the element
 	factory := gst.Find(name)
 
 	if factory == nil {
-		return errors.New("Could not get details for factory")
+		return fmt.Errorf("Could not get details for factory '%s'", name)
 	}
 	defer factory.Unref()
 
