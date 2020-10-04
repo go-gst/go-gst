@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"os"
 	"strings"
-	"time"
 
 	"github.com/tinyzimmer/go-gst/examples"
 	"github.com/tinyzimmer/go-gst/gst"
@@ -122,38 +121,37 @@ func buildPipeline() (*gst.Pipeline, error) {
 	return pipeline, nil
 }
 
-func handleMessage(msg *gst.Message) error {
-	defer msg.Unref() // Messages are a good candidate for trying out runtime finalizers
-
-	switch msg.Type() {
-	case gst.MessageEOS:
-		return errors.New("end-of-stream")
-	case gst.MessageError:
-		return msg.ParseError()
-	}
-
-	return nil
-}
-
 func runPipeline(loop *gst.MainLoop, pipeline *gst.Pipeline) error {
-	defer loop.Quit()
-
+	// Start the pipeline
 	pipeline.SetState(gst.StatePlaying)
+	// Stop and cleanup the pipeline when we exit
 	defer pipeline.Destroy()
 
-	bus := pipeline.GetPipelineBus()
+	// Add a message watch to the bus to quit on any error
+	pipeline.GetPipelineBus().AddWatch(func(msg *gst.Message) bool {
+		var err error
 
-	for {
-		msg := bus.TimedPop(time.Duration(-1))
-		if msg == nil {
-			break
+		// If the stream has ended or any element posts an error to the
+		// bus, populate error.
+		switch msg.Type() {
+		case gst.MessageEOS:
+			err = errors.New("end-of-stream")
+		case gst.MessageError:
+			err = msg.ParseError()
 		}
-		if err := handleMessage(msg); err != nil {
-			return err
-		}
-	}
 
-	return nil
+		// If either condition triggered an error, log and quit
+		if err != nil {
+			fmt.Println("ERROR:", err.Error())
+			loop.Quit()
+			return false
+		}
+
+		return true
+	})
+
+	// Block on the main loop
+	return loop.RunError()
 }
 
 func main() {
