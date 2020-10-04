@@ -34,7 +34,6 @@ func main() {
 		fmt.Println("ERROR:", err)
 		os.Exit(2)
 	}
-	// defer discoverer.Unref()
 
 	info, err := discoverer.DiscoverURI(uri)
 	if err != nil {
