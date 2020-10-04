@@ -93,7 +93,7 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 		pipeline.Add(appSink.Element)
 		jpegenc.Link(appSink.Element)
 
-		// Wee can query the decodebin for the duration of the video it received. We can then
+		// We can query the decodebin for the duration of the video it received. We can then
 		// use this value to calculate the total number of frames we expect to produce.
 		query := gst.NewDurationQuery(gst.FormatTime)
 		if ok := self.Query(query); !ok {
