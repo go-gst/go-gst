@@ -61,7 +61,7 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 		// Build out the rest of the elements for the pipeline pipeline.
 		elements, err := gst.NewElementMany("queue", "videoconvert", "videoscale", "videorate", "jpegenc")
 		if err != nil {
-			// The Bus PostError method is a convenient wrapper for building rich messages and sending them
+			// The Bus PostError method is a convenience wrapper for building rich messages and sending them
 			// down the pipeline. The below call will create a new error message, populate the debug info
 			// with a stack trace from this goroutine, and add additional details from the provided error.
 			pipeline.GetPipelineBus().PostError(self, "Failed to build elements for the linked pipeline", err)
