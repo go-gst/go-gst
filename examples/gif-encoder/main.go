@@ -57,23 +57,6 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 	// dynamically. For more information on why this is needed, see the decodebin
 	// example.
 	decodebin.Connect("pad-added", func(self *gst.Element, srcPad *gst.Pad) {
-		// // Make sure the user provided a valid video stream
-		// caps := srcPad.GetCurrentCaps()
-		// var haveVideo bool
-		// for i := 0; i < caps.GetSize(); i++ {
-		// 	if strings.HasPrefix(caps.GetStructureAt(i).Name(), "video/") {
-		// 		haveVideo = true
-		// 	}
-		// }
-
-		// if !haveVideo {
-		// 	// If we do not have any valid video send a fatal error to the pipeline.
-		// 	err := gst.NewGError(1, errors.New("No video stream detected from the input file"))
-		// 	pipeline.GetPipelineBus().
-		// 		Post(gst.NewErrorMessage(self, err, fmt.Sprintf("Received caps: %s", caps.String()), nil))
-		// 	return
-		// }
-
 		// Build out the rest of the elements for the pipeline pipeline.
 		elements, err := gst.NewElementMany("queue", "videoconvert", "videoscale", "videorate", "jpegenc")
 		if err != nil {
