@@ -1,3 +1,4 @@
+// This example demonstrates the use of custom events in a pipeline.
 package main
 
 import (

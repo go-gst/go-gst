@@ -1,3 +1,4 @@
+// This example shows how to use the appsrc element.
 package main
 
 import (

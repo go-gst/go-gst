@@ -1,4 +1,5 @@
-// This example uses gstreamer's discoverer api
+// This example uses gstreamer's discoverer api.
+//
 // https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-base-libs/html/GstDiscoverer.html
 // To detect as much information from a given URI.
 // The amount of time that the discoverer is allowed to use is limited by a timeout.

@@ -1,26 +1,27 @@
-// This example demonstrates the use of the decodebin element
+// This example demonstrates the use of the decodebin element.
+//
 // The decodebin element tries to automatically detect the incoming
 // format and to autoplug the appropriate demuxers / decoders to handle it.
 // and decode it to raw audio, video or subtitles.
 // Before the pipeline hasn't been prerolled, the decodebin can't possibly know what
 // format it gets as its input. So at first, the pipeline looks like this:
-
+//
 // {filesrc} - {decodebin}
-
+//
 // As soon as the decodebin has detected the stream format, it will try to decode every
 // contained stream to its raw format.
 // The application connects a signal-handler to decodebin's pad-added signal, which tells us
 // whenever the decodebin provided us with another contained (raw) stream from the input file.
-
+//
 // This application supports audio and video streams. Video streams are
 // displayed using an autovideosink, and audiostreams are played back using autoaudiosink.
 // So for a file that contains one audio and one video stream,
 // the pipeline looks like the following:
-
+//
 //                        /-[audio]-{audioconvert}-{audioresample}-{autoaudiosink}
 // {filesrc}-{decodebin}-|
 //                        \-[video]-{viceoconvert}-{videoscale}-{autovideosink}
-
+//
 // Both auto-sinks at the end automatically select the best available (actual) sink. Since the
 // selection of available actual sinks is platform specific
 // (like using pulseaudio for audio output on linux, e.g.),
