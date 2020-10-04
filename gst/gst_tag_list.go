@@ -27,6 +27,10 @@ type TagList struct {
 	ptr *C.GstTagList
 }
 
+// FromGstTagListUnsafe wraps the pointer to the given C GstTagList with the go type.
+// This is meant for internal usage and is exported for visibility to other packages.
+func FromGstTagListUnsafe(tags unsafe.Pointer) *TagList { return wrapTagList(C.toGstTagList(tags)) }
+
 // NewEmptyTagList returns a new empty tag list.
 //
 //   tagList := gst.NewEmptyTagList()

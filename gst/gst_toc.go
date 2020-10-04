@@ -9,6 +9,10 @@ type TOC struct {
 	ptr *C.GstToc
 }
 
+// FromGstTOCUnsafe wraps the pointer to the given C GstToc with the go type.
+// This is meant for internal usage and is exported for visibility to other packages.
+func FromGstTOCUnsafe(toc unsafe.Pointer) *TOC { return wrapTOC((*C.GstToc)(toc)) }
+
 // NewTOC returns a new TOC with the given scope.
 func NewTOC(scope TOCScope) *TOC {
 	toc := C.gst_toc_new(C.GstTocScope(scope))

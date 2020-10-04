@@ -12,14 +12,77 @@ import (
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 )
+
+func init() {
+	tm := []glib.TypeMarshaler{
+		{
+			T: glib.Type(C.gst_discoverer_get_type()),
+			F: func(p uintptr) (interface{}, error) {
+				c := C.g_value_get_object(uintptrToGVal(p))
+				return &Discoverer{toGObject(unsafe.Pointer(c))}, nil
+			},
+		},
+		{
+			T: glib.Type(C.gst_discoverer_info_get_type()),
+			F: func(p uintptr) (interface{}, error) {
+				c := C.g_value_get_object(uintptrToGVal(p))
+				return &DiscovererInfo{toGObject(unsafe.Pointer(c))}, nil
+			},
+		},
+		{
+			T: glib.Type(C.gst_discoverer_stream_info_get_type()),
+			F: func(p uintptr) (interface{}, error) {
+				c := C.g_value_get_object(uintptrToGVal(p))
+				return &DiscovererStreamInfo{toGObject(unsafe.Pointer(c))}, nil
+			},
+		},
+		{
+			T: glib.Type(C.gst_discoverer_audio_info_get_type()),
+			F: func(p uintptr) (interface{}, error) {
+				c := C.g_value_get_object(uintptrToGVal(p))
+				return &DiscovererAudioInfo{&DiscovererStreamInfo{toGObject(unsafe.Pointer(c))}}, nil
+			},
+		},
+		{
+			T: glib.Type(C.gst_discoverer_video_info_get_type()),
+			F: func(p uintptr) (interface{}, error) {
+				c := C.g_value_get_object(uintptrToGVal(p))
+				return &DiscovererVideoInfo{&DiscovererStreamInfo{toGObject(unsafe.Pointer(c))}}, nil
+			},
+		},
+		{
+			T: glib.Type(C.gst_discoverer_subtitle_info_get_type()),
+			F: func(p uintptr) (interface{}, error) {
+				c := C.g_value_get_object(uintptrToGVal(p))
+				return &DiscovererSubtitleInfo{&DiscovererStreamInfo{toGObject(unsafe.Pointer(c))}}, nil
+			},
+		},
+		{
+			T: glib.Type(C.gst_discoverer_container_info_get_type()),
+			F: func(p uintptr) (interface{}, error) {
+				c := C.g_value_get_object(uintptrToGVal(p))
+				return &DiscovererContainerInfo{&DiscovererStreamInfo{toGObject(unsafe.Pointer(c))}}, nil
+			},
+		},
+	}
+	glib.RegisterGValueMarshalers(tm)
+}
+
+func uintptrToGVal(p uintptr) *C.GValue {
+	return (*C.GValue)(unsafe.Pointer(p)) // vet thinks this is unsafe and there is no way around it for now.
+	// but the given ptr is an address to a C object so go's concerns are misplaced.
+}
+
+func toGObject(o unsafe.Pointer) *glib.Object { return &glib.Object{GObject: glib.ToGObject(o)} }
 
 // Discoverer represents a GstDiscoverer
 type Discoverer struct{ *glib.Object }
 
 func wrapDiscoverer(d *C.GstDiscoverer) *Discoverer {
-	return &Discoverer{Object: &glib.Object{GObject: glib.ToGObject(unsafe.Pointer(d))}}
+	return &Discoverer{toGObject(unsafe.Pointer(d))}
 }
 
 // NewDiscoverer creates a new Discoverer with the provided timeout.
@@ -60,7 +123,7 @@ func (d *Discoverer) DiscoverURI(uri string) (*DiscovererInfo, error) {
 type DiscovererInfo struct{ *glib.Object }
 
 func wrapDiscovererInfo(d *C.GstDiscovererInfo) *DiscovererInfo {
-	return &DiscovererInfo{Object: &glib.Object{GObject: glib.ToGObject(unsafe.Pointer(d))}}
+	return &DiscovererInfo{toGObject(unsafe.Pointer(d))}
 }
 
 // Instance returns the underlying GstDiscovererInfo instance.
@@ -76,12 +139,18 @@ func (d *DiscovererInfo) Copy() *DiscovererInfo {
 // GetAudioStreams finds all the DiscovererAudioInfo contained in info.
 func (d *DiscovererInfo) GetAudioStreams() []*DiscovererAudioInfo {
 	gList := C.gst_discoverer_info_get_audio_streams(d.Instance())
+	if gList == nil {
+		return nil
+	}
 	return glistToAudioInfoSlice(gList)
 }
 
 // GetContainerStreams finds all the DiscovererContainerInfo contained in info.
 func (d *DiscovererInfo) GetContainerStreams() []*DiscovererContainerInfo {
 	gList := C.gst_discoverer_info_get_container_streams(d.Instance())
+	if gList == nil {
+		return nil
+	}
 	return glistToContainerInfoSlice(gList)
 }
 
@@ -108,25 +177,68 @@ func (d *DiscovererInfo) GetSeekable() bool {
 
 // GetStreamInfo returns the topology of the URI.
 func (d *DiscovererInfo) GetStreamInfo() *DiscovererStreamInfo {
-	return wrapDiscovererStreamInfo(C.gst_discoverer_info_get_stream_info(d.Instance()))
+	info := C.gst_discoverer_info_get_stream_info(d.Instance())
+	if info == nil {
+		return nil
+	}
+	return wrapDiscovererStreamInfo(info)
 }
 
 // GetStreamList returns the list of all streams contained in the info.
 func (d *DiscovererInfo) GetStreamList() []*DiscovererStreamInfo {
-	return glistToStreamInfoSlice(C.gst_discoverer_info_get_stream_list(d.Instance()))
+	gList := C.gst_discoverer_info_get_stream_list(d.Instance())
+	if gList == nil {
+		return nil
+	}
+	return glistToStreamInfoSlice(gList)
 }
 
 // GetSubtitleStreams returns the info about subtitle streams.
 func (d *DiscovererInfo) GetSubtitleStreams() []*DiscovererSubtitleInfo {
 	gList := C.gst_discoverer_info_get_subtitle_streams(d.Instance())
+	if gList == nil {
+		return nil
+	}
 	return glistToSubtitleInfoSlice(gList)
+}
+
+// GetTags retrieves the tag list for the URI stream.
+func (d *DiscovererInfo) GetTags() *gst.TagList {
+	tagList := C.gst_discoverer_info_get_tags(d.Instance())
+	if tagList == nil {
+		return nil
+	}
+	return gst.FromGstTagListUnsafe(unsafe.Pointer(tagList))
+}
+
+// GetTOC returns the TOC for the URI stream.
+func (d *DiscovererInfo) GetTOC() *gst.TOC {
+	toc := C.gst_discoverer_info_get_toc(d.Instance())
+	if toc == nil {
+		return nil
+	}
+	return gst.FromGstTOCUnsafe(unsafe.Pointer(toc))
+}
+
+// GetURI returns the URI for this info.
+func (d *DiscovererInfo) GetURI() string {
+	return C.GoString(C.gst_discoverer_info_get_uri(d.Instance()))
+}
+
+// GetVideoStreams finds all the DiscovererVideoInfo contained in info.
+func (d *DiscovererInfo) GetVideoStreams() []*DiscovererVideoInfo {
+	gList := C.gst_discoverer_info_get_video_streams(d.Instance())
+	if gList == nil {
+		return nil
+	}
+	return glistToVideoInfoSlice(gList)
 }
 
 // DiscovererStreamInfo is the base structure for information concerning a media stream.
 type DiscovererStreamInfo struct{ *glib.Object }
 
 func wrapDiscovererStreamInfo(d *C.GstDiscovererStreamInfo) *DiscovererStreamInfo {
-	return &DiscovererStreamInfo{Object: &glib.Object{GObject: glib.ToGObject(unsafe.Pointer(d))}}
+	return &DiscovererStreamInfo{toGObject(unsafe.Pointer(d))}
 }
 
 // Instance returns the underlying GstDiscovererStreamInfo instance.
@@ -134,105 +246,238 @@ func (d *DiscovererStreamInfo) Instance() *C.GstDiscovererStreamInfo {
 	return (*C.GstDiscovererStreamInfo)(unsafe.Pointer(d.Native()))
 }
 
+// GetCaps returns the caps from the stream info.
+func (d *DiscovererStreamInfo) GetCaps() *gst.Caps {
+	caps := C.gst_discoverer_stream_info_get_caps(d.Instance())
+	if caps == nil {
+		return nil
+	}
+	return gst.FromGstCapsUnsafe(unsafe.Pointer(caps))
+}
+
+// GetStreamID returns the stream ID of this stream.
+func (d *DiscovererStreamInfo) GetStreamID() string {
+	return C.GoString(C.gst_discoverer_stream_info_get_stream_id(d.Instance()))
+}
+
+// GetStreamTypeNick returns a human readable name for the stream type
+func (d *DiscovererStreamInfo) GetStreamTypeNick() string {
+	return C.GoString(C.gst_discoverer_stream_info_get_stream_type_nick(d.Instance()))
+}
+
+// GetTags gets the tags contained in this stream
+func (d *DiscovererStreamInfo) GetTags() *gst.TagList {
+	tagList := C.gst_discoverer_stream_info_get_tags(d.Instance())
+	if tagList == nil {
+		return nil
+	}
+	return gst.FromGstTagListUnsafe(unsafe.Pointer(tagList))
+}
+
+// GetTOC gets the TOC contained in this stream
+func (d *DiscovererStreamInfo) GetTOC() *gst.TOC {
+	toc := C.gst_discoverer_stream_info_get_toc(d.Instance())
+	if toc == nil {
+		return nil
+	}
+	return gst.FromGstTOCUnsafe(unsafe.Pointer(toc))
+}
+
 // DiscovererAudioInfo contains info specific to audio streams.
 type DiscovererAudioInfo struct{ *DiscovererStreamInfo }
-
-func wrapDiscovererAudioInfo(d *C.GstDiscovererAudioInfo) *DiscovererAudioInfo {
-	return &DiscovererAudioInfo{&DiscovererStreamInfo{Object: &glib.Object{GObject: glib.ToGObject(unsafe.Pointer(d))}}}
-}
 
 // Instance returns the underlying GstDiscovererAudioInfo instance.
 func (d *DiscovererAudioInfo) Instance() *C.GstDiscovererAudioInfo {
 	return (*C.GstDiscovererAudioInfo)(unsafe.Pointer(d.Native()))
 }
 
+// GetBitate returns the bitrate for the audio stream.
+func (d *DiscovererAudioInfo) GetBitate() uint {
+	return uint(C.gst_discoverer_audio_info_get_bitrate(d.Instance()))
+}
+
+// GetChannelMask returns the channel mask for the audio stream.
+func (d *DiscovererAudioInfo) GetChannelMask() uint64 {
+	return uint64(C.gst_discoverer_audio_info_get_channel_mask(d.Instance()))
+}
+
+// GetChannels returns the number of channels in the stream.
+func (d *DiscovererAudioInfo) GetChannels() uint {
+	return uint(C.gst_discoverer_audio_info_get_channels(d.Instance()))
+}
+
+// GetDepth returns the number of bits used per sample in each channel.
+func (d *DiscovererAudioInfo) GetDepth() uint {
+	return uint(C.gst_discoverer_audio_info_get_depth(d.Instance()))
+}
+
+// GetLanguage returns the language of the stream, or an empty string if unknown.
+func (d *DiscovererAudioInfo) GetLanguage() string {
+	lang := C.gst_discoverer_audio_info_get_language(d.Instance())
+	if lang == nil {
+		return ""
+	}
+	return C.GoString(lang)
+}
+
+// GetMaxBitrate returns the maximum bitrate of the stream in bits/second.
+func (d *DiscovererAudioInfo) GetMaxBitrate() uint {
+	return uint(C.gst_discoverer_audio_info_get_max_bitrate(d.Instance()))
+}
+
+// GetSampleRate returns the sample rate of the stream in Hertz.
+func (d *DiscovererAudioInfo) GetSampleRate() uint {
+	return uint(C.gst_discoverer_audio_info_get_sample_rate(d.Instance()))
+}
+
 // DiscovererVideoInfo contains info specific to video streams
 type DiscovererVideoInfo struct{ *DiscovererStreamInfo }
-
-func wrapDiscovererVideoInfo(d *C.GstDiscovererVideoInfo) *DiscovererVideoInfo {
-	return &DiscovererVideoInfo{&DiscovererStreamInfo{Object: &glib.Object{GObject: glib.ToGObject(unsafe.Pointer(d))}}}
-}
 
 // Instance returns the underlying GstDiscovererVideoInfo instance.
 func (d *DiscovererVideoInfo) Instance() *C.GstDiscovererVideoInfo {
 	return (*C.GstDiscovererVideoInfo)(unsafe.Pointer(d.Native()))
 }
 
+// GetBitrate returns the average or nominal bitrate of the video stream in bits/second.
+func (d *DiscovererVideoInfo) GetBitrate() uint {
+	return uint(C.gst_discoverer_video_info_get_bitrate(d.Instance()))
+}
+
+// GetDepth returns the depth in bits of the video stream.
+func (d *DiscovererVideoInfo) GetDepth() uint {
+	return uint(C.gst_discoverer_video_info_get_depth(d.Instance()))
+}
+
+// GetFramerateDenom returns the framerate of the video stream (denominator).
+func (d *DiscovererVideoInfo) GetFramerateDenom() uint {
+	return uint(C.gst_discoverer_video_info_get_framerate_denom(d.Instance()))
+}
+
+// GetFramerateNum returns the framerate of the video stream (numerator).
+func (d *DiscovererVideoInfo) GetFramerateNum() uint {
+	return uint(C.gst_discoverer_video_info_get_framerate_num(d.Instance()))
+}
+
+// GetHeight returns the height of the video stream in pixels.
+func (d *DiscovererVideoInfo) GetHeight() uint {
+	return uint(C.gst_discoverer_video_info_get_height(d.Instance()))
+}
+
+// GetMaxBitrate returns the maximum bitrate of the video stream in bits/second.
+func (d *DiscovererVideoInfo) GetMaxBitrate() uint {
+	return uint(C.gst_discoverer_video_info_get_max_bitrate(d.Instance()))
+}
+
+// GetPARDenom returns the Pixel Aspect Ratio (PAR) of the video stream (denominator).
+func (d *DiscovererVideoInfo) GetPARDenom() uint {
+	return uint(C.gst_discoverer_video_info_get_par_denom(d.Instance()))
+}
+
+// GetPARNum returns the Pixel Aspect Ratio (PAR) of the video stream (numerator).
+func (d *DiscovererVideoInfo) GetPARNum() uint {
+	return uint(C.gst_discoverer_video_info_get_par_num(d.Instance()))
+}
+
+// GetWidth returns the width of the video stream in pixels.
+func (d *DiscovererVideoInfo) GetWidth() uint {
+	return uint(C.gst_discoverer_video_info_get_width(d.Instance()))
+}
+
+// IsImage returns TRUE if the video stream corresponds to an image (i.e. only contains one frame).
+func (d *DiscovererVideoInfo) IsImage() bool {
+	return gobool(C.gst_discoverer_video_info_is_image(d.Instance()))
+}
+
+// IsInterlaced returns TRUE if the stream is interlaced.
+func (d *DiscovererVideoInfo) IsInterlaced() bool {
+	return gobool(C.gst_discoverer_video_info_is_interlaced(d.Instance()))
+}
+
 // DiscovererContainerInfo specific to container streams.
 type DiscovererContainerInfo struct{ *DiscovererStreamInfo }
-
-func wrapDiscovererContainerInfo(d *C.GstDiscovererContainerInfo) *DiscovererContainerInfo {
-	return &DiscovererContainerInfo{&DiscovererStreamInfo{Object: &glib.Object{GObject: glib.ToGObject(unsafe.Pointer(d))}}}
-}
 
 // Instance returns the underlying GstDiscovererContainerInfo instance.
 func (d *DiscovererContainerInfo) Instance() *C.GstDiscovererContainerInfo {
 	return (*C.GstDiscovererContainerInfo)(unsafe.Pointer(d.Native()))
 }
 
+// GetStreams returns the list of streams inside this container.
+func (d *DiscovererContainerInfo) GetStreams() []*DiscovererStreamInfo {
+	streams := C.gst_discoverer_container_info_get_streams(d.Instance())
+	if streams == nil {
+		return nil
+	}
+	return glistToStreamInfoSlice(streams)
+}
+
 // DiscovererSubtitleInfo contains info specific to subtitle streams
 type DiscovererSubtitleInfo struct{ *DiscovererStreamInfo }
-
-func wrapDiscovererSubtitleInfo(d *C.GstDiscovererSubtitleInfo) *DiscovererSubtitleInfo {
-	return &DiscovererSubtitleInfo{&DiscovererStreamInfo{Object: &glib.Object{GObject: glib.ToGObject(unsafe.Pointer(d))}}}
-}
 
 // Instance returns the underlying GstDiscovererSubtitleInfo instance.
 func (d *DiscovererSubtitleInfo) Instance() *C.GstDiscovererSubtitleInfo {
 	return (*C.GstDiscovererSubtitleInfo)(unsafe.Pointer(d.Native()))
 }
 
+// GetLanguage returns the language of the subtitles.
+func (d *DiscovererSubtitleInfo) GetLanguage() string {
+	lang := C.gst_discoverer_subtitle_info_get_language(d.Instance())
+	if lang == nil {
+		return ""
+	}
+	return C.GoString(lang)
+}
+
 func glistToStreamInfoSlice(glist *C.GList) []*DiscovererStreamInfo {
-	defer C.gst_discoverer_stream_info_list_free(glist)
 	l := glib.WrapList(uintptr(unsafe.Pointer(&glist)))
 	out := make([]*DiscovererStreamInfo, 0)
+	runtime.SetFinalizer(&out, func(_ *[]*DiscovererStreamInfo) { C.gst_discoverer_stream_info_list_free(glist) })
 	l.Foreach(func(item interface{}) {
-		st := item.(*C.GstDiscovererStreamInfo)
-		out = append(out, wrapDiscovererStreamInfo(st))
+		st := item.(unsafe.Pointer)
+		out = append(out, &DiscovererStreamInfo{toGObject(st)})
 	})
 	return out
 }
 
 func glistToAudioInfoSlice(glist *C.GList) []*DiscovererAudioInfo {
-	defer C.gst_discoverer_stream_info_list_free(glist)
 	l := glib.WrapList(uintptr(unsafe.Pointer(&glist)))
 	out := make([]*DiscovererAudioInfo, 0)
+	runtime.SetFinalizer(&out, func(_ *[]*DiscovererAudioInfo) { C.gst_discoverer_stream_info_list_free(glist) })
 	l.Foreach(func(item interface{}) {
-		st := item.(*C.GstDiscovererAudioInfo)
-		out = append(out, wrapDiscovererAudioInfo(st))
+		st := item.(unsafe.Pointer)
+		out = append(out, &DiscovererAudioInfo{&DiscovererStreamInfo{toGObject(st)}})
 	})
 	return out
 }
 
 func glistToVideoInfoSlice(glist *C.GList) []*DiscovererVideoInfo {
-	defer C.gst_discoverer_stream_info_list_free(glist)
 	l := glib.WrapList(uintptr(unsafe.Pointer(&glist)))
 	out := make([]*DiscovererVideoInfo, 0)
+	runtime.SetFinalizer(&out, func(_ *[]*DiscovererVideoInfo) { C.gst_discoverer_stream_info_list_free(glist) })
 	l.Foreach(func(item interface{}) {
-		st := item.(*C.GstDiscovererVideoInfo)
-		out = append(out, wrapDiscovererVideoInfo(st))
+		st := item.(unsafe.Pointer)
+		out = append(out, &DiscovererVideoInfo{&DiscovererStreamInfo{toGObject(st)}})
 	})
 	return out
 }
 
 func glistToContainerInfoSlice(glist *C.GList) []*DiscovererContainerInfo {
-	defer C.gst_discoverer_stream_info_list_free(glist)
 	l := glib.WrapList(uintptr(unsafe.Pointer(&glist)))
 	out := make([]*DiscovererContainerInfo, 0)
+	runtime.SetFinalizer(&out, func(_ *[]*DiscovererContainerInfo) { C.gst_discoverer_stream_info_list_free(glist) })
 	l.Foreach(func(item interface{}) {
-		st := item.(*C.GstDiscovererContainerInfo)
-		out = append(out, wrapDiscovererContainerInfo(st))
+		st := item.(unsafe.Pointer)
+		out = append(out, &DiscovererContainerInfo{&DiscovererStreamInfo{toGObject(st)}})
 	})
 	return out
 }
 
 func glistToSubtitleInfoSlice(glist *C.GList) []*DiscovererSubtitleInfo {
-	defer C.gst_discoverer_stream_info_list_free(glist)
 	l := glib.WrapList(uintptr(unsafe.Pointer(&glist)))
 	out := make([]*DiscovererSubtitleInfo, 0)
+	runtime.SetFinalizer(&out, func(_ *[]*DiscovererSubtitleInfo) { C.gst_discoverer_stream_info_list_free(glist) })
 	l.Foreach(func(item interface{}) {
-		st := item.(*C.GstDiscovererSubtitleInfo)
-		out = append(out, wrapDiscovererSubtitleInfo(st))
+		st := item.(unsafe.Pointer)
+		out = append(out, &DiscovererSubtitleInfo{&DiscovererStreamInfo{toGObject(st)}})
 	})
 	return out
 }
