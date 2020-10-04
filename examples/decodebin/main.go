@@ -20,7 +20,7 @@
 //
 //                          /-[audio]-{audioconvert}-{audioresample}-{autoaudiosink}
 //   {filesrc}-{decodebin}-|
-//                          \-[video]-{viceoconvert}-{videoscale}-{autovideosink}
+//                          \-[video]-{videoconvert}-{videoscale}-{autovideosink}
 //
 // Both auto-sinks at the end automatically select the best available (actual) sink. Since the
 // selection of available actual sinks is platform specific
