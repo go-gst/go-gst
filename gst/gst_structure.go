@@ -15,6 +15,7 @@ import "C"
 import (
 	"errors"
 	"fmt"
+	"os"
 	"reflect"
 	"sync"
 	"unsafe"
@@ -67,7 +68,9 @@ func MarshalStructure(data interface{}) *Structure {
 	for i := 0; i < valsOf.NumField(); i++ {
 		gval := valsOf.Field(i).Interface()
 		fieldName := typeOf.Field(i).Name
-		st.SetValue(fieldName, gval)
+		if err := st.SetValue(fieldName, gval); err != nil {
+			fmt.Fprintf(os.Stderr, "Failed to set %v for %s", gval, fieldName)
+		}
 	}
 	return st
 }

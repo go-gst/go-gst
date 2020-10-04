@@ -135,8 +135,11 @@ func handleMessage(msg *gst.Message) error {
 	return nil
 }
 
-func runPipeline(pipeline *gst.Pipeline) error {
+func runPipeline(loop *gst.MainLoop, pipeline *gst.Pipeline) error {
+	defer loop.Quit()
+
 	pipeline.SetState(gst.StatePlaying)
+	defer pipeline.Destroy()
 
 	bus := pipeline.GetPipelineBus()
 
@@ -165,6 +168,6 @@ func main() {
 		if err != nil {
 			return err
 		}
-		return runPipeline(pipeline)
+		return runPipeline(loop, pipeline)
 	})
 }
