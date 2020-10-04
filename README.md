@@ -7,7 +7,7 @@ Go bindings for the gstreamer C library
 [![GoReportCard](https://goreportcard.com/badge/github.com/nanomsg/mangos)](https://goreportcard.com/report/github.com/tinyzimmer/go-gst)
 ![](https://github.com/tinyzimmer/go-gst/workflows/Tests/badge.svg)
 
-See the [godoc.org](https://godoc.org/github.com/tinyzimmer/go-gst) or [pkg.go.dev](https://pkg.go.dev/github.com/tinyzimmer/go-gst) referencea for documentation and examples.
+See the [godoc.org](https://godoc.org/github.com/tinyzimmer/go-gst) or [pkg.go.dev](https://pkg.go.dev/github.com/tinyzimmer/go-gst) references for documentation and examples.
 As the latter requires published tags, see godoc.org for the latest documentation of master at any point in time.
 
 For more examples see the `examples` folder [here](examples/) and command line implementation [here](cmd/go-gst).
