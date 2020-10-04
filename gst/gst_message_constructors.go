@@ -186,6 +186,7 @@ func getErrorMessageParams(err *GError, debugStr string) (*C.GError, *C.gchar) {
 	gerr := &C.GError{
 		code:    C.gint(err.code),
 		message: (*C.gchar)(unsafe.Pointer(errStr)),
+		domain:  C.guint(err.code),
 	}
 
 	return gerr, (*C.gchar)(unsafe.Pointer(gdebugStr))
