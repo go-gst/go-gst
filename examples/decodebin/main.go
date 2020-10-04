@@ -72,7 +72,7 @@ func buildPipeline() (*gst.Pipeline, error) {
 			elements, err := gst.NewElementMany("queue", "audioconvert", "audioresample", "autoaudiosink")
 			if err != nil {
 				// We can create custom errors (with optional structures) and send them to the pipeline bus.
-				// The first argument reflects the source of the error, th second is the error itself, followed by a debug string.
+				// The first argument reflects the source of the error, the second is the error itself, followed by a debug string.
 				msg := gst.NewErrorMessage(self, gst.NewGError(2, err), "Could not create elements for audio pipeline", nil)
 				pipeline.GetPipelineBus().Post(msg)
 				return
