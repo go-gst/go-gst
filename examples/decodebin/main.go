@@ -137,7 +137,11 @@ func runPipeline(loop *gst.MainLoop, pipeline *gst.Pipeline) error {
 		case gst.MessageEOS:
 			err = errors.New("end-of-stream")
 		case gst.MessageError:
-			err = msg.ParseError()
+			// The parsed error implements the error interface, but also
+			// contains additional debug information.
+			gerr := msg.ParseError()
+			fmt.Println("go-gst-debug:", gerr.DebugString())
+			err = gerr
 		}
 
 		// If either condition triggered an error, log and quit
