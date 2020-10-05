@@ -38,7 +38,7 @@ func createPipeline() (*gst.Pipeline, error) {
 	sinkpad := sink.GetStaticPad("sink")
 
 	// Add a probe for out custom event
-	sinkpad.AddProbe(gst.PadProbeTypeEventDownstream, func(p *gst.Pad, info *gst.PadProbeInfo) gst.PadProbeReturn {
+	sinkpad.AddProbe(gst.PadProbeTypeEventDownstream, func(self *gst.Pad, info *gst.PadProbeInfo) gst.PadProbeReturn {
 		// Retrieve the event from the probe
 		ev := info.GetEvent()
 
@@ -58,7 +58,7 @@ func createPipeline() (*gst.Pipeline, error) {
 		fmt.Printf("Received custom event with count=%d send_eos=%v\n", customEvent.Count, customEvent.SendEOS)
 		if customEvent.SendEOS {
 			fmt.Println("Send EOS is true, sending eos")
-			if !pipeline.SendEvent(gst.NewEOSEvent()) {
+			if !pipeline.GetPipelineBus().Post(gst.NewEOSMessage(self)) {
 				fmt.Println("WARNING: Failed to send EOS to pipeline")
 			}
 		} else {
@@ -71,37 +71,41 @@ func createPipeline() (*gst.Pipeline, error) {
 }
 
 func mainLoop(loop *gst.MainLoop, pipeline *gst.Pipeline) error {
-
-	// Start the pipeline
-	pipeline.SetState(gst.StatePlaying)
-
 	// Create a watch on the pipeline to kill the main loop when EOS is received
 	pipeline.GetPipelineBus().AddWatch(func(msg *gst.Message) bool {
 		switch msg.Type() {
 		case gst.MessageEOS:
+			fmt.Println("Got EOS message")
 			pipeline.Destroy()
 			loop.Quit()
+		default:
+			fmt.Println(msg)
 		}
 		return true
 	})
 
-	// Loop and on the third iteration send the custom event.
-	ticker := time.NewTicker(time.Second * 2)
-	count := 0
-	for range ticker.C {
-		ev := ExampleCustomEvent{Count: count}
-		if count == 3 {
-			ev.SendEOS = true
+	// Start the pipeline
+	pipeline.SetState(gst.StatePlaying)
+
+	go func() {
+		// Loop and on the third iteration send the custom event.
+		ticker := time.NewTicker(time.Second * 2)
+		count := 0
+		for range ticker.C {
+			ev := ExampleCustomEvent{Count: count}
+			if count == 3 {
+				ev.SendEOS = true
+			}
+			st := gst.MarshalStructure(ev)
+			if !pipeline.SendEvent(gst.NewCustomEvent(gst.EventTypeCustomDownstream, st)) {
+				fmt.Println("Warning: failed to send custom event")
+			}
+			if count == 3 {
+				break
+			}
+			count++
 		}
-		st := gst.MarshalStructure(ev)
-		if !pipeline.SendEvent(gst.NewCustomEvent(gst.EventTypeCustomDownstream, st)) {
-			fmt.Println("Warning: failed to send custom event")
-		}
-		if count == 3 {
-			break
-		}
-		count++
-	}
+	}()
 
 	return loop.RunError()
 }
