@@ -9,11 +9,11 @@ The common package provided to each example exports two methods.
 
 Each example can be run in one of two ways:
 
- ``bash
+```bash
 # For single-file examples
 go run <example>/main.go [..args]
 
 # For multiple-file examples (but would also work for single file examples)
 cd <example> && go build .
 ./<example> [..args]
- ```
+```
