@@ -36,6 +36,7 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 	if err != nil {
 		return err
 	}
+	defer pipeline.Destroy()
 
 	// Create a filesrc and a decodebin element for the pipeline.
 	elements, err := gst.NewElementMany("filesrc", "decodebin")
@@ -115,6 +116,9 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 		// will be a new jpeg image from the pipeline.
 		var frameNum int
 		appSink.SetCallbacks(&app.SinkCallbacks{
+			// We need to define an EOS callback on the sink for when we receive an EOS
+			// upstream. This gives us an opportunity to cleanup and then signal the pipeline
+			// that we are ready to be shut down.
 			EOSFunc: func(sink *app.Sink) {
 				fmt.Println("\nWriting the results of the gif to", outFile)
 				file, err := os.Create(outFile)
@@ -126,6 +130,7 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 				if err := gif.EncodeAll(file, outGif); err != nil {
 					fmt.Println("Could not encode images to gif format!", err)
 				}
+				// Signal the pipeline that we've completed EOS
 				pipeline.GetPipelineBus().Post(gst.NewEOSMessage(appSink))
 			},
 			NewSampleFunc: func(sink *app.Sink) gst.FlowReturn {
@@ -181,47 +186,37 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 		srcPad.Link(queue.GetStaticPad("sink"))
 	})
 
+	fmt.Println("Encoding video to gif")
+
 	// Now that the pipeline is all set up we can start it.
 	pipeline.SetState(gst.StatePlaying)
 
 	// Add a watch on the bus on the pipeline and catch any errors
 	// that happen.
-	var isError bool
+	var pipelineErr error
 	pipeline.GetPipelineBus().AddWatch(func(msg *gst.Message) bool {
 		switch msg.Type() {
 		case gst.MessageEOS:
 			mainLoop.Quit()
 		case gst.MessageError:
-			err := msg.ParseError()
-			fmt.Println("ERROR:", err.Error())
-			if debug := err.DebugString(); debug != "" {
+			gerr := msg.ParseError()
+			fmt.Println("ERROR:", gerr.Error())
+			if debug := gerr.DebugString(); debug != "" {
 				fmt.Println("DEBUG")
 				fmt.Println(debug)
 			}
 			mainLoop.Quit()
-			isError = true
+			pipelineErr = gerr
 			return false
 		}
 
 		return true
 	})
 
-	fmt.Println("Encoding video to gif")
-
 	// Iterate on the main loop until the pipeline is finished.
 	mainLoop.Run()
 
-	// Print an extra line since we were doing fancy carriage return stuff
-	// from th app sink
-	fmt.Println()
-
-	// If no error happened on the pipeline. Write the results of the gif
-	// to the destination.
-	if !isError {
-
-	}
-
-	return pipeline.Destroy()
+	return pipelineErr
 }
 
 func main() {
