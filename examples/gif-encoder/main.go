@@ -115,11 +115,20 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 		// will be a new jpeg image from the pipeline.
 		var frameNum int
 		appSink.SetCallbacks(&app.SinkCallbacks{
-			NewSampleFunc: func(sink *app.Sink) gst.FlowReturn {
-				if appSink.IsEOS() {
-					return gst.FlowEOS
+			EOSFunc: func(sink *app.Sink) {
+				fmt.Println("\nWriting the results of the gif to", outFile)
+				file, err := os.Create(outFile)
+				if err != nil {
+					fmt.Println("Could not create output file:", err)
+					return
 				}
-
+				defer file.Close()
+				if err := gif.EncodeAll(file, outGif); err != nil {
+					fmt.Println("Could not encode images to gif format!", err)
+				}
+				mainLoop.Quit()
+			},
+			NewSampleFunc: func(sink *app.Sink) gst.FlowReturn {
 				// Increment the frame number counter
 				frameNum++
 
@@ -128,9 +137,6 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 					// signal the main loop to quit.
 					// This needs to be done from a goroutine to not block the app sink
 					// callback.
-					appSink.CallAsync(func() {
-						pipeline.SendEvent(gst.NewEOSEvent())
-					})
 					return gst.FlowEOS
 				}
 
@@ -142,7 +148,7 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 				defer sample.Unref()
 
 				fmt.Printf("\033[2K\r")
-				fmt.Printf("Processing image frame %d/%d\n", frameNum, totalFrames)
+				fmt.Printf("Processing image frame %d/%d", frameNum, totalFrames)
 
 				// We can retrieve a reader with the raw bytes of the image directly from the
 				// sink.
@@ -212,15 +218,7 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 	// If no error happened on the pipeline. Write the results of the gif
 	// to the destination.
 	if !isError {
-		fmt.Println("Writing the results of the gif to", outFile)
-		file, err := os.Create(outFile)
-		if err != nil {
-			return err
-		}
-		defer file.Close()
-		if err := gif.EncodeAll(file, outGif); err != nil {
-			return err
-		}
+
 	}
 
 	return pipeline.Destroy()
