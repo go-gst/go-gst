@@ -131,7 +131,7 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 					fmt.Println("Could not encode images to gif format!", err)
 				}
 				// Signal the pipeline that we've completed EOS
-				pipeline.GetPipelineBus().Post(gst.NewEOSMessage(appSink))
+				// pipeline.GetPipelineBus().Post(gst.NewEOSMessage(appSink))
 			},
 			NewSampleFunc: func(sink *app.Sink) gst.FlowReturn {
 				// Increment the frame number counter
