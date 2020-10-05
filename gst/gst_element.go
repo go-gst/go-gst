@@ -1,6 +1,22 @@
 package gst
 
-// #include "gst.go.h"
+/*
+#include "gst.go.h"
+
+extern void goGDestroyNotifyFuncNoRun (gpointer user_data);
+extern void goElementCallAsync (GstElement * element, gpointer user_data);
+
+void cgoElementAsyncDestroyNotify (gpointer user_data)
+{
+	goGDestroyNotifyFuncNoRun(user_data);
+}
+
+void cgoElementCallAsync (GstElement * element, gpointer user_data)
+{
+	goElementCallAsync(element, user_data);
+}
+
+*/
 import "C"
 
 import (
@@ -8,6 +24,7 @@ import (
 	"unsafe"
 
 	"github.com/gotk3/gotk3/glib"
+	gopointer "github.com/mattn/go-pointer"
 )
 
 // Element is a Go wrapper around a GstElement.
@@ -284,4 +301,34 @@ func (e *Element) Emit(signal string, args ...interface{}) (interface{}, error) 
 // FALSE, the state of element is undefined.
 func (e *Element) SyncStateWithParent() bool {
 	return gobool(C.gst_element_sync_state_with_parent(e.Instance()))
+}
+
+// AbortState aborts the state change of the element. This function is used by elements that do asynchronous state changes
+// and find out something is wrong.
+func (e *Element) AbortState() { C.gst_element_abort_state(e.Instance()) }
+
+// AddPad adds a pad (link point) to element. pad's parent will be set to element
+//
+// Pads are automatically activated when added in the PAUSED or PLAYING state.
+//
+// The pad and the element should be unlocked when calling this function.
+//
+// This function will emit the pad-added signal on the element.
+func (e *Element) AddPad(pad *Pad) bool {
+	return gobool(C.gst_element_add_pad(e.Instance(), pad.Instance()))
+}
+
+// CallAsync calls f from another thread. This is to be used for cases when a state change has to be performed from a streaming
+// thread, directly via SetState or indirectly e.g. via SEEK events.
+//
+// Calling those functions directly from the streaming thread will cause deadlocks in many situations, as they might involve waiting
+// for the streaming thread to shut down from this very streaming thread.
+func (e *Element) CallAsync(f func()) {
+	ptr := gopointer.Save(f)
+	C.gst_element_call_async(
+		e.Instance(),
+		C.GstElementCallAsyncFunc(C.cgoElementCallAsync),
+		(C.gpointer)(unsafe.Pointer(ptr)),
+		C.GDestroyNotify(C.cgoElementAsyncDestroyNotify),
+	)
 }

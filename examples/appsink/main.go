@@ -53,6 +53,7 @@ func createPipeline() (*gst.Pipeline, error) {
 			if sample == nil {
 				return gst.FlowEOS
 			}
+			defer sample.Unref()
 
 			// Retrieve the buffer from the sample
 			buffer := sample.GetBuffer()

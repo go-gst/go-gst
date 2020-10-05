@@ -57,13 +57,20 @@ func createPipeline() (*gst.Pipeline, error) {
 		// Log and act accordingly
 		fmt.Printf("Received custom event with count=%d send_eos=%v\n", customEvent.Count, customEvent.SendEOS)
 		if customEvent.SendEOS {
-			fmt.Println("Send EOS is true, sending eos")
-			if !pipeline.SendEvent(gst.NewEOSEvent()) {
-				fmt.Println("WARNING: Failed to send EOS to pipeline")
-			}
-		} else {
-			fmt.Println("Send EOS is false ignoring")
+			// We need to use the CallAsync method to send the signal.
+			// This is becaues the SendEvent method blocks and this could cause a dead lock sending the
+			// event directly from the probe. This is the near equivalent of using go func() { ... }(),
+			// however displayed this way for demonstration purposes.
+			sink.CallAsync(func() {
+				fmt.Println("Send EOS is true, sending eos")
+				if !pipeline.SendEvent(gst.NewEOSEvent()) {
+					fmt.Println("WARNING: Failed to send EOS to pipeline")
+				}
+				fmt.Println("Sent EOS")
+			})
+			return gst.PadProbeRemove
 		}
+		fmt.Println("Send EOS is false ignoring")
 		return gst.PadProbeOK
 	})
 

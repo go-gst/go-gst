@@ -92,6 +92,9 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 		appSink, _ := app.NewAppSink()
 		pipeline.Add(appSink.Element)
 		jpegenc.Link(appSink.Element)
+		appSink.SyncStateWithParent()
+
+		appSink.SetWaitOnEOS(false)
 
 		// We can query the decodebin for the duration of the video it received. We can then
 		// use this value to calculate the total number of frames we expect to produce.
@@ -113,21 +116,37 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 		var frameNum int
 		appSink.SetCallbacks(&app.SinkCallbacks{
 			NewSampleFunc: func(sink *app.Sink) gst.FlowReturn {
+				if appSink.IsEOS() {
+					return gst.FlowEOS
+				}
+
 				// Increment the frame number counter
 				frameNum++
 
 				if frameNum > totalFrames {
 					// If we've reached the total number of frames we are expecting. We can
 					// signal the main loop to quit.
-					mainLoop.Quit()
+					// This needs to be done from a goroutine to not block the app sink
+					// callback.
+					appSink.CallAsync(func() {
+						pipeline.SendEvent(gst.NewEOSEvent())
+					})
 					return gst.FlowEOS
 				}
 
-				fmt.Printf("\033[2K\rProcessing image frame %d/%d", frameNum, totalFrames)
+				// Pull the sample from the sink
+				sample := sink.PullSample()
+				if sample == nil {
+					return gst.FlowOK
+				}
+				defer sample.Unref()
+
+				fmt.Printf("\033[2K\r")
+				fmt.Printf("Processing image frame %d/%d\n", frameNum, totalFrames)
 
 				// We can retrieve a reader with the raw bytes of the image directly from the
 				// sink.
-				imgReader := sink.PullSample().GetBuffer().Reader()
+				imgReader := sample.GetBuffer().Reader()
 
 				img, err := jpeg.Decode(imgReader)
 				if err != nil {
@@ -164,6 +183,8 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 	var isError bool
 	pipeline.GetPipelineBus().AddWatch(func(msg *gst.Message) bool {
 		switch msg.Type() {
+		case gst.MessageEOS:
+			mainLoop.Quit()
 		case gst.MessageError:
 			err := msg.ParseError()
 			fmt.Println("ERROR:", err.Error())

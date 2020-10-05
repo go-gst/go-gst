@@ -13,6 +13,13 @@ import (
 	gopointer "github.com/mattn/go-pointer"
 )
 
+//export goElementCallAsync
+func goElementCallAsync(element *C.GstElement, userData C.gpointer) {
+	iface := gopointer.Restore(unsafe.Pointer(userData))
+	f := iface.(func())
+	f()
+}
+
 //export goPadStickyEventForEachFunc
 func goPadStickyEventForEachFunc(gpad *C.GstPad, event **C.GstEvent, userData C.gpointer) C.gboolean {
 	cbIface := gopointer.Restore(unsafe.Pointer(userData))
