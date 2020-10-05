@@ -93,8 +93,6 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 		appSink, _ := app.NewAppSink()
 		pipeline.Add(appSink.Element)
 		jpegenc.Link(appSink.Element)
-		appSink.SyncStateWithParent()
-
 		appSink.SetWaitOnEOS(false)
 
 		// We can query the decodebin for the duration of the video it received. We can then
@@ -130,8 +128,9 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 				if err := gif.EncodeAll(file, outGif); err != nil {
 					fmt.Println("Could not encode images to gif format!", err)
 				}
-				// Signal the pipeline that we've completed EOS
-				// pipeline.GetPipelineBus().Post(gst.NewEOSMessage(appSink))
+				// Signal the pipeline that we've completed EOS.
+				// (this should not be required, need to investigate)
+				pipeline.GetPipelineBus().Post(gst.NewEOSMessage(appSink))
 			},
 			NewSampleFunc: func(sink *app.Sink) gst.FlowReturn {
 				// Increment the frame number counter
