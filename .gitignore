@@ -20,3 +20,4 @@ dist/
 _bin/
 .devcontainer/
 _rust/
+*.DS_Store*
