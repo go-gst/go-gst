@@ -4,6 +4,8 @@ package main
 import (
 	"fmt"
 	"math"
+	"os"
+	"os/signal"
 	"time"
 
 	"github.com/tinyzimmer/go-gst/examples"
@@ -107,6 +109,13 @@ func mainLoop(pipeline *gst.Pipeline) error {
 
 	// Retrieve the bus from the pipeline
 	bus := pipeline.GetPipelineBus()
+
+	c := make(chan os.Signal, 1)
+	signal.Notify(c, os.Interrupt)
+	go func() {
+		<-c
+		pipeline.SendEvent(gst.NewEOSEvent())
+	}()
 
 	// Loop over messsages from the pipeline
 	for {
