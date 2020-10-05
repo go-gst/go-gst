@@ -91,14 +91,14 @@ func (b *Bin) GetElementsSorted() ([]*Element, error) {
 	return iteratorToElementSlice(iterator)
 }
 
-// GetElementsByFactoryName returns a list of the elements in this bin created from the given factory
-// name.
-func (b *Bin) GetElementsByFactoryName(name string) ([]*Element, error) {
-	cname := C.CString(name)
-	defer C.free(unsafe.Pointer(cname))
-	iterator := C.gst_bin_iterate_all_by_element_factory_name(b.Instance(), (*C.gchar)(unsafe.Pointer(cname)))
-	return iteratorToElementSlice(iterator)
-}
+// // GetElementsByFactoryName returns a list of the elements in this bin created from the given factory
+// // name.
+// func (b *Bin) GetElementsByFactoryName(name string) ([]*Element, error) {
+// 	cname := C.CString(name)
+// 	defer C.free(unsafe.Pointer(cname))
+// 	iterator := C.gst_bin_iterate_all_by_element_factory_name(b.Instance(), (*C.gchar)(unsafe.Pointer(cname)))
+// 	return iteratorToElementSlice(iterator)
+// }
 
 // Add adds an element to the bin.
 func (b *Bin) Add(elem *Element) error {

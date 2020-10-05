@@ -4,6 +4,4 @@ run:
   skip-dirs:
     - hack/
     - cmd/
-
-  skip-files:
-    - hack/.*
+    - examples/
