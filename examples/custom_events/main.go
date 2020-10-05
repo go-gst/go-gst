@@ -58,7 +58,7 @@ func createPipeline() (*gst.Pipeline, error) {
 		fmt.Printf("Received custom event with count=%d send_eos=%v\n", customEvent.Count, customEvent.SendEOS)
 		if customEvent.SendEOS {
 			fmt.Println("Send EOS is true, sending eos")
-			if !pipeline.GetPipelineBus().Post(gst.NewEOSMessage(self)) {
+			if !pipeline.SendEvent(gst.NewEOSEvent()) {
 				fmt.Println("WARNING: Failed to send EOS to pipeline")
 			}
 		} else {
