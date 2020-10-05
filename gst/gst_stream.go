@@ -47,7 +47,11 @@ func (s *Stream) StreamType() StreamType {
 
 // Tags returns the tag list for this stream.
 func (s *Stream) Tags() *TagList {
-	return wrapTagList(C.gst_stream_get_tags(s.Instance()))
+	tags := C.gst_stream_get_tags(s.Instance())
+	if tags == nil {
+		return nil
+	}
+	return wrapTagList(tags)
 }
 
 // SetCaps sets the caps for this stream.

@@ -255,11 +255,29 @@ func (e *Element) SendEvent(ev *Event) bool {
 // Connect connects to the given signal on this element, and applies f as the callback. The callback must
 // match the signature of the expected callback from the documentation. However, instead of specifying C types
 // for arguments specify the go-gst equivalent (e.g. *gst.Element for almost all GstElement derivitives).
+//
+// This and the Emit() method may get moved down the hierarchy to the Object level at some point, since
 func (e *Element) Connect(signal string, f interface{}) (glib.SignalHandle, error) {
 	// Elements are sometimes their own type unique from TYPE_ELEMENT. So make sure a type marshaler
 	// is registered for whatever this type is. Use the built-in element marshaler.
-	glib.RegisterGValueMarshalers([]glib.TypeMarshaler{{T: e.TypeFromInstance(), F: marshalElement}})
+	if e.TypeFromInstance() != glib.Type(C.GST_TYPE_ELEMENT) {
+		glib.RegisterGValueMarshalers([]glib.TypeMarshaler{{T: e.TypeFromInstance(), F: marshalElement}})
+	}
 	return e.Object.Connect(signal, f, nil)
+}
+
+// Emit is a wrapper around g_signal_emitv() and emits the signal specified by the string s to an Object. Arguments to
+// callback functions connected to this signal must be specified in args. Emit() returns an interface{} which must be
+// type asserted as the Go equivalent type to the return value for native C callback.
+//
+// Note that this code is unsafe in that the types of values in args are not checked against whether they are suitable
+// for the callback.
+func (e *Element) Emit(signal string, args ...interface{}) (interface{}, error) {
+	// We are wrapping this for the same reason as Connect.
+	if e.TypeFromInstance() != glib.Type(C.GST_TYPE_ELEMENT) {
+		glib.RegisterGValueMarshalers([]glib.TypeMarshaler{{T: e.TypeFromInstance(), F: marshalElement}})
+	}
+	return e.Object.Emit(signal, args...)
 }
 
 // SyncStateWithParent tries to change the state of the element to the same as its parent. If this function returns

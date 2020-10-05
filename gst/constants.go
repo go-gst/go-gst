@@ -196,6 +196,9 @@ const (
 	EventTypeCustomBothOOB          EventType = C.GST_EVENT_CUSTOM_BOTH_OOB          // (81923) – Custom upstream or downstream out-of-band event.
 )
 
+// String implements a stringer on event types
+func (e EventType) String() string { return C.GoString(C.gst_event_type_get_name(C.GstEventType(e))) }
+
 // EventTypeFlags casts GstEventTypeFlags
 type EventTypeFlags int
 
