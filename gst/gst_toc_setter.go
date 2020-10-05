@@ -2,6 +2,11 @@ package gst
 
 // #include "gst.go.h"
 import "C"
+import "github.com/gotk3/gotk3/glib"
+
+// InterfaceTOCSetter represents the GstTocSetter interface GType. Use this when querying bins
+// for elements that implement a TOCSetter.
+var InterfaceTOCSetter = glib.Type(C.GST_TYPE_TOC_SETTER)
 
 // TOCSetter is an interface that elements can implement to provide TOC writing capabilities.
 type TOCSetter interface {

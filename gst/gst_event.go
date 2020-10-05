@@ -205,14 +205,14 @@ func (e *Event) ParseSegmentDone() (Format, int64) {
 
 // ParseSelectStreams parses the SELECT_STREAMS event and retrieve the contained streams.
 func (e *Event) ParseSelectStreams() []*Stream {
-	outList := &C.GList{}
+	var outList *C.GList
 	C.gst_event_parse_select_streams(e.Instance(), &outList)
 	return glistToStreamSlice(outList)
 }
 
 // ParseSinkMessage parses the sink-message event. Unref msg after usage.
 func (e *Event) ParseSinkMessage() *Message {
-	msg := &C.GstMessage{}
+	var msg *C.GstMessage
 	C.gst_event_parse_sink_message(e.Instance(), &msg)
 	return wrapMessage(msg)
 }
@@ -229,7 +229,7 @@ func (e *Event) ParseStep() (format Format, amount uint64, rate float64, flush, 
 
 // ParseStream parses a stream-start event and extract the GstStream from it.
 func (e *Event) ParseStream() *Stream {
-	stream := &C.GstStream{}
+	var stream *C.GstStream
 	C.gst_event_parse_stream(e.Instance(), &stream)
 	return wrapStream(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(stream))})
 }
@@ -265,14 +265,14 @@ func (e *Event) ParseStreamStart() string {
 // ParseTag parses a tag event and stores the results in the given taglist location. Do not modify or free the returned
 // tag list.
 func (e *Event) ParseTag() *TagList {
-	out := &C.GstTagList{}
+	var out *C.GstTagList
 	C.gst_event_parse_tag(e.Instance(), &out)
 	return wrapTagList(out)
 }
 
 // ParseTOC parses a TOC event and store the results in the given toc and updated locations.
 func (e *Event) ParseTOC() (toc *TOC, updated bool) {
-	out := &C.GstToc{}
+	var out *C.GstToc
 	var gupdated C.gboolean
 	C.gst_event_parse_toc(e.Instance(), &out, &gupdated)
 	return wrapTOC(out), gobool(gupdated)

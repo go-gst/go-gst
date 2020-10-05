@@ -174,30 +174,14 @@ func (e *Element) IsURIHandler() bool {
 	return gobool(C.gstElementIsURIHandler(e.Instance()))
 }
 
-// TODO: Go back over URI and implement as interface
-
-func (e *Element) uriHandler() *C.GstURIHandler { return C.toGstURIHandler(e.Unsafe()) }
-
-// GetURIType returns the type of URI this element can handle.
-func (e *Element) GetURIType() URIType {
-	if !e.IsURIHandler() {
-		return URIUnknown
-	}
-	ty := C.gst_uri_handler_get_uri_type((*C.GstURIHandler)(e.uriHandler()))
-	return URIType(ty)
-}
-
-// GetURIProtocols returns the protocols this element can handle.
-func (e *Element) GetURIProtocols() []string {
-	if !e.IsURIHandler() {
+// URIHandler returns a URIHandler interface if implemented by this element. Otherwise it
+// returns nil. Currently this only supports elements built through this package, however,
+// inner application elements could still use the interface as a reference implementation.
+func (e *Element) URIHandler() URIHandler {
+	if C.toGstURIHandler(e.Unsafe()) == nil {
 		return nil
 	}
-	protocols := C.gst_uri_handler_get_protocols((*C.GstURIHandler)(e.uriHandler()))
-	if protocols == nil {
-		return nil
-	}
-	size := C.sizeOfGCharArray(protocols)
-	return goStrings(size, protocols)
+	return &gstURIHandler{ptr: e.Instance()}
 }
 
 // TOCSetter returns a TOCSetter interface if implemented by this element. Otherwise it

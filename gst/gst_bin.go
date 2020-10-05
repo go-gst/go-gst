@@ -91,6 +91,26 @@ func (b *Bin) GetElementsSorted() ([]*Element, error) {
 	return iteratorToElementSlice(iterator)
 }
 
+// GetByInterface looks for an element inside the bin that implements the given interface. If such an
+// element is found, it returns the element. You can cast this element to the given interface afterwards.
+// If you want all elements that implement the interface, use GetAllByInterface. This function recurses
+// into child bins.
+func (b *Bin) GetByInterface(iface glib.Type) (*Element, error) {
+	elem := C.gst_bin_get_by_interface(b.Instance(), C.GType(iface))
+	if elem == nil {
+		return nil, fmt.Errorf("Could not find any elements implementing %s", iface.Name())
+	}
+	return wrapElement(toGObject(unsafe.Pointer(elem))), nil
+}
+
+// GetAllByInterface looks for all elements inside the bin that implements the given interface. You can
+// safely cast all returned elements to the given interface. The function recurses inside child bins.
+// The function will return a series of Elements that should be unreffed after use.
+func (b *Bin) GetAllByInterface(iface glib.Type) ([]*Element, error) {
+	iterator := C.gst_bin_iterate_all_by_interface(b.Instance(), C.GType(iface))
+	return iteratorToElementSlice(iterator)
+}
+
 // // GetElementsByFactoryName returns a list of the elements in this bin created from the given factory
 // // name.
 // func (b *Bin) GetElementsByFactoryName(name string) ([]*Element, error) {

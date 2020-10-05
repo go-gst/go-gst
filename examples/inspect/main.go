@@ -243,10 +243,12 @@ func printURIHandlerInfo(elem *gst.Element) {
 		fmt.Println()
 	}
 
-	colorOrange.print("URI handling capabilities:\n")
-	colorLightGray.printfIndent(2, "Element can act as %s.\n", strings.ToLower(elem.GetURIType().String()))
+	uriHandler := elem.URIHandler()
 
-	protos := elem.GetURIProtocols()
+	colorOrange.print("URI handling capabilities:\n")
+	colorLightGray.printfIndent(2, "Element can act as %s.\n", strings.ToLower(uriHandler.GetURIType().String()))
+
+	protos := uriHandler.GetURIProtocols()
 
 	if len(protos) == 0 {
 		fmt.Println()

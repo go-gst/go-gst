@@ -144,6 +144,15 @@ func (m *Message) ParseTags() *TagList {
 	return wrapTagList(tagList)
 }
 
+// ParseTOC extracts the TOC from the GstMessage. The TOC returned in the output argument is
+// a copy; the caller must free it with Unref when done.
+func (m *Message) ParseTOC() (toc *TOC, updated bool) {
+	var gtoc *C.GstToc
+	var gupdated C.gboolean
+	C.gst_message_parse_toc(m.Instance(), &gtoc, &gupdated)
+	return wrapTOC(gtoc), gobool(gupdated)
+}
+
 // ParseStreamStatus parses the stream status type of the message as well as the element
 // that produced it. The element returned should NOT be unrefed.
 func (m *Message) ParseStreamStatus() (StreamStatusType, *Element) {

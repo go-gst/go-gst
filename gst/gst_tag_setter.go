@@ -8,13 +8,17 @@ import (
 	"github.com/gotk3/gotk3/glib"
 )
 
+// InterfaceTagSetter represents the GstTagsetter interface GType. Use this when querying bins
+// for elements that implement a TagSetter.
+var InterfaceTagSetter = glib.Type(C.GST_TYPE_TAG_SETTER)
+
 // TagSetter is an interface that elements can implement to provide Tag writing capabilities.
 type TagSetter interface {
 	// Returns the current list of tags the setter uses. The list should not be modified or freed.
 	GetTagList() *TagList
 	// Adds the given tag/value pair using the given merge mode. If the tag value cannot be coerced
 	// to a GValue when dealing with C elements, nothing will happen.
-	AddTagValue(mergeMode TagMergeMode, tagKey string, tagValue interface{})
+	AddTagValue(mergeMode TagMergeMode, tagKey Tag, tagValue interface{})
 	// Merges a tag list with the given merge mode
 	MergeTags(*TagList, TagMergeMode)
 	// Resets the internal tag list. Elements should call this from within the state-change handler.
@@ -42,8 +46,8 @@ func (t *gstTagSetter) GetTagList() *TagList {
 	return wrapTagList(tagList)
 }
 
-func (t *gstTagSetter) AddTagValue(mergeMode TagMergeMode, tagKey string, tagValue interface{}) {
-	ckey := C.CString(tagKey)
+func (t *gstTagSetter) AddTagValue(mergeMode TagMergeMode, tagKey Tag, tagValue interface{}) {
+	ckey := C.CString(string(tagKey))
 	defer C.free(unsafe.Pointer(ckey))
 	gVal, err := glib.GValue(tagValue)
 	if err != nil {

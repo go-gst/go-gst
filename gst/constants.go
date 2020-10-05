@@ -806,6 +806,17 @@ const (
 	TOCScopeCurrent TOCScope = C.GST_TOC_SCOPE_CURRENT
 )
 
+// String implements a stringer on a TOCScope
+func (t TOCScope) String() string {
+	switch t {
+	case TOCScopeGlobal:
+		return "global"
+	case TOCScopeCurrent:
+		return "current"
+	}
+	return ""
+}
+
 // TOCLoopType represents a GstTocLoopType
 type TOCLoopType int
 
