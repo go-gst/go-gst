@@ -24,7 +24,7 @@ docker-push: docker-build
 
 CMD ?= /bin/bash
 docker-run: docker-build
-	docker run --rm -it --privileged \
+	docker run --rm --privileged \
 	    -v /lib/modules:/lib/modules:ro \
 	    -v /sys:/sys:ro \
 	    -v /usr/src:/usr/src:ro \
