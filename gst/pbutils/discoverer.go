@@ -1,19 +1,15 @@
 package pbutils
 
-import (
-	"C"
-	"time"
-
-	"github.com/gotk3/gotk3/glib"
-	"github.com/tinyzimmer/go-gst/gst"
-)
-
 // #include <gst/pbutils/pbutils.h>
 import "C"
 
 import (
 	"runtime"
+	"time"
 	"unsafe"
+
+	"github.com/gotk3/gotk3/glib"
+	"github.com/tinyzimmer/go-gst/gst"
 )
 
 func init() {

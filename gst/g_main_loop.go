@@ -1,6 +1,8 @@
 package gst
 
-// #include "gst.go.h"
+/*
+#include <glib.h>
+*/
 import "C"
 
 // MainLoop is a go representation of a GMainLoop. It can be used to block execution
