@@ -23,7 +23,7 @@ docker-push: docker-build
 	docker push $(DOCKER_IMAGE)
 
 CMD ?= /bin/bash
-docker-run: docker-build
+docker-run:
 	docker run --rm --privileged \
 	    -v /lib/modules:/lib/modules:ro \
 	    -v /sys:/sys:ro \
@@ -32,5 +32,5 @@ docker-run: docker-build
 		-e HOME=/tmp \
 	    $(DOCKER_IMAGE) $(CMD)
 
-docker-lint: docker-build
+docker-lint:
 	$(MAKE) docker-run CMD="make lint"
