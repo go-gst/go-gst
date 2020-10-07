@@ -38,11 +38,6 @@ func createPipeline() (*gst.Pipeline, error) {
 	// Get the app sourrce from the first element returned
 	src := app.SrcFromElement(elems[0])
 
-	// We are instructing downstream elements that we are producing raw signed 16-bit integers.
-	src.SetCaps(gst.NewCapsFromString(
-		"audio/x-raw, format=S16LE, layout=interleaved, channels=1, rate=44100",
-	))
-
 	// Specify the format we want to provide as application into the pipeline
 	// by creating a video info with the given format and creating caps from it for the appsrc element.
 	videoInfo := video.NewInfo().
