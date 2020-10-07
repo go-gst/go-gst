@@ -5,6 +5,22 @@ import "C"
 
 import "unsafe"
 
+// GFraction is a helper structure for building fractions for functions that require them.
+type GFraction struct {
+	num, denom int
+}
+
+// Fraction returns a new GFraction with the given numerator and denominator.
+func Fraction(numerator, denominator int) GFraction {
+	return GFraction{num: numerator, denom: denominator}
+}
+
+// Num returns the fraction's numerator.
+func (g GFraction) Num() int { return g.num }
+
+// Denom returns the fraction's denominator.
+func (g GFraction) Denom() int { return g.denom }
+
 // ClockTime is a go representation of a GstClockTime. Most of the time these are casted
 // to time.Duration objects. It represents a time value in nanoseconds.
 type ClockTime uint64

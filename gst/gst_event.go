@@ -108,11 +108,11 @@ func (e *Event) ParseGap() (timestamp, duration time.Duration) {
 }
 
 // ParseGapFlags retrieves the gap flags that may have been set on a gap event with SetGapFlags.
-func (e *Event) ParseGapFlags() GapFlags {
-	var out C.GstGapFlags
-	C.gst_event_parse_gap_flags(e.Instance(), &out)
-	return GapFlags(out)
-}
+// func (e *Event) ParseGapFlags() GapFlags {
+// 	var out C.GstGapFlags
+// 	C.gst_event_parse_gap_flags(e.Instance(), &out)
+// 	return GapFlags(out)
+// }
 
 // ParseGroupID returns a group ID if set on the event.
 func (e *Event) ParseGroupID() (ok bool, gid uint) {
@@ -293,9 +293,9 @@ func (e *Event) Ref() *Event {
 }
 
 // SetGapFlags sets flags on event to give additional information about the reason for the GST_EVENT_GAP.
-func (e *Event) SetGapFlags(flags GapFlags) {
-	C.gst_event_set_gap_flags(e.Instance(), C.GstGapFlags(flags))
-}
+// func (e *Event) SetGapFlags(flags GapFlags) {
+// 	C.gst_event_set_gap_flags(e.Instance(), C.GstGapFlags(flags))
+// }
 
 // NextGroupID returns a new group id that can be used for an event.
 func NextGroupID() uint {

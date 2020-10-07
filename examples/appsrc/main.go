@@ -2,16 +2,19 @@
 package main
 
 import (
-	"bytes"
-	"encoding/binary"
 	"fmt"
-	"math"
+	"image"
+	"image/color"
 	"time"
 
 	"github.com/tinyzimmer/go-gst/examples"
 	"github.com/tinyzimmer/go-gst/gst"
 	"github.com/tinyzimmer/go-gst/gst/app"
+	"github.com/tinyzimmer/go-gst/gst/video"
 )
+
+const width = 320
+const height = 240
 
 func createPipeline() (*gst.Pipeline, error) {
 	gst.Init(nil)
@@ -23,7 +26,7 @@ func createPipeline() (*gst.Pipeline, error) {
 	}
 
 	// Create the elements
-	elems, err := gst.NewElementMany("appsrc", "autoaudiosink")
+	elems, err := gst.NewElementMany("appsrc", "videoconvert", "autovideosink")
 	if err != nil {
 		return nil, err
 	}
@@ -40,30 +43,54 @@ func createPipeline() (*gst.Pipeline, error) {
 		"audio/x-raw, format=S16LE, layout=interleaved, channels=1, rate=44100",
 	))
 
-	// Add a callback for whene the sink requests a sample
-	i := 1
+	// Specify the format we want to provide as application into the pipeline
+	// by creating a video info with the given format and creating caps from it for the appsrc element.
+	videoInfo := video.NewInfo().
+		WithFormat(video.FormatRGBx, width, height).
+		WithFPS(gst.Fraction(2, 1))
+
+	src.SetCaps(videoInfo.ToCaps())
+	src.SetProperty("format", gst.FormatTime)
+
+	// Initialize a frame counter
+	var i int
+
+	// Since our appsrc element operates in pull mode (it asks us to provide data),
+	// we add a handler for the need-data callback and provide new data from there.
+	// In our case, we told gstreamer that we do 2 frames per second. While the
+	// buffers of all elements of the pipeline are still empty, this will be called
+	// a couple of times until all of them are filled. After this initial period,
+	// this handler will be called (on average) twice per second.
 	src.SetCallbacks(&app.SourceCallbacks{
-		NeedDataFunc: func(src *app.Source, _ uint) {
-			// Stop after 10 samples
-			if i == 10 {
+		NeedDataFunc: func(self *app.Source, _ uint) {
+			if i == 100 {
 				src.EndStream()
 				return
 			}
 
-			fmt.Println("Producing sample", i)
+			fmt.Println("Producing frame:", i)
 
-			sinWave := newSinWave(44100, 440.0, 1.0, time.Second)
+			// Produce an image frame for this iteration.
+			pixels := produceImageFrame(i)
 
-			// Allocate a new buffer with the sin wave
-			buffer := gst.NewBufferFromBytes(sinWave)
+			// Create a buffer that can hold exactly one video RGBx frame.
+			buf := gst.NewBufferWithSize(videoInfo.Size())
 
-			// Set the presentation timestamp on thee buffer
-			pts := time.Second * time.Duration(i)
-			buffer.SetPresentationTimestamp(pts)
-			buffer.SetDuration(time.Second)
+			// For each frame we produce, we set the timestamp when it should be displayed
+			// The autovideosink will use this information to display the frame at the right time.
+			buf.SetPresentationTimestamp(time.Duration(i) * 500 * time.Millisecond)
 
-			// Push tehe buffer onto the src
-			src.PushBuffer(buffer)
+			// At this point, buffer is only a reference to an existing memory region somewhere.
+			// When we want to access its content, we have to map it while requesting the required
+			// mode of access (read, read/write).
+			// See: https://gstreamer.freedesktop.org/documentation/plugin-development/advanced/allocation.html
+			//
+			// There are convenience wrappers for building buffers directly from byte sequences as
+			// well.
+			buf.Map(gst.MapWrite).WriteData(pixels)
+
+			// Push the buffer onto the pipeline.
+			self.PushBuffer(buf)
 
 			i++
 		},
@@ -72,14 +99,39 @@ func createPipeline() (*gst.Pipeline, error) {
 	return pipeline, nil
 }
 
-func newSinWave(sampleRate int64, freq, vol float64, duration time.Duration) []byte {
-	numSamples := duration.Milliseconds() * (sampleRate / 1000.0)
-	buf := new(bytes.Buffer)
-	for i := int64(0); i < numSamples; i++ {
-		data := vol * math.Sin(2.0*math.Pi*freq*(1/float64(sampleRate)))
-		binary.Write(buf, binary.LittleEndian, data)
+func produceImageFrame(i int) []uint8 {
+	upLeft := image.Point{0, 0}
+	lowRight := image.Point{width, height}
+	img := image.NewRGBA(image.Rectangle{upLeft, lowRight})
+
+	c := getColor(i)
+	for x := 0; x < width; x++ {
+		for y := 0; y < height; y++ {
+			img.Set(x, y, c)
+		}
 	}
-	return buf.Bytes()
+
+	return img.Pix
+}
+
+func getColor(i int) color.Color {
+	color := color.RGBA{}
+	if i%2 == 0 {
+		color.R = 0
+	} else {
+		color.R = 255
+	}
+	if i%3 == 0 {
+		color.G = 0
+	} else {
+		color.G = 255
+	}
+	if i%5 == 0 {
+		color.B = 0
+	} else {
+		color.B = 255
+	}
+	return color
 }
 
 func handleMessage(msg *gst.Message) error {
@@ -89,7 +141,11 @@ func handleMessage(msg *gst.Message) error {
 	case gst.MessageEOS:
 		return app.ErrEOS
 	case gst.MessageError:
-		return msg.ParseError()
+		gerr := msg.ParseError()
+		if debug := gerr.DebugString(); debug != "" {
+			fmt.Println(debug)
+		}
+		return gerr
 	}
 
 	return nil

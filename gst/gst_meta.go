@@ -35,6 +35,10 @@ type Meta struct {
 	ptr *C.GstMeta
 }
 
+// FromGstMetaUnsafe wraps the pointer to the given C GstMeta with the go type.
+// This is meant for internal usage and is exported for visibility to other packages.
+func FromGstMetaUnsafe(ptr unsafe.Pointer) *Meta { return wrapMeta(C.toGstMeta(ptr)) }
+
 // Instance returns the underlying GstMeta instance.
 func (m *Meta) Instance() *C.GstMeta { return C.toGstMeta(unsafe.Pointer(m.ptr)) }
 

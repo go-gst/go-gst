@@ -14,6 +14,8 @@ gboolean cgoBufferMetaForEachCb (GstBuffer * buffer, GstMeta ** meta, gpointer u
 {
 	return goBufferMetaForEachCb(buffer, meta, user_data);
 }
+
+gboolean isBuffer (GstBuffer * buffer) { return GST_IS_BUFFER(buffer); }
 */
 import "C"
 
@@ -41,6 +43,12 @@ func NewEmptyBuffer() *Buffer {
 	return wrapBuffer(C.gst_buffer_new())
 }
 
+// NewBufferWithSize is a convenience wrapped for NewBufferrAllocate with the default allocator
+// and parameters.
+func NewBufferWithSize(size int64) *Buffer {
+	return NewBufferAllocate(nil, nil, size)
+}
+
 // NewBufferAllocate tries to create a newly allocated buffer with data of the given size
 // and extra parameters from allocator. If the requested amount of memory can't be allocated,
 // nil will be returned. The allocated buffer memory is not cleared.
@@ -53,7 +61,11 @@ func NewBufferAllocate(alloc *Allocator, params *AllocationParams, size int64) *
 	if alloc != nil {
 		gstalloc = alloc.Instance()
 	}
-	buf := C.gst_buffer_new_allocate(gstalloc, C.gsize(size), params.Instance())
+	var gstparams *C.GstAllocationParams
+	if params != nil {
+		gstparams = params.Instance()
+	}
+	buf := C.gst_buffer_new_allocate(gstalloc, C.gsize(size), gstparams)
 	if buf == nil {
 		return nil
 	}
@@ -135,7 +147,6 @@ func (b *Buffer) Bytes() []byte {
 	if mapInfo.ptr == nil {
 		return nil
 	}
-	defer mapInfo.Unmap()
 	return mapInfo.Bytes()
 }
 
@@ -604,7 +615,7 @@ func (b *Buffer) IterateMetaFiltered(meta *Meta, apiType glib.Type) *Meta {
 	return wrapMeta(C.gst_buffer_iterate_meta_filtered(b.Instance(), (*C.gpointer)(&ptr), C.GType(apiType)))
 }
 
-// Map will map the data inside this buffer. Unmap after usage.
+// Map will map the data inside this buffer.
 func (b *Buffer) Map(flags MapFlags) *MapInfo {
 	var mapInfo C.GstMapInfo
 	C.gst_buffer_map(
@@ -613,7 +624,10 @@ func (b *Buffer) Map(flags MapFlags) *MapInfo {
 		C.GstMapFlags(flags),
 	)
 	return wrapMapInfo(&mapInfo, func() {
-		C.gst_buffer_unmap(b.Instance(), (*C.GstMapInfo)(unsafe.Pointer(&mapInfo)))
+		// This may not be necesesary
+		// if gobool(C.isBuffer(b.Instance())) {
+		// 	C.gst_buffer_unmap(b.Instance(), (*C.GstMapInfo)(unsafe.Pointer(&mapInfo)))
+		// }
 	})
 }
 
@@ -726,7 +740,9 @@ func (b *Buffer) SetFlags(flags BufferFlags) bool {
 }
 
 // SetSize sets the total size of the memory blocks in buffer.
-func (b *Buffer) SetSize(size int64) { C.gst_buffer_set_size(b.Instance(), C.gssize(size)) }
+func (b *Buffer) SetSize(size int64) {
+	C.gst_buffer_set_size(b.Instance(), C.gssize(size))
+}
 
 // UnsetFlags removes one or more flags from the buffer.
 func (b *Buffer) UnsetFlags(flags BufferFlags) bool {
