@@ -17,10 +17,14 @@ import (
 	"github.com/tinyzimmer/go-gst/examples"
 	"github.com/tinyzimmer/go-gst/gst"
 	"github.com/tinyzimmer/go-gst/gst/app"
+	"github.com/tinyzimmer/go-gst/gst/video"
 )
 
 var srcFile string
 var outFile string
+
+const width = 320
+const height = 240
 
 func encodeGif(mainLoop *gst.MainLoop) error {
 	gst.Init(nil)
@@ -75,24 +79,34 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 			e.SyncStateWithParent()
 		}
 
-		// Retrieve direct references to some of the elements.
+		// Retrieve direct references to the elements for clarity.
 		queue := elements[0]
-		videorate := elements[len(elements)-2]
-		jpegenc := elements[len(elements)-1]
+		videoconvert := elements[1]
+		videoscale := elements[2]
+		videorate := elements[3]
+		jpegenc := elements[4]
 
-		// Link all elements up until the videorate. We are going to apply caps there and use
-		// a filtered link.
-		gst.ElementLinkMany(elements[:len(elements)-1]...)
+		// Start linking elements
 
-		// We are going to filter images out all the way down to 5 frames per second
-		rateCaps := gst.NewCapsFromString("video/x-raw, framerate=5/1")
-		videorate.LinkFiltered(jpegenc, rateCaps)
+		queue.Link(videoconvert)
+
+		// We need to tell the pipeline the output format we want. Here we are going to request
+		// RGBx color with predefined boundaries and 5 frames per second.
+		videoInfo := video.NewInfo().
+			WithFormat(video.FormatRGBx, width, height).
+			WithFPS(gst.Fraction(5, 1))
+
+		// videoconvert.LinkFiltered(videoscale, videoInfo.ToCaps())
+		gst.ElementLinkMany(videoconvert, videoscale, videorate)
+
+		videorate.LinkFiltered(jpegenc, videoInfo.ToCaps())
 
 		// Create an app sink that we are going to use to pull images from the pipeline
 		// one at a time. (An error can happen here too, but for the sake of brevity...)
 		appSink, _ := app.NewAppSink()
 		pipeline.Add(appSink.Element)
 		jpegenc.Link(appSink.Element)
+		appSink.SyncStateWithParent()
 		appSink.SetWaitOnEOS(false)
 
 		// We can query the decodebin for the duration of the video it received. We can then
@@ -154,11 +168,11 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 				fmt.Printf("\033[2K\r")
 				fmt.Printf("Processing image frame %d/%d", frameNum, totalFrames)
 
-				// We can retrieve a reader with the raw bytes of the image directly from the
-				// sink.
-				imgReader := sample.GetBuffer().Reader()
+				// Retrieve the buffer from the sample.
+				buffer := sample.GetBuffer()
 
-				img, err := jpeg.Decode(imgReader)
+				// We can get an io.Reader directly from the buffer.
+				img, err := jpeg.Decode(buffer.Reader())
 				if err != nil {
 					pipeline.GetPipelineBus().PostError(sink, "Error decoding jpeg frame", err)
 					return gst.FlowError
