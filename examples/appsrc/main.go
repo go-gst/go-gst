@@ -41,7 +41,7 @@ func createPipeline() (*gst.Pipeline, error) {
 	// Specify the format we want to provide as application into the pipeline
 	// by creating a video info with the given format and creating caps from it for the appsrc element.
 	videoInfo := video.NewInfo().
-		WithFormat(video.FormatRGBx, width, height).
+		WithFormat(video.FormatRGBA, width, height).
 		WithFPS(gst.Fraction(2, 1))
 
 	src.SetCaps(videoInfo.ToCaps())
@@ -49,6 +49,9 @@ func createPipeline() (*gst.Pipeline, error) {
 
 	// Initialize a frame counter
 	var i int
+
+	// Get all 256 colors in the RGB8P palette.
+	palette := video.FormatRGB8P.Palette()
 
 	// Since our appsrc element operates in pull mode (it asks us to provide data),
 	// we add a handler for the need-data callback and provide new data from there.
@@ -58,22 +61,24 @@ func createPipeline() (*gst.Pipeline, error) {
 	// this handler will be called (on average) twice per second.
 	src.SetCallbacks(&app.SourceCallbacks{
 		NeedDataFunc: func(self *app.Source, _ uint) {
-			if i == 100 {
+
+			// If we've reached the end of the palette, end the stream.
+			if i == len(palette) {
 				src.EndStream()
 				return
 			}
 
 			fmt.Println("Producing frame:", i)
 
-			// Produce an image frame for this iteration.
-			pixels := produceImageFrame(i)
-
-			// Create a buffer that can hold exactly one video RGBx frame.
+			// Create a buffer that can hold exactly one video RGBA frame.
 			buf := gst.NewBufferWithSize(videoInfo.Size())
 
 			// For each frame we produce, we set the timestamp when it should be displayed
 			// The autovideosink will use this information to display the frame at the right time.
 			buf.SetPresentationTimestamp(time.Duration(i) * 500 * time.Millisecond)
+
+			// Produce an image frame for this iteration.
+			pixels := produceImageFrame(palette[i])
 
 			// At this point, buffer is only a reference to an existing memory region somewhere.
 			// When we want to access its content, we have to map it while requesting the required
@@ -94,12 +99,11 @@ func createPipeline() (*gst.Pipeline, error) {
 	return pipeline, nil
 }
 
-func produceImageFrame(i int) []uint8 {
+func produceImageFrame(c color.Color) []uint8 {
 	upLeft := image.Point{0, 0}
 	lowRight := image.Point{width, height}
 	img := image.NewRGBA(image.Rectangle{upLeft, lowRight})
 
-	c := getColor(i)
 	for x := 0; x < width; x++ {
 		for y := 0; y < height; y++ {
 			img.Set(x, y, c)
@@ -107,26 +111,6 @@ func produceImageFrame(i int) []uint8 {
 	}
 
 	return img.Pix
-}
-
-func getColor(i int) color.Color {
-	color := color.RGBA{}
-	if i%2 == 0 {
-		color.R = 0
-	} else {
-		color.R = 255
-	}
-	if i%3 == 0 {
-		color.G = 0
-	} else {
-		color.G = 255
-	}
-	if i%5 == 0 {
-		color.B = 0
-	} else {
-		color.B = 255
-	}
-	return color
 }
 
 func handleMessage(msg *gst.Message) error {

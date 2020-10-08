@@ -29,6 +29,10 @@ func fromCoreCaps(caps *gst.Caps) *C.GstCaps {
 	return (*C.GstCaps)(unsafe.Pointer(caps.Instance()))
 }
 
+func fromCoreCapsFeatures(feats *gst.CapsFeatures) *C.GstCapsFeatures {
+	return (*C.GstCapsFeatures)(unsafe.Pointer(feats.Instance()))
+}
+
 func fromCoreElement(elem *gst.Element) *C.GstElement {
 	return (*C.GstElement)(unsafe.Pointer(elem.Instance()))
 }
