@@ -6,7 +6,6 @@ import (
 	"flag"
 	"fmt"
 	"image"
-	"image/color/palette"
 	"image/gif"
 	"image/jpeg"
 	"os"
@@ -179,7 +178,7 @@ func encodeGif(mainLoop *gst.MainLoop) error {
 				}
 
 				// Create a new paletted image with the same bounds as the pulled one
-				frame := image.NewPaletted(img.Bounds(), palette.Plan9)
+				frame := image.NewPaletted(img.Bounds(), video.FormatRGB8P.Palette())
 
 				// Iterate the bounds of the image and set the pixels in their correct place.
 				for x := 1; x <= img.Bounds().Dx(); x++ {
