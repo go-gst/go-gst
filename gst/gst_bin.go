@@ -250,7 +250,7 @@ func iteratorToElementSlice(iterator *C.GstIterator) ([]*Element, error) {
 		case C.GST_ITERATOR_OK:
 			cElemVoid := C.g_value_get_object((*C.GValue)(gval))
 			cElem := (*C.GstElement)(cElemVoid)
-			elems = append(elems, wrapElement(glib.Take(unsafe.Pointer(cElem))))
+			elems = append(elems, wrapElement(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(cElem))}))
 			C.g_value_reset((*C.GValue)(gval))
 		default:
 			return nil, errors.New("Element iterator failed")

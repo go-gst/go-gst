@@ -22,7 +22,7 @@ func NewElement(name string) (*Element, error) {
 	if elem == nil {
 		return nil, fmt.Errorf("Could not create element: %s", name)
 	}
-	return wrapElement(glib.Take(unsafe.Pointer(elem))), nil
+	return wrapElement(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(elem))}), nil
 }
 
 // NewElementMany is a convenience wrapper around building many GstElements in a
@@ -51,7 +51,7 @@ func Find(name string) *ElementFactory {
 	if factory == nil {
 		return nil
 	}
-	return wrapElementFactory(glib.Take(unsafe.Pointer(factory)))
+	return wrapElementFactory(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(factory))})
 }
 
 // Instance returns the C GstFactory instance

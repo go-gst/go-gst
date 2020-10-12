@@ -17,7 +17,7 @@ func NewStream(id string, caps *Caps, sType StreamType, flags StreamFlags) *Stre
 	cID := C.CString(id)
 	defer C.free(unsafe.Pointer(cID))
 	stream := C.gst_stream_new(cID, caps.Instance(), C.GstStreamType(sType), C.GstStreamFlags(flags))
-	return wrapStream(glib.Take(unsafe.Pointer(stream)))
+	return wrapStream(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(stream))})
 }
 
 // Instance returns the underlying GstStream.

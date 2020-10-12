@@ -163,7 +163,7 @@ func (m *Message) ParseStreamStatus() (StreamStatusType, *Element) {
 		(*C.GstStreamStatusType)(&cStatusType),
 		(**C.GstElement)(&cElem),
 	)
-	return StreamStatusType(cStatusType), wrapElement(glib.Take(unsafe.Pointer(cElem)))
+	return StreamStatusType(cStatusType), wrapElement(toGObject(unsafe.Pointer(cElem)))
 }
 
 // ParseAsyncDone extracts the running time from the async task done message.
@@ -282,7 +282,7 @@ func (m *Message) ParseStepDone() *StepDoneValues {
 func (m *Message) ParseNewClock() *Clock {
 	var clock *C.GstClock
 	C.gst_message_parse_new_clock((*C.GstMessage)(m.Instance()), &clock)
-	return wrapClock(glib.Take(unsafe.Pointer(clock)))
+	return wrapClock(toGObject(unsafe.Pointer(clock)))
 }
 
 // ParseClockProvide extracts the clock and ready flag from the GstMessage.
@@ -291,7 +291,7 @@ func (m *Message) ParseClockProvide() (clock *Clock, ready bool) {
 	var gclock *C.GstClock
 	var gready C.gboolean
 	C.gst_message_parse_clock_provide((*C.GstMessage)(m.Instance()), &gclock, &gready)
-	return wrapClock(glib.Take(unsafe.Pointer(clock))), gobool(gready)
+	return wrapClock(toGObject(unsafe.Pointer(clock))), gobool(gready)
 }
 
 // ParseStructureChange extracts the change type and completion status from the GstMessage.
@@ -304,7 +304,7 @@ func (m *Message) ParseStructureChange() (chgType StructureChangeType, owner *El
 		(*C.GstMessage)(m.Instance()),
 		&gchgType, &gElem, &gbusy,
 	)
-	return StructureChangeType(gchgType), wrapElement(glib.Take(unsafe.Pointer(gElem))), gobool(gbusy)
+	return StructureChangeType(gchgType), wrapElement(toGObject(unsafe.Pointer(gElem))), gobool(gbusy)
 }
 
 // ParseSegmentStart extracts the position and format of the SegmentStart message.
@@ -394,7 +394,7 @@ func (m *Message) ParseResetTime() time.Duration {
 func (m *Message) ParseDeviceAdded() *Device {
 	var device *C.GstDevice
 	C.gst_message_parse_device_added((*C.GstMessage)(m.Instance()), &device)
-	return wrapDevice(glib.Take(unsafe.Pointer(device)))
+	return wrapDevice(toGObject(unsafe.Pointer(device)))
 }
 
 // ParseDeviceRemoved parses a device-removed message. The device-removed message
@@ -403,7 +403,7 @@ func (m *Message) ParseDeviceAdded() *Device {
 func (m *Message) ParseDeviceRemoved() *Device {
 	var device *C.GstDevice
 	C.gst_message_parse_device_removed((*C.GstMessage)(m.Instance()), &device)
-	return wrapDevice(glib.Take(unsafe.Pointer(device)))
+	return wrapDevice(toGObject(unsafe.Pointer(device)))
 }
 
 // ParseDeviceChanged Parses a device-changed message. The device-changed message is
@@ -414,8 +414,8 @@ func (m *Message) ParseDeviceRemoved() *Device {
 func (m *Message) ParseDeviceChanged() (newDevice, oldDevice *Device) {
 	var gstNewDevice, gstOldDevice *C.GstDevice
 	C.gst_message_parse_device_changed((*C.GstMessage)(m.Instance()), &gstNewDevice, &gstOldDevice)
-	return wrapDevice(glib.Take(unsafe.Pointer(gstNewDevice))),
-		wrapDevice(glib.Take(unsafe.Pointer(gstOldDevice)))
+	return wrapDevice(toGObject(unsafe.Pointer(gstNewDevice))),
+		wrapDevice(toGObject(unsafe.Pointer(gstOldDevice)))
 }
 
 // ParsePropertyNotify parses a property-notify message. These will be posted on the bus only
@@ -429,7 +429,7 @@ func (m *Message) ParsePropertyNotify() (obj *Object, propertName string, proper
 		(*C.GstMessage)(m.Instance()),
 		&gstobj, (**C.gchar)(unsafe.Pointer(namePtr)), &gval,
 	)
-	return wrapObject(glib.Take(unsafe.Pointer(gstobj))),
+	return wrapObject(toGObject(unsafe.Pointer(gstobj))),
 		string(C.GoBytes(namePtr, C.sizeOfGCharArray((**C.gchar)(namePtr)))),
 		glib.ValueFromNative(unsafe.Pointer(gval))
 }
@@ -441,7 +441,7 @@ func (m *Message) ParseStreamCollection() *StreamCollection {
 		(*C.GstMessage)(m.Instance()),
 		&collection,
 	)
-	return wrapStreamCollection(glib.Take(unsafe.Pointer(collection)))
+	return wrapStreamCollection(toGObject(unsafe.Pointer(collection)))
 }
 
 // ParseStreamsSelected parses a streams-selected message.
@@ -451,7 +451,7 @@ func (m *Message) ParseStreamsSelected() *StreamCollection {
 		(*C.GstMessage)(m.Instance()),
 		&collection,
 	)
-	return wrapStreamCollection(glib.Take(unsafe.Pointer(collection)))
+	return wrapStreamCollection(toGObject(unsafe.Pointer(collection)))
 }
 
 // NumRedirectEntries returns the number of redirect entries in a MessageRedirect.

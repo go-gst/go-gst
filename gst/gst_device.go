@@ -26,7 +26,7 @@ func (d *Device) CreateElement(name string) *Element {
 		defer C.free(unsafe.Pointer(cName))
 	}
 	elem := C.gst_device_create_element(d.Instance(), cName)
-	return wrapElement(glib.Take(unsafe.Pointer(elem)))
+	return wrapElement(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(elem))})
 }
 
 // Caps returns the caps that this device supports. Unref after usage.

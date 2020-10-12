@@ -144,9 +144,6 @@ func (b *Buffer) Reader() io.Reader { return bytes.NewBuffer(b.Bytes()) }
 // Bytes returns a byte slice of the data inside this buffer.
 func (b *Buffer) Bytes() []byte {
 	mapInfo := b.Map(MapRead)
-	if mapInfo.ptr == nil {
-		return nil
-	}
 	return mapInfo.Bytes()
 }
 

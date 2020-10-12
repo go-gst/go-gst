@@ -19,7 +19,7 @@ func NewStreamCollection(upstreamID string) *StreamCollection {
 	cID := C.CString(upstreamID)
 	defer C.free(unsafe.Pointer(cID))
 	collection := C.gst_stream_collection_new(cID)
-	return wrapStreamCollection(glib.Take(unsafe.Pointer(collection)))
+	return wrapStreamCollection(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(collection))})
 }
 
 // Instance returns the underlying GstStreamCollection.
@@ -43,7 +43,7 @@ func (s *StreamCollection) GetSize() uint {
 // GetStreamAt returns the stream at the given index in this collection.
 func (s *StreamCollection) GetStreamAt(idx uint) *Stream {
 	stream := C.gst_stream_collection_get_stream(s.Instance(), C.guint(idx))
-	return wrapStream(glib.Take(unsafe.Pointer(stream)))
+	return wrapStream(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(stream))})
 }
 
 // GetUpstreamID retrieves the upstream ID for this collection.

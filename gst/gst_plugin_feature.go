@@ -21,7 +21,7 @@ func (p *PluginFeature) GetPlugin() *Plugin {
 	if plugin == nil {
 		return nil
 	}
-	return wrapPlugin(glib.Take(unsafe.Pointer(plugin)))
+	return wrapPlugin(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(plugin))})
 }
 
 // GetPluginName returns the name of the plugin that provides this feature.

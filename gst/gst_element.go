@@ -72,7 +72,7 @@ func (e *Element) GetBus() *Bus {
 	if bus == nil {
 		return nil
 	}
-	return wrapBus(glib.Take(unsafe.Pointer(bus)))
+	return wrapBus(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(bus))})
 }
 
 // GetClock returns the Clock for this element. This is the clock as was last set with gst_element_set_clock.
@@ -82,7 +82,7 @@ func (e *Element) GetClock() *Clock {
 	if cClock == nil {
 		return nil
 	}
-	return wrapClock(glib.Take(unsafe.Pointer(cClock)))
+	return wrapClock(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(cClock))})
 }
 
 // GetState returns the current state of this element.
@@ -122,7 +122,7 @@ func (e *Element) GetFactory() *ElementFactory {
 	if factory == nil {
 		return nil
 	}
-	return wrapElementFactory(glib.Take(unsafe.Pointer(factory)))
+	return wrapElementFactory(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(factory))})
 }
 
 // GetPads retrieves a list of pads associated with the element.
@@ -131,7 +131,7 @@ func (e *Element) GetPads() []*Pad {
 	out := make([]*Pad, 0)
 	goList.Foreach(func(item interface{}) {
 		pt := item.(unsafe.Pointer)
-		out = append(out, wrapPad(glib.Take(pt)))
+		out = append(out, wrapPad(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(pt))}))
 	})
 	return out
 }
@@ -159,7 +159,7 @@ func (e *Element) GetPadTemplates() []*PadTemplate {
 	out := make([]*PadTemplate, 0)
 	goList.Foreach(func(item interface{}) {
 		pt := item.(unsafe.Pointer)
-		out = append(out, wrapPadTemplate(glib.Take(pt)))
+		out = append(out, wrapPadTemplate(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(pt))}))
 	})
 	return out
 }

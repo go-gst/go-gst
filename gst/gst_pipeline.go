@@ -30,7 +30,7 @@ func NewPipeline(name string) (*Pipeline, error) {
 	if pipeline == nil {
 		return nil, errors.New("Could not create new pipeline")
 	}
-	return wrapPipeline(glib.Take(unsafe.Pointer(pipeline))), nil
+	return wrapPipeline(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(pipeline))}), nil
 }
 
 // NewPipelineFromString creates a new gstreamer pipeline from the given launch string.
@@ -47,7 +47,7 @@ func NewPipelineFromString(launchv string) (*Pipeline, error) {
 		errMsg := C.GoString(gerr.message)
 		return nil, errors.New(errMsg)
 	}
-	return wrapPipeline(glib.Take(unsafe.Pointer(pipeline))), nil
+	return wrapPipeline(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(pipeline))}), nil
 }
 
 // Instance returns the native GstPipeline instance.
@@ -57,7 +57,7 @@ func (p *Pipeline) Instance() *C.GstPipeline { return C.toGstPipeline(p.Unsafe()
 func (p *Pipeline) GetPipelineBus() *Bus {
 	if p.bus == nil {
 		cBus := C.gst_pipeline_get_bus((*C.GstPipeline)(p.Instance()))
-		p.bus = wrapBus(glib.Take(unsafe.Pointer(cBus)))
+		p.bus = wrapBus(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(cBus))})
 	}
 	return p.bus
 }
@@ -65,7 +65,7 @@ func (p *Pipeline) GetPipelineBus() *Bus {
 // GetPipelineClock returns the global clock for this pipeline.
 func (p *Pipeline) GetPipelineClock() *Clock {
 	cClock := C.gst_pipeline_get_pipeline_clock((*C.GstPipeline)(p.Instance()))
-	return wrapClock(glib.Take(unsafe.Pointer(cClock)))
+	return wrapClock(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(cClock))})
 }
 
 /*
