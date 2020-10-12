@@ -12,6 +12,7 @@ As the latter requires published tags, see godoc.org for the latest documentatio
 
 For more examples see the `examples` folder [here](examples/).
 
+**This library still has some bugs and should not be used for any mission critical applications, yet. If you'd like to help out feel free to open a PR.**
 
 ## Requirements
 
