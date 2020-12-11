@@ -290,7 +290,8 @@ func (q *Query) ParseCapsResult() *Caps {
 
 // ParseContext gets the context from the context query. The context remains valid as long as query remains valid.
 func (q *Query) ParseContext() *Context {
-	ctx := &C.GstContext{}
+	var _ctx *C.GstContext
+	ctx := C.makeContextWritable(_ctx)
 	C.gst_query_parse_context(q.Instance(), &ctx)
 	return wrapContext(ctx)
 }
