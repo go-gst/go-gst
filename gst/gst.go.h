@@ -1,6 +1,7 @@
 #ifndef __GST_GO_H__
 #define __GST_GO_H__
 
+#include <stdlib.h>
 #include <gst/gst.h>
 
 /*

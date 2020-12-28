@@ -25,7 +25,7 @@ func NewMiniObject(flags MiniObjectFlags, gtype glib.Type) *MiniObject {
 	C.gst_mini_object_init(
 		C.toGstMiniObject(unsafe.Pointer(&cMiniObj)),
 		C.uint(flags),
-		C.ulong(gtype),
+		C.gsize(gtype),
 		nil, nil, nil,
 	)
 	return wrapMiniObject(&cMiniObj)
