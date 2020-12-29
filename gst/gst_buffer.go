@@ -77,7 +77,7 @@ func NewBufferFromBytes(b []byte) *Buffer {
 	str := string(b)
 	p := unsafe.Pointer(C.CString(str))
 	// memory is freed by gstreamer after building the new buffer
-	buf := C.gst_buffer_new_wrapped((C.gpointer)(p), C.gulong(len(str)))
+	buf := C.gst_buffer_new_wrapped((C.gpointer)(p), C.gsize(len(str)))
 	return wrapBuffer(buf)
 }
 
@@ -355,7 +355,7 @@ func (b *Buffer) CopyRegion(flags BufferCopyFlags, offset, size int64) *Buffer {
 // Extract extracts size bytes starting from offset in this buffer. The data extracted may be lower
 // than the actual size if the buffer did not contain enough data.
 func (b *Buffer) Extract(offset, size int64) []byte {
-	dest := C.malloc(C.sizeof_char * C.ulong(size))
+	dest := C.malloc(C.sizeof_char * C.gsize(size))
 	defer C.free(dest)
 	C.gst_buffer_extract(b.Instance(), C.gsize(offset), (C.gpointer)(unsafe.Pointer(dest)), C.gsize(size))
 	return C.GoBytes(dest, C.int(size))

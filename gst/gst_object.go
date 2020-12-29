@@ -43,7 +43,7 @@ func (o *Object) Name() string {
 // Interfaces returns the interfaces associated with this object.
 func (o *Object) Interfaces() []string {
 	var size C.guint
-	ifaces := C.g_type_interfaces(C.ulong(o.TypeFromInstance()), &size)
+	ifaces := C.g_type_interfaces(C.gsize(o.TypeFromInstance()), &size)
 	if int(size) == 0 {
 		return nil
 	}
