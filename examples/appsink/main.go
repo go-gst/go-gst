@@ -70,6 +70,7 @@ func createPipeline() (*gst.Pipeline, error) {
 			// We also know what format to expect because we set it with the caps. So we convert
 			// the map directly to signed 16-bit integers.
 			samples := buffer.Map(gst.MapRead).AsInt16Slice()
+			defer buffer.Unmap()
 
 			// Calculate the root mean square for the buffer
 			// (https://en.wikipedia.org/wiki/Root_mean_square)

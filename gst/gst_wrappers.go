@@ -169,6 +169,7 @@ func wrapEvent(ev *C.GstEvent) *Event                     { return &Event{ptr: e
 func wrapGhostPad(obj *glib.Object) *GhostPad             { return &GhostPad{wrapProxyPad(obj)} }
 func wrapMainContext(ctx *C.GMainContext) *MainContext    { return &MainContext{ptr: ctx} }
 func wrapMainLoop(loop *C.GMainLoop) *MainLoop            { return &MainLoop{ptr: loop} }
+func wrapMapInfo(mapInfo *C.GstMapInfo) *MapInfo          { return &MapInfo{ptr: mapInfo} }
 func wrapMemory(mem *C.GstMemory) *Memory                 { return &Memory{ptr: mem} }
 func wrapMessage(msg *C.GstMessage) *Message              { return &Message{msg: msg} }
 func wrapMeta(meta *C.GstMeta) *Meta                      { return &Meta{ptr: meta} }

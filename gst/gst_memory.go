@@ -2,14 +2,10 @@ package gst
 
 /*
 #include "gst.go.h"
-
-void writeMapData (GstMapInfo * mapInfo, gint idx, guint8 data) { mapInfo->data[idx] = data; }
 */
 import "C"
 
 import (
-	"encoding/binary"
-	"runtime"
 	"unsafe"
 
 	"github.com/gotk3/gotk3/glib"
@@ -21,7 +17,8 @@ import (
 //
 // Use the Buffer and its Map methods to interact with memory in both a read and writable way.
 type Memory struct {
-	ptr *C.GstMemory
+	ptr     *C.GstMemory
+	mapInfo *MapInfo
 }
 
 // NewMemoryWrapped allocates a new memory block that wraps the given data.
@@ -83,151 +80,37 @@ func (m *Memory) Copy(offset, size int64) *Memory {
 	return wrapMemory(mem)
 }
 
-// Map the data inside the memory. This function can return nil if the memory is not readable.
-func (m *Memory) Map() *MapInfo {
-	var mapInfo C.GstMapInfo
+// Map the data inside the memory. This function can return nil if the memory is not read or writable.
+//
+// Unmap the Memory after usage.
+func (m *Memory) Map(flags MapFlags) *MapInfo {
+	mapInfo := C.malloc(C.sizeof_GstMapInfo)
 	C.gst_memory_map(
 		(*C.GstMemory)(m.Instance()),
-		(*C.GstMapInfo)(unsafe.Pointer(&mapInfo)),
-		C.GST_MAP_READ,
+		(*C.GstMapInfo)(mapInfo),
+		C.GstMapFlags(flags),
 	)
-	return wrapMapInfo(&mapInfo, func() {
-		C.gst_memory_unmap(m.Instance(), (*C.GstMapInfo)(unsafe.Pointer(&mapInfo)))
-	})
+	if mapInfo == C.NULL {
+		return nil
+	}
+	m.mapInfo = wrapMapInfo((*C.GstMapInfo)(mapInfo))
+	return m.mapInfo
+}
+
+// Unmap will unmap the data inside this memory. Use this after calling Map on the Memory.
+func (m *Memory) Unmap() {
+	if m.mapInfo == nil {
+		return
+	}
+	C.gst_memory_unmap(m.Instance(), (*C.GstMapInfo)(m.mapInfo.Instance()))
 }
 
 // Bytes will return a byte slice of the data inside this memory if it is readable.
 func (m *Memory) Bytes() []byte {
-	mapInfo := m.Map()
-	if mapInfo.ptr == nil {
+	mapInfo := m.Map(MapRead)
+	if mapInfo == nil {
 		return nil
 	}
+	defer m.Unmap()
 	return mapInfo.Bytes()
-}
-
-// MapInfo is a go representation of a GstMapInfo.
-type MapInfo struct {
-	ptr *C.GstMapInfo
-}
-
-// Memory returns the underlying memory object.
-func (m *MapInfo) Memory() *Memory {
-	return wrapMemory(m.ptr.memory)
-}
-
-// Data returns a pointer to the raw data inside this map.
-func (m *MapInfo) Data() unsafe.Pointer {
-	return unsafe.Pointer(m.ptr.data)
-}
-
-// Flags returns the flags set on this map.
-func (m *MapInfo) Flags() MapFlags {
-	return MapFlags(m.ptr.flags)
-}
-
-// Size returrns the size of this map.
-func (m *MapInfo) Size() int64 {
-	return int64(m.ptr.size)
-}
-
-// MaxSize returns the maximum size of this map.
-func (m *MapInfo) MaxSize() int64 {
-	return int64(m.ptr.maxsize)
-}
-
-// Bytes returns a byte slice of the data inside this map info.
-func (m *MapInfo) Bytes() []byte {
-	return C.GoBytes(m.Data(), (C.int)(m.Size()))
-}
-
-// AsInt8Slice returns the contents of this map as a slice of signed 8-bit integers.
-func (m *MapInfo) AsInt8Slice() []int8 {
-	uint8sl := m.AsUint8Slice()
-	out := make([]int8, m.Size())
-	for i := range out {
-		out[i] = int8(uint8sl[i])
-	}
-	return out
-}
-
-// AsInt16Slice returns the contents of this map as a slice of signed 16-bit integers.
-func (m *MapInfo) AsInt16Slice() []int16 {
-	uint8sl := m.AsUint8Slice()
-	out := make([]int16, m.Size()/2)
-	for i := range out {
-		out[i] = int16(binary.LittleEndian.Uint16(uint8sl[i*2 : (i+1)*2]))
-	}
-	return out
-}
-
-// AsInt32Slice returns the contents of this map as a slice of signed 32-bit integers.
-func (m *MapInfo) AsInt32Slice() []int32 {
-	uint8sl := m.AsUint8Slice()
-	out := make([]int32, m.Size()/4)
-	for i := range out {
-		out[i] = int32(binary.LittleEndian.Uint32(uint8sl[i*4 : (i+1)*4]))
-	}
-	return out
-}
-
-// AsInt64Slice returns the contents of this map as a slice of signed 64-bit integers.
-func (m *MapInfo) AsInt64Slice() []int64 {
-	uint8sl := m.AsUint8Slice()
-	out := make([]int64, m.Size()/8)
-	for i := range out {
-		out[i] = int64(binary.LittleEndian.Uint64(uint8sl[i*8 : (i+1)*8]))
-	}
-	return out
-}
-
-// AsUint8Slice returns the contents of this map as a slice of unsigned 8-bit integers.
-func (m *MapInfo) AsUint8Slice() []uint8 {
-	out := make([]uint8, m.Size())
-	for i, t := range (*[1 << 30]uint8)(m.Data())[:m.Size():m.Size()] {
-		out[i] = t
-	}
-	return out
-}
-
-// AsUint16Slice returns the contents of this map as a slice of unsigned 16-bit integers.
-func (m *MapInfo) AsUint16Slice() []uint16 {
-	uint8sl := m.AsUint8Slice()
-	out := make([]uint16, m.Size()/2)
-	for i := range out {
-		out[i] = uint16(binary.LittleEndian.Uint16(uint8sl[i*2 : (i+1)*2]))
-	}
-	return out
-}
-
-// AsUint32Slice returns the contents of this map as a slice of unsigned 32-bit integers.
-func (m *MapInfo) AsUint32Slice() []uint32 {
-	uint8sl := m.AsUint8Slice()
-	out := make([]uint32, m.Size()/4)
-	for i := range out {
-		out[i] = uint32(binary.LittleEndian.Uint32(uint8sl[i*4 : (i+1)*4]))
-	}
-	return out
-}
-
-// AsUint64Slice returns the contents of this map as a slice of unsigned 64-bit integers.
-func (m *MapInfo) AsUint64Slice() []uint64 {
-	uint8sl := m.AsUint8Slice()
-	out := make([]uint64, m.Size()/8)
-	for i := range out {
-		out[i] = uint64(binary.LittleEndian.Uint64(uint8sl[i*8 : (i+1)*8]))
-	}
-	return out
-}
-
-// WriteData writes the given values directly to the map's memory.
-func (m *MapInfo) WriteData(data []uint8) {
-	for i, x := range data {
-		C.writeMapData(m.ptr, C.gint(i), C.guint8(x))
-	}
-}
-
-func wrapMapInfo(mapInfo *C.GstMapInfo, unmapFunc func()) *MapInfo {
-	info := &MapInfo{ptr: mapInfo}
-	runtime.SetFinalizer(info, func(_ *MapInfo) { unmapFunc() })
-	return info
 }

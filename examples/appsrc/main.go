@@ -71,11 +71,11 @@ func createPipeline() (*gst.Pipeline, error) {
 			fmt.Println("Producing frame:", i)
 
 			// Create a buffer that can hold exactly one video RGBA frame.
-			buf := gst.NewBufferWithSize(videoInfo.Size())
+			buffer := gst.NewBufferWithSize(videoInfo.Size())
 
 			// For each frame we produce, we set the timestamp when it should be displayed
 			// The autovideosink will use this information to display the frame at the right time.
-			buf.SetPresentationTimestamp(time.Duration(i) * 500 * time.Millisecond)
+			buffer.SetPresentationTimestamp(time.Duration(i) * 500 * time.Millisecond)
 
 			// Produce an image frame for this iteration.
 			pixels := produceImageFrame(palette[i])
@@ -87,10 +87,11 @@ func createPipeline() (*gst.Pipeline, error) {
 			//
 			// There are convenience wrappers for building buffers directly from byte sequences as
 			// well.
-			buf.Map(gst.MapWrite).WriteData(pixels)
+			buffer.Map(gst.MapWrite).WriteData(pixels)
+			defer buffer.Unmap()
 
 			// Push the buffer onto the pipeline.
-			self.PushBuffer(buf)
+			self.PushBuffer(buffer)
 
 			i++
 		},

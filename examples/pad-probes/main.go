@@ -60,6 +60,7 @@ func padProbes(mainLoop *gst.MainLoop) error {
 		// So mapping the buffer makes the underlying memory region accessible to us.
 		// See: https://gstreamer.freedesktop.org/documentation/plugin-development/advanced/allocation.html
 		mapInfo := buffer.Map(gst.MapRead)
+		defer buffer.Unmap()
 
 		// We know what format the data in the memory region has, since we requested
 		// it by setting the fakesink's caps. So what we do here is interpret the
