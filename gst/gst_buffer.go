@@ -367,66 +367,14 @@ func (b *Buffer) Extract(offset, size int64) []byte {
 // FillBytes adds the given byte slice to the buffer at the given offset. The return value reflects the amount
 // of data added to the buffer.
 func (b *Buffer) FillBytes(offset int64, data []byte) int64 {
-	str := string(data)
-	cStr := C.CString(str)
-	gsize := C.gst_buffer_fill(b.Instance(), C.gsize(offset), (C.gconstpointer)(unsafe.Pointer(cStr)), C.gsize(len(str)))
-	return int64(gsize)
-}
-
-// FillInt8Slice adds the given slice to the buffer at the given offset. The return value reflects the amount
-// of data added to the buffer.
-func (b *Buffer) FillInt8Slice(offset int64, data []int8) int64 {
-	gsize := C.gst_buffer_fill(b.Instance(), C.gsize(offset), (C.gconstpointer)(unsafe.Pointer(&data[0])), C.gsize(len(data)))
-	return int64(gsize)
-}
-
-// FillInt16Slice adds the given slice to the buffer at the given offset. The return value reflects the amount
-// of data added to the buffer.
-func (b *Buffer) FillInt16Slice(offset int64, data []int16) int64 {
-	gsize := C.gst_buffer_fill(b.Instance(), C.gsize(offset), (C.gconstpointer)(unsafe.Pointer(&data[0])), C.gsize(len(data)))
-	return int64(gsize)
-}
-
-// FillInt32Slice adds the given slice to the buffer at the given offset. The return value reflects the amount
-// of data added to the buffer.
-func (b *Buffer) FillInt32Slice(offset int64, data []int32) int64 {
-	gsize := C.gst_buffer_fill(b.Instance(), C.gsize(offset), (C.gconstpointer)(unsafe.Pointer(&data[0])), C.gsize(len(data)))
-	return int64(gsize)
-}
-
-// FillInt64Slice adds the given slice to the buffer at the given offset. The return value reflects the amount
-// of data added to the buffer.
-func (b *Buffer) FillInt64Slice(offset int64, data []int64) int64 {
-	gsize := C.gst_buffer_fill(b.Instance(), C.gsize(offset), (C.gconstpointer)(unsafe.Pointer(&data[0])), C.gsize(len(data)))
-	return int64(gsize)
-}
-
-// FillUint8Slice adds the given slice to the buffer at the given offset. The return value reflects the amount
-// of data added to the buffer.
-func (b *Buffer) FillUint8Slice(offset int64, data []uint8) int64 {
-	gsize := C.gst_buffer_fill(b.Instance(), C.gsize(offset), (C.gconstpointer)(unsafe.Pointer(&data[0])), C.gsize(len(data)))
-	return int64(gsize)
-}
-
-// FillUint16Slice adds the given slice to the buffer at the given offset. The return value reflects the amount
-// of data added to the buffer.
-func (b *Buffer) FillUint16Slice(offset int64, data []uint16) int64 {
-	gsize := C.gst_buffer_fill(b.Instance(), C.gsize(offset), (C.gconstpointer)(unsafe.Pointer(&data[0])), C.gsize(len(data)))
-	return int64(gsize)
-}
-
-// FillUint32Slice adds the given slice to the buffer at the given offset. The return value reflects the amount
-// of data added to the buffer.
-func (b *Buffer) FillUint32Slice(offset int64, data []uint32) int64 {
-	gsize := C.gst_buffer_fill(b.Instance(), C.gsize(offset), (C.gconstpointer)(unsafe.Pointer(&data[0])), C.gsize(len(data)))
-	return int64(gsize)
-}
-
-// FillUint64Slice adds the given slice to the buffer at the given offset. The return value reflects the amount
-// of data added to the buffer.
-func (b *Buffer) FillUint64Slice(offset int64, data []uint64) int64 {
-	gsize := C.gst_buffer_fill(b.Instance(), C.gsize(offset), (C.gconstpointer)(unsafe.Pointer(&data[0])), C.gsize(len(data)))
-	return int64(gsize)
+	gbytes := C.g_bytes_new((C.gconstpointer)(unsafe.Pointer(&data[0])), C.gsize(len(data)))
+	defer C.g_bytes_unref(gbytes)
+	var size C.gsize
+	gdata := C.g_bytes_get_data(gbytes, &size)
+	if gdata == nil {
+		return 0
+	}
+	return int64(C.gst_buffer_fill(b.Instance(), C.gsize(offset), gdata, size))
 }
 
 // FindMemory looks for the memory blocks that span size bytes starting from offset in buffer. Size can be -1
@@ -616,9 +564,15 @@ func (b *Buffer) IterateMetaFiltered(meta *Meta, apiType glib.Type) *Meta {
 }
 
 // Map will map the data inside this buffer. This function can return nil if the memory is not read or writable.
+// It is safe to call this function multiple times on a single Buffer, however it will retain the flags
+// used when mapping the first time. To change between read and write access first unmap and then remap the
+// buffer with the appropriate flags, or map initially with both read/write access.
 //
 // Unmap the Buffer after usage.
 func (b *Buffer) Map(flags MapFlags) *MapInfo {
+	if b.mapInfo != nil {
+		return b.mapInfo
+	}
 	mapInfo := C.malloc(C.sizeof_GstMapInfo)
 	C.gst_buffer_map(
 		(*C.GstBuffer)(b.Instance()),

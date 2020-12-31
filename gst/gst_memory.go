@@ -81,9 +81,15 @@ func (m *Memory) Copy(offset, size int64) *Memory {
 }
 
 // Map the data inside the memory. This function can return nil if the memory is not read or writable.
+// It is safe to call this function multiple times on the same Memory, however it will retain the flags
+// used when mapping the first time. To change between read and write access first unmap and then remap the
+// memory with the appropriate flags, or map initially with both read/write access.
 //
 // Unmap the Memory after usage.
 func (m *Memory) Map(flags MapFlags) *MapInfo {
+	if m.mapInfo != nil {
+		return m.mapInfo
+	}
 	mapInfo := C.malloc(C.sizeof_GstMapInfo)
 	C.gst_memory_map(
 		(*C.GstMemory)(m.Instance()),
