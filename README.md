@@ -33,6 +33,7 @@ For more examples see the `examples` folder [here](examples/).
 package main
 
 import (
+    "fmt"
     "os"
 
     "github.com/tinyzimmer/go-gst/gst"
@@ -47,7 +48,7 @@ func main() {
     gst.Init(nil)
 
     // Create a main loop. This is only required when utilizing signals via the bindings.
-    // For this example the AddWatch on the pipeline bus.
+    // In this example, the AddWatch on the pipeline bus requires iterating on the main loop.
     mainLoop := gst.NewMainLoop(gst.DefaultMainContext(), false)
     defer mainLoop.Unref()
 
@@ -83,7 +84,7 @@ func main() {
     // Start the pipeline
     pipeline.SetState(gst.StatePlaying)
 
-    // Block on the main loop
+    // Block and iterate on the main loop
     mainLoop.Run()
     
     // Destroy the pipeline
