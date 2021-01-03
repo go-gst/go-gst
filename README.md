@@ -91,7 +91,7 @@ func main() {
     mainLoop.Run()
     
     // Destroy the pipeline
-    if err := pipeline.Destroy() ; err != nil {
+    if err := pipeline.Destroy(); err != nil {
         fmt.Println("Error destroying the pipeline:", err)
     }
 }
