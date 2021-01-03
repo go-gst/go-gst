@@ -40,8 +40,10 @@ import (
 )
 
 func main() {
+    // This example expects a simple `gst-launch-1.0` string as arguments
     if len(os.Args) == 1 {
-        return errors.New("Pipeline string cannot be empty")
+        fmt.Println("Pipeline string cannot be empty")
+        os.Exit(1)
     }
 
     // Initialize GStreamer
@@ -58,7 +60,8 @@ func main() {
     /// Let GStreamer create a pipeline from the parsed launch syntax on the cli.
     pipeline, err := gst.NewPipelineFromString(pipelineString)
     if err != nil {
-        return err
+        fmt.Println("Pipeline string cannot be empty")
+        os.Exit(2)
     }
 
     // Add a message handler to the pipeline bus, printing interesting information to the console.
@@ -88,6 +91,8 @@ func main() {
     mainLoop.Run()
     
     // Destroy the pipeline
-    return pipeline.Destroy()
+    if err := pipeline.Destroy() ; err != nil {
+        fmt.Println("Error destroying the pipeline:", err)
+    }
 }
 ```
