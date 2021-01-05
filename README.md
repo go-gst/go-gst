@@ -10,7 +10,7 @@ Go bindings for the GStreamer C libraries
 See the [godoc.org](https://godoc.org/github.com/tinyzimmer/go-gst) or [pkg.go.dev](https://pkg.go.dev/github.com/tinyzimmer/go-gst) references for documentation and examples.
 As the latter requires published tags, see godoc.org for the latest documentation of master at any point in time.
 
-**This library has not been thoroughly tested and as such is not recommended for mission critical applications yet. If you'd like to try it out and encounter any bugs, feel free to open an Issue or PR.**
+**This library has not been thoroughly tested and as such is not recommended for mission critical applications yet. If you'd like to try it out and encounter any bugs, feel free to open an Issue or PR. For more information see the [Contributing](#contributing) section.**
 
 ## Requirements
 
@@ -96,3 +96,17 @@ func main() {
     }
 }
 ```
+
+## Contributing
+
+If you find any issues with the bindings or spot areas where things can be improved, feel free to open a PR or start an Issue. Here are a couple of the things on my radar already that I'd be happy to accept help with:
+
+ - Compilation times are insanely slow when working within the bindings. This could be alleviated by further separating aspects of Gstreamer core into their own packages, or removing bindings that would see no use in Go.
+
+ - There are a lot of quirks that make generators difficult to deal with for these bindings. That being said, I'd still like to find a way to start migrating some of them into generated code.
+
+ - The bindings are not structured in a way to make version matching with GStreamer easy. Basically, you need a version compatible with what the bindings were written with (>=1.16).
+
+ - More examples would be nice.
+
+ - Support for writing GStreamer plugins via the bindings. This is currently a work in progress on the `plugin-experimentation` branch.
