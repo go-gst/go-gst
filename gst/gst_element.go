@@ -147,23 +147,23 @@ func (e *Element) Emit(signal string, args ...interface{}) (interface{}, error) 
 	return e.Object.Emit(signal, args...)
 }
 
-// Info is a convenience wrapper for posting an info message from inside an element. Only to be used from
+// InfoMessage is a convenience wrapper for posting an info message from inside an element. Only to be used from
 // plugins.
-func (e *Element) Info(domain Domain, text string) {
+func (e *Element) InfoMessage(domain Domain, text string) {
 	function, file, line, _ := runtime.Caller(1)
 	e.MessageFull(MessageInfo, domain, ErrorCode(0), "", text, path.Base(file), runtime.FuncForPC(function).Name(), line)
 }
 
-// Warning is a convenience wrapper for posting a warning message from inside an element. Only to be used from
+// WarningMessage is a convenience wrapper for posting a warning message from inside an element. Only to be used from
 // plugins.
-func (e *Element) Warning(domain Domain, text string) {
+func (e *Element) WarningMessage(domain Domain, text string) {
 	function, file, line, _ := runtime.Caller(1)
 	e.MessageFull(MessageWarning, domain, ErrorCode(0), "", text, path.Base(file), runtime.FuncForPC(function).Name(), line)
 }
 
-// Error is a convenience wrapper for posting an error message from inside an element. Only to be used from
+// ErrorMessage is a convenience wrapper for posting an error message from inside an element. Only to be used from
 // plugins.
-func (e *Element) Error(domain Domain, code ErrorCode, text, debug string) {
+func (e *Element) ErrorMessage(domain Domain, code ErrorCode, text, debug string) {
 	function, file, line, _ := runtime.Caller(1)
 	e.MessageFull(MessageError, domain, code, text, debug, path.Base(file), runtime.FuncForPC(function).Name(), line)
 }

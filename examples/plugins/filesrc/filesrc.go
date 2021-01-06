@@ -28,6 +28,13 @@ import (
 	"github.com/tinyzimmer/go-gst/gst/base"
 )
 
+// CAT is the log category for the gofilesrc
+var CAT = gst.NewDebugCategory(
+	"gofilesrc",
+	gst.DebugColorNone,
+	"GoFileSrc Element",
+)
+
 // Here we define a list of ParamSpecs that will make up the properties for our element.
 // This element only has a single property, the location of the file to read from.
 // When getting and setting properties later on, you will reference them by their index in
@@ -152,12 +159,12 @@ func (f *fileSrc) SetProperty(self *gst.Object, id uint, value *glib.Value) {
 			val, _ = value.GetString()
 		}
 		if err := f.setLocation(val); err != nil {
-			gst.ToElement(self).Error(gst.DomainLibrary, gst.LibraryErrorSettings,
+			gst.ToElement(self).ErrorMessage(gst.DomainLibrary, gst.LibraryErrorSettings,
 				"Could not set location on object",
 				err.Error(),
 			)
 		}
-		gst.ToElement(self).Info(gst.DomainLibrary, fmt.Sprintf("Set location to %s", f.settings.location))
+		self.Log(CAT, gst.LevelInfo, fmt.Sprintf("Set location to %s", f.settings.location))
 	}
 }
 
@@ -174,7 +181,7 @@ func (f *fileSrc) GetProperty(self *gst.Object, id uint) *glib.Value {
 		if err == nil {
 			return val
 		}
-		gst.ToElement(self).Error(gst.DomainLibrary, gst.LibraryErrorSettings,
+		gst.ToElement(self).ErrorMessage(gst.DomainLibrary, gst.LibraryErrorSettings,
 			fmt.Sprintf("Could not convert %s to GValue", f.settings.location),
 			err.Error(),
 		)
@@ -203,7 +210,7 @@ func (f *fileSrc) GetSize(self *base.GstBaseSrc) (bool, int64) {
 	stat, err := f.state.file.Stat()
 	if err != nil {
 		// This should never happen
-		self.Error(gst.DomainResource, gst.ResourceErrorFailed,
+		self.ErrorMessage(gst.DomainResource, gst.ResourceErrorFailed,
 			"Could not retrieve fileinfo on opened file",
 			err.Error(),
 		)
@@ -216,19 +223,19 @@ func (f *fileSrc) GetSize(self *base.GstBaseSrc) (bool, int64) {
 // and any error encountered in the process is posted to the pipeline.
 func (f *fileSrc) Start(self *base.GstBaseSrc) bool {
 	if f.state.started {
-		self.Error(gst.DomainResource, gst.ResourceErrorSettings, "FileSrc is already started", "")
+		self.ErrorMessage(gst.DomainResource, gst.ResourceErrorSettings, "FileSrc is already started", "")
 		return false
 	}
 
 	if f.settings.location == "" {
-		self.Error(gst.DomainResource, gst.ResourceErrorSettings, "File location is not defined", "")
+		self.ErrorMessage(gst.DomainResource, gst.ResourceErrorSettings, "File location is not defined", "")
 		return false
 	}
 
 	var err error
 	f.state.file, err = os.OpenFile(f.settings.location, syscall.O_RDONLY, 0444)
 	if err != nil {
-		self.Error(gst.DomainResource, gst.ResourceErrorOpenRead,
+		self.ErrorMessage(gst.DomainResource, gst.ResourceErrorOpenRead,
 			fmt.Sprintf("Could not open file %s for reading", f.settings.location), err.Error())
 		return false
 	}
@@ -238,19 +245,19 @@ func (f *fileSrc) Start(self *base.GstBaseSrc) bool {
 
 	self.StartComplete(gst.FlowOK)
 
-	self.Info(gst.DomainResource, "Started")
+	self.Log(CAT, gst.LevelInfo, "Started")
 	return true
 }
 
 // Stop is called to stop the element. The file is closed and the local values are zeroed out.
 func (f *fileSrc) Stop(self *base.GstBaseSrc) bool {
 	if !f.state.started {
-		self.Error(gst.DomainResource, gst.ResourceErrorSettings, "FileSrc is not started", "")
+		self.ErrorMessage(gst.DomainResource, gst.ResourceErrorSettings, "FileSrc is not started", "")
 		return false
 	}
 
 	if err := f.state.file.Close(); err != nil {
-		self.Error(gst.DomainResource, gst.ResourceErrorClose, "Failed to close the source file", err.Error())
+		self.ErrorMessage(gst.DomainResource, gst.ResourceErrorClose, "Failed to close the source file", err.Error())
 		return false
 	}
 
@@ -258,7 +265,7 @@ func (f *fileSrc) Stop(self *base.GstBaseSrc) bool {
 	f.state.position = 0
 	f.state.started = false
 
-	self.Info(gst.DomainResource, "Stopped")
+	self.Log(CAT, gst.LevelInfo, "Stopped")
 	return true
 }
 
@@ -267,13 +274,13 @@ func (f *fileSrc) Stop(self *base.GstBaseSrc) bool {
 // where we currently are in the file. This is why we store the position in the file locally.
 func (f *fileSrc) Fill(self *base.GstBaseSrc, offset uint64, size uint, buffer *gst.Buffer) gst.FlowReturn {
 	if !f.state.started || f.state.file == nil {
-		self.Error(gst.DomainCore, gst.CoreErrorFailed, "Not started yet", "")
+		self.ErrorMessage(gst.DomainCore, gst.CoreErrorFailed, "Not started yet", "")
 		return gst.FlowError
 	}
 
 	if f.state.position != offset {
 		if _, err := f.state.file.Seek(int64(offset), 0); err != nil {
-			self.Error(gst.DomainResource, gst.ResourceErrorSeek,
+			self.ErrorMessage(gst.DomainResource, gst.ResourceErrorSeek,
 				fmt.Sprintf("Failed to seek to %d in file", offset), err.Error())
 			return gst.FlowError
 		}
@@ -282,7 +289,7 @@ func (f *fileSrc) Fill(self *base.GstBaseSrc, offset uint64, size uint, buffer *
 
 	out := make([]byte, int(size))
 	if _, err := f.state.file.Read(out); err != nil && err != io.EOF {
-		self.Error(gst.DomainResource, gst.ResourceErrorRead,
+		self.ErrorMessage(gst.DomainResource, gst.ResourceErrorRead,
 			fmt.Sprintf("Failed to read %d bytes from file at %d", size, offset), err.Error())
 		return gst.FlowError
 	}
@@ -291,7 +298,7 @@ func (f *fileSrc) Fill(self *base.GstBaseSrc, offset uint64, size uint, buffer *
 
 	bufmap := buffer.Map(gst.MapWrite)
 	if bufmap == nil {
-		self.Error(gst.DomainLibrary, gst.LibraryErrorFailed, "Failed to map buffer", "")
+		self.ErrorMessage(gst.DomainLibrary, gst.LibraryErrorFailed, "Failed to map buffer", "")
 		return gst.FlowError
 	}
 	defer buffer.Unmap()

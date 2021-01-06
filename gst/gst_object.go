@@ -69,18 +69,16 @@ func (o *Object) ListProperties() []*ParameterSpec {
 	defer C.g_free((C.gpointer)(props))
 	out := make([]*ParameterSpec, 0)
 	for _, prop := range (*[1 << 30]*C.GParamSpec)(unsafe.Pointer(props))[:size:size] {
-		var gval C.GValue
-		flags := ParameterFlags(prop.flags)
-		if flags.Has(ParameterReadable) {
-			C.g_object_get_property((*C.GObject)(o.Unsafe()), prop.name, &gval)
-		} else {
-			C.g_param_value_set_default((*C.GParamSpec)(prop), &gval)
-		}
 		C.g_param_spec_sink(prop) // steal the ref on the property
 		out = append(out, &ParameterSpec{
-			paramSpec:    prop,
-			defaultValue: glib.ValueFromNative(unsafe.Pointer(&gval)),
+			paramSpec: prop,
 		})
 	}
 	return out
+}
+
+// Log logs a message to the given category from this object using the currently registered
+// debugging handlers.
+func (o *Object) Log(cat *DebugCategory, level DebugLevel, message string) {
+	cat.Log(level, message, o)
 }

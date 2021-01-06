@@ -12,22 +12,14 @@ import (
 
 // ParameterSpec is a go representation of a C GParamSpec
 type ParameterSpec struct {
-	paramSpec    *C.GParamSpec
-	defaultValue *glib.Value
+	paramSpec *C.GParamSpec
 }
 
 // NewStringParameter returns a new ParameterSpec that will hold a string value.
 func NewStringParameter(name, nick, blurb string, defaultValue *string, flags ParameterFlags) *ParameterSpec {
 	var cdefault *C.gchar
-	var paramDefault *glib.Value
 	if defaultValue != nil {
 		cdefault = C.CString(*defaultValue)
-		var err error
-		paramDefault, err = glib.ValueInit(glib.TYPE_STRING)
-		if err != nil {
-			return nil
-		}
-		paramDefault.SetString(*defaultValue)
 	}
 	paramSpec := C.g_param_spec_string(
 		(*C.gchar)(C.CString(name)),
@@ -36,7 +28,7 @@ func NewStringParameter(name, nick, blurb string, defaultValue *string, flags Pa
 		(*C.gchar)(cdefault),
 		C.GParamFlags(flags),
 	)
-	return &ParameterSpec{paramSpec: paramSpec, defaultValue: paramDefault}
+	return &ParameterSpec{paramSpec: paramSpec}
 }
 
 // Name returns the name of this parameter.
@@ -62,12 +54,6 @@ func (p *ParameterSpec) ValueType() glib.Type {
 // OwnerType returns the Gtype for the owner of this parameter.
 func (p *ParameterSpec) OwnerType() glib.Type {
 	return glib.Type(p.paramSpec.owner_type)
-}
-
-// DefaultValue returns the default value for the parameter if it was included when the object
-// was instantiated. Otherwise it returns nil.
-func (p *ParameterSpec) DefaultValue() *glib.Value {
-	return p.defaultValue
 }
 
 // Unref the underlying paramater spec.
@@ -161,14 +147,6 @@ type FlagsValue struct {
 	ValueName, ValueNick string
 }
 
-// GetDefaultFlags returns the default flags for this parameter spec.
-func (p *ParameterSpec) GetDefaultFlags() int {
-	if p.DefaultValue() == nil {
-		return 0
-	}
-	return int(C.g_value_get_flags((*C.GValue)(p.DefaultValue().Native())))
-}
-
 // GetFlagValues returns the possible flags for this parameter.
 func (p *ParameterSpec) GetFlagValues() []*FlagsValue {
 	var gSize C.guint
@@ -183,18 +161,6 @@ func (p *ParameterSpec) GetFlagValues() []*FlagsValue {
 		}
 	}
 	return out
-}
-
-// GetCaps returns the caps in this parameter if it is of type GST_TYPE_CAPS.
-func (p *ParameterSpec) GetCaps() *Caps {
-	if p.DefaultValue() == nil {
-		return nil
-	}
-	caps := C.gst_value_get_caps((*C.GValue)(unsafe.Pointer(p.DefaultValue().Native())))
-	if caps == nil {
-		return nil
-	}
-	return wrapCaps(caps)
 }
 
 // ParameterFlags is a go cast of GParamFlags.
