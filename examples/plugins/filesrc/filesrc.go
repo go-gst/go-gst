@@ -232,8 +232,8 @@ func (f *fileSrc) Start(self *base.GstBaseSrc) bool {
 			fmt.Sprintf("Could not open file %s for reading", f.settings.location), err.Error())
 		return false
 	}
-	f.state.position = 0
 
+	f.state.position = 0
 	f.state.started = true
 
 	self.StartComplete(gst.FlowOK)
@@ -262,7 +262,7 @@ func (f *fileSrc) Stop(self *base.GstBaseSrc) bool {
 	return true
 }
 
-// Fill is called to fill a pre-allocated buffer with the data at offset to the given size.
+// Fill is called to fill a pre-allocated buffer with the data at offset up to the given size.
 // Since we declared that we are seekable, we need to support the provided offset not neccesarily matching
 // where we currently are in the file. This is why we store the position in the file locally.
 func (f *fileSrc) Fill(self *base.GstBaseSrc, offset uint64, size uint, buffer *gst.Buffer) gst.FlowReturn {
@@ -277,6 +277,7 @@ func (f *fileSrc) Fill(self *base.GstBaseSrc, offset uint64, size uint, buffer *
 				fmt.Sprintf("Failed to seek to %d in file", offset), err.Error())
 			return gst.FlowError
 		}
+		f.state.position = offset
 	}
 
 	out := make([]byte, int(size))
