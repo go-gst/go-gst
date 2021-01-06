@@ -209,6 +209,10 @@ func wrapAllocationParams(obj *C.GstAllocationParams) *AllocationParams {
 	return &AllocationParams{ptr: obj}
 }
 
+func wrapElementClass(klass C.gpointer) *ElementClass {
+	return &ElementClass{&ObjectClass{ptr: C.toGObjectClass(unsafe.Pointer(klass))}}
+}
+
 // Clock wrappers
 
 func clockTimeToDuration(n ClockTime) time.Duration {

@@ -111,3 +111,13 @@ func glistToStreamSlice(glist *C.GList) []*Stream {
 	})
 	return out
 }
+
+func glistToPadTemplateSlice(glist *C.GList) []*PadTemplate {
+	l := glib.WrapList(uintptr(unsafe.Pointer(&glist)))
+	out := make([]*PadTemplate, 0)
+	l.FreeFull(func(item interface{}) {
+		tmpl := item.(*C.GstPadTemplate)
+		out = append(out, wrapPadTemplate(toGObject(unsafe.Pointer(tmpl))))
+	})
+	return out
+}

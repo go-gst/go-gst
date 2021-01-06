@@ -13,12 +13,61 @@ import (
 // ParameterSpec is a go representation of a C GParamSpec
 type ParameterSpec struct {
 	paramSpec    *C.GParamSpec
-	Name         string
-	Blurb        string
-	Flags        ParameterFlags
-	ValueType    glib.Type
-	OwnerType    glib.Type
-	DefaultValue *glib.Value
+	defaultValue *glib.Value
+}
+
+// NewStringParameter returns a new ParameterSpec that will hold a string value.
+func NewStringParameter(name, nick, blurb string, defaultValue *string, flags ParameterFlags) *ParameterSpec {
+	var cdefault *C.gchar
+	var paramDefault *glib.Value
+	if defaultValue != nil {
+		cdefault = C.CString(*defaultValue)
+		var err error
+		paramDefault, err = glib.ValueInit(glib.TYPE_STRING)
+		if err != nil {
+			return nil
+		}
+		paramDefault.SetString(*defaultValue)
+	}
+	paramSpec := C.g_param_spec_string(
+		(*C.gchar)(C.CString(name)),
+		(*C.gchar)(C.CString(nick)),
+		(*C.gchar)(C.CString(blurb)),
+		(*C.gchar)(cdefault),
+		C.GParamFlags(flags),
+	)
+	return &ParameterSpec{paramSpec: paramSpec, defaultValue: paramDefault}
+}
+
+// Name returns the name of this parameter.
+func (p *ParameterSpec) Name() string {
+	return C.GoString(C.g_param_spec_get_name(p.paramSpec))
+}
+
+// Blurb returns the blurb for this parameter.
+func (p *ParameterSpec) Blurb() string {
+	return C.GoString(C.g_param_spec_get_blurb(p.paramSpec))
+}
+
+// Flags returns the flags for this parameter.
+func (p *ParameterSpec) Flags() ParameterFlags {
+	return ParameterFlags(p.paramSpec.flags)
+}
+
+// ValueType returns the GType for the value inside this parameter.
+func (p *ParameterSpec) ValueType() glib.Type {
+	return glib.Type(p.paramSpec.value_type)
+}
+
+// OwnerType returns the Gtype for the owner of this parameter.
+func (p *ParameterSpec) OwnerType() glib.Type {
+	return glib.Type(p.paramSpec.owner_type)
+}
+
+// DefaultValue returns the default value for the parameter if it was included when the object
+// was instantiated. Otherwise it returns nil.
+func (p *ParameterSpec) DefaultValue() *glib.Value {
+	return p.defaultValue
 }
 
 // Unref the underlying paramater spec.
@@ -114,7 +163,10 @@ type FlagsValue struct {
 
 // GetDefaultFlags returns the default flags for this parameter spec.
 func (p *ParameterSpec) GetDefaultFlags() int {
-	return int(C.g_value_get_flags((*C.GValue)(p.DefaultValue.Native())))
+	if p.DefaultValue() == nil {
+		return 0
+	}
+	return int(C.g_value_get_flags((*C.GValue)(p.DefaultValue().Native())))
 }
 
 // GetFlagValues returns the possible flags for this parameter.
@@ -135,7 +187,10 @@ func (p *ParameterSpec) GetFlagValues() []*FlagsValue {
 
 // GetCaps returns the caps in this parameter if it is of type GST_TYPE_CAPS.
 func (p *ParameterSpec) GetCaps() *Caps {
-	caps := C.gst_value_get_caps((*C.GValue)(unsafe.Pointer(p.DefaultValue.Native())))
+	if p.DefaultValue() == nil {
+		return nil
+	}
+	caps := C.gst_value_get_caps((*C.GValue)(unsafe.Pointer(p.DefaultValue().Native())))
 	if caps == nil {
 		return nil
 	}
@@ -150,8 +205,9 @@ func (p ParameterFlags) Has(b ParameterFlags) bool { return p&b != 0 }
 
 // Type casting of GParamFlags
 const (
-	ParameterReadable       ParameterFlags = C.G_PARAM_READABLE        // the parameter is readable
-	ParameterWritable                      = C.G_PARAM_WRITABLE        // the parameter is writable
+	ParameterReadable       ParameterFlags = C.G_PARAM_READABLE // the parameter is readable
+	ParameterWritable                      = C.G_PARAM_WRITABLE // the parameter is writable
+	ParameterReadWrite                     = ParameterReadable | ParameterWritable
 	ParameterConstruct                     = C.G_PARAM_CONSTRUCT       // the parameter will be set upon object construction
 	ParameterConstructOnly                 = C.G_PARAM_CONSTRUCT_ONLY  // the parameter can only be set upon object construction
 	ParameterLaxValidation                 = C.G_PARAM_LAX_VALIDATION  // upon parameter conversion (see g_param_value_convert()) strict validation is not required

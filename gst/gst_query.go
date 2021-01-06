@@ -14,6 +14,10 @@ type Query struct {
 	ptr *C.GstQuery
 }
 
+// FromGstQueryUnsafe wraps the pointer to the given C GstQuery with the go type.
+// This is meant for internal usage and is exported for visibility to other packages.
+func FromGstQueryUnsafe(query unsafe.Pointer) *Query { return wrapQuery((*C.GstQuery)(query)) }
+
 // NewAcceptCapsQuery constructs a new query object for querying if caps are accepted.
 func NewAcceptCapsQuery(caps *Caps) *Query {
 	return wrapQuery(C.gst_query_new_accept_caps(caps.Instance()))

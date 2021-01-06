@@ -79,12 +79,7 @@ func (o *Object) ListProperties() []*ParameterSpec {
 		C.g_param_spec_sink(prop) // steal the ref on the property
 		out = append(out, &ParameterSpec{
 			paramSpec:    prop,
-			Name:         C.GoString(C.g_param_spec_get_name(prop)),
-			Blurb:        C.GoString(C.g_param_spec_get_blurb(prop)),
-			Flags:        flags,
-			ValueType:    glib.Type(prop.value_type),
-			OwnerType:    glib.Type(prop.owner_type),
-			DefaultValue: glib.ValueFromNative(unsafe.Pointer(&gval)),
+			defaultValue: glib.ValueFromNative(unsafe.Pointer(&gval)),
 		})
 	}
 	return out

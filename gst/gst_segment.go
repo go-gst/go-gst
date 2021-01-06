@@ -2,11 +2,18 @@ package gst
 
 // #include "gst.go.h"
 import "C"
+import "unsafe"
 
 // Segment is a go wrapper around a GstSegment.
 // See: https://gstreamer.freedesktop.org/documentation/gstreamer/gstsegment.html?gi-language=c#GstSegment
 type Segment struct {
 	ptr *C.GstSegment
+}
+
+// FromGstSegmentUnsafe wraps the given C GstSegment in the go type. It is meant for internal usage
+// and exported for visibilty to other packages.
+func FromGstSegmentUnsafe(segment unsafe.Pointer) *Segment {
+	return wrapSegment((*C.GstSegment)(segment))
 }
 
 // NewSegment allocates and initializes a new Segment.

@@ -1,6 +1,8 @@
 package gst
 
-// #include "gst.go.h"
+/*
+#include "gst.go.h"
+*/
 import "C"
 import (
 	"errors"
@@ -10,7 +12,8 @@ import (
 )
 
 // InterfaceURIHandler represents the GstURIHandler interface GType. Use this when querying bins
-// for elements that implement a URIHandler.
+// for elements that implement a URIHandler, or when signaling that a GoElement provides this
+// interface.
 var InterfaceURIHandler = glib.Type(C.GST_TYPE_URI_HANDLER)
 
 // URIHandler represents an interface that elements can implement to provide URI handling
@@ -20,13 +23,13 @@ type URIHandler interface {
 	GetURI() string
 	// GetURIType returns the type of URI this element can handle.
 	GetURIType() URIType
-	// GetURIProtocols returns the protocols this element can handle.
-	GetURIProtocols() []string
+	// GetProtocols returns the protocols this element can handle.
+	GetProtocols() []string
 	// SetURI tries to set the URI of the given handler.
 	SetURI(string) (bool, error)
 }
 
-// gstURIHandler implements a URIHandler that is backed by an Element from the C runtime.
+// gstURIHandler implements a URIHandler that is backed by an Element from the C API.
 type gstURIHandler struct {
 	ptr *C.GstElement
 }
@@ -48,8 +51,8 @@ func (g *gstURIHandler) GetURIType() URIType {
 	return URIType(ty)
 }
 
-// GetURIProtocols returns the protocols this element can handle.
-func (g *gstURIHandler) GetURIProtocols() []string {
+// GetProtocols returns the protocols this element can handle.
+func (g *gstURIHandler) GetProtocols() []string {
 	protocols := C.gst_uri_handler_get_protocols((*C.GstURIHandler)(g.Instance()))
 	if protocols == nil {
 		return nil

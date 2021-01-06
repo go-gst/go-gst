@@ -39,6 +39,12 @@ type Buffer struct {
 	mapInfo *MapInfo
 }
 
+// FromGstBufferUnsafe wraps the given C GstBuffer in the go type. It is meant for internal usage
+// and exported for visibility to other packages.
+func FromGstBufferUnsafe(buf unsafe.Pointer) *Buffer {
+	return wrapBuffer((*C.GstBuffer)(buf))
+}
+
 // NewEmptyBuffer returns a new empty buffer.
 func NewEmptyBuffer() *Buffer {
 	return wrapBuffer(C.gst_buffer_new())

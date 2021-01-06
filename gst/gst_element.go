@@ -21,6 +21,8 @@ import "C"
 
 import (
 	"fmt"
+	"path"
+	"runtime"
 	"unsafe"
 
 	"github.com/gotk3/gotk3/glib"
@@ -29,6 +31,9 @@ import (
 
 // Element is a Go wrapper around a GstElement.
 type Element struct{ *Object }
+
+// ToElement returns an Element object for the given Object.
+func ToElement(obj *Object) *Element { return &Element{Object: obj} }
 
 // ElementLinkMany is a go implementation of `gst_element_link_many` to compensate for
 // no variadic functions in cgo.
@@ -45,24 +50,145 @@ func ElementLinkMany(elems ...*Element) error {
 	return nil
 }
 
+// Rank represents a level of importance when autoplugging elements.
+type Rank uint
+
+// For now just a single RankNone is provided
+const (
+	RankNone Rank = 0
+)
+
+// RegisterElement creates a new elementfactory capable of instantiating objects of the given GoElement
+// and adds the factory to the plugin. A higher rank means more importance when autoplugging.
+func RegisterElement(plugin *Plugin, name string, rank Rank, elem GoElement, extends Extendable) bool {
+	return gobool(C.gst_element_register(
+		plugin.Instance(),
+		C.CString(name),
+		C.guint(rank),
+		gtypeForGoElement(name, elem, extends),
+	))
+}
+
 // Instance returns the underlying GstElement instance.
 func (e *Element) Instance() *C.GstElement { return C.toGstElement(e.Unsafe()) }
 
-// Link wraps gst_element_link and links this element to the given one.
-func (e *Element) Link(elem *Element) error {
-	if ok := C.gst_element_link((*C.GstElement)(e.Instance()), (*C.GstElement)(elem.Instance())); !gobool(ok) {
-		return fmt.Errorf("Failed to link %s to %s", e.Name(), elem.Name())
+// AbortState aborts the state change of the element. This function is used by elements that do asynchronous state changes
+// and find out something is wrong.
+func (e *Element) AbortState() { C.gst_element_abort_state(e.Instance()) }
+
+// AddPad adds a pad (link point) to element. pad's parent will be set to element
+//
+// Pads are automatically activated when added in the PAUSED or PLAYING state.
+//
+// The pad and the element should be unlocked when calling this function.
+//
+// This function will emit the pad-added signal on the element.
+func (e *Element) AddPad(pad *Pad) bool {
+	return gobool(C.gst_element_add_pad(e.Instance(), pad.Instance()))
+}
+
+// BlockSetState is like SetState except it will block until the transition
+// is complete.
+func (e *Element) BlockSetState(state State) error {
+	if err := e.SetState(state); err != nil {
+		return err
 	}
+	cState := C.GstState(state)
+	var curState C.GstState
+	C.gst_element_get_state(
+		(*C.GstElement)(e.Instance()),
+		(*C.GstState)(unsafe.Pointer(&curState)),
+		(*C.GstState)(unsafe.Pointer(&cState)),
+		C.GstClockTime(ClockTimeNone),
+	)
 	return nil
 }
 
-// LinkFiltered wraps gst_element_link_filtered and link this element to the given one
-// using the provided sink caps.
-func (e *Element) LinkFiltered(elem *Element, caps *Caps) error {
-	if ok := C.gst_element_link_filtered((*C.GstElement)(e.Instance()), (*C.GstElement)(elem.Instance()), (*C.GstCaps)(caps.Instance())); !gobool(ok) {
-		return fmt.Errorf("Failed to link %s to %s with provider caps", e.Name(), elem.Name())
+// CallAsync calls f from another thread. This is to be used for cases when a state change has to be performed from a streaming
+// thread, directly via SetState or indirectly e.g. via SEEK events.
+//
+// Calling those functions directly from the streaming thread will cause deadlocks in many situations, as they might involve waiting
+// for the streaming thread to shut down from this very streaming thread.
+func (e *Element) CallAsync(f func()) {
+	ptr := gopointer.Save(f)
+	C.gst_element_call_async(
+		e.Instance(),
+		C.GstElementCallAsyncFunc(C.cgoElementCallAsync),
+		(C.gpointer)(unsafe.Pointer(ptr)),
+		C.GDestroyNotify(C.cgoElementAsyncDestroyNotify),
+	)
+}
+
+// Connect connects to the given signal on this element, and applies f as the callback. The callback must
+// match the signature of the expected callback from the documentation. However, instead of specifying C types
+// for arguments specify the go-gst equivalent (e.g. *gst.Element for almost all GstElement derivitives).
+//
+// This and the Emit() method may get moved down the hierarchy to the Object level at some point, since
+func (e *Element) Connect(signal string, f interface{}) (glib.SignalHandle, error) {
+	// Elements are sometimes their own type unique from TYPE_ELEMENT. So make sure a type marshaler
+	// is registered for whatever this type is. Use the built-in element marshaler.
+	if e.TypeFromInstance() != glib.Type(C.GST_TYPE_ELEMENT) {
+		glib.RegisterGValueMarshalers([]glib.TypeMarshaler{{T: e.TypeFromInstance(), F: marshalElement}})
 	}
-	return nil
+	return e.Object.Connect(signal, f, nil)
+}
+
+// Emit is a wrapper around g_signal_emitv() and emits the signal specified by the string s to an Object. Arguments to
+// callback functions connected to this signal must be specified in args. Emit() returns an interface{} which must be
+// type asserted as the Go equivalent type to the return value for native C callback.
+//
+// Note that this code is unsafe in that the types of values in args are not checked against whether they are suitable
+// for the callback.
+func (e *Element) Emit(signal string, args ...interface{}) (interface{}, error) {
+	// We are wrapping this for the same reason as Connect.
+	if e.TypeFromInstance() != glib.Type(C.GST_TYPE_ELEMENT) {
+		glib.RegisterGValueMarshalers([]glib.TypeMarshaler{{T: e.TypeFromInstance(), F: marshalElement}})
+	}
+	return e.Object.Emit(signal, args...)
+}
+
+// Info is a convenience wrapper for posting an info message from inside an element. Only to be used from
+// plugins.
+func (e *Element) Info(domain Domain, text string) {
+	function, file, line, _ := runtime.Caller(1)
+	e.MessageFull(MessageInfo, domain, ErrorCode(0), "", text, path.Base(file), runtime.FuncForPC(function).Name(), line)
+}
+
+// Warning is a convenience wrapper for posting a warning message from inside an element. Only to be used from
+// plugins.
+func (e *Element) Warning(domain Domain, text string) {
+	function, file, line, _ := runtime.Caller(1)
+	e.MessageFull(MessageWarning, domain, ErrorCode(0), "", text, path.Base(file), runtime.FuncForPC(function).Name(), line)
+}
+
+// Error is a convenience wrapper for posting an error message from inside an element. Only to be used from
+// plugins.
+func (e *Element) Error(domain Domain, code ErrorCode, text, debug string) {
+	function, file, line, _ := runtime.Caller(1)
+	e.MessageFull(MessageError, domain, code, text, debug, path.Base(file), runtime.FuncForPC(function).Name(), line)
+}
+
+// MessageFull will post an error, warning, or info message on the bus from inside an element. Only to be used
+// from plugins.
+func (e *Element) MessageFull(msgType MessageType, domain Domain, code ErrorCode, text, debug, file, function string, line int) {
+	var cTxt, cDbg unsafe.Pointer
+	if text != "" {
+		cTxt = unsafe.Pointer(C.CString(text))
+	}
+	if debug != "" {
+		cDbg = unsafe.Pointer(C.CString(debug))
+	}
+	C.gst_element_message_full(
+		e.Instance(),
+		C.GstMessageType(msgType),
+		newQuarkFromString(string(domain)),
+		C.gint(code),
+		(*C.gchar)(cTxt),
+		(*C.gchar)(cDbg),
+		C.CString(file),
+		C.CString(function),
+		C.gint(line),
+	)
 }
 
 // GetBus returns the GstBus for retrieving messages from this element. This function returns
@@ -85,37 +211,6 @@ func (e *Element) GetClock() *Clock {
 	return wrapClock(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(cClock))})
 }
 
-// GetState returns the current state of this element.
-func (e *Element) GetState() State {
-	return State(e.Instance().current_state)
-}
-
-// SetState sets the target state for this element.
-func (e *Element) SetState(state State) error {
-	stateRet := C.gst_element_set_state((*C.GstElement)(e.Instance()), C.GstState(state))
-	if stateRet == C.GST_STATE_CHANGE_FAILURE {
-		return fmt.Errorf("Failed to change state to %s", state.String())
-	}
-	return nil
-}
-
-// BlockSetState is like SetState except it will block until the transition
-// is complete.
-func (e *Element) BlockSetState(state State) error {
-	if err := e.SetState(state); err != nil {
-		return err
-	}
-	cState := C.GstState(state)
-	var curState C.GstState
-	C.gst_element_get_state(
-		(*C.GstElement)(e.Instance()),
-		(*C.GstState)(unsafe.Pointer(&curState)),
-		(*C.GstState)(unsafe.Pointer(&cState)),
-		C.GstClockTime(ClockTimeNone),
-	)
-	return nil
-}
-
 // GetFactory returns the factory that created this element. No refcounting is needed.
 func (e *Element) GetFactory() *ElementFactory {
 	factory := C.gst_element_get_factory((*C.GstElement)(e.Instance()))
@@ -136,18 +231,6 @@ func (e *Element) GetPads() []*Pad {
 	return out
 }
 
-// GetStaticPad retrieves a pad from element by name. This version only retrieves
-// already-existing (i.e. 'static') pads.
-func (e *Element) GetStaticPad(name string) *Pad {
-	cname := C.CString(name)
-	defer C.free(unsafe.Pointer(cname))
-	pad := C.gst_element_get_static_pad(e.Instance(), (*C.gchar)(unsafe.Pointer(cname)))
-	if pad == nil {
-		return nil
-	}
-	return wrapPad(toGObject(unsafe.Pointer(pad)))
-}
-
 // GetPadTemplates retrieves a list of the pad templates associated with this element.
 // The list must not be modified by the calling code.
 func (e *Element) GetPadTemplates() []*PadTemplate {
@@ -164,6 +247,23 @@ func (e *Element) GetPadTemplates() []*PadTemplate {
 	return out
 }
 
+// GetState returns the current state of this element.
+func (e *Element) GetState() State {
+	return State(e.Instance().current_state)
+}
+
+// GetStaticPad retrieves a pad from element by name. This version only retrieves
+// already-existing (i.e. 'static') pads.
+func (e *Element) GetStaticPad(name string) *Pad {
+	cname := C.CString(name)
+	defer C.free(unsafe.Pointer(cname))
+	pad := C.gst_element_get_static_pad(e.Instance(), (*C.gchar)(unsafe.Pointer(cname)))
+	if pad == nil {
+		return nil
+	}
+	return wrapPad(toGObject(unsafe.Pointer(pad)))
+}
+
 // Has returns true if this element has the given flags.
 func (e *Element) Has(flags ElementFlags) bool {
 	return gobool(C.gstObjectFlagIsSet(C.toGstObject(e.Unsafe()), C.GstElementFlags(flags)))
@@ -174,34 +274,21 @@ func (e *Element) IsURIHandler() bool {
 	return gobool(C.gstElementIsURIHandler(e.Instance()))
 }
 
-// URIHandler returns a URIHandler interface if implemented by this element. Otherwise it
-// returns nil. Currently this only supports elements built through this package, however,
-// inner application elements could still use the interface as a reference implementation.
-func (e *Element) URIHandler() URIHandler {
-	if C.toGstURIHandler(e.Unsafe()) == nil {
-		return nil
+// Link wraps gst_element_link and links this element to the given one.
+func (e *Element) Link(elem *Element) error {
+	if ok := C.gst_element_link((*C.GstElement)(e.Instance()), (*C.GstElement)(elem.Instance())); !gobool(ok) {
+		return fmt.Errorf("Failed to link %s to %s", e.Name(), elem.Name())
 	}
-	return &gstURIHandler{ptr: e.Instance()}
+	return nil
 }
 
-// TOCSetter returns a TOCSetter interface if implemented by this element. Otherwise it
-// returns nil. Currently this only supports elements built through this package, however,
-// inner application elements could still use the interface as a reference implementation.
-func (e *Element) TOCSetter() TOCSetter {
-	if C.toTocSetter(e.Instance()) == nil {
-		return nil
+// LinkFiltered wraps gst_element_link_filtered and link this element to the given one
+// using the provided sink caps.
+func (e *Element) LinkFiltered(elem *Element, caps *Caps) error {
+	if ok := C.gst_element_link_filtered((*C.GstElement)(e.Instance()), (*C.GstElement)(elem.Instance()), (*C.GstCaps)(caps.Instance())); !gobool(ok) {
+		return fmt.Errorf("Failed to link %s to %s with provider caps", e.Name(), elem.Name())
 	}
-	return &gstTOCSetter{ptr: e.Instance()}
-}
-
-// TagSetter returns a TagSetter interface if implemented by this element. Otherwise it returns nil.
-// This currently only supports elements built through this package's bindings, however, inner application
-// elements can still implement the interface themselves if they want.
-func (e *Element) TagSetter() TagSetter {
-	if C.toTagSetter(e.Instance()) == nil {
-		return nil
-	}
-	return &gstTagSetter{ptr: e.Instance()}
+	return nil
 }
 
 // Query performs a query on the given element.
@@ -253,32 +340,13 @@ func (e *Element) SendEvent(ev *Event) bool {
 	return gobool(C.gst_element_send_event(e.Instance(), ev.Instance()))
 }
 
-// Connect connects to the given signal on this element, and applies f as the callback. The callback must
-// match the signature of the expected callback from the documentation. However, instead of specifying C types
-// for arguments specify the go-gst equivalent (e.g. *gst.Element for almost all GstElement derivitives).
-//
-// This and the Emit() method may get moved down the hierarchy to the Object level at some point, since
-func (e *Element) Connect(signal string, f interface{}) (glib.SignalHandle, error) {
-	// Elements are sometimes their own type unique from TYPE_ELEMENT. So make sure a type marshaler
-	// is registered for whatever this type is. Use the built-in element marshaler.
-	if e.TypeFromInstance() != glib.Type(C.GST_TYPE_ELEMENT) {
-		glib.RegisterGValueMarshalers([]glib.TypeMarshaler{{T: e.TypeFromInstance(), F: marshalElement}})
+// SetState sets the target state for this element.
+func (e *Element) SetState(state State) error {
+	stateRet := C.gst_element_set_state((*C.GstElement)(e.Instance()), C.GstState(state))
+	if stateRet == C.GST_STATE_CHANGE_FAILURE {
+		return fmt.Errorf("Failed to change state to %s", state.String())
 	}
-	return e.Object.Connect(signal, f, nil)
-}
-
-// Emit is a wrapper around g_signal_emitv() and emits the signal specified by the string s to an Object. Arguments to
-// callback functions connected to this signal must be specified in args. Emit() returns an interface{} which must be
-// type asserted as the Go equivalent type to the return value for native C callback.
-//
-// Note that this code is unsafe in that the types of values in args are not checked against whether they are suitable
-// for the callback.
-func (e *Element) Emit(signal string, args ...interface{}) (interface{}, error) {
-	// We are wrapping this for the same reason as Connect.
-	if e.TypeFromInstance() != glib.Type(C.GST_TYPE_ELEMENT) {
-		glib.RegisterGValueMarshalers([]glib.TypeMarshaler{{T: e.TypeFromInstance(), F: marshalElement}})
-	}
-	return e.Object.Emit(signal, args...)
+	return nil
 }
 
 // SyncStateWithParent tries to change the state of the element to the same as its parent. If this function returns
@@ -287,32 +355,32 @@ func (e *Element) SyncStateWithParent() bool {
 	return gobool(C.gst_element_sync_state_with_parent(e.Instance()))
 }
 
-// AbortState aborts the state change of the element. This function is used by elements that do asynchronous state changes
-// and find out something is wrong.
-func (e *Element) AbortState() { C.gst_element_abort_state(e.Instance()) }
-
-// AddPad adds a pad (link point) to element. pad's parent will be set to element
-//
-// Pads are automatically activated when added in the PAUSED or PLAYING state.
-//
-// The pad and the element should be unlocked when calling this function.
-//
-// This function will emit the pad-added signal on the element.
-func (e *Element) AddPad(pad *Pad) bool {
-	return gobool(C.gst_element_add_pad(e.Instance(), pad.Instance()))
+// TOCSetter returns a TOCSetter interface if implemented by this element. Otherwise it
+// returns nil. Currently this only supports elements built through this package, however,
+// inner application elements could still use the interface as a reference implementation.
+func (e *Element) TOCSetter() TOCSetter {
+	if C.toTocSetter(e.Instance()) == nil {
+		return nil
+	}
+	return &gstTOCSetter{ptr: e.Instance()}
 }
 
-// CallAsync calls f from another thread. This is to be used for cases when a state change has to be performed from a streaming
-// thread, directly via SetState or indirectly e.g. via SEEK events.
-//
-// Calling those functions directly from the streaming thread will cause deadlocks in many situations, as they might involve waiting
-// for the streaming thread to shut down from this very streaming thread.
-func (e *Element) CallAsync(f func()) {
-	ptr := gopointer.Save(f)
-	C.gst_element_call_async(
-		e.Instance(),
-		C.GstElementCallAsyncFunc(C.cgoElementCallAsync),
-		(C.gpointer)(unsafe.Pointer(ptr)),
-		C.GDestroyNotify(C.cgoElementAsyncDestroyNotify),
-	)
+// TagSetter returns a TagSetter interface if implemented by this element. Otherwise it returns nil.
+// This currently only supports elements built through this package's bindings, however, inner application
+// elements can still implement the interface themselves if they want.
+func (e *Element) TagSetter() TagSetter {
+	if C.toTagSetter(e.Instance()) == nil {
+		return nil
+	}
+	return &gstTagSetter{ptr: e.Instance()}
+}
+
+// URIHandler returns a URIHandler interface if implemented by this element. Otherwise it
+// returns nil. Currently this only supports elements built through this package, however,
+// inner application elements could still use the interface as a reference implementation.
+func (e *Element) URIHandler() URIHandler {
+	if C.toGstURIHandler(e.Unsafe()) == nil {
+		return nil
+	}
+	return &gstURIHandler{ptr: e.Instance()}
 }

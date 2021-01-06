@@ -7,7 +7,7 @@ type GError struct {
 	structure        *Structure
 
 	// used for message constructors
-	code int
+	code ErrorCode
 }
 
 // Message is an alias to `Error()`. It's for clarity when this object
@@ -23,9 +23,11 @@ func (e *GError) DebugString() string { return e.debugStr }
 // Structure returns the structure of the error message which may contain additional metadata.
 func (e *GError) Structure() *Structure { return e.structure }
 
-// NewGError wraps the given error inside a GError (to be used with message constructors). The code
-// is optional and allows for adding additional "types" to the error.
-func NewGError(code int, err error) *GError {
+// Code returns the error code of the error message.
+func (e *GError) Code() ErrorCode { return e.code }
+
+// NewGError wraps the given error inside a GError (to be used with message constructors).
+func NewGError(code ErrorCode, err error) *GError {
 	return &GError{
 		errMsg: err.Error(),
 		code:   code,

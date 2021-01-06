@@ -5,6 +5,32 @@ import "C"
 
 import "unsafe"
 
+// Version represents information about the current GST version.
+type Version int
+
+const (
+	// VersionMajor is the major version number of the GStreamer core.
+	VersionMajor Version = C.GST_VERSION_MAJOR
+	// VersionMinor is the minor version number of the GStreamer core.
+	VersionMinor Version = C.GST_VERSION_MINOR
+)
+
+// License represents a type of license used on a plugin.
+type License string
+
+// Types of licenses
+const (
+	LicenseLGPL        License = "LGPL"
+	LicenseGPL         License = "GPL"
+	LicenseQPL         License = "QPL"
+	LicenseGPLQPL      License = "GPL/QPL"
+	LicenseMPL         License = "MPL"
+	LicenseBSD         License = "BSD"
+	LicenseMIT         License = "MIT/X11"
+	LicenseProprietary License = "Proprietary"
+	LicenseUnknown     License = "unknown"
+)
+
 // GFraction is a helper structure for building fractions for functions that require them.
 type GFraction struct {
 	num, denom int
@@ -382,20 +408,20 @@ type PadDirection int
 
 // Type casting of pad directions
 const (
-	PadUnknown PadDirection = C.GST_PAD_UNKNOWN // (0) - the direction is unknown
-	PadSource  PadDirection = C.GST_PAD_SRC     // (1) - the pad is a source pad
-	PadSink    PadDirection = C.GST_PAD_SINK    // (2) - the pad is a sink pad
+	PadDirectionUnknown PadDirection = C.GST_PAD_UNKNOWN // (0) - the direction is unknown
+	PadDirectionSource  PadDirection = C.GST_PAD_SRC     // (1) - the pad is a source pad
+	PadDirectionSink    PadDirection = C.GST_PAD_SINK    // (2) - the pad is a sink pad
 )
 
 // String implements a Stringer on PadDirection.
 func (p PadDirection) String() string {
 	switch p {
-	case PadUnknown:
-		return "Unknown"
-	case PadSource:
-		return "Src"
-	case PadSink:
-		return "Sink"
+	case PadDirectionUnknown:
+		return "unknown"
+	case PadDirectionSource:
+		return "src"
+	case PadDirectionSink:
+		return "sink"
 	}
 	return ""
 }
@@ -424,20 +450,20 @@ type PadPresence int
 
 // Type casting of pad presences
 const (
-	PadAlways    PadPresence = C.GST_PAD_ALWAYS    // (0) - the pad is always available
-	PadSometimes PadPresence = C.GST_PAD_SOMETIMES // (1) - the pad will become available depending on the media stream
-	PadRequest   PadPresence = C.GST_PAD_REQUEST   // (2) - the pad is only available on request with gst_element_request_pad.
+	PadPresenceAlways    PadPresence = C.GST_PAD_ALWAYS    // (0) - the pad is always available
+	PadPresenceSometimes PadPresence = C.GST_PAD_SOMETIMES // (1) - the pad will become available depending on the media stream
+	PadPresenceRequest   PadPresence = C.GST_PAD_REQUEST   // (2) - the pad is only available on request with gst_element_request_pad.
 )
 
 // String implements a stringer on PadPresence.
 func (p PadPresence) String() string {
 	switch p {
-	case PadAlways:
-		return "Always"
-	case PadSometimes:
-		return "Sometimes"
-	case PadRequest:
-		return "Request"
+	case PadPresenceAlways:
+		return "always"
+	case PadPresenceSometimes:
+		return "sometimes"
+	case PadPresenceRequest:
+		return "request"
 	}
 	return ""
 }

@@ -3,10 +3,14 @@
 
 #include <stdlib.h>
 #include <gst/gst.h>
+#include <gst/base/gstbasesrc.h>
 
 /*
 	Type Castings
 */
+
+inline GType                  objectGType            (GObject *obj) { return G_OBJECT_TYPE(obj); };
+inline GObjectClass *         toGObjectClass         (void *p)      { return (G_OBJECT_CLASS(p)); }
 
 inline GstAllocator *         toGstAllocator         (void *p) { return (GST_ALLOCATOR_CAST(p)); }
 inline GstBin *               toGstBin               (void *p) { return (GST_BIN(p)); }
@@ -20,6 +24,7 @@ inline GstClock *             toGstClock             (void *p) { return (GST_CLO
 inline GstContext *           toGstContext           (void *p) { return (GST_CONTEXT_CAST(p)); }
 inline GstDevice *            toGstDevice            (void *p) { return (GST_DEVICE_CAST(p)); }
 inline GstElementFactory *    toGstElementFactory    (void *p) { return (GST_ELEMENT_FACTORY(p)); }
+inline GstElementClass *      toGstElementClass      (void *p) { return (GST_ELEMENT_CLASS(p)); }
 inline GstElement *           toGstElement           (void *p) { return (GST_ELEMENT(p)); }
 inline GstEvent *             toGstEvent             (void *p) { return (GST_EVENT(p)); }
 inline GstGhostPad *          toGstGhostPad          (void *p) { return (GST_GHOST_PAD(p)); }

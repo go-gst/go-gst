@@ -15,6 +15,10 @@ type Event struct {
 	ptr *C.GstEvent
 }
 
+// FromGstEventUnsafe wraps the pointer to the given C GstEvent with the go type.
+// This is meant for internal usage and is exported for visibility to other packages.
+func FromGstEventUnsafe(ev unsafe.Pointer) *Event { return wrapEvent((*C.GstEvent)(ev)) }
+
 // Instance returns the underlying GstEvent instance.
 func (e *Event) Instance() *C.GstEvent { return C.toGstEvent(unsafe.Pointer(e.ptr)) }
 
