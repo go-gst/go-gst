@@ -98,7 +98,7 @@ func (f *fileSrc) setLocation(path string) error {
 // The ObjectSubclass implementations below are for registering the various aspects of our
 // element and its capabilities with the type system.
 
-// Every element needs to provide its own constructor that returns the an initialized
+// Every element needs to provide its own constructor that returns an initialized
 // gst.GoElement implementation. Here we simply create a new fileSrc with zeroed settings
 // and state objects.
 func (f *fileSrc) New() gst.GoElement {
@@ -108,13 +108,13 @@ func (f *fileSrc) New() gst.GoElement {
 	}
 }
 
-// The TypeInit method  should register any additional interfaces provided by the element.
+// The TypeInit method should register any additional interfaces provided by the element.
 // In this example we signal to the type system that we also implement the GstURIHandler interface.
 func (f *fileSrc) TypeInit(instance *gst.TypeInstance) {
 	instance.AddInterface(gst.InterfaceURIHandler)
 }
 
-// The ClassInit method should specify the metadata for this element as well as add any pad templates
+// The ClassInit method should specify the metadata for this element and add any pad templates
 // and properties.
 func (f *fileSrc) ClassInit(klass *gst.ElementClass) {
 	klass.SetMetadata(
@@ -183,7 +183,7 @@ func (f *fileSrc) GetProperty(self *gst.Object, id uint) *glib.Value {
 }
 
 // Constructed is called when the type system is done constructing the object. Any finalizations required
-// during the initializatin cycle can be performed here. In this example, we set the format on our
+// during the initialization process can be performed here. In this example, we set the format on our
 // underlying GstBaseSrc to bytes.
 func (f *fileSrc) Constructed(self *gst.Object) {
 	base.ToGstBaseSrc(self).SetFormat(gst.FormatBytes)
