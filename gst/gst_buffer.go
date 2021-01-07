@@ -598,6 +598,7 @@ func (b *Buffer) Unmap() {
 		return
 	}
 	C.gst_buffer_unmap(b.Instance(), (*C.GstMapInfo)(b.mapInfo.Instance()))
+	C.free(unsafe.Pointer(b.mapInfo.Instance()))
 }
 
 // MapRange maps the info of length merged memory blocks starting at idx in buffer.

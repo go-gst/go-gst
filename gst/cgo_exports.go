@@ -258,6 +258,7 @@ func goClassInit(klass C.gpointer, klassData C.gpointer) {
 	data.ext.InitClass(unsafe.Pointer(klass), data.elem)
 
 	C.g_type_class_add_private(klass, C.gsize(unsafe.Sizeof(uintptr(0))))
+
 	data.elem.ClassInit(wrapElementClass(klass))
 }
 
@@ -310,13 +311,17 @@ func goURIHdlrSetURI(hdlr *C.GstURIHandler, uri *C.gchar, gerr **C.GError) C.gbo
 
 //export goObjectSetProperty
 func goObjectSetProperty(obj *C.GObject, propID C.guint, val *C.GValue, param *C.GParamSpec) {
-	iface := FromObjectUnsafePrivate(unsafe.Pointer(obj))
+	iface := FromObjectUnsafePrivate(unsafe.Pointer(obj)).(interface {
+		SetProperty(obj *Object, id uint, value *glib.Value)
+	})
 	iface.SetProperty(wrapObject(toGObject(unsafe.Pointer(obj))), uint(propID-1), glib.ValueFromNative(unsafe.Pointer(val)))
 }
 
 //export goObjectGetProperty
 func goObjectGetProperty(obj *C.GObject, propID C.guint, value *C.GValue, param *C.GParamSpec) {
-	iface := FromObjectUnsafePrivate(unsafe.Pointer(obj))
+	iface := FromObjectUnsafePrivate(unsafe.Pointer(obj)).(interface {
+		GetProperty(obj *Object, id uint) *glib.Value
+	})
 	val := iface.GetProperty(wrapObject(toGObject(unsafe.Pointer(obj))), uint(propID-1))
 	if val == nil {
 		return
@@ -326,7 +331,9 @@ func goObjectGetProperty(obj *C.GObject, propID C.guint, value *C.GValue, param 
 
 //export goObjectConstructed
 func goObjectConstructed(obj *C.GObject) {
-	iface := FromObjectUnsafePrivate(unsafe.Pointer(obj))
+	iface := FromObjectUnsafePrivate(unsafe.Pointer(obj)).(interface {
+		Constructed(*Object)
+	})
 	iface.Constructed(wrapObject(toGObject(unsafe.Pointer(obj))))
 }
 

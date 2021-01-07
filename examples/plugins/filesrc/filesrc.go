@@ -90,7 +90,8 @@ func (f *fileSrc) setLocation(path string) error {
 }
 
 // The ObjectSubclass implementations below are for registering the various aspects of our
-// element and its capabilities with the type system.
+// element and its capabilities with the type system. These are the minimum methods that
+// should be implemented by an element.
 
 // Every element needs to provide its own constructor that returns an initialized
 // gst.GoElement implementation. Here we simply create a new fileSrc with zeroed settings
@@ -132,9 +133,12 @@ func (f *fileSrc) ClassInit(klass *gst.ElementClass) {
 	klass.InstallProperties(properties)
 }
 
-// Object implementations are used during the initialization of element. The
-// methods are called once the obejct is constructed and its properties are read
-// and written to.
+// Object implementations are used during the initialization of an element. The
+// methods are called once the object is constructed and its properties are read
+// and written to. These and the rest of the methods described below are documented
+// in interfaces in the bindings, however only individual methods needs from those
+// interfaces need to be implemented. When left unimplemented, the behavior of the parent
+// class is inherited.
 
 // SetProperty is called when a `value` is set to the property at index `id` in the
 // properties slice that we installed during ClassInit. It should attempt to register

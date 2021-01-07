@@ -109,6 +109,7 @@ func (m *Memory) Unmap() {
 		return
 	}
 	C.gst_memory_unmap(m.Instance(), (*C.GstMapInfo)(m.mapInfo.Instance()))
+	C.free(unsafe.Pointer(m.mapInfo.Instance()))
 }
 
 // Bytes will return a byte slice of the data inside this memory if it is readable.

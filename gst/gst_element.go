@@ -384,3 +384,16 @@ func (e *Element) URIHandler() URIHandler {
 	}
 	return &gstURIHandler{ptr: e.Instance()}
 }
+
+// ExtendsElement signifies a GoElement that extends a GstElement.
+var ExtendsElement Extendable = &extendElement{parent: ExtendsObject}
+
+type extendElement struct{ parent Extendable }
+
+func (e *extendElement) Type() glib.Type     { return glib.Type(C.gst_element_get_type()) }
+func (e *extendElement) ClassSize() int64    { return int64(C.sizeof_GstElementClass) }
+func (e *extendElement) InstanceSize() int64 { return int64(C.sizeof_GstElement) }
+
+func (e *extendElement) InitClass(klass unsafe.Pointer, elem GoElement) {
+	e.parent.InitClass(klass, elem)
+}

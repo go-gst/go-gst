@@ -19,6 +19,7 @@ import "C"
 import (
 	"path"
 	"runtime"
+	"unsafe"
 )
 
 // DebugColorFlags are terminal style flags you can use when creating your debugging
@@ -98,14 +99,20 @@ func NewDebugCategory(name string, color DebugColorFlags, description string) *D
 
 func (d *DebugCategory) logDepth(level DebugLevel, message string, depth int, obj *C.GObject) {
 	function, file, line, _ := runtime.Caller(depth)
+	cFile := C.CString(path.Base(file))
+	cFunc := C.CString(runtime.FuncForPC(function).Name())
+	cMsg := C.CString(message)
+	defer C.free(unsafe.Pointer(cFile))
+	defer C.free(unsafe.Pointer(cFunc))
+	defer C.free(unsafe.Pointer(cMsg))
 	C.cgoDebugLog(
 		d.ptr,
 		C.GstDebugLevel(level),
-		C.CString(path.Base(file)),
-		(C.CString(runtime.FuncForPC(function).Name())),
+		(*C.gchar)(cFile),
+		(*C.gchar)(cFunc),
 		C.gint(line),
 		obj,
-		C.CString(message),
+		(*C.gchar)(cMsg),
 	)
 }
 

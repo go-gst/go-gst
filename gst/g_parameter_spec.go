@@ -11,9 +11,7 @@ import (
 )
 
 // ParameterSpec is a go representation of a C GParamSpec
-type ParameterSpec struct {
-	paramSpec *C.GParamSpec
-}
+type ParameterSpec struct{ paramSpec *C.GParamSpec }
 
 // NewStringParameter returns a new ParameterSpec that will hold a string value.
 func NewStringParameter(name, nick, blurb string, defaultValue *string, flags ParameterFlags) *ParameterSpec {

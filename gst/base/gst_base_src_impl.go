@@ -56,7 +56,7 @@ import (
 
 var (
 	// ExtendsBaseSrc is an Extendable for extending a GstBaseSrc
-	ExtendsBaseSrc gst.Extendable = &extendsBaseSrc{}
+	ExtendsBaseSrc gst.Extendable = &extendsBaseSrc{parent: gst.ExtendsElement}
 )
 
 // GstBaseSrcImpl is the documented interface for an element extending a GstBaseSrc. It does not have to
@@ -109,7 +109,7 @@ type GstBaseSrcImpl interface {
 	Fill(self *GstBaseSrc, offset uint64, size uint, buffer *gst.Buffer) gst.FlowReturn
 }
 
-type extendsBaseSrc struct{}
+type extendsBaseSrc struct{ parent gst.Extendable }
 
 func (e *extendsBaseSrc) Type() glib.Type     { return glib.Type(C.gst_base_src_get_type()) }
 func (e *extendsBaseSrc) ClassSize() int64    { return int64(C.sizeof_GstBaseSrcClass) }
@@ -118,6 +118,8 @@ func (e *extendsBaseSrc) InstanceSize() int64 { return int64(C.sizeof_GstBaseSrc
 // InitClass iterates the methods provided by the element and overrides any provided
 // in the virtual methods.
 func (e *extendsBaseSrc) InitClass(klass unsafe.Pointer, elem gst.GoElement) {
+	e.parent.InitClass(klass, elem)
+
 	class := C.toGstBaseSrcClass(klass)
 
 	if _, ok := elem.(interface {
