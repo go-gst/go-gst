@@ -55,6 +55,8 @@ type state struct {
 	started bool
 	// The file the element is reading from
 	file *os.File
+	// The information about the file retrieved from stat
+	fileInfo os.FileInfo
 	// The current position in the file
 	position uint64
 }
@@ -83,22 +85,7 @@ func (f *fileSrc) setLocation(path string) error {
 	if f.state.started {
 		return errors.New("Changing the `location` property on a started `GoFileSrc` is not supported")
 	}
-	path = strings.TrimPrefix(path, "file://")
-	if path == "" {
-		f.settings.location = ""
-		return nil
-	}
-	stat, err := os.Stat(path)
-	if err != nil {
-		if os.IsNotExist(err) {
-			return fmt.Errorf("%s does not exist", path)
-		}
-		return fmt.Errorf("Could not stat %s, err: %s", path, err.Error())
-	}
-	if stat.IsDir() {
-		return fmt.Errorf("%s is a directory", path)
-	}
-	f.settings.location = path
+	f.settings.location = strings.TrimPrefix(path, "file://") // should obviously use url.URL and do actual parsing
 	return nil
 }
 
@@ -164,9 +151,10 @@ func (f *fileSrc) SetProperty(self *gst.Object, id uint, value *glib.Value) {
 		}
 		if err := f.setLocation(val); err != nil {
 			gst.ToElement(self).ErrorMessage(gst.DomainLibrary, gst.LibraryErrorSettings,
-				"Could not set location on object",
-				err.Error(),
+				fmt.Sprintf("Could not set location on object: %s", err.Error()),
+				"",
 			)
+			return
 		}
 		self.Log(CAT, gst.LevelInfo, fmt.Sprintf("Set `location` to %s", f.settings.location))
 	}
@@ -212,17 +200,7 @@ func (f *fileSrc) GetSize(self *base.GstBaseSrc) (bool, int64) {
 	if !f.state.started {
 		return false, 0
 	}
-	stat, err := f.state.file.Stat()
-	if err != nil {
-		// This should never happen
-		self.ErrorMessage(gst.DomainResource, gst.ResourceErrorFailed,
-			"Could not retrieve fileinfo on opened file",
-			err.Error(),
-		)
-		return false, 0
-	}
-	self.Log(CAT, gst.LevelDebug, fmt.Sprintf("file stat - name: %s  size: %d  mode: %v  modtime: %v", stat.Name(), stat.Size(), stat.Mode(), stat.ModTime()))
-	return true, stat.Size()
+	return true, f.state.fileInfo.Size()
 }
 
 // Start is called to start this element. In this example, the configured file is opened for reading,
@@ -238,7 +216,25 @@ func (f *fileSrc) Start(self *base.GstBaseSrc) bool {
 		return false
 	}
 
-	var err error
+	stat, err := os.Stat(f.settings.location)
+	if err != nil {
+		if os.IsNotExist(err) {
+			self.ErrorMessage(gst.DomainResource, gst.ResourceErrorOpenRead,
+				fmt.Sprintf("%s does not exist", f.settings.location), "")
+			return false
+		}
+		self.ErrorMessage(gst.DomainResource, gst.ResourceErrorOpenRead,
+			fmt.Sprintf("Could not stat %s, err: %s", f.settings.location, err.Error()), "")
+		return false
+	}
+	if stat.IsDir() {
+		self.ErrorMessage(gst.DomainResource, gst.ResourceErrorOpenRead,
+			fmt.Sprintf("%s is a directory", f.settings.location), "")
+		return false
+	}
+	f.state.fileInfo = stat
+	self.Log(CAT, gst.LevelDebug, fmt.Sprintf("file stat - name: %s  size: %d  mode: %v  modtime: %v", stat.Name(), stat.Size(), stat.Mode(), stat.ModTime()))
+
 	self.Log(CAT, gst.LevelDebug, fmt.Sprintf("Opening file %s for reading", f.settings.location))
 	f.state.file, err = os.OpenFile(f.settings.location, syscall.O_RDONLY, 0444)
 	if err != nil {
