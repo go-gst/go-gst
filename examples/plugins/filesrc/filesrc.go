@@ -109,6 +109,7 @@ func (f *fileSrc) setLocation(path string) error {
 // gst.GoElement implementation. Here we simply create a new fileSrc with zeroed settings
 // and state objects.
 func (f *fileSrc) New() gst.GoElement {
+	CAT.Log(gst.LevelDebug, "Initializing new fileSrc object")
 	return &fileSrc{
 		settings: &settings{},
 		state:    &state{},
@@ -118,12 +119,14 @@ func (f *fileSrc) New() gst.GoElement {
 // The TypeInit method should register any additional interfaces provided by the element.
 // In this example we signal to the type system that we also implement the GstURIHandler interface.
 func (f *fileSrc) TypeInit(instance *gst.TypeInstance) {
+	CAT.Log(gst.LevelDebug, "Adding URIHandler interface to type")
 	instance.AddInterface(gst.InterfaceURIHandler)
 }
 
 // The ClassInit method should specify the metadata for this element and add any pad templates
 // and properties.
 func (f *fileSrc) ClassInit(klass *gst.ElementClass) {
+	CAT.Log(gst.LevelDebug, "Initializing gofilesrc class")
 	klass.SetMetadata(
 		"File Source",
 		"Source/File",
@@ -137,6 +140,7 @@ func (f *fileSrc) ClassInit(klass *gst.ElementClass) {
 		gst.PadPresenceAlways,
 		caps,
 	)
+	CAT.Log(gst.LevelDebug, "Adding src pad template and properties to class")
 	klass.AddPadTemplate(srcPadTemplate)
 	klass.InstallProperties(properties)
 }
@@ -164,7 +168,7 @@ func (f *fileSrc) SetProperty(self *gst.Object, id uint, value *glib.Value) {
 				err.Error(),
 			)
 		}
-		self.Log(CAT, gst.LevelInfo, fmt.Sprintf("Set location to %s", f.settings.location))
+		self.Log(CAT, gst.LevelInfo, fmt.Sprintf("Set `location` to %s", f.settings.location))
 	}
 }
 
@@ -181,7 +185,7 @@ func (f *fileSrc) GetProperty(self *gst.Object, id uint) *glib.Value {
 		if err == nil {
 			return val
 		}
-		gst.ToElement(self).ErrorMessage(gst.DomainLibrary, gst.LibraryErrorSettings,
+		gst.ToElement(self).ErrorMessage(gst.DomainLibrary, gst.LibraryErrorFailed,
 			fmt.Sprintf("Could not convert %s to GValue", f.settings.location),
 			err.Error(),
 		)
@@ -193,6 +197,7 @@ func (f *fileSrc) GetProperty(self *gst.Object, id uint) *glib.Value {
 // during the initialization process can be performed here. In this example, we set the format on our
 // underlying GstBaseSrc to bytes.
 func (f *fileSrc) Constructed(self *gst.Object) {
+	self.Log(CAT, gst.LevelDebug, "Setting format of GstBaseSrc to bytes")
 	base.ToGstBaseSrc(self).SetFormat(gst.FormatBytes)
 }
 
@@ -216,6 +221,7 @@ func (f *fileSrc) GetSize(self *base.GstBaseSrc) (bool, int64) {
 		)
 		return false, 0
 	}
+	self.Log(CAT, gst.LevelDebug, fmt.Sprintf("file stat - name: %s  size: %d  mode: %v  modtime: %v", stat.Name(), stat.Size(), stat.Mode(), stat.ModTime()))
 	return true, stat.Size()
 }
 
@@ -233,6 +239,7 @@ func (f *fileSrc) Start(self *base.GstBaseSrc) bool {
 	}
 
 	var err error
+	self.Log(CAT, gst.LevelDebug, fmt.Sprintf("Opening file %s for reading", f.settings.location))
 	f.state.file, err = os.OpenFile(f.settings.location, syscall.O_RDONLY, 0444)
 	if err != nil {
 		self.ErrorMessage(gst.DomainResource, gst.ResourceErrorOpenRead,
@@ -245,7 +252,7 @@ func (f *fileSrc) Start(self *base.GstBaseSrc) bool {
 
 	self.StartComplete(gst.FlowOK)
 
-	self.Log(CAT, gst.LevelInfo, "Started")
+	self.Log(CAT, gst.LevelInfo, "GoFileSrc has started")
 	return true
 }
 
@@ -265,7 +272,7 @@ func (f *fileSrc) Stop(self *base.GstBaseSrc) bool {
 	f.state.position = 0
 	f.state.started = false
 
-	self.Log(CAT, gst.LevelInfo, "Stopped")
+	self.Log(CAT, gst.LevelInfo, "GoFileSrc has stopped")
 	return true
 }
 
@@ -278,7 +285,10 @@ func (f *fileSrc) Fill(self *base.GstBaseSrc, offset uint64, size uint, buffer *
 		return gst.FlowError
 	}
 
+	self.Log(CAT, gst.LevelDebug, fmt.Sprintf("Request to fill buffer from offset %v with size %v", offset, size))
+
 	if f.state.position != offset {
+		self.Log(CAT, gst.LevelDebug, fmt.Sprintf("Seeking to new position at offset %v from previous position at offset %v", offset, f.state.position))
 		if _, err := f.state.file.Seek(int64(offset), 0); err != nil {
 			self.ErrorMessage(gst.DomainResource, gst.ResourceErrorSeek,
 				fmt.Sprintf("Failed to seek to %d in file", offset), err.Error())
@@ -287,6 +297,7 @@ func (f *fileSrc) Fill(self *base.GstBaseSrc, offset uint64, size uint, buffer *
 		f.state.position = offset
 	}
 
+	self.Log(CAT, gst.LevelDebug, fmt.Sprintf("Reading %v bytes from file at offset %v", size, f.state.position))
 	out := make([]byte, int(size))
 	if _, err := f.state.file.Read(out); err != nil && err != io.EOF {
 		self.ErrorMessage(gst.DomainResource, gst.ResourceErrorRead,
@@ -295,7 +306,9 @@ func (f *fileSrc) Fill(self *base.GstBaseSrc, offset uint64, size uint, buffer *
 	}
 
 	f.state.position = f.state.position + uint64(size)
+	self.Log(CAT, gst.LevelDebug, fmt.Sprintf("Incremented current position to %v", f.state.position))
 
+	self.Log(CAT, gst.LevelDebug, fmt.Sprintf("Writing data from file to buffer"))
 	bufmap := buffer.Map(gst.MapWrite)
 	if bufmap == nil {
 		self.ErrorMessage(gst.DomainLibrary, gst.LibraryErrorFailed, "Failed to map buffer", "")
@@ -329,5 +342,6 @@ func (f *fileSrc) SetURI(uri string) (bool, error) {
 	if err != nil {
 		return false, err
 	}
+	CAT.Log(gst.LevelInfo, fmt.Sprintf("Set `location` to %s via URIHandler", f.settings.location))
 	return true, nil
 }

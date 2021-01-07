@@ -181,7 +181,7 @@ func (e *Element) MessageFull(msgType MessageType, domain Domain, code ErrorCode
 	C.gst_element_message_full(
 		e.Instance(),
 		C.GstMessageType(msgType),
-		newQuarkFromString(string(domain)),
+		domain.toQuark(),
 		C.gint(code),
 		(*C.gchar)(cTxt),
 		(*C.gchar)(cDbg),

@@ -303,7 +303,7 @@ func goURIHdlrSetURI(hdlr *C.GstURIHandler, uri *C.gchar, gerr **C.GError) C.gbo
 	iface := FromObjectUnsafePrivate(unsafe.Pointer(hdlr))
 	ok, err := iface.(URIHandler).SetURI(C.GoString(uri))
 	if err != nil {
-		C.g_set_error_literal(gerr, newQuarkFromString(string(DomainLibrary)), C.gint(LibraryErrorSettings), C.CString(err.Error()))
+		C.g_set_error_literal(gerr, DomainLibrary.toQuark(), C.gint(LibraryErrorSettings), C.CString(err.Error()))
 	}
 	return gboolean(ok)
 }

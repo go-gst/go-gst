@@ -80,5 +80,5 @@ func (o *Object) ListProperties() []*ParameterSpec {
 // Log logs a message to the given category from this object using the currently registered
 // debugging handlers.
 func (o *Object) Log(cat *DebugCategory, level DebugLevel, message string) {
-	cat.Log(level, message, o)
+	cat.logDepth(level, message, 2, (*C.GObject)(o.Unsafe()))
 }

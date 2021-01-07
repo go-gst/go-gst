@@ -16,6 +16,21 @@ const (
 	DomainStream   Domain = "STREAM"
 )
 
+func (d Domain) toQuark() C.GQuark {
+	switch d {
+	case DomainCore:
+		return C.gst_core_error_quark()
+	case DomainLibrary:
+		return C.gst_library_error_quark()
+	case DomainResource:
+		return C.gst_resource_error_quark()
+	case DomainStream:
+		return C.gst_stream_error_quark()
+	default:
+		return C.gst_library_error_quark()
+	}
+}
+
 // ErrorCode represents GstGError codes.
 type ErrorCode int
 

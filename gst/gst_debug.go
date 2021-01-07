@@ -96,6 +96,19 @@ func NewDebugCategory(name string, color DebugColorFlags, description string) *D
 	return &DebugCategory{ptr: cat}
 }
 
+func (d *DebugCategory) logDepth(level DebugLevel, message string, depth int, obj *C.GObject) {
+	function, file, line, _ := runtime.Caller(depth)
+	C.cgoDebugLog(
+		d.ptr,
+		C.GstDebugLevel(level),
+		C.CString(path.Base(file)),
+		(C.CString(runtime.FuncForPC(function).Name())),
+		C.gint(line),
+		obj,
+		C.CString(message),
+	)
+}
+
 // Log logs the given message using the currently registered debugging handlers. You can optionally
 // provide a single object to log the message for. GStreamer will automatically add a newline to the
 // end of the message.
@@ -104,14 +117,5 @@ func (d *DebugCategory) Log(level DebugLevel, message string, obj ...*Object) {
 	if len(obj) > 0 {
 		o = (*C.GObject)(obj[0].Unsafe())
 	}
-	function, file, line, _ := runtime.Caller(1)
-	C.cgoDebugLog(
-		d.ptr,
-		C.GstDebugLevel(level),
-		C.CString(path.Base(file)),
-		(C.CString(runtime.FuncForPC(function).Name())),
-		C.gint(line),
-		o,
-		C.CString(message),
-	)
+	d.logDepth(level, message, 2, o)
 }
