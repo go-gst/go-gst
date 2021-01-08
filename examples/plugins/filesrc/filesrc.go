@@ -78,11 +78,6 @@ type fileSrc struct {
 	state *state
 }
 
-func (f *fileSrc) PostMessage(self *gst.Element, msg *gst.Message) bool {
-	fmt.Println("Received message on the pipeline", msg)
-	return self.ParentPostMessage(msg)
-}
-
 // Private methods only used internally by the plugin
 
 // setLocation is a simple method to check the validity of a provided file path and set the

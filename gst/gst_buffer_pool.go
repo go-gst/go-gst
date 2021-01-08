@@ -22,6 +22,11 @@ func NewBufferPool() *BufferPool {
 	return wrapBufferPool(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(pool))})
 }
 
+// FromGstBufferPoolUnsafe wraps the given unsafe.Pointer in a BufferPool instance.
+func FromGstBufferPoolUnsafe(bufferPool unsafe.Pointer) *BufferPool {
+	return wrapBufferPool(toGObject(bufferPool))
+}
+
 // Instance returns the underlying GstBufferPool instance.
 func (b *BufferPool) Instance() *C.GstBufferPool { return C.toGstBufferPool(b.Unsafe()) }
 

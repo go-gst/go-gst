@@ -21,7 +21,6 @@ import "C"
 
 import (
 	"errors"
-	"fmt"
 	"reflect"
 	"runtime/debug"
 	"sync"
@@ -327,7 +326,7 @@ func (b *Bus) PostError(src interface{}, msg string, err error) bool {
 	if err != nil {
 		st = NewStructure("go-error")
 		if addErr := st.SetValue("error", err.Error()); addErr != nil {
-			fmt.Println("go-gst-warning: failed to set error message to structure")
+			b.Log(CAT, LevelWarning, "failed to set error message to structure")
 		}
 	}
 	gstMsg := NewErrorMessage(src, gerr, string(debug.Stack()), st)

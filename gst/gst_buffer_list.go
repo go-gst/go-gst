@@ -22,14 +22,28 @@ type BufferList struct {
 	ptr *C.GstBufferList
 }
 
-// NewBufferList returns a new empty BufferList.
-func NewBufferList() *BufferList {
-	return wrapBufferList(C.gst_buffer_list_new())
+// NewBufferList returns a new BufferList. The given slice can be nil and the returned
+// buffer list will be empty.
+func NewBufferList(buffers []*Buffer) *BufferList {
+	bufList := wrapBufferList(C.gst_buffer_list_new())
+	if buffers == nil {
+		return bufList
+	}
+	for idx, buf := range buffers {
+		bufList.Insert(idx, buf)
+	}
+	return bufList
 }
 
 // NewBufferListSized creates a new BufferList with the given size.
 func NewBufferListSized(size uint) *BufferList {
 	return wrapBufferList(C.gst_buffer_list_new_sized(C.guint(size)))
+}
+
+// FromGstBufferListUnsafe wraps the given unsafe.Pointer in a BufferList instance. It is meant for internal usage
+// and exported for visibility to other packages.
+func FromGstBufferListUnsafe(ptr unsafe.Pointer) *BufferList {
+	return wrapBufferList((*C.GstBufferList)(ptr))
 }
 
 // Instance returns the underlying GstBufferList.

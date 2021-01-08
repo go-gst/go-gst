@@ -10,3 +10,8 @@ func gboolean(b bool) C.gboolean {
 	}
 	return C.gboolean(0)
 }
+
+// gobool provides an easy type conversion between C.gboolean and a go bool.
+func gobool(b C.gboolean) bool {
+	return int(b) > 0
+}

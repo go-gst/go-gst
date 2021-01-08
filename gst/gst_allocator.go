@@ -14,6 +14,11 @@ type AllocationParams struct {
 	ptr *C.GstAllocationParams
 }
 
+// FromGstAllocationParamsUnsafe wraps the given unsafe.Pointer in an AllocationParams instance.
+func FromGstAllocationParamsUnsafe(alloc unsafe.Pointer) *AllocationParams {
+	return &AllocationParams{ptr: (*C.GstAllocationParams)(alloc)}
+}
+
 // NewAllocationParams initializes a set of allocation params with the default
 // values.
 func NewAllocationParams() *AllocationParams {
@@ -64,6 +69,11 @@ func (a *AllocationParams) SetPadding(padding int64) { a.ptr.padding = C.gsize(p
 
 // Allocator is a go representation of a GstAllocator
 type Allocator struct{ *Object }
+
+// FromGstAllocatorUnsafe wraps the given unsafe.Pointer in an Allocator instance.
+func FromGstAllocatorUnsafe(alloc unsafe.Pointer) *Allocator {
+	return wrapAllocator(toGObject(alloc))
+}
 
 // DefaultAllocator returns the default GstAllocator.
 func DefaultAllocator() *Allocator {

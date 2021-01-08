@@ -75,6 +75,12 @@ func MarshalStructure(data interface{}) *Structure {
 	return st
 }
 
+// FromGstStructureUnsafe wraps the given unsafe.Pointer in a Structure. This is meant for internal usage
+// and is exported for visibility to other packages.
+func FromGstStructureUnsafe(st unsafe.Pointer) *Structure {
+	return wrapStructure((*C.GstStructure)(st))
+}
+
 // UnmarshalInto will unmarshal this structure into the given pointer. The object
 // reflected by the pointer must be non-nil.
 func (s *Structure) UnmarshalInto(data interface{}) error {

@@ -1,9 +1,9 @@
 package gstauto
 
-import "fmt"
+import "github.com/tinyzimmer/go-gst/gst"
 
 func runOrPrintErr(f func() error) {
 	if err := f(); err != nil {
-		fmt.Println("[go-gst/gst/gstauto] Internal Error:", err.Error())
+		gst.CAT.Log(gst.LevelError, err.Error())
 	}
 }

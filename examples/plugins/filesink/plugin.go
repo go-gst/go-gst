@@ -1,4 +1,4 @@
-// The contents of this file could be generated from markers placed in filesrc.go
+// The contents of this file could be generated from markers placed in filesink.go
 package main
 
 import "C"
@@ -14,7 +14,7 @@ import (
 var pluginMeta = &gst.PluginMetadata{
 	MajorVersion: gst.VersionMajor,
 	MinorVersion: gst.VersionMinor,
-	Name:         "go-filesrc-plugin",
+	Name:         "go-filesink-plugin",
 	Description:  "File plugins written in Go",
 	Version:      "v0.0.1",
 	License:      gst.LicenseLGPL,
@@ -27,10 +27,10 @@ var pluginMeta = &gst.PluginMetadata{
 	Init: func(plugin *gst.Plugin) bool {
 		return gst.RegisterElement(
 			plugin,
-			"gofilesrc",         // The name of the element
-			gst.RankNone,        // The rank of the element
-			&fileSrc{},          // The GoElement implementation for the element
-			base.ExtendsBaseSrc, // The base subclass this element extends
+			"gofilesink",         // The name of the element
+			gst.RankNone,         // The rank of the element
+			&fileSink{},          // The GoElement implementation for the element
+			base.ExtendsBaseSink, // The base subclass this element extends
 		)
 	},
 }
@@ -39,8 +39,8 @@ var pluginMeta = &gst.PluginMetadata{
 // to fetch the description and init function for this plugin. The name of the method
 // must match the format gst_plugin_NAME_get_desc, where hyphens are replaced with underscores.
 
-//export gst_plugin_gofilesrc_get_desc
-func gst_plugin_gofilesrc_get_desc() unsafe.Pointer { return pluginMeta.Export() }
+//export gst_plugin_gofilesink_get_desc
+func gst_plugin_gofilesink_get_desc() unsafe.Pointer { return pluginMeta.Export() }
 
 // main is left unimplemented since these files are compiled to c-shared.
 func main() {}
