@@ -49,17 +49,17 @@ func (g *GstBaseSink) DoPreroll(obj interface{}) gst.FlowReturn {
 }
 
 func getPrerollObj(obj interface{}) *C.GstMiniObject {
-	switch obj.(type) {
+	switch obj := obj.(type) {
 	case *gst.Event:
-		return (*C.GstMiniObject)(unsafe.Pointer(obj.(*gst.Event).Instance()))
+		return (*C.GstMiniObject)(unsafe.Pointer(obj.Instance()))
 	case *gst.Buffer:
-		return (*C.GstMiniObject)(unsafe.Pointer(obj.(*gst.Buffer).Instance()))
+		return (*C.GstMiniObject)(unsafe.Pointer(obj.Instance()))
 	case *gst.Message:
-		return (*C.GstMiniObject)(unsafe.Pointer(obj.(*gst.Message).Instance()))
+		return (*C.GstMiniObject)(unsafe.Pointer(obj.Instance()))
 	case *gst.Query:
-		return (*C.GstMiniObject)(unsafe.Pointer(obj.(*gst.Query).Instance()))
+		return (*C.GstMiniObject)(unsafe.Pointer(obj.Instance()))
 	case *gst.Structure:
-		return (*C.GstMiniObject)(unsafe.Pointer(obj.(*gst.Structure).Instance()))
+		return (*C.GstMiniObject)(unsafe.Pointer(obj.Instance()))
 	default:
 		return nil
 	}
