@@ -17,8 +17,8 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/gotk3/gotk3/glib"
 	gopointer "github.com/mattn/go-pointer"
+	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // TagList is a go wrapper around a GstTagList. For now, until the rest of the methods are
@@ -86,7 +86,7 @@ func (t *TagList) AddValue(mergeMode TagMergeMode, tag Tag, value interface{}) {
 		t.Instance(),
 		C.GstTagMergeMode(mergeMode),
 		(*C.gchar)(ctag),
-		(*C.GValue)(gVal.Native()),
+		(*C.GValue)(unsafe.Pointer(gVal.GValue)),
 	)
 }
 

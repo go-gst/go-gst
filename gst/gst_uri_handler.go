@@ -8,7 +8,7 @@ import (
 	"errors"
 	"unsafe"
 
-	"github.com/gotk3/gotk3/glib"
+	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // InterfaceURIHandler represents the GstURIHandler interface GType. Use this when querying bins

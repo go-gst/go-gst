@@ -5,7 +5,7 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/gotk3/gotk3/glib"
+	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // PadTemplate is a go representation of a GstPadTemplate

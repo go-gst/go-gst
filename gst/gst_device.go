@@ -8,7 +8,7 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/gotk3/gotk3/glib"
+	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // Device is a Go representation of a GstDevice.

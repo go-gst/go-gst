@@ -3,10 +3,10 @@ package gst
 /*
 #include "gst.go.h"
 
-extern void            goObjectSetProperty  (GObject * object, guint property_id, const GValue * value, GParamSpec *pspec);
-extern void            goObjectGetProperty  (GObject * object, guint property_id, GValue * value, GParamSpec * pspec);
-extern void            goObjectConstructed  (GObject * object);
-extern void            goObjectFinalize     (GObject * object, gpointer klass);
+extern void   goObjectSetProperty  (GObject * object, guint property_id, const GValue * value, GParamSpec *pspec);
+extern void   goObjectGetProperty  (GObject * object, guint property_id, GValue * value, GParamSpec * pspec);
+extern void   goObjectConstructed  (GObject * object);
+extern void   goObjectFinalize     (GObject * object, gpointer klass);
 
 void objectFinalize (GObject * object)
 {
@@ -32,10 +32,10 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/gotk3/gotk3/glib"
+	"github.com/tinyzimmer/go-glib/glib"
 )
 
-// GoObject is an interface that abstracts on the GObject. In most cases at least SetProperty and GetProperty
+// GoObject is an interface that abstracts on the GObject. In almost all cases at least SetProperty and GetProperty
 // should be implemented by elements built from the go bindings.
 type GoObject interface {
 	// SetProperty should set the value of the property with the given id. ID is the index+1 of the parameter
@@ -48,7 +48,8 @@ type GoObject interface {
 	Constructed(*Object)
 }
 
-// ExtendsObject signifies a GoElement that extends a GObject.
+// ExtendsObject signifies a GoElement that extends a GObject. It is the base Extendable
+// that all other implementations derive from.
 var ExtendsObject Extendable = &extendObject{}
 
 type extendObject struct{}

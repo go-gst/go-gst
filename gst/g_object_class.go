@@ -22,7 +22,7 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/gotk3/gotk3/glib"
+	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // ObjectClass is a loose binding around the glib GObjectClass.

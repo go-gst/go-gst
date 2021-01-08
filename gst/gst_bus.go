@@ -28,8 +28,8 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/gotk3/gotk3/glib"
 	gopointer "github.com/mattn/go-pointer"
+	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // Bus is a Go wrapper around a GstBus. It provides convenience methods for
@@ -283,7 +283,7 @@ func (b *Bus) Peek() *Message {
 // For 0 timeouts use gst_bus_pop_filtered instead of this function; for other short timeouts use TimedPopFiltered;
 // everything else is better handled by setting up an asynchronous bus watch and doing things from there.
 func (b *Bus) Poll(msgTypes MessageType, timeout time.Duration) *Message {
-	cTime := C.GstClockTime(durationToClockTime(timeout))
+	cTime := C.GstClockTime(timeout.Nanoseconds())
 	mType := C.GstMessageType(msgTypes)
 	msg := C.gst_bus_poll(b.Instance(), mType, cTime)
 	if msg == nil {
@@ -364,10 +364,10 @@ func (b *Bus) SetSyncHandler(f BusSyncHandler) {
 // If timeout is 0, this function behaves like Pop. If timeout is < 0, this function will block forever until a message was posted on the bus.
 func (b *Bus) TimedPop(dur time.Duration) *Message {
 	var cTime C.GstClockTime
-	if dur.Nanoseconds() < 0 {
-		cTime = C.GstClockTime(ClockTimeNone)
+	if dur == ClockTimeNone {
+		cTime = C.GstClockTime(gstClockTimeNone)
 	} else {
-		cTime = C.GstClockTime(durationToClockTime(dur))
+		cTime = C.GstClockTime(dur.Nanoseconds())
 	}
 	msg := C.gst_bus_timed_pop(b.Instance(), cTime)
 	if msg == nil {
@@ -383,10 +383,10 @@ func (b *Bus) TimedPop(dur time.Duration) *Message {
 // was posted on the bus.
 func (b *Bus) TimedPopFiltered(dur time.Duration, msgTypes MessageType) *Message {
 	var cTime C.GstClockTime
-	if dur.Nanoseconds() < 0 {
-		cTime = C.GstClockTime(ClockTimeNone)
+	if dur == ClockTimeNone {
+		cTime = C.GstClockTime(gstClockTimeNone)
 	} else {
-		cTime = C.GstClockTime(durationToClockTime(dur))
+		cTime = C.GstClockTime(dur.Nanoseconds())
 	}
 	msg := C.gst_bus_timed_pop_filtered(b.Instance(), cTime, C.GstMessageType(msgTypes))
 	if msg == nil {

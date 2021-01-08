@@ -35,7 +35,7 @@ import (
 	"errors"
 	"unsafe"
 
-	"github.com/gotk3/gotk3/glib"
+	"github.com/tinyzimmer/go-glib/glib"
 	gopointer "github.com/mattn/go-pointer"
 )
 

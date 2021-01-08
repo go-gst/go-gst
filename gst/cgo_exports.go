@@ -10,10 +10,11 @@ import "C"
 
 import (
 	"reflect"
+	"time"
 	"unsafe"
 
-	"github.com/gotk3/gotk3/glib"
 	gopointer "github.com/mattn/go-pointer"
+	"github.com/tinyzimmer/go-glib/glib"
 )
 
 //export goElementCallAsync
@@ -223,7 +224,7 @@ func goClockCb(gclock *C.GstClock, clockTime C.GstClockTime, clockID C.GstClockI
 	}
 
 	clock := wrapClock(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(gclock))})
-	return gboolean(cb(clock, ClockTime(clockTime)))
+	return gboolean(cb(clock, time.Duration(clockTime)))
 }
 
 //export goPluginInit

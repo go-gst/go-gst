@@ -8,7 +8,7 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/gotk3/gotk3/glib"
+	"github.com/tinyzimmer/go-glib/glib"
 )
 
 func toGObject(data unsafe.Pointer) *glib.Object {
@@ -99,7 +99,7 @@ func streamSliceToGlist(streams []*Stream) *C.GList {
 	for _, stream := range streams {
 		wrapped = wrapped.Append(uintptr(stream.Unsafe()))
 	}
-	return (*C.GList)(unsafe.Pointer(wrapped.Native()))
+	return &glist
 }
 
 func glistToStreamSlice(glist *C.GList) []*Stream {

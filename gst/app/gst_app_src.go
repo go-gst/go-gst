@@ -87,11 +87,13 @@ func (a *Source) GetCurrentLevelBytes() uint64 {
 	return uint64(C.gst_app_src_get_current_level_bytes(a.Instance()))
 }
 
+var gstClockTimeNone C.GstClockTime = 0xffffffffffffffff
+
 // GetDuration gets the duration of the stream in nanoseconds. A negative value means that the duration is not known.
 func (a *Source) GetDuration() time.Duration {
 	dur := C.gst_app_src_get_duration(a.Instance())
-	if gst.ClockTime(dur) == gst.ClockTimeNone {
-		return time.Duration(-1)
+	if dur == gstClockTimeNone {
+		return gst.ClockTimeNone
 	}
 	return time.Duration(uint64(dur)) * time.Nanosecond
 }

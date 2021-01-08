@@ -26,8 +26,8 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/gotk3/gotk3/glib"
 	gopointer "github.com/mattn/go-pointer"
+	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // GetMaxBufferMemory returns the maximum amount of memory a buffer can hold.
@@ -161,42 +161,42 @@ func (b *Buffer) Bytes() []byte {
 // presented to the user.
 func (b *Buffer) PresentationTimestamp() time.Duration {
 	pts := b.Instance().pts
-	if ClockTime(pts) == ClockTimeNone {
-		return time.Duration(-1)
+	if pts == gstClockTimeNone {
+		return ClockTimeNone
 	}
-	return guint64ToDuration(pts)
+	return time.Duration(pts)
 }
 
 // SetPresentationTimestamp sets the presentation timestamp on the buffer.
 func (b *Buffer) SetPresentationTimestamp(dur time.Duration) {
 	ins := b.Instance()
-	ins.pts = C.GstClockTime(durationToClockTime(dur))
+	ins.pts = C.GstClockTime(dur.Nanoseconds())
 }
 
 // DecodingTimestamp returns the decoding timestamp of the buffer, or a negative duration if not known
 // or relevant. This value contains the timestamp when the media should be processed.
 func (b *Buffer) DecodingTimestamp() time.Duration {
 	dts := b.Instance().dts
-	if ClockTime(dts) == ClockTimeNone {
-		return time.Duration(-1)
+	if dts == gstClockTimeNone {
+		return ClockTimeNone
 	}
-	return guint64ToDuration(dts)
+	return time.Duration(dts)
 }
 
 // Duration returns the length of the data inside this buffer, or a negative duration if not known
 // or relevant.
 func (b *Buffer) Duration() time.Duration {
 	dur := b.Instance().duration
-	if ClockTime(dur) == ClockTimeNone {
-		return time.Duration(-1)
+	if dur == gstClockTimeNone {
+		return ClockTimeNone
 	}
-	return guint64ToDuration(dur)
+	return time.Duration(dur)
 }
 
 // SetDuration sets the duration on the buffer.
 func (b *Buffer) SetDuration(dur time.Duration) {
 	ins := b.Instance()
-	ins.duration = C.GstClockTime(durationToClockTime(dur))
+	ins.duration = C.GstClockTime(dur.Nanoseconds())
 }
 
 // Offset returns a media specific offset for the buffer data. For video frames, this is the frame
@@ -292,8 +292,8 @@ func (b *Buffer) AddReferenceTimestampMeta(ref *Caps, timestamp, duration time.D
 	return &ReferenceTimestampMeta{
 		Parent:    wrapMeta(&meta.parent),
 		Reference: wrapCaps(meta.reference),
-		Timestamp: clockTimeToDuration(ClockTime(meta.timestamp)),
-		Duration:  clockTimeToDuration(ClockTime(meta.duration)),
+		Timestamp: time.Duration(meta.timestamp),
+		Duration:  time.Duration(meta.duration),
 	}
 }
 
@@ -472,8 +472,8 @@ func (b *Buffer) GetReferenceTimestampMeta(caps *Caps) *ReferenceTimestampMeta {
 	return &ReferenceTimestampMeta{
 		Parent:    wrapMeta(&meta.parent),
 		Reference: wrapCaps(meta.reference),
-		Timestamp: clockTimeToDuration(ClockTime(meta.timestamp)),
-		Duration:  clockTimeToDuration(ClockTime(meta.duration)),
+		Timestamp: time.Duration(meta.timestamp),
+		Duration:  time.Duration(meta.duration),
 	}
 }
 

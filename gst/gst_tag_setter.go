@@ -5,7 +5,7 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/gotk3/gotk3/glib"
+	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // InterfaceTagSetter represents the GstTagsetter interface GType. Use this when querying bins
@@ -57,7 +57,7 @@ func (t *gstTagSetter) AddTagValue(mergeMode TagMergeMode, tagKey Tag, tagValue 
 		t.Instance(),
 		C.GstTagMergeMode(mergeMode),
 		(*C.gchar)(unsafe.Pointer(ckey)),
-		(*C.GValue)(gVal.Native()),
+		(*C.GValue)(unsafe.Pointer(gVal.GValue)),
 	)
 }
 

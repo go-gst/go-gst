@@ -21,3 +21,4 @@ _bin/
 .devcontainer/
 _rust/
 *.DS_Store*
+*.supp

@@ -17,8 +17,8 @@ import (
 	"fmt"
 	"unsafe"
 
-	"github.com/gotk3/gotk3/glib"
 	gopointer "github.com/mattn/go-pointer"
+	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // Caps is a go wrapper around GstCaps.
@@ -406,7 +406,7 @@ func (c *Caps) SetValue(field string, val interface{}) {
 	C.gst_caps_set_value(
 		c.Instance(),
 		(*C.gchar)(unsafe.Pointer(C.CString(field))),
-		(*C.GValue)(gVal.Native()),
+		(*C.GValue)(unsafe.Pointer(gVal.GValue)),
 	)
 }
 

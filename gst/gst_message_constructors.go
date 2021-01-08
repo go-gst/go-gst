@@ -6,7 +6,7 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/gotk3/gotk3/glib"
+	"github.com/tinyzimmer/go-glib/glib"
 )
 
 func getMessageSourceObj(src interface{}) *C.GstObject {
@@ -41,9 +41,9 @@ func NewAsyncDoneMessage(src interface{}, runningTime time.Duration) *Message {
 	}
 	var cTime C.GstClockTime
 	if runningTime.Nanoseconds() < 0 {
-		cTime = C.GstClockTime(ClockTimeNone)
+		cTime = C.GstClockTime(gstClockTimeNone)
 	} else {
-		cTime = C.GstClockTime(durationToClockTime(runningTime))
+		cTime = C.GstClockTime(runningTime.Nanoseconds())
 	}
 	return wrapMessage(C.gst_message_new_async_done(
 		srcObj,
@@ -312,7 +312,7 @@ func NewPropertyNotifyMessage(src interface{}, propName string, val interface{})
 	return wrapMessage(C.gst_message_new_property_notify(
 		srcObj,
 		cName,
-		(*C.GValue)(gVal.Native()),
+		(*C.GValue)(unsafe.Pointer(gVal.GValue)),
 	))
 }
 
@@ -332,10 +332,10 @@ func NewQoSMessage(src interface{}, live bool, runningTime, streamTime, timestam
 	return wrapMessage(C.gst_message_new_qos(
 		srcObj,
 		gboolean(live),
-		C.guint64(durationToClockTime(runningTime)),
-		C.guint64(durationToClockTime(streamTime)),
-		C.guint64(durationToClockTime(timestamp)),
-		C.guint64(durationToClockTime(duration)),
+		C.guint64((runningTime.Nanoseconds())),
+		C.guint64((streamTime.Nanoseconds())),
+		C.guint64((timestamp.Nanoseconds())),
+		C.guint64((duration.Nanoseconds())),
 	))
 }
 
@@ -410,7 +410,7 @@ func NewResetTimeMessage(src interface{}, runningTime time.Duration) *Message {
 	if srcObj == nil {
 		return nil
 	}
-	return wrapMessage(C.gst_message_new_reset_time(srcObj, C.GstClockTime(durationToClockTime(runningTime))))
+	return wrapMessage(C.gst_message_new_reset_time(srcObj, C.GstClockTime(runningTime.Nanoseconds())))
 }
 
 // NewSegmentDoneMessage creates a new segment done message. This message is posted by elements that finish playback of a segment as a result of a
@@ -479,7 +479,7 @@ func NewStepDoneMessage(src interface{}, format Format, amount uint64, rate floa
 		C.gdouble(rate),
 		gboolean(flush),
 		gboolean(intermediate),
-		C.guint64(durationToClockTime(duration)),
+		C.guint64(duration.Nanoseconds()),
 		gboolean(eos),
 	))
 }

@@ -7,7 +7,7 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/gotk3/gotk3/glib"
+	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // Event is a go wrapper around a GstEvent.
@@ -108,7 +108,7 @@ func (e *Event) ParseFlushStop() (resetTime bool) {
 func (e *Event) ParseGap() (timestamp, duration time.Duration) {
 	var ts, dur C.GstClockTime
 	C.gst_event_parse_gap(e.Instance(), &ts, &dur)
-	return clockTimeToDuration(ClockTime(ts)), clockTimeToDuration(ClockTime(dur))
+	return time.Duration(ts), time.Duration(dur)
 }
 
 // ParseGapFlags retrieves the gap flags that may have been set on a gap event with SetGapFlags.
@@ -135,7 +135,7 @@ func (e *Event) ParseGroupID() (ok bool, gid uint) {
 func (e *Event) ParseLatency() time.Duration {
 	var out C.GstClockTime
 	C.gst_event_parse_latency(e.Instance(), &out)
-	return clockTimeToDuration(ClockTime(out))
+	return time.Duration(out)
 }
 
 // ParseProtection parses an event containing protection system specific information and stores the results in
@@ -168,7 +168,7 @@ func (e *Event) ParseQOS() (qTtype QOSType, proportion float64, diff ClockTimeDi
 		e.Instance(),
 		&gtype, &gprop, &gdiff, &gts,
 	)
-	return QOSType(gtype), float64(gprop), ClockTimeDiff(gdiff), clockTimeToDuration(ClockTime(gts))
+	return QOSType(gtype), float64(gprop), ClockTimeDiff(gdiff), time.Duration(gts)
 }
 
 // ParseSeek parses a seek event.
@@ -187,7 +187,7 @@ func (e *Event) ParseSeek() (rate float64, format Format, flags SeekFlags, start
 func (e *Event) ParseSeekTrickModeInterval() (interval time.Duration) {
 	var out C.GstClockTime
 	C.gst_event_parse_seek_trickmode_interval(e.Instance(), &out)
-	return clockTimeToDuration(ClockTime(out))
+	return time.Duration(out)
 }
 
 // ParseSegment parses a segment event and stores the result in the given segment location. segment remains valid
@@ -324,7 +324,7 @@ func (e *Event) SetRunningTimeOffset(offset int64) {
 // SetSeekTrickModeInterval sets a trickmode interval on a (writable) seek event. Elements that support TRICKMODE_KEY_UNITS
 // seeks SHOULD use this as the minimal interval between each frame they may output.
 func (e *Event) SetSeekTrickModeInterval(interval time.Duration) {
-	C.gst_event_set_seek_trickmode_interval(e.Instance(), C.GstClockTime(durationToClockTime(interval)))
+	C.gst_event_set_seek_trickmode_interval(e.Instance(), C.GstClockTime(interval.Nanoseconds()))
 }
 
 // SetSeqnum sets the sequence number of a event.

@@ -3,7 +3,10 @@ package gst
 // #include "gst.go.h"
 import "C"
 
-import "unsafe"
+import (
+	"time"
+	"unsafe"
+)
 
 // Version represents information about the current GST version.
 type Version int
@@ -47,20 +50,20 @@ func (g GFraction) Num() int { return g.num }
 // Denom returns the fraction's denominator.
 func (g GFraction) Denom() int { return g.denom }
 
-// ClockTime is a go representation of a GstClockTime. Most of the time these are casted
-// to time.Duration objects. It represents a time value in nanoseconds.
-type ClockTime uint64
-
 // ClockTimeDiff is a datatype to hold a time difference, measured in nanoseconds.
 type ClockTimeDiff int64
 
-const (
-	// ClockFormat is the string used when formatting clock strings
-	ClockFormat string = "u:%02u:%02u.%09u"
+// ClockTimeNone means infinite timeout or an empty value
+var ClockTimeNone time.Duration = time.Duration(-1)
+
+// BufferOffsetNone is a var for no-offset return results.
+var BufferOffsetNone time.Duration = time.Duration(-1)
+
+var (
 	// ClockTimeNone means infinite timeout (unsigned representation of -1) or an otherwise unknown value.
-	ClockTimeNone ClockTime = 0xffffffffffffffff
-	// BufferOffsetNone is a constant for no-offset return results.
-	BufferOffsetNone ClockTime = 0xffffffffffffffff
+	gstClockTimeNone C.GstClockTime = 0xffffffffffffffff
+	// // BufferOffsetNone is a constant for no-offset return results.
+	// gstBufferOffsetNone C.GstClockTime = 0xffffffffffffffff
 )
 
 // ClockEntryType wraps GstClockEntryType
@@ -562,6 +565,32 @@ const (
 	SeekTypeEnd  SeekType = C.GST_SEEK_TYPE_END
 )
 
+// StateChange is the different state changes an element goes through. StateNull ⇒ StatePlaying is called
+// an upwards state change and StatePlaying ⇒ StateNull a downwards state change.
+//
+// See https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html?gi-language=c#GstStateChange
+// for more information on the responsibiltiies of elements during each transition.
+type StateChange int
+
+// StateChange castings
+const (
+	StateChangeNullToReady      StateChange = C.GST_STATE_CHANGE_NULL_TO_READY
+	StateChangeReadyToPaused    StateChange = C.GST_STATE_CHANGE_READY_TO_PAUSED
+	StateChangePausedToPlaying  StateChange = C.GST_STATE_CHANGE_PAUSED_TO_PLAYING
+	StateChangePlayingToPaused  StateChange = C.GST_STATE_CHANGE_PLAYING_TO_PAUSED
+	StateChangePausedToReady    StateChange = C.GST_STATE_CHANGE_PAUSED_TO_READY
+	StateChangeReadyToNull      StateChange = C.GST_STATE_CHANGE_READY_TO_NULL
+	StateChangeNullToNull       StateChange = C.GST_STATE_CHANGE_NULL_TO_NULL
+	StateChangeReadyToReady     StateChange = C.GST_STATE_CHANGE_READY_TO_READY
+	StateChangePausedToPaused   StateChange = C.GST_STATE_CHANGE_PAUSED_TO_PAUSED
+	StateChangePlayingToPlaying StateChange = C.GST_STATE_CHANGE_PLAYING_TO_PLAYING
+)
+
+// String returns the string representation of a StateChange
+func (s StateChange) String() string {
+	return C.GoString(C.gst_state_change_get_name(C.GstStateChange(s)))
+}
+
 // StateChangeReturn is a representation of GstStateChangeReturn.
 type StateChangeReturn int
 
@@ -572,6 +601,10 @@ const (
 	StateChangeAsync     StateChangeReturn = C.GST_STATE_CHANGE_ASYNC
 	StateChangeNoPreroll StateChangeReturn = C.GST_STATE_CHANGE_NO_PREROLL
 )
+
+func (s StateChangeReturn) String() string {
+	return C.GoString(C.gst_element_state_change_return_get_name(C.GstStateChangeReturn(s)))
+}
 
 // ElementFlags casts C GstElementFlags to a go type
 type ElementFlags int

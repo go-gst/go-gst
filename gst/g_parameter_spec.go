@@ -7,7 +7,7 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/gotk3/gotk3/glib"
+	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // ParameterSpec is a go representation of a C GParamSpec

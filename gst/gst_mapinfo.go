@@ -2,11 +2,17 @@ package gst
 
 /*
 #include "gst.go.h"
+
+void memcpy_offset (void * dest, guint offset, const void * src, size_t n) { memcpy(dest + offset, src, n); }
+
 */
 import "C"
 
 import (
+	"bytes"
 	"encoding/binary"
+	"errors"
+	"io"
 	"unsafe"
 )
 
@@ -20,9 +26,43 @@ func (m *MapInfo) Instance() *C.GstMapInfo {
 	return m.ptr
 }
 
+// Reader returns a Reader for the contents of this map's memory.
+func (m *MapInfo) Reader() io.Reader {
+	return bytes.NewReader(m.Bytes())
+}
+
+type mapInfoWriter struct {
+	mapInfo *MapInfo
+	wsize   int
+}
+
+func (m *mapInfoWriter) Write(p []byte) (int, error) {
+	if m.wsize+len(p) > int(m.mapInfo.Size()) {
+		return 0, errors.New("Attempt to write more data than allocated to MapInfo")
+	}
+	m.mapInfo.WriteAt(m.wsize, p)
+	m.wsize += len(p)
+	return len(p), nil
+}
+
+// Writer returns a writer that will copy the contents passed to Write directly to the
+// map's memory sequentially. An error will be returned if an attempt is made to write
+// more data than the map can hold.
+func (m *MapInfo) Writer() io.Writer {
+	return &mapInfoWriter{
+		mapInfo: m,
+		wsize:   0,
+	}
+}
+
 // WriteData writes the given sequence directly to the map's memory.
 func (m *MapInfo) WriteData(data []byte) {
 	C.memcpy(unsafe.Pointer(m.ptr.data), unsafe.Pointer(&data[0]), C.gsize(len(data)))
+}
+
+// WriteAt writes the given data sequence directly to the map's memory at the given offset.
+func (m *MapInfo) WriteAt(offset int, data []byte) {
+	C.memcpy_offset(unsafe.Pointer(m.ptr.data), C.guint(offset), unsafe.Pointer(&data[0]), C.gsize(len(data)))
 }
 
 // Memory returns the underlying memory object.

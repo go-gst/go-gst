@@ -15,13 +15,13 @@ import (
 	"reflect"
 	"unsafe"
 
-	"github.com/gotk3/gotk3/glib"
+	"github.com/tinyzimmer/go-glib/glib"
 	gopointer "github.com/mattn/go-pointer"
 )
 
 // GoElement is an interface to be implemented by GStreamer elements built using the
 // go bindings. Select methods from other interfaces can be overridden and declared via
-// the Extendable properties.
+// the Extendable property provided at plugin registration.
 //
 // Typically, at the very least, an element will want to implement methods from the Element
 // Extendable (and by extension the GoObject).
@@ -68,7 +68,6 @@ type classData struct {
 func gtypeForGoElement(name string, elem GoElement, extendable Extendable) C.GType {
 	registerMutex.Lock()
 	defer registerMutex.Unlock()
-	// fmt.Printf("Checking registration of %v\n", reflect.TypeOf(elem).String())
 	if registered, ok := registeredTypes[reflect.TypeOf(elem).String()]; ok {
 		return registered
 	}
@@ -96,7 +95,6 @@ func gtypeForGoElement(name string, elem GoElement, extendable Extendable) C.GTy
 		C.GTypeFlags(0),
 	)
 	elem.TypeInit(&TypeInstance{gtype: gtype, gotype: elem})
-	// fmt.Printf("Registering %v to type %v\n", reflect.TypeOf(elem).String(), gtype)
 	registeredTypes[reflect.TypeOf(elem).String()] = gtype
 	return gtype
 }

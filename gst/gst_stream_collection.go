@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"unsafe"
 
-	"github.com/gotk3/gotk3/glib"
+	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // StreamCollection is a Go representation of a GstStreamCollection.

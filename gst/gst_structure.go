@@ -20,8 +20,8 @@ import (
 	"sync"
 	"unsafe"
 
-	"github.com/gotk3/gotk3/glib"
 	gopointer "github.com/mattn/go-pointer"
+	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // Structure is a go implementation of a C GstStructure.
@@ -52,7 +52,7 @@ func NewStructureFromString(stStr string) *Structure {
 // StructureFromGValue extracts the GstStructure from a glib.Value, or nil
 // if one does not exist.
 func StructureFromGValue(gval *glib.Value) *Structure {
-	st := C.gst_value_get_structure((*C.GValue)(gval.Native()))
+	st := C.gst_value_get_structure((*C.GValue)(unsafe.Pointer(gval.GValue)))
 	if st == nil {
 		return nil
 	}

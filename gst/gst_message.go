@@ -8,7 +8,7 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/gotk3/gotk3/glib"
+	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // Message is a Go wrapper around a GstMessage. It provides convenience methods for
@@ -170,7 +170,7 @@ func (m *Message) ParseStreamStatus() (StreamStatusType, *Element) {
 func (m *Message) ParseAsyncDone() time.Duration {
 	var clockTime C.GstClockTime
 	C.gst_message_parse_async_done((*C.GstMessage)(m.Instance()), &clockTime)
-	return clockTimeToDuration(ClockTime(clockTime))
+	return time.Duration(clockTime)
 }
 
 // BufferingStats represents the buffering stats as retrieved from a GST_MESSAGE_TYPE_BUFFERING.
@@ -339,7 +339,7 @@ type QoSValues struct {
 	// The stream time of the buffer that generated the message
 	StreamTime time.Duration
 	//  The timestamps of the buffer that generated the message
-	Timestamp ClockTime
+	Timestamp time.Duration
 	//  The duration of the buffer that generated the message
 	Duration time.Duration
 }
@@ -356,10 +356,10 @@ func (m *Message) ParseQoS() *QoSValues {
 	)
 	return &QoSValues{
 		Live:        gobool(live),
-		RunningTime: guint64ToDuration(runningTime),
-		StreamTime:  guint64ToDuration(streamTime),
-		Timestamp:   ClockTime(timestamp),
-		Duration:    guint64ToDuration(duration),
+		RunningTime: time.Duration(runningTime),
+		StreamTime:  time.Duration(streamTime),
+		Timestamp:   time.Duration(timestamp),
+		Duration:    time.Duration(duration),
 	}
 }
 
@@ -385,7 +385,7 @@ func (m *Message) ParseProgress() (progressType ProgressType, code, text string)
 func (m *Message) ParseResetTime() time.Duration {
 	var clockTime C.GstClockTime
 	C.gst_message_parse_reset_time((*C.GstMessage)(m.Instance()), &clockTime)
-	return clockTimeToDuration(ClockTime(clockTime))
+	return time.Duration(clockTime)
 }
 
 // ParseDeviceAdded parses a device-added message. The device-added message is

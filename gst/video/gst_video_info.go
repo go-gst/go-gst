@@ -35,7 +35,6 @@ gint                   infoWidth             (GstVideoInfo * info)              
 */
 import "C"
 import (
-	"runtime"
 	"unsafe"
 
 	"github.com/tinyzimmer/go-gst/gst"
@@ -164,8 +163,11 @@ type Info struct {
 
 func wrapInfo(vinfo *C.GstVideoInfo) *Info {
 	info := &Info{vinfo}
-	runtime.SetFinalizer(info, func(i *Info) { C.gst_video_info_free(vinfo) })
 	return info
+}
+
+func (i *Info) Free() {
+	C.gst_video_info_free(i.instance())
 }
 
 // instance returns the underlying GstVideoInfo instance.

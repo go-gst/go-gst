@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"unsafe"
 
-	"github.com/gotk3/gotk3/glib"
+	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // FromGstElementUnsafe wraps the pointer to the given C GstElement with the go type.

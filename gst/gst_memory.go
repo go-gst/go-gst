@@ -8,7 +8,7 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/gotk3/gotk3/glib"
+	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // Memory is a go representation of GstMemory. This object is implemented in a read-only fashion

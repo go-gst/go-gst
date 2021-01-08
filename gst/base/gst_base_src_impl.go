@@ -50,7 +50,7 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/gotk3/gotk3/glib"
+	"github.com/tinyzimmer/go-glib/glib"
 	"github.com/tinyzimmer/go-gst/gst"
 )
 

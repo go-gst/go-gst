@@ -16,9 +16,20 @@ gboolean cgoGlobalPluginInit(GstPlugin * plugin)
 	return goGlobalPluginInit(plugin);
 }
 
-GstPluginDesc * exportPluginMeta (gint major, gint minor, gchar * name, gchar * description, GstPluginInitFunc init, gchar * version, gchar * license, gchar * source, gchar * package, gchar * origin, gchar * release_datetime)
+GstPluginDesc * getPluginMeta (gint major,
+					gint minor,
+					gchar * name,
+					gchar * description,
+					GstPluginInitFunc init,
+					gchar * version,
+					gchar * license,
+					gchar * source,
+					gchar * package,
+					gchar * origin,
+					gchar * release_datetime)
 {
-	GstPluginDesc * desc = malloc ( sizeof(GstPluginDesc) );
+
+	GstPluginDesc * desc = malloc ( sizeof (GstPluginDesc) );
 
 	desc->major_version = major;
 	desc->minor_version = minor;
@@ -42,7 +53,7 @@ import (
 	"errors"
 	"unsafe"
 
-	"github.com/gotk3/gotk3/glib"
+	"github.com/tinyzimmer/go-glib/glib"
 	gopointer "github.com/mattn/go-pointer"
 )
 
@@ -80,10 +91,10 @@ var globalPluginInit PluginInitFunc
 // Export will export the PluginMetadata to an unsafe pointer to a GstPluginDesc.
 func (p *PluginMetadata) Export() unsafe.Pointer {
 	globalPluginInit = p.Init
-	desc := C.exportPluginMeta(
+	desc := C.getPluginMeta(
 		C.gint(p.MajorVersion),
 		C.gint(p.MinorVersion),
-		(*C.gchar)(C.CString(p.Name)),
+		(*C.gchar)(unsafe.Pointer(&[]byte(p.Name)[0])),
 		(*C.gchar)(C.CString(p.Description)),
 		(C.GstPluginInitFunc(C.cgoGlobalPluginInit)),
 		(*C.gchar)(C.CString(p.Version)),

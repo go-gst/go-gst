@@ -67,8 +67,8 @@ func NewFlushStopEvent(resetTime bool) *Event {
 // especially for sparse streams such as subtitle streams.
 func NewGapEvent(timestamp, duration time.Duration) *Event {
 	return wrapEvent(C.gst_event_new_gap(
-		C.GstClockTime(durationToClockTime(timestamp)),
-		C.GstClockTime(durationToClockTime(duration)),
+		C.GstClockTime(timestamp.Nanoseconds()),
+		C.GstClockTime(duration.Nanoseconds()),
 	))
 }
 
@@ -105,7 +105,7 @@ func NewGapEvent(timestamp, duration time.Duration) *Event {
 // The latency is mostly used in live sinks and is always expressed in the time format.
 func NewLatencyEvent(latency time.Duration) *Event {
 	return wrapEvent(C.gst_event_new_latency(
-		C.GstClockTime(durationToClockTime(latency)),
+		C.GstClockTime(latency.Nanoseconds()),
 	))
 }
 
@@ -168,7 +168,7 @@ func NewQOSEvent(qType QOSType, proportion float64, diff ClockTimeDiff, timestam
 		C.GstQOSType(qType),
 		C.gdouble(proportion),
 		C.GstClockTimeDiff(diff),
-		C.GstClockTime(durationToClockTime(timestamp)),
+		C.GstClockTime(timestamp.Nanoseconds()),
 	))
 }
 
