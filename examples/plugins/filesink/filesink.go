@@ -6,7 +6,7 @@
 //
 // Go-gst offers loose bindings around the GObject type system to provide the necessary
 // functionality to implement these plugins. The example in this code produces an element
-// that can read from a file on the local system.
+// that can write to a file on the local system.
 //
 // In order to build the plugin for use by GStreamer, you can do the following:
 //
