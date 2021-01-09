@@ -3,6 +3,7 @@ DOCKER_IMAGE ?= ghcr.io/tinyzimmer/go-gst:$(GO_VERSION)
 GOLANGCI_VERSION ?= 1.31.0
 GOLANGCI_LINT ?= _bin/golangci-lint
 GOLANGCI_DOWNLOAD_URL ?= https://github.com/golangci/golangci-lint/releases/download/v${GOLANGCI_VERSION}/golangci-lint-${GOLANGCI_VERSION}-$(shell uname | tr A-Z a-z)-amd64.tar.gz
+PLUGIN_GEN ?= "$(shell go env GOPATH)/bin/gst-plugin-gen"
 
 $(GOLANGCI_LINT):
 	mkdir -p $(dir $(GOLANGCI_LINT))
@@ -34,3 +35,8 @@ docker-run:
 
 docker-lint:
 	$(MAKE) docker-run CMD="make lint"
+
+$(PLUGIN_GEN):
+	cd cmd/gst-plugin-gen && go build -o $(PLUGIN_GEN) .
+
+install-plugin-gen: $(PLUGIN_GEN)

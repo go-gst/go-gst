@@ -1,3 +1,34 @@
+// This example demonstrates a filesink plugin implemented in Go.
+//
+// Every element in a Gstreamer pipeline is provided by plugins. Some are builtin while
+// others are provided by third-parties or distributed privately. The plugins are built
+// around the GObject type system.
+//
+// Go-gst offers loose bindings around the GObject type system to provide the necessary
+// functionality to implement these plugins. The example in this code produces an element
+// that can read from a file on the local system.
+//
+// In order to build the plugin for use by GStreamer, you can do the following:
+//
+//     $ go generate
+//     $ go build -o libgstgofilesink.so -buildmode c-shared .
+//
+//
+//go:generate gst-plugin-gen
+//
+// +plugin:Name=gofilesink
+// +plugin:Description=File plugins written in go
+// +plugin:Version=v0.0.1
+// +plugin:License=gst.LicenseLGPL
+// +plugin:Source=go-gst
+// +plugin:Package=examples
+// +plugin:Origin=https://github.com/tinyzimmer/go-gst
+// +plugin:ReleaseDate=2021-01-04
+//
+// +element:Name=gofilesink
+// +element:Rank=gst.RankNone
+// +element:Impl=fileSink
+// +element:Subclass=base.ExtendsBaseSink
 package main
 
 import (
@@ -11,6 +42,9 @@ import (
 	"github.com/tinyzimmer/go-gst/gst"
 	"github.com/tinyzimmer/go-gst/gst/base"
 )
+
+// main is left unimplemented since these files are compiled to c-shared.
+func main() {}
 
 // CAT is the log category for the gofilesink. It is safe to define GStreamer objects as globals
 // without calling gst.Init, since in the context of a loaded plugin all initialization has

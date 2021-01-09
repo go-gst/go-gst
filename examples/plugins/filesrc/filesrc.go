@@ -10,10 +10,25 @@
 //
 // In order to build the plugin for use by GStreamer, you can do the following:
 //
+//     $ go generate
 //     $ go build -o libgstgofilesrc.so -buildmode c-shared .
 //
 //
-//go:generate go run github.com/tinyzimmer/go-gst/gen/plugin-gen.go
+//go:generate gst-plugin-gen
+//
+// +plugin:Name=gofilesrc
+// +plugin:Description=File plugins written in go
+// +plugin:Version=v0.0.1
+// +plugin:License=gst.LicenseLGPL
+// +plugin:Source=go-gst
+// +plugin:Package=examples
+// +plugin:Origin=https://github.com/tinyzimmer/go-gst
+// +plugin:ReleaseDate=2021-01-04
+//
+// +element:Name=gofilesrc
+// +element:Rank=gst.RankNone
+// +element:Impl=fileSrc
+// +element:Subclass=base.ExtendsBaseSrc
 package main
 
 import (
@@ -27,6 +42,9 @@ import (
 	"github.com/tinyzimmer/go-gst/gst"
 	"github.com/tinyzimmer/go-gst/gst/base"
 )
+
+// main is left unimplemented since these files are compiled to c-shared.
+func main() {}
 
 // CAT is the log category for the gofilesrc. It is safe to define GStreamer objects as globals
 // without calling gst.Init, since in the context of a loaded plugin all initialization has
