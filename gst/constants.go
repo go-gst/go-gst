@@ -1046,3 +1046,17 @@ const (
 	TagVersion                      Tag = C.GST_TAG_VERSION
 	TagVideoCodec                   Tag = C.GST_TAG_VIDEO_CODEC
 )
+
+// TypeFindProbability represents a probability for type find functions. Higher values
+// reflect higher certainty.
+type TypeFindProbability int
+
+// Type castings
+const (
+	TypeFindNone          TypeFindProbability = C.GST_TYPE_FIND_NONE           // (0) – type undetected.
+	TypeFindMinimum       TypeFindProbability = C.GST_TYPE_FIND_MINIMUM        // (1) – unlikely typefind.
+	TypeFindPossible      TypeFindProbability = C.GST_TYPE_FIND_POSSIBLE       // (50) – possible type detected.
+	TypeFindLikely        TypeFindProbability = C.GST_TYPE_FIND_LIKELY         // (80) – likely a type was detected.
+	TypeFindNearlyCertain TypeFindProbability = C.GST_TYPE_FIND_NEARLY_CERTAIN // (99) – nearly certain that a type was detected.
+	TypeFindMaximum       TypeFindProbability = C.GST_TYPE_FIND_MAXIMUM        // (100) – very certain a type was detected.
+)

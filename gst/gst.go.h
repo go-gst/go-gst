@@ -3,7 +3,7 @@
 
 #include <stdlib.h>
 #include <gst/gst.h>
-#include <gst/base/gstbasesrc.h>
+#include <gst/base/base.h>
 
 /*
 	Type Castings

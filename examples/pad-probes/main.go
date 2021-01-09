@@ -65,7 +65,7 @@ func padProbes(mainLoop *gst.MainLoop) error {
 		// We know what format the data in the memory region has, since we requested
 		// it by setting the fakesink's caps. So what we do here is interpret the
 		// memory region we mapped as an array of signed 16 bit integers.
-		samples := mapInfo.AsInt16Slice()
+		samples := mapInfo.AsInt16LESlice()
 		if len(samples) == 0 {
 			return gst.PadProbeOK
 		}

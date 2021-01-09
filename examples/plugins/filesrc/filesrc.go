@@ -13,6 +13,7 @@
 //     $ go build -o libgstgofilesrc.so -buildmode c-shared .
 //
 //
+//go:generate go run github.com/tinyzimmer/go-gst/gen/plugin-gen.go
 package main
 
 import (

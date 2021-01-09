@@ -5,12 +5,29 @@ package gst
 
 void memcpy_offset (void * dest, guint offset, const void * src, size_t n) { memcpy(dest + offset, src, n); }
 
+
+GstByteReader * newByteReader (const guint8 * data, guint size)
+{
+	GstByteReader *ret = g_slice_new0 (GstByteReader);
+
+	ret->data = data;
+  	ret->size = size;
+
+  	return ret;
+}
+
+void freeByteReader (GstByteReader * reader)
+{
+  g_return_if_fail (reader != NULL);
+  g_slice_free (GstByteReader, reader);
+}
+
+
 */
 import "C"
 
 import (
 	"bytes"
-	"encoding/binary"
 	"errors"
 	"io"
 	"unsafe"
@@ -97,79 +114,234 @@ func (m *MapInfo) Bytes() []byte {
 
 // AsInt8Slice returns the contents of this map as a slice of signed 8-bit integers.
 func (m *MapInfo) AsInt8Slice() []int8 {
-	uint8sl := m.AsUint8Slice()
-	out := make([]int8, m.Size())
-	for i := range out {
-		out[i] = int8(uint8sl[i])
+	br := C.newByteReader(m.Instance().data, C.guint(m.Instance().size))
+	defer C.freeByteReader(br)
+	out := make([]int8, 0)
+	for C.gst_byte_reader_get_remaining(br) != C.guint(0) {
+		var gint C.gint8
+		C.gst_byte_reader_get_int8(br, &gint)
+		out = append(out, int8(gint))
 	}
 	return out
 }
 
-// AsInt16Slice returns the contents of this map as a slice of signed 16-bit integers.
-func (m *MapInfo) AsInt16Slice() []int16 {
-	uint8sl := m.AsUint8Slice()
-	out := make([]int16, m.Size()/2)
-	for i := range out {
-		out[i] = int16(binary.LittleEndian.Uint16(uint8sl[i*2 : (i+1)*2]))
+// AsInt16BESlice returns the contents of this map as a slice of signed 16-bit big-endian integers.
+func (m *MapInfo) AsInt16BESlice() []int16 {
+	br := C.newByteReader(m.Instance().data, C.guint(m.Instance().size))
+	defer C.freeByteReader(br)
+	out := make([]int16, 0)
+	for C.gst_byte_reader_get_remaining(br) != C.guint(0) {
+		var gint C.gint16
+		C.gst_byte_reader_get_int16_be(br, &gint)
+		out = append(out, int16(gint))
 	}
 	return out
 }
 
-// AsInt32Slice returns the contents of this map as a slice of signed 32-bit integers.
-func (m *MapInfo) AsInt32Slice() []int32 {
-	uint8sl := m.AsUint8Slice()
-	out := make([]int32, m.Size()/4)
-	for i := range out {
-		out[i] = int32(binary.LittleEndian.Uint32(uint8sl[i*4 : (i+1)*4]))
+// AsInt16LESlice returns the contents of this map as a slice of signed 16-bit little-endian integers.
+func (m *MapInfo) AsInt16LESlice() []int16 {
+	br := C.newByteReader(m.Instance().data, C.guint(m.Instance().size))
+	defer C.freeByteReader(br)
+	out := make([]int16, 0)
+	for C.gst_byte_reader_get_remaining(br) != C.guint(0) {
+		var gint C.gint16
+		C.gst_byte_reader_get_int16_le(br, &gint)
+		out = append(out, int16(gint))
 	}
 	return out
 }
 
-// AsInt64Slice returns the contents of this map as a slice of signed 64-bit integers.
-func (m *MapInfo) AsInt64Slice() []int64 {
-	uint8sl := m.AsUint8Slice()
-	out := make([]int64, m.Size()/8)
-	for i := range out {
-		out[i] = int64(binary.LittleEndian.Uint64(uint8sl[i*8 : (i+1)*8]))
+// AsInt32BESlice returns the contents of this map as a slice of signed 32-bit big-endian integers.
+func (m *MapInfo) AsInt32BESlice() []int32 {
+	br := C.newByteReader(m.Instance().data, C.guint(m.Instance().size))
+	defer C.freeByteReader(br)
+	out := make([]int32, 0)
+	for C.gst_byte_reader_get_remaining(br) != C.guint(0) {
+		var gint C.gint32
+		C.gst_byte_reader_get_int32_be(br, &gint)
+		out = append(out, int32(gint))
+	}
+	return out
+}
+
+// AsInt32LESlice returns the contents of this map as a slice of signed 32-bit little-endian integers.
+func (m *MapInfo) AsInt32LESlice() []int32 {
+	br := C.newByteReader(m.Instance().data, C.guint(m.Instance().size))
+	defer C.freeByteReader(br)
+	out := make([]int32, 0)
+	for C.gst_byte_reader_get_remaining(br) != C.guint(0) {
+		var gint C.gint32
+		C.gst_byte_reader_get_int32_le(br, &gint)
+		out = append(out, int32(gint))
+	}
+	return out
+}
+
+// AsInt64BESlice returns the contents of this map as a slice of signed 64-bit big-endian integers.
+func (m *MapInfo) AsInt64BESlice() []int64 {
+	br := C.newByteReader(m.Instance().data, C.guint(m.Instance().size))
+	defer C.freeByteReader(br)
+	out := make([]int64, 0)
+	for C.gst_byte_reader_get_remaining(br) != C.guint(0) {
+		var gint C.gint64
+		C.gst_byte_reader_get_int64_be(br, &gint)
+		out = append(out, int64(gint))
+	}
+	return out
+}
+
+// AsInt64LESlice returns the contents of this map as a slice of signed 64-bit little-endian integers.
+func (m *MapInfo) AsInt64LESlice() []int64 {
+	br := C.newByteReader(m.Instance().data, C.guint(m.Instance().size))
+	defer C.freeByteReader(br)
+	out := make([]int64, 0)
+	for C.gst_byte_reader_get_remaining(br) != C.guint(0) {
+		var gint C.gint64
+		C.gst_byte_reader_get_int64_le(br, &gint)
+		out = append(out, int64(gint))
 	}
 	return out
 }
 
 // AsUint8Slice returns the contents of this map as a slice of unsigned 8-bit integers.
 func (m *MapInfo) AsUint8Slice() []uint8 {
-	out := make([]uint8, m.Size())
-	for i, t := range (*[1 << 30]uint8)(m.Data())[:m.Size():m.Size()] {
-		out[i] = t
+	br := C.newByteReader(m.Instance().data, C.guint(m.Instance().size))
+	defer C.freeByteReader(br)
+	out := make([]uint8, 0)
+	for C.gst_byte_reader_get_remaining(br) != C.guint(0) {
+		var gint C.guint8
+		C.gst_byte_reader_get_uint8(br, &gint)
+		out = append(out, uint8(gint))
 	}
 	return out
 }
 
-// AsUint16Slice returns the contents of this map as a slice of unsigned 16-bit integers.
-func (m *MapInfo) AsUint16Slice() []uint16 {
-	uint8sl := m.AsUint8Slice()
-	out := make([]uint16, m.Size()/2)
-	for i := range out {
-		out[i] = uint16(binary.LittleEndian.Uint16(uint8sl[i*2 : (i+1)*2]))
+// AsUint16BESlice returns the contents of this map as a slice of unsigned 16-bit big-endian integers.
+func (m *MapInfo) AsUint16BESlice() []uint16 {
+	br := C.newByteReader(m.Instance().data, C.guint(m.Instance().size))
+	defer C.freeByteReader(br)
+	out := make([]uint16, 0)
+	for C.gst_byte_reader_get_remaining(br) != C.guint(0) {
+		var gint C.guint16
+		C.gst_byte_reader_get_uint16_be(br, &gint)
+		out = append(out, uint16(gint))
 	}
 	return out
 }
 
-// AsUint32Slice returns the contents of this map as a slice of unsigned 32-bit integers.
-func (m *MapInfo) AsUint32Slice() []uint32 {
-	uint8sl := m.AsUint8Slice()
-	out := make([]uint32, m.Size()/4)
-	for i := range out {
-		out[i] = uint32(binary.LittleEndian.Uint32(uint8sl[i*4 : (i+1)*4]))
+// AsUint16LESlice returns the contents of this map as a slice of unsigned 16-bit little-endian integers.
+func (m *MapInfo) AsUint16LESlice() []uint16 {
+	br := C.newByteReader(m.Instance().data, C.guint(m.Instance().size))
+	defer C.freeByteReader(br)
+	out := make([]uint16, 0)
+	for C.gst_byte_reader_get_remaining(br) != C.guint(0) {
+		var gint C.guint16
+		C.gst_byte_reader_get_uint16_le(br, &gint)
+		out = append(out, uint16(gint))
 	}
 	return out
 }
 
-// AsUint64Slice returns the contents of this map as a slice of unsigned 64-bit integers.
-func (m *MapInfo) AsUint64Slice() []uint64 {
-	uint8sl := m.AsUint8Slice()
-	out := make([]uint64, m.Size()/8)
-	for i := range out {
-		out[i] = uint64(binary.LittleEndian.Uint64(uint8sl[i*8 : (i+1)*8]))
+// AsUint32BESlice returns the contents of this map as a slice of unsigned 32-bit big-endian integers.
+func (m *MapInfo) AsUint32BESlice() []uint32 {
+	br := C.newByteReader(m.Instance().data, C.guint(m.Instance().size))
+	defer C.freeByteReader(br)
+	out := make([]uint32, 0)
+	for C.gst_byte_reader_get_remaining(br) != C.guint(0) {
+		var gint C.guint32
+		C.gst_byte_reader_get_uint32_be(br, &gint)
+		out = append(out, uint32(gint))
+	}
+	return out
+}
+
+// AsUint32LESlice returns the contents of this map as a slice of unsigned 32-bit little-endian integers.
+func (m *MapInfo) AsUint32LESlice() []uint32 {
+	br := C.newByteReader(m.Instance().data, C.guint(m.Instance().size))
+	defer C.freeByteReader(br)
+	out := make([]uint32, 0)
+	for C.gst_byte_reader_get_remaining(br) != C.guint(0) {
+		var gint C.guint32
+		C.gst_byte_reader_get_uint32_le(br, &gint)
+		out = append(out, uint32(gint))
+	}
+	return out
+}
+
+// AsUint64BESlice returns the contents of this map as a slice of unsigned 64-bit big-endian integers.
+func (m *MapInfo) AsUint64BESlice() []uint64 {
+	br := C.newByteReader(m.Instance().data, C.guint(m.Instance().size))
+	defer C.freeByteReader(br)
+	out := make([]uint64, 0)
+	for C.gst_byte_reader_get_remaining(br) != C.guint(0) {
+		var gint C.guint64
+		C.gst_byte_reader_get_uint64_be(br, &gint)
+		out = append(out, uint64(gint))
+	}
+	return out
+}
+
+// AsUint64LESlice returns the contents of this map as a slice of unsigned 64-bit little-endian integers.
+func (m *MapInfo) AsUint64LESlice() []uint64 {
+	br := C.newByteReader(m.Instance().data, C.guint(m.Instance().size))
+	defer C.freeByteReader(br)
+	out := make([]uint64, 0)
+	for C.gst_byte_reader_get_remaining(br) != C.guint(0) {
+		var gint C.guint64
+		C.gst_byte_reader_get_uint64_le(br, &gint)
+		out = append(out, uint64(gint))
+	}
+	return out
+}
+
+// AsFloat32BESlice returns the contents of this map as a slice of 32-bit big-endian floats.
+func (m *MapInfo) AsFloat32BESlice() []float32 {
+	br := C.newByteReader(m.Instance().data, C.guint(m.Instance().size))
+	defer C.freeByteReader(br)
+	out := make([]float32, 0)
+	for C.gst_byte_reader_get_remaining(br) != C.guint(0) {
+		var gint C.gfloat
+		C.gst_byte_reader_get_float32_be(br, &gint)
+		out = append(out, float32(gint))
+	}
+	return out
+}
+
+// AsFloat32LESlice returns the contents of this map as a slice of 32-bit little-endian floats.
+func (m *MapInfo) AsFloat32LESlice() []float32 {
+	br := C.newByteReader(m.Instance().data, C.guint(m.Instance().size))
+	defer C.freeByteReader(br)
+	out := make([]float32, 0)
+	for C.gst_byte_reader_get_remaining(br) != C.guint(0) {
+		var gint C.gfloat
+		C.gst_byte_reader_get_float32_le(br, &gint)
+		out = append(out, float32(gint))
+	}
+	return out
+}
+
+// AsFloat64BESlice returns the contents of this map as a slice of 64-bit big-endian floats.
+func (m *MapInfo) AsFloat64BESlice() []float64 {
+	br := C.newByteReader(m.Instance().data, C.guint(m.Instance().size))
+	defer C.freeByteReader(br)
+	out := make([]float64, 0)
+	for C.gst_byte_reader_get_remaining(br) != C.guint(0) {
+		var gint C.gdouble
+		C.gst_byte_reader_get_float64_be(br, &gint)
+		out = append(out, float64(gint))
+	}
+	return out
+}
+
+// AsFloat64LESlice returns the contents of this map as a slice of 64-bit little-endian floats.
+func (m *MapInfo) AsFloat64LESlice() []float64 {
+	br := C.newByteReader(m.Instance().data, C.guint(m.Instance().size))
+	defer C.freeByteReader(br)
+	out := make([]float64, 0)
+	for C.gst_byte_reader_get_remaining(br) != C.guint(0) {
+		var gint C.gdouble
+		C.gst_byte_reader_get_float64_le(br, &gint)
+		out = append(out, float64(gint))
 	}
 	return out
 }

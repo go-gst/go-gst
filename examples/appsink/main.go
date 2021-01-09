@@ -68,8 +68,8 @@ func createPipeline() (*gst.Pipeline, error) {
 			// mode of access (read, read/write).
 			//
 			// We also know what format to expect because we set it with the caps. So we convert
-			// the map directly to signed 16-bit integers.
-			samples := buffer.Map(gst.MapRead).AsInt16Slice()
+			// the map directly to signed 16-bit little-endian integers.
+			samples := buffer.Map(gst.MapRead).AsInt16LESlice()
 			defer buffer.Unmap()
 
 			// Calculate the root mean square for the buffer
