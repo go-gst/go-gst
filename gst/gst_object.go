@@ -12,6 +12,12 @@ import (
 // Object is a go representation of a GstObject.
 type Object struct{ *glib.InitiallyUnowned }
 
+// FromGstObjectUnsafe returns an Object wrapping the given pointer. It meant for internal
+// usage and exported for visibility to other packages.
+func FromGstObjectUnsafe(ptr unsafe.Pointer) *Object {
+	return wrapObject(toGObject(ptr))
+}
+
 // Unsafe returns the unsafe pointer to the underlying object. This method is primarily
 // for internal usage and is exposed for visibility in other packages.
 func (o *Object) Unsafe() unsafe.Pointer {

@@ -35,8 +35,8 @@ import (
 	"errors"
 	"unsafe"
 
-	"github.com/tinyzimmer/go-glib/glib"
 	gopointer "github.com/mattn/go-pointer"
+	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // Pad is a go representation of a GstPad
@@ -72,6 +72,10 @@ func NewPadFromTemplate(tmpl *PadTemplate, name string) *Pad {
 	}
 	return wrapPad(toGObject(unsafe.Pointer(pad)))
 }
+
+// FromGstPadUnsafe wraps the given pointer in a Pad object. It is meant for internal usage and exported for
+// visibility to other packages.
+func FromGstPadUnsafe(pad unsafe.Pointer) *Pad { return wrapPad(toGObject(pad)) }
 
 // Instance returns the underlying C GstPad.
 func (p *Pad) Instance() *C.GstPad { return C.toGstPad(p.Unsafe()) }

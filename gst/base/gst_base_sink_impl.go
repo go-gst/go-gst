@@ -53,6 +53,7 @@ void setGstBaseSinkWaitEvent          (GstBaseSinkClass * klass)  { klass->wait_
 
 */
 import "C"
+
 import (
 	"time"
 	"unsafe"

@@ -13,6 +13,7 @@ void  setGstPushSrcFill    (GstPushSrcClass * klass) { klass->fill = goGstPushSr
 
 */
 import "C"
+
 import (
 	"unsafe"
 
