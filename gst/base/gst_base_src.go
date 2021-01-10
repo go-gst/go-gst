@@ -4,6 +4,7 @@ package base
 #include "gst.go.h"
 */
 import "C"
+
 import (
 	"time"
 	"unsafe"

@@ -45,8 +45,14 @@ func (m *Meta) Instance() *C.GstMeta { return C.toGstMeta(unsafe.Pointer(m.ptr))
 // Flags returns the flags on this Meta instance.
 func (m *Meta) Flags() MetaFlags { return MetaFlags(m.Instance().flags) }
 
+// SetFlags sets the flags on this Meta instance.
+func (m *Meta) SetFlags(flags MetaFlags) { m.Instance().flags = C.GstMetaFlags(flags) }
+
 // Info returns the extra info with this metadata.
 func (m *Meta) Info() *MetaInfo { return wrapMetaInfo(m.Instance().info) }
+
+// SetInfo sets the info on this metadata.
+func (m *Meta) SetInfo(info *MetaInfo) { m.Instance().info = info.Instance() }
 
 // MetaInfo is a go representation of GstMetaInfo
 type MetaInfo struct {
@@ -145,8 +151,17 @@ func (m *MetaInfo) Instance() *C.GstMetaInfo { return m.ptr }
 // API returns the tag identifying the metadata structure and api.
 func (m *MetaInfo) API() glib.Type { return glib.Type(m.Instance().api) }
 
+// SetAPI sets the API tag identifying the metadata structure and api.
+func (m *MetaInfo) SetAPI(t glib.Type) { m.Instance().api = C.GType(t) }
+
 // Type returns the type identifying the implementor of the api.
 func (m *MetaInfo) Type() glib.Type { return glib.Type(m.Instance()._type) }
 
+// SetType sets the type identifying the implementor of the api.
+func (m *MetaInfo) SetType(t glib.Type) { m.Instance()._type = C.GType(t) }
+
 // Size returns the size of the metadata.
 func (m *MetaInfo) Size() int64 { return int64(m.Instance().size) }
+
+// SetSize sets the size on the metadata.
+func (m *MetaInfo) SetSize(size int64) { m.Instance().size = C.gsize(size) }
