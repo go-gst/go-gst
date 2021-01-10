@@ -66,8 +66,8 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/tinyzimmer/go-glib/glib"
 	gopointer "github.com/mattn/go-pointer"
+	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // Element is a Go wrapper around a GstElement.
@@ -299,7 +299,8 @@ func (e *Element) GetState() State {
 }
 
 // GetStaticPad retrieves a pad from element by name. This version only retrieves
-// already-existing (i.e. 'static') pads.
+// already-existing (i.e. 'static') pads. The caller owns a ref on the pad and
+// should Unref after usage.
 func (e *Element) GetStaticPad(name string) *Pad {
 	cname := C.CString(name)
 	defer C.free(unsafe.Pointer(cname))

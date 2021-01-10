@@ -109,4 +109,6 @@ If you find any issues with the bindings or spot areas where things can be impro
 
  - More examples would be nice.
 
- - Support for writing GStreamer plugins via the bindings. This is currently a work in progress on the `plugin-experimentation` branch.
+ - Support for writing GStreamer plugins via the bindings is still a work-in-progress. At the very least I need to write more plugings to find more holes. 
+
+    - SWIG could be used to fix the need for global interfaces to be matched to C callbacks (most notably the `URIHandler` currently). The limitation present at the moment is URIHandlers can only be implemented ONCE per plugin.

@@ -5,6 +5,12 @@
 #include <gst/gst.h>
 #include <gst/base/base.h>
 
+typedef struct _PadDestroyNotifyInfo {
+	gpointer pad_ptr;
+	gpointer func_map_ptr;
+} PadDestroyNotifyInfo;
+
+
 /*
 	Type Castings
 */
