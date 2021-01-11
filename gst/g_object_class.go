@@ -39,7 +39,7 @@ func (o *ObjectClass) Instance() *C.GObjectClass { return o.ptr }
 
 // InstallProperties will install the given ParameterSpecs to the object class.
 // They will be IDed in the order they are provided.
-func (o *ObjectClass) InstallProperties(params []*ParameterSpec) {
+func (o *ObjectClass) InstallProperties(params []*ParamSpec) {
 	for idx, prop := range params {
 		C.g_object_class_install_property(
 			o.Instance(),

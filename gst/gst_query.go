@@ -14,6 +14,9 @@ type Query struct {
 	ptr *C.GstQuery
 }
 
+// Type returns the type of the Query.
+func (q *Query) Type() QueryType { return QueryType(q.ptr._type) }
+
 // FromGstQueryUnsafe wraps the pointer to the given C GstQuery with the go type.
 // This is meant for internal usage and is exported for visibility to other packages.
 func FromGstQueryUnsafe(query unsafe.Pointer) *Query { return wrapQuery((*C.GstQuery)(query)) }

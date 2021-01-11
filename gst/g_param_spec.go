@@ -10,112 +10,96 @@ import (
 	"github.com/tinyzimmer/go-glib/glib"
 )
 
-// ParameterSpec is a go representation of a C GParamSpec
-type ParameterSpec struct{ paramSpec *C.GParamSpec }
-
-// NewStringParameter returns a new ParameterSpec that will hold a string value.
-func NewStringParameter(name, nick, blurb string, defaultValue *string, flags ParameterFlags) *ParameterSpec {
-	var cdefault *C.gchar
-	if defaultValue != nil {
-		cdefault = C.CString(*defaultValue)
-	}
-	paramSpec := C.g_param_spec_string(
-		(*C.gchar)(C.CString(name)),
-		(*C.gchar)(C.CString(nick)),
-		(*C.gchar)(C.CString(blurb)),
-		(*C.gchar)(cdefault),
-		C.GParamFlags(flags),
-	)
-	return &ParameterSpec{paramSpec: paramSpec}
-}
+// ParamSpec is a go representation of a C GParamSpec
+type ParamSpec struct{ paramSpec *C.GParamSpec }
 
 // Name returns the name of this parameter.
-func (p *ParameterSpec) Name() string {
+func (p *ParamSpec) Name() string {
 	return C.GoString(C.g_param_spec_get_name(p.paramSpec))
 }
 
 // Blurb returns the blurb for this parameter.
-func (p *ParameterSpec) Blurb() string {
+func (p *ParamSpec) Blurb() string {
 	return C.GoString(C.g_param_spec_get_blurb(p.paramSpec))
 }
 
 // Flags returns the flags for this parameter.
-func (p *ParameterSpec) Flags() ParameterFlags {
+func (p *ParamSpec) Flags() ParameterFlags {
 	return ParameterFlags(p.paramSpec.flags)
 }
 
 // ValueType returns the GType for the value inside this parameter.
-func (p *ParameterSpec) ValueType() glib.Type {
+func (p *ParamSpec) ValueType() glib.Type {
 	return glib.Type(p.paramSpec.value_type)
 }
 
 // OwnerType returns the Gtype for the owner of this parameter.
-func (p *ParameterSpec) OwnerType() glib.Type {
+func (p *ParamSpec) OwnerType() glib.Type {
 	return glib.Type(p.paramSpec.owner_type)
 }
 
 // Unref the underlying paramater spec.
-func (p *ParameterSpec) Unref() { C.g_param_spec_unref(p.paramSpec) }
+func (p *ParamSpec) Unref() { C.g_param_spec_unref(p.paramSpec) }
 
 // UIntRange returns the range of the Uint stored in this parameter spec.
-func (p *ParameterSpec) UIntRange() (uint, uint) {
+func (p *ParamSpec) UIntRange() (uint, uint) {
 	paramUint := C.getParamUInt(p.paramSpec)
 	return uint(paramUint.minimum), uint(paramUint.maximum)
 }
 
 // IntRange returns the range of the Int stored in this parameter spec.
-func (p *ParameterSpec) IntRange() (int, int) {
+func (p *ParamSpec) IntRange() (int, int) {
 	paramUint := C.getParamInt(p.paramSpec)
 	return int(paramUint.minimum), int(paramUint.maximum)
 }
 
 // UInt64Range returns the range of the Uint64 stored in this parameter spec.
-func (p *ParameterSpec) UInt64Range() (uint64, uint64) {
+func (p *ParamSpec) UInt64Range() (uint64, uint64) {
 	paramUint := C.getParamUInt64(p.paramSpec)
 	return uint64(paramUint.minimum), uint64(paramUint.maximum)
 }
 
 // Int64Range returns the range of the Int64 stored in this parameter spec.
-func (p *ParameterSpec) Int64Range() (int64, int64) {
+func (p *ParamSpec) Int64Range() (int64, int64) {
 	paramUint := C.getParamInt64(p.paramSpec)
 	return int64(paramUint.minimum), int64(paramUint.maximum)
 }
 
 // FloatRange returns the range of the Float stored in this parameter spec.
-func (p *ParameterSpec) FloatRange() (float64, float64) {
+func (p *ParamSpec) FloatRange() (float64, float64) {
 	paramUint := C.getParamFloat(p.paramSpec)
 	return float64(paramUint.minimum), float64(paramUint.maximum)
 }
 
 // DoubleRange returns the range of the Double stored in this parameter spec.
-func (p *ParameterSpec) DoubleRange() (float64, float64) {
+func (p *ParamSpec) DoubleRange() (float64, float64) {
 	paramUint := C.getParamDouble(p.paramSpec)
 	return float64(paramUint.minimum), float64(paramUint.maximum)
 }
 
 // IsCaps returns true if this parameter contains a caps object.
-func (p *ParameterSpec) IsCaps() bool { return gobool(C.isParamSpecTypeCaps(p.paramSpec)) }
+func (p *ParamSpec) IsCaps() bool { return gobool(C.isParamSpecTypeCaps(p.paramSpec)) }
 
 // IsEnum returns true if this parameter contains an enum.
-func (p *ParameterSpec) IsEnum() bool { return gobool(C.isParamSpecEnum(p.paramSpec)) }
+func (p *ParamSpec) IsEnum() bool { return gobool(C.isParamSpecEnum(p.paramSpec)) }
 
 // IsFlags returns true if this paramater contains flags.
-func (p *ParameterSpec) IsFlags() bool { return gobool(C.isParamSpecFlags(p.paramSpec)) }
+func (p *ParamSpec) IsFlags() bool { return gobool(C.isParamSpecFlags(p.paramSpec)) }
 
 // IsObject returns true if this parameter contains an object.
-func (p *ParameterSpec) IsObject() bool { return gobool(C.isParamSpecObject(p.paramSpec)) }
+func (p *ParamSpec) IsObject() bool { return gobool(C.isParamSpecObject(p.paramSpec)) }
 
 // IsBoxed returns true if this parameter contains a boxed object.
-func (p *ParameterSpec) IsBoxed() bool { return gobool(C.isParamSpecBoxed(p.paramSpec)) }
+func (p *ParamSpec) IsBoxed() bool { return gobool(C.isParamSpecBoxed(p.paramSpec)) }
 
 // IsPointer returns true if this paramater contains a pointer.
-func (p *ParameterSpec) IsPointer() bool { return gobool(C.isParamSpecPointer(p.paramSpec)) }
+func (p *ParamSpec) IsPointer() bool { return gobool(C.isParamSpecPointer(p.paramSpec)) }
 
 // IsFraction returns true if this parameter contains a fraction.
-func (p *ParameterSpec) IsFraction() bool { return gobool(C.isParamSpecFraction(p.paramSpec)) }
+func (p *ParamSpec) IsFraction() bool { return gobool(C.isParamSpecFraction(p.paramSpec)) }
 
 // IsGstArray returns true if this parameter contains a Gst array.
-func (p *ParameterSpec) IsGstArray() bool { return gobool(C.isParamSpecGstArray(p.paramSpec)) }
+func (p *ParamSpec) IsGstArray() bool { return gobool(C.isParamSpecGstArray(p.paramSpec)) }
 
 // EnumValue is a go representation of a GEnumValue
 type EnumValue struct {
@@ -124,7 +108,7 @@ type EnumValue struct {
 }
 
 // GetEnumValues returns the possible enum values for this parameter.
-func (p *ParameterSpec) GetEnumValues() []*EnumValue {
+func (p *ParamSpec) GetEnumValues() []*EnumValue {
 	var gsize C.guint
 	gEnumValues := C.getEnumValues(p.paramSpec, &gsize)
 	size := int(gsize)
@@ -146,7 +130,7 @@ type FlagsValue struct {
 }
 
 // GetFlagValues returns the possible flags for this parameter.
-func (p *ParameterSpec) GetFlagValues() []*FlagsValue {
+func (p *ParamSpec) GetFlagValues() []*FlagsValue {
 	var gSize C.guint
 	gFlags := C.getParamSpecFlags(p.paramSpec, &gSize)
 	size := int(gSize)

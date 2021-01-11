@@ -15,8 +15,8 @@ import (
 	"reflect"
 	"unsafe"
 
-	"github.com/tinyzimmer/go-glib/glib"
 	gopointer "github.com/mattn/go-pointer"
+	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // GoElement is an interface to be implemented by GStreamer elements built using the
@@ -76,22 +76,25 @@ func gtypeForGoElement(name string, elem GoElement, extendable Extendable) C.GTy
 		ext:  extendable,
 	}
 	ptr := gopointer.Save(classData)
-	typeInfo := C.GTypeInfo{
-		class_size:     C.gushort(extendable.ClassSize()),
-		base_init:      nil,
-		base_finalize:  nil,
-		class_init:     C.GClassInitFunc(C.cgoClassInit),
-		class_finalize: nil,
-		class_data:     (C.gconstpointer)(ptr),
-		instance_size:  C.gushort(extendable.InstanceSize()),
-		n_preallocs:    0,
-		instance_init:  C.GInstanceInitFunc(C.cgoInstanceInit),
-		value_table:    nil,
-	}
+
+	typeInfo := (*C.GTypeInfo)(C.malloc(C.sizeof_GTypeInfo))
+	defer C.free(unsafe.Pointer(typeInfo))
+
+	typeInfo.base_init = nil
+	typeInfo.base_finalize = nil
+	typeInfo.class_size = C.gushort(extendable.ClassSize())
+	typeInfo.class_finalize = nil
+	typeInfo.class_init = C.GClassInitFunc(C.cgoClassInit)
+	typeInfo.class_data = (C.gconstpointer)(ptr)
+	typeInfo.instance_size = C.gushort(extendable.InstanceSize())
+	typeInfo.n_preallocs = 0
+	typeInfo.instance_init = C.GInstanceInitFunc(C.cgoInstanceInit)
+	typeInfo.value_table = nil
+
 	gtype := C.g_type_register_static(
 		C.GType(extendable.Type()),
 		(*C.gchar)(C.CString(name)),
-		&typeInfo,
+		typeInfo,
 		C.GTypeFlags(0),
 	)
 	elem.TypeInit(&TypeInstance{gtype: gtype, gotype: elem})

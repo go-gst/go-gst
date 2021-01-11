@@ -848,6 +848,8 @@ const (
 	QueryBitrate    QueryType = C.GST_QUERY_BITRATE     // (51202) – the bitrate query (since 1.16)
 )
 
+func (q QueryType) String() string { return C.GoString(C.gst_query_type_get_name(C.GstQueryType(q))) }
+
 // QueryTypeFlags casts GstQueryTypeFlags
 type QueryTypeFlags int
 

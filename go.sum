@@ -1,4 +1,4 @@
 github.com/mattn/go-pointer v0.0.1 h1:n+XhsuGeVO6MEAp7xyEukFINEa+Quek5psIR/ylA6o0=
 github.com/mattn/go-pointer v0.0.1/go.mod h1:2zXcozF6qYGgmsG+SeTZz3oAbFLdD3OWqnUbNvJZAlc=
-github.com/tinyzimmer/go-glib v0.0.2 h1:hdvjwrhcS6WrMMeqfxsf3e7/lOhV8gbVyJ9/sN3LfyY=
-github.com/tinyzimmer/go-glib v0.0.2/go.mod h1:D5rd0CvYn1p7TBhwlwnBXHSr4d8lwEY9JImPQ66S+Bs=
+github.com/tinyzimmer/go-glib v0.0.3 h1:yPax+QpAcmm16Ye3RZOsBVR0UpMZ9JnglJCgrlBN+C8=
+github.com/tinyzimmer/go-glib v0.0.3/go.mod h1:D5rd0CvYn1p7TBhwlwnBXHSr4d8lwEY9JImPQ66S+Bs=

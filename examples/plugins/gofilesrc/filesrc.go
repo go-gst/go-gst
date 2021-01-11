@@ -59,8 +59,8 @@ var CAT = gst.NewDebugCategory(
 // This element only has a single property, the location of the file to read from.
 // When getting and setting properties later on, you will reference them by their index in
 // this list.
-var properties = []*gst.ParameterSpec{
-	gst.NewStringParameter(
+var properties = []*gst.ParamSpec{
+	gst.NewStringParam(
 		"location",                          // The name of the parameter
 		"File Location",                     // The long name for the parameter
 		"Location of the file to read from", // A blurb about the parameter

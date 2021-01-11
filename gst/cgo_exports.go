@@ -4,6 +4,7 @@ package gst
 // there will be double linkage issues.
 
 /*
+#include <stdlib.h>
 #include <gst/gst.h>
 */
 import "C"
@@ -273,7 +274,7 @@ func goInstanceInit(obj *C.GTypeInstance, klass C.gpointer) {
 
 	ptr := gopointer.Save(elem)
 	private := C.g_type_instance_get_private(obj, registeredTypes[reflect.TypeOf(registeredClasses[klass]).String()])
-	C.memcpy(unsafe.Pointer(private), unsafe.Pointer(&ptr), C.gulong(unsafe.Sizeof(uintptr(0))))
+	C.memcpy(unsafe.Pointer(private), unsafe.Pointer(&ptr), C.gsize(unsafe.Sizeof(uintptr(0))))
 }
 
 //export goURIHdlrGetURIType
