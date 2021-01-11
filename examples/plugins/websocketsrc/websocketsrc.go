@@ -4,7 +4,7 @@
 // In order to build the plugin for use by GStreamer, you can do the following:
 //
 //     $ go generate
-//     $ go build -o libgstgofilesrc.so -buildmode c-shared .
+//     $ go build -o libgstwebsocketsrc.so -buildmode c-shared .
 //
 //
 //go:generate gst-plugin-gen
@@ -206,7 +206,8 @@ func (w *websocketSrc) watchChannels(elem *gst.Element) {
 
 			buf, ret := w.state.bufferpool.AcquireBuffer(nil)
 			if ret != gst.FlowOK {
-				elem.Log(CAT, gst.LevelError, fmt.Sprintf("Could not allocate buffer for data: %s", ret))
+				elem.ErrorMessage(gst.DomainResource, gst.ResourceErrorFailed,
+					fmt.Sprintf("Could not allocate buffer for data: %s", ret), "")
 				return
 			}
 
@@ -218,7 +219,8 @@ func (w *websocketSrc) watchChannels(elem *gst.Element) {
 			elem.Log(CAT, gst.LevelDebug, "Pushing buffer onto src pad")
 			w.pushPrelude(elem)
 			if ret := w.state.srcpad.Push(buf); ret == gst.FlowError {
-				elem.Log(CAT, gst.LevelError, fmt.Sprintf("Failed to push buffer to srcpad: %s", ret))
+				elem.ErrorMessage(gst.DomainResource, gst.ResourceErrorFailed,
+					fmt.Sprintf("Failed to push buffer to srcpad: %s", ret), "")
 				return
 			}
 
