@@ -22,6 +22,13 @@ gboolean elementParentPostMessage (GstElement * element, GstMessage * message) {
 	return parent->post_message(element, message);
 }
 
+GstStateChangeReturn elementParentChangeState (GstElement * element, GstStateChange transition)
+{
+	GObjectClass * this_class = G_OBJECT_GET_CLASS(G_OBJECT(element));
+	GstElementClass * parent = toGstElementClass(g_type_class_peek_parent(this_class));
+	return parent->change_state(element, transition);
+}
+
 extern GstStateChangeReturn  goGstElementClassChangeState    (GstElement * element, GstStateChange change);
 extern GstStateChangeReturn  goGstElementClassGetState       (GstElement * element, GstState * state, GstState * pending, GstClockTime timeout);
 extern void                  goGstElementClassNoMorePads     (GstElement * element);
@@ -336,6 +343,12 @@ func (e *Element) LinkFiltered(elem *Element, caps *Caps) error {
 		return fmt.Errorf("Failed to link %s to %s with provider caps", e.Name(), elem.Name())
 	}
 	return nil
+}
+
+// ParentChangeState can be used when extending an element to chain up to the parents ChangeState
+// handler.
+func (e *Element) ParentChangeState(transition StateChange) StateChangeReturn {
+	return StateChangeReturn(C.elementParentChangeState(e.Instance(), C.GstStateChange(transition)))
 }
 
 // ParentPostMessage can be used when extending an element. During a PostMessage, use this method
