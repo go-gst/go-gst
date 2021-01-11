@@ -752,7 +752,7 @@ func (p *Pad) QueryPosition(format Format) (bool, int64) {
 
 // RemoveProbe removes the probe with id from pad.
 func (p *Pad) RemoveProbe(id uint64) {
-	C.gst_pad_remove_probe(p.Instance(), C.guint64(id))
+	C.gst_pad_remove_probe(p.Instance(), C.gulong(id))
 }
 
 // SendEvent sends the event to the pad. This function can be used by applications to send events in the pipeline.

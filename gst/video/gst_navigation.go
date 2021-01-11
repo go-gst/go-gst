@@ -1,6 +1,7 @@
 package video
 
 /*
+#include <stdlib.h>
 #include <gst/video/video.h>
 
 GstNavigation * toGstNavigation (GstElement * element)
