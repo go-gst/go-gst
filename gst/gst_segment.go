@@ -21,20 +21,39 @@ func NewSegment() *Segment {
 	return wrapSegment(C.gst_segment_new())
 }
 
+// NewFormattedSegment returns a new Segment with the given format.
+func NewFormattedSegment(f Format) *Segment {
+	segment := NewSegment()
+	segment.SetFormat(f)
+	return segment
+}
+
 // Instance returns the underlying GstSegment instance.
 func (s *Segment) Instance() *C.GstSegment { return s.ptr }
 
 // GetFlags returns the flags on this segment.
 func (s *Segment) GetFlags() SegmentFlags { return SegmentFlags(s.Instance().flags) }
 
+// SetFlags sets the flags on this segment.
+func (s *Segment) SetFlags(flags SegmentFlags) { s.Instance().flags = C.GstSegmentFlags(flags) }
+
 // GetRate returns the rate for this segment.
 func (s *Segment) GetRate() float64 { return float64(s.Instance().rate) }
+
+// SetRate sets the rate for this segment.
+func (s *Segment) SetRate(rate float64) { s.Instance().rate = C.gdouble(rate) }
 
 // GetAppliedRate returns the applied rate for this segment.
 func (s *Segment) GetAppliedRate() float64 { return float64(s.Instance().applied_rate) }
 
+// SetAppliedRate sets the applied rate for this segment
+func (s *Segment) SetAppliedRate(rate float64) { s.Instance().applied_rate = C.gdouble(rate) }
+
 // GetFormat returns the format for this segment.
 func (s *Segment) GetFormat() Format { return Format(s.Instance().format) }
+
+// SetFormat sets the format on this segment.
+func (s *Segment) SetFormat(f Format) { s.Instance().format = C.GstFormat(f) }
 
 // GetBase returns the base for this segment.
 func (s *Segment) GetBase() uint64 { return uint64(s.Instance().base) }

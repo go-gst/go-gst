@@ -44,13 +44,17 @@ type BufferPoolAcquireParams struct {
 // AcquireBuffer acquires a buffer from this pool.
 func (b *BufferPool) AcquireBuffer(params *BufferPoolAcquireParams) (*Buffer, FlowReturn) {
 	var buf *C.GstBuffer
-	gparams := &C.GstBufferPoolAcquireParams{
-		format: C.GstFormat(params.Format),
-		start:  C.gint64(params.Start),
-		stop:   C.gint64(params.Stop),
-		flags:  C.GstBufferPoolAcquireFlags(params.Flags),
+	if params != nil {
+		gparams := (*C.GstBufferPoolAcquireParams)(C.malloc(C.sizeof_GstBufferPoolAcquireParams))
+		defer C.free(unsafe.Pointer(gparams))
+		gparams.format = C.GstFormat(params.Format)
+		gparams.start = C.gint64(params.Start)
+		gparams.stop = C.gint64(params.Stop)
+		gparams.flags = C.GstBufferPoolAcquireFlags(params.Flags)
+		ret := C.gst_buffer_pool_acquire_buffer(b.Instance(), &buf, gparams)
+		return wrapBuffer(buf), FlowReturn(ret)
 	}
-	ret := C.gst_buffer_pool_acquire_buffer(b.Instance(), &buf, gparams)
+	ret := C.gst_buffer_pool_acquire_buffer(b.Instance(), &buf, nil)
 	return wrapBuffer(buf), FlowReturn(ret)
 }
 
@@ -111,7 +115,7 @@ func (b *BufferPool) SetActive(active bool) (ok bool) {
 // state as possible. The new state can then be retrieved and refined with GetConfig.
 //
 // This function takes ownership of the given structure.
-func (b *BufferPool) SetConfig(cfg BufferPoolConfig) bool {
+func (b *BufferPool) SetConfig(cfg *BufferPoolConfig) bool {
 	return gobool(C.gst_buffer_pool_set_config(b.Instance(), cfg.Instance()))
 }
 
@@ -194,6 +198,14 @@ func (b *BufferPoolConfig) SetAllocator(allocator *Allocator, params *Allocation
 
 // SetParams configures the config with the given parameters.
 func (b *BufferPoolConfig) SetParams(caps *Caps, size, minBuffers, maxBuffers uint) {
+	if caps == nil {
+		C.gst_buffer_pool_config_set_params(
+			b.Instance(),
+			nil,
+			C.guint(size), C.guint(minBuffers), C.guint(maxBuffers),
+		)
+		return
+	}
 	C.gst_buffer_pool_config_set_params(
 		b.Instance(),
 		caps.Instance(),
