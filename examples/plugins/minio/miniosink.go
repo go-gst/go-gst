@@ -204,6 +204,7 @@ func (m *minioSink) Start(self *base.GstBaseSink) bool {
 	client, err := minio.New(m.settings.endpoint, &minio.Options{
 		Creds:  credentials.NewStaticV4(m.settings.accessKeyID, m.settings.secretAccessKey, ""),
 		Secure: m.settings.useTLS,
+		Region: m.settings.region,
 	})
 
 	if err != nil {
