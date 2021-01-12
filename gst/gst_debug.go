@@ -81,7 +81,7 @@ type StackTraceFlags int
 
 // Type castings of StackTraceFlags
 const (
-	StackTraceShowNone StackTraceFlags = C.GST_STACK_TRACE_SHOW_NONE // (0) – Try to retrieve the minimum information available, which may be none on some platforms (Since: 1.18)
+	StackTraceShowNone StackTraceFlags = 0                           // (0) – Try to retrieve the minimum information available, which may be none on some platforms (Since: 1.18)
 	StackTraceShowFull StackTraceFlags = C.GST_STACK_TRACE_SHOW_FULL // (1) – Try to retrieve as much information as possible, including source information when getting the stack trace
 )
 
