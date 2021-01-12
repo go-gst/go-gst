@@ -400,25 +400,6 @@ func (p *Pad) GetRange(offset uint64, size uint, buffer *Buffer) (FlowReturn, *B
 	return FlowReturn(ret), newBuf
 }
 
-// GetSingleInternalLink will return a single internal link of the given pad, or nil.
-func (p *Pad) GetSingleInternalLink() *Pad {
-	pad := C.gst_pad_get_single_internal_link(p.Instance())
-	if pad == nil {
-		return nil
-	}
-	return wrapPad(toGObject(unsafe.Pointer(pad)))
-}
-
-// // GetSingleInternalLink checks if there is a single internal link of the given pad, and returns it. Otherwise, it will
-// // return nil.
-// func (p *Pad) GetSingleInternalLink() *Pad {
-// 	pad := C.gst_pad_get_single_internal_link(p.Instance())
-// 	if pad == nil {
-// 		return nil
-// 	}
-// 	return wrapPad(toGObject(unsafe.Pointer(pad)))
-// }
-
 // GetStickyEvent returns a new reference of the sticky event of type event_type from the event.
 func (p *Pad) GetStickyEvent(eventType EventType, idx uint) *Event {
 	ev := C.gst_pad_get_sticky_event(p.Instance(), C.GstEventType(eventType), C.guint(idx))
