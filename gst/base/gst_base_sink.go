@@ -111,28 +111,29 @@ func (g *GstBaseSink) GetRenderDelay() time.Duration {
 	return time.Duration(C.gst_base_sink_get_render_delay(g.Instance()))
 }
 
-// SinkStats represents the current statistics on a GstBaseSink.
-type SinkStats struct {
-	AverageRate float64
-	Dropped     uint64
-	Rendered    uint64
-}
+// SINCE 1.18
+// // SinkStats represents the current statistics on a GstBaseSink.
+// type SinkStats struct {
+// 	AverageRate float64
+// 	Dropped     uint64
+// 	Rendered    uint64
+// }
 
-// GetSinkStats returns various GstBaseSink statistics.
-func (g *GstBaseSink) GetSinkStats() *SinkStats {
-	st := gst.FromGstStructureUnsafe(unsafe.Pointer(C.gst_base_sink_get_stats(g.Instance())))
-	stats := &SinkStats{}
-	if avgRate, err := st.GetValue("average-rate"); err == nil {
-		stats.AverageRate = avgRate.(float64)
-	}
-	if dropped, err := st.GetValue("dropped"); err == nil {
-		stats.Dropped = dropped.(uint64)
-	}
-	if rendered, err := st.GetValue("rendered"); err == nil {
-		stats.Rendered = rendered.(uint64)
-	}
-	return stats
-}
+// // GetSinkStats returns various GstBaseSink statistics.
+// func (g *GstBaseSink) GetSinkStats() *SinkStats {
+// 	st := gst.FromGstStructureUnsafe(unsafe.Pointer(C.gst_base_sink_get_stats(g.Instance())))
+// 	stats := &SinkStats{}
+// 	if avgRate, err := st.GetValue("average-rate"); err == nil {
+// 		stats.AverageRate = avgRate.(float64)
+// 	}
+// 	if dropped, err := st.GetValue("dropped"); err == nil {
+// 		stats.Dropped = dropped.(uint64)
+// 	}
+// 	if rendered, err := st.GetValue("rendered"); err == nil {
+// 		stats.Rendered = rendered.(uint64)
+// 	}
+// 	return stats
+// }
 
 // GetSync checks if the sink is currently configured to synchronize on the clock.
 func (g *GstBaseSink) GetSync() bool { return gobool(C.gst_base_sink_get_sync(g.Instance())) }

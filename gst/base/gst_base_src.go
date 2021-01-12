@@ -58,21 +58,22 @@ func (g *GstBaseSrc) IsAsync() bool { return gobool(C.gst_base_src_is_async(g.In
 // IsLive checks if this source is in live mode.
 func (g *GstBaseSrc) IsLive() bool { return gobool(C.gst_base_src_is_live(g.Instance())) }
 
-// Negotiate negotiates this source's pad caps with downstream elements. Do not call this in the Fill()
-// vmethod. Call this in Create() or in Alloc(), before any buffer is allocated.
-func (g *GstBaseSrc) Negotiate() bool { return gobool(C.gst_base_src_negotiate(g.Instance())) }
+// SINCE 1.18
+// // Negotiate negotiates this source's pad caps with downstream elements. Do not call this in the Fill()
+// // vmethod. Call this in Create() or in Alloc(), before any buffer is allocated.
+// func (g *GstBaseSrc) Negotiate() bool { return gobool(C.gst_base_src_negotiate(g.Instance())) }
 
-// NewSegment prepares a new segment for emission downstream. This function must only be called by derived
-// sub-classes, and only from the create function, as the stream-lock needs to be held.
-//
-// The format for the segment must be identical with the current format of the source, as configured with
-// SetFormat.
-//
-// The format of src must not be gst.FormatUndefined and the format should be configured via SetFormat before
-// calling this method.
-func (g *GstBaseSrc) NewSegment(segment *gst.Segment) bool {
-	return gobool(C.gst_base_src_new_segment(g.Instance(), (*C.GstSegment)(unsafe.Pointer(segment.Instance()))))
-}
+// // NewSegment prepares a new segment for emission downstream. This function must only be called by derived
+// // sub-classes, and only from the create function, as the stream-lock needs to be held.
+// //
+// // The format for the segment must be identical with the current format of the source, as configured with
+// // SetFormat.
+// //
+// // The format of src must not be gst.FormatUndefined and the format should be configured via SetFormat before
+// // calling this method.
+// func (g *GstBaseSrc) NewSegment(segment *gst.Segment) bool {
+// 	return gobool(C.gst_base_src_new_segment(g.Instance(), (*C.GstSegment)(unsafe.Pointer(segment.Instance()))))
+// }
 
 // QueryLatency queries the source for the latency parameters. live will be TRUE when src is configured as a
 // live source. minLatency and maxLatency will be set to the difference between the running time and the timestamp
