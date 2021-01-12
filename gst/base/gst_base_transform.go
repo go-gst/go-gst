@@ -83,17 +83,18 @@ func (g *GstBaseTransform) QueuedBuffer() *gst.Buffer {
 	return gst.FromGstBufferUnsafe(unsafe.Pointer(g.Instance().queued_buf))
 }
 
-// Reconfigure negotiates src pad caps with downstream elements if the source pad is marked as needing
-// reconfiguring. Unmarks GST_PAD_FLAG_NEED_RECONFIGURE in any case. But marks it again if negotiation fails.
-//
-// Do not call this in the Transform() or TransformIP() vmethod. Call this in SubmitInputBuffer(),
-// PrepareOutputBuffer() or in GenerateOutput() before any output buffer is allocated.
-//
-// It will by default be called when handling an ALLOCATION query or at the very beginning of the default
-// SubmitInputBuffer() implementation.
-func (g *GstBaseTransform) Reconfigure() bool {
-	return gobool(C.gst_base_transform_reconfigure(g.Instance()))
-}
+// SINCE 1.18
+// // Reconfigure negotiates src pad caps with downstream elements if the source pad is marked as needing
+// // reconfiguring. Unmarks GST_PAD_FLAG_NEED_RECONFIGURE in any case. But marks it again if negotiation fails.
+// //
+// // Do not call this in the Transform() or TransformIP() vmethod. Call this in SubmitInputBuffer(),
+// // PrepareOutputBuffer() or in GenerateOutput() before any output buffer is allocated.
+// //
+// // It will by default be called when handling an ALLOCATION query or at the very beginning of the default
+// // SubmitInputBuffer() implementation.
+// func (g *GstBaseTransform) Reconfigure() bool {
+// 	return gobool(C.gst_base_transform_reconfigure(g.Instance()))
+// }
 
 // ReconfigureSink instructs transform to request renegotiation upstream. This function is typically called
 // after properties on the transform were set that influence the input format.
