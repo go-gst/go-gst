@@ -117,9 +117,6 @@ func NewFloat64Param(name, nick, blurb string, min, max, defaultValue float64, f
 	return &ParamSpec{paramSpec: paramSpec}
 }
 
-// TypeCaps is the static Glib Type for a GstCaps.
-var TypeCaps = glib.Type(C.gst_caps_get_type())
-
 // NewBoxedParam creates a new ParamSpec containing a boxed type. Some helper type castings are included
 // in these bindings.
 func NewBoxedParam(name, nick, blurb string, boxedType glib.Type, flags ParameterFlags) *ParamSpec {

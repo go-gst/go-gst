@@ -21,6 +21,9 @@ import (
 	"github.com/tinyzimmer/go-glib/glib"
 )
 
+// TypeCaps is the static Glib Type for a GstCaps.
+var TypeCaps = glib.Type(C.gst_caps_get_type())
+
 // Caps is a go wrapper around GstCaps.
 type Caps struct {
 	native *C.GstCaps
@@ -72,30 +75,6 @@ func NewFullCaps(structures ...*Structure) *Caps {
 	return caps
 }
 
-// // NewSimpleCaps creates new caps with the given media format and key value pairs.
-// // The key of each pair must be a string, followed by any field that can be converted
-// // to a GType.
-// func NewSimpleCaps(mediaFormat string, fieldVals ...interface{}) (*Caps, error) {
-// 	if len(fieldVals)%2 != 0 {
-// 		return nil, errors.New("Received odd number of key/value pairs")
-// 	}
-// 	caps := NewEmptySimpleCaps(mediaFormat)
-// 	strParts := make([]string, 0)
-// 	for i := 0; i < len(fieldVals); i = i + 2 {
-// 		fieldKey, ok := fieldVals[i].(string)
-// 		if !ok {
-// 			return nil, errors.New("One or more field keys are not a valid string")
-// 		}
-// 		strParts = append(strParts, fmt.Sprintf("%s=%v", fieldKey, fieldVals[i+1]))
-// 	}
-// 	structure := NewStructureFromString(strings.Join(strParts, ", "))
-// 	if structure == nil {
-// 		return nil, errors.New("Could not build structure from the provided arguments")
-// 	}
-// 	caps.AppendStructure(structure)
-// 	return caps, nil
-// }
-
 // NewCapsFromString creates a new Caps object from the given string.
 //
 //   caps := gst.NewCapsFromString("audio/x-raw, channels=2")
@@ -119,6 +98,18 @@ func NewRawCaps(format string, rate, channels int) *Caps {
 }
 
 func (c *Caps) unsafe() unsafe.Pointer { return unsafe.Pointer(c.native) }
+
+// ToGValue returns a GValue containing the given caps. Note that under unexpected circumstances in allocation
+// this function can return nil. A reference to these caps is taken by the resulting value, so they are safe to
+// unref if not needed anymore.
+func (c *Caps) ToGValue() *glib.Value {
+	val, err := glib.ValueInit(glib.Type(C.getCapsType()))
+	if err != nil {
+		return nil
+	}
+	C.gst_value_set_caps((*C.GValue)(unsafe.Pointer(val.GValue)), c.Instance())
+	return val
+}
 
 // Ref increases the ref count on these caps by one.
 //
