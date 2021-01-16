@@ -2,6 +2,13 @@ package base
 
 /*
 #include "gst.go.h"
+
+gboolean baseSinkParentEvent (GstBaseSink * sink, GstEvent * event)
+{
+	GObjectClass * this_class = G_OBJECT_GET_CLASS(G_OBJECT(sink));
+	GstBaseSinkClass * parent = toGstBaseSinkClass(g_type_class_peek_parent(this_class));
+	return parent->event(sink, event);
+}
 */
 import "C"
 
@@ -162,6 +169,14 @@ func (g *GstBaseSink) IsLastSampleEnabled() bool {
 // IsQoSEnabled checks if sink is currently configured to send QoS events upstream.
 func (g *GstBaseSink) IsQoSEnabled() bool {
 	return gobool(C.gst_base_sink_is_qos_enabled(g.Instance()))
+}
+
+// ParentEvent calls the parent class's event handler for the given event.
+func (g *GstBaseSink) ParentEvent(ev *gst.Event) bool {
+	return gobool(C.baseSinkParentEvent(
+		g.Instance(),
+		(*C.GstEvent)(unsafe.Pointer(ev.Instance())),
+	))
 }
 
 // QueryLatency queries the sink for the latency parameters. The latency will be queried from the
