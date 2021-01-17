@@ -157,7 +157,7 @@ func (f *fileSink) ClassInit(klass *glib.ObjectClass) {
 // SetProperty is called when a `value` is set to the property at index `id` in the
 // properties slice that we installed during ClassInit. It should attempt to register
 // the value locally or signal any errors that occur in the process.
-func (f *fileSink) SetProperty(self *gst.Object, id uint, value *glib.Value) {
+func (f *fileSink) SetProperty(self *glib.Object, id uint, value *glib.Value) {
 	param := properties[id]
 	switch param.Name() {
 	case "location":
@@ -174,13 +174,13 @@ func (f *fileSink) SetProperty(self *gst.Object, id uint, value *glib.Value) {
 			)
 			return
 		}
-		self.Log(CAT, gst.LevelInfo, fmt.Sprintf("Set `location` to %s", f.settings.location))
+		gst.ToElement(self).Log(CAT, gst.LevelInfo, fmt.Sprintf("Set `location` to %s", f.settings.location))
 	}
 }
 
 // GetProperty is called to retrieve the value of the property at index `id` in the properties
 // slice provided at ClassInit.
-func (f *fileSink) GetProperty(self *gst.Object, id uint) *glib.Value {
+func (f *fileSink) GetProperty(self *glib.Object, id uint) *glib.Value {
 	param := properties[id]
 	switch param.Name() {
 	case "location":

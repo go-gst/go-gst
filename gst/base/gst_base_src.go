@@ -9,15 +9,23 @@ import (
 	"time"
 	"unsafe"
 
+	"github.com/tinyzimmer/go-glib/glib"
 	"github.com/tinyzimmer/go-gst/gst"
 )
 
 // GstBaseSrc represents a GstBaseSrc.
 type GstBaseSrc struct{ *gst.Element }
 
-// ToGstBaseSrc returns a GstBaseSrc object for the given object.
-func ToGstBaseSrc(obj *gst.Object) *GstBaseSrc {
-	return &GstBaseSrc{&gst.Element{Object: obj}}
+// ToGstBaseSrc returns a GstBaseSrc object for the given object. It will work on either gst.Object
+// or glib.Object interfaces.
+func ToGstBaseSrc(obj interface{}) *GstBaseSrc {
+	switch obj := obj.(type) {
+	case *gst.Object:
+		return &GstBaseSrc{&gst.Element{Object: obj}}
+	case *glib.Object:
+		return &GstBaseSrc{&gst.Element{Object: &gst.Object{InitiallyUnowned: &glib.InitiallyUnowned{Object: obj}}}}
+	}
+	return nil
 }
 
 // wrapGstBaseSrc wraps the given unsafe.Pointer in a GstBaseSrc instance.

@@ -25,6 +25,7 @@ import (
 	"time"
 	"unsafe"
 
+	"github.com/tinyzimmer/go-glib/glib"
 	"github.com/tinyzimmer/go-gst/gst"
 )
 
@@ -35,9 +36,16 @@ const GstBaseTransformFlowDropped gst.FlowReturn = C.GST_BASE_TRANSFORM_FLOW_DRO
 // GstBaseTransform represents a GstBaseTransform.
 type GstBaseTransform struct{ *gst.Element }
 
-// ToGstBaseTransform returns a GstBaseTransform object for the given object.
-func ToGstBaseTransform(obj *gst.Object) *GstBaseTransform {
-	return &GstBaseTransform{&gst.Element{Object: obj}}
+// ToGstBaseTransform returns a GstBaseTransform object for the given object. It will work on either gst.Object
+// or glib.Object interfaces.
+func ToGstBaseTransform(obj interface{}) *GstBaseTransform {
+	switch obj := obj.(type) {
+	case *gst.Object:
+		return &GstBaseTransform{&gst.Element{Object: obj}}
+	case *glib.Object:
+		return &GstBaseTransform{&gst.Element{Object: &gst.Object{InitiallyUnowned: &glib.InitiallyUnowned{Object: obj}}}}
+	}
+	return nil
 }
 
 // wrapGstBaseTransform wraps the given unsafe.Pointer in a GstBaseSrc instance.

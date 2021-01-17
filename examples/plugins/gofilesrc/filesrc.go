@@ -161,7 +161,7 @@ func (f *fileSrc) ClassInit(klass *glib.ObjectClass) {
 // SetProperty is called when a `value` is set to the property at index `id` in the
 // properties slice that we installed during ClassInit. It should attempt to register
 // the value locally or signal any errors that occur in the process.
-func (f *fileSrc) SetProperty(self *gst.Object, id uint, value *glib.Value) {
+func (f *fileSrc) SetProperty(self *glib.Object, id uint, value *glib.Value) {
 	param := properties[id]
 	switch param.Name() {
 	case "location":
@@ -178,13 +178,13 @@ func (f *fileSrc) SetProperty(self *gst.Object, id uint, value *glib.Value) {
 			)
 			return
 		}
-		self.Log(CAT, gst.LevelInfo, fmt.Sprintf("Set `location` to %s", f.settings.location))
+		gst.ToElement(self).Log(CAT, gst.LevelInfo, fmt.Sprintf("Set `location` to %s", f.settings.location))
 	}
 }
 
 // GetProperty is called to retrieve the value of the property at index `id` in the properties
 // slice provided at ClassInit.
-func (f *fileSrc) GetProperty(self *gst.Object, id uint) *glib.Value {
+func (f *fileSrc) GetProperty(self *glib.Object, id uint) *glib.Value {
 	param := properties[id]
 	switch param.Name() {
 	case "location":
@@ -206,8 +206,8 @@ func (f *fileSrc) GetProperty(self *gst.Object, id uint) *glib.Value {
 // Constructed is called when the type system is done constructing the object. Any finalizations required
 // during the initialization process can be performed here. In this example, we set the format on our
 // underlying GstBaseSrc to bytes.
-func (f *fileSrc) Constructed(self *gst.Object) {
-	self.Log(CAT, gst.LevelLog, "Setting format of GstBaseSrc to bytes")
+func (f *fileSrc) Constructed(self *glib.Object) {
+	base.ToGstBaseSrc(self).Log(CAT, gst.LevelLog, "Setting format of GstBaseSrc to bytes")
 	base.ToGstBaseSrc(self).SetFormat(gst.FormatBytes)
 }
 

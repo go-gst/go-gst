@@ -425,7 +425,7 @@ func (w *websocketSrc) ClassInit(klass *glib.ObjectClass) {
 }
 
 // * Object * //
-func (w *websocketSrc) SetProperty(self *gst.Object, id uint, value *glib.Value) {
+func (w *websocketSrc) SetProperty(self *glib.Object, id uint, value *glib.Value) {
 	prop := properties[id]
 
 	switch prop.Name() {
@@ -482,7 +482,7 @@ func (w *websocketSrc) SetProperty(self *gst.Object, id uint, value *glib.Value)
 	}
 }
 
-func (w *websocketSrc) GetProperty(self *gst.Object, id uint) *glib.Value {
+func (w *websocketSrc) GetProperty(self *glib.Object, id uint) *glib.Value {
 	prop := properties[id]
 
 	var localVal interface{}
@@ -511,7 +511,7 @@ func (w *websocketSrc) GetProperty(self *gst.Object, id uint) *glib.Value {
 	return val
 }
 
-func (w *websocketSrc) Constructed(self *gst.Object) {
+func (w *websocketSrc) Constructed(self *glib.Object) {
 	elem := gst.ToElement(self)
 	w.setupSrcPad(elem)
 }

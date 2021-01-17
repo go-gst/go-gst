@@ -16,15 +16,23 @@ import (
 	"time"
 	"unsafe"
 
+	"github.com/tinyzimmer/go-glib/glib"
 	"github.com/tinyzimmer/go-gst/gst"
 )
 
 // GstBaseSink represents a GstBaseSink.
 type GstBaseSink struct{ *gst.Element }
 
-// ToGstBaseSink returns a GstBaseSink object for the given object.
-func ToGstBaseSink(obj *gst.Object) *GstBaseSink {
-	return &GstBaseSink{&gst.Element{Object: obj}}
+// ToGstBaseSink returns a GstBaseSink object for the given object. It will work on either gst.Object
+// or glib.Object interfaces.
+func ToGstBaseSink(obj interface{}) *GstBaseSink {
+	switch obj := obj.(type) {
+	case *gst.Object:
+		return &GstBaseSink{&gst.Element{Object: obj}}
+	case *glib.Object:
+		return &GstBaseSink{&gst.Element{Object: &gst.Object{InitiallyUnowned: &glib.InitiallyUnowned{Object: obj}}}}
+	}
+	return nil
 }
 
 // wrapGstBaseSink wraps the given unsafe.Pointer in a GstBaseSink instance.

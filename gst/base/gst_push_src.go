@@ -8,6 +8,7 @@ import "C"
 import (
 	"unsafe"
 
+	"github.com/tinyzimmer/go-glib/glib"
 	"github.com/tinyzimmer/go-gst/gst"
 )
 
@@ -15,8 +16,14 @@ import (
 type GstPushSrc struct{ *GstBaseSrc }
 
 // ToGstPushSrc returns a GstPushSrc object for the given object.
-func ToGstPushSrc(obj *gst.Object) *GstPushSrc {
-	return &GstPushSrc{&GstBaseSrc{&gst.Element{Object: obj}}}
+func ToGstPushSrc(obj interface{}) *GstPushSrc {
+	switch obj := obj.(type) {
+	case *gst.Object:
+		return &GstPushSrc{&GstBaseSrc{&gst.Element{Object: obj}}}
+	case *glib.Object:
+		return &GstPushSrc{&GstBaseSrc{&gst.Element{Object: &gst.Object{InitiallyUnowned: &glib.InitiallyUnowned{Object: obj}}}}}
+	}
+	return nil
 }
 
 // wrapGstPushSrc wraps the given unsafe.Pointer in a GstPushSrc instance.

@@ -80,8 +80,17 @@ import (
 // Element is a Go wrapper around a GstElement.
 type Element struct{ *Object }
 
-// ToElement returns an Element object for the given Object.
-func ToElement(obj *Object) *Element { return &Element{Object: obj} }
+// ToElement returns an Element object for the given Object. It will work
+// on either gst.Object or glib.Object interfaces.
+func ToElement(obj interface{}) *Element {
+	switch obj := obj.(type) {
+	case *Object:
+		return &Element{Object: obj}
+	case *glib.Object:
+		return &Element{Object: &Object{InitiallyUnowned: &glib.InitiallyUnowned{Object: obj}}}
+	}
+	return nil
+}
 
 // ElementLinkMany is a go implementation of `gst_element_link_many` to compensate for
 // no variadic functions in cgo.
