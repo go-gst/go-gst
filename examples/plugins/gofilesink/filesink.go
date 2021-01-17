@@ -59,13 +59,13 @@ var CAT = gst.NewDebugCategory(
 // This element only has a single property, the location of the file to write to.
 // When getting and setting properties later on, you will reference them by their index in
 // this list.
-var properties = []*gst.ParamSpec{
-	gst.NewStringParam(
+var properties = []*glib.ParamSpec{
+	glib.NewStringParam(
 		"location",                      // The name of the parameter
 		"File Location",                 // The long name for the parameter
 		"Location to write the file to", // A blurb about the parameter
 		nil,                             // A default value for the parameter
-		gst.ParameterReadWrite,          // Flags for the parameter
+		glib.ParameterReadWrite,         // Flags for the parameter
 	),
 }
 
@@ -85,7 +85,7 @@ type settings struct {
 	location string
 }
 
-// Finally a structure is defined that implements (at a minimum) the gst.GoElement interface.
+// Finally a structure is defined that implements (at a minimum) the glib.GoObject interface.
 // It is possible to signal to the bindings to inherit from other classes or implement other
 // interfaces via the registration and TypeInit processes.
 type fileSink struct {
@@ -109,10 +109,9 @@ func (f *fileSink) setLocation(path string) error {
 // element and its capabilities with the type system. These are the minimum methods that
 // should be implemented by an element.
 
-// Every element needs to provide its own constructor that returns an initialized
-// gst.GoElement implementation. Here we simply create a new fileSink with zeroed settings
-// and state objects.
-func (f *fileSink) New() gst.GoElement {
+// Every element needs to provide its own constructor that returns an initialized glib.GoObjectSubclass
+// implementation. Here we simply create a new fileSink with zeroed settings and state objects.
+func (f *fileSink) New() glib.GoObjectSubclass {
 	CAT.Log(gst.LevelLog, "Initializing new fileSink object")
 	return &fileSink{
 		settings: &settings{},
@@ -122,29 +121,30 @@ func (f *fileSink) New() gst.GoElement {
 
 // The TypeInit method should register any additional interfaces provided by the element.
 // In this example we signal to the type system that we also implement the GstURIHandler interface.
-func (f *fileSink) TypeInit(instance *gst.TypeInstance) {
+func (f *fileSink) TypeInit(instance *glib.TypeInstance) {
 	CAT.Log(gst.LevelLog, "Adding URIHandler interface to type")
 	instance.AddInterface(gst.InterfaceURIHandler)
 }
 
 // The ClassInit method should specify the metadata for this element and add any pad templates
 // and properties.
-func (f *fileSink) ClassInit(klass *gst.ElementClass) {
+func (f *fileSink) ClassInit(klass *glib.ObjectClass) {
 	CAT.Log(gst.LevelLog, "Initializing gofilesink class")
-	klass.SetMetadata(
+	class := gst.ToElementClass(klass)
+	class.SetMetadata(
 		"File Sink",
 		"Sink/File",
 		"Write stream to a file",
 		"Avi Zimmerman <avi.zimmerman@gmail.com>",
 	)
 	CAT.Log(gst.LevelLog, "Adding sink pad template and properties to class")
-	klass.AddPadTemplate(gst.NewPadTemplate(
+	class.AddPadTemplate(gst.NewPadTemplate(
 		"sink",
 		gst.PadDirectionSink,
 		gst.PadPresenceAlways,
 		gst.NewAnyCaps(),
 	))
-	klass.InstallProperties(properties)
+	class.InstallProperties(properties)
 }
 
 // Object implementations are used during the initialization of an element. The

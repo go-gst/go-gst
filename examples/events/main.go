@@ -24,11 +24,12 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/tinyzimmer/go-glib/glib"
 	"github.com/tinyzimmer/go-gst/examples"
 	"github.com/tinyzimmer/go-gst/gst"
 )
 
-func runPipeline(loop *gst.MainLoop) error {
+func runPipeline(loop *glib.MainLoop) error {
 	gst.Init(nil)
 
 	// Build a pipeline with fake audio data going to a fakesink
@@ -109,7 +110,7 @@ func runPipeline(loop *gst.MainLoop) error {
 }
 
 func main() {
-	examples.RunLoop(func(loop *gst.MainLoop) error {
+	examples.RunLoop(func(loop *glib.MainLoop) error {
 		return runPipeline(loop)
 	})
 }

@@ -59,13 +59,13 @@ var CAT = gst.NewDebugCategory(
 // This element only has a single property, the location of the file to read from.
 // When getting and setting properties later on, you will reference them by their index in
 // this list.
-var properties = []*gst.ParamSpec{
-	gst.NewStringParam(
+var properties = []*glib.ParamSpec{
+	glib.NewStringParam(
 		"location",                          // The name of the parameter
 		"File Location",                     // The long name for the parameter
 		"Location of the file to read from", // A blurb about the parameter
 		nil,                                 // A default value for the parameter
-		gst.ParameterReadWrite,              // Flags for the parameter
+		glib.ParameterReadWrite,             // Flags for the parameter
 	),
 }
 
@@ -114,9 +114,8 @@ func (f *fileSrc) setLocation(path string) error {
 // should be implemented by an element.
 
 // Every element needs to provide its own constructor that returns an initialized
-// gst.GoElement implementation. Here we simply create a new fileSrc with zeroed settings
-// and state objects.
-func (f *fileSrc) New() gst.GoElement {
+// glib.GoObjectSubclass and state objects.
+func (f *fileSrc) New() glib.GoObjectSubclass {
 	CAT.Log(gst.LevelLog, "Initializing new fileSrc object")
 	return &fileSrc{
 		settings: &settings{},
@@ -126,29 +125,30 @@ func (f *fileSrc) New() gst.GoElement {
 
 // The TypeInit method should register any additional interfaces provided by the element.
 // In this example we signal to the type system that we also implement the GstURIHandler interface.
-func (f *fileSrc) TypeInit(instance *gst.TypeInstance) {
+func (f *fileSrc) TypeInit(instance *glib.TypeInstance) {
 	CAT.Log(gst.LevelLog, "Adding URIHandler interface to type")
 	instance.AddInterface(gst.InterfaceURIHandler)
 }
 
 // The ClassInit method should specify the metadata for this element and add any pad templates
 // and properties.
-func (f *fileSrc) ClassInit(klass *gst.ElementClass) {
+func (f *fileSrc) ClassInit(klass *glib.ObjectClass) {
 	CAT.Log(gst.LevelLog, "Initializing gofilesrc class")
-	klass.SetMetadata(
+	class := gst.ToElementClass(klass)
+	class.SetMetadata(
 		"File Source",
 		"Source/File",
 		"Read stream from a file",
 		"Avi Zimmerman <avi.zimmerman@gmail.com>",
 	)
 	CAT.Log(gst.LevelLog, "Adding src pad template and properties to class")
-	klass.AddPadTemplate(gst.NewPadTemplate(
+	class.AddPadTemplate(gst.NewPadTemplate(
 		"src",
 		gst.PadDirectionSource,
 		gst.PadPresenceAlways,
 		gst.NewAnyCaps(),
 	))
-	klass.InstallProperties(properties)
+	class.InstallProperties(properties)
 }
 
 // Object implementations are used during the initialization of an element. The

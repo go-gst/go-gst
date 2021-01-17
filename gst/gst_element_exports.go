@@ -8,11 +8,13 @@ import "C"
 import (
 	"time"
 	"unsafe"
+
+	"github.com/tinyzimmer/go-glib/glib"
 )
 
 //export goGstElementClassChangeState
 func goGstElementClassChangeState(elem *C.GstElement, change C.GstStateChange) C.GstStateChangeReturn {
-	iface := FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
+	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
 		ChangeState(*Element, StateChange) StateChangeReturn
 	})
 	return C.GstStateChangeReturn(iface.ChangeState(wrapCbElem(elem), StateChange(change)))
@@ -20,7 +22,7 @@ func goGstElementClassChangeState(elem *C.GstElement, change C.GstStateChange) C
 
 //export goGstElementClassGetState
 func goGstElementClassGetState(elem *C.GstElement, state, pending *C.GstState, timeout C.GstClockTime) C.GstStateChangeReturn {
-	iface := FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
+	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
 		GetState(*Element, time.Duration) (ret StateChangeReturn, current, pending State)
 	})
 	ret, cur, pend := iface.GetState(wrapCbElem(elem), time.Duration(timeout)*time.Nanosecond)
@@ -34,7 +36,7 @@ func goGstElementClassGetState(elem *C.GstElement, state, pending *C.GstState, t
 
 //export goGstElementClassNoMorePads
 func goGstElementClassNoMorePads(elem *C.GstElement) {
-	iface := FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
+	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
 		NoMorePads(*Element)
 	})
 	iface.NoMorePads(wrapCbElem(elem))
@@ -42,7 +44,7 @@ func goGstElementClassNoMorePads(elem *C.GstElement) {
 
 //export goGstElementClassPadAdded
 func goGstElementClassPadAdded(elem *C.GstElement, pad *C.GstPad) {
-	iface := FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
+	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
 		PadAdded(*Element, *Pad)
 	})
 	iface.PadAdded(wrapCbElem(elem), wrapPad(toGObject(unsafe.Pointer(pad))))
@@ -50,7 +52,7 @@ func goGstElementClassPadAdded(elem *C.GstElement, pad *C.GstPad) {
 
 //export goGstElementClassPadRemoved
 func goGstElementClassPadRemoved(elem *C.GstElement, pad *C.GstPad) {
-	iface := FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
+	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
 		PadRemoved(*Element, *Pad)
 	})
 	iface.PadRemoved(wrapCbElem(elem), wrapPad(toGObject(unsafe.Pointer(pad))))
@@ -58,7 +60,7 @@ func goGstElementClassPadRemoved(elem *C.GstElement, pad *C.GstPad) {
 
 //export goGstElementClassPostMessage
 func goGstElementClassPostMessage(elem *C.GstElement, msg *C.GstMessage) C.gboolean {
-	iface := FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
+	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
 		PostMessage(*Element, *Message) bool
 	})
 	return gboolean(iface.PostMessage(wrapCbElem(elem), wrapMessage(msg)))
@@ -66,7 +68,7 @@ func goGstElementClassPostMessage(elem *C.GstElement, msg *C.GstMessage) C.gbool
 
 //export goGstElementClassProvideClock
 func goGstElementClassProvideClock(elem *C.GstElement) *C.GstClock {
-	iface := FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
+	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
 		ProvideClock(*Element) *Clock
 	})
 	clock := iface.ProvideClock(wrapCbElem(elem))
@@ -78,7 +80,7 @@ func goGstElementClassProvideClock(elem *C.GstElement) *C.GstClock {
 
 //export goGstElementClassQuery
 func goGstElementClassQuery(elem *C.GstElement, query *C.GstQuery) C.gboolean {
-	iface := FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
+	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
 		Query(*Element, *Query) bool
 	})
 	return gboolean(iface.Query(wrapCbElem(elem), wrapQuery(query)))
@@ -86,7 +88,7 @@ func goGstElementClassQuery(elem *C.GstElement, query *C.GstQuery) C.gboolean {
 
 //export goGstElementClassReleasePad
 func goGstElementClassReleasePad(elem *C.GstElement, pad *C.GstPad) {
-	iface := FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
+	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
 		ReleasePad(*Element, *Pad)
 	})
 	iface.ReleasePad(wrapCbElem(elem), wrapPad(toGObject(unsafe.Pointer(pad))))
@@ -94,7 +96,7 @@ func goGstElementClassReleasePad(elem *C.GstElement, pad *C.GstPad) {
 
 //export goGstElementClassRequestNewPad
 func goGstElementClassRequestNewPad(elem *C.GstElement, templ *C.GstPadTemplate, name *C.gchar, caps *C.GstCaps) *C.GstPad {
-	iface := FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
+	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
 		RequestNewPad(self *Element, templ *PadTemplate, name string, caps *Caps) *Pad
 	})
 	pad := iface.RequestNewPad(
@@ -111,7 +113,7 @@ func goGstElementClassRequestNewPad(elem *C.GstElement, templ *C.GstPadTemplate,
 
 //export goGstElementClassSendEvent
 func goGstElementClassSendEvent(elem *C.GstElement, event *C.GstEvent) C.gboolean {
-	iface := FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
+	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
 		SendEvent(*Element, *Event) bool
 	})
 	return gboolean(iface.SendEvent(wrapCbElem(elem), wrapEvent(event)))
@@ -119,7 +121,7 @@ func goGstElementClassSendEvent(elem *C.GstElement, event *C.GstEvent) C.gboolea
 
 //export goGstElementClassSetBus
 func goGstElementClassSetBus(elem *C.GstElement, bus *C.GstBus) {
-	iface := FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
+	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
 		SetBus(*Element, *Bus)
 	})
 	iface.SetBus(wrapCbElem(elem), wrapBus(toGObject(unsafe.Pointer(bus))))
@@ -127,7 +129,7 @@ func goGstElementClassSetBus(elem *C.GstElement, bus *C.GstBus) {
 
 //export goGstElementClassSetClock
 func goGstElementClassSetClock(elem *C.GstElement, clock *C.GstClock) C.gboolean {
-	iface := FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
+	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
 		SetClock(*Element, *Clock) bool
 	})
 	return gboolean(iface.SetClock(wrapCbElem(elem), wrapClock(toGObject(unsafe.Pointer(clock)))))
@@ -135,7 +137,7 @@ func goGstElementClassSetClock(elem *C.GstElement, clock *C.GstClock) C.gboolean
 
 //export goGstElementClassSetContext
 func goGstElementClassSetContext(elem *C.GstElement, ctx *C.GstContext) {
-	iface := FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
+	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
 		SetContext(*Element, *Context)
 	})
 	iface.SetContext(wrapCbElem(elem), wrapContext(ctx))
@@ -143,7 +145,7 @@ func goGstElementClassSetContext(elem *C.GstElement, ctx *C.GstContext) {
 
 //export goGstElementClassSetState
 func goGstElementClassSetState(elem *C.GstElement, state C.GstState) C.GstStateChangeReturn {
-	iface := FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
+	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
 		SetState(*Element, State) StateChangeReturn
 	})
 	return C.GstStateChangeReturn(iface.SetState(wrapCbElem(elem), State(state)))
@@ -151,7 +153,7 @@ func goGstElementClassSetState(elem *C.GstElement, state C.GstState) C.GstStateC
 
 //export goGstElementClassStateChanged
 func goGstElementClassStateChanged(elem *C.GstElement, old, new, pending C.GstState) {
-	iface := FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
+	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
 		StateChanged(self *Element, old, new, pending State)
 	})
 	iface.StateChanged(wrapCbElem(elem), State(old), State(new), State(pending))

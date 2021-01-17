@@ -10,7 +10,6 @@ package gst
 import "C"
 
 import (
-	"reflect"
 	"time"
 	"unsafe"
 
@@ -245,38 +244,6 @@ func goGlobalPluginInit(plugin *C.GstPlugin) C.gboolean {
 	return gboolean(globalPluginInit(wrapPlugin(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(plugin))})))
 }
 
-//export goClassInit
-func goClassInit(klass C.gpointer, klassData C.gpointer) {
-	registerMutex.Lock()
-	defer registerMutex.Unlock()
-
-	ptr := unsafe.Pointer(klassData)
-	iface := gopointer.Restore(ptr)
-	defer gopointer.Unref(ptr)
-
-	data := iface.(*classData)
-	registeredClasses[klass] = data.elem
-
-	data.ext.InitClass(unsafe.Pointer(klass), data.elem)
-
-	C.g_type_class_add_private(klass, C.gsize(unsafe.Sizeof(uintptr(0))))
-
-	data.elem.ClassInit(wrapElementClass(klass))
-}
-
-//export goInstanceInit
-func goInstanceInit(obj *C.GTypeInstance, klass C.gpointer) {
-	registerMutex.Lock()
-	defer registerMutex.Unlock()
-
-	elem := registeredClasses[klass].New()
-	registeredClasses[klass] = elem
-
-	ptr := gopointer.Save(elem)
-	private := C.g_type_instance_get_private(obj, registeredTypes[reflect.TypeOf(registeredClasses[klass]).String()])
-	C.memcpy(unsafe.Pointer(private), unsafe.Pointer(&ptr), C.gsize(unsafe.Sizeof(uintptr(0))))
-}
-
 //export goURIHdlrGetURIType
 func goURIHdlrGetURIType(gtype C.GType) C.GstURIType {
 	return C.GstURIType(globalURIHdlr.GetURIType())
@@ -297,52 +264,16 @@ func goURIHdlrGetProtocols(gtype C.GType) **C.gchar {
 
 //export goURIHdlrGetURI
 func goURIHdlrGetURI(hdlr *C.GstURIHandler) *C.gchar {
-	iface := FromObjectUnsafePrivate(unsafe.Pointer(hdlr))
+	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(hdlr))
 	return (*C.gchar)(unsafe.Pointer(C.CString(iface.(URIHandler).GetURI())))
 }
 
 //export goURIHdlrSetURI
 func goURIHdlrSetURI(hdlr *C.GstURIHandler, uri *C.gchar, gerr **C.GError) C.gboolean {
-	iface := FromObjectUnsafePrivate(unsafe.Pointer(hdlr))
+	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(hdlr))
 	ok, err := iface.(URIHandler).SetURI(C.GoString(uri))
 	if err != nil {
 		C.g_set_error_literal(gerr, DomainLibrary.toQuark(), C.gint(LibraryErrorSettings), C.CString(err.Error()))
 	}
 	return gboolean(ok)
-}
-
-//export goObjectSetProperty
-func goObjectSetProperty(obj *C.GObject, propID C.guint, val *C.GValue, param *C.GParamSpec) {
-	iface := FromObjectUnsafePrivate(unsafe.Pointer(obj)).(interface {
-		SetProperty(obj *Object, id uint, value *glib.Value)
-	})
-	iface.SetProperty(wrapObject(toGObject(unsafe.Pointer(obj))), uint(propID-1), glib.ValueFromNative(unsafe.Pointer(val)))
-}
-
-//export goObjectGetProperty
-func goObjectGetProperty(obj *C.GObject, propID C.guint, value *C.GValue, param *C.GParamSpec) {
-	iface := FromObjectUnsafePrivate(unsafe.Pointer(obj)).(interface {
-		GetProperty(obj *Object, id uint) *glib.Value
-	})
-	val := iface.GetProperty(wrapObject(toGObject(unsafe.Pointer(obj))), uint(propID-1))
-	if val == nil {
-		return
-	}
-	C.g_value_copy((*C.GValue)(unsafe.Pointer(val.GValue)), value)
-}
-
-//export goObjectConstructed
-func goObjectConstructed(obj *C.GObject) {
-	iface := FromObjectUnsafePrivate(unsafe.Pointer(obj)).(interface {
-		Constructed(*Object)
-	})
-	iface.Constructed(wrapObject(toGObject(unsafe.Pointer(obj))))
-}
-
-//export goObjectFinalize
-func goObjectFinalize(obj *C.GObject, klass C.gpointer) {
-	registerMutex.Lock()
-	defer registerMutex.Unlock()
-	delete(registeredClasses, klass)
-	gopointer.Unref(privateFromObj(unsafe.Pointer(obj)))
 }

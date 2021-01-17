@@ -55,29 +55,29 @@ var CAT = gst.NewDebugCategory(
 	"WebsocketSrc Element",
 )
 
-var properties = []*gst.ParamSpec{
-	gst.NewStringParam(
+var properties = []*glib.ParamSpec{
+	glib.NewStringParam(
 		"address",
 		"Server Address",
 		"The address to bind the server to",
 		&DefaultAddress,
-		gst.ParameterReadWrite,
+		glib.ParameterReadWrite,
 	),
-	gst.NewIntParam(
+	glib.NewIntParam(
 		"port",
 		"Server Port",
 		"The port to bind the server to",
 		1024, 65535,
 		DefaultPort,
-		gst.ParameterReadWrite,
+		glib.ParameterReadWrite,
 	),
 	// not implemented yet
-	gst.NewBoolParam(
+	glib.NewBoolParam(
 		"retrieve-remote-addr",
 		"Retrieve Remote Address",
 		"Include the remote client's address in the buffer metadata",
 		DefaultRetrieveRemoteAddr,
-		gst.ParameterReadWrite,
+		glib.ParameterReadWrite,
 	),
 }
 
@@ -398,29 +398,30 @@ func (w *websocketSrc) setupSrcPad(elem *gst.Element) {
 
 // * ObjectSubclass * //
 
-func (w *websocketSrc) New() gst.GoElement {
+func (w *websocketSrc) New() glib.GoObjectSubclass {
 	return &websocketSrc{
 		settings: defaultSettings(),
 		state:    &state{},
 	}
 }
 
-func (w *websocketSrc) TypeInit(instance *gst.TypeInstance) {}
+func (w *websocketSrc) TypeInit(instance *glib.TypeInstance) {}
 
-func (w *websocketSrc) ClassInit(klass *gst.ElementClass) {
-	klass.SetMetadata(
+func (w *websocketSrc) ClassInit(klass *glib.ObjectClass) {
+	class := gst.ToElementClass(klass)
+	class.SetMetadata(
 		"Websocket Src",
 		"Src/Websocket",
 		"Write stream from a connection over a websocket server",
 		"Avi Zimmerman <avi.zimmerman@gmail.com>",
 	)
-	klass.AddPadTemplate(gst.NewPadTemplate(
+	class.AddPadTemplate(gst.NewPadTemplate(
 		"src",
 		gst.PadDirectionSource,
 		gst.PadPresenceAlways,
 		gst.NewAnyCaps(),
 	))
-	klass.InstallProperties(properties)
+	class.InstallProperties(properties)
 }
 
 // * Object * //

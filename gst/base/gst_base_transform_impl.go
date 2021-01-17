@@ -61,7 +61,7 @@ import (
 
 var (
 	// ExtendsBaseTransform is an Extendable for extending a GstBaseTransform
-	ExtendsBaseTransform gst.Extendable = &extendsBaseTransform{parent: gst.ExtendsElement}
+	ExtendsBaseTransform glib.Extendable = &extendsBaseTransform{parent: gst.ExtendsElement}
 )
 
 // GstBaseTransformImpl is the interface for an element extending a GstBaseTransform.
@@ -151,13 +151,13 @@ type GstBaseTransformImpl interface {
 	TransformSize(self *GstBaseTransform, direction gst.PadDirection, caps *gst.Caps, size int64, othercaps *gst.Caps) (ok bool, othersize int64)
 }
 
-type extendsBaseTransform struct{ parent gst.Extendable }
+type extendsBaseTransform struct{ parent glib.Extendable }
 
 func (e *extendsBaseTransform) Type() glib.Type     { return glib.Type(C.gst_base_transform_get_type()) }
 func (e *extendsBaseTransform) ClassSize() int64    { return int64(C.sizeof_GstBaseTransformClass) }
 func (e *extendsBaseTransform) InstanceSize() int64 { return int64(C.sizeof_GstBaseTransform) }
 
-func (e *extendsBaseTransform) InitClass(klass unsafe.Pointer, elem gst.GoElement) {
+func (e *extendsBaseTransform) InitClass(klass unsafe.Pointer, elem glib.GoObjectSubclass) {
 	e.parent.InitClass(klass, elem)
 
 	class := C.toGstBaseTransformClass(klass)

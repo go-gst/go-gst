@@ -1,15 +1,15 @@
 GO_VERSION ?= 1.15
 DOCKER_IMAGE ?= ghcr.io/tinyzimmer/go-gst:$(GO_VERSION)
-GOLANGCI_VERSION ?= 1.31.0
-GOLANGCI_LINT ?= _bin/golangci-lint
-GOLANGCI_DOWNLOAD_URL ?= https://github.com/golangci/golangci-lint/releases/download/v${GOLANGCI_VERSION}/golangci-lint-${GOLANGCI_VERSION}-$(shell uname | tr A-Z a-z)-amd64.tar.gz
+
+GOPATH ?= $(shell go env GOPATH)
+GOBIN  ?= $(GOPATH)/bin
+GOLANGCI_VERSION ?= v1.33.0
+GOLANGCI_LINT    ?= $(GOBIN)/golangci-lint
+
 PLUGIN_GEN ?= "$(shell go env GOPATH)/bin/gst-plugin-gen"
 
 $(GOLANGCI_LINT):
-	mkdir -p $(dir $(GOLANGCI_LINT))
-	cd $(dir $(GOLANGCI_LINT)) && curl -JL $(GOLANGCI_DOWNLOAD_URL) | tar xzf -
-	chmod +x $(dir $(GOLANGCI_LINT))golangci-lint-$(GOLANGCI_VERSION)-$(shell uname | tr A-Z a-z)-amd64/golangci-lint
-	ln -s golangci-lint-$(GOLANGCI_VERSION)-$(shell uname | tr A-Z a-z)-amd64/golangci-lint $(GOLANGCI_LINT)
+        curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(GOBIN) $(GOLANGCI_VERSION)
 
 lint: $(GOLANGCI_LINT)
 	$(GOLANGCI_LINT) run -v

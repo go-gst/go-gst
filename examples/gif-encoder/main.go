@@ -13,6 +13,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/tinyzimmer/go-glib/glib"
 	"github.com/tinyzimmer/go-gst/examples"
 	"github.com/tinyzimmer/go-gst/gst"
 	"github.com/tinyzimmer/go-gst/gst/app"
@@ -25,7 +26,7 @@ var outFile string
 const width = 320
 const height = 240
 
-func encodeGif(mainLoop *gst.MainLoop) error {
+func encodeGif(mainLoop *glib.MainLoop) error {
 	gst.Init(nil)
 
 	// Initialize an empty buffer for the encoded gif images.

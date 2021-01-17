@@ -20,11 +20,12 @@ import (
 	"strings"
 	"time"
 
+	"github.com/tinyzimmer/go-glib/glib"
 	"github.com/tinyzimmer/go-gst/examples"
 	"github.com/tinyzimmer/go-gst/gst"
 )
 
-func queries(mainLoop *gst.MainLoop) error {
+func queries(mainLoop *glib.MainLoop) error {
 
 	if len(os.Args) < 2 {
 		fmt.Println("USAGE: queries <pipeline>")

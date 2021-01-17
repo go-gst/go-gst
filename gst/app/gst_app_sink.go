@@ -23,7 +23,9 @@ import (
 	"unsafe"
 
 	gopointer "github.com/mattn/go-pointer"
+
 	"github.com/tinyzimmer/go-gst/gst"
+	"github.com/tinyzimmer/go-gst/gst/base"
 )
 
 // SinkCallbacks represents callbacks that can be installed on an app sink when data is available.
@@ -37,7 +39,7 @@ type SinkCallbacks struct {
 var ErrEOS = errors.New("Pipeline has reached end-of-stream")
 
 // Sink wraps an Element made with the appsink plugin with additional methods for pulling samples.
-type Sink struct{ *gst.Element }
+type Sink struct{ *base.GstBaseSink }
 
 // NewAppSink returns a new appsink element. Unref after usage.
 func NewAppSink() (*Sink, error) {

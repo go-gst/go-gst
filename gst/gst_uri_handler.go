@@ -2,6 +2,21 @@ package gst
 
 /*
 #include "gst.go.h"
+
+extern GstURIType              goURIHdlrGetURIType        (GType type);
+extern const gchar * const *   goURIHdlrGetProtocols      (GType type);
+extern gchar *                 goURIHdlrGetURI            (GstURIHandler * handler);
+extern gboolean                goURIHdlrSetURI            (GstURIHandler * handler,
+                                                           const gchar   * uri,
+														   GError       ** error);
+
+void uriHandlerInit (gpointer iface, gpointer iface_data)
+{
+	((GstURIHandlerInterface*)iface)->get_type = goURIHdlrGetURIType;
+	((GstURIHandlerInterface*)iface)->get_protocols = goURIHdlrGetProtocols;
+	((GstURIHandlerInterface*)iface)->get_uri = goURIHdlrGetURI;
+	((GstURIHandlerInterface*)iface)->set_uri = goURIHdlrSetURI;
+}
 */
 import "C"
 import (
@@ -14,7 +29,20 @@ import (
 // InterfaceURIHandler represents the GstURIHandler interface GType. Use this when querying bins
 // for elements that implement a URIHandler, or when signaling that a GoElement provides this
 // interface.
-var InterfaceURIHandler = glib.Type(C.GST_TYPE_URI_HANDLER)
+var InterfaceURIHandler glib.Interface = &interfaceURIHandler{}
+
+type interfaceURIHandler struct {
+	glib.Interface
+}
+
+func (i *interfaceURIHandler) Type() glib.Type { 
+	return glib.Type(C.GST_TYPE_URI_HANDLER)
+}
+
+func (i *interfaceURIHandler) InitFunc(t *glib.TypeInstance) unsafe.Pointer {
+	globalURIHdlr = t.GoType.(URIHandler)
+	return unsafe.Pointer(C.uriHandlerInit)
+}
 
 // URIHandler represents an interface that elements can implement to provide URI handling
 // capabilities.

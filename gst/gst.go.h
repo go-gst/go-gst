@@ -10,7 +10,6 @@ typedef struct _PadDestroyNotifyInfo {
 	gpointer func_map_ptr;
 } PadDestroyNotifyInfo;
 
-
 /*
 	Type Castings
 */
@@ -173,49 +172,6 @@ inline gboolean        gstObjectFlagIsSet      (GstObject * obj, GstElementFlags
 inline GstTocSetter *  toTocSetter (GstElement * elem) { return GST_TOC_SETTER(elem); }
 inline GstTagSetter *  toTagSetter (GstElement *elem)  { return GST_TAG_SETTER(elem); }
 
-/*
-	ParamSpec Utilities
-*/
-
-inline gboolean        isParamSpecTypeCaps   (GParamSpec * p) { return p->value_type == GST_TYPE_CAPS; }
-inline gboolean        isParamSpecEnum       (GParamSpec * p) { return (G_IS_PARAM_SPEC_ENUM(p)); }
-inline gboolean        isParamSpecFlags      (GParamSpec * p) { return (G_IS_PARAM_SPEC_FLAGS(p)); }
-inline gboolean        isParamSpecObject     (GParamSpec * p) { return (G_IS_PARAM_SPEC_OBJECT(p)); }
-inline gboolean        isParamSpecBoxed      (GParamSpec * p) { return (G_IS_PARAM_SPEC_BOXED(p)); }
-inline gboolean        isParamSpecPointer    (GParamSpec * p) { return (G_IS_PARAM_SPEC_POINTER(p)); }
-inline gboolean        isParamSpecFraction   (GParamSpec * p) { return (GST_IS_PARAM_SPEC_FRACTION(p)); }
-inline gboolean        isParamSpecGstArray   (GParamSpec * p) { return p->value_type == GST_TYPE_ARRAY; }
-
-inline GParamSpecUInt *    getParamUInt    (GParamSpec * param) { return (G_PARAM_SPEC_UINT(param)); }
-inline GParamSpecInt *     getParamInt     (GParamSpec * param) { return (G_PARAM_SPEC_INT(param)); }
-inline GParamSpecUInt64 *  getParamUInt64  (GParamSpec * param) { return (G_PARAM_SPEC_UINT64(param)); }
-inline GParamSpecInt64 *   getParamInt64   (GParamSpec * param) { return (G_PARAM_SPEC_INT64(param)); }
-inline GParamSpecFloat *   getParamFloat   (GParamSpec * param) { return (G_PARAM_SPEC_FLOAT(param)); }
-inline GParamSpecDouble *  getParamDouble  (GParamSpec * param) { return (G_PARAM_SPEC_DOUBLE(param)); }
-
-inline GEnumValue *    getEnumValues         (GParamSpec * p, guint * size)
-{
-	GEnumValue * values;
-    values = G_ENUM_CLASS (g_type_class_ref (p->value_type))->values;
-	guint i = 0;
-	while (values[i].value_name) {
-    	++i;
-    }
-	*size = i;
-	return values;
-}
-
-inline GFlagsValue *   getParamSpecFlags     (GParamSpec * p, guint * size)
-{
-	GParamSpecFlags * pflags = G_PARAM_SPEC_FLAGS (p);
-	GFlagsValue * vals = pflags->flags_class->values;
-	guint i = 0;
-	while (vals[i].value_name) {
-    	++i;
-    }
-	*size = i;
-	return vals;
-}
 
 /* Misc */
 

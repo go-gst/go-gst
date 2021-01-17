@@ -66,19 +66,16 @@ func (o *Object) Interfaces() []string {
 // set in this object, or their defaults.
 //
 // Unref after usage.
-func (o *Object) ListProperties() []*ParamSpec {
+func (o *Object) ListProperties() []*glib.ParamSpec {
 	var size C.guint
 	props := C.g_object_class_list_properties((*C.GObjectClass)(o.Class()), &size)
 	if props == nil {
 		return nil
 	}
 	defer C.g_free((C.gpointer)(props))
-	out := make([]*ParamSpec, 0)
+	out := make([]*glib.ParamSpec, 0)
 	for _, prop := range (*[1 << 30]*C.GParamSpec)(unsafe.Pointer(props))[:size:size] {
-		C.g_param_spec_sink(prop) // steal the ref on the property
-		out = append(out, &ParamSpec{
-			paramSpec: prop,
-		})
+		out = append(out, glib.ToParamSpec(unsafe.Pointer(prop)))
 	}
 	return out
 }

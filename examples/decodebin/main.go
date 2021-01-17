@@ -38,6 +38,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/tinyzimmer/go-glib/glib"
 	"github.com/tinyzimmer/go-gst/examples"
 	"github.com/tinyzimmer/go-gst/gst"
 )
@@ -152,7 +153,7 @@ func buildPipeline() (*gst.Pipeline, error) {
 	return pipeline, nil
 }
 
-func runPipeline(loop *gst.MainLoop, pipeline *gst.Pipeline) error {
+func runPipeline(loop *glib.MainLoop, pipeline *gst.Pipeline) error {
 	// Start the pipeline
 	pipeline.SetState(gst.StatePlaying)
 	// Stop and cleanup the pipeline when we exit
@@ -196,7 +197,7 @@ func main() {
 		flag.Usage()
 		os.Exit(1)
 	}
-	examples.RunLoop(func(loop *gst.MainLoop) error {
+	examples.RunLoop(func(loop *glib.MainLoop) error {
 		pipeline, err := buildPipeline()
 		if err != nil {
 			return err

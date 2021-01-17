@@ -23,7 +23,7 @@ import (
 
 var (
 	// ExtendsPushSrc is an Extendable for extending a GstPushSrc
-	ExtendsPushSrc gst.Extendable = &extendsPushSrc{parent: ExtendsBaseSrc}
+	ExtendsPushSrc glib.Extendable = &extendsPushSrc{parent: ExtendsBaseSrc}
 )
 
 // GstPushSrcImpl is the documented interface for an element extending a GstPushSrc. It does not have to
@@ -42,13 +42,13 @@ type GstPushSrcImpl interface {
 	Fill(*GstPushSrc, *gst.Buffer) gst.FlowReturn
 }
 
-type extendsPushSrc struct{ parent gst.Extendable }
+type extendsPushSrc struct{ parent glib.Extendable }
 
 func (e *extendsPushSrc) Type() glib.Type     { return glib.Type(C.gst_push_src_get_type()) }
 func (e *extendsPushSrc) ClassSize() int64    { return int64(C.sizeof_GstPushSrcClass) }
 func (e *extendsPushSrc) InstanceSize() int64 { return int64(C.sizeof_GstPushSrc) }
 
-func (e *extendsPushSrc) InitClass(klass unsafe.Pointer, elem gst.GoElement) {
+func (e *extendsPushSrc) InitClass(klass unsafe.Pointer, elem glib.GoObjectSubclass) {
 	e.parent.InitClass(klass, elem)
 
 	srcClass := C.toGstPushSrcClass(klass)

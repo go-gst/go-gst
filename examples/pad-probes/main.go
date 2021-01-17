@@ -15,11 +15,12 @@ import (
 	"math"
 	"time"
 
+	"github.com/tinyzimmer/go-glib/glib"
 	"github.com/tinyzimmer/go-gst/examples"
 	"github.com/tinyzimmer/go-gst/gst"
 )
 
-func padProbes(mainLoop *gst.MainLoop) error {
+func padProbes(mainLoop *glib.MainLoop) error {
 	gst.Init(nil)
 
 	// Parse the pipeline we want to probe from a static in-line string.

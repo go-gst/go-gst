@@ -4,10 +4,19 @@ package gst
 #include "gst.go.h"
 */
 import "C"
-import "unsafe"
+import (
+	"unsafe"
+
+	"github.com/tinyzimmer/go-glib/glib"
+)
 
 // ElementClass represents the subclass of an element provided by a plugin.
-type ElementClass struct{ *ObjectClass }
+type ElementClass struct{ *glib.ObjectClass }
+
+// ToElementClass wraps the given ObjectClass in an ElementClass instance.
+func ToElementClass(klass *glib.ObjectClass) *ElementClass {
+	return &ElementClass{klass}
+}
 
 // Instance returns the underlying GstElementClass instance.
 func (e *ElementClass) Instance() *C.GstElementClass {

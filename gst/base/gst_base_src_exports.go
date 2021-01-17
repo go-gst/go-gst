@@ -7,12 +7,13 @@ import (
 	"time"
 	"unsafe"
 
+	"github.com/tinyzimmer/go-glib/glib"
 	"github.com/tinyzimmer/go-gst/gst"
 )
 
 //export goGstBaseSrcGetCaps
 func goGstBaseSrcGetCaps(src *C.GstBaseSrc, filter *C.GstCaps) *C.GstCaps {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(src))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(src))
 	caller := elem.(interface {
 		GetCaps(*GstBaseSrc, *gst.Caps) *gst.Caps
 	})
@@ -22,7 +23,7 @@ func goGstBaseSrcGetCaps(src *C.GstBaseSrc, filter *C.GstCaps) *C.GstCaps {
 
 //export goGstBaseSrcNegotiate
 func goGstBaseSrcNegotiate(src *C.GstBaseSrc) C.gboolean {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(src))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(src))
 	caller := elem.(interface {
 		Negotiate(*GstBaseSrc) bool
 	})
@@ -31,7 +32,7 @@ func goGstBaseSrcNegotiate(src *C.GstBaseSrc) C.gboolean {
 
 //export goGstBaseSrcFixate
 func goGstBaseSrcFixate(src *C.GstBaseSrc, caps *C.GstCaps) *C.GstCaps {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(src))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(src))
 	caller := elem.(interface {
 		Fixate(*GstBaseSrc, *gst.Caps) *gst.Caps
 	})
@@ -41,7 +42,7 @@ func goGstBaseSrcFixate(src *C.GstBaseSrc, caps *C.GstCaps) *C.GstCaps {
 
 //export goGstBaseSrcSetCaps
 func goGstBaseSrcSetCaps(src *C.GstBaseSrc, filter *C.GstCaps) C.gboolean {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(src))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(src))
 	caller := elem.(interface {
 		SetCaps(*GstBaseSrc, *gst.Caps) bool
 	})
@@ -50,7 +51,7 @@ func goGstBaseSrcSetCaps(src *C.GstBaseSrc, filter *C.GstCaps) C.gboolean {
 
 //export goGstBaseSrcDecideAllocation
 func goGstBaseSrcDecideAllocation(src *C.GstBaseSrc, query *C.GstQuery) C.gboolean {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(src))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(src))
 	caller := elem.(interface {
 		DecideAllocation(*GstBaseSrc, *gst.Query) bool
 	})
@@ -59,7 +60,7 @@ func goGstBaseSrcDecideAllocation(src *C.GstBaseSrc, query *C.GstQuery) C.gboole
 
 //export goGstBaseSrcStart
 func goGstBaseSrcStart(src *C.GstBaseSrc) C.gboolean {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(src))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(src))
 	caller := elem.(interface {
 		Start(*GstBaseSrc) bool
 	})
@@ -68,7 +69,7 @@ func goGstBaseSrcStart(src *C.GstBaseSrc) C.gboolean {
 
 //export goGstBaseSrcStop
 func goGstBaseSrcStop(src *C.GstBaseSrc) C.gboolean {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(src))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(src))
 	caller := elem.(interface {
 		Stop(*GstBaseSrc) bool
 	})
@@ -77,7 +78,7 @@ func goGstBaseSrcStop(src *C.GstBaseSrc) C.gboolean {
 
 //export goGstBaseSrcGetTimes
 func goGstBaseSrcGetTimes(src *C.GstBaseSrc, buf *C.GstBuffer, start *C.GstClockTime, end *C.GstClockTime) {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(src))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(src))
 	caller := elem.(interface {
 		GetTimes(*GstBaseSrc, *gst.Buffer) (start, end time.Duration)
 	})
@@ -88,7 +89,7 @@ func goGstBaseSrcGetTimes(src *C.GstBaseSrc, buf *C.GstBuffer, start *C.GstClock
 
 //export goGstBaseSrcGetSize
 func goGstBaseSrcGetSize(src *C.GstBaseSrc, size *C.guint64) C.gboolean {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(src))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(src))
 	caller := elem.(interface {
 		GetSize(*GstBaseSrc) (bool, int64)
 	})
@@ -102,7 +103,7 @@ func goGstBaseSrcGetSize(src *C.GstBaseSrc, size *C.guint64) C.gboolean {
 
 //export goGstBaseSrcIsSeekable
 func goGstBaseSrcIsSeekable(src *C.GstBaseSrc) C.gboolean {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(src))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(src))
 	caller := elem.(interface {
 		IsSeekable(*GstBaseSrc) bool
 	})
@@ -111,7 +112,7 @@ func goGstBaseSrcIsSeekable(src *C.GstBaseSrc) C.gboolean {
 
 //export goGstBaseSrcPrepareSeekSegment
 func goGstBaseSrcPrepareSeekSegment(src *C.GstBaseSrc, seek *C.GstEvent, segment *C.GstSegment) C.gboolean {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(src))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(src))
 	caller := elem.(interface {
 		PrepareSeekSegment(*GstBaseSrc, *gst.Event, *gst.Segment) bool
 	})
@@ -120,7 +121,7 @@ func goGstBaseSrcPrepareSeekSegment(src *C.GstBaseSrc, seek *C.GstEvent, segment
 
 //export goGstBaseSrcDoSeek
 func goGstBaseSrcDoSeek(src *C.GstBaseSrc, segment *C.GstSegment) C.gboolean {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(src))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(src))
 	caller := elem.(interface {
 		DoSeek(*GstBaseSrc, *gst.Segment) bool
 	})
@@ -129,7 +130,7 @@ func goGstBaseSrcDoSeek(src *C.GstBaseSrc, segment *C.GstSegment) C.gboolean {
 
 //export goGstBaseSrcUnlock
 func goGstBaseSrcUnlock(src *C.GstBaseSrc) C.gboolean {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(src))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(src))
 	caller := elem.(interface {
 		Unlock(*GstBaseSrc) bool
 	})
@@ -138,7 +139,7 @@ func goGstBaseSrcUnlock(src *C.GstBaseSrc) C.gboolean {
 
 //export goGstBaseSrcUnlockStop
 func goGstBaseSrcUnlockStop(src *C.GstBaseSrc) C.gboolean {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(src))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(src))
 	caller := elem.(interface {
 		UnlockStop(*GstBaseSrc) bool
 	})
@@ -147,7 +148,7 @@ func goGstBaseSrcUnlockStop(src *C.GstBaseSrc) C.gboolean {
 
 //export goGstBaseSrcQuery
 func goGstBaseSrcQuery(src *C.GstBaseSrc, query *C.GstQuery) C.gboolean {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(src))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(src))
 	caller := elem.(interface {
 		Query(*GstBaseSrc, *gst.Query) bool
 	})
@@ -156,7 +157,7 @@ func goGstBaseSrcQuery(src *C.GstBaseSrc, query *C.GstQuery) C.gboolean {
 
 //export goGstBaseSrcEvent
 func goGstBaseSrcEvent(src *C.GstBaseSrc, event *C.GstEvent) C.gboolean {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(src))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(src))
 	caller := elem.(interface {
 		Event(*GstBaseSrc, *gst.Event) bool
 	})
@@ -165,7 +166,7 @@ func goGstBaseSrcEvent(src *C.GstBaseSrc, event *C.GstEvent) C.gboolean {
 
 //export goGstBaseSrcCreate
 func goGstBaseSrcCreate(src *C.GstBaseSrc, offset C.guint64, size C.guint, buf **C.GstBuffer) C.GstFlowReturn {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(src))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(src))
 	caller := elem.(interface {
 		Create(*GstBaseSrc, uint64, uint) (gst.FlowReturn, *gst.Buffer)
 	})
@@ -178,7 +179,7 @@ func goGstBaseSrcCreate(src *C.GstBaseSrc, offset C.guint64, size C.guint, buf *
 
 //export goGstBaseSrcAlloc
 func goGstBaseSrcAlloc(src *C.GstBaseSrc, offset C.guint64, size C.guint, buf **C.GstBuffer) C.GstFlowReturn {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(src))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(src))
 	caller := elem.(interface {
 		Alloc(*GstBaseSrc, uint64, uint) (gst.FlowReturn, *gst.Buffer)
 	})
@@ -191,7 +192,7 @@ func goGstBaseSrcAlloc(src *C.GstBaseSrc, offset C.guint64, size C.guint, buf **
 
 //export goGstBaseSrcFill
 func goGstBaseSrcFill(src *C.GstBaseSrc, offset C.guint64, size C.guint, buf *C.GstBuffer) C.GstFlowReturn {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(src))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(src))
 	caller := elem.(interface {
 		Fill(*GstBaseSrc, uint64, uint, *gst.Buffer) gst.FlowReturn
 	})

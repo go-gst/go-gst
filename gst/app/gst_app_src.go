@@ -23,6 +23,7 @@ import (
 
 	gopointer "github.com/mattn/go-pointer"
 	"github.com/tinyzimmer/go-gst/gst"
+	"github.com/tinyzimmer/go-gst/gst/base"
 )
 
 // SourceCallbacks represents callbacks to configure on an AppSource.
@@ -43,7 +44,7 @@ const (
 )
 
 // Source wraps an Element made with the appsrc plugin with additional methods for pushing samples.
-type Source struct{ *gst.Element }
+type Source struct{ *base.GstBaseSrc }
 
 // NewAppSrc returns a new AppSrc element.
 func NewAppSrc() (*Source, error) {

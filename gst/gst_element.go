@@ -108,12 +108,12 @@ const (
 
 // RegisterElement creates a new elementfactory capable of instantiating objects of the given GoElement
 // and adds the factory to the plugin. A higher rank means more importance when autoplugging.
-func RegisterElement(plugin *Plugin, name string, rank Rank, elem GoElement, extends Extendable) bool {
+func RegisterElement(plugin *Plugin, name string, rank Rank, elem glib.GoObjectSubclass, extends glib.Extendable) bool {
 	return gobool(C.gst_element_register(
 		plugin.Instance(),
 		C.CString(name),
 		C.guint(rank),
-		gtypeForGoElement(name, elem, extends),
+		C.GType(glib.RegisterGoType(name, elem, extends)),
 	))
 }
 
@@ -452,7 +452,7 @@ func (e *Element) URIHandler() URIHandler {
 }
 
 // ExtendsElement signifies a GoElement that extends a GstElement.
-var ExtendsElement Extendable = &extendElement{parent: ExtendsObject}
+var ExtendsElement glib.Extendable = &extendElement{parent: glib.ExtendsObject}
 
 // ElementImpl is an interface containing go quivalents of the virtual methods that can be
 // overridden by a plugin extending an Element.
@@ -492,13 +492,13 @@ type ElementImpl interface {
 	StateChanged(self *Element, old, new, pending State)
 }
 
-type extendElement struct{ parent Extendable }
+type extendElement struct{ parent glib.Extendable }
 
 func (e *extendElement) Type() glib.Type     { return glib.Type(C.gst_element_get_type()) }
 func (e *extendElement) ClassSize() int64    { return int64(C.sizeof_GstElementClass) }
 func (e *extendElement) InstanceSize() int64 { return int64(C.sizeof_GstElement) }
 
-func (e *extendElement) InitClass(klass unsafe.Pointer, elem GoElement) {
+func (e *extendElement) InitClass(klass unsafe.Pointer, elem glib.GoObjectSubclass) {
 	e.parent.InitClass(klass, elem)
 
 	elemClass := C.toGstElementClass(klass)

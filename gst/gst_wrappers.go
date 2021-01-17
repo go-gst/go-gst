@@ -30,8 +30,6 @@ func wrapDevice(obj *glib.Object) *Device                 { return &Device{wrapO
 func wrapElement(obj *glib.Object) *Element               { return &Element{wrapObject(obj)} }
 func wrapEvent(ev *C.GstEvent) *Event                     { return &Event{ptr: ev} }
 func wrapGhostPad(obj *glib.Object) *GhostPad             { return &GhostPad{wrapProxyPad(obj)} }
-func wrapMainContext(ctx *C.GMainContext) *MainContext    { return &MainContext{ptr: ctx} }
-func wrapMainLoop(loop *C.GMainLoop) *MainLoop            { return &MainLoop{ptr: loop} }
 func wrapMapInfo(mapInfo *C.GstMapInfo) *MapInfo          { return &MapInfo{ptr: mapInfo} }
 func wrapMemory(mem *C.GstMemory) *Memory                 { return &Memory{ptr: mem} }
 func wrapMessage(msg *C.GstMessage) *Message              { return &Message{msg: msg} }
@@ -70,10 +68,6 @@ func wrapStreamCollection(obj *glib.Object) *StreamCollection {
 
 func wrapAllocationParams(obj *C.GstAllocationParams) *AllocationParams {
 	return &AllocationParams{ptr: obj}
-}
-
-func wrapElementClass(klass C.gpointer) *ElementClass {
-	return &ElementClass{&ObjectClass{ptr: C.toGObjectClass(unsafe.Pointer(klass))}}
 }
 
 // Marshallers

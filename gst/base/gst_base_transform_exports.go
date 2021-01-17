@@ -14,7 +14,7 @@ import (
 
 //export goGstBaseTransformAcceptCaps
 func goGstBaseTransformAcceptCaps(self *C.GstBaseTransform, direction C.GstPadDirection, caps *C.GstCaps) C.gboolean {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(self))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
 	caller := elem.(interface {
 		AcceptCaps(self *GstBaseTransform, direction gst.PadDirection, caps *gst.Caps) bool
 	})
@@ -23,7 +23,7 @@ func goGstBaseTransformAcceptCaps(self *C.GstBaseTransform, direction C.GstPadDi
 
 //export goGstBaseTransformBeforeTransform
 func goGstBaseTransformBeforeTransform(self *C.GstBaseTransform, buffer *C.GstBuffer) {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(self))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
 	caller := elem.(interface {
 		BeforeTransform(self *GstBaseTransform, buffer *gst.Buffer)
 	})
@@ -32,7 +32,7 @@ func goGstBaseTransformBeforeTransform(self *C.GstBaseTransform, buffer *C.GstBu
 
 //export goGstBaseTransformCopyMetadata
 func goGstBaseTransformCopyMetadata(self *C.GstBaseTransform, input, outbuf *C.GstBuffer) C.gboolean {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(self))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
 	caller := elem.(interface {
 		CopyMetadata(self *GstBaseTransform, input, output *gst.Buffer) bool
 	})
@@ -41,7 +41,7 @@ func goGstBaseTransformCopyMetadata(self *C.GstBaseTransform, input, outbuf *C.G
 
 //export goGstBaseTransformDecideAllocation
 func goGstBaseTransformDecideAllocation(self *C.GstBaseTransform, query *C.GstQuery) C.gboolean {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(self))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
 	caller := elem.(interface {
 		DecideAllocation(self *GstBaseTransform, query *gst.Query) bool
 	})
@@ -50,7 +50,7 @@ func goGstBaseTransformDecideAllocation(self *C.GstBaseTransform, query *C.GstQu
 
 //export goGstBaseTransformFilterMeta
 func goGstBaseTransformFilterMeta(self *C.GstBaseTransform, query *C.GstQuery, api C.GType, params *C.GstStructure) C.gboolean {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(self))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
 	caller := elem.(interface {
 		FilterMeta(self *GstBaseTransform, query *gst.Query, api glib.Type, params *gst.Structure) bool
 	})
@@ -64,7 +64,7 @@ func goGstBaseTransformFilterMeta(self *C.GstBaseTransform, query *C.GstQuery, a
 
 //export goGstBaseTransformFixateCaps
 func goGstBaseTransformFixateCaps(self *C.GstBaseTransform, direction C.GstPadDirection, caps, othercaps *C.GstCaps) *C.GstCaps {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(self))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
 	caller := elem.(interface {
 		FixateCaps(self *GstBaseTransform, directon gst.PadDirection, caps *gst.Caps, othercaps *gst.Caps) *gst.Caps
 	})
@@ -82,7 +82,7 @@ func goGstBaseTransformFixateCaps(self *C.GstBaseTransform, direction C.GstPadDi
 
 //export goGstBaseTransformGenerateOutput
 func goGstBaseTransformGenerateOutput(self *C.GstBaseTransform, buf **C.GstBuffer) C.GstFlowReturn {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(self))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
 	caller := elem.(interface {
 		GenerateOutput(self *GstBaseTransform) (gst.FlowReturn, *gst.Buffer)
 	})
@@ -95,7 +95,7 @@ func goGstBaseTransformGenerateOutput(self *C.GstBaseTransform, buf **C.GstBuffe
 
 //export goGstBaseTransformGetUnitSize
 func goGstBaseTransformGetUnitSize(self *C.GstBaseTransform, caps *C.GstCaps, size *C.gsize) C.gboolean {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(self))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
 	caller := elem.(interface {
 		GetUnitSize(self *GstBaseTransform, caps *gst.Caps) (ok bool, size int64)
 	})
@@ -108,7 +108,7 @@ func goGstBaseTransformGetUnitSize(self *C.GstBaseTransform, caps *C.GstCaps, si
 
 //export goGstBaseTransformPrepareOutputBuffer
 func goGstBaseTransformPrepareOutputBuffer(self *C.GstBaseTransform, input *C.GstBuffer, outbuf **C.GstBuffer) C.GstFlowReturn {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(self))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
 	caller := elem.(interface {
 		PrepareOutputBuffer(self *GstBaseTransform, input *gst.Buffer) (gst.FlowReturn, *gst.Buffer)
 	})
@@ -121,7 +121,7 @@ func goGstBaseTransformPrepareOutputBuffer(self *C.GstBaseTransform, input *C.Gs
 
 //export goGstBaseTransformProposeAllocation
 func goGstBaseTransformProposeAllocation(self *C.GstBaseTransform, decide, query *C.GstQuery) C.gboolean {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(self))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
 	caller := elem.(interface {
 		ProposeAllocation(self *GstBaseTransform, decideQuery, query *gst.Query) bool
 	})
@@ -130,7 +130,7 @@ func goGstBaseTransformProposeAllocation(self *C.GstBaseTransform, decide, query
 
 //export goGstBaseTransformQuery
 func goGstBaseTransformQuery(self *C.GstBaseTransform, direction C.GstPadDirection, query *C.GstQuery) C.gboolean {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(self))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
 	caller := elem.(interface {
 		Query(self *GstBaseTransform, direction gst.PadDirection, query *gst.Query) bool
 	})
@@ -139,7 +139,7 @@ func goGstBaseTransformQuery(self *C.GstBaseTransform, direction C.GstPadDirecti
 
 //export goGstBaseTransformSetCaps
 func goGstBaseTransformSetCaps(self *C.GstBaseTransform, incaps, outcaps *C.GstCaps) C.gboolean {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(self))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
 	caller := elem.(interface {
 		SetCaps(self *GstBaseTransform, incaps, outcaps *gst.Caps) bool
 	})
@@ -152,7 +152,7 @@ func goGstBaseTransformSetCaps(self *C.GstBaseTransform, incaps, outcaps *C.GstC
 
 //export goGstBaseTransformSinkEvent
 func goGstBaseTransformSinkEvent(self *C.GstBaseTransform, event *C.GstEvent) C.gboolean {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(self))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
 	caller := elem.(interface {
 		SinkEvent(self *GstBaseTransform, event *gst.Event) bool
 	})
@@ -161,7 +161,7 @@ func goGstBaseTransformSinkEvent(self *C.GstBaseTransform, event *C.GstEvent) C.
 
 //export goGstBaseTransformSrcEvent
 func goGstBaseTransformSrcEvent(self *C.GstBaseTransform, event *C.GstEvent) C.gboolean {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(self))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
 	caller := elem.(interface {
 		SrcEvent(self *GstBaseTransform, event *gst.Event) bool
 	})
@@ -170,7 +170,7 @@ func goGstBaseTransformSrcEvent(self *C.GstBaseTransform, event *C.GstEvent) C.g
 
 //export goGstBaseTransformStart
 func goGstBaseTransformStart(self *C.GstBaseTransform) C.gboolean {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(self))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
 	caller := elem.(interface {
 		Start(self *GstBaseTransform) bool
 	})
@@ -179,7 +179,7 @@ func goGstBaseTransformStart(self *C.GstBaseTransform) C.gboolean {
 
 //export goGstBaseTransformStop
 func goGstBaseTransformStop(self *C.GstBaseTransform) C.gboolean {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(self))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
 	caller := elem.(interface {
 		Stop(self *GstBaseTransform) bool
 	})
@@ -188,7 +188,7 @@ func goGstBaseTransformStop(self *C.GstBaseTransform) C.gboolean {
 
 //export goGstBaseTransformSubmitInputBuffer
 func goGstBaseTransformSubmitInputBuffer(self *C.GstBaseTransform, isDiscont C.gboolean, input *C.GstBuffer) C.GstFlowReturn {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(self))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
 	caller := elem.(interface {
 		SubmitInputBuffer(self *GstBaseTransform, isDiscont bool, input *gst.Buffer) gst.FlowReturn
 	})
@@ -201,7 +201,7 @@ func goGstBaseTransformSubmitInputBuffer(self *C.GstBaseTransform, isDiscont C.g
 
 //export goGstBaseTransformTransform
 func goGstBaseTransformTransform(self *C.GstBaseTransform, inbuf, outbuf *C.GstBuffer) C.GstFlowReturn {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(self))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
 	caller := elem.(interface {
 		Transform(self *GstBaseTransform, inbuf, outbuf *gst.Buffer) gst.FlowReturn
 	})
@@ -214,7 +214,7 @@ func goGstBaseTransformTransform(self *C.GstBaseTransform, inbuf, outbuf *C.GstB
 
 //export goGstBaseTransformTransformCaps
 func goGstBaseTransformTransformCaps(self *C.GstBaseTransform, direction C.GstPadDirection, caps, filter *C.GstCaps) *C.GstCaps {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(self))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
 	caller := elem.(interface {
 		TransformCaps(self *GstBaseTransform, direction gst.PadDirection, caps, filter *gst.Caps) *gst.Caps
 	})
@@ -232,7 +232,7 @@ func goGstBaseTransformTransformCaps(self *C.GstBaseTransform, direction C.GstPa
 
 //export goGstBaseTransformTransformIP
 func goGstBaseTransformTransformIP(self *C.GstBaseTransform, buf *C.GstBuffer) C.GstFlowReturn {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(self))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
 	caller := elem.(interface {
 		TransformIP(self *GstBaseTransform, buf *gst.Buffer) gst.FlowReturn
 	})
@@ -244,7 +244,7 @@ func goGstBaseTransformTransformIP(self *C.GstBaseTransform, buf *C.GstBuffer) C
 
 //export goGstBaseTransformTransformMeta
 func goGstBaseTransformTransformMeta(self *C.GstBaseTransform, outbuf *C.GstBuffer, meta *C.GstMeta, inbuf *C.GstBuffer) C.gboolean {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(self))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
 	caller := elem.(interface {
 		TransformMeta(self *GstBaseTransform, outbuf *gst.Buffer, meta *gst.Meta, inbuf *gst.Buffer) bool
 	})
@@ -258,7 +258,7 @@ func goGstBaseTransformTransformMeta(self *C.GstBaseTransform, outbuf *C.GstBuff
 
 //export goGstBaseTransformTransformSize
 func goGstBaseTransformTransformSize(self *C.GstBaseTransform, direction C.GstPadDirection, caps *C.GstCaps, size C.gsize, othercaps *C.GstCaps, outsize *C.gsize) C.gboolean {
-	elem := gst.FromObjectUnsafePrivate(unsafe.Pointer(self))
+	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
 	caller := elem.(interface {
 		TransformSize(self *GstBaseTransform, direction gst.PadDirection, caps *gst.Caps, size int64, othercaps *gst.Caps) (ok bool, othersize int64)
 	})

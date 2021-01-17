@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/tinyzimmer/go-glib/glib"
 	"github.com/tinyzimmer/go-gst/examples"
 	"github.com/tinyzimmer/go-gst/gst"
 )
@@ -77,7 +78,7 @@ func createPipeline() (*gst.Pipeline, error) {
 	return pipeline, nil
 }
 
-func mainLoop(loop *gst.MainLoop, pipeline *gst.Pipeline) error {
+func mainLoop(loop *glib.MainLoop, pipeline *gst.Pipeline) error {
 	// Create a watch on the pipeline to kill the main loop when EOS is received
 	pipeline.GetPipelineBus().AddWatch(func(msg *gst.Message) bool {
 		switch msg.Type() {
@@ -118,7 +119,7 @@ func mainLoop(loop *gst.MainLoop, pipeline *gst.Pipeline) error {
 }
 
 func main() {
-	examples.RunLoop(func(loop *gst.MainLoop) error {
+	examples.RunLoop(func(loop *glib.MainLoop) error {
 		var pipeline *gst.Pipeline
 		var err error
 		if pipeline, err = createPipeline(); err != nil {

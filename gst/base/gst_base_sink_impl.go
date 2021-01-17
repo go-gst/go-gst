@@ -64,7 +64,7 @@ import (
 
 var (
 	// ExtendsBaseSink is an Extendable for extending a GstBaseSink
-	ExtendsBaseSink gst.Extendable = &extendsBaseSink{parent: gst.ExtendsElement}
+	ExtendsBaseSink glib.Extendable = &extendsBaseSink{parent: gst.ExtendsElement}
 )
 
 // GstBaseSinkImpl is the documented interface for extending a GstBaseSink. It does not have to
@@ -120,13 +120,13 @@ type GstBaseSinkImpl interface {
 	WaitEvent(self *GstBaseSink, event *gst.Event) gst.FlowReturn
 }
 
-type extendsBaseSink struct{ parent gst.Extendable }
+type extendsBaseSink struct{ parent glib.Extendable }
 
 func (e *extendsBaseSink) Type() glib.Type     { return glib.Type(C.gst_base_sink_get_type()) }
 func (e *extendsBaseSink) ClassSize() int64    { return int64(C.sizeof_GstBaseSinkClass) }
 func (e *extendsBaseSink) InstanceSize() int64 { return int64(C.sizeof_GstBaseSink) }
 
-func (e *extendsBaseSink) InitClass(klass unsafe.Pointer, elem gst.GoElement) {
+func (e *extendsBaseSink) InitClass(klass unsafe.Pointer, elem glib.GoObjectSubclass) {
 	e.parent.InitClass(klass, elem)
 
 	sinkClass := C.toGstBaseSinkClass(klass)

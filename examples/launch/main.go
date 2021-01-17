@@ -9,11 +9,12 @@ import (
 	"os"
 	"strings"
 
+	"github.com/tinyzimmer/go-glib/glib"
 	"github.com/tinyzimmer/go-gst/examples"
 	"github.com/tinyzimmer/go-gst/gst"
 )
 
-func runPipeline(mainLoop *gst.MainLoop) error {
+func runPipeline(mainLoop *glib.MainLoop) error {
 	gst.Init(nil)
 
 	if len(os.Args) == 1 {
@@ -60,7 +61,7 @@ func runPipeline(mainLoop *gst.MainLoop) error {
 }
 
 func main() {
-	examples.RunLoop(func(loop *gst.MainLoop) error {
+	examples.RunLoop(func(loop *glib.MainLoop) error {
 		return runPipeline(loop)
 	})
 }
