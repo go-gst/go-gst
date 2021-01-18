@@ -44,8 +44,6 @@ func (m *minioSink) New() glib.GoObjectSubclass {
 	}
 }
 
-func (m *minioSink) TypeInit(*glib.TypeInstance) {}
-
 func (m *minioSink) ClassInit(klass *glib.ObjectClass) {
 	class := gst.ToElementClass(klass)
 	sinkCAT.Log(gst.LevelLog, "Initializing miniosink class")

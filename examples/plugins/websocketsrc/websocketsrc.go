@@ -405,8 +405,6 @@ func (w *websocketSrc) New() glib.GoObjectSubclass {
 	}
 }
 
-func (w *websocketSrc) TypeInit(instance *glib.TypeInstance) {}
-
 func (w *websocketSrc) ClassInit(klass *glib.ObjectClass) {
 	class := gst.ToElementClass(klass)
 	class.SetMetadata(

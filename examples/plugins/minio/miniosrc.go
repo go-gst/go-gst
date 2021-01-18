@@ -42,8 +42,6 @@ func (m *minioSrc) New() glib.GoObjectSubclass {
 	}
 }
 
-func (m *minioSrc) TypeInit(*glib.TypeInstance) {}
-
 func (m *minioSrc) ClassInit(klass *glib.ObjectClass) {
 	class := gst.ToElementClass(klass)
 	srcCAT.Log(gst.LevelLog, "Initializing miniosrc class")

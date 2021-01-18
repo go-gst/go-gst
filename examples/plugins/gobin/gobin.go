@@ -13,6 +13,7 @@
 // +element:Rank=gst.RankNone
 // +element:Impl=gobin
 // +element:Subclass=gst.ExtendsBin
+// +element:Interfaces=gst.InterfaceChildProxy
 //
 package main
 

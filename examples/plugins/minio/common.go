@@ -26,9 +26,6 @@ var (
 	defaultInsecureSkipVerify = false
 )
 
-const defaultChunkSize = 1024 * 1024 * 5
-const defaultMaxMemChunks = 3
-
 type settings struct {
 	endpoint           string
 	useTLS             bool
@@ -39,8 +36,6 @@ type settings struct {
 	secretAccessKey    string
 	insecureSkipVerify bool
 	caCertFile         string
-	chunkSize          int64
-	maxMemChunks       uint
 }
 
 func (s *settings) safestring() string {
@@ -52,8 +47,6 @@ func (s *settings) safestring() string {
 		key:                s.key,
 		insecureSkipVerify: s.insecureSkipVerify,
 		caCertFile:         s.caCertFile,
-		chunkSize:          s.chunkSize,
-		maxMemChunks:       s.maxMemChunks,
 	})
 }
 
@@ -65,8 +58,6 @@ func defaultSettings() *settings {
 		accessKeyID:        os.Getenv(accessKeyIDEnvVar),
 		secretAccessKey:    os.Getenv(secretAccessKeyEnvVar),
 		insecureSkipVerify: defaultInsecureSkipVerify,
-		chunkSize:          defaultChunkSize,
-		maxMemChunks:       defaultMaxMemChunks,
 	}
 }
 
@@ -123,10 +114,6 @@ func setProperty(elem *gst.Element, properties []*glib.ParamSpec, settings *sett
 		settings.accessKeyID = val.(string)
 	case "secret-access-key":
 		settings.secretAccessKey = val.(string)
-	case "chunk-size":
-		settings.chunkSize = val.(int64)
-	case "max-memory-chunks":
-		settings.maxMemChunks = val.(uint)
 	}
 }
 
@@ -154,10 +141,6 @@ func getProperty(elem *gst.Element, properties []*glib.ParamSpec, settings *sett
 		localVal = settings.accessKeyID
 	case "secret-access-key":
 		localVal = "<private>"
-	case "chunk-size":
-		localVal = settings.chunkSize
-	case "max-memory-chunks":
-		localVal = settings.maxMemChunks
 
 	default:
 		elem.ErrorMessage(gst.DomainLibrary, gst.LibraryErrorSettings,
