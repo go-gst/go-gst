@@ -60,7 +60,7 @@ func playbin(mainLoop *glib.MainLoop) error {
 		// Watch state change events
 		case gst.MessageStateChanged:
 			if _, newState := msg.ParseStateChanged(); newState == gst.StatePlaying {
-				bin := gst.BinFromElement(playbin)
+				bin := gst.ToGstBin(playbin)
 				// Generate a dot graph of the pipeline to GST_DEBUG_DUMP_DOT_DIR if defined
 				bin.DebugBinToDotFile(gst.DebugGraphShowAll, "PLAYING")
 			}

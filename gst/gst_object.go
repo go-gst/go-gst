@@ -4,6 +4,7 @@ package gst
 import "C"
 
 import (
+	"time"
 	"unsafe"
 
 	"github.com/tinyzimmer/go-glib/glib"
@@ -14,74 +15,62 @@ type Object struct{ *glib.InitiallyUnowned }
 
 // FromGstObjectUnsafe returns an Object wrapping the given pointer. It meant for internal
 // usage and exported for visibility to other packages.
-func FromGstObjectUnsafe(ptr unsafe.Pointer) *Object {
-	return wrapObject(toGObject(ptr))
-}
-
-// Unsafe returns the unsafe pointer to the underlying object. This method is primarily
-// for internal usage and is exposed for visibility in other packages.
-func (o *Object) Unsafe() unsafe.Pointer {
-	if o == nil || o.GObject == nil {
-		return nil
-	}
-	return unsafe.Pointer(o.GObject)
-}
+func FromGstObjectUnsafe(ptr unsafe.Pointer) *Object { return wrapObject(toGObject(ptr)) }
 
 // Instance returns the native C GstObject.
 func (o *Object) Instance() *C.GstObject { return C.toGstObject(o.Unsafe()) }
 
-// BaseObject returns this object for embedding structs.
+// BaseObject is a convenience method for retrieving this object from embedded structs.
 func (o *Object) BaseObject() *Object { return o }
 
 // GstObject is an alias to Instance on the underlying GstObject of any extending struct.
 func (o *Object) GstObject() *C.GstObject { return C.toGstObject(o.Unsafe()) }
 
-// Class returns the GObjectClass of this instance.
-func (o *Object) Class() *C.GObjectClass { return C.getGObjectClass(o.Unsafe()) }
+// GObject returns the underlying GObject instance.
+func (o *Object) GObject() *glib.Object { return o.InitiallyUnowned.Object }
 
-// Name returns the name of this object.
-func (o *Object) Name() string {
+// GetName returns the name of this object.
+func (o *Object) GetName() string {
 	cName := C.gst_object_get_name((*C.GstObject)(o.Instance()))
 	defer C.free(unsafe.Pointer(cName))
 	return C.GoString(cName)
 }
 
-// Interfaces returns the interfaces associated with this object.
-func (o *Object) Interfaces() []string {
-	var size C.guint
-	ifaces := C.g_type_interfaces(C.gsize(o.TypeFromInstance()), &size)
-	if int(size) == 0 {
+// GetValue retrieves the value for the given controlled property at the given timestamp.
+func (o *Object) GetValue(property string, timestamp time.Duration) *glib.Value {
+	cprop := C.CString(property)
+	defer C.free(unsafe.Pointer(cprop))
+	gval := C.gst_object_get_value(o.Instance(), (*C.gchar)(cprop), C.GstClockTime(timestamp.Nanoseconds()))
+	if gval == nil {
 		return nil
 	}
-	defer C.g_free((C.gpointer)(ifaces))
-	out := make([]string, int(size))
-	for _, t := range (*[1 << 30]int)(unsafe.Pointer(ifaces))[:size:size] {
-		out = append(out, glib.Type(t).Name())
-	}
-	return out
-}
-
-// ListProperties returns a list of the properties associated with this object.
-// The default values assumed in the parameter spec reflect the values currently
-// set in this object, or their defaults.
-//
-// Unref after usage.
-func (o *Object) ListProperties() []*glib.ParamSpec {
-	var size C.guint
-	props := C.g_object_class_list_properties((*C.GObjectClass)(o.Class()), &size)
-	if props == nil {
-		return nil
-	}
-	defer C.g_free((C.gpointer)(props))
-	out := make([]*glib.ParamSpec, 0)
-	for _, prop := range (*[1 << 30]*C.GParamSpec)(unsafe.Pointer(props))[:size:size] {
-		out = append(out, glib.ToParamSpec(unsafe.Pointer(prop)))
-	}
-	return out
+	return glib.ValueFromNative(unsafe.Pointer(gval))
 }
 
 // Log logs a message to the given category from this object using the currently registered
 // debugging handlers.
 func (o *Object) Log(cat *DebugCategory, level DebugLevel, message string) {
 	cat.logDepth(level, message, 2, (*C.GObject)(o.Unsafe()))
+}
+
+// Clear will will clear all references to this object. If the reference is already null
+// the the function does nothing. Otherwise the reference count is decreased and the pointer
+// set to null.
+func (o *Object) Clear() {
+	if ptr := o.Unsafe(); ptr != nil {
+		C.gst_clear_object((**C.GstObject)(unsafe.Pointer(&ptr)))
+	}
+}
+
+// Ref increments the reference count on object. This function does not take the lock on object
+// because it relies on atomic refcounting. For convenience the same object is returned.
+func (o *Object) Ref() *Object {
+	C.gst_object_ref((C.gpointer)(o.Unsafe()))
+	return o
+}
+
+// Unref decrements the reference count on object. If reference count hits zero, destroy object.
+// This function does not take the lock on object as it relies on atomic refcounting.
+func (o *Object) Unref() {
+	C.gst_object_unref((C.gpointer)(o.Unsafe()))
 }

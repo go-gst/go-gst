@@ -29,6 +29,8 @@
 // +element:Rank=gst.RankNone
 // +element:Impl=fileSrc
 // +element:Subclass=base.ExtendsBaseSrc
+// +element:Interfaces=gst.InterfaceURIHandler
+//
 package main
 
 import (
@@ -121,13 +123,6 @@ func (f *fileSrc) New() glib.GoObjectSubclass {
 		settings: &settings{},
 		state:    &state{},
 	}
-}
-
-// The TypeInit method should register any additional interfaces provided by the element.
-// In this example we signal to the type system that we also implement the GstURIHandler interface.
-func (f *fileSrc) TypeInit(instance *glib.TypeInstance) {
-	CAT.Log(gst.LevelLog, "Adding URIHandler interface to type")
-	instance.AddInterface(gst.InterfaceURIHandler)
 }
 
 // The ClassInit method should specify the metadata for this element and add any pad templates

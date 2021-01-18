@@ -19,12 +19,14 @@ inline GObjectClass *         toGObjectClass         (void *p)      { return (G_
 
 inline GstAllocator *         toGstAllocator         (void *p) { return (GST_ALLOCATOR_CAST(p)); }
 inline GstBin *               toGstBin               (void *p) { return (GST_BIN(p)); }
+inline GstBinClass *          toGstBinClass          (void *p) { return (GST_BIN_CLASS(p)); }
 inline GstBufferList *        toGstBufferList        (void *p) { return (GST_BUFFER_LIST(p)); }
 inline GstBufferPool *        toGstBufferPool        (void *p) { return (GST_BUFFER_POOL(p)); }
 inline GstBuffer *            toGstBuffer            (void *p) { return (GST_BUFFER(p)); }
 inline GstBus *               toGstBus               (void *p) { return (GST_BUS(p)); }
 inline GstCapsFeatures *      toGstCapsFeatures      (void *p) { return (GST_CAPS_FEATURES(p)); }
 inline GstCaps *              toGstCaps              (void *p) { return (GST_CAPS(p)); }
+inline GstChildProxy *        toGstChildProxy        (void *p) { return (GST_CHILD_PROXY(p)); }
 inline GstClock *             toGstClock             (void *p) { return (GST_CLOCK(p)); }
 inline GstContext *           toGstContext           (void *p) { return (GST_CONTEXT_CAST(p)); }
 inline GstDevice *            toGstDevice            (void *p) { return (GST_DEVICE_CAST(p)); }

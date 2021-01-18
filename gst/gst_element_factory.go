@@ -14,11 +14,23 @@ import (
 // This is meant for internal usage and is exported for visibility to other packages.
 func FromGstElementUnsafe(elem unsafe.Pointer) *Element { return wrapElement(toGObject(elem)) }
 
-// NewElement is a generic wrapper around `gst_element_factory_make`.
-func NewElement(name string) (*Element, error) {
-	elemName := C.CString(name)
+// NewElement creates a new element using the factory of the given name.
+func NewElement(factory string) (*Element, error) {
+	return NewElementWithName(factory, "")
+}
+
+// NewElementWithName creates a new element and sets it's name to the given value.
+func NewElementWithName(factory string, name string) (*Element, error) {
+	elemName := C.CString(factory)
 	defer C.free(unsafe.Pointer(elemName))
-	elem := C.gst_element_factory_make((*C.gchar)(elemName), nil)
+	var elem *C.GstElement
+	if name == "" {
+		elem = C.gst_element_factory_make((*C.gchar)(elemName), nil)
+	} else {
+		cname := C.CString(name)
+		defer C.free(unsafe.Pointer(cname))
+		elem = C.gst_element_factory_make((*C.gchar)(elemName), (*C.gchar)(cname))
+	}
 	if elem == nil {
 		return nil, fmt.Errorf("Could not create element: %s", name)
 	}

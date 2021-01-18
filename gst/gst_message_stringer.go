@@ -72,11 +72,11 @@ func (m *Message) String() string {
 
 	case MessageStructureChange:
 		chgType, elem, busy := m.ParseStructureChange()
-		msg += fmt.Sprintf("Structure change of type %s from %s. (in progress: %v)", chgType.String(), elem.Name(), busy)
+		msg += fmt.Sprintf("Structure change of type %s from %s. (in progress: %v)", chgType.String(), elem.GetName(), busy)
 
 	case MessageStreamStatus:
 		statusType, elem := m.ParseStreamStatus()
-		msg += fmt.Sprintf("Stream status from %s: %s", elem.Name(), statusType.String())
+		msg += fmt.Sprintf("Stream status from %s: %s", elem.GetName(), statusType.String())
 
 	case MessageApplication:
 		msg += "Message posted by the application, possibly via an application-specific element."
@@ -165,7 +165,7 @@ func (m *Message) String() string {
 		if obj != nil && propVal != nil {
 			goval, err := propVal.GoValue()
 			if err != nil {
-				msg += fmt.Sprintf("Object %s had property '%s' changed to %+v", obj.Name(), propName, goval)
+				msg += fmt.Sprintf("Object %s had property '%s' changed to %+v", obj.GetName(), propName, goval)
 			}
 		}
 

@@ -47,7 +47,7 @@ type pluginConfig struct {
 }
 
 type elementConfig struct {
-	Name, Rank, Impl, Subclass string
+	Name, Rank, Impl, Subclass, Interfaces string
 }
 
 func buildCfgFromDir(dir string) *libraryConfig {
@@ -119,6 +119,9 @@ var pluginTmpl = template.Must(template.New("").Funcs(template.FuncMap{
 	"adjustedName": func(name string) string {
 		return strings.ToLower(strings.Replace(name, "-", "_", -1))
 	},
+	"splitInterfaces": func(ifacesString string) []string {
+		return strings.Split(ifacesString, ",")
+	},
 	"extendsFromBase": func(subclass string) bool {
 		if strings.HasPrefix(subclass, "base.") {
 			return true
@@ -163,6 +166,12 @@ var pluginMeta = &gst.PluginMetadata{
 			&{{ .Config.Element.Impl }}{},
 			// The base subclass this element extends
 			{{ .Config.Element.Subclass }},
+			{{- if .Config.Element.Interfaces }}
+			// The interfaces this element implements
+			{{- range $index, $interface := .Config.Element.Interfaces | splitInterfaces }}
+			{{ $interface }},
+			{{- end }}
+			{{- end }}
 		)
 	},
 }

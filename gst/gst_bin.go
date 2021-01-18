@@ -1,6 +1,73 @@
 package gst
 
-// #include "gst.go.h"
+/*
+#include "gst.go.h"
+
+gboolean
+binParentAddElement (GstBin * bin, GstElement * element)
+{
+	GObjectClass * this_class = G_OBJECT_GET_CLASS(G_OBJECT(bin));
+	GstBinClass * parent = toGstBinClass(g_type_class_peek_parent(this_class));
+	return parent->add_element(bin, element);
+}
+
+void
+binParentDeepElementAdded (GstBin * bin, GstBin * subbin, GstElement * element)
+{
+	GObjectClass * this_class = G_OBJECT_GET_CLASS(G_OBJECT(bin));
+	GstBinClass * parent = toGstBinClass(g_type_class_peek_parent(this_class));
+	parent->deep_element_added(bin, subbin, element);
+}
+
+void
+binParentDeepElementRemoved (GstBin * bin, GstBin * subbin, GstElement * element)
+{
+	GObjectClass * this_class = G_OBJECT_GET_CLASS(G_OBJECT(element));
+	GstBinClass * parent = toGstBinClass(g_type_class_peek_parent(this_class));
+	parent->deep_element_removed(bin, subbin, element);
+}
+
+gboolean
+binParentDoLatency (GstBin * bin)
+{
+	GObjectClass * this_class = G_OBJECT_GET_CLASS(G_OBJECT(bin));
+	GstBinClass * parent = toGstBinClass(g_type_class_peek_parent(this_class));
+	return parent->do_latency(bin);
+}
+
+void
+binParentElementAdded (GstBin * bin, GstElement * element)
+{
+	GObjectClass * this_class = G_OBJECT_GET_CLASS(G_OBJECT(bin));
+	GstBinClass * parent = toGstBinClass(g_type_class_peek_parent(this_class));
+	parent->element_added(bin, element);
+}
+
+void
+binParentElementRemoved (GstBin * bin, GstElement * element)
+{
+	GObjectClass * this_class = G_OBJECT_GET_CLASS(G_OBJECT(bin));
+	GstBinClass * parent = toGstBinClass(g_type_class_peek_parent(this_class));
+	parent->element_removed(bin, element);
+}
+
+void
+binParentHandleMessage (GstBin * bin, GstMessage * message)
+{
+	GObjectClass * this_class = G_OBJECT_GET_CLASS(G_OBJECT(bin));
+	GstBinClass * parent = toGstBinClass(g_type_class_peek_parent(this_class));
+	parent->handle_message(bin, message);
+}
+
+gboolean
+binParentRemoveElement (GstBin * bin, GstElement * element)
+{
+	GObjectClass * this_class = G_OBJECT_GET_CLASS(G_OBJECT(bin));
+	GstBinClass * parent = toGstBinClass(g_type_class_peek_parent(this_class));
+	return parent->remove_element(bin, element);
+}
+
+*/
 import "C"
 
 import (
@@ -22,14 +89,18 @@ func NewBin(name string) *Bin {
 	return wrapBin(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(bin))})
 }
 
-// BinFromElement wraps the given Element in a Bin reference. This only works for elements
-// that implement their own Bin, such as playbin. If the provided element does not implement
-// a Bin then nil is returned.
-func BinFromElement(elem *Element) *Bin {
-	if C.toGstBin(elem.Unsafe()) == nil {
-		return nil
+// ToGstBin wraps the given glib.Object, gst.Object, or gst.Element in a Bin instance. Only
+// works for objects that implement their own Bin.
+func ToGstBin(obj interface{}) *Bin {
+	switch obj := obj.(type) {
+	case *Object:
+		return &Bin{&Element{Object: obj}}
+	case *Element:
+		return &Bin{obj}
+	case *glib.Object:
+		return &Bin{&Element{Object: &Object{InitiallyUnowned: &glib.InitiallyUnowned{Object: obj}}}}
 	}
-	return &Bin{elem}
+	return nil
 }
 
 // Instance returns the underlying GstBin instance.
@@ -95,10 +166,10 @@ func (b *Bin) GetElementsSorted() ([]*Element, error) {
 // element is found, it returns the element. You can cast this element to the given interface afterwards.
 // If you want all elements that implement the interface, use GetAllByInterface. This function recurses
 // into child bins.
-func (b *Bin) GetByInterface(iface glib.Type) (*Element, error) {
-	elem := C.gst_bin_get_by_interface(b.Instance(), C.GType(iface))
+func (b *Bin) GetByInterface(iface glib.Interface) (*Element, error) {
+	elem := C.gst_bin_get_by_interface(b.Instance(), C.GType(iface.Type()))
 	if elem == nil {
-		return nil, fmt.Errorf("Could not find any elements implementing %s", iface.Name())
+		return nil, fmt.Errorf("Could not find any elements implementing %s", iface.Type().Name())
 	}
 	return wrapElement(toGObject(unsafe.Pointer(elem))), nil
 }
@@ -106,8 +177,8 @@ func (b *Bin) GetByInterface(iface glib.Type) (*Element, error) {
 // GetAllByInterface looks for all elements inside the bin that implements the given interface. You can
 // safely cast all returned elements to the given interface. The function recurses inside child bins.
 // The function will return a series of Elements that should be unreffed after use.
-func (b *Bin) GetAllByInterface(iface glib.Type) ([]*Element, error) {
-	iterator := C.gst_bin_iterate_all_by_interface(b.Instance(), C.GType(iface))
+func (b *Bin) GetAllByInterface(iface glib.Interface) ([]*Element, error) {
+	iterator := C.gst_bin_iterate_all_by_interface(b.Instance(), C.GType(iface.Type()))
 	return iteratorToElementSlice(iterator)
 }
 
@@ -123,7 +194,7 @@ func (b *Bin) GetAllByInterface(iface glib.Type) ([]*Element, error) {
 // Add adds an element to the bin.
 func (b *Bin) Add(elem *Element) error {
 	if ok := C.gst_bin_add((*C.GstBin)(b.Instance()), (*C.GstElement)(elem.Instance())); !gobool(ok) {
-		return fmt.Errorf("Failed to add element to pipeline: %s", elem.Name())
+		return fmt.Errorf("Failed to add element to pipeline: %s", elem.GetName())
 	}
 	return nil
 }
@@ -141,7 +212,7 @@ func (b *Bin) AddMany(elems ...*Element) error {
 // Remove removes an element from the Bin.
 func (b *Bin) Remove(elem *Element) error {
 	if ok := C.gst_bin_remove((*C.GstBin)(b.Instance()), (*C.GstElement)(elem.Instance())); !gobool(ok) {
-		return fmt.Errorf("Failed to add element to pipeline: %s", elem.Name())
+		return fmt.Errorf("Failed to add element to pipeline: %s", elem.GetName())
 	}
 	return nil
 }
@@ -256,4 +327,44 @@ func iteratorToElementSlice(iterator *C.GstIterator) ([]*Element, error) {
 			return nil, errors.New("Element iterator failed")
 		}
 	}
+}
+
+// ParentAddElement chains up to the parent AddElement handler.
+func (b *Bin) ParentAddElement(element *Element) bool {
+	return gobool(C.binParentAddElement(b.Instance(), element.Instance()))
+}
+
+// ParentDeepElementAdded chains up to the parent DeepElementAdded handler.
+func (b *Bin) ParentDeepElementAdded(subbin *Bin, element *Element) {
+	C.binParentDeepElementAdded(b.Instance(), subbin.Instance(), element.Instance())
+}
+
+// ParentDeepElementRemoved chains up to the parent DeepElementRemoved handler.
+func (b *Bin) ParentDeepElementRemoved(subbin *Bin, element *Element) {
+	C.binParentDeepElementRemoved(b.Instance(), subbin.Instance(), element.Instance())
+}
+
+// ParentDoLatency chains up to the parent DoLatency handler.
+func (b *Bin) ParentDoLatency() bool {
+	return gobool(C.binParentDoLatency(b.Instance()))
+}
+
+// ParentElementAdded chains up to the parent ElementAdded handler.
+func (b *Bin) ParentElementAdded(element *Element) {
+	C.binParentElementAdded(b.Instance(), element.Instance())
+}
+
+// ParentElementRemoved chains up to the parent ElementRemoved handler.
+func (b *Bin) ParentElementRemoved(element *Element) {
+	C.binParentElementRemoved(b.Instance(), element.Instance())
+}
+
+// ParentHandleMessage chains up to the parent HandleMessage handler.
+func (b *Bin) ParentHandleMessage(message *Message) {
+	C.binParentHandleMessage(b.Instance(), message.Instance())
+}
+
+// ParentRemoveElement chains up to the parent RemoveElement handler.
+func (b *Bin) ParentRemoveElement(element *Element) bool {
+	return gobool(C.binParentRemoveElement(b.Instance(), element.Instance()))
 }

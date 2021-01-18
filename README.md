@@ -36,6 +36,7 @@ import (
     "fmt"
     "os"
 
+    "github.com/tinyzimmer/go-glib/glib"
     "github.com/tinyzimmer/go-gst/gst"
 )
 
@@ -51,7 +52,7 @@ func main() {
 
     // Create a main loop. This is only required when utilizing signals via the bindings.
     // In this example, the AddWatch on the pipeline bus requires iterating on the main loop.
-    mainLoop := gst.NewMainLoop(gst.DefaultMainContext(), false)
+    mainLoop := glib.NewMainLoop(glib.MainContextDefault(), false)
     defer mainLoop.Unref()
 
     // Build a pipeline string from the cli arguments
