@@ -20,6 +20,7 @@ void clockDestroyNotify (gpointer user_data)
 import "C"
 
 import (
+	"runtime"
 	"time"
 	"unsafe"
 
@@ -41,7 +42,7 @@ func (c *ClockID) Instance() C.GstClockID { return c.ptr }
 // GetClock returns the clock for this ClockID.
 func (c *ClockID) GetClock() *Clock {
 	clk := C.gst_clock_id_get_clock(c.Instance())
-	return wrapClock(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(clk))})
+	return FromGstClockUnsafeFull(unsafe.Pointer(clk))
 }
 
 // GetTime returns the time for this ClockID
@@ -121,6 +122,18 @@ func (c *ClockID) Unref() {
 
 // Clock is a go wrapper around a GstClock.
 type Clock struct{ *Object }
+
+// FromGstClockUnsafeNone takes a pointer to a GstClock and wraps it in a Clock instance.
+// A ref is taken on the clock and a finalizer applied.
+func FromGstClockUnsafeNone(clock unsafe.Pointer) *Clock {
+	return wrapClock(glib.TransferNone(clock))
+}
+
+// FromGstClockUnsafeFull takes a pointer to a GstClock and wraps it in a Clock instance.
+// A finalizer is set on the returned object.
+func FromGstClockUnsafeFull(clock unsafe.Pointer) *Clock {
+	return wrapClock(glib.TransferFull(clock))
+}
 
 // Instance returns the underlying GstClock instance.
 func (c *Clock) Instance() *C.GstClock { return C.toGstClock(c.Unsafe()) }
@@ -216,7 +229,7 @@ func (c *Clock) GetMaster() *Clock {
 	if clock == nil {
 		return nil
 	}
-	return wrapClock(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(clock))})
+	return FromGstClockUnsafeFull(unsafe.Pointer(clock))
 }
 
 // GetResolution gets the accuracy of the clock. The accuracy of the clock is the granularity
@@ -241,7 +254,9 @@ func (c *Clock) NewPeriodicID(startTime, interval time.Duration) *ClockID {
 		C.GstClockTime(startTime),
 		C.GstClockTime(interval),
 	)
-	return &ClockID{id}
+	clkid := &ClockID{id}
+	runtime.SetFinalizer(clkid, (*ClockID).Unref)
+	return clkid
 }
 
 // NewSingleShotID gets a ClockID from the clock to trigger a single shot notification at the requested time.
@@ -251,7 +266,9 @@ func (c *Clock) NewSingleShotID(at time.Duration) *ClockID {
 		c.Instance(),
 		C.GstClockTime(at),
 	)
-	return &ClockID{id}
+	clkid := &ClockID{id}
+	runtime.SetFinalizer(clkid, (*ClockID).Unref)
+	return clkid
 }
 
 // PeriodicIDReinit reinitializes the provided periodic id to the provided start time and interval. Does not
@@ -285,6 +302,9 @@ func (c *Clock) SetCalibration(internal, external, rateNum, rateDenom time.Durat
 // Master can be nil in which case clock will not be slaved anymore. It will however keep reporting its time
 // adjusted with the last configured rate and time offsets.
 func (c *Clock) SetMaster(master *Clock) bool {
+	if master == nil {
+		return gobool(C.gst_clock_set_master(c.Instance(), nil))
+	}
 	return gobool(C.gst_clock_set_master(c.Instance(), master.Instance()))
 }
 

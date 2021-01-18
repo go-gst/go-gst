@@ -4,6 +4,7 @@ package gst
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 
 	"github.com/tinyzimmer/go-glib/glib"
@@ -26,6 +27,7 @@ func NewAllocationParams() *AllocationParams {
 		ptr: &C.GstAllocationParams{},
 	}
 	params.Init()
+	runtime.SetFinalizer(params, (*AllocationParams).Free)
 	return params
 }
 
@@ -70,14 +72,19 @@ func (a *AllocationParams) SetPadding(padding int64) { a.ptr.padding = C.gsize(p
 // Allocator is a go representation of a GstAllocator
 type Allocator struct{ *Object }
 
-// FromGstAllocatorUnsafe wraps the given unsafe.Pointer in an Allocator instance.
-func FromGstAllocatorUnsafe(alloc unsafe.Pointer) *Allocator {
-	return wrapAllocator(toGObject(alloc))
+// FromGstAllocatorUnsafeNone wraps the given unsafe.Pointer in an Allocator instance.
+func FromGstAllocatorUnsafeNone(alloc unsafe.Pointer) *Allocator {
+	return wrapAllocator(glib.TransferNone(alloc))
+}
+
+// FromGstAllocatorUnsafeFull wraps the given unsafe.Pointer in an Allocator instance.
+func FromGstAllocatorUnsafeFull(alloc unsafe.Pointer) *Allocator {
+	return wrapAllocator(glib.TransferFull(alloc))
 }
 
 // DefaultAllocator returns the default GstAllocator.
 func DefaultAllocator() *Allocator {
-	return wrapAllocator(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(C.gst_allocator_find(nil)))})
+	return wrapAllocator(glib.TransferFull(unsafe.Pointer(C.gst_allocator_find(nil))))
 }
 
 // Instance returns the underlying GstAllocator instance.
@@ -96,7 +103,8 @@ func (a *Allocator) MemType() string { return C.GoString(a.Instance().mem_type) 
 // The alignment in params is given as a bitmask so that align + 1 equals the amount of bytes to
 // align to. For example, to align to 8 bytes, use an alignment of 7.
 func (a *Allocator) Alloc(size int64, params *AllocationParams) *Memory {
-	return wrapMemory(C.gst_allocator_alloc(a.Instance(), C.gsize(size), params.ptr))
+	mem := C.gst_allocator_alloc(a.Instance(), C.gsize(size), params.ptr)
+	return FromGstMemoryUnsafeFull(unsafe.Pointer(mem))
 }
 
 // Free memory that was originally allocated with this allocator.

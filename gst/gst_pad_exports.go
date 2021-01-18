@@ -55,7 +55,7 @@ func goGstPadActivateModeFunction(pad *C.GstPad, parent *C.GstObject, mode C.Gst
 //export goGstPadChainFunction
 func goGstPadChainFunction(pad *C.GstPad, parent *C.GstObject, buffer *C.GstBuffer) C.GstFlowReturn {
 	f := padChainFuncs.FuncForPad(unsafe.Pointer(pad)).(PadChainFunc)
-	buf := wrapBuffer(buffer)
+	buf := FromGstBufferUnsafeFull(unsafe.Pointer(buffer))
 	defer buf.Unref()
 	return C.GstFlowReturn(f(
 		wrapPad(toGObject(unsafe.Pointer(pad))),
@@ -67,7 +67,7 @@ func goGstPadChainFunction(pad *C.GstPad, parent *C.GstObject, buffer *C.GstBuff
 //export goGstPadChainListFunction
 func goGstPadChainListFunction(pad *C.GstPad, parent *C.GstObject, list *C.GstBufferList) C.GstFlowReturn {
 	f := padChainListFuncs.FuncForPad(unsafe.Pointer(pad)).(PadChainListFunc)
-	buflist := wrapBufferList(list)
+	buflist := FromGstBufferListUnsafeFull(unsafe.Pointer(list))
 	defer buflist.Unref()
 	return C.GstFlowReturn(f(
 		wrapPad(toGObject(unsafe.Pointer(pad))),
@@ -79,7 +79,7 @@ func goGstPadChainListFunction(pad *C.GstPad, parent *C.GstObject, list *C.GstBu
 //export goGstPadEventFullFunction
 func goGstPadEventFullFunction(pad *C.GstPad, parent *C.GstObject, event *C.GstEvent) C.GstFlowReturn {
 	f := padEventFullFuncs.FuncForPad(unsafe.Pointer(pad)).(PadEventFullFunc)
-	ev := wrapEvent(event)
+	ev := FromGstEventUnsafeFull(unsafe.Pointer(event))
 	defer ev.Unref()
 	return C.GstFlowReturn(f(
 		wrapPad(toGObject(unsafe.Pointer(pad))),
@@ -91,7 +91,7 @@ func goGstPadEventFullFunction(pad *C.GstPad, parent *C.GstObject, event *C.GstE
 //export goGstPadEventFunction
 func goGstPadEventFunction(pad *C.GstPad, parent *C.GstObject, event *C.GstEvent) C.gboolean {
 	f := padEventFuncs.FuncForPad(unsafe.Pointer(pad)).(PadEventFunc)
-	ev := wrapEvent(event)
+	ev := FromGstEventUnsafeFull(unsafe.Pointer(event))
 	defer ev.Unref()
 	return gboolean(f(
 		wrapPad(toGObject(unsafe.Pointer(pad))),

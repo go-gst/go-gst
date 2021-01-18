@@ -3,11 +3,25 @@ package gst
 // #include "gst.go.h"
 import "C"
 import (
+	"runtime"
 	"unsafe"
+
+	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // GhostPad is a go representation of a GstGhostPad.
 type GhostPad struct{ *ProxyPad }
+
+// FromGstGhostPadUnsafeNone wraps the given GstGhostPad.
+func FromGstGhostPadUnsafeNone(pad unsafe.Pointer) *GhostPad {
+	return &GhostPad{&ProxyPad{&Pad{wrapObject(glib.TransferNone(pad))}}}
+}
+
+// FromGstGhostPadUnsafeFull wraps the given GstGhostPad.
+func FromGstGhostPadUnsafeFull(pad unsafe.Pointer) *GhostPad {
+	return &GhostPad{&ProxyPad{&Pad{wrapObject(glib.TransferFull(pad))}}}
+
+}
 
 // NewGhostPad create a new ghostpad with target as the target. The direction will be
 // taken from the target pad. The target must be unlinked. If name is empty, one will be
@@ -28,7 +42,7 @@ func NewGhostPad(name string, target *Pad) *GhostPad {
 	if pad == nil {
 		return nil
 	}
-	return wrapGhostPad(toGObject(unsafe.Pointer(pad)))
+	return FromGstGhostPadUnsafeNone(unsafe.Pointer(pad))
 }
 
 // NewGhostPadFromTemplate creates a new ghostpad with target as the target. The direction will be taken
@@ -51,7 +65,7 @@ func NewGhostPadFromTemplate(name string, target *Pad, tmpl *PadTemplate) *Ghost
 	if pad == nil {
 		return nil
 	}
-	return wrapGhostPad(toGObject(unsafe.Pointer(pad)))
+	return FromGstGhostPadUnsafeNone(unsafe.Pointer(pad))
 }
 
 // NewGhostPadNoTarget creates a new ghostpad without a target with the given direction. A target can be set on the
@@ -72,7 +86,7 @@ func NewGhostPadNoTarget(name string, direction PadDirection) *GhostPad {
 	if pad == nil {
 		return nil
 	}
-	return wrapGhostPad(toGObject(unsafe.Pointer(pad)))
+	return FromGstGhostPadUnsafeNone(unsafe.Pointer(pad))
 }
 
 // NewGhostPadNoTargetFromTemplate creates a new ghostpad based on templ, without setting a target. The direction will be taken
@@ -91,7 +105,7 @@ func NewGhostPadNoTargetFromTemplate(name string, tmpl *PadTemplate) *GhostPad {
 	if pad == nil {
 		return nil
 	}
-	return wrapGhostPad(toGObject(unsafe.Pointer(pad)))
+	return FromGstGhostPadUnsafeNone(unsafe.Pointer(pad))
 }
 
 // Instance returns the underlying ghost pad instance.
@@ -103,7 +117,7 @@ func (g *GhostPad) GetTarget() *Pad {
 	if pad == nil {
 		return nil
 	}
-	return wrapPad(toGObject(unsafe.Pointer(pad)))
+	return FromGstPadUnsafeFull(unsafe.Pointer(pad))
 }
 
 // SetTarget sets the new target of the ghostpad gpad. Any existing target is unlinked and links to the new target are
@@ -116,6 +130,11 @@ func (g *GhostPad) SetTarget(target *Pad) bool {
 
 // ActivateModeDefault invokes the default activate mode function of a ghost pad.
 func (g *GhostPad) ActivateModeDefault(parent *Object, mode PadMode, active bool) bool {
+	if parent == nil {
+		return gobool(C.gst_ghost_pad_activate_mode_default(
+			C.toGstPad(g.Unsafe()), nil, C.GstPadMode(mode), gboolean(active),
+		))
+	}
 	return gobool(C.gst_ghost_pad_activate_mode_default(
 		C.toGstPad(g.Unsafe()), parent.Instance(), C.GstPadMode(mode), gboolean(active),
 	))
@@ -123,6 +142,11 @@ func (g *GhostPad) ActivateModeDefault(parent *Object, mode PadMode, active bool
 
 // InternalActivateModeDefault invokes the default activate mode function of a proxy pad that is owned by a ghost pad.
 func (g *GhostPad) InternalActivateModeDefault(parent *Object, mode PadMode, active bool) bool {
+	if parent == nil {
+		return gobool(C.gst_ghost_pad_internal_activate_mode_default(
+			C.toGstPad(g.Unsafe()), nil, C.GstPadMode(mode), gboolean(active),
+		))
+	}
 	return gobool(C.gst_ghost_pad_internal_activate_mode_default(
 		C.toGstPad(g.Unsafe()), parent.Instance(), C.GstPadMode(mode), gboolean(active),
 	))
@@ -142,7 +166,9 @@ func (p *ProxyPad) Instance() *C.GstProxyPad { return C.toGstProxyPad(p.Unsafe()
 // The internal pad of a GhostPad is the internally used pad of opposite direction, which is used to link to the target.
 func (p *ProxyPad) GetInternal() *ProxyPad {
 	pad := C.gst_proxy_pad_get_internal(p.Instance())
-	return wrapProxyPad(toGObject(unsafe.Pointer(pad)))
+	proxyPad := wrapProxyPad(toGObject(unsafe.Pointer(pad)))
+	runtime.SetFinalizer(proxyPad, (*ProxyPad).Unref)
+	return proxyPad
 }
 
 // ChainDefault invokes the default chain function of the proxy pad.
@@ -160,7 +186,7 @@ func (p *ProxyPad) GetRangeDefault(parent *Object, offset uint64, size uint) (Fl
 	var buf *C.GstBuffer
 	ret := FlowReturn(C.gst_proxy_pad_getrange_default(p.toPad(), parent.Instance(), C.guint64(offset), C.guint(size), &buf))
 	if ret != FlowError {
-		return ret, wrapBuffer(buf)
+		return ret, FromGstBufferUnsafeFull(unsafe.Pointer(buf))
 	}
 	return ret, nil
 }

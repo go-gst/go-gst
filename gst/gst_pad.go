@@ -114,6 +114,16 @@ func (p PadFuncMap) RemoveFuncForPad(pad unsafe.Pointer) {
 // Pad is a go representation of a GstPad
 type Pad struct{ *Object }
 
+// FromGstPadUnsafeFull wraps the given pad in a reference and finalizer.
+func FromGstPadUnsafeFull(pad unsafe.Pointer) *Pad {
+	return &Pad{wrapObject(glib.TransferFull(pad))}
+}
+
+// FromGstPadUnsafeNone wraps the given pad in a finalizer.
+func FromGstPadUnsafeNone(pad unsafe.Pointer) *Pad {
+	return &Pad{wrapObject(glib.TransferNone(pad))}
+}
+
 // NewPad returns a new pad with the given direction. If name is empty, one will be generated for you.
 func NewPad(name string, direction PadDirection) *Pad {
 	var cName *C.gchar
@@ -126,7 +136,7 @@ func NewPad(name string, direction PadDirection) *Pad {
 	if pad == nil {
 		return nil
 	}
-	return wrapPad(toGObject(unsafe.Pointer(pad)))
+	return FromGstPadUnsafeNone(unsafe.Pointer(pad))
 }
 
 // NewPadFromTemplate creates a new pad with the given name from the given template. If name is empty, one will
@@ -142,12 +152,8 @@ func NewPadFromTemplate(tmpl *PadTemplate, name string) *Pad {
 	if pad == nil {
 		return nil
 	}
-	return wrapPad(toGObject(unsafe.Pointer(pad)))
+	return FromGstPadUnsafeNone(unsafe.Pointer(pad))
 }
-
-// FromGstPadUnsafe wraps the given pointer in a Pad object. It is meant for internal usage and exported for
-// visibility to other packages.
-func FromGstPadUnsafe(pad unsafe.Pointer) *Pad { return wrapPad(toGObject(pad)) }
 
 // Instance returns the underlying C GstPad.
 func (p *Pad) Instance() *C.GstPad { return C.toGstPad(p.Unsafe()) }
@@ -168,7 +174,7 @@ func (p *Pad) CurrentCaps() *Caps {
 	if caps == nil {
 		return nil
 	}
-	return wrapCaps(caps)
+	return FromGstCapsUnsafeFull(unsafe.Pointer(caps))
 }
 
 // ActivateMode activates or deactivates the given pad in mode via dispatching to the pad's activatemodefunc.
@@ -217,7 +223,7 @@ func (p *Pad) CanLink(sink *Pad) bool {
 //
 // In all cases, success or failure, the caller loses its reference to buffer after calling this function.
 func (p *Pad) Chain(buffer *Buffer) FlowReturn {
-	return FlowReturn(C.gst_pad_chain(p.Instance(), buffer.Instance()))
+	return FlowReturn(C.gst_pad_chain(p.Instance(), buffer.Ref().Instance()))
 }
 
 // ChainList chains a bufferlist to pad.
@@ -231,7 +237,7 @@ func (p *Pad) Chain(buffer *Buffer) FlowReturn {
 //
 // In all cases, success or failure, the caller loses its reference to list after calling this function.
 func (p *Pad) ChainList(bufferList *BufferList) FlowReturn {
-	return FlowReturn(C.gst_pad_chain_list(p.Instance(), bufferList.Instance()))
+	return FlowReturn(C.gst_pad_chain_list(p.Instance(), bufferList.Ref().Instance()))
 }
 
 // CheckReconfigure checks and clear the PadFlagNeedReconfigure flag on pad and return TRUE if the flag was set.
@@ -270,7 +276,10 @@ func (p *Pad) CreateStreamID(parent *Element, streamID string) string {
 //
 // The event is sent to all pads internally linked to pad. This function takes ownership of event.
 func (p *Pad) EventDefault(parent *Object, event *Event) bool {
-	return gobool(C.gst_pad_event_default(p.Instance(), parent.Instance(), event.Instance()))
+	if parent == nil {
+		return gobool(C.gst_pad_event_default(p.Instance(), nil, event.Ref().Instance()))
+	}
+	return gobool(C.gst_pad_event_default(p.Instance(), parent.Instance(), event.Ref().Instance()))
 }
 
 // PadForwardFunc is called for all internally linked pads, see Pad Forward().
@@ -296,16 +305,16 @@ func (p *Pad) Forward(f PadForwardFunc) bool {
 // The allowed capabilities is calculated as the intersection of the results of calling QueryCaps on pad and its peer. The caller owns a reference on the
 // resulting caps.
 func (p *Pad) GetAllowedCaps() *Caps {
-	return wrapCaps(C.gst_pad_get_allowed_caps(
+	return FromGstCapsUnsafeFull(unsafe.Pointer(C.gst_pad_get_allowed_caps(
 		p.Instance(),
-	))
+	)))
 }
 
 // GetCurrentCaps gets the capabilities currently configured on pad with the last EventCaps event.
 func (p *Pad) GetCurrentCaps() *Caps {
-	return wrapCaps(C.gst_pad_get_current_caps(
+	return FromGstCapsUnsafeFull(unsafe.Pointer(C.gst_pad_get_current_caps(
 		p.Instance(),
-	))
+	)))
 }
 
 // GetDirection gets the direction of the pad. The direction of the pad is decided at construction time so this function does not take the LOCK.
@@ -337,7 +346,7 @@ func (p *Pad) GetPadTemplate() *PadTemplate {
 	if tmpl == nil {
 		return nil
 	}
-	return wrapPadTemplate(toGObject(unsafe.Pointer(tmpl)))
+	return FromGstPadTemplateUnsafeFull(unsafe.Pointer(tmpl))
 }
 
 // GetPadTemplateCaps gets the capabilities for pad's template.
@@ -346,7 +355,7 @@ func (p *Pad) GetPadTemplateCaps() *Caps {
 	if caps == nil {
 		return nil
 	}
-	return wrapCaps(caps)
+	return FromGstCapsUnsafeFull(unsafe.Pointer(caps))
 }
 
 // GetParentElement gets the parent of pad, cast to a Element. If a pad has no parent or its
@@ -356,7 +365,7 @@ func (p *Pad) GetParentElement() *Element {
 	if elem == nil {
 		return nil
 	}
-	return wrapElement(toGObject(unsafe.Pointer(elem)))
+	return FromGstElementUnsafeFull(unsafe.Pointer(elem))
 }
 
 // GetPeer gets the peer of pad. This function refs the peer pad so you need to unref it after use.
@@ -365,7 +374,7 @@ func (p *Pad) GetPeer() *Pad {
 	if peer == nil {
 		return nil
 	}
-	return wrapPad(toGObject(unsafe.Pointer(peer)))
+	return FromGstPadUnsafeFull(unsafe.Pointer(peer))
 }
 
 // GetRange calls the getrange function of pad, see PadGetRangeFunc for a description of a getrange function.
@@ -406,7 +415,7 @@ func (p *Pad) GetStickyEvent(eventType EventType, idx uint) *Event {
 	if ev == nil {
 		return nil
 	}
-	return wrapEvent(ev)
+	return FromGstEventUnsafeFull(unsafe.Pointer(ev))
 }
 
 // GetStream returns the current Stream for the pad, or nil if none has been set yet, i.e. the pad has not received a
@@ -418,7 +427,7 @@ func (p *Pad) GetStream() *Stream {
 	if st == nil {
 		return nil
 	}
-	return wrapStream(toGObject(unsafe.Pointer(st)))
+	return FromGstStreamUnsafeFull(unsafe.Pointer(st))
 }
 
 // GetStreamID returns the current stream-id for the pad, or an empty string if none has been set yet, i.e. the pad has not received
@@ -566,7 +575,7 @@ func (p *Pad) PeerQueryCaps(filter *Caps) *Caps {
 	if caps == nil {
 		return nil
 	}
-	return wrapCaps(caps)
+	return FromGstCapsUnsafeFull(unsafe.Pointer(caps))
 }
 
 // PeerQueryConvert queries the peer pad of a given sink pad to convert src_val in src_format to dest_format.
@@ -630,7 +639,7 @@ func (p *Pad) PullRange(offset uint64, size uint, buffer *Buffer) (FlowReturn, *
 	ret := C.gst_pad_pull_range(p.Instance(), C.guint64(offset), C.guint(size), &buf)
 	var newBuf *Buffer
 	if buf != nil {
-		newBuf = wrapBuffer(buf)
+		newBuf = FromGstBufferUnsafeFull(unsafe.Pointer(buf))
 	} else {
 		newBuf = nil
 	}
@@ -645,14 +654,14 @@ func (p *Pad) PullRange(offset uint64, size uint, buffer *Buffer) (FlowReturn, *
 //
 // In all cases, success or failure, the caller loses its reference to buffer after calling this function.
 func (p *Pad) Push(buf *Buffer) FlowReturn {
-	return FlowReturn(C.gst_pad_push(p.Instance(), buf.Instance()))
+	return FlowReturn(C.gst_pad_push(p.Instance(), buf.Ref().Instance()))
 }
 
 // PushEvent sends the event to the peer of the given pad. This function is mainly used by elements to send events to their peer elements.
 //
 // This function takes ownership of the provided event so you should Ref it if you want to reuse the event after this call.
 func (p *Pad) PushEvent(ev *Event) bool {
-	return gobool(C.gst_pad_push_event(p.Instance(), ev.Instance()))
+	return gobool(C.gst_pad_push_event(p.Instance(), ev.Ref().Instance()))
 }
 
 // PushList pushes a buffer list to the peer of pad.
@@ -665,7 +674,7 @@ func (p *Pad) PushEvent(ev *Event) bool {
 //
 // In all cases, success or failure, the caller loses its reference to list after calling this function.
 func (p *Pad) PushList(bufList *BufferList) FlowReturn {
-	return FlowReturn(C.gst_pad_push_list(p.Instance(), bufList.Instance()))
+	return FlowReturn(C.gst_pad_push_list(p.Instance(), bufList.Ref().Instance()))
 }
 
 // Query dispatches a query to a pad. The query should have been allocated by the caller via one of the type-specific allocation functions. The element that the
@@ -701,7 +710,7 @@ func (p *Pad) QueryCaps(filter *Caps) *Caps {
 	if caps == nil {
 		return nil
 	}
-	return wrapCaps(caps)
+	return FromGstCapsUnsafeFull(unsafe.Pointer(caps))
 }
 
 // QueryConvert queries a pad to convert src_val in src_format to dest_format.
@@ -749,7 +758,7 @@ func (p *Pad) RemoveProbe(id uint64) {
 //
 // This function takes ownership of the provided event so you should gst_event_ref it if you want to reuse the event after this call.
 func (p *Pad) SendEvent(ev *Event) bool {
-	return gobool(C.gst_pad_send_event(p.Instance(), ev.Instance()))
+	return gobool(C.gst_pad_send_event(p.Instance(), ev.Ref().Instance()))
 }
 
 func (p *Pad) registerCallback(f interface{}, fmap PadFuncMap) *C.PadDestroyNotifyInfo {
@@ -1080,7 +1089,7 @@ func (p *PadProbeInfo) GetBuffer() *Buffer {
 	if buf == nil {
 		return nil
 	}
-	return wrapBuffer(buf)
+	return FromGstBufferUnsafeNone(unsafe.Pointer(buf))
 }
 
 // GetBufferList returns the buffer list, if any, inside this probe info.
@@ -1089,7 +1098,7 @@ func (p *PadProbeInfo) GetBufferList() *BufferList {
 	if bufList == nil {
 		return nil
 	}
-	return wrapBufferList(bufList)
+	return FromGstBufferListUnsafeNone(unsafe.Pointer(bufList))
 }
 
 // GetEvent returns the event, if any, inside this probe info.
@@ -1098,7 +1107,7 @@ func (p *PadProbeInfo) GetEvent() *Event {
 	if ev == nil {
 		return nil
 	}
-	return wrapEvent(ev)
+	return FromGstEventUnsafeNone(unsafe.Pointer(ev))
 }
 
 // GetQuery returns the query, if any, inside this probe info.
@@ -1107,7 +1116,7 @@ func (p *PadProbeInfo) GetQuery() *Query {
 	if q == nil {
 		return nil
 	}
-	return wrapQuery(q)
+	return FromGstQueryUnsafeNone(unsafe.Pointer(q))
 }
 
 func iteratorToPadSlice(iterator *C.GstIterator) ([]*Pad, error) {
@@ -1124,10 +1133,10 @@ func iteratorToPadSlice(iterator *C.GstIterator) ([]*Pad, error) {
 		case C.GST_ITERATOR_OK:
 			cPadVoid := C.g_value_get_object((*C.GValue)(gval))
 			cPad := (*C.GstPad)(cPadVoid)
-			pads = append(pads, wrapPad(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(cPad))}))
+			pads = append(pads, FromGstPadUnsafeFull(unsafe.Pointer(cPad)))
 			C.g_value_reset((*C.GValue)(gval))
 		default:
-			return nil, errors.New("Element iterator failed")
+			return nil, errors.New("Pad iterator failed")
 		}
 	}
 }

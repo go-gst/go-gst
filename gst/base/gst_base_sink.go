@@ -37,7 +37,7 @@ func ToGstBaseSink(obj interface{}) *GstBaseSink {
 
 // wrapGstBaseSink wraps the given unsafe.Pointer in a GstBaseSink instance.
 func wrapGstBaseSink(obj *C.GstBaseSink) *GstBaseSink {
-	return &GstBaseSink{gst.FromGstElementUnsafe(unsafe.Pointer(obj))}
+	return &GstBaseSink{gst.FromGstElementUnsafeNone(unsafe.Pointer(obj))}
 }
 
 // Instance returns the underlying C GstBaseSrc instance
@@ -98,7 +98,7 @@ func (g *GstBaseSink) GetLastSample() *gst.Sample {
 	if sample == nil {
 		return nil
 	}
-	return gst.FromGstSampleUnsafe(unsafe.Pointer(sample))
+	return gst.FromGstSampleUnsafeFull(unsafe.Pointer(sample))
 }
 
 // GetLatency gets the currently configured latency.

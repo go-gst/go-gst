@@ -7,7 +7,6 @@ import "unsafe"
 
 // Go casting of pre-baked caps features
 var (
-	CapsFeaturesAny                      = wrapCapsFeatures(C.gst_caps_features_new_any())
 	CapsFeatureMemorySystemMemory string = C.GST_CAPS_FEATURE_MEMORY_SYSTEM_MEMORY
 )
 
@@ -99,7 +98,8 @@ func (c *CapsFeatures) Copy() *CapsFeatures {
 	return wrapCapsFeatures(C.gst_caps_features_copy(c.Instance()))
 }
 
-// Free frees the memory containing these features.
+// Free frees the memory containing these features. Only call this if you
+// do not intend to pass these features to other methods.
 func (c *CapsFeatures) Free() { C.gst_caps_features_free(c.Instance()) }
 
 // GetNth returns the feature at index.

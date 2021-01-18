@@ -96,7 +96,7 @@ func padProbes(mainLoop *glib.MainLoop) error {
 		}
 	}
 
-	return pipeline.Destroy()
+	return nil
 }
 
 func handleMessage(msg *gst.Message) error {

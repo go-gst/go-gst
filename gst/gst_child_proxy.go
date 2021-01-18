@@ -145,7 +145,7 @@ func (c *ChildProxy) GetChildByIndex(idx uint) *glib.Object {
 	if gobj == nil {
 		return nil
 	}
-	return &glib.Object{GObject: glib.ToGObject(unsafe.Pointer(gobj))}
+	return glib.TransferFull(unsafe.Pointer(gobj))
 }
 
 // GetChildByName fetches a child by name. The virtual method's default implementation uses Object
@@ -160,7 +160,7 @@ func (c *ChildProxy) GetChildByName(name string) *glib.Object {
 	if gobj == nil {
 		return nil
 	}
-	return &glib.Object{GObject: glib.ToGObject(unsafe.Pointer(gobj))}
+	return glib.TransferFull(unsafe.Pointer(gobj))
 }
 
 // GetChildrenCount returns the number of child objects the parent contains.
@@ -198,7 +198,7 @@ func (c *ChildProxy) Lookup(name string) (ok bool, target *glib.Object, param *g
 	if !ok {
 		return
 	}
-	target = &glib.Object{GObject: glib.ToGObject(unsafe.Pointer(gtarget))}
+	target = glib.TransferFull(unsafe.Pointer(gtarget))
 	param = glib.ToParamSpec(unsafe.Pointer(gspec))
 	return
 }

@@ -14,6 +14,16 @@ import (
 // Device is a Go representation of a GstDevice.
 type Device struct{ *Object }
 
+// FromGstDeviceUnsafeNone wraps the given device with a ref and finalizer.
+func FromGstDeviceUnsafeNone(device unsafe.Pointer) *Device {
+	return &Device{wrapObject(glib.TransferNone(device))}
+}
+
+// FromGstDeviceUnsafeFull wraps the given device with a finalizer.
+func FromGstDeviceUnsafeFull(device unsafe.Pointer) *Device {
+	return &Device{wrapObject(glib.TransferFull(device))}
+}
+
 // Instance returns the underlying GstDevice object.
 func (d *Device) Instance() *C.GstDevice { return C.toGstDevice(d.Unsafe()) }
 
@@ -26,33 +36,44 @@ func (d *Device) CreateElement(name string) *Element {
 		defer C.free(unsafe.Pointer(cName))
 	}
 	elem := C.gst_device_create_element(d.Instance(), cName)
-	return wrapElement(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(elem))})
+	if elem == nil {
+		return nil
+	}
+	return FromGstElementUnsafeNone(unsafe.Pointer(elem))
 }
 
-// Caps returns the caps that this device supports. Unref after usage.
-func (d *Device) Caps() *Caps {
-	return wrapCaps(C.gst_device_get_caps(d.Instance()))
+// GetCaps returns the caps that this device supports. Unref after usage.
+func (d *Device) GetCaps() *Caps {
+	caps := C.gst_device_get_caps(d.Instance())
+	if caps == nil {
+		return nil
+	}
+	return FromGstCapsUnsafeNone(unsafe.Pointer(caps))
 }
 
-// DeviceClass gets the "class" of a device. This is a "/" separated list of classes that
+// GetDeviceClass gets the "class" of a device. This is a "/" separated list of classes that
 // represent this device. They are a subset of the classes of the GstDeviceProvider that produced
 // this device.
-func (d *Device) DeviceClass() string {
+func (d *Device) GetDeviceClass() string {
 	class := C.gst_device_get_device_class(d.Instance())
 	defer C.g_free((C.gpointer)(unsafe.Pointer(class)))
 	return C.GoString(class)
 }
 
-// DisplayName gets the user-friendly name of the device.
-func (d *Device) DisplayName() string {
+// GetDisplayName gets the user-friendly name of the device.
+func (d *Device) GetDisplayName() string {
 	name := C.gst_device_get_display_name(d.Instance())
 	defer C.g_free((C.gpointer)(unsafe.Pointer(name)))
 	return C.GoString(name)
 }
 
-// Properties gets the extra properties of the device.
-func (d *Device) Properties() *Structure {
-	return wrapStructure(C.gst_device_get_properties(d.Instance()))
+// GetProperties gets the extra properties of the device.
+func (d *Device) GetProperties() *Structure {
+	st := C.gst_device_get_properties(d.Instance())
+	if st == nil {
+		return nil
+	}
+	return wrapStructure(st)
 }
 
 // HasClasses checks if device matches all of the given classes.

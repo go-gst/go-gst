@@ -17,7 +17,7 @@ func goGstBaseSrcGetCaps(src *C.GstBaseSrc, filter *C.GstCaps) *C.GstCaps {
 	caller := elem.(interface {
 		GetCaps(*GstBaseSrc, *gst.Caps) *gst.Caps
 	})
-	res := caller.GetCaps(wrapGstBaseSrc(src), gst.FromGstCapsUnsafe(unsafe.Pointer(filter)))
+	res := caller.GetCaps(wrapGstBaseSrc(src), gst.FromGstCapsUnsafeNone(unsafe.Pointer(filter)))
 	return (*C.GstCaps)(unsafe.Pointer(res.Instance()))
 }
 
@@ -36,7 +36,7 @@ func goGstBaseSrcFixate(src *C.GstBaseSrc, caps *C.GstCaps) *C.GstCaps {
 	caller := elem.(interface {
 		Fixate(*GstBaseSrc, *gst.Caps) *gst.Caps
 	})
-	res := caller.Fixate(wrapGstBaseSrc(src), gst.FromGstCapsUnsafe(unsafe.Pointer(caps)))
+	res := caller.Fixate(wrapGstBaseSrc(src), gst.FromGstCapsUnsafeNone(unsafe.Pointer(caps)))
 	return (*C.GstCaps)(unsafe.Pointer(res.Instance()))
 }
 
@@ -46,7 +46,7 @@ func goGstBaseSrcSetCaps(src *C.GstBaseSrc, filter *C.GstCaps) C.gboolean {
 	caller := elem.(interface {
 		SetCaps(*GstBaseSrc, *gst.Caps) bool
 	})
-	return gboolean(caller.SetCaps(wrapGstBaseSrc(src), gst.FromGstCapsUnsafe(unsafe.Pointer(filter))))
+	return gboolean(caller.SetCaps(wrapGstBaseSrc(src), gst.FromGstCapsUnsafeNone(unsafe.Pointer(filter))))
 }
 
 //export goGstBaseSrcDecideAllocation
@@ -55,7 +55,7 @@ func goGstBaseSrcDecideAllocation(src *C.GstBaseSrc, query *C.GstQuery) C.gboole
 	caller := elem.(interface {
 		DecideAllocation(*GstBaseSrc, *gst.Query) bool
 	})
-	return gboolean(caller.DecideAllocation(wrapGstBaseSrc(src), gst.FromGstQueryUnsafe(unsafe.Pointer(query))))
+	return gboolean(caller.DecideAllocation(wrapGstBaseSrc(src), gst.FromGstQueryUnsafeNone(unsafe.Pointer(query))))
 }
 
 //export goGstBaseSrcStart
@@ -82,7 +82,7 @@ func goGstBaseSrcGetTimes(src *C.GstBaseSrc, buf *C.GstBuffer, start *C.GstClock
 	caller := elem.(interface {
 		GetTimes(*GstBaseSrc, *gst.Buffer) (start, end time.Duration)
 	})
-	gostart, goend := caller.GetTimes(wrapGstBaseSrc(src), gst.FromGstBufferUnsafe(unsafe.Pointer(buf)))
+	gostart, goend := caller.GetTimes(wrapGstBaseSrc(src), gst.FromGstBufferUnsafeNone(unsafe.Pointer(buf)))
 	*start = C.GstClockTime(gostart.Nanoseconds())
 	*end = C.GstClockTime(goend.Nanoseconds())
 }
@@ -116,7 +116,7 @@ func goGstBaseSrcPrepareSeekSegment(src *C.GstBaseSrc, seek *C.GstEvent, segment
 	caller := elem.(interface {
 		PrepareSeekSegment(*GstBaseSrc, *gst.Event, *gst.Segment) bool
 	})
-	return gboolean(caller.PrepareSeekSegment(wrapGstBaseSrc(src), gst.FromGstEventUnsafe(unsafe.Pointer(seek)), gst.FromGstSegmentUnsafe(unsafe.Pointer(segment))))
+	return gboolean(caller.PrepareSeekSegment(wrapGstBaseSrc(src), gst.FromGstEventUnsafeNone(unsafe.Pointer(seek)), gst.FromGstSegmentUnsafe(unsafe.Pointer(segment))))
 }
 
 //export goGstBaseSrcDoSeek
@@ -152,7 +152,7 @@ func goGstBaseSrcQuery(src *C.GstBaseSrc, query *C.GstQuery) C.gboolean {
 	caller := elem.(interface {
 		Query(*GstBaseSrc, *gst.Query) bool
 	})
-	return gboolean(caller.Query(wrapGstBaseSrc(src), gst.FromGstQueryUnsafe(unsafe.Pointer(query))))
+	return gboolean(caller.Query(wrapGstBaseSrc(src), gst.FromGstQueryUnsafeNone(unsafe.Pointer(query))))
 }
 
 //export goGstBaseSrcEvent
@@ -161,7 +161,7 @@ func goGstBaseSrcEvent(src *C.GstBaseSrc, event *C.GstEvent) C.gboolean {
 	caller := elem.(interface {
 		Event(*GstBaseSrc, *gst.Event) bool
 	})
-	return gboolean(caller.Event(wrapGstBaseSrc(src), gst.FromGstEventUnsafe(unsafe.Pointer(event))))
+	return gboolean(caller.Event(wrapGstBaseSrc(src), gst.FromGstEventUnsafeNone(unsafe.Pointer(event))))
 }
 
 //export goGstBaseSrcCreate
@@ -196,5 +196,5 @@ func goGstBaseSrcFill(src *C.GstBaseSrc, offset C.guint64, size C.guint, buf *C.
 	caller := elem.(interface {
 		Fill(*GstBaseSrc, uint64, uint, *gst.Buffer) gst.FlowReturn
 	})
-	return C.GstFlowReturn(caller.Fill(wrapGstBaseSrc(src), uint64(offset), uint(size), gst.FromGstBufferUnsafe(unsafe.Pointer(buf))))
+	return C.GstFlowReturn(caller.Fill(wrapGstBaseSrc(src), uint64(offset), uint(size), gst.FromGstBufferUnsafeNone(unsafe.Pointer(buf))))
 }

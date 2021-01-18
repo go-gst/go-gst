@@ -13,20 +13,20 @@ import (
 //
 // When the async flag is set, a thread boundary is preferred.
 func NewBufferSizeEvent(format Format, minSize, maxSize int64, async bool) *Event {
-	return wrapEvent(C.gst_event_new_buffer_size(
+	return FromGstEventUnsafeFull(unsafe.Pointer(C.gst_event_new_buffer_size(
 		C.GstFormat(format),
 		C.gint64(minSize),
 		C.gint64(maxSize),
 		gboolean(async),
-	))
+	)))
 }
 
 // NewCapsEvent creates a new CAPS event for caps. The caps event can only travel downstream synchronized with
 // the buffer flow and contains the format of the buffers that will follow after the event.
 func NewCapsEvent(caps *Caps) *Event {
-	return wrapEvent(C.gst_event_new_caps(
+	return FromGstEventUnsafeFull(unsafe.Pointer(C.gst_event_new_caps(
 		caps.Instance(),
-	))
+	)))
 }
 
 // NewEOSEvent creates a new EOS event. The eos event can only travel downstream synchronized with the buffer flow.
@@ -38,7 +38,7 @@ func NewCapsEvent(caps *Caps) *Event {
 // When all sinks have posted an EOS message, an EOS message is forwarded to the application.
 //
 // The EOS event itself will not cause any state transitions of the pipeline.
-func NewEOSEvent() *Event { return wrapEvent(C.gst_event_new_eos()) }
+func NewEOSEvent() *Event { return FromGstEventUnsafeFull(unsafe.Pointer(C.gst_event_new_eos())) }
 
 // NewFlushStartEvent allocates a new flush start event. The flush start event can be sent upstream and downstream and
 // travels out-of-bounds with the dataflow.
@@ -50,7 +50,9 @@ func NewEOSEvent() *Event { return wrapEvent(C.gst_event_new_eos()) }
 // Elements should unlock any blocking functions and exit their streaming functions as fast as possible when this event is received.
 //
 // This event is typically generated after a seek to flush out all queued data in the pipeline so that the new media is played as soon as possible.
-func NewFlushStartEvent() *Event { return wrapEvent(C.gst_event_new_flush_start()) }
+func NewFlushStartEvent() *Event {
+	return FromGstEventUnsafeFull(unsafe.Pointer(C.gst_event_new_flush_start()))
+}
 
 // NewFlushStopEvent allocates a new flush stop event. The flush stop event can be sent upstream and downstream and travels serialized with the
 // dataflow. It is typically sent after sending a FLUSH_START event to make the pads accept data again.
@@ -59,17 +61,17 @@ func NewFlushStartEvent() *Event { return wrapEvent(C.gst_event_new_flush_start(
 //
 // This event is typically generated to complete a seek and to resume dataflow.
 func NewFlushStopEvent(resetTime bool) *Event {
-	return wrapEvent(C.gst_event_new_flush_stop(gboolean(resetTime)))
+	return FromGstEventUnsafeFull(unsafe.Pointer(C.gst_event_new_flush_stop(gboolean(resetTime))))
 }
 
 // NewGapEvent creates a new GAP event. A gap event can be thought of as conceptually equivalent to a buffer to signal that there is no data for a
 //certain amount of time. This is useful to signal a gap to downstream elements which may wait for data, such as muxers or mixers or overlays,
 // especially for sparse streams such as subtitle streams.
 func NewGapEvent(timestamp, duration time.Duration) *Event {
-	return wrapEvent(C.gst_event_new_gap(
+	return FromGstEventUnsafeFull(unsafe.Pointer(C.gst_event_new_gap(
 		C.GstClockTime(timestamp.Nanoseconds()),
 		C.GstClockTime(duration.Nanoseconds()),
-	))
+	)))
 }
 
 // NewInstantRateChangeEvent creates a new instant-rate-change event. This event is sent by seek handlers (e.g. demuxers) when receiving a seek with the
@@ -104,16 +106,16 @@ func NewGapEvent(timestamp, duration time.Duration) *Event {
 //
 // The latency is mostly used in live sinks and is always expressed in the time format.
 func NewLatencyEvent(latency time.Duration) *Event {
-	return wrapEvent(C.gst_event_new_latency(
+	return FromGstEventUnsafeFull(unsafe.Pointer(C.gst_event_new_latency(
 		C.GstClockTime(latency.Nanoseconds()),
-	))
+	)))
 }
 
 // NewNavigationEvent creates a new navigation event from the given description. The event will take ownership of the structure.
 func NewNavigationEvent(structure *Structure) *Event {
-	return wrapEvent(C.gst_event_new_navigation(
+	return FromGstEventUnsafeFull(unsafe.Pointer(C.gst_event_new_navigation(
 		structure.Instance(),
-	))
+	)))
 }
 
 // NewProtectionEvent creates a new event containing information specific to a particular protection system (uniquely identified by system_id), by which that protection system
@@ -136,11 +138,11 @@ func NewProtectionEvent(systemID string, buffer *Buffer, origin string) *Event {
 	cOrigin := C.CString(origin)
 	defer C.free(unsafe.Pointer(cSystemID))
 	defer C.free(unsafe.Pointer(cOrigin))
-	return wrapEvent(C.gst_event_new_protection(
+	return FromGstEventUnsafeFull(unsafe.Pointer(C.gst_event_new_protection(
 		(*C.gchar)(unsafe.Pointer(cSystemID)),
 		buffer.Instance(),
 		(*C.gchar)(unsafe.Pointer(cOrigin)),
-	))
+	)))
 }
 
 // NewQOSEvent allocates a new qos event with the given values. The QOS event is generated in an element that wants an upstream element to either reduce or increase its rate because of
@@ -164,18 +166,18 @@ func NewProtectionEvent(systemID string, buffer *Buffer, origin string) *Event {
 //
 // The application can use general event probes to intercept the QoS event and implement custom application specific QoS handling.
 func NewQOSEvent(qType QOSType, proportion float64, diff ClockTimeDiff, timestamp time.Duration) *Event {
-	return wrapEvent(C.gst_event_new_qos(
+	return FromGstEventUnsafeFull(unsafe.Pointer(C.gst_event_new_qos(
 		C.GstQOSType(qType),
 		C.gdouble(proportion),
 		C.GstClockTimeDiff(diff),
 		C.GstClockTime(timestamp.Nanoseconds()),
-	))
+	)))
 }
 
 // NewReconfigureEvent creates a new reconfigure event. The purpose of the reconfigure event is to travel upstream and make elements renegotiate their caps or reconfigure their buffer pools.
 // This is useful when changing properties on elements or changing the topology of the pipeline.
 func NewReconfigureEvent() *Event {
-	return wrapEvent(C.gst_event_new_reconfigure())
+	return FromGstEventUnsafeFull(unsafe.Pointer(C.gst_event_new_reconfigure()))
 }
 
 // NewSeekEvent allocates a new seek event with the given parameters.
@@ -198,7 +200,7 @@ func NewReconfigureEvent() *Event {
 // It is not possible to seek relative to the current playback position, to do this, PAUSE the pipeline, query the current playback position with GST_QUERY_POSITION and update the playback segment
 // current position with a GST_SEEK_TYPE_SET to the desired position.
 func NewSeekEvent(rate float64, format Format, flags SeekFlags, startType SeekType, start int64, stopType SeekType, stop int64) *Event {
-	return wrapEvent(C.gst_event_new_seek(
+	return FromGstEventUnsafeFull(unsafe.Pointer(C.gst_event_new_seek(
 		C.gdouble(rate),
 		C.GstFormat(format),
 		C.GstSeekFlags(flags),
@@ -206,7 +208,7 @@ func NewSeekEvent(rate float64, format Format, flags SeekFlags, startType SeekTy
 		C.gint64(start),
 		C.GstSeekType(stopType),
 		C.gint64(stop),
-	))
+	)))
 }
 
 // NewSegmentEvent creates a new SEGMENT event for segment. The segment event can only travel downstream synchronized with the buffer flow and contains timing information and playback properties
@@ -228,16 +230,16 @@ func NewSeekEvent(rate float64, format Format, flags SeekFlags, startType SeekTy
 //
 // time + (TIMESTAMP(buf) - start) * ABS (rate * applied_rate)
 func NewSegmentEvent(segment *Segment) *Event {
-	return wrapEvent(C.gst_event_new_segment(
+	return FromGstEventUnsafeFull(unsafe.Pointer(C.gst_event_new_segment(
 		segment.Instance(),
-	))
+	)))
 }
 
 // NewSegmentDoneEvent creates a new segment-done event. This event is sent by elements that finish playback of a segment as a result of a segment seek.
 func NewSegmentDoneEvent(format Format, position int64) *Event {
-	return wrapEvent(C.gst_event_new_segment_done(
+	return FromGstEventUnsafeFull(unsafe.Pointer(C.gst_event_new_segment_done(
 		C.GstFormat(format), C.gint64(position),
-	))
+	)))
 }
 
 // NewSelectStreamsEvent allocates a new select-streams event.
@@ -249,9 +251,9 @@ func NewSegmentDoneEvent(format Format, position int64) *Event {
 //
 // Note: The list of streams can not be empty.
 func NewSelectStreamsEvent(streams []*Stream) *Event {
-	return wrapEvent(C.gst_event_new_select_streams(
+	return FromGstEventUnsafeFull(unsafe.Pointer(C.gst_event_new_select_streams(
 		streamSliceToGlist(streams),
-	))
+	)))
 }
 
 // NewSinkMessageEvent creates a new sink-message event. The purpose of the sink-message event is to instruct a sink to post the message contained in the event
@@ -261,10 +263,10 @@ func NewSelectStreamsEvent(streams []*Stream) *Event {
 func NewSinkMessageEvent(name string, msg *Message) *Event {
 	cName := C.CString(name)
 	defer C.free(unsafe.Pointer(cName))
-	return wrapEvent(C.gst_event_new_sink_message(
+	return FromGstEventUnsafeFull(unsafe.Pointer(C.gst_event_new_sink_message(
 		(*C.gchar)(unsafe.Pointer(cName)),
 		msg.Instance(),
-	))
+	)))
 }
 
 // NewStepEvent createss a new step event. The purpose of the step event is to instruct a sink to skip amount (expressed in format) of media. It can be used to
@@ -277,13 +279,13 @@ func NewSinkMessageEvent(name string, msg *Message) *Event {
 //
 // The intermediate flag instructs the pipeline that this step operation is part of a larger step operation.
 func NewStepEvent(format Format, amount uint64, rate float64, flush, intermediate bool) *Event {
-	return wrapEvent(C.gst_event_new_step(
+	return FromGstEventUnsafeFull(unsafe.Pointer(C.gst_event_new_step(
 		C.GstFormat(format),
 		C.guint64(amount),
 		C.gdouble(rate),
 		gboolean(flush),
 		gboolean(intermediate),
-	))
+	)))
 }
 
 // NewStreamCollectionEvent creates a new STREAM_COLLECTION event. The stream collection event can only travel downstream synchronized with the buffer flow.
@@ -291,9 +293,9 @@ func NewStepEvent(format Format, amount uint64, rate float64, flush, intermediat
 // Source elements, demuxers and other elements that manage collections of streams and post GstStreamCollection messages on the bus also send this event downstream
 // on each pad involved in the collection, so that activation of a new collection can be tracked through the downstream data flow.
 func NewStreamCollectionEvent(collection *StreamCollection) *Event {
-	return wrapEvent(C.gst_event_new_stream_collection(
+	return FromGstEventUnsafeFull(unsafe.Pointer(C.gst_event_new_stream_collection(
 		collection.Instance(),
-	))
+	)))
 }
 
 // NewStreamGroupDoneEvent creates a new Stream Group Done event. The stream-group-done event can only travel downstream synchronized with the buffer flow. Elements
@@ -303,7 +305,7 @@ func NewStreamCollectionEvent(collection *StreamCollection) *Event {
 // This event is followed by EOS at some point in the future, and is generally used when switching pads - to unblock downstream so that new pads can be exposed before
 // sending EOS on the existing pads.
 func NewStreamGroupDoneEvent(groupID uint) *Event {
-	return wrapEvent(C.gst_event_new_stream_group_done(C.guint(groupID)))
+	return FromGstEventUnsafeFull(unsafe.Pointer(C.gst_event_new_stream_group_done(C.guint(groupID))))
 }
 
 // NewStreamStartEvent creates a new STREAM_START event. The stream start event can only travel downstream synchronized with the buffer flow. It is expected to be the
@@ -320,9 +322,9 @@ func NewStreamGroupDoneEvent(groupID uint) *Event {
 func NewStreamStartEvent(streamID string) *Event {
 	cName := C.CString(streamID)
 	defer C.free(unsafe.Pointer(cName))
-	return wrapEvent(C.gst_event_new_stream_start(
+	return FromGstEventUnsafeFull(unsafe.Pointer(C.gst_event_new_stream_start(
 		(*C.gchar)(unsafe.Pointer(cName)),
-	))
+	)))
 }
 
 // NewTagEvent generates a metadata tag event from the given taglist.
@@ -330,16 +332,16 @@ func NewStreamStartEvent(streamID string) *Event {
 // The scope of the taglist specifies if the taglist applies to the complete medium or only to this specific stream. As the tag event is a sticky event, elements should merge
 // tags received from upstream with a given scope with their own tags with the same scope and create a new tag event from it.
 func NewTagEvent(tagList *TagList) *Event {
-	return wrapEvent(C.gst_event_new_tag(
-		tagList.Instance(),
-	))
+	return FromGstEventUnsafeFull(unsafe.Pointer(C.gst_event_new_tag(
+		tagList.Ref().Instance(),
+	)))
 }
 
 // NewTOCEvent generates a TOC event from the given toc. The purpose of the TOC event is to inform elements that some kind of the TOC was found.
 func NewTOCEvent(toc *TOC, updated bool) *Event {
-	return wrapEvent(C.gst_event_new_toc(
+	return FromGstEventUnsafeFull(unsafe.Pointer(C.gst_event_new_toc(
 		toc.Instance(), gboolean(updated),
-	))
+	)))
 }
 
 // NewTOCSelectEvent generates a TOC select event with the given uid. The purpose of the TOC select event is to start playback based on the TOC's
@@ -347,15 +349,15 @@ func NewTOCEvent(toc *TOC, updated bool) *Event {
 func NewTOCSelectEvent(uid string) *Event {
 	cUID := C.CString(uid)
 	defer C.free(unsafe.Pointer(cUID))
-	return wrapEvent(C.gst_event_new_toc_select(
+	return FromGstEventUnsafeFull(unsafe.Pointer(C.gst_event_new_toc_select(
 		(*C.gchar)(unsafe.Pointer(cUID)),
-	))
+	)))
 }
 
 // NewCustomEvent creates a new custom-typed event. This can be used for anything not handled by other event-specific functions to pass an event
 // to another element.
 func NewCustomEvent(eventType EventType, structure *Structure) *Event {
-	return wrapEvent(C.gst_event_new_custom(
+	return FromGstEventUnsafeFull(unsafe.Pointer(C.gst_event_new_custom(
 		C.GstEventType(eventType), structure.Instance(),
-	))
+	)))
 }

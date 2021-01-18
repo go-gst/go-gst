@@ -12,12 +12,22 @@ import (
 // Stream is a Go representation of a GstStream.
 type Stream struct{ *Object }
 
+// FromGstStreamUnsafeNone captures a pointer with a ref and finalizer.
+func FromGstStreamUnsafeNone(stream unsafe.Pointer) *Stream {
+	return &Stream{wrapObject(glib.TransferNone(stream))}
+}
+
+// FromGstStreamUnsafeFull captures a pointer with just a finalizer.
+func FromGstStreamUnsafeFull(stream unsafe.Pointer) *Stream {
+	return &Stream{wrapObject(glib.TransferNone(stream))}
+}
+
 // NewStream returns a new Stream with the given ID, caps, type, and flags.
 func NewStream(id string, caps *Caps, sType StreamType, flags StreamFlags) *Stream {
 	cID := C.CString(id)
 	defer C.free(unsafe.Pointer(cID))
 	stream := C.gst_stream_new(cID, caps.Instance(), C.GstStreamType(sType), C.GstStreamFlags(flags))
-	return wrapStream(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(stream))})
+	return FromGstStreamUnsafeFull(unsafe.Pointer(stream))
 }
 
 // Instance returns the underlying GstStream.
@@ -27,7 +37,7 @@ func (s *Stream) Instance() *C.GstStream {
 
 // Caps returns the caps for this stream.
 func (s *Stream) Caps() *Caps {
-	return wrapCaps(C.gst_stream_get_caps(s.Instance()))
+	return FromGstCapsUnsafeFull(unsafe.Pointer(C.gst_stream_get_caps(s.Instance())))
 }
 
 // StreamFlags returns the flags for this stream.
@@ -51,7 +61,7 @@ func (s *Stream) Tags() *TagList {
 	if tags == nil {
 		return nil
 	}
-	return wrapTagList(tags)
+	return FromGstTagListUnsafeFull(unsafe.Pointer(tags))
 }
 
 // SetCaps sets the caps for this stream.

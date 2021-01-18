@@ -49,7 +49,7 @@ func ConvertSample(sample *gst.Sample, toCaps *gst.Caps, timeout time.Duration) 
 	if ret == nil {
 		return nil, nil
 	}
-	return gst.FromGstSampleUnsafe(unsafe.Pointer(ret)), nil
+	return gst.FromGstSampleUnsafeFull(unsafe.Pointer(ret)), nil
 }
 
 // ConvertSampleAsync converts a raw video buffer into the specified output caps.

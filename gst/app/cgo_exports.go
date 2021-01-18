@@ -30,11 +30,11 @@ func getSrcCbsFromPtr(userData C.gpointer) *SourceCallbacks {
 }
 
 func wrapCSink(sink *C.GstAppSink) *Sink {
-	return wrapAppSink(gst.FromGstElementUnsafe(unsafe.Pointer(sink)))
+	return wrapAppSink(gst.FromGstElementUnsafeNone(unsafe.Pointer(sink)))
 }
 
 func wrapCSource(src *C.GstAppSrc) *Source {
-	return wrapAppSrc(gst.FromGstElementUnsafe(unsafe.Pointer(src)))
+	return wrapAppSrc(gst.FromGstElementUnsafeNone(unsafe.Pointer(src)))
 }
 
 //export goNeedDataCb

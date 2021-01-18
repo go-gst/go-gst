@@ -14,7 +14,7 @@ gboolean cgoCapsMapFunc (GstCapsFeatures * features, GstStructure * structure, g
 import "C"
 
 import (
-	"fmt"
+	"runtime"
 	"unsafe"
 
 	gopointer "github.com/mattn/go-pointer"
@@ -29,9 +29,35 @@ type Caps struct {
 	native *C.GstCaps
 }
 
-// FromGstCapsUnsafe wraps the pointer to the given C GstCaps with the go type.
+// FromGstCapsUnsafeNone wraps the pointer to the given C GstCaps with the go type.
 // This is meant for internal usage and is exported for visibility to other packages.
-func FromGstCapsUnsafe(caps unsafe.Pointer) *Caps { return wrapCaps(C.toGstCaps(caps)) }
+// A ref is taken on the caps and finalizer placed on the object.
+func FromGstCapsUnsafeNone(caps unsafe.Pointer) *Caps {
+	if caps == nil {
+		return nil
+	}
+	gocaps := wrapCaps(C.toGstCaps(caps))
+	gocaps.Ref()
+	runtime.SetFinalizer(gocaps, (*Caps).Unref)
+	return gocaps
+}
+
+// // FromGstCapsUnsafe is an alias to FromGstCapsUnsafeNone.
+// func FromGstCapsUnsafe(caps unsafe.Pointer) *Caps {
+// 	return FromGstCapsUnsafeNone(caps)
+// }
+
+// FromGstCapsUnsafeFull wraps the pointer to the given C GstCaps with the go type.
+// This is meant for internal usage and is exported for visibility to other packages.
+// A finalizer is placed on the object to Unref after leaving scope.
+func FromGstCapsUnsafeFull(caps unsafe.Pointer) *Caps {
+	if caps == nil {
+		return nil
+	}
+	gocaps := wrapCaps(C.toGstCaps(caps))
+	runtime.SetFinalizer(gocaps, (*Caps).Unref)
+	return gocaps
+}
 
 // CapsMapFunc represents a function passed to the Caps MapInPlace, ForEach, and FilterAndMapInPlace methods.
 type CapsMapFunc func(features *CapsFeatures, structure *Structure) bool
@@ -42,7 +68,7 @@ type CapsMapFunc func(features *CapsFeatures, structure *Structure) bool
 //   fmt.Println(caps.IsAny())
 //   // true
 //
-func NewAnyCaps() *Caps { return wrapCaps(C.gst_caps_new_any()) }
+func NewAnyCaps() *Caps { return FromGstCapsUnsafeFull(unsafe.Pointer(C.gst_caps_new_any())) }
 
 // NewEmptyCaps creates a new empty caps object. This is essentially the opposite of
 // NewAnyCamps.
@@ -51,7 +77,7 @@ func NewAnyCaps() *Caps { return wrapCaps(C.gst_caps_new_any()) }
 //   fmt.Println(caps.IsEmpty())
 //   // true
 //
-func NewEmptyCaps() *Caps { return wrapCaps(C.gst_caps_new_empty()) }
+func NewEmptyCaps() *Caps { return FromGstCapsUnsafeFull(unsafe.Pointer(C.gst_caps_new_empty())) }
 
 // NewEmptySimpleCaps returns a new empty caps object with the given media format.
 //
@@ -63,7 +89,7 @@ func NewEmptySimpleCaps(mediaFormat string) *Caps {
 	cFormat := C.CString(mediaFormat)
 	defer C.free(unsafe.Pointer(cFormat))
 	caps := C.gst_caps_new_empty_simple(cFormat)
-	return wrapCaps(caps)
+	return FromGstCapsUnsafeFull(unsafe.Pointer(caps))
 }
 
 // NewFullCaps creates a new caps from the given structures.
@@ -88,22 +114,18 @@ func NewCapsFromString(capsStr string) *Caps {
 	if caps == nil {
 		return nil
 	}
-	return wrapCaps(caps)
+	return FromGstCapsUnsafeFull(unsafe.Pointer(caps))
 }
 
-// NewRawCaps returns new GstCaps with the given format, sample-rate, and channels.
-func NewRawCaps(format string, rate, channels int) *Caps {
-	capsStr := fmt.Sprintf("audio/x-raw, format=%s, rate=%d, channels=%d", format, rate, channels)
-	return NewCapsFromString(capsStr)
-}
-
-func (c *Caps) unsafe() unsafe.Pointer { return unsafe.Pointer(c.native) }
+// Unsafe returns an unsafe.Pointer to the underlying GstCaps.
+func (c *Caps) Unsafe() unsafe.Pointer { return unsafe.Pointer(c.native) }
 
 // ToGValue returns a GValue containing the given caps. Note that under unexpected circumstances in allocation
 // this function can return nil. A reference to these caps is taken by the resulting value, so they are safe to
-// unref if not needed anymore.
+// unref if not needed anymore. This method is intended for producing values that are needed elsewhere. If you
+// are not going to use the value, call Unset.
 func (c *Caps) ToGValue() *glib.Value {
-	val, err := glib.ValueInit(glib.Type(C.getCapsType()))
+	val, err := glib.ValueInitUnowned(glib.Type(C.getCapsType()))
 	if err != nil {
 		return nil
 	}
@@ -116,18 +138,23 @@ func (c *Caps) ToGValue() *glib.Value {
 // From this point on, until the caller calls Unref or MakeWritable, it is guaranteed that the caps object
 // will not change. This means its structures won't change, etc. To use a Caps object, you must always have a
 // refcount on it -- either the one made implicitly by e.g. NewSimpleCaps, or via taking one explicitly with
-// this function.
-func (c *Caps) Ref() { C.gst_caps_ref(c.Instance()) }
+// this function. Note that when a function provided by these bindings returns caps, or they are converted
+// through the FromGstCapsUnsafe methods, a ref is automatically taken if necessary and a runtime Finalizer
+// is used to remove it.
+func (c *Caps) Ref() *Caps {
+	C.gst_caps_ref(c.Instance())
+	return c
+}
 
 // Unref decreases the ref count on these caps by one.
 func (c *Caps) Unref() { C.gst_caps_unref(c.Instance()) }
 
 // Instance returns the native GstCaps instance
-func (c *Caps) Instance() *C.GstCaps { return C.toGstCaps(c.unsafe()) }
+func (c *Caps) Instance() *C.GstCaps { return C.toGstCaps(c.Unsafe()) }
 
 // MakeWritable returns a writable copy of caps.
 func (c *Caps) MakeWritable() *Caps {
-	return wrapCaps(C.makeCapsWritable(c.Instance()))
+	return FromGstCapsUnsafeFull(unsafe.Pointer(C.makeCapsWritable(c.Instance())))
 }
 
 // String implements a stringer on a caps instance. This same string can be used for NewCapsFromString.
@@ -151,7 +178,7 @@ func (c *Caps) AppendStructureFull(st *Structure, features *CapsFeatures) {
 // Append appends the given caps element to these caps. These caps take ownership
 // over the given object. If either caps are ANY, the resulting caps will be ANY.
 func (c *Caps) Append(caps *Caps) {
-	C.gst_caps_append(c.Instance(), caps.Instance())
+	C.gst_caps_append(c.Instance(), caps.Ref().Instance())
 }
 
 // CanIntersect tries intersecting these caps with those given and reports whether the result would not be empty.
@@ -166,10 +193,14 @@ func (c *Caps) CanIntersect(caps *Caps) bool {
 // on to a reference to the data, you should use Ref.
 //
 // When you are finished with the caps, call Unref on it.
-func (c *Caps) Copy() *Caps { return wrapCaps(C.gst_caps_copy(c.Instance())) }
+func (c *Caps) Copy() *Caps {
+	return FromGstCapsUnsafeFull(unsafe.Pointer(C.gst_caps_copy(c.Instance())))
+}
 
 // CopyNth creates a new GstCaps and appends a copy of the nth structure contained in caps.
-func (c *Caps) CopyNth(n uint) *Caps { return wrapCaps(C.gst_caps_copy_nth(c.Instance(), C.guint(n))) }
+func (c *Caps) CopyNth(n uint) *Caps {
+	return FromGstCapsUnsafeFull(unsafe.Pointer(C.gst_caps_copy_nth(c.Instance(), C.guint(n))))
+}
 
 // FilterAndMapInPlace calls the provided function once for each structure and caps feature in the Caps.
 // In contrast to ForEach, the function may modify the structure and features. In contrast to MapInPlace,
@@ -210,7 +241,9 @@ func (c *Caps) FilterAndMapInPlace(f CapsMapFunc) {
 // returned caps will be the empty too and contain no structure at all.
 //
 // Calling this function with any caps is not allowed.
-func (c *Caps) Fixate() *Caps { return wrapCaps(C.gst_caps_fixate(c.Instance())) }
+func (c *Caps) Fixate() *Caps {
+	return FromGstCapsUnsafeFull(unsafe.Pointer(C.gst_caps_fixate(c.Ref().Instance())))
+}
 
 // ForEach calls the provided function once for each structure and caps feature in the GstCaps. The function must not
 // modify the fields. There is an unresolved bug in this function currently and it is better to use MapInPlace instead.
@@ -269,13 +302,13 @@ const (
 // Intersect creates a new Caps that contains all the formats that are common to both these caps and those given.
 // Defaults to CapsIntersectZigZag mode.
 func (c *Caps) Intersect(caps *Caps) *Caps {
-	return wrapCaps(C.gst_caps_intersect(c.Instance(), caps.Instance()))
+	return FromGstCapsUnsafeFull(unsafe.Pointer(C.gst_caps_intersect(c.Instance(), caps.Instance())))
 }
 
 // IntersectFull creates a new Caps that contains all the formats that are common to both these caps those given.
 // The order is defined by the CapsIntersectMode used.
 func (c *Caps) IntersectFull(caps *Caps, mode CapsIntersectMode) *Caps {
-	return wrapCaps(C.gst_caps_intersect_full(c.Instance(), caps.Instance(), C.GstCapsIntersectMode(mode)))
+	return FromGstCapsUnsafeFull(unsafe.Pointer(C.gst_caps_intersect_full(c.Instance(), caps.Instance(), C.GstCapsIntersectMode(mode))))
 }
 
 // IsAlwaysCompatible returns if this structure is always compatible with another if every media format that is in
@@ -320,6 +353,11 @@ func (c *Caps) IsSubsetStructure(structure *Structure) bool {
 
 // IsSubsetStructureFull checks if the given structure is a subset of these caps with features.
 func (c *Caps) IsSubsetStructureFull(structure *Structure, features *CapsFeatures) bool {
+	if features == nil {
+		return gobool(C.gst_caps_is_subset_structure_full(
+			c.Instance(), structure.Instance(), nil,
+		))
+	}
 	return gobool(C.gst_caps_is_subset_structure_full(
 		c.Instance(), structure.Instance(), features.Instance(),
 	))
@@ -347,19 +385,24 @@ func (c *Caps) MapInPlace(f CapsMapFunc) bool {
 // The structures in the given caps are not copied -- they are transferred to a writable copy of these ones,
 // and then those given are freed. If either caps are ANY, the resulting caps will be ANY.
 func (c *Caps) Merge(caps *Caps) *Caps {
-	return wrapCaps(C.gst_caps_merge(c.Instance(), caps.Instance()))
+	return FromGstCapsUnsafeFull(unsafe.Pointer(C.gst_caps_merge(c.Ref().Instance(), caps.Ref().Instance())))
 }
 
 // MergeStructure appends structure to caps if its not already expressed by caps.
 func (c *Caps) MergeStructure(structure *Structure) *Caps {
-	return wrapCaps(C.gst_caps_merge_structure(c.Instance(), structure.Instance()))
+	return FromGstCapsUnsafeFull(unsafe.Pointer(C.gst_caps_merge_structure(c.Ref().Instance(), structure.Instance())))
 }
 
 // MergeStructureFull appends structure with features to the caps if its not already expressed.
 func (c *Caps) MergeStructureFull(structure *Structure, features *CapsFeatures) *Caps {
-	return wrapCaps(C.gst_caps_merge_structure_full(
-		c.Instance(), structure.Instance(), features.Instance(),
-	))
+	if features == nil {
+		return FromGstCapsUnsafeFull(unsafe.Pointer(C.gst_caps_merge_structure_full(
+			c.Ref().Instance(), structure.Instance(), nil,
+		)))
+	}
+	return FromGstCapsUnsafeFull(unsafe.Pointer(C.gst_caps_merge_structure_full(
+		c.Ref().Instance(), structure.Instance(), features.Instance(),
+	)))
 }
 
 // Normalize returns a Caps that represents the same set of formats as caps, but contains no lists.
@@ -378,11 +421,19 @@ func (c *Caps) RemoveStructureAt(idx uint) {
 
 // SetFeaturesAt sets the CapsFeatures features for the structure at index.
 func (c *Caps) SetFeaturesAt(idx uint, features *CapsFeatures) {
+	if features == nil {
+		C.gst_caps_set_features(c.Instance(), C.guint(idx), nil)
+		return
+	}
 	C.gst_caps_set_features(c.Instance(), C.guint(idx), features.Instance())
 }
 
 // SetFeaturesSimple sets the CapsFeatures for all the structures of these caps.
 func (c *Caps) SetFeaturesSimple(features *CapsFeatures) {
+	if features == nil {
+		C.gst_caps_set_features_simple(c.Instance(), nil)
+		return
+	}
 	C.gst_caps_set_features_simple(c.Instance(), features.Instance())
 }
 
@@ -410,7 +461,7 @@ func (c *Caps) SetValue(field string, val interface{}) {
 //
 // This method does not preserve the original order of caps.
 func (c *Caps) Simplify() *Caps {
-	return wrapCaps(C.gst_caps_simplify(c.Instance()))
+	return FromGstCapsUnsafeFull(unsafe.Pointer(C.gst_caps_simplify(c.Ref().Instance())))
 }
 
 // StealStructureAt retrieves the structure with the given index from the list of structures contained in caps.
@@ -421,7 +472,7 @@ func (c *Caps) StealStructureAt(idx uint) *Structure {
 
 // Subtract subtracts the given caps from these.
 func (c *Caps) Subtract(caps *Caps) *Caps {
-	return wrapCaps(C.gst_caps_subtract(c.Instance(), caps.Instance()))
+	return FromGstCapsUnsafeFull(unsafe.Pointer(C.gst_caps_subtract(c.Instance(), caps.Instance())))
 }
 
 // Truncate discards all but the first structure from caps. Useful when fixating.
@@ -431,4 +482,6 @@ func (c *Caps) Subtract(caps *Caps) *Caps {
 //
 // Note that it is not guaranteed that the returned caps have exactly one structure. If caps is any or empty caps
 // then then returned caps will be the same and contain no structure at all.
-func (c *Caps) Truncate() *Caps { return wrapCaps(C.gst_caps_truncate(c.Instance())) }
+func (c *Caps) Truncate() *Caps {
+	return FromGstCapsUnsafeFull(unsafe.Pointer(C.gst_caps_truncate(c.Ref().Instance())))
+}

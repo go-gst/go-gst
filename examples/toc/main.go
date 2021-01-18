@@ -34,7 +34,6 @@ func tagsetter(mainLoop *glib.MainLoop) error {
 	if err != nil {
 		return err
 	}
-	defer pipeline.Destroy()
 
 	src, err := gst.NewElement("filesrc")
 	if err != nil {

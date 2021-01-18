@@ -12,6 +12,8 @@ As the latter requires published tags, see godoc.org for the latest documentatio
 
 **This library has not been thoroughly tested and as such is not recommended for mission critical applications yet. If you'd like to try it out and encounter any bugs, feel free to open an Issue or PR. For more information see the [Contributing](#contributing) section.**
 
+Recently almost all memory handling has been moved into the bindings. Some documentation may still reflect the original need to Unref resources, but in most situations that is not the case anymore.
+
 ## Requirements
 
 For building applications with this library you need the following:
@@ -53,7 +55,6 @@ func main() {
     // Create a main loop. This is only required when utilizing signals via the bindings.
     // In this example, the AddWatch on the pipeline bus requires iterating on the main loop.
     mainLoop := glib.NewMainLoop(glib.MainContextDefault(), false)
-    defer mainLoop.Unref()
 
     // Build a pipeline string from the cli arguments
     pipelineString := strings.Join(os.Args[1:], " ")
@@ -90,11 +91,6 @@ func main() {
 
     // Block and iterate on the main loop
     mainLoop.Run()
-    
-    // Destroy the pipeline
-    if err := pipeline.Destroy(); err != nil {
-        fmt.Println("Error destroying the pipeline:", err)
-    }
 }
 ```
 

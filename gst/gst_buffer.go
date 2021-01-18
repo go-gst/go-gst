@@ -23,6 +23,7 @@ import (
 	"bytes"
 	"io"
 	"io/ioutil"
+	"runtime"
 	"time"
 	"unsafe"
 
@@ -39,15 +40,30 @@ type Buffer struct {
 	mapInfo *MapInfo
 }
 
-// FromGstBufferUnsafe wraps the given C GstBuffer in the go type. It is meant for internal usage
-// and exported for visibility to other packages.
-func FromGstBufferUnsafe(buf unsafe.Pointer) *Buffer {
-	return wrapBuffer((*C.GstBuffer)(buf))
+// // FromGstBufferUnsafe wraps the given C GstBuffer in the go type. It is meant for internal usage
+// // and exported for visibility to other packages.
+// func FromGstBufferUnsafe(buf unsafe.Pointer) *Buffer {
+// 	return FromGstBufferUnsafeNone(buf)
+// }
+
+// FromGstBufferUnsafeNone is an alias to FromGstBufferUnsafe.
+func FromGstBufferUnsafeNone(buf unsafe.Pointer) *Buffer {
+	wrapped := wrapBuffer((*C.GstBuffer)(buf))
+	wrapped.Ref()
+	runtime.SetFinalizer(wrapped, (*Buffer).Unref)
+	return wrapped
+}
+
+// FromGstBufferUnsafeFull wraps the given buffer without taking an additional reference.
+func FromGstBufferUnsafeFull(buf unsafe.Pointer) *Buffer {
+	wrapped := wrapBuffer((*C.GstBuffer)(buf))
+	runtime.SetFinalizer(wrapped, (*Buffer).Unref)
+	return wrapped
 }
 
 // NewEmptyBuffer returns a new empty buffer.
 func NewEmptyBuffer() *Buffer {
-	return wrapBuffer(C.gst_buffer_new())
+	return FromGstBufferUnsafeFull(unsafe.Pointer(C.gst_buffer_new()))
 }
 
 // NewBufferWithSize is a convenience wrapped for NewBufferrAllocate with the default allocator
@@ -76,14 +92,14 @@ func NewBufferAllocate(alloc *Allocator, params *AllocationParams, size int64) *
 	if buf == nil {
 		return nil
 	}
-	return wrapBuffer(buf)
+	return FromGstBufferUnsafeFull(unsafe.Pointer(buf))
 }
 
 // NewBufferFromBytes returns a new buffer from the given byte slice.
 func NewBufferFromBytes(b []byte) *Buffer {
 	gbytes := C.g_bytes_new((C.gconstpointer)(unsafe.Pointer(&b[0])), C.gsize(len(b)))
-	defer C.g_bytes_unref(gbytes) // gstreamer takes another ref so we don't need ours after returning
-	return wrapBuffer(C.gst_buffer_new_wrapped_bytes(gbytes))
+	defer C.g_bytes_unref(gbytes)
+	return FromGstBufferUnsafeFull(unsafe.Pointer(C.gst_buffer_new_wrapped_bytes(gbytes)))
 }
 
 // NewBufferFromReader returns a new buffer from the given io.Reader.
@@ -131,7 +147,7 @@ func NewBufferFull(flags MemoryFlags, data []byte, maxSize, offset, size int64, 
 	if buf == nil {
 		return nil
 	}
-	return wrapBuffer(buf)
+	return FromGstBufferUnsafeFull(unsafe.Pointer(buf))
 }
 
 // Instance returns the underlying GstBuffer instance.
@@ -300,7 +316,7 @@ func (b *Buffer) AddReferenceTimestampMeta(ref *Caps, timestamp, duration time.D
 // Append will append all the memory from the given buffer to this one. The result buffer will
 // contain a concatenation of the memory of the two buffers.
 func (b *Buffer) Append(buf *Buffer) *Buffer {
-	return wrapBuffer(C.gst_buffer_append(b.Instance(), buf.Instance()))
+	return FromGstBufferUnsafeFull(unsafe.Pointer(C.gst_buffer_append(b.Ref().Instance(), buf.Ref().Instance())))
 }
 
 // AppendMemory append the memory block to this buffer. This function takes ownership of
@@ -308,25 +324,31 @@ func (b *Buffer) Append(buf *Buffer) *Buffer {
 //
 // This function is identical to InsertMemory with an index of -1.
 func (b *Buffer) AppendMemory(mem *Memory) {
-	C.gst_buffer_append_memory(b.Instance(), mem.Instance())
+	C.gst_buffer_append_memory(b.Instance(), mem.Ref().Instance())
 }
 
 // AppendRegion will append size bytes at offset from the given buffer to this one. The result
 // buffer will contain a concatenation of the memory of this buffer and the requested region of
 // the one provided.
 func (b *Buffer) AppendRegion(buf *Buffer, offset, size int64) *Buffer {
-	newbuf := C.gst_buffer_append_region(b.Instance(), buf.Instance(), C.gssize(offset), C.gssize(size))
-	return wrapBuffer(newbuf)
+	newbuf := C.gst_buffer_append_region(b.Ref().Instance(), buf.Ref().Instance(), C.gssize(offset), C.gssize(size))
+	return FromGstBufferUnsafeFull(unsafe.Pointer(newbuf))
 }
 
 // Copy creates a copy of this buffer. This will only copy the buffer's data to a newly allocated
 // Memory if needed (if the type of memory requires it), otherwise the underlying data is just referenced.
 // Check DeepCopy if you want to force the data to be copied to newly allocated Memory.
-func (b *Buffer) Copy() *Buffer { return wrapBuffer(C.gst_buffer_copy(b.Instance())) }
+func (b *Buffer) Copy() *Buffer {
+	buf := C.gst_buffer_copy(b.Instance())
+	return FromGstBufferUnsafeFull(unsafe.Pointer(buf))
+}
 
 // DeepCopy creates a copy of the given buffer. This will make a newly allocated copy of the data
 // the source buffer contains.
-func (b *Buffer) DeepCopy() *Buffer { return wrapBuffer(C.gst_buffer_copy_deep(b.Instance())) }
+func (b *Buffer) DeepCopy() *Buffer {
+	buf := C.gst_buffer_copy_deep(b.Instance())
+	return FromGstBufferUnsafeFull(unsafe.Pointer(buf))
+}
 
 // CopyInto copies the information from this buffer into the given one. If the given buffer already
 // contains memory and flags contains BufferCopyMemory, the memory from this one will be appended to
@@ -416,7 +438,11 @@ func (b *Buffer) ForEachMeta(f func(meta *Meta) bool) bool {
 
 // GetAllMemory retrieves all the memory inside this buffer.
 func (b *Buffer) GetAllMemory() *Memory {
-	return wrapMemory(C.gst_buffer_get_all_memory(b.Instance()))
+	mem := C.gst_buffer_get_all_memory(b.Instance())
+	if mem == nil {
+		return nil
+	}
+	return FromGstMemoryUnsafeFull(unsafe.Pointer(mem))
 }
 
 // GetFlags returns the flags on this buffer.
@@ -430,7 +456,7 @@ func (b *Buffer) GetMemory(idx uint) *Memory {
 	if mem == nil {
 		return nil
 	}
-	return wrapMemory(mem)
+	return FromGstMemoryUnsafeFull(unsafe.Pointer(mem))
 }
 
 // GetMemoryRange retrieves length memory blocks in buffer starting at idx. The memory blocks
@@ -440,7 +466,7 @@ func (b *Buffer) GetMemoryRange(idx uint, length int) *Memory {
 	if mem == nil {
 		return nil
 	}
-	return wrapMemory(mem)
+	return FromGstMemoryUnsafeFull(unsafe.Pointer(mem))
 }
 
 // GetMeta retrieves the metadata for the given api on buffer. When there is no such metadata,
@@ -465,16 +491,24 @@ func (b *Buffer) GetNumMetas(api glib.Type) uint {
 //
 // Buffers can contain multiple ReferenceTimestampMeta metadata items.
 func (b *Buffer) GetReferenceTimestampMeta(caps *Caps) *ReferenceTimestampMeta {
-	meta := C.gst_buffer_get_reference_timestamp_meta(b.Instance(), caps.Instance())
+	var meta *C.GstReferenceTimestampMeta
+	if caps == nil {
+		meta = C.gst_buffer_get_reference_timestamp_meta(b.Instance(), nil)
+	} else {
+		meta = C.gst_buffer_get_reference_timestamp_meta(b.Instance(), caps.Instance())
+	}
 	if meta == nil {
 		return nil
 	}
-	return &ReferenceTimestampMeta{
+	refMeta := &ReferenceTimestampMeta{
 		Parent:    wrapMeta(&meta.parent),
-		Reference: wrapCaps(meta.reference),
 		Timestamp: time.Duration(meta.timestamp),
 		Duration:  time.Duration(meta.duration),
 	}
+	if meta.reference != nil {
+		refMeta.Reference = wrapCaps(meta.reference)
+	}
+	return refMeta
 }
 
 // GetSize retrieves the number of Memory blocks in the bffer.
@@ -513,7 +547,7 @@ func (b *Buffer) HasFlags(flags BufferFlags) bool {
 // Only the value from GetMaxBufferMemory can be added to a buffer. If more memory is added, existing memory
 // blocks will automatically be merged to make room for the new memory.
 func (b *Buffer) InsertMemory(mem *Memory, idx int) {
-	C.gst_buffer_insert_memory(b.Instance(), C.gint(idx), mem.Instance())
+	C.gst_buffer_insert_memory(b.Instance(), C.gint(idx), mem.Ref().Instance())
 }
 
 // IsAllMemoryWritable checks if all memory blocks in buffer are writable.
@@ -579,16 +613,13 @@ func (b *Buffer) Map(flags MapFlags) *MapInfo {
 	if b.mapInfo != nil {
 		return b.mapInfo
 	}
-	mapInfo := C.malloc(C.sizeof_GstMapInfo)
+	var mapInfo C.GstMapInfo
 	C.gst_buffer_map(
 		(*C.GstBuffer)(b.Instance()),
-		(*C.GstMapInfo)(mapInfo),
+		(*C.GstMapInfo)(&mapInfo),
 		C.GstMapFlags(flags),
 	)
-	if mapInfo == C.NULL {
-		return nil
-	}
-	b.mapInfo = wrapMapInfo((*C.GstMapInfo)(mapInfo))
+	b.mapInfo = wrapMapInfo((*C.GstMapInfo)(&mapInfo))
 	return b.mapInfo
 }
 
@@ -598,7 +629,7 @@ func (b *Buffer) Unmap() {
 		return
 	}
 	C.gst_buffer_unmap(b.Instance(), (*C.GstMapInfo)(b.mapInfo.Instance()))
-	C.free(unsafe.Pointer(b.mapInfo.Instance()))
+	b.mapInfo = nil
 }
 
 // MapRange maps the info of length merged memory blocks starting at idx in buffer.
@@ -611,17 +642,17 @@ func (b *Buffer) Unmap() {
 //
 // Unmap the Buffer after usage.
 func (b *Buffer) MapRange(idx uint, length int, flags MapFlags) *MapInfo {
-	mapInfo := C.malloc(C.sizeof_GstMapInfo)
+	if b.mapInfo != nil {
+		return b.mapInfo
+	}
+	var mapInfo C.GstMapInfo
 	C.gst_buffer_map_range(
 		(*C.GstBuffer)(b.Instance()),
 		C.guint(idx), C.gint(length),
-		(*C.GstMapInfo)(mapInfo),
+		(*C.GstMapInfo)(&mapInfo),
 		C.GstMapFlags(flags),
 	)
-	if mapInfo == C.NULL {
-		return nil
-	}
-	b.mapInfo = wrapMapInfo((*C.GstMapInfo)(mapInfo))
+	b.mapInfo = wrapMapInfo((*C.GstMapInfo)(&mapInfo))
 	return b.mapInfo
 }
 
@@ -641,7 +672,7 @@ func (b *Buffer) PeekMemory(idx uint) *Memory {
 	if mem == nil {
 		return nil
 	}
-	return wrapMemory(mem)
+	return FromGstMemoryUnsafeNone(unsafe.Pointer(mem))
 }
 
 // PrependMemory prepends the memory block mem to this buffer. This function takes ownership of
@@ -649,7 +680,7 @@ func (b *Buffer) PeekMemory(idx uint) *Memory {
 //
 // This function is identical to InsertMemory with an index of 0.
 func (b *Buffer) PrependMemory(mem *Memory) {
-	C.gst_buffer_prepend_memory(b.Instance(), mem.Instance())
+	C.gst_buffer_prepend_memory(b.Instance(), mem.Ref().Instance())
 }
 
 // RemoveAllMemory removes all memory blocks in the buffer.
@@ -672,12 +703,12 @@ func (b *Buffer) RemoveMeta(meta *Meta) bool {
 
 // ReplaceAllMemory replaces all the memory in this buffer with that provided.
 func (b *Buffer) ReplaceAllMemory(mem *Memory) {
-	C.gst_buffer_replace_all_memory(b.Instance(), mem.Instance())
+	C.gst_buffer_replace_all_memory(b.Instance(), mem.Ref().Instance())
 }
 
 // ReplaceMemory replaces the memory at the given index with the given memory.
 func (b *Buffer) ReplaceMemory(mem *Memory, idx uint) {
-	C.gst_buffer_replace_memory(b.Instance(), C.guint(idx), mem.Instance())
+	C.gst_buffer_replace_memory(b.Instance(), C.guint(idx), mem.Ref().Instance())
 }
 
 // ReplaceMemoryRange replaces length memory blocks in the buffer starting at idx with
@@ -687,7 +718,7 @@ func (b *Buffer) ReplaceMemory(mem *Memory, idx uint) {
 //
 // The buffer should be writable.
 func (b *Buffer) ReplaceMemoryRange(idx uint, length int, mem *Memory) {
-	C.gst_buffer_replace_memory_range(b.Instance(), C.guint(idx), C.gint(length), mem.Instance())
+	C.gst_buffer_replace_memory_range(b.Instance(), C.guint(idx), C.gint(length), mem.Ref().Instance())
 }
 
 // Resize sets the offset and total size of the memory blocks in this buffer.

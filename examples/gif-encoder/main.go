@@ -40,7 +40,6 @@ func encodeGif(mainLoop *glib.MainLoop) error {
 	if err != nil {
 		return err
 	}
-	defer pipeline.Destroy()
 
 	// Create a filesrc and a decodebin element for the pipeline.
 	elements, err := gst.NewElementMany("filesrc", "decodebin")
@@ -69,7 +68,7 @@ func encodeGif(mainLoop *glib.MainLoop) error {
 			// The Bus PostError method is a convenience wrapper for building rich messages and sending them
 			// down the pipeline. The below call will create a new error message, populate the debug info
 			// with a stack trace from this goroutine, and add additional details from the provided error.
-			pipeline.GetPipelineBus().PostError(self, "Failed to build elements for the linked pipeline", err)
+			self.ErrorMessage(gst.DomainLibrary, gst.LibraryErrorFailed, "Failed to build elements for the linked pipeline", err.Error())
 			return
 		}
 
@@ -113,7 +112,7 @@ func encodeGif(mainLoop *glib.MainLoop) error {
 		// use this value to calculate the total number of frames we expect to produce.
 		query := gst.NewDurationQuery(gst.FormatTime)
 		if ok := self.Query(query); !ok {
-			pipeline.GetPipelineBus().PostError(self, "Failed to query video duration from decodebin", nil)
+			self.ErrorMessage(gst.DomainLibrary, gst.LibraryErrorFailed, "Failed to query video duration from decodebin", err.Error())
 			return
 		}
 
@@ -174,7 +173,7 @@ func encodeGif(mainLoop *glib.MainLoop) error {
 				// We can get an io.Reader directly from the buffer.
 				img, err := jpeg.Decode(buffer.Reader())
 				if err != nil {
-					pipeline.GetPipelineBus().PostError(sink, "Error decoding jpeg frame", err)
+					self.ErrorMessage(gst.DomainLibrary, gst.LibraryErrorFailed, "Error decoding jpeg frame", err.Error())
 					return gst.FlowError
 				}
 

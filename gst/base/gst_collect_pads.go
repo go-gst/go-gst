@@ -115,14 +115,14 @@ func wrapCollectData(ptr *C.GstCollectData) *CollectData { return &CollectData{p
 func (c *CollectData) Instance() *C.GstCollectData { return c.ptr }
 
 // Collect returns the owner CollectPads
-func (c *CollectData) Collect() *CollectPads { return wrapCollectPads(c.ptr.collect) }
+func (c *CollectData) Collect() *CollectPads { return wrapCollectPadsNone(c.ptr.collect) }
 
 // Pad returns the pad managed by this data.
-func (c *CollectData) Pad() *gst.Pad { return gst.FromGstPadUnsafe(unsafe.Pointer(c.ptr.pad)) }
+func (c *CollectData) Pad() *gst.Pad { return gst.FromGstPadUnsafeNone(unsafe.Pointer(c.ptr.pad)) }
 
 // Buffer returns the currently queued buffer.
 func (c *CollectData) Buffer() *gst.Buffer {
-	return gst.FromGstBufferUnsafe(unsafe.Pointer(c.ptr.buffer))
+	return gst.FromGstBufferUnsafeNone(unsafe.Pointer(c.ptr.buffer))
 }
 
 // Pos returns the position in the buffer.
@@ -158,12 +158,21 @@ type collectPadsFuncMap struct {
 
 // NewCollectPads creates a new CollectPads instance.
 func NewCollectPads() *CollectPads {
-	return wrapCollectPads(C.gst_collect_pads_new())
+	return wrapCollectPadsFull(C.gst_collect_pads_new())
 }
 
-func wrapCollectPads(ptr *C.GstCollectPads) *CollectPads {
+func wrapCollectPadsFull(ptr *C.GstCollectPads) *CollectPads {
 	collect := &CollectPads{
-		Object:  gst.FromGstObjectUnsafe(unsafe.Pointer(ptr)),
+		Object:  gst.FromGstObjectUnsafeFull(unsafe.Pointer(ptr)),
+		funcMap: &collectPadsFuncMap{},
+	}
+	collect.selfPtr = gopointer.Save(collect)
+	return collect
+}
+
+func wrapCollectPadsNone(ptr *C.GstCollectPads) *CollectPads {
+	collect := &CollectPads{
+		Object:  gst.FromGstObjectUnsafeNone(unsafe.Pointer(ptr)),
 		funcMap: &collectPadsFuncMap{},
 	}
 	collect.selfPtr = gopointer.Save(collect)
@@ -225,7 +234,7 @@ func (c *CollectPads) ClipRunningTime(data *CollectData, buf *gst.Buffer) (ret g
 		nil,
 	))
 	if goutbuf != nil {
-		outbuf = gst.FromGstBufferUnsafe(unsafe.Pointer(goutbuf))
+		outbuf = gst.FromGstBufferUnsafeFull(unsafe.Pointer(goutbuf))
 	}
 	return
 }
@@ -262,7 +271,7 @@ func (c *CollectPads) Peek(data *CollectData) *gst.Buffer {
 	if buf == nil {
 		return nil
 	}
-	return gst.FromGstBufferUnsafe(unsafe.Pointer(buf))
+	return gst.FromGstBufferUnsafeFull(unsafe.Pointer(buf))
 }
 
 // Pop the buffer currently queued in data. This function should be called with the pads STREAM_LOCK held, such
@@ -272,7 +281,7 @@ func (c *CollectPads) Pop(data *CollectData) *gst.Buffer {
 	if buf == nil {
 		return nil
 	}
-	return gst.FromGstBufferUnsafe(unsafe.Pointer(buf))
+	return gst.FromGstBufferUnsafeFull(unsafe.Pointer(buf))
 }
 
 // QueryDefault is the Default GstCollectPads query handling that elements should always chain up to to ensure
@@ -293,7 +302,7 @@ func (c *CollectPads) ReadBuffer(data *CollectData, size uint) *gst.Buffer {
 	if buf == nil {
 		return nil
 	}
-	return gst.FromGstBufferUnsafe(unsafe.Pointer(buf))
+	return gst.FromGstBufferUnsafeFull(unsafe.Pointer(buf))
 }
 
 // RemovePad removes a pad from the collection of collect pads. This function will also free the GstCollectData
@@ -428,5 +437,5 @@ func (c *CollectPads) TakeBuffer(data *CollectData, size uint) *gst.Buffer {
 	if buf == nil {
 		return nil
 	}
-	return gst.FromGstBufferUnsafe(unsafe.Pointer(buf))
+	return gst.FromGstBufferUnsafeFull(unsafe.Pointer(buf))
 }

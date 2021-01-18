@@ -11,6 +11,16 @@ import (
 // PadTemplate is a go representation of a GstPadTemplate
 type PadTemplate struct{ *Object }
 
+// FromGstPadTemplateUnsafeNone wraps the given GstPadTemplate in a ref and a finalizer.
+func FromGstPadTemplateUnsafeNone(tmpl unsafe.Pointer) *PadTemplate {
+	return &PadTemplate{wrapObject(glib.TransferNone(tmpl))}
+}
+
+// FromGstPadTemplateUnsafeFull wraps the given GstPadTemplate in a finalizer.
+func FromGstPadTemplateUnsafeFull(tmpl unsafe.Pointer) *PadTemplate {
+	return &PadTemplate{wrapObject(glib.TransferFull(tmpl))}
+}
+
 // NewPadTemplate creates a new pad template with a name according to the given template and with the given arguments.
 func NewPadTemplate(nameTemplate string, direction PadDirection, presence PadPresence, caps *Caps) *PadTemplate {
 	cName := C.CString(nameTemplate)
@@ -24,7 +34,7 @@ func NewPadTemplate(nameTemplate string, direction PadDirection, presence PadPre
 	if tmpl == nil {
 		return nil
 	}
-	return wrapPadTemplate(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(tmpl))})
+	return wrapPadTemplate(glib.TransferNone(unsafe.Pointer(tmpl)))
 }
 
 // NewPadTemplateWithGType creates a new pad template with a name according to the given template and with the given arguments.
@@ -41,7 +51,7 @@ func NewPadTemplateWithGType(nameTemplate string, direction PadDirection, presen
 	if tmpl == nil {
 		return nil
 	}
-	return wrapPadTemplate(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(tmpl))})
+	return wrapPadTemplate(glib.TransferNone(unsafe.Pointer(tmpl)))
 }
 
 // Instance returns the underlying C GstPadTemplate.
@@ -57,7 +67,9 @@ func (p *PadTemplate) Direction() PadDirection { return PadDirection(p.Instance(
 func (p *PadTemplate) Presence() PadPresence { return PadPresence(p.Instance().presence) }
 
 // Caps returns the caps of the pad template.
-func (p *PadTemplate) Caps() *Caps { return wrapCaps(C.gst_pad_template_get_caps(p.Instance())) }
+func (p *PadTemplate) Caps() *Caps {
+	return FromGstCapsUnsafeFull(unsafe.Pointer(C.gst_pad_template_get_caps(p.Instance())))
+}
 
 // PadCreated emits the pad-created signal for this template when created by this pad.
 func (p *PadTemplate) PadCreated(pad *Pad) {

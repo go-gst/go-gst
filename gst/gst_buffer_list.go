@@ -12,6 +12,7 @@ gboolean cgoBufferListForEachCb (GstBuffer ** buffer, guint idx, gpointer user_d
 */
 import "C"
 import (
+	"runtime"
 	"unsafe"
 
 	gopointer "github.com/mattn/go-pointer"
@@ -25,7 +26,7 @@ type BufferList struct {
 // NewBufferList returns a new BufferList. The given slice can be nil and the returned
 // buffer list will be empty.
 func NewBufferList(buffers []*Buffer) *BufferList {
-	bufList := wrapBufferList(C.gst_buffer_list_new())
+	bufList := FromGstBufferListUnsafeFull(unsafe.Pointer(C.gst_buffer_list_new()))
 	if buffers == nil {
 		return bufList
 	}
@@ -37,13 +38,28 @@ func NewBufferList(buffers []*Buffer) *BufferList {
 
 // NewBufferListSized creates a new BufferList with the given size.
 func NewBufferListSized(size uint) *BufferList {
-	return wrapBufferList(C.gst_buffer_list_new_sized(C.guint(size)))
+	return FromGstBufferListUnsafeFull(unsafe.Pointer(C.gst_buffer_list_new_sized(C.guint(size))))
 }
 
-// FromGstBufferListUnsafe wraps the given unsafe.Pointer in a BufferList instance. It is meant for internal usage
-// and exported for visibility to other packages.
-func FromGstBufferListUnsafe(ptr unsafe.Pointer) *BufferList {
-	return wrapBufferList((*C.GstBufferList)(ptr))
+// // FromGstBufferListUnsafe wraps the given C GstBufferList in the go type. It is meant for internal usage
+// // and exported for visibility to other packages.
+// func FromGstBufferListUnsafe(buf unsafe.Pointer) *BufferList {
+// 	return FromGstBufferListUnsafeNone(buf)
+// }
+
+// FromGstBufferListUnsafeNone is an alias to FromGstBufferListUnsafe.
+func FromGstBufferListUnsafeNone(buf unsafe.Pointer) *BufferList {
+	wrapped := wrapBufferList((*C.GstBufferList)(buf))
+	wrapped.Ref()
+	runtime.SetFinalizer(wrapped, (*BufferList).Unref)
+	return wrapped
+}
+
+// FromGstBufferListUnsafeFull wraps the given buffer without taking an additional reference.
+func FromGstBufferListUnsafeFull(buf unsafe.Pointer) *BufferList {
+	wrapped := wrapBufferList((*C.GstBufferList)(buf))
+	runtime.SetFinalizer(wrapped, (*BufferList).Unref)
+	return wrapped
 }
 
 // Instance returns the underlying GstBufferList.
@@ -57,13 +73,13 @@ func (b *BufferList) CalculateSize() int64 {
 // Copy creates a shallow copy of the given buffer list. This will make a newly allocated copy of the
 // source list with copies of buffer pointers. The refcount of buffers pointed to will be increased by one.
 func (b *BufferList) Copy() *BufferList {
-	return wrapBufferList(C.gst_buffer_list_copy(b.Instance()))
+	return FromGstBufferListUnsafeFull(unsafe.Pointer(C.gst_buffer_list_copy(b.Instance())))
 }
 
 // DeepCopy creates a copy of the given buffer list. This will make a newly allocated copy of each buffer
 // that the source buffer list contains.
 func (b *BufferList) DeepCopy() *BufferList {
-	return wrapBufferList(C.gst_buffer_list_copy_deep(b.Instance()))
+	return FromGstBufferListUnsafeFull(unsafe.Pointer(C.gst_buffer_list_copy_deep(b.Instance())))
 }
 
 // IsWritable returns true if this BufferList is writable.
@@ -74,7 +90,7 @@ func (b *BufferList) IsWritable() bool {
 // MakeWritable makes a writable buffer list from this one. If the source buffer list is already writable,
 // this will simply return the same buffer list. A copy will otherwise be made using Copy.
 func (b *BufferList) MakeWritable() *BufferList {
-	return wrapBufferList(C.makeBufferListWritable(b.Instance()))
+	return FromGstBufferListUnsafeFull(unsafe.Pointer(C.makeBufferListWritable(b.Instance())))
 }
 
 // ForEach calls the given function for each buffer in list.
@@ -95,21 +111,21 @@ func (b *BufferList) ForEach(f func(buf *Buffer, idx uint) bool) {
 //
 // You must make sure that idx does not exceed the number of buffers available.
 func (b *BufferList) GetBufferAt(idx uint) *Buffer {
-	return wrapBuffer(C.gst_buffer_list_get(b.Instance(), C.guint(idx)))
+	return FromGstBufferUnsafeNone(unsafe.Pointer(C.gst_buffer_list_get(b.Instance(), C.guint(idx))))
 }
 
 // GetWritableBufferAt gets the buffer at idx, ensuring it is a writable buffer.
 //
 // You must make sure that idx does not exceed the number of buffers available.
 func (b *BufferList) GetWritableBufferAt(idx uint) *Buffer {
-	return wrapBuffer(C.gst_buffer_list_get_writable(b.Instance(), C.guint(idx)))
+	return FromGstBufferUnsafeNone(unsafe.Pointer(C.gst_buffer_list_get_writable(b.Instance(), C.guint(idx))))
 }
 
 // Insert inserts a buffer at idx in the list. Other buffers are moved to make room for this new buffer.
 //
 // A -1 value for idx will append the buffer at the end.
 func (b *BufferList) Insert(idx int, buf *Buffer) {
-	C.gst_buffer_list_insert(b.Instance(), C.gint(idx), buf.Instance())
+	C.gst_buffer_list_insert(b.Instance(), C.gint(idx), buf.Ref().Instance())
 }
 
 // Length returns the number of buffers in the list.

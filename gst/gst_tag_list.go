@@ -14,6 +14,7 @@ void cgoTagForEachFunc (const GstTagList * tagList, const gchar * tag, gpointer 
 import "C"
 
 import (
+	"runtime"
 	"time"
 	"unsafe"
 
@@ -27,9 +28,22 @@ type TagList struct {
 	ptr *C.GstTagList
 }
 
-// FromGstTagListUnsafe wraps the pointer to the given C GstTagList with the go type.
+// FromGstTagListUnsafeNone wraps the pointer to the given C GstTagList with the go type.
 // This is meant for internal usage and is exported for visibility to other packages.
-func FromGstTagListUnsafe(tags unsafe.Pointer) *TagList { return wrapTagList(C.toGstTagList(tags)) }
+func FromGstTagListUnsafeNone(tags unsafe.Pointer) *TagList {
+	tl := wrapTagList(C.toGstTagList(tags))
+	tl.Ref()
+	runtime.SetFinalizer(tl, (*TagList).Unref)
+	return tl
+}
+
+// FromGstTagListUnsafeFull wraps the pointer to the given C GstTagList with the go type.
+// This is meant for internal usage and is exported for visibility to other packages.
+func FromGstTagListUnsafeFull(tags unsafe.Pointer) *TagList {
+	tl := wrapTagList(C.toGstTagList(tags))
+	runtime.SetFinalizer(tl, (*TagList).Unref)
+	return tl
+}
 
 // NewEmptyTagList returns a new empty tag list.
 //
@@ -38,7 +52,7 @@ func FromGstTagListUnsafe(tags unsafe.Pointer) *TagList { return wrapTagList(C.t
 //   // true
 //
 func NewEmptyTagList() *TagList {
-	return wrapTagList(C.gst_tag_list_new_empty())
+	return FromGstTagListUnsafeFull(unsafe.Pointer(C.gst_tag_list_new_empty()))
 }
 
 // NewTagListFromString creates a new tag list from the given string. This is the same format produced
@@ -50,7 +64,7 @@ func NewTagListFromString(tags string) *TagList {
 	if tagList == nil {
 		return nil
 	}
-	return wrapTagList(tagList)
+	return FromGstTagListUnsafeFull(unsafe.Pointer(tagList))
 }
 
 // Instance returns the underlying GstTagList instance.
@@ -105,7 +119,9 @@ func (t *TagList) AddValues(mergeMode TagMergeMode, tag Tag, vals ...interface{}
 // to hold on to a reference to the data, you should use Ref.
 //
 // When you are finished with the taglist, call Unref on it.
-func (t *TagList) Copy() *TagList { return wrapTagList(C.gst_tag_list_copy(t.Instance())) }
+func (t *TagList) Copy() *TagList {
+	return FromGstTagListUnsafeFull(unsafe.Pointer(C.gst_tag_list_copy(t.Instance())))
+}
 
 // TagListForEachFunc is a function that will be called in ForEach. The function may not modify the tag list.
 type TagListForEachFunc func(tagList *TagList, tag Tag)
@@ -387,7 +403,7 @@ func (t *TagList) GetSample(tag Tag) (value *Sample, ok bool) {
 		&gout,
 	)
 	if gobool(gok) {
-		return wrapSample(gout), true
+		return FromGstSampleUnsafeFull(unsafe.Pointer(gout)), true
 	}
 	return nil, false
 }
@@ -405,7 +421,7 @@ func (t *TagList) GetSampleIndex(tag Tag, idx uint) (value *Sample, ok bool) {
 		&gout,
 	)
 	if gobool(gok) {
-		return wrapSample(gout), true
+		return FromGstSampleUnsafeFull(unsafe.Pointer(gout)), true
 	}
 	return nil, false
 }
@@ -539,16 +555,16 @@ func (t *TagList) IsWritable() bool { return gobool(C.tagListIsWritable(t.Instan
 
 // MakeWritable will return a writable copy of the tag list if it is not already so.
 func (t *TagList) MakeWritable() *TagList {
-	return wrapTagList(C.makeTagListWritable(t.Instance()))
+	return FromGstTagListUnsafeFull(unsafe.Pointer(C.makeTagListWritable(t.Instance())))
 }
 
 // Merge merges the two tag lists with the given mode.
 func (t *TagList) Merge(tagList *TagList, mergeMode TagMergeMode) *TagList {
-	return wrapTagList(C.gst_tag_list_merge(
+	return FromGstTagListUnsafeFull(unsafe.Pointer(C.gst_tag_list_merge(
 		t.Instance(),
 		tagList.Instance(),
 		C.GstTagMergeMode(mergeMode),
-	))
+	)))
 }
 
 // NumTags returns the number of key/value pairs in ths TagList

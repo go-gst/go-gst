@@ -83,9 +83,7 @@ func playbin(mainLoop *glib.MainLoop) error {
 		return true
 	})
 
-	mainLoop.Run()
-
-	return playbin.SetState(gst.StateNull)
+	return mainLoop.RunError()
 }
 
 func main() {

@@ -10,10 +10,6 @@ import (
 	"github.com/tinyzimmer/go-glib/glib"
 )
 
-// FromGstElementUnsafe wraps the pointer to the given C GstElement with the go type.
-// This is meant for internal usage and is exported for visibility to other packages.
-func FromGstElementUnsafe(elem unsafe.Pointer) *Element { return wrapElement(toGObject(elem)) }
-
 // NewElement creates a new element using the factory of the given name.
 func NewElement(factory string) (*Element, error) {
 	return NewElementWithName(factory, "")
@@ -32,9 +28,9 @@ func NewElementWithName(factory string, name string) (*Element, error) {
 		elem = C.gst_element_factory_make((*C.gchar)(elemName), (*C.gchar)(cname))
 	}
 	if elem == nil {
-		return nil, fmt.Errorf("Could not create element: %s", name)
+		return nil, fmt.Errorf("Could not create element: %s", factory)
 	}
-	return wrapElement(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(elem))}), nil
+	return wrapElement(glib.TransferNone(unsafe.Pointer(elem))), nil
 }
 
 // NewElementMany is a convenience wrapper around building many GstElements in a
@@ -63,7 +59,7 @@ func Find(name string) *ElementFactory {
 	if factory == nil {
 		return nil
 	}
-	return wrapElementFactory(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(factory))})
+	return wrapElementFactory(glib.TransferFull(unsafe.Pointer(factory)))
 }
 
 // Instance returns the C GstFactory instance

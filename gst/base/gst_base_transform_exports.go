@@ -18,7 +18,7 @@ func goGstBaseTransformAcceptCaps(self *C.GstBaseTransform, direction C.GstPadDi
 	caller := elem.(interface {
 		AcceptCaps(self *GstBaseTransform, direction gst.PadDirection, caps *gst.Caps) bool
 	})
-	return gboolean(caller.AcceptCaps(wrapGstBaseTransform(self), gst.PadDirection(direction), gst.FromGstCapsUnsafe(unsafe.Pointer(caps))))
+	return gboolean(caller.AcceptCaps(wrapGstBaseTransform(self), gst.PadDirection(direction), gst.FromGstCapsUnsafeNone(unsafe.Pointer(caps))))
 }
 
 //export goGstBaseTransformBeforeTransform
@@ -27,7 +27,7 @@ func goGstBaseTransformBeforeTransform(self *C.GstBaseTransform, buffer *C.GstBu
 	caller := elem.(interface {
 		BeforeTransform(self *GstBaseTransform, buffer *gst.Buffer)
 	})
-	caller.BeforeTransform(wrapGstBaseTransform(self), gst.FromGstBufferUnsafe(unsafe.Pointer(buffer)))
+	caller.BeforeTransform(wrapGstBaseTransform(self), gst.FromGstBufferUnsafeNone(unsafe.Pointer(buffer)))
 }
 
 //export goGstBaseTransformCopyMetadata
@@ -36,7 +36,7 @@ func goGstBaseTransformCopyMetadata(self *C.GstBaseTransform, input, outbuf *C.G
 	caller := elem.(interface {
 		CopyMetadata(self *GstBaseTransform, input, output *gst.Buffer) bool
 	})
-	return gboolean(caller.CopyMetadata(wrapGstBaseTransform(self), gst.FromGstBufferUnsafe(unsafe.Pointer(input)), gst.FromGstBufferUnsafe(unsafe.Pointer(outbuf))))
+	return gboolean(caller.CopyMetadata(wrapGstBaseTransform(self), gst.FromGstBufferUnsafeNone(unsafe.Pointer(input)), gst.FromGstBufferUnsafeNone(unsafe.Pointer(outbuf))))
 }
 
 //export goGstBaseTransformDecideAllocation
@@ -45,7 +45,7 @@ func goGstBaseTransformDecideAllocation(self *C.GstBaseTransform, query *C.GstQu
 	caller := elem.(interface {
 		DecideAllocation(self *GstBaseTransform, query *gst.Query) bool
 	})
-	return gboolean(caller.DecideAllocation(wrapGstBaseTransform(self), gst.FromGstQueryUnsafe(unsafe.Pointer(query))))
+	return gboolean(caller.DecideAllocation(wrapGstBaseTransform(self), gst.FromGstQueryUnsafeNone(unsafe.Pointer(query))))
 }
 
 //export goGstBaseTransformFilterMeta
@@ -56,7 +56,7 @@ func goGstBaseTransformFilterMeta(self *C.GstBaseTransform, query *C.GstQuery, a
 	})
 	return gboolean(caller.FilterMeta(
 		wrapGstBaseTransform(self),
-		gst.FromGstQueryUnsafe(unsafe.Pointer(query)),
+		gst.FromGstQueryUnsafeNone(unsafe.Pointer(query)),
 		glib.Type(api),
 		gst.FromGstStructureUnsafe(unsafe.Pointer(params)),
 	))
@@ -69,8 +69,8 @@ func goGstBaseTransformFixateCaps(self *C.GstBaseTransform, direction C.GstPadDi
 		FixateCaps(self *GstBaseTransform, directon gst.PadDirection, caps *gst.Caps, othercaps *gst.Caps) *gst.Caps
 	})
 
-	wrappedCaps := gst.FromGstCapsUnsafe(unsafe.Pointer(caps))
-	wrappedOther := gst.FromGstCapsUnsafe(unsafe.Pointer(othercaps))
+	wrappedCaps := gst.FromGstCapsUnsafeNone(unsafe.Pointer(caps))
+	wrappedOther := gst.FromGstCapsUnsafeNone(unsafe.Pointer(othercaps))
 	defer wrappedOther.Unref()
 
 	fixated := caller.FixateCaps(wrapGstBaseTransform(self), gst.PadDirection(direction), wrappedCaps, wrappedOther)
@@ -99,7 +99,7 @@ func goGstBaseTransformGetUnitSize(self *C.GstBaseTransform, caps *C.GstCaps, si
 	caller := elem.(interface {
 		GetUnitSize(self *GstBaseTransform, caps *gst.Caps) (ok bool, size int64)
 	})
-	ok, retsize := caller.GetUnitSize(wrapGstBaseTransform(self), gst.FromGstCapsUnsafe(unsafe.Pointer(caps)))
+	ok, retsize := caller.GetUnitSize(wrapGstBaseTransform(self), gst.FromGstCapsUnsafeNone(unsafe.Pointer(caps)))
 	if ok {
 		*size = C.gsize(retsize)
 	}
@@ -112,7 +112,7 @@ func goGstBaseTransformPrepareOutputBuffer(self *C.GstBaseTransform, input *C.Gs
 	caller := elem.(interface {
 		PrepareOutputBuffer(self *GstBaseTransform, input *gst.Buffer) (gst.FlowReturn, *gst.Buffer)
 	})
-	ret, out := caller.PrepareOutputBuffer(wrapGstBaseTransform(self), gst.FromGstBufferUnsafe(unsafe.Pointer(input)))
+	ret, out := caller.PrepareOutputBuffer(wrapGstBaseTransform(self), gst.FromGstBufferUnsafeNone(unsafe.Pointer(input)))
 	if out != nil {
 		C.memcpy(unsafe.Pointer(*outbuf), unsafe.Pointer(out.Instance()), C.sizeof_GstBuffer)
 	}
@@ -125,7 +125,7 @@ func goGstBaseTransformProposeAllocation(self *C.GstBaseTransform, decide, query
 	caller := elem.(interface {
 		ProposeAllocation(self *GstBaseTransform, decideQuery, query *gst.Query) bool
 	})
-	return gboolean(caller.ProposeAllocation(wrapGstBaseTransform(self), gst.FromGstQueryUnsafe(unsafe.Pointer(decide)), gst.FromGstQueryUnsafe(unsafe.Pointer(query))))
+	return gboolean(caller.ProposeAllocation(wrapGstBaseTransform(self), gst.FromGstQueryUnsafeNone(unsafe.Pointer(decide)), gst.FromGstQueryUnsafeNone(unsafe.Pointer(query))))
 }
 
 //export goGstBaseTransformQuery
@@ -134,7 +134,7 @@ func goGstBaseTransformQuery(self *C.GstBaseTransform, direction C.GstPadDirecti
 	caller := elem.(interface {
 		Query(self *GstBaseTransform, direction gst.PadDirection, query *gst.Query) bool
 	})
-	return gboolean(caller.Query(wrapGstBaseTransform(self), gst.PadDirection(direction), gst.FromGstQueryUnsafe(unsafe.Pointer(query))))
+	return gboolean(caller.Query(wrapGstBaseTransform(self), gst.PadDirection(direction), gst.FromGstQueryUnsafeNone(unsafe.Pointer(query))))
 }
 
 //export goGstBaseTransformSetCaps
@@ -145,8 +145,8 @@ func goGstBaseTransformSetCaps(self *C.GstBaseTransform, incaps, outcaps *C.GstC
 	})
 	return gboolean(caller.SetCaps(
 		wrapGstBaseTransform(self),
-		gst.FromGstCapsUnsafe(unsafe.Pointer(incaps)),
-		gst.FromGstCapsUnsafe(unsafe.Pointer(outcaps)),
+		gst.FromGstCapsUnsafeNone(unsafe.Pointer(incaps)),
+		gst.FromGstCapsUnsafeNone(unsafe.Pointer(outcaps)),
 	))
 }
 
@@ -156,7 +156,7 @@ func goGstBaseTransformSinkEvent(self *C.GstBaseTransform, event *C.GstEvent) C.
 	caller := elem.(interface {
 		SinkEvent(self *GstBaseTransform, event *gst.Event) bool
 	})
-	return gboolean(caller.SinkEvent(wrapGstBaseTransform(self), gst.FromGstEventUnsafe(unsafe.Pointer(event))))
+	return gboolean(caller.SinkEvent(wrapGstBaseTransform(self), gst.FromGstEventUnsafeNone(unsafe.Pointer(event))))
 }
 
 //export goGstBaseTransformSrcEvent
@@ -165,7 +165,7 @@ func goGstBaseTransformSrcEvent(self *C.GstBaseTransform, event *C.GstEvent) C.g
 	caller := elem.(interface {
 		SrcEvent(self *GstBaseTransform, event *gst.Event) bool
 	})
-	return gboolean(caller.SrcEvent(wrapGstBaseTransform(self), gst.FromGstEventUnsafe(unsafe.Pointer(event))))
+	return gboolean(caller.SrcEvent(wrapGstBaseTransform(self), gst.FromGstEventUnsafeNone(unsafe.Pointer(event))))
 }
 
 //export goGstBaseTransformStart
@@ -195,7 +195,7 @@ func goGstBaseTransformSubmitInputBuffer(self *C.GstBaseTransform, isDiscont C.g
 	return C.GstFlowReturn(caller.SubmitInputBuffer(
 		wrapGstBaseTransform(self),
 		gobool(isDiscont),
-		gst.FromGstBufferUnsafe(unsafe.Pointer(input)),
+		gst.FromGstBufferUnsafeNone(unsafe.Pointer(input)),
 	))
 }
 
@@ -207,8 +207,8 @@ func goGstBaseTransformTransform(self *C.GstBaseTransform, inbuf, outbuf *C.GstB
 	})
 	return C.GstFlowReturn(caller.Transform(
 		wrapGstBaseTransform(self),
-		gst.FromGstBufferUnsafe(unsafe.Pointer(inbuf)),
-		gst.FromGstBufferUnsafe(unsafe.Pointer(outbuf)),
+		gst.FromGstBufferUnsafeNone(unsafe.Pointer(inbuf)),
+		gst.FromGstBufferUnsafeNone(unsafe.Pointer(outbuf)),
 	))
 }
 
@@ -221,8 +221,8 @@ func goGstBaseTransformTransformCaps(self *C.GstBaseTransform, direction C.GstPa
 	out := caller.TransformCaps(
 		wrapGstBaseTransform(self),
 		gst.PadDirection(direction),
-		gst.FromGstCapsUnsafe(unsafe.Pointer(caps)),
-		gst.FromGstCapsUnsafe(unsafe.Pointer(filter)),
+		gst.FromGstCapsUnsafeNone(unsafe.Pointer(caps)),
+		gst.FromGstCapsUnsafeNone(unsafe.Pointer(filter)),
 	)
 	if out == nil {
 		return nil
@@ -238,7 +238,7 @@ func goGstBaseTransformTransformIP(self *C.GstBaseTransform, buf *C.GstBuffer) C
 	})
 	return C.GstFlowReturn(caller.TransformIP(
 		wrapGstBaseTransform(self),
-		gst.FromGstBufferUnsafe(unsafe.Pointer(buf)),
+		gst.FromGstBufferUnsafeNone(unsafe.Pointer(buf)),
 	))
 }
 
@@ -250,9 +250,9 @@ func goGstBaseTransformTransformMeta(self *C.GstBaseTransform, outbuf *C.GstBuff
 	})
 	return gboolean(caller.TransformMeta(
 		wrapGstBaseTransform(self),
-		gst.FromGstBufferUnsafe(unsafe.Pointer(outbuf)),
+		gst.FromGstBufferUnsafeNone(unsafe.Pointer(outbuf)),
 		gst.FromGstMetaUnsafe(unsafe.Pointer(meta)),
-		gst.FromGstBufferUnsafe(unsafe.Pointer(inbuf)),
+		gst.FromGstBufferUnsafeNone(unsafe.Pointer(inbuf)),
 	))
 }
 
@@ -265,9 +265,9 @@ func goGstBaseTransformTransformSize(self *C.GstBaseTransform, direction C.GstPa
 	ok, othersize := caller.TransformSize(
 		wrapGstBaseTransform(self),
 		gst.PadDirection(direction),
-		gst.FromGstCapsUnsafe(unsafe.Pointer(caps)),
+		gst.FromGstCapsUnsafeNone(unsafe.Pointer(caps)),
 		int64(size),
-		gst.FromGstCapsUnsafe(unsafe.Pointer(othercaps)),
+		gst.FromGstCapsUnsafeNone(unsafe.Pointer(othercaps)),
 	)
 	if ok {
 		*outsize = C.gsize(othersize)

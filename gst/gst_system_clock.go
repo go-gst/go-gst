@@ -4,8 +4,6 @@ package gst
 import "C"
 import (
 	"unsafe"
-
-	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // SystemClock wraps GstSystemClock
@@ -14,6 +12,5 @@ type SystemClock struct{ *Clock }
 // ObtainSystemClock returns the default SystemClock. The refcount of the clock will be
 // increased so you need to unref the clock after usage.
 func ObtainSystemClock() *SystemClock {
-	clock := C.gst_system_clock_obtain()
-	return &SystemClock{wrapClock(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(clock))})}
+	return &SystemClock{FromGstClockUnsafeFull(unsafe.Pointer(C.gst_system_clock_obtain()))}
 }

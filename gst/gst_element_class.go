@@ -81,7 +81,7 @@ func (e *ElementClass) GetPadTemplate(name string) *PadTemplate {
 	if tmpl == nil {
 		return nil
 	}
-	return wrapPadTemplate(toGObject(unsafe.Pointer(tmpl)))
+	return FromGstPadTemplateUnsafeNone(unsafe.Pointer(tmpl))
 }
 
 // GetAllPadTemplates retrieves a slice of all the pad templates associated with this class.
@@ -101,11 +101,19 @@ func (e *ElementClass) GetAllPadTemplates() []*PadTemplate {
 //
 // `author` - Name and contact details of the author(s). Use \n to separate multiple author metadata. E.g: "Joe Bloggs <joe.blogs at foo.com>"
 func (e *ElementClass) SetMetadata(longname, classification, description, author string) {
+	lname := C.CString(longname)
+	class := C.CString(classification)
+	desc := C.CString(description)
+	auth := C.CString(description)
+	defer C.free(unsafe.Pointer(lname))
+	defer C.free(unsafe.Pointer(class))
+	defer C.free(unsafe.Pointer(desc))
+	defer C.free(unsafe.Pointer(auth))
 	C.gst_element_class_set_static_metadata(
 		e.Instance(),
-		(*C.gchar)(C.CString(longname)),
-		(*C.gchar)(C.CString(classification)),
-		(*C.gchar)(C.CString(description)),
-		(*C.gchar)(C.CString(author)),
+		(*C.gchar)(unsafe.Pointer(lname)),
+		(*C.gchar)(unsafe.Pointer(class)),
+		(*C.gchar)(unsafe.Pointer(desc)),
+		(*C.gchar)(unsafe.Pointer(auth)),
 	)
 }

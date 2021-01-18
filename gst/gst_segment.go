@@ -10,13 +10,12 @@ type Segment struct {
 	ptr *C.GstSegment
 }
 
-// FromGstSegmentUnsafe wraps the given C GstSegment in the go type. It is meant for internal usage
-// and exported for visibilty to other packages.
+// FromGstSegmentUnsafe wraps the GstSegment pointer.
 func FromGstSegmentUnsafe(segment unsafe.Pointer) *Segment {
 	return wrapSegment((*C.GstSegment)(segment))
 }
 
-// NewSegment allocates and initializes a new Segment.
+// NewSegment allocates and initializes a new Segment. Free when you are finished.
 func NewSegment() *Segment {
 	return wrapSegment(C.gst_segment_new())
 }

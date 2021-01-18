@@ -80,7 +80,7 @@ func (a *Source) GetCaps() *gst.Caps {
 	if caps == nil {
 		return nil
 	}
-	return gst.FromGstCapsUnsafe(unsafe.Pointer(caps))
+	return gst.FromGstCapsUnsafeFull(unsafe.Pointer(caps))
 }
 
 // GetCurrentLevelBytes gets the number of currently queued bytes inside appsrc.
@@ -131,7 +131,7 @@ func (a *Source) GetStreamType() StreamType {
 func (a *Source) PushBuffer(buf *gst.Buffer) gst.FlowReturn {
 	ret := C.gst_app_src_push_buffer(
 		(*C.GstAppSrc)(a.Instance()),
-		(*C.GstBuffer)(unsafe.Pointer(buf.Instance())),
+		(*C.GstBuffer)(unsafe.Pointer(buf.Ref().Instance())),
 	)
 	return gst.FlowReturn(ret)
 }
@@ -142,7 +142,7 @@ func (a *Source) PushBuffer(buf *gst.Buffer) gst.FlowReturn {
 // When the block property is TRUE, this function can block until free space becomes available in the queue.
 func (a *Source) PushBufferList(bufList *gst.BufferList) gst.FlowReturn {
 	return gst.FlowReturn(C.gst_app_src_push_buffer_list(
-		a.Instance(), (*C.GstBufferList)(unsafe.Pointer(bufList.Instance())),
+		a.Instance(), (*C.GstBufferList)(unsafe.Pointer(bufList.Ref().Instance())),
 	))
 }
 

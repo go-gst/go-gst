@@ -38,7 +38,6 @@ func tagsetter() error {
 	if err != nil {
 		return err
 	}
-	defer pipeline.Destroy()
 
 	// Query the pipeline for elements implementing the GstTagsetter interface.
 	// In our case, this will return the flacenc element.

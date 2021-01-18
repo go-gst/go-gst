@@ -27,7 +27,7 @@ func NewApplicationMessage(src interface{}, structure *Structure) *Message {
 	if srcObj == nil {
 		return nil
 	}
-	return wrapMessage(C.gst_message_new_application(srcObj, structure.Instance()))
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_application(srcObj, structure.Instance())))
 }
 
 // NewAsyncDoneMessage builds a message that is posted when elements completed an ASYNC state change.
@@ -45,10 +45,10 @@ func NewAsyncDoneMessage(src interface{}, runningTime time.Duration) *Message {
 	} else {
 		cTime = C.GstClockTime(runningTime.Nanoseconds())
 	}
-	return wrapMessage(C.gst_message_new_async_done(
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_async_done(
 		srcObj,
 		cTime,
-	))
+	)))
 }
 
 // NewAsyncStartMessage returns a message that is posted by elements when they start an ASYNC state change.
@@ -57,7 +57,7 @@ func NewAsyncStartMessage(src interface{}) *Message {
 	if srcObj == nil {
 		return nil
 	}
-	return wrapMessage(C.gst_message_new_async_start(srcObj))
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_async_start(srcObj)))
 }
 
 // NewBufferingMessage returns a message that can be posted by an element that needs to buffer data before it
@@ -72,7 +72,7 @@ func NewBufferingMessage(src interface{}, percent int) *Message {
 	if srcObj == nil {
 		return nil
 	}
-	return wrapMessage(C.gst_message_new_buffering(srcObj, C.gint(percent)))
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_buffering(srcObj, C.gint(percent))))
 }
 
 // NewClockLostMessage creates a clock lost message. This message is posted whenever the clock is not valid anymore.
@@ -84,7 +84,7 @@ func NewClockLostMessage(src interface{}, clock *Clock) *Message {
 	if srcObj == nil {
 		return nil
 	}
-	return wrapMessage(C.gst_message_new_clock_lost(srcObj, clock.Instance()))
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_clock_lost(srcObj, clock.Instance())))
 }
 
 // NewClockProvideMessage creates a clock provide message. This message is posted whenever an element is ready to provide a
@@ -96,7 +96,7 @@ func NewClockProvideMessage(src interface{}, clock *Clock, ready bool) *Message 
 	if srcObj == nil {
 		return nil
 	}
-	return wrapMessage(C.gst_message_new_clock_provide(srcObj, clock.Instance(), gboolean(ready)))
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_clock_provide(srcObj, clock.Instance(), gboolean(ready))))
 }
 
 // NewCustomMessage creates a new custom-typed message. This can be used for anything not handled by other message-specific
@@ -107,9 +107,9 @@ func NewCustomMessage(src interface{}, msgType MessageType, structure *Structure
 		return nil
 	}
 	if structure == nil {
-		return wrapMessage(C.gst_message_new_custom(C.GstMessageType(msgType), srcObj, nil))
+		return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_custom(C.GstMessageType(msgType), srcObj, nil)))
 	}
-	return wrapMessage(C.gst_message_new_custom(C.GstMessageType(msgType), srcObj, structure.Instance()))
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_custom(C.GstMessageType(msgType), srcObj, structure.Instance())))
 }
 
 // NewDeviceAddedMessage creates a new device-added message. The device-added message is produced by a DeviceProvider or a DeviceMonitor.
@@ -119,7 +119,7 @@ func NewDeviceAddedMessage(src interface{}, device *Device) *Message {
 	if srcObj == nil {
 		return nil
 	}
-	return wrapMessage(C.gst_message_new_device_added(srcObj, device.Instance()))
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_device_added(srcObj, device.Instance())))
 }
 
 // NewDeviceChangedMessage creates a new device-changed message. The device-changed message is produced by a DeviceProvider or a DeviceMonitor.
@@ -129,7 +129,7 @@ func NewDeviceChangedMessage(src interface{}, device, changedDevice *Device) *Me
 	if srcObj == nil {
 		return nil
 	}
-	return wrapMessage(C.gst_message_new_device_changed(srcObj, device.Instance(), changedDevice.Instance()))
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_device_changed(srcObj, device.Instance(), changedDevice.Instance())))
 }
 
 // NewDeviceRemovedMessage creates a new device-removed message. The device-removed message is produced by a DeviceProvider or a DeviceMonitor.
@@ -139,7 +139,7 @@ func NewDeviceRemovedMessage(src interface{}, device *Device) *Message {
 	if srcObj == nil {
 		return nil
 	}
-	return wrapMessage(C.gst_message_new_device_removed(srcObj, device.Instance()))
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_device_removed(srcObj, device.Instance())))
 }
 
 // NewDurationChangedMessage creates a new duration changed message. This message is posted by elements that know the duration of a
@@ -149,7 +149,7 @@ func NewDurationChangedMessage(src interface{}) *Message {
 	if srcObj == nil {
 		return nil
 	}
-	return wrapMessage(C.gst_message_new_duration_changed(srcObj))
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_duration_changed(srcObj)))
 }
 
 // NewElementMessage creates a new element-specific message. This is meant as a generic way of allowing one-way communication from an
@@ -161,9 +161,9 @@ func NewElementMessage(src interface{}, structure *Structure) *Message {
 		return nil
 	}
 	if structure == nil {
-		return wrapMessage(C.gst_message_new_element(srcObj, nil))
+		return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_element(srcObj, nil)))
 	}
-	return wrapMessage(C.gst_message_new_element(srcObj, structure.Instance()))
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_element(srcObj, structure.Instance())))
 }
 
 // NewEOSMessage creates a new eos message. This message is generated and posted in the sink elements of a Bin. The bin will only forward
@@ -173,50 +173,40 @@ func NewEOSMessage(src interface{}) *Message {
 	if srcObj == nil {
 		return nil
 	}
-	return wrapMessage(C.gst_message_new_eos(srcObj))
-}
-
-func getErrorMessageParams(err *GError, debugStr string) (*C.GError, *C.gchar) {
-	var gdebugStr *C.char
-	if debugStr != "" {
-		gdebugStr = C.CString(debugStr)
-	}
-	errStr := C.CString(err.errMsg)
-
-	gerr := &C.GError{
-		code:    C.gint(err.code),
-		message: (*C.gchar)(unsafe.Pointer(errStr)),
-		domain:  C.guint(err.code),
-	}
-
-	return gerr, (*C.gchar)(unsafe.Pointer(gdebugStr))
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_eos(srcObj)))
 }
 
 // NewErrorMessage creates a new error message. The message will copy error and debug. This message is posted by element when a fatal event
 // occurred. The pipeline will probably (partially) stop. The application receiving this message should stop the pipeline.
 // Structure can be nil to not add a structure to the message.
-func NewErrorMessage(src interface{}, err *GError, debugStr string, structure *Structure) *Message {
+func NewErrorMessage(src interface{}, err error, debugStr string, structure *Structure) *Message {
 	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
 
-	gerr, gdebugStr := getErrorMessageParams(err, debugStr)
+	errmsg := C.CString(err.Error())
+	gerr := C.g_error_new_literal(DomainLibrary.toQuark(), C.gint(LibraryErrorFailed), (*C.gchar)(errmsg))
+	defer C.free(unsafe.Pointer(errmsg))
+	defer C.g_error_free(gerr)
+
+	gdebugStr := C.CString(debugStr)
+	defer C.free(unsafe.Pointer(gdebugStr))
 
 	if structure != nil {
-		return wrapMessage(C.gst_message_new_error_with_details(
+		return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_error_with_details(
 			srcObj,
 			gerr,
 			gdebugStr,
 			structure.Instance(),
-		))
+		)))
 	}
 
-	return wrapMessage(C.gst_message_new_error(
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_error(
 		srcObj,
 		gerr,
 		gdebugStr,
-	))
+	)))
 }
 
 // NewHaveContextMessage creates a message that is posted when an element has a new local Context.
@@ -225,35 +215,41 @@ func NewHaveContextMessage(src interface{}, ctx *Context) *Message {
 	if srcObj == nil {
 		return nil
 	}
-	return wrapMessage(C.gst_message_new_have_context(
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_have_context(
 		srcObj,
-		ctx.Instance(),
-	))
+		ctx.Ref().Instance(),
+	)))
 }
 
 // NewInfoMessage creates a new info message. Structure can be nil.
-func NewInfoMessage(src interface{}, err *GError, debugStr string, structure *Structure) *Message {
+func NewInfoMessage(src interface{}, msg string, debugStr string, structure *Structure) *Message {
 	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
 
-	gerr, gdebugStr := getErrorMessageParams(err, debugStr)
+	errmsg := C.CString(msg)
+	gerr := C.g_error_new_literal(DomainLibrary.toQuark(), C.gint(0), (*C.gchar)(errmsg))
+	defer C.free(unsafe.Pointer(errmsg))
+	defer C.g_error_free(gerr)
+
+	gdebugStr := C.CString(debugStr)
+	defer C.free(unsafe.Pointer(gdebugStr))
 
 	if structure != nil {
-		return wrapMessage(C.gst_message_new_info_with_details(
+		return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_info_with_details(
 			srcObj,
 			gerr,
 			gdebugStr,
 			structure.Instance(),
-		))
+		)))
 	}
 
-	return wrapMessage(C.gst_message_new_info(
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_info(
 		srcObj,
 		gerr,
 		gdebugStr,
-	))
+	)))
 }
 
 // NewLatencyMessage creates a message that can be posted by elements when their latency requirements have changed.
@@ -262,7 +258,7 @@ func NewLatencyMessage(src interface{}) *Message {
 	if srcObj == nil {
 		return nil
 	}
-	return wrapMessage(C.gst_message_new_latency(srcObj))
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_latency(srcObj)))
 }
 
 // NewNeedContextMessage creates a message that is posted when an element needs a specific Context.
@@ -272,7 +268,7 @@ func NewNeedContextMessage(src interface{}, ctxType string) *Message {
 		return nil
 	}
 	cStr := C.CString(ctxType)
-	return wrapMessage(C.gst_message_new_need_context(srcObj, (*C.gchar)(unsafe.Pointer(cStr))))
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_need_context(srcObj, (*C.gchar)(unsafe.Pointer(cStr)))))
 }
 
 // NewNewClockMessage creates a new clock message. This message is posted whenever the pipeline selects a new clock for the pipeline.
@@ -281,7 +277,7 @@ func NewNewClockMessage(src interface{}, clock *Clock) *Message {
 	if srcObj == nil {
 		return nil
 	}
-	return wrapMessage(C.gst_message_new_new_clock(srcObj, clock.Instance()))
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_new_clock(srcObj, clock.Instance())))
 }
 
 // NewProgressMessage creates messages that are posted by elements when they use an asynchronous task to perform actions triggered by a state change.
@@ -294,7 +290,7 @@ func NewProgressMessage(src interface{}, progressType ProgressType, code, text s
 	}
 	cCode := (*C.gchar)(unsafe.Pointer(C.CString(code)))
 	cText := (*C.gchar)(unsafe.Pointer(C.CString(text)))
-	return wrapMessage(C.gst_message_new_progress(srcObj, C.GstProgressType(progressType), cCode, cText))
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_progress(srcObj, C.GstProgressType(progressType), cCode, cText)))
 }
 
 // NewPropertyNotifyMessage creates a new message notifying an object's properties have changed. If the
@@ -309,11 +305,11 @@ func NewPropertyNotifyMessage(src interface{}, propName string, val interface{})
 		return nil
 	}
 	cName := (*C.gchar)(unsafe.Pointer(C.CString(propName)))
-	return wrapMessage(C.gst_message_new_property_notify(
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_property_notify(
 		srcObj,
 		cName,
 		(*C.GValue)(unsafe.Pointer(gVal.GValue)),
-	))
+	)))
 }
 
 // NewQoSMessage creates a message that is posted on the bus whenever an element decides to drop a buffer because of
@@ -329,14 +325,14 @@ func NewQoSMessage(src interface{}, live bool, runningTime, streamTime, timestam
 	if srcObj == nil {
 		return nil
 	}
-	return wrapMessage(C.gst_message_new_qos(
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_qos(
 		srcObj,
 		gboolean(live),
 		C.guint64((runningTime.Nanoseconds())),
 		C.guint64((streamTime.Nanoseconds())),
 		C.guint64((timestamp.Nanoseconds())),
 		C.guint64((duration.Nanoseconds())),
-	))
+	)))
 }
 
 // NewRedirectMessage creates a new redirect message and adds a new entry to it. Redirect messages are posted when an element detects that the actual
@@ -363,18 +359,20 @@ func NewRedirectMessage(src interface{}, location string, tagList *TagList, entr
 	var tl *C.GstTagList
 	var st *C.GstStructure
 	if location != "" {
-		loc = (*C.gchar)(unsafe.Pointer(C.CString(location)))
+		locc := C.CString(location)
+		defer C.free(unsafe.Pointer(locc))
+		loc = (*C.gchar)(unsafe.Pointer(locc))
 	}
 	if tagList != nil {
-		tl = tagList.Instance()
+		tl = tagList.Ref().Instance()
 	}
 	if entryStructure != nil {
 		st = entryStructure.Instance()
 	}
-	return wrapMessage(C.gst_message_new_redirect(
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_redirect(
 		srcObj,
 		loc, tl, st,
-	))
+	)))
 }
 
 // AddRedirectEntry creates and appends a new entry to the message.
@@ -383,10 +381,12 @@ func (m *Message) AddRedirectEntry(location string, tagList *TagList, entryStruc
 	var tl *C.GstTagList
 	var st *C.GstStructure
 	if location != "" {
-		loc = (*C.gchar)(unsafe.Pointer(C.CString(location)))
+		locc := C.CString(location)
+		defer C.free(unsafe.Pointer(locc))
+		loc = (*C.gchar)(unsafe.Pointer(locc))
 	}
 	if tagList != nil {
-		tl = tagList.Instance()
+		tl = tagList.Ref().Instance()
 	}
 	if entryStructure != nil {
 		st = entryStructure.Instance()
@@ -401,7 +401,7 @@ func NewRequestStateMessage(src interface{}, state State) *Message {
 	if srcObj == nil {
 		return nil
 	}
-	return wrapMessage(C.gst_message_new_request_state(srcObj, C.GstState(state)))
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_request_state(srcObj, C.GstState(state))))
 }
 
 // NewResetTimeMessage creates a message that is posted when the pipeline running-time should be reset to running_time, like after a flushing seek.
@@ -410,7 +410,7 @@ func NewResetTimeMessage(src interface{}, runningTime time.Duration) *Message {
 	if srcObj == nil {
 		return nil
 	}
-	return wrapMessage(C.gst_message_new_reset_time(srcObj, C.GstClockTime(runningTime.Nanoseconds())))
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_reset_time(srcObj, C.GstClockTime(runningTime.Nanoseconds()))))
 }
 
 // NewSegmentDoneMessage creates a new segment done message. This message is posted by elements that finish playback of a segment as a result of a
@@ -420,11 +420,11 @@ func NewSegmentDoneMessage(src interface{}, format Format, position int64) *Mess
 	if srcObj == nil {
 		return nil
 	}
-	return wrapMessage(C.gst_message_new_segment_done(
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_segment_done(
 		srcObj,
 		C.GstFormat(format),
 		C.gint64(position),
-	))
+	)))
 }
 
 // NewSegmentStartMessage creates a new segment message. This message is posted by elements that start playback of a segment as a result of a segment seek.
@@ -434,11 +434,11 @@ func NewSegmentStartMessage(src interface{}, format Format, position int64) *Mes
 	if srcObj == nil {
 		return nil
 	}
-	return wrapMessage(C.gst_message_new_segment_start(
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_segment_start(
 		srcObj,
 		C.GstFormat(format),
 		C.gint64(position),
-	))
+	)))
 }
 
 // NewStateChangedMessage creates a state change message. This message is posted whenever an element changed its state.
@@ -447,10 +447,10 @@ func NewStateChangedMessage(src interface{}, oldState, newState, pendingState St
 	if srcObj == nil {
 		return nil
 	}
-	return wrapMessage(C.gst_message_new_state_changed(
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_state_changed(
 		srcObj,
 		C.GstState(oldState), C.GstState(newState), C.GstState(pendingState),
-	))
+	)))
 }
 
 // NewStateDirtyMessage creates a state dirty message. This message is posted whenever an element changed its state asynchronously
@@ -460,7 +460,7 @@ func NewStateDirtyMessage(src interface{}) *Message {
 	if srcObj == nil {
 		return nil
 	}
-	return wrapMessage(C.gst_message_new_state_dirty(srcObj))
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_state_dirty(srcObj)))
 }
 
 // NewStepDoneMessage creates a message that is posted by elements when they complete a part, when intermediate set to TRUE, or a
@@ -472,7 +472,7 @@ func NewStepDoneMessage(src interface{}, format Format, amount uint64, rate floa
 	if srcObj == nil {
 		return nil
 	}
-	return wrapMessage(C.gst_message_new_step_done(
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_step_done(
 		srcObj,
 		C.GstFormat(format),
 		C.guint64(amount),
@@ -481,7 +481,7 @@ func NewStepDoneMessage(src interface{}, format Format, amount uint64, rate floa
 		gboolean(intermediate),
 		C.guint64(duration.Nanoseconds()),
 		gboolean(eos),
-	))
+	)))
 }
 
 // NewStepStartMessage creates a message that is posted by elements when they accept or activate a new step event for amount in format.
@@ -495,7 +495,7 @@ func NewStepStartMessage(src interface{}, active bool, format Format, amount uin
 	if srcObj == nil {
 		return nil
 	}
-	return wrapMessage(C.gst_message_new_step_start(
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_step_start(
 		srcObj,
 		gboolean(active),
 		C.GstFormat(format),
@@ -503,7 +503,7 @@ func NewStepStartMessage(src interface{}, active bool, format Format, amount uin
 		C.gdouble(rate),
 		gboolean(flush),
 		gboolean(intermediate),
-	))
+	)))
 }
 
 // NewStreamCollectionMessage creates a new stream-collection message. The message is used to announce new StreamCollections.
@@ -512,7 +512,7 @@ func NewStreamCollectionMessage(src interface{}, collection *StreamCollection) *
 	if srcObj == nil {
 		return nil
 	}
-	return wrapMessage(C.gst_message_new_stream_collection(srcObj, collection.Instance()))
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_stream_collection(srcObj, collection.Instance())))
 }
 
 // NewStreamStartMessage creates a new stream_start message. This message is generated and posted in the sink elements of a Bin.
@@ -522,7 +522,7 @@ func NewStreamStartMessage(src interface{}) *Message {
 	if srcObj == nil {
 		return nil
 	}
-	return wrapMessage(C.gst_message_new_stream_start(srcObj))
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_stream_start(srcObj)))
 }
 
 // NewStreamStatusMessage creates a new stream status message. This message is posted when a streaming thread is created/destroyed or
@@ -532,7 +532,7 @@ func NewStreamStatusMessage(src interface{}, stType StreamStatusType, owner *Ele
 	if srcObj == nil {
 		return nil
 	}
-	return wrapMessage(C.gst_message_new_stream_status(srcObj, C.GstStreamStatusType(stType), owner.Instance()))
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_stream_status(srcObj, C.GstStreamStatusType(stType), owner.Instance())))
 }
 
 // NewStreamSelectedMessage creates a new steams-selected message. The message is used to announce that an array of streams has been selected.
@@ -546,7 +546,7 @@ func NewStreamSelectedMessage(src interface{}, collection *StreamCollection) *Me
 	if srcObj == nil {
 		return nil
 	}
-	return wrapMessage(C.gst_message_new_streams_selected(srcObj, collection.Instance()))
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_streams_selected(srcObj, collection.Instance())))
 }
 
 // StreamsSelectedAdd adds the stream to the message
@@ -565,7 +565,7 @@ func (m *Message) StreamsSelectedGetStream(index uint) *Stream {
 	if stream == nil {
 		return nil
 	}
-	return wrapStream(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(stream))})
+	return wrapStream(glib.TransferFull(unsafe.Pointer(stream)))
 }
 
 // NewStructureChangeMessage creates a new structure change message. This message is posted when the structure of a pipeline is in the process
@@ -577,12 +577,12 @@ func NewStructureChangeMessage(src interface{}, chgType StructureChangeType, own
 	if srcObj == nil {
 		return nil
 	}
-	return wrapMessage(C.gst_message_new_structure_change(
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_structure_change(
 		srcObj,
 		C.GstStructureChangeType(chgType),
 		owner.Instance(),
 		gboolean(busy),
-	))
+	)))
 }
 
 // NewTagMessage creates a new tag message. The message will take ownership of the tag list. The message is posted by elements that discovered a new taglist.
@@ -591,7 +591,7 @@ func NewTagMessage(src interface{}, tagList *TagList) *Message {
 	if srcObj == nil {
 		return nil
 	}
-	return wrapMessage(C.gst_message_new_tag(srcObj, tagList.Instance()))
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_tag(srcObj, tagList.Ref().Instance())))
 }
 
 // NewTOCMessage creates a new TOC message. The message is posted by elements that discovered or updated a TOC.
@@ -600,21 +600,27 @@ func NewTOCMessage(src interface{}, toc *TOC, updated bool) *Message {
 	if srcObj == nil {
 		return nil
 	}
-	return wrapMessage(C.gst_message_new_toc(
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_toc(
 		srcObj,
 		toc.Instance(),
 		gboolean(updated),
-	))
+	)))
 }
 
 // NewWarningMessage creates a new warning message. Structure can be nil.
-func NewWarningMessage(src interface{}, err *GError, debugStr string, structure *Structure) *Message {
+func NewWarningMessage(src interface{}, msg string, debugStr string, structure *Structure) *Message {
 	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
 
-	gerr, gdebugStr := getErrorMessageParams(err, debugStr)
+	errmsg := C.CString(msg)
+	gerr := C.g_error_new_literal(DomainLibrary.toQuark(), C.gint(0), (*C.gchar)(errmsg))
+	defer C.free(unsafe.Pointer(errmsg))
+	defer C.g_error_free(gerr)
+
+	gdebugStr := C.CString(debugStr)
+	defer C.free(unsafe.Pointer(gdebugStr))
 
 	if structure != nil {
 		return wrapMessage(C.gst_message_new_warning_with_details(
@@ -625,9 +631,9 @@ func NewWarningMessage(src interface{}, err *GError, debugStr string, structure 
 		))
 	}
 
-	return wrapMessage(C.gst_message_new_warning(
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_warning(
 		srcObj,
 		gerr,
 		gdebugStr,
-	))
+	)))
 }

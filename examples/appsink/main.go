@@ -55,7 +55,6 @@ func createPipeline() (*gst.Pipeline, error) {
 			if sample == nil {
 				return gst.FlowEOS
 			}
-			defer sample.Unref()
 
 			// Retrieve the buffer from the sample
 			buffer := sample.GetBuffer()
@@ -89,7 +88,6 @@ func createPipeline() (*gst.Pipeline, error) {
 }
 
 func handleMessage(msg *gst.Message) error {
-	defer msg.Unref() // Messages are a good candidate for trying out runtime finalizers
 
 	switch msg.Type() {
 	case gst.MessageEOS:
@@ -102,8 +100,6 @@ func handleMessage(msg *gst.Message) error {
 }
 
 func mainLoop(pipeline *gst.Pipeline) error {
-
-	defer pipeline.Destroy() // Will stop and unref the pipeline when this function returns
 
 	// Start the pipeline
 	pipeline.SetState(gst.StatePlaying)

@@ -84,7 +84,6 @@ func mainLoop(loop *glib.MainLoop, pipeline *gst.Pipeline) error {
 		switch msg.Type() {
 		case gst.MessageEOS:
 			fmt.Println("Got EOS message")
-			pipeline.Destroy()
 			loop.Quit()
 		default:
 			fmt.Println(msg)

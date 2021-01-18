@@ -50,7 +50,7 @@ func ToGstBaseTransform(obj interface{}) *GstBaseTransform {
 
 // wrapGstBaseTransform wraps the given unsafe.Pointer in a GstBaseSrc instance.
 func wrapGstBaseTransform(obj *C.GstBaseTransform) *GstBaseTransform {
-	return &GstBaseTransform{gst.FromGstElementUnsafe(unsafe.Pointer(obj))}
+	return &GstBaseTransform{gst.FromGstElementUnsafeNone(unsafe.Pointer(obj))}
 }
 
 // Instance returns the underlying C GstBaseTransform instance
@@ -63,12 +63,19 @@ func (g *GstBaseTransform) GetAllocator() (*gst.Allocator, *gst.AllocationParams
 	var allocParams C.GstAllocationParams
 	var allocator *C.GstAllocator
 	C.gst_base_transform_get_allocator(g.Instance(), &allocator, &allocParams)
-	return gst.FromGstAllocatorUnsafe(unsafe.Pointer(allocator)), gst.FromGstAllocationParamsUnsafe(unsafe.Pointer(&allocParams))
+	if allocator == nil {
+		return nil, nil
+	}
+	return gst.FromGstAllocatorUnsafeFull(unsafe.Pointer(allocator)), gst.FromGstAllocationParamsUnsafe(unsafe.Pointer(&allocParams))
 }
 
 // GetBufferPool returns the BufferPool used by this transform. Unref after usage.
 func (g *GstBaseTransform) GetBufferPool() *gst.BufferPool {
-	return gst.FromGstBufferPoolUnsafe(unsafe.Pointer(C.gst_base_transform_get_buffer_pool(g.Instance())))
+	pool := C.gst_base_transform_get_buffer_pool(g.Instance())
+	if pool == nil {
+		return nil
+	}
+	return gst.FromGstBufferPoolUnsafeFull(unsafe.Pointer(pool))
 }
 
 // IsInPlace returns if the transform is configured to do in-place transform.
@@ -88,7 +95,7 @@ func (g *GstBaseTransform) IsQoSEnabled() bool {
 
 // QueuedBuffer returns the currentl queued buffer.
 func (g *GstBaseTransform) QueuedBuffer() *gst.Buffer {
-	return gst.FromGstBufferUnsafe(unsafe.Pointer(g.Instance().queued_buf))
+	return gst.FromGstBufferUnsafeNone(unsafe.Pointer(g.Instance().queued_buf))
 }
 
 // SINCE 1.18
@@ -164,12 +171,12 @@ func (g *GstBaseTransform) SetTransformIPOnPassthrough(enabled bool) {
 
 // SinkPad returns the sink pad object for this element.
 func (g *GstBaseTransform) SinkPad() *gst.Pad {
-	return gst.FromGstPadUnsafe(unsafe.Pointer(g.Instance().sinkpad))
+	return gst.FromGstPadUnsafeNone(unsafe.Pointer(g.Instance().sinkpad))
 }
 
 // SrcPad returns the src pad object for this element.
 func (g *GstBaseTransform) SrcPad() *gst.Pad {
-	return gst.FromGstPadUnsafe(unsafe.Pointer(g.Instance().srcpad))
+	return gst.FromGstPadUnsafeNone(unsafe.Pointer(g.Instance().srcpad))
 }
 
 // UpdateQoS sets the QoS parameters in the transform. This function is called internally when a QOS event is received

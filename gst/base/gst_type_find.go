@@ -18,7 +18,7 @@ func TypeFindHelper(pad *gst.Pad, size uint64) *gst.Caps {
 	if caps == nil {
 		return nil
 	}
-	return gst.FromGstCapsUnsafe(unsafe.Pointer(caps))
+	return gst.FromGstCapsUnsafeFull(unsafe.Pointer(caps))
 }
 
 // TypeFindHelperForBuffer tries to find what type of data is contained in the given GstBuffer,
@@ -42,7 +42,7 @@ func TypeFindHelperForBuffer(obj *gst.Object, buffer *gst.Buffer) (*gst.Caps, gs
 	if caps == nil {
 		return nil, gst.TypeFindProbability(prob)
 	}
-	return gst.FromGstCapsUnsafe(unsafe.Pointer(caps)), gst.TypeFindProbability(prob)
+	return gst.FromGstCapsUnsafeFull(unsafe.Pointer(caps)), gst.TypeFindProbability(prob)
 }
 
 // TypeFindHelperForBufferWithExtension ries to find what type of data is contained in the given GstBuffer,
@@ -73,7 +73,7 @@ func TypeFindHelperForBufferWithExtension(obj *gst.Object, buffer *gst.Buffer, e
 	if caps == nil {
 		return nil, gst.TypeFindProbability(prob)
 	}
-	return gst.FromGstCapsUnsafe(unsafe.Pointer(caps)), gst.TypeFindProbability(prob)
+	return gst.FromGstCapsUnsafeFull(unsafe.Pointer(caps)), gst.TypeFindProbability(prob)
 }
 
 // TypeFindHelperForData tries to find what type of data is contained in the given data,
@@ -97,7 +97,7 @@ func TypeFindHelperForData(obj *gst.Object, data []byte) (*gst.Caps, gst.TypeFin
 	if caps == nil {
 		return nil, gst.TypeFindProbability(prob)
 	}
-	return gst.FromGstCapsUnsafe(unsafe.Pointer(caps)), gst.TypeFindProbability(prob)
+	return gst.FromGstCapsUnsafeFull(unsafe.Pointer(caps)), gst.TypeFindProbability(prob)
 }
 
 // TypeFindHelperForDataWithExtension ries to find what type of data is contained in the given data,
@@ -128,7 +128,7 @@ func TypeFindHelperForDataWithExtension(obj *gst.Object, data []byte, extension 
 	if caps == nil {
 		return nil, gst.TypeFindProbability(prob)
 	}
-	return gst.FromGstCapsUnsafe(unsafe.Pointer(caps)), gst.TypeFindProbability(prob)
+	return gst.FromGstCapsUnsafeFull(unsafe.Pointer(caps)), gst.TypeFindProbability(prob)
 }
 
 // TypeFindHelperForExtension tries to find the best GstCaps associated with extension.
@@ -148,5 +148,5 @@ func TypeFindHelperForExtension(obj *gst.Object, extension string) *gst.Caps {
 	if caps == nil {
 		return nil
 	}
-	return gst.FromGstCapsUnsafe(unsafe.Pointer(caps))
+	return gst.FromGstCapsUnsafeFull(unsafe.Pointer(caps))
 }

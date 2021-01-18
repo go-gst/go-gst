@@ -117,7 +117,7 @@ func glistToPadTemplateSlice(glist *C.GList) []*PadTemplate {
 	out := make([]*PadTemplate, 0)
 	l.FreeFull(func(item interface{}) {
 		tmpl := item.(*C.GstPadTemplate)
-		out = append(out, wrapPadTemplate(toGObject(unsafe.Pointer(tmpl))))
+		out = append(out, FromGstPadTemplateUnsafeNone(unsafe.Pointer(tmpl)))
 	})
 	return out
 }

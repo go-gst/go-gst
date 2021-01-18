@@ -73,7 +73,7 @@ func (a *Sink) GetCaps() *gst.Caps {
 	if caps == nil {
 		return nil
 	}
-	return gst.FromGstCapsUnsafe(unsafe.Pointer(caps))
+	return gst.FromGstCapsUnsafeFull(unsafe.Pointer(caps))
 }
 
 // GetDrop checks if appsink will drop old buffers when the maximum amount of queued buffers is reached.
@@ -118,7 +118,7 @@ func (a *Sink) PullPreroll() *gst.Sample {
 	if smpl == nil {
 		return nil
 	}
-	return gst.FromGstSampleUnsafe(unsafe.Pointer(smpl))
+	return gst.FromGstSampleUnsafeFull(unsafe.Pointer(smpl))
 }
 
 // PullSample blocks until a sample or EOS becomes available or the appsink element is set to the READY/NULL state.
@@ -133,7 +133,7 @@ func (a *Sink) PullSample() *gst.Sample {
 	if smpl == nil {
 		return nil
 	}
-	return gst.FromGstSampleUnsafe(unsafe.Pointer(smpl))
+	return gst.FromGstSampleUnsafeFull(unsafe.Pointer(smpl))
 }
 
 // SetBufferListSupport instructs appsink to enable or disable buffer list support.
@@ -211,7 +211,7 @@ func (a *Sink) TryPullPreroll(timeout time.Duration) *gst.Sample {
 	if smpl == nil {
 		return nil
 	}
-	return gst.FromGstSampleUnsafe(unsafe.Pointer(smpl))
+	return gst.FromGstSampleUnsafeFull(unsafe.Pointer(smpl))
 }
 
 // TryPullSample blocks until a sample or EOS becomes available or the appsink element is set to the READY/NULL state or the timeout expires.
@@ -227,5 +227,5 @@ func (a *Sink) TryPullSample(timeout time.Duration) *gst.Sample {
 	if smpl == nil {
 		return nil
 	}
-	return gst.FromGstSampleUnsafe(unsafe.Pointer(smpl))
+	return gst.FromGstSampleUnsafeFull(unsafe.Pointer(smpl))
 }

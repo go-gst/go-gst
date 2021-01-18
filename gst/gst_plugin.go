@@ -53,8 +53,8 @@ import (
 	"errors"
 	"unsafe"
 
-	"github.com/tinyzimmer/go-glib/glib"
 	gopointer "github.com/mattn/go-pointer"
+	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // PluginMetadata represents the information to include when registering a new plugin
@@ -114,6 +114,16 @@ type PluginInitFunc func(*Plugin) bool
 // Plugin is a go representation of a GstPlugin.
 type Plugin struct{ *Object }
 
+// FromGstPluginUnsafeNone wraps the given pointer in a Plugin.
+func FromGstPluginUnsafeNone(plugin unsafe.Pointer) *Plugin {
+	return &Plugin{wrapObject(glib.TransferNone(plugin))}
+}
+
+// FromGstPluginUnsafeFull wraps the given pointer in a Plugin.
+func FromGstPluginUnsafeFull(plugin unsafe.Pointer) *Plugin {
+	return &Plugin{wrapObject(glib.TransferFull(plugin))}
+}
+
 // RegisterPlugin will register a static plugin, i.e. a plugin which is private to an application
 // or library and contained within the application or library (as opposed to being shipped as a
 // separate module file).
@@ -150,7 +160,7 @@ func LoadPluginByName(name string) *Plugin {
 	if plugin == nil {
 		return nil
 	}
-	return wrapPlugin(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(plugin))})
+	return FromGstPluginUnsafeFull(unsafe.Pointer(plugin))
 }
 
 // LoadPluginFile loads the given plugin and refs it. If an error is returned Plugin will be nil.
@@ -163,7 +173,7 @@ func LoadPluginFile(fpath string) (*Plugin, error) {
 		defer C.g_free((C.gpointer)(gerr))
 		return nil, errors.New(C.GoString(gerr.message))
 	}
-	return wrapPlugin(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(plugin))}), nil
+	return FromGstPluginUnsafeFull(unsafe.Pointer(plugin)), nil
 }
 
 // Instance returns the underlying GstPlugin instance.

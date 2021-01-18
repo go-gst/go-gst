@@ -3,6 +3,7 @@ package gst
 // #include "gst.go.h"
 import "C"
 import (
+	"runtime"
 	"time"
 	"unsafe"
 
@@ -17,32 +18,45 @@ type Query struct {
 // Type returns the type of the Query.
 func (q *Query) Type() QueryType { return QueryType(q.ptr._type) }
 
-// FromGstQueryUnsafe wraps the pointer to the given C GstQuery with the go type.
+// FromGstQueryUnsafeNone wraps the pointer to the given C GstQuery with the go type.
 // This is meant for internal usage and is exported for visibility to other packages.
-func FromGstQueryUnsafe(query unsafe.Pointer) *Query { return wrapQuery((*C.GstQuery)(query)) }
+func FromGstQueryUnsafeNone(query unsafe.Pointer) *Query {
+	q := wrapQuery((*C.GstQuery)(query))
+	q.Ref()
+	runtime.SetFinalizer(q, (*Query).Unref)
+	return q
+}
+
+// FromGstQueryUnsafeFull wraps the pointer to the given C GstQuery with the go type.
+// This is meant for internal usage and is exported for visibility to other packages.
+func FromGstQueryUnsafeFull(query unsafe.Pointer) *Query {
+	q := wrapQuery((*C.GstQuery)(query))
+	runtime.SetFinalizer(q, (*Query).Unref)
+	return q
+}
 
 // NewAcceptCapsQuery constructs a new query object for querying if caps are accepted.
 func NewAcceptCapsQuery(caps *Caps) *Query {
-	return wrapQuery(C.gst_query_new_accept_caps(caps.Instance()))
+	return FromGstQueryUnsafeFull(unsafe.Pointer(C.gst_query_new_accept_caps(caps.Instance())))
 }
 
 // NewAllocationQuery constructs a new query object for querying the allocation properties.
 func NewAllocationQuery(caps *Caps, needPool bool) *Query {
-	return wrapQuery(C.gst_query_new_allocation(
+	return FromGstQueryUnsafeFull(unsafe.Pointer(C.gst_query_new_allocation(
 		caps.Instance(), gboolean(needPool),
-	))
+	)))
 }
 
 // NewBitrateQuery constructs a new query object for querying the bitrate.
 func NewBitrateQuery() *Query {
-	return wrapQuery(C.gst_query_new_bitrate())
+	return FromGstQueryUnsafeFull(unsafe.Pointer(C.gst_query_new_bitrate()))
 }
 
 // NewBufferingQuery constructs a new query object for querying the buffering status of a stream.
 func NewBufferingQuery(format Format) *Query {
-	return wrapQuery(C.gst_query_new_buffering(
+	return FromGstQueryUnsafeFull(unsafe.Pointer(C.gst_query_new_buffering(
 		C.GstFormat(format),
-	))
+	)))
 }
 
 // NewCapsQuery constructs a new query object for querying the caps.
@@ -59,81 +73,81 @@ func NewBufferingQuery(format Format) *Query {
 // The filter is used to restrict the result caps, only the caps matching filter should be returned from the CAPS
 // query. Specifying a filter might greatly reduce the amount of processing an element needs to do.
 func NewCapsQuery(caps *Caps) *Query {
-	return wrapQuery(C.gst_query_new_caps(caps.Instance()))
+	return FromGstQueryUnsafeFull(unsafe.Pointer(C.gst_query_new_caps(caps.Instance())))
 }
 
 // NewContextQuery constructs a new query object for querying the pipeline-local context.
 func NewContextQuery(ctxType string) *Query {
 	cName := C.CString(ctxType)
 	defer C.free(unsafe.Pointer(cName))
-	return wrapQuery(C.gst_query_new_context(
+	return FromGstQueryUnsafeFull(unsafe.Pointer(C.gst_query_new_context(
 		(*C.gchar)(unsafe.Pointer(cName)),
-	))
+	)))
 }
 
 // NewConvertQuery constructs a new convert query object. A convert query is used to ask for a conversion between one
 // format and another.
 func NewConvertQuery(srcFormat, destFormat Format, value int64) *Query {
-	return wrapQuery(C.gst_query_new_convert(
+	return FromGstQueryUnsafeFull(unsafe.Pointer(C.gst_query_new_convert(
 		C.GstFormat(srcFormat), C.gint64(value), C.GstFormat(destFormat),
-	))
+	)))
 }
 
 // NewCustomQuery constructs a new custom query object.
 func NewCustomQuery(queryType QueryType, structure *Structure) *Query {
-	return wrapQuery(C.gst_query_new_custom(
+	return FromGstQueryUnsafeFull(unsafe.Pointer(C.gst_query_new_custom(
 		C.GstQueryType(queryType),
 		structure.Instance(),
-	))
+	)))
 }
 
 // NewDrainQuery constructs a new query object for querying the drain state.
 func NewDrainQuery() *Query {
-	return wrapQuery(C.gst_query_new_drain())
+	return FromGstQueryUnsafeFull(unsafe.Pointer(C.gst_query_new_drain()))
 }
 
 // NewDurationQuery constructs a new stream duration query object to query in the given format. A duration query will give the
 // total length of the stream.
 func NewDurationQuery(format Format) *Query {
-	return wrapQuery(C.gst_query_new_duration(C.GstFormat(format)))
+	return FromGstQueryUnsafeFull(unsafe.Pointer(C.gst_query_new_duration(C.GstFormat(format))))
 }
 
 // NewFormatsQuery constructs a new query object for querying formats of the stream.
 func NewFormatsQuery() *Query {
-	return wrapQuery(C.gst_query_new_formats())
+	return FromGstQueryUnsafeFull(unsafe.Pointer(C.gst_query_new_formats()))
 }
 
 // NewLatencyQuery constructs a new latency query object. A latency query is usually performed by sinks to compensate for additional
 // latency introduced by elements in the pipeline.
 func NewLatencyQuery() *Query {
-	return wrapQuery(C.gst_query_new_latency())
+	return FromGstQueryUnsafeFull(unsafe.Pointer(C.gst_query_new_latency()))
 }
 
 // NewPositionQuery constructs a new query stream position query object. A position query is used to query the current position of playback
 // in the streams, in some format.
 func NewPositionQuery(format Format) *Query {
-	return wrapQuery(C.gst_query_new_position(C.GstFormat(format)))
+	return FromGstQueryUnsafeFull(unsafe.Pointer(C.gst_query_new_position(C.GstFormat(format))))
 }
 
 // NewSchedulingQuery constructs a new query object for querying the scheduling properties.
 func NewSchedulingQuery() *Query {
-	return wrapQuery(C.gst_query_new_scheduling())
+	return FromGstQueryUnsafeFull(unsafe.Pointer(C.gst_query_new_scheduling()))
 }
 
 // NewSeekingQuery constructs a new query object for querying seeking properties of the stream.
 func NewSeekingQuery(format Format) *Query {
-	return wrapQuery(C.gst_query_new_seeking(C.GstFormat(format)))
+	return FromGstQueryUnsafeFull(unsafe.Pointer(C.gst_query_new_seeking(C.GstFormat(format))))
 }
 
 // NewSegmentQuery constructs a new segment query object. A segment query is used to discover information about the currently configured segment
 // for playback.
 func NewSegmentQuery(format Format) *Query {
-	return wrapQuery(C.gst_query_new_segment(C.GstFormat(format)))
+	return FromGstQueryUnsafeFull(unsafe.Pointer(C.gst_query_new_segment(C.GstFormat(format))))
 }
 
 // NewURIQuery constructs a new query URI query object. An URI query is used to query the current URI that is used by the source or sink.
 func NewURIQuery() *Query {
-	return wrapQuery(C.gst_query_new_uri())
+	return FromGstQueryUnsafeFull(unsafe.Pointer(C.gst_query_new_uri()))
 }
 
 // Instance returns the underlying GstQuery instance.
@@ -172,7 +186,7 @@ func (q *Query) AddSchedulingMode(mode PadMode) {
 
 // Copy copies the given query using the copy function of the parent GstStructure.
 func (q *Query) Copy() *Query {
-	return wrapQuery(C.gst_query_copy(q.Instance()))
+	return FromGstQueryUnsafeFull(unsafe.Pointer(C.gst_query_copy(q.Instance())))
 }
 
 // FindAllocationMeta checks if query has metadata api set. When this function returns TRUE, index will contain the index where the requested
@@ -230,7 +244,7 @@ func (q *Query) HasSchedulingModeWithFlags(mode PadMode, flags SchedulingFlags) 
 func (q *Query) ParseAcceptCaps() *Caps {
 	caps := &C.GstCaps{}
 	C.gst_query_parse_accept_caps(q.Instance(), &caps)
-	return wrapCaps(caps)
+	return FromGstCapsUnsafeNone(unsafe.Pointer(caps))
 }
 
 // ParseAcceptCapsResult parses the result from the caps query.
@@ -245,7 +259,7 @@ func (q *Query) ParseAllocation() (caps *Caps, needPool bool) {
 	gcaps := &C.GstCaps{}
 	var needz C.gboolean
 	C.gst_query_parse_allocation(q.Instance(), &gcaps, &needz)
-	return wrapCaps(gcaps), gobool(needz)
+	return FromGstCapsUnsafeNone(unsafe.Pointer(gcaps)), gobool(needz)
 }
 
 // ParseBitrate gets the results of a bitrate query. See also SetBitrate.
@@ -285,14 +299,14 @@ func (q *Query) ParseBufferingStats() (mode BufferingMode, avgIn, avgOut int, bu
 func (q *Query) ParseCaps() *Caps {
 	caps := &C.GstCaps{}
 	C.gst_query_parse_caps(q.Instance(), &caps)
-	return wrapCaps(caps)
+	return FromGstCapsUnsafeNone(unsafe.Pointer(caps))
 }
 
 // ParseCapsResult gets the caps result from query. The caps remains valid as long as query remains valid.
 func (q *Query) ParseCapsResult() *Caps {
 	caps := &C.GstCaps{}
 	C.gst_query_parse_caps_result(q.Instance(), &caps)
-	return wrapCaps(caps)
+	return FromGstCapsUnsafeNone(unsafe.Pointer(caps))
 }
 
 // ParseContext gets the context from the context query. The context remains valid as long as query remains valid.
@@ -300,7 +314,7 @@ func (q *Query) ParseContext() *Context {
 	var _ctx *C.GstContext
 	ctx := C.makeContextWritable(_ctx)
 	C.gst_query_parse_context(q.Instance(), &ctx)
-	return wrapContext(ctx)
+	return FromGstContextUnsafeNone(unsafe.Pointer(ctx))
 }
 
 // ParseContextType parses a context type from an existing GST_QUERY_CONTEXT query.
@@ -357,7 +371,7 @@ func (q *Query) ParseAllocationParamAt(idx uint) (*Allocator, *AllocationParams)
 	alloc := &C.GstAllocator{}
 	params := C.GstAllocationParams{}
 	C.gst_query_parse_nth_allocation_param(q.Instance(), C.guint(idx), &alloc, &params)
-	return wrapAllocator(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(alloc))}), wrapAllocationParams(&params)
+	return FromGstAllocatorUnsafeFull(unsafe.Pointer(alloc)), wrapAllocationParams(&params)
 }
 
 // ParseAllocationPoolAt gets the pool parameters in query.
@@ -365,7 +379,7 @@ func (q *Query) ParseAllocationPoolAt(idx uint) (pool *BufferPool, size, minBuff
 	gpool := &C.GstBufferPool{}
 	var gs, gmin, gmax C.guint
 	C.gst_query_parse_nth_allocation_pool(q.Instance(), C.guint(idx), &gpool, &gs, &gmin, &gmax)
-	return wrapBufferPool(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(gpool))}), uint(gs), uint(gmin), uint(gmax)
+	return FromGstBufferPoolUnsafeFull(unsafe.Pointer(gpool)), uint(gs), uint(gmin), uint(gmax)
 }
 
 // ParseBufferingRangeAt parses an available query and get the start and stop values stored at the index of the buffered ranges array.

@@ -6,6 +6,7 @@ package gst
 import "C"
 
 import (
+	"runtime"
 	"unsafe"
 
 	"github.com/tinyzimmer/go-glib/glib"
@@ -21,23 +22,42 @@ type Memory struct {
 	mapInfo *MapInfo
 }
 
+// FromGstMemoryUnsafe wraps the given C GstMemory in the go type. It is meant for internal usage
+// and exported for visibility to other packages.
+func FromGstMemoryUnsafe(mem unsafe.Pointer) *Memory {
+	wrapped := wrapMemory((*C.GstMemory)(mem))
+	wrapped.Ref()
+	runtime.SetFinalizer(wrapped, (*Memory).Unref)
+	return wrapped
+}
+
+// FromGstMemoryUnsafeNone is an alias to FromGstMemoryUnsafe.
+func FromGstMemoryUnsafeNone(mem unsafe.Pointer) *Memory {
+	return FromGstMemoryUnsafe(mem)
+}
+
+// FromGstMemoryUnsafeFull wraps the given memory without taking an additional reference.
+func FromGstMemoryUnsafeFull(mem unsafe.Pointer) *Memory {
+	wrapped := wrapMemory((*C.GstMemory)(mem))
+	runtime.SetFinalizer(wrapped, (*Memory).Unref)
+	return wrapped
+}
+
 // NewMemoryWrapped allocates a new memory block that wraps the given data.
 //
 // The prefix/padding must be filled with 0 if flags contains MemoryFlagZeroPrefixed
 // and MemoryFlagZeroPadded respectively.
-func NewMemoryWrapped(flags MemoryFlags, data []byte, maxSize, offset, size int64) *Memory {
-	str := string(data)
-	dataPtr := unsafe.Pointer(C.CString(str))
+func NewMemoryWrapped(flags MemoryFlags, data []byte, maxSize, offset int64) *Memory {
 	mem := C.gst_memory_new_wrapped(
 		C.GstMemoryFlags(flags),
-		(C.gpointer)(dataPtr),
+		(C.gpointer)(unsafe.Pointer(&data[0])),
 		C.gsize(maxSize),
 		C.gsize(offset),
-		C.gsize(size),
+		C.gsize(len(data)),
 		nil, // TODO: Allow user to set userdata for destroy notify function
 		nil, // TODO: Allow user to set destroy notify function
 	)
-	return wrapMemory(mem)
+	return FromGstMemoryUnsafeFull(unsafe.Pointer(mem))
 }
 
 // Instance returns the underlying GstMemory instance.
@@ -77,7 +97,7 @@ func (m *Memory) Size() int64 { return int64(m.Instance().size) }
 // to the end of the memory region.
 func (m *Memory) Copy(offset, size int64) *Memory {
 	mem := C.gst_memory_copy(m.Instance(), C.gssize(offset), C.gssize(size))
-	return wrapMemory(mem)
+	return FromGstMemoryUnsafeFull(unsafe.Pointer(mem))
 }
 
 // Map the data inside the memory. This function can return nil if the memory is not read or writable.

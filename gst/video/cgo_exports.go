@@ -24,9 +24,8 @@ func goVideoConvertSampleCb(gsample *C.GstSample, gerr *C.GError, userData C.gpo
 	if gerr != nil {
 		err = wrapGerr(gerr)
 	}
-	if sample != nil {
-		sample = gst.FromGstSampleUnsafe(unsafe.Pointer(sample))
-		defer sample.Unref()
+	if gsample != nil {
+		sample = gst.FromGstSampleUnsafeFull(unsafe.Pointer(gsample))
 	}
 	iface := gopointer.Restore(unsafe.Pointer(userData))
 	if iface == nil {

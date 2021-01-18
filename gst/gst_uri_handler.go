@@ -26,6 +26,8 @@ import (
 	"github.com/tinyzimmer/go-glib/glib"
 )
 
+var globalURIHdlr URIHandler
+
 // InterfaceURIHandler represents the GstURIHandler interface GType. Use this when querying bins
 // for elements that implement a URIHandler, or when signaling that a GoObjectSubclass provides this
 // interface. Note that the way this interface is implemented, it can only be used once per plugin.
@@ -66,6 +68,9 @@ func (g *gstURIHandler) Instance() *C.GstURIHandler {
 // GetURI gets the currently handled URI.
 func (g *gstURIHandler) GetURI() string {
 	ret := C.gst_uri_handler_get_uri(g.Instance())
+	if ret == nil {
+		return ""
+	}
 	defer C.g_free((C.gpointer)(unsafe.Pointer(ret)))
 	return C.GoString(ret)
 }

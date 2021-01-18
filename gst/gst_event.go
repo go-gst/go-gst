@@ -4,10 +4,9 @@ package gst
 import "C"
 
 import (
+	"runtime"
 	"time"
 	"unsafe"
-
-	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // Event is a go wrapper around a GstEvent.
@@ -15,9 +14,25 @@ type Event struct {
 	ptr *C.GstEvent
 }
 
-// FromGstEventUnsafe wraps the pointer to the given C GstEvent with the go type.
-// This is meant for internal usage and is exported for visibility to other packages.
-func FromGstEventUnsafe(ev unsafe.Pointer) *Event { return wrapEvent((*C.GstEvent)(ev)) }
+// // FromGstEventUnsafe is an alias to FromGstEventUnsafeNone.
+// func FromGstEventUnsafe(ev unsafe.Pointer) *Event { return FromGstEventUnsafeNone(ev) }
+
+// FromGstEventUnsafeNone wraps the pointer to the given C GstEvent with the go type.
+// A ref is taken and finalizer applied.
+func FromGstEventUnsafeNone(ev unsafe.Pointer) *Event {
+	event := &Event{ptr: (*C.GstEvent)(ev)}
+	event.Ref()
+	runtime.SetFinalizer(event, (*Event).Unref)
+	return event
+}
+
+// FromGstEventUnsafeFull wraps the pointer to the given C GstEvent without taking a ref.
+// A finalizer is applied.
+func FromGstEventUnsafeFull(ev unsafe.Pointer) *Event {
+	event := &Event{ptr: (*C.GstEvent)(ev)}
+	runtime.SetFinalizer(event, (*Event).Unref)
+	return event
+}
 
 // Instance returns the underlying GstEvent instance.
 func (e *Event) Instance() *C.GstEvent { return C.toGstEvent(unsafe.Pointer(e.ptr)) }
@@ -37,7 +52,9 @@ func (e *Event) Seqnum() uint32 {
 }
 
 // Copy copies the event using the event specific copy function.
-func (e *Event) Copy() *Event { return wrapEvent(C.gst_event_copy(e.Instance())) }
+func (e *Event) Copy() *Event {
+	return FromGstEventUnsafeFull(unsafe.Pointer(C.gst_event_copy(e.Instance())))
+}
 
 // CopySegment parses a segment event and copies the Segment into the location given by segment.
 func (e *Event) CopySegment(segment *Segment) {
@@ -93,7 +110,7 @@ func (e *Event) ParseBufferSize() (format Format, minSize, maxSize int64, async 
 func (e *Event) ParseCaps() *Caps {
 	var caps *C.GstCaps
 	C.gst_event_parse_caps(e.Instance(), &caps)
-	return wrapCaps(caps)
+	return FromGstCapsUnsafeNone(unsafe.Pointer(caps))
 }
 
 // ParseFlushStop parses the FLUSH_STOP event and retrieve the reset_time member. Value reflects whether
@@ -235,14 +252,14 @@ func (e *Event) ParseStep() (format Format, amount uint64, rate float64, flush, 
 func (e *Event) ParseStream() *Stream {
 	var stream *C.GstStream
 	C.gst_event_parse_stream(e.Instance(), &stream)
-	return wrapStream(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(stream))})
+	return FromGstStreamUnsafeFull(unsafe.Pointer(stream))
 }
 
 // ParseStreamCollection parses a stream collection from the event.
 func (e *Event) ParseStreamCollection() *StreamCollection {
 	stream := &C.GstStreamCollection{}
 	C.gst_event_parse_stream_collection(e.Instance(), &stream)
-	return wrapStreamCollection(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(stream))})
+	return FromGstStreamCollectionUnsafeFull(unsafe.Pointer(stream))
 }
 
 // ParseStreamFlags parses the stream flags from an event.
@@ -271,7 +288,7 @@ func (e *Event) ParseStreamStart() string {
 func (e *Event) ParseTag() *TagList {
 	var out *C.GstTagList
 	C.gst_event_parse_tag(e.Instance(), &out)
-	return wrapTagList(out)
+	return FromGstTagListUnsafeNone(unsafe.Pointer(out))
 }
 
 // ParseTOC parses a TOC event and store the results in the given toc and updated locations.
@@ -279,7 +296,7 @@ func (e *Event) ParseTOC() (toc *TOC, updated bool) {
 	var out *C.GstToc
 	var gupdated C.gboolean
 	C.gst_event_parse_toc(e.Instance(), &out, &gupdated)
-	return wrapTOC(out), gobool(gupdated)
+	return FromGstTOCUnsafeFull(unsafe.Pointer(out)), gobool(gupdated)
 }
 
 // ParseTOCSelect parses a TOC select event and store the results in the given uid location.

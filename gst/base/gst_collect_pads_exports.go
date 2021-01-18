@@ -22,7 +22,7 @@ func goGstCollectPadsBufferFunc(pads *C.GstCollectPads, data *C.GstCollectData, 
 	var wrappedBuf *gst.Buffer
 	var wrappedData *CollectData
 	if buf != nil {
-		wrappedBuf = gst.FromGstBufferUnsafe(unsafe.Pointer(buf))
+		wrappedBuf = gst.FromGstBufferUnsafeNone(unsafe.Pointer(buf))
 		defer wrappedBuf.Unref()
 	}
 	if data != nil {
@@ -38,7 +38,7 @@ func goGstCollectPadsClipFunc(pads *C.GstCollectPads, data *C.GstCollectData, in
 	collectPads := iface.(*CollectPads)
 	f := collectPads.funcMap.clipFunc
 
-	buf := gst.FromGstBufferUnsafe(unsafe.Pointer(inbuf))
+	buf := gst.FromGstBufferUnsafeNone(unsafe.Pointer(inbuf))
 	defer buf.Unref()
 
 	ret, gooutbuf := f(collectPads, wrapCollectData(data), buf)
@@ -64,7 +64,7 @@ func goGstCollectPadsEventFunc(pads *C.GstCollectPads, data *C.GstCollectData, e
 	collectPads := iface.(*CollectPads)
 	f := collectPads.funcMap.eventFunc
 
-	return gboolean(f(collectPads, wrapCollectData(data), gst.FromGstEventUnsafe(unsafe.Pointer(event))))
+	return gboolean(f(collectPads, wrapCollectData(data), gst.FromGstEventUnsafeNone(unsafe.Pointer(event))))
 }
 
 //export goGstCollectPadsFlushFunc
@@ -91,5 +91,5 @@ func goGstCollectPadsQueryFunc(pads *C.GstCollectPads, data *C.GstCollectData, q
 	collectPads := iface.(*CollectPads)
 	f := collectPads.funcMap.queryFunc
 
-	return gboolean(f(collectPads, wrapCollectData(data), gst.FromGstQueryUnsafe(unsafe.Pointer(query))))
+	return gboolean(f(collectPads, wrapCollectData(data), gst.FromGstQueryUnsafeNone(unsafe.Pointer(query))))
 }

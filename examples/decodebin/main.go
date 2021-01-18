@@ -156,8 +156,6 @@ func buildPipeline() (*gst.Pipeline, error) {
 func runPipeline(loop *glib.MainLoop, pipeline *gst.Pipeline) error {
 	// Start the pipeline
 	pipeline.SetState(gst.StatePlaying)
-	// Stop and cleanup the pipeline when we exit
-	defer pipeline.Destroy()
 
 	// Add a message watch to the bus to quit on any error
 	pipeline.GetPipelineBus().AddWatch(func(msg *gst.Message) bool {

@@ -99,12 +99,8 @@ func runPipeline(loop *glib.MainLoop) error {
 
 	// Remove the watch function from the bus.
 	// Again: There can always only be one watch function.
-	// Thus we don't have to tell him which function to remove.
+	// Thus we don't have to tell it which function to remove.
 	bus.RemoveWatch()
-
-	// Unref the pipeline because we are done with it. The combination of setting
-	// the state to NULL and unreffing is the semantic equivalent to calling Destroy().
-	pipeline.Unref()
 
 	return nil
 }

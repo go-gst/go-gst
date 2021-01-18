@@ -45,6 +45,22 @@ import (
 // Element is a Go wrapper around a GstElement.
 type Element struct{ *Object }
 
+// FromGstElementUnsafeNone wraps the given element with a ref and a finalizer.
+func FromGstElementUnsafeNone(elem unsafe.Pointer) *Element {
+	if elem == nil {
+		return nil
+	}
+	return &Element{Object: &Object{InitiallyUnowned: &glib.InitiallyUnowned{Object: glib.TransferNone(elem)}}}
+}
+
+// FromGstElementUnsafeFull wraps the given element with a finalizer.
+func FromGstElementUnsafeFull(elem unsafe.Pointer) *Element {
+	if elem == nil {
+		return nil
+	}
+	return &Element{Object: &Object{InitiallyUnowned: &glib.InitiallyUnowned{Object: glib.TransferFull(elem)}}}
+}
+
 // ToElement returns an Element object for the given Object. It will work
 // on either gst.Object or glib.Object interfaces.
 func ToElement(obj interface{}) *Element {
@@ -198,12 +214,16 @@ func (e *Element) ErrorMessage(domain Domain, code ErrorCode, text, debug string
 // MessageFull will post an error, warning, or info message on the bus from inside an element. Only to be used
 // from plugins.
 func (e *Element) MessageFull(msgType MessageType, domain Domain, code ErrorCode, text, debug, file, function string, line int) {
-	var cTxt, cDbg unsafe.Pointer
+	var cTxt, cDbg unsafe.Pointer = nil, nil
 	if text != "" {
-		cTxt = unsafe.Pointer(C.CString(text))
+		ctxtstr := C.CString(debug)
+		defer C.free(unsafe.Pointer(ctxtstr))
+		cTxt = unsafe.Pointer(C.g_strdup((*C.gchar)(unsafe.Pointer(ctxtstr))))
 	}
 	if debug != "" {
-		cDbg = unsafe.Pointer(C.CString(debug))
+		cdbgstr := C.CString(debug)
+		defer C.free(unsafe.Pointer(cdbgstr))
+		cDbg = unsafe.Pointer(C.g_strdup((*C.gchar)(unsafe.Pointer(cdbgstr))))
 	}
 	C.gst_element_message_full(
 		e.Instance(),
@@ -225,7 +245,7 @@ func (e *Element) GetBus() *Bus {
 	if bus == nil {
 		return nil
 	}
-	return wrapBus(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(bus))})
+	return FromGstBusUnsafeFull(unsafe.Pointer(bus))
 }
 
 // GetClock returns the Clock for this element. This is the clock as was last set with gst_element_set_clock.
@@ -235,7 +255,7 @@ func (e *Element) GetClock() *Clock {
 	if cClock == nil {
 		return nil
 	}
-	return wrapClock(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(cClock))})
+	return FromGstClockUnsafeFull(unsafe.Pointer(cClock))
 }
 
 // GetFactory returns the factory that created this element. No refcounting is needed.
@@ -248,14 +268,30 @@ func (e *Element) GetFactory() *ElementFactory {
 }
 
 // GetPads retrieves a list of pads associated with the element.
-func (e *Element) GetPads() []*Pad {
-	goList := glib.WrapList(uintptr(unsafe.Pointer(e.Instance().pads)))
-	out := make([]*Pad, 0)
-	goList.Foreach(func(item interface{}) {
-		pt := item.(unsafe.Pointer)
-		out = append(out, wrapPad(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(pt))}))
-	})
-	return out
+func (e *Element) GetPads() ([]*Pad, error) {
+	iter := C.gst_element_iterate_pads(e.Instance())
+	if iter == nil {
+		return nil, nil
+	}
+	return iteratorToPadSlice(iter)
+}
+
+// GetSinkPads retrieves a list of sink pads associated with the element.
+func (e *Element) GetSinkPads() ([]*Pad, error) {
+	iter := C.gst_element_iterate_sink_pads(e.Instance())
+	if iter == nil {
+		return nil, nil
+	}
+	return iteratorToPadSlice(iter)
+}
+
+// GetSrcPads retrieves a list of src pads associated with the element.
+func (e *Element) GetSrcPads() ([]*Pad, error) {
+	iter := C.gst_element_iterate_src_pads(e.Instance())
+	if iter == nil {
+		return nil, nil
+	}
+	return iteratorToPadSlice(iter)
 }
 
 // GetPadTemplates retrieves a list of the pad templates associated with this element.
@@ -289,7 +325,7 @@ func (e *Element) GetStaticPad(name string) *Pad {
 	if pad == nil {
 		return nil
 	}
-	return wrapPad(toGObject(unsafe.Pointer(pad)))
+	return FromGstPadUnsafeFull(unsafe.Pointer(pad))
 }
 
 // Has returns true if this element has the given flags.
@@ -312,8 +348,14 @@ func (e *Element) Link(elem *Element) error {
 
 // LinkFiltered wraps gst_element_link_filtered and link this element to the given one
 // using the provided sink caps.
-func (e *Element) LinkFiltered(elem *Element, caps *Caps) error {
-	if ok := C.gst_element_link_filtered((*C.GstElement)(e.Instance()), (*C.GstElement)(elem.Instance()), (*C.GstCaps)(caps.Instance())); !gobool(ok) {
+func (e *Element) LinkFiltered(elem *Element, filter *Caps) error {
+	if filter == nil {
+		if ok := C.gst_element_link_filtered(e.Instance(), elem.Instance(), nil); !gobool(ok) {
+			return fmt.Errorf("Failed to link %s to %s with provided caps", e.GetName(), elem.GetName())
+		}
+		return nil
+	}
+	if ok := C.gst_element_link_filtered(e.Instance(), elem.Instance(), filter.Instance()); !gobool(ok) {
 		return fmt.Errorf("Failed to link %s to %s with provided caps", e.GetName(), elem.GetName())
 	}
 	return nil
@@ -377,7 +419,7 @@ func (e *Element) QueryPosition(format Format) (bool, int64) {
 // This function takes ownership of the provided event so you should gst_event_ref it if you want to reuse the event
 // after this call.
 func (e *Element) SendEvent(ev *Event) bool {
-	return gobool(C.gst_element_send_event(e.Instance(), ev.Instance()))
+	return gobool(C.gst_element_send_event(e.Instance(), ev.Ref().Instance()))
 }
 
 // SetState sets the target state for this element.

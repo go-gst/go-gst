@@ -35,6 +35,7 @@ gint                   infoWidth             (GstVideoInfo * info)              
 */
 import "C"
 import (
+	"runtime"
 	"unsafe"
 
 	"github.com/tinyzimmer/go-gst/gst"
@@ -163,9 +164,11 @@ type Info struct {
 
 func wrapInfo(vinfo *C.GstVideoInfo) *Info {
 	info := &Info{vinfo}
+	runtime.SetFinalizer(info, (*Info).Free)
 	return info
 }
 
+// Free will free this video info
 func (i *Info) Free() {
 	C.gst_video_info_free(i.instance())
 }
@@ -384,5 +387,5 @@ func (i *Info) WithPAR(f gst.GFraction) *Info {
 // ToCaps returns the caps representation of this video info.
 func (i *Info) ToCaps() *gst.Caps {
 	caps := C.gst_video_info_to_caps(i.instance())
-	return gst.FromGstCapsUnsafe(unsafe.Pointer(caps))
+	return gst.FromGstCapsUnsafeFull(unsafe.Pointer(caps))
 }

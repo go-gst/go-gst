@@ -26,7 +26,6 @@ func wrapBus(obj *glib.Object) *Bus                       { return &Bus{Object: 
 func wrapCaps(caps *C.GstCaps) *Caps                      { return &Caps{native: caps} }
 func wrapClock(obj *glib.Object) *Clock                   { return &Clock{wrapObject(obj)} }
 func wrapContext(ctx *C.GstContext) *Context              { return &Context{ptr: ctx} }
-func wrapDevice(obj *glib.Object) *Device                 { return &Device{wrapObject(obj)} }
 func wrapElement(obj *glib.Object) *Element               { return &Element{wrapObject(obj)} }
 func wrapEvent(ev *C.GstEvent) *Event                     { return &Event{ptr: ev} }
 func wrapGhostPad(obj *glib.Object) *GhostPad             { return &GhostPad{wrapProxyPad(obj)} }
@@ -42,7 +41,6 @@ func wrapPluginFeature(obj *glib.Object) *PluginFeature   { return &PluginFeatur
 func wrapPlugin(obj *glib.Object) *Plugin                 { return &Plugin{wrapObject(obj)} }
 func wrapProxyPad(obj *glib.Object) *ProxyPad             { return &ProxyPad{wrapPad(obj)} }
 func wrapQuery(query *C.GstQuery) *Query                  { return &Query{ptr: query} }
-func wrapRegistry(obj *glib.Object) *Registry             { return &Registry{wrapObject(obj)} }
 func wrapSample(sample *C.GstSample) *Sample              { return &Sample{sample: sample} }
 func wrapSegment(segment *C.GstSegment) *Segment          { return &Segment{ptr: segment} }
 func wrapStream(obj *glib.Object) *Stream                 { return &Stream{wrapObject(obj)} }
@@ -60,10 +58,6 @@ func wrapObject(obj *glib.Object) *Object {
 
 func wrapElementFactory(obj *glib.Object) *ElementFactory {
 	return &ElementFactory{wrapPluginFeature(obj)}
-}
-
-func wrapStreamCollection(obj *glib.Object) *StreamCollection {
-	return &StreamCollection{wrapObject(obj)}
 }
 
 func wrapAllocationParams(obj *C.GstAllocationParams) *AllocationParams {

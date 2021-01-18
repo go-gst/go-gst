@@ -2,7 +2,11 @@ package gst
 
 // #include "gst.go.h"
 import "C"
-import "github.com/tinyzimmer/go-glib/glib"
+import (
+	"unsafe"
+
+	"github.com/tinyzimmer/go-glib/glib"
+)
 
 // InterfaceTOCSetter represents the GstTocSetter interface GType. Use this when querying bins
 // for elements that implement a TOCSetter.
@@ -32,7 +36,7 @@ func (g *gstTOCSetter) GetTOC() *TOC {
 	if toc == nil {
 		return nil
 	}
-	return wrapTOC(toc)
+	return FromGstTOCUnsafeFull(unsafe.Pointer(toc))
 }
 
 func (g *gstTOCSetter) SetTOC(toc *TOC) { C.gst_toc_setter_set_toc(g.Instance(), toc.Instance()) }

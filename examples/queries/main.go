@@ -96,7 +96,7 @@ func queries(mainLoop *glib.MainLoop) error {
 
 	bus.RemoveWatch()
 
-	return pipeline.Destroy()
+	return nil
 }
 
 func main() {

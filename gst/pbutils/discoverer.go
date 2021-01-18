@@ -1,10 +1,11 @@
 package pbutils
 
-// #include <gst/pbutils/pbutils.h>
+/*
+#include <gst/pbutils/pbutils.h>
+*/
 import "C"
 
 import (
-	"runtime"
 	"time"
 	"unsafe"
 
@@ -77,8 +78,8 @@ func toGObject(o unsafe.Pointer) *glib.Object { return &glib.Object{GObject: gli
 // Discoverer represents a GstDiscoverer
 type Discoverer struct{ *glib.Object }
 
-func wrapDiscoverer(d *C.GstDiscoverer) *Discoverer {
-	return &Discoverer{toGObject(unsafe.Pointer(d))}
+func wrapDiscovererFull(d *C.GstDiscoverer) *Discoverer {
+	return &Discoverer{glib.TransferFull(unsafe.Pointer(d))}
 }
 
 // NewDiscoverer creates a new Discoverer with the provided timeout.
@@ -95,12 +96,12 @@ func NewDiscoverer(timeout time.Duration) (*Discoverer, error) {
 	if gerr != nil {
 		return nil, wrapGerr(gerr)
 	}
-	return wrapDiscoverer(ret), nil
+	return wrapDiscovererFull(ret), nil
 }
 
 // Instance returns the underlying GstDiscoverer instance.
 func (d *Discoverer) Instance() *C.GstDiscoverer {
-	return (*C.GstDiscoverer)(unsafe.Pointer(d.Native()))
+	return (*C.GstDiscoverer)(unsafe.Pointer(d.GObject))
 }
 
 // DiscoverURI synchronously discovers the given uri.
@@ -112,24 +113,24 @@ func (d *Discoverer) DiscoverURI(uri string) (*DiscovererInfo, error) {
 	if err != nil {
 		return nil, wrapGerr(err)
 	}
-	return wrapDiscovererInfo(info), nil
+	return wrapDiscovererInfoFull(info), nil
 }
 
 // DiscovererInfo represents a GstDiscovererInfo
 type DiscovererInfo struct{ *glib.Object }
 
-func wrapDiscovererInfo(d *C.GstDiscovererInfo) *DiscovererInfo {
-	return &DiscovererInfo{toGObject(unsafe.Pointer(d))}
+func wrapDiscovererInfoFull(d *C.GstDiscovererInfo) *DiscovererInfo {
+	return &DiscovererInfo{glib.TransferFull(unsafe.Pointer(d))}
 }
 
 // Instance returns the underlying GstDiscovererInfo instance.
 func (d *DiscovererInfo) Instance() *C.GstDiscovererInfo {
-	return (*C.GstDiscovererInfo)(unsafe.Pointer(d.Native()))
+	return (*C.GstDiscovererInfo)(unsafe.Pointer(d.GObject))
 }
 
 // Copy creates a copy of this instance.
 func (d *DiscovererInfo) Copy() *DiscovererInfo {
-	return wrapDiscovererInfo(C.gst_discoverer_info_copy(d.Instance()))
+	return wrapDiscovererInfoFull(C.gst_discoverer_info_copy(d.Instance()))
 }
 
 // GetAudioStreams finds all the DiscovererAudioInfo contained in info.
@@ -204,7 +205,7 @@ func (d *DiscovererInfo) GetTags() *gst.TagList {
 	if tagList == nil {
 		return nil
 	}
-	return gst.FromGstTagListUnsafe(unsafe.Pointer(tagList))
+	return gst.FromGstTagListUnsafeNone(unsafe.Pointer(tagList))
 }
 
 // GetTOC returns the TOC for the URI stream.
@@ -213,7 +214,7 @@ func (d *DiscovererInfo) GetTOC() *gst.TOC {
 	if toc == nil {
 		return nil
 	}
-	return gst.FromGstTOCUnsafe(unsafe.Pointer(toc))
+	return gst.FromGstTOCUnsafeNone(unsafe.Pointer(toc))
 }
 
 // GetURI returns the URI for this info.
@@ -239,7 +240,7 @@ func wrapDiscovererStreamInfo(d *C.GstDiscovererStreamInfo) *DiscovererStreamInf
 
 // Instance returns the underlying GstDiscovererStreamInfo instance.
 func (d *DiscovererStreamInfo) Instance() *C.GstDiscovererStreamInfo {
-	return (*C.GstDiscovererStreamInfo)(unsafe.Pointer(d.Native()))
+	return (*C.GstDiscovererStreamInfo)(unsafe.Pointer(d.GObject))
 }
 
 // GetCaps returns the caps from the stream info.
@@ -248,7 +249,7 @@ func (d *DiscovererStreamInfo) GetCaps() *gst.Caps {
 	if caps == nil {
 		return nil
 	}
-	return gst.FromGstCapsUnsafe(unsafe.Pointer(caps))
+	return gst.FromGstCapsUnsafeFull(unsafe.Pointer(caps))
 }
 
 // GetStreamID returns the stream ID of this stream.
@@ -267,7 +268,7 @@ func (d *DiscovererStreamInfo) GetTags() *gst.TagList {
 	if tagList == nil {
 		return nil
 	}
-	return gst.FromGstTagListUnsafe(unsafe.Pointer(tagList))
+	return gst.FromGstTagListUnsafeNone(unsafe.Pointer(tagList))
 }
 
 // GetTOC gets the TOC contained in this stream
@@ -276,7 +277,7 @@ func (d *DiscovererStreamInfo) GetTOC() *gst.TOC {
 	if toc == nil {
 		return nil
 	}
-	return gst.FromGstTOCUnsafe(unsafe.Pointer(toc))
+	return gst.FromGstTOCUnsafeNone(unsafe.Pointer(toc))
 }
 
 // DiscovererAudioInfo contains info specific to audio streams.
@@ -284,7 +285,7 @@ type DiscovererAudioInfo struct{ *DiscovererStreamInfo }
 
 // Instance returns the underlying GstDiscovererAudioInfo instance.
 func (d *DiscovererAudioInfo) Instance() *C.GstDiscovererAudioInfo {
-	return (*C.GstDiscovererAudioInfo)(unsafe.Pointer(d.Native()))
+	return (*C.GstDiscovererAudioInfo)(unsafe.Pointer(d.GObject))
 }
 
 // GetBitate returns the bitrate for the audio stream.
@@ -331,7 +332,7 @@ type DiscovererVideoInfo struct{ *DiscovererStreamInfo }
 
 // Instance returns the underlying GstDiscovererVideoInfo instance.
 func (d *DiscovererVideoInfo) Instance() *C.GstDiscovererVideoInfo {
-	return (*C.GstDiscovererVideoInfo)(unsafe.Pointer(d.Native()))
+	return (*C.GstDiscovererVideoInfo)(unsafe.Pointer(d.GObject))
 }
 
 // GetBitrate returns the average or nominal bitrate of the video stream in bits/second.
@@ -394,7 +395,7 @@ type DiscovererContainerInfo struct{ *DiscovererStreamInfo }
 
 // Instance returns the underlying GstDiscovererContainerInfo instance.
 func (d *DiscovererContainerInfo) Instance() *C.GstDiscovererContainerInfo {
-	return (*C.GstDiscovererContainerInfo)(unsafe.Pointer(d.Native()))
+	return (*C.GstDiscovererContainerInfo)(unsafe.Pointer(d.GObject))
 }
 
 // GetStreams returns the list of streams inside this container.
@@ -411,7 +412,7 @@ type DiscovererSubtitleInfo struct{ *DiscovererStreamInfo }
 
 // Instance returns the underlying GstDiscovererSubtitleInfo instance.
 func (d *DiscovererSubtitleInfo) Instance() *C.GstDiscovererSubtitleInfo {
-	return (*C.GstDiscovererSubtitleInfo)(unsafe.Pointer(d.Native()))
+	return (*C.GstDiscovererSubtitleInfo)(unsafe.Pointer(d.GObject))
 }
 
 // GetLanguage returns the language of the subtitles.
@@ -424,57 +425,72 @@ func (d *DiscovererSubtitleInfo) GetLanguage() string {
 }
 
 func glistToStreamInfoSlice(glist *C.GList) []*DiscovererStreamInfo {
-	l := glib.WrapList(uintptr(unsafe.Pointer(&glist)))
-	out := make([]*DiscovererStreamInfo, 0)
-	runtime.SetFinalizer(&out, func(_ *[]*DiscovererStreamInfo) { C.gst_discoverer_stream_info_list_free(glist) })
-	l.Foreach(func(item interface{}) {
-		st := item.(unsafe.Pointer)
-		out = append(out, &DiscovererStreamInfo{toGObject(st)})
-	})
+	defer C.gst_discoverer_stream_info_list_free(glist)
+	l := C.g_list_length(glist)
+	out := make([]*DiscovererStreamInfo, int(l))
+	for i := 0; i < int(l); i++ {
+		data := C.g_list_nth_data(glist, C.guint(i))
+		if data == nil {
+			return out // safety
+		}
+		out[i] = &DiscovererStreamInfo{glib.TransferFull(unsafe.Pointer(data))}
+	}
 	return out
 }
 
 func glistToAudioInfoSlice(glist *C.GList) []*DiscovererAudioInfo {
-	l := glib.WrapList(uintptr(unsafe.Pointer(&glist)))
-	out := make([]*DiscovererAudioInfo, 0)
-	runtime.SetFinalizer(&out, func(_ *[]*DiscovererAudioInfo) { C.gst_discoverer_stream_info_list_free(glist) })
-	l.Foreach(func(item interface{}) {
-		st := item.(unsafe.Pointer)
-		out = append(out, &DiscovererAudioInfo{&DiscovererStreamInfo{toGObject(st)}})
-	})
+	defer C.gst_discoverer_stream_info_list_free(glist)
+	l := C.g_list_length(glist)
+	out := make([]*DiscovererAudioInfo, int(l))
+	for i := 0; i < int(l); i++ {
+		data := C.g_list_nth_data(glist, C.guint(i))
+		if data == nil {
+			return out // safety
+		}
+		out[i] = &DiscovererAudioInfo{&DiscovererStreamInfo{glib.TransferFull(unsafe.Pointer(data))}}
+	}
 	return out
 }
 
 func glistToVideoInfoSlice(glist *C.GList) []*DiscovererVideoInfo {
-	l := glib.WrapList(uintptr(unsafe.Pointer(&glist)))
+	defer C.gst_discoverer_stream_info_list_free(glist)
+	l := C.g_list_length(glist)
 	out := make([]*DiscovererVideoInfo, 0)
-	runtime.SetFinalizer(&out, func(_ *[]*DiscovererVideoInfo) { C.gst_discoverer_stream_info_list_free(glist) })
-	l.Foreach(func(item interface{}) {
-		st := item.(unsafe.Pointer)
-		out = append(out, &DiscovererVideoInfo{&DiscovererStreamInfo{toGObject(st)}})
-	})
+	for i := 0; i < int(l); i++ {
+		data := C.g_list_nth_data(glist, C.guint(i))
+		if data == nil {
+			return out // safety
+		}
+		out[i] = &DiscovererVideoInfo{&DiscovererStreamInfo{glib.TransferFull(unsafe.Pointer(data))}}
+	}
 	return out
 }
 
 func glistToContainerInfoSlice(glist *C.GList) []*DiscovererContainerInfo {
-	l := glib.WrapList(uintptr(unsafe.Pointer(&glist)))
+	defer C.gst_discoverer_stream_info_list_free(glist)
+	l := C.g_list_length(glist)
 	out := make([]*DiscovererContainerInfo, 0)
-	runtime.SetFinalizer(&out, func(_ *[]*DiscovererContainerInfo) { C.gst_discoverer_stream_info_list_free(glist) })
-	l.Foreach(func(item interface{}) {
-		st := item.(unsafe.Pointer)
-		out = append(out, &DiscovererContainerInfo{&DiscovererStreamInfo{toGObject(st)}})
-	})
+	for i := 0; i < int(l); i++ {
+		data := C.g_list_nth_data(glist, C.guint(i))
+		if data == nil {
+			return out // safety
+		}
+		out[i] = &DiscovererContainerInfo{&DiscovererStreamInfo{glib.TransferFull(unsafe.Pointer(data))}}
+	}
 	return out
 }
 
 func glistToSubtitleInfoSlice(glist *C.GList) []*DiscovererSubtitleInfo {
-	l := glib.WrapList(uintptr(unsafe.Pointer(&glist)))
+	defer C.gst_discoverer_stream_info_list_free(glist)
+	l := C.g_list_length(glist)
 	out := make([]*DiscovererSubtitleInfo, 0)
-	runtime.SetFinalizer(&out, func(_ *[]*DiscovererSubtitleInfo) { C.gst_discoverer_stream_info_list_free(glist) })
-	l.Foreach(func(item interface{}) {
-		st := item.(unsafe.Pointer)
-		out = append(out, &DiscovererSubtitleInfo{&DiscovererStreamInfo{toGObject(st)}})
-	})
+	for i := 0; i < int(l); i++ {
+		data := C.g_list_nth_data(glist, C.guint(i))
+		if data == nil {
+			return out // safety
+		}
+		out[i] = &DiscovererSubtitleInfo{&DiscovererStreamInfo{glib.TransferFull(unsafe.Pointer(data))}}
+	}
 	return out
 }
 

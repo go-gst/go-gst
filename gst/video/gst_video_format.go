@@ -271,7 +271,7 @@ func MakeRawCaps(formats []Format) *gst.Caps {
 			C.guint(len(formats)),
 		)
 	}
-	return gst.FromGstCapsUnsafe(unsafe.Pointer(caps))
+	return gst.FromGstCapsUnsafeFull(unsafe.Pointer(caps))
 }
 
 // MakeRawCapsWithFeatures returns a generic raw video caps for formats defined in formats with features. If formats is
@@ -287,7 +287,7 @@ func MakeRawCapsWithFeatures(formats []Format, features *gst.CapsFeatures) *gst.
 			fromCoreCapsFeatures(features),
 		)
 	}
-	return gst.FromGstCapsUnsafe(unsafe.Pointer(caps))
+	return gst.FromGstCapsUnsafeFull(unsafe.Pointer(caps))
 }
 
 // Info returns the FormatInfo for this video format.

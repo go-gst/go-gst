@@ -2,16 +2,32 @@ package gst
 
 // #include "gst.go.h"
 import "C"
-import "unsafe"
+import (
+	"runtime"
+	"unsafe"
+)
 
 // TOC is a go representation of a GstToc.
 type TOC struct {
 	ptr *C.GstToc
 }
 
-// FromGstTOCUnsafe wraps the pointer to the given C GstToc with the go type.
+// FromGstTOCUnsafeNone wraps the pointer to the given C GstToc with the go type.
 // This is meant for internal usage and is exported for visibility to other packages.
-func FromGstTOCUnsafe(toc unsafe.Pointer) *TOC { return wrapTOC((*C.GstToc)(toc)) }
+func FromGstTOCUnsafeNone(toc unsafe.Pointer) *TOC {
+	gotoc := wrapTOC((*C.GstToc)(toc))
+	gotoc.Ref()
+	runtime.SetFinalizer(gotoc, (*TOC).Unref)
+	return gotoc
+}
+
+// FromGstTOCUnsafeFull wraps the pointer to the given C GstToc with the go type.
+// This is meant for internal usage and is exported for visibility to other packages.
+func FromGstTOCUnsafeFull(toc unsafe.Pointer) *TOC {
+	gotoc := wrapTOC((*C.GstToc)(toc))
+	runtime.SetFinalizer(gotoc, (*TOC).Unref)
+	return gotoc
+}
 
 // NewTOC returns a new TOC with the given scope.
 func NewTOC(scope TOCScope) *TOC {
@@ -19,7 +35,7 @@ func NewTOC(scope TOCScope) *TOC {
 	if toc == nil {
 		return nil
 	}
-	return wrapTOC(toc)
+	return FromGstTOCUnsafeFull(unsafe.Pointer(toc))
 }
 
 // Instance returns the underlying GstToc instance.
@@ -38,12 +54,12 @@ func (t *TOC) Unref() {
 
 // MakeWritable returns a writable copy of the TOC if it isn't already,
 func (t *TOC) MakeWritable() *TOC {
-	return wrapTOC(C.makeTocWritable(t.Instance()))
+	return FromGstTOCUnsafeFull(unsafe.Pointer(C.makeTocWritable(t.Instance())))
 }
 
 // Copy creates a copy of the TOC.
 func (t *TOC) Copy() *TOC {
-	return wrapTOC(C.copyToc(t.Instance()))
+	return FromGstTOCUnsafeFull(unsafe.Pointer(C.copyToc(t.Instance())))
 }
 
 // AppendEntry appends the given TOCEntry to this TOC.
@@ -64,7 +80,7 @@ func (t *TOC) FindEntry(uid string) *TOCEntry {
 	if entry == nil {
 		return nil
 	}
-	return wrapTOCEntry(entry)
+	return FromGstTocEntryUnsafeNone(unsafe.Pointer(entry))
 }
 
 // GetEntries returns a list of all TOCEntries.
@@ -79,7 +95,7 @@ func (t *TOC) GetEntries() []*TOCEntry {
 		if entry == nil {
 			break
 		}
-		out = append(out, wrapTOCEntry((*C.GstTocEntry)(unsafe.Pointer(entry))))
+		out = append(out, FromGstTocEntryUnsafeNone(unsafe.Pointer(entry)))
 	}
 	return out
 }
@@ -95,7 +111,7 @@ func (t *TOC) GetTags() *TagList {
 	if tagList == nil {
 		return nil
 	}
-	return wrapTagList(tagList)
+	return FromGstTagListUnsafeNone(unsafe.Pointer(tagList))
 }
 
 // MergeTags merges the given tags into this TOC's TagList.
@@ -105,12 +121,27 @@ func (t *TOC) MergeTags(tagList *TagList, mergeMode TagMergeMode) {
 
 // SetTags sets tags for the entire TOC.
 func (t *TOC) SetTags(tagList *TagList) {
-	C.gst_toc_set_tags(t.Instance(), tagList.Instance())
+	C.gst_toc_set_tags(t.Instance(), tagList.Ref().Instance())
 }
 
 // TOCEntry is a go representation of a GstTocEntry,
 type TOCEntry struct {
 	ptr *C.GstTocEntry
+}
+
+// FromGstTocEntryUnsafeNone wraps the given TOCEntry.
+func FromGstTocEntryUnsafeNone(entry unsafe.Pointer) *TOCEntry {
+	t := wrapTOCEntry((*C.GstTocEntry)(entry))
+	t.Ref()
+	runtime.SetFinalizer(t, (*TOCEntry).Unref)
+	return t
+}
+
+// FromGstTocEntryUnsafeFull wraps the given TOCEntry.
+func FromGstTocEntryUnsafeFull(entry unsafe.Pointer) *TOCEntry {
+	t := wrapTOCEntry((*C.GstTocEntry)(entry))
+	runtime.SetFinalizer(t, (*TOCEntry).Unref)
+	return t
 }
 
 // NewTOCEntry creates a new TOCEntry with the given UID and type.
@@ -124,7 +155,7 @@ func NewTOCEntry(entryType TOCEntryType, uid string) *TOCEntry {
 	if entry == nil {
 		return nil
 	}
-	return wrapTOCEntry(entry)
+	return FromGstTocEntryUnsafeFull(unsafe.Pointer(entry))
 }
 
 // Instance returns the underlying GstTocEntry instance.
@@ -143,17 +174,17 @@ func (t *TOCEntry) Unref() {
 
 // MakeWritable returns a writable copy of the TOCEntry if it is not already so.
 func (t *TOCEntry) MakeWritable() *TOCEntry {
-	return wrapTOCEntry(C.makeTocEntryWritable(t.Instance()))
+	return FromGstTocEntryUnsafeFull(unsafe.Pointer(C.makeTocEntryWritable(t.Instance())))
 }
 
 // Copy creates a copy of the TOCEntry
 func (t *TOCEntry) Copy() *TOCEntry {
-	return wrapTOCEntry(C.copyTocEntry(t.Instance()))
+	return FromGstTocEntryUnsafeFull(unsafe.Pointer(C.copyTocEntry(t.Instance())))
 }
 
 // AppendSubEntry appends the given entry as a subentry to this one.
 func (t *TOCEntry) AppendSubEntry(subEntry *TOCEntry) {
-	C.gst_toc_entry_append_sub_entry(t.Instance(), subEntry.Instance())
+	C.gst_toc_entry_append_sub_entry(t.Instance(), subEntry.Ref().Instance())
 }
 
 // GetEntryType returns the type of this TOCEntry
@@ -180,7 +211,7 @@ func (t *TOCEntry) GetParent() *TOCEntry {
 	if parent == nil {
 		return nil
 	}
-	return wrapTOCEntry(parent)
+	return FromGstTocEntryUnsafeNone(unsafe.Pointer(parent))
 }
 
 // GetStartStopTimes gets the start and stop times for the TOCEntry if available.
@@ -202,7 +233,7 @@ func (t *TOCEntry) GetSubEntries() []*TOCEntry {
 		if entry == nil {
 			break
 		}
-		out = append(out, wrapTOCEntry((*C.GstTocEntry)(unsafe.Pointer(entry))))
+		out = append(out, FromGstTocEntryUnsafeNone(unsafe.Pointer(entry)))
 	}
 	return out
 }
@@ -213,7 +244,7 @@ func (t *TOCEntry) GetTags() *TagList {
 	if tagList == nil {
 		return nil
 	}
-	return wrapTagList(tagList)
+	return FromGstTagListUnsafeNone(unsafe.Pointer(tagList))
 }
 
 // GetTOC returns the parent TOC of this entry.
@@ -222,7 +253,7 @@ func (t *TOCEntry) GetTOC() *TOC {
 	if toc == nil {
 		return nil
 	}
-	return wrapTOC(toc)
+	return FromGstTOCUnsafeNone(unsafe.Pointer(toc))
 }
 
 // GetUID returns the uid of this entry.
@@ -242,6 +273,10 @@ func (t *TOCEntry) IsSequence() bool {
 
 // MergeTags merges the given tags with the given mode.
 func (t *TOCEntry) MergeTags(tagList *TagList, mergeMode TagMergeMode) {
+	if tagList == nil {
+		C.gst_toc_entry_merge_tags(t.Instance(), nil, C.GstTagMergeMode(mergeMode))
+		return
+	}
 	C.gst_toc_entry_merge_tags(t.Instance(), tagList.Instance(), C.GstTagMergeMode(mergeMode))
 }
 
@@ -257,5 +292,5 @@ func (t *TOCEntry) SetStartStopTimes(startTime, stopTime int64) {
 
 // SetTags sets the tags on the TOC entry.
 func (t *TOCEntry) SetTags(tagList *TagList) {
-	C.gst_toc_entry_set_tags(t.Instance(), tagList.Instance())
+	C.gst_toc_entry_set_tags(t.Instance(), tagList.Ref().Instance())
 }

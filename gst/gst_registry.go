@@ -13,10 +13,20 @@ import (
 // Registry is a go representation of a GstRegistry.
 type Registry struct{ *Object }
 
+// FromGstRegistryUnsafeNone wraps the given GstRegistry pointer.
+func FromGstRegistryUnsafeNone(registry unsafe.Pointer) *Registry {
+	return &Registry{wrapObject(glib.TransferNone(registry))}
+}
+
+// FromGstRegistryUnsafeFull wraps the given GstRegistry pointer.
+func FromGstRegistryUnsafeFull(registry unsafe.Pointer) *Registry {
+	return &Registry{wrapObject(glib.TransferFull(registry))}
+}
+
 // GetRegistry returns the default global GstRegistry.
 func GetRegistry() *Registry {
 	registry := C.gst_registry_get()
-	return wrapRegistry(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(registry))})
+	return FromGstRegistryUnsafeNone(unsafe.Pointer(registry))
 }
 
 // Instance returns the underlying GstRegistry instance.
@@ -30,7 +40,7 @@ func (r *Registry) FindPlugin(name string) (*Plugin, error) {
 	if plugin == nil {
 		return nil, fmt.Errorf("No plugin named %s found", name)
 	}
-	return wrapPlugin(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(plugin))}), nil
+	return FromGstPluginUnsafeFull(unsafe.Pointer(plugin)), nil
 }
 
 // LookupFeature looks up the given plugin feature by name. Unref after usage.
@@ -41,5 +51,5 @@ func (r *Registry) LookupFeature(name string) (*PluginFeature, error) {
 	if feat == nil {
 		return nil, fmt.Errorf("No feature named %s found", name)
 	}
-	return wrapPluginFeature(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(feat))}), nil
+	return wrapPluginFeature(glib.TransferFull(unsafe.Pointer(feat))), nil
 }

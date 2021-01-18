@@ -30,7 +30,7 @@ func ToGstBaseSrc(obj interface{}) *GstBaseSrc {
 
 // wrapGstBaseSrc wraps the given unsafe.Pointer in a GstBaseSrc instance.
 func wrapGstBaseSrc(obj *C.GstBaseSrc) *GstBaseSrc {
-	return &GstBaseSrc{gst.FromGstElementUnsafe(unsafe.Pointer(obj))}
+	return &GstBaseSrc{gst.FromGstElementUnsafeNone(unsafe.Pointer(obj))}
 }
 
 // Instance returns the underlying C GstBaseSrc instance
@@ -43,7 +43,10 @@ func (g *GstBaseSrc) GetAllocator() (*gst.Allocator, *gst.AllocationParams) {
 	var allocParams C.GstAllocationParams
 	var allocator *C.GstAllocator
 	C.gst_base_src_get_allocator(g.Instance(), &allocator, &allocParams)
-	return gst.FromGstAllocatorUnsafe(unsafe.Pointer(allocator)), gst.FromGstAllocationParamsUnsafe(unsafe.Pointer(&allocParams))
+	if allocator == nil {
+		return nil, nil
+	}
+	return gst.FromGstAllocatorUnsafeFull(unsafe.Pointer(allocator)), gst.FromGstAllocationParamsUnsafe(unsafe.Pointer(&allocParams))
 }
 
 // GetBlocksize returns the number of bytes that the source will push out with each buffer.
@@ -51,7 +54,11 @@ func (g *GstBaseSrc) GetBlocksize() uint { return uint(C.gst_base_src_get_blocks
 
 // GetBufferPool returns the BufferPool used by this source. Unref after usage.
 func (g *GstBaseSrc) GetBufferPool() *gst.BufferPool {
-	return gst.FromGstBufferPoolUnsafe(unsafe.Pointer(C.gst_base_src_get_buffer_pool(g.Instance())))
+	pool := C.gst_base_src_get_buffer_pool(g.Instance())
+	if pool == nil {
+		return nil
+	}
+	return gst.FromGstBufferPoolUnsafeFull(unsafe.Pointer(pool))
 }
 
 // DoTimestamp will query if the timestamps outgoing on this source's buffers are based on the current

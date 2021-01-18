@@ -5,8 +5,6 @@ import "C"
 
 import (
 	"unsafe"
-
-	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // PluginFeature wraps the C GstPluginFeature.
@@ -21,7 +19,7 @@ func (p *PluginFeature) GetPlugin() *Plugin {
 	if plugin == nil {
 		return nil
 	}
-	return wrapPlugin(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(plugin))})
+	return FromGstPluginUnsafeFull(unsafe.Pointer(plugin))
 }
 
 // GetPluginName returns the name of the plugin that provides this feature.

@@ -20,10 +20,7 @@ GstBusSyncReply cgoBusSyncHandler (GstBus * bus, GstMessage * message, gpointer 
 import "C"
 
 import (
-	"errors"
 	"reflect"
-	"runtime/debug"
-	"sync"
 	"time"
 	"unsafe"
 
@@ -35,9 +32,6 @@ import (
 // popping messages from the queue.
 type Bus struct {
 	*Object
-
-	msgChannels []chan *Message
-	mux         sync.Mutex
 }
 
 // NewBus returns a new Bus instance.
@@ -75,9 +69,16 @@ type Bus struct {
 //   // > [fakesrc0] ASYNC-START - Async task started
 //
 func NewBus() *Bus {
-	bus := C.gst_bus_new()
-	return wrapBus(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(bus))})
+	return FromGstBusUnsafeFull(unsafe.Pointer(C.gst_bus_new()))
 }
+
+// FromGstBusUnsafeNone wraps the given unsafe.Pointer in a bus. It takes a ref on the bus and sets
+// a runtime finalizer on it.
+func FromGstBusUnsafeNone(bus unsafe.Pointer) *Bus { return wrapBus(glib.TransferNone(bus)) }
+
+// FromGstBusUnsafeFull wraps the given unsafe.Pointer in a bus. It does not increase the ref count
+// and places a runtime finalizer on the instance.
+func FromGstBusUnsafeFull(bus unsafe.Pointer) *Bus { return wrapBus(glib.TransferFull(bus)) }
 
 // Instance returns the underlying GstBus instance.
 func (b *Bus) Instance() *C.GstBus { return C.toGstBus(b.Unsafe()) }
@@ -91,41 +92,6 @@ func (b *Bus) Instance() *C.GstBus { return C.toGstBus(b.Unsafe()) }
 // This function may be called multiple times. To clean up, the caller is responsible for calling RemoveSignalWatch
 // as many times as this function is called.
 func (b *Bus) AddSignalWatch() { C.gst_bus_add_signal_watch(b.Instance()) }
-
-func (b *Bus) deliverMessages() {
-	for {
-		msg := b.BlockPopMessage()
-		if msg == nil {
-			return
-		}
-		b.mux.Lock()
-		for _, ch := range b.msgChannels {
-			ch <- msg.Ref()
-		}
-		b.mux.Unlock()
-		msg.Unref()
-	}
-}
-
-// MessageChan returns a new channel to listen for messages asynchronously. Messages
-// should be unreffed after each usage. Messages are delivered to channels in the
-// order in which this function was called.
-//
-// While a message is being delivered to created channels, there is a lock on creating
-// new ones.
-//
-// It is much safer and easier to use the AddWatch method or other polling functions. Only use this method if you
-// are unable to also run a MainLoop, or for convenience sake.
-func (b *Bus) MessageChan() chan *Message {
-	b.mux.Lock()
-	defer b.mux.Unlock()
-	ch := make(chan *Message)
-	b.msgChannels = append(b.msgChannels, ch)
-	if len(b.msgChannels) == 1 {
-		go b.deliverMessages()
-	}
-	return ch
-}
 
 // PopMessage attempts to pop a message from the bus. It returns nil if none are available.
 // The message should be unreffed after usage.
@@ -185,9 +151,9 @@ func (b *Bus) AddWatch(busFunc BusWatchFunc) bool {
 // CreateWatch creates a watch and returns the GSource to be added to a main loop.
 // TODO: the return values from this function should be type casted and the MainLoop
 // should offer methods for using the return of this function.
-func (b *Bus) CreateWatch() *C.GSource {
-	return C.gst_bus_create_watch(b.Instance())
-}
+// func (b *Bus) CreateWatch() *C.GSource {
+// 	return C.gst_bus_create_watch(b.Instance())
+// }
 
 // RemoveWatch will remove any watches installed on the bus. This can also be accomplished
 // by returning false from a previously installed function.
@@ -255,7 +221,11 @@ func (b *Bus) HavePending() bool {
 // Peek peeks the message on the top of the bus' queue. The message will remain on the bus'
 // message queue. A reference is returned, and needs to be unreffed by the caller.
 func (b *Bus) Peek() *Message {
-	return wrapMessage(C.gst_bus_peek(b.Instance()))
+	msg := C.gst_bus_peek(b.Instance())
+	if msg == nil {
+		return nil
+	}
+	return FromGstMessageUnsafeFull(unsafe.Pointer(msg))
 }
 
 // Poll the bus for messages. Will block while waiting for messages to come. You can specify a maximum
@@ -288,7 +258,7 @@ func (b *Bus) Poll(msgTypes MessageType, timeout time.Duration) *Message {
 	if msg == nil {
 		return nil
 	}
-	return wrapMessage(msg)
+	return FromGstMessageUnsafeFull(unsafe.Pointer(msg))
 }
 
 // Pop pops a message from the bus, or returns nil if none are available.
@@ -297,7 +267,7 @@ func (b *Bus) Pop() *Message {
 	if msg == nil {
 		return nil
 	}
-	return wrapMessage(msg)
+	return FromGstMessageUnsafeFull(unsafe.Pointer(msg))
 }
 
 // PopFiltered gets a message matching type from the bus. Will discard all messages on the bus that do not match type
@@ -309,28 +279,12 @@ func (b *Bus) PopFiltered(msgTypes MessageType) *Message {
 	if msg == nil {
 		return nil
 	}
-	return wrapMessage(msg)
+	return FromGstMessageUnsafeFull(unsafe.Pointer(msg))
 }
 
 // Post a new message on the bus. The bus takes ownership of the message.
 func (b *Bus) Post(msg *Message) bool {
-	return gobool(C.gst_bus_post(b.Instance(), msg.Instance()))
-}
-
-// PostError is a wrapper for creating a new error mesesage and then posting it to the bus.
-// It gathers stack info from the caller and appends it to the debug info in the error. And optional
-// error object can be provided and will be added to the structure of the error.
-func (b *Bus) PostError(src interface{}, msg string, err error) bool {
-	gerr := NewGError(1, errors.New(msg))
-	var st *Structure
-	if err != nil {
-		st = NewStructure("go-error")
-		if addErr := st.SetValue("error", err.Error()); addErr != nil {
-			b.Log(CAT, LevelWarning, "failed to set error message to structure")
-		}
-	}
-	gstMsg := NewErrorMessage(src, gerr, string(debug.Stack()), st)
-	return b.Post(gstMsg)
+	return gobool(C.gst_bus_post(b.Instance(), msg.Ref().Instance()))
 }
 
 // SetFlushing sets whether to flush out and unref any messages queued in the bus. Releases references to the message origin
@@ -372,7 +326,7 @@ func (b *Bus) TimedPop(dur time.Duration) *Message {
 	if msg == nil {
 		return nil
 	}
-	return wrapMessage(msg)
+	return FromGstMessageUnsafeFull(unsafe.Pointer(msg))
 }
 
 // TimedPopFiltered gets a message from the bus whose type matches the message type mask types, waiting up to the specified timeout
@@ -391,5 +345,5 @@ func (b *Bus) TimedPopFiltered(dur time.Duration, msgTypes MessageType) *Message
 	if msg == nil {
 		return nil
 	}
-	return wrapMessage(msg)
+	return FromGstMessageUnsafeFull(unsafe.Pointer(msg))
 }

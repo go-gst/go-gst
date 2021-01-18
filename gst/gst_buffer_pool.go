@@ -19,12 +19,26 @@ type BufferPool struct{ *Object }
 // NewBufferPool returns a new BufferPool instance.
 func NewBufferPool() *BufferPool {
 	pool := C.gst_buffer_pool_new()
-	return wrapBufferPool(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(pool))})
+	return FromGstBufferPoolUnsafeFull(unsafe.Pointer(pool))
 }
 
-// FromGstBufferPoolUnsafe wraps the given unsafe.Pointer in a BufferPool instance.
-func FromGstBufferPoolUnsafe(bufferPool unsafe.Pointer) *BufferPool {
-	return wrapBufferPool(toGObject(bufferPool))
+// FromGstBufferPoolUnsafeNone wraps the given unsafe.Pointer in a BufferPool instance. It takes a
+// ref and places a runtime finalizer on the resulting object.
+func FromGstBufferPoolUnsafeNone(bufferPool unsafe.Pointer) *BufferPool {
+	pool := wrapBufferPool(glib.TransferNone(bufferPool))
+	return pool
+}
+
+// // FromGstBufferPoolUnsafe is an alias to FromGstBufferPoolUnsafeNone.
+// func FromGstBufferPoolUnsafe(bufferPool unsafe.Pointer) *BufferPool {
+// 	return FromGstBufferPoolUnsafeNone(bufferPool)
+// }
+
+// FromGstBufferPoolUnsafeFull wraps the given unsafe.Pointer in a BufferPool instance. It just
+// places a runtime finalizer on the resulting object.
+func FromGstBufferPoolUnsafeFull(bufferPool unsafe.Pointer) *BufferPool {
+	pool := wrapBufferPool(glib.TransferFull(bufferPool))
+	return pool
 }
 
 // Instance returns the underlying GstBufferPool instance.
@@ -52,18 +66,26 @@ func (b *BufferPool) AcquireBuffer(params *BufferPoolAcquireParams) (*Buffer, Fl
 		gparams.stop = C.gint64(params.Stop)
 		gparams.flags = C.GstBufferPoolAcquireFlags(params.Flags)
 		ret := C.gst_buffer_pool_acquire_buffer(b.Instance(), &buf, gparams)
-		return wrapBuffer(buf), FlowReturn(ret)
+		if FlowReturn(ret) != FlowOK {
+			return nil, FlowReturn(ret)
+		}
+		return FromGstBufferUnsafeFull(unsafe.Pointer(buf)), FlowReturn(ret)
 	}
 	ret := C.gst_buffer_pool_acquire_buffer(b.Instance(), &buf, nil)
-	return wrapBuffer(buf), FlowReturn(ret)
+	if FlowReturn(ret) != FlowOK {
+		return nil, FlowReturn(ret)
+	}
+	return FromGstBufferUnsafeFull(unsafe.Pointer(buf)), FlowReturn(ret)
 }
 
 // GetConfig retrieves a copy of the current configuration of the pool. This configuration can either
-// be modified and used for the SetConfig call or it must be freed after usage.
+// be modified and used for the SetConfig call or it must be freed after usage with Free.
 func (b *BufferPool) GetConfig() *BufferPoolConfig {
-	st := wrapStructure(C.gst_buffer_pool_get_config(b.Instance()))
-	cfg := BufferPoolConfig(*st)
-	return &cfg
+	st := C.gst_buffer_pool_get_config(b.Instance())
+	if st == nil {
+		return nil
+	}
+	return &BufferPoolConfig{Structure: FromGstStructureUnsafe(unsafe.Pointer(st))}
 }
 
 // GetOptions retrieves a list of supported bufferpool options for the pool. An option would typically
@@ -89,7 +111,7 @@ func (b *BufferPool) IsActive() bool { return gobool(C.gst_buffer_pool_is_active
 //
 // This function is usually called automatically when the last ref on buffer disappears.
 func (b *BufferPool) ReleaseBuffer(buf *Buffer) {
-	C.gst_buffer_pool_release_buffer(b.Instance(), buf.Instance())
+	C.gst_buffer_pool_release_buffer(b.Instance(), buf.Ref().Instance())
 }
 
 // SetActive can be used to control the active state of pool. When the pool is inactive, new calls to
@@ -126,10 +148,7 @@ func (b *BufferPool) SetFlushing(flushing bool) {
 
 // BufferPoolConfig wraps the Structure interface with extra methods for interacting with BufferPool
 // configurations.
-type BufferPoolConfig Structure
-
-// Instance returns the structure backing this config.
-func (b *BufferPoolConfig) Instance() *C.GstStructure { return C.toGstStructure(b.ptr) }
+type BufferPoolConfig struct{ *Structure }
 
 // AddOption enables the option in config. This will instruct the bufferpool to enable the specified option
 // on the buffers that it allocates.
@@ -146,7 +165,11 @@ func (b *BufferPoolConfig) GetAllocator() (*Allocator, *AllocationParams) {
 	var allocator *C.GstAllocator
 	var params C.GstAllocationParams
 	C.gst_buffer_pool_config_get_allocator(b.Instance(), &allocator, &params)
-	return wrapAllocator(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(allocator))}), &AllocationParams{ptr: &params}
+	var allo *Allocator
+	if allocator != nil {
+		allo = wrapAllocator(glib.TransferNone(unsafe.Pointer(allocator)))
+	}
+	return allo, &AllocationParams{ptr: &params}
 }
 
 // GetOption retrieves the option at index of the options API array.
@@ -193,7 +216,17 @@ func (b *BufferPoolConfig) NumOptions() uint {
 // Some pools are, for example, not able to operate with different allocators or cannot allocate with the values
 // specified in params. Use GetConfig on the pool to get the currently used values.
 func (b *BufferPoolConfig) SetAllocator(allocator *Allocator, params *AllocationParams) {
-	C.gst_buffer_pool_config_set_allocator(b.Instance(), allocator.Instance(), params.Instance())
+	if allocator == nil && params != nil {
+		C.gst_buffer_pool_config_set_allocator(b.Instance(), nil, params.Instance())
+		return
+	}
+	if allocator != nil && params == nil {
+		C.gst_buffer_pool_config_set_allocator(b.Instance(), allocator.Instance(), nil)
+		return
+	}
+	if allocator != nil && params != nil {
+		C.gst_buffer_pool_config_set_allocator(b.Instance(), allocator.Instance(), params.Instance())
+	}
 }
 
 // SetParams configures the config with the given parameters.

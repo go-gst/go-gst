@@ -7,6 +7,7 @@ import (
 	"image/color"
 	"time"
 
+	"github.com/tinyzimmer/go-glib/glib"
 	"github.com/tinyzimmer/go-gst/examples"
 	"github.com/tinyzimmer/go-gst/gst"
 	"github.com/tinyzimmer/go-gst/gst/app"
@@ -88,7 +89,7 @@ func createPipeline() (*gst.Pipeline, error) {
 			// There are convenience wrappers for building buffers directly from byte sequences as
 			// well.
 			buffer.Map(gst.MapWrite).WriteData(pixels)
-			defer buffer.Unmap()
+			buffer.Unmap()
 
 			// Push the buffer onto the pipeline.
 			self.PushBuffer(buffer)
@@ -115,8 +116,6 @@ func produceImageFrame(c color.Color) []uint8 {
 }
 
 func handleMessage(msg *gst.Message) error {
-	defer msg.Unref() // Messages are a good candidate for trying out runtime finalizers
-
 	switch msg.Type() {
 	case gst.MessageEOS:
 		return app.ErrEOS
@@ -127,41 +126,42 @@ func handleMessage(msg *gst.Message) error {
 		}
 		return gerr
 	}
-
 	return nil
 }
 
-func mainLoop(pipeline *gst.Pipeline) error {
-
-	defer pipeline.Destroy() // Will stop and unref the pipeline when this function returns
-
+func mainLoop(loop *glib.MainLoop, pipeline *gst.Pipeline) error {
 	// Start the pipeline
+
+	// Due to recent changes in the pipeline - the finalizers might fire on the pipeline
+	// prematurely when it's passed between scopes. So when you do this, it is safer to
+	// take a reference that you dispose of when you are done.
+	pipeline.Ref()
+	defer pipeline.Unref()
+
 	pipeline.SetState(gst.StatePlaying)
 
-	// Retrieve the bus from the pipeline
-	bus := pipeline.GetPipelineBus()
-
-	// Loop over messsages from the pipeline
-	for {
-		msg := bus.TimedPop(time.Duration(-1))
-		if msg == nil {
-			break
-		}
+	// Retrieve the bus from the pipeline and add a watch function
+	pipeline.GetPipelineBus().AddWatch(func(msg *gst.Message) bool {
 		if err := handleMessage(msg); err != nil {
-			return err
+			fmt.Println(err)
+			loop.Quit()
+			return false
 		}
-	}
+		return true
+	})
+
+	loop.Run()
 
 	return nil
 }
 
 func main() {
-	examples.Run(func() error {
+	examples.RunLoop(func(loop *glib.MainLoop) error {
 		var pipeline *gst.Pipeline
 		var err error
 		if pipeline, err = createPipeline(); err != nil {
 			return err
 		}
-		return mainLoop(pipeline)
+		return mainLoop(loop, pipeline)
 	})
 }

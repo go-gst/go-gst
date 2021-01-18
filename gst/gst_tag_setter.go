@@ -50,7 +50,7 @@ func (t *gstTagSetter) GetTagList() *TagList {
 	if tagList == nil {
 		return nil
 	}
-	return wrapTagList(tagList)
+	return FromGstTagListUnsafeNone(unsafe.Pointer(tagList))
 }
 
 func (t *gstTagSetter) AddTagValue(mergeMode TagMergeMode, tagKey Tag, tagValue interface{}) {

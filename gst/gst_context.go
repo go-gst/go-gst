@@ -2,11 +2,29 @@ package gst
 
 // #include "gst.go.h"
 import "C"
-import "unsafe"
+import (
+	"runtime"
+	"unsafe"
+)
 
 // Context wraps a GstContext object.
 type Context struct {
 	ptr *C.GstContext
+}
+
+// FromGstContextUnsafeFull wraps the given context and places a runtime finalizer on it.
+func FromGstContextUnsafeFull(ctx unsafe.Pointer) *Context {
+	wrapped := wrapContext((*C.GstContext)(ctx))
+	runtime.SetFinalizer(wrapped, (*Context).Unref)
+	return wrapped
+}
+
+// FromGstContextUnsafeNone refs and wraps the given context and places a runtime finalizer on it.
+func FromGstContextUnsafeNone(ctx unsafe.Pointer) *Context {
+	wrapped := wrapContext((*C.GstContext)(ctx))
+	wrapped.Ref()
+	runtime.SetFinalizer(wrapped, (*Context).Unref)
+	return wrapped
 }
 
 // NewContext creates a new context.
@@ -29,7 +47,7 @@ func NewContext(ctxType string, persistent bool) *Context {
 	if ctx == nil {
 		return nil
 	}
-	return wrapContext(ctx)
+	return FromGstContextUnsafeFull(unsafe.Pointer(ctx))
 }
 
 // Instance returns the underlying GstContext instance.
@@ -89,7 +107,7 @@ func (c *Context) IsWritable() bool {
 
 // MakeWritable returns a writable version of the context.
 func (c *Context) MakeWritable() *Context {
-	return wrapContext(C.makeContextWritable(c.Instance()))
+	return FromGstContextUnsafeFull(unsafe.Pointer(C.makeContextWritable(c.Instance())))
 }
 
 // WritableStructure returns a writable version of the structure. You should still not unref it.
@@ -100,3 +118,12 @@ func (c *Context) WritableStructure() *Structure {
 	}
 	return wrapStructure(st)
 }
+
+// Ref increases the ref count on the Context.
+func (c *Context) Ref() *Context {
+	ctx := C.gst_context_ref(c.Instance())
+	return &Context{ptr: ctx}
+}
+
+// Unref decreases the ref count on the Context.
+func (c *Context) Unref() { C.gst_context_unref(c.Instance()) }

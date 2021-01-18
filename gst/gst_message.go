@@ -4,6 +4,7 @@ package gst
 import "C"
 
 import (
+	"runtime"
 	"strings"
 	"time"
 	"unsafe"
@@ -15,6 +16,23 @@ import (
 // unref-ing and parsing the underlying messages.
 type Message struct {
 	msg *C.GstMessage
+}
+
+// FromGstMessageUnsafeNone wraps the given unsafe.Pointer in a message. A ref is taken
+// on the message and a runtime finalizer placed on the object.
+func FromGstMessageUnsafeNone(msg unsafe.Pointer) *Message {
+	gomsg := wrapMessage((*C.GstMessage)(msg))
+	gomsg.Ref()
+	runtime.SetFinalizer(gomsg, (*Message).Unref)
+	return gomsg
+}
+
+// FromGstMessageUnsafeFull wraps the given unsafe.Pointer in a message. No ref is taken
+// and a finalizer is placed on the resulting object.
+func FromGstMessageUnsafeFull(msg unsafe.Pointer) *Message {
+	gomsg := wrapMessage((*C.GstMessage)(msg))
+	runtime.SetFinalizer(gomsg, (*Message).Unref)
+	return gomsg
 }
 
 // Instance returns the underlying GstMessage object.
@@ -34,7 +52,7 @@ func (m *Message) Ref() *Message {
 // Copy will copy this object into a new Message that can be Unrefed separately.
 func (m *Message) Copy() *Message {
 	newNative := C.gst_message_copy((*C.GstMessage)(m.Instance()))
-	return wrapMessage(newNative)
+	return FromGstMessageUnsafeFull(unsafe.Pointer(newNative))
 }
 
 // Source returns the source of the message.
@@ -141,7 +159,7 @@ func (m *Message) ParseTags() *TagList {
 	if tagList == nil {
 		return nil
 	}
-	return wrapTagList(tagList)
+	return FromGstTagListUnsafeFull(unsafe.Pointer(tagList))
 }
 
 // ParseTOC extracts the TOC from the GstMessage. The TOC returned in the output argument is
@@ -150,7 +168,7 @@ func (m *Message) ParseTOC() (toc *TOC, updated bool) {
 	var gtoc *C.GstToc
 	var gupdated C.gboolean
 	C.gst_message_parse_toc(m.Instance(), &gtoc, &gupdated)
-	return wrapTOC(gtoc), gobool(gupdated)
+	return FromGstTOCUnsafeFull(unsafe.Pointer(gtoc)), gobool(gupdated)
 }
 
 // ParseStreamStatus parses the stream status type of the message as well as the element
@@ -163,7 +181,7 @@ func (m *Message) ParseStreamStatus() (StreamStatusType, *Element) {
 		(*C.GstStreamStatusType)(&cStatusType),
 		(**C.GstElement)(&cElem),
 	)
-	return StreamStatusType(cStatusType), wrapElement(toGObject(unsafe.Pointer(cElem)))
+	return StreamStatusType(cStatusType), FromGstElementUnsafeNone(unsafe.Pointer(cElem))
 }
 
 // ParseAsyncDone extracts the running time from the async task done message.
@@ -282,7 +300,7 @@ func (m *Message) ParseStepDone() *StepDoneValues {
 func (m *Message) ParseNewClock() *Clock {
 	var clock *C.GstClock
 	C.gst_message_parse_new_clock((*C.GstMessage)(m.Instance()), &clock)
-	return wrapClock(toGObject(unsafe.Pointer(clock)))
+	return FromGstClockUnsafeNone(unsafe.Pointer(clock))
 }
 
 // ParseClockProvide extracts the clock and ready flag from the GstMessage.
@@ -291,7 +309,7 @@ func (m *Message) ParseClockProvide() (clock *Clock, ready bool) {
 	var gclock *C.GstClock
 	var gready C.gboolean
 	C.gst_message_parse_clock_provide((*C.GstMessage)(m.Instance()), &gclock, &gready)
-	return wrapClock(toGObject(unsafe.Pointer(clock))), gobool(gready)
+	return FromGstClockUnsafeNone(unsafe.Pointer(clock)), gobool(gready)
 }
 
 // ParseStructureChange extracts the change type and completion status from the GstMessage.
@@ -394,7 +412,7 @@ func (m *Message) ParseResetTime() time.Duration {
 func (m *Message) ParseDeviceAdded() *Device {
 	var device *C.GstDevice
 	C.gst_message_parse_device_added((*C.GstMessage)(m.Instance()), &device)
-	return wrapDevice(toGObject(unsafe.Pointer(device)))
+	return FromGstDeviceUnsafeFull(unsafe.Pointer(device))
 }
 
 // ParseDeviceRemoved parses a device-removed message. The device-removed message
@@ -403,7 +421,7 @@ func (m *Message) ParseDeviceAdded() *Device {
 func (m *Message) ParseDeviceRemoved() *Device {
 	var device *C.GstDevice
 	C.gst_message_parse_device_removed((*C.GstMessage)(m.Instance()), &device)
-	return wrapDevice(toGObject(unsafe.Pointer(device)))
+	return FromGstDeviceUnsafeFull(unsafe.Pointer(device))
 }
 
 // ParseDeviceChanged Parses a device-changed message. The device-changed message is
@@ -414,8 +432,8 @@ func (m *Message) ParseDeviceRemoved() *Device {
 func (m *Message) ParseDeviceChanged() (newDevice, oldDevice *Device) {
 	var gstNewDevice, gstOldDevice *C.GstDevice
 	C.gst_message_parse_device_changed((*C.GstMessage)(m.Instance()), &gstNewDevice, &gstOldDevice)
-	return wrapDevice(toGObject(unsafe.Pointer(gstNewDevice))),
-		wrapDevice(toGObject(unsafe.Pointer(gstOldDevice)))
+	return FromGstDeviceUnsafeFull(unsafe.Pointer(gstNewDevice)),
+		FromGstDeviceUnsafeFull(unsafe.Pointer(gstOldDevice))
 }
 
 // ParsePropertyNotify parses a property-notify message. These will be posted on the bus only
@@ -441,7 +459,7 @@ func (m *Message) ParseStreamCollection() *StreamCollection {
 		(*C.GstMessage)(m.Instance()),
 		&collection,
 	)
-	return wrapStreamCollection(toGObject(unsafe.Pointer(collection)))
+	return FromGstStreamCollectionUnsafeFull(unsafe.Pointer(collection))
 }
 
 // ParseStreamsSelected parses a streams-selected message.
@@ -451,7 +469,7 @@ func (m *Message) ParseStreamsSelected() *StreamCollection {
 		(*C.GstMessage)(m.Instance()),
 		&collection,
 	)
-	return wrapStreamCollection(toGObject(unsafe.Pointer(collection)))
+	return FromGstStreamCollectionUnsafeFull(unsafe.Pointer(collection))
 }
 
 // NumRedirectEntries returns the number of redirect entries in a MessageRedirect.
@@ -474,12 +492,12 @@ func (m *Message) ParseRedirectEntryAt(idx int64) (location string, tags *TagLis
 		&entryStruct,
 	)
 	return string(C.GoBytes(locPtr, C.sizeOfGCharArray((**C.gchar)(locPtr)))),
-		wrapTagList(tagList), wrapStructure(entryStruct)
+		FromGstTagListUnsafeNone(unsafe.Pointer(tagList)), wrapStructure(entryStruct)
 }
 
 // ParseHaveContext parses the context from a HaveContext message.
 func (m *Message) ParseHaveContext() *Context {
 	var ctx *C.GstContext
 	C.gst_message_parse_have_context(m.Instance(), &ctx)
-	return wrapContext(ctx)
+	return FromGstContextUnsafeFull(unsafe.Pointer(ctx))
 }
