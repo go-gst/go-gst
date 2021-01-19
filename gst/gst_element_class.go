@@ -40,7 +40,7 @@ func (e *ElementClass) AddMetadata(key, value string) {
 func (e *ElementClass) AddPadTemplate(templ *PadTemplate) {
 	C.gst_element_class_add_pad_template(
 		e.Instance(),
-		templ.Instance(),
+		(*C.GstPadTemplate)(templ.Unsafe()),
 	)
 }
 
@@ -55,7 +55,7 @@ func (e *ElementClass) AddStaticPadTemplate(templ *PadTemplate) {
 		direction:     templ.Instance().direction,
 		presence:      templ.Instance().presence,
 		static_caps: C.GstStaticCaps{
-			caps:   templ.Caps().Instance(),
+			caps:   templ.Caps().Ref().Instance(),
 			string: C.CString(templ.Name()),
 		},
 	}
@@ -101,19 +101,11 @@ func (e *ElementClass) GetAllPadTemplates() []*PadTemplate {
 //
 // `author` - Name and contact details of the author(s). Use \n to separate multiple author metadata. E.g: "Joe Bloggs <joe.blogs at foo.com>"
 func (e *ElementClass) SetMetadata(longname, classification, description, author string) {
-	lname := C.CString(longname)
-	class := C.CString(classification)
-	desc := C.CString(description)
-	auth := C.CString(description)
-	defer C.free(unsafe.Pointer(lname))
-	defer C.free(unsafe.Pointer(class))
-	defer C.free(unsafe.Pointer(desc))
-	defer C.free(unsafe.Pointer(auth))
 	C.gst_element_class_set_static_metadata(
 		e.Instance(),
-		(*C.gchar)(unsafe.Pointer(lname)),
-		(*C.gchar)(unsafe.Pointer(class)),
-		(*C.gchar)(unsafe.Pointer(desc)),
-		(*C.gchar)(unsafe.Pointer(auth)),
+		(*C.gchar)(C.CString(longname)),
+		(*C.gchar)(C.CString(classification)),
+		(*C.gchar)(C.CString(description)),
+		(*C.gchar)(C.CString(author)),
 	)
 }

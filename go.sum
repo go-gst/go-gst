@@ -1,10 +1,4 @@
 github.com/mattn/go-pointer v0.0.1 h1:n+XhsuGeVO6MEAp7xyEukFINEa+Quek5psIR/ylA6o0=
 github.com/mattn/go-pointer v0.0.1/go.mod h1:2zXcozF6qYGgmsG+SeTZz3oAbFLdD3OWqnUbNvJZAlc=
-github.com/tinyzimmer/go-glib v0.0.12 h1:3illkvxCT71DT12tix1iGl+jkA/JdZxtcj0z3V9Aevo=
-github.com/tinyzimmer/go-glib v0.0.12/go.mod h1:zy2cs6eXSTtqqYrv9/UgYMDfr4pWKuYPSzwX87cBGX4=
-github.com/tinyzimmer/go-glib v0.0.14 h1:Axk3eBfBqaCOvBEXwuqNVJ3YAL41R6GFpj9IlYkPZ+w=
-github.com/tinyzimmer/go-glib v0.0.14/go.mod h1:zy2cs6eXSTtqqYrv9/UgYMDfr4pWKuYPSzwX87cBGX4=
-github.com/tinyzimmer/go-glib v0.0.15 h1:F6Ht4OJevy5KsDx/ecO73NIk5OVte3ghdYdEnwDWaPg=
-github.com/tinyzimmer/go-glib v0.0.15/go.mod h1:zy2cs6eXSTtqqYrv9/UgYMDfr4pWKuYPSzwX87cBGX4=
-github.com/tinyzimmer/go-glib v0.0.16 h1:5d6jsGR4jfhhmuQhgy7t8PBSi4R3KvFPj9p8qisvJtw=
-github.com/tinyzimmer/go-glib v0.0.16/go.mod h1:zy2cs6eXSTtqqYrv9/UgYMDfr4pWKuYPSzwX87cBGX4=
+github.com/tinyzimmer/go-glib v0.0.18 h1:zSlJK5NDcquHK4FFQ2cF6tRavo2Y+6jc3Qowj1sN+oQ=
+github.com/tinyzimmer/go-glib v0.0.18/go.mod h1:zy2cs6eXSTtqqYrv9/UgYMDfr4pWKuYPSzwX87cBGX4=

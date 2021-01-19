@@ -114,6 +114,14 @@ func mainLoop(loop *glib.MainLoop, pipeline *gst.Pipeline) error {
 		}
 	}()
 
+	// When passing an object created by the bindings between scopes, there is a posibility
+	// the finalizer will leak and destroy your object before you are done with it.  One way
+	// of dealing with this is by taking an additional Ref and disposing of it when you are
+	// done with the new scope. An alternative is to declare Keep() *after* where you know
+	// you will be done with the object. This instructs the runtime to defer the finalizer
+	// until after this point is passed in the code execution.
+	pipeline.Keep()
+
 	return loop.RunError()
 }
 
