@@ -15,26 +15,37 @@ import (
 
 //export goGstBaseSinkActivatePull
 func goGstBaseSinkActivatePull(sink *C.GstBaseSink, active C.gboolean) C.gboolean {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(sink)).(interface {
-		ActivatePull(self *GstBaseSink, active bool) bool
+	var ret C.gboolean
+	glib.WithPointerTransferOriginal(unsafe.Pointer(sink), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			ActivatePull(self *GstBaseSink, active bool) bool
+		})
+		ret = gboolean(iface.ActivatePull(ToGstBaseSink(gObject), gobool(active)))
 	})
-	return gboolean(iface.ActivatePull(wrapGstBaseSink(sink), gobool(active)))
+	return ret
 }
 
 //export goGstBaseSinkEvent
 func goGstBaseSinkEvent(sink *C.GstBaseSink, event *C.GstEvent) C.gboolean {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(sink)).(interface {
-		Event(self *GstBaseSink, event *gst.Event) bool
+	var ret C.gboolean
+	glib.WithPointerTransferOriginal(unsafe.Pointer(sink), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			Event(self *GstBaseSink, event *gst.Event) bool
+		})
+		ret = gboolean(iface.Event(ToGstBaseSink(gObject), gst.ToGstEvent(unsafe.Pointer(event))))
 	})
-	return gboolean(iface.Event(wrapGstBaseSink(sink), gst.FromGstEventUnsafeNone(unsafe.Pointer(event))))
+	return ret
 }
 
 //export goGstBaseSinkFixate
 func goGstBaseSinkFixate(sink *C.GstBaseSink, caps *C.GstCaps) *C.GstCaps {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(sink)).(interface {
-		Fixate(self *GstBaseSink, caps *gst.Caps) *gst.Caps
+	var fixated *gst.Caps
+	glib.WithPointerTransferOriginal(unsafe.Pointer(sink), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			Fixate(self *GstBaseSink, caps *gst.Caps) *gst.Caps
+		})
+		fixated = iface.Fixate(ToGstBaseSink(gObject), gst.ToGstCaps(unsafe.Pointer(caps)))
 	})
-	fixated := iface.Fixate(wrapGstBaseSink(sink), gst.FromGstCapsUnsafeNone(unsafe.Pointer(caps)))
 	if fixated == nil {
 		return nil
 	}
@@ -43,10 +54,13 @@ func goGstBaseSinkFixate(sink *C.GstBaseSink, caps *C.GstCaps) *C.GstCaps {
 
 //export goGstBaseSinkGetCaps
 func goGstBaseSinkGetCaps(sink *C.GstBaseSink, filter *C.GstCaps) *C.GstCaps {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(sink)).(interface {
-		GetCaps(self *GstBaseSink, filter *gst.Caps) *gst.Caps
+	var filtered *gst.Caps
+	glib.WithPointerTransferOriginal(unsafe.Pointer(sink), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			GetCaps(self *GstBaseSink, filter *gst.Caps) *gst.Caps
+		})
+		filtered = iface.GetCaps(ToGstBaseSink(gObject), gst.ToGstCaps(unsafe.Pointer(filter)))
 	})
-	filtered := iface.GetCaps(wrapGstBaseSink(sink), gst.FromGstCapsUnsafeNone(unsafe.Pointer(filter)))
 	if filtered == nil {
 		return nil
 	}
@@ -55,114 +69,169 @@ func goGstBaseSinkGetCaps(sink *C.GstBaseSink, filter *C.GstCaps) *C.GstCaps {
 
 //export goGstBaseSinkGetTimes
 func goGstBaseSinkGetTimes(sink *C.GstBaseSink, buf *C.GstBuffer, start, end *C.GstClockTime) {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(sink)).(interface {
-		GetTimes(self *GstBaseSink, buffer *gst.Buffer) (start, end time.Duration)
+	var retStart, retEnd time.Duration
+	glib.WithPointerTransferOriginal(unsafe.Pointer(sink), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			GetTimes(self *GstBaseSink, buffer *gst.Buffer) (start, end time.Duration)
+		})
+		retStart, retEnd = iface.GetTimes(ToGstBaseSink(gObject), gst.ToGstBuffer(unsafe.Pointer(buf)))
 	})
-	retStart, retEnd := iface.GetTimes(wrapGstBaseSink(sink), gst.FromGstBufferUnsafeNone(unsafe.Pointer(buf)))
 	*start = C.GstClockTime(retStart.Nanoseconds())
 	*end = C.GstClockTime(retEnd.Nanoseconds())
 }
 
 //export goGstBaseSinkPrepare
 func goGstBaseSinkPrepare(sink *C.GstBaseSink, buf *C.GstBuffer) C.GstFlowReturn {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(sink)).(interface {
-		Prepare(self *GstBaseSink, buffer *gst.Buffer) gst.FlowReturn
+	var ret gst.FlowReturn
+	glib.WithPointerTransferOriginal(unsafe.Pointer(sink), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			Prepare(self *GstBaseSink, buffer *gst.Buffer) gst.FlowReturn
+		})
+		ret = iface.Prepare(ToGstBaseSink(gObject), gst.ToGstBuffer(unsafe.Pointer(buf)))
 	})
-	return C.GstFlowReturn(iface.Prepare(wrapGstBaseSink(sink), gst.FromGstBufferUnsafeNone(unsafe.Pointer(buf))))
+	return C.GstFlowReturn(ret)
 }
 
 //export goGstBaseSinkPrepareList
 func goGstBaseSinkPrepareList(sink *C.GstBaseSink, list *C.GstBufferList) C.GstFlowReturn {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(sink)).(interface {
-		PrepareList(self *GstBaseSink, bufferList *gst.BufferList) gst.FlowReturn
+	var ret gst.FlowReturn
+	glib.WithPointerTransferOriginal(unsafe.Pointer(sink), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			PrepareList(self *GstBaseSink, bufferList *gst.BufferList) gst.FlowReturn
+		})
+		ret = iface.PrepareList(ToGstBaseSink(gObject), gst.ToGstBufferList(unsafe.Pointer(list)))
 	})
-	return C.GstFlowReturn(iface.PrepareList(wrapGstBaseSink(sink), gst.FromGstBufferListUnsafeNone(unsafe.Pointer(list))))
+	return C.GstFlowReturn(ret)
 }
 
 //export goGstBaseSinkPreroll
 func goGstBaseSinkPreroll(sink *C.GstBaseSink, buf *C.GstBuffer) C.GstFlowReturn {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(sink)).(interface {
-		Preroll(self *GstBaseSink, buffer *gst.Buffer) gst.FlowReturn
+	var ret gst.FlowReturn
+	glib.WithPointerTransferOriginal(unsafe.Pointer(sink), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			Preroll(self *GstBaseSink, buffer *gst.Buffer) gst.FlowReturn
+		})
+		ret = iface.Preroll(ToGstBaseSink(gObject), gst.ToGstBuffer(unsafe.Pointer(buf)))
 	})
-	return C.GstFlowReturn(iface.Preroll(wrapGstBaseSink(sink), gst.FromGstBufferUnsafeNone(unsafe.Pointer(buf))))
+	return C.GstFlowReturn(ret)
 }
 
 //export goGstBaseSinkProposeAllocation
 func goGstBaseSinkProposeAllocation(sink *C.GstBaseSink, query *C.GstQuery) C.gboolean {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(sink)).(interface {
-		ProposeAllocation(self *GstBaseSink, query *gst.Query) bool
+	var ret bool
+	glib.WithPointerTransferOriginal(unsafe.Pointer(sink), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			ProposeAllocation(self *GstBaseSink, query *gst.Query) bool
+		})
+		ret = iface.ProposeAllocation(ToGstBaseSink(gObject), gst.ToGstQuery(unsafe.Pointer(query)))
 	})
-	return gboolean(iface.ProposeAllocation(wrapGstBaseSink(sink), gst.FromGstQueryUnsafeNone(unsafe.Pointer(query))))
+	return gboolean(ret)
 }
 
 //export goGstBaseSinkQuery
 func goGstBaseSinkQuery(sink *C.GstBaseSink, query *C.GstQuery) C.gboolean {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(sink)).(interface {
-		Query(self *GstBaseSink, query *gst.Query) bool
+	var ret bool
+	glib.WithPointerTransferOriginal(unsafe.Pointer(sink), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			Query(self *GstBaseSink, query *gst.Query) bool
+		})
+		ret = iface.Query(ToGstBaseSink(gObject), gst.ToGstQuery(unsafe.Pointer(query)))
 	})
-	return gboolean(iface.Query(wrapGstBaseSink(sink), gst.FromGstQueryUnsafeNone(unsafe.Pointer(query))))
+	return gboolean(ret)
 }
 
 //export goGstBaseSinkRender
 func goGstBaseSinkRender(sink *C.GstBaseSink, buf *C.GstBuffer) C.GstFlowReturn {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(sink)).(interface {
-		Render(self *GstBaseSink, buffer *gst.Buffer) gst.FlowReturn
+	var ret gst.FlowReturn
+	glib.WithPointerTransferOriginal(unsafe.Pointer(sink), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			Render(self *GstBaseSink, buffer *gst.Buffer) gst.FlowReturn
+		})
+		ret = iface.Render(ToGstBaseSink(gObject), gst.ToGstBuffer(unsafe.Pointer(buf)))
 	})
-	return C.GstFlowReturn(iface.Render(wrapGstBaseSink(sink), gst.FromGstBufferUnsafeNone(unsafe.Pointer(buf))))
+	return C.GstFlowReturn(ret)
 }
 
 //export goGstBaseSinkRenderList
 func goGstBaseSinkRenderList(sink *C.GstBaseSink, buf *C.GstBufferList) C.GstFlowReturn {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(sink)).(interface {
-		RenderList(self *GstBaseSink, bufferList *gst.BufferList) gst.FlowReturn
+	var ret gst.FlowReturn
+	glib.WithPointerTransferOriginal(unsafe.Pointer(sink), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			RenderList(self *GstBaseSink, bufferList *gst.BufferList) gst.FlowReturn
+		})
+		ret = iface.RenderList(ToGstBaseSink(gObject), gst.ToGstBufferList(unsafe.Pointer(buf)))
 	})
-	return C.GstFlowReturn(iface.RenderList(wrapGstBaseSink(sink), gst.FromGstBufferListUnsafeNone(unsafe.Pointer(buf))))
+	return C.GstFlowReturn(ret)
 }
 
 //export goGstBaseSinkSetCaps
 func goGstBaseSinkSetCaps(sink *C.GstBaseSink, caps *C.GstCaps) C.gboolean {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(sink)).(interface {
-		SetCaps(self *GstBaseSink, caps *gst.Caps) bool
+	var ret bool
+	glib.WithPointerTransferOriginal(unsafe.Pointer(sink), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			SetCaps(self *GstBaseSink, caps *gst.Caps) bool
+		})
+		ret = iface.SetCaps(ToGstBaseSink(gObject), gst.ToGstCaps(unsafe.Pointer(caps)))
 	})
-	return gboolean(iface.SetCaps(wrapGstBaseSink(sink), gst.FromGstCapsUnsafeNone(unsafe.Pointer(caps))))
+	return gboolean(ret)
 }
 
 //export goGstBaseSinkStart
 func goGstBaseSinkStart(sink *C.GstBaseSink) C.gboolean {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(sink)).(interface {
-		Start(self *GstBaseSink) bool
+	var ret bool
+	glib.WithPointerTransferOriginal(unsafe.Pointer(sink), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			Start(self *GstBaseSink) bool
+		})
+		ret = iface.Start(ToGstBaseSink(gObject))
 	})
-	return gboolean(iface.Start(wrapGstBaseSink(sink)))
+	return gboolean(ret)
 }
 
 //export goGstBaseSinkStop
 func goGstBaseSinkStop(sink *C.GstBaseSink) C.gboolean {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(sink)).(interface {
-		Stop(self *GstBaseSink) bool
+	var ret bool
+	glib.WithPointerTransferOriginal(unsafe.Pointer(sink), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			Stop(self *GstBaseSink) bool
+		})
+		ret = iface.Stop(ToGstBaseSink(gObject))
 	})
-	return gboolean(iface.Stop(wrapGstBaseSink(sink)))
+	return gboolean(ret)
 }
 
 //export goGstBaseSinkUnlock
 func goGstBaseSinkUnlock(sink *C.GstBaseSink) C.gboolean {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(sink)).(interface {
-		Unlock(self *GstBaseSink) bool
+	var ret bool
+	glib.WithPointerTransferOriginal(unsafe.Pointer(sink), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			Unlock(self *GstBaseSink) bool
+		})
+		ret = iface.Unlock(ToGstBaseSink(gObject))
 	})
-	return gboolean(iface.Unlock(wrapGstBaseSink(sink)))
+	return gboolean(ret)
 }
 
 //export goGstBaseSinkUnlockStop
 func goGstBaseSinkUnlockStop(sink *C.GstBaseSink) C.gboolean {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(sink)).(interface {
-		UnlockStop(self *GstBaseSink) bool
+	var ret bool
+	glib.WithPointerTransferOriginal(unsafe.Pointer(sink), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			UnlockStop(self *GstBaseSink) bool
+		})
+		ret = iface.UnlockStop(ToGstBaseSink(gObject))
 	})
-	return gboolean(iface.UnlockStop(wrapGstBaseSink(sink)))
+	return gboolean(ret)
 }
 
 //export goGstBaseSinkWaitEvent
 func goGstBaseSinkWaitEvent(sink *C.GstBaseSink, event *C.GstEvent) C.GstFlowReturn {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(sink)).(interface {
-		WaitEvent(self *GstBaseSink, event *gst.Event) gst.FlowReturn
+	var ret gst.FlowReturn
+	glib.WithPointerTransferOriginal(unsafe.Pointer(sink), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			WaitEvent(self *GstBaseSink, event *gst.Event) gst.FlowReturn
+		})
+		ret = iface.WaitEvent(ToGstBaseSink(gObject), gst.ToGstEvent(unsafe.Pointer(event)))
 	})
-	return C.GstFlowReturn(iface.WaitEvent(wrapGstBaseSink(sink), gst.FromGstEventUnsafeNone(unsafe.Pointer(event))))
+	return C.GstFlowReturn(ret)
 }

@@ -40,15 +40,10 @@ type Buffer struct {
 	mapInfo *MapInfo
 }
 
-// // FromGstBufferUnsafe wraps the given C GstBuffer in the go type. It is meant for internal usage
-// // and exported for visibility to other packages.
-// func FromGstBufferUnsafe(buf unsafe.Pointer) *Buffer {
-// 	return FromGstBufferUnsafeNone(buf)
-// }
-
-// FromGstBufferUnsafeNone is an alias to FromGstBufferUnsafe.
+// FromGstBufferUnsafeNone wraps the given buffer, sinking any floating references, and places
+// a finalizer on the wrapped Buffer.
 func FromGstBufferUnsafeNone(buf unsafe.Pointer) *Buffer {
-	wrapped := wrapBuffer((*C.GstBuffer)(buf))
+	wrapped := ToGstBuffer(buf)
 	wrapped.Ref()
 	runtime.SetFinalizer(wrapped, (*Buffer).Unref)
 	return wrapped
@@ -56,9 +51,15 @@ func FromGstBufferUnsafeNone(buf unsafe.Pointer) *Buffer {
 
 // FromGstBufferUnsafeFull wraps the given buffer without taking an additional reference.
 func FromGstBufferUnsafeFull(buf unsafe.Pointer) *Buffer {
-	wrapped := wrapBuffer((*C.GstBuffer)(buf))
+	wrapped := ToGstBuffer(buf)
 	runtime.SetFinalizer(wrapped, (*Buffer).Unref)
 	return wrapped
+}
+
+// ToGstBuffer converts the given pointer into a Buffer without affecting the ref count or
+// placing finalizers.
+func ToGstBuffer(buf unsafe.Pointer) *Buffer {
+	return wrapBuffer((*C.GstBuffer)(buf))
 }
 
 // NewEmptyBuffer returns a new empty buffer.

@@ -21,7 +21,7 @@ type Message struct {
 // FromGstMessageUnsafeNone wraps the given unsafe.Pointer in a message. A ref is taken
 // on the message and a runtime finalizer placed on the object.
 func FromGstMessageUnsafeNone(msg unsafe.Pointer) *Message {
-	gomsg := wrapMessage((*C.GstMessage)(msg))
+	gomsg := ToGstMessage(msg)
 	gomsg.Ref()
 	runtime.SetFinalizer(gomsg, (*Message).Unref)
 	return gomsg
@@ -30,10 +30,14 @@ func FromGstMessageUnsafeNone(msg unsafe.Pointer) *Message {
 // FromGstMessageUnsafeFull wraps the given unsafe.Pointer in a message. No ref is taken
 // and a finalizer is placed on the resulting object.
 func FromGstMessageUnsafeFull(msg unsafe.Pointer) *Message {
-	gomsg := wrapMessage((*C.GstMessage)(msg))
+	gomsg := ToGstMessage(msg)
 	runtime.SetFinalizer(gomsg, (*Message).Unref)
 	return gomsg
 }
+
+// ToGstMessage converts the given pointer into a Message without affecting the ref count or
+// placing finalizers.
+func ToGstMessage(msg unsafe.Pointer) *Message { return wrapMessage((*C.GstMessage)(msg)) }
 
 // Instance returns the underlying GstMessage object.
 func (m *Message) Instance() *C.GstMessage { return C.toGstMessage(unsafe.Pointer(m.msg)) }

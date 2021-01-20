@@ -20,7 +20,7 @@ type Event struct {
 // FromGstEventUnsafeNone wraps the pointer to the given C GstEvent with the go type.
 // A ref is taken and finalizer applied.
 func FromGstEventUnsafeNone(ev unsafe.Pointer) *Event {
-	event := &Event{ptr: (*C.GstEvent)(ev)}
+	event := ToGstEvent(ev)
 	event.Ref()
 	runtime.SetFinalizer(event, (*Event).Unref)
 	return event
@@ -29,9 +29,15 @@ func FromGstEventUnsafeNone(ev unsafe.Pointer) *Event {
 // FromGstEventUnsafeFull wraps the pointer to the given C GstEvent without taking a ref.
 // A finalizer is applied.
 func FromGstEventUnsafeFull(ev unsafe.Pointer) *Event {
-	event := &Event{ptr: (*C.GstEvent)(ev)}
+	event := ToGstEvent(ev)
 	runtime.SetFinalizer(event, (*Event).Unref)
 	return event
+}
+
+// ToGstEvent converts the given pointer into an Event without affecting the ref count or
+// placing finalizers.
+func ToGstEvent(ev unsafe.Pointer) *Event {
+	return wrapEvent((*C.GstEvent)(ev))
 }
 
 // Instance returns the underlying GstEvent instance.

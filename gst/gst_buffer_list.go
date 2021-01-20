@@ -41,13 +41,7 @@ func NewBufferListSized(size uint) *BufferList {
 	return FromGstBufferListUnsafeFull(unsafe.Pointer(C.gst_buffer_list_new_sized(C.guint(size))))
 }
 
-// // FromGstBufferListUnsafe wraps the given C GstBufferList in the go type. It is meant for internal usage
-// // and exported for visibility to other packages.
-// func FromGstBufferListUnsafe(buf unsafe.Pointer) *BufferList {
-// 	return FromGstBufferListUnsafeNone(buf)
-// }
-
-// FromGstBufferListUnsafeNone is an alias to FromGstBufferListUnsafe.
+// FromGstBufferListUnsafeNone is used for returns from transfer-none methods.
 func FromGstBufferListUnsafeNone(buf unsafe.Pointer) *BufferList {
 	wrapped := wrapBufferList((*C.GstBufferList)(buf))
 	wrapped.Ref()
@@ -60,6 +54,12 @@ func FromGstBufferListUnsafeFull(buf unsafe.Pointer) *BufferList {
 	wrapped := wrapBufferList((*C.GstBufferList)(buf))
 	runtime.SetFinalizer(wrapped, (*BufferList).Unref)
 	return wrapped
+}
+
+// ToGstBufferList converts the given pointer into a BufferList without affecting the ref count or
+// placing finalizers.
+func ToGstBufferList(buf unsafe.Pointer) *BufferList {
+	return wrapBufferList((*C.GstBufferList)(buf))
 }
 
 // Instance returns the underlying GstBufferList.

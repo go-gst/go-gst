@@ -48,11 +48,6 @@ func ToGstBaseTransform(obj interface{}) *GstBaseTransform {
 	return nil
 }
 
-// wrapGstBaseTransform wraps the given unsafe.Pointer in a GstBaseSrc instance.
-func wrapGstBaseTransform(obj *C.GstBaseTransform) *GstBaseTransform {
-	return &GstBaseTransform{gst.FromGstElementUnsafeNone(unsafe.Pointer(obj))}
-}
-
 // Instance returns the underlying C GstBaseTransform instance
 func (g *GstBaseTransform) Instance() *C.GstBaseTransform {
 	return C.toGstBaseTransform(g.Unsafe())

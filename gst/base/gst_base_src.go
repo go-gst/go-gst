@@ -28,11 +28,6 @@ func ToGstBaseSrc(obj interface{}) *GstBaseSrc {
 	return nil
 }
 
-// wrapGstBaseSrc wraps the given unsafe.Pointer in a GstBaseSrc instance.
-func wrapGstBaseSrc(obj *C.GstBaseSrc) *GstBaseSrc {
-	return &GstBaseSrc{gst.FromGstElementUnsafeNone(unsafe.Pointer(obj))}
-}
-
 // Instance returns the underlying C GstBaseSrc instance
 func (g *GstBaseSrc) Instance() *C.GstBaseSrc {
 	return C.toGstBaseSrc(g.Unsafe())

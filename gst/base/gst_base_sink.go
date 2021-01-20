@@ -35,11 +35,6 @@ func ToGstBaseSink(obj interface{}) *GstBaseSink {
 	return nil
 }
 
-// wrapGstBaseSink wraps the given unsafe.Pointer in a GstBaseSink instance.
-func wrapGstBaseSink(obj *C.GstBaseSink) *GstBaseSink {
-	return &GstBaseSink{gst.FromGstElementUnsafeNone(unsafe.Pointer(obj))}
-}
-
 // Instance returns the underlying C GstBaseSrc instance
 func (g *GstBaseSink) Instance() *C.GstBaseSink {
 	return C.toGstBaseSink(g.Unsafe())

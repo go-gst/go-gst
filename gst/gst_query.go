@@ -21,7 +21,7 @@ func (q *Query) Type() QueryType { return QueryType(q.ptr._type) }
 // FromGstQueryUnsafeNone wraps the pointer to the given C GstQuery with the go type.
 // This is meant for internal usage and is exported for visibility to other packages.
 func FromGstQueryUnsafeNone(query unsafe.Pointer) *Query {
-	q := wrapQuery((*C.GstQuery)(query))
+	q := ToGstQuery(query)
 	q.Ref()
 	runtime.SetFinalizer(q, (*Query).Unref)
 	return q
@@ -30,10 +30,14 @@ func FromGstQueryUnsafeNone(query unsafe.Pointer) *Query {
 // FromGstQueryUnsafeFull wraps the pointer to the given C GstQuery with the go type.
 // This is meant for internal usage and is exported for visibility to other packages.
 func FromGstQueryUnsafeFull(query unsafe.Pointer) *Query {
-	q := wrapQuery((*C.GstQuery)(query))
+	q := ToGstQuery(query)
 	runtime.SetFinalizer(q, (*Query).Unref)
 	return q
 }
+
+// ToGstQuery converts the given pointer into a Message without affecting the ref count or
+// placing finalizers.
+func ToGstQuery(query unsafe.Pointer) *Query { return wrapQuery((*C.GstQuery)(query)) }
 
 // NewAcceptCapsQuery constructs a new query object for querying if caps are accepted.
 func NewAcceptCapsQuery(caps *Caps) *Query {

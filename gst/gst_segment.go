@@ -15,6 +15,12 @@ func FromGstSegmentUnsafe(segment unsafe.Pointer) *Segment {
 	return wrapSegment((*C.GstSegment)(segment))
 }
 
+// ToGstSegment converts the given pointer into a Segment without affecting the ref count or
+// placing finalizers.
+func ToGstSegment(segment unsafe.Pointer) *Segment {
+	return wrapSegment((*C.GstSegment)(segment))
+}
+
 // NewSegment allocates and initializes a new Segment. Free when you are finished.
 func NewSegment() *Segment {
 	return wrapSegment(C.gst_segment_new())

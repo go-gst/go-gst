@@ -14,34 +14,44 @@ import (
 
 //export goGstPushSrcAlloc
 func goGstPushSrcAlloc(src *C.GstPushSrc, buf **C.GstBuffer) C.GstFlowReturn {
-	caller := glib.FromObjectUnsafePrivate(unsafe.Pointer(src)).(interface {
-		Alloc(*GstPushSrc) (gst.FlowReturn, *gst.Buffer)
+	var ret gst.FlowReturn
+	var outbuf *gst.Buffer
+	glib.WithPointerTransferOriginal(unsafe.Pointer(src), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			Alloc(*GstPushSrc) (gst.FlowReturn, *gst.Buffer)
+		})
+		ret, outbuf = iface.Alloc(ToGstPushSrc(gObject))
 	})
-	ret, buffer := caller.Alloc(wrapGstPushSrc(src))
-	if ret != gst.FlowOK {
-		return C.GstFlowReturn(ret)
+	if outbuf != nil {
+		C.memcpy(unsafe.Pointer(*buf), unsafe.Pointer(outbuf.Instance()), C.sizeof_GstBuffer)
 	}
-	C.memcpy(unsafe.Pointer(*buf), unsafe.Pointer(buffer.Instance()), C.sizeof_GstBuffer)
 	return C.GstFlowReturn(ret)
 }
 
 //export goGstPushSrcCreate
 func goGstPushSrcCreate(src *C.GstPushSrc, buf **C.GstBuffer) C.GstFlowReturn {
-	caller := glib.FromObjectUnsafePrivate(unsafe.Pointer(src)).(interface {
-		Create(*GstPushSrc) (gst.FlowReturn, *gst.Buffer)
+	var ret gst.FlowReturn
+	var outbuf *gst.Buffer
+	glib.WithPointerTransferOriginal(unsafe.Pointer(src), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			Create(*GstPushSrc) (gst.FlowReturn, *gst.Buffer)
+		})
+		ret, outbuf = iface.Create(ToGstPushSrc(gObject))
 	})
-	ret, buffer := caller.Create(wrapGstPushSrc(src))
-	if ret != gst.FlowOK {
-		return C.GstFlowReturn(ret)
+	if outbuf != nil {
+		C.memcpy(unsafe.Pointer(*buf), unsafe.Pointer(outbuf.Instance()), C.sizeof_GstBuffer)
 	}
-	C.memcpy(unsafe.Pointer(*buf), unsafe.Pointer(buffer.Instance()), C.sizeof_GstBuffer)
 	return C.GstFlowReturn(ret)
 }
 
 //export goGstPushSrcFill
 func goGstPushSrcFill(src *C.GstPushSrc, buf *C.GstBuffer) C.GstFlowReturn {
-	caller := glib.FromObjectUnsafePrivate(unsafe.Pointer(src)).(interface {
-		Fill(*GstPushSrc, *gst.Buffer) gst.FlowReturn
+	var ret gst.FlowReturn
+	glib.WithPointerTransferOriginal(unsafe.Pointer(src), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			Fill(*GstPushSrc, *gst.Buffer) gst.FlowReturn
+		})
+		ret = iface.Fill(ToGstPushSrc(gObject), gst.ToGstBuffer(unsafe.Pointer(buf)))
 	})
-	return C.GstFlowReturn(caller.Fill(wrapGstPushSrc(src), gst.FromGstBufferUnsafeNone(unsafe.Pointer(buf))))
+	return C.GstFlowReturn(ret)
 }

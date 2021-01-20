@@ -36,7 +36,7 @@ func FromGstCapsUnsafeNone(caps unsafe.Pointer) *Caps {
 	if caps == nil {
 		return nil
 	}
-	gocaps := wrapCaps(C.toGstCaps(caps))
+	gocaps := ToGstCaps(caps)
 	gocaps.Ref()
 	runtime.SetFinalizer(gocaps, (*Caps).Unref)
 	return gocaps
@@ -54,9 +54,15 @@ func FromGstCapsUnsafeFull(caps unsafe.Pointer) *Caps {
 	if caps == nil {
 		return nil
 	}
-	gocaps := wrapCaps(C.toGstCaps(caps))
+	gocaps := ToGstCaps(caps)
 	runtime.SetFinalizer(gocaps, (*Caps).Unref)
 	return gocaps
+}
+
+// ToGstCaps converts the given pointer into a Caps without affecting the ref count or
+// placing finalizers.
+func ToGstCaps(caps unsafe.Pointer) *Caps {
+	return wrapCaps(C.toGstCaps(caps))
 }
 
 // CapsMapFunc represents a function passed to the Caps MapInPlace, ForEach, and FilterAndMapInPlace methods.

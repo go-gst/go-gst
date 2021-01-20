@@ -14,79 +14,87 @@ import (
 
 //export goGstBaseTransformAcceptCaps
 func goGstBaseTransformAcceptCaps(self *C.GstBaseTransform, direction C.GstPadDirection, caps *C.GstCaps) C.gboolean {
-	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
-	caller := elem.(interface {
-		AcceptCaps(self *GstBaseTransform, direction gst.PadDirection, caps *gst.Caps) bool
+	var ret bool
+	glib.WithPointerTransferOriginal(unsafe.Pointer(self), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			AcceptCaps(*GstBaseTransform, gst.PadDirection, *gst.Caps) bool
+		})
+		ret = iface.AcceptCaps(ToGstBaseTransform(self), gst.PadDirection(direction), gst.ToGstCaps(unsafe.Pointer(caps)))
 	})
-	return gboolean(caller.AcceptCaps(wrapGstBaseTransform(self), gst.PadDirection(direction), gst.FromGstCapsUnsafeNone(unsafe.Pointer(caps))))
+	return gboolean(ret)
 }
 
 //export goGstBaseTransformBeforeTransform
 func goGstBaseTransformBeforeTransform(self *C.GstBaseTransform, buffer *C.GstBuffer) {
-	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
-	caller := elem.(interface {
-		BeforeTransform(self *GstBaseTransform, buffer *gst.Buffer)
+	glib.WithPointerTransferOriginal(unsafe.Pointer(self), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			BeforeTransform(*GstBaseTransform, *gst.Buffer)
+		})
+		iface.BeforeTransform(ToGstBaseTransform(self), gst.ToGstBuffer(unsafe.Pointer(buffer)))
 	})
-	caller.BeforeTransform(wrapGstBaseTransform(self), gst.FromGstBufferUnsafeNone(unsafe.Pointer(buffer)))
 }
 
 //export goGstBaseTransformCopyMetadata
-func goGstBaseTransformCopyMetadata(self *C.GstBaseTransform, input, outbuf *C.GstBuffer) C.gboolean {
-	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
-	caller := elem.(interface {
-		CopyMetadata(self *GstBaseTransform, input, output *gst.Buffer) bool
+func goGstBaseTransformCopyMetadata(self *C.GstBaseTransform, input, output *C.GstBuffer) C.gboolean {
+	var ret bool
+	glib.WithPointerTransferOriginal(unsafe.Pointer(self), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			CopyMetadata(self *GstBaseTransform, input, output *gst.Buffer) bool
+		})
+		ret = iface.CopyMetadata(ToGstBaseTransform(self), gst.ToGstBuffer(unsafe.Pointer(input)), gst.ToGstBuffer(unsafe.Pointer(output)))
 	})
-	return gboolean(caller.CopyMetadata(wrapGstBaseTransform(self), gst.FromGstBufferUnsafeNone(unsafe.Pointer(input)), gst.FromGstBufferUnsafeNone(unsafe.Pointer(outbuf))))
+	return gboolean(ret)
 }
 
 //export goGstBaseTransformDecideAllocation
 func goGstBaseTransformDecideAllocation(self *C.GstBaseTransform, query *C.GstQuery) C.gboolean {
-	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
-	caller := elem.(interface {
-		DecideAllocation(self *GstBaseTransform, query *gst.Query) bool
+	var ret bool
+	glib.WithPointerTransferOriginal(unsafe.Pointer(self), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			DecideAllocation(self *GstBaseTransform, query *gst.Query) bool
+		})
+		ret = iface.DecideAllocation(ToGstBaseTransform(self), gst.ToGstQuery(unsafe.Pointer(query)))
 	})
-	return gboolean(caller.DecideAllocation(wrapGstBaseTransform(self), gst.FromGstQueryUnsafeNone(unsafe.Pointer(query))))
+	return gboolean(ret)
 }
 
 //export goGstBaseTransformFilterMeta
 func goGstBaseTransformFilterMeta(self *C.GstBaseTransform, query *C.GstQuery, api C.GType, params *C.GstStructure) C.gboolean {
-	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
-	caller := elem.(interface {
-		FilterMeta(self *GstBaseTransform, query *gst.Query, api glib.Type, params *gst.Structure) bool
+	var ret bool
+	glib.WithPointerTransferOriginal(unsafe.Pointer(self), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			FilterMeta(self *GstBaseTransform, query *gst.Query, api glib.Type, params *gst.Structure) bool
+		})
+		ret = iface.FilterMeta(ToGstBaseTransform(self), gst.ToGstQuery(unsafe.Pointer(query)), glib.Type(api), gst.FromGstStructureUnsafe(unsafe.Pointer(params)))
 	})
-	return gboolean(caller.FilterMeta(
-		wrapGstBaseTransform(self),
-		gst.FromGstQueryUnsafeNone(unsafe.Pointer(query)),
-		glib.Type(api),
-		gst.FromGstStructureUnsafe(unsafe.Pointer(params)),
-	))
+	return gboolean(ret)
 }
 
 //export goGstBaseTransformFixateCaps
 func goGstBaseTransformFixateCaps(self *C.GstBaseTransform, direction C.GstPadDirection, caps, othercaps *C.GstCaps) *C.GstCaps {
-	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
-	caller := elem.(interface {
-		FixateCaps(self *GstBaseTransform, directon gst.PadDirection, caps *gst.Caps, othercaps *gst.Caps) *gst.Caps
+	var ret *gst.Caps
+	glib.WithPointerTransferOriginal(unsafe.Pointer(self), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			FixateCaps(self *GstBaseTransform, directon gst.PadDirection, caps *gst.Caps, othercaps *gst.Caps) *gst.Caps
+		})
+		ret = iface.FixateCaps(ToGstBaseTransform(self), gst.PadDirection(direction), gst.ToGstCaps(unsafe.Pointer(caps)), gst.ToGstCaps(unsafe.Pointer(othercaps)))
 	})
-
-	wrappedCaps := gst.FromGstCapsUnsafeNone(unsafe.Pointer(caps))
-	wrappedOther := gst.FromGstCapsUnsafeNone(unsafe.Pointer(othercaps))
-	defer wrappedOther.Unref()
-
-	fixated := caller.FixateCaps(wrapGstBaseTransform(self), gst.PadDirection(direction), wrappedCaps, wrappedOther)
-	if fixated != nil {
-		return (*C.GstCaps)(unsafe.Pointer(fixated.Instance()))
+	if ret == nil {
+		return nil
 	}
-	return nil
+	return (*C.GstCaps)(unsafe.Pointer(ret.Instance()))
 }
 
 //export goGstBaseTransformGenerateOutput
 func goGstBaseTransformGenerateOutput(self *C.GstBaseTransform, buf **C.GstBuffer) C.GstFlowReturn {
-	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
-	caller := elem.(interface {
-		GenerateOutput(self *GstBaseTransform) (gst.FlowReturn, *gst.Buffer)
+	var ret gst.FlowReturn
+	var out *gst.Buffer
+	glib.WithPointerTransferOriginal(unsafe.Pointer(self), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			GenerateOutput(self *GstBaseTransform) (gst.FlowReturn, *gst.Buffer)
+		})
+		ret, out = iface.GenerateOutput(ToGstBaseTransform(self))
 	})
-	ret, out := caller.GenerateOutput(wrapGstBaseTransform(self))
 	if out != nil {
 		C.memcpy(unsafe.Pointer(*buf), unsafe.Pointer(out.Instance()), C.sizeof_GstBuffer)
 	}
@@ -95,24 +103,30 @@ func goGstBaseTransformGenerateOutput(self *C.GstBaseTransform, buf **C.GstBuffe
 
 //export goGstBaseTransformGetUnitSize
 func goGstBaseTransformGetUnitSize(self *C.GstBaseTransform, caps *C.GstCaps, size *C.gsize) C.gboolean {
-	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
-	caller := elem.(interface {
-		GetUnitSize(self *GstBaseTransform, caps *gst.Caps) (ok bool, size int64)
+	var ret bool
+	var out int64
+	glib.WithPointerTransferOriginal(unsafe.Pointer(self), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			GetUnitSize(self *GstBaseTransform, caps *gst.Caps) (ok bool, size int64)
+		})
+		ret, out = iface.GetUnitSize(ToGstBaseTransform(self), gst.ToGstCaps(unsafe.Pointer(caps)))
 	})
-	ok, retsize := caller.GetUnitSize(wrapGstBaseTransform(self), gst.FromGstCapsUnsafeNone(unsafe.Pointer(caps)))
-	if ok {
-		*size = C.gsize(retsize)
+	if ret {
+		*size = C.gsize(out)
 	}
-	return gboolean(ok)
+	return gboolean(ret)
 }
 
 //export goGstBaseTransformPrepareOutputBuffer
 func goGstBaseTransformPrepareOutputBuffer(self *C.GstBaseTransform, input *C.GstBuffer, outbuf **C.GstBuffer) C.GstFlowReturn {
-	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
-	caller := elem.(interface {
-		PrepareOutputBuffer(self *GstBaseTransform, input *gst.Buffer) (gst.FlowReturn, *gst.Buffer)
+	var ret gst.FlowReturn
+	var out *gst.Buffer
+	glib.WithPointerTransferOriginal(unsafe.Pointer(self), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			PrepareOutputBuffer(self *GstBaseTransform, input *gst.Buffer) (gst.FlowReturn, *gst.Buffer)
+		})
+		ret, out = iface.PrepareOutputBuffer(ToGstBaseTransform(self), gst.ToGstBuffer(unsafe.Pointer(input)))
 	})
-	ret, out := caller.PrepareOutputBuffer(wrapGstBaseTransform(self), gst.FromGstBufferUnsafeNone(unsafe.Pointer(input)))
 	if out != nil {
 		C.memcpy(unsafe.Pointer(*outbuf), unsafe.Pointer(out.Instance()), C.sizeof_GstBuffer)
 	}
@@ -121,156 +135,163 @@ func goGstBaseTransformPrepareOutputBuffer(self *C.GstBaseTransform, input *C.Gs
 
 //export goGstBaseTransformProposeAllocation
 func goGstBaseTransformProposeAllocation(self *C.GstBaseTransform, decide, query *C.GstQuery) C.gboolean {
-	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
-	caller := elem.(interface {
-		ProposeAllocation(self *GstBaseTransform, decideQuery, query *gst.Query) bool
+	var ret bool
+	glib.WithPointerTransferOriginal(unsafe.Pointer(self), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			ProposeAllocation(self *GstBaseTransform, decideQuery, query *gst.Query) bool
+		})
+		ret = iface.ProposeAllocation(ToGstBaseTransform(self), gst.ToGstQuery(unsafe.Pointer(decide)), gst.ToGstQuery(unsafe.Pointer(query)))
 	})
-	return gboolean(caller.ProposeAllocation(wrapGstBaseTransform(self), gst.FromGstQueryUnsafeNone(unsafe.Pointer(decide)), gst.FromGstQueryUnsafeNone(unsafe.Pointer(query))))
+	return gboolean(ret)
 }
 
 //export goGstBaseTransformQuery
 func goGstBaseTransformQuery(self *C.GstBaseTransform, direction C.GstPadDirection, query *C.GstQuery) C.gboolean {
-	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
-	caller := elem.(interface {
-		Query(self *GstBaseTransform, direction gst.PadDirection, query *gst.Query) bool
+	var ret bool
+	glib.WithPointerTransferOriginal(unsafe.Pointer(self), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			Query(self *GstBaseTransform, direction gst.PadDirection, query *gst.Query) bool
+		})
+		ret = iface.Query(ToGstBaseTransform(self), gst.PadDirection(direction), gst.ToGstQuery(unsafe.Pointer(query)))
 	})
-	return gboolean(caller.Query(wrapGstBaseTransform(self), gst.PadDirection(direction), gst.FromGstQueryUnsafeNone(unsafe.Pointer(query))))
+	return gboolean(ret)
 }
 
 //export goGstBaseTransformSetCaps
 func goGstBaseTransformSetCaps(self *C.GstBaseTransform, incaps, outcaps *C.GstCaps) C.gboolean {
-	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
-	caller := elem.(interface {
-		SetCaps(self *GstBaseTransform, incaps, outcaps *gst.Caps) bool
+	var ret bool
+	glib.WithPointerTransferOriginal(unsafe.Pointer(self), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			SetCaps(self *GstBaseTransform, incaps, outcaps *gst.Caps) bool
+		})
+		ret = iface.SetCaps(ToGstBaseTransform(self), gst.ToGstCaps(unsafe.Pointer(incaps)), gst.ToGstCaps(unsafe.Pointer(outcaps)))
 	})
-	return gboolean(caller.SetCaps(
-		wrapGstBaseTransform(self),
-		gst.FromGstCapsUnsafeNone(unsafe.Pointer(incaps)),
-		gst.FromGstCapsUnsafeNone(unsafe.Pointer(outcaps)),
-	))
+	return gboolean(ret)
 }
 
 //export goGstBaseTransformSinkEvent
 func goGstBaseTransformSinkEvent(self *C.GstBaseTransform, event *C.GstEvent) C.gboolean {
-	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
-	caller := elem.(interface {
-		SinkEvent(self *GstBaseTransform, event *gst.Event) bool
+	var ret bool
+	glib.WithPointerTransferOriginal(unsafe.Pointer(self), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			SinkEvent(self *GstBaseTransform, event *gst.Event) bool
+		})
+		ret = iface.SinkEvent(ToGstBaseTransform(self), gst.ToGstEvent(unsafe.Pointer(event)))
 	})
-	return gboolean(caller.SinkEvent(wrapGstBaseTransform(self), gst.FromGstEventUnsafeNone(unsafe.Pointer(event))))
+	return gboolean(ret)
 }
 
 //export goGstBaseTransformSrcEvent
 func goGstBaseTransformSrcEvent(self *C.GstBaseTransform, event *C.GstEvent) C.gboolean {
-	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
-	caller := elem.(interface {
-		SrcEvent(self *GstBaseTransform, event *gst.Event) bool
+	var ret bool
+	glib.WithPointerTransferOriginal(unsafe.Pointer(self), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			SrcEvent(self *GstBaseTransform, event *gst.Event) bool
+		})
+		ret = iface.SrcEvent(ToGstBaseTransform(self), gst.ToGstEvent(unsafe.Pointer(event)))
 	})
-	return gboolean(caller.SrcEvent(wrapGstBaseTransform(self), gst.FromGstEventUnsafeNone(unsafe.Pointer(event))))
+	return gboolean(ret)
 }
 
 //export goGstBaseTransformStart
 func goGstBaseTransformStart(self *C.GstBaseTransform) C.gboolean {
-	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
-	caller := elem.(interface {
-		Start(self *GstBaseTransform) bool
+	var ret bool
+	glib.WithPointerTransferOriginal(unsafe.Pointer(self), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			Start(self *GstBaseTransform) bool
+		})
+		ret = iface.Start(ToGstBaseTransform(self))
 	})
-	return gboolean(caller.Start(wrapGstBaseTransform(self)))
+	return gboolean(ret)
 }
 
 //export goGstBaseTransformStop
 func goGstBaseTransformStop(self *C.GstBaseTransform) C.gboolean {
-	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
-	caller := elem.(interface {
-		Stop(self *GstBaseTransform) bool
+	var ret bool
+	glib.WithPointerTransferOriginal(unsafe.Pointer(self), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			Stop(self *GstBaseTransform) bool
+		})
+		ret = iface.Stop(ToGstBaseTransform(self))
 	})
-	return gboolean(caller.Stop(wrapGstBaseTransform(self)))
+	return gboolean(ret)
 }
 
 //export goGstBaseTransformSubmitInputBuffer
 func goGstBaseTransformSubmitInputBuffer(self *C.GstBaseTransform, isDiscont C.gboolean, input *C.GstBuffer) C.GstFlowReturn {
-	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
-	caller := elem.(interface {
-		SubmitInputBuffer(self *GstBaseTransform, isDiscont bool, input *gst.Buffer) gst.FlowReturn
+	var ret gst.FlowReturn
+	glib.WithPointerTransferOriginal(unsafe.Pointer(self), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			SubmitInputBuffer(self *GstBaseTransform, isDiscont bool, input *gst.Buffer) gst.FlowReturn
+		})
+		ret = iface.SubmitInputBuffer(ToGstBaseTransform(self), gobool(isDiscont), gst.ToGstBuffer(unsafe.Pointer(input)))
 	})
-	return C.GstFlowReturn(caller.SubmitInputBuffer(
-		wrapGstBaseTransform(self),
-		gobool(isDiscont),
-		gst.FromGstBufferUnsafeNone(unsafe.Pointer(input)),
-	))
+	return C.GstFlowReturn(ret)
 }
 
 //export goGstBaseTransformTransform
 func goGstBaseTransformTransform(self *C.GstBaseTransform, inbuf, outbuf *C.GstBuffer) C.GstFlowReturn {
-	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
-	caller := elem.(interface {
-		Transform(self *GstBaseTransform, inbuf, outbuf *gst.Buffer) gst.FlowReturn
+	var ret gst.FlowReturn
+	glib.WithPointerTransferOriginal(unsafe.Pointer(self), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			Transform(self *GstBaseTransform, inbuf, outbuf *gst.Buffer) gst.FlowReturn
+		})
+		ret = iface.Transform(ToGstBaseTransform(self), gst.ToGstBuffer(unsafe.Pointer(inbuf)), gst.ToGstBuffer(unsafe.Pointer(outbuf)))
 	})
-	return C.GstFlowReturn(caller.Transform(
-		wrapGstBaseTransform(self),
-		gst.FromGstBufferUnsafeNone(unsafe.Pointer(inbuf)),
-		gst.FromGstBufferUnsafeNone(unsafe.Pointer(outbuf)),
-	))
+	return C.GstFlowReturn(ret)
 }
 
 //export goGstBaseTransformTransformCaps
 func goGstBaseTransformTransformCaps(self *C.GstBaseTransform, direction C.GstPadDirection, caps, filter *C.GstCaps) *C.GstCaps {
-	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
-	caller := elem.(interface {
-		TransformCaps(self *GstBaseTransform, direction gst.PadDirection, caps, filter *gst.Caps) *gst.Caps
+	var ret *gst.Caps
+	glib.WithPointerTransferOriginal(unsafe.Pointer(self), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			TransformCaps(self *GstBaseTransform, direction gst.PadDirection, caps, filter *gst.Caps) *gst.Caps
+		})
+		ret = iface.TransformCaps(ToGstBaseTransform(self), gst.PadDirection(direction), gst.ToGstCaps(unsafe.Pointer(caps)), gst.ToGstCaps(unsafe.Pointer(filter)))
 	})
-	out := caller.TransformCaps(
-		wrapGstBaseTransform(self),
-		gst.PadDirection(direction),
-		gst.FromGstCapsUnsafeNone(unsafe.Pointer(caps)),
-		gst.FromGstCapsUnsafeNone(unsafe.Pointer(filter)),
-	)
-	if out == nil {
+	if ret == nil {
 		return nil
 	}
-	return (*C.GstCaps)(unsafe.Pointer(out.Instance()))
+	return (*C.GstCaps)(unsafe.Pointer(ret.Instance()))
 }
 
 //export goGstBaseTransformTransformIP
 func goGstBaseTransformTransformIP(self *C.GstBaseTransform, buf *C.GstBuffer) C.GstFlowReturn {
-	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
-	caller := elem.(interface {
-		TransformIP(self *GstBaseTransform, buf *gst.Buffer) gst.FlowReturn
+	var ret gst.FlowReturn
+	glib.WithPointerTransferOriginal(unsafe.Pointer(self), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			TransformIP(self *GstBaseTransform, buf *gst.Buffer) gst.FlowReturn
+		})
+		ret = iface.TransformIP(ToGstBaseTransform(self), gst.ToGstBuffer(unsafe.Pointer(buf)))
 	})
-	return C.GstFlowReturn(caller.TransformIP(
-		wrapGstBaseTransform(self),
-		gst.FromGstBufferUnsafeNone(unsafe.Pointer(buf)),
-	))
+	return C.GstFlowReturn(ret)
 }
 
 //export goGstBaseTransformTransformMeta
 func goGstBaseTransformTransformMeta(self *C.GstBaseTransform, outbuf *C.GstBuffer, meta *C.GstMeta, inbuf *C.GstBuffer) C.gboolean {
-	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
-	caller := elem.(interface {
-		TransformMeta(self *GstBaseTransform, outbuf *gst.Buffer, meta *gst.Meta, inbuf *gst.Buffer) bool
+	var ret bool
+	glib.WithPointerTransferOriginal(unsafe.Pointer(self), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			TransformMeta(self *GstBaseTransform, outbuf *gst.Buffer, meta *gst.Meta, inbuf *gst.Buffer) bool
+		})
+		ret = iface.TransformMeta(ToGstBaseTransform(self), gst.ToGstBuffer(unsafe.Pointer(outbuf)), gst.FromGstMetaUnsafe(unsafe.Pointer(meta)), gst.ToGstBuffer(unsafe.Pointer(inbuf)))
 	})
-	return gboolean(caller.TransformMeta(
-		wrapGstBaseTransform(self),
-		gst.FromGstBufferUnsafeNone(unsafe.Pointer(outbuf)),
-		gst.FromGstMetaUnsafe(unsafe.Pointer(meta)),
-		gst.FromGstBufferUnsafeNone(unsafe.Pointer(inbuf)),
-	))
+	return gboolean(ret)
 }
 
 //export goGstBaseTransformTransformSize
 func goGstBaseTransformTransformSize(self *C.GstBaseTransform, direction C.GstPadDirection, caps *C.GstCaps, size C.gsize, othercaps *C.GstCaps, outsize *C.gsize) C.gboolean {
-	elem := glib.FromObjectUnsafePrivate(unsafe.Pointer(self))
-	caller := elem.(interface {
-		TransformSize(self *GstBaseTransform, direction gst.PadDirection, caps *gst.Caps, size int64, othercaps *gst.Caps) (ok bool, othersize int64)
+	var ret bool
+	var othersize int64
+	glib.WithPointerTransferOriginal(unsafe.Pointer(self), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
+		iface := goObject.(interface {
+			TransformSize(self *GstBaseTransform, direction gst.PadDirection, caps *gst.Caps, size int64, othercaps *gst.Caps) (ok bool, othersize int64)
+		})
+		ret, othersize = iface.TransformSize(ToGstBaseTransform(self), gst.PadDirection(direction), gst.ToGstCaps(unsafe.Pointer(caps)), int64(size), gst.ToGstCaps(unsafe.Pointer(othercaps)))
 	})
-	ok, othersize := caller.TransformSize(
-		wrapGstBaseTransform(self),
-		gst.PadDirection(direction),
-		gst.FromGstCapsUnsafeNone(unsafe.Pointer(caps)),
-		int64(size),
-		gst.FromGstCapsUnsafeNone(unsafe.Pointer(othercaps)),
-	)
-	if ok {
+	if ret {
 		*outsize = C.gsize(othersize)
 	}
-	return gboolean(ok)
+	return gboolean(ret)
 }
