@@ -243,37 +243,3 @@ func goPluginInit(plugin *C.GstPlugin, userData C.gpointer) C.gboolean {
 func goGlobalPluginInit(plugin *C.GstPlugin) C.gboolean {
 	return gboolean(globalPluginInit(wrapPlugin(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(plugin))})))
 }
-
-//export goURIHdlrGetURIType
-func goURIHdlrGetURIType(gtype C.GType) C.GstURIType {
-	return C.GstURIType(globalURIHdlr.GetURIType())
-}
-
-//export goURIHdlrGetProtocols
-func goURIHdlrGetProtocols(gtype C.GType) **C.gchar {
-	protocols := globalURIHdlr.GetProtocols()
-	size := C.size_t(unsafe.Sizeof((*C.gchar)(nil)))
-	length := C.size_t(len(protocols))
-	arr := (**C.gchar)(C.malloc(length * size))
-	view := (*[1 << 30]*C.gchar)(unsafe.Pointer(arr))[0:len(protocols):len(protocols)]
-	for i, proto := range protocols {
-		view[i] = (*C.gchar)(C.CString(proto))
-	}
-	return arr
-}
-
-//export goURIHdlrGetURI
-func goURIHdlrGetURI(hdlr *C.GstURIHandler) *C.gchar {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(hdlr))
-	return (*C.gchar)(unsafe.Pointer(C.CString(iface.(URIHandler).GetURI())))
-}
-
-//export goURIHdlrSetURI
-func goURIHdlrSetURI(hdlr *C.GstURIHandler, uri *C.gchar, gerr **C.GError) C.gboolean {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(hdlr))
-	ok, err := iface.(URIHandler).SetURI(C.GoString(uri))
-	if err != nil {
-		C.g_set_error_literal(gerr, DomainLibrary.toQuark(), C.gint(LibraryErrorSettings), C.CString(err.Error()))
-	}
-	return gboolean(ok)
-}

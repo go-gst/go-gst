@@ -6,6 +6,7 @@ import (
 	"unsafe"
 
 	gopointer "github.com/mattn/go-pointer"
+	"github.com/tinyzimmer/go-glib/glib"
 	"github.com/tinyzimmer/go-gst/gst"
 )
 
@@ -30,11 +31,27 @@ func getSrcCbsFromPtr(userData C.gpointer) *SourceCallbacks {
 }
 
 func wrapCSink(sink *C.GstAppSink) *Sink {
-	return wrapAppSink(gst.FromGstElementUnsafeNone(unsafe.Pointer(sink)))
+	return wrapAppSink(&gst.Element{
+		Object: &gst.Object{
+			InitiallyUnowned: &glib.InitiallyUnowned{
+				Object: &glib.Object{
+					GObject: glib.ToGObject(unsafe.Pointer(sink)),
+				},
+			},
+		},
+	})
 }
 
 func wrapCSource(src *C.GstAppSrc) *Source {
-	return wrapAppSrc(gst.FromGstElementUnsafeNone(unsafe.Pointer(src)))
+	return wrapAppSrc(&gst.Element{
+		Object: &gst.Object{
+			InitiallyUnowned: &glib.InitiallyUnowned{
+				Object: &glib.Object{
+					GObject: glib.ToGObject(unsafe.Pointer(src)),
+				},
+			},
+		},
+	})
 }
 
 //export goNeedDataCb
@@ -46,7 +63,8 @@ func goNeedDataCb(src *C.GstAppSrc, length C.guint, userData C.gpointer) {
 	if cbs.NeedDataFunc == nil {
 		return
 	}
-	cbs.NeedDataFunc(wrapCSource(src), uint(length))
+	gosrc := wrapCSource(src)
+	gosrc.WithTransferOriginal(func() { cbs.NeedDataFunc(gosrc, uint(length)) })
 }
 
 //export goEnoughDataDb
@@ -58,7 +76,8 @@ func goEnoughDataDb(src *C.GstAppSrc, userData C.gpointer) {
 	if cbs.EnoughDataFunc == nil {
 		return
 	}
-	cbs.EnoughDataFunc(wrapCSource(src))
+	gosrc := wrapCSource(src)
+	gosrc.WithTransferOriginal(func() { cbs.EnoughDataFunc(gosrc) })
 }
 
 //export goSeekDataCb
@@ -70,7 +89,10 @@ func goSeekDataCb(src *C.GstAppSrc, offset C.guint64, userData C.gpointer) C.gbo
 	if cbs.SeekDataFunc == nil {
 		return gboolean(true)
 	}
-	return gboolean(cbs.SeekDataFunc(wrapCSource(src), uint64(offset)))
+	gosrc := wrapCSource(src)
+	var ret C.gboolean
+	gosrc.WithTransferOriginal(func() { ret = gboolean(cbs.SeekDataFunc(gosrc, uint64(offset))) })
+	return ret
 }
 
 //export goSinkEOSCb
@@ -82,7 +104,8 @@ func goSinkEOSCb(sink *C.GstAppSink, userData C.gpointer) {
 	if cbs.EOSFunc == nil {
 		return
 	}
-	cbs.EOSFunc(wrapCSink(sink))
+	gosink := wrapCSink(sink)
+	gosink.WithTransferOriginal(func() { cbs.EOSFunc(gosink) })
 }
 
 //export goSinkNewPrerollCb
@@ -94,7 +117,10 @@ func goSinkNewPrerollCb(sink *C.GstAppSink, userData C.gpointer) C.GstFlowReturn
 	if cbs.NewPrerollFunc == nil {
 		return C.GstFlowReturn(gst.FlowOK)
 	}
-	return C.GstFlowReturn(cbs.NewPrerollFunc(wrapCSink(sink)))
+	gosink := wrapCSink(sink)
+	var ret C.GstFlowReturn
+	gosink.WithTransferOriginal(func() { ret = C.GstFlowReturn(cbs.NewPrerollFunc(gosink)) })
+	return ret
 }
 
 //export goSinkNewSampleCb
@@ -106,7 +132,10 @@ func goSinkNewSampleCb(sink *C.GstAppSink, userData C.gpointer) C.GstFlowReturn 
 	if cbs.NewSampleFunc == nil {
 		return C.GstFlowReturn(gst.FlowOK)
 	}
-	return C.GstFlowReturn(cbs.NewSampleFunc(wrapCSink(sink)))
+	gosink := wrapCSink(sink)
+	var ret C.GstFlowReturn
+	gosink.WithTransferOriginal(func() { ret = C.GstFlowReturn(cbs.NewSampleFunc(gosink)) })
+	return ret
 }
 
 //export goAppGDestroyNotifyFunc

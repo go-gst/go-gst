@@ -14,64 +14,74 @@ import (
 
 //export goGstElementClassChangeState
 func goGstElementClassChangeState(elem *C.GstElement, change C.GstStateChange) C.GstStateChangeReturn {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
-		ChangeState(*Element, StateChange) StateChangeReturn
+	var ret StateChangeReturn
+	glib.WithPointerTransferOriginal(unsafe.Pointer(elem), func(gobj *glib.Object, obj glib.GoObjectSubclass) {
+		iface := obj.(interface {
+			ChangeState(*Element, StateChange) StateChangeReturn
+		})
+		ret = iface.ChangeState(wrapElement(gobj), StateChange(change))
 	})
-	return C.GstStateChangeReturn(iface.ChangeState(wrapCbElem(elem), StateChange(change)))
+	return C.GstStateChangeReturn(ret)
 }
 
 //export goGstElementClassGetState
 func goGstElementClassGetState(elem *C.GstElement, state, pending *C.GstState, timeout C.GstClockTime) C.GstStateChangeReturn {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
-		GetState(*Element, time.Duration) (ret StateChangeReturn, current, pending State)
+	var ret StateChangeReturn
+	glib.WithPointerTransferOriginal(unsafe.Pointer(elem), func(gobj *glib.Object, obj glib.GoObjectSubclass) {
+		iface := obj.(interface {
+			GetState(*Element, time.Duration) (ret StateChangeReturn, current, pending State)
+		})
+		var cur, pend State
+		ret, cur, pend = iface.GetState(wrapElement(gobj), time.Duration(timeout)*time.Nanosecond)
+		if ret != StateChangeFailure {
+			*state = C.GstState(cur)
+			*pending = C.GstState(pend)
+		}
 	})
-	ret, cur, pend := iface.GetState(wrapCbElem(elem), time.Duration(timeout)*time.Nanosecond)
-	if ret == StateChangeFailure {
-		return C.GstStateChangeReturn(ret)
-	}
-	*state = C.GstState(cur)
-	*pending = C.GstState(pend)
 	return C.GstStateChangeReturn(ret)
 }
 
 //export goGstElementClassNoMorePads
 func goGstElementClassNoMorePads(elem *C.GstElement) {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
-		NoMorePads(*Element)
+	glib.WithPointerTransferOriginal(unsafe.Pointer(elem), func(gobj *glib.Object, obj glib.GoObjectSubclass) {
+		iface := obj.(interface{ NoMorePads(*Element) })
+		iface.NoMorePads(wrapElement(gobj))
 	})
-	iface.NoMorePads(wrapCbElem(elem))
 }
 
 //export goGstElementClassPadAdded
 func goGstElementClassPadAdded(elem *C.GstElement, pad *C.GstPad) {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
-		PadAdded(*Element, *Pad)
+	glib.WithPointerTransferOriginal(unsafe.Pointer(elem), func(gobj *glib.Object, obj glib.GoObjectSubclass) {
+		iface := obj.(interface{ PadAdded(*Element, *Pad) })
+		iface.PadAdded(wrapElement(gobj), wrapPad(toGObject(unsafe.Pointer(pad))))
 	})
-	iface.PadAdded(wrapCbElem(elem), wrapPad(toGObject(unsafe.Pointer(pad))))
 }
 
 //export goGstElementClassPadRemoved
 func goGstElementClassPadRemoved(elem *C.GstElement, pad *C.GstPad) {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
-		PadRemoved(*Element, *Pad)
+	glib.WithPointerTransferOriginal(unsafe.Pointer(elem), func(gobj *glib.Object, obj glib.GoObjectSubclass) {
+		iface := obj.(interface{ PadRemoved(*Element, *Pad) })
+		iface.PadRemoved(wrapElement(gobj), wrapPad(toGObject(unsafe.Pointer(pad))))
 	})
-	iface.PadRemoved(wrapCbElem(elem), wrapPad(toGObject(unsafe.Pointer(pad))))
 }
 
 //export goGstElementClassPostMessage
 func goGstElementClassPostMessage(elem *C.GstElement, msg *C.GstMessage) C.gboolean {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
-		PostMessage(*Element, *Message) bool
+	var ret C.gboolean
+	glib.WithPointerTransferOriginal(unsafe.Pointer(elem), func(gobj *glib.Object, obj glib.GoObjectSubclass) {
+		iface := obj.(interface{ PostMessage(*Element, *Message) bool })
+		ret = gboolean(iface.PostMessage(wrapElement(gobj), wrapMessage(msg)))
 	})
-	return gboolean(iface.PostMessage(wrapCbElem(elem), wrapMessage(msg)))
+	return ret
 }
 
 //export goGstElementClassProvideClock
 func goGstElementClassProvideClock(elem *C.GstElement) *C.GstClock {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
-		ProvideClock(*Element) *Clock
+	var clock *Clock
+	glib.WithPointerTransferOriginal(unsafe.Pointer(elem), func(gobj *glib.Object, obj glib.GoObjectSubclass) {
+		iface := obj.(interface{ ProvideClock(*Element) *Clock })
+		clock = iface.ProvideClock(wrapElement(gobj))
 	})
-	clock := iface.ProvideClock(wrapCbElem(elem))
 	if clock == nil {
 		return nil
 	}
@@ -80,31 +90,36 @@ func goGstElementClassProvideClock(elem *C.GstElement) *C.GstClock {
 
 //export goGstElementClassQuery
 func goGstElementClassQuery(elem *C.GstElement, query *C.GstQuery) C.gboolean {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
-		Query(*Element, *Query) bool
+	var ret C.gboolean
+	glib.WithPointerTransferOriginal(unsafe.Pointer(elem), func(gobj *glib.Object, obj glib.GoObjectSubclass) {
+		iface := obj.(interface{ Query(*Element, *Query) bool })
+		ret = gboolean(iface.Query(wrapElement(gobj), wrapQuery(query)))
 	})
-	return gboolean(iface.Query(wrapCbElem(elem), wrapQuery(query)))
+	return ret
 }
 
 //export goGstElementClassReleasePad
 func goGstElementClassReleasePad(elem *C.GstElement, pad *C.GstPad) {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
-		ReleasePad(*Element, *Pad)
+	glib.WithPointerTransferOriginal(unsafe.Pointer(elem), func(gobj *glib.Object, obj glib.GoObjectSubclass) {
+		iface := obj.(interface{ ReleasePad(*Element, *Pad) })
+		iface.ReleasePad(wrapElement(gobj), wrapPad(toGObject(unsafe.Pointer(pad))))
 	})
-	iface.ReleasePad(wrapCbElem(elem), wrapPad(toGObject(unsafe.Pointer(pad))))
 }
 
 //export goGstElementClassRequestNewPad
 func goGstElementClassRequestNewPad(elem *C.GstElement, templ *C.GstPadTemplate, name *C.gchar, caps *C.GstCaps) *C.GstPad {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
-		RequestNewPad(self *Element, templ *PadTemplate, name string, caps *Caps) *Pad
+	var pad *Pad
+	glib.WithPointerTransferOriginal(unsafe.Pointer(elem), func(gobj *glib.Object, obj glib.GoObjectSubclass) {
+		iface := obj.(interface {
+			RequestNewPad(self *Element, templ *PadTemplate, name string, caps *Caps) *Pad
+		})
+		pad = iface.RequestNewPad(
+			wrapElement(gobj),
+			wrapPadTemplate(toGObject(unsafe.Pointer(templ))),
+			C.GoString(name),
+			wrapCaps(caps),
+		)
 	})
-	pad := iface.RequestNewPad(
-		wrapCbElem(elem),
-		wrapPadTemplate(toGObject(unsafe.Pointer(templ))),
-		C.GoString(name),
-		wrapCaps(caps),
-	)
 	if pad == nil {
 		return nil
 	}
@@ -113,50 +128,58 @@ func goGstElementClassRequestNewPad(elem *C.GstElement, templ *C.GstPadTemplate,
 
 //export goGstElementClassSendEvent
 func goGstElementClassSendEvent(elem *C.GstElement, event *C.GstEvent) C.gboolean {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
-		SendEvent(*Element, *Event) bool
+	var ret C.gboolean
+	glib.WithPointerTransferOriginal(unsafe.Pointer(elem), func(gobj *glib.Object, obj glib.GoObjectSubclass) {
+		iface := obj.(interface{ SendEvent(*Element, *Event) bool })
+		ret = gboolean(iface.SendEvent(wrapElement(gobj), wrapEvent(event)))
 	})
-	return gboolean(iface.SendEvent(wrapCbElem(elem), wrapEvent(event)))
+	return ret
 }
 
 //export goGstElementClassSetBus
 func goGstElementClassSetBus(elem *C.GstElement, bus *C.GstBus) {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
-		SetBus(*Element, *Bus)
+	glib.WithPointerTransferOriginal(unsafe.Pointer(elem), func(gobj *glib.Object, obj glib.GoObjectSubclass) {
+		iface := obj.(interface{ SetBus(*Element, *Bus) })
+		iface.SetBus(wrapElement(gobj), wrapBus(toGObject(unsafe.Pointer(bus))))
 	})
-	iface.SetBus(wrapCbElem(elem), wrapBus(toGObject(unsafe.Pointer(bus))))
 }
 
 //export goGstElementClassSetClock
 func goGstElementClassSetClock(elem *C.GstElement, clock *C.GstClock) C.gboolean {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
-		SetClock(*Element, *Clock) bool
+	var ret C.gboolean
+	glib.WithPointerTransferOriginal(unsafe.Pointer(elem), func(gobj *glib.Object, obj glib.GoObjectSubclass) {
+		iface := obj.(interface{ SetClock(*Element, *Clock) bool })
+		ret = gboolean(iface.SetClock(wrapElement(gobj), wrapClock(toGObject(unsafe.Pointer(clock)))))
 	})
-	return gboolean(iface.SetClock(wrapCbElem(elem), wrapClock(toGObject(unsafe.Pointer(clock)))))
+	return ret
 }
 
 //export goGstElementClassSetContext
 func goGstElementClassSetContext(elem *C.GstElement, ctx *C.GstContext) {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
-		SetContext(*Element, *Context)
+	glib.WithPointerTransferOriginal(unsafe.Pointer(elem), func(gobj *glib.Object, obj glib.GoObjectSubclass) {
+		iface := obj.(interface{ SetContext(*Element, *Context) })
+		iface.SetContext(wrapElement(gobj), wrapContext(ctx))
 	})
-	iface.SetContext(wrapCbElem(elem), wrapContext(ctx))
 }
 
 //export goGstElementClassSetState
 func goGstElementClassSetState(elem *C.GstElement, state C.GstState) C.GstStateChangeReturn {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
-		SetState(*Element, State) StateChangeReturn
+	var ret C.GstStateChangeReturn
+	glib.WithPointerTransferOriginal(unsafe.Pointer(elem), func(gobj *glib.Object, obj glib.GoObjectSubclass) {
+		iface := obj.(interface {
+			SetState(*Element, State) StateChangeReturn
+		})
+		ret = C.GstStateChangeReturn(iface.SetState(wrapElement(gobj), State(state)))
 	})
-	return C.GstStateChangeReturn(iface.SetState(wrapCbElem(elem), State(state)))
+	return ret
 }
 
 //export goGstElementClassStateChanged
 func goGstElementClassStateChanged(elem *C.GstElement, old, new, pending C.GstState) {
-	iface := glib.FromObjectUnsafePrivate(unsafe.Pointer(elem)).(interface {
-		StateChanged(self *Element, old, new, pending State)
+	glib.WithPointerTransferOriginal(unsafe.Pointer(elem), func(gobj *glib.Object, obj glib.GoObjectSubclass) {
+		iface := obj.(interface {
+			StateChanged(self *Element, old, new, pending State)
+		})
+		iface.StateChanged(wrapElement(gobj), State(old), State(new), State(pending))
 	})
-	iface.StateChanged(wrapCbElem(elem), State(old), State(new), State(pending))
 }
-
-func wrapCbElem(elem *C.GstElement) *Element { return wrapElement(toGObject(unsafe.Pointer(elem))) }
