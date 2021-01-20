@@ -41,10 +41,14 @@ github.com/tinyzimmer/go-glib v0.0.7 h1:09SIbhaL+E+5U/4qbZXiM7f6HEDvcxOBuEiSCkT9
 github.com/tinyzimmer/go-glib v0.0.7/go.mod h1:zy2cs6eXSTtqqYrv9/UgYMDfr4pWKuYPSzwX87cBGX4=
 github.com/tinyzimmer/go-glib v0.0.11 h1:+X15JtyglmBhiLu5KXHWxcxhypyc/CEqW+SIFmjZ110=
 github.com/tinyzimmer/go-glib v0.0.11/go.mod h1:zy2cs6eXSTtqqYrv9/UgYMDfr4pWKuYPSzwX87cBGX4=
+github.com/tinyzimmer/go-glib v0.0.18 h1:zSlJK5NDcquHK4FFQ2cF6tRavo2Y+6jc3Qowj1sN+oQ=
+github.com/tinyzimmer/go-glib v0.0.18/go.mod h1:zy2cs6eXSTtqqYrv9/UgYMDfr4pWKuYPSzwX87cBGX4=
 github.com/tinyzimmer/go-gst v0.2.3 h1:36NX7DqkUq7ehq+81Dmro8r9VEew9ZZ4K/Ic8oWpHck=
 github.com/tinyzimmer/go-gst v0.2.3/go.mod h1:atM89iP55Hwgc+zoCVWT15qgThdxQ7WZJ5sD/uANDRI=
 github.com/tinyzimmer/go-gst v0.2.4 h1:uDGTzObBmIhyukqjCE9Jw0/EmmNU47Ztd5lBrtXTmWU=
 github.com/tinyzimmer/go-gst v0.2.4/go.mod h1:aPV2CtdfNrtASAzj+DzrAISJr1Czfy25ihLJIh7f/tk=
+github.com/tinyzimmer/go-gst v0.2.8 h1:l0O9IjxncP7TMeeDFfYeQjrmsDv4STE0j8gVU1N8J74=
+github.com/tinyzimmer/go-gst v0.2.8/go.mod h1:C1yElEfXm8k0ddR4NdT1cJS4vFHv2wyVrIBSJCB6Nto=
 golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
 golang.org/x/crypto v0.0.0-20190513172903-22d7a77e9e5f/go.mod h1:yigFU9vqHzYiE8UmvKecakEJjdnWj3jj499lnFckfCI=
 golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9/go.mod h1:LzIPMQfyMNhhGPhUkYOs5KpL4U8rLKemX1yGLhDgUto=

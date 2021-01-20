@@ -85,6 +85,7 @@ func (m *minioSrc) GetSize(self *base.GstBaseSrc) (bool, int64) {
 
 func (m *minioSrc) Start(self *base.GstBaseSrc) bool {
 	m.state.mux.Lock()
+	defer m.state.mux.Unlock()
 
 	if m.state.started {
 		self.ErrorMessage(gst.DomainResource, gst.ResourceErrorFailed, "MinIOSrc is already started", "")
@@ -136,8 +137,6 @@ func (m *minioSrc) Start(self *base.GstBaseSrc) bool {
 	self.Log(srcCAT, gst.LevelInfo, fmt.Sprintf("%+v", m.state.objInfo))
 
 	m.state.started = true
-
-	m.state.mux.Unlock()
 
 	self.StartComplete(gst.FlowOK)
 
