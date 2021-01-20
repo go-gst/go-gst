@@ -84,8 +84,6 @@ func (m *minioSrc) GetSize(self *base.GstBaseSrc) (bool, int64) {
 }
 
 func (m *minioSrc) Start(self *base.GstBaseSrc) bool {
-	m.state.mux.Lock()
-	defer m.state.mux.Unlock()
 
 	if m.state.started {
 		self.ErrorMessage(gst.DomainResource, gst.ResourceErrorFailed, "MinIOSrc is already started", "")
@@ -102,6 +100,8 @@ func (m *minioSrc) Start(self *base.GstBaseSrc) bool {
 		return false
 	}
 
+	m.state.mux.Lock()
+
 	if strings.HasPrefix(m.settings.accessKeyID, "env:") {
 		spl := strings.Split(m.settings.accessKeyID, "env:")
 		m.settings.accessKeyID = os.Getenv(spl[len(spl)-1])
@@ -116,6 +116,7 @@ func (m *minioSrc) Start(self *base.GstBaseSrc) bool {
 	if err != nil {
 		self.ErrorMessage(gst.DomainResource, gst.ResourceErrorFailed,
 			fmt.Sprintf("Failed to connect to MinIO endpoint %s", m.settings.endpoint), err.Error())
+		m.state.mux.Unlock()
 		return false
 	}
 
@@ -124,6 +125,7 @@ func (m *minioSrc) Start(self *base.GstBaseSrc) bool {
 	if err != nil {
 		self.ErrorMessage(gst.DomainResource, gst.ResourceErrorOpenRead,
 			fmt.Sprintf("Failed to retrieve object %q from bucket %q", m.settings.key, m.settings.bucket), err.Error())
+		m.state.mux.Unlock()
 		return false
 	}
 
@@ -132,11 +134,13 @@ func (m *minioSrc) Start(self *base.GstBaseSrc) bool {
 	if err != nil {
 		self.ErrorMessage(gst.DomainResource, gst.ResourceErrorOpenRead,
 			fmt.Sprintf("Failed to stat object %q in bucket %q: %s", m.settings.key, m.settings.bucket, err.Error()), "")
+		m.state.mux.Unlock()
 		return false
 	}
 	self.Log(srcCAT, gst.LevelInfo, fmt.Sprintf("%+v", m.state.objInfo))
 
 	m.state.started = true
+	m.state.mux.Unlock()
 
 	self.StartComplete(gst.FlowOK)
 
