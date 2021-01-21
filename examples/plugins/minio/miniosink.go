@@ -176,10 +176,14 @@ func (m *minioSink) Event(self *base.GstBaseSink, event *gst.Event) bool {
 
 		if segment.GetFormat() == gst.FormatBytes {
 			if uint64(m.writer.currentPosition) != segment.GetStart() {
+				m.mux.Lock()
 				self.Log(sinkCAT, gst.LevelInfo, fmt.Sprintf("Seeking to %d", segment.GetStart()))
 				if _, err := m.writer.Seek(int64(segment.GetStart()), io.SeekStart); err != nil {
 					self.ErrorMessage(gst.DomainResource, gst.ResourceErrorFailed, err.Error(), "")
+					m.mux.Unlock()
+					return false
 				}
+				m.mux.Unlock()
 			} else {
 				self.Log(sinkCAT, gst.LevelDebug, "Ignored SEGMENT, no seek needed")
 			}
@@ -190,23 +194,30 @@ func (m *minioSink) Event(self *base.GstBaseSink, event *gst.Event) bool {
 	case gst.EventTypeFlushStop:
 		self.Log(sinkCAT, gst.LevelInfo, "Flushing contents of writer and seeking back to start")
 		if m.writer.currentPosition != 0 {
+			m.mux.Lock()
 			if err := m.writer.flush(true); err != nil {
 				self.ErrorMessage(gst.DomainResource, gst.ResourceErrorWrite, err.Error(), "")
+				m.mux.Unlock()
 				return false
 			}
 			if _, err := m.writer.Seek(0, io.SeekStart); err != nil {
 				self.ErrorMessage(gst.DomainResource, gst.ResourceErrorFailed, err.Error(), "")
+				m.mux.Unlock()
+				return false
 			}
+			m.mux.Unlock()
 		}
 
 	case gst.EventTypeEOS:
 		self.Log(sinkCAT, gst.LevelInfo, "Received EOS, closing MinIO writer")
+		m.mux.Lock()
 		if err := m.writer.Close(); err != nil {
 			self.Log(sinkCAT, gst.LevelError, err.Error())
 			self.ErrorMessage(gst.DomainResource, gst.ResourceErrorClose, fmt.Sprintf("Failed to close MinIO writer: %s", err.Error()), "")
+			m.mux.Unlock()
 			return false
 		}
-
+		m.mux.Unlock()
 	}
 
 	return self.ParentEvent(event)
