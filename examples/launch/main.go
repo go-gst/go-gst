@@ -15,17 +15,14 @@ import (
 )
 
 func runPipeline(mainLoop *glib.MainLoop) error {
-	gst.Init(&os.Args)
-	fmt.Println(os.Args)
 	if len(os.Args) == 1 {
 		return errors.New("Pipeline string cannot be empty")
 	}
 
-	// Build a pipeline string from the cli arguments
-	pipelineString := strings.Join(os.Args[1:], " ")
+	gst.Init(&os.Args)
 
-	/// Let GStreamer create a pipeline from the parsed launch syntax on the cli.
-	pipeline, err := gst.NewPipelineFromString(pipelineString)
+	// Let GStreamer create a pipeline from the parsed launch syntax on the cli.
+	pipeline, err := gst.NewPipelineFromString(strings.Join(os.Args[1:], " "))
 	if err != nil {
 		return err
 	}
