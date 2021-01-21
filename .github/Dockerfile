@@ -14,27 +14,13 @@
 #   ENTRYPOINT ["/app"]
 #
 ARG GO_VERSION=1.15
-FROM golang:${GO_VERSION} 
+FROM ubuntu:20.10
 
-RUN apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y cmake \
-        build-essential python3 python3-pip glib2.0 glib2.0-dev libssl-dev bison flex liborc-dev ffmpeg libegl1-mesa \
-        libavcodec-dev libavfilter-dev libavformat-dev libavresample-dev libavutil-dev libpciaccess-dev libegl1-mesa-dev \
-        libpng-tools libpng-dev libjpeg-dev libx264-dev nasm libgtest-dev libnice-dev libdrm-dev gobject-introspection  \
-        libgirepository1.0-dev gir1.2-glib-2.0 libcairo-dev gtk3.0-dev liblcms2-dev liblcms2-2 liborc-0.4-dev liborc-0.4 \
-    && pip3 install meson ninja \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN mkdir /gstreamer \
-    && cd /gstreamer \
-    && git clone https://gitlab.freedesktop.org/gstreamer/gst-build.git \
-    && cd gst-build \
-    && meson setup build \
-    && cd build \
-    && meson compile \
-    && meson install \ 
-    && cd .. \
-    && rm -rf build/
-
-RUN mkdir -p /workspace
-WORKDIR /workspace
+RUN mkdir -p /build \
+    && apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y \
+        golang git make curl \
+        libgstreamer1.0 libgstreamer1.0-dev \
+        libgstreamer-plugins-bad1.0-dev libgstreamer-plugins-base1.0-dev \
+        gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad \
+        gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-tools

@@ -49,8 +49,10 @@ func main() {
         os.Exit(1)
     }
 
-    // Initialize GStreamer
-    gst.Init(nil)
+    // Initialize GStreamer with the arguments passed to the program. Gstreamer
+    // and the bindings will automatically pop off any handled arguments leaving
+    // nothing but a pipeline string (unless other invalid args are present).
+    gst.Init(&os.Args)
 
     // Create a main loop. This is only required when utilizing signals via the bindings.
     // In this example, the AddWatch on the pipeline bus requires iterating on the main loop.
