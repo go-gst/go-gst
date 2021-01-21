@@ -149,6 +149,7 @@ func (m *minioSrc) Start(self *base.GstBaseSrc) bool {
 }
 
 func (m *minioSrc) Stop(self *base.GstBaseSrc) bool {
+	self.Log(srcCAT, gst.LevelInfo, "Stopping MinIOSrc")
 	m.state.mux.Lock()
 	defer m.state.mux.Unlock()
 

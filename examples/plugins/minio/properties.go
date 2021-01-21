@@ -1,12 +1,17 @@
 package main
 
 import (
+	"math"
+
 	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // Even though there is overlap in properties, they have to be declared twice.
 // This is because the GType system doesn't allow for GObjects to share pointers
 // to the exact same GParamSpecs.
+
+const defaultPartSize = 1024 * 1024 * 128
+const minPartSize = 1024 * 1024 * 5
 
 var sinkProperties = []*glib.ParamSpec{
 	glib.NewStringParam(
@@ -70,6 +75,13 @@ var sinkProperties = []*glib.ParamSpec{
 		"Secret Access Key",
 		"The secret access key to use for authentication",
 		nil,
+		glib.ParameterReadWrite,
+	),
+	glib.NewUint64Param(
+		"part-size",
+		"Part Size",
+		"Size for each part in the multi-part upload",
+		minPartSize, math.MaxInt64, defaultPartSize,
 		glib.ParameterReadWrite,
 	),
 }

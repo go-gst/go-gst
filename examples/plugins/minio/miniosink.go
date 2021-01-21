@@ -133,12 +133,15 @@ func (m *minioSink) Start(self *base.GstBaseSink) bool {
 	ctx, m.cancel = context.WithCancel(context.Background())
 
 	go func() {
+		self.Ref()
+		defer self.Unref()
 		defer m.cancel()
 		defer func() { m.doneChan <- struct{}{} }()
 
 		self.Log(sinkCAT, gst.LevelInfo, fmt.Sprintf("Starting PutObject operation to %s/%s/%s", m.settings.endpoint, m.settings.bucket, m.settings.key))
 		info, err := client.PutObject(ctx, m.settings.bucket, m.settings.key, m.rPipe, -1, minio.PutObjectOptions{
 			ContentType: "application/octet-stream",
+			PartSize:    m.settings.partSize,
 		})
 
 		if err != nil {
@@ -156,11 +159,19 @@ func (m *minioSink) Start(self *base.GstBaseSink) bool {
 }
 
 func (m *minioSink) Stop(self *base.GstBaseSink) bool {
+	self.Log(sinkCAT, gst.LevelInfo, "Stopping MinIOSink")
 	m.mux.Lock()
 	defer m.mux.Unlock()
 
 	if !m.state.started {
 		self.ErrorMessage(gst.DomainResource, gst.ResourceErrorSettings, "MinIOSink is not started", "")
+		return false
+	}
+
+	self.Log(sinkCAT, gst.LevelInfo, "Closing write pipe to PutObject operation")
+	if err := m.wPipe.Close(); err != nil {
+		self.Log(sinkCAT, gst.LevelError, err.Error())
+		self.ErrorMessage(gst.DomainResource, gst.ResourceErrorClose, fmt.Sprintf("Failed to finalize MinIO object: %s", err.Error()), "")
 		return false
 	}
 
@@ -193,19 +204,4 @@ func (m *minioSink) Render(self *base.GstBaseSink, buffer *gst.Buffer) gst.FlowR
 	}
 
 	return gst.FlowOK
-}
-
-func (m *minioSink) Event(self *base.GstBaseSink, event *gst.Event) bool {
-	switch event.Type() {
-	case gst.EventTypeEOS:
-		m.mux.Lock()
-		defer m.mux.Unlock()
-		self.Log(sinkCAT, gst.LevelInfo, "Received EOS, closing write pipe to PutObject operation")
-		if err := m.wPipe.Close(); err != nil {
-			self.Log(sinkCAT, gst.LevelError, err.Error())
-			self.ErrorMessage(gst.DomainResource, gst.ResourceErrorClose, fmt.Sprintf("Failed to finalize MinIO object: %s", err.Error()), "")
-			return false
-		}
-	}
-	return self.ParentEvent(event)
 }

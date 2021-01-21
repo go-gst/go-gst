@@ -1,6 +1,12 @@
 package gst
 
-// #include "gst.go.h"
+/*
+#include "gst.go.h"
+
+static void* allocArgv(int argc) {
+    return malloc(sizeof(char *) * argc);
+}
+*/
 import "C"
 import "unsafe"
 
@@ -21,21 +27,21 @@ var CAT *DebugCategory
 // plugins it is generally better to initialize your own DebugCategory.
 func Init(args *[]string) {
 	if args != nil {
-		argc := C.int(len(*args))
-		argv := make([]*C.char, argc)
+		cargc := C.int(len(*args))
+		cargv := (*[0xfff]*C.char)(C.allocArgv(cargc))
+		defer C.free(unsafe.Pointer(cargv))
 		for i, arg := range *args {
-			argv[i] = C.CString(arg)
+			cargv[i] = C.CString(arg)
+			defer C.free(unsafe.Pointer(cargv[i]))
 		}
-		C.gst_init((*C.int)(unsafe.Pointer(&argc)),
-			(***C.char)(unsafe.Pointer(&argv)))
-		unhandled := make([]string, argc)
-		for i := 0; i < int(argc); i++ {
-			unhandled[i] = C.GoString(argv[i])
-			C.free(unsafe.Pointer(argv[i]))
+		C.gst_init(&cargc, (***C.char)(unsafe.Pointer(&cargv)))
+		unhandled := make([]string, cargc)
+		for i := 0; i < int(cargc); i++ {
+			unhandled[i] = C.GoString(cargv[i])
 		}
 		*args = unhandled
 	} else {
 		C.gst_init(nil, nil)
 	}
-	CAT = NewDebugCategory("GST_GO", DebugColorNone, "GStreamer Go Bindings")
+	CAT = NewDebugCategory("GST_GO", DebugColorFgCyan, "GStreamer Go Bindings")
 }

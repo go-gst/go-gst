@@ -15,8 +15,8 @@ import (
 )
 
 func runPipeline(mainLoop *glib.MainLoop) error {
-	gst.Init(nil)
-
+	gst.Init(&os.Args)
+	fmt.Println(os.Args)
 	if len(os.Args) == 1 {
 		return errors.New("Pipeline string cannot be empty")
 	}
@@ -34,6 +34,7 @@ func runPipeline(mainLoop *glib.MainLoop) error {
 	pipeline.GetPipelineBus().AddWatch(func(msg *gst.Message) bool {
 		switch msg.Type() {
 		case gst.MessageEOS: // When end-of-stream is received stop the main loop
+			pipeline.BlockSetState(gst.StateNull)
 			mainLoop.Quit()
 		case gst.MessageError: // Error messages are always fatal
 			err := msg.ParseError()

@@ -36,6 +36,7 @@ type settings struct {
 	secretAccessKey    string
 	insecureSkipVerify bool
 	caCertFile         string
+	partSize           uint64
 }
 
 func (s *settings) safestring() string {
@@ -58,6 +59,7 @@ func defaultSettings() *settings {
 		accessKeyID:        os.Getenv(accessKeyIDEnvVar),
 		secretAccessKey:    os.Getenv(secretAccessKeyEnvVar),
 		insecureSkipVerify: defaultInsecureSkipVerify,
+		partSize:           defaultPartSize,
 	}
 }
 
@@ -114,6 +116,8 @@ func setProperty(elem *gst.Element, properties []*glib.ParamSpec, settings *sett
 		settings.accessKeyID = val.(string)
 	case "secret-access-key":
 		settings.secretAccessKey = val.(string)
+	case "part-size":
+		settings.partSize = val.(uint64)
 	}
 }
 
@@ -141,6 +145,8 @@ func getProperty(elem *gst.Element, properties []*glib.ParamSpec, settings *sett
 		localVal = settings.accessKeyID
 	case "secret-access-key":
 		localVal = "<private>"
+	case "part-size":
+		localVal = settings.partSize
 
 	default:
 		elem.ErrorMessage(gst.DomainLibrary, gst.LibraryErrorSettings,
