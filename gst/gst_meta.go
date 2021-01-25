@@ -59,6 +59,14 @@ type MetaInfo struct {
 	ptr *C.GstMetaInfo
 }
 
+// FromGstMetaInfoUnsafe wraps the given unsafe pointer in a MetaInfo instance.
+func FromGstMetaInfoUnsafe(ptr unsafe.Pointer) *MetaInfo {
+	if ptr == nil {
+		return nil
+	}
+	return &MetaInfo{ptr: (*C.GstMetaInfo)(ptr)}
+}
+
 // RegisterAPIType registers and returns a GType for the given api name and associates it with tags.
 func RegisterAPIType(name string, tags []string) glib.Type {
 	cTags := gcharStrings(tags)
