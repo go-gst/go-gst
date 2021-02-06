@@ -36,11 +36,9 @@ var InterfaceURIHandler glib.Interface = &interfaceURIHandler{}
 type interfaceURIHandler struct{ glib.Interface }
 
 func (i *interfaceURIHandler) Type() glib.Type { return glib.Type(C.GST_TYPE_URI_HANDLER) }
-func (i *interfaceURIHandler) InitFunc() glib.InterfaceInitFunc {
-	return func(instance *glib.TypeInstance) {
-		globalURIHdlr = instance.GoType.(URIHandler)
-		C.uriHandlerInit((C.gpointer)(instance.GTypeInstance), nil)
-	}
+func (i *interfaceURIHandler) Init(instance *glib.TypeInstance) {
+	globalURIHdlr = instance.GoType.(URIHandler)
+	C.uriHandlerInit((C.gpointer)(instance.GTypeInstance), nil)
 }
 
 // URIHandler represents an interface that elements can implement to provide URI handling

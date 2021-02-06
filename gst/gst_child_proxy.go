@@ -32,39 +32,37 @@ var InterfaceChildProxy glib.Interface = &interfaceChildProxy{}
 type interfaceChildProxy struct{ glib.Interface }
 
 func (i *interfaceChildProxy) Type() glib.Type { return glib.Type(C.GST_TYPE_CHILD_PROXY) }
-func (i *interfaceChildProxy) InitFunc() glib.InterfaceInitFunc {
-	return func(instance *glib.TypeInstance) {
-		goobj := instance.GoType
+func (i *interfaceChildProxy) Init(instance *glib.TypeInstance) {
+	goobj := instance.GoType
 
-		if _, ok := goobj.(interface {
-			ChildAdded(self *ChildProxy, child *glib.Object, name string)
-		}); ok {
-			C.setGstChildProxyChildAdded((C.gpointer)(instance.GTypeInstance))
-		}
+	if _, ok := goobj.(interface {
+		ChildAdded(self *ChildProxy, child *glib.Object, name string)
+	}); ok {
+		C.setGstChildProxyChildAdded((C.gpointer)(instance.GTypeInstance))
+	}
 
-		if _, ok := goobj.(interface {
-			ChildRemoved(self *ChildProxy, child *glib.Object, name string)
-		}); ok {
-			C.setGstChildProxyChildRemoved((C.gpointer)(instance.GTypeInstance))
-		}
+	if _, ok := goobj.(interface {
+		ChildRemoved(self *ChildProxy, child *glib.Object, name string)
+	}); ok {
+		C.setGstChildProxyChildRemoved((C.gpointer)(instance.GTypeInstance))
+	}
 
-		if _, ok := goobj.(interface {
-			GetChildByIndex(self *ChildProxy, idx uint) *glib.Object
-		}); ok {
-			C.setGstChildProxyGetChildByIndex((C.gpointer)(instance.GTypeInstance))
-		}
+	if _, ok := goobj.(interface {
+		GetChildByIndex(self *ChildProxy, idx uint) *glib.Object
+	}); ok {
+		C.setGstChildProxyGetChildByIndex((C.gpointer)(instance.GTypeInstance))
+	}
 
-		if _, ok := goobj.(interface {
-			GetChildByName(self *ChildProxy, name string) *glib.Object
-		}); ok {
-			C.setGstChildProxyGetChildByName((C.gpointer)(instance.GTypeInstance))
-		}
+	if _, ok := goobj.(interface {
+		GetChildByName(self *ChildProxy, name string) *glib.Object
+	}); ok {
+		C.setGstChildProxyGetChildByName((C.gpointer)(instance.GTypeInstance))
+	}
 
-		if _, ok := goobj.(interface {
-			GetChildrenCount(self *ChildProxy) uint
-		}); ok {
-			C.setGstChildProxyGetChildrenCount((C.gpointer)(instance.GTypeInstance))
-		}
+	if _, ok := goobj.(interface {
+		GetChildrenCount(self *ChildProxy) uint
+	}); ok {
+		C.setGstChildProxyGetChildrenCount((C.gpointer)(instance.GTypeInstance))
 	}
 }
 

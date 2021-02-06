@@ -14,10 +14,8 @@ var InterfaceTagSetter glib.Interface = &interfaceTagSetter{}
 
 type interfaceTagSetter struct{}
 
-func (i *interfaceTagSetter) Type() glib.Type { return glib.Type(C.GST_TYPE_TAG_SETTER) }
-func (i *interfaceTagSetter) InitFunc() glib.InterfaceInitFunc {
-	return func(instance *glib.TypeInstance) {}
-}
+func (i *interfaceTagSetter) Type() glib.Type                  { return glib.Type(C.GST_TYPE_TAG_SETTER) }
+func (i *interfaceTagSetter) Init(instance *glib.TypeInstance) {}
 
 // TagSetter is an interface that elements can implement to provide Tag writing capabilities.
 type TagSetter interface {

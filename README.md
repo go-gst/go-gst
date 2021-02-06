@@ -71,7 +71,8 @@ func main() {
     // Add a message handler to the pipeline bus, printing interesting information to the console.
     pipeline.GetPipelineBus().AddWatch(func(msg *gst.Message) bool {
         switch msg.Type() {
-        case gst.MessageEOS: // When end-of-stream is received stop the main loop
+        case gst.MessageEOS: // When end-of-stream is received flush the pipeling and stop the main loop
+            pipeline.BlockSetState(gst.StateNull)
             mainLoop.Quit()
         case gst.MessageError: // Error messages are always fatal
             err := msg.ParseError()
