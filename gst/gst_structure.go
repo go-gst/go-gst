@@ -49,16 +49,6 @@ func NewStructureFromString(stStr string) *Structure {
 	return wrapStructure(structure)
 }
 
-// StructureFromGValue extracts the GstStructure from a glib.Value, or nil
-// if one does not exist.
-func StructureFromGValue(gval *glib.Value) *Structure {
-	st := C.gst_value_get_structure((*C.GValue)(unsafe.Pointer(gval.GValue)))
-	if st == nil {
-		return nil
-	}
-	return wrapStructure(st)
-}
-
 // MarshalStructure will convert the given go struct into a GstStructure. Currently nested
 // structs are not supported.
 func MarshalStructure(data interface{}) *Structure {
@@ -181,6 +171,24 @@ func (s *Structure) Values() map[string]interface{} {
 	wg.Wait()
 
 	return out
+}
+
+// TypeStructure is the glib.Type for a Structure.
+var TypeStructure = glib.Type(C.gst_structure_get_type())
+
+var _ glib.ValueTransformer = &Structure{}
+
+// ToGValue implements a glib.ValueTransformer
+func (s *Structure) ToGValue() (*glib.Value, error) {
+	val, err := glib.ValueInit(TypeStructure)
+	if err != nil {
+		return nil, err
+	}
+	C.gst_value_set_structure(
+		(*C.GValue)(unsafe.Pointer(val.GValue)),
+		s.Instance(),
+	)
+	return val, nil
 }
 
 func wrapStructure(st *C.GstStructure) *Structure {

@@ -3,7 +3,11 @@ package gst
 // #include "gst.go.h"
 import "C"
 
-import "unsafe"
+import (
+	"unsafe"
+
+	"github.com/tinyzimmer/go-glib/glib"
+)
 
 // Go casting of pre-baked caps features
 var (
@@ -40,6 +44,24 @@ func NewCapsFeaturesFromString(features string) *CapsFeatures {
 		return nil
 	}
 	return wrapCapsFeatures(capsFeatures)
+}
+
+// TypeCapsFeatures is the glib.Type for a CapsFeatures.
+var TypeCapsFeatures = glib.Type(C.gst_caps_features_get_type())
+
+var _ glib.ValueTransformer = &CapsFeatures{}
+
+// ToGValue implements a glib.ValueTransformer
+func (c *CapsFeatures) ToGValue() (*glib.Value, error) {
+	val, err := glib.ValueInit(TypeCapsFeatures)
+	if err != nil {
+		return nil, err
+	}
+	C.gst_value_set_caps_features(
+		(*C.GValue)(unsafe.Pointer(val.GValue)),
+		c.Instance(),
+	)
+	return val, nil
 }
 
 // Instance returns the native underlying GstCapsFeatures instance.

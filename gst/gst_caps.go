@@ -24,6 +24,8 @@ import (
 // TypeCaps is the static Glib Type for a GstCaps.
 var TypeCaps = glib.Type(C.gst_caps_get_type())
 
+var _ glib.ValueTransformer = &Caps{}
+
 // Caps is a go wrapper around GstCaps.
 type Caps struct {
 	native *C.GstCaps
@@ -41,11 +43,6 @@ func FromGstCapsUnsafeNone(caps unsafe.Pointer) *Caps {
 	runtime.SetFinalizer(gocaps, (*Caps).Unref)
 	return gocaps
 }
-
-// // FromGstCapsUnsafe is an alias to FromGstCapsUnsafeNone.
-// func FromGstCapsUnsafe(caps unsafe.Pointer) *Caps {
-// 	return FromGstCapsUnsafeNone(caps)
-// }
 
 // FromGstCapsUnsafeFull wraps the pointer to the given C GstCaps with the go type.
 // This is meant for internal usage and is exported for visibility to other packages.
@@ -126,10 +123,7 @@ func NewCapsFromString(capsStr string) *Caps {
 // Unsafe returns an unsafe.Pointer to the underlying GstCaps.
 func (c *Caps) Unsafe() unsafe.Pointer { return unsafe.Pointer(c.native) }
 
-// ToGValue returns a GValue containing the given caps. Note that under unexpected circumstances in allocation
-// this function can return nil. A reference to these caps is taken by the resulting value, so they are safe to
-// unref if not needed anymore. This method is intended for producing values that are needed elsewhere. If you
-// are not going to use the value, call Unset.
+// ToGValue returns a GValue containing the given caps.
 func (c *Caps) ToGValue() (*glib.Value, error) {
 	val, err := glib.ValueInit(glib.Type(C.gst_caps_get_type()))
 	if err != nil {

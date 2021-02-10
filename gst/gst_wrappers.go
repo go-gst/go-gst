@@ -159,11 +159,11 @@ func registerMarshalers() {
 			F: marshalBufferList,
 		},
 		{
-			T: glib.Type(C.gst_caps_get_type()),
+			T: TypeCaps,
 			F: marshalCaps,
 		},
 		{
-			T: glib.Type(C.gst_caps_features_get_type()),
+			T: TypeCapsFeatures,
 			F: marshalCapsFeatures,
 		},
 		{
@@ -199,16 +199,74 @@ func registerMarshalers() {
 			F: marshalMessage,
 		},
 		{
-			T: glib.Type(C.gst_fraction_get_type()),
+			T: TypeBitmask,
+			F: marshalBitmask,
+		},
+		{
+			T: TypeFraction,
 			F: marshalFraction,
 		},
 		{
-			T: glib.Type(C.gst_structure_get_type()),
+			T: TypeFractionRange,
+			F: marshalFractionRange,
+		},
+		{
+			T: TypeStructure,
 			F: marshalStructure,
+		},
+		{
+			T: TypeFloat64Range,
+			F: marshalDoubleRange,
+		},
+		{
+			T: TypeFlagset,
+			F: marshalFlagset,
+		},
+		{
+			T: TypeInt64Range,
+			F: marshalInt64Range,
+		},
+		{
+			T: TypeIntRange,
+			F: marshalIntRange,
 		},
 	}
 
 	glib.RegisterGValueMarshalers(tm)
+}
+
+func marshalInt64Range(p uintptr) (interface{}, error) {
+	return &Int64RangeValue{
+		start: int64(C.gst_value_get_int64_range_min(uintptrToGVal(p))),
+		end:   int64(C.gst_value_get_int64_range_max(uintptrToGVal(p))),
+		step:  int64(C.gst_value_get_int64_range_step(uintptrToGVal(p))),
+	}, nil
+}
+
+func marshalIntRange(p uintptr) (interface{}, error) {
+	return &IntRangeValue{
+		start: int(C.gst_value_get_int_range_min(uintptrToGVal(p))),
+		end:   int(C.gst_value_get_int_range_max(uintptrToGVal(p))),
+		step:  int(C.gst_value_get_int_range_step(uintptrToGVal(p))),
+	}, nil
+}
+
+func marshalBitmask(p uintptr) (interface{}, error) {
+	return Bitmask(C.gst_value_get_bitmask(uintptrToGVal(p))), nil
+}
+
+func marshalFlagset(p uintptr) (interface{}, error) {
+	return &FlagsetValue{
+		flags: uint(C.gst_value_get_flagset_flags(uintptrToGVal(p))),
+		mask:  uint(C.gst_value_get_flagset_mask(uintptrToGVal(p))),
+	}, nil
+}
+
+func marshalDoubleRange(p uintptr) (interface{}, error) {
+	return &Float64RangeValue{
+		start: float64(C.gst_value_get_double_range_min(uintptrToGVal(p))),
+		end:   float64(C.gst_value_get_double_range_max(uintptrToGVal(p))),
+	}, nil
 }
 
 func marshalFraction(p uintptr) (interface{}, error) {
@@ -217,6 +275,15 @@ func marshalFraction(p uintptr) (interface{}, error) {
 		denom: int(C.gst_value_get_fraction_denominator(uintptrToGVal(p))),
 	}
 	return v, nil
+}
+
+func marshalFractionRange(p uintptr) (interface{}, error) {
+	start := C.gst_value_get_fraction_range_min(uintptrToGVal(p))
+	end := C.gst_value_get_fraction_range_max(uintptrToGVal(p))
+	return &FractionRangeValue{
+		start: ValueGetFraction(glib.ValueFromNative(unsafe.Pointer(start))),
+		end:   ValueGetFraction(glib.ValueFromNative(unsafe.Pointer(end))),
+	}, nil
 }
 
 func marshalBufferingMode(p uintptr) (interface{}, error) {
