@@ -418,7 +418,7 @@ func (f *FlagsetValue) Mask() uint { return f.mask }
 
 // ToGValue implements a glib.ValueTransformer.
 func (f *FlagsetValue) ToGValue() (*glib.Value, error) {
-	val, err := glib.ValueInit(TypeFloat64Range)
+	val, err := glib.ValueInit(TypeFlagset)
 	if err != nil {
 		return nil, err
 	}
@@ -472,7 +472,7 @@ func (i *Int64RangeValue) String() string {
 
 // ToGValue implements a glib.ValueTransformer.
 func (i *Int64RangeValue) ToGValue() (*glib.Value, error) {
-	val, err := glib.ValueInit(TypeFloat64Range)
+	val, err := glib.ValueInit(TypeInt64Range)
 	if err != nil {
 		return nil, err
 	}
@@ -527,7 +527,7 @@ func (i *IntRangeValue) String() string {
 
 // ToGValue implements a glib.ValueTransformer.
 func (i *IntRangeValue) ToGValue() (*glib.Value, error) {
-	val, err := glib.ValueInit(TypeFloat64Range)
+	val, err := glib.ValueInit(TypeIntRange)
 	if err != nil {
 		return nil, err
 	}
