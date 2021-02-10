@@ -258,7 +258,7 @@ func (i *Info) Format() Format {
 }
 
 // FPS returns the frames-per-second value for the info.
-func (i *Info) FPS() gst.GFraction {
+func (i *Info) FPS() *gst.FractionValue {
 	return gst.Fraction(
 		int(C.infoFPSn(i.instance())),
 		int(C.infoFPSd(i.instance())),
@@ -318,7 +318,7 @@ func (i *Info) NumPlanes() uint {
 }
 
 // PAR returns the pixel-aspect-ration value for the info.
-func (i *Info) PAR() gst.GFraction {
+func (i *Info) PAR() *gst.FractionValue {
 	return gst.Fraction(
 		int(C.infoPARn(i.instance())),
 		int(C.infoPARd(i.instance())),
@@ -371,14 +371,14 @@ func (i *Info) WithInterlacedFormat(format Format, interlaceMode InterlaceMode, 
 }
 
 // WithFPS sets the FPS on this info.
-func (i *Info) WithFPS(f gst.GFraction) *Info {
+func (i *Info) WithFPS(f *gst.FractionValue) *Info {
 	i.instance().fps_d = C.gint(f.Denom())
 	i.instance().fps_n = C.gint(f.Num())
 	return i
 }
 
 // WithPAR sets the FPS on this info.
-func (i *Info) WithPAR(f gst.GFraction) *Info {
+func (i *Info) WithPAR(f *gst.FractionValue) *Info {
 	i.instance().par_d = C.gint(f.Denom())
 	i.instance().par_n = C.gint(f.Num())
 	return i

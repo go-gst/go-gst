@@ -2,6 +2,8 @@ package video
 
 /*
 #include <gst/gst.h>
+
+GValue *  videoUtilToGValue (guintptr p) { return (GValue*)(p); }
 */
 import "C"
 
@@ -12,6 +14,8 @@ import (
 
 	"github.com/tinyzimmer/go-gst/gst"
 )
+
+func uintptrToGVal(p uintptr) *C.GValue { return (*C.GValue)(C.videoUtilToGValue(C.guintptr(p))) }
 
 func wrapGerr(gerr *C.GError) error {
 	defer C.g_error_free(gerr)

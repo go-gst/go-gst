@@ -116,11 +116,6 @@ inline GstCaps * makeCapsWritable (GstCaps * caps)
 	return gst_caps_make_writable(caps);
 }
 
-inline GType getCapsType ()
-{
-	return GST_TYPE_CAPS;
-}
-
 /* Context utilities */
 
 inline gboolean contextIsWritable (GstContext * ctx)

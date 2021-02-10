@@ -130,13 +130,13 @@ func (c *Caps) Unsafe() unsafe.Pointer { return unsafe.Pointer(c.native) }
 // this function can return nil. A reference to these caps is taken by the resulting value, so they are safe to
 // unref if not needed anymore. This method is intended for producing values that are needed elsewhere. If you
 // are not going to use the value, call Unset.
-func (c *Caps) ToGValue() *glib.Value {
-	val, err := glib.ValueInitUnowned(glib.Type(C.getCapsType()))
+func (c *Caps) ToGValue() (*glib.Value, error) {
+	val, err := glib.ValueInit(glib.Type(C.gst_caps_get_type()))
 	if err != nil {
-		return nil
+		return nil, err
 	}
 	C.gst_value_set_caps((*C.GValue)(unsafe.Pointer(val.GValue)), c.Instance())
-	return val
+	return val, nil
 }
 
 // Ref increases the ref count on these caps by one.

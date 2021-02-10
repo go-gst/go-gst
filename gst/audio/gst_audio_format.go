@@ -7,8 +7,21 @@ import "C"
 import (
 	"unsafe"
 
+	"github.com/tinyzimmer/go-glib/glib"
 	"github.com/tinyzimmer/go-gst/gst"
 )
+
+func init() {
+	glib.RegisterGValueMarshalers([]glib.TypeMarshaler{
+		{
+			T: glib.Type(C.gst_audio_format_get_type()),
+			F: func(p uintptr) (interface{}, error) {
+				c := C.g_value_get_enum(uintptrToGVal(p))
+				return Format(c), nil
+			},
+		},
+	})
+}
 
 // FormatInfo is a structure containing information about an audio format.
 type FormatInfo struct {
@@ -76,6 +89,19 @@ const (
 
 // Format is an enum describing the most common audio formats
 type Format int
+
+// TypeFormat is the GType for a GstAudioFormat.
+var TypeFormat = glib.Type(C.gst_audio_format_get_type())
+
+// ToGValue implements a glib.ValueTransformer
+func (f Format) ToGValue() (*glib.Value, error) {
+	val, err := glib.ValueInit(TypeFormat)
+	if err != nil {
+		return nil, err
+	}
+	val.SetEnum(int(f))
+	return val, nil
+}
 
 func (f Format) String() string {
 	return C.GoString(C.gst_audio_format_to_string(C.GstAudioFormat(f)))

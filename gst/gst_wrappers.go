@@ -151,56 +151,72 @@ func registerMarshalers() {
 			F: marshalAllocationParams,
 		},
 		{
-			T: glib.Type(C.GST_TYPE_MEMORY),
+			T: glib.Type(C.gst_memory_get_type()),
 			F: marshalMemory,
 		},
 		{
-			T: glib.Type(C.bufferListType()),
+			T: glib.Type(C.gst_buffer_list_get_type()),
 			F: marshalBufferList,
 		},
 		{
-			T: glib.Type(C.getCapsType()),
+			T: glib.Type(C.gst_caps_get_type()),
 			F: marshalCaps,
 		},
 		{
-			T: glib.Type(C.GST_TYPE_CAPS_FEATURES),
+			T: glib.Type(C.gst_caps_features_get_type()),
 			F: marshalCapsFeatures,
 		},
 		{
-			T: glib.Type(C.GST_TYPE_CONTEXT),
+			T: glib.Type(C.gst_context_get_type()),
 			F: marshalContext,
 		},
 		{
-			T: glib.Type(C.GST_TYPE_TOC_ENTRY),
+			T: glib.Type(C.gst_toc_entry_get_type()),
 			F: marshalTOCEntry,
 		},
 		{
-			T: glib.Type(C.GST_TYPE_TOC),
+			T: glib.Type(C.gst_toc_get_type()),
 			F: marshalTOC,
 		},
 		{
-			T: glib.Type(C.GST_TYPE_TAG_LIST),
+			T: glib.Type(C.gst_tag_list_get_type()),
 			F: marsalTagList,
 		},
 		{
-			T: glib.Type(C.GST_TYPE_EVENT),
+			T: glib.Type(C.gst_event_get_type()),
 			F: marshalEvent,
 		},
 		{
-			T: glib.Type(C.GST_TYPE_SEGMENT),
+			T: glib.Type(C.gst_segment_get_type()),
 			F: marshalSegment,
 		},
 		{
-			T: glib.Type(C.GST_TYPE_QUERY),
+			T: glib.Type(C.gst_query_get_type()),
 			F: marshalQuery,
 		},
 		{
 			T: glib.Type(C.gst_message_get_type()),
 			F: marshalMessage,
 		},
+		{
+			T: glib.Type(C.gst_fraction_get_type()),
+			F: marshalFraction,
+		},
+		{
+			T: glib.Type(C.gst_structure_get_type()),
+			F: marshalStructure,
+		},
 	}
 
 	glib.RegisterGValueMarshalers(tm)
+}
+
+func marshalFraction(p uintptr) (interface{}, error) {
+	v := &FractionValue{
+		num:   int(C.gst_value_get_fraction_numerator(uintptrToGVal(p))),
+		denom: int(C.gst_value_get_fraction_denominator(uintptrToGVal(p))),
+	}
+	return v, nil
 }
 
 func marshalBufferingMode(p uintptr) (interface{}, error) {
@@ -332,15 +348,21 @@ func marshalBufferList(p uintptr) (interface{}, error) {
 }
 
 func marshalCaps(p uintptr) (interface{}, error) {
-	c := C.g_value_get_object(uintptrToGVal(p))
+	c := C.gst_value_get_caps(uintptrToGVal(p))
 	obj := (*C.GstCaps)(unsafe.Pointer(c))
 	return wrapCaps(obj), nil
 }
 
 func marshalCapsFeatures(p uintptr) (interface{}, error) {
-	c := C.g_value_get_object(uintptrToGVal(p))
+	c := C.gst_value_get_caps_features(uintptrToGVal(p))
 	obj := (*C.GstCapsFeatures)(unsafe.Pointer(c))
 	return wrapCapsFeatures(obj), nil
+}
+
+func marshalStructure(p uintptr) (interface{}, error) {
+	c := C.gst_value_get_structure(uintptrToGVal(p))
+	obj := (*C.GstStructure)(unsafe.Pointer(c))
+	return wrapStructure(obj), nil
 }
 
 func marshalContext(p uintptr) (interface{}, error) {
@@ -350,13 +372,13 @@ func marshalContext(p uintptr) (interface{}, error) {
 }
 
 func marshalTOC(p uintptr) (interface{}, error) {
-	c := C.g_value_get_object(uintptrToGVal(p))
+	c := C.gst_value_get_structure(uintptrToGVal(p))
 	obj := (*C.GstToc)(unsafe.Pointer(c))
 	return wrapTOC(obj), nil
 }
 
 func marshalTOCEntry(p uintptr) (interface{}, error) {
-	c := C.g_value_get_object(uintptrToGVal(p))
+	c := C.gst_value_get_structure(uintptrToGVal(p))
 	obj := (*C.GstTocEntry)(unsafe.Pointer(c))
 	return wrapTOCEntry(obj), nil
 }
