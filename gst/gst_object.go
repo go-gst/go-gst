@@ -51,6 +51,21 @@ func (o *Object) GetValue(property string, timestamp time.Duration) *glib.Value 
 	return glib.ValueFromNative(unsafe.Pointer(gval))
 }
 
+// SetArg sets the argument name to value on this object. Note that function silently returns
+// if object has no property named name or when value cannot be converted to the type for this
+// property.
+func (o *Object) SetArg(name, value string) {
+	cName := C.CString(name)
+	cValue := C.CString(value)
+	defer C.free(unsafe.Pointer(cName))
+	defer C.free(unsafe.Pointer(cValue))
+	C.gst_util_set_object_arg(
+		(*C.GObject)(o.Unsafe()),
+		(*C.gchar)(unsafe.Pointer(cName)),
+		(*C.gchar)(unsafe.Pointer(cValue)),
+	)
+}
+
 // Log logs a message to the given category from this object using the currently registered
 // debugging handlers.
 func (o *Object) Log(cat *DebugCategory, level DebugLevel, message string) {
