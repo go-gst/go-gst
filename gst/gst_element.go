@@ -217,6 +217,14 @@ func (e *Element) WarningMessage(domain Domain, text string) {
 	e.MessageFull(MessageWarning, domain, ErrorCode(0), "", text, path.Base(file), runtime.FuncForPC(function).Name(), line)
 }
 
+// Error is a convenience wrapper around ErrorMessage to simply post the provided go error on the bus.
+// The domain is assumed to be DomainLibrary and the code is assumed to be LibraryErrorFailed.
+func (e *Element) Error(msg string, err error) {
+	function, file, line, _ := runtime.Caller(1)
+	debugMsg := fmt.Sprintf("%s: %s", msg, err.Error())
+	e.MessageFull(MessageError, DomainLibrary, LibraryErrorFailed, err.Error(), debugMsg, path.Base(file), runtime.FuncForPC(function).Name(), line)
+}
+
 // ErrorMessage is a convenience wrapper for posting an error message from inside an element. Only to be used from
 // plugins.
 func (e *Element) ErrorMessage(domain Domain, code ErrorCode, text, debug string) {
