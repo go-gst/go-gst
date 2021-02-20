@@ -486,3 +486,18 @@ func (e *Element) URIHandler() URIHandler {
 	}
 	return &gstURIHandler{ptr: e.Instance()}
 }
+
+// RemovePad removes pad from element. pad will be destroyed if it has not been referenced elsewhere using gst_object_unparent.
+//
+// This function is used by plugin developers and should not be used by applications. Pads that were dynamically requested from
+// elements with gst_element_request_pad should be released with the gst_element_release_request_pad function instead.
+//
+// Pads are not automatically deactivated so elements should perform the needed steps to deactivate the pad in case this pad is
+// removed in the PAUSED or PLAYING state. See gst_pad_set_active for more information about deactivating pads.
+//
+// The pad and the element should be unlocked when calling this function.
+//
+// This function will emit the pad-removed signal on the element.
+func (e *Element) RemovePad(pad *Pad) bool {
+	return gobool(C.gst_element_remove_pad(e.Instance(), pad.Instance()))
+}
