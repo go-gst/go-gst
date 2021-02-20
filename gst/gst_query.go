@@ -246,7 +246,7 @@ func (q *Query) HasSchedulingModeWithFlags(mode PadMode, flags SchedulingFlags) 
 
 // ParseAcceptCaps gets the caps from query. The caps remains valid as long as query remains valid.
 func (q *Query) ParseAcceptCaps() *Caps {
-	caps := &C.GstCaps{}
+	var caps *C.GstCaps
 	C.gst_query_parse_accept_caps(q.Instance(), &caps)
 	return FromGstCapsUnsafeNone(unsafe.Pointer(caps))
 }
@@ -260,7 +260,7 @@ func (q *Query) ParseAcceptCapsResult() bool {
 
 // ParseAllocation parses an allocation query.
 func (q *Query) ParseAllocation() (caps *Caps, needPool bool) {
-	gcaps := &C.GstCaps{}
+	var gcaps *C.GstCaps
 	var needz C.gboolean
 	C.gst_query_parse_allocation(q.Instance(), &gcaps, &needz)
 	return FromGstCapsUnsafeNone(unsafe.Pointer(gcaps)), gobool(needz)
@@ -301,14 +301,14 @@ func (q *Query) ParseBufferingStats() (mode BufferingMode, avgIn, avgOut int, bu
 
 // ParseCaps gets the filter from the caps query. The caps remains valid as long as query remains valid.
 func (q *Query) ParseCaps() *Caps {
-	caps := &C.GstCaps{}
+	var caps *C.GstCaps
 	C.gst_query_parse_caps(q.Instance(), &caps)
 	return FromGstCapsUnsafeNone(unsafe.Pointer(caps))
 }
 
 // ParseCapsResult gets the caps result from query. The caps remains valid as long as query remains valid.
 func (q *Query) ParseCapsResult() *Caps {
-	caps := &C.GstCaps{}
+	var caps *C.GstCaps
 	C.gst_query_parse_caps_result(q.Instance(), &caps)
 	return FromGstCapsUnsafeNone(unsafe.Pointer(caps))
 }
@@ -365,22 +365,22 @@ func (q *Query) ParseNumFormats() uint {
 
 // ParseAllocationMetaAt parses an available query and get the metadata API at index of the metadata API array.
 func (q *Query) ParseAllocationMetaAt(idx uint) (api glib.Type, st *Structure) {
-	gs := &C.GstStructure{}
+	var gs *C.GstStructure
 	gtype := C.gst_query_parse_nth_allocation_meta(q.Instance(), C.guint(idx), &gs)
 	return glib.Type(gtype), wrapStructure(gs)
 }
 
 // ParseAllocationParamAt parses an available query and get the allocator and its params at index of the allocator array.
 func (q *Query) ParseAllocationParamAt(idx uint) (*Allocator, *AllocationParams) {
-	alloc := &C.GstAllocator{}
-	params := C.GstAllocationParams{}
+	var alloc *C.GstAllocator
+	var params C.GstAllocationParams
 	C.gst_query_parse_nth_allocation_param(q.Instance(), C.guint(idx), &alloc, &params)
 	return FromGstAllocatorUnsafeFull(unsafe.Pointer(alloc)), wrapAllocationParams(&params)
 }
 
 // ParseAllocationPoolAt gets the pool parameters in query.
 func (q *Query) ParseAllocationPoolAt(idx uint) (pool *BufferPool, size, minBuffers, maxBuffers uint) {
-	gpool := &C.GstBufferPool{}
+	var gpool *C.GstBufferPool
 	var gs, gmin, gmax C.guint
 	C.gst_query_parse_nth_allocation_pool(q.Instance(), C.guint(idx), &gpool, &gs, &gmin, &gmax)
 	return FromGstBufferPoolUnsafeFull(unsafe.Pointer(gpool)), uint(gs), uint(gmin), uint(gmax)
