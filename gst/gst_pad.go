@@ -395,7 +395,7 @@ func (p *Pad) GetPeer() *Pad {
 //
 // This is a lowlevel function. Usually PullRange is used.
 func (p *Pad) GetRange(offset uint64, size uint, buffer *Buffer) (FlowReturn, *Buffer) {
-	buf := &C.GstBuffer{}
+	var buf *C.GstBuffer
 	if buffer != nil {
 		buf = buffer.Instance()
 	}
@@ -632,7 +632,7 @@ func (p *Pad) ProxyQueryCaps(query *Query) bool {
 // Note that less than size bytes can be returned in buffer when, for example, an EOS condition is near or when buffer is not large enough to hold size bytes.
 // The caller should check the result buffer size to get the result size.
 func (p *Pad) PullRange(offset uint64, size uint, buffer *Buffer) (FlowReturn, *Buffer) {
-	buf := &C.GstBuffer{}
+	var buf *C.GstBuffer
 	if buffer != nil {
 		buf = buffer.Instance()
 	}
@@ -1089,7 +1089,7 @@ func (p *PadProbeInfo) GetBuffer() *Buffer {
 	if buf == nil {
 		return nil
 	}
-	return FromGstBufferUnsafeNone(unsafe.Pointer(buf))
+	return wrapBuffer(buf)
 }
 
 // GetBufferList returns the buffer list, if any, inside this probe info.
@@ -1098,7 +1098,7 @@ func (p *PadProbeInfo) GetBufferList() *BufferList {
 	if bufList == nil {
 		return nil
 	}
-	return FromGstBufferListUnsafeNone(unsafe.Pointer(bufList))
+	return wrapBufferList(bufList)
 }
 
 // GetEvent returns the event, if any, inside this probe info.
@@ -1107,7 +1107,7 @@ func (p *PadProbeInfo) GetEvent() *Event {
 	if ev == nil {
 		return nil
 	}
-	return FromGstEventUnsafeNone(unsafe.Pointer(ev))
+	return wrapEvent(ev)
 }
 
 // GetQuery returns the query, if any, inside this probe info.
@@ -1116,7 +1116,7 @@ func (p *PadProbeInfo) GetQuery() *Query {
 	if q == nil {
 		return nil
 	}
-	return FromGstQueryUnsafeNone(unsafe.Pointer(q))
+	return wrapQuery(q)
 }
 
 func iteratorToPadSlice(iterator *C.GstIterator) ([]*Pad, error) {

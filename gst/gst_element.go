@@ -176,6 +176,19 @@ func (e *Element) Connect(signal string, f interface{}) (glib.SignalHandle, erro
 	return e.Object.Connect(signal, f, nil)
 }
 
+// ContinueState commits the state change of the element and proceed to the next pending state if any. This
+// function is used by elements that do asynchronous state changes. The core will normally call this method
+// automatically when an element returned GST_STATE_CHANGE_SUCCESS from the state change function.
+//
+// If after calling this method the element still has not reached the pending state, the next state change is performed.
+//
+// This method is used internally and should normally not be called by plugins or applications.
+//
+// This function must be called with STATE_LOCK held.
+func (e *Element) ContinueState(ret StateChangeReturn) StateChangeReturn {
+	return StateChangeReturn(C.gst_element_continue_state(e.Instance(), C.GstStateChangeReturn(ret)))
+}
+
 // Emit is a wrapper around g_signal_emitv() and emits the signal specified by the string s to an Object. Arguments to
 // callback functions connected to this signal must be specified in args. Emit() returns an interface{} which must be
 // type asserted as the Go equivalent type to the return value for native C callback.

@@ -111,7 +111,7 @@ func NewGhostPadNoTargetFromTemplate(name string, tmpl *PadTemplate) *GhostPad {
 // Instance returns the underlying ghost pad instance.
 func (g *GhostPad) Instance() *C.GstGhostPad { return C.toGstGhostPad(g.Unsafe()) }
 
-// GetTarget gets the target pad of gpad. Unref target pad after usage.
+// GetTarget gets the target pad of gpad.
 func (g *GhostPad) GetTarget() *Pad {
 	pad := C.gst_ghost_pad_get_target(g.Instance())
 	if pad == nil {

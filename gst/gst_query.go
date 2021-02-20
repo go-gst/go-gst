@@ -246,7 +246,7 @@ func (q *Query) HasSchedulingModeWithFlags(mode PadMode, flags SchedulingFlags) 
 
 // ParseAcceptCaps gets the caps from query. The caps remains valid as long as query remains valid.
 func (q *Query) ParseAcceptCaps() *Caps {
-	var caps *C.GstCaps
+	caps := (*C.GstCaps)(C.malloc(C.sizeof_GstCaps))
 	C.gst_query_parse_accept_caps(q.Instance(), &caps)
 	return FromGstCapsUnsafeNone(unsafe.Pointer(caps))
 }
@@ -260,7 +260,7 @@ func (q *Query) ParseAcceptCapsResult() bool {
 
 // ParseAllocation parses an allocation query.
 func (q *Query) ParseAllocation() (caps *Caps, needPool bool) {
-	var gcaps *C.GstCaps
+	gcaps := (*C.GstCaps)(C.malloc(C.sizeof_GstCaps))
 	var needz C.gboolean
 	C.gst_query_parse_allocation(q.Instance(), &gcaps, &needz)
 	return FromGstCapsUnsafeNone(unsafe.Pointer(gcaps)), gobool(needz)
@@ -301,14 +301,14 @@ func (q *Query) ParseBufferingStats() (mode BufferingMode, avgIn, avgOut int, bu
 
 // ParseCaps gets the filter from the caps query. The caps remains valid as long as query remains valid.
 func (q *Query) ParseCaps() *Caps {
-	var caps *C.GstCaps
+	caps := (*C.GstCaps)(C.malloc(C.sizeof_GstCaps))
 	C.gst_query_parse_caps(q.Instance(), &caps)
 	return FromGstCapsUnsafeNone(unsafe.Pointer(caps))
 }
 
 // ParseCapsResult gets the caps result from query. The caps remains valid as long as query remains valid.
 func (q *Query) ParseCapsResult() *Caps {
-	var caps *C.GstCaps
+	caps := (*C.GstCaps)(C.malloc(C.sizeof_GstCaps))
 	C.gst_query_parse_caps_result(q.Instance(), &caps)
 	return FromGstCapsUnsafeNone(unsafe.Pointer(caps))
 }
