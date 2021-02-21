@@ -116,13 +116,51 @@ func (d *DebugCategory) logDepth(level DebugLevel, message string, depth int, ob
 	)
 }
 
+func getLogObj(obj ...*Object) *C.GObject {
+	if len(obj) > 0 {
+		return (*C.GObject)(obj[0].Unsafe())
+	}
+	return nil
+}
+
 // Log logs the given message using the currently registered debugging handlers. You can optionally
 // provide a single object to log the message for. GStreamer will automatically add a newline to the
 // end of the message.
 func (d *DebugCategory) Log(level DebugLevel, message string, obj ...*Object) {
-	var o *C.GObject
-	if len(obj) > 0 {
-		o = (*C.GObject)(obj[0].Unsafe())
-	}
-	d.logDepth(level, message, 2, o)
+	d.logDepth(level, message, 2, getLogObj(obj...))
+}
+
+// LogError is a convenience wrapper for logging an ERROR level message.
+func (d *DebugCategory) LogError(message string, obj ...*Object) {
+	d.logDepth(LevelError, message, 2, getLogObj(obj...))
+}
+
+// LogWarning is a convenience wrapper for logging a WARNING level message.
+func (d *DebugCategory) LogWarning(message string, obj ...*Object) {
+	d.logDepth(LevelWarning, message, 2, getLogObj(obj...))
+}
+
+// LogInfo is a convenience wrapper for logging an INFO level message.
+func (d *DebugCategory) LogInfo(message string, obj ...*Object) {
+	d.logDepth(LevelInfo, message, 2, getLogObj(obj...))
+}
+
+// LogDebug is a convenience wrapper for logging a DEBUG level message.
+func (d *DebugCategory) LogDebug(message string, obj ...*Object) {
+	d.logDepth(LevelDebug, message, 2, getLogObj(obj...))
+}
+
+// LogLog is a convenience wrapper for logging a LOG level message.
+func (d *DebugCategory) LogLog(message string, obj ...*Object) {
+	d.logDepth(LevelLog, message, 2, getLogObj(obj...))
+}
+
+// LogTrace is a convenience wrapper for logging a TRACE level message.
+func (d *DebugCategory) LogTrace(message string, obj ...*Object) {
+	d.logDepth(LevelTrace, message, 2, getLogObj(obj...))
+}
+
+// LogMemDump is a convenience wrapper for logging a MEMDUMP level message.
+func (d *DebugCategory) LogMemDump(message string, obj ...*Object) {
+	d.logDepth(LevelMemDump, message, 2, getLogObj(obj...))
 }
