@@ -25,6 +25,23 @@ For building applications with this library you need the following:
    - Subpackages (e.g. `app`, `video`) will require development files from their corresponding GStreamer packages
      - Look at `pkg_config.go` in the imported package to see which C libraries are needed.
 
+### Windows
+
+Compiling on Windows may require some more dancing around than on macOS or Linux.
+First, make sure you have [mingw](https://chocolatey.org/packages/mingw) and [pkgconfig](https://chocolatey.org/packages/pkgconfiglite) installed (links are for the Chocolatey packages).
+Next, go to the [GStreamer downloads](https://gstreamer.freedesktop.org/download/) page and download the latest "development installer" for your MinGW architecture. 
+When running your applications on another Windows system, they will need to have the "runtime" installed as well.
+
+Finally, to compile the application you'll have to manually set your `PKG_CONFIG_PATH` to where you installed the GStreamer development files.
+For example, if you installed GStreamer to `C:\gstreamer`:
+
+```ps
+PS> $env:PKG_CONFIG_PATH='C:\gstreamer\1.0\mingw_x86_64\lib\pkgconfig'
+PS> go build .
+```
+
+For more information, take a look at [this comment](https://github.com/tinyzimmer/go-gst/issues/3#issuecomment-760648278) with a good run down of the process from compilation to execution.
+
 ## Quickstart
 
 For more examples see the `examples` folder [here](examples/).

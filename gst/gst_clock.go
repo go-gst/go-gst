@@ -206,7 +206,7 @@ func (c *Clock) GetCalibration() (internal, external, rateNum, rateDenom time.Du
 // The time is always monotonically increasing and adjusted according to the current offset and rate.
 func (c *Clock) GetTime() time.Duration {
 	res := C.gst_clock_get_time(c.Instance())
-	if res == C.GST_CLOCK_TIME_NONE {
+	if res == gstClockTimeNone {
 		return ClockTimeNone
 	}
 	return time.Duration(res)
@@ -216,7 +216,7 @@ func (c *Clock) GetTime() time.Duration {
 // or ClockTimeNone if invalid. The time is returned unadjusted for the offset and the rate.
 func (c *Clock) GetInternalTime() time.Duration {
 	res := C.gst_clock_get_internal_time(c.Instance())
-	if res == C.GST_CLOCK_TIME_NONE {
+	if res == gstClockTimeNone {
 		return ClockTimeNone
 	}
 	return time.Duration(res)
