@@ -35,7 +35,7 @@ gboolean
 cgoGstPadActivateFunction(GstPad * pad, GstObject * parent) { return goGstPadActivateFunction(pad, parent); }
 
 gboolean
-cgoGstPadActivateModeFunction (GstPad * pad, GstObject * parent, GstPadMode mode, gboolean active) { return cgoGstPadActivateModeFunction(pad, parent, mode, active); }
+cgoGstPadActivateModeFunction (GstPad * pad, GstObject * parent, GstPadMode mode, gboolean active) { return goGstPadActivateModeFunction(pad, parent, mode, active); }
 
 GstFlowReturn
 cgoGstPadChainFunction (GstPad * pad, GstObject * parent, GstBuffer * buffer) { return goGstPadChainFunction(pad, parent, buffer); }
