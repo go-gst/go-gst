@@ -81,7 +81,7 @@ func main() {
     /// Let GStreamer create a pipeline from the parsed launch syntax on the cli.
     pipeline, err := gst.NewPipelineFromString(pipelineString)
     if err != nil {
-        fmt.Println("Pipeline string cannot be empty")
+        fmt.Println(err)
         os.Exit(2)
     }
 
