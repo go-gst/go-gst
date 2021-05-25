@@ -89,6 +89,22 @@ func NewBin(name string) *Bin {
 	return wrapBin(glib.TransferNone(unsafe.Pointer(bin)))
 }
 
+// NewBinFromString constructs a bin from a string description.
+// description - command line describing the bin
+// ghostUnlinkedPads - whether to automatically create ghost pads for unlinked source or sink pads within the bin
+func NewBinFromString(description string, ghostUnlinkedPads bool) (*Bin, error) {
+	cDescription := C.CString(description)
+	defer C.free(unsafe.Pointer(cDescription))
+	var gerr *C.GError
+	bin := C.gst_parse_bin_from_description((*C.gchar)(cDescription), gboolean(ghostUnlinkedPads), (**C.GError)(&gerr))
+	if gerr != nil {
+		defer C.g_error_free((*C.GError)(gerr))
+		errMsg := C.GoString(gerr.message)
+		return nil, errors.New(errMsg)
+	}
+	return &Bin{&Element{wrapObject(glib.TransferNone(unsafe.Pointer(bin)))}}, nil
+}
+
 // ToGstBin wraps the given glib.Object, gst.Object, or gst.Element in a Bin instance. Only
 // works for objects that implement their own Bin.
 func ToGstBin(obj interface{}) *Bin {
