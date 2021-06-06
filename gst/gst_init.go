@@ -45,3 +45,10 @@ func Init(args *[]string) {
 	}
 	CAT = NewDebugCategory("GST_GO", DebugColorFgCyan, "GStreamer Go Bindings")
 }
+
+// Deinit is a wrapper for gst_deinit Clean up any resources created by GStreamer in gst_init().
+// It is normally not needed to call this function in a normal application as the resources will automatically be freed
+// when the program terminates. This function is therefore mostly used by testsuites and other memory profiling tools.
+func Deinit() {
+	C.gst_deinit()
+}
