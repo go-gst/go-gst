@@ -501,3 +501,21 @@ func (e *Element) URIHandler() URIHandler {
 func (e *Element) RemovePad(pad *Pad) bool {
 	return gobool(C.gst_element_remove_pad(e.Instance(), pad.Instance()))
 }
+
+// GetRequestPad gets a request pad from the element based on the name of the pad template.
+// Unlike static pads, request pads are not created automatically but are only created on demand
+// For example, audiomixer has sink template, 'sink_%u', which is used for creating multiple sink pads on demand so that it performs mixing of audio streams by linking multiple upstream elements on it's sink pads created on demand.
+// This returns the request pad created on demand. Otherwise, it returns null if failed to create.
+func (e *Element) GetRequestPad(name string) *Pad {
+       cname := C.CString(name)
+       defer C.free(unsafe.Pointer(cname))
+       pad := C.gst_element_get_request_pad(e.Instance(), (*C.gchar)(unsafe.Pointer(cname)))
+       if pad == nil {
+               return nil
+       }
+       return FromGstPadUnsafeFull(unsafe.Pointer(pad))
+}
+// ReleaseRequestPad releases request pad
+func (e *Element) ReleaseRequestPad(pad *Pad) {
+       C.gst_element_release_request_pad(e.Instance(), pad.Instance())
+}
