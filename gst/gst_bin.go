@@ -228,7 +228,7 @@ func (b *Bin) AddMany(elems ...*Element) error {
 // Remove removes an element from the Bin.
 func (b *Bin) Remove(elem *Element) error {
 	if ok := C.gst_bin_remove((*C.GstBin)(b.Instance()), (*C.GstElement)(elem.Instance())); !gobool(ok) {
-		return fmt.Errorf("Failed to add element to pipeline: %s", elem.GetName())
+		return fmt.Errorf("Failed to remove element from pipeline: %s", elem.GetName())
 	}
 	return nil
 }
