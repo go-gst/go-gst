@@ -54,6 +54,7 @@ package main
 import (
     "fmt"
     "os"
+    "strings"
 
     "github.com/tinyzimmer/go-glib/glib"
     "github.com/tinyzimmer/go-gst/gst"
