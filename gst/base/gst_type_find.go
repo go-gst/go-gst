@@ -2,6 +2,8 @@ package base
 
 /*
 #include "gst.go.h"
+
+#include <stdlib.h>
 */
 import "C"
 
