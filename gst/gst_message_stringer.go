@@ -33,7 +33,6 @@ func (m *Message) String() string {
 	case MessageTag:
 		tags := m.ParseTags()
 		if tags != nil {
-			defer tags.Unref()
 			msg += tags.String()
 		}
 
