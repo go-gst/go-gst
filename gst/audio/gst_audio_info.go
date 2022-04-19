@@ -10,6 +10,7 @@ gint channels(GstAudioInfo * info)
 */
 import "C"
 import (
+	"math"
 	"runtime"
 	"unsafe"
 
@@ -68,7 +69,7 @@ func (i *Info) BPF() int { return int(i.ptr.bpf) }
 func (i *Info) Positions() []ChannelPosition {
 	l := i.Channels()
 	out := make([]ChannelPosition, int(l))
-	tmpslice := (*[1 << 30]C.GstAudioChannelPosition)(unsafe.Pointer(&i.ptr.position))[:l:l]
+	tmpslice := (*[(math.MaxInt32 - 1) / unsafe.Sizeof(C.GST_AUDIO_CHANNEL_POSITION_NONE)]C.GstAudioChannelPosition)(unsafe.Pointer(&i.ptr.position))[:l:l]
 	for i, s := range tmpslice {
 		out[i] = ChannelPosition(s)
 	}

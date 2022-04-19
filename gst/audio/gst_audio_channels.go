@@ -25,7 +25,7 @@ func ChannelPositionsFromMask(channels int, mask uint64) []ChannelPosition {
 		return nil
 	}
 	outsl := make([]ChannelPosition, channels)
-	tmp := (*[1 << 30]C.GstAudioChannelPosition)(unsafe.Pointer(&out))[:channels:channels]
+	tmp := (*[(math.MaxInt32 - 1) / unsafe.Sizeof(C.GST_AUDIO_CHANNEL_POSITION_NONE)]C.GstAudioChannelPosition)(unsafe.Pointer(&out))[:channels:channels]
 	for i, s := range tmp {
 		outsl[i] = ChannelPosition(s)
 	}

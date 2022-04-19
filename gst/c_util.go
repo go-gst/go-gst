@@ -5,6 +5,7 @@ import "C"
 
 import (
 	"fmt"
+	"math"
 	"time"
 	"unsafe"
 
@@ -62,7 +63,7 @@ func formatOffset(offset C.gfloat) string {
 // goStrings returns a string slice for an array of size argc starting at the address argv.
 func goStrings(argc C.int, argv **C.gchar) []string {
 	length := int(argc)
-	tmpslice := (*[1 << 30]*C.gchar)(unsafe.Pointer(argv))[:length:length]
+	tmpslice := (*[(math.MaxInt32 - 1) / unsafe.Sizeof((*C.gchar)(nil))]*C.gchar)(unsafe.Pointer(argv))[:length:length]
 	gostrings := make([]string, length)
 	for i, s := range tmpslice {
 		gostrings[i] = C.GoString(s)

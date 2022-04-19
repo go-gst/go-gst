@@ -32,6 +32,7 @@ guint                 formatInfoWSub        (GstVideoFormatInfo * info, guint c)
 import "C"
 import (
 	"image/color"
+	"math"
 	"runtime"
 	"unsafe"
 
@@ -266,7 +267,7 @@ func RawFormats() []Format {
 	var size C.guint
 	formats := C.gst_video_formats_raw(&size)
 	out := make([]Format, uint(size))
-	for i, f := range (*[1 << 30]C.GstVideoFormat)(unsafe.Pointer(formats))[:size:size] {
+	for i, f := range (*[(math.MaxInt32 - 1) / unsafe.Sizeof(C.GST_VIDEO_FORMAT_UNKNOWN)]C.GstVideoFormat)(unsafe.Pointer(formats))[:size:size] {
 		out[i] = Format(f)
 	}
 	return out
@@ -333,7 +334,7 @@ func (f Format) Palette() color.Palette {
 		return nil
 	}
 	paletteBytes := make([]uint8, int64(size))
-	for i, t := range (*[1 << 30]uint8)(ptr)[:int(size):int(size)] {
+	for i, t := range (*[(math.MaxInt32 - 1) / unsafe.Sizeof(uint8(0))]uint8)(ptr)[:int(size):int(size)] {
 		paletteBytes[i] = t
 	}
 	return bytesToColorPalette(paletteBytes)

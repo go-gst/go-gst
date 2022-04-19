@@ -6,6 +6,7 @@ package gst
 import "C"
 
 import (
+	"math"
 	"unsafe"
 
 	"github.com/tinyzimmer/go-glib/glib"
@@ -22,7 +23,7 @@ func goURIHdlrGetProtocols(gtype C.GType) **C.gchar {
 	size := C.size_t(unsafe.Sizeof((*C.gchar)(nil)))
 	length := C.size_t(len(protocols))
 	arr := (**C.gchar)(C.malloc(length * size))
-	view := (*[1 << 30]*C.gchar)(unsafe.Pointer(arr))[0:len(protocols):len(protocols)]
+	view := (*[(math.MaxInt32 - 1) / unsafe.Sizeof((*C.gchar)(nil))]*C.gchar)(unsafe.Pointer(arr))[0:len(protocols):len(protocols)]
 	for i, proto := range protocols {
 		view[i] = (*C.gchar)(C.CString(proto))
 	}

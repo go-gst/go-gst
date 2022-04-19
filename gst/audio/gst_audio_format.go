@@ -5,6 +5,7 @@ package audio
 */
 import "C"
 import (
+	"math"
 	"unsafe"
 
 	"github.com/tinyzimmer/go-glib/glib"
@@ -144,7 +145,7 @@ func RawFormats() []Format {
 	var l C.guint
 	formats := C.gst_audio_formats_raw(&l)
 	out := make([]Format, int(l))
-	tmpslice := (*[1 << 30]C.GstAudioFormat)(unsafe.Pointer(formats))[:l:l]
+	tmpslice := (*[(math.MaxInt32 - 1) / unsafe.Sizeof(C.GST_AUDIO_FORMAT_UNKNOWN)]C.GstAudioFormat)(unsafe.Pointer(formats))[:l:l]
 	for i, s := range tmpslice {
 		out[i] = Format(s)
 	}
