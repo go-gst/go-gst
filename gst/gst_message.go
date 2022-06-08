@@ -84,6 +84,8 @@ func (m *Message) GetStructure() *Structure {
 		C.gst_message_parse_info_details((*C.GstMessage)(m.Instance()), (**C.GstStructure)(unsafe.Pointer(&st)))
 	case MessageWarning:
 		C.gst_message_parse_warning_details((*C.GstMessage)(m.Instance()), (**C.GstStructure)(unsafe.Pointer(&st)))
+	case MessageElement:
+		st = C.gst_message_get_structure((*C.GstMessage)(m.Instance()))
 	}
 
 	// if no structure was returned, immediately return nil
