@@ -30,3 +30,12 @@ func (p *PluginFeature) GetPluginName() string {
 	}
 	return C.GoString(pluginName)
 }
+
+func (p *PluginFeature) SetPluginRank(rank int) {
+	C.gst_plugin_feature_set_rank((*C.GstPluginFeature)(p.Instance()), C.guint(rank))
+}
+
+func (p *PluginFeature) GetPluginRank() {
+	rank := C.gst_plugin_feature_get_rank((*C.GstPluginFeature)(p.Instance()))
+	return int(rank)
+}
