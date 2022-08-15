@@ -62,6 +62,7 @@ func runPipeline(loop *glib.MainLoop) error {
 		return true
 	})
 
+	fmt.Println("Starting device monitor")
 	monitor.Start()
 	fmt.Println("Started device monitor")
 	devices := monitor.GetDevices()

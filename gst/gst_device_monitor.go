@@ -23,18 +23,19 @@ func NewDeviceMonitor() *DeviceMonitor {
 	return &DeviceMonitor{ptr: monitor}
 }
 
-func (d *DeviceMonitor) AddFilter(classes string, caps *Caps) {
+func (d *DeviceMonitor) AddFilter(classes string, caps *Caps) int {
 	var cClasses *C.gchar
 	if classes != "" {
 		cClasses = C.CString(classes)
 		defer C.free(unsafe.Pointer(cClasses))
 	}
 
-	C.gst_device_monitor_add_filter(d.ptr, cClasses, caps.Instance())
-	// if caps == nil {
-	// 	return nil
-	// }
-	//should return if we were able to add the filter
+	filterId := C.gst_device_monitor_add_filter(d.ptr, cClasses, caps.Instance())
+	return uint(filterId)
+}
+
+func (d *DeviceMonitor) RemoveFilter(filterId uint) bool {
+	return gobool(C.gst_device_monitor_remove_filter(d.ptr, C.guint(filterId)))
 }
 
 // GetPipelineBus returns the message bus for this pipeline.
@@ -70,8 +71,12 @@ func (d *DeviceMonitor) GetDevices() []*Device {
 	return out
 }
 
-//https://gstreamer.freedesktop.org/documentation/gstreamer/gstdevicemonitor.html?gi-language=c
+func (d *DeviceMonitor) SetShowAllDevices(show bool) {
+	C.gst_device_monitor_set_show_all_devices(d.ptr, gboolean(show))
+}
+
+func (d *DeviceMonitor) GetShowAllDevices() bool {
+	return gobool(C.gst_device_monitor_get_show_all_devices(d.ptr))
+}
+
 //gst_device_monitor_get_providers
-//gst_device_monitor_get_show_all_devices
-//gst_device_monitor_remove_filter
-//gst_device_monitor_set_show_all_devices
