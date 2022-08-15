@@ -12,6 +12,7 @@ import (
 // DeviceMonitor is a Go representation of a GstDeviceMonitor.
 type DeviceProvider struct {
 	ptr *C.GstDeviceProvider
+	bus *Bus
 }
 
 func (d *DeviceProvider) GetDevices() []*Device {
@@ -26,4 +27,21 @@ func (d *DeviceProvider) GetDevices() []*Device {
 		out = append(out, FromGstDeviceUnsafeFull(pt))
 	})
 	return out
+}
+
+// GetPipelineBus returns the message bus for this pipeline.
+func (d *DeviceProvider) GetBus() *Bus {
+	if d.bus == nil {
+		cBus := C.gst_device_provider_get_bus(d.ptr)
+		d.bus = FromGstBusUnsafeFull(unsafe.Pointer(cBus))
+	}
+	return d.bus
+}
+
+func (d *DeviceProvider) Start() bool {
+	return gobool(C.gst_device_provider_start(d.ptr))
+}
+
+func (d *DeviceProvider) Stop() {
+	C.gst_device_provider_stop(d.ptr)
 }

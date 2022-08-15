@@ -38,6 +38,31 @@ func runPipeline(loop *glib.MainLoop) error {
 	// 	os.Exit(2)
 	// }
 
+	fmt.Println("Getting device provider bus")
+	bus := provider.GetBus()
+	fmt.Println("Got device provider bus", bus)
+
+	bus.AddWatch(func(msg *gst.Message) bool {
+		switch msg.Type() {
+		case gst.MessageDeviceAdded:
+			message := msg.ParseDeviceAdded().GetDisplayName()
+			fmt.Println("Added: ", message)
+		case gst.MessageDeviceRemoved:
+			message := msg.ParseDeviceRemoved().GetDisplayName()
+			fmt.Println("Removed: ", message)
+		default:
+			// All messages implement a Stringer. However, this is
+			// typically an expensive thing to do and should be avoided.
+			fmt.Println("Type: ", msg.Type())
+			fmt.Println("Message: ", msg)
+		}
+		return true
+	})
+
+	fmt.Println("Starting device monitor")
+	provider.Start()
+	fmt.Println("Started device monitor")
+
 	fmt.Println("listing devices from provider")
 	devices := provider.GetDevices()
 	for i, v := range devices {
