@@ -23,7 +23,7 @@ func NewDeviceMonitor() *DeviceMonitor {
 	return &DeviceMonitor{ptr: monitor}
 }
 
-func (d *DeviceMonitor) AddFilter(classes string, caps *Caps) int {
+func (d *DeviceMonitor) AddFilter(classes string, caps *Caps) uint {
 	var cClasses *C.gchar
 	if classes != "" {
 		cClasses = C.CString(classes)
