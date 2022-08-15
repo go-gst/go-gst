@@ -88,14 +88,6 @@ func ElementLinkMany(elems ...*Element) error {
 	return nil
 }
 
-// Rank represents a level of importance when autoplugging elements.
-type Rank uint
-
-// For now just a single RankNone is provided
-const (
-	RankNone Rank = 0
-)
-
 // RegisterElement creates a new elementfactory capable of instantiating objects of the given GoElement
 // and adds the factory to the plugin. A higher rank means more importance when autoplugging.
 func RegisterElement(plugin *Plugin, name string, rank Rank, elem glib.GoObjectSubclass, extends glib.Extendable, interfaces ...glib.Interface) bool {

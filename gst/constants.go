@@ -496,6 +496,16 @@ const (
 	PadProbeTypeScheduling      PadProbeType = C.GST_PAD_PROBE_TYPE_SCHEDULING       // (12288) – probe push and pull
 )
 
+const (
+	RankNone      Rank = C.GST_RANK_NONE      // (0) - will be chosen last or not at all
+	RankMarginal  Rank = C.GST_RANK_MARGINAL  // (64) – unlikely to be chosen
+	RankSecondary Rank = C.GST_RANK_SECONDARY // (128) – likely to be chosen
+	RankPrimary   Rank = C.GST_RANK_PRIMARY   // (256) – will be chosen first
+)
+
+// Rank casts GstRank
+type Rank uint
+
 // SchedulingFlags casts GstSchedulingFlags
 type SchedulingFlags int
 
