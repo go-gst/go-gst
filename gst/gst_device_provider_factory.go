@@ -7,7 +7,7 @@ import (
 	"unsafe"
 )
 
-// DeviceMonitor is a Go representation of a GstDeviceMonitor.
+// DeviceProviderFactory is a Go representation of a GstDeviceProviderFactory.
 type DeviceProviderFactory struct {
 	ptr *C.GstDeviceProviderFactory
 }

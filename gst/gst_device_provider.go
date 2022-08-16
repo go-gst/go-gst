@@ -9,7 +9,7 @@ import (
 	"github.com/tinyzimmer/go-glib/glib"
 )
 
-// DeviceMonitor is a Go representation of a GstDeviceMonitor.
+// DeviceProvider is a Go representation of a GstDeviceProvider.
 type DeviceProvider struct {
 	ptr *C.GstDeviceProvider
 	bus *Bus
@@ -29,7 +29,7 @@ func (d *DeviceProvider) GetDevices() []*Device {
 	return out
 }
 
-// GetPipelineBus returns the message bus for this pipeline.
+// GetBus returns the message bus for this pipeline.
 func (d *DeviceProvider) GetBus() *Bus {
 	if d.bus == nil {
 		cBus := C.gst_device_provider_get_bus(d.ptr)

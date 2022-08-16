@@ -38,7 +38,7 @@ func (d *DeviceMonitor) RemoveFilter(filterId uint) bool {
 	return gobool(C.gst_device_monitor_remove_filter(d.ptr, C.guint(filterId)))
 }
 
-// GetPipelineBus returns the message bus for this pipeline.
+// GetBus returns the message bus for this pipeline.
 func (d *DeviceMonitor) GetBus() *Bus {
 	if d.bus == nil {
 		cBus := C.gst_device_monitor_get_bus(d.ptr)
