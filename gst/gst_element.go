@@ -88,6 +88,18 @@ func ElementLinkMany(elems ...*Element) error {
 	return nil
 }
 
+// ElementUnlinkMany is a go implementation of `gst_element_unlink_many` to compensate for
+// no variadic functions in cgo.
+func ElementUnlinkMany(elems ...*Element) {
+	for idx, elem := range elems {
+		if idx == 0 {
+			// skip the first one as the loop always links previous to current
+			continue
+		}
+		elems[idx-1].Unlink(elem)
+	}
+}
+
 // Rank represents a level of importance when autoplugging elements.
 type Rank uint
 
@@ -364,6 +376,10 @@ func (e *Element) Link(elem *Element) error {
 		return fmt.Errorf("Failed to link %s to %s", e.GetName(), elem.GetName())
 	}
 	return nil
+}
+
+func (e *Element) Unlink(elem *Element) {
+	C.gst_element_unlink((*C.GstElement)(e.Instance()), (*C.GstElement)(elem.Instance()))
 }
 
 // LinkFiltered wraps gst_element_link_filtered and link this element to the given one
