@@ -234,6 +234,10 @@ func registerMarshalers() {
 			T: TypeValueList,
 			F: marshalValueList,
 		},
+		{
+			T: glib.Type(C.gst_sample_get_type()),
+			F: marshalSample,
+		},
 	}
 
 	glib.RegisterGValueMarshalers(tm)
@@ -499,4 +503,9 @@ func marshalQuery(p uintptr) (interface{}, error) {
 	c := C.g_value_get_object(toGValue(p))
 	obj := (*C.GstQuery)(unsafe.Pointer(c))
 	return wrapQuery(obj), nil
+}
+
+func marshalSample(p uintptr) (interface{}, error) {
+	c := C.getSampleValue(toGValue(p))
+	return wrapSample(c), nil
 }

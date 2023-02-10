@@ -153,6 +153,13 @@ gboolean        gstObjectFlagIsSet      (GstObject * obj, GstElementFlags flags)
 GstTocSetter *  toTocSetter (GstElement * elem) { return GST_TOC_SETTER(elem); }
 GstTagSetter *  toTagSetter (GstElement *elem)  { return GST_TAG_SETTER(elem); }
 
+/* Sample Utilities */
+
+GstSample * getSampleValue (GValue * val)
+{
+	return gst_value_get_sample(val);
+}
+
 
 /* Misc */
 

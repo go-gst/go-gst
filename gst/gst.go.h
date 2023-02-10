@@ -132,4 +132,8 @@ extern gpointer glistNext (GList * list);
 
 extern int sizeOfGCharArray (gchar ** arr);
 
+/* Sample Utilities */
+
+extern GstSample * getSampleValue (GValue * val);
+
 #endif
