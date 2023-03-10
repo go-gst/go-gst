@@ -16,6 +16,7 @@ const (
 	VersionMajor Version = C.GST_VERSION_MAJOR
 	// VersionMinor is the minor version number of the GStreamer core.
 	VersionMinor Version = C.GST_VERSION_MINOR
+	VersionMicro Version = C.GST_VERSION_MICRO
 )
 
 // License represents a type of license used on a plugin.
