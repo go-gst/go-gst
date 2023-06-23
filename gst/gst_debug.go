@@ -3,6 +3,15 @@ package gst
 /*
 #include "gst.go.h"
 
+extern void goLogFunction(GstDebugCategory * category,
+                          GstDebugLevel level,
+                          const gchar * file,
+                          const gchar * function,
+                          gint line,
+                          GObject * object,
+                          GstDebugMessage * message,
+                          gpointer user_data) G_GNUC_NO_INSTRUMENT;
+
 void cgoDebugLog (GstDebugCategory * category,
                	  GstDebugLevel level,
                   const gchar * file,
@@ -14,12 +23,27 @@ void cgoDebugLog (GstDebugCategory * category,
 	gst_debug_log(category, level, file, function, line, object, msg);
 }
 
+void cgoSetLogFunction()
+{
+	gst_debug_remove_log_function(gst_debug_log_default);
+	gst_debug_add_log_function(goLogFunction, NULL, NULL);
+}
+
+void cgoResetLogFunction()
+{
+	gst_debug_remove_log_function(goLogFunction);
+	gst_debug_add_log_function(gst_debug_log_default, NULL, NULL);
+}
+
 */
 import "C"
 import (
 	"path"
 	"runtime"
+	"sync"
 	"unsafe"
+
+	"github.com/go-gst/go-glib/glib"
 )
 
 // DebugColorFlags are terminal style flags you can use when creating your debugging
@@ -163,4 +187,30 @@ func (d *DebugCategory) LogTrace(message string, obj ...*Object) {
 // LogMemDump is a convenience wrapper for logging a MEMDUMP level message.
 func (d *DebugCategory) LogMemDump(message string, obj ...*Object) {
 	d.logDepth(LevelMemDump, message, 2, getLogObj(obj...))
+}
+
+type LogFunction func(
+	level DebugLevel,
+	file string,
+	function string,
+	line int,
+	object *glib.Object,
+	message string,
+)
+
+var (
+	logFnMu           sync.RWMutex
+	customLogFunction LogFunction
+)
+
+func SetLogFunction(f LogFunction) {
+	logFnMu.Lock()
+	defer logFnMu.Unlock()
+
+	if f == nil {
+		C.cgoResetLogFunction()
+	} else if customLogFunction == nil {
+		C.cgoSetLogFunction()
+	}
+	customLogFunction = f
 }
