@@ -1,13 +1,12 @@
-# go-gst
+![banner](./img/go-gst-banner.png)
 
-Go bindings for the GStreamer C libraries
+# go-gst: Go bindings for the GStreamer C libraries
 
 [![godoc reference](https://img.shields.io/badge/godoc-reference-blue.svg)](https://godoc.org/github.com/go-gst/go-gst)
-[![GoReportCard](https://goreportcard.com/badge/github.com/nanomsg/mangos)](https://goreportcard.com/report/github.com/go-gst/go-gst)
-![](https://github.com/go-gst/go-gst/workflows/Tests/badge.svg)
+[![GoReportCard](https://goreportcard.com/badge/github.com/go-gst/go-gst)](https://goreportcard.com/report/github.com/go-gst/go-gst)
+<!-- ![](https://github.com/go-gst/go-gst/workflows/Tests/badge.svg) -->
 
-See the [godoc.org](https://godoc.org/github.com/go-gst/go-gst) or [pkg.go.dev](https://pkg.go.dev/github.com/go-gst/go-gst) references for documentation and examples.
-As the latter requires published tags, see godoc.org for the latest documentation of master at any point in time.
+See [pkg.go.dev](https://pkg.go.dev/github.com/go-gst/go-gst) references for documentation and examples.
 
 **This library has not been thoroughly tested and as such is not recommended for mission critical applications yet. If you'd like to try it out and encounter any bugs, feel free to open an Issue or PR. For more information see the [Contributing](#contributing) section.**
 
