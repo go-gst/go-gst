@@ -97,8 +97,8 @@ func (b *Bus) AddSignalWatch() { C.gst_bus_add_signal_watch(b.Instance()) }
 //
 // It is much safer and easier to use the AddWatch or other polling functions. Only use this method if you
 // are unable to also run a MainLoop, or for convenience sake.
-func (b *Bus) PopMessage(timeout int) *Message {
-	return b.TimedPop(time.Duration(timeout) * time.Second)
+func (b *Bus) PopMessage(timeout ClockTime) *Message {
+	return b.TimedPop(timeout)
 }
 
 // BlockPopMessage blocks until a message is available on the bus and then returns it.
@@ -315,15 +315,9 @@ func (b *Bus) SetSyncHandler(f BusSyncHandler) {
 
 // TimedPop gets a message from the bus, waiting up to the specified timeout. Unref returned messages after usage.
 //
-// If timeout is 0, this function behaves like Pop. If timeout is < 0, this function will block forever until a message was posted on the bus.
-func (b *Bus) TimedPop(dur time.Duration) *Message {
-	var cTime C.GstClockTime
-	if dur == ClockTimeNone {
-		cTime = C.GstClockTime(gstClockTimeNone)
-	} else {
-		cTime = C.GstClockTime(dur.Nanoseconds())
-	}
-	msg := C.gst_bus_timed_pop(b.Instance(), cTime)
+// If timeout is 0, this function behaves like Pop. If timeout is ClockTimeNone, this function will block forever until a message was posted on the bus.
+func (b *Bus) TimedPop(dur ClockTime) *Message {
+	msg := C.gst_bus_timed_pop(b.Instance(), C.GstClockTime(dur))
 	if msg == nil {
 		return nil
 	}
@@ -333,16 +327,10 @@ func (b *Bus) TimedPop(dur time.Duration) *Message {
 // TimedPopFiltered gets a message from the bus whose type matches the message type mask types, waiting up to the specified timeout
 // (and discarding any messages that do not match the mask provided).
 //
-// If timeout is 0, this function behaves like PopFiltered. If timeout is < 0, this function will block forever until a matching message
+// If timeout is 0, this function behaves like PopFiltered. If timeout is ClockTimeNone, this function will block forever until a matching message
 // was posted on the bus.
-func (b *Bus) TimedPopFiltered(dur time.Duration, msgTypes MessageType) *Message {
-	var cTime C.GstClockTime
-	if dur == ClockTimeNone {
-		cTime = C.GstClockTime(gstClockTimeNone)
-	} else {
-		cTime = C.GstClockTime(dur.Nanoseconds())
-	}
-	msg := C.gst_bus_timed_pop_filtered(b.Instance(), cTime, C.GstMessageType(msgTypes))
+func (b *Bus) TimedPopFiltered(dur ClockTime, msgTypes MessageType) *Message {
+	msg := C.gst_bus_timed_pop_filtered(b.Instance(), C.GstClockTime(dur), C.GstMessageType(msgTypes))
 	if msg == nil {
 		return nil
 	}

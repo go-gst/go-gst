@@ -93,3 +93,7 @@ func (o *Object) Ref() *Object {
 func (o *Object) Unref() {
 	C.gst_object_unref((C.gpointer)(o.Unsafe()))
 }
+
+func (o *Object) AddControlBinding(binding *ControlBinding) {
+	C.gst_object_add_control_binding(o.Instance(), binding.Instance())
+}

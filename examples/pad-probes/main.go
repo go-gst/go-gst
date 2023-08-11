@@ -13,7 +13,6 @@ import (
 	"errors"
 	"fmt"
 	"math"
-	"time"
 
 	"github.com/go-gst/go-glib/glib"
 	"github.com/go-gst/go-gst/examples"
@@ -87,7 +86,7 @@ func padProbes(mainLoop *glib.MainLoop) error {
 
 	// Block on messages coming in from the bus instead of using the main loop
 	for {
-		msg := pipeline.GetPipelineBus().TimedPop(time.Duration(-1))
+		msg := pipeline.GetPipelineBus().TimedPop(gst.ClockTimeNone)
 		if msg == nil {
 			break
 		}

@@ -1,47 +1,50 @@
 #include "gst.go.h"
 
-GType                  objectGType            (GObject *obj) { return G_OBJECT_TYPE(obj); };
+GType                            objectGType                      (GObject *obj) { return G_OBJECT_TYPE(obj); };
 
-GstAllocator *         toGstAllocator         (void *p) { return (GST_ALLOCATOR_CAST(p)); }
-GstBin *               toGstBin               (void *p) { return (GST_BIN(p)); }
-GstBinClass *          toGstBinClass          (void *p) { return (GST_BIN_CLASS(p)); }
-GstBufferList *        toGstBufferList        (void *p) { return (GST_BUFFER_LIST(p)); }
-GstBufferPool *        toGstBufferPool        (void *p) { return (GST_BUFFER_POOL(p)); }
-GstBuffer *            toGstBuffer            (void *p) { return (GST_BUFFER(p)); }
-GstBus *               toGstBus               (void *p) { return (GST_BUS(p)); }
-GstCapsFeatures *      toGstCapsFeatures      (void *p) { return (GST_CAPS_FEATURES(p)); }
-GstCaps *              toGstCaps              (void *p) { return (GST_CAPS(p)); }
-GstChildProxy *        toGstChildProxy        (void *p) { return (GST_CHILD_PROXY(p)); }
-GstClock *             toGstClock             (void *p) { return (GST_CLOCK(p)); }
-GstContext *           toGstContext           (void *p) { return (GST_CONTEXT_CAST(p)); }
-GstDevice *            toGstDevice            (void *p) { return (GST_DEVICE_CAST(p)); }
-GstElementFactory *    toGstElementFactory    (void *p) { return (GST_ELEMENT_FACTORY(p)); }
-GstElementClass *      toGstElementClass      (void *p) { return (GST_ELEMENT_CLASS(p)); }
-GstElement *           toGstElement           (void *p) { return (GST_ELEMENT(p)); }
-GstEvent *             toGstEvent             (void *p) { return (GST_EVENT(p)); }
-GstGhostPad *          toGstGhostPad          (void *p) { return (GST_GHOST_PAD(p)); }
-GstMemory *            toGstMemory            (void *p) { return (GST_MEMORY_CAST(p)); }
-GstMessage *           toGstMessage           (void *p) { return (GST_MESSAGE(p)); }
-GstMeta *              toGstMeta              (void *p) { return (GST_META_CAST(p)); }
-GstMiniObject *        toGstMiniObject        (void *p) { return (GST_MINI_OBJECT(p)); }
-GstObject *            toGstObject            (void *p) { return (GST_OBJECT(p)); }
-GstPad *               toGstPad               (void *p) { return (GST_PAD(p)); }
-GstPadTemplate *       toGstPadTemplate       (void *p) { return (GST_PAD_TEMPLATE(p)); }
-GstPipeline *          toGstPipeline          (void *p) { return (GST_PIPELINE(p)); }
-GstPluginFeature *     toGstPluginFeature     (void *p) { return (GST_PLUGIN_FEATURE(p)); }
-GstPlugin *            toGstPlugin            (void *p) { return (GST_PLUGIN(p)); }
-GstProxyPad *          toGstProxyPad          (void *p) { return (GST_PROXY_PAD(p)); }
-GstQuery *             toGstQuery             (void *p) { return (GST_QUERY(p)); }
-GstRegistry *          toGstRegistry          (void *p) { return (GST_REGISTRY(p)); }
-GstSample *            toGstSample            (void *p) { return (GST_SAMPLE(p)); }
-GstStreamCollection *  toGstStreamCollection  (void *p) { return (GST_STREAM_COLLECTION_CAST(p)); }
-GstStream *            toGstStream            (void *p) { return (GST_STREAM_CAST(p)); }
-GstStructure *         toGstStructure         (void *p) { return (GST_STRUCTURE(p)); }
-GstTagList   *         toGstTagList           (void *p) { return (GST_TAG_LIST(p)); }
-GstTask *              toGstTask              (void *p) { return (GST_TASK_CAST(p)); }
-GstTaskPool *          toGstTaskPool          (void *p) { return (GST_TASK_POOL_CAST(p)); }
-GstURIHandler *        toGstURIHandler        (void *p) { return (GST_URI_HANDLER(p)); }
-GstUri *               toGstURI               (void *p) { return (GST_URI(p)); }
+GstAllocator *                   toGstAllocator                   (void *p) { return (GST_ALLOCATOR_CAST(p)); }
+GstBin *                         toGstBin                         (void *p) { return (GST_BIN(p)); }
+GstBinClass *                    toGstBinClass                    (void *p) { return (GST_BIN_CLASS(p)); }
+GstBufferList *                  toGstBufferList                  (void *p) { return (GST_BUFFER_LIST(p)); }
+GstBufferPool *                  toGstBufferPool                  (void *p) { return (GST_BUFFER_POOL(p)); }
+GstBuffer *                      toGstBuffer                      (void *p) { return (GST_BUFFER(p)); }
+GstBus *                         toGstBus                         (void *p) { return (GST_BUS(p)); }
+GstCapsFeatures *                toGstCapsFeatures                (void *p) { return (GST_CAPS_FEATURES(p)); }
+GstCaps *                        toGstCaps                        (void *p) { return (GST_CAPS(p)); }
+GstChildProxy *                  toGstChildProxy                  (void *p) { return (GST_CHILD_PROXY(p)); }
+GstClock *                       toGstClock                       (void *p) { return (GST_CLOCK(p)); }
+GstContext *                     toGstContext                     (void *p) { return (GST_CONTEXT_CAST(p)); }
+GstDevice *                      toGstDevice                      (void *p) { return (GST_DEVICE_CAST(p)); }
+GstElementFactory *              toGstElementFactory              (void *p) { return (GST_ELEMENT_FACTORY(p)); }
+GstElementClass *                toGstElementClass                (void *p) { return (GST_ELEMENT_CLASS(p)); }
+GstElement *                     toGstElement                     (void *p) { return (GST_ELEMENT(p)); }
+GstEvent *                       toGstEvent                       (void *p) { return (GST_EVENT(p)); }
+GstGhostPad *                    toGstGhostPad                    (void *p) { return (GST_GHOST_PAD(p)); }
+GstMemory *                      toGstMemory                      (void *p) { return (GST_MEMORY_CAST(p)); }
+GstMessage *                     toGstMessage                     (void *p) { return (GST_MESSAGE(p)); }
+GstMeta *                        toGstMeta                        (void *p) { return (GST_META_CAST(p)); }
+GstMiniObject *                  toGstMiniObject                  (void *p) { return (GST_MINI_OBJECT(p)); }
+GstObject *                      toGstObject                      (void *p) { return (GST_OBJECT(p)); }
+GstPad *                         toGstPad                         (void *p) { return (GST_PAD(p)); }
+GstPadTemplate *                 toGstPadTemplate                 (void *p) { return (GST_PAD_TEMPLATE(p)); }
+GstPipeline *                    toGstPipeline                    (void *p) { return (GST_PIPELINE(p)); }
+GstPluginFeature *               toGstPluginFeature               (void *p) { return (GST_PLUGIN_FEATURE(p)); }
+GstPlugin *                      toGstPlugin                      (void *p) { return (GST_PLUGIN(p)); }
+GstProxyPad *                    toGstProxyPad                    (void *p) { return (GST_PROXY_PAD(p)); }
+GstQuery *                       toGstQuery                       (void *p) { return (GST_QUERY(p)); }
+GstRegistry *                    toGstRegistry                    (void *p) { return (GST_REGISTRY(p)); }
+GstSample *                      toGstSample                      (void *p) { return (GST_SAMPLE(p)); }
+GstStreamCollection *            toGstStreamCollection            (void *p) { return (GST_STREAM_COLLECTION_CAST(p)); }
+GstStream *                      toGstStream                      (void *p) { return (GST_STREAM_CAST(p)); }
+GstStructure *                   toGstStructure                   (void *p) { return (GST_STRUCTURE(p)); }
+GstTagList   *                   toGstTagList                     (void *p) { return (GST_TAG_LIST(p)); }
+GstTask *                        toGstTask                        (void *p) { return (GST_TASK_CAST(p)); }
+GstTaskPool *                    toGstTaskPool                    (void *p) { return (GST_TASK_POOL_CAST(p)); }
+GstURIHandler *                  toGstURIHandler                  (void *p) { return (GST_URI_HANDLER(p)); }
+GstUri *                         toGstURI                         (void *p) { return (GST_URI(p)); }
+GstControlBinding *              toGstControlBinding              (void *p) { return (GST_CONTROL_BINDING(p)); }
+GstControlSource *               toGstControlSource               (void *p) { return (GST_CONTROL_SOURCE(p)); }
+GstTimedValueControlSource *     toGstTimedValueControlSource     (void *p) { return (GST_TIMED_VALUE_CONTROL_SOURCE(p)); }
 
 /* Buffer Utilities */
 

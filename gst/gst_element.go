@@ -520,3 +520,39 @@ func (e *Element) GetRequestPad(name string) *Pad {
 func (e *Element) ReleaseRequestPad(pad *Pad) {
 	C.gst_element_release_request_pad(e.Instance(), pad.Instance())
 }
+
+// Set the start time of an element. The start time of the element is the running time of the element
+// when it last went to the PAUSED state. In READY or after a flushing seek, it is set to 0.
+//
+// Toplevel elements like GstPipeline will manage the start_time and base_time on its children.
+// Setting the start_time to GST_CLOCK_TIME_NONE on such a toplevel element will disable the distribution of the base_time
+// to the children and can be useful if the application manages the base_time itself, for example if you want to synchronize
+// capture from multiple pipelines, and you can also ensure that the pipelines have the same clock.
+//
+// MT safe.
+func (e *Element) SetStartTime(startTime ClockTime) {
+	C.gst_element_set_start_time(e.Instance(), C.GstClockTime(startTime))
+}
+
+// Returns the start time of the element. The start time is the running time of the clock when this element was last put to PAUSED.
+// Usually the start_time is managed by a toplevel element such as GstPipeline.
+// MT safe.
+func (e *Element) GetStartTime() ClockTime {
+	ctime := C.gst_element_get_start_time(e.Instance())
+
+	return ClockTime(ctime)
+}
+
+// Set the base time of an element. The base time is the absolute time of the clock
+// when this element was last put to PLAYING. Subtracting the base time from the clock time gives the running time of the element.
+func (e *Element) SetBaseTime(startTime ClockTime) {
+	C.gst_element_set_base_time(e.Instance(), C.GstClockTime(startTime))
+}
+
+// Returns the base time of the element. The base time is the absolute time of the clock
+// when this element was last put to PLAYING. Subtracting the base time from the clock time gives the running time of the element.
+func (e *Element) GetBaseTime() ClockTime {
+	ctime := C.gst_element_get_base_time(e.Instance())
+
+	return ClockTime(ctime)
+}

@@ -6,7 +6,6 @@ import (
 	"math"
 	"os"
 	"os/signal"
-	"time"
 
 	"github.com/go-gst/go-gst/examples"
 	"github.com/go-gst/go-gst/gst"
@@ -116,7 +115,7 @@ func mainLoop(pipeline *gst.Pipeline) error {
 
 	// Loop over messsages from the pipeline
 	for {
-		msg := bus.TimedPop(time.Duration(-1))
+		msg := bus.TimedPop(gst.ClockTimeNone)
 		if msg == nil {
 			break
 		}

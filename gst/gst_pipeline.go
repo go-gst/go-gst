@@ -78,6 +78,15 @@ func (p *Pipeline) GetPipelineClock() *Clock {
 	return FromGstClockUnsafeFull(unsafe.Pointer(cClock))
 }
 
+// Force pipeline to use the given clock. The pipeline will always use the given clock even if new clock providers are added to this pipeline.
+//
+// If clock is NULL all clocking will be disabled which will make the pipeline run as fast as possible.
+//
+// MT safe.
+func (p *Pipeline) ForceClock(clock *Clock) {
+	C.gst_pipeline_use_clock(p.Instance(), clock.Instance())
+}
+
 /*
 SetAutoFlushBus can be used to disable automatically flushing the message bus
 when a pipeline goes to StateNull.
