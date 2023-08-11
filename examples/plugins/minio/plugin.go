@@ -5,11 +5,9 @@
 // By default this plugin will use the credentials set in the environment at MINIO_ACCESS_KEY_ID
 // and MINIO_SECRET_ACCESS_KEY however these can also be set on the element directly.
 //
-//
 // In order to build the plugin for use by GStreamer, you can do the following:
 //
-//     $ go build -o libgstminio.so -buildmode c-shared .
-//
+//	$ go build -o libgstminio.so -buildmode c-shared .
 package main
 
 import "C"
@@ -17,8 +15,8 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/tinyzimmer/go-gst/gst"
-	"github.com/tinyzimmer/go-gst/gst/base"
+	"github.com/go-gst/go-gst/gst"
+	"github.com/go-gst/go-gst/gst/base"
 )
 
 // The metadata for this plugin
@@ -31,7 +29,7 @@ var pluginMeta = &gst.PluginMetadata{
 	License:      gst.LicenseLGPL,
 	Source:       "gst-pipeline-operator",
 	Package:      "plugins",
-	Origin:       "https://github.com/tinyzimmer/gst-pipeline-operator",
+	Origin:       "https://github.com/go-gst/gst-pipeline-operator",
 	ReleaseDate:  "2021-01-12",
 	// The init function is called to register elements provided by the plugin.
 	Init: func(plugin *gst.Plugin) bool {

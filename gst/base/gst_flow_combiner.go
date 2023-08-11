@@ -8,7 +8,7 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/tinyzimmer/go-gst/gst"
+	"github.com/go-gst/go-gst/gst"
 )
 
 // FlowCombiner is a helper structure for aggregating flow returns. This struct

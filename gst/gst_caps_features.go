@@ -6,7 +6,7 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/tinyzimmer/go-glib/glib"
+	"github.com/go-gst/go-glib/glib"
 )
 
 // Go casting of pre-baked caps features
@@ -21,18 +21,16 @@ type CapsFeatures struct {
 
 // NewCapsFeaturesEmpty returns a new empty CapsFeatures.
 //
-//   feats := gst.NewCapsFeaturesEmpty()
-//   fmt.Println(feats.GetSize())
-//   // 0
-//
+//	feats := gst.NewCapsFeaturesEmpty()
+//	fmt.Println(feats.GetSize())
+//	// 0
 func NewCapsFeaturesEmpty() *CapsFeatures { return wrapCapsFeatures(C.gst_caps_features_new_empty()) }
 
 // NewCapsFeaturesAny returns a new ANY CapsFeatures.
 //
-//   feats := gst.NewCapsFeaturesAny()
-//   fmt.Println(feats.IsAny())
-//   // true
-//
+//	feats := gst.NewCapsFeaturesAny()
+//	fmt.Println(feats.IsAny())
+//	// true
 func NewCapsFeaturesAny() *CapsFeatures { return wrapCapsFeatures(C.gst_caps_features_new_any()) }
 
 // NewCapsFeaturesFromString creates new CapsFeatures from the given string.
@@ -71,31 +69,29 @@ func (c *CapsFeatures) Instance() *C.GstCapsFeatures {
 
 // String implements a stringer on caps features.
 //
-//   feats := gst.NewCapsFeaturesAny()
-//   fmt.Println(feats.String())
-//   // ANY
-//
+//	feats := gst.NewCapsFeaturesAny()
+//	fmt.Println(feats.String())
+//	// ANY
 func (c *CapsFeatures) String() string {
 	return C.GoString(C.gst_caps_features_to_string(c.Instance()))
 }
 
 // Add adds the given feature to these.
 //
-//   feats := gst.NewCapsFeaturesEmpty()
+//	feats := gst.NewCapsFeaturesEmpty()
 //
-//   fmt.Println(feats.GetSize())
+//	fmt.Println(feats.GetSize())
 //
-//   feats.Add(gst.CapsFeatureMemorySystemMemory)
+//	feats.Add(gst.CapsFeatureMemorySystemMemory)
 //
-//   fmt.Println(feats.GetSize())
-//   fmt.Println(feats.Contains(gst.CapsFeatureMemorySystemMemory))
-//   fmt.Println(feats.GetNth(0))
+//	fmt.Println(feats.GetSize())
+//	fmt.Println(feats.Contains(gst.CapsFeatureMemorySystemMemory))
+//	fmt.Println(feats.GetNth(0))
 //
-//   // 0
-//   // 1
-//   // true
-//   // memory:SystemMemory
-//
+//	// 0
+//	// 1
+//	// true
+//	// memory:SystemMemory
 func (c *CapsFeatures) Add(feature string) {
 	cStr := C.CString(feature)
 	defer C.free(unsafe.Pointer(cStr))

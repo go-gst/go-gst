@@ -13,8 +13,8 @@ import (
 	"time"
 	"unsafe"
 
+	"github.com/go-gst/go-glib/glib"
 	gopointer "github.com/mattn/go-pointer"
-	"github.com/tinyzimmer/go-glib/glib"
 )
 
 //export goElementCallAsync

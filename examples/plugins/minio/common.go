@@ -8,10 +8,10 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/go-gst/go-glib/glib"
+	"github.com/go-gst/go-gst/gst"
 	minio "github.com/minio/minio-go/v7"
 	"github.com/minio/minio-go/v7/pkg/credentials"
-	"github.com/tinyzimmer/go-glib/glib"
-	"github.com/tinyzimmer/go-gst/gst"
 )
 
 const (

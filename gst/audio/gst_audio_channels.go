@@ -5,6 +5,7 @@ package audio
 */
 import "C"
 import (
+	"math"
 	"strings"
 	"unsafe"
 )

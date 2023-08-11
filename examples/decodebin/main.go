@@ -6,7 +6,7 @@
 // Before the pipeline hasn't been prerolled, the decodebin can't possibly know what
 // format it gets as its input. So at first, the pipeline looks like this:
 //
-//   {filesrc} - {decodebin}
+//	{filesrc} - {decodebin}
 //
 // As soon as the decodebin has detected the stream format, it will try to decode every
 // contained stream to its raw format.
@@ -18,9 +18,9 @@
 // So for a file that contains one audio and one video stream,
 // the pipeline looks like the following:
 //
-//                          /-[audio]-{audioconvert}-{audioresample}-{autoaudiosink}
-//   {filesrc}-{decodebin}-|
-//                          \-[video]-{videoconvert}-{videoscale}-{autovideosink}
+//	                       /-[audio]-{audioconvert}-{audioresample}-{autoaudiosink}
+//	{filesrc}-{decodebin}-|
+//	                       \-[video]-{videoconvert}-{videoscale}-{autovideosink}
 //
 // Both auto-sinks at the end automatically select the best available (actual) sink. Since the
 // selection of available actual sinks is platform specific
@@ -38,9 +38,9 @@ import (
 	"os"
 	"strings"
 
-	"github.com/tinyzimmer/go-glib/glib"
-	"github.com/tinyzimmer/go-gst/examples"
-	"github.com/tinyzimmer/go-gst/gst"
+	"github.com/go-gst/go-glib/glib"
+	"github.com/go-gst/go-gst/examples"
+	"github.com/go-gst/go-gst/gst"
 )
 
 var srcFile string

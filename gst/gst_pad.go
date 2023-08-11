@@ -83,8 +83,8 @@ import (
 	"errors"
 	"unsafe"
 
+	"github.com/go-gst/go-glib/glib"
 	gopointer "github.com/mattn/go-pointer"
-	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // PadFuncMap is an type of map for registering callbacks to a pad instance.

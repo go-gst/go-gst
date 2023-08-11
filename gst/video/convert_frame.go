@@ -22,8 +22,8 @@ import (
 	"time"
 	"unsafe"
 
+	"github.com/go-gst/go-gst/gst"
 	gopointer "github.com/mattn/go-pointer"
-	"github.com/tinyzimmer/go-gst/gst"
 )
 
 // ConvertSampleCallback represents a callback from a video convert opereration.

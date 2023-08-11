@@ -24,8 +24,8 @@ import (
 	"time"
 	"unsafe"
 
+	"github.com/go-gst/go-glib/glib"
 	gopointer "github.com/mattn/go-pointer"
-	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // ClockCallback is the prototype of a clock callback function.
@@ -80,25 +80,25 @@ func (c *ClockID) Wait() (ret ClockReturn, jitter ClockTimeDiff) {
 //
 // The callback func can be invoked from any thread, either provided by the core or from a streaming thread. The application should be prepared for this.
 //
-//   // Example
+//	// Example
 //
-//   pipeline, _ := gst.NewPipelineFromString("fakesrc ! fakesink")
-//   defer pipeline.Unref()
+//	pipeline, _ := gst.NewPipelineFromString("fakesrc ! fakesink")
+//	defer pipeline.Unref()
 //
-//   clock := pipeline.GetPipelineClock()
+//	clock := pipeline.GetPipelineClock()
 //
-//   id := clock.NewSingleShotID(gst.ClockTime(1000000000)) // 1 second
+//	id := clock.NewSingleShotID(gst.ClockTime(1000000000)) // 1 second
 //
-//   id.WaitAsync(func(clock *gst.Clock, clockTime time.Duration) bool {
-//       fmt.Println("Single shot triggered at", clockTime.Nanoseconds())
-//       pipeline.SetState(gst.StateNull)
-//       return true
-//   })
+//	id.WaitAsync(func(clock *gst.Clock, clockTime time.Duration) bool {
+//	    fmt.Println("Single shot triggered at", clockTime.Nanoseconds())
+//	    pipeline.SetState(gst.StateNull)
+//	    return true
+//	})
 //
-//   pipeline.SetState(gst.StatePlaying)
-//   gst.Wait(pipeline)
+//	pipeline.SetState(gst.StatePlaying)
+//	gst.Wait(pipeline)
 //
-//   // Single shot triggered at 1000000000
+//	// Single shot triggered at 1000000000
 func (c *ClockID) WaitAsync(f ClockCallback) ClockReturn {
 	ptr := gopointer.Save(f)
 	return ClockReturn(C.gst_clock_id_wait_async(
@@ -272,7 +272,7 @@ func (c *Clock) NewSingleShotID(at time.Duration) *ClockID {
 }
 
 // PeriodicIDReinit reinitializes the provided periodic id to the provided start time and interval. Does not
-/// modify the reference count.
+// / modify the reference count.
 func (c *Clock) PeriodicIDReinit(clockID *ClockID, startTime, interval time.Duration) bool {
 	return gobool(C.gst_clock_periodic_id_reinit(
 		c.Instance(),

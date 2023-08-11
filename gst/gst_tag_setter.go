@@ -5,7 +5,7 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/tinyzimmer/go-glib/glib"
+	"github.com/go-gst/go-glib/glib"
 )
 
 // InterfaceTagSetter represents the GstTagsetter interface GType. Use this when querying bins

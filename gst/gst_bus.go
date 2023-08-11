@@ -24,8 +24,8 @@ import (
 	"time"
 	"unsafe"
 
+	"github.com/go-gst/go-glib/glib"
 	gopointer "github.com/mattn/go-pointer"
-	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // Bus is a Go wrapper around a GstBus. It provides convenience methods for
@@ -36,38 +36,37 @@ type Bus struct {
 
 // NewBus returns a new Bus instance.
 //
-//   // Example of using the bus instance
+//	// Example of using the bus instance
 //
-//   package main
+//	package main
 //
-//   import (
-//       "fmt"
+//	import (
+//	    "fmt"
 //
-//       "github.com/tinyzimmer/go-gst/gst"
-//   )
+//	    "github.com/go-gst/go-gst/gst"
+//	)
 //
-//   func main() {
-//       gst.Init(nil)
+//	func main() {
+//	    gst.Init(nil)
 //
-//       bus := gst.NewBus()
-//       defer bus.Unref()
+//	    bus := gst.NewBus()
+//	    defer bus.Unref()
 //
-//       elem, err := gst.NewElement("fakesrc")
-//       if err != nil {
-//           panic(err)
-//       }
-//       defer elem.Unref()
+//	    elem, err := gst.NewElement("fakesrc")
+//	    if err != nil {
+//	        panic(err)
+//	    }
+//	    defer elem.Unref()
 //
-//       bus.Post(gst.NewAsyncStartMessage(elem))
+//	    bus.Post(gst.NewAsyncStartMessage(elem))
 //
-//       msg := bus.Pop()
-//       defer msg.Unref()
+//	    msg := bus.Pop()
+//	    defer msg.Unref()
 //
-//       fmt.Println(msg)
-//   }
+//	    fmt.Println(msg)
+//	}
 //
-//   // > [fakesrc0] ASYNC-START - Async task started
-//
+//	// > [fakesrc0] ASYNC-START - Async task started
 func NewBus() *Bus {
 	return FromGstBusUnsafeFull(unsafe.Pointer(C.gst_bus_new()))
 }
@@ -244,7 +243,9 @@ func (b *Bus) Peek() *Message {
 // on Gtk+ or Qt, but also for any other non-trivial application that uses the GLib main loop. As this function
 // runs a GLib main loop, any callback attached to the default GLib main context may be invoked. This could be
 // timeouts, GUI events, I/O events etc.; even if Poll is called with a 0 timeout. Any of these callbacks
-//  may do things you do not expect, e.g. destroy the main application window or some other resource; change other
+//
+//	may do things you do not expect, e.g. destroy the main application window or some other resource; change other
+//
 // application state; display a dialog and run another main loop until the user clicks it away. In short, using this
 // function may add a lot of complexity to your code through unexpected re-entrancy and unexpected changes to your
 // application's state.

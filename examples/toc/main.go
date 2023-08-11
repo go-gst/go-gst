@@ -6,10 +6,9 @@
 // notify all elements in the pipeline when they encountered a ToC.
 // For this, the example operates the following pipeline:
 //
-//                            /-{queue} - {fakesink}
-//   {filesrc} - {decodebin} - {queue} - {fakesink}
-//                            \- ...
-//
+//	                         /-{queue} - {fakesink}
+//	{filesrc} - {decodebin} - {queue} - {fakesink}
+//	                         \- ...
 package main
 
 import (
@@ -18,9 +17,9 @@ import (
 	"os"
 	"time"
 
-	"github.com/tinyzimmer/go-glib/glib"
-	"github.com/tinyzimmer/go-gst/examples"
-	"github.com/tinyzimmer/go-gst/gst"
+	"github.com/go-gst/go-glib/glib"
+	"github.com/go-gst/go-gst/examples"
+	"github.com/go-gst/go-gst/gst"
 )
 
 func tagsetter(mainLoop *glib.MainLoop) error {

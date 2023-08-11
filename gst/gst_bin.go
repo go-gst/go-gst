@@ -75,7 +75,7 @@ import (
 	"fmt"
 	"unsafe"
 
-	"github.com/tinyzimmer/go-glib/glib"
+	"github.com/go-gst/go-glib/glib"
 )
 
 // Bin is a go wrapper arounds a GstBin.

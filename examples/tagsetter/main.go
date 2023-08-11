@@ -10,7 +10,7 @@
 // that the example application will add tags to using GstTagsetter.
 // The operated pipeline looks like this:
 //
-//   {audiotestsrc} - {flacenc} - {filesink}
+//	{audiotestsrc} - {flacenc} - {filesink}
 //
 // For example for pipelines that transcode a multimedia file, the input
 // already has tags. For cases like this, the GstTagsetter has the merge
@@ -25,8 +25,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/tinyzimmer/go-gst/examples"
-	"github.com/tinyzimmer/go-gst/gst"
+	"github.com/go-gst/go-gst/examples"
+	"github.com/go-gst/go-gst/gst"
 )
 
 func tagsetter() error {

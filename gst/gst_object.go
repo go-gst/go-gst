@@ -7,7 +7,7 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/tinyzimmer/go-glib/glib"
+	"github.com/go-gst/go-glib/glib"
 )
 
 // Object is a go representation of a GstObject.
