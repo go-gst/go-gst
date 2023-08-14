@@ -35,7 +35,8 @@ func NewElementWithName(factory string, name string) (*Element, error) {
 
 // Create a new element of the type defined by the given elementfactory. The supplied list of properties, will be passed at object construction.
 //
-// using this results in a free() panic :( DO NOT USE
+// this function is needed for gstreamer props that have the "Construct Only" flag, e.g.:
+// https://gstreamer.freedesktop.org/documentation/audio/gstaudioaggregator.html?gi-language=c#GstAudioAggregator:force-live
 func NewElementWithProperties(factory string, properties map[string]interface{}) (*Element, error) {
 	props := make([]*C.char, 0)
 	values := make([]C.GValue, 0)
