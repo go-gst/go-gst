@@ -34,20 +34,15 @@ func NewApplicationMessage(src interface{}, structure *Structure) *Message {
 // RunningTime contains the time of the desired running time when this elements goes to PLAYING.
 // A value less than 0 for runningTime means that the element has no clock interaction and thus doesn't
 // care about the running time of the pipeline.
-func NewAsyncDoneMessage(src interface{}, runningTime time.Duration) *Message {
+func NewAsyncDoneMessage(src interface{}, runningTime ClockTime) *Message {
 	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
-	var cTime C.GstClockTime
-	if runningTime.Nanoseconds() < 0 {
-		cTime = C.GstClockTime(gstClockTimeNone)
-	} else {
-		cTime = C.GstClockTime(runningTime.Nanoseconds())
-	}
+
 	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_async_done(
 		srcObj,
-		cTime,
+		C.GstClockTime(runningTime),
 	)))
 }
 

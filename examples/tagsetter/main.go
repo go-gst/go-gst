@@ -23,7 +23,6 @@ package main
 
 import (
 	"fmt"
-	"time"
 
 	"github.com/go-gst/go-gst/examples"
 	"github.com/go-gst/go-gst/gst"
@@ -65,7 +64,7 @@ func tagsetter() error {
 	var cont bool
 	var pipelineErr error
 	for {
-		msg := pipeline.GetPipelineBus().TimedPop(time.Duration(-1))
+		msg := pipeline.GetPipelineBus().TimedPop(gst.ClockTimeNone)
 		if msg == nil {
 			break
 		}

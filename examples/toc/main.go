@@ -87,7 +87,7 @@ func tagsetter(mainLoop *glib.MainLoop) error {
 	// timed_pop on the bus with the desired timeout for when to stop waiting for new messages.
 	// (-1 = Wait forever)
 	for {
-		msg := pipeline.GetPipelineBus().TimedPop(time.Duration(-1))
+		msg := pipeline.GetPipelineBus().TimedPop(gst.ClockTimeNone)
 		switch msg.Type() {
 
 		// When we use this method of popping from the bus (instead of a Watch), we own a
