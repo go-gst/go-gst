@@ -13,14 +13,22 @@ func start() (error) {
 
 	registry := gst.GetRegistry()
 
-	hardwareAccelerationRank := 258
+	higherThanHighRank := (gst.Rank)(258)
 
 	codec, codecErr := registry.LookupFeature("vtdec_hw")
 
 	if codecErr == nil {
-		codec.SetPluginRank(hardwareAccelerationRank)
+		codec.SetPluginRank(higherThanHighRank)
 		rank := codec.GetPluginRank()
 		fmt.Println("vtdec_hw rank is:", rank)
+	}
+
+	codec, codecErr = registry.LookupFeature("vtdec_hw")
+
+	if codecErr == nil {
+		codec.SetPluginRank(gst.RankPrimary)
+		rank := codec.GetPluginRank()
+		fmt.Println("vtdec_hw rank is now:", rank)
 	}
 
 	//add a feature you expect to be available to you here and change it's rank
