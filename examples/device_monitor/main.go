@@ -6,9 +6,9 @@ package main
 import (
 	"fmt"
 
-	"github.com/tinyzimmer/go-glib/glib"
-	"github.com/tinyzimmer/go-gst/examples"
-	"github.com/tinyzimmer/go-gst/gst"
+	"github.com/go-gst/go-glib/glib"
+	"github.com/go-gst/go-gst/examples"
+	"github.com/go-gst/go-gst/gst"
 )
 
 func runPipeline(loop *glib.MainLoop) error {
