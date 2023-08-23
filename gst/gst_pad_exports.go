@@ -7,8 +7,8 @@ import "C"
 import (
 	"unsafe"
 
+	"github.com/go-gst/go-glib/glib"
 	gopointer "github.com/mattn/go-pointer"
-	"github.com/tinyzimmer/go-glib/glib"
 )
 
 func getParent(parent *C.GstObject) *Object {

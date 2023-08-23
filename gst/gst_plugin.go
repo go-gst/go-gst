@@ -53,8 +53,8 @@ import (
 	"errors"
 	"unsafe"
 
+	"github.com/go-gst/go-glib/glib"
 	gopointer "github.com/mattn/go-pointer"
-	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // PluginMetadata represents the information to include when registering a new plugin

@@ -9,7 +9,7 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/tinyzimmer/go-glib/glib"
+	"github.com/go-gst/go-glib/glib"
 )
 
 // Pipeline is a go implementation of a GstPipeline.
@@ -76,6 +76,15 @@ func (p *Pipeline) GetPipelineBus() *Bus {
 func (p *Pipeline) GetPipelineClock() *Clock {
 	cClock := C.gst_pipeline_get_pipeline_clock((*C.GstPipeline)(p.Instance()))
 	return FromGstClockUnsafeFull(unsafe.Pointer(cClock))
+}
+
+// Force pipeline to use the given clock. The pipeline will always use the given clock even if new clock providers are added to this pipeline.
+//
+// If clock is NULL all clocking will be disabled which will make the pipeline run as fast as possible.
+//
+// MT safe.
+func (p *Pipeline) ForceClock(clock *Clock) {
+	C.gst_pipeline_use_clock(p.Instance(), clock.Instance())
 }
 
 /*

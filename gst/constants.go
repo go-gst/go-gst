@@ -16,6 +16,7 @@ const (
 	VersionMajor Version = C.GST_VERSION_MAJOR
 	// VersionMinor is the minor version number of the GStreamer core.
 	VersionMinor Version = C.GST_VERSION_MINOR
+	VersionMicro Version = C.GST_VERSION_MICRO
 )
 
 // License represents a type of license used on a plugin.
@@ -38,17 +39,10 @@ const (
 type ClockTimeDiff int64
 
 // ClockTimeNone means infinite timeout or an empty value
-var ClockTimeNone time.Duration = time.Duration(-1)
+var ClockTimeNone ClockTime = C.GST_CLOCK_TIME_NONE
 
 // BufferOffsetNone is a var for no-offset return results.
 var BufferOffsetNone time.Duration = time.Duration(-1)
-
-var (
-	// ClockTimeNone means infinite timeout (unsigned representation of -1) or an otherwise unknown value.
-	gstClockTimeNone C.GstClockTime = 0xffffffffffffffff
-	// // BufferOffsetNone is a constant for no-offset return results.
-	// gstBufferOffsetNone C.GstClockTime = 0xffffffffffffffff
-)
 
 // ClockEntryType wraps GstClockEntryType
 type ClockEntryType int

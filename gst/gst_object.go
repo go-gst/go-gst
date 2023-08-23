@@ -7,7 +7,7 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/tinyzimmer/go-glib/glib"
+	"github.com/go-gst/go-glib/glib"
 )
 
 // Object is a go representation of a GstObject.
@@ -36,7 +36,8 @@ func (o *Object) GObject() *glib.Object { return o.InitiallyUnowned.Object }
 // GetName returns the name of this object.
 func (o *Object) GetName() string {
 	cName := C.gst_object_get_name((*C.GstObject)(o.Instance()))
-	defer C.free(unsafe.Pointer(cName))
+	//cName could be NULL which needs to be freed using
+	defer C.g_free(unsafe.Pointer(cName))
 	return C.GoString(cName)
 }
 
@@ -92,4 +93,8 @@ func (o *Object) Ref() *Object {
 // This function does not take the lock on object as it relies on atomic refcounting.
 func (o *Object) Unref() {
 	C.gst_object_unref((C.gpointer)(o.Unsafe()))
+}
+
+func (o *Object) AddControlBinding(binding *ControlBinding) {
+	C.gst_object_add_control_binding(o.Instance(), binding.Instance())
 }

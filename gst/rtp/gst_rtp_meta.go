@@ -8,8 +8,8 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/tinyzimmer/go-glib/glib"
-	"github.com/tinyzimmer/go-gst/gst"
+	"github.com/go-gst/go-glib/glib"
+	"github.com/go-gst/go-gst/gst"
 )
 
 // MaxCSRCCount is the maximum number of elements that can be added to a CSRC.

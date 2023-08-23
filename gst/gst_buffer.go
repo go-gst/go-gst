@@ -27,8 +27,8 @@ import (
 	"time"
 	"unsafe"
 
+	"github.com/go-gst/go-glib/glib"
 	gopointer "github.com/mattn/go-pointer"
-	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // GetMaxBufferMemory returns the maximum amount of memory a buffer can hold.
@@ -120,16 +120,16 @@ func NewBufferFromReader(rdr io.Reader) (*Buffer, error) {
 //
 // The prefix/padding must be filled with 0 if flags contains MemoryFlagZeroPrefixed and MemoryFlagZeroPadded respectively.
 //
-//   // Example
+//	 // Example
 //
-//   buf := gst.NewBufferFull(0, []byte("hello-world"), 1024, 0, 1024, func() {
-//       fmt.Println("buffer was destroyed")
-//   })
-//   if buf != nil {
-//       buf.Unref()
-//   }
+//	 buf := gst.NewBufferFull(0, []byte("hello-world"), 1024, 0, 1024, func() {
+//	     fmt.Println("buffer was destroyed")
+//	 })
+//	 if buf != nil {
+//	     buf.Unref()
+//	 }
 //
-//  // > buffer was destroyed
+//	// > buffer was destroyed
 func NewBufferFull(flags MemoryFlags, data []byte, maxSize, offset, size int64, notifyFunc func()) *Buffer {
 	var notifyData unsafe.Pointer
 	var gnotifyFunc C.GDestroyNotify
@@ -176,12 +176,10 @@ func (b *Buffer) Bytes() []byte {
 // PresentationTimestamp returns the presentation timestamp of the buffer, or a negative duration
 // if not known or relevant. This value contains the timestamp when the media should be
 // presented to the user.
-func (b *Buffer) PresentationTimestamp() time.Duration {
+func (b *Buffer) PresentationTimestamp() ClockTime {
 	pts := b.Instance().pts
-	if pts == gstClockTimeNone {
-		return ClockTimeNone
-	}
-	return time.Duration(pts)
+
+	return ClockTime(pts)
 }
 
 // SetPresentationTimestamp sets the presentation timestamp on the buffer.
@@ -192,22 +190,18 @@ func (b *Buffer) SetPresentationTimestamp(dur time.Duration) {
 
 // DecodingTimestamp returns the decoding timestamp of the buffer, or a negative duration if not known
 // or relevant. This value contains the timestamp when the media should be processed.
-func (b *Buffer) DecodingTimestamp() time.Duration {
+func (b *Buffer) DecodingTimestamp() ClockTime {
 	dts := b.Instance().dts
-	if dts == gstClockTimeNone {
-		return ClockTimeNone
-	}
-	return time.Duration(dts)
+
+	return ClockTime(dts)
 }
 
 // Duration returns the length of the data inside this buffer, or a negative duration if not known
 // or relevant.
-func (b *Buffer) Duration() time.Duration {
+func (b *Buffer) Duration() ClockTime {
 	dur := b.Instance().duration
-	if dur == gstClockTimeNone {
-		return ClockTimeNone
-	}
-	return time.Duration(dur)
+
+	return ClockTime(dur)
 }
 
 // SetDuration sets the duration on the buffer.
@@ -228,27 +222,26 @@ func (b *Buffer) OffsetEnd() int64 { return int64(b.Instance().offset_end) }
 // parameters are passed to the MetaInfo's init function, and as such will only work
 // for MetaInfo objects created from the go runtime.
 //
-//   // Example
+//	// Example
 //
-//   metaInfo := gst.RegisterMeta(glib.TypeFromName("MyObjectType"), "my-meta", 1024, &gst.MetaInfoCallbackFuncs{
-//       InitFunc: func(params interface{}, buffer *gst.Buffer) bool {
-//           paramStr := params.(string)
-//           fmt.Println("Buffer initialized with params:", paramStr)
-//           return true
-//       },
-//       FreeFunc: func(buffer *gst.Buffer) {
-//           fmt.Println("Buffer was destroyed")
-//       },
-//   })
+//	metaInfo := gst.RegisterMeta(glib.TypeFromName("MyObjectType"), "my-meta", 1024, &gst.MetaInfoCallbackFuncs{
+//	    InitFunc: func(params interface{}, buffer *gst.Buffer) bool {
+//	        paramStr := params.(string)
+//	        fmt.Println("Buffer initialized with params:", paramStr)
+//	        return true
+//	    },
+//	    FreeFunc: func(buffer *gst.Buffer) {
+//	        fmt.Println("Buffer was destroyed")
+//	    },
+//	})
 //
-//   buf := gst.NewEmptyBuffer()
-//   buf.AddMeta(metaInfo, "hello world")
+//	buf := gst.NewEmptyBuffer()
+//	buf.AddMeta(metaInfo, "hello world")
 //
-//   buf.Unref()
+//	buf.Unref()
 //
-//   // > Buffer initialized with params: hello world
-//   // > Buffer was destroyed
-//
+//	// > Buffer initialized with params: hello world
+//	// > Buffer was destroyed
 func (b *Buffer) AddMeta(info *MetaInfo, params interface{}) *Meta {
 	meta := C.gst_buffer_add_meta(b.Instance(), info.Instance(), (C.gpointer)(gopointer.Save(params)))
 	if meta == nil {
@@ -288,7 +281,7 @@ func (b *Buffer) AddProtectionMeta(info *Structure) *ProtectionMeta {
 type ReferenceTimestampMeta struct {
 	Parent              *Meta
 	Reference           *Caps
-	Timestamp, Duration time.Duration
+	Timestamp, Duration ClockTime
 }
 
 // AddReferenceTimestampMeta adds a ReferenceTimestampMeta to this buffer that holds a
@@ -296,21 +289,16 @@ type ReferenceTimestampMeta struct {
 //
 // See the documentation of GstReferenceTimestampMeta for details.
 // https://gstreamer.freedesktop.org/documentation/gstreamer/gstbuffer.html?gi-language=c#GstReferenceTimestampMeta
-func (b *Buffer) AddReferenceTimestampMeta(ref *Caps, timestamp, duration time.Duration) *ReferenceTimestampMeta {
-	durClockTime := C.GstClockTime(ClockTimeNone)
-	if duration > time.Duration(0) {
-		durClockTime = C.GstClockTime(duration.Nanoseconds())
-	}
-	tsClockTime := C.GstClockTime(timestamp.Nanoseconds())
-	meta := C.gst_buffer_add_reference_timestamp_meta(b.Instance(), ref.Instance(), tsClockTime, durClockTime)
+func (b *Buffer) AddReferenceTimestampMeta(ref *Caps, timestamp, duration ClockTime) *ReferenceTimestampMeta {
+	meta := C.gst_buffer_add_reference_timestamp_meta(b.Instance(), ref.Instance(), C.GstClockTime(timestamp), C.GstClockTime(duration))
 	if meta == nil {
 		return nil
 	}
 	return &ReferenceTimestampMeta{
 		Parent:    wrapMeta(&meta.parent),
 		Reference: wrapCaps(meta.reference),
-		Timestamp: time.Duration(meta.timestamp),
-		Duration:  time.Duration(meta.duration),
+		Timestamp: ClockTime(meta.timestamp),
+		Duration:  ClockTime(meta.duration),
 	}
 }
 
@@ -503,8 +491,8 @@ func (b *Buffer) GetReferenceTimestampMeta(caps *Caps) *ReferenceTimestampMeta {
 	}
 	refMeta := &ReferenceTimestampMeta{
 		Parent:    wrapMeta(&meta.parent),
-		Timestamp: time.Duration(meta.timestamp),
-		Duration:  time.Duration(meta.duration),
+		Timestamp: ClockTime(meta.timestamp),
+		Duration:  ClockTime(meta.duration),
 	}
 	if meta.reference != nil {
 		refMeta.Reference = wrapCaps(meta.reference)

@@ -4,20 +4,19 @@
 // the application about the states of the dataflow. Those are mostly used for
 // changing pipelines dynamically at runtime or for inspecting/modifying buffers or events
 //
-//                    |-[probe]
-//                   /
-//   {audiotestsrc} - {fakesink}
+//	                 |-[probe]
+//	                /
+//	{audiotestsrc} - {fakesink}
 package main
 
 import (
 	"errors"
 	"fmt"
 	"math"
-	"time"
 
-	"github.com/tinyzimmer/go-glib/glib"
-	"github.com/tinyzimmer/go-gst/examples"
-	"github.com/tinyzimmer/go-gst/gst"
+	"github.com/go-gst/go-glib/glib"
+	"github.com/go-gst/go-gst/examples"
+	"github.com/go-gst/go-gst/gst"
 )
 
 func padProbes(mainLoop *glib.MainLoop) error {
@@ -87,7 +86,7 @@ func padProbes(mainLoop *glib.MainLoop) error {
 
 	// Block on messages coming in from the bus instead of using the main loop
 	for {
-		msg := pipeline.GetPipelineBus().TimedPop(time.Duration(-1))
+		msg := pipeline.GetPipelineBus().TimedPop(gst.ClockTimeNone)
 		if msg == nil {
 			break
 		}

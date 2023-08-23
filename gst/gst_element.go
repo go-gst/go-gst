@@ -38,8 +38,8 @@ import (
 	"runtime"
 	"unsafe"
 
+	"github.com/go-gst/go-glib/glib"
 	gopointer "github.com/mattn/go-pointer"
-	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // Element is a Go wrapper around a GstElement.
@@ -86,6 +86,18 @@ func ElementLinkMany(elems ...*Element) error {
 		}
 	}
 	return nil
+}
+
+// ElementUnlinkMany is a go implementation of `gst_element_unlink_many` to compensate for
+// no variadic functions in cgo.
+func ElementUnlinkMany(elems ...*Element) {
+	for idx, elem := range elems {
+		if idx == 0 {
+			// skip the first one as the loop always links previous to current
+			continue
+		}
+		elems[idx-1].Unlink(elem)
+	}
 }
 
 // RegisterElement creates a new elementfactory capable of instantiating objects of the given GoElement
@@ -358,6 +370,10 @@ func (e *Element) Link(elem *Element) error {
 	return nil
 }
 
+func (e *Element) Unlink(elem *Element) {
+	C.gst_element_unlink((*C.GstElement)(e.Instance()), (*C.GstElement)(elem.Instance()))
+}
+
 // LinkFiltered wraps gst_element_link_filtered and link this element to the given one
 // using the provided sink caps.
 func (e *Element) LinkFiltered(elem *Element, filter *Caps) error {
@@ -499,15 +515,52 @@ func (e *Element) RemovePad(pad *Pad) bool {
 // For example, audiomixer has sink template, 'sink_%u', which is used for creating multiple sink pads on demand so that it performs mixing of audio streams by linking multiple upstream elements on it's sink pads created on demand.
 // This returns the request pad created on demand. Otherwise, it returns null if failed to create.
 func (e *Element) GetRequestPad(name string) *Pad {
-       cname := C.CString(name)
-       defer C.free(unsafe.Pointer(cname))
-       pad := C.gst_element_get_request_pad(e.Instance(), (*C.gchar)(unsafe.Pointer(cname)))
-       if pad == nil {
-               return nil
-       }
-       return FromGstPadUnsafeFull(unsafe.Pointer(pad))
+	cname := C.CString(name)
+	defer C.free(unsafe.Pointer(cname))
+	pad := C.gst_element_get_request_pad(e.Instance(), (*C.gchar)(unsafe.Pointer(cname)))
+	if pad == nil {
+		return nil
+	}
+	return FromGstPadUnsafeFull(unsafe.Pointer(pad))
 }
+
 // ReleaseRequestPad releases request pad
 func (e *Element) ReleaseRequestPad(pad *Pad) {
-       C.gst_element_release_request_pad(e.Instance(), pad.Instance())
+	C.gst_element_release_request_pad(e.Instance(), pad.Instance())
+}
+
+// Set the start time of an element. The start time of the element is the running time of the element
+// when it last went to the PAUSED state. In READY or after a flushing seek, it is set to 0.
+//
+// Toplevel elements like GstPipeline will manage the start_time and base_time on its children.
+// Setting the start_time to GST_CLOCK_TIME_NONE on such a toplevel element will disable the distribution of the base_time
+// to the children and can be useful if the application manages the base_time itself, for example if you want to synchronize
+// capture from multiple pipelines, and you can also ensure that the pipelines have the same clock.
+//
+// MT safe.
+func (e *Element) SetStartTime(startTime ClockTime) {
+	C.gst_element_set_start_time(e.Instance(), C.GstClockTime(startTime))
+}
+
+// Returns the start time of the element. The start time is the running time of the clock when this element was last put to PAUSED.
+// Usually the start_time is managed by a toplevel element such as GstPipeline.
+// MT safe.
+func (e *Element) GetStartTime() ClockTime {
+	ctime := C.gst_element_get_start_time(e.Instance())
+
+	return ClockTime(ctime)
+}
+
+// Set the base time of an element. The base time is the absolute time of the clock
+// when this element was last put to PLAYING. Subtracting the base time from the clock time gives the running time of the element.
+func (e *Element) SetBaseTime(startTime ClockTime) {
+	C.gst_element_set_base_time(e.Instance(), C.GstClockTime(startTime))
+}
+
+// Returns the base time of the element. The base time is the absolute time of the clock
+// when this element was last put to PLAYING. Subtracting the base time from the clock time gives the running time of the element.
+func (e *Element) GetBaseTime() ClockTime {
+	ctime := C.gst_element_get_base_time(e.Instance())
+
+	return ClockTime(ctime)
 }

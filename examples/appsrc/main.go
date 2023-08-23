@@ -7,11 +7,11 @@ import (
 	"image/color"
 	"time"
 
-	"github.com/tinyzimmer/go-glib/glib"
-	"github.com/tinyzimmer/go-gst/examples"
-	"github.com/tinyzimmer/go-gst/gst"
-	"github.com/tinyzimmer/go-gst/gst/app"
-	"github.com/tinyzimmer/go-gst/gst/video"
+	"github.com/go-gst/go-glib/glib"
+	"github.com/go-gst/go-gst/examples"
+	"github.com/go-gst/go-gst/gst"
+	"github.com/go-gst/go-gst/gst/app"
+	"github.com/go-gst/go-gst/gst/video"
 )
 
 const width = 320

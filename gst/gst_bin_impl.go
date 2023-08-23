@@ -26,7 +26,7 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/tinyzimmer/go-glib/glib"
+	"github.com/go-gst/go-glib/glib"
 )
 
 // ExtendsBin implements an Extendable object based on a GstBin.

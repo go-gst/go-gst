@@ -8,7 +8,7 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/tinyzimmer/go-gst/gst"
+	"github.com/go-gst/go-gst/gst"
 )
 
 // OrientationMethod represents the different video orientation methods.

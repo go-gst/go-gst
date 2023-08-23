@@ -7,7 +7,7 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/tinyzimmer/go-glib/glib"
+	"github.com/go-gst/go-glib/glib"
 )
 
 // Query is a go wrapper around a GstQuery.

@@ -18,7 +18,7 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/tinyzimmer/go-gst/gst"
+	"github.com/go-gst/go-gst/gst"
 )
 
 // ClipBuffer will return a new buffer clipped to the given segment. The given buffer is no longer valid.

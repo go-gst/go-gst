@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"unsafe"
 
-	"github.com/tinyzimmer/go-glib/glib"
+	"github.com/go-gst/go-glib/glib"
 )
 
 // NewElement creates a new element using the factory of the given name.
@@ -28,9 +28,51 @@ func NewElementWithName(factory string, name string) (*Element, error) {
 		elem = C.gst_element_factory_make((*C.gchar)(elemName), (*C.gchar)(cname))
 	}
 	if elem == nil {
-		return nil, fmt.Errorf("Could not create element: %s", factory)
+		return nil, fmt.Errorf("could not create element: %s", factory)
 	}
 	return wrapElement(glib.TransferNone(unsafe.Pointer(elem))), nil
+}
+
+// Create a new element of the type defined by the given elementfactory. The supplied list of properties, will be passed at object construction.
+//
+// this function is needed for gstreamer props that have the "Construct Only" flag, e.g.:
+// https://gstreamer.freedesktop.org/documentation/audio/gstaudioaggregator.html?gi-language=c#GstAudioAggregator:force-live
+func NewElementWithProperties(factory string, properties map[string]interface{}) (*Element, error) {
+	props := make([]*C.char, 0)
+	values := make([]C.GValue, 0)
+
+	for p, v := range properties {
+		cpropName := C.CString(p)
+		defer C.free(unsafe.Pointer(cpropName))
+
+		props = append(props, cpropName)
+
+		cValue, err := glib.GValue(v)
+
+		if err != nil {
+			return nil, err
+		}
+
+		values = append(values, *(*C.GValue)(cValue.Unsafe()))
+	}
+
+	cfactory := C.CString(factory)
+	defer C.free(unsafe.Pointer(cfactory))
+
+	n := C.uint(len(properties))
+
+	var elem *C.GstElement
+
+	if n > 0 {
+		elem = C.gst_element_factory_make_with_properties(cfactory, n, &props[0], &values[0])
+	} else {
+		elem = C.gst_element_factory_make_with_properties(cfactory, n, nil, nil)
+	}
+
+	if elem == nil {
+		return nil, fmt.Errorf("could not create element: %s", factory)
+	}
+	return wrapElement(glib.TransferFull(unsafe.Pointer(elem))), nil
 }
 
 // NewElementMany is a convenience wrapper around building many GstElements in a

@@ -6,7 +6,7 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/tinyzimmer/go-gst/gst"
+	"github.com/go-gst/go-gst/gst"
 )
 
 // NetAddressMeta can be used to store a network address in a GstBuffer so that it network elements

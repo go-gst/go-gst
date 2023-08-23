@@ -20,8 +20,8 @@ import (
 	"sync"
 	"unsafe"
 
+	"github.com/go-gst/go-glib/glib"
 	gopointer "github.com/mattn/go-pointer"
-	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // Structure is a go implementation of a C GstStructure.

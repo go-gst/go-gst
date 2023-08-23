@@ -1,12 +1,10 @@
-//go:generate gst-plugin-gen
-//
 // +plugin:Name=boilerplate
 // +plugin:Description=My plugin written in go
 // +plugin:Version=v0.0.1
 // +plugin:License=gst.LicenseLGPL
 // +plugin:Source=go-gst
 // +plugin:Package=examples
-// +plugin:Origin=https://github.com/tinyzimmer/go-gst
+// +plugin:Origin=https://github.com/go-gst/go-gst
 // +plugin:ReleaseDate=2021-01-18
 //
 // +element:Name=myelement
@@ -14,9 +12,10 @@
 // +element:Impl=myelement
 // +element:Subclass=gst.ExtendsElement
 //
+//go:generate gst-plugin-gen
 package main
 
-import "github.com/tinyzimmer/go-glib/glib"
+import "github.com/go-gst/go-glib/glib"
 
 func main() {}
 
