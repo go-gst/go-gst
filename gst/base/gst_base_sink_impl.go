@@ -85,7 +85,7 @@ type GstBaseSinkImpl interface {
 	// Called to get sink pad caps from the subclass
 	GetCaps(self *GstBaseSink, filter *gst.Caps) *gst.Caps
 	// Called to get the start and end times for synchronising the passed buffer to the clock
-	GetTimes(self *GstBaseSink, buffer *gst.Buffer) (start, end time.Duration)
+	GetTimes(self *GstBaseSink, buffer *gst.Buffer) (start, end time.Duration) // should this be a ClockTime?
 	// Called to prepare the buffer for render and preroll. This function is called before synchronization
 	// is performed.
 	Prepare(self *GstBaseSink, buffer *gst.Buffer) gst.FlowReturn
@@ -155,7 +155,7 @@ func (e *extendsBaseSink) InitClass(klass unsafe.Pointer, elem glib.GoObjectSubc
 	}
 
 	if _, ok := elem.(interface {
-		GetTimes(self *GstBaseSink, buffer *gst.Buffer) (start, end time.Duration)
+		GetTimes(self *GstBaseSink, buffer *gst.Buffer) (start, end time.Duration) // should this be a ClockTime?
 	}); ok {
 		C.setGstBaseSinkGetTimes(sinkClass)
 	}

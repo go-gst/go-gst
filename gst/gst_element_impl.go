@@ -55,7 +55,7 @@ type ElementImpl interface {
 	// ChangeState is called by SetState to perform an incremental state change.
 	ChangeState(*Element, StateChange) StateChangeReturn
 	// GetState should return the states of the element
-	GetState(self *Element, timeout time.Duration) (ret StateChangeReturn, current, pending State)
+	GetState(self *Element, timeout time.Duration) (ret StateChangeReturn, current, pending State) // should this also be a ClockTime?
 	// NoMorePads is called when there are no more pads on the element.
 	NoMorePads(*Element)
 	// PadAdded is called to add a pad to the element.

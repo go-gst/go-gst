@@ -24,7 +24,6 @@ import (
 	"io"
 	"io/ioutil"
 	"runtime"
-	"time"
 	"unsafe"
 
 	"github.com/go-gst/go-glib/glib"
@@ -183,9 +182,9 @@ func (b *Buffer) PresentationTimestamp() ClockTime {
 }
 
 // SetPresentationTimestamp sets the presentation timestamp on the buffer.
-func (b *Buffer) SetPresentationTimestamp(dur time.Duration) {
+func (b *Buffer) SetPresentationTimestamp(dur ClockTime) {
 	ins := b.Instance()
-	ins.pts = C.GstClockTime(dur.Nanoseconds())
+	ins.pts = C.GstClockTime(dur)
 }
 
 // DecodingTimestamp returns the decoding timestamp of the buffer, or a negative duration if not known
@@ -205,9 +204,9 @@ func (b *Buffer) Duration() ClockTime {
 }
 
 // SetDuration sets the duration on the buffer.
-func (b *Buffer) SetDuration(dur time.Duration) {
+func (b *Buffer) SetDuration(dur ClockTime) {
 	ins := b.Instance()
-	ins.duration = C.GstClockTime(dur.Nanoseconds())
+	ins.duration = C.GstClockTime(dur)
 }
 
 // Offset returns a media specific offset for the buffer data. For video frames, this is the frame
@@ -358,10 +357,10 @@ func (b *Buffer) CopyInto(dest *Buffer, flags BufferCopyFlags, offset, size int6
 
 // CopyRegion creates a sub-buffer from this one at offset and size. This sub-buffer uses the actual memory
 // space of the parent buffer. This function will copy the offset and timestamp fields when the offset is 0.
-// If not, they will be set to ClockTimeNone and BufferOffsetNone.
+// If not, they will be set to ClockTimeNone.
 //
 // If offset equals 0 and size equals the total size of buffer, the duration and offset end fields are also
-// copied. If not they will be set to ClockTimeNone and BufferOffsetNone.
+// copied. If not they will be set to ClockTimeNone.
 func (b *Buffer) CopyRegion(flags BufferCopyFlags, offset, size int64) *Buffer {
 	newbuf := C.gst_buffer_copy_region(
 		b.Instance(),

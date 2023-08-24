@@ -83,7 +83,7 @@ type CollectPadsClipFunc func(self *CollectPads, data *CollectData, inbuffer *gs
 // one pad. The function should return an integer less than zero when first timestamp is deemed older than the
 // second one. Zero if the timestamps are deemed equally old. Integer greater than zero when second timestamp
 // is deemed older than the first one.
-type CollectPadsCompareFunc func(self *CollectPads, data1 *CollectData, ts1 time.Duration, data2 *CollectData, ts2 time.Duration) int
+type CollectPadsCompareFunc func(self *CollectPads, data1 *CollectData, ts1 time.Duration, data2 *CollectData, ts2 time.Duration) int // should this be a ClockTime?
 
 // CollectPadsEventFunc is a function that will be called while processing an event. It takes ownership of the
 // event and is responsible for chaining up (to EventDefault) or dropping events (such typical cases being handled

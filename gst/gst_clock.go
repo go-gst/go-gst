@@ -39,12 +39,24 @@ func (ct ClockTime) String() string {
 	return fmt.Sprint(uint64(ct))
 }
 
+// interpret the clocktime as a duration, returns nil on ClockTimeNone
 func (ct ClockTime) AsDuration() *time.Duration {
 	if ct == ClockTimeNone {
 		return nil
 	}
 
 	dur := time.Duration(uint64(ct))
+
+	return &dur
+}
+
+// interpret the clocktime as a timestamp, returns nil on ClockTimeNone
+func (ct ClockTime) AsTimestamp() *time.Time {
+	if ct == ClockTimeNone {
+		return nil
+	}
+
+	dur := time.Unix(0, int64(ct))
 
 	return &dur
 }

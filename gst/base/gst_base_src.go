@@ -6,7 +6,6 @@ package base
 import "C"
 
 import (
-	"time"
 	"unsafe"
 
 	"github.com/go-gst/go-glib/glib"
@@ -90,12 +89,12 @@ func (g *GstBaseSrc) IsLive() bool { return gobool(C.gst_base_src_is_live(g.Inst
 // of the first buffer.
 //
 // This function is mostly used by subclasses.
-func (g *GstBaseSrc) QueryLatency() (ok, live bool, minLatency, maxLatency time.Duration) {
+func (g *GstBaseSrc) QueryLatency() (ok, live bool, minLatency, maxLatency gst.ClockTime) {
 	var glive C.gboolean
 	var gmin C.GstClockTime
 	var gmax C.GstClockTime
 	gok := C.gst_base_src_query_latency(g.Instance(), &glive, &gmin, &gmax)
-	return gobool(gok), gobool(glive), time.Duration(gmin), time.Duration(gmax)
+	return gobool(gok), gobool(glive), gst.ClockTime(gmin), gst.ClockTime(gmax)
 }
 
 // SetAsync configures async behaviour in src, no state change will block. The open, close, start, stop, play and

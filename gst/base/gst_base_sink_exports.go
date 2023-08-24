@@ -72,7 +72,7 @@ func goGstBaseSinkGetTimes(sink *C.GstBaseSink, buf *C.GstBuffer, start, end *C.
 	var retStart, retEnd time.Duration
 	glib.WithPointerTransferOriginal(unsafe.Pointer(sink), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
 		iface := goObject.(interface {
-			GetTimes(self *GstBaseSink, buffer *gst.Buffer) (start, end time.Duration)
+			GetTimes(self *GstBaseSink, buffer *gst.Buffer) (start, end time.Duration) // should this be a ClockTime?
 		})
 		retStart, retEnd = iface.GetTimes(ToGstBaseSink(gObject), gst.ToGstBuffer(unsafe.Pointer(buf)))
 	})

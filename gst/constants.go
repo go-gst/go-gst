@@ -38,11 +38,13 @@ const (
 // ClockTimeDiff is a datatype to hold a time difference, measured in nanoseconds.
 type ClockTimeDiff int64
 
-// ClockTimeNone means infinite timeout or an empty value
-var ClockTimeNone ClockTime = 0xffffffffffffffff // Ideally this would be set to C.GST_CLOCK_TIME_NONE but this causes issues on MacOS and Windows
+// convinience function to convert the diff to a time.Duration
+func (ctd ClockTimeDiff) AsDuration() time.Duration {
+	return time.Duration(ctd)
+}
 
-// BufferOffsetNone is a var for no-offset return results.
-var BufferOffsetNone time.Duration = time.Duration(-1)
+// ClockTimeNone means infinite timeout or an empty value
+const ClockTimeNone ClockTime = 0xffffffffffffffff // Ideally this would be set to C.GST_CLOCK_TIME_NONE but this causes issues on MacOS and Windows
 
 // ClockEntryType wraps GstClockEntryType
 type ClockEntryType int

@@ -76,7 +76,7 @@ func createPipeline() (*gst.Pipeline, error) {
 
 			// For each frame we produce, we set the timestamp when it should be displayed
 			// The autovideosink will use this information to display the frame at the right time.
-			buffer.SetPresentationTimestamp(time.Duration(i) * 500 * time.Millisecond)
+			buffer.SetPresentationTimestamp(gst.ClockTime(time.Duration(i) * 500 * time.Millisecond))
 
 			// Produce an image frame for this iteration.
 			pixels := produceImageFrame(palette[i])

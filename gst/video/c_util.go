@@ -22,13 +22,6 @@ func wrapGerr(gerr *C.GError) error {
 	return errors.New(C.GoString(gerr.message))
 }
 
-func durationToClockTime(d time.Duration) C.GstClockTime {
-	if d.Nanoseconds() < 0 {
-		return C.GstClockTime(gst.ClockTimeNone)
-	}
-	return C.GstClockTime(d.Nanoseconds())
-}
-
 func fromCoreCaps(caps *gst.Caps) *C.GstCaps {
 	return (*C.GstCaps)(unsafe.Pointer(caps.Instance()))
 }
