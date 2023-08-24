@@ -33,7 +33,7 @@ func wrapInfoFull(ptr *C.GstAudioInfo) *Info {
 }
 
 // Info is a structure used for describing audio properties. This can be filled in from caps
-// or coverted back to caps.
+// or converted back to caps.
 type Info struct {
 	ptr *C.GstAudioInfo
 }

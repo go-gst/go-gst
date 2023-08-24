@@ -288,7 +288,7 @@ func (f *fileSrc) Stop(self *base.GstBaseSrc) bool {
 }
 
 // Fill is called to fill a pre-allocated buffer with the data at offset up to the given size.
-// Since we declared that we are seekable, we need to support the provided offset not neccesarily matching
+// Since we declared that we are seekable, we need to support the provided offset not necessarily matching
 // where we currently are in the file. This is why we store the position in the file locally.
 func (f *fileSrc) Fill(self *base.GstBaseSrc, offset uint64, size uint, buffer *gst.Buffer) gst.FlowReturn {
 	if !f.state.started || f.state.file == nil {

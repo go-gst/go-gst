@@ -27,7 +27,7 @@ import (
 )
 
 // ConvertSampleCallback represents a callback from a video convert opereration.
-// It contains the converted sample or any error that ocurred.
+// It contains the converted sample or any error that occurred.
 type ConvertSampleCallback func(*gst.Sample, error)
 
 // ConvertSample converts a raw video buffer into the specified output caps.

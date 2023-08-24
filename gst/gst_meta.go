@@ -117,7 +117,7 @@ type MetaTransformCopy struct {
 	Size int64
 }
 
-// MetaInfoCallbackFuncs represents callback functions to includ when registering a new
+// MetaInfoCallbackFuncs represents callback functions to include when registering a new
 // meta type.
 type MetaInfoCallbackFuncs struct {
 	InitFunc      MetaInitFunc

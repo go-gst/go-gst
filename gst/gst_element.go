@@ -168,7 +168,7 @@ func (e *Element) ChangeState(transition StateChange) StateChangeReturn {
 
 // Connect connects to the given signal on this element, and applies f as the callback. The callback must
 // match the signature of the expected callback from the documentation. However, instead of specifying C types
-// for arguments specify the go-gst equivalent (e.g. *gst.Element for almost all GstElement derivitives).
+// for arguments specify the go-gst equivalent (e.g. *gst.Element for almost all GstElement derivatives).
 //
 // This and the Emit() method may get moved down the hierarchy to the Object level at some point, since
 func (e *Element) Connect(signal string, f interface{}) (glib.SignalHandle, error) {

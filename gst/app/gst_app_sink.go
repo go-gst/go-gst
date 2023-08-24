@@ -51,7 +51,7 @@ func NewAppSink() (*Sink, error) {
 }
 
 // SinkFromElement checks if the given element is an appsink and if so returns
-// a Sink interace.
+// a Sink interface.
 func SinkFromElement(elem *gst.Element) *Sink {
 	if appSink := C.toGstAppSink(elem.Unsafe()); appSink != nil {
 		return wrapAppSink(elem)

@@ -103,7 +103,7 @@ func (g *GstBaseSrc) QueryLatency() (ok, live bool, minLatency, maxLatency time.
 // Any blocking operation should be unblocked with the unlock vmethod.
 func (g *GstBaseSrc) SetAsync(async bool) { C.gst_base_src_set_async(g.Instance(), gboolean(async)) }
 
-// SetAutomaticEOS sets whether EOS should be automatically emmitted.
+// SetAutomaticEOS sets whether EOS should be automatically emitted.
 //
 // If automaticEOS is TRUE, src will automatically go EOS if a buffer after the total size is returned. By default
 // this is TRUE but sources that can't return an authoritative size and only know that they're EOS when trying to

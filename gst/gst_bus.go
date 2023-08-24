@@ -122,7 +122,7 @@ func (b *Bus) BlockPopMessage() *Message {
 
 // BusWatchFunc is a go representation of a GstBusFunc. It takes a message as a single argument
 // and returns a bool value for whether to continue processing messages or not. There is no need to unref
-// the message unless addtional references are placed on it during processing.
+// the message unless additional references are placed on it during processing.
 type BusWatchFunc func(msg *Message) bool
 
 // AddWatch adds a watch to the default MainContext for messages emitted on this bus.

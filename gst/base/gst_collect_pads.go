@@ -223,7 +223,7 @@ var InvalidRunningTime = time.Duration(C.G_MININT64)
 // Since 1.6, this clipping function also sets the DTS parameter of the GstCollectData structure. This version
 // of the running time DTS can be negative. InvalidRunningTime is used to indicate invalid value.
 //
-// data is the CollectData of the cooresponding pad and buf is the buffer being clipped.
+// data is the CollectData of the corresponding pad and buf is the buffer being clipped.
 func (c *CollectPads) ClipRunningTime(data *CollectData, buf *gst.Buffer) (ret gst.FlowReturn, outbuf *gst.Buffer) {
 	var goutbuf *C.GstBuffer
 	ret = gst.FlowReturn(C.gst_collect_pads_clip_running_time(
@@ -335,7 +335,7 @@ func (c *CollectPads) SetClipFunction(f CollectPadsClipFunc) {
 	)
 }
 
-// SetCompareFunction sets the timestamp comparisson function.
+// SetCompareFunction sets the timestamp comparison function.
 func (c *CollectPads) SetCompareFunction(f CollectPadsCompareFunc) {
 	c.funcMap.compareFunc = f
 	C.gst_collect_pads_set_compare_function(
