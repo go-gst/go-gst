@@ -7,11 +7,6 @@ import (
 	"unsafe"
 )
 
-// DeviceProviderFactory is a Go representation of a GstDeviceProviderFactory.
-type DeviceProviderFactory struct {
-	ptr *C.GstDeviceProviderFactory
-}
-
 func FindDeviceProviderByName(factoryName string) *DeviceProvider {
 	cFactoryName := C.CString(factoryName)
 	defer C.free(unsafe.Pointer(cFactoryName))
@@ -19,5 +14,5 @@ func FindDeviceProviderByName(factoryName string) *DeviceProvider {
 	if provider == nil {
 		return nil
 	}
-	return &DeviceProvider{ptr: provider}
+	return FromGstDeviceProviderUnsafeFull(unsafe.Pointer(provider))
 }

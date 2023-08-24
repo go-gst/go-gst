@@ -5,6 +5,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/go-gst/go-glib/glib"
 	"github.com/go-gst/go-gst/examples"
@@ -23,13 +24,16 @@ func runPipeline(loop *glib.MainLoop) error {
 	// uri := os.Args[1]
 	fmt.Println("Creating device monitor")
 
-	provider := gst.FindDeviceProviderByName("decklinkdeviceprovider")
+	// provider := gst.FindDeviceProviderByName("foo")
+	// fmt.Println("Created device provider", provider)
+
+	provider := gst.FindDeviceProviderByName("avfdeviceprovider")
 	fmt.Println("Created device provider", provider)
 
-	// if err != nil {
-	// 	fmt.Println("ERROR:", err)
-	// 	os.Exit(2)
-	// }
+	if provider == nil {
+		fmt.Println("No provider found")
+		os.Exit(2)
+	}
 
 	fmt.Println("Getting device provider bus")
 	bus := provider.GetBus()

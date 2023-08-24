@@ -10,13 +10,23 @@ import (
 )
 
 // DeviceProvider is a Go representation of a GstDeviceProvider.
-type DeviceProvider struct {
-	ptr *C.GstDeviceProvider
-	bus *Bus
+type DeviceProvider struct{ *Object }
+
+// FromGstDeviceProviderUnsafeNone wraps the given device with a ref and finalizer.
+func FromGstDeviceProviderUnsafeNone(deviceProvider unsafe.Pointer) *DeviceProvider {
+	return &DeviceProvider{wrapObject(glib.TransferNone(deviceProvider))}
 }
 
+// FromGstDeviceProviderUnsafeFull wraps the given device with a finalizer.
+func FromGstDeviceProviderUnsafeFull(deviceProvider unsafe.Pointer) *DeviceProvider {
+	return &DeviceProvider{wrapObject(glib.TransferFull(deviceProvider))}
+}
+
+// Instance returns the underlying GstDevice object.
+func (d *DeviceProvider) Instance() *C.GstDeviceProvider { return C.toGstDeviceProvider(d.Unsafe()) }
+
 func (d *DeviceProvider) GetDevices() []*Device {
-	glist := C.gst_device_provider_get_devices(d.ptr)
+	glist := C.gst_device_provider_get_devices((*C.GstDeviceProvider)(d.Instance()))
 	if glist == nil {
 		return nil
 	}
@@ -31,17 +41,15 @@ func (d *DeviceProvider) GetDevices() []*Device {
 
 // GetBus returns the message bus for this pipeline.
 func (d *DeviceProvider) GetBus() *Bus {
-	if d.bus == nil {
-		cBus := C.gst_device_provider_get_bus(d.ptr)
-		d.bus = FromGstBusUnsafeFull(unsafe.Pointer(cBus))
-	}
-	return d.bus
+	cBus := C.gst_device_provider_get_bus((*C.GstDeviceProvider)(d.Instance()))
+	bus := FromGstBusUnsafeFull(unsafe.Pointer(cBus))
+	return bus
 }
 
 func (d *DeviceProvider) Start() bool {
-	return gobool(C.gst_device_provider_start(d.ptr))
+	return gobool(C.gst_device_provider_start((*C.GstDeviceProvider)(d.Instance())))
 }
 
 func (d *DeviceProvider) Stop() {
-	C.gst_device_provider_stop(d.ptr)
+	C.gst_device_provider_stop((*C.GstDeviceProvider)(d.Instance()))
 }

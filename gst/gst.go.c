@@ -15,6 +15,7 @@ GstChildProxy *                  toGstChildProxy                  (void *p) { re
 GstClock *                       toGstClock                       (void *p) { return (GST_CLOCK(p)); }
 GstContext *                     toGstContext                     (void *p) { return (GST_CONTEXT_CAST(p)); }
 GstDevice *                      toGstDevice                      (void *p) { return (GST_DEVICE_CAST(p)); }
+GstDeviceProvider *              toGstDeviceProvider              (void *p) { return (GST_DEVICE_PROVIDER_CAST(p)); }
 GstElementFactory *              toGstElementFactory              (void *p) { return (GST_ELEMENT_FACTORY(p)); }
 GstElementClass *                toGstElementClass                (void *p) { return (GST_ELEMENT_CLASS(p)); }
 GstElement *                     toGstElement                     (void *p) { return (GST_ELEMENT(p)); }

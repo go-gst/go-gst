@@ -31,6 +31,7 @@ extern GstChildProxy *                  toGstChildProxy                  (void *
 extern GstClock *                       toGstClock                       (void *p);
 extern GstContext *                     toGstContext                     (void *p);
 extern GstDevice *                      toGstDevice                      (void *p);
+extern GstDeviceProvider *              toGstDeviceProvider              (void *p);
 extern GstElementFactory *              toGstElementFactory              (void *p);
 extern GstElementClass *                toGstElementClass                (void *p);
 extern GstElement *                     toGstElement                     (void *p);
