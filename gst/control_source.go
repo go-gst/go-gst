@@ -41,5 +41,5 @@ func (cs *InterpolationControlSource) SetInterpolationMode(mode InterpolationMod
 }
 
 func (cs *InterpolationControlSource) SetTimedValue(time ClockTime, value float64) bool {
-	return gobool(C.gst_timed_value_control_source_set(C.toGstTimedValueControlSource(cs.Unsafe()), C.ulong(time), C.double(value)))
+	return gobool(C.gst_timed_value_control_source_set(C.toGstTimedValueControlSource(cs.Unsafe()), C.GstClockTime(time), C.double(value)))
 }

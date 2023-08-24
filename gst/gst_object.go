@@ -37,7 +37,7 @@ func (o *Object) GObject() *glib.Object { return o.InitiallyUnowned.Object }
 func (o *Object) GetName() string {
 	cName := C.gst_object_get_name((*C.GstObject)(o.Instance()))
 	//cName could be NULL which needs to be freed using
-	defer C.g_free(unsafe.Pointer(cName))
+	defer C.g_free((C.gpointer)(unsafe.Pointer(cName)))
 	return C.GoString(cName)
 }
 

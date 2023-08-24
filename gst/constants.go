@@ -39,7 +39,7 @@ const (
 type ClockTimeDiff int64
 
 // ClockTimeNone means infinite timeout or an empty value
-var ClockTimeNone ClockTime = C.GST_CLOCK_TIME_NONE
+var ClockTimeNone ClockTime = 0xffffffffffffffff // Ideally this would be set to C.GST_CLOCK_TIME_NONE but this causes issues on MacOS and Windows
 
 // BufferOffsetNone is a var for no-offset return results.
 var BufferOffsetNone time.Duration = time.Duration(-1)
