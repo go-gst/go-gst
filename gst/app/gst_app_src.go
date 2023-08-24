@@ -55,7 +55,7 @@ func NewAppSrc() (*Source, error) {
 }
 
 // SrcFromElement checks if the given element is an appsrc and if so returns
-// a Source interace.
+// a Source interface.
 func SrcFromElement(elem *gst.Element) *Source {
 	if appSrc := C.toGstAppSrc(elem.Unsafe()); appSrc != nil {
 		return wrapAppSrc(elem)

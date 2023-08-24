@@ -65,7 +65,7 @@ func NewFlushStopEvent(resetTime bool) *Event {
 }
 
 // NewGapEvent creates a new GAP event. A gap event can be thought of as conceptually equivalent to a buffer to signal that there is no data for a
-//certain amount of time. This is useful to signal a gap to downstream elements which may wait for data, such as muxers or mixers or overlays,
+// certain amount of time. This is useful to signal a gap to downstream elements which may wait for data, such as muxers or mixers or overlays,
 // especially for sparse streams such as subtitle streams.
 func NewGapEvent(timestamp, duration time.Duration) *Event {
 	return FromGstEventUnsafeFull(unsafe.Pointer(C.gst_event_new_gap(
