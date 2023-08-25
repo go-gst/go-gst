@@ -4,9 +4,6 @@ on:
   pull_request:
     branches:
       - main
-  push:
-    branches:
-      - add-github-action-build-and-lint
 
 jobs:
   matrix:
@@ -25,7 +22,7 @@ jobs:
           go-version: '^1.21.0'
       - name: checkout
         uses: actions/checkout@v3
-      - name: build an example
+      - name: build the appsink
         run: cd examples/appsink && go build -x .
 
 
