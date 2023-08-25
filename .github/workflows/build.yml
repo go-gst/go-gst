@@ -17,7 +17,7 @@ jobs:
     steps:
       - name: Setup GStreamer
         id:   setup_gstreamer
-        uses: blinemedical/setup-gstreamer
+        uses: blinemedical/setup-gstreamer@45324555100927b587d390d8cf3940f91fd3bdc9
         with:
           version: 1.22.0
       - name: checkout
