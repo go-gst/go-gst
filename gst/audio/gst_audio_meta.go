@@ -8,7 +8,7 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/tinyzimmer/go-glib/glib"
+	"github.com/go-gst/go-glib/glib"
 	"github.com/go-gst/go-gst/gst"
 )
 
@@ -35,5 +35,5 @@ func BufferAddAudioMeta(buffer *gst.Buffer, info *Info, samples int, offsets []i
 		info.ptr,
 		C.gsize(samples),
 		offsets,
-	))))
+	)))
 }
