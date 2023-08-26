@@ -8,7 +8,7 @@ import (
 	"github.com/go-gst/go-gst/gst"
 )
 
-func start() (error) {
+func start() error {
 	gst.Init(nil)
 
 	registry := gst.GetRegistry()
