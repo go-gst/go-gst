@@ -507,5 +507,5 @@ func marshalQuery(p uintptr) (interface{}, error) {
 
 func marshalSample(p uintptr) (interface{}, error) {
 	c := C.getSampleValue(toGValue(p))
-	return wrapSample(c), nil
+	return FromGstSampleUnsafeNone(unsafe.Pointer(c)), nil
 }
