@@ -17,8 +17,8 @@ import (
 	"runtime"
 	"unsafe"
 
+	"github.com/go-gst/go-glib/glib"
 	gopointer "github.com/mattn/go-pointer"
-	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // TypeCaps is the static Glib Type for a GstCaps.
@@ -67,27 +67,24 @@ type CapsMapFunc func(features *CapsFeatures, structure *Structure) bool
 
 // NewAnyCaps creates a new caps that indicate compatibility with any format.
 //
-//   caps := gst.NewAnyCaps()
-//   fmt.Println(caps.IsAny())
-//   // true
-//
+//	caps := gst.NewAnyCaps()
+//	fmt.Println(caps.IsAny())
+//	// true
 func NewAnyCaps() *Caps { return FromGstCapsUnsafeFull(unsafe.Pointer(C.gst_caps_new_any())) }
 
 // NewEmptyCaps creates a new empty caps object. This is essentially the opposite of
 // NewAnyCamps.
 //
-//   caps := gst.NewEmptyCaps()
-//   fmt.Println(caps.IsEmpty())
-//   // true
-//
+//	caps := gst.NewEmptyCaps()
+//	fmt.Println(caps.IsEmpty())
+//	// true
 func NewEmptyCaps() *Caps { return FromGstCapsUnsafeFull(unsafe.Pointer(C.gst_caps_new_empty())) }
 
 // NewEmptySimpleCaps returns a new empty caps object with the given media format.
 //
-//   caps := gst.NewEmptySimpleCaps("audio/x-raw")
-//   fmt.Println(caps.String())
-//   // audio/x-raw
-//
+//	caps := gst.NewEmptySimpleCaps("audio/x-raw")
+//	fmt.Println(caps.String())
+//	// audio/x-raw
 func NewEmptySimpleCaps(mediaFormat string) *Caps {
 	cFormat := C.CString(mediaFormat)
 	defer C.free(unsafe.Pointer(cFormat))
@@ -106,10 +103,9 @@ func NewFullCaps(structures ...*Structure) *Caps {
 
 // NewCapsFromString creates a new Caps object from the given string.
 //
-//   caps := gst.NewCapsFromString("audio/x-raw, channels=2")
-//   fmt.Println(caps.String())
-//   // audio/x-raw, channels=(int)2
-//
+//	caps := gst.NewCapsFromString("audio/x-raw, channels=2")
+//	fmt.Println(caps.String())
+//	// audio/x-raw, channels=(int)2
 func NewCapsFromString(capsStr string) *Caps {
 	cStr := C.CString(capsStr)
 	defer C.free(unsafe.Pointer(cStr))
@@ -206,21 +202,20 @@ func (c *Caps) CopyNth(n uint) *Caps {
 // In contrast to ForEach, the function may modify the structure and features. In contrast to MapInPlace,
 // the structure and features are removed from the caps if FALSE is returned from the function. The caps must be mutable.
 //
-//   caps := gst.NewCapsFromString("audio/x-raw")
+//	caps := gst.NewCapsFromString("audio/x-raw")
 //
-//   caps.FilterAndMapInPlace(func(features *gst.CapsFeatures, structure *gst.Structure) bool {
-//       if features.Contains(gst.CapsFeatureMemorySystemMemory) {
-//           fmt.Println("Removing system memory feature")
-//           return false
-//       }
-//       return true
-//   })
+//	caps.FilterAndMapInPlace(func(features *gst.CapsFeatures, structure *gst.Structure) bool {
+//	    if features.Contains(gst.CapsFeatureMemorySystemMemory) {
+//	        fmt.Println("Removing system memory feature")
+//	        return false
+//	    }
+//	    return true
+//	})
 //
-//   fmt.Println(caps.IsEmpty())
+//	fmt.Println(caps.IsEmpty())
 //
-//   // Removing system memory feature
-//   // true
-//
+//	// Removing system memory feature
+//	// true
 func (c *Caps) FilterAndMapInPlace(f CapsMapFunc) {
 	ptr := gopointer.Save(f)
 	defer gopointer.Unref(ptr)
@@ -248,15 +243,14 @@ func (c *Caps) Fixate() *Caps {
 // ForEach calls the provided function once for each structure and caps feature in the GstCaps. The function must not
 // modify the fields. There is an unresolved bug in this function currently and it is better to use MapInPlace instead.
 //
-//   caps := gst.NewCapsFromString("audio/x-raw")
+//	caps := gst.NewCapsFromString("audio/x-raw")
 //
-//   caps.ForEach(func(features *gst.CapsFeatures, structure *gst.Structure) bool {
-//       fmt.Println(structure)
-//       return true
-//   })
+//	caps.ForEach(func(features *gst.CapsFeatures, structure *gst.Structure) bool {
+//	    fmt.Println(structure)
+//	    return true
+//	})
 //
-//   // audio/x-raw;
-//
+//	// audio/x-raw;
 func (c *Caps) ForEach(f CapsMapFunc) bool {
 	ptr := gopointer.Save(f)
 	defer gopointer.Unref(ptr)

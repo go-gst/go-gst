@@ -9,8 +9,8 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/tinyzimmer/go-glib/glib"
-	"github.com/tinyzimmer/go-gst/gst"
+	"github.com/go-gst/go-glib/glib"
+	"github.com/go-gst/go-gst/gst"
 )
 
 func init() {
@@ -83,16 +83,10 @@ func wrapDiscovererFull(d *C.GstDiscoverer) *Discoverer {
 }
 
 // NewDiscoverer creates a new Discoverer with the provided timeout.
-func NewDiscoverer(timeout time.Duration) (*Discoverer, error) {
+func NewDiscoverer(timeout gst.ClockTime) (*Discoverer, error) {
 	initPbUtils()
 	var gerr *C.GError
-	var cTime C.GstClockTime
-	if timeout < 0 {
-		cTime = C.GstClockTime(gst.ClockTimeNone)
-	} else {
-		cTime = C.GstClockTime(timeout.Nanoseconds())
-	}
-	ret := C.gst_discoverer_new(C.GstClockTime(cTime), &gerr)
+	ret := C.gst_discoverer_new(C.GstClockTime(timeout), &gerr)
 	if gerr != nil {
 		return nil, wrapGerr(gerr)
 	}
@@ -151,10 +145,10 @@ func (d *DiscovererInfo) GetContainerStreams() []*DiscovererContainerInfo {
 	return glistToContainerInfoSlice(gList)
 }
 
-// GetDuration returns the durartion of the stream.
-func (d *DiscovererInfo) GetDuration() time.Duration {
+// GetDuration returns the duration of the stream.
+func (d *DiscovererInfo) GetDuration() gst.ClockTime {
 	dur := C.gst_discoverer_info_get_duration(d.Instance())
-	return time.Duration(uint64(dur)) * time.Nanosecond
+	return gst.ClockTime(uint64(dur))
 }
 
 // GetLive returns whether this is a live stream.

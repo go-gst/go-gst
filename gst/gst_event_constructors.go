@@ -4,7 +4,6 @@ package gst
 import "C"
 
 import (
-	"time"
 	"unsafe"
 )
 
@@ -65,12 +64,12 @@ func NewFlushStopEvent(resetTime bool) *Event {
 }
 
 // NewGapEvent creates a new GAP event. A gap event can be thought of as conceptually equivalent to a buffer to signal that there is no data for a
-//certain amount of time. This is useful to signal a gap to downstream elements which may wait for data, such as muxers or mixers or overlays,
+// certain amount of time. This is useful to signal a gap to downstream elements which may wait for data, such as muxers or mixers or overlays,
 // especially for sparse streams such as subtitle streams.
-func NewGapEvent(timestamp, duration time.Duration) *Event {
+func NewGapEvent(timestamp, duration ClockTime) *Event {
 	return FromGstEventUnsafeFull(unsafe.Pointer(C.gst_event_new_gap(
-		C.GstClockTime(timestamp.Nanoseconds()),
-		C.GstClockTime(duration.Nanoseconds()),
+		C.GstClockTime(timestamp),
+		C.GstClockTime(duration),
 	)))
 }
 
@@ -105,9 +104,9 @@ func NewGapEvent(timestamp, duration time.Duration) *Event {
 // running time before synchronising against the clock.
 //
 // The latency is mostly used in live sinks and is always expressed in the time format.
-func NewLatencyEvent(latency time.Duration) *Event {
+func NewLatencyEvent(latency ClockTime) *Event {
 	return FromGstEventUnsafeFull(unsafe.Pointer(C.gst_event_new_latency(
-		C.GstClockTime(latency.Nanoseconds()),
+		C.GstClockTime(latency),
 	)))
 }
 
@@ -165,12 +164,12 @@ func NewProtectionEvent(systemID string, buffer *Buffer, origin string) *Event {
 // late in the sink as well. A (negative) diff value so that timestamp + diff would yield a result smaller than 0 is not allowed.
 //
 // The application can use general event probes to intercept the QoS event and implement custom application specific QoS handling.
-func NewQOSEvent(qType QOSType, proportion float64, diff ClockTimeDiff, timestamp time.Duration) *Event {
+func NewQOSEvent(qType QOSType, proportion float64, diff ClockTimeDiff, timestamp ClockTime) *Event {
 	return FromGstEventUnsafeFull(unsafe.Pointer(C.gst_event_new_qos(
 		C.GstQOSType(qType),
 		C.gdouble(proportion),
 		C.GstClockTimeDiff(diff),
-		C.GstClockTime(timestamp.Nanoseconds()),
+		C.GstClockTime(timestamp),
 	)))
 }
 

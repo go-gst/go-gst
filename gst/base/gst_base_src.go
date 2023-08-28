@@ -6,11 +6,10 @@ package base
 import "C"
 
 import (
-	"time"
 	"unsafe"
 
-	"github.com/tinyzimmer/go-glib/glib"
-	"github.com/tinyzimmer/go-gst/gst"
+	"github.com/go-gst/go-glib/glib"
+	"github.com/go-gst/go-gst/gst"
 )
 
 // GstBaseSrc represents a GstBaseSrc.
@@ -90,12 +89,12 @@ func (g *GstBaseSrc) IsLive() bool { return gobool(C.gst_base_src_is_live(g.Inst
 // of the first buffer.
 //
 // This function is mostly used by subclasses.
-func (g *GstBaseSrc) QueryLatency() (ok, live bool, minLatency, maxLatency time.Duration) {
+func (g *GstBaseSrc) QueryLatency() (ok, live bool, minLatency, maxLatency gst.ClockTime) {
 	var glive C.gboolean
 	var gmin C.GstClockTime
 	var gmax C.GstClockTime
 	gok := C.gst_base_src_query_latency(g.Instance(), &glive, &gmin, &gmax)
-	return gobool(gok), gobool(glive), time.Duration(gmin), time.Duration(gmax)
+	return gobool(gok), gobool(glive), gst.ClockTime(gmin), gst.ClockTime(gmax)
 }
 
 // SetAsync configures async behaviour in src, no state change will block. The open, close, start, stop, play and
@@ -103,7 +102,7 @@ func (g *GstBaseSrc) QueryLatency() (ok, live bool, minLatency, maxLatency time.
 // Any blocking operation should be unblocked with the unlock vmethod.
 func (g *GstBaseSrc) SetAsync(async bool) { C.gst_base_src_set_async(g.Instance(), gboolean(async)) }
 
-// SetAutomaticEOS sets whether EOS should be automatically emmitted.
+// SetAutomaticEOS sets whether EOS should be automatically emitted.
 //
 // If automaticEOS is TRUE, src will automatically go EOS if a buffer after the total size is returned. By default
 // this is TRUE but sources that can't return an authoritative size and only know that they're EOS when trying to

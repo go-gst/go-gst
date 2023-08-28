@@ -7,11 +7,11 @@ import (
 	"image/color"
 	"time"
 
-	"github.com/tinyzimmer/go-glib/glib"
-	"github.com/tinyzimmer/go-gst/examples"
-	"github.com/tinyzimmer/go-gst/gst"
-	"github.com/tinyzimmer/go-gst/gst/app"
-	"github.com/tinyzimmer/go-gst/gst/video"
+	"github.com/go-gst/go-glib/glib"
+	"github.com/go-gst/go-gst/examples"
+	"github.com/go-gst/go-gst/gst"
+	"github.com/go-gst/go-gst/gst/app"
+	"github.com/go-gst/go-gst/gst/video"
 )
 
 const width = 320
@@ -76,7 +76,7 @@ func createPipeline() (*gst.Pipeline, error) {
 
 			// For each frame we produce, we set the timestamp when it should be displayed
 			// The autovideosink will use this information to display the frame at the right time.
-			buffer.SetPresentationTimestamp(time.Duration(i) * 500 * time.Millisecond)
+			buffer.SetPresentationTimestamp(gst.ClockTime(time.Duration(i) * 500 * time.Millisecond))
 
 			// Produce an image frame for this iteration.
 			pixels := produceImageFrame(palette[i])

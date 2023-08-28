@@ -3,11 +3,8 @@
 //
 // In order to build the plugin for use by GStreamer, you can do the following:
 //
-//     $ go generate
-//     $ go build -o libgstwebsocketsrc.so -buildmode c-shared .
-//
-//
-//go:generate gst-plugin-gen
+//	$ go generate
+//	$ go build -o libgstwebsocketsrc.so -buildmode c-shared .
 //
 // +plugin:Name=websocketsrc
 // +plugin:Description=GStreamer Websocket Source
@@ -15,13 +12,15 @@
 // +plugin:License=gst.LicenseLGPL
 // +plugin:Source=go-gst
 // +plugin:Package=examples
-// +plugin:Origin=https://github.com/tinyzimmer/go-gst
+// +plugin:Origin=https://github.com/go-gst/go-gst
 // +plugin:ReleaseDate=2021-01-10
 //
 // +element:Name=websocketsrc
 // +element:Rank=gst.RankNone
 // +element:Impl=websocketSrc
 // +element:Subclass=gst.ExtendsElement
+//
+//go:generate gst-plugin-gen
 package main
 
 import (
@@ -31,8 +30,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/tinyzimmer/go-glib/glib"
-	"github.com/tinyzimmer/go-gst/gst"
+	"github.com/go-gst/go-glib/glib"
+	"github.com/go-gst/go-gst/gst"
 	"golang.org/x/net/websocket"
 )
 

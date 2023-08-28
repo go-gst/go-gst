@@ -18,8 +18,8 @@ import (
 	"time"
 	"unsafe"
 
+	"github.com/go-gst/go-glib/glib"
 	gopointer "github.com/mattn/go-pointer"
-	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // TagList is a go wrapper around a GstTagList. For now, until the rest of the methods are
@@ -47,10 +47,9 @@ func FromGstTagListUnsafeFull(tags unsafe.Pointer) *TagList {
 
 // NewEmptyTagList returns a new empty tag list.
 //
-//   tagList := gst.NewEmptyTagList()
-//   fmt.Println(tagList.IsEmpty())
-//   // true
-//
+//	tagList := gst.NewEmptyTagList()
+//	fmt.Println(tagList.IsEmpty())
+//	// true
 func NewEmptyTagList() *TagList {
 	return FromGstTagListUnsafeFull(unsafe.Pointer(C.gst_tag_list_new_empty()))
 }
@@ -83,12 +82,11 @@ func (t *TagList) Unref() { C.gst_tag_list_unref(t.Instance()) }
 // AddValue adds a value to a given tag using the given merge mode. If the value provided
 // cannot be coerced to a GValue, nothing will happen.
 //
-//   tagList := gst.NewEmptyTagList()
-//   tagList.AddValue(gst.TagMergeAppend, gst.TagAlbum, "MyNewAlbum")
-//   myAlbum, _ := tagList.GetString(gst.TagAlbum)
-//   fmt.Println(myAlbum)
-//   // MyNewAlbum
-//
+//	tagList := gst.NewEmptyTagList()
+//	tagList.AddValue(gst.TagMergeAppend, gst.TagAlbum, "MyNewAlbum")
+//	myAlbum, _ := tagList.GetString(gst.TagAlbum)
+//	fmt.Println(myAlbum)
+//	// MyNewAlbum
 func (t *TagList) AddValue(mergeMode TagMergeMode, tag Tag, value interface{}) {
 	ctag := C.CString(string(tag))
 	defer C.free(unsafe.Pointer(ctag))
@@ -129,19 +127,18 @@ type TagListForEachFunc func(tagList *TagList, tag Tag)
 // ForEach calls the given function for each tag inside the tag list. Note that if there is no tag,
 // the function won't be called at all.
 //
-//   tagList := gst.NewEmptyTagList()
+//	tagList := gst.NewEmptyTagList()
 //
-//   tagList.AddValue(gst.TagMergeAppend, gst.TagAlbumArtist, "tinyzimmer")
-//   tagList.AddValue(gst.TagMergeAppend, gst.TagAlbum, "GstreamerInGo")
+//	tagList.AddValue(gst.TagMergeAppend, gst.TagAlbumArtist, "tinyzimmer")
+//	tagList.AddValue(gst.TagMergeAppend, gst.TagAlbum, "GstreamerInGo")
 //
-//   tagList.ForEach(func(_ *gst.TagList, tag gst.Tag) {
-//       val, _ := tagList.GetString(tag)
-//       fmt.Println(tag, ":", val)
-//   })
+//	tagList.ForEach(func(_ *gst.TagList, tag gst.Tag) {
+//	    val, _ := tagList.GetString(tag)
+//	    fmt.Println(tag, ":", val)
+//	})
 //
-//   // album-artist : tinyzimmer
-//   // album : GstreamerInGo
-//
+//	// album-artist : tinyzimmer
+//	// album : GstreamerInGo
 func (t *TagList) ForEach(f TagListForEachFunc) {
 	ptr := gopointer.Save(f)
 	defer gopointer.Unref(ptr)

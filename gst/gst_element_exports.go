@@ -9,7 +9,7 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/tinyzimmer/go-glib/glib"
+	"github.com/go-gst/go-glib/glib"
 )
 
 //export goGstElementClassChangeState
@@ -29,7 +29,7 @@ func goGstElementClassGetState(elem *C.GstElement, state, pending *C.GstState, t
 	var ret StateChangeReturn
 	glib.WithPointerTransferOriginal(unsafe.Pointer(elem), func(gobj *glib.Object, obj glib.GoObjectSubclass) {
 		iface := obj.(interface {
-			GetState(*Element, time.Duration) (ret StateChangeReturn, current, pending State)
+			GetState(*Element, time.Duration) (ret StateChangeReturn, current, pending State) // should this be a ClockTime?
 		})
 		var cur, pend State
 		ret, cur, pend = iface.GetState(wrapElement(gobj), time.Duration(timeout)*time.Nanosecond)

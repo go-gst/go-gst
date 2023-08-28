@@ -16,6 +16,7 @@ const (
 	VersionMajor Version = C.GST_VERSION_MAJOR
 	// VersionMinor is the minor version number of the GStreamer core.
 	VersionMinor Version = C.GST_VERSION_MINOR
+	VersionMicro Version = C.GST_VERSION_MICRO
 )
 
 // License represents a type of license used on a plugin.
@@ -37,18 +38,13 @@ const (
 // ClockTimeDiff is a datatype to hold a time difference, measured in nanoseconds.
 type ClockTimeDiff int64
 
+// convinience function to convert the diff to a time.Duration
+func (ctd ClockTimeDiff) AsDuration() time.Duration {
+	return time.Duration(ctd)
+}
+
 // ClockTimeNone means infinite timeout or an empty value
-var ClockTimeNone time.Duration = time.Duration(-1)
-
-// BufferOffsetNone is a var for no-offset return results.
-var BufferOffsetNone time.Duration = time.Duration(-1)
-
-var (
-	// ClockTimeNone means infinite timeout (unsigned representation of -1) or an otherwise unknown value.
-	gstClockTimeNone C.GstClockTime = 0xffffffffffffffff
-	// // BufferOffsetNone is a constant for no-offset return results.
-	// gstBufferOffsetNone C.GstClockTime = 0xffffffffffffffff
-)
+const ClockTimeNone ClockTime = 0xffffffffffffffff // Ideally this would be set to C.GST_CLOCK_TIME_NONE but this causes issues on MacOS and Windows
 
 // ClockEntryType wraps GstClockEntryType
 type ClockEntryType int
@@ -494,6 +490,16 @@ const (
 	PadProbeTypeQueryBoth       PadProbeType = C.GST_PAD_PROBE_TYPE_QUERY_BOTH       // (1536) – probe upstream and downstream queries
 	PadProbeTypeAllBoth         PadProbeType = C.GST_PAD_PROBE_TYPE_ALL_BOTH         // (1776) – probe upstream events and queries and downstream buffers, buffer lists, events and queries
 	PadProbeTypeScheduling      PadProbeType = C.GST_PAD_PROBE_TYPE_SCHEDULING       // (12288) – probe push and pull
+)
+
+// Rank casts GstRank
+type Rank uint
+
+const (
+	RankNone      Rank = C.GST_RANK_NONE      // (0) - will be chosen last or not at all
+	RankMarginal  Rank = C.GST_RANK_MARGINAL  // (64) – unlikely to be chosen
+	RankSecondary Rank = C.GST_RANK_SECONDARY // (128) – likely to be chosen
+	RankPrimary   Rank = C.GST_RANK_PRIMARY   // (256) – will be chosen first
 )
 
 // SchedulingFlags casts GstSchedulingFlags

@@ -10,11 +10,10 @@ package gst
 import "C"
 
 import (
-	"time"
 	"unsafe"
 
+	"github.com/go-gst/go-glib/glib"
 	gopointer "github.com/mattn/go-pointer"
-	"github.com/tinyzimmer/go-glib/glib"
 )
 
 //export goElementCallAsync
@@ -224,7 +223,7 @@ func goClockCb(gclock *C.GstClock, clockTime C.GstClockTime, clockID C.GstClockI
 	}
 
 	clock := wrapClock(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(gclock))})
-	return gboolean(cb(clock, time.Duration(clockTime)))
+	return gboolean(cb(clock, ClockTime(clockTime)))
 }
 
 //export goPluginInit

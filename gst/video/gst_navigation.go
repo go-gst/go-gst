@@ -13,7 +13,7 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/tinyzimmer/go-gst/gst"
+	"github.com/go-gst/go-gst/gst"
 )
 
 // NavigationCommand is a set of commands that may be issued to an element providing the
@@ -115,20 +115,18 @@ mouse button presses, cursor motion and key presses. The associated library also
 methods for parsing received events, and for sending and receiving navigation related bus
 events. One main use-case is DVD menu navigation.
 
+	  The main parts of the API are:
 
-  The main parts of the API are:
+		- The Navigation interface, implemented by elements which provide an application with
+	      the ability to create and inject navigation events into the pipeline.
 
-	- The Navigation interface, implemented by elements which provide an application with
-      the ability to create and inject navigation events into the pipeline.
+		- Navigation event handling API. Navigation events are created in response to calls
+		  on a Navigation interface implementation, and sent in the pipeline. Upstream elements
+	      can use the navigation event API functions to parse the contents of received messages.
 
-	- Navigation event handling API. Navigation events are created in response to calls
-	  on a Navigation interface implementation, and sent in the pipeline. Upstream elements
-      can use the navigation event API functions to parse the contents of received messages.
-
-	- Navigation message handling API. Navigation messages may be sent on the message bus
-	  to inform applications of navigation related changes in the pipeline, such as the mouse
-      moving over a clickable region, or the set of available angles changing.
-
+		- Navigation message handling API. Navigation messages may be sent on the message bus
+		  to inform applications of navigation related changes in the pipeline, such as the mouse
+	      moving over a clickable region, or the set of available angles changing.
 
 The Navigation message functions provide functions for creating and parsing custom bus
 messages for signaling GstNavigation changes.

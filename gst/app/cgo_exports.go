@@ -5,9 +5,9 @@ import "C"
 import (
 	"unsafe"
 
+	"github.com/go-gst/go-glib/glib"
+	"github.com/go-gst/go-gst/gst"
 	gopointer "github.com/mattn/go-pointer"
-	"github.com/tinyzimmer/go-glib/glib"
-	"github.com/tinyzimmer/go-gst/gst"
 )
 
 func getSinkCbsFromPtr(userData C.gpointer) *SinkCallbacks {

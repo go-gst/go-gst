@@ -13,11 +13,10 @@ gboolean baseSinkParentEvent (GstBaseSink * sink, GstEvent * event)
 import "C"
 
 import (
-	"time"
 	"unsafe"
 
-	"github.com/tinyzimmer/go-glib/glib"
-	"github.com/tinyzimmer/go-gst/gst"
+	"github.com/go-gst/go-glib/glib"
+	"github.com/go-gst/go-gst/gst"
 )
 
 // GstBaseSink represents a GstBaseSink.
@@ -97,8 +96,8 @@ func (g *GstBaseSink) GetLastSample() *gst.Sample {
 }
 
 // GetLatency gets the currently configured latency.
-func (g *GstBaseSink) GetLatency() time.Duration {
-	return time.Duration(C.gst_base_sink_get_latency(g.Instance()))
+func (g *GstBaseSink) GetLatency() gst.ClockTime {
+	return gst.ClockTime(C.gst_base_sink_get_latency(g.Instance()))
 }
 
 // GetMaxBitrate gets the maximum amount of bits per second the sink will render.
@@ -112,13 +111,13 @@ func (g *GstBaseSink) GetMaxLateness() int64 {
 }
 
 // GetProcessingDeadline gets the processing deadline of the sink.
-func (g *GstBaseSink) GetProcessingDeadline() time.Duration {
-	return time.Duration(C.gst_base_sink_get_processing_deadline(g.Instance()))
+func (g *GstBaseSink) GetProcessingDeadline() gst.ClockTime {
+	return gst.ClockTime(C.gst_base_sink_get_processing_deadline(g.Instance()))
 }
 
 // GetRenderDelay gets the render delay for the sink.
-func (g *GstBaseSink) GetRenderDelay() time.Duration {
-	return time.Duration(C.gst_base_sink_get_render_delay(g.Instance()))
+func (g *GstBaseSink) GetRenderDelay() gst.ClockTime {
+	return gst.ClockTime(C.gst_base_sink_get_render_delay(g.Instance()))
 }
 
 // SINCE 1.18
@@ -155,8 +154,8 @@ func (g *GstBaseSink) GetThrottleTime() uint64 {
 }
 
 // GetTsOffset gets the synchronization offset of sink.
-func (g *GstBaseSink) GetTsOffset() time.Duration {
-	return time.Duration(C.gst_base_sink_get_ts_offset(g.Instance()))
+func (g *GstBaseSink) GetTsOffset() gst.ClockTime {
+	return gst.ClockTime(C.gst_base_sink_get_ts_offset(g.Instance()))
 }
 
 // IsAsyncEnabled checks if the sink is currently configured to perform asynchronous state changes to PAUSED.
@@ -190,11 +189,11 @@ func (g *GstBaseSink) ParentEvent(ev *gst.Event) bool {
 // by the upstream elements by setting the minLatency to a strictly positive value.
 //
 // This function is mostly used by subclasses.
-func (g *GstBaseSink) QueryLatency() (ok, live, upstreamLive bool, minLatency, maxLatency time.Duration) {
+func (g *GstBaseSink) QueryLatency() (ok, live, upstreamLive bool, minLatency, maxLatency gst.ClockTime) {
 	var glive, gupLive C.gboolean
 	var gmin, gmax C.GstClockTime
 	ret := C.gst_base_sink_query_latency(g.Instance(), &glive, &gupLive, &gmin, &gmax)
-	return gobool(ret), gobool(glive), gobool(gupLive), time.Duration(gmin), time.Duration(gmax)
+	return gobool(ret), gobool(glive), gobool(gupLive), gst.ClockTime(gmin), gst.ClockTime(gmax)
 }
 
 // SetAsyncEnabled configures sink to perform all state changes asynchronously. When async is disabled,
@@ -235,8 +234,8 @@ func (g *GstBaseSink) SetMaxLateness(maxLateness int64) {
 // for processing the buffer. This is added to the latency of live pipelines.
 //
 // This function is usually called by subclasses.
-func (g *GstBaseSink) SetProcessingDeadline(deadline time.Duration) {
-	C.gst_base_sink_set_processing_deadline(g.Instance(), C.GstClockTime(deadline.Nanoseconds()))
+func (g *GstBaseSink) SetProcessingDeadline(deadline gst.ClockTime) {
+	C.gst_base_sink_set_processing_deadline(g.Instance(), C.GstClockTime(deadline))
 }
 
 // SetQoSEnabled configures sink to send Quality-of-Service events upstream.
@@ -252,8 +251,8 @@ func (g *GstBaseSink) SetQoSEnabled(enabled bool) {
 // their latency to delay the rendering of their media.
 //
 // This function is usually called by subclasses.
-func (g *GstBaseSink) SetRenderDelay(delay time.Duration) {
-	C.gst_base_sink_set_render_delay(g.Instance(), C.GstClockTime(delay.Nanoseconds()))
+func (g *GstBaseSink) SetRenderDelay(delay gst.ClockTime) {
+	C.gst_base_sink_set_render_delay(g.Instance(), C.GstClockTime(delay))
 }
 
 // SetSync configures sink to synchronize on the clock or not. When sync is FALSE, incoming samples will
@@ -270,8 +269,8 @@ func (g *GstBaseSink) SetThrottleTime(throttle uint64) {
 // SetTsOffset adjusts the synchronization of sink with offset. A negative value will render buffers earlier
 // than their timestamp. A positive value will delay rendering. This function can be used to fix playback of
 // badly timestamped buffers.
-func (g *GstBaseSink) SetTsOffset(offset time.Duration) {
-	C.gst_base_sink_set_ts_offset(g.Instance(), C.GstClockTimeDiff(offset.Nanoseconds()))
+func (g *GstBaseSink) SetTsOffset(offset gst.ClockTimeDiff) {
+	C.gst_base_sink_set_ts_offset(g.Instance(), C.GstClockTimeDiff(offset))
 }
 
 // Wait will wait for preroll to complete and will then block until timeout is reached. It is usually called by
@@ -283,10 +282,10 @@ func (g *GstBaseSink) SetTsOffset(offset time.Duration) {
 //
 // The timeout argument should be the running_time of when the timeout should happen and will be adjusted with any
 // latency and offset configured in the sink.
-func (g *GstBaseSink) Wait(timeout time.Duration) (ret gst.FlowReturn, jitter time.Duration) {
+func (g *GstBaseSink) Wait(timeout gst.ClockTime) (ret gst.FlowReturn, jitter gst.ClockTimeDiff) {
 	var jit C.GstClockTimeDiff
-	gret := C.gst_base_sink_wait(g.Instance(), C.GstClockTime(timeout.Nanoseconds()), &jit)
-	return gst.FlowReturn(gret), time.Duration(jit)
+	gret := C.gst_base_sink_wait(g.Instance(), C.GstClockTime(timeout), &jit)
+	return gst.FlowReturn(gret), gst.ClockTimeDiff(jit)
 }
 
 // WaitClock will block until timeout is reached. It is usually called by subclasses that use their own
@@ -300,10 +299,10 @@ func (g *GstBaseSink) Wait(timeout time.Duration) (ret gst.FlowReturn, jitter ti
 //
 // The timeout argument should be the running_time of when this method should return and is not adjusted with any
 // latency or offset configured in the sink.
-func (g *GstBaseSink) WaitClock(timeout time.Duration) (ret gst.ClockReturn, jitter time.Duration) {
+func (g *GstBaseSink) WaitClock(timeout gst.ClockTime) (ret gst.ClockReturn, jitter gst.ClockTimeDiff) {
 	var jit C.GstClockTimeDiff
-	gret := C.gst_base_sink_wait_clock(g.Instance(), C.GstClockTime(timeout.Nanoseconds()), &jit)
-	return gst.ClockReturn(gret), time.Duration(jit)
+	gret := C.gst_base_sink_wait_clock(g.Instance(), C.GstClockTime(timeout), &jit)
+	return gst.ClockReturn(gret), gst.ClockTimeDiff(jit)
 }
 
 // WaitPreroll will block until the preroll is complete.

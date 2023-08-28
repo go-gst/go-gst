@@ -18,12 +18,11 @@ gboolean  cgoSeekDataCb   (GstAppSrc *src, guint64 offset, gpointer user_data) {
 */
 import "C"
 import (
-	"time"
 	"unsafe"
 
+	"github.com/go-gst/go-gst/gst"
+	"github.com/go-gst/go-gst/gst/base"
 	gopointer "github.com/mattn/go-pointer"
-	"github.com/tinyzimmer/go-gst/gst"
-	"github.com/tinyzimmer/go-gst/gst/base"
 )
 
 // SourceCallbacks represents callbacks to configure on an AppSource.
@@ -56,7 +55,7 @@ func NewAppSrc() (*Source, error) {
 }
 
 // SrcFromElement checks if the given element is an appsrc and if so returns
-// a Source interace.
+// a Source interface.
 func SrcFromElement(elem *gst.Element) *Source {
 	if appSrc := C.toGstAppSrc(elem.Unsafe()); appSrc != nil {
 		return wrapAppSrc(elem)
@@ -88,15 +87,11 @@ func (a *Source) GetCurrentLevelBytes() uint64 {
 	return uint64(C.gst_app_src_get_current_level_bytes(a.Instance()))
 }
 
-var gstClockTimeNone C.GstClockTime = 0xffffffffffffffff
-
 // GetDuration gets the duration of the stream in nanoseconds. A negative value means that the duration is not known.
-func (a *Source) GetDuration() time.Duration {
+func (a *Source) GetDuration() gst.ClockTime {
 	dur := C.gst_app_src_get_duration(a.Instance())
-	if dur == gstClockTimeNone {
-		return gst.ClockTimeNone
-	}
-	return time.Duration(uint64(dur)) * time.Nanosecond
+
+	return gst.ClockTime(dur)
 }
 
 // GetEmitSignals checks if appsrc will emit the "new-preroll" and "new-buffer" signals.
@@ -189,8 +184,8 @@ func (a *Source) SetCaps(caps *gst.Caps) {
 
 // SetDuration sets the duration of the source stream. You should call
 // this if the value is known.
-func (a *Source) SetDuration(dur time.Duration) {
-	C.gst_app_src_set_duration((*C.GstAppSrc)(a.Instance()), C.GstClockTime(dur.Nanoseconds()))
+func (a *Source) SetDuration(dur gst.ClockTime) {
+	C.gst_app_src_set_duration((*C.GstAppSrc)(a.Instance()), C.GstClockTime(dur))
 }
 
 // SetEmitSignals makes appsrc emit the "new-preroll" and "new-buffer" signals. This option is by default disabled because signal emission

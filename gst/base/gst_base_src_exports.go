@@ -7,8 +7,8 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/tinyzimmer/go-glib/glib"
-	"github.com/tinyzimmer/go-gst/gst"
+	"github.com/go-gst/go-glib/glib"
+	"github.com/go-gst/go-gst/gst"
 )
 
 //export goGstBaseSrcGetCaps
@@ -106,7 +106,7 @@ func goGstBaseSrcGetTimes(src *C.GstBaseSrc, buf *C.GstBuffer, start *C.GstClock
 	var gostart, goend time.Duration
 	glib.WithPointerTransferOriginal(unsafe.Pointer(src), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
 		iface := goObject.(interface {
-			GetTimes(*GstBaseSrc, *gst.Buffer) (start, end time.Duration)
+			GetTimes(*GstBaseSrc, *gst.Buffer) (start, end time.Duration) // should this be a ClockTime?
 		})
 		gostart, goend = iface.GetTimes(ToGstBaseSrc(gObject), gst.ToGstBuffer(unsafe.Pointer(buf)))
 	})

@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <gst/gst.h>
 #include <gst/base/base.h>
+#include <gst/controller/gstinterpolationcontrolsource.h>
+#include <gst/controller/gstdirectcontrolbinding.h>
 
 typedef struct _PadDestroyNotifyInfo {
 	gpointer pad_ptr;
@@ -14,48 +16,52 @@ typedef struct _PadDestroyNotifyInfo {
 	Type Castings
 */
 
-extern GType                  objectGType            (GObject *obj);
+extern GType                            objectGType                      (GObject *obj);
 
-extern GstAllocator *         toGstAllocator         (void *p);
-extern GstBin *               toGstBin               (void *p);
-extern GstBinClass *          toGstBinClass          (void *p);
-extern GstBufferList *        toGstBufferList        (void *p);
-extern GstBufferPool *        toGstBufferPool        (void *p);
-extern GstBuffer *            toGstBuffer            (void *p);
-extern GstBus *               toGstBus               (void *p);
-extern GstCapsFeatures *      toGstCapsFeatures      (void *p);
-extern GstCaps *              toGstCaps              (void *p);
-extern GstChildProxy *        toGstChildProxy        (void *p);
-extern GstClock *             toGstClock             (void *p);
-extern GstContext *           toGstContext           (void *p);
-extern GstDevice *            toGstDevice            (void *p);
-extern GstElementFactory *    toGstElementFactory    (void *p);
-extern GstElementClass *      toGstElementClass      (void *p);
-extern GstElement *           toGstElement           (void *p);
-extern GstEvent *             toGstEvent             (void *p);
-extern GstGhostPad *          toGstGhostPad          (void *p);
-extern GstMemory *            toGstMemory            (void *p);
-extern GstMessage *           toGstMessage           (void *p);
-extern GstMeta *              toGstMeta              (void *p);
-extern GstMiniObject *        toGstMiniObject        (void *p);
-extern GstObject *            toGstObject            (void *p);
-extern GstPad *               toGstPad               (void *p);
-extern GstPadTemplate *       toGstPadTemplate       (void *p);
-extern GstPipeline *          toGstPipeline          (void *p);
-extern GstPluginFeature *     toGstPluginFeature     (void *p);
-extern GstPlugin *            toGstPlugin            (void *p);
-extern GstProxyPad *          toGstProxyPad          (void *p);
-extern GstQuery *             toGstQuery             (void *p);
-extern GstRegistry *          toGstRegistry          (void *p);
-extern GstSample *            toGstSample            (void *p);
-extern GstStreamCollection *  toGstStreamCollection  (void *p);
-extern GstStream *            toGstStream            (void *p);
-extern GstStructure *         toGstStructure         (void *p);
-extern GstTagList   *         toGstTagList           (void *p);
-extern GstTask *              toGstTask              (void *p);
-extern GstTaskPool *          toGstTaskPool          (void *p);
-extern GstURIHandler *        toGstURIHandler        (void *p);
-extern GstUri *               toGstURI               (void *p);
+extern GstAllocator *                   toGstAllocator                   (void *p);
+extern GstBin *                         toGstBin                         (void *p);
+extern GstBinClass *                    toGstBinClass                    (void *p);
+extern GstBufferList *                  toGstBufferList                  (void *p);
+extern GstBufferPool *                  toGstBufferPool                  (void *p);
+extern GstBuffer *                      toGstBuffer                      (void *p);
+extern GstBus *                         toGstBus                         (void *p);
+extern GstCapsFeatures *                toGstCapsFeatures                (void *p);
+extern GstCaps *                        toGstCaps                        (void *p);
+extern GstChildProxy *                  toGstChildProxy                  (void *p);
+extern GstClock *                       toGstClock                       (void *p);
+extern GstContext *                     toGstContext                     (void *p);
+extern GstDevice *                      toGstDevice                      (void *p);
+extern GstDeviceProvider *              toGstDeviceProvider              (void *p);
+extern GstElementFactory *              toGstElementFactory              (void *p);
+extern GstElementClass *                toGstElementClass                (void *p);
+extern GstElement *                     toGstElement                     (void *p);
+extern GstEvent *                       toGstEvent                       (void *p);
+extern GstGhostPad *                    toGstGhostPad                    (void *p);
+extern GstMemory *                      toGstMemory                      (void *p);
+extern GstMessage *                     toGstMessage                     (void *p);
+extern GstMeta *                        toGstMeta                        (void *p);
+extern GstMiniObject *                  toGstMiniObject                  (void *p);
+extern GstObject *                      toGstObject                      (void *p);
+extern GstPad *                         toGstPad                         (void *p);
+extern GstPadTemplate *                 toGstPadTemplate                 (void *p);
+extern GstPipeline *                    toGstPipeline                    (void *p);
+extern GstPluginFeature *               toGstPluginFeature               (void *p);
+extern GstPlugin *                      toGstPlugin                      (void *p);
+extern GstProxyPad *                    toGstProxyPad                    (void *p);
+extern GstQuery *                       toGstQuery                       (void *p);
+extern GstRegistry *                    toGstRegistry                    (void *p);
+extern GstSample *                      toGstSample                      (void *p);
+extern GstStreamCollection *            toGstStreamCollection            (void *p);
+extern GstStream *                      toGstStream                      (void *p);
+extern GstStructure *                   toGstStructure                   (void *p);
+extern GstTagList   *                   toGstTagList                     (void *p);
+extern GstTask *                        toGstTask                        (void *p);
+extern GstTaskPool *                    toGstTaskPool                    (void *p);
+extern GstURIHandler *                  toGstURIHandler                  (void *p);
+extern GstUri *                         toGstURI                         (void *p);
+extern GstControlBinding *              toGstControlBinding              (void *p);
+extern GstControlSource *               toGstControlSource               (void *p);
+extern GstTimedValueControlSource *     toGstTimedValueControlSource     (void *p);
 
 /* Buffer Utilities */
 

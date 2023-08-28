@@ -36,8 +36,8 @@ import (
 	"runtime"
 	"unsafe"
 
-	"github.com/tinyzimmer/go-glib/glib"
-	"github.com/tinyzimmer/go-gst/gst"
+	"github.com/go-gst/go-glib/glib"
+	"github.com/go-gst/go-gst/gst"
 )
 
 func init() {
@@ -159,7 +159,7 @@ const (
 )
 
 // AllFormats is a convenience function for retrieving all formats for inspection purposes.
-// This is not really intended for use in an application, and moreso for debugging.
+// This is not really intended for use in an application, and more so for debugging.
 func AllFormats() []Format {
 	return []Format{
 		FormatI420,

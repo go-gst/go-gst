@@ -20,16 +20,49 @@ void clockDestroyNotify (gpointer user_data)
 import "C"
 
 import (
+	"fmt"
 	"runtime"
 	"time"
 	"unsafe"
 
+	"github.com/go-gst/go-glib/glib"
 	gopointer "github.com/mattn/go-pointer"
-	"github.com/tinyzimmer/go-glib/glib"
 )
 
+type ClockTime C.GstClockTime
+
+func (ct ClockTime) String() string {
+	if ct == ClockTimeNone {
+		return "ClockTimeNone"
+	}
+
+	return fmt.Sprint(uint64(ct))
+}
+
+// interpret the clocktime as a duration, returns nil on ClockTimeNone
+func (ct ClockTime) AsDuration() *time.Duration {
+	if ct == ClockTimeNone {
+		return nil
+	}
+
+	dur := time.Duration(uint64(ct))
+
+	return &dur
+}
+
+// interpret the clocktime as a timestamp, returns nil on ClockTimeNone
+func (ct ClockTime) AsTimestamp() *time.Time {
+	if ct == ClockTimeNone {
+		return nil
+	}
+
+	dur := time.Unix(0, int64(ct))
+
+	return &dur
+}
+
 // ClockCallback is the prototype of a clock callback function.
-type ClockCallback func(clock *Clock, clockTime time.Duration) bool
+type ClockCallback func(clock *Clock, clockTime ClockTime) bool
 
 // ClockID is a go wrapper around a GstClockID.
 type ClockID struct {
@@ -46,8 +79,8 @@ func (c *ClockID) GetClock() *Clock {
 }
 
 // GetTime returns the time for this ClockID
-func (c *ClockID) GetTime() time.Duration {
-	return time.Duration(C.gst_clock_id_get_time(c.Instance()))
+func (c *ClockID) GetTime() ClockTime {
+	return ClockTime(C.gst_clock_id_get_time(c.Instance()))
 }
 
 // Unschedule cancels an outstanding request with id. This can either be an outstanding async notification or a pending sync notification.
@@ -80,25 +113,25 @@ func (c *ClockID) Wait() (ret ClockReturn, jitter ClockTimeDiff) {
 //
 // The callback func can be invoked from any thread, either provided by the core or from a streaming thread. The application should be prepared for this.
 //
-//   // Example
+//	// Example
 //
-//   pipeline, _ := gst.NewPipelineFromString("fakesrc ! fakesink")
-//   defer pipeline.Unref()
+//	pipeline, _ := gst.NewPipelineFromString("fakesrc ! fakesink")
+//	defer pipeline.Unref()
 //
-//   clock := pipeline.GetPipelineClock()
+//	clock := pipeline.GetPipelineClock()
 //
-//   id := clock.NewSingleShotID(gst.ClockTime(1000000000)) // 1 second
+//	id := clock.NewSingleShotID(gst.ClockTime(1000000000)) // 1 second
 //
-//   id.WaitAsync(func(clock *gst.Clock, clockTime time.Duration) bool {
-//       fmt.Println("Single shot triggered at", clockTime.Nanoseconds())
-//       pipeline.SetState(gst.StateNull)
-//       return true
-//   })
+//	id.WaitAsync(func(clock *gst.Clock, clockTime ClockTime) bool {
+//	    fmt.Println("Single shot triggered at", clockTime.Nanoseconds())
+//	    pipeline.SetState(gst.StateNull)
+//	    return true
+//	})
 //
-//   pipeline.SetState(gst.StatePlaying)
-//   gst.Wait(pipeline)
+//	pipeline.SetState(gst.StatePlaying)
+//	gst.Wait(pipeline)
 //
-//   // Single shot triggered at 1000000000
+//	// Single shot triggered at 1000000000
 func (c *ClockID) WaitAsync(f ClockCallback) ClockReturn {
 	ptr := gopointer.Save(f)
 	return ClockReturn(C.gst_clock_id_wait_async(
@@ -143,7 +176,7 @@ func (c *Clock) Instance() *C.GstClock { return C.toGstClock(c.Unsafe()) }
 //
 // If this functions returns TRUE, the float will contain the correlation coefficient of the interpolation. A value of 1.0 means
 // a perfect regression was performed. This value can be used to control the sampling frequency of the master and slave clocks.
-func (c *Clock) AddObservation(slaveTime, masterTime time.Duration) (bool, float64) {
+func (c *Clock) AddObservation(slaveTime, masterTime ClockTime) (bool, float64) {
 	var out C.gdouble
 	ok := gobool(C.gst_clock_add_observation(
 		c.Instance(),
@@ -158,7 +191,7 @@ func (c *Clock) AddObservation(slaveTime, masterTime time.Duration) (bool, float
 // result of the master clock estimation, without updating the internal calibration.
 //
 // The caller can then take the results and call SetCalibration with the values, or some modified version of them.
-func (c *Clock) AddObservationUnapplied(slaveTime, masterTime time.Duration) (ok bool, rSquared float64, internalTime, externalTime, rateNum, rateDenom time.Duration) {
+func (c *Clock) AddObservationUnapplied(slaveTime, masterTime ClockTime) (ok bool, rSquared float64, internalTime, externalTime, rateNum, rateDenom ClockTime) {
 	var ginternal, gexternal, grateNum, grateDenom C.GstClockTime
 	var grSquared C.gdouble
 	ok = gobool(C.gst_clock_add_observation_unapplied(
@@ -167,7 +200,7 @@ func (c *Clock) AddObservationUnapplied(slaveTime, masterTime time.Duration) (ok
 		C.GstClockTime(masterTime),
 		&grSquared, &ginternal, &gexternal, &grateNum, &grateDenom,
 	))
-	return ok, float64(grSquared), time.Duration(ginternal), time.Duration(gexternal), time.Duration(grateNum), time.Duration(grateDenom)
+	return ok, float64(grSquared), ClockTime(ginternal), ClockTime(gexternal), ClockTime(grateNum), ClockTime(grateDenom)
 }
 
 // AdjustUnlocked converts the given internal clock time to the external time, adjusting for the rate and reference time set with
@@ -175,8 +208,8 @@ func (c *Clock) AddObservationUnapplied(slaveTime, masterTime time.Duration) (ok
 // held and is mainly used by clock subclasses.
 //
 // This function is the reverse of UnadjustUnlocked.
-func (c *Clock) AdjustUnlocked(internal time.Duration) time.Duration {
-	return time.Duration(C.gst_clock_adjust_unlocked(c.Instance(), C.GstClockTime(internal)))
+func (c *Clock) AdjustUnlocked(internal ClockTime) ClockTime {
+	return ClockTime(C.gst_clock_adjust_unlocked(c.Instance(), C.GstClockTime(internal)))
 }
 
 // AdjustWithCalibration converts the given internal_target clock time to the external time, using the passed calibration parameters.
@@ -184,8 +217,8 @@ func (c *Clock) AdjustUnlocked(internal time.Duration) time.Duration {
 // doesn't ensure a monotonically increasing result as AdjustUnlocked does.
 //
 // See: https://gstreamer.freedesktop.org/documentation/gstreamer/gstclock.html#gst_clock_adjust_with_calibration
-func (c *Clock) AdjustWithCalibration(internalTarget, cinternal, cexternal, cnum, cdenom time.Duration) time.Duration {
-	return time.Duration(C.gst_clock_adjust_with_calibration(
+func (c *Clock) AdjustWithCalibration(internalTarget, cinternal, cexternal, cnum, cdenom ClockTime) ClockTime {
+	return ClockTime(C.gst_clock_adjust_with_calibration(
 		c.Instance(),
 		C.GstClockTime(internalTarget),
 		C.GstClockTime(cinternal),
@@ -196,30 +229,26 @@ func (c *Clock) AdjustWithCalibration(internalTarget, cinternal, cexternal, cnum
 }
 
 // GetCalibration gets the internal rate and reference time of clock. See gst_clock_set_calibration for more information.
-func (c *Clock) GetCalibration() (internal, external, rateNum, rateDenom time.Duration) {
+func (c *Clock) GetCalibration() (internal, external, rateNum, rateDenom ClockTime) {
 	var ginternal, gexternal, grateNum, grateDenom C.GstClockTime
 	C.gst_clock_get_calibration(c.Instance(), &ginternal, &gexternal, &grateNum, &grateDenom)
-	return time.Duration(ginternal), time.Duration(gexternal), time.Duration(grateNum), time.Duration(grateDenom)
+	return ClockTime(ginternal), ClockTime(gexternal), ClockTime(grateNum), ClockTime(grateDenom)
 }
 
 // GetTime gets the current time of the given clock in nanoseconds or -1 if invalid.
 // The time is always monotonically increasing and adjusted according to the current offset and rate.
-func (c *Clock) GetTime() time.Duration {
+func (c *Clock) GetTime() ClockTime {
 	res := C.gst_clock_get_time(c.Instance())
-	if res == gstClockTimeNone {
-		return ClockTimeNone
-	}
-	return time.Duration(res)
+
+	return ClockTime(res)
 }
 
 // GetInternalTime gets the current internal time of the given clock in nanoseconds
 // or ClockTimeNone if invalid. The time is returned unadjusted for the offset and the rate.
-func (c *Clock) GetInternalTime() time.Duration {
+func (c *Clock) GetInternalTime() ClockTime {
 	res := C.gst_clock_get_internal_time(c.Instance())
-	if res == gstClockTimeNone {
-		return ClockTimeNone
-	}
-	return time.Duration(res)
+
+	return ClockTime(res)
 }
 
 // GetMaster returns the master clock that this clock is slaved to or nil when the clock
@@ -234,13 +263,13 @@ func (c *Clock) GetMaster() *Clock {
 
 // GetResolution gets the accuracy of the clock. The accuracy of the clock is the granularity
 // of the values returned by GetTime.
-func (c *Clock) GetResolution() time.Duration {
-	return time.Duration(C.gst_clock_get_resolution(c.Instance()))
+func (c *Clock) GetResolution() ClockTime {
+	return ClockTime(C.gst_clock_get_resolution(c.Instance()))
 }
 
 // GetTimeout gets the amount of time that master and slave clocks are sampled.
-func (c *Clock) GetTimeout() time.Duration {
-	return time.Duration(C.gst_clock_get_timeout(c.Instance()))
+func (c *Clock) GetTimeout() ClockTime {
+	return ClockTime(C.gst_clock_get_timeout(c.Instance()))
 }
 
 // IsSynced returns true if the clock is synced.
@@ -248,7 +277,7 @@ func (c *Clock) IsSynced() bool { return gobool(C.gst_clock_is_synced(c.Instance
 
 // NewPeriodicID gets an ID from clock to trigger a periodic notification. The periodic notifications
 // will start at time start_time and will then be fired with the given interval. ID should be unreffed after usage.
-func (c *Clock) NewPeriodicID(startTime, interval time.Duration) *ClockID {
+func (c *Clock) NewPeriodicID(startTime, interval ClockTime) *ClockID {
 	id := C.gst_clock_new_periodic_id(
 		c.Instance(),
 		C.GstClockTime(startTime),
@@ -261,7 +290,7 @@ func (c *Clock) NewPeriodicID(startTime, interval time.Duration) *ClockID {
 
 // NewSingleShotID gets a ClockID from the clock to trigger a single shot notification at the requested time.
 // The single shot id should be unreffed after usage.
-func (c *Clock) NewSingleShotID(at time.Duration) *ClockID {
+func (c *Clock) NewSingleShotID(at ClockTime) *ClockID {
 	id := C.gst_clock_new_single_shot_id(
 		c.Instance(),
 		C.GstClockTime(at),
@@ -272,8 +301,8 @@ func (c *Clock) NewSingleShotID(at time.Duration) *ClockID {
 }
 
 // PeriodicIDReinit reinitializes the provided periodic id to the provided start time and interval. Does not
-/// modify the reference count.
-func (c *Clock) PeriodicIDReinit(clockID *ClockID, startTime, interval time.Duration) bool {
+// / modify the reference count.
+func (c *Clock) PeriodicIDReinit(clockID *ClockID, startTime, interval ClockTime) bool {
 	return gobool(C.gst_clock_periodic_id_reinit(
 		c.Instance(),
 		clockID.Instance(),
@@ -284,7 +313,7 @@ func (c *Clock) PeriodicIDReinit(clockID *ClockID, startTime, interval time.Dura
 
 // SetCalibration adjusts the rate and time of clock.
 // See: https://gstreamer.freedesktop.org/documentation/gstreamer/gstclock.html#gst_clock_set_calibration.
-func (c *Clock) SetCalibration(internal, external, rateNum, rateDenom time.Duration) {
+func (c *Clock) SetCalibration(internal, external, rateNum, rateDenom ClockTime) {
 	C.gst_clock_set_calibration(
 		c.Instance(),
 		C.GstClockTime(internal),
@@ -311,8 +340,8 @@ func (c *Clock) SetMaster(master *Clock) bool {
 // SetResolution sets the accuracy of the clock. Some clocks have the possibility to operate with different accuracy
 // at the expense of more resource usage. There is normally no need to change the default resolution of a clock.
 // The resolution of a clock can only be changed if the clock has the ClockFlagCanSetResolution flag set.
-func (c *Clock) SetResolution(resolution time.Duration) time.Duration {
-	return time.Duration(C.gst_clock_set_resolution(c.Instance(), C.GstClockTime(resolution)))
+func (c *Clock) SetResolution(resolution ClockTime) ClockTime {
+	return ClockTime(C.gst_clock_set_resolution(c.Instance(), C.GstClockTime(resolution)))
 }
 
 // SetSynced sets clock to synced and emits the GstClock::synced signal, and wakes up any thread waiting in WaitForSync.
@@ -322,12 +351,12 @@ func (c *Clock) SetResolution(resolution time.Duration) time.Duration {
 func (c *Clock) SetSynced(synced bool) { C.gst_clock_set_synced(c.Instance(), gboolean(synced)) }
 
 // SetTimeout sets the amount of time, in nanoseconds, to sample master and slave clocks
-func (c *Clock) SetTimeout(timeout time.Duration) {
+func (c *Clock) SetTimeout(timeout ClockTime) {
 	C.gst_clock_set_timeout(c.Instance(), C.GstClockTime(timeout))
 }
 
 // SingleShotIDReinit reinitializes the provided single shot id to the provided time. Does not modify the reference count.
-func (c *Clock) SingleShotIDReinit(clockID *ClockID, at time.Duration) bool {
+func (c *Clock) SingleShotIDReinit(clockID *ClockID, at ClockTime) bool {
 	return gobool(C.gst_clock_single_shot_id_reinit(c.Instance(), clockID.Instance(), C.GstClockTime(at)))
 }
 
@@ -335,14 +364,14 @@ func (c *Clock) SingleShotIDReinit(clockID *ClockID, at time.Duration) bool {
 // set with SetCalibration. This function should be called with the clock's OBJECT_LOCK held and is mainly used by clock subclasses.
 //
 // This function is the reverse of AdjustUnlocked.
-func (c *Clock) UnadjustUnlocked(external time.Duration) time.Duration {
-	return time.Duration(C.gst_clock_unadjust_unlocked(c.Instance(), C.GstClockTime(external)))
+func (c *Clock) UnadjustUnlocked(external ClockTime) ClockTime {
+	return ClockTime(C.gst_clock_unadjust_unlocked(c.Instance(), C.GstClockTime(external)))
 }
 
 // UnadjustWithCalibration converts the given external_target clock time to the internal time, using the passed calibration parameters.
 // This function performs the same calculation as UnadjustUnlocked when called using the current calibration parameters.
-func (c *Clock) UnadjustWithCalibration(externalTarget, cinternal, cexternal, cnum, cdenom time.Duration) time.Duration {
-	return time.Duration(C.gst_clock_unadjust_with_calibration(
+func (c *Clock) UnadjustWithCalibration(externalTarget, cinternal, cexternal, cnum, cdenom ClockTime) ClockTime {
+	return ClockTime(C.gst_clock_unadjust_with_calibration(
 		c.Instance(),
 		C.GstClockTime(externalTarget),
 		C.GstClockTime(cinternal),
@@ -358,12 +387,12 @@ func (c *Clock) UnadjustWithCalibration(externalTarget, cinternal, cexternal, cn
 // For asynchronous waiting, the GstClock::synced signal can be used.
 //
 // This returns immediately with TRUE if ClockFlagNeedsStartupSync is not set on the clock, or if the clock is already synced.
-func (c *Clock) WaitForSync(timeout time.Duration) bool {
+func (c *Clock) WaitForSync(timeout ClockTime) bool {
 	return gobool(C.gst_clock_wait_for_sync(c.Instance(), C.GstClockTime(timeout)))
 }
 
 // String returns the string representation of this clock value.
-func (c *Clock) String() string { return c.GetTime().String() }
+func (c *Clock) String() string { return fmt.Sprintf("%d", c.GetTime()) }
 
 // InternalString returns the string representation of this clock's internal value.
-func (c *Clock) InternalString() string { return c.GetInternalTime().String() }
+func (c *Clock) InternalString() string { return fmt.Sprintf("%d", c.GetInternalTime()) }

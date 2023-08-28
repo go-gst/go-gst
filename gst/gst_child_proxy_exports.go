@@ -7,7 +7,7 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/tinyzimmer/go-glib/glib"
+	"github.com/go-gst/go-glib/glib"
 )
 
 func wrapParent(parent *C.GstChildProxy) *ChildProxy { return &ChildProxy{ptr: parent} }

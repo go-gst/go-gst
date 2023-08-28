@@ -62,7 +62,7 @@ import (
 
 	gopointer "github.com/mattn/go-pointer"
 
-	"github.com/tinyzimmer/go-gst/gst"
+	"github.com/go-gst/go-gst/gst"
 )
 
 // CollectPadsBufferFunc is a function that will be called when a (considered oldest) buffer can be muxed.
@@ -83,7 +83,7 @@ type CollectPadsClipFunc func(self *CollectPads, data *CollectData, inbuffer *gs
 // one pad. The function should return an integer less than zero when first timestamp is deemed older than the
 // second one. Zero if the timestamps are deemed equally old. Integer greater than zero when second timestamp
 // is deemed older than the first one.
-type CollectPadsCompareFunc func(self *CollectPads, data1 *CollectData, ts1 time.Duration, data2 *CollectData, ts2 time.Duration) int
+type CollectPadsCompareFunc func(self *CollectPads, data1 *CollectData, ts1 time.Duration, data2 *CollectData, ts2 time.Duration) int // should this be a ClockTime?
 
 // CollectPadsEventFunc is a function that will be called while processing an event. It takes ownership of the
 // event and is responsible for chaining up (to EventDefault) or dropping events (such typical cases being handled
@@ -223,7 +223,7 @@ var InvalidRunningTime = time.Duration(C.G_MININT64)
 // Since 1.6, this clipping function also sets the DTS parameter of the GstCollectData structure. This version
 // of the running time DTS can be negative. InvalidRunningTime is used to indicate invalid value.
 //
-// data is the CollectData of the cooresponding pad and buf is the buffer being clipped.
+// data is the CollectData of the corresponding pad and buf is the buffer being clipped.
 func (c *CollectPads) ClipRunningTime(data *CollectData, buf *gst.Buffer) (ret gst.FlowReturn, outbuf *gst.Buffer) {
 	var goutbuf *C.GstBuffer
 	ret = gst.FlowReturn(C.gst_collect_pads_clip_running_time(
@@ -335,7 +335,7 @@ func (c *CollectPads) SetClipFunction(f CollectPadsClipFunc) {
 	)
 }
 
-// SetCompareFunction sets the timestamp comparisson function.
+// SetCompareFunction sets the timestamp comparison function.
 func (c *CollectPads) SetCompareFunction(f CollectPadsCompareFunc) {
 	c.funcMap.compareFunc = f
 	C.gst_collect_pads_set_compare_function(

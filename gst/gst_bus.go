@@ -21,11 +21,10 @@ import "C"
 
 import (
 	"reflect"
-	"time"
 	"unsafe"
 
+	"github.com/go-gst/go-glib/glib"
 	gopointer "github.com/mattn/go-pointer"
-	"github.com/tinyzimmer/go-glib/glib"
 )
 
 // Bus is a Go wrapper around a GstBus. It provides convenience methods for
@@ -36,38 +35,37 @@ type Bus struct {
 
 // NewBus returns a new Bus instance.
 //
-//   // Example of using the bus instance
+//	// Example of using the bus instance
 //
-//   package main
+//	package main
 //
-//   import (
-//       "fmt"
+//	import (
+//	    "fmt"
 //
-//       "github.com/tinyzimmer/go-gst/gst"
-//   )
+//	    "github.com/go-gst/go-gst/gst"
+//	)
 //
-//   func main() {
-//       gst.Init(nil)
+//	func main() {
+//	    gst.Init(nil)
 //
-//       bus := gst.NewBus()
-//       defer bus.Unref()
+//	    bus := gst.NewBus()
+//	    defer bus.Unref()
 //
-//       elem, err := gst.NewElement("fakesrc")
-//       if err != nil {
-//           panic(err)
-//       }
-//       defer elem.Unref()
+//	    elem, err := gst.NewElement("fakesrc")
+//	    if err != nil {
+//	        panic(err)
+//	    }
+//	    defer elem.Unref()
 //
-//       bus.Post(gst.NewAsyncStartMessage(elem))
+//	    bus.Post(gst.NewAsyncStartMessage(elem))
 //
-//       msg := bus.Pop()
-//       defer msg.Unref()
+//	    msg := bus.Pop()
+//	    defer msg.Unref()
 //
-//       fmt.Println(msg)
-//   }
+//	    fmt.Println(msg)
+//	}
 //
-//   // > [fakesrc0] ASYNC-START - Async task started
-//
+//	// > [fakesrc0] ASYNC-START - Async task started
 func NewBus() *Bus {
 	return FromGstBusUnsafeFull(unsafe.Pointer(C.gst_bus_new()))
 }
@@ -98,8 +96,8 @@ func (b *Bus) AddSignalWatch() { C.gst_bus_add_signal_watch(b.Instance()) }
 //
 // It is much safer and easier to use the AddWatch or other polling functions. Only use this method if you
 // are unable to also run a MainLoop, or for convenience sake.
-func (b *Bus) PopMessage(timeout int) *Message {
-	return b.TimedPop(time.Duration(timeout) * time.Second)
+func (b *Bus) PopMessage(timeout ClockTime) *Message {
+	return b.TimedPop(timeout)
 }
 
 // BlockPopMessage blocks until a message is available on the bus and then returns it.
@@ -123,7 +121,7 @@ func (b *Bus) BlockPopMessage() *Message {
 
 // BusWatchFunc is a go representation of a GstBusFunc. It takes a message as a single argument
 // and returns a bool value for whether to continue processing messages or not. There is no need to unref
-// the message unless addtional references are placed on it during processing.
+// the message unless additional references are placed on it during processing.
 type BusWatchFunc func(msg *Message) bool
 
 // AddWatch adds a watch to the default MainContext for messages emitted on this bus.
@@ -244,15 +242,17 @@ func (b *Bus) Peek() *Message {
 // on Gtk+ or Qt, but also for any other non-trivial application that uses the GLib main loop. As this function
 // runs a GLib main loop, any callback attached to the default GLib main context may be invoked. This could be
 // timeouts, GUI events, I/O events etc.; even if Poll is called with a 0 timeout. Any of these callbacks
-//  may do things you do not expect, e.g. destroy the main application window or some other resource; change other
+//
+//	may do things you do not expect, e.g. destroy the main application window or some other resource; change other
+//
 // application state; display a dialog and run another main loop until the user clicks it away. In short, using this
 // function may add a lot of complexity to your code through unexpected re-entrancy and unexpected changes to your
 // application's state.
 //
 // For 0 timeouts use gst_bus_pop_filtered instead of this function; for other short timeouts use TimedPopFiltered;
 // everything else is better handled by setting up an asynchronous bus watch and doing things from there.
-func (b *Bus) Poll(msgTypes MessageType, timeout time.Duration) *Message {
-	cTime := C.GstClockTime(timeout.Nanoseconds())
+func (b *Bus) Poll(msgTypes MessageType, timeout ClockTime) *Message {
+	cTime := C.GstClockTime(timeout)
 	mType := C.GstMessageType(msgTypes)
 	msg := C.gst_bus_poll(b.Instance(), mType, cTime)
 	if msg == nil {
@@ -314,15 +314,9 @@ func (b *Bus) SetSyncHandler(f BusSyncHandler) {
 
 // TimedPop gets a message from the bus, waiting up to the specified timeout. Unref returned messages after usage.
 //
-// If timeout is 0, this function behaves like Pop. If timeout is < 0, this function will block forever until a message was posted on the bus.
-func (b *Bus) TimedPop(dur time.Duration) *Message {
-	var cTime C.GstClockTime
-	if dur == ClockTimeNone {
-		cTime = C.GstClockTime(gstClockTimeNone)
-	} else {
-		cTime = C.GstClockTime(dur.Nanoseconds())
-	}
-	msg := C.gst_bus_timed_pop(b.Instance(), cTime)
+// If timeout is 0, this function behaves like Pop. If timeout is ClockTimeNone, this function will block forever until a message was posted on the bus.
+func (b *Bus) TimedPop(dur ClockTime) *Message {
+	msg := C.gst_bus_timed_pop(b.Instance(), C.GstClockTime(dur))
 	if msg == nil {
 		return nil
 	}
@@ -332,16 +326,10 @@ func (b *Bus) TimedPop(dur time.Duration) *Message {
 // TimedPopFiltered gets a message from the bus whose type matches the message type mask types, waiting up to the specified timeout
 // (and discarding any messages that do not match the mask provided).
 //
-// If timeout is 0, this function behaves like PopFiltered. If timeout is < 0, this function will block forever until a matching message
+// If timeout is 0, this function behaves like PopFiltered. If timeout is ClockTimeNone, this function will block forever until a matching message
 // was posted on the bus.
-func (b *Bus) TimedPopFiltered(dur time.Duration, msgTypes MessageType) *Message {
-	var cTime C.GstClockTime
-	if dur == ClockTimeNone {
-		cTime = C.GstClockTime(gstClockTimeNone)
-	} else {
-		cTime = C.GstClockTime(dur.Nanoseconds())
-	}
-	msg := C.gst_bus_timed_pop_filtered(b.Instance(), cTime, C.GstMessageType(msgTypes))
+func (b *Bus) TimedPopFiltered(dur ClockTime, msgTypes MessageType) *Message {
+	msg := C.gst_bus_timed_pop_filtered(b.Instance(), C.GstClockTime(dur), C.GstMessageType(msgTypes))
 	if msg == nil {
 		return nil
 	}

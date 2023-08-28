@@ -7,7 +7,7 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/tinyzimmer/go-glib/glib"
+	"github.com/go-gst/go-glib/glib"
 )
 
 func cbWrapBin(bin *C.GstBin) *Bin {

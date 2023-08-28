@@ -4,10 +4,9 @@ package gst
 import "C"
 
 import (
-	"time"
 	"unsafe"
 
-	"github.com/tinyzimmer/go-glib/glib"
+	"github.com/go-gst/go-glib/glib"
 )
 
 // Object is a go representation of a GstObject.
@@ -36,15 +35,16 @@ func (o *Object) GObject() *glib.Object { return o.InitiallyUnowned.Object }
 // GetName returns the name of this object.
 func (o *Object) GetName() string {
 	cName := C.gst_object_get_name((*C.GstObject)(o.Instance()))
-	defer C.free(unsafe.Pointer(cName))
+	//cName could be NULL which needs to be freed using
+	defer C.g_free((C.gpointer)(unsafe.Pointer(cName)))
 	return C.GoString(cName)
 }
 
 // GetValue retrieves the value for the given controlled property at the given timestamp.
-func (o *Object) GetValue(property string, timestamp time.Duration) *glib.Value {
+func (o *Object) GetValue(property string, timestamp ClockTime) *glib.Value {
 	cprop := C.CString(property)
 	defer C.free(unsafe.Pointer(cprop))
-	gval := C.gst_object_get_value(o.Instance(), (*C.gchar)(cprop), C.GstClockTime(timestamp.Nanoseconds()))
+	gval := C.gst_object_get_value(o.Instance(), (*C.gchar)(cprop), C.GstClockTime(timestamp))
 	if gval == nil {
 		return nil
 	}
@@ -92,4 +92,8 @@ func (o *Object) Ref() *Object {
 // This function does not take the lock on object as it relies on atomic refcounting.
 func (o *Object) Unref() {
 	C.gst_object_unref((C.gpointer)(o.Unsafe()))
+}
+
+func (o *Object) AddControlBinding(binding *ControlBinding) {
+	C.gst_object_add_control_binding(o.Instance(), binding.Instance())
 }

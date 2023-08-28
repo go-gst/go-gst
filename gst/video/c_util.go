@@ -12,7 +12,7 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/tinyzimmer/go-gst/gst"
+	"github.com/go-gst/go-gst/gst"
 )
 
 func uintptrToGVal(p uintptr) *C.GValue { return (*C.GValue)(C.videoUtilToGValue(C.guintptr(p))) }
@@ -20,13 +20,6 @@ func uintptrToGVal(p uintptr) *C.GValue { return (*C.GValue)(C.videoUtilToGValue
 func wrapGerr(gerr *C.GError) error {
 	defer C.g_error_free(gerr)
 	return errors.New(C.GoString(gerr.message))
-}
-
-func durationToClockTime(d time.Duration) C.GstClockTime {
-	if d.Nanoseconds() < 0 {
-		return C.GstClockTime(gst.ClockTimeNone)
-	}
-	return C.GstClockTime(d.Nanoseconds())
 }
 
 func fromCoreCaps(caps *gst.Caps) *C.GstCaps {

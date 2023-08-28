@@ -4,10 +4,9 @@ package gst
 import "C"
 import (
 	"runtime"
-	"time"
 	"unsafe"
 
-	"github.com/tinyzimmer/go-glib/glib"
+	"github.com/go-gst/go-glib/glib"
 )
 
 // Query is a go wrapper around a GstQuery.
@@ -349,11 +348,11 @@ func (q *Query) ParseDuration() (format Format, duration int64) {
 }
 
 // ParseLatency parses a latency query answer.
-func (q *Query) ParseLatency() (live bool, minLatency, maxLatency time.Duration) {
+func (q *Query) ParseLatency() (live bool, minLatency, maxLatency ClockTime) {
 	var min, max C.GstClockTime
 	var gl C.gboolean
 	C.gst_query_parse_latency(q.Instance(), &gl, &min, &max)
-	return gobool(gl), time.Duration(min), time.Duration(max)
+	return gobool(gl), ClockTime(min), ClockTime(max)
 }
 
 // ParseNumFormats parses the number of formats in the formats query.
@@ -537,8 +536,8 @@ func (q *Query) SetFormats(formats ...Format) {
 }
 
 // SetLatency answers a latency query by setting the requested values in the given format.
-func (q *Query) SetLatency(live bool, minLatency, maxLatency time.Duration) {
-	C.gst_query_set_latency(q.Instance(), gboolean(live), C.guint64(minLatency.Nanoseconds()), C.guint64(maxLatency.Nanoseconds()))
+func (q *Query) SetLatency(live bool, minLatency, maxLatency ClockTime) {
+	C.gst_query_set_latency(q.Instance(), gboolean(live), C.guint64(minLatency), C.guint64(maxLatency))
 }
 
 // SetAllocationParamAt sets allocation params in query.

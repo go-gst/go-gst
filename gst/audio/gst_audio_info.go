@@ -14,7 +14,7 @@ import (
 	"runtime"
 	"unsafe"
 
-	"github.com/tinyzimmer/go-gst/gst"
+	"github.com/go-gst/go-gst/gst"
 )
 
 // Flags contains extra audio flags
@@ -33,7 +33,7 @@ func wrapInfoFull(ptr *C.GstAudioInfo) *Info {
 }
 
 // Info is a structure used for describing audio properties. This can be filled in from caps
-// or coverted back to caps.
+// or converted back to caps.
 type Info struct {
 	ptr *C.GstAudioInfo
 }
@@ -84,8 +84,7 @@ func (i *Info) Free() { C.gst_audio_info_free(i.ptr) }
 
 // Convert converts among various gst.Format types. This function handles gst.FormatBytes, gst.FormatTime,
 // and gst.FormatDefault. For raw audio, gst.FormatDefault corresponds to audio frames. This function can
-// be used to handle pad queries of the type gst.QueryConvert. To provide a value from a time.Duration, use the
-// Nanoseconds() method.
+// be used to handle pad queries of the type gst.QueryConvert.
 func (i *Info) Convert(srcFmt gst.Format, srcVal int64, destFmt gst.Format) (int64, bool) {
 	var out C.gint64
 	ret := C.gst_audio_info_convert(

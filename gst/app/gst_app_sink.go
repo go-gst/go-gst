@@ -19,13 +19,12 @@ import "C"
 
 import (
 	"errors"
-	"time"
 	"unsafe"
 
 	gopointer "github.com/mattn/go-pointer"
 
-	"github.com/tinyzimmer/go-gst/gst"
-	"github.com/tinyzimmer/go-gst/gst/base"
+	"github.com/go-gst/go-gst/gst"
+	"github.com/go-gst/go-gst/gst/base"
 )
 
 // SinkCallbacks represents callbacks that can be installed on an app sink when data is available.
@@ -51,7 +50,7 @@ func NewAppSink() (*Sink, error) {
 }
 
 // SinkFromElement checks if the given element is an appsink and if so returns
-// a Sink interace.
+// a Sink interface.
 func SinkFromElement(elem *gst.Element) *Sink {
 	if appSink := C.toGstAppSink(elem.Unsafe()); appSink != nil {
 		return wrapAppSink(elem)
@@ -205,8 +204,8 @@ func (a *Sink) SetWaitOnEOS(wait bool) {
 // If an EOS event was received before any buffers or the timeout expires, this function returns NULL. Use IsEOS () to check for the EOS condition.
 //
 // This function blocks until a preroll sample or EOS is received, the appsink element is set to the READY/NULL state, or the timeout expires.
-func (a *Sink) TryPullPreroll(timeout time.Duration) *gst.Sample {
-	tm := C.GstClockTime(timeout.Nanoseconds())
+func (a *Sink) TryPullPreroll(timeout gst.ClockTime) *gst.Sample {
+	tm := C.GstClockTime(timeout)
 	smpl := C.gst_app_sink_try_pull_preroll(a.Instance(), tm)
 	if smpl == nil {
 		return nil
@@ -221,8 +220,8 @@ func (a *Sink) TryPullPreroll(timeout time.Duration) *gst.Sample {
 // consume a lot of memory, especially when dealing with raw video frames.
 //
 // If an EOS event was received before any buffers or the timeout expires, this function returns NULL. Use IsEOS () to check for the EOS condition.
-func (a *Sink) TryPullSample(timeout time.Duration) *gst.Sample {
-	tm := C.GstClockTime(timeout.Nanoseconds())
+func (a *Sink) TryPullSample(timeout gst.ClockTime) *gst.Sample {
+	tm := C.GstClockTime(timeout)
 	smpl := C.gst_app_sink_try_pull_sample(a.Instance(), tm)
 	if smpl == nil {
 		return nil

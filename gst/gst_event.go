@@ -155,10 +155,10 @@ func (e *Event) ParseGroupID() (ok bool, gid uint) {
 // func (e *Event) ParseInstantRateChange() {}
 
 // ParseLatency gets the latency in the latency event.
-func (e *Event) ParseLatency() time.Duration {
+func (e *Event) ParseLatency() ClockTime {
 	var out C.GstClockTime
 	C.gst_event_parse_latency(e.Instance(), &out)
-	return time.Duration(out)
+	return ClockTime(out)
 }
 
 // ParseProtection parses an event containing protection system specific information and stores the results in
@@ -182,7 +182,7 @@ func (e *Event) ParseProtection() (systemID string, data *Buffer, origin string)
 // the different QoS values.
 //
 // timestamp will be adjusted for any pad offsets of pads it was passing through.
-func (e *Event) ParseQOS() (qTtype QOSType, proportion float64, diff ClockTimeDiff, timestamp time.Duration) {
+func (e *Event) ParseQOS() (qTtype QOSType, proportion float64, diff ClockTimeDiff, timestamp ClockTime) {
 	var gtype C.GstQOSType
 	var gprop C.gdouble
 	var gdiff C.GstClockTimeDiff
@@ -191,7 +191,7 @@ func (e *Event) ParseQOS() (qTtype QOSType, proportion float64, diff ClockTimeDi
 		e.Instance(),
 		&gtype, &gprop, &gdiff, &gts,
 	)
-	return QOSType(gtype), float64(gprop), ClockTimeDiff(gdiff), time.Duration(gts)
+	return QOSType(gtype), float64(gprop), ClockTimeDiff(gdiff), ClockTime(gts)
 }
 
 // ParseSeek parses a seek event.
@@ -207,10 +207,10 @@ func (e *Event) ParseSeek() (rate float64, format Format, flags SeekFlags, start
 
 // ParseSeekTrickModeInterval retrieves the trickmode interval that may have been set on a seek event with
 // SetSeekTrickModeInterval.
-func (e *Event) ParseSeekTrickModeInterval() (interval time.Duration) {
+func (e *Event) ParseSeekTrickModeInterval() (interval ClockTime) {
 	var out C.GstClockTime
 	C.gst_event_parse_seek_trickmode_interval(e.Instance(), &out)
-	return time.Duration(out)
+	return ClockTime(out)
 }
 
 // ParseSegment parses a segment event and stores the result in the given segment location. segment remains valid
@@ -346,8 +346,8 @@ func (e *Event) SetRunningTimeOffset(offset int64) {
 
 // SetSeekTrickModeInterval sets a trickmode interval on a (writable) seek event. Elements that support TRICKMODE_KEY_UNITS
 // seeks SHOULD use this as the minimal interval between each frame they may output.
-func (e *Event) SetSeekTrickModeInterval(interval time.Duration) {
-	C.gst_event_set_seek_trickmode_interval(e.Instance(), C.GstClockTime(interval.Nanoseconds()))
+func (e *Event) SetSeekTrickModeInterval(interval ClockTime) {
+	C.gst_event_set_seek_trickmode_interval(e.Instance(), C.GstClockTime(interval))
 }
 
 // SetSeqnum sets the sequence number of a event.

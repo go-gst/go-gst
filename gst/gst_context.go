@@ -29,17 +29,16 @@ func FromGstContextUnsafeNone(ctx unsafe.Pointer) *Context {
 
 // NewContext creates a new context.
 //
-//   // Example
+//	// Example
 //
-//   ctx := gst.NewContext("test-context", false)
-//   fmt.Println(ctx.IsPersistent())
+//	ctx := gst.NewContext("test-context", false)
+//	fmt.Println(ctx.IsPersistent())
 //
-//   ctx = gst.NewContext("test-context", true)
-//   fmt.Println(ctx.IsPersistent())
+//	ctx = gst.NewContext("test-context", true)
+//	fmt.Println(ctx.IsPersistent())
 //
-//   // false
-//   // true
-//
+//	// false
+//	// true
 func NewContext(ctxType string, persistent bool) *Context {
 	cStr := C.CString(ctxType)
 	defer C.free(unsafe.Pointer(cStr))
@@ -55,13 +54,12 @@ func (c *Context) Instance() *C.GstContext { return C.toGstContext(unsafe.Pointe
 
 // GetType returns the type of the context.
 //
-//   // Example
+//	// Example
 //
-//   ctx := gst.NewContext("test-context", false)
-//   fmt.Println(ctx.GetType())
+//	ctx := gst.NewContext("test-context", false)
+//	fmt.Println(ctx.GetType())
 //
-//   // test-context
-//
+//	// test-context
 func (c *Context) GetType() string {
 	return C.GoString(C.gst_context_get_context_type(c.Instance()))
 }
@@ -77,15 +75,14 @@ func (c *Context) GetStructure() *Structure {
 
 // HasContextType checks if the context has the given type.
 //
-//   // Example
+//	// Example
 //
-//   ctx := gst.NewContext("test-context", false)
-//   fmt.Println(ctx.HasContextType("test-context"))
-//   fmt.Println(ctx.HasContextType("another-context"))
+//	ctx := gst.NewContext("test-context", false)
+//	fmt.Println(ctx.HasContextType("test-context"))
+//	fmt.Println(ctx.HasContextType("another-context"))
 //
-//   // true
-//   // false
-//
+//	// true
+//	// false
 func (c *Context) HasContextType(ctxType string) bool {
 	cStr := C.CString(ctxType)
 	defer C.free(unsafe.Pointer(cStr))
