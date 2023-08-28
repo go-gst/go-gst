@@ -3,7 +3,6 @@ package gst
 // #include "gst.go.h"
 import "C"
 import (
-	"time"
 	"unsafe"
 
 	"github.com/go-gst/go-glib/glib"
@@ -315,7 +314,7 @@ func NewPropertyNotifyMessage(src interface{}, propName string, val interface{})
 //
 // running_time, stream_time, timestamp, duration should be set to the respective running-time, stream-time, timestamp and duration of the (dropped) buffer
 // that generated the QoS event. Values can be left to less than zero when unknown.
-func NewQoSMessage(src interface{}, live bool, runningTime, streamTime, timestamp, duration time.Duration) *Message {
+func NewQoSMessage(src interface{}, live bool, runningTime, streamTime, timestamp, duration uint64) *Message {
 	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
@@ -323,10 +322,10 @@ func NewQoSMessage(src interface{}, live bool, runningTime, streamTime, timestam
 	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_qos(
 		srcObj,
 		gboolean(live),
-		C.guint64((runningTime.Nanoseconds())),
-		C.guint64((streamTime.Nanoseconds())),
-		C.guint64((timestamp.Nanoseconds())),
-		C.guint64((duration.Nanoseconds())),
+		C.guint64(runningTime),
+		C.guint64(streamTime),
+		C.guint64(timestamp),
+		C.guint64(duration),
 	)))
 }
 
@@ -400,12 +399,12 @@ func NewRequestStateMessage(src interface{}, state State) *Message {
 }
 
 // NewResetTimeMessage creates a message that is posted when the pipeline running-time should be reset to running_time, like after a flushing seek.
-func NewResetTimeMessage(src interface{}, runningTime time.Duration) *Message {
+func NewResetTimeMessage(src interface{}, runningTime ClockTime) *Message {
 	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
-	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_reset_time(srcObj, C.GstClockTime(runningTime.Nanoseconds()))))
+	return FromGstMessageUnsafeFull(unsafe.Pointer(C.gst_message_new_reset_time(srcObj, C.GstClockTime(runningTime))))
 }
 
 // NewSegmentDoneMessage creates a new segment done message. This message is posted by elements that finish playback of a segment as a result of a
@@ -462,7 +461,7 @@ func NewStateDirtyMessage(src interface{}) *Message {
 // complete step operation.
 //
 // Duration will contain the amount of time of the stepped amount of media in format format.
-func NewStepDoneMessage(src interface{}, format Format, amount uint64, rate float64, flush, intermediate bool, duration time.Duration, eos bool) *Message {
+func NewStepDoneMessage(src interface{}, format Format, amount uint64, rate float64, flush, intermediate bool, duration uint64, eos bool) *Message {
 	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
@@ -474,7 +473,7 @@ func NewStepDoneMessage(src interface{}, format Format, amount uint64, rate floa
 		C.gdouble(rate),
 		gboolean(flush),
 		gboolean(intermediate),
-		C.guint64(duration.Nanoseconds()),
+		C.guint64(duration),
 		gboolean(eos),
 	)))
 }

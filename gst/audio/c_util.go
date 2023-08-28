@@ -12,18 +12,20 @@ clockTimeToFrames(GstClockTime ct, gint rate) { return GST_CLOCK_TIME_TO_FRAMES(
 GValue *  audioUtilToGValue (guintptr p) { return (GValue*)(p); }
 */
 import "C"
-import "time"
+import (
+	"github.com/go-gst/go-gst/gst"
+)
 
-// FramesToDuration calculates the Clocktime (which is usually referred to as a time.Duration in the bindings)
+// FramesToClockTime calculates the Clocktime
 // from the given frames and rate.
-func FramesToDuration(frames, rate int) time.Duration {
+func FramesToClockTime(frames, rate int) gst.ClockTime {
 	ct := C.framesToClockTime(C.gint(frames), C.gint(rate))
-	return time.Duration(ct)
+	return gst.ClockTime(ct)
 }
 
 // DurationToFrames calculates the number of frames from the given duration and sample rate.
-func DurationToFrames(dur time.Duration, rate int) int {
-	return int(C.clockTimeToFrames(C.GstClockTime(dur.Nanoseconds()), C.gint(rate)))
+func DurationToFrames(dur gst.ClockTime, rate int) int {
+	return int(C.clockTimeToFrames(C.GstClockTime(dur), C.gint(rate)))
 }
 
 // gboolean converts a go bool to a C.gboolean.

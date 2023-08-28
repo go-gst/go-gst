@@ -5,7 +5,6 @@ import "C"
 
 import (
 	"runtime"
-	"time"
 	"unsafe"
 
 	"github.com/go-gst/go-gst/gst"
@@ -82,8 +81,8 @@ func CalculateDisplayRatio(videoWidth, videoHeight, videoParNum, videoParDenom, 
 // It will calculate an arbitrary framerate if no close match was found, and return FALSE.
 //
 // It returns FALSE if a duration of 0 is passed.
-func GuessFramerate(dur time.Duration) (destNum, destDenom int, ok bool) {
+func GuessFramerate(dur gst.ClockTime) (destNum, destDenom int, ok bool) {
 	var num, denom C.gint
-	gok := C.gst_video_guess_framerate(durationToClockTime(dur), &num, &denom)
+	gok := C.gst_video_guess_framerate(C.GstClockTime(dur), &num, &denom)
 	return int(num), int(denom), gobool(gok)
 }

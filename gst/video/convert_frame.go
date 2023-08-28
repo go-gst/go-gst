@@ -35,12 +35,12 @@ type ConvertSampleCallback func(*gst.Sample, error)
 // The output caps can be any raw video formats or any image formats (jpeg, png, ...).
 //
 // The width, height and pixel-aspect-ratio can also be specified in the output caps.
-func ConvertSample(sample *gst.Sample, toCaps *gst.Caps, timeout time.Duration) (*gst.Sample, error) {
+func ConvertSample(sample *gst.Sample, toCaps *gst.Caps, timeout gst.ClockTime) (*gst.Sample, error) {
 	var gerr *C.GError
 	ret := C.gst_video_convert_sample(
 		fromCoreSample(sample),
 		fromCoreCaps(toCaps),
-		durationToClockTime(timeout),
+		C.GstClockTime(timeout),
 		&gerr,
 	)
 	if gerr != nil {
@@ -60,12 +60,12 @@ func ConvertSample(sample *gst.Sample, toCaps *gst.Caps, timeout time.Duration) 
 //
 // The callback will be called after conversion, when an error occurred or if conversion
 // didn't finish after timeout.
-func ConvertSampleAsync(sample *gst.Sample, toCaps *gst.Caps, timeout time.Duration, cb ConvertSampleCallback) {
+func ConvertSampleAsync(sample *gst.Sample, toCaps *gst.Caps, timeout gst.ClockTime, cb ConvertSampleCallback) {
 	ptr := gopointer.Save(cb)
 	C.gst_video_convert_sample_async(
 		fromCoreSample(sample),
 		fromCoreCaps(toCaps),
-		durationToClockTime(timeout),
+		C.GstClockTime(timeout),
 		C.GstVideoConvertSampleCallback(C.cgoVideoConvertSampleCb),
 		(C.gpointer)(unsafe.Pointer(ptr)),
 		C.GDestroyNotify(C.cgoVideoGDestroyNotifyFunc),

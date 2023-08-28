@@ -21,7 +21,6 @@ import "C"
 
 import (
 	"reflect"
-	"time"
 	"unsafe"
 
 	"github.com/go-gst/go-glib/glib"
@@ -252,8 +251,8 @@ func (b *Bus) Peek() *Message {
 //
 // For 0 timeouts use gst_bus_pop_filtered instead of this function; for other short timeouts use TimedPopFiltered;
 // everything else is better handled by setting up an asynchronous bus watch and doing things from there.
-func (b *Bus) Poll(msgTypes MessageType, timeout time.Duration) *Message {
-	cTime := C.GstClockTime(timeout.Nanoseconds())
+func (b *Bus) Poll(msgTypes MessageType, timeout ClockTime) *Message {
+	cTime := C.GstClockTime(timeout)
 	mType := C.GstMessageType(msgTypes)
 	msg := C.gst_bus_poll(b.Instance(), mType, cTime)
 	if msg == nil {

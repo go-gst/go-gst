@@ -4,7 +4,6 @@ package gst
 import "C"
 
 import (
-	"time"
 	"unsafe"
 
 	"github.com/go-gst/go-glib/glib"
@@ -42,10 +41,10 @@ func (o *Object) GetName() string {
 }
 
 // GetValue retrieves the value for the given controlled property at the given timestamp.
-func (o *Object) GetValue(property string, timestamp time.Duration) *glib.Value {
+func (o *Object) GetValue(property string, timestamp ClockTime) *glib.Value {
 	cprop := C.CString(property)
 	defer C.free(unsafe.Pointer(cprop))
-	gval := C.gst_object_get_value(o.Instance(), (*C.gchar)(cprop), C.GstClockTime(timestamp.Nanoseconds()))
+	gval := C.gst_object_get_value(o.Instance(), (*C.gchar)(cprop), C.GstClockTime(timestamp))
 	if gval == nil {
 		return nil
 	}

@@ -81,7 +81,7 @@ type GstBaseSrcImpl interface {
 	Stop(*GstBaseSrc) bool
 	// GetTimes should, given a buffer, return start and stop time when it should be pushed.
 	// The base class will sync on the clock using these times.
-	GetTimes(*GstBaseSrc, *gst.Buffer) (start, end time.Duration)
+	GetTimes(*GstBaseSrc, *gst.Buffer) (start, end time.Duration) // should this be a ClockTime?
 	// GetSize should get the total size of the resource in bytes.
 	GetSize(*GstBaseSrc) (bool, int64)
 	// IsSeekable should check if the resource is seekable.
@@ -166,7 +166,7 @@ func (e *extendsBaseSrc) InitClass(klass unsafe.Pointer, elem glib.GoObjectSubcl
 	}
 
 	if _, ok := elem.(interface {
-		GetTimes(*GstBaseSrc, *gst.Buffer) (start, end time.Duration)
+		GetTimes(*GstBaseSrc, *gst.Buffer) (start, end time.Duration) // should this be a ClockTime?
 	}); ok {
 		C.setGstBaseSrcGetTimes(class)
 	}

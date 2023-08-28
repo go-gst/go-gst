@@ -22,7 +22,6 @@ setGstBaseTransformTransformIPOnPassthrough (GstBaseTransform * obj, gboolean en
 import "C"
 
 import (
-	"time"
 	"unsafe"
 
 	"github.com/go-gst/go-glib/glib"
@@ -179,12 +178,12 @@ func (g *GstBaseTransform) SrcPad() *gst.Pad {
 //
 // proportion is the proportion, diff is the diff against the clock, and timestamp is the timestamp of the buffer
 // generating the QoS expressed in running_time.
-func (g *GstBaseTransform) UpdateQoS(proportion float64, diff, timestamp time.Duration) {
+func (g *GstBaseTransform) UpdateQoS(proportion float64, diff, timestamp gst.ClockTime) {
 	C.gst_base_transform_update_qos(
 		g.Instance(),
 		C.gdouble(proportion),
-		C.GstClockTimeDiff(diff.Nanoseconds()),
-		C.GstClockTime(timestamp.Nanoseconds()),
+		C.GstClockTimeDiff(diff),
+		C.GstClockTime(timestamp),
 	)
 }
 
