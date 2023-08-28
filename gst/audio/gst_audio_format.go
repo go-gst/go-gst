@@ -1,6 +1,7 @@
 package audio
 
 /*
+#include <stdlib.h>
 #include "gst.go.h"
 */
 import "C"
