@@ -245,14 +245,14 @@ func goGlobalPluginInit(plugin *C.GstPlugin) C.gboolean {
 
 //export goLogFunction
 func goLogFunction(
-	category *C.GstDebugCategory,
+	_ *C.GstDebugCategory,
 	level C.GstDebugLevel,
 	file *C.gchar,
 	function *C.gchar,
 	line C.gint,
 	object *C.GObject,
 	message *C.GstDebugMessage,
-	userData C.gpointer,
+	_ C.gpointer,
 ) {
 	logFnMu.RLock()
 	f := customLogFunction

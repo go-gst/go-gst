@@ -189,7 +189,7 @@ func (d *DebugCategory) LogMemDump(message string, obj ...*Object) {
 	d.logDepth(LevelMemDump, message, 2, getLogObj(obj...))
 }
 
-type LogFunction func(
+type LogFunction = func(
 	level DebugLevel,
 	file string,
 	function string,
