@@ -203,6 +203,8 @@ var (
 	customLogFunction LogFunction
 )
 
+// SetLogFunction is used to replace gstreamer's default logging function.
+// Setting to nil will revert to the default logging function.
 func SetLogFunction(f LogFunction) {
 	logFnMu.Lock()
 	defer logFnMu.Unlock()
