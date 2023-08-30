@@ -242,3 +242,34 @@ func goPluginInit(plugin *C.GstPlugin, userData C.gpointer) C.gboolean {
 func goGlobalPluginInit(plugin *C.GstPlugin) C.gboolean {
 	return gboolean(globalPluginInit(wrapPlugin(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(plugin))})))
 }
+
+//export goLogFunction
+func goLogFunction(
+	category *C.GstDebugCategory,
+	level C.GstDebugLevel,
+	file *C.gchar,
+	function *C.gchar,
+	line C.gint,
+	object *C.GObject,
+	message *C.GstDebugMessage,
+	userData C.gpointer,
+) {
+	logFnMu.RLock()
+	f := customLogFunction
+	logFnMu.RUnlock()
+
+	if f != nil {
+		var obj *glib.Object
+		if object != nil {
+			obj = glib.TransferNone(unsafe.Pointer(object))
+		}
+		f(
+			DebugLevel(level),
+			C.GoString(file),
+			C.GoString(function),
+			int(line),
+			obj,
+			C.GoString(C.gst_debug_message_get(message)),
+		)
+	}
+}
