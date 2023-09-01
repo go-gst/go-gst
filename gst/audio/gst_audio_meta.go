@@ -13,11 +13,11 @@ import (
 )
 
 // AudioMeta is a Go representation of a GstAudioMeta.
-type AudioMeta struct{ *Object }
+type AudioMeta struct{ *glib.Object }
 
 // FromGstAudioMetaUnsafeNone wraps the given audioMeta with a ref and finalizer.
 func FromGstAudioMetaUnsafeNone(audioMeta unsafe.Pointer) *AudioMeta {
-	return &AudioMeta{wrapObject(glib.TransferNone(audioMeta))}
+	return &AudioMeta{glib.TransferNone(audioMeta)}
 }
 
 func BufferAddAudioMeta(buffer *gst.Buffer, info *Info, samples int, offsets []int) *AudioMeta {
@@ -34,6 +34,6 @@ func BufferAddAudioMeta(buffer *gst.Buffer, info *Info, samples int, offsets []i
 		(*C.GstBuffer)(unsafe.Pointer(buffer.Instance())),
 		info.ptr,
 		C.gsize(samples),
-		offsets,
+		nil,
 	)))
 }

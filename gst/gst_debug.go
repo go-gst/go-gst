@@ -20,7 +20,10 @@ void cgoDebugLog (GstDebugCategory * category,
                   GObject * object,
 				  const gchar * msg)
 {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wformat-security"
 	gst_debug_log(category, level, file, function, line, object, msg);
+#pragma GCC diagnostic pop
 }
 
 void cgoSetLogFunction()

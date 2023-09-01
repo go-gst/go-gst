@@ -6,7 +6,6 @@ package pbutils
 import "C"
 
 import (
-	"time"
 	"unsafe"
 
 	"github.com/go-gst/go-glib/glib"
