@@ -19,7 +19,6 @@ void cgoVideoConvertSampleCb (GstSample * sample, GError * gerr, gpointer user_d
 import "C"
 
 import (
-	"time"
 	"unsafe"
 
 	"github.com/go-gst/go-gst/gst"

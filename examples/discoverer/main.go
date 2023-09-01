@@ -30,7 +30,7 @@ func main() {
 
 	uri := os.Args[1]
 
-	discoverer, err := pbutils.NewDiscoverer(time.Second * 15)
+	discoverer, err := pbutils.NewDiscoverer(gst.ClockTime(time.Second * 15))
 	if err != nil {
 		fmt.Println("ERROR:", err)
 		os.Exit(2)

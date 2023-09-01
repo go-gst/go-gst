@@ -9,7 +9,6 @@ import "C"
 
 import (
 	"errors"
-	"time"
 	"unsafe"
 
 	"github.com/go-gst/go-gst/gst"
