@@ -9,20 +9,23 @@ jobs:
   matrix:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, 'macos-latest']
+        os: [ubuntu-latest, windows-latest, "macos-latest"]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Setup GStreamer
-        id:   setup_gstreamer
+        id: setup_gstreamer
         uses: blinemedical/setup-gstreamer@45324555100927b587d390d8cf3940f91fd3bdc9
         with:
           version: 1.22.0
       - uses: actions/setup-go@v4
         with:
-          go-version: '^1.21.0'
+          go-version: "^1.21.0"
       - name: checkout
         uses: actions/checkout@v3
-      - name: build the appsink
-        run: cd examples/appsink && go build -x .
-
-
+      - name: build
+        shell: bash
+        run: |
+          packages=$(go list ./...)
+          for package in $packages; do
+            go build $package || exit 1
+          done
