@@ -21,11 +21,9 @@ import (
 	"github.com/go-gst/go-gst/gst"
 )
 
-var srcURI string
-
 func playbin(mainLoop *glib.MainLoop) error {
 	if len(os.Args) < 2 {
-		return errors.New("Usage: playbin <uri>")
+		return errors.New("usage: playbin <uri>")
 	}
 
 	gst.Init(nil)

@@ -35,7 +35,7 @@ type SinkCallbacks struct {
 }
 
 // ErrEOS represents that the stream has ended.
-var ErrEOS = errors.New("Pipeline has reached end-of-stream")
+var ErrEOS = errors.New("pipeline has reached end-of-stream")
 
 // Sink wraps an Element made with the appsink plugin with additional methods for pulling samples.
 type Sink struct{ *base.GstBaseSink }

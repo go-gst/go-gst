@@ -90,7 +90,7 @@ func buildPipeline() (*gst.Pipeline, error) {
 		fmt.Printf("New pad added, is_audio=%v, is_video=%v\n", isAudio, isVideo)
 
 		if !isAudio && !isVideo {
-			err := errors.New("Could not detect media stream type")
+			err := errors.New("could not detect media stream type")
 			// We can send errors directly to the pipeline bus if they occur.
 			// These will be handled downstream.
 			msg := gst.NewErrorMessage(self, gst.NewGError(1, err), fmt.Sprintf("Received caps: %s", caps.String()), nil)

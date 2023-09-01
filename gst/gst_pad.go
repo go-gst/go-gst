@@ -1136,7 +1136,7 @@ func iteratorToPadSlice(iterator *C.GstIterator) ([]*Pad, error) {
 			pads = append(pads, FromGstPadUnsafeNone(unsafe.Pointer(cPad)))
 			C.g_value_unset((*C.GValue)(gval))
 		default:
-			return nil, errors.New("Pad iterator failed")
+			return nil, errors.New("pad iterator failed")
 		}
 	}
 }
