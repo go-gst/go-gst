@@ -42,6 +42,10 @@ type Buffer struct {
 // FromGstBufferUnsafeNone wraps the given buffer, sinking any floating references, and places
 // a finalizer on the wrapped Buffer.
 func FromGstBufferUnsafeNone(buf unsafe.Pointer) *Buffer {
+	if buf == nil {
+		return nil
+	}
+
 	wrapped := ToGstBuffer(buf)
 	wrapped.Ref()
 	runtime.SetFinalizer(wrapped, (*Buffer).Unref)
@@ -50,6 +54,10 @@ func FromGstBufferUnsafeNone(buf unsafe.Pointer) *Buffer {
 
 // FromGstBufferUnsafeFull wraps the given buffer without taking an additional reference.
 func FromGstBufferUnsafeFull(buf unsafe.Pointer) *Buffer {
+	if buf == nil {
+		return nil
+	}
+
 	wrapped := ToGstBuffer(buf)
 	runtime.SetFinalizer(wrapped, (*Buffer).Unref)
 	return wrapped
