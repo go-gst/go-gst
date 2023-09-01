@@ -448,7 +448,7 @@ func glistToAudioInfoSlice(glist *C.GList) []*DiscovererAudioInfo {
 func glistToVideoInfoSlice(glist *C.GList) []*DiscovererVideoInfo {
 	defer C.gst_discoverer_stream_info_list_free(glist)
 	l := C.g_list_length(glist)
-	out := make([]*DiscovererVideoInfo, 0)
+	out := make([]*DiscovererVideoInfo, int(l))
 	for i := 0; i < int(l); i++ {
 		data := C.g_list_nth_data(glist, C.guint(i))
 		if data == nil {
@@ -462,7 +462,7 @@ func glistToVideoInfoSlice(glist *C.GList) []*DiscovererVideoInfo {
 func glistToContainerInfoSlice(glist *C.GList) []*DiscovererContainerInfo {
 	defer C.gst_discoverer_stream_info_list_free(glist)
 	l := C.g_list_length(glist)
-	out := make([]*DiscovererContainerInfo, 0)
+	out := make([]*DiscovererContainerInfo, int(l))
 	for i := 0; i < int(l); i++ {
 		data := C.g_list_nth_data(glist, C.guint(i))
 		if data == nil {
@@ -476,7 +476,7 @@ func glistToContainerInfoSlice(glist *C.GList) []*DiscovererContainerInfo {
 func glistToSubtitleInfoSlice(glist *C.GList) []*DiscovererSubtitleInfo {
 	defer C.gst_discoverer_stream_info_list_free(glist)
 	l := C.g_list_length(glist)
-	out := make([]*DiscovererSubtitleInfo, 0)
+	out := make([]*DiscovererSubtitleInfo, int(l))
 	for i := 0; i < int(l); i++ {
 		data := C.g_list_nth_data(glist, C.guint(i))
 		if data == nil {
