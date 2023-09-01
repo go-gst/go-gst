@@ -244,7 +244,7 @@ func (g *GstBaseSink) SetQoSEnabled(enabled bool) {
 }
 
 // SetRenderDelay sets the render delay in sink to delay. The render delay is the time between actual
-// rendering of a buffer and its synchronisation time. Some devices might delay media rendering which
+// rendering of a buffer and its synchronization time. Some devices might delay media rendering which
 // can be compensated for with this function.
 //
 // After calling this function, this sink will report additional latency and other sinks will adjust
@@ -291,7 +291,7 @@ func (g *GstBaseSink) Wait(timeout gst.ClockTime) (ret gst.FlowReturn, jitter gs
 // WaitClock will block until timeout is reached. It is usually called by subclasses that use their own
 // internal synchronization.
 //
-// If time is not valid, no synchronisation is done and GST_CLOCK_BADTIME is returned. Likewise, if synchronization
+// If time is not valid, no synchronization is done and GST_CLOCK_BADTIME is returned. Likewise, if synchronization
 // is disabled in the element or there is no clock, no synchronization is done and GST_CLOCK_BADTIME is returned.
 //
 // This function should only be called with the PREROLL_LOCK held, like when receiving an EOS event in the event()
@@ -307,7 +307,7 @@ func (g *GstBaseSink) WaitClock(timeout gst.ClockTime) (ret gst.ClockReturn, jit
 
 // WaitPreroll will block until the preroll is complete.
 //
-// If the render() method performs its own synchronisation against the clock it must unblock when going from
+// If the render() method performs its own synchronization against the clock it must unblock when going from
 // PLAYING to the PAUSED state and call this method before continuing to render the remaining data.
 //
 // If the render() method can block on something else than the clock, it must also be ready to unblock immediately

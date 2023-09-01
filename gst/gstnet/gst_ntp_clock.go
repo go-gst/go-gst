@@ -11,7 +11,7 @@ import (
 	"github.com/go-gst/go-gst/gst"
 )
 
-// NTP timestamps are realtive to 1. Jan 1900, so we need an offset for 70 Years to be Unix TS compatible
+// NTP timestamps are relative to 1. Jan 1900, so we need an offset for 70 Years to be Unix TS compatible
 const NTPTimeToUnixEpoch = gst.ClockTime(2208988800 * time.Second)
 
 // NTPClock wraps GstClock

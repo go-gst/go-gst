@@ -309,7 +309,7 @@ func NewPropertyNotifyMessage(src interface{}, propName string, val interface{})
 // NewQoSMessage creates a message that is posted on the bus whenever an element decides to drop a buffer because of
 // QoS reasons or whenever it changes its processing strategy because of QoS reasons (quality adjustments such as processing at lower accuracy).
 //
-// This message can be posted by an element that performs synchronisation against the clock (live) or it could be dropped by an element that performs
+// This message can be posted by an element that performs synchronization against the clock (live) or it could be dropped by an element that performs
 // QoS because of QOS events received from a downstream element (!live).
 //
 // running_time, stream_time, timestamp, duration should be set to the respective running-time, stream-time, timestamp and duration of the (dropped) buffer

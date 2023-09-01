@@ -84,7 +84,7 @@ type GstBaseSinkImpl interface {
 	Fixate(self *GstBaseSink, caps *gst.Caps) *gst.Caps
 	// Called to get sink pad caps from the subclass
 	GetCaps(self *GstBaseSink, filter *gst.Caps) *gst.Caps
-	// Called to get the start and end times for synchronising the passed buffer to the clock
+	// Called to get the start and end times for synchronizing the passed buffer to the clock
 	GetTimes(self *GstBaseSink, buffer *gst.Buffer) (start, end time.Duration) // should this be a ClockTime?
 	// Called to prepare the buffer for render and preroll. This function is called before synchronization
 	// is performed.

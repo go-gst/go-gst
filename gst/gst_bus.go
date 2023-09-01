@@ -168,7 +168,7 @@ func (b *Bus) RemoveSignalWatch() { C.gst_bus_remove_signal_watch(b.Instance()) 
 // See EnableSyncMessageEmission for more information.
 //
 // In the event that multiple pieces of code have called EnableSyncMessageEmission, the sync-message emissions
-// will only be stopped after all calls to EnableSyncMessageEmission were "cancelled" by calling this function.
+// will only be stopped after all calls to EnableSyncMessageEmission were "canceled" by calling this function.
 // In this way the semantics are exactly the same as Ref that which calls enable should also call disable.
 func (b *Bus) DisableSyncMessageEmission() { C.gst_bus_disable_sync_message_emission(b.Instance()) }
 
@@ -181,7 +181,7 @@ func (b *Bus) DisableSyncMessageEmission() { C.gst_bus_disable_sync_message_emis
 //
 // While this function looks similar to AddSignalWatch, it is not exactly the same -- this function enables *synchronous*
 // emission of signals when messages arrive; AddSignalWatch adds an idle callback to pop messages off the bus asynchronously.
-// The sync-message signal comes from the thread of whatever object posted the message; the "message" signal is marshalled
+// The sync-message signal comes from the thread of whatever object posted the message; the "message" signal is marshaled
 // to the main thread via the main loop.
 func (b *Bus) EnableSyncMessageEmission() { C.gst_bus_enable_sync_message_emission(b.Instance()) }
 

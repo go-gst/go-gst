@@ -29,7 +29,7 @@ const (
 	ColorPrimariesBT470BG    ColorPrimaries = C.GST_VIDEO_COLOR_PRIMARIES_BT470BG    // (3) – BT470BG primaries, also ITU-R BT601-6 625 / ITU-R BT1358 625 / ITU-R BT1700 625 PAL & SECAM
 	ColorPrimariesSMPTE170M  ColorPrimaries = C.GST_VIDEO_COLOR_PRIMARIES_SMPTE170M  // (4) – SMPTE170M primaries, also ITU-R BT601-6 525 / ITU-R BT1358 525 / ITU-R BT1700 NTSC
 	ColorPrimariesSMPTE240M  ColorPrimaries = C.GST_VIDEO_COLOR_PRIMARIES_SMPTE240M  // (5) – SMPTE240M primaries
-	ColorPrimariesFilm       ColorPrimaries = C.GST_VIDEO_COLOR_PRIMARIES_FILM       // (6) – Generic film (colour filters using Illuminant C)
+	ColorPrimariesFilm       ColorPrimaries = C.GST_VIDEO_COLOR_PRIMARIES_FILM       // (6) – Generic film (color filters using Illuminant C)
 	ColorPrimariesBT2020     ColorPrimaries = C.GST_VIDEO_COLOR_PRIMARIES_BT2020     // (7) – ITU-R BT2020 primaries. Since: 1.6
 	ColorPrimariesAdobeRGB   ColorPrimaries = C.GST_VIDEO_COLOR_PRIMARIES_ADOBERGB   // (8) – Adobe RGB primaries. Since: 1.8
 	ColorPrimariesSMPTEST428 ColorPrimaries = C.GST_VIDEO_COLOR_PRIMARIES_SMPTEST428 // (9) – SMPTE ST 428 primaries (CIE 1931 XYZ). Since: 1.16

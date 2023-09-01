@@ -101,7 +101,7 @@ func NewGapEvent(timestamp, duration ClockTime) *Event {
 // }
 
 // NewLatencyEvent creates a new latency event. The event is sent upstream from the sinks and notifies elements that they should add an additional latency to the
-// running time before synchronising against the clock.
+// running time before synchronizing against the clock.
 //
 // The latency is mostly used in live sinks and is always expressed in the time format.
 func NewLatencyEvent(latency ClockTime) *Event {
