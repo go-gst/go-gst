@@ -27,5 +27,7 @@ jobs:
         run: |
           packages=$(go list ./...)
           for package in $packages; do
+            echo "Building: $package"
             go build $package || exit 1
+            echo "Build done: $package"
           done
