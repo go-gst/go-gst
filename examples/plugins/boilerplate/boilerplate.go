@@ -1,3 +1,5 @@
+//lint:file-ignore U1000 Ignore all unused code, this is example code
+
 // +plugin:Name=boilerplate
 // +plugin:Description=My plugin written in go
 // +plugin:Version=v0.0.1
