@@ -97,7 +97,7 @@ func (g *GstBaseSrc) QueryLatency() (ok, live bool, minLatency, maxLatency gst.C
 	return gobool(gok), gobool(glive), gst.ClockTime(gmin), gst.ClockTime(gmax)
 }
 
-// SetAsync configures async behaviour in src, no state change will block. The open, close, start, stop, play and
+// SetAsync configures async behavior in src, no state change will block. The open, close, start, stop, play and
 // pause virtual methods will be executed in a different thread and are thus allowed to perform blocking operations.
 // Any blocking operation should be unblocked with the unlock vmethod.
 func (g *GstBaseSrc) SetAsync(async bool) { C.gst_base_src_set_async(g.Instance(), gboolean(async)) }
@@ -179,7 +179,7 @@ func (g *GstBaseSrc) StartWait() gst.FlowReturn {
 //
 // Subclasses that use this function from their create function must return GST_FLOW_OK and no buffer from their create
 // virtual method implementation. If a buffer is returned after a buffer list has also been submitted via this function the
-// behaviour is undefined.
+// behavior is undefined.
 //
 // Subclasses must only call this function once per create function call and subclasses must only call this function when
 // the source operates in push mode.
@@ -190,7 +190,7 @@ func (g *GstBaseSrc) SubmitBufferList(bufferList *gst.BufferList) {
 // WaitPlaying will block until a state change to PLAYING happens (in which case this function returns gst.FlowOK) or the
 // processing must be stopped due to a state change to READY or a FLUSH event (in which case this function returns GST_FLOW_FLUSHING).
 //
-// If the Create() method performs its own synchronisation against the clock it must unblock when going from PLAYING to the PAUSED
+// If the Create() method performs its own synchronization against the clock it must unblock when going from PLAYING to the PAUSED
 // state and call this method before continuing to produce the remaining data.
 //
 // gst.FlowOK will be returned if the source is PLAYING and processing can continue. Any other return value should be

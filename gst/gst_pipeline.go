@@ -98,7 +98,7 @@ circular references.
 This means that applications that update state using (async) bus messages (e.g. do
 certain things when a pipeline goes from PAUSED to READY) might not get to see
 messages when the pipeline is shut down, because they might be flushed before they
-can be dispatched in the main thread. This behaviour can be disabled using this function.
+can be dispatched in the main thread. This behavior can be disabled using this function.
 
 It is important that all messages on the bus are handled when the automatic flushing
 is disabled else memory leaks will be introduced.

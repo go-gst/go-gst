@@ -207,7 +207,7 @@ const (
 	EventTypeQOS           EventType = C.GST_EVENT_QOS            // (48641) – A quality message. Used to indicate to upstream elements that the downstream elements should adjust their processing rate.
 	EventTypeSeek          EventType = C.GST_EVENT_SEEK           // (51201) – A request for a new playback position and rate.
 	EventTypeNavigation    EventType = C.GST_EVENT_NAVIGATION     // (53761) – Navigation events are usually used for communicating user requests, such as mouse or keyboard movements, to upstream elements.
-	EventTypeLatency       EventType = C.GST_EVENT_LATENCY        // (56321) – Notification of new latency adjustment. Sinks will use the latency information to adjust their synchronisation.
+	EventTypeLatency       EventType = C.GST_EVENT_LATENCY        // (56321) – Notification of new latency adjustment. Sinks will use the latency information to adjust their synchronization.
 	EventTypeStep          EventType = C.GST_EVENT_STEP           // (58881) – A request for stepping through the media. Sinks will usually execute the step operation.
 	EventTypeReconfigure   EventType = C.GST_EVENT_RECONFIGURE    // (61441) – A request for upstream renegotiating caps and reconfiguring.
 	EventTypeTOCSelect     EventType = C.GST_EVENT_TOC_SELECT     // (64001) – A request for a new playback position based on TOC entry's UID.
@@ -217,7 +217,7 @@ const (
 	EventTypeCustomDownstream       EventType = C.GST_EVENT_CUSTOM_DOWNSTREAM        // (71686) – Downstream custom event that travels in the data flow.
 	EventTypeCustomOOB              EventType = C.GST_EVENT_CUSTOM_DOWNSTREAM_OOB    // (74242) – Custom out-of-band downstream event.
 	EventTypeCustomDownstreamSticky EventType = C.GST_EVENT_CUSTOM_DOWNSTREAM_STICKY // (76830) – Custom sticky downstream event.
-	EventTypeCustomBoth             EventType = C.GST_EVENT_CUSTOM_BOTH              // (79367) – Custom upstream or downstream event. In-band when travelling downstream.
+	EventTypeCustomBoth             EventType = C.GST_EVENT_CUSTOM_BOTH              // (79367) – Custom upstream or downstream event. In-band when traveling downstream.
 	EventTypeCustomBothOOB          EventType = C.GST_EVENT_CUSTOM_BOTH_OOB          // (81923) – Custom upstream or downstream out-of-band event.
 )
 
@@ -457,10 +457,10 @@ type PadProbeReturn int
 // Type castings of ProbeReturns
 const (
 	PadProbeDrop      PadProbeReturn = C.GST_PAD_PROBE_DROP    // (0) – drop data in data probes. For push mode this means that the data item is not sent downstream. For pull mode, it means that the data item is not passed upstream. In both cases, no other probes are called for this item and GST_FLOW_OK or TRUE is returned to the caller.
-	PadProbeOK        PadProbeReturn = C.GST_PAD_PROBE_OK      // (1) – normal probe return value. This leaves the probe in place, and defers decisions about dropping or passing data to other probes, if any. If there are no other probes, the default behaviour for the probe type applies ('block' for blocking probes, and 'pass' for non-blocking probes).
+	PadProbeOK        PadProbeReturn = C.GST_PAD_PROBE_OK      // (1) – normal probe return value. This leaves the probe in place, and defers decisions about dropping or passing data to other probes, if any. If there are no other probes, the default behavior for the probe type applies ('block' for blocking probes, and 'pass' for non-blocking probes).
 	PadProbeRemove    PadProbeReturn = C.GST_PAD_PROBE_REMOVE  // (2) – remove this probe.
 	PadProbePass      PadProbeReturn = C.GST_PAD_PROBE_PASS    // (3) – pass the data item in the block probe and block on the next item.
-	PadProbeUnhandled PadProbeReturn = C.GST_PAD_PROBE_HANDLED // (4) – Data has been handled in the probe and will not be forwarded further. For events and buffers this is the same behaviour as GST_PAD_PROBE_DROP (except that in this case you need to unref the buffer or event yourself). For queries it will also return TRUE to the caller. The probe can also modify the GstFlowReturn value by using the GST_PAD_PROBE_INFO_FLOW_RETURN() accessor. Note that the resulting query must contain valid entries. Since: 1.6
+	PadProbeUnhandled PadProbeReturn = C.GST_PAD_PROBE_HANDLED // (4) – Data has been handled in the probe and will not be forwarded further. For events and buffers this is the same behavior as GST_PAD_PROBE_DROP (except that in this case you need to unref the buffer or event yourself). For queries it will also return TRUE to the caller. The probe can also modify the GstFlowReturn value by using the GST_PAD_PROBE_INFO_FLOW_RETURN() accessor. Note that the resulting query must contain valid entries. Since: 1.6
 )
 
 // PadProbeType casts GstPadProbeType
@@ -709,11 +709,11 @@ type ProgressType int
 
 // Type castings of ProgressTypes
 const (
-	ProgressTypeStart     ProgressType = C.GST_PROGRESS_TYPE_START    // (0) – A new task started.
-	ProgressTypeContinue  ProgressType = C.GST_PROGRESS_TYPE_CONTINUE // (1) – A task completed and a new one continues.
-	ProgressTypeComplete  ProgressType = C.GST_PROGRESS_TYPE_COMPLETE // (2) – A task completed.
-	ProgressTypeCancelled ProgressType = C.GST_PROGRESS_TYPE_CANCELED // (3) – A task was canceled.
-	ProgressTypeError     ProgressType = C.GST_PROGRESS_TYPE_ERROR    // (4) – A task caused an error. An error message is also posted on the bus.
+	ProgressTypeStart    ProgressType = C.GST_PROGRESS_TYPE_START    // (0) – A new task started.
+	ProgressTypeContinue ProgressType = C.GST_PROGRESS_TYPE_CONTINUE // (1) – A task completed and a new one continues.
+	ProgressTypeComplete ProgressType = C.GST_PROGRESS_TYPE_COMPLETE // (2) – A task completed.
+	ProgressTypeCanceled ProgressType = C.GST_PROGRESS_TYPE_CANCELED // (3) – A task was canceled.
+	ProgressTypeError    ProgressType = C.GST_PROGRESS_TYPE_ERROR    // (4) – A task caused an error. An error message is also posted on the bus.
 )
 
 // String implements a stringer on ProgressTypes
@@ -725,8 +725,8 @@ func (p ProgressType) String() string {
 		return "continuing"
 	case ProgressTypeComplete:
 		return "completed"
-	case ProgressTypeCancelled:
-		return "cancelled"
+	case ProgressTypeCanceled:
+		return "canceled"
 	case ProgressTypeError:
 		return "error"
 	}

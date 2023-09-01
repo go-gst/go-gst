@@ -52,13 +52,13 @@ import (
 const CapsFeatureFormatInterlaced string = C.GST_CAPS_FEATURE_FORMAT_INTERLACED
 
 // FieldOrder is the field order of interlaced content. This is only valid for interlace-mode=interleaved
-// and not interlace-mode=mixed. In the case of mixed or FieldOrderrUnknown, the field order is signalled
+// and not interlace-mode=mixed. In the case of mixed or FieldOrderrUnknown, the field order is signaled
 // via buffer flags.
 type FieldOrder int
 
 // Type castings
 const (
-	FieldOrderUnknown          FieldOrder = C.GST_VIDEO_FIELD_ORDER_UNKNOWN            // (0) – unknown field order for interlaced content. The actual field order is signalled via buffer flags.
+	FieldOrderUnknown          FieldOrder = C.GST_VIDEO_FIELD_ORDER_UNKNOWN            // (0) – unknown field order for interlaced content. The actual field order is signaled via buffer flags.
 	FieldOrderTopFieldFirst    FieldOrder = C.GST_VIDEO_FIELD_ORDER_TOP_FIELD_FIRST    // (1) – top field is first
 	FieldOrderBottomFieldFirst FieldOrder = C.GST_VIDEO_FIELD_ORDER_BOTTOM_FIELD_FIRST // (2) – bottom field is first
 )
@@ -109,7 +109,7 @@ const (
 	MultiviewFlagsRightFlipped   MultiviewFlags = C.GST_VIDEO_MULTIVIEW_FLAGS_RIGHT_FLIPPED    // (8) – The right view is vertically mirrored.
 	MultiviewFlagsRightFlopped   MultiviewFlags = C.GST_VIDEO_MULTIVIEW_FLAGS_RIGHT_FLOPPED    // (16) – The right view is horizontally mirrored.
 	MultiviewFlagsHalfAspect     MultiviewFlags = C.GST_VIDEO_MULTIVIEW_FLAGS_HALF_ASPECT      // (16384) – For frame-packed multiview modes, indicates that the individual views have been encoded with half the true width or height and should be scaled back up for display. This flag is used for overriding input layout interpretation by adjusting pixel-aspect-ratio. For side-by-side, column interleaved or checkerboard packings, the pixel width will be doubled. For row interleaved and top-bottom encodings, pixel height will be doubled.
-	MultiviewFlagsMixedMono      MultiviewFlags = C.GST_VIDEO_MULTIVIEW_FLAGS_MIXED_MONO       // (32768) – The video stream contains both mono and multiview portions, signalled on each buffer by the absence or presence of the GST_VIDEO_BUFFER_FLAG_MULTIPLE_VIEW buffer flag.
+	MultiviewFlagsMixedMono      MultiviewFlags = C.GST_VIDEO_MULTIVIEW_FLAGS_MIXED_MONO       // (32768) – The video stream contains both mono and multiview portions, signaled on each buffer by the absence or presence of the GST_VIDEO_BUFFER_FLAG_MULTIPLE_VIEW buffer flag.
 )
 
 // MultiviewFramePacking represents the subset of MultiviewMode values that can be applied to any video frame
