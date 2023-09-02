@@ -1,3 +1,5 @@
+//lint:file-ignore U1000 Ignore all unused code, this is a work in progress
+
 // +plugin:Name=gobin
 // +plugin:Description=A bin element written in go
 // +plugin:Version=v0.0.1

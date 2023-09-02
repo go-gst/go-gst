@@ -128,7 +128,7 @@ func (b *Bin) GetElementByName(name string) (*Element, error) {
 	defer C.free(unsafe.Pointer(cName))
 	elem := C.gst_bin_get_by_name((*C.GstBin)(b.Instance()), (*C.gchar)(cName))
 	if elem == nil {
-		return nil, fmt.Errorf("Could not find element with name %s", name)
+		return nil, fmt.Errorf("could not find element with name %s", name)
 	}
 	return wrapElement(glib.TransferFull(unsafe.Pointer(elem))), nil
 }
@@ -140,7 +140,7 @@ func (b *Bin) GetElementByNameRecursive(name string) (*Element, error) {
 	defer C.free(unsafe.Pointer(cName))
 	elem := C.gst_bin_get_by_name_recurse_up((*C.GstBin)(b.Instance()), (*C.gchar)(cName))
 	if elem == nil {
-		return nil, fmt.Errorf("Could not find element with name %s", name)
+		return nil, fmt.Errorf("could not find element with name %s", name)
 	}
 	return wrapElement(glib.TransferFull(unsafe.Pointer(elem))), nil
 }
@@ -185,7 +185,7 @@ func (b *Bin) GetElementsSorted() ([]*Element, error) {
 func (b *Bin) GetByInterface(iface glib.Interface) (*Element, error) {
 	elem := C.gst_bin_get_by_interface(b.Instance(), C.GType(iface.Type()))
 	if elem == nil {
-		return nil, fmt.Errorf("Could not find any elements implementing %s", iface.Type().Name())
+		return nil, fmt.Errorf("could not find any elements implementing %s", iface.Type().Name())
 	}
 	return wrapElement(glib.TransferFull(unsafe.Pointer(elem))), nil
 }
@@ -210,7 +210,7 @@ func (b *Bin) GetAllByInterface(iface glib.Interface) ([]*Element, error) {
 // Add adds an element to the bin.
 func (b *Bin) Add(elem *Element) error {
 	if ok := C.gst_bin_add((*C.GstBin)(b.Instance()), (*C.GstElement)(elem.Instance())); !gobool(ok) {
-		return fmt.Errorf("Failed to add element to pipeline: %s", elem.GetName())
+		return fmt.Errorf("failed to add element to pipeline: %s", elem.GetName())
 	}
 	return nil
 }
@@ -228,7 +228,7 @@ func (b *Bin) AddMany(elems ...*Element) error {
 // Remove removes an element from the Bin.
 func (b *Bin) Remove(elem *Element) error {
 	if ok := C.gst_bin_remove((*C.GstBin)(b.Instance()), (*C.GstElement)(elem.Instance())); !gobool(ok) {
-		return fmt.Errorf("Failed to remove element from pipeline: %s", elem.GetName())
+		return fmt.Errorf("failed to remove element from pipeline: %s", elem.GetName())
 	}
 	return nil
 }
@@ -340,7 +340,7 @@ func iteratorToElementSlice(iterator *C.GstIterator) ([]*Element, error) {
 			elems = append(elems, wrapElement(glib.TransferNone(unsafe.Pointer(cElem))))
 			C.g_value_unset((*C.GValue)(gval))
 		default:
-			return nil, errors.New("Element iterator failed")
+			return nil, errors.New("element iterator failed")
 		}
 	}
 }

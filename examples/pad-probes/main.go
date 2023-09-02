@@ -29,6 +29,10 @@ func padProbes(mainLoop *glib.MainLoop) error {
 		"audiotestsrc name=src ! audio/x-raw,format=S16LE,channels=1 ! fakesink",
 	)
 
+	if err != nil {
+		return err
+	}
+
 	// Get the audiotestsrc element from the pipeline that GStreamer
 	// created for us while parsing the launch syntax above.
 	//

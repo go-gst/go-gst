@@ -26,12 +26,16 @@ func createPipeline() (*gst.Pipeline, error) {
 		"audiotestsrc name=src ! queue max-size-time=2000000000 ! fakesink name=sink sync=true",
 	)
 
+	if err != nil {
+		return nil, err
+	}
+
 	// Retrieve the sink element
 	sinks, err := pipeline.GetSinkElements()
 	if err != nil {
 		return nil, err
 	} else if len(sinks) != 1 {
-		return nil, errors.New("Expected one sink back")
+		return nil, errors.New("expected one sink back")
 	}
 	sink := sinks[0]
 

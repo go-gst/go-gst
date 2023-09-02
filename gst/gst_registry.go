@@ -38,7 +38,7 @@ func (r *Registry) FindPlugin(name string) (*Plugin, error) {
 	defer C.free(unsafe.Pointer(cName))
 	plugin := C.gst_registry_find_plugin((*C.GstRegistry)(r.Instance()), (*C.gchar)(cName))
 	if plugin == nil {
-		return nil, fmt.Errorf("No plugin named %s found", name)
+		return nil, fmt.Errorf("no plugin named %s found", name)
 	}
 	return FromGstPluginUnsafeFull(unsafe.Pointer(plugin)), nil
 }
@@ -49,7 +49,7 @@ func (r *Registry) LookupFeature(name string) (*PluginFeature, error) {
 	defer C.free(unsafe.Pointer(cName))
 	feat := C.gst_registry_lookup_feature((*C.GstRegistry)(r.Instance()), (*C.gchar)(cName))
 	if feat == nil {
-		return nil, fmt.Errorf("No feature named %s found", name)
+		return nil, fmt.Errorf("no feature named %s found", name)
 	}
 	return wrapPluginFeature(glib.TransferFull(unsafe.Pointer(feat))), nil
 }

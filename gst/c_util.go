@@ -31,9 +31,8 @@ func gboolean(b bool) C.gboolean {
 
 // gdateToTime converts a GDate to a time object.
 func gdateToTime(gdate *C.GDate) time.Time {
-	tm := time.Time{}
-	tm.AddDate(int(C.g_date_get_year(gdate)), int(C.g_date_get_month(gdate)), int(C.g_date_get_day(gdate)))
-	return tm
+	// should this really be local time?
+	return time.Date(int(C.g_date_get_year(gdate)), time.Month(C.g_date_get_month(gdate)), int(C.g_date_get_day(gdate)), 0, 0, 0, 0, time.Local)
 }
 
 // gstDateTimeToTime converts a GstDateTime to a time object. If the datetime object could not be parsed,

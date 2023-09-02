@@ -38,7 +38,7 @@ func NewPipeline(name string) (*Pipeline, error) {
 	}
 	pipeline := C.gst_pipeline_new((*C.gchar)(cChar))
 	if pipeline == nil {
-		return nil, errors.New("Could not create new pipeline")
+		return nil, errors.New("could not create new pipeline")
 	}
 	return FromGstPipelineUnsafeNone(unsafe.Pointer(pipeline)), nil
 }
@@ -46,7 +46,7 @@ func NewPipeline(name string) (*Pipeline, error) {
 // NewPipelineFromString creates a new gstreamer pipeline from the given launch string.
 func NewPipelineFromString(launchv string) (*Pipeline, error) {
 	if len(strings.Split(launchv, "!")) < 2 {
-		return nil, fmt.Errorf("Given string is too short for a pipeline: %s", launchv)
+		return nil, fmt.Errorf("given string is too short for a pipeline: %s", launchv)
 	}
 	cLaunchv := C.CString(launchv)
 	defer C.free(unsafe.Pointer(cLaunchv))

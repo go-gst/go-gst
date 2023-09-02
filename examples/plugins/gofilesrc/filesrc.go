@@ -90,7 +90,7 @@ type settings struct {
 // Finally a structure is defined that implements (at a minimum) the gst.GoElement interface.
 // It is possible to signal to the bindings to inherit from other classes or implement other
 // interfaces via the registration and TypeInit processes.
-type fileSrc struct {
+type FileSrc struct {
 	// The settings for the element
 	settings *settings
 	// The current state of the element
@@ -101,9 +101,9 @@ type fileSrc struct {
 
 // setLocation is a simple method to check the validity of a provided file path and set the
 // local value with it.
-func (f *fileSrc) setLocation(path string) error {
+func (f *FileSrc) setLocation(path string) error {
 	if f.state.started {
-		return errors.New("Changing the `location` property on a started `GoFileSrc` is not supported")
+		return errors.New("changing the `location` property on a started `GoFileSrc` is not supported")
 	}
 	f.settings.location = strings.TrimPrefix(path, "file://") // should obviously use url.URL and do actual parsing
 	return nil
@@ -115,9 +115,9 @@ func (f *fileSrc) setLocation(path string) error {
 
 // Every element needs to provide its own constructor that returns an initialized
 // glib.GoObjectSubclass and state objects.
-func (f *fileSrc) New() glib.GoObjectSubclass {
+func (f *FileSrc) New() glib.GoObjectSubclass {
 	CAT.Log(gst.LevelLog, "Initializing new fileSrc object")
-	return &fileSrc{
+	return &FileSrc{
 		settings: &settings{},
 		state:    &state{},
 	}
@@ -125,7 +125,7 @@ func (f *fileSrc) New() glib.GoObjectSubclass {
 
 // The ClassInit method should specify the metadata for this element and add any pad templates
 // and properties.
-func (f *fileSrc) ClassInit(klass *glib.ObjectClass) {
+func (f *FileSrc) ClassInit(klass *glib.ObjectClass) {
 	CAT.Log(gst.LevelLog, "Initializing gofilesrc class")
 	class := gst.ToElementClass(klass)
 	class.SetMetadata(
@@ -154,7 +154,7 @@ func (f *fileSrc) ClassInit(klass *glib.ObjectClass) {
 // SetProperty is called when a `value` is set to the property at index `id` in the
 // properties slice that we installed during ClassInit. It should attempt to register
 // the value locally or signal any errors that occur in the process.
-func (f *fileSrc) SetProperty(self *glib.Object, id uint, value *glib.Value) {
+func (f *FileSrc) SetProperty(self *glib.Object, id uint, value *glib.Value) {
 	param := properties[id]
 	switch param.Name() {
 	case "location":
@@ -177,7 +177,7 @@ func (f *fileSrc) SetProperty(self *glib.Object, id uint, value *glib.Value) {
 
 // GetProperty is called to retrieve the value of the property at index `id` in the properties
 // slice provided at ClassInit.
-func (f *fileSrc) GetProperty(self *glib.Object, id uint) *glib.Value {
+func (f *FileSrc) GetProperty(self *glib.Object, id uint) *glib.Value {
 	param := properties[id]
 	switch param.Name() {
 	case "location":
@@ -199,7 +199,7 @@ func (f *fileSrc) GetProperty(self *glib.Object, id uint) *glib.Value {
 // Constructed is called when the type system is done constructing the object. Any finalizations required
 // during the initialization process can be performed here. In this example, we set the format on our
 // underlying GstBaseSrc to bytes.
-func (f *fileSrc) Constructed(self *glib.Object) {
+func (f *FileSrc) Constructed(self *glib.Object) {
 	base.ToGstBaseSrc(self).Log(CAT, gst.LevelLog, "Setting format of GstBaseSrc to bytes")
 	base.ToGstBaseSrc(self).SetFormat(gst.FormatBytes)
 }
@@ -208,10 +208,10 @@ func (f *fileSrc) Constructed(self *glib.Object) {
 // If the method is not overridden by the implementing struct, it will be inherited from the parent class.
 
 // IsSeekable returns that we are, in fact, seekable.
-func (f *fileSrc) IsSeekable(*base.GstBaseSrc) bool { return true }
+func (f *FileSrc) IsSeekable(*base.GstBaseSrc) bool { return true }
 
 // GetSize will return the total size of the file at the configured location.
-func (f *fileSrc) GetSize(self *base.GstBaseSrc) (bool, int64) {
+func (f *FileSrc) GetSize(self *base.GstBaseSrc) (bool, int64) {
 	if !f.state.started {
 		return false, 0
 	}
@@ -220,7 +220,7 @@ func (f *fileSrc) GetSize(self *base.GstBaseSrc) (bool, int64) {
 
 // Start is called to start this element. In this example, the configured file is opened for reading,
 // and any error encountered in the process is posted to the pipeline.
-func (f *fileSrc) Start(self *base.GstBaseSrc) bool {
+func (f *FileSrc) Start(self *base.GstBaseSrc) bool {
 	if f.state.started {
 		self.ErrorMessage(gst.DomainResource, gst.ResourceErrorSettings, "GoFileSrc is already started", "")
 		return false
@@ -268,7 +268,7 @@ func (f *fileSrc) Start(self *base.GstBaseSrc) bool {
 }
 
 // Stop is called to stop the element. The file is closed and the local values are zeroed out.
-func (f *fileSrc) Stop(self *base.GstBaseSrc) bool {
+func (f *FileSrc) Stop(self *base.GstBaseSrc) bool {
 	if !f.state.started {
 		self.ErrorMessage(gst.DomainResource, gst.ResourceErrorSettings, "FileSrc is not started", "")
 		return false
@@ -290,7 +290,7 @@ func (f *fileSrc) Stop(self *base.GstBaseSrc) bool {
 // Fill is called to fill a pre-allocated buffer with the data at offset up to the given size.
 // Since we declared that we are seekable, we need to support the provided offset not necessarily matching
 // where we currently are in the file. This is why we store the position in the file locally.
-func (f *fileSrc) Fill(self *base.GstBaseSrc, offset uint64, size uint, buffer *gst.Buffer) gst.FlowReturn {
+func (f *FileSrc) Fill(self *base.GstBaseSrc, offset uint64, size uint, buffer *gst.Buffer) gst.FlowReturn {
 	if !f.state.started || f.state.file == nil {
 		self.ErrorMessage(gst.DomainCore, gst.CoreErrorFailed, "Not started yet", "")
 		return gst.FlowError
@@ -332,16 +332,16 @@ func (f *fileSrc) Fill(self *base.GstBaseSrc, offset uint64, size uint, buffer *
 // URIHandler implementations are the methods required by the GstURIHandler interface.
 
 // GetURI returns the currently configured URI
-func (f *fileSrc) GetURI() string { return fmt.Sprintf("file://%s", f.settings.location) }
+func (f *FileSrc) GetURI() string { return fmt.Sprintf("file://%s", f.settings.location) }
 
 // GetURIType returns the types of URI this element supports.
-func (f *fileSrc) GetURIType() gst.URIType { return gst.URISource }
+func (f *FileSrc) GetURIType() gst.URIType { return gst.URISource }
 
 // GetProtocols returns the protcols this element supports.
-func (f *fileSrc) GetProtocols() []string { return []string{"file"} }
+func (f *FileSrc) GetProtocols() []string { return []string{"file"} }
 
 // SetURI should set the URI that this element is working on.
-func (f *fileSrc) SetURI(uri string) (bool, error) {
+func (f *FileSrc) SetURI(uri string) (bool, error) {
 	if uri == "file://" {
 		return true, nil
 	}

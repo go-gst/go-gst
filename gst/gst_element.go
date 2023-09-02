@@ -365,7 +365,7 @@ func (e *Element) IsURIHandler() bool {
 // Link wraps gst_element_link and links this element to the given one.
 func (e *Element) Link(elem *Element) error {
 	if ok := C.gst_element_link((*C.GstElement)(e.Instance()), (*C.GstElement)(elem.Instance())); !gobool(ok) {
-		return fmt.Errorf("Failed to link %s to %s", e.GetName(), elem.GetName())
+		return fmt.Errorf("failed to link %s to %s", e.GetName(), elem.GetName())
 	}
 	return nil
 }
@@ -379,12 +379,12 @@ func (e *Element) Unlink(elem *Element) {
 func (e *Element) LinkFiltered(elem *Element, filter *Caps) error {
 	if filter == nil {
 		if ok := C.gst_element_link_filtered(e.Instance(), elem.Instance(), nil); !gobool(ok) {
-			return fmt.Errorf("Failed to link %s to %s with provided caps", e.GetName(), elem.GetName())
+			return fmt.Errorf("failed to link %s to %s with provided caps", e.GetName(), elem.GetName())
 		}
 		return nil
 	}
 	if ok := C.gst_element_link_filtered(e.Instance(), elem.Instance(), filter.Instance()); !gobool(ok) {
-		return fmt.Errorf("Failed to link %s to %s with provided caps", e.GetName(), elem.GetName())
+		return fmt.Errorf("failed to link %s to %s with provided caps", e.GetName(), elem.GetName())
 	}
 	return nil
 }
@@ -454,7 +454,7 @@ func (e *Element) SendEvent(ev *Event) bool {
 func (e *Element) SetState(state State) error {
 	stateRet := C.gst_element_set_state((*C.GstElement)(e.Instance()), C.GstState(state))
 	if stateRet == C.GST_STATE_CHANGE_FAILURE {
-		return fmt.Errorf("Failed to change state to %s", state.String())
+		return fmt.Errorf("failed to change state to %s", state.String())
 	}
 	return nil
 }

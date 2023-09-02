@@ -88,7 +88,7 @@ type settings struct {
 // Finally a structure is defined that implements (at a minimum) the glib.GoObject interface.
 // It is possible to signal to the bindings to inherit from other classes or implement other
 // interfaces via the registration and TypeInit processes.
-type fileSink struct {
+type FileSink struct {
 	// The settings for the element
 	settings *settings
 	// The current state of the element
@@ -97,9 +97,9 @@ type fileSink struct {
 
 // setLocation is a simple method to check the validity of a provided file path and set the
 // local value with it.
-func (f *fileSink) setLocation(path string) error {
+func (f *FileSink) setLocation(path string) error {
 	if f.state.started {
-		return errors.New("Changing the `location` property on a started `GoFileSink` is not supported")
+		return errors.New("changing the `location` property on a started `GoFileSink` is not supported")
 	}
 	f.settings.location = strings.TrimPrefix(path, "file://") // should obviously use url.URL and do actual parsing
 	return nil
@@ -111,9 +111,9 @@ func (f *fileSink) setLocation(path string) error {
 
 // Every element needs to provide its own constructor that returns an initialized glib.GoObjectSubclass
 // implementation. Here we simply create a new fileSink with zeroed settings and state objects.
-func (f *fileSink) New() glib.GoObjectSubclass {
+func (f *FileSink) New() glib.GoObjectSubclass {
 	CAT.Log(gst.LevelLog, "Initializing new fileSink object")
-	return &fileSink{
+	return &FileSink{
 		settings: &settings{},
 		state:    &state{},
 	}
@@ -121,7 +121,7 @@ func (f *fileSink) New() glib.GoObjectSubclass {
 
 // The ClassInit method should specify the metadata for this element and add any pad templates
 // and properties.
-func (f *fileSink) ClassInit(klass *glib.ObjectClass) {
+func (f *FileSink) ClassInit(klass *glib.ObjectClass) {
 	CAT.Log(gst.LevelLog, "Initializing gofilesink class")
 	class := gst.ToElementClass(klass)
 	class.SetMetadata(
@@ -150,7 +150,7 @@ func (f *fileSink) ClassInit(klass *glib.ObjectClass) {
 // SetProperty is called when a `value` is set to the property at index `id` in the
 // properties slice that we installed during ClassInit. It should attempt to register
 // the value locally or signal any errors that occur in the process.
-func (f *fileSink) SetProperty(self *glib.Object, id uint, value *glib.Value) {
+func (f *FileSink) SetProperty(self *glib.Object, id uint, value *glib.Value) {
 	param := properties[id]
 	switch param.Name() {
 	case "location":
@@ -173,7 +173,7 @@ func (f *fileSink) SetProperty(self *glib.Object, id uint, value *glib.Value) {
 
 // GetProperty is called to retrieve the value of the property at index `id` in the properties
 // slice provided at ClassInit.
-func (f *fileSink) GetProperty(self *glib.Object, id uint) *glib.Value {
+func (f *FileSink) GetProperty(self *glib.Object, id uint) *glib.Value {
 	param := properties[id]
 	switch param.Name() {
 	case "location":
@@ -196,7 +196,7 @@ func (f *fileSink) GetProperty(self *glib.Object, id uint) *glib.Value {
 // If the method is not overridden by the implementing struct, it will be inherited from the parent class.
 
 // Start is called to start the filesink. Open the file for writing and set the internal state.
-func (f *fileSink) Start(self *base.GstBaseSink) bool {
+func (f *FileSink) Start(self *base.GstBaseSink) bool {
 	if f.state.started {
 		self.ErrorMessage(gst.DomainResource, gst.ResourceErrorSettings, "GoFileSink is already started", "")
 		return false
@@ -225,7 +225,7 @@ func (f *fileSink) Start(self *base.GstBaseSink) bool {
 }
 
 // Stop is called to stop the element. Set the internal state and close the file.
-func (f *fileSink) Stop(self *base.GstBaseSink) bool {
+func (f *FileSink) Stop(self *base.GstBaseSink) bool {
 	if !f.state.started {
 		self.ErrorMessage(gst.DomainResource, gst.ResourceErrorSettings, "GoFileSink is not started", "")
 		return false
@@ -241,7 +241,7 @@ func (f *fileSink) Stop(self *base.GstBaseSink) bool {
 }
 
 // Render is called when a buffer is ready to be written to the file.
-func (f *fileSink) Render(self *base.GstBaseSink, buffer *gst.Buffer) gst.FlowReturn {
+func (f *FileSink) Render(self *base.GstBaseSink, buffer *gst.Buffer) gst.FlowReturn {
 	if !f.state.started {
 		self.ErrorMessage(gst.DomainResource, gst.ResourceErrorSettings, "GoFileSink is not started", "")
 		return gst.FlowError
@@ -263,16 +263,16 @@ func (f *fileSink) Render(self *base.GstBaseSink, buffer *gst.Buffer) gst.FlowRe
 // URIHandler implementations are the methods required by the GstURIHandler interface.
 
 // GetURI returns the currently configured URI
-func (f *fileSink) GetURI() string { return fmt.Sprintf("file://%s", f.settings.location) }
+func (f *FileSink) GetURI() string { return fmt.Sprintf("file://%s", f.settings.location) }
 
 // GetURIType returns the types of URI this element supports.
-func (f *fileSink) GetURIType() gst.URIType { return gst.URISource }
+func (f *FileSink) GetURIType() gst.URIType { return gst.URISource }
 
 // GetProtocols returns the protcols this element supports.
-func (f *fileSink) GetProtocols() []string { return []string{"file"} }
+func (f *FileSink) GetProtocols() []string { return []string{"file"} }
 
 // SetURI should set the URI that this element is working on.
-func (f *fileSink) SetURI(uri string) (bool, error) {
+func (f *FileSink) SetURI(uri string) (bool, error) {
 	if uri == "file://" {
 		return true, nil
 	}

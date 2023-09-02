@@ -26,7 +26,7 @@ func tagsetter(mainLoop *glib.MainLoop) error {
 	gst.Init(nil)
 
 	if len(os.Args) < 2 {
-		return errors.New("Usage: toc <file>")
+		return errors.New("usage: toc <file>")
 	}
 
 	pipeline, err := gst.NewPipeline("")
@@ -99,7 +99,6 @@ func tagsetter(mainLoop *glib.MainLoop) error {
 		// End of stream
 		case gst.MessageEOS:
 			msg.Unref()
-			break
 
 			// Errors from any elements
 		case gst.MessageError:

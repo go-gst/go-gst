@@ -91,7 +91,7 @@ func (d *Device) HasClasses(classes []string) bool {
 // while in the PLAYING state.
 func (d *Device) ReconfigureElement(elem *Element) error {
 	if ok := gobool(C.gst_device_reconfigure_element(d.Instance(), elem.Instance())); !ok {
-		return fmt.Errorf("Failed to reconfigure element %s", elem.GetName())
+		return fmt.Errorf("failed to reconfigure element %s", elem.GetName())
 	}
 	return nil
 }

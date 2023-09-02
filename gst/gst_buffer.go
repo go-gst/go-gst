@@ -22,7 +22,6 @@ import "C"
 import (
 	"bytes"
 	"io"
-	"io/ioutil"
 	"runtime"
 	"unsafe"
 
@@ -112,7 +111,7 @@ func NewBufferFromBytes(b []byte) *Buffer {
 
 // NewBufferFromReader returns a new buffer from the given io.Reader.
 func NewBufferFromReader(rdr io.Reader) (*Buffer, error) {
-	out, err := ioutil.ReadAll(rdr)
+	out, err := io.ReadAll(rdr)
 	if err != nil {
 		return nil, err
 	}

@@ -16,7 +16,7 @@ import (
 
 func runPipeline(mainLoop *glib.MainLoop) error {
 	if len(os.Args) == 1 {
-		return errors.New("Pipeline string cannot be empty")
+		return errors.New("pipeline string cannot be empty")
 	}
 
 	gst.Init(&os.Args)

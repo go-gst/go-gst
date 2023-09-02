@@ -14,18 +14,20 @@ jobs:
     steps:
       - name: Setup GStreamer
         id: setup_gstreamer
-        uses: blinemedical/setup-gstreamer@45324555100927b587d390d8cf3940f91fd3bdc9
+        uses: RSWilli/setup-gstreamer@5472e33168ba7b1f3bb01dc81ca067e263633824
         with:
           version: 1.22.0
+      - name: checkout
+        uses: actions/checkout@v3
       - uses: actions/setup-go@v4
         with:
           go-version: "^1.21.0"
-      - name: checkout
-        uses: actions/checkout@v3
       - name: build
         shell: bash
         run: |
           packages=$(go list ./...)
           for package in $packages; do
+            echo "Building: $package"
             go build $package || exit 1
+            echo "Build done: $package"
           done

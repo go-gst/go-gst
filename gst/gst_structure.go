@@ -76,7 +76,7 @@ func FromGstStructureUnsafe(st unsafe.Pointer) *Structure {
 func (s *Structure) UnmarshalInto(data interface{}) error {
 	rv := reflect.ValueOf(data)
 	if rv.Kind() != reflect.Ptr || rv.IsNil() {
-		return errors.New("Data is invalid (nil or non-pointer)")
+		return errors.New("data is invalid (nil or non-pointer)")
 	}
 
 	val := reflect.ValueOf(data).Elem()
@@ -134,7 +134,7 @@ func (s *Structure) GetValue(key string) (interface{}, error) {
 	defer C.free(unsafe.Pointer(cKey))
 	gVal := C.gst_structure_get_value(s.Instance(), cKey)
 	if gVal == nil {
-		return nil, fmt.Errorf("No value exists at %s", key)
+		return nil, fmt.Errorf("no value exists at %s", key)
 	}
 	return glib.ValueFromNative(unsafe.Pointer(gVal)).GoValue()
 }

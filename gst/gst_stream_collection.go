@@ -40,7 +40,7 @@ func (s *StreamCollection) Instance() *C.GstStreamCollection {
 // AddStream adds the given stream to this collection.
 func (s *StreamCollection) AddStream(stream *Stream) error {
 	if ok := gobool(C.gst_stream_collection_add_stream(s.Instance(), stream.Instance())); !ok {
-		return fmt.Errorf("Failed to add stream %s to collection", stream.StreamID())
+		return fmt.Errorf("failed to add stream %s to collection", stream.StreamID())
 	}
 	return nil
 }

@@ -55,7 +55,7 @@ type mapInfoWriter struct {
 
 func (m *mapInfoWriter) Write(p []byte) (int, error) {
 	if m.wsize+len(p) > int(m.mapInfo.Size()) {
-		return 0, errors.New("Attempt to write more data than allocated to MapInfo")
+		return 0, errors.New("attempt to write more data than allocated to MapInfo")
 	}
 	m.mapInfo.WriteAt(m.wsize, p)
 	m.wsize += len(p)
