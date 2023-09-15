@@ -129,20 +129,18 @@ func (e *Element) AddPad(pad *Pad) bool {
 	return gobool(C.gst_element_add_pad(e.Instance(), pad.Instance()))
 }
 
-// BlockSetState is like SetState except it will block until the transition
-// is complete.
+// BlockSetState is a convinience wrapper function for calling SetState and an infinitely blocking GetState
 func (e *Element) BlockSetState(state State) error {
 	if err := e.SetState(state); err != nil {
 		return err
 	}
-	cState := C.GstState(state)
-	var curState C.GstState
-	C.gst_element_get_state(
-		(*C.GstElement)(e.Instance()),
-		(*C.GstState)(unsafe.Pointer(&curState)),
-		(*C.GstState)(unsafe.Pointer(&cState)),
-		C.GstClockTime(ClockTimeNone),
-	)
+
+	status, _ := e.GetState(state, ClockTimeNone)
+
+	if status != StateChangeSuccess {
+		return fmt.Errorf("failed to change state to %s (got %s)", state, status)
+	}
+
 	return nil
 }
 
@@ -335,9 +333,30 @@ func (e *Element) GetPadTemplates() []*PadTemplate {
 	return out
 }
 
-// GetState returns the current state of this element.
-func (e *Element) GetState() State {
-	return State(e.Instance().current_state)
+// Gets the state of the element.
+//
+// For elements that performed an ASYNC state change, as reported by gst_element_set_state, this function will block up
+// to the specified timeout value for the state change to complete. If the element completes the state change or goes into
+// an error, this function returns immediately with a return value of GST_STATE_CHANGE_SUCCESS or GST_STATE_CHANGE_FAILURE respectively.
+//
+// For elements that did not return GST_STATE_CHANGE_ASYNC, this function returns the current and pending state immediately.
+//
+// This function returns GST_STATE_CHANGE_NO_PREROLL if the element successfully changed its state but is not able to provide
+// data yet. This mostly happens for live sources that only produce data in GST_STATE_PLAYING. While the state change return is
+// equivalent to GST_STATE_CHANGE_SUCCESS, it is returned to the application to signal that some sink elements might not be able
+// to complete their state change because an element is not producing data to complete the preroll. When setting the element to
+// playing, the preroll will complete and playback will start.
+func (e *Element) GetState(state State, timeout ClockTime) (StateChangeReturn, State) {
+	pending := C.GstState(state)
+	var curState C.GstState
+	stateChangeStatus := C.gst_element_get_state(
+		(*C.GstElement)(e.Instance()),
+		(*C.GstState)(unsafe.Pointer(&curState)),
+		(*C.GstState)(unsafe.Pointer(&pending)),
+		C.GstClockTime(timeout),
+	)
+
+	return StateChangeReturn(stateChangeStatus), State(curState)
 }
 
 // GetStaticPad retrieves a pad from element by name. This version only retrieves
