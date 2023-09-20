@@ -359,6 +359,15 @@ func (e *Element) GetState(state State, timeout ClockTime) (StateChangeReturn, S
 	return StateChangeReturn(stateChangeStatus), State(curState)
 }
 
+// this returns the value of the `current_state` member of the element:
+//
+// the current state of an element
+//
+// see https://gstreamer.freedesktop.org/documentation/gstreamer/gstelement.html?gi-language=c#members
+func (e *Element) GetCurrentState() State {
+	return State(e.Instance().current_state)
+}
+
 // GetStaticPad retrieves a pad from element by name. This version only retrieves
 // already-existing (i.e. 'static') pads.
 func (e *Element) GetStaticPad(name string) *Pad {
