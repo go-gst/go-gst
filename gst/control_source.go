@@ -32,7 +32,7 @@ func NewInterpolationControlSource() *InterpolationControlSource {
 	cCs := C.gst_interpolation_control_source_new()
 
 	return &InterpolationControlSource{
-		Object: wrapObject(glib.TransferNone(unsafe.Pointer(cCs))),
+		Object: wrapObject(glib.TransferFull(unsafe.Pointer(cCs))),
 	}
 }
 
