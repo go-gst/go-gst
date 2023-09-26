@@ -15,6 +15,9 @@ jobs:
         os: [ubuntu-latest, windows-latest, "macos-latest"]
     runs-on: ${{ matrix.os }}
     steps:
+      - name: Downgrade mingw to 11.2.0
+        if: runner.os == 'Windows'
+        run: choco install mingw --version 11.2.0 --allow-downgrade
       - name: Setup GStreamer
         id: setup_gstreamer
         uses: RSWilli/setup-gstreamer@5472e33168ba7b1f3bb01dc81ca067e263633824
