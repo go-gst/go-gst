@@ -3,11 +3,12 @@ package main
 import (
 	"errors"
 	"fmt"
+	"os"
+	"time"
+
 	"github.com/go-gst/go-gst/examples"
 	"github.com/go-gst/go-gst/gst"
 	"github.com/gotk3/gotk3/glib"
-	"os"
-	"time"
 )
 
 type workflow struct {
@@ -145,7 +146,9 @@ func runPipeline(loop *glib.MainLoop, pipeline *gst.Pipeline) error {
 	})
 
 	// Block on the main loop
-	return loop.RunError()
+	loop.Run()
+
+	return nil
 }
 
 func main() {

@@ -52,7 +52,9 @@ func runPipeline(mainLoop *glib.MainLoop) error {
 	pipeline.SetState(gst.StatePlaying)
 
 	// Block on the main loop
-	return mainLoop.RunError()
+	mainLoop.Run()
+
+	return nil
 }
 
 func main() {

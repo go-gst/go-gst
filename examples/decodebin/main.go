@@ -185,7 +185,9 @@ func runPipeline(loop *glib.MainLoop, pipeline *gst.Pipeline) error {
 	})
 
 	// Block on the main loop
-	return loop.RunError()
+	loop.Run()
+
+	return nil
 }
 
 func main() {

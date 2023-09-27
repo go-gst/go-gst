@@ -81,7 +81,9 @@ func playbin(mainLoop *glib.MainLoop) error {
 		return true
 	})
 
-	return mainLoop.RunError()
+	mainLoop.Run()
+
+	return nil
 }
 
 func main() {

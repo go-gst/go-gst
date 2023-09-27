@@ -124,9 +124,11 @@ func mainLoop(loop *glib.MainLoop, pipeline *gst.Pipeline) error {
 	// done with the new scope. An alternative is to declare Keep() *after* where you know
 	// you will be done with the object. This instructs the runtime to defer the finalizer
 	// until after this point is passed in the code execution.
-	pipeline.Keep()
+	// pipeline.Keep()
 
-	return loop.RunError()
+	loop.Run()
+
+	return nil
 }
 
 func main() {
