@@ -23,7 +23,7 @@ import (
 	"reflect"
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
+	"github.com/gotk3/gotk3/glib"
 	gopointer "github.com/mattn/go-pointer"
 )
 
@@ -72,11 +72,11 @@ func NewBus() *Bus {
 
 // FromGstBusUnsafeNone wraps the given unsafe.Pointer in a bus. It takes a ref on the bus and sets
 // a runtime finalizer on it.
-func FromGstBusUnsafeNone(bus unsafe.Pointer) *Bus { return wrapBus(glib.TransferNone(bus)) }
+func FromGstBusUnsafeNone(bus unsafe.Pointer) *Bus { return wrapBus(glib.Take(bus)) }
 
 // FromGstBusUnsafeFull wraps the given unsafe.Pointer in a bus. It does not increase the ref count
 // and places a runtime finalizer on the instance.
-func FromGstBusUnsafeFull(bus unsafe.Pointer) *Bus { return wrapBus(glib.TransferFull(bus)) }
+func FromGstBusUnsafeFull(bus unsafe.Pointer) *Bus { return wrapBus(glib.AssumeOwnership(bus)) }
 
 // Instance returns the underlying GstBus instance.
 func (b *Bus) Instance() *C.GstBus { return C.toGstBus(b.Unsafe()) }

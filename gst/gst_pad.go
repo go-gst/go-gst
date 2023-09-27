@@ -83,7 +83,7 @@ import (
 	"errors"
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
+	"github.com/gotk3/gotk3/glib"
 	gopointer "github.com/mattn/go-pointer"
 )
 
@@ -116,12 +116,12 @@ type Pad struct{ *Object }
 
 // FromGstPadUnsafeFull wraps the given pad in a reference and finalizer.
 func FromGstPadUnsafeFull(pad unsafe.Pointer) *Pad {
-	return &Pad{wrapObject(glib.TransferFull(pad))}
+	return &Pad{wrapObject(glib.AssumeOwnership(pad))}
 }
 
 // FromGstPadUnsafeNone wraps the given pad in a finalizer.
 func FromGstPadUnsafeNone(pad unsafe.Pointer) *Pad {
-	return &Pad{wrapObject(glib.TransferNone(pad))}
+	return &Pad{wrapObject(glib.Take(pad))}
 }
 
 // NewPad returns a new pad with the given direction. If name is empty, one will be generated for you.

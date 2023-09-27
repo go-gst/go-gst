@@ -38,9 +38,9 @@ import (
 	"os"
 	"strings"
 
-	"github.com/go-gst/go-glib/glib"
 	"github.com/go-gst/go-gst/gst"
 	"github.com/go-gst/go-gst/gst/base"
+	"github.com/gotk3/gotk3/glib"
 )
 
 // main is left unimplemented since these files are compiled to c-shared.

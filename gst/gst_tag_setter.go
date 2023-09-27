@@ -5,7 +5,7 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
+	"github.com/gotk3/gotk3/glib"
 )
 
 // InterfaceTagSetter represents the GstTagsetter interface GType. Use this when querying bins
@@ -14,8 +14,9 @@ var InterfaceTagSetter glib.Interface = &interfaceTagSetter{}
 
 type interfaceTagSetter struct{}
 
-func (i *interfaceTagSetter) Type() glib.Type                  { return glib.Type(C.GST_TYPE_TAG_SETTER) }
-func (i *interfaceTagSetter) Init(instance *glib.TypeInstance) {}
+func (i *interfaceTagSetter) Type() glib.Type { return glib.Type(C.GST_TYPE_TAG_SETTER) }
+
+// func (i *interfaceTagSetter) Init(instance *glib.TypeInstance) {}
 
 // TagSetter is an interface that elements can implement to provide Tag writing capabilities.
 type TagSetter interface {

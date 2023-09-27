@@ -53,7 +53,7 @@ import (
 	"errors"
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
+	"github.com/gotk3/gotk3/glib"
 	gopointer "github.com/mattn/go-pointer"
 )
 
@@ -116,12 +116,12 @@ type Plugin struct{ *Object }
 
 // FromGstPluginUnsafeNone wraps the given pointer in a Plugin.
 func FromGstPluginUnsafeNone(plugin unsafe.Pointer) *Plugin {
-	return &Plugin{wrapObject(glib.TransferNone(plugin))}
+	return &Plugin{wrapObject(glib.Take(plugin))}
 }
 
 // FromGstPluginUnsafeFull wraps the given pointer in a Plugin.
 func FromGstPluginUnsafeFull(plugin unsafe.Pointer) *Plugin {
-	return &Plugin{wrapObject(glib.TransferFull(plugin))}
+	return &Plugin{wrapObject(glib.AssumeOwnership(plugin))}
 }
 
 // RegisterPlugin will register a static plugin, i.e. a plugin which is private to an application

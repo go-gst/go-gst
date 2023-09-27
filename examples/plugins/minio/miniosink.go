@@ -7,9 +7,9 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/go-gst/go-glib/glib"
 	"github.com/go-gst/go-gst/gst"
 	"github.com/go-gst/go-gst/gst/base"
+	"github.com/gotk3/gotk3/glib"
 )
 
 var sinkCAT = gst.NewDebugCategory(

@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
+	"github.com/gotk3/gotk3/glib"
 )
 
 // NewElement creates a new element using the factory of the given name.
@@ -30,7 +30,7 @@ func NewElementWithName(factory string, name string) (*Element, error) {
 	if elem == nil {
 		return nil, fmt.Errorf("could not create element: %s", factory)
 	}
-	return wrapElement(glib.TransferNone(unsafe.Pointer(elem))), nil
+	return wrapElement(glib.Take(unsafe.Pointer(elem))), nil
 }
 
 // Create a new element of the type defined by the given elementfactory. The supplied list of properties, will be passed at object construction.
@@ -53,7 +53,7 @@ func NewElementWithProperties(factory string, properties map[string]interface{})
 			return nil, err
 		}
 
-		values = append(values, *(*C.GValue)(cValue.Unsafe()))
+		values = append(values, *(*C.GValue)(unsafe.Pointer(cValue.GValue)))
 	}
 
 	cfactory := C.CString(factory)
@@ -72,7 +72,7 @@ func NewElementWithProperties(factory string, properties map[string]interface{})
 	if elem == nil {
 		return nil, fmt.Errorf("could not create element: %s", factory)
 	}
-	return wrapElement(glib.TransferNone(unsafe.Pointer(elem))), nil
+	return wrapElement(glib.Take(unsafe.Pointer(elem))), nil
 }
 
 // NewElementMany is a convenience wrapper around building many GstElements in a
@@ -101,7 +101,7 @@ func Find(name string) *ElementFactory {
 	if factory == nil {
 		return nil
 	}
-	return wrapElementFactory(glib.TransferFull(unsafe.Pointer(factory)))
+	return wrapElementFactory(glib.AssumeOwnership(unsafe.Pointer(factory)))
 }
 
 // Instance returns the C GstFactory instance

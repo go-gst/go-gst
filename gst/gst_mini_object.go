@@ -6,7 +6,7 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
+	"github.com/gotk3/gotk3/glib"
 )
 
 // MiniObject is an opaque struct meant to form the base of gstreamer

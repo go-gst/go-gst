@@ -6,7 +6,7 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
+	"github.com/gotk3/gotk3/glib"
 )
 
 // DeviceProvider is a Go representation of a GstDeviceProvider.
@@ -14,12 +14,12 @@ type DeviceProvider struct{ *Object }
 
 // FromGstDeviceProviderUnsafeNone wraps the given device with a ref and finalizer.
 func FromGstDeviceProviderUnsafeNone(deviceProvider unsafe.Pointer) *DeviceProvider {
-	return &DeviceProvider{wrapObject(glib.TransferNone(deviceProvider))}
+	return &DeviceProvider{wrapObject(glib.Take(deviceProvider))}
 }
 
 // FromGstDeviceProviderUnsafeFull wraps the given device with a finalizer.
 func FromGstDeviceProviderUnsafeFull(deviceProvider unsafe.Pointer) *DeviceProvider {
-	return &DeviceProvider{wrapObject(glib.TransferFull(deviceProvider))}
+	return &DeviceProvider{wrapObject(glib.AssumeOwnership(deviceProvider))}
 }
 
 // Instance returns the underlying GstDevice object.

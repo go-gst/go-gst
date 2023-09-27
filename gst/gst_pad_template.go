@@ -5,7 +5,7 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
+	"github.com/gotk3/gotk3/glib"
 )
 
 // PadTemplate is a go representation of a GstPadTemplate
@@ -13,12 +13,12 @@ type PadTemplate struct{ *Object }
 
 // FromGstPadTemplateUnsafeNone wraps the given GstPadTemplate in a ref and a finalizer.
 func FromGstPadTemplateUnsafeNone(tmpl unsafe.Pointer) *PadTemplate {
-	return &PadTemplate{wrapObject(glib.TransferNone(tmpl))}
+	return &PadTemplate{wrapObject(glib.Take(tmpl))}
 }
 
 // FromGstPadTemplateUnsafeFull wraps the given GstPadTemplate in a finalizer.
 func FromGstPadTemplateUnsafeFull(tmpl unsafe.Pointer) *PadTemplate {
-	return &PadTemplate{wrapObject(glib.TransferFull(tmpl))}
+	return &PadTemplate{wrapObject(glib.AssumeOwnership(tmpl))}
 }
 
 // NewPadTemplate creates a new pad template with a name according to the given template and with the given arguments.
@@ -34,7 +34,7 @@ func NewPadTemplate(nameTemplate string, direction PadDirection, presence PadPre
 	if tmpl == nil {
 		return nil
 	}
-	return wrapPadTemplate(glib.TransferNone(unsafe.Pointer(tmpl)))
+	return wrapPadTemplate(glib.Take(unsafe.Pointer(tmpl)))
 }
 
 // NewPadTemplateWithGType creates a new pad template with a name according to the given template and with the given arguments.
@@ -51,7 +51,7 @@ func NewPadTemplateWithGType(nameTemplate string, direction PadDirection, presen
 	if tmpl == nil {
 		return nil
 	}
-	return wrapPadTemplate(glib.TransferNone(unsafe.Pointer(tmpl)))
+	return wrapPadTemplate(glib.AssumeOwnership(unsafe.Pointer(tmpl)))
 }
 
 // Instance returns the underlying C GstPadTemplate.

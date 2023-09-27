@@ -23,84 +23,84 @@ void  setGstBinRemoveElement        (GstBinClass * klass) { klass->remove_elemen
 
 */
 import "C"
-import (
-	"unsafe"
+// import (
+// 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
-)
+// 	"github.com/gotk3/gotk3/glib"
+// )
 
-// ExtendsBin implements an Extendable object based on a GstBin.
-var ExtendsBin glib.Extendable = &extendsBin{parent: ExtendsElement}
+// // ExtendsBin implements an Extendable object based on a GstBin.
+// var ExtendsBin glib.Extendable = &extendsBin{parent: ExtendsElement}
 
-// BinImpl is the reference interface for Go elements extending a Bin. You only need to
-// implement the methods that interest you.
-type BinImpl interface {
-	AddElement(self *Bin, element *Element) bool
-	DeepElementAdded(self *Bin, subbin *Bin, child *Element)
-	DeepElementRemoved(self *Bin, subbin *Bin, child *Element)
-	DoLatency(self *Bin) bool
-	ElementAdded(self *Bin, child *Element)
-	ElementRemoved(self *Bin, child *Element)
-	HandleMessage(self *Bin, msg *Message)
-	RemoveElement(self *Bin, element *Element) bool
-}
+// // BinImpl is the reference interface for Go elements extending a Bin. You only need to
+// // implement the methods that interest you.
+// type BinImpl interface {
+// 	AddElement(self *Bin, element *Element) bool
+// 	DeepElementAdded(self *Bin, subbin *Bin, child *Element)
+// 	DeepElementRemoved(self *Bin, subbin *Bin, child *Element)
+// 	DoLatency(self *Bin) bool
+// 	ElementAdded(self *Bin, child *Element)
+// 	ElementRemoved(self *Bin, child *Element)
+// 	HandleMessage(self *Bin, msg *Message)
+// 	RemoveElement(self *Bin, element *Element) bool
+// }
 
-type extendsBin struct{ parent glib.Extendable }
+// type extendsBin struct{ parent glib.Extendable }
 
-func (e *extendsBin) Type() glib.Type     { return glib.Type(C.gst_bin_get_type()) }
-func (e *extendsBin) ClassSize() int64    { return int64(C.sizeof_GstBinClass) }
-func (e *extendsBin) InstanceSize() int64 { return int64(C.sizeof_GstBin) }
+// func (e *extendsBin) Type() glib.Type     { return glib.Type(C.gst_bin_get_type()) }
+// func (e *extendsBin) ClassSize() int64    { return int64(C.sizeof_GstBinClass) }
+// func (e *extendsBin) InstanceSize() int64 { return int64(C.sizeof_GstBin) }
 
-func (e *extendsBin) InitClass(klass unsafe.Pointer, elem glib.GoObjectSubclass) {
-	e.parent.InitClass(klass, elem)
+// func (e *extendsBin) InitClass(klass unsafe.Pointer, elem glib.GoObjectSubclass) {
+// 	e.parent.InitClass(klass, elem)
 
-	class := C.toGstBinClass(klass)
+// 	class := C.toGstBinClass(klass)
 
-	if _, ok := elem.(interface {
-		AddElement(self *Bin, element *Element) bool
-	}); ok {
-		C.setGstBinAddElement(class)
-	}
+// 	if _, ok := elem.(interface {
+// 		AddElement(self *Bin, element *Element) bool
+// 	}); ok {
+// 		C.setGstBinAddElement(class)
+// 	}
 
-	if _, ok := elem.(interface {
-		DeepElementAdded(self *Bin, subbin *Bin, child *Element)
-	}); ok {
-		C.setGstBinDeepElementAdded(class)
-	}
+// 	if _, ok := elem.(interface {
+// 		DeepElementAdded(self *Bin, subbin *Bin, child *Element)
+// 	}); ok {
+// 		C.setGstBinDeepElementAdded(class)
+// 	}
 
-	if _, ok := elem.(interface {
-		DeepElementRemoved(self *Bin, subbin *Bin, child *Element)
-	}); ok {
-		C.setGstBinDeepElementRemoved(class)
-	}
+// 	if _, ok := elem.(interface {
+// 		DeepElementRemoved(self *Bin, subbin *Bin, child *Element)
+// 	}); ok {
+// 		C.setGstBinDeepElementRemoved(class)
+// 	}
 
-	if _, ok := elem.(interface {
-		DoLatency(self *Bin) bool
-	}); ok {
-		C.setGstBinDoLatency(class)
-	}
+// 	if _, ok := elem.(interface {
+// 		DoLatency(self *Bin) bool
+// 	}); ok {
+// 		C.setGstBinDoLatency(class)
+// 	}
 
-	if _, ok := elem.(interface {
-		ElementAdded(self *Bin, child *Element)
-	}); ok {
-		C.setGstBinElementAdded(class)
-	}
+// 	if _, ok := elem.(interface {
+// 		ElementAdded(self *Bin, child *Element)
+// 	}); ok {
+// 		C.setGstBinElementAdded(class)
+// 	}
 
-	if _, ok := elem.(interface {
-		ElementRemoved(self *Bin, child *Element)
-	}); ok {
-		C.setGstBinElementRemoved(class)
-	}
+// 	if _, ok := elem.(interface {
+// 		ElementRemoved(self *Bin, child *Element)
+// 	}); ok {
+// 		C.setGstBinElementRemoved(class)
+// 	}
 
-	if _, ok := elem.(interface {
-		HandleMessage(self *Bin, msg *Message)
-	}); ok {
-		C.setGstBinHandleMessage(class)
-	}
+// 	if _, ok := elem.(interface {
+// 		HandleMessage(self *Bin, msg *Message)
+// 	}); ok {
+// 		C.setGstBinHandleMessage(class)
+// 	}
 
-	if _, ok := elem.(interface {
-		RemoveElement(self *Bin, element *Element) bool
-	}); ok {
-		C.setGstBinRemoveElement(class)
-	}
-}
+// 	if _, ok := elem.(interface {
+// 		RemoveElement(self *Bin, element *Element) bool
+// 	}); ok {
+// 		C.setGstBinRemoveElement(class)
+// 	}
+// }

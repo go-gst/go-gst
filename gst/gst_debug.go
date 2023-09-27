@@ -46,7 +46,7 @@ import (
 	"sync"
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
+	"github.com/gotk3/gotk3/glib"
 )
 
 // DebugColorFlags are terminal style flags you can use when creating your debugging

@@ -5,7 +5,7 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
+	"github.com/gotk3/gotk3/glib"
 )
 
 // InterfaceTOCSetter represents the GstTocSetter interface GType. Use this when querying bins

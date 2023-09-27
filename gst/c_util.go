@@ -9,7 +9,7 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
+	"github.com/gotk3/gotk3/glib"
 )
 
 func toGObject(data unsafe.Pointer) *glib.Object {

@@ -38,7 +38,7 @@ import (
 	"runtime"
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
+	"github.com/gotk3/gotk3/glib"
 	gopointer "github.com/mattn/go-pointer"
 )
 
@@ -50,7 +50,7 @@ func FromGstElementUnsafeNone(elem unsafe.Pointer) *Element {
 	if elem == nil {
 		return nil
 	}
-	return &Element{Object: &Object{InitiallyUnowned: &glib.InitiallyUnowned{Object: glib.TransferNone(elem)}}}
+	return &Element{Object: &Object{InitiallyUnowned: &glib.InitiallyUnowned{Object: glib.Take(elem)}}}
 }
 
 // FromGstElementUnsafeFull wraps the given element with a finalizer.
@@ -58,7 +58,7 @@ func FromGstElementUnsafeFull(elem unsafe.Pointer) *Element {
 	if elem == nil {
 		return nil
 	}
-	return &Element{Object: &Object{InitiallyUnowned: &glib.InitiallyUnowned{Object: glib.TransferFull(elem)}}}
+	return &Element{Object: &Object{InitiallyUnowned: &glib.InitiallyUnowned{Object: glib.AssumeOwnership(elem)}}}
 }
 
 // ToElement returns an Element object for the given Object. It will work
@@ -100,16 +100,16 @@ func ElementUnlinkMany(elems ...*Element) {
 	}
 }
 
-// RegisterElement creates a new elementfactory capable of instantiating objects of the given GoElement
-// and adds the factory to the plugin. A higher rank means more importance when autoplugging.
-func RegisterElement(plugin *Plugin, name string, rank Rank, elem glib.GoObjectSubclass, extends glib.Extendable, interfaces ...glib.Interface) bool {
-	return gobool(C.gst_element_register(
-		plugin.Instance(),
-		C.CString(name),
-		C.guint(rank),
-		C.GType(glib.RegisterGoType(name, elem, extends, interfaces...)),
-	))
-}
+// // RegisterElement creates a new elementfactory capable of instantiating objects of the given GoElement
+// // and adds the factory to the plugin. A higher rank means more importance when autoplugging.
+// func RegisterElement(plugin *Plugin, name string, rank Rank, elem glib.GoObjectSubclass, extends glib.Extendable, interfaces ...glib.Interface) bool {
+// 	return gobool(C.gst_element_register(
+// 		plugin.Instance(),
+// 		C.CString(name),
+// 		C.guint(rank),
+// 		C.GType(glib.RegisterGoType(name, elem, extends, interfaces...)),
+// 	))
+// }
 
 // Instance returns the underlying GstElement instance.
 func (e *Element) Instance() *C.GstElement { return C.toGstElement(e.Unsafe()) }
@@ -169,13 +169,13 @@ func (e *Element) ChangeState(transition StateChange) StateChangeReturn {
 // for arguments specify the go-gst equivalent (e.g. *gst.Element for almost all GstElement derivatives).
 //
 // This and the Emit() method may get moved down the hierarchy to the Object level at some point, since
-func (e *Element) Connect(signal string, f interface{}) (glib.SignalHandle, error) {
+func (e *Element) Connect(signal string, f interface{}) glib.SignalHandle {
 	// Elements are sometimes their own type unique from TYPE_ELEMENT. So make sure a type marshaler
 	// is registered for whatever this type is. Use the built-in element marshaler.
 	if e.TypeFromInstance() != glib.Type(C.GST_TYPE_ELEMENT) {
 		glib.RegisterGValueMarshalers([]glib.TypeMarshaler{{T: e.TypeFromInstance(), F: marshalElement}})
 	}
-	return e.Object.Connect(signal, f, nil)
+	return e.Object.Connect(signal, f)
 }
 
 // ContinueState commits the state change of the element and proceed to the next pending state if any. This

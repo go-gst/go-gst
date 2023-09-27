@@ -7,7 +7,7 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
+	"github.com/gotk3/gotk3/glib"
 )
 
 // BufferPool is a go wrapper around a GstBufferPool.
@@ -25,7 +25,7 @@ func NewBufferPool() *BufferPool {
 // FromGstBufferPoolUnsafeNone wraps the given unsafe.Pointer in a BufferPool instance. It takes a
 // ref and places a runtime finalizer on the resulting object.
 func FromGstBufferPoolUnsafeNone(bufferPool unsafe.Pointer) *BufferPool {
-	pool := wrapBufferPool(glib.TransferNone(bufferPool))
+	pool := wrapBufferPool(glib.Take(bufferPool))
 	return pool
 }
 
@@ -37,7 +37,7 @@ func FromGstBufferPoolUnsafeNone(bufferPool unsafe.Pointer) *BufferPool {
 // FromGstBufferPoolUnsafeFull wraps the given unsafe.Pointer in a BufferPool instance. It just
 // places a runtime finalizer on the resulting object.
 func FromGstBufferPoolUnsafeFull(bufferPool unsafe.Pointer) *BufferPool {
-	pool := wrapBufferPool(glib.TransferFull(bufferPool))
+	pool := wrapBufferPool(glib.AssumeOwnership(bufferPool))
 	return pool
 }
 
@@ -167,7 +167,7 @@ func (b *BufferPoolConfig) GetAllocator() (*Allocator, *AllocationParams) {
 	C.gst_buffer_pool_config_get_allocator(b.Instance(), &allocator, &params)
 	var allo *Allocator
 	if allocator != nil {
-		allo = wrapAllocator(glib.TransferNone(unsafe.Pointer(allocator)))
+		allo = wrapAllocator(glib.Take(unsafe.Pointer(allocator)))
 	}
 	return allo, &AllocationParams{ptr: &params}
 }

@@ -17,7 +17,7 @@
 //go:generate gst-plugin-gen
 package main
 
-import "github.com/go-gst/go-glib/glib"
+import "github.com/gotk3/gotk3/glib"
 
 func main() {}
 

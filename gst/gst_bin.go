@@ -75,7 +75,7 @@ import (
 	"fmt"
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
+	"github.com/gotk3/gotk3/glib"
 )
 
 // Bin is a go wrapper arounds a GstBin.
@@ -86,7 +86,7 @@ func NewBin(name string) *Bin {
 	cName := C.CString(name)
 	defer C.free(unsafe.Pointer(cName))
 	bin := C.gst_bin_new((*C.gchar)(unsafe.Pointer(cName)))
-	return wrapBin(glib.TransferNone(unsafe.Pointer(bin)))
+	return wrapBin(glib.Take(unsafe.Pointer(bin)))
 }
 
 // NewBinFromString constructs a bin from a string description.
@@ -102,7 +102,7 @@ func NewBinFromString(description string, ghostUnlinkedPads bool) (*Bin, error) 
 		errMsg := C.GoString(gerr.message)
 		return nil, errors.New(errMsg)
 	}
-	return &Bin{&Element{wrapObject(glib.TransferNone(unsafe.Pointer(bin)))}}, nil
+	return &Bin{&Element{wrapObject(glib.Take(unsafe.Pointer(bin)))}}, nil
 }
 
 // ToGstBin wraps the given glib.Object, gst.Object, or gst.Element in a Bin instance. Only
@@ -130,7 +130,7 @@ func (b *Bin) GetElementByName(name string) (*Element, error) {
 	if elem == nil {
 		return nil, fmt.Errorf("could not find element with name %s", name)
 	}
-	return wrapElement(glib.TransferFull(unsafe.Pointer(elem))), nil
+	return wrapElement(glib.AssumeOwnership(unsafe.Pointer(elem))), nil
 }
 
 // GetElementByNameRecursive returns the element with the given name. If it is not
@@ -142,7 +142,7 @@ func (b *Bin) GetElementByNameRecursive(name string) (*Element, error) {
 	if elem == nil {
 		return nil, fmt.Errorf("could not find element with name %s", name)
 	}
-	return wrapElement(glib.TransferFull(unsafe.Pointer(elem))), nil
+	return wrapElement(glib.AssumeOwnership(unsafe.Pointer(elem))), nil
 }
 
 // GetElements returns a list of the elements added to this pipeline.
@@ -187,7 +187,7 @@ func (b *Bin) GetByInterface(iface glib.Interface) (*Element, error) {
 	if elem == nil {
 		return nil, fmt.Errorf("could not find any elements implementing %s", iface.Type().Name())
 	}
-	return wrapElement(glib.TransferFull(unsafe.Pointer(elem))), nil
+	return wrapElement(glib.AssumeOwnership(unsafe.Pointer(elem))), nil
 }
 
 // GetAllByInterface looks for all elements inside the bin that implements the given interface. You can
@@ -251,7 +251,7 @@ func (b *Bin) FindUnlinkedPad(direction PadDirection) *Pad {
 	if pad == nil {
 		return nil
 	}
-	return wrapPad(glib.TransferFull(unsafe.Pointer(pad)))
+	return wrapPad(glib.AssumeOwnership(unsafe.Pointer(pad)))
 }
 
 // GetSuppressedFlags returns the suppressed flags of the bin.
@@ -337,7 +337,7 @@ func iteratorToElementSlice(iterator *C.GstIterator) ([]*Element, error) {
 		case C.GST_ITERATOR_OK:
 			cElemVoid := C.g_value_get_object((*C.GValue)(gval))
 			cElem := (*C.GstElement)(cElemVoid)
-			elems = append(elems, wrapElement(glib.TransferNone(unsafe.Pointer(cElem))))
+			elems = append(elems, wrapElement(glib.Take(unsafe.Pointer(cElem))))
 			C.g_value_unset((*C.GValue)(gval))
 		default:
 			return nil, errors.New("element iterator failed")

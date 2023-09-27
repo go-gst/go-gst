@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
+	"github.com/gotk3/gotk3/glib"
 )
 
 type InterpolationControlSource struct{ *Object }
@@ -32,7 +32,7 @@ func NewInterpolationControlSource() *InterpolationControlSource {
 	cCs := C.gst_interpolation_control_source_new()
 
 	return &InterpolationControlSource{
-		Object: wrapObject(glib.TransferFull(unsafe.Pointer(cCs))),
+		Object: wrapObject(glib.AssumeOwnership(unsafe.Pointer(cCs))),
 	}
 }
 

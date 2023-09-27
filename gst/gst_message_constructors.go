@@ -5,7 +5,7 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
+	"github.com/gotk3/gotk3/glib"
 )
 
 func getMessageSourceObj(src interface{}) *C.GstObject {
@@ -559,7 +559,7 @@ func (m *Message) StreamsSelectedGetStream(index uint) *Stream {
 	if stream == nil {
 		return nil
 	}
-	return wrapStream(glib.TransferFull(unsafe.Pointer(stream)))
+	return wrapStream(glib.AssumeOwnership(unsafe.Pointer(stream)))
 }
 
 // NewStructureChangeMessage creates a new structure change message. This message is posted when the structure of a pipeline is in the process

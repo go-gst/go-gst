@@ -27,7 +27,7 @@ import (
 	"fmt"
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
+	"github.com/gotk3/gotk3/glib"
 )
 
 // ValuesCanCompare determines if val1 and val2 can be compared.

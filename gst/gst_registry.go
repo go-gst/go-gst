@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
+	"github.com/gotk3/gotk3/glib"
 )
 
 // Registry is a go representation of a GstRegistry.
@@ -15,12 +15,12 @@ type Registry struct{ *Object }
 
 // FromGstRegistryUnsafeNone wraps the given GstRegistry pointer.
 func FromGstRegistryUnsafeNone(registry unsafe.Pointer) *Registry {
-	return &Registry{wrapObject(glib.TransferNone(registry))}
+	return &Registry{wrapObject(glib.Take(registry))}
 }
 
 // FromGstRegistryUnsafeFull wraps the given GstRegistry pointer.
 func FromGstRegistryUnsafeFull(registry unsafe.Pointer) *Registry {
-	return &Registry{wrapObject(glib.TransferFull(registry))}
+	return &Registry{wrapObject(glib.AssumeOwnership(registry))}
 }
 
 // GetRegistry returns the default global GstRegistry.
@@ -51,5 +51,5 @@ func (r *Registry) LookupFeature(name string) (*PluginFeature, error) {
 	if feat == nil {
 		return nil, fmt.Errorf("no feature named %s found", name)
 	}
-	return wrapPluginFeature(glib.TransferFull(unsafe.Pointer(feat))), nil
+	return wrapPluginFeature(glib.AssumeOwnership(unsafe.Pointer(feat))), nil
 }

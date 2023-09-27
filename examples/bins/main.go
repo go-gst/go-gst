@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/go-gst/go-glib/glib"
+	"os"
+
 	"github.com/go-gst/go-gst/examples"
 	"github.com/go-gst/go-gst/gst"
-	"os"
+	"github.com/gotk3/gotk3/glib"
 )
 
 func runPipeline(mainLoop *glib.MainLoop) error {
@@ -46,7 +47,9 @@ func runPipeline(mainLoop *glib.MainLoop) error {
 	pipeline.SetState(gst.StatePlaying)
 
 	// Block on the main loop
-	return mainLoop.RunError()
+	mainLoop.Run()
+
+	return nil
 }
 
 func main() {

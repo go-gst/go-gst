@@ -7,7 +7,7 @@ import (
 	"runtime"
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
+	"github.com/gotk3/gotk3/glib"
 )
 
 // AllocationParams wraps the GstAllocationParams.
@@ -74,17 +74,17 @@ type Allocator struct{ *Object }
 
 // FromGstAllocatorUnsafeNone wraps the given unsafe.Pointer in an Allocator instance.
 func FromGstAllocatorUnsafeNone(alloc unsafe.Pointer) *Allocator {
-	return wrapAllocator(glib.TransferNone(alloc))
+	return wrapAllocator(glib.Take(alloc))
 }
 
 // FromGstAllocatorUnsafeFull wraps the given unsafe.Pointer in an Allocator instance.
 func FromGstAllocatorUnsafeFull(alloc unsafe.Pointer) *Allocator {
-	return wrapAllocator(glib.TransferFull(alloc))
+	return wrapAllocator(glib.AssumeOwnership(alloc))
 }
 
 // DefaultAllocator returns the default GstAllocator.
 func DefaultAllocator() *Allocator {
-	return wrapAllocator(glib.TransferFull(unsafe.Pointer(C.gst_allocator_find(nil))))
+	return wrapAllocator(glib.AssumeOwnership(unsafe.Pointer(C.gst_allocator_find(nil))))
 }
 
 // Instance returns the underlying GstAllocator instance.

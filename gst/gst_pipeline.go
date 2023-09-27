@@ -9,7 +9,7 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
+	"github.com/gotk3/gotk3/glib"
 )
 
 // Pipeline is a go implementation of a GstPipeline.
@@ -20,12 +20,12 @@ type Pipeline struct {
 
 // FromGstPipelineUnsafeFull wraps the given pipeline pointer.
 func FromGstPipelineUnsafeFull(pipeline unsafe.Pointer) *Pipeline {
-	return &Pipeline{Bin: &Bin{&Element{wrapObject(glib.TransferFull(pipeline))}}}
+	return &Pipeline{Bin: &Bin{&Element{wrapObject(glib.AssumeOwnership(pipeline))}}}
 }
 
 // FromGstPipelineUnsafeNone wraps the given pipeline pointer.
 func FromGstPipelineUnsafeNone(pipeline unsafe.Pointer) *Pipeline {
-	return &Pipeline{Bin: &Bin{&Element{wrapObject(glib.TransferNone(pipeline))}}}
+	return &Pipeline{Bin: &Bin{&Element{wrapObject(glib.Take(pipeline))}}}
 }
 
 // NewPipeline allocates and returns a new empty pipeline. If name is empty, one

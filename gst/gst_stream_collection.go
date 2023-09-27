@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
+	"github.com/gotk3/gotk3/glib"
 )
 
 // StreamCollection is a Go representation of a GstStreamCollection.
@@ -15,12 +15,12 @@ type StreamCollection struct{ *Object }
 
 // FromGstStreamCollectionUnsafeNone captures a pointer with a ref and finalizer.
 func FromGstStreamCollectionUnsafeNone(stream unsafe.Pointer) *StreamCollection {
-	return &StreamCollection{wrapObject(glib.TransferNone(stream))}
+	return &StreamCollection{wrapObject(glib.Take(stream))}
 }
 
 // FromGstStreamCollectionUnsafeFull captures a pointer with just a finalizer.
 func FromGstStreamCollectionUnsafeFull(stream unsafe.Pointer) *StreamCollection {
-	return &StreamCollection{wrapObject(glib.TransferFull(stream))}
+	return &StreamCollection{wrapObject(glib.AssumeOwnership(stream))}
 }
 
 // NewStreamCollection returns a new StreamCollection with an upstream parent

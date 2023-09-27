@@ -8,8 +8,8 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
 	"github.com/go-gst/go-gst/gst"
+	"github.com/gotk3/gotk3/glib"
 )
 
 func init() {
@@ -78,7 +78,7 @@ func toGObject(o unsafe.Pointer) *glib.Object { return &glib.Object{GObject: gli
 type Discoverer struct{ *glib.Object }
 
 func wrapDiscovererFull(d *C.GstDiscoverer) *Discoverer {
-	return &Discoverer{glib.TransferFull(unsafe.Pointer(d))}
+	return &Discoverer{glib.AssumeOwnership(unsafe.Pointer(d))}
 }
 
 // NewDiscoverer creates a new Discoverer with the provided timeout.
@@ -113,7 +113,7 @@ func (d *Discoverer) DiscoverURI(uri string) (*DiscovererInfo, error) {
 type DiscovererInfo struct{ *glib.Object }
 
 func wrapDiscovererInfoFull(d *C.GstDiscovererInfo) *DiscovererInfo {
-	return &DiscovererInfo{glib.TransferFull(unsafe.Pointer(d))}
+	return &DiscovererInfo{glib.AssumeOwnership(unsafe.Pointer(d))}
 }
 
 // Instance returns the underlying GstDiscovererInfo instance.
@@ -426,7 +426,7 @@ func glistToStreamInfoSlice(glist *C.GList) []*DiscovererStreamInfo {
 		if data == nil {
 			return out // safety
 		}
-		out[i] = &DiscovererStreamInfo{glib.TransferFull(unsafe.Pointer(data))}
+		out[i] = &DiscovererStreamInfo{glib.AssumeOwnership(unsafe.Pointer(data))}
 	}
 	return out
 }
@@ -440,7 +440,7 @@ func glistToAudioInfoSlice(glist *C.GList) []*DiscovererAudioInfo {
 		if data == nil {
 			return out // safety
 		}
-		out[i] = &DiscovererAudioInfo{&DiscovererStreamInfo{glib.TransferFull(unsafe.Pointer(data))}}
+		out[i] = &DiscovererAudioInfo{&DiscovererStreamInfo{glib.AssumeOwnership(unsafe.Pointer(data))}}
 	}
 	return out
 }
@@ -454,7 +454,7 @@ func glistToVideoInfoSlice(glist *C.GList) []*DiscovererVideoInfo {
 		if data == nil {
 			return out // safety
 		}
-		out[i] = &DiscovererVideoInfo{&DiscovererStreamInfo{glib.TransferFull(unsafe.Pointer(data))}}
+		out[i] = &DiscovererVideoInfo{&DiscovererStreamInfo{glib.AssumeOwnership(unsafe.Pointer(data))}}
 	}
 	return out
 }
@@ -468,7 +468,7 @@ func glistToContainerInfoSlice(glist *C.GList) []*DiscovererContainerInfo {
 		if data == nil {
 			return out // safety
 		}
-		out[i] = &DiscovererContainerInfo{&DiscovererStreamInfo{glib.TransferFull(unsafe.Pointer(data))}}
+		out[i] = &DiscovererContainerInfo{&DiscovererStreamInfo{glib.AssumeOwnership(unsafe.Pointer(data))}}
 	}
 	return out
 }
@@ -482,7 +482,7 @@ func glistToSubtitleInfoSlice(glist *C.GList) []*DiscovererSubtitleInfo {
 		if data == nil {
 			return out // safety
 		}
-		out[i] = &DiscovererSubtitleInfo{&DiscovererStreamInfo{glib.TransferFull(unsafe.Pointer(data))}}
+		out[i] = &DiscovererSubtitleInfo{&DiscovererStreamInfo{glib.AssumeOwnership(unsafe.Pointer(data))}}
 	}
 	return out
 }

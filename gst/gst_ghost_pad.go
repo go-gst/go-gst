@@ -6,7 +6,7 @@ import (
 	"runtime"
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
+	"github.com/gotk3/gotk3/glib"
 )
 
 // GhostPad is a go representation of a GstGhostPad.
@@ -14,12 +14,12 @@ type GhostPad struct{ *ProxyPad }
 
 // FromGstGhostPadUnsafeNone wraps the given GstGhostPad.
 func FromGstGhostPadUnsafeNone(pad unsafe.Pointer) *GhostPad {
-	return &GhostPad{&ProxyPad{&Pad{wrapObject(glib.TransferNone(pad))}}}
+	return &GhostPad{&ProxyPad{&Pad{wrapObject(glib.Take(pad))}}}
 }
 
 // FromGstGhostPadUnsafeFull wraps the given GstGhostPad.
 func FromGstGhostPadUnsafeFull(pad unsafe.Pointer) *GhostPad {
-	return &GhostPad{&ProxyPad{&Pad{wrapObject(glib.TransferFull(pad))}}}
+	return &GhostPad{&ProxyPad{&Pad{wrapObject(glib.AssumeOwnership(pad))}}}
 
 }
 

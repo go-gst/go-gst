@@ -8,7 +8,7 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
+	"github.com/gotk3/gotk3/glib"
 )
 
 // Device is a Go representation of a GstDevice.
@@ -16,12 +16,12 @@ type Device struct{ *Object }
 
 // FromGstDeviceUnsafeNone wraps the given device with a ref and finalizer.
 func FromGstDeviceUnsafeNone(device unsafe.Pointer) *Device {
-	return &Device{wrapObject(glib.TransferNone(device))}
+	return &Device{wrapObject(glib.Take(device))}
 }
 
 // FromGstDeviceUnsafeFull wraps the given device with a finalizer.
 func FromGstDeviceUnsafeFull(device unsafe.Pointer) *Device {
-	return &Device{wrapObject(glib.TransferFull(device))}
+	return &Device{wrapObject(glib.AssumeOwnership(device))}
 }
 
 // Instance returns the underlying GstDevice object.

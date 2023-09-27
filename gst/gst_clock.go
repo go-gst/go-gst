@@ -25,7 +25,7 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
+	"github.com/gotk3/gotk3/glib"
 	gopointer "github.com/mattn/go-pointer"
 )
 
@@ -159,13 +159,13 @@ type Clock struct{ *Object }
 // FromGstClockUnsafeNone takes a pointer to a GstClock and wraps it in a Clock instance.
 // A ref is taken on the clock and a finalizer applied.
 func FromGstClockUnsafeNone(clock unsafe.Pointer) *Clock {
-	return wrapClock(glib.TransferNone(clock))
+	return wrapClock(glib.Take(clock))
 }
 
 // FromGstClockUnsafeFull takes a pointer to a GstClock and wraps it in a Clock instance.
 // A finalizer is set on the returned object.
 func FromGstClockUnsafeFull(clock unsafe.Pointer) *Clock {
-	return wrapClock(glib.TransferFull(clock))
+	return wrapClock(glib.AssumeOwnership(clock))
 }
 
 // Instance returns the underlying GstClock instance.

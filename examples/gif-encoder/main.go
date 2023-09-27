@@ -13,11 +13,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/go-gst/go-glib/glib"
 	"github.com/go-gst/go-gst/examples"
 	"github.com/go-gst/go-gst/gst"
 	"github.com/go-gst/go-gst/gst/app"
 	"github.com/go-gst/go-gst/gst/video"
+	"github.com/gotk3/gotk3/glib"
 )
 
 var srcFile string

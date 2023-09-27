@@ -17,9 +17,9 @@ import (
 	"os"
 	"time"
 
-	"github.com/go-gst/go-glib/glib"
 	"github.com/go-gst/go-gst/examples"
 	"github.com/go-gst/go-gst/gst"
+	"github.com/gotk3/gotk3/glib"
 )
 
 func tagsetter(mainLoop *glib.MainLoop) error {

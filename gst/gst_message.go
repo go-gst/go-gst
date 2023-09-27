@@ -9,7 +9,7 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
+	"github.com/gotk3/gotk3/glib"
 )
 
 // Message is a Go wrapper around a GstMessage. It provides convenience methods for

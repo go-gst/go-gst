@@ -24,8 +24,8 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
 	"github.com/go-gst/go-gst/gst"
+	"github.com/gotk3/gotk3/glib"
 )
 
 // GstBaseTransformFlowDropped is a GstFlowReturn that can be returned from Transform() and TransformIP()

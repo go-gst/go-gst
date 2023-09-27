@@ -6,7 +6,7 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
+	"github.com/gotk3/gotk3/glib"
 )
 
 // Object is a go representation of a GstObject.
@@ -14,11 +14,13 @@ type Object struct{ *glib.InitiallyUnowned }
 
 // FromGstObjectUnsafeNone returns an Object wrapping the given pointer. It meant for internal
 // usage and exported for visibility to other packages.
-func FromGstObjectUnsafeNone(ptr unsafe.Pointer) *Object { return wrapObject(glib.TransferNone(ptr)) }
+func FromGstObjectUnsafeNone(ptr unsafe.Pointer) *Object { return wrapObject(glib.Take(ptr)) }
 
 // FromGstObjectUnsafeFull returns an Object wrapping the given pointer. It meant for internal
 // usage and exported for visibility to other packages.
-func FromGstObjectUnsafeFull(ptr unsafe.Pointer) *Object { return wrapObject(glib.TransferFull(ptr)) }
+func FromGstObjectUnsafeFull(ptr unsafe.Pointer) *Object {
+	return wrapObject(glib.AssumeOwnership(ptr))
+}
 
 // Instance returns the native C GstObject.
 func (o *Object) Instance() *C.GstObject { return C.toGstObject(o.Unsafe()) }

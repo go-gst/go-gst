@@ -12,7 +12,7 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
+	"github.com/gotk3/gotk3/glib"
 	gopointer "github.com/mattn/go-pointer"
 )
 
@@ -261,7 +261,7 @@ func goLogFunction(
 	if f != nil {
 		var obj *glib.Object
 		if object != nil {
-			obj = glib.TransferNone(unsafe.Pointer(object))
+			obj = glib.Take(unsafe.Pointer(object))
 		}
 		f(
 			DebugLevel(level),

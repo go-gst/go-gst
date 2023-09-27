@@ -6,7 +6,7 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
+	"github.com/gotk3/gotk3/glib"
 )
 
 // Stream is a Go representation of a GstStream.
@@ -14,12 +14,12 @@ type Stream struct{ *Object }
 
 // FromGstStreamUnsafeNone captures a pointer with a ref and finalizer.
 func FromGstStreamUnsafeNone(stream unsafe.Pointer) *Stream {
-	return &Stream{wrapObject(glib.TransferNone(stream))}
+	return &Stream{wrapObject(glib.Take(stream))}
 }
 
 // FromGstStreamUnsafeFull captures a pointer with just a finalizer.
 func FromGstStreamUnsafeFull(stream unsafe.Pointer) *Stream {
-	return &Stream{wrapObject(glib.TransferNone(stream))}
+	return &Stream{wrapObject(glib.AssumeOwnership(stream))}
 }
 
 // NewStream returns a new Stream with the given ID, caps, type, and flags.

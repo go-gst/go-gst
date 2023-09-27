@@ -10,9 +10,9 @@ import (
 
 	minio "github.com/minio/minio-go/v7"
 
-	"github.com/go-gst/go-glib/glib"
 	"github.com/go-gst/go-gst/gst"
 	"github.com/go-gst/go-gst/gst/base"
+	"github.com/gotk3/gotk3/glib"
 )
 
 var srcCAT = gst.NewDebugCategory(

@@ -5,7 +5,7 @@ import "C"
 import (
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
+	"github.com/gotk3/gotk3/glib"
 )
 
 type ControlBinding struct{ *Object }
@@ -24,7 +24,7 @@ func NewDirectControlBinding(obj *Object, prop string, csource *InterpolationCon
 
 	return &DirectControlBinding{
 		ControlBinding: ControlBinding{
-			Object: wrapObject(glib.TransferNone(unsafe.Pointer(cbinding))),
+			Object: wrapObject(glib.Take(unsafe.Pointer(cbinding))),
 		},
 	}
 }

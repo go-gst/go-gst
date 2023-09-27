@@ -9,7 +9,7 @@ import (
 	"runtime"
 	"unsafe"
 
-	"github.com/go-gst/go-glib/glib"
+	"github.com/gotk3/gotk3/glib"
 )
 
 // Memory is a go representation of GstMemory. This object is implemented in a read-only fashion
