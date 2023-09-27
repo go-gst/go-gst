@@ -72,7 +72,7 @@ func NewElementWithProperties(factory string, properties map[string]interface{})
 	if elem == nil {
 		return nil, fmt.Errorf("could not create element: %s", factory)
 	}
-	return wrapElement(glib.TransferFull(unsafe.Pointer(elem))), nil
+	return wrapElement(glib.TransferNone(unsafe.Pointer(elem))), nil
 }
 
 // NewElementMany is a convenience wrapper around building many GstElements in a
