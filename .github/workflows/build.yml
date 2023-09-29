@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - try-mingw-gstreamer
   pull_request:
     branches:
       - main
@@ -15,14 +16,14 @@ jobs:
         os: [ubuntu-latest, windows-latest, "macos-latest"]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Downgrade mingw to 11.2.0
-        if: runner.os == 'Windows'
-        run: choco install mingw --version 11.2.0 --allow-downgrade
+      # - name: Downgrade mingw to 11.2.0
+      #   if: runner.os == 'Windows'
+      #   run: choco install mingw --version 11.2.0 --allow-downgrade
       - name: Setup GStreamer
         id: setup_gstreamer
-        uses: RSWilli/setup-gstreamer@5472e33168ba7b1f3bb01dc81ca067e263633824
+        uses: everycastlabs/setup-gstreamer@move-to-mingw
         with:
-          version: 1.22.0
+          version: 1.22.6
       - name: checkout
         uses: actions/checkout@v3
       - uses: actions/setup-go@v4
