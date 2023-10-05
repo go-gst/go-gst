@@ -595,6 +595,15 @@ func (e *Element) GetBaseTime() ClockTime {
 
 // SeekPosition seeks to the given position in the stream. The element should be in the PAUSED or PLAYING state and must be a seekable.
 // The position is given in nanoseconds.
-func (e *Element) SeekPosition(position int64) {
-	C.gst_element_seek_simple(e.Instance(), C.GstFormat(C.GST_FORMAT_TIME), C.GstSeekFlags(C.GST_SEEK_FLAG_FLUSH), C.gint64(position))
+// This function performs a flush seek, i.e. the element will start processing data from the new position only after it has processed
+//
+// For example, to seek to 40th second of the stream, use:
+//
+//	pos := int64(time.Duration(40 * time.Second))
+//	element.SeekPosition(pos, gst.FormatTime, gst.SeekFlagFlush)
+//
+// to perform a flush seek to the nearest keyframe before the given position.
+func (e *Element) SeekPosition(position int64, format Format, flag SeekFlags) bool {
+	result := C.gst_element_seek_simple(e.Instance(), C.GstFormat(format), C.GstSeekFlags(flag), C.gint64(position))
+	return gobool(result)
 }
