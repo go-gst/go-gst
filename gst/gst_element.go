@@ -592,3 +592,9 @@ func (e *Element) GetBaseTime() ClockTime {
 
 	return ClockTime(ctime)
 }
+
+// SeekPosition seeks to the given position in the stream. The element should be in the PAUSED or PLAYING state and must be a seekable.
+// The position is given in nanoseconds.
+func (e *Element) SeekPosition(position int64) {
+	C.gst_element_seek_simple(e.Instance(), C.GstFormat(C.GST_FORMAT_TIME), C.GstSeekFlags(C.GST_SEEK_FLAG_FLUSH), C.gint64(position))
+}
