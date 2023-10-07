@@ -36,6 +36,7 @@ import (
 	"fmt"
 	"path"
 	"runtime"
+	"time"
 	"unsafe"
 
 	"github.com/go-gst/go-glib/glib"
@@ -593,17 +594,26 @@ func (e *Element) GetBaseTime() ClockTime {
 	return ClockTime(ctime)
 }
 
-// SeekPosition seeks to the given position in the stream. The element should be in the PAUSED or PLAYING state and must be a seekable.
-// The position is given in nanoseconds.
-// This function performs a flush seek, i.e. the element will start processing data from the new position only after it has processed
+// SeekSimple seeks to the given position in the stream. The element / pipeline should be in the PAUSED or PLAYING state and must be a seekable.
+func (e *Element) SeekSimple(position int64, format Format, flag SeekFlags) bool {
+	result := C.gst_element_seek_simple(e.Instance(), C.GstFormat(format), C.GstSeekFlags(flag), C.gint64(position))
+	return gobool(result)
+}
+
+// SeekTime seeks to the given position time in the stream. The element / pipeline should be in the PAUSED or PLAYING state and must be a seekable.
 //
 // For example, to seek to 40th second of the stream, use:
 //
 //	pos := int64(time.Duration(40 * time.Second))
-//	element.SeekPosition(pos, gst.FormatTime, gst.SeekFlagFlush)
+//	element.SeekTime(pos, gst.FormatTime, gst.SeekFlagFlush)
 //
 // to perform a flush seek to the nearest keyframe before the given position.
-func (e *Element) SeekPosition(position int64, format Format, flag SeekFlags) bool {
-	result := C.gst_element_seek_simple(e.Instance(), C.GstFormat(format), C.GstSeekFlags(flag), C.gint64(position))
-	return gobool(result)
+func (e *Element) SeekTime(position time.Duration, flag SeekFlags) bool {
+	return e.SeekSimple(position.Nanoseconds(), FormatTime, flag)
+}
+
+// SeekDefault seeks to the given position in the stream. The position is the frame number for video, or sample for audio.
+// The element should be in the PAUSED or PLAYING state and must be a seekable.
+func (e *Element) SeekDefault(position int64, flag SeekFlags) bool {
+	return e.SeekSimple(position, FormatDefault, flag)
 }
