@@ -14,7 +14,7 @@ jobs:
         id: setup_gstreamer
         uses: RSWilli/setup-gstreamer@5472e33168ba7b1f3bb01dc81ca067e263633824
         with:
-          version: 1.22.0
+          version: 1.22.6
       - name: Check out code into the Go module directory
         uses: actions/checkout@v2
       - uses: actions/setup-go@v4
