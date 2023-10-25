@@ -103,9 +103,17 @@ func ElementUnlinkMany(elems ...*Element) {
 
 // RegisterElement creates a new elementfactory capable of instantiating objects of the given GoElement
 // and adds the factory to the plugin. A higher rank means more importance when autoplugging.
+//
+// plugin can also be nil to register a static element
 func RegisterElement(plugin *Plugin, name string, rank Rank, elem glib.GoObjectSubclass, extends glib.Extendable, interfaces ...glib.Interface) bool {
+	var pluginref *C.GstPlugin
+
+	if plugin != nil {
+		pluginref = plugin.Instance()
+	}
+
 	return gobool(C.gst_element_register(
-		plugin.Instance(),
+		pluginref,
 		C.CString(name),
 		C.guint(rank),
 		C.GType(glib.RegisterGoType(name, elem, extends, interfaces...)),
