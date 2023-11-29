@@ -30,7 +30,7 @@ func (d *DeviceProvider) GetDevices() []*Device {
 	if glist == nil {
 		return nil
 	}
-	goList := glib.WrapList(uintptr(unsafe.Pointer(glist)))
+	goList := glib.WrapList(unsafe.Pointer(glist))
 	out := make([]*Device, 0)
 	goList.Foreach(func(item interface{}) {
 		pt := item.(unsafe.Pointer)

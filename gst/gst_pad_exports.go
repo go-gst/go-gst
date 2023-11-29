@@ -130,7 +130,7 @@ func goGstPadIterIntLinkFunction(pad *C.GstPad, parent *C.GstObject) *C.GstItera
 		if err != nil {
 			return nil
 		}
-		val.SetInstance(uintptr(unsafe.Pointer(pads[0].Instance())))
+		val.SetInstance(unsafe.Pointer(pads[0].Instance()))
 		return C.gst_iterator_new_single(C.gst_pad_get_type(), (*C.GValue)(unsafe.Pointer(val.GValue)))
 	}
 	return nil

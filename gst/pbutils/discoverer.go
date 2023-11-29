@@ -16,50 +16,50 @@ func init() {
 	tm := []glib.TypeMarshaler{
 		{
 			T: glib.Type(C.gst_discoverer_get_type()),
-			F: func(p uintptr) (interface{}, error) {
-				c := C.g_value_get_object(uintptrToGVal(p))
+			F: func(p unsafe.Pointer) (interface{}, error) {
+				c := C.g_value_get_object(ptrToGVal(p))
 				return &Discoverer{toGObject(unsafe.Pointer(c))}, nil
 			},
 		},
 		{
 			T: glib.Type(C.gst_discoverer_info_get_type()),
-			F: func(p uintptr) (interface{}, error) {
-				c := C.g_value_get_object(uintptrToGVal(p))
+			F: func(p unsafe.Pointer) (interface{}, error) {
+				c := C.g_value_get_object(ptrToGVal(p))
 				return &DiscovererInfo{toGObject(unsafe.Pointer(c))}, nil
 			},
 		},
 		{
 			T: glib.Type(C.gst_discoverer_stream_info_get_type()),
-			F: func(p uintptr) (interface{}, error) {
-				c := C.g_value_get_object(uintptrToGVal(p))
+			F: func(p unsafe.Pointer) (interface{}, error) {
+				c := C.g_value_get_object(ptrToGVal(p))
 				return &DiscovererStreamInfo{toGObject(unsafe.Pointer(c))}, nil
 			},
 		},
 		{
 			T: glib.Type(C.gst_discoverer_audio_info_get_type()),
-			F: func(p uintptr) (interface{}, error) {
-				c := C.g_value_get_object(uintptrToGVal(p))
+			F: func(p unsafe.Pointer) (interface{}, error) {
+				c := C.g_value_get_object(ptrToGVal(p))
 				return &DiscovererAudioInfo{&DiscovererStreamInfo{toGObject(unsafe.Pointer(c))}}, nil
 			},
 		},
 		{
 			T: glib.Type(C.gst_discoverer_video_info_get_type()),
-			F: func(p uintptr) (interface{}, error) {
-				c := C.g_value_get_object(uintptrToGVal(p))
+			F: func(p unsafe.Pointer) (interface{}, error) {
+				c := C.g_value_get_object(ptrToGVal(p))
 				return &DiscovererVideoInfo{&DiscovererStreamInfo{toGObject(unsafe.Pointer(c))}}, nil
 			},
 		},
 		{
 			T: glib.Type(C.gst_discoverer_subtitle_info_get_type()),
-			F: func(p uintptr) (interface{}, error) {
-				c := C.g_value_get_object(uintptrToGVal(p))
+			F: func(p unsafe.Pointer) (interface{}, error) {
+				c := C.g_value_get_object(ptrToGVal(p))
 				return &DiscovererSubtitleInfo{&DiscovererStreamInfo{toGObject(unsafe.Pointer(c))}}, nil
 			},
 		},
 		{
 			T: glib.Type(C.gst_discoverer_container_info_get_type()),
-			F: func(p uintptr) (interface{}, error) {
-				c := C.g_value_get_object(uintptrToGVal(p))
+			F: func(p unsafe.Pointer) (interface{}, error) {
+				c := C.g_value_get_object(ptrToGVal(p))
 				return &DiscovererContainerInfo{&DiscovererStreamInfo{toGObject(unsafe.Pointer(c))}}, nil
 			},
 		},
@@ -67,9 +67,8 @@ func init() {
 	glib.RegisterGValueMarshalers(tm)
 }
 
-func uintptrToGVal(p uintptr) *C.GValue {
-	return (*C.GValue)(unsafe.Pointer(p)) // vet thinks this is unsafe and there is no way around it for now.
-	// but the given ptr is an address to a C object so go's concerns are misplaced.
+func ptrToGVal(p unsafe.Pointer) *C.GValue {
+	return (*C.GValue)(p)
 }
 
 func toGObject(o unsafe.Pointer) *glib.Object { return &glib.Object{GObject: glib.ToGObject(o)} }

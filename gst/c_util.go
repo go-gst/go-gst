@@ -95,15 +95,15 @@ func quarkToString(q C.GQuark) string {
 
 func streamSliceToGlist(streams []*Stream) *C.GList {
 	var glist C.GList
-	wrapped := glib.WrapList(uintptr(unsafe.Pointer(&glist)))
+	wrapped := glib.WrapList(unsafe.Pointer(&glist))
 	for _, stream := range streams {
-		wrapped = wrapped.Append(uintptr(stream.Unsafe()))
+		wrapped = wrapped.Append(stream.Unsafe())
 	}
 	return &glist
 }
 
 func glistToStreamSlice(glist *C.GList) []*Stream {
-	l := glib.WrapList(uintptr(unsafe.Pointer(&glist)))
+	l := glib.WrapList(unsafe.Pointer(&glist))
 	out := make([]*Stream, 0)
 	l.FreeFull(func(item interface{}) {
 		st := item.(*C.GstStream)
@@ -113,7 +113,7 @@ func glistToStreamSlice(glist *C.GList) []*Stream {
 }
 
 func glistToPadTemplateSlice(glist *C.GList) []*PadTemplate {
-	l := glib.WrapList(uintptr(unsafe.Pointer(&glist)))
+	l := glib.WrapList(unsafe.Pointer(&glist))
 	out := make([]*PadTemplate, 0)
 	l.FreeFull(func(item interface{}) {
 		tmpl := item.(*C.GstPadTemplate)
