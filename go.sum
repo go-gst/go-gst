@@ -1,4 +1,6 @@
 github.com/go-gst/go-glib v0.0.0-20231129143528-6abb4f7af939 h1:Z2FvB66fEGvIqzVSOCboWFsoyQgacUR8duoyb43RXAc=
 github.com/go-gst/go-glib v0.0.0-20231129143528-6abb4f7af939/go.mod h1:rXuKU+tCN7pN+b/7oIyWv6MpnlGy+QWd7jRhWUNstjU=
+github.com/go-gst/go-glib v0.0.0-20231204104758-af5ab66d800c h1:F5+xSMyB0KMOt/9LakFnE+74ZKvLrOY3JSDpnMkfKMQ=
+github.com/go-gst/go-glib v0.0.0-20231204104758-af5ab66d800c/go.mod h1:rXuKU+tCN7pN+b/7oIyWv6MpnlGy+QWd7jRhWUNstjU=
 github.com/mattn/go-pointer v0.0.1 h1:n+XhsuGeVO6MEAp7xyEukFINEa+Quek5psIR/ylA6o0=
 github.com/mattn/go-pointer v0.0.1/go.mod h1:2zXcozF6qYGgmsG+SeTZz3oAbFLdD3OWqnUbNvJZAlc=

@@ -45,7 +45,7 @@ func init() {
 		{
 			T: glib.Type(C.gst_video_format_get_type()),
 			F: func(p unsafe.Pointer) (interface{}, error) {
-				c := C.g_value_get_enum(ptrToGVal(p))
+				c := C.g_value_get_enum((*C.GValue)(p))
 				return Format(c), nil
 			},
 		},

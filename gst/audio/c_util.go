@@ -8,8 +8,6 @@ framesToClockTime (gint frames, gint rate) { return GST_FRAMES_TO_CLOCK_TIME(fra
 
 gint
 clockTimeToFrames(GstClockTime ct, gint rate) { return GST_CLOCK_TIME_TO_FRAMES(ct, rate); }
-
-GValue *  audioUtilToGValue (guintptr p) { return (GValue*)(p); }
 */
 import "C"
 import (
@@ -44,5 +42,5 @@ func gobool(b C.gboolean) bool {
 }
 
 func ptrToGVal(p unsafe.Pointer) *C.GValue {
-	return (*C.GValue)(C.audioUtilToGValue(C.guintptr(p)))
+	return (*C.GValue)(p)
 }
