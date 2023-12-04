@@ -60,14 +60,10 @@ func NewElementWithProperties(factory string, properties map[string]interface{})
 	defer C.free(unsafe.Pointer(cfactory))
 
 	n := C.uint(len(properties))
+	p := unsafe.SliceData(props)
+	v := unsafe.SliceData(values)
 
-	var elem *C.GstElement
-
-	if n > 0 {
-		elem = C.gst_element_factory_make_with_properties(cfactory, n, &props[0], &values[0])
-	} else {
-		elem = C.gst_element_factory_make_with_properties(cfactory, n, nil, nil)
-	}
+	elem := C.gst_element_factory_make_with_properties(cfactory, n, p, v)
 
 	if elem == nil {
 		return nil, fmt.Errorf("could not create element: %s", factory)
