@@ -5,6 +5,7 @@ import "C"
 
 import (
 	"fmt"
+	"runtime"
 	"unsafe"
 
 	"github.com/go-gst/go-glib/glib"
@@ -47,13 +48,16 @@ func NewElementWithProperties(factory string, properties map[string]interface{})
 
 		props = append(props, cpropName)
 
-		cValue, err := glib.GValue(v)
+		value, err := glib.GValue(v)
 
 		if err != nil {
 			return nil, err
 		}
 
-		values = append(values, *(*C.GValue)(cValue.Unsafe()))
+		// value goes out of scope, but the finalizer must not run until the cgo call is finished
+		defer runtime.KeepAlive(value)
+
+		values = append(values, *(*C.GValue)(value.Unsafe()))
 	}
 
 	cfactory := C.CString(factory)
