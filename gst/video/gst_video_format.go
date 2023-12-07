@@ -44,8 +44,8 @@ func init() {
 	glib.RegisterGValueMarshalers([]glib.TypeMarshaler{
 		{
 			T: glib.Type(C.gst_video_format_get_type()),
-			F: func(p uintptr) (interface{}, error) {
-				c := C.g_value_get_enum(uintptrToGVal(p))
+			F: func(p unsafe.Pointer) (interface{}, error) {
+				c := C.g_value_get_enum((*C.GValue)(p))
 				return Format(c), nil
 			},
 		},

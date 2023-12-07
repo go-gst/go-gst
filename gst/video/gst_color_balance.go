@@ -100,7 +100,7 @@ func (c *gstColorBalance) ListChannels() []*ColorBalanceChannel {
 	if gList == nil {
 		return nil
 	}
-	wrapped := glib.WrapList(uintptr(unsafe.Pointer(gList)))
+	wrapped := glib.WrapList(unsafe.Pointer(gList))
 	defer wrapped.Free()
 	out := make([]*ColorBalanceChannel, 0)
 	wrapped.Foreach(func(item interface{}) {
