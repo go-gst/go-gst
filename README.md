@@ -8,9 +8,7 @@
 
 See [pkg.go.dev](https://pkg.go.dev/github.com/go-gst/go-gst) references for documentation and examples.
 
-**This library has not been thoroughly tested and as such is not recommended for mission critical applications yet. If you'd like to try it out and encounter any bugs, feel free to open an Issue or PR. For more information see the [Contributing](#contributing) section.**
-
-Recently almost all memory handling has been moved into the bindings. Some documentation may still reflect the original need to Unref resources, but in most situations that is not the case anymore.
+Please make sure that you have followed the [official gstreamer installation instructions](https://gstreamer.freedesktop.org/documentation/installing/index.html?gi-language=c) before attempting to use the bindings or file an issue.
 
 ## Requirements
 
@@ -24,6 +22,8 @@ For building applications with this library you need the following:
      - Look at `pkg_config.go` in the imported package to see which C libraries are needed.
 
 ### Windows
+
+(also see https://github.com/go-gst/go-gst/issues/64)
 
 Compiling on Windows may require some more dancing around than on macOS or Linux.
 First, make sure you have [mingw](https://chocolatey.org/packages/mingw) and [pkgconfig](https://chocolatey.org/packages/pkgconfiglite) installed (links are for the Chocolatey packages).
