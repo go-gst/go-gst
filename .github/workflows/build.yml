@@ -14,13 +14,25 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-          # - windows-latest # see https://github.com/go-gst/go-gst/issues/64
+          - windows-latest
           - macos-latest
     runs-on: ${{ matrix.os }}
     steps:
-      # - name: Downgrade mingw to 11.2.0
-      #   if: runner.os == 'Windows'
-      #   run: choco install mingw --version 11.2.0 --allow-downgrade
+      - name: install mingw 11.2.0 using choco
+        if: runner.os == 'Windows'
+        shell: powershell
+        run: choco install mingw --version 11.2.0
+
+      - name: Add mingw to path on windows
+        if: runner.os == 'Windows'
+        run: Add-Content $env:GITHUB_PATH "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin"
+        shell: powershell
+
+      - name: install pkgconfiglite using choco
+        if: runner.os == 'Windows'
+        shell: powershell
+        run: choco install pkgconfiglite --allow-empty-checksums
+
       - name: Setup GStreamer
         id: setup_gstreamer
         uses: blinemedical/setup-gstreamer@v1.4.0
