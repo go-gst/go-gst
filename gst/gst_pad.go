@@ -185,6 +185,12 @@ func (p *Pad) ActivateMode(mode PadMode, active bool) {
 	C.gst_pad_activate_mode(p.Instance(), C.GstPadMode(mode), gboolean(active))
 }
 
+// AsGhostPad returns this pad as a GhostPad. This should only be used if the pad is actually a GhostPad. E.g. one that was retrieved from
+// a bin using GetStaticPad.
+func (p *Pad) AsGhostPad() *GhostPad {
+	return &GhostPad{&ProxyPad{p}}
+}
+
 // PadProbeCallback is a callback used by Pad AddProbe. It gets called to notify about the current blocking type.
 type PadProbeCallback func(*Pad, *PadProbeInfo) PadProbeReturn
 
