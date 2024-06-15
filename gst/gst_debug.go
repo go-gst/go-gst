@@ -45,8 +45,6 @@ import (
 	"runtime"
 	"sync"
 	"unsafe"
-
-	"github.com/go-gst/go-glib/glib"
 )
 
 // DebugColorFlags are terminal style flags you can use when creating your debugging
@@ -192,13 +190,45 @@ func (d *DebugCategory) LogMemDump(message string, obj ...*Object) {
 	d.logDepth(LevelMemDump, message, 2, getLogObj(obj...))
 }
 
+// GetName returns the name of a debug category.
+func (d *DebugCategory) GetName() string {
+	return C.GoString(C.gst_debug_category_get_name(d.ptr))
+}
+
+// C.GObject passed to logging callback might not be full constructed yet (logging before g_object_new() has returned),
+// or they might have a refcount of 0 (logging in finalize), or they might be partially destructed (dispose).
+//
+// It is not safe for general use. For most needs, use DebugMessage.GetId() instead
+type LoggedObject struct {
+	ptr *C.GObject
+}
+
+func (l *LoggedObject) Get() unsafe.Pointer {
+	return unsafe.Pointer(l.ptr)
+}
+
+type DebugMessage struct {
+	ptr *C.GstDebugMessage
+}
+
+// Get returns the string representation of a GstDebugMessage.
+func (d *DebugMessage) Get() string {
+	return C.GoString(C.gst_debug_message_get(d.ptr))
+}
+
+// GetId returns the id of the object that emitted this message. Can be empty.
+func (d *DebugMessage) GetId() string {
+	return C.GoString(C.gst_debug_message_get_id(d.ptr))
+}
+
 type LogFunction = func(
+	category *DebugCategory,
 	level DebugLevel,
 	file string,
 	function string,
 	line int,
-	object *glib.Object,
-	message string,
+	object *LoggedObject,
+	message *DebugMessage,
 )
 
 var (
