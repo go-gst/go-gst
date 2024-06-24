@@ -254,22 +254,23 @@ func goLogFunction(
 	message *C.GstDebugMessage,
 	userData C.gpointer,
 ) {
+	if category == nil {
+		return
+	}
+
 	logFnMu.RLock()
 	f := customLogFunction
 	logFnMu.RUnlock()
 
 	if f != nil {
-		var obj *glib.Object
-		if object != nil {
-			obj = glib.TransferNone(unsafe.Pointer(object))
-		}
 		f(
+			&DebugCategory{ptr: category},
 			DebugLevel(level),
 			C.GoString(file),
 			C.GoString(function),
 			int(line),
-			obj,
-			C.GoString(C.gst_debug_message_get(message)),
+			&LoggedObject{ptr: object},
+			&DebugMessage{ptr: message},
 		)
 	}
 }
