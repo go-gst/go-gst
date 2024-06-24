@@ -52,7 +52,7 @@ func (g *GstBaseTransform) Instance() *C.GstBaseTransform {
 	return C.toGstBaseTransform(g.Unsafe())
 }
 
-// GetAllocator retrieves the memory allocator used by this base transform. Unref after usage.
+// GetAllocator retrieves the memory allocator used by this base transform.
 func (g *GstBaseTransform) GetAllocator() (*gst.Allocator, *gst.AllocationParams) {
 	var allocParams C.GstAllocationParams
 	var allocator *C.GstAllocator
@@ -63,7 +63,7 @@ func (g *GstBaseTransform) GetAllocator() (*gst.Allocator, *gst.AllocationParams
 	return gst.FromGstAllocatorUnsafeFull(unsafe.Pointer(allocator)), gst.FromGstAllocationParamsUnsafe(unsafe.Pointer(&allocParams))
 }
 
-// GetBufferPool returns the BufferPool used by this transform. Unref after usage.
+// GetBufferPool returns the BufferPool used by this transform.
 func (g *GstBaseTransform) GetBufferPool() *gst.BufferPool {
 	pool := C.gst_base_transform_get_buffer_pool(g.Instance())
 	if pool == nil {

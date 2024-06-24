@@ -85,7 +85,7 @@ func (g *GstBaseSink) GetDropOutOfSegment() bool {
 // GetLastSample gets the last sample that arrived in the sink and was used for preroll or for rendering.
 // This property can be used to generate thumbnails.
 //
-// The GstCaps on the sample can be used to determine the type of the buffer. Unref after usage. Sample will
+// The GstCaps on the sample can be used to determine the type of the buffer. Sample will
 // be nil if no buffer has arrived yet.
 func (g *GstBaseSink) GetLastSample() *gst.Sample {
 	sample := C.gst_base_sink_get_last_sample(g.Instance())

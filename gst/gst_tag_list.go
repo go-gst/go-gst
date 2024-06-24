@@ -112,11 +112,6 @@ func (t *TagList) AddValues(mergeMode TagMergeMode, tag Tag, vals ...interface{}
 
 // Copy creates a new TagList as a copy of the old taglist. The new taglist will have a refcount of 1,
 // owned by the caller, and will be writable as a result.
-//
-// Note that this function is the semantic equivalent of a Ref followed by a MakeWritable. If you only want
-// to hold on to a reference to the data, you should use Ref.
-//
-// When you are finished with the taglist, call Unref on it.
 func (t *TagList) Copy() *TagList {
 	return FromGstTagListUnsafeFull(unsafe.Pointer(C.gst_tag_list_copy(t.Instance())))
 }
@@ -388,8 +383,7 @@ func (t *TagList) GetPointerIndex(tag Tag, idx uint) (value unsafe.Pointer, ok b
 	return unsafe.Pointer(gout), gobool(gok)
 }
 
-// GetSample copies the first sample for the given tag in the taglist. Free the sample with Unref when it
-// is no longer needed.
+// GetSample copies the first sample for the given tag in the taglist.
 func (t *TagList) GetSample(tag Tag) (value *Sample, ok bool) {
 	ctag := C.CString(string(tag))
 	defer C.free(unsafe.Pointer(ctag))
@@ -405,8 +399,7 @@ func (t *TagList) GetSample(tag Tag) (value *Sample, ok bool) {
 	return nil, false
 }
 
-// GetSampleIndex copies the sample for the given index in tag in the taglist. Free the sample with Unref
-// when it is no longer needed.
+// GetSampleIndex copies the sample for the given index in tag in the taglist.
 func (t *TagList) GetSampleIndex(tag Tag, idx uint) (value *Sample, ok bool) {
 	ctag := C.CString(string(tag))
 	defer C.free(unsafe.Pointer(ctag))

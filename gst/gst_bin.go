@@ -122,7 +122,7 @@ func ToGstBin(obj interface{}) *Bin {
 // Instance returns the underlying GstBin instance.
 func (b *Bin) Instance() *C.GstBin { return C.toGstBin(b.Unsafe()) }
 
-// GetElementByName returns the element with the given name. Unref after usage.
+// GetElementByName returns the element with the given name.
 func (b *Bin) GetElementByName(name string) (*Element, error) {
 	cName := C.CString(name)
 	defer C.free(unsafe.Pointer(cName))
@@ -134,7 +134,7 @@ func (b *Bin) GetElementByName(name string) (*Element, error) {
 }
 
 // GetElementByNameRecursive returns the element with the given name. If it is not
-// found in this Bin, parent Bins are searched recursively. Unref after usage.
+// found in this Bin, parent Bins are searched recursively.
 func (b *Bin) GetElementByNameRecursive(name string) (*Element, error) {
 	cName := C.CString(name)
 	defer C.free(unsafe.Pointer(cName))
@@ -164,8 +164,7 @@ func (b *Bin) GetSourceElements() ([]*Element, error) {
 	return iteratorToElementSlice(iterator)
 }
 
-// GetSinkElements returns a list of all the sink elements in this Bin. Unref
-// elements after usage.
+// GetSinkElements returns a list of all the sink elements in this Bin.
 func (b *Bin) GetSinkElements() ([]*Element, error) {
 	iterator := C.gst_bin_iterate_sinks((*C.GstBin)(b.Instance()))
 	return iteratorToElementSlice(iterator)
@@ -192,7 +191,6 @@ func (b *Bin) GetByInterface(iface glib.Interface) (*Element, error) {
 
 // GetAllByInterface looks for all elements inside the bin that implements the given interface. You can
 // safely cast all returned elements to the given interface. The function recurses inside child bins.
-// The function will return a series of Elements that should be unreffed after use.
 func (b *Bin) GetAllByInterface(iface glib.Interface) ([]*Element, error) {
 	iterator := C.gst_bin_iterate_all_by_interface(b.Instance(), C.GType(iface.Type()))
 	return iteratorToElementSlice(iterator)
@@ -244,8 +242,7 @@ func (b *Bin) RemoveMany(elems ...*Element) error {
 }
 
 // FindUnlinkedPad recursively looks for elements with an unlinked pad of the given direction
-// within this bin and returns an unlinked pad if one is found, or NULL otherwise. If a pad is
-// found, the caller owns a reference to it and should unref it when it is not needed any longer.
+// within this bin and returns an unlinked pad if one is found, or NULL otherwise.
 func (b *Bin) FindUnlinkedPad(direction PadDirection) *Pad {
 	pad := C.gst_bin_find_unlinked_pad(b.Instance(), C.GstPadDirection(direction))
 	if pad == nil {

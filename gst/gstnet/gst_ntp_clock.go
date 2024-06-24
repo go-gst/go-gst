@@ -17,8 +17,7 @@ const NTPTimeToUnixEpoch = gst.ClockTime(2208988800 * time.Second)
 // NTPClock wraps GstClock
 type NTPClock struct{ *gst.Clock }
 
-// ObtainNTPClock returns the default NTPClock. The refcount of the clock will be
-// increased so you need to unref the clock after usage.
+// ObtainNTPClock returns the default NTPClock.
 func ObtainNTPClock(ctx context.Context, name, address string, port int) (*NTPClock, error) {
 	cname := C.CString(name)
 	defer C.free(unsafe.Pointer(cname))

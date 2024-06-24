@@ -161,7 +161,7 @@ func (p *ProxyPad) toPad() *C.GstPad { return C.toGstPad(p.Unsafe()) }
 // Instance returns the underlying GstProxyPad instance.
 func (p *ProxyPad) Instance() *C.GstProxyPad { return C.toGstProxyPad(p.Unsafe()) }
 
-// GetInternal gets the internal pad of pad. Unref target pad after usage.
+// GetInternal gets the internal pad of pad.
 //
 // The internal pad of a GhostPad is the internally used pad of opposite direction, which is used to link to the target.
 func (p *ProxyPad) GetInternal() *ProxyPad {

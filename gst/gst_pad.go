@@ -368,7 +368,7 @@ func (p *Pad) GetParentElement() *Element {
 	return FromGstElementUnsafeFull(unsafe.Pointer(elem))
 }
 
-// GetPeer gets the peer of pad. This function refs the peer pad so you need to unref it after use.
+// GetPeer gets the peer of pad.
 func (p *Pad) GetPeer() *Pad {
 	peer := C.gst_pad_get_peer(p.Instance())
 	if peer == nil {
@@ -381,7 +381,7 @@ func (p *Pad) GetPeer() *Pad {
 // If pad has no getrange function installed (see SetGetRangeFunction) this function returns FlowNotSupported.
 //
 // If buffer points to a variable holding nil, a valid new GstBuffer will be placed in buffer when this function
-// returns FlowOK. The new buffer must be freed with Unref after usage.
+// returns FlowOK. The new buffer must be freed with
 //
 // When buffer points to a variable that points to a valid Buffer, the buffer will be filled with the result data
 // when this function returns FlowOK. If the provided buffer is larger than size, only size bytes will be filled
@@ -478,8 +478,6 @@ func (p *Pad) IsLinked() bool {
 }
 
 // GetInternalLinks gets the pads to which the given pad is linked to inside of the parent element.
-//
-// Unref each pad after use.
 func (p *Pad) GetInternalLinks() ([]*Pad, error) {
 	iterator := C.gst_pad_iterate_internal_links(p.Instance())
 	if iterator == nil {
@@ -623,7 +621,7 @@ func (p *Pad) ProxyQueryCaps(query *Query) bool {
 // of return values and for the semantics of the arguments of this function.
 //
 // If buffer points to a variable holding nil, a valid new GstBuffer will be placed in buffer when this function returns GST_FLOW_OK. The new buffer
-// must be freed with Unref after usage. When this function returns any other result value, buffer will still point to NULL.
+// must be freed with When this function returns any other result value, buffer will still point to NULL.
 //
 // When buffer points to a variable that points to a valid GstBuffer, the buffer will be filled with the result data when this function returns GST_FLOW_OK.
 // When this function returns any other result value, buffer will be unchanged. If the provided buffer is larger than size, only size bytes will be filled
