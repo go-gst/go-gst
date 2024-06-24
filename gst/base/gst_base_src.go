@@ -32,7 +32,7 @@ func (g *GstBaseSrc) Instance() *C.GstBaseSrc {
 	return C.toGstBaseSrc(g.Unsafe())
 }
 
-// GetAllocator retrieves the memory allocator used by this base src. Unref after usage.
+// GetAllocator retrieves the memory allocator used by this base src.
 func (g *GstBaseSrc) GetAllocator() (*gst.Allocator, *gst.AllocationParams) {
 	var allocParams C.GstAllocationParams
 	var allocator *C.GstAllocator
@@ -46,7 +46,7 @@ func (g *GstBaseSrc) GetAllocator() (*gst.Allocator, *gst.AllocationParams) {
 // GetBlocksize returns the number of bytes that the source will push out with each buffer.
 func (g *GstBaseSrc) GetBlocksize() uint { return uint(C.gst_base_src_get_blocksize(g.Instance())) }
 
-// GetBufferPool returns the BufferPool used by this source. Unref after usage.
+// GetBufferPool returns the BufferPool used by this source.
 func (g *GstBaseSrc) GetBufferPool() *gst.BufferPool {
 	pool := C.gst_base_src_get_buffer_pool(g.Instance())
 	if pool == nil {

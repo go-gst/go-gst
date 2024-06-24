@@ -40,7 +40,7 @@ var ErrEOS = errors.New("pipeline has reached end-of-stream")
 // Sink wraps an Element made with the appsink plugin with additional methods for pulling samples.
 type Sink struct{ *base.GstBaseSink }
 
-// NewAppSink returns a new appsink element. Unref after usage.
+// NewAppSink returns a new appsink element.
 func NewAppSink() (*Sink, error) {
 	elem, err := gst.NewElement("appsink")
 	if err != nil {

@@ -116,7 +116,6 @@ func (c *ClockID) Wait() (ret ClockReturn, jitter ClockTimeDiff) {
 //	// Example
 //
 //	pipeline, _ := gst.NewPipelineFromString("fakesrc ! fakesink")
-//	defer pipeline.Unref()
 //
 //	clock := pipeline.GetPipelineClock()
 //
@@ -276,7 +275,7 @@ func (c *Clock) GetTimeout() ClockTime {
 func (c *Clock) IsSynced() bool { return gobool(C.gst_clock_is_synced(c.Instance())) }
 
 // NewPeriodicID gets an ID from clock to trigger a periodic notification. The periodic notifications
-// will start at time start_time and will then be fired with the given interval. ID should be unreffed after usage.
+// will start at time start_time and will then be fired with the given interval.
 func (c *Clock) NewPeriodicID(startTime, interval ClockTime) *ClockID {
 	id := C.gst_clock_new_periodic_id(
 		c.Instance(),
@@ -289,7 +288,6 @@ func (c *Clock) NewPeriodicID(startTime, interval ClockTime) *ClockID {
 }
 
 // NewSingleShotID gets a ClockID from the clock to trigger a single shot notification at the requested time.
-// The single shot id should be unreffed after usage.
 func (c *Clock) NewSingleShotID(at ClockTime) *ClockID {
 	id := C.gst_clock_new_single_shot_id(
 		c.Instance(),

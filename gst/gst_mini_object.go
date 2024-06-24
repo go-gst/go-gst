@@ -43,7 +43,7 @@ func (m *MiniObject) Instance() *C.GstMiniObject { return C.toGstMiniObject(m.un
 // Ref increases the ref count on this object by one.
 func (m *MiniObject) Ref() { C.gst_mini_object_ref(m.Instance()) }
 
-// Unref decresaes the ref count on this object by one.
+// Unref decreases the ref count on this object by one.
 func (m *MiniObject) Unref() { C.gst_mini_object_unref(m.Instance()) }
 
 // AddParent adds the given object as a parent of this object.

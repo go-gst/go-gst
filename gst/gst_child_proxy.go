@@ -137,7 +137,7 @@ func (c *ChildProxy) Get(names ...string) []*glib.Value {
 }
 
 // GetChildByIndex fetches a child by its number. This function can return nil if the object is not
-// found. Unref after usage.
+// found.
 func (c *ChildProxy) GetChildByIndex(idx uint) *glib.Object {
 	gobj := C.gst_child_proxy_get_child_by_index(c.Instance(), C.guint(idx))
 	if gobj == nil {
@@ -150,7 +150,7 @@ func (c *ChildProxy) GetChildByIndex(idx uint) *glib.Object {
 // together with Object.GetName. If the interface is to be used with GObjects, this method needs
 // to be overridden.
 //
-// This function can return nil if the object is not found. Unref after usage.
+// This function can return nil if the object is not found.
 func (c *ChildProxy) GetChildByName(name string) *glib.Object {
 	cname := C.CString(name)
 	defer C.free(unsafe.Pointer(cname))
@@ -182,7 +182,6 @@ func (c *ChildProxy) GetProperty(name string) *glib.Value {
 
 // Lookup looks up which object and and parameter would be affected by the given name.
 // If ok is false, the targets could not be found and this function returned nil.
-// Unref target after usage.
 func (c *ChildProxy) Lookup(name string) (ok bool, target *glib.Object, param *glib.ParamSpec) {
 	var gtarget *C.GObject
 	var gspec *C.GParamSpec

@@ -185,10 +185,7 @@ func (c *Caps) CanIntersect(caps *Caps) bool {
 // Copy creates a new Caps as a copy of these. The new caps will have a refcount of 1, owned by the caller.
 // The structures are copied as well.
 //
-// Note that this function is the semantic equivalent of a Ref followed by a MakeWritable. If you only want to hold
-// on to a reference to the data, you should use Ref.
-//
-// When you are finished with the caps, call Unref on it.
+// Note that this function is the semantic equivalent of a Ref followed by a MakeWritable.
 func (c *Caps) Copy() *Caps {
 	return FromGstCapsUnsafeFull(unsafe.Pointer(C.gst_caps_copy(c.Instance())))
 }

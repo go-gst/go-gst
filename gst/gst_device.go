@@ -42,7 +42,7 @@ func (d *Device) CreateElement(name string) *Element {
 	return FromGstElementUnsafeNone(unsafe.Pointer(elem))
 }
 
-// GetCaps returns the caps that this device supports. Unref after usage.
+// GetCaps returns the caps that this device supports.
 func (d *Device) GetCaps() *Caps {
 	caps := C.gst_device_get_caps(d.Instance())
 	if caps == nil {

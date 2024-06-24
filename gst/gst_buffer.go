@@ -126,16 +126,11 @@ func NewBufferFromReader(rdr io.Reader) (*Buffer, error) {
 //
 // The prefix/padding must be filled with 0 if flags contains MemoryFlagZeroPrefixed and MemoryFlagZeroPadded respectively.
 //
-//	 // Example
+//	// Example
 //
-//	 buf := gst.NewBufferFull(0, []byte("hello-world"), 1024, 0, 1024, func() {
-//	     fmt.Println("buffer was destroyed")
-//	 })
-//	 if buf != nil {
-//	     buf.Unref()
-//	 }
-//
-//	// > buffer was destroyed
+//	buf := gst.NewBufferFull(0, []byte("hello-world"), 1024, 0, 1024, func() {
+//	    fmt.Println("buffer was destroyed")
+//	})
 func NewBufferFull(flags MemoryFlags, data []byte, maxSize, offset, size int64, notifyFunc func()) *Buffer {
 	var notifyData unsafe.Pointer
 	var gnotifyFunc C.GDestroyNotify
@@ -243,8 +238,6 @@ func (b *Buffer) OffsetEnd() int64 { return int64(b.Instance().offset_end) }
 //
 //	buf := gst.NewEmptyBuffer()
 //	buf.AddMeta(metaInfo, "hello world")
-//
-//	buf.Unref()
 //
 //	// > Buffer initialized with params: hello world
 //	// > Buffer was destroyed

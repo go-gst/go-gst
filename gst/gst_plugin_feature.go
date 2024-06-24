@@ -13,7 +13,7 @@ type PluginFeature struct{ *Object }
 // Instance returns the underlying GstPluginFeature instance
 func (p *PluginFeature) Instance() *C.GstPluginFeature { return C.toGstPluginFeature(p.Unsafe()) }
 
-// GetPlugin returns the plugin that provides this feature or  nil. Unref after usage.
+// GetPlugin returns the plugin that provides this feature or  nil.
 func (p *PluginFeature) GetPlugin() *Plugin {
 	plugin := C.gst_plugin_feature_get_plugin((*C.GstPluginFeature)(p.Instance()))
 	if plugin == nil {

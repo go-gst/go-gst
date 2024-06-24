@@ -93,7 +93,7 @@ func NewElementMany(elemNames ...string) ([]*Element, error) {
 // ElementFactory wraps the GstElementFactory
 type ElementFactory struct{ *PluginFeature }
 
-// Find returns the factory for the given plugin, or nil if it doesn't exist. Unref after usage.
+// Find returns the factory for the given plugin, or nil if it doesn't exist.
 func Find(name string) *ElementFactory {
 	cName := C.CString(name)
 	defer C.free(unsafe.Pointer(cName))

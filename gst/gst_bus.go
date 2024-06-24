@@ -49,18 +49,15 @@ type Bus struct {
 //	    gst.Init(nil)
 //
 //	    bus := gst.NewBus()
-//	    defer bus.Unref()
 //
 //	    elem, err := gst.NewElement("fakesrc")
 //	    if err != nil {
 //	        panic(err)
 //	    }
-//	    defer elem.Unref()
 //
 //	    bus.Post(gst.NewAsyncStartMessage(elem))
 //
 //	    msg := bus.Pop()
-//	    defer msg.Unref()
 //
 //	    fmt.Println(msg)
 //	}
@@ -92,7 +89,6 @@ func (b *Bus) Instance() *C.GstBus { return C.toGstBus(b.Unsafe()) }
 func (b *Bus) AddSignalWatch() { C.gst_bus_add_signal_watch(b.Instance()) }
 
 // PopMessage attempts to pop a message from the bus. It returns nil if none are available.
-// The message should be unreffed after usage.
 //
 // It is much safer and easier to use the AddWatch or other polling functions. Only use this method if you
 // are unable to also run a MainLoop, or for convenience sake.
@@ -101,8 +97,7 @@ func (b *Bus) PopMessage(timeout ClockTime) *Message {
 }
 
 // BlockPopMessage blocks until a message is available on the bus and then returns it.
-// This function can return nil if the bus is closed. The message should be unreffed
-// after usage.
+// This function can return nil if the bus is closed.
 //
 // It is much safer and easier to use the AddWatch or other polling functions. Only use this method if you
 // are unable to also run a MainLoop, or for convenience sake.
@@ -120,15 +115,12 @@ func (b *Bus) BlockPopMessage() *Message {
 }
 
 // BusWatchFunc is a go representation of a GstBusFunc. It takes a message as a single argument
-// and returns a bool value for whether to continue processing messages or not. There is no need to unref
-// the message unless additional references are placed on it during processing.
+// and returns a bool value for whether to continue processing messages or not.
 type BusWatchFunc func(msg *Message) bool
 
 // AddWatch adds a watch to the default MainContext for messages emitted on this bus.
 // This function is used to receive asynchronous messages in the main loop. There can
 // only be a single bus watch per bus, you must remove it before you can set a new one.
-// It is safe to unref the Bus after setting this watch, since the watch itself will take
-// it's own reference to the Bus.
 //
 // The watch can be removed either by returning false from the function or by using RemoveWatch().
 // A MainLoop must be running for bus watches to work.
@@ -217,7 +209,7 @@ func (b *Bus) HavePending() bool {
 }
 
 // Peek peeks the message on the top of the bus' queue. The message will remain on the bus'
-// message queue. A reference is returned, and needs to be unreffed by the caller.
+// message queue.
 func (b *Bus) Peek() *Message {
 	msg := C.gst_bus_peek(b.Instance())
 	if msg == nil {
@@ -312,7 +304,7 @@ func (b *Bus) SetSyncHandler(f BusSyncHandler) {
 	)
 }
 
-// TimedPop gets a message from the bus, waiting up to the specified timeout. Unref returned messages after usage.
+// TimedPop gets a message from the bus, waiting up to the specified timeout.
 //
 // If timeout is 0, this function behaves like Pop. If timeout is ClockTimeNone, this function will block forever until a message was posted on the bus.
 func (b *Bus) TimedPop(dur ClockTime) *Message {

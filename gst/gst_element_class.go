@@ -72,7 +72,7 @@ func (e *ElementClass) GetMetadata(key string) string {
 	return C.GoString(C.gst_element_class_get_metadata(e.Instance(), (*C.gchar)(ckey)))
 }
 
-// GetPadTemplate retrieves the padtemplate with the given name. No unrefing is necessary.
+// GetPadTemplate retrieves the padtemplate with the given name.
 // If no pad template exists with the given name, nil is returned.
 func (e *ElementClass) GetPadTemplate(name string) *PadTemplate {
 	cname := C.CString(name)

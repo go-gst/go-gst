@@ -53,7 +53,7 @@ func (m *Message) Ref() *Message {
 	return m
 }
 
-// Copy will copy this object into a new Message that can be Unrefed separately.
+// Copy will copy this object into a new Message.
 func (m *Message) Copy() *Message {
 	newNative := C.gst_message_copy((*C.GstMessage)(m.Instance()))
 	return FromGstMessageUnsafeFull(unsafe.Pointer(newNative))
@@ -157,8 +157,7 @@ func (m *Message) ParseStateChanged() (oldState, newState State) {
 	return
 }
 
-// ParseTags extracts the tag list from the GstMessage. Tags are copied and should be
-// unrefed after usage.
+// ParseTags extracts the tag list from the GstMessage. Tags are copied.
 func (m *Message) ParseTags() *TagList {
 	var tagList *C.GstTagList
 	C.gst_message_parse_tag((*C.GstMessage)(m.Instance()), &tagList)
@@ -169,7 +168,7 @@ func (m *Message) ParseTags() *TagList {
 }
 
 // ParseTOC extracts the TOC from the GstMessage. The TOC returned in the output argument is
-// a copy; the caller must free it with Unref when done.
+// a copy.
 func (m *Message) ParseTOC() (toc *TOC, updated bool) {
 	var gtoc *C.GstToc
 	var gupdated C.gboolean
@@ -178,7 +177,7 @@ func (m *Message) ParseTOC() (toc *TOC, updated bool) {
 }
 
 // ParseStreamStatus parses the stream status type of the message as well as the element
-// that produced it. The element returned should NOT be unrefed.
+// that produced it.
 func (m *Message) ParseStreamStatus() (StreamStatusType, *Element) {
 	var cElem *C.GstElement
 	var cStatusType C.GstStreamStatusType
