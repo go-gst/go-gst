@@ -10,20 +10,20 @@ See [pkg.go.dev](https://pkg.go.dev/github.com/go-gst/go-gst) references for doc
 
 Please make sure that you have followed the [official gstreamer installation instructions](https://gstreamer.freedesktop.org/documentation/installing/index.html?gi-language=c) before attempting to use the bindings or file an issue.
 
+The bindings are not structured in a way to make version matching with GStreamer easy. We use github actions to verify against the latest supported GStreamer version that is supported by the action https://github.com/blinemedical/setup-gstreamer. Newer GStreamer versions will also work. Always try to use the [latest version of GStreamer](https://gstreamer.freedesktop.org/releases/).
+
 ## Requirements
 
 For building applications with this library you need the following:
 
  - `cgo`: You must set `CGO_ENABLED=1` in your environment when building.
  - `gcc` and `pkg-config`
- - GStreamer development files (the method for obtaining these will differ depending on your OS)
+ - GStreamer development files (the method for obtaining these will [differ depending on your OS](https://gstreamer.freedesktop.org/documentation/installing/index.html?gi-language=c))
    - The core `gst` package utilizes GStreamer core
    - Subpackages (e.g. `app`, `video`) will require development files from their corresponding GStreamer packages
      - Look at `pkg_config.go` in the imported package to see which C libraries are needed.
 
 ### Windows
-
-(also see https://github.com/go-gst/go-gst/issues/64)
 
 Compiling on Windows may require some more dancing around than on macOS or Linux.
 First, make sure you have [mingw](https://chocolatey.org/packages/mingw) and [pkgconfig](https://chocolatey.org/packages/pkgconfiglite) installed (links are for the Chocolatey packages).
@@ -37,8 +37,6 @@ For example, if you installed GStreamer to `C:\gstreamer`:
 PS> $env:PKG_CONFIG_PATH='C:\gstreamer\1.0\mingw_x86_64\lib\pkgconfig'
 PS> go build .
 ```
-
-For more information, take a look at [this comment](https://github.com/go-gst/go-gst/issues/3#issuecomment-760648278) with a good run down of the process from compilation to execution.
 
 ## Quickstart
 
@@ -115,16 +113,12 @@ func main() {
 
 ## Contributing
 
-If you find any issues with the bindings or spot areas where things can be improved, feel free to open a PR or start an Issue. Here are a couple of the things on my radar already that I'd be happy to accept help with:
+If you find any issues with the bindings or spot areas where things can be improved, feel free to open a PR or start an Issue. A few things to note:
 
- - Compilation times are insanely slow when working within the bindings. This could be alleviated by further separating aspects of Gstreamer core into their own packages, or removing bindings that would see no use in Go.
-
- - There are a lot of quirks that make generators difficult to deal with for these bindings. That being said, I'd still like to find a way to start migrating some of them into generated code.
-
- - The bindings are not structured in a way to make version matching with GStreamer easy. Basically, you need a version compatible with what the bindings were written with (>=1.16).
-
+ - Compilation times are insanely slow when working within the bindings.
+ - There are a lot of quirks that make generators difficult to deal with for these bindings, so currently everything is hand written. If you have a need for a new binding, feel free to open an issue or create a PR. Writing CGo bindings is not as hard as it seems. (Take a look at https://github.com/go-gst/go-gst/pull/53 for inspiration)
  - More examples would be nice.
+ - Support for writing GStreamer plugins and custom elements via the bindings is there, but not well documented.
+ - go-gst follows semantic versioning, so it should always be forward compatible for minor versions. If we find an issue in a function and the only way to fix it is to change the function signature, we will break it in a minor version. That way you "get forced" to use the fixed version.
 
- - Support for writing GStreamer plugins via the bindings is still a work-in-progress. At the very least I need to write more plugings to find more holes. 
-
-    - SWIG could be used to fix the need for global interfaces to be matched to C callbacks (most notably the `URIHandler` currently). The limitation present at the moment is URIHandlers can only be implemented ONCE per plugin.
+Please make sure that you use the latest version of GStreamer before submitting an issue. If you are using an older version of GStreamer, please try to reproduce the issue with the [latest version](https://gstreamer.freedesktop.org/releases/) before submitting an issue.
