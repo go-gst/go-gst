@@ -274,3 +274,10 @@ func goLogFunction(
 		)
 	}
 }
+
+// goDestroyBusWatch frees the go memory associated with the bus watch.
+//
+//export goDestroyBusWatch
+func goDestroyBusWatch(fPtr C.gpointer) {
+	gopointer.Unref(unsafe.Pointer(fPtr))
+}

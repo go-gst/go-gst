@@ -3,12 +3,18 @@ package gst
 /*
 #include "gst.go.h"
 
-extern GstBusSyncReply   goBusSyncHandler (GstBus * bus, GstMessage * message, gpointer user_data);
-extern gboolean          goBusFunc        (GstBus * bus, GstMessage * msg, gpointer user_data);
+extern GstBusSyncReply   goBusSyncHandler  (GstBus * bus, GstMessage * message, gpointer user_data);
+extern gboolean          goBusFunc         (GstBus * bus, GstMessage * msg, gpointer user_data);
+extern void              goDestroyBusWatch (gpointer);
 
 gboolean cgoBusFunc (GstBus * bus, GstMessage * msg, gpointer user_data)
 {
 	return goBusFunc(bus, msg, user_data);
+}
+
+void cgoDestroyBusWatch (gpointer data)
+{
+	goDestroyBusWatch(data);
 }
 
 GstBusSyncReply cgoBusSyncHandler (GstBus * bus, GstMessage * message, gpointer user_data)
@@ -130,10 +136,12 @@ type BusWatchFunc func(msg *Message) bool
 func (b *Bus) AddWatch(busFunc BusWatchFunc) bool {
 	fPtr := gopointer.Save(busFunc)
 	return gobool(
-		C.int(C.gst_bus_add_watch(
+		C.int(C.gst_bus_add_watch_full(
 			b.Instance(),
+			C.G_PRIORITY_DEFAULT,
 			C.GstBusFunc(C.cgoBusFunc),
 			(C.gpointer)(unsafe.Pointer(fPtr)),
+			C.GDestroyNotify(C.cgoDestroyBusWatch),
 		)),
 	)
 }
@@ -300,7 +308,7 @@ func (b *Bus) SetSyncHandler(f BusSyncHandler) {
 		b.Instance(),
 		C.GstBusSyncHandler(C.cgoBusSyncHandler),
 		(C.gpointer)(unsafe.Pointer(ptr)),
-		nil,
+		C.GDestroyNotify(C.cgoDestroyBusWatch),
 	)
 }
 
