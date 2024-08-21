@@ -5,16 +5,16 @@ package gst
 
 extern GstBusSyncReply   goBusSyncHandler  (GstBus * bus, GstMessage * message, gpointer user_data);
 extern gboolean          goBusFunc         (GstBus * bus, GstMessage * msg, gpointer user_data);
-extern void              goDestroyBusWatch (gpointer);
+extern void              goUnrefGopointerUserData (gpointer);
 
 gboolean cgoBusFunc (GstBus * bus, GstMessage * msg, gpointer user_data)
 {
 	return goBusFunc(bus, msg, user_data);
 }
 
-void cgoDestroyBusWatch (gpointer data)
+void cgoUnrefGopointerUserData (gpointer data)
 {
-	goDestroyBusWatch(data);
+	goUnrefGopointerUserData(data);
 }
 
 GstBusSyncReply cgoBusSyncHandler (GstBus * bus, GstMessage * message, gpointer user_data)
@@ -141,7 +141,7 @@ func (b *Bus) AddWatch(busFunc BusWatchFunc) bool {
 			C.G_PRIORITY_DEFAULT,
 			C.GstBusFunc(C.cgoBusFunc),
 			(C.gpointer)(unsafe.Pointer(fPtr)),
-			C.GDestroyNotify(C.cgoDestroyBusWatch),
+			C.GDestroyNotify(C.cgoUnrefGopointerUserData),
 		)),
 	)
 }
@@ -308,7 +308,7 @@ func (b *Bus) SetSyncHandler(f BusSyncHandler) {
 		b.Instance(),
 		C.GstBusSyncHandler(C.cgoBusSyncHandler),
 		(C.gpointer)(unsafe.Pointer(ptr)),
-		C.GDestroyNotify(C.cgoDestroyBusWatch),
+		C.GDestroyNotify(C.cgoUnrefGopointerUserData),
 	)
 }
 

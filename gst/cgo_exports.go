@@ -275,9 +275,18 @@ func goLogFunction(
 	}
 }
 
-// goDestroyBusWatch frees the go memory associated with the bus watch.
+// goUnrefGopointerUserData is a GDestroyNotify used to unref the gopointer from the userdata, used for callback functions
 //
-//export goDestroyBusWatch
-func goDestroyBusWatch(fPtr C.gpointer) {
+//export goUnrefGopointerUserData
+func goUnrefGopointerUserData(fPtr C.gpointer) {
 	gopointer.Unref(unsafe.Pointer(fPtr))
+}
+
+// goPromiseChangeFunc is the function the GstPromise calls when it changes state
+//
+//export goPromiseChangeFunc
+func goPromiseChangeFunc(_ *C.GstPromise, fPtr C.gpointer) {
+	f := gopointer.Restore(unsafe.Pointer(fPtr)).(func())
+
+	f()
 }

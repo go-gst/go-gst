@@ -235,6 +235,10 @@ func registerMarshalers() {
 			F: marshalValueList,
 		},
 		{
+			T: TypePromise,
+			F: marshalPromise,
+		},
+		{
 			T: glib.Type(C.gst_sample_get_type()),
 			F: marshalSample,
 		},
