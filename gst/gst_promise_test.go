@@ -4,10 +4,8 @@ import (
 	"context"
 	"errors"
 	"runtime"
-	"sync"
 	"testing"
 	"time"
-	"unsafe"
 )
 
 //go:noinline
@@ -35,9 +33,7 @@ func awaitGC() {
 }
 
 func TestPromise(t *testing.T) {
-	initOnce.Do(func() {
-		Init(nil)
-	})
+	Init(nil)
 
 	prom := NewPromise()
 	cprom := prom.Instance()
@@ -87,12 +83,8 @@ func TestPromise(t *testing.T) {
 	awaitGC()
 }
 
-var initOnce sync.Once
-
 func TestPromiseMarshal(t *testing.T) {
-	initOnce.Do(func() {
-		Init(nil)
-	})
+	Init(nil)
 
 	prom := NewPromise()
 
@@ -102,7 +94,7 @@ func TestPromiseMarshal(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	receivedPromI, err := marshalPromise(unsafe.Pointer(gv.GValue))
+	receivedPromI, err := gv.GoValue()
 
 	if err != nil {
 		t.Fatal(err)

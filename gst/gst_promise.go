@@ -198,5 +198,11 @@ func marshalPromise(p unsafe.Pointer) (interface{}, error) {
 		done: nil, // cannot be awaited if received from FFI
 	}
 
+	prom.Ref()
+
+	runtime.SetFinalizer(prom, func(p *Promise) {
+		p.Unref()
+	})
+
 	return prom, nil
 }
