@@ -200,12 +200,14 @@ func (e *Element) ContinueState(ret StateChangeReturn) StateChangeReturn {
 	return StateChangeReturn(C.gst_element_continue_state(e.Instance(), C.GstStateChangeReturn(ret)))
 }
 
-// Emit is a wrapper around g_signal_emitv() and emits the signal specified by the string s to an Object. Arguments to
-// callback functions connected to this signal must be specified in args. Emit() returns an interface{} which must be
-// type asserted as the Go equivalent type to the return value for native C callback.
+// Emit is a wrapper around g_signal_emitv() and emits the signal
+// specified by the string s to an Object. This means that it performs identically to
+// g_signal_emit_by_name. Arguments to callback functions connected to this signal must
+// be specified in args. Emit() returns an interface{} which contains the go equivalent of the C return value.
 //
-// Note that this code is unsafe in that the types of values in args are not checked against whether they are suitable
-// for the callback.
+// Make sure that the Types are known to go-glib. Special types need to be registered with
+// RegisterGValueMarshalers before calling Emit. Sub libraries of go-gst (sdp, rtp, webrtc, base, etc.)
+// register their types when they are imported via init() functions.
 func (e *Element) Emit(signal string, args ...interface{}) (interface{}, error) {
 	// We are wrapping this for the same reason as Connect.
 	if e.TypeFromInstance() != glib.Type(C.GST_TYPE_ELEMENT) {
