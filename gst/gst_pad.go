@@ -1063,6 +1063,18 @@ func (p *Pad) Unlink(pad *Pad) bool {
 // be renegotiated to something else.
 func (p *Pad) UseFixedCaps() { C.gst_pad_use_fixed_caps(p.Instance()) }
 
+// this prevents go pointers in cgo when setting a gst.Pad to a property
+// see (https://github.com/go-gst/go-gst/issues/117)
+// ToGValue implements glib.ValueTransformer.
+func (p *Pad) ToGValue() (*glib.Value, error) {
+	val, err := glib.ValueInit(glib.Type(C.gst_pad_get_type()))
+	if err != nil {
+		return nil, err
+	}
+	val.SetInstance(unsafe.Pointer(p.Instance()))
+	return val, nil
+}
+
 // PadProbeInfo represents the info passed to a PadProbeCallback.
 type PadProbeInfo struct {
 	ptr *C.GstPadProbeInfo
