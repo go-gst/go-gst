@@ -185,12 +185,12 @@ func (p *Promise) ToGValue() (*glib.Value, error) {
 	if err != nil {
 		return nil, err
 	}
-	val.SetInstance(unsafe.Pointer(p.Instance()))
+	val.SetBoxed(unsafe.Pointer(p.Instance()))
 	return val, nil
 }
 
 func marshalPromise(p unsafe.Pointer) (interface{}, error) {
-	c := C.g_value_get_object(toGValue(p))
+	c := C.g_value_get_boxed(toGValue(p))
 	obj := (*C.GstPromise)(unsafe.Pointer(c))
 
 	prom := &Promise{

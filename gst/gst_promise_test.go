@@ -100,6 +100,9 @@ func TestPromiseMarshal(t *testing.T) {
 		t.Fatal(err)
 	}
 
+	reply := NewStructure("foo/bar")
+	prom.Reply(reply)
+
 	receivedProm, ok := receivedPromI.(*Promise)
 
 	if !ok {
