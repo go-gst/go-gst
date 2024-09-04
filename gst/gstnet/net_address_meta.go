@@ -28,6 +28,9 @@ func AddNetAddressMeta(buffer *gst.Buffer, address string, port int) *NetAddress
 // GetNetAddressMeta retrieves the NetAddressMeta from the given buffer.
 func GetNetAddressMeta(buffer *gst.Buffer) *NetAddressMeta {
 	meta := C.gst_buffer_get_net_address_meta((*C.GstBuffer)(unsafe.Pointer(buffer.Instance())))
+	if meta == nil {
+		return nil
+	}
 	return &NetAddressMeta{meta}
 }
 
