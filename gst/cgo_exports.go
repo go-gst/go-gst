@@ -10,6 +10,7 @@ package gst
 import "C"
 
 import (
+	"fmt"
 	"unsafe"
 
 	"github.com/go-gst/go-glib/glib"
@@ -19,7 +20,6 @@ import (
 //export goElementCallAsync
 func goElementCallAsync(element *C.GstElement, userData C.gpointer) {
 	iface := gopointer.Restore(unsafe.Pointer(userData))
-	defer gopointer.Unref(unsafe.Pointer(userData))
 	f := iface.(func())
 	f()
 }
@@ -102,7 +102,6 @@ func goBusSyncHandler(bus *C.GstBus, cMsg *C.GstMessage, userData C.gpointer) C.
 	busFunc, ok := funcIface.(BusSyncHandler)
 
 	if !ok {
-		gopointer.Unref(ptr)
 		return C.GstBusSyncReply(BusPass)
 	}
 
@@ -119,12 +118,14 @@ func goBusFunc(bus *C.GstBus, cMsg *C.GstMessage, userData C.gpointer) C.gboolea
 	funcIface := gopointer.Restore(ptr)
 	busFunc, ok := funcIface.(BusWatchFunc)
 	if !ok {
+		fmt.Println("goBusFunc unref", ptr)
 		gopointer.Unref(ptr)
 		return gboolean(false)
 	}
 
 	// run the call back
 	if cont := busFunc(msg); !cont {
+		fmt.Println("goBusFunc unref 2", ptr)
 		gopointer.Unref(ptr)
 		return gboolean(false)
 	}
