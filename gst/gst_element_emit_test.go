@@ -30,6 +30,24 @@ func TestSignalEmitSimpleReturnValue(t *testing.T) {
 	}
 }
 
+func TestSignalEmitVoidReturnValue(t *testing.T) {
+	gst.Init(nil)
+
+	elem, err := gst.NewElement("splitmuxsink")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	result, err := elem.Emit("split-after")
+	if err != nil {
+		t.Fatal("Result must be nil due to void return type, unless splitmux api changed" +
+			err.Error())
+	}
+	if result != nil {
+		t.Fatal("Result must be nil due to void return type, unless splitmux api changed")
+	}
+}
+
 func TestSignalEmitGObjectReturnValue(t *testing.T) {
 	gst.Init(nil)
 
