@@ -125,7 +125,6 @@ func goBusFunc(bus *C.GstBus, cMsg *C.GstMessage, userData C.gpointer) C.gboolea
 
 	// run the call back
 	if cont := busFunc(msg); !cont {
-		gopointer.Unref(ptr)
 		return gboolean(false)
 	}
 
