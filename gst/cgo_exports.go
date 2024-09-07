@@ -10,7 +10,6 @@ package gst
 import "C"
 
 import (
-	"fmt"
 	"unsafe"
 
 	"github.com/go-gst/go-glib/glib"
@@ -118,15 +117,11 @@ func goBusFunc(bus *C.GstBus, cMsg *C.GstMessage, userData C.gpointer) C.gboolea
 	funcIface := gopointer.Restore(ptr)
 	busFunc, ok := funcIface.(BusWatchFunc)
 	if !ok {
-		fmt.Println("goBusFunc unref", ptr)
-		gopointer.Unref(ptr)
 		return gboolean(false)
 	}
 
 	// run the call back
 	if cont := busFunc(msg); !cont {
-		fmt.Println("goBusFunc unref 2", ptr)
-		gopointer.Unref(ptr)
 		return gboolean(false)
 	}
 
@@ -204,7 +199,6 @@ func goCapsMapFunc(features *C.GstCapsFeatures, structure *C.GstStructure, userD
 	mapFunc, ok := funcIface.(CapsMapFunc)
 
 	if !ok {
-		gopointer.Unref(ptr)
 		return gboolean(false)
 	}
 
@@ -219,7 +213,6 @@ func goClockCb(gclock *C.GstClock, clockTime C.GstClockTime, clockID C.GstClockI
 	cb, ok := funcIface.(ClockCallback)
 
 	if !ok {
-		gopointer.Unref(ptr)
 		return gboolean(false)
 	}
 

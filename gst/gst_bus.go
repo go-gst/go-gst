@@ -26,7 +26,6 @@ GstBusSyncReply cgoBusSyncHandler (GstBus * bus, GstMessage * message, gpointer 
 import "C"
 
 import (
-	"fmt"
 	"reflect"
 	"unsafe"
 
@@ -136,7 +135,6 @@ type BusWatchFunc func(msg *Message) bool
 // is already a function registered.
 func (b *Bus) AddWatch(busFunc BusWatchFunc) bool {
 	fPtr := gopointer.Save(busFunc)
-	fmt.Println("AddWatch", fPtr)
 	return gobool(
 		C.int(C.gst_bus_add_watch_full(
 			b.Instance(),
@@ -306,7 +304,6 @@ type BusSyncHandler func(msg *Message) BusSyncReply
 // Currently, destroyNotify funcs are not supported.
 func (b *Bus) SetSyncHandler(f BusSyncHandler) {
 	ptr := gopointer.Save(f)
-	fmt.Println("SetSyncHandler", ptr)
 	C.gst_bus_set_sync_handler(
 		b.Instance(),
 		C.GstBusSyncHandler(C.cgoBusSyncHandler),
