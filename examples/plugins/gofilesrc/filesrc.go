@@ -24,7 +24,7 @@
 //
 // +element:Name=gofilesrc
 // +element:Rank=gst.RankNone
-// +element:Impl=fileSrc
+// +element:Impl=FileSrc
 // +element:Subclass=base.ExtendsBaseSrc
 // +element:Interfaces=gst.InterfaceURIHandler
 //

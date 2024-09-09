@@ -18,7 +18,10 @@
 //go:generate gst-plugin-gen
 package main
 
-import "github.com/go-gst/go-glib/glib"
+import (
+	"github.com/go-gst/go-glib/glib"
+	"github.com/go-gst/go-gst/gst"
+)
 
 func main() {}
 
@@ -26,4 +29,13 @@ type gobin struct{}
 
 func (g *gobin) New() glib.GoObjectSubclass { return &gobin{} }
 
-func (g *gobin) ClassInit(klass *glib.ObjectClass) {}
+func (g *gobin) ClassInit(klass *glib.ObjectClass) {
+	// Set the plugin's longname as it is a basic requirement for a GStreamer plugin
+	class := gst.ToElementClass(klass)
+	class.SetMetadata(
+		"GoBin example",
+		"General",
+		"An empty GstBin element which does nothing",
+		"Avi Zimmerman <avi.zimmerman@gmail.com>",
+	)
+}
