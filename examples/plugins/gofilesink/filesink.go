@@ -24,7 +24,7 @@
 //
 // +element:Name=gofilesink
 // +element:Rank=gst.RankNone
-// +element:Impl=fileSink
+// +element:Impl=FileSink
 // +element:Subclass=base.ExtendsBaseSink
 // +element:Interfaces=gst.InterfaceURIHandler
 //
