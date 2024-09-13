@@ -29,6 +29,13 @@ GstStateChangeReturn elementParentChangeState (GstElement * element, GstStateCha
 	return parent->change_state(element, transition);
 }
 
+gboolean elementParentSendEvent (GstElement * element, GstEvent * event)
+{
+	GObjectClass * this_class = G_OBJECT_GET_CLASS(G_OBJECT(element));
+	GstElementClass * parent = toGstElementClass(g_type_class_peek_parent(this_class));
+	return parent->send_event(element, event);
+}
+
 */
 import "C"
 
@@ -432,6 +439,13 @@ func (e *Element) LinkFiltered(elem *Element, filter *Caps) error {
 // handler.
 func (e *Element) ParentChangeState(transition StateChange) StateChangeReturn {
 	return StateChangeReturn(C.elementParentChangeState(e.Instance(), C.GstStateChange(transition)))
+}
+
+// ParentSendEvent chains up to the parent SendEvent handler.
+// send_event takes ownership of the incoming event pointer so we have to ref it beforehand
+// in order not to mess up go's gc
+func (e *Element) ParentSendEvent(event *Event) bool {
+	return gobool(C.elementParentSendEvent(e.Instance(), event.Ref().Instance()))
 }
 
 // ParentPostMessage can be used when extending an element. During a PostMessage, use this method
