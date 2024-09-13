@@ -175,6 +175,12 @@ func (e *Element) CallAsync(f func()) {
 	)
 }
 
+// PostMessage posts a message on the element's bus
+// Takes ownership of the message so need to ref it before feeding it forward
+func (e *Element) PostMessage(message *Message) bool {
+	return gobool(C.gst_element_post_message(e.Instance(), message.Ref().Instance()))
+}
+
 // ChangeState performs the given transition on this element.
 func (e *Element) ChangeState(transition StateChange) StateChangeReturn {
 	return StateChangeReturn(C.gst_element_change_state(e.Instance(), C.GstStateChange(transition)))
