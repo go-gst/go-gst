@@ -97,3 +97,22 @@ func (o *Object) Unref() {
 func (o *Object) AddControlBinding(binding *ControlBinding) {
 	C.gst_object_add_control_binding(o.Instance(), binding.Instance())
 }
+
+// TODO: Consider wrapping GstObject GST_OBJECT_LOCK/GST_OBJECT_UNLOCK functionality
+// due to following flags related functionality is based on a regular uint32 field
+// and is not considered thread safe
+
+// Has returns true if this GstObject has the given flags.
+func (o *Object) hasFlags(flags uint32) bool {
+	return gobool(C.gstObjectFlagIsSet(o.Instance(), C.guint32(flags)))
+}
+
+// SetFlags sets the flags
+func (o *Object) setFlags(flags uint32) {
+	C.gstObjectFlagSet(o.Instance(), C.guint32(flags))
+}
+
+// SetFlags unsets the flags
+func (o *Object) unsetFlags(flags uint32) {
+	C.gstObjectFlagUnset(o.Instance(), C.guint32(flags))
+}

@@ -405,8 +405,21 @@ func (e *Element) GetStaticPad(name string) *Pad {
 }
 
 // Has returns true if this element has the given flags.
+// Non MT safe
 func (e *Element) Has(flags ElementFlags) bool {
-	return gobool(C.gstObjectFlagIsSet(C.toGstObject(e.Unsafe()), C.GstElementFlags(flags)))
+	return e.hasFlags(uint32(flags))
+}
+
+// Set element flags
+// Non MT safe
+func (e *Element) SetFlags(flags ElementFlags) {
+	e.setFlags(uint32(flags))
+}
+
+// Unset element flags
+// Non MT safe
+func (e *Element) UnsetFlags(flags ElementFlags) {
+	e.unsetFlags(uint32(flags))
 }
 
 // IsURIHandler returns true if this element can handle URIs.
