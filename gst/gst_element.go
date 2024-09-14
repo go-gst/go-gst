@@ -176,8 +176,8 @@ func (e *Element) CallAsync(f func()) {
 }
 
 // PostMessage posts a message on the element's bus
-// Takes ownership of the message so need to ref it before feeding it forward
 func (e *Element) PostMessage(message *Message) bool {
+	// gst_element_post_message takes ownership of the message so need to ref it before feeding it forward
 	return gobool(C.gst_element_post_message(e.Instance(), message.Ref().Instance()))
 }
 
