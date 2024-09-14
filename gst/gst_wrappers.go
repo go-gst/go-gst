@@ -461,12 +461,6 @@ func marshalCapsFeatures(p unsafe.Pointer) (interface{}, error) {
 	return wrapCapsFeatures(obj), nil
 }
 
-func marshalStructure(p unsafe.Pointer) (interface{}, error) {
-	c := C.gst_value_get_structure(toGValue(p))
-	obj := (*C.GstStructure)(unsafe.Pointer(c))
-	return wrapStructure(obj), nil
-}
-
 func marshalContext(p unsafe.Pointer) (interface{}, error) {
 	c := C.g_value_get_object(toGValue(p))
 	obj := (*C.GstContext)(unsafe.Pointer(c))

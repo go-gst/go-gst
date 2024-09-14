@@ -161,16 +161,6 @@ func ValueGetCapsFeatures(value *glib.Value) *CapsFeatures {
 	return &CapsFeatures{native: feats}
 }
 
-// ValueGetStructure extracts the GstStructure from a glib.Value, or nil
-// if one does not exist.
-func ValueGetStructure(gval *glib.Value) *Structure {
-	st := C.gst_value_get_structure((*C.GValue)(unsafe.Pointer(gval.GValue)))
-	if st == nil {
-		return nil
-	}
-	return wrapStructure(st)
-}
-
 // ValueIntersect calculates the intersection of two values. If the values have a non-empty intersection,
 // the value representing the intersection isreturned. Otherwise this function returns false. This function
 // can also return false for any allocation errors.
