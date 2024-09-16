@@ -1075,6 +1075,24 @@ func (p *Pad) ToGValue() (*glib.Value, error) {
 	return val, nil
 }
 
+// Has returns true if this pad has the given flags.
+// Non MT safe
+func (p *Pad) Has(flags PadFlags) bool {
+	return p.hasFlags(uint32(flags))
+}
+
+// Sets pad flags
+// Non MT safe
+func (p *Pad) SetFlags(flags PadFlags) {
+	p.setFlags(uint32(flags))
+}
+
+// Unsets pad flags
+// Non MT safe
+func (p *Pad) UnsetFlags(flags PadFlags) {
+	p.unsetFlags(uint32(flags))
+}
+
 // PadProbeInfo represents the info passed to a PadProbeCallback.
 type PadProbeInfo struct {
 	ptr *C.GstPadProbeInfo

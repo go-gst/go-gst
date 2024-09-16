@@ -149,13 +149,15 @@ GstTagList *     makeTagListWritable   (GstTagList * tagList)   { return gst_tag
 
 /* Object Utilities */
 
-gboolean        gstElementIsURIHandler  (GstElement * elem)                      { return (GST_IS_URI_HANDLER(elem)); }
-gboolean        gstObjectFlagIsSet      (GstObject * obj, GstElementFlags flags) { return (GST_OBJECT_FLAG_IS_SET(obj, flags)); }
+gboolean        gstObjectFlagIsSet      (GstObject * obj, guint32 flags) { return (GST_OBJECT_FLAG_IS_SET(obj, flags)); }
+void            gstObjectFlagSet        (GstObject * obj, guint32 flags) { (GST_OBJECT_FLAG_SET(obj, flags)); }
+void            gstObjectFlagUnset      (GstObject * obj, guint32 flags) { (GST_OBJECT_FLAG_UNSET(obj, flags)); }
 
 /* Element utilities */
 
-GstTocSetter *  toTocSetter (GstElement * elem) { return GST_TOC_SETTER(elem); }
-GstTagSetter *  toTagSetter (GstElement *elem)  { return GST_TAG_SETTER(elem); }
+gboolean        gstElementIsURIHandler  (GstElement * elem) { return (GST_IS_URI_HANDLER(elem)); }
+GstTocSetter *  toTocSetter             (GstElement * elem) { return GST_TOC_SETTER(elem); }
+GstTagSetter *  toTagSetter             (GstElement *elem)  { return GST_TAG_SETTER(elem); }
 
 /* Sample Utilities */
 

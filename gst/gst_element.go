@@ -175,6 +175,12 @@ func (e *Element) CallAsync(f func()) {
 	)
 }
 
+// PostMessage posts a message on the element's bus
+func (e *Element) PostMessage(message *Message) bool {
+	// gst_element_post_message takes ownership of the message so need to ref it before feeding it forward
+	return gobool(C.gst_element_post_message(e.Instance(), message.Ref().Instance()))
+}
+
 // ChangeState performs the given transition on this element.
 func (e *Element) ChangeState(transition StateChange) StateChangeReturn {
 	return StateChangeReturn(C.gst_element_change_state(e.Instance(), C.GstStateChange(transition)))
@@ -399,8 +405,21 @@ func (e *Element) GetStaticPad(name string) *Pad {
 }
 
 // Has returns true if this element has the given flags.
+// Non MT safe
 func (e *Element) Has(flags ElementFlags) bool {
-	return gobool(C.gstObjectFlagIsSet(C.toGstObject(e.Unsafe()), C.GstElementFlags(flags)))
+	return e.hasFlags(uint32(flags))
+}
+
+// Set element flags
+// Non MT safe
+func (e *Element) SetFlags(flags ElementFlags) {
+	e.setFlags(uint32(flags))
+}
+
+// Unset element flags
+// Non MT safe
+func (e *Element) UnsetFlags(flags ElementFlags) {
+	e.unsetFlags(uint32(flags))
 }
 
 // IsURIHandler returns true if this element can handle URIs.

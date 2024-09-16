@@ -43,19 +43,19 @@ func ToGstMessage(msg unsafe.Pointer) *Message { return wrapMessage((*C.GstMessa
 func (m *Message) Instance() *C.GstMessage { return C.toGstMessage(unsafe.Pointer(m.msg)) }
 
 // Unref will call `gst_message_unref` on the underlying GstMessage, freeing it from memory.
-func (m *Message) Unref() { C.gst_message_unref((*C.GstMessage)(m.Instance())) }
+func (m *Message) Unref() { C.gst_message_unref(m.Instance()) }
 
 // Ref will increase the ref count on this message. This increases the total amount of times
 // Unref needs to be called before the object is freed from memory. It returns the underlying
 // message object for convenience.
 func (m *Message) Ref() *Message {
-	C.gst_message_ref((*C.GstMessage)(m.Instance()))
+	C.gst_message_ref(m.Instance())
 	return m
 }
 
 // Copy will copy this object into a new Message.
 func (m *Message) Copy() *Message {
-	newNative := C.gst_message_copy((*C.GstMessage)(m.Instance()))
+	newNative := C.gst_message_copy(m.Instance())
 	return FromGstMessageUnsafeFull(unsafe.Pointer(newNative))
 }
 
@@ -79,13 +79,13 @@ func (m *Message) GetStructure() *Structure {
 
 	switch m.Type() {
 	case MessageError:
-		C.gst_message_parse_error_details((*C.GstMessage)(m.Instance()), (**C.GstStructure)(unsafe.Pointer(&st)))
+		C.gst_message_parse_error_details(m.Instance(), (**C.GstStructure)(unsafe.Pointer(&st)))
 	case MessageInfo:
-		C.gst_message_parse_info_details((*C.GstMessage)(m.Instance()), (**C.GstStructure)(unsafe.Pointer(&st)))
+		C.gst_message_parse_info_details(m.Instance(), (**C.GstStructure)(unsafe.Pointer(&st)))
 	case MessageWarning:
-		C.gst_message_parse_warning_details((*C.GstMessage)(m.Instance()), (**C.GstStructure)(unsafe.Pointer(&st)))
+		C.gst_message_parse_warning_details(m.Instance(), (**C.GstStructure)(unsafe.Pointer(&st)))
 	case MessageElement:
-		st = C.gst_message_get_structure((*C.GstMessage)(m.Instance()))
+		st = C.gst_message_get_structure(m.Instance())
 	}
 
 	// if no structure was returned, immediately return nil
@@ -106,11 +106,11 @@ func (m *Message) parseToError() *GError {
 
 	switch m.Type() {
 	case MessageError:
-		C.gst_message_parse_error((*C.GstMessage)(m.Instance()), (**C.GError)(unsafe.Pointer(&gerr)), (**C.gchar)(unsafe.Pointer(&debugInfo)))
+		C.gst_message_parse_error(m.Instance(), (**C.GError)(unsafe.Pointer(&gerr)), (**C.gchar)(unsafe.Pointer(&debugInfo)))
 	case MessageInfo:
-		C.gst_message_parse_info((*C.GstMessage)(m.Instance()), (**C.GError)(unsafe.Pointer(&gerr)), (**C.gchar)(unsafe.Pointer(&debugInfo)))
+		C.gst_message_parse_info(m.Instance(), (**C.GError)(unsafe.Pointer(&gerr)), (**C.gchar)(unsafe.Pointer(&debugInfo)))
 	case MessageWarning:
-		C.gst_message_parse_warning((*C.GstMessage)(m.Instance()), (**C.GError)(unsafe.Pointer(&gerr)), (**C.gchar)(unsafe.Pointer(&debugInfo)))
+		C.gst_message_parse_warning(m.Instance(), (**C.GError)(unsafe.Pointer(&gerr)), (**C.gchar)(unsafe.Pointer(&debugInfo)))
 	}
 
 	// if error was nil return immediately
@@ -151,7 +151,7 @@ func (m *Message) ParseError() *GError {
 // if the GstMessageType is `GST_MESSAGE_STATE_CHANGED`.
 func (m *Message) ParseStateChanged() (oldState, newState State) {
 	var gOldState, gNewState C.GstState
-	C.gst_message_parse_state_changed((*C.GstMessage)(m.Instance()), (*C.GstState)(unsafe.Pointer(&gOldState)), (*C.GstState)(unsafe.Pointer(&gNewState)), nil)
+	C.gst_message_parse_state_changed(m.Instance(), (*C.GstState)(unsafe.Pointer(&gOldState)), (*C.GstState)(unsafe.Pointer(&gNewState)), nil)
 	oldState = State(gOldState)
 	newState = State(gNewState)
 	return
@@ -160,7 +160,7 @@ func (m *Message) ParseStateChanged() (oldState, newState State) {
 // ParseTags extracts the tag list from the GstMessage. Tags are copied.
 func (m *Message) ParseTags() *TagList {
 	var tagList *C.GstTagList
-	C.gst_message_parse_tag((*C.GstMessage)(m.Instance()), &tagList)
+	C.gst_message_parse_tag(m.Instance(), &tagList)
 	if tagList == nil {
 		return nil
 	}
@@ -182,7 +182,7 @@ func (m *Message) ParseStreamStatus() (StreamStatusType, *Element) {
 	var cElem *C.GstElement
 	var cStatusType C.GstStreamStatusType
 	C.gst_message_parse_stream_status(
-		(*C.GstMessage)(m.Instance()),
+		m.Instance(),
 		(*C.GstStreamStatusType)(&cStatusType),
 		(**C.GstElement)(&cElem),
 	)
@@ -192,7 +192,7 @@ func (m *Message) ParseStreamStatus() (StreamStatusType, *Element) {
 // ParseAsyncDone extracts the running time from the async task done message.
 func (m *Message) ParseAsyncDone() ClockTime {
 	var clockTime C.GstClockTime
-	C.gst_message_parse_async_done((*C.GstMessage)(m.Instance()), &clockTime)
+	C.gst_message_parse_async_done(m.Instance(), &clockTime)
 	return ClockTime(clockTime)
 }
 
@@ -211,7 +211,7 @@ type BufferingStats struct {
 // ParseBuffering extracts the buffering percent from the GstMessage.
 func (m *Message) ParseBuffering() int {
 	var cInt C.gint
-	C.gst_message_parse_buffering((*C.GstMessage)(m.Instance()), &cInt)
+	C.gst_message_parse_buffering(m.Instance(), &cInt)
 	return int(cInt)
 }
 
@@ -221,7 +221,7 @@ func (m *Message) ParseBufferingStats() *BufferingStats {
 	var avgIn, avgOut C.gint
 	var bufLeft C.gint64
 	C.gst_message_parse_buffering_stats(
-		(*C.GstMessage)(m.Instance()),
+		m.Instance(),
 		&mode, &avgIn, &avgOut, &bufLeft,
 	)
 	return &BufferingStats{
@@ -249,7 +249,7 @@ func (m *Message) ParseStepStart() *StepStartValues {
 	var rate C.gdouble
 	var format C.GstFormat
 	C.gst_message_parse_step_start(
-		(*C.GstMessage)(m.Instance()),
+		m.Instance(),
 		&active, &format, &amount, &rate, &flush, &intermediate,
 	)
 	return &StepStartValues{
@@ -280,7 +280,7 @@ func (m *Message) ParseStepDone() *StepDoneValues {
 	var rate C.gdouble
 	var flush, intermediate, eos C.gboolean
 	C.gst_message_parse_step_done(
-		(*C.GstMessage)(m.Instance()),
+		m.Instance(),
 		&format,
 		&amount,
 		&rate,
@@ -304,7 +304,7 @@ func (m *Message) ParseStepDone() *StepDoneValues {
 // remains valid until the message is freed.
 func (m *Message) ParseNewClock() *Clock {
 	var clock *C.GstClock
-	C.gst_message_parse_new_clock((*C.GstMessage)(m.Instance()), &clock)
+	C.gst_message_parse_new_clock(m.Instance(), &clock)
 	return FromGstClockUnsafeNone(unsafe.Pointer(clock))
 }
 
@@ -313,7 +313,7 @@ func (m *Message) ParseNewClock() *Clock {
 func (m *Message) ParseClockProvide() (clock *Clock, ready bool) {
 	var gclock *C.GstClock
 	var gready C.gboolean
-	C.gst_message_parse_clock_provide((*C.GstMessage)(m.Instance()), &gclock, &gready)
+	C.gst_message_parse_clock_provide(m.Instance(), &gclock, &gready)
 	return FromGstClockUnsafeNone(unsafe.Pointer(clock)), gobool(gready)
 }
 
@@ -324,7 +324,7 @@ func (m *Message) ParseStructureChange() (chgType StructureChangeType, owner *El
 	var gbusy C.gboolean
 	var gchgType C.GstStructureChangeType
 	C.gst_message_parse_structure_change(
-		(*C.GstMessage)(m.Instance()),
+		m.Instance(),
 		&gchgType, &gElem, &gbusy,
 	)
 	return StructureChangeType(gchgType), wrapElement(toGObject(unsafe.Pointer(gElem))), gobool(gbusy)
@@ -334,7 +334,7 @@ func (m *Message) ParseStructureChange() (chgType StructureChangeType, owner *El
 func (m *Message) ParseSegmentStart() (Format, int64) {
 	var format C.GstFormat
 	var position C.gint64
-	C.gst_message_parse_segment_start((*C.GstMessage)(m.Instance()), &format, &position)
+	C.gst_message_parse_segment_start(m.Instance(), &format, &position)
 	return Format(format), int64(position)
 }
 
@@ -342,14 +342,14 @@ func (m *Message) ParseSegmentStart() (Format, int64) {
 func (m *Message) ParseSegmentDone() (Format, int64) {
 	var format C.GstFormat
 	var position C.gint64
-	C.gst_message_parse_segment_done((*C.GstMessage)(m.Instance()), &format, &position)
+	C.gst_message_parse_segment_done(m.Instance(), &format, &position)
 	return Format(format), int64(position)
 }
 
 // ParseRequestState parses the requests state from the message.
 func (m *Message) ParseRequestState() State {
 	var state C.GstState
-	C.gst_message_parse_request_state((*C.GstMessage)(m.Instance()), &state)
+	C.gst_message_parse_request_state(m.Instance(), &state)
 	return State(state)
 }
 
@@ -374,7 +374,7 @@ func (m *Message) ParseQoS() *QoSValues {
 	var live C.gboolean
 	var runningTime, streamTime, timestamp, duration C.guint64
 	C.gst_message_parse_qos(
-		(*C.GstMessage)(m.Instance()),
+		m.Instance(),
 		&live, &runningTime, &streamTime, &timestamp, &duration,
 	)
 	return &QoSValues{
@@ -394,7 +394,7 @@ func (m *Message) ParseProgress() (progressType ProgressType, code, text string)
 	defer C.free(unsafe.Pointer(textPtr))
 	var gpType C.GstProgressType
 	C.gst_message_parse_progress(
-		(*C.GstMessage)(m.Instance()),
+		m.Instance(),
 		&gpType,
 		(**C.gchar)(unsafe.Pointer(codePtr)),
 		(**C.gchar)(unsafe.Pointer(textPtr)),
@@ -407,7 +407,7 @@ func (m *Message) ParseProgress() (progressType ProgressType, code, text string)
 // ParseResetTime extracts the running-time from the ResetTime message.
 func (m *Message) ParseResetTime() ClockTime {
 	var clockTime C.GstClockTime
-	C.gst_message_parse_reset_time((*C.GstMessage)(m.Instance()), &clockTime)
+	C.gst_message_parse_reset_time(m.Instance(), &clockTime)
 	return ClockTime(clockTime)
 }
 
@@ -416,7 +416,7 @@ func (m *Message) ParseResetTime() ClockTime {
 // of monitored devices.
 func (m *Message) ParseDeviceAdded() *Device {
 	var device *C.GstDevice
-	C.gst_message_parse_device_added((*C.GstMessage)(m.Instance()), &device)
+	C.gst_message_parse_device_added(m.Instance(), &device)
 	return FromGstDeviceUnsafeFull(unsafe.Pointer(device))
 }
 
@@ -425,7 +425,7 @@ func (m *Message) ParseDeviceAdded() *Device {
 // of monitored devices.
 func (m *Message) ParseDeviceRemoved() *Device {
 	var device *C.GstDevice
-	C.gst_message_parse_device_removed((*C.GstMessage)(m.Instance()), &device)
+	C.gst_message_parse_device_removed(m.Instance(), &device)
 	return FromGstDeviceUnsafeFull(unsafe.Pointer(device))
 }
 
@@ -436,7 +436,7 @@ func (m *Message) ParseDeviceRemoved() *Device {
 // the old state of the device.
 func (m *Message) ParseDeviceChanged() (newDevice, oldDevice *Device) {
 	var gstNewDevice, gstOldDevice *C.GstDevice
-	C.gst_message_parse_device_changed((*C.GstMessage)(m.Instance()), &gstNewDevice, &gstOldDevice)
+	C.gst_message_parse_device_changed(m.Instance(), &gstNewDevice, &gstOldDevice)
 	return FromGstDeviceUnsafeFull(unsafe.Pointer(gstNewDevice)),
 		FromGstDeviceUnsafeFull(unsafe.Pointer(gstOldDevice))
 }
@@ -449,7 +449,7 @@ func (m *Message) ParsePropertyNotify() (obj *Object, propertName string, proper
 	namePtr := C.malloc(C.sizeof_char * 1024)
 	defer C.free(unsafe.Pointer(namePtr))
 	C.gst_message_parse_property_notify(
-		(*C.GstMessage)(m.Instance()),
+		m.Instance(),
 		&gstobj, (**C.gchar)(unsafe.Pointer(namePtr)), &gval,
 	)
 	return wrapObject(toGObject(unsafe.Pointer(gstobj))),
@@ -461,7 +461,7 @@ func (m *Message) ParsePropertyNotify() (obj *Object, propertName string, proper
 func (m *Message) ParseStreamCollection() *StreamCollection {
 	var collection *C.GstStreamCollection
 	C.gst_message_parse_stream_collection(
-		(*C.GstMessage)(m.Instance()),
+		m.Instance(),
 		&collection,
 	)
 	return FromGstStreamCollectionUnsafeFull(unsafe.Pointer(collection))
@@ -471,7 +471,7 @@ func (m *Message) ParseStreamCollection() *StreamCollection {
 func (m *Message) ParseStreamsSelected() *StreamCollection {
 	var collection *C.GstStreamCollection
 	C.gst_message_parse_streams_selected(
-		(*C.GstMessage)(m.Instance()),
+		m.Instance(),
 		&collection,
 	)
 	return FromGstStreamCollectionUnsafeFull(unsafe.Pointer(collection))
@@ -479,7 +479,7 @@ func (m *Message) ParseStreamsSelected() *StreamCollection {
 
 // NumRedirectEntries returns the number of redirect entries in a MessageRedirect.
 func (m *Message) NumRedirectEntries() int64 {
-	return int64(C.gst_message_get_num_redirect_entries((*C.GstMessage)(m.Instance())))
+	return int64(C.gst_message_get_num_redirect_entries(m.Instance()))
 }
 
 // ParseRedirectEntryAt parses the redirect entry at the given index. Total indices can be retrieved
@@ -490,7 +490,7 @@ func (m *Message) ParseRedirectEntryAt(idx int64) (location string, tags *TagLis
 	var tagList *C.GstTagList
 	var entryStruct *C.GstStructure
 	C.gst_message_parse_redirect_entry(
-		(*C.GstMessage)(m.Instance()),
+		m.Instance(),
 		C.gsize(idx),
 		(**C.char)(locPtr),
 		&tagList,
