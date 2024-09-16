@@ -14,13 +14,21 @@ type GstObjectHolder interface {
 	GstObject() *C.GstObject
 }
 
+func getMessageSourceObj(src GstObjectHolder) *C.GstObject {
+	if src == nil {
+		return nil
+	}
+
+	return src.GstObject()
+}
+
 // NewApplicationMessage creates a new application-typed message. GStreamer will never
 // create these messages; they are a gift from them to you. Enjoy.
 //
 // The source of all message constructors must be a valid Object or descendant, specifically
 // one created from the go runtime. If not the message returned will be nil.
 func NewApplicationMessage(src GstObjectHolder, structure *Structure) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -32,7 +40,7 @@ func NewApplicationMessage(src GstObjectHolder, structure *Structure) *Message {
 // A value less than 0 for runningTime means that the element has no clock interaction and thus doesn't
 // care about the running time of the pipeline.
 func NewAsyncDoneMessage(src GstObjectHolder, runningTime ClockTime) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -45,7 +53,7 @@ func NewAsyncDoneMessage(src GstObjectHolder, runningTime ClockTime) *Message {
 
 // NewAsyncStartMessage returns a message that is posted by elements when they start an ASYNC state change.
 func NewAsyncStartMessage(src GstObjectHolder) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -60,7 +68,7 @@ func NewAsyncStartMessage(src GstObjectHolder) *Message {
 // may only set the pipeline to PLAYING after receiving a message with percent set to 100, which can happen after the pipeline
 // completed prerolling.
 func NewBufferingMessage(src GstObjectHolder, percent int) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -72,7 +80,7 @@ func NewBufferingMessage(src GstObjectHolder, percent int) *Message {
 // If this message is posted by the pipeline, the pipeline will select a new clock again when it goes to PLAYING. It might
 // therefore be needed to set the pipeline to PAUSED and PLAYING again.
 func NewClockLostMessage(src GstObjectHolder, clock *Clock) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -84,7 +92,7 @@ func NewClockLostMessage(src GstObjectHolder, clock *Clock) *Message {
 //
 // This message is mainly used internally to manage the clock selection.
 func NewClockProvideMessage(src GstObjectHolder, clock *Clock, ready bool) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -94,7 +102,7 @@ func NewClockProvideMessage(src GstObjectHolder, clock *Clock, ready bool) *Mess
 // NewCustomMessage creates a new custom-typed message. This can be used for anything not handled by other message-specific
 // functions to pass a message to the app. The structure field can be nil.
 func NewCustomMessage(src GstObjectHolder, msgType MessageType, structure *Structure) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -107,7 +115,7 @@ func NewCustomMessage(src GstObjectHolder, msgType MessageType, structure *Struc
 // NewDeviceAddedMessage creates a new device-added message. The device-added message is produced by a DeviceProvider or a DeviceMonitor.
 // They announce the appearance of monitored devices.
 func NewDeviceAddedMessage(src GstObjectHolder, device *Device) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -117,7 +125,7 @@ func NewDeviceAddedMessage(src GstObjectHolder, device *Device) *Message {
 // NewDeviceChangedMessage creates a new device-changed message. The device-changed message is produced by a DeviceProvider or a DeviceMonitor.
 // They announce that a device properties has changed and device represent the new modified version of changed_device.
 func NewDeviceChangedMessage(src GstObjectHolder, device, changedDevice *Device) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -127,7 +135,7 @@ func NewDeviceChangedMessage(src GstObjectHolder, device, changedDevice *Device)
 // NewDeviceRemovedMessage creates a new device-removed message. The device-removed message is produced by a DeviceProvider or a DeviceMonitor.
 // They announce the disappearance of monitored devices.
 func NewDeviceRemovedMessage(src GstObjectHolder, device *Device) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -137,7 +145,7 @@ func NewDeviceRemovedMessage(src GstObjectHolder, device *Device) *Message {
 // NewDurationChangedMessage creates a new duration changed message. This message is posted by elements that know the duration of a
 // stream when the duration changes. This message is received by bins and is used to calculate the total duration of a pipeline.
 func NewDurationChangedMessage(src GstObjectHolder) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -148,7 +156,7 @@ func NewDurationChangedMessage(src GstObjectHolder) *Message {
 // element to an application, for example "the firewire cable was unplugged". The format of the message should be documented in the
 // element's documentation. The structure field can be nil.
 func NewElementMessage(src GstObjectHolder, structure *Structure) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -161,7 +169,7 @@ func NewElementMessage(src GstObjectHolder, structure *Structure) *Message {
 // NewEOSMessage creates a new eos message. This message is generated and posted in the sink elements of a Bin. The bin will only forward
 // the EOS message to the application if all sinks have posted an EOS message.
 func NewEOSMessage(src GstObjectHolder) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -172,7 +180,7 @@ func NewEOSMessage(src GstObjectHolder) *Message {
 // occurred. The pipeline will probably (partially) stop. The application receiving this message should stop the pipeline.
 // Structure can be nil to not add a structure to the message.
 func NewErrorMessage(src GstObjectHolder, err error, debugStr string, structure *Structure) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -203,7 +211,7 @@ func NewErrorMessage(src GstObjectHolder, err error, debugStr string, structure 
 
 // NewHaveContextMessage creates a message that is posted when an element has a new local Context.
 func NewHaveContextMessage(src GstObjectHolder, ctx *Context) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -215,7 +223,7 @@ func NewHaveContextMessage(src GstObjectHolder, ctx *Context) *Message {
 
 // NewInfoMessage creates a new info message. Structure can be nil.
 func NewInfoMessage(src GstObjectHolder, msg string, debugStr string, structure *Structure) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -246,7 +254,7 @@ func NewInfoMessage(src GstObjectHolder, msg string, debugStr string, structure 
 
 // NewLatencyMessage creates a message that can be posted by elements when their latency requirements have changed.
 func NewLatencyMessage(src GstObjectHolder) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -255,7 +263,7 @@ func NewLatencyMessage(src GstObjectHolder) *Message {
 
 // NewNeedContextMessage creates a message that is posted when an element needs a specific Context.
 func NewNeedContextMessage(src GstObjectHolder, ctxType string) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -265,7 +273,7 @@ func NewNeedContextMessage(src GstObjectHolder, ctxType string) *Message {
 
 // NewNewClockMessage creates a new clock message. This message is posted whenever the pipeline selects a new clock for the pipeline.
 func NewNewClockMessage(src GstObjectHolder, clock *Clock) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -276,7 +284,7 @@ func NewNewClockMessage(src GstObjectHolder, clock *Clock) *Message {
 //
 // Code contains a well defined string describing the action. Text should contain a user visible string detailing the current action.
 func NewProgressMessage(src GstObjectHolder, progressType ProgressType, code, text string) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -288,7 +296,7 @@ func NewProgressMessage(src GstObjectHolder, progressType ProgressType, code, te
 // NewPropertyNotifyMessage creates a new message notifying an object's properties have changed. If the
 // source OR the value cannot be coereced to C types, the function will return nil.
 func NewPropertyNotifyMessage(src GstObjectHolder, propName string, val interface{}) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -313,7 +321,7 @@ func NewPropertyNotifyMessage(src GstObjectHolder, propName string, val interfac
 // running_time, stream_time, timestamp, duration should be set to the respective running-time, stream-time, timestamp and duration of the (dropped) buffer
 // that generated the QoS event. Values can be left to less than zero when unknown.
 func NewQoSMessage(src GstObjectHolder, live bool, runningTime, streamTime, timestamp, duration uint64) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -343,7 +351,7 @@ func NewQoSMessage(src GstObjectHolder, live bool, runningTime, streamTime, time
 //
 // The specified location string is copied. However, ownership over the tag list and structure are transferred to the message.
 func NewRedirectMessage(src GstObjectHolder, location string, tagList *TagList, entryStructure *Structure) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -389,7 +397,7 @@ func (m *Message) AddRedirectEntry(location string, tagList *TagList, entryStruc
 // NewRequestStateMessage creates a message that can be posted by elements when they want to have their state changed.
 // A typical use case would be an audio server that wants to pause the pipeline because a higher priority stream is being played.
 func NewRequestStateMessage(src GstObjectHolder, state State) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -398,7 +406,7 @@ func NewRequestStateMessage(src GstObjectHolder, state State) *Message {
 
 // NewResetTimeMessage creates a message that is posted when the pipeline running-time should be reset to running_time, like after a flushing seek.
 func NewResetTimeMessage(src GstObjectHolder, runningTime ClockTime) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -408,7 +416,7 @@ func NewResetTimeMessage(src GstObjectHolder, runningTime ClockTime) *Message {
 // NewSegmentDoneMessage creates a new segment done message. This message is posted by elements that finish playback of a segment as a result of a
 // segment seek. This message is received by the application after all elements that posted a segment_start have posted the segment_done.
 func NewSegmentDoneMessage(src GstObjectHolder, format Format, position int64) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -422,7 +430,7 @@ func NewSegmentDoneMessage(src GstObjectHolder, format Format, position int64) *
 // NewSegmentStartMessage creates a new segment message. This message is posted by elements that start playback of a segment as a result of a segment seek.
 // This message is not received by the application but is used for maintenance reasons in container elements.
 func NewSegmentStartMessage(src GstObjectHolder, format Format, position int64) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -435,7 +443,7 @@ func NewSegmentStartMessage(src GstObjectHolder, format Format, position int64) 
 
 // NewStateChangedMessage creates a state change message. This message is posted whenever an element changed its state.
 func NewStateChangedMessage(src GstObjectHolder, oldState, newState, pendingState State) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -448,7 +456,7 @@ func NewStateChangedMessage(src GstObjectHolder, oldState, newState, pendingStat
 // NewStateDirtyMessage creates a state dirty message. This message is posted whenever an element changed its state asynchronously
 // and is used internally to update the states of container objects.
 func NewStateDirtyMessage(src GstObjectHolder) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -460,7 +468,7 @@ func NewStateDirtyMessage(src GstObjectHolder) *Message {
 //
 // Duration will contain the amount of time of the stepped amount of media in format format.
 func NewStepDoneMessage(src GstObjectHolder, format Format, amount uint64, rate float64, flush, intermediate bool, duration uint64, eos bool) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -483,7 +491,7 @@ func NewStepDoneMessage(src GstObjectHolder, format Format, amount uint64, rate 
 // Active is set to TRUE when the element has activated the step operation and is now ready to start executing the step in the streaming thread.
 // After this message is emitted, the application can queue a new step operation in the element.
 func NewStepStartMessage(src GstObjectHolder, active bool, format Format, amount uint64, rate float64, flush, intermediate bool) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -500,7 +508,7 @@ func NewStepStartMessage(src GstObjectHolder, active bool, format Format, amount
 
 // NewStreamCollectionMessage creates a new stream-collection message. The message is used to announce new StreamCollections.
 func NewStreamCollectionMessage(src GstObjectHolder, collection *StreamCollection) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -510,7 +518,7 @@ func NewStreamCollectionMessage(src GstObjectHolder, collection *StreamCollectio
 // NewStreamStartMessage creates a new stream_start message. This message is generated and posted in the sink elements of a Bin.
 // The bin will only forward the StreamStart message to the application if all sinks have posted a StreamStart message.
 func NewStreamStartMessage(src GstObjectHolder) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -520,7 +528,7 @@ func NewStreamStartMessage(src GstObjectHolder) *Message {
 // NewStreamStatusMessage creates a new stream status message. This message is posted when a streaming thread is created/destroyed or
 // when the state changed.
 func NewStreamStatusMessage(src GstObjectHolder, stType StreamStatusType, owner *Element) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -534,7 +542,7 @@ func NewStreamStatusMessage(src GstObjectHolder, stType StreamStatusType, owner 
 //
 // Users of this constructor can add the selected streams with StreamsSelectedAdd.
 func NewStreamSelectedMessage(src GstObjectHolder, collection *StreamCollection) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -565,7 +573,7 @@ func (m *Message) StreamsSelectedGetStream(index uint) *Stream {
 //
 // Src should be the sinkpad that unlinked or linked.
 func NewStructureChangeMessage(src GstObjectHolder, chgType StructureChangeType, owner *Element, busy bool) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -579,7 +587,7 @@ func NewStructureChangeMessage(src GstObjectHolder, chgType StructureChangeType,
 
 // NewTagMessage creates a new tag message. The message will take ownership of the tag list. The message is posted by elements that discovered a new taglist.
 func NewTagMessage(src GstObjectHolder, tagList *TagList) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -588,7 +596,7 @@ func NewTagMessage(src GstObjectHolder, tagList *TagList) *Message {
 
 // NewTOCMessage creates a new TOC message. The message is posted by elements that discovered or updated a TOC.
 func NewTOCMessage(src GstObjectHolder, toc *TOC, updated bool) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
@@ -601,7 +609,7 @@ func NewTOCMessage(src GstObjectHolder, toc *TOC, updated bool) *Message {
 
 // NewWarningMessage creates a new warning message. Structure can be nil.
 func NewWarningMessage(src GstObjectHolder, msg string, debugStr string, structure *Structure) *Message {
-	srcObj := src.GstObject()
+	srcObj := getMessageSourceObj(src)
 	if srcObj == nil {
 		return nil
 	}
