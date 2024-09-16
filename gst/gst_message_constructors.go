@@ -8,6 +8,8 @@ import (
 	"github.com/go-gst/go-glib/glib"
 )
 
+// GstObjectHolder interface is used as a go representation of the GLib check
+// for an input type to be derived from the GstObject.
 type GstObjectHolder interface {
 	GstObject() *C.GstObject
 }
