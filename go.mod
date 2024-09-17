@@ -1,6 +1,6 @@
 module github.com/go-gst/go-gst
 
-go 1.22
+go 1.23
 
 require github.com/mattn/go-pointer v0.0.1
 
