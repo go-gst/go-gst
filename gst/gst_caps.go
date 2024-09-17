@@ -267,7 +267,15 @@ func (c *Caps) GetStructureAt(idx int) *Structure {
 	if st == nil {
 		return nil
 	}
-	return wrapStructure(st)
+	s := wrapStructure(st)
+
+	// we don't own the structure, so keep the caps alive until we
+	// don't need the structure anymore
+	runtime.SetFinalizer(s, func(_ *Structure) {
+		runtime.KeepAlive(c)
+	})
+
+	return s
 }
 
 // GetFeaturesAt returns the feature at the given index, or nil if none exists.
