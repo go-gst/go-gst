@@ -4,6 +4,7 @@ package gstsdp
 import "C"
 import (
 	"errors"
+	"iter"
 	"runtime"
 	"unsafe"
 )
@@ -91,4 +92,37 @@ func (msg *Message) Free() {
 
 func (msg *Message) Instance() unsafe.Pointer {
 	return unsafe.Pointer(msg.ptr)
+}
+
+func (msg *Message) MediasLen() int {
+	return int(C.gst_sdp_message_medias_len(msg.ptr))
+}
+
+func (msg *Message) Media(i int) *Media {
+	cmedia := C.gst_sdp_message_get_media(msg.ptr, C.uint(i))
+
+	if cmedia == nil {
+		return nil
+	}
+
+	media := &Media{
+		ptr: cmedia,
+	}
+
+	// keep the Message alive while we are handling the media
+	runtime.SetFinalizer(media, func(_ *Media) {
+		runtime.KeepAlive(msg)
+	})
+
+	return media
+}
+
+func (msg *Message) Medias() iter.Seq2[int, *Media] {
+	return func(yield func(int, *Media) bool) {
+		for i := 0; i < msg.MediasLen(); i++ {
+			if !yield(i, msg.Media(i)) {
+				return
+			}
+		}
+	}
 }
