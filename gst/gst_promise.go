@@ -158,9 +158,8 @@ func (p *Promise) GetReply() *Structure {
 
 	// the structure is owned by the promise, so we keep the promise alive
 	// until the structure gets GC'ed
-	p.Ref()
 	runtime.SetFinalizer(structure, func(_ *Structure) {
-		p.Unref()
+		runtime.KeepAlive(p)
 	})
 
 	return structure
