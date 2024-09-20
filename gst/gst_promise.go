@@ -88,6 +88,10 @@ func NewPromise() *Promise {
 }
 
 func (p *Promise) Instance() *C.GstPromise {
+	if p == nil {
+		return nil
+	}
+
 	return p.ptr
 }
 
