@@ -70,7 +70,7 @@ func (w3SDP *W3RTCSessionDescription) ToGstSDP() (*SessionDescription, error) {
 func (sd *SessionDescription) ToW3SDP() W3RTCSessionDescription {
 	jsonSDP := W3RTCSessionDescription{
 		Type: SDPType(sd.ptr._type).String(),
-		Sdp:  gstsdp.NewMessageFromUnsafe(unsafe.Pointer(sd.ptr.sdp)).String(),
+		Sdp:  sd.SDP().String(),
 	}
 
 	return jsonSDP
@@ -121,4 +121,15 @@ func marshalSessionDescription(p unsafe.Pointer) (interface{}, error) {
 	}
 
 	return ref.Copy(), nil
+}
+
+// Copy creates a new copy of the SessionDescription
+func (sd *SessionDescription) SDP() *gstsdp.Message {
+	sdp := gstsdp.NewMessageFromUnsafe(unsafe.Pointer(sd.ptr.sdp))
+
+	runtime.SetFinalizer(sdp, func(sdp *gstsdp.Message) {
+		runtime.KeepAlive(sd)
+	})
+
+	return sdp
 }
