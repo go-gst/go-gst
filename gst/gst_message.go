@@ -93,9 +93,7 @@ func (m *Message) GetStructure() *Structure {
 		return nil
 	}
 
-	// The returned structure must not be freed. Applies to all methods.
-	// https://gstreamer.freedesktop.org/documentation/gstreamer/gstmessage.html#gst_message_parse_error_details
-	return wrapStructure(st)
+	return structureFromGlibNone(st)
 }
 
 // parseToError returns a new GError from this message instance. There are multiple
