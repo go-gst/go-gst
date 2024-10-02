@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: GStreamer discourse forum
+    url: https://discourse.gstreamer.org/
+    about: Get info about specific elements or general functionality of GStreamer.
+  - name: GStreamer matrix channel
+    url: https://matrix.to/#/#community:gstreamer.org
+    about: Get in touch with the GStreamer community.
