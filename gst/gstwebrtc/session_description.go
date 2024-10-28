@@ -104,7 +104,11 @@ func (sd *SessionDescription) ToGValue() (*glib.Value, error) {
 	if err != nil {
 		return nil, err
 	}
-	val.SetBoxed(unsafe.Pointer(sd.ptr))
+	var ptr *C.GstWebRTCSessionDescription
+	if sd != nil {
+		ptr = sd.ptr
+	}
+	val.SetBoxed(unsafe.Pointer(ptr))
 	return val, nil
 }
 
