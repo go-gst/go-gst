@@ -531,6 +531,15 @@ func (e *Element) SetState(state State) error {
 	return nil
 }
 
+// SetLockedState sets the locked state flag for this element.
+func (e *Element) SetLockedState(lockedState bool) error {
+	ret := C.gst_element_set_locked_state((*C.GstElement)(e.Instance()), gboolean(lockedState))
+	if !gobool(ret) {
+		return fmt.Errorf("failed to set locked state")
+	}
+	return nil
+}
+
 // SyncStateWithParent tries to change the state of the element to the same as its parent. If this function returns
 // FALSE, the state of element is undefined.
 func (e *Element) SyncStateWithParent() bool {
