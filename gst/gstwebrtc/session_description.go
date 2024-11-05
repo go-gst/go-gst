@@ -123,7 +123,7 @@ func marshalSessionDescription(p unsafe.Pointer) (interface{}, error) {
 	return ref.Copy(), nil
 }
 
-// Copy creates a new copy of the SessionDescription
+// SDP returns the sdp message from the SessionDescription object
 func (sd *SessionDescription) SDP() *gstsdp.Message {
 	sdp := gstsdp.NewMessageFromUnsafe(unsafe.Pointer(sd.ptr.sdp))
 
