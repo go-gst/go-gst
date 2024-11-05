@@ -197,7 +197,7 @@ func marshalPromise(p unsafe.Pointer) (interface{}, error) {
 	obj := (*C.GstPromise)(unsafe.Pointer(c))
 
 	if obj == nil {
-		return nil, nil
+		return (*Promise)(nil), nil
 	}
 
 	prom := &Promise{
