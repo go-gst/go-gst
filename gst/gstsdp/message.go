@@ -33,6 +33,19 @@ func wrapSDPMessageAndFinalize(sdp *C.GstSDPMessage) *Message {
 	return msg
 }
 
+// NewMessage creates a new empty SDP message
+func NewMessage() (*Message, error) {
+	var msg *C.GstSDPMessage
+
+	res := SDPResult(C.gst_sdp_message_new(&msg))
+
+	if res != SDPResultOk || msg == nil {
+		return nil, ErrSDPInvalid
+	}
+
+	return wrapSDPMessageAndFinalize(msg), nil
+}
+
 // NewMessageFromUnsafe creates a new SDP message from a pointer and does not finalize it
 func NewMessageFromUnsafe(ptr unsafe.Pointer) *Message {
 	return &Message{
@@ -58,7 +71,7 @@ func ParseSDPMessage(sdp string) (*Message, error) {
 }
 
 func (msg *Message) String() string {
-	cstr := C.gst_sdp_message_as_text(msg.ptr)
+	cstr := C.gst_sdp_message_as_text(msg.native())
 	defer C.free(unsafe.Pointer(cstr))
 
 	return C.GoString(cstr)
@@ -70,8 +83,12 @@ func (msg *Message) String() string {
 //
 // the returned SDP message will leak memory if not freed manually
 func (msg *Message) UnownedCopy() *Message {
+	if msg == nil {
+		return nil
+	}
+
 	var newMsg *C.GstSDPMessage
-	res := C.gst_sdp_message_copy(msg.ptr, &newMsg)
+	res := C.gst_sdp_message_copy(msg.native(), &newMsg)
 
 	if res != C.GST_SDP_OK || newMsg == nil {
 		return nil
@@ -86,20 +103,31 @@ func (msg *Message) UnownedCopy() *Message {
 //
 // This is called automatically when the object is garbage collected.
 func (msg *Message) Free() {
+	if msg == nil || msg.ptr == nil {
+		return
+	}
 	C.gst_sdp_message_free(msg.ptr)
 	msg.ptr = nil
 }
 
+func (msg *Message) native() *C.GstSDPMessage {
+	if msg == nil {
+		return nil
+	}
+
+	return msg.ptr
+}
+
 func (msg *Message) Instance() unsafe.Pointer {
-	return unsafe.Pointer(msg.ptr)
+	return unsafe.Pointer(msg.native())
 }
 
 func (msg *Message) MediasLen() int {
-	return int(C.gst_sdp_message_medias_len(msg.ptr))
+	return int(C.gst_sdp_message_medias_len(msg.native()))
 }
 
 func (msg *Message) Media(i int) *Media {
-	cmedia := C.gst_sdp_message_get_media(msg.ptr, C.uint(i))
+	cmedia := C.gst_sdp_message_get_media(msg.native(), C.uint(i))
 
 	if cmedia == nil {
 		return nil
