@@ -6,4 +6,4 @@ require github.com/mattn/go-pointer v0.0.1
 
 require github.com/go-gst/go-glib v1.3.0
 
-require golang.org/x/exp v0.0.0-20240416160154-fe59bbe5cc7f // indirect
+require golang.org/x/exp v0.0.0-20240909161429-701f63a606c0 // indirect
