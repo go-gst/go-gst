@@ -94,7 +94,13 @@ func (s *Structure) UnmarshalInto(data interface{}) error {
 }
 
 // Instance returns the native GstStructure instance.
-func (s *Structure) Instance() *C.GstStructure { return C.toGstStructure(s.ptr) }
+func (s *Structure) Instance() *C.GstStructure {
+	if s == nil {
+		return nil
+	}
+
+	return C.toGstStructure(s.ptr)
+}
 
 // Free frees the memory for the underlying GstStructure.
 func (s *Structure) Free() { C.gst_structure_free(s.Instance()) }
