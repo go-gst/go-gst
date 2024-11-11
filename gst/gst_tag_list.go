@@ -70,7 +70,11 @@ func NewTagListFromString(tags string) *TagList {
 func (t *TagList) Instance() *C.GstTagList { return C.toGstTagList(unsafe.Pointer(t.ptr)) }
 
 // String implements a stringer on the TagList and serializes it to a string.
-func (t *TagList) String() string { return C.GoString(C.gst_tag_list_to_string(t.Instance())) }
+func (t *TagList) String() string {
+	cStr := C.gst_tag_list_to_string(t.Instance())
+	defer C.g_free((C.gpointer)(unsafe.Pointer(cStr)))
+	return C.GoString(cStr)
+}
 
 // Ref increases the ref count on this TagList by one.
 func (t *TagList) Ref() *TagList { return wrapTagList(C.gst_tag_list_ref(t.Instance())) }
