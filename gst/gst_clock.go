@@ -167,6 +167,17 @@ func FromGstClockUnsafeFull(clock unsafe.Pointer) *Clock {
 	return wrapClock(glib.TransferFull(clock))
 }
 
+// ToGstClock wraps the given glib.Object or gst.Object in a Clock instance.
+func ToGstClock(obj interface{}) *Clock {
+	switch obj := obj.(type) {
+	case *Object:
+		return &Clock{Object: obj}
+	case *glib.Object:
+		return wrapClock(obj)
+	}
+	return nil
+}
+
 // Instance returns the underlying GstClock instance.
 func (c *Clock) Instance() *C.GstClock { return C.toGstClock(c.Unsafe()) }
 
