@@ -197,6 +197,9 @@ type PadProbeCallback func(*Pad, *PadProbeInfo) PadProbeReturn
 // A probe ID is returned that can be used to remove the probe.
 func (p *Pad) AddProbe(mask PadProbeType, f PadProbeCallback) uint64 {
 	ptr := gopointer.Save(f)
+
+	padprobesProfile.Add(ptr, 1)
+
 	ret := C.gst_pad_add_probe(
 		p.Instance(),
 		C.GstPadProbeType(mask),
