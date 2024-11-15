@@ -189,6 +189,8 @@ func goGDestroyNotifyFunc(ptr C.gpointer) {
 //export goGDestroyNotifyFuncNoRun
 func goGDestroyNotifyFuncNoRun(ptr C.gpointer) {
 	gopointer.Unref(unsafe.Pointer(ptr))
+
+	padprobesProfile.Remove(unsafe.Pointer(ptr)) // no-op if it wasn't a pad probe
 }
 
 //export goCapsMapFunc
