@@ -83,7 +83,13 @@ func (s *Structure) UnmarshalInto(data interface{}) error {
 	nVal := rv.Elem()
 	for i := 0; i < val.NumField(); i++ {
 		nvField := nVal.Field(i)
-		fieldName := val.Type().Field(i).Name
+
+		fieldName, ok := val.Type().Field(i).Tag.Lookup("gst")
+
+		if !ok {
+			fieldName = val.Type().Field(i).Name
+		}
+
 		val, err := s.GetValue(fieldName)
 		if err == nil {
 			nvField.Set(reflect.ValueOf(val))
