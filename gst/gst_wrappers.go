@@ -258,9 +258,16 @@ func marshalValueArray(p unsafe.Pointer) (interface{}, error) {
 }
 
 func marshalValueList(p unsafe.Pointer) (interface{}, error) {
-	val := glib.ValueFromNative(p)
-	out := ValueListValue(*glib.ValueFromNative(unsafe.Pointer(val)))
-	return &out, nil
+	value := glib.ValueFromNative(p)
+
+	// must copy since we don't own the gvalue passed into this marshal
+	out, err := value.Copy()
+
+	if err != nil {
+		return nil, err
+	}
+
+	return (*ValueListValue)(out), nil
 }
 
 func marshalInt64Range(p unsafe.Pointer) (interface{}, error) {
