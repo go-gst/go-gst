@@ -17,6 +17,7 @@ import (
 	"fmt"
 	"os"
 	"reflect"
+	"runtime"
 	"sync"
 	"unsafe"
 
@@ -35,7 +36,7 @@ func NewStructure(name string) *Structure {
 	cName := C.CString(name)
 	defer C.free(unsafe.Pointer(cName))
 	structure := C.gst_structure_new_empty(cName)
-	return wrapStructure(structure)
+	return structureFromGlibFull(structure)
 }
 
 // NewStructureFromString builds a new GstStructure from the given string.
@@ -46,7 +47,7 @@ func NewStructureFromString(stStr string) *Structure {
 	if structure == nil {
 		return nil
 	}
-	return wrapStructure(structure)
+	return structureFromGlibFull(structure)
 }
 
 // MarshalStructure will convert the given go struct into a GstStructure. Currently nested
@@ -190,17 +191,29 @@ var TypeStructure = glib.Type(C.gst_structure_get_type())
 
 var _ glib.ValueTransformer = &Structure{}
 
+func (s *Structure) copy() *C.GstStructure {
+	return C.gst_structure_copy(s.Instance())
+}
+
 // ToGValue implements a glib.ValueTransformer
 func (s *Structure) ToGValue() (*glib.Value, error) {
 	val, err := glib.ValueInit(TypeStructure)
 	if err != nil {
 		return nil, err
 	}
+
 	C.gst_value_set_structure(
 		(*C.GValue)(unsafe.Pointer(val.GValue)),
-		s.Instance(),
+		s.copy(),
 	)
 	return val, nil
+}
+
+// marshalStructure is used to extract the GstStructure from a GValue.
+func marshalStructure(p unsafe.Pointer) (interface{}, error) {
+	c := C.gst_value_get_structure(toGValue(p))
+	obj := (*C.GstStructure)(unsafe.Pointer(c))
+	return structureFromGlibNone(obj), nil
 }
 
 func wrapStructure(st *C.GstStructure) *Structure {
@@ -208,4 +221,24 @@ func wrapStructure(st *C.GstStructure) *Structure {
 		ptr:   unsafe.Pointer(st),
 		gType: glib.Type(st._type),
 	}
+}
+
+// structureFromGlibNone wraps a *C.GstStructure in a Structure after copying it.
+// this is needed when the structure is returned from a function that does not transfer ownership.
+func structureFromGlibNone(st *C.GstStructure) *Structure {
+	copy := C.gst_structure_copy(st)
+
+	return structureFromGlibFull(copy)
+}
+
+// structureFromGlibFull wraps a *C.GstStructure in a Structure. This is used when the structure
+// is returned by a function that transfers ownership to the caller.
+func structureFromGlibFull(st *C.GstStructure) *Structure {
+	s := wrapStructure(st)
+
+	runtime.SetFinalizer(s, func(s *Structure) {
+		s.Free()
+	})
+
+	return s
 }
