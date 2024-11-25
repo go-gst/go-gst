@@ -14,7 +14,7 @@ func (cb *ControlBinding) Instance() *C.GstControlBinding {
 	return C.toGstControlBinding(cb.Unsafe())
 }
 
-type DirectControlBinding struct{ ControlBinding }
+type DirectControlBinding struct{ *ControlBinding }
 
 func NewDirectControlBinding(obj *Object, prop string, csource *InterpolationControlSource) *DirectControlBinding {
 	cprop := C.CString(prop)
@@ -23,7 +23,7 @@ func NewDirectControlBinding(obj *Object, prop string, csource *InterpolationCon
 	cbinding := C.gst_direct_control_binding_new(obj.Instance(), cprop, csource.Instance())
 
 	return &DirectControlBinding{
-		ControlBinding: ControlBinding{
+		ControlBinding: &ControlBinding{
 			Object: wrapObject(glib.TransferNone(unsafe.Pointer(cbinding))),
 		},
 	}
