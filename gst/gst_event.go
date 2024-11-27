@@ -285,6 +285,8 @@ func (e *Event) ParseStreamGroupDone() uint {
 // ParseStreamStart parses a stream-id event and store the result in the given stream_id location.
 func (e *Event) ParseStreamStart() string {
 	idPtr := C.malloc(C.sizeof_char * 1024)
+	defer C.free(idPtr)
+
 	C.gst_event_parse_stream_start(e.Instance(), (**C.gchar)(unsafe.Pointer(&idPtr)))
 	return C.GoString((*C.char)(unsafe.Pointer(idPtr)))
 }
