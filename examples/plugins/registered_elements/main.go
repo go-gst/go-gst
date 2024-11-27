@@ -16,6 +16,12 @@ import (
 	"github.com/go-gst/go-gst/gst"
 )
 
+// #include <stdio.h>
+// #include <stdlib.h>
+//
+// void __lsan_do_leak_check(void);
+import "C"
+
 func run(ctx context.Context) error {
 	ctx, cancel := signal.NotifyContext(ctx, os.Interrupt)
 	defer cancel()
@@ -83,13 +89,9 @@ func run(ctx context.Context) error {
 
 	go mainloop.Run()
 
-	go func() {
-		<-ctx.Done()
-
-		mainloop.Quit()
-	}()
-
 	<-ctx.Done()
+
+	mainloop.Quit()
 
 	pipeline.BlockSetState(gst.StateNull)
 
@@ -110,6 +112,18 @@ func main() {
 	runtime.GC()
 	runtime.GC()
 	runtime.GC()
+	runtime.GC()
+	runtime.GC()
+	runtime.GC()
+	runtime.GC()
+	runtime.GC()
+	runtime.GC()
+	runtime.GC()
+	runtime.GC()
+	runtime.GC()
+	runtime.GC()
+
+	C.__lsan_do_leak_check()
 
 	prof := pprof.Lookup("go-glib-reffed-objects")
 

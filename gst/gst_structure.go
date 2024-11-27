@@ -22,7 +22,7 @@ import (
 	"unsafe"
 
 	"github.com/go-gst/go-glib/glib"
-	gopointer "github.com/mattn/go-pointer"
+	gopointer "github.com/go-gst/go-pointer"
 )
 
 // Structure is a go implementation of a C GstStructure.
@@ -212,8 +212,7 @@ func (s *Structure) ToGValue() (*glib.Value, error) {
 // marshalStructure is used to extract the GstStructure from a GValue.
 func marshalStructure(p unsafe.Pointer) (interface{}, error) {
 	c := C.gst_value_get_structure(toGValue(p))
-	obj := (*C.GstStructure)(unsafe.Pointer(c))
-	return structureFromGlibNone(obj), nil
+	return structureFromGlibNone(c), nil
 }
 
 func wrapStructure(st *C.GstStructure) *Structure {

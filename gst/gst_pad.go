@@ -81,10 +81,11 @@ import "C"
 
 import (
 	"errors"
+	"runtime"
 	"unsafe"
 
 	"github.com/go-gst/go-glib/glib"
-	gopointer "github.com/mattn/go-pointer"
+	gopointer "github.com/go-gst/go-pointer"
 )
 
 // PadFuncMap is an type of map for registering callbacks to a pad instance.
@@ -1138,7 +1139,13 @@ func (p *PadProbeInfo) GetEvent() *Event {
 	if ev == nil {
 		return nil
 	}
-	return wrapEvent(ev)
+
+	event := wrapEvent(ev)
+
+	event.Ref()
+	runtime.SetFinalizer(event, (*Event).Unref)
+
+	return event
 }
 
 // GetQuery returns the query, if any, inside this probe info.
