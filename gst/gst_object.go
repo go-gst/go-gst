@@ -98,6 +98,10 @@ func (o *Object) AddControlBinding(binding *ControlBinding) {
 	C.gst_object_add_control_binding(o.Instance(), binding.Instance())
 }
 
+func (o *Object) RemoveControlBinding(binding *ControlBinding) {
+	C.gst_object_remove_control_binding(o.Instance(), binding.Instance())
+}
+
 // TODO: Consider wrapping GstObject GST_OBJECT_LOCK/GST_OBJECT_UNLOCK functionality
 // due to following flags related functionality is based on a regular uint32 field
 // and is not considered thread safe

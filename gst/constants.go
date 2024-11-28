@@ -456,11 +456,11 @@ type PadProbeReturn int
 
 // Type castings of ProbeReturns
 const (
-	PadProbeDrop      PadProbeReturn = C.GST_PAD_PROBE_DROP    // (0) – drop data in data probes. For push mode this means that the data item is not sent downstream. For pull mode, it means that the data item is not passed upstream. In both cases, no other probes are called for this item and GST_FLOW_OK or TRUE is returned to the caller.
-	PadProbeOK        PadProbeReturn = C.GST_PAD_PROBE_OK      // (1) – normal probe return value. This leaves the probe in place, and defers decisions about dropping or passing data to other probes, if any. If there are no other probes, the default behavior for the probe type applies ('block' for blocking probes, and 'pass' for non-blocking probes).
-	PadProbeRemove    PadProbeReturn = C.GST_PAD_PROBE_REMOVE  // (2) – remove this probe.
-	PadProbePass      PadProbeReturn = C.GST_PAD_PROBE_PASS    // (3) – pass the data item in the block probe and block on the next item.
-	PadProbeUnhandled PadProbeReturn = C.GST_PAD_PROBE_HANDLED // (4) – Data has been handled in the probe and will not be forwarded further. For events and buffers this is the same behavior as GST_PAD_PROBE_DROP (except that in this case you need to unref the buffer or event yourself). For queries it will also return TRUE to the caller. The probe can also modify the GstFlowReturn value by using the GST_PAD_PROBE_INFO_FLOW_RETURN() accessor. Note that the resulting query must contain valid entries. Since: 1.6
+	PadProbeDrop    PadProbeReturn = C.GST_PAD_PROBE_DROP    // (0) – drop data in data probes. For push mode this means that the data item is not sent downstream. For pull mode, it means that the data item is not passed upstream. In both cases, no other probes are called for this item and GST_FLOW_OK or TRUE is returned to the caller.
+	PadProbeOK      PadProbeReturn = C.GST_PAD_PROBE_OK      // (1) – normal probe return value. This leaves the probe in place, and defers decisions about dropping or passing data to other probes, if any. If there are no other probes, the default behavior for the probe type applies ('block' for blocking probes, and 'pass' for non-blocking probes).
+	PadProbeRemove  PadProbeReturn = C.GST_PAD_PROBE_REMOVE  // (2) – remove this probe.
+	PadProbePass    PadProbeReturn = C.GST_PAD_PROBE_PASS    // (3) – pass the data item in the block probe and block on the next item.
+	PadProbeHandled PadProbeReturn = C.GST_PAD_PROBE_HANDLED // (4) – Data has been handled in the probe and will not be forwarded further. For events and buffers this is the same behavior as GST_PAD_PROBE_DROP (except that in this case you need to unref the buffer or event yourself). For queries it will also return TRUE to the caller. The probe can also modify the GstFlowReturn value by using the GST_PAD_PROBE_INFO_FLOW_RETURN() accessor. Note that the resulting query must contain valid entries. Since: 1.6
 )
 
 // PadProbeType casts GstPadProbeType

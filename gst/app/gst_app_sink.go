@@ -21,7 +21,7 @@ import (
 	"errors"
 	"unsafe"
 
-	gopointer "github.com/mattn/go-pointer"
+	gopointer "github.com/go-gst/go-pointer"
 
 	"github.com/go-gst/go-gst/gst"
 	"github.com/go-gst/go-gst/gst/base"

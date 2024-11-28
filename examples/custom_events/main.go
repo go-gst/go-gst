@@ -49,14 +49,14 @@ func createPipeline() (*gst.Pipeline, error) {
 
 		// Extra check to make sure it is the right type.
 		if ev.Type() != gst.EventTypeCustomDownstream {
-			return gst.PadProbeUnhandled
+			return gst.PadProbeHandled
 		}
 
 		// Unmarshal the event into our custom one
 		var customEvent ExampleCustomEvent
 		if err := ev.GetStructure().UnmarshalInto(&customEvent); err != nil {
 			fmt.Println("Could not parse the custom event!")
-			return gst.PadProbeUnhandled
+			return gst.PadProbeHandled
 		}
 
 		// Log and act accordingly
