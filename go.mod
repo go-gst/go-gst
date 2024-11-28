@@ -3,7 +3,7 @@ module github.com/go-gst/go-gst
 go 1.23.2
 
 require (
-	github.com/go-gst/go-glib v1.4.1-0.20241127164645-1aa7cfba8dcf
+	github.com/go-gst/go-glib v1.4.1-0.20241127230005-4c406409de32
 	github.com/go-gst/go-pointer v0.0.0-20241127163939-ba766f075b4c
 )
 
