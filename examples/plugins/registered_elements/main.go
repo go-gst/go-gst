@@ -6,7 +6,6 @@ import (
 	"os"
 	"os/signal"
 	"path/filepath"
-	"runtime"
 	"runtime/pprof"
 
 	"github.com/go-gst/go-glib/glib"
@@ -15,12 +14,6 @@ import (
 	"github.com/go-gst/go-gst/examples/plugins/registered_elements/internal/customsrc"
 	"github.com/go-gst/go-gst/gst"
 )
-
-// #include <stdio.h>
-// #include <stdlib.h>
-//
-// void __lsan_do_leak_check(void);
-import "C"
 
 func run(ctx context.Context) error {
 	ctx, cancel := signal.NotifyContext(ctx, os.Interrupt)
@@ -109,21 +102,8 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 	}
 
-	runtime.GC()
-	runtime.GC()
-	runtime.GC()
-	runtime.GC()
-	runtime.GC()
-	runtime.GC()
-	runtime.GC()
-	runtime.GC()
-	runtime.GC()
-	runtime.GC()
-	runtime.GC()
-	runtime.GC()
-	runtime.GC()
-
-	C.__lsan_do_leak_check()
+	// this is very helpful to find memory leaks, see github.com/go-gst/asanutils
+	// asanutils.CheckLeaks()
 
 	prof := pprof.Lookup("go-glib-reffed-objects")
 
