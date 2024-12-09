@@ -16,12 +16,14 @@ import (
 func goGstPushSrcAlloc(src *C.GstPushSrc, buf **C.GstBuffer) C.GstFlowReturn {
 	var ret gst.FlowReturn
 	var outbuf *gst.Buffer
-	glib.WithPointerTransferOriginal(unsafe.Pointer(src), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
-		iface := goObject.(interface {
-			Alloc(*GstPushSrc) (gst.FlowReturn, *gst.Buffer)
-		})
-		ret, outbuf = iface.Alloc(ToGstPushSrc(gObject))
+	goPushSrc := ToGstPushSrc(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(src))})
+	subclass := glib.FromObjectUnsafePrivate(unsafe.Pointer(src))
+
+	iface := subclass.(interface {
+		Alloc(*GstPushSrc) (gst.FlowReturn, *gst.Buffer)
 	})
+	ret, outbuf = iface.Alloc(goPushSrc)
+
 	if outbuf != nil {
 		C.memcpy(unsafe.Pointer(*buf), unsafe.Pointer(outbuf.Instance()), C.sizeof_GstBuffer)
 	}
@@ -32,12 +34,14 @@ func goGstPushSrcAlloc(src *C.GstPushSrc, buf **C.GstBuffer) C.GstFlowReturn {
 func goGstPushSrcCreate(src *C.GstPushSrc, buf **C.GstBuffer) C.GstFlowReturn {
 	var ret gst.FlowReturn
 	var outbuf *gst.Buffer
-	glib.WithPointerTransferOriginal(unsafe.Pointer(src), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
-		iface := goObject.(interface {
-			Create(*GstPushSrc) (gst.FlowReturn, *gst.Buffer)
-		})
-		ret, outbuf = iface.Create(ToGstPushSrc(gObject))
+	goPushSrc := ToGstPushSrc(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(src))})
+	subclass := glib.FromObjectUnsafePrivate(unsafe.Pointer(src))
+
+	iface := subclass.(interface {
+		Create(*GstPushSrc) (gst.FlowReturn, *gst.Buffer)
 	})
+	ret, outbuf = iface.Create(goPushSrc)
+
 	if outbuf != nil {
 		C.memcpy(unsafe.Pointer(*buf), unsafe.Pointer(outbuf.Instance()), C.sizeof_GstBuffer)
 	}
@@ -47,11 +51,13 @@ func goGstPushSrcCreate(src *C.GstPushSrc, buf **C.GstBuffer) C.GstFlowReturn {
 //export goGstPushSrcFill
 func goGstPushSrcFill(src *C.GstPushSrc, buf *C.GstBuffer) C.GstFlowReturn {
 	var ret gst.FlowReturn
-	glib.WithPointerTransferOriginal(unsafe.Pointer(src), func(gObject *glib.Object, goObject glib.GoObjectSubclass) {
-		iface := goObject.(interface {
-			Fill(*GstPushSrc, *gst.Buffer) gst.FlowReturn
-		})
-		ret = iface.Fill(ToGstPushSrc(gObject), gst.ToGstBuffer(unsafe.Pointer(buf)))
+	goPushSrc := ToGstPushSrc(&glib.Object{GObject: glib.ToGObject(unsafe.Pointer(src))})
+	subclass := glib.FromObjectUnsafePrivate(unsafe.Pointer(src))
+
+	iface := subclass.(interface {
+		Fill(*GstPushSrc, *gst.Buffer) gst.FlowReturn
 	})
+	ret = iface.Fill(goPushSrc, gst.ToGstBuffer(unsafe.Pointer(buf)))
+
 	return C.GstFlowReturn(ret)
 }

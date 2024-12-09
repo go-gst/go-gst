@@ -64,7 +64,8 @@ func goNeedDataCb(src *C.GstAppSrc, length C.guint, userData C.gpointer) {
 		return
 	}
 	gosrc := wrapCSource(src)
-	gosrc.WithTransferOriginal(func() { cbs.NeedDataFunc(gosrc, uint(length)) })
+
+	cbs.NeedDataFunc(gosrc, uint(length))
 }
 
 //export goEnoughDataDb
@@ -77,7 +78,7 @@ func goEnoughDataDb(src *C.GstAppSrc, userData C.gpointer) {
 		return
 	}
 	gosrc := wrapCSource(src)
-	gosrc.WithTransferOriginal(func() { cbs.EnoughDataFunc(gosrc) })
+	cbs.EnoughDataFunc(gosrc)
 }
 
 //export goSeekDataCb
@@ -91,7 +92,7 @@ func goSeekDataCb(src *C.GstAppSrc, offset C.guint64, userData C.gpointer) C.gbo
 	}
 	gosrc := wrapCSource(src)
 	var ret C.gboolean
-	gosrc.WithTransferOriginal(func() { ret = gboolean(cbs.SeekDataFunc(gosrc, uint64(offset))) })
+	ret = gboolean(cbs.SeekDataFunc(gosrc, uint64(offset)))
 	return ret
 }
 

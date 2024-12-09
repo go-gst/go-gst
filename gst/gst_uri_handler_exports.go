@@ -33,9 +33,9 @@ func goURIHdlrGetProtocols(gtype C.GType) **C.gchar {
 //export goURIHdlrGetURI
 func goURIHdlrGetURI(hdlr *C.GstURIHandler) *C.gchar {
 	var uri string
-	glib.WithPointerTransferOriginal(unsafe.Pointer(hdlr), func(gobj *glib.Object, obj glib.GoObjectSubclass) {
-		uri = obj.(URIHandler).GetURI()
-	})
+	subclass := glib.FromObjectUnsafePrivate(unsafe.Pointer(hdlr))
+	uri = subclass.(URIHandler).GetURI()
+
 	if uri == "" {
 		return nil
 	}
@@ -46,9 +46,10 @@ func goURIHdlrGetURI(hdlr *C.GstURIHandler) *C.gchar {
 func goURIHdlrSetURI(hdlr *C.GstURIHandler, uri *C.gchar, gerr **C.GError) C.gboolean {
 	var ok bool
 	var err error
-	glib.WithPointerTransferOriginal(unsafe.Pointer(hdlr), func(gobj *glib.Object, obj glib.GoObjectSubclass) {
-		ok, err = obj.(URIHandler).SetURI(C.GoString(uri))
-	})
+	subclass := glib.FromObjectUnsafePrivate(unsafe.Pointer(hdlr))
+
+	ok, err = subclass.(URIHandler).SetURI(C.GoString(uri))
+
 	if err != nil {
 		errMsg := C.CString(err.Error())
 		defer C.free(unsafe.Pointer(errMsg))
