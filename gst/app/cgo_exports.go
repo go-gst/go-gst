@@ -7,7 +7,7 @@ import (
 
 	"github.com/go-gst/go-glib/glib"
 	"github.com/go-gst/go-gst/gst"
-	gopointer "github.com/mattn/go-pointer"
+	gopointer "github.com/go-gst/go-pointer"
 )
 
 func getSinkCbsFromPtr(userData C.gpointer) *SinkCallbacks {
@@ -64,7 +64,8 @@ func goNeedDataCb(src *C.GstAppSrc, length C.guint, userData C.gpointer) {
 		return
 	}
 	gosrc := wrapCSource(src)
-	gosrc.WithTransferOriginal(func() { cbs.NeedDataFunc(gosrc, uint(length)) })
+
+	cbs.NeedDataFunc(gosrc, uint(length))
 }
 
 //export goEnoughDataDb
@@ -77,7 +78,7 @@ func goEnoughDataDb(src *C.GstAppSrc, userData C.gpointer) {
 		return
 	}
 	gosrc := wrapCSource(src)
-	gosrc.WithTransferOriginal(func() { cbs.EnoughDataFunc(gosrc) })
+	cbs.EnoughDataFunc(gosrc)
 }
 
 //export goSeekDataCb
@@ -90,9 +91,8 @@ func goSeekDataCb(src *C.GstAppSrc, offset C.guint64, userData C.gpointer) C.gbo
 		return gboolean(true)
 	}
 	gosrc := wrapCSource(src)
-	var ret C.gboolean
-	gosrc.WithTransferOriginal(func() { ret = gboolean(cbs.SeekDataFunc(gosrc, uint64(offset))) })
-	return ret
+
+	return gboolean(cbs.SeekDataFunc(gosrc, uint64(offset)))
 }
 
 //export goSinkEOSCb
@@ -105,7 +105,8 @@ func goSinkEOSCb(sink *C.GstAppSink, userData C.gpointer) {
 		return
 	}
 	gosink := wrapCSink(sink)
-	gosink.WithTransferOriginal(func() { cbs.EOSFunc(gosink) })
+
+	cbs.EOSFunc(gosink)
 }
 
 //export goSinkNewPrerollCb
@@ -118,8 +119,9 @@ func goSinkNewPrerollCb(sink *C.GstAppSink, userData C.gpointer) C.GstFlowReturn
 		return C.GstFlowReturn(gst.FlowOK)
 	}
 	gosink := wrapCSink(sink)
-	var ret C.GstFlowReturn
-	gosink.WithTransferOriginal(func() { ret = C.GstFlowReturn(cbs.NewPrerollFunc(gosink)) })
+
+	ret := C.GstFlowReturn(cbs.NewPrerollFunc(gosink))
+
 	return ret
 }
 
@@ -133,8 +135,9 @@ func goSinkNewSampleCb(sink *C.GstAppSink, userData C.gpointer) C.GstFlowReturn 
 		return C.GstFlowReturn(gst.FlowOK)
 	}
 	gosink := wrapCSink(sink)
-	var ret C.GstFlowReturn
-	gosink.WithTransferOriginal(func() { ret = C.GstFlowReturn(cbs.NewSampleFunc(gosink)) })
+
+	ret := C.GstFlowReturn(cbs.NewSampleFunc(gosink))
+
 	return ret
 }
 

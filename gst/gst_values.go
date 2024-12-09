@@ -161,16 +161,6 @@ func ValueGetCapsFeatures(value *glib.Value) *CapsFeatures {
 	return &CapsFeatures{native: feats}
 }
 
-// ValueGetStructure extracts the GstStructure from a glib.Value, or nil
-// if one does not exist.
-func ValueGetStructure(gval *glib.Value) *Structure {
-	st := C.gst_value_get_structure((*C.GValue)(unsafe.Pointer(gval.GValue)))
-	if st == nil {
-		return nil
-	}
-	return wrapStructure(st)
-}
-
 // ValueIntersect calculates the intersection of two values. If the values have a non-empty intersection,
 // the value representing the intersection isreturned. Otherwise this function returns false. This function
 // can also return false for any allocation errors.
@@ -644,8 +634,7 @@ func ValueList(ss []interface{}) *ValueListValue {
 			(*C.GValue)(unsafe.Pointer(val.GValue)),
 		)
 	}
-	out := ValueListValue(*v)
-	return &out
+	return (*ValueListValue)(v)
 }
 
 // Size returns the size of the list.
@@ -682,8 +671,8 @@ func (v *ValueListValue) Concat(value *ValueListValue) *ValueListValue {
 		(*C.GValue)(unsafe.Pointer(v.GValue)),
 		(*C.GValue)(unsafe.Pointer(value.GValue)),
 	)
-	o := ValueListValue(*out)
-	return &o
+
+	return (*ValueListValue)(out)
 }
 
 // Merge merges copies of value into this list. Values that are not of type TypeValueList are treated as
@@ -701,12 +690,12 @@ func (v *ValueListValue) Merge(value *ValueListValue) *ValueListValue {
 		(*C.GValue)(unsafe.Pointer(v.GValue)),
 		(*C.GValue)(unsafe.Pointer(value.GValue)),
 	)
-	o := ValueListValue(*out)
-	return &o
+
+	return (*ValueListValue)(out)
 }
 
 // ToGValue implements a glib.ValueTransformer.
 func (v *ValueListValue) ToGValue() (*glib.Value, error) {
-	out := glib.Value(*v)
-	return &out, nil
+	val := (*glib.Value)(v)
+	return val.Copy()
 }

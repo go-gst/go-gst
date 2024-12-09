@@ -6,7 +6,6 @@ import (
 	"os"
 	"os/signal"
 	"path/filepath"
-	"runtime"
 	"runtime/pprof"
 
 	"github.com/go-gst/go-glib/glib"
@@ -83,13 +82,9 @@ func run(ctx context.Context) error {
 
 	go mainloop.Run()
 
-	go func() {
-		<-ctx.Done()
-
-		mainloop.Quit()
-	}()
-
 	<-ctx.Done()
+
+	mainloop.Quit()
 
 	pipeline.BlockSetState(gst.StateNull)
 
@@ -107,9 +102,8 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 	}
 
-	runtime.GC()
-	runtime.GC()
-	runtime.GC()
+	// this is very helpful to find memory leaks, see github.com/go-gst/asanutils
+	// asanutils.CheckLeaks()
 
 	prof := pprof.Lookup("go-glib-reffed-objects")
 

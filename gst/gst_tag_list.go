@@ -19,7 +19,7 @@ import (
 	"unsafe"
 
 	"github.com/go-gst/go-glib/glib"
-	gopointer "github.com/mattn/go-pointer"
+	gopointer "github.com/go-gst/go-pointer"
 )
 
 // TagList is a go wrapper around a GstTagList. For now, until the rest of the methods are

@@ -18,6 +18,22 @@ setGstBaseTransformTransformIPOnPassthrough (GstBaseTransform * obj, gboolean en
 	GstBaseTransformClass * klass = toGstBaseTransformClass(g_type_class_peek_parent(this_class));
 	klass->transform_ip_on_passthrough = enabled;
 }
+
+gboolean
+gstBaseTransformParentSrcEvent (GstBaseTransform * obj, GstEvent * event)
+{
+	GObjectClass * this_class = G_OBJECT_GET_CLASS(G_OBJECT(obj));
+	GstBaseTransformClass * parent = toGstBaseTransformClass(g_type_class_peek_parent(this_class));
+	return parent->src_event(obj, event);
+}
+
+gboolean
+gstBaseTransformParentSinkEvent (GstBaseTransform * obj, GstEvent * event)
+{
+	GObjectClass * this_class = G_OBJECT_GET_CLASS(G_OBJECT(obj));
+	GstBaseTransformClass * parent = toGstBaseTransformClass(g_type_class_peek_parent(this_class));
+	return parent->sink_event(obj, event);
+}
 */
 import "C"
 
@@ -195,4 +211,94 @@ func (g *GstBaseTransform) UpdateSrcCaps(caps *gst.Caps) {
 		g.Instance(),
 		(*C.GstCaps)(unsafe.Pointer(caps.Instance())),
 	)
+}
+
+func (g *GstBaseTransform) ParentAcceptCaps(direction gst.PadDirection, caps *gst.Caps) bool {
+	panic("not implemented")
+}
+
+func (g *GstBaseTransform) ParentBeforeTransform(buffer *gst.Buffer) {
+	panic("not implemented")
+}
+
+func (g *GstBaseTransform) ParentCopyMetadata(input, output *gst.Buffer) bool {
+	panic("not implemented")
+}
+
+func (g *GstBaseTransform) ParentDecideAllocation(query *gst.Query) bool {
+	panic("not implemented")
+}
+
+func (g *GstBaseTransform) ParentFilterMeta(query *gst.Query, api glib.Type, params *gst.Structure) bool {
+	panic("not implemented")
+}
+
+func (g *GstBaseTransform) ParentFixateCaps(directon gst.PadDirection, caps *gst.Caps, othercaps *gst.Caps) *gst.Caps {
+	panic("not implemented")
+}
+
+func (g *GstBaseTransform) ParentGenerateOutput(gst.FlowReturn, *gst.Buffer) {
+	panic("not implemented")
+}
+
+func (g *GstBaseTransform) ParentGetUnitSize(caps *gst.Caps) (ok bool, size int64) {
+	panic("not implemented")
+}
+
+func (g *GstBaseTransform) ParentPrepareOutputBuffer(input *gst.Buffer) (gst.FlowReturn, *gst.Buffer) {
+	panic("not implemented")
+}
+
+func (g *GstBaseTransform) ParentProposeAllocation(decideQuery, query *gst.Query) bool {
+	panic("not implemented")
+}
+
+func (g *GstBaseTransform) ParentQuery(direction gst.PadDirection, query *gst.Query) bool {
+	panic("not implemented")
+}
+
+func (g *GstBaseTransform) ParentSetCaps(incaps, outcaps *gst.Caps) bool {
+	panic("not implemented")
+}
+
+// ParentSrcEvent chains the event up to the parent class
+func (g *GstBaseTransform) ParentSrcEvent(event *gst.Event) bool {
+	return gobool(C.gstBaseTransformParentSrcEvent(g.Instance(), (*C.GstEvent)(unsafe.Pointer(event.Instance()))))
+}
+
+// ParentSinkEvent chains the event up to the parent class
+func (g *GstBaseTransform) ParentSinkEvent(event *gst.Event) bool {
+	return gobool(C.gstBaseTransformParentSinkEvent(g.Instance(), (*C.GstEvent)(unsafe.Pointer(event.Instance()))))
+}
+
+func (g *GstBaseTransform) ParentStart(bool) {
+	panic("not implemented")
+}
+
+func (g *GstBaseTransform) ParentStop(bool) {
+	panic("not implemented")
+}
+
+func (g *GstBaseTransform) ParentSubmitInputBuffer(isDiscont bool, input *gst.Buffer) gst.FlowReturn {
+	panic("not implemented")
+}
+
+func (g *GstBaseTransform) ParentTransform(inbuf, outbuf *gst.Buffer) gst.FlowReturn {
+	panic("not implemented")
+}
+
+func (g *GstBaseTransform) ParentTransformCaps(direction gst.PadDirection, caps, filter *gst.Caps) *gst.Caps {
+	panic("not implemented")
+}
+
+func (g *GstBaseTransform) ParentTransformIP(buf *gst.Buffer) gst.FlowReturn {
+	panic("not implemented")
+}
+
+func (g *GstBaseTransform) ParentTransformMeta(outbuf *gst.Buffer, meta *gst.Meta, inbuf *gst.Buffer) bool {
+	panic("not implemented")
+}
+
+func (g *GstBaseTransform) ParentTransformSize(direction gst.PadDirection, caps *gst.Caps, size int64, othercaps *gst.Caps) (ok bool, othersize int64) {
+	panic("not implemented")
 }
