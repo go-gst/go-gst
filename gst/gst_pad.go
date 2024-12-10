@@ -289,9 +289,9 @@ func (p *Pad) CreateStreamID(parent *Element, streamID string) string {
 // The event is sent to all pads internally linked to pad. This function takes ownership of event.
 func (p *Pad) EventDefault(parent *Object, event *Event) bool {
 	if parent == nil {
-		return gobool(C.gst_pad_event_default(p.Instance(), nil, event.Ref().Instance()))
+		return gobool(C.gst_pad_event_default(p.Instance(), nil, event.Instance()))
 	}
-	return gobool(C.gst_pad_event_default(p.Instance(), parent.Instance(), event.Ref().Instance()))
+	return gobool(C.gst_pad_event_default(p.Instance(), parent.Instance(), event.Instance()))
 }
 
 // PadForwardFunc is called for all internally linked pads, see Pad Forward().
