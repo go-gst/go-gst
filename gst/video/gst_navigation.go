@@ -299,6 +299,17 @@ func (m *NavigationMessage) GetType() NavigationMessageType {
 	return NavigationMessageType(C.gst_navigation_message_get_type(m.instance()))
 }
 
+// GetEvent checks if the NavigationMessage is a NavigationMessageEvent, and if so,
+// returns a NavigationEvent extracted from this message. If NavigationMessage is not
+// a NavigationMessageEvent, this function returns nil
+func (m *NavigationMessage) GetEvent() *NavigationEvent {
+	var event *C.GstEvent = nil
+	if gobool(C.gst_navigation_message_parse_event(m.instance(), &event)) {
+		return ToNavigationEvent(gst.ToGstEvent(unsafe.Pointer(event)))
+	}
+	return nil
+}
+
 // NavigationQuery extends the Query from the core library and is used by elements
 // implementing the Navigation interface. You can wrap a query in this struct yourself,
 // but it is safer to use the ToNavigationQuery method first to check validity.
