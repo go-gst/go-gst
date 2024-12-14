@@ -226,6 +226,52 @@ func (e *NavigationEvent) GetType() NavigationEventType {
 	return NavigationEventType(C.gst_navigation_event_get_type(e.instance()))
 }
 
+// ParseKeyEvent tries to parse this event as key event
+func (e *NavigationEvent) ParseKeyEvent() (string, bool) {
+	var key *C.gchar
+	if gobool(C.gst_navigation_event_parse_key_event(e.instance(), &key)) {
+		return C.GoString(key), true
+	}
+	return "", false
+}
+
+// ParseMouseButtonEvent tries to parse this event as mouse button event
+func (e *NavigationEvent) ParseMouseButtonEvent() (int, float64, float64, bool) {
+	var button C.gint
+	var x, y C.gdouble
+	if gobool(C.gst_navigation_event_parse_mouse_button_event(e.instance(), &button, &x, &y)) {
+		return int(button), float64(x), float64(y), true
+	}
+	return 0, 0, 0, false
+}
+
+// ParseMouseMoveEvent tries to parse this event as mouse move event
+func (e *NavigationEvent) ParseMouseMoveEvent() (float64, float64, bool) {
+	var x, y C.gdouble
+	if gobool(C.gst_navigation_event_parse_mouse_move_event(e.instance(), &x, &y)) {
+		return float64(x), float64(y), true
+	}
+	return 0, 0, false
+}
+
+// ParseMouseScrollEvent tries to parse this event as mouse scroll event
+func (e *NavigationEvent) ParseMouseScrollEvent() (float64, float64, float64, float64, bool) {
+	var dx, dy, x, y C.gdouble
+	if gobool(C.gst_navigation_event_parse_mouse_scroll_event(e.instance(), &x, &y, &dx, &dy)) {
+		return float64(x), float64(y), float64(dx), float64(dy), true
+	}
+	return 0, 0, 0, 0, false
+}
+
+// ParseCommandEvent tries to parse this event as mouse scroll event
+func (e *NavigationEvent) ParseCommandEvent() (NavigationCommand, bool) {
+	var command C.GstNavigationCommand
+	if gobool(C.gst_navigation_event_parse_command(e.instance(), &command)) {
+		return NavigationCommand(command), true
+	}
+	return NavigationCommandInvalid, false
+}
+
 // instance returns the underlying GstEvent instance.
 func (e *NavigationEvent) instance() *C.GstEvent { return fromCoreEvent(e.Event) }
 
