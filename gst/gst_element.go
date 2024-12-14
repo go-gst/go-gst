@@ -130,6 +130,32 @@ func RegisterElement(plugin *Plugin, name string, rank Rank, elem glib.GoObjectS
 // Instance returns the underlying GstElement instance.
 func (e *Element) Instance() *C.GstElement { return C.toGstElement(e.Unsafe()) }
 
+// GetName returns the name of the element.
+func (e *Element) GetName() string {
+	return C.GoString((*C.char)(C.gst_element_get_name(e.Instance())))
+}
+
+// SetName sets the name of the element.
+func (e *Element) SetName(name string) {
+	cname := C.CString(name)
+	defer C.free(unsafe.Pointer(cname))
+	C.gst_element_set_name(e.Instance(), (*C.gchar)(cname))
+}
+
+// GetParent returns the parent of the element.
+func (e *Element) GetParent() *Element {
+	parent := C.gst_element_get_parent(e.Instance())
+	if parent == nil {
+		return nil
+	}
+	return FromGstElementUnsafeFull(unsafe.Pointer(parent))
+}
+
+// SetParent sets the parent of the element.
+func (e *Element) SetParent(parent *Element) {
+	C.gst_element_set_parent(e.Instance(), parent.Instance())
+}
+
 // AbortState aborts the state change of the element. This function is used by elements that do asynchronous state changes
 // and find out something is wrong.
 func (e *Element) AbortState() { C.gst_element_abort_state(e.Instance()) }
