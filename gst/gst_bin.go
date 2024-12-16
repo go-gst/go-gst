@@ -291,9 +291,12 @@ const (
 	DebugGraphShowCapsDetails      DebugGraphDetails = C.GST_DEBUG_GRAPH_SHOW_CAPS_DETAILS       // (2) – show caps-details on edges
 	DebugGraphShowNonDefaultParams DebugGraphDetails = C.GST_DEBUG_GRAPH_SHOW_NON_DEFAULT_PARAMS // (4) – show modified parameters on elements
 	DebugGraphShowStates           DebugGraphDetails = C.GST_DEBUG_GRAPH_SHOW_STATES             // (8) – show element states
-	DebugGraphShowPullParams       DebugGraphDetails = C.GST_DEBUG_GRAPH_SHOW_FULL_PARAMS        // (16) – show full element parameter values even if they are very long
+	DebugGraphShowFullParams       DebugGraphDetails = C.GST_DEBUG_GRAPH_SHOW_FULL_PARAMS        // (16) – show full element parameter values even if they are very long
 	DebugGraphShowAll              DebugGraphDetails = C.GST_DEBUG_GRAPH_SHOW_ALL                // (15) – show all the typical details that one might want
 	DebugGraphShowVerbose          DebugGraphDetails = C.GST_DEBUG_GRAPH_SHOW_VERBOSE            // (4294967295) – show all details regardless of how large or verbose they make the resulting output
+
+	// Deprecated: Use DebugGraphShowFullParams instead as this was just a typo.
+	DebugGraphShowPullParams = DebugGraphShowFullParams
 )
 
 // DebugBinToDotData will obtain the whole network of gstreamer elements that form the pipeline into a dot file.
