@@ -109,6 +109,14 @@ func NewBufferFromBytes(b []byte) *Buffer {
 	return FromGstBufferUnsafeFull(unsafe.Pointer(C.gst_buffer_new_wrapped_bytes(gbytes)))
 }
 
+// NewBufferFromBytesNoCopy returns a new buffer from the given byte slice.
+// This function is very dangerous, use it only when you know what you're doing
+func NewBufferFromBytesNoCopy(b []byte) *Buffer {
+	gbytes := C.g_bytes_new_static((C.gconstpointer)(unsafe.Pointer(&b[0])), C.gsize(len(b)))
+	defer C.g_bytes_unref(gbytes)
+	return FromGstBufferUnsafeFull(unsafe.Pointer(C.gst_buffer_new_wrapped_bytes(gbytes)))
+}
+
 // NewBufferFromReader returns a new buffer from the given io.Reader.
 func NewBufferFromReader(rdr io.Reader) (*Buffer, error) {
 	out, err := io.ReadAll(rdr)

@@ -13,6 +13,14 @@ type Sample struct {
 	sample *C.GstSample
 }
 
+// NewSample creates a new sample from buffer and caps
+func NewSample(buffer *Buffer, caps *Caps) *Sample {
+	s := wrapSample(C.gst_sample_new(buffer.Instance(), caps.Instance(), nil, nil))
+	s.Ref()
+	runtime.SetFinalizer(s, (*Sample).Unref)
+	return s
+}
+
 // FromGstSampleUnsafeNone wraps the pointer to the given C GstSample with the go type.
 // This is meant for internal usage and is exported for visibility to other packages.
 func FromGstSampleUnsafeNone(sample unsafe.Pointer) *Sample {
