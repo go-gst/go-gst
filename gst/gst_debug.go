@@ -38,6 +38,11 @@ void cgoResetLogFunction()
 	gst_debug_add_log_function(gst_debug_log_default, NULL, NULL);
 }
 
+void cgoDebugSetThresholdFromStringFunction(const gchar* args)
+{
+  gst_debug_set_threshold_from_string(args, TRUE);
+}
+
 */
 import "C"
 import (
@@ -248,4 +253,11 @@ func SetLogFunction(f LogFunction) {
 		C.cgoSetLogFunction()
 	}
 	customLogFunction = f
+}
+
+func DebugSetThresholdFromString(args string) {
+	_args := C.CString(args)
+	defer C.free(unsafe.Pointer(_args)) // Free C string memory
+
+	C.cgoDebugSetThresholdFromStringFunction(_args)
 }
