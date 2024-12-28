@@ -40,6 +40,11 @@ func (o *Object) GetName() string {
 	return C.GoString(cName)
 }
 
+// GetParent retrieves the parent of this object.
+func (o *Object) GetParent() *Object {
+	return wrapObject(glib.Take(unsafe.Pointer(C.gst_object_get_parent(o.Instance()))))
+}
+
 // GetValue retrieves the value for the given controlled property at the given timestamp.
 func (o *Object) GetValue(property string, timestamp ClockTime) *glib.Value {
 	cprop := C.CString(property)
@@ -49,6 +54,18 @@ func (o *Object) GetValue(property string, timestamp ClockTime) *glib.Value {
 		return nil
 	}
 	return glib.ValueFromNative(unsafe.Pointer(gval))
+}
+
+// SetName sets the name of this object.
+func (o *Object) SetName(name string) bool {
+	cName := C.CString(name)
+	defer C.free(unsafe.Pointer(cName))
+	return gobool(C.gst_object_set_name((*C.GstObject)(o.Instance()), (*C.gchar)(cName)))
+}
+
+// SetParent sets the parent of this object.
+func (o *Object) SetParent(parent *Object) bool {
+	return gobool(C.gst_object_set_parent(o.Instance(), parent.Instance()))
 }
 
 // SetArg sets the argument name to value on this object. Note that function silently returns
