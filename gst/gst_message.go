@@ -59,8 +59,13 @@ func (m *Message) Copy() *Message {
 	return FromGstMessageUnsafeFull(unsafe.Pointer(newNative))
 }
 
-// Source returns the source of the message.
+// Source returns name of the source of the message.
 func (m *Message) Source() string { return C.GoString(m.Instance().src.name) }
+
+// Source returns object of the source of the message.
+func (m *Message) SourceObject() *Object {
+	return wrapObject(glib.Take(unsafe.Pointer(m.Instance().src)))
+}
 
 // Type returns the MessageType of the message.
 func (m *Message) Type() MessageType {
