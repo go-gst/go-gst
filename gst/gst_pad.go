@@ -82,6 +82,7 @@ import "C"
 import (
 	"errors"
 	"runtime"
+	"sync"
 	"unsafe"
 
 	"github.com/go-gst/go-glib/glib"
@@ -90,18 +91,31 @@ import (
 
 // padFuncMap is an type of map for registering callbacks to a pad instance.
 // it provides an easy way to lookup the callback function for a pad
-type padFuncMap[F any] map[*C.GstPad]F
+type padFuncMap[F any] struct {
+	m map[*C.GstPad]F
+	l sync.RWMutex
+}
 
+func newPadFuncMap[F any]() *padFuncMap[F] {
+	return &padFuncMap[F]{
+		m: make(map[*C.GstPad]F),
+	}
+}
+
+// padFuncMapLike is needed to remove the registered func from an any value
 type padFuncMapLike interface {
 	removeFuncForPad(pad *C.GstPad)
 }
 
 // registerFuncForPad will register the func in the map, and return a Destroy notify that is needed to unref the
 // func in [goGstPadFuncDestroyNotify]
-func (p padFuncMap[F]) registerFuncForPad(pad *Pad, f F) *C.PadDestroyNotifyInfo {
+func (p *padFuncMap[F]) registerFuncForPad(pad *Pad, f F) *C.PadDestroyNotifyInfo {
+	p.l.Lock()
+	defer p.l.Unlock()
+
 	padPtr := (*C.GstPad)(pad.Unsafe())
 
-	p[padPtr] = f
+	p.m[padPtr] = f
 
 	notifyInfo := (*C.PadDestroyNotifyInfo)(C.malloc(C.sizeof_PadDestroyNotifyInfo))
 	notifyInfo.pad_ptr = padPtr
@@ -111,13 +125,19 @@ func (p padFuncMap[F]) registerFuncForPad(pad *Pad, f F) *C.PadDestroyNotifyInfo
 }
 
 // funcForPad will return the function in this map for the given pad.
-func (p padFuncMap[F]) funcForPad(pad *C.GstPad) F {
-	return p[pad]
+func (p *padFuncMap[F]) funcForPad(pad *C.GstPad) F {
+	p.l.RLock()
+	defer p.l.RUnlock()
+
+	return p.m[pad]
 }
 
 // removeFuncForPad will remove the function for the given pad from this map.
-func (p padFuncMap[F]) removeFuncForPad(pad *C.GstPad) {
-	delete(p, pad)
+func (p *padFuncMap[F]) removeFuncForPad(pad *C.GstPad) {
+	p.l.Lock()
+	defer p.l.Unlock()
+
+	delete(p.m, pad)
 }
 
 // Pad is a go representation of a GstPad
@@ -776,7 +796,7 @@ func (p *Pad) SendEvent(ev *Event) bool {
 // function to activate the pad in pull mode if they wish.
 type PadActivateFunc func(self *Pad, parent *Object) bool
 
-var padActivateFuncs padFuncMap[PadActivateFunc] = make(padFuncMap[PadActivateFunc])
+var padActivateFuncs = newPadFuncMap[PadActivateFunc]()
 
 // SetActivateFunction sets the given active function on the pad. The activate function will dispatch to ActivateMode to perform
 // the actual activation. Only makes sense to set on sink pads.
@@ -794,7 +814,7 @@ func (p *Pad) SetActivateFunction(f PadActivateFunc) {
 // PadActivateModeFunc is the prototype of the push and pull activate functions.
 type PadActivateModeFunc func(self *Pad, parent *Object, mode PadMode, active bool) bool
 
-var padActivateModeFuncs padFuncMap[PadActivateModeFunc] = make(padFuncMap[PadActivateModeFunc])
+var padActivateModeFuncs = newPadFuncMap[PadActivateModeFunc]()
 
 // SetActivateModeFunction sets the given activate_mode function for the pad. An activate_mode function prepares
 // the element for data passing.
@@ -829,7 +849,7 @@ func (p *Pad) SetActive(active bool) bool {
 // appropriate FlowReturn value.
 type PadChainFunc func(self *Pad, parent *Object, buffer *Buffer) FlowReturn
 
-var padChainFuncs padFuncMap[PadChainFunc] = make(padFuncMap[PadChainFunc])
+var padChainFuncs = newPadFuncMap[PadChainFunc]()
 
 // SetChainFunction sets the given chain function for the pad. The chain function is called to process an input buffer.
 func (p *Pad) SetChainFunction(f PadChainFunc) {
@@ -853,7 +873,7 @@ func (p *Pad) SetChainFunction(f PadChainFunc) {
 // appropriate FlowReturn value.
 type PadChainListFunc func(self *Pad, parent *Object, list *BufferList) FlowReturn
 
-var padChainListFuncs padFuncMap[PadChainListFunc] = make(padFuncMap[PadChainListFunc])
+var padChainListFuncs = newPadFuncMap[PadChainListFunc]()
 
 // SetChainListFunction sets the given chain function for the pad. The chain function is called to process an input buffer list.
 func (p *Pad) SetChainListFunction(f PadChainListFunc) {
@@ -878,7 +898,7 @@ func (p *Pad) SetElementPrivate(data interface{}) {
 // will take into account the last downstream flow return (from a pad push), in which case they can return it.
 type PadEventFullFunc func(self *Pad, parent *Object, event *Event) FlowReturn
 
-var padEventFullFuncs padFuncMap[PadEventFullFunc] = make(padFuncMap[PadEventFullFunc])
+var padEventFullFuncs = newPadFuncMap[PadEventFullFunc]()
 
 // SetEventFullFunction sets the given event handler for the pad.
 func (p *Pad) SetEventFullFunction(f PadEventFullFunc) {
@@ -895,7 +915,7 @@ func (p *Pad) SetEventFullFunction(f PadEventFullFunc) {
 // PadEventFunc is the function signature to handle an event for the pad
 type PadEventFunc func(self *Pad, parent *Object, event *Event) bool
 
-var padEventFuncs padFuncMap[PadEventFunc] = make(padFuncMap[PadEventFunc])
+var padEventFuncs = newPadFuncMap[PadEventFunc]()
 
 // SetEventFunction sets the given event handler for the pad.
 func (p *Pad) SetEventFunction(f PadEventFunc) {
@@ -934,7 +954,7 @@ func (p *Pad) SetEventFunction(f PadEventFunc) {
 // might depend on the value of offset.
 type PadGetRangeFunc func(self *Pad, parent *Object, offset uint64, length uint) (FlowReturn, *Buffer)
 
-var padGetRangeFuncs padFuncMap[PadGetRangeFunc] = make(padFuncMap[PadGetRangeFunc])
+var padGetRangeFuncs = newPadFuncMap[PadGetRangeFunc]()
 
 // SetGetRangeFunction sets the given getrange function for the pad. The getrange function is called to produce a new Buffer
 // to start the processing pipeline. see PadGetRangeFunc for a description of the getrange function.
@@ -954,7 +974,7 @@ func (p *Pad) SetGetRangeFunction(f PadGetRangeFunc) {
 // a single pad until GstIterator is implemented fully in the bindings.
 type PadIterIntLinkFunc func(self *Pad, parent *Object) []*Pad
 
-var padIterIntLinkFuncs padFuncMap[PadIterIntLinkFunc] = make(padFuncMap[PadIterIntLinkFunc])
+var padIterIntLinkFuncs = newPadFuncMap[PadIterIntLinkFunc]()
 
 // SetIterIntLinkFunction sets the given internal link iterator function for the pad.
 func (p *Pad) SetIterIntLinkFunction(f PadIterIntLinkFunc) {
@@ -971,7 +991,7 @@ func (p *Pad) SetIterIntLinkFunction(f PadIterIntLinkFunc) {
 // PadLinkFunc is the function signature to handle a new link on a pad.
 type PadLinkFunc func(self *Pad, parent *Object, peer *Pad) PadLinkReturn
 
-var padLinkFuncs padFuncMap[PadLinkFunc] = make(padFuncMap[PadLinkFunc])
+var padLinkFuncs = newPadFuncMap[PadLinkFunc]()
 
 // SetLinkFunction sets the given link function for the pad. It will be called when the pad is linked with another pad.
 //
@@ -999,7 +1019,7 @@ func (p *Pad) SetOffset(offset int64) {
 // PadQueryFunc is a function for performing queries on a pad. It should return true if it could handle the query.
 type PadQueryFunc func(self *Pad, parent *Object, query *Query) bool
 
-var padQueryFuncs padFuncMap[PadQueryFunc] = make(padFuncMap[PadQueryFunc])
+var padQueryFuncs = newPadFuncMap[PadQueryFunc]()
 
 // SetQueryFunction sets the query handler for the pad.
 func (p *Pad) SetQueryFunction(f PadQueryFunc) {
@@ -1019,7 +1039,7 @@ func (p *Pad) SetQueryFunction(f PadQueryFunc) {
 // the callback.
 type PadUnlinkFunc func(self *Pad, parent *Object)
 
-var padUnlinkFuncs padFuncMap[PadUnlinkFunc] = make(padFuncMap[PadUnlinkFunc])
+var padUnlinkFuncs = newPadFuncMap[PadUnlinkFunc]()
 
 // SetUnlinkFunction sets the given unlink function for the pad. It will be called when the pad is unlinked.
 //
