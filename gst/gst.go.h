@@ -8,7 +8,7 @@
 #include <gst/controller/gstdirectcontrolbinding.h>
 
 typedef struct _PadDestroyNotifyInfo {
-	gpointer pad_ptr;
+	GstPad * pad_ptr;
 	gpointer func_map_ptr;
 } PadDestroyNotifyInfo;
 

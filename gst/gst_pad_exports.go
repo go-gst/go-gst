@@ -20,21 +20,17 @@ func getParent(parent *C.GstObject) *Object {
 
 //export goGstPadFuncDestroyNotify
 func goGstPadFuncDestroyNotify(notifyInfo *C.PadDestroyNotifyInfo) {
-	padPtr := unsafe.Pointer(notifyInfo.pad_ptr)
 	funcMapPtr := unsafe.Pointer(notifyInfo.func_map_ptr)
 
-	defer gopointer.Unref(padPtr)
 	defer gopointer.Unref(funcMapPtr)
+	funcMap := gopointer.Restore(funcMapPtr).(padFuncMapLike)
 
-	pad := gopointer.Restore(padPtr).(unsafe.Pointer)
-	funcMap := gopointer.Restore(funcMapPtr).(PadFuncMap)
-
-	funcMap.RemoveFuncForPad(pad)
+	funcMap.removeFuncForPad(notifyInfo.pad_ptr)
 }
 
 //export goGstPadActivateFunction
 func goGstPadActivateFunction(pad *C.GstPad, parent *C.GstObject) C.gboolean {
-	f := padActivateFuncs.FuncForPad(unsafe.Pointer(pad)).(PadActivateFunc)
+	f := padActivateFuncs.funcForPad(pad)
 	return gboolean(f(
 		wrapPad(toGObject(unsafe.Pointer(pad))),
 		getParent(parent),
@@ -43,7 +39,7 @@ func goGstPadActivateFunction(pad *C.GstPad, parent *C.GstObject) C.gboolean {
 
 //export goGstPadActivateModeFunction
 func goGstPadActivateModeFunction(pad *C.GstPad, parent *C.GstObject, mode C.GstPadMode, active C.gboolean) C.gboolean {
-	f := padActivateModeFuncs.FuncForPad(unsafe.Pointer(pad)).(PadActivateModeFunc)
+	f := padActivateModeFuncs.funcForPad(pad)
 	return gboolean(f(
 		wrapPad(toGObject(unsafe.Pointer(pad))),
 		getParent(parent),
@@ -54,9 +50,12 @@ func goGstPadActivateModeFunction(pad *C.GstPad, parent *C.GstObject, mode C.Gst
 
 //export goGstPadChainFunction
 func goGstPadChainFunction(pad *C.GstPad, parent *C.GstObject, buffer *C.GstBuffer) C.GstFlowReturn {
-	f := padChainFuncs.FuncForPad(unsafe.Pointer(pad)).(PadChainFunc)
-	buf := FromGstBufferUnsafeFull(unsafe.Pointer(buffer))
+	f := padChainFuncs.funcForPad(pad)
+
+	// do not work with a finalizer here, because they are too unreliable for such short lived objects
+	buf := ToGstBuffer(unsafe.Pointer(buffer))
 	defer buf.Unref()
+
 	return C.GstFlowReturn(f(
 		wrapPad(toGObject(unsafe.Pointer(pad))),
 		getParent(parent),
@@ -66,9 +65,12 @@ func goGstPadChainFunction(pad *C.GstPad, parent *C.GstObject, buffer *C.GstBuff
 
 //export goGstPadChainListFunction
 func goGstPadChainListFunction(pad *C.GstPad, parent *C.GstObject, list *C.GstBufferList) C.GstFlowReturn {
-	f := padChainListFuncs.FuncForPad(unsafe.Pointer(pad)).(PadChainListFunc)
-	buflist := FromGstBufferListUnsafeFull(unsafe.Pointer(list))
+	f := padChainListFuncs.funcForPad(pad)
+
+	// do not work with a finalizer here, because they are too unreliable for such short lived objects
+	buflist := ToGstBufferList(unsafe.Pointer(list))
 	defer buflist.Unref()
+
 	return C.GstFlowReturn(f(
 		wrapPad(toGObject(unsafe.Pointer(pad))),
 		getParent(parent),
@@ -78,9 +80,12 @@ func goGstPadChainListFunction(pad *C.GstPad, parent *C.GstObject, list *C.GstBu
 
 //export goGstPadEventFullFunction
 func goGstPadEventFullFunction(pad *C.GstPad, parent *C.GstObject, event *C.GstEvent) C.GstFlowReturn {
-	f := padEventFullFuncs.FuncForPad(unsafe.Pointer(pad)).(PadEventFullFunc)
-	ev := FromGstEventUnsafeFull(unsafe.Pointer(event))
+	f := padEventFullFuncs.funcForPad(pad)
+
+	// do not work with a finalizer here, because they are too unreliable for such short lived objects
+	ev := ToGstEvent(unsafe.Pointer(event))
 	defer ev.Unref()
+
 	return C.GstFlowReturn(f(
 		wrapPad(toGObject(unsafe.Pointer(pad))),
 		getParent(parent),
@@ -90,9 +95,12 @@ func goGstPadEventFullFunction(pad *C.GstPad, parent *C.GstObject, event *C.GstE
 
 //export goGstPadEventFunction
 func goGstPadEventFunction(pad *C.GstPad, parent *C.GstObject, event *C.GstEvent) C.gboolean {
-	f := padEventFuncs.FuncForPad(unsafe.Pointer(pad)).(PadEventFunc)
-	ev := FromGstEventUnsafeFull(unsafe.Pointer(event))
+	f := padEventFuncs.funcForPad(pad)
+
+	// do not work with a finalizer here, because they are too unreliable for such short lived objects
+	ev := ToGstEvent(unsafe.Pointer(event))
 	defer ev.Unref()
+
 	return gboolean(f(
 		wrapPad(toGObject(unsafe.Pointer(pad))),
 		getParent(parent),
@@ -102,7 +110,7 @@ func goGstPadEventFunction(pad *C.GstPad, parent *C.GstObject, event *C.GstEvent
 
 //export goGstPadGetRangeFunction
 func goGstPadGetRangeFunction(pad *C.GstPad, parent *C.GstObject, offset C.guint64, length C.guint, buffer **C.GstBuffer) C.GstFlowReturn {
-	f := padGetRangeFuncs.FuncForPad(unsafe.Pointer(pad)).(PadGetRangeFunc)
+	f := padGetRangeFuncs.funcForPad(pad)
 	ret, buf := f(
 		wrapPad(toGObject(unsafe.Pointer(pad))),
 		getParent(parent),
@@ -117,7 +125,7 @@ func goGstPadGetRangeFunction(pad *C.GstPad, parent *C.GstObject, offset C.guint
 
 //export goGstPadIterIntLinkFunction
 func goGstPadIterIntLinkFunction(pad *C.GstPad, parent *C.GstObject) *C.GstIterator {
-	f := padIterIntLinkFuncs.FuncForPad(unsafe.Pointer(pad)).(PadIterIntLinkFunc)
+	f := padIterIntLinkFuncs.funcForPad(pad)
 	pads := f(
 		wrapPad(toGObject(unsafe.Pointer(pad))),
 		getParent(parent),
@@ -138,7 +146,7 @@ func goGstPadIterIntLinkFunction(pad *C.GstPad, parent *C.GstObject) *C.GstItera
 
 //export goGstPadLinkFunction
 func goGstPadLinkFunction(pad *C.GstPad, parent *C.GstObject, peer *C.GstPad) C.GstPadLinkReturn {
-	f := padLinkFuncs.FuncForPad(unsafe.Pointer(pad)).(PadLinkFunc)
+	f := padLinkFuncs.funcForPad(pad)
 	return C.GstPadLinkReturn(f(
 		wrapPad(toGObject(unsafe.Pointer(pad))),
 		getParent(parent),
@@ -148,7 +156,7 @@ func goGstPadLinkFunction(pad *C.GstPad, parent *C.GstObject, peer *C.GstPad) C.
 
 //export goGstPadQueryFunction
 func goGstPadQueryFunction(pad *C.GstPad, parent *C.GstObject, query *C.GstQuery) C.gboolean {
-	f := padQueryFuncs.FuncForPad(unsafe.Pointer(pad)).(PadQueryFunc)
+	f := padQueryFuncs.funcForPad(pad)
 	return gboolean(f(
 		wrapPad(toGObject(unsafe.Pointer(pad))),
 		getParent(parent),
@@ -158,7 +166,7 @@ func goGstPadQueryFunction(pad *C.GstPad, parent *C.GstObject, query *C.GstQuery
 
 //export goGstPadUnlinkFunction
 func goGstPadUnlinkFunction(pad *C.GstPad, parent *C.GstObject) {
-	f := padUnlinkFuncs.FuncForPad(unsafe.Pointer(pad)).(PadUnlinkFunc)
+	f := padUnlinkFuncs.funcForPad(pad)
 	f(
 		wrapPad(toGObject(unsafe.Pointer(pad))),
 		getParent(parent),
