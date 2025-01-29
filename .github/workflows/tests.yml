@@ -8,7 +8,7 @@ on:
 jobs:
   setup:
     name: Tests on codebase
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Setup GStreamer
         id: setup_gstreamer
