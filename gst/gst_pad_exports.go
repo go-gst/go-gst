@@ -54,7 +54,7 @@ func goGstPadChainFunction(pad *C.GstPad, parent *C.GstObject, buffer *C.GstBuff
 
 	// do not work with a finalizer here, because they are too unreliable for such short lived objects
 	buf := ToGstBuffer(unsafe.Pointer(buffer))
-	defer buf.Unref()
+	// defer buf.Unref() // FIXME: the buffer leaks in case we don't pass to ChainDefault() or similar, but we cannot take a reference on the buffer because that breakes writability
 
 	return C.GstFlowReturn(f(
 		wrapPad(toGObject(unsafe.Pointer(pad))),
@@ -69,7 +69,7 @@ func goGstPadChainListFunction(pad *C.GstPad, parent *C.GstObject, list *C.GstBu
 
 	// do not work with a finalizer here, because they are too unreliable for such short lived objects
 	buflist := ToGstBufferList(unsafe.Pointer(list))
-	defer buflist.Unref()
+	// defer buflist.Unref() // FIXME: the buffer leaks in case we don't pass to ChainDefault() or similar, but we cannot take a reference on the buffer because that breakes writability
 
 	return C.GstFlowReturn(f(
 		wrapPad(toGObject(unsafe.Pointer(pad))),
@@ -84,7 +84,7 @@ func goGstPadEventFullFunction(pad *C.GstPad, parent *C.GstObject, event *C.GstE
 
 	// do not work with a finalizer here, because they are too unreliable for such short lived objects
 	ev := ToGstEvent(unsafe.Pointer(event))
-	defer ev.Unref()
+	// defer ev.Unref() // FIXME: the buffer leaks in case we don't pass to ChainDefault() or similar, but we cannot take a reference on the buffer because that breakes writability
 
 	return C.GstFlowReturn(f(
 		wrapPad(toGObject(unsafe.Pointer(pad))),
@@ -99,7 +99,7 @@ func goGstPadEventFunction(pad *C.GstPad, parent *C.GstObject, event *C.GstEvent
 
 	// do not work with a finalizer here, because they are too unreliable for such short lived objects
 	ev := ToGstEvent(unsafe.Pointer(event))
-	defer ev.Unref()
+	// defer ev.Unref() // FIXME: the event leaks when not passed to EventDefault or beeing manually Unreffed.
 
 	return gboolean(f(
 		wrapPad(toGObject(unsafe.Pointer(pad))),
