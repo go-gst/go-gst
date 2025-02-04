@@ -137,8 +137,20 @@ func _gotk4_gstaudio1_AudioAggregatorClass_aggregate_one_buffer(arg0 *C.GstAudio
 
 	_pad = wrapAudioAggregatorPad(coreglib.Take(unsafe.Pointer(arg1)))
 	_inbuf = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg2)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg2)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_inbuf)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_inOffset = uint(arg3)
 	_outbuf = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg4)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg4)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_outbuf)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_outOffset = uint(arg5)
 	_numFrames = uint(arg6)
 
@@ -190,6 +202,12 @@ func _gotk4_gstaudio1_AudioAggregatorPadClass_convert_buffer(arg0 *C.GstAudioAgg
 	_inInfo = (*AudioInfo)(gextras.NewStructNative(unsafe.Pointer(arg1)))
 	_outInfo = (*AudioInfo)(gextras.NewStructNative(unsafe.Pointer(arg2)))
 	_buffer = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg3)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg3)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_buffer)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ret := overrides.ConvertBuffer(_inInfo, _outInfo, _buffer)
 
@@ -242,6 +260,12 @@ func _gotk4_gstaudio1_AudioBaseSinkClass_payload(arg0 *C.GstAudioBaseSink, arg1 
 	var _buffer *gst.Buffer // out
 
 	_buffer = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_buffer)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ret := overrides.Payload(_buffer)
 
@@ -358,6 +382,12 @@ func _gotk4_gstaudio1_AudioDecoderClass_decide_allocation(arg0 *C.GstAudioDecode
 	var _query *gst.Query // out
 
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.DecideAllocation(_query)
 
@@ -398,6 +428,12 @@ func _gotk4_gstaudio1_AudioDecoderClass_getcaps(arg0 *C.GstAudioDecoder, arg1 *C
 	var _filter *gst.Caps // out
 
 	_filter = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_filter)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	caps := overrides.caps(_filter)
 
@@ -420,6 +456,12 @@ func _gotk4_gstaudio1_AudioDecoderClass_handle_frame(arg0 *C.GstAudioDecoder, ar
 	var _buffer *gst.Buffer // out
 
 	_buffer = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_buffer)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	flowReturn := overrides.HandleFrame(_buffer)
 
@@ -509,6 +551,12 @@ func _gotk4_gstaudio1_AudioDecoderClass_propose_allocation(arg0 *C.GstAudioDecod
 	var _query *gst.Query // out
 
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.ProposeAllocation(_query)
 
@@ -532,6 +580,12 @@ func _gotk4_gstaudio1_AudioDecoderClass_set_format(arg0 *C.GstAudioDecoder, arg1
 	var _caps *gst.Caps // out
 
 	_caps = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_caps)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.SetFormat(_caps)
 
@@ -578,6 +632,12 @@ func _gotk4_gstaudio1_AudioDecoderClass_sink_query(arg0 *C.GstAudioDecoder, arg1
 	var _query *gst.Query // out
 
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.SinkQuery(_query)
 
@@ -624,6 +684,12 @@ func _gotk4_gstaudio1_AudioDecoderClass_src_query(arg0 *C.GstAudioDecoder, arg1 
 	var _query *gst.Query // out
 
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.SrcQuery(_query)
 
@@ -687,8 +753,20 @@ func _gotk4_gstaudio1_AudioDecoderClass_transform_meta(arg0 *C.GstAudioDecoder, 
 	var _inbuf *gst.Buffer  // out
 
 	_outbuf = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_outbuf)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_meta = (*gst.Meta)(gextras.NewStructNative(unsafe.Pointer(arg2)))
 	_inbuf = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg3)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg3)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_inbuf)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.TransformMeta(_outbuf, _meta, _inbuf)
 
@@ -731,6 +809,12 @@ func _gotk4_gstaudio1_AudioEncoderClass_decide_allocation(arg0 *C.GstAudioEncode
 	var _query *gst.Query // out
 
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.DecideAllocation(_query)
 
@@ -765,6 +849,12 @@ func _gotk4_gstaudio1_AudioEncoderClass_getcaps(arg0 *C.GstAudioEncoder, arg1 *C
 	var _filter *gst.Caps // out
 
 	_filter = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_filter)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	caps := overrides.caps(_filter)
 
@@ -787,6 +877,12 @@ func _gotk4_gstaudio1_AudioEncoderClass_handle_frame(arg0 *C.GstAudioEncoder, ar
 	var _buffer *gst.Buffer // out
 
 	_buffer = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_buffer)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	flowReturn := overrides.HandleFrame(_buffer)
 
@@ -846,6 +942,12 @@ func _gotk4_gstaudio1_AudioEncoderClass_propose_allocation(arg0 *C.GstAudioEncod
 	var _query *gst.Query // out
 
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.ProposeAllocation(_query)
 
@@ -915,6 +1017,12 @@ func _gotk4_gstaudio1_AudioEncoderClass_sink_query(arg0 *C.GstAudioEncoder, arg1
 	var _query *gst.Query // out
 
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.SinkQuery(_query)
 
@@ -961,6 +1069,12 @@ func _gotk4_gstaudio1_AudioEncoderClass_src_query(arg0 *C.GstAudioEncoder, arg1 
 	var _query *gst.Query // out
 
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.SrcQuery(_query)
 
@@ -1024,8 +1138,20 @@ func _gotk4_gstaudio1_AudioEncoderClass_transform_meta(arg0 *C.GstAudioEncoder, 
 	var _inbuf *gst.Buffer  // out
 
 	_outbuf = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_outbuf)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_meta = (*gst.Meta)(gextras.NewStructNative(unsafe.Pointer(arg2)))
 	_inbuf = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg3)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg3)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_inbuf)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.TransformMeta(_outbuf, _meta, _inbuf)
 

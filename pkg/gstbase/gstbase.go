@@ -751,9 +751,8 @@ func TypeFindHelper(src *gst.Pad, size uint64) *gst.Caps {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_caps)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _caps
@@ -807,9 +806,8 @@ func TypeFindHelperForBuffer(obj gst.GstObjector, buf *gst.Buffer) (gst.TypeFind
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_caps)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _prob, _caps
@@ -868,9 +866,8 @@ func TypeFindHelperForBufferWithCaps(obj gst.GstObjector, buf *gst.Buffer, caps 
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_ret)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _prob, _ret
@@ -935,9 +932,8 @@ func TypeFindHelperForBufferWithExtension(obj gst.GstObjector, buf *gst.Buffer, 
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_caps)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _prob, _caps
@@ -995,9 +991,8 @@ func TypeFindHelperForData(obj gst.GstObjector, data []byte) (gst.TypeFindProbab
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_caps)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _prob, _caps
@@ -1056,9 +1051,8 @@ func TypeFindHelperForDataWithCaps(obj gst.GstObjector, data []byte, caps *gst.C
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_ret)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _prob, _ret
@@ -1127,9 +1121,8 @@ func TypeFindHelperForDataWithExtension(obj gst.GstObjector, data []byte, extens
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_caps)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _prob, _caps
@@ -1175,9 +1168,8 @@ func TypeFindHelperForExtension(obj gst.GstObjector, extension string) *gst.Caps
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_caps)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _caps
@@ -1576,9 +1568,8 @@ func (adapter *Adapter) Buffer(nbytes uint) *gst.Buffer {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_buffer)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _buffer
@@ -1620,9 +1611,8 @@ func (adapter *Adapter) BufferFast(nbytes uint) *gst.Buffer {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_buffer)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _buffer
@@ -1662,9 +1652,8 @@ func (adapter *Adapter) BufferList(nbytes uint) *gst.BufferList {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_bufferList)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _bufferList
@@ -1708,9 +1697,8 @@ func (adapter *Adapter) List(nbytes uint) []*gst.Buffer {
 			runtime.SetFinalizer(
 				gextras.StructIntern(unsafe.Pointer(dst)),
 				func(intern *struct{ C unsafe.Pointer }) {
-					C.free(intern.C)
-				},
-			)
+					C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+				})
 			_list = append(_list, dst)
 		})
 	}
@@ -2121,9 +2109,8 @@ func (adapter *Adapter) TakeBuffer(nbytes uint) *gst.Buffer {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_buffer)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _buffer
@@ -2178,9 +2165,8 @@ func (adapter *Adapter) TakeBufferFast(nbytes uint) *gst.Buffer {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_buffer)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _buffer
@@ -2221,9 +2207,8 @@ func (adapter *Adapter) TakeBufferList(nbytes uint) *gst.BufferList {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_bufferList)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _bufferList
@@ -2268,9 +2253,8 @@ func (adapter *Adapter) TakeList(nbytes uint) []*gst.Buffer {
 			runtime.SetFinalizer(
 				gextras.StructIntern(unsafe.Pointer(dst)),
 				func(intern *struct{ C unsafe.Pointer }) {
-					C.free(intern.C)
-				},
-			)
+					C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+				})
 			_list = append(_list, dst)
 		})
 	}
@@ -2934,9 +2918,8 @@ func (self *Aggregator) PeekNextSample(pad *AggregatorPad) *gst.Sample {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_sample)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _sample
@@ -3168,9 +3151,8 @@ func (aggregator *Aggregator) clip(aggregatorPad *AggregatorPad, buf *gst.Buffer
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _buffer
 }
@@ -3286,9 +3268,8 @@ func (self *Aggregator) fixateSrcCaps(caps *gst.Caps) *gst.Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_ret)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _ret
 }
@@ -3424,9 +3405,8 @@ func (aggregator *Aggregator) peekNextSample(aggregatorPad *AggregatorPad) *gst.
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_sample)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _sample
@@ -3768,9 +3748,8 @@ func (self *Aggregator) updateSrcCaps(caps *gst.Caps) (*gst.Caps, gst.FlowReturn
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_ret)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 	_flowReturn = gst.FlowReturn(_cret)
 
@@ -3972,9 +3951,8 @@ func (pad *AggregatorPad) PeekBuffer() *gst.Buffer {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_buffer)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _buffer
@@ -4002,9 +3980,8 @@ func (pad *AggregatorPad) PopBuffer() *gst.Buffer {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_buffer)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _buffer
@@ -4947,9 +4924,8 @@ func (parse *BaseParse) sinkCaps(filter *gst.Caps) *gst.Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_caps)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _caps
 }
@@ -5627,9 +5603,8 @@ func (sink *BaseSink) LastSample() *gst.Sample {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_sample)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _sample
@@ -5773,9 +5748,8 @@ func (sink *BaseSink) Stats() *gst.Structure {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_structure)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.gst_structure_free((*C.GstStructure)(intern.C))
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _structure
 }
@@ -6419,9 +6393,8 @@ func (sink *BaseSink) fixate(caps *gst.Caps) *gst.Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_ret)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _ret
 }
@@ -6450,9 +6423,8 @@ func (sink *BaseSink) caps(filter *gst.Caps) *gst.Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_caps)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _caps
 }
@@ -7866,9 +7838,8 @@ func (src *BaseSrc) alloc(offset uint64, size uint) (*gst.Buffer, gst.FlowReturn
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_buf)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 	_flowReturn = gst.FlowReturn(_cret)
 
@@ -8013,9 +7984,8 @@ func (src *BaseSrc) fixate(caps *gst.Caps) *gst.Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_ret)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _ret
 }
@@ -8044,9 +8014,8 @@ func (src *BaseSrc) caps(filter *gst.Caps) *gst.Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_caps)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _caps
 }
@@ -9383,9 +9352,8 @@ func (trans *BaseTransform) fixateCaps(direction gst.PadDirection, caps, otherca
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_ret)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _ret
 }
@@ -9414,9 +9382,8 @@ func (trans *BaseTransform) generateOutput() (*gst.Buffer, gst.FlowReturn) {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_outbuf)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_flowReturn = gst.FlowReturn(_cret)
 
 	return _outbuf, _flowReturn
@@ -9480,9 +9447,8 @@ func (trans *BaseTransform) prepareOutputBuffer(input *gst.Buffer) (*gst.Buffer,
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_outbuf)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_flowReturn = gst.FlowReturn(_cret)
 
 	return _outbuf, _flowReturn
@@ -9795,9 +9761,8 @@ func (trans *BaseTransform) transformCaps(direction gst.PadDirection, caps, filt
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_ret)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _ret
 }
@@ -10092,9 +10057,8 @@ func (pads *CollectPads) ClipRunningTime(cdata *CollectData, buf *gst.Buffer, us
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_outbuf)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 	_flowReturn = gst.FlowReturn(_cret)
 
@@ -10209,9 +10173,8 @@ func (pads *CollectPads) Peek(data *CollectData) *gst.Buffer {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_buffer)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _buffer
@@ -10249,9 +10212,8 @@ func (pads *CollectPads) Pop(data *CollectData) *gst.Buffer {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_buffer)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _buffer
@@ -10334,9 +10296,8 @@ func (pads *CollectPads) ReadBuffer(data *CollectData, size uint) *gst.Buffer {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_buffer)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _buffer
@@ -10704,9 +10665,8 @@ func (pads *CollectPads) TakeBuffer(data *CollectData, size uint) *gst.Buffer {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_buffer)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _buffer
@@ -10929,9 +10889,8 @@ func (src *PushSrc) alloc() (*gst.Buffer, gst.FlowReturn) {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_buf)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 	_flowReturn = gst.FlowReturn(_cret)
 
@@ -11084,6 +11043,11 @@ func (b *BaseParseFrame) Buffer() *gst.Buffer {
 	valptr := &b.native.buffer
 	var _v *gst.Buffer // out
 	_v = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(*valptr)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_v)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	return _v
 }
 
@@ -11092,6 +11056,11 @@ func (b *BaseParseFrame) OutBuffer() *gst.Buffer {
 	valptr := &b.native.out_buffer
 	var _v *gst.Buffer // out
 	_v = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(*valptr)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_v)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	return _v
 }
 
@@ -11827,9 +11796,8 @@ func (bitwriter *BitWriter) FreeAndGetBuffer() *gst.Buffer {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _buffer
 }
@@ -12040,9 +12008,8 @@ func (bitwriter *BitWriter) ResetAndGetBuffer() *gst.Buffer {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _buffer
 }
@@ -13932,9 +13899,8 @@ func (writer *ByteWriter) FreeAndGetBuffer() *gst.Buffer {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _buffer
 }
@@ -14914,9 +14880,8 @@ func (writer *ByteWriter) ResetAndGetBuffer() *gst.Buffer {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _buffer
 }
@@ -14963,6 +14928,11 @@ func (c *CollectData) Buffer() *gst.Buffer {
 	valptr := &c.native.buffer
 	var _v *gst.Buffer // out
 	_v = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(*valptr)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_v)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	return _v
 }
 

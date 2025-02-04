@@ -3,6 +3,7 @@
 package gstpbutils
 
 import (
+	"runtime"
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/core/gbox"
@@ -46,6 +47,12 @@ func _gotk4_gstpbutils1_AudioVisualizerClass_decide_allocation(arg0 *C.GstAudioV
 	var _query *gst.Query // out
 
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.DecideAllocation(_query)
 
@@ -70,6 +77,12 @@ func _gotk4_gstpbutils1_AudioVisualizerClass_render(arg0 *C.GstAudioVisualizer, 
 	var _video *gstvideo.VideoFrame // out
 
 	_audio = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_audio)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_video = (*gstvideo.VideoFrame)(gextras.NewStructNative(unsafe.Pointer(arg2)))
 
 	ok := overrides.Render(_audio, _video)

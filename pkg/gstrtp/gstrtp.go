@@ -1938,9 +1938,8 @@ func (base *RTPBaseDepayload) process(in *gst.Buffer) *gst.Buffer {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _buffer
 }
@@ -1974,9 +1973,8 @@ func (base *RTPBaseDepayload) processRtpPacket(rtpBuffer *RTPBuffer) *gst.Buffer
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _buffer
 }
@@ -2177,9 +2175,8 @@ func (payload *RTPBasePayload) AllocateOutputBuffer(payloadLen uint, padLen, csr
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _buffer
 }
@@ -2456,9 +2453,8 @@ func (payload *RTPBasePayload) caps(pad *gst.Pad, filter *gst.Caps) *gst.Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_caps)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _caps
 }
@@ -3641,6 +3637,11 @@ func (r *RTCPBuffer) Buffer() *gst.Buffer {
 	valptr := &r.native.buffer
 	var _v *gst.Buffer // out
 	_v = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(*valptr)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_v)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	return _v
 }
 
@@ -3820,9 +3821,8 @@ func NewRTCPBuffer(mtu uint) *gst.Buffer {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _buffer
 }
@@ -3857,9 +3857,8 @@ func NewRTCPBufferCopyData(data []byte) *gst.Buffer {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _buffer
 }
@@ -3894,9 +3893,8 @@ func NewRTCPBufferTakeData(data []byte) *gst.Buffer {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _buffer
 }
@@ -6278,6 +6276,11 @@ func (r *RTPBuffer) Buffer() *gst.Buffer {
 	valptr := &r.native.buffer
 	var _v *gst.Buffer // out
 	_v = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(*valptr)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_v)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	return _v
 }
 
@@ -6731,9 +6734,8 @@ func (rtp *RTPBuffer) PayloadBuffer() *gst.Buffer {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _buffer
 }
@@ -6823,9 +6825,8 @@ func (rtp *RTPBuffer) PayloadSubbuffer(offset uint, len uint) *gst.Buffer {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _buffer
 }
@@ -7504,9 +7505,8 @@ func NewRTPBufferAllocate(payloadLen uint, padLen, csrcCount byte) *gst.Buffer {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _buffer
 }
@@ -7546,9 +7546,8 @@ func NewRTPBufferAllocateLen(packetLen uint, padLen, csrcCount byte) *gst.Buffer
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _buffer
 }
@@ -7583,9 +7582,8 @@ func NewRTPBufferCopyData(data []byte) *gst.Buffer {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _buffer
 }
@@ -7619,9 +7617,8 @@ func NewRTPBufferTakeData(data []byte) *gst.Buffer {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _buffer
 }

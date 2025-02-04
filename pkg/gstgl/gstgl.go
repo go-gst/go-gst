@@ -3927,9 +3927,8 @@ func (convert *GLColorConvert) Perform(inbuf *gst.Buffer) *gst.Buffer {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_buffer)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _buffer
@@ -4003,9 +4002,8 @@ func GLColorConvertFixateCaps(context GLContexter, direction gst.PadDirection, c
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_ret)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _ret
 }
@@ -4072,9 +4070,8 @@ func GLColorConvertTransformCaps(context GLContexter, direction gst.PadDirection
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_ret)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _ret
 }
@@ -4728,9 +4725,8 @@ func (context *GLContext) Config() *gst.Structure {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_structure)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.gst_structure_free((*C.GstStructure)(intern.C))
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _structure
@@ -5347,9 +5343,8 @@ func (context *GLContext) config() *gst.Structure {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_structure)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.gst_structure_free((*C.GstStructure)(intern.C))
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _structure
@@ -6543,9 +6538,8 @@ func (filter *GLFilter) transformInternalCaps(direction gst.PadDirection, caps, 
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_ret)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _ret
 }
@@ -7257,9 +7251,8 @@ func GLOverlayCompositorAddCaps(caps *gst.Caps) *gst.Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_ret)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _ret
 }
@@ -9029,9 +9022,8 @@ func (upload *GLUpload) FixateCaps(direction gst.PadDirection, caps, othercaps *
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_ret)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _ret
 }
@@ -9058,18 +9050,16 @@ func (upload *GLUpload) Caps() (inCaps, outCaps *gst.Caps) {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_inCaps)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 	if _arg2 != nil {
 		_outCaps = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(_arg2)))
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_outCaps)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _inCaps, _outCaps
@@ -9106,9 +9096,8 @@ func (upload *GLUpload) PerformWithBuffer(buffer *gst.Buffer) (*gst.Buffer, GLUp
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_outbufPtr)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_glUploadReturn = GLUploadReturn(_cret)
 
 	return _outbufPtr, _glUploadReturn
@@ -9217,9 +9206,8 @@ func (upload *GLUpload) TransformCaps(context GLContexter, direction gst.PadDire
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_ret)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _ret
 }
@@ -9235,9 +9223,8 @@ func GLUploadGetInputTemplateCaps() *gst.Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_caps)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _caps
 }
@@ -9341,9 +9328,8 @@ func (viewconvert *GLViewConvert) FixateCaps(direction gst.PadDirection, caps, o
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_ret)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _ret
 }
@@ -9372,9 +9358,8 @@ func (viewconvert *GLViewConvert) Output() (*gst.Buffer, gst.FlowReturn) {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_outbufPtr)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_flowReturn = gst.FlowReturn(_cret)
 
 	return _outbufPtr, _flowReturn
@@ -9409,9 +9394,8 @@ func (viewconvert *GLViewConvert) Perform(inbuf *gst.Buffer) *gst.Buffer {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_buffer)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _buffer
@@ -9546,9 +9530,8 @@ func (viewconvert *GLViewConvert) TransformCaps(direction gst.PadDirection, caps
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_ret)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _ret
 }
@@ -10741,6 +10724,11 @@ func (g *GLBaseMemory) Mem() *gst.Memory {
 	valptr := &g.native.mem
 	var _v *gst.Memory // out
 	_v = (*gst.Memory)(gextras.NewStructNative(unsafe.Pointer(valptr)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_v)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	return _v
 }
 

@@ -504,9 +504,8 @@ func (appsink *AppSink) Caps() *gst.Caps {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_caps)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _caps
@@ -717,9 +716,8 @@ func (appsink *AppSink) PullPreroll() *gst.Sample {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_sample)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _sample
@@ -757,9 +755,8 @@ func (appsink *AppSink) PullSample() *gst.Sample {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_sample)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _sample
@@ -979,9 +976,8 @@ func (appsink *AppSink) TryPullPreroll(timeout gst.ClockTime) *gst.Sample {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_sample)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _sample
@@ -1027,9 +1023,8 @@ func (appsink *AppSink) TryPullSample(timeout gst.ClockTime) *gst.Sample {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_sample)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _sample
@@ -1127,9 +1122,8 @@ func (appsink *AppSink) pullPreroll() *gst.Sample {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_sample)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _sample
@@ -1170,9 +1164,8 @@ func (appsink *AppSink) pullSample() *gst.Sample {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_sample)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _sample
@@ -1228,9 +1221,8 @@ func (appsink *AppSink) tryPullPreroll(timeout gst.ClockTime) *gst.Sample {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_sample)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _sample
@@ -1279,9 +1271,8 @@ func (appsink *AppSink) tryPullSample(timeout gst.ClockTime) *gst.Sample {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_sample)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _sample
@@ -1580,9 +1571,8 @@ func (appsrc *AppSrc) Caps() *gst.Caps {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_caps)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _caps

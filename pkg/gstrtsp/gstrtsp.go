@@ -2541,6 +2541,12 @@ func (msg *RTSPMessage) BodyBuffer() (*gst.Buffer, RTSPResult) {
 	var _rtspResult RTSPResult // out
 
 	_buffer = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(_arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_buffer)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_rtspResult = RTSPResult(_cret)
 
 	return _buffer, _rtspResult
@@ -3139,9 +3145,8 @@ func (msg *RTSPMessage) StealBodyBuffer() (*gst.Buffer, RTSPResult) {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_rtspResult = RTSPResult(_cret)
 
 	return _buffer, _rtspResult

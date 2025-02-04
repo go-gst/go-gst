@@ -184,9 +184,8 @@ func DRMDumbMemoryExportDmabuf(mem *gst.Memory) *gst.Memory {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_memory)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _memory
 }
@@ -598,9 +597,8 @@ func (allocator *DRMDumbAllocator) Alloc(drmFourcc, width, height uint32) (uint3
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_memory)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _outPitch, _memory
 }
@@ -734,9 +732,8 @@ func DmaBufAllocatorAlloc(allocator gst.Allocatorrer, fd int, size uint) *gst.Me
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_memory)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _memory
@@ -784,9 +781,8 @@ func DmaBufAllocatorAllocWithFlags(allocator gst.Allocatorrer, fd int, size uint
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_memory)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _memory
@@ -900,9 +896,8 @@ func FdAllocatorAlloc(allocator gst.Allocatorrer, fd int, size uint, flags FdMem
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_memory)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _memory

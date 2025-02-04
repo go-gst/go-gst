@@ -33,6 +33,12 @@ func _gotk4_gstvideo1_VideoConvertSampleCallback(arg1 *C.GstSample, arg2 *C.GErr
 	var _err error          // out
 
 	_sample = (*gst.Sample)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_sample)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_err = gerror.Take(unsafe.Pointer(arg2))
 
 	fn(_sample, _err)
@@ -106,6 +112,12 @@ func _gotk4_gstvideo1_VideoAggregatorClass_aggregate_frames(arg0 *C.GstVideoAggr
 	var _outbuffer *gst.Buffer // out
 
 	_outbuffer = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_outbuffer)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	flowReturn := overrides.AggregateFrames(_outbuffer)
 
@@ -128,6 +140,12 @@ func _gotk4_gstvideo1_VideoAggregatorClass_find_best_format(arg0 *C.GstVideoAggr
 	var _bestInfo *VideoInfo      // out
 
 	_downstreamCaps = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_downstreamCaps)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_bestInfo = (*VideoInfo)(gextras.NewStructNative(unsafe.Pointer(arg2)))
 
 	atLeastOneAlpha := overrides.FindBestFormat(_downstreamCaps, _bestInfo)
@@ -150,6 +168,12 @@ func _gotk4_gstvideo1_VideoAggregatorClass_update_caps(arg0 *C.GstVideoAggregato
 	var _caps *gst.Caps // out
 
 	_caps = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_caps)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ret := overrides.UpdateCaps(_caps)
 
@@ -257,6 +281,12 @@ func _gotk4_gstvideo1_VideoAggregatorPadClass_prepare_frame(arg0 *C.GstVideoAggr
 		_videoaggregator = rv
 	}
 	_buffer = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg2)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg2)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_buffer)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_preparedFrame = (*VideoFrame)(gextras.NewStructNative(unsafe.Pointer(arg3)))
 
 	ok := overrides.PrepareFrame(_videoaggregator, _buffer, _preparedFrame)
@@ -333,6 +363,12 @@ func _gotk4_gstvideo1_VideoAggregatorPadClass_prepare_frame_start(arg0 *C.GstVid
 		_videoaggregator = rv
 	}
 	_buffer = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg2)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg2)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_buffer)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_preparedFrame = (*VideoFrame)(gextras.NewStructNative(unsafe.Pointer(arg3)))
 
 	overrides.PrepareFrameStart(_videoaggregator, _buffer, _preparedFrame)
@@ -379,6 +415,12 @@ func _gotk4_gstvideo1_VideoDecoderClass_decide_allocation(arg0 *C.GstVideoDecode
 	var _query *gst.Query // out
 
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.DecideAllocation(_query)
 
@@ -455,6 +497,12 @@ func _gotk4_gstvideo1_VideoDecoderClass_getcaps(arg0 *C.GstVideoDecoder, arg1 *C
 	var _filter *gst.Caps // out
 
 	_filter = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_filter)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	caps := overrides.caps(_filter)
 
@@ -606,6 +654,12 @@ func _gotk4_gstvideo1_VideoDecoderClass_propose_allocation(arg0 *C.GstVideoDecod
 	var _query *gst.Query // out
 
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.ProposeAllocation(_query)
 
@@ -707,6 +761,12 @@ func _gotk4_gstvideo1_VideoDecoderClass_sink_query(arg0 *C.GstVideoDecoder, arg1
 	var _query *gst.Query // out
 
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.SinkQuery(_query)
 
@@ -753,6 +813,12 @@ func _gotk4_gstvideo1_VideoDecoderClass_src_query(arg0 *C.GstVideoDecoder, arg1 
 	var _query *gst.Query // out
 
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.SrcQuery(_query)
 
@@ -865,6 +931,12 @@ func _gotk4_gstvideo1_VideoEncoderClass_decide_allocation(arg0 *C.GstVideoEncode
 	var _query *gst.Query // out
 
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.DecideAllocation(_query)
 
@@ -924,6 +996,12 @@ func _gotk4_gstvideo1_VideoEncoderClass_getcaps(arg0 *C.GstVideoEncoder, arg1 *C
 	var _filter *gst.Caps // out
 
 	_filter = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_filter)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	caps := overrides.caps(_filter)
 
@@ -1040,6 +1118,12 @@ func _gotk4_gstvideo1_VideoEncoderClass_propose_allocation(arg0 *C.GstVideoEncod
 	var _query *gst.Query // out
 
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.ProposeAllocation(_query)
 
@@ -1141,6 +1225,12 @@ func _gotk4_gstvideo1_VideoEncoderClass_sink_query(arg0 *C.GstVideoEncoder, arg1
 	var _query *gst.Query // out
 
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.SinkQuery(_query)
 
@@ -1187,6 +1277,12 @@ func _gotk4_gstvideo1_VideoEncoderClass_src_query(arg0 *C.GstVideoEncoder, arg1 
 	var _query *gst.Query // out
 
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.SrcQuery(_query)
 
@@ -1283,8 +1379,20 @@ func _gotk4_gstvideo1_VideoFilterClass_set_info(arg0 *C.GstVideoFilter, arg1 *C.
 	var _outInfo *VideoInfo // out
 
 	_incaps = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_incaps)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_inInfo = (*VideoInfo)(gextras.NewStructNative(unsafe.Pointer(arg2)))
 	_outcaps = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg3)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg3)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_outcaps)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_outInfo = (*VideoInfo)(gextras.NewStructNative(unsafe.Pointer(arg4)))
 
 	ok := overrides.SetInfo(_incaps, _inInfo, _outcaps, _outInfo)
@@ -1354,6 +1462,12 @@ func _gotk4_gstvideo1_VideoSinkClass_set_info(arg0 *C.GstVideoSink, arg1 *C.GstC
 	var _info *VideoInfo // out
 
 	_caps = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_caps)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_info = (*VideoInfo)(gextras.NewStructNative(unsafe.Pointer(arg2)))
 
 	ok := overrides.SetInfo(_caps, _info)
@@ -1378,6 +1492,12 @@ func _gotk4_gstvideo1_VideoSinkClass_show_frame(arg0 *C.GstVideoSink, arg1 *C.Gs
 	var _buf *gst.Buffer // out
 
 	_buf = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_buf)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	flowReturn := overrides.ShowFrame(_buf)
 
