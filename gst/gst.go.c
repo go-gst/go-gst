@@ -25,6 +25,7 @@ GstMemory *                      toGstMemory                      (void *p) { re
 GstMessage *                     toGstMessage                     (void *p) { return (GST_MESSAGE(p)); }
 GstMeta *                        toGstMeta                        (void *p) { return (GST_META_CAST(p)); }
 GstMiniObject *                  toGstMiniObject                  (void *p) { return (GST_MINI_OBJECT(p)); }
+GstMpegtsSection *               toGstMpegtsSection               (void *p) { return (GST_MPEGTS_SECTION(p)); }
 GstObject *                      toGstObject                      (void *p) { return (GST_OBJECT(p)); }
 GstPad *                         toGstPad                         (void *p) { return (GST_PAD(p)); }
 GstPadTemplate *                 toGstPadTemplate                 (void *p) { return (GST_PAD_TEMPLATE(p)); }
@@ -166,6 +167,9 @@ GstSample * getSampleValue (GValue * val)
 	return gst_value_get_sample(val);
 }
 
+/* MpegtsSection Utilities */
+GstMpegtsSection *  mpegtsSectionRef    (GstMpegtsSection * section)    { return gst_mpegts_section_ref(section); }
+void                mpegtsSectionUnref  (GstMpegtsSection * section)    { gst_mpegts_section_unref(section); } 
 
 /* Misc */
 
