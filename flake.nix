@@ -33,7 +33,7 @@
           gst_all_1.gst-plugins-rs
           gst_all_1.gst-plugins-ugly
           gst_all_1.gst-rtsp-server
-          gst_all_1.gst-vaapi
+          # gst_all_1.gst-vaapi not available in darwin
           gst_all_1.gstreamer
 
           #gotk4 deps:
