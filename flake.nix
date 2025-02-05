@@ -3,11 +3,16 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    gotk4-nix.url = "github:diamondburned/gotk4-nix";
+    gotk4-nix.inputs = {
+      nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
+    gotk4-nix,
     ...
   }: let
     systems = ["x86_64-linux" "aarch64-darwin"];
@@ -20,39 +25,34 @@
       };
     in {
       default = pkgs.mkShell {
-        packages = with pkgs; [
-          go
-          go-tools # staticcheck & co.
-          pkg-config
+        nativeBuildInputs = with pkgs;
+          [
+            go
+            go-tools # staticcheck & co.
+            pkg-config
 
-          gst_all_1.gst-editing-services
-          gst_all_1.gst-libav
-          gst_all_1.gst-plugins-bad
-          gst_all_1.gst-plugins-base
-          gst_all_1.gst-plugins-good
-          gst_all_1.gst-plugins-rs
-          gst_all_1.gst-plugins-ugly
-          gst_all_1.gst-rtsp-server
-          # gst_all_1.gst-vaapi not available in darwin
-          gst_all_1.gstreamer
-
-          #gotk4 deps:
-          atk
-          gtk3
-          gtk4
-          glib
-          graphene
-          gdk-pixbuf
-          gobject-introspection
-          librsvg
-        ];
+            gst_all_1.gstreamer
+            gst_all_1.gst-editing-services
+            gst_all_1.gst-libav
+            gst_all_1.gst-plugins-bad
+            gst_all_1.gst-plugins-base
+            gst_all_1.gst-plugins-good
+            gst_all_1.gst-plugins-rs
+            gst_all_1.gst-plugins-ugly
+            gst_all_1.gst-rtsp-server
+            # gst_all_1.gst-vaapi not available in darwin
+            libnice
+            libsysprof-capture
+          ]
+          ++ gotk4-nix.lib.mkShell.baseDependencies;
 
         GO111MODULE = "on";
+        CGO_ENABLED = "1";
 
         # needed for running delve
         # https://github.com/go-delve/delve/issues/3085
         # https://nixos.wiki/wiki/C#Hardening_flags
-        hardeningDisable = ["all"];
+        # hardeningDisable = ["all"];
 
         # print the go version and gstreamer version on shell startup
         shellHook = ''
