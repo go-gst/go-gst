@@ -41,10 +41,8 @@
             gst_all_1.gst-plugins-ugly
             gst_all_1.gst-rtsp-server
             # gst_all_1.gst-vaapi not available in darwin
-            libnice
-            libsysprof-capture
           ]
-          ++ gotk4-nix.lib.mkShell.baseDependencies;
+          ++ (gotk4-nix.lib.mkShell {inherit pkgs;}).baseDependencies;
 
         GO111MODULE = "on";
         CGO_ENABLED = "1";
