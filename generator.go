@@ -54,7 +54,7 @@ var Data = genmain.Overlay(
 			// {Name: "gstreamer-validate-1.0", Namespaces: []string{"GstValidate-1"}},
 			{Name: "gstreamer-video-1.0", Namespaces: []string{"GstVideo-1"}},
 			// {Name: "gstreamer-vulkan-1.0", Namespaces: []string{"GstVulkan-1"}},
-			{Name: "gstreamer-webrtc-1.0", Namespaces: []string{"GstWebRTC-1"}},
+			// {Name: "gstreamer-webrtc-1.0", Namespaces: []string{"GstWebRTC-1"}},
 		},
 		PkgExceptions: []string{
 			"core",
@@ -95,7 +95,7 @@ var Data = genmain.Overlay(
 			// "gstva",
 			// "gstvalidate",
 			"gstvideo",
-			"gstwebrtc",
+			// "gstwebrtc",
 		},
 		Preprocessors: []types.Preprocessor{
 			// Enum has a member of same name:
