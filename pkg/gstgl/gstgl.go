@@ -711,7 +711,7 @@ func GLFormatFromVideoInfo(context GLContexter, vinfo *gstvideo.VideoInfo, plane
 	var _arg3 C.guint         // out
 	var _cret C.GstGLFormat   // in
 
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	_arg2 = (*C.GstVideoInfo)(gextras.StructNative(unsafe.Pointer(vinfo)))
 	_arg3 = C.guint(plane)
 
@@ -741,7 +741,7 @@ func GLFormatIsSupported(context GLContexter, format GLFormat) bool {
 	var _arg2 C.GstGLFormat   // out
 	var _cret C.gboolean      // in
 
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	_arg2 = C.GstGLFormat(format)
 
 	_cret = C.gst_gl_format_is_supported(_arg1, _arg2)
@@ -1969,7 +1969,7 @@ func BufferAddGLSyncMeta(context GLContexter, buffer *gst.Buffer) *GLSyncMeta {
 	var _arg2 *C.GstBuffer     // out
 	var _cret *C.GstGLSyncMeta // in
 
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	_arg2 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(buffer)))
 
 	_cret = C.gst_buffer_add_gl_sync_meta(_arg1, _arg2)
@@ -1998,7 +1998,7 @@ func BufferAddGLSyncMetaFull(context GLContexter, buffer *gst.Buffer, data unsaf
 	var _arg3 C.gpointer       // out
 	var _cret *C.GstGLSyncMeta // in
 
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	_arg2 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(buffer)))
 	_arg3 = (C.gpointer)(unsafe.Pointer(data))
 
@@ -2162,7 +2162,7 @@ func ContextSetGLDisplay(context *gst.Context, display *GLDisplay) {
 
 	_arg1 = (*C.GstContext)(gextras.StructNative(unsafe.Pointer(context)))
 	if display != nil {
-		_arg2 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.InternObject(display).Native()))
+		_arg2 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.BaseObject(display).Native()))
 	}
 
 	C.gst_context_set_gl_display(_arg1, _arg2)
@@ -2209,8 +2209,8 @@ func GLElementPropagateDisplayContext(element gst.Elementer, display *GLDisplay)
 	var _arg1 *C.GstElement   // out
 	var _arg2 *C.GstGLDisplay // out
 
-	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
-	_arg2 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.InternObject(display).Native()))
+	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
+	_arg2 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.BaseObject(display).Native()))
 
 	C.gst_gl_element_propagate_display_context(_arg1, _arg2)
 	runtime.KeepAlive(element)
@@ -2336,16 +2336,16 @@ func GLHandleContextQuery(element gst.Elementer, query *gst.Query, display *GLDi
 	var _arg5 *C.GstGLContext // out
 	var _cret C.gboolean      // in
 
-	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg2 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(query)))
 	if display != nil {
-		_arg3 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.InternObject(display).Native()))
+		_arg3 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.BaseObject(display).Native()))
 	}
 	if context != nil {
-		_arg4 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+		_arg4 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	}
 	if otherContext != nil {
-		_arg5 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(otherContext).Native()))
+		_arg5 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(otherContext).Native()))
 	}
 
 	_cret = C.gst_gl_handle_context_query(_arg1, _arg2, _arg3, _arg4, _arg5)
@@ -2387,7 +2387,7 @@ func GLHandleSetContext(element gst.Elementer, context *gst.Context) (*GLDisplay
 	var _arg4 *C.GstGLContext // in
 	var _cret C.gboolean      // in
 
-	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+	_arg1 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	_arg2 = (*C.GstContext)(gextras.StructNative(unsafe.Pointer(context)))
 
 	_cret = C.gst_gl_handle_set_context(_arg1, _arg2, &_arg3, &_arg4)
@@ -2488,7 +2488,7 @@ func GLSizedGLFormatFromGLFormatType(context GLContexter, format, typ uint) uint
 	var _arg3 C.guint         // out
 	var _cret C.guint         // in
 
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	_arg2 = C.guint(format)
 	_arg3 = C.guint(typ)
 
@@ -2992,7 +2992,7 @@ func (filter *GLBaseFilter) FindGLContext() bool {
 	var _arg0 *C.GstGLBaseFilter // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstGLBaseFilter)(unsafe.Pointer(coreglib.InternObject(filter).Native()))
+	_arg0 = (*C.GstGLBaseFilter)(unsafe.Pointer(coreglib.BaseObject(filter).Native()))
 
 	_cret = C.gst_gl_base_filter_find_gl_context(_arg0)
 	runtime.KeepAlive(filter)
@@ -3013,7 +3013,7 @@ func (filter *GLBaseFilter) GLContext() GLContexter {
 	var _arg0 *C.GstGLBaseFilter // out
 	var _cret *C.GstGLContext    // in
 
-	_arg0 = (*C.GstGLBaseFilter)(unsafe.Pointer(coreglib.InternObject(filter).Native()))
+	_arg0 = (*C.GstGLBaseFilter)(unsafe.Pointer(coreglib.BaseObject(filter).Native()))
 
 	_cret = C.gst_gl_base_filter_get_gl_context(_arg0)
 	runtime.KeepAlive(filter)
@@ -3057,7 +3057,7 @@ func (filter *GLBaseFilter) glSetCaps(incaps, outcaps *gst.Caps) bool {
 	var _arg2 *C.GstCaps         // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstGLBaseFilter)(unsafe.Pointer(coreglib.InternObject(filter).Native()))
+	_arg0 = (*C.GstGLBaseFilter)(unsafe.Pointer(coreglib.BaseObject(filter).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(incaps)))
 	_arg2 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(outcaps)))
 
@@ -3083,7 +3083,7 @@ func (filter *GLBaseFilter) glStart() bool {
 	var _arg0 *C.GstGLBaseFilter // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstGLBaseFilter)(unsafe.Pointer(coreglib.InternObject(filter).Native()))
+	_arg0 = (*C.GstGLBaseFilter)(unsafe.Pointer(coreglib.BaseObject(filter).Native()))
 
 	_cret = C._gotk4_gstgl1_GLBaseFilter_virtual_gl_start(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(filter)
@@ -3104,7 +3104,7 @@ func (filter *GLBaseFilter) glStop() {
 
 	var _arg0 *C.GstGLBaseFilter // out
 
-	_arg0 = (*C.GstGLBaseFilter)(unsafe.Pointer(coreglib.InternObject(filter).Native()))
+	_arg0 = (*C.GstGLBaseFilter)(unsafe.Pointer(coreglib.BaseObject(filter).Native()))
 
 	C._gotk4_gstgl1_GLBaseFilter_virtual_gl_stop(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(filter)
@@ -3217,7 +3217,7 @@ func (allocator *GLBaseMemoryAllocator) alloc(params *GLAllocationParams) *GLBas
 	var _arg1 *C.GstGLAllocationParams    // out
 	var _cret *C.GstGLBaseMemory          // in
 
-	_arg0 = (*C.GstGLBaseMemoryAllocator)(unsafe.Pointer(coreglib.InternObject(allocator).Native()))
+	_arg0 = (*C.GstGLBaseMemoryAllocator)(unsafe.Pointer(coreglib.BaseObject(allocator).Native()))
 	_arg1 = (*C.GstGLAllocationParams)(gextras.StructNative(unsafe.Pointer(params)))
 
 	_cret = C._gotk4_gstgl1_GLBaseMemoryAllocator_virtual_alloc(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -3343,7 +3343,7 @@ func (mix *GLBaseMixer) GLContext() GLContexter {
 	var _arg0 *C.GstGLBaseMixer // out
 	var _cret *C.GstGLContext   // in
 
-	_arg0 = (*C.GstGLBaseMixer)(unsafe.Pointer(coreglib.InternObject(mix).Native()))
+	_arg0 = (*C.GstGLBaseMixer)(unsafe.Pointer(coreglib.BaseObject(mix).Native()))
 
 	_cret = C.gst_gl_base_mixer_get_gl_context(_arg0)
 	runtime.KeepAlive(mix)
@@ -3382,7 +3382,7 @@ func (mix *GLBaseMixer) glStart() bool {
 	var _arg0 *C.GstGLBaseMixer // out
 	var _cret C.gboolean        // in
 
-	_arg0 = (*C.GstGLBaseMixer)(unsafe.Pointer(coreglib.InternObject(mix).Native()))
+	_arg0 = (*C.GstGLBaseMixer)(unsafe.Pointer(coreglib.BaseObject(mix).Native()))
 
 	_cret = C._gotk4_gstgl1_GLBaseMixer_virtual_gl_start(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(mix)
@@ -3403,7 +3403,7 @@ func (mix *GLBaseMixer) glStop() {
 
 	var _arg0 *C.GstGLBaseMixer // out
 
-	_arg0 = (*C.GstGLBaseMixer)(unsafe.Pointer(coreglib.InternObject(mix).Native()))
+	_arg0 = (*C.GstGLBaseMixer)(unsafe.Pointer(coreglib.BaseObject(mix).Native()))
 
 	C._gotk4_gstgl1_GLBaseMixer_virtual_gl_stop(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(mix)
@@ -3572,7 +3572,7 @@ func (src *GLBaseSrc) fillGLMemory(mem *GLMemory) bool {
 	var _arg1 *C.GstGLMemory  // out
 	var _cret C.gboolean      // in
 
-	_arg0 = (*C.GstGLBaseSrc)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+	_arg0 = (*C.GstGLBaseSrc)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	_arg1 = (*C.GstGLMemory)(gextras.StructNative(unsafe.Pointer(mem)))
 
 	_cret = C._gotk4_gstgl1_GLBaseSrc_virtual_fill_gl_memory(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -3596,7 +3596,7 @@ func (src *GLBaseSrc) glStart() bool {
 	var _arg0 *C.GstGLBaseSrc // out
 	var _cret C.gboolean      // in
 
-	_arg0 = (*C.GstGLBaseSrc)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+	_arg0 = (*C.GstGLBaseSrc)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 
 	_cret = C._gotk4_gstgl1_GLBaseSrc_virtual_gl_start(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(src)
@@ -3617,7 +3617,7 @@ func (src *GLBaseSrc) glStop() {
 
 	var _arg0 *C.GstGLBaseSrc // out
 
-	_arg0 = (*C.GstGLBaseSrc)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+	_arg0 = (*C.GstGLBaseSrc)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 
 	C._gotk4_gstgl1_GLBaseSrc_virtual_gl_stop(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(src)
@@ -3743,7 +3743,7 @@ func NewGLBufferPool(context GLContexter) *GLBufferPool {
 	var _arg1 *C.GstGLContext  // out
 	var _cret *C.GstBufferPool // in
 
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	_cret = C.gst_gl_buffer_pool_new(_arg1)
 	runtime.KeepAlive(context)
@@ -3768,7 +3768,7 @@ func (pool *GLBufferPool) GLAllocationParams() *GLAllocationParams {
 	var _arg0 *C.GstGLBufferPool       // out
 	var _cret *C.GstGLAllocationParams // in
 
-	_arg0 = (*C.GstGLBufferPool)(unsafe.Pointer(coreglib.InternObject(pool).Native()))
+	_arg0 = (*C.GstGLBufferPool)(unsafe.Pointer(coreglib.BaseObject(pool).Native()))
 
 	_cret = C.gst_gl_buffer_pool_get_gl_allocation_params(_arg0)
 	runtime.KeepAlive(pool)
@@ -3855,7 +3855,7 @@ func NewGLColorConvert(context GLContexter) *GLColorConvert {
 	var _arg1 *C.GstGLContext      // out
 	var _cret *C.GstGLColorConvert // in
 
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	_cret = C.gst_gl_color_convert_new(_arg1)
 	runtime.KeepAlive(context)
@@ -3882,7 +3882,7 @@ func (convert *GLColorConvert) DecideAllocation(query *gst.Query) bool {
 	var _arg1 *C.GstQuery          // out
 	var _cret C.gboolean           // in
 
-	_arg0 = (*C.GstGLColorConvert)(unsafe.Pointer(coreglib.InternObject(convert).Native()))
+	_arg0 = (*C.GstGLColorConvert)(unsafe.Pointer(coreglib.BaseObject(convert).Native()))
 	_arg1 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(query)))
 
 	_cret = C.gst_gl_color_convert_decide_allocation(_arg0, _arg1)
@@ -3913,7 +3913,7 @@ func (convert *GLColorConvert) Perform(inbuf *gst.Buffer) *gst.Buffer {
 	var _arg1 *C.GstBuffer         // out
 	var _cret *C.GstBuffer         // in
 
-	_arg0 = (*C.GstGLColorConvert)(unsafe.Pointer(coreglib.InternObject(convert).Native()))
+	_arg0 = (*C.GstGLColorConvert)(unsafe.Pointer(coreglib.BaseObject(convert).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(inbuf)))
 
 	_cret = C.gst_gl_color_convert_perform(_arg0, _arg1)
@@ -3946,7 +3946,7 @@ func (convert *GLColorConvert) SetCaps(inCaps, outCaps *gst.Caps) bool {
 	var _arg2 *C.GstCaps           // out
 	var _cret C.gboolean           // in
 
-	_arg0 = (*C.GstGLColorConvert)(unsafe.Pointer(coreglib.InternObject(convert).Native()))
+	_arg0 = (*C.GstGLColorConvert)(unsafe.Pointer(coreglib.BaseObject(convert).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(inCaps)))
 	_arg2 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(outCaps)))
 
@@ -3984,7 +3984,7 @@ func GLColorConvertFixateCaps(context GLContexter, direction gst.PadDirection, c
 	var _arg4 *C.GstCaps        // out
 	var _cret *C.GstCaps        // in
 
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	_arg2 = C.GstPadDirection(direction)
 	_arg3 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 	_arg4 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(other)))
@@ -4020,7 +4020,7 @@ func GLColorConvertSwizzleShaderString(context GLContexter) string {
 	var _arg1 *C.GstGLContext // out
 	var _cret *C.gchar        // in
 
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	_cret = C.gst_gl_color_convert_swizzle_shader_string(_arg1)
 	runtime.KeepAlive(context)
@@ -4053,7 +4053,7 @@ func GLColorConvertTransformCaps(context GLContexter, direction gst.PadDirection
 	var _arg4 *C.GstCaps        // out
 	var _cret *C.GstCaps        // in
 
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	_arg2 = C.GstPadDirection(direction)
 	_arg3 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 	_arg4 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(filter)))
@@ -4096,7 +4096,7 @@ func GLColorConvertYuvToRGBShaderString(context GLContexter) string {
 	var _arg1 *C.GstGLContext // out
 	var _cret *C.gchar        // in
 
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	_cret = C.gst_gl_color_convert_yuv_to_rgb_shader_string(_arg1)
 	runtime.KeepAlive(context)
@@ -4374,7 +4374,7 @@ func NewGLContext(display *GLDisplay) *GLContext {
 	var _arg1 *C.GstGLDisplay // out
 	var _cret *C.GstGLContext // in
 
-	_arg1 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.InternObject(display).Native()))
+	_arg1 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.BaseObject(display).Native()))
 
 	_cret = C.gst_gl_context_new(_arg1)
 	runtime.KeepAlive(display)
@@ -4412,7 +4412,7 @@ func NewGLContextWrapped(display *GLDisplay, handle uintptr, contextType GLPlatf
 	var _arg4 C.GstGLAPI      // out
 	var _cret *C.GstGLContext // in
 
-	_arg1 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.InternObject(display).Native()))
+	_arg1 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.BaseObject(display).Native()))
 	_arg2 = C.guintptr(handle)
 	_arg3 = C.GstGLPlatform(contextType)
 	_arg4 = C.GstGLAPI(availableApis)
@@ -4449,7 +4449,7 @@ func (context *GLContext) Activate(activate bool) bool {
 	var _arg1 C.gboolean      // out
 	var _cret C.gboolean      // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	if activate {
 		_arg1 = C.TRUE
 	}
@@ -4481,8 +4481,8 @@ func (context *GLContext) CanShare(otherContext GLContexter) bool {
 	var _arg1 *C.GstGLContext // out
 	var _cret C.gboolean      // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(otherContext).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(otherContext).Native()))
 
 	_cret = C.gst_gl_context_can_share(_arg0, _arg1)
 	runtime.KeepAlive(context)
@@ -4514,7 +4514,7 @@ func (context *GLContext) CheckFeature(feature string) bool {
 	var _arg1 *C.gchar        // out
 	var _cret C.gboolean      // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(feature)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -4546,7 +4546,7 @@ func (context *GLContext) CheckFramebufferStatus(fboTarget uint) bool {
 	var _arg1 C.guint         // out
 	var _cret C.gboolean      // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	_arg1 = C.guint(fboTarget)
 
 	_cret = C.gst_gl_context_check_framebuffer_status(_arg0, _arg1)
@@ -4579,7 +4579,7 @@ func (context *GLContext) CheckGLVersion(api GLAPI, maj, min int) bool {
 	var _arg3 C.gint          // out
 	var _cret C.gboolean      // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	_arg1 = C.GstGLAPI(api)
 	_arg2 = C.gint(maj)
 	_arg3 = C.gint(min)
@@ -4603,7 +4603,7 @@ func (context *GLContext) CheckGLVersion(api GLAPI, maj, min int) bool {
 func (context *GLContext) ClearFramebuffer() {
 	var _arg0 *C.GstGLContext // out
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	C.gst_gl_context_clear_framebuffer(_arg0)
 	runtime.KeepAlive(context)
@@ -4615,7 +4615,7 @@ func (context *GLContext) ClearFramebuffer() {
 func (context *GLContext) ClearShader() {
 	var _arg0 *C.GstGLContext // out
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	C.gst_gl_context_clear_shader(_arg0)
 	runtime.KeepAlive(context)
@@ -4648,9 +4648,9 @@ func (context *GLContext) Create(otherContext GLContexter) error {
 	var _arg1 *C.GstGLContext // out
 	var _cerr *C.GError       // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	if otherContext != nil {
-		_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(otherContext).Native()))
+		_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(otherContext).Native()))
 	}
 
 	C.gst_gl_context_create(_arg0, _arg1, &_cerr)
@@ -4673,7 +4673,7 @@ func (context *GLContext) Create(otherContext GLContexter) error {
 func (context *GLContext) Destroy() {
 	var _arg0 *C.GstGLContext // out
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	C.gst_gl_context_destroy(_arg0)
 	runtime.KeepAlive(context)
@@ -4686,7 +4686,7 @@ func (context *GLContext) FillInfo() error {
 	var _arg0 *C.GstGLContext // out
 	var _cerr *C.GError       // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	C.gst_gl_context_fill_info(_arg0, &_cerr)
 	runtime.KeepAlive(context)
@@ -4713,7 +4713,7 @@ func (context *GLContext) Config() *gst.Structure {
 	var _arg0 *C.GstGLContext // out
 	var _cret *C.GstStructure // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	_cret = C.gst_gl_context_get_config(_arg0)
 	runtime.KeepAlive(context)
@@ -4739,7 +4739,7 @@ func (context *GLContext) Display() *GLDisplay {
 	var _arg0 *C.GstGLContext // out
 	var _cret *C.GstGLDisplay // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	_cret = C.gst_gl_context_get_display(_arg0)
 	runtime.KeepAlive(context)
@@ -4763,7 +4763,7 @@ func (context *GLContext) GLApi() GLAPI {
 	var _arg0 *C.GstGLContext // out
 	var _cret C.GstGLAPI      // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	_cret = C.gst_gl_context_get_gl_api(_arg0)
 	runtime.KeepAlive(context)
@@ -4784,7 +4784,7 @@ func (context *GLContext) GLContext() uintptr {
 	var _arg0 *C.GstGLContext // out
 	var _cret C.guintptr      // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	_cret = C.gst_gl_context_get_gl_context(_arg0)
 	runtime.KeepAlive(context)
@@ -4805,7 +4805,7 @@ func (context *GLContext) GLPlatform() GLPlatform {
 	var _arg0 *C.GstGLContext // out
 	var _cret C.GstGLPlatform // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	_cret = C.gst_gl_context_get_gl_platform(_arg0)
 	runtime.KeepAlive(context)
@@ -4829,7 +4829,7 @@ func (context *GLContext) GLPlatformVersion() (major, minor int) {
 	var _arg1 C.gint          // in
 	var _arg2 C.gint          // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	C.gst_gl_context_get_gl_platform_version(_arg0, &_arg1, &_arg2)
 	runtime.KeepAlive(context)
@@ -4856,7 +4856,7 @@ func (context *GLContext) GLVersion() (maj, min int) {
 	var _arg1 C.gint          // in
 	var _arg2 C.gint          // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	C.gst_gl_context_get_gl_version(_arg0, &_arg1, &_arg2)
 	runtime.KeepAlive(context)
@@ -4899,7 +4899,7 @@ func (context *GLContext) ProcAddress(name string) unsafe.Pointer {
 	var _arg1 *C.gchar        // out
 	var _cret C.gpointer      // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -4921,7 +4921,7 @@ func (context *GLContext) Window() GLWindower {
 	var _arg0 *C.GstGLContext // out
 	var _cret *C.GstGLWindow  // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	_cret = C.gst_gl_context_get_window(_arg0)
 	runtime.KeepAlive(context)
@@ -4955,7 +4955,7 @@ func (context *GLContext) IsShared() bool {
 	var _arg0 *C.GstGLContext // out
 	var _cret C.gboolean      // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	_cret = C.gst_gl_context_is_shared(_arg0)
 	runtime.KeepAlive(context)
@@ -4995,7 +4995,7 @@ func (context *GLContext) RequestConfig(glConfig *gst.Structure) bool {
 	var _arg1 *C.GstStructure // out
 	var _cret C.gboolean      // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	if glConfig != nil {
 		_arg1 = (*C.GstStructure)(gextras.StructNative(unsafe.Pointer(glConfig)))
 		runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(glConfig)), nil)
@@ -5023,8 +5023,8 @@ func (context *GLContext) SetSharedWith(share GLContexter) {
 	var _arg0 *C.GstGLContext // out
 	var _arg1 *C.GstGLContext // out
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(share).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(share).Native()))
 
 	C.gst_gl_context_set_shared_with(_arg0, _arg1)
 	runtime.KeepAlive(context)
@@ -5047,9 +5047,9 @@ func (context *GLContext) SetWindow(window GLWindower) bool {
 	var _arg1 *C.GstGLWindow  // out
 	var _cret C.gboolean      // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
-	_arg1 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
-	C.g_object_ref(C.gpointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
+	_arg1 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
+	C.g_object_ref(C.gpointer(coreglib.BaseObject(window).Native()))
 
 	_cret = C.gst_gl_context_set_window(_arg0, _arg1)
 	runtime.KeepAlive(context)
@@ -5078,7 +5078,7 @@ func (context *GLContext) SupportsGlslProfileVersion(version GLSLVersion, profil
 	var _arg2 C.GstGLSLProfile // out
 	var _cret C.gboolean       // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	_arg1 = C.GstGLSLVersion(version)
 	_arg2 = C.GstGLSLProfile(profile)
 
@@ -5110,7 +5110,7 @@ func (context *GLContext) SupportsPrecision(version GLSLVersion, profile GLSLPro
 	var _arg2 C.GstGLSLProfile // out
 	var _cret C.gboolean       // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	_arg1 = C.GstGLSLVersion(version)
 	_arg2 = C.GstGLSLProfile(profile)
 
@@ -5143,7 +5143,7 @@ func (context *GLContext) SupportsPrecisionHighp(version GLSLVersion, profile GL
 	var _arg2 C.GstGLSLProfile // out
 	var _cret C.gboolean       // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	_arg1 = C.GstGLSLVersion(version)
 	_arg2 = C.GstGLSLProfile(profile)
 
@@ -5166,7 +5166,7 @@ func (context *GLContext) SupportsPrecisionHighp(version GLSLVersion, profile GL
 func (context *GLContext) SwapBuffers() {
 	var _arg0 *C.GstGLContext // out
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	C.gst_gl_context_swap_buffers(_arg0)
 	runtime.KeepAlive(context)
@@ -5192,7 +5192,7 @@ func (context *GLContext) activate(activate bool) bool {
 	var _arg1 C.gboolean      // out
 	var _cret C.gboolean      // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	if activate {
 		_arg1 = C.TRUE
 	}
@@ -5230,7 +5230,7 @@ func (context *GLContext) checkFeature(feature string) bool {
 	var _arg1 *C.gchar        // out
 	var _cret C.gboolean      // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(feature)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -5255,7 +5255,7 @@ func (context *GLContext) chooseFormat() error {
 	var _arg0 *C.GstGLContext // out
 	var _cerr *C.GError       // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	C._gotk4_gstgl1_GLContext_virtual_choose_format(unsafe.Pointer(fnarg), _arg0, &_cerr)
 	runtime.KeepAlive(context)
@@ -5284,9 +5284,9 @@ func (context *GLContext) createContext(glApi GLAPI, otherContext GLContexter) e
 	var _arg2 *C.GstGLContext // out
 	var _cerr *C.GError       // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	_arg1 = C.GstGLAPI(glApi)
-	_arg2 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(otherContext).Native()))
+	_arg2 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(otherContext).Native()))
 
 	C._gotk4_gstgl1_GLContext_virtual_create_context(unsafe.Pointer(fnarg), _arg0, _arg1, _arg2, &_cerr)
 	runtime.KeepAlive(context)
@@ -5309,7 +5309,7 @@ func (context *GLContext) destroyContext() {
 
 	var _arg0 *C.GstGLContext // out
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	C._gotk4_gstgl1_GLContext_virtual_destroy_context(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(context)
@@ -5331,7 +5331,7 @@ func (context *GLContext) config() *gst.Structure {
 	var _arg0 *C.GstGLContext // out
 	var _cret *C.GstStructure // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	_cret = C._gotk4_gstgl1_GLContext_virtual_get_config(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(context)
@@ -5365,7 +5365,7 @@ func (context *GLContext) glApi() GLAPI {
 	var _arg0 *C.GstGLContext // out
 	var _cret C.GstGLAPI      // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	_cret = C._gotk4_gstgl1_GLContext_virtual_get_gl_api(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(context)
@@ -5389,7 +5389,7 @@ func (context *GLContext) glContext() uintptr {
 	var _arg0 *C.GstGLContext // out
 	var _cret C.guintptr      // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	_cret = C._gotk4_gstgl1_GLContext_virtual_get_gl_context(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(context)
@@ -5413,7 +5413,7 @@ func (context *GLContext) glPlatform() GLPlatform {
 	var _arg0 *C.GstGLContext // out
 	var _cret C.GstGLPlatform // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	_cret = C._gotk4_gstgl1_GLContext_virtual_get_gl_platform(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(context)
@@ -5440,7 +5440,7 @@ func (context *GLContext) glPlatformVersion() (major, minor int) {
 	var _arg1 C.gint          // in
 	var _arg2 C.gint          // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	C._gotk4_gstgl1_GLContext_virtual_get_gl_platform_version(unsafe.Pointer(fnarg), _arg0, &_arg1, &_arg2)
 	runtime.KeepAlive(context)
@@ -5483,7 +5483,7 @@ func (context *GLContext) requestConfig(glConfig *gst.Structure) bool {
 	var _arg1 *C.GstStructure // out
 	var _cret C.gboolean      // in
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	if glConfig != nil {
 		_arg1 = (*C.GstStructure)(gextras.StructNative(unsafe.Pointer(glConfig)))
 		runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(glConfig)), nil)
@@ -5510,7 +5510,7 @@ func (context *GLContext) swapBuffers() {
 
 	var _arg0 *C.GstGLContext // out
 
-	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	C._gotk4_gstgl1_GLContext_virtual_swap_buffers(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(context)
@@ -5835,8 +5835,8 @@ func (display *GLDisplay) AddContext(context GLContexter) bool {
 	var _arg1 *C.GstGLContext // out
 	var _cret C.gboolean      // in
 
-	_arg0 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.InternObject(display).Native()))
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.BaseObject(display).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	_cret = C.gst_gl_display_add_context(_arg0, _arg1)
 	runtime.KeepAlive(display)
@@ -5866,9 +5866,9 @@ func (display *GLDisplay) CreateContext(otherContext GLContexter) (GLContexter, 
 	var _arg2 *C.GstGLContext // in
 	var _cerr *C.GError       // in
 
-	_arg0 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.InternObject(display).Native()))
+	_arg0 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.BaseObject(display).Native()))
 	if otherContext != nil {
-		_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(otherContext).Native()))
+		_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(otherContext).Native()))
 	}
 
 	C.gst_gl_display_create_context(_arg0, _arg1, &_arg2, &_cerr)
@@ -5909,7 +5909,7 @@ func (display *GLDisplay) CreateWindow() GLWindower {
 	var _arg0 *C.GstGLDisplay // out
 	var _cret *C.GstGLWindow  // in
 
-	_arg0 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.InternObject(display).Native()))
+	_arg0 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.BaseObject(display).Native()))
 
 	_cret = C.gst_gl_display_create_window(_arg0)
 	runtime.KeepAlive(display)
@@ -5948,7 +5948,7 @@ func (display *GLDisplay) FilterGLApi(glApi GLAPI) {
 	var _arg0 *C.GstGLDisplay // out
 	var _arg1 C.GstGLAPI      // out
 
-	_arg0 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.InternObject(display).Native()))
+	_arg0 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.BaseObject(display).Native()))
 	_arg1 = C.GstGLAPI(glApi)
 
 	C.gst_gl_display_filter_gl_api(_arg0, _arg1)
@@ -5966,7 +5966,7 @@ func (display *GLDisplay) GLApi() GLAPI {
 	var _arg0 *C.GstGLDisplay // out
 	var _cret C.GstGLAPI      // in
 
-	_arg0 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.InternObject(display).Native()))
+	_arg0 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.BaseObject(display).Native()))
 
 	_cret = C.gst_gl_display_get_gl_api(_arg0)
 	runtime.KeepAlive(display)
@@ -5982,7 +5982,7 @@ func (display *GLDisplay) GLApiUnlocked() GLAPI {
 	var _arg0 *C.GstGLDisplay // out
 	var _cret C.GstGLAPI      // in
 
-	_arg0 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.InternObject(display).Native()))
+	_arg0 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.BaseObject(display).Native()))
 
 	_cret = C.gst_gl_display_get_gl_api_unlocked(_arg0)
 	runtime.KeepAlive(display)
@@ -6001,7 +6001,7 @@ func (display *GLDisplay) Handle() uintptr {
 	var _arg0 *C.GstGLDisplay // out
 	var _cret C.guintptr      // in
 
-	_arg0 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.InternObject(display).Native()))
+	_arg0 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.BaseObject(display).Native()))
 
 	_cret = C.gst_gl_display_get_handle(_arg0)
 	runtime.KeepAlive(display)
@@ -6020,7 +6020,7 @@ func (display *GLDisplay) HandleType() GLDisplayType {
 	var _arg0 *C.GstGLDisplay    // out
 	var _cret C.GstGLDisplayType // in
 
-	_arg0 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.InternObject(display).Native()))
+	_arg0 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.BaseObject(display).Native()))
 
 	_cret = C.gst_gl_display_get_handle_type(_arg0)
 	runtime.KeepAlive(display)
@@ -6041,8 +6041,8 @@ func (display *GLDisplay) RemoveContext(context GLContexter) {
 	var _arg0 *C.GstGLDisplay // out
 	var _arg1 *C.GstGLContext // out
 
-	_arg0 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.InternObject(display).Native()))
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.BaseObject(display).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	C.gst_gl_display_remove_context(_arg0, _arg1)
 	runtime.KeepAlive(display)
@@ -6061,8 +6061,8 @@ func (display *GLDisplay) RemoveWindow(window GLWindower) bool {
 	var _arg1 *C.GstGLWindow  // out
 	var _cret C.gboolean      // in
 
-	_arg0 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.InternObject(display).Native()))
-	_arg1 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.BaseObject(display).Native()))
+	_arg1 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 
 	_cret = C.gst_gl_display_remove_window(_arg0, _arg1)
 	runtime.KeepAlive(display)
@@ -6087,7 +6087,7 @@ func (display *GLDisplay) createWindow() GLWindower {
 	var _arg0 *C.GstGLDisplay // out
 	var _cret *C.GstGLWindow  // in
 
-	_arg0 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.InternObject(display).Native()))
+	_arg0 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.BaseObject(display).Native()))
 
 	_cret = C._gotk4_gstgl1_GLDisplay_virtual_create_window(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(display)
@@ -6124,7 +6124,7 @@ func (display *GLDisplay) handle() uintptr {
 	var _arg0 *C.GstGLDisplay // out
 	var _cret C.guintptr      // in
 
-	_arg0 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.InternObject(display).Native()))
+	_arg0 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.BaseObject(display).Native()))
 
 	_cret = C._gotk4_gstgl1_GLDisplay_virtual_get_handle(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(display)
@@ -6266,7 +6266,7 @@ func marshalGLFilter(p uintptr) (interface{}, error) {
 func (filter *GLFilter) DrawFullscreenQuad() {
 	var _arg0 *C.GstGLFilter // out
 
-	_arg0 = (*C.GstGLFilter)(unsafe.Pointer(coreglib.InternObject(filter).Native()))
+	_arg0 = (*C.GstGLFilter)(unsafe.Pointer(coreglib.BaseObject(filter).Native()))
 
 	C.gst_gl_filter_draw_fullscreen_quad(_arg0)
 	runtime.KeepAlive(filter)
@@ -6288,7 +6288,7 @@ func (filter *GLFilter) FilterTexture(input, output *gst.Buffer) bool {
 	var _arg2 *C.GstBuffer   // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstGLFilter)(unsafe.Pointer(coreglib.InternObject(filter).Native()))
+	_arg0 = (*C.GstGLFilter)(unsafe.Pointer(coreglib.BaseObject(filter).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(input)))
 	_arg2 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(output)))
 
@@ -6325,7 +6325,7 @@ func (filter *GLFilter) RenderToTarget(input, output *GLMemory, fn GLFilterRende
 	var _arg4 C.gpointer
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstGLFilter)(unsafe.Pointer(coreglib.InternObject(filter).Native()))
+	_arg0 = (*C.GstGLFilter)(unsafe.Pointer(coreglib.BaseObject(filter).Native()))
 	_arg1 = (*C.GstGLMemory)(gextras.StructNative(unsafe.Pointer(input)))
 	_arg2 = (*C.GstGLMemory)(gextras.StructNative(unsafe.Pointer(output)))
 	_arg3 = (*[0]byte)(C._gotk4_gstgl1_GLFilterRenderFunc)
@@ -6363,10 +6363,10 @@ func (filter *GLFilter) RenderToTargetWithShader(input, output *GLMemory, shader
 	var _arg2 *C.GstGLMemory // out
 	var _arg3 *C.GstGLShader // out
 
-	_arg0 = (*C.GstGLFilter)(unsafe.Pointer(coreglib.InternObject(filter).Native()))
+	_arg0 = (*C.GstGLFilter)(unsafe.Pointer(coreglib.BaseObject(filter).Native()))
 	_arg1 = (*C.GstGLMemory)(gextras.StructNative(unsafe.Pointer(input)))
 	_arg2 = (*C.GstGLMemory)(gextras.StructNative(unsafe.Pointer(output)))
-	_arg3 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg3 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 
 	C.gst_gl_filter_render_to_target_with_shader(_arg0, _arg1, _arg2, _arg3)
 	runtime.KeepAlive(filter)
@@ -6393,7 +6393,7 @@ func (filter *GLFilter) filter(inbuf, outbuf *gst.Buffer) bool {
 	var _arg2 *C.GstBuffer   // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstGLFilter)(unsafe.Pointer(coreglib.InternObject(filter).Native()))
+	_arg0 = (*C.GstGLFilter)(unsafe.Pointer(coreglib.BaseObject(filter).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(inbuf)))
 	_arg2 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(outbuf)))
 
@@ -6430,7 +6430,7 @@ func (filter *GLFilter) filterTexture(input, output *GLMemory) bool {
 	var _arg2 *C.GstGLMemory // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstGLFilter)(unsafe.Pointer(coreglib.InternObject(filter).Native()))
+	_arg0 = (*C.GstGLFilter)(unsafe.Pointer(coreglib.BaseObject(filter).Native()))
 	_arg1 = (*C.GstGLMemory)(gextras.StructNative(unsafe.Pointer(input)))
 	_arg2 = (*C.GstGLMemory)(gextras.StructNative(unsafe.Pointer(output)))
 
@@ -6456,7 +6456,7 @@ func (filter *GLFilter) initFbo() bool {
 	var _arg0 *C.GstGLFilter // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstGLFilter)(unsafe.Pointer(coreglib.InternObject(filter).Native()))
+	_arg0 = (*C.GstGLFilter)(unsafe.Pointer(coreglib.BaseObject(filter).Native()))
 
 	_cret = C._gotk4_gstgl1_GLFilter_virtual_init_fbo(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(filter)
@@ -6485,7 +6485,7 @@ func (filter *GLFilter) setCaps(incaps, outcaps *gst.Caps) bool {
 	var _arg2 *C.GstCaps     // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstGLFilter)(unsafe.Pointer(coreglib.InternObject(filter).Native()))
+	_arg0 = (*C.GstGLFilter)(unsafe.Pointer(coreglib.BaseObject(filter).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(incaps)))
 	_arg2 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(outcaps)))
 
@@ -6521,7 +6521,7 @@ func (filter *GLFilter) transformInternalCaps(direction gst.PadDirection, caps, 
 	var _arg3 *C.GstCaps        // out
 	var _cret *C.GstCaps        // in
 
-	_arg0 = (*C.GstGLFilter)(unsafe.Pointer(coreglib.InternObject(filter).Native()))
+	_arg0 = (*C.GstGLFilter)(unsafe.Pointer(coreglib.BaseObject(filter).Native()))
 	_arg1 = C.GstPadDirection(direction)
 	_arg2 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 	_arg3 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(filterCaps)))
@@ -6624,7 +6624,7 @@ func NewGLFramebuffer(context GLContexter) *GLFramebuffer {
 	var _arg1 *C.GstGLContext     // out
 	var _cret *C.GstGLFramebuffer // in
 
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	_cret = C.gst_gl_framebuffer_new(_arg1)
 	runtime.KeepAlive(context)
@@ -6654,7 +6654,7 @@ func NewGLFramebufferWithDefaultDepth(context GLContexter, width, height uint) *
 	var _arg3 C.guint             // out
 	var _cret *C.GstGLFramebuffer // in
 
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	_arg2 = C.guint(width)
 	_arg3 = C.guint(height)
 
@@ -6683,7 +6683,7 @@ func (fb *GLFramebuffer) Attach(attachmentPoint uint, mem *GLBaseMemory) {
 	var _arg1 C.guint             // out
 	var _arg2 *C.GstGLBaseMemory  // out
 
-	_arg0 = (*C.GstGLFramebuffer)(unsafe.Pointer(coreglib.InternObject(fb).Native()))
+	_arg0 = (*C.GstGLFramebuffer)(unsafe.Pointer(coreglib.BaseObject(fb).Native()))
 	_arg1 = C.guint(attachmentPoint)
 	_arg2 = (*C.GstGLBaseMemory)(gextras.StructNative(unsafe.Pointer(mem)))
 
@@ -6699,7 +6699,7 @@ func (fb *GLFramebuffer) Attach(attachmentPoint uint, mem *GLBaseMemory) {
 func (fb *GLFramebuffer) Bind() {
 	var _arg0 *C.GstGLFramebuffer // out
 
-	_arg0 = (*C.GstGLFramebuffer)(unsafe.Pointer(coreglib.InternObject(fb).Native()))
+	_arg0 = (*C.GstGLFramebuffer)(unsafe.Pointer(coreglib.BaseObject(fb).Native()))
 
 	C.gst_gl_framebuffer_bind(_arg0)
 	runtime.KeepAlive(fb)
@@ -6717,7 +6717,7 @@ func (fb *GLFramebuffer) EffectiveDimensions() (width, height uint) {
 	var _arg1 C.guint             // in
 	var _arg2 C.guint             // in
 
-	_arg0 = (*C.GstGLFramebuffer)(unsafe.Pointer(coreglib.InternObject(fb).Native()))
+	_arg0 = (*C.GstGLFramebuffer)(unsafe.Pointer(coreglib.BaseObject(fb).Native()))
 
 	C.gst_gl_framebuffer_get_effective_dimensions(_arg0, &_arg1, &_arg2)
 	runtime.KeepAlive(fb)
@@ -6738,7 +6738,7 @@ func (fb *GLFramebuffer) ID() uint {
 	var _arg0 *C.GstGLFramebuffer // out
 	var _cret C.guint             // in
 
-	_arg0 = (*C.GstGLFramebuffer)(unsafe.Pointer(coreglib.InternObject(fb).Native()))
+	_arg0 = (*C.GstGLFramebuffer)(unsafe.Pointer(coreglib.BaseObject(fb).Native()))
 
 	_cret = C.gst_gl_framebuffer_get_id(_arg0)
 	runtime.KeepAlive(fb)
@@ -6813,7 +6813,7 @@ func GLMemoryAllocatorGetDefault(context GLContexter) *GLMemoryAllocator {
 	var _arg1 *C.GstGLContext         // out
 	var _cret *C.GstGLMemoryAllocator // in
 
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	_cret = C.gst_gl_memory_allocator_get_default(_arg1)
 	runtime.KeepAlive(context)
@@ -6986,7 +6986,7 @@ func (mix *GLMixer) Framebuffer() *GLFramebuffer {
 	var _arg0 *C.GstGLMixer       // out
 	var _cret *C.GstGLFramebuffer // in
 
-	_arg0 = (*C.GstGLMixer)(unsafe.Pointer(coreglib.InternObject(mix).Native()))
+	_arg0 = (*C.GstGLMixer)(unsafe.Pointer(coreglib.BaseObject(mix).Native()))
 
 	_cret = C.gst_gl_mixer_get_framebuffer(_arg0)
 	runtime.KeepAlive(mix)
@@ -7014,7 +7014,7 @@ func (mix *GLMixer) ProcessTextures(outbuf *gst.Buffer) bool {
 	var _arg1 *C.GstBuffer  // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstGLMixer)(unsafe.Pointer(coreglib.InternObject(mix).Native()))
+	_arg0 = (*C.GstGLMixer)(unsafe.Pointer(coreglib.BaseObject(mix).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(outbuf)))
 
 	_cret = C.gst_gl_mixer_process_textures(_arg0, _arg1)
@@ -7040,7 +7040,7 @@ func (mix *GLMixer) processBuffers(outbuf *gst.Buffer) bool {
 	var _arg1 *C.GstBuffer  // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstGLMixer)(unsafe.Pointer(coreglib.InternObject(mix).Native()))
+	_arg0 = (*C.GstGLMixer)(unsafe.Pointer(coreglib.BaseObject(mix).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(outbuf)))
 
 	_cret = C._gotk4_gstgl1_GLMixer_virtual_process_buffers(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -7071,7 +7071,7 @@ func (mix *GLMixer) processTextures(outTex *GLMemory) bool {
 	var _arg1 *C.GstGLMemory // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstGLMixer)(unsafe.Pointer(coreglib.InternObject(mix).Native()))
+	_arg0 = (*C.GstGLMixer)(unsafe.Pointer(coreglib.BaseObject(mix).Native()))
 	_arg1 = (*C.GstGLMemory)(gextras.StructNative(unsafe.Pointer(outTex)))
 
 	_cret = C._gotk4_gstgl1_GLMixer_virtual_process_textures(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -7194,7 +7194,7 @@ func NewGLOverlayCompositor(context GLContexter) *GLOverlayCompositor {
 	var _arg1 *C.GstGLContext           // out
 	var _cret *C.GstGLOverlayCompositor // in
 
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	_cret = C.gst_gl_overlay_compositor_new(_arg1)
 	runtime.KeepAlive(context)
@@ -7209,7 +7209,7 @@ func NewGLOverlayCompositor(context GLContexter) *GLOverlayCompositor {
 func (compositor *GLOverlayCompositor) DrawOverlays() {
 	var _arg0 *C.GstGLOverlayCompositor // out
 
-	_arg0 = (*C.GstGLOverlayCompositor)(unsafe.Pointer(coreglib.InternObject(compositor).Native()))
+	_arg0 = (*C.GstGLOverlayCompositor)(unsafe.Pointer(coreglib.BaseObject(compositor).Native()))
 
 	C.gst_gl_overlay_compositor_draw_overlays(_arg0)
 	runtime.KeepAlive(compositor)
@@ -7218,7 +7218,7 @@ func (compositor *GLOverlayCompositor) DrawOverlays() {
 func (compositor *GLOverlayCompositor) FreeOverlays() {
 	var _arg0 *C.GstGLOverlayCompositor // out
 
-	_arg0 = (*C.GstGLOverlayCompositor)(unsafe.Pointer(coreglib.InternObject(compositor).Native()))
+	_arg0 = (*C.GstGLOverlayCompositor)(unsafe.Pointer(coreglib.BaseObject(compositor).Native()))
 
 	C.gst_gl_overlay_compositor_free_overlays(_arg0)
 	runtime.KeepAlive(compositor)
@@ -7228,7 +7228,7 @@ func (compositor *GLOverlayCompositor) UploadOverlays(buf *gst.Buffer) {
 	var _arg0 *C.GstGLOverlayCompositor // out
 	var _arg1 *C.GstBuffer              // out
 
-	_arg0 = (*C.GstGLOverlayCompositor)(unsafe.Pointer(coreglib.InternObject(compositor).Native()))
+	_arg0 = (*C.GstGLOverlayCompositor)(unsafe.Pointer(coreglib.BaseObject(compositor).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(buf)))
 
 	C.gst_gl_overlay_compositor_upload_overlays(_arg0, _arg1)
@@ -7370,7 +7370,7 @@ func NewGLSLStage(context GLContexter, typ uint) *GLSLStage {
 	var _arg2 C.guint         // out
 	var _cret *C.GstGLSLStage // in
 
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	_arg2 = C.guint(typ)
 
 	_cret = C.gst_glsl_stage_new(_arg1, _arg2)
@@ -7395,7 +7395,7 @@ func NewGLSLStageDefaultFragment(context GLContexter) *GLSLStage {
 	var _arg1 *C.GstGLContext // out
 	var _cret *C.GstGLSLStage // in
 
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	_cret = C.gst_glsl_stage_new_default_fragment(_arg1)
 	runtime.KeepAlive(context)
@@ -7418,7 +7418,7 @@ func NewGLSLStageDefaultVertex(context GLContexter) *GLSLStage {
 	var _arg1 *C.GstGLContext // out
 	var _cret *C.GstGLSLStage // in
 
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	_cret = C.gst_glsl_stage_new_default_vertex(_arg1)
 	runtime.KeepAlive(context)
@@ -7449,7 +7449,7 @@ func NewGLSLStageWithString(context GLContexter, typ uint, version GLSLVersion, 
 	var _arg5 *C.gchar         // out
 	var _cret *C.GstGLSLStage  // in
 
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	_arg2 = C.guint(typ)
 	_arg3 = C.GstGLSLVersion(version)
 	_arg4 = C.GstGLSLProfile(profile)
@@ -7490,7 +7490,7 @@ func NewGLSLStageWithStrings(context GLContexter, typ uint, version GLSLVersion,
 	var _arg5 C.gint
 	var _cret *C.GstGLSLStage // in
 
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	_arg2 = C.guint(typ)
 	_arg3 = C.GstGLSLVersion(version)
 	_arg4 = C.GstGLSLProfile(profile)
@@ -7523,7 +7523,7 @@ func (stage *GLSLStage) Compile() error {
 	var _arg0 *C.GstGLSLStage // out
 	var _cerr *C.GError       // in
 
-	_arg0 = (*C.GstGLSLStage)(unsafe.Pointer(coreglib.InternObject(stage).Native()))
+	_arg0 = (*C.GstGLSLStage)(unsafe.Pointer(coreglib.BaseObject(stage).Native()))
 
 	C.gst_glsl_stage_compile(_arg0, &_cerr)
 	runtime.KeepAlive(stage)
@@ -7544,7 +7544,7 @@ func (stage *GLSLStage) Handle() uint {
 	var _arg0 *C.GstGLSLStage // out
 	var _cret C.guint         // in
 
-	_arg0 = (*C.GstGLSLStage)(unsafe.Pointer(coreglib.InternObject(stage).Native()))
+	_arg0 = (*C.GstGLSLStage)(unsafe.Pointer(coreglib.BaseObject(stage).Native()))
 
 	_cret = C.gst_glsl_stage_get_handle(_arg0)
 	runtime.KeepAlive(stage)
@@ -7563,7 +7563,7 @@ func (stage *GLSLStage) Profile() GLSLProfile {
 	var _arg0 *C.GstGLSLStage  // out
 	var _cret C.GstGLSLProfile // in
 
-	_arg0 = (*C.GstGLSLStage)(unsafe.Pointer(coreglib.InternObject(stage).Native()))
+	_arg0 = (*C.GstGLSLStage)(unsafe.Pointer(coreglib.BaseObject(stage).Native()))
 
 	_cret = C.gst_glsl_stage_get_profile(_arg0)
 	runtime.KeepAlive(stage)
@@ -7582,7 +7582,7 @@ func (stage *GLSLStage) ShaderType() uint {
 	var _arg0 *C.GstGLSLStage // out
 	var _cret C.guint         // in
 
-	_arg0 = (*C.GstGLSLStage)(unsafe.Pointer(coreglib.InternObject(stage).Native()))
+	_arg0 = (*C.GstGLSLStage)(unsafe.Pointer(coreglib.BaseObject(stage).Native()))
 
 	_cret = C.gst_glsl_stage_get_shader_type(_arg0)
 	runtime.KeepAlive(stage)
@@ -7601,7 +7601,7 @@ func (stage *GLSLStage) Version() GLSLVersion {
 	var _arg0 *C.GstGLSLStage  // out
 	var _cret C.GstGLSLVersion // in
 
-	_arg0 = (*C.GstGLSLStage)(unsafe.Pointer(coreglib.InternObject(stage).Native()))
+	_arg0 = (*C.GstGLSLStage)(unsafe.Pointer(coreglib.BaseObject(stage).Native()))
 
 	_cret = C.gst_glsl_stage_get_version(_arg0)
 	runtime.KeepAlive(stage)
@@ -7628,7 +7628,7 @@ func (stage *GLSLStage) SetStrings(version GLSLVersion, profile GLSLProfile, str
 	var _arg3 C.gint
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstGLSLStage)(unsafe.Pointer(coreglib.InternObject(stage).Native()))
+	_arg0 = (*C.GstGLSLStage)(unsafe.Pointer(coreglib.BaseObject(stage).Native()))
 	_arg1 = C.GstGLSLVersion(version)
 	_arg2 = C.GstGLSLProfile(profile)
 	_arg3 = (C.gint)(len(str))
@@ -7717,7 +7717,7 @@ func NewGLShader(context GLContexter) *GLShader {
 	var _arg1 *C.GstGLContext // out
 	var _cret *C.GstGLShader  // in
 
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	_cret = C.gst_gl_shader_new(_arg1)
 	runtime.KeepAlive(context)
@@ -7743,7 +7743,7 @@ func NewGLShaderDefault(context GLContexter) (*GLShader, error) {
 	var _cret *C.GstGLShader  // in
 	var _cerr *C.GError       // in
 
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	_cret = C.gst_gl_shader_new_default(_arg1, &_cerr)
 	runtime.KeepAlive(context)
@@ -7776,8 +7776,8 @@ func (shader *GLShader) Attach(stage *GLSLStage) bool {
 	var _arg1 *C.GstGLSLStage // out
 	var _cret C.gboolean      // in
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
-	_arg1 = (*C.GstGLSLStage)(unsafe.Pointer(coreglib.InternObject(stage).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
+	_arg1 = (*C.GstGLSLStage)(unsafe.Pointer(coreglib.BaseObject(stage).Native()))
 
 	_cret = C.gst_gl_shader_attach(_arg0, _arg1)
 	runtime.KeepAlive(shader)
@@ -7809,8 +7809,8 @@ func (shader *GLShader) AttachUnlocked(stage *GLSLStage) bool {
 	var _arg1 *C.GstGLSLStage // out
 	var _cret C.gboolean      // in
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
-	_arg1 = (*C.GstGLSLStage)(unsafe.Pointer(coreglib.InternObject(stage).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
+	_arg1 = (*C.GstGLSLStage)(unsafe.Pointer(coreglib.BaseObject(stage).Native()))
 
 	_cret = C.gst_gl_shader_attach_unlocked(_arg0, _arg1)
 	runtime.KeepAlive(shader)
@@ -7837,7 +7837,7 @@ func (shader *GLShader) BindAttributeLocation(index uint, name string) {
 	var _arg1 C.guint        // out
 	var _arg2 *C.gchar       // out
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 	_arg1 = C.guint(index)
 	_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg2))
@@ -7860,7 +7860,7 @@ func (shader *GLShader) BindFragDataLocation(index uint, name string) {
 	var _arg1 C.guint        // out
 	var _arg2 *C.gchar       // out
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 	_arg1 = C.guint(index)
 	_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg2))
@@ -7883,8 +7883,8 @@ func (shader *GLShader) CompileAttachStage(stage *GLSLStage) error {
 	var _arg1 *C.GstGLSLStage // out
 	var _cerr *C.GError       // in
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
-	_arg1 = (*C.GstGLSLStage)(unsafe.Pointer(coreglib.InternObject(stage).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
+	_arg1 = (*C.GstGLSLStage)(unsafe.Pointer(coreglib.BaseObject(stage).Native()))
 
 	C.gst_gl_shader_compile_attach_stage(_arg0, _arg1, &_cerr)
 	runtime.KeepAlive(shader)
@@ -7911,8 +7911,8 @@ func (shader *GLShader) Detach(stage *GLSLStage) {
 	var _arg0 *C.GstGLShader  // out
 	var _arg1 *C.GstGLSLStage // out
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
-	_arg1 = (*C.GstGLSLStage)(unsafe.Pointer(coreglib.InternObject(stage).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
+	_arg1 = (*C.GstGLSLStage)(unsafe.Pointer(coreglib.BaseObject(stage).Native()))
 
 	C.gst_gl_shader_detach(_arg0, _arg1)
 	runtime.KeepAlive(shader)
@@ -7932,8 +7932,8 @@ func (shader *GLShader) DetachUnlocked(stage *GLSLStage) {
 	var _arg0 *C.GstGLShader  // out
 	var _arg1 *C.GstGLSLStage // out
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
-	_arg1 = (*C.GstGLSLStage)(unsafe.Pointer(coreglib.InternObject(stage).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
+	_arg1 = (*C.GstGLSLStage)(unsafe.Pointer(coreglib.BaseObject(stage).Native()))
 
 	C.gst_gl_shader_detach_unlocked(_arg0, _arg1)
 	runtime.KeepAlive(shader)
@@ -7952,7 +7952,7 @@ func (shader *GLShader) AttributeLocation(name string) int {
 	var _arg1 *C.gchar       // out
 	var _cret C.gint         // in
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -7974,7 +7974,7 @@ func (shader *GLShader) ProgramHandle() int {
 	var _arg0 *C.GstGLShader // out
 	var _cret C.int          // in
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 
 	_cret = C.gst_gl_shader_get_program_handle(_arg0)
 	runtime.KeepAlive(shader)
@@ -7995,7 +7995,7 @@ func (shader *GLShader) IsLinked() bool {
 	var _arg0 *C.GstGLShader // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 
 	_cret = C.gst_gl_shader_is_linked(_arg0)
 	runtime.KeepAlive(shader)
@@ -8016,7 +8016,7 @@ func (shader *GLShader) Link() error {
 	var _arg0 *C.GstGLShader // out
 	var _cerr *C.GError      // in
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 
 	C.gst_gl_shader_link(_arg0, &_cerr)
 	runtime.KeepAlive(shader)
@@ -8036,7 +8036,7 @@ func (shader *GLShader) Link() error {
 func (shader *GLShader) Release() {
 	var _arg0 *C.GstGLShader // out
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 
 	C.gst_gl_shader_release(_arg0)
 	runtime.KeepAlive(shader)
@@ -8048,7 +8048,7 @@ func (shader *GLShader) Release() {
 func (shader *GLShader) ReleaseUnlocked() {
 	var _arg0 *C.GstGLShader // out
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 
 	C.gst_gl_shader_release_unlocked(_arg0)
 	runtime.KeepAlive(shader)
@@ -8065,7 +8065,7 @@ func (shader *GLShader) SetUniform1F(name string, value float32) {
 	var _arg1 *C.gchar       // out
 	var _arg2 C.gfloat       // out
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = C.gfloat(value)
@@ -8088,7 +8088,7 @@ func (shader *GLShader) SetUniform1Fv(name string, value []float32) {
 	var _arg3 *C.gfloat      // out
 	var _arg2 C.guint
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = (C.guint)(len(value))
@@ -8113,7 +8113,7 @@ func (shader *GLShader) SetUniform1I(name string, value int) {
 	var _arg1 *C.gchar       // out
 	var _arg2 C.gint         // out
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = C.gint(value)
@@ -8136,7 +8136,7 @@ func (shader *GLShader) SetUniform1Iv(name string, value []int) {
 	var _arg3 *C.gint        // out
 	var _arg2 C.guint
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = (C.guint)(len(value))
@@ -8168,7 +8168,7 @@ func (shader *GLShader) SetUniform2F(name string, v0, v1 float32) {
 	var _arg2 C.gfloat       // out
 	var _arg3 C.gfloat       // out
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = C.gfloat(v0)
@@ -8193,7 +8193,7 @@ func (shader *GLShader) SetUniform2Fv(name string, value []float32) {
 	var _arg3 *C.gfloat      // out
 	var _arg2 C.guint
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = (C.guint)(len(value))
@@ -8220,7 +8220,7 @@ func (shader *GLShader) SetUniform2I(name string, v0, v1 int) {
 	var _arg2 C.gint         // out
 	var _arg3 C.gint         // out
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = C.gint(v0)
@@ -8245,7 +8245,7 @@ func (shader *GLShader) SetUniform2Iv(name string, value []int) {
 	var _arg3 *C.gint        // out
 	var _arg2 C.guint
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = (C.guint)(len(value))
@@ -8279,7 +8279,7 @@ func (shader *GLShader) SetUniform3F(name string, v0, v1, v2 float32) {
 	var _arg3 C.gfloat       // out
 	var _arg4 C.gfloat       // out
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = C.gfloat(v0)
@@ -8306,7 +8306,7 @@ func (shader *GLShader) SetUniform3Fv(name string, value []float32) {
 	var _arg3 *C.gfloat      // out
 	var _arg2 C.guint
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = (C.guint)(len(value))
@@ -8335,7 +8335,7 @@ func (shader *GLShader) SetUniform3I(name string, v0, v1, v2 int) {
 	var _arg3 C.gint         // out
 	var _arg4 C.gint         // out
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = C.gint(v0)
@@ -8362,7 +8362,7 @@ func (shader *GLShader) SetUniform3Iv(name string, value []int) {
 	var _arg3 *C.gint        // out
 	var _arg2 C.guint
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = (C.guint)(len(value))
@@ -8398,7 +8398,7 @@ func (shader *GLShader) SetUniform4F(name string, v0, v1, v2, v3 float32) {
 	var _arg4 C.gfloat       // out
 	var _arg5 C.gfloat       // out
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = C.gfloat(v0)
@@ -8427,7 +8427,7 @@ func (shader *GLShader) SetUniform4Fv(name string, value []float32) {
 	var _arg3 *C.gfloat      // out
 	var _arg2 C.guint
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = (C.guint)(len(value))
@@ -8458,7 +8458,7 @@ func (shader *GLShader) SetUniform4I(name string, v0, v1, v2, v3 int) {
 	var _arg4 C.gint         // out
 	var _arg5 C.gint         // out
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = C.gint(v0)
@@ -8487,7 +8487,7 @@ func (shader *GLShader) SetUniform4Iv(name string, value []int) {
 	var _arg3 *C.gint        // out
 	var _arg2 C.guint
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = (C.guint)(len(value))
@@ -8521,7 +8521,7 @@ func (shader *GLShader) SetUniformMatrix2Fv(name string, count int, transpose bo
 	var _arg3 C.gboolean     // out
 	var _arg4 *C.gfloat      // out
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = C.gint(count)
@@ -8553,7 +8553,7 @@ func (shader *GLShader) SetUniformMatrix2X3Fv(name string, count int, transpose 
 	var _arg3 C.gboolean     // out
 	var _arg4 *C.gfloat      // out
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = C.gint(count)
@@ -8585,7 +8585,7 @@ func (shader *GLShader) SetUniformMatrix2X4Fv(name string, count int, transpose 
 	var _arg3 C.gboolean     // out
 	var _arg4 *C.gfloat      // out
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = C.gint(count)
@@ -8617,7 +8617,7 @@ func (shader *GLShader) SetUniformMatrix3Fv(name string, count int, transpose bo
 	var _arg3 C.gboolean     // out
 	var _arg4 *C.gfloat      // out
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = C.gint(count)
@@ -8649,7 +8649,7 @@ func (shader *GLShader) SetUniformMatrix3X2Fv(name string, count int, transpose 
 	var _arg3 C.gboolean     // out
 	var _arg4 *C.gfloat      // out
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = C.gint(count)
@@ -8681,7 +8681,7 @@ func (shader *GLShader) SetUniformMatrix3X4Fv(name string, count int, transpose 
 	var _arg3 C.gboolean     // out
 	var _arg4 *C.gfloat      // out
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = C.gint(count)
@@ -8713,7 +8713,7 @@ func (shader *GLShader) SetUniformMatrix4Fv(name string, count int, transpose bo
 	var _arg3 C.gboolean     // out
 	var _arg4 *C.gfloat      // out
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = C.gint(count)
@@ -8745,7 +8745,7 @@ func (shader *GLShader) SetUniformMatrix4X2Fv(name string, count int, transpose 
 	var _arg3 C.gboolean     // out
 	var _arg4 *C.gfloat      // out
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = C.gint(count)
@@ -8777,7 +8777,7 @@ func (shader *GLShader) SetUniformMatrix4X3Fv(name string, count int, transpose 
 	var _arg3 C.gboolean     // out
 	var _arg4 *C.gfloat      // out
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = C.gint(count)
@@ -8800,7 +8800,7 @@ func (shader *GLShader) SetUniformMatrix4X3Fv(name string, count int, transpose 
 func (shader *GLShader) Use() {
 	var _arg0 *C.GstGLShader // out
 
-	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.InternObject(shader).Native()))
+	_arg0 = (*C.GstGLShader)(unsafe.Pointer(coreglib.BaseObject(shader).Native()))
 
 	C.gst_gl_shader_use(_arg0)
 	runtime.KeepAlive(shader)
@@ -8822,7 +8822,7 @@ func GLShaderStringFragmentExternalOesGetDefault(context GLContexter, version GL
 	var _arg3 C.GstGLSLProfile // out
 	var _cret *C.gchar         // in
 
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	_arg2 = C.GstGLSLVersion(version)
 	_arg3 = C.GstGLSLProfile(profile)
 
@@ -8855,7 +8855,7 @@ func GLShaderStringFragmentGetDefault(context GLContexter, version GLSLVersion, 
 	var _arg3 C.GstGLSLProfile // out
 	var _cret *C.gchar         // in
 
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	_arg2 = C.GstGLSLVersion(version)
 	_arg3 = C.GstGLSLProfile(profile)
 
@@ -8897,7 +8897,7 @@ func GLShaderStringGetHighestPrecision(context GLContexter, version GLSLVersion,
 	var _arg3 C.GstGLSLProfile // out
 	var _cret *C.gchar         // in
 
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	_arg2 = C.GstGLSLVersion(version)
 	_arg3 = C.GstGLSLProfile(profile)
 
@@ -8974,7 +8974,7 @@ func NewGLUpload(context GLContexter) *GLUpload {
 	var _arg1 *C.GstGLContext // out
 	var _cret *C.GstGLUpload  // in
 
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	_cret = C.gst_gl_upload_new(_arg1)
 	runtime.KeepAlive(context)
@@ -9004,7 +9004,7 @@ func (upload *GLUpload) FixateCaps(direction gst.PadDirection, caps, othercaps *
 	var _arg3 *C.GstCaps        // out
 	var _cret *C.GstCaps        // in
 
-	_arg0 = (*C.GstGLUpload)(unsafe.Pointer(coreglib.InternObject(upload).Native()))
+	_arg0 = (*C.GstGLUpload)(unsafe.Pointer(coreglib.BaseObject(upload).Native()))
 	_arg1 = C.GstPadDirection(direction)
 	_arg2 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 	_arg3 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(othercaps)))
@@ -9037,7 +9037,7 @@ func (upload *GLUpload) Caps() (inCaps, outCaps *gst.Caps) {
 	var _arg1 *C.GstCaps     // in
 	var _arg2 *C.GstCaps     // in
 
-	_arg0 = (*C.GstGLUpload)(unsafe.Pointer(coreglib.InternObject(upload).Native()))
+	_arg0 = (*C.GstGLUpload)(unsafe.Pointer(coreglib.BaseObject(upload).Native()))
 
 	C.gst_gl_upload_get_caps(_arg0, &_arg1, &_arg2)
 	runtime.KeepAlive(upload)
@@ -9082,7 +9082,7 @@ func (upload *GLUpload) PerformWithBuffer(buffer *gst.Buffer) (*gst.Buffer, GLUp
 	var _arg2 *C.GstBuffer        // in
 	var _cret C.GstGLUploadReturn // in
 
-	_arg0 = (*C.GstGLUpload)(unsafe.Pointer(coreglib.InternObject(upload).Native()))
+	_arg0 = (*C.GstGLUpload)(unsafe.Pointer(coreglib.BaseObject(upload).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(buffer)))
 
 	_cret = C.gst_gl_upload_perform_with_buffer(_arg0, _arg1, &_arg2)
@@ -9115,7 +9115,7 @@ func (upload *GLUpload) ProposeAllocation(decideQuery, query *gst.Query) {
 	var _arg1 *C.GstQuery    // out
 	var _arg2 *C.GstQuery    // out
 
-	_arg0 = (*C.GstGLUpload)(unsafe.Pointer(coreglib.InternObject(upload).Native()))
+	_arg0 = (*C.GstGLUpload)(unsafe.Pointer(coreglib.BaseObject(upload).Native()))
 	if decideQuery != nil {
 		_arg1 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(decideQuery)))
 	}
@@ -9143,7 +9143,7 @@ func (upload *GLUpload) SetCaps(inCaps, outCaps *gst.Caps) bool {
 	var _arg2 *C.GstCaps     // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstGLUpload)(unsafe.Pointer(coreglib.InternObject(upload).Native()))
+	_arg0 = (*C.GstGLUpload)(unsafe.Pointer(coreglib.BaseObject(upload).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(inCaps)))
 	_arg2 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(outCaps)))
 
@@ -9165,8 +9165,8 @@ func (upload *GLUpload) SetContext(context GLContexter) {
 	var _arg0 *C.GstGLUpload  // out
 	var _arg1 *C.GstGLContext // out
 
-	_arg0 = (*C.GstGLUpload)(unsafe.Pointer(coreglib.InternObject(upload).Native()))
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLUpload)(unsafe.Pointer(coreglib.BaseObject(upload).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	C.gst_gl_upload_set_context(_arg0, _arg1)
 	runtime.KeepAlive(upload)
@@ -9187,8 +9187,8 @@ func (upload *GLUpload) TransformCaps(context GLContexter, direction gst.PadDire
 	var _arg4 *C.GstCaps        // out
 	var _cret *C.GstCaps        // in
 
-	_arg0 = (*C.GstGLUpload)(unsafe.Pointer(coreglib.InternObject(upload).Native()))
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLUpload)(unsafe.Pointer(coreglib.BaseObject(upload).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	_arg2 = C.GstPadDirection(direction)
 	_arg3 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 	_arg4 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(filter)))
@@ -9310,7 +9310,7 @@ func (viewconvert *GLViewConvert) FixateCaps(direction gst.PadDirection, caps, o
 	var _arg3 *C.GstCaps          // out
 	var _cret *C.GstCaps          // in
 
-	_arg0 = (*C.GstGLViewConvert)(unsafe.Pointer(coreglib.InternObject(viewconvert).Native()))
+	_arg0 = (*C.GstGLViewConvert)(unsafe.Pointer(coreglib.BaseObject(viewconvert).Native()))
 	_arg1 = C.GstPadDirection(direction)
 	_arg2 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 	_arg3 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(othercaps)))
@@ -9346,7 +9346,7 @@ func (viewconvert *GLViewConvert) Output() (*gst.Buffer, gst.FlowReturn) {
 	var _arg1 *C.GstBuffer        // in
 	var _cret C.GstFlowReturn     // in
 
-	_arg0 = (*C.GstGLViewConvert)(unsafe.Pointer(coreglib.InternObject(viewconvert).Native()))
+	_arg0 = (*C.GstGLViewConvert)(unsafe.Pointer(coreglib.BaseObject(viewconvert).Native()))
 
 	_cret = C.gst_gl_view_convert_get_output(_arg0, &_arg1)
 	runtime.KeepAlive(viewconvert)
@@ -9380,7 +9380,7 @@ func (viewconvert *GLViewConvert) Perform(inbuf *gst.Buffer) *gst.Buffer {
 	var _arg1 *C.GstBuffer        // out
 	var _cret *C.GstBuffer        // in
 
-	_arg0 = (*C.GstGLViewConvert)(unsafe.Pointer(coreglib.InternObject(viewconvert).Native()))
+	_arg0 = (*C.GstGLViewConvert)(unsafe.Pointer(coreglib.BaseObject(viewconvert).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(inbuf)))
 
 	_cret = C.gst_gl_view_convert_perform(_arg0, _arg1)
@@ -9406,7 +9406,7 @@ func (viewconvert *GLViewConvert) Perform(inbuf *gst.Buffer) *gst.Buffer {
 func (viewconvert *GLViewConvert) Reset() {
 	var _arg0 *C.GstGLViewConvert // out
 
-	_arg0 = (*C.GstGLViewConvert)(unsafe.Pointer(coreglib.InternObject(viewconvert).Native()))
+	_arg0 = (*C.GstGLViewConvert)(unsafe.Pointer(coreglib.BaseObject(viewconvert).Native()))
 
 	C.gst_gl_view_convert_reset(_arg0)
 	runtime.KeepAlive(viewconvert)
@@ -9424,7 +9424,7 @@ func (viewconvert *GLViewConvert) SetCaps(inCaps, outCaps *gst.Caps) bool {
 	var _arg2 *C.GstCaps          // out
 	var _cret C.gboolean          // in
 
-	_arg0 = (*C.GstGLViewConvert)(unsafe.Pointer(coreglib.InternObject(viewconvert).Native()))
+	_arg0 = (*C.GstGLViewConvert)(unsafe.Pointer(coreglib.BaseObject(viewconvert).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(inCaps)))
 	_arg2 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(outCaps)))
 
@@ -9451,8 +9451,8 @@ func (viewconvert *GLViewConvert) SetContext(context GLContexter) {
 	var _arg0 *C.GstGLViewConvert // out
 	var _arg1 *C.GstGLContext     // out
 
-	_arg0 = (*C.GstGLViewConvert)(unsafe.Pointer(coreglib.InternObject(viewconvert).Native()))
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg0 = (*C.GstGLViewConvert)(unsafe.Pointer(coreglib.BaseObject(viewconvert).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	C.gst_gl_view_convert_set_context(_arg0, _arg1)
 	runtime.KeepAlive(viewconvert)
@@ -9475,7 +9475,7 @@ func (viewconvert *GLViewConvert) SubmitInputBuffer(isDiscont bool, input *gst.B
 	var _arg2 *C.GstBuffer        // out
 	var _cret C.GstFlowReturn     // in
 
-	_arg0 = (*C.GstGLViewConvert)(unsafe.Pointer(coreglib.InternObject(viewconvert).Native()))
+	_arg0 = (*C.GstGLViewConvert)(unsafe.Pointer(coreglib.BaseObject(viewconvert).Native()))
 	if isDiscont {
 		_arg1 = C.TRUE
 	}
@@ -9513,7 +9513,7 @@ func (viewconvert *GLViewConvert) TransformCaps(direction gst.PadDirection, caps
 	var _arg3 *C.GstCaps          // out
 	var _cret *C.GstCaps          // in
 
-	_arg0 = (*C.GstGLViewConvert)(unsafe.Pointer(coreglib.InternObject(viewconvert).Native()))
+	_arg0 = (*C.GstGLViewConvert)(unsafe.Pointer(coreglib.BaseObject(viewconvert).Native()))
 	_arg1 = C.GstPadDirection(direction)
 	_arg2 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 	_arg3 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(filter)))
@@ -9801,7 +9801,7 @@ func NewGLWindow(display *GLDisplay) *GLWindow {
 	var _arg1 *C.GstGLDisplay // out
 	var _cret *C.GstGLWindow  // in
 
-	_arg1 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.InternObject(display).Native()))
+	_arg1 = (*C.GstGLDisplay)(unsafe.Pointer(coreglib.BaseObject(display).Native()))
 
 	_cret = C.gst_gl_window_new(_arg1)
 	runtime.KeepAlive(display)
@@ -9822,7 +9822,7 @@ func (window *GLWindow) ControlsViewport() bool {
 	var _arg0 *C.GstGLWindow // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 
 	_cret = C.gst_gl_window_controls_viewport(_arg0)
 	runtime.KeepAlive(window)
@@ -9841,7 +9841,7 @@ func (window *GLWindow) ControlsViewport() bool {
 func (window *GLWindow) Draw() {
 	var _arg0 *C.GstGLWindow // out
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 
 	C.gst_gl_window_draw(_arg0)
 	runtime.KeepAlive(window)
@@ -9854,7 +9854,7 @@ func (window *GLWindow) Context() GLContexter {
 	var _arg0 *C.GstGLWindow  // out
 	var _cret *C.GstGLContext // in
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 
 	_cret = C.gst_gl_window_get_context(_arg0)
 	runtime.KeepAlive(window)
@@ -9889,7 +9889,7 @@ func (window *GLWindow) Display() uintptr {
 	var _arg0 *C.GstGLWindow // out
 	var _cret C.guintptr     // in
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 
 	_cret = C.gst_gl_window_get_display(_arg0)
 	runtime.KeepAlive(window)
@@ -9910,7 +9910,7 @@ func (window *GLWindow) SurfaceDimensions() (width, height uint) {
 	var _arg1 C.guint        // in
 	var _arg2 C.guint        // in
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 
 	C.gst_gl_window_get_surface_dimensions(_arg0, &_arg1, &_arg2)
 	runtime.KeepAlive(window)
@@ -9931,7 +9931,7 @@ func (window *GLWindow) WindowHandle() uintptr {
 	var _arg0 *C.GstGLWindow // out
 	var _cret C.guintptr     // in
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 
 	_cret = C.gst_gl_window_get_window_handle(_arg0)
 	runtime.KeepAlive(window)
@@ -9956,7 +9956,7 @@ func (window *GLWindow) HandleEvents(handleEvents bool) {
 	var _arg0 *C.GstGLWindow // out
 	var _arg1 C.gboolean     // out
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 	if handleEvents {
 		_arg1 = C.TRUE
 	}
@@ -9975,7 +9975,7 @@ func (window *GLWindow) HasOutputSurface() bool {
 	var _arg0 *C.GstGLWindow // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 
 	_cret = C.gst_gl_window_has_output_surface(_arg0)
 	runtime.KeepAlive(window)
@@ -9993,7 +9993,7 @@ func (window *GLWindow) HasOutputSurface() bool {
 func (window *GLWindow) QueueResize() {
 	var _arg0 *C.GstGLWindow // out
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 
 	C.gst_gl_window_queue_resize(_arg0)
 	runtime.KeepAlive(window)
@@ -10003,7 +10003,7 @@ func (window *GLWindow) QueueResize() {
 func (window *GLWindow) Quit() {
 	var _arg0 *C.GstGLWindow // out
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 
 	C.gst_gl_window_quit(_arg0)
 	runtime.KeepAlive(window)
@@ -10020,7 +10020,7 @@ func (window *GLWindow) Resize(width, height uint) {
 	var _arg1 C.guint        // out
 	var _arg2 C.guint        // out
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 	_arg1 = C.guint(width)
 	_arg2 = C.guint(height)
 
@@ -10034,7 +10034,7 @@ func (window *GLWindow) Resize(width, height uint) {
 func (window *GLWindow) Run() {
 	var _arg0 *C.GstGLWindow // out
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 
 	C.gst_gl_window_run(_arg0)
 	runtime.KeepAlive(window)
@@ -10049,7 +10049,7 @@ func (window *GLWindow) SendKeyEvent(eventType, keyStr string) {
 	var _arg1 *C.char        // out
 	var _arg2 *C.char        // out
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 	_arg1 = (*C.char)(unsafe.Pointer(C.CString(eventType)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = (*C.char)(unsafe.Pointer(C.CString(keyStr)))
@@ -10074,7 +10074,7 @@ func (window *GLWindow) SendMouseEvent(eventType string, button int, posx, posy 
 	var _arg3 C.double       // out
 	var _arg4 C.double       // out
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 	_arg1 = (*C.char)(unsafe.Pointer(C.CString(eventType)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = C.int(button)
@@ -10105,7 +10105,7 @@ func (window *GLWindow) SendScrollEvent(posx, posy, deltaX, deltaY float64) {
 	var _arg3 C.double       // out
 	var _arg4 C.double       // out
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 	_arg1 = C.double(posx)
 	_arg2 = C.double(posy)
 	_arg3 = C.double(deltaX)
@@ -10131,7 +10131,7 @@ func (window *GLWindow) SetPreferredSize(width, height int) {
 	var _arg1 C.gint         // out
 	var _arg2 C.gint         // out
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 	_arg1 = C.gint(width)
 	_arg2 = C.gint(height)
 
@@ -10162,7 +10162,7 @@ func (window *GLWindow) SetRenderRectangle(x, y, width, height int) bool {
 	var _arg4 C.gint         // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 	_arg1 = C.gint(x)
 	_arg2 = C.gint(y)
 	_arg3 = C.gint(width)
@@ -10195,7 +10195,7 @@ func (window *GLWindow) SetWindowHandle(handle uintptr) {
 	var _arg0 *C.GstGLWindow // out
 	var _arg1 C.guintptr     // out
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 	_arg1 = C.guintptr(handle)
 
 	C.gst_gl_window_set_window_handle(_arg0, _arg1)
@@ -10207,7 +10207,7 @@ func (window *GLWindow) SetWindowHandle(handle uintptr) {
 func (window *GLWindow) Show() {
 	var _arg0 *C.GstGLWindow // out
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 
 	C.gst_gl_window_show(_arg0)
 	runtime.KeepAlive(window)
@@ -10220,7 +10220,7 @@ func (window *GLWindow) close() {
 
 	var _arg0 *C.GstGLWindow // out
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 
 	C._gotk4_gstgl1_GLWindow_virtual_close(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(window)
@@ -10238,7 +10238,7 @@ func (window *GLWindow) controlsViewport() bool {
 	var _arg0 *C.GstGLWindow // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 
 	_cret = C._gotk4_gstgl1_GLWindow_virtual_controls_viewport(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(window)
@@ -10259,7 +10259,7 @@ func (window *GLWindow) draw() {
 
 	var _arg0 *C.GstGLWindow // out
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 
 	C._gotk4_gstgl1_GLWindow_virtual_draw(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(window)
@@ -10277,7 +10277,7 @@ func (window *GLWindow) display() uintptr {
 	var _arg0 *C.GstGLWindow // out
 	var _cret C.guintptr     // in
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 
 	_cret = C._gotk4_gstgl1_GLWindow_virtual_get_display(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(window)
@@ -10303,7 +10303,7 @@ func (window *GLWindow) windowHandle() uintptr {
 	var _arg0 *C.GstGLWindow // out
 	var _cret C.guintptr     // in
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 
 	_cret = C._gotk4_gstgl1_GLWindow_virtual_get_window_handle(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(window)
@@ -10331,7 +10331,7 @@ func (window *GLWindow) handleEvents(handleEvents bool) {
 	var _arg0 *C.GstGLWindow // out
 	var _arg1 C.gboolean     // out
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 	if handleEvents {
 		_arg1 = C.TRUE
 	}
@@ -10353,7 +10353,7 @@ func (window *GLWindow) hasOutputSurface() bool {
 	var _arg0 *C.GstGLWindow // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 
 	_cret = C._gotk4_gstgl1_GLWindow_virtual_has_output_surface(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(window)
@@ -10375,7 +10375,7 @@ func (window *GLWindow) open() error {
 	var _arg0 *C.GstGLWindow // out
 	var _cerr *C.GError      // in
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 
 	C._gotk4_gstgl1_GLWindow_virtual_open(unsafe.Pointer(fnarg), _arg0, &_cerr)
 	runtime.KeepAlive(window)
@@ -10396,7 +10396,7 @@ func (window *GLWindow) queueResize() {
 
 	var _arg0 *C.GstGLWindow // out
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 
 	C._gotk4_gstgl1_GLWindow_virtual_queue_resize(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(window)
@@ -10409,7 +10409,7 @@ func (window *GLWindow) quit() {
 
 	var _arg0 *C.GstGLWindow // out
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 
 	C._gotk4_gstgl1_GLWindow_virtual_quit(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(window)
@@ -10422,7 +10422,7 @@ func (window *GLWindow) run() {
 
 	var _arg0 *C.GstGLWindow // out
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 
 	C._gotk4_gstgl1_GLWindow_virtual_run(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(window)
@@ -10443,7 +10443,7 @@ func (window *GLWindow) setPreferredSize(width, height int) {
 	var _arg1 C.gint         // out
 	var _arg2 C.gint         // out
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 	_arg1 = C.gint(width)
 	_arg2 = C.gint(height)
 
@@ -10477,7 +10477,7 @@ func (window *GLWindow) setRenderRectangle(x, y, width, height int) bool {
 	var _arg4 C.gint         // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 	_arg1 = C.gint(x)
 	_arg2 = C.gint(y)
 	_arg3 = C.gint(width)
@@ -10513,7 +10513,7 @@ func (window *GLWindow) setWindowHandle(handle uintptr) {
 	var _arg0 *C.GstGLWindow // out
 	var _arg1 C.guintptr     // out
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 	_arg1 = C.guintptr(handle)
 
 	C._gotk4_gstgl1_GLWindow_virtual_set_window_handle(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -10528,7 +10528,7 @@ func (window *GLWindow) show() {
 
 	var _arg0 *C.GstGLWindow // out
 
-	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(window).Native()))
+	_arg0 = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(window).Native()))
 
 	C._gotk4_gstgl1_GLWindow_virtual_show(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(window)
@@ -10876,7 +10876,7 @@ func GLBaseMemoryAlloc(allocator GLBaseMemoryAllocatorrer, params *GLAllocationP
 	var _arg2 *C.GstGLAllocationParams    // out
 	var _cret *C.GstGLBaseMemory          // in
 
-	_arg1 = (*C.GstGLBaseMemoryAllocator)(unsafe.Pointer(coreglib.InternObject(allocator).Native()))
+	_arg1 = (*C.GstGLBaseMemoryAllocator)(unsafe.Pointer(coreglib.BaseObject(allocator).Native()))
 	_arg2 = (*C.GstGLAllocationParams)(gextras.StructNative(unsafe.Pointer(params)))
 
 	_cret = C.gst_gl_base_memory_alloc(_arg1, _arg2)
@@ -11089,7 +11089,7 @@ func NewGLBufferAllocationParams(context GLContexter, allocSize uint, allocParam
 	var _arg5 C.guint                        // out
 	var _cret *C.GstGLBufferAllocationParams // in
 
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	_arg2 = C.gsize(allocSize)
 	if allocParams != nil {
 		_arg3 = (*C.GstAllocationParams)(gextras.StructNative(unsafe.Pointer(allocParams)))
@@ -11911,7 +11911,7 @@ func (query *GLQuery) Init(context GLContexter, queryType GLQueryType) {
 	var _arg2 C.GstGLQueryType // out
 
 	_arg0 = (*C.GstGLQuery)(gextras.StructNative(unsafe.Pointer(query)))
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	_arg2 = C.GstGLQueryType(queryType)
 
 	C.gst_gl_query_init(_arg0, _arg1, _arg2)
@@ -12127,7 +12127,7 @@ func NewGLRenderbufferAllocationParams(context GLContexter, allocParams *gst.All
 	var _arg5 C.guint                              // out
 	var _cret *C.GstGLRenderbufferAllocationParams // in
 
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	if allocParams != nil {
 		_arg2 = (*C.GstAllocationParams)(gextras.StructNative(unsafe.Pointer(allocParams)))
 	}
@@ -12295,7 +12295,7 @@ func (syncMeta *GLSyncMeta) SetSyncPoint(context GLContexter) {
 	var _arg1 *C.GstGLContext  // out
 
 	_arg0 = (*C.GstGLSyncMeta)(gextras.StructNative(unsafe.Pointer(syncMeta)))
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	C.gst_gl_sync_meta_set_sync_point(_arg0, _arg1)
 	runtime.KeepAlive(syncMeta)
@@ -12313,7 +12313,7 @@ func (syncMeta *GLSyncMeta) Wait(context GLContexter) {
 	var _arg1 *C.GstGLContext  // out
 
 	_arg0 = (*C.GstGLSyncMeta)(gextras.StructNative(unsafe.Pointer(syncMeta)))
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	C.gst_gl_sync_meta_wait(_arg0, _arg1)
 	runtime.KeepAlive(syncMeta)
@@ -12332,7 +12332,7 @@ func (syncMeta *GLSyncMeta) WaitCpu(context GLContexter) {
 	var _arg1 *C.GstGLContext  // out
 
 	_arg0 = (*C.GstGLSyncMeta)(gextras.StructNative(unsafe.Pointer(syncMeta)))
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 
 	C.gst_gl_sync_meta_wait_cpu(_arg0, _arg1)
 	runtime.KeepAlive(syncMeta)
@@ -12396,7 +12396,7 @@ func NewGLVideoAllocationParams(context GLContexter, allocParams *gst.Allocation
 	var _arg7 C.GstGLFormat                 // out
 	var _cret *C.GstGLVideoAllocationParams // in
 
-	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(context).Native()))
+	_arg1 = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(context).Native()))
 	if allocParams != nil {
 		_arg2 = (*C.GstAllocationParams)(gextras.StructNative(unsafe.Pointer(allocParams)))
 	}

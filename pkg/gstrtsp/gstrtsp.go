@@ -1825,7 +1825,7 @@ func (ext *RTSPExtension) AfterSend(req, resp *RTSPMessage) RTSPResult {
 	var _arg2 *C.GstRTSPMessage   // out
 	var _cret C.GstRTSPResult     // in
 
-	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = (*C.GstRTSPMessage)(gextras.StructNative(unsafe.Pointer(req)))
 	_arg2 = (*C.GstRTSPMessage)(gextras.StructNative(unsafe.Pointer(resp)))
 
@@ -1846,7 +1846,7 @@ func (ext *RTSPExtension) BeforeSend(req *RTSPMessage) RTSPResult {
 	var _arg1 *C.GstRTSPMessage   // out
 	var _cret C.GstRTSPResult     // in
 
-	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = (*C.GstRTSPMessage)(gextras.StructNative(unsafe.Pointer(req)))
 
 	_cret = C.gst_rtsp_extension_before_send(_arg0, _arg1)
@@ -1865,7 +1865,7 @@ func (ext *RTSPExtension) ConfigureStream(caps *gst.Caps) bool {
 	var _arg1 *C.GstCaps          // out
 	var _cret C.gboolean          // in
 
-	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 
 	_cret = C.gst_rtsp_extension_configure_stream(_arg0, _arg1)
@@ -1886,7 +1886,7 @@ func (ext *RTSPExtension) DetectServer(resp *RTSPMessage) bool {
 	var _arg1 *C.GstRTSPMessage   // out
 	var _cret C.gboolean          // in
 
-	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = (*C.GstRTSPMessage)(gextras.StructNative(unsafe.Pointer(resp)))
 
 	_cret = C.gst_rtsp_extension_detect_server(_arg0, _arg1)
@@ -1912,7 +1912,7 @@ func (ext *RTSPExtension) ParseSdp(sdp *gstsdp.SDPMessage, s *gst.Structure) RTS
 	var _arg2 *C.GstStructure     // out
 	var _cret C.GstRTSPResult     // in
 
-	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = (*C.GstSDPMessage)(gextras.StructNative(unsafe.Pointer(sdp)))
 	_arg2 = (*C.GstStructure)(gextras.StructNative(unsafe.Pointer(s)))
 
@@ -1933,7 +1933,7 @@ func (ext *RTSPExtension) ReceiveRequest(req *RTSPMessage) RTSPResult {
 	var _arg1 *C.GstRTSPMessage   // out
 	var _cret C.GstRTSPResult     // in
 
-	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = (*C.GstRTSPMessage)(gextras.StructNative(unsafe.Pointer(req)))
 
 	_cret = C.gst_rtsp_extension_receive_request(_arg0, _arg1)
@@ -1957,7 +1957,7 @@ func (ext *RTSPExtension) Send(req, resp *RTSPMessage) RTSPResult {
 	var _arg2 *C.GstRTSPMessage   // out
 	var _cret C.GstRTSPResult     // in
 
-	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = (*C.GstRTSPMessage)(gextras.StructNative(unsafe.Pointer(req)))
 	_arg2 = (*C.GstRTSPMessage)(gextras.StructNative(unsafe.Pointer(resp)))
 
@@ -1978,7 +1978,7 @@ func (ext *RTSPExtension) SetupMedia(media *gstsdp.SDPMedia) RTSPResult {
 	var _arg1 *C.GstSDPMedia      // out
 	var _cret C.GstRTSPResult     // in
 
-	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = (*C.GstSDPMedia)(gextras.StructNative(unsafe.Pointer(media)))
 
 	_cret = C.gst_rtsp_extension_setup_media(_arg0, _arg1)
@@ -1997,7 +1997,7 @@ func (ext *RTSPExtension) StreamSelect(url *RTSPURL) RTSPResult {
 	var _arg1 *C.GstRTSPUrl       // out
 	var _cret C.GstRTSPResult     // in
 
-	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = (*C.GstRTSPUrl)(gextras.StructNative(unsafe.Pointer(url)))
 
 	_cret = C.gst_rtsp_extension_stream_select(_arg0, _arg1)
@@ -2024,7 +2024,7 @@ func (ext *RTSPExtension) afterSend(req, resp *RTSPMessage) RTSPResult {
 	var _arg2 *C.GstRTSPMessage   // out
 	var _cret C.GstRTSPResult     // in
 
-	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = (*C.GstRTSPMessage)(gextras.StructNative(unsafe.Pointer(req)))
 	_arg2 = (*C.GstRTSPMessage)(gextras.StructNative(unsafe.Pointer(resp)))
 
@@ -2048,7 +2048,7 @@ func (ext *RTSPExtension) beforeSend(req *RTSPMessage) RTSPResult {
 	var _arg1 *C.GstRTSPMessage   // out
 	var _cret C.GstRTSPResult     // in
 
-	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = (*C.GstRTSPMessage)(gextras.StructNative(unsafe.Pointer(req)))
 
 	_cret = C._gotk4_gstrtsp1_RTSPExtension_virtual_before_send(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -2070,7 +2070,7 @@ func (ext *RTSPExtension) configureStream(caps *gst.Caps) bool {
 	var _arg1 *C.GstCaps          // out
 	var _cret C.gboolean          // in
 
-	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 
 	_cret = C._gotk4_gstrtsp1_RTSPExtension_virtual_configure_stream(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -2094,7 +2094,7 @@ func (ext *RTSPExtension) detectServer(resp *RTSPMessage) bool {
 	var _arg1 *C.GstRTSPMessage   // out
 	var _cret C.gboolean          // in
 
-	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = (*C.GstRTSPMessage)(gextras.StructNative(unsafe.Pointer(resp)))
 
 	_cret = C._gotk4_gstrtsp1_RTSPExtension_virtual_detect_server(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -2123,7 +2123,7 @@ func (ext *RTSPExtension) parseSdp(sdp *gstsdp.SDPMessage, s *gst.Structure) RTS
 	var _arg2 *C.GstStructure     // out
 	var _cret C.GstRTSPResult     // in
 
-	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = (*C.GstSDPMessage)(gextras.StructNative(unsafe.Pointer(sdp)))
 	_arg2 = (*C.GstStructure)(gextras.StructNative(unsafe.Pointer(s)))
 
@@ -2147,7 +2147,7 @@ func (ext *RTSPExtension) receiveRequest(req *RTSPMessage) RTSPResult {
 	var _arg1 *C.GstRTSPMessage   // out
 	var _cret C.GstRTSPResult     // in
 
-	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = (*C.GstRTSPMessage)(gextras.StructNative(unsafe.Pointer(req)))
 
 	_cret = C._gotk4_gstrtsp1_RTSPExtension_virtual_receive_request(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -2174,7 +2174,7 @@ func (ext *RTSPExtension) send(req, resp *RTSPMessage) RTSPResult {
 	var _arg2 *C.GstRTSPMessage   // out
 	var _cret C.GstRTSPResult     // in
 
-	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = (*C.GstRTSPMessage)(gextras.StructNative(unsafe.Pointer(req)))
 	_arg2 = (*C.GstRTSPMessage)(gextras.StructNative(unsafe.Pointer(resp)))
 
@@ -2198,7 +2198,7 @@ func (ext *RTSPExtension) setupMedia(media *gstsdp.SDPMedia) RTSPResult {
 	var _arg1 *C.GstSDPMedia      // out
 	var _cret C.GstRTSPResult     // in
 
-	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = (*C.GstSDPMedia)(gextras.StructNative(unsafe.Pointer(media)))
 
 	_cret = C._gotk4_gstrtsp1_RTSPExtension_virtual_setup_media(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -2220,7 +2220,7 @@ func (ext *RTSPExtension) streamSelect(url *RTSPURL) RTSPResult {
 	var _arg1 *C.GstRTSPUrl       // out
 	var _cret C.GstRTSPResult     // in
 
-	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTSPExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = (*C.GstRTSPUrl)(gextras.StructNative(unsafe.Pointer(url)))
 
 	_cret = C._gotk4_gstrtsp1_RTSPExtension_virtual_stream_select(unsafe.Pointer(fnarg), _arg0, _arg1)

@@ -135,7 +135,7 @@ func (l LFOWaveform) String() string {
 func TimedValueControlInvalidateCache(self TimedValueControlSourcer) {
 	var _arg1 *C.GstTimedValueControlSource // out
 
-	_arg1 = (*C.GstTimedValueControlSource)(unsafe.Pointer(coreglib.InternObject(self).Native()))
+	_arg1 = (*C.GstTimedValueControlSource)(unsafe.Pointer(coreglib.BaseObject(self).Native()))
 
 	C.gst_timed_value_control_invalidate_cache(_arg1)
 	runtime.KeepAlive(self)
@@ -218,13 +218,13 @@ func NewARGBControlBinding(object gst.GstObjector, propertyName string, csA, csR
 	var _arg6 *C.GstControlSource  // out
 	var _cret *C.GstControlBinding // in
 
-	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(object).Native()))
+	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(object).Native()))
 	_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(propertyName)))
 	defer C.free(unsafe.Pointer(_arg2))
-	_arg3 = (*C.GstControlSource)(unsafe.Pointer(coreglib.InternObject(csA).Native()))
-	_arg4 = (*C.GstControlSource)(unsafe.Pointer(coreglib.InternObject(csR).Native()))
-	_arg5 = (*C.GstControlSource)(unsafe.Pointer(coreglib.InternObject(csG).Native()))
-	_arg6 = (*C.GstControlSource)(unsafe.Pointer(coreglib.InternObject(csB).Native()))
+	_arg3 = (*C.GstControlSource)(unsafe.Pointer(coreglib.BaseObject(csA).Native()))
+	_arg4 = (*C.GstControlSource)(unsafe.Pointer(coreglib.BaseObject(csR).Native()))
+	_arg5 = (*C.GstControlSource)(unsafe.Pointer(coreglib.BaseObject(csG).Native()))
+	_arg6 = (*C.GstControlSource)(unsafe.Pointer(coreglib.BaseObject(csB).Native()))
 
 	_cret = C.gst_argb_control_binding_new(_arg1, _arg2, _arg3, _arg4, _arg5, _arg6)
 	runtime.KeepAlive(object)
@@ -316,10 +316,10 @@ func NewDirectControlBinding(object gst.GstObjector, propertyName string, cs gst
 	var _arg3 *C.GstControlSource  // out
 	var _cret *C.GstControlBinding // in
 
-	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(object).Native()))
+	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(object).Native()))
 	_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(propertyName)))
 	defer C.free(unsafe.Pointer(_arg2))
-	_arg3 = (*C.GstControlSource)(unsafe.Pointer(coreglib.InternObject(cs).Native()))
+	_arg3 = (*C.GstControlSource)(unsafe.Pointer(coreglib.BaseObject(cs).Native()))
 
 	_cret = C.gst_direct_control_binding_new(_arg1, _arg2, _arg3)
 	runtime.KeepAlive(object)
@@ -352,10 +352,10 @@ func NewDirectControlBindingAbsolute(object gst.GstObjector, propertyName string
 	var _arg3 *C.GstControlSource  // out
 	var _cret *C.GstControlBinding // in
 
-	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(object).Native()))
+	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(object).Native()))
 	_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(propertyName)))
 	defer C.free(unsafe.Pointer(_arg2))
-	_arg3 = (*C.GstControlSource)(unsafe.Pointer(coreglib.InternObject(cs).Native()))
+	_arg3 = (*C.GstControlSource)(unsafe.Pointer(coreglib.BaseObject(cs).Native()))
 
 	_cret = C.gst_direct_control_binding_new_absolute(_arg1, _arg2, _arg3)
 	runtime.KeepAlive(object)
@@ -593,10 +593,10 @@ func NewProxyControlBinding(object gst.GstObjector, propertyName string, refObje
 	var _arg4 *C.gchar             // out
 	var _cret *C.GstControlBinding // in
 
-	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(object).Native()))
+	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(object).Native()))
 	_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(propertyName)))
 	defer C.free(unsafe.Pointer(_arg2))
-	_arg3 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(refObject).Native()))
+	_arg3 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(refObject).Native()))
 	_arg4 = (*C.gchar)(unsafe.Pointer(C.CString(refPropertyName)))
 	defer C.free(unsafe.Pointer(_arg4))
 
@@ -717,7 +717,7 @@ func (self *TimedValueControlSource) All() []*gst.TimedValue {
 	var _arg0 *C.GstTimedValueControlSource // out
 	var _cret *C.GList                      // in
 
-	_arg0 = (*C.GstTimedValueControlSource)(unsafe.Pointer(coreglib.InternObject(self).Native()))
+	_arg0 = (*C.GstTimedValueControlSource)(unsafe.Pointer(coreglib.BaseObject(self).Native()))
 
 	_cret = C.gst_timed_value_control_source_get_all(_arg0)
 	runtime.KeepAlive(self)
@@ -744,7 +744,7 @@ func (self *TimedValueControlSource) Count() int {
 	var _arg0 *C.GstTimedValueControlSource // out
 	var _cret C.gint                        // in
 
-	_arg0 = (*C.GstTimedValueControlSource)(unsafe.Pointer(coreglib.InternObject(self).Native()))
+	_arg0 = (*C.GstTimedValueControlSource)(unsafe.Pointer(coreglib.BaseObject(self).Native()))
 
 	_cret = C.gst_timed_value_control_source_get_count(_arg0)
 	runtime.KeepAlive(self)
@@ -772,7 +772,7 @@ func (self *TimedValueControlSource) Set(timestamp gst.ClockTime, value float64)
 	var _arg2 C.gdouble                     // out
 	var _cret C.gboolean                    // in
 
-	_arg0 = (*C.GstTimedValueControlSource)(unsafe.Pointer(coreglib.InternObject(self).Native()))
+	_arg0 = (*C.GstTimedValueControlSource)(unsafe.Pointer(coreglib.BaseObject(self).Native()))
 	_arg1 = C.GstClockTime(timestamp)
 	_arg2 = C.gdouble(value)
 
@@ -804,7 +804,7 @@ func (self *TimedValueControlSource) SetFromList(timedvalues []*gst.TimedValue) 
 	var _arg1 *C.GSList                     // out
 	var _cret C.gboolean                    // in
 
-	_arg0 = (*C.GstTimedValueControlSource)(unsafe.Pointer(coreglib.InternObject(self).Native()))
+	_arg0 = (*C.GstTimedValueControlSource)(unsafe.Pointer(coreglib.BaseObject(self).Native()))
 	for i := len(timedvalues) - 1; i >= 0; i-- {
 		src := timedvalues[i]
 		var dst *C.GstTimedValue // out
@@ -841,7 +841,7 @@ func (self *TimedValueControlSource) Unset(timestamp gst.ClockTime) bool {
 	var _arg1 C.GstClockTime                // out
 	var _cret C.gboolean                    // in
 
-	_arg0 = (*C.GstTimedValueControlSource)(unsafe.Pointer(coreglib.InternObject(self).Native()))
+	_arg0 = (*C.GstTimedValueControlSource)(unsafe.Pointer(coreglib.BaseObject(self).Native()))
 	_arg1 = C.GstClockTime(timestamp)
 
 	_cret = C.gst_timed_value_control_source_unset(_arg0, _arg1)
@@ -862,7 +862,7 @@ func (self *TimedValueControlSource) Unset(timestamp gst.ClockTime) bool {
 func (self *TimedValueControlSource) UnsetAll() {
 	var _arg0 *C.GstTimedValueControlSource // out
 
-	_arg0 = (*C.GstTimedValueControlSource)(unsafe.Pointer(coreglib.InternObject(self).Native()))
+	_arg0 = (*C.GstTimedValueControlSource)(unsafe.Pointer(coreglib.BaseObject(self).Native()))
 
 	C.gst_timed_value_control_source_unset_all(_arg0)
 	runtime.KeepAlive(self)

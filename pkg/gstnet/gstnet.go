@@ -107,7 +107,7 @@ func BufferAddNetAddressMeta(buffer *gst.Buffer, addr gio.SocketAddresser) *NetA
 	var _cret *C.GstNetAddressMeta // in
 
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(buffer)))
-	_arg2 = (*C.GSocketAddress)(unsafe.Pointer(coreglib.InternObject(addr).Native()))
+	_arg2 = (*C.GSocketAddress)(unsafe.Pointer(coreglib.BaseObject(addr).Native()))
 
 	_cret = C.gst_buffer_add_net_address_meta(_arg1, _arg2)
 	runtime.KeepAlive(buffer)
@@ -137,7 +137,7 @@ func BufferAddNetControlMessageMeta(buffer *gst.Buffer, message gio.SocketContro
 	var _cret *C.GstNetControlMessageMeta // in
 
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(buffer)))
-	_arg2 = (*C.GSocketControlMessage)(unsafe.Pointer(coreglib.InternObject(message).Native()))
+	_arg2 = (*C.GSocketControlMessage)(unsafe.Pointer(coreglib.BaseObject(message).Native()))
 
 	_cret = C.gst_buffer_add_net_control_message_meta(_arg1, _arg2)
 	runtime.KeepAlive(buffer)
@@ -217,7 +217,7 @@ func NetUtilsSetSocketTos(socket *gio.Socket, qosDscp int) bool {
 	var _arg2 C.gint     // out
 	var _cret C.gboolean // in
 
-	_arg1 = (*C.GSocket)(unsafe.Pointer(coreglib.InternObject(socket).Native()))
+	_arg1 = (*C.GSocket)(unsafe.Pointer(coreglib.BaseObject(socket).Native()))
 	_arg2 = C.gint(qosDscp)
 
 	_cret = C.gst_net_utils_set_socket_tos(_arg1, _arg2)
@@ -612,7 +612,7 @@ func NewNetTimeProvider(clock gst.Clocker, address string, port int) *NetTimePro
 	var _arg3 C.gint                // out
 	var _cret *C.GstNetTimeProvider // in
 
-	_arg1 = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
+	_arg1 = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
 	if address != "" {
 		_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(address)))
 		defer C.free(unsafe.Pointer(_arg2))
@@ -1072,8 +1072,8 @@ func (packet *NetTimePacket) Send(socket *gio.Socket, destAddress gio.SocketAddr
 	var _cerr *C.GError           // in
 
 	_arg0 = (*C.GstNetTimePacket)(gextras.StructNative(unsafe.Pointer(packet)))
-	_arg1 = (*C.GSocket)(unsafe.Pointer(coreglib.InternObject(socket).Native()))
-	_arg2 = (*C.GSocketAddress)(unsafe.Pointer(coreglib.InternObject(destAddress).Native()))
+	_arg1 = (*C.GSocket)(unsafe.Pointer(coreglib.BaseObject(socket).Native()))
+	_arg2 = (*C.GSocketAddress)(unsafe.Pointer(coreglib.BaseObject(destAddress).Native()))
 
 	C.gst_net_time_packet_send(_arg0, _arg1, _arg2, &_cerr)
 	runtime.KeepAlive(packet)
@@ -1133,7 +1133,7 @@ func NetTimePacketReceive(socket *gio.Socket) (gio.SocketAddresser, *NetTimePack
 	var _cret *C.GstNetTimePacket // in
 	var _cerr *C.GError           // in
 
-	_arg1 = (*C.GSocket)(unsafe.Pointer(coreglib.InternObject(socket).Native()))
+	_arg1 = (*C.GSocket)(unsafe.Pointer(coreglib.BaseObject(socket).Native()))
 
 	_cret = C.gst_net_time_packet_receive(_arg1, &_arg2, &_cerr)
 	runtime.KeepAlive(socket)

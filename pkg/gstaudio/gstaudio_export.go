@@ -243,7 +243,7 @@ func _gotk4_gstaudio1_AudioBaseSinkClass_create_ringbuffer(arg0 *C.GstAudioBaseS
 	var _ AudioRingBufferer
 
 	if audioRingBuffer != nil {
-		cret = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(audioRingBuffer).Native()))
+		cret = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(audioRingBuffer).Native()))
 	}
 
 	return cret
@@ -290,7 +290,7 @@ func _gotk4_gstaudio1_AudioBaseSrcClass_create_ringbuffer(arg0 *C.GstAudioBaseSr
 	var _ AudioRingBufferer
 
 	if audioRingBuffer != nil {
-		cret = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.InternObject(audioRingBuffer).Native()))
+		cret = (*C.GstAudioRingBuffer)(unsafe.Pointer(coreglib.BaseObject(audioRingBuffer).Native()))
 	}
 
 	return cret

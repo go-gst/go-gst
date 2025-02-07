@@ -429,7 +429,7 @@ func (allocator *PhysMemoryAllocator) physAddr(mem *gst.Memory) uintptr {
 	var _arg1 *C.GstMemory              // out
 	var _cret C.guintptr                // in
 
-	_arg0 = (*C.GstPhysMemoryAllocator)(unsafe.Pointer(coreglib.InternObject(allocator).Native()))
+	_arg0 = (*C.GstPhysMemoryAllocator)(unsafe.Pointer(coreglib.BaseObject(allocator).Native()))
 	_arg1 = (*C.GstMemory)(gextras.StructNative(unsafe.Pointer(mem)))
 
 	_cret = C._gotk4_gstallocators1_PhysMemoryAllocator_virtual_get_phys_addr(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -578,7 +578,7 @@ func (allocator *DRMDumbAllocator) Alloc(drmFourcc, width, height uint32) (uint3
 	var _arg4 C.guint32       // in
 	var _cret *C.GstMemory    // in
 
-	_arg0 = (*C.GstAllocator)(unsafe.Pointer(coreglib.InternObject(allocator).Native()))
+	_arg0 = (*C.GstAllocator)(unsafe.Pointer(coreglib.BaseObject(allocator).Native()))
 	_arg1 = C.guint32(drmFourcc)
 	_arg2 = C.guint32(width)
 	_arg3 = C.guint32(height)
@@ -613,7 +613,7 @@ func (allocator *DRMDumbAllocator) HasPrimeExport() bool {
 	var _arg0 *C.GstAllocator // out
 	var _cret C.gboolean      // in
 
-	_arg0 = (*C.GstAllocator)(unsafe.Pointer(coreglib.InternObject(allocator).Native()))
+	_arg0 = (*C.GstAllocator)(unsafe.Pointer(coreglib.BaseObject(allocator).Native()))
 
 	_cret = C.gst_drm_dumb_allocator_has_prime_export(_arg0)
 	runtime.KeepAlive(allocator)
@@ -716,7 +716,7 @@ func DmaBufAllocatorAlloc(allocator gst.Allocatorrer, fd int, size uint) *gst.Me
 	var _arg3 C.gsize         // out
 	var _cret *C.GstMemory    // in
 
-	_arg1 = (*C.GstAllocator)(unsafe.Pointer(coreglib.InternObject(allocator).Native()))
+	_arg1 = (*C.GstAllocator)(unsafe.Pointer(coreglib.BaseObject(allocator).Native()))
 	_arg2 = C.gint(fd)
 	_arg3 = C.gsize(size)
 
@@ -763,7 +763,7 @@ func DmaBufAllocatorAllocWithFlags(allocator gst.Allocatorrer, fd int, size uint
 	var _arg4 C.GstFdMemoryFlags // out
 	var _cret *C.GstMemory       // in
 
-	_arg1 = (*C.GstAllocator)(unsafe.Pointer(coreglib.InternObject(allocator).Native()))
+	_arg1 = (*C.GstAllocator)(unsafe.Pointer(coreglib.BaseObject(allocator).Native()))
 	_arg2 = C.gint(fd)
 	_arg3 = C.gsize(size)
 	_arg4 = C.GstFdMemoryFlags(flags)
@@ -878,7 +878,7 @@ func FdAllocatorAlloc(allocator gst.Allocatorrer, fd int, size uint, flags FdMem
 	var _arg4 C.GstFdMemoryFlags // out
 	var _cret *C.GstMemory       // in
 
-	_arg1 = (*C.GstAllocator)(unsafe.Pointer(coreglib.InternObject(allocator).Native()))
+	_arg1 = (*C.GstAllocator)(unsafe.Pointer(coreglib.BaseObject(allocator).Native()))
 	_arg2 = C.gint(fd)
 	_arg3 = C.gsize(size)
 	_arg4 = C.GstFdMemoryFlags(flags)

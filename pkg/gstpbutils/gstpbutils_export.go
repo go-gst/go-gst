@@ -159,8 +159,8 @@ func _gotk4_gstpbutils1_DiscovererClass_load_serialize_info(arg0 *C.GstDiscovere
 
 	var _ *DiscovererInfo
 
-	cret = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.InternObject(discovererInfo).Native()))
-	C.g_object_ref(C.gpointer(coreglib.InternObject(discovererInfo).Native()))
+	cret = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.BaseObject(discovererInfo).Native()))
+	C.g_object_ref(C.gpointer(coreglib.BaseObject(discovererInfo).Native()))
 
 	return cret
 }
@@ -269,8 +269,8 @@ func _gotk4_gstpbutils1_Discoverer_ConnectLoadSerializedInfo(arg0 C.gpointer, ar
 	var _ *DiscovererInfo
 
 	if discovererInfo != nil {
-		cret = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.InternObject(discovererInfo).Native()))
-		C.g_object_ref(C.gpointer(coreglib.InternObject(discovererInfo).Native()))
+		cret = (*C.GstDiscovererInfo)(unsafe.Pointer(coreglib.BaseObject(discovererInfo).Native()))
+		C.g_object_ref(C.gpointer(coreglib.BaseObject(discovererInfo).Native()))
 	}
 
 	return cret

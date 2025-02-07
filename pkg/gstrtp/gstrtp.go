@@ -1330,7 +1330,7 @@ func (baseaudiopayload *RTPBaseAudioPayload) Flush(payloadLen uint, timestamp gs
 	var _arg2 C.GstClockTime            // out
 	var _cret C.GstFlowReturn           // in
 
-	_arg0 = (*C.GstRTPBaseAudioPayload)(unsafe.Pointer(coreglib.InternObject(baseaudiopayload).Native()))
+	_arg0 = (*C.GstRTPBaseAudioPayload)(unsafe.Pointer(coreglib.BaseObject(baseaudiopayload).Native()))
 	_arg1 = C.guint(payloadLen)
 	_arg2 = C.GstClockTime(timestamp)
 
@@ -1355,7 +1355,7 @@ func (rtpbaseaudiopayload *RTPBaseAudioPayload) Adapter() *gstbase.Adapter {
 	var _arg0 *C.GstRTPBaseAudioPayload // out
 	var _cret *C.GstAdapter             // in
 
-	_arg0 = (*C.GstRTPBaseAudioPayload)(unsafe.Pointer(coreglib.InternObject(rtpbaseaudiopayload).Native()))
+	_arg0 = (*C.GstRTPBaseAudioPayload)(unsafe.Pointer(coreglib.BaseObject(rtpbaseaudiopayload).Native()))
 
 	_cret = C.gst_rtp_base_audio_payload_get_adapter(_arg0)
 	runtime.KeepAlive(rtpbaseaudiopayload)
@@ -1391,7 +1391,7 @@ func (baseaudiopayload *RTPBaseAudioPayload) Push(data []byte, timestamp gst.Clo
 	var _arg3 C.GstClockTime  // out
 	var _cret C.GstFlowReturn // in
 
-	_arg0 = (*C.GstRTPBaseAudioPayload)(unsafe.Pointer(coreglib.InternObject(baseaudiopayload).Native()))
+	_arg0 = (*C.GstRTPBaseAudioPayload)(unsafe.Pointer(coreglib.BaseObject(baseaudiopayload).Native()))
 	_arg2 = (C.guint)(len(data))
 	if len(data) > 0 {
 		_arg1 = (*C.guint8)(unsafe.Pointer(&data[0]))
@@ -1415,7 +1415,7 @@ func (baseaudiopayload *RTPBaseAudioPayload) Push(data []byte, timestamp gst.Clo
 func (rtpbaseaudiopayload *RTPBaseAudioPayload) SetFrameBased() {
 	var _arg0 *C.GstRTPBaseAudioPayload // out
 
-	_arg0 = (*C.GstRTPBaseAudioPayload)(unsafe.Pointer(coreglib.InternObject(rtpbaseaudiopayload).Native()))
+	_arg0 = (*C.GstRTPBaseAudioPayload)(unsafe.Pointer(coreglib.BaseObject(rtpbaseaudiopayload).Native()))
 
 	C.gst_rtp_base_audio_payload_set_frame_based(_arg0)
 	runtime.KeepAlive(rtpbaseaudiopayload)
@@ -1432,7 +1432,7 @@ func (rtpbaseaudiopayload *RTPBaseAudioPayload) SetFrameOptions(frameDuration, f
 	var _arg1 C.gint                    // out
 	var _arg2 C.gint                    // out
 
-	_arg0 = (*C.GstRTPBaseAudioPayload)(unsafe.Pointer(coreglib.InternObject(rtpbaseaudiopayload).Native()))
+	_arg0 = (*C.GstRTPBaseAudioPayload)(unsafe.Pointer(coreglib.BaseObject(rtpbaseaudiopayload).Native()))
 	_arg1 = C.gint(frameDuration)
 	_arg2 = C.gint(frameSize)
 
@@ -1447,7 +1447,7 @@ func (rtpbaseaudiopayload *RTPBaseAudioPayload) SetFrameOptions(frameDuration, f
 func (rtpbaseaudiopayload *RTPBaseAudioPayload) SetSampleBased() {
 	var _arg0 *C.GstRTPBaseAudioPayload // out
 
-	_arg0 = (*C.GstRTPBaseAudioPayload)(unsafe.Pointer(coreglib.InternObject(rtpbaseaudiopayload).Native()))
+	_arg0 = (*C.GstRTPBaseAudioPayload)(unsafe.Pointer(coreglib.BaseObject(rtpbaseaudiopayload).Native()))
 
 	C.gst_rtp_base_audio_payload_set_sample_based(_arg0)
 	runtime.KeepAlive(rtpbaseaudiopayload)
@@ -1462,7 +1462,7 @@ func (rtpbaseaudiopayload *RTPBaseAudioPayload) SetSampleOptions(sampleSize int)
 	var _arg0 *C.GstRTPBaseAudioPayload // out
 	var _arg1 C.gint                    // out
 
-	_arg0 = (*C.GstRTPBaseAudioPayload)(unsafe.Pointer(coreglib.InternObject(rtpbaseaudiopayload).Native()))
+	_arg0 = (*C.GstRTPBaseAudioPayload)(unsafe.Pointer(coreglib.BaseObject(rtpbaseaudiopayload).Native()))
 	_arg1 = C.gint(sampleSize)
 
 	C.gst_rtp_base_audio_payload_set_sample_options(_arg0, _arg1)
@@ -1479,7 +1479,7 @@ func (rtpbaseaudiopayload *RTPBaseAudioPayload) SetSamplebitsOptions(sampleSize 
 	var _arg0 *C.GstRTPBaseAudioPayload // out
 	var _arg1 C.gint                    // out
 
-	_arg0 = (*C.GstRTPBaseAudioPayload)(unsafe.Pointer(coreglib.InternObject(rtpbaseaudiopayload).Native()))
+	_arg0 = (*C.GstRTPBaseAudioPayload)(unsafe.Pointer(coreglib.BaseObject(rtpbaseaudiopayload).Native()))
 	_arg1 = C.gint(sampleSize)
 
 	C.gst_rtp_base_audio_payload_set_samplebits_options(_arg0, _arg1)
@@ -1656,7 +1656,7 @@ func (depayload *RTPBaseDepayload) ConnectRequestExtension(f func(extId uint, ex
 func (depayload *RTPBaseDepayload) Delayed() {
 	var _arg0 *C.GstRTPBaseDepayload // out
 
-	_arg0 = (*C.GstRTPBaseDepayload)(unsafe.Pointer(coreglib.InternObject(depayload).Native()))
+	_arg0 = (*C.GstRTPBaseDepayload)(unsafe.Pointer(coreglib.BaseObject(depayload).Native()))
 
 	C.gst_rtp_base_depayload_delayed(_arg0)
 	runtime.KeepAlive(depayload)
@@ -1674,7 +1674,7 @@ func (depayload *RTPBaseDepayload) Delayed() {
 func (depayload *RTPBaseDepayload) Dropped() {
 	var _arg0 *C.GstRTPBaseDepayload // out
 
-	_arg0 = (*C.GstRTPBaseDepayload)(unsafe.Pointer(coreglib.InternObject(depayload).Native()))
+	_arg0 = (*C.GstRTPBaseDepayload)(unsafe.Pointer(coreglib.BaseObject(depayload).Native()))
 
 	C.gst_rtp_base_depayload_dropped(_arg0)
 	runtime.KeepAlive(depayload)
@@ -1703,7 +1703,7 @@ func (depayload *RTPBaseDepayload) Flush(keepCurrent bool) {
 	var _arg0 *C.GstRTPBaseDepayload // out
 	var _arg1 C.gboolean             // out
 
-	_arg0 = (*C.GstRTPBaseDepayload)(unsafe.Pointer(coreglib.InternObject(depayload).Native()))
+	_arg0 = (*C.GstRTPBaseDepayload)(unsafe.Pointer(coreglib.BaseObject(depayload).Native()))
 	if keepCurrent {
 		_arg1 = C.TRUE
 	}
@@ -1723,7 +1723,7 @@ func (depayload *RTPBaseDepayload) IsAggregateHdrextEnabled() bool {
 	var _arg0 *C.GstRTPBaseDepayload // out
 	var _cret C.gboolean             // in
 
-	_arg0 = (*C.GstRTPBaseDepayload)(unsafe.Pointer(coreglib.InternObject(depayload).Native()))
+	_arg0 = (*C.GstRTPBaseDepayload)(unsafe.Pointer(coreglib.BaseObject(depayload).Native()))
 
 	_cret = C.gst_rtp_base_depayload_is_aggregate_hdrext_enabled(_arg0)
 	runtime.KeepAlive(depayload)
@@ -1747,7 +1747,7 @@ func (depayload *RTPBaseDepayload) IsSourceInfoEnabled() bool {
 	var _arg0 *C.GstRTPBaseDepayload // out
 	var _cret C.gboolean             // in
 
-	_arg0 = (*C.GstRTPBaseDepayload)(unsafe.Pointer(coreglib.InternObject(depayload).Native()))
+	_arg0 = (*C.GstRTPBaseDepayload)(unsafe.Pointer(coreglib.BaseObject(depayload).Native()))
 
 	_cret = C.gst_rtp_base_depayload_is_source_info_enabled(_arg0)
 	runtime.KeepAlive(depayload)
@@ -1778,7 +1778,7 @@ func (filter *RTPBaseDepayload) Push(outBuf *gst.Buffer) gst.FlowReturn {
 	var _arg1 *C.GstBuffer           // out
 	var _cret C.GstFlowReturn        // in
 
-	_arg0 = (*C.GstRTPBaseDepayload)(unsafe.Pointer(coreglib.InternObject(filter).Native()))
+	_arg0 = (*C.GstRTPBaseDepayload)(unsafe.Pointer(coreglib.BaseObject(filter).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(outBuf)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(outBuf)), nil)
 
@@ -1808,7 +1808,7 @@ func (filter *RTPBaseDepayload) PushList(outList *gst.BufferList) gst.FlowReturn
 	var _arg1 *C.GstBufferList       // out
 	var _cret C.GstFlowReturn        // in
 
-	_arg0 = (*C.GstRTPBaseDepayload)(unsafe.Pointer(coreglib.InternObject(filter).Native()))
+	_arg0 = (*C.GstRTPBaseDepayload)(unsafe.Pointer(coreglib.BaseObject(filter).Native()))
 	_arg1 = (*C.GstBufferList)(gextras.StructNative(unsafe.Pointer(outList)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(outList)), nil)
 
@@ -1832,7 +1832,7 @@ func (depayload *RTPBaseDepayload) SetAggregateHdrextEnabled(enable bool) {
 	var _arg0 *C.GstRTPBaseDepayload // out
 	var _arg1 C.gboolean             // out
 
-	_arg0 = (*C.GstRTPBaseDepayload)(unsafe.Pointer(coreglib.InternObject(depayload).Native()))
+	_arg0 = (*C.GstRTPBaseDepayload)(unsafe.Pointer(coreglib.BaseObject(depayload).Native()))
 	if enable {
 		_arg1 = C.TRUE
 	}
@@ -1852,7 +1852,7 @@ func (depayload *RTPBaseDepayload) SetSourceInfoEnabled(enable bool) {
 	var _arg0 *C.GstRTPBaseDepayload // out
 	var _arg1 C.gboolean             // out
 
-	_arg0 = (*C.GstRTPBaseDepayload)(unsafe.Pointer(coreglib.InternObject(depayload).Native()))
+	_arg0 = (*C.GstRTPBaseDepayload)(unsafe.Pointer(coreglib.BaseObject(depayload).Native()))
 	if enable {
 		_arg1 = C.TRUE
 	}
@@ -1871,7 +1871,7 @@ func (filter *RTPBaseDepayload) handleEvent(event *gst.Event) bool {
 	var _arg1 *C.GstEvent            // out
 	var _cret C.gboolean             // in
 
-	_arg0 = (*C.GstRTPBaseDepayload)(unsafe.Pointer(coreglib.InternObject(filter).Native()))
+	_arg0 = (*C.GstRTPBaseDepayload)(unsafe.Pointer(coreglib.BaseObject(filter).Native()))
 	_arg1 = (*C.GstEvent)(gextras.StructNative(unsafe.Pointer(event)))
 
 	_cret = C._gotk4_gstrtp1_RTPBaseDepayload_virtual_handle_event(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -1896,7 +1896,7 @@ func (filter *RTPBaseDepayload) packetLost(event *gst.Event) bool {
 	var _arg1 *C.GstEvent            // out
 	var _cret C.gboolean             // in
 
-	_arg0 = (*C.GstRTPBaseDepayload)(unsafe.Pointer(coreglib.InternObject(filter).Native()))
+	_arg0 = (*C.GstRTPBaseDepayload)(unsafe.Pointer(coreglib.BaseObject(filter).Native()))
 	_arg1 = (*C.GstEvent)(gextras.StructNative(unsafe.Pointer(event)))
 
 	_cret = C._gotk4_gstrtp1_RTPBaseDepayload_virtual_packet_lost(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -1925,7 +1925,7 @@ func (base *RTPBaseDepayload) process(in *gst.Buffer) *gst.Buffer {
 	var _arg1 *C.GstBuffer           // out
 	var _cret *C.GstBuffer           // in
 
-	_arg0 = (*C.GstRTPBaseDepayload)(unsafe.Pointer(coreglib.InternObject(base).Native()))
+	_arg0 = (*C.GstRTPBaseDepayload)(unsafe.Pointer(coreglib.BaseObject(base).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(in)))
 
 	_cret = C._gotk4_gstrtp1_RTPBaseDepayload_virtual_process(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -1960,7 +1960,7 @@ func (base *RTPBaseDepayload) processRtpPacket(rtpBuffer *RTPBuffer) *gst.Buffer
 	var _arg1 *C.GstRTPBuffer        // out
 	var _cret *C.GstBuffer           // in
 
-	_arg0 = (*C.GstRTPBaseDepayload)(unsafe.Pointer(coreglib.InternObject(base).Native()))
+	_arg0 = (*C.GstRTPBaseDepayload)(unsafe.Pointer(coreglib.BaseObject(base).Native()))
 	_arg1 = (*C.GstRTPBuffer)(gextras.StructNative(unsafe.Pointer(rtpBuffer)))
 
 	_cret = C._gotk4_gstrtp1_RTPBaseDepayload_virtual_process_rtp_packet(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -1988,7 +1988,7 @@ func (filter *RTPBaseDepayload) setCaps(caps *gst.Caps) bool {
 	var _arg1 *C.GstCaps             // out
 	var _cret C.gboolean             // in
 
-	_arg0 = (*C.GstRTPBaseDepayload)(unsafe.Pointer(coreglib.InternObject(filter).Native()))
+	_arg0 = (*C.GstRTPBaseDepayload)(unsafe.Pointer(coreglib.BaseObject(filter).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 
 	_cret = C._gotk4_gstrtp1_RTPBaseDepayload_virtual_set_caps(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -2158,7 +2158,7 @@ func (payload *RTPBasePayload) AllocateOutputBuffer(payloadLen uint, padLen, csr
 	var _arg3 C.guint8             // out
 	var _cret *C.GstBuffer         // in
 
-	_arg0 = (*C.GstRTPBasePayload)(unsafe.Pointer(coreglib.InternObject(payload).Native()))
+	_arg0 = (*C.GstRTPBasePayload)(unsafe.Pointer(coreglib.BaseObject(payload).Native()))
 	_arg1 = C.guint(payloadLen)
 	_arg2 = C.guint8(padLen)
 	_arg3 = C.guint8(csrcCount)
@@ -2198,7 +2198,7 @@ func (payload *RTPBasePayload) SourceCount(buffer *gst.Buffer) uint {
 	var _arg1 *C.GstBuffer         // out
 	var _cret C.guint              // in
 
-	_arg0 = (*C.GstRTPBasePayload)(unsafe.Pointer(coreglib.InternObject(payload).Native()))
+	_arg0 = (*C.GstRTPBasePayload)(unsafe.Pointer(coreglib.BaseObject(payload).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(buffer)))
 
 	_cret = C.gst_rtp_base_payload_get_source_count(_arg0, _arg1)
@@ -2230,7 +2230,7 @@ func (payload *RTPBasePayload) IsFilled(size uint, duration gst.ClockTime) bool 
 	var _arg2 C.GstClockTime       // out
 	var _cret C.gboolean           // in
 
-	_arg0 = (*C.GstRTPBasePayload)(unsafe.Pointer(coreglib.InternObject(payload).Native()))
+	_arg0 = (*C.GstRTPBasePayload)(unsafe.Pointer(coreglib.BaseObject(payload).Native()))
 	_arg1 = C.guint(size)
 	_arg2 = C.GstClockTime(duration)
 
@@ -2258,7 +2258,7 @@ func (payload *RTPBasePayload) IsSourceInfoEnabled() bool {
 	var _arg0 *C.GstRTPBasePayload // out
 	var _cret C.gboolean           // in
 
-	_arg0 = (*C.GstRTPBasePayload)(unsafe.Pointer(coreglib.InternObject(payload).Native()))
+	_arg0 = (*C.GstRTPBasePayload)(unsafe.Pointer(coreglib.BaseObject(payload).Native()))
 
 	_cret = C.gst_rtp_base_payload_is_source_info_enabled(_arg0)
 	runtime.KeepAlive(payload)
@@ -2289,7 +2289,7 @@ func (payload *RTPBasePayload) Push(buffer *gst.Buffer) gst.FlowReturn {
 	var _arg1 *C.GstBuffer         // out
 	var _cret C.GstFlowReturn      // in
 
-	_arg0 = (*C.GstRTPBasePayload)(unsafe.Pointer(coreglib.InternObject(payload).Native()))
+	_arg0 = (*C.GstRTPBasePayload)(unsafe.Pointer(coreglib.BaseObject(payload).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(buffer)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(buffer)), nil)
 
@@ -2321,7 +2321,7 @@ func (payload *RTPBasePayload) PushList(list *gst.BufferList) gst.FlowReturn {
 	var _arg1 *C.GstBufferList     // out
 	var _cret C.GstFlowReturn      // in
 
-	_arg0 = (*C.GstRTPBasePayload)(unsafe.Pointer(coreglib.InternObject(payload).Native()))
+	_arg0 = (*C.GstRTPBasePayload)(unsafe.Pointer(coreglib.BaseObject(payload).Native()))
 	_arg1 = (*C.GstBufferList)(gextras.StructNative(unsafe.Pointer(list)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(list)), nil)
 
@@ -2353,7 +2353,7 @@ func (payload *RTPBasePayload) SetOptions(media string, dynamic bool, encodingNa
 	var _arg3 *C.gchar             // out
 	var _arg4 C.guint32            // out
 
-	_arg0 = (*C.GstRTPBasePayload)(unsafe.Pointer(coreglib.InternObject(payload).Native()))
+	_arg0 = (*C.GstRTPBasePayload)(unsafe.Pointer(coreglib.BaseObject(payload).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(media)))
 	defer C.free(unsafe.Pointer(_arg1))
 	if dynamic {
@@ -2385,7 +2385,7 @@ func (payload *RTPBasePayload) SetOutcapsStructure(s *gst.Structure) bool {
 	var _arg1 *C.GstStructure      // out
 	var _cret C.gboolean           // in
 
-	_arg0 = (*C.GstRTPBasePayload)(unsafe.Pointer(coreglib.InternObject(payload).Native()))
+	_arg0 = (*C.GstRTPBasePayload)(unsafe.Pointer(coreglib.BaseObject(payload).Native()))
 	if s != nil {
 		_arg1 = (*C.GstStructure)(gextras.StructNative(unsafe.Pointer(s)))
 	}
@@ -2413,7 +2413,7 @@ func (payload *RTPBasePayload) SetSourceInfoEnabled(enable bool) {
 	var _arg0 *C.GstRTPBasePayload // out
 	var _arg1 C.gboolean           // out
 
-	_arg0 = (*C.GstRTPBasePayload)(unsafe.Pointer(coreglib.InternObject(payload).Native()))
+	_arg0 = (*C.GstRTPBasePayload)(unsafe.Pointer(coreglib.BaseObject(payload).Native()))
 	if enable {
 		_arg1 = C.TRUE
 	}
@@ -2438,8 +2438,8 @@ func (payload *RTPBasePayload) caps(pad *gst.Pad, filter *gst.Caps) *gst.Caps {
 	var _arg2 *C.GstCaps           // out
 	var _cret *C.GstCaps           // in
 
-	_arg0 = (*C.GstRTPBasePayload)(unsafe.Pointer(coreglib.InternObject(payload).Native()))
-	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstRTPBasePayload)(unsafe.Pointer(coreglib.BaseObject(payload).Native()))
+	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg2 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(filter)))
 
 	_cret = C._gotk4_gstrtp1_RTPBasePayload_virtual_get_caps(unsafe.Pointer(fnarg), _arg0, _arg1, _arg2)
@@ -2468,7 +2468,7 @@ func (payload *RTPBasePayload) handleBuffer(buffer *gst.Buffer) gst.FlowReturn {
 	var _arg1 *C.GstBuffer         // out
 	var _cret C.GstFlowReturn      // in
 
-	_arg0 = (*C.GstRTPBasePayload)(unsafe.Pointer(coreglib.InternObject(payload).Native()))
+	_arg0 = (*C.GstRTPBasePayload)(unsafe.Pointer(coreglib.BaseObject(payload).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(buffer)))
 
 	_cret = C._gotk4_gstrtp1_RTPBasePayload_virtual_handle_buffer(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -2497,8 +2497,8 @@ func (payload *RTPBasePayload) query(pad *gst.Pad, query *gst.Query) bool {
 	var _arg2 *C.GstQuery          // out
 	var _cret C.gboolean           // in
 
-	_arg0 = (*C.GstRTPBasePayload)(unsafe.Pointer(coreglib.InternObject(payload).Native()))
-	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstRTPBasePayload)(unsafe.Pointer(coreglib.BaseObject(payload).Native()))
+	_arg1 = (*C.GstPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	_arg2 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(query)))
 
 	_cret = C._gotk4_gstrtp1_RTPBasePayload_virtual_query(unsafe.Pointer(fnarg), _arg0, _arg1, _arg2)
@@ -2524,7 +2524,7 @@ func (payload *RTPBasePayload) setCaps(caps *gst.Caps) bool {
 	var _arg1 *C.GstCaps           // out
 	var _cret C.gboolean           // in
 
-	_arg0 = (*C.GstRTPBasePayload)(unsafe.Pointer(coreglib.InternObject(payload).Native()))
+	_arg0 = (*C.GstRTPBasePayload)(unsafe.Pointer(coreglib.BaseObject(payload).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 
 	_cret = C._gotk4_gstrtp1_RTPBasePayload_virtual_set_caps(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -2549,7 +2549,7 @@ func (payload *RTPBasePayload) sinkEvent(event *gst.Event) bool {
 	var _arg1 *C.GstEvent          // out
 	var _cret C.gboolean           // in
 
-	_arg0 = (*C.GstRTPBasePayload)(unsafe.Pointer(coreglib.InternObject(payload).Native()))
+	_arg0 = (*C.GstRTPBasePayload)(unsafe.Pointer(coreglib.BaseObject(payload).Native()))
 	_arg1 = (*C.GstEvent)(gextras.StructNative(unsafe.Pointer(event)))
 
 	_cret = C._gotk4_gstrtp1_RTPBasePayload_virtual_sink_event(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -2574,7 +2574,7 @@ func (payload *RTPBasePayload) srcEvent(event *gst.Event) bool {
 	var _arg1 *C.GstEvent          // out
 	var _cret C.gboolean           // in
 
-	_arg0 = (*C.GstRTPBasePayload)(unsafe.Pointer(coreglib.InternObject(payload).Native()))
+	_arg0 = (*C.GstRTPBasePayload)(unsafe.Pointer(coreglib.BaseObject(payload).Native()))
 	_arg1 = (*C.GstEvent)(gextras.StructNative(unsafe.Pointer(event)))
 
 	_cret = C._gotk4_gstrtp1_RTPBasePayload_virtual_src_event(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -2806,7 +2806,7 @@ func (ext *RTPHeaderExtension) Direction() RTPHeaderExtensionDirection {
 	var _arg0 *C.GstRTPHeaderExtension         // out
 	var _cret C.GstRTPHeaderExtensionDirection // in
 
-	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 
 	_cret = C.gst_rtp_header_extension_get_direction(_arg0)
 	runtime.KeepAlive(ext)
@@ -2825,7 +2825,7 @@ func (ext *RTPHeaderExtension) ID() uint {
 	var _arg0 *C.GstRTPHeaderExtension // out
 	var _cret C.guint                  // in
 
-	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 
 	_cret = C.gst_rtp_header_extension_get_id(_arg0)
 	runtime.KeepAlive(ext)
@@ -2856,7 +2856,7 @@ func (ext *RTPHeaderExtension) MaxSize(inputMeta *gst.Buffer) uint {
 	var _arg1 *C.GstBuffer             // out
 	var _cret C.gsize                  // in
 
-	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(inputMeta)))
 
 	_cret = C.gst_rtp_header_extension_get_max_size(_arg0, _arg1)
@@ -2877,7 +2877,7 @@ func (ext *RTPHeaderExtension) SdpCapsFieldName() string {
 	var _arg0 *C.GstRTPHeaderExtension // out
 	var _cret *C.gchar                 // in
 
-	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 
 	_cret = C.gst_rtp_header_extension_get_sdp_caps_field_name(_arg0)
 	runtime.KeepAlive(ext)
@@ -2897,7 +2897,7 @@ func (ext *RTPHeaderExtension) SupportedFlags() RTPHeaderExtensionFlags {
 	var _arg0 *C.GstRTPHeaderExtension     // out
 	var _cret C.GstRTPHeaderExtensionFlags // in
 
-	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 
 	_cret = C.gst_rtp_header_extension_get_supported_flags(_arg0)
 	runtime.KeepAlive(ext)
@@ -2916,7 +2916,7 @@ func (ext *RTPHeaderExtension) URI() string {
 	var _arg0 *C.GstRTPHeaderExtension // out
 	var _cret *C.gchar                 // in
 
-	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 
 	_cret = C.gst_rtp_header_extension_get_uri(_arg0)
 	runtime.KeepAlive(ext)
@@ -2949,7 +2949,7 @@ func (ext *RTPHeaderExtension) Read(readFlags RTPHeaderExtensionFlags, data []by
 	var _arg4 *C.GstBuffer // out
 	var _cret C.gboolean   // in
 
-	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = C.GstRTPHeaderExtensionFlags(readFlags)
 	_arg3 = (C.gsize)(len(data))
 	if len(data) > 0 {
@@ -2990,7 +2990,7 @@ func (ext *RTPHeaderExtension) SetAttributesFromCaps(caps *gst.Caps) bool {
 	var _arg1 *C.GstCaps               // out
 	var _cret C.gboolean               // in
 
-	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 
 	_cret = C.gst_rtp_header_extension_set_attributes_from_caps(_arg0, _arg1)
@@ -3025,7 +3025,7 @@ func (ext *RTPHeaderExtension) SetCapsFromAttributes(caps *gst.Caps) bool {
 	var _arg1 *C.GstCaps               // out
 	var _cret C.gboolean               // in
 
-	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 
 	_cret = C.gst_rtp_header_extension_set_caps_from_attributes(_arg0, _arg1)
@@ -3062,7 +3062,7 @@ func (ext *RTPHeaderExtension) SetCapsFromAttributesHelper(caps *gst.Caps, attri
 	var _arg2 *C.gchar                 // out
 	var _cret C.gboolean               // in
 
-	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 	_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(attributes)))
 	defer C.free(unsafe.Pointer(_arg2))
@@ -3093,7 +3093,7 @@ func (ext *RTPHeaderExtension) SetDirection(direction RTPHeaderExtensionDirectio
 	var _arg0 *C.GstRTPHeaderExtension         // out
 	var _arg1 C.GstRTPHeaderExtensionDirection // out
 
-	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = C.GstRTPHeaderExtensionDirection(direction)
 
 	C.gst_rtp_header_extension_set_direction(_arg0, _arg1)
@@ -3110,7 +3110,7 @@ func (ext *RTPHeaderExtension) SetID(extId uint) {
 	var _arg0 *C.GstRTPHeaderExtension // out
 	var _arg1 C.guint                  // out
 
-	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = C.guint(extId)
 
 	C.gst_rtp_header_extension_set_id(_arg0, _arg1)
@@ -3133,7 +3133,7 @@ func (ext *RTPHeaderExtension) SetNonRtpSinkCaps(caps *gst.Caps) bool {
 	var _arg1 *C.GstCaps               // out
 	var _cret C.gboolean               // in
 
-	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 
 	_cret = C.gst_rtp_header_extension_set_non_rtp_sink_caps(_arg0, _arg1)
@@ -3164,7 +3164,7 @@ func (ext *RTPHeaderExtension) SetWantsUpdateNonRtpSrcCaps(state bool) {
 	var _arg0 *C.GstRTPHeaderExtension // out
 	var _arg1 C.gboolean               // out
 
-	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	if state {
 		_arg1 = C.TRUE
 	}
@@ -3190,7 +3190,7 @@ func (ext *RTPHeaderExtension) UpdateNonRtpSrcCaps(caps *gst.Caps) bool {
 	var _arg1 *C.GstCaps               // out
 	var _cret C.gboolean               // in
 
-	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 
 	_cret = C.gst_rtp_header_extension_update_non_rtp_src_caps(_arg0, _arg1)
@@ -3217,7 +3217,7 @@ func (ext *RTPHeaderExtension) WantsUpdateNonRtpSrcCaps() bool {
 	var _arg0 *C.GstRTPHeaderExtension // out
 	var _cret C.gboolean               // in
 
-	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 
 	_cret = C.gst_rtp_header_extension_wants_update_non_rtp_src_caps(_arg0)
 	runtime.KeepAlive(ext)
@@ -3254,7 +3254,7 @@ func (ext *RTPHeaderExtension) Write(inputMeta *gst.Buffer, writeFlags RTPHeader
 	var _arg5 C.gsize
 	var _cret C.gssize // in
 
-	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(inputMeta)))
 	_arg2 = C.GstRTPHeaderExtensionFlags(writeFlags)
 	_arg3 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(output)))
@@ -3299,7 +3299,7 @@ func (ext *RTPHeaderExtension) maxSize(inputMeta *gst.Buffer) uint {
 	var _arg1 *C.GstBuffer             // out
 	var _cret C.gsize                  // in
 
-	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(inputMeta)))
 
 	_cret = C._gotk4_gstrtp1_RTPHeaderExtension_virtual_get_max_size(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -3325,7 +3325,7 @@ func (ext *RTPHeaderExtension) supportedFlags() RTPHeaderExtensionFlags {
 	var _arg0 *C.GstRTPHeaderExtension     // out
 	var _cret C.GstRTPHeaderExtensionFlags // in
 
-	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 
 	_cret = C._gotk4_gstrtp1_RTPHeaderExtension_virtual_get_supported_flags(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(ext)
@@ -3359,7 +3359,7 @@ func (ext *RTPHeaderExtension) read(readFlags RTPHeaderExtensionFlags, data []by
 	var _arg4 *C.GstBuffer // out
 	var _cret C.gboolean   // in
 
-	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = C.GstRTPHeaderExtensionFlags(readFlags)
 	_arg3 = (C.gsize)(len(data))
 	if len(data) > 0 {
@@ -3398,7 +3398,7 @@ func (ext *RTPHeaderExtension) setAttributes(direction RTPHeaderExtensionDirecti
 	var _arg2 *C.gchar                         // out
 	var _cret C.gboolean                       // in
 
-	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = C.GstRTPHeaderExtensionDirection(direction)
 	_arg2 = (*C.gchar)(unsafe.Pointer(C.CString(attributes)))
 	defer C.free(unsafe.Pointer(_arg2))
@@ -3439,7 +3439,7 @@ func (ext *RTPHeaderExtension) setCapsFromAttributes(caps *gst.Caps) bool {
 	var _arg1 *C.GstCaps               // out
 	var _cret C.gboolean               // in
 
-	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 
 	_cret = C._gotk4_gstrtp1_RTPHeaderExtension_virtual_set_caps_from_attributes(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -3473,7 +3473,7 @@ func (ext *RTPHeaderExtension) setNonRtpSinkCaps(caps *gst.Caps) bool {
 	var _arg1 *C.GstCaps               // out
 	var _cret C.gboolean               // in
 
-	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 
 	_cret = C._gotk4_gstrtp1_RTPHeaderExtension_virtual_set_non_rtp_sink_caps(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -3508,7 +3508,7 @@ func (ext *RTPHeaderExtension) updateNonRtpSrcCaps(caps *gst.Caps) bool {
 	var _arg1 *C.GstCaps               // out
 	var _cret C.gboolean               // in
 
-	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 
 	_cret = C._gotk4_gstrtp1_RTPHeaderExtension_virtual_update_non_rtp_src_caps(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -3550,7 +3550,7 @@ func (ext *RTPHeaderExtension) write(inputMeta *gst.Buffer, writeFlags RTPHeader
 	var _arg5 C.gsize
 	var _cret C.gssize // in
 
-	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.InternObject(ext).Native()))
+	_arg0 = (*C.GstRTPHeaderExtension)(unsafe.Pointer(coreglib.BaseObject(ext).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(inputMeta)))
 	_arg2 = C.GstRTPHeaderExtensionFlags(writeFlags)
 	_arg3 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(output)))

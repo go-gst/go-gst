@@ -817,8 +817,8 @@ func NewPlay(videoRenderer PlayVideoRendererer) *Play {
 	var _cret *C.GstPlay              // in
 
 	if videoRenderer != nil {
-		_arg1 = (*C.GstPlayVideoRenderer)(unsafe.Pointer(coreglib.InternObject(videoRenderer).Native()))
-		C.g_object_ref(C.gpointer(coreglib.InternObject(videoRenderer).Native()))
+		_arg1 = (*C.GstPlayVideoRenderer)(unsafe.Pointer(coreglib.BaseObject(videoRenderer).Native()))
+		C.g_object_ref(C.gpointer(coreglib.BaseObject(videoRenderer).Native()))
 	}
 
 	_cret = C.gst_play_new(_arg1)
@@ -840,7 +840,7 @@ func (play *Play) AudioVideoOffset() int64 {
 	var _arg0 *C.GstPlay // out
 	var _cret C.gint64   // in
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 
 	_cret = C.gst_play_get_audio_video_offset(_arg0)
 	runtime.KeepAlive(play)
@@ -867,7 +867,7 @@ func (play *Play) ColorBalance(typ PlayColorBalanceType) float64 {
 	var _arg1 C.GstPlayColorBalanceType // out
 	var _cret C.gdouble                 // in
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 	_arg1 = C.GstPlayColorBalanceType(typ)
 
 	_cret = C.gst_play_get_color_balance(_arg0, _arg1)
@@ -893,7 +893,7 @@ func (play *Play) Config() *gst.Structure {
 	var _arg0 *C.GstPlay      // out
 	var _cret *C.GstStructure // in
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 
 	_cret = C.gst_play_get_config(_arg0)
 	runtime.KeepAlive(play)
@@ -921,7 +921,7 @@ func (play *Play) CurrentAudioTrack() *PlayAudioInfo {
 	var _arg0 *C.GstPlay          // out
 	var _cret *C.GstPlayAudioInfo // in
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 
 	_cret = C.gst_play_get_current_audio_track(_arg0)
 	runtime.KeepAlive(play)
@@ -947,7 +947,7 @@ func (play *Play) CurrentSubtitleTrack() *PlaySubtitleInfo {
 	var _arg0 *C.GstPlay             // out
 	var _cret *C.GstPlaySubtitleInfo // in
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 
 	_cret = C.gst_play_get_current_subtitle_track(_arg0)
 	runtime.KeepAlive(play)
@@ -972,7 +972,7 @@ func (play *Play) CurrentVideoTrack() *PlayVideoInfo {
 	var _arg0 *C.GstPlay          // out
 	var _cret *C.GstPlayVideoInfo // in
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 
 	_cret = C.gst_play_get_current_video_track(_arg0)
 	runtime.KeepAlive(play)
@@ -994,7 +994,7 @@ func (play *Play) CurrentVisualization() string {
 	var _arg0 *C.GstPlay // out
 	var _cret *C.gchar   // in
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 
 	_cret = C.gst_play_get_current_visualization(_arg0)
 	runtime.KeepAlive(play)
@@ -1019,7 +1019,7 @@ func (play *Play) Duration() gst.ClockTime {
 	var _arg0 *C.GstPlay     // out
 	var _cret C.GstClockTime // in
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 
 	_cret = C.gst_play_get_duration(_arg0)
 	runtime.KeepAlive(play)
@@ -1042,7 +1042,7 @@ func (play *Play) MediaInfo() *PlayMediaInfo {
 	var _arg0 *C.GstPlay          // out
 	var _cret *C.GstPlayMediaInfo // in
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 
 	_cret = C.gst_play_get_media_info(_arg0)
 	runtime.KeepAlive(play)
@@ -1076,7 +1076,7 @@ func (play *Play) MessageBus() *gst.Bus {
 	var _arg0 *C.GstPlay // out
 	var _cret *C.GstBus  // in
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 
 	_cret = C.gst_play_get_message_bus(_arg0)
 	runtime.KeepAlive(play)
@@ -1106,7 +1106,7 @@ func (play *Play) MultiviewFlags() gstvideo.VideoMultiviewFlags {
 	var _arg0 *C.GstPlay               // out
 	var _cret C.GstVideoMultiviewFlags // in
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 
 	_cret = C.gst_play_get_multiview_flags(_arg0)
 	runtime.KeepAlive(play)
@@ -1127,7 +1127,7 @@ func (play *Play) MultiviewMode() gstvideo.VideoMultiviewFramePacking {
 	var _arg0 *C.GstPlay                      // out
 	var _cret C.GstVideoMultiviewFramePacking // in
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 
 	_cret = C.gst_play_get_multiview_mode(_arg0)
 	runtime.KeepAlive(play)
@@ -1146,7 +1146,7 @@ func (play *Play) Mute() bool {
 	var _arg0 *C.GstPlay // out
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 
 	_cret = C.gst_play_get_mute(_arg0)
 	runtime.KeepAlive(play)
@@ -1169,7 +1169,7 @@ func (play *Play) Pipeline() gst.Elementer {
 	var _arg0 *C.GstPlay    // out
 	var _cret *C.GstElement // in
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 
 	_cret = C.gst_play_get_pipeline(_arg0)
 	runtime.KeepAlive(play)
@@ -1205,7 +1205,7 @@ func (play *Play) Position() gst.ClockTime {
 	var _arg0 *C.GstPlay     // out
 	var _cret C.GstClockTime // in
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 
 	_cret = C.gst_play_get_position(_arg0)
 	runtime.KeepAlive(play)
@@ -1224,7 +1224,7 @@ func (play *Play) Rate() float64 {
 	var _arg0 *C.GstPlay // out
 	var _cret C.gdouble  // in
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 
 	_cret = C.gst_play_get_rate(_arg0)
 	runtime.KeepAlive(play)
@@ -1246,7 +1246,7 @@ func (play *Play) SubtitleURI() string {
 	var _arg0 *C.GstPlay // out
 	var _cret *C.gchar   // in
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 
 	_cret = C.gst_play_get_subtitle_uri(_arg0)
 	runtime.KeepAlive(play)
@@ -1271,7 +1271,7 @@ func (play *Play) SubtitleVideoOffset() int64 {
 	var _arg0 *C.GstPlay // out
 	var _cret C.gint64   // in
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 
 	_cret = C.gst_play_get_subtitle_video_offset(_arg0)
 	runtime.KeepAlive(play)
@@ -1293,7 +1293,7 @@ func (play *Play) URI() string {
 	var _arg0 *C.GstPlay // out
 	var _cret *C.gchar   // in
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 
 	_cret = C.gst_play_get_uri(_arg0)
 	runtime.KeepAlive(play)
@@ -1332,7 +1332,7 @@ func (play *Play) VideoSnapshot(format PlaySnapshotFormat, config *gst.Structure
 	var _arg2 *C.GstStructure         // out
 	var _cret *C.GstSample            // in
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 	_arg1 = C.GstPlaySnapshotFormat(format)
 	if config != nil {
 		_arg2 = (*C.GstStructure)(gextras.StructNative(unsafe.Pointer(config)))
@@ -1366,7 +1366,7 @@ func (play *Play) Volume() float64 {
 	var _arg0 *C.GstPlay // out
 	var _cret C.gdouble  // in
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 
 	_cret = C.gst_play_get_volume(_arg0)
 	runtime.KeepAlive(play)
@@ -1387,7 +1387,7 @@ func (play *Play) HasColorBalance() bool {
 	var _arg0 *C.GstPlay // out
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 
 	_cret = C.gst_play_has_color_balance(_arg0)
 	runtime.KeepAlive(play)
@@ -1405,7 +1405,7 @@ func (play *Play) HasColorBalance() bool {
 func (play *Play) Pause() {
 	var _arg0 *C.GstPlay // out
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 
 	C.gst_play_pause(_arg0)
 	runtime.KeepAlive(play)
@@ -1415,7 +1415,7 @@ func (play *Play) Pause() {
 func (play *Play) Play() {
 	var _arg0 *C.GstPlay // out
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 
 	C.gst_play_play(_arg0)
 	runtime.KeepAlive(play)
@@ -1431,7 +1431,7 @@ func (play *Play) Seek(position gst.ClockTime) {
 	var _arg0 *C.GstPlay     // out
 	var _arg1 C.GstClockTime // out
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 	_arg1 = C.GstClockTime(position)
 
 	C.gst_play_seek(_arg0, _arg1)
@@ -1453,7 +1453,7 @@ func (play *Play) SetAudioTrack(streamIndex int) bool {
 	var _arg1 C.gint     // out
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 	_arg1 = C.gint(streamIndex)
 
 	_cret = C.gst_play_set_audio_track(_arg0, _arg1)
@@ -1478,7 +1478,7 @@ func (play *Play) SetAudioTrackEnabled(enabled bool) {
 	var _arg0 *C.GstPlay // out
 	var _arg1 C.gboolean // out
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 	if enabled {
 		_arg1 = C.TRUE
 	}
@@ -1497,7 +1497,7 @@ func (play *Play) SetAudioVideoOffset(offset int64) {
 	var _arg0 *C.GstPlay // out
 	var _arg1 C.gint64   // out
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 	_arg1 = C.gint64(offset)
 
 	C.gst_play_set_audio_video_offset(_arg0, _arg1)
@@ -1517,7 +1517,7 @@ func (play *Play) SetColorBalance(typ PlayColorBalanceType, value float64) {
 	var _arg1 C.GstPlayColorBalanceType // out
 	var _arg2 C.gdouble                 // out
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 	_arg1 = C.GstPlayColorBalanceType(typ)
 	_arg2 = C.gdouble(value)
 
@@ -1549,7 +1549,7 @@ func (play *Play) SetConfig(config *gst.Structure) bool {
 	var _arg1 *C.GstStructure // out
 	var _cret C.gboolean      // in
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 	_arg1 = (*C.GstStructure)(gextras.StructNative(unsafe.Pointer(config)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(config)), nil)
 
@@ -1576,7 +1576,7 @@ func (play *Play) SetMultiviewFlags(flags gstvideo.VideoMultiviewFlags) {
 	var _arg0 *C.GstPlay               // out
 	var _arg1 C.GstVideoMultiviewFlags // out
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 	_arg1 = C.GstVideoMultiviewFlags(flags)
 
 	C.gst_play_set_multiview_flags(_arg0, _arg1)
@@ -1594,7 +1594,7 @@ func (play *Play) SetMultiviewMode(mode gstvideo.VideoMultiviewFramePacking) {
 	var _arg0 *C.GstPlay                      // out
 	var _arg1 C.GstVideoMultiviewFramePacking // out
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 	_arg1 = C.GstVideoMultiviewFramePacking(mode)
 
 	C.gst_play_set_multiview_mode(_arg0, _arg1)
@@ -1611,7 +1611,7 @@ func (play *Play) SetMute(val bool) {
 	var _arg0 *C.GstPlay // out
 	var _arg1 C.gboolean // out
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 	if val {
 		_arg1 = C.TRUE
 	}
@@ -1630,7 +1630,7 @@ func (play *Play) SetRate(rate float64) {
 	var _arg0 *C.GstPlay // out
 	var _arg1 C.gdouble  // out
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 	_arg1 = C.gdouble(rate)
 
 	C.gst_play_set_rate(_arg0, _arg1)
@@ -1652,7 +1652,7 @@ func (play *Play) SetSubtitleTrack(streamIndex int) bool {
 	var _arg1 C.gint     // out
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 	_arg1 = C.gint(streamIndex)
 
 	_cret = C.gst_play_set_subtitle_track(_arg0, _arg1)
@@ -1677,7 +1677,7 @@ func (play *Play) SetSubtitleTrackEnabled(enabled bool) {
 	var _arg0 *C.GstPlay // out
 	var _arg1 C.gboolean // out
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 	if enabled {
 		_arg1 = C.TRUE
 	}
@@ -1698,7 +1698,7 @@ func (play *Play) SetSubtitleURI(uri string) {
 	var _arg0 *C.GstPlay // out
 	var _arg1 *C.gchar   // out
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 	if uri != "" {
 		_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
 		defer C.free(unsafe.Pointer(_arg1))
@@ -1719,7 +1719,7 @@ func (play *Play) SetSubtitleVideoOffset(offset int64) {
 	var _arg0 *C.GstPlay // out
 	var _arg1 C.gint64   // out
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 	_arg1 = C.gint64(offset)
 
 	C.gst_play_set_subtitle_video_offset(_arg0, _arg1)
@@ -1736,7 +1736,7 @@ func (play *Play) SetURI(uri string) {
 	var _arg0 *C.GstPlay // out
 	var _arg1 *C.gchar   // out
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 	if uri != "" {
 		_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
 		defer C.free(unsafe.Pointer(_arg1))
@@ -1761,7 +1761,7 @@ func (play *Play) SetVideoTrack(streamIndex int) bool {
 	var _arg1 C.gint     // out
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 	_arg1 = C.gint(streamIndex)
 
 	_cret = C.gst_play_set_video_track(_arg0, _arg1)
@@ -1786,7 +1786,7 @@ func (play *Play) SetVideoTrackEnabled(enabled bool) {
 	var _arg0 *C.GstPlay // out
 	var _arg1 C.gboolean // out
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 	if enabled {
 		_arg1 = C.TRUE
 	}
@@ -1809,7 +1809,7 @@ func (play *Play) SetVisualization(name string) bool {
 	var _arg1 *C.gchar   // out
 	var _cret C.gboolean // in
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 	if name != "" {
 		_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 		defer C.free(unsafe.Pointer(_arg1))
@@ -1837,7 +1837,7 @@ func (play *Play) SetVisualizationEnabled(enabled bool) {
 	var _arg0 *C.GstPlay // out
 	var _arg1 C.gboolean // out
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 	if enabled {
 		_arg1 = C.TRUE
 	}
@@ -1857,7 +1857,7 @@ func (play *Play) SetVolume(val float64) {
 	var _arg0 *C.GstPlay // out
 	var _arg1 C.gdouble  // out
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 	_arg1 = C.gdouble(val)
 
 	C.gst_play_set_volume(_arg0, _arg1)
@@ -1870,7 +1870,7 @@ func (play *Play) SetVolume(val float64) {
 func (play *Play) Stop() {
 	var _arg0 *C.GstPlay // out
 
-	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg0 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 
 	C.gst_play_stop(_arg0)
 	runtime.KeepAlive(play)
@@ -2083,7 +2083,7 @@ func PlayGetAudioStreams(info *PlayMediaInfo) []*PlayAudioInfo {
 	var _arg1 *C.GstPlayMediaInfo // out
 	var _cret *C.GList            // in
 
-	_arg1 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg1 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_get_audio_streams(_arg1)
 	runtime.KeepAlive(info)
@@ -2112,7 +2112,7 @@ func PlayGetSubtitleStreams(info *PlayMediaInfo) []*PlaySubtitleInfo {
 	var _arg1 *C.GstPlayMediaInfo // out
 	var _cret *C.GList            // in
 
-	_arg1 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg1 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_get_subtitle_streams(_arg1)
 	runtime.KeepAlive(info)
@@ -2141,7 +2141,7 @@ func PlayGetVideoStreams(info *PlayMediaInfo) []*PlayVideoInfo {
 	var _arg1 *C.GstPlayMediaInfo // out
 	var _cret *C.GList            // in
 
-	_arg1 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg1 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_get_video_streams(_arg1)
 	runtime.KeepAlive(info)
@@ -2249,7 +2249,7 @@ func (info *PlayAudioInfo) Bitrate() int {
 	var _arg0 *C.GstPlayAudioInfo // out
 	var _cret C.gint              // in
 
-	_arg0 = (*C.GstPlayAudioInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayAudioInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_audio_info_get_bitrate(_arg0)
 	runtime.KeepAlive(info)
@@ -2268,7 +2268,7 @@ func (info *PlayAudioInfo) Channels() int {
 	var _arg0 *C.GstPlayAudioInfo // out
 	var _cret C.gint              // in
 
-	_arg0 = (*C.GstPlayAudioInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayAudioInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_audio_info_get_channels(_arg0)
 	runtime.KeepAlive(info)
@@ -2287,7 +2287,7 @@ func (info *PlayAudioInfo) Language() string {
 	var _arg0 *C.GstPlayAudioInfo // out
 	var _cret *C.gchar            // in
 
-	_arg0 = (*C.GstPlayAudioInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayAudioInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_audio_info_get_language(_arg0)
 	runtime.KeepAlive(info)
@@ -2308,7 +2308,7 @@ func (info *PlayAudioInfo) MaxBitrate() int {
 	var _arg0 *C.GstPlayAudioInfo // out
 	var _cret C.gint              // in
 
-	_arg0 = (*C.GstPlayAudioInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayAudioInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_audio_info_get_max_bitrate(_arg0)
 	runtime.KeepAlive(info)
@@ -2327,7 +2327,7 @@ func (info *PlayAudioInfo) SampleRate() int {
 	var _arg0 *C.GstPlayAudioInfo // out
 	var _cret C.gint              // in
 
-	_arg0 = (*C.GstPlayAudioInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayAudioInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_audio_info_get_sample_rate(_arg0)
 	runtime.KeepAlive(info)
@@ -2366,7 +2366,7 @@ func (info *PlayMediaInfo) AudioStreams() []*PlayAudioInfo {
 	var _arg0 *C.GstPlayMediaInfo // out
 	var _cret *C.GList            // in
 
-	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_media_info_get_audio_streams(_arg0)
 	runtime.KeepAlive(info)
@@ -2391,7 +2391,7 @@ func (info *PlayMediaInfo) ContainerFormat() string {
 	var _arg0 *C.GstPlayMediaInfo // out
 	var _cret *C.gchar            // in
 
-	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_media_info_get_container_format(_arg0)
 	runtime.KeepAlive(info)
@@ -2412,7 +2412,7 @@ func (info *PlayMediaInfo) Duration() gst.ClockTime {
 	var _arg0 *C.GstPlayMediaInfo // out
 	var _cret C.GstClockTime      // in
 
-	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_media_info_get_duration(_arg0)
 	runtime.KeepAlive(info)
@@ -2434,7 +2434,7 @@ func (info *PlayMediaInfo) ImageSample() *gst.Sample {
 	var _arg0 *C.GstPlayMediaInfo // out
 	var _cret *C.GstSample        // in
 
-	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_media_info_get_image_sample(_arg0)
 	runtime.KeepAlive(info)
@@ -2461,7 +2461,7 @@ func (info *PlayMediaInfo) NumberOfAudioStreams() uint {
 	var _arg0 *C.GstPlayMediaInfo // out
 	var _cret C.guint             // in
 
-	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_media_info_get_number_of_audio_streams(_arg0)
 	runtime.KeepAlive(info)
@@ -2480,7 +2480,7 @@ func (info *PlayMediaInfo) NumberOfStreams() uint {
 	var _arg0 *C.GstPlayMediaInfo // out
 	var _cret C.guint             // in
 
-	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_media_info_get_number_of_streams(_arg0)
 	runtime.KeepAlive(info)
@@ -2499,7 +2499,7 @@ func (info *PlayMediaInfo) NumberOfSubtitleStreams() uint {
 	var _arg0 *C.GstPlayMediaInfo // out
 	var _cret C.guint             // in
 
-	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_media_info_get_number_of_subtitle_streams(_arg0)
 	runtime.KeepAlive(info)
@@ -2518,7 +2518,7 @@ func (info *PlayMediaInfo) NumberOfVideoStreams() uint {
 	var _arg0 *C.GstPlayMediaInfo // out
 	var _cret C.guint             // in
 
-	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_media_info_get_number_of_video_streams(_arg0)
 	runtime.KeepAlive(info)
@@ -2537,7 +2537,7 @@ func (info *PlayMediaInfo) StreamList() []PlayStreamInfor {
 	var _arg0 *C.GstPlayMediaInfo // out
 	var _cret *C.GList            // in
 
-	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_media_info_get_stream_list(_arg0)
 	runtime.KeepAlive(info)
@@ -2578,7 +2578,7 @@ func (info *PlayMediaInfo) SubtitleStreams() []*PlaySubtitleInfo {
 	var _arg0 *C.GstPlayMediaInfo // out
 	var _cret *C.GList            // in
 
-	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_media_info_get_subtitle_streams(_arg0)
 	runtime.KeepAlive(info)
@@ -2603,7 +2603,7 @@ func (info *PlayMediaInfo) Tags() *gst.TagList {
 	var _arg0 *C.GstPlayMediaInfo // out
 	var _cret *C.GstTagList       // in
 
-	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_media_info_get_tags(_arg0)
 	runtime.KeepAlive(info)
@@ -2624,7 +2624,7 @@ func (info *PlayMediaInfo) Title() string {
 	var _arg0 *C.GstPlayMediaInfo // out
 	var _cret *C.gchar            // in
 
-	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_media_info_get_title(_arg0)
 	runtime.KeepAlive(info)
@@ -2645,7 +2645,7 @@ func (info *PlayMediaInfo) URI() string {
 	var _arg0 *C.GstPlayMediaInfo // out
 	var _cret *C.gchar            // in
 
-	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_media_info_get_uri(_arg0)
 	runtime.KeepAlive(info)
@@ -2664,7 +2664,7 @@ func (info *PlayMediaInfo) VideoStreams() []*PlayVideoInfo {
 	var _arg0 *C.GstPlayMediaInfo // out
 	var _cret *C.GList            // in
 
-	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_media_info_get_video_streams(_arg0)
 	runtime.KeepAlive(info)
@@ -2689,7 +2689,7 @@ func (info *PlayMediaInfo) IsLive() bool {
 	var _arg0 *C.GstPlayMediaInfo // out
 	var _cret C.gboolean          // in
 
-	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_media_info_is_live(_arg0)
 	runtime.KeepAlive(info)
@@ -2710,7 +2710,7 @@ func (info *PlayMediaInfo) IsSeekable() bool {
 	var _arg0 *C.GstPlayMediaInfo // out
 	var _cret C.gboolean          // in
 
-	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayMediaInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_media_info_is_seekable(_arg0)
 	runtime.KeepAlive(info)
@@ -2813,7 +2813,7 @@ func NewPlaySignalAdapter(play *Play) *PlaySignalAdapter {
 	var _arg1 *C.GstPlay              // out
 	var _cret *C.GstPlaySignalAdapter // in
 
-	_arg1 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg1 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 
 	_cret = C.gst_play_signal_adapter_new(_arg1)
 	runtime.KeepAlive(play)
@@ -2839,7 +2839,7 @@ func NewPlaySignalAdapterSyncEmit(play *Play) *PlaySignalAdapter {
 	var _arg1 *C.GstPlay              // out
 	var _cret *C.GstPlaySignalAdapter // in
 
-	_arg1 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg1 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 
 	_cret = C.gst_play_signal_adapter_new_sync_emit(_arg1)
 	runtime.KeepAlive(play)
@@ -2869,7 +2869,7 @@ func NewPlaySignalAdapterWithMainContext(play *Play, context *glib.MainContext) 
 	var _arg2 *C.GMainContext         // out
 	var _cret *C.GstPlaySignalAdapter // in
 
-	_arg1 = (*C.GstPlay)(unsafe.Pointer(coreglib.InternObject(play).Native()))
+	_arg1 = (*C.GstPlay)(unsafe.Pointer(coreglib.BaseObject(play).Native()))
 	_arg2 = (*C.GMainContext)(gextras.StructNative(unsafe.Pointer(context)))
 
 	_cret = C.gst_play_signal_adapter_new_with_main_context(_arg1, _arg2)
@@ -2890,7 +2890,7 @@ func (adapter *PlaySignalAdapter) Play() *Play {
 	var _arg0 *C.GstPlaySignalAdapter // out
 	var _cret *C.GstPlay              // in
 
-	_arg0 = (*C.GstPlaySignalAdapter)(unsafe.Pointer(coreglib.InternObject(adapter).Native()))
+	_arg0 = (*C.GstPlaySignalAdapter)(unsafe.Pointer(coreglib.BaseObject(adapter).Native()))
 
 	_cret = C.gst_play_signal_adapter_get_play(_arg0)
 	runtime.KeepAlive(adapter)
@@ -2951,7 +2951,7 @@ func (info *PlayStreamInfo) Caps() *gst.Caps {
 	var _arg0 *C.GstPlayStreamInfo // out
 	var _cret *C.GstCaps           // in
 
-	_arg0 = (*C.GstPlayStreamInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayStreamInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_stream_info_get_caps(_arg0)
 	runtime.KeepAlive(info)
@@ -2980,7 +2980,7 @@ func (info *PlayStreamInfo) Codec() string {
 	var _arg0 *C.GstPlayStreamInfo // out
 	var _cret *C.gchar             // in
 
-	_arg0 = (*C.GstPlayStreamInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayStreamInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_stream_info_get_codec(_arg0)
 	runtime.KeepAlive(info)
@@ -3004,7 +3004,7 @@ func (info *PlayStreamInfo) Index() int {
 	var _arg0 *C.GstPlayStreamInfo // out
 	var _cret C.gint               // in
 
-	_arg0 = (*C.GstPlayStreamInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayStreamInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_stream_info_get_index(_arg0)
 	runtime.KeepAlive(info)
@@ -3026,7 +3026,7 @@ func (info *PlayStreamInfo) StreamType() string {
 	var _arg0 *C.GstPlayStreamInfo // out
 	var _cret *C.gchar             // in
 
-	_arg0 = (*C.GstPlayStreamInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayStreamInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_stream_info_get_stream_type(_arg0)
 	runtime.KeepAlive(info)
@@ -3045,7 +3045,7 @@ func (info *PlayStreamInfo) Tags() *gst.TagList {
 	var _arg0 *C.GstPlayStreamInfo // out
 	var _cret *C.GstTagList        // in
 
-	_arg0 = (*C.GstPlayStreamInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayStreamInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_stream_info_get_tags(_arg0)
 	runtime.KeepAlive(info)
@@ -3088,7 +3088,7 @@ func (info *PlaySubtitleInfo) Language() string {
 	var _arg0 *C.GstPlaySubtitleInfo // out
 	var _cret *C.gchar               // in
 
-	_arg0 = (*C.GstPlaySubtitleInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlaySubtitleInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_subtitle_info_get_language(_arg0)
 	runtime.KeepAlive(info)
@@ -3131,7 +3131,7 @@ func (info *PlayVideoInfo) Bitrate() int {
 	var _arg0 *C.GstPlayVideoInfo // out
 	var _cret C.gint              // in
 
-	_arg0 = (*C.GstPlayVideoInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayVideoInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_video_info_get_bitrate(_arg0)
 	runtime.KeepAlive(info)
@@ -3152,7 +3152,7 @@ func (info *PlayVideoInfo) Framerate() (fpsN, fpsD int) {
 	var _arg1 C.gint              // in
 	var _arg2 C.gint              // in
 
-	_arg0 = (*C.GstPlayVideoInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayVideoInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	C.gst_play_video_info_get_framerate(_arg0, &_arg1, &_arg2)
 	runtime.KeepAlive(info)
@@ -3173,7 +3173,7 @@ func (info *PlayVideoInfo) Height() int {
 	var _arg0 *C.GstPlayVideoInfo // out
 	var _cret C.gint              // in
 
-	_arg0 = (*C.GstPlayVideoInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayVideoInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_video_info_get_height(_arg0)
 	runtime.KeepAlive(info)
@@ -3192,7 +3192,7 @@ func (info *PlayVideoInfo) MaxBitrate() int {
 	var _arg0 *C.GstPlayVideoInfo // out
 	var _cret C.gint              // in
 
-	_arg0 = (*C.GstPlayVideoInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayVideoInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_video_info_get_max_bitrate(_arg0)
 	runtime.KeepAlive(info)
@@ -3215,7 +3215,7 @@ func (info *PlayVideoInfo) PixelAspectRatio() (parN, parD uint) {
 	var _arg1 C.guint             // in
 	var _arg2 C.guint             // in
 
-	_arg0 = (*C.GstPlayVideoInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayVideoInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	C.gst_play_video_info_get_pixel_aspect_ratio(_arg0, &_arg1, &_arg2)
 	runtime.KeepAlive(info)
@@ -3236,7 +3236,7 @@ func (info *PlayVideoInfo) Width() int {
 	var _arg0 *C.GstPlayVideoInfo // out
 	var _cret C.gint              // in
 
-	_arg0 = (*C.GstPlayVideoInfo)(unsafe.Pointer(coreglib.InternObject(info).Native()))
+	_arg0 = (*C.GstPlayVideoInfo)(unsafe.Pointer(coreglib.BaseObject(info).Native()))
 
 	_cret = C.gst_play_video_info_get_width(_arg0)
 	runtime.KeepAlive(info)
@@ -3277,7 +3277,7 @@ func marshalPlayVideoOverlayVideoRenderer(p uintptr) (interface{}, error) {
 func (self *PlayVideoOverlayVideoRenderer) Expose() {
 	var _arg0 *C.GstPlayVideoOverlayVideoRenderer // out
 
-	_arg0 = (*C.GstPlayVideoOverlayVideoRenderer)(unsafe.Pointer(coreglib.InternObject(self).Native()))
+	_arg0 = (*C.GstPlayVideoOverlayVideoRenderer)(unsafe.Pointer(coreglib.BaseObject(self).Native()))
 
 	C.gst_play_video_overlay_video_renderer_expose(_arg0)
 	runtime.KeepAlive(self)
@@ -3299,7 +3299,7 @@ func (self *PlayVideoOverlayVideoRenderer) RenderRectangle() (x, y, width, heigh
 	var _arg3 C.gint                              // in
 	var _arg4 C.gint                              // in
 
-	_arg0 = (*C.GstPlayVideoOverlayVideoRenderer)(unsafe.Pointer(coreglib.InternObject(self).Native()))
+	_arg0 = (*C.GstPlayVideoOverlayVideoRenderer)(unsafe.Pointer(coreglib.BaseObject(self).Native()))
 
 	C.gst_play_video_overlay_video_renderer_get_render_rectangle(_arg0, &_arg1, &_arg2, &_arg3, &_arg4)
 	runtime.KeepAlive(self)
@@ -3324,7 +3324,7 @@ func (self *PlayVideoOverlayVideoRenderer) WindowHandle() unsafe.Pointer {
 	var _arg0 *C.GstPlayVideoOverlayVideoRenderer // out
 	var _cret C.gpointer                          // in
 
-	_arg0 = (*C.GstPlayVideoOverlayVideoRenderer)(unsafe.Pointer(coreglib.InternObject(self).Native()))
+	_arg0 = (*C.GstPlayVideoOverlayVideoRenderer)(unsafe.Pointer(coreglib.BaseObject(self).Native()))
 
 	_cret = C.gst_play_video_overlay_video_renderer_get_window_handle(_arg0)
 	runtime.KeepAlive(self)
@@ -3360,7 +3360,7 @@ func (self *PlayVideoOverlayVideoRenderer) SetRenderRectangle(x, y, width, heigh
 	var _arg3 C.gint                              // out
 	var _arg4 C.gint                              // out
 
-	_arg0 = (*C.GstPlayVideoOverlayVideoRenderer)(unsafe.Pointer(coreglib.InternObject(self).Native()))
+	_arg0 = (*C.GstPlayVideoOverlayVideoRenderer)(unsafe.Pointer(coreglib.BaseObject(self).Native()))
 	_arg1 = C.gint(x)
 	_arg2 = C.gint(y)
 	_arg3 = C.gint(width)
@@ -3385,7 +3385,7 @@ func (self *PlayVideoOverlayVideoRenderer) SetWindowHandle(windowHandle unsafe.P
 	var _arg0 *C.GstPlayVideoOverlayVideoRenderer // out
 	var _arg1 C.gpointer                          // out
 
-	_arg0 = (*C.GstPlayVideoOverlayVideoRenderer)(unsafe.Pointer(coreglib.InternObject(self).Native()))
+	_arg0 = (*C.GstPlayVideoOverlayVideoRenderer)(unsafe.Pointer(coreglib.BaseObject(self).Native()))
 	_arg1 = (C.gpointer)(unsafe.Pointer(windowHandle))
 
 	C.gst_play_video_overlay_video_renderer_set_window_handle(_arg0, _arg1)
@@ -3422,7 +3422,7 @@ func NewPlayVideoOverlayVideoRendererWithSink(windowHandle unsafe.Pointer, video
 	var _cret *C.GstPlayVideoRenderer // in
 
 	_arg1 = (C.gpointer)(unsafe.Pointer(windowHandle))
-	_arg2 = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(videoSink).Native()))
+	_arg2 = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(videoSink).Native()))
 
 	_cret = C.gst_play_video_overlay_video_renderer_new_with_sink(_arg1, _arg2)
 	runtime.KeepAlive(windowHandle)

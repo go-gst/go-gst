@@ -500,8 +500,8 @@ func _gotk4_gstgl1_GLDisplayClass_create_window(arg0 *C.GstGLDisplay) (cret *C.G
 	var _ GLWindower
 
 	if glWindow != nil {
-		cret = (*C.GstGLWindow)(unsafe.Pointer(coreglib.InternObject(glWindow).Native()))
-		C.g_object_ref(C.gpointer(coreglib.InternObject(glWindow).Native()))
+		cret = (*C.GstGLWindow)(unsafe.Pointer(coreglib.BaseObject(glWindow).Native()))
+		C.g_object_ref(C.gpointer(coreglib.BaseObject(glWindow).Native()))
 	}
 
 	return cret
@@ -562,8 +562,8 @@ func _gotk4_gstgl1_GLDisplay_ConnectCreateContext(arg0 C.gpointer, arg1 *C.GstGL
 	var _ GLContexter
 
 	if glContext != nil {
-		cret = (*C.GstGLContext)(unsafe.Pointer(coreglib.InternObject(glContext).Native()))
-		C.g_object_ref(C.gpointer(coreglib.InternObject(glContext).Native()))
+		cret = (*C.GstGLContext)(unsafe.Pointer(coreglib.BaseObject(glContext).Native()))
+		C.g_object_ref(C.gpointer(coreglib.BaseObject(glContext).Native()))
 	}
 
 	return cret

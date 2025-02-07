@@ -469,7 +469,7 @@ func (appsink *AppSink) BufferListSupport() bool {
 	var _arg0 *C.GstAppSink // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.InternObject(appsink).Native()))
+	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.BaseObject(appsink).Native()))
 
 	_cret = C.gst_app_sink_get_buffer_list_support(_arg0)
 	runtime.KeepAlive(appsink)
@@ -492,7 +492,7 @@ func (appsink *AppSink) Caps() *gst.Caps {
 	var _arg0 *C.GstAppSink // out
 	var _cret *C.GstCaps    // in
 
-	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.InternObject(appsink).Native()))
+	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.BaseObject(appsink).Native()))
 
 	_cret = C.gst_app_sink_get_caps(_arg0)
 	runtime.KeepAlive(appsink)
@@ -522,7 +522,7 @@ func (appsink *AppSink) Drop() bool {
 	var _arg0 *C.GstAppSink // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.InternObject(appsink).Native()))
+	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.BaseObject(appsink).Native()))
 
 	_cret = C.gst_app_sink_get_drop(_arg0)
 	runtime.KeepAlive(appsink)
@@ -547,7 +547,7 @@ func (appsink *AppSink) EmitSignals() bool {
 	var _arg0 *C.GstAppSink // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.InternObject(appsink).Native()))
+	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.BaseObject(appsink).Native()))
 
 	_cret = C.gst_app_sink_get_emit_signals(_arg0)
 	runtime.KeepAlive(appsink)
@@ -570,7 +570,7 @@ func (appsink *AppSink) MaxBuffers() uint {
 	var _arg0 *C.GstAppSink // out
 	var _cret C.guint       // in
 
-	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.InternObject(appsink).Native()))
+	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.BaseObject(appsink).Native()))
 
 	_cret = C.gst_app_sink_get_max_buffers(_arg0)
 	runtime.KeepAlive(appsink)
@@ -592,7 +592,7 @@ func (appsink *AppSink) MaxBytes() uint64 {
 	var _arg0 *C.GstAppSink // out
 	var _cret C.guint64     // in
 
-	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.InternObject(appsink).Native()))
+	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.BaseObject(appsink).Native()))
 
 	_cret = C.gst_app_sink_get_max_bytes(_arg0)
 	runtime.KeepAlive(appsink)
@@ -613,7 +613,7 @@ func (appsink *AppSink) MaxTime() gst.ClockTime {
 	var _arg0 *C.GstAppSink  // out
 	var _cret C.GstClockTime // in
 
-	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.InternObject(appsink).Native()))
+	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.BaseObject(appsink).Native()))
 
 	_cret = C.gst_app_sink_get_max_time(_arg0)
 	runtime.KeepAlive(appsink)
@@ -636,7 +636,7 @@ func (appsink *AppSink) WaitOnEos() bool {
 	var _arg0 *C.GstAppSink // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.InternObject(appsink).Native()))
+	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.BaseObject(appsink).Native()))
 
 	_cret = C.gst_app_sink_get_wait_on_eos(_arg0)
 	runtime.KeepAlive(appsink)
@@ -663,7 +663,7 @@ func (appsink *AppSink) IsEos() bool {
 	var _arg0 *C.GstAppSink // out
 	var _cret C.gboolean    // in
 
-	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.InternObject(appsink).Native()))
+	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.BaseObject(appsink).Native()))
 
 	_cret = C.gst_app_sink_is_eos(_arg0)
 	runtime.KeepAlive(appsink)
@@ -704,7 +704,7 @@ func (appsink *AppSink) PullPreroll() *gst.Sample {
 	var _arg0 *C.GstAppSink // out
 	var _cret *C.GstSample  // in
 
-	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.InternObject(appsink).Native()))
+	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.BaseObject(appsink).Native()))
 
 	_cret = C.gst_app_sink_pull_preroll(_arg0)
 	runtime.KeepAlive(appsink)
@@ -743,7 +743,7 @@ func (appsink *AppSink) PullSample() *gst.Sample {
 	var _arg0 *C.GstAppSink // out
 	var _cret *C.GstSample  // in
 
-	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.InternObject(appsink).Native()))
+	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.BaseObject(appsink).Native()))
 
 	_cret = C.gst_app_sink_pull_sample(_arg0)
 	runtime.KeepAlive(appsink)
@@ -775,7 +775,7 @@ func (appsink *AppSink) SetBufferListSupport(enableLists bool) {
 	var _arg0 *C.GstAppSink // out
 	var _arg1 C.gboolean    // out
 
-	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.InternObject(appsink).Native()))
+	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.BaseObject(appsink).Native()))
 	if enableLists {
 		_arg1 = C.TRUE
 	}
@@ -797,7 +797,7 @@ func (appsink *AppSink) SetCaps(caps *gst.Caps) {
 	var _arg0 *C.GstAppSink // out
 	var _arg1 *C.GstCaps    // out
 
-	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.InternObject(appsink).Native()))
+	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.BaseObject(appsink).Native()))
 	if caps != nil {
 		_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 	}
@@ -818,7 +818,7 @@ func (appsink *AppSink) SetDrop(drop bool) {
 	var _arg0 *C.GstAppSink // out
 	var _arg1 C.gboolean    // out
 
-	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.InternObject(appsink).Native()))
+	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.BaseObject(appsink).Native()))
 	if drop {
 		_arg1 = C.TRUE
 	}
@@ -839,7 +839,7 @@ func (appsink *AppSink) SetEmitSignals(emit bool) {
 	var _arg0 *C.GstAppSink // out
 	var _arg1 C.gboolean    // out
 
-	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.InternObject(appsink).Native()))
+	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.BaseObject(appsink).Native()))
 	if emit {
 		_arg1 = C.TRUE
 	}
@@ -861,7 +861,7 @@ func (appsink *AppSink) SetMaxBuffers(max uint) {
 	var _arg0 *C.GstAppSink // out
 	var _arg1 C.guint       // out
 
-	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.InternObject(appsink).Native()))
+	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.BaseObject(appsink).Native()))
 	_arg1 = C.guint(max)
 
 	C.gst_app_sink_set_max_buffers(_arg0, _arg1)
@@ -881,7 +881,7 @@ func (appsink *AppSink) SetMaxBytes(max uint64) {
 	var _arg0 *C.GstAppSink // out
 	var _arg1 C.guint64     // out
 
-	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.InternObject(appsink).Native()))
+	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.BaseObject(appsink).Native()))
 	_arg1 = C.guint64(max)
 
 	C.gst_app_sink_set_max_bytes(_arg0, _arg1)
@@ -901,7 +901,7 @@ func (appsink *AppSink) SetMaxTime(max gst.ClockTime) {
 	var _arg0 *C.GstAppSink  // out
 	var _arg1 C.GstClockTime // out
 
-	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.InternObject(appsink).Native()))
+	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.BaseObject(appsink).Native()))
 	_arg1 = C.GstClockTime(max)
 
 	C.gst_app_sink_set_max_time(_arg0, _arg1)
@@ -919,7 +919,7 @@ func (appsink *AppSink) SetWaitOnEos(wait bool) {
 	var _arg0 *C.GstAppSink // out
 	var _arg1 C.gboolean    // out
 
-	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.InternObject(appsink).Native()))
+	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.BaseObject(appsink).Native()))
 	if wait {
 		_arg1 = C.TRUE
 	}
@@ -962,7 +962,7 @@ func (appsink *AppSink) TryPullPreroll(timeout gst.ClockTime) *gst.Sample {
 	var _arg1 C.GstClockTime // out
 	var _cret *C.GstSample   // in
 
-	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.InternObject(appsink).Native()))
+	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.BaseObject(appsink).Native()))
 	_arg1 = C.GstClockTime(timeout)
 
 	_cret = C.gst_app_sink_try_pull_preroll(_arg0, _arg1)
@@ -1009,7 +1009,7 @@ func (appsink *AppSink) TryPullSample(timeout gst.ClockTime) *gst.Sample {
 	var _arg1 C.GstClockTime // out
 	var _cret *C.GstSample   // in
 
-	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.InternObject(appsink).Native()))
+	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.BaseObject(appsink).Native()))
 	_arg1 = C.GstClockTime(timeout)
 
 	_cret = C.gst_app_sink_try_pull_sample(_arg0, _arg1)
@@ -1036,7 +1036,7 @@ func (appsink *AppSink) eos() {
 
 	var _arg0 *C.GstAppSink // out
 
-	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.InternObject(appsink).Native()))
+	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.BaseObject(appsink).Native()))
 
 	C._gotk4_gstapp1_AppSink_virtual_eos(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(appsink)
@@ -1049,7 +1049,7 @@ func (appsink *AppSink) newPreroll() gst.FlowReturn {
 	var _arg0 *C.GstAppSink   // out
 	var _cret C.GstFlowReturn // in
 
-	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.InternObject(appsink).Native()))
+	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.BaseObject(appsink).Native()))
 
 	_cret = C._gotk4_gstapp1_AppSink_virtual_new_preroll(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(appsink)
@@ -1068,7 +1068,7 @@ func (appsink *AppSink) newSample() gst.FlowReturn {
 	var _arg0 *C.GstAppSink   // out
 	var _cret C.GstFlowReturn // in
 
-	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.InternObject(appsink).Native()))
+	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.BaseObject(appsink).Native()))
 
 	_cret = C._gotk4_gstapp1_AppSink_virtual_new_sample(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(appsink)
@@ -1110,7 +1110,7 @@ func (appsink *AppSink) pullPreroll() *gst.Sample {
 	var _arg0 *C.GstAppSink // out
 	var _cret *C.GstSample  // in
 
-	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.InternObject(appsink).Native()))
+	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.BaseObject(appsink).Native()))
 
 	_cret = C._gotk4_gstapp1_AppSink_virtual_pull_preroll(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(appsink)
@@ -1152,7 +1152,7 @@ func (appsink *AppSink) pullSample() *gst.Sample {
 	var _arg0 *C.GstAppSink // out
 	var _cret *C.GstSample  // in
 
-	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.InternObject(appsink).Native()))
+	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.BaseObject(appsink).Native()))
 
 	_cret = C._gotk4_gstapp1_AppSink_virtual_pull_sample(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(appsink)
@@ -1207,7 +1207,7 @@ func (appsink *AppSink) tryPullPreroll(timeout gst.ClockTime) *gst.Sample {
 	var _arg1 C.GstClockTime // out
 	var _cret *C.GstSample   // in
 
-	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.InternObject(appsink).Native()))
+	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.BaseObject(appsink).Native()))
 	_arg1 = C.GstClockTime(timeout)
 
 	_cret = C._gotk4_gstapp1_AppSink_virtual_try_pull_preroll(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -1257,7 +1257,7 @@ func (appsink *AppSink) tryPullSample(timeout gst.ClockTime) *gst.Sample {
 	var _arg1 C.GstClockTime // out
 	var _cret *C.GstSample   // in
 
-	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.InternObject(appsink).Native()))
+	_arg0 = (*C.GstAppSink)(unsafe.Pointer(coreglib.BaseObject(appsink).Native()))
 	_arg1 = C.GstClockTime(timeout)
 
 	_cret = C._gotk4_gstapp1_AppSink_virtual_try_pull_sample(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -1538,7 +1538,7 @@ func (appsrc *AppSrc) EndOfStream() gst.FlowReturn {
 	var _arg0 *C.GstAppSrc    // out
 	var _cret C.GstFlowReturn // in
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 
 	_cret = C.gst_app_src_end_of_stream(_arg0)
 	runtime.KeepAlive(appsrc)
@@ -1559,7 +1559,7 @@ func (appsrc *AppSrc) Caps() *gst.Caps {
 	var _arg0 *C.GstAppSrc // out
 	var _cret *C.GstCaps   // in
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 
 	_cret = C.gst_app_src_get_caps(_arg0)
 	runtime.KeepAlive(appsrc)
@@ -1588,7 +1588,7 @@ func (appsrc *AppSrc) CurrentLevelBuffers() uint64 {
 	var _arg0 *C.GstAppSrc // out
 	var _cret C.guint64    // in
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 
 	_cret = C.gst_app_src_get_current_level_buffers(_arg0)
 	runtime.KeepAlive(appsrc)
@@ -1609,7 +1609,7 @@ func (appsrc *AppSrc) CurrentLevelBytes() uint64 {
 	var _arg0 *C.GstAppSrc // out
 	var _cret C.guint64    // in
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 
 	_cret = C.gst_app_src_get_current_level_bytes(_arg0)
 	runtime.KeepAlive(appsrc)
@@ -1630,7 +1630,7 @@ func (appsrc *AppSrc) CurrentLevelTime() gst.ClockTime {
 	var _arg0 *C.GstAppSrc   // out
 	var _cret C.GstClockTime // in
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 
 	_cret = C.gst_app_src_get_current_level_time(_arg0)
 	runtime.KeepAlive(appsrc)
@@ -1653,7 +1653,7 @@ func (appsrc *AppSrc) Duration() gst.ClockTime {
 	var _arg0 *C.GstAppSrc   // out
 	var _cret C.GstClockTime // in
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 
 	_cret = C.gst_app_src_get_duration(_arg0)
 	runtime.KeepAlive(appsrc)
@@ -1676,7 +1676,7 @@ func (appsrc *AppSrc) EmitSignals() bool {
 	var _arg0 *C.GstAppSrc // out
 	var _cret C.gboolean   // in
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 
 	_cret = C.gst_app_src_get_emit_signals(_arg0)
 	runtime.KeepAlive(appsrc)
@@ -1701,7 +1701,7 @@ func (appsrc *AppSrc) Latency() (min, max uint64) {
 	var _arg1 C.guint64    // in
 	var _arg2 C.guint64    // in
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 
 	C.gst_app_src_get_latency(_arg0, &_arg1, &_arg2)
 	runtime.KeepAlive(appsrc)
@@ -1725,7 +1725,7 @@ func (appsrc *AppSrc) LeakyType() AppLeakyType {
 	var _arg0 *C.GstAppSrc      // out
 	var _cret C.GstAppLeakyType // in
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 
 	_cret = C.gst_app_src_get_leaky_type(_arg0)
 	runtime.KeepAlive(appsrc)
@@ -1746,7 +1746,7 @@ func (appsrc *AppSrc) MaxBuffers() uint64 {
 	var _arg0 *C.GstAppSrc // out
 	var _cret C.guint64    // in
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 
 	_cret = C.gst_app_src_get_max_buffers(_arg0)
 	runtime.KeepAlive(appsrc)
@@ -1767,7 +1767,7 @@ func (appsrc *AppSrc) MaxBytes() uint64 {
 	var _arg0 *C.GstAppSrc // out
 	var _cret C.guint64    // in
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 
 	_cret = C.gst_app_src_get_max_bytes(_arg0)
 	runtime.KeepAlive(appsrc)
@@ -1788,7 +1788,7 @@ func (appsrc *AppSrc) MaxTime() gst.ClockTime {
 	var _arg0 *C.GstAppSrc   // out
 	var _cret C.GstClockTime // in
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 
 	_cret = C.gst_app_src_get_max_time(_arg0)
 	runtime.KeepAlive(appsrc)
@@ -1810,7 +1810,7 @@ func (appsrc *AppSrc) Size() int64 {
 	var _arg0 *C.GstAppSrc // out
 	var _cret C.gint64     // in
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 
 	_cret = C.gst_app_src_get_size(_arg0)
 	runtime.KeepAlive(appsrc)
@@ -1832,7 +1832,7 @@ func (appsrc *AppSrc) StreamType() AppStreamType {
 	var _arg0 *C.GstAppSrc       // out
 	var _cret C.GstAppStreamType // in
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 
 	_cret = C.gst_app_src_get_stream_type(_arg0)
 	runtime.KeepAlive(appsrc)
@@ -1863,7 +1863,7 @@ func (appsrc *AppSrc) PushBuffer(buffer *gst.Buffer) gst.FlowReturn {
 	var _arg1 *C.GstBuffer    // out
 	var _cret C.GstFlowReturn // in
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(buffer)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(buffer)), nil)
 
@@ -1898,7 +1898,7 @@ func (appsrc *AppSrc) PushBufferList(bufferList *gst.BufferList) gst.FlowReturn 
 	var _arg1 *C.GstBufferList // out
 	var _cret C.GstFlowReturn  // in
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 	_arg1 = (*C.GstBufferList)(gextras.StructNative(unsafe.Pointer(bufferList)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(bufferList)), nil)
 
@@ -1937,7 +1937,7 @@ func (appsrc *AppSrc) PushSample(sample *gst.Sample) gst.FlowReturn {
 	var _arg1 *C.GstSample    // out
 	var _cret C.GstFlowReturn // in
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 	_arg1 = (*C.GstSample)(gextras.StructNative(unsafe.Pointer(sample)))
 
 	_cret = C.gst_app_src_push_sample(_arg0, _arg1)
@@ -1963,7 +1963,7 @@ func (appsrc *AppSrc) SetCaps(caps *gst.Caps) {
 	var _arg0 *C.GstAppSrc // out
 	var _arg1 *C.GstCaps   // out
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 	if caps != nil {
 		_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 	}
@@ -1983,7 +1983,7 @@ func (appsrc *AppSrc) SetDuration(duration gst.ClockTime) {
 	var _arg0 *C.GstAppSrc   // out
 	var _arg1 C.GstClockTime // out
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 	_arg1 = C.GstClockTime(duration)
 
 	C.gst_app_src_set_duration(_arg0, _arg1)
@@ -2002,7 +2002,7 @@ func (appsrc *AppSrc) SetEmitSignals(emit bool) {
 	var _arg0 *C.GstAppSrc // out
 	var _arg1 C.gboolean   // out
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 	if emit {
 		_arg1 = C.TRUE
 	}
@@ -2024,7 +2024,7 @@ func (appsrc *AppSrc) SetLatency(min, max uint64) {
 	var _arg1 C.guint64    // out
 	var _arg2 C.guint64    // out
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 	_arg1 = C.guint64(min)
 	_arg2 = C.guint64(max)
 
@@ -2046,7 +2046,7 @@ func (appsrc *AppSrc) SetLeakyType(leaky AppLeakyType) {
 	var _arg0 *C.GstAppSrc      // out
 	var _arg1 C.GstAppLeakyType // out
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 	_arg1 = C.GstAppLeakyType(leaky)
 
 	C.gst_app_src_set_leaky_type(_arg0, _arg1)
@@ -2065,7 +2065,7 @@ func (appsrc *AppSrc) SetMaxBuffers(max uint64) {
 	var _arg0 *C.GstAppSrc // out
 	var _arg1 C.guint64    // out
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 	_arg1 = C.guint64(max)
 
 	C.gst_app_src_set_max_buffers(_arg0, _arg1)
@@ -2084,7 +2084,7 @@ func (appsrc *AppSrc) SetMaxBytes(max uint64) {
 	var _arg0 *C.GstAppSrc // out
 	var _arg1 C.guint64    // out
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 	_arg1 = C.guint64(max)
 
 	C.gst_app_src_set_max_bytes(_arg0, _arg1)
@@ -2103,7 +2103,7 @@ func (appsrc *AppSrc) SetMaxTime(max gst.ClockTime) {
 	var _arg0 *C.GstAppSrc   // out
 	var _arg1 C.GstClockTime // out
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 	_arg1 = C.GstClockTime(max)
 
 	C.gst_app_src_set_max_time(_arg0, _arg1)
@@ -2121,7 +2121,7 @@ func (appsrc *AppSrc) SetSize(size int64) {
 	var _arg0 *C.GstAppSrc // out
 	var _arg1 C.gint64     // out
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 	_arg1 = C.gint64(size)
 
 	C.gst_app_src_set_size(_arg0, _arg1)
@@ -2141,7 +2141,7 @@ func (appsrc *AppSrc) SetStreamType(typ AppStreamType) {
 	var _arg0 *C.GstAppSrc       // out
 	var _arg1 C.GstAppStreamType // out
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 	_arg1 = C.GstAppStreamType(typ)
 
 	C.gst_app_src_set_stream_type(_arg0, _arg1)
@@ -2163,7 +2163,7 @@ func (appsrc *AppSrc) endOfStream() gst.FlowReturn {
 	var _arg0 *C.GstAppSrc    // out
 	var _cret C.GstFlowReturn // in
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 
 	_cret = C._gotk4_gstapp1_AppSrc_virtual_end_of_stream(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(appsrc)
@@ -2181,7 +2181,7 @@ func (appsrc *AppSrc) enoughData() {
 
 	var _arg0 *C.GstAppSrc // out
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 
 	C._gotk4_gstapp1_AppSrc_virtual_enough_data(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(appsrc)
@@ -2194,7 +2194,7 @@ func (appsrc *AppSrc) needData(length uint) {
 	var _arg0 *C.GstAppSrc // out
 	var _arg1 C.guint      // out
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 	_arg1 = C.guint(length)
 
 	C._gotk4_gstapp1_AppSrc_virtual_need_data(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -2224,7 +2224,7 @@ func (appsrc *AppSrc) pushBuffer(buffer *gst.Buffer) gst.FlowReturn {
 	var _arg1 *C.GstBuffer    // out
 	var _cret C.GstFlowReturn // in
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(buffer)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(buffer)), nil)
 
@@ -2262,7 +2262,7 @@ func (appsrc *AppSrc) pushBufferList(bufferList *gst.BufferList) gst.FlowReturn 
 	var _arg1 *C.GstBufferList // out
 	var _cret C.GstFlowReturn  // in
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 	_arg1 = (*C.GstBufferList)(gextras.StructNative(unsafe.Pointer(bufferList)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(bufferList)), nil)
 
@@ -2304,7 +2304,7 @@ func (appsrc *AppSrc) pushSample(sample *gst.Sample) gst.FlowReturn {
 	var _arg1 *C.GstSample    // out
 	var _cret C.GstFlowReturn // in
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 	_arg1 = (*C.GstSample)(gextras.StructNative(unsafe.Pointer(sample)))
 
 	_cret = C._gotk4_gstapp1_AppSrc_virtual_push_sample(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -2326,7 +2326,7 @@ func (appsrc *AppSrc) seekData(offset uint64) bool {
 	var _arg1 C.guint64    // out
 	var _cret C.gboolean   // in
 
-	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.InternObject(appsrc).Native()))
+	_arg0 = (*C.GstAppSrc)(unsafe.Pointer(coreglib.BaseObject(appsrc).Native()))
 	_arg1 = C.guint64(offset)
 
 	_cret = C._gotk4_gstapp1_AppSrc_virtual_seek_data(unsafe.Pointer(fnarg), _arg0, _arg1)

@@ -1985,7 +1985,7 @@ func marshalTagXmpWriter(p uintptr) (interface{}, error) {
 func (config *TagXmpWriter) AddAllSchemas() {
 	var _arg0 *C.GstTagXmpWriter // out
 
-	_arg0 = (*C.GstTagXmpWriter)(unsafe.Pointer(coreglib.InternObject(config).Native()))
+	_arg0 = (*C.GstTagXmpWriter)(unsafe.Pointer(coreglib.BaseObject(config).Native()))
 
 	C.gst_tag_xmp_writer_add_all_schemas(_arg0)
 	runtime.KeepAlive(config)
@@ -2000,7 +2000,7 @@ func (config *TagXmpWriter) AddSchema(schema string) {
 	var _arg0 *C.GstTagXmpWriter // out
 	var _arg1 *C.gchar           // out
 
-	_arg0 = (*C.GstTagXmpWriter)(unsafe.Pointer(coreglib.InternObject(config).Native()))
+	_arg0 = (*C.GstTagXmpWriter)(unsafe.Pointer(coreglib.BaseObject(config).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(schema)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -2023,7 +2023,7 @@ func (config *TagXmpWriter) HasSchema(schema string) bool {
 	var _arg1 *C.gchar           // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstTagXmpWriter)(unsafe.Pointer(coreglib.InternObject(config).Native()))
+	_arg0 = (*C.GstTagXmpWriter)(unsafe.Pointer(coreglib.BaseObject(config).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(schema)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -2045,7 +2045,7 @@ func (config *TagXmpWriter) HasSchema(schema string) bool {
 func (config *TagXmpWriter) RemoveAllSchemas() {
 	var _arg0 *C.GstTagXmpWriter // out
 
-	_arg0 = (*C.GstTagXmpWriter)(unsafe.Pointer(coreglib.InternObject(config).Native()))
+	_arg0 = (*C.GstTagXmpWriter)(unsafe.Pointer(coreglib.BaseObject(config).Native()))
 
 	C.gst_tag_xmp_writer_remove_all_schemas(_arg0)
 	runtime.KeepAlive(config)
@@ -2061,7 +2061,7 @@ func (config *TagXmpWriter) RemoveSchema(schema string) {
 	var _arg0 *C.GstTagXmpWriter // out
 	var _arg1 *C.gchar           // out
 
-	_arg0 = (*C.GstTagXmpWriter)(unsafe.Pointer(coreglib.InternObject(config).Native()))
+	_arg0 = (*C.GstTagXmpWriter)(unsafe.Pointer(coreglib.BaseObject(config).Native()))
 	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(schema)))
 	defer C.free(unsafe.Pointer(_arg1))
 
@@ -2080,7 +2080,7 @@ func (config *TagXmpWriter) TagListToXmpBuffer(taglist *gst.TagList, readOnly bo
 	var _arg2 C.gboolean         // out
 	var _cret *C.GstBuffer       // in
 
-	_arg0 = (*C.GstTagXmpWriter)(unsafe.Pointer(coreglib.InternObject(config).Native()))
+	_arg0 = (*C.GstTagXmpWriter)(unsafe.Pointer(coreglib.BaseObject(config).Native()))
 	_arg1 = (*C.GstTagList)(gextras.StructNative(unsafe.Pointer(taglist)))
 	if readOnly {
 		_arg2 = C.TRUE
@@ -2253,7 +2253,7 @@ func (demux *TagDemux) identifyTag(buffer *gst.Buffer, startTag bool, tagSize *u
 	var _arg3 *C.guint       // out
 	var _cret C.gboolean     // in
 
-	_arg0 = (*C.GstTagDemux)(unsafe.Pointer(coreglib.InternObject(demux).Native()))
+	_arg0 = (*C.GstTagDemux)(unsafe.Pointer(coreglib.BaseObject(demux).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(buffer)))
 	if startTag {
 		_arg2 = C.TRUE
@@ -2293,7 +2293,7 @@ func (demux *TagDemux) mergeTags(startTags, endTags *gst.TagList) *gst.TagList {
 	var _arg2 *C.GstTagList  // out
 	var _cret *C.GstTagList  // in
 
-	_arg0 = (*C.GstTagDemux)(unsafe.Pointer(coreglib.InternObject(demux).Native()))
+	_arg0 = (*C.GstTagDemux)(unsafe.Pointer(coreglib.BaseObject(demux).Native()))
 	_arg1 = (*C.GstTagList)(gextras.StructNative(unsafe.Pointer(startTags)))
 	_arg2 = (*C.GstTagList)(gextras.StructNative(unsafe.Pointer(endTags)))
 
@@ -2438,7 +2438,7 @@ func (mux *TagMux) renderEndTag(tagList *gst.TagList) *gst.Buffer {
 	var _arg1 *C.GstTagList // out
 	var _cret *C.GstBuffer  // in
 
-	_arg0 = (*C.GstTagMux)(unsafe.Pointer(coreglib.InternObject(mux).Native()))
+	_arg0 = (*C.GstTagMux)(unsafe.Pointer(coreglib.BaseObject(mux).Native()))
 	_arg1 = (*C.GstTagList)(gextras.StructNative(unsafe.Pointer(tagList)))
 
 	_cret = C._gotk4_gsttag1_TagMux_virtual_render_end_tag(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -2467,7 +2467,7 @@ func (mux *TagMux) renderStartTag(tagList *gst.TagList) *gst.Buffer {
 	var _arg1 *C.GstTagList // out
 	var _cret *C.GstBuffer  // in
 
-	_arg0 = (*C.GstTagMux)(unsafe.Pointer(coreglib.InternObject(mux).Native()))
+	_arg0 = (*C.GstTagMux)(unsafe.Pointer(coreglib.BaseObject(mux).Native()))
 	_arg1 = (*C.GstTagList)(gextras.StructNative(unsafe.Pointer(tagList)))
 
 	_cret = C._gotk4_gsttag1_TagMux_virtual_render_start_tag(unsafe.Pointer(fnarg), _arg0, _arg1)
