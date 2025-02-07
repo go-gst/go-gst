@@ -57313,3 +57313,9 @@ type ValueTable struct {
 type valueTable struct {
 	native *C.GstValueTable
 }
+
+// Init binds to the gst_init() function. Argument parsing is not
+// supported.
+func Init() {
+	C.gst_init(nil, nil)
+}

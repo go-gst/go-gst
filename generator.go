@@ -131,8 +131,12 @@ var Data = genmain.Overlay(
 			types.AbsoluteFilter("C.gst_mpegts_descriptor_parse_dvb_ca_identifier"),
 			types.AbsoluteFilter("C.gst_mpegts_descriptor_parse_dvb_frequency_list"),
 			types.AbsoluteFilter("C.gst_source_buffer_get_buffered"),
+
+			// In-out array pointer, not very go like and not correctly handled by girgen, needs custom implementation
+			types.AbsoluteFilter("C.gst_audio_get_channel_reorder_map"),
 		},
-		SingleFile: true,
+		ExtraGoContents: ExtraGoContents,
+		SingleFile:      true,
 	},
 )
 
@@ -216,4 +220,14 @@ func FixCutoffEnumMemberNames(fulltype string) types.Preprocessor {
 
 		return member
 	})
+}
+
+var ExtraGoContents = map[string]string{
+	"gst/gst.go": `
+		// Init binds to the gst_init() function. Argument parsing is not
+		// supported.
+		func Init() {
+			C.gst_init(nil, nil)
+		}
+	`,
 }
