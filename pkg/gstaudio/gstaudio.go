@@ -2378,62 +2378,6 @@ func AudioFormatsRaw() []AudioFormat {
 	return _audioFormats
 }
 
-// AudioGetChannelReorderMap returns a reorder map for from to to that can
-// be used in custom channel reordering code, e.g. to convert from or to
-// the GStreamer channel order. from and to must contain the same number of
-// positions and the same positions, only in a different order.
-//
-// The resulting reorder_map can be used for reordering by assigning channel i
-// of the input to channel reorder_map[i] of the output.
-//
-// The function takes the following parameters:
-//
-//   - from: channel positions to reorder from.
-//   - to: channel positions to reorder to.
-//   - reorderMap: pointer to the reorder map.
-//
-// The function returns the following values:
-//
-//   - ok: TRUE if the channel positions are valid and reordering is possible.
-func AudioGetChannelReorderMap(from, to []AudioChannelPosition, reorderMap []int) bool {
-	var _arg2 *C.GstAudioChannelPosition // out
-	var _arg1 C.gint
-	var _arg3 *C.GstAudioChannelPosition // out
-	var _arg4 *C.gint                    // out
-	var _cret C.gboolean                 // in
-
-	_arg1 = (C.gint)(len(from))
-	if len(from) > 0 {
-		_arg2 = (*C.GstAudioChannelPosition)(unsafe.Pointer(&from[0]))
-	}
-	_arg1 = (C.gint)(len(to))
-	if len(to) > 0 {
-		_arg3 = (*C.GstAudioChannelPosition)(unsafe.Pointer(&to[0]))
-	}
-	_arg1 = (C.gint)(len(reorderMap))
-	_arg4 = (*C.gint)(C.calloc(C.size_t(len(reorderMap)), C.size_t(C.sizeof_gint)))
-	defer C.free(unsafe.Pointer(_arg4))
-	{
-		out := unsafe.Slice((*C.gint)(_arg4), len(reorderMap))
-		for i := range reorderMap {
-			out[i] = C.gint(reorderMap[i])
-		}
-	}
-
-	_cret = C.gst_audio_get_channel_reorder_map(_arg1, _arg2, _arg3, _arg4)
-	runtime.KeepAlive(from)
-	runtime.KeepAlive(to)
-	runtime.KeepAlive(reorderMap)
-
-	var _ok bool // out
-
-	if _cret != 0 {
-		_ok = true
-	}
-
-	return _ok
-}
-
 // AudioIec61937FrameSize: calculated the size of the buffer expected by
 // gst_audio_iec61937_payload() for payloading type from spec.
 //
