@@ -24534,76 +24534,6 @@ func ElementFactoryMake(factoryname, name string) Elementer {
 	return _element
 }
 
-// ElementFactoryMakeWithProperties: create a new element of the type defined by
-// the given elementfactory. The supplied list of properties, will be passed at
-// object construction.
-//
-// The function takes the following parameters:
-//
-//   - factoryname: named factory to instantiate.
-//   - names (optional): array of properties names.
-//   - values (optional): array of associated properties values.
-//
-// The function returns the following values:
-//
-//   - element (optional): new Element or NULL if the element couldn't be
-//     created.
-func ElementFactoryMakeWithProperties(factoryname string, names []string, values []coreglib.Value) Elementer {
-	var _arg1 *C.gchar  // out
-	var _arg3 **C.gchar // out
-	var _arg2 C.guint
-	var _arg4 *C.GValue     // out
-	var _cret *C.GstElement // in
-
-	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(factoryname)))
-	defer C.free(unsafe.Pointer(_arg1))
-	_arg2 = (C.guint)(len(names))
-	_arg3 = (**C.gchar)(C.calloc(C.size_t(len(names)), C.size_t(unsafe.Sizeof(uint(0)))))
-	defer C.free(unsafe.Pointer(_arg3))
-	{
-		out := unsafe.Slice((**C.gchar)(_arg3), len(names))
-		for i := range names {
-			out[i] = (*C.gchar)(unsafe.Pointer(C.CString(names[i])))
-			defer C.free(unsafe.Pointer(out[i]))
-		}
-	}
-	_arg2 = (C.guint)(len(values))
-	_arg4 = (*C.GValue)(C.calloc(C.size_t(len(values)), C.size_t(C.sizeof_GValue)))
-	defer C.free(unsafe.Pointer(_arg4))
-	{
-		out := unsafe.Slice((*C.GValue)(_arg4), len(values))
-		for i := range values {
-			out[i] = *(*C.GValue)(unsafe.Pointer((&values[i]).Native()))
-		}
-	}
-
-	_cret = C.gst_element_factory_make_with_properties(_arg1, _arg2, _arg3, _arg4)
-	runtime.KeepAlive(factoryname)
-	runtime.KeepAlive(names)
-	runtime.KeepAlive(values)
-
-	var _element Elementer // out
-
-	if _cret != nil {
-		{
-			objptr := unsafe.Pointer(_cret)
-
-			object := coreglib.Take(objptr)
-			casted := object.WalkCast(func(obj coreglib.Objector) bool {
-				_, ok := obj.(Elementer)
-				return ok
-			})
-			rv, ok := casted.(Elementer)
-			if !ok {
-				panic("no marshaler for " + object.TypeFromInstance().String() + " matching gst.Elementer")
-			}
-			_element = rv
-		}
-	}
-
-	return _element
-}
-
 // FlagSet: fundamental type that describes a 32-bit flag bitfield, with 32-bit
 // mask indicating which of the bits in the field are explicitly set.
 type FlagSet struct {
@@ -57312,6 +57242,75 @@ type ValueTable struct {
 // valueTable is the struct that's finalized.
 type valueTable struct {
 	native *C.GstValueTable
+}
+
+// ElementFactoryMakeWithProperties: create a new element of the type defined by
+// the given elementfactory. The supplied list of properties, will be passed at
+// object construction.
+//
+// The function takes the following parameters:
+//
+//   - factoryname: named factory to instantiate.
+//   - names (optional): array of properties names.
+//   - values (optional): array of associated properties values.
+//
+// The function returns the following values:
+//
+//   - element (optional): new Element or NULL if the element couldn't be
+//     created.
+func ElementFactoryMakeWithProperties(factoryname string, properties map[string]any) Elementer {
+	var _arg1 *C.gchar // out
+	var _arg2 C.guint
+	var _cret *C.GstElement // in
+
+	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(factoryname)))
+	defer C.free(unsafe.Pointer(_arg1))
+
+	var names_ **C.gchar
+	var values_ *C.GValue
+
+	if len(properties) > 0 {
+		names := make([]*C.char, 0, len(properties))
+		values := make([]C.GValue, 0, len(properties))
+
+		for name, value := range properties {
+			cname := (*C.char)(C.CString(name))
+			defer C.free(unsafe.Pointer(cname))
+
+			gvalue := coreglib.NewValue(value)
+			defer runtime.KeepAlive(gvalue)
+
+			names = append(names, cname)
+			values = append(values, *(*C.GValue)(unsafe.Pointer(gvalue.Native())))
+		}
+
+		names_ = &names[0]
+		values_ = &values[0]
+	}
+
+	_cret = C.gst_element_factory_make_with_properties(_arg1, _arg2, names_, values_)
+	runtime.KeepAlive(factoryname)
+
+	var _element Elementer // out
+
+	if _cret != nil {
+		{
+			objptr := unsafe.Pointer(_cret)
+
+			object := coreglib.Take(objptr)
+			casted := object.WalkCast(func(obj coreglib.Objector) bool {
+				_, ok := obj.(Elementer)
+				return ok
+			})
+			rv, ok := casted.(Elementer)
+			if !ok {
+				panic("no marshaler for " + object.TypeFromInstance().String() + " matching gst.Elementer")
+			}
+			_element = rv
+		}
+	}
+
+	return _element
 }
 
 // Init binds to the gst_init() function. Argument parsing is not
