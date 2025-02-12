@@ -229,10 +229,11 @@ func FixCutoffEnumMemberNames(fulltype string) types.Preprocessor {
 	})
 }
 
+// GstUseUnstableAPI adds a define GST_USE_UNSTABLE_API in every file of the namespace
 func GstUseUnstableAPI(nsgen *girgen.NamespaceGenerator) error {
-	fg := nsgen.MakeFile("unstable.go")
-
-	fg.Header().DefineC("GST_USE_UNSTABLE_API // APIs in this package are unstable")
+	for _, f := range nsgen.Files {
+		f.Header().DefineC("GST_USE_UNSTABLE_API // APIs in this package are unstable")
+	}
 
 	return nil
 }
