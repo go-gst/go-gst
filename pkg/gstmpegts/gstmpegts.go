@@ -5459,6 +5459,7 @@ func (descriptor *Descriptor) ParseRegistration() (uint32, []byte, bool) {
 
 	_registrationId = uint32(_arg1)
 	if _arg2 != nil {
+		defer C.free(unsafe.Pointer(_arg2))
 		_additionalInfo = make([]byte, _arg3)
 		copy(_additionalInfo, unsafe.Slice((*byte)(unsafe.Pointer(_arg2)), _arg3))
 	}
