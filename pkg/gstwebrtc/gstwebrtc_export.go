@@ -16,6 +16,7 @@ import (
 
 // #define GST_USE_UNSTABLE_API // APIs in this package are unstable
 // #include <stdlib.h>
+// #include <gst/webrtc/sctptransport.h>
 // #include <gst/webrtc/webrtc.h>
 import "C"
 

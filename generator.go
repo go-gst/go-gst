@@ -122,7 +122,7 @@ var Data = genmain.Overlay(
 		Postprocessors: map[string][]girgen.Postprocessor{
 			"Gst-1":       {ElementFactoryMakeWithProperties},
 			"GstMpegts-1": {GstUseUnstableAPI},
-			"GstWebRTC-1": {GstUseUnstableAPI},
+			"GstWebRTC-1": {GstUseUnstableAPI, FixWebrtcPkgConfig},
 		},
 		Filters: []types.FilterMatcher{
 			// these collide and are not really useful:
@@ -233,6 +233,18 @@ func FixCutoffEnumMemberNames(fulltype string) types.Preprocessor {
 func GstUseUnstableAPI(nsgen *girgen.NamespaceGenerator) error {
 	for _, f := range nsgen.Files {
 		f.Header().DefineC("GST_USE_UNSTABLE_API // APIs in this package are unstable")
+	}
+
+	return nil
+}
+
+func FixWebrtcPkgConfig(nsgen *girgen.NamespaceGenerator) error {
+	for _, f := range nsgen.Files {
+		// see: https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/8433, remove after release
+		f.Header().AddPackage("gstreamer-sdp-1.0")
+
+		// see https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/8470 , remove after release
+		f.Header().IncludeC("gst/webrtc/sctptransport.h")
 	}
 
 	return nil
