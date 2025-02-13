@@ -62,6 +62,18 @@ func wrapAllocationParams(obj *C.GstAllocationParams) *AllocationParams {
 	return &AllocationParams{ptr: obj}
 }
 
+func wrapMpegtsSCTESIT(scteSit *C.GstMpegtsSCTESIT) *MpegtsSCTESIT {
+	return &MpegtsSCTESIT{scteSit: scteSit}
+}
+
+func wrapMpegtsSCTESpliceEvent(spliceEv *C.GstMpegtsSCTESpliceEvent) *MpegtsSCTESpliceEvent {
+	return &MpegtsSCTESpliceEvent{spliceEv: spliceEv}
+}
+
+func wrapMpegtsSection(section *C.GstMpegtsSection) *MpegtsSection {
+	return &MpegtsSection{section: section}
+}
+
 // Marshallers
 
 func registerMarshalers() {

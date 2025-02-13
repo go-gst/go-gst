@@ -1052,3 +1052,46 @@ const (
 	TypeFindNearlyCertain TypeFindProbability = C.GST_TYPE_FIND_NEARLY_CERTAIN // (99) – nearly certain that a type was detected.
 	TypeFindMaximum       TypeFindProbability = C.GST_TYPE_FIND_MAXIMUM        // (100) – very certain a type was detected.
 )
+
+// MpegtsSectionType represents a GstMpegtsSectionType
+type MpegtsSectionType int
+
+// Type castings of GstMpegtsSectionType
+// For more information see: https://gstreamer.freedesktop.org/documentation/mpegts/gstmpegtssection.html?gi-language=c#GstMpegtsSectionType
+const (
+	MpegtsSectionUnknown  MpegtsSectionType = C.GST_MPEGTS_SECTION_UNKNOWN   // (0) – Unknown section type
+	MpegtsSectionPAT      MpegtsSectionType = C.GST_MPEGTS_SECTION_PAT       // (1) – Program Association Table (ISO/IEC 13818-1)
+	MpegtsSectionPMT      MpegtsSectionType = C.GST_MPEGTS_SECTION_PMT       // (2) – Program Map Table (ISO/IEC 13818-1)
+	MpegtsSectionCAT      MpegtsSectionType = C.GST_MPEGTS_SECTION_CAT       // (3) – Conditional Access Table (ISO/IEC 13818-1)
+	MpegtsSectionTSDT     MpegtsSectionType = C.GST_MPEGTS_SECTION_TSDT      // (4) – Transport Stream Description Table (ISO/IEC 13818-1)
+	MpegtsSectionEIT      MpegtsSectionType = C.GST_MPEGTS_SECTION_EIT       // (5) – Event Information Table (EN 300 468)
+	MpegtsSectionNIT      MpegtsSectionType = C.GST_MPEGTS_SECTION_NIT       // (6) – Network Information Table (ISO/IEC 13818-1 / EN 300 468)
+	MpegtsSectionBAT      MpegtsSectionType = C.GST_MPEGTS_SECTION_BAT       // (7) – Bouquet Association Table ((EN 300 468)
+	MpegtsSectionSDT      MpegtsSectionType = C.GST_MPEGTS_SECTION_SDT       // (8) – Service Description Table (EN 300 468)
+	MpegtsSectionTDT      MpegtsSectionType = C.GST_MPEGTS_SECTION_TDT       // (9) – Time and Date Table (EN 300 468)
+	MpegtsSectionTOT      MpegtsSectionType = C.GST_MPEGTS_SECTION_TOT       // (10) – Time Offset Table (EN 300 468)
+	MpegtsSectionSIT      MpegtsSectionType = C.GST_MPEGTS_SECTION_SIT       // (11) – Selection Information Table (EN 300 468) (Since: 1.20)
+	MpegtsSectionATSCTVCT MpegtsSectionType = C.GST_MPEGTS_SECTION_ATSC_TVCT // (12) – ATSC Terrestrial Virtual Channel Table (A65)
+	MpegtsSectionATSCCVCT MpegtsSectionType = C.GST_MPEGTS_SECTION_ATSC_CVCT // (13) – ATSC Cable Virtual Channel Table (A65)
+	MpegtsSectionATSCMGT  MpegtsSectionType = C.GST_MPEGTS_SECTION_ATSC_MGT  // (14) – ATSC Master Guide Table (A65)
+	MpegtsSectionATSCETT  MpegtsSectionType = C.GST_MPEGTS_SECTION_ATSC_ETT  // (15) – ATSC Extended Text Table (A65)
+	MpegtsSectionATSCEIT  MpegtsSectionType = C.GST_MPEGTS_SECTION_ATSC_EIT  // (16) – ATSC Event Information Table (A65)
+	MpegtsSectionATSCSTT  MpegtsSectionType = C.GST_MPEGTS_SECTION_ATSC_STT  // (17) – ATSC System Time Table (A65)
+	MpegtsSectionATSCRRT  MpegtsSectionType = C.GST_MPEGTS_SECTION_ATSC_RRT  // (18) – ATSC Rating Region Table (A65)
+	MpegtsSectionSCTESIT  MpegtsSectionType = C.GST_MPEGTS_SECTION_SCTE_SIT  // (19) - SCTE Splice Information Table (SCTE-35)
+)
+
+// MpegtsSCTESpliceCommandType represents a GstMpegtsSCTESpliceCommandType
+type MpegtsSCTESpliceCommandType int
+
+// Type castig of GstMpegtsSCTESpliceCommandType
+// For more informartion see: https://gstreamer.freedesktop.org/documentation/mpegts/gst-scte-section.html?gi-language=c
+
+const (
+	MpegtsSCTESpliceCommandNull      MpegtsSCTESpliceCommandType = C.GST_MTS_SCTE_SPLICE_COMMAND_NULL      // (0)
+	MpegtsSCTESpliceCommandSchedule  MpegtsSCTESpliceCommandType = C.GST_MTS_SCTE_SPLICE_COMMAND_SCHEDULE  // (4)
+	MpegtsSCTESpliceCommandInsert    MpegtsSCTESpliceCommandType = C.GST_MTS_SCTE_SPLICE_COMMAND_INSERT    // (5)
+	MpegtsSCTESpliceCommandTime      MpegtsSCTESpliceCommandType = C.GST_MTS_SCTE_SPLICE_COMMAND_TIME      // (6)
+	MpegtsSCTESpliceCommandBandwidth MpegtsSCTESpliceCommandType = C.GST_MTS_SCTE_SPLICE_COMMAND_BANDWIDTH // (7)
+	MpegtsSCTESpliceCommandPrivate   MpegtsSCTESpliceCommandType = C.GST_MTS_SCTE_SPLICE_COMMAND_PRIVATE   // (255)
+)

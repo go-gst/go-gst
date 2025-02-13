@@ -1,11 +1,14 @@
 #ifndef __GST_GO_H__
 #define __GST_GO_H__
 
+#define GST_USE_UNSTABLE_API // mpegts APIs are unstable
+
 #include <stdlib.h>
 #include <gst/gst.h>
 #include <gst/base/base.h>
 #include <gst/controller/gstinterpolationcontrolsource.h>
 #include <gst/controller/gstdirectcontrolbinding.h>
+#include <gst/mpegts/mpegts.h>
 
 typedef struct _PadDestroyNotifyInfo {
 	gpointer pad_ptr;
@@ -41,6 +44,7 @@ extern GstMemory *                      toGstMemory                      (void *
 extern GstMessage *                     toGstMessage                     (void *p);
 extern GstMeta *                        toGstMeta                        (void *p);
 extern GstMiniObject *                  toGstMiniObject                  (void *p);
+extern GstMpegtsSection *               toGstMpegtsSection               (void *p);
 extern GstObject *                      toGstObject                      (void *p);
 extern GstPad *                         toGstPad                         (void *p);
 extern GstPadTemplate *                 toGstPadTemplate                 (void *p);
@@ -133,6 +137,9 @@ extern gboolean        gstElementIsURIHandler  (GstElement * elem);
 extern GstTocSetter *  toTocSetter             (GstElement * elem);
 extern GstTagSetter *  toTagSetter             (GstElement *elem);
 
+/* MpegtsSection Utilities */
+extern GstMpegtsSection *  mpegtsSectionRef    (GstMpegtsSection * section);
+extern void                mpegtsSectionUnref  (GstMpegtsSection * section); 
 
 /* Misc */
 
