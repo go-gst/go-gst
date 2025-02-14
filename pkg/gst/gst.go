@@ -4,6 +4,8 @@ package gst
 
 import (
 	"fmt"
+	"iter"
+	"reflect"
 	"runtime"
 	_ "runtime/cgo"
 	"strings"
@@ -57311,6 +57313,118 @@ func ElementFactoryMakeWithProperties(factoryname string, properties map[string]
 	}
 
 	return _element
+}
+
+// BlockSetState is a convenience wrapper around calling SetState and State to wait for async state changes. See State for more info.
+func (el *Element) BlockSetState(state State, timeout ClockTime) StateChangeReturn {
+	ret := el.SetState(state)
+
+	if ret == StateChangeAsync {
+		_, _, ret = el.State(timeout)
+	}
+
+	return ret
+}
+
+// AddMany repeatedly calls Add for each param
+func (bin *Bin) AddMany(elements ...Elementer) bool {
+	for _, el := range elements {
+		if !bin.Add(el) {
+			return false
+		}
+	}
+
+	return true
+}
+
+// LinkMany links the given elements in the order passed
+func LinkMany(elements ...Elementer) bool {
+	if len(elements) == 0 {
+		return true
+	}
+
+	current := elements[0].(*Element)
+
+	for _, next := range elements[1:] {
+		if !current.Link(next) {
+			return false
+		}
+
+		current = next.(*Element)
+	}
+
+	return true
+}
+
+// Values allows you to access the values from the iterator in a go for loop via function iterators
+func (it *Iterator) Values() iter.Seq[any] {
+	return func(yield func(any) bool) {
+		for {
+			v, ret := it.Next()
+			switch ret {
+			case IteratorDone:
+				return
+			case IteratorResync:
+				it.Resync()
+			case IteratorOK:
+				if !yield(v.GoValue()) {
+					return
+				}
+
+			case IteratorError:
+				panic("iterator values failed")
+			default:
+				panic("iterator values returned unknown state")
+			}
+		}
+	}
+}
+
+// MarshalStructure will convert the given go struct into a GstStructure. Currently nested
+// structs are not supported. You can control the mapping of the field names via the tags of the go struct.
+func MarshalStructure(data interface{}) *Structure {
+	typeOf := reflect.TypeOf(data)
+	valsOf := reflect.ValueOf(data)
+	st := NewStructureEmpty(typeOf.Name())
+	for i := 0; i < valsOf.NumField(); i++ {
+		gval := valsOf.Field(i).Interface()
+
+		fieldName, ok := typeOf.Field(i).Tag.Lookup("gst")
+
+		if !ok {
+			fieldName = typeOf.Field(i).Name
+		}
+
+		st.SetValue(fieldName, coreglib.NewValue(gval))
+	}
+	return st
+}
+
+// UnmarshalInto will unmarshal this structure into the given pointer. The object
+// reflected by the pointer must be non-nil. You can control the mapping of the field names via the tags of the go struct.
+func (s *Structure) UnmarshalInto(data interface{}) error {
+	rv := reflect.ValueOf(data)
+	if rv.Kind() != reflect.Ptr || rv.IsNil() {
+		return fmt.Errorf("data is invalid (nil or non-pointer)")
+	}
+
+	val := reflect.ValueOf(data).Elem()
+	nVal := rv.Elem()
+	for i := 0; i < val.NumField(); i++ {
+		nvField := nVal.Field(i)
+
+		fieldName, ok := val.Type().Field(i).Tag.Lookup("gst")
+
+		if !ok {
+			fieldName = val.Type().Field(i).Name
+		}
+
+		val := s.Value(fieldName)
+
+		nvField.Set(reflect.ValueOf(val))
+	}
+
+	return nil
 }
 
 // Init binds to the gst_init() function. Argument parsing is not

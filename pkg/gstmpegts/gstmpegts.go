@@ -5434,42 +5434,6 @@ func (descriptor *Descriptor) ParseMetadataStd(metadataInputLeakRate *uint32, me
 	return _ok
 }
 
-// ParseRegistration extracts the Registration information from descriptor.
-//
-// The function returns the following values:
-//
-//   - registrationId: registration ID (in host endiannes).
-//   - additionalInfo (optional): additional information.
-//   - ok: TRUE if parsing succeeded, else FALSE.
-func (descriptor *Descriptor) ParseRegistration() (uint32, []byte, bool) {
-	var _arg0 *C.GstMpegtsDescriptor // out
-	var _arg1 C.guint32              // in
-	var _arg2 *C.guint8              // in
-	var _arg3 C.gsize                // in
-	var _cret C.gboolean             // in
-
-	_arg0 = (*C.GstMpegtsDescriptor)(gextras.StructNative(unsafe.Pointer(descriptor)))
-
-	_cret = C.gst_mpegts_descriptor_parse_registration(_arg0, &_arg1, &_arg2, &_arg3)
-	runtime.KeepAlive(descriptor)
-
-	var _registrationId uint32 // out
-	var _additionalInfo []byte // out
-	var _ok bool               // out
-
-	_registrationId = uint32(_arg1)
-	if _arg2 != nil {
-		defer C.free(unsafe.Pointer(_arg2))
-		_additionalInfo = make([]byte, _arg3)
-		copy(_additionalInfo, unsafe.Slice((*byte)(unsafe.Pointer(_arg2)), _arg3))
-	}
-	if _cret != 0 {
-		_ok = true
-	}
-
-	return _registrationId, _additionalInfo, _ok
-}
-
 // ParseSatelliteDeliverySystem extracts the satellite delivery system
 // information from descriptor.
 //

@@ -120,7 +120,7 @@ var Data = genmain.Overlay(
 			MiniObjectExtenderBorrows(),
 		},
 		Postprocessors: map[string][]girgen.Postprocessor{
-			"Gst-1":       {ElementFactoryMakeWithProperties},
+			"Gst-1":       {ElementFactoryMakeWithProperties, ElementBlockSetState, BinAddMany, ElementLinkMany, IteratorValues, StructureGoMarshal},
 			"GstMpegts-1": {GstUseUnstableAPI},
 			"GstWebRTC-1": {GstUseUnstableAPI, FixWebrtcPkgConfig},
 		},
@@ -135,6 +135,9 @@ var Data = genmain.Overlay(
 			types.AbsoluteFilter("C.gst_mpegts_descriptor_parse_dvb_ca_identifier"),
 			types.AbsoluteFilter("C.gst_mpegts_descriptor_parse_dvb_frequency_list"),
 			types.AbsoluteFilter("C.gst_source_buffer_get_buffered"),
+
+			// Excluded because the additional_info param seems to have changed between my local gstreamer and 1.24.10 (used in github actions)
+			types.AbsoluteFilter("C.gst_mpegts_descriptor_parse_registration"),
 
 			// In-out array pointer, not very go like and not correctly handled by girgen, needs custom implementation
 			types.AbsoluteFilter("C.gst_audio_get_channel_reorder_map"),
@@ -248,6 +251,172 @@ func FixWebrtcPkgConfig(nsgen *girgen.NamespaceGenerator) error {
 		// see https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/8470 , remove after release
 		f.Header().IncludeC("gst/webrtc/sctptransport.h")
 	}
+
+	return nil
+}
+
+func IteratorValues(nsgen *girgen.NamespaceGenerator) error {
+	fg := nsgen.MakeFile("iteratorvalues.go")
+
+	p := fg.Pen()
+
+	fg.Header().Import("iter")
+
+	p.Line(`
+	// Values allows you to access the values from the iterator in a go for loop via function iterators
+	func (it *Iterator) Values() iter.Seq[any] {
+		return func(yield func(any) bool) {
+			for {
+				v, ret := it.Next()
+				switch ret {
+				case IteratorDone:
+					return
+				case IteratorResync:
+					it.Resync()
+				case IteratorOK:
+					if !yield(v.GoValue()) {
+						return
+					}
+
+				case IteratorError:
+					panic("iterator values failed")
+				default:
+					panic("iterator values returned unknown state")
+				}
+			}
+		}
+	}
+	`)
+
+	return nil
+}
+
+func StructureGoMarshal(nsgen *girgen.NamespaceGenerator) error {
+	fg := nsgen.MakeFile("structuremarshal.go")
+
+	p := fg.Pen()
+
+	fg.Header().NeedsExternGLib()
+	fg.Header().Import("reflect")
+
+	p.Line(`
+	// MarshalStructure will convert the given go struct into a GstStructure. Currently nested
+	// structs are not supported. You can control the mapping of the field names via the tags of the go struct.
+	func MarshalStructure(data interface{}) *Structure {
+		typeOf := reflect.TypeOf(data)
+		valsOf := reflect.ValueOf(data)
+		st := NewStructureEmpty(typeOf.Name())
+		for i := 0; i < valsOf.NumField(); i++ {
+			gval := valsOf.Field(i).Interface()
+			
+			fieldName, ok := typeOf.Field(i).Tag.Lookup("gst")
+
+			if !ok {
+				fieldName = typeOf.Field(i).Name
+			}
+
+			st.SetValue(fieldName, coreglib.NewValue(gval))
+		}
+		return st
+	}
+
+	// UnmarshalInto will unmarshal this structure into the given pointer. The object
+	// reflected by the pointer must be non-nil. You can control the mapping of the field names via the tags of the go struct.
+	func (s *Structure) UnmarshalInto(data interface{}) error {
+		rv := reflect.ValueOf(data)
+		if rv.Kind() != reflect.Ptr || rv.IsNil() {
+			return fmt.Errorf("data is invalid (nil or non-pointer)")
+		}
+
+		val := reflect.ValueOf(data).Elem()
+		nVal := rv.Elem()
+		for i := 0; i < val.NumField(); i++ {
+			nvField := nVal.Field(i)
+
+			fieldName, ok := val.Type().Field(i).Tag.Lookup("gst")
+
+			if !ok {
+				fieldName = val.Type().Field(i).Name
+			}
+
+			val := s.Value(fieldName)
+
+			nvField.Set(reflect.ValueOf(val))
+		}
+
+		return nil
+	}
+	`)
+
+	return nil
+}
+func BinAddMany(nsgen *girgen.NamespaceGenerator) error {
+	fg := nsgen.MakeFile("binaddmany.go")
+
+	p := fg.Pen()
+
+	p.Line(`
+	// AddMany repeatedly calls Add for each param
+	func (bin *Bin) AddMany(elements... Elementer) bool {
+		for _, el := range elements {
+			if !bin.Add(el) {
+				return false
+			}
+		}
+
+		return true
+	}
+	`)
+
+	return nil
+}
+
+func ElementLinkMany(nsgen *girgen.NamespaceGenerator) error {
+	fg := nsgen.MakeFile("elementlinkmany.go")
+
+	p := fg.Pen()
+
+	p.Line(`
+	// LinkMany links the given elements in the order passed
+	func LinkMany(elements... Elementer) bool {
+		if len(elements) == 0 {
+			return true
+		}
+
+		current := elements[0].(*Element)
+
+		for _, next := range elements[1:] {
+			if !	current.Link(next) {
+				return false
+			}
+
+			current = next.(*Element)
+		}
+
+		return true
+	}
+	`)
+
+	return nil
+}
+
+func ElementBlockSetState(nsgen *girgen.NamespaceGenerator) error {
+	fg := nsgen.MakeFile("elementblocksetstate.go")
+
+	p := fg.Pen()
+
+	p.Line(`
+	// BlockSetState is a convenience wrapper around calling SetState and State to wait for async state changes. See State for more info.
+	func (el *Element) BlockSetState(state State, timeout ClockTime) StateChangeReturn {
+		ret := el.SetState(state)
+
+		if ret == StateChangeAsync {
+			_, _, ret = el.State(timeout)
+		}
+
+		return ret
+	}
+	`)
 
 	return nil
 }
