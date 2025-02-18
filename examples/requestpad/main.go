@@ -3,11 +3,11 @@ package main
 import (
 	"errors"
 	"fmt"
-	"github.com/go-gst/go-glib/glib"
-	"github.com/go-gst/go-gst/examples"
-	"github.com/go-gst/go-gst/gst"
 	"os"
 	"time"
+
+	"github.com/go-gst/go-glib/glib"
+	"github.com/go-gst/go-gst/pkg/gst"
 )
 
 type workflow struct {
@@ -15,58 +15,39 @@ type workflow struct {
 }
 
 func (w *workflow) newSrc() {
-	src, err := gst.NewElementWithName("videotestsrc", "src2")
-	if err != nil {
-		fmt.Printf("err %v\n", err)
-		return
-	}
-	src.Set("is-live", true)
+	src := gst.ElementFactoryMake("videotestsrc", "src2")
+
+	src.SetObjectProperty("is-live", true)
 	w.Add(src)
 
-	caps, err := gst.NewElementWithName("capsfilter", "caps2")
-	if err != nil {
-		fmt.Printf("err %v\n", err)
-		return
-	}
-	caps.Set("caps", gst.NewCapsFromString("video/x-raw , width=640, height=360"))
+	caps := gst.ElementFactoryMake("capsfilter", "caps2")
+
+	caps.SetObjectProperty("caps", gst.CapsFromString("video/x-raw , width=640, height=360"))
 	w.Add(caps)
 
 	src.Link(caps)
 
 	// Get a sink pad on compositor
-	mixer, err := w.GetElementByName("mixer")
-	if err != nil {
-		fmt.Printf("err %v\n", err)
-		return
-	}
-	pad := mixer.GetRequestPad("sink_%u")
-	pad.SetProperty("xpos", 640)
-	pad.SetProperty("ypos", 0)
+	mixer := w.ByName("mixer")
 
-	caps.GetStaticPad("src").Link(pad)
+	pad := mixer.GetRequestPad("sink_%u")
+	pad.SetObjectProperty("xpos", 640)
+	pad.SetObjectProperty("ypos", 0)
+
+	caps.StaticPad("src").Link(pad)
 	caps.SyncStateWithParent()
 	src.SyncStateWithParent()
 
 }
 func (w *workflow) delSrc() {
 
-	mixer, err := w.GetElementByName("mixer")
-	if err != nil {
-		fmt.Printf("err %v\n", err)
-		return
-	}
+	mixer := w.ByName("mixer")
 
-	src, err := w.GetElementByName("src2")
-	if err != nil {
-		fmt.Printf("err %v\n", err)
-		return
-	}
-	caps, err := w.GetElementByName("caps2")
-	if err != nil {
-		fmt.Printf("err %v\n", err)
-		return
-	}
-	pad := mixer.GetStaticPad("sink_1")
+	src := w.ByName("src2")
+
+	caps := w.ByName("caps2")
+
+	pad := mixer.StaticPad("sink_1")
 	if pad == nil {
 		fmt.Printf("pad is null\n")
 		return
@@ -81,26 +62,16 @@ func (w *workflow) delSrc() {
 }
 
 func createPipeline() (*gst.Pipeline, error) {
-	gst.Init(nil)
-	var err error
-	var w workflow
-	w.Pipeline, err = gst.NewPipeline("")
+	gst.Init()
+	ret, err := gst.ParseLaunch("videotestsrc ! video/x-raw , capsfilter caps=width=640,height=360 name=caps1 ! compositor name=mixer ! autovideosink")
+
 	if err != nil {
-		fmt.Println(err)
 		os.Exit(2)
 	}
-	elements, err := gst.NewElementMany("videotestsrc", "capsfilter", "compositor", "autovideosink")
-	caps := elements[1]
-	caps.SetProperty("caps", gst.NewCapsFromString("video/x-raw , width=640, height=360"))
-	caps.SetProperty("name", "caps1")
-	mixer := elements[2]
-	mixer.SetProperty("name", "mixer")
-	if err != nil {
-		fmt.Printf("err %v\n", err)
-		return nil, err
-	}
-	w.AddMany(elements...)
-	gst.ElementLinkMany(elements...)
+
+	var w workflow
+
+	w.Pipeline = ret.(*gst.Pipeline)
 
 	go func() {
 		time.Sleep(time.Second)
@@ -118,19 +89,19 @@ func runPipeline(loop *glib.MainLoop, pipeline *gst.Pipeline) error {
 	pipeline.SetState(gst.StatePlaying)
 
 	// Add a message watch to the bus to quit on any error
-	pipeline.GetPipelineBus().AddWatch(func(msg *gst.Message) bool {
+	pipeline.Bus().AddWatch(0, func(bus *gst.Bus, msg *gst.Message) bool {
 		var err error
 
 		// If the stream has ended or any element posts an error to the
 		// bus, populate error.
 		switch msg.Type() {
-		case gst.MessageEOS:
+		case gst.MessageEos:
 			err = errors.New("end-of-stream")
 		case gst.MessageError:
 			// The parsed error implements the error interface, but also
 			// contains additional debug information.
-			gerr := msg.ParseError()
-			fmt.Println("go-gst-debug:", gerr.DebugString())
+			gerr, debug := msg.ParseError()
+			fmt.Println("go-gst-debug:", debug)
 			err = gerr
 		}
 
@@ -149,11 +120,12 @@ func runPipeline(loop *glib.MainLoop, pipeline *gst.Pipeline) error {
 }
 
 func main() {
-	examples.RunLoop(func(loop *glib.MainLoop) error {
-		pipeline, err := createPipeline()
-		if err != nil {
-			return err
-		}
-		return runPipeline(loop, pipeline)
-	})
+	loop := glib.NewMainLoop(glib.MainContextDefault(), false)
+
+	pipeline, err := createPipeline()
+	if err != nil {
+		os.Exit(2)
+	}
+
+	runPipeline(loop, pipeline)
 }
