@@ -1,3 +1,7 @@
+__debug*
+gotk4
+gstreamer
+
 # Binaries for programs and plugins
 *.exe
 *.exe~

@@ -6,28 +6,42 @@ on:
       - main
 
 jobs:
+  generate:
+    name: "${{ github.event_name }} / generate"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: DeterminateSystems/nix-installer-action@main
+    - uses: DeterminateSystems/magic-nix-cache-action@main
+
+    - run: go generate
+      shell: nix develop -c bash -e {0}
+
+    - name: Git dirty check
+      run: |
+        git add .
+        if [[ -n "$(git status --porcelain)" ]]; then
+          PAGER= git diff --cached
+          exit 1
+        fi
   setup:
     name: Tests on codebase
     runs-on: ubuntu-latest
     steps:
-      - name: Setup GStreamer
-        id: setup_gstreamer
-        uses: blinemedical/setup-gstreamer@v1.4.0
-      - name: Check out code into the Go module directory
-        uses: actions/checkout@v2
-      - uses: actions/setup-go@v4
-        with:
-          go-version: "stable"
+      - uses: actions/checkout@v4
+
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
       - name: Check formatting
-        uses: Jerome1337/gofmt-action@v1.0.5
-        with:
-          gofmt-flags: "-l -d"
-      - name: Check spellings
-        uses: reviewdog/action-misspell@v1
-        with:
-          locale: "US"
-          fail_on_error: true
-          filter_mode: nofilter
-      - uses: dominikh/staticcheck-action@v1.3.0
-        with:
-          install-go: false
+        run: |
+          files=$(gofmt -l .)
+          if [[ -z "$files" ]]; then
+            echo "Unformatted files:"
+            echo "$files"
+            exit 1
+          fi
+        shell: nix develop -c bash -e {0}
+      - name: staticcheck
+        shell: nix develop -c bash -e {0}
+        run: staticcheck ./...

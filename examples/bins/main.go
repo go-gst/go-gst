@@ -2,35 +2,35 @@ package main
 
 import (
 	"fmt"
-	"github.com/go-gst/go-glib/glib"
-	"github.com/go-gst/go-gst/examples"
-	"github.com/go-gst/go-gst/gst"
-	"os"
+	"time"
+
+	"github.com/diamondburned/gotk4/pkg/glib/v2"
+	"github.com/go-gst/go-gst/pkg/gst"
 )
 
-func runPipeline(mainLoop *glib.MainLoop) error {
-	gst.Init(&os.Args)
+func main() {
+	gst.Init()
 
-	bin, err := gst.NewBinFromString("fakesrc num-buffers=5 ! fakesink", true)
+	mainLoop := glib.NewMainLoop(glib.MainContextDefault(), false)
+
+	bin, err := gst.ParseBinFromDescription("fakesrc num-buffers=5 ! fakesink", true)
 	if err != nil {
-		return err
+		panic(err)
 	}
 
-	pipeline, err := gst.NewPipeline("pipeline")
-	if err != nil {
-		return err
-	}
+	pipeline := gst.NewPipeline("pipeline")
 
-	pipeline.Add(bin.Element)
-	pipeline.GetBus().AddWatch(func(msg *gst.Message) bool {
+	pipeline.Add(bin)
+
+	pipeline.Bus().AddWatch(0, func(bus *gst.Bus, msg *gst.Message) bool {
 		switch msg.Type() {
-		case gst.MessageEOS: // When end-of-stream is received stop the main loop
-			bin.BlockSetState(gst.StateNull)
+		case gst.MessageEos: // When end-of-stream is received stop the main loop
+			bin.BlockSetState(gst.StateNull, gst.ClockTime(time.Second))
 			mainLoop.Quit()
 		case gst.MessageError: // Error messages are always fatal
-			err := msg.ParseError()
+			err, debug := msg.ParseError()
 			fmt.Println("ERROR:", err.Error())
-			if debug := err.DebugString(); debug != "" {
+			if debug != "" {
 				fmt.Println("DEBUG:", debug)
 			}
 			mainLoop.Quit()
@@ -46,11 +46,5 @@ func runPipeline(mainLoop *glib.MainLoop) error {
 	pipeline.SetState(gst.StatePlaying)
 
 	// Block on the main loop
-	return mainLoop.RunError()
-}
-
-func main() {
-	examples.RunLoop(func(loop *glib.MainLoop) error {
-		return runPipeline(loop)
-	})
+	mainLoop.Run()
 }

@@ -24,22 +24,26 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/go-gst/go-glib/glib"
-	"github.com/go-gst/go-gst/examples"
-	"github.com/go-gst/go-gst/gst"
+	"github.com/diamondburned/gotk4/pkg/glib/v2"
+	"github.com/go-gst/go-gst/pkg/gst"
 )
 
-func runPipeline(loop *glib.MainLoop) error {
-	gst.Init(nil)
+func main() {
+	gst.Init()
+
+	mainLoop := glib.NewMainLoop(glib.MainContextDefault(), false)
 
 	// Build a pipeline with fake audio data going to a fakesink
-	pipeline, err := gst.NewPipelineFromString("audiotestsrc ! fakesink")
+	res, err := gst.ParseLaunch("audiotestsrc ! fakesink")
 	if err != nil {
-		return err
+		fmt.Println(err)
+		return
 	}
 
+	pipeline := res.(*gst.Pipeline)
+
 	// Retrieve the message bus for the pipeline
-	bus := pipeline.GetPipelineBus()
+	bus := pipeline.Bus()
 
 	// Start the pipeline
 	pipeline.SetState(gst.StatePlaying)
@@ -47,24 +51,22 @@ func runPipeline(loop *glib.MainLoop) error {
 	// This sets the bus's signal handler (don't be mislead by the "add", there can only be one).
 	// Every message from the bus is passed through this function. Its return value determines
 	// whether the handler wants to be called again.
-	bus.AddWatch(func(msg *gst.Message) (cont bool) {
-		// Assume we are continuing
-		cont = true
+	bus.AddWatch(0, func(_ *gst.Bus, msg *gst.Message) bool {
 
 		switch msg.Type() {
-		case gst.MessageEOS:
+		case gst.MessageEos:
 			fmt.Println("Received EOS")
 			// An EndOfStream event was sent to the pipeline, so we tell our main loop
 			// to stop execution here.
-			loop.Quit()
+			mainLoop.Quit()
 		case gst.MessageError:
-			err := msg.ParseError()
+			err, debug := msg.ParseError()
 			fmt.Println("ERROR:", err)
-			fmt.Println("DEBUG:", err.DebugString())
-			loop.Quit()
+			fmt.Println("DEBUG:", debug)
+			mainLoop.Quit()
 		}
 
-		return
+		return true
 	})
 
 	// Kick off a goroutine that after 5 seconds will send an eos event to the pipeline.
@@ -82,31 +84,12 @@ func runPipeline(loop *glib.MainLoop) error {
 			// Once all sinks are done handling the EOS event (and all buffers that were before the
 			// EOS event in the pipeline already), the pipeline would post an EOS message on the bus,
 			// essentially telling the application that the pipeline is completely drained.
-			pipeline.SendEvent(gst.NewEOSEvent())
+			pipeline.SendEvent(gst.NewEventEos())
 			return
 		}
 	}()
 
-	// Operate GStreamer's bus, facilliating GLib's mainloop here.
-	// This function call will block until you tell the mainloop to quit
-	// (see above for how to do this).
-	loop.Run()
+	mainLoop.Run()
 
-	// Stop the pipeline
-	if err := pipeline.SetState(gst.StateNull); err != nil {
-		fmt.Println("Error stopping pipeline:", err)
-	}
-
-	// Remove the watch function from the bus.
-	// Again: There can always only be one watch function.
-	// Thus we don't have to tell it which function to remove.
-	bus.RemoveWatch()
-
-	return nil
-}
-
-func main() {
-	examples.RunLoop(func(loop *glib.MainLoop) error {
-		return runPipeline(loop)
-	})
+	return
 }

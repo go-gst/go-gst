@@ -4,5 +4,6 @@
 
 packages=$(go list ./...)
 for package in $packages; do
+    echo "building $package" 
     go build -o /dev/null "$package" || exit 1
 done
