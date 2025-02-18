@@ -35,38 +35,42 @@ func init() {
 	})
 }
 
-// MIKEY_VERSION: supported MIKEY version 1.
+// MIKEY_VERSION (GST_MIKEY_VERSION): supported MIKEY version 1.
 const MIKEY_VERSION = 1
 
-// SDP_BWTYPE_AS: application-Specific Maximum bandwidth modifier.
+// SDP_BWTYPE_AS (GST_SDP_BWTYPE_AS): application-Specific Maximum bandwidth
+// modifier.
 const SDP_BWTYPE_AS = "AS"
 
-// SDP_BWTYPE_CT: conference Total bandwidth modifier.
+// SDP_BWTYPE_CT (GST_SDP_BWTYPE_CT): conference Total bandwidth modifier.
 const SDP_BWTYPE_CT = "CT"
 
-// SDP_BWTYPE_EXT_PREFIX: extension prefix bandwidth modifier.
+// SDP_BWTYPE_EXT_PREFIX (GST_SDP_BWTYPE_EXT_PREFIX): extension prefix bandwidth
+// modifier.
 const SDP_BWTYPE_EXT_PREFIX = "X-"
 
-// SDP_BWTYPE_RR: RTCP bandwidth allocated to data receivers (RFC 3556).
+// SDP_BWTYPE_RR (GST_SDP_BWTYPE_RR): RTCP bandwidth allocated to data receivers
+// (RFC 3556).
 const SDP_BWTYPE_RR = "RR"
 
-// SDP_BWTYPE_RS: RTCP bandwidth allocated to active data senders (RFC 3556).
+// SDP_BWTYPE_RS (GST_SDP_BWTYPE_RS): RTCP bandwidth allocated to active data
+// senders (RFC 3556).
 const SDP_BWTYPE_RS = "RS"
 
-// SDP_BWTYPE_TIAS: transport Independent Application Specific Maximum bandwidth
-// (RFC 3890).
+// SDP_BWTYPE_TIAS (GST_SDP_BWTYPE_TIAS): transport Independent Application
+// Specific Maximum bandwidth (RFC 3890).
 const SDP_BWTYPE_TIAS = "TIAS"
 
-// MIKEYCacheType: different cache types.
+// MIKEYCacheType (GstMIKEYCacheType): different cache types.
 type MIKEYCacheType C.gint
 
 const (
-	// MikeyCacheNone: envelope key MUST NOT be cached.
+	// MikeyCacheNone (GST_MIKEY_CACHE_NONE): envelope key MUST NOT be cached.
 	MikeyCacheNone MIKEYCacheType = iota
-	// MikeyCacheAlways: envelope key MUST be cached.
+	// MikeyCacheAlways (GST_MIKEY_CACHE_ALWAYS): envelope key MUST be cached.
 	MikeyCacheAlways
-	// MikeyCacheForCsb: envelope key MUST be cached, but only to be used for
-	// the specific CSB.
+	// MikeyCacheForCsb (GST_MIKEY_CACHE_FOR_CSB): envelope key MUST be cached,
+	// but only to be used for the specific CSB.
 	MikeyCacheForCsb
 )
 
@@ -84,17 +88,20 @@ func (m MIKEYCacheType) String() string {
 	}
 }
 
-// MIKEYEncAlg: encryption algorithm used to encrypt the Encr data field.
+// MIKEYEncAlg (GstMIKEYEncAlg): encryption algorithm used to encrypt the Encr
+// data field.
 type MIKEYEncAlg C.gint
 
 const (
-	// MikeyEncNull: no encryption.
+	// MikeyEncNull (GST_MIKEY_ENC_NULL): no encryption.
 	MikeyEncNull MIKEYEncAlg = 0
-	// MikeyEncAesCm128: AES-CM using a 128-bit key.
+	// MikeyEncAesCm128 (GST_MIKEY_ENC_AES_CM_128): AES-CM using a 128-bit key.
 	MikeyEncAesCm128 MIKEYEncAlg = 1
-	// MikeyEncAesKw128: AES Key Wrap using a 128-bit key.
+	// MikeyEncAesKw128 (GST_MIKEY_ENC_AES_KW_128): AES Key Wrap using a 128-bit
+	// key.
 	MikeyEncAesKw128 MIKEYEncAlg = 2
-	// MikeyEncAesGcm128: AES-GCM using a 128-bit key (Since: 1.16).
+	// MikeyEncAesGcm128 (GST_MIKEY_ENC_AES_GCM_128): AES-GCM using a 128-bit
+	// key (Since: 1.16).
 	MikeyEncAesGcm128 MIKEYEncAlg = 6
 )
 
@@ -114,15 +121,16 @@ func (m MIKEYEncAlg) String() string {
 	}
 }
 
-// MIKEYKVType: key validity type.
+// MIKEYKVType (GstMIKEYKVType): key validity type.
 type MIKEYKVType C.gint
 
 const (
-	// MikeyKvNull: no specific usage rule.
+	// MikeyKvNull (GST_MIKEY_KV_NULL): no specific usage rule.
 	MikeyKvNull MIKEYKVType = iota
-	// MikeyKvSpi: key is associated with the SPI/MKI.
+	// MikeyKvSpi (GST_MIKEY_KV_SPI): key is associated with the SPI/MKI.
 	MikeyKvSpi
-	// MikeyKvInterval: key has a start and expiration time.
+	// MikeyKvInterval (GST_MIKEY_KV_INTERVAL): key has a start and expiration
+	// time.
 	MikeyKvInterval
 )
 
@@ -140,13 +148,13 @@ func (m MIKEYKVType) String() string {
 	}
 }
 
-// MIKEYKeyDataType: type of key.
+// MIKEYKeyDataType (GstMIKEYKeyDataType): type of key.
 type MIKEYKeyDataType C.gint
 
 const (
-	// MikeyKdTgk: TEK Generation Key.
+	// MikeyKdTgk (GST_MIKEY_KD_TGK): TEK Generation Key.
 	MikeyKdTgk MIKEYKeyDataType = 0
-	// MikeyKdTek: traffic-Encrypting Key.
+	// MikeyKdTek (GST_MIKEY_KD_TEK): traffic-Encrypting Key.
 	MikeyKdTek MIKEYKeyDataType = 2
 )
 
@@ -162,13 +170,13 @@ func (m MIKEYKeyDataType) String() string {
 	}
 }
 
-// MIKEYMacAlg specifies the authentication algorithm used.
+// MIKEYMacAlg (GstMIKEYMacAlg) specifies the authentication algorithm used.
 type MIKEYMacAlg C.gint
 
 const (
-	// MikeyMacNull: no authentication.
+	// MikeyMacNull (GST_MIKEY_MAC_NULL): no authentication.
 	MikeyMacNull MIKEYMacAlg = iota
-	// MikeyMacHMACSHA1160: HMAC-SHA-1-160.
+	// MikeyMacHMACSHA1160 (GST_MIKEY_MAC_HMAC_SHA_1_160): HMAC-SHA-1-160.
 	MikeyMacHMACSHA1160
 )
 
@@ -184,12 +192,12 @@ func (m MIKEYMacAlg) String() string {
 	}
 }
 
-// MIKEYMapType specifies the method of uniquely mapping Crypto Sessions to the
-// security protocol sessions.
+// MIKEYMapType (GstMIKEYMapType) specifies the method of uniquely mapping
+// Crypto Sessions to the security protocol sessions.
 type MIKEYMapType C.gint
 
 const (
-	// MikeyMapTypeSrtp: SRTP.
+	// MikeyMapTypeSrtp (GST_MIKEY_MAP_TYPE_SRTP): SRTP.
 	MikeyMapTypeSrtp MIKEYMapType = iota
 )
 
@@ -203,11 +211,12 @@ func (m MIKEYMapType) String() string {
 	}
 }
 
-// MIKEYPRFFunc: PRF function that has been/will be used for key derivation.
+// MIKEYPRFFunc (GstMIKEYPRFFunc): PRF function that has been/will be used for
+// key derivation.
 type MIKEYPRFFunc C.gint
 
 const (
-	// MikeyPrfMikey1: MIKEY-1 PRF function.
+	// MikeyPrfMikey1 (GST_MIKEY_PRF_MIKEY_1): MIKEY-1 PRF function.
 	MikeyPrfMikey1 MIKEYPRFFunc = iota
 )
 
@@ -221,39 +230,39 @@ func (m MIKEYPRFFunc) String() string {
 	}
 }
 
-// MIKEYPayloadType: different MIKEY Payload types.
+// MIKEYPayloadType (GstMIKEYPayloadType): different MIKEY Payload types.
 type MIKEYPayloadType C.gint
 
 const (
-	// MikeyPtLast: last payload.
+	// MikeyPtLast (GST_MIKEY_PT_LAST): last payload.
 	MikeyPtLast MIKEYPayloadType = 0
-	// MikeyPtKemac: key data transport payload.
+	// MikeyPtKemac (GST_MIKEY_PT_KEMAC): key data transport payload.
 	MikeyPtKemac MIKEYPayloadType = 1
-	// MikeyPtPke: envelope data payload.
+	// MikeyPtPke (GST_MIKEY_PT_PKE): envelope data payload.
 	MikeyPtPke MIKEYPayloadType = 2
-	// MikeyPtDh: DH data payload.
+	// MikeyPtDh (GST_MIKEY_PT_DH): DH data payload.
 	MikeyPtDh MIKEYPayloadType = 3
-	// MikeyPtSign: signature payload.
+	// MikeyPtSign (GST_MIKEY_PT_SIGN): signature payload.
 	MikeyPtSign MIKEYPayloadType = 4
-	// MikeyPtT: timestamp payload.
+	// MikeyPtT (GST_MIKEY_PT_T): timestamp payload.
 	MikeyPtT MIKEYPayloadType = 5
-	// MikeyPtID: ID payload.
+	// MikeyPtID (GST_MIKEY_PT_ID): ID payload.
 	MikeyPtID MIKEYPayloadType = 6
-	// MikeyPtCert: certificate Payload.
+	// MikeyPtCert (GST_MIKEY_PT_CERT): certificate Payload.
 	MikeyPtCert MIKEYPayloadType = 7
-	// MikeyPtChash: cert hash payload.
+	// MikeyPtChash (GST_MIKEY_PT_CHASH): cert hash payload.
 	MikeyPtChash MIKEYPayloadType = 8
-	// MikeyPtV: verification message payload.
+	// MikeyPtV (GST_MIKEY_PT_V): verification message payload.
 	MikeyPtV MIKEYPayloadType = 9
-	// MikeyPtSp: security Policy payload.
+	// MikeyPtSp (GST_MIKEY_PT_SP): security Policy payload.
 	MikeyPtSp MIKEYPayloadType = 10
-	// MikeyPtRand: RAND payload.
+	// MikeyPtRand (GST_MIKEY_PT_RAND): RAND payload.
 	MikeyPtRand MIKEYPayloadType = 11
-	// MikeyPtErr: error payload.
+	// MikeyPtErr (GST_MIKEY_PT_ERR): error payload.
 	MikeyPtErr MIKEYPayloadType = 12
-	// MikeyPtKeyData: key data sub-payload.
+	// MikeyPtKeyData (GST_MIKEY_PT_KEY_DATA): key data sub-payload.
 	MikeyPtKeyData MIKEYPayloadType = 20
-	// MikeyPtGenExt: general Extension Payload.
+	// MikeyPtGenExt (GST_MIKEY_PT_GEN_EXT): general Extension Payload.
 	MikeyPtGenExt MIKEYPayloadType = 21
 )
 
@@ -295,11 +304,11 @@ func (m MIKEYPayloadType) String() string {
 	}
 }
 
-// MIKEYSecProto specifies the security protocol.
+// MIKEYSecProto (GstMIKEYSecProto) specifies the security protocol.
 type MIKEYSecProto C.gint
 
 const (
-	// MikeySecProtoSrtp: SRTP.
+	// MikeySecProtoSrtp (GST_MIKEY_SEC_PROTO_SRTP): SRTP.
 	MikeySecProtoSrtp MIKEYSecProto = iota
 )
 
@@ -313,37 +322,49 @@ func (m MIKEYSecProto) String() string {
 	}
 }
 
-// MIKEYSecSRTP: this policy specifies the parameters for SRTP and SRTCP.
+// MIKEYSecSRTP (GstMIKEYSecSRTP): this policy specifies the parameters for SRTP
+// and SRTCP.
 type MIKEYSecSRTP C.gint
 
 const (
-	// MikeySpSrtpEncAlg: encryption algorithm.
+	// MikeySpSrtpEncAlg (GST_MIKEY_SP_SRTP_ENC_ALG): encryption algorithm.
 	MikeySpSrtpEncAlg MIKEYSecSRTP = 0
-	// MikeySpSrtpEncKeyLen: session Encr. key length.
+	// MikeySpSrtpEncKeyLen (GST_MIKEY_SP_SRTP_ENC_KEY_LEN): session Encr.
+	// key length.
 	MikeySpSrtpEncKeyLen MIKEYSecSRTP = 1
-	// MikeySpSrtpAuthAlg: authentication algorithm.
+	// MikeySpSrtpAuthAlg (GST_MIKEY_SP_SRTP_AUTH_ALG): authentication
+	// algorithm.
 	MikeySpSrtpAuthAlg MIKEYSecSRTP = 2
-	// MikeySpSrtpAuthKeyLen: session Auth. key length.
+	// MikeySpSrtpAuthKeyLen (GST_MIKEY_SP_SRTP_AUTH_KEY_LEN): session Auth.
+	// key length.
 	MikeySpSrtpAuthKeyLen MIKEYSecSRTP = 3
-	// MikeySpSrtpSaltKeyLen: session Salt key length.
+	// MikeySpSrtpSaltKeyLen (GST_MIKEY_SP_SRTP_SALT_KEY_LEN): session Salt key
+	// length.
 	MikeySpSrtpSaltKeyLen MIKEYSecSRTP = 4
-	// MikeySpSrtpPrf: SRTP Pseudo Random Function.
+	// MikeySpSrtpPrf (GST_MIKEY_SP_SRTP_PRF): SRTP Pseudo Random Function.
 	MikeySpSrtpPrf MIKEYSecSRTP = 5
-	// MikeySpSrtpKeyDerivRate: key derivation rate.
+	// MikeySpSrtpKeyDerivRate (GST_MIKEY_SP_SRTP_KEY_DERIV_RATE): key
+	// derivation rate.
 	MikeySpSrtpKeyDerivRate MIKEYSecSRTP = 6
-	// MikeySpSrtpSrtpEnc: SRTP encryption off/on, 0 if off, 1 if on.
+	// MikeySpSrtpSrtpEnc (GST_MIKEY_SP_SRTP_SRTP_ENC): SRTP encryption off/on,
+	// 0 if off, 1 if on.
 	MikeySpSrtpSrtpEnc MIKEYSecSRTP = 7
-	// MikeySpSrtpSrtcpEnc: SRTCP encryption off/on, 0 if off, 1 if on.
+	// MikeySpSrtpSrtcpEnc (GST_MIKEY_SP_SRTP_SRTCP_ENC): SRTCP encryption
+	// off/on, 0 if off, 1 if on.
 	MikeySpSrtpSrtcpEnc MIKEYSecSRTP = 8
-	// MikeySpSrtpFecOrder sender's FEC order.
+	// MikeySpSrtpFecOrder (GST_MIKEY_SP_SRTP_FEC_ORDER) sender's FEC order.
 	MikeySpSrtpFecOrder MIKEYSecSRTP = 9
-	// MikeySpSrtpSrtpAuth: SRTP authentication off/on, 0 if off, 1 if on.
+	// MikeySpSrtpSrtpAuth (GST_MIKEY_SP_SRTP_SRTP_AUTH): SRTP authentication
+	// off/on, 0 if off, 1 if on.
 	MikeySpSrtpSrtpAuth MIKEYSecSRTP = 10
-	// MikeySpSrtpAuthTagLen: authentication tag length.
+	// MikeySpSrtpAuthTagLen (GST_MIKEY_SP_SRTP_AUTH_TAG_LEN): authentication
+	// tag length.
 	MikeySpSrtpAuthTagLen MIKEYSecSRTP = 11
-	// MikeySpSrtpSrtpPrefixLen: SRTP prefix length.
+	// MikeySpSrtpSrtpPrefixLen (GST_MIKEY_SP_SRTP_SRTP_PREFIX_LEN): SRTP prefix
+	// length.
 	MikeySpSrtpSrtpPrefixLen MIKEYSecSRTP = 12
-	// MikeySpSrtpAeadAuthTagLen: AEAD authentication tag length (Since: 1.16).
+	// MikeySpSrtpAeadAuthTagLen (GST_MIKEY_SP_SRTP_AEAD_AUTH_TAG_LEN): AEAD
+	// authentication tag length (Since: 1.16).
 	MikeySpSrtpAeadAuthTagLen MIKEYSecSRTP = 20
 )
 
@@ -383,15 +404,15 @@ func (m MIKEYSecSRTP) String() string {
 	}
 }
 
-// MIKEYTSType specifies the timestamp type.
+// MIKEYTSType (GstMIKEYTSType) specifies the timestamp type.
 type MIKEYTSType C.gint
 
 const (
-	// MikeyTsTypeNtpUTC: NTP time in UTC timezone.
+	// MikeyTsTypeNtpUTC (GST_MIKEY_TS_TYPE_NTP_UTC): NTP time in UTC timezone.
 	MikeyTsTypeNtpUTC MIKEYTSType = iota
-	// MikeyTsTypeNtp: NTP time.
+	// MikeyTsTypeNtp (GST_MIKEY_TS_TYPE_NTP): NTP time.
 	MikeyTsTypeNtp
-	// MikeyTsTypeCounter: counter.
+	// MikeyTsTypeCounter (GST_MIKEY_TS_TYPE_COUNTER): counter.
 	MikeyTsTypeCounter
 )
 
@@ -409,25 +430,29 @@ func (m MIKEYTSType) String() string {
 	}
 }
 
-// MIKEYType: different MIKEY data types.
+// MIKEYType (GstMIKEYType): different MIKEY data types.
 type MIKEYType C.gint
 
 const (
-	// MikeyTypeInvalid: invalid type.
+	// MikeyTypeInvalid (GST_MIKEY_TYPE_INVALID): invalid type.
 	MikeyTypeInvalid MIKEYType = -1
-	// MikeyTypePskInit initiator's pre-shared key message.
+	// MikeyTypePskInit (GST_MIKEY_TYPE_PSK_INIT) initiator's pre-shared key
+	// message.
 	MikeyTypePskInit MIKEYType = 0
-	// MikeyTypePskVerify: verification message of a Pre-shared key message.
+	// MikeyTypePskVerify (GST_MIKEY_TYPE_PSK_VERIFY): verification message of a
+	// Pre-shared key message.
 	MikeyTypePskVerify MIKEYType = 1
-	// MikeyTypePkInit initiator's public-key transport message.
+	// MikeyTypePkInit (GST_MIKEY_TYPE_PK_INIT) initiator's public-key transport
+	// message.
 	MikeyTypePkInit MIKEYType = 2
-	// MikeyTypePkVerify: verification message of a public-key message.
+	// MikeyTypePkVerify (GST_MIKEY_TYPE_PK_VERIFY): verification message of a
+	// public-key message.
 	MikeyTypePkVerify MIKEYType = 3
-	// MikeyTypeDhInit initiator's DH exchange message.
+	// MikeyTypeDhInit (GST_MIKEY_TYPE_DH_INIT) initiator's DH exchange message.
 	MikeyTypeDhInit MIKEYType = 4
-	// MikeyTypeDhResp responder's DH exchange message.
+	// MikeyTypeDhResp (GST_MIKEY_TYPE_DH_RESP) responder's DH exchange message.
 	MikeyTypeDhResp MIKEYType = 5
-	// MikeyTypeError: error message.
+	// MikeyTypeError (GST_MIKEY_TYPE_ERROR): error message.
 	MikeyTypeError MIKEYType = 6
 )
 
@@ -455,13 +480,13 @@ func (m MIKEYType) String() string {
 	}
 }
 
-// SDPResult: return values for the SDP functions.
+// SDPResult (GstSDPResult): return values for the SDP functions.
 type SDPResult C.gint
 
 const (
-	// SdpOK: successful return value.
+	// SdpOK (GST_SDP_OK): successful return value.
 	SdpOK SDPResult = 0
-	// SdpEinval: function was given invalid parameters.
+	// SdpEinval (GST_SDP_EINVAL): function was given invalid parameters.
 	SdpEinval SDPResult = -1
 )
 
@@ -477,7 +502,8 @@ func (s SDPResult) String() string {
 	}
 }
 
-// SdpAddressIsMulticast: check if the given addr is a multicast address.
+// SdpAddressIsMulticast (gst_sdp_address_is_multicast): check if the given addr
+// is a multicast address.
 //
 // The function takes the following parameters:
 //
@@ -515,7 +541,7 @@ func SdpAddressIsMulticast(nettype, addrtype, addr string) bool {
 	return _ok
 }
 
-// SdpMakeKeymgmt makes key management data.
+// SdpMakeKeymgmt (gst_sdp_make_keymgmt) makes key management data.
 //
 // The function takes the following parameters:
 //
@@ -547,7 +573,7 @@ func SdpMakeKeymgmt(uri, base64 string) string {
 	return _utf8
 }
 
-// MIKEYMapSRTP: security policy Map item for SRTP
+// MIKEYMapSRTP (GstMIKEYMapSRTP): security policy Map item for SRTP
 //
 // An instance of this type is always passed by reference.
 type MIKEYMapSRTP struct {
@@ -621,7 +647,8 @@ func (m *MIKEYMapSRTP) SetRoc(roc uint32) {
 	*valptr = C.guint32(roc)
 }
 
-// MIKEYMessage: structure holding the information of the MIKEY message
+// MIKEYMessage (GstMIKEYMessage): structure holding the information of the
+// MIKEY message
 //
 // An instance of this type is always passed by reference.
 type MIKEYMessage struct {
@@ -752,7 +779,8 @@ func (m *MIKEYMessage) SetCSBID(CSBId uint32) {
 	*valptr = C.guint32(CSBId)
 }
 
-// AddCsSrtp: add a Crypto policy for SRTP to msg.
+// AddCsSrtp (gst_mikey_message_add_cs_srtp): add a Crypto policy for SRTP to
+// msg.
 //
 // The function takes the following parameters:
 //
@@ -790,7 +818,7 @@ func (msg *MIKEYMessage) AddCsSrtp(policy byte, ssrc uint32, roc uint32) bool {
 	return _ok
 }
 
-// AddPayload: add a new payload to msg.
+// AddPayload (gst_mikey_message_add_payload): add a new payload to msg.
 //
 // The function takes the following parameters:
 //
@@ -821,7 +849,8 @@ func (msg *MIKEYMessage) AddPayload(payload *MIKEYPayload) bool {
 	return _ok
 }
 
-// AddPke: add a new PKE payload to msg with the given parameters.
+// AddPke (gst_mikey_message_add_pke): add a new PKE payload to msg with the
+// given parameters.
 //
 // The function takes the following parameters:
 //
@@ -859,7 +888,8 @@ func (msg *MIKEYMessage) AddPke(C MIKEYCacheType, data []byte) bool {
 	return _ok
 }
 
-// AddRand: add a new RAND payload to msg with the given parameters.
+// AddRand (gst_mikey_message_add_rand): add a new RAND payload to msg with the
+// given parameters.
 //
 // The function takes the following parameters:
 //
@@ -893,7 +923,8 @@ func (msg *MIKEYMessage) AddRand(rand []byte) bool {
 	return _ok
 }
 
-// AddRandLen: add a new RAND payload to msg with len random bytes.
+// AddRandLen (gst_mikey_message_add_rand_len): add a new RAND payload to msg
+// with len random bytes.
 //
 // The function takes the following parameters:
 //
@@ -923,8 +954,8 @@ func (msg *MIKEYMessage) AddRandLen(len byte) bool {
 	return _ok
 }
 
-// AddTNowNtpUTC: add a new T payload to msg that contains the current time in
-// NTP-UTC format.
+// AddTNowNtpUTC (gst_mikey_message_add_t_now_ntp_utc): add a new T payload to
+// msg that contains the current time in NTP-UTC format.
 //
 // The function returns the following values:
 //
@@ -967,7 +998,8 @@ func (msg *MIKEYMessage) Base64Encode() string {
 	return _utf8
 }
 
-// FindPayload: find the nth occurrence of the payload with type in msg.
+// FindPayload (gst_mikey_message_find_payload): find the nth occurrence of the
+// payload with type in msg.
 //
 // The function takes the following parameters:
 //
@@ -1001,7 +1033,8 @@ func (msg *MIKEYMessage) FindPayload(typ MIKEYPayloadType, nth uint) *MIKEYPaylo
 	return _mikeyPayload
 }
 
-// CsSrtp: get the policy information of msg at idx.
+// CsSrtp (gst_mikey_message_get_cs_srtp): get the policy information of msg at
+// idx.
 //
 // The function takes the following parameters:
 //
@@ -1031,7 +1064,7 @@ func (msg *MIKEYMessage) CsSrtp(idx uint) *MIKEYMapSRTP {
 	return _mikeyMapSRTP
 }
 
-// NCs: get the number of crypto sessions in msg.
+// NCs (gst_mikey_message_get_n_cs): get the number of crypto sessions in msg.
 //
 // The function returns the following values:
 //
@@ -1052,7 +1085,8 @@ func (msg *MIKEYMessage) NCs() uint {
 	return _guint
 }
 
-// NPayloads: get the number of payloads in msg.
+// NPayloads (gst_mikey_message_get_n_payloads): get the number of payloads in
+// msg.
 //
 // The function returns the following values:
 //
@@ -1073,7 +1107,7 @@ func (msg *MIKEYMessage) NPayloads() uint {
 	return _guint
 }
 
-// Payload: get the MIKEYPayload at idx in msg.
+// Payload (gst_mikey_message_get_payload): get the MIKEYPayload at idx in msg.
 //
 // The function takes the following parameters:
 //
@@ -1104,7 +1138,8 @@ func (msg *MIKEYMessage) Payload(idx uint) *MIKEYPayload {
 	return _mikeyPayload
 }
 
-// InsertCsSrtp: insert a Crypto Session map for SRTP in msg at idx
+// InsertCsSrtp (gst_mikey_message_insert_cs_srtp): insert a Crypto Session map
+// for SRTP in msg at idx
 //
 // When idx is -1, the policy will be appended.
 //
@@ -1140,8 +1175,8 @@ func (msg *MIKEYMessage) InsertCsSrtp(idx int, _map *MIKEYMapSRTP) bool {
 	return _ok
 }
 
-// InsertPayload: insert the payload at index idx in msg. If idx is -1,
-// the payload will be appended to msg.
+// InsertPayload (gst_mikey_message_insert_payload): insert the payload at index
+// idx in msg. If idx is -1, the payload will be appended to msg.
 //
 // The function takes the following parameters:
 //
@@ -1176,7 +1211,8 @@ func (msg *MIKEYMessage) InsertPayload(idx uint, payload *MIKEYPayload) bool {
 	return _ok
 }
 
-// RemoveCsSrtp: remove the SRTP policy at idx.
+// RemoveCsSrtp (gst_mikey_message_remove_cs_srtp): remove the SRTP policy at
+// idx.
 //
 // The function takes the following parameters:
 //
@@ -1206,7 +1242,8 @@ func (msg *MIKEYMessage) RemoveCsSrtp(idx int) bool {
 	return _ok
 }
 
-// RemovePayload: remove the payload in msg at idx.
+// RemovePayload (gst_mikey_message_remove_payload): remove the payload in msg
+// at idx.
 //
 // The function takes the following parameters:
 //
@@ -1236,7 +1273,8 @@ func (msg *MIKEYMessage) RemovePayload(idx uint) bool {
 	return _ok
 }
 
-// ReplaceCsSrtp: replace a Crypto Session map for SRTP in msg at idx with map.
+// ReplaceCsSrtp (gst_mikey_message_replace_cs_srtp): replace a Crypto Session
+// map for SRTP in msg at idx with map.
 //
 // The function takes the following parameters:
 //
@@ -1270,7 +1308,8 @@ func (msg *MIKEYMessage) ReplaceCsSrtp(idx int, _map *MIKEYMapSRTP) bool {
 	return _ok
 }
 
-// ReplacePayload: replace the payload at idx in msg with payload.
+// ReplacePayload (gst_mikey_message_replace_payload): replace the payload at
+// idx in msg with payload.
 //
 // The function takes the following parameters:
 //
@@ -1305,7 +1344,7 @@ func (msg *MIKEYMessage) ReplacePayload(idx uint, payload *MIKEYPayload) bool {
 	return _ok
 }
 
-// SetInfo: set the information in msg.
+// SetInfo (gst_mikey_message_set_info): set the information in msg.
 //
 // The function takes the following parameters:
 //
@@ -1386,7 +1425,7 @@ func (msg *MIKEYMessage) ToCaps(caps *gst.Caps) bool {
 	return _ok
 }
 
-// MIKEYPayload: hold the common fields for all payloads
+// MIKEYPayload (GstMIKEYPayload): hold the common fields for all payloads
 //
 // An instance of this type is always passed by reference.
 type MIKEYPayload struct {
@@ -1450,7 +1489,8 @@ func (m *MIKEYPayload) SetLen(len uint) {
 	*valptr = C.guint(len)
 }
 
-// KemacAddSub: add a new sub payload to payload.
+// KemacAddSub (gst_mikey_payload_kemac_add_sub): add a new sub payload to
+// payload.
 //
 // The function takes the following parameters:
 //
@@ -1481,8 +1521,8 @@ func (payload *MIKEYPayload) KemacAddSub(newpay *MIKEYPayload) bool {
 	return _ok
 }
 
-// KemacGetNSub: get the number of sub payloads of payload. payload should be of
-// type GST_MIKEY_PT_KEMAC.
+// KemacGetNSub (gst_mikey_payload_kemac_get_n_sub): get the number of sub
+// payloads of payload. payload should be of type GST_MIKEY_PT_KEMAC.
 //
 // The function returns the following values:
 //
@@ -1503,8 +1543,8 @@ func (payload *MIKEYPayload) KemacGetNSub() uint {
 	return _guint
 }
 
-// KemacGetSub: get the sub payload of payload at idx. payload should be of type
-// GST_MIKEY_PT_KEMAC.
+// KemacGetSub (gst_mikey_payload_kemac_get_sub): get the sub payload of payload
+// at idx. payload should be of type GST_MIKEY_PT_KEMAC.
 //
 // The function takes the following parameters:
 //
@@ -1534,7 +1574,8 @@ func (payload *MIKEYPayload) KemacGetSub(idx uint) *MIKEYPayload {
 	return _mikeyPayload
 }
 
-// KemacRemoveSub: remove the sub payload at idx in payload.
+// KemacRemoveSub (gst_mikey_payload_kemac_remove_sub): remove the sub payload
+// at idx in payload.
 //
 // The function takes the following parameters:
 //
@@ -1564,8 +1605,8 @@ func (payload *MIKEYPayload) KemacRemoveSub(idx uint) bool {
 	return _ok
 }
 
-// KemacSet: set the KEMAC parameters. payload should point to a
-// GST_MIKEY_PT_KEMAC payload.
+// KemacSet (gst_mikey_payload_kemac_set): set the KEMAC parameters. payload
+// should point to a GST_MIKEY_PT_KEMAC payload.
 //
 // The function takes the following parameters:
 //
@@ -1599,8 +1640,8 @@ func (payload *MIKEYPayload) KemacSet(encAlg MIKEYEncAlg, macAlg MIKEYMacAlg) bo
 	return _ok
 }
 
-// KeyDataSetInterval: set the key validity period in the GST_MIKEY_PT_KEY_DATA
-// payload.
+// KeyDataSetInterval (gst_mikey_payload_key_data_set_interval): set the key
+// validity period in the GST_MIKEY_PT_KEY_DATA payload.
 //
 // The function takes the following parameters:
 //
@@ -1642,8 +1683,8 @@ func (payload *MIKEYPayload) KeyDataSetInterval(vfData []byte, vtData []byte) bo
 	return _ok
 }
 
-// KeyDataSetKey: set key_len bytes of key_data of type key_type as the key for
-// the GST_MIKEY_PT_KEY_DATA payload.
+// KeyDataSetKey (gst_mikey_payload_key_data_set_key): set key_len bytes of
+// key_data of type key_type as the key for the GST_MIKEY_PT_KEY_DATA payload.
 //
 // The function takes the following parameters:
 //
@@ -1681,8 +1722,8 @@ func (payload *MIKEYPayload) KeyDataSetKey(keyType MIKEYKeyDataType, keyData []b
 	return _ok
 }
 
-// KeyDataSetSalt: set the salt key data. If salt_len is 0 and salt_data is
-// NULL, the salt data will be removed.
+// KeyDataSetSalt (gst_mikey_payload_key_data_set_salt): set the salt key data.
+// If salt_len is 0 and salt_data is NULL, the salt data will be removed.
 //
 // The function takes the following parameters:
 //
@@ -1716,7 +1757,8 @@ func (payload *MIKEYPayload) KeyDataSetSalt(saltData []byte) bool {
 	return _ok
 }
 
-// KeyDataSetSpi: set the SPI/MKI validity in the GST_MIKEY_PT_KEY_DATA payload.
+// KeyDataSetSpi (gst_mikey_payload_key_data_set_spi): set the SPI/MKI validity
+// in the GST_MIKEY_PT_KEY_DATA payload.
 //
 // The function takes the following parameters:
 //
@@ -1750,8 +1792,8 @@ func (payload *MIKEYPayload) KeyDataSetSpi(spiData []byte) bool {
 	return _ok
 }
 
-// PkeSet: set the PKE values in payload. payload must be of type
-// GST_MIKEY_PT_PKE.
+// PkeSet (gst_mikey_payload_pke_set): set the PKE values in payload. payload
+// must be of type GST_MIKEY_PT_PKE.
 //
 // The function takes the following parameters:
 //
@@ -1789,7 +1831,8 @@ func (payload *MIKEYPayload) PkeSet(C MIKEYCacheType, data []byte) bool {
 	return _ok
 }
 
-// RandSet: set the random values in a GST_MIKEY_PT_RAND payload.
+// RandSet (gst_mikey_payload_rand_set): set the random values in a
+// GST_MIKEY_PT_RAND payload.
 //
 // The function takes the following parameters:
 //
@@ -1823,8 +1866,8 @@ func (payload *MIKEYPayload) RandSet(rand []byte) bool {
 	return _ok
 }
 
-// SpAddParam: add a new parameter to the GST_MIKEY_PT_SP payload with type,
-// len and val.
+// SpAddParam (gst_mikey_payload_sp_add_param): add a new parameter to the
+// GST_MIKEY_PT_SP payload with type, len and val.
 //
 // The function takes the following parameters:
 //
@@ -1862,8 +1905,8 @@ func (payload *MIKEYPayload) SpAddParam(typ byte, val []byte) bool {
 	return _ok
 }
 
-// SpGetNParams: get the number of security policy parameters in a
-// GST_MIKEY_PT_SP payload.
+// SpGetNParams (gst_mikey_payload_sp_get_n_params): get the number of security
+// policy parameters in a GST_MIKEY_PT_SP payload.
 //
 // The function returns the following values:
 //
@@ -1884,8 +1927,8 @@ func (payload *MIKEYPayload) SpGetNParams() uint {
 	return _guint
 }
 
-// SpGetParam: get the Security Policy parameter in a GST_MIKEY_PT_SP payload at
-// idx.
+// SpGetParam (gst_mikey_payload_sp_get_param): get the Security Policy
+// parameter in a GST_MIKEY_PT_SP payload at idx.
 //
 // The function takes the following parameters:
 //
@@ -1915,8 +1958,8 @@ func (payload *MIKEYPayload) SpGetParam(idx uint) *MIKEYPayloadSPParam {
 	return _mikeyPayloadSPParam
 }
 
-// SpRemoveParam: remove the Security Policy parameters from a GST_MIKEY_PT_SP
-// payload at idx.
+// SpRemoveParam (gst_mikey_payload_sp_remove_param): remove the Security Policy
+// parameters from a GST_MIKEY_PT_SP payload at idx.
 //
 // The function takes the following parameters:
 //
@@ -1946,7 +1989,8 @@ func (payload *MIKEYPayload) SpRemoveParam(idx uint) bool {
 	return _ok
 }
 
-// SpSet: set the Security Policy parameters for payload.
+// SpSet (gst_mikey_payload_sp_set): set the Security Policy parameters for
+// payload.
 //
 // The function takes the following parameters:
 //
@@ -1980,7 +2024,7 @@ func (payload *MIKEYPayload) SpSet(policy uint, proto MIKEYSecProto) bool {
 	return _ok
 }
 
-// MIKEYPayloadKEMAC: structure holding the KEMAC payload
+// MIKEYPayloadKEMAC (GstMIKEYPayloadKEMAC): structure holding the KEMAC payload
 //
 // An instance of this type is always passed by reference.
 type MIKEYPayloadKEMAC struct {
@@ -2016,8 +2060,8 @@ func (m *MIKEYPayloadKEMAC) MacAlg() MIKEYMacAlg {
 	return _v
 }
 
-// MIKEYPayloadKeyData: key data payload contains key material. It should be
-// added as sub payload to the KEMAC.
+// MIKEYPayloadKeyData (GstMIKEYPayloadKeyData): key data payload contains key
+// material. It should be added as sub payload to the KEMAC.
 //
 // An instance of this type is always passed by reference.
 type MIKEYPayloadKeyData struct {
@@ -2113,10 +2157,10 @@ func (m *MIKEYPayloadKeyData) SetSaltLen(saltLen uint16) {
 	*valptr = C.guint16(saltLen)
 }
 
-// MIKEYPayloadPKE: envelope data payload contains the encrypted envelope key
-// that is used in the public-key transport to protect the data in the Key
-// data transport payload. The encryption algorithm used is implicit from the
-// certificate/public key used.
+// MIKEYPayloadPKE (GstMIKEYPayloadPKE): envelope data payload contains the
+// encrypted envelope key that is used in the public-key transport to protect
+// the data in the Key data transport payload. The encryption algorithm used is
+// implicit from the certificate/public key used.
 //
 // An instance of this type is always passed by reference.
 type MIKEYPayloadPKE struct {
@@ -2166,7 +2210,8 @@ func (m *MIKEYPayloadPKE) SetDataLen(dataLen uint16) {
 	*valptr = C.guint16(dataLen)
 }
 
-// MIKEYPayloadRAND: RAND payload consists of a (pseudo-)random bit-string
+// MIKEYPayloadRAND (GstMIKEYPayloadRAND): RAND payload consists of a
+// (pseudo-)random bit-string
 //
 // An instance of this type is always passed by reference.
 type MIKEYPayloadRAND struct {
@@ -2208,8 +2253,8 @@ func (m *MIKEYPayloadRAND) SetLen(len byte) {
 	*valptr = C.guint8(len)
 }
 
-// MIKEYPayloadSP: security Policy payload defines a set of policies that apply
-// to a specific security protocol
+// MIKEYPayloadSP (GstMIKEYPayloadSP): security Policy payload defines a set of
+// policies that apply to a specific security protocol
 //
 // An instance of this type is always passed by reference.
 type MIKEYPayloadSP struct {
@@ -2251,7 +2296,8 @@ func (m *MIKEYPayloadSP) SetPolicy(policy uint) {
 	*valptr = C.guint(policy)
 }
 
-// MIKEYPayloadSPParam: type/Length/Value field for security parameters
+// MIKEYPayloadSPParam (GstMIKEYPayloadSPParam): type/Length/Value field for
+// security parameters
 //
 // An instance of this type is always passed by reference.
 type MIKEYPayloadSPParam struct {
@@ -2299,7 +2345,8 @@ func (m *MIKEYPayloadSPParam) SetLen(len byte) {
 	*valptr = C.guint8(len)
 }
 
-// MIKEYPayloadT: timestamp payload carries the timestamp information
+// MIKEYPayloadT (GstMIKEYPayloadT): timestamp payload carries the timestamp
+// information
 //
 // An instance of this type is always passed by reference.
 type MIKEYPayloadT struct {
@@ -2335,7 +2382,8 @@ func (m *MIKEYPayloadT) TsValue() *byte {
 	return _v
 }
 
-// SDPAttribute contents of the SDP "a=" field which contains a key/value pair.
+// SDPAttribute (GstSDPAttribute) contents of the SDP "a=" field which contains
+// a key/value pair.
 //
 // An instance of this type is always passed by reference.
 type SDPAttribute struct {
@@ -2363,7 +2411,7 @@ func (s *SDPAttribute) Value() string {
 	return _v
 }
 
-// Clear the attribute.
+// Clear (gst_sdp_attribute_clear) the attribute.
 //
 // The function returns the following values:
 //
@@ -2384,7 +2432,7 @@ func (attr *SDPAttribute) Clear() SDPResult {
 	return _sdpResult
 }
 
-// Set the attribute with key and value.
+// Set (gst_sdp_attribute_set) the attribute with key and value.
 //
 // The function takes the following parameters:
 //
@@ -2420,8 +2468,8 @@ func (attr *SDPAttribute) Set(key string, value string) SDPResult {
 	return _sdpResult
 }
 
-// SDPBandwidth contents of the SDP "b=" field which specifies the proposed
-// bandwidth to be used by the session or media.
+// SDPBandwidth (GstSDPBandwidth) contents of the SDP "b=" field which specifies
+// the proposed bandwidth to be used by the session or media.
 //
 // An instance of this type is always passed by reference.
 type SDPBandwidth struct {
@@ -2455,7 +2503,7 @@ func (s *SDPBandwidth) SetBandwidth(bandwidth uint) {
 	*valptr = C.guint(bandwidth)
 }
 
-// Clear: reset the bandwidth information in bw.
+// Clear (gst_sdp_bandwidth_clear): reset the bandwidth information in bw.
 //
 // The function returns the following values:
 //
@@ -2476,7 +2524,7 @@ func (bw *SDPBandwidth) Clear() SDPResult {
 	return _sdpResult
 }
 
-// Set bandwidth information in bw.
+// Set (gst_sdp_bandwidth_set) bandwidth information in bw.
 //
 // The function takes the following parameters:
 //
@@ -2509,7 +2557,8 @@ func (bw *SDPBandwidth) Set(bwtype string, bandwidth uint) SDPResult {
 	return _sdpResult
 }
 
-// SDPConnection contents of the SDP "c=" field which contains connection data.
+// SDPConnection (GstSDPConnection) contents of the SDP "c=" field which
+// contains connection data.
 //
 // An instance of this type is always passed by reference.
 type SDPConnection struct {
@@ -2573,7 +2622,7 @@ func (s *SDPConnection) SetAddrNumber(addrNumber uint) {
 	*valptr = C.guint(addrNumber)
 }
 
-// Clear the connection.
+// Clear (gst_sdp_connection_clear) the connection.
 //
 // The function returns the following values:
 //
@@ -2594,7 +2643,7 @@ func (conn *SDPConnection) Clear() SDPResult {
 	return _sdpResult
 }
 
-// Set the connection with the given parameters.
+// Set (gst_sdp_connection_set) the connection with the given parameters.
 //
 // The function takes the following parameters:
 //
@@ -2641,8 +2690,8 @@ func (conn *SDPConnection) Set(nettype string, addrtype string, address string, 
 	return _sdpResult
 }
 
-// SDPKey contents of the SDP "k=" field which is used to convey encryption
-// keys.
+// SDPKey (GstSDPKey) contents of the SDP "k=" field which is used to convey
+// encryption keys.
 //
 // An instance of this type is always passed by reference.
 type SDPKey struct {
@@ -2670,7 +2719,8 @@ func (s *SDPKey) Data() string {
 	return _v
 }
 
-// SDPMedia contents of the SDP "m=" field with all related fields.
+// SDPMedia (GstSDPMedia) contents of the SDP "m=" field with all related
+// fields.
 //
 // An instance of this type is always passed by reference.
 type SDPMedia struct {
@@ -2682,7 +2732,8 @@ type sdpMedia struct {
 	native *C.GstSDPMedia
 }
 
-// AddAttribute: add the attribute with key and value to media.
+// AddAttribute (gst_sdp_media_add_attribute): add the attribute with key and
+// value to media.
 //
 // The function takes the following parameters:
 //
@@ -2718,8 +2769,8 @@ func (media *SDPMedia) AddAttribute(key string, value string) SDPResult {
 	return _sdpResult
 }
 
-// AddBandwidth: add the bandwidth information with bwtype and bandwidth to
-// media.
+// AddBandwidth (gst_sdp_media_add_bandwidth): add the bandwidth information
+// with bwtype and bandwidth to media.
 //
 // The function takes the following parameters:
 //
@@ -2752,7 +2803,8 @@ func (media *SDPMedia) AddBandwidth(bwtype string, bandwidth uint) SDPResult {
 	return _sdpResult
 }
 
-// AddConnection: add the given connection parameters to media.
+// AddConnection (gst_sdp_media_add_connection): add the given connection
+// parameters to media.
 //
 // The function takes the following parameters:
 //
@@ -2799,7 +2851,7 @@ func (media *SDPMedia) AddConnection(nettype string, addrtype string, address st
 	return _sdpResult
 }
 
-// AddFormat: add the format information to media.
+// AddFormat (gst_sdp_media_add_format): add the format information to media.
 //
 // The function takes the following parameters:
 //
@@ -2828,7 +2880,8 @@ func (media *SDPMedia) AddFormat(format string) SDPResult {
 	return _sdpResult
 }
 
-// AsText: convert the contents of media to a text string.
+// AsText (gst_sdp_media_as_text): convert the contents of media to a text
+// string.
 //
 // The function returns the following values:
 //
@@ -2850,7 +2903,8 @@ func (media *SDPMedia) AsText() string {
 	return _utf8
 }
 
-// AttributesLen: get the number of attribute fields in media.
+// AttributesLen (gst_sdp_media_attributes_len): get the number of attribute
+// fields in media.
 //
 // The function returns the following values:
 //
@@ -2871,7 +2925,8 @@ func (media *SDPMedia) AttributesLen() uint {
 	return _guint
 }
 
-// AttributesToCaps: mapping of attributes of SDPMedia to Caps.
+// AttributesToCaps (gst_sdp_media_attributes_to_caps): mapping of attributes of
+// SDPMedia to Caps.
 //
 // The function takes the following parameters:
 //
@@ -2899,7 +2954,8 @@ func (media *SDPMedia) AttributesToCaps(caps *gst.Caps) SDPResult {
 	return _sdpResult
 }
 
-// BandwidthsLen: get the number of bandwidth fields in media.
+// BandwidthsLen (gst_sdp_media_bandwidths_len): get the number of bandwidth
+// fields in media.
 //
 // The function returns the following values:
 //
@@ -2920,7 +2976,8 @@ func (media *SDPMedia) BandwidthsLen() uint {
 	return _guint
 }
 
-// ConnectionsLen: get the number of connection fields in media.
+// ConnectionsLen (gst_sdp_media_connections_len): get the number of connection
+// fields in media.
 //
 // The function returns the following values:
 //
@@ -2941,8 +2998,9 @@ func (media *SDPMedia) ConnectionsLen() uint {
 	return _guint
 }
 
-// Copy: allocate a new copy of media and store the result in copy. The value in
-// copy should be release with gst_sdp_media_free function.
+// Copy (gst_sdp_media_copy): allocate a new copy of media and store the
+// result in copy. The value in copy should be release with gst_sdp_media_free
+// function.
 //
 // The function returns the following values:
 //
@@ -2973,7 +3031,7 @@ func (media *SDPMedia) Copy() (*SDPMedia, SDPResult) {
 	return _copy, _sdpResult
 }
 
-// FormatsLen: get the number of formats in media.
+// FormatsLen (gst_sdp_media_formats_len): get the number of formats in media.
 //
 // The function returns the following values:
 //
@@ -2994,7 +3052,8 @@ func (media *SDPMedia) FormatsLen() uint {
 	return _guint
 }
 
-// Attribute: get the attribute at position idx in media.
+// Attribute (gst_sdp_media_get_attribute): get the attribute at position idx in
+// media.
 //
 // The function takes the following parameters:
 //
@@ -3022,7 +3081,8 @@ func (media *SDPMedia) Attribute(idx uint) *SDPAttribute {
 	return _sdpAttribute
 }
 
-// AttributeVal: get the first attribute value for key in media.
+// AttributeVal (gst_sdp_media_get_attribute_val): get the first attribute value
+// for key in media.
 //
 // The function takes the following parameters:
 //
@@ -3053,7 +3113,8 @@ func (media *SDPMedia) AttributeVal(key string) string {
 	return _utf8
 }
 
-// AttributeValN: get the nth attribute value for key in media.
+// AttributeValN (gst_sdp_media_get_attribute_val_n): get the nth attribute
+// value for key in media.
 //
 // The function takes the following parameters:
 //
@@ -3088,7 +3149,8 @@ func (media *SDPMedia) AttributeValN(key string, nth uint) string {
 	return _utf8
 }
 
-// Bandwidth: get the bandwidth at position idx in media.
+// Bandwidth (gst_sdp_media_get_bandwidth): get the bandwidth at position idx in
+// media.
 //
 // The function takes the following parameters:
 //
@@ -3116,7 +3178,8 @@ func (media *SDPMedia) Bandwidth(idx uint) *SDPBandwidth {
 	return _sdpBandwidth
 }
 
-// CapsFromMedia: mapping of caps from SDP fields:
+// CapsFromMedia (gst_sdp_media_get_caps_from_media): mapping of caps from SDP
+// fields:
 //
 // a=rtpmap:(payload) (encoding_name)/(clock_rate)[/(encoding_params)]
 //
@@ -3160,7 +3223,8 @@ func (media *SDPMedia) CapsFromMedia(pt int) *gst.Caps {
 	return _caps
 }
 
-// Connection: get the connection at position idx in media.
+// Connection (gst_sdp_media_get_connection): get the connection at position idx
+// in media.
 //
 // The function takes the following parameters:
 //
@@ -3188,7 +3252,8 @@ func (media *SDPMedia) Connection(idx uint) *SDPConnection {
 	return _sdpConnection
 }
 
-// Format: get the format information at position idx in media.
+// Format (gst_sdp_media_get_format): get the format information at position idx
+// in media.
 //
 // The function takes the following parameters:
 //
@@ -3216,7 +3281,7 @@ func (media *SDPMedia) Format(idx uint) string {
 	return _utf8
 }
 
-// Information: get the information of media.
+// Information (gst_sdp_media_get_information): get the information of media.
 //
 // The function returns the following values:
 //
@@ -3237,7 +3302,7 @@ func (media *SDPMedia) Information() string {
 	return _utf8
 }
 
-// Key: get the encryption information from media.
+// Key (gst_sdp_media_get_key): get the encryption information from media.
 //
 // The function returns the following values:
 //
@@ -3258,7 +3323,7 @@ func (media *SDPMedia) Key() *SDPKey {
 	return _sdpKey
 }
 
-// Media: get the media description of media.
+// Media (gst_sdp_media_get_media): get the media description of media.
 //
 // The function returns the following values:
 //
@@ -3279,7 +3344,7 @@ func (media *SDPMedia) Media() string {
 	return _utf8
 }
 
-// NumPorts: get the number of ports for media.
+// NumPorts (gst_sdp_media_get_num_ports): get the number of ports for media.
 //
 // The function returns the following values:
 //
@@ -3300,7 +3365,7 @@ func (media *SDPMedia) NumPorts() uint {
 	return _guint
 }
 
-// Port: get the port number for media.
+// Port (gst_sdp_media_get_port): get the port number for media.
 //
 // The function returns the following values:
 //
@@ -3321,7 +3386,7 @@ func (media *SDPMedia) Port() uint {
 	return _guint
 }
 
-// Proto: get the transport protocol of media.
+// Proto (gst_sdp_media_get_proto): get the transport protocol of media.
 //
 // The function returns the following values:
 //
@@ -3342,8 +3407,8 @@ func (media *SDPMedia) Proto() string {
 	return _utf8
 }
 
-// InsertAttribute: insert the attribute to media at idx. When idx is -1,
-// the attribute is appended.
+// InsertAttribute (gst_sdp_media_insert_attribute): insert the attribute to
+// media at idx. When idx is -1, the attribute is appended.
 //
 // The function takes the following parameters:
 //
@@ -3375,8 +3440,8 @@ func (media *SDPMedia) InsertAttribute(idx int, attr *SDPAttribute) SDPResult {
 	return _sdpResult
 }
 
-// InsertBandwidth: insert the bandwidth information to media at idx. When idx
-// is -1, the bandwidth is appended.
+// InsertBandwidth (gst_sdp_media_insert_bandwidth): insert the bandwidth
+// information to media at idx. When idx is -1, the bandwidth is appended.
 //
 // The function takes the following parameters:
 //
@@ -3408,8 +3473,8 @@ func (media *SDPMedia) InsertBandwidth(idx int, bw *SDPBandwidth) SDPResult {
 	return _sdpResult
 }
 
-// InsertConnection: insert the connection information to media at idx. When idx
-// is -1, the connection is appended.
+// InsertConnection (gst_sdp_media_insert_connection): insert the connection
+// information to media at idx. When idx is -1, the connection is appended.
 //
 // The function takes the following parameters:
 //
@@ -3441,8 +3506,8 @@ func (media *SDPMedia) InsertConnection(idx int, conn *SDPConnection) SDPResult 
 	return _sdpResult
 }
 
-// InsertFormat: insert the format information to media at idx. When idx is -1,
-// the format is appended.
+// InsertFormat (gst_sdp_media_insert_format): insert the format information to
+// media at idx. When idx is -1, the format is appended.
 //
 // The function takes the following parameters:
 //
@@ -3475,8 +3540,8 @@ func (media *SDPMedia) InsertFormat(idx int, format string) SDPResult {
 	return _sdpResult
 }
 
-// ParseKeymgmt creates a new MIKEYMessage after parsing the key-mgmt attribute
-// from a SDPMedia.
+// ParseKeymgmt (gst_sdp_media_parse_keymgmt) creates a new MIKEYMessage after
+// parsing the key-mgmt attribute from a SDPMedia.
 //
 // The function returns the following values:
 //
@@ -3507,7 +3572,8 @@ func (media *SDPMedia) ParseKeymgmt() (*MIKEYMessage, SDPResult) {
 	return _mikey, _sdpResult
 }
 
-// RemoveAttribute: remove the attribute in media at idx.
+// RemoveAttribute (gst_sdp_media_remove_attribute): remove the attribute in
+// media at idx.
 //
 // The function takes the following parameters:
 //
@@ -3535,7 +3601,8 @@ func (media *SDPMedia) RemoveAttribute(idx uint) SDPResult {
 	return _sdpResult
 }
 
-// RemoveBandwidth: remove the bandwidth information in media at idx.
+// RemoveBandwidth (gst_sdp_media_remove_bandwidth): remove the bandwidth
+// information in media at idx.
 //
 // The function takes the following parameters:
 //
@@ -3563,7 +3630,8 @@ func (media *SDPMedia) RemoveBandwidth(idx uint) SDPResult {
 	return _sdpResult
 }
 
-// RemoveConnection: remove the connection information in media at idx.
+// RemoveConnection (gst_sdp_media_remove_connection): remove the connection
+// information in media at idx.
 //
 // The function takes the following parameters:
 //
@@ -3591,7 +3659,8 @@ func (media *SDPMedia) RemoveConnection(idx uint) SDPResult {
 	return _sdpResult
 }
 
-// RemoveFormat: remove the format information in media at idx.
+// RemoveFormat (gst_sdp_media_remove_format): remove the format information in
+// media at idx.
 //
 // The function takes the following parameters:
 //
@@ -3619,7 +3688,8 @@ func (media *SDPMedia) RemoveFormat(idx uint) SDPResult {
 	return _sdpResult
 }
 
-// ReplaceAttribute: replace the attribute in media at idx with attr.
+// ReplaceAttribute (gst_sdp_media_replace_attribute): replace the attribute in
+// media at idx with attr.
 //
 // The function takes the following parameters:
 //
@@ -3651,7 +3721,8 @@ func (media *SDPMedia) ReplaceAttribute(idx uint, attr *SDPAttribute) SDPResult 
 	return _sdpResult
 }
 
-// ReplaceBandwidth: replace the bandwidth information in media at idx with bw.
+// ReplaceBandwidth (gst_sdp_media_replace_bandwidth): replace the bandwidth
+// information in media at idx with bw.
 //
 // The function takes the following parameters:
 //
@@ -3683,8 +3754,8 @@ func (media *SDPMedia) ReplaceBandwidth(idx uint, bw *SDPBandwidth) SDPResult {
 	return _sdpResult
 }
 
-// ReplaceConnection: replace the connection information in media at idx with
-// conn.
+// ReplaceConnection (gst_sdp_media_replace_connection): replace the connection
+// information in media at idx with conn.
 //
 // The function takes the following parameters:
 //
@@ -3716,7 +3787,8 @@ func (media *SDPMedia) ReplaceConnection(idx uint, conn *SDPConnection) SDPResul
 	return _sdpResult
 }
 
-// ReplaceFormat: replace the format information in media at idx with format.
+// ReplaceFormat (gst_sdp_media_replace_format): replace the format information
+// in media at idx with format.
 //
 // The function takes the following parameters:
 //
@@ -3749,7 +3821,8 @@ func (media *SDPMedia) ReplaceFormat(idx uint, format string) SDPResult {
 	return _sdpResult
 }
 
-// SetInformation: set the media information of media to information.
+// SetInformation (gst_sdp_media_set_information): set the media information of
+// media to information.
 //
 // The function takes the following parameters:
 //
@@ -3778,7 +3851,7 @@ func (media *SDPMedia) SetInformation(information string) SDPResult {
 	return _sdpResult
 }
 
-// SetKey adds the encryption information to media.
+// SetKey (gst_sdp_media_set_key) adds the encryption information to media.
 //
 // The function takes the following parameters:
 //
@@ -3812,7 +3885,8 @@ func (media *SDPMedia) SetKey(typ string, data string) SDPResult {
 	return _sdpResult
 }
 
-// SetMedia: set the media description of media to med.
+// SetMedia (gst_sdp_media_set_media): set the media description of media to
+// med.
 //
 // The function takes the following parameters:
 //
@@ -3841,7 +3915,7 @@ func (media *SDPMedia) SetMedia(med string) SDPResult {
 	return _sdpResult
 }
 
-// SetPortInfo: set the port information in media.
+// SetPortInfo (gst_sdp_media_set_port_info): set the port information in media.
 //
 // The function takes the following parameters:
 //
@@ -3873,7 +3947,8 @@ func (media *SDPMedia) SetPortInfo(port uint, numPorts uint) SDPResult {
 	return _sdpResult
 }
 
-// SetProto: set the media transport protocol of media to proto.
+// SetProto (gst_sdp_media_set_proto): set the media transport protocol of media
+// to proto.
 //
 // The function takes the following parameters:
 //
@@ -3902,9 +3977,10 @@ func (media *SDPMedia) SetProto(proto string) SDPResult {
 	return _sdpResult
 }
 
-// Uninit: free all resources allocated in media. media should not be used
-// anymore after this function. This function should be used when media was
-// allocated on the stack and initialized with gst_sdp_media_init().
+// Uninit (gst_sdp_media_uninit): free all resources allocated in media.
+// media should not be used anymore after this function. This function
+// should be used when media was allocated on the stack and initialized with
+// gst_sdp_media_init().
 //
 // The function returns the following values:
 //
@@ -3925,10 +4001,10 @@ func (media *SDPMedia) Uninit() SDPResult {
 	return _sdpResult
 }
 
-// SDPMediaInit: initialize media so that its contents are as if it was
-// freshly allocated with gst_sdp_media_new(). This function is mostly used to
-// initialize a media allocated on the stack. gst_sdp_media_uninit() undoes this
-// operation.
+// SDPMediaInit (gst_sdp_media_init): initialize media so that its
+// contents are as if it was freshly allocated with gst_sdp_media_new().
+// This function is mostly used to initialize a media allocated on the stack.
+// gst_sdp_media_uninit() undoes this operation.
 //
 // When this function is invoked on newly allocated data (with malloc or on the
 // stack), its contents should be set to 0 before calling this function.
@@ -3952,7 +4028,8 @@ func SDPMediaInit() (*SDPMedia, SDPResult) {
 	return _media, _sdpResult
 }
 
-// NewSDPMedia: allocate a new GstSDPMedia and store the result in media.
+// NewSDPMedia (gst_sdp_media_new): allocate a new GstSDPMedia and store the
+// result in media.
 //
 // The function returns the following values:
 //
@@ -3979,7 +4056,8 @@ func NewSDPMedia() (*SDPMedia, SDPResult) {
 	return _media, _sdpResult
 }
 
-// SDPMediaSetMediaFromCaps: mapping of caps to SDP fields:
+// SDPMediaSetMediaFromCaps (gst_sdp_media_set_media_from_caps): mapping of caps
+// to SDP fields:
 //
 // a=rtpmap:(payload) (encoding_name) or (clock_rate)[or (encoding_params)]
 //
@@ -4018,7 +4096,8 @@ func SDPMediaSetMediaFromCaps(caps *gst.Caps) (*SDPMedia, SDPResult) {
 	return _media, _sdpResult
 }
 
-// SDPMessage helper functions makes it easy to parse and create SDP messages.
+// SDPMessage (GstSDPMessage) helper functions makes it easy to parse and create
+// SDP messages.
 //
 // An instance of this type is always passed by reference.
 type SDPMessage struct {
@@ -4035,7 +4114,8 @@ func marshalSDPMessage(p uintptr) (interface{}, error) {
 	return &SDPMessage{&sdpMessage{(*C.GstSDPMessage)(b)}}, nil
 }
 
-// AddAttribute: add the attribute with key and value to msg.
+// AddAttribute (gst_sdp_message_add_attribute): add the attribute with key and
+// value to msg.
 //
 // The function takes the following parameters:
 //
@@ -4071,7 +4151,8 @@ func (msg *SDPMessage) AddAttribute(key string, value string) SDPResult {
 	return _sdpResult
 }
 
-// AddBandwidth: add the specified bandwidth information to msg.
+// AddBandwidth (gst_sdp_message_add_bandwidth): add the specified bandwidth
+// information to msg.
 //
 // The function takes the following parameters:
 //
@@ -4104,7 +4185,7 @@ func (msg *SDPMessage) AddBandwidth(bwtype string, bandwidth uint) SDPResult {
 	return _sdpResult
 }
 
-// AddEmail: add email to the list of emails in msg.
+// AddEmail (gst_sdp_message_add_email): add email to the list of emails in msg.
 //
 // The function takes the following parameters:
 //
@@ -4133,9 +4214,10 @@ func (msg *SDPMessage) AddEmail(email string) SDPResult {
 	return _sdpResult
 }
 
-// AddMedia adds media to the array of medias in msg. This function
-// takes ownership of the contents of media so that media will have to be
-// reinitialized with gst_sdp_media_init() before it can be used again.
+// AddMedia (gst_sdp_message_add_media) adds media to the array of medias in
+// msg. This function takes ownership of the contents of media so that media
+// will have to be reinitialized with gst_sdp_media_init() before it can be used
+// again.
 //
 // The function takes the following parameters:
 //
@@ -4163,7 +4245,7 @@ func (msg *SDPMessage) AddMedia(media *SDPMedia) SDPResult {
 	return _sdpResult
 }
 
-// AddPhone: add phone to the list of phones in msg.
+// AddPhone (gst_sdp_message_add_phone): add phone to the list of phones in msg.
 //
 // The function takes the following parameters:
 //
@@ -4192,7 +4274,8 @@ func (msg *SDPMessage) AddPhone(phone string) SDPResult {
 	return _sdpResult
 }
 
-// AddTime: add time information start and stop to msg.
+// AddTime (gst_sdp_message_add_time): add time information start and stop to
+// msg.
 //
 // The function takes the following parameters:
 //
@@ -4242,7 +4325,7 @@ func (msg *SDPMessage) AddTime(start string, stop string, repeat []string) SDPRe
 	return _sdpResult
 }
 
-// AddZone: add time zone information to msg.
+// AddZone (gst_sdp_message_add_zone): add time zone information to msg.
 //
 // The function takes the following parameters:
 //
@@ -4276,7 +4359,8 @@ func (msg *SDPMessage) AddZone(adjTime string, typedTime string) SDPResult {
 	return _sdpResult
 }
 
-// AsText: convert the contents of msg to a text string.
+// AsText (gst_sdp_message_as_text): convert the contents of msg to a text
+// string.
 //
 // The function returns the following values:
 //
@@ -4298,7 +4382,8 @@ func (msg *SDPMessage) AsText() string {
 	return _utf8
 }
 
-// AttributesLen: get the number of attributes in msg.
+// AttributesLen (gst_sdp_message_attributes_len): get the number of attributes
+// in msg.
 //
 // The function returns the following values:
 //
@@ -4319,7 +4404,8 @@ func (msg *SDPMessage) AttributesLen() uint {
 	return _guint
 }
 
-// AttributesToCaps: mapping of attributes of SDPMessage to Caps.
+// AttributesToCaps (gst_sdp_message_attributes_to_caps): mapping of attributes
+// of SDPMessage to Caps.
 //
 // The function takes the following parameters:
 //
@@ -4347,7 +4433,8 @@ func (msg *SDPMessage) AttributesToCaps(caps *gst.Caps) SDPResult {
 	return _sdpResult
 }
 
-// BandwidthsLen: get the number of bandwidth information in msg.
+// BandwidthsLen (gst_sdp_message_bandwidths_len): get the number of bandwidth
+// information in msg.
 //
 // The function returns the following values:
 //
@@ -4368,8 +4455,9 @@ func (msg *SDPMessage) BandwidthsLen() uint {
 	return _guint
 }
 
-// Copy: allocate a new copy of msg and store the result in copy. The value in
-// copy should be release with gst_sdp_message_free function.
+// Copy (gst_sdp_message_copy): allocate a new copy of msg and store the result
+// in copy. The value in copy should be release with gst_sdp_message_free
+// function.
 //
 // The function returns the following values:
 //
@@ -4400,7 +4488,7 @@ func (msg *SDPMessage) Copy() (*SDPMessage, SDPResult) {
 	return _copy, _sdpResult
 }
 
-// Dump the parsed contents of msg to stdout.
+// Dump (gst_sdp_message_dump) the parsed contents of msg to stdout.
 //
 // The function returns the following values:
 //
@@ -4421,7 +4509,7 @@ func (msg *SDPMessage) Dump() SDPResult {
 	return _sdpResult
 }
 
-// EmailsLen: get the number of emails in msg.
+// EmailsLen (gst_sdp_message_emails_len): get the number of emails in msg.
 //
 // The function returns the following values:
 //
@@ -4442,7 +4530,8 @@ func (msg *SDPMessage) EmailsLen() uint {
 	return _guint
 }
 
-// Attribute: get the attribute at position idx in msg.
+// Attribute (gst_sdp_message_get_attribute): get the attribute at position idx
+// in msg.
 //
 // The function takes the following parameters:
 //
@@ -4470,7 +4559,8 @@ func (msg *SDPMessage) Attribute(idx uint) *SDPAttribute {
 	return _sdpAttribute
 }
 
-// AttributeVal: get the first attribute with key key in msg.
+// AttributeVal (gst_sdp_message_get_attribute_val): get the first attribute
+// with key key in msg.
 //
 // The function takes the following parameters:
 //
@@ -4501,7 +4591,8 @@ func (msg *SDPMessage) AttributeVal(key string) string {
 	return _utf8
 }
 
-// AttributeValN: get the nth attribute with key key in msg.
+// AttributeValN (gst_sdp_message_get_attribute_val_n): get the nth attribute
+// with key key in msg.
 //
 // The function takes the following parameters:
 //
@@ -4536,7 +4627,8 @@ func (msg *SDPMessage) AttributeValN(key string, nth uint) string {
 	return _utf8
 }
 
-// Bandwidth: get the bandwidth at index idx from msg.
+// Bandwidth (gst_sdp_message_get_bandwidth): get the bandwidth at index idx
+// from msg.
 //
 // The function takes the following parameters:
 //
@@ -4564,7 +4656,7 @@ func (msg *SDPMessage) Bandwidth(idx uint) *SDPBandwidth {
 	return _sdpBandwidth
 }
 
-// Connection: get the connection of msg.
+// Connection (gst_sdp_message_get_connection): get the connection of msg.
 //
 // The function returns the following values:
 //
@@ -4585,7 +4677,7 @@ func (msg *SDPMessage) Connection() *SDPConnection {
 	return _sdpConnection
 }
 
-// Email: get the email with number idx from msg.
+// Email (gst_sdp_message_get_email): get the email with number idx from msg.
 //
 // The function takes the following parameters:
 //
@@ -4613,7 +4705,7 @@ func (msg *SDPMessage) Email(idx uint) string {
 	return _utf8
 }
 
-// Information: get the information in msg.
+// Information (gst_sdp_message_get_information): get the information in msg.
 //
 // The function returns the following values:
 //
@@ -4634,7 +4726,7 @@ func (msg *SDPMessage) Information() string {
 	return _utf8
 }
 
-// Key: get the encryption information from msg.
+// Key (gst_sdp_message_get_key): get the encryption information from msg.
 //
 // The function returns the following values:
 //
@@ -4655,7 +4747,8 @@ func (msg *SDPMessage) Key() *SDPKey {
 	return _sdpKey
 }
 
-// Media: get the media description at index idx in msg.
+// Media (gst_sdp_message_get_media): get the media description at index idx in
+// msg.
 //
 // The function takes the following parameters:
 //
@@ -4683,7 +4776,7 @@ func (msg *SDPMessage) Media(idx uint) *SDPMedia {
 	return _sdpMedia
 }
 
-// Origin: get the origin of msg.
+// Origin (gst_sdp_message_get_origin): get the origin of msg.
 //
 // The function returns the following values:
 //
@@ -4704,7 +4797,7 @@ func (msg *SDPMessage) Origin() *SDPOrigin {
 	return _sdpOrigin
 }
 
-// Phone: get the phone with number idx from msg.
+// Phone (gst_sdp_message_get_phone): get the phone with number idx from msg.
 //
 // The function takes the following parameters:
 //
@@ -4732,7 +4825,7 @@ func (msg *SDPMessage) Phone(idx uint) string {
 	return _utf8
 }
 
-// SessionName: get the session name in msg.
+// SessionName (gst_sdp_message_get_session_name): get the session name in msg.
 //
 // The function returns the following values:
 //
@@ -4753,7 +4846,8 @@ func (msg *SDPMessage) SessionName() string {
 	return _utf8
 }
 
-// Time: get time information with index idx from msg.
+// Time (gst_sdp_message_get_time): get time information with index idx from
+// msg.
 //
 // The function takes the following parameters:
 //
@@ -4781,7 +4875,7 @@ func (msg *SDPMessage) Time(idx uint) *SDPTime {
 	return _sdpTime
 }
 
-// URI: get the URI in msg.
+// URI (gst_sdp_message_get_uri): get the URI in msg.
 //
 // The function returns the following values:
 //
@@ -4802,7 +4896,7 @@ func (msg *SDPMessage) URI() string {
 	return _utf8
 }
 
-// Version: get the version in msg.
+// Version (gst_sdp_message_get_version): get the version in msg.
 //
 // The function returns the following values:
 //
@@ -4823,7 +4917,8 @@ func (msg *SDPMessage) Version() string {
 	return _utf8
 }
 
-// Zone: get time zone information with index idx from msg.
+// Zone (gst_sdp_message_get_zone): get time zone information with index idx
+// from msg.
 //
 // The function takes the following parameters:
 //
@@ -4851,8 +4946,9 @@ func (msg *SDPMessage) Zone(idx uint) *SDPZone {
 	return _sdpZone
 }
 
-// InsertAttribute: insert attribute into the array of attributes in msg at
-// index idx. When -1 is given as idx, the attribute is inserted at the end.
+// InsertAttribute (gst_sdp_message_insert_attribute): insert attribute into
+// the array of attributes in msg at index idx. When -1 is given as idx,
+// the attribute is inserted at the end.
 //
 // The function takes the following parameters:
 //
@@ -4884,9 +4980,9 @@ func (msg *SDPMessage) InsertAttribute(idx int, attr *SDPAttribute) SDPResult {
 	return _sdpResult
 }
 
-// InsertBandwidth: insert bandwidth parameters into the array of bandwidths in
-// msg at index idx. When -1 is given as idx, the bandwidth is inserted at the
-// end.
+// InsertBandwidth (gst_sdp_message_insert_bandwidth): insert bandwidth
+// parameters into the array of bandwidths in msg at index idx. When -1 is given
+// as idx, the bandwidth is inserted at the end.
 //
 // The function takes the following parameters:
 //
@@ -4918,8 +5014,9 @@ func (msg *SDPMessage) InsertBandwidth(idx int, bw *SDPBandwidth) SDPResult {
 	return _sdpResult
 }
 
-// InsertEmail: insert email into the array of emails in msg at index idx.
-// When -1 is given as idx, the email is inserted at the end.
+// InsertEmail (gst_sdp_message_insert_email): insert email into the array of
+// emails in msg at index idx. When -1 is given as idx, the email is inserted at
+// the end.
 //
 // The function takes the following parameters:
 //
@@ -4952,8 +5049,9 @@ func (msg *SDPMessage) InsertEmail(idx int, email string) SDPResult {
 	return _sdpResult
 }
 
-// InsertPhone: insert phone into the array of phone numbers in msg at index
-// idx. When -1 is given as idx, the phone is inserted at the end.
+// InsertPhone (gst_sdp_message_insert_phone): insert phone into the array of
+// phone numbers in msg at index idx. When -1 is given as idx, the phone is
+// inserted at the end.
 //
 // The function takes the following parameters:
 //
@@ -4986,8 +5084,9 @@ func (msg *SDPMessage) InsertPhone(idx int, phone string) SDPResult {
 	return _sdpResult
 }
 
-// InsertTime: insert time parameters into the array of times in msg at index
-// idx. When -1 is given as idx, the times are inserted at the end.
+// InsertTime (gst_sdp_message_insert_time): insert time parameters into the
+// array of times in msg at index idx. When -1 is given as idx, the times are
+// inserted at the end.
 //
 // The function takes the following parameters:
 //
@@ -5019,8 +5118,9 @@ func (msg *SDPMessage) InsertTime(idx int, t *SDPTime) SDPResult {
 	return _sdpResult
 }
 
-// InsertZone: insert zone parameters into the array of zones in msg at index
-// idx. When -1 is given as idx, the zone is inserted at the end.
+// InsertZone (gst_sdp_message_insert_zone): insert zone parameters into the
+// array of zones in msg at index idx. When -1 is given as idx, the zone is
+// inserted at the end.
 //
 // The function takes the following parameters:
 //
@@ -5052,7 +5152,8 @@ func (msg *SDPMessage) InsertZone(idx int, zone *SDPZone) SDPResult {
 	return _sdpResult
 }
 
-// MediasLen: get the number of media descriptions in msg.
+// MediasLen (gst_sdp_message_medias_len): get the number of media descriptions
+// in msg.
 //
 // The function returns the following values:
 //
@@ -5073,8 +5174,8 @@ func (msg *SDPMessage) MediasLen() uint {
 	return _guint
 }
 
-// ParseKeymgmt creates a new MIKEYMessage after parsing the key-mgmt attribute
-// from a SDPMessage.
+// ParseKeymgmt (gst_sdp_message_parse_keymgmt) creates a new MIKEYMessage after
+// parsing the key-mgmt attribute from a SDPMessage.
 //
 // The function returns the following values:
 //
@@ -5105,7 +5206,7 @@ func (msg *SDPMessage) ParseKeymgmt() (*MIKEYMessage, SDPResult) {
 	return _mikey, _sdpResult
 }
 
-// PhonesLen: get the number of phones in msg.
+// PhonesLen (gst_sdp_message_phones_len): get the number of phones in msg.
 //
 // The function returns the following values:
 //
@@ -5126,7 +5227,8 @@ func (msg *SDPMessage) PhonesLen() uint {
 	return _guint
 }
 
-// RemoveAttribute: remove the attribute in msg at index idx.
+// RemoveAttribute (gst_sdp_message_remove_attribute): remove the attribute in
+// msg at index idx.
 //
 // The function takes the following parameters:
 //
@@ -5154,7 +5256,8 @@ func (msg *SDPMessage) RemoveAttribute(idx uint) SDPResult {
 	return _sdpResult
 }
 
-// RemoveBandwidth: remove the bandwidth information in msg at index idx.
+// RemoveBandwidth (gst_sdp_message_remove_bandwidth): remove the bandwidth
+// information in msg at index idx.
 //
 // The function takes the following parameters:
 //
@@ -5182,7 +5285,8 @@ func (msg *SDPMessage) RemoveBandwidth(idx uint) SDPResult {
 	return _sdpResult
 }
 
-// RemoveEmail: remove the email in msg at index idx.
+// RemoveEmail (gst_sdp_message_remove_email): remove the email in msg at index
+// idx.
 //
 // The function takes the following parameters:
 //
@@ -5210,8 +5314,8 @@ func (msg *SDPMessage) RemoveEmail(idx uint) SDPResult {
 	return _sdpResult
 }
 
-// RemoveMedia: remove the media at idx from the array of medias in msg if
-// found.
+// RemoveMedia (gst_sdp_message_remove_media): remove the media at idx from the
+// array of medias in msg if found.
 //
 // The function takes the following parameters:
 //
@@ -5240,7 +5344,8 @@ func (msg *SDPMessage) RemoveMedia(idx uint) SDPResult {
 	return _sdpResult
 }
 
-// RemovePhone: remove the phone number in msg at index idx.
+// RemovePhone (gst_sdp_message_remove_phone): remove the phone number in msg at
+// index idx.
 //
 // The function takes the following parameters:
 //
@@ -5268,7 +5373,8 @@ func (msg *SDPMessage) RemovePhone(idx uint) SDPResult {
 	return _sdpResult
 }
 
-// RemoveTime: remove the time information in msg at index idx.
+// RemoveTime (gst_sdp_message_remove_time): remove the time information in msg
+// at index idx.
 //
 // The function takes the following parameters:
 //
@@ -5296,7 +5402,8 @@ func (msg *SDPMessage) RemoveTime(idx uint) SDPResult {
 	return _sdpResult
 }
 
-// RemoveZone: remove the zone information in msg at index idx.
+// RemoveZone (gst_sdp_message_remove_zone): remove the zone information in msg
+// at index idx.
 //
 // The function takes the following parameters:
 //
@@ -5324,7 +5431,8 @@ func (msg *SDPMessage) RemoveZone(idx uint) SDPResult {
 	return _sdpResult
 }
 
-// ReplaceAttribute: replace the attribute in msg at index idx with attr.
+// ReplaceAttribute (gst_sdp_message_replace_attribute): replace the attribute
+// in msg at index idx with attr.
 //
 // The function takes the following parameters:
 //
@@ -5356,8 +5464,8 @@ func (msg *SDPMessage) ReplaceAttribute(idx uint, attr *SDPAttribute) SDPResult 
 	return _sdpResult
 }
 
-// ReplaceBandwidth: replace the bandwidth information in msg at index idx with
-// bw.
+// ReplaceBandwidth (gst_sdp_message_replace_bandwidth): replace the bandwidth
+// information in msg at index idx with bw.
 //
 // The function takes the following parameters:
 //
@@ -5389,7 +5497,8 @@ func (msg *SDPMessage) ReplaceBandwidth(idx uint, bw *SDPBandwidth) SDPResult {
 	return _sdpResult
 }
 
-// ReplaceEmail: replace the email in msg at index idx with email.
+// ReplaceEmail (gst_sdp_message_replace_email): replace the email in msg at
+// index idx with email.
 //
 // The function takes the following parameters:
 //
@@ -5422,7 +5531,8 @@ func (msg *SDPMessage) ReplaceEmail(idx uint, email string) SDPResult {
 	return _sdpResult
 }
 
-// ReplacePhone: replace the phone number in msg at index idx with phone.
+// ReplacePhone (gst_sdp_message_replace_phone): replace the phone number in msg
+// at index idx with phone.
 //
 // The function takes the following parameters:
 //
@@ -5455,7 +5565,8 @@ func (msg *SDPMessage) ReplacePhone(idx uint, phone string) SDPResult {
 	return _sdpResult
 }
 
-// ReplaceTime: replace the time information in msg at index idx with t.
+// ReplaceTime (gst_sdp_message_replace_time): replace the time information in
+// msg at index idx with t.
 //
 // The function takes the following parameters:
 //
@@ -5487,7 +5598,8 @@ func (msg *SDPMessage) ReplaceTime(idx uint, t *SDPTime) SDPResult {
 	return _sdpResult
 }
 
-// ReplaceZone: replace the zone information in msg at index idx with zone.
+// ReplaceZone (gst_sdp_message_replace_zone): replace the zone information in
+// msg at index idx with zone.
 //
 // The function takes the following parameters:
 //
@@ -5519,7 +5631,8 @@ func (msg *SDPMessage) ReplaceZone(idx uint, zone *SDPZone) SDPResult {
 	return _sdpResult
 }
 
-// SetConnection: configure the SDP connection in msg with the given parameters.
+// SetConnection (gst_sdp_message_set_connection): configure the SDP connection
+// in msg with the given parameters.
 //
 // The function takes the following parameters:
 //
@@ -5566,7 +5679,7 @@ func (msg *SDPMessage) SetConnection(nettype string, addrtype string, address st
 	return _sdpResult
 }
 
-// SetInformation: set the information in msg.
+// SetInformation (gst_sdp_message_set_information): set the information in msg.
 //
 // The function takes the following parameters:
 //
@@ -5595,7 +5708,7 @@ func (msg *SDPMessage) SetInformation(information string) SDPResult {
 	return _sdpResult
 }
 
-// SetKey adds the encryption information to msg.
+// SetKey (gst_sdp_message_set_key) adds the encryption information to msg.
 //
 // The function takes the following parameters:
 //
@@ -5629,7 +5742,8 @@ func (msg *SDPMessage) SetKey(typ string, data string) SDPResult {
 	return _sdpResult
 }
 
-// SetOrigin: configure the SDP origin in msg with the given parameters.
+// SetOrigin (gst_sdp_message_set_origin): configure the SDP origin in msg with
+// the given parameters.
 //
 // The function takes the following parameters:
 //
@@ -5683,7 +5797,8 @@ func (msg *SDPMessage) SetOrigin(username string, sessId string, sessVersion str
 	return _sdpResult
 }
 
-// SetSessionName: set the session name in msg.
+// SetSessionName (gst_sdp_message_set_session_name): set the session name in
+// msg.
 //
 // The function takes the following parameters:
 //
@@ -5712,7 +5827,7 @@ func (msg *SDPMessage) SetSessionName(sessionName string) SDPResult {
 	return _sdpResult
 }
 
-// SetURI: set the URI in msg.
+// SetURI (gst_sdp_message_set_uri): set the URI in msg.
 //
 // The function takes the following parameters:
 //
@@ -5741,7 +5856,7 @@ func (msg *SDPMessage) SetURI(uri string) SDPResult {
 	return _sdpResult
 }
 
-// SetVersion: set the version in msg.
+// SetVersion (gst_sdp_message_set_version): set the version in msg.
 //
 // The function takes the following parameters:
 //
@@ -5770,7 +5885,8 @@ func (msg *SDPMessage) SetVersion(version string) SDPResult {
 	return _sdpResult
 }
 
-// TimesLen: get the number of time information entries in msg.
+// TimesLen (gst_sdp_message_times_len): get the number of time information
+// entries in msg.
 //
 // The function returns the following values:
 //
@@ -5791,9 +5907,10 @@ func (msg *SDPMessage) TimesLen() uint {
 	return _guint
 }
 
-// Uninit: free all resources allocated in msg. msg should not be used anymore
-// after this function. This function should be used when msg was allocated on
-// the stack and initialized with gst_sdp_message_init().
+// Uninit (gst_sdp_message_uninit): free all resources allocated in msg.
+// msg should not be used anymore after this function. This function
+// should be used when msg was allocated on the stack and initialized with
+// gst_sdp_message_init().
 //
 // The function returns the following values:
 //
@@ -5814,7 +5931,8 @@ func (msg *SDPMessage) Uninit() SDPResult {
 	return _sdpResult
 }
 
-// ZonesLen: get the number of time zone information entries in msg.
+// ZonesLen (gst_sdp_message_zones_len): get the number of time zone information
+// entries in msg.
 //
 // The function returns the following values:
 //
@@ -5835,8 +5953,8 @@ func (msg *SDPMessage) ZonesLen() uint {
 	return _guint
 }
 
-// SDPMessageAsURI creates a uri from msg with the given scheme. The uri has the
-// format:
+// SDPMessageAsURI (gst_sdp_message_as_uri) creates a uri from msg with the
+// given scheme. The uri has the format:
 //
 //	\scheme:///[#type=value *[&type=value]]
 //
@@ -5871,10 +5989,10 @@ func SDPMessageAsURI(scheme string, msg *SDPMessage) string {
 	return _utf8
 }
 
-// SDPMessageInit: initialize msg so that its contents are as if it was freshly
-// allocated with gst_sdp_message_new(). This function is mostly used to
-// initialize a message allocated on the stack. gst_sdp_message_uninit() undoes
-// this operation.
+// SDPMessageInit (gst_sdp_message_init): initialize msg so that its
+// contents are as if it was freshly allocated with gst_sdp_message_new().
+// This function is mostly used to initialize a message allocated on the stack.
+// gst_sdp_message_uninit() undoes this operation.
 //
 // When this function is invoked on newly allocated data (with malloc or on the
 // stack), its contents should be set to 0 before calling this function.
@@ -5898,7 +6016,8 @@ func SDPMessageInit() (*SDPMessage, SDPResult) {
 	return _msg, _sdpResult
 }
 
-// NewSDPMessage: allocate a new GstSDPMessage and store the result in msg.
+// NewSDPMessage (gst_sdp_message_new): allocate a new GstSDPMessage and store
+// the result in msg.
 //
 // The function returns the following values:
 //
@@ -5925,7 +6044,8 @@ func NewSDPMessage() (*SDPMessage, SDPResult) {
 	return _msg, _sdpResult
 }
 
-// NewSDPMessageFromText: parse text and create a new SDPMessage from these.
+// NewSDPMessageFromText (gst_sdp_message_new_from_text): parse text and create
+// a new SDPMessage from these.
 //
 // The function takes the following parameters:
 //
@@ -5961,8 +6081,8 @@ func NewSDPMessageFromText(text string) (*SDPMessage, SDPResult) {
 	return _msg, _sdpResult
 }
 
-// SDPMessageParseBuffer: parse the contents of size bytes pointed to by data
-// and store the result in msg.
+// SDPMessageParseBuffer (gst_sdp_message_parse_buffer): parse the contents of
+// size bytes pointed to by data and store the result in msg.
 //
 // The function takes the following parameters:
 //
@@ -5995,8 +6115,8 @@ func SDPMessageParseBuffer(data []byte, msg *SDPMessage) SDPResult {
 	return _sdpResult
 }
 
-// SDPMessageParseURI: parse the null-terminated uri and store the result in
-// msg.
+// SDPMessageParseURI (gst_sdp_message_parse_uri): parse the null-terminated uri
+// and store the result in msg.
 //
 // The uri should be of the form:
 //
@@ -6034,9 +6154,9 @@ func SDPMessageParseURI(uri string, msg *SDPMessage) SDPResult {
 	return _sdpResult
 }
 
-// SDPOrigin contents of the SDP "o=" field which gives the originator of the
-// session (their username and the address of the user's host) plus a session id
-// and session version number.
+// SDPOrigin (GstSDPOrigin) contents of the SDP "o=" field which gives the
+// originator of the session (their username and the address of the user's host)
+// plus a session id and session version number.
 //
 // An instance of this type is always passed by reference.
 type SDPOrigin struct {
@@ -6099,8 +6219,8 @@ func (s *SDPOrigin) Addr() string {
 	return _v
 }
 
-// SDPTime contents of the SDP "t=" field which specify the start and stop times
-// for a conference session.
+// SDPTime (GstSDPTime) contents of the SDP "t=" field which specify the start
+// and stop times for a conference session.
 //
 // An instance of this type is always passed by reference.
 type SDPTime struct {
@@ -6130,7 +6250,7 @@ func (s *SDPTime) Stop() string {
 	return _v
 }
 
-// Clear: reset the time information in t.
+// Clear (gst_sdp_time_clear): reset the time information in t.
 //
 // The function returns the following values:
 //
@@ -6151,7 +6271,7 @@ func (t *SDPTime) Clear() SDPResult {
 	return _sdpResult
 }
 
-// Set time information start, stop and repeat in t.
+// Set (gst_sdp_time_set) time information start, stop and repeat in t.
 //
 // The function takes the following parameters:
 //
@@ -6201,8 +6321,8 @@ func (t *SDPTime) Set(start string, stop string, repeat []string) SDPResult {
 	return _sdpResult
 }
 
-// SDPZone contents of the SDP "z=" field which allows the sender to specify a
-// list of time zone adjustments and offsets from the base time.
+// SDPZone (GstSDPZone) contents of the SDP "z=" field which allows the sender
+// to specify a list of time zone adjustments and offsets from the base time.
 //
 // An instance of this type is always passed by reference.
 type SDPZone struct {
@@ -6230,7 +6350,7 @@ func (s *SDPZone) TypedTime() string {
 	return _v
 }
 
-// Clear: reset the zone information in zone.
+// Clear (gst_sdp_zone_clear): reset the zone information in zone.
 //
 // The function returns the following values:
 //
@@ -6251,7 +6371,7 @@ func (zone *SDPZone) Clear() SDPResult {
 	return _sdpResult
 }
 
-// Set zone information in zone.
+// Set (gst_sdp_zone_set) zone information in zone.
 //
 // The function takes the following parameters:
 //

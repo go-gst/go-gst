@@ -138,36 +138,41 @@ func init() {
 	})
 }
 
-// RTCP_MAX_BYE_SSRC_COUNT: maximum amount of SSRCs in a BYE packet.
+// RTCP_MAX_BYE_SSRC_COUNT (GST_RTCP_MAX_BYE_SSRC_COUNT): maximum amount of
+// SSRCs in a BYE packet.
 const RTCP_MAX_BYE_SSRC_COUNT = 31
 
-// RTCP_MAX_RB_COUNT: maximum amount of Receiver report blocks in RR and SR
-// messages.
+// RTCP_MAX_RB_COUNT (GST_RTCP_MAX_RB_COUNT): maximum amount of Receiver report
+// blocks in RR and SR messages.
 const RTCP_MAX_RB_COUNT = 31
 
-// RTCP_MAX_SDES: maximum text length for an SDES item.
+// RTCP_MAX_SDES (GST_RTCP_MAX_SDES): maximum text length for an SDES item.
 const RTCP_MAX_SDES = 255
 
-// RTCP_MAX_SDES_ITEM_COUNT: maximum amount of SDES items.
+// RTCP_MAX_SDES_ITEM_COUNT (GST_RTCP_MAX_SDES_ITEM_COUNT): maximum amount of
+// SDES items.
 const RTCP_MAX_SDES_ITEM_COUNT = 31
 
-// RTCP_REDUCED_SIZE_VALID_MASK: mask for version and packet type pair allowing
-// reduced size packets, basically it accepts other types than RR and SR.
+// RTCP_REDUCED_SIZE_VALID_MASK (GST_RTCP_REDUCED_SIZE_VALID_MASK): mask for
+// version and packet type pair allowing reduced size packets, basically it
+// accepts other types than RR and SR.
 const RTCP_REDUCED_SIZE_VALID_MASK = 49400
 
-// RTCP_VALID_MASK: mask for version, padding bit and packet type pair.
+// RTCP_VALID_MASK (GST_RTCP_VALID_MASK): mask for version, padding bit and
+// packet type pair.
 const RTCP_VALID_MASK = 57598
 
-// RTCP_VALID_VALUE: valid value for the first two bytes of an RTCP packet after
-// applying T_RTCP_VALID_MASK to them.
+// RTCP_VALID_VALUE (GST_RTCP_VALID_VALUE): valid value for the first two bytes
+// of an RTCP packet after applying T_RTCP_VALID_MASK to them.
 const RTCP_VALID_VALUE = 200
 
-// RTCP_VERSION: supported RTCP version 2.
+// RTCP_VERSION (GST_RTCP_VERSION): supported RTCP version 2.
 const RTCP_VERSION = 2
 const RTP_HDREXT_BASE = "urn:ietf:params:rtp-hdrext:"
 
-// RTP_HDREXT_ELEMENT_CLASS: constant string used in element classification to
-// signal that this element is a RTP header extension.
+// RTP_HDREXT_ELEMENT_CLASS (GST_RTP_HDREXT_ELEMENT_CLASS): constant string
+// used in element classification to signal that this element is a RTP header
+// extension.
 const RTP_HDREXT_ELEMENT_CLASS = "Network/Extension/RTPHeader"
 const RTP_HDREXT_NTP_56 = "ntp-56"
 const RTP_HDREXT_NTP_56_SIZE = 7
@@ -211,39 +216,45 @@ const RTP_PAYLOAD_TS48 = 18
 const RTP_PAYLOAD_TS48_STRING = "18"
 const RTP_SOURCE_META_MAX_CSRC_COUNT = 15
 
-// RTP_VERSION: supported RTP version 2.
+// RTP_VERSION (GST_RTP_VERSION): supported RTP version 2.
 const RTP_VERSION = 2
 
-// RTCPFBType: different types of feedback messages.
+// RTCPFBType (GstRTCPFBType): different types of feedback messages.
 type RTCPFBType C.gint
 
 const (
-	// RtcpFbTypeInvalid: invalid type.
+	// RtcpFbTypeInvalid (GST_RTCP_FB_TYPE_INVALID): invalid type.
 	RtcpFbTypeInvalid RTCPFBType = 0
-	// RtcpRtpfbTypeNack: generic NACK.
+	// RtcpRtpfbTypeNack (GST_RTCP_RTPFB_TYPE_NACK): generic NACK.
 	RtcpRtpfbTypeNack RTCPFBType = 1
-	// RtcpRtpfbTypeTmmbr: temporary Maximum Media Stream Bit Rate Request.
+	// RtcpRtpfbTypeTmmbr (GST_RTCP_RTPFB_TYPE_TMMBR): temporary Maximum Media
+	// Stream Bit Rate Request.
 	RtcpRtpfbTypeTmmbr RTCPFBType = 3
-	// RtcpRtpfbTypeTmmbn: temporary Maximum Media Stream Bit Rate Notification.
+	// RtcpRtpfbTypeTmmbn (GST_RTCP_RTPFB_TYPE_TMMBN): temporary Maximum Media
+	// Stream Bit Rate Notification.
 	RtcpRtpfbTypeTmmbn RTCPFBType = 4
-	// RtcpRtpfbTypeRtcpSrReq: request an SR packet for early synchronization.
+	// RtcpRtpfbTypeRtcpSrReq (GST_RTCP_RTPFB_TYPE_RTCP_SR_REQ): request an SR
+	// packet for early synchronization.
 	RtcpRtpfbTypeRtcpSrReq RTCPFBType = 5
 	RtcpRtpfbTypeTwcc      RTCPFBType = 15
-	// RtcpPsfbTypePli: picture Loss Indication.
+	// RtcpPsfbTypePli (GST_RTCP_PSFB_TYPE_PLI): picture Loss Indication.
 	RtcpPsfbTypePli RTCPFBType = 1
-	// RtcpPsfbTypeSli: slice Loss Indication.
+	// RtcpPsfbTypeSli (GST_RTCP_PSFB_TYPE_SLI): slice Loss Indication.
 	RtcpPsfbTypeSli RTCPFBType = 2
-	// RtcpPsfbTypeRpsi: reference Picture Selection Indication.
+	// RtcpPsfbTypeRpsi (GST_RTCP_PSFB_TYPE_RPSI): reference Picture Selection
+	// Indication.
 	RtcpPsfbTypeRpsi RTCPFBType = 3
-	// RtcpPsfbTypeAfb: application layer Feedback.
+	// RtcpPsfbTypeAfb (GST_RTCP_PSFB_TYPE_AFB): application layer Feedback.
 	RtcpPsfbTypeAfb RTCPFBType = 15
-	// RtcpPsfbTypeFir: full Intra Request Command.
+	// RtcpPsfbTypeFir (GST_RTCP_PSFB_TYPE_FIR): full Intra Request Command.
 	RtcpPsfbTypeFir RTCPFBType = 4
-	// RtcpPsfbTypeTstr: temporal-Spatial Trade-off Request.
+	// RtcpPsfbTypeTstr (GST_RTCP_PSFB_TYPE_TSTR): temporal-Spatial Trade-off
+	// Request.
 	RtcpPsfbTypeTstr RTCPFBType = 5
-	// RtcpPsfbTypeTstn: temporal-Spatial Trade-off Notification.
+	// RtcpPsfbTypeTstn (GST_RTCP_PSFB_TYPE_TSTN): temporal-Spatial Trade-off
+	// Notification.
 	RtcpPsfbTypeTstn RTCPFBType = 6
-	// RtcpPsfbTypeVbcn: video Back Channel Message.
+	// RtcpPsfbTypeVbcn (GST_RTCP_PSFB_TYPE_VBCN): video Back Channel Message.
 	RtcpPsfbTypeVbcn RTCPFBType = 7
 )
 
@@ -277,43 +288,46 @@ func (r RTCPFBType) String() string {
 	}
 }
 
-// RTCPSDESType: different types of SDES content.
+// RTCPSDESType (GstRTCPSDESType): different types of SDES content.
 type RTCPSDESType C.gint
 
 const (
-	// RtcpSdesInvalid: invalid SDES entry.
+	// RtcpSdesInvalid (GST_RTCP_SDES_INVALID): invalid SDES entry.
 	RtcpSdesInvalid RTCPSDESType = -1
-	// RtcpSdesEnd: end of SDES list.
+	// RtcpSdesEnd (GST_RTCP_SDES_END): end of SDES list.
 	RtcpSdesEnd RTCPSDESType = 0
-	// RtcpSdesCname: canonical name.
+	// RtcpSdesCname (GST_RTCP_SDES_CNAME): canonical name.
 	RtcpSdesCname RTCPSDESType = 1
-	// RtcpSdesName: user name.
+	// RtcpSdesName (GST_RTCP_SDES_NAME): user name.
 	RtcpSdesName RTCPSDESType = 2
-	// RtcpSdesEmail user's electronic mail address.
+	// RtcpSdesEmail (GST_RTCP_SDES_EMAIL) user's electronic mail address.
 	RtcpSdesEmail RTCPSDESType = 3
-	// RtcpSdesPhone user's phone number.
+	// RtcpSdesPhone (GST_RTCP_SDES_PHONE) user's phone number.
 	RtcpSdesPhone RTCPSDESType = 4
-	// RtcpSdesLoc: geographic user location.
+	// RtcpSdesLoc (GST_RTCP_SDES_LOC): geographic user location.
 	RtcpSdesLoc RTCPSDESType = 5
-	// RtcpSdesTool: name of application or tool.
+	// RtcpSdesTool (GST_RTCP_SDES_TOOL): name of application or tool.
 	RtcpSdesTool RTCPSDESType = 6
-	// RtcpSdesNote: notice about the source.
+	// RtcpSdesNote (GST_RTCP_SDES_NOTE): notice about the source.
 	RtcpSdesNote RTCPSDESType = 7
-	// RtcpSdesPriv: private extensions.
+	// RtcpSdesPriv (GST_RTCP_SDES_PRIV): private extensions.
 	RtcpSdesPriv RTCPSDESType = 8
-	// RtcpSdesH323Caddr: h.323 callable address.
+	// RtcpSdesH323Caddr (GST_RTCP_SDES_H323_CADDR): h.323 callable address.
 	RtcpSdesH323Caddr RTCPSDESType = 9
-	// RtcpSdesApsi: application Specific Identifier (RFC6776).
+	// RtcpSdesApsi (GST_RTCP_SDES_APSI): application Specific Identifier
+	// (RFC6776).
 	RtcpSdesApsi RTCPSDESType = 10
-	// RtcpSdesRgrp: reporting Group Identifier (RFC8861).
+	// RtcpSdesRgrp (GST_RTCP_SDES_RGRP): reporting Group Identifier (RFC8861).
 	RtcpSdesRgrp RTCPSDESType = 11
-	// RtcpSdesRtpStreamID: rtpStreamId SDES item (RFC8852).
+	// RtcpSdesRtpStreamID (GST_RTCP_SDES_RTP_STREAM_ID): rtpStreamId SDES item
+	// (RFC8852).
 	RtcpSdesRtpStreamID RTCPSDESType = 12
-	// RtcpSdesRepairedRtpStreamID: repairedRtpStreamId SDES item (RFC8852).
+	// RtcpSdesRepairedRtpStreamID (GST_RTCP_SDES_REPAIRED_RTP_STREAM_ID):
+	// repairedRtpStreamId SDES item (RFC8852).
 	RtcpSdesRepairedRtpStreamID RTCPSDESType = 13
-	// RtcpSdesCcid: CLUE CaptId (RFC8849).
+	// RtcpSdesCcid (GST_RTCP_SDES_CCID): CLUE CaptId (RFC8849).
 	RtcpSdesCcid RTCPSDESType = 14
-	// RtcpSdesMid: MID SDES item (RFC8843).
+	// RtcpSdesMid (GST_RTCP_SDES_MID): MID SDES item (RFC8843).
 	RtcpSdesMid RTCPSDESType = 15
 )
 
@@ -363,27 +377,27 @@ func (r RTCPSDESType) String() string {
 	}
 }
 
-// RTCPType: different RTCP packet types.
+// RTCPType (GstRTCPType): different RTCP packet types.
 type RTCPType C.gint
 
 const (
-	// RtcpTypeInvalid: invalid type.
+	// RtcpTypeInvalid (GST_RTCP_TYPE_INVALID): invalid type.
 	RtcpTypeInvalid RTCPType = 0
-	// RtcpTypeSr: sender report.
+	// RtcpTypeSr (GST_RTCP_TYPE_SR): sender report.
 	RtcpTypeSr RTCPType = 200
-	// RtcpTypeRr: receiver report.
+	// RtcpTypeRr (GST_RTCP_TYPE_RR): receiver report.
 	RtcpTypeRr RTCPType = 201
-	// RtcpTypeSdes: source description.
+	// RtcpTypeSdes (GST_RTCP_TYPE_SDES): source description.
 	RtcpTypeSdes RTCPType = 202
-	// RtcpTypeBye: goodbye.
+	// RtcpTypeBye (GST_RTCP_TYPE_BYE): goodbye.
 	RtcpTypeBye RTCPType = 203
-	// RtcpTypeApp: application defined.
+	// RtcpTypeApp (GST_RTCP_TYPE_APP): application defined.
 	RtcpTypeApp RTCPType = 204
-	// RtcpTypeRtpfb: transport layer feedback.
+	// RtcpTypeRtpfb (GST_RTCP_TYPE_RTPFB): transport layer feedback.
 	RtcpTypeRtpfb RTCPType = 205
-	// RtcpTypePsfb: payload-specific feedback.
+	// RtcpTypePsfb (GST_RTCP_TYPE_PSFB): payload-specific feedback.
 	RtcpTypePsfb RTCPType = 206
-	// RtcpTypeXR: extended report.
+	// RtcpTypeXR (GST_RTCP_TYPE_XR): extended report.
 	RtcpTypeXR RTCPType = 207
 )
 
@@ -417,27 +431,30 @@ func (r RTCPType) String() string {
 	}
 }
 
-// RTCPXRType types of RTCP Extended Reports, those are defined
-// in RFC 3611 and other RFCs according to the IANA registry
+// RTCPXRType (GstRTCPXRType) types of RTCP Extended Reports, those are
+// defined in RFC 3611 and other RFCs according to the IANA registry
 // (https://www.iana.org/assignments/rtcp-xr-block-types/rtcp-xr-block-types.xhtml).
 type RTCPXRType C.gint
 
 const (
-	// RtcpXRTypeInvalid: invalid XR Report Block.
+	// RtcpXRTypeInvalid (GST_RTCP_XR_TYPE_INVALID): invalid XR Report Block.
 	RtcpXRTypeInvalid RTCPXRType = -1
-	// RtcpXRTypeLrle loss RLE Report Block.
+	// RtcpXRTypeLrle (GST_RTCP_XR_TYPE_LRLE) loss RLE Report Block.
 	RtcpXRTypeLrle RTCPXRType = 1
-	// RtcpXRTypeDrle: duplicate RLE Report Block.
+	// RtcpXRTypeDrle (GST_RTCP_XR_TYPE_DRLE): duplicate RLE Report Block.
 	RtcpXRTypeDrle RTCPXRType = 2
-	// RtcpXRTypePrt: packet Receipt Times Report Block.
+	// RtcpXRTypePrt (GST_RTCP_XR_TYPE_PRT): packet Receipt Times Report Block.
 	RtcpXRTypePrt RTCPXRType = 3
-	// RtcpXRTypeRrt: receiver Reference Time Report Block.
+	// RtcpXRTypeRrt (GST_RTCP_XR_TYPE_RRT): receiver Reference Time Report
+	// Block.
 	RtcpXRTypeRrt RTCPXRType = 4
-	// RtcpXRTypeDlrr: delay since the last Receiver Report.
+	// RtcpXRTypeDlrr (GST_RTCP_XR_TYPE_DLRR): delay since the last Receiver
+	// Report.
 	RtcpXRTypeDlrr RTCPXRType = 5
-	// RtcpXRTypeSsumm statistics Summary Report Block.
+	// RtcpXRTypeSsumm (GST_RTCP_XR_TYPE_SSUMM) statistics Summary Report Block.
 	RtcpXRTypeSsumm RTCPXRType = 6
-	// RtcpXRTypeVoipMetrics: voIP Metrics Report Block.
+	// RtcpXRTypeVoipMetrics (GST_RTCP_XR_TYPE_VOIP_METRICS): voIP Metrics
+	// Report Block.
 	RtcpXRTypeVoipMetrics RTCPXRType = 7
 )
 
@@ -469,7 +486,7 @@ func (r RTCPXRType) String() string {
 	}
 }
 
-// RTPPayload: standard predefined fixed payload types.
+// RTPPayload (GstRTPPayload): standard predefined fixed payload types.
 //
 // The official list is at: http://www.iana.org/assignments/rtp-parameters
 //
@@ -480,57 +497,69 @@ func (r RTCPXRType) String() string {
 type RTPPayload C.gint
 
 const (
-	// RtpPayloadPcmu: ITU-T G.711. mu-law audio (RFC 3551).
+	// RtpPayloadPcmu (GST_RTP_PAYLOAD_PCMU): ITU-T G.711. mu-law audio (RFC
+	// 3551).
 	RtpPayloadPcmu RTPPayload = 0
-	// RtpPayload1016: RFC 3551 says reserved.
+	// RtpPayload1016 (GST_RTP_PAYLOAD_1016): RFC 3551 says reserved.
 	RtpPayload1016 RTPPayload = 1
-	// RtpPayloadG721: RFC 3551 says reserved.
+	// RtpPayloadG721 (GST_RTP_PAYLOAD_G721): RFC 3551 says reserved.
 	RtpPayloadG721 RTPPayload = 2
-	// RtpPayloadGsm: GSM audio.
+	// RtpPayloadGsm (GST_RTP_PAYLOAD_GSM): GSM audio.
 	RtpPayloadGsm RTPPayload = 3
-	// RtpPayloadG723: ITU G.723.1 audio.
+	// RtpPayloadG723 (GST_RTP_PAYLOAD_G723): ITU G.723.1 audio.
 	RtpPayloadG723 RTPPayload = 4
-	// RtpPayloadDvi48000: IMA ADPCM wave type (RFC 3551).
+	// RtpPayloadDvi48000 (GST_RTP_PAYLOAD_DVI4_8000): IMA ADPCM wave type (RFC
+	// 3551).
 	RtpPayloadDvi48000 RTPPayload = 5
-	// RtpPayloadDvi416000: IMA ADPCM wave type (RFC 3551).
+	// RtpPayloadDvi416000 (GST_RTP_PAYLOAD_DVI4_16000): IMA ADPCM wave type
+	// (RFC 3551).
 	RtpPayloadDvi416000 RTPPayload = 6
-	// RtpPayloadLpc: experimental linear predictive encoding.
+	// RtpPayloadLpc (GST_RTP_PAYLOAD_LPC): experimental linear predictive
+	// encoding.
 	RtpPayloadLpc RTPPayload = 7
-	// RtpPayloadPcma: ITU-T G.711 A-law audio (RFC 3551).
+	// RtpPayloadPcma (GST_RTP_PAYLOAD_PCMA): ITU-T G.711 A-law audio (RFC
+	// 3551).
 	RtpPayloadPcma RTPPayload = 8
-	// RtpPayloadG722: ITU-T G.722 (RFC 3551).
+	// RtpPayloadG722 (GST_RTP_PAYLOAD_G722): ITU-T G.722 (RFC 3551).
 	RtpPayloadG722 RTPPayload = 9
-	// RtpPayloadL16Stereo: stereo PCM.
+	// RtpPayloadL16Stereo (GST_RTP_PAYLOAD_L16_STEREO): stereo PCM.
 	RtpPayloadL16Stereo RTPPayload = 10
-	// RtpPayloadL16Mono: mono PCM.
+	// RtpPayloadL16Mono (GST_RTP_PAYLOAD_L16_MONO): mono PCM.
 	RtpPayloadL16Mono RTPPayload = 11
-	// RtpPayloadQcelp: EIA & TIA standard IS-733.
+	// RtpPayloadQcelp (GST_RTP_PAYLOAD_QCELP): EIA & TIA standard IS-733.
 	RtpPayloadQcelp RTPPayload = 12
-	// RtpPayloadCn: comfort Noise (RFC 3389).
+	// RtpPayloadCn (GST_RTP_PAYLOAD_CN): comfort Noise (RFC 3389).
 	RtpPayloadCn RTPPayload = 13
-	// RtpPayloadMpa: audio MPEG 1-3.
+	// RtpPayloadMpa (GST_RTP_PAYLOAD_MPA): audio MPEG 1-3.
 	RtpPayloadMpa RTPPayload = 14
-	// RtpPayloadG728: ITU-T G.728 Speech coder (RFC 3551).
+	// RtpPayloadG728 (GST_RTP_PAYLOAD_G728): ITU-T G.728 Speech coder (RFC
+	// 3551).
 	RtpPayloadG728 RTPPayload = 15
-	// RtpPayloadDvi411025: IMA ADPCM wave type (RFC 3551).
+	// RtpPayloadDvi411025 (GST_RTP_PAYLOAD_DVI4_11025): IMA ADPCM wave type
+	// (RFC 3551).
 	RtpPayloadDvi411025 RTPPayload = 16
-	// RtpPayloadDvi422050: IMA ADPCM wave type (RFC 3551).
+	// RtpPayloadDvi422050 (GST_RTP_PAYLOAD_DVI4_22050): IMA ADPCM wave type
+	// (RFC 3551).
 	RtpPayloadDvi422050 RTPPayload = 17
-	// RtpPayloadG729: ITU-T G.729 Speech coder (RFC 3551).
+	// RtpPayloadG729 (GST_RTP_PAYLOAD_G729): ITU-T G.729 Speech coder (RFC
+	// 3551).
 	RtpPayloadG729 RTPPayload = 18
-	// RtpPayloadCellb: see RFC 2029.
+	// RtpPayloadCellb (GST_RTP_PAYLOAD_CELLB): see RFC 2029.
 	RtpPayloadCellb RTPPayload = 25
-	// RtpPayloadJPEG: ISO Standards 10918-1 and 10918-2 (RFC 2435).
+	// RtpPayloadJPEG (GST_RTP_PAYLOAD_JPEG): ISO Standards 10918-1 and 10918-2
+	// (RFC 2435).
 	RtpPayloadJPEG RTPPayload = 26
-	// RtpPayloadNv: nv encoding by Ron Frederick.
+	// RtpPayloadNv (GST_RTP_PAYLOAD_NV): nv encoding by Ron Frederick.
 	RtpPayloadNv RTPPayload = 28
-	// RtpPayloadH261: ITU-T Recommendation H.261 (RFC 2032).
+	// RtpPayloadH261 (GST_RTP_PAYLOAD_H261): ITU-T Recommendation H.261 (RFC
+	// 2032).
 	RtpPayloadH261 RTPPayload = 31
-	// RtpPayloadMpv: video MPEG 1 & 2 (RFC 2250).
+	// RtpPayloadMpv (GST_RTP_PAYLOAD_MPV): video MPEG 1 & 2 (RFC 2250).
 	RtpPayloadMpv RTPPayload = 32
-	// RtpPayloadMp2T: MPEG-2 transport stream (RFC 2250).
+	// RtpPayloadMp2T (GST_RTP_PAYLOAD_MP2T): MPEG-2 transport stream (RFC
+	// 2250).
 	RtpPayloadMp2T RTPPayload = 33
-	// RtpPayloadH263: video H263 (RFC 2190).
+	// RtpPayloadH263 (GST_RTP_PAYLOAD_H263): video H263 (RFC 2190).
 	RtpPayloadH263 RTPPayload = 34
 )
 
@@ -598,19 +627,22 @@ func (r RTPPayload) String() string {
 	}
 }
 
-// RTPProfile: transfer profile to use.
+// RTPProfile (GstRTPProfile): transfer profile to use.
 type RTPProfile C.gint
 
 const (
-	// RtpProfileUnknown: invalid profile.
+	// RtpProfileUnknown (GST_RTP_PROFILE_UNKNOWN): invalid profile.
 	RtpProfileUnknown RTPProfile = iota
-	// RtpProfileAvp: audio/Visual profile (RFC 3551).
+	// RtpProfileAvp (GST_RTP_PROFILE_AVP): audio/Visual profile (RFC 3551).
 	RtpProfileAvp
-	// RtpProfileSavp: secure Audio/Visual profile (RFC 3711).
+	// RtpProfileSavp (GST_RTP_PROFILE_SAVP): secure Audio/Visual profile (RFC
+	// 3711).
 	RtpProfileSavp
-	// RtpProfileAvpf: audio/Visual profile with feedback (RFC 4585).
+	// RtpProfileAvpf (GST_RTP_PROFILE_AVPF): audio/Visual profile with feedback
+	// (RFC 4585).
 	RtpProfileAvpf
-	// RtpProfileSavpf: secure Audio/Visual profile with feedback (RFC 5124).
+	// RtpProfileSavpf (GST_RTP_PROFILE_SAVPF): secure Audio/Visual profile with
+	// feedback (RFC 5124).
 	RtpProfileSavpf
 )
 
@@ -636,22 +668,24 @@ func (r RTPProfile) String() string {
 	}
 }
 
-// RTPBufferFlags: additional RTP buffer flags. These flags can potentially be
-// used on any buffers carrying RTP packets.
+// RTPBufferFlags (GstRTPBufferFlags): additional RTP buffer flags. These flags
+// can potentially be used on any buffers carrying RTP packets.
 //
 // Note that these are only valid for Caps of type: application/x-rtp (x-rtcp).
 // They can conflict with other extended buffer flags.
 type RTPBufferFlags C.guint
 
 const (
-	// RtpBufferFlagRetransmission was once wrapped in a retransmitted packet as
-	// specified by RFC 4588.
+	// RtpBufferFlagRetransmission (GST_RTP_BUFFER_FLAG_RETRANSMISSION) was once
+	// wrapped in a retransmitted packet as specified by RFC 4588.
 	RtpBufferFlagRetransmission RTPBufferFlags = 0b100000000000000000000
-	// RtpBufferFlagRedundant: packet represents redundant RTP packet. The flag
-	// is used in gstrtpstorage to be able to hold the packetback and use it
-	// only for recovery from packet loss. Since: 1.14.
+	// RtpBufferFlagRedundant (GST_RTP_BUFFER_FLAG_REDUNDANT): packet represents
+	// redundant RTP packet. The flag is used in gstrtpstorage to be able to
+	// hold the packetback and use it only for recovery from packet loss. Since:
+	// 1.14.
 	RtpBufferFlagRedundant RTPBufferFlags = 0b1000000000000000000000
-	// RtpBufferFlagLast: offset to define more flags.
+	// RtpBufferFlagLast (GST_RTP_BUFFER_FLAG_LAST): offset to define more
+	// flags.
 	RtpBufferFlagLast RTPBufferFlags = 0b10000000000000000000000000000
 )
 
@@ -694,15 +728,17 @@ func (r RTPBufferFlags) Has(other RTPBufferFlags) bool {
 	return (r & other) == other
 }
 
-// RTPBufferMapFlags: additional mapping flags for gst_rtp_buffer_map().
+// RTPBufferMapFlags (GstRTPBufferMapFlags): additional mapping flags for
+// gst_rtp_buffer_map().
 type RTPBufferMapFlags C.guint
 
 const (
-	// RtpBufferMapFlagSkipPadding: skip mapping and validation of RTP padding
-	// and RTP pad count when present. Useful for buffers where the padding may
-	// be encrypted.
+	// RtpBufferMapFlagSkipPadding (GST_RTP_BUFFER_MAP_FLAG_SKIP_PADDING): skip
+	// mapping and validation of RTP padding and RTP pad count when present.
+	// Useful for buffers where the padding may be encrypted.
 	RtpBufferMapFlagSkipPadding RTPBufferMapFlags = 0b10000000000000000
-	// RtpBufferMapFlagLast: offset to define more flags.
+	// RtpBufferMapFlagLast (GST_RTP_BUFFER_MAP_FLAG_LAST): offset to define
+	// more flags.
 	RtpBufferMapFlagLast RTPBufferMapFlags = 0b1000000000000000000000000
 )
 
@@ -743,24 +779,28 @@ func (r RTPBufferMapFlags) Has(other RTPBufferMapFlags) bool {
 	return (r & other) == other
 }
 
-// RTPHeaderExtensionDirection: direction to which to apply the RTP Header
-// Extension.
+// RTPHeaderExtensionDirection (GstRTPHeaderExtensionDirection): direction to
+// which to apply the RTP Header Extension.
 type RTPHeaderExtensionDirection C.guint
 
 const (
-	// RtpHeaderExtensionDirectionInactive: neither send nor receive RTP Header
-	// Extensions.
+	// RtpHeaderExtensionDirectionInactive
+	// (GST_RTP_HEADER_EXTENSION_DIRECTION_INACTIVE): neither send nor receive
+	// RTP Header Extensions.
 	RtpHeaderExtensionDirectionInactive RTPHeaderExtensionDirection = 0b0
-	// RtpHeaderExtensionDirectionSendonly: only send RTP Header Extensions
-	// GST_RTP_HEADER_EXTENSION_DIRECTION_RECVONLY: Only receive RTP Header
-	// Extensions.
+	// RtpHeaderExtensionDirectionSendonly
+	// (GST_RTP_HEADER_EXTENSION_DIRECTION_SENDONLY): only send RTP Header
+	// Extensions GST_RTP_HEADER_EXTENSION_DIRECTION_RECVONLY: Only receive RTP
+	// Header Extensions.
 	RtpHeaderExtensionDirectionSendonly RTPHeaderExtensionDirection = 0b1
 	RtpHeaderExtensionDirectionRecvonly RTPHeaderExtensionDirection = 0b10
-	// RtpHeaderExtensionDirectionSendrecv: send and receive RTP Header
-	// Extensions ext.
+	// RtpHeaderExtensionDirectionSendrecv
+	// (GST_RTP_HEADER_EXTENSION_DIRECTION_SENDRECV): send and receive RTP
+	// Header Extensions ext.
 	RtpHeaderExtensionDirectionSendrecv RTPHeaderExtensionDirection = 0b11
-	// RtpHeaderExtensionDirectionInherited: RTP header extension direction is
-	// inherited from the stream.
+	// RtpHeaderExtensionDirectionInherited
+	// (GST_RTP_HEADER_EXTENSION_DIRECTION_INHERITED): RTP header extension
+	// direction is inherited from the stream.
 	RtpHeaderExtensionDirectionInherited RTPHeaderExtensionDirection = 0b100
 )
 
@@ -807,17 +847,18 @@ func (r RTPHeaderExtensionDirection) Has(other RTPHeaderExtensionDirection) bool
 	return (r & other) == other
 }
 
-// RTPHeaderExtensionFlags flags that apply to a RTP Audio/Video header
-// extension.
+// RTPHeaderExtensionFlags (GstRTPHeaderExtensionFlags) flags that apply to a
+// RTP Audio/Video header extension.
 type RTPHeaderExtensionFlags C.guint
 
 const (
-	// RtpHeaderExtensionOneByte: one byte rtp extension header. 1-16 data bytes
-	// per extension with a maximum of 14 extension ids in total.
+	// RtpHeaderExtensionOneByte (GST_RTP_HEADER_EXTENSION_ONE_BYTE): one byte
+	// rtp extension header. 1-16 data bytes per extension with a maximum of 14
+	// extension ids in total.
 	RtpHeaderExtensionOneByte RTPHeaderExtensionFlags = 0b1
-	// RtpHeaderExtensionTwoByte: two byte rtp extension header. 256 data bytes
-	// per extension with a maximum of 255 (or 256 including appbits) extensions
-	// in total.
+	// RtpHeaderExtensionTwoByte (GST_RTP_HEADER_EXTENSION_TWO_BYTE): two byte
+	// rtp extension header. 256 data bytes per extension with a maximum of 255
+	// (or 256 including appbits) extensions in total.
 	RtpHeaderExtensionTwoByte RTPHeaderExtensionFlags = 0b10
 )
 
@@ -858,7 +899,8 @@ func (r RTPHeaderExtensionFlags) Has(other RTPHeaderExtensionFlags) bool {
 	return (r & other) == other
 }
 
-// BufferAddRtpSourceMeta attaches RTP source information to buffer.
+// BufferAddRtpSourceMeta (gst_buffer_add_rtp_source_meta) attaches RTP source
+// information to buffer.
 //
 // The function takes the following parameters:
 //
@@ -897,7 +939,8 @@ func BufferAddRtpSourceMeta(buffer *gst.Buffer, ssrc *uint32, csrc []uint32) *RT
 	return _rtpSourceMeta
 }
 
-// BufferGetRtpSourceMeta: find the RTPSourceMeta on buffer.
+// BufferGetRtpSourceMeta (gst_buffer_get_rtp_source_meta): find the
+// RTPSourceMeta on buffer.
 //
 // The function takes the following parameters:
 //
@@ -925,10 +968,11 @@ func BufferGetRtpSourceMeta(buffer *gst.Buffer) *RTPSourceMeta {
 	return _rtpSourceMeta
 }
 
-// RtcpNtpToUnix converts an NTP time to UNIX nanoseconds. ntptime can typically
-// be the NTP time of an SR RTCP message and contains, in the upper 32 bits,
-// the number of seconds since 1900 and, in the lower 32 bits, the fractional
-// seconds. The resulting value will be the number of nanoseconds since 1970.
+// RtcpNtpToUnix (gst_rtcp_ntp_to_unix) converts an NTP time to UNIX
+// nanoseconds. ntptime can typically be the NTP time of an SR RTCP message
+// and contains, in the upper 32 bits, the number of seconds since 1900 and,
+// in the lower 32 bits, the fractional seconds. The resulting value will be the
+// number of nanoseconds since 1970.
 //
 // The function takes the following parameters:
 //
@@ -953,8 +997,9 @@ func RtcpNtpToUnix(ntptime uint64) uint64 {
 	return _guint64
 }
 
-// RtcpSdesNameToType: convert name into a GstRTCPSDESType. name is typically a
-// key in a Structure containing SDES items.
+// RtcpSdesNameToType (gst_rtcp_sdes_name_to_type): convert name into a
+// GstRTCPSDESType. name is typically a key in a Structure containing SDES
+// items.
 //
 // The function takes the following parameters:
 //
@@ -981,8 +1026,9 @@ func RtcpSdesNameToType(name string) RTCPSDESType {
 	return _rtcpsdesType
 }
 
-// RtcpSdesTypeToName converts type to the string equivalent. The string is
-// typically used as a key in a Structure containing SDES items.
+// RtcpSdesTypeToName (gst_rtcp_sdes_type_to_name) converts type to the string
+// equivalent. The string is typically used as a key in a Structure containing
+// SDES items.
 //
 // The function takes the following parameters:
 //
@@ -1007,11 +1053,11 @@ func RtcpSdesTypeToName(typ RTCPSDESType) string {
 	return _utf8
 }
 
-// RtcpUnixToNtp converts a UNIX timestamp in nanoseconds to an NTP time.
-// The caller should pass a value with nanoseconds since 1970. The NTP time
-// will, in the upper 32 bits, contain the number of seconds since 1900 and,
-// in the lower 32 bits, the fractional seconds. The resulting value can be used
-// as an ntptime for constructing SR RTCP packets.
+// RtcpUnixToNtp (gst_rtcp_unix_to_ntp) converts a UNIX timestamp in nanoseconds
+// to an NTP time. The caller should pass a value with nanoseconds since 1970.
+// The NTP time will, in the upper 32 bits, contain the number of seconds since
+// 1900 and, in the lower 32 bits, the fractional seconds. The resulting value
+// can be used as an ntptime for constructing SR RTCP packets.
 //
 // The function takes the following parameters:
 //
@@ -1036,9 +1082,10 @@ func RtcpUnixToNtp(unixtime uint64) uint64 {
 	return _guint64
 }
 
-// RtpGetHeaderExtensionList: retrieve all the factories of the currently
-// registered RTP header extensions. Call gst_element_factory_create() with each
-// factory to create the associated RTPHeaderExtension.
+// RtpGetHeaderExtensionList (gst_rtp_get_header_extension_list): retrieve
+// all the factories of the currently registered RTP header extensions.
+// Call gst_element_factory_create() with each factory to create the associated
+// RTPHeaderExtension.
 //
 // The function returns the following values:
 //
@@ -1072,8 +1119,8 @@ func RtpGetHeaderExtensionList() []*gst.ElementFactory {
 	return _list
 }
 
-// RtpHdrextGetNtp56 reads the NTP time from the size NTP-56 extension bytes in
-// data and store the result in ntptime.
+// RtpHdrextGetNtp56 (gst_rtp_hdrext_get_ntp_56) reads the NTP time from the
+// size NTP-56 extension bytes in data and store the result in ntptime.
 //
 // The function takes the following parameters:
 //
@@ -1108,8 +1155,8 @@ func RtpHdrextGetNtp56(data []byte) (uint64, bool) {
 	return _ntptime, _ok
 }
 
-// RtpHdrextGetNtp64 reads the NTP time from the size NTP-64 extension bytes in
-// data and store the result in ntptime.
+// RtpHdrextGetNtp64 (gst_rtp_hdrext_get_ntp_64) reads the NTP time from the
+// size NTP-64 extension bytes in data and store the result in ntptime.
 //
 // The function takes the following parameters:
 //
@@ -1144,9 +1191,9 @@ func RtpHdrextGetNtp64(data []byte) (uint64, bool) {
 	return _ntptime, _ok
 }
 
-// RtpHdrextSetNtp56 writes the NTP time in ntptime to the format required for
-// the NTP-56 header extension. data must hold at least T_RTP_HDREXT_NTP_56_SIZE
-// bytes.
+// RtpHdrextSetNtp56 (gst_rtp_hdrext_set_ntp_56) writes the NTP time in ntptime
+// to the format required for the NTP-56 header extension. data must hold at
+// least T_RTP_HDREXT_NTP_56_SIZE bytes.
 //
 // The function takes the following parameters:
 //
@@ -1181,9 +1228,9 @@ func RtpHdrextSetNtp56(data unsafe.Pointer, size uint, ntptime uint64) bool {
 	return _ok
 }
 
-// RtpHdrextSetNtp64 writes the NTP time in ntptime to the format required for
-// the NTP-64 header extension. data must hold at least T_RTP_HDREXT_NTP_64_SIZE
-// bytes.
+// RtpHdrextSetNtp64 (gst_rtp_hdrext_set_ntp_64) writes the NTP time in ntptime
+// to the format required for the NTP-64 header extension. data must hold at
+// least T_RTP_HDREXT_NTP_64_SIZE bytes.
 //
 // The function takes the following parameters:
 //
@@ -1238,8 +1285,8 @@ func defaultRTPBaseAudioPayloadOverrides(v *RTPBaseAudioPayload) RTPBaseAudioPay
 	return RTPBaseAudioPayloadOverrides{}
 }
 
-// RTPBaseAudioPayload provides a base class for audio RTP payloaders for frame
-// or sample based audio codecs (constant bitrate)
+// RTPBaseAudioPayload (GstRTPBaseAudioPayload) provides a base class for audio
+// RTP payloaders for frame or sample based audio codecs (constant bitrate)
 //
 // This class derives from GstRTPBasePayload. It can be used for payloading
 // audio codecs. It will only work with constant bitrate codecs. It supports
@@ -1275,6 +1322,45 @@ var (
 	_ RTPBasePayloader = (*RTPBaseAudioPayload)(nil)
 )
 
+// RTPBaseAudioPayloader describes types inherited from RTPBaseAudioPayload.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type RTPBaseAudioPayloader interface {
+	RTPBasePayloader
+
+	// Flush (gst_rtp_base_audio_payload_flush): create an RTP buffer and store
+	// payload_len bytes of the adapter as the payload.
+	Flush(payloadLen uint, timestamp gst.ClockTime) gst.FlowReturn
+	// Adapter (gst_rtp_base_audio_payload_get_adapter) gets the internal
+	// adapter used by the depayloader.
+	Adapter() *gstbase.Adapter
+	// Push (gst_rtp_base_audio_payload_push): create an RTP buffer and store
+	// payload_len bytes of data as the payload.
+	Push(data []byte, timestamp gst.ClockTime) gst.FlowReturn
+	// SetFrameBased (gst_rtp_base_audio_payload_set_frame_based) tells
+	// RTPBaseAudioPayload that the child element is for a frame based audio
+	// codec.
+	SetFrameBased()
+	// SetFrameOptions (gst_rtp_base_audio_payload_set_frame_options) sets the
+	// options for frame based audio codecs.
+	SetFrameOptions(frameDuration, frameSize int)
+	// SetSampleBased (gst_rtp_base_audio_payload_set_sample_based) tells
+	// RTPBaseAudioPayload that the child element is for a sample based audio
+	// codec.
+	SetSampleBased()
+	// SetSampleOptions (gst_rtp_base_audio_payload_set_sample_options) sets the
+	// options for sample based audio codecs.
+	SetSampleOptions(sampleSize int)
+	// SetSamplebitsOptions (gst_rtp_base_audio_payload_set_samplebits_options)
+	// sets the options for sample based audio codecs.
+	SetSamplebitsOptions(sampleSize int)
+
+	baseRTPBaseAudioPayload() *RTPBaseAudioPayload
+}
+
+var _ RTPBaseAudioPayloader = (*RTPBaseAudioPayload)(nil)
+
 func init() {
 	coreglib.RegisterClassInfo[*RTPBaseAudioPayload, *RTPBaseAudioPayloadClass, RTPBaseAudioPayloadOverrides](
 		GTypeRTPBaseAudioPayload,
@@ -1309,9 +1395,18 @@ func marshalRTPBaseAudioPayload(p uintptr) (interface{}, error) {
 	return wrapRTPBaseAudioPayload(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// Flush: create an RTP buffer and store payload_len bytes of the adapter as the
-// payload. Set the timestamp on the new buffer to timestamp before pushing the
-// buffer downstream.
+func (baseaudiopayload *RTPBaseAudioPayload) baseRTPBaseAudioPayload() *RTPBaseAudioPayload {
+	return baseaudiopayload
+}
+
+// BaseRTPBaseAudioPayload returns the underlying base object.
+func BaseRTPBaseAudioPayload(obj RTPBaseAudioPayloader) *RTPBaseAudioPayload {
+	return obj.baseRTPBaseAudioPayload()
+}
+
+// Flush (gst_rtp_base_audio_payload_flush): create an RTP buffer and store
+// payload_len bytes of the adapter as the payload. Set the timestamp on the new
+// buffer to timestamp before pushing the buffer downstream.
 //
 // If payload_len is -1, all pending bytes will be flushed. If timestamp is -1,
 // the timestamp will be calculated automatically.
@@ -1346,7 +1441,8 @@ func (baseaudiopayload *RTPBaseAudioPayload) Flush(payloadLen uint, timestamp gs
 	return _flowReturn
 }
 
-// Adapter gets the internal adapter used by the depayloader.
+// Adapter (gst_rtp_base_audio_payload_get_adapter) gets the internal adapter
+// used by the depayloader.
 //
 // The function returns the following values:
 //
@@ -1372,9 +1468,9 @@ func (rtpbaseaudiopayload *RTPBaseAudioPayload) Adapter() *gstbase.Adapter {
 	return _adapter
 }
 
-// Push: create an RTP buffer and store payload_len bytes of data as the
-// payload. Set the timestamp on the new buffer to timestamp before pushing the
-// buffer downstream.
+// Push (gst_rtp_base_audio_payload_push): create an RTP buffer and store
+// payload_len bytes of data as the payload. Set the timestamp on the new buffer
+// to timestamp before pushing the buffer downstream.
 //
 // The function takes the following parameters:
 //
@@ -1410,8 +1506,8 @@ func (baseaudiopayload *RTPBaseAudioPayload) Push(data []byte, timestamp gst.Clo
 	return _flowReturn
 }
 
-// SetFrameBased tells RTPBaseAudioPayload that the child element is for a frame
-// based audio codec.
+// SetFrameBased (gst_rtp_base_audio_payload_set_frame_based) tells
+// RTPBaseAudioPayload that the child element is for a frame based audio codec.
 func (rtpbaseaudiopayload *RTPBaseAudioPayload) SetFrameBased() {
 	var _arg0 *C.GstRTPBaseAudioPayload // out
 
@@ -1421,7 +1517,8 @@ func (rtpbaseaudiopayload *RTPBaseAudioPayload) SetFrameBased() {
 	runtime.KeepAlive(rtpbaseaudiopayload)
 }
 
-// SetFrameOptions sets the options for frame based audio codecs.
+// SetFrameOptions (gst_rtp_base_audio_payload_set_frame_options) sets the
+// options for frame based audio codecs.
 //
 // The function takes the following parameters:
 //
@@ -1442,8 +1539,8 @@ func (rtpbaseaudiopayload *RTPBaseAudioPayload) SetFrameOptions(frameDuration, f
 	runtime.KeepAlive(frameSize)
 }
 
-// SetSampleBased tells RTPBaseAudioPayload that the child element is for a
-// sample based audio codec.
+// SetSampleBased (gst_rtp_base_audio_payload_set_sample_based) tells
+// RTPBaseAudioPayload that the child element is for a sample based audio codec.
 func (rtpbaseaudiopayload *RTPBaseAudioPayload) SetSampleBased() {
 	var _arg0 *C.GstRTPBaseAudioPayload // out
 
@@ -1453,7 +1550,8 @@ func (rtpbaseaudiopayload *RTPBaseAudioPayload) SetSampleBased() {
 	runtime.KeepAlive(rtpbaseaudiopayload)
 }
 
-// SetSampleOptions sets the options for sample based audio codecs.
+// SetSampleOptions (gst_rtp_base_audio_payload_set_sample_options) sets the
+// options for sample based audio codecs.
 //
 // The function takes the following parameters:
 //
@@ -1470,7 +1568,8 @@ func (rtpbaseaudiopayload *RTPBaseAudioPayload) SetSampleOptions(sampleSize int)
 	runtime.KeepAlive(sampleSize)
 }
 
-// SetSamplebitsOptions sets the options for sample based audio codecs.
+// SetSamplebitsOptions (gst_rtp_base_audio_payload_set_samplebits_options) sets
+// the options for sample based audio codecs.
 //
 // The function takes the following parameters:
 //
@@ -1522,7 +1621,8 @@ func defaultRTPBaseDepayloadOverrides(v *RTPBaseDepayload) RTPBaseDepayloadOverr
 	}
 }
 
-// RTPBaseDepayload provides a base class for RTP depayloaders
+// RTPBaseDepayload (GstRTPBaseDepayload) provides a base class for RTP
+// depayloaders
 //
 // In order to handle RTP header extensions correctly if the depayloader
 // aggregates multiple RTP packet payloads into one output buffer this class
@@ -1560,12 +1660,51 @@ var (
 	_ gst.Elementer = (*RTPBaseDepayload)(nil)
 )
 
-// RTPBaseDepayloader describes types inherited from class RTPBaseDepayload.
+// RTPBaseDepayloader describes types inherited from RTPBaseDepayload.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type RTPBaseDepayloader interface {
-	coreglib.Objector
+	gst.Elementer
+
+	// Delayed (gst_rtp_base_depayload_delayed): called from
+	// GstRTPBaseDepayload.process or GstRTPBaseDepayload.process_rtp_packet
+	// when the depayloader needs to keep the current input RTP header for use
+	// with the next output buffer.
+	Delayed()
+	// Dropped (gst_rtp_base_depayload_dropped): called from
+	// GstRTPBaseDepayload.process or GstRTPBaseDepayload.process_rtp_packet if
+	// the depayloader does not use the current buffer for the output buffer.
+	Dropped()
+	// Flush (gst_rtp_base_depayload_flush): if GstRTPBaseDepayload.process
+	// or GstRTPBaseDepayload.process_rtp_packet drop an output buffer this
+	// function tells the base class to flush header extension cache as well.
+	Flush(keepCurrent bool)
+	// IsAggregateHdrextEnabled
+	// (gst_rtp_base_depayload_is_aggregate_hdrext_enabled) queries whether
+	// header extensions will be aggregated per depayloaded buffers.
+	IsAggregateHdrextEnabled() bool
+	// IsSourceInfoEnabled (gst_rtp_base_depayload_is_source_info_enabled)
+	// queries whether RTPSourceMeta will be added to depayloaded buffers.
+	IsSourceInfoEnabled() bool
+	// Push (gst_rtp_base_depayload_push) out_buf to the peer of filter.
+	Push(outBuf *gst.Buffer) gst.FlowReturn
+	// PushList (gst_rtp_base_depayload_push_list): push out_list to the peer of
+	// filter.
+	PushList(outList *gst.BufferList) gst.FlowReturn
+	// SetAggregateHdrextEnabled
+	// (gst_rtp_base_depayload_set_aggregate_hdrext_enabled): enable or disable
+	// aggregating header extensions.
+	SetAggregateHdrextEnabled(enable bool)
+	// SetSourceInfoEnabled (gst_rtp_base_depayload_set_source_info_enabled):
+	// enable or disable adding RTPSourceMeta to depayloaded buffers.
+	SetSourceInfoEnabled(enable bool)
+
+	// Request-extension: returned ext must be configured with the correct
+	// ext_id and with the necessary attributes as required by the extension
+	// implementation.
+	ConnectRequestExtension(func(extId uint, extUri string) (rtpHeaderExtension RTPHeaderExtensioner)) coreglib.SignalHandle
+
 	baseRTPBaseDepayload() *RTPBaseDepayload
 }
 
@@ -1641,9 +1780,10 @@ func (depayload *RTPBaseDepayload) ConnectRequestExtension(f func(extId uint, ex
 	return coreglib.ConnectGeneratedClosure(depayload, "request-extension", false, unsafe.Pointer(C._gotk4_gstrtp1_RTPBaseDepayload_ConnectRequestExtension), f)
 }
 
-// Delayed: called from GstRTPBaseDepayload.process or
-// GstRTPBaseDepayload.process_rtp_packet when the depayloader needs to keep the
-// current input RTP header for use with the next output buffer.
+// Delayed (gst_rtp_base_depayload_delayed): called from
+// GstRTPBaseDepayload.process or GstRTPBaseDepayload.process_rtp_packet when
+// the depayloader needs to keep the current input RTP header for use with the
+// next output buffer.
 //
 // The delayed buffer will remain until the end of processing the current output
 // buffer and then enqueued for processing with the next output buffer.
@@ -1662,10 +1802,11 @@ func (depayload *RTPBaseDepayload) Delayed() {
 	runtime.KeepAlive(depayload)
 }
 
-// Dropped: called from GstRTPBaseDepayload.process or
-// GstRTPBaseDepayload.process_rtp_packet if the depayloader does not use the
-// current buffer for the output buffer. This will either drop the delayed
-// buffer or the last buffer from the header extension cache.
+// Dropped (gst_rtp_base_depayload_dropped): called from
+// GstRTPBaseDepayload.process or GstRTPBaseDepayload.process_rtp_packet if the
+// depayloader does not use the current buffer for the output buffer. This will
+// either drop the delayed buffer or the last buffer from the header extension
+// cache.
 //
 // A typical use-case is when the depayloader implementation is dropping an
 // input RTP buffer while waiting for the first keyframe.
@@ -1680,7 +1821,7 @@ func (depayload *RTPBaseDepayload) Dropped() {
 	runtime.KeepAlive(depayload)
 }
 
-// Flush: if GstRTPBaseDepayload.process or
+// Flush (gst_rtp_base_depayload_flush): if GstRTPBaseDepayload.process or
 // GstRTPBaseDepayload.process_rtp_packet drop an output buffer this function
 // tells the base class to flush header extension cache as well.
 //
@@ -1713,8 +1854,8 @@ func (depayload *RTPBaseDepayload) Flush(keepCurrent bool) {
 	runtime.KeepAlive(keepCurrent)
 }
 
-// IsAggregateHdrextEnabled queries whether header extensions will be aggregated
-// per depayloaded buffers.
+// IsAggregateHdrextEnabled (gst_rtp_base_depayload_is_aggregate_hdrext_enabled)
+// queries whether header extensions will be aggregated per depayloaded buffers.
 //
 // The function returns the following values:
 //
@@ -1737,8 +1878,8 @@ func (depayload *RTPBaseDepayload) IsAggregateHdrextEnabled() bool {
 	return _ok
 }
 
-// IsSourceInfoEnabled queries whether RTPSourceMeta will be added to
-// depayloaded buffers.
+// IsSourceInfoEnabled (gst_rtp_base_depayload_is_source_info_enabled) queries
+// whether RTPSourceMeta will be added to depayloaded buffers.
 //
 // The function returns the following values:
 //
@@ -1761,7 +1902,8 @@ func (depayload *RTPBaseDepayload) IsSourceInfoEnabled() bool {
 	return _ok
 }
 
-// Push out_buf to the peer of filter. This function takes ownership of out_buf.
+// Push (gst_rtp_base_depayload_push) out_buf to the peer of filter. This
+// function takes ownership of out_buf.
 //
 // This function will by default apply the last incoming timestamp on the
 // outgoing buffer when it didn't have a timestamp already.
@@ -1793,8 +1935,8 @@ func (filter *RTPBaseDepayload) Push(outBuf *gst.Buffer) gst.FlowReturn {
 	return _flowReturn
 }
 
-// PushList: push out_list to the peer of filter. This function takes ownership
-// of out_list.
+// PushList (gst_rtp_base_depayload_push_list): push out_list to the peer of
+// filter. This function takes ownership of out_list.
 //
 // The function takes the following parameters:
 //
@@ -1823,7 +1965,9 @@ func (filter *RTPBaseDepayload) PushList(outList *gst.BufferList) gst.FlowReturn
 	return _flowReturn
 }
 
-// SetAggregateHdrextEnabled: enable or disable aggregating header extensions.
+// SetAggregateHdrextEnabled
+// (gst_rtp_base_depayload_set_aggregate_hdrext_enabled): enable or disable
+// aggregating header extensions.
 //
 // The function takes the following parameters:
 //
@@ -1842,8 +1986,8 @@ func (depayload *RTPBaseDepayload) SetAggregateHdrextEnabled(enable bool) {
 	runtime.KeepAlive(enable)
 }
 
-// SetSourceInfoEnabled: enable or disable adding RTPSourceMeta to depayloaded
-// buffers.
+// SetSourceInfoEnabled (gst_rtp_base_depayload_set_source_info_enabled):
+// enable or disable adding RTPSourceMeta to depayloaded buffers.
 //
 // The function takes the following parameters:
 //
@@ -2041,7 +2185,7 @@ func defaultRTPBasePayloadOverrides(v *RTPBasePayload) RTPBasePayloadOverrides {
 	}
 }
 
-// RTPBasePayload provides a base class for RTP payloaders.
+// RTPBasePayload (GstRTPBasePayload) provides a base class for RTP payloaders.
 type RTPBasePayload struct {
 	_ [0]func() // equal guard
 	gst.Element
@@ -2051,12 +2195,50 @@ var (
 	_ gst.Elementer = (*RTPBasePayload)(nil)
 )
 
-// RTPBasePayloader describes types inherited from class RTPBasePayload.
+// RTPBasePayloader describes types inherited from RTPBasePayload.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type RTPBasePayloader interface {
-	coreglib.Objector
+	gst.Elementer
+
+	// AllocateOutputBuffer (gst_rtp_base_payload_allocate_output_buffer):
+	// allocate a new Buffer with enough data to hold an RTP packet with minimum
+	// csrc_count CSRCs, a payload length of payload_len and padding of pad_len.
+	AllocateOutputBuffer(payloadLen uint, padLen, csrcCount byte) *gst.Buffer
+	// SourceCount (gst_rtp_base_payload_get_source_count): count the total
+	// number of RTP sources found in the meta of buffer, which will be
+	// automically added by gst_rtp_base_payload_allocate_output_buffer().
+	SourceCount(buffer *gst.Buffer) uint
+	// IsFilled (gst_rtp_base_payload_is_filled): check if the packet with size
+	// and duration would exceed the configured maximum size.
+	IsFilled(size uint, duration gst.ClockTime) bool
+	// IsSourceInfoEnabled (gst_rtp_base_payload_is_source_info_enabled) queries
+	// whether the payloader will add contributing sources (CSRCs) to the RTP
+	// header from RTPSourceMeta.
+	IsSourceInfoEnabled() bool
+	// PushBuffer (gst_rtp_base_payload_push): push buffer to the peer element
+	// of the payloader.
+	PushBuffer(buffer *gst.Buffer) gst.FlowReturn
+	// PushList (gst_rtp_base_payload_push_list): push list to the peer element
+	// of the payloader.
+	PushList(list *gst.BufferList) gst.FlowReturn
+	// SetOptions (gst_rtp_base_payload_set_options): set the rtp options of the
+	// payloader.
+	SetOptions(media string, dynamic bool, encodingName string, clockRate uint32)
+	// SetOutcapsStructure (gst_rtp_base_payload_set_outcaps_structure):
+	// configure the output caps with the optional fields.
+	SetOutcapsStructure(s *gst.Structure) bool
+	// SetSourceInfoEnabled (gst_rtp_base_payload_set_source_info_enabled):
+	// enable or disable adding contributing sources to RTP packets from
+	// RTPSourceMeta.
+	SetSourceInfoEnabled(enable bool)
+
+	// Request-extension: returned ext must be configured with the correct
+	// ext_id and with the necessary attributes as required by the extension
+	// implementation.
+	ConnectRequestExtension(func(extId uint, extUri string) (rtpHeaderExtension RTPHeaderExtensioner)) coreglib.SignalHandle
+
 	baseRTPBasePayload() *RTPBasePayload
 }
 
@@ -2136,10 +2318,11 @@ func (payload *RTPBasePayload) ConnectRequestExtension(f func(extId uint, extUri
 	return coreglib.ConnectGeneratedClosure(payload, "request-extension", false, unsafe.Pointer(C._gotk4_gstrtp1_RTPBasePayload_ConnectRequestExtension), f)
 }
 
-// AllocateOutputBuffer: allocate a new Buffer with enough data to hold an RTP
-// packet with minimum csrc_count CSRCs, a payload length of payload_len and
-// padding of pad_len. If payload has RTPBasePayload:source-info TRUE additional
-// CSRCs may be allocated and filled with RTP source information.
+// AllocateOutputBuffer (gst_rtp_base_payload_allocate_output_buffer): allocate
+// a new Buffer with enough data to hold an RTP packet with minimum csrc_count
+// CSRCs, a payload length of payload_len and padding of pad_len. If payload has
+// RTPBasePayload:source-info TRUE additional CSRCs may be allocated and filled
+// with RTP source information.
 //
 // The function takes the following parameters:
 //
@@ -2181,10 +2364,10 @@ func (payload *RTPBasePayload) AllocateOutputBuffer(payloadLen uint, padLen, csr
 	return _buffer
 }
 
-// SourceCount: count the total number of RTP sources found
-// in the meta of buffer, which will be automically added by
-// gst_rtp_base_payload_allocate_output_buffer(). If RTPBasePayload:source-info
-// is FALSE the count will be 0.
+// SourceCount (gst_rtp_base_payload_get_source_count): count the total
+// number of RTP sources found in the meta of buffer, which will be
+// automically added by gst_rtp_base_payload_allocate_output_buffer().
+// If RTPBasePayload:source-info is FALSE the count will be 0.
 //
 // The function takes the following parameters:
 //
@@ -2212,8 +2395,8 @@ func (payload *RTPBasePayload) SourceCount(buffer *gst.Buffer) uint {
 	return _guint
 }
 
-// IsFilled: check if the packet with size and duration would exceed the
-// configured maximum size.
+// IsFilled (gst_rtp_base_payload_is_filled): check if the packet with size and
+// duration would exceed the configured maximum size.
 //
 // The function takes the following parameters:
 //
@@ -2248,8 +2431,9 @@ func (payload *RTPBasePayload) IsFilled(size uint, duration gst.ClockTime) bool 
 	return _ok
 }
 
-// IsSourceInfoEnabled queries whether the payloader will add contributing
-// sources (CSRCs) to the RTP header from RTPSourceMeta.
+// IsSourceInfoEnabled (gst_rtp_base_payload_is_source_info_enabled) queries
+// whether the payloader will add contributing sources (CSRCs) to the RTP header
+// from RTPSourceMeta.
 //
 // The function returns the following values:
 //
@@ -2272,8 +2456,9 @@ func (payload *RTPBasePayload) IsSourceInfoEnabled() bool {
 	return _ok
 }
 
-// Push buffer to the peer element of the payloader. The SSRC, payload type,
-// seqnum and timestamp of the RTP buffer will be updated first.
+// PushBuffer (gst_rtp_base_payload_push): push buffer to the peer element of
+// the payloader. The SSRC, payload type, seqnum and timestamp of the RTP buffer
+// will be updated first.
 //
 // This function takes ownership of buffer.
 //
@@ -2284,7 +2469,7 @@ func (payload *RTPBasePayload) IsSourceInfoEnabled() bool {
 // The function returns the following values:
 //
 //   - flowReturn: FlowReturn.
-func (payload *RTPBasePayload) Push(buffer *gst.Buffer) gst.FlowReturn {
+func (payload *RTPBasePayload) PushBuffer(buffer *gst.Buffer) gst.FlowReturn {
 	var _arg0 *C.GstRTPBasePayload // out
 	var _arg1 *C.GstBuffer         // out
 	var _cret C.GstFlowReturn      // in
@@ -2304,8 +2489,9 @@ func (payload *RTPBasePayload) Push(buffer *gst.Buffer) gst.FlowReturn {
 	return _flowReturn
 }
 
-// PushList: push list to the peer element of the payloader. The SSRC, payload
-// type, seqnum and timestamp of the RTP buffer will be updated first.
+// PushList (gst_rtp_base_payload_push_list): push list to the peer element of
+// the payloader. The SSRC, payload type, seqnum and timestamp of the RTP buffer
+// will be updated first.
 //
 // This function takes ownership of list.
 //
@@ -2336,9 +2522,10 @@ func (payload *RTPBasePayload) PushList(list *gst.BufferList) gst.FlowReturn {
 	return _flowReturn
 }
 
-// SetOptions: set the rtp options of the payloader. These options will be set
-// in the caps of the payloader. Subclasses must call this method before calling
-// gst_rtp_base_payload_push() or gst_rtp_base_payload_set_outcaps().
+// SetOptions (gst_rtp_base_payload_set_options): set the rtp options of
+// the payloader. These options will be set in the caps of the payloader.
+// Subclasses must call this method before calling gst_rtp_base_payload_push()
+// or gst_rtp_base_payload_set_outcaps().
 //
 // The function takes the following parameters:
 //
@@ -2371,7 +2558,8 @@ func (payload *RTPBasePayload) SetOptions(media string, dynamic bool, encodingNa
 	runtime.KeepAlive(clockRate)
 }
 
-// SetOutcapsStructure: configure the output caps with the optional fields.
+// SetOutcapsStructure (gst_rtp_base_payload_set_outcaps_structure): configure
+// the output caps with the optional fields.
 //
 // The function takes the following parameters:
 //
@@ -2403,8 +2591,8 @@ func (payload *RTPBasePayload) SetOutcapsStructure(s *gst.Structure) bool {
 	return _ok
 }
 
-// SetSourceInfoEnabled: enable or disable adding contributing sources to RTP
-// packets from RTPSourceMeta.
+// SetSourceInfoEnabled (gst_rtp_base_payload_set_source_info_enabled): enable
+// or disable adding contributing sources to RTP packets from RTPSourceMeta.
 //
 // The function takes the following parameters:
 //
@@ -2701,7 +2889,8 @@ func defaultRTPHeaderExtensionOverrides(v *RTPHeaderExtension) RTPHeaderExtensio
 	}
 }
 
-// RTPHeaderExtension: instance struct for a RTP Audio/Video header extension.
+// RTPHeaderExtension (GstRTPHeaderExtension): instance struct for a RTP
+// Audio/Video header extension.
 type RTPHeaderExtension struct {
 	_ [0]func() // equal guard
 	gst.Element
@@ -2711,12 +2900,70 @@ var (
 	_ gst.Elementer = (*RTPHeaderExtension)(nil)
 )
 
-// RTPHeaderExtensioner describes types inherited from class RTPHeaderExtension.
+// RTPHeaderExtensioner describes types inherited from RTPHeaderExtension.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type RTPHeaderExtensioner interface {
-	coreglib.Objector
+	gst.Elementer
+
+	// Direction (gst_rtp_header_extension_get_direction): retrieve the
+	// direction.
+	Direction() RTPHeaderExtensionDirection
+	ID() uint
+	// MaxSize (gst_rtp_header_extension_get_max_size): this is used to know how
+	// much data a certain header extension will need for both allocating the
+	// resulting data, and deciding how much payload data can be generated.
+	MaxSize(inputMeta *gst.Buffer) uint
+	SdpCapsFieldName() string
+	SupportedFlags() RTPHeaderExtensionFlags
+	URI() string
+	// Read (gst_rtp_header_extension_read) the RTP header extension from data.
+	Read(readFlags RTPHeaderExtensionFlags, data []byte, buffer *gst.Buffer) bool
+	// SetAttributesFromCaps
+	// (gst_rtp_header_extension_set_attributes_from_caps):
+	// gst_rtp_header_extension_set_id() must have been called with a valid
+	// extension id that is contained in these caps.
+	SetAttributesFromCaps(caps *gst.Caps) bool
+	// SetCapsFromAttributes
+	// (gst_rtp_header_extension_set_caps_from_attributes):
+	// gst_rtp_header_extension_set_id() must have been called with a valid
+	// extension id that is contained in these caps.
+	SetCapsFromAttributes(caps *gst.Caps) bool
+	// SetCapsFromAttributesHelper
+	// (gst_rtp_header_extension_set_caps_from_attributes_helper): helper
+	// implementation for GstRTPExtensionClass::set_caps_from_attributes that
+	// sets the ext uri on caps with the specified extension id as required for
+	// sdp Caps.
+	SetCapsFromAttributesHelper(caps *gst.Caps, attributes string) bool
+	// SetDirection (gst_rtp_header_extension_set_direction): set the direction
+	// that this header extension should be used in.
+	SetDirection(direction RTPHeaderExtensionDirection)
+	// SetID (gst_rtp_header_extension_set_id) sets the RTP extension id on ext.
+	SetID(extId uint)
+	// SetNonRtpSinkCaps (gst_rtp_header_extension_set_non_rtp_sink_caps) passes
+	// RTP payloader's sink (i.e.
+	SetNonRtpSinkCaps(caps *gst.Caps) bool
+	// SetWantsUpdateNonRtpSrcCaps
+	// (gst_rtp_header_extension_set_wants_update_non_rtp_src_caps): call this
+	// function in a subclass from RTPHeaderExtensionClass::read to tell the
+	// depayloader whether the data just parsed from RTP packet require updating
+	// its src (non-RTP) caps.
+	SetWantsUpdateNonRtpSrcCaps(state bool)
+	// UpdateNonRtpSrcCaps (gst_rtp_header_extension_update_non_rtp_src_caps)
+	// updates depayloader src caps based on the information received in RTP
+	// header.
+	UpdateNonRtpSrcCaps(caps *gst.Caps) bool
+	// WantsUpdateNonRtpSrcCaps
+	// (gst_rtp_header_extension_wants_update_non_rtp_src_caps): call this
+	// function after gst_rtp_header_extension_read() to check if the
+	// depayloader's src caps need updating with data received in the last RTP
+	// packet.
+	WantsUpdateNonRtpSrcCaps() bool
+	// Write (gst_rtp_header_extension_write) writes the RTP header extension to
+	// data using information available from the input_meta.
+	Write(inputMeta *gst.Buffer, writeFlags RTPHeaderExtensionFlags, output *gst.Buffer, data []byte) int
+
 	baseRTPHeaderExtension() *RTPHeaderExtension
 }
 
@@ -2797,7 +3044,7 @@ func BaseRTPHeaderExtension(obj RTPHeaderExtensioner) *RTPHeaderExtension {
 	return obj.baseRTPHeaderExtension()
 }
 
-// Direction: retrieve the direction.
+// Direction (gst_rtp_header_extension_get_direction): retrieve the direction.
 //
 // The function returns the following values:
 //
@@ -2837,9 +3084,9 @@ func (ext *RTPHeaderExtension) ID() uint {
 	return _guint
 }
 
-// MaxSize: this is used to know how much data a certain header extension will
-// need for both allocating the resulting data, and deciding how much payload
-// data can be generated.
+// MaxSize (gst_rtp_header_extension_get_max_size): this is used to know how
+// much data a certain header extension will need for both allocating the
+// resulting data, and deciding how much payload data can be generated.
 //
 // Implementations should return as accurate a value as is possible using the
 // information given in the input buffer.
@@ -2930,7 +3177,7 @@ func (ext *RTPHeaderExtension) URI() string {
 	return _utf8
 }
 
-// Read the RTP header extension from data.
+// Read (gst_rtp_header_extension_read) the RTP header extension from data.
 //
 // The function takes the following parameters:
 //
@@ -2972,8 +3219,9 @@ func (ext *RTPHeaderExtension) Read(readFlags RTPHeaderExtensionFlags, data []by
 	return _ok
 }
 
-// SetAttributesFromCaps: gst_rtp_header_extension_set_id() must have been
-// called with a valid extension id that is contained in these caps.
+// SetAttributesFromCaps (gst_rtp_header_extension_set_attributes_from_caps):
+// gst_rtp_header_extension_set_id() must have been called with a valid
+// extension id that is contained in these caps.
 //
 // The only current known caps format is based on the SDP standard as produced
 // by gst_sdp_media_attributes_to_caps().
@@ -3006,8 +3254,9 @@ func (ext *RTPHeaderExtension) SetAttributesFromCaps(caps *gst.Caps) bool {
 	return _ok
 }
 
-// SetCapsFromAttributes: gst_rtp_header_extension_set_id() must have been
-// called with a valid extension id that is contained in these caps.
+// SetCapsFromAttributes (gst_rtp_header_extension_set_caps_from_attributes):
+// gst_rtp_header_extension_set_id() must have been called with a valid
+// extension id that is contained in these caps.
 //
 // The only current known caps format is based on the SDP standard as produced
 // by gst_sdp_media_attributes_to_caps().
@@ -3041,9 +3290,10 @@ func (ext *RTPHeaderExtension) SetCapsFromAttributes(caps *gst.Caps) bool {
 	return _ok
 }
 
-// SetCapsFromAttributesHelper: helper implementation for
-// GstRTPExtensionClass::set_caps_from_attributes that sets the ext uri on caps
-// with the specified extension id as required for sdp Caps.
+// SetCapsFromAttributesHelper
+// (gst_rtp_header_extension_set_caps_from_attributes_helper): helper
+// implementation for GstRTPExtensionClass::set_caps_from_attributes that sets
+// the ext uri on caps with the specified extension id as required for sdp Caps.
 //
 // Requires that the extension does not have any attributes or direction
 // advertised in caps.
@@ -3081,8 +3331,9 @@ func (ext *RTPHeaderExtension) SetCapsFromAttributesHelper(caps *gst.Caps, attri
 	return _ok
 }
 
-// SetDirection: set the direction that this header extension should be used in.
-// If T_RTP_HEADER_EXTENSION_DIRECTION_INHERITED is included, the direction will
+// SetDirection (gst_rtp_header_extension_set_direction):
+// set the direction that this header extension should be used in. If
+// T_RTP_HEADER_EXTENSION_DIRECTION_INHERITED is included, the direction will
 // not be included in the caps (as it shouldn't be in the extmap line in the
 // SDP).
 //
@@ -3101,7 +3352,7 @@ func (ext *RTPHeaderExtension) SetDirection(direction RTPHeaderExtensionDirectio
 	runtime.KeepAlive(direction)
 }
 
-// SetID sets the RTP extension id on ext.
+// SetID (gst_rtp_header_extension_set_id) sets the RTP extension id on ext.
 //
 // The function takes the following parameters:
 //
@@ -3118,8 +3369,8 @@ func (ext *RTPHeaderExtension) SetID(extId uint) {
 	runtime.KeepAlive(extId)
 }
 
-// SetNonRtpSinkCaps passes RTP payloader's sink (i.e. not payloaded) caps to
-// the header extension.
+// SetNonRtpSinkCaps (gst_rtp_header_extension_set_non_rtp_sink_caps) passes RTP
+// payloader's sink (i.e. not payloaded) caps to the header extension.
 //
 // The function takes the following parameters:
 //
@@ -3149,10 +3400,11 @@ func (ext *RTPHeaderExtension) SetNonRtpSinkCaps(caps *gst.Caps) bool {
 	return _ok
 }
 
-// SetWantsUpdateNonRtpSrcCaps: call this function in a subclass from
-// RTPHeaderExtensionClass::read to tell the depayloader whether the
-// data just parsed from RTP packet require updating its src (non-RTP)
-// caps. If state is TRUE, RTPBaseDepayload will eventually invoke
+// SetWantsUpdateNonRtpSrcCaps
+// (gst_rtp_header_extension_set_wants_update_non_rtp_src_caps): call this
+// function in a subclass from RTPHeaderExtensionClass::read to tell the
+// depayloader whether the data just parsed from RTP packet require updating its
+// src (non-RTP) caps. If state is TRUE, RTPBaseDepayload will eventually invoke
 // gst_rtp_header_extension_update_non_rtp_src_caps() to have the caps update
 // applied. Applying the update also flips the internal "wants update" flag back
 // to FALSE.
@@ -3174,9 +3426,9 @@ func (ext *RTPHeaderExtension) SetWantsUpdateNonRtpSrcCaps(state bool) {
 	runtime.KeepAlive(state)
 }
 
-// UpdateNonRtpSrcCaps updates depayloader src caps based on the information
-// received in RTP header. caps must be writable as this function may modify
-// them.
+// UpdateNonRtpSrcCaps (gst_rtp_header_extension_update_non_rtp_src_caps)
+// updates depayloader src caps based on the information received in RTP header.
+// caps must be writable as this function may modify them.
 //
 // The function takes the following parameters:
 //
@@ -3206,9 +3458,10 @@ func (ext *RTPHeaderExtension) UpdateNonRtpSrcCaps(caps *gst.Caps) bool {
 	return _ok
 }
 
-// WantsUpdateNonRtpSrcCaps: call this function after
-// gst_rtp_header_extension_read() to check if the depayloader's src caps need
-// updating with data received in the last RTP packet.
+// WantsUpdateNonRtpSrcCaps
+// (gst_rtp_header_extension_wants_update_non_rtp_src_caps): call this function
+// after gst_rtp_header_extension_read() to check if the depayloader's src caps
+// need updating with data received in the last RTP packet.
 //
 // The function returns the following values:
 //
@@ -3231,9 +3484,9 @@ func (ext *RTPHeaderExtension) WantsUpdateNonRtpSrcCaps() bool {
 	return _ok
 }
 
-// Write writes the RTP header extension to data using information available
-// from the input_meta. data will be sized to be at least the value returned
-// from gst_rtp_header_extension_get_max_size().
+// Write (gst_rtp_header_extension_write) writes the RTP header extension to
+// data using information available from the input_meta. data will be sized to
+// be at least the value returned from gst_rtp_header_extension_get_max_size().
 //
 // The function takes the following parameters:
 //
@@ -3612,7 +3865,8 @@ func RTPHeaderExtensionCreateFromURI(uri string) RTPHeaderExtensioner {
 	return _rtpHeaderExtension
 }
 
-// RTCPBuffer: note: The API in this module is not yet declared stable.
+// RTCPBuffer (GstRTCPBuffer): note: The API in this module is not yet declared
+// stable.
 //
 // The GstRTPCBuffer helper functions makes it easy to parse and create
 // regular Buffer objects that contain compound RTCP packets. These buffers are
@@ -3652,8 +3906,8 @@ func (r *RTCPBuffer) Map() *gst.MapInfo {
 	return _v
 }
 
-// AddPacket: add a new packet of type to rtcp. packet will point to the newly
-// created packet.
+// AddPacket (gst_rtcp_buffer_add_packet): add a new packet of type to rtcp.
+// packet will point to the newly created packet.
 //
 // The function takes the following parameters:
 //
@@ -3688,8 +3942,8 @@ func (rtcp *RTCPBuffer) AddPacket(typ RTCPType, packet *RTCPPacket) bool {
 	return _ok
 }
 
-// FirstPacket: initialize a new RTCPPacket pointer that points to the first
-// packet in rtcp.
+// FirstPacket (gst_rtcp_buffer_get_first_packet): initialize a new RTCPPacket
+// pointer that points to the first packet in rtcp.
 //
 // The function takes the following parameters:
 //
@@ -3719,7 +3973,8 @@ func (rtcp *RTCPBuffer) FirstPacket(packet *RTCPPacket) bool {
 	return _ok
 }
 
-// PacketCount: get the number of RTCP packets in rtcp.
+// PacketCount (gst_rtcp_buffer_get_packet_count): get the number of RTCP
+// packets in rtcp.
 //
 // The function returns the following values:
 //
@@ -3740,9 +3995,9 @@ func (rtcp *RTCPBuffer) PacketCount() uint {
 	return _guint
 }
 
-// Unmap: finish rtcp after being constructed. This function is usually called
-// after gst_rtcp_buffer_map() and after adding the RTCP items to the new
-// buffer.
+// Unmap (gst_rtcp_buffer_unmap): finish rtcp after being constructed. This
+// function is usually called after gst_rtcp_buffer_map() and after adding the
+// RTCP items to the new buffer.
 //
 // The function adjusts the size of rtcp with the total length of all the added
 // packets.
@@ -3764,8 +4019,8 @@ func (rtcp *RTCPBuffer) Unmap() bool {
 	return _ok
 }
 
-// RTCPBufferMap: open buffer for reading or writing, depending on flags.
-// The resulting RTCP buffer state is stored in rtcp.
+// RTCPBufferMap (gst_rtcp_buffer_map): open buffer for reading or writing,
+// depending on flags. The resulting RTCP buffer state is stored in rtcp.
 //
 // The function takes the following parameters:
 //
@@ -3796,8 +4051,8 @@ func RTCPBufferMap(buffer *gst.Buffer, flags gst.MapFlags, rtcp *RTCPBuffer) boo
 	return _ok
 }
 
-// NewRTCPBuffer: create a new buffer for constructing RTCP packets. The packet
-// will have a maximum size of mtu.
+// NewRTCPBuffer (gst_rtcp_buffer_new): create a new buffer for constructing
+// RTCP packets. The packet will have a maximum size of mtu.
 //
 // The function takes the following parameters:
 //
@@ -3827,9 +4082,9 @@ func NewRTCPBuffer(mtu uint) *gst.Buffer {
 	return _buffer
 }
 
-// NewRTCPBufferCopyData: create a new buffer and set the data to a copy of len
-// bytes of data and the size to len. The data will be freed when the buffer is
-// freed.
+// NewRTCPBufferCopyData (gst_rtcp_buffer_new_copy_data): create a new buffer
+// and set the data to a copy of len bytes of data and the size to len. The data
+// will be freed when the buffer is freed.
 //
 // The function takes the following parameters:
 //
@@ -3863,9 +4118,10 @@ func NewRTCPBufferCopyData(data []byte) *gst.Buffer {
 	return _buffer
 }
 
-// NewRTCPBufferTakeData: create a new buffer and set the data and size of the
-// buffer to data and len respectively. data will be freed when the buffer is
-// unreffed, so this function transfers ownership of data to the new buffer.
+// NewRTCPBufferTakeData (gst_rtcp_buffer_new_take_data): create a new buffer
+// and set the data and size of the buffer to data and len respectively.
+// data will be freed when the buffer is unreffed, so this function transfers
+// ownership of data to the new buffer.
 //
 // The function takes the following parameters:
 //
@@ -3899,8 +4155,8 @@ func NewRTCPBufferTakeData(data []byte) *gst.Buffer {
 	return _buffer
 }
 
-// RTCPBufferValidate: check if the data pointed to by buffer is a valid RTCP
-// packet using gst_rtcp_buffer_validate_data().
+// RTCPBufferValidate (gst_rtcp_buffer_validate): check if the data pointed to
+// by buffer is a valid RTCP packet using gst_rtcp_buffer_validate_data().
 //
 // The function takes the following parameters:
 //
@@ -3927,9 +4183,10 @@ func RTCPBufferValidate(buffer *gst.Buffer) bool {
 	return _ok
 }
 
-// RTCPBufferValidateData: check if the data and size point to the data of a
-// valid compound, non-reduced size RTCP packet. Use this function to validate a
-// packet before using the other functions in this module.
+// RTCPBufferValidateData (gst_rtcp_buffer_validate_data): check if the data and
+// size point to the data of a valid compound, non-reduced size RTCP packet.
+// Use this function to validate a packet before using the other functions in
+// this module.
 //
 // The function takes the following parameters:
 //
@@ -3960,9 +4217,10 @@ func RTCPBufferValidateData(data []byte) bool {
 	return _ok
 }
 
-// RTCPBufferValidateDataReduced: check if the data and size point to the data
-// of a valid RTCP packet. Use this function to validate a packet before using
-// the other functions in this module.
+// RTCPBufferValidateDataReduced (gst_rtcp_buffer_validate_data_reduced):
+// check if the data and size point to the data of a valid RTCP packet.
+// Use this function to validate a packet before using the other functions in
+// this module.
 //
 // This function is updated to support reduced size rtcp packets according to
 // RFC 5506 and will validate full compound RTCP packets as well as reduced size
@@ -3997,8 +4255,9 @@ func RTCPBufferValidateDataReduced(data []byte) bool {
 	return _ok
 }
 
-// RTCPBufferValidateReduced: check if the data pointed to by buffer is a valid
-// RTCP packet using gst_rtcp_buffer_validate_reduced().
+// RTCPBufferValidateReduced (gst_rtcp_buffer_validate_reduced):
+// check if the data pointed to by buffer is a valid RTCP packet using
+// gst_rtcp_buffer_validate_reduced().
 //
 // The function takes the following parameters:
 //
@@ -4025,8 +4284,9 @@ func RTCPBufferValidateReduced(buffer *gst.Buffer) bool {
 	return _ok
 }
 
-// RTCPPacket: data structure that points to a packet at offset in buffer.
-// The size of the structure is made public to allow stack allocations.
+// RTCPPacket (GstRTCPPacket): data structure that points to a packet at
+// offset in buffer. The size of the structure is made public to allow stack
+// allocations.
 //
 // An instance of this type is always passed by reference.
 type RTCPPacket struct {
@@ -4060,9 +4320,9 @@ func (r *RTCPPacket) SetOffset(offset uint) {
 	*valptr = C.guint(offset)
 }
 
-// AddProfileSpecificExt: add profile-specific extension data to packet.
-// If packet already contains profile-specific extension data will be appended
-// to the existing extension.
+// AddProfileSpecificExt (gst_rtcp_packet_add_profile_specific_ext):
+// add profile-specific extension data to packet. If packet already contains
+// profile-specific extension data will be appended to the existing extension.
 //
 // The function takes the following parameters:
 //
@@ -4096,7 +4356,8 @@ func (packet *RTCPPacket) AddProfileSpecificExt(data []byte) bool {
 	return _ok
 }
 
-// AddRb: add a new report block to packet with the given values.
+// AddRb (gst_rtcp_packet_add_rb): add a new report block to packet with the
+// given values.
 //
 // The function takes the following parameters:
 //
@@ -4152,8 +4413,8 @@ func (packet *RTCPPacket) AddRb(ssrc uint32, fractionlost byte, packetslost int3
 	return _ok
 }
 
-// AppGetData: get the application-dependent data attached to a RTPFB or PSFB
-// packet.
+// AppGetData (gst_rtcp_packet_app_get_data): get the application-dependent data
+// attached to a RTPFB or PSFB packet.
 //
 // The function returns the following values:
 //
@@ -4174,8 +4435,8 @@ func (packet *RTCPPacket) AppGetData() *byte {
 	return _guint8
 }
 
-// AppGetDataLength: get the length of the application-dependent data attached
-// to an APP packet.
+// AppGetDataLength (gst_rtcp_packet_app_get_data_length): get the length of the
+// application-dependent data attached to an APP packet.
 //
 // The function returns the following values:
 //
@@ -4196,7 +4457,8 @@ func (packet *RTCPPacket) AppGetDataLength() uint16 {
 	return _guint16
 }
 
-// AppGetName: get the name field of the APP packet.
+// AppGetName (gst_rtcp_packet_app_get_name): get the name field of the APP
+// packet.
 //
 // The function returns the following values:
 //
@@ -4217,7 +4479,8 @@ func (packet *RTCPPacket) AppGetName() string {
 	return _utf8
 }
 
-// AppGetSsrc: get the SSRC/CSRC field of the APP packet.
+// AppGetSsrc (gst_rtcp_packet_app_get_ssrc): get the SSRC/CSRC field of the APP
+// packet.
 //
 // The function returns the following values:
 //
@@ -4238,7 +4501,8 @@ func (packet *RTCPPacket) AppGetSsrc() uint32 {
 	return _guint32
 }
 
-// AppGetSubtype: get the subtype field of the APP packet.
+// AppGetSubtype (gst_rtcp_packet_app_get_subtype): get the subtype field of the
+// APP packet.
 //
 // The function returns the following values:
 //
@@ -4259,8 +4523,8 @@ func (packet *RTCPPacket) AppGetSubtype() byte {
 	return _guint8
 }
 
-// AppSetDataLength: set the length of the application-dependent data attached
-// to an APP packet.
+// AppSetDataLength (gst_rtcp_packet_app_set_data_length): set the length of the
+// application-dependent data attached to an APP packet.
 //
 // The function takes the following parameters:
 //
@@ -4290,7 +4554,8 @@ func (packet *RTCPPacket) AppSetDataLength(wordlen uint16) bool {
 	return _ok
 }
 
-// AppSetName: set the name field of the APP packet.
+// AppSetName (gst_rtcp_packet_app_set_name): set the name field of the APP
+// packet.
 //
 // The function takes the following parameters:
 //
@@ -4308,7 +4573,8 @@ func (packet *RTCPPacket) AppSetName(name string) {
 	runtime.KeepAlive(name)
 }
 
-// AppSetSsrc: set the SSRC/CSRC field of the APP packet.
+// AppSetSsrc (gst_rtcp_packet_app_set_ssrc): set the SSRC/CSRC field of the APP
+// packet.
 //
 // The function takes the following parameters:
 //
@@ -4325,7 +4591,8 @@ func (packet *RTCPPacket) AppSetSsrc(ssrc uint32) {
 	runtime.KeepAlive(ssrc)
 }
 
-// AppSetSubtype: set the subtype field of the APP packet.
+// AppSetSubtype (gst_rtcp_packet_app_set_subtype): set the subtype field of the
+// APP packet.
 //
 // The function takes the following parameters:
 //
@@ -4342,7 +4609,7 @@ func (packet *RTCPPacket) AppSetSubtype(subtype byte) {
 	runtime.KeepAlive(subtype)
 }
 
-// ByeAddSsrc: add ssrc to the BYE packet.
+// ByeAddSsrc (gst_rtcp_packet_bye_add_ssrc): add ssrc to the BYE packet.
 //
 // The function takes the following parameters:
 //
@@ -4374,7 +4641,8 @@ func (packet *RTCPPacket) ByeAddSsrc(ssrc uint32) bool {
 	return _ok
 }
 
-// ByeAddSsrcs adds len SSRCs in ssrc to BYE packet.
+// ByeAddSsrcs (gst_rtcp_packet_bye_add_ssrcs) adds len SSRCs in ssrc to BYE
+// packet.
 //
 // The function takes the following parameters:
 //
@@ -4410,7 +4678,8 @@ func (packet *RTCPPacket) ByeAddSsrcs(ssrc []uint32) bool {
 	return _ok
 }
 
-// ByeGetNthSsrc: get the nth SSRC of the BYE packet.
+// ByeGetNthSsrc (gst_rtcp_packet_bye_get_nth_ssrc): get the nth SSRC of the BYE
+// packet.
 //
 // The function takes the following parameters:
 //
@@ -4438,7 +4707,7 @@ func (packet *RTCPPacket) ByeGetNthSsrc(nth uint) uint32 {
 	return _guint32
 }
 
-// ByeGetReason: get the reason in packet.
+// ByeGetReason (gst_rtcp_packet_bye_get_reason): get the reason in packet.
 //
 // The function returns the following values:
 //
@@ -4464,7 +4733,8 @@ func (packet *RTCPPacket) ByeGetReason() string {
 	return _utf8
 }
 
-// ByeGetReasonLen: get the length of the reason string.
+// ByeGetReasonLen (gst_rtcp_packet_bye_get_reason_len): get the length of the
+// reason string.
 //
 // The function returns the following values:
 //
@@ -4486,7 +4756,8 @@ func (packet *RTCPPacket) ByeGetReasonLen() byte {
 	return _guint8
 }
 
-// ByeGetSsrcCount: get the number of SSRC fields in packet.
+// ByeGetSsrcCount (gst_rtcp_packet_bye_get_ssrc_count): get the number of SSRC
+// fields in packet.
 //
 // The function returns the following values:
 //
@@ -4507,7 +4778,8 @@ func (packet *RTCPPacket) ByeGetSsrcCount() uint {
 	return _guint
 }
 
-// ByeSetReason: set the reason string to reason in packet.
+// ByeSetReason (gst_rtcp_packet_bye_set_reason): set the reason string to
+// reason in packet.
 //
 // The function takes the following parameters:
 //
@@ -4538,8 +4810,9 @@ func (packet *RTCPPacket) ByeSetReason(reason string) bool {
 	return _ok
 }
 
-// CopyProfileSpecificExt: profile-specific extension data is copied into a new
-// allocated memory area data. This must be freed with g_free() after usage.
+// CopyProfileSpecificExt (gst_rtcp_packet_copy_profile_specific_ext):
+// profile-specific extension data is copied into a new allocated memory area
+// data. This must be freed with g_free() after usage.
 //
 // The function returns the following values:
 //
@@ -4569,8 +4842,8 @@ func (packet *RTCPPacket) CopyProfileSpecificExt() ([]byte, bool) {
 	return _data, _ok
 }
 
-// FbGetFci: get the Feedback Control Information attached to a RTPFB or PSFB
-// packet.
+// FbGetFci (gst_rtcp_packet_fb_get_fci): get the Feedback Control Information
+// attached to a RTPFB or PSFB packet.
 //
 // The function returns the following values:
 //
@@ -4591,8 +4864,8 @@ func (packet *RTCPPacket) FbGetFci() *byte {
 	return _guint8
 }
 
-// FbGetFciLength: get the length of the Feedback Control Information attached
-// to a RTPFB or PSFB packet.
+// FbGetFciLength (gst_rtcp_packet_fb_get_fci_length): get the length of the
+// Feedback Control Information attached to a RTPFB or PSFB packet.
 //
 // The function returns the following values:
 //
@@ -4613,7 +4886,8 @@ func (packet *RTCPPacket) FbGetFciLength() uint16 {
 	return _guint16
 }
 
-// FbGetMediaSsrc: get the media SSRC field of the RTPFB or PSFB packet.
+// FbGetMediaSsrc (gst_rtcp_packet_fb_get_media_ssrc): get the media SSRC field
+// of the RTPFB or PSFB packet.
 //
 // The function returns the following values:
 //
@@ -4634,7 +4908,8 @@ func (packet *RTCPPacket) FbGetMediaSsrc() uint32 {
 	return _guint32
 }
 
-// FbGetSenderSsrc: get the sender SSRC field of the RTPFB or PSFB packet.
+// FbGetSenderSsrc (gst_rtcp_packet_fb_get_sender_ssrc): get the sender SSRC
+// field of the RTPFB or PSFB packet.
 //
 // The function returns the following values:
 //
@@ -4655,7 +4930,8 @@ func (packet *RTCPPacket) FbGetSenderSsrc() uint32 {
 	return _guint32
 }
 
-// FbGetType: get the feedback message type of the FB packet.
+// FbGetType (gst_rtcp_packet_fb_get_type): get the feedback message type of the
+// FB packet.
 //
 // The function returns the following values:
 //
@@ -4676,8 +4952,8 @@ func (packet *RTCPPacket) FbGetType() RTCPFBType {
 	return _rtcpfbType
 }
 
-// FbSetFciLength: set the length of the Feedback Control Information attached
-// to a RTPFB or PSFB packet.
+// FbSetFciLength (gst_rtcp_packet_fb_set_fci_length): set the length of the
+// Feedback Control Information attached to a RTPFB or PSFB packet.
 //
 // The function takes the following parameters:
 //
@@ -4707,7 +4983,8 @@ func (packet *RTCPPacket) FbSetFciLength(wordlen uint16) bool {
 	return _ok
 }
 
-// FbSetMediaSsrc: set the media SSRC field of the RTPFB or PSFB packet.
+// FbSetMediaSsrc (gst_rtcp_packet_fb_set_media_ssrc): set the media SSRC field
+// of the RTPFB or PSFB packet.
 //
 // The function takes the following parameters:
 //
@@ -4724,7 +5001,8 @@ func (packet *RTCPPacket) FbSetMediaSsrc(ssrc uint32) {
 	runtime.KeepAlive(ssrc)
 }
 
-// FbSetSenderSsrc: set the sender SSRC field of the RTPFB or PSFB packet.
+// FbSetSenderSsrc (gst_rtcp_packet_fb_set_sender_ssrc): set the sender SSRC
+// field of the RTPFB or PSFB packet.
 //
 // The function takes the following parameters:
 //
@@ -4741,7 +5019,8 @@ func (packet *RTCPPacket) FbSetSenderSsrc(ssrc uint32) {
 	runtime.KeepAlive(ssrc)
 }
 
-// FbSetType: set the feedback message type of the FB packet.
+// FbSetType (gst_rtcp_packet_fb_set_type): set the feedback message type of the
+// FB packet.
 //
 // The function takes the following parameters:
 //
@@ -4758,7 +5037,7 @@ func (packet *RTCPPacket) FbSetType(typ RTCPFBType) {
 	runtime.KeepAlive(typ)
 }
 
-// Count: get the count field in packet.
+// Count (gst_rtcp_packet_get_count): get the count field in packet.
 //
 // The function returns the following values:
 //
@@ -4780,8 +5059,8 @@ func (packet *RTCPPacket) Count() byte {
 	return _guint8
 }
 
-// Length: get the length field of packet. This is the length of the packet in
-// 32-bit words minus one.
+// Length (gst_rtcp_packet_get_length): get the length field of packet. This is
+// the length of the packet in 32-bit words minus one.
 //
 // The function returns the following values:
 //
@@ -4802,7 +5081,8 @@ func (packet *RTCPPacket) Length() uint16 {
 	return _guint16
 }
 
-// Padding: get the packet padding of the packet pointed to by packet.
+// Padding (gst_rtcp_packet_get_padding): get the packet padding of the packet
+// pointed to by packet.
 //
 // The function returns the following values:
 //
@@ -4872,8 +5152,8 @@ func (packet *RTCPPacket) ProfileSpecificExtLength() uint16 {
 	return _guint16
 }
 
-// Rb: parse the values of the nth report block in packet and store the result
-// in the values.
+// Rb (gst_rtcp_packet_get_rb): parse the values of the nth report block in
+// packet and store the result in the values.
 //
 // The function takes the following parameters:
 //
@@ -4925,7 +5205,8 @@ func (packet *RTCPPacket) Rb(nth uint) (ssrc uint32, fractionlost byte, packetsl
 	return _ssrc, _fractionlost, _packetslost, _exthighestseq, _jitter, _lsr, _dlsr
 }
 
-// RbCount: get the number of report blocks in packet.
+// RbCount (gst_rtcp_packet_get_rb_count): get the number of report blocks in
+// packet.
 //
 // The function returns the following values:
 //
@@ -4946,7 +5227,8 @@ func (packet *RTCPPacket) RbCount() uint {
 	return _guint
 }
 
-// Type: get the packet type of the packet pointed to by packet.
+// Type (gst_rtcp_packet_get_type): get the packet type of the packet pointed to
+// by packet.
 //
 // The function returns the following values:
 //
@@ -4968,8 +5250,9 @@ func (packet *RTCPPacket) Type() RTCPType {
 	return _rtcpType
 }
 
-// MoveToNext: move the packet pointer packet to the next packet in the payload.
-// Use gst_rtcp_buffer_get_first_packet() to initialize packet.
+// MoveToNext (gst_rtcp_packet_move_to_next): move the packet pointer packet
+// to the next packet in the payload. Use gst_rtcp_buffer_get_first_packet() to
+// initialize packet.
 //
 // The function returns the following values:
 //
@@ -4993,8 +5276,8 @@ func (packet *RTCPPacket) MoveToNext() bool {
 	return _ok
 }
 
-// Remove removes the packet pointed to by packet and moves pointer to the next
-// one.
+// Remove (gst_rtcp_packet_remove) removes the packet pointed to by packet and
+// moves pointer to the next one.
 //
 // The function returns the following values:
 //
@@ -5018,7 +5301,7 @@ func (packet *RTCPPacket) Remove() bool {
 	return _ok
 }
 
-// RrGetSsrc: get the ssrc field of the RR packet.
+// RrGetSsrc (gst_rtcp_packet_rr_get_ssrc): get the ssrc field of the RR packet.
 //
 // The function returns the following values:
 //
@@ -5039,7 +5322,7 @@ func (packet *RTCPPacket) RrGetSsrc() uint32 {
 	return _guint32
 }
 
-// RrSetSsrc: set the ssrc field of the RR packet.
+// RrSetSsrc (gst_rtcp_packet_rr_set_ssrc): set the ssrc field of the RR packet.
 //
 // The function takes the following parameters:
 //
@@ -5056,7 +5339,8 @@ func (packet *RTCPPacket) RrSetSsrc(ssrc uint32) {
 	runtime.KeepAlive(ssrc)
 }
 
-// SdesAddEntry: add a new SDES entry to the current item in packet.
+// SdesAddEntry (gst_rtcp_packet_sdes_add_entry): add a new SDES entry to the
+// current item in packet.
 //
 // The function takes the following parameters:
 //
@@ -5094,7 +5378,8 @@ func (packet *RTCPPacket) SdesAddEntry(typ RTCPSDESType, data []byte) bool {
 	return _ok
 }
 
-// SdesAddItem: add a new SDES item for ssrc to packet.
+// SdesAddItem (gst_rtcp_packet_sdes_add_item): add a new SDES item for ssrc to
+// packet.
 //
 // The function takes the following parameters:
 //
@@ -5125,8 +5410,9 @@ func (packet *RTCPPacket) SdesAddItem(ssrc uint32) bool {
 	return _ok
 }
 
-// SdesCopyEntry: this function is like gst_rtcp_packet_sdes_get_entry() but it
-// returns a null-terminated copy of the data instead. use g_free() after usage.
+// SdesCopyEntry (gst_rtcp_packet_sdes_copy_entry): this function is like
+// gst_rtcp_packet_sdes_get_entry() but it returns a null-terminated copy of the
+// data instead. use g_free() after usage.
 //
 // The function takes the following parameters:
 //
@@ -5163,7 +5449,8 @@ func (packet *RTCPPacket) SdesCopyEntry(typ *RTCPSDESType) ([]byte, bool) {
 	return _data, _ok
 }
 
-// SdesFirstEntry: move to the first SDES entry in the current item.
+// SdesFirstEntry (gst_rtcp_packet_sdes_first_entry): move to the first SDES
+// entry in the current item.
 //
 // The function returns the following values:
 //
@@ -5186,7 +5473,8 @@ func (packet *RTCPPacket) SdesFirstEntry() bool {
 	return _ok
 }
 
-// SdesFirstItem: move to the first SDES item in packet.
+// SdesFirstItem (gst_rtcp_packet_sdes_first_item): move to the first SDES item
+// in packet.
 //
 // The function returns the following values:
 //
@@ -5209,9 +5497,9 @@ func (packet *RTCPPacket) SdesFirstItem() bool {
 	return _ok
 }
 
-// SdesGetEntry: get the data of the current SDES item entry. type (when not
-// NULL) will contain the type of the entry. data (when not NULL) will point to
-// len bytes.
+// SdesGetEntry (gst_rtcp_packet_sdes_get_entry): get the data of the current
+// SDES item entry. type (when not NULL) will contain the type of the entry.
+// data (when not NULL) will point to len bytes.
 //
 // When type refers to a text item, data will point to a UTF8
 // string. Note that this UTF8 string is NOT null-terminated. Use
@@ -5251,7 +5539,8 @@ func (packet *RTCPPacket) SdesGetEntry(typ *RTCPSDESType) ([]byte, bool) {
 	return _data, _ok
 }
 
-// SdesGetItemCount: get the number of items in the SDES packet packet.
+// SdesGetItemCount (gst_rtcp_packet_sdes_get_item_count): get the number of
+// items in the SDES packet packet.
 //
 // The function returns the following values:
 //
@@ -5272,7 +5561,8 @@ func (packet *RTCPPacket) SdesGetItemCount() uint {
 	return _guint
 }
 
-// SdesGetSsrc: get the SSRC of the current SDES item.
+// SdesGetSsrc (gst_rtcp_packet_sdes_get_ssrc): get the SSRC of the current SDES
+// item.
 //
 // The function returns the following values:
 //
@@ -5293,7 +5583,8 @@ func (packet *RTCPPacket) SdesGetSsrc() uint32 {
 	return _guint32
 }
 
-// SdesNextEntry: move to the next SDES entry in the current item.
+// SdesNextEntry (gst_rtcp_packet_sdes_next_entry): move to the next SDES entry
+// in the current item.
 //
 // The function returns the following values:
 //
@@ -5316,7 +5607,8 @@ func (packet *RTCPPacket) SdesNextEntry() bool {
 	return _ok
 }
 
-// SdesNextItem: move to the next SDES item in packet.
+// SdesNextItem (gst_rtcp_packet_sdes_next_item): move to the next SDES item in
+// packet.
 //
 // The function returns the following values:
 //
@@ -5339,7 +5631,8 @@ func (packet *RTCPPacket) SdesNextItem() bool {
 	return _ok
 }
 
-// SetRb: set the nth new report block in packet with the given values.
+// SetRb (gst_rtcp_packet_set_rb): set the nth new report block in packet with
+// the given values.
 //
 // Note: Not implemented.
 //
@@ -5386,7 +5679,8 @@ func (packet *RTCPPacket) SetRb(nth uint, ssrc uint32, fractionlost byte, packet
 	runtime.KeepAlive(dlsr)
 }
 
-// SrGetSenderInfo: parse the SR sender info and store the values.
+// SrGetSenderInfo (gst_rtcp_packet_sr_get_sender_info): parse the SR sender
+// info and store the values.
 //
 // The function returns the following values:
 //
@@ -5423,7 +5717,8 @@ func (packet *RTCPPacket) SrGetSenderInfo() (ssrc uint32, ntptime uint64, rtptim
 	return _ssrc, _ntptime, _rtptime, _packetCount, _octetCount
 }
 
-// SrSetSenderInfo: set the given values in the SR packet packet.
+// SrSetSenderInfo (gst_rtcp_packet_sr_set_sender_info): set the given values in
+// the SR packet packet.
 //
 // The function takes the following parameters:
 //
@@ -5456,7 +5751,8 @@ func (packet *RTCPPacket) SrSetSenderInfo(ssrc uint32, ntptime uint64, rtptime u
 	runtime.KeepAlive(octetCount)
 }
 
-// XRFirstRb: move to the first extended report block in XR packet.
+// XRFirstRb (gst_rtcp_packet_xr_first_rb): move to the first extended report
+// block in XR packet.
 //
 // The function returns the following values:
 //
@@ -5499,7 +5795,8 @@ func (packet *RTCPPacket) XRGetBlockLength() uint16 {
 	return _guint16
 }
 
-// XRGetBlockType: get the extended report block type of the XR packet.
+// XRGetBlockType (gst_rtcp_packet_xr_get_block_type): get the extended report
+// block type of the XR packet.
 //
 // The function returns the following values:
 //
@@ -5520,7 +5817,8 @@ func (packet *RTCPPacket) XRGetBlockType() RTCPXRType {
 	return _rtcpxrType
 }
 
-// XRGetDlrrBlock: parse the extended report block for DLRR report block type.
+// XRGetDlrrBlock (gst_rtcp_packet_xr_get_dlrr_block): parse the extended report
+// block for DLRR report block type.
 //
 // The function takes the following parameters:
 //
@@ -5562,8 +5860,8 @@ func (packet *RTCPPacket) XRGetDlrrBlock(nth uint, ssrc *uint32, lastRr *uint32,
 	return _ok
 }
 
-// XRGetPrtBySeq: retrieve the packet receipt time of seq which ranges in
-// [begin_seq, end_seq).
+// XRGetPrtBySeq (gst_rtcp_packet_xr_get_prt_by_seq): retrieve the packet
+// receipt time of seq which ranges in [begin_seq, end_seq).
 //
 // The function takes the following parameters:
 //
@@ -5597,7 +5895,8 @@ func (packet *RTCPPacket) XRGetPrtBySeq(seq uint16, receiptTime *uint32) bool {
 	return _ok
 }
 
-// XRGetPrtInfo: parse the Packet Recept Times Report Block from a XR packet.
+// XRGetPrtInfo (gst_rtcp_packet_xr_get_prt_info): parse the Packet Recept Times
+// Report Block from a XR packet.
 //
 // The function takes the following parameters:
 //
@@ -5640,8 +5939,8 @@ func (packet *RTCPPacket) XRGetPrtInfo(ssrc *uint32, thinning *byte, beginSeq *u
 	return _ok
 }
 
-// XRGetRLEInfo: parse the extended report block for Loss RLE and Duplicated LRE
-// block type.
+// XRGetRLEInfo (gst_rtcp_packet_xr_get_rle_info): parse the extended report
+// block for Loss RLE and Duplicated LRE block type.
 //
 // The function takes the following parameters:
 //
@@ -5688,7 +5987,8 @@ func (packet *RTCPPacket) XRGetRLEInfo(ssrc *uint32, thinning *byte, beginSeq *u
 	return _ok
 }
 
-// XRGetRLENthChunk: retrieve actual chunk data.
+// XRGetRLENthChunk (gst_rtcp_packet_xr_get_rle_nth_chunk): retrieve actual
+// chunk data.
 //
 // The function takes the following parameters:
 //
@@ -5750,7 +6050,7 @@ func (packet *RTCPPacket) XRGetRrt(timestamp *uint64) bool {
 	return _ok
 }
 
-// XRGetSsrc: get the ssrc field of the XR packet.
+// XRGetSsrc (gst_rtcp_packet_xr_get_ssrc): get the ssrc field of the XR packet.
 //
 // The function returns the following values:
 //
@@ -5771,8 +6071,8 @@ func (packet *RTCPPacket) XRGetSsrc() uint32 {
 	return _guint32
 }
 
-// XRGetSummaryInfo: extract a basic information from static summary report
-// block of XR packet.
+// XRGetSummaryInfo (gst_rtcp_packet_xr_get_summary_info): extract a basic
+// information from static summary report block of XR packet.
 //
 // The function takes the following parameters:
 //
@@ -5810,9 +6110,9 @@ func (packet *RTCPPacket) XRGetSummaryInfo(ssrc *uint32, beginSeq *uint16, endSe
 	return _ok
 }
 
-// XRGetSummaryJitter: extract jitter information from the statistics summary.
-// If the jitter flag in a block header is set as zero, all of jitters will be
-// zero.
+// XRGetSummaryJitter (gst_rtcp_packet_xr_get_summary_jitter): extract jitter
+// information from the statistics summary. If the jitter flag in a block header
+// is set as zero, all of jitters will be zero.
 //
 // The function takes the following parameters:
 //
@@ -5855,8 +6155,9 @@ func (packet *RTCPPacket) XRGetSummaryJitter(minJitter *uint32, maxJitter *uint3
 	return _ok
 }
 
-// XRGetSummaryPkt: get the number of lost or duplicate packets. If the flag in
-// a block header is set as zero, lost_packets or dup_packets will be zero.
+// XRGetSummaryPkt (gst_rtcp_packet_xr_get_summary_pkt): get the number of
+// lost or duplicate packets. If the flag in a block header is set as zero,
+// lost_packets or dup_packets will be zero.
 //
 // The function takes the following parameters:
 //
@@ -6174,7 +6475,8 @@ func (packet *RTCPPacket) XRGetVoipSignalMetrics(signalLevel *byte, noiseLevel *
 	return _ok
 }
 
-// XRNextRb: move to the next extended report block in XR packet.
+// XRNextRb (gst_rtcp_packet_xr_next_rb): move to the next extended report block
+// in XR packet.
 //
 // The function returns the following values:
 //
@@ -6197,7 +6499,8 @@ func (packet *RTCPPacket) XRNextRb() bool {
 	return _ok
 }
 
-// RTPBaseAudioPayloadClass: base class for audio RTP payloader.
+// RTPBaseAudioPayloadClass (GstRTPBaseAudioPayloadClass): base class for audio
+// RTP payloader.
 //
 // An instance of this type is always passed by reference.
 type RTPBaseAudioPayloadClass struct {
@@ -6217,7 +6520,8 @@ func (r *RTPBaseAudioPayloadClass) ParentClass() *RTPBasePayloadClass {
 	return _v
 }
 
-// RTPBaseDepayloadClass: base class for RTP depayloaders.
+// RTPBaseDepayloadClass (GstRTPBaseDepayloadClass): base class for RTP
+// depayloaders.
 //
 // An instance of this type is always passed by reference.
 type RTPBaseDepayloadClass struct {
@@ -6237,7 +6541,8 @@ func (r *RTPBaseDepayloadClass) ParentClass() *gst.ElementClass {
 	return _v
 }
 
-// RTPBasePayloadClass: base class for audio RTP payloader.
+// RTPBasePayloadClass (GstRTPBasePayloadClass): base class for audio RTP
+// payloader.
 //
 // An instance of this type is always passed by reference.
 type RTPBasePayloadClass struct {
@@ -6257,9 +6562,9 @@ func (r *RTPBasePayloadClass) ParentClass() *gst.ElementClass {
 	return _v
 }
 
-// RTPBuffer helper functions makes it easy to parse and create regular
-// Buffer objects that contain RTP payloads. These buffers are typically of
-// 'application/x-rtp' Caps.
+// RTPBuffer (GstRTPBuffer) helper functions makes it easy to parse and create
+// regular Buffer objects that contain RTP payloads. These buffers are typically
+// of 'application/x-rtp' Caps.
 //
 // An instance of this type is always passed by reference.
 type RTPBuffer struct {
@@ -6332,13 +6637,14 @@ func (r *RTPBuffer) SetState(state uint) {
 	*valptr = C.guint(state)
 }
 
-// AddExtensionOnebyteHeader adds a RFC 5285 header extension with a one byte
-// header to the end of the RTP header. If there is already a RFC 5285 header
-// extension with a one byte header, the new extension will be appended.
-// It will not work if there is already a header extension that does not
-// follow the mechanism described in RFC 5285 or if there is a header
-// extension with a two bytes header as described in RFC 5285. In that case,
-// use gst_rtp_buffer_add_extension_twobytes_header().
+// AddExtensionOnebyteHeader (gst_rtp_buffer_add_extension_onebyte_header)
+// adds a RFC 5285 header extension with a one byte header to the end
+// of the RTP header. If there is already a RFC 5285 header extension
+// with a one byte header, the new extension will be appended. It will
+// not work if there is already a header extension that does not follow
+// the mechanism described in RFC 5285 or if there is a header extension
+// with a two bytes header as described in RFC 5285. In that case, use
+// gst_rtp_buffer_add_extension_twobytes_header().
 //
 // The function takes the following parameters:
 //
@@ -6376,13 +6682,14 @@ func (rtp *RTPBuffer) AddExtensionOnebyteHeader(id byte, data []byte) bool {
 	return _ok
 }
 
-// AddExtensionTwobytesHeader adds a RFC 5285 header extension with a two bytes
-// header to the end of the RTP header. If there is already a RFC 5285 header
-// extension with a two bytes header, the new extension will be appended.
-// It will not work if there is already a header extension that does not
-// follow the mechanism described in RFC 5285 or if there is a header
-// extension with a one byte header as described in RFC 5285. In that case,
-// use gst_rtp_buffer_add_extension_onebyte_header().
+// AddExtensionTwobytesHeader (gst_rtp_buffer_add_extension_twobytes_header)
+// adds a RFC 5285 header extension with a two bytes header to the end
+// of the RTP header. If there is already a RFC 5285 header extension
+// with a two bytes header, the new extension will be appended. It will
+// not work if there is already a header extension that does not follow
+// the mechanism described in RFC 5285 or if there is a header extension
+// with a one byte header as described in RFC 5285. In that case, use
+// gst_rtp_buffer_add_extension_onebyte_header().
 //
 // The function takes the following parameters:
 //
@@ -6424,7 +6731,7 @@ func (rtp *RTPBuffer) AddExtensionTwobytesHeader(appbits byte, id byte, data []b
 	return _ok
 }
 
-// Csrc: get the CSRC at index idx in buffer.
+// Csrc (gst_rtp_buffer_get_csrc): get the CSRC at index idx in buffer.
 //
 // The function takes the following parameters:
 //
@@ -6452,7 +6759,8 @@ func (rtp *RTPBuffer) Csrc(idx byte) uint32 {
 	return _guint32
 }
 
-// CsrcCount: get the CSRC count of the RTP packet in buffer.
+// CsrcCount (gst_rtp_buffer_get_csrc_count): get the CSRC count of the RTP
+// packet in buffer.
 //
 // The function returns the following values:
 //
@@ -6473,7 +6781,8 @@ func (rtp *RTPBuffer) CsrcCount() byte {
 	return _guint8
 }
 
-// Extension: check if the extension bit is set on the RTP packet in buffer.
+// Extension (gst_rtp_buffer_get_extension): check if the extension bit is set
+// on the RTP packet in buffer.
 //
 // The function returns the following values:
 //
@@ -6496,10 +6805,11 @@ func (rtp *RTPBuffer) Extension() bool {
 	return _ok
 }
 
-// ExtensionData: similar to gst_rtp_buffer_get_extension_data, but more
-// suitable for language bindings usage. bits will contain the extension 16 bits
-// of custom data and the extension data (not including the extension header) is
-// placed in a new #GBytes structure.
+// ExtensionData (gst_rtp_buffer_get_extension_bytes): similar to
+// gst_rtp_buffer_get_extension_data, but more suitable for language bindings
+// usage. bits will contain the extension 16 bits of custom data and the
+// extension data (not including the extension header) is placed in a new
+// #GBytes structure.
 //
 // If rtp did not contain an extension, this function will return NULL, with
 // bits unchanged. If there is an extension header but no extension data then an
@@ -6537,8 +6847,9 @@ func (rtp *RTPBuffer) ExtensionData() (uint16, *glib.Bytes) {
 	return _bits, _bytes
 }
 
-// ExtensionOnebyteHeader parses RFC 5285 style header extensions with a one
-// byte header. It will return the nth extension with the requested id.
+// ExtensionOnebyteHeader (gst_rtp_buffer_get_extension_onebyte_header) parses
+// RFC 5285 style header extensions with a one byte header. It will return the
+// nth extension with the requested id.
 //
 // The function takes the following parameters:
 //
@@ -6578,8 +6889,9 @@ func (rtp *RTPBuffer) ExtensionOnebyteHeader(id byte, nth uint) ([]byte, bool) {
 	return _data, _ok
 }
 
-// ExtensionTwobytesHeader parses RFC 5285 style header extensions with a two
-// bytes header. It will return the nth extension with the requested id.
+// ExtensionTwobytesHeader (gst_rtp_buffer_get_extension_twobytes_header) parses
+// RFC 5285 style header extensions with a two bytes header. It will return the
+// nth extension with the requested id.
 //
 // The function takes the following parameters:
 //
@@ -6623,8 +6935,9 @@ func (rtp *RTPBuffer) ExtensionTwobytesHeader(id byte, nth uint) (byte, []byte, 
 	return _appbits, _data, _ok
 }
 
-// HeaderLen: return the total length of the header in buffer. This include the
-// length of the fixed header, the CSRC list and the extension header.
+// HeaderLen (gst_rtp_buffer_get_header_len): return the total length of the
+// header in buffer. This include the length of the fixed header, the CSRC list
+// and the extension header.
 //
 // The function returns the following values:
 //
@@ -6645,7 +6958,8 @@ func (rtp *RTPBuffer) HeaderLen() uint {
 	return _guint
 }
 
-// Marker: check if the marker bit is set on the RTP packet in buffer.
+// Marker (gst_rtp_buffer_get_marker): check if the marker bit is set on the RTP
+// packet in buffer.
 //
 // The function returns the following values:
 //
@@ -6668,7 +6982,8 @@ func (rtp *RTPBuffer) Marker() bool {
 	return _ok
 }
 
-// PacketLen: return the total length of the packet in buffer.
+// PacketLen (gst_rtp_buffer_get_packet_len): return the total length of the
+// packet in buffer.
 //
 // The function returns the following values:
 //
@@ -6689,7 +7004,8 @@ func (rtp *RTPBuffer) PacketLen() uint {
 	return _guint
 }
 
-// Padding: check if the padding bit is set on the RTP packet in buffer.
+// Padding (gst_rtp_buffer_get_padding): check if the padding bit is set on the
+// RTP packet in buffer.
 //
 // The function returns the following values:
 //
@@ -6712,9 +7028,9 @@ func (rtp *RTPBuffer) Padding() bool {
 	return _ok
 }
 
-// PayloadBuffer: create a buffer of the payload of the RTP packet in buffer.
-// This function will internally create a subbuffer of buffer so that a memcpy
-// can be avoided.
+// PayloadBuffer (gst_rtp_buffer_get_payload_buffer): create a buffer of the
+// payload of the RTP packet in buffer. This function will internally create a
+// subbuffer of buffer so that a memcpy can be avoided.
 //
 // The function returns the following values:
 //
@@ -6740,9 +7056,10 @@ func (rtp *RTPBuffer) PayloadBuffer() *gst.Buffer {
 	return _buffer
 }
 
-// Payload: similar to gst_rtp_buffer_get_payload, but more suitable for
-// language bindings usage. The return value is a pointer to a #GBytes structure
-// containing the payload data in rtp.
+// Payload (gst_rtp_buffer_get_payload_bytes): similar to
+// gst_rtp_buffer_get_payload, but more suitable for language bindings usage.
+// The return value is a pointer to a #GBytes structure containing the payload
+// data in rtp.
 //
 // The function returns the following values:
 //
@@ -6771,7 +7088,8 @@ func (rtp *RTPBuffer) Payload() *glib.Bytes {
 	return _bytes
 }
 
-// PayloadLen: get the length of the payload of the RTP packet in buffer.
+// PayloadLen (gst_rtp_buffer_get_payload_len): get the length of the payload of
+// the RTP packet in buffer.
 //
 // The function returns the following values:
 //
@@ -6792,9 +7110,10 @@ func (rtp *RTPBuffer) PayloadLen() uint {
 	return _guint
 }
 
-// PayloadSubbuffer: create a subbuffer of the payload of the RTP packet in
-// buffer. offset bytes are skipped in the payload and the subbuffer will be of
-// size len. If len is -1 the total payload starting from offset is subbuffered.
+// PayloadSubbuffer (gst_rtp_buffer_get_payload_subbuffer): create a subbuffer
+// of the payload of the RTP packet in buffer. offset bytes are skipped in the
+// payload and the subbuffer will be of size len. If len is -1 the total payload
+// starting from offset is subbuffered.
 //
 // The function takes the following parameters:
 //
@@ -6831,7 +7150,8 @@ func (rtp *RTPBuffer) PayloadSubbuffer(offset uint, len uint) *gst.Buffer {
 	return _buffer
 }
 
-// PayloadType: get the payload type of the RTP packet in buffer.
+// PayloadType (gst_rtp_buffer_get_payload_type): get the payload type of the
+// RTP packet in buffer.
 //
 // The function returns the following values:
 //
@@ -6852,7 +7172,8 @@ func (rtp *RTPBuffer) PayloadType() byte {
 	return _guint8
 }
 
-// Seq: get the sequence number of the RTP packet in buffer.
+// Seq (gst_rtp_buffer_get_seq): get the sequence number of the RTP packet in
+// buffer.
 //
 // The function returns the following values:
 //
@@ -6873,7 +7194,7 @@ func (rtp *RTPBuffer) Seq() uint16 {
 	return _guint16
 }
 
-// Ssrc: get the SSRC of the RTP packet in buffer.
+// Ssrc (gst_rtp_buffer_get_ssrc): get the SSRC of the RTP packet in buffer.
 //
 // The function returns the following values:
 //
@@ -6894,7 +7215,8 @@ func (rtp *RTPBuffer) Ssrc() uint32 {
 	return _guint32
 }
 
-// Timestamp: get the timestamp of the RTP packet in buffer.
+// Timestamp (gst_rtp_buffer_get_timestamp): get the timestamp of the RTP packet
+// in buffer.
 //
 // The function returns the following values:
 //
@@ -6915,7 +7237,8 @@ func (rtp *RTPBuffer) Timestamp() uint32 {
 	return _guint32
 }
 
-// Version: get the version number of the RTP packet in buffer.
+// Version (gst_rtp_buffer_get_version): get the version number of the RTP
+// packet in buffer.
 //
 // The function returns the following values:
 //
@@ -6936,8 +7259,8 @@ func (rtp *RTPBuffer) Version() byte {
 	return _guint8
 }
 
-// PadTo: set the amount of padding in the RTP packet in buffer to len. If len
-// is 0, the padding is removed.
+// PadTo (gst_rtp_buffer_pad_to): set the amount of padding in the RTP packet in
+// buffer to len. If len is 0, the padding is removed.
 //
 // NOTE: This function does not work correctly.
 //
@@ -6956,8 +7279,8 @@ func (rtp *RTPBuffer) PadTo(len uint) {
 	runtime.KeepAlive(len)
 }
 
-// RemoveExtensionData unsets the extension bit of the RTP buffer and removes
-// the extension header and data.
+// RemoveExtensionData (gst_rtp_buffer_remove_extension_data) unsets the
+// extension bit of the RTP buffer and removes the extension header and data.
 //
 // If the RTP buffer has no header extension data, the action has no effect. The
 // RTP buffer must be mapped READWRITE only once and the underlying GstBuffer
@@ -6971,7 +7294,8 @@ func (rtp *RTPBuffer) RemoveExtensionData() {
 	runtime.KeepAlive(rtp)
 }
 
-// SetCsrc: modify the CSRC at index idx in buffer to csrc.
+// SetCsrc (gst_rtp_buffer_set_csrc): modify the CSRC at index idx in buffer to
+// csrc.
 //
 // The function takes the following parameters:
 //
@@ -6992,7 +7316,8 @@ func (rtp *RTPBuffer) SetCsrc(idx byte, csrc uint32) {
 	runtime.KeepAlive(csrc)
 }
 
-// SetExtension: set the extension bit on the RTP packet in buffer to extension.
+// SetExtension (gst_rtp_buffer_set_extension): set the extension bit on the RTP
+// packet in buffer to extension.
 //
 // The function takes the following parameters:
 //
@@ -7011,9 +7336,9 @@ func (rtp *RTPBuffer) SetExtension(extension bool) {
 	runtime.KeepAlive(extension)
 }
 
-// SetExtensionData: set the extension bit of the rtp buffer and fill in the
-// bits and length of the extension header. If the existing extension data is
-// not large enough, it will be made larger.
+// SetExtensionData (gst_rtp_buffer_set_extension_data): set the extension bit
+// of the rtp buffer and fill in the bits and length of the extension header.
+// If the existing extension data is not large enough, it will be made larger.
 //
 // Will also shorten the extension data from 1.20.
 //
@@ -7050,7 +7375,8 @@ func (rtp *RTPBuffer) SetExtensionData(bits uint16, length uint16) bool {
 	return _ok
 }
 
-// SetMarker: set the marker bit on the RTP packet in buffer to marker.
+// SetMarker (gst_rtp_buffer_set_marker): set the marker bit on the RTP packet
+// in buffer to marker.
 //
 // The function takes the following parameters:
 //
@@ -7069,8 +7395,9 @@ func (rtp *RTPBuffer) SetMarker(marker bool) {
 	runtime.KeepAlive(marker)
 }
 
-// SetPacketLen: set the total rtp size to len. The data in the buffer will be
-// made larger if needed. Any padding will be removed from the packet.
+// SetPacketLen (gst_rtp_buffer_set_packet_len): set the total rtp size to len.
+// The data in the buffer will be made larger if needed. Any padding will be
+// removed from the packet.
 //
 // The function takes the following parameters:
 //
@@ -7087,7 +7414,8 @@ func (rtp *RTPBuffer) SetPacketLen(len uint) {
 	runtime.KeepAlive(len)
 }
 
-// SetPadding: set the padding bit on the RTP packet in buffer to padding.
+// SetPadding (gst_rtp_buffer_set_padding): set the padding bit on the RTP
+// packet in buffer to padding.
 //
 // The function takes the following parameters:
 //
@@ -7106,8 +7434,8 @@ func (rtp *RTPBuffer) SetPadding(padding bool) {
 	runtime.KeepAlive(padding)
 }
 
-// SetPayloadType: set the payload type of the RTP packet in buffer to
-// payload_type.
+// SetPayloadType (gst_rtp_buffer_set_payload_type): set the payload type of the
+// RTP packet in buffer to payload_type.
 //
 // The function takes the following parameters:
 //
@@ -7124,7 +7452,8 @@ func (rtp *RTPBuffer) SetPayloadType(payloadType byte) {
 	runtime.KeepAlive(payloadType)
 }
 
-// SetSeq: set the sequence number of the RTP packet in buffer to seq.
+// SetSeq (gst_rtp_buffer_set_seq): set the sequence number of the RTP packet in
+// buffer to seq.
 //
 // The function takes the following parameters:
 //
@@ -7141,7 +7470,8 @@ func (rtp *RTPBuffer) SetSeq(seq uint16) {
 	runtime.KeepAlive(seq)
 }
 
-// SetSsrc: set the SSRC on the RTP packet in buffer to ssrc.
+// SetSsrc (gst_rtp_buffer_set_ssrc): set the SSRC on the RTP packet in buffer
+// to ssrc.
 //
 // The function takes the following parameters:
 //
@@ -7158,7 +7488,8 @@ func (rtp *RTPBuffer) SetSsrc(ssrc uint32) {
 	runtime.KeepAlive(ssrc)
 }
 
-// SetTimestamp: set the timestamp of the RTP packet in buffer to timestamp.
+// SetTimestamp (gst_rtp_buffer_set_timestamp): set the timestamp of the RTP
+// packet in buffer to timestamp.
 //
 // The function takes the following parameters:
 //
@@ -7175,7 +7506,8 @@ func (rtp *RTPBuffer) SetTimestamp(timestamp uint32) {
 	runtime.KeepAlive(timestamp)
 }
 
-// SetVersion: set the version of the RTP packet in buffer to version.
+// SetVersion (gst_rtp_buffer_set_version): set the version of the RTP packet in
+// buffer to version.
 //
 // The function takes the following parameters:
 //
@@ -7192,7 +7524,7 @@ func (rtp *RTPBuffer) SetVersion(version byte) {
 	runtime.KeepAlive(version)
 }
 
-// Unmap rtp previously mapped with gst_rtp_buffer_map().
+// Unmap (gst_rtp_buffer_unmap) rtp previously mapped with gst_rtp_buffer_map().
 func (rtp *RTPBuffer) Unmap() {
 	var _arg0 *C.GstRTPBuffer // out
 
@@ -7202,11 +7534,11 @@ func (rtp *RTPBuffer) Unmap() {
 	runtime.KeepAlive(rtp)
 }
 
-// RTPBufferAllocateData: allocate enough data in buffer to hold an RTP packet
-// with csrc_count CSRCs, a payload length of payload_len and padding of
-// pad_len. buffer must be writable and all previous memory in buffer will be
-// freed. If pad_len is >0, the padding bit will be set. All other RTP header
-// fields will be set to 0/FALSE.
+// RTPBufferAllocateData (gst_rtp_buffer_allocate_data): allocate enough data
+// in buffer to hold an RTP packet with csrc_count CSRCs, a payload length of
+// payload_len and padding of pad_len. buffer must be writable and all previous
+// memory in buffer will be freed. If pad_len is >0, the padding bit will be
+// set. All other RTP header fields will be set to 0/FALSE.
 //
 // The function takes the following parameters:
 //
@@ -7232,8 +7564,9 @@ func RTPBufferAllocateData(buffer *gst.Buffer, payloadLen uint, padLen, csrcCoun
 	runtime.KeepAlive(csrcCount)
 }
 
-// RTPBufferCalcHeaderLen: calculate the header length of an RTP packet with
-// csrc_count CSRC entries. An RTP packet can have at most 15 CSRC entries.
+// RTPBufferCalcHeaderLen (gst_rtp_buffer_calc_header_len): calculate the header
+// length of an RTP packet with csrc_count CSRC entries. An RTP packet can have
+// at most 15 CSRC entries.
 //
 // The function takes the following parameters:
 //
@@ -7258,9 +7591,9 @@ func RTPBufferCalcHeaderLen(csrcCount byte) uint {
 	return _guint
 }
 
-// RTPBufferCalcPacketLen: calculate the total length of an RTP packet with
-// a payload size of payload_len, a padding of pad_len and a csrc_count CSRC
-// entries.
+// RTPBufferCalcPacketLen (gst_rtp_buffer_calc_packet_len): calculate the total
+// length of an RTP packet with a payload size of payload_len, a padding of
+// pad_len and a csrc_count CSRC entries.
 //
 // The function takes the following parameters:
 //
@@ -7293,8 +7626,9 @@ func RTPBufferCalcPacketLen(payloadLen uint, padLen, csrcCount byte) uint {
 	return _guint
 }
 
-// RTPBufferCalcPayloadLen: calculate the length of the payload of an RTP packet
-// with size packet_len, a padding of pad_len and a csrc_count CSRC entries.
+// RTPBufferCalcPayloadLen (gst_rtp_buffer_calc_payload_len): calculate the
+// length of the payload of an RTP packet with size packet_len, a padding of
+// pad_len and a csrc_count CSRC entries.
 //
 // The function takes the following parameters:
 //
@@ -7327,9 +7661,9 @@ func RTPBufferCalcPayloadLen(packetLen uint, padLen, csrcCount byte) uint {
 	return _guint
 }
 
-// RTPBufferCompareSeqnum: compare two sequence numbers, taking care of
-// wraparounds. This function returns the difference between seqnum1 and
-// seqnum2.
+// RTPBufferCompareSeqnum (gst_rtp_buffer_compare_seqnum): compare two sequence
+// numbers, taking care of wraparounds. This function returns the difference
+// between seqnum1 and seqnum2.
 //
 // The function takes the following parameters:
 //
@@ -7359,8 +7693,8 @@ func RTPBufferCompareSeqnum(seqnum1, seqnum2 uint16) int {
 	return _gint
 }
 
-// RTPBufferDefaultClockRate: get the default clock-rate for the static payload
-// type payload_type.
+// RTPBufferDefaultClockRate (gst_rtp_buffer_default_clock_rate): get the
+// default clock-rate for the static payload type payload_type.
 //
 // The function takes the following parameters:
 //
@@ -7386,7 +7720,8 @@ func RTPBufferDefaultClockRate(payloadType byte) uint32 {
 	return _guint32
 }
 
-// RTPBufferGetExtensionOnebyteHeaderFromBytes: similar to
+// RTPBufferGetExtensionOnebyteHeaderFromBytes
+// (gst_rtp_buffer_get_extension_onebyte_header_from_bytes): similar to
 // gst_rtp_buffer_get_extension_onebyte_header, but working on the #GBytes you
 // get from gst_rtp_buffer_get_extension_bytes. Parses RFC 5285 style header
 // extensions with a one byte header. It will return the nth extension with the
@@ -7435,7 +7770,7 @@ func RTPBufferGetExtensionOnebyteHeaderFromBytes(bytes *glib.Bytes, bitPattern u
 	return _data, _ok
 }
 
-// RTPBufferMap: map the contents of buffer into rtp.
+// RTPBufferMap (gst_rtp_buffer_map): map the contents of buffer into rtp.
 //
 // The function takes the following parameters:
 //
@@ -7470,9 +7805,10 @@ func RTPBufferMap(buffer *gst.Buffer, flags gst.MapFlags) (*RTPBuffer, bool) {
 	return _rtp, _ok
 }
 
-// NewRTPBufferAllocate: allocate a new Buffer with enough data to hold an RTP
-// packet with csrc_count CSRCs, a payload length of payload_len and padding of
-// pad_len. All other RTP header fields will be set to 0/FALSE.
+// NewRTPBufferAllocate (gst_rtp_buffer_new_allocate): allocate a new Buffer
+// with enough data to hold an RTP packet with csrc_count CSRCs, a payload
+// length of payload_len and padding of pad_len. All other RTP header fields
+// will be set to 0/FALSE.
 //
 // The function takes the following parameters:
 //
@@ -7511,10 +7847,11 @@ func NewRTPBufferAllocate(payloadLen uint, padLen, csrcCount byte) *gst.Buffer {
 	return _buffer
 }
 
-// NewRTPBufferAllocateLen: create a new Buffer that can hold an RTP packet that
-// is exactly packet_len long. The length of the payload depends on pad_len and
-// csrc_count and can be calculated with gst_rtp_buffer_calc_payload_len().
-// All RTP header fields will be set to 0/FALSE.
+// NewRTPBufferAllocateLen (gst_rtp_buffer_new_allocate_len): create a new
+// Buffer that can hold an RTP packet that is exactly packet_len long. The
+// length of the payload depends on pad_len and csrc_count and can be calculated
+// with gst_rtp_buffer_calc_payload_len(). All RTP header fields will be set to
+// 0/FALSE.
 //
 // The function takes the following parameters:
 //
@@ -7552,9 +7889,9 @@ func NewRTPBufferAllocateLen(packetLen uint, padLen, csrcCount byte) *gst.Buffer
 	return _buffer
 }
 
-// NewRTPBufferCopyData: create a new buffer and set the data to a copy of len
-// bytes of data and the size to len. The data will be freed when the buffer is
-// freed.
+// NewRTPBufferCopyData (gst_rtp_buffer_new_copy_data): create a new buffer and
+// set the data to a copy of len bytes of data and the size to len. The data
+// will be freed when the buffer is freed.
 //
 // The function takes the following parameters:
 //
@@ -7588,9 +7925,10 @@ func NewRTPBufferCopyData(data []byte) *gst.Buffer {
 	return _buffer
 }
 
-// NewRTPBufferTakeData: create a new buffer and set the data and size of the
-// buffer to data and len respectively. data will be freed when the buffer is
-// unreffed, so this function transfers ownership of data to the new buffer.
+// NewRTPBufferTakeData (gst_rtp_buffer_new_take_data): create a new buffer and
+// set the data and size of the buffer to data and len respectively. data will
+// be freed when the buffer is unreffed, so this function transfers ownership of
+// data to the new buffer.
 //
 // The function takes the following parameters:
 //
@@ -7623,7 +7961,8 @@ func NewRTPBufferTakeData(data []byte) *gst.Buffer {
 	return _buffer
 }
 
-// RTPHeaderExtensionClass: base class for RTP Header extensions.
+// RTPHeaderExtensionClass (GstRTPHeaderExtensionClass): base class for RTP
+// Header extensions.
 //
 // An instance of this type is always passed by reference.
 type RTPHeaderExtensionClass struct {
@@ -7643,7 +7982,8 @@ func (r *RTPHeaderExtensionClass) ParentClass() *gst.ElementClass {
 	return _v
 }
 
-// SetURI: set the URI for this RTP header extension implementation.
+// SetURI (gst_rtp_header_extension_class_set_uri): set the URI for this RTP
+// header extension implementation.
 //
 // The function takes the following parameters:
 //
@@ -7661,7 +8001,8 @@ func (klass *RTPHeaderExtensionClass) SetURI(uri string) {
 	runtime.KeepAlive(uri)
 }
 
-// RTPPayloadInfo: structure holding default payload type information.
+// RTPPayloadInfo (GstRTPPayloadInfo): structure holding default payload type
+// information.
 //
 // An instance of this type is always passed by reference.
 type RTPPayloadInfo struct {
@@ -7741,9 +8082,10 @@ func (r *RTPPayloadInfo) SetBitrate(bitrate uint) {
 	*valptr = C.guint(bitrate)
 }
 
-// RTPPayloadInfoForName: get the RTPPayloadInfo for media and encoding_name.
-// This function is mostly used to get the default clock-rate and bandwidth for
-// dynamic payload types specified with media and encoding name.
+// RTPPayloadInfoForName (gst_rtp_payload_info_for_name): get the RTPPayloadInfo
+// for media and encoding_name. This function is mostly used to get the default
+// clock-rate and bandwidth for dynamic payload types specified with media and
+// encoding name.
 //
 // The search for encoding_name will be performed in a case insensitive way.
 //
@@ -7778,9 +8120,9 @@ func RTPPayloadInfoForName(media, encodingName string) *RTPPayloadInfo {
 	return _rtpPayloadInfo
 }
 
-// RTPPayloadInfoForPt: get the RTPPayloadInfo for payload_type. This function
-// is mostly used to get the default clock-rate and bandwidth for static payload
-// types specified with payload_type.
+// RTPPayloadInfoForPt (gst_rtp_payload_info_for_pt): get the RTPPayloadInfo for
+// payload_type. This function is mostly used to get the default clock-rate and
+// bandwidth for static payload types specified with payload_type.
 //
 // The function takes the following parameters:
 //
@@ -7807,7 +8149,8 @@ func RTPPayloadInfoForPt(payloadType byte) *RTPPayloadInfo {
 	return _rtpPayloadInfo
 }
 
-// RTPSourceMeta: meta describing the source(s) of the buffer.
+// RTPSourceMeta (GstRTPSourceMeta): meta describing the source(s) of the
+// buffer.
 //
 // An instance of this type is always passed by reference.
 type RTPSourceMeta struct {
@@ -7875,7 +8218,8 @@ func (r *RTPSourceMeta) SetCsrcCount(csrcCount uint) {
 	*valptr = C.guint(csrcCount)
 }
 
-// AppendCsrc appends csrc to the list of contributing sources in meta.
+// AppendCsrc (gst_rtp_source_meta_append_csrc) appends csrc to the list of
+// contributing sources in meta.
 //
 // The function takes the following parameters:
 //
@@ -7909,8 +8253,8 @@ func (meta *RTPSourceMeta) AppendCsrc(csrc []uint32) bool {
 	return _ok
 }
 
-// SourceCount: count the total number of RTP sources found in meta, both SSRC
-// and CSRC.
+// SourceCount (gst_rtp_source_meta_get_source_count): count the total number of
+// RTP sources found in meta, both SSRC and CSRC.
 //
 // The function returns the following values:
 //
@@ -7931,7 +8275,8 @@ func (meta *RTPSourceMeta) SourceCount() uint {
 	return _guint
 }
 
-// SetSsrc sets ssrc in meta. If ssrc is NULL the ssrc of meta will be unset.
+// SetSsrc (gst_rtp_source_meta_set_ssrc) sets ssrc in meta. If ssrc is NULL the
+// ssrc of meta will be unset.
 //
 // The function takes the following parameters:
 //

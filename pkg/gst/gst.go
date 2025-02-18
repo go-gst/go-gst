@@ -656,10 +656,12 @@ func init() {
 	})
 }
 
-// ALLOCATOR_SYSMEM: allocator name for the default system memory allocator.
+// ALLOCATOR_SYSMEM (GST_ALLOCATOR_SYSMEM): allocator name for the default
+// system memory allocator.
 const ALLOCATOR_SYSMEM = "SystemMemory"
 
-// BUFFER_OFFSET_NONE: constant for no-offset return results.
+// BUFFER_OFFSET_NONE (GST_BUFFER_OFFSET_NONE): constant for no-offset return
+// results.
 const BUFFER_OFFSET_NONE = 18446744073709551615
 const CAN_INLINE = 1
 const CAPS_FEATURE_MEMORY_SYSTEM_MEMORY = "memory:SystemMemory"
@@ -674,9 +676,10 @@ const ELEMENT_FACTORY_KLASS_ENCODER = "Encoder"
 const ELEMENT_FACTORY_KLASS_ENCRYPTOR = "Encryptor"
 const ELEMENT_FACTORY_KLASS_FORMATTER = "Formatter"
 
-// ELEMENT_FACTORY_KLASS_HARDWARE elements interacting with hardware devices
-// should specify this classifier in their metadata. You may need to put the
-// element in "READY" state to test if the hardware is present in the system.
+// ELEMENT_FACTORY_KLASS_HARDWARE (GST_ELEMENT_FACTORY_KLASS_HARDWARE) elements
+// interacting with hardware devices should specify this classifier in their
+// metadata. You may need to put the element in "READY" state to test if the
+// hardware is present in the system.
 const ELEMENT_FACTORY_KLASS_HARDWARE = "Hardware"
 const ELEMENT_FACTORY_KLASS_MEDIA_AUDIO = "Audio"
 const ELEMENT_FACTORY_KLASS_MEDIA_IMAGE = "Image"
@@ -689,127 +692,137 @@ const ELEMENT_FACTORY_KLASS_PAYLOADER = "Payloader"
 const ELEMENT_FACTORY_KLASS_SINK = "Sink"
 const ELEMENT_FACTORY_KLASS_SRC = "Source"
 
-// ELEMENT_METADATA_AUTHOR: name and contact details of the author(s).
-// Use \n to separate multiple author details. E.g: "Joe Bloggs &lt;joe.blogs at
-// foo.com&gt;".
+// ELEMENT_METADATA_AUTHOR (GST_ELEMENT_METADATA_AUTHOR): name and contact
+// details of the author(s). Use \n to separate multiple author details. E.g:
+// "Joe Bloggs &lt;joe.blogs at foo.com&gt;".
 const ELEMENT_METADATA_AUTHOR = "author"
 
-// ELEMENT_METADATA_DESCRIPTION: sentence describing the purpose of the element.
-// E.g: "Write stream to a file".
+// ELEMENT_METADATA_DESCRIPTION (GST_ELEMENT_METADATA_DESCRIPTION): sentence
+// describing the purpose of the element. E.g: "Write stream to a file".
 const ELEMENT_METADATA_DESCRIPTION = "description"
 
-// ELEMENT_METADATA_DOC_URI: set uri pointing to user documentation.
-// Applications can use this to show help for e.g. effects to users.
+// ELEMENT_METADATA_DOC_URI (GST_ELEMENT_METADATA_DOC_URI): set uri pointing
+// to user documentation. Applications can use this to show help for e.g.
+// effects to users.
 const ELEMENT_METADATA_DOC_URI = "doc-uri"
 
-// ELEMENT_METADATA_ICON_NAME elements that bridge to certain other products
-// can include an icon of that used product. Application can show the icon in
-// menus/selectors to help identifying specific elements.
+// ELEMENT_METADATA_ICON_NAME (GST_ELEMENT_METADATA_ICON_NAME) elements that
+// bridge to certain other products can include an icon of that used product.
+// Application can show the icon in menus/selectors to help identifying specific
+// elements.
 const ELEMENT_METADATA_ICON_NAME = "icon-name"
 
-// ELEMENT_METADATA_KLASS: string describing the type of element, as an
-// unordered list separated with slashes ('/'). See draft-klass.txt of the
-// design docs for more details and common types. E.g: "Sink/File".
+// ELEMENT_METADATA_KLASS (GST_ELEMENT_METADATA_KLASS): string describing
+// the type of element, as an unordered list separated with slashes ('/').
+// See draft-klass.txt of the design docs for more details and common types.
+// E.g: "Sink/File".
 const ELEMENT_METADATA_KLASS = "klass"
 
-// ELEMENT_METADATA_LONGNAME: long English name of the element. E.g. "File
-// Sink".
+// ELEMENT_METADATA_LONGNAME (GST_ELEMENT_METADATA_LONGNAME): long English name
+// of the element. E.g. "File Sink".
 const ELEMENT_METADATA_LONGNAME = "long-name"
 
-// ERROR_SYSTEM builds a string using errno describing the previously failed
-// system call. To be used as the debug argument in T_ELEMENT_ERROR.
+// ERROR_SYSTEM (GST_ERROR_SYSTEM) builds a string using errno describing
+// the previously failed system call. To be used as the debug argument in
+// T_ELEMENT_ERROR.
 const ERROR_SYSTEM = "system error: %s"
 const EVENT_NUM_SHIFT = 8
 
-// FLAG_SET_MASK_EXACT: mask value with all bits set, for use as a GstFlagSet
-// mask where all flag bits must match exactly.
+// FLAG_SET_MASK_EXACT (GST_FLAG_SET_MASK_EXACT): mask value with all bits set,
+// for use as a GstFlagSet mask where all flag bits must match exactly.
 const FLAG_SET_MASK_EXACT = 4294967295
 
-// FORMAT_PERCENT_MAX: PERCENT format is between 0 and this value.
+// FORMAT_PERCENT_MAX (GST_FORMAT_PERCENT_MAX): PERCENT format is between 0 and
+// this value.
 const FORMAT_PERCENT_MAX = 1000000
 
-// FORMAT_PERCENT_SCALE: value used to scale down the reported PERCENT format
-// value to its real value.
+// FORMAT_PERCENT_SCALE (GST_FORMAT_PERCENT_SCALE): value used to scale down the
+// reported PERCENT format value to its real value.
 const FORMAT_PERCENT_SCALE = 10000
 
-// FOURCC_FORMAT: can be used together with T_FOURCC_ARGS to properly output a
-// #guint32 fourcc value in a printf\()-style text message.
+// FOURCC_FORMAT (GST_FOURCC_FORMAT): can be used together with T_FOURCC_ARGS to
+// properly output a #guint32 fourcc value in a printf\()-style text message.
 //
 //	printf ("fourcc: %" GST_FOURCC_FORMAT "\n", GST_FOURCC_ARGS (fcc));.
 const FOURCC_FORMAT = "c%c%c%c"
 
-// GROUP_ID_INVALID: value which is guaranteed to never be returned by
-// gst_util_group_id_next().
+// GROUP_ID_INVALID (GST_GROUP_ID_INVALID): value which is guaranteed to never
+// be returned by gst_util_group_id_next().
 //
 // Can be used as a default value in variables used to store group_id.
 const GROUP_ID_INVALID = 0
 
-// LICENSE_UNKNOWN: to be used in GST_PLUGIN_DEFINE if unsure about the licence.
+// LICENSE_UNKNOWN (GST_LICENSE_UNKNOWN): to be used in GST_PLUGIN_DEFINE if
+// unsure about the licence.
 const LICENSE_UNKNOWN = "unknown"
 
-// META_TAG_MEMORY_REFERENCE_STR: this metadata stays relevant until a deep copy
-// is made.
+// META_TAG_MEMORY_REFERENCE_STR (GST_META_TAG_MEMORY_REFERENCE_STR): this
+// metadata stays relevant until a deep copy is made.
 const META_TAG_MEMORY_REFERENCE_STR = "memory-reference"
 
-// META_TAG_MEMORY_STR: this metadata stays relevant as long as memory layout is
-// unchanged. In hindsight, this tag should have been called "memory-layout".
+// META_TAG_MEMORY_STR (GST_META_TAG_MEMORY_STR): this metadata stays relevant
+// as long as memory layout is unchanged. In hindsight, this tag should have
+// been called "memory-layout".
 const META_TAG_MEMORY_STR = "memory"
 
-// PARAM_CONDITIONALLY_AVAILABLE: use this flag on GObject properties of
-// GstObject to indicate that they might not be available depending on
-// environment such as OS, device, etc, so such properties will be installed
-// conditionally only if the GstObject is able to support it.
+// PARAM_CONDITIONALLY_AVAILABLE (GST_PARAM_CONDITIONALLY_AVAILABLE):
+// use this flag on GObject properties of GstObject to indicate that they might
+// not be available depending on environment such as OS, device, etc, so such
+// properties will be installed conditionally only if the GstObject is able to
+// support it.
 const PARAM_CONDITIONALLY_AVAILABLE = 16384
 
-// PARAM_CONTROLLABLE: use this flag on GObject properties to signal they
-// can make sense to be. controlled over time. This hint is used by the
-// GstController.
+// PARAM_CONTROLLABLE (GST_PARAM_CONTROLLABLE): use this flag on GObject
+// properties to signal they can make sense to be. controlled over time.
+// This hint is used by the GstController.
 const PARAM_CONTROLLABLE = 512
 
-// PARAM_DOC_SHOW_DEFAULT: use this flag on GObject properties of GstObject to
-// indicate that during gst-inspect and friends, the default value should be
-// used as default instead of the current value.
+// PARAM_DOC_SHOW_DEFAULT (GST_PARAM_DOC_SHOW_DEFAULT): use this flag on GObject
+// properties of GstObject to indicate that during gst-inspect and friends,
+// the default value should be used as default instead of the current value.
 const PARAM_DOC_SHOW_DEFAULT = 8192
 
-// PARAM_MUTABLE_PAUSED: use this flag on GObject properties of GstElements to
-// indicate that they can be changed when the element is in the PAUSED or lower
-// state. This flag implies GST_PARAM_MUTABLE_READY.
+// PARAM_MUTABLE_PAUSED (GST_PARAM_MUTABLE_PAUSED): use this flag on
+// GObject properties of GstElements to indicate that they can be changed
+// when the element is in the PAUSED or lower state. This flag implies
+// GST_PARAM_MUTABLE_READY.
 const PARAM_MUTABLE_PAUSED = 2048
 
-// PARAM_MUTABLE_PLAYING: use this flag on GObject properties of GstElements to
-// indicate that they can be changed when the element is in the PLAYING or lower
-// state. This flag implies GST_PARAM_MUTABLE_PAUSED.
+// PARAM_MUTABLE_PLAYING (GST_PARAM_MUTABLE_PLAYING): use this flag on
+// GObject properties of GstElements to indicate that they can be changed
+// when the element is in the PLAYING or lower state. This flag implies
+// GST_PARAM_MUTABLE_PAUSED.
 const PARAM_MUTABLE_PLAYING = 4096
 
-// PARAM_MUTABLE_READY: use this flag on GObject properties of GstElements to
-// indicate that they can be changed when the element is in the READY or lower
-// state.
+// PARAM_MUTABLE_READY (GST_PARAM_MUTABLE_READY): use this flag on GObject
+// properties of GstElements to indicate that they can be changed when the
+// element is in the READY or lower state.
 const PARAM_MUTABLE_READY = 1024
 
-// PARAM_USER_SHIFT bits based on GST_PARAM_USER_SHIFT can be used by 3rd party
-// applications.
+// PARAM_USER_SHIFT (GST_PARAM_USER_SHIFT) bits based on GST_PARAM_USER_SHIFT
+// can be used by 3rd party applications.
 const PARAM_USER_SHIFT = 65536
 
-// PROTECTION_SYSTEM_ID_CAPS_FIELD: field name in a GstCaps that is used to
-// signal the UUID of the protection system.
+// PROTECTION_SYSTEM_ID_CAPS_FIELD (GST_PROTECTION_SYSTEM_ID_CAPS_FIELD): field
+// name in a GstCaps that is used to signal the UUID of the protection system.
 const PROTECTION_SYSTEM_ID_CAPS_FIELD = "protection-system"
 
-// PROTECTION_UNSPECIFIED_SYSTEM_ID: protection system value of the unspecified
-// UUID. In some cases the system protection ID is not present in the contents
-// or in their metadata, as encrypted WebM. This define is used to set the
-// value of the "system_id" field in GstProtectionEvent, with this value,
-// the application will use an external information to choose which protection
-// system to use.
+// PROTECTION_UNSPECIFIED_SYSTEM_ID (GST_PROTECTION_UNSPECIFIED_SYSTEM_ID):
+// protection system value of the unspecified UUID. In some cases the system
+// protection ID is not present in the contents or in their metadata, as
+// encrypted WebM. This define is used to set the value of the "system_id" field
+// in GstProtectionEvent, with this value, the application will use an external
+// information to choose which protection system to use.
 //
 // Example: The matroskademux uses this value in the case of encrypted WebM,
 // the application will choose the appropriate protection system based on the
 // information received through EME API.
 const PROTECTION_UNSPECIFIED_SYSTEM_ID = "unspecified-system-id"
 
-// PTR_FORMAT: printf format type used to debug GStreamer types. You can
-// use this in combination with GStreamer's debug logging system as well
-// as the functions gst_info_vasprintf(), gst_info_strdup_vprintf() and
-// gst_info_strdup_printf() to pretty-print the following types: Caps,
+// PTR_FORMAT (GST_PTR_FORMAT): printf format type used to debug GStreamer
+// types. You can use this in combination with GStreamer's debug logging system
+// as well as the functions gst_info_vasprintf(), gst_info_strdup_vprintf()
+// and gst_info_strdup_printf() to pretty-print the following types: Caps,
 // Structure, CapsFeatures, TagList, DateTime, Buffer, BufferList, Message,
 // Event, Query, Context, Pad, Object. All #GObject types will be printed as
 // typename plus pointer, and everything else will simply be printed as pointer
@@ -819,174 +832,189 @@ const PROTECTION_UNSPECIFIED_SYSTEM_ID = "unspecified-system-id"
 const PTR_FORMAT = "paA"
 const QUERY_NUM_SHIFT = 8
 
-// SEGMENT_FORMAT: printf format type used to debug GStreamer segments.
-// You can use this in combination with GStreamer's debug logging system as
-// well as the functions gst_info_vasprintf(), gst_info_strdup_vprintf() and
-// gst_info_strdup_printf() to pretty-print Segment structures. This can only be
-// used on pointers to GstSegment structures.
+// SEGMENT_FORMAT (GST_SEGMENT_FORMAT): printf format type used to debug
+// GStreamer segments. You can use this in combination with GStreamer's
+// debug logging system as well as the functions gst_info_vasprintf(),
+// gst_info_strdup_vprintf() and gst_info_strdup_printf() to pretty-print
+// Segment structures. This can only be used on pointers to GstSegment
+// structures.
 const SEGMENT_FORMAT = "paB"
 const SEGMENT_INSTANT_FLAGS = 912
 
-// SEQNUM_INVALID: value which is guaranteed to never be returned by
-// gst_util_seqnum_next().
+// SEQNUM_INVALID (GST_SEQNUM_INVALID): value which is guaranteed to never be
+// returned by gst_util_seqnum_next().
 //
 // Can be used as a default value in variables used to store seqnum.
 const SEQNUM_INVALID = 0
 
-// STIMEP_FORMAT: printf format type used to debug GStreamer signed time
-// value pointers. You can use this in combination with GStreamer's
+// STIMEP_FORMAT (GST_STIMEP_FORMAT): printf format type used to debug GStreamer
+// signed time value pointers. You can use this in combination with GStreamer's
 // debug logging system as well as the functions gst_info_vasprintf(),
 // gst_info_strdup_vprintf() and gst_info_strdup_printf() to pretty-print signed
 // time (pointers to ClockTimeDiff or #gint64).
 const STIMEP_FORMAT = "paS"
 
-// STIME_FORMAT: string that can be used in printf-like format strings to
-// display a signed ClockTimeDiff or #gint64 value in h:m:s format. Use
-// GST_TIME_ARGS() to construct the matching arguments.
+// STIME_FORMAT (GST_STIME_FORMAT): string that can be used in printf-like
+// format strings to display a signed ClockTimeDiff or #gint64 value in h:m:s
+// format. Use GST_TIME_ARGS() to construct the matching arguments.
 //
 // Example:
 //
 //	C printf("%" GST_STIME_FORMAT "\n", GST_STIME_ARGS(ts));.
 const STIME_FORMAT = "c%"
 
-// TAG_ALBUM: album containing this data (string)
+// TAG_ALBUM (GST_TAG_ALBUM): album containing this data (string)
 //
 // The album name as it should be displayed, e.g. 'The Jazz Guitar'.
 const TAG_ALBUM = "album"
 
-// TAG_ALBUM_ARTIST: artist of the entire album, as it should be displayed.
+// TAG_ALBUM_ARTIST (GST_TAG_ALBUM_ARTIST): artist of the entire album, as it
+// should be displayed.
 const TAG_ALBUM_ARTIST = "album-artist"
 
-// TAG_ALBUM_ARTIST_SORTNAME: artist of the entire album, as it should be
-// sorted.
+// TAG_ALBUM_ARTIST_SORTNAME (GST_TAG_ALBUM_ARTIST_SORTNAME): artist of the
+// entire album, as it should be sorted.
 const TAG_ALBUM_ARTIST_SORTNAME = "album-artist-sortname"
 
-// TAG_ALBUM_GAIN: album gain in db (double).
+// TAG_ALBUM_GAIN (GST_TAG_ALBUM_GAIN): album gain in db (double).
 const TAG_ALBUM_GAIN = "replaygain-album-gain"
 
-// TAG_ALBUM_PEAK: peak of the album (double).
+// TAG_ALBUM_PEAK (GST_TAG_ALBUM_PEAK): peak of the album (double).
 const TAG_ALBUM_PEAK = "replaygain-album-peak"
 
-// TAG_ALBUM_SORTNAME: album containing this data, as used for sorting (string)
+// TAG_ALBUM_SORTNAME (GST_TAG_ALBUM_SORTNAME): album containing this data,
+// as used for sorting (string)
 //
 // The album name as it should be sorted, e.g. 'Jazz Guitar, The'.
 const TAG_ALBUM_SORTNAME = "album-sortname"
 
-// TAG_ALBUM_VOLUME_COUNT: count of discs inside collection this disc belongs to
-// (unsigned integer).
+// TAG_ALBUM_VOLUME_COUNT (GST_TAG_ALBUM_VOLUME_COUNT): count of discs inside
+// collection this disc belongs to (unsigned integer).
 const TAG_ALBUM_VOLUME_COUNT = "album-disc-count"
 
-// TAG_ALBUM_VOLUME_NUMBER: disc number inside a collection (unsigned integer).
+// TAG_ALBUM_VOLUME_NUMBER (GST_TAG_ALBUM_VOLUME_NUMBER): disc number inside a
+// collection (unsigned integer).
 const TAG_ALBUM_VOLUME_NUMBER = "album-disc-number"
 
-// TAG_APPLICATION_DATA: arbitrary application data (sample)
+// TAG_APPLICATION_DATA (GST_TAG_APPLICATION_DATA): arbitrary application data
+// (sample)
 //
 // Some formats allow applications to add their own arbitrary data into files.
 // This data is application dependent.
 const TAG_APPLICATION_DATA = "application-data"
 
-// TAG_APPLICATION_NAME: name of the application used to create the media
-// (string).
+// TAG_APPLICATION_NAME (GST_TAG_APPLICATION_NAME): name of the application used
+// to create the media (string).
 const TAG_APPLICATION_NAME = "application-name"
 
-// TAG_ARTIST: person(s) responsible for the recording (string)
+// TAG_ARTIST (GST_TAG_ARTIST): person(s) responsible for the recording (string)
 //
 // The artist name as it should be displayed, e.g. 'Jimi Hendrix' or 'The Guitar
 // Heroes'.
 const TAG_ARTIST = "artist"
 
-// TAG_ARTIST_SORTNAME: person(s) responsible for the recording, as used for
-// sorting (string)
+// TAG_ARTIST_SORTNAME (GST_TAG_ARTIST_SORTNAME): person(s) responsible for the
+// recording, as used for sorting (string)
 //
 // The artist name as it should be sorted, e.g. 'Hendrix, Jimi' or 'Guitar
 // Heroes, The'.
 const TAG_ARTIST_SORTNAME = "artist-sortname"
 
-// TAG_ATTACHMENT: generic file attachment (sample) (sample taglist should
-// specify the content type and if possible set "filename" to the file name of
-// the attachment).
+// TAG_ATTACHMENT (GST_TAG_ATTACHMENT): generic file attachment (sample) (sample
+// taglist should specify the content type and if possible set "filename" to the
+// file name of the attachment).
 const TAG_ATTACHMENT = "attachment"
 
-// TAG_AUDIO_CODEC: codec the audio data is stored in (string).
+// TAG_AUDIO_CODEC (GST_TAG_AUDIO_CODEC): codec the audio data is stored in
+// (string).
 const TAG_AUDIO_CODEC = "audio-codec"
 
-// TAG_BEATS_PER_MINUTE: number of beats per minute in audio (double).
+// TAG_BEATS_PER_MINUTE (GST_TAG_BEATS_PER_MINUTE): number of beats per minute
+// in audio (double).
 const TAG_BEATS_PER_MINUTE = "beats-per-minute"
 
-// TAG_BITRATE: exact or average bitrate in bits/s (unsigned integer).
+// TAG_BITRATE (GST_TAG_BITRATE): exact or average bitrate in bits/s (unsigned
+// integer).
 const TAG_BITRATE = "bitrate"
 
-// TAG_CODEC: codec the data is stored in (string).
+// TAG_CODEC (GST_TAG_CODEC): codec the data is stored in (string).
 const TAG_CODEC = "codec"
 
-// TAG_COMMENT: free text commenting the data (string).
+// TAG_COMMENT (GST_TAG_COMMENT): free text commenting the data (string).
 const TAG_COMMENT = "comment"
 
-// TAG_COMPOSER: person(s) who composed the recording (string).
+// TAG_COMPOSER (GST_TAG_COMPOSER): person(s) who composed the recording
+// (string).
 const TAG_COMPOSER = "composer"
 
-// TAG_COMPOSER_SORTNAME composer's name, used for sorting (string).
+// TAG_COMPOSER_SORTNAME (GST_TAG_COMPOSER_SORTNAME) composer's name, used for
+// sorting (string).
 const TAG_COMPOSER_SORTNAME = "composer-sortname"
 
-// TAG_CONDUCTOR: conductor/performer refinement (string).
+// TAG_CONDUCTOR (GST_TAG_CONDUCTOR): conductor/performer refinement (string).
 const TAG_CONDUCTOR = "conductor"
 
-// TAG_CONTACT: contact information (string).
+// TAG_CONTACT (GST_TAG_CONTACT): contact information (string).
 const TAG_CONTACT = "contact"
 
-// TAG_CONTAINER_FORMAT: container format the data is stored in (string).
+// TAG_CONTAINER_FORMAT (GST_TAG_CONTAINER_FORMAT): container format the data is
+// stored in (string).
 const TAG_CONTAINER_FORMAT = "container-format"
 
-// TAG_CONTAINER_SPECIFIC_TRACK_ID: unique identifier for the audio,
-// video or text track this tag is associated with. The mappings
-// for several container formats are defined in the [Sourcing
-// In-band Media Resource Tracks from Media Containers into HTML
+// TAG_CONTAINER_SPECIFIC_TRACK_ID (GST_TAG_CONTAINER_SPECIFIC_TRACK_ID):
+// unique identifier for the audio, video or text track this tag is associated
+// with. The mappings for several container formats are defined in the
+// [Sourcing In-band Media Resource Tracks from Media Containers into HTML
 // specification](https://dev.w3.org/html5/html-sourcing-inband-tracks/).
 const TAG_CONTAINER_SPECIFIC_TRACK_ID = "container-specific-track-id"
 
-// TAG_COPYRIGHT: copyright notice of the data (string).
+// TAG_COPYRIGHT (GST_TAG_COPYRIGHT): copyright notice of the data (string).
 const TAG_COPYRIGHT = "copyright"
 
-// TAG_COPYRIGHT_URI: URI to location where copyright details can be found
-// (string).
+// TAG_COPYRIGHT_URI (GST_TAG_COPYRIGHT_URI): URI to location where copyright
+// details can be found (string).
 const TAG_COPYRIGHT_URI = "copyright-uri"
 
-// TAG_DATE: date the data was created (#GDate structure).
+// TAG_DATE (GST_TAG_DATE): date the data was created (#GDate structure).
 const TAG_DATE = "date"
 
-// TAG_DATE_TIME: date and time the data was created (DateTime structure).
+// TAG_DATE_TIME (GST_TAG_DATE_TIME): date and time the data was created
+// (DateTime structure).
 const TAG_DATE_TIME = "datetime"
 
-// TAG_DESCRIPTION: short text describing the content of the data (string).
+// TAG_DESCRIPTION (GST_TAG_DESCRIPTION): short text describing the content of
+// the data (string).
 const TAG_DESCRIPTION = "description"
 
-// TAG_DEVICE_MANUFACTURER: manufacturer of the device used to create the media
-// (string).
+// TAG_DEVICE_MANUFACTURER (GST_TAG_DEVICE_MANUFACTURER): manufacturer of the
+// device used to create the media (string).
 const TAG_DEVICE_MANUFACTURER = "device-manufacturer"
 
-// TAG_DEVICE_MODEL: model of the device used to create the media (string).
+// TAG_DEVICE_MODEL (GST_TAG_DEVICE_MODEL): model of the device used to create
+// the media (string).
 const TAG_DEVICE_MODEL = "device-model"
 
-// TAG_DURATION: length in GStreamer time units (nanoseconds) (unsigned 64-bit
-// integer).
+// TAG_DURATION (GST_TAG_DURATION): length in GStreamer time units (nanoseconds)
+// (unsigned 64-bit integer).
 const TAG_DURATION = "duration"
 
-// TAG_ENCODED_BY: name of the person or organisation that encoded the file.
-// May contain a copyright message if the person or organisation also holds the
-// copyright (string)
+// TAG_ENCODED_BY (GST_TAG_ENCODED_BY): name of the person or organisation
+// that encoded the file. May contain a copyright message if the person or
+// organisation also holds the copyright (string)
 //
 // Note: do not use this field to describe the encoding application. Use
 // T_TAG_APPLICATION_NAME or T_TAG_COMMENT for that.
 const TAG_ENCODED_BY = "encoded-by"
 
-// TAG_ENCODER: encoder used to encode this stream (string).
+// TAG_ENCODER (GST_TAG_ENCODER): encoder used to encode this stream (string).
 const TAG_ENCODER = "encoder"
 
-// TAG_ENCODER_VERSION: version of the encoder used to encode this stream
-// (unsigned integer).
+// TAG_ENCODER_VERSION (GST_TAG_ENCODER_VERSION): version of the encoder used to
+// encode this stream (unsigned integer).
 const TAG_ENCODER_VERSION = "encoder-version"
 
-// TAG_EXTENDED_COMMENT: key/value text commenting the data (string)
+// TAG_EXTENDED_COMMENT (GST_TAG_EXTENDED_COMMENT): key/value text commenting
+// the data (string)
 //
 // Must be in the form of 'key=comment' or 'key[lc]=comment' where 'lc' is an
 // ISO-639 language code.
@@ -995,84 +1023,90 @@ const TAG_ENCODER_VERSION = "encoder-version"
 // certain ID3v2 comment fields.
 const TAG_EXTENDED_COMMENT = "extended-comment"
 
-// TAG_GENRE: genre this data belongs to (string).
+// TAG_GENRE (GST_TAG_GENRE): genre this data belongs to (string).
 const TAG_GENRE = "genre"
 
-// TAG_GEO_LOCATION_CAPTURE_DIRECTION indicates the direction the device is
-// pointing to when capturing a media. It is represented as degrees in floating
-// point representation, 0 means the geographic north, and increases clockwise
-// (double from 0 to 360)
+// TAG_GEO_LOCATION_CAPTURE_DIRECTION (GST_TAG_GEO_LOCATION_CAPTURE_DIRECTION)
+// indicates the direction the device is pointing to when capturing a media.
+// It is represented as degrees in floating point representation, 0 means the
+// geographic north, and increases clockwise (double from 0 to 360)
 //
 // See also T_TAG_GEO_LOCATION_MOVEMENT_DIRECTION.
 const TAG_GEO_LOCATION_CAPTURE_DIRECTION = "geo-location-capture-direction"
 
-// TAG_GEO_LOCATION_CITY: city (english name) where the media has been produced
-// (string).
+// TAG_GEO_LOCATION_CITY (GST_TAG_GEO_LOCATION_CITY): city (english name) where
+// the media has been produced (string).
 const TAG_GEO_LOCATION_CITY = "geo-location-city"
 
-// TAG_GEO_LOCATION_COUNTRY: country (english name) where the media has been
-// produced (string).
+// TAG_GEO_LOCATION_COUNTRY (GST_TAG_GEO_LOCATION_COUNTRY): country (english
+// name) where the media has been produced (string).
 const TAG_GEO_LOCATION_COUNTRY = "geo-location-country"
 
-// TAG_GEO_LOCATION_ELEVATION: geo elevation of where the media has been
-// recorded or produced in meters according to WGS84 (zero is average sea level)
-// (double).
+// TAG_GEO_LOCATION_ELEVATION (GST_TAG_GEO_LOCATION_ELEVATION): geo elevation
+// of where the media has been recorded or produced in meters according to WGS84
+// (zero is average sea level) (double).
 const TAG_GEO_LOCATION_ELEVATION = "geo-location-elevation"
 
-// TAG_GEO_LOCATION_HORIZONTAL_ERROR represents the expected error on the
-// horizontal positioning in meters (double).
+// TAG_GEO_LOCATION_HORIZONTAL_ERROR (GST_TAG_GEO_LOCATION_HORIZONTAL_ERROR)
+// represents the expected error on the horizontal positioning in meters
+// (double).
 const TAG_GEO_LOCATION_HORIZONTAL_ERROR = "geo-location-horizontal-error"
 
-// TAG_GEO_LOCATION_LATITUDE: geo latitude location of where the media has been
-// recorded or produced in degrees according to WGS84 (zero at the equator,
-// negative values for southern latitudes) (double).
+// TAG_GEO_LOCATION_LATITUDE (GST_TAG_GEO_LOCATION_LATITUDE): geo latitude
+// location of where the media has been recorded or produced in degrees
+// according to WGS84 (zero at the equator, negative values for southern
+// latitudes) (double).
 const TAG_GEO_LOCATION_LATITUDE = "geo-location-latitude"
 
-// TAG_GEO_LOCATION_LONGITUDE: geo longitude location of where the media has
-// been recorded or produced in degrees according to WGS84 (zero at the prime
-// meridian in Greenwich/UK, negative values for western longitudes). (double).
+// TAG_GEO_LOCATION_LONGITUDE (GST_TAG_GEO_LOCATION_LONGITUDE): geo longitude
+// location of where the media has been recorded or produced in degrees
+// according to WGS84 (zero at the prime meridian in Greenwich/UK, negative
+// values for western longitudes). (double).
 const TAG_GEO_LOCATION_LONGITUDE = "geo-location-longitude"
 
-// TAG_GEO_LOCATION_MOVEMENT_DIRECTION indicates the movement direction of the
-// device performing the capture of a media. It is represented as degrees in
-// floating point representation, 0 means the geographic north, and increases
-// clockwise (double from 0 to 360)
+// TAG_GEO_LOCATION_MOVEMENT_DIRECTION (GST_TAG_GEO_LOCATION_MOVEMENT_DIRECTION)
+// indicates the movement direction of the device performing the capture of
+// a media. It is represented as degrees in floating point representation,
+// 0 means the geographic north, and increases clockwise (double from 0 to 360)
 //
 // See also T_TAG_GEO_LOCATION_CAPTURE_DIRECTION.
 const TAG_GEO_LOCATION_MOVEMENT_DIRECTION = "geo-location-movement-direction"
 
-// TAG_GEO_LOCATION_MOVEMENT_SPEED: speed of the capturing device when
-// performing the capture. Represented in m/s. (double)
+// TAG_GEO_LOCATION_MOVEMENT_SPEED (GST_TAG_GEO_LOCATION_MOVEMENT_SPEED): speed
+// of the capturing device when performing the capture. Represented in m/s.
+// (double)
 //
 // See also T_TAG_GEO_LOCATION_MOVEMENT_DIRECTION.
 const TAG_GEO_LOCATION_MOVEMENT_SPEED = "geo-location-movement-speed"
 
-// TAG_GEO_LOCATION_NAME: human readable descriptive location of where the media
-// has been recorded or produced. (string).
+// TAG_GEO_LOCATION_NAME (GST_TAG_GEO_LOCATION_NAME): human readable descriptive
+// location of where the media has been recorded or produced. (string).
 const TAG_GEO_LOCATION_NAME = "geo-location-name"
 
-// TAG_GEO_LOCATION_SUBLOCATION: location 'smaller' than
-// GST_TAG_GEO_LOCATION_CITY that specifies better where the media has been
-// produced. (e.g. the neighborhood) (string).
+// TAG_GEO_LOCATION_SUBLOCATION (GST_TAG_GEO_LOCATION_SUBLOCATION): location
+// 'smaller' than GST_TAG_GEO_LOCATION_CITY that specifies better where the
+// media has been produced. (e.g. the neighborhood) (string).
 //
 // This tag has been added as this is how it is handled/named in XMP's
 // Iptc4xmpcore schema.
 const TAG_GEO_LOCATION_SUBLOCATION = "geo-location-sublocation"
 
-// TAG_GROUPING groups together media that are related and spans multiple
-// tracks. An example are multiple pieces of a concerto. (string).
+// TAG_GROUPING (GST_TAG_GROUPING) groups together media that are related
+// and spans multiple tracks. An example are multiple pieces of a concerto.
+// (string).
 const TAG_GROUPING = "grouping"
 
-// TAG_HOMEPAGE: homepage for this media (i.e. artist or movie homepage)
-// (string).
+// TAG_HOMEPAGE (GST_TAG_HOMEPAGE): homepage for this media (i.e. artist or
+// movie homepage) (string).
 const TAG_HOMEPAGE = "homepage"
 
-// TAG_IMAGE: image (sample) (sample taglist should specify the content type and
-// preferably also set "image-type" field as GstTagImageType).
+// TAG_IMAGE (GST_TAG_IMAGE): image (sample) (sample taglist should specify the
+// content type and preferably also set "image-type" field as GstTagImageType).
 const TAG_IMAGE = "image"
 
-// TAG_IMAGE_ORIENTATION represents the 'Orientation' tag from EXIF. Defines how
-// the image should be rotated and mirrored for display. (string)
+// TAG_IMAGE_ORIENTATION (GST_TAG_IMAGE_ORIENTATION) represents the
+// 'Orientation' tag from EXIF. Defines how the image should be rotated and
+// mirrored for display. (string)
 //
 // This tag has a predefined set of allowed values: "rotate-0" "rotate-90"
 // "rotate-180" "rotate-270" "flip-rotate-0" "flip-rotate-90" "flip-rotate-180"
@@ -1086,71 +1120,80 @@ const TAG_IMAGE = "image"
 // an horizontal mirroring.
 const TAG_IMAGE_ORIENTATION = "image-orientation"
 
-// TAG_INTERPRETED_BY: information about the people behind a remix and similar
-// interpretations of another existing piece (string).
+// TAG_INTERPRETED_BY (GST_TAG_INTERPRETED_BY): information about the people
+// behind a remix and similar interpretations of another existing piece
+// (string).
 const TAG_INTERPRETED_BY = "interpreted-by"
 
-// TAG_ISRC: international Standard Recording Code - see
+// TAG_ISRC (GST_TAG_ISRC): international Standard Recording Code - see
 // http://www.ifpi.org/isrc/ (string).
 const TAG_ISRC = "isrc"
 
-// TAG_KEYWORDS: comma separated keywords describing the content (string).
+// TAG_KEYWORDS (GST_TAG_KEYWORDS): comma separated keywords describing the
+// content (string).
 const TAG_KEYWORDS = "keywords"
 
-// TAG_LANGUAGE_CODE: ISO-639-2 or ISO-639-1 code for the language the content
-// is in (string)
+// TAG_LANGUAGE_CODE (GST_TAG_LANGUAGE_CODE): ISO-639-2 or ISO-639-1 code for
+// the language the content is in (string)
 //
 // There is utility API in libgsttag in gst-plugins-base to obtain a translated
 // language name from the language code: gst_tag_get_language_name().
 const TAG_LANGUAGE_CODE = "language-code"
 
-// TAG_LANGUAGE_NAME: name of the language the content is in (string)
+// TAG_LANGUAGE_NAME (GST_TAG_LANGUAGE_NAME): name of the language the content
+// is in (string)
 //
 // Free-form name of the language the content is in, if a language code is
 // not available. This tag should not be set in addition to a language code.
 // It is undefined what language or locale the language name is in.
 const TAG_LANGUAGE_NAME = "language-name"
 
-// TAG_LICENSE: license of data (string).
+// TAG_LICENSE (GST_TAG_LICENSE): license of data (string).
 const TAG_LICENSE = "license"
 
-// TAG_LICENSE_URI: URI to location where license details can be found (string).
+// TAG_LICENSE_URI (GST_TAG_LICENSE_URI): URI to location where license details
+// can be found (string).
 const TAG_LICENSE_URI = "license-uri"
 
-// TAG_LOCATION: origin of media as a URI (location, where the original of the
-// file or stream is hosted) (string).
+// TAG_LOCATION (GST_TAG_LOCATION): origin of media as a URI (location, where
+// the original of the file or stream is hosted) (string).
 const TAG_LOCATION = "location"
 
-// TAG_LYRICS lyrics of the media (string).
+// TAG_LYRICS (GST_TAG_LYRICS) lyrics of the media (string).
 const TAG_LYRICS = "lyrics"
 
-// TAG_MAXIMUM_BITRATE: maximum bitrate in bits/s (unsigned integer).
+// TAG_MAXIMUM_BITRATE (GST_TAG_MAXIMUM_BITRATE): maximum bitrate in bits/s
+// (unsigned integer).
 const TAG_MAXIMUM_BITRATE = "maximum-bitrate"
 
-// TAG_MIDI_BASE_NOTE: Midi note number
+// TAG_MIDI_BASE_NOTE (GST_TAG_MIDI_BASE_NOTE): Midi note number
 // (http://en.wikipedia.org/wiki/Note#Note_designation_in_accordance_with_octave_name)
 // of the audio track. This is useful for sample instruments and in particular
 // for multi-samples.
 const TAG_MIDI_BASE_NOTE = "midi-base-note"
 
-// TAG_MINIMUM_BITRATE: minimum bitrate in bits/s (unsigned integer).
+// TAG_MINIMUM_BITRATE (GST_TAG_MINIMUM_BITRATE): minimum bitrate in bits/s
+// (unsigned integer).
 const TAG_MINIMUM_BITRATE = "minimum-bitrate"
 
-// TAG_NOMINAL_BITRATE: nominal bitrate in bits/s (unsigned integer). The actual
-// bitrate might be different from this target bitrate.
+// TAG_NOMINAL_BITRATE (GST_TAG_NOMINAL_BITRATE): nominal bitrate in bits/s
+// (unsigned integer). The actual bitrate might be different from this target
+// bitrate.
 const TAG_NOMINAL_BITRATE = "nominal-bitrate"
 
-// TAG_ORGANIZATION: organization (string).
+// TAG_ORGANIZATION (GST_TAG_ORGANIZATION): organization (string).
 const TAG_ORGANIZATION = "organization"
 
-// TAG_PERFORMER: person(s) performing (string).
+// TAG_PERFORMER (GST_TAG_PERFORMER): person(s) performing (string).
 const TAG_PERFORMER = "performer"
 
-// TAG_PREVIEW_IMAGE: image that is meant for preview purposes, e.g. small
-// icon-sized version (sample) (sample taglist should specify the content type).
+// TAG_PREVIEW_IMAGE (GST_TAG_PREVIEW_IMAGE): image that is meant for preview
+// purposes, e.g. small icon-sized version (sample) (sample taglist should
+// specify the content type).
 const TAG_PREVIEW_IMAGE = "preview-image"
 
-// TAG_PRIVATE_DATA: any private data that may be contained in tags (sample).
+// TAG_PRIVATE_DATA (GST_TAG_PRIVATE_DATA): any private data that may be
+// contained in tags (sample).
 //
 // It is represented by Sample in which Buffer contains the binary data and the
 // sample's info Structure may contain any extra information that identifies the
@@ -1162,143 +1205,158 @@ const TAG_PREVIEW_IMAGE = "preview-image"
 // owner-identification string from the tag.
 const TAG_PRIVATE_DATA = "private-data"
 
-// TAG_PUBLISHER: name of the label or publisher (string).
+// TAG_PUBLISHER (GST_TAG_PUBLISHER): name of the label or publisher (string).
 const TAG_PUBLISHER = "publisher"
 
-// TAG_REFERENCE_LEVEL: reference level of track and album gain values (double).
+// TAG_REFERENCE_LEVEL (GST_TAG_REFERENCE_LEVEL): reference level of track and
+// album gain values (double).
 const TAG_REFERENCE_LEVEL = "replaygain-reference-level"
 
-// TAG_SERIAL: serial number of track (unsigned integer).
+// TAG_SERIAL (GST_TAG_SERIAL): serial number of track (unsigned integer).
 const TAG_SERIAL = "serial"
 
-// TAG_SHOW_EPISODE_NUMBER: number of the episode within a season/show (unsigned
-// integer).
+// TAG_SHOW_EPISODE_NUMBER (GST_TAG_SHOW_EPISODE_NUMBER): number of the episode
+// within a season/show (unsigned integer).
 const TAG_SHOW_EPISODE_NUMBER = "show-episode-number"
 
-// TAG_SHOW_NAME: name of the show, used for displaying (string).
+// TAG_SHOW_NAME (GST_TAG_SHOW_NAME): name of the show, used for displaying
+// (string).
 const TAG_SHOW_NAME = "show-name"
 
-// TAG_SHOW_SEASON_NUMBER: number of the season of a show/series (unsigned
-// integer).
+// TAG_SHOW_SEASON_NUMBER (GST_TAG_SHOW_SEASON_NUMBER): number of the season of
+// a show/series (unsigned integer).
 const TAG_SHOW_SEASON_NUMBER = "show-season-number"
 
-// TAG_SHOW_SORTNAME: name of the show, used for sorting (string).
+// TAG_SHOW_SORTNAME (GST_TAG_SHOW_SORTNAME): name of the show, used for sorting
+// (string).
 const TAG_SHOW_SORTNAME = "show-sortname"
 
-// TAG_SUBTITLE_CODEC: codec/format the subtitle data is stored in (string).
+// TAG_SUBTITLE_CODEC (GST_TAG_SUBTITLE_CODEC): codec/format the subtitle data
+// is stored in (string).
 const TAG_SUBTITLE_CODEC = "subtitle-codec"
 
-// TAG_TITLE: commonly used title (string)
+// TAG_TITLE (GST_TAG_TITLE): commonly used title (string)
 //
 // The title as it should be displayed, e.g. 'The Doll House'.
 const TAG_TITLE = "title"
 
-// TAG_TITLE_SORTNAME: commonly used title, as used for sorting (string)
+// TAG_TITLE_SORTNAME (GST_TAG_TITLE_SORTNAME): commonly used title, as used for
+// sorting (string)
 //
 // The title as it should be sorted, e.g. 'Doll House, The'.
 const TAG_TITLE_SORTNAME = "title-sortname"
 
-// TAG_TRACK_COUNT: count of tracks inside collection this track belongs to
-// (unsigned integer).
+// TAG_TRACK_COUNT (GST_TAG_TRACK_COUNT): count of tracks inside collection this
+// track belongs to (unsigned integer).
 const TAG_TRACK_COUNT = "track-count"
 
-// TAG_TRACK_GAIN: track gain in db (double).
+// TAG_TRACK_GAIN (GST_TAG_TRACK_GAIN): track gain in db (double).
 const TAG_TRACK_GAIN = "replaygain-track-gain"
 
-// TAG_TRACK_NUMBER: track number inside a collection (unsigned integer).
+// TAG_TRACK_NUMBER (GST_TAG_TRACK_NUMBER): track number inside a collection
+// (unsigned integer).
 const TAG_TRACK_NUMBER = "track-number"
 
-// TAG_TRACK_PEAK: peak of the track (double).
+// TAG_TRACK_PEAK (GST_TAG_TRACK_PEAK): peak of the track (double).
 const TAG_TRACK_PEAK = "replaygain-track-peak"
 
-// TAG_USER_RATING: rating attributed by a person (likely the application user).
-// The higher the value, the more the user likes this media (unsigned int from 0
-// to 100).
+// TAG_USER_RATING (GST_TAG_USER_RATING): rating attributed by a person (likely
+// the application user). The higher the value, the more the user likes this
+// media (unsigned int from 0 to 100).
 const TAG_USER_RATING = "user-rating"
 
-// TAG_VERSION: version of this data (string).
+// TAG_VERSION (GST_TAG_VERSION): version of this data (string).
 const TAG_VERSION = "version"
 
-// TAG_VIDEO_CODEC: codec the video data is stored in (string).
+// TAG_VIDEO_CODEC (GST_TAG_VIDEO_CODEC): codec the video data is stored in
+// (string).
 const TAG_VIDEO_CODEC = "video-codec"
 
-// TIMEP_FORMAT: printf format type used to debug GStreamer ClockTime pointers.
-// You can use this in combination with GStreamer's debug logging system as
-// well as the functions gst_info_vasprintf(), gst_info_strdup_vprintf() and
-// gst_info_strdup_printf() to pretty-print ClockTime pointers. This can only be
-// used on pointers to GstClockTime values.
+// TIMEP_FORMAT (GST_TIMEP_FORMAT): printf format type used to debug GStreamer
+// ClockTime pointers. You can use this in combination with GStreamer's
+// debug logging system as well as the functions gst_info_vasprintf(),
+// gst_info_strdup_vprintf() and gst_info_strdup_printf() to pretty-print
+// ClockTime pointers. This can only be used on pointers to GstClockTime values.
 const TIMEP_FORMAT = "paT"
 
-// TIME_FORMAT: string that can be used in printf-like format strings to display
-// a ClockTime value in h:m:s format. Use GST_TIME_ARGS() to construct the
-// matching arguments.
+// TIME_FORMAT (GST_TIME_FORMAT): string that can be used in printf-like format
+// strings to display a ClockTime value in h:m:s format. Use GST_TIME_ARGS() to
+// construct the matching arguments.
 //
 // Example:
 //
 //	C printf("%" GST_TIME_FORMAT "\n", GST_TIME_ARGS(ts));.
 const TIME_FORMAT = "u:%02u:%02u.%09u"
 
-// TOC_REPEAT_COUNT_INFINITE: special value for the repeat_count set in
-// gst_toc_entry_set_loop() or returned by gst_toc_entry_set_loop() to indicate
-// infinite looping.
+// TOC_REPEAT_COUNT_INFINITE (GST_TOC_REPEAT_COUNT_INFINITE): special value
+// for the repeat_count set in gst_toc_entry_set_loop() or returned by
+// gst_toc_entry_set_loop() to indicate infinite looping.
 const TOC_REPEAT_COUNT_INFINITE = -1
 
-// URI_NO_PORT: value for Uri<!-- -->.port to indicate no port number.
+// URI_NO_PORT (GST_URI_NO_PORT): value for Uri<!-- -->.port to indicate no port
+// number.
 const URI_NO_PORT = 0
 
-// VALUE_EQUAL indicates that the first value provided to a comparison function
-// (gst_value_compare()) is equal to the second one.
+// VALUE_EQUAL (GST_VALUE_EQUAL) indicates that the first value provided to a
+// comparison function (gst_value_compare()) is equal to the second one.
 const VALUE_EQUAL = 0
 
-// VALUE_GREATER_THAN indicates that the first value provided to a comparison
-// function (gst_value_compare()) is greater than the second one.
+// VALUE_GREATER_THAN (GST_VALUE_GREATER_THAN) indicates that the first value
+// provided to a comparison function (gst_value_compare()) is greater than the
+// second one.
 const VALUE_GREATER_THAN = 1
 
-// VALUE_LESS_THAN indicates that the first value provided to a comparison
-// function (gst_value_compare()) is lesser than the second one.
+// VALUE_LESS_THAN (GST_VALUE_LESS_THAN) indicates that the first value provided
+// to a comparison function (gst_value_compare()) is lesser than the second one.
 const VALUE_LESS_THAN = -1
 
-// VALUE_UNORDERED indicates that the comparison function (gst_value_compare())
-// can not determine a order for the two provided values.
+// VALUE_UNORDERED (GST_VALUE_UNORDERED) indicates that the comparison function
+// (gst_value_compare()) can not determine a order for the two provided values.
 const VALUE_UNORDERED = 2
 
-// VERSION_MAJOR: major version of GStreamer at compile time:.
+// VERSION_MAJOR (GST_VERSION_MAJOR): major version of GStreamer at compile
+// time:.
 const VERSION_MAJOR = 1
 
-// VERSION_MICRO: micro version of GStreamer at compile time:.
+// VERSION_MICRO (GST_VERSION_MICRO): micro version of GStreamer at compile
+// time:.
 const VERSION_MICRO = 10
 
-// VERSION_MINOR: minor version of GStreamer at compile time:.
+// VERSION_MINOR (GST_VERSION_MINOR): minor version of GStreamer at compile
+// time:.
 const VERSION_MINOR = 24
 
-// VERSION_NANO: nano version of GStreamer at compile time: Actual releases have
-// 0, GIT versions have 1, prerelease versions have 2-...
+// VERSION_NANO (GST_VERSION_NANO): nano version of GStreamer at compile time:
+// Actual releases have 0, GIT versions have 1, prerelease versions have 2-...
 const VERSION_NANO = 0
 
-// ClockID: datatype to hold the handle to an outstanding sync or async clock
-// callback.
+// ClockID (GstClockID): datatype to hold the handle to an outstanding sync or
+// async clock callback.
 type ClockID = unsafe.Pointer
 
-// ClockTime: datatype to hold a time, measured in nanoseconds.
+// ClockTime (GstClockTime): datatype to hold a time, measured in nanoseconds.
 type ClockTime = uint64
 
-// ClockTimeDiff: datatype to hold a time difference, measured in nanoseconds.
+// ClockTimeDiff (GstClockTimeDiff): datatype to hold a time difference,
+// measured in nanoseconds.
 type ClockTimeDiff = int64
 
-// ElementFactoryListType: type defining the type of an element factory.
+// ElementFactoryListType (GstElementFactoryListType): type defining the type of
+// an element factory.
 type ElementFactoryListType = uint64
 
-// BufferingMode: different types of buffering methods.
+// BufferingMode (GstBufferingMode): different types of buffering methods.
 type BufferingMode C.gint
 
 const (
-	// BufferingStream: small amount of data is buffered.
+	// BufferingStream (GST_BUFFERING_STREAM): small amount of data is buffered.
 	BufferingStream BufferingMode = iota
-	// BufferingDownload: stream is being downloaded.
+	// BufferingDownload (GST_BUFFERING_DOWNLOAD): stream is being downloaded.
 	BufferingDownload
-	// BufferingTimeshift: stream is being downloaded in a ringbuffer.
+	// BufferingTimeshift (GST_BUFFERING_TIMESHIFT): stream is being downloaded
+	// in a ringbuffer.
 	BufferingTimeshift
-	// BufferingLive: stream is a live stream.
+	// BufferingLive (GST_BUFFERING_LIVE): stream is a live stream.
 	BufferingLive
 )
 
@@ -1322,15 +1380,16 @@ func (b BufferingMode) String() string {
 	}
 }
 
-// BusSyncReply: result values for a GstBusSyncHandler.
+// BusSyncReply (GstBusSyncReply): result values for a GstBusSyncHandler.
 type BusSyncReply C.gint
 
 const (
-	// BusDrop: drop the message.
+	// BusDrop (GST_BUS_DROP): drop the message.
 	BusDrop BusSyncReply = iota
-	// BusPass pass the message to the async queue.
+	// BusPass (GST_BUS_PASS) pass the message to the async queue.
 	BusPass
-	// BusAsync pass message to async queue, continue if message is handled.
+	// BusAsync (GST_BUS_ASYNC) pass message to async queue, continue if message
+	// is handled.
 	BusAsync
 )
 
@@ -1352,7 +1411,7 @@ func (b BusSyncReply) String() string {
 	}
 }
 
-// CapsIntersectMode modes of caps intersection
+// CapsIntersectMode (GstCapsIntersectMode) modes of caps intersection
 //
 // GST_CAPS_INTERSECT_ZIG_ZAG tries to preserve overall order of both caps by
 // iterating on the caps' structures as the following matrix shows:
@@ -1374,9 +1433,9 @@ func (b BusSyncReply) String() string {
 type CapsIntersectMode C.gint
 
 const (
-	// CapsIntersectZigZag zig-zags over both caps.
+	// CapsIntersectZigZag (GST_CAPS_INTERSECT_ZIG_ZAG) zig-zags over both caps.
 	CapsIntersectZigZag CapsIntersectMode = iota
-	// CapsIntersectFirst keeps the first caps order.
+	// CapsIntersectFirst (GST_CAPS_INTERSECT_FIRST) keeps the first caps order.
 	CapsIntersectFirst
 )
 
@@ -1396,13 +1455,13 @@ func (c CapsIntersectMode) String() string {
 	}
 }
 
-// ClockEntryType: type of the clock entry.
+// ClockEntryType (GstClockEntryType): type of the clock entry.
 type ClockEntryType C.gint
 
 const (
-	// ClockEntrySingle: single shot timeout.
+	// ClockEntrySingle (GST_CLOCK_ENTRY_SINGLE): single shot timeout.
 	ClockEntrySingle ClockEntryType = iota
-	// ClockEntryPeriodic: periodic timeout request.
+	// ClockEntryPeriodic (GST_CLOCK_ENTRY_PERIODIC): periodic timeout request.
 	ClockEntryPeriodic
 )
 
@@ -1422,25 +1481,25 @@ func (c ClockEntryType) String() string {
 	}
 }
 
-// ClockReturn: return value of a clock operation.
+// ClockReturn (GstClockReturn): return value of a clock operation.
 type ClockReturn C.gint
 
 const (
-	// ClockOK: operation succeeded.
+	// ClockOK (GST_CLOCK_OK): operation succeeded.
 	ClockOK ClockReturn = iota
-	// ClockEarly: operation was scheduled too late.
+	// ClockEarly (GST_CLOCK_EARLY): operation was scheduled too late.
 	ClockEarly
-	// ClockUnscheduled: clockID was unscheduled.
+	// ClockUnscheduled (GST_CLOCK_UNSCHEDULED): clockID was unscheduled.
 	ClockUnscheduled
-	// ClockBusy: clockID is busy.
+	// ClockBusy (GST_CLOCK_BUSY): clockID is busy.
 	ClockBusy
-	// ClockBadtime: bad time was provided to a function.
+	// ClockBadtime (GST_CLOCK_BADTIME): bad time was provided to a function.
 	ClockBadtime
-	// ClockError: error occurred.
+	// ClockError (GST_CLOCK_ERROR): error occurred.
 	ClockError
-	// ClockUnsupported: operation is not supported.
+	// ClockUnsupported (GST_CLOCK_UNSUPPORTED): operation is not supported.
 	ClockUnsupported
-	// ClockDone: clockID is done waiting.
+	// ClockDone (GST_CLOCK_DONE): clockID is done waiting.
 	ClockDone
 )
 
@@ -1472,18 +1531,20 @@ func (c ClockReturn) String() string {
 	}
 }
 
-// ClockType: different kind of clocks.
+// ClockType (GstClockType): different kind of clocks.
 type ClockType C.gint
 
 const (
-	// ClockTypeRealtime: time since Epoch.
+	// ClockTypeRealtime (GST_CLOCK_TYPE_REALTIME): time since Epoch.
 	ClockTypeRealtime ClockType = iota
-	// ClockTypeMonotonic: monotonic time since some unspecified starting point.
+	// ClockTypeMonotonic (GST_CLOCK_TYPE_MONOTONIC): monotonic time since some
+	// unspecified starting point.
 	ClockTypeMonotonic
-	// ClockTypeOther: some other time source is used (Since: 1.0.5).
+	// ClockTypeOther (GST_CLOCK_TYPE_OTHER): some other time source is used
+	// (Since: 1.0.5).
 	ClockTypeOther
-	// ClockTypeTai: time since Epoch, but using International Atomic Time as
-	// reference (Since: 1.18).
+	// ClockTypeTai (GST_CLOCK_TYPE_TAI): time since Epoch, but using
+	// International Atomic Time as reference (Since: 1.18).
 	ClockTypeTai
 )
 
@@ -1507,43 +1568,49 @@ func (c ClockType) String() string {
 	}
 }
 
-// CoreError: core errors are errors inside the core GStreamer library.
+// CoreError (GstCoreError): core errors are errors inside the core GStreamer
+// library.
 type CoreError C.gint
 
 const (
-	// CoreErrorFailed: general error which doesn't fit in any other category.
-	// Make sure you add a custom message to the error call.
+	// CoreErrorFailed (GST_CORE_ERROR_FAILED): general error which doesn't fit
+	// in any other category. Make sure you add a custom message to the error
+	// call.
 	CoreErrorFailed CoreError = 1
-	// CoreErrorTooLaZY: do not use this except as a placeholder for deciding
-	// where to go while developing code.
+	// CoreErrorTooLaZY (GST_CORE_ERROR_TOO_LAZY): do not use this except as a
+	// placeholder for deciding where to go while developing code.
 	CoreErrorTooLaZY CoreError = 2
-	// CoreErrorNotImplemented: use this when you do not want to implement this
-	// functionality yet.
+	// CoreErrorNotImplemented (GST_CORE_ERROR_NOT_IMPLEMENTED): use this when
+	// you do not want to implement this functionality yet.
 	CoreErrorNotImplemented CoreError = 3
-	// CoreErrorStateChange: used for state change errors.
+	// CoreErrorStateChange (GST_CORE_ERROR_STATE_CHANGE): used for state change
+	// errors.
 	CoreErrorStateChange CoreError = 4
-	// CoreErrorPad: used for pad-related errors.
+	// CoreErrorPad (GST_CORE_ERROR_PAD): used for pad-related errors.
 	CoreErrorPad CoreError = 5
-	// CoreErrorThread: used for thread-related errors.
+	// CoreErrorThread (GST_CORE_ERROR_THREAD): used for thread-related errors.
 	CoreErrorThread CoreError = 6
-	// CoreErrorNegotiation: used for negotiation-related errors.
+	// CoreErrorNegotiation (GST_CORE_ERROR_NEGOTIATION): used for
+	// negotiation-related errors.
 	CoreErrorNegotiation CoreError = 7
-	// CoreErrorEvent: used for event-related errors.
+	// CoreErrorEvent (GST_CORE_ERROR_EVENT): used for event-related errors.
 	CoreErrorEvent CoreError = 8
-	// CoreErrorSeek: used for seek-related errors.
+	// CoreErrorSeek (GST_CORE_ERROR_SEEK): used for seek-related errors.
 	CoreErrorSeek CoreError = 9
-	// CoreErrorCaps: used for caps-related errors.
+	// CoreErrorCaps (GST_CORE_ERROR_CAPS): used for caps-related errors.
 	CoreErrorCaps CoreError = 10
-	// CoreErrorTag: used for negotiation-related errors.
+	// CoreErrorTag (GST_CORE_ERROR_TAG): used for negotiation-related errors.
 	CoreErrorTag CoreError = 11
-	// CoreErrorMissingPlugin: used if a plugin is missing.
+	// CoreErrorMissingPlugin (GST_CORE_ERROR_MISSING_PLUGIN): used if a plugin
+	// is missing.
 	CoreErrorMissingPlugin CoreError = 12
-	// CoreErrorClock: used for clock related errors.
+	// CoreErrorClock (GST_CORE_ERROR_CLOCK): used for clock related errors.
 	CoreErrorClock CoreError = 13
-	// CoreErrorDisabled: used if functionality has been disabled at compile
-	// time.
+	// CoreErrorDisabled (GST_CORE_ERROR_DISABLED): used if functionality has
+	// been disabled at compile time.
 	CoreErrorDisabled CoreError = 14
-	// CoreErrorNumErrors: number of core error types.
+	// CoreErrorNumErrors (GST_CORE_ERROR_NUM_ERRORS): number of core error
+	// types.
 	CoreErrorNumErrors CoreError = 15
 )
 
@@ -1604,12 +1671,13 @@ func CoreErrorQuark() glib.Quark {
 type DebugColorMode C.gint
 
 const (
-	// DebugColorModeOff: do not use colors in logs.
+	// DebugColorModeOff (GST_DEBUG_COLOR_MODE_OFF): do not use colors in logs.
 	DebugColorModeOff DebugColorMode = iota
-	// DebugColorModeOn: paint logs in a platform-specific way.
+	// DebugColorModeOn (GST_DEBUG_COLOR_MODE_ON): paint logs in a
+	// platform-specific way.
 	DebugColorModeOn
-	// DebugColorModeUnix: paint logs with UNIX terminal color codes no matter
-	// what platform GStreamer is running on.
+	// DebugColorModeUnix (GST_DEBUG_COLOR_MODE_UNIX): paint logs with UNIX
+	// terminal color codes no matter what platform GStreamer is running on.
 	DebugColorModeUnix
 )
 
@@ -1631,57 +1699,58 @@ func (d DebugColorMode) String() string {
 	}
 }
 
-// DebugLevel: level defines the importance of a debugging message. The more
-// important a message is, the greater the probability that the debugging system
-// outputs it.
+// DebugLevel (GstDebugLevel): level defines the importance of a debugging
+// message. The more important a message is, the greater the probability that
+// the debugging system outputs it.
 type DebugLevel C.gint
 
 const (
-	// LevelNone: no debugging level specified or desired. Used to deactivate
-	// debugging output.
+	// LevelNone (GST_LEVEL_NONE): no debugging level specified or desired.
+	// Used to deactivate debugging output.
 	LevelNone DebugLevel = 0
-	// LevelError: error messages are to be used only when an error occurred
-	// that stops the application from keeping working correctly. An examples
-	// is gst_element_error, which outputs a message with this priority. It does
-	// not mean that the application is terminating as with g_error.
+	// LevelError (GST_LEVEL_ERROR): error messages are to be used only when an
+	// error occurred that stops the application from keeping working correctly.
+	// An examples is gst_element_error, which outputs a message with this
+	// priority. It does not mean that the application is terminating as with
+	// g_error.
 	LevelError DebugLevel = 1
-	// LevelWarning: warning messages are to inform about abnormal behaviour
-	// that could lead to problems or weird behaviour later on. An example of
-	// this would be clocking issues ("your computer is pretty slow") or broken
-	// input data ("Can't synchronize to stream.").
+	// LevelWarning (GST_LEVEL_WARNING): warning messages are to inform about
+	// abnormal behaviour that could lead to problems or weird behaviour later
+	// on. An example of this would be clocking issues ("your computer is pretty
+	// slow") or broken input data ("Can't synchronize to stream.").
 	LevelWarning DebugLevel = 2
-	// LevelFixme: fixme messages are messages that indicate that something in
-	// the executed code path is not fully implemented or handled yet. Note that
-	// this does not replace proper error handling in any way, the purpose of
-	// this message is to make it easier to spot incomplete/unfinished pieces of
-	// code when reading the debug log.
+	// LevelFixme (GST_LEVEL_FIXME): fixme messages are messages that indicate
+	// that something in the executed code path is not fully implemented or
+	// handled yet. Note that this does not replace proper error handling
+	// in any way, the purpose of this message is to make it easier to spot
+	// incomplete/unfinished pieces of code when reading the debug log.
 	LevelFixme DebugLevel = 3
-	// LevelInfo: informational messages should be used to keep the developer
-	// updated about what is happening. Examples where this should be used are
-	// when a typefind function has successfully determined the type of the
-	// stream or when an mp3 plugin detects the format to be used. ("This file
-	// has mono sound.").
+	// LevelInfo (GST_LEVEL_INFO): informational messages should be used to keep
+	// the developer updated about what is happening. Examples where this should
+	// be used are when a typefind function has successfully determined the
+	// type of the stream or when an mp3 plugin detects the format to be used.
+	// ("This file has mono sound.").
 	LevelInfo DebugLevel = 4
-	// LevelDebug: debugging messages should be used when something common
-	// happens that is not the expected default behavior, or something that's
-	// useful to know but doesn't happen all the time (ie. per loop iteration
-	// or buffer processed or event handled). An example would be notifications
-	// about state changes or receiving/sending of events.
+	// LevelDebug (GST_LEVEL_DEBUG): debugging messages should be used when
+	// something common happens that is not the expected default behavior, or
+	// something that's useful to know but doesn't happen all the time (ie. per
+	// loop iteration or buffer processed or event handled). An example would be
+	// notifications about state changes or receiving/sending of events.
 	LevelDebug DebugLevel = 5
-	// LevelLog: log messages are messages that are very common but might be
-	// useful to know. As a rule of thumb a pipeline that is running as expected
-	// should never output anything else but LOG messages whilst processing
-	// data. Use this log level to log recurring information in chain functions
-	// and loop functions, for example.
+	// LevelLog (GST_LEVEL_LOG): log messages are messages that are very common
+	// but might be useful to know. As a rule of thumb a pipeline that is
+	// running as expected should never output anything else but LOG messages
+	// whilst processing data. Use this log level to log recurring information
+	// in chain functions and loop functions, for example.
 	LevelLog DebugLevel = 6
-	// LevelTrace: tracing-related messages. Examples for this are
-	// referencing/dereferencing of objects.
+	// LevelTrace (GST_LEVEL_TRACE): tracing-related messages. Examples for this
+	// are referencing/dereferencing of objects.
 	LevelTrace DebugLevel = 7
-	// LevelMemdump: memory dump messages are used to log (small) chunks of data
-	// as memory dumps in the log. They will be displayed as hexdump with ASCII
-	// characters.
+	// LevelMemdump (GST_LEVEL_MEMDUMP): memory dump messages are used to log
+	// (small) chunks of data as memory dumps in the log. They will be displayed
+	// as hexdump with ASCII characters.
 	LevelMemdump DebugLevel = 9
-	// LevelCount: number of defined debugging levels.
+	// LevelCount (GST_LEVEL_COUNT): number of defined debugging levels.
 	LevelCount DebugLevel = 10
 )
 
@@ -1717,7 +1786,8 @@ func (d DebugLevel) String() string {
 	}
 }
 
-// DebugLevelGetName: get the string representation of a debugging level.
+// DebugLevelGetName (gst_debug_level_get_name): get the string representation
+// of a debugging level.
 //
 // The function takes the following parameters:
 //
@@ -1742,7 +1812,8 @@ func DebugLevelGetName(level DebugLevel) string {
 	return _utf8
 }
 
-// EventType lists the standard event types that can be sent in a pipeline.
+// EventType (GstEventType) lists the standard event types that can be sent in a
+// pipeline.
 //
 // The custom event types can be used for private messages between elements that
 // can't be expressed using normal GStreamer buffer passing semantics. Custom
@@ -1751,93 +1822,107 @@ func DebugLevelGetName(level DebugLevel) string {
 type EventType C.gint
 
 const (
-	// EventUnknown: unknown event.
+	// EventUnknown (GST_EVENT_UNKNOWN): unknown event.
 	EventUnknown EventType = 0
-	// EventFlushStart: start a flush operation. This event clears all data from
-	// the pipeline and unblock all streaming threads.
+	// EventFlushStart (GST_EVENT_FLUSH_START): start a flush operation.
+	// This event clears all data from the pipeline and unblock all streaming
+	// threads.
 	EventFlushStart EventType = 2563
-	// EventFlushStop: stop a flush operation. This event resets the
-	// running-time of the pipeline.
+	// EventFlushStop (GST_EVENT_FLUSH_STOP): stop a flush operation. This event
+	// resets the running-time of the pipeline.
 	EventFlushStop EventType = 5127
-	// EventStreamStart: event to mark the start of a new stream. Sent before
-	// any other serialized event and only sent at the start of a new stream,
-	// not after flushing seeks.
+	// EventStreamStart (GST_EVENT_STREAM_START): event to mark the start of a
+	// new stream. Sent before any other serialized event and only sent at the
+	// start of a new stream, not after flushing seeks.
 	EventStreamStart EventType = 10254
-	// EventCaps event. Notify the pad of a new media type.
+	// EventCaps (GST_EVENT_CAPS) event. Notify the pad of a new media type.
 	EventCaps EventType = 12814
-	// EventSegment: new media segment follows in the dataflow. The segment
-	// events contains information for clipping buffers and converting buffer
-	// timestamps to running-time and stream-time.
+	// EventSegment (GST_EVENT_SEGMENT): new media segment follows in the
+	// dataflow. The segment events contains information for clipping buffers
+	// and converting buffer timestamps to running-time and stream-time.
 	EventSegment EventType = 17934
-	// EventStreamCollection: new StreamCollection is available (Since: 1.10).
+	// EventStreamCollection (GST_EVENT_STREAM_COLLECTION): new StreamCollection
+	// is available (Since: 1.10).
 	EventStreamCollection EventType = 19230
-	// EventTag: new set of metadata tags has been found in the stream.
+	// EventTag (GST_EVENT_TAG): new set of metadata tags has been found in the
+	// stream.
 	EventTag EventType = 20510
-	// EventBuffersize: notification of buffering requirements. Currently not
-	// used yet.
+	// EventBuffersize (GST_EVENT_BUFFERSIZE): notification of buffering
+	// requirements. Currently not used yet.
 	EventBuffersize EventType = 23054
-	// EventSinkMessage: event that sinks turn into a message. Used to send
-	// messages that should be emitted in sync with rendering.
+	// EventSinkMessage (GST_EVENT_SINK_MESSAGE): event that sinks turn into
+	// a message. Used to send messages that should be emitted in sync with
+	// rendering.
 	EventSinkMessage EventType = 25630
-	// EventStreamGroupDone indicates that there is no more data for the stream
-	// group ID in the message. Sent before EOS in some instances and should be
-	// handled mostly the same. (Since: 1.10).
+	// EventStreamGroupDone (GST_EVENT_STREAM_GROUP_DONE) indicates that there
+	// is no more data for the stream group ID in the message. Sent before EOS
+	// in some instances and should be handled mostly the same. (Since: 1.10).
 	EventStreamGroupDone EventType = 26894
-	// EventEos: end-Of-Stream. No more data is to be expected to follow without
-	// either a STREAM_START event, or a FLUSH_STOP and a SEGMENT event.
+	// EventEos (GST_EVENT_EOS): end-Of-Stream. No more data is to be expected
+	// to follow without either a STREAM_START event, or a FLUSH_STOP and a
+	// SEGMENT event.
 	EventEos EventType = 28174
-	// EventToc: event which indicates that a new table of contents (TOC) was
-	// found or updated.
+	// EventToc (GST_EVENT_TOC): event which indicates that a new table of
+	// contents (TOC) was found or updated.
 	EventToc EventType = 30750
-	// EventProtection: event which indicates that new or updated encryption
-	// information has been found in the stream.
+	// EventProtection (GST_EVENT_PROTECTION): event which indicates that new or
+	// updated encryption information has been found in the stream.
 	EventProtection EventType = 33310
-	// EventSegmentDone marks the end of a segment playback.
+	// EventSegmentDone (GST_EVENT_SEGMENT_DONE) marks the end of a segment
+	// playback.
 	EventSegmentDone EventType = 38406
-	// EventGap marks a gap in the datastream.
+	// EventGap (GST_EVENT_GAP) marks a gap in the datastream.
 	EventGap EventType = 40966
-	// EventInstantRateChange: notify downstream that a playback rate override
-	// should be applied as soon as possible. (Since: 1.18).
+	// EventInstantRateChange (GST_EVENT_INSTANT_RATE_CHANGE): notify downstream
+	// that a playback rate override should be applied as soon as possible.
+	// (Since: 1.18).
 	EventInstantRateChange EventType = 46090
-	// EventQos: quality message. Used to indicate to upstream elements that the
-	// downstream elements should adjust their processing rate.
+	// EventQos (GST_EVENT_QOS): quality message. Used to indicate to upstream
+	// elements that the downstream elements should adjust their processing
+	// rate.
 	EventQos EventType = 48641
-	// EventSeek: request for a new playback position and rate.
+	// EventSeek (GST_EVENT_SEEK): request for a new playback position and rate.
 	EventSeek EventType = 51201
-	// EventNavigation: navigation events are usually used for communicating
-	// user requests, such as mouse or keyboard movements, to upstream elements.
+	// EventNavigation (GST_EVENT_NAVIGATION): navigation events are usually
+	// used for communicating user requests, such as mouse or keyboard
+	// movements, to upstream elements.
 	EventNavigation EventType = 53761
-	// EventLatency: notification of new latency adjustment. Sinks will use the
-	// latency information to adjust their synchronisation.
+	// EventLatency (GST_EVENT_LATENCY): notification of new latency adjustment.
+	// Sinks will use the latency information to adjust their synchronisation.
 	EventLatency EventType = 56321
-	// EventStep: request for stepping through the media. Sinks will usually
-	// execute the step operation.
+	// EventStep (GST_EVENT_STEP): request for stepping through the media.
+	// Sinks will usually execute the step operation.
 	EventStep EventType = 58881
-	// EventReconfigure: request for upstream renegotiating caps and
-	// reconfiguring.
+	// EventReconfigure (GST_EVENT_RECONFIGURE): request for upstream
+	// renegotiating caps and reconfiguring.
 	EventReconfigure EventType = 61441
-	// EventTocSelect: request for a new playback position based on TOC entry's
-	// UID.
+	// EventTocSelect (GST_EVENT_TOC_SELECT): request for a new playback
+	// position based on TOC entry's UID.
 	EventTocSelect EventType = 64001
-	// EventSelectStreams: request to select one or more streams (Since: 1.10).
+	// EventSelectStreams (GST_EVENT_SELECT_STREAMS): request to select one or
+	// more streams (Since: 1.10).
 	EventSelectStreams EventType = 66561
-	// EventInstantRateSyncTime: sent by the pipeline to notify elements that
-	// handle the instant-rate-change event about the running-time when the rate
-	// multiplier should be applied (or was applied). (Since: 1.18).
+	// EventInstantRateSyncTime (GST_EVENT_INSTANT_RATE_SYNC_TIME): sent by the
+	// pipeline to notify elements that handle the instant-rate-change event
+	// about the running-time when the rate multiplier should be applied (or was
+	// applied). (Since: 1.18).
 	EventInstantRateSyncTime EventType = 66817
-	// EventCustomUpstream: upstream custom event.
+	// EventCustomUpstream (GST_EVENT_CUSTOM_UPSTREAM): upstream custom event.
 	EventCustomUpstream EventType = 69121
-	// EventCustomDownstream: downstream custom event that travels in the data
-	// flow.
+	// EventCustomDownstream (GST_EVENT_CUSTOM_DOWNSTREAM): downstream custom
+	// event that travels in the data flow.
 	EventCustomDownstream EventType = 71686
-	// EventCustomDownstreamOob: custom out-of-band downstream event.
+	// EventCustomDownstreamOob (GST_EVENT_CUSTOM_DOWNSTREAM_OOB): custom
+	// out-of-band downstream event.
 	EventCustomDownstreamOob EventType = 74242
-	// EventCustomDownstreamSticky: custom sticky downstream event.
+	// EventCustomDownstreamSticky (GST_EVENT_CUSTOM_DOWNSTREAM_STICKY):
+	// custom sticky downstream event.
 	EventCustomDownstreamSticky EventType = 76830
-	// EventCustomBoth: custom upstream or downstream event. In-band when
-	// travelling downstream.
+	// EventCustomBoth (GST_EVENT_CUSTOM_BOTH): custom upstream or downstream
+	// event. In-band when travelling downstream.
 	EventCustomBoth EventType = 79367
-	// EventCustomBothOob: custom upstream or downstream out-of-band event.
+	// EventCustomBothOob (GST_EVENT_CUSTOM_BOTH_OOB): custom upstream or
+	// downstream out-of-band event.
 	EventCustomBothOob EventType = 81923
 )
 
@@ -1917,7 +2002,8 @@ func (e EventType) String() string {
 	}
 }
 
-// EventTypeGetFlags gets the EventTypeFlags associated with type.
+// EventTypeGetFlags (gst_event_type_get_flags) gets the EventTypeFlags
+// associated with type.
 //
 // The function takes the following parameters:
 //
@@ -1942,8 +2028,8 @@ func EventTypeGetFlags(typ EventType) EventTypeFlags {
 	return _eventTypeFlags
 }
 
-// EventTypeGetName: get a printable name for the given event type. Do not
-// modify or free.
+// EventTypeGetName (gst_event_type_get_name): get a printable name for the
+// given event type. Do not modify or free.
 //
 // The function takes the following parameters:
 //
@@ -1968,7 +2054,8 @@ func EventTypeGetName(typ EventType) string {
 	return _utf8
 }
 
-// EventTypeToQuark: get the unique quark for the given event type.
+// EventTypeToQuark (gst_event_type_to_quark): get the unique quark for the
+// given event type.
 //
 // The function takes the following parameters:
 //
@@ -1993,9 +2080,10 @@ func EventTypeToQuark(typ EventType) glib.Quark {
 	return _quark
 }
 
-// EventTypeToStickyOrdering converts the EventType to an unsigned integer that
-// represents the ordering of sticky events when re-sending them. A lower value
-// represents a higher-priority event.
+// EventTypeToStickyOrdering (gst_event_type_to_sticky_ordering) converts the
+// EventType to an unsigned integer that represents the ordering of sticky
+// events when re-sending them. A lower value represents a higher-priority
+// event.
 //
 // The function takes the following parameters:
 //
@@ -2020,43 +2108,48 @@ func EventTypeToStickyOrdering(typ EventType) uint {
 	return _guint
 }
 
-// FlowReturn: result of passing data to a pad.
+// FlowReturn (GstFlowReturn): result of passing data to a pad.
 //
 // Note that the custom return values should not be exposed outside of the
 // element scope.
 type FlowReturn C.gint
 
 const (
-	// FlowCustomSuccess2: pre-defined custom success code.
+	// FlowCustomSuccess2 (GST_FLOW_CUSTOM_SUCCESS_2): pre-defined custom
+	// success code.
 	FlowCustomSuccess2 FlowReturn = 102
-	// FlowCustomSuccess1: pre-defined custom success code (define your custom
-	// success code to this to avoid compiler warnings).
+	// FlowCustomSuccess1 (GST_FLOW_CUSTOM_SUCCESS_1): pre-defined custom
+	// success code (define your custom success code to this to avoid compiler
+	// warnings).
 	FlowCustomSuccess1 FlowReturn = 101
-	// FlowCustomSuccess elements can use values starting from this (and higher)
-	// to define custom success codes.
+	// FlowCustomSuccess (GST_FLOW_CUSTOM_SUCCESS) elements can use values
+	// starting from this (and higher) to define custom success codes.
 	FlowCustomSuccess FlowReturn = 100
-	// FlowOK: data passing was ok.
+	// FlowOK (GST_FLOW_OK): data passing was ok.
 	FlowOK FlowReturn = 0
-	// FlowNotLinked: pad is not linked.
+	// FlowNotLinked (GST_FLOW_NOT_LINKED): pad is not linked.
 	FlowNotLinked FlowReturn = -1
-	// FlowFlushing: pad is flushing.
+	// FlowFlushing (GST_FLOW_FLUSHING): pad is flushing.
 	FlowFlushing FlowReturn = -2
-	// FlowEos: pad is EOS.
+	// FlowEos (GST_FLOW_EOS): pad is EOS.
 	FlowEos FlowReturn = -3
-	// FlowNotNegotiated: pad is not negotiated.
+	// FlowNotNegotiated (GST_FLOW_NOT_NEGOTIATED): pad is not negotiated.
 	FlowNotNegotiated FlowReturn = -4
-	// FlowError: some (fatal) error occurred. Element generating this error
-	// should post an error message using GST_ELEMENT_ERROR() with more details.
+	// FlowError (GST_FLOW_ERROR): some (fatal) error occurred.
+	// Element generating this error should post an error message using
+	// GST_ELEMENT_ERROR() with more details.
 	FlowError FlowReturn = -5
-	// FlowNotSupported: this operation is not supported.
+	// FlowNotSupported (GST_FLOW_NOT_SUPPORTED): this operation is not
+	// supported.
 	FlowNotSupported FlowReturn = -6
-	// FlowCustomError elements can use values starting from this (and lower) to
-	// define custom error codes.
+	// FlowCustomError (GST_FLOW_CUSTOM_ERROR) elements can use values starting
+	// from this (and lower) to define custom error codes.
 	FlowCustomError FlowReturn = -100
-	// FlowCustomError1: pre-defined custom error code (define your custom error
-	// code to this to avoid compiler warnings).
+	// FlowCustomError1 (GST_FLOW_CUSTOM_ERROR_1): pre-defined custom error code
+	// (define your custom error code to this to avoid compiler warnings).
 	FlowCustomError1 FlowReturn = -101
-	// FlowCustomError2: pre-defined custom error code.
+	// FlowCustomError2 (GST_FLOW_CUSTOM_ERROR_2): pre-defined custom error
+	// code.
 	FlowCustomError2 FlowReturn = -102
 )
 
@@ -2098,26 +2191,26 @@ func (f FlowReturn) String() string {
 	}
 }
 
-// Format: standard predefined formats.
+// Format (GstFormat): standard predefined formats.
 type Format C.gint
 
 const (
-	// FormatUndefined: undefined format.
+	// FormatUndefined (GST_FORMAT_UNDEFINED): undefined format.
 	FormatUndefined Format = iota
-	// FormatDefault: default format of the pad/element. This can be samples
-	// for raw audio, frames/fields for raw video (some, but not all, elements
-	// support this; use GST_FORMAT_TIME if you don't have a good reason to
-	// query for samples/frames).
+	// FormatDefault (GST_FORMAT_DEFAULT): default format of the pad/element.
+	// This can be samples for raw audio, frames/fields for raw video (some,
+	// but not all, elements support this; use GST_FORMAT_TIME if you don't have
+	// a good reason to query for samples/frames).
 	FormatDefault
-	// FormatBytes: bytes.
+	// FormatBytes (GST_FORMAT_BYTES): bytes.
 	FormatBytes
-	// FormatTime: time in nanoseconds.
+	// FormatTime (GST_FORMAT_TIME): time in nanoseconds.
 	FormatTime
-	// FormatBuffers buffers (few, if any, elements implement this as of May
-	// 2009).
+	// FormatBuffers (GST_FORMAT_BUFFERS) buffers (few, if any, elements
+	// implement this as of May 2009).
 	FormatBuffers
-	// FormatPercent: percentage of stream (few, if any, elements implement this
-	// as of May 2009).
+	// FormatPercent (GST_FORMAT_PERCENT): percentage of stream (few, if any,
+	// elements implement this as of May 2009).
 	FormatPercent
 )
 
@@ -2145,7 +2238,8 @@ func (f Format) String() string {
 	}
 }
 
-// FormatGetByNick: return the format registered with the given nick.
+// FormatGetByNick (gst_format_get_by_nick): return the format registered with
+// the given nick.
 //
 // The function takes the following parameters:
 //
@@ -2172,7 +2266,8 @@ func FormatGetByNick(nick string) Format {
 	return _format
 }
 
-// FormatGetDetails: get details about the given format.
+// FormatGetDetails (gst_format_get_details): get details about the given
+// format.
 //
 // The function takes the following parameters:
 //
@@ -2201,8 +2296,8 @@ func FormatGetDetails(format Format) *FormatDefinition {
 	return _formatDefinition
 }
 
-// FormatGetName: get a printable name for the given format. Do not modify or
-// free.
+// FormatGetName (gst_format_get_name): get a printable name for the given
+// format. Do not modify or free.
 //
 // The function takes the following parameters:
 //
@@ -2230,8 +2325,8 @@ func FormatGetName(format Format) string {
 	return _utf8
 }
 
-// FormatIterateDefinitions: iterate all the registered formats. The format
-// definition is read only.
+// FormatIterateDefinitions (gst_format_iterate_definitions): iterate all the
+// registered formats. The format definition is read only.
 //
 // The function returns the following values:
 //
@@ -2254,8 +2349,8 @@ func FormatIterateDefinitions() *Iterator {
 	return _iterator
 }
 
-// FormatRegister: create a new GstFormat based on the nick or return an already
-// registered format with that nick.
+// FormatRegister (gst_format_register): create a new GstFormat based on the
+// nick or return an already registered format with that nick.
 //
 // The function takes the following parameters:
 //
@@ -2288,7 +2383,8 @@ func FormatRegister(nick, description string) Format {
 	return _format
 }
 
-// FormatToQuark: get the unique quark for the given format.
+// FormatToQuark (gst_format_to_quark): get the unique quark for the given
+// format.
 //
 // The function takes the following parameters:
 //
@@ -2313,15 +2409,15 @@ func FormatToQuark(format Format) glib.Quark {
 	return _quark
 }
 
-// IteratorItem: result of a IteratorItemFunction.
+// IteratorItem (GstIteratorItem): result of a IteratorItemFunction.
 type IteratorItem C.gint
 
 const (
-	// IteratorItemSkip: skip this item.
+	// IteratorItemSkip (GST_ITERATOR_ITEM_SKIP): skip this item.
 	IteratorItemSkip IteratorItem = iota
-	// IteratorItemPass: return item.
+	// IteratorItemPass (GST_ITERATOR_ITEM_PASS): return item.
 	IteratorItemPass
-	// IteratorItemEnd: stop after this item.
+	// IteratorItemEnd (GST_ITERATOR_ITEM_END): stop after this item.
 	IteratorItemEnd
 )
 
@@ -2343,17 +2439,18 @@ func (i IteratorItem) String() string {
 	}
 }
 
-// IteratorResult: result of gst_iterator_next().
+// IteratorResult (GstIteratorResult): result of gst_iterator_next().
 type IteratorResult C.gint
 
 const (
-	// IteratorDone: no more items in the iterator.
+	// IteratorDone (GST_ITERATOR_DONE): no more items in the iterator.
 	IteratorDone IteratorResult = iota
-	// IteratorOK: item was retrieved.
+	// IteratorOK (GST_ITERATOR_OK): item was retrieved.
 	IteratorOK
-	// IteratorResync: datastructure changed while iterating.
+	// IteratorResync (GST_ITERATOR_RESYNC): datastructure changed while
+	// iterating.
 	IteratorResync
-	// IteratorError: error happened.
+	// IteratorError (GST_ITERATOR_ERROR): error happened.
 	IteratorError
 )
 
@@ -2377,26 +2474,32 @@ func (i IteratorResult) String() string {
 	}
 }
 
-// LibraryError: library errors are for errors from the library being used by
-// elements (initializing, finalizing, settings, ...).
+// LibraryError (GstLibraryError): library errors are for errors from the
+// library being used by elements (initializing, finalizing, settings, ...).
 type LibraryError C.gint
 
 const (
-	// LibraryErrorFailed: general error which doesn't fit in any other
-	// category. Make sure you add a custom message to the error call.
+	// LibraryErrorFailed (GST_LIBRARY_ERROR_FAILED): general error which
+	// doesn't fit in any other category. Make sure you add a custom message to
+	// the error call.
 	LibraryErrorFailed LibraryError = 1
-	// LibraryErrorTooLaZY: do not use this except as a placeholder for deciding
-	// where to go while developing code.
+	// LibraryErrorTooLaZY (GST_LIBRARY_ERROR_TOO_LAZY): do not use this except
+	// as a placeholder for deciding where to go while developing code.
 	LibraryErrorTooLaZY LibraryError = 2
-	// LibraryErrorInit: used when the library could not be opened.
+	// LibraryErrorInit (GST_LIBRARY_ERROR_INIT): used when the library could
+	// not be opened.
 	LibraryErrorInit LibraryError = 3
-	// LibraryErrorShutdown: used when the library could not be closed.
+	// LibraryErrorShutdown (GST_LIBRARY_ERROR_SHUTDOWN): used when the library
+	// could not be closed.
 	LibraryErrorShutdown LibraryError = 4
-	// LibraryErrorSettings: used when the library doesn't accept settings.
+	// LibraryErrorSettings (GST_LIBRARY_ERROR_SETTINGS): used when the library
+	// doesn't accept settings.
 	LibraryErrorSettings LibraryError = 5
-	// LibraryErrorEncode: used when the library generated an encoding error.
+	// LibraryErrorEncode (GST_LIBRARY_ERROR_ENCODE): used when the library
+	// generated an encoding error.
 	LibraryErrorEncode LibraryError = 6
-	// LibraryErrorNumErrors: number of library error types.
+	// LibraryErrorNumErrors (GST_LIBRARY_ERROR_NUM_ERRORS): number of library
+	// error types.
 	LibraryErrorNumErrors LibraryError = 7
 )
 
@@ -2438,15 +2541,15 @@ func LibraryErrorQuark() glib.Quark {
 	return _quark
 }
 
-// PadDirection: direction of a pad.
+// PadDirection (GstPadDirection): direction of a pad.
 type PadDirection C.gint
 
 const (
-	// PadUnknown: direction is unknown.
+	// PadUnknown (GST_PAD_UNKNOWN): direction is unknown.
 	PadUnknown PadDirection = iota
-	// PadSrc: pad is a source pad.
+	// PadSrc (GST_PAD_SRC): pad is a source pad.
 	PadSrc
-	// PadSink: pad is a sink pad.
+	// PadSink (GST_PAD_SINK): pad is a sink pad.
 	PadSink
 )
 
@@ -2468,23 +2571,27 @@ func (p PadDirection) String() string {
 	}
 }
 
-// PadLinkReturn: result values from gst_pad_link and friends.
+// PadLinkReturn (GstPadLinkReturn): result values from gst_pad_link and
+// friends.
 type PadLinkReturn C.gint
 
 const (
-	// PadLinkOK: link succeeded.
+	// PadLinkOK (GST_PAD_LINK_OK): link succeeded.
 	PadLinkOK PadLinkReturn = 0
-	// PadLinkWrongHierarchy pads have no common grandparent.
+	// PadLinkWrongHierarchy (GST_PAD_LINK_WRONG_HIERARCHY) pads have no common
+	// grandparent.
 	PadLinkWrongHierarchy PadLinkReturn = -1
-	// PadLinkWasLinked: pad was already linked.
+	// PadLinkWasLinked (GST_PAD_LINK_WAS_LINKED): pad was already linked.
 	PadLinkWasLinked PadLinkReturn = -2
-	// PadLinkWrongDirection pads have wrong direction.
+	// PadLinkWrongDirection (GST_PAD_LINK_WRONG_DIRECTION) pads have wrong
+	// direction.
 	PadLinkWrongDirection PadLinkReturn = -3
-	// PadLinkNoformat pads do not have common format.
+	// PadLinkNoformat (GST_PAD_LINK_NOFORMAT) pads do not have common format.
 	PadLinkNoformat PadLinkReturn = -4
-	// PadLinkNosched pads cannot cooperate in scheduling.
+	// PadLinkNosched (GST_PAD_LINK_NOSCHED) pads cannot cooperate in
+	// scheduling.
 	PadLinkNosched PadLinkReturn = -5
-	// PadLinkRefused: refused for some reason.
+	// PadLinkRefused (GST_PAD_LINK_REFUSED): refused for some reason.
 	PadLinkRefused PadLinkReturn = -6
 )
 
@@ -2514,17 +2621,19 @@ func (p PadLinkReturn) String() string {
 	}
 }
 
-// PadMode status of a GstPad. After activating a pad, which usually happens
-// when the parent element goes from READY to PAUSED, the GstPadMode defines if
-// the pad operates in push or pull mode.
+// PadMode (GstPadMode) status of a GstPad. After activating a pad,
+// which usually happens when the parent element goes from READY to PAUSED,
+// the GstPadMode defines if the pad operates in push or pull mode.
 type PadMode C.gint
 
 const (
-	// PadModeNone: pad will not handle dataflow.
+	// PadModeNone (GST_PAD_MODE_NONE): pad will not handle dataflow.
 	PadModeNone PadMode = iota
-	// PadModePush: pad handles dataflow in downstream push mode.
+	// PadModePush (GST_PAD_MODE_PUSH): pad handles dataflow in downstream push
+	// mode.
 	PadModePush
-	// PadModePull: pad handles dataflow in upstream pull mode.
+	// PadModePull (GST_PAD_MODE_PULL): pad handles dataflow in upstream pull
+	// mode.
 	PadModePull
 )
 
@@ -2546,8 +2655,8 @@ func (p PadMode) String() string {
 	}
 }
 
-// PadModeGetName: return the name of a pad mode, for use in debug messages
-// mostly.
+// PadModeGetName (gst_pad_mode_get_name): return the name of a pad mode,
+// for use in debug messages mostly.
 //
 // The function takes the following parameters:
 //
@@ -2572,15 +2681,16 @@ func PadModeGetName(mode PadMode) string {
 	return _utf8
 }
 
-// PadPresence indicates when this pad will become available.
+// PadPresence (GstPadPresence) indicates when this pad will become available.
 type PadPresence C.gint
 
 const (
-	// PadAlways: pad is always available.
+	// PadAlways (GST_PAD_ALWAYS): pad is always available.
 	PadAlways PadPresence = iota
-	// PadSometimes: pad will become available depending on the media stream.
+	// PadSometimes (GST_PAD_SOMETIMES): pad will become available depending on
+	// the media stream.
 	PadSometimes
-	// PadRequest: pad is only available on request with
+	// PadRequest (GST_PAD_REQUEST): pad is only available on request with
 	// gst_element_request_pad().
 	PadRequest
 )
@@ -2603,36 +2713,38 @@ func (p PadPresence) String() string {
 	}
 }
 
-// PadProbeReturn: different return values for the PadProbeCallback.
+// PadProbeReturn (GstPadProbeReturn): different return values for the
+// PadProbeCallback.
 type PadProbeReturn C.gint
 
 const (
-	// PadProbeDrop: drop data in data probes. For push mode this means that the
-	// data item is not sent downstream. For pull mode, it means that the data
-	// item is not passed upstream. In both cases, no other probes are called
-	// for this item and GST_FLOW_OK or TRUE is returned to the caller.
+	// PadProbeDrop (GST_PAD_PROBE_DROP): drop data in data probes. For push
+	// mode this means that the data item is not sent downstream. For pull mode,
+	// it means that the data item is not passed upstream. In both cases, no
+	// other probes are called for this item and GST_FLOW_OK or TRUE is returned
+	// to the caller.
 	PadProbeDrop PadProbeReturn = iota
-	// PadProbeOK: normal probe return value. This leaves the probe in place,
-	// and defers decisions about dropping or passing data to other probes,
-	// if any. If there are no other probes, the default behaviour for the probe
-	// type applies ('block' for blocking probes, and 'pass' for non-blocking
-	// probes).
+	// PadProbeOK (GST_PAD_PROBE_OK): normal probe return value. This leaves the
+	// probe in place, and defers decisions about dropping or passing data to
+	// other probes, if any. If there are no other probes, the default behaviour
+	// for the probe type applies ('block' for blocking probes, and 'pass' for
+	// non-blocking probes).
 	PadProbeOK
-	// PadProbeRemove: remove this probe, passing the data. For blocking
-	// probes this will cause data flow to unblock, unless there are also other
-	// blocking probes installed.
+	// PadProbeRemove (GST_PAD_PROBE_REMOVE): remove this probe, passing the
+	// data. For blocking probes this will cause data flow to unblock, unless
+	// there are also other blocking probes installed.
 	PadProbeRemove
-	// PadProbePass pass the data item in the block probe and block on the next
-	// item. Note, that if there are multiple pad probes installed and any probe
-	// returns PASS, the data will be passed.
+	// PadProbePass (GST_PAD_PROBE_PASS) pass the data item in the block probe
+	// and block on the next item. Note, that if there are multiple pad probes
+	// installed and any probe returns PASS, the data will be passed.
 	PadProbePass
-	// PadProbeHandled: data has been handled in the probe and will not be
-	// forwarded further. For events and buffers this is the same behaviour
-	// as GST_PAD_PROBE_DROP (except that in this case you need to unref the
-	// buffer or event yourself). For queries it will also return TRUE to the
-	// caller. The probe can also modify the FlowReturn value by using the
-	// T_PAD_PROBE_INFO_FLOW_RETURN() accessor. Note that the resulting query
-	// must contain valid entries. Since: 1.6.
+	// PadProbeHandled (GST_PAD_PROBE_HANDLED): data has been handled in the
+	// probe and will not be forwarded further. For events and buffers this is
+	// the same behaviour as GST_PAD_PROBE_DROP (except that in this case you
+	// need to unref the buffer or event yourself). For queries it will also
+	// return TRUE to the caller. The probe can also modify the FlowReturn
+	// value by using the T_PAD_PROBE_INFO_FLOW_RETURN() accessor. Note that the
+	// resulting query must contain valid entries. Since: 1.6.
 	PadProbeHandled
 )
 
@@ -2658,25 +2770,30 @@ func (p PadProbeReturn) String() string {
 	}
 }
 
-// ParseError: different parsing errors that can occur.
+// ParseError (GstParseError): different parsing errors that can occur.
 type ParseError C.gint
 
 const (
-	// ParseErrorSyntax: syntax error occurred.
+	// ParseErrorSyntax (GST_PARSE_ERROR_SYNTAX): syntax error occurred.
 	ParseErrorSyntax ParseError = iota
-	// ParseErrorNoSuchElement: description contained an unknown element.
+	// ParseErrorNoSuchElement (GST_PARSE_ERROR_NO_SUCH_ELEMENT): description
+	// contained an unknown element.
 	ParseErrorNoSuchElement
-	// ParseErrorNoSuchProperty: element did not have a specified property.
+	// ParseErrorNoSuchProperty (GST_PARSE_ERROR_NO_SUCH_PROPERTY): element did
+	// not have a specified property.
 	ParseErrorNoSuchProperty
-	// ParseErrorLink: there was an error linking two pads.
+	// ParseErrorLink (GST_PARSE_ERROR_LINK): there was an error linking two
+	// pads.
 	ParseErrorLink
-	// ParseErrorCouldNotSetProperty: there was an error setting a property.
+	// ParseErrorCouldNotSetProperty (GST_PARSE_ERROR_COULD_NOT_SET_PROPERTY):
+	// there was an error setting a property.
 	ParseErrorCouldNotSetProperty
-	// ParseErrorEmptyBin: empty bin was specified.
+	// ParseErrorEmptyBin (GST_PARSE_ERROR_EMPTY_BIN): empty bin was specified.
 	ParseErrorEmptyBin
-	// ParseErrorEmpty: empty description was specified.
+	// ParseErrorEmpty (GST_PARSE_ERROR_EMPTY): empty description was specified.
 	ParseErrorEmpty
-	// ParseErrorDelayedLink: delayed link did not get resolved.
+	// ParseErrorDelayedLink (GST_PARSE_ERROR_DELAYED_LINK): delayed link did
+	// not get resolved.
 	ParseErrorDelayedLink
 )
 
@@ -2708,7 +2825,8 @@ func (p ParseError) String() string {
 	}
 }
 
-// ParseErrorQuark: get the error quark used by the parsing subsystem.
+// ParseErrorQuark (gst_parse_error_quark): get the error quark used by the
+// parsing subsystem.
 //
 // The function returns the following values:
 //
@@ -2725,16 +2843,17 @@ func ParseErrorQuark() glib.Quark {
 	return _quark
 }
 
-// PluginError: plugin loading errors.
+// PluginError (GstPluginError): plugin loading errors.
 type PluginError C.gint
 
 const (
-	// PluginErrorModule: plugin could not be loaded.
+	// PluginErrorModule (GST_PLUGIN_ERROR_MODULE): plugin could not be loaded.
 	PluginErrorModule PluginError = iota
-	// PluginErrorDependencies: plugin has unresolved dependencies.
+	// PluginErrorDependencies (GST_PLUGIN_ERROR_DEPENDENCIES): plugin has
+	// unresolved dependencies.
 	PluginErrorDependencies
-	// PluginErrorNameMismatch: plugin has already be loaded from a different
-	// file.
+	// PluginErrorNameMismatch (GST_PLUGIN_ERROR_NAME_MISMATCH): plugin has
+	// already be loaded from a different file.
 	PluginErrorNameMismatch
 )
 
@@ -2756,7 +2875,7 @@ func (p PluginError) String() string {
 	}
 }
 
-// PluginErrorQuark: get the error quark.
+// PluginErrorQuark (gst_plugin_error_quark): get the error quark.
 //
 // The function returns the following values:
 //
@@ -2773,21 +2892,22 @@ func PluginErrorQuark() glib.Quark {
 	return _quark
 }
 
-// ProgressType: type of a GST_MESSAGE_PROGRESS. The progress messages inform
-// the application of the status of asynchronous tasks.
+// ProgressType (GstProgressType): type of a GST_MESSAGE_PROGRESS. The progress
+// messages inform the application of the status of asynchronous tasks.
 type ProgressType C.gint
 
 const (
-	// ProgressTypeStart: new task started.
+	// ProgressTypeStart (GST_PROGRESS_TYPE_START): new task started.
 	ProgressTypeStart ProgressType = iota
-	// ProgressTypeContinue: task completed and a new one continues.
+	// ProgressTypeContinue (GST_PROGRESS_TYPE_CONTINUE): task completed and a
+	// new one continues.
 	ProgressTypeContinue
-	// ProgressTypeComplete: task completed.
+	// ProgressTypeComplete (GST_PROGRESS_TYPE_COMPLETE): task completed.
 	ProgressTypeComplete
-	// ProgressTypeCanceled: task was canceled.
+	// ProgressTypeCanceled (GST_PROGRESS_TYPE_CANCELED): task was canceled.
 	ProgressTypeCanceled
-	// ProgressTypeError: task caused an error. An error message is also posted
-	// on the bus.
+	// ProgressTypeError (GST_PROGRESS_TYPE_ERROR): task caused an error.
+	// An error message is also posted on the bus.
 	ProgressTypeError
 )
 
@@ -2813,20 +2933,21 @@ func (p ProgressType) String() string {
 	}
 }
 
-// PromiseResult: result of a Promise.
+// PromiseResult (GstPromiseResult): result of a Promise.
 type PromiseResult C.gint
 
 const (
-	// PromiseResultPending: initial state. Waiting for transition to any other
-	// state.
+	// PromiseResultPending (GST_PROMISE_RESULT_PENDING): initial state. Waiting
+	// for transition to any other state.
 	PromiseResultPending PromiseResult = iota
-	// PromiseResultInterrupted: interrupted by the consumer as it doesn't want
-	// the value anymore.
+	// PromiseResultInterrupted (GST_PROMISE_RESULT_INTERRUPTED): interrupted by
+	// the consumer as it doesn't want the value anymore.
 	PromiseResultInterrupted
-	// PromiseResultReplied: producer marked a reply.
+	// PromiseResultReplied (GST_PROMISE_RESULT_REPLIED): producer marked a
+	// reply.
 	PromiseResultReplied
-	// PromiseResultExpired: promise expired (the carrying object lost all refs)
-	// and the promise will never be fulfilled.
+	// PromiseResultExpired (GST_PROMISE_RESULT_EXPIRED): promise expired (the
+	// carrying object lost all refs) and the promise will never be fulfilled.
 	PromiseResultExpired
 )
 
@@ -2850,21 +2971,23 @@ func (p PromiseResult) String() string {
 	}
 }
 
-// QOSType: different types of QoS events that can be given to the
+// QOSType (GstQOSType): different types of QoS events that can be given to the
 // gst_event_new_qos() method.
 type QOSType C.gint
 
 const (
-	// QosTypeOverflow: qoS event type that is produced when upstream elements
-	// are producing data too quickly and the element can't keep up processing
-	// the data. Upstream should reduce their production rate. This type is also
-	// used when buffers arrive early or in time.
+	// QosTypeOverflow (GST_QOS_TYPE_OVERFLOW): qoS event type that is
+	// produced when upstream elements are producing data too quickly and the
+	// element can't keep up processing the data. Upstream should reduce their
+	// production rate. This type is also used when buffers arrive early or in
+	// time.
 	QosTypeOverflow QOSType = iota
-	// QosTypeUnderflow: qoS event type that is produced when upstream elements
-	// are producing data too slowly and need to speed up their production rate.
+	// QosTypeUnderflow (GST_QOS_TYPE_UNDERFLOW): qoS event type that is
+	// produced when upstream elements are producing data too slowly and need to
+	// speed up their production rate.
 	QosTypeUnderflow
-	// QosTypeThrottle: qoS event type that is produced when the application
-	// enabled throttling to limit the data rate.
+	// QosTypeThrottle (GST_QOS_TYPE_THROTTLE): qoS event type that is produced
+	// when the application enabled throttling to limit the data rate.
 	QosTypeThrottle
 )
 
@@ -2886,52 +3009,56 @@ func (q QOSType) String() string {
 	}
 }
 
-// QueryType: standard predefined Query types.
+// QueryType (GstQueryType): standard predefined Query types.
 type QueryType C.gint
 
 const (
-	// QueryUnknown: unknown query type.
+	// QueryUnknown (GST_QUERY_UNKNOWN): unknown query type.
 	QueryUnknown QueryType = 0
-	// QueryPosition: current position in stream.
+	// QueryPosition (GST_QUERY_POSITION): current position in stream.
 	QueryPosition QueryType = 2563
-	// QueryDuration: total duration of the stream.
+	// QueryDuration (GST_QUERY_DURATION): total duration of the stream.
 	QueryDuration QueryType = 5123
-	// QueryLatency: latency of stream.
+	// QueryLatency (GST_QUERY_LATENCY): latency of stream.
 	QueryLatency QueryType = 7683
-	// QueryJitter: current jitter of stream.
+	// QueryJitter (GST_QUERY_JITTER): current jitter of stream.
 	QueryJitter QueryType = 10243
-	// QueryRate: current rate of the stream.
+	// QueryRate (GST_QUERY_RATE): current rate of the stream.
 	QueryRate QueryType = 12803
-	// QuerySeeking: seeking capabilities.
+	// QuerySeeking (GST_QUERY_SEEKING): seeking capabilities.
 	QuerySeeking QueryType = 15363
-	// QuerySegment: segment start/stop positions.
+	// QuerySegment (GST_QUERY_SEGMENT): segment start/stop positions.
 	QuerySegment QueryType = 17923
-	// QueryConvert: convert values between formats.
+	// QueryConvert (GST_QUERY_CONVERT): convert values between formats.
 	QueryConvert QueryType = 20483
-	// QueryFormats: query supported formats for convert.
+	// QueryFormats (GST_QUERY_FORMATS): query supported formats for convert.
 	QueryFormats QueryType = 23043
-	// QueryBuffering: query available media for efficient seeking.
+	// QueryBuffering (GST_QUERY_BUFFERING): query available media for efficient
+	// seeking.
 	QueryBuffering QueryType = 28163
-	// QueryCustom: custom application or element defined query.
+	// QueryCustom (GST_QUERY_CUSTOM): custom application or element defined
+	// query.
 	QueryCustom QueryType = 30723
-	// QueryURI: query the URI of the source or sink.
+	// QueryURI (GST_QUERY_URI): query the URI of the source or sink.
 	QueryURI QueryType = 33283
-	// QueryAllocation: buffer allocation properties.
+	// QueryAllocation (GST_QUERY_ALLOCATION): buffer allocation properties.
 	QueryAllocation QueryType = 35846
-	// QueryScheduling: scheduling properties.
+	// QueryScheduling (GST_QUERY_SCHEDULING): scheduling properties.
 	QueryScheduling QueryType = 38401
-	// QueryAcceptCaps: accept caps query.
+	// QueryAcceptCaps (GST_QUERY_ACCEPT_CAPS): accept caps query.
 	QueryAcceptCaps QueryType = 40963
-	// QueryCaps caps query.
+	// QueryCaps (GST_QUERY_CAPS) caps query.
 	QueryCaps QueryType = 43523
-	// QueryDrain: wait till all serialized data is consumed downstream.
+	// QueryDrain (GST_QUERY_DRAIN): wait till all serialized data is consumed
+	// downstream.
 	QueryDrain QueryType = 46086
-	// QueryContext: query the pipeline-local context from downstream or
-	// upstream (since 1.2).
+	// QueryContext (GST_QUERY_CONTEXT): query the pipeline-local context from
+	// downstream or upstream (since 1.2).
 	QueryContext QueryType = 48643
-	// QueryBitrate: bitrate query (since 1.16).
+	// QueryBitrate (GST_QUERY_BITRATE): bitrate query (since 1.16).
 	QueryBitrate QueryType = 51202
-	// QuerySelectable: query stream selection capability.
+	// QuerySelectable (GST_QUERY_SELECTABLE): query stream selection
+	// capability.
 	QuerySelectable QueryType = 53763
 )
 
@@ -2989,7 +3116,8 @@ func (q QueryType) String() string {
 	}
 }
 
-// QueryTypeGetFlags gets the QueryTypeFlags associated with type.
+// QueryTypeGetFlags (gst_query_type_get_flags) gets the QueryTypeFlags
+// associated with type.
 //
 // The function takes the following parameters:
 //
@@ -3014,8 +3142,8 @@ func QueryTypeGetFlags(typ QueryType) QueryTypeFlags {
 	return _queryTypeFlags
 }
 
-// QueryTypeGetName: get a printable name for the given query type. Do not
-// modify or free.
+// QueryTypeGetName (gst_query_type_get_name): get a printable name for the
+// given query type. Do not modify or free.
 //
 // The function takes the following parameters:
 //
@@ -3040,7 +3168,8 @@ func QueryTypeGetName(typ QueryType) string {
 	return _utf8
 }
 
-// QueryTypeToQuark: get the unique quark for the given query type.
+// QueryTypeToQuark (gst_query_type_to_quark): get the unique quark for the
+// given query type.
 //
 // The function takes the following parameters:
 //
@@ -3065,9 +3194,10 @@ func QueryTypeToQuark(typ QueryType) glib.Quark {
 	return _quark
 }
 
-// Rank: element priority ranks. Defines the order in which the autoplugger (or
-// similar rank-picking mechanisms, such as e.g. gst_element_make_from_uri())
-// will choose this element over an alternative one with the same function.
+// Rank (GstRank): element priority ranks. Defines the order in which
+// the autoplugger (or similar rank-picking mechanisms, such as e.g.
+// gst_element_make_from_uri()) will choose this element over an alternative one
+// with the same function.
 //
 // These constants serve as a rough guidance for defining the rank of
 // a PluginFeature. Any value is valid, including values bigger than
@@ -3075,13 +3205,13 @@ func QueryTypeToQuark(typ QueryType) glib.Quark {
 type Rank C.gint
 
 const (
-	// RankNone will be chosen last or not at all.
+	// RankNone (GST_RANK_NONE) will be chosen last or not at all.
 	RankNone Rank = 0
-	// RankMarginal: unlikely to be chosen.
+	// RankMarginal (GST_RANK_MARGINAL): unlikely to be chosen.
 	RankMarginal Rank = 64
-	// RankSecondary: likely to be chosen.
+	// RankSecondary (GST_RANK_SECONDARY): likely to be chosen.
 	RankSecondary Rank = 128
-	// RankPrimary will be chosen first.
+	// RankPrimary (GST_RANK_PRIMARY) will be chosen first.
 	RankPrimary Rank = 256
 )
 
@@ -3105,47 +3235,61 @@ func (r Rank) String() string {
 	}
 }
 
-// ResourceError: resource errors are for any resource used by an element:
-// memory, files, network connections, process space, ... They're typically used
-// by source and sink elements.
+// ResourceError (GstResourceError): resource errors are for any resource
+// used by an element: memory, files, network connections, process space, ...
+// They're typically used by source and sink elements.
 type ResourceError C.gint
 
 const (
-	// ResourceErrorFailed: general error which doesn't fit in any other
-	// category. Make sure you add a custom message to the error call.
+	// ResourceErrorFailed (GST_RESOURCE_ERROR_FAILED): general error which
+	// doesn't fit in any other category. Make sure you add a custom message to
+	// the error call.
 	ResourceErrorFailed ResourceError = 1
-	// ResourceErrorTooLaZY: do not use this except as a placeholder for
-	// deciding where to go while developing code.
+	// ResourceErrorTooLaZY (GST_RESOURCE_ERROR_TOO_LAZY): do not use this
+	// except as a placeholder for deciding where to go while developing code.
 	ResourceErrorTooLaZY ResourceError = 2
-	// ResourceErrorNotFound: used when the resource could not be found.
+	// ResourceErrorNotFound (GST_RESOURCE_ERROR_NOT_FOUND): used when the
+	// resource could not be found.
 	ResourceErrorNotFound ResourceError = 3
-	// ResourceErrorBusy: used when resource is busy.
+	// ResourceErrorBusy (GST_RESOURCE_ERROR_BUSY): used when resource is busy.
 	ResourceErrorBusy ResourceError = 4
-	// ResourceErrorOpenRead: used when resource fails to open for reading.
+	// ResourceErrorOpenRead (GST_RESOURCE_ERROR_OPEN_READ): used when resource
+	// fails to open for reading.
 	ResourceErrorOpenRead ResourceError = 5
-	// ResourceErrorOpenWrite: used when resource fails to open for writing.
+	// ResourceErrorOpenWrite (GST_RESOURCE_ERROR_OPEN_WRITE): used when
+	// resource fails to open for writing.
 	ResourceErrorOpenWrite ResourceError = 6
-	// ResourceErrorOpenReadWrite: used when resource cannot be opened for both
-	// reading and writing, or either (but unspecified which).
+	// ResourceErrorOpenReadWrite (GST_RESOURCE_ERROR_OPEN_READ_WRITE):
+	// used when resource cannot be opened for both reading and writing,
+	// or either (but unspecified which).
 	ResourceErrorOpenReadWrite ResourceError = 7
-	// ResourceErrorClose: used when the resource can't be closed.
+	// ResourceErrorClose (GST_RESOURCE_ERROR_CLOSE): used when the resource
+	// can't be closed.
 	ResourceErrorClose ResourceError = 8
-	// ResourceErrorRead: used when the resource can't be read from.
+	// ResourceErrorRead (GST_RESOURCE_ERROR_READ): used when the resource can't
+	// be read from.
 	ResourceErrorRead ResourceError = 9
-	// ResourceErrorWrite: used when the resource can't be written to.
+	// ResourceErrorWrite (GST_RESOURCE_ERROR_WRITE): used when the resource
+	// can't be written to.
 	ResourceErrorWrite ResourceError = 10
-	// ResourceErrorSeek: used when a seek on the resource fails.
+	// ResourceErrorSeek (GST_RESOURCE_ERROR_SEEK): used when a seek on the
+	// resource fails.
 	ResourceErrorSeek ResourceError = 11
-	// ResourceErrorSync: used when a synchronize on the resource fails.
+	// ResourceErrorSync (GST_RESOURCE_ERROR_SYNC): used when a synchronize on
+	// the resource fails.
 	ResourceErrorSync ResourceError = 12
-	// ResourceErrorSettings: used when settings can't be manipulated on.
+	// ResourceErrorSettings (GST_RESOURCE_ERROR_SETTINGS): used when settings
+	// can't be manipulated on.
 	ResourceErrorSettings ResourceError = 13
-	// ResourceErrorNoSpaceLeft: used when the resource has no space left.
+	// ResourceErrorNoSpaceLeft (GST_RESOURCE_ERROR_NO_SPACE_LEFT): used when
+	// the resource has no space left.
 	ResourceErrorNoSpaceLeft ResourceError = 14
-	// ResourceErrorNotAuthorized: used when the resource can't be opened due to
-	// missing authorization. (Since: 1.2.4).
+	// ResourceErrorNotAuthorized (GST_RESOURCE_ERROR_NOT_AUTHORIZED): used
+	// when the resource can't be opened due to missing authorization. (Since:
+	// 1.2.4).
 	ResourceErrorNotAuthorized ResourceError = 15
-	// ResourceErrorNumErrors: number of resource error types.
+	// ResourceErrorNumErrors (GST_RESOURCE_ERROR_NUM_ERRORS): number of
+	// resource error types.
 	ResourceErrorNumErrors ResourceError = 16
 )
 
@@ -3205,15 +3349,17 @@ func ResourceErrorQuark() glib.Quark {
 	return _quark
 }
 
-// SearchMode: different search modes.
+// SearchMode (GstSearchMode): different search modes.
 type SearchMode C.gint
 
 const (
-	// SearchModeExact: only search for exact matches.
+	// SearchModeExact (GST_SEARCH_MODE_EXACT): only search for exact matches.
 	SearchModeExact SearchMode = iota
-	// SearchModeBefore: search for an exact match or the element just before.
+	// SearchModeBefore (GST_SEARCH_MODE_BEFORE): search for an exact match or
+	// the element just before.
 	SearchModeBefore
-	// SearchModeAfter: search for an exact match or the element just after.
+	// SearchModeAfter (GST_SEARCH_MODE_AFTER): search for an exact match or the
+	// element just after.
 	SearchModeAfter
 )
 
@@ -3235,16 +3381,17 @@ func (s SearchMode) String() string {
 	}
 }
 
-// SeekType: different types of seek events. When constructing a seek event with
-// gst_event_new_seek() or when doing gst_segment_do_seek ().
+// SeekType (GstSeekType): different types of seek events. When constructing a
+// seek event with gst_event_new_seek() or when doing gst_segment_do_seek ().
 type SeekType C.gint
 
 const (
-	// SeekTypeNone: no change in position is required.
+	// SeekTypeNone (GST_SEEK_TYPE_NONE): no change in position is required.
 	SeekTypeNone SeekType = iota
-	// SeekTypeSet: absolute position is requested.
+	// SeekTypeSet (GST_SEEK_TYPE_SET): absolute position is requested.
 	SeekTypeSet
-	// SeekTypeEnd: relative position to duration is requested.
+	// SeekTypeEnd (GST_SEEK_TYPE_END): relative position to duration is
+	// requested.
 	SeekTypeEnd
 )
 
@@ -3266,22 +3413,23 @@ func (s SeekType) String() string {
 	}
 }
 
-// State: possible states an element can be in. States can be changed using
-// gst_element_set_state() and checked using gst_element_get_state().
+// State (GstState): possible states an element can be in. States can be changed
+// using gst_element_set_state() and checked using gst_element_get_state().
 type State C.gint
 
 const (
-	// StateVoidPending: no pending state.
+	// StateVoidPending (GST_STATE_VOID_PENDING): no pending state.
 	StateVoidPending State = iota
-	// StateNull: NULL state or initial state of an element.
+	// StateNull (GST_STATE_NULL): NULL state or initial state of an element.
 	StateNull
-	// StateReady: element is ready to go to PAUSED.
+	// StateReady (GST_STATE_READY): element is ready to go to PAUSED.
 	StateReady
-	// StatePaused: element is PAUSED, it is ready to accept and process data.
-	// Sink elements however only accept one buffer and then block.
+	// StatePaused (GST_STATE_PAUSED): element is PAUSED, it is ready to accept
+	// and process data. Sink elements however only accept one buffer and then
+	// block.
 	StatePaused
-	// StatePlaying: element is PLAYING, the Clock is running and the data is
-	// flowing.
+	// StatePlaying (GST_STATE_PLAYING): element is PLAYING, the Clock is
+	// running and the data is flowing.
 	StatePlaying
 )
 
@@ -3307,76 +3455,82 @@ func (s State) String() string {
 	}
 }
 
-// StateChange: these are the different state changes an element goes through.
-// GST_STATE_NULL &rArr; GST_STATE_PLAYING is called an upwards state change and
-// GST_STATE_PLAYING &rArr; GST_STATE_NULL a downwards state change.
+// StateChange (GstStateChange): these are the different state changes an
+// element goes through. GST_STATE_NULL &rArr; GST_STATE_PLAYING is called an
+// upwards state change and GST_STATE_PLAYING &rArr; GST_STATE_NULL a downwards
+// state change.
 type StateChange C.gint
 
 const (
-	// StateChangeNullToReady: state change from NULL to READY. * The element
-	// must check if the resources it needs are available. Device sinks and
-	// -sources typically try to probe the device to constrain their caps.
-	// * The element opens the device (in case feature need to be probed).
+	// StateChangeNullToReady (GST_STATE_CHANGE_NULL_TO_READY): state change
+	// from NULL to READY. * The element must check if the resources it needs
+	// are available. Device sinks and -sources typically try to probe the
+	// device to constrain their caps. * The element opens the device (in case
+	// feature need to be probed).
 	StateChangeNullToReady StateChange = 10
-	// StateChangeReadyToPaused: state change from READY to PAUSED.
-	// * The element pads are activated in order to receive data in PAUSED.
-	// Streaming threads are started. * Some elements might need to return
-	// GST_STATE_CHANGE_ASYNC and complete the state change when they
-	// have enough information. It is a requirement for sinks to return
-	// GST_STATE_CHANGE_ASYNC and complete the state change when they receive
-	// the first buffer or GST_EVENT_EOS (preroll). Sinks also block the
-	// dataflow when in PAUSED. * A pipeline resets the running_time to 0. *
+	// StateChangeReadyToPaused (GST_STATE_CHANGE_READY_TO_PAUSED): state
+	// change from READY to PAUSED. * The element pads are activated in order to
+	// receive data in PAUSED. Streaming threads are started. * Some elements
+	// might need to return GST_STATE_CHANGE_ASYNC and complete the state change
+	// when they have enough information. It is a requirement for sinks to
+	// return GST_STATE_CHANGE_ASYNC and complete the state change when they
+	// receive the first buffer or GST_EVENT_EOS (preroll). Sinks also block
+	// the dataflow when in PAUSED. * A pipeline resets the running_time to 0. *
 	// Live sources return GST_STATE_CHANGE_NO_PREROLL and don't generate data.
 	StateChangeReadyToPaused StateChange = 19
-	// StateChangePausedToPlaying: state change from PAUSED to PLAYING.
-	// * Most elements ignore this state change. * The pipeline selects a Clock
-	// and distributes this to all the children before setting them to PLAYING.
-	// This means that it is only allowed to synchronize on the Clock in the
-	// PLAYING state. * The pipeline uses the Clock and the running_time to
-	// calculate the base_time. The base_time is distributed to all children
-	// when performing the state change. * Sink elements stop blocking on
-	// the preroll buffer or event and start rendering the data. * Sinks can
-	// post GST_MESSAGE_EOS in the PLAYING state. It is not allowed to post
-	// GST_MESSAGE_EOS when not in the PLAYING state. * While streaming in
-	// PAUSED or PLAYING elements can create and remove sometimes pads. * Live
-	// sources start generating data and return GST_STATE_CHANGE_SUCCESS.
+	// StateChangePausedToPlaying (GST_STATE_CHANGE_PAUSED_TO_PLAYING): state
+	// change from PAUSED to PLAYING. * Most elements ignore this state change.
+	// * The pipeline selects a Clock and distributes this to all the children
+	// before setting them to PLAYING. This means that it is only allowed to
+	// synchronize on the Clock in the PLAYING state. * The pipeline uses the
+	// Clock and the running_time to calculate the base_time. The base_time
+	// is distributed to all children when performing the state change. * Sink
+	// elements stop blocking on the preroll buffer or event and start rendering
+	// the data. * Sinks can post GST_MESSAGE_EOS in the PLAYING state.
+	// It is not allowed to post GST_MESSAGE_EOS when not in the PLAYING state.
+	// * While streaming in PAUSED or PLAYING elements can create and remove
+	// sometimes pads. * Live sources start generating data and return
+	// GST_STATE_CHANGE_SUCCESS.
 	StateChangePausedToPlaying StateChange = 28
-	// StateChangePlayingToPaused: state change from PLAYING to PAUSED.
-	// * Most elements ignore this state change. * The pipeline calculates
-	// the running_time based on the last selected Clock and the base_time.
-	// It stores this information to continue playback when going back to the
-	// PLAYING state. * Sinks unblock any Clock wait calls. * When a sink does
-	// not have a pending buffer to play, it returns T_STATE_CHANGE_ASYNC from
-	// this state change and completes the state change when it receives a
-	// new buffer or an GST_EVENT_EOS. * Any queued GST_MESSAGE_EOS items are
-	// removed since they will be reposted when going back to the PLAYING state.
-	// The EOS messages are queued in Bin containers. * Live sources stop
-	// generating data and return GST_STATE_CHANGE_NO_PREROLL.
+	// StateChangePlayingToPaused (GST_STATE_CHANGE_PLAYING_TO_PAUSED):
+	// state change from PLAYING to PAUSED. * Most elements ignore this state
+	// change. * The pipeline calculates the running_time based on the last
+	// selected Clock and the base_time. It stores this information to continue
+	// playback when going back to the PLAYING state. * Sinks unblock any
+	// Clock wait calls. * When a sink does not have a pending buffer to play,
+	// it returns T_STATE_CHANGE_ASYNC from this state change and completes
+	// the state change when it receives a new buffer or an GST_EVENT_EOS.
+	// * Any queued GST_MESSAGE_EOS items are removed since they will be
+	// reposted when going back to the PLAYING state. The EOS messages are
+	// queued in Bin containers. * Live sources stop generating data and return
+	// GST_STATE_CHANGE_NO_PREROLL.
 	StateChangePlayingToPaused StateChange = 35
-	// StateChangePausedToReady: state change from PAUSED to READY.
-	// * Sinks unblock any waits in the preroll. * Elements unblock any waits
-	// on devices * Chain or get_range functions return GST_FLOW_FLUSHING.
-	// * The element pads are deactivated so that streaming becomes impossible
-	// and all streaming threads are stopped. * The sink forgets all negotiated
-	// formats * Elements remove all sometimes pads.
+	// StateChangePausedToReady (GST_STATE_CHANGE_PAUSED_TO_READY): state
+	// change from PAUSED to READY. * Sinks unblock any waits in the preroll.
+	// * Elements unblock any waits on devices * Chain or get_range functions
+	// return GST_FLOW_FLUSHING. * The element pads are deactivated so that
+	// streaming becomes impossible and all streaming threads are stopped. * The
+	// sink forgets all negotiated formats * Elements remove all sometimes pads.
 	StateChangePausedToReady StateChange = 26
-	// StateChangeReadyToNull: state change from READY to NULL. * Elements close
-	// devices * Elements reset any internal state.
+	// StateChangeReadyToNull (GST_STATE_CHANGE_READY_TO_NULL): state change
+	// from READY to NULL. * Elements close devices * Elements reset any
+	// internal state.
 	StateChangeReadyToNull StateChange = 17
-	// StateChangeNullToNull: state change from NULL to NULL. (Since: 1.14).
+	// StateChangeNullToNull (GST_STATE_CHANGE_NULL_TO_NULL): state change from
+	// NULL to NULL. (Since: 1.14).
 	StateChangeNullToNull StateChange = 9
-	// StateChangeReadyToReady: state change from READY to READY, This might
-	// happen when going to PAUSED asynchronously failed, in that case elements
-	// should make sure they are in a proper, coherent READY state. (Since:
-	// 1.14).
+	// StateChangeReadyToReady (GST_STATE_CHANGE_READY_TO_READY): state
+	// change from READY to READY, This might happen when going to PAUSED
+	// asynchronously failed, in that case elements should make sure they are in
+	// a proper, coherent READY state. (Since: 1.14).
 	StateChangeReadyToReady StateChange = 18
-	// StateChangePausedToPaused: state change from PAUSED to PAUSED. This might
-	// happen when elements were in PLAYING state and 'lost state', they should
-	// make sure to go back to real 'PAUSED' state (prerolling for example).
-	// (Since: 1.14).
+	// StateChangePausedToPaused (GST_STATE_CHANGE_PAUSED_TO_PAUSED): state
+	// change from PAUSED to PAUSED. This might happen when elements were in
+	// PLAYING state and 'lost state', they should make sure to go back to real
+	// 'PAUSED' state (prerolling for example). (Since: 1.14).
 	StateChangePausedToPaused StateChange = 27
-	// StateChangePlayingToPlaying: state change from PLAYING to PLAYING.
-	// (Since: 1.14).
+	// StateChangePlayingToPlaying (GST_STATE_CHANGE_PLAYING_TO_PLAYING):
+	// state change from PLAYING to PLAYING. (Since: 1.14).
 	StateChangePlayingToPlaying StateChange = 36
 )
 
@@ -3412,7 +3566,8 @@ func (s StateChange) String() string {
 	}
 }
 
-// StateChangeGetName gets a string representing the given state transition.
+// StateChangeGetName (gst_state_change_get_name) gets a string representing the
+// given state transition.
 //
 // The function takes the following parameters:
 //
@@ -3437,20 +3592,22 @@ func StateChangeGetName(transition StateChange) string {
 	return _utf8
 }
 
-// StateChangeReturn: possible return values from a state change function such
-// as gst_element_set_state(). Only GST_STATE_CHANGE_FAILURE is a real failure.
+// StateChangeReturn (GstStateChangeReturn): possible return values
+// from a state change function such as gst_element_set_state(). Only
+// GST_STATE_CHANGE_FAILURE is a real failure.
 type StateChangeReturn C.gint
 
 const (
-	// StateChangeFailure: state change failed.
+	// StateChangeFailure (GST_STATE_CHANGE_FAILURE): state change failed.
 	StateChangeFailure StateChangeReturn = iota
-	// StateChangeSuccess: state change succeeded.
+	// StateChangeSuccess (GST_STATE_CHANGE_SUCCESS): state change succeeded.
 	StateChangeSuccess
-	// StateChangeAsync: state change will happen asynchronously.
+	// StateChangeAsync (GST_STATE_CHANGE_ASYNC): state change will happen
+	// asynchronously.
 	StateChangeAsync
-	// StateChangeNoPreroll: state change succeeded but the element cannot
-	// produce data in GST_STATE_PAUSED. This typically happens with live
-	// sources.
+	// StateChangeNoPreroll (GST_STATE_CHANGE_NO_PREROLL): state change
+	// succeeded but the element cannot produce data in GST_STATE_PAUSED.
+	// This typically happens with live sources.
 	StateChangeNoPreroll
 )
 
@@ -3474,48 +3631,52 @@ func (s StateChangeReturn) String() string {
 	}
 }
 
-// StreamError: stream errors are for anything related to the stream being
-// processed: format errors, media type errors, ... They're typically used by
-// decoders, demuxers, converters, ...
+// StreamError (GstStreamError): stream errors are for anything related to
+// the stream being processed: format errors, media type errors, ... They're
+// typically used by decoders, demuxers, converters, ...
 type StreamError C.gint
 
 const (
-	// StreamErrorFailed: general error which doesn't fit in any other category.
-	// Make sure you add a custom message to the error call.
+	// StreamErrorFailed (GST_STREAM_ERROR_FAILED): general error which doesn't
+	// fit in any other category. Make sure you add a custom message to the
+	// error call.
 	StreamErrorFailed StreamError = 1
-	// StreamErrorTooLaZY: do not use this except as a placeholder for deciding
-	// where to go while developing code.
+	// StreamErrorTooLaZY (GST_STREAM_ERROR_TOO_LAZY): do not use this except as
+	// a placeholder for deciding where to go while developing code.
 	StreamErrorTooLaZY StreamError = 2
-	// StreamErrorNotImplemented: use this when you do not want to implement
-	// this functionality yet.
+	// StreamErrorNotImplemented (GST_STREAM_ERROR_NOT_IMPLEMENTED): use this
+	// when you do not want to implement this functionality yet.
 	StreamErrorNotImplemented StreamError = 3
-	// StreamErrorTypeNotFound: used when the element doesn't know the stream's
-	// type.
+	// StreamErrorTypeNotFound (GST_STREAM_ERROR_TYPE_NOT_FOUND): used when the
+	// element doesn't know the stream's type.
 	StreamErrorTypeNotFound StreamError = 4
-	// StreamErrorWrongType: used when the element doesn't handle this type of
-	// stream.
+	// StreamErrorWrongType (GST_STREAM_ERROR_WRONG_TYPE): used when the element
+	// doesn't handle this type of stream.
 	StreamErrorWrongType StreamError = 5
-	// StreamErrorCodecNotFound: used when there's no codec to handle the
-	// stream's type.
+	// StreamErrorCodecNotFound (GST_STREAM_ERROR_CODEC_NOT_FOUND): used when
+	// there's no codec to handle the stream's type.
 	StreamErrorCodecNotFound StreamError = 6
-	// StreamErrorDecode: used when decoding fails.
+	// StreamErrorDecode (GST_STREAM_ERROR_DECODE): used when decoding fails.
 	StreamErrorDecode StreamError = 7
-	// StreamErrorEncode: used when encoding fails.
+	// StreamErrorEncode (GST_STREAM_ERROR_ENCODE): used when encoding fails.
 	StreamErrorEncode StreamError = 8
-	// StreamErrorDemux: used when demuxing fails.
+	// StreamErrorDemux (GST_STREAM_ERROR_DEMUX): used when demuxing fails.
 	StreamErrorDemux StreamError = 9
-	// StreamErrorMux: used when muxing fails.
+	// StreamErrorMux (GST_STREAM_ERROR_MUX): used when muxing fails.
 	StreamErrorMux StreamError = 10
-	// StreamErrorFormat: used when the stream is of the wrong format (for
-	// example, wrong caps).
+	// StreamErrorFormat (GST_STREAM_ERROR_FORMAT): used when the stream is of
+	// the wrong format (for example, wrong caps).
 	StreamErrorFormat StreamError = 11
-	// StreamErrorDecrypt: used when the stream is encrypted and can't be
-	// decrypted because this is not supported by the element.
+	// StreamErrorDecrypt (GST_STREAM_ERROR_DECRYPT): used when the stream is
+	// encrypted and can't be decrypted because this is not supported by the
+	// element.
 	StreamErrorDecrypt StreamError = 12
-	// StreamErrorDecryptNokey: used when the stream is encrypted and can't be
-	// decrypted because no suitable key is available.
+	// StreamErrorDecryptNokey (GST_STREAM_ERROR_DECRYPT_NOKEY): used when the
+	// stream is encrypted and can't be decrypted because no suitable key is
+	// available.
 	StreamErrorDecryptNokey StreamError = 13
-	// StreamErrorNumErrors: number of stream error types.
+	// StreamErrorNumErrors (GST_STREAM_ERROR_NUM_ERRORS): number of stream
+	// error types.
 	StreamErrorNumErrors StreamError = 14
 )
 
@@ -3571,24 +3732,29 @@ func StreamErrorQuark() glib.Quark {
 	return _quark
 }
 
-// StreamStatusType: type of a GST_MESSAGE_STREAM_STATUS. The stream status
-// messages inform the application of new streaming threads and their status.
+// StreamStatusType (GstStreamStatusType): type of a GST_MESSAGE_STREAM_STATUS.
+// The stream status messages inform the application of new streaming threads
+// and their status.
 type StreamStatusType C.gint
 
 const (
-	// StreamStatusTypeCreate: new thread need to be created.
+	// StreamStatusTypeCreate (GST_STREAM_STATUS_TYPE_CREATE): new thread need
+	// to be created.
 	StreamStatusTypeCreate StreamStatusType = 0
-	// StreamStatusTypeEnter: thread entered its loop function.
+	// StreamStatusTypeEnter (GST_STREAM_STATUS_TYPE_ENTER): thread entered its
+	// loop function.
 	StreamStatusTypeEnter StreamStatusType = 1
-	// StreamStatusTypeLeave: thread left its loop function.
+	// StreamStatusTypeLeave (GST_STREAM_STATUS_TYPE_LEAVE): thread left its
+	// loop function.
 	StreamStatusTypeLeave StreamStatusType = 2
-	// StreamStatusTypeDestroy: thread is destroyed.
+	// StreamStatusTypeDestroy (GST_STREAM_STATUS_TYPE_DESTROY): thread is
+	// destroyed.
 	StreamStatusTypeDestroy StreamStatusType = 3
-	// StreamStatusTypeStart: thread is started.
+	// StreamStatusTypeStart (GST_STREAM_STATUS_TYPE_START): thread is started.
 	StreamStatusTypeStart StreamStatusType = 8
-	// StreamStatusTypePause: thread is paused.
+	// StreamStatusTypePause (GST_STREAM_STATUS_TYPE_PAUSE): thread is paused.
 	StreamStatusTypePause StreamStatusType = 9
-	// StreamStatusTypeStop: thread is stopped.
+	// StreamStatusTypeStop (GST_STREAM_STATUS_TYPE_STOP): thread is stopped.
 	StreamStatusTypeStop StreamStatusType = 10
 )
 
@@ -3618,13 +3784,16 @@ func (s StreamStatusType) String() string {
 	}
 }
 
-// StructureChangeType: type of a GST_MESSAGE_STRUCTURE_CHANGE.
+// StructureChangeType (GstStructureChangeType): type of a
+// GST_MESSAGE_STRUCTURE_CHANGE.
 type StructureChangeType C.gint
 
 const (
-	// StructureChangeTypePadLink: pad linking is starting or done.
+	// StructureChangeTypePadLink (GST_STRUCTURE_CHANGE_TYPE_PAD_LINK):
+	// pad linking is starting or done.
 	StructureChangeTypePadLink StructureChangeType = iota
-	// StructureChangeTypePadUnlink: pad unlinking is starting or done.
+	// StructureChangeTypePadUnlink (GST_STRUCTURE_CHANGE_TYPE_PAD_UNLINK):
+	// pad unlinking is starting or done.
 	StructureChangeTypePadUnlink
 )
 
@@ -3644,19 +3813,19 @@ func (s StructureChangeType) String() string {
 	}
 }
 
-// TagFlag: extra tag flags used when registering tags.
+// TagFlag (GstTagFlag): extra tag flags used when registering tags.
 type TagFlag C.gint
 
 const (
-	// TagFlagUndefined: undefined flag.
+	// TagFlagUndefined (GST_TAG_FLAG_UNDEFINED): undefined flag.
 	TagFlagUndefined TagFlag = iota
-	// TagFlagMeta: tag is meta data.
+	// TagFlagMeta (GST_TAG_FLAG_META): tag is meta data.
 	TagFlagMeta
-	// TagFlagEncoded: tag is encoded.
+	// TagFlagEncoded (GST_TAG_FLAG_ENCODED): tag is encoded.
 	TagFlagEncoded
-	// TagFlagDecoded: tag is decoded.
+	// TagFlagDecoded (GST_TAG_FLAG_DECODED): tag is decoded.
 	TagFlagDecoded
-	// TagFlagCount: number of tag flags.
+	// TagFlagCount (GST_TAG_FLAG_COUNT): number of tag flags.
 	TagFlagCount
 )
 
@@ -3682,13 +3851,13 @@ func (t TagFlag) String() string {
 	}
 }
 
-// TagMergeMode: different tag merging modes are basically replace, overwrite
-// and append, but they can be seen from two directions. Given two taglists:
-// (A) the tags already in the element and (B) the ones that are supplied to the
-// element ( e.g. via gst_tag_setter_merge_tags() / gst_tag_setter_add_tags() or
-// a GST_EVENT_TAG), how are these tags merged? In the table below this is shown
-// for the cases that a tag exists in the list (A) or does not exists (!A) and
-// combinations thereof.
+// TagMergeMode (GstTagMergeMode): different tag merging modes are basically
+// replace, overwrite and append, but they can be seen from two directions.
+// Given two taglists: (A) the tags already in the element and (B) the ones
+// that are supplied to the element ( e.g. via gst_tag_setter_merge_tags() /
+// gst_tag_setter_add_tags() or a GST_EVENT_TAG), how are these tags merged? In
+// the table below this is shown for the cases that a tag exists in the list (A)
+// or does not exists (!A) and combinations thereof.
 //
 // | merge mode | A + B | A + !B | !A + B | !A + !B | | ----------- | ----- |
 // ------ | ------ | ------- | | REPLACE_ALL | B | ø | B | ø | | REPLACE | B | A
@@ -3697,21 +3866,22 @@ func (t TagFlag) String() string {
 type TagMergeMode C.gint
 
 const (
-	// TagMergeUndefined: undefined merge mode.
+	// TagMergeUndefined (GST_TAG_MERGE_UNDEFINED): undefined merge mode.
 	TagMergeUndefined TagMergeMode = iota
-	// TagMergeReplaceAll: replace all tags (clear list and append).
+	// TagMergeReplaceAll (GST_TAG_MERGE_REPLACE_ALL): replace all tags (clear
+	// list and append).
 	TagMergeReplaceAll
-	// TagMergeReplace: replace tags.
+	// TagMergeReplace (GST_TAG_MERGE_REPLACE): replace tags.
 	TagMergeReplace
-	// TagMergeAppend: append tags.
+	// TagMergeAppend (GST_TAG_MERGE_APPEND): append tags.
 	TagMergeAppend
-	// TagMergePrepend: prepend tags.
+	// TagMergePrepend (GST_TAG_MERGE_PREPEND): prepend tags.
 	TagMergePrepend
-	// TagMergeKeep: keep existing tags.
+	// TagMergeKeep (GST_TAG_MERGE_KEEP): keep existing tags.
 	TagMergeKeep
-	// TagMergeKeepAll: keep all existing tags.
+	// TagMergeKeepAll (GST_TAG_MERGE_KEEP_ALL): keep all existing tags.
 	TagMergeKeepAll
-	// TagMergeCount: number of merge modes.
+	// TagMergeCount (GST_TAG_MERGE_COUNT): number of merge modes.
 	TagMergeCount
 )
 
@@ -3743,14 +3913,16 @@ func (t TagMergeMode) String() string {
 	}
 }
 
-// TagScope specifies if a taglist applies to the complete medium or only to one
-// single stream.
+// TagScope (GstTagScope) specifies if a taglist applies to the complete medium
+// or only to one single stream.
 type TagScope C.gint
 
 const (
-	// TagScopeStream tags specific to this single stream.
+	// TagScopeStream (GST_TAG_SCOPE_STREAM) tags specific to this single
+	// stream.
 	TagScopeStream TagScope = iota
-	// TagScopeGlobal: global tags for the complete medium.
+	// TagScopeGlobal (GST_TAG_SCOPE_GLOBAL): global tags for the complete
+	// medium.
 	TagScopeGlobal
 )
 
@@ -3770,15 +3942,15 @@ func (t TagScope) String() string {
 	}
 }
 
-// TaskState: different states a task can be in.
+// TaskState (GstTaskState): different states a task can be in.
 type TaskState C.gint
 
 const (
-	// TaskStarted: task is started and running.
+	// TaskStarted (GST_TASK_STARTED): task is started and running.
 	TaskStarted TaskState = iota
-	// TaskStopped: task is stopped.
+	// TaskStopped (GST_TASK_STOPPED): task is stopped.
 	TaskStopped
-	// TaskPaused: task is paused.
+	// TaskPaused (GST_TASK_PAUSED): task is paused.
 	TaskPaused
 )
 
@@ -3800,25 +3972,33 @@ func (t TaskState) String() string {
 	}
 }
 
-// TocEntryType: different types of TOC entries (see TocEntry).
+// TocEntryType (GstTocEntryType): different types of TOC entries (see
+// TocEntry).
 //
 // There are two types of TOC entries: alternatives or parts in a sequence.
 type TocEntryType C.gint
 
 const (
-	// TocEntryTypeAngle: entry is an angle (i.e. an alternative).
+	// TocEntryTypeAngle (GST_TOC_ENTRY_TYPE_ANGLE): entry is an angle (i.e.
+	// an alternative).
 	TocEntryTypeAngle TocEntryType = -3
-	// TocEntryTypeVersion: entry is a version (i.e. alternative).
+	// TocEntryTypeVersion (GST_TOC_ENTRY_TYPE_VERSION): entry is a version
+	// (i.e. alternative).
 	TocEntryTypeVersion TocEntryType = -2
-	// TocEntryTypeEdition: entry is an edition (i.e. alternative).
+	// TocEntryTypeEdition (GST_TOC_ENTRY_TYPE_EDITION): entry is an edition
+	// (i.e. alternative).
 	TocEntryTypeEdition TocEntryType = -1
-	// TocEntryTypeInvalid: invalid entry type value.
+	// TocEntryTypeInvalid (GST_TOC_ENTRY_TYPE_INVALID): invalid entry type
+	// value.
 	TocEntryTypeInvalid TocEntryType = 0
-	// TocEntryTypeTitle: entry is a title (i.e. a part of a sequence).
+	// TocEntryTypeTitle (GST_TOC_ENTRY_TYPE_TITLE): entry is a title (i.e.
+	// a part of a sequence).
 	TocEntryTypeTitle TocEntryType = 1
-	// TocEntryTypeTrack: entry is a track (i.e. a part of a sequence).
+	// TocEntryTypeTrack (GST_TOC_ENTRY_TYPE_TRACK): entry is a track (i.e.
+	// a part of a sequence).
 	TocEntryTypeTrack TocEntryType = 2
-	// TocEntryTypeChapter: entry is a chapter (i.e. a part of a sequence).
+	// TocEntryTypeChapter (GST_TOC_ENTRY_TYPE_CHAPTER): entry is a chapter
+	// (i.e. a part of a sequence).
 	TocEntryTypeChapter TocEntryType = 3
 )
 
@@ -3848,7 +4028,8 @@ func (t TocEntryType) String() string {
 	}
 }
 
-// TocEntryTypeGetNick converts type to a string representation.
+// TocEntryTypeGetNick (gst_toc_entry_type_get_nick) converts type to a string
+// representation.
 //
 // The function takes the following parameters:
 //
@@ -3874,18 +4055,18 @@ func TocEntryTypeGetNick(typ TocEntryType) string {
 	return _utf8
 }
 
-// TocLoopType: how a TocEntry should be repeated. By default, entries are
-// played a single time.
+// TocLoopType (GstTocLoopType): how a TocEntry should be repeated. By default,
+// entries are played a single time.
 type TocLoopType C.gint
 
 const (
-	// TocLoopNone: single forward playback.
+	// TocLoopNone (GST_TOC_LOOP_NONE): single forward playback.
 	TocLoopNone TocLoopType = iota
-	// TocLoopForward: repeat forward.
+	// TocLoopForward (GST_TOC_LOOP_FORWARD): repeat forward.
 	TocLoopForward
-	// TocLoopReverse: repeat backward.
+	// TocLoopReverse (GST_TOC_LOOP_REVERSE): repeat backward.
 	TocLoopReverse
-	// TocLoopPingPong: repeat forward and backward.
+	// TocLoopPingPong (GST_TOC_LOOP_PING_PONG): repeat forward and backward.
 	TocLoopPingPong
 )
 
@@ -3909,18 +4090,19 @@ func (t TocLoopType) String() string {
 	}
 }
 
-// TocScope: scope of a TOC.
+// TocScope (GstTocScope): scope of a TOC.
 type TocScope C.gint
 
 const (
-	// TocScopeGlobal: global TOC representing all selectable options (this is
-	// what applications are usually interested in).
+	// TocScopeGlobal (GST_TOC_SCOPE_GLOBAL): global TOC representing all
+	// selectable options (this is what applications are usually interested in).
 	TocScopeGlobal TocScope = 1
-	// TocScopeCurrent: TOC for the currently active/selected stream (this is
-	// a TOC representing the current stream from start to EOS, and is what
-	// a TOC writer / muxer is usually interested in; it will usually be a
-	// subset of the global TOC, e.g. just the chapters of the current title,
-	// or the chapters selected for playback from the current title).
+	// TocScopeCurrent (GST_TOC_SCOPE_CURRENT): TOC for the currently
+	// active/selected stream (this is a TOC representing the current stream
+	// from start to EOS, and is what a TOC writer / muxer is usually interested
+	// in; it will usually be a subset of the global TOC, e.g. just the chapters
+	// of the current title, or the chapters selected for playback from the
+	// current title).
 	TocScopeCurrent TocScope = 2
 )
 
@@ -3940,21 +4122,26 @@ func (t TocScope) String() string {
 	}
 }
 
-// TracerValueScope: tracing record will contain fields that contain a measured
-// value or extra meta-data. One such meta data are values that tell where a
-// measurement was taken. This enumerating declares to which scope such a meta
-// data field relates to. If it is e.g. GST_TRACER_VALUE_SCOPE_PAD, then each of
-// the log events may contain values for different Pads.
+// TracerValueScope (GstTracerValueScope): tracing record will contain
+// fields that contain a measured value or extra meta-data. One such meta
+// data are values that tell where a measurement was taken. This enumerating
+// declares to which scope such a meta data field relates to. If it is e.g.
+// GST_TRACER_VALUE_SCOPE_PAD, then each of the log events may contain values
+// for different Pads.
 type TracerValueScope C.gint
 
 const (
-	// TracerValueScopeProcess: value is related to the process.
+	// TracerValueScopeProcess (GST_TRACER_VALUE_SCOPE_PROCESS): value is
+	// related to the process.
 	TracerValueScopeProcess TracerValueScope = iota
-	// TracerValueScopeThread: value is related to a thread.
+	// TracerValueScopeThread (GST_TRACER_VALUE_SCOPE_THREAD): value is related
+	// to a thread.
 	TracerValueScopeThread
-	// TracerValueScopeElement: value is related to an Element.
+	// TracerValueScopeElement (GST_TRACER_VALUE_SCOPE_ELEMENT): value is
+	// related to an Element.
 	TracerValueScopeElement
-	// TracerValueScopePad: value is related to a Pad.
+	// TracerValueScopePad (GST_TRACER_VALUE_SCOPE_PAD): value is related to a
+	// Pad.
 	TracerValueScopePad
 )
 
@@ -3978,22 +4165,24 @@ func (t TracerValueScope) String() string {
 	}
 }
 
-// TypeFindProbability: probability of the typefind function. Higher values have
-// more certainty in doing a reliable typefind.
+// TypeFindProbability (GstTypeFindProbability): probability of the typefind
+// function. Higher values have more certainty in doing a reliable typefind.
 type TypeFindProbability C.gint
 
 const (
-	// TypeFindNone: type undetected.
+	// TypeFindNone (GST_TYPE_FIND_NONE): type undetected.
 	TypeFindNone TypeFindProbability = 0
-	// TypeFindMinimum: unlikely typefind.
+	// TypeFindMinimum (GST_TYPE_FIND_MINIMUM): unlikely typefind.
 	TypeFindMinimum TypeFindProbability = 1
-	// TypeFindPossible: possible type detected.
+	// TypeFindPossible (GST_TYPE_FIND_POSSIBLE): possible type detected.
 	TypeFindPossible TypeFindProbability = 50
-	// TypeFindLikely: likely a type was detected.
+	// TypeFindLikely (GST_TYPE_FIND_LIKELY): likely a type was detected.
 	TypeFindLikely TypeFindProbability = 80
-	// TypeFindNearlyCertain: nearly certain that a type was detected.
+	// TypeFindNearlyCertain (GST_TYPE_FIND_NEARLY_CERTAIN): nearly certain that
+	// a type was detected.
 	TypeFindNearlyCertain TypeFindProbability = 99
-	// TypeFindMaximum: very certain a type was detected.
+	// TypeFindMaximum (GST_TYPE_FIND_MAXIMUM): very certain a type was
+	// detected.
 	TypeFindMaximum TypeFindProbability = 100
 )
 
@@ -4021,19 +4210,21 @@ func (t TypeFindProbability) String() string {
 	}
 }
 
-// URIError: different URI-related errors that can occur.
+// URIError (GstURIError): different URI-related errors that can occur.
 type URIError C.gint
 
 const (
-	// URIErrorUnsupportedProtocol: protocol is not supported.
+	// URIErrorUnsupportedProtocol (GST_URI_ERROR_UNSUPPORTED_PROTOCOL):
+	// protocol is not supported.
 	URIErrorUnsupportedProtocol URIError = iota
-	// URIErrorBadURI: there was a problem with the URI.
+	// URIErrorBadURI (GST_URI_ERROR_BAD_URI): there was a problem with the URI.
 	URIErrorBadURI
-	// URIErrorBadState: could not set or change the URI because the URI handler
-	// was in a state where that is not possible or not permitted.
+	// URIErrorBadState (GST_URI_ERROR_BAD_STATE): could not set or change the
+	// URI because the URI handler was in a state where that is not possible or
+	// not permitted.
 	URIErrorBadState
-	// URIErrorBadReference: there was a problem with the entity that the URI
-	// references.
+	// URIErrorBadReference (GST_URI_ERROR_BAD_REFERENCE): there was a problem
+	// with the entity that the URI references.
 	URIErrorBadReference
 )
 
@@ -4069,15 +4260,15 @@ func URIErrorQuark() glib.Quark {
 	return _quark
 }
 
-// URIType: different types of URI direction.
+// URIType (GstURIType): different types of URI direction.
 type URIType C.gint
 
 const (
-	// URIUnknown: URI direction is unknown.
+	// URIUnknown (GST_URI_UNKNOWN): URI direction is unknown.
 	URIUnknown URIType = iota
-	// URISink: URI is a consumer.
+	// URISink (GST_URI_SINK): URI is a consumer.
 	URISink
-	// URISrc: URI is a producer.
+	// URISrc (GST_URI_SRC): URI is a producer.
 	URISrc
 )
 
@@ -4099,21 +4290,22 @@ func (u URIType) String() string {
 	}
 }
 
-// AllocatorFlags flags for allocators.
+// AllocatorFlags (GstAllocatorFlags) flags for allocators.
 type AllocatorFlags C.guint
 
 const (
-	// AllocatorFlagCustomAlloc: allocator has a custom alloc function.
-	// Only elements designed to work with this allocator should be using it,
-	// other elements should ignore it from allocation propositions. This
-	// implies GST_ALLOCATOR_FLAG_NO_COPY.
+	// AllocatorFlagCustomAlloc (GST_ALLOCATOR_FLAG_CUSTOM_ALLOC): allocator
+	// has a custom alloc function. Only elements designed to work with this
+	// allocator should be using it, other elements should ignore it from
+	// allocation propositions. This implies GST_ALLOCATOR_FLAG_NO_COPY.
 	AllocatorFlagCustomAlloc AllocatorFlags = 0b10000
-	// AllocatorFlagNoCopy: when copying a Memory allocated with this allocator,
-	// the copy will instead be allocated using the default allocator. Use this
-	// when allocating a new memory is an heavy opperation that should only be
-	// done with a BufferPool for example.
+	// AllocatorFlagNoCopy (GST_ALLOCATOR_FLAG_NO_COPY): when copying a Memory
+	// allocated with this allocator, the copy will instead be allocated using
+	// the default allocator. Use this when allocating a new memory is an heavy
+	// opperation that should only be done with a BufferPool for example.
 	AllocatorFlagNoCopy AllocatorFlags = 0b100000
-	// AllocatorFlagLast: first flag that can be used for custom purposes.
+	// AllocatorFlagLast (GST_ALLOCATOR_FLAG_LAST): first flag that can be used
+	// for custom purposes.
 	AllocatorFlagLast AllocatorFlags = 0b100000000000000000000
 )
 
@@ -4156,21 +4348,21 @@ func (a AllocatorFlags) Has(other AllocatorFlags) bool {
 	return (a & other) == other
 }
 
-// BinFlags are a set of flags specific to bins. Most are set/used internally.
-// They can be checked using the GST_OBJECT_FLAG_IS_SET() macro, and (un)set
-// using GST_OBJECT_FLAG_SET() and GST_OBJECT_FLAG_UNSET().
+// BinFlags (GstBinFlags) are a set of flags specific to bins. Most are set/used
+// internally. They can be checked using the GST_OBJECT_FLAG_IS_SET() macro,
+// and (un)set using GST_OBJECT_FLAG_SET() and GST_OBJECT_FLAG_UNSET().
 type BinFlags C.guint
 
 const (
-	// BinFlagNoResync: don't resync a state change when elements are added or
-	// linked in the bin.
+	// BinFlagNoResync (GST_BIN_FLAG_NO_RESYNC): don't resync a state change
+	// when elements are added or linked in the bin.
 	BinFlagNoResync BinFlags = 0b100000000000000
-	// BinFlagStreamsAware indicates whether the bin can handle elements that
-	// add/remove source pads at any point in time without first posting a
-	// no-more-pads signal.
+	// BinFlagStreamsAware (GST_BIN_FLAG_STREAMS_AWARE) indicates whether the
+	// bin can handle elements that add/remove source pads at any point in time
+	// without first posting a no-more-pads signal.
 	BinFlagStreamsAware BinFlags = 0b1000000000000000
-	// BinFlagLast: last enum in the series of flags for bins. Derived classes
-	// can use this as first value in a list of flags.
+	// BinFlagLast (GST_BIN_FLAG_LAST): last enum in the series of flags for
+	// bins. Derived classes can use this as first value in a list of flags.
 	BinFlagLast BinFlags = 0b10000000000000000000
 )
 
@@ -4213,31 +4405,35 @@ func (b BinFlags) Has(other BinFlags) bool {
 	return (b & other) == other
 }
 
-// BufferCopyFlagsType: set of flags that can be provided to the
-// gst_buffer_copy_into() function to specify which items should be copied.
+// BufferCopyFlagsType (GstBufferCopyFlags): set of flags that can be provided
+// to the gst_buffer_copy_into() function to specify which items should be
+// copied.
 //
 // This type has been renamed from BufferCopyFlags.
 type BufferCopyFlagsType C.guint
 
 const (
-	// BufferCopyNone: copy nothing.
+	// BufferCopyNone (GST_BUFFER_COPY_NONE): copy nothing.
 	BufferCopyNone BufferCopyFlagsType = 0b0
-	// BufferCopyFlags: flag indicating that buffer flags should be copied.
+	// BufferCopyFlags (GST_BUFFER_COPY_FLAGS): flag indicating that buffer
+	// flags should be copied.
 	BufferCopyFlags BufferCopyFlagsType = 0b1
-	// BufferCopyTimestamps: flag indicating that buffer pts, dts, duration,
-	// offset and offset_end should be copied.
+	// BufferCopyTimestamps (GST_BUFFER_COPY_TIMESTAMPS): flag indicating that
+	// buffer pts, dts, duration, offset and offset_end should be copied.
 	BufferCopyTimestamps BufferCopyFlagsType = 0b10
-	// BufferCopyMeta: flag indicating that buffer meta should be copied.
+	// BufferCopyMeta (GST_BUFFER_COPY_META): flag indicating that buffer meta
+	// should be copied.
 	BufferCopyMeta BufferCopyFlagsType = 0b100
-	// BufferCopyMemory: flag indicating that buffer memory should be reffed
-	// and appended to already existing memory. Unless the memory is marked as
-	// NO_SHARE, no actual copy of the memory is made but it is simply reffed.
-	// Add GST_BUFFER_COPY_DEEP to force a real copy.
+	// BufferCopyMemory (GST_BUFFER_COPY_MEMORY): flag indicating that buffer
+	// memory should be reffed and appended to already existing memory. Unless
+	// the memory is marked as NO_SHARE, no actual copy of the memory is made
+	// but it is simply reffed. Add GST_BUFFER_COPY_DEEP to force a real copy.
 	BufferCopyMemory BufferCopyFlagsType = 0b1000
-	// BufferCopyMerge: flag indicating that buffer memory should be merged.
+	// BufferCopyMerge (GST_BUFFER_COPY_MERGE): flag indicating that buffer
+	// memory should be merged.
 	BufferCopyMerge BufferCopyFlagsType = 0b10000
-	// BufferCopyDeep: flag indicating that memory should always be copied
-	// instead of reffed.
+	// BufferCopyDeep (GST_BUFFER_COPY_DEEP): flag indicating that memory should
+	// always be copied instead of reffed.
 	BufferCopyDeep BufferCopyFlagsType = 0b100000
 )
 
@@ -4288,60 +4484,64 @@ func (b BufferCopyFlagsType) Has(other BufferCopyFlagsType) bool {
 	return (b & other) == other
 }
 
-// BufferFlags: set of buffer flags used to describe properties of a Buffer.
+// BufferFlags (GstBufferFlags): set of buffer flags used to describe properties
+// of a Buffer.
 type BufferFlags C.guint
 
 const (
-	// BufferFlagLive: buffer is live data and should be discarded in the PAUSED
-	// state.
+	// BufferFlagLive (GST_BUFFER_FLAG_LIVE): buffer is live data and should be
+	// discarded in the PAUSED state.
 	BufferFlagLive BufferFlags = 0b10000
-	// BufferFlagDecodeOnly: buffer contains data that should be dropped because
-	// it will be clipped against the segment boundaries or because it does not
-	// contain data that should be shown to the user.
+	// BufferFlagDecodeOnly (GST_BUFFER_FLAG_DECODE_ONLY): buffer contains data
+	// that should be dropped because it will be clipped against the segment
+	// boundaries or because it does not contain data that should be shown to
+	// the user.
 	BufferFlagDecodeOnly BufferFlags = 0b100000
-	// BufferFlagDiscont: buffer marks a data discontinuity in the stream.
-	// This typically occurs after a seek or a dropped buffer from a live or
-	// network source.
+	// BufferFlagDiscont (GST_BUFFER_FLAG_DISCONT): buffer marks a data
+	// discontinuity in the stream. This typically occurs after a seek or a
+	// dropped buffer from a live or network source.
 	BufferFlagDiscont BufferFlags = 0b1000000
-	// BufferFlagResync: buffer timestamps might have a discontinuity and this
-	// buffer is a good point to resynchronize.
+	// BufferFlagResync (GST_BUFFER_FLAG_RESYNC): buffer timestamps might have a
+	// discontinuity and this buffer is a good point to resynchronize.
 	BufferFlagResync BufferFlags = 0b10000000
-	// BufferFlagCorrupted: buffer data is corrupted.
+	// BufferFlagCorrupted (GST_BUFFER_FLAG_CORRUPTED): buffer data is
+	// corrupted.
 	BufferFlagCorrupted BufferFlags = 0b100000000
-	// BufferFlagMarker: buffer contains a media specific marker. for video
-	// this is the end of a frame boundary, for audio this is the start of a
-	// talkspurt. for RTP packets this matches the marker flag in the RTP packet
-	// header.
+	// BufferFlagMarker (GST_BUFFER_FLAG_MARKER): buffer contains a media
+	// specific marker. for video this is the end of a frame boundary, for audio
+	// this is the start of a talkspurt. for RTP packets this matches the marker
+	// flag in the RTP packet header.
 	BufferFlagMarker BufferFlags = 0b1000000000
-	// BufferFlagHeader: buffer contains header information that is needed to
-	// decode the following data.
+	// BufferFlagHeader (GST_BUFFER_FLAG_HEADER): buffer contains header
+	// information that is needed to decode the following data.
 	BufferFlagHeader BufferFlags = 0b10000000000
-	// BufferFlagGap: buffer has been created to fill a gap in the stream and
-	// contains media neutral data (elements can switch to optimized code path
-	// that ignores the buffer content).
+	// BufferFlagGap (GST_BUFFER_FLAG_GAP): buffer has been created to fill a
+	// gap in the stream and contains media neutral data (elements can switch to
+	// optimized code path that ignores the buffer content).
 	BufferFlagGap BufferFlags = 0b100000000000
-	// BufferFlagDroppable: buffer can be dropped without breaking the stream,
-	// for example to reduce bandwidth.
+	// BufferFlagDroppable (GST_BUFFER_FLAG_DROPPABLE): buffer can be dropped
+	// without breaking the stream, for example to reduce bandwidth.
 	BufferFlagDroppable BufferFlags = 0b1000000000000
-	// BufferFlagDeltaUnit: unit cannot be decoded independently.
+	// BufferFlagDeltaUnit (GST_BUFFER_FLAG_DELTA_UNIT): unit cannot be decoded
+	// independently.
 	BufferFlagDeltaUnit BufferFlags = 0b10000000000000
-	// BufferFlagTagMemory: flag is set when memory of the buffer is
-	// added/removed.
+	// BufferFlagTagMemory (GST_BUFFER_FLAG_TAG_MEMORY): flag is set when memory
+	// of the buffer is added/removed.
 	BufferFlagTagMemory BufferFlags = 0b100000000000000
-	// BufferFlagSyncAfter elements which write to disk or permanent storage
-	// should ensure the data is synced after writing the contents of this
-	// buffer.
+	// BufferFlagSyncAfter (GST_BUFFER_FLAG_SYNC_AFTER) elements which write to
+	// disk or permanent storage should ensure the data is synced after writing
+	// the contents of this buffer.
 	BufferFlagSyncAfter BufferFlags = 0b1000000000000000
-	// BufferFlagNonDroppable: this buffer is important and should not be
-	// dropped.
+	// BufferFlagNonDroppable (GST_BUFFER_FLAG_NON_DROPPABLE): this buffer is
+	// important and should not be dropped.
 	//
 	// This can be used to mark important buffers, e.g. to flag RTP packets
 	// carrying keyframes or codec setup data for RTP Forward Error Correction
 	// purposes, or to prevent still video frames from being dropped by elements
 	// due to QoS.
 	BufferFlagNonDroppable BufferFlags = 0b10000000000000000
-	// BufferFlagLast: additional media specific flags can be added starting
-	// from this flag.
+	// BufferFlagLast (GST_BUFFER_FLAG_LAST): additional media specific flags
+	// can be added starting from this flag.
 	BufferFlagLast BufferFlags = 0b100000000000000000000
 )
 
@@ -4406,24 +4606,26 @@ func (b BufferFlags) Has(other BufferFlags) bool {
 	return (b & other) == other
 }
 
-// BufferPoolAcquireFlags: additional flags to control the allocation of a
-// buffer.
+// BufferPoolAcquireFlags (GstBufferPoolAcquireFlags): additional flags to
+// control the allocation of a buffer.
 type BufferPoolAcquireFlags C.guint
 
 const (
-	// BufferPoolAcquireFlagNone: no flags.
+	// BufferPoolAcquireFlagNone (GST_BUFFER_POOL_ACQUIRE_FLAG_NONE): no flags.
 	BufferPoolAcquireFlagNone BufferPoolAcquireFlags = 0b0
-	// BufferPoolAcquireFlagKeyUnit: buffer is keyframe.
+	// BufferPoolAcquireFlagKeyUnit (GST_BUFFER_POOL_ACQUIRE_FLAG_KEY_UNIT):
+	// buffer is keyframe.
 	BufferPoolAcquireFlagKeyUnit BufferPoolAcquireFlags = 0b1
-	// BufferPoolAcquireFlagDontwait: when the bufferpool is empty,
-	// acquire_buffer will by default block until a buffer is released into the
-	// pool again. Setting this flag makes acquire_buffer return T_FLOW_EOS
-	// instead of blocking.
+	// BufferPoolAcquireFlagDontwait (GST_BUFFER_POOL_ACQUIRE_FLAG_DONTWAIT):
+	// when the bufferpool is empty, acquire_buffer will by default block
+	// until a buffer is released into the pool again. Setting this flag makes
+	// acquire_buffer return T_FLOW_EOS instead of blocking.
 	BufferPoolAcquireFlagDontwait BufferPoolAcquireFlags = 0b10
-	// BufferPoolAcquireFlagDiscont: buffer is discont.
+	// BufferPoolAcquireFlagDiscont (GST_BUFFER_POOL_ACQUIRE_FLAG_DISCONT):
+	// buffer is discont.
 	BufferPoolAcquireFlagDiscont BufferPoolAcquireFlags = 0b100
-	// BufferPoolAcquireFlagLast: last flag, subclasses can use private flags
-	// starting from this value.
+	// BufferPoolAcquireFlagLast (GST_BUFFER_POOL_ACQUIRE_FLAG_LAST): last flag,
+	// subclasses can use private flags starting from this value.
 	BufferPoolAcquireFlagLast BufferPoolAcquireFlags = 0b10000000000000000
 )
 
@@ -4470,13 +4672,13 @@ func (b BufferPoolAcquireFlags) Has(other BufferPoolAcquireFlags) bool {
 	return (b & other) == other
 }
 
-// BusFlags: standard flags that a bus may have.
+// BusFlags (GstBusFlags): standard flags that a bus may have.
 type BusFlags C.guint
 
 const (
-	// BusFlushing bus is currently dropping all messages.
+	// BusFlushing (GST_BUS_FLUSHING) bus is currently dropping all messages.
 	BusFlushing BusFlags = 0b10000
-	// BusFlagLast: offset to define more flags.
+	// BusFlagLast (GST_BUS_FLAG_LAST): offset to define more flags.
 	BusFlagLast BusFlags = 0b100000
 )
 
@@ -4517,11 +4719,12 @@ func (b BusFlags) Has(other BusFlags) bool {
 	return (b & other) == other
 }
 
-// CapsFlags: extra flags for a caps.
+// CapsFlags (GstCapsFlags): extra flags for a caps.
 type CapsFlags C.guint
 
 const (
-	// CapsFlagAny caps has no specific content, but can contain anything.
+	// CapsFlagAny (GST_CAPS_FLAG_ANY) caps has no specific content, but can
+	// contain anything.
 	CapsFlagAny CapsFlags = 0b10000
 )
 
@@ -4560,28 +4763,33 @@ func (c CapsFlags) Has(other CapsFlags) bool {
 	return (c & other) == other
 }
 
-// ClockFlags capabilities of this clock.
+// ClockFlags (GstClockFlags) capabilities of this clock.
 type ClockFlags C.guint
 
 const (
-	// ClockFlagCanDoSingleSync: clock can do a single sync timeout request.
+	// ClockFlagCanDoSingleSync (GST_CLOCK_FLAG_CAN_DO_SINGLE_SYNC): clock can
+	// do a single sync timeout request.
 	ClockFlagCanDoSingleSync ClockFlags = 0b10000
-	// ClockFlagCanDoSingleAsync: clock can do a single async timeout request.
+	// ClockFlagCanDoSingleAsync (GST_CLOCK_FLAG_CAN_DO_SINGLE_ASYNC): clock can
+	// do a single async timeout request.
 	ClockFlagCanDoSingleAsync ClockFlags = 0b100000
-	// ClockFlagCanDoPeriodicSync: clock can do sync periodic timeout requests.
+	// ClockFlagCanDoPeriodicSync (GST_CLOCK_FLAG_CAN_DO_PERIODIC_SYNC):
+	// clock can do sync periodic timeout requests.
 	ClockFlagCanDoPeriodicSync ClockFlags = 0b1000000
-	// ClockFlagCanDoPeriodicAsync: clock can do async periodic timeout
-	// callbacks.
+	// ClockFlagCanDoPeriodicAsync (GST_CLOCK_FLAG_CAN_DO_PERIODIC_ASYNC):
+	// clock can do async periodic timeout callbacks.
 	ClockFlagCanDoPeriodicAsync ClockFlags = 0b10000000
-	// ClockFlagCanSetResolution clock's resolution can be changed.
+	// ClockFlagCanSetResolution (GST_CLOCK_FLAG_CAN_SET_RESOLUTION) clock's
+	// resolution can be changed.
 	ClockFlagCanSetResolution ClockFlags = 0b100000000
-	// ClockFlagCanSetMaster: clock can be slaved to a master clock.
+	// ClockFlagCanSetMaster (GST_CLOCK_FLAG_CAN_SET_MASTER): clock can be
+	// slaved to a master clock.
 	ClockFlagCanSetMaster ClockFlags = 0b1000000000
-	// ClockFlagNeedsStartupSync: clock needs to be synced before it can be
-	// used.
+	// ClockFlagNeedsStartupSync (GST_CLOCK_FLAG_NEEDS_STARTUP_SYNC): clock
+	// needs to be synced before it can be used.
 	ClockFlagNeedsStartupSync ClockFlags = 0b10000000000
-	// ClockFlagLast subclasses can add additional flags starting from this
-	// flag.
+	// ClockFlagLast (GST_CLOCK_FLAG_LAST) subclasses can add additional flags
+	// starting from this flag.
 	ClockFlagLast ClockFlags = 0b1000000000000
 )
 
@@ -4634,47 +4842,47 @@ func (c ClockFlags) Has(other ClockFlags) bool {
 	return (c & other) == other
 }
 
-// DebugColorFlags: these are some terminal style flags you can use when
-// creating your debugging categories to make them stand out in debugging
-// output.
+// DebugColorFlags (GstDebugColorFlags): these are some terminal style flags
+// you can use when creating your debugging categories to make them stand out in
+// debugging output.
 type DebugColorFlags C.guint
 
 const (
-	// DebugFgBlack: use black as foreground color.
+	// DebugFgBlack (GST_DEBUG_FG_BLACK): use black as foreground color.
 	DebugFgBlack DebugColorFlags = 0b0
-	// DebugFgRed: use red as foreground color.
+	// DebugFgRed (GST_DEBUG_FG_RED): use red as foreground color.
 	DebugFgRed DebugColorFlags = 0b1
-	// DebugFgGreen: use green as foreground color.
+	// DebugFgGreen (GST_DEBUG_FG_GREEN): use green as foreground color.
 	DebugFgGreen DebugColorFlags = 0b10
-	// DebugFgYellow: use yellow as foreground color.
+	// DebugFgYellow (GST_DEBUG_FG_YELLOW): use yellow as foreground color.
 	DebugFgYellow DebugColorFlags = 0b11
-	// DebugFgBlue: use blue as foreground color.
+	// DebugFgBlue (GST_DEBUG_FG_BLUE): use blue as foreground color.
 	DebugFgBlue DebugColorFlags = 0b100
-	// DebugFgMagenta: use magenta as foreground color.
+	// DebugFgMagenta (GST_DEBUG_FG_MAGENTA): use magenta as foreground color.
 	DebugFgMagenta DebugColorFlags = 0b101
-	// DebugFgCyan: use cyan as foreground color.
+	// DebugFgCyan (GST_DEBUG_FG_CYAN): use cyan as foreground color.
 	DebugFgCyan DebugColorFlags = 0b110
-	// DebugFgWhite: use white as foreground color.
+	// DebugFgWhite (GST_DEBUG_FG_WHITE): use white as foreground color.
 	DebugFgWhite DebugColorFlags = 0b111
-	// DebugBgBlack: use black as background color.
+	// DebugBgBlack (GST_DEBUG_BG_BLACK): use black as background color.
 	DebugBgBlack DebugColorFlags = 0b0
-	// DebugBgRed: use red as background color.
+	// DebugBgRed (GST_DEBUG_BG_RED): use red as background color.
 	DebugBgRed DebugColorFlags = 0b10000
-	// DebugBgGreen: use green as background color.
+	// DebugBgGreen (GST_DEBUG_BG_GREEN): use green as background color.
 	DebugBgGreen DebugColorFlags = 0b100000
-	// DebugBgYellow: use yellow as background color.
+	// DebugBgYellow (GST_DEBUG_BG_YELLOW): use yellow as background color.
 	DebugBgYellow DebugColorFlags = 0b110000
-	// DebugBgBlue: use blue as background color.
+	// DebugBgBlue (GST_DEBUG_BG_BLUE): use blue as background color.
 	DebugBgBlue DebugColorFlags = 0b1000000
-	// DebugBgMagenta: use magenta as background color.
+	// DebugBgMagenta (GST_DEBUG_BG_MAGENTA): use magenta as background color.
 	DebugBgMagenta DebugColorFlags = 0b1010000
-	// DebugBgCyan: use cyan as background color.
+	// DebugBgCyan (GST_DEBUG_BG_CYAN): use cyan as background color.
 	DebugBgCyan DebugColorFlags = 0b1100000
-	// DebugBgWhite: use white as background color.
+	// DebugBgWhite (GST_DEBUG_BG_WHITE): use white as background color.
 	DebugBgWhite DebugColorFlags = 0b1110000
-	// DebugBold: make the output bold.
+	// DebugBold (GST_DEBUG_BOLD): make the output bold.
 	DebugBold DebugColorFlags = 0b100000000
-	// DebugUnderline: underline the output.
+	// DebugUnderline (GST_DEBUG_UNDERLINE): underline the output.
 	DebugUnderline DebugColorFlags = 0b1000000000
 )
 
@@ -4745,26 +4953,31 @@ func (d DebugColorFlags) Has(other DebugColorFlags) bool {
 	return (d & other) == other
 }
 
-// DebugGraphDetails: available details for pipeline graphs produced by
-// GST_DEBUG_BIN_TO_DOT_FILE() and GST_DEBUG_BIN_TO_DOT_FILE_WITH_TS().
+// DebugGraphDetails (GstDebugGraphDetails): available details
+// for pipeline graphs produced by GST_DEBUG_BIN_TO_DOT_FILE() and
+// GST_DEBUG_BIN_TO_DOT_FILE_WITH_TS().
 type DebugGraphDetails C.guint
 
 const (
-	// DebugGraphShowMediaType: show caps-name on edges.
+	// DebugGraphShowMediaType (GST_DEBUG_GRAPH_SHOW_MEDIA_TYPE): show caps-name
+	// on edges.
 	DebugGraphShowMediaType DebugGraphDetails = 0b1
-	// DebugGraphShowCapsDetails: show caps-details on edges.
+	// DebugGraphShowCapsDetails (GST_DEBUG_GRAPH_SHOW_CAPS_DETAILS): show
+	// caps-details on edges.
 	DebugGraphShowCapsDetails DebugGraphDetails = 0b10
-	// DebugGraphShowNonDefaultParams: show modified parameters on elements.
+	// DebugGraphShowNonDefaultParams (GST_DEBUG_GRAPH_SHOW_NON_DEFAULT_PARAMS):
+	// show modified parameters on elements.
 	DebugGraphShowNonDefaultParams DebugGraphDetails = 0b100
-	// DebugGraphShowStates: show element states.
+	// DebugGraphShowStates (GST_DEBUG_GRAPH_SHOW_STATES): show element states.
 	DebugGraphShowStates DebugGraphDetails = 0b1000
-	// DebugGraphShowFullParams: show full element parameter values even if they
-	// are very long.
+	// DebugGraphShowFullParams (GST_DEBUG_GRAPH_SHOW_FULL_PARAMS): show full
+	// element parameter values even if they are very long.
 	DebugGraphShowFullParams DebugGraphDetails = 0b10000
-	// DebugGraphShowAll: show all the typical details that one might want.
+	// DebugGraphShowAll (GST_DEBUG_GRAPH_SHOW_ALL): show all the typical
+	// details that one might want.
 	DebugGraphShowAll DebugGraphDetails = 0b1111
-	// DebugGraphShowVerbose: show all details regardless of how large or
-	// verbose they make the resulting output.
+	// DebugGraphShowVerbose (GST_DEBUG_GRAPH_SHOW_VERBOSE): show all details
+	// regardless of how large or verbose they make the resulting output.
 	DebugGraphShowVerbose DebugGraphDetails = 0b11111111111111111111111111111111
 )
 
@@ -4815,23 +5028,27 @@ func (d DebugGraphDetails) Has(other DebugGraphDetails) bool {
 	return (d & other) == other
 }
 
-// ElementFlags: standard flags that an element may have.
+// ElementFlags (GstElementFlags): standard flags that an element may have.
 type ElementFlags C.guint
 
 const (
-	// ElementFlagLockedState: ignore state changes from parent.
+	// ElementFlagLockedState (GST_ELEMENT_FLAG_LOCKED_STATE): ignore state
+	// changes from parent.
 	ElementFlagLockedState ElementFlags = 0b10000
-	// ElementFlagSink: element is a sink.
+	// ElementFlagSink (GST_ELEMENT_FLAG_SINK): element is a sink.
 	ElementFlagSink ElementFlags = 0b100000
-	// ElementFlagSource: element is a source.
+	// ElementFlagSource (GST_ELEMENT_FLAG_SOURCE): element is a source.
 	ElementFlagSource ElementFlags = 0b1000000
-	// ElementFlagProvideClock: element can provide a clock.
+	// ElementFlagProvideClock (GST_ELEMENT_FLAG_PROVIDE_CLOCK): element can
+	// provide a clock.
 	ElementFlagProvideClock ElementFlags = 0b10000000
-	// ElementFlagRequireClock: element requires a clock.
+	// ElementFlagRequireClock (GST_ELEMENT_FLAG_REQUIRE_CLOCK): element
+	// requires a clock.
 	ElementFlagRequireClock ElementFlags = 0b100000000
-	// ElementFlagIndexable: element can use an index.
+	// ElementFlagIndexable (GST_ELEMENT_FLAG_INDEXABLE): element can use an
+	// index.
 	ElementFlagIndexable ElementFlags = 0b1000000000
-	// ElementFlagLast: offset to define more flags.
+	// ElementFlagLast (GST_ELEMENT_FLAG_LAST): offset to define more flags.
 	ElementFlagLast ElementFlags = 0b100000000000000
 )
 
@@ -4882,23 +5099,26 @@ func (e ElementFlags) Has(other ElementFlags) bool {
 	return (e & other) == other
 }
 
-// EventTypeFlags indicate the aspects of the different EventType values.
-// You can get the type flags of a EventType with the gst_event_type_get_flags()
-// function.
+// EventTypeFlags (GstEventTypeFlags) indicate the aspects of the different
+// EventType values. You can get the type flags of a EventType with the
+// gst_event_type_get_flags() function.
 type EventTypeFlags C.guint
 
 const (
-	// EventTypeUpstream: set if the event can travel upstream.
+	// EventTypeUpstream (GST_EVENT_TYPE_UPSTREAM): set if the event can travel
+	// upstream.
 	EventTypeUpstream EventTypeFlags = 0b1
-	// EventTypeDownstream: set if the event can travel downstream.
+	// EventTypeDownstream (GST_EVENT_TYPE_DOWNSTREAM): set if the event can
+	// travel downstream.
 	EventTypeDownstream EventTypeFlags = 0b10
-	// EventTypeSerialized: set if the event should be serialized with data
-	// flow.
+	// EventTypeSerialized (GST_EVENT_TYPE_SERIALIZED): set if the event should
+	// be serialized with data flow.
 	EventTypeSerialized EventTypeFlags = 0b100
-	// EventTypeSticky: set if the event is sticky on the pads.
+	// EventTypeSticky (GST_EVENT_TYPE_STICKY): set if the event is sticky on
+	// the pads.
 	EventTypeSticky EventTypeFlags = 0b1000
-	// EventTypeStickyMulti: multiple sticky events can be on a pad, each
-	// identified by the event name.
+	// EventTypeStickyMulti (GST_EVENT_TYPE_STICKY_MULTI): multiple sticky
+	// events can be on a pad, each identified by the event name.
 	EventTypeStickyMulti EventTypeFlags = 0b10000
 )
 
@@ -4945,13 +5165,13 @@ func (e EventTypeFlags) Has(other EventTypeFlags) bool {
 	return (e & other) == other
 }
 
-// GapFlags: different flags that can be set on T_EVENT_GAP events. See
-// gst_event_set_gap_flags() for details.
+// GapFlags (GstGapFlags): different flags that can be set on T_EVENT_GAP
+// events. See gst_event_set_gap_flags() for details.
 type GapFlags C.guint
 
 const (
-	// GapFlagMissingData signals missing data, for example because of packet
-	// loss.
+	// GapFlagMissingData (GST_GAP_FLAG_MISSING_DATA) signals missing data,
+	// for example because of packet loss.
 	GapFlagMissingData GapFlags = 0b1
 )
 
@@ -4990,17 +5210,18 @@ func (g GapFlags) Has(other GapFlags) bool {
 	return (g & other) == other
 }
 
-// LockFlags flags used when locking miniobjects.
+// LockFlags (GstLockFlags) flags used when locking miniobjects.
 type LockFlags C.guint
 
 const (
-	// LockFlagRead: lock for read access.
+	// LockFlagRead (GST_LOCK_FLAG_READ): lock for read access.
 	LockFlagRead LockFlags = 0b1
-	// LockFlagWrite: lock for write access.
+	// LockFlagWrite (GST_LOCK_FLAG_WRITE): lock for write access.
 	LockFlagWrite LockFlags = 0b10
-	// LockFlagExclusive: lock for exclusive access.
+	// LockFlagExclusive (GST_LOCK_FLAG_EXCLUSIVE): lock for exclusive access.
 	LockFlagExclusive LockFlags = 0b100
-	// LockFlagLast: first flag that can be used for custom purposes.
+	// LockFlagLast (GST_LOCK_FLAG_LAST): first flag that can be used for custom
+	// purposes.
 	LockFlagLast LockFlags = 0b100000000
 )
 
@@ -5045,15 +5266,16 @@ func (l LockFlags) Has(other LockFlags) bool {
 	return (l & other) == other
 }
 
-// MapFlags flags used when mapping memory.
+// MapFlags (GstMapFlags) flags used when mapping memory.
 type MapFlags C.guint
 
 const (
-	// MapRead: map for read access.
+	// MapRead (GST_MAP_READ): map for read access.
 	MapRead MapFlags = 0b1
-	// MapWrite: map for write access.
+	// MapWrite (GST_MAP_WRITE): map for write access.
 	MapWrite MapFlags = 0b10
-	// MapFlagLast: first flag that can be used for custom purposes.
+	// MapFlagLast (GST_MAP_FLAG_LAST): first flag that can be used for custom
+	// purposes.
 	MapFlagLast MapFlags = 0b10000000000000000
 )
 
@@ -5096,30 +5318,33 @@ func (m MapFlags) Has(other MapFlags) bool {
 	return (m & other) == other
 }
 
-// MemoryFlags flags for wrapped memory.
+// MemoryFlags (GstMemoryFlags) flags for wrapped memory.
 type MemoryFlags C.guint
 
 const (
-	// MemoryFlagReadonly: memory is readonly. It is not allowed to map the
-	// memory with T_MAP_WRITE.
+	// MemoryFlagReadonly (GST_MEMORY_FLAG_READONLY): memory is readonly.
+	// It is not allowed to map the memory with T_MAP_WRITE.
 	MemoryFlagReadonly MemoryFlags = 0b10
-	// MemoryFlagNoShare: memory must not be shared. Copies will have to be made
-	// when this memory needs to be shared between buffers. (DEPRECATED: do not
-	// use in new code, instead you should create a custom GstAllocator for
-	// memory pooling instead of relying on the GstBuffer they were originally
-	// attached to.).
+	// MemoryFlagNoShare (GST_MEMORY_FLAG_NO_SHARE): memory must not be shared.
+	// Copies will have to be made when this memory needs to be shared between
+	// buffers. (DEPRECATED: do not use in new code, instead you should create
+	// a custom GstAllocator for memory pooling instead of relying on the
+	// GstBuffer they were originally attached to.).
 	MemoryFlagNoShare MemoryFlags = 0b10000
-	// MemoryFlagZeroPrefixed: memory prefix is filled with 0 bytes.
+	// MemoryFlagZeroPrefixed (GST_MEMORY_FLAG_ZERO_PREFIXED): memory prefix is
+	// filled with 0 bytes.
 	MemoryFlagZeroPrefixed MemoryFlags = 0b100000
-	// MemoryFlagZeroPadded: memory padding is filled with 0 bytes.
+	// MemoryFlagZeroPadded (GST_MEMORY_FLAG_ZERO_PADDED): memory padding is
+	// filled with 0 bytes.
 	MemoryFlagZeroPadded MemoryFlags = 0b1000000
-	// MemoryFlagPhysicallyContiguous: memory is physically contiguous. (Since:
-	// 1.2).
+	// MemoryFlagPhysicallyContiguous (GST_MEMORY_FLAG_PHYSICALLY_CONTIGUOUS):
+	// memory is physically contiguous. (Since: 1.2).
 	MemoryFlagPhysicallyContiguous MemoryFlags = 0b10000000
-	// MemoryFlagNotMappable: memory can't be mapped via gst_memory_map()
-	// without any preconditions. (Since: 1.2).
+	// MemoryFlagNotMappable (GST_MEMORY_FLAG_NOT_MAPPABLE): memory can't be
+	// mapped via gst_memory_map() without any preconditions. (Since: 1.2).
 	MemoryFlagNotMappable MemoryFlags = 0b100000000
-	// MemoryFlagLast: first flag that can be used for custom purposes.
+	// MemoryFlagLast (GST_MEMORY_FLAG_LAST): first flag that can be used for
+	// custom purposes.
 	MemoryFlagLast MemoryFlags = 0b100000000000000000000
 )
 
@@ -5170,151 +5395,160 @@ func (m MemoryFlags) Has(other MemoryFlags) bool {
 	return (m & other) == other
 }
 
-// MessageType: different message types that are available.
+// MessageType (GstMessageType): different message types that are available.
 type MessageType C.guint
 
 const (
-	// MessageUnknown: undefined message.
+	// MessageUnknown (GST_MESSAGE_UNKNOWN): undefined message.
 	MessageUnknown MessageType = 0b0
-	// MessageEos: end-of-stream reached in a pipeline. The application will
-	// only receive this message in the PLAYING state and every time it sets a
-	// pipeline to PLAYING that is in the EOS state. The application can perform
-	// a flushing seek in the pipeline, which will undo the EOS state again.
+	// MessageEos (GST_MESSAGE_EOS): end-of-stream reached in a pipeline.
+	// The application will only receive this message in the PLAYING state
+	// and every time it sets a pipeline to PLAYING that is in the EOS state.
+	// The application can perform a flushing seek in the pipeline, which will
+	// undo the EOS state again.
 	MessageEos MessageType = 0b1
-	// MessageError: error occurred. When the application receives an error
-	// message it should stop playback of the pipeline and not assume that more
-	// data will be played. It is possible to specify a redirection url to
-	// the error messages by setting a redirect-location field into the error
-	// message, application or high level bins might use the information as
-	// required.
+	// MessageError (GST_MESSAGE_ERROR): error occurred. When the application
+	// receives an error message it should stop playback of the pipeline and
+	// not assume that more data will be played. It is possible to specify a
+	// redirection url to the error messages by setting a redirect-location
+	// field into the error message, application or high level bins might use
+	// the information as required.
 	MessageError MessageType = 0b10
-	// MessageWarning: warning occurred.
+	// MessageWarning (GST_MESSAGE_WARNING): warning occurred.
 	MessageWarning MessageType = 0b100
-	// MessageInfo: info message occurred.
+	// MessageInfo (GST_MESSAGE_INFO): info message occurred.
 	MessageInfo MessageType = 0b1000
-	// MessageTag: tag was found.
+	// MessageTag (GST_MESSAGE_TAG): tag was found.
 	MessageTag MessageType = 0b10000
-	// MessageBuffering: pipeline is buffering. When the application receives
-	// a buffering message in the PLAYING state for a non-live pipeline it must
-	// PAUSE the pipeline until the buffering completes, when the percentage
-	// field in the message is 100%. For live pipelines, no action must be
-	// performed and the buffering percentage can be used to inform the user
-	// about the progress.
+	// MessageBuffering (GST_MESSAGE_BUFFERING): pipeline is buffering.
+	// When the application receives a buffering message in the PLAYING state
+	// for a non-live pipeline it must PAUSE the pipeline until the buffering
+	// completes, when the percentage field in the message is 100%. For live
+	// pipelines, no action must be performed and the buffering percentage can
+	// be used to inform the user about the progress.
 	MessageBuffering MessageType = 0b100000
-	// MessageStateChanged: state change happened.
+	// MessageStateChanged (GST_MESSAGE_STATE_CHANGED): state change happened.
 	MessageStateChanged MessageType = 0b1000000
-	// MessageStateDirty: element changed state in a streaming thread. This
-	// message is deprecated.
+	// MessageStateDirty (GST_MESSAGE_STATE_DIRTY): element changed state in a
+	// streaming thread. This message is deprecated.
 	MessageStateDirty MessageType = 0b10000000
-	// MessageStepDone: stepping operation finished.
+	// MessageStepDone (GST_MESSAGE_STEP_DONE): stepping operation finished.
 	MessageStepDone MessageType = 0b100000000
-	// MessageClockProvide: element notifies its capability of providing
-	// a clock. This message is used internally and never forwarded to the
-	// application.
+	// MessageClockProvide (GST_MESSAGE_CLOCK_PROVIDE): element notifies its
+	// capability of providing a clock. This message is used internally and
+	// never forwarded to the application.
 	MessageClockProvide MessageType = 0b1000000000
-	// MessageClockLost: current clock as selected by the pipeline became
-	// unusable. The pipeline will select a new clock on the next PLAYING state
-	// change. The application should set the pipeline to PAUSED and back to
-	// PLAYING when this message is received.
+	// MessageClockLost (GST_MESSAGE_CLOCK_LOST): current clock as selected by
+	// the pipeline became unusable. The pipeline will select a new clock on
+	// the next PLAYING state change. The application should set the pipeline to
+	// PAUSED and back to PLAYING when this message is received.
 	MessageClockLost MessageType = 0b10000000000
-	// MessageNewClock: new clock was selected in the pipeline.
+	// MessageNewClock (GST_MESSAGE_NEW_CLOCK): new clock was selected in the
+	// pipeline.
 	MessageNewClock MessageType = 0b100000000000
-	// MessageStructureChange: structure of the pipeline changed. This message
-	// is used internally and never forwarded to the application.
+	// MessageStructureChange (GST_MESSAGE_STRUCTURE_CHANGE): structure of the
+	// pipeline changed. This message is used internally and never forwarded to
+	// the application.
 	MessageStructureChange MessageType = 0b1000000000000
-	// MessageStreamStatus status about a stream, emitted when it starts, stops,
-	// errors, etc..
+	// MessageStreamStatus (GST_MESSAGE_STREAM_STATUS) status about a stream,
+	// emitted when it starts, stops, errors, etc..
 	MessageStreamStatus MessageType = 0b10000000000000
-	// MessageApplication: message posted by the application, possibly via an
-	// application-specific element.
+	// MessageApplication (GST_MESSAGE_APPLICATION): message posted by the
+	// application, possibly via an application-specific element.
 	MessageApplication MessageType = 0b100000000000000
-	// MessageElement: element-specific message, see the specific element's
-	// documentation.
+	// MessageElement (GST_MESSAGE_ELEMENT): element-specific message, see the
+	// specific element's documentation.
 	MessageElement MessageType = 0b1000000000000000
-	// MessageSegmentStart: pipeline started playback of a segment. This message
-	// is used internally and never forwarded to the application.
+	// MessageSegmentStart (GST_MESSAGE_SEGMENT_START): pipeline started
+	// playback of a segment. This message is used internally and never
+	// forwarded to the application.
 	MessageSegmentStart MessageType = 0b10000000000000000
-	// MessageSegmentDone: pipeline completed playback of a segment. This
-	// message is forwarded to the application after all elements that posted
-	// GST_MESSAGE_SEGMENT_START posted a GST_MESSAGE_SEGMENT_DONE message.
+	// MessageSegmentDone (GST_MESSAGE_SEGMENT_DONE): pipeline completed
+	// playback of a segment. This message is forwarded to the application
+	// after all elements that posted GST_MESSAGE_SEGMENT_START posted a
+	// GST_MESSAGE_SEGMENT_DONE message.
 	MessageSegmentDone MessageType = 0b100000000000000000
-	// MessageDurationChanged: duration of a pipeline changed. The application
-	// can get the new duration with a duration query.
+	// MessageDurationChanged (GST_MESSAGE_DURATION_CHANGED): duration of
+	// a pipeline changed. The application can get the new duration with a
+	// duration query.
 	MessageDurationChanged MessageType = 0b1000000000000000000
-	// MessageLatency: posted by elements when their latency changes. The
-	// application should recalculate and distribute a new latency.
+	// MessageLatency (GST_MESSAGE_LATENCY): posted by elements when their
+	// latency changes. The application should recalculate and distribute a new
+	// latency.
 	MessageLatency MessageType = 0b10000000000000000000
-	// MessageAsyncStart: posted by elements when they start an ASYNC
-	// StateChange. This message is not forwarded to the application but is used
-	// internally.
+	// MessageAsyncStart (GST_MESSAGE_ASYNC_START): posted by elements when
+	// they start an ASYNC StateChange. This message is not forwarded to the
+	// application but is used internally.
 	MessageAsyncStart MessageType = 0b100000000000000000000
-	// MessageAsyncDone: posted by elements when they complete an ASYNC
-	// StateChange. The application will only receive this message from the
-	// toplevel pipeline.
+	// MessageAsyncDone (GST_MESSAGE_ASYNC_DONE): posted by elements when they
+	// complete an ASYNC StateChange. The application will only receive this
+	// message from the toplevel pipeline.
 	MessageAsyncDone MessageType = 0b1000000000000000000000
-	// MessageRequestState: posted by elements when they want the pipeline to
-	// change state. This message is a suggestion to the application which can
-	// decide to perform the state change on (part of) the pipeline.
+	// MessageRequestState (GST_MESSAGE_REQUEST_STATE): posted by elements when
+	// they want the pipeline to change state. This message is a suggestion to
+	// the application which can decide to perform the state change on (part of)
+	// the pipeline.
 	MessageRequestState MessageType = 0b10000000000000000000000
-	// MessageStepStart: stepping operation was started.
+	// MessageStepStart (GST_MESSAGE_STEP_START): stepping operation was
+	// started.
 	MessageStepStart MessageType = 0b100000000000000000000000
-	// MessageQos: buffer was dropped or an element changed its processing
-	// strategy for Quality of Service reasons.
+	// MessageQos (GST_MESSAGE_QOS): buffer was dropped or an element changed
+	// its processing strategy for Quality of Service reasons.
 	MessageQos MessageType = 0b1000000000000000000000000
-	// MessageProgress progress message.
+	// MessageProgress (GST_MESSAGE_PROGRESS) progress message.
 	MessageProgress MessageType = 0b10000000000000000000000000
-	// MessageToc: new table of contents (TOC) was found or previously found TOC
-	// was updated.
+	// MessageToc (GST_MESSAGE_TOC): new table of contents (TOC) was found or
+	// previously found TOC was updated.
 	MessageToc MessageType = 0b100000000000000000000000000
-	// MessageResetTime: message to request resetting the pipeline's running
-	// time from the pipeline. This is an internal message which applications
-	// will likely never receive.
+	// MessageResetTime (GST_MESSAGE_RESET_TIME): message to request resetting
+	// the pipeline's running time from the pipeline. This is an internal
+	// message which applications will likely never receive.
 	MessageResetTime MessageType = 0b1000000000000000000000000000
-	// MessageStreamStart: message indicating start of a new stream. Useful e.g.
-	// when using playbin in gapless playback mode, to get notified when the
-	// next title actually starts playing (which will be some time after the URI
-	// for the next title has been set).
+	// MessageStreamStart (GST_MESSAGE_STREAM_START): message indicating start
+	// of a new stream. Useful e.g. when using playbin in gapless playback mode,
+	// to get notified when the next title actually starts playing (which will
+	// be some time after the URI for the next title has been set).
 	MessageStreamStart MessageType = 0b10000000000000000000000000000
-	// MessageNeedContext: message indicating that an element wants a specific
-	// context (Since: 1.2).
+	// MessageNeedContext (GST_MESSAGE_NEED_CONTEXT): message indicating that an
+	// element wants a specific context (Since: 1.2).
 	MessageNeedContext MessageType = 0b100000000000000000000000000000
-	// MessageHaveContext: message indicating that an element created a context
-	// (Since: 1.2).
+	// MessageHaveContext (GST_MESSAGE_HAVE_CONTEXT): message indicating that an
+	// element created a context (Since: 1.2).
 	MessageHaveContext MessageType = 0b1000000000000000000000000000000
-	// MessageExtended: message is an extended message type (see below). These
-	// extended message IDs can't be used directly with mask-based API like
-	// gst_bus_poll() or gst_bus_timed_pop_filtered(), but you can still filter
-	// for GST_MESSAGE_EXTENDED and then check the result for the specific type.
-	// (Since: 1.4).
+	// MessageExtended (GST_MESSAGE_EXTENDED): message is an extended message
+	// type (see below). These extended message IDs can't be used directly with
+	// mask-based API like gst_bus_poll() or gst_bus_timed_pop_filtered(),
+	// but you can still filter for GST_MESSAGE_EXTENDED and then check the
+	// result for the specific type. (Since: 1.4).
 	MessageExtended MessageType = 0b10000000000000000000000000000000
-	// MessageDeviceAdded: message indicating a Device was added to a
-	// DeviceProvider (Since: 1.4).
+	// MessageDeviceAdded (GST_MESSAGE_DEVICE_ADDED): message indicating a
+	// Device was added to a DeviceProvider (Since: 1.4).
 	MessageDeviceAdded MessageType = 0b10000000000000000000000000000001
-	// MessageDeviceRemoved: message indicating a Device was removed from a
-	// DeviceProvider (Since: 1.4).
+	// MessageDeviceRemoved (GST_MESSAGE_DEVICE_REMOVED): message indicating a
+	// Device was removed from a DeviceProvider (Since: 1.4).
 	MessageDeviceRemoved MessageType = 0b10000000000000000000000000000010
-	// MessagePropertyNotify: message indicating a #GObject property has changed
-	// (Since: 1.10).
+	// MessagePropertyNotify (GST_MESSAGE_PROPERTY_NOTIFY): message indicating a
+	// #GObject property has changed (Since: 1.10).
 	MessagePropertyNotify MessageType = 0b10000000000000000000000000000011
-	// MessageStreamCollection: message indicating a new StreamCollection is
-	// available (Since: 1.10).
+	// MessageStreamCollection (GST_MESSAGE_STREAM_COLLECTION): message
+	// indicating a new StreamCollection is available (Since: 1.10).
 	MessageStreamCollection MessageType = 0b10000000000000000000000000000100
-	// MessageStreamsSelected: message indicating the active selection of
-	// Streams has changed (Since: 1.10).
+	// MessageStreamsSelected (GST_MESSAGE_STREAMS_SELECTED): message indicating
+	// the active selection of Streams has changed (Since: 1.10).
 	MessageStreamsSelected MessageType = 0b10000000000000000000000000000101
-	// MessageRedirect: message indicating to request the application to try to
-	// play the given URL(s). Useful if for example a HTTP 302/303 response is
-	// received with a non-HTTP URL inside. (Since: 1.10).
+	// MessageRedirect (GST_MESSAGE_REDIRECT): message indicating to request the
+	// application to try to play the given URL(s). Useful if for example a HTTP
+	// 302/303 response is received with a non-HTTP URL inside. (Since: 1.10).
 	MessageRedirect MessageType = 0b10000000000000000000000000000110
-	// MessageDeviceChanged: message indicating a Device was changed a
-	// DeviceProvider (Since: 1.16).
+	// MessageDeviceChanged (GST_MESSAGE_DEVICE_CHANGED): message indicating a
+	// Device was changed a DeviceProvider (Since: 1.16).
 	MessageDeviceChanged MessageType = 0b10000000000000000000000000000111
-	// MessageInstantRateRequest: message sent by elements to request the
-	// running time from the pipeline when an instant rate change should be
-	// applied (which may be in the past when the answer arrives). (Since:
-	// 1.18).
+	// MessageInstantRateRequest (GST_MESSAGE_INSTANT_RATE_REQUEST): message
+	// sent by elements to request the running time from the pipeline when an
+	// instant rate change should be applied (which may be in the past when the
+	// answer arrives). (Since: 1.18).
 	MessageInstantRateRequest MessageType = 0b10000000000000000000000000001000
-	// MessageAny: mask for all of the above messages.
+	// MessageAny (GST_MESSAGE_ANY): mask for all of the above messages.
 	MessageAny MessageType = 0b11111111111111111111111111111111
 )
 
@@ -5435,8 +5669,8 @@ func (m MessageType) Has(other MessageType) bool {
 	return (m & other) == other
 }
 
-// MessageTypeGetName: get a printable name for the given message type. Do not
-// modify or free.
+// MessageTypeGetName (gst_message_type_get_name): get a printable name for the
+// given message type. Do not modify or free.
 //
 // The function takes the following parameters:
 //
@@ -5461,7 +5695,8 @@ func MessageTypeGetName(typ MessageType) string {
 	return _utf8
 }
 
-// MessageTypeToQuark: get the unique quark for the given message type.
+// MessageTypeToQuark (gst_message_type_to_quark): get the unique quark for the
+// given message type.
 //
 // The function takes the following parameters:
 //
@@ -5486,19 +5721,22 @@ func MessageTypeToQuark(typ MessageType) glib.Quark {
 	return _quark
 }
 
-// MetaFlags: extra metadata flags.
+// MetaFlags (GstMetaFlags): extra metadata flags.
 type MetaFlags C.guint
 
 const (
-	// MetaFlagNone: no flags.
+	// MetaFlagNone (GST_META_FLAG_NONE): no flags.
 	MetaFlagNone MetaFlags = 0b0
-	// MetaFlagReadonly: metadata should not be modified.
+	// MetaFlagReadonly (GST_META_FLAG_READONLY): metadata should not be
+	// modified.
 	MetaFlagReadonly MetaFlags = 0b1
-	// MetaFlagPooled: metadata is managed by a bufferpool.
+	// MetaFlagPooled (GST_META_FLAG_POOLED): metadata is managed by a
+	// bufferpool.
 	MetaFlagPooled MetaFlags = 0b10
-	// MetaFlagLocked: metadata should not be removed.
+	// MetaFlagLocked (GST_META_FLAG_LOCKED): metadata should not be removed.
 	MetaFlagLocked MetaFlags = 0b100
-	// MetaFlagLast: additional flags can be added starting from this flag.
+	// MetaFlagLast (GST_META_FLAG_LAST): additional flags can be added starting
+	// from this flag.
 	MetaFlagLast MetaFlags = 0b10000000000000000
 )
 
@@ -5545,21 +5783,24 @@ func (m MetaFlags) Has(other MetaFlags) bool {
 	return (m & other) == other
 }
 
-// MiniObjectFlags flags for the mini object.
+// MiniObjectFlags (GstMiniObjectFlags) flags for the mini object.
 type MiniObjectFlags C.guint
 
 const (
-	// MiniObjectFlagLockable: object can be locked and unlocked with
-	// gst_mini_object_lock() and gst_mini_object_unlock().
+	// MiniObjectFlagLockable (GST_MINI_OBJECT_FLAG_LOCKABLE):
+	// object can be locked and unlocked with gst_mini_object_lock() and
+	// gst_mini_object_unlock().
 	MiniObjectFlagLockable MiniObjectFlags = 0b1
-	// MiniObjectFlagLockReadonly: object is permanently locked in READONLY
-	// mode. Only read locks can be performed on the object.
+	// MiniObjectFlagLockReadonly (GST_MINI_OBJECT_FLAG_LOCK_READONLY): object
+	// is permanently locked in READONLY mode. Only read locks can be performed
+	// on the object.
 	MiniObjectFlagLockReadonly MiniObjectFlags = 0b10
-	// MiniObjectFlagMayBeLeaked: object is expected to stay alive even after
-	// gst_deinit() has been called and so should be ignored by leak detection
-	// tools. (Since: 1.10).
+	// MiniObjectFlagMayBeLeaked (GST_MINI_OBJECT_FLAG_MAY_BE_LEAKED): object
+	// is expected to stay alive even after gst_deinit() has been called and so
+	// should be ignored by leak detection tools. (Since: 1.10).
 	MiniObjectFlagMayBeLeaked MiniObjectFlags = 0b100
-	// MiniObjectFlagLast: first flag that can be used by subclasses.
+	// MiniObjectFlagLast (GST_MINI_OBJECT_FLAG_LAST): first flag that can be
+	// used by subclasses.
 	MiniObjectFlagLast MiniObjectFlags = 0b10000
 )
 
@@ -5604,23 +5845,23 @@ func (m MiniObjectFlags) Has(other MiniObjectFlags) bool {
 	return (m & other) == other
 }
 
-// ObjectFlags: standard flags that an gstobject may have.
+// ObjectFlags (GstObjectFlags): standard flags that an gstobject may have.
 type ObjectFlags C.guint
 
 const (
-	// ObjectFlagMayBeLeaked: object is expected to stay alive even after
-	// gst_deinit() has been called and so should be ignored by leak detection
-	// tools. (Since: 1.10).
+	// ObjectFlagMayBeLeaked (GST_OBJECT_FLAG_MAY_BE_LEAKED): object is expected
+	// to stay alive even after gst_deinit() has been called and so should be
+	// ignored by leak detection tools. (Since: 1.10).
 	ObjectFlagMayBeLeaked ObjectFlags = 0b1
-	// ObjectFlagConstructed: flag that's set when the object has been
-	// constructed. This can be used by API such as base class setters to
-	// differentiate between the case where they're called from a subclass's
-	// instance init function (and where the object isn't fully constructed yet,
-	// and so one shouldn't do anything but set values in the instance
-	// structure), and the case where the object is constructed.
+	// ObjectFlagConstructed (GST_OBJECT_FLAG_CONSTRUCTED): flag that's set when
+	// the object has been constructed. This can be used by API such as base
+	// class setters to differentiate between the case where they're called from
+	// a subclass's instance init function (and where the object isn't fully
+	// constructed yet, and so one shouldn't do anything but set values in the
+	// instance structure), and the case where the object is constructed.
 	ObjectFlagConstructed ObjectFlags = 0b10
-	// ObjectFlagLast subclasses can add additional flags starting from this
-	// flag.
+	// ObjectFlagLast (GST_OBJECT_FLAG_LAST) subclasses can add additional flags
+	// starting from this flag.
 	ObjectFlagLast ObjectFlags = 0b10000
 )
 
@@ -5663,49 +5904,56 @@ func (o ObjectFlags) Has(other ObjectFlags) bool {
 	return (o & other) == other
 }
 
-// PadFlags: pad state flags.
+// PadFlags (GstPadFlags): pad state flags.
 type PadFlags C.guint
 
 const (
-	// PadFlagBlocked is dataflow on a pad blocked.
+	// PadFlagBlocked (GST_PAD_FLAG_BLOCKED) is dataflow on a pad blocked.
 	PadFlagBlocked PadFlags = 0b10000
-	// PadFlagFlushing is pad flushing.
+	// PadFlagFlushing (GST_PAD_FLAG_FLUSHING) is pad flushing.
 	PadFlagFlushing PadFlags = 0b100000
-	// PadFlagEos is pad in EOS state.
+	// PadFlagEos (GST_PAD_FLAG_EOS) is pad in EOS state.
 	PadFlagEos PadFlags = 0b1000000
-	// PadFlagBlocking is pad currently blocking on a buffer or event.
+	// PadFlagBlocking (GST_PAD_FLAG_BLOCKING) is pad currently blocking on a
+	// buffer or event.
 	PadFlagBlocking PadFlags = 0b10000000
-	// PadFlagNeedParent: ensure that there is a parent object before calling
-	// into the pad callbacks.
+	// PadFlagNeedParent (GST_PAD_FLAG_NEED_PARENT): ensure that there is a
+	// parent object before calling into the pad callbacks.
 	PadFlagNeedParent PadFlags = 0b100000000
-	// PadFlagNeedReconfigure: pad should be reconfigured/renegotiated. The flag
-	// has to be unset manually after reconfiguration happened.
+	// PadFlagNeedReconfigure (GST_PAD_FLAG_NEED_RECONFIGURE): pad should
+	// be reconfigured/renegotiated. The flag has to be unset manually after
+	// reconfiguration happened.
 	PadFlagNeedReconfigure PadFlags = 0b1000000000
-	// PadFlagPendingEvents: pad has pending events.
+	// PadFlagPendingEvents (GST_PAD_FLAG_PENDING_EVENTS): pad has pending
+	// events.
 	PadFlagPendingEvents PadFlags = 0b10000000000
-	// PadFlagFixedCaps: pad is using fixed caps. This means that once the caps
-	// are set on the pad, the default caps query function will only return
-	// those caps.
+	// PadFlagFixedCaps (GST_PAD_FLAG_FIXED_CAPS): pad is using fixed caps.
+	// This means that once the caps are set on the pad, the default caps query
+	// function will only return those caps.
 	PadFlagFixedCaps PadFlags = 0b100000000000
-	// PadFlagProxyCaps: default event and query handler will forward all events
-	// and queries to the internally linked pads instead of discarding them.
+	// PadFlagProxyCaps (GST_PAD_FLAG_PROXY_CAPS): default event and query
+	// handler will forward all events and queries to the internally linked pads
+	// instead of discarding them.
 	PadFlagProxyCaps PadFlags = 0b1000000000000
-	// PadFlagProxyAllocation: default query handler will forward allocation
-	// queries to the internally linked pads instead of discarding them.
+	// PadFlagProxyAllocation (GST_PAD_FLAG_PROXY_ALLOCATION): default query
+	// handler will forward allocation queries to the internally linked pads
+	// instead of discarding them.
 	PadFlagProxyAllocation PadFlags = 0b10000000000000
-	// PadFlagProxyScheduling: default query handler will forward scheduling
-	// queries to the internally linked pads instead of discarding them.
+	// PadFlagProxyScheduling (GST_PAD_FLAG_PROXY_SCHEDULING): default query
+	// handler will forward scheduling queries to the internally linked pads
+	// instead of discarding them.
 	PadFlagProxyScheduling PadFlags = 0b100000000000000
-	// PadFlagAcceptIntersect: default accept-caps handler will check it the
-	// caps intersect the query-caps result instead of checking for a subset.
-	// This is interesting for parsers that can accept incompletely specified
-	// caps.
+	// PadFlagAcceptIntersect (GST_PAD_FLAG_ACCEPT_INTERSECT): default
+	// accept-caps handler will check it the caps intersect the query-caps
+	// result instead of checking for a subset. This is interesting for parsers
+	// that can accept incompletely specified caps.
 	PadFlagAcceptIntersect PadFlags = 0b1000000000000000
-	// PadFlagAcceptTemplate: default accept-caps handler will use the template
-	// pad caps instead of query caps to compare with the accept caps. Use this
-	// in combination with GST_PAD_FLAG_ACCEPT_INTERSECT. (Since: 1.6).
+	// PadFlagAcceptTemplate (GST_PAD_FLAG_ACCEPT_TEMPLATE): default
+	// accept-caps handler will use the template pad caps instead of query
+	// caps to compare with the accept caps. Use this in combination with
+	// GST_PAD_FLAG_ACCEPT_INTERSECT. (Since: 1.6).
 	PadFlagAcceptTemplate PadFlags = 0b10000000000000000
-	// PadFlagLast: offset to define more flags.
+	// PadFlagLast (GST_PAD_FLAG_LAST): offset to define more flags.
 	PadFlagLast PadFlags = 0b100000000000000000000
 )
 
@@ -5770,10 +6018,10 @@ func (p PadFlags) Has(other PadFlags) bool {
 	return (p & other) == other
 }
 
-// PadLinkCheck: amount of checking to be done when linking pads.
-// GST_PAD_LINK_CHECK_CAPS and GST_PAD_LINK_CHECK_TEMPLATE_CAPS are mutually
-// exclusive. If both are specified, expensive but safe GST_PAD_LINK_CHECK_CAPS
-// are performed.
+// PadLinkCheck (GstPadLinkCheck): amount of checking to be done when linking
+// pads. GST_PAD_LINK_CHECK_CAPS and GST_PAD_LINK_CHECK_TEMPLATE_CAPS
+// are mutually exclusive. If both are specified, expensive but safe
+// GST_PAD_LINK_CHECK_CAPS are performed.
 //
 // > Only disable some of the checks if you are 100% certain you know the link >
 // will not fail because of hierarchy/caps compatibility failures. If uncertain,
@@ -5782,24 +6030,26 @@ func (p PadFlags) Has(other PadFlags) bool {
 type PadLinkCheck C.guint
 
 const (
-	// PadLinkCheckNothing: don't check hierarchy or caps compatibility.
+	// PadLinkCheckNothing (GST_PAD_LINK_CHECK_NOTHING): don't check hierarchy
+	// or caps compatibility.
 	PadLinkCheckNothing PadLinkCheck = 0b0
-	// PadLinkCheckHierarchy: check the pads have same parents/grandparents.
-	// Could be omitted if it is already known that the two elements that own
-	// the pads are in the same bin.
+	// PadLinkCheckHierarchy (GST_PAD_LINK_CHECK_HIERARCHY): check the pads have
+	// same parents/grandparents. Could be omitted if it is already known that
+	// the two elements that own the pads are in the same bin.
 	PadLinkCheckHierarchy PadLinkCheck = 0b1
-	// PadLinkCheckTemplateCaps: check if the pads are compatible by using
-	// their template caps. This is much faster than GST_PAD_LINK_CHECK_CAPS,
-	// but would be unsafe e.g. if one pad has GST_CAPS_ANY.
+	// PadLinkCheckTemplateCaps (GST_PAD_LINK_CHECK_TEMPLATE_CAPS): check if
+	// the pads are compatible by using their template caps. This is much faster
+	// than GST_PAD_LINK_CHECK_CAPS, but would be unsafe e.g. if one pad has
+	// GST_CAPS_ANY.
 	PadLinkCheckTemplateCaps PadLinkCheck = 0b10
-	// PadLinkCheckCaps: check if the pads are compatible by comparing the caps
-	// returned by gst_pad_query_caps().
+	// PadLinkCheckCaps (GST_PAD_LINK_CHECK_CAPS): check if the pads are
+	// compatible by comparing the caps returned by gst_pad_query_caps().
 	PadLinkCheckCaps PadLinkCheck = 0b100
-	// PadLinkCheckNoReconfigure disables pushing a reconfigure event when pads
-	// are linked.
+	// PadLinkCheckNoReconfigure (GST_PAD_LINK_CHECK_NO_RECONFIGURE) disables
+	// pushing a reconfigure event when pads are linked.
 	PadLinkCheckNoReconfigure PadLinkCheck = 0b1000
-	// PadLinkCheckDefault: default checks done when linking pads (i.e. the ones
-	// used by gst_pad_link()).
+	// PadLinkCheckDefault (GST_PAD_LINK_CHECK_DEFAULT): default checks done
+	// when linking pads (i.e. the ones used by gst_pad_link()).
 	PadLinkCheckDefault PadLinkCheck = 0b101
 )
 
@@ -5848,63 +6098,74 @@ func (p PadLinkCheck) Has(other PadLinkCheck) bool {
 	return (p & other) == other
 }
 
-// PadProbeType: different probing types that can occur. When either one of
-// GST_PAD_PROBE_TYPE_IDLE or GST_PAD_PROBE_TYPE_BLOCK is used, the probe will
-// be a blocking probe.
+// PadProbeType (GstPadProbeType): different probing types that can occur. When
+// either one of GST_PAD_PROBE_TYPE_IDLE or GST_PAD_PROBE_TYPE_BLOCK is used,
+// the probe will be a blocking probe.
 type PadProbeType C.guint
 
 const (
-	// PadProbeTypeInvalid: invalid probe type.
+	// PadProbeTypeInvalid (GST_PAD_PROBE_TYPE_INVALID): invalid probe type.
 	PadProbeTypeInvalid PadProbeType = 0b0
-	// PadProbeTypeIdle: probe idle pads and block while the callback is called.
+	// PadProbeTypeIdle (GST_PAD_PROBE_TYPE_IDLE): probe idle pads and block
+	// while the callback is called.
 	PadProbeTypeIdle PadProbeType = 0b1
-	// PadProbeTypeBlock: probe and block pads.
+	// PadProbeTypeBlock (GST_PAD_PROBE_TYPE_BLOCK): probe and block pads.
 	PadProbeTypeBlock PadProbeType = 0b10
-	// PadProbeTypeBuffer: probe buffers.
+	// PadProbeTypeBuffer (GST_PAD_PROBE_TYPE_BUFFER): probe buffers.
 	PadProbeTypeBuffer PadProbeType = 0b10000
-	// PadProbeTypeBufferList: probe buffer lists.
+	// PadProbeTypeBufferList (GST_PAD_PROBE_TYPE_BUFFER_LIST): probe buffer
+	// lists.
 	PadProbeTypeBufferList PadProbeType = 0b100000
-	// PadProbeTypeEventDownstream: probe downstream events.
+	// PadProbeTypeEventDownstream (GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM):
+	// probe downstream events.
 	PadProbeTypeEventDownstream PadProbeType = 0b1000000
-	// PadProbeTypeEventUpstream: probe upstream events.
+	// PadProbeTypeEventUpstream (GST_PAD_PROBE_TYPE_EVENT_UPSTREAM): probe
+	// upstream events.
 	PadProbeTypeEventUpstream PadProbeType = 0b10000000
-	// PadProbeTypeEventFlush: probe flush events.
-	// This probe has to be explicitly enabled and is not
-	// included in the @GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM or
+	// PadProbeTypeEventFlush (GST_PAD_PROBE_TYPE_EVENT_FLUSH):
+	// probe flush events. This probe has to be explicitly enabled and
+	// is not included in the @GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM or
 	// @GST_PAD_PROBE_TYPE_EVENT_UPSTREAM probe types.
 	PadProbeTypeEventFlush PadProbeType = 0b100000000
-	// PadProbeTypeQueryDownstream: probe downstream queries.
+	// PadProbeTypeQueryDownstream (GST_PAD_PROBE_TYPE_QUERY_DOWNSTREAM):
+	// probe downstream queries.
 	PadProbeTypeQueryDownstream PadProbeType = 0b1000000000
-	// PadProbeTypeQueryUpstream: probe upstream queries.
+	// PadProbeTypeQueryUpstream (GST_PAD_PROBE_TYPE_QUERY_UPSTREAM): probe
+	// upstream queries.
 	PadProbeTypeQueryUpstream PadProbeType = 0b10000000000
-	// PadProbeTypePush: probe push.
+	// PadProbeTypePush (GST_PAD_PROBE_TYPE_PUSH): probe push.
 	PadProbeTypePush PadProbeType = 0b1000000000000
-	// PadProbeTypePull: probe pull.
+	// PadProbeTypePull (GST_PAD_PROBE_TYPE_PULL): probe pull.
 	PadProbeTypePull PadProbeType = 0b10000000000000
-	// PadProbeTypeBlocking: probe and block at the next opportunity, at data
-	// flow or when idle.
+	// PadProbeTypeBlocking (GST_PAD_PROBE_TYPE_BLOCKING): probe and block at
+	// the next opportunity, at data flow or when idle.
 	PadProbeTypeBlocking PadProbeType = 0b11
-	// PadProbeTypeDataDownstream: probe downstream data (buffers, buffer lists,
-	// and events).
+	// PadProbeTypeDataDownstream (GST_PAD_PROBE_TYPE_DATA_DOWNSTREAM): probe
+	// downstream data (buffers, buffer lists, and events).
 	PadProbeTypeDataDownstream PadProbeType = 0b1110000
-	// PadProbeTypeDataUpstream: probe upstream data (events).
+	// PadProbeTypeDataUpstream (GST_PAD_PROBE_TYPE_DATA_UPSTREAM): probe
+	// upstream data (events).
 	PadProbeTypeDataUpstream PadProbeType = 0b10000000
-	// PadProbeTypeDataBoth: probe upstream and downstream data (buffers,
-	// buffer lists, and events).
+	// PadProbeTypeDataBoth (GST_PAD_PROBE_TYPE_DATA_BOTH): probe upstream and
+	// downstream data (buffers, buffer lists, and events).
 	PadProbeTypeDataBoth PadProbeType = 0b11110000
-	// PadProbeTypeBlockDownstream: probe and block downstream data (buffers,
-	// buffer lists, and events).
+	// PadProbeTypeBlockDownstream (GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM):
+	// probe and block downstream data (buffers, buffer lists, and events).
 	PadProbeTypeBlockDownstream PadProbeType = 0b1110010
-	// PadProbeTypeBlockUpstream: probe and block upstream data (events).
+	// PadProbeTypeBlockUpstream (GST_PAD_PROBE_TYPE_BLOCK_UPSTREAM): probe and
+	// block upstream data (events).
 	PadProbeTypeBlockUpstream PadProbeType = 0b10000010
-	// PadProbeTypeEventBoth: probe upstream and downstream events.
+	// PadProbeTypeEventBoth (GST_PAD_PROBE_TYPE_EVENT_BOTH): probe upstream and
+	// downstream events.
 	PadProbeTypeEventBoth PadProbeType = 0b11000000
-	// PadProbeTypeQueryBoth: probe upstream and downstream queries.
+	// PadProbeTypeQueryBoth (GST_PAD_PROBE_TYPE_QUERY_BOTH): probe upstream and
+	// downstream queries.
 	PadProbeTypeQueryBoth PadProbeType = 0b11000000000
-	// PadProbeTypeAllBoth: probe upstream events and queries and downstream
-	// buffers, buffer lists, events and queries.
+	// PadProbeTypeAllBoth (GST_PAD_PROBE_TYPE_ALL_BOTH): probe upstream events
+	// and queries and downstream buffers, buffer lists, events and queries.
 	PadProbeTypeAllBoth PadProbeType = 0b11011110000
-	// PadProbeTypeScheduling: probe push and pull.
+	// PadProbeTypeScheduling (GST_PAD_PROBE_TYPE_SCHEDULING): probe push and
+	// pull.
 	PadProbeTypeScheduling PadProbeType = 0b11000000000000
 )
 
@@ -5983,11 +6244,12 @@ func (p PadProbeType) Has(other PadProbeType) bool {
 	return (p & other) == other
 }
 
-// PadTemplateFlags flags for the padtemplate.
+// PadTemplateFlags (GstPadTemplateFlags) flags for the padtemplate.
 type PadTemplateFlags C.guint
 
 const (
-	// PadTemplateFlagLast: first flag that can be used by subclasses.
+	// PadTemplateFlagLast (GST_PAD_TEMPLATE_FLAG_LAST): first flag that can be
+	// used by subclasses.
 	PadTemplateFlagLast PadTemplateFlags = 0b100000000
 )
 
@@ -6026,22 +6288,23 @@ func (p PadTemplateFlags) Has(other PadTemplateFlags) bool {
 	return (p & other) == other
 }
 
-// ParseFlags: parsing options.
+// ParseFlags (GstParseFlags): parsing options.
 type ParseFlags C.guint
 
 const (
-	// ParseFlagNone: do not use any special parsing options.
+	// ParseFlagNone (GST_PARSE_FLAG_NONE): do not use any special parsing
+	// options.
 	ParseFlagNone ParseFlags = 0b0
-	// ParseFlagFatalErrors always return NULL when an error occurs (default
-	// behaviour is to return partially constructed bins or elements in some
-	// cases).
+	// ParseFlagFatalErrors (GST_PARSE_FLAG_FATAL_ERRORS) always return
+	// NULL when an error occurs (default behaviour is to return partially
+	// constructed bins or elements in some cases).
 	ParseFlagFatalErrors ParseFlags = 0b1
-	// ParseFlagNoSingleElementBins: if a bin only has a single element,
-	// just return the element.
+	// ParseFlagNoSingleElementBins (GST_PARSE_FLAG_NO_SINGLE_ELEMENT_BINS):
+	// if a bin only has a single element, just return the element.
 	ParseFlagNoSingleElementBins ParseFlags = 0b10
-	// ParseFlagPlaceInBin: if more than one toplevel element is described by
-	// the pipeline description string, put them in a Bin instead of a Pipeline.
-	// (Since: 1.10).
+	// ParseFlagPlaceInBin (GST_PARSE_FLAG_PLACE_IN_BIN): if more than one
+	// toplevel element is described by the pipeline description string,
+	// put them in a Bin instead of a Pipeline. (Since: 1.10).
 	ParseFlagPlaceInBin ParseFlags = 0b100
 )
 
@@ -6086,13 +6349,14 @@ func (p ParseFlags) Has(other ParseFlags) bool {
 	return (p & other) == other
 }
 
-// PipelineFlags: pipeline flags.
+// PipelineFlags (GstPipelineFlags): pipeline flags.
 type PipelineFlags C.guint
 
 const (
-	// PipelineFlagFixedClock: pipeline works with a fixed clock.
+	// PipelineFlagFixedClock (GST_PIPELINE_FLAG_FIXED_CLOCK): pipeline works
+	// with a fixed clock.
 	PipelineFlagFixedClock PipelineFlags = 0b10000000000000000000
-	// PipelineFlagLast: offset to define more flags.
+	// PipelineFlagLast (GST_PIPELINE_FLAG_LAST): offset to define more flags.
 	PipelineFlagLast PipelineFlags = 0b100000000000000000000000
 )
 
@@ -6136,10 +6400,10 @@ func (p PipelineFlags) Has(other PipelineFlags) bool {
 type PluginAPIFlags C.guint
 
 const (
-	// PluginApiFlagIgnoreEnumMembers: ignore enum members when generating the
-	// plugins cache. This is useful if the members of the enum are generated
-	// dynamically, in order not to expose incorrect documentation to the end
-	// user.
+	// PluginApiFlagIgnoreEnumMembers (GST_PLUGIN_API_FLAG_IGNORE_ENUM_MEMBERS):
+	// ignore enum members when generating the plugins cache. This is useful if
+	// the members of the enum are generated dynamically, in order not to expose
+	// incorrect documentation to the end user.
 	PluginApiFlagIgnoreEnumMembers PluginAPIFlags = 0b1
 )
 
@@ -6178,26 +6442,34 @@ func (p PluginAPIFlags) Has(other PluginAPIFlags) bool {
 	return (p & other) == other
 }
 
-// PluginDependencyFlags flags used in connection with
-// gst_plugin_add_dependency().
+// PluginDependencyFlags (GstPluginDependencyFlags) flags used in connection
+// with gst_plugin_add_dependency().
 type PluginDependencyFlags C.guint
 
 const (
-	// PluginDependencyFlagNone: no special flags.
+	// PluginDependencyFlagNone (GST_PLUGIN_DEPENDENCY_FLAG_NONE): no special
+	// flags.
 	PluginDependencyFlagNone PluginDependencyFlags = 0b0
-	// PluginDependencyFlagRecurse: recurse into subdirectories.
+	// PluginDependencyFlagRecurse (GST_PLUGIN_DEPENDENCY_FLAG_RECURSE): recurse
+	// into subdirectories.
 	PluginDependencyFlagRecurse PluginDependencyFlags = 0b1
-	// PluginDependencyFlagPathsAreDefaultOnly: use paths argument only if none
-	// of the environment variables is set.
+	// PluginDependencyFlagPathsAreDefaultOnly
+	// (GST_PLUGIN_DEPENDENCY_FLAG_PATHS_ARE_DEFAULT_ONLY): use paths argument
+	// only if none of the environment variables is set.
 	PluginDependencyFlagPathsAreDefaultOnly PluginDependencyFlags = 0b10
-	// PluginDependencyFlagFileNameIsSuffix: interpret filename argument as
-	// filter suffix and check all matching files in the directory.
+	// PluginDependencyFlagFileNameIsSuffix
+	// (GST_PLUGIN_DEPENDENCY_FLAG_FILE_NAME_IS_SUFFIX): interpret filename
+	// argument as filter suffix and check all matching files in the directory.
 	PluginDependencyFlagFileNameIsSuffix PluginDependencyFlags = 0b100
-	// PluginDependencyFlagFileNameIsPrefix: interpret filename argument as
-	// filter prefix and check all matching files in the directory. Since: 1.8.
+	// PluginDependencyFlagFileNameIsPrefix
+	// (GST_PLUGIN_DEPENDENCY_FLAG_FILE_NAME_IS_PREFIX): interpret filename
+	// argument as filter prefix and check all matching files in the directory.
+	// Since: 1.8.
 	PluginDependencyFlagFileNameIsPrefix PluginDependencyFlags = 0b1000
-	// PluginDependencyFlagPathsAreRelativeToExe: interpret non-absolute paths
-	// as relative to the main executable directory. Since 1.14.
+	// PluginDependencyFlagPathsAreRelativeToExe
+	// (GST_PLUGIN_DEPENDENCY_FLAG_PATHS_ARE_RELATIVE_TO_EXE): interpret
+	// non-absolute paths as relative to the main executable directory. Since
+	// 1.14.
 	PluginDependencyFlagPathsAreRelativeToExe PluginDependencyFlags = 0b10000
 )
 
@@ -6246,13 +6518,14 @@ func (p PluginDependencyFlags) Has(other PluginDependencyFlags) bool {
 	return (p & other) == other
 }
 
-// PluginFlags: plugin loading state.
+// PluginFlags (GstPluginFlags): plugin loading state.
 type PluginFlags C.guint
 
 const (
-	// PluginFlagCached: temporarily loaded plugins.
+	// PluginFlagCached (GST_PLUGIN_FLAG_CACHED): temporarily loaded plugins.
 	PluginFlagCached PluginFlags = 0b10000
-	// PluginFlagBlacklisted: plugin won't be scanned (again).
+	// PluginFlagBlacklisted (GST_PLUGIN_FLAG_BLACKLISTED): plugin won't be
+	// scanned (again).
 	PluginFlagBlacklisted PluginFlags = 0b100000
 )
 
@@ -6293,18 +6566,20 @@ func (p PluginFlags) Has(other PluginFlags) bool {
 	return (p & other) == other
 }
 
-// QueryTypeFlags indicate the aspects of the different QueryType values.
-// You can get the type flags of a QueryType with the gst_query_type_get_flags()
-// function.
+// QueryTypeFlags (GstQueryTypeFlags) indicate the aspects of the different
+// QueryType values. You can get the type flags of a QueryType with the
+// gst_query_type_get_flags() function.
 type QueryTypeFlags C.guint
 
 const (
-	// QueryTypeUpstream: set if the query can travel upstream.
+	// QueryTypeUpstream (GST_QUERY_TYPE_UPSTREAM): set if the query can travel
+	// upstream.
 	QueryTypeUpstream QueryTypeFlags = 0b1
-	// QueryTypeDownstream: set if the query can travel downstream.
+	// QueryTypeDownstream (GST_QUERY_TYPE_DOWNSTREAM): set if the query can
+	// travel downstream.
 	QueryTypeDownstream QueryTypeFlags = 0b10
-	// QueryTypeSerialized: set if the query should be serialized with data
-	// flow.
+	// QueryTypeSerialized (GST_QUERY_TYPE_SERIALIZED): set if the query should
+	// be serialized with data flow.
 	QueryTypeSerialized QueryTypeFlags = 0b100
 )
 
@@ -6347,16 +6622,18 @@ func (q QueryTypeFlags) Has(other QueryTypeFlags) bool {
 	return (q & other) == other
 }
 
-// SchedulingFlags: different scheduling flags.
+// SchedulingFlags (GstSchedulingFlags): different scheduling flags.
 type SchedulingFlags C.guint
 
 const (
-	// SchedulingFlagSeekable: if seeking is possible.
+	// SchedulingFlagSeekable (GST_SCHEDULING_FLAG_SEEKABLE): if seeking is
+	// possible.
 	SchedulingFlagSeekable SchedulingFlags = 0b1
-	// SchedulingFlagSequential: if sequential access is recommended.
+	// SchedulingFlagSequential (GST_SCHEDULING_FLAG_SEQUENTIAL): if sequential
+	// access is recommended.
 	SchedulingFlagSequential SchedulingFlags = 0b10
-	// SchedulingFlagBandwidthLimited: if bandwidth is limited and buffering
-	// possible (since 1.2).
+	// SchedulingFlagBandwidthLimited (GST_SCHEDULING_FLAG_BANDWIDTH_LIMITED):
+	// if bandwidth is limited and buffering possible (since 1.2).
 	SchedulingFlagBandwidthLimited SchedulingFlags = 0b100
 )
 
@@ -6399,8 +6676,8 @@ func (s SchedulingFlags) Has(other SchedulingFlags) bool {
 	return (s & other) == other
 }
 
-// SeekFlags flags to be used with gst_element_seek() or gst_event_new_seek().
-// All flags can be used together.
+// SeekFlags (GstSeekFlags) flags to be used with gst_element_seek() or
+// gst_event_new_seek(). All flags can be used together.
 //
 // A non flushing seek might take some time to perform as the currently playing
 // data in the pipeline will not be cleared.
@@ -6454,56 +6731,59 @@ func (s SchedulingFlags) Has(other SchedulingFlags) bool {
 type SeekFlags C.guint
 
 const (
-	// SeekFlagNone: no flag.
+	// SeekFlagNone (GST_SEEK_FLAG_NONE): no flag.
 	SeekFlagNone SeekFlags = 0b0
-	// SeekFlagFlush: flush pipeline.
+	// SeekFlagFlush (GST_SEEK_FLAG_FLUSH): flush pipeline.
 	SeekFlagFlush SeekFlags = 0b1
-	// SeekFlagAccurate: accurate position is requested, this might be
-	// considerably slower for some formats.
+	// SeekFlagAccurate (GST_SEEK_FLAG_ACCURATE): accurate position is
+	// requested, this might be considerably slower for some formats.
 	SeekFlagAccurate SeekFlags = 0b10
-	// SeekFlagKeyUnit: seek to the nearest keyframe. This might be faster but
-	// less accurate.
+	// SeekFlagKeyUnit (GST_SEEK_FLAG_KEY_UNIT): seek to the nearest keyframe.
+	// This might be faster but less accurate.
 	SeekFlagKeyUnit SeekFlags = 0b100
-	// SeekFlagSegment: perform a segment seek.
+	// SeekFlagSegment (GST_SEEK_FLAG_SEGMENT): perform a segment seek.
 	SeekFlagSegment SeekFlags = 0b1000
-	// SeekFlagTrickmode: when doing fast forward or fast reverse playback,
-	// allow elements to skip frames instead of generating all frames. (Since:
-	// 1.6).
+	// SeekFlagTrickmode (GST_SEEK_FLAG_TRICKMODE): when doing fast forward
+	// or fast reverse playback, allow elements to skip frames instead of
+	// generating all frames. (Since: 1.6).
 	SeekFlagTrickmode SeekFlags = 0b10000
-	// SeekFlagSkip: deprecated backward compatibility flag, replaced by
-	// GST_SEEK_FLAG_TRICKMODE.
+	// SeekFlagSkip (GST_SEEK_FLAG_SKIP): deprecated backward compatibility
+	// flag, replaced by GST_SEEK_FLAG_TRICKMODE.
 	SeekFlagSkip SeekFlags = 0b10000
-	// SeekFlagSnapBefore: go to a location before the requested position, if
-	// GST_SEEK_FLAG_KEY_UNIT this means the keyframe at or before the requested
-	// position the one at or before the seek target.
+	// SeekFlagSnapBefore (GST_SEEK_FLAG_SNAP_BEFORE): go to a location before
+	// the requested position, if GST_SEEK_FLAG_KEY_UNIT this means the keyframe
+	// at or before the requested position the one at or before the seek target.
 	SeekFlagSnapBefore SeekFlags = 0b100000
-	// SeekFlagSnapAfter: go to a location after the requested position, if
-	// GST_SEEK_FLAG_KEY_UNIT this means the keyframe at of after the requested
-	// position.
+	// SeekFlagSnapAfter (GST_SEEK_FLAG_SNAP_AFTER): go to a location after the
+	// requested position, if GST_SEEK_FLAG_KEY_UNIT this means the keyframe at
+	// of after the requested position.
 	SeekFlagSnapAfter SeekFlags = 0b1000000
-	// SeekFlagSnapNearest: go to a position near the requested position, if
-	// GST_SEEK_FLAG_KEY_UNIT this means the keyframe closest to the requested
-	// position, if both keyframes are at an equal distance, behaves like
-	// GST_SEEK_FLAG_SNAP_BEFORE.
+	// SeekFlagSnapNearest (GST_SEEK_FLAG_SNAP_NEAREST): go to a position near
+	// the requested position, if GST_SEEK_FLAG_KEY_UNIT this means the keyframe
+	// closest to the requested position, if both keyframes are at an equal
+	// distance, behaves like GST_SEEK_FLAG_SNAP_BEFORE.
 	SeekFlagSnapNearest SeekFlags = 0b1100000
-	// SeekFlagTrickmodeKeyUnits: when doing fast forward or fast reverse
-	// playback, request that elements only decode keyframes and skip all other
-	// content, for formats that have keyframes. (Since: 1.6).
+	// SeekFlagTrickmodeKeyUnits (GST_SEEK_FLAG_TRICKMODE_KEY_UNITS): when doing
+	// fast forward or fast reverse playback, request that elements only decode
+	// keyframes and skip all other content, for formats that have keyframes.
+	// (Since: 1.6).
 	SeekFlagTrickmodeKeyUnits SeekFlags = 0b10000000
-	// SeekFlagTrickmodeNoAudio: when doing fast forward or fast reverse
-	// playback, request that audio decoder elements skip decoding and output
-	// only gap events or silence. (Since: 1.6).
+	// SeekFlagTrickmodeNoAudio (GST_SEEK_FLAG_TRICKMODE_NO_AUDIO): when doing
+	// fast forward or fast reverse playback, request that audio decoder
+	// elements skip decoding and output only gap events or silence. (Since:
+	// 1.6).
 	SeekFlagTrickmodeNoAudio SeekFlags = 0b100000000
-	// SeekFlagTrickmodeForwardPredicted: when doing fast forward or fast
-	// reverse playback, request that elements only decode keyframes and forward
-	// predicted frames and skip all other content (for example B-Frames),
-	// for formats that have keyframes and forward predicted frames. (Since:
-	// 1.18).
-	SeekFlagTrickmodeForwardPredicted SeekFlags = 0b1000000000
-	// SeekFlagInstantRateChange signals that a rate change should be applied
-	// immediately. Only valid if start/stop position are GST_CLOCK_TIME_NONE,
-	// the playback direction does not change and the seek is not flushing.
+	// SeekFlagTrickmodeForwardPredicted
+	// (GST_SEEK_FLAG_TRICKMODE_FORWARD_PREDICTED): when doing fast forward
+	// or fast reverse playback, request that elements only decode keyframes
+	// and forward predicted frames and skip all other content (for example
+	// B-Frames), for formats that have keyframes and forward predicted frames.
 	// (Since: 1.18).
+	SeekFlagTrickmodeForwardPredicted SeekFlags = 0b1000000000
+	// SeekFlagInstantRateChange (GST_SEEK_FLAG_INSTANT_RATE_CHANGE) signals
+	// that a rate change should be applied immediately. Only valid if
+	// start/stop position are GST_CLOCK_TIME_NONE, the playback direction does
+	// not change and the seek is not flushing. (Since: 1.18).
 	SeekFlagInstantRateChange SeekFlags = 0b10000000000
 )
 
@@ -6566,31 +6846,34 @@ func (s SeekFlags) Has(other SeekFlags) bool {
 	return (s & other) == other
 }
 
-// SegmentFlags flags for the GstSegment structure. Currently mapped to the
-// corresponding values of the seek flags.
+// SegmentFlags (GstSegmentFlags) flags for the GstSegment structure. Currently
+// mapped to the corresponding values of the seek flags.
 type SegmentFlags C.guint
 
 const (
-	// SegmentFlagNone: no flags.
+	// SegmentFlagNone (GST_SEGMENT_FLAG_NONE): no flags.
 	SegmentFlagNone SegmentFlags = 0b0
-	// SegmentFlagReset: reset the pipeline running_time to the segment
-	// running_time.
+	// SegmentFlagReset (GST_SEGMENT_FLAG_RESET): reset the pipeline
+	// running_time to the segment running_time.
 	SegmentFlagReset SegmentFlags = 0b1
-	// SegmentFlagTrickmode: perform skip playback (Since: 1.6).
+	// SegmentFlagTrickmode (GST_SEGMENT_FLAG_TRICKMODE): perform skip playback
+	// (Since: 1.6).
 	SegmentFlagTrickmode SegmentFlags = 0b10000
-	// SegmentFlagSkip: deprecated backward compatibility flag, replaced by
-	// GST_SEGMENT_FLAG_TRICKMODE.
+	// SegmentFlagSkip (GST_SEGMENT_FLAG_SKIP): deprecated backward
+	// compatibility flag, replaced by GST_SEGMENT_FLAG_TRICKMODE.
 	SegmentFlagSkip SegmentFlags = 0b10000
-	// SegmentFlagSegment: send SEGMENT_DONE instead of EOS.
+	// SegmentFlagSegment (GST_SEGMENT_FLAG_SEGMENT): send SEGMENT_DONE instead
+	// of EOS.
 	SegmentFlagSegment SegmentFlags = 0b1000
-	// SegmentFlagTrickmodeKeyUnits: decode only keyframes, where possible
-	// (Since: 1.6).
+	// SegmentFlagTrickmodeKeyUnits (GST_SEGMENT_FLAG_TRICKMODE_KEY_UNITS):
+	// decode only keyframes, where possible (Since: 1.6).
 	SegmentFlagTrickmodeKeyUnits SegmentFlags = 0b10000000
-	// SegmentFlagTrickmodeForwardPredicted: decode only keyframes or forward
-	// predicted frames, where possible (Since: 1.18).
+	// SegmentFlagTrickmodeForwardPredicted
+	// (GST_SEGMENT_FLAG_TRICKMODE_FORWARD_PREDICTED): decode only keyframes or
+	// forward predicted frames, where possible (Since: 1.18).
 	SegmentFlagTrickmodeForwardPredicted SegmentFlags = 0b1000000000
-	// SegmentFlagTrickmodeNoAudio: do not decode any audio, where possible
-	// (Since: 1.6).
+	// SegmentFlagTrickmodeNoAudio (GST_SEGMENT_FLAG_TRICKMODE_NO_AUDIO):
+	// do not decode any audio, where possible (Since: 1.6).
 	SegmentFlagTrickmodeNoAudio SegmentFlags = 0b100000000
 )
 
@@ -6644,13 +6927,14 @@ func (s SegmentFlags) Has(other SegmentFlags) bool {
 type SerializeFlags C.guint
 
 const (
-	// SerializeFlagNone: no special flags specified.
+	// SerializeFlagNone (GST_SERIALIZE_FLAG_NONE): no special flags specified.
 	SerializeFlagNone SerializeFlags = 0b0
-	// SerializeFlagBackwardCompat: serialize using the old format for nested
-	// structures.
+	// SerializeFlagBackwardCompat (GST_SERIALIZE_FLAG_BACKWARD_COMPAT):
+	// serialize using the old format for nested structures.
 	SerializeFlagBackwardCompat SerializeFlags = 0b1
-	// SerializeFlagStrict: serialization fails if a value cannot be serialized
-	// instead of using placeholder "NULL" value (e.g. pointers, objects).
+	// SerializeFlagStrict (GST_SERIALIZE_FLAG_STRICT): serialization fails if
+	// a value cannot be serialized instead of using placeholder "NULL" value
+	// (e.g. pointers, objects).
 	SerializeFlagStrict SerializeFlags = 0b10
 )
 
@@ -6696,11 +6980,13 @@ func (s SerializeFlags) Has(other SerializeFlags) bool {
 type StackTraceFlags C.guint
 
 const (
-	// StackTraceShowNone: try to retrieve the minimum information available,
-	// which may be none on some platforms (Since: 1.18).
+	// StackTraceShowNone (GST_STACK_TRACE_SHOW_NONE): try to retrieve the
+	// minimum information available, which may be none on some platforms
+	// (Since: 1.18).
 	StackTraceShowNone StackTraceFlags = 0b0
-	// StackTraceShowFull: try to retrieve as much information as possible,
-	// including source information when getting the stack trace.
+	// StackTraceShowFull (GST_STACK_TRACE_SHOW_FULL): try to retrieve as much
+	// information as possible, including source information when getting the
+	// stack trace.
 	StackTraceShowFull StackTraceFlags = 0b1
 )
 
@@ -6744,21 +7030,22 @@ func (s StackTraceFlags) Has(other StackTraceFlags) bool {
 type StreamFlags C.guint
 
 const (
-	// StreamFlagNone: this stream has no special attributes.
+	// StreamFlagNone (GST_STREAM_FLAG_NONE): this stream has no special
+	// attributes.
 	StreamFlagNone StreamFlags = 0b0
-	// StreamFlagSparse: this stream is a sparse stream (e.g. a subtitle
-	// stream), data may flow only in irregular intervals with large gaps in
-	// between.
+	// StreamFlagSparse (GST_STREAM_FLAG_SPARSE): this stream is a sparse stream
+	// (e.g. a subtitle stream), data may flow only in irregular intervals with
+	// large gaps in between.
 	StreamFlagSparse StreamFlags = 0b1
-	// StreamFlagSelect: this stream should be selected by default. This flag
-	// may be used by demuxers to signal that a stream should be selected by
-	// default in a playback scenario.
+	// StreamFlagSelect (GST_STREAM_FLAG_SELECT): this stream should be selected
+	// by default. This flag may be used by demuxers to signal that a stream
+	// should be selected by default in a playback scenario.
 	StreamFlagSelect StreamFlags = 0b10
-	// StreamFlagUnselect: this stream should not be selected by default.
-	// This flag may be used by demuxers to signal that a stream should not
-	// be selected by default in a playback scenario, but only if explicitly
-	// selected by the user (e.g. an audio track for the hard of hearing or a
-	// director's commentary track).
+	// StreamFlagUnselect (GST_STREAM_FLAG_UNSELECT): this stream should not
+	// be selected by default. This flag may be used by demuxers to signal
+	// that a stream should not be selected by default in a playback scenario,
+	// but only if explicitly selected by the user (e.g. an audio track for the
+	// hard of hearing or a director's commentary track).
 	StreamFlagUnselect StreamFlags = 0b100
 )
 
@@ -6803,8 +7090,8 @@ func (s StreamFlags) Has(other StreamFlags) bool {
 	return (s & other) == other
 }
 
-// StreamType describes a high level classification set for flows of data in
-// Stream objects.
+// StreamType (GstStreamType) describes a high level classification set for
+// flows of data in Stream objects.
 //
 // Note that this is a flag, and therefore users should not assume it will be a
 // single value. Do not use the equality operator for checking whether a stream
@@ -6812,15 +7099,18 @@ func (s StreamFlags) Has(other StreamFlags) bool {
 type StreamType C.guint
 
 const (
-	// StreamTypeUnknown: stream is of unknown (unclassified) type.
+	// StreamTypeUnknown (GST_STREAM_TYPE_UNKNOWN): stream is of unknown
+	// (unclassified) type.
 	StreamTypeUnknown StreamType = 0b1
-	// StreamTypeAudio: stream is of audio data.
+	// StreamTypeAudio (GST_STREAM_TYPE_AUDIO): stream is of audio data.
 	StreamTypeAudio StreamType = 0b10
-	// StreamTypeVideo: stream carries video data.
+	// StreamTypeVideo (GST_STREAM_TYPE_VIDEO): stream carries video data.
 	StreamTypeVideo StreamType = 0b100
-	// StreamTypeContainer: stream is a muxed container type.
+	// StreamTypeContainer (GST_STREAM_TYPE_CONTAINER): stream is a muxed
+	// container type.
 	StreamTypeContainer StreamType = 0b1000
-	// StreamTypeText: stream contains subtitle / subpicture data.
+	// StreamTypeText (GST_STREAM_TYPE_TEXT): stream contains subtitle /
+	// subpicture data.
 	StreamTypeText StreamType = 0b10000
 )
 
@@ -6867,7 +7157,8 @@ func (s StreamType) Has(other StreamType) bool {
 	return (s & other) == other
 }
 
-// StreamTypeGetName: get a descriptive string for a given StreamType.
+// StreamTypeGetName (gst_stream_type_get_name): get a descriptive string for a
+// given StreamType.
 //
 // The function takes the following parameters:
 //
@@ -6892,19 +7183,20 @@ func StreamTypeGetName(stype StreamType) string {
 	return _utf8
 }
 
-// TracerValueFlags: flag that describe the value. These flags help applications
-// processing the logs to understand the values.
+// TracerValueFlags (GstTracerValueFlags): flag that describe the value.
+// These flags help applications processing the logs to understand the values.
 type TracerValueFlags C.guint
 
 const (
-	// TracerValueFlagsNone: no flags.
+	// TracerValueFlagsNone (GST_TRACER_VALUE_FLAGS_NONE): no flags.
 	TracerValueFlagsNone TracerValueFlags = 0b0
-	// TracerValueFlagsOptional: value is optional. When using this flag one
-	// need to have an additional boolean arg before this value in the var-args
-	// list passed to gst_tracer_record_log().
+	// TracerValueFlagsOptional (GST_TRACER_VALUE_FLAGS_OPTIONAL): value is
+	// optional. When using this flag one need to have an additional boolean arg
+	// before this value in the var-args list passed to gst_tracer_record_log().
 	TracerValueFlagsOptional TracerValueFlags = 0b1
-	// TracerValueFlagsAggregated: value is a combined figure, since the start
-	// of tracing. Examples are averages or timestamps.
+	// TracerValueFlagsAggregated (GST_TRACER_VALUE_FLAGS_AGGREGATED): value is
+	// a combined figure, since the start of tracing. Examples are averages or
+	// timestamps.
 	TracerValueFlagsAggregated TracerValueFlags = 0b10
 )
 
@@ -7100,9 +7392,10 @@ type TaskFunction func()
 // TypeFindFunction: function that will be called by typefinding.
 type TypeFindFunction func(find *TypeFind)
 
-// DebugAddRingBufferLogger adds a memory ringbuffer based debug logger that
-// stores up to max_size_per_thread bytes of logs per thread and times out
-// threads after thread_timeout seconds of inactivity.
+// DebugAddRingBufferLogger (gst_debug_add_ring_buffer_logger) adds a memory
+// ringbuffer based debug logger that stores up to max_size_per_thread bytes
+// of logs per thread and times out threads after thread_timeout seconds of
+// inactivity.
 //
 // Logs can be fetched with gst_debug_ring_buffer_logger_get_logs() and the
 // logger can be removed again with gst_debug_remove_ring_buffer_logger().
@@ -7124,9 +7417,10 @@ func DebugAddRingBufferLogger(maxSizePerThread, threadTimeout uint) {
 	runtime.KeepAlive(threadTimeout)
 }
 
-// DebugBinToDotData: to aid debugging applications one can use this method to
-// obtain the whole network of gstreamer elements that form the pipeline into a
-// dot file. This data can be processed with graphviz to get an image.
+// DebugBinToDotData (gst_debug_bin_to_dot_data): to aid debugging applications
+// one can use this method to obtain the whole network of gstreamer elements
+// that form the pipeline into a dot file. This data can be processed with
+// graphviz to get an image.
 //
 // The function takes the following parameters:
 //
@@ -7156,9 +7450,10 @@ func DebugBinToDotData(bin *Bin, details DebugGraphDetails) string {
 	return _utf8
 }
 
-// DebugBinToDotFile: to aid debugging applications one can use this method to
-// write out the whole network of gstreamer elements that form the pipeline into
-// a dot file. This file can be processed with graphviz to get an image.
+// DebugBinToDotFile (gst_debug_bin_to_dot_file): to aid debugging applications
+// one can use this method to write out the whole network of gstreamer elements
+// that form the pipeline into a dot file. This file can be processed with
+// graphviz to get an image.
 //
 //	shell  dot -Tpng -oimage.png graph_lowlevel.dot.
 //
@@ -7183,9 +7478,9 @@ func DebugBinToDotFile(bin *Bin, details DebugGraphDetails, fileName string) {
 	runtime.KeepAlive(fileName)
 }
 
-// DebugBinToDotFileWithTs: this works like gst_debug_bin_to_dot_file(),
-// but adds the current timestamp to the filename, so that it can be used to
-// take multiple snapshots.
+// DebugBinToDotFileWithTs (gst_debug_bin_to_dot_file_with_ts): this works like
+// gst_debug_bin_to_dot_file(), but adds the current timestamp to the filename,
+// so that it can be used to take multiple snapshots.
 //
 // The function takes the following parameters:
 //
@@ -7208,8 +7503,9 @@ func DebugBinToDotFileWithTs(bin *Bin, details DebugGraphDetails, fileName strin
 	runtime.KeepAlive(fileName)
 }
 
-// DebugConstructTermColor constructs a string that can be used for getting the
-// desired color in color terminals. You need to free the string after use.
+// DebugConstructTermColor (gst_debug_construct_term_color) constructs a string
+// that can be used for getting the desired color in color terminals. You need
+// to free the string after use.
 //
 // The function takes the following parameters:
 //
@@ -7235,9 +7531,9 @@ func DebugConstructTermColor(colorinfo uint) string {
 	return _utf8
 }
 
-// DebugConstructWinColor constructs an integer that can be used for getting
-// the desired color in windows' terminals (cmd.exe). As there is no mean to
-// underline, we simply ignore this attribute.
+// DebugConstructWinColor (gst_debug_construct_win_color) constructs an
+// integer that can be used for getting the desired color in windows' terminals
+// (cmd.exe). As there is no mean to underline, we simply ignore this attribute.
 //
 // This function returns 0 on non-windows machines.
 //
@@ -7264,9 +7560,9 @@ func DebugConstructWinColor(colorinfo uint) int {
 	return _gint
 }
 
-// DebugGetAllCategories returns a snapshot of a all categories that are
-// currently in use . This list may change anytime. The caller has to free the
-// list after use.
+// DebugGetAllCategories (gst_debug_get_all_categories) returns a snapshot of
+// a all categories that are currently in use . This list may change anytime.
+// The caller has to free the list after use.
 //
 // The function returns the following values:
 //
@@ -7289,7 +7585,8 @@ func DebugGetAllCategories() []*DebugCategory {
 	return _sList
 }
 
-// DebugGetColorMode changes the coloring mode for debug output.
+// DebugGetColorMode (gst_debug_get_color_mode) changes the coloring mode for
+// debug output.
 //
 // The function returns the following values:
 //
@@ -7306,8 +7603,8 @@ func DebugGetColorMode() DebugColorMode {
 	return _debugColorMode
 }
 
-// DebugGetDefaultThreshold returns the default threshold that is used for new
-// categories.
+// DebugGetDefaultThreshold (gst_debug_get_default_threshold) returns the
+// default threshold that is used for new categories.
 //
 // The function returns the following values:
 //
@@ -7352,7 +7649,7 @@ func DebugGetStackTrace(flags StackTraceFlags) string {
 	return _utf8
 }
 
-// DebugIsActive checks if debugging output is activated.
+// DebugIsActive (gst_debug_is_active) checks if debugging output is activated.
 //
 // The function returns the following values:
 //
@@ -7371,7 +7668,8 @@ func DebugIsActive() bool {
 	return _ok
 }
 
-// DebugIsColored checks if the debugging output should be colored.
+// DebugIsColored (gst_debug_is_colored) checks if the debugging output should
+// be colored.
 //
 // The function returns the following values:
 //
@@ -7390,8 +7688,8 @@ func DebugIsColored() bool {
 	return _ok
 }
 
-// DebugLogIDLiteral logs the given message using the currently registered
-// debugging handlers.
+// DebugLogIDLiteral (gst_debug_log_id_literal) logs the given message using the
+// currently registered debugging handlers.
 //
 // The function takes the following parameters:
 //
@@ -7436,8 +7734,8 @@ func DebugLogIDLiteral(category *DebugCategory, level DebugLevel, file, function
 	runtime.KeepAlive(messageString)
 }
 
-// DebugLogLiteral logs the given message using the currently registered
-// debugging handlers.
+// DebugLogLiteral (gst_debug_log_literal) logs the given message using the
+// currently registered debugging handlers.
 //
 // The function takes the following parameters:
 //
@@ -7480,14 +7778,14 @@ func DebugLogLiteral(category *DebugCategory, level DebugLevel, file, function s
 	runtime.KeepAlive(messageString)
 }
 
-// DebugPrintStackTrace: if libunwind, glibc backtrace or DbgHelp are present a
-// stack trace is printed.
+// DebugPrintStackTrace (gst_debug_print_stack_trace): if libunwind, glibc
+// backtrace or DbgHelp are present a stack trace is printed.
 func DebugPrintStackTrace() {
 	C.gst_debug_print_stack_trace()
 }
 
-// DebugRemoveLogFunctionByData removes all registered instances of log
-// functions with the given user data.
+// DebugRemoveLogFunctionByData (gst_debug_remove_log_function_by_data) removes
+// all registered instances of log functions with the given user data.
 //
 // The function takes the following parameters:
 //
@@ -7512,14 +7810,15 @@ func DebugRemoveLogFunctionByData(data unsafe.Pointer) uint {
 	return _guint
 }
 
-// DebugRemoveRingBufferLogger removes any previously added ring buffer logger
-// with gst_debug_add_ring_buffer_logger().
+// DebugRemoveRingBufferLogger (gst_debug_remove_ring_buffer_logger) removes any
+// previously added ring buffer logger with gst_debug_add_ring_buffer_logger().
 func DebugRemoveRingBufferLogger() {
 	C.gst_debug_remove_ring_buffer_logger()
 }
 
-// DebugRingBufferLoggerGetLogs fetches the current logs per thread from the
-// ring buffer logger. See gst_debug_add_ring_buffer_logger() for details.
+// DebugRingBufferLoggerGetLogs (gst_debug_ring_buffer_logger_get_logs)
+// fetches the current logs per thread from the ring buffer logger. See
+// gst_debug_add_ring_buffer_logger() for details.
 //
 // The function returns the following values:
 //
@@ -7550,9 +7849,10 @@ func DebugRingBufferLoggerGetLogs() []string {
 	return _utf8s
 }
 
-// DebugSetActive: if activated, debugging messages are sent to the debugging
-// handlers. It makes sense to deactivate it for speed issues. > This function
-// is not threadsafe. It makes sense to only call it during initialization.
+// DebugSetActive (gst_debug_set_active): if activated, debugging messages are
+// sent to the debugging handlers. It makes sense to deactivate it for speed
+// issues. > This function is not threadsafe. It makes sense to only call it
+// during initialization.
 //
 // The function takes the following parameters:
 //
@@ -7568,7 +7868,8 @@ func DebugSetActive(active bool) {
 	runtime.KeepAlive(active)
 }
 
-// DebugSetColorMode changes the coloring mode for debug output.
+// DebugSetColorMode (gst_debug_set_color_mode) changes the coloring mode for
+// debug output.
 //
 // This function may be called before gst_init().
 //
@@ -7584,7 +7885,8 @@ func DebugSetColorMode(mode DebugColorMode) {
 	runtime.KeepAlive(mode)
 }
 
-// DebugSetColorModeFromString changes the coloring mode for debug output.
+// DebugSetColorModeFromString (gst_debug_set_color_mode_from_string) changes
+// the coloring mode for debug output.
 //
 // This function may be called before gst_init().
 //
@@ -7602,9 +7904,9 @@ func DebugSetColorModeFromString(mode string) {
 	runtime.KeepAlive(mode)
 }
 
-// DebugSetColored sets or unsets the use of coloured debugging output.
-// Same as gst_debug_set_color_mode () with the argument being being
-// GST_DEBUG_COLOR_MODE_ON or GST_DEBUG_COLOR_MODE_OFF.
+// DebugSetColored (gst_debug_set_colored) sets or unsets the use of coloured
+// debugging output. Same as gst_debug_set_color_mode () with the argument being
+// being GST_DEBUG_COLOR_MODE_ON or GST_DEBUG_COLOR_MODE_OFF.
 //
 // This function may be called before gst_init().
 //
@@ -7622,8 +7924,9 @@ func DebugSetColored(colored bool) {
 	runtime.KeepAlive(colored)
 }
 
-// DebugSetDefaultThreshold sets the default threshold to the given level and
-// updates all categories to use this threshold.
+// DebugSetDefaultThreshold (gst_debug_set_default_threshold) sets the
+// default threshold to the given level and updates all categories to use this
+// threshold.
 //
 // This function may be called before gst_init().
 //
@@ -7639,8 +7942,8 @@ func DebugSetDefaultThreshold(level DebugLevel) {
 	runtime.KeepAlive(level)
 }
 
-// DebugSetThresholdForName sets all categories which match the given glob style
-// pattern to the given level.
+// DebugSetThresholdForName (gst_debug_set_threshold_for_name) sets all
+// categories which match the given glob style pattern to the given level.
 //
 // The function takes the following parameters:
 //
@@ -7659,10 +7962,11 @@ func DebugSetThresholdForName(name string, level DebugLevel) {
 	runtime.KeepAlive(level)
 }
 
-// DebugSetThresholdFromString sets the debug logging wanted in the same form as
-// with the GST_DEBUG environment variable. You can use wildcards such as *, but
-// note that the order matters when you use wild cards, e.g. foosrc:6,*src:3,*:2
-// sets everything to log level 2.
+// DebugSetThresholdFromString (gst_debug_set_threshold_from_string) sets the
+// debug logging wanted in the same form as with the GST_DEBUG environment
+// variable. You can use wildcards such as *, but note that the order matters
+// when you use wild cards, e.g. foosrc:6,*src:3,*:2 sets everything to log
+// level 2.
 //
 // The function takes the following parameters:
 //
@@ -7686,8 +7990,8 @@ func DebugSetThresholdFromString(list string, reset bool) {
 	runtime.KeepAlive(reset)
 }
 
-// DebugUnsetThresholdForName resets all categories with the given name back to
-// the default level.
+// DebugUnsetThresholdForName (gst_debug_unset_threshold_for_name) resets all
+// categories with the given name back to the default level.
 //
 // The function takes the following parameters:
 //
@@ -7702,7 +8006,8 @@ func DebugUnsetThresholdForName(name string) {
 	runtime.KeepAlive(name)
 }
 
-// Deinit: clean up any resources created by GStreamer in gst_init().
+// Deinit (gst_deinit): clean up any resources created by GStreamer in
+// gst_init().
 //
 // It is normally not needed to call this function in a normal application as
 // the resources will automatically be freed when the program terminates. This
@@ -7714,7 +8019,8 @@ func Deinit() {
 	C.gst_deinit()
 }
 
-// DynamicTypeRegister registers a new DynamicTypeFactory in the registry.
+// DynamicTypeRegister (gst_dynamic_type_register) registers a new
+// DynamicTypeFactory in the registry.
 //
 // The function takes the following parameters:
 //
@@ -7741,8 +8047,8 @@ func DynamicTypeRegister(plugin *Plugin, typ coreglib.Type) bool {
 	return _ok
 }
 
-// ErrorGetMessage: get a string describing the error message in the current
-// locale.
+// ErrorGetMessage (gst_error_get_message): get a string describing the error
+// message in the current locale.
 //
 // The function takes the following parameters:
 //
@@ -7773,11 +8079,11 @@ func ErrorGetMessage(domain glib.Quark, code int) string {
 	return _utf8
 }
 
-// FilenameToURI: similar to g_filename_to_uri(), but attempts to handle
-// relative file paths as well. Before converting filename into an URI, it
-// will be prefixed by the current working directory if it is a relative path,
-// and then the path will be canonicalised so that it doesn't contain any './'
-// or '../' segments.
+// FilenameToURI (gst_filename_to_uri): similar to g_filename_to_uri(), but
+// attempts to handle relative file paths as well. Before converting filename
+// into an URI, it will be prefixed by the current working directory if it is
+// a relative path, and then the path will be canonicalised so that it doesn't
+// contain any './' or '../' segments.
 //
 // On Windows filename should be in UTF-8 encoding.
 //
@@ -7814,7 +8120,8 @@ func FilenameToURI(filename string) (string, error) {
 	return _utf8, _goerr
 }
 
-// FlowGetName gets a string representing the given flow return.
+// FlowGetName (gst_flow_get_name) gets a string representing the given flow
+// return.
 //
 // The function takes the following parameters:
 //
@@ -7839,7 +8146,8 @@ func FlowGetName(ret FlowReturn) string {
 	return _utf8
 }
 
-// FlowToQuark: get the unique quark for the given GstFlowReturn.
+// FlowToQuark (gst_flow_to_quark): get the unique quark for the given
+// GstFlowReturn.
 //
 // The function takes the following parameters:
 //
@@ -7865,7 +8173,8 @@ func FlowToQuark(ret FlowReturn) glib.Quark {
 	return _quark
 }
 
-// FormatsContains: see if the given format is inside the format array.
+// FormatsContains (gst_formats_contains): see if the given format is inside the
+// format array.
 //
 // The function takes the following parameters:
 //
@@ -7900,8 +8209,9 @@ func FormatsContains(formats []Format, format Format) bool {
 	return _ok
 }
 
-// GetMainExecutablePath: this helper is mostly helpful for plugins that need to
-// inspect the folder of the main executable to determine their set of features.
+// GetMainExecutablePath (gst_get_main_executable_path): this helper is mostly
+// helpful for plugins that need to inspect the folder of the main executable to
+// determine their set of features.
 //
 // When a plugin is initialized from the gst-plugin-scanner external process,
 // the returned path will be the same as from the parent process.
@@ -7924,7 +8234,7 @@ func GetMainExecutablePath() string {
 	return _utf8
 }
 
-// IsCapsFeatures checks if obj is a CapsFeatures.
+// IsCapsFeatures (gst_is_caps_features) checks if obj is a CapsFeatures.
 //
 // The function returns the following values:
 //
@@ -7947,8 +8257,8 @@ func IsCapsFeatures(obj unsafe.Pointer) bool {
 	return _ok
 }
 
-// IsInitialized: use this function to check if GStreamer has been initialized
-// with gst_init() or gst_init_check().
+// IsInitialized (gst_is_initialized): use this function to check if GStreamer
+// has been initialized with gst_init() or gst_init_check().
 //
 // The function returns the following values:
 //
@@ -7979,14 +8289,14 @@ func ParentBufferMetaApiGetType() coreglib.Type {
 	return _gType
 }
 
-// ParseBinFromDescription: this is a convenience wrapper around
-// gst_parse_launch() to create a Bin from a gst-launch-style pipeline
-// description. See gst_parse_launch() and the gst-launch man page for details
-// about the syntax. Ghost pads on the bin for unlinked source or sink pads
-// within the bin can automatically be created (but only a maximum of one ghost
-// pad for each direction will be created; if you expect multiple unlinked
-// source pads or multiple unlinked sink pads and want them all ghosted,
-// you will have to create the ghost pads yourself).
+// ParseBinFromDescription (gst_parse_bin_from_description): this is a
+// convenience wrapper around gst_parse_launch() to create a Bin from a
+// gst-launch-style pipeline description. See gst_parse_launch() and the
+// gst-launch man page for details about the syntax. Ghost pads on the bin for
+// unlinked source or sink pads within the bin can automatically be created
+// (but only a maximum of one ghost pad for each direction will be created;
+// if you expect multiple unlinked source pads or multiple unlinked sink pads
+// and want them all ghosted, you will have to create the ghost pads yourself).
 //
 // The function takes the following parameters:
 //
@@ -8024,14 +8334,14 @@ func ParseBinFromDescription(binDescription string, ghostUnlinkedPads bool) (*Bi
 	return _bin, _goerr
 }
 
-// ParseBinFromDescriptionFull: this is a convenience wrapper around
-// gst_parse_launch() to create a Bin from a gst-launch-style pipeline
-// description. See gst_parse_launch() and the gst-launch man page for details
-// about the syntax. Ghost pads on the bin for unlinked source or sink pads
-// within the bin can automatically be created (but only a maximum of one ghost
-// pad for each direction will be created; if you expect multiple unlinked
-// source pads or multiple unlinked sink pads and want them all ghosted,
-// you will have to create the ghost pads yourself).
+// ParseBinFromDescriptionFull (gst_parse_bin_from_description_full):
+// this is a convenience wrapper around gst_parse_launch() to create a Bin
+// from a gst-launch-style pipeline description. See gst_parse_launch() and the
+// gst-launch man page for details about the syntax. Ghost pads on the bin for
+// unlinked source or sink pads within the bin can automatically be created
+// (but only a maximum of one ghost pad for each direction will be created;
+// if you expect multiple unlinked source pads or multiple unlinked sink pads
+// and want them all ghosted, you will have to create the ghost pads yourself).
 //
 // The function takes the following parameters:
 //
@@ -8098,10 +8408,10 @@ func ParseBinFromDescriptionFull(binDescription string, ghostUnlinkedPads bool, 
 	return _element, _goerr
 }
 
-// ParseLaunch: create a new pipeline based on command line syntax. Please note
-// that you might get a return value that is not NULL even though the error is
-// set. In this case there was a recoverable parsing error and you can try to
-// play the pipeline.
+// ParseLaunch (gst_parse_launch): create a new pipeline based on command line
+// syntax. Please note that you might get a return value that is not NULL even
+// though the error is set. In this case there was a recoverable parsing error
+// and you can try to play the pipeline.
 //
 // To create a sub-pipeline (bin) for embedding into an existing pipeline use
 // gst_parse_bin_from_description().
@@ -8153,10 +8463,10 @@ func ParseLaunch(pipelineDescription string) (Elementer, error) {
 	return _element, _goerr
 }
 
-// ParseLaunchFull: create a new pipeline based on command line syntax. Please
-// note that you might get a return value that is not NULL even though the error
-// is set. In this case there was a recoverable parsing error and you can try to
-// play the pipeline.
+// ParseLaunchFull (gst_parse_launch_full): create a new pipeline based on
+// command line syntax. Please note that you might get a return value that is
+// not NULL even though the error is set. In this case there was a recoverable
+// parsing error and you can try to play the pipeline.
 //
 // To create a sub-pipeline (bin) for embedding into an existing pipeline use
 // gst_parse_bin_from_description_full().
@@ -8221,9 +8531,9 @@ func ParseLaunchFull(pipelineDescription string, context *ParseContext, flags Pa
 	return _element, _goerr
 }
 
-// ParseLaunchv: create a new element based on command line syntax. error will
-// contain an error message if an erroneous pipeline is specified. An error does
-// not mean that the pipeline could not be constructed.
+// ParseLaunchv (gst_parse_launchv): create a new element based on command
+// line syntax. error will contain an error message if an erroneous pipeline is
+// specified. An error does not mean that the pipeline could not be constructed.
 //
 // The function takes the following parameters:
 //
@@ -8281,9 +8591,10 @@ func ParseLaunchv(argv []string) (Elementer, error) {
 	return _element, _goerr
 }
 
-// ParseLaunchvFull: create a new element based on command line syntax.
-// error will contain an error message if an erroneous pipeline is specified.
-// An error does not mean that the pipeline could not be constructed.
+// ParseLaunchvFull (gst_parse_launchv_full): create a new element based on
+// command line syntax. error will contain an error message if an erroneous
+// pipeline is specified. An error does not mean that the pipeline could not be
+// constructed.
 //
 // The function takes the following parameters:
 //
@@ -8355,9 +8666,10 @@ func ParseLaunchvFull(argv []string, context *ParseContext, flags ParseFlags) (E
 	return _element, _goerr
 }
 
-// ProtectionFilterSystemsByAvailableDecryptors iterates the supplied list of
-// UUIDs and checks the GstRegistry for all the decryptors supporting one of the
-// supplied UUIDs.
+// ProtectionFilterSystemsByAvailableDecryptors
+// (gst_protection_filter_systems_by_available_decryptors) iterates the supplied
+// list of UUIDs and checks the GstRegistry for all the decryptors supporting
+// one of the supplied UUIDs.
 //
 // The function takes the following parameters:
 //
@@ -8425,10 +8737,10 @@ func ProtectionMetaApiGetType() coreglib.Type {
 	return _gType
 }
 
-// ProtectionSelectSystem iterates the supplied list of UUIDs and checks
-// the GstRegistry for an element that supports one of the supplied UUIDs.
-// If more than one element matches, the system ID of the highest ranked element
-// is selected.
+// ProtectionSelectSystem (gst_protection_select_system) iterates the supplied
+// list of UUIDs and checks the GstRegistry for an element that supports one of
+// the supplied UUIDs. If more than one element matches, the system ID of the
+// highest ranked element is selected.
 //
 // The function takes the following parameters:
 //
@@ -8482,9 +8794,10 @@ func ReferenceTimestampMetaApiGetType() coreglib.Type {
 	return _gType
 }
 
-// SegtrapIsEnabled: some functions in the GStreamer core might install a
-// custom SIGSEGV handler to better catch and report errors to the application.
-// Currently this feature is enabled by default when loading plugins.
+// SegtrapIsEnabled (gst_segtrap_is_enabled): some functions in the GStreamer
+// core might install a custom SIGSEGV handler to better catch and report errors
+// to the application. Currently this feature is enabled by default when loading
+// plugins.
 //
 // Applications might want to disable this behaviour with the
 // gst_segtrap_set_enabled() function. This is typically done if the application
@@ -8507,9 +8820,9 @@ func SegtrapIsEnabled() bool {
 	return _ok
 }
 
-// SegtrapSetEnabled applications might want to disable/enable the SIGSEGV
-// handling of the GStreamer core. See gst_segtrap_is_enabled() for more
-// information.
+// SegtrapSetEnabled (gst_segtrap_set_enabled) applications might want
+// to disable/enable the SIGSEGV handling of the GStreamer core. See
+// gst_segtrap_is_enabled() for more information.
 //
 // The function takes the following parameters:
 //
@@ -8525,7 +8838,7 @@ func SegtrapSetEnabled(enabled bool) {
 	runtime.KeepAlive(enabled)
 }
 
-// TagExists checks if the given type is already registered.
+// TagExists (gst_tag_exists) checks if the given type is already registered.
 //
 // The function takes the following parameters:
 //
@@ -8553,8 +8866,8 @@ func TagExists(tag string) bool {
 	return _ok
 }
 
-// TagGetDescription returns the human-readable description of this tag,
-// You must not change or free this string.
+// TagGetDescription (gst_tag_get_description) returns the human-readable
+// description of this tag, You must not change or free this string.
 //
 // The function takes the following parameters:
 //
@@ -8580,7 +8893,7 @@ func TagGetDescription(tag string) string {
 	return _utf8
 }
 
-// TagGetFlag gets the flag of tag.
+// TagGetFlag (gst_tag_get_flag) gets the flag of tag.
 //
 // The function takes the following parameters:
 //
@@ -8606,8 +8919,8 @@ func TagGetFlag(tag string) TagFlag {
 	return _tagFlag
 }
 
-// TagGetNick returns the human-readable name of this tag, You must not change
-// or free this string.
+// TagGetNick (gst_tag_get_nick) returns the human-readable name of this tag,
+// You must not change or free this string.
 //
 // The function takes the following parameters:
 //
@@ -8633,7 +8946,7 @@ func TagGetNick(tag string) string {
 	return _utf8
 }
 
-// TagGetType gets the #GType used for this tag.
+// TagGetType (gst_tag_get_type) gets the #GType used for this tag.
 //
 // The function takes the following parameters:
 //
@@ -8659,8 +8972,8 @@ func TagGetType(tag string) coreglib.Type {
 	return _gType
 }
 
-// TagIsFixed checks if the given tag is fixed. A fixed tag can only contain one
-// value. Unfixed tags can contain lists of values.
+// TagIsFixed (gst_tag_is_fixed) checks if the given tag is fixed. A fixed tag
+// can only contain one value. Unfixed tags can contain lists of values.
 //
 // The function takes the following parameters:
 //
@@ -8688,10 +9001,10 @@ func TagIsFixed(tag string) bool {
 	return _ok
 }
 
-// TagMergeStringsWithComma: this is a convenience function for the func
-// argument of gst_tag_register(). It concatenates all given strings using a
-// comma. The tag must be registered as a G_TYPE_STRING or this function will
-// fail.
+// TagMergeStringsWithComma (gst_tag_merge_strings_with_comma): this is
+// a convenience function for the func argument of gst_tag_register().
+// It concatenates all given strings using a comma. The tag must be registered
+// as a G_TYPE_STRING or this function will fail.
 //
 // The function takes the following parameters:
 //
@@ -8716,8 +9029,9 @@ func TagMergeStringsWithComma(src *coreglib.Value) coreglib.Value {
 	return _dest
 }
 
-// TagMergeUseFirst: this is a convenience function for the func argument of
-// gst_tag_register(). It creates a copy of the first value from the list.
+// TagMergeUseFirst (gst_tag_merge_use_first): this is a convenience function
+// for the func argument of gst_tag_register(). It creates a copy of the first
+// value from the list.
 //
 // The function takes the following parameters:
 //
@@ -8742,9 +9056,9 @@ func TagMergeUseFirst(src *coreglib.Value) coreglib.Value {
 	return _dest
 }
 
-// TracingGetActiveTracers: get a list of all active tracer objects owned by
-// the tracing framework for the entirety of the run-time of the process or till
-// gst_deinit() is called.
+// TracingGetActiveTracers (gst_tracing_get_active_tracers): get a list of all
+// active tracer objects owned by the tracing framework for the entirety of the
+// run-time of the process or till gst_deinit() is called.
 //
 // The function returns the following values:
 //
@@ -8783,8 +9097,8 @@ func TracingGetActiveTracers() []Tracerer {
 	return _list
 }
 
-// TypeIsPluginApi checks if type is plugin API. See
-// gst_type_mark_as_plugin_api() for details.
+// TypeIsPluginApi (gst_type_is_plugin_api) checks if type is plugin API.
+// See gst_type_mark_as_plugin_api() for details.
 //
 // The function takes the following parameters:
 //
@@ -8815,9 +9129,9 @@ func TypeIsPluginApi(typ coreglib.Type) (PluginAPIFlags, bool) {
 	return _flags, _ok
 }
 
-// TypeMarkAsPluginApi marks type as plugin API. This should be called in
-// class_init of elements that expose new types (i.e. enums, flags or internal
-// GObjects) via properties, signals or pad templates.
+// TypeMarkAsPluginApi (gst_type_mark_as_plugin_api) marks type as plugin API.
+// This should be called in class_init of elements that expose new types (i.e.
+// enums, flags or internal GObjects) via properties, signals or pad templates.
 //
 // Types exposed by plugins are not automatically added to the documentation
 // as they might originate from another library and should in that case be
@@ -8842,8 +9156,8 @@ func TypeMarkAsPluginApi(typ coreglib.Type, flags PluginAPIFlags) {
 	runtime.KeepAlive(flags)
 }
 
-// UpdateRegistry forces GStreamer to re-scan its plugin paths and update the
-// default plugin registry.
+// UpdateRegistry (gst_update_registry) forces GStreamer to re-scan its plugin
+// paths and update the default plugin registry.
 //
 // Applications will almost never need to call this function, it is only
 // useful if the application knows new plugins have been installed (or old
@@ -8876,8 +9190,9 @@ func UpdateRegistry() bool {
 	return _ok
 }
 
-// UtilArrayBinarySearch searches inside array for search_data by using the
-// comparison function search_func. array must be sorted ascending.
+// UtilArrayBinarySearch (gst_util_array_binary_search) searches inside array
+// for search_data by using the comparison function search_func. array must be
+// sorted ascending.
 //
 // As search_data is always passed as second argument to search_func it's not
 // required that search_data has the same type as the array elements.
@@ -8932,7 +9247,8 @@ func UtilArrayBinarySearch(array unsafe.Pointer, numElements, elementSize uint, 
 	return _gpointer
 }
 
-// UtilCeilLog2 returns smallest integral value not less than log2(v).
+// UtilCeilLog2 (gst_util_ceil_log2) returns smallest integral value not less
+// than log2(v).
 //
 // The function takes the following parameters:
 //
@@ -8957,8 +9273,8 @@ func UtilCeilLog2(v uint32) uint {
 	return _guint
 }
 
-// UtilDoubleToFraction transforms a #gdouble to a fraction and simplifies the
-// result.
+// UtilDoubleToFraction (gst_util_double_to_fraction) transforms a #gdouble to a
+// fraction and simplifies the result.
 //
 // The function takes the following parameters:
 //
@@ -8987,8 +9303,8 @@ func UtilDoubleToFraction(src float64) (destN, destD int) {
 	return _destN, _destD
 }
 
-// UtilDumpBuffer dumps the buffer memory into a hex representation. Useful for
-// debugging.
+// UtilDumpBuffer (gst_util_dump_buffer) dumps the buffer memory into a hex
+// representation. Useful for debugging.
 //
 // The function takes the following parameters:
 //
@@ -9002,8 +9318,8 @@ func UtilDumpBuffer(buf *Buffer) {
 	runtime.KeepAlive(buf)
 }
 
-// UtilDumpMem dumps the memory block into a hex representation. Useful for
-// debugging.
+// UtilDumpMem (gst_util_dump_mem) dumps the memory block into a hex
+// representation. Useful for debugging.
 //
 // The function takes the following parameters:
 //
@@ -9021,7 +9337,8 @@ func UtilDumpMem(mem []byte) {
 	runtime.KeepAlive(mem)
 }
 
-// UtilFilenameCompare compares the given filenames using natural ordering.
+// UtilFilenameCompare (gst_util_filename_compare) compares the given filenames
+// using natural ordering.
 //
 // The function takes the following parameters:
 //
@@ -9048,8 +9365,8 @@ func UtilFilenameCompare(a, b string) int {
 	return _gint
 }
 
-// UtilFractionAdd adds the fractions a_n/a_d and b_n/b_d and stores the result
-// in res_n and res_d.
+// UtilFractionAdd (gst_util_fraction_add) adds the fractions a_n/a_d and
+// b_n/b_d and stores the result in res_n and res_d.
 //
 // The function takes the following parameters:
 //
@@ -9096,8 +9413,8 @@ func UtilFractionAdd(aN, aD, bN, bD int) (resN, resD int, ok bool) {
 	return _resN, _resD, _ok
 }
 
-// UtilFractionCompare compares the fractions a_n/a_d and b_n/b_d and returns -1
-// if a < b, 0 if a = b and 1 if a > b.
+// UtilFractionCompare (gst_util_fraction_compare) compares the fractions
+// a_n/a_d and b_n/b_d and returns -1 if a < b, 0 if a = b and 1 if a > b.
 //
 // The function takes the following parameters:
 //
@@ -9134,8 +9451,8 @@ func UtilFractionCompare(aN, aD, bN, bD int) int {
 	return _gint
 }
 
-// UtilFractionMultiply multiplies the fractions a_n/a_d and b_n/b_d and stores
-// the result in res_n and res_d.
+// UtilFractionMultiply (gst_util_fraction_multiply) multiplies the fractions
+// a_n/a_d and b_n/b_d and stores the result in res_n and res_d.
 //
 // The function takes the following parameters:
 //
@@ -9182,7 +9499,8 @@ func UtilFractionMultiply(aN, aD, bN, bD int) (resN, resD int, ok bool) {
 	return _resN, _resD, _ok
 }
 
-// UtilFractionToDouble transforms a fraction to a #gdouble.
+// UtilFractionToDouble (gst_util_fraction_to_double) transforms a fraction to a
+// #gdouble.
 //
 // The function takes the following parameters:
 //
@@ -9234,8 +9552,9 @@ func UtilGdoubleToGuint64(value float64) uint64 {
 	return _guint64
 }
 
-// UtilGetTimestamp: get a timestamp as GstClockTime to be used for interval
-// measurements. The timestamp should not be interpreted in any other way.
+// UtilGetTimestamp (gst_util_get_timestamp): get a timestamp as GstClockTime to
+// be used for interval measurements. The timestamp should not be interpreted in
+// any other way.
 //
 // The function returns the following values:
 //
@@ -9252,7 +9571,8 @@ func UtilGetTimestamp() ClockTime {
 	return _clockTime
 }
 
-// UtilGreatestCommonDivisor calculates the greatest common divisor of a and b.
+// UtilGreatestCommonDivisor (gst_util_greatest_common_divisor) calculates the
+// greatest common divisor of a and b.
 //
 // The function takes the following parameters:
 //
@@ -9281,8 +9601,8 @@ func UtilGreatestCommonDivisor(a, b int) int {
 	return _gint
 }
 
-// UtilGreatestCommonDivisorInt64 calculates the greatest common divisor of a
-// and b.
+// UtilGreatestCommonDivisorInt64 (gst_util_greatest_common_divisor_int64)
+// calculates the greatest common divisor of a and b.
 //
 // The function takes the following parameters:
 //
@@ -9311,7 +9631,8 @@ func UtilGreatestCommonDivisorInt64(a, b int64) int64 {
 	return _gint64
 }
 
-// UtilGroupIDNext: return a constantly incrementing group id.
+// UtilGroupIDNext (gst_util_group_id_next): return a constantly incrementing
+// group id.
 //
 // This function is used to generate a new group-id for the stream-start event.
 //
@@ -9356,7 +9677,8 @@ func UtilGuint64ToGdouble(value uint64) float64 {
 	return _gdouble
 }
 
-// UtilSeqnumCompare: compare two sequence numbers, handling wraparound.
+// UtilSeqnumCompare (gst_util_seqnum_compare): compare two sequence numbers,
+// handling wraparound.
 //
 // The current implementation just returns (gint32)(s1 - s2).
 //
@@ -9388,7 +9710,8 @@ func UtilSeqnumCompare(s1, s2 uint32) int32 {
 	return _gint32
 }
 
-// UtilSeqnumNext: return a constantly incrementing sequence number.
+// UtilSeqnumNext (gst_util_seqnum_next): return a constantly incrementing
+// sequence number.
 //
 // This function is used internally to GStreamer to be able to determine which
 // events and messages are "the same". For example, elements may set the seqnum
@@ -9414,8 +9737,8 @@ func UtilSeqnumNext() uint32 {
 	return _guint32
 }
 
-// UtilSetObjectArg converts the string value to the type of the objects
-// argument and sets the argument with it.
+// UtilSetObjectArg (gst_util_set_object_arg) converts the string value to the
+// type of the objects argument and sets the argument with it.
 //
 // Note that this function silently returns if object has no property named name
 // or when value cannot be converted to the type of the property.
@@ -9442,8 +9765,8 @@ func UtilSetObjectArg(object *coreglib.Object, name, value string) {
 	runtime.KeepAlive(value)
 }
 
-// UtilSetValueFromString converts the string to the type of the value and sets
-// the value with it.
+// UtilSetValueFromString (gst_util_set_value_from_string) converts the string
+// to the type of the value and sets the value with it.
 //
 // Note that this function is dangerous as it does not return any indication if
 // the conversion worked or not.
@@ -9472,8 +9795,9 @@ func UtilSetValueFromString(valueStr string) coreglib.Value {
 	return _value
 }
 
-// UtilSimplifyFraction calculates the simpler representation of numerator and
-// denominator and update both values with the resulting simplified fraction.
+// UtilSimplifyFraction (gst_util_simplify_fraction) calculates the simpler
+// representation of numerator and denominator and update both values with the
+// resulting simplified fraction.
 //
 // Simplify a fraction using a simple continued fraction decomposition.
 // The idea here is to convert fractions such as 333333/10000000 to 1/30 using
@@ -9506,8 +9830,8 @@ func UtilSimplifyFraction(numerator, denominator *int, nTerms, threshold uint) {
 	runtime.KeepAlive(threshold)
 }
 
-// UtilUint64Scale: scale val by the rational number num / denom, avoiding
-// overflows and underflows and without loss of precision.
+// UtilUint64Scale (gst_util_uint64_scale): scale val by the rational number num
+// / denom, avoiding overflows and underflows and without loss of precision.
 //
 // This function can potentially be very slow if val and num are both greater
 // than G_MAXUINT32.
@@ -9547,8 +9871,9 @@ func UtilUint64Scale(val, num, denom uint64) uint64 {
 	return _guint64
 }
 
-// UtilUint64ScaleCeil: scale val by the rational number num / denom, avoiding
-// overflows and underflows and without loss of precision.
+// UtilUint64ScaleCeil (gst_util_uint64_scale_ceil): scale val by the rational
+// number num / denom, avoiding overflows and underflows and without loss of
+// precision.
 //
 // This function can potentially be very slow if val and num are both greater
 // than G_MAXUINT32.
@@ -9588,9 +9913,9 @@ func UtilUint64ScaleCeil(val, num, denom uint64) uint64 {
 	return _guint64
 }
 
-// UtilUint64ScaleInt: scale val by the rational number num / denom,
-// avoiding overflows and underflows and without loss of precision. num must be
-// non-negative and denom must be positive.
+// UtilUint64ScaleInt (gst_util_uint64_scale_int): scale val by the rational
+// number num / denom, avoiding overflows and underflows and without loss of
+// precision. num must be non-negative and denom must be positive.
 //
 // The function takes the following parameters:
 //
@@ -9627,9 +9952,9 @@ func UtilUint64ScaleInt(val uint64, num, denom int) uint64 {
 	return _guint64
 }
 
-// UtilUint64ScaleIntCeil: scale val by the rational number num / denom,
-// avoiding overflows and underflows and without loss of precision. num must be
-// non-negative and denom must be positive.
+// UtilUint64ScaleIntCeil (gst_util_uint64_scale_int_ceil): scale val by the
+// rational number num / denom, avoiding overflows and underflows and without
+// loss of precision. num must be non-negative and denom must be positive.
 //
 // The function takes the following parameters:
 //
@@ -9666,9 +9991,9 @@ func UtilUint64ScaleIntCeil(val uint64, num, denom int) uint64 {
 	return _guint64
 }
 
-// UtilUint64ScaleIntRound: scale val by the rational number num / denom,
-// avoiding overflows and underflows and without loss of precision. num must be
-// non-negative and denom must be positive.
+// UtilUint64ScaleIntRound (gst_util_uint64_scale_int_round): scale val by the
+// rational number num / denom, avoiding overflows and underflows and without
+// loss of precision. num must be non-negative and denom must be positive.
 //
 // The function takes the following parameters:
 //
@@ -9706,8 +10031,9 @@ func UtilUint64ScaleIntRound(val uint64, num, denom int) uint64 {
 	return _guint64
 }
 
-// UtilUint64ScaleRound: scale val by the rational number num / denom, avoiding
-// overflows and underflows and without loss of precision.
+// UtilUint64ScaleRound (gst_util_uint64_scale_round): scale val by the rational
+// number num / denom, avoiding overflows and underflows and without loss of
+// precision.
 //
 // This function can potentially be very slow if val and num are both greater
 // than G_MAXUINT32.
@@ -9748,7 +10074,8 @@ func UtilUint64ScaleRound(val, num, denom uint64) uint64 {
 	return _guint64
 }
 
-// ValueCanCompare determines if value1 and value2 can be compared.
+// ValueCanCompare (gst_value_can_compare) determines if value1 and value2 can
+// be compared.
 //
 // The function takes the following parameters:
 //
@@ -9779,9 +10106,9 @@ func ValueCanCompare(value1, value2 *coreglib.Value) bool {
 	return _ok
 }
 
-// ValueCanIntersect determines if intersecting two values will produce a valid
-// result. Two values will produce a valid intersection if they have the same
-// type.
+// ValueCanIntersect (gst_value_can_intersect) determines if intersecting
+// two values will produce a valid result. Two values will produce a valid
+// intersection if they have the same type.
 //
 // The function takes the following parameters:
 //
@@ -9812,7 +10139,8 @@ func ValueCanIntersect(value1, value2 *coreglib.Value) bool {
 	return _ok
 }
 
-// ValueCanSubtract checks if it's possible to subtract subtrahend from minuend.
+// ValueCanSubtract (gst_value_can_subtract) checks if it's possible to subtract
+// subtrahend from minuend.
 //
 // The function takes the following parameters:
 //
@@ -9843,12 +10171,12 @@ func ValueCanSubtract(minuend, subtrahend *coreglib.Value) bool {
 	return _ok
 }
 
-// ValueCanUnion determines if value1 and value2 can be non-trivially unioned.
-// Any two values can be trivially unioned by adding both of them to a
-// GstValueList. However, certain types have the possibility to be unioned in
-// a simpler way. For example, an integer range and an integer can be unioned
-// if the integer is a subset of the integer range. If there is the possibility
-// that two values can be unioned, this function returns TRUE.
+// ValueCanUnion (gst_value_can_union) determines if value1 and value2 can be
+// non-trivially unioned. Any two values can be trivially unioned by adding both
+// of them to a GstValueList. However, certain types have the possibility to be
+// unioned in a simpler way. For example, an integer range and an integer can
+// be unioned if the integer is a subset of the integer range. If there is the
+// possibility that two values can be unioned, this function returns TRUE.
 //
 // The function takes the following parameters:
 //
@@ -9879,11 +10207,11 @@ func ValueCanUnion(value1, value2 *coreglib.Value) bool {
 	return _ok
 }
 
-// ValueCompare compares value1 and value2. If value1 and value2 cannot be
-// compared, the function returns GST_VALUE_UNORDERED. Otherwise, if value1
-// is greater than value2, GST_VALUE_GREATER_THAN is returned. If value1 is
-// less than value2, GST_VALUE_LESS_THAN is returned. If the values are equal,
-// GST_VALUE_EQUAL is returned.
+// ValueCompare (gst_value_compare) compares value1 and value2. If value1
+// and value2 cannot be compared, the function returns GST_VALUE_UNORDERED.
+// Otherwise, if value1 is greater than value2, GST_VALUE_GREATER_THAN is
+// returned. If value1 is less than value2, GST_VALUE_LESS_THAN is returned.
+// If the values are equal, GST_VALUE_EQUAL is returned.
 //
 // The function takes the following parameters:
 //
@@ -9912,8 +10240,9 @@ func ValueCompare(value1, value2 *coreglib.Value) int {
 	return _gint
 }
 
-// ValueDeserialize tries to deserialize a string into the type specified by the
-// given GValue. If the operation succeeds, TRUE is returned, FALSE otherwise.
+// ValueDeserialize (gst_value_deserialize) tries to deserialize a string into
+// the type specified by the given GValue. If the operation succeeds, TRUE is
+// returned, FALSE otherwise.
 //
 // The function takes the following parameters:
 //
@@ -9945,9 +10274,9 @@ func ValueDeserialize(src string) (coreglib.Value, bool) {
 	return _dest, _ok
 }
 
-// ValueFixate: fixate src into a new value dest. For ranges, the first element
-// is taken. For lists and arrays, the first item is fixated and returned.
-// If src is already fixed, this function returns FALSE.
+// ValueFixate (gst_value_fixate): fixate src into a new value dest. For ranges,
+// the first element is taken. For lists and arrays, the first item is fixated
+// and returned. If src is already fixed, this function returns FALSE.
 //
 // The function takes the following parameters:
 //
@@ -9978,8 +10307,9 @@ func ValueFixate(dest, src *coreglib.Value) bool {
 	return _ok
 }
 
-// ValueFractionMultiply multiplies the two #GValue items containing a
-// T_TYPE_FRACTION and sets product to the product of the two fractions.
+// ValueFractionMultiply (gst_value_fraction_multiply) multiplies the two
+// #GValue items containing a T_TYPE_FRACTION and sets product to the product of
+// the two fractions.
 //
 // The function takes the following parameters:
 //
@@ -10014,8 +10344,8 @@ func ValueFractionMultiply(product, factor1, factor2 *coreglib.Value) bool {
 	return _ok
 }
 
-// ValueFractionSubtract subtracts the subtrahend from the minuend and sets dest
-// to the result.
+// ValueFractionSubtract (gst_value_fraction_subtract) subtracts the subtrahend
+// from the minuend and sets dest to the result.
 //
 // The function takes the following parameters:
 //
@@ -10050,7 +10380,7 @@ func ValueFractionSubtract(dest, minuend, subtrahend *coreglib.Value) bool {
 	return _ok
 }
 
-// ValueGetBitmask gets the bitmask specified by value.
+// ValueGetBitmask (gst_value_get_bitmask) gets the bitmask specified by value.
 //
 // The function takes the following parameters:
 //
@@ -10075,9 +10405,9 @@ func ValueGetBitmask(value *coreglib.Value) uint64 {
 	return _guint64
 }
 
-// ValueGetCaps gets the contents of value. The reference count of the returned
-// Caps will not be modified, therefore the caller must take one before getting
-// rid of the value.
+// ValueGetCaps (gst_value_get_caps) gets the contents of value. The reference
+// count of the returned Caps will not be modified, therefore the caller must
+// take one before getting rid of the value.
 //
 // The function takes the following parameters:
 //
@@ -10108,7 +10438,8 @@ func ValueGetCaps(value *coreglib.Value) *Caps {
 	return _caps
 }
 
-// ValueGetCapsFeatures gets the contents of value.
+// ValueGetCapsFeatures (gst_value_get_caps_features) gets the contents of
+// value.
 //
 // The function takes the following parameters:
 //
@@ -10133,7 +10464,8 @@ func ValueGetCapsFeatures(value *coreglib.Value) *CapsFeatures {
 	return _capsFeatures
 }
 
-// ValueGetDoubleRangeMax gets the maximum of the range specified by value.
+// ValueGetDoubleRangeMax (gst_value_get_double_range_max) gets the maximum of
+// the range specified by value.
 //
 // The function takes the following parameters:
 //
@@ -10158,7 +10490,8 @@ func ValueGetDoubleRangeMax(value *coreglib.Value) float64 {
 	return _gdouble
 }
 
-// ValueGetDoubleRangeMin gets the minimum of the range specified by value.
+// ValueGetDoubleRangeMin (gst_value_get_double_range_min) gets the minimum of
+// the range specified by value.
 //
 // The function takes the following parameters:
 //
@@ -10183,7 +10516,8 @@ func ValueGetDoubleRangeMin(value *coreglib.Value) float64 {
 	return _gdouble
 }
 
-// ValueGetFlagsetFlags: retrieve the flags field of a GstFlagSet value.
+// ValueGetFlagsetFlags (gst_value_get_flagset_flags): retrieve the flags field
+// of a GstFlagSet value.
 //
 // The function takes the following parameters:
 //
@@ -10208,7 +10542,8 @@ func ValueGetFlagsetFlags(value *coreglib.Value) uint {
 	return _guint
 }
 
-// ValueGetFlagsetMask: retrieve the mask field of a GstFlagSet value.
+// ValueGetFlagsetMask (gst_value_get_flagset_mask): retrieve the mask field of
+// a GstFlagSet value.
 //
 // The function takes the following parameters:
 //
@@ -10233,8 +10568,8 @@ func ValueGetFlagsetMask(value *coreglib.Value) uint {
 	return _guint
 }
 
-// ValueGetFractionDenominator gets the denominator of the fraction specified by
-// value.
+// ValueGetFractionDenominator (gst_value_get_fraction_denominator) gets the
+// denominator of the fraction specified by value.
 //
 // The function takes the following parameters:
 //
@@ -10259,8 +10594,8 @@ func ValueGetFractionDenominator(value *coreglib.Value) int {
 	return _gint
 }
 
-// ValueGetFractionNumerator gets the numerator of the fraction specified by
-// value.
+// ValueGetFractionNumerator (gst_value_get_fraction_numerator) gets the
+// numerator of the fraction specified by value.
 //
 // The function takes the following parameters:
 //
@@ -10285,7 +10620,8 @@ func ValueGetFractionNumerator(value *coreglib.Value) int {
 	return _gint
 }
 
-// ValueGetFractionRangeMax gets the maximum of the range specified by value.
+// ValueGetFractionRangeMax (gst_value_get_fraction_range_max) gets the maximum
+// of the range specified by value.
 //
 // The function takes the following parameters:
 //
@@ -10312,7 +10648,8 @@ func ValueGetFractionRangeMax(value *coreglib.Value) *coreglib.Value {
 	return _ret
 }
 
-// ValueGetFractionRangeMin gets the minimum of the range specified by value.
+// ValueGetFractionRangeMin (gst_value_get_fraction_range_min) gets the minimum
+// of the range specified by value.
 //
 // The function takes the following parameters:
 //
@@ -10339,7 +10676,8 @@ func ValueGetFractionRangeMin(value *coreglib.Value) *coreglib.Value {
 	return _ret
 }
 
-// ValueGetInt64RangeMax gets the maximum of the range specified by value.
+// ValueGetInt64RangeMax (gst_value_get_int64_range_max) gets the maximum of the
+// range specified by value.
 //
 // The function takes the following parameters:
 //
@@ -10364,7 +10702,8 @@ func ValueGetInt64RangeMax(value *coreglib.Value) int64 {
 	return _gint64
 }
 
-// ValueGetInt64RangeMin gets the minimum of the range specified by value.
+// ValueGetInt64RangeMin (gst_value_get_int64_range_min) gets the minimum of the
+// range specified by value.
 //
 // The function takes the following parameters:
 //
@@ -10389,7 +10728,8 @@ func ValueGetInt64RangeMin(value *coreglib.Value) int64 {
 	return _gint64
 }
 
-// ValueGetInt64RangeStep gets the step of the range specified by value.
+// ValueGetInt64RangeStep (gst_value_get_int64_range_step) gets the step of the
+// range specified by value.
 //
 // The function takes the following parameters:
 //
@@ -10414,7 +10754,8 @@ func ValueGetInt64RangeStep(value *coreglib.Value) int64 {
 	return _gint64
 }
 
-// ValueGetIntRangeMax gets the maximum of the range specified by value.
+// ValueGetIntRangeMax (gst_value_get_int_range_max) gets the maximum of the
+// range specified by value.
 //
 // The function takes the following parameters:
 //
@@ -10439,7 +10780,8 @@ func ValueGetIntRangeMax(value *coreglib.Value) int {
 	return _gint
 }
 
-// ValueGetIntRangeMin gets the minimum of the range specified by value.
+// ValueGetIntRangeMin (gst_value_get_int_range_min) gets the minimum of the
+// range specified by value.
 //
 // The function takes the following parameters:
 //
@@ -10464,7 +10806,8 @@ func ValueGetIntRangeMin(value *coreglib.Value) int {
 	return _gint
 }
 
-// ValueGetIntRangeStep gets the step of the range specified by value.
+// ValueGetIntRangeStep (gst_value_get_int_range_step) gets the step of the
+// range specified by value.
 //
 // The function takes the following parameters:
 //
@@ -10489,7 +10832,7 @@ func ValueGetIntRangeStep(value *coreglib.Value) int {
 	return _gint
 }
 
-// ValueGetStructure gets the contents of value.
+// ValueGetStructure (gst_value_get_structure) gets the contents of value.
 //
 // The function takes the following parameters:
 //
@@ -10520,8 +10863,9 @@ func ValueGetStructure(value *coreglib.Value) *Structure {
 	return _structure
 }
 
-// ValueInitAndCopy initialises the target value to be of the same type as
-// source and then copies the contents from source to target.
+// ValueInitAndCopy (gst_value_init_and_copy) initialises the target value to
+// be of the same type as source and then copies the contents from source to
+// target.
 //
 // The function takes the following parameters:
 //
@@ -10546,9 +10890,10 @@ func ValueInitAndCopy(src *coreglib.Value) coreglib.Value {
 	return _dest
 }
 
-// ValueIntersect calculates the intersection of two values. If the values have
-// a non-empty intersection, the value representing the intersection is placed
-// in dest, unless NULL. If the intersection is non-empty, dest is not modified.
+// ValueIntersect (gst_value_intersect) calculates the intersection of two
+// values. If the values have a non-empty intersection, the value representing
+// the intersection is placed in dest, unless NULL. If the intersection is
+// non-empty, dest is not modified.
 //
 // The function takes the following parameters:
 //
@@ -10587,10 +10932,10 @@ func ValueIntersect(value1, value2 *coreglib.Value) (coreglib.Value, bool) {
 	return _dest, _ok
 }
 
-// ValueIsFixed tests if the given GValue, if available in a GstStructure
-// (or any other container) contains a "fixed" (which means: one value) or an
-// "unfixed" (which means: multiple possible values, such as data lists or data
-// ranges) value.
+// ValueIsFixed (gst_value_is_fixed) tests if the given GValue, if available
+// in a GstStructure (or any other container) contains a "fixed" (which means:
+// one value) or an "unfixed" (which means: multiple possible values, such as
+// data lists or data ranges) value.
 //
 // The function takes the following parameters:
 //
@@ -10617,7 +10962,7 @@ func ValueIsFixed(value *coreglib.Value) bool {
 	return _ok
 }
 
-// ValueIsSubset: check that value1 is a subset of value2.
+// ValueIsSubset (gst_value_is_subset): check that value1 is a subset of value2.
 //
 // The function takes the following parameters:
 //
@@ -10648,8 +10993,9 @@ func ValueIsSubset(value1, value2 *coreglib.Value) bool {
 	return _ok
 }
 
-// ValueRegister registers functions to perform calculations on #GValue items of
-// a given type. Each type can only be added once.
+// ValueRegister (gst_value_register) registers functions to perform
+// calculations on #GValue items of a given type. Each type can only be added
+// once.
 //
 // The function takes the following parameters:
 //
@@ -10663,8 +11009,8 @@ func ValueRegister(table *ValueTable) {
 	runtime.KeepAlive(table)
 }
 
-// ValueSerialize tries to transform the given value into a string
-// representation that allows getting back this string later on using
+// ValueSerialize (gst_value_serialize) tries to transform the given value into
+// a string representation that allows getting back this string later on using
 // gst_value_deserialize().
 //
 // Free-function: g_free.
@@ -10695,7 +11041,8 @@ func ValueSerialize(value *coreglib.Value) string {
 	return _utf8
 }
 
-// ValueSetBitmask sets value to the bitmask specified by bitmask.
+// ValueSetBitmask (gst_value_set_bitmask) sets value to the bitmask specified
+// by bitmask.
 //
 // The function takes the following parameters:
 //
@@ -10713,8 +11060,8 @@ func ValueSetBitmask(value *coreglib.Value, bitmask uint64) {
 	runtime.KeepAlive(bitmask)
 }
 
-// ValueSetCaps sets the contents of value to caps. A reference to the provided
-// caps will be taken by the value.
+// ValueSetCaps (gst_value_set_caps) sets the contents of value to caps.
+// A reference to the provided caps will be taken by the value.
 //
 // The function takes the following parameters:
 //
@@ -10732,7 +11079,8 @@ func ValueSetCaps(value *coreglib.Value, caps *Caps) {
 	runtime.KeepAlive(caps)
 }
 
-// ValueSetCapsFeatures sets the contents of value to features.
+// ValueSetCapsFeatures (gst_value_set_caps_features) sets the contents of value
+// to features.
 //
 // The function takes the following parameters:
 //
@@ -10750,7 +11098,8 @@ func ValueSetCapsFeatures(value *coreglib.Value, features *CapsFeatures) {
 	runtime.KeepAlive(features)
 }
 
-// ValueSetDoubleRange sets value to the range specified by start and end.
+// ValueSetDoubleRange (gst_value_set_double_range) sets value to the range
+// specified by start and end.
 //
 // The function takes the following parameters:
 //
@@ -10772,9 +11121,10 @@ func ValueSetDoubleRange(value *coreglib.Value, start, end float64) {
 	runtime.KeepAlive(end)
 }
 
-// ValueSetFlagset sets value to the flags and mask values provided in flags
-// and mask. The flags value indicates the values of flags, the mask represents
-// which bits in the flag value have been set, and which are "don't care".
+// ValueSetFlagset (gst_value_set_flagset) sets value to the flags and mask
+// values provided in flags and mask. The flags value indicates the values
+// of flags, the mask represents which bits in the flag value have been set,
+// and which are "don't care".
 //
 // The function takes the following parameters:
 //
@@ -10796,9 +11146,10 @@ func ValueSetFlagset(value *coreglib.Value, flags, mask uint) {
 	runtime.KeepAlive(mask)
 }
 
-// ValueSetFraction sets value to the fraction specified by numerator over
-// denominator. The fraction gets reduced to the smallest numerator and
-// denominator, and if necessary the sign is moved to the numerator.
+// ValueSetFraction (gst_value_set_fraction) sets value to the fraction
+// specified by numerator over denominator. The fraction gets reduced to the
+// smallest numerator and denominator, and if necessary the sign is moved to the
+// numerator.
 //
 // The function takes the following parameters:
 //
@@ -10820,7 +11171,8 @@ func ValueSetFraction(value *coreglib.Value, numerator, denominator int) {
 	runtime.KeepAlive(denominator)
 }
 
-// ValueSetFractionRange sets value to the range specified by start and end.
+// ValueSetFractionRange (gst_value_set_fraction_range) sets value to the range
+// specified by start and end.
 //
 // The function takes the following parameters:
 //
@@ -10842,8 +11194,9 @@ func ValueSetFractionRange(value, start, end *coreglib.Value) {
 	runtime.KeepAlive(end)
 }
 
-// ValueSetFractionRangeFull sets value to the range specified by
-// numerator_start/denominator_start and numerator_end/denominator_end.
+// ValueSetFractionRangeFull (gst_value_set_fraction_range_full) sets
+// value to the range specified by numerator_start/denominator_start and
+// numerator_end/denominator_end.
 //
 // The function takes the following parameters:
 //
@@ -10873,7 +11226,8 @@ func ValueSetFractionRangeFull(value *coreglib.Value, numeratorStart, denominato
 	runtime.KeepAlive(denominatorEnd)
 }
 
-// ValueSetInt64Range sets value to the range specified by start and end.
+// ValueSetInt64Range (gst_value_set_int64_range) sets value to the range
+// specified by start and end.
 //
 // The function takes the following parameters:
 //
@@ -10895,8 +11249,8 @@ func ValueSetInt64Range(value *coreglib.Value, start, end int64) {
 	runtime.KeepAlive(end)
 }
 
-// ValueSetInt64RangeStep sets value to the range specified by start, end and
-// step.
+// ValueSetInt64RangeStep (gst_value_set_int64_range_step) sets value to the
+// range specified by start, end and step.
 //
 // The function takes the following parameters:
 //
@@ -10922,7 +11276,8 @@ func ValueSetInt64RangeStep(value *coreglib.Value, start, end, step int64) {
 	runtime.KeepAlive(step)
 }
 
-// ValueSetIntRange sets value to the range specified by start and end.
+// ValueSetIntRange (gst_value_set_int_range) sets value to the range specified
+// by start and end.
 //
 // The function takes the following parameters:
 //
@@ -10944,8 +11299,8 @@ func ValueSetIntRange(value *coreglib.Value, start, end int) {
 	runtime.KeepAlive(end)
 }
 
-// ValueSetIntRangeStep sets value to the range specified by start, end and
-// step.
+// ValueSetIntRangeStep (gst_value_set_int_range_step) sets value to the range
+// specified by start, end and step.
 //
 // The function takes the following parameters:
 //
@@ -10971,7 +11326,8 @@ func ValueSetIntRangeStep(value *coreglib.Value, start, end, step int) {
 	runtime.KeepAlive(step)
 }
 
-// ValueSetStructure sets the contents of value to structure.
+// ValueSetStructure (gst_value_set_structure) sets the contents of value to
+// structure.
 //
 // The function takes the following parameters:
 //
@@ -10989,8 +11345,9 @@ func ValueSetStructure(value *coreglib.Value, structure *Structure) {
 	runtime.KeepAlive(structure)
 }
 
-// ValueSubtract subtracts subtrahend from minuend and stores the result in
-// dest. Note that this means subtraction as in sets, not as in mathematics.
+// ValueSubtract (gst_value_subtract) subtracts subtrahend from minuend and
+// stores the result in dest. Note that this means subtraction as in sets,
+// not as in mathematics.
 //
 // The function takes the following parameters:
 //
@@ -11027,7 +11384,8 @@ func ValueSubtract(minuend, subtrahend *coreglib.Value) (coreglib.Value, bool) {
 	return _dest, _ok
 }
 
-// ValueUnion creates a GValue corresponding to the union of value1 and value2.
+// ValueUnion (gst_value_union) creates a GValue corresponding to the union of
+// value1 and value2.
 //
 // The function takes the following parameters:
 //
@@ -11062,7 +11420,7 @@ func ValueUnion(value1, value2 *coreglib.Value) (coreglib.Value, bool) {
 	return _dest, _ok
 }
 
-// Version gets the version number of the GStreamer library.
+// Version (gst_version) gets the version number of the GStreamer library.
 //
 // The function returns the following values:
 //
@@ -11091,9 +11449,9 @@ func Version() (major, minor, micro, nano uint) {
 	return _major, _minor, _micro, _nano
 }
 
-// VersionString: this function returns a string that is useful for describing
-// this version of GStreamer to the outside world: user agent strings, logging,
-// ...
+// VersionString (gst_version_string): this function returns a string that
+// is useful for describing this version of GStreamer to the outside world:
+// user agent strings, logging, ...
 //
 // The function returns the following values:
 //
@@ -11111,11 +11469,11 @@ func VersionString() string {
 	return _utf8
 }
 
-// ChildProxy: this interface abstracts handling of property sets for elements
-// with children. Imagine elements such as mixers or polyphonic generators.
-// They all have multiple Pad or some kind of voice objects. Another use case
-// are container elements like Bin. The element implementing the interface acts
-// as a parent for those child objects.
+// ChildProxy (GstChildProxy): this interface abstracts handling of property
+// sets for elements with children. Imagine elements such as mixers or
+// polyphonic generators. They all have multiple Pad or some kind of voice
+// objects. Another use case are container elements like Bin. The element
+// implementing the interface acts as a parent for those child objects.
 //
 // By implementing this interface the child properties can be accessed from the
 // parent element by using gst_child_proxy_get() and gst_child_proxy_set().
@@ -11135,25 +11493,36 @@ var (
 	_ coreglib.Objector = (*ChildProxy)(nil)
 )
 
-// ChildProxier describes ChildProxy's interface methods.
+// ChildProxier describes types inherited from ChildProxy.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
 type ChildProxier interface {
 	coreglib.Objector
 
-	// ChildAdded emits the ChildProxy::child-added signal.
+	// ChildAdded (gst_child_proxy_child_added) emits the
+	// ChildProxy::child-added signal.
 	ChildAdded(child *coreglib.Object, name string)
-	// ChildRemoved emits the ChildProxy::child-removed signal.
+	// ChildRemoved (gst_child_proxy_child_removed) emits the
+	// ChildProxy::child-removed signal.
 	ChildRemoved(child *coreglib.Object, name string)
-	// ChildByIndex fetches a child by its number.
+	// ChildByIndex (gst_child_proxy_get_child_by_index) fetches a child by its
+	// number.
 	ChildByIndex(index uint) *coreglib.Object
-	// ChildByName looks up a child element by the given name.
+	// ChildByName (gst_child_proxy_get_child_by_name) looks up a child element
+	// by the given name.
 	ChildByName(name string) *coreglib.Object
-	// ChildByNameRecurse looks up a child element by the given full-path name.
+	// ChildByNameRecurse (gst_child_proxy_get_child_by_name_recurse) looks up a
+	// child element by the given full-path name.
 	ChildByNameRecurse(name string) *coreglib.Object
-	// ChildrenCount gets the number of child objects this parent contains.
+	// ChildrenCount (gst_child_proxy_get_children_count) gets the number of
+	// child objects this parent contains.
 	ChildrenCount() uint
-	// Property gets a single property using the GstChildProxy mechanism.
+	// Property (gst_child_proxy_get_property) gets a single property using the
+	// GstChildProxy mechanism.
 	Property(name string) coreglib.Value
-	// SetProperty sets a single property using the GstChildProxy mechanism.
+	// SetProperty (gst_child_proxy_set_property) sets a single property using
+	// the GstChildProxy mechanism.
 	SetProperty(name string, value *coreglib.Value)
 
 	// Child-added will be emitted after the object was added to the
@@ -11188,7 +11557,8 @@ func (parent *ChildProxy) ConnectChildRemoved(f func(object *coreglib.Object, na
 	return coreglib.ConnectGeneratedClosure(parent, "child-removed", false, unsafe.Pointer(C._gotk4_gst1_ChildProxy_ConnectChildRemoved), f)
 }
 
-// ChildAdded emits the ChildProxy::child-added signal.
+// ChildAdded (gst_child_proxy_child_added) emits the ChildProxy::child-added
+// signal.
 //
 // The function takes the following parameters:
 //
@@ -11210,7 +11580,8 @@ func (parent *ChildProxy) ChildAdded(child *coreglib.Object, name string) {
 	runtime.KeepAlive(name)
 }
 
-// ChildRemoved emits the ChildProxy::child-removed signal.
+// ChildRemoved (gst_child_proxy_child_removed) emits the
+// ChildProxy::child-removed signal.
 //
 // The function takes the following parameters:
 //
@@ -11232,7 +11603,8 @@ func (parent *ChildProxy) ChildRemoved(child *coreglib.Object, name string) {
 	runtime.KeepAlive(name)
 }
 
-// ChildByIndex fetches a child by its number.
+// ChildByIndex (gst_child_proxy_get_child_by_index) fetches a child by its
+// number.
 //
 // The function takes the following parameters:
 //
@@ -11262,7 +11634,8 @@ func (parent *ChildProxy) ChildByIndex(index uint) *coreglib.Object {
 	return _object
 }
 
-// ChildByName looks up a child element by the given name.
+// ChildByName (gst_child_proxy_get_child_by_name) looks up a child element by
+// the given name.
 //
 // This virtual method has a default implementation that uses Object together
 // with gst_object_get_name(). If the interface is to be used with #GObjects,
@@ -11297,7 +11670,8 @@ func (parent *ChildProxy) ChildByName(name string) *coreglib.Object {
 	return _object
 }
 
-// ChildByNameRecurse looks up a child element by the given full-path name.
+// ChildByNameRecurse (gst_child_proxy_get_child_by_name_recurse) looks up a
+// child element by the given full-path name.
 //
 // Similar to gst_child_proxy_get_child_by_name(), this method searches and
 // returns a child given a name. The difference is that this method allows a
@@ -11334,7 +11708,8 @@ func (childProxy *ChildProxy) ChildByNameRecurse(name string) *coreglib.Object {
 	return _object
 }
 
-// ChildrenCount gets the number of child objects this parent contains.
+// ChildrenCount (gst_child_proxy_get_children_count) gets the number of child
+// objects this parent contains.
 //
 // The function returns the following values:
 //
@@ -11355,8 +11730,9 @@ func (parent *ChildProxy) ChildrenCount() uint {
 	return _guint
 }
 
-// Property gets a single property using the GstChildProxy mechanism. You are
-// responsible for freeing it by calling g_value_unset().
+// Property (gst_child_proxy_get_property) gets a single property using the
+// GstChildProxy mechanism. You are responsible for freeing it by calling
+// g_value_unset().
 //
 // The function takes the following parameters:
 //
@@ -11385,7 +11761,8 @@ func (object *ChildProxy) Property(name string) coreglib.Value {
 	return _value
 }
 
-// SetProperty sets a single property using the GstChildProxy mechanism.
+// SetProperty (gst_child_proxy_set_property) sets a single property using the
+// GstChildProxy mechanism.
 //
 // The function takes the following parameters:
 //
@@ -11552,12 +11929,12 @@ func (parent *ChildProxy) childrenCount() uint {
 	return _guint
 }
 
-// Preset: this interface offers methods to query and manipulate parameter
-// preset sets. A preset is a bunch of property settings, together with meta
-// data and a name. The name of a preset serves as key for subsequent method
-// calls to manipulate single presets. All instances of one type will share the
-// list of presets. The list is created on demand, if presets are not used,
-// the list is not created.
+// Preset (GstPreset): this interface offers methods to query and manipulate
+// parameter preset sets. A preset is a bunch of property settings, together
+// with meta data and a name. The name of a preset serves as key for subsequent
+// method calls to manipulate single presets. All instances of one type will
+// share the list of presets. The list is created on demand, if presets are not
+// used, the list is not created.
 //
 // The interface comes with a default implementation that serves most plugins.
 // Wrapper plugins will override most methods to implement support for
@@ -11587,32 +11964,35 @@ var (
 	_ coreglib.Objector = (*Preset)(nil)
 )
 
-// Presetter describes Preset's interface methods.
+// Presetter describes types inherited from Preset.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
 type Presetter interface {
 	coreglib.Objector
 
-	// DeletePreset: delete the given preset.
+	// DeletePreset (gst_preset_delete_preset): delete the given preset.
 	DeletePreset(name string) bool
-	// Meta gets the value for an existing meta data tag.
+	// Meta (gst_preset_get_meta) gets the value for an existing meta data tag.
 	Meta(name, tag string) (string, bool)
-	// PresetNames: get a copy of preset names as a NULL terminated string
-	// array.
+	// PresetNames (gst_preset_get_preset_names): get a copy of preset names as
+	// a NULL terminated string array.
 	PresetNames() []string
-	// PropertyNames: get a the names of the GObject properties that can be used
-	// for presets.
+	// PropertyNames (gst_preset_get_property_names): get a the names of the
+	// GObject properties that can be used for presets.
 	PropertyNames() []string
-	// IsEditable: check if one can add new presets, change existing ones and
-	// remove presets.
+	// IsEditable (gst_preset_is_editable): check if one can add new presets,
+	// change existing ones and remove presets.
 	IsEditable() bool
-	// LoadPreset: load the given preset.
+	// LoadPreset (gst_preset_load_preset): load the given preset.
 	LoadPreset(name string) bool
-	// RenamePreset renames a preset.
+	// RenamePreset (gst_preset_rename_preset) renames a preset.
 	RenamePreset(oldName, newName string) bool
-	// SavePreset: save the current object settings as a preset under the given
-	// name.
+	// SavePreset (gst_preset_save_preset): save the current object settings as
+	// a preset under the given name.
 	SavePreset(name string) bool
-	// SetMeta sets a new value for an existing meta data item or adds a new
-	// item.
+	// SetMeta (gst_preset_set_meta) sets a new value for an existing meta data
+	// item or adds a new item.
 	SetMeta(name, tag, value string) bool
 }
 
@@ -11628,7 +12008,7 @@ func marshalPreset(p uintptr) (interface{}, error) {
 	return wrapPreset(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// DeletePreset: delete the given preset.
+// DeletePreset (gst_preset_delete_preset): delete the given preset.
 //
 // The function takes the following parameters:
 //
@@ -11659,8 +12039,9 @@ func (preset *Preset) DeletePreset(name string) bool {
 	return _ok
 }
 
-// Meta gets the value for an existing meta data tag. Meta data tag names can be
-// something like e.g. "comment". Returned values need to be released when done.
+// Meta (gst_preset_get_meta) gets the value for an existing meta data tag.
+// Meta data tag names can be something like e.g. "comment". Returned values
+// need to be released when done.
 //
 // The function takes the following parameters:
 //
@@ -11702,7 +12083,8 @@ func (preset *Preset) Meta(name, tag string) (string, bool) {
 	return _value, _ok
 }
 
-// PresetNames: get a copy of preset names as a NULL terminated string array.
+// PresetNames (gst_preset_get_preset_names): get a copy of preset names as a
+// NULL terminated string array.
 //
 // The function returns the following values:
 //
@@ -11737,8 +12119,8 @@ func (preset *Preset) PresetNames() []string {
 	return _utf8s
 }
 
-// PropertyNames: get a the names of the GObject properties that can be used for
-// presets.
+// PropertyNames (gst_preset_get_property_names): get a the names of the GObject
+// properties that can be used for presets.
 //
 // The function returns the following values:
 //
@@ -11774,8 +12156,8 @@ func (preset *Preset) PropertyNames() []string {
 	return _utf8s
 }
 
-// IsEditable: check if one can add new presets, change existing ones and remove
-// presets.
+// IsEditable (gst_preset_is_editable): check if one can add new presets,
+// change existing ones and remove presets.
 //
 // The function returns the following values:
 //
@@ -11798,7 +12180,7 @@ func (preset *Preset) IsEditable() bool {
 	return _ok
 }
 
-// LoadPreset: load the given preset.
+// LoadPreset (gst_preset_load_preset): load the given preset.
 //
 // The function takes the following parameters:
 //
@@ -11829,8 +12211,8 @@ func (preset *Preset) LoadPreset(name string) bool {
 	return _ok
 }
 
-// RenamePreset renames a preset. If there is already a preset by the new_name
-// it will be overwritten.
+// RenamePreset (gst_preset_rename_preset) renames a preset. If there is already
+// a preset by the new_name it will be overwritten.
 //
 // The function takes the following parameters:
 //
@@ -11866,8 +12248,9 @@ func (preset *Preset) RenamePreset(oldName, newName string) bool {
 	return _ok
 }
 
-// SavePreset: save the current object settings as a preset under the given
-// name. If there is already a preset by this name it will be overwritten.
+// SavePreset (gst_preset_save_preset): save the current object settings as a
+// preset under the given name. If there is already a preset by this name it
+// will be overwritten.
 //
 // The function takes the following parameters:
 //
@@ -11898,9 +12281,9 @@ func (preset *Preset) SavePreset(name string) bool {
 	return _ok
 }
 
-// SetMeta sets a new value for an existing meta data item or adds a new item.
-// Meta data tag names can be something like e.g. "comment". Supplying NULL for
-// the value will unset an existing value.
+// SetMeta (gst_preset_set_meta) sets a new value for an existing meta data item
+// or adds a new item. Meta data tag names can be something like e.g. "comment".
+// Supplying NULL for the value will unset an existing value.
 //
 // The function takes the following parameters:
 //
@@ -12258,8 +12641,8 @@ func (preset *Preset) setMeta(name, tag, value string) bool {
 	return _ok
 }
 
-// PresetGetAppDir gets the directory for application specific presets if set by
-// the application.
+// PresetGetAppDir (gst_preset_get_app_dir) gets the directory for application
+// specific presets if set by the application.
 //
 // The function returns the following values:
 //
@@ -12278,9 +12661,9 @@ func PresetGetAppDir() string {
 	return _filename
 }
 
-// PresetSetAppDir sets an extra directory as an absolute path that should be
-// considered when looking for presets. Any presets in the application dir will
-// shadow the system presets.
+// PresetSetAppDir (gst_preset_set_app_dir) sets an extra directory as an
+// absolute path that should be considered when looking for presets. Any presets
+// in the application dir will shadow the system presets.
 //
 // The function takes the following parameters:
 //
@@ -12312,7 +12695,8 @@ func PresetSetAppDir(appDir string) bool {
 type TagSetterOverrider interface {
 }
 
-// TagSetter: element interface that allows setting of media metadata.
+// TagSetter (GstTagSetter): element interface that allows setting of media
+// metadata.
 //
 // Elements that support changing a stream's metadata will implement this
 // interface. Examples of such elements are 'vorbisenc', 'theoraenc' and
@@ -12362,25 +12746,30 @@ var (
 	_ Elementer = (*TagSetter)(nil)
 )
 
-// TagSetterer describes TagSetter's interface methods.
+// TagSetterer describes types inherited from TagSetter.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
 type TagSetterer interface {
-	coreglib.Objector
+	Elementer
 
-	// AddTagValue adds the given tag / GValue pair on the setter using the
-	// given merge mode.
+	// AddTagValue (gst_tag_setter_add_tag_value) adds the given tag / GValue
+	// pair on the setter using the given merge mode.
 	AddTagValue(mode TagMergeMode, tag string, value *coreglib.Value)
-	// TagList returns the current list of tags the setter uses.
+	// TagList (gst_tag_setter_get_tag_list) returns the current list of tags
+	// the setter uses.
 	TagList() *TagList
-	// TagMergeMode queries the mode by which tags inside the setter are
-	// overwritten by tags from events.
+	// TagMergeMode (gst_tag_setter_get_tag_merge_mode) queries the mode by
+	// which tags inside the setter are overwritten by tags from events.
 	TagMergeMode() TagMergeMode
-	// MergeTags merges the given list into the setter's list using the given
-	// mode.
+	// MergeTags (gst_tag_setter_merge_tags) merges the given list into the
+	// setter's list using the given mode.
 	MergeTags(list *TagList, mode TagMergeMode)
-	// ResetTags: reset the internal taglist.
+	// ResetTags (gst_tag_setter_reset_tags): reset the internal taglist.
 	ResetTags()
-	// SetTagMergeMode sets the given merge mode that is used for adding tags
-	// from events to tags specified by this interface.
+	// SetTagMergeMode (gst_tag_setter_set_tag_merge_mode) sets the given merge
+	// mode that is used for adding tags from events to tags specified by this
+	// interface.
 	SetTagMergeMode(mode TagMergeMode)
 }
 
@@ -12405,8 +12794,8 @@ func marshalTagSetter(p uintptr) (interface{}, error) {
 	return wrapTagSetter(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// AddTagValue adds the given tag / GValue pair on the setter using the given
-// merge mode.
+// AddTagValue (gst_tag_setter_add_tag_value) adds the given tag / GValue pair
+// on the setter using the given merge mode.
 //
 // The function takes the following parameters:
 //
@@ -12432,8 +12821,8 @@ func (setter *TagSetter) AddTagValue(mode TagMergeMode, tag string, value *coreg
 	runtime.KeepAlive(value)
 }
 
-// TagList returns the current list of tags the setter uses. The list should not
-// be modified or freed.
+// TagList (gst_tag_setter_get_tag_list) returns the current list of tags the
+// setter uses. The list should not be modified or freed.
 //
 // This function is not thread-safe.
 //
@@ -12459,8 +12848,8 @@ func (setter *TagSetter) TagList() *TagList {
 	return _tagList
 }
 
-// TagMergeMode queries the mode by which tags inside the setter are overwritten
-// by tags from events.
+// TagMergeMode (gst_tag_setter_get_tag_merge_mode) queries the mode by which
+// tags inside the setter are overwritten by tags from events.
 //
 // The function returns the following values:
 //
@@ -12481,7 +12870,8 @@ func (setter *TagSetter) TagMergeMode() TagMergeMode {
 	return _tagMergeMode
 }
 
-// MergeTags merges the given list into the setter's list using the given mode.
+// MergeTags (gst_tag_setter_merge_tags) merges the given list into the setter's
+// list using the given mode.
 //
 // The function takes the following parameters:
 //
@@ -12502,8 +12892,8 @@ func (setter *TagSetter) MergeTags(list *TagList, mode TagMergeMode) {
 	runtime.KeepAlive(mode)
 }
 
-// ResetTags: reset the internal taglist. Elements should call this from within
-// the state-change handler.
+// ResetTags (gst_tag_setter_reset_tags): reset the internal taglist. Elements
+// should call this from within the state-change handler.
 func (setter *TagSetter) ResetTags() {
 	var _arg0 *C.GstTagSetter // out
 
@@ -12513,9 +12903,10 @@ func (setter *TagSetter) ResetTags() {
 	runtime.KeepAlive(setter)
 }
 
-// SetTagMergeMode sets the given merge mode that is used for adding tags from
-// events to tags specified by this interface. The default is T_TAG_MERGE_KEEP,
-// which keeps the tags set with this interface and discards tags from events.
+// SetTagMergeMode (gst_tag_setter_set_tag_merge_mode) sets the given merge mode
+// that is used for adding tags from events to tags specified by this interface.
+// The default is T_TAG_MERGE_KEEP, which keeps the tags set with this interface
+// and discards tags from events.
 //
 // The function takes the following parameters:
 //
@@ -12536,7 +12927,7 @@ func (setter *TagSetter) SetTagMergeMode(mode TagMergeMode) {
 type TocSetterOverrider interface {
 }
 
-// TocSetter: element interface that allows setting of the TOC.
+// TocSetter (GstTocSetter): element interface that allows setting of the TOC.
 //
 // Elements that support some kind of chapters or editions (or tracks like in
 // the FLAC cue sheet) will implement this interface.
@@ -12562,15 +12953,18 @@ var (
 	_ Elementer = (*TocSetter)(nil)
 )
 
-// TocSetterer describes TocSetter's interface methods.
+// TocSetterer describes types inherited from TocSetter.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
 type TocSetterer interface {
-	coreglib.Objector
+	Elementer
 
-	// Toc: return current TOC the setter uses.
+	// Toc (gst_toc_setter_get_toc): return current TOC the setter uses.
 	Toc() *Toc
-	// Reset the internal TOC.
+	// Reset (gst_toc_setter_reset) the internal TOC.
 	Reset()
-	// SetToc: set the given TOC on the setter.
+	// SetToc (gst_toc_setter_set_toc): set the given TOC on the setter.
 	SetToc(toc *Toc)
 }
 
@@ -12595,8 +12989,8 @@ func marshalTocSetter(p uintptr) (interface{}, error) {
 	return wrapTocSetter(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// Toc: return current TOC the setter uses. The TOC should not be modified
-// without making it writable first.
+// Toc (gst_toc_setter_get_toc): return current TOC the setter uses. The TOC
+// should not be modified without making it writable first.
 //
 // The function returns the following values:
 //
@@ -12626,8 +13020,8 @@ func (setter *TocSetter) Toc() *Toc {
 	return _toc
 }
 
-// Reset the internal TOC. Elements should call this from within the
-// state-change handler.
+// Reset (gst_toc_setter_reset) the internal TOC. Elements should call this from
+// within the state-change handler.
 func (setter *TocSetter) Reset() {
 	var _arg0 *C.GstTocSetter // out
 
@@ -12637,8 +13031,8 @@ func (setter *TocSetter) Reset() {
 	runtime.KeepAlive(setter)
 }
 
-// SetToc: set the given TOC on the setter. Previously set TOC will be unreffed
-// before setting a new one.
+// SetToc (gst_toc_setter_set_toc): set the given TOC on the setter. Previously
+// set TOC will be unreffed before setting a new one.
 //
 // The function takes the following parameters:
 //
@@ -12657,8 +13051,8 @@ func (setter *TocSetter) SetToc(toc *Toc) {
 	runtime.KeepAlive(toc)
 }
 
-// URIHandler is an interface that is implemented by Source and Sink Element to
-// unify handling of URI.
+// URIHandler (GstURIHandler) is an interface that is implemented by Source and
+// Sink Element to unify handling of URI.
 //
 // An application can use the following functions to quickly get an element that
 // handles the given URI for reading or writing (gst_element_make_from_uri()).
@@ -12676,17 +13070,23 @@ var (
 	_ coreglib.Objector = (*URIHandler)(nil)
 )
 
-// URIHandlerer describes URIHandler's interface methods.
+// URIHandlerer describes types inherited from URIHandler.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
 type URIHandlerer interface {
 	coreglib.Objector
 
-	// Protocols gets the list of protocols supported by handler.
+	// Protocols (gst_uri_handler_get_protocols) gets the list of protocols
+	// supported by handler.
 	Protocols() []string
-	// URI gets the currently handled URI.
+	// URI (gst_uri_handler_get_uri) gets the currently handled URI.
 	URI() string
-	// URIType gets the type of the given URI handler.
+	// URIType (gst_uri_handler_get_uri_type) gets the type of the given URI
+	// handler.
 	URIType() URIType
-	// SetURI tries to set the URI of the given handler.
+	// SetURI (gst_uri_handler_set_uri) tries to set the URI of the given
+	// handler.
 	SetURI(uri string) error
 }
 
@@ -12702,8 +13102,8 @@ func marshalURIHandler(p uintptr) (interface{}, error) {
 	return wrapURIHandler(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// Protocols gets the list of protocols supported by handler. This list may not
-// be modified.
+// Protocols (gst_uri_handler_get_protocols) gets the list of protocols
+// supported by handler. This list may not be modified.
 //
 // The function returns the following values:
 //
@@ -12739,7 +13139,7 @@ func (handler *URIHandler) Protocols() []string {
 	return _utf8s
 }
 
-// URI gets the currently handled URI.
+// URI (gst_uri_handler_get_uri) gets the currently handled URI.
 //
 // The function returns the following values:
 //
@@ -12765,7 +13165,8 @@ func (handler *URIHandler) URI() string {
 	return _utf8
 }
 
-// URIType gets the type of the given URI handler.
+// URIType (gst_uri_handler_get_uri_type) gets the type of the given URI
+// handler.
 //
 // The function returns the following values:
 //
@@ -12787,7 +13188,7 @@ func (handler *URIHandler) URIType() URIType {
 	return _uriType
 }
 
-// SetURI tries to set the URI of the given handler.
+// SetURI (gst_uri_handler_set_uri) tries to set the URI of the given handler.
 //
 // The function takes the following parameters:
 //
@@ -12908,7 +13309,7 @@ func defaultAllocatorOverrides(v *Allocator) AllocatorOverrides {
 	}
 }
 
-// Allocator: memory is usually created by allocators with a
+// Allocator (GstAllocator): memory is usually created by allocators with a
 // gst_allocator_alloc() method call. When NULL is used as the allocator,
 // the default allocator will be used.
 //
@@ -12927,12 +13328,19 @@ var (
 	_ GstObjector = (*Allocator)(nil)
 )
 
-// Allocatorrer describes types inherited from class Allocator.
+// Allocatorrer describes types inherited from Allocator.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type Allocatorrer interface {
-	coreglib.Objector
+	GstObjector
+
+	// Alloc (gst_allocator_alloc): use allocator to allocate a new memory block
+	// with memory that is at least size big.
+	Alloc(size uint, params *AllocationParams) *Memory
+	// SetDefault (gst_allocator_set_default): set the default allocator.
+	SetDefault()
+
 	baseAllocator() *Allocator
 }
 
@@ -12983,8 +13391,8 @@ func BaseAllocator(obj Allocatorrer) *Allocator {
 	return obj.baseAllocator()
 }
 
-// Alloc: use allocator to allocate a new memory block with memory that is at
-// least size big.
+// Alloc (gst_allocator_alloc): use allocator to allocate a new memory block
+// with memory that is at least size big.
 //
 // The optional params can specify the prefix and padding for the memory.
 // If NULL is passed, no flags, no extra prefix/padding and a default alignment
@@ -13040,7 +13448,7 @@ func (allocator *Allocator) Alloc(size uint, params *AllocationParams) *Memory {
 	return _memory
 }
 
-// SetDefault: set the default allocator.
+// SetDefault (gst_allocator_set_default): set the default allocator.
 func (allocator *Allocator) SetDefault() {
 	var _arg0 *C.GstAllocator // out
 
@@ -13111,8 +13519,8 @@ func (allocator *Allocator) alloc(size uint, params *AllocationParams) *Memory {
 	return _memory
 }
 
-// AllocatorFind: find a previously registered allocator with name. When name is
-// NULL, the default allocator will be returned.
+// AllocatorFind (gst_allocator_find): find a previously registered allocator
+// with name. When name is NULL, the default allocator will be returned.
 //
 // The function takes the following parameters:
 //
@@ -13156,7 +13564,8 @@ func AllocatorFind(name string) Allocatorrer {
 	return _allocator
 }
 
-// AllocatorRegister registers the memory allocator with name.
+// AllocatorRegister (gst_allocator_register) registers the memory allocator
+// with name.
 //
 // The function takes the following parameters:
 //
@@ -13248,10 +13657,10 @@ func defaultBinOverrides(v *Bin) BinOverrides {
 	}
 }
 
-// Bin is an element that can contain other Element, allowing them to be
-// managed as a group. Pads from the child elements can be ghosted to the bin,
-// see GhostPad. This makes the bin look like any other elements and enables
-// creation of higher-level abstraction elements.
+// Bin (GstBin) is an element that can contain other Element, allowing them
+// to be managed as a group. Pads from the child elements can be ghosted to
+// the bin, see GhostPad. This makes the bin look like any other elements and
+// enables creation of higher-level abstraction elements.
 //
 // A new Bin is created with gst_bin_new(). Use a Pipeline instead if you want
 // to create a toplevel bin because a normal bin doesn't have a bus or handle
@@ -13360,6 +13769,86 @@ var (
 	_ Elementer = (*Bin)(nil)
 )
 
+// Binner describes types inherited from Bin.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type Binner interface {
+	Elementer
+	ChildProxier
+
+	// Add (gst_bin_add) adds the given element to the bin.
+	Add(element Elementer) bool
+	// FindUnlinkedPad (gst_bin_find_unlinked_pad): recursively looks for
+	// elements with an unlinked pad of the given direction within the specified
+	// bin and returns an unlinked pad if one is found, or NULL otherwise.
+	FindUnlinkedPad(direction PadDirection) *Pad
+	// ByInterface (gst_bin_get_by_interface) looks for an element inside the
+	// bin that implements the given interface.
+	ByInterface(iface coreglib.Type) Elementer
+	// ByName (gst_bin_get_by_name) gets the element with the given name from a
+	// bin.
+	ByName(name string) Elementer
+	// ByNameRecurseUp (gst_bin_get_by_name_recurse_up) gets the element with
+	// the given name from this bin.
+	ByNameRecurseUp(name string) Elementer
+	SuppressedFlags() ElementFlags
+	// IterateAllByElementFactoryName
+	// (gst_bin_iterate_all_by_element_factory_name) looks for all elements
+	// inside the bin with the given element factory name.
+	IterateAllByElementFactoryName(factoryName string) *Iterator
+	// IterateAllByInterface (gst_bin_iterate_all_by_interface) looks for all
+	// elements inside the bin that implements the given interface.
+	IterateAllByInterface(iface coreglib.Type) *Iterator
+	// IterateElements (gst_bin_iterate_elements) gets an iterator for the
+	// elements in this bin.
+	IterateElements() *Iterator
+	// IterateRecurse (gst_bin_iterate_recurse) gets an iterator for the
+	// elements in this bin.
+	IterateRecurse() *Iterator
+	// IterateSinks (gst_bin_iterate_sinks) gets an iterator for all elements in
+	// the bin that have the T_ELEMENT_FLAG_SINK flag set.
+	IterateSinks() *Iterator
+	// IterateSorted (gst_bin_iterate_sorted) gets an iterator for the elements
+	// in this bin in topologically sorted order.
+	IterateSorted() *Iterator
+	// IterateSources (gst_bin_iterate_sources) gets an iterator for all
+	// elements in the bin that have the T_ELEMENT_FLAG_SOURCE flag set.
+	IterateSources() *Iterator
+	// RecalculateLatency (gst_bin_recalculate_latency) queries bin for the
+	// current latency and reconfigures this latency on all the elements using a
+	// LATENCY event.
+	RecalculateLatency() bool
+	// Remove (gst_bin_remove) removes the element from the bin, unparenting it
+	// as well.
+	Remove(element Elementer) bool
+	// SetSuppressedFlags (gst_bin_set_suppressed_flags) suppresses the given
+	// flags on the bin.
+	SetSuppressedFlags(flags ElementFlags)
+	// SyncChildrenStates (gst_bin_sync_children_states) synchronizes the state
+	// of every child of bin with the state of bin.
+	SyncChildrenStates() bool
+
+	// Deep-element-added will be emitted after the element was added to
+	// sub_bin.
+	ConnectDeepElementAdded(func(subBin *Bin, element Elementer)) coreglib.SignalHandle
+	// Deep-element-removed will be emitted after the element was removed from
+	// sub_bin.
+	ConnectDeepElementRemoved(func(subBin *Bin, element Elementer)) coreglib.SignalHandle
+	// Do-latency will be emitted when the bin needs to perform latency
+	// calculations.
+	ConnectDoLatency(func() (ok bool)) coreglib.SignalHandle
+	// Element-added will be emitted after the element was added to the bin.
+	ConnectElementAdded(func(element Elementer)) coreglib.SignalHandle
+	// Element-removed will be emitted after the element was removed from the
+	// bin.
+	ConnectElementRemoved(func(element Elementer)) coreglib.SignalHandle
+
+	baseBin() *Bin
+}
+
+var _ Binner = (*Bin)(nil)
+
 func init() {
 	coreglib.RegisterClassInfo[*Bin, *BinClass, BinOverrides](
 		GTypeBin,
@@ -13429,6 +13918,15 @@ func marshalBin(p uintptr) (interface{}, error) {
 	return wrapBin(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
+func (bin *Bin) baseBin() *Bin {
+	return bin
+}
+
+// BaseBin returns the underlying base object.
+func BaseBin(obj Binner) *Bin {
+	return obj.baseBin()
+}
+
 // ConnectDeepElementAdded will be emitted after the element was added to
 // sub_bin.
 func (bin *Bin) ConnectDeepElementAdded(f func(subBin *Bin, element Elementer)) coreglib.SignalHandle {
@@ -13467,7 +13965,7 @@ func (bin *Bin) ConnectElementRemoved(f func(element Elementer)) coreglib.Signal
 	return coreglib.ConnectGeneratedClosure(bin, "element-removed", false, unsafe.Pointer(C._gotk4_gst1_Bin_ConnectElementRemoved), f)
 }
 
-// NewBin creates a new bin with the given name.
+// NewBin (gst_bin_new) creates a new bin with the given name.
 //
 // The function takes the following parameters:
 //
@@ -13495,8 +13993,9 @@ func NewBin(name string) *Bin {
 	return _bin
 }
 
-// Add adds the given element to the bin. Sets the element's parent, and thus
-// takes ownership of the element. An element can only be added to one bin.
+// Add (gst_bin_add) adds the given element to the bin. Sets the element's
+// parent, and thus takes ownership of the element. An element can only be added
+// to one bin.
 //
 // If the element's pads are linked to other pads, the pads will be unlinked
 // before the element is added to the bin.
@@ -13536,11 +14035,11 @@ func (bin *Bin) Add(element Elementer) bool {
 	return _ok
 }
 
-// FindUnlinkedPad: recursively looks for elements with an unlinked pad of the
-// given direction within the specified bin and returns an unlinked pad if one
-// is found, or NULL otherwise. If a pad is found, the caller owns a reference
-// to it and should use gst_object_unref() on the pad when it is not needed any
-// longer.
+// FindUnlinkedPad (gst_bin_find_unlinked_pad): recursively looks for elements
+// with an unlinked pad of the given direction within the specified bin and
+// returns an unlinked pad if one is found, or NULL otherwise. If a pad is
+// found, the caller owns a reference to it and should use gst_object_unref() on
+// the pad when it is not needed any longer.
 //
 // The function takes the following parameters:
 //
@@ -13570,11 +14069,11 @@ func (bin *Bin) FindUnlinkedPad(direction PadDirection) *Pad {
 	return _pad
 }
 
-// ByInterface looks for an element inside the bin that implements the given
-// interface. If such an element is found, it returns the element. You can cast
-// this element to the given interface afterwards. If you want all elements
-// that implement the interface, use gst_bin_iterate_all_by_interface().
-// This function recurses into child bins.
+// ByInterface (gst_bin_get_by_interface) looks for an element inside the
+// bin that implements the given interface. If such an element is found,
+// it returns the element. You can cast this element to the given interface
+// afterwards. If you want all elements that implement the interface, use
+// gst_bin_iterate_all_by_interface(). This function recurses into child bins.
 //
 // The function takes the following parameters:
 //
@@ -13617,8 +14116,8 @@ func (bin *Bin) ByInterface(iface coreglib.Type) Elementer {
 	return _element
 }
 
-// ByName gets the element with the given name from a bin. This function
-// recurses into child bins.
+// ByName (gst_bin_get_by_name) gets the element with the given name from a bin.
+// This function recurses into child bins.
 //
 // The function takes the following parameters:
 //
@@ -13662,8 +14161,9 @@ func (bin *Bin) ByName(name string) Elementer {
 	return _element
 }
 
-// ByNameRecurseUp gets the element with the given name from this bin. If the
-// element is not found, a recursion is performed on the parent bin.
+// ByNameRecurseUp (gst_bin_get_by_name_recurse_up) gets the element with
+// the given name from this bin. If the element is not found, a recursion is
+// performed on the parent bin.
 //
 // The function takes the following parameters:
 //
@@ -13726,9 +14226,10 @@ func (bin *Bin) SuppressedFlags() ElementFlags {
 	return _elementFlags
 }
 
-// IterateAllByElementFactoryName looks for all elements inside the bin with
-// the given element factory name. The function recurses inside child bins.
-// The iterator will yield a series of Element.
+// IterateAllByElementFactoryName (gst_bin_iterate_all_by_element_factory_name)
+// looks for all elements inside the bin with the given element factory name.
+// The function recurses inside child bins. The iterator will yield a series of
+// Element.
 //
 // The function takes the following parameters:
 //
@@ -13766,10 +14267,10 @@ func (bin *Bin) IterateAllByElementFactoryName(factoryName string) *Iterator {
 	return _iterator
 }
 
-// IterateAllByInterface looks for all elements inside the bin that implements
-// the given interface. You can safely cast all returned elements to the given
-// interface. The function recurses inside child bins. The iterator will yield a
-// series of Element.
+// IterateAllByInterface (gst_bin_iterate_all_by_interface) looks for all
+// elements inside the bin that implements the given interface. You can safely
+// cast all returned elements to the given interface. The function recurses
+// inside child bins. The iterator will yield a series of Element.
 //
 // The function takes the following parameters:
 //
@@ -13806,7 +14307,8 @@ func (bin *Bin) IterateAllByInterface(iface coreglib.Type) *Iterator {
 	return _iterator
 }
 
-// IterateElements gets an iterator for the elements in this bin.
+// IterateElements (gst_bin_iterate_elements) gets an iterator for the elements
+// in this bin.
 //
 // The function returns the following values:
 //
@@ -13835,8 +14337,8 @@ func (bin *Bin) IterateElements() *Iterator {
 	return _iterator
 }
 
-// IterateRecurse gets an iterator for the elements in this bin. This iterator
-// recurses into GstBin children.
+// IterateRecurse (gst_bin_iterate_recurse) gets an iterator for the elements in
+// this bin. This iterator recurses into GstBin children.
 //
 // The function returns the following values:
 //
@@ -13865,8 +14367,8 @@ func (bin *Bin) IterateRecurse() *Iterator {
 	return _iterator
 }
 
-// IterateSinks gets an iterator for all elements in the bin that have the
-// T_ELEMENT_FLAG_SINK flag set.
+// IterateSinks (gst_bin_iterate_sinks) gets an iterator for all elements in the
+// bin that have the T_ELEMENT_FLAG_SINK flag set.
 //
 // The function returns the following values:
 //
@@ -13895,9 +14397,9 @@ func (bin *Bin) IterateSinks() *Iterator {
 	return _iterator
 }
 
-// IterateSorted gets an iterator for the elements in this bin in topologically
-// sorted order. This means that the elements are returned from the most
-// downstream elements (sinks) to the sources.
+// IterateSorted (gst_bin_iterate_sorted) gets an iterator for the elements
+// in this bin in topologically sorted order. This means that the elements are
+// returned from the most downstream elements (sinks) to the sources.
 //
 // This function is used internally to perform the state changes of the bin
 // elements and for clock selection.
@@ -13929,8 +14431,8 @@ func (bin *Bin) IterateSorted() *Iterator {
 	return _iterator
 }
 
-// IterateSources gets an iterator for all elements in the bin that have the
-// T_ELEMENT_FLAG_SOURCE flag set.
+// IterateSources (gst_bin_iterate_sources) gets an iterator for all elements in
+// the bin that have the T_ELEMENT_FLAG_SOURCE flag set.
 //
 // The function returns the following values:
 //
@@ -13959,8 +14461,9 @@ func (bin *Bin) IterateSources() *Iterator {
 	return _iterator
 }
 
-// RecalculateLatency queries bin for the current latency and reconfigures this
-// latency on all the elements using a LATENCY event.
+// RecalculateLatency (gst_bin_recalculate_latency) queries bin for the current
+// latency and reconfigures this latency on all the elements using a LATENCY
+// event.
 //
 // This method is typically called on the pipeline when a T_MESSAGE_LATENCY is
 // posted on the bus.
@@ -13989,11 +14492,12 @@ func (bin *Bin) RecalculateLatency() bool {
 	return _ok
 }
 
-// Remove removes the element from the bin, unparenting it as well. Unparenting
-// the element means that the element will be dereferenced, so if the bin holds
-// the only reference to the element, the element will be freed in the process
-// of removing it from the bin. If you want the element to still exist after
-// removing, you need to call gst_object_ref() before removing it from the bin.
+// Remove (gst_bin_remove) removes the element from the bin, unparenting it as
+// well. Unparenting the element means that the element will be dereferenced,
+// so if the bin holds the only reference to the element, the element will be
+// freed in the process of removing it from the bin. If you want the element to
+// still exist after removing, you need to call gst_object_ref() before removing
+// it from the bin.
 //
 // If the element's pads are linked to other pads, the pads will be unlinked
 // before the element is removed from the bin.
@@ -14027,9 +14531,10 @@ func (bin *Bin) Remove(element Elementer) bool {
 	return _ok
 }
 
-// SetSuppressedFlags suppresses the given flags on the bin. ElementFlags of a
-// child element are propagated when it is added to the bin. When suppressed
-// flags are set, those specified flags will not be propagated to the bin.
+// SetSuppressedFlags (gst_bin_set_suppressed_flags) suppresses the given flags
+// on the bin. ElementFlags of a child element are propagated when it is added
+// to the bin. When suppressed flags are set, those specified flags will not be
+// propagated to the bin.
 //
 // The function takes the following parameters:
 //
@@ -14046,8 +14551,9 @@ func (bin *Bin) SetSuppressedFlags(flags ElementFlags) {
 	runtime.KeepAlive(flags)
 }
 
-// SyncChildrenStates synchronizes the state of every child of bin with the
-// state of bin. See also gst_element_sync_state_with_parent().
+// SyncChildrenStates (gst_bin_sync_children_states) synchronizes
+// the state of every child of bin with the state of bin. See also
+// gst_element_sync_state_with_parent().
 //
 // The function returns the following values:
 //
@@ -14269,7 +14775,7 @@ func (bin *Bin) removeElement(element Elementer) bool {
 	return _ok
 }
 
-// Bitmask: fundamental type that describes a 64-bit bitmask.
+// Bitmask (GstBitmask): fundamental type that describes a 64-bit bitmask.
 type Bitmask struct {
 	_ [0]func() // equal guard
 	*coreglib.Object
@@ -14279,6 +14785,18 @@ var (
 	_ coreglib.Objector = (*Bitmask)(nil)
 )
 
+// Bitmasker describes types inherited from Bitmask.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type Bitmasker interface {
+	coreglib.Objector
+
+	baseBitmask() *Bitmask
+}
+
+var _ Bitmasker = (*Bitmask)(nil)
+
 func wrapBitmask(obj *coreglib.Object) *Bitmask {
 	return &Bitmask{
 		Object: obj,
@@ -14287,6 +14805,15 @@ func wrapBitmask(obj *coreglib.Object) *Bitmask {
 
 func marshalBitmask(p uintptr) (interface{}, error) {
 	return wrapBitmask(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
+}
+
+func (v *Bitmask) baseBitmask() *Bitmask {
+	return v
+}
+
+// BaseBitmask returns the underlying base object.
+func BaseBitmask(obj Bitmasker) *Bitmask {
+	return obj.baseBitmask()
 }
 
 // BufferPoolOverrides contains methods that are overridable.
@@ -14421,8 +14948,8 @@ func defaultBufferPoolOverrides(v *BufferPool) BufferPoolOverrides {
 	}
 }
 
-// BufferPool is an object that can be used to pre-allocate and recycle buffers
-// of the same size and with the same properties.
+// BufferPool (GstBufferPool) is an object that can be used to pre-allocate and
+// recycle buffers of the same size and with the same properties.
 //
 // A BufferPool is created with gst_buffer_pool_new().
 //
@@ -14463,6 +14990,43 @@ type BufferPool struct {
 var (
 	_ GstObjector = (*BufferPool)(nil)
 )
+
+// BufferPooler describes types inherited from BufferPool.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type BufferPooler interface {
+	GstObjector
+
+	// AcquireBuffer (gst_buffer_pool_acquire_buffer) acquires a buffer from
+	// pool.
+	AcquireBuffer(params *BufferPoolAcquireParams) (*Buffer, FlowReturn)
+	// Config (gst_buffer_pool_get_config) gets a copy of the current
+	// configuration of the pool.
+	Config() *Structure
+	// Options (gst_buffer_pool_get_options) gets a NULL terminated array of
+	// string with supported bufferpool options for pool.
+	Options() []string
+	// HasOption (gst_buffer_pool_has_option) checks if the bufferpool supports
+	// option.
+	HasOption(option string) bool
+	// IsActive (gst_buffer_pool_is_active) checks if pool is active.
+	IsActive() bool
+	// ReleaseBuffer (gst_buffer_pool_release_buffer) releases buffer to pool.
+	ReleaseBuffer(buffer *Buffer)
+	// SetActive (gst_buffer_pool_set_active) controls the active state of pool.
+	SetActive(active bool) bool
+	// SetConfig (gst_buffer_pool_set_config) sets the configuration of the
+	// pool.
+	SetConfig(config *Structure) bool
+	// SetFlushing (gst_buffer_pool_set_flushing) enables or disables the
+	// flushing state of a pool without freeing or allocating buffers.
+	SetFlushing(flushing bool)
+
+	baseBufferPool() *BufferPool
+}
+
+var _ BufferPooler = (*BufferPool)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*BufferPool, *BufferPoolClass, BufferPoolOverrides](
@@ -14540,7 +15104,16 @@ func marshalBufferPool(p uintptr) (interface{}, error) {
 	return wrapBufferPool(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// NewBufferPool creates a new BufferPool instance.
+func (pool *BufferPool) baseBufferPool() *BufferPool {
+	return pool
+}
+
+// BaseBufferPool returns the underlying base object.
+func BaseBufferPool(obj BufferPooler) *BufferPool {
+	return obj.baseBufferPool()
+}
+
+// NewBufferPool (gst_buffer_pool_new) creates a new BufferPool instance.
 //
 // The function returns the following values:
 //
@@ -14557,10 +15130,11 @@ func NewBufferPool() *BufferPool {
 	return _bufferPool
 }
 
-// AcquireBuffer acquires a buffer from pool. buffer should point to a memory
-// location that can hold a pointer to the new buffer. When the pool is empty,
-// this function will by default block until a buffer is released into the pool
-// again or when the pool is set to flushing or deactivated.
+// AcquireBuffer (gst_buffer_pool_acquire_buffer) acquires a buffer from pool.
+// buffer should point to a memory location that can hold a pointer to the new
+// buffer. When the pool is empty, this function will by default block until a
+// buffer is released into the pool again or when the pool is set to flushing or
+// deactivated.
 //
 // params can contain optional parameters to influence the allocation.
 //
@@ -14603,9 +15177,9 @@ func (pool *BufferPool) AcquireBuffer(params *BufferPoolAcquireParams) (*Buffer,
 	return _buffer, _flowReturn
 }
 
-// Config gets a copy of the current configuration of the pool. This
-// configuration can be modified and used for the gst_buffer_pool_set_config()
-// call.
+// Config (gst_buffer_pool_get_config) gets a copy of the current configuration
+// of the pool. This configuration can be modified and used for the
+// gst_buffer_pool_set_config() call.
 //
 // The function returns the following values:
 //
@@ -14631,9 +15205,9 @@ func (pool *BufferPool) Config() *Structure {
 	return _structure
 }
 
-// Options gets a NULL terminated array of string with supported
-// bufferpool options for pool. An option would typically be enabled with
-// gst_buffer_pool_config_add_option().
+// Options (gst_buffer_pool_get_options) gets a NULL terminated array of string
+// with supported bufferpool options for pool. An option would typically be
+// enabled with gst_buffer_pool_config_add_option().
 //
 // The function returns the following values:
 //
@@ -14666,7 +15240,8 @@ func (pool *BufferPool) Options() []string {
 	return _utf8s
 }
 
-// HasOption checks if the bufferpool supports option.
+// HasOption (gst_buffer_pool_has_option) checks if the bufferpool supports
+// option.
 //
 // The function takes the following parameters:
 //
@@ -14697,8 +15272,8 @@ func (pool *BufferPool) HasOption(option string) bool {
 	return _ok
 }
 
-// IsActive checks if pool is active. A pool can be activated with the
-// gst_buffer_pool_set_active() call.
+// IsActive (gst_buffer_pool_is_active) checks if pool is active. A pool can be
+// activated with the gst_buffer_pool_set_active() call.
 //
 // The function returns the following values:
 //
@@ -14721,8 +15296,9 @@ func (pool *BufferPool) IsActive() bool {
 	return _ok
 }
 
-// ReleaseBuffer releases buffer to pool. buffer should have previously been
-// allocated from pool with gst_buffer_pool_acquire_buffer().
+// ReleaseBuffer (gst_buffer_pool_release_buffer) releases buffer to
+// pool. buffer should have previously been allocated from pool with
+// gst_buffer_pool_acquire_buffer().
 //
 // This function is usually called automatically when the last ref on buffer
 // disappears.
@@ -14743,8 +15319,9 @@ func (pool *BufferPool) ReleaseBuffer(buffer *Buffer) {
 	runtime.KeepAlive(buffer)
 }
 
-// SetActive controls the active state of pool. When the pool is inactive, new
-// calls to gst_buffer_pool_acquire_buffer() will return with GST_FLOW_FLUSHING.
+// SetActive (gst_buffer_pool_set_active) controls the active state of pool.
+// When the pool is inactive, new calls to gst_buffer_pool_acquire_buffer() will
+// return with GST_FLOW_FLUSHING.
 //
 // Activating the bufferpool will preallocate all resources in the pool based on
 // the configuration of the pool.
@@ -14784,11 +15361,11 @@ func (pool *BufferPool) SetActive(active bool) bool {
 	return _ok
 }
 
-// SetConfig sets the configuration of the pool. If the pool is already
-// configured, and the configuration hasn't changed, this function will return
-// TRUE. If the pool is active, this method will return FALSE and active
-// configuration will remain. Buffers allocated from this pool must be returned
-// or else this function will do nothing and return FALSE.
+// SetConfig (gst_buffer_pool_set_config) sets the configuration of the pool.
+// If the pool is already configured, and the configuration hasn't changed, this
+// function will return TRUE. If the pool is active, this method will return
+// FALSE and active configuration will remain. Buffers allocated from this pool
+// must be returned or else this function will do nothing and return FALSE.
 //
 // config is a Structure that contains the configuration parameters for the
 // pool. A default and mandatory set of parameters can be configured with
@@ -14830,8 +15407,8 @@ func (pool *BufferPool) SetConfig(config *Structure) bool {
 	return _ok
 }
 
-// SetFlushing enables or disables the flushing state of a pool without freeing
-// or allocating buffers.
+// SetFlushing (gst_buffer_pool_set_flushing) enables or disables the flushing
+// state of a pool without freeing or allocating buffers.
 //
 // The function takes the following parameters:
 //
@@ -15186,9 +15763,9 @@ func (pool *BufferPool) stop() bool {
 	return _ok
 }
 
-// BufferPoolConfigAddOption enables the option in config. This will instruct
-// the bufferpool to enable the specified option on the buffers that it
-// allocates.
+// BufferPoolConfigAddOption (gst_buffer_pool_config_add_option) enables the
+// option in config. This will instruct the bufferpool to enable the specified
+// option on the buffers that it allocates.
 //
 // The options supported by pool can be retrieved with
 // gst_buffer_pool_get_options().
@@ -15210,7 +15787,8 @@ func BufferPoolConfigAddOption(config *Structure, option string) {
 	runtime.KeepAlive(option)
 }
 
-// BufferPoolConfigGetAllocator gets the allocator and params from config.
+// BufferPoolConfigGetAllocator (gst_buffer_pool_config_get_allocator) gets the
+// allocator and params from config.
 //
 // The function takes the following parameters:
 //
@@ -15260,8 +15838,8 @@ func BufferPoolConfigGetAllocator(config *Structure) (Allocatorrer, *AllocationP
 	return _allocator, _params, _ok
 }
 
-// BufferPoolConfigGetOption parses an available config and gets the option at
-// index of the options API array.
+// BufferPoolConfigGetOption (gst_buffer_pool_config_get_option) parses an
+// available config and gets the option at index of the options API array.
 //
 // The function takes the following parameters:
 //
@@ -15292,7 +15870,8 @@ func BufferPoolConfigGetOption(config *Structure, index uint) string {
 	return _utf8
 }
 
-// BufferPoolConfigGetParams gets the configuration values from config.
+// BufferPoolConfigGetParams (gst_buffer_pool_config_get_params) gets the
+// configuration values from config.
 //
 // The function takes the following parameters:
 //
@@ -15344,7 +15923,8 @@ func BufferPoolConfigGetParams(config *Structure) (caps *Caps, size, minBuffers,
 	return _caps, _size, _minBuffers, _maxBuffers, _ok
 }
 
-// BufferPoolConfigHasOption checks if config contains option.
+// BufferPoolConfigHasOption (gst_buffer_pool_config_has_option) checks if
+// config contains option.
 //
 // The function takes the following parameters:
 //
@@ -15376,8 +15956,9 @@ func BufferPoolConfigHasOption(config *Structure, option string) bool {
 	return _ok
 }
 
-// BufferPoolConfigNOptions retrieves the number of values currently stored in
-// the options array of the config structure.
+// BufferPoolConfigNOptions (gst_buffer_pool_config_n_options) retrieves
+// the number of values currently stored in the options array of the config
+// structure.
 //
 // The function takes the following parameters:
 //
@@ -15402,7 +15983,8 @@ func BufferPoolConfigNOptions(config *Structure) uint {
 	return _guint
 }
 
-// BufferPoolConfigSetAllocator sets the allocator and params on config.
+// BufferPoolConfigSetAllocator (gst_buffer_pool_config_set_allocator) sets the
+// allocator and params on config.
 //
 // One of allocator and params can be NULL, but not both. When allocator is
 // NULL, the default allocator of the pool will use the values in param to
@@ -15439,7 +16021,8 @@ func BufferPoolConfigSetAllocator(config *Structure, allocator Allocatorrer, par
 	runtime.KeepAlive(params)
 }
 
-// BufferPoolConfigSetParams configures config with the given parameters.
+// BufferPoolConfigSetParams (gst_buffer_pool_config_set_params) configures
+// config with the given parameters.
 //
 // The function takes the following parameters:
 //
@@ -15471,14 +16054,14 @@ func BufferPoolConfigSetParams(config *Structure, caps *Caps, size, minBuffers, 
 	runtime.KeepAlive(maxBuffers)
 }
 
-// BufferPoolConfigValidateParams validates that changes made to config are
-// still valid in the context of the expected parameters. This function is a
-// helper that can be used to validate changes made by a pool to a config when
-// gst_buffer_pool_set_config() returns FALSE. This expects that caps haven't
-// changed and that min_buffers aren't lower then what we initially expected.
-// This does not check if options or allocator parameters are still valid,
-// won't check if size have changed, since changing the size is valid to adapt
-// padding.
+// BufferPoolConfigValidateParams (gst_buffer_pool_config_validate_params)
+// validates that changes made to config are still valid in the context of the
+// expected parameters. This function is a helper that can be used to validate
+// changes made by a pool to a config when gst_buffer_pool_set_config() returns
+// FALSE. This expects that caps haven't changed and that min_buffers aren't
+// lower then what we initially expected. This does not check if options or
+// allocator parameters are still valid, won't check if size have changed,
+// since changing the size is valid to adapt padding.
 //
 // The function takes the following parameters:
 //
@@ -15547,8 +16130,9 @@ func defaultBusOverrides(v *Bus) BusOverrides {
 	}
 }
 
-// Bus is an object responsible for delivering Message packets in a first-in
-// first-out way from the streaming threads (see Task) to the application.
+// Bus (GstBus) is an object responsible for delivering Message packets in
+// a first-in first-out way from the streaming threads (see Task) to the
+// application.
 //
 // Since the application typically only wants to deal with delivery of these
 // messages from one thread, the GstBus will marshall the messages between
@@ -15594,6 +16178,83 @@ var (
 	_ GstObjector = (*Bus)(nil)
 )
 
+// Busser describes types inherited from Bus.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type Busser interface {
+	GstObjector
+
+	// AddSignalWatch (gst_bus_add_signal_watch) adds a bus signal watch to the
+	// default main context with the default priority ( G_PRIORITY_DEFAULT ).
+	AddSignalWatch()
+	// AddSignalWatchFull (gst_bus_add_signal_watch_full) adds a bus signal
+	// watch to the default main context with the given priority (e.g.
+	AddSignalWatchFull(priority int)
+	// AddWatch (gst_bus_add_watch_full) adds a bus watch to the default main
+	// context with the given priority (e.g.
+	AddWatch(priority int, fn BusFunc) uint
+	// AsyncSignalFunc (gst_bus_async_signal_func): helper BusFunc that can be
+	// used to convert all asynchronous messages into signals.
+	AsyncSignalFunc(message *Message, data unsafe.Pointer) bool
+	// CreateWatch (gst_bus_create_watch): create watch for this bus.
+	CreateWatch() *glib.Source
+	// DisableSyncMessageEmission (gst_bus_disable_sync_message_emission)
+	// instructs GStreamer to stop emitting the "sync-message" signal for this
+	// bus.
+	DisableSyncMessageEmission()
+	// EnableSyncMessageEmission (gst_bus_enable_sync_message_emission)
+	// instructs GStreamer to emit the "sync-message" signal after running the
+	// bus's sync handler.
+	EnableSyncMessageEmission()
+	// HavePending (gst_bus_have_pending) checks if there are pending messages
+	// on the bus that should be handled.
+	HavePending() bool
+	// Peek (gst_bus_peek) peeks the message on the top of the bus' queue.
+	Peek() *Message
+	// Poll (gst_bus_poll) polls the bus for messages.
+	Poll(events MessageType, timeout ClockTime) *Message
+	// Pop (gst_bus_pop) gets a message from the bus.
+	Pop() *Message
+	// PopFiltered (gst_bus_pop_filtered) gets a message matching type from the
+	// bus.
+	PopFiltered(types MessageType) *Message
+	// Post (gst_bus_post) posts a message on the given bus.
+	Post(message *Message) bool
+	// RemoveSignalWatch (gst_bus_remove_signal_watch) removes a signal watch
+	// previously added with gst_bus_add_signal_watch().
+	RemoveSignalWatch()
+	// RemoveWatch (gst_bus_remove_watch) removes an installed bus watch from
+	// bus.
+	RemoveWatch() bool
+	// SetFlushing (gst_bus_set_flushing): if flushing, flushes out and unrefs
+	// any messages queued in the bus.
+	SetFlushing(flushing bool)
+	// SetSyncHandler (gst_bus_set_sync_handler) sets the synchronous handler on
+	// the bus.
+	SetSyncHandler(fn BusSyncHandler)
+	// SyncSignalHandler (gst_bus_sync_signal_handler): helper BusSyncHandler
+	// that can be used to convert all synchronous messages into signals.
+	SyncSignalHandler(message *Message, data unsafe.Pointer) BusSyncReply
+	// TimedPop (gst_bus_timed_pop) gets a message from the bus, waiting up to
+	// the specified timeout.
+	TimedPop(timeout ClockTime) *Message
+	// TimedPopFiltered (gst_bus_timed_pop_filtered) gets a message from the
+	// bus whose type matches the message type mask types, waiting up to the
+	// specified timeout (and discarding any messages that do not match the mask
+	// provided).
+	TimedPopFiltered(timeout ClockTime, types MessageType) *Message
+
+	// Message has been posted on the bus.
+	ConnectMessage(func(message *Message)) coreglib.SignalHandle
+	// Sync-message: message has been posted on the bus.
+	ConnectSyncMessage(func(message *Message)) coreglib.SignalHandle
+
+	baseBus() *Bus
+}
+
+var _ Busser = (*Bus)(nil)
+
 func init() {
 	coreglib.RegisterClassInfo[*Bus, *BusClass, BusOverrides](
 		GTypeBus,
@@ -15634,6 +16295,15 @@ func marshalBus(p uintptr) (interface{}, error) {
 	return wrapBus(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
+func (bus *Bus) baseBus() *Bus {
+	return bus
+}
+
+// BaseBus returns the underlying base object.
+func BaseBus(obj Busser) *Bus {
+	return obj.baseBus()
+}
+
 // ConnectMessage has been posted on the bus. This signal is emitted from a
 // #GSource added to the mainloop. this signal will only be emitted when there
 // is a Loop running.
@@ -15651,7 +16321,7 @@ func (bus *Bus) ConnectSyncMessage(f func(message *Message)) coreglib.SignalHand
 	return coreglib.ConnectGeneratedClosure(bus, "sync-message", false, unsafe.Pointer(C._gotk4_gst1_Bus_ConnectSyncMessage), f)
 }
 
-// NewBus creates a new Bus instance.
+// NewBus (gst_bus_new) creates a new Bus instance.
 //
 // The function returns the following values:
 //
@@ -15668,11 +16338,11 @@ func NewBus() *Bus {
 	return _bus
 }
 
-// AddSignalWatch adds a bus signal watch to the default main context with
-// the default priority ( G_PRIORITY_DEFAULT ). It is also possible to use a
-// non-default main context set up using g_main_context_push_thread_default()
-// (before one had to create a bus watch source and attach it to the desired
-// main context 'manually').
+// AddSignalWatch (gst_bus_add_signal_watch) adds a bus signal watch to the
+// default main context with the default priority ( G_PRIORITY_DEFAULT ).
+// It is also possible to use a non-default main context set up using
+// g_main_context_push_thread_default() (before one had to create a bus watch
+// source and attach it to the desired main context 'manually').
 //
 // After calling this statement, the bus will emit the "message" signal for each
 // message posted on the bus.
@@ -15689,11 +16359,11 @@ func (bus *Bus) AddSignalWatch() {
 	runtime.KeepAlive(bus)
 }
 
-// AddSignalWatchFull adds a bus signal watch to the default main context with
-// the given priority (e.g. G_PRIORITY_DEFAULT). It is also possible to use a
-// non-default main context set up using g_main_context_push_thread_default()
-// (before one had to create a bus watch source and attach it to the desired
-// main context 'manually').
+// AddSignalWatchFull (gst_bus_add_signal_watch_full) adds a bus signal watch to
+// the default main context with the given priority (e.g. G_PRIORITY_DEFAULT).
+// It is also possible to use a non-default main context set up using
+// g_main_context_push_thread_default() (before one had to create a bus watch
+// source and attach it to the desired main context 'manually').
 //
 // After calling this statement, the bus will emit the "message" signal for each
 // message posted on the bus when the Loop is running.
@@ -15720,11 +16390,11 @@ func (bus *Bus) AddSignalWatchFull(priority int) {
 	runtime.KeepAlive(priority)
 }
 
-// AddWatch adds a bus watch to the default main context with the given priority
-// (e.g. G_PRIORITY_DEFAULT). It is also possible to use a non-default main
-// context set up using g_main_context_push_thread_default() (before one had
-// to create a bus watch source and attach it to the desired main context
-// 'manually').
+// AddWatch (gst_bus_add_watch_full) adds a bus watch to the default
+// main context with the given priority (e.g. G_PRIORITY_DEFAULT).
+// It is also possible to use a non-default main context set up using
+// g_main_context_push_thread_default() (before one had to create a bus watch
+// source and attach it to the desired main context 'manually').
 //
 // This function is used to receive asynchronous messages in the main loop.
 // There can only be a single bus watch per bus, you must remove it before you
@@ -15776,8 +16446,8 @@ func (bus *Bus) AddWatch(priority int, fn BusFunc) uint {
 	return _guint
 }
 
-// AsyncSignalFunc: helper BusFunc that can be used to convert all asynchronous
-// messages into signals.
+// AsyncSignalFunc (gst_bus_async_signal_func): helper BusFunc that can be used
+// to convert all asynchronous messages into signals.
 //
 // The function takes the following parameters:
 //
@@ -15811,9 +16481,9 @@ func (bus *Bus) AsyncSignalFunc(message *Message, data unsafe.Pointer) bool {
 	return _ok
 }
 
-// CreateWatch: create watch for this bus. The #GSource will be dispatched
-// whenever a message is on the bus. After the GSource is dispatched, the
-// message is popped off the bus and unreffed.
+// CreateWatch (gst_bus_create_watch): create watch for this bus. The #GSource
+// will be dispatched whenever a message is on the bus. After the GSource is
+// dispatched, the message is popped off the bus and unreffed.
 //
 // As with other watches, there can only be one watch on the bus, including any
 // signal watch added with #gst_bus_add_signal_watch.
@@ -15845,8 +16515,8 @@ func (bus *Bus) CreateWatch() *glib.Source {
 	return _source
 }
 
-// DisableSyncMessageEmission instructs GStreamer to stop
-// emitting the "sync-message" signal for this bus. See
+// DisableSyncMessageEmission (gst_bus_disable_sync_message_emission) instructs
+// GStreamer to stop emitting the "sync-message" signal for this bus. See
 // gst_bus_enable_sync_message_emission() for more information.
 //
 // In the event that multiple pieces of code have called
@@ -15864,10 +16534,11 @@ func (bus *Bus) DisableSyncMessageEmission() {
 	runtime.KeepAlive(bus)
 }
 
-// EnableSyncMessageEmission instructs GStreamer to emit the "sync-message"
-// signal after running the bus's sync handler. This function is here so that
-// code can ensure that they can synchronously receive messages without having
-// to affect what the bin's sync handler is.
+// EnableSyncMessageEmission (gst_bus_enable_sync_message_emission) instructs
+// GStreamer to emit the "sync-message" signal after running the bus's sync
+// handler. This function is here so that code can ensure that they can
+// synchronously receive messages without having to affect what the bin's sync
+// handler is.
 //
 // This function may be called multiple times. To clean up, the caller is
 // responsible for calling gst_bus_disable_sync_message_emission() as many times
@@ -15888,8 +16559,8 @@ func (bus *Bus) EnableSyncMessageEmission() {
 	runtime.KeepAlive(bus)
 }
 
-// HavePending checks if there are pending messages on the bus that should be
-// handled.
+// HavePending (gst_bus_have_pending) checks if there are pending messages on
+// the bus that should be handled.
 //
 // The function returns the following values:
 //
@@ -15912,8 +16583,8 @@ func (bus *Bus) HavePending() bool {
 	return _ok
 }
 
-// Peek peeks the message on the top of the bus' queue. The message will remain
-// on the bus' message queue.
+// Peek (gst_bus_peek) peeks the message on the top of the bus' queue. The
+// message will remain on the bus' message queue.
 //
 // The function returns the following values:
 //
@@ -15941,9 +16612,9 @@ func (bus *Bus) Peek() *Message {
 	return _message
 }
 
-// Poll polls the bus for messages. Will block while waiting for messages to
-// come. You can specify a maximum time to poll with the timeout parameter.
-// If timeout is negative, this function will block indefinitely.
+// Poll (gst_bus_poll) polls the bus for messages. Will block while waiting for
+// messages to come. You can specify a maximum time to poll with the timeout
+// parameter. If timeout is negative, this function will block indefinitely.
 //
 // All messages not in events will be popped off the bus and will be ignored.
 // It is not possible to use message enums beyond T_MESSAGE_EXTENDED in the
@@ -16012,7 +16683,7 @@ func (bus *Bus) Poll(events MessageType, timeout ClockTime) *Message {
 	return _message
 }
 
-// Pop gets a message from the bus.
+// Pop (gst_bus_pop) gets a message from the bus.
 //
 // The function returns the following values:
 //
@@ -16040,11 +16711,11 @@ func (bus *Bus) Pop() *Message {
 	return _message
 }
 
-// PopFiltered gets a message matching type from the bus. Will discard all
-// messages on the bus that do not match type and that have been posted before
-// the first message that does match type. If there is no message matching type
-// on the bus, all messages will be discarded. It is not possible to use message
-// enums beyond T_MESSAGE_EXTENDED in the events mask.
+// PopFiltered (gst_bus_pop_filtered) gets a message matching type from the bus.
+// Will discard all messages on the bus that do not match type and that have
+// been posted before the first message that does match type. If there is no
+// message matching type on the bus, all messages will be discarded. It is not
+// possible to use message enums beyond T_MESSAGE_EXTENDED in the events mask.
 //
 // The function takes the following parameters:
 //
@@ -16080,8 +16751,8 @@ func (bus *Bus) PopFiltered(types MessageType) *Message {
 	return _message
 }
 
-// Post posts a message on the given bus. Ownership of the message is taken by
-// the bus.
+// Post (gst_bus_post) posts a message on the given bus. Ownership of the
+// message is taken by the bus.
 //
 // The function takes the following parameters:
 //
@@ -16112,8 +16783,8 @@ func (bus *Bus) Post(message *Message) bool {
 	return _ok
 }
 
-// RemoveSignalWatch removes a signal watch previously added with
-// gst_bus_add_signal_watch().
+// RemoveSignalWatch (gst_bus_remove_signal_watch) removes a signal watch
+// previously added with gst_bus_add_signal_watch().
 func (bus *Bus) RemoveSignalWatch() {
 	var _arg0 *C.GstBus // out
 
@@ -16123,7 +16794,7 @@ func (bus *Bus) RemoveSignalWatch() {
 	runtime.KeepAlive(bus)
 }
 
-// RemoveWatch removes an installed bus watch from bus.
+// RemoveWatch (gst_bus_remove_watch) removes an installed bus watch from bus.
 //
 // The function returns the following values:
 //
@@ -16146,9 +16817,10 @@ func (bus *Bus) RemoveWatch() bool {
 	return _ok
 }
 
-// SetFlushing: if flushing, flushes out and unrefs any messages queued in the
-// bus. Releases references to the message origin objects. Will flush future
-// messages until gst_bus_set_flushing() sets flushing to FALSE.
+// SetFlushing (gst_bus_set_flushing): if flushing, flushes out and unrefs
+// any messages queued in the bus. Releases references to the message origin
+// objects. Will flush future messages until gst_bus_set_flushing() sets
+// flushing to FALSE.
 //
 // The function takes the following parameters:
 //
@@ -16167,12 +16839,12 @@ func (bus *Bus) SetFlushing(flushing bool) {
 	runtime.KeepAlive(flushing)
 }
 
-// SetSyncHandler sets the synchronous handler on the bus. The function will
-// be called every time a new message is posted on the bus. Note that the
-// function will be called in the same thread context as the posting object.
-// This function is usually only called by the creator of the bus. Applications
-// should handle messages asynchronously using the gst_bus watch and poll
-// functions.
+// SetSyncHandler (gst_bus_set_sync_handler) sets the synchronous handler on the
+// bus. The function will be called every time a new message is posted on the
+// bus. Note that the function will be called in the same thread context as the
+// posting object. This function is usually only called by the creator of the
+// bus. Applications should handle messages asynchronously using the gst_bus
+// watch and poll functions.
 //
 // Before 1.16.3 it was not possible to replace an existing handler and clearing
 // an existing handler with NULL was not thread-safe.
@@ -16198,8 +16870,8 @@ func (bus *Bus) SetSyncHandler(fn BusSyncHandler) {
 	runtime.KeepAlive(fn)
 }
 
-// SyncSignalHandler: helper BusSyncHandler that can be used to convert all
-// synchronous messages into signals.
+// SyncSignalHandler (gst_bus_sync_signal_handler): helper BusSyncHandler that
+// can be used to convert all synchronous messages into signals.
 //
 // The function takes the following parameters:
 //
@@ -16231,7 +16903,8 @@ func (bus *Bus) SyncSignalHandler(message *Message, data unsafe.Pointer) BusSync
 	return _busSyncReply
 }
 
-// TimedPop gets a message from the bus, waiting up to the specified timeout.
+// TimedPop (gst_bus_timed_pop) gets a message from the bus, waiting up to the
+// specified timeout.
 //
 // If timeout is 0, this function behaves like gst_bus_pop(). If timeout is
 // T_CLOCK_TIME_NONE, this function will block forever until a message was
@@ -16271,9 +16944,9 @@ func (bus *Bus) TimedPop(timeout ClockTime) *Message {
 	return _message
 }
 
-// TimedPopFiltered gets a message from the bus whose type matches the message
-// type mask types, waiting up to the specified timeout (and discarding any
-// messages that do not match the mask provided).
+// TimedPopFiltered (gst_bus_timed_pop_filtered) gets a message from the bus
+// whose type matches the message type mask types, waiting up to the specified
+// timeout (and discarding any messages that do not match the mask provided).
 //
 // If timeout is 0, this function behaves like gst_bus_pop_filtered().
 // If timeout is T_CLOCK_TIME_NONE, this function will block forever until a
@@ -16430,8 +17103,8 @@ func defaultClockOverrides(v *Clock) ClockOverrides {
 	}
 }
 
-// Clock: GStreamer uses a global clock to synchronize the plugins in a
-// pipeline. Different clock implementations are possible by implementing this
+// Clock (GstClock): GStreamer uses a global clock to synchronize the plugins in
+// a pipeline. Different clock implementations are possible by implementing this
 // abstract base class or, more conveniently, by subclassing SystemClock.
 //
 // The Clock returns a monotonically increasing time with the method
@@ -16511,12 +17184,94 @@ var (
 	_ GstObjector = (*Clock)(nil)
 )
 
-// Clocker describes types inherited from class Clock.
+// Clocker describes types inherited from Clock.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type Clocker interface {
-	coreglib.Objector
+	GstObjector
+
+	// AddObservation (gst_clock_add_observation): time master of the master
+	// clock and the time slave of the slave clock are added to the list of
+	// observations.
+	AddObservation(slave, master ClockTime) (float64, bool)
+	// AddObservationUnapplied (gst_clock_add_observation_unapplied):
+	// add a clock observation to the internal slaving algorithm the same as
+	// gst_clock_add_observation(), and return the result of the master clock
+	// estimation, without updating the internal calibration.
+	AddObservationUnapplied(slave, master ClockTime) (rSquared float64, internal, external, rateNum, rateDenom ClockTime, ok bool)
+	// AdjustUnlocked (gst_clock_adjust_unlocked) converts the given internal
+	// clock time to the external time, adjusting for the rate and reference
+	// time set with gst_clock_set_calibration() and making sure that the
+	// returned time is increasing.
+	AdjustUnlocked(internal ClockTime) ClockTime
+	// AdjustWithCalibration (gst_clock_adjust_with_calibration) converts the
+	// given internal_target clock time to the external time, using the passed
+	// calibration parameters.
+	AdjustWithCalibration(internalTarget, cinternal, cexternal, cnum, cdenom ClockTime) ClockTime
+	// Calibration (gst_clock_get_calibration) gets the internal rate and
+	// reference time of clock.
+	Calibration() (internal, external, rateNum, rateDenom ClockTime)
+	// InternalTime (gst_clock_get_internal_time) gets the current internal time
+	// of the given clock.
+	InternalTime() ClockTime
+	// Master (gst_clock_get_master) gets the master clock that clock is slaved
+	// to or NULL when the clock is not slaved to any master clock.
+	Master() Clocker
+	// Resolution (gst_clock_get_resolution) gets the accuracy of the clock.
+	Resolution() ClockTime
+	// Time (gst_clock_get_time) gets the current time of the given clock.
+	Time() ClockTime
+	// Timeout (gst_clock_get_timeout) gets the amount of time that master and
+	// slave clocks are sampled.
+	Timeout() ClockTime
+	// IsSynced (gst_clock_is_synced) checks if the clock is currently synced,
+	// by looking at whether GST_CLOCK_FLAG_NEEDS_STARTUP_SYNC is set.
+	IsSynced() bool
+	// NewPeriodicID (gst_clock_new_periodic_id) gets an ID from clock to
+	// trigger a periodic notification.
+	NewPeriodicID(startTime, interval ClockTime) ClockID
+	// NewSingleShotID (gst_clock_new_single_shot_id) gets a ClockID from clock
+	// to trigger a single shot notification at the requested time.
+	NewSingleShotID(time ClockTime) ClockID
+	// PeriodicIDReinit (gst_clock_periodic_id_reinit) reinitializes the
+	// provided periodic id to the provided start time and interval.
+	PeriodicIDReinit(id ClockID, startTime, interval ClockTime) bool
+	// SetCalibration (gst_clock_set_calibration) adjusts the rate and time of
+	// clock.
+	SetCalibration(internal, external, rateNum, rateDenom ClockTime)
+	// SetMaster (gst_clock_set_master) sets master as the master clock for
+	// clock.
+	SetMaster(master Clocker) bool
+	// SetResolution (gst_clock_set_resolution) sets the accuracy of the clock.
+	SetResolution(resolution ClockTime) ClockTime
+	// SetSynced (gst_clock_set_synced) sets clock to synced and emits
+	// the Clock::synced signal, and wakes up any thread waiting in
+	// gst_clock_wait_for_sync().
+	SetSynced(synced bool)
+	// SetTimeout (gst_clock_set_timeout) sets the amount of time, in
+	// nanoseconds, to sample master and slave clocks.
+	SetTimeout(timeout ClockTime)
+	// SingleShotIDReinit (gst_clock_single_shot_id_reinit) reinitializes the
+	// provided single shot id to the provided time.
+	SingleShotIDReinit(id ClockID, time ClockTime) bool
+	// UnadjustUnlocked (gst_clock_unadjust_unlocked) converts the given
+	// external clock time to the internal time of clock, using the rate and
+	// reference time set with gst_clock_set_calibration().
+	UnadjustUnlocked(external ClockTime) ClockTime
+	// UnadjustWithCalibration (gst_clock_unadjust_with_calibration) converts
+	// the given external_target clock time to the internal time, using the
+	// passed calibration parameters.
+	UnadjustWithCalibration(externalTarget, cinternal, cexternal, cnum, cdenom ClockTime) ClockTime
+	// WaitForSync (gst_clock_wait_for_sync) waits until clock is synced for
+	// reporting the current time.
+	WaitForSync(timeout ClockTime) bool
+
+	// Synced: signaled on clocks with GST_CLOCK_FLAG_NEEDS_STARTUP_SYNC
+	// set once the clock is synchronized, or when it completely lost
+	// synchronization.
+	ConnectSynced(func(synced bool)) coreglib.SignalHandle
+
 	baseClock() *Clock
 }
 
@@ -16597,10 +17352,10 @@ func (clock *Clock) ConnectSynced(f func(synced bool)) coreglib.SignalHandle {
 	return coreglib.ConnectGeneratedClosure(clock, "synced", false, unsafe.Pointer(C._gotk4_gst1_Clock_ConnectSynced), f)
 }
 
-// AddObservation: time master of the master clock and the time slave of the
-// slave clock are added to the list of observations. If enough observations are
-// available, a linear regression algorithm is run on the observations and clock
-// is recalibrated.
+// AddObservation (gst_clock_add_observation): time master of the master clock
+// and the time slave of the slave clock are added to the list of observations.
+// If enough observations are available, a linear regression algorithm is run on
+// the observations and clock is recalibrated.
 //
 // If this functions returns TRUE, r_squared will contain the correlation
 // coefficient of the interpolation. A value of 1.0 means a perfect regression
@@ -16644,9 +17399,10 @@ func (clock *Clock) AddObservation(slave, master ClockTime) (float64, bool) {
 	return _rSquared, _ok
 }
 
-// AddObservationUnapplied: add a clock observation to the internal slaving
-// algorithm the same as gst_clock_add_observation(), and return the result of
-// the master clock estimation, without updating the internal calibration.
+// AddObservationUnapplied (gst_clock_add_observation_unapplied):
+// add a clock observation to the internal slaving algorithm the same as
+// gst_clock_add_observation(), and return the result of the master clock
+// estimation, without updating the internal calibration.
 //
 // The caller can then take the results and call gst_clock_set_calibration()
 // with the values, or some modified version of them.
@@ -16704,9 +17460,9 @@ func (clock *Clock) AddObservationUnapplied(slave, master ClockTime) (rSquared f
 	return _rSquared, _internal, _external, _rateNum, _rateDenom, _ok
 }
 
-// AdjustUnlocked converts the given internal clock time to the
-// external time, adjusting for the rate and reference time set with
-// gst_clock_set_calibration() and making sure that the returned time is
+// AdjustUnlocked (gst_clock_adjust_unlocked) converts the given internal clock
+// time to the external time, adjusting for the rate and reference time set
+// with gst_clock_set_calibration() and making sure that the returned time is
 // increasing. This function should be called with the clock's OBJECT_LOCK held
 // and is mainly used by clock subclasses.
 //
@@ -16738,11 +17494,12 @@ func (clock *Clock) AdjustUnlocked(internal ClockTime) ClockTime {
 	return _clockTime
 }
 
-// AdjustWithCalibration converts the given internal_target clock time to
-// the external time, using the passed calibration parameters. This function
-// performs the same calculation as gst_clock_adjust_unlocked() when called
-// using the current calibration parameters, but doesn't ensure a monotonically
-// increasing result as gst_clock_adjust_unlocked() does.
+// AdjustWithCalibration (gst_clock_adjust_with_calibration) converts the
+// given internal_target clock time to the external time, using the passed
+// calibration parameters. This function performs the same calculation as
+// gst_clock_adjust_unlocked() when called using the current calibration
+// parameters, but doesn't ensure a monotonically increasing result as
+// gst_clock_adjust_unlocked() does.
 //
 // Note: The clock parameter is unused and can be NULL.
 //
@@ -16790,8 +17547,8 @@ func (clock *Clock) AdjustWithCalibration(internalTarget, cinternal, cexternal, 
 	return _clockTime
 }
 
-// Calibration gets the internal rate and reference time of clock. See
-// gst_clock_set_calibration() for more information.
+// Calibration (gst_clock_get_calibration) gets the internal rate and reference
+// time of clock. See gst_clock_set_calibration() for more information.
 //
 // internal, external, rate_num, and rate_denom can be left NULL if the caller
 // is not interested in the values.
@@ -16827,8 +17584,8 @@ func (clock *Clock) Calibration() (internal, external, rateNum, rateDenom ClockT
 	return _internal, _external, _rateNum, _rateDenom
 }
 
-// InternalTime gets the current internal time of the given clock. The time is
-// returned unadjusted for the offset and the rate.
+// InternalTime (gst_clock_get_internal_time) gets the current internal time of
+// the given clock. The time is returned unadjusted for the offset and the rate.
 //
 // The function returns the following values:
 //
@@ -16850,8 +17607,8 @@ func (clock *Clock) InternalTime() ClockTime {
 	return _clockTime
 }
 
-// Master gets the master clock that clock is slaved to or NULL when the clock
-// is not slaved to any master clock.
+// Master (gst_clock_get_master) gets the master clock that clock is slaved to
+// or NULL when the clock is not slaved to any master clock.
 //
 // The function returns the following values:
 //
@@ -16888,8 +17645,9 @@ func (clock *Clock) Master() Clocker {
 	return _ret
 }
 
-// Resolution gets the accuracy of the clock. The accuracy of the clock is the
-// granularity of the values returned by gst_clock_get_time().
+// Resolution (gst_clock_get_resolution) gets the accuracy of the clock.
+// The accuracy of the clock is the granularity of the values returned by
+// gst_clock_get_time().
 //
 // The function returns the following values:
 //
@@ -16910,9 +17668,9 @@ func (clock *Clock) Resolution() ClockTime {
 	return _clockTime
 }
 
-// Time gets the current time of the given clock. The time is always
-// monotonically increasing and adjusted according to the current offset and
-// rate.
+// Time (gst_clock_get_time) gets the current time of the given clock. The time
+// is always monotonically increasing and adjusted according to the current
+// offset and rate.
 //
 // The function returns the following values:
 //
@@ -16934,7 +17692,8 @@ func (clock *Clock) Time() ClockTime {
 	return _clockTime
 }
 
-// Timeout gets the amount of time that master and slave clocks are sampled.
+// Timeout (gst_clock_get_timeout) gets the amount of time that master and slave
+// clocks are sampled.
 //
 // The function returns the following values:
 //
@@ -16955,8 +17714,8 @@ func (clock *Clock) Timeout() ClockTime {
 	return _clockTime
 }
 
-// IsSynced checks if the clock is currently synced, by looking at whether
-// GST_CLOCK_FLAG_NEEDS_STARTUP_SYNC is set.
+// IsSynced (gst_clock_is_synced) checks if the clock is currently synced,
+// by looking at whether GST_CLOCK_FLAG_NEEDS_STARTUP_SYNC is set.
 //
 // The function returns the following values:
 //
@@ -16979,9 +17738,9 @@ func (clock *Clock) IsSynced() bool {
 	return _ok
 }
 
-// NewPeriodicID gets an ID from clock to trigger a periodic notification.
-// The periodic notifications will start at time start_time and will then be
-// fired with the given interval.
+// NewPeriodicID (gst_clock_new_periodic_id) gets an ID from clock to trigger
+// a periodic notification. The periodic notifications will start at time
+// start_time and will then be fired with the given interval.
 //
 // The function takes the following parameters:
 //
@@ -17013,8 +17772,8 @@ func (clock *Clock) NewPeriodicID(startTime, interval ClockTime) ClockID {
 	return _clockID
 }
 
-// NewSingleShotID gets a ClockID from clock to trigger a single shot
-// notification at the requested time.
+// NewSingleShotID (gst_clock_new_single_shot_id) gets a ClockID from clock to
+// trigger a single shot notification at the requested time.
 //
 // The function takes the following parameters:
 //
@@ -17042,8 +17801,9 @@ func (clock *Clock) NewSingleShotID(time ClockTime) ClockID {
 	return _clockID
 }
 
-// PeriodicIDReinit reinitializes the provided periodic id to the provided start
-// time and interval. Does not modify the reference count.
+// PeriodicIDReinit (gst_clock_periodic_id_reinit) reinitializes the provided
+// periodic id to the provided start time and interval. Does not modify the
+// reference count.
 //
 // The function takes the following parameters:
 //
@@ -17082,8 +17842,9 @@ func (clock *Clock) PeriodicIDReinit(id ClockID, startTime, interval ClockTime) 
 	return _ok
 }
 
-// SetCalibration adjusts the rate and time of clock. A rate of 1/1 is the
-// normal speed of the clock. Values bigger than 1/1 make the clock go faster.
+// SetCalibration (gst_clock_set_calibration) adjusts the rate and time of
+// clock. A rate of 1/1 is the normal speed of the clock. Values bigger than 1/1
+// make the clock go faster.
 //
 // internal and external are calibration parameters that arrange that
 // gst_clock_get_time() should have been external at internal time internal.
@@ -17130,9 +17891,9 @@ func (clock *Clock) SetCalibration(internal, external, rateNum, rateDenom ClockT
 	runtime.KeepAlive(rateDenom)
 }
 
-// SetMaster sets master as the master clock for clock. clock will be
-// automatically calibrated so that gst_clock_get_time() reports the same time
-// as the master clock.
+// SetMaster (gst_clock_set_master) sets master as the master clock for clock.
+// clock will be automatically calibrated so that gst_clock_get_time() reports
+// the same time as the master clock.
 //
 // A clock provider that slaves its clock to a master can get the current
 // calibration values with gst_clock_get_calibration().
@@ -17173,11 +17934,11 @@ func (clock *Clock) SetMaster(master Clocker) bool {
 	return _ok
 }
 
-// SetResolution sets the accuracy of the clock. Some clocks have the
-// possibility to operate with different accuracy at the expense of more
-// resource usage. There is normally no need to change the default resolution of
-// a clock. The resolution of a clock can only be changed if the clock has the
-// T_CLOCK_FLAG_CAN_SET_RESOLUTION flag set.
+// SetResolution (gst_clock_set_resolution) sets the accuracy of the clock.
+// Some clocks have the possibility to operate with different accuracy at the
+// expense of more resource usage. There is normally no need to change the
+// default resolution of a clock. The resolution of a clock can only be changed
+// if the clock has the T_CLOCK_FLAG_CAN_SET_RESOLUTION flag set.
 //
 // The function takes the following parameters:
 //
@@ -17205,8 +17966,9 @@ func (clock *Clock) SetResolution(resolution ClockTime) ClockTime {
 	return _clockTime
 }
 
-// SetSynced sets clock to synced and emits the Clock::synced signal, and wakes
-// up any thread waiting in gst_clock_wait_for_sync().
+// SetSynced (gst_clock_set_synced) sets clock to synced and emits
+// the Clock::synced signal, and wakes up any thread waiting in
+// gst_clock_wait_for_sync().
 //
 // This function must only be called if GST_CLOCK_FLAG_NEEDS_STARTUP_SYNC is set
 // on the clock, and is intended to be called by subclasses only.
@@ -17228,8 +17990,8 @@ func (clock *Clock) SetSynced(synced bool) {
 	runtime.KeepAlive(synced)
 }
 
-// SetTimeout sets the amount of time, in nanoseconds, to sample master and
-// slave clocks.
+// SetTimeout (gst_clock_set_timeout) sets the amount of time, in nanoseconds,
+// to sample master and slave clocks.
 //
 // The function takes the following parameters:
 //
@@ -17246,8 +18008,9 @@ func (clock *Clock) SetTimeout(timeout ClockTime) {
 	runtime.KeepAlive(timeout)
 }
 
-// SingleShotIDReinit reinitializes the provided single shot id to the provided
-// time. Does not modify the reference count.
+// SingleShotIDReinit (gst_clock_single_shot_id_reinit) reinitializes the
+// provided single shot id to the provided time. Does not modify the reference
+// count.
 //
 // The function takes the following parameters:
 //
@@ -17282,10 +18045,10 @@ func (clock *Clock) SingleShotIDReinit(id ClockID, time ClockTime) bool {
 	return _ok
 }
 
-// UnadjustUnlocked converts the given external clock time to the
-// internal time of clock, using the rate and reference time set with
-// gst_clock_set_calibration(). This function should be called with the clock's
-// OBJECT_LOCK held and is mainly used by clock subclasses.
+// UnadjustUnlocked (gst_clock_unadjust_unlocked) converts the given external
+// clock time to the internal time of clock, using the rate and reference time
+// set with gst_clock_set_calibration(). This function should be called with the
+// clock's OBJECT_LOCK held and is mainly used by clock subclasses.
 //
 // This function is the reverse of gst_clock_adjust_unlocked().
 //
@@ -17315,10 +18078,11 @@ func (clock *Clock) UnadjustUnlocked(external ClockTime) ClockTime {
 	return _clockTime
 }
 
-// UnadjustWithCalibration converts the given external_target clock time to
-// the internal time, using the passed calibration parameters. This function
-// performs the same calculation as gst_clock_unadjust_unlocked() when called
-// using the current calibration parameters.
+// UnadjustWithCalibration (gst_clock_unadjust_with_calibration) converts the
+// given external_target clock time to the internal time, using the passed
+// calibration parameters. This function performs the same calculation as
+// gst_clock_unadjust_unlocked() when called using the current calibration
+// parameters.
 //
 // Note: The clock parameter is unused and can be NULL.
 //
@@ -17366,9 +18130,9 @@ func (clock *Clock) UnadjustWithCalibration(externalTarget, cinternal, cexternal
 	return _clockTime
 }
 
-// WaitForSync waits until clock is synced for reporting the current time.
-// If timeout is GST_CLOCK_TIME_NONE it will wait forever, otherwise it will
-// time out after timeout nanoseconds.
+// WaitForSync (gst_clock_wait_for_sync) waits until clock is synced for
+// reporting the current time. If timeout is GST_CLOCK_TIME_NONE it will wait
+// forever, otherwise it will time out after timeout nanoseconds.
 //
 // For asynchronous waiting, the Clock::synced signal can be used.
 //
@@ -17579,8 +18343,8 @@ func (clock *Clock) waitAsync(entry *ClockEntry) ClockReturn {
 	return _clockReturn
 }
 
-// ClockIDCompareFunc compares the two ClockID instances. This function can be
-// used as a GCompareFunc when sorting ids.
+// ClockIDCompareFunc (gst_clock_id_compare_func) compares the two ClockID
+// instances. This function can be used as a GCompareFunc when sorting ids.
 //
 // The function takes the following parameters:
 //
@@ -17609,7 +18373,8 @@ func ClockIDCompareFunc(id1, id2 unsafe.Pointer) int {
 	return _gint
 }
 
-// ClockIDGetClock: this function returns the underlying clock.
+// ClockIDGetClock (gst_clock_id_get_clock): this function returns the
+// underlying clock.
 //
 // The function takes the following parameters:
 //
@@ -17649,7 +18414,7 @@ func ClockIDGetClock(id ClockID) Clocker {
 	return _clock
 }
 
-// ClockIDGetTime gets the time of the clock ID.
+// ClockIDGetTime (gst_clock_id_get_time) gets the time of the clock ID.
 //
 // The function takes the following parameters:
 //
@@ -17674,10 +18439,10 @@ func ClockIDGetTime(id ClockID) ClockTime {
 	return _clockTime
 }
 
-// ClockIDUnschedule cancels an outstanding request with id. This can either
-// be an outstanding async notification or a pending sync notification. After
-// this call, id cannot be used anymore to receive sync or async notifications,
-// you need to create a new ClockID.
+// ClockIDUnschedule (gst_clock_id_unschedule) cancels an outstanding request
+// with id. This can either be an outstanding async notification or a pending
+// sync notification. After this call, id cannot be used anymore to receive sync
+// or async notifications, you need to create a new ClockID.
 //
 // The function takes the following parameters:
 //
@@ -17691,10 +18456,10 @@ func ClockIDUnschedule(id ClockID) {
 	runtime.KeepAlive(id)
 }
 
-// ClockIDUsesClock: this function returns whether id uses clock as the
-// underlying clock. clock can be NULL, in which case the return value indicates
-// whether the underlying clock has been freed. If this is the case, the id is
-// no longer usable and should be freed.
+// ClockIDUsesClock (gst_clock_id_uses_clock): this function returns whether
+// id uses clock as the underlying clock. clock can be NULL, in which case the
+// return value indicates whether the underlying clock has been freed. If this
+// is the case, the id is no longer usable and should be freed.
 //
 // The function takes the following parameters:
 //
@@ -17725,9 +18490,10 @@ func ClockIDUsesClock(id ClockID, clock Clocker) bool {
 	return _ok
 }
 
-// ClockIDWait performs a blocking wait on id. id should have been created with
-// gst_clock_new_single_shot_id() or gst_clock_new_periodic_id() and should not
-// have been unscheduled with a call to gst_clock_id_unschedule().
+// ClockIDWait (gst_clock_id_wait) performs a blocking wait on id.
+// id should have been created with gst_clock_new_single_shot_id() or
+// gst_clock_new_periodic_id() and should not have been unscheduled with a call
+// to gst_clock_id_unschedule().
 //
 // If the jitter argument is not NULL and this function returns T_CLOCK_OK
 // or T_CLOCK_EARLY, it will contain the difference against the clock and
@@ -17766,11 +18532,11 @@ func ClockIDWait(id ClockID) (ClockTimeDiff, ClockReturn) {
 	return _jitter, _clockReturn
 }
 
-// ClockIDWaitAsync registers a callback on the given ClockID id with the
-// given function and user_data. When passing a ClockID with an invalid time
-// to this function, the callback will be called immediately with a time set to
-// GST_CLOCK_TIME_NONE. The callback will be called when the time of id has been
-// reached.
+// ClockIDWaitAsync (gst_clock_id_wait_async) registers a callback on the given
+// ClockID id with the given function and user_data. When passing a ClockID with
+// an invalid time to this function, the callback will be called immediately
+// with a time set to GST_CLOCK_TIME_NONE. The callback will be called when the
+// time of id has been reached.
 //
 // The callback func can be invoked from any thread, either provided by the core
 // or from a streaming thread. The application should be prepared for this.
@@ -17864,10 +18630,10 @@ func defaultControlBindingOverrides(v *ControlBinding) ControlBindingOverrides {
 	}
 }
 
-// ControlBinding: base class for value mapping objects that attaches control
-// sources to #GObject properties. Such an object is taking one or more
-// ControlSource instances, combines them and maps the resulting value to the
-// type and value range of the bound property.
+// ControlBinding (GstControlBinding): base class for value mapping objects that
+// attaches control sources to #GObject properties. Such an object is taking one
+// or more ControlSource instances, combines them and maps the resulting value
+// to the type and value range of the bound property.
 type ControlBinding struct {
 	_ [0]func() // equal guard
 	GstObject
@@ -17877,12 +18643,20 @@ var (
 	_ GstObjector = (*ControlBinding)(nil)
 )
 
-// ControlBindinger describes types inherited from class ControlBinding.
+// ControlBindinger describes types inherited from ControlBinding.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type ControlBindinger interface {
-	coreglib.Objector
+	GstObjector
+
+	// IsDisabled (gst_control_binding_is_disabled) checks if the control
+	// binding is disabled.
+	IsDisabled() bool
+	// SetDisabled (gst_control_binding_set_disabled): this function is used to
+	// disable a control binding for some time, i.e.
+	SetDisabled(disabled bool)
+
 	baseControlBinding() *ControlBinding
 }
 
@@ -17941,93 +18715,8 @@ func BaseControlBinding(obj ControlBindinger) *ControlBinding {
 	return obj.baseControlBinding()
 }
 
-// GValueArray gets a number of #GValues for the given controlled property
-// starting at the requested time. The array values need to hold enough space
-// for n_values of #GValue.
-//
-// This function is useful if one wants to e.g. draw a graph of the control
-// curve or apply a control curve sample by sample.
-//
-// The function takes the following parameters:
-//
-//   - timestamp: time that should be processed.
-//   - interval: time spacing between subsequent values.
-//   - values: array to put control-values in.
-//
-// The function returns the following values:
-//
-//   - ok: TRUE if the given array could be filled, FALSE otherwise.
-func (binding *ControlBinding) GValueArray(timestamp, interval ClockTime, values []coreglib.Value) bool {
-	var _arg0 *C.GstControlBinding // out
-	var _arg1 C.GstClockTime       // out
-	var _arg2 C.GstClockTime       // out
-	var _arg4 *C.GValue            // out
-	var _arg3 C.guint
-	var _cret C.gboolean // in
-
-	_arg0 = (*C.GstControlBinding)(unsafe.Pointer(coreglib.BaseObject(binding).Native()))
-	_arg1 = C.GstClockTime(timestamp)
-	_arg2 = C.GstClockTime(interval)
-	_arg3 = (C.guint)(len(values))
-	_arg4 = (*C.GValue)(C.calloc(C.size_t(len(values)), C.size_t(C.sizeof_GValue)))
-	defer C.free(unsafe.Pointer(_arg4))
-	{
-		out := unsafe.Slice((*C.GValue)(_arg4), len(values))
-		for i := range values {
-			out[i] = *(*C.GValue)(unsafe.Pointer((&values[i]).Native()))
-		}
-	}
-
-	_cret = C.gst_control_binding_get_g_value_array(_arg0, _arg1, _arg2, _arg3, _arg4)
-	runtime.KeepAlive(binding)
-	runtime.KeepAlive(timestamp)
-	runtime.KeepAlive(interval)
-	runtime.KeepAlive(values)
-
-	var _ok bool // out
-
-	if _cret != 0 {
-		_ok = true
-	}
-
-	return _ok
-}
-
-// Value gets the value for the given controlled property at the requested time.
-//
-// The function takes the following parameters:
-//
-//   - timestamp: time the control-change should be read from.
-//
-// The function returns the following values:
-//
-//   - value (optional): GValue of the property at the given time, or NULL if
-//     the property isn't controlled.
-func (binding *ControlBinding) Value(timestamp ClockTime) *coreglib.Value {
-	var _arg0 *C.GstControlBinding // out
-	var _arg1 C.GstClockTime       // out
-	var _cret *C.GValue            // in
-
-	_arg0 = (*C.GstControlBinding)(unsafe.Pointer(coreglib.BaseObject(binding).Native()))
-	_arg1 = C.GstClockTime(timestamp)
-
-	_cret = C.gst_control_binding_get_value(_arg0, _arg1)
-	runtime.KeepAlive(binding)
-	runtime.KeepAlive(timestamp)
-
-	var _value *coreglib.Value // out
-
-	if _cret != nil {
-		_value = coreglib.ValueFromNative(unsafe.Pointer(_cret))
-		runtime.SetFinalizer(_value, func(v *coreglib.Value) {
-			C.g_value_unset((*C.GValue)(unsafe.Pointer(v.Native())))
-		})
-	}
-
-	return _value
-}
-
-// IsDisabled checks if the control binding is disabled.
+// IsDisabled (gst_control_binding_is_disabled) checks if the control binding is
+// disabled.
 //
 // The function returns the following values:
 //
@@ -18050,8 +18739,9 @@ func (binding *ControlBinding) IsDisabled() bool {
 	return _ok
 }
 
-// SetDisabled: this function is used to disable a control binding for some
-// time, i.e. gst_object_sync_values() will do nothing.
+// SetDisabled (gst_control_binding_set_disabled): this function is used to
+// disable a control binding for some time, i.e. gst_object_sync_values() will
+// do nothing.
 //
 // The function takes the following parameters:
 //
@@ -18069,49 +18759,6 @@ func (binding *ControlBinding) SetDisabled(disabled bool) {
 	C.gst_control_binding_set_disabled(_arg0, _arg1)
 	runtime.KeepAlive(binding)
 	runtime.KeepAlive(disabled)
-}
-
-// SyncValues sets the property of the object, according to the ControlSources
-// that handles it and for the given timestamp.
-//
-// If this function fails, it is most likely the application developers fault.
-// Most probably the control sources are not setup correctly.
-//
-// The function takes the following parameters:
-//
-//   - object that has controlled properties.
-//   - timestamp: time that should be processed.
-//   - lastSync: last time this was called.
-//
-// The function returns the following values:
-//
-//   - ok: TRUE if the controller value could be applied to the object property,
-//     FALSE otherwise.
-func (binding *ControlBinding) SyncValues(object GstObjector, timestamp, lastSync ClockTime) bool {
-	var _arg0 *C.GstControlBinding // out
-	var _arg1 *C.GstObject         // out
-	var _arg2 C.GstClockTime       // out
-	var _arg3 C.GstClockTime       // out
-	var _cret C.gboolean           // in
-
-	_arg0 = (*C.GstControlBinding)(unsafe.Pointer(coreglib.BaseObject(binding).Native()))
-	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(object).Native()))
-	_arg2 = C.GstClockTime(timestamp)
-	_arg3 = C.GstClockTime(lastSync)
-
-	_cret = C.gst_control_binding_sync_values(_arg0, _arg1, _arg2, _arg3)
-	runtime.KeepAlive(binding)
-	runtime.KeepAlive(object)
-	runtime.KeepAlive(timestamp)
-	runtime.KeepAlive(lastSync)
-
-	var _ok bool // out
-
-	if _cret != 0 {
-		_ok = true
-	}
-
-	return _ok
 }
 
 // gValueArray gets a number of #GValues for the given controlled property
@@ -18260,9 +18907,9 @@ func defaultControlSourceOverrides(v *ControlSource) ControlSourceOverrides {
 	return ControlSourceOverrides{}
 }
 
-// ControlSource is a base class for control value sources that could be used
-// to get timestamp-value pairs. A control source essentially is a function over
-// time.
+// ControlSource (GstControlSource) is a base class for control value sources
+// that could be used to get timestamp-value pairs. A control source essentially
+// is a function over time.
 //
 // A ControlSource is used by first getting an instance of a specific
 // control-source, creating a binding for the control-source to the target
@@ -18283,12 +18930,20 @@ var (
 	_ GstObjector = (*ControlSource)(nil)
 )
 
-// ControlSourcer describes types inherited from class ControlSource.
+// ControlSourcer describes types inherited from ControlSource.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type ControlSourcer interface {
-	coreglib.Objector
+	GstObjector
+
+	// ControlSourceGetValue (gst_control_source_get_value) gets the value for
+	// this ControlSource at a given timestamp.
+	ControlSourceGetValue(timestamp ClockTime) (float64, bool)
+	// ControlSourceGetValueArray (gst_control_source_get_value_array) gets an
+	// array of values for for this ControlSource.
+	ControlSourceGetValueArray(timestamp, interval ClockTime, values []float64) bool
+
 	baseControlSource() *ControlSource
 }
 
@@ -18333,8 +18988,8 @@ func BaseControlSource(obj ControlSourcer) *ControlSource {
 	return obj.baseControlSource()
 }
 
-// ControlSourceGetValue gets the value for this ControlSource at a given
-// timestamp.
+// ControlSourceGetValue (gst_control_source_get_value) gets the value for this
+// ControlSource at a given timestamp.
 //
 // The function takes the following parameters:
 //
@@ -18368,8 +19023,8 @@ func (self *ControlSource) ControlSourceGetValue(timestamp ClockTime) (float64, 
 	return _value, _ok
 }
 
-// ControlSourceGetValueArray gets an array of values for for this
-// ControlSource. Values that are undefined contain NANs.
+// ControlSourceGetValueArray (gst_control_source_get_value_array) gets an array
+// of values for for this ControlSource. Values that are undefined contain NANs.
 //
 // The function takes the following parameters:
 //
@@ -18450,9 +19105,9 @@ func defaultDeviceOverrides(v *Device) DeviceOverrides {
 	}
 }
 
-// Device are objects representing a device, they contain relevant metadata
-// about the device, such as its class and the Caps representing the media types
-// it can produce or handle.
+// Device (GstDevice) are objects representing a device, they contain relevant
+// metadata about the device, such as its class and the Caps representing the
+// media types it can produce or handle.
 //
 // Device are created by DeviceProvider objects which can be aggregated by
 // DeviceMonitor objects.
@@ -18465,12 +19120,39 @@ var (
 	_ GstObjector = (*Device)(nil)
 )
 
-// Devicer describes types inherited from class Device.
+// Devicer describes types inherited from Device.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type Devicer interface {
-	coreglib.Objector
+	GstObjector
+
+	// CreateElement (gst_device_create_element) creates the element with all of
+	// the required parameters set to use this device.
+	CreateElement(name string) Elementer
+	// Caps (gst_device_get_caps): getter for the Caps that this device
+	// supports.
+	Caps() *Caps
+	// DeviceClass (gst_device_get_device_class) gets the "class" of a device.
+	DeviceClass() string
+	// DisplayName (gst_device_get_display_name) gets the user-friendly name of
+	// the device.
+	DisplayName() string
+	// Properties (gst_device_get_properties) gets the extra properties of a
+	// device.
+	Properties() *Structure
+	// HasClasses (gst_device_has_classes): check if device matches all of the
+	// given classes.
+	HasClasses(classes string) bool
+	// HasClassesv (gst_device_has_classesv): check if factory matches all of
+	// the given classes.
+	HasClassesv(classes []string) bool
+	// ReconfigureElement (gst_device_reconfigure_element) tries to reconfigure
+	// an existing element to use the device.
+	ReconfigureElement(element Elementer) bool
+
+	ConnectRemoved(func()) coreglib.SignalHandle
+
 	baseDevice() *Device
 }
 
@@ -18529,8 +19211,8 @@ func (device *Device) ConnectRemoved(f func()) coreglib.SignalHandle {
 	return coreglib.ConnectGeneratedClosure(device, "removed", false, unsafe.Pointer(C._gotk4_gst1_Device_ConnectRemoved), f)
 }
 
-// CreateElement creates the element with all of the required parameters set to
-// use this device.
+// CreateElement (gst_device_create_element) creates the element with all of the
+// required parameters set to use this device.
 //
 // The function takes the following parameters:
 //
@@ -18577,7 +19259,7 @@ func (device *Device) CreateElement(name string) Elementer {
 	return _element
 }
 
-// Caps: getter for the Caps that this device supports.
+// Caps (gst_device_get_caps): getter for the Caps that this device supports.
 //
 // The function returns the following values:
 //
@@ -18606,9 +19288,9 @@ func (device *Device) Caps() *Caps {
 	return _caps
 }
 
-// DeviceClass gets the "class" of a device. This is a "/" separated list of
-// classes that represent this device. They are a subset of the classes of the
-// DeviceProvider that produced this device.
+// DeviceClass (gst_device_get_device_class) gets the "class" of a device.
+// This is a "/" separated list of classes that represent this device. They are
+// a subset of the classes of the DeviceProvider that produced this device.
 //
 // The function returns the following values:
 //
@@ -18630,7 +19312,8 @@ func (device *Device) DeviceClass() string {
 	return _utf8
 }
 
-// DisplayName gets the user-friendly name of the device.
+// DisplayName (gst_device_get_display_name) gets the user-friendly name of the
+// device.
 //
 // The function returns the following values:
 //
@@ -18652,7 +19335,7 @@ func (device *Device) DisplayName() string {
 	return _utf8
 }
 
-// Properties gets the extra properties of a device.
+// Properties (gst_device_get_properties) gets the extra properties of a device.
 //
 // The function returns the following values:
 //
@@ -18681,7 +19364,8 @@ func (device *Device) Properties() *Structure {
 	return _structure
 }
 
-// HasClasses: check if device matches all of the given classes.
+// HasClasses (gst_device_has_classes): check if device matches all of the given
+// classes.
 //
 // The function takes the following parameters:
 //
@@ -18713,7 +19397,8 @@ func (device *Device) HasClasses(classes string) bool {
 	return _ok
 }
 
-// HasClassesv: check if factory matches all of the given classes.
+// HasClassesv (gst_device_has_classesv): check if factory matches all of the
+// given classes.
 //
 // The function takes the following parameters:
 //
@@ -18756,9 +19441,9 @@ func (device *Device) HasClassesv(classes []string) bool {
 	return _ok
 }
 
-// ReconfigureElement tries to reconfigure an existing element to use the
-// device. If this function fails, then one must destroy the element and create
-// a new one using gst_device_create_element().
+// ReconfigureElement (gst_device_reconfigure_element) tries to reconfigure an
+// existing element to use the device. If this function fails, then one must
+// destroy the element and create a new one using gst_device_create_element().
 //
 // Note: This should only be implemented for elements can change their device in
 // the PLAYING state.
@@ -18890,10 +19575,11 @@ func defaultDeviceMonitorOverrides(v *DeviceMonitor) DeviceMonitorOverrides {
 	return DeviceMonitorOverrides{}
 }
 
-// DeviceMonitor applications should create a DeviceMonitor when they want to
-// probe, list and monitor devices of a specific type. The DeviceMonitor will
-// create the appropriate DeviceProvider objects and manage them. It will then
-// post messages on its Bus for devices that have been added and removed.
+// DeviceMonitor (GstDeviceMonitor) applications should create a DeviceMonitor
+// when they want to probe, list and monitor devices of a specific type. The
+// DeviceMonitor will create the appropriate DeviceProvider objects and manage
+// them. It will then post messages on its Bus for devices that have been added
+// and removed.
 //
 // The device monitor will monitor all devices matching the filters that the
 // application has set.
@@ -18957,6 +19643,48 @@ var (
 	_ GstObjector = (*DeviceMonitor)(nil)
 )
 
+// DeviceMonitorrer describes types inherited from DeviceMonitor.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type DeviceMonitorrer interface {
+	GstObjector
+
+	// AddFilter (gst_device_monitor_add_filter) adds a filter for which Device
+	// will be monitored, any device that matches all these classes and the Caps
+	// will be returned.
+	AddFilter(classes string, caps *Caps) uint
+	// Bus (gst_device_monitor_get_bus) gets the Bus of this DeviceMonitor.
+	Bus() *Bus
+	// Devices (gst_device_monitor_get_devices) gets a list of devices from all
+	// of the relevant monitors.
+	Devices() []Devicer
+	// Providers (gst_device_monitor_get_providers): get a list of the currently
+	// selected device provider factories.
+	Providers() []string
+	// ShowAllDevices (gst_device_monitor_get_show_all_devices): get if monitor
+	// is currently showing all devices, even those from hidden providers.
+	ShowAllDevices() bool
+	// RemoveFilter (gst_device_monitor_remove_filter) removes a
+	// filter from the DeviceMonitor using the id that was returned by
+	// gst_device_monitor_add_filter().
+	RemoveFilter(filterId uint) bool
+	// SetShowAllDevices (gst_device_monitor_set_show_all_devices): set if all
+	// devices should be visible, even those devices from hidden providers.
+	SetShowAllDevices(showAll bool)
+	// Start (gst_device_monitor_start) starts monitoring the devices,
+	// one this has succeeded, the GST_MESSAGE_DEVICE_ADDED and
+	// GST_MESSAGE_DEVICE_REMOVED messages will be emitted on the bus when the
+	// list of devices changes.
+	Start() bool
+	// Stop (gst_device_monitor_stop) stops monitoring the devices.
+	Stop()
+
+	baseDeviceMonitor() *DeviceMonitor
+}
+
+var _ DeviceMonitorrer = (*DeviceMonitor)(nil)
+
 func init() {
 	coreglib.RegisterClassInfo[*DeviceMonitor, *DeviceMonitorClass, DeviceMonitorOverrides](
 		GTypeDeviceMonitor,
@@ -18987,7 +19715,16 @@ func marshalDeviceMonitor(p uintptr) (interface{}, error) {
 	return wrapDeviceMonitor(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// NewDeviceMonitor: create a new DeviceMonitor.
+func (monitor *DeviceMonitor) baseDeviceMonitor() *DeviceMonitor {
+	return monitor
+}
+
+// BaseDeviceMonitor returns the underlying base object.
+func BaseDeviceMonitor(obj DeviceMonitorrer) *DeviceMonitor {
+	return obj.baseDeviceMonitor()
+}
+
+// NewDeviceMonitor (gst_device_monitor_new): create a new DeviceMonitor.
 //
 // The function returns the following values:
 //
@@ -19004,8 +19741,9 @@ func NewDeviceMonitor() *DeviceMonitor {
 	return _deviceMonitor
 }
 
-// AddFilter adds a filter for which Device will be monitored, any device that
-// matches all these classes and the Caps will be returned.
+// AddFilter (gst_device_monitor_add_filter) adds a filter for which Device will
+// be monitored, any device that matches all these classes and the Caps will be
+// returned.
 //
 // If this function is called multiple times to add more filters, each will be
 // matched independently. That is, adding more filters will not further restrict
@@ -19053,7 +19791,7 @@ func (monitor *DeviceMonitor) AddFilter(classes string, caps *Caps) uint {
 	return _guint
 }
 
-// Bus gets the Bus of this DeviceMonitor.
+// Bus (gst_device_monitor_get_bus) gets the Bus of this DeviceMonitor.
 //
 // The function returns the following values:
 //
@@ -19074,8 +19812,9 @@ func (monitor *DeviceMonitor) Bus() *Bus {
 	return _bus
 }
 
-// Devices gets a list of devices from all of the relevant monitors. This may
-// actually probe the hardware if the monitor is not currently started.
+// Devices (gst_device_monitor_get_devices) gets a list of devices from all of
+// the relevant monitors. This may actually probe the hardware if the monitor is
+// not currently started.
 //
 // The function returns the following values:
 //
@@ -19120,7 +19859,8 @@ func (monitor *DeviceMonitor) Devices() []Devicer {
 	return _list
 }
 
-// Providers: get a list of the currently selected device provider factories.
+// Providers (gst_device_monitor_get_providers): get a list of the currently
+// selected device provider factories.
 //
 // This.
 //
@@ -19158,8 +19898,8 @@ func (monitor *DeviceMonitor) Providers() []string {
 	return _utf8s
 }
 
-// ShowAllDevices: get if monitor is currently showing all devices, even those
-// from hidden providers.
+// ShowAllDevices (gst_device_monitor_get_show_all_devices): get if monitor is
+// currently showing all devices, even those from hidden providers.
 //
 // The function returns the following values:
 //
@@ -19182,8 +19922,9 @@ func (monitor *DeviceMonitor) ShowAllDevices() bool {
 	return _ok
 }
 
-// RemoveFilter removes a filter from the DeviceMonitor using the id that was
-// returned by gst_device_monitor_add_filter().
+// RemoveFilter (gst_device_monitor_remove_filter) removes a
+// filter from the DeviceMonitor using the id that was returned by
+// gst_device_monitor_add_filter().
 //
 // The function takes the following parameters:
 //
@@ -19213,9 +19954,9 @@ func (monitor *DeviceMonitor) RemoveFilter(filterId uint) bool {
 	return _ok
 }
 
-// SetShowAllDevices: set if all devices should be visible, even those devices
-// from hidden providers. Setting show_all to true might show some devices
-// multiple times.
+// SetShowAllDevices (gst_device_monitor_set_show_all_devices): set if all
+// devices should be visible, even those devices from hidden providers. Setting
+// show_all to true might show some devices multiple times.
 //
 // The function takes the following parameters:
 //
@@ -19234,9 +19975,9 @@ func (monitor *DeviceMonitor) SetShowAllDevices(showAll bool) {
 	runtime.KeepAlive(showAll)
 }
 
-// Start starts monitoring the devices, one this has succeeded, the
-// GST_MESSAGE_DEVICE_ADDED and GST_MESSAGE_DEVICE_REMOVED messages will be
-// emitted on the bus when the list of devices changes.
+// Start (gst_device_monitor_start) starts monitoring the devices, one this
+// has succeeded, the GST_MESSAGE_DEVICE_ADDED and GST_MESSAGE_DEVICE_REMOVED
+// messages will be emitted on the bus when the list of devices changes.
 //
 // The function returns the following values:
 //
@@ -19260,7 +20001,7 @@ func (monitor *DeviceMonitor) Start() bool {
 	return _ok
 }
 
-// Stop stops monitoring the devices.
+// Stop (gst_device_monitor_stop) stops monitoring the devices.
 func (monitor *DeviceMonitor) Stop() {
 	var _arg0 *C.GstDeviceMonitor // out
 
@@ -19301,9 +20042,9 @@ func defaultDeviceProviderOverrides(v *DeviceProvider) DeviceProviderOverrides {
 	}
 }
 
-// DeviceProvider subclass is provided by a plugin that handles devices if there
-// is a way to programmatically list connected devices. It can also optionally
-// provide updates to the list of connected devices.
+// DeviceProvider (GstDeviceProvider) subclass is provided by a plugin that
+// handles devices if there is a way to programmatically list connected devices.
+// It can also optionally provide updates to the list of connected devices.
 //
 // Each DeviceProvider subclass is a singleton, a plugin should normally provide
 // a single subclass for all devices.
@@ -19319,12 +20060,55 @@ var (
 	_ GstObjector = (*DeviceProvider)(nil)
 )
 
-// DeviceProviderer describes types inherited from class DeviceProvider.
+// DeviceProviderer describes types inherited from DeviceProvider.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type DeviceProviderer interface {
-	coreglib.Objector
+	GstObjector
+
+	CanMonitor() bool
+	// DeviceAdd (gst_device_provider_device_add) posts a message on the
+	// provider's Bus to inform applications that a new device has been added.
+	DeviceAdd(device Devicer)
+	// DeviceChanged (gst_device_provider_device_changed): this function is used
+	// when changed_device was modified into its new form device.
+	DeviceChanged(device, changedDevice Devicer)
+	// DeviceRemove (gst_device_provider_device_remove) posts a message on the
+	// provider's Bus to inform applications that a device has been removed.
+	DeviceRemove(device Devicer)
+	// Bus (gst_device_provider_get_bus) gets the Bus of this DeviceProvider.
+	Bus() *Bus
+	// Devices (gst_device_provider_get_devices) gets a list of devices that
+	// this provider understands.
+	Devices() []Devicer
+	// Factory (gst_device_provider_get_factory) retrieves the factory that was
+	// used to create this device provider.
+	Factory() *DeviceProviderFactory
+	// HiddenProviders (gst_device_provider_get_hidden_providers): get the
+	// provider factory names of the DeviceProvider instances that are hidden by
+	// provider.
+	HiddenProviders() []string
+	// Metadata (gst_device_provider_get_metadata): get metadata with key in
+	// provider.
+	Metadata(key string) string
+	// HideProvider (gst_device_provider_hide_provider): make provider hide the
+	// devices from the factory with name.
+	HideProvider(name string)
+	// IsStarted (gst_device_provider_is_started): this function can be used to
+	// know if the provider was successfully started.
+	IsStarted() bool
+	// Start (gst_device_provider_start) starts providering the devices.
+	Start() bool
+	// Stop (gst_device_provider_stop) decreases the use-count by one.
+	Stop()
+	// UnhideProvider (gst_device_provider_unhide_provider): make provider
+	// unhide the devices from factory name.
+	UnhideProvider(name string)
+
+	ConnectProviderHidden(func(object string)) coreglib.SignalHandle
+	ConnectProviderUnhidden(func(object string)) coreglib.SignalHandle
+
 	baseDeviceProvider() *DeviceProvider
 }
 
@@ -19405,8 +20189,8 @@ func (provider *DeviceProvider) CanMonitor() bool {
 	return _ok
 }
 
-// DeviceAdd posts a message on the provider's Bus to inform applications that a
-// new device has been added.
+// DeviceAdd (gst_device_provider_device_add) posts a message on the provider's
+// Bus to inform applications that a new device has been added.
 //
 // This is for use by subclasses.
 //
@@ -19428,11 +20212,11 @@ func (provider *DeviceProvider) DeviceAdd(device Devicer) {
 	runtime.KeepAlive(device)
 }
 
-// DeviceChanged: this function is used when changed_device was modified into
-// its new form device. This will post a DEVICE_CHANGED message on the bus to
-// let the application know that the device was modified. Device is immutable
-// for MT. safety purposes so this is an "atomic" way of letting the application
-// know when a device was modified.
+// DeviceChanged (gst_device_provider_device_changed): this function is used
+// when changed_device was modified into its new form device. This will post a
+// DEVICE_CHANGED message on the bus to let the application know that the device
+// was modified. Device is immutable for MT. safety purposes so this is an
+// "atomic" way of letting the application know when a device was modified.
 //
 // The function takes the following parameters:
 //
@@ -19453,8 +20237,8 @@ func (provider *DeviceProvider) DeviceChanged(device, changedDevice Devicer) {
 	runtime.KeepAlive(changedDevice)
 }
 
-// DeviceRemove posts a message on the provider's Bus to inform applications
-// that a device has been removed.
+// DeviceRemove (gst_device_provider_device_remove) posts a message on the
+// provider's Bus to inform applications that a device has been removed.
 //
 // This is for use by subclasses.
 //
@@ -19473,7 +20257,7 @@ func (provider *DeviceProvider) DeviceRemove(device Devicer) {
 	runtime.KeepAlive(device)
 }
 
-// Bus gets the Bus of this DeviceProvider.
+// Bus (gst_device_provider_get_bus) gets the Bus of this DeviceProvider.
 //
 // The function returns the following values:
 //
@@ -19494,8 +20278,9 @@ func (provider *DeviceProvider) Bus() *Bus {
 	return _bus
 }
 
-// Devices gets a list of devices that this provider understands. This may
-// actually probe the hardware if the provider is not currently started.
+// Devices (gst_device_provider_get_devices) gets a list of devices that this
+// provider understands. This may actually probe the hardware if the provider is
+// not currently started.
 //
 // If the provider has been started, this will returned the same Device objedcts
 // that have been returned by the T_MESSAGE_DEVICE_ADDED messages.
@@ -19541,7 +20326,8 @@ func (provider *DeviceProvider) Devices() []Devicer {
 	return _list
 }
 
-// Factory retrieves the factory that was used to create this device provider.
+// Factory (gst_device_provider_get_factory) retrieves the factory that was used
+// to create this device provider.
 //
 // The function returns the following values:
 //
@@ -19565,8 +20351,8 @@ func (provider *DeviceProvider) Factory() *DeviceProviderFactory {
 	return _deviceProviderFactory
 }
 
-// HiddenProviders: get the provider factory names of the DeviceProvider
-// instances that are hidden by provider.
+// HiddenProviders (gst_device_provider_get_hidden_providers): get the provider
+// factory names of the DeviceProvider instances that are hidden by provider.
 //
 // The function returns the following values:
 //
@@ -19602,7 +20388,8 @@ func (provider *DeviceProvider) HiddenProviders() []string {
 	return _utf8s
 }
 
-// Metadata: get metadata with key in provider.
+// Metadata (gst_device_provider_get_metadata): get metadata with key in
+// provider.
 //
 // The function takes the following parameters:
 //
@@ -19631,7 +20418,8 @@ func (provider *DeviceProvider) Metadata(key string) string {
 	return _utf8
 }
 
-// HideProvider: make provider hide the devices from the factory with name.
+// HideProvider (gst_device_provider_hide_provider): make provider hide the
+// devices from the factory with name.
 //
 // This function is used when provider will also provide the devices reported by
 // provider factory name. A monitor should stop monitoring the device provider
@@ -19653,8 +20441,8 @@ func (provider *DeviceProvider) HideProvider(name string) {
 	runtime.KeepAlive(name)
 }
 
-// IsStarted: this function can be used to know if the provider was successfully
-// started.
+// IsStarted (gst_device_provider_is_started): this function can be used to know
+// if the provider was successfully started.
 func (provider *DeviceProvider) IsStarted() bool {
 	var _arg0 *C.GstDeviceProvider // out
 	var _cret C.gboolean           // in
@@ -19673,9 +20461,10 @@ func (provider *DeviceProvider) IsStarted() bool {
 	return _ok
 }
 
-// Start starts providering the devices. This will cause T_MESSAGE_DEVICE_ADDED
-// and T_MESSAGE_DEVICE_REMOVED messages to be posted on the provider's bus when
-// devices are added or removed from the system.
+// Start (gst_device_provider_start) starts providering the devices. This will
+// cause T_MESSAGE_DEVICE_ADDED and T_MESSAGE_DEVICE_REMOVED messages to be
+// posted on the provider's bus when devices are added or removed from the
+// system.
 //
 // Since the DeviceProvider is a singleton, gst_device_provider_start()
 // may already have been called by another user of the object,
@@ -19706,9 +20495,10 @@ func (provider *DeviceProvider) Start() bool {
 	return _ok
 }
 
-// Stop decreases the use-count by one. If the use count reaches zero, this
-// DeviceProvider will stop providering the devices. This needs to be called the
-// same number of times that gst_device_provider_start() was called.
+// Stop (gst_device_provider_stop) decreases the use-count by one.
+// If the use count reaches zero, this DeviceProvider will stop providering
+// the devices. This needs to be called the same number of times that
+// gst_device_provider_start() was called.
 func (provider *DeviceProvider) Stop() {
 	var _arg0 *C.GstDeviceProvider // out
 
@@ -19718,7 +20508,8 @@ func (provider *DeviceProvider) Stop() {
 	runtime.KeepAlive(provider)
 }
 
-// UnhideProvider: make provider unhide the devices from factory name.
+// UnhideProvider (gst_device_provider_unhide_provider): make provider unhide
+// the devices from factory name.
 //
 // This function is used when provider will no longer provide the devices
 // reported by provider factory name. A monitor should start monitoring the
@@ -19791,8 +20582,9 @@ func (provider *DeviceProvider) stop() {
 	runtime.KeepAlive(provider)
 }
 
-// DeviceProviderRegister: create a new device providerfactory capable of
-// instantiating objects of the type and add the factory to plugin.
+// DeviceProviderRegister (gst_device_provider_register): create a new device
+// providerfactory capable of instantiating objects of the type and add the
+// factory to plugin.
 //
 // The function takes the following parameters:
 //
@@ -19836,9 +20628,9 @@ func DeviceProviderRegister(plugin *Plugin, name string, rank uint, typ coreglib
 	return _ok
 }
 
-// DeviceProviderFactory is used to create instances of device providers.
-// A GstDeviceProviderfactory can be added to a Plugin as it is also a
-// PluginFeature.
+// DeviceProviderFactory (GstDeviceProviderFactory) is used to create instances
+// of device providers. A GstDeviceProviderfactory can be added to a Plugin as
+// it is also a PluginFeature.
 //
 // Use the gst_device_provider_factory_find() and
 // gst_device_provider_factory_get() functions to create device provider
@@ -19852,6 +20644,38 @@ type DeviceProviderFactory struct {
 var (
 	_ PluginFeaturer = (*DeviceProviderFactory)(nil)
 )
+
+// DeviceProviderFactorier describes types inherited from DeviceProviderFactory.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type DeviceProviderFactorier interface {
+	PluginFeaturer
+
+	// Get (gst_device_provider_factory_get) returns the device provider of the
+	// type defined by the given device providerfactory.
+	Get() DeviceProviderer
+	// DeviceProviderType
+	// (gst_device_provider_factory_get_device_provider_type): get the #GType
+	// for device providers managed by this factory.
+	DeviceProviderType() coreglib.Type
+	// Metadata (gst_device_provider_factory_get_metadata): get the metadata on
+	// factory with key.
+	Metadata(key string) string
+	// MetadataKeys (gst_device_provider_factory_get_metadata_keys): get the
+	// available keys for the metadata on factory.
+	MetadataKeys() []string
+	// HasClasses (gst_device_provider_factory_has_classes): check if factory
+	// matches all of the given classes.
+	HasClasses(classes string) bool
+	// HasClassesv (gst_device_provider_factory_has_classesv): check if factory
+	// matches all of the given classes.
+	HasClassesv(classes []string) bool
+
+	baseDeviceProviderFactory() *DeviceProviderFactory
+}
+
+var _ DeviceProviderFactorier = (*DeviceProviderFactory)(nil)
 
 func wrapDeviceProviderFactory(obj *coreglib.Object) *DeviceProviderFactory {
 	return &DeviceProviderFactory{
@@ -19869,8 +20693,17 @@ func marshalDeviceProviderFactory(p uintptr) (interface{}, error) {
 	return wrapDeviceProviderFactory(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// Get returns the device provider of the type defined by the given device
-// providerfactory.
+func (factory *DeviceProviderFactory) baseDeviceProviderFactory() *DeviceProviderFactory {
+	return factory
+}
+
+// BaseDeviceProviderFactory returns the underlying base object.
+func BaseDeviceProviderFactory(obj DeviceProviderFactorier) *DeviceProviderFactory {
+	return obj.baseDeviceProviderFactory()
+}
+
+// Get (gst_device_provider_factory_get) returns the device provider of the type
+// defined by the given device providerfactory.
 //
 // The function returns the following values:
 //
@@ -19907,9 +20740,10 @@ func (factory *DeviceProviderFactory) Get() DeviceProviderer {
 	return _deviceProvider
 }
 
-// DeviceProviderType: get the #GType for device providers managed by this
-// factory. The type can only be retrieved if the device provider factory is
-// loaded, which can be assured with gst_plugin_feature_load().
+// DeviceProviderType (gst_device_provider_factory_get_device_provider_type):
+// get the #GType for device providers managed by this factory. The type can
+// only be retrieved if the device provider factory is loaded, which can be
+// assured with gst_plugin_feature_load().
 //
 // The function returns the following values:
 //
@@ -19930,7 +20764,8 @@ func (factory *DeviceProviderFactory) DeviceProviderType() coreglib.Type {
 	return _gType
 }
 
-// Metadata: get the metadata on factory with key.
+// Metadata (gst_device_provider_factory_get_metadata): get the metadata on
+// factory with key.
 //
 // The function takes the following parameters:
 //
@@ -19962,7 +20797,8 @@ func (factory *DeviceProviderFactory) Metadata(key string) string {
 	return _utf8
 }
 
-// MetadataKeys: get the available keys for the metadata on factory.
+// MetadataKeys (gst_device_provider_factory_get_metadata_keys): get the
+// available keys for the metadata on factory.
 //
 // The function returns the following values:
 //
@@ -20000,7 +20836,8 @@ func (factory *DeviceProviderFactory) MetadataKeys() []string {
 	return _utf8s
 }
 
-// HasClasses: check if factory matches all of the given classes.
+// HasClasses (gst_device_provider_factory_has_classes): check if factory
+// matches all of the given classes.
 //
 // The function takes the following parameters:
 //
@@ -20034,7 +20871,8 @@ func (factory *DeviceProviderFactory) HasClasses(classes string) bool {
 	return _ok
 }
 
-// HasClassesv: check if factory matches all of the given classes.
+// HasClassesv (gst_device_provider_factory_has_classesv): check if factory
+// matches all of the given classes.
 //
 // The function takes the following parameters:
 //
@@ -20077,9 +20915,9 @@ func (factory *DeviceProviderFactory) HasClassesv(classes []string) bool {
 	return _ok
 }
 
-// DeviceProviderFactoryFind: search for an device provider factory of the given
-// name. Refs the returned device provider factory; caller is responsible for
-// unreffing.
+// DeviceProviderFactoryFind (gst_device_provider_factory_find): search for an
+// device provider factory of the given name. Refs the returned device provider
+// factory; caller is responsible for unreffing.
 //
 // The function takes the following parameters:
 //
@@ -20107,8 +20945,9 @@ func DeviceProviderFactoryFind(name string) *DeviceProviderFactory {
 	return _deviceProviderFactory
 }
 
-// DeviceProviderFactoryGetByName returns the device provider of the type
-// defined by the given device provider factory.
+// DeviceProviderFactoryGetByName (gst_device_provider_factory_get_by_name)
+// returns the device provider of the type defined by the given device provider
+// factory.
 //
 // The function takes the following parameters:
 //
@@ -20149,9 +20988,10 @@ func DeviceProviderFactoryGetByName(factoryname string) DeviceProviderer {
 	return _deviceProvider
 }
 
-// DeviceProviderFactoryListGetDeviceProviders: get a list of factories with
-// a rank greater or equal to minrank. The list of factories is returned by
-// decreasing rank.
+// DeviceProviderFactoryListGetDeviceProviders
+// (gst_device_provider_factory_list_get_device_providers): get a list of
+// factories with a rank greater or equal to minrank. The list of factories is
+// returned by decreasing rank.
 //
 // The function takes the following parameters:
 //
@@ -20183,7 +21023,8 @@ func DeviceProviderFactoryListGetDeviceProviders(minrank Rank) []*DeviceProvider
 	return _list
 }
 
-// DoubleRange: fundamental type that describes a #gdouble range.
+// DoubleRange (GstDoubleRange): fundamental type that describes a #gdouble
+// range.
 type DoubleRange struct {
 	_ [0]func() // equal guard
 	*coreglib.Object
@@ -20192,6 +21033,18 @@ type DoubleRange struct {
 var (
 	_ coreglib.Objector = (*DoubleRange)(nil)
 )
+
+// DoubleRanger describes types inherited from DoubleRange.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type DoubleRanger interface {
+	coreglib.Objector
+
+	baseDoubleRange() *DoubleRange
+}
+
+var _ DoubleRanger = (*DoubleRange)(nil)
 
 func wrapDoubleRange(obj *coreglib.Object) *DoubleRange {
 	return &DoubleRange{
@@ -20203,9 +21056,18 @@ func marshalDoubleRange(p uintptr) (interface{}, error) {
 	return wrapDoubleRange(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// DynamicTypeFactory is used to represent a type that can be automatically
-// loaded the first time it is used. For example, a non-standard type for use in
-// caps fields.
+func (v *DoubleRange) baseDoubleRange() *DoubleRange {
+	return v
+}
+
+// BaseDoubleRange returns the underlying base object.
+func BaseDoubleRange(obj DoubleRanger) *DoubleRange {
+	return obj.baseDoubleRange()
+}
+
+// DynamicTypeFactory (GstDynamicTypeFactory) is used to represent a type
+// that can be automatically loaded the first time it is used. For example,
+// a non-standard type for use in caps fields.
 //
 // In general, applications and plugins don't need to use the factory beyond
 // registering the type in a plugin init function. Once that is done, the type
@@ -20227,6 +21089,18 @@ var (
 	_ PluginFeaturer = (*DynamicTypeFactory)(nil)
 )
 
+// DynamicTypeFactorier describes types inherited from DynamicTypeFactory.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type DynamicTypeFactorier interface {
+	PluginFeaturer
+
+	baseDynamicTypeFactory() *DynamicTypeFactory
+}
+
+var _ DynamicTypeFactorier = (*DynamicTypeFactory)(nil)
+
 func wrapDynamicTypeFactory(obj *coreglib.Object) *DynamicTypeFactory {
 	return &DynamicTypeFactory{
 		PluginFeature: PluginFeature{
@@ -20241,6 +21115,15 @@ func wrapDynamicTypeFactory(obj *coreglib.Object) *DynamicTypeFactory {
 
 func marshalDynamicTypeFactory(p uintptr) (interface{}, error) {
 	return wrapDynamicTypeFactory(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
+}
+
+func (v *DynamicTypeFactory) baseDynamicTypeFactory() *DynamicTypeFactory {
+	return v
+}
+
+// BaseDynamicTypeFactory returns the underlying base object.
+func BaseDynamicTypeFactory(obj DynamicTypeFactorier) *DynamicTypeFactory {
+	return obj.baseDynamicTypeFactory()
 }
 
 func DynamicTypeFactoryLoad(factoryname string) coreglib.Type {
@@ -20480,9 +21363,9 @@ func defaultElementOverrides(v *Element) ElementOverrides {
 	}
 }
 
-// Element is the abstract base class needed to construct an element that can
-// be used in a GStreamer pipeline. Please refer to the plugin writers guide for
-// more information on creating Element subclasses.
+// Element (GstElement) is the abstract base class needed to construct an
+// element that can be used in a GStreamer pipeline. Please refer to the plugin
+// writers guide for more information on creating Element subclasses.
 //
 // The name of a Element can be get with gst_element_get_name() and set with
 // gst_element_set_name(). For speed, GST_ELEMENT_NAME() can be used in the
@@ -20533,12 +21416,207 @@ var (
 	_ GstObjector = (*Element)(nil)
 )
 
-// Elementer describes types inherited from class Element.
+// Elementer describes types inherited from Element.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type Elementer interface {
-	coreglib.Objector
+	GstObjector
+
+	// AbortState (gst_element_abort_state): abort the state change of the
+	// element.
+	AbortState()
+	// AddPad (gst_element_add_pad) adds a pad (link point) to element.
+	AddPad(pad *Pad) bool
+	AddPropertyDeepNotifyWatch(propertyName string, includeValue bool) uint32
+	AddPropertyNotifyWatch(propertyName string, includeValue bool) uint32
+	// CallAsync (gst_element_call_async) calls func from another thread and
+	// passes user_data to it.
+	CallAsync(fn ElementCallAsyncFunc)
+	// ChangeState (gst_element_change_state): perform transition on element.
+	ChangeState(transition StateChange) StateChangeReturn
+	// ContinueState (gst_element_continue_state): commit the state change of
+	// the element and proceed to the next pending state if any.
+	ContinueState(ret StateChangeReturn) StateChangeReturn
+	// CreateAllPads (gst_element_create_all_pads) creates a pad for each pad
+	// template that is always available.
+	CreateAllPads()
+	// DecorateStreamID (gst_element_decorate_stream_id) creates a stream-id for
+	// element by combining the upstream information with the stream_id.
+	DecorateStreamID(streamId string) string
+	// ForEachPad (gst_element_foreach_pad): call func with user_data for each
+	// of element's pads.
+	ForEachPad(fn ElementForEachPadFunc) bool
+	// ForEachSinkPad (gst_element_foreach_sink_pad): call func with user_data
+	// for each of element's sink pads.
+	ForEachSinkPad(fn ElementForEachPadFunc) bool
+	// ForEachSrcPad (gst_element_foreach_src_pad): call func with user_data for
+	// each of element's source pads.
+	ForEachSrcPad(fn ElementForEachPadFunc) bool
+	// BaseTime (gst_element_get_base_time) returns the base time of the
+	// element.
+	BaseTime() ClockTime
+	// Bus (gst_element_get_bus) returns the bus of the element.
+	Bus() *Bus
+	// Clock (gst_element_get_clock) gets the currently configured clock of the
+	// element.
+	Clock() Clocker
+	// CompatiblePad (gst_element_get_compatible_pad) looks for an unlinked pad
+	// to which the given pad can link.
+	CompatiblePad(pad *Pad, caps *Caps) *Pad
+	// CompatiblePadTemplate (gst_element_get_compatible_pad_template) retrieves
+	// a pad template from element that is compatible with compattempl.
+	CompatiblePadTemplate(compattempl *PadTemplate) *PadTemplate
+	// Context (gst_element_get_context) gets the context with context_type set
+	// on the element or NULL.
+	Context(contextType string) *Context
+	// ContextUnlocked (gst_element_get_context_unlocked) gets the context with
+	// context_type set on the element or NULL.
+	ContextUnlocked(contextType string) *Context
+	// Contexts (gst_element_get_contexts) gets the contexts set on the element.
+	Contexts() []*Context
+	// CurrentClockTime (gst_element_get_current_clock_time) returns the current
+	// clock time of the element, as in, the time of the element's clock,
+	// or GST_CLOCK_TIME_NONE if there is no clock.
+	CurrentClockTime() ClockTime
+	// CurrentRunningTime (gst_element_get_current_running_time) returns the
+	// running time of the element.
+	CurrentRunningTime() ClockTime
+	// Factory (gst_element_get_factory) retrieves the factory that was used to
+	// create this element.
+	Factory() *ElementFactory
+	// Metadata (gst_element_get_metadata): get metadata with key in klass.
+	Metadata(key string) string
+	// PadTemplate (gst_element_get_pad_template) retrieves a padtemplate from
+	// element with the given name.
+	PadTemplate(name string) *PadTemplate
+	// PadTemplateList (gst_element_get_pad_template_list) retrieves a list of
+	// the pad templates associated with element.
+	PadTemplateList() []*PadTemplate
+	// GetRequestPad (gst_element_get_request_pad): name of this function is
+	// confusing to people learning GStreamer.
+	GetRequestPad(name string) *Pad
+	// StartTime (gst_element_get_start_time) returns the start time of the
+	// element.
+	StartTime() ClockTime
+	// State (gst_element_get_state) gets the state of the element.
+	State(timeout ClockTime) (state, pending State, stateChangeReturn StateChangeReturn)
+	// StaticPad (gst_element_get_static_pad) retrieves a pad from element by
+	// name.
+	StaticPad(name string) *Pad
+	// IsLockedState (gst_element_is_locked_state) checks if the state of an
+	// element is locked.
+	IsLockedState() bool
+	// IteratePads (gst_element_iterate_pads) retrieves an iterator of element's
+	// pads.
+	IteratePads() *Iterator
+	// IterateSinkPads (gst_element_iterate_sink_pads) retrieves an iterator of
+	// element's sink pads.
+	IterateSinkPads() *Iterator
+	// IterateSrcPads (gst_element_iterate_src_pads) retrieves an iterator of
+	// element's source pads.
+	IterateSrcPads() *Iterator
+	// Link (gst_element_link) links src to dest.
+	Link(dest Elementer) bool
+	// LinkFiltered (gst_element_link_filtered) links src to dest using the
+	// given caps as filtercaps.
+	LinkFiltered(dest Elementer, filter *Caps) bool
+	// LinkPads (gst_element_link_pads) links the two named pads of the source
+	// and destination elements.
+	LinkPads(srcpadname string, dest Elementer, destpadname string) bool
+	// LinkPadsFiltered (gst_element_link_pads_filtered) links the two named
+	// pads of the source and destination elements.
+	LinkPadsFiltered(srcpadname string, dest Elementer, destpadname string, filter *Caps) bool
+	// LinkPadsFull (gst_element_link_pads_full) links the two named pads of the
+	// source and destination elements.
+	LinkPadsFull(srcpadname string, dest Elementer, destpadname string, flags PadLinkCheck) bool
+	// LostState (gst_element_lost_state) brings the element to the lost state.
+	LostState()
+	// MessageFull (gst_element_message_full): post an error, warning or info
+	// message on the bus from inside an element.
+	MessageFull(typ MessageType, domain glib.Quark, code int, text, debug, file, function string, line int)
+	// MessageFullWithDetails (gst_element_message_full_with_details): post an
+	// error, warning or info message on the bus from inside an element.
+	MessageFullWithDetails(typ MessageType, domain glib.Quark, code int, text, debug, file, function string, line int, structure *Structure)
+	// NoMorePads (gst_element_no_more_pads): use this function to signal that
+	// the element does not expect any more pads to show up in the current
+	// pipeline.
+	NoMorePads()
+	// PostMessage (gst_element_post_message): post a message on the element's
+	// Bus.
+	PostMessage(message *Message) bool
+	// ProvidedClock (gst_element_provide_clock): get the clock provided by the
+	// given element.
+	ProvidedClock() Clocker
+	// Query (gst_element_query) performs a query on the given element.
+	Query(query *Query) bool
+	// QueryConvert (gst_element_query_convert) queries an element to convert
+	// src_val in src_format to dest_format.
+	QueryConvert(srcFormat Format, srcVal int64, destFormat Format) (int64, bool)
+	// QueryDuration (gst_element_query_duration) queries an element (usually
+	// top-level pipeline or playbin element) for the total stream duration in
+	// nanoseconds.
+	QueryDuration(format Format) (int64, bool)
+	// QueryPosition (gst_element_query_position) queries an element (usually
+	// top-level pipeline or playbin element) for the stream position in
+	// nanoseconds.
+	QueryPosition(format Format) (int64, bool)
+	// ReleaseRequestPad (gst_element_release_request_pad) makes the
+	// element free the previously requested pad as obtained with
+	// gst_element_request_pad().
+	ReleaseRequestPad(pad *Pad)
+	// RemovePad (gst_element_remove_pad) removes pad from element.
+	RemovePad(pad *Pad) bool
+	RemovePropertyNotifyWatch(watchId uint32)
+	// RequestPad (gst_element_request_pad) retrieves a request pad from the
+	// element according to the provided template.
+	RequestPad(templ *PadTemplate, name string, caps *Caps) *Pad
+	// RequestPadSimple (gst_element_request_pad_simple) retrieves a pad from
+	// the element by name (e.g.
+	RequestPadSimple(name string) *Pad
+	// Seek (gst_element_seek) sends a seek event to an element.
+	Seek(rate float64, format Format, flags SeekFlags, startType SeekType, start int64, stopType SeekType, stop int64) bool
+	// SeekSimple (gst_element_seek_simple): simple API to perform a seek on the
+	// given element, meaning it just seeks to the given position relative to
+	// the start of the stream.
+	SeekSimple(format Format, seekFlags SeekFlags, seekPos int64) bool
+	// SendEvent (gst_element_send_event) sends an event to an element.
+	SendEvent(event *Event) bool
+	// SetBaseTime (gst_element_set_base_time): set the base time of an element.
+	SetBaseTime(time ClockTime)
+	// SetBus (gst_element_set_bus) sets the bus of the element.
+	SetBus(bus *Bus)
+	// SetClock (gst_element_set_clock) sets the clock for the element.
+	SetClock(clock Clocker) bool
+	// SetContext (gst_element_set_context) sets the context of the element.
+	SetContext(context *Context)
+	// SetLockedState (gst_element_set_locked_state) locks the state of an
+	// element, so state changes of the parent don't affect this element
+	// anymore.
+	SetLockedState(lockedState bool) bool
+	// SetStartTime (gst_element_set_start_time): set the start time of an
+	// element.
+	SetStartTime(time ClockTime)
+	// SetState (gst_element_set_state) sets the state of the element.
+	SetState(state State) StateChangeReturn
+	// SyncStateWithParent (gst_element_sync_state_with_parent) tries to change
+	// the state of the element to the same as its parent.
+	SyncStateWithParent() bool
+	// Unlink (gst_element_unlink) unlinks all source pads of the source element
+	// with all sink pads of the sink element to which they are linked.
+	Unlink(dest Elementer)
+	// UnlinkPads (gst_element_unlink_pads) unlinks the two named pads of the
+	// source and destination elements.
+	UnlinkPads(srcpadname string, dest Elementer, destpadname string)
+
+	// No-more-pads: this signals that the element will not generate more
+	// dynamic pads.
+	ConnectNoMorePads(func()) coreglib.SignalHandle
+	// Pad-added: new Pad has been added to the element.
+	ConnectPadAdded(func(newPad *Pad)) coreglib.SignalHandle
+	// Pad-removed has been removed from the element.
+	ConnectPadRemoved(func(oldPad *Pad)) coreglib.SignalHandle
+
 	baseElement() *Element
 }
 
@@ -20666,8 +21744,9 @@ func (element *Element) ConnectPadRemoved(f func(oldPad *Pad)) coreglib.SignalHa
 	return coreglib.ConnectGeneratedClosure(element, "pad-removed", false, unsafe.Pointer(C._gotk4_gst1_Element_ConnectPadRemoved), f)
 }
 
-// AbortState: abort the state change of the element. This function is used by
-// elements that do asynchronous state changes and find out something is wrong.
+// AbortState (gst_element_abort_state): abort the state change of the element.
+// This function is used by elements that do asynchronous state changes and find
+// out something is wrong.
 //
 // This function should be called with the STATE_LOCK held.
 //
@@ -20681,8 +21760,9 @@ func (element *Element) AbortState() {
 	runtime.KeepAlive(element)
 }
 
-// AddPad adds a pad (link point) to element. pad's parent will be set to
-// element; see gst_object_set_parent() for refcounting information.
+// AddPad (gst_element_add_pad) adds a pad (link point) to element. pad's
+// parent will be set to element; see gst_object_set_parent() for refcounting
+// information.
 //
 // Pads are automatically activated when added in the PAUSED or PLAYING state.
 //
@@ -20795,10 +21875,10 @@ func (element *Element) AddPropertyNotifyWatch(propertyName string, includeValue
 	return _gulong
 }
 
-// CallAsync calls func from another thread and passes user_data to it.
-// This is to be used for cases when a state change has to be performed from a
-// streaming thread, directly via gst_element_set_state() or indirectly e.g.
-// via SEEK events.
+// CallAsync (gst_element_call_async) calls func from another thread and passes
+// user_data to it. This is to be used for cases when a state change has to be
+// performed from a streaming thread, directly via gst_element_set_state() or
+// indirectly e.g. via SEEK events.
 //
 // Calling those functions directly from the streaming thread will cause
 // deadlocks in many situations, as they might involve waiting for the streaming
@@ -20825,7 +21905,7 @@ func (element *Element) CallAsync(fn ElementCallAsyncFunc) {
 	runtime.KeepAlive(fn)
 }
 
-// ChangeState: perform transition on element.
+// ChangeState (gst_element_change_state): perform transition on element.
 //
 // This function must be called with STATE_LOCK held and is mainly used
 // internally.
@@ -20856,10 +21936,11 @@ func (element *Element) ChangeState(transition StateChange) StateChangeReturn {
 	return _stateChangeReturn
 }
 
-// ContinueState: commit the state change of the element and proceed to the next
-// pending state if any. This function is used by elements that do asynchronous
-// state changes. The core will normally call this method automatically when an
-// element returned GST_STATE_CHANGE_SUCCESS from the state change function.
+// ContinueState (gst_element_continue_state): commit the state change of the
+// element and proceed to the next pending state if any. This function is used
+// by elements that do asynchronous state changes. The core will normally call
+// this method automatically when an element returned GST_STATE_CHANGE_SUCCESS
+// from the state change function.
 //
 // If after calling this method the element still has not reached the pending
 // state, the next state change is performed.
@@ -20897,9 +21978,9 @@ func (element *Element) ContinueState(ret StateChangeReturn) StateChangeReturn {
 	return _stateChangeReturn
 }
 
-// CreateAllPads creates a pad for each pad template that is always available.
-// This function is only useful during object initialization of subclasses of
-// Element.
+// CreateAllPads (gst_element_create_all_pads) creates a pad for each pad
+// template that is always available. This function is only useful during object
+// initialization of subclasses of Element.
 func (element *Element) CreateAllPads() {
 	var _arg0 *C.GstElement // out
 
@@ -20909,8 +21990,8 @@ func (element *Element) CreateAllPads() {
 	runtime.KeepAlive(element)
 }
 
-// DecorateStreamID creates a stream-id for element by combining the upstream
-// information with the stream_id.
+// DecorateStreamID (gst_element_decorate_stream_id) creates a stream-id for
+// element by combining the upstream information with the stream_id.
 //
 // This function generates an unique stream-id by getting the upstream
 // stream-start event stream ID and appending stream_id to it. If the element
@@ -20951,12 +22032,12 @@ func (element *Element) DecorateStreamID(streamId string) string {
 	return _utf8
 }
 
-// ForEachPad: call func with user_data for each of element's pads. func will
-// be called exactly once for each pad that exists at the time of this call,
-// unless one of the calls to func returns FALSE in which case we will stop
-// iterating pads and return early. If new pads are added or pads are removed
-// while pads are being iterated, this will not be taken into account until next
-// time this function is used.
+// ForEachPad (gst_element_foreach_pad): call func with user_data for each of
+// element's pads. func will be called exactly once for each pad that exists at
+// the time of this call, unless one of the calls to func returns FALSE in which
+// case we will stop iterating pads and return early. If new pads are added or
+// pads are removed while pads are being iterated, this will not be taken into
+// account until next time this function is used.
 //
 // The function takes the following parameters:
 //
@@ -20990,12 +22071,13 @@ func (element *Element) ForEachPad(fn ElementForEachPadFunc) bool {
 	return _ok
 }
 
-// ForEachSinkPad: call func with user_data for each of element's sink pads.
-// func will be called exactly once for each sink pad that exists at the time
-// of this call, unless one of the calls to func returns FALSE in which case we
-// will stop iterating pads and return early. If new sink pads are added or sink
-// pads are removed while the sink pads are being iterated, this will not be
-// taken into account until next time this function is used.
+// ForEachSinkPad (gst_element_foreach_sink_pad): call func with user_data for
+// each of element's sink pads. func will be called exactly once for each sink
+// pad that exists at the time of this call, unless one of the calls to func
+// returns FALSE in which case we will stop iterating pads and return early.
+// If new sink pads are added or sink pads are removed while the sink pads are
+// being iterated, this will not be taken into account until next time this
+// function is used.
 //
 // The function takes the following parameters:
 //
@@ -21029,12 +22111,13 @@ func (element *Element) ForEachSinkPad(fn ElementForEachPadFunc) bool {
 	return _ok
 }
 
-// ForEachSrcPad: call func with user_data for each of element's source pads.
-// func will be called exactly once for each source pad that exists at the
-// time of this call, unless one of the calls to func returns FALSE in which
-// case we will stop iterating pads and return early. If new source pads are
-// added or source pads are removed while the source pads are being iterated,
-// this will not be taken into account until next time this function is used.
+// ForEachSrcPad (gst_element_foreach_src_pad): call func with user_data for
+// each of element's source pads. func will be called exactly once for each
+// source pad that exists at the time of this call, unless one of the calls
+// to func returns FALSE in which case we will stop iterating pads and return
+// early. If new source pads are added or source pads are removed while the
+// source pads are being iterated, this will not be taken into account until
+// next time this function is used.
 //
 // The function takes the following parameters:
 //
@@ -21068,9 +22151,10 @@ func (element *Element) ForEachSrcPad(fn ElementForEachPadFunc) bool {
 	return _ok
 }
 
-// BaseTime returns the base time of the element. The base time is the absolute
-// time of the clock when this element was last put to PLAYING. Subtracting the
-// base time from the clock time gives the running time of the element.
+// BaseTime (gst_element_get_base_time) returns the base time of the element.
+// The base time is the absolute time of the clock when this element was last
+// put to PLAYING. Subtracting the base time from the clock time gives the
+// running time of the element.
 //
 // The function returns the following values:
 //
@@ -21093,8 +22177,8 @@ func (element *Element) BaseTime() ClockTime {
 	return _clockTime
 }
 
-// Bus returns the bus of the element. Note that only a Pipeline will provide a
-// bus for the application.
+// Bus (gst_element_get_bus) returns the bus of the element. Note that only a
+// Pipeline will provide a bus for the application.
 //
 // The function returns the following values:
 //
@@ -21119,8 +22203,8 @@ func (element *Element) Bus() *Bus {
 	return _bus
 }
 
-// Clock gets the currently configured clock of the element. This is the clock
-// as was last set with gst_element_set_clock().
+// Clock (gst_element_get_clock) gets the currently configured clock of the
+// element. This is the clock as was last set with gst_element_set_clock().
 //
 // Elements in a pipeline will only have their clock set when the pipeline is in
 // the PLAYING state.
@@ -21161,9 +22245,9 @@ func (element *Element) Clock() Clocker {
 	return _clock
 }
 
-// CompatiblePad looks for an unlinked pad to which the given pad can link.
-// It is not guaranteed that linking the pads will work, though it should work
-// in most cases.
+// CompatiblePad (gst_element_get_compatible_pad) looks for an unlinked pad to
+// which the given pad can link. It is not guaranteed that linking the pads will
+// work, though it should work in most cases.
 //
 // This function will first attempt to find a compatible unlinked ALWAYS pad,
 // and if none can be found, it will request a compatible REQUEST pad by looking
@@ -21204,9 +22288,9 @@ func (element *Element) CompatiblePad(pad *Pad, caps *Caps) *Pad {
 	return _ret
 }
 
-// CompatiblePadTemplate retrieves a pad template from element that is
-// compatible with compattempl. Pads from compatible templates can be linked
-// together.
+// CompatiblePadTemplate (gst_element_get_compatible_pad_template) retrieves
+// a pad template from element that is compatible with compattempl. Pads from
+// compatible templates can be linked together.
 //
 // The function takes the following parameters:
 //
@@ -21237,7 +22321,8 @@ func (element *Element) CompatiblePadTemplate(compattempl *PadTemplate) *PadTemp
 	return _padTemplate
 }
 
-// Context gets the context with context_type set on the element or NULL.
+// Context (gst_element_get_context) gets the context with context_type set on
+// the element or NULL.
 //
 // MT safe.
 //
@@ -21276,8 +22361,8 @@ func (element *Element) Context(contextType string) *Context {
 	return _context
 }
 
-// ContextUnlocked gets the context with context_type set on the element or
-// NULL.
+// ContextUnlocked (gst_element_get_context_unlocked) gets the context with
+// context_type set on the element or NULL.
 //
 // The function takes the following parameters:
 //
@@ -21314,7 +22399,7 @@ func (element *Element) ContextUnlocked(contextType string) *Context {
 	return _context
 }
 
-// Contexts gets the contexts set on the element.
+// Contexts (gst_element_get_contexts) gets the contexts set on the element.
 //
 // MT safe.
 //
@@ -21349,8 +22434,9 @@ func (element *Element) Contexts() []*Context {
 	return _list
 }
 
-// CurrentClockTime returns the current clock time of the element, as in,
-// the time of the element's clock, or GST_CLOCK_TIME_NONE if there is no clock.
+// CurrentClockTime (gst_element_get_current_clock_time) returns the current
+// clock time of the element, as in, the time of the element's clock,
+// or GST_CLOCK_TIME_NONE if there is no clock.
 //
 // The function returns the following values:
 //
@@ -21372,10 +22458,10 @@ func (element *Element) CurrentClockTime() ClockTime {
 	return _clockTime
 }
 
-// CurrentRunningTime returns the running time of the element. The running
-// time is the element's clock time minus its base time. Will return
-// GST_CLOCK_TIME_NONE if the element has no clock, or if its base time has not
-// been set.
+// CurrentRunningTime (gst_element_get_current_running_time) returns the running
+// time of the element. The running time is the element's clock time minus its
+// base time. Will return GST_CLOCK_TIME_NONE if the element has no clock,
+// or if its base time has not been set.
 //
 // The function returns the following values:
 //
@@ -21397,7 +22483,8 @@ func (element *Element) CurrentRunningTime() ClockTime {
 	return _clockTime
 }
 
-// Factory retrieves the factory that was used to create this element.
+// Factory (gst_element_get_factory) retrieves the factory that was used to
+// create this element.
 //
 // The function returns the following values:
 //
@@ -21422,7 +22509,7 @@ func (element *Element) Factory() *ElementFactory {
 	return _elementFactory
 }
 
-// Metadata: get metadata with key in klass.
+// Metadata (gst_element_get_metadata): get metadata with key in klass.
 //
 // The function takes the following parameters:
 //
@@ -21451,7 +22538,8 @@ func (element *Element) Metadata(key string) string {
 	return _utf8
 }
 
-// PadTemplate retrieves a padtemplate from element with the given name.
+// PadTemplate (gst_element_get_pad_template) retrieves a padtemplate from
+// element with the given name.
 //
 // The function takes the following parameters:
 //
@@ -21483,8 +22571,9 @@ func (element *Element) PadTemplate(name string) *PadTemplate {
 	return _padTemplate
 }
 
-// PadTemplateList retrieves a list of the pad templates associated with
-// element. The list must not be modified by the calling code.
+// PadTemplateList (gst_element_get_pad_template_list) retrieves a list of the
+// pad templates associated with element. The list must not be modified by the
+// calling code.
 //
 // The function returns the following values:
 //
@@ -21511,9 +22600,9 @@ func (element *Element) PadTemplateList() []*PadTemplate {
 	return _list
 }
 
-// GetRequestPad: name of this function is confusing to people learning
-// GStreamer. gst_element_request_pad_simple() aims at making it more explicit
-// it is a simplified gst_element_request_pad().
+// GetRequestPad (gst_element_get_request_pad): name of this function is
+// confusing to people learning GStreamer. gst_element_request_pad_simple() aims
+// at making it more explicit it is a simplified gst_element_request_pad().
 //
 // Deprecated: Prefer using gst_element_request_pad_simple() which provides the
 // exact same functionality.
@@ -21548,8 +22637,9 @@ func (element *Element) GetRequestPad(name string) *Pad {
 	return _pad
 }
 
-// StartTime returns the start time of the element. The start time is the
-// running time of the clock when this element was last put to PAUSED.
+// StartTime (gst_element_get_start_time) returns the start time of the element.
+// The start time is the running time of the clock when this element was last
+// put to PAUSED.
 //
 // Usually the start_time is managed by a toplevel element such as Pipeline.
 //
@@ -21574,7 +22664,7 @@ func (element *Element) StartTime() ClockTime {
 	return _clockTime
 }
 
-// State gets the state of the element.
+// State (gst_element_get_state) gets the state of the element.
 //
 // For elements that performed an ASYNC state change, as reported by
 // gst_element_set_state(), this function will block up to the specified timeout
@@ -21637,8 +22727,8 @@ func (element *Element) State(timeout ClockTime) (state, pending State, stateCha
 	return _state, _pending, _stateChangeReturn
 }
 
-// StaticPad retrieves a pad from element by name. This version only retrieves
-// already-existing (i.e. 'static') pads.
+// StaticPad (gst_element_get_static_pad) retrieves a pad from element by name.
+// This version only retrieves already-existing (i.e. 'static') pads.
 //
 // The function takes the following parameters:
 //
@@ -21672,10 +22762,11 @@ func (element *Element) StaticPad(name string) *Pad {
 	return _pad
 }
 
-// IsLockedState checks if the state of an element is locked. If the state of
-// an element is locked, state changes of the parent don't affect the element.
-// This way you can leave currently unused elements inside bins. Just lock their
-// state before changing the state from T_STATE_NULL.
+// IsLockedState (gst_element_is_locked_state) checks if the state of an
+// element is locked. If the state of an element is locked, state changes of
+// the parent don't affect the element. This way you can leave currently unused
+// elements inside bins. Just lock their state before changing the state from
+// T_STATE_NULL.
 //
 // MT safe.
 //
@@ -21700,9 +22791,10 @@ func (element *Element) IsLockedState() bool {
 	return _ok
 }
 
-// IteratePads retrieves an iterator of element's pads. The iterator should
-// be freed after usage. Also more specialized iterators exists such as
-// gst_element_iterate_src_pads() or gst_element_iterate_sink_pads().
+// IteratePads (gst_element_iterate_pads) retrieves an iterator of
+// element's pads. The iterator should be freed after usage. Also more
+// specialized iterators exists such as gst_element_iterate_src_pads() or
+// gst_element_iterate_sink_pads().
 //
 // The order of pads returned by the iterator will be the order in which the
 // pads were added to the element.
@@ -21734,7 +22826,8 @@ func (element *Element) IteratePads() *Iterator {
 	return _iterator
 }
 
-// IterateSinkPads retrieves an iterator of element's sink pads.
+// IterateSinkPads (gst_element_iterate_sink_pads) retrieves an iterator of
+// element's sink pads.
 //
 // The order of pads returned by the iterator will be the order in which the
 // pads were added to the element.
@@ -21766,7 +22859,8 @@ func (element *Element) IterateSinkPads() *Iterator {
 	return _iterator
 }
 
-// IterateSrcPads retrieves an iterator of element's source pads.
+// IterateSrcPads (gst_element_iterate_src_pads) retrieves an iterator of
+// element's source pads.
 //
 // The order of pads returned by the iterator will be the order in which the
 // pads were added to the element.
@@ -21798,11 +22892,11 @@ func (element *Element) IterateSrcPads() *Iterator {
 	return _iterator
 }
 
-// Link links src to dest. The link must be from source to destination;
-// the other direction will not be tried. The function looks for existing pads
-// that aren't linked yet. It will request new pads if necessary. Such pads
-// need to be released manually when unlinking. If multiple links are possible,
-// only one is established.
+// Link (gst_element_link) links src to dest. The link must be from source to
+// destination; the other direction will not be tried. The function looks for
+// existing pads that aren't linked yet. It will request new pads if necessary.
+// Such pads need to be released manually when unlinking. If multiple links are
+// possible, only one is established.
 //
 // Make sure you have added your elements to a bin or pipeline with
 // gst_bin_add() before trying to link them.
@@ -21835,11 +22929,11 @@ func (src *Element) Link(dest Elementer) bool {
 	return _ok
 }
 
-// LinkFiltered links src to dest using the given caps as filtercaps. The link
-// must be from source to destination; the other direction will not be tried.
-// The function looks for existing pads that aren't linked yet. It will
-// request new pads if necessary. If multiple links are possible, only one is
-// established.
+// LinkFiltered (gst_element_link_filtered) links src to dest using the given
+// caps as filtercaps. The link must be from source to destination; the other
+// direction will not be tried. The function looks for existing pads that aren't
+// linked yet. It will request new pads if necessary. If multiple links are
+// possible, only one is established.
 //
 // Make sure you have added your elements to a bin or pipeline with
 // gst_bin_add() before trying to link them.
@@ -21878,10 +22972,10 @@ func (src *Element) LinkFiltered(dest Elementer, filter *Caps) bool {
 	return _ok
 }
 
-// LinkPads links the two named pads of the source and destination elements.
-// Side effect is that if one of the pads has no parent, it becomes a child of
-// the parent of the other element. If they have different parents, the link
-// fails.
+// LinkPads (gst_element_link_pads) links the two named pads of the source and
+// destination elements. Side effect is that if one of the pads has no parent,
+// it becomes a child of the parent of the other element. If they have different
+// parents, the link fails.
 //
 // The function takes the following parameters:
 //
@@ -21927,11 +23021,11 @@ func (src *Element) LinkPads(srcpadname string, dest Elementer, destpadname stri
 	return _ok
 }
 
-// LinkPadsFiltered links the two named pads of the source and destination
-// elements. Side effect is that if one of the pads has no parent, it becomes
-// a child of the parent of the other element. If they have different parents,
-// the link fails. If caps is not NULL, makes sure that the caps of the link is
-// a subset of caps.
+// LinkPadsFiltered (gst_element_link_pads_filtered) links the two named pads
+// of the source and destination elements. Side effect is that if one of the
+// pads has no parent, it becomes a child of the parent of the other element.
+// If they have different parents, the link fails. If caps is not NULL, makes
+// sure that the caps of the link is a subset of caps.
 //
 // The function takes the following parameters:
 //
@@ -21983,10 +23077,10 @@ func (src *Element) LinkPadsFiltered(srcpadname string, dest Elementer, destpadn
 	return _ok
 }
 
-// LinkPadsFull links the two named pads of the source and destination elements.
-// Side effect is that if one of the pads has no parent, it becomes a child of
-// the parent of the other element. If they have different parents, the link
-// fails.
+// LinkPadsFull (gst_element_link_pads_full) links the two named pads of the
+// source and destination elements. Side effect is that if one of the pads has
+// no parent, it becomes a child of the parent of the other element. If they
+// have different parents, the link fails.
 //
 // Calling gst_element_link_pads_full() with flags == GST_PAD_LINK_CHECK_DEFAULT
 // is the same as calling gst_element_link_pads() and the recommended way of
@@ -22042,9 +23136,9 @@ func (src *Element) LinkPadsFull(srcpadname string, dest Elementer, destpadname 
 	return _ok
 }
 
-// LostState brings the element to the lost state. The current state
-// of the element is copied to the pending state so that any call to
-// gst_element_get_state() will return GST_STATE_CHANGE_ASYNC.
+// LostState (gst_element_lost_state) brings the element to the lost state.
+// The current state of the element is copied to the pending state so that any
+// call to gst_element_get_state() will return GST_STATE_CHANGE_ASYNC.
 //
 // An ASYNC_START message is posted. If the element was PLAYING, it will go
 // to PAUSED. The element will be restored to its PLAYING state by the parent
@@ -22067,8 +23161,8 @@ func (element *Element) LostState() {
 	runtime.KeepAlive(element)
 }
 
-// MessageFull: post an error, warning or info message on the bus from inside an
-// element.
+// MessageFull (gst_element_message_full): post an error, warning or info
+// message on the bus from inside an element.
 //
 // type must be of T_MESSAGE_ERROR, T_MESSAGE_WARNING or T_MESSAGE_INFO.
 //
@@ -22125,8 +23219,8 @@ func (element *Element) MessageFull(typ MessageType, domain glib.Quark, code int
 	runtime.KeepAlive(line)
 }
 
-// MessageFullWithDetails: post an error, warning or info message on the bus
-// from inside an element.
+// MessageFullWithDetails (gst_element_message_full_with_details): post an
+// error, warning or info message on the bus from inside an element.
 //
 // type must be of T_MESSAGE_ERROR, T_MESSAGE_WARNING or T_MESSAGE_INFO.
 //
@@ -22186,11 +23280,12 @@ func (element *Element) MessageFullWithDetails(typ MessageType, domain glib.Quar
 	runtime.KeepAlive(structure)
 }
 
-// NoMorePads: use this function to signal that the element does not expect
-// any more pads to show up in the current pipeline. This function should be
-// called whenever pads have been added by the element itself. Elements with
-// T_PAD_SOMETIMES pad templates use this in combination with autopluggers to
-// figure out that the element is done initializing its pads.
+// NoMorePads (gst_element_no_more_pads): use this function to signal that the
+// element does not expect any more pads to show up in the current pipeline.
+// This function should be called whenever pads have been added by the element
+// itself. Elements with T_PAD_SOMETIMES pad templates use this in combination
+// with autopluggers to figure out that the element is done initializing its
+// pads.
 //
 // This function emits the Element::no-more-pads signal.
 //
@@ -22204,9 +23299,10 @@ func (element *Element) NoMorePads() {
 	runtime.KeepAlive(element)
 }
 
-// PostMessage: post a message on the element's Bus. This function takes
-// ownership of the message; if you want to access the message after this call,
-// you should add an additional reference before calling.
+// PostMessage (gst_element_post_message): post a message on the element's Bus.
+// This function takes ownership of the message; if you want to access the
+// message after this call, you should add an additional reference before
+// calling.
 //
 // The function takes the following parameters:
 //
@@ -22240,9 +23336,9 @@ func (element *Element) PostMessage(message *Message) bool {
 	return _ok
 }
 
-// ProvideClock: get the clock provided by the given element. > An element is
-// only required to provide a clock in the PAUSED > state. Some elements can
-// provide a clock in other states.
+// ProvidedClock (gst_element_provide_clock): get the clock provided by the
+// given element. > An element is only required to provide a clock in the PAUSED
+// > state. Some elements can provide a clock in other states.
 //
 // The function returns the following values:
 //
@@ -22250,7 +23346,7 @@ func (element *Element) PostMessage(message *Message) bool {
 //     could be provided. Unref after usage.
 //
 //     MT safe.
-func (element *Element) ProvideClock() Clocker {
+func (element *Element) ProvidedClock() Clocker {
 	var _arg0 *C.GstElement // out
 	var _cret *C.GstClock   // in
 
@@ -22281,7 +23377,7 @@ func (element *Element) ProvideClock() Clocker {
 	return _clock
 }
 
-// Query performs a query on the given element.
+// Query (gst_element_query) performs a query on the given element.
 //
 // For elements that don't implement a query handler, this function forwards the
 // query to a random srcpad or to the peer of a random linked sinkpad of this
@@ -22319,8 +23415,8 @@ func (element *Element) Query(query *Query) bool {
 	return _ok
 }
 
-// QueryConvert queries an element to convert src_val in src_format to
-// dest_format.
+// QueryConvert (gst_element_query_convert) queries an element to convert
+// src_val in src_format to dest_format.
 //
 // The function takes the following parameters:
 //
@@ -22362,11 +23458,11 @@ func (element *Element) QueryConvert(srcFormat Format, srcVal int64, destFormat 
 	return _destVal, _ok
 }
 
-// QueryDuration queries an element (usually top-level pipeline or playbin
-// element) for the total stream duration in nanoseconds. This query will only
-// work once the pipeline is prerolled (i.e. reached PAUSED or PLAYING state).
-// The application will receive an ASYNC_DONE message on the pipeline bus when
-// that is the case.
+// QueryDuration (gst_element_query_duration) queries an element (usually
+// top-level pipeline or playbin element) for the total stream duration in
+// nanoseconds. This query will only work once the pipeline is prerolled (i.e.
+// reached PAUSED or PLAYING state). The application will receive an ASYNC_DONE
+// message on the pipeline bus when that is the case.
 //
 // If the duration changes for some reason, you will get a DURATION_CHANGED
 // message on the pipeline bus, in which case you should re-query the duration
@@ -22405,12 +23501,12 @@ func (element *Element) QueryDuration(format Format) (int64, bool) {
 	return _duration, _ok
 }
 
-// QueryPosition queries an element (usually top-level pipeline or playbin
-// element) for the stream position in nanoseconds. This will be a value between
-// 0 and the stream duration (if the stream duration is known). This query will
-// usually only work once the pipeline is prerolled (i.e. reached PAUSED or
-// PLAYING state). The application will receive an ASYNC_DONE message on the
-// pipeline bus when that is the case.
+// QueryPosition (gst_element_query_position) queries an element (usually
+// top-level pipeline or playbin element) for the stream position in
+// nanoseconds. This will be a value between 0 and the stream duration (if
+// the stream duration is known). This query will usually only work once the
+// pipeline is prerolled (i.e. reached PAUSED or PLAYING state). The application
+// will receive an ASYNC_DONE message on the pipeline bus when that is the case.
 //
 // If one repeatedly calls this function one can also create a query and reuse
 // it in gst_element_query().
@@ -22447,8 +23543,8 @@ func (element *Element) QueryPosition(format Format) (int64, bool) {
 	return _cur, _ok
 }
 
-// ReleaseRequestPad makes the element free the previously requested pad as
-// obtained with gst_element_request_pad().
+// ReleaseRequestPad (gst_element_release_request_pad) makes the element free
+// the previously requested pad as obtained with gst_element_request_pad().
 //
 // This does not unref the pad. If the pad was created by using
 // gst_element_request_pad(), gst_element_release_request_pad() needs to be
@@ -22471,8 +23567,9 @@ func (element *Element) ReleaseRequestPad(pad *Pad) {
 	runtime.KeepAlive(pad)
 }
 
-// RemovePad removes pad from element. pad will be destroyed if it has not been
-// referenced elsewhere using gst_object_unparent().
+// RemovePad (gst_element_remove_pad) removes pad from element.
+// pad will be destroyed if it has not been referenced elsewhere using
+// gst_object_unparent().
 //
 // This function is used by plugin developers and should not be
 // used by applications. Pads that were dynamically requested from
@@ -22534,8 +23631,8 @@ func (element *Element) RemovePropertyNotifyWatch(watchId uint32) {
 	runtime.KeepAlive(watchId)
 }
 
-// RequestPad retrieves a request pad from the element according
-// to the provided template. Pad templates can be looked up using
+// RequestPad (gst_element_request_pad) retrieves a request pad from the element
+// according to the provided template. Pad templates can be looked up using
 // gst_element_factory_get_static_pad_templates().
 //
 // The pad should be released with gst_element_release_request_pad().
@@ -22582,9 +23679,9 @@ func (element *Element) RequestPad(templ *PadTemplate, name string, caps *Caps) 
 	return _pad
 }
 
-// RequestPadSimple retrieves a pad from the element by name (e.g. "src_\d").
-// This version only retrieves request pads. The pad should be released with
-// gst_element_release_request_pad().
+// RequestPadSimple (gst_element_request_pad_simple) retrieves a pad from the
+// element by name (e.g. "src_\d"). This version only retrieves request pads.
+// The pad should be released with gst_element_release_request_pad().
 //
 // This method is slower than manually getting the pad template and calling
 // gst_element_request_pad() if the pads should have a specific name (e.g.
@@ -22624,9 +23721,9 @@ func (element *Element) RequestPadSimple(name string) *Pad {
 	return _pad
 }
 
-// Seek sends a seek event to an element. See gst_event_new_seek() for the
-// details of the parameters. The seek event is sent to the element using
-// gst_element_send_event().
+// Seek (gst_element_seek) sends a seek event to an element. See
+// gst_event_new_seek() for the details of the parameters. The seek event is
+// sent to the element using gst_element_send_event().
 //
 // MT safe.
 //
@@ -22683,11 +23780,11 @@ func (element *Element) Seek(rate float64, format Format, flags SeekFlags, start
 	return _ok
 }
 
-// SeekSimple: simple API to perform a seek on the given element, meaning
-// it just seeks to the given position relative to the start of the stream.
-// For more complex operations like segment seeks (e.g. for looping) or changing
-// the playback rate or seeking relative to the last configured playback segment
-// you should use gst_element_seek().
+// SeekSimple (gst_element_seek_simple): simple API to perform a seek on the
+// given element, meaning it just seeks to the given position relative to the
+// start of the stream. For more complex operations like segment seeks (e.g.
+// for looping) or changing the playback rate or seeking relative to the last
+// configured playback segment you should use gst_element_seek().
 //
 // In a completely prerolled PAUSED or PLAYING pipeline, seeking is always
 // guaranteed to return TRUE on a seekable media type or FALSE when the media
@@ -22739,9 +23836,10 @@ func (element *Element) SeekSimple(format Format, seekFlags SeekFlags, seekPos i
 	return _ok
 }
 
-// SendEvent sends an event to an element. If the element doesn't implement
-// an event handler, the event will be pushed on a random linked sink pad for
-// downstream events or a random linked source pad for upstream events.
+// SendEvent (gst_element_send_event) sends an event to an element. If the
+// element doesn't implement an event handler, the event will be pushed on a
+// random linked sink pad for downstream events or a random linked source pad
+// for upstream events.
 //
 // This function takes ownership of the provided event so you should
 // gst_event_ref() it if you want to reuse the event after this call.
@@ -22778,8 +23876,8 @@ func (element *Element) SendEvent(event *Event) bool {
 	return _ok
 }
 
-// SetBaseTime: set the base time of an element. See
-// gst_element_get_base_time().
+// SetBaseTime (gst_element_set_base_time): set the base time of an element.
+// See gst_element_get_base_time().
 //
 // MT safe.
 //
@@ -22798,8 +23896,8 @@ func (element *Element) SetBaseTime(time ClockTime) {
 	runtime.KeepAlive(time)
 }
 
-// SetBus sets the bus of the element. Increases the refcount on the bus.
-// For internal use only, unless you're testing elements.
+// SetBus (gst_element_set_bus) sets the bus of the element. Increases the
+// refcount on the bus. For internal use only, unless you're testing elements.
 //
 // MT safe.
 //
@@ -22820,8 +23918,9 @@ func (element *Element) SetBus(bus *Bus) {
 	runtime.KeepAlive(bus)
 }
 
-// SetClock sets the clock for the element. This function increases the refcount
-// on the clock. Any previously set clock on the object is unreffed.
+// SetClock (gst_element_set_clock) sets the clock for the element. This
+// function increases the refcount on the clock. Any previously set clock on the
+// object is unreffed.
 //
 // The function takes the following parameters:
 //
@@ -22857,8 +23956,8 @@ func (element *Element) SetClock(clock Clocker) bool {
 	return _ok
 }
 
-// SetContext sets the context of the element. Increases the refcount of the
-// context.
+// SetContext (gst_element_set_context) sets the context of the element.
+// Increases the refcount of the context.
 //
 // MT safe.
 //
@@ -22877,8 +23976,8 @@ func (element *Element) SetContext(context *Context) {
 	runtime.KeepAlive(context)
 }
 
-// SetLockedState locks the state of an element, so state changes of the parent
-// don't affect this element anymore.
+// SetLockedState (gst_element_set_locked_state) locks the state of an element,
+// so state changes of the parent don't affect this element anymore.
 //
 // Note that this is racy if the state lock of the parent bin is not taken.
 // The parent bin might've just checked the flag in another thread and as the
@@ -22917,9 +24016,9 @@ func (element *Element) SetLockedState(lockedState bool) bool {
 	return _ok
 }
 
-// SetStartTime: set the start time of an element. The start time of the element
-// is the running time of the element when it last went to the PAUSED state.
-// In READY or after a flushing seek, it is set to 0.
+// SetStartTime (gst_element_set_start_time): set the start time of an element.
+// The start time of the element is the running time of the element when it last
+// went to the PAUSED state. In READY or after a flushing seek, it is set to 0.
 //
 // Toplevel elements like Pipeline will manage the start_time and base_time on
 // its children. Setting the start_time to T_CLOCK_TIME_NONE on such a toplevel
@@ -22945,9 +24044,9 @@ func (element *Element) SetStartTime(time ClockTime) {
 	runtime.KeepAlive(time)
 }
 
-// SetState sets the state of the element. This function will try to set the
-// requested state by going through all the intermediary states and calling the
-// class's state change function for each.
+// SetState (gst_element_set_state) sets the state of the element. This function
+// will try to set the requested state by going through all the intermediary
+// states and calling the class's state change function for each.
 //
 // This function can return T_STATE_CHANGE_ASYNC, in which case the element will
 // perform the remainder of the state change asynchronously in another thread.
@@ -22986,9 +24085,9 @@ func (element *Element) SetState(state State) StateChangeReturn {
 	return _stateChangeReturn
 }
 
-// SyncStateWithParent tries to change the state of the element to the same
-// as its parent. If this function returns FALSE, the state of element is
-// undefined.
+// SyncStateWithParent (gst_element_sync_state_with_parent) tries to change
+// the state of the element to the same as its parent. If this function returns
+// FALSE, the state of element is undefined.
 //
 // The function returns the following values:
 //
@@ -23013,8 +24112,8 @@ func (element *Element) SyncStateWithParent() bool {
 	return _ok
 }
 
-// Unlink unlinks all source pads of the source element with all sink pads of
-// the sink element to which they are linked.
+// Unlink (gst_element_unlink) unlinks all source pads of the source element
+// with all sink pads of the sink element to which they are linked.
 //
 // If the link has been made using gst_element_link(), it could have created an
 // requestpad, which has to be released using gst_element_release_request_pad().
@@ -23034,7 +24133,8 @@ func (src *Element) Unlink(dest Elementer) {
 	runtime.KeepAlive(dest)
 }
 
-// UnlinkPads unlinks the two named pads of the source and destination elements.
+// UnlinkPads (gst_element_unlink_pads) unlinks the two named pads of the source
+// and destination elements.
 //
 // This is a convenience function for gst_pad_unlink().
 //
@@ -23607,7 +24707,8 @@ func (element *Element) stateChanged(oldstate, newstate, pending State) {
 	runtime.KeepAlive(pending)
 }
 
-// ElementMakeFromURI creates an element for handling the given URI.
+// ElementMakeFromURI (gst_element_make_from_uri) creates an element for
+// handling the given URI.
 //
 // The function takes the following parameters:
 //
@@ -23665,8 +24766,8 @@ func ElementMakeFromURI(typ URIType, uri, elementname string) (Elementer, error)
 	return _element, _goerr
 }
 
-// ElementRegister: create a new elementfactory capable of instantiating objects
-// of the type and add the factory to plugin.
+// ElementRegister (gst_element_register): create a new elementfactory capable
+// of instantiating objects of the type and add the factory to plugin.
 //
 // The function takes the following parameters:
 //
@@ -23709,8 +24810,8 @@ func ElementRegister(plugin *Plugin, name string, rank uint, typ coreglib.Type) 
 	return _ok
 }
 
-// ElementStateChangeReturnGetName gets a string representing the given state
-// change result.
+// ElementStateChangeReturnGetName (gst_element_state_change_return_get_name)
+// gets a string representing the given state change result.
 //
 // The function takes the following parameters:
 //
@@ -23735,7 +24836,8 @@ func ElementStateChangeReturnGetName(stateRet StateChangeReturn) string {
 	return _utf8
 }
 
-// ElementStateGetName gets a string representing the given state.
+// ElementStateGetName (gst_element_state_get_name) gets a string representing
+// the given state.
 //
 // The function takes the following parameters:
 //
@@ -23760,9 +24862,10 @@ func ElementStateGetName(state State) string {
 	return _utf8
 }
 
-// ElementTypeSetSkipDocumentation marks type as "documentation should be
-// skipped". Can be useful for dynamically registered element to be excluded
-// from plugin documentation system.
+// ElementTypeSetSkipDocumentation (gst_element_type_set_skip_documentation)
+// marks type as "documentation should be skipped". Can be useful for
+// dynamically registered element to be excluded from plugin documentation
+// system.
 //
 // Example:
 //
@@ -23789,8 +24892,8 @@ func ElementTypeSetSkipDocumentation(typ coreglib.Type) {
 	runtime.KeepAlive(typ)
 }
 
-// ElementFactory is used to create instances of elements. A GstElementFactory
-// can be added to a Plugin as it is also a PluginFeature.
+// ElementFactory (GstElementFactory) is used to create instances of elements.
+// A GstElementFactory can be added to a Plugin as it is also a PluginFeature.
 //
 // Use the gst_element_factory_find() and gst_element_factory_create() functions
 // to create element instances or use gst_element_factory_make() as a convenient
@@ -23821,6 +24924,69 @@ var (
 	_ PluginFeaturer = (*ElementFactory)(nil)
 )
 
+// ElementFactorier describes types inherited from ElementFactory.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type ElementFactorier interface {
+	PluginFeaturer
+
+	// CanSinkAllCaps (gst_element_factory_can_sink_all_caps) checks if the
+	// factory can sink all possible capabilities.
+	CanSinkAllCaps(caps *Caps) bool
+	// CanSinkAnyCaps (gst_element_factory_can_sink_any_caps) checks if the
+	// factory can sink any possible capability.
+	CanSinkAnyCaps(caps *Caps) bool
+	// CanSrcAllCaps (gst_element_factory_can_src_all_caps) checks if the
+	// factory can src all possible capabilities.
+	CanSrcAllCaps(caps *Caps) bool
+	// CanSrcAnyCaps (gst_element_factory_can_src_any_caps) checks if the
+	// factory can src any possible capability.
+	CanSrcAnyCaps(caps *Caps) bool
+	// Create (gst_element_factory_create) a new element of the type defined by
+	// the given elementfactory.
+	Create(name string) Elementer
+	// CreateWithProperties (gst_element_factory_create_with_properties):
+	// create a new element of the type defined by the given elementfactory.
+	CreateWithProperties(names []string, values []coreglib.Value) Elementer
+	// ElementType (gst_element_factory_get_element_type): get the #GType for
+	// elements managed by this factory.
+	ElementType() coreglib.Type
+	// Metadata (gst_element_factory_get_metadata): get the metadata on factory
+	// with key.
+	Metadata(key string) string
+	// MetadataKeys (gst_element_factory_get_metadata_keys): get the available
+	// keys for the metadata on factory.
+	MetadataKeys() []string
+	// NumPadTemplates (gst_element_factory_get_num_pad_templates) gets the
+	// number of pad_templates in this factory.
+	NumPadTemplates() uint
+	// SkipDocumentation (gst_element_factory_get_skip_documentation) queries
+	// whether registered element managed by factory needs to be excluded from
+	// documentation system or not.
+	SkipDocumentation() bool
+	// StaticPadTemplates (gst_element_factory_get_static_pad_templates) gets
+	// the #GList of StaticPadTemplate for this factory.
+	StaticPadTemplates() []*StaticPadTemplate
+	// URIProtocols (gst_element_factory_get_uri_protocols) gets a
+	// NULL-terminated array of protocols this element supports or NULL if no
+	// protocols are supported.
+	URIProtocols() []string
+	// URIType (gst_element_factory_get_uri_type) gets the type of URIs the
+	// element supports or T_URI_UNKNOWN if none.
+	URIType() URIType
+	// HasInterface (gst_element_factory_has_interface): check if factory
+	// implements the interface with name interfacename.
+	HasInterface(interfacename string) bool
+	// ListIsType (gst_element_factory_list_is_type): check if factory is of the
+	// given types.
+	ListIsType(typ ElementFactoryListType) bool
+
+	baseElementFactory() *ElementFactory
+}
+
+var _ ElementFactorier = (*ElementFactory)(nil)
+
 func wrapElementFactory(obj *coreglib.Object) *ElementFactory {
 	return &ElementFactory{
 		PluginFeature: PluginFeature{
@@ -23837,7 +25003,17 @@ func marshalElementFactory(p uintptr) (interface{}, error) {
 	return wrapElementFactory(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// CanSinkAllCaps checks if the factory can sink all possible capabilities.
+func (factory *ElementFactory) baseElementFactory() *ElementFactory {
+	return factory
+}
+
+// BaseElementFactory returns the underlying base object.
+func BaseElementFactory(obj ElementFactorier) *ElementFactory {
+	return obj.baseElementFactory()
+}
+
+// CanSinkAllCaps (gst_element_factory_can_sink_all_caps) checks if the factory
+// can sink all possible capabilities.
 //
 // The function takes the following parameters:
 //
@@ -23867,7 +25043,8 @@ func (factory *ElementFactory) CanSinkAllCaps(caps *Caps) bool {
 	return _ok
 }
 
-// CanSinkAnyCaps checks if the factory can sink any possible capability.
+// CanSinkAnyCaps (gst_element_factory_can_sink_any_caps) checks if the factory
+// can sink any possible capability.
 //
 // The function takes the following parameters:
 //
@@ -23897,7 +25074,8 @@ func (factory *ElementFactory) CanSinkAnyCaps(caps *Caps) bool {
 	return _ok
 }
 
-// CanSrcAllCaps checks if the factory can src all possible capabilities.
+// CanSrcAllCaps (gst_element_factory_can_src_all_caps) checks if the factory
+// can src all possible capabilities.
 //
 // The function takes the following parameters:
 //
@@ -23927,7 +25105,8 @@ func (factory *ElementFactory) CanSrcAllCaps(caps *Caps) bool {
 	return _ok
 }
 
-// CanSrcAnyCaps checks if the factory can src any possible capability.
+// CanSrcAnyCaps (gst_element_factory_can_src_any_caps) checks if the factory
+// can src any possible capability.
 //
 // The function takes the following parameters:
 //
@@ -23957,9 +25136,9 @@ func (factory *ElementFactory) CanSrcAnyCaps(caps *Caps) bool {
 	return _ok
 }
 
-// Create a new element of the type defined by the given elementfactory. It will
-// be given the name supplied, since all elements require a name as their first
-// argument.
+// Create (gst_element_factory_create) a new element of the type defined by the
+// given elementfactory. It will be given the name supplied, since all elements
+// require a name as their first argument.
 //
 // The function takes the following parameters:
 //
@@ -24007,9 +25186,9 @@ func (factory *ElementFactory) Create(name string) Elementer {
 	return _element
 }
 
-// CreateWithProperties: create a new element of the type defined by the given
-// elementfactory. The supplied list of properties, will be passed at object
-// construction.
+// CreateWithProperties (gst_element_factory_create_with_properties): create a
+// new element of the type defined by the given elementfactory. The supplied
+// list of properties, will be passed at object construction.
 //
 // The function takes the following parameters:
 //
@@ -24075,9 +25254,10 @@ func (factory *ElementFactory) CreateWithProperties(names []string, values []cor
 	return _element
 }
 
-// ElementType: get the #GType for elements managed by this factory. The type
-// can only be retrieved if the element factory is loaded, which can be assured
-// with gst_plugin_feature_load().
+// ElementType (gst_element_factory_get_element_type): get the #GType
+// for elements managed by this factory. The type can only be retrieved
+// if the element factory is loaded, which can be assured with
+// gst_plugin_feature_load().
 //
 // The function returns the following values:
 //
@@ -24099,7 +25279,8 @@ func (factory *ElementFactory) ElementType() coreglib.Type {
 	return _gType
 }
 
-// Metadata: get the metadata on factory with key.
+// Metadata (gst_element_factory_get_metadata): get the metadata on factory with
+// key.
 //
 // The function takes the following parameters:
 //
@@ -24131,7 +25312,8 @@ func (factory *ElementFactory) Metadata(key string) string {
 	return _utf8
 }
 
-// MetadataKeys: get the available keys for the metadata on factory.
+// MetadataKeys (gst_element_factory_get_metadata_keys): get the available keys
+// for the metadata on factory.
 //
 // The function returns the following values:
 //
@@ -24169,7 +25351,8 @@ func (factory *ElementFactory) MetadataKeys() []string {
 	return _utf8s
 }
 
-// NumPadTemplates gets the number of pad_templates in this factory.
+// NumPadTemplates (gst_element_factory_get_num_pad_templates) gets the number
+// of pad_templates in this factory.
 //
 // The function returns the following values:
 //
@@ -24190,8 +25373,9 @@ func (factory *ElementFactory) NumPadTemplates() uint {
 	return _guint
 }
 
-// SkipDocumentation queries whether registered element managed by factory needs
-// to be excluded from documentation system or not.
+// SkipDocumentation (gst_element_factory_get_skip_documentation) queries
+// whether registered element managed by factory needs to be excluded from
+// documentation system or not.
 //
 // The function returns the following values:
 //
@@ -24214,7 +25398,8 @@ func (factory *ElementFactory) SkipDocumentation() bool {
 	return _ok
 }
 
-// StaticPadTemplates gets the #GList of StaticPadTemplate for this factory.
+// StaticPadTemplates (gst_element_factory_get_static_pad_templates) gets the
+// #GList of StaticPadTemplate for this factory.
 //
 // The function returns the following values:
 //
@@ -24241,10 +25426,11 @@ func (factory *ElementFactory) StaticPadTemplates() []*StaticPadTemplate {
 	return _list
 }
 
-// URIProtocols gets a NULL-terminated array of protocols this element supports
-// or NULL if no protocols are supported. You may not change the contents of the
-// returned array, as it is still owned by the element factory. Use g_strdupv()
-// to make a copy of the protocol string array if you need to.
+// URIProtocols (gst_element_factory_get_uri_protocols) gets a NULL-terminated
+// array of protocols this element supports or NULL if no protocols are
+// supported. You may not change the contents of the returned array, as it is
+// still owned by the element factory. Use g_strdupv() to make a copy of the
+// protocol string array if you need to.
 //
 // The function returns the following values:
 //
@@ -24277,7 +25463,8 @@ func (factory *ElementFactory) URIProtocols() []string {
 	return _utf8s
 }
 
-// URIType gets the type of URIs the element supports or T_URI_UNKNOWN if none.
+// URIType (gst_element_factory_get_uri_type) gets the type of URIs the element
+// supports or T_URI_UNKNOWN if none.
 //
 // The function returns the following values:
 //
@@ -24298,8 +25485,8 @@ func (factory *ElementFactory) URIType() URIType {
 	return _uriType
 }
 
-// HasInterface: check if factory implements the interface with name
-// interfacename.
+// HasInterface (gst_element_factory_has_interface): check if factory implements
+// the interface with name interfacename.
 //
 // The function takes the following parameters:
 //
@@ -24330,7 +25517,8 @@ func (factory *ElementFactory) HasInterface(interfacename string) bool {
 	return _ok
 }
 
-// ListIsType: check if factory is of the given types.
+// ListIsType (gst_element_factory_list_is_type): check if factory is of the
+// given types.
 //
 // The function takes the following parameters:
 //
@@ -24360,8 +25548,9 @@ func (factory *ElementFactory) ListIsType(typ ElementFactoryListType) bool {
 	return _ok
 }
 
-// ElementFactoryFind: search for an element factory of the given name. Refs the
-// returned element factory; caller is responsible for unreffing.
+// ElementFactoryFind (gst_element_factory_find): search for an element factory
+// of the given name. Refs the returned element factory; caller is responsible
+// for unreffing.
 //
 // The function takes the following parameters:
 //
@@ -24389,8 +25578,8 @@ func ElementFactoryFind(name string) *ElementFactory {
 	return _elementFactory
 }
 
-// ElementFactoryListFilter: filter out all the elementfactories in list that
-// can handle caps in the given direction.
+// ElementFactoryListFilter (gst_element_factory_list_filter): filter out all
+// the elementfactories in list that can handle caps in the given direction.
 //
 // If subsetonly is TRUE, then only the elements whose pads templates are
 // a complete superset of caps will be returned. Else any element whose pad
@@ -24446,9 +25635,10 @@ func ElementFactoryListFilter(list []*ElementFactory, caps *Caps, direction PadD
 	return _ret
 }
 
-// ElementFactoryListGetElements: get a list of factories that match the given
-// type. Only elements with a rank greater or equal to minrank will be returned.
-// The list of factories is returned by decreasing rank.
+// ElementFactoryListGetElements (gst_element_factory_list_get_elements):
+// get a list of factories that match the given type. Only elements with a
+// rank greater or equal to minrank will be returned. The list of factories is
+// returned by decreasing rank.
 //
 // The function takes the following parameters:
 //
@@ -24484,10 +25674,10 @@ func ElementFactoryListGetElements(typ ElementFactoryListType, minrank Rank) []*
 	return _list
 }
 
-// ElementFactoryMake: create a new element of the type defined by the given
-// element factory. If name is NULL, then the element will receive a guaranteed
-// unique name, consisting of the element factory name and a number. If name is
-// given, it will be given the name supplied.
+// ElementFactoryMake (gst_element_factory_make): create a new element of the
+// type defined by the given element factory. If name is NULL, then the element
+// will receive a guaranteed unique name, consisting of the element factory name
+// and a number. If name is given, it will be given the name supplied.
 //
 // The function takes the following parameters:
 //
@@ -24536,8 +25726,9 @@ func ElementFactoryMake(factoryname, name string) Elementer {
 	return _element
 }
 
-// FlagSet: fundamental type that describes a 32-bit flag bitfield, with 32-bit
-// mask indicating which of the bits in the field are explicitly set.
+// FlagSet (GstFlagSet): fundamental type that describes a 32-bit flag bitfield,
+// with 32-bit mask indicating which of the bits in the field are explicitly
+// set.
 type FlagSet struct {
 	_ [0]func() // equal guard
 	*coreglib.Object
@@ -24546,6 +25737,18 @@ type FlagSet struct {
 var (
 	_ coreglib.Objector = (*FlagSet)(nil)
 )
+
+// FlagSetter describes types inherited from FlagSet.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type FlagSetter interface {
+	coreglib.Objector
+
+	baseFlagSet() *FlagSet
+}
+
+var _ FlagSetter = (*FlagSet)(nil)
 
 func wrapFlagSet(obj *coreglib.Object) *FlagSet {
 	return &FlagSet{
@@ -24557,8 +25760,18 @@ func marshalFlagSet(p uintptr) (interface{}, error) {
 	return wrapFlagSet(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// FlagSetRegister: create a new sub-class of T_TYPE_FLAG_SET which will
-// pretty-print the human-readable flags when serializing, for easier debugging.
+func (v *FlagSet) baseFlagSet() *FlagSet {
+	return v
+}
+
+// BaseFlagSet returns the underlying base object.
+func BaseFlagSet(obj FlagSetter) *FlagSet {
+	return obj.baseFlagSet()
+}
+
+// FlagSetRegister (gst_flagset_register): create a new sub-class of
+// T_TYPE_FLAG_SET which will pretty-print the human-readable flags when
+// serializing, for easier debugging.
 //
 // The function takes the following parameters:
 //
@@ -24579,8 +25792,8 @@ func FlagSetRegister(flagsType coreglib.Type) coreglib.Type {
 	return _gType
 }
 
-// Fraction: fundamental type that describes a fraction of an integer numerator
-// over an integer denominator.
+// Fraction (GstFraction): fundamental type that describes a fraction of an
+// integer numerator over an integer denominator.
 type Fraction struct {
 	_ [0]func() // equal guard
 	*coreglib.Object
@@ -24589,6 +25802,18 @@ type Fraction struct {
 var (
 	_ coreglib.Objector = (*Fraction)(nil)
 )
+
+// Fractioner describes types inherited from Fraction.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type Fractioner interface {
+	coreglib.Objector
+
+	baseFraction() *Fraction
+}
+
+var _ Fractioner = (*Fraction)(nil)
 
 func wrapFraction(obj *coreglib.Object) *Fraction {
 	return &Fraction{
@@ -24600,7 +25825,17 @@ func marshalFraction(p uintptr) (interface{}, error) {
 	return wrapFraction(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// FractionRange: fundamental type that describes a FractionRange range.
+func (v *Fraction) baseFraction() *Fraction {
+	return v
+}
+
+// BaseFraction returns the underlying base object.
+func BaseFraction(obj Fractioner) *Fraction {
+	return obj.baseFraction()
+}
+
+// FractionRange (GstFractionRange): fundamental type that describes a
+// FractionRange range.
 type FractionRange struct {
 	_ [0]func() // equal guard
 	*coreglib.Object
@@ -24609,6 +25844,18 @@ type FractionRange struct {
 var (
 	_ coreglib.Objector = (*FractionRange)(nil)
 )
+
+// FractionRanger describes types inherited from FractionRange.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type FractionRanger interface {
+	coreglib.Objector
+
+	baseFractionRange() *FractionRange
+}
+
+var _ FractionRanger = (*FractionRange)(nil)
 
 func wrapFractionRange(obj *coreglib.Object) *FractionRange {
 	return &FractionRange{
@@ -24620,6 +25867,15 @@ func marshalFractionRange(p uintptr) (interface{}, error) {
 	return wrapFractionRange(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
+func (v *FractionRange) baseFractionRange() *FractionRange {
+	return v
+}
+
+// BaseFractionRange returns the underlying base object.
+func BaseFractionRange(obj FractionRanger) *FractionRange {
+	return obj.baseFractionRange()
+}
+
 // GhostPadOverrides contains methods that are overridable.
 type GhostPadOverrides struct {
 }
@@ -24628,8 +25884,8 @@ func defaultGhostPadOverrides(v *GhostPad) GhostPadOverrides {
 	return GhostPadOverrides{}
 }
 
-// GhostPad ghostPads are useful when organizing pipelines with Bin like
-// elements. The idea here is to create hierarchical element graphs.
+// GhostPad (GstGhostPad) ghostPads are useful when organizing pipelines with
+// Bin like elements. The idea here is to create hierarchical element graphs.
 // The bin element contains a sub-graph. Now one would like to treat the
 // bin-element like any other Element. This is where GhostPads come into play.
 // A GhostPad acts as a proxy for another pad. Thus the bin can have sink and
@@ -24650,6 +25906,27 @@ type GhostPad struct {
 var (
 	_ GstObjector = (*GhostPad)(nil)
 )
+
+// GhostPadder describes types inherited from GhostPad.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type GhostPadder interface {
+	ProxyPadder
+
+	// Construct (gst_ghost_pad_construct): finish initialization of a newly
+	// allocated ghost pad.
+	Construct() bool
+	// Target (gst_ghost_pad_get_target): get the target pad of gpad.
+	Target() *Pad
+	// SetTarget (gst_ghost_pad_set_target): set the new target of the ghostpad
+	// gpad.
+	SetTarget(newtarget *Pad) bool
+
+	baseGhostPad() *GhostPad
+}
+
+var _ GhostPadder = (*GhostPad)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*GhostPad, *GhostPadClass, GhostPadOverrides](
@@ -24685,8 +25962,18 @@ func marshalGhostPad(p uintptr) (interface{}, error) {
 	return wrapGhostPad(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// NewGhostPad: create a new ghostpad with target as the target. The direction
-// will be taken from the target pad. target must be unlinked.
+func (gpad *GhostPad) baseGhostPad() *GhostPad {
+	return gpad
+}
+
+// BaseGhostPad returns the underlying base object.
+func BaseGhostPad(obj GhostPadder) *GhostPad {
+	return obj.baseGhostPad()
+}
+
+// NewGhostPad (gst_ghost_pad_new): create a new ghostpad with target as the
+// target. The direction will be taken from the target pad. target must be
+// unlinked.
 //
 // Will ref the target.
 //
@@ -24722,9 +26009,9 @@ func NewGhostPad(name string, target *Pad) *GhostPad {
 	return _ghostPad
 }
 
-// NewGhostPadFromTemplate: create a new ghostpad with target as the target.
-// The direction will be taken from the target pad. The template used on the
-// ghostpad will be template.
+// NewGhostPadFromTemplate (gst_ghost_pad_new_from_template): create a new
+// ghostpad with target as the target. The direction will be taken from the
+// target pad. The template used on the ghostpad will be template.
 //
 // Will ref the target.
 //
@@ -24764,9 +26051,9 @@ func NewGhostPadFromTemplate(name string, target *Pad, templ *PadTemplate) *Ghos
 	return _ghostPad
 }
 
-// NewGhostPadNoTarget: create a new ghostpad without a target with the
-// given direction. A target can be set on the ghostpad later with the
-// gst_ghost_pad_set_target() function.
+// NewGhostPadNoTarget (gst_ghost_pad_new_no_target): create a new ghostpad
+// without a target with the given direction. A target can be set on the
+// ghostpad later with the gst_ghost_pad_set_target() function.
 //
 // The created ghostpad will not have a padtemplate.
 //
@@ -24802,8 +26089,9 @@ func NewGhostPadNoTarget(name string, dir PadDirection) *GhostPad {
 	return _ghostPad
 }
 
-// NewGhostPadNoTargetFromTemplate: create a new ghostpad based on templ,
-// without setting a target. The direction will be taken from the templ.
+// NewGhostPadNoTargetFromTemplate (gst_ghost_pad_new_no_target_from_template):
+// create a new ghostpad based on templ, without setting a target. The direction
+// will be taken from the templ.
 //
 // The function takes the following parameters:
 //
@@ -24837,7 +26125,8 @@ func NewGhostPadNoTargetFromTemplate(name string, templ *PadTemplate) *GhostPad 
 	return _ghostPad
 }
 
-// Construct: finish initialization of a newly allocated ghost pad.
+// Construct (gst_ghost_pad_construct): finish initialization of a newly
+// allocated ghost pad.
 //
 // This function is most useful in language bindings and when subclassing
 // GhostPad; plugin and application developers normally will not call this
@@ -24867,7 +26156,8 @@ func (gpad *GhostPad) Construct() bool {
 	return _ok
 }
 
-// Target: get the target pad of gpad. Unref target pad after usage.
+// Target (gst_ghost_pad_get_target): get the target pad of gpad. Unref target
+// pad after usage.
 //
 // The function returns the following values:
 //
@@ -24891,9 +26181,9 @@ func (gpad *GhostPad) Target() *Pad {
 	return _pad
 }
 
-// SetTarget: set the new target of the ghostpad gpad. Any existing target is
-// unlinked and links to the new target are established. if newtarget is NULL
-// the target will be cleared.
+// SetTarget (gst_ghost_pad_set_target): set the new target of the ghostpad
+// gpad. Any existing target is unlinked and links to the new target are
+// established. if newtarget is NULL the target will be cleared.
 //
 // The function takes the following parameters:
 //
@@ -24926,8 +26216,8 @@ func (gpad *GhostPad) SetTarget(newtarget *Pad) bool {
 	return _ok
 }
 
-// GhostPadActivateModeDefault: invoke the default activate mode function of a
-// ghost pad.
+// GhostPadActivateModeDefault (gst_ghost_pad_activate_mode_default): invoke the
+// default activate mode function of a ghost pad.
 //
 // The function takes the following parameters:
 //
@@ -24970,8 +26260,9 @@ func GhostPadActivateModeDefault(pad *Pad, parent GstObjector, mode PadMode, act
 	return _ok
 }
 
-// GhostPadInternalActivateModeDefault: invoke the default activate mode
-// function of a proxy pad that is owned by a ghost pad.
+// GhostPadInternalActivateModeDefault
+// (gst_ghost_pad_internal_activate_mode_default): invoke the default activate
+// mode function of a proxy pad that is owned by a ghost pad.
 //
 // The function takes the following parameters:
 //
@@ -25014,7 +26305,7 @@ func GhostPadInternalActivateModeDefault(pad *Pad, parent GstObjector, mode PadM
 	return _ok
 }
 
-// Int64Range: fundamental type that describes a #gint64 range.
+// Int64Range (GstInt64Range): fundamental type that describes a #gint64 range.
 type Int64Range struct {
 	_ [0]func() // equal guard
 	*coreglib.Object
@@ -25023,6 +26314,18 @@ type Int64Range struct {
 var (
 	_ coreglib.Objector = (*Int64Range)(nil)
 )
+
+// Int64Ranger describes types inherited from Int64Range.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type Int64Ranger interface {
+	coreglib.Objector
+
+	baseInt64Range() *Int64Range
+}
+
+var _ Int64Ranger = (*Int64Range)(nil)
 
 func wrapInt64Range(obj *coreglib.Object) *Int64Range {
 	return &Int64Range{
@@ -25034,7 +26337,16 @@ func marshalInt64Range(p uintptr) (interface{}, error) {
 	return wrapInt64Range(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// IntRange: fundamental type that describes a #gint range.
+func (v *Int64Range) baseInt64Range() *Int64Range {
+	return v
+}
+
+// BaseInt64Range returns the underlying base object.
+func BaseInt64Range(obj Int64Ranger) *Int64Range {
+	return obj.baseInt64Range()
+}
+
+// IntRange (GstIntRange): fundamental type that describes a #gint range.
 type IntRange struct {
 	_ [0]func() // equal guard
 	*coreglib.Object
@@ -25043,6 +26355,18 @@ type IntRange struct {
 var (
 	_ coreglib.Objector = (*IntRange)(nil)
 )
+
+// IntRanger describes types inherited from IntRange.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type IntRanger interface {
+	coreglib.Objector
+
+	baseIntRange() *IntRange
+}
+
+var _ IntRanger = (*IntRange)(nil)
 
 func wrapIntRange(obj *coreglib.Object) *IntRange {
 	return &IntRange{
@@ -25054,6 +26378,15 @@ func marshalIntRange(p uintptr) (interface{}, error) {
 	return wrapIntRange(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
+func (v *IntRange) baseIntRange() *IntRange {
+	return v
+}
+
+// BaseIntRange returns the underlying base object.
+func BaseIntRange(obj IntRanger) *IntRange {
+	return obj.baseIntRange()
+}
+
 // GstObjectOverrides contains methods that are overridable.
 type GstObjectOverrides struct {
 }
@@ -25062,9 +26395,9 @@ func defaultGstObjectOverrides(v *GstObject) GstObjectOverrides {
 	return GstObjectOverrides{}
 }
 
-// GstObject provides a root for the object hierarchy tree filed in by the
-// GStreamer library. It is currently a thin wrapper on top of Unowned. It is an
-// abstract class that is not very usable on its own.
+// GstObject (GstObject) provides a root for the object hierarchy tree filed in
+// by the GStreamer library. It is currently a thin wrapper on top of Unowned.
+// It is an abstract class that is not very usable on its own.
 //
 // Object gives us basic refcounting, parenting functionality and locking. Most
 // of the functions are just extended for special GStreamer needs and can be
@@ -25119,12 +26452,80 @@ type GstObject struct {
 
 var ()
 
-// GstObjector describes types inherited from class GstObject.
+// GstObjector describes types inherited from GstObject.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type GstObjector interface {
 	coreglib.Objector
+
+	// AddControlBinding (gst_object_add_control_binding): attach the
+	// ControlBinding to the object.
+	AddControlBinding(binding ControlBindinger) bool
+	// DefaultError (gst_object_default_error): default error function that uses
+	// g_printerr() to display the error message and the optional debug string..
+	DefaultError(err error, debug string)
+	// CurrentControlBinding (gst_object_get_control_binding) gets the
+	// corresponding ControlBinding for the property.
+	CurrentControlBinding(propertyName string) ControlBindinger
+	// ControlRate (gst_object_get_control_rate): obtain the control-rate for
+	// this object.
+	ControlRate() ClockTime
+	// GValueArray (gst_object_get_g_value_array) gets a number of #GValues for
+	// the given controlled property starting at the requested time.
+	GValueArray(propertyName string, timestamp, interval ClockTime, values []coreglib.Value) bool
+	// Name (gst_object_get_name) returns a copy of the name of object.
+	Name() string
+	// Parent (gst_object_get_parent) returns the parent of object.
+	Parent() GstObjector
+	// PathString (gst_object_get_path_string) generates a string describing the
+	// path of object in the object hierarchy.
+	PathString() string
+	// Value (gst_object_get_value) gets the value for the given controlled
+	// property at the requested time.
+	Value(propertyName string, timestamp ClockTime) *coreglib.Value
+	// HasActiveControlBindings (gst_object_has_active_control_bindings):
+	// check if the object has active controlled properties.
+	HasActiveControlBindings() bool
+	// HasAncestor (gst_object_has_ancestor): check if object has an ancestor
+	// ancestor somewhere up in the hierarchy.
+	HasAncestor(ancestor GstObjector) bool
+	// HasAsAncestor (gst_object_has_as_ancestor): check if object has an
+	// ancestor ancestor somewhere up in the hierarchy.
+	HasAsAncestor(ancestor GstObjector) bool
+	// HasAsParent (gst_object_has_as_parent): check if parent is the parent of
+	// object.
+	HasAsParent(parent GstObjector) bool
+	// RemoveControlBinding (gst_object_remove_control_binding) removes the
+	// corresponding ControlBinding.
+	RemoveControlBinding(binding ControlBindinger) bool
+	// SetControlBindingDisabled (gst_object_set_control_binding_disabled):
+	// this function is used to disable the control bindings on a property for
+	// some time, i.e.
+	SetControlBindingDisabled(propertyName string, disabled bool)
+	// SetControlBindingsDisabled (gst_object_set_control_bindings_disabled):
+	// this function is used to disable all controlled properties of the object
+	// for some time, i.e.
+	SetControlBindingsDisabled(disabled bool)
+	// SetControlRate (gst_object_set_control_rate): change the control-rate for
+	// this object.
+	SetControlRate(controlRate ClockTime)
+	// SetName (gst_object_set_name) sets the name of object, or gives object a
+	// guaranteed unique name (if name is NULL).
+	SetName(name string) bool
+	// SetParent (gst_object_set_parent) sets the parent of object to parent.
+	SetParent(parent GstObjector) bool
+	// SuggestNextSync (gst_object_suggest_next_sync) returns a suggestion for
+	// timestamps where buffers should be split to get best controller results.
+	SuggestNextSync() ClockTime
+	// SyncValues (gst_object_sync_values) sets the properties of the object,
+	// according to the ControlSources that (maybe) handle them and for the
+	// given timestamp.
+	SyncValues(timestamp ClockTime) bool
+	// Unparent (gst_object_unparent): clear the parent of object, removing the
+	// associated reference.
+	Unparent()
+
 	baseGstObject() *GstObject
 }
 
@@ -25167,8 +26568,9 @@ func BaseGstObject(obj GstObjector) *GstObject {
 	return obj.baseGstObject()
 }
 
-// AddControlBinding: attach the ControlBinding to the object. If there already
-// was a ControlBinding for this property it will be replaced.
+// AddControlBinding (gst_object_add_control_binding): attach the ControlBinding
+// to the object. If there already was a ControlBinding for this property it
+// will be replaced.
 //
 // The object's reference count will be incremented, and any floating reference
 // will be removed (see gst_object_ref_sink()).
@@ -25202,8 +26604,8 @@ func (object *GstObject) AddControlBinding(binding ControlBindinger) bool {
 	return _ok
 }
 
-// DefaultError: default error function that uses g_printerr() to display the
-// error message and the optional debug string..
+// DefaultError (gst_object_default_error): default error function that uses
+// g_printerr() to display the error message and the optional debug string..
 //
 // The default handler will simply print the error string using g_print.
 //
@@ -25231,8 +26633,8 @@ func (source *GstObject) DefaultError(err error, debug string) {
 	runtime.KeepAlive(debug)
 }
 
-// ControlBinding gets the corresponding ControlBinding for the property.
-// This should be unreferenced again after use.
+// CurrentControlBinding (gst_object_get_control_binding) gets the corresponding
+// ControlBinding for the property. This should be unreferenced again after use.
 //
 // The function takes the following parameters:
 //
@@ -25242,7 +26644,7 @@ func (source *GstObject) DefaultError(err error, debug string) {
 //
 //   - controlBinding (optional) for property_name or NULL if the property is
 //     not controlled.
-func (object *GstObject) ControlBinding(propertyName string) ControlBindinger {
+func (object *GstObject) CurrentControlBinding(propertyName string) ControlBindinger {
 	var _arg0 *C.GstObject         // out
 	var _arg1 *C.gchar             // out
 	var _cret *C.GstControlBinding // in
@@ -25277,10 +26679,10 @@ func (object *GstObject) ControlBinding(propertyName string) ControlBindinger {
 	return _controlBinding
 }
 
-// ControlRate: obtain the control-rate for this object. Audio processing
-// Element objects will use this rate to sub-divide their processing loop and
-// call gst_object_sync_values() in between. The length of the processing
-// segment should be up to control-rate nanoseconds.
+// ControlRate (gst_object_get_control_rate): obtain the control-rate for this
+// object. Audio processing Element objects will use this rate to sub-divide
+// their processing loop and call gst_object_sync_values() in between. The
+// length of the processing segment should be up to control-rate nanoseconds.
 //
 // If the object is not under property control, this will return
 // GST_CLOCK_TIME_NONE. This allows the element to avoid the sub-dividing.
@@ -25307,9 +26709,9 @@ func (object *GstObject) ControlRate() ClockTime {
 	return _clockTime
 }
 
-// GValueArray gets a number of #GValues for the given controlled property
-// starting at the requested time. The array values need to hold enough space
-// for n_values of #GValue.
+// GValueArray (gst_object_get_g_value_array) gets a number of #GValues for the
+// given controlled property starting at the requested time. The array values
+// need to hold enough space for n_values of #GValue.
 //
 // This function is useful if one wants to e.g. draw a graph of the control
 // curve or apply a control curve sample by sample.
@@ -25364,9 +26766,9 @@ func (object *GstObject) GValueArray(propertyName string, timestamp, interval Cl
 	return _ok
 }
 
-// Name returns a copy of the name of object. Caller should g_free() the return
-// value after usage. For a nameless object, this returns NULL, which you can
-// safely g_free() as well.
+// Name (gst_object_get_name) returns a copy of the name of object.
+// Caller should g_free() the return value after usage. For a nameless object,
+// this returns NULL, which you can safely g_free() as well.
 //
 // Free-function: g_free.
 //
@@ -25394,8 +26796,9 @@ func (object *GstObject) Name() string {
 	return _utf8
 }
 
-// Parent returns the parent of object. This function increases the refcount of
-// the parent object so you should gst_object_unref() it after usage.
+// Parent (gst_object_get_parent) returns the parent of object. This function
+// increases the refcount of the parent object so you should gst_object_unref()
+// it after usage.
 //
 // The function returns the following values:
 //
@@ -25434,8 +26837,8 @@ func (object *GstObject) Parent() GstObjector {
 	return _ret
 }
 
-// PathString generates a string describing the path of object in the object
-// hierarchy. Only useful (or used) for debugging.
+// PathString (gst_object_get_path_string) generates a string describing the
+// path of object in the object hierarchy. Only useful (or used) for debugging.
 //
 // Free-function: g_free.
 //
@@ -25463,7 +26866,8 @@ func (object *GstObject) PathString() string {
 	return _utf8
 }
 
-// Value gets the value for the given controlled property at the requested time.
+// Value (gst_object_get_value) gets the value for the given controlled property
+// at the requested time.
 //
 // The function takes the following parameters:
 //
@@ -25502,8 +26906,8 @@ func (object *GstObject) Value(propertyName string, timestamp ClockTime) *coregl
 	return _value
 }
 
-// HasActiveControlBindings: check if the object has active controlled
-// properties.
+// HasActiveControlBindings (gst_object_has_active_control_bindings): check if
+// the object has active controlled properties.
 //
 // The function returns the following values:
 //
@@ -25526,8 +26930,9 @@ func (object *GstObject) HasActiveControlBindings() bool {
 	return _ok
 }
 
-// HasAncestor: check if object has an ancestor ancestor somewhere up in the
-// hierarchy. One can e.g. check if a Element is inside a Pipeline.
+// HasAncestor (gst_object_has_ancestor): check if object has an ancestor
+// ancestor somewhere up in the hierarchy. One can e.g. check if a Element is
+// inside a Pipeline.
 //
 // Deprecated: Use gst_object_has_as_ancestor() instead.
 //
@@ -25561,8 +26966,9 @@ func (object *GstObject) HasAncestor(ancestor GstObjector) bool {
 	return _ok
 }
 
-// HasAsAncestor: check if object has an ancestor ancestor somewhere up in the
-// hierarchy. One can e.g. check if a Element is inside a Pipeline.
+// HasAsAncestor (gst_object_has_as_ancestor): check if object has an ancestor
+// ancestor somewhere up in the hierarchy. One can e.g. check if a Element is
+// inside a Pipeline.
 //
 // The function takes the following parameters:
 //
@@ -25594,8 +27000,8 @@ func (object *GstObject) HasAsAncestor(ancestor GstObjector) bool {
 	return _ok
 }
 
-// HasAsParent: check if parent is the parent of object. E.g. a Element can
-// check if it owns a given Pad.
+// HasAsParent (gst_object_has_as_parent): check if parent is the parent of
+// object. E.g. a Element can check if it owns a given Pad.
 //
 // The function takes the following parameters:
 //
@@ -25628,8 +27034,9 @@ func (object *GstObject) HasAsParent(parent GstObjector) bool {
 	return _ok
 }
 
-// RemoveControlBinding removes the corresponding ControlBinding. If it was the
-// last ref of the binding, it will be disposed.
+// RemoveControlBinding (gst_object_remove_control_binding) removes the
+// corresponding ControlBinding. If it was the last ref of the binding, it will
+// be disposed.
 //
 // The function takes the following parameters:
 //
@@ -25659,9 +27066,9 @@ func (object *GstObject) RemoveControlBinding(binding ControlBindinger) bool {
 	return _ok
 }
 
-// SetControlBindingDisabled: this function is used to disable the control
-// bindings on a property for some time, i.e. gst_object_sync_values() will do
-// nothing for the property.
+// SetControlBindingDisabled (gst_object_set_control_binding_disabled): this
+// function is used to disable the control bindings on a property for some time,
+// i.e. gst_object_sync_values() will do nothing for the property.
 //
 // The function takes the following parameters:
 //
@@ -25686,9 +27093,9 @@ func (object *GstObject) SetControlBindingDisabled(propertyName string, disabled
 	runtime.KeepAlive(disabled)
 }
 
-// SetControlBindingsDisabled: this function is used to disable all controlled
-// properties of the object for some time, i.e. gst_object_sync_values() will do
-// nothing.
+// SetControlBindingsDisabled (gst_object_set_control_bindings_disabled):
+// this function is used to disable all controlled properties of the object for
+// some time, i.e. gst_object_sync_values() will do nothing.
 //
 // The function takes the following parameters:
 //
@@ -25708,10 +27115,11 @@ func (object *GstObject) SetControlBindingsDisabled(disabled bool) {
 	runtime.KeepAlive(disabled)
 }
 
-// SetControlRate: change the control-rate for this object. Audio processing
-// Element objects will use this rate to sub-divide their processing loop and
-// call gst_object_sync_values() in between. The length of the processing
-// segment should be up to control-rate nanoseconds.
+// SetControlRate (gst_object_set_control_rate): change the control-rate
+// for this object. Audio processing Element objects will use this rate to
+// sub-divide their processing loop and call gst_object_sync_values() in
+// between. The length of the processing segment should be up to control-rate
+// nanoseconds.
 //
 // The control-rate should not change if the element is in GST_STATE_PAUSED or
 // GST_STATE_PLAYING.
@@ -25731,9 +27139,9 @@ func (object *GstObject) SetControlRate(controlRate ClockTime) {
 	runtime.KeepAlive(controlRate)
 }
 
-// SetName sets the name of object, or gives object a guaranteed unique name (if
-// name is NULL). This function makes a copy of the provided name, so the caller
-// retains ownership of the name it sent.
+// SetName (gst_object_set_name) sets the name of object, or gives object a
+// guaranteed unique name (if name is NULL). This function makes a copy of the
+// provided name, so the caller retains ownership of the name it sent.
 //
 // The function takes the following parameters:
 //
@@ -25769,9 +27177,9 @@ func (object *GstObject) SetName(name string) bool {
 	return _ok
 }
 
-// SetParent sets the parent of object to parent. The object's reference
-// count will be incremented, and any floating reference will be removed (see
-// gst_object_ref_sink()).
+// SetParent (gst_object_set_parent) sets the parent of object to parent.
+// The object's reference count will be incremented, and any floating reference
+// will be removed (see gst_object_ref_sink()).
 //
 // The function takes the following parameters:
 //
@@ -25804,8 +27212,8 @@ func (object *GstObject) SetParent(parent GstObjector) bool {
 	return _ok
 }
 
-// SuggestNextSync returns a suggestion for timestamps where buffers should be
-// split to get best controller results.
+// SuggestNextSync (gst_object_suggest_next_sync) returns a suggestion for
+// timestamps where buffers should be split to get best controller results.
 //
 // The function returns the following values:
 //
@@ -25827,8 +27235,9 @@ func (object *GstObject) SuggestNextSync() ClockTime {
 	return _clockTime
 }
 
-// SyncValues sets the properties of the object, according to the ControlSources
-// that (maybe) handle them and for the given timestamp.
+// SyncValues (gst_object_sync_values) sets the properties of the object,
+// according to the ControlSources that (maybe) handle them and for the given
+// timestamp.
 //
 // If this function fails, it is most likely the application developers fault.
 // Most probably the control sources are not setup correctly.
@@ -25862,8 +27271,8 @@ func (object *GstObject) SyncValues(timestamp ClockTime) bool {
 	return _ok
 }
 
-// Unparent: clear the parent of object, removing the associated reference.
-// This function decreases the refcount of object.
+// Unparent (gst_object_unparent): clear the parent of object, removing the
+// associated reference. This function decreases the refcount of object.
 //
 // MT safe. Grabs and releases object's lock.
 func (object *GstObject) Unparent() {
@@ -25875,11 +27284,11 @@ func (object *GstObject) Unparent() {
 	runtime.KeepAlive(object)
 }
 
-// ObjectCheckUniqueness checks to see if there is any object named name in
-// list. This function does not do any locking of any kind. You might want
-// to protect the provided list with the lock of the owner of the list. This
-// function will lock each Object in the list to compare the name, so be careful
-// when passing a list with a locked object.
+// ObjectCheckUniqueness (gst_object_check_uniqueness) checks to see if there is
+// any object named name in list. This function does not do any locking of any
+// kind. You might want to protect the provided list with the lock of the owner
+// of the list. This function will lock each Object in the list to compare the
+// name, so be careful when passing a list with a locked object.
 //
 // The function takes the following parameters:
 //
@@ -25933,8 +27342,8 @@ func defaultPadOverrides(v *Pad) PadOverrides {
 	}
 }
 
-// Pad is linked to other elements via "pads", which are extremely light-weight
-// generic link points.
+// Pad (GstPad) is linked to other elements via "pads", which are extremely
+// light-weight generic link points.
 //
 // Pads have a PadDirection, source pads produce data, sink pads consume data.
 //
@@ -25999,6 +27408,219 @@ var (
 	_ GstObjector = (*Pad)(nil)
 )
 
+// Padder describes types inherited from Pad.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type Padder interface {
+	GstObjector
+
+	// ActivateMode (gst_pad_activate_mode) activates or deactivates the given
+	// pad in mode via dispatching to the pad's activatemodefunc.
+	ActivateMode(mode PadMode, active bool) bool
+	// AddProbe (gst_pad_add_probe): be notified of different states of pads.
+	AddProbe(mask PadProbeType, callback PadProbeCallback) uint32
+	// CanLink (gst_pad_can_link) checks if the source pad and the sink pad are
+	// compatible so they can be linked.
+	CanLink(sinkpad *Pad) bool
+	// Chain (gst_pad_chain) a buffer to pad.
+	Chain(buffer *Buffer) FlowReturn
+	// ChainList (gst_pad_chain_list): chain a bufferlist to pad.
+	ChainList(list *BufferList) FlowReturn
+	// CheckReconfigure (gst_pad_check_reconfigure): check and clear the
+	// T_PAD_FLAG_NEED_RECONFIGURE flag on pad and return TRUE if the flag was
+	// set.
+	CheckReconfigure() bool
+	// CreateStreamID (gst_pad_create_stream_id) creates a stream-id for the
+	// source Pad pad by combining the upstream information with the optional
+	// stream_id of the stream of pad.
+	CreateStreamID(parent Elementer, streamId string) string
+	// EventDefault (gst_pad_event_default) invokes the default event handler
+	// for the given pad.
+	EventDefault(parent GstObjector, event *Event) bool
+	// Forward (gst_pad_forward) calls forward for all internally linked pads of
+	// pad.
+	Forward(forward PadForwardFunction) bool
+	// AllowedCaps (gst_pad_get_allowed_caps) gets the capabilities of the
+	// allowed media types that can flow through pad and its peer.
+	AllowedCaps() *Caps
+	// CurrentCaps (gst_pad_get_current_caps) gets the capabilities currently
+	// configured on pad with the last T_EVENT_CAPS event.
+	CurrentCaps() *Caps
+	// Direction (gst_pad_get_direction) gets the direction of the pad.
+	Direction() PadDirection
+	// ElementPrivate (gst_pad_get_element_private) gets the private data of a
+	// pad.
+	ElementPrivate() unsafe.Pointer
+	// LastFlowReturn (gst_pad_get_last_flow_return) gets the FlowReturn return
+	// from the last data passed by this pad.
+	LastFlowReturn() FlowReturn
+	// Offset (gst_pad_get_offset): get the offset applied to the running time
+	// of pad.
+	Offset() int64
+	// PadTemplate (gst_pad_get_pad_template) gets the template for pad.
+	PadTemplate() *PadTemplate
+	// PadTemplateCaps (gst_pad_get_pad_template_caps) gets the capabilities for
+	// pad's template.
+	PadTemplateCaps() *Caps
+	// ParentElement (gst_pad_get_parent_element) gets the parent of pad,
+	// cast to a Element.
+	ParentElement() Elementer
+	// Peer (gst_pad_get_peer) gets the peer of pad.
+	Peer() *Pad
+	// Range (gst_pad_get_range): when pad is flushing this function returns
+	// T_FLOW_FLUSHING immediately and buffer is NULL.
+	Range(offset uint64, size uint) (*Buffer, FlowReturn)
+	// SingleInternalLink (gst_pad_get_single_internal_link): if there is a
+	// single internal link of the given pad, this function will return it.
+	SingleInternalLink() *Pad
+	// StickyEvent (gst_pad_get_sticky_event) returns a new reference of the
+	// sticky event of type event_type from the event.
+	StickyEvent(eventType EventType, idx uint) *Event
+	// Stream (gst_pad_get_stream) returns the current Stream for the pad,
+	// or NULL if none has been set yet, i.e.
+	Stream() *Stream
+	// StreamID (gst_pad_get_stream_id) returns the current stream-id for the
+	// pad, or NULL if none has been set yet, i.e.
+	StreamID() string
+	// TaskState (gst_pad_get_task_state): get pad task state.
+	TaskState() TaskState
+	// HasCurrentCaps (gst_pad_has_current_caps): check if pad has caps set on
+	// it with a T_EVENT_CAPS event.
+	HasCurrentCaps() bool
+	// IsActive (gst_pad_is_active): query if a pad is active.
+	IsActive() bool
+	// IsBlocked (gst_pad_is_blocked) checks if the pad is blocked or not.
+	IsBlocked() bool
+	// IsBlocking (gst_pad_is_blocking) checks if the pad is blocking or not.
+	IsBlocking() bool
+	// IsLinked (gst_pad_is_linked) checks if a pad is linked to another pad or
+	// not.
+	IsLinked() bool
+	// IterateInternalLinks (gst_pad_iterate_internal_links) gets an iterator
+	// for the pads to which the given pad is linked to inside of the parent
+	// element.
+	IterateInternalLinks() *Iterator
+	// IterateInternalLinksDefault (gst_pad_iterate_internal_links_default):
+	// iterate the list of pads to which the given pad is linked to inside of
+	// the parent element.
+	IterateInternalLinksDefault(parent GstObjector) *Iterator
+	// Link (gst_pad_link) links the source pad and the sink pad.
+	Link(sinkpad *Pad) PadLinkReturn
+	// LinkFull (gst_pad_link_full) links the source pad and the sink pad.
+	LinkFull(sinkpad *Pad, flags PadLinkCheck) PadLinkReturn
+	// LinkMaybeGhosting (gst_pad_link_maybe_ghosting) links src to sink,
+	// creating any GhostPad's in between as necessary.
+	LinkMaybeGhosting(sink *Pad) bool
+	// LinkMaybeGhostingFull (gst_pad_link_maybe_ghosting_full) links src to
+	// sink, creating any GhostPad's in between as necessary.
+	LinkMaybeGhostingFull(sink *Pad, flags PadLinkCheck) bool
+	// MarkReconfigure (gst_pad_mark_reconfigure): mark a pad for needing
+	// reconfiguration.
+	MarkReconfigure()
+	// NeedsReconfigure (gst_pad_needs_reconfigure): check the
+	// T_PAD_FLAG_NEED_RECONFIGURE flag on pad and return TRUE if the flag was
+	// set.
+	NeedsReconfigure() bool
+	// PauseTask (gst_pad_pause_task): pause the task of pad.
+	PauseTask() bool
+	// PeerQuery (gst_pad_peer_query) performs gst_pad_query() on the peer of
+	// pad.
+	PeerQuery(query *Query) bool
+	// PeerQueryAcceptCaps (gst_pad_peer_query_accept_caps): check if the peer
+	// of pad accepts caps.
+	PeerQueryAcceptCaps(caps *Caps) bool
+	// PeerQueryCaps (gst_pad_peer_query_caps) gets the capabilities of the peer
+	// connected to this pad.
+	PeerQueryCaps(filter *Caps) *Caps
+	// PeerQueryConvert (gst_pad_peer_query_convert) queries the peer pad of a
+	// given sink pad to convert src_val in src_format to dest_format.
+	PeerQueryConvert(srcFormat Format, srcVal int64, destFormat Format) (int64, bool)
+	// PeerQueryDuration (gst_pad_peer_query_duration) queries the peer pad of a
+	// given sink pad for the total stream duration.
+	PeerQueryDuration(format Format) (int64, bool)
+	// PeerQueryPosition (gst_pad_peer_query_position) queries the peer of a
+	// given sink pad for the stream position.
+	PeerQueryPosition(format Format) (int64, bool)
+	// ProxyQueryAcceptCaps (gst_pad_proxy_query_accept_caps) checks if all
+	// internally linked pads of pad accepts the caps in query and returns the
+	// intersection of the results.
+	ProxyQueryAcceptCaps(query *Query) bool
+	// ProxyQueryCaps (gst_pad_proxy_query_caps) calls gst_pad_query_caps() for
+	// all internally linked pads of pad and returns the intersection of the
+	// results.
+	ProxyQueryCaps(query *Query) bool
+	// PullRange (gst_pad_pull_range) pulls a buffer from the peer pad or fills
+	// up a provided buffer.
+	PullRange(offset uint64, size uint) (*Buffer, FlowReturn)
+	// Push (gst_pad_push) pushes a buffer to the peer of pad.
+	Push(buffer *Buffer) FlowReturn
+	// PushEvent (gst_pad_push_event) sends the event to the peer of the given
+	// pad.
+	PushEvent(event *Event) bool
+	// PushList (gst_pad_push_list) pushes a buffer list to the peer of pad.
+	PushList(list *BufferList) FlowReturn
+	// Query (gst_pad_query) dispatches a query to a pad.
+	Query(query *Query) bool
+	// QueryAcceptCaps (gst_pad_query_accept_caps): check if the given pad
+	// accepts the caps.
+	QueryAcceptCaps(caps *Caps) bool
+	// QueryCaps (gst_pad_query_caps) gets the capabilities this pad can produce
+	// or consume.
+	QueryCaps(filter *Caps) *Caps
+	// QueryConvert (gst_pad_query_convert) queries a pad to convert src_val in
+	// src_format to dest_format.
+	QueryConvert(srcFormat Format, srcVal int64, destFormat Format) (int64, bool)
+	// QueryDefault (gst_pad_query_default) invokes the default query handler
+	// for the given pad.
+	QueryDefault(parent GstObjector, query *Query) bool
+	// QueryDuration (gst_pad_query_duration) queries a pad for the total stream
+	// duration.
+	QueryDuration(format Format) (int64, bool)
+	// QueryPosition (gst_pad_query_position) queries a pad for the stream
+	// position.
+	QueryPosition(format Format) (int64, bool)
+	// RemoveProbe (gst_pad_remove_probe): remove the probe with id from pad.
+	RemoveProbe(id uint32)
+	// SendEvent (gst_pad_send_event) sends the event to the pad.
+	SendEvent(event *Event) bool
+	// SetActive (gst_pad_set_active) activates or deactivates the given pad.
+	SetActive(active bool) bool
+	// SetElementPrivate (gst_pad_set_element_private): set the given private
+	// data gpointer on the pad.
+	SetElementPrivate(priv unsafe.Pointer)
+	// SetOffset (gst_pad_set_offset): set the offset that will be applied to
+	// the running time of pad.
+	SetOffset(offset int64)
+	// StartTask (gst_pad_start_task) starts a task that repeatedly calls func
+	// with user_data.
+	StartTask(fn TaskFunction) bool
+	// StickyEventsForEach (gst_pad_sticky_events_foreach) iterates all sticky
+	// events on pad and calls foreach_func for every event.
+	StickyEventsForEach(foreachFunc PadStickyEventsForEachFunction)
+	// StopTask (gst_pad_stop_task): stop the task of pad.
+	StopTask() bool
+	// StoreStickyEvent (gst_pad_store_sticky_event): store the sticky event on
+	// pad.
+	StoreStickyEvent(event *Event) FlowReturn
+	// Unlink (gst_pad_unlink) unlinks the source pad from the sink pad.
+	Unlink(sinkpad *Pad) bool
+	// UseFixedCaps (gst_pad_use_fixed_caps): helper function you can use
+	// that sets the FIXED_CAPS flag This way the default CAPS query will
+	// always return the negotiated caps or in case the pad is not negotiated,
+	// the padtemplate caps.
+	UseFixedCaps()
+
+	// Linked signals that a pad has been linked to the peer pad.
+	ConnectLinked(func(peer *Pad)) coreglib.SignalHandle
+	// Unlinked signals that a pad has been unlinked from the peer pad.
+	ConnectUnlinked(func(peer *Pad)) coreglib.SignalHandle
+
+	basePad() *Pad
+}
+
+var _ Padder = (*Pad)(nil)
+
 func init() {
 	coreglib.RegisterClassInfo[*Pad, *PadClass, PadOverrides](
 		GTypePad,
@@ -26039,6 +27661,15 @@ func marshalPad(p uintptr) (interface{}, error) {
 	return wrapPad(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
+func (pad *Pad) basePad() *Pad {
+	return pad
+}
+
+// BasePad returns the underlying base object.
+func BasePad(obj Padder) *Pad {
+	return obj.basePad()
+}
+
 // ConnectLinked signals that a pad has been linked to the peer pad.
 func (pad *Pad) ConnectLinked(f func(peer *Pad)) coreglib.SignalHandle {
 	return coreglib.ConnectGeneratedClosure(pad, "linked", false, unsafe.Pointer(C._gotk4_gst1_Pad_ConnectLinked), f)
@@ -26049,9 +27680,10 @@ func (pad *Pad) ConnectUnlinked(f func(peer *Pad)) coreglib.SignalHandle {
 	return coreglib.ConnectGeneratedClosure(pad, "unlinked", false, unsafe.Pointer(C._gotk4_gst1_Pad_ConnectUnlinked), f)
 }
 
-// NewPad creates a new pad with the given name in the given direction.
-// If name is NULL, a guaranteed unique name (across all pads) will be assigned.
-// This function makes a copy of the name so you can safely free the name.
+// NewPad (gst_pad_new) creates a new pad with the given name in the given
+// direction. If name is NULL, a guaranteed unique name (across all pads) will
+// be assigned. This function makes a copy of the name so you can safely free
+// the name.
 //
 // The function takes the following parameters:
 //
@@ -26085,10 +27717,10 @@ func NewPad(name string, direction PadDirection) *Pad {
 	return _pad
 }
 
-// NewPadFromStaticTemplate creates a new pad with the given name from the given
-// static template. If name is NULL, a guaranteed unique name (across all pads)
-// will be assigned. This function makes a copy of the name so you can safely
-// free the name.
+// NewPadFromStaticTemplate (gst_pad_new_from_static_template) creates a new
+// pad with the given name from the given static template. If name is NULL,
+// a guaranteed unique name (across all pads) will be assigned. This function
+// makes a copy of the name so you can safely free the name.
 //
 // The function takes the following parameters:
 //
@@ -26118,10 +27750,10 @@ func NewPadFromStaticTemplate(templ *StaticPadTemplate, name string) *Pad {
 	return _pad
 }
 
-// NewPadFromTemplate creates a new pad with the given name from the given
-// template. If name is NULL, a guaranteed unique name (across all pads) will be
-// assigned. This function makes a copy of the name so you can safely free the
-// name.
+// NewPadFromTemplate (gst_pad_new_from_template) creates a new pad with the
+// given name from the given template. If name is NULL, a guaranteed unique name
+// (across all pads) will be assigned. This function makes a copy of the name so
+// you can safely free the name.
 //
 // The function takes the following parameters:
 //
@@ -26153,9 +27785,9 @@ func NewPadFromTemplate(templ *PadTemplate, name string) *Pad {
 	return _pad
 }
 
-// ActivateMode activates or deactivates the given pad in mode via dispatching
-// to the pad's activatemodefunc. For use from within pad activation functions
-// only.
+// ActivateMode (gst_pad_activate_mode) activates or deactivates the given pad
+// in mode via dispatching to the pad's activatemodefunc. For use from within
+// pad activation functions only.
 //
 // If you don't know what this is, you probably don't want to call it.
 //
@@ -26195,8 +27827,8 @@ func (pad *Pad) ActivateMode(mode PadMode, active bool) bool {
 	return _ok
 }
 
-// AddProbe: be notified of different states of pads. The provided callback is
-// called for every state that matches mask.
+// AddProbe (gst_pad_add_probe): be notified of different states of pads.
+// The provided callback is called for every state that matches mask.
 //
 // Probes are called in groups: First GST_PAD_PROBE_TYPE_BLOCK probes are
 // called, then others, then finally GST_PAD_PROBE_TYPE_IDLE. The only exception
@@ -26243,8 +27875,8 @@ func (pad *Pad) AddProbe(mask PadProbeType, callback PadProbeCallback) uint32 {
 	return _gulong
 }
 
-// CanLink checks if the source pad and the sink pad are compatible so they can
-// be linked.
+// CanLink (gst_pad_can_link) checks if the source pad and the sink pad are
+// compatible so they can be linked.
 //
 // The function takes the following parameters:
 //
@@ -26274,7 +27906,7 @@ func (srcpad *Pad) CanLink(sinkpad *Pad) bool {
 	return _ok
 }
 
-// Chain a buffer to pad.
+// Chain (gst_pad_chain) a buffer to pad.
 //
 // The function returns T_FLOW_FLUSHING if the pad was flushing.
 //
@@ -26318,7 +27950,7 @@ func (pad *Pad) Chain(buffer *Buffer) FlowReturn {
 	return _flowReturn
 }
 
-// ChainList: chain a bufferlist to pad.
+// ChainList (gst_pad_chain_list): chain a bufferlist to pad.
 //
 // The function returns T_FLOW_FLUSHING if the pad was flushing.
 //
@@ -26362,8 +27994,8 @@ func (pad *Pad) ChainList(list *BufferList) FlowReturn {
 	return _flowReturn
 }
 
-// CheckReconfigure: check and clear the T_PAD_FLAG_NEED_RECONFIGURE flag on pad
-// and return TRUE if the flag was set.
+// CheckReconfigure (gst_pad_check_reconfigure): check and clear the
+// T_PAD_FLAG_NEED_RECONFIGURE flag on pad and return TRUE if the flag was set.
 //
 // The function returns the following values:
 //
@@ -26386,10 +28018,11 @@ func (pad *Pad) CheckReconfigure() bool {
 	return _ok
 }
 
-// CreateStreamID creates a stream-id for the source Pad pad by combining the
-// upstream information with the optional stream_id of the stream of pad. pad
-// must have a parent Element and which must have zero or one sinkpad. stream_id
-// can only be NULL if the parent element of pad has only a single source pad.
+// CreateStreamID (gst_pad_create_stream_id) creates a stream-id for the source
+// Pad pad by combining the upstream information with the optional stream_id of
+// the stream of pad. pad must have a parent Element and which must have zero or
+// one sinkpad. stream_id can only be NULL if the parent element of pad has only
+// a single source pad.
 //
 // This function generates an unique stream-id by getting the upstream
 // stream-start event stream ID and appending stream_id to it. If the element
@@ -26436,7 +28069,8 @@ func (pad *Pad) CreateStreamID(parent Elementer, streamId string) string {
 	return _utf8
 }
 
-// EventDefault invokes the default event handler for the given pad.
+// EventDefault (gst_pad_event_default) invokes the default event handler for
+// the given pad.
 //
 // The EOS event will pause the task associated with pad before it is forwarded
 // to all internally linked pads,
@@ -26479,9 +28113,9 @@ func (pad *Pad) EventDefault(parent GstObjector, event *Event) bool {
 	return _ok
 }
 
-// Forward calls forward for all internally linked pads of pad. This function
-// deals with dynamically changing internal pads and will make sure that the
-// forward function is only called once for each pad.
+// Forward (gst_pad_forward) calls forward for all internally linked pads of
+// pad. This function deals with dynamically changing internal pads and will
+// make sure that the forward function is only called once for each pad.
 //
 // When forward returns TRUE, no further pads will be processed.
 //
@@ -26516,8 +28150,8 @@ func (pad *Pad) Forward(forward PadForwardFunction) bool {
 	return _ok
 }
 
-// AllowedCaps gets the capabilities of the allowed media types that can flow
-// through pad and its peer.
+// AllowedCaps (gst_pad_get_allowed_caps) gets the capabilities of the allowed
+// media types that can flow through pad and its peer.
 //
 // The allowed capabilities is calculated as the intersection of the results of
 // calling gst_pad_query_caps() on pad and its peer. The caller owns a reference
@@ -26552,8 +28186,8 @@ func (pad *Pad) AllowedCaps() *Caps {
 	return _caps
 }
 
-// CurrentCaps gets the capabilities currently configured on pad with the last
-// T_EVENT_CAPS event.
+// CurrentCaps (gst_pad_get_current_caps) gets the capabilities currently
+// configured on pad with the last T_EVENT_CAPS event.
 //
 // The function returns the following values:
 //
@@ -26582,8 +28216,9 @@ func (pad *Pad) CurrentCaps() *Caps {
 	return _caps
 }
 
-// Direction gets the direction of the pad. The direction of the pad is decided
-// at construction time so this function does not take the LOCK.
+// Direction (gst_pad_get_direction) gets the direction of the pad. The
+// direction of the pad is decided at construction time so this function does
+// not take the LOCK.
 //
 // The function returns the following values:
 //
@@ -26606,8 +28241,8 @@ func (pad *Pad) Direction() PadDirection {
 	return _padDirection
 }
 
-// ElementPrivate gets the private data of a pad. No locking is performed in
-// this function.
+// ElementPrivate (gst_pad_get_element_private) gets the private data of a pad.
+// No locking is performed in this function.
 //
 // The function returns the following values:
 //
@@ -26628,8 +28263,8 @@ func (pad *Pad) ElementPrivate() unsafe.Pointer {
 	return _gpointer
 }
 
-// LastFlowReturn gets the FlowReturn return from the last data passed by this
-// pad.
+// LastFlowReturn (gst_pad_get_last_flow_return) gets the FlowReturn return from
+// the last data passed by this pad.
 func (pad *Pad) LastFlowReturn() FlowReturn {
 	var _arg0 *C.GstPad       // out
 	var _cret C.GstFlowReturn // in
@@ -26646,8 +28281,8 @@ func (pad *Pad) LastFlowReturn() FlowReturn {
 	return _flowReturn
 }
 
-// Offset: get the offset applied to the running time of pad. pad has to be a
-// source pad.
+// Offset (gst_pad_get_offset): get the offset applied to the running time of
+// pad. pad has to be a source pad.
 //
 // The function returns the following values:
 //
@@ -26668,7 +28303,7 @@ func (pad *Pad) Offset() int64 {
 	return _gint64
 }
 
-// PadTemplate gets the template for pad.
+// PadTemplate (gst_pad_get_pad_template) gets the template for pad.
 //
 // The function returns the following values:
 //
@@ -26692,7 +28327,8 @@ func (pad *Pad) PadTemplate() *PadTemplate {
 	return _padTemplate
 }
 
-// PadTemplateCaps gets the capabilities for pad's template.
+// PadTemplateCaps (gst_pad_get_pad_template_caps) gets the capabilities for
+// pad's template.
 //
 // The function returns the following values:
 //
@@ -26718,8 +28354,8 @@ func (pad *Pad) PadTemplateCaps() *Caps {
 	return _caps
 }
 
-// ParentElement gets the parent of pad, cast to a Element. If a pad has no
-// parent or its parent is not an element, return NULL.
+// ParentElement (gst_pad_get_parent_element) gets the parent of pad, cast to a
+// Element. If a pad has no parent or its parent is not an element, return NULL.
 //
 // The function returns the following values:
 //
@@ -26758,8 +28394,8 @@ func (pad *Pad) ParentElement() Elementer {
 	return _element
 }
 
-// Peer gets the peer of pad. This function refs the peer pad so you need to
-// unref it after use.
+// Peer (gst_pad_get_peer) gets the peer of pad. This function refs the peer pad
+// so you need to unref it after use.
 //
 // The function returns the following values:
 //
@@ -26784,8 +28420,8 @@ func (pad *Pad) Peer() *Pad {
 	return _ret
 }
 
-// Range: when pad is flushing this function returns T_FLOW_FLUSHING immediately
-// and buffer is NULL.
+// Range (gst_pad_get_range): when pad is flushing this function returns
+// T_FLOW_FLUSHING immediately and buffer is NULL.
 //
 // Calls the getrange function of pad, see PadGetRangeFunction for a description
 // of a getrange function. If pad has no getrange function installed (see
@@ -26851,8 +28487,9 @@ func (pad *Pad) Range(offset uint64, size uint) (*Buffer, FlowReturn) {
 	return _buffer, _flowReturn
 }
 
-// SingleInternalLink: if there is a single internal link of the given pad,
-// this function will return it. Otherwise, it will return NULL.
+// SingleInternalLink (gst_pad_get_single_internal_link): if there is a single
+// internal link of the given pad, this function will return it. Otherwise,
+// it will return NULL.
 //
 // The function returns the following values:
 //
@@ -26876,8 +28513,8 @@ func (pad *Pad) SingleInternalLink() *Pad {
 	return _ret
 }
 
-// StickyEvent returns a new reference of the sticky event of type event_type
-// from the event.
+// StickyEvent (gst_pad_get_sticky_event) returns a new reference of the sticky
+// event of type event_type from the event.
 //
 // The function takes the following parameters:
 //
@@ -26918,8 +28555,9 @@ func (pad *Pad) StickyEvent(eventType EventType, idx uint) *Event {
 	return _event
 }
 
-// Stream returns the current Stream for the pad, or NULL if none has been set
-// yet, i.e. the pad has not received a stream-start event yet.
+// Stream (gst_pad_get_stream) returns the current Stream for the pad, or NULL
+// if none has been set yet, i.e. the pad has not received a stream-start event
+// yet.
 //
 // This is a convenience wrapper around gst_pad_get_sticky_event() and
 // gst_event_parse_stream().
@@ -26946,8 +28584,9 @@ func (pad *Pad) Stream() *Stream {
 	return _stream
 }
 
-// StreamID returns the current stream-id for the pad, or NULL if none has been
-// set yet, i.e. the pad has not received a stream-start event yet.
+// StreamID (gst_pad_get_stream_id) returns the current stream-id for the pad,
+// or NULL if none has been set yet, i.e. the pad has not received a
+// stream-start event yet.
 //
 // This is a convenience wrapper around gst_pad_get_sticky_event() and
 // gst_event_parse_stream_start().
@@ -26978,8 +28617,8 @@ func (pad *Pad) StreamID() string {
 	return _utf8
 }
 
-// TaskState: get pad task state. If no task is currently set, T_TASK_STOPPED is
-// returned.
+// TaskState (gst_pad_get_task_state): get pad task state. If no task is
+// currently set, T_TASK_STOPPED is returned.
 //
 // The function returns the following values:
 //
@@ -27000,7 +28639,8 @@ func (pad *Pad) TaskState() TaskState {
 	return _taskState
 }
 
-// HasCurrentCaps: check if pad has caps set on it with a T_EVENT_CAPS event.
+// HasCurrentCaps (gst_pad_has_current_caps): check if pad has caps set on it
+// with a T_EVENT_CAPS event.
 //
 // The function returns the following values:
 //
@@ -27023,7 +28663,7 @@ func (pad *Pad) HasCurrentCaps() bool {
 	return _ok
 }
 
-// IsActive: query if a pad is active.
+// IsActive (gst_pad_is_active): query if a pad is active.
 //
 // The function returns the following values:
 //
@@ -27048,9 +28688,9 @@ func (pad *Pad) IsActive() bool {
 	return _ok
 }
 
-// IsBlocked checks if the pad is blocked or not. This function returns the
-// last requested state of the pad. It is not certain that the pad is actually
-// blocking at this point (see gst_pad_is_blocking()).
+// IsBlocked (gst_pad_is_blocked) checks if the pad is blocked or not. This
+// function returns the last requested state of the pad. It is not certain that
+// the pad is actually blocking at this point (see gst_pad_is_blocking()).
 //
 // The function returns the following values:
 //
@@ -27075,8 +28715,9 @@ func (pad *Pad) IsBlocked() bool {
 	return _ok
 }
 
-// IsBlocking checks if the pad is blocking or not. This is a guaranteed state
-// of whether the pad is actually blocking on a Buffer or a Event.
+// IsBlocking (gst_pad_is_blocking) checks if the pad is blocking or not. This
+// is a guaranteed state of whether the pad is actually blocking on a Buffer or
+// a Event.
 //
 // The function returns the following values:
 //
@@ -27101,7 +28742,7 @@ func (pad *Pad) IsBlocking() bool {
 	return _ok
 }
 
-// IsLinked checks if a pad is linked to another pad or not.
+// IsLinked (gst_pad_is_linked) checks if a pad is linked to another pad or not.
 //
 // The function returns the following values:
 //
@@ -27126,8 +28767,8 @@ func (pad *Pad) IsLinked() bool {
 	return _ok
 }
 
-// IterateInternalLinks gets an iterator for the pads to which the given pad is
-// linked to inside of the parent element.
+// IterateInternalLinks (gst_pad_iterate_internal_links) gets an iterator for
+// the pads to which the given pad is linked to inside of the parent element.
 //
 // Each Pad element yielded by the iterator will have its refcount increased,
 // so unref after use.
@@ -27163,10 +28804,10 @@ func (pad *Pad) IterateInternalLinks() *Iterator {
 	return _iterator
 }
 
-// IterateInternalLinksDefault: iterate the list of pads to which the given
-// pad is linked to inside of the parent element. This is the default handler,
-// and thus returns an iterator of all of the pads inside the parent element
-// with opposite direction.
+// IterateInternalLinksDefault (gst_pad_iterate_internal_links_default):
+// iterate the list of pads to which the given pad is linked to inside of the
+// parent element. This is the default handler, and thus returns an iterator of
+// all of the pads inside the parent element with opposite direction.
 //
 // The caller must free this iterator after use with gst_iterator_free().
 //
@@ -27207,7 +28848,7 @@ func (pad *Pad) IterateInternalLinksDefault(parent GstObjector) *Iterator {
 	return _iterator
 }
 
-// Link links the source pad and the sink pad.
+// Link (gst_pad_link) links the source pad and the sink pad.
 //
 // The function takes the following parameters:
 //
@@ -27238,7 +28879,7 @@ func (srcpad *Pad) Link(sinkpad *Pad) PadLinkReturn {
 	return _padLinkReturn
 }
 
-// LinkFull links the source pad and the sink pad.
+// LinkFull (gst_pad_link_full) links the source pad and the sink pad.
 //
 // This variant of #gst_pad_link provides a more granular control on the checks
 // being done when linking. While providing some considerable speedups the
@@ -27279,8 +28920,8 @@ func (srcpad *Pad) LinkFull(sinkpad *Pad, flags PadLinkCheck) PadLinkReturn {
 	return _padLinkReturn
 }
 
-// LinkMaybeGhosting links src to sink, creating any GhostPad's in between as
-// necessary.
+// LinkMaybeGhosting (gst_pad_link_maybe_ghosting) links src to sink, creating
+// any GhostPad's in between as necessary.
 //
 // This is a convenience function to save having to create and add intermediate
 // GhostPad's as required for linking across Bin boundaries.
@@ -27316,8 +28957,8 @@ func (src *Pad) LinkMaybeGhosting(sink *Pad) bool {
 	return _ok
 }
 
-// LinkMaybeGhostingFull links src to sink, creating any GhostPad's in between
-// as necessary.
+// LinkMaybeGhostingFull (gst_pad_link_maybe_ghosting_full) links src to sink,
+// creating any GhostPad's in between as necessary.
 //
 // This is a convenience function to save having to create and add intermediate
 // GhostPad's as required for linking across Bin boundaries.
@@ -27361,8 +29002,9 @@ func (src *Pad) LinkMaybeGhostingFull(sink *Pad, flags PadLinkCheck) bool {
 	return _ok
 }
 
-// MarkReconfigure: mark a pad for needing reconfiguration. The next call to
-// gst_pad_check_reconfigure() will return TRUE after this call.
+// MarkReconfigure (gst_pad_mark_reconfigure): mark a pad for needing
+// reconfiguration. The next call to gst_pad_check_reconfigure() will return
+// TRUE after this call.
 func (pad *Pad) MarkReconfigure() {
 	var _arg0 *C.GstPad // out
 
@@ -27372,8 +29014,8 @@ func (pad *Pad) MarkReconfigure() {
 	runtime.KeepAlive(pad)
 }
 
-// NeedsReconfigure: check the T_PAD_FLAG_NEED_RECONFIGURE flag on pad and
-// return TRUE if the flag was set.
+// NeedsReconfigure (gst_pad_needs_reconfigure): check the
+// T_PAD_FLAG_NEED_RECONFIGURE flag on pad and return TRUE if the flag was set.
 //
 // The function returns the following values:
 //
@@ -27396,9 +29038,9 @@ func (pad *Pad) NeedsReconfigure() bool {
 	return _ok
 }
 
-// PauseTask: pause the task of pad. This function will also wait until the
-// function executed by the task is finished if this function is not called from
-// the task function.
+// PauseTask (gst_pad_pause_task): pause the task of pad. This function will
+// also wait until the function executed by the task is finished if this
+// function is not called from the task function.
 //
 // The function returns the following values:
 //
@@ -27421,7 +29063,7 @@ func (pad *Pad) PauseTask() bool {
 	return _ok
 }
 
-// PeerQuery performs gst_pad_query() on the peer of pad.
+// PeerQuery (gst_pad_peer_query) performs gst_pad_query() on the peer of pad.
 //
 // The caller is responsible for both the allocation and deallocation of the
 // query structure.
@@ -27455,8 +29097,8 @@ func (pad *Pad) PeerQuery(query *Query) bool {
 	return _ok
 }
 
-// PeerQueryAcceptCaps: check if the peer of pad accepts caps. If pad has no
-// peer, this function returns TRUE.
+// PeerQueryAcceptCaps (gst_pad_peer_query_accept_caps): check if the peer of
+// pad accepts caps. If pad has no peer, this function returns TRUE.
 //
 // The function takes the following parameters:
 //
@@ -27486,8 +29128,8 @@ func (pad *Pad) PeerQueryAcceptCaps(caps *Caps) bool {
 	return _ok
 }
 
-// PeerQueryCaps gets the capabilities of the peer connected to this pad.
-// Similar to gst_pad_query_caps().
+// PeerQueryCaps (gst_pad_peer_query_caps) gets the capabilities of the peer
+// connected to this pad. Similar to gst_pad_query_caps().
 //
 // When called on srcpads filter contains the caps that upstream could produce
 // in the order preferred by upstream. When called on sinkpads filter contains
@@ -27528,8 +29170,8 @@ func (pad *Pad) PeerQueryCaps(filter *Caps) *Caps {
 	return _caps
 }
 
-// PeerQueryConvert queries the peer pad of a given sink pad to convert src_val
-// in src_format to dest_format.
+// PeerQueryConvert (gst_pad_peer_query_convert) queries the peer pad of a given
+// sink pad to convert src_val in src_format to dest_format.
 //
 // The function takes the following parameters:
 //
@@ -27571,8 +29213,8 @@ func (pad *Pad) PeerQueryConvert(srcFormat Format, srcVal int64, destFormat Form
 	return _destVal, _ok
 }
 
-// PeerQueryDuration queries the peer pad of a given sink pad for the total
-// stream duration.
+// PeerQueryDuration (gst_pad_peer_query_duration) queries the peer pad of a
+// given sink pad for the total stream duration.
 //
 // The function takes the following parameters:
 //
@@ -27607,8 +29249,8 @@ func (pad *Pad) PeerQueryDuration(format Format) (int64, bool) {
 	return _duration, _ok
 }
 
-// PeerQueryPosition queries the peer of a given sink pad for the stream
-// position.
+// PeerQueryPosition (gst_pad_peer_query_position) queries the peer of a given
+// sink pad for the stream position.
 //
 // The function takes the following parameters:
 //
@@ -27642,8 +29284,9 @@ func (pad *Pad) PeerQueryPosition(format Format) (int64, bool) {
 	return _cur, _ok
 }
 
-// ProxyQueryAcceptCaps checks if all internally linked pads of pad accepts the
-// caps in query and returns the intersection of the results.
+// ProxyQueryAcceptCaps (gst_pad_proxy_query_accept_caps) checks if all
+// internally linked pads of pad accepts the caps in query and returns the
+// intersection of the results.
 //
 // This function is useful as a default accept caps query function for an
 // element that can handle any stream format, but requires caps that are
@@ -27677,8 +29320,8 @@ func (pad *Pad) ProxyQueryAcceptCaps(query *Query) bool {
 	return _ok
 }
 
-// ProxyQueryCaps calls gst_pad_query_caps() for all internally linked pads of
-// pad and returns the intersection of the results.
+// ProxyQueryCaps (gst_pad_proxy_query_caps) calls gst_pad_query_caps() for all
+// internally linked pads of pad and returns the intersection of the results.
 //
 // This function is useful as a default caps query function for an element that
 // can handle any stream format, but requires all its pads to have the same
@@ -27712,7 +29355,8 @@ func (pad *Pad) ProxyQueryCaps(query *Query) bool {
 	return _ok
 }
 
-// PullRange pulls a buffer from the peer pad or fills up a provided buffer.
+// PullRange (gst_pad_pull_range) pulls a buffer from the peer pad or fills up a
+// provided buffer.
 //
 // This function will first trigger the pad block signal if it was installed.
 //
@@ -27778,7 +29422,7 @@ func (pad *Pad) PullRange(offset uint64, size uint) (*Buffer, FlowReturn) {
 	return _buffer, _flowReturn
 }
 
-// Push pushes a buffer to the peer of pad.
+// Push (gst_pad_push) pushes a buffer to the peer of pad.
 //
 // This function will call installed block probes before triggering any
 // installed data probes.
@@ -27819,8 +29463,9 @@ func (pad *Pad) Push(buffer *Buffer) FlowReturn {
 	return _flowReturn
 }
 
-// PushEvent sends the event to the peer of the given pad. This function is
-// mainly used by elements to send events to their peer elements.
+// PushEvent (gst_pad_push_event) sends the event to the peer of the given pad.
+// This function is mainly used by elements to send events to their peer
+// elements.
 //
 // This function takes ownership of the provided event so you should
 // gst_event_ref() it if you want to reuse the event after this call.
@@ -27856,7 +29501,7 @@ func (pad *Pad) PushEvent(event *Event) bool {
 	return _ok
 }
 
-// PushList pushes a buffer list to the peer of pad.
+// PushList (gst_pad_push_list) pushes a buffer list to the peer of pad.
 //
 // This function will call installed block probes before triggering any
 // installed data probes.
@@ -27899,11 +29544,11 @@ func (pad *Pad) PushList(list *BufferList) FlowReturn {
 	return _flowReturn
 }
 
-// Query dispatches a query to a pad. The query should have been allocated by
-// the caller via one of the type-specific allocation functions. The element
-// that the pad belongs to is responsible for filling the query with an
-// appropriate response, which should then be parsed with a type-specific query
-// parsing function.
+// Query (gst_pad_query) dispatches a query to a pad. The query should have been
+// allocated by the caller via one of the type-specific allocation functions.
+// The element that the pad belongs to is responsible for filling the query with
+// an appropriate response, which should then be parsed with a type-specific
+// query parsing function.
 //
 // Again, the caller is responsible for both the allocation and deallocation of
 // the query structure.
@@ -27938,7 +29583,8 @@ func (pad *Pad) Query(query *Query) bool {
 	return _ok
 }
 
-// QueryAcceptCaps: check if the given pad accepts the caps.
+// QueryAcceptCaps (gst_pad_query_accept_caps): check if the given pad accepts
+// the caps.
 //
 // The function takes the following parameters:
 //
@@ -27968,12 +29614,12 @@ func (pad *Pad) QueryAcceptCaps(caps *Caps) bool {
 	return _ok
 }
 
-// QueryCaps gets the capabilities this pad can produce or consume.
-// Note that this method doesn't necessarily return the caps set by sending
-// a gst_event_new_caps() - use gst_pad_get_current_caps() for that instead.
-// gst_pad_query_caps returns all possible caps a pad can operate with, using
-// the pad's CAPS query function, If the query fails, this function will return
-// filter, if not NULL, otherwise ANY.
+// QueryCaps (gst_pad_query_caps) gets the capabilities this pad can produce
+// or consume. Note that this method doesn't necessarily return the caps set
+// by sending a gst_event_new_caps() - use gst_pad_get_current_caps() for that
+// instead. gst_pad_query_caps returns all possible caps a pad can operate with,
+// using the pad's CAPS query function, If the query fails, this function will
+// return filter, if not NULL, otherwise ANY.
 //
 // When called on sinkpads filter contains the caps that upstream could produce
 // in the order preferred by upstream. When called on srcpads filter contains
@@ -28016,7 +29662,8 @@ func (pad *Pad) QueryCaps(filter *Caps) *Caps {
 	return _caps
 }
 
-// QueryConvert queries a pad to convert src_val in src_format to dest_format.
+// QueryConvert (gst_pad_query_convert) queries a pad to convert src_val in
+// src_format to dest_format.
 //
 // The function takes the following parameters:
 //
@@ -28058,10 +29705,11 @@ func (pad *Pad) QueryConvert(srcFormat Format, srcVal int64, destFormat Format) 
 	return _destVal, _ok
 }
 
-// QueryDefault invokes the default query handler for the given pad. The query
-// is sent to all pads internally linked to pad. Note that if there are many
-// possible sink pads that are internally linked to pad, only one will be sent
-// the query. Multi-sinkpad elements should implement custom query handlers.
+// QueryDefault (gst_pad_query_default) invokes the default query handler for
+// the given pad. The query is sent to all pads internally linked to pad. Note
+// that if there are many possible sink pads that are internally linked to pad,
+// only one will be sent the query. Multi-sinkpad elements should implement
+// custom query handlers.
 //
 // The function takes the following parameters:
 //
@@ -28097,7 +29745,8 @@ func (pad *Pad) QueryDefault(parent GstObjector, query *Query) bool {
 	return _ok
 }
 
-// QueryDuration queries a pad for the total stream duration.
+// QueryDuration (gst_pad_query_duration) queries a pad for the total stream
+// duration.
 //
 // The function takes the following parameters:
 //
@@ -28132,7 +29781,7 @@ func (pad *Pad) QueryDuration(format Format) (int64, bool) {
 	return _duration, _ok
 }
 
-// QueryPosition queries a pad for the stream position.
+// QueryPosition (gst_pad_query_position) queries a pad for the stream position.
 //
 // The function takes the following parameters:
 //
@@ -28166,7 +29815,7 @@ func (pad *Pad) QueryPosition(format Format) (int64, bool) {
 	return _cur, _ok
 }
 
-// RemoveProbe: remove the probe with id from pad.
+// RemoveProbe (gst_pad_remove_probe): remove the probe with id from pad.
 //
 // MT safe.
 //
@@ -28185,8 +29834,8 @@ func (pad *Pad) RemoveProbe(id uint32) {
 	runtime.KeepAlive(id)
 }
 
-// SendEvent sends the event to the pad. This function can be used by
-// applications to send events in the pipeline.
+// SendEvent (gst_pad_send_event) sends the event to the pad. This function can
+// be used by applications to send events in the pipeline.
 //
 // If pad is a source pad, event should be an upstream event. If pad is a sink
 // pad, event should be a downstream event. For example, you would not send a
@@ -28234,8 +29883,8 @@ func (pad *Pad) SendEvent(event *Event) bool {
 	return _ok
 }
 
-// SetActive activates or deactivates the given pad. Normally called from within
-// core state change functions.
+// SetActive (gst_pad_set_active) activates or deactivates the given pad.
+// Normally called from within core state change functions.
 //
 // If active, makes sure the pad is active. If it is already active, either in
 // push or pull mode, just return. Otherwise dispatches to the pad's activate
@@ -28276,9 +29925,9 @@ func (pad *Pad) SetActive(active bool) bool {
 	return _ok
 }
 
-// SetElementPrivate: set the given private data gpointer on the pad. This
-// function can only be used by the element that owns the pad. No locking is
-// performed in this function.
+// SetElementPrivate (gst_pad_set_element_private): set the given private data
+// gpointer on the pad. This function can only be used by the element that owns
+// the pad. No locking is performed in this function.
 //
 // The function takes the following parameters:
 //
@@ -28295,7 +29944,8 @@ func (pad *Pad) SetElementPrivate(priv unsafe.Pointer) {
 	runtime.KeepAlive(priv)
 }
 
-// SetOffset: set the offset that will be applied to the running time of pad.
+// SetOffset (gst_pad_set_offset): set the offset that will be applied to the
+// running time of pad.
 //
 // The function takes the following parameters:
 //
@@ -28312,10 +29962,10 @@ func (pad *Pad) SetOffset(offset int64) {
 	runtime.KeepAlive(offset)
 }
 
-// StartTask starts a task that repeatedly calls func with user_data. This
-// function is mostly used in pad activation functions to start the dataflow.
-// The T_PAD_STREAM_LOCK of pad will automatically be acquired before func is
-// called.
+// StartTask (gst_pad_start_task) starts a task that repeatedly calls func with
+// user_data. This function is mostly used in pad activation functions to start
+// the dataflow. The T_PAD_STREAM_LOCK of pad will automatically be acquired
+// before func is called.
 //
 // The function takes the following parameters:
 //
@@ -28349,9 +29999,9 @@ func (pad *Pad) StartTask(fn TaskFunction) bool {
 	return _ok
 }
 
-// StickyEventsForEach iterates all sticky events on pad and calls foreach_func
-// for every event. If foreach_func returns FALSE the iteration is immediately
-// stopped.
+// StickyEventsForEach (gst_pad_sticky_events_foreach) iterates all sticky
+// events on pad and calls foreach_func for every event. If foreach_func returns
+// FALSE the iteration is immediately stopped.
 //
 // The function takes the following parameters:
 //
@@ -28371,9 +30021,9 @@ func (pad *Pad) StickyEventsForEach(foreachFunc PadStickyEventsForEachFunction) 
 	runtime.KeepAlive(foreachFunc)
 }
 
-// StopTask: stop the task of pad. This function will also make sure that the
-// function executed by the task will effectively stop if not called from the
-// GstTaskFunction.
+// StopTask (gst_pad_stop_task): stop the task of pad. This function will also
+// make sure that the function executed by the task will effectively stop if not
+// called from the GstTaskFunction.
 //
 // This function will deadlock if called from the GstTaskFunction of the task.
 // Use gst_task_pause() instead.
@@ -28402,7 +30052,7 @@ func (pad *Pad) StopTask() bool {
 	return _ok
 }
 
-// StoreStickyEvent: store the sticky event on pad.
+// StoreStickyEvent (gst_pad_store_sticky_event): store the sticky event on pad.
 //
 // The function takes the following parameters:
 //
@@ -28431,8 +30081,8 @@ func (pad *Pad) StoreStickyEvent(event *Event) FlowReturn {
 	return _flowReturn
 }
 
-// Unlink unlinks the source pad from the sink pad. Will emit the Pad::unlinked
-// signal on both pads.
+// Unlink (gst_pad_unlink) unlinks the source pad from the sink pad. Will emit
+// the Pad::unlinked signal on both pads.
 //
 // The function takes the following parameters:
 //
@@ -28465,9 +30115,9 @@ func (srcpad *Pad) Unlink(sinkpad *Pad) bool {
 	return _ok
 }
 
-// UseFixedCaps: helper function you can use that sets the FIXED_CAPS flag This
-// way the default CAPS query will always return the negotiated caps or in case
-// the pad is not negotiated, the padtemplate caps.
+// UseFixedCaps (gst_pad_use_fixed_caps): helper function you can use that sets
+// the FIXED_CAPS flag This way the default CAPS query will always return the
+// negotiated caps or in case the pad is not negotiated, the padtemplate caps.
 //
 // The negotiated caps are the caps of the last CAPS event that passed on the
 // pad. Use this function on a pad that, once it negotiated to a CAPS, cannot be
@@ -28511,7 +30161,8 @@ func (pad *Pad) unlinked(peer *Pad) {
 	runtime.KeepAlive(peer)
 }
 
-// PadLinkGetName gets a string representing the given pad-link return.
+// PadLinkGetName (gst_pad_link_get_name) gets a string representing the given
+// pad-link return.
 //
 // The function takes the following parameters:
 //
@@ -28553,10 +30204,10 @@ func defaultPadTemplateOverrides(v *PadTemplate) PadTemplateOverrides {
 	}
 }
 
-// PadTemplate padtemplates describe the possible media types a pad or an
-// elementfactory can handle. This allows for both inspection of handled types
-// before loading the element plugin as well as identifying pads on elements
-// that are not yet created (request or sometimes pads).
+// PadTemplate (GstPadTemplate) padtemplates describe the possible media types
+// a pad or an elementfactory can handle. This allows for both inspection of
+// handled types before loading the element plugin as well as identifying pads
+// on elements that are not yet created (request or sometimes pads).
 //
 // Pad and PadTemplates have Caps attached to it to describe the media
 // type they are capable of dealing with. gst_pad_template_get_caps() or
@@ -28599,6 +30250,35 @@ var (
 	_ GstObjector = (*PadTemplate)(nil)
 )
 
+// PadTemplater describes types inherited from PadTemplate.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type PadTemplater interface {
+	GstObjector
+
+	// Caps (gst_pad_template_get_caps) gets the capabilities of the pad
+	// template.
+	Caps() *Caps
+	// DocumentationCaps (gst_pad_template_get_documentation_caps): see
+	// gst_pad_template_set_documentation_caps().
+	DocumentationCaps() *Caps
+	// PadCreated (gst_pad_template_pad_created): emit the pad-created signal
+	// for this template when created by this pad.
+	PadCreated(pad *Pad)
+	// SetDocumentationCaps (gst_pad_template_set_documentation_caps): certain
+	// elements will dynamically construct the caps of their pad templates.
+	SetDocumentationCaps(caps *Caps)
+
+	// Pad-created: this signal is fired when an element creates a pad from this
+	// template.
+	ConnectPadCreated(func(pad *Pad)) coreglib.SignalHandle
+
+	basePadTemplate() *PadTemplate
+}
+
+var _ PadTemplater = (*PadTemplate)(nil)
+
 func init() {
 	coreglib.RegisterClassInfo[*PadTemplate, *PadTemplateClass, PadTemplateOverrides](
 		GTypePadTemplate,
@@ -28635,14 +30315,23 @@ func marshalPadTemplate(p uintptr) (interface{}, error) {
 	return wrapPadTemplate(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
+func (templ *PadTemplate) basePadTemplate() *PadTemplate {
+	return templ
+}
+
+// BasePadTemplate returns the underlying base object.
+func BasePadTemplate(obj PadTemplater) *PadTemplate {
+	return obj.basePadTemplate()
+}
+
 // ConnectPadCreated: this signal is fired when an element creates a pad from
 // this template.
 func (templ *PadTemplate) ConnectPadCreated(f func(pad *Pad)) coreglib.SignalHandle {
 	return coreglib.ConnectGeneratedClosure(templ, "pad-created", false, unsafe.Pointer(C._gotk4_gst1_PadTemplate_ConnectPadCreated), f)
 }
 
-// NewPadTemplate creates a new pad template with a name according to the given
-// template and with the given arguments.
+// NewPadTemplate (gst_pad_template_new) creates a new pad template with a name
+// according to the given template and with the given arguments.
 //
 // The function takes the following parameters:
 //
@@ -28682,8 +30371,9 @@ func NewPadTemplate(nameTemplate string, direction PadDirection, presence PadPre
 	return _padTemplate
 }
 
-// NewPadTemplateFromStaticPadTemplateWithGType converts a StaticPadTemplate
-// into a PadTemplate with a type.
+// NewPadTemplateFromStaticPadTemplateWithGType
+// (gst_pad_template_new_from_static_pad_template_with_gtype) converts a
+// StaticPadTemplate into a PadTemplate with a type.
 //
 // The function takes the following parameters:
 //
@@ -28714,8 +30404,9 @@ func NewPadTemplateFromStaticPadTemplateWithGType(padTemplate *StaticPadTemplate
 	return _padTemplate
 }
 
-// NewPadTemplateWithGType creates a new pad template with a name according to
-// the given template and with the given arguments.
+// NewPadTemplateWithGType (gst_pad_template_new_with_gtype) creates a new
+// pad template with a name according to the given template and with the given
+// arguments.
 //
 // The function takes the following parameters:
 //
@@ -28759,7 +30450,7 @@ func NewPadTemplateWithGType(nameTemplate string, direction PadDirection, presen
 	return _padTemplate
 }
 
-// Caps gets the capabilities of the pad template.
+// Caps (gst_pad_template_get_caps) gets the capabilities of the pad template.
 //
 // The function returns the following values:
 //
@@ -28785,7 +30476,8 @@ func (templ *PadTemplate) Caps() *Caps {
 	return _caps
 }
 
-// DocumentationCaps: see gst_pad_template_set_documentation_caps().
+// DocumentationCaps (gst_pad_template_get_documentation_caps): see
+// gst_pad_template_set_documentation_caps().
 //
 // The function returns the following values:
 //
@@ -28812,8 +30504,8 @@ func (templ *PadTemplate) DocumentationCaps() *Caps {
 	return _caps
 }
 
-// PadCreated: emit the pad-created signal for this template when created by
-// this pad.
+// PadCreated (gst_pad_template_pad_created): emit the pad-created signal for
+// this template when created by this pad.
 //
 // The function takes the following parameters:
 //
@@ -28830,10 +30522,10 @@ func (templ *PadTemplate) PadCreated(pad *Pad) {
 	runtime.KeepAlive(pad)
 }
 
-// SetDocumentationCaps: certain elements will dynamically construct the caps
-// of their pad templates. In order not to let environment-specific information
-// into the documentation, element authors should use this method to expose
-// "stable" caps to the reader.
+// SetDocumentationCaps (gst_pad_template_set_documentation_caps): certain
+// elements will dynamically construct the caps of their pad templates.
+// In order not to let environment-specific information into the documentation,
+// element authors should use this method to expose "stable" caps to the reader.
 //
 // The function takes the following parameters:
 //
@@ -28879,9 +30571,9 @@ func defaultPipelineOverrides(v *Pipeline) PipelineOverrides {
 	return PipelineOverrides{}
 }
 
-// Pipeline is a special Bin used as the toplevel container for the filter
-// graph. The Pipeline will manage the selection and distribution of a global
-// Clock as well as provide a Bus to the application.
+// Pipeline (GstPipeline) is a special Bin used as the toplevel container for
+// the filter graph. The Pipeline will manage the selection and distribution of
+// a global Clock as well as provide a Bus to the application.
 //
 // gst_pipeline_new() is used to create a pipeline. when you are done with the
 // pipeline, use gst_object_unref() to free its resources including all added
@@ -28935,6 +30627,54 @@ var (
 	_ Elementer = (*Pipeline)(nil)
 )
 
+// Pipeliner describes types inherited from Pipeline.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type Pipeliner interface {
+	Binner
+
+	// AutoClock (gst_pipeline_auto_clock): let pipeline select a clock
+	// automatically.
+	AutoClock()
+	// AutoFlushBus (gst_pipeline_get_auto_flush_bus): check if pipeline will
+	// automatically flush messages when going to the NULL state.
+	AutoFlushBus() bool
+	// Bus (gst_pipeline_get_bus) gets the Bus of pipeline.
+	Bus() *Bus
+	// ConfiguredLatency (gst_pipeline_get_configured_latency): return the
+	// configured latency on pipeline.
+	ConfiguredLatency() ClockTime
+	// Delay (gst_pipeline_get_delay): get the configured delay (see
+	// gst_pipeline_set_delay()).
+	Delay() ClockTime
+	// Latency (gst_pipeline_get_latency) gets the latency that should be
+	// configured on the pipeline.
+	Latency() ClockTime
+	// PipelineClock (gst_pipeline_get_pipeline_clock) gets the current clock
+	// used by pipeline.
+	PipelineClock() Clocker
+	// IsLive (gst_pipeline_is_live): check if pipeline is live.
+	IsLive() bool
+	// SetAutoFlushBus (gst_pipeline_set_auto_flush_bus): usually, when a
+	// pipeline goes from READY to NULL state, it automatically flushes all
+	// pending messages on the bus, which is done for refcounting purposes,
+	// to break circular references.
+	SetAutoFlushBus(autoFlush bool)
+	// SetDelay (gst_pipeline_set_delay): set the expected delay needed for all
+	// elements to perform the PAUSED to PLAYING state change.
+	SetDelay(delay ClockTime)
+	// SetLatency (gst_pipeline_set_latency) sets the latency that should be
+	// configured on the pipeline.
+	SetLatency(latency ClockTime)
+	// UseClock (gst_pipeline_use_clock): force pipeline to use the given clock.
+	UseClock(clock Clocker)
+
+	basePipeline() *Pipeline
+}
+
+var _ Pipeliner = (*Pipeline)(nil)
+
 func init() {
 	coreglib.RegisterClassInfo[*Pipeline, *PipelineClass, PipelineOverrides](
 		GTypePipeline,
@@ -28972,7 +30712,16 @@ func marshalPipeline(p uintptr) (interface{}, error) {
 	return wrapPipeline(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// NewPipeline: create a new pipeline with the given name.
+func (pipeline *Pipeline) basePipeline() *Pipeline {
+	return pipeline
+}
+
+// BasePipeline returns the underlying base object.
+func BasePipeline(obj Pipeliner) *Pipeline {
+	return obj.basePipeline()
+}
+
+// NewPipeline (gst_pipeline_new): create a new pipeline with the given name.
 //
 // The function takes the following parameters:
 //
@@ -29002,8 +30751,8 @@ func NewPipeline(name string) *Pipeline {
 	return _pipeline
 }
 
-// AutoClock: let pipeline select a clock automatically. This is the default
-// behaviour.
+// AutoClock (gst_pipeline_auto_clock): let pipeline select a clock
+// automatically. This is the default behaviour.
 //
 // Use this function if you previous forced a fixed clock with
 // gst_pipeline_use_clock() and want to restore the default pipeline clock
@@ -29019,8 +30768,8 @@ func (pipeline *Pipeline) AutoClock() {
 	runtime.KeepAlive(pipeline)
 }
 
-// AutoFlushBus: check if pipeline will automatically flush messages when going
-// to the NULL state.
+// AutoFlushBus (gst_pipeline_get_auto_flush_bus): check if pipeline will
+// automatically flush messages when going to the NULL state.
 //
 // The function returns the following values:
 //
@@ -29046,8 +30795,8 @@ func (pipeline *Pipeline) AutoFlushBus() bool {
 	return _ok
 }
 
-// Bus gets the Bus of pipeline. The bus allows applications to receive Message
-// packets.
+// Bus (gst_pipeline_get_bus) gets the Bus of pipeline. The bus allows
+// applications to receive Message packets.
 //
 // The function returns the following values:
 //
@@ -29070,7 +30819,8 @@ func (pipeline *Pipeline) Bus() *Bus {
 	return _bus
 }
 
-// ConfiguredLatency: return the configured latency on pipeline.
+// ConfiguredLatency (gst_pipeline_get_configured_latency): return the
+// configured latency on pipeline.
 //
 // The function returns the following values:
 //
@@ -29094,7 +30844,8 @@ func (pipeline *Pipeline) ConfiguredLatency() ClockTime {
 	return _clockTime
 }
 
-// Delay: get the configured delay (see gst_pipeline_set_delay()).
+// Delay (gst_pipeline_get_delay): get the configured delay (see
+// gst_pipeline_set_delay()).
 //
 // The function returns the following values:
 //
@@ -29117,8 +30868,8 @@ func (pipeline *Pipeline) Delay() ClockTime {
 	return _clockTime
 }
 
-// Latency gets the latency that should be configured on the pipeline.
-// See gst_pipeline_set_latency().
+// Latency (gst_pipeline_get_latency) gets the latency that should be configured
+// on the pipeline. See gst_pipeline_set_latency().
 //
 // The function returns the following values:
 //
@@ -29139,7 +30890,8 @@ func (pipeline *Pipeline) Latency() ClockTime {
 	return _clockTime
 }
 
-// PipelineClock gets the current clock used by pipeline.
+// PipelineClock (gst_pipeline_get_pipeline_clock) gets the current clock used
+// by pipeline.
 //
 // Unlike gst_element_get_clock(), this function will always return a clock,
 // even if the pipeline is not in the PLAYING state.
@@ -29179,7 +30931,7 @@ func (pipeline *Pipeline) PipelineClock() Clocker {
 	return _clock
 }
 
-// IsLive: check if pipeline is live.
+// IsLive (gst_pipeline_is_live): check if pipeline is live.
 //
 // The function returns the following values:
 //
@@ -29205,9 +30957,10 @@ func (pipeline *Pipeline) IsLive() bool {
 	return _ok
 }
 
-// SetAutoFlushBus: usually, when a pipeline goes from READY to NULL state,
-// it automatically flushes all pending messages on the bus, which is done for
-// refcounting purposes, to break circular references.
+// SetAutoFlushBus (gst_pipeline_set_auto_flush_bus): usually, when a pipeline
+// goes from READY to NULL state, it automatically flushes all pending messages
+// on the bus, which is done for refcounting purposes, to break circular
+// references.
 //
 // This means that applications that update state using (async) bus messages
 // (e.g. do certain things when a pipeline goes from PAUSED to READY) might not
@@ -29238,10 +30991,10 @@ func (pipeline *Pipeline) SetAutoFlushBus(autoFlush bool) {
 	runtime.KeepAlive(autoFlush)
 }
 
-// SetDelay: set the expected delay needed for all elements to perform the
-// PAUSED to PLAYING state change. delay will be added to the base time of the
-// elements so that they wait an additional delay amount of time before starting
-// to process buffers and cannot be T_CLOCK_TIME_NONE.
+// SetDelay (gst_pipeline_set_delay): set the expected delay needed for all
+// elements to perform the PAUSED to PLAYING state change. delay will be added
+// to the base time of the elements so that they wait an additional delay amount
+// of time before starting to process buffers and cannot be T_CLOCK_TIME_NONE.
 //
 // This option is used for tuning purposes and should normally not be used.
 //
@@ -29262,10 +31015,11 @@ func (pipeline *Pipeline) SetDelay(delay ClockTime) {
 	runtime.KeepAlive(delay)
 }
 
-// SetLatency sets the latency that should be configured on the pipeline.
-// Setting GST_CLOCK_TIME_NONE will restore the default behaviour of using the
-// minimum latency from the LATENCY query. Setting this is usually not required
-// and the pipeline will figure out an appropriate latency automatically.
+// SetLatency (gst_pipeline_set_latency) sets the latency that should be
+// configured on the pipeline. Setting GST_CLOCK_TIME_NONE will restore the
+// default behaviour of using the minimum latency from the LATENCY query.
+// Setting this is usually not required and the pipeline will figure out an
+// appropriate latency automatically.
 //
 // Setting a too low latency, especially lower than the minimum latency from the
 // LATENCY query, will most likely cause the pipeline to fail.
@@ -29285,8 +31039,9 @@ func (pipeline *Pipeline) SetLatency(latency ClockTime) {
 	runtime.KeepAlive(latency)
 }
 
-// UseClock: force pipeline to use the given clock. The pipeline will always use
-// the given clock even if new clock providers are added to this pipeline.
+// UseClock (gst_pipeline_use_clock): force pipeline to use the given clock.
+// The pipeline will always use the given clock even if new clock providers are
+// added to this pipeline.
 //
 // If clock is NULL all clocking will be disabled which will make the pipeline
 // run as fast as possible.
@@ -29310,9 +31065,9 @@ func (pipeline *Pipeline) UseClock(clock Clocker) {
 	runtime.KeepAlive(clock)
 }
 
-// Plugin: GStreamer is extensible, so Element instances can be loaded at
-// runtime. A plugin system can provide one or more of the basic GStreamer
-// PluginFeature subclasses.
+// Plugin (GstPlugin): GStreamer is extensible, so Element instances can be
+// loaded at runtime. A plugin system can provide one or more of the basic
+// GStreamer PluginFeature subclasses.
 //
 // A plugin should export a symbol gst_plugin_desc that is a struct of type
 // PluginDesc. the plugin loader will check the version of the core library the
@@ -29336,6 +31091,64 @@ var (
 	_ GstObjector = (*Plugin)(nil)
 )
 
+// Pluginner describes types inherited from Plugin.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type Pluginner interface {
+	GstObjector
+
+	// AddDependency (gst_plugin_add_dependency): make GStreamer aware of
+	// external dependencies which affect the feature set of this plugin (ie.
+	AddDependency(envVars, paths, names []string, flags PluginDependencyFlags)
+	// AddDependencySimple (gst_plugin_add_dependency_simple): make GStreamer
+	// aware of external dependencies which affect the feature set of this
+	// plugin (ie.
+	AddDependencySimple(envVars, paths, names string, flags PluginDependencyFlags)
+	AddStatusError(message string)
+	AddStatusInfo(message string)
+	AddStatusWarning(message string)
+	// CacheData (gst_plugin_get_cache_data) gets the plugin specific data
+	// cache.
+	CacheData() *Structure
+	// Description (gst_plugin_get_description): get the long descriptive name
+	// of the plugin.
+	Description() string
+	// Filename (gst_plugin_get_filename): get the filename of the plugin.
+	Filename() string
+	// License (gst_plugin_get_license): get the license of the plugin.
+	License() string
+	// Name (gst_plugin_get_name): get the short name of the plugin.
+	Name() string
+	// Origin (gst_plugin_get_origin): get the URL where the plugin comes from.
+	Origin() string
+	// Package (gst_plugin_get_package): get the package the plugin belongs to.
+	Package() string
+	// ReleaseDateString (gst_plugin_get_release_date_string): get the release
+	// date (and possibly time) in form of a string, if available.
+	ReleaseDateString() string
+	// Source (gst_plugin_get_source): get the source module the plugin belongs
+	// to.
+	Source() string
+	StatusErrors() []string
+	StatusInfos() []string
+	StatusWarnings() []string
+	// Version (gst_plugin_get_version): get the version of the plugin.
+	Version() string
+	// IsLoaded (gst_plugin_is_loaded) queries if the plugin is loaded into
+	// memory.
+	IsLoaded() bool
+	// Load (gst_plugin_load) loads plugin.
+	Load() *Plugin
+	// SetCacheData (gst_plugin_set_cache_data) adds plugin specific data to
+	// cache.
+	SetCacheData(cacheData *Structure)
+
+	basePlugin() *Plugin
+}
+
+var _ Pluginner = (*Plugin)(nil)
+
 func wrapPlugin(obj *coreglib.Object) *Plugin {
 	return &Plugin{
 		GstObject: GstObject{
@@ -29350,9 +31163,18 @@ func marshalPlugin(p uintptr) (interface{}, error) {
 	return wrapPlugin(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// AddDependency: make GStreamer aware of external dependencies which affect the
-// feature set of this plugin (ie. the elements or typefinders associated with
-// it).
+func (plugin *Plugin) basePlugin() *Plugin {
+	return plugin
+}
+
+// BasePlugin returns the underlying base object.
+func BasePlugin(obj Pluginner) *Plugin {
+	return obj.basePlugin()
+}
+
+// AddDependency (gst_plugin_add_dependency): make GStreamer aware of external
+// dependencies which affect the feature set of this plugin (ie. the elements or
+// typefinders associated with it).
 //
 // GStreamer will re-inspect plugins with external dependencies whenever any
 // of the external dependencies change. This is useful for plugins which wrap
@@ -29433,9 +31255,9 @@ func (plugin *Plugin) AddDependency(envVars, paths, names []string, flags Plugin
 	runtime.KeepAlive(flags)
 }
 
-// AddDependencySimple: make GStreamer aware of external dependencies which
-// affect the feature set of this plugin (ie. the elements or typefinders
-// associated with it).
+// AddDependencySimple (gst_plugin_add_dependency_simple): make GStreamer aware
+// of external dependencies which affect the feature set of this plugin (ie.
+// the elements or typefinders associated with it).
 //
 // GStreamer will re-inspect plugins with external dependencies whenever any
 // of the external dependencies change. This is useful for plugins which wrap
@@ -29537,8 +31359,9 @@ func (plugin *Plugin) AddStatusWarning(message string) {
 	runtime.KeepAlive(message)
 }
 
-// CacheData gets the plugin specific data cache. If it is NULL there is no
-// cached data stored. This is the case when the registry is getting rebuilt.
+// CacheData (gst_plugin_get_cache_data) gets the plugin specific data cache.
+// If it is NULL there is no cached data stored. This is the case when the
+// registry is getting rebuilt.
 //
 // The function returns the following values:
 //
@@ -29567,7 +31390,8 @@ func (plugin *Plugin) CacheData() *Structure {
 	return _structure
 }
 
-// Description: get the long descriptive name of the plugin.
+// Description (gst_plugin_get_description): get the long descriptive name of
+// the plugin.
 //
 // The function returns the following values:
 //
@@ -29588,7 +31412,7 @@ func (plugin *Plugin) Description() string {
 	return _utf8
 }
 
-// Filename: get the filename of the plugin.
+// Filename (gst_plugin_get_filename): get the filename of the plugin.
 //
 // The function returns the following values:
 //
@@ -29611,7 +31435,7 @@ func (plugin *Plugin) Filename() string {
 	return _filename
 }
 
-// License: get the license of the plugin.
+// License (gst_plugin_get_license): get the license of the plugin.
 //
 // The function returns the following values:
 //
@@ -29632,7 +31456,7 @@ func (plugin *Plugin) License() string {
 	return _utf8
 }
 
-// Name: get the short name of the plugin.
+// Name (gst_plugin_get_name): get the short name of the plugin.
 //
 // The function returns the following values:
 //
@@ -29653,7 +31477,7 @@ func (plugin *Plugin) Name() string {
 	return _utf8
 }
 
-// Origin: get the URL where the plugin comes from.
+// Origin (gst_plugin_get_origin): get the URL where the plugin comes from.
 //
 // The function returns the following values:
 //
@@ -29674,7 +31498,7 @@ func (plugin *Plugin) Origin() string {
 	return _utf8
 }
 
-// Package: get the package the plugin belongs to.
+// Package (gst_plugin_get_package): get the package the plugin belongs to.
 //
 // The function returns the following values:
 //
@@ -29695,8 +31519,8 @@ func (plugin *Plugin) Package() string {
 	return _utf8
 }
 
-// ReleaseDateString: get the release date (and possibly time) in form of a
-// string, if available.
+// ReleaseDateString (gst_plugin_get_release_date_string): get the release date
+// (and possibly time) in form of a string, if available.
 //
 // For normal GStreamer plugin releases this will usually just be a date in the
 // form of "YYYY-MM-DD", while pre-releases and builds from git may contain
@@ -29726,7 +31550,7 @@ func (plugin *Plugin) ReleaseDateString() string {
 	return _utf8
 }
 
-// Source: get the source module the plugin belongs to.
+// Source (gst_plugin_get_source): get the source module the plugin belongs to.
 //
 // The function returns the following values:
 //
@@ -29852,7 +31676,7 @@ func (plugin *Plugin) StatusWarnings() []string {
 	return _utf8s
 }
 
-// Version: get the version of the plugin.
+// Version (gst_plugin_get_version): get the version of the plugin.
 //
 // The function returns the following values:
 //
@@ -29873,7 +31697,7 @@ func (plugin *Plugin) Version() string {
 	return _utf8
 }
 
-// IsLoaded queries if the plugin is loaded into memory.
+// IsLoaded (gst_plugin_is_loaded) queries if the plugin is loaded into memory.
 //
 // The function returns the following values:
 //
@@ -29896,8 +31720,9 @@ func (plugin *Plugin) IsLoaded() bool {
 	return _ok
 }
 
-// Load loads plugin. Note that the *return value* is the loaded plugin;
-// plugin is untouched. The normal use pattern of this function goes like this:
+// Load (gst_plugin_load) loads plugin. Note that the *return value* is the
+// loaded plugin; plugin is untouched. The normal use pattern of this function
+// goes like this:
 //
 //	GstPlugin *loaded_plugin;
 //	loaded_plugin = gst_plugin_load (plugin);
@@ -29926,8 +31751,8 @@ func (plugin *Plugin) Load() *Plugin {
 	return _ret
 }
 
-// SetCacheData adds plugin specific data to cache. Passes the ownership of the
-// structure to the plugin.
+// SetCacheData (gst_plugin_set_cache_data) adds plugin specific data to cache.
+// Passes the ownership of the structure to the plugin.
 //
 // The cache is flushed every time the registry is rebuilt.
 //
@@ -29947,7 +31772,8 @@ func (plugin *Plugin) SetCacheData(cacheData *Structure) {
 	runtime.KeepAlive(cacheData)
 }
 
-// PluginLoadByName: load the named plugin. Refs the plugin.
+// PluginLoadByName (gst_plugin_load_by_name): load the named plugin. Refs the
+// plugin.
 //
 // The function takes the following parameters:
 //
@@ -29975,8 +31801,8 @@ func PluginLoadByName(name string) *Plugin {
 	return _plugin
 }
 
-// PluginLoadFile loads the given plugin and refs it. Caller needs to unref
-// after use.
+// PluginLoadFile (gst_plugin_load_file) loads the given plugin and refs it.
+// Caller needs to unref after use.
 //
 // The function takes the following parameters:
 //
@@ -30008,11 +31834,11 @@ func PluginLoadFile(filename string) (*Plugin, error) {
 	return _plugin, _goerr
 }
 
-// PluginRegisterStaticFull registers a static plugin, ie. a plugin which is
-// private to an application or library and contained within the application
-// or library (as opposed to being shipped as a separate module file) with
-// a PluginInitFullFunc which allows user data to be passed to the callback
-// function (useful for bindings).
+// PluginRegisterStaticFull (gst_plugin_register_static_full) registers a
+// static plugin, ie. a plugin which is private to an application or library and
+// contained within the application or library (as opposed to being shipped as a
+// separate module file) with a PluginInitFullFunc which allows user data to be
+// passed to the callback function (useful for bindings).
 //
 // You must make sure that GStreamer has been initialised (with gst_init() or
 // via gst_init_get_option_group()) before calling this function.
@@ -30093,8 +31919,8 @@ func PluginRegisterStaticFull(majorVersion, minorVersion int, name, description 
 	return _ok
 }
 
-// PluginFeature: this is a base class for anything that can be added to a
-// Plugin.
+// PluginFeature (GstPluginFeature): this is a base class for anything that can
+// be added to a Plugin.
 type PluginFeature struct {
 	_ [0]func() // equal guard
 	GstObject
@@ -30104,12 +31930,31 @@ var (
 	_ GstObjector = (*PluginFeature)(nil)
 )
 
-// PluginFeaturer describes types inherited from class PluginFeature.
+// PluginFeaturer describes types inherited from PluginFeature.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type PluginFeaturer interface {
-	coreglib.Objector
+	GstObjector
+
+	// CheckVersion (gst_plugin_feature_check_version) checks whether the given
+	// plugin feature is at least the required version.
+	CheckVersion(minMajor, minMinor, minMicro uint) bool
+	// Plugin (gst_plugin_feature_get_plugin): get the plugin that provides this
+	// feature.
+	Plugin() *Plugin
+	// PluginName (gst_plugin_feature_get_plugin_name): get the name of the
+	// plugin that provides this feature.
+	PluginName() string
+	// Rank (gst_plugin_feature_get_rank) gets the rank of a plugin feature.
+	Rank() uint
+	// Load (gst_plugin_feature_load) loads the plugin containing feature if
+	// it's not already loaded.
+	Load() PluginFeaturer
+	// SetRank (gst_plugin_feature_set_rank) specifies a rank for a plugin
+	// feature, so that autoplugging uses the most appropriate feature.
+	SetRank(rank uint)
+
 	basePluginFeature() *PluginFeature
 }
 
@@ -30138,8 +31983,8 @@ func BasePluginFeature(obj PluginFeaturer) *PluginFeature {
 	return obj.basePluginFeature()
 }
 
-// CheckVersion checks whether the given plugin feature is at least the required
-// version.
+// CheckVersion (gst_plugin_feature_check_version) checks whether the given
+// plugin feature is at least the required version.
 //
 // Note: Since version 1.24 this function no longer returns TRUE if the version
 // is a git development version (e.g. 1.23.0.1) and the check is for the "next"
@@ -30184,7 +32029,8 @@ func (feature *PluginFeature) CheckVersion(minMajor, minMinor, minMicro uint) bo
 	return _ok
 }
 
-// Plugin: get the plugin that provides this feature.
+// Plugin (gst_plugin_feature_get_plugin): get the plugin that provides this
+// feature.
 //
 // The function returns the following values:
 //
@@ -30208,7 +32054,8 @@ func (feature *PluginFeature) Plugin() *Plugin {
 	return _plugin
 }
 
-// PluginName: get the name of the plugin that provides this feature.
+// PluginName (gst_plugin_feature_get_plugin_name): get the name of the plugin
+// that provides this feature.
 //
 // The function returns the following values:
 //
@@ -30232,7 +32079,7 @@ func (feature *PluginFeature) PluginName() string {
 	return _utf8
 }
 
-// Rank gets the rank of a plugin feature.
+// Rank (gst_plugin_feature_get_rank) gets the rank of a plugin feature.
 //
 // The function returns the following values:
 //
@@ -30253,8 +32100,8 @@ func (feature *PluginFeature) Rank() uint {
 	return _guint
 }
 
-// Load loads the plugin containing feature if it's not already loaded. feature
-// is unaffected; use the return value instead.
+// Load (gst_plugin_feature_load) loads the plugin containing feature if it's
+// not already loaded. feature is unaffected; use the return value instead.
 //
 // Normally this function is used like this:
 //
@@ -30300,8 +32147,8 @@ func (feature *PluginFeature) Load() PluginFeaturer {
 	return _pluginFeature
 }
 
-// SetRank specifies a rank for a plugin feature, so that autoplugging uses the
-// most appropriate feature.
+// SetRank (gst_plugin_feature_set_rank) specifies a rank for a plugin feature,
+// so that autoplugging uses the most appropriate feature.
 //
 // The function takes the following parameters:
 //
@@ -30318,8 +32165,9 @@ func (feature *PluginFeature) SetRank(rank uint) {
 	runtime.KeepAlive(rank)
 }
 
-// PluginFeatureListCopy copies the list of features. Caller should call
-// gst_plugin_feature_list_free when done with the list.
+// PluginFeatureListCopy (gst_plugin_feature_list_copy) copies the list of
+// features. Caller should call gst_plugin_feature_list_free when done with the
+// list.
 //
 // The function takes the following parameters:
 //
@@ -30372,7 +32220,8 @@ func PluginFeatureListCopy(list []PluginFeaturer) []PluginFeaturer {
 	return _ret
 }
 
-// PluginFeatureListDebug: debug the plugin feature names in list.
+// PluginFeatureListDebug (gst_plugin_feature_list_debug): debug the plugin
+// feature names in list.
 //
 // The function takes the following parameters:
 //
@@ -30392,8 +32241,9 @@ func PluginFeatureListDebug(list []PluginFeaturer) {
 	runtime.KeepAlive(list)
 }
 
-// PluginFeatureRankCompareFunc compares the two given PluginFeature instances.
-// This function can be used as a Func when sorting by rank and then by name.
+// PluginFeatureRankCompareFunc (gst_plugin_feature_rank_compare_func) compares
+// the two given PluginFeature instances. This function can be used as a Func
+// when sorting by rank and then by name.
 //
 // The function takes the following parameters:
 //
@@ -30442,6 +32292,21 @@ var (
 	_ GstObjector = (*ProxyPad)(nil)
 )
 
+// ProxyPadder describes types inherited from ProxyPad.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type ProxyPadder interface {
+	Padder
+
+	// Internal (gst_proxy_pad_get_internal): get the internal pad of pad.
+	Internal() *ProxyPad
+
+	baseProxyPad() *ProxyPad
+}
+
+var _ ProxyPadder = (*ProxyPad)(nil)
+
 func init() {
 	coreglib.RegisterClassInfo[*ProxyPad, *ProxyPadClass, ProxyPadOverrides](
 		GTypeProxyPad,
@@ -30474,7 +32339,17 @@ func marshalProxyPad(p uintptr) (interface{}, error) {
 	return wrapProxyPad(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// Internal: get the internal pad of pad. Unref target pad after usage.
+func (pad *ProxyPad) baseProxyPad() *ProxyPad {
+	return pad
+}
+
+// BaseProxyPad returns the underlying base object.
+func BaseProxyPad(obj ProxyPadder) *ProxyPad {
+	return obj.baseProxyPad()
+}
+
+// Internal (gst_proxy_pad_get_internal): get the internal pad of pad. Unref
+// target pad after usage.
 //
 // The internal pad of a GhostPad is the internally used pad of opposite
 // direction, which is used to link to the target.
@@ -30501,7 +32376,8 @@ func (pad *ProxyPad) Internal() *ProxyPad {
 	return _proxyPad
 }
 
-// ProxyPadChainDefault: invoke the default chain function of the proxy pad.
+// ProxyPadChainDefault (gst_proxy_pad_chain_default): invoke the default chain
+// function of the proxy pad.
 //
 // The function takes the following parameters:
 //
@@ -30537,8 +32413,8 @@ func ProxyPadChainDefault(pad *Pad, parent GstObjector, buffer *Buffer) FlowRetu
 	return _flowReturn
 }
 
-// ProxyPadChainListDefault: invoke the default chain list function of the proxy
-// pad.
+// ProxyPadChainListDefault (gst_proxy_pad_chain_list_default): invoke the
+// default chain list function of the proxy pad.
 //
 // The function takes the following parameters:
 //
@@ -30574,8 +32450,8 @@ func ProxyPadChainListDefault(pad *Pad, parent GstObjector, list *BufferList) Fl
 	return _flowReturn
 }
 
-// ProxyPadGetrangeDefault: invoke the default getrange function of the proxy
-// pad.
+// ProxyPadGetrangeDefault (gst_proxy_pad_getrange_default): invoke the default
+// getrange function of the proxy pad.
 //
 // The function takes the following parameters:
 //
@@ -30621,8 +32497,9 @@ func ProxyPadGetrangeDefault(pad *Pad, parent GstObjector, offset uint64, size u
 	return _buffer, _flowReturn
 }
 
-// ProxyPadIterateInternalLinksDefault: invoke the default iterate internal
-// links function of the proxy pad.
+// ProxyPadIterateInternalLinksDefault
+// (gst_proxy_pad_iterate_internal_links_default): invoke the default iterate
+// internal links function of the proxy pad.
 //
 // The function takes the following parameters:
 //
@@ -30670,7 +32547,7 @@ func defaultRegistryOverrides(v *Registry) RegistryOverrides {
 	return RegistryOverrides{}
 }
 
-// Registry: one registry holds the metadata of a set of plugins.
+// Registry (GstRegistry): one registry holds the metadata of a set of plugins.
 //
 // <emphasis role="bold">Design:</emphasis>
 //
@@ -30736,6 +32613,74 @@ var (
 	_ GstObjector = (*Registry)(nil)
 )
 
+// Registrier describes types inherited from Registry.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type Registrier interface {
+	GstObjector
+
+	// AddFeature (gst_registry_add_feature): add the feature to the registry.
+	AddFeature(feature PluginFeaturer) bool
+	// AddPlugin (gst_registry_add_plugin): add the plugin to the registry.
+	AddPlugin(plugin *Plugin) bool
+	// CheckFeatureVersion (gst_registry_check_feature_version) checks whether
+	// a plugin feature by the given name exists in registry and whether its
+	// version is at least the version required.
+	CheckFeatureVersion(featureName string, minMajor, minMinor, minMicro uint) bool
+	// FeatureFilter (gst_registry_feature_filter) runs a filter against all
+	// features of the plugins in the registry and returns a GList with the
+	// results.
+	FeatureFilter(filter PluginFeatureFilter, first bool) []PluginFeaturer
+	// FindFeature (gst_registry_find_feature): find the pluginfeature with the
+	// given name and type in the registry.
+	FindFeature(name string, typ coreglib.Type) PluginFeaturer
+	// FindPlugin (gst_registry_find_plugin): find the plugin with the given
+	// name in the registry.
+	FindPlugin(name string) *Plugin
+	// FeatureList (gst_registry_get_feature_list) retrieves a #GList of
+	// PluginFeature of type.
+	FeatureList(typ coreglib.Type) []PluginFeaturer
+	// FeatureListByPlugin (gst_registry_get_feature_list_by_plugin) retrieves a
+	// #GList of features of the plugin with name name.
+	FeatureListByPlugin(name string) []PluginFeaturer
+	// FeatureListCookie (gst_registry_get_feature_list_cookie) returns the
+	// registry's feature list cookie.
+	FeatureListCookie() uint32
+	// PluginList (gst_registry_get_plugin_list): get a copy of all plugins
+	// registered in the given registry.
+	PluginList() []*Plugin
+	// Lookup (gst_registry_lookup): look up a plugin in the given registry with
+	// the given filename.
+	Lookup(filename string) *Plugin
+	// LookupFeature (gst_registry_lookup_feature): find a PluginFeature with
+	// name in registry.
+	LookupFeature(name string) PluginFeaturer
+	// PluginFilter (gst_registry_plugin_filter) runs a filter against all
+	// plugins in the registry and returns a #GList with the results.
+	PluginFilter(filter PluginFilter, first bool) []*Plugin
+	// RemoveFeature (gst_registry_remove_feature): remove the feature from the
+	// registry.
+	RemoveFeature(feature PluginFeaturer)
+	// RemovePlugin (gst_registry_remove_plugin): remove the plugin from the
+	// registry.
+	RemovePlugin(plugin *Plugin)
+	// ScanPath (gst_registry_scan_path): scan the given path for plugins to add
+	// to the registry.
+	ScanPath(path string) bool
+
+	// Feature-added signals that a feature has been added to the registry
+	// (possibly replacing a previously-added one by the same name).
+	ConnectFeatureAdded(func(feature PluginFeaturer)) coreglib.SignalHandle
+	// Plugin-added signals that a plugin has been added to the registry
+	// (possibly replacing a previously-added one by the same name).
+	ConnectPluginAdded(func(plugin *Plugin)) coreglib.SignalHandle
+
+	baseRegistry() *Registry
+}
+
+var _ Registrier = (*Registry)(nil)
+
 func init() {
 	coreglib.RegisterClassInfo[*Registry, *RegistryClass, RegistryOverrides](
 		GTypeRegistry,
@@ -30766,6 +32711,15 @@ func marshalRegistry(p uintptr) (interface{}, error) {
 	return wrapRegistry(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
+func (registry *Registry) baseRegistry() *Registry {
+	return registry
+}
+
+// BaseRegistry returns the underlying base object.
+func BaseRegistry(obj Registrier) *Registry {
+	return obj.baseRegistry()
+}
+
 // ConnectFeatureAdded signals that a feature has been added to the registry
 // (possibly replacing a previously-added one by the same name).
 func (registry *Registry) ConnectFeatureAdded(f func(feature PluginFeaturer)) coreglib.SignalHandle {
@@ -30778,8 +32732,8 @@ func (registry *Registry) ConnectPluginAdded(f func(plugin *Plugin)) coreglib.Si
 	return coreglib.ConnectGeneratedClosure(registry, "plugin-added", false, unsafe.Pointer(C._gotk4_gst1_Registry_ConnectPluginAdded), f)
 }
 
-// AddFeature: add the feature to the registry. The feature-added signal will be
-// emitted.
+// AddFeature (gst_registry_add_feature): add the feature to the registry.
+// The feature-added signal will be emitted.
 //
 // feature's reference count will be incremented, and any floating reference
 // will be removed (see gst_object_ref_sink()).
@@ -30814,8 +32768,8 @@ func (registry *Registry) AddFeature(feature PluginFeaturer) bool {
 	return _ok
 }
 
-// AddPlugin: add the plugin to the registry. The plugin-added signal will be
-// emitted.
+// AddPlugin (gst_registry_add_plugin): add the plugin to the registry.
+// The plugin-added signal will be emitted.
 //
 // plugin's reference count will be incremented, and any floating reference will
 // be removed (see gst_object_ref_sink()).
@@ -30850,8 +32804,9 @@ func (registry *Registry) AddPlugin(plugin *Plugin) bool {
 	return _ok
 }
 
-// CheckFeatureVersion checks whether a plugin feature by the given name exists
-// in registry and whether its version is at least the version required.
+// CheckFeatureVersion (gst_registry_check_feature_version) checks whether a
+// plugin feature by the given name exists in registry and whether its version
+// is at least the version required.
 //
 // The function takes the following parameters:
 //
@@ -30895,9 +32850,10 @@ func (registry *Registry) CheckFeatureVersion(featureName string, minMajor, minM
 	return _ok
 }
 
-// FeatureFilter runs a filter against all features of the plugins in the
-// registry and returns a GList with the results. If the first flag is set,
-// only the first match is returned (as a list with a single object).
+// FeatureFilter (gst_registry_feature_filter) runs a filter against all
+// features of the plugins in the registry and returns a GList with the results.
+// If the first flag is set, only the first match is returned (as a list with a
+// single object).
 //
 // The function takes the following parameters:
 //
@@ -30958,8 +32914,8 @@ func (registry *Registry) FeatureFilter(filter PluginFeatureFilter, first bool) 
 	return _list
 }
 
-// FindFeature: find the pluginfeature with the given name and type in the
-// registry.
+// FindFeature (gst_registry_find_feature): find the pluginfeature with the
+// given name and type in the registry.
 //
 // The function takes the following parameters:
 //
@@ -31010,8 +32966,8 @@ func (registry *Registry) FindFeature(name string, typ coreglib.Type) PluginFeat
 	return _pluginFeature
 }
 
-// FindPlugin: find the plugin with the given name in the registry. The plugin
-// will be reffed; caller is responsible for unreffing.
+// FindPlugin (gst_registry_find_plugin): find the plugin with the given name in
+// the registry. The plugin will be reffed; caller is responsible for unreffing.
 //
 // The function takes the following parameters:
 //
@@ -31045,7 +33001,8 @@ func (registry *Registry) FindPlugin(name string) *Plugin {
 	return _plugin
 }
 
-// FeatureList retrieves a #GList of PluginFeature of type.
+// FeatureList (gst_registry_get_feature_list) retrieves a #GList of
+// PluginFeature of type.
 //
 // The function takes the following parameters:
 //
@@ -31098,8 +33055,8 @@ func (registry *Registry) FeatureList(typ coreglib.Type) []PluginFeaturer {
 	return _list
 }
 
-// FeatureListByPlugin retrieves a #GList of features of the plugin with name
-// name.
+// FeatureListByPlugin (gst_registry_get_feature_list_by_plugin) retrieves a
+// #GList of features of the plugin with name name.
 //
 // The function takes the following parameters:
 //
@@ -31150,8 +33107,9 @@ func (registry *Registry) FeatureListByPlugin(name string) []PluginFeaturer {
 	return _list
 }
 
-// FeatureListCookie returns the registry's feature list cookie. This changes
-// every time a feature is added or removed from the registry.
+// FeatureListCookie (gst_registry_get_feature_list_cookie) returns the
+// registry's feature list cookie. This changes every time a feature is added or
+// removed from the registry.
 //
 // The function returns the following values:
 //
@@ -31172,8 +33130,9 @@ func (registry *Registry) FeatureListCookie() uint32 {
 	return _guint32
 }
 
-// PluginList: get a copy of all plugins registered in the given registry.
-// The refcount of each element in the list in incremented.
+// PluginList (gst_registry_get_plugin_list): get a copy of all plugins
+// registered in the given registry. The refcount of each element in the list in
+// incremented.
 //
 // The function returns the following values:
 //
@@ -31202,8 +33161,8 @@ func (registry *Registry) PluginList() []*Plugin {
 	return _list
 }
 
-// Lookup: look up a plugin in the given registry with the given filename.
-// If found, plugin is reffed.
+// Lookup (gst_registry_lookup): look up a plugin in the given registry with the
+// given filename. If found, plugin is reffed.
 //
 // The function takes the following parameters:
 //
@@ -31235,7 +33194,8 @@ func (registry *Registry) Lookup(filename string) *Plugin {
 	return _plugin
 }
 
-// LookupFeature: find a PluginFeature with name in registry.
+// LookupFeature (gst_registry_lookup_feature): find a PluginFeature with name
+// in registry.
 //
 // The function takes the following parameters:
 //
@@ -31282,10 +33242,11 @@ func (registry *Registry) LookupFeature(name string) PluginFeaturer {
 	return _pluginFeature
 }
 
-// PluginFilter runs a filter against all plugins in the registry and returns
-// a #GList with the results. If the first flag is set, only the first match
-// is returned (as a list with a single object). Every plugin is reffed;
-// use gst_plugin_list_free() after use, which will unref again.
+// PluginFilter (gst_registry_plugin_filter) runs a filter against all plugins
+// in the registry and returns a #GList with the results. If the first flag
+// is set, only the first match is returned (as a list with a single object).
+// Every plugin is reffed; use gst_plugin_list_free() after use, which will
+// unref again.
 //
 // The function takes the following parameters:
 //
@@ -31330,7 +33291,8 @@ func (registry *Registry) PluginFilter(filter PluginFilter, first bool) []*Plugi
 	return _list
 }
 
-// RemoveFeature: remove the feature from the registry.
+// RemoveFeature (gst_registry_remove_feature): remove the feature from the
+// registry.
 //
 // MT safe.
 //
@@ -31349,7 +33311,8 @@ func (registry *Registry) RemoveFeature(feature PluginFeaturer) {
 	runtime.KeepAlive(feature)
 }
 
-// RemovePlugin: remove the plugin from the registry.
+// RemovePlugin (gst_registry_remove_plugin): remove the plugin from the
+// registry.
 //
 // MT safe.
 //
@@ -31368,8 +33331,8 @@ func (registry *Registry) RemovePlugin(plugin *Plugin) {
 	runtime.KeepAlive(plugin)
 }
 
-// ScanPath: scan the given path for plugins to add to the registry. The syntax
-// of the path is specific to the registry.
+// ScanPath (gst_registry_scan_path): scan the given path for plugins to add to
+// the registry. The syntax of the path is specific to the registry.
 //
 // The function takes the following parameters:
 //
@@ -31400,8 +33363,9 @@ func (registry *Registry) ScanPath(path string) bool {
 	return _ok
 }
 
-// RegistryForkIsEnabled: by default GStreamer will perform scanning and
-// rebuilding of the registry file using a helper child process.
+// RegistryForkIsEnabled (gst_registry_fork_is_enabled): by default GStreamer
+// will perform scanning and rebuilding of the registry file using a helper
+// child process.
 //
 // Applications might want to disable this behaviour with the
 // gst_registry_fork_set_enabled() function, in which case new plugins are
@@ -31425,9 +33389,9 @@ func RegistryForkIsEnabled() bool {
 	return _ok
 }
 
-// RegistryForkSetEnabled applications might want to disable/enable
-// spawning of a child helper process when rebuilding the registry. See
-// gst_registry_fork_is_enabled() for more information.
+// RegistryForkSetEnabled (gst_registry_fork_set_enabled) applications might
+// want to disable/enable spawning of a child helper process when rebuilding the
+// registry. See gst_registry_fork_is_enabled() for more information.
 //
 // The function takes the following parameters:
 //
@@ -31444,9 +33408,9 @@ func RegistryForkSetEnabled(enabled bool) {
 	runtime.KeepAlive(enabled)
 }
 
-// RegistryGet retrieves the singleton plugin registry. The caller does not
-// own a reference on the registry, as it is alive as long as GStreamer is
-// initialized.
+// RegistryGet (gst_registry_get) retrieves the singleton plugin registry.
+// The caller does not own a reference on the registry, as it is alive as long
+// as GStreamer is initialized.
 //
 // The function returns the following values:
 //
@@ -31471,8 +33435,8 @@ func defaultStreamOverrides(v *Stream) StreamOverrides {
 	return StreamOverrides{}
 }
 
-// Stream: high-level object representing a single stream. It might be backed,
-// or not, by an actual flow of data in a pipeline (Pad).
+// Stream (GstStream): high-level object representing a single stream. It might
+// be backed, or not, by an actual flow of data in a pipeline (Pad).
 //
 // A Stream does not care about data changes (such as decoding, encoding,
 // parsing,...) as long as the underlying data flow corresponds to the same
@@ -31491,6 +33455,41 @@ type Stream struct {
 var (
 	_ GstObjector = (*Stream)(nil)
 )
+
+// Streamer describes types inherited from Stream.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type Streamer interface {
+	GstObjector
+
+	// Caps (gst_stream_get_caps): retrieve the caps for stream, if any.
+	Caps() *Caps
+	// StreamFlags (gst_stream_get_stream_flags): retrieve the current stream
+	// flags for stream.
+	StreamFlags() StreamFlags
+	// StreamID (gst_stream_get_stream_id) returns the stream ID of stream.
+	StreamID() string
+	// StreamType (gst_stream_get_stream_type): retrieve the stream type for
+	// stream.
+	StreamType() StreamType
+	// Tags (gst_stream_get_tags): retrieve the tags for stream, if any.
+	Tags() *TagList
+	// SetCaps (gst_stream_set_caps): set the caps for the Stream.
+	SetCaps(caps *Caps)
+	// SetStreamFlags (gst_stream_set_stream_flags): set the flags for the
+	// stream.
+	SetStreamFlags(flags StreamFlags)
+	// SetStreamType (gst_stream_set_stream_type): set the stream type of
+	// stream.
+	SetStreamType(streamType StreamType)
+	// SetTags (gst_stream_set_tags): set the tags for the Stream.
+	SetTags(tags *TagList)
+
+	baseStream() *Stream
+}
+
+var _ Streamer = (*Stream)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*Stream, *StreamClass, StreamOverrides](
@@ -31522,7 +33521,17 @@ func marshalStream(p uintptr) (interface{}, error) {
 	return wrapStream(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// NewStream: create a new Stream for the given stream_id, caps, type and flags.
+func (stream *Stream) baseStream() *Stream {
+	return stream
+}
+
+// BaseStream returns the underlying base object.
+func BaseStream(obj Streamer) *Stream {
+	return obj.baseStream()
+}
+
+// NewStream (gst_stream_new): create a new Stream for the given stream_id,
+// caps, type and flags.
 //
 // The function takes the following parameters:
 //
@@ -31565,7 +33574,7 @@ func NewStream(streamId string, caps *Caps, typ StreamType, flags StreamFlags) *
 	return _stream
 }
 
-// Caps: retrieve the caps for stream, if any.
+// Caps (gst_stream_get_caps): retrieve the caps for stream, if any.
 //
 // The function returns the following values:
 //
@@ -31593,7 +33602,8 @@ func (stream *Stream) Caps() *Caps {
 	return _caps
 }
 
-// StreamFlags: retrieve the current stream flags for stream.
+// StreamFlags (gst_stream_get_stream_flags): retrieve the current stream flags
+// for stream.
 //
 // The function returns the following values:
 //
@@ -31614,7 +33624,7 @@ func (stream *Stream) StreamFlags() StreamFlags {
 	return _streamFlags
 }
 
-// StreamID returns the stream ID of stream.
+// StreamID (gst_stream_get_stream_id) returns the stream ID of stream.
 //
 // The function returns the following values:
 //
@@ -31638,7 +33648,7 @@ func (stream *Stream) StreamID() string {
 	return _utf8
 }
 
-// StreamType: retrieve the stream type for stream.
+// StreamType (gst_stream_get_stream_type): retrieve the stream type for stream.
 //
 // The function returns the following values:
 //
@@ -31659,7 +33669,7 @@ func (stream *Stream) StreamType() StreamType {
 	return _streamType
 }
 
-// Tags: retrieve the tags for stream, if any.
+// Tags (gst_stream_get_tags): retrieve the tags for stream, if any.
 //
 // The function returns the following values:
 //
@@ -31688,7 +33698,7 @@ func (stream *Stream) Tags() *TagList {
 	return _tagList
 }
 
-// SetCaps: set the caps for the Stream.
+// SetCaps (gst_stream_set_caps): set the caps for the Stream.
 //
 // The function takes the following parameters:
 //
@@ -31707,7 +33717,7 @@ func (stream *Stream) SetCaps(caps *Caps) {
 	runtime.KeepAlive(caps)
 }
 
-// SetStreamFlags: set the flags for the stream.
+// SetStreamFlags (gst_stream_set_stream_flags): set the flags for the stream.
 //
 // The function takes the following parameters:
 //
@@ -31724,7 +33734,7 @@ func (stream *Stream) SetStreamFlags(flags StreamFlags) {
 	runtime.KeepAlive(flags)
 }
 
-// SetStreamType: set the stream type of stream.
+// SetStreamType (gst_stream_set_stream_type): set the stream type of stream.
 //
 // The function takes the following parameters:
 //
@@ -31741,7 +33751,7 @@ func (stream *Stream) SetStreamType(streamType StreamType) {
 	runtime.KeepAlive(streamType)
 }
 
-// SetTags: set the tags for the Stream.
+// SetTags (gst_stream_set_tags): set the tags for the Stream.
 //
 // The function takes the following parameters:
 //
@@ -31768,7 +33778,8 @@ func defaultStreamCollectionOverrides(v *StreamCollection) StreamCollectionOverr
 	return StreamCollectionOverrides{}
 }
 
-// StreamCollection: collection of Stream that are available.
+// StreamCollection (GstStreamCollection): collection of Stream that are
+// available.
 //
 // A StreamCollection will be provided by elements that can make those streams
 // available. Applications can use the collection to show the user what streams
@@ -31791,6 +33802,31 @@ type StreamCollection struct {
 var (
 	_ GstObjector = (*StreamCollection)(nil)
 )
+
+// StreamCollectioner describes types inherited from StreamCollection.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type StreamCollectioner interface {
+	GstObjector
+
+	// AddStream (gst_stream_collection_add_stream): add the given stream to the
+	// collection.
+	AddStream(stream *Stream) bool
+	// Size (gst_stream_collection_get_size): get the number of streams this
+	// collection contains.
+	Size() uint
+	// Stream (gst_stream_collection_get_stream): retrieve the Stream with index
+	// index from the collection.
+	Stream(index uint) *Stream
+	// UpstreamID (gst_stream_collection_get_upstream_id) returns the upstream
+	// id of the collection.
+	UpstreamID() string
+
+	baseStreamCollection() *StreamCollection
+}
+
+var _ StreamCollectioner = (*StreamCollection)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*StreamCollection, *StreamCollectionClass, StreamCollectionOverrides](
@@ -31822,7 +33858,17 @@ func marshalStreamCollection(p uintptr) (interface{}, error) {
 	return wrapStreamCollection(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// NewStreamCollection: create a new StreamCollection.
+func (collection *StreamCollection) baseStreamCollection() *StreamCollection {
+	return collection
+}
+
+// BaseStreamCollection returns the underlying base object.
+func BaseStreamCollection(obj StreamCollectioner) *StreamCollection {
+	return obj.baseStreamCollection()
+}
+
+// NewStreamCollection (gst_stream_collection_new): create a new
+// StreamCollection.
 //
 // The function takes the following parameters:
 //
@@ -31850,7 +33896,8 @@ func NewStreamCollection(upstreamId string) *StreamCollection {
 	return _streamCollection
 }
 
-// AddStream: add the given stream to the collection.
+// AddStream (gst_stream_collection_add_stream): add the given stream to the
+// collection.
 //
 // The function takes the following parameters:
 //
@@ -31881,7 +33928,8 @@ func (collection *StreamCollection) AddStream(stream *Stream) bool {
 	return _ok
 }
 
-// Size: get the number of streams this collection contains.
+// Size (gst_stream_collection_get_size): get the number of streams this
+// collection contains.
 //
 // The function returns the following values:
 //
@@ -31902,7 +33950,8 @@ func (collection *StreamCollection) Size() uint {
 	return _guint
 }
 
-// Stream: retrieve the Stream with index index from the collection.
+// Stream (gst_stream_collection_get_stream): retrieve the Stream with index
+// index from the collection.
 //
 // The caller should not modify the returned Stream.
 //
@@ -31934,7 +33983,8 @@ func (collection *StreamCollection) Stream(index uint) *Stream {
 	return _stream
 }
 
-// UpstreamID returns the upstream id of the collection.
+// UpstreamID (gst_stream_collection_get_upstream_id) returns the upstream id of
+// the collection.
 //
 // The function returns the following values:
 //
@@ -31965,8 +34015,9 @@ func defaultSystemClockOverrides(v *SystemClock) SystemClockOverrides {
 	return SystemClockOverrides{}
 }
 
-// SystemClock: GStreamer core provides a GstSystemClock based on the system
-// time. Asynchronous callbacks are scheduled from an internal thread.
+// SystemClock (GstSystemClock): GStreamer core provides a GstSystemClock based
+// on the system time. Asynchronous callbacks are scheduled from an internal
+// thread.
 //
 // Clock implementors are encouraged to subclass this systemclock as it
 // implements the async notification.
@@ -31982,6 +34033,18 @@ type SystemClock struct {
 var (
 	_ Clocker = (*SystemClock)(nil)
 )
+
+// SystemClocker describes types inherited from SystemClock.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type SystemClocker interface {
+	Clocker
+
+	baseSystemClock() *SystemClock
+}
+
+var _ SystemClocker = (*SystemClock)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*SystemClock, *SystemClockClass, SystemClockOverrides](
@@ -32015,8 +34078,18 @@ func marshalSystemClock(p uintptr) (interface{}, error) {
 	return wrapSystemClock(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// SystemClockObtain: get a handle to the default system clock. The refcount of
-// the clock will be increased so you need to unref the clock after usage.
+func (v *SystemClock) baseSystemClock() *SystemClock {
+	return v
+}
+
+// BaseSystemClock returns the underlying base object.
+func BaseSystemClock(obj SystemClocker) *SystemClock {
+	return obj.baseSystemClock()
+}
+
+// SystemClockObtain (gst_system_clock_obtain): get a handle to the default
+// system clock. The refcount of the clock will be increased so you need to
+// unref the clock after usage.
 //
 // The function returns the following values:
 //
@@ -32051,8 +34124,8 @@ func SystemClockObtain() Clocker {
 	return _clock
 }
 
-// SystemClockSetDefault sets the default system clock that can be obtained with
-// gst_system_clock_obtain().
+// SystemClockSetDefault (gst_system_clock_set_default) sets the default system
+// clock that can be obtained with gst_system_clock_obtain().
 //
 // This is mostly used for testing and debugging purposes when you want to have
 // control over the time reported by the default system clock.
@@ -32081,8 +34154,8 @@ func defaultTaskOverrides(v *Task) TaskOverrides {
 	return TaskOverrides{}
 }
 
-// Task is used by Element and Pad to provide the data passing threads in a
-// Pipeline.
+// Task (GstTask) is used by Element and Pad to provide the data passing threads
+// in a Pipeline.
 //
 // A Pad will typically start a Task to push or pull data to/from the peer pads.
 // Most source elements start a Task to push data. In some cases a demuxer
@@ -32130,6 +34203,33 @@ var (
 	_ GstObjector = (*Task)(nil)
 )
 
+// Tasker describes types inherited from Task.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type Tasker interface {
+	GstObjector
+
+	// State (gst_task_get_state): get the current state of the task.
+	State() TaskState
+	// Join (gst_task_join) joins task.
+	Join() bool
+	// Pause (gst_task_pause) pauses task.
+	Pause() bool
+	// Resume (gst_task_resume) task in case it was paused.
+	Resume() bool
+	// SetState (gst_task_set_state) sets the state of task to state.
+	SetState(state TaskState) bool
+	// Start (gst_task_start) starts task.
+	Start() bool
+	// Stop (gst_task_stop) stops task.
+	Stop() bool
+
+	baseTask() *Task
+}
+
+var _ Tasker = (*Task)(nil)
+
 func init() {
 	coreglib.RegisterClassInfo[*Task, *TaskClass, TaskOverrides](
 		GTypeTask,
@@ -32160,8 +34260,18 @@ func marshalTask(p uintptr) (interface{}, error) {
 	return wrapTask(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// NewTask: create a new Task that will repeatedly call the provided func with
-// user_data as a parameter. Typically the task will run in a new thread.
+func (task *Task) baseTask() *Task {
+	return task
+}
+
+// BaseTask returns the underlying base object.
+func BaseTask(obj Tasker) *Task {
+	return obj.baseTask()
+}
+
+// NewTask (gst_task_new): create a new Task that will repeatedly call the
+// provided func with user_data as a parameter. Typically the task will run in a
+// new thread.
 //
 // The function cannot be changed after the task has been created. You must
 // create a new Task to change the function.
@@ -32202,7 +34312,7 @@ func NewTask(fn TaskFunction) *Task {
 	return _task
 }
 
-// State: get the current state of the task.
+// State (gst_task_get_state): get the current state of the task.
 //
 // The function returns the following values:
 //
@@ -32225,8 +34335,8 @@ func (task *Task) State() TaskState {
 	return _taskState
 }
 
-// Join joins task. After this call, it is safe to unref the task and clean up
-// the lock set with gst_task_set_lock().
+// Join (gst_task_join) joins task. After this call, it is safe to unref the
+// task and clean up the lock set with gst_task_set_lock().
 //
 // The task will automatically be stopped with this call.
 //
@@ -32256,9 +34366,10 @@ func (task *Task) Join() bool {
 	return _ok
 }
 
-// Pause pauses task. This method can also be called on a task in the stopped
-// state, in which case a thread will be started and will remain in the paused
-// state. This function does not wait for the task to complete the paused state.
+// Pause (gst_task_pause) pauses task. This method can also be called on a task
+// in the stopped state, in which case a thread will be started and will remain
+// in the paused state. This function does not wait for the task to complete the
+// paused state.
 //
 // The function returns the following values:
 //
@@ -32283,8 +34394,8 @@ func (task *Task) Pause() bool {
 	return _ok
 }
 
-// Resume task in case it was paused. If the task was stopped, it will remain in
-// that state and this function will return FALSE.
+// Resume (gst_task_resume) task in case it was paused. If the task was stopped,
+// it will remain in that state and this function will return FALSE.
 //
 // The function returns the following values:
 //
@@ -32309,7 +34420,7 @@ func (task *Task) Resume() bool {
 	return _ok
 }
 
-// SetState sets the state of task to state.
+// SetState (gst_task_set_state) sets the state of task to state.
 //
 // The task must have a lock associated with it using gst_task_set_lock() when
 // going to GST_TASK_STARTED or GST_TASK_PAUSED or this function will return
@@ -32345,8 +34456,8 @@ func (task *Task) SetState(state TaskState) bool {
 	return _ok
 }
 
-// Start starts task. The task must have a lock associated with it using
-// gst_task_set_lock() or this function will return FALSE.
+// Start (gst_task_start) starts task. The task must have a lock associated with
+// it using gst_task_set_lock() or this function will return FALSE.
 //
 // The function returns the following values:
 //
@@ -32371,9 +34482,9 @@ func (task *Task) Start() bool {
 	return _ok
 }
 
-// Stop stops task. This method merely schedules the task to stop and will not
-// wait for the task to have completely stopped. Use gst_task_join() to stop and
-// wait for completion.
+// Stop (gst_task_stop) stops task. This method merely schedules the task
+// to stop and will not wait for the task to have completely stopped. Use
+// gst_task_join() to stop and wait for completion.
 //
 // The function returns the following values:
 //
@@ -32398,9 +34509,9 @@ func (task *Task) Stop() bool {
 	return _ok
 }
 
-// TaskCleanupAll: wait for all tasks to be stopped. This is mainly used
-// internally to ensure proper cleanup of internal data structures in test
-// suites.
+// TaskCleanupAll (gst_task_cleanup_all): wait for all tasks to be stopped.
+// This is mainly used internally to ensure proper cleanup of internal data
+// structures in test suites.
 //
 // MT safe.
 func TaskCleanupAll() {
@@ -32415,9 +34526,9 @@ func defaultTracerOverrides(v *Tracer) TracerOverrides {
 	return TracerOverrides{}
 }
 
-// Tracer: tracing modules will subclass Tracer and register through
-// gst_tracer_register(). Modules can attach to various hook-types - see
-// gst_tracing_register_hook(). When invoked they receive hook specific
+// Tracer (GstTracer): tracing modules will subclass Tracer and register
+// through gst_tracer_register(). Modules can attach to various hook-types -
+// see gst_tracing_register_hook(). When invoked they receive hook specific
 // contextual data, which they must not modify.
 type Tracer struct {
 	_ [0]func() // equal guard
@@ -32428,12 +34539,13 @@ var (
 	_ GstObjector = (*Tracer)(nil)
 )
 
-// Tracerer describes types inherited from class Tracer.
+// Tracerer describes types inherited from Tracer.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type Tracerer interface {
-	coreglib.Objector
+	GstObjector
+
 	baseTracer() *Tracer
 }
 
@@ -32478,8 +34590,8 @@ func BaseTracer(obj Tracerer) *Tracer {
 	return obj.baseTracer()
 }
 
-// TracerRegister: create a new tracer-factory capable of instantiating objects
-// of the type and add the factory to plugin.
+// TracerRegister (gst_tracer_register): create a new tracer-factory capable of
+// instantiating objects of the type and add the factory to plugin.
 //
 // The function takes the following parameters:
 //
@@ -32517,8 +34629,8 @@ func TracerRegister(plugin *Plugin, name string, typ coreglib.Type) bool {
 	return _ok
 }
 
-// TracerFactory: use gst_tracer_factory_get_list() to get a list of tracer
-// factories known to GStreamer.
+// TracerFactory (GstTracerFactory): use gst_tracer_factory_get_list() to get a
+// list of tracer factories known to GStreamer.
 type TracerFactory struct {
 	_ [0]func() // equal guard
 	PluginFeature
@@ -32527,6 +34639,22 @@ type TracerFactory struct {
 var (
 	_ PluginFeaturer = (*TracerFactory)(nil)
 )
+
+// TracerFactorier describes types inherited from TracerFactory.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type TracerFactorier interface {
+	PluginFeaturer
+
+	// TracerType (gst_tracer_factory_get_tracer_type): get the #GType for
+	// elements managed by this factory.
+	TracerType() coreglib.Type
+
+	baseTracerFactory() *TracerFactory
+}
+
+var _ TracerFactorier = (*TracerFactory)(nil)
 
 func wrapTracerFactory(obj *coreglib.Object) *TracerFactory {
 	return &TracerFactory{
@@ -32544,9 +34672,18 @@ func marshalTracerFactory(p uintptr) (interface{}, error) {
 	return wrapTracerFactory(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// TracerType: get the #GType for elements managed by this factory. The type can
-// only be retrieved if the element factory is loaded, which can be assured with
-// gst_plugin_feature_load().
+func (factory *TracerFactory) baseTracerFactory() *TracerFactory {
+	return factory
+}
+
+// BaseTracerFactory returns the underlying base object.
+func BaseTracerFactory(obj TracerFactorier) *TracerFactory {
+	return obj.baseTracerFactory()
+}
+
+// TracerType (gst_tracer_factory_get_tracer_type): get the #GType for elements
+// managed by this factory. The type can only be retrieved if the element
+// factory is loaded, which can be assured with gst_plugin_feature_load().
 //
 // The function returns the following values:
 //
@@ -32568,8 +34705,9 @@ func (factory *TracerFactory) TracerType() coreglib.Type {
 	return _gType
 }
 
-// TracerFactoryGetList gets the list of all registered tracer factories.
-// You must free the list using gst_plugin_feature_list_free().
+// TracerFactoryGetList (gst_tracer_factory_get_list) gets the list
+// of all registered tracer factories. You must free the list using
+// gst_plugin_feature_list_free().
 //
 // The returned factories are sorted by factory name.
 //
@@ -32596,8 +34734,8 @@ func TracerFactoryGetList() []*TracerFactory {
 	return _list
 }
 
-// TracerRecord: tracing modules will create instances of this class to announce
-// the data they will log and create a log formatter.
+// TracerRecord (GstTracerRecord): tracing modules will create instances of this
+// class to announce the data they will log and create a log formatter.
 type TracerRecord struct {
 	_ [0]func() // equal guard
 	GstObject
@@ -32606,6 +34744,18 @@ type TracerRecord struct {
 var (
 	_ GstObjector = (*TracerRecord)(nil)
 )
+
+// TracerRecorder describes types inherited from TracerRecord.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type TracerRecorder interface {
+	GstObjector
+
+	baseTracerRecord() *TracerRecord
+}
+
+var _ TracerRecorder = (*TracerRecord)(nil)
 
 func wrapTracerRecord(obj *coreglib.Object) *TracerRecord {
 	return &TracerRecord{
@@ -32621,10 +34771,20 @@ func marshalTracerRecord(p uintptr) (interface{}, error) {
 	return wrapTracerRecord(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// TypeFindFactory: these functions allow querying information about registered
-// typefind functions. How to create and register these functions is described
-// in the section <link linkend="gstreamer-Writing-typefind-functions"> "Writing
-// typefind functions"</link>.
+func (v *TracerRecord) baseTracerRecord() *TracerRecord {
+	return v
+}
+
+// BaseTracerRecord returns the underlying base object.
+func BaseTracerRecord(obj TracerRecorder) *TracerRecord {
+	return obj.baseTracerRecord()
+}
+
+// TypeFindFactory (GstTypeFindFactory): these functions allow querying
+// information about registered typefind functions. How to create
+// and register these functions is described in the section <link
+// linkend="gstreamer-Writing-typefind-functions"> "Writing typefind
+// functions"</link>.
 //
 // The following example shows how to write a very simple typefinder that
 // identifies the given data. You can get quite a bit more complicated than that
@@ -32678,6 +34838,31 @@ var (
 	_ PluginFeaturer = (*TypeFindFactory)(nil)
 )
 
+// TypeFindFactorier describes types inherited from TypeFindFactory.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type TypeFindFactorier interface {
+	PluginFeaturer
+
+	// CallFunction (gst_type_find_factory_call_function) calls the
+	// TypeFindFunction associated with this factory.
+	CallFunction(find *TypeFind)
+	// Caps (gst_type_find_factory_get_caps) gets the Caps associated with a
+	// typefind factory.
+	Caps() *Caps
+	// Extensions (gst_type_find_factory_get_extensions) gets the extensions
+	// associated with a TypeFindFactory.
+	Extensions() []string
+	// HasFunction (gst_type_find_factory_has_function): check whether the
+	// factory has a typefind function.
+	HasFunction() bool
+
+	baseTypeFindFactory() *TypeFindFactory
+}
+
+var _ TypeFindFactorier = (*TypeFindFactory)(nil)
+
 func wrapTypeFindFactory(obj *coreglib.Object) *TypeFindFactory {
 	return &TypeFindFactory{
 		PluginFeature: PluginFeature{
@@ -32694,7 +34879,17 @@ func marshalTypeFindFactory(p uintptr) (interface{}, error) {
 	return wrapTypeFindFactory(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// CallFunction calls the TypeFindFunction associated with this factory.
+func (factory *TypeFindFactory) baseTypeFindFactory() *TypeFindFactory {
+	return factory
+}
+
+// BaseTypeFindFactory returns the underlying base object.
+func BaseTypeFindFactory(obj TypeFindFactorier) *TypeFindFactory {
+	return obj.baseTypeFindFactory()
+}
+
+// CallFunction (gst_type_find_factory_call_function) calls the TypeFindFunction
+// associated with this factory.
 //
 // The function takes the following parameters:
 //
@@ -32712,7 +34907,8 @@ func (factory *TypeFindFactory) CallFunction(find *TypeFind) {
 	runtime.KeepAlive(find)
 }
 
-// Caps gets the Caps associated with a typefind factory.
+// Caps (gst_type_find_factory_get_caps) gets the Caps associated with a
+// typefind factory.
 //
 // The function returns the following values:
 //
@@ -32741,10 +34937,10 @@ func (factory *TypeFindFactory) Caps() *Caps {
 	return _caps
 }
 
-// Extensions gets the extensions associated with a TypeFindFactory. The
-// returned array should not be changed. If you need to change stuff in it, you
-// should copy it using g_strdupv(). This function may return NULL to indicate a
-// 0-length list.
+// Extensions (gst_type_find_factory_get_extensions) gets the extensions
+// associated with a TypeFindFactory. The returned array should not be changed.
+// If you need to change stuff in it, you should copy it using g_strdupv().
+// This function may return NULL to indicate a 0-length list.
 //
 // The function returns the following values:
 //
@@ -32780,9 +34976,10 @@ func (factory *TypeFindFactory) Extensions() []string {
 	return _utf8s
 }
 
-// HasFunction: check whether the factory has a typefind function. Typefind
-// factories without typefind functions are a last-effort fallback mechanism to
-// e.g. assume a certain media type based on the file extension.
+// HasFunction (gst_type_find_factory_has_function): check whether the factory
+// has a typefind function. Typefind factories without typefind functions are a
+// last-effort fallback mechanism to e.g. assume a certain media type based on
+// the file extension.
 //
 // The function returns the following values:
 //
@@ -32805,8 +35002,9 @@ func (factory *TypeFindFactory) HasFunction() bool {
 	return _ok
 }
 
-// TypeFindFactoryGetList gets the list of all registered typefind factories.
-// You must free the list using gst_plugin_feature_list_free().
+// TypeFindFactoryGetList (gst_type_find_factory_get_list) gets the list
+// of all registered typefind factories. You must free the list using
+// gst_plugin_feature_list_free().
 //
 // The returned factories are sorted by highest rank first, and then by factory
 // name.
@@ -32834,7 +35032,8 @@ func TypeFindFactoryGetList() []*TypeFindFactory {
 	return _list
 }
 
-// ValueArray: fundamental type that describes an ordered list of #GValue.
+// ValueArray (GstValueArray): fundamental type that describes an ordered list
+// of #GValue.
 type ValueArray struct {
 	_ [0]func() // equal guard
 	*coreglib.Object
@@ -32843,6 +35042,18 @@ type ValueArray struct {
 var (
 	_ coreglib.Objector = (*ValueArray)(nil)
 )
+
+// ValueArrayer describes types inherited from ValueArray.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type ValueArrayer interface {
+	coreglib.Objector
+
+	baseValueArray() *ValueArray
+}
+
+var _ ValueArrayer = (*ValueArray)(nil)
 
 func wrapValueArray(obj *coreglib.Object) *ValueArray {
 	return &ValueArray{
@@ -32854,8 +35065,17 @@ func marshalValueArray(p uintptr) (interface{}, error) {
 	return wrapValueArray(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// ValueArrayAppendAndTakeValue appends append_value to the GstValueArray in
-// value.
+func (v *ValueArray) baseValueArray() *ValueArray {
+	return v
+}
+
+// BaseValueArray returns the underlying base object.
+func BaseValueArray(obj ValueArrayer) *ValueArray {
+	return obj.baseValueArray()
+}
+
+// ValueArrayAppendAndTakeValue (gst_value_array_append_and_take_value) appends
+// append_value to the GstValueArray in value.
 //
 // The function takes the following parameters:
 //
@@ -32873,7 +35093,8 @@ func ValueArrayAppendAndTakeValue(value, appendValue *coreglib.Value) {
 	runtime.KeepAlive(appendValue)
 }
 
-// ValueArrayAppendValue appends append_value to the GstValueArray in value.
+// ValueArrayAppendValue (gst_value_array_append_value) appends append_value to
+// the GstValueArray in value.
 //
 // The function takes the following parameters:
 //
@@ -32891,7 +35112,8 @@ func ValueArrayAppendValue(value, appendValue *coreglib.Value) {
 	runtime.KeepAlive(appendValue)
 }
 
-// ValueArrayGetSize gets the number of values contained in value.
+// ValueArrayGetSize (gst_value_array_get_size) gets the number of values
+// contained in value.
 //
 // The function takes the following parameters:
 //
@@ -32916,8 +35138,8 @@ func ValueArrayGetSize(value *coreglib.Value) uint {
 	return _guint
 }
 
-// ValueArrayGetValue gets the value that is a member of the array contained in
-// value and has the index index.
+// ValueArrayGetValue (gst_value_array_get_value) gets the value that is a
+// member of the array contained in value and has the index index.
 //
 // The function takes the following parameters:
 //
@@ -32946,7 +35168,8 @@ func ValueArrayGetValue(value *coreglib.Value, index uint) *coreglib.Value {
 	return _ret
 }
 
-// ValueArrayInit initializes and pre-allocates a #GValue of type T_TYPE_ARRAY.
+// ValueArrayInit (gst_value_array_init) initializes and pre-allocates a #GValue
+// of type T_TYPE_ARRAY.
 //
 // The function takes the following parameters:
 //
@@ -32975,7 +35198,8 @@ func ValueArrayInit(value *coreglib.Value, prealloc uint) *coreglib.Value {
 	return _ret
 }
 
-// ValueArrayPrependValue prepends prepend_value to the GstValueArray in value.
+// ValueArrayPrependValue (gst_value_array_prepend_value) prepends prepend_value
+// to the GstValueArray in value.
 //
 // The function takes the following parameters:
 //
@@ -32993,7 +35217,8 @@ func ValueArrayPrependValue(value, prependValue *coreglib.Value) {
 	runtime.KeepAlive(prependValue)
 }
 
-// ValueList: fundamental type that describes an unordered list of #GValue.
+// ValueList (GstValueList): fundamental type that describes an unordered list
+// of #GValue.
 type ValueList struct {
 	_ [0]func() // equal guard
 	*coreglib.Object
@@ -33002,6 +35227,18 @@ type ValueList struct {
 var (
 	_ coreglib.Objector = (*ValueList)(nil)
 )
+
+// ValueLister describes types inherited from ValueList.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type ValueLister interface {
+	coreglib.Objector
+
+	baseValueList() *ValueList
+}
+
+var _ ValueLister = (*ValueList)(nil)
 
 func wrapValueList(obj *coreglib.Object) *ValueList {
 	return &ValueList{
@@ -33013,8 +35250,17 @@ func marshalValueList(p uintptr) (interface{}, error) {
 	return wrapValueList(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// ValueListAppendAndTakeValue appends append_value to the GstValueList in
-// value.
+func (v *ValueList) baseValueList() *ValueList {
+	return v
+}
+
+// BaseValueList returns the underlying base object.
+func BaseValueList(obj ValueLister) *ValueList {
+	return obj.baseValueList()
+}
+
+// ValueListAppendAndTakeValue (gst_value_list_append_and_take_value) appends
+// append_value to the GstValueList in value.
 //
 // The function takes the following parameters:
 //
@@ -33032,7 +35278,8 @@ func ValueListAppendAndTakeValue(value, appendValue *coreglib.Value) {
 	runtime.KeepAlive(appendValue)
 }
 
-// ValueListAppendValue appends append_value to the GstValueList in value.
+// ValueListAppendValue (gst_value_list_append_value) appends append_value to
+// the GstValueList in value.
 //
 // The function takes the following parameters:
 //
@@ -33050,9 +35297,10 @@ func ValueListAppendValue(value, appendValue *coreglib.Value) {
 	runtime.KeepAlive(appendValue)
 }
 
-// ValueListConcat concatenates copies of value1 and value2 into a list.
-// Values that are not of type T_TYPE_LIST are treated as if they were lists of
-// length 1. dest will be initialized to the type T_TYPE_LIST.
+// ValueListConcat (gst_value_list_concat) concatenates copies of value1 and
+// value2 into a list. Values that are not of type T_TYPE_LIST are treated
+// as if they were lists of length 1. dest will be initialized to the type
+// T_TYPE_LIST.
 //
 // The function takes the following parameters:
 //
@@ -33081,7 +35329,8 @@ func ValueListConcat(value1, value2 *coreglib.Value) coreglib.Value {
 	return _dest
 }
 
-// ValueListGetSize gets the number of values contained in value.
+// ValueListGetSize (gst_value_list_get_size) gets the number of values
+// contained in value.
 //
 // The function takes the following parameters:
 //
@@ -33106,8 +35355,8 @@ func ValueListGetSize(value *coreglib.Value) uint {
 	return _guint
 }
 
-// ValueListGetValue gets the value that is a member of the list contained in
-// value and has the index index.
+// ValueListGetValue (gst_value_list_get_value) gets the value that is a member
+// of the list contained in value and has the index index.
 //
 // The function takes the following parameters:
 //
@@ -33136,7 +35385,8 @@ func ValueListGetValue(value *coreglib.Value, index uint) *coreglib.Value {
 	return _ret
 }
 
-// ValueListInit initializes and pre-allocates a #GValue of type T_TYPE_LIST.
+// ValueListInit (gst_value_list_init) initializes and pre-allocates a #GValue
+// of type T_TYPE_LIST.
 //
 // The function takes the following parameters:
 //
@@ -33165,8 +35415,9 @@ func ValueListInit(value *coreglib.Value, prealloc uint) *coreglib.Value {
 	return _ret
 }
 
-// ValueListMerge merges copies of value1 and value2. Values that are not of
-// type T_TYPE_LIST are treated as if they were lists of length 1.
+// ValueListMerge (gst_value_list_merge) merges copies of value1 and value2.
+// Values that are not of type T_TYPE_LIST are treated as if they were lists of
+// length 1.
 //
 // The result will be put into dest and will either be a list that will not
 // contain any duplicates, or a non-list type (if value1 and value2 were equal).
@@ -33198,7 +35449,8 @@ func ValueListMerge(value1, value2 *coreglib.Value) coreglib.Value {
 	return _dest
 }
 
-// ValueListPrependValue prepends prepend_value to the GstValueList in value.
+// ValueListPrependValue (gst_value_list_prepend_value) prepends prepend_value
+// to the GstValueList in value.
 //
 // The function takes the following parameters:
 //
@@ -33216,7 +35468,8 @@ func ValueListPrependValue(value, prependValue *coreglib.Value) {
 	runtime.KeepAlive(prependValue)
 }
 
-// AllocationParams parameters to control the allocation of memory
+// AllocationParams (GstAllocationParams) parameters to control the allocation
+// of memory
 //
 // An instance of this type is always passed by reference.
 type AllocationParams struct {
@@ -33302,7 +35555,7 @@ func (a *AllocationParams) SetPadding(padding uint) {
 	*valptr = C.gsize(padding)
 }
 
-// Copy: create a copy of params.
+// Copy (gst_allocation_params_copy): create a copy of params.
 //
 // The function returns the following values:
 //
@@ -33333,7 +35586,7 @@ func (params *AllocationParams) Copy() *AllocationParams {
 	return _allocationParams
 }
 
-// Init: initialize params to its default values.
+// Init (gst_allocation_params_init): initialize params to its default values.
 func (params *AllocationParams) Init() {
 	var _arg0 *C.GstAllocationParams // out
 
@@ -33343,7 +35596,7 @@ func (params *AllocationParams) Init() {
 	runtime.KeepAlive(params)
 }
 
-// AllocatorClass is used to create new memory.
+// AllocatorClass (GstAllocatorClass) is used to create new memory.
 //
 // An instance of this type is always passed by reference.
 type AllocatorClass struct {
@@ -33363,8 +35616,8 @@ func (a *AllocatorClass) ObjectClass() *ObjectClass {
 	return _v
 }
 
-// AtomicQueue object implements a queue that can be used from multiple threads
-// without performing any blocking operations.
+// AtomicQueue (GstAtomicQueue) object implements a queue that can be used from
+// multiple threads without performing any blocking operations.
 //
 // An instance of this type is always passed by reference.
 type AtomicQueue struct {
@@ -33404,7 +35657,7 @@ func NewAtomicQueue(initialSize uint) *AtomicQueue {
 	return _atomicQueue
 }
 
-// Length: get the amount of items in the queue.
+// Length (gst_atomic_queue_length): get the amount of items in the queue.
 //
 // The function returns the following values:
 //
@@ -33425,7 +35678,8 @@ func (queue *AtomicQueue) Length() uint {
 	return _guint
 }
 
-// Peek the head element of the queue without removing it from the queue.
+// Peek (gst_atomic_queue_peek) the head element of the queue without removing
+// it from the queue.
 //
 // The function returns the following values:
 //
@@ -33447,7 +35701,7 @@ func (queue *AtomicQueue) Peek() unsafe.Pointer {
 	return _gpointer
 }
 
-// Pop: get the head element of the queue.
+// Pop (gst_atomic_queue_pop): get the head element of the queue.
 //
 // The function returns the following values:
 //
@@ -33469,7 +35723,7 @@ func (queue *AtomicQueue) Pop() unsafe.Pointer {
 	return _gpointer
 }
 
-// Push: append data to the tail of the queue.
+// Push (gst_atomic_queue_push): append data to the tail of the queue.
 //
 // The function takes the following parameters:
 //
@@ -33486,7 +35740,7 @@ func (queue *AtomicQueue) Push(data unsafe.Pointer) {
 	runtime.KeepAlive(data)
 }
 
-// BinClass subclasses can override BinClass::add_element and
+// BinClass (GstBinClass) subclasses can override BinClass::add_element and
 // BinClass::remove_element to update the list of children in the bin.
 //
 // The BinClass::handle_message method can be overridden to implement custom
@@ -33516,9 +35770,9 @@ func (b *BinClass) ParentClass() *ElementClass {
 	return _v
 }
 
-// Buffer buffers are the basic unit of data transfer in GStreamer. They contain
-// the timing and offset along with other arbitrary metadata that is associated
-// with the Memory blocks that the buffer contains.
+// Buffer (GstBuffer) buffers are the basic unit of data transfer in GStreamer.
+// They contain the timing and offset along with other arbitrary metadata that
+// is associated with the Memory blocks that the buffer contains.
 //
 // Buffers are usually created with gst_buffer_new(). After a buffer has been
 // created one will typically allocate memory for it and add it to the buffer.
@@ -33822,8 +36076,9 @@ func (b *Buffer) SetOffsetEnd(offsetEnd uint64) {
 	*valptr = C.guint64(offsetEnd)
 }
 
-// AddCustomMeta creates and adds a CustomMeta for the desired name. name must
-// have been successfully registered with gst_meta_register_custom().
+// AddCustomMeta (gst_buffer_add_custom_meta) creates and adds a CustomMeta
+// for the desired name. name must have been successfully registered with
+// gst_meta_register_custom().
 //
 // The function takes the following parameters:
 //
@@ -33854,7 +36109,8 @@ func (buffer *Buffer) AddCustomMeta(name string) *CustomMeta {
 	return _customMeta
 }
 
-// AddMeta adds metadata for info to buffer using the parameters in params.
+// AddMeta (gst_buffer_add_meta) adds metadata for info to buffer using the
+// parameters in params.
 //
 // The function takes the following parameters:
 //
@@ -33888,8 +36144,9 @@ func (buffer *Buffer) AddMeta(info *MetaInfo, params unsafe.Pointer) *Meta {
 	return _meta
 }
 
-// AddParentBufferMeta adds a ParentBufferMeta to buffer that holds a reference
-// on ref until the buffer is freed.
+// AddParentBufferMeta (gst_buffer_add_parent_buffer_meta) adds a
+// ParentBufferMeta to buffer that holds a reference on ref until the buffer is
+// freed.
 //
 // The function takes the following parameters:
 //
@@ -33919,7 +36176,8 @@ func (buffer *Buffer) AddParentBufferMeta(ref *Buffer) *ParentBufferMeta {
 	return _parentBufferMeta
 }
 
-// AddProtectionMeta attaches protection metadata to a Buffer.
+// AddProtectionMeta (gst_buffer_add_protection_meta) attaches protection
+// metadata to a Buffer.
 //
 // The function takes the following parameters:
 //
@@ -33949,9 +36207,10 @@ func (buffer *Buffer) AddProtectionMeta(info *Structure) *ProtectionMeta {
 	return _protectionMeta
 }
 
-// AddReferenceTimestampMeta adds a ReferenceTimestampMeta to buffer that holds
-// a timestamp and optionally duration based on a specific timestamp reference.
-// See the documentation of ReferenceTimestampMeta for details.
+// AddReferenceTimestampMeta (gst_buffer_add_reference_timestamp_meta) adds
+// a ReferenceTimestampMeta to buffer that holds a timestamp and optionally
+// duration based on a specific timestamp reference. See the documentation of
+// ReferenceTimestampMeta for details.
 //
 // The function takes the following parameters:
 //
@@ -33989,8 +36248,8 @@ func (buffer *Buffer) AddReferenceTimestampMeta(reference *Caps, timestamp Clock
 	return _referenceTimestampMeta
 }
 
-// Append appends all the memory from buf2 to buf1. The result buffer will
-// contain a concatenation of the memory of buf1 and buf2.
+// Append (gst_buffer_append) appends all the memory from buf2 to buf1. The
+// result buffer will contain a concatenation of the memory of buf1 and buf2.
 //
 // The function takes the following parameters:
 //
@@ -34025,8 +36284,9 @@ func (buf1 *Buffer) Append(buf2 *Buffer) *Buffer {
 	return _buffer
 }
 
-// AppendMemory appends the memory block mem to buffer. This function takes
-// ownership of mem and thus doesn't increase its refcount.
+// AppendMemory (gst_buffer_append_memory) appends the memory block mem to
+// buffer. This function takes ownership of mem and thus doesn't increase its
+// refcount.
 //
 // This function is identical to gst_buffer_insert_memory() with an index of -1.
 // See gst_buffer_insert_memory() for more details.
@@ -34047,9 +36307,9 @@ func (buffer *Buffer) AppendMemory(mem *Memory) {
 	runtime.KeepAlive(mem)
 }
 
-// AppendRegion appends size bytes at offset from buf2 to buf1. The result
-// buffer will contain a concatenation of the memory of buf1 and the requested
-// region of buf2.
+// AppendRegion (gst_buffer_append_region) appends size bytes at offset from
+// buf2 to buf1. The result buffer will contain a concatenation of the memory of
+// buf1 and the requested region of buf2.
 //
 // The function takes the following parameters:
 //
@@ -34092,8 +36352,8 @@ func (buf1 *Buffer) AppendRegion(buf2 *Buffer, offset int, size int) *Buffer {
 	return _buffer
 }
 
-// CopyDeep creates a copy of the given buffer. This will make a newly allocated
-// copy of the data the source buffer contains.
+// CopyDeep (gst_buffer_copy_deep) creates a copy of the given buffer. This will
+// make a newly allocated copy of the data the source buffer contains.
 //
 // The function returns the following values:
 //
@@ -34121,7 +36381,7 @@ func (buf *Buffer) CopyDeep() *Buffer {
 	return _buffer
 }
 
-// CopyInto copies the information from src into dest.
+// CopyInto (gst_buffer_copy_into) copies the information from src into dest.
 //
 // If dest already contains memory and flags contains GST_BUFFER_COPY_MEMORY,
 // the memory from src will be appended to dest.
@@ -34168,13 +36428,13 @@ func (dest *Buffer) CopyInto(src *Buffer, flags BufferCopyFlagsType, offset uint
 	return _ok
 }
 
-// CopyRegion creates a sub-buffer from parent at offset and size. This
-// sub-buffer uses the actual memory space of the parent buffer. This function
-// will copy the offset and timestamp fields when the offset is 0. If not,
-// they will be set to T_CLOCK_TIME_NONE and T_BUFFER_OFFSET_NONE. If offset
-// equals 0 and size equals the total size of buffer, the duration and offset
-// end fields are also copied. If not they will be set to T_CLOCK_TIME_NONE and
-// T_BUFFER_OFFSET_NONE.
+// CopyRegion (gst_buffer_copy_region) creates a sub-buffer from parent at
+// offset and size. This sub-buffer uses the actual memory space of the
+// parent buffer. This function will copy the offset and timestamp fields
+// when the offset is 0. If not, they will be set to T_CLOCK_TIME_NONE and
+// T_BUFFER_OFFSET_NONE. If offset equals 0 and size equals the total size of
+// buffer, the duration and offset end fields are also copied. If not they will
+// be set to T_CLOCK_TIME_NONE and T_BUFFER_OFFSET_NONE.
 //
 // The function takes the following parameters:
 //
@@ -34217,8 +36477,9 @@ func (parent *Buffer) CopyRegion(flags BufferCopyFlagsType, offset uint, size ui
 	return _buffer
 }
 
-// ExtractDup extracts a copy of at most size bytes the data at offset into
-// newly-allocated memory. dest must be freed using g_free() when done.
+// ExtractDup (gst_buffer_extract_dup) extracts a copy of at most size bytes the
+// data at offset into newly-allocated memory. dest must be freed using g_free()
+// when done.
 //
 // The function takes the following parameters:
 //
@@ -34254,7 +36515,7 @@ func (buffer *Buffer) ExtractDup(offset uint, size uint) []byte {
 	return _dest
 }
 
-// Fill copies size bytes from src to buffer at offset.
+// Fill (gst_buffer_fill) copies size bytes from src to buffer at offset.
 //
 // The function takes the following parameters:
 //
@@ -34291,8 +36552,8 @@ func (buffer *Buffer) Fill(offset uint, src []byte) uint {
 	return _gsize
 }
 
-// FindMemory finds the memory blocks that span size bytes starting from offset
-// in buffer.
+// FindMemory (gst_buffer_find_memory) finds the memory blocks that span size
+// bytes starting from offset in buffer.
 //
 // When this function returns TRUE, idx will contain the index of the first
 // memory block where the byte for offset can be found and length contains the
@@ -34347,7 +36608,8 @@ func (buffer *Buffer) FindMemory(offset uint, size uint) (idx uint, length uint,
 	return _idx, _length, _skip, _ok
 }
 
-// ForEachMeta calls func with user_data for each meta in buffer.
+// ForEachMeta (gst_buffer_foreach_meta) calls func with user_data for each meta
+// in buffer.
 //
 // func can modify the passed meta pointer or its contents. The return value of
 // func defines if this function returns or if the remaining metadata items in
@@ -34384,8 +36646,8 @@ func (buffer *Buffer) ForEachMeta(fn BufferForEachMetaFunc) bool {
 	return _ok
 }
 
-// AllMemory gets all the memory blocks in buffer. The memory blocks will be
-// merged into one large Memory.
+// AllMemory (gst_buffer_get_all_memory) gets all the memory blocks in buffer.
+// The memory blocks will be merged into one large Memory.
 //
 // The function returns the following values:
 //
@@ -34413,7 +36675,8 @@ func (buffer *Buffer) AllMemory() *Memory {
 	return _memory
 }
 
-// CustomMeta finds the first CustomMeta on buffer for the desired name.
+// CustomMeta (gst_buffer_get_custom_meta) finds the first CustomMeta on buffer
+// for the desired name.
 //
 // The function takes the following parameters:
 //
@@ -34444,7 +36707,7 @@ func (buffer *Buffer) CustomMeta(name string) *CustomMeta {
 	return _customMeta
 }
 
-// Flags gets the BufferFlags flags set on this buffer.
+// Flags (gst_buffer_get_flags) gets the BufferFlags flags set on this buffer.
 //
 // The function returns the following values:
 //
@@ -34465,7 +36728,7 @@ func (buffer *Buffer) Flags() BufferFlags {
 	return _bufferFlags
 }
 
-// Memory gets the memory block at index idx in buffer.
+// Memory (gst_buffer_get_memory) gets the memory block at index idx in buffer.
 //
 // The function takes the following parameters:
 //
@@ -34500,8 +36763,8 @@ func (buffer *Buffer) Memory(idx uint) *Memory {
 	return _memory
 }
 
-// MemoryRange gets length memory blocks in buffer starting at idx. The memory
-// blocks will be merged into one large Memory.
+// MemoryRange (gst_buffer_get_memory_range) gets length memory blocks in buffer
+// starting at idx. The memory blocks will be merged into one large Memory.
 //
 // If length is -1, all memory starting from idx is merged.
 //
@@ -34543,11 +36806,12 @@ func (buffer *Buffer) MemoryRange(idx uint, length int) *Memory {
 	return _memory
 }
 
-// Meta gets the metadata for api on buffer. When there is no such metadata,
-// NULL is returned. If multiple metadata with the given api are attached to
-// this buffer only the first one is returned. To handle multiple metadata
-// with a given API use gst_buffer_iterate_meta() or gst_buffer_foreach_meta()
-// instead and check the meta->info.api member for the API type.
+// Meta (gst_buffer_get_meta) gets the metadata for api on buffer. When
+// there is no such metadata, NULL is returned. If multiple metadata with
+// the given api are attached to this buffer only the first one is returned.
+// To handle multiple metadata with a given API use gst_buffer_iterate_meta() or
+// gst_buffer_foreach_meta() instead and check the meta->info.api member for the
+// API type.
 //
 // The function takes the following parameters:
 //
@@ -34603,9 +36867,10 @@ func (buffer *Buffer) NMeta(apiType coreglib.Type) uint {
 	return _guint
 }
 
-// ReferenceTimestampMeta finds the first ReferenceTimestampMeta on buffer
-// that conforms to reference. Conformance is tested by checking if the meta's
-// reference is a subset of reference.
+// ReferenceTimestampMeta (gst_buffer_get_reference_timestamp_meta) finds
+// the first ReferenceTimestampMeta on buffer that conforms to reference.
+// Conformance is tested by checking if the meta's reference is a subset of
+// reference.
 //
 // Buffers can contain multiple ReferenceTimestampMeta metadata items.
 //
@@ -34640,7 +36905,8 @@ func (buffer *Buffer) ReferenceTimestampMeta(reference *Caps) *ReferenceTimestam
 	return _referenceTimestampMeta
 }
 
-// Size gets the total size of the memory blocks in buffer.
+// Size (gst_buffer_get_size) gets the total size of the memory blocks in
+// buffer.
 //
 // The function returns the following values:
 //
@@ -34661,7 +36927,8 @@ func (buffer *Buffer) Size() uint {
 	return _gsize
 }
 
-// Sizes gets the total size of the memory blocks in buffer.
+// Sizes (gst_buffer_get_sizes) gets the total size of the memory blocks in
+// buffer.
 //
 // When not NULL, offset will contain the offset of the data in the first memory
 // block in buffer and maxsize will contain the sum of the size and offset and
@@ -34695,8 +36962,8 @@ func (buffer *Buffer) Sizes() (offset uint, maxsize uint, gsize uint) {
 	return _offset, _maxsize, _gsize
 }
 
-// SizesRange gets the total size of length memory blocks stating from idx in
-// buffer.
+// SizesRange (gst_buffer_get_sizes_range) gets the total size of length memory
+// blocks stating from idx in buffer.
 //
 // When not NULL, offset will contain the offset of the data in the memory block
 // in buffer at idx and maxsize will contain the sum of the size and offset
@@ -34742,7 +37009,8 @@ func (buffer *Buffer) SizesRange(idx uint, length int) (offset uint, maxsize uin
 	return _offset, _maxsize, _gsize
 }
 
-// HasFlags gives the status of a specific flag on a buffer.
+// HasFlags (gst_buffer_has_flags) gives the status of a specific flag on a
+// buffer.
 //
 // The function takes the following parameters:
 //
@@ -34772,8 +37040,9 @@ func (buffer *Buffer) HasFlags(flags BufferFlags) bool {
 	return _ok
 }
 
-// InsertMemory inserts the memory block mem into buffer at idx. This function
-// takes ownership of mem and thus doesn't increase its refcount.
+// InsertMemory (gst_buffer_insert_memory) inserts the memory block mem into
+// buffer at idx. This function takes ownership of mem and thus doesn't increase
+// its refcount.
 //
 // Only gst_buffer_get_max_memory() can be added to a buffer. If more memory is
 // added, existing memory blocks will automatically be merged to make room for
@@ -34799,7 +37068,8 @@ func (buffer *Buffer) InsertMemory(idx int, mem *Memory) {
 	runtime.KeepAlive(mem)
 }
 
-// IsAllMemoryWritable checks if all memory blocks in buffer are writable.
+// IsAllMemoryWritable (gst_buffer_is_all_memory_writable) checks if all memory
+// blocks in buffer are writable.
 //
 // Note that this function does not check if buffer is writable, use
 // gst_buffer_is_writable() to check that if needed.
@@ -34825,8 +37095,8 @@ func (buffer *Buffer) IsAllMemoryWritable() bool {
 	return _ok
 }
 
-// IsMemoryRangeWritable checks if length memory blocks in buffer starting from
-// idx are writable.
+// IsMemoryRangeWritable (gst_buffer_is_memory_range_writable) checks if length
+// memory blocks in buffer starting from idx are writable.
 //
 // length can be -1 to check all the memory blocks after idx.
 //
@@ -34865,7 +37135,8 @@ func (buffer *Buffer) IsMemoryRangeWritable(idx uint, length int) bool {
 	return _ok
 }
 
-// Map fills info with the MapInfo of all merged memory blocks in buffer.
+// Map (gst_buffer_map) fills info with the MapInfo of all merged memory blocks
+// in buffer.
 //
 // flags describe the desired access of the memory. When flags is T_MAP_WRITE,
 // buffer should be writable (as returned from gst_buffer_is_writable()).
@@ -34908,9 +37179,9 @@ func (buffer *Buffer) Map(flags MapFlags) (*MapInfo, bool) {
 	return _info, _ok
 }
 
-// MapRange fills info with the MapInfo of length merged memory blocks starting
-// at idx in buffer. When length is -1, all memory blocks starting from idx are
-// merged and mapped.
+// MapRange (gst_buffer_map_range) fills info with the MapInfo of length merged
+// memory blocks starting at idx in buffer. When length is -1, all memory blocks
+// starting from idx are merged and mapped.
 //
 // flags describe the desired access of the memory. When flags is T_MAP_WRITE,
 // buffer should be writable (as returned from gst_buffer_is_writable()).
@@ -34961,8 +37232,8 @@ func (buffer *Buffer) MapRange(idx uint, length int, flags MapFlags) (*MapInfo, 
 	return _info, _ok
 }
 
-// Memcmp compares size bytes starting from offset in buffer with the memory in
-// mem.
+// Memcmp (gst_buffer_memcmp) compares size bytes starting from offset in buffer
+// with the memory in mem.
 //
 // The function takes the following parameters:
 //
@@ -34998,7 +37269,8 @@ func (buffer *Buffer) Memcmp(offset uint, mem []byte) int {
 	return _gint
 }
 
-// Memset fills buf with size bytes with val starting from offset.
+// Memset (gst_buffer_memset) fills buf with size bytes with val starting from
+// offset.
 //
 // The function takes the following parameters:
 //
@@ -35035,8 +37307,9 @@ func (buffer *Buffer) Memset(offset uint, val byte, size uint) uint {
 	return _gsize
 }
 
-// NMemory gets the amount of memory blocks that this buffer has. This amount is
-// never larger than what gst_buffer_get_max_memory() returns.
+// NMemory (gst_buffer_n_memory) gets the amount of memory blocks that this
+// buffer has. This amount is never larger than what gst_buffer_get_max_memory()
+// returns.
 //
 // The function returns the following values:
 //
@@ -35057,9 +37330,10 @@ func (buffer *Buffer) NMemory() uint {
 	return _guint
 }
 
-// PeekMemory gets the memory block at idx in buffer. The memory block stays
-// valid until the memory block in buffer is removed, replaced or merged,
-// typically with any call that modifies the memory in buffer.
+// PeekMemory (gst_buffer_peek_memory) gets the memory block at idx in buffer.
+// The memory block stays valid until the memory block in buffer is removed,
+// replaced or merged, typically with any call that modifies the memory in
+// buffer.
 //
 // The function takes the following parameters:
 //
@@ -35095,8 +37369,9 @@ func (buffer *Buffer) PeekMemory(idx uint) *Memory {
 	return _memory
 }
 
-// PrependMemory prepends the memory block mem to buffer. This function takes
-// ownership of mem and thus doesn't increase its refcount.
+// PrependMemory (gst_buffer_prepend_memory) prepends the memory block mem to
+// buffer. This function takes ownership of mem and thus doesn't increase its
+// refcount.
 //
 // This function is identical to gst_buffer_insert_memory() with an index of 0.
 // See gst_buffer_insert_memory() for more details.
@@ -35117,7 +37392,8 @@ func (buffer *Buffer) PrependMemory(mem *Memory) {
 	runtime.KeepAlive(mem)
 }
 
-// RemoveAllMemory removes all the memory blocks in buffer.
+// RemoveAllMemory (gst_buffer_remove_all_memory) removes all the memory blocks
+// in buffer.
 func (buffer *Buffer) RemoveAllMemory() {
 	var _arg0 *C.GstBuffer // out
 
@@ -35127,7 +37403,8 @@ func (buffer *Buffer) RemoveAllMemory() {
 	runtime.KeepAlive(buffer)
 }
 
-// RemoveMemory removes the memory block in b at index i.
+// RemoveMemory (gst_buffer_remove_memory) removes the memory block in b at
+// index i.
 //
 // The function takes the following parameters:
 //
@@ -35144,7 +37421,8 @@ func (buffer *Buffer) RemoveMemory(idx uint) {
 	runtime.KeepAlive(idx)
 }
 
-// RemoveMemoryRange removes length memory blocks in buffer starting from idx.
+// RemoveMemoryRange (gst_buffer_remove_memory_range) removes length memory
+// blocks in buffer starting from idx.
 //
 // length can be -1, in which case all memory starting from idx is removed.
 //
@@ -35167,7 +37445,7 @@ func (buffer *Buffer) RemoveMemoryRange(idx uint, length int) {
 	runtime.KeepAlive(length)
 }
 
-// RemoveMeta removes the metadata for meta on buffer.
+// RemoveMeta (gst_buffer_remove_meta) removes the metadata for meta on buffer.
 //
 // The function takes the following parameters:
 //
@@ -35198,7 +37476,8 @@ func (buffer *Buffer) RemoveMeta(meta *Meta) bool {
 	return _ok
 }
 
-// ReplaceAllMemory replaces all memory in buffer with mem.
+// ReplaceAllMemory (gst_buffer_replace_all_memory) replaces all memory in
+// buffer with mem.
 //
 // The function takes the following parameters:
 //
@@ -35216,7 +37495,8 @@ func (buffer *Buffer) ReplaceAllMemory(mem *Memory) {
 	runtime.KeepAlive(mem)
 }
 
-// ReplaceMemory replaces the memory block at index idx in buffer with mem.
+// ReplaceMemory (gst_buffer_replace_memory) replaces the memory block at index
+// idx in buffer with mem.
 //
 // The function takes the following parameters:
 //
@@ -35238,8 +37518,8 @@ func (buffer *Buffer) ReplaceMemory(idx uint, mem *Memory) {
 	runtime.KeepAlive(mem)
 }
 
-// ReplaceMemoryRange replaces length memory blocks in buffer starting at idx
-// with mem.
+// ReplaceMemoryRange (gst_buffer_replace_memory_range) replaces length memory
+// blocks in buffer starting at idx with mem.
 //
 // If length is -1, all memory starting from idx will be removed and replaced
 // with mem.
@@ -35270,7 +37550,8 @@ func (buffer *Buffer) ReplaceMemoryRange(idx uint, length int, mem *Memory) {
 	runtime.KeepAlive(mem)
 }
 
-// Resize sets the offset and total size of the memory blocks in buffer.
+// Resize (gst_buffer_resize) sets the offset and total size of the memory
+// blocks in buffer.
 //
 // The function takes the following parameters:
 //
@@ -35291,8 +37572,8 @@ func (buffer *Buffer) Resize(offset int, size int) {
 	runtime.KeepAlive(size)
 }
 
-// ResizeRange sets the total size of the length memory blocks starting at idx
-// in buffer.
+// ResizeRange (gst_buffer_resize_range) sets the total size of the length
+// memory blocks starting at idx in buffer.
 //
 // The function takes the following parameters:
 //
@@ -35334,7 +37615,7 @@ func (buffer *Buffer) ResizeRange(idx uint, length int, offset int, size int) bo
 	return _ok
 }
 
-// SetFlags sets one or more buffer flags on a buffer.
+// SetFlags (gst_buffer_set_flags) sets one or more buffer flags on a buffer.
 //
 // The function takes the following parameters:
 //
@@ -35364,7 +37645,8 @@ func (buffer *Buffer) SetFlags(flags BufferFlags) bool {
 	return _ok
 }
 
-// SetSize sets the total size of the memory blocks in buffer.
+// SetSize (gst_buffer_set_size) sets the total size of the memory blocks in
+// buffer.
 //
 // The function takes the following parameters:
 //
@@ -35381,7 +37663,8 @@ func (buffer *Buffer) SetSize(size int) {
 	runtime.KeepAlive(size)
 }
 
-// Unmap releases the memory previously mapped with gst_buffer_map().
+// Unmap (gst_buffer_unmap) releases the memory previously mapped with
+// gst_buffer_map().
 //
 // The function takes the following parameters:
 //
@@ -35398,7 +37681,7 @@ func (buffer *Buffer) Unmap(info *MapInfo) {
 	runtime.KeepAlive(info)
 }
 
-// UnsetFlags clears one or more buffer flags.
+// UnsetFlags (gst_buffer_unset_flags) clears one or more buffer flags.
 //
 // The function takes the following parameters:
 //
@@ -35428,8 +37711,9 @@ func (buffer *Buffer) UnsetFlags(flags BufferFlags) bool {
 	return _ok
 }
 
-// BufferGetMaxMemory gets the maximum amount of memory blocks that a buffer can
-// hold. This is a compile time constant that can be queried with the function.
+// BufferGetMaxMemory (gst_buffer_get_max_memory) gets the maximum amount of
+// memory blocks that a buffer can hold. This is a compile time constant that
+// can be queried with the function.
 //
 // When more memory blocks are added, existing memory blocks will be merged
 // together to make room for the new block.
@@ -35449,7 +37733,8 @@ func BufferGetMaxMemory() uint {
 	return _guint
 }
 
-// BufferList: buffer lists are an object containing a list of buffers.
+// BufferList (GstBufferList): buffer lists are an object containing a list of
+// buffers.
 //
 // Buffer lists are created with gst_buffer_list_new() and filled with data
 // using gst_buffer_list_insert().
@@ -35513,8 +37798,8 @@ func NewBufferListSized(size uint) *BufferList {
 	return _bufferList
 }
 
-// CalculateSize calculates the size of the data contained in list by adding the
-// size of all buffers.
+// CalculateSize (gst_buffer_list_calculate_size) calculates the size of the
+// data contained in list by adding the size of all buffers.
 //
 // The function returns the following values:
 //
@@ -35535,8 +37820,9 @@ func (list *BufferList) CalculateSize() uint {
 	return _gsize
 }
 
-// CopyDeep creates a copy of the given buffer list. This will make a newly
-// allocated copy of the buffers that the source buffer list contains.
+// CopyDeep (gst_buffer_list_copy_deep) creates a copy of the given buffer list.
+// This will make a newly allocated copy of the buffers that the source buffer
+// list contains.
 //
 // The function returns the following values:
 //
@@ -35562,7 +37848,8 @@ func (list *BufferList) CopyDeep() *BufferList {
 	return _bufferList
 }
 
-// ForEach calls func with data for each buffer in list.
+// ForEach (gst_buffer_list_foreach) calls func with data for each buffer in
+// list.
 //
 // func can modify the passed buffer pointer or its contents. The return value
 // of func defines if this function returns or if the remaining buffers in the
@@ -35600,7 +37887,7 @@ func (list *BufferList) ForEach(fn BufferListFunc) bool {
 	return _ok
 }
 
-// Get gets the buffer at idx.
+// Get (gst_buffer_list_get) gets the buffer at idx.
 //
 // You must make sure that idx does not exceed the number of buffers available.
 //
@@ -35640,7 +37927,8 @@ func (list *BufferList) Get(idx uint) *Buffer {
 	return _buffer
 }
 
-// Writable gets the buffer at idx, ensuring it is a writable buffer.
+// Writable (gst_buffer_list_get_writable) gets the buffer at idx, ensuring it
+// is a writable buffer.
 //
 // You must make sure that idx does not exceed the number of buffers available.
 //
@@ -35679,8 +37967,8 @@ func (list *BufferList) Writable(idx uint) *Buffer {
 	return _buffer
 }
 
-// Insert inserts buffer at idx in list. Other buffers are moved to make room
-// for this new buffer.
+// Insert (gst_buffer_list_insert) inserts buffer at idx in list. Other buffers
+// are moved to make room for this new buffer.
 //
 // A -1 value for idx will append the buffer at the end.
 //
@@ -35704,7 +37992,7 @@ func (list *BufferList) Insert(idx int, buffer *Buffer) {
 	runtime.KeepAlive(buffer)
 }
 
-// Length returns the number of buffers in list.
+// Length (gst_buffer_list_length) returns the number of buffers in list.
 //
 // The function returns the following values:
 //
@@ -35725,8 +38013,8 @@ func (list *BufferList) Length() uint {
 	return _guint
 }
 
-// Remove removes length buffers starting from idx in list. The following
-// buffers are moved to close the gap.
+// Remove (gst_buffer_list_remove) removes length buffers starting from idx in
+// list. The following buffers are moved to close the gap.
 //
 // The function takes the following parameters:
 //
@@ -35747,7 +38035,7 @@ func (list *BufferList) Remove(idx uint, length uint) {
 	runtime.KeepAlive(length)
 }
 
-// BufferPoolAcquireParams parameters passed to the
+// BufferPoolAcquireParams (GstBufferPoolAcquireParams) parameters passed to the
 // gst_buffer_pool_acquire_buffer() function to control the allocation of the
 // buffer.
 //
@@ -35809,7 +38097,7 @@ func (b *BufferPoolAcquireParams) SetStop(stop int64) {
 	*valptr = C.gint64(stop)
 }
 
-// BufferPoolClass class.
+// BufferPoolClass (GstBufferPoolClass) class.
 //
 // An instance of this type is always passed by reference.
 type BufferPoolClass struct {
@@ -35829,7 +38117,7 @@ func (b *BufferPoolClass) ObjectClass() *ObjectClass {
 	return _v
 }
 
-// BusClass: GStreamer bus class.
+// BusClass (GstBusClass): GStreamer bus class.
 //
 // An instance of this type is always passed by reference.
 type BusClass struct {
@@ -35849,10 +38137,10 @@ func (b *BusClass) ParentClass() *ObjectClass {
 	return _v
 }
 
-// ByteArrayInterface: interface for an array of bytes. It is expected to be
-// subclassed to implement resize virtual method using language native array
-// implementation, such as GLib's Array, C++'s std::vector<uint8_t> or Rust's
-// Vec<u8>.
+// ByteArrayInterface (GstByteArrayInterface): interface for an array of bytes.
+// It is expected to be subclassed to implement resize virtual method
+// using language native array implementation, such as GLib's Array, C++'s
+// std::vector<uint8_t> or Rust's Vec<u8>.
 //
 // resize implementation could allocate more than requested to avoid repeated
 // reallocations. It can return FALSE, or be set to NULL, in the case the array
@@ -35890,8 +38178,8 @@ func (b *ByteArrayInterface) SetLen(len uint) {
 	*valptr = C.gsize(len)
 }
 
-// Caps (capabilities) are lightweight refcounted objects describing media
-// types. They are composed of an array of Structure.
+// Caps (GstCaps) (capabilities) are lightweight refcounted objects describing
+// media types. They are composed of an array of Structure.
 //
 // Caps are exposed on PadTemplate to describe all possible types a given pad
 // can handle. They are also stored in the Registry along with a description of
@@ -36005,9 +38293,9 @@ func (c *Caps) MiniObject() *MiniObject {
 	return _v
 }
 
-// Append appends the structures contained in caps2 to caps1. The structures
-// in caps2 are not copied -- they are transferred to caps1, and then caps2 is
-// freed. If either caps is ANY, the resulting caps will be ANY.
+// Append (gst_caps_append) appends the structures contained in caps2 to caps1.
+// The structures in caps2 are not copied -- they are transferred to caps1, and
+// then caps2 is freed. If either caps is ANY, the resulting caps will be ANY.
 //
 // The function takes the following parameters:
 //
@@ -36025,8 +38313,8 @@ func (caps1 *Caps) Append(caps2 *Caps) {
 	runtime.KeepAlive(caps2)
 }
 
-// AppendStructure appends structure to caps. The structure is not copied;
-// caps becomes the owner of structure.
+// AppendStructure (gst_caps_append_structure) appends structure to caps.
+// The structure is not copied; caps becomes the owner of structure.
 //
 // The function takes the following parameters:
 //
@@ -36044,8 +38332,9 @@ func (caps *Caps) AppendStructure(structure *Structure) {
 	runtime.KeepAlive(structure)
 }
 
-// AppendStructureFull appends structure with features to caps. The structure is
-// not copied; caps becomes the owner of structure.
+// AppendStructureFull (gst_caps_append_structure_full) appends structure with
+// features to caps. The structure is not copied; caps becomes the owner of
+// structure.
 //
 // The function takes the following parameters:
 //
@@ -36070,8 +38359,8 @@ func (caps *Caps) AppendStructureFull(structure *Structure, features *CapsFeatur
 	runtime.KeepAlive(features)
 }
 
-// CanIntersect tries intersecting caps1 and caps2 and reports whether the
-// result would not be empty.
+// CanIntersect (gst_caps_can_intersect) tries intersecting caps1 and caps2 and
+// reports whether the result would not be empty.
 //
 // The function takes the following parameters:
 //
@@ -36101,8 +38390,9 @@ func (caps1 *Caps) CanIntersect(caps2 *Caps) bool {
 	return _ok
 }
 
-// Copy creates a new Caps as a copy of the old caps. The new caps will have a
-// refcount of 1, owned by the caller. The structures are copied as well.
+// Copy (gst_caps_copy) creates a new Caps as a copy of the old caps. The new
+// caps will have a refcount of 1, owned by the caller. The structures are
+// copied as well.
 //
 // Note that this function is the semantic equivalent of a gst_caps_ref()
 // followed by a gst_caps_make_writable(). If you only want to hold on to a
@@ -36132,8 +38422,8 @@ func (caps *Caps) Copy() *Caps {
 	return _ret
 }
 
-// CopyNth creates a new Caps and appends a copy of the nth structure contained
-// in caps.
+// CopyNth (gst_caps_copy_nth) creates a new Caps and appends a copy of the nth
+// structure contained in caps.
 //
 // The function takes the following parameters:
 //
@@ -36166,11 +38456,12 @@ func (caps *Caps) CopyNth(nth uint) *Caps {
 	return _ret
 }
 
-// FilterAndMapInPlace calls the provided function once for each structure and
-// caps feature in the Caps. In contrast to gst_caps_foreach(), the function may
-// modify the structure and features. In contrast to gst_caps_map_in_place(),
-// the structure and features are removed from the caps if FALSE is returned
-// from the function. The caps must be mutable.
+// FilterAndMapInPlace (gst_caps_filter_and_map_in_place) calls the provided
+// function once for each structure and caps feature in the Caps. In contrast
+// to gst_caps_foreach(), the function may modify the structure and features.
+// In contrast to gst_caps_map_in_place(), the structure and features are
+// removed from the caps if FALSE is returned from the function. The caps must
+// be mutable.
 //
 // The function takes the following parameters:
 //
@@ -36190,9 +38481,9 @@ func (caps *Caps) FilterAndMapInPlace(fn CapsFilterMapFunc) {
 	runtime.KeepAlive(fn)
 }
 
-// Fixate modifies the given caps into a representation with only fixed values.
-// First the caps will be truncated and then the first structure will be fixated
-// with gst_structure_fixate().
+// Fixate (gst_caps_fixate) modifies the given caps into a representation
+// with only fixed values. First the caps will be truncated and then the first
+// structure will be fixated with gst_structure_fixate().
 //
 // This function takes ownership of caps and will call gst_caps_make_writable()
 // on it so you must not use caps afterwards unless you keep an additional
@@ -36229,9 +38520,10 @@ func (caps *Caps) Fixate() *Caps {
 	return _ret
 }
 
-// ForEach calls the provided function once for each structure and caps
-// feature in the Caps. The function must not modify the fields. Also see
-// gst_caps_map_in_place() and gst_caps_filter_and_map_in_place().
+// ForEach (gst_caps_foreach) calls the provided function once for
+// each structure and caps feature in the Caps. The function must
+// not modify the fields. Also see gst_caps_map_in_place() and
+// gst_caps_filter_and_map_in_place().
 //
 // The function takes the following parameters:
 //
@@ -36265,7 +38557,8 @@ func (caps *Caps) ForEach(fn CapsForEachFunc) bool {
 	return _ok
 }
 
-// Features finds the features in caps at index, and returns it.
+// Features (gst_caps_get_features) finds the features in caps at index,
+// and returns it.
 //
 // WARNING: This function takes a const GstCaps *, but returns a non-const
 // GstCapsFeatures *. This is for programming convenience -- the caller should
@@ -36304,7 +38597,7 @@ func (caps *Caps) Features(index uint) *CapsFeatures {
 	return _capsFeatures
 }
 
-// Size gets the number of structures contained in caps.
+// Size (gst_caps_get_size) gets the number of structures contained in caps.
 //
 // The function returns the following values:
 //
@@ -36325,7 +38618,8 @@ func (caps *Caps) Size() uint {
 	return _guint
 }
 
-// Structure finds the structure in caps at index, and returns it.
+// Structure (gst_caps_get_structure) finds the structure in caps at index,
+// and returns it.
 //
 // WARNING: This function takes a const GstCaps *, but returns a non-const
 // GstStructure *. This is for programming convenience -- the caller should
@@ -36367,8 +38661,9 @@ func (caps *Caps) Structure(index uint) *Structure {
 	return _structure
 }
 
-// Intersect creates a new Caps that contains all the formats that are common to
-// both caps1 and caps2. Defaults to GST_CAPS_INTERSECT_ZIG_ZAG mode.
+// Intersect (gst_caps_intersect) creates a new Caps that contains all
+// the formats that are common to both caps1 and caps2. Defaults to
+// GST_CAPS_INTERSECT_ZIG_ZAG mode.
 //
 // The function takes the following parameters:
 //
@@ -36401,9 +38696,9 @@ func (caps1 *Caps) Intersect(caps2 *Caps) *Caps {
 	return _caps
 }
 
-// IntersectFull creates a new Caps that contains all the formats that are
-// common to both caps1 and caps2, the order is defined by the CapsIntersectMode
-// used.
+// IntersectFull (gst_caps_intersect_full) creates a new Caps that contains all
+// the formats that are common to both caps1 and caps2, the order is defined by
+// the CapsIntersectMode used.
 //
 // The function takes the following parameters:
 //
@@ -36440,9 +38735,9 @@ func (caps1 *Caps) IntersectFull(caps2 *Caps, mode CapsIntersectMode) *Caps {
 	return _caps
 }
 
-// IsAlwaysCompatible: given Caps structure is always compatible with another
-// if every media format that is in the first is also contained in the second.
-// That is, caps1 is a subset of caps2.
+// IsAlwaysCompatible (gst_caps_is_always_compatible): given Caps structure is
+// always compatible with another if every media format that is in the first is
+// also contained in the second. That is, caps1 is a subset of caps2.
 //
 // The function takes the following parameters:
 //
@@ -36472,7 +38767,7 @@ func (caps1 *Caps) IsAlwaysCompatible(caps2 *Caps) bool {
 	return _ok
 }
 
-// IsAny determines if caps represents any media format.
+// IsAny (gst_caps_is_any) determines if caps represents any media format.
 //
 // The function returns the following values:
 //
@@ -36495,7 +38790,7 @@ func (caps *Caps) IsAny() bool {
 	return _ok
 }
 
-// IsEmpty determines if caps represents no media formats.
+// IsEmpty (gst_caps_is_empty) determines if caps represents no media formats.
 //
 // The function returns the following values:
 //
@@ -36518,7 +38813,8 @@ func (caps *Caps) IsEmpty() bool {
 	return _ok
 }
 
-// IsEqual checks if the given caps represent the same set of caps.
+// IsEqual (gst_caps_is_equal) checks if the given caps represent the same set
+// of caps.
 //
 // The function takes the following parameters:
 //
@@ -36548,8 +38844,8 @@ func (caps1 *Caps) IsEqual(caps2 *Caps) bool {
 	return _ok
 }
 
-// IsEqualFixed tests if two Caps are equal. This function only works on fixed
-// Caps.
+// IsEqualFixed (gst_caps_is_equal_fixed) tests if two Caps are equal. This
+// function only works on fixed Caps.
 //
 // The function takes the following parameters:
 //
@@ -36579,9 +38875,10 @@ func (caps1 *Caps) IsEqualFixed(caps2 *Caps) bool {
 	return _ok
 }
 
-// IsFixed: fixed Caps describe exactly one format, that is, they have exactly
-// one structure, and each field in the structure describes a fixed type.
-// Examples of non-fixed types are GST_TYPE_INT_RANGE and GST_TYPE_LIST.
+// IsFixed (gst_caps_is_fixed): fixed Caps describe exactly one format, that is,
+// they have exactly one structure, and each field in the structure describes
+// a fixed type. Examples of non-fixed types are GST_TYPE_INT_RANGE and
+// GST_TYPE_LIST.
 //
 // The function returns the following values:
 //
@@ -36604,7 +38901,8 @@ func (caps *Caps) IsFixed() bool {
 	return _ok
 }
 
-// IsStrictlyEqual checks if the given caps are exactly the same set of caps.
+// IsStrictlyEqual (gst_caps_is_strictly_equal) checks if the given caps are
+// exactly the same set of caps.
 //
 // The function takes the following parameters:
 //
@@ -36634,8 +38932,8 @@ func (caps1 *Caps) IsStrictlyEqual(caps2 *Caps) bool {
 	return _ok
 }
 
-// IsSubset checks if all caps represented by subset are also represented by
-// superset.
+// IsSubset (gst_caps_is_subset) checks if all caps represented by subset are
+// also represented by superset.
 //
 // The function takes the following parameters:
 //
@@ -36665,8 +38963,8 @@ func (subset *Caps) IsSubset(superset *Caps) bool {
 	return _ok
 }
 
-// IsSubsetStructure checks if structure is a subset of caps. See
-// gst_caps_is_subset() for more information.
+// IsSubsetStructure (gst_caps_is_subset_structure) checks if structure is a
+// subset of caps. See gst_caps_is_subset() for more information.
 //
 // The function takes the following parameters:
 //
@@ -36696,8 +38994,8 @@ func (caps *Caps) IsSubsetStructure(structure *Structure) bool {
 	return _ok
 }
 
-// IsSubsetStructureFull checks if structure is a subset of caps. See
-// gst_caps_is_subset() for more information.
+// IsSubsetStructureFull (gst_caps_is_subset_structure_full) checks if structure
+// is a subset of caps. See gst_caps_is_subset() for more information.
 //
 // The function takes the following parameters:
 //
@@ -36733,9 +39031,10 @@ func (caps *Caps) IsSubsetStructureFull(structure *Structure, features *CapsFeat
 	return _ok
 }
 
-// MapInPlace calls the provided function once for each structure and caps
-// feature in the Caps. In contrast to gst_caps_foreach(), the function may
-// modify but not delete the structures and features. The caps must be mutable.
+// MapInPlace (gst_caps_map_in_place) calls the provided function once for each
+// structure and caps feature in the Caps. In contrast to gst_caps_foreach(),
+// the function may modify but not delete the structures and features. The caps
+// must be mutable.
 //
 // The function takes the following parameters:
 //
@@ -36769,10 +39068,10 @@ func (caps *Caps) MapInPlace(fn CapsMapFunc) bool {
 	return _ok
 }
 
-// Merge appends the structures contained in caps2 to caps1 if they are not
-// yet expressed by caps1. The structures in caps2 are not copied -- they are
-// transferred to a writable copy of caps1, and then caps2 is freed. If either
-// caps is ANY, the resulting caps will be ANY.
+// Merge (gst_caps_merge) appends the structures contained in caps2 to caps1 if
+// they are not yet expressed by caps1. The structures in caps2 are not copied
+// -- they are transferred to a writable copy of caps1, and then caps2 is freed.
+// If either caps is ANY, the resulting caps will be ANY.
 //
 // The function takes the following parameters:
 //
@@ -36807,8 +39106,8 @@ func (caps1 *Caps) Merge(caps2 *Caps) *Caps {
 	return _caps
 }
 
-// MergeStructure appends structure to caps if it is not already expressed by
-// caps.
+// MergeStructure (gst_caps_merge_structure) appends structure to caps if it is
+// not already expressed by caps.
 //
 // The function takes the following parameters:
 //
@@ -36843,8 +39142,8 @@ func (caps *Caps) MergeStructure(structure *Structure) *Caps {
 	return _ret
 }
 
-// MergeStructureFull appends structure with features to caps if its not already
-// expressed by caps.
+// MergeStructureFull (gst_caps_merge_structure_full) appends structure with
+// features to caps if its not already expressed by caps.
 //
 // The function takes the following parameters:
 //
@@ -36886,8 +39185,9 @@ func (caps *Caps) MergeStructureFull(structure *Structure, features *CapsFeature
 	return _ret
 }
 
-// Normalize returns a Caps that represents the same set of formats as caps,
-// but contains no lists. Each list is expanded into separate Structure.
+// Normalize (gst_caps_normalize) returns a Caps that represents the same set of
+// formats as caps, but contains no lists. Each list is expanded into separate
+// Structure.
 //
 // This function takes ownership of caps and will call gst_caps_make_writable()
 // on it so you must not use caps afterwards unless you keep an additional
@@ -36918,8 +39218,8 @@ func (caps *Caps) Normalize() *Caps {
 	return _ret
 }
 
-// RemoveStructure removes the structure with the given index from the list of
-// structures contained in caps.
+// RemoveStructure (gst_caps_remove_structure) removes the structure with the
+// given index from the list of structures contained in caps.
 //
 // The function takes the following parameters:
 //
@@ -36936,8 +39236,9 @@ func (caps *Caps) RemoveStructure(idx uint) {
 	runtime.KeepAlive(idx)
 }
 
-// Serialize converts caps to a string representation. This string
-// representation can be converted back to a Caps by gst_caps_from_string().
+// Serialize (gst_caps_serialize) converts caps to a string representation.
+// This string representation can be converted back to a Caps by
+// gst_caps_from_string().
 //
 // This prints the caps in human readable form.
 //
@@ -36973,7 +39274,8 @@ func (caps *Caps) Serialize(flags SerializeFlags) string {
 	return _utf8
 }
 
-// SetFeatures sets the features for the structure at index.
+// SetFeatures (gst_caps_set_features) sets the features for the structure at
+// index.
 //
 // The function takes the following parameters:
 //
@@ -36997,7 +39299,8 @@ func (caps *Caps) SetFeatures(index uint, features *CapsFeatures) {
 	runtime.KeepAlive(features)
 }
 
-// SetFeaturesSimple sets the features for all the structures of caps.
+// SetFeaturesSimple (gst_caps_set_features_simple) sets the features for all
+// the structures of caps.
 //
 // The function takes the following parameters:
 //
@@ -37017,9 +39320,9 @@ func (caps *Caps) SetFeaturesSimple(features *CapsFeatures) {
 	runtime.KeepAlive(features)
 }
 
-// SetValue sets the given field on all structures of caps to the given value.
-// This is a convenience function for calling gst_structure_set_value() on all
-// structures of caps.
+// SetValue (gst_caps_set_value) sets the given field on all structures
+// of caps to the given value. This is a convenience function for calling
+// gst_structure_set_value() on all structures of caps.
 //
 // The function takes the following parameters:
 //
@@ -37041,10 +39344,10 @@ func (caps *Caps) SetValue(field string, value *coreglib.Value) {
 	runtime.KeepAlive(value)
 }
 
-// Simplify converts the given caps into a representation that represents the
-// same set of formats, but in a simpler form. Component structures that are
-// identical are merged. Component structures that have values that can be
-// merged are also merged.
+// Simplify (gst_caps_simplify) converts the given caps into a representation
+// that represents the same set of formats, but in a simpler form. Component
+// structures that are identical are merged. Component structures that have
+// values that can be merged are also merged.
 //
 // This function takes ownership of caps and will call gst_caps_make_writable()
 // on it if necessary, so you must not use caps afterwards unless you keep an
@@ -37077,9 +39380,9 @@ func (caps *Caps) Simplify() *Caps {
 	return _ret
 }
 
-// StealStructure retrieves the structure with the given index from the list of
-// structures contained in caps. The caller becomes the owner of the returned
-// structure.
+// StealStructure (gst_caps_steal_structure) retrieves the structure with the
+// given index from the list of structures contained in caps. The caller becomes
+// the owner of the returned structure.
 //
 // The function takes the following parameters:
 //
@@ -37114,9 +39417,9 @@ func (caps *Caps) StealStructure(index uint) *Structure {
 	return _structure
 }
 
-// Subtract subtracts the subtrahend from the minuend. > This function does not
-// work reliably if optional properties for caps > are included on one caps and
-// omitted on the other.
+// Subtract (gst_caps_subtract) subtracts the subtrahend from the minuend.
+// > This function does not work reliably if optional properties for caps > are
+// included on one caps and omitted on the other.
 //
 // The function takes the following parameters:
 //
@@ -37149,8 +39452,9 @@ func (minuend *Caps) Subtract(subtrahend *Caps) *Caps {
 	return _caps
 }
 
-// String converts caps to a string representation. This string representation
-// can be converted back to a Caps by gst_caps_from_string().
+// String (gst_caps_to_string) converts caps to a string representation.
+// This string representation can be converted back to a Caps by
+// gst_caps_from_string().
 //
 // For debugging purposes its easier to do something like this:
 //
@@ -37181,8 +39485,8 @@ func (caps *Caps) String() string {
 	return _utf8
 }
 
-// Truncate discards all but the first structure from caps. Useful when
-// fixating.
+// Truncate (gst_caps_truncate) discards all but the first structure from caps.
+// Useful when fixating.
 //
 // This function takes ownership of caps and will call gst_caps_make_writable()
 // on it if necessary, so you must not use caps afterwards unless you keep an
@@ -37217,7 +39521,8 @@ func (caps *Caps) Truncate() *Caps {
 	return _ret
 }
 
-// CapsFromString converts caps from a string representation.
+// CapsFromString (gst_caps_from_string) converts caps from a string
+// representation.
 //
 // The implementation of serialization up to 1.20 would lead to unexpected
 // results when there were nested Caps / Structure deeper than one level.
@@ -37253,11 +39558,11 @@ func CapsFromString(str string) *Caps {
 	return _caps
 }
 
-// CapsFeatures can optionally be set on a Caps to add requirements for
-// additional features for a specific Structure. Caps structures with the same
-// name but with a non-equal set of caps features are not compatible. If a pad
-// supports multiple sets of features it has to add multiple equal structures
-// with different feature sets to the caps.
+// CapsFeatures (GstCapsFeatures) can optionally be set on a Caps to add
+// requirements for additional features for a specific Structure. Caps
+// structures with the same name but with a non-equal set of caps features are
+// not compatible. If a pad supports multiple sets of features it has to add
+// multiple equal structures with different feature sets to the caps.
 //
 // Empty CapsFeatures are equivalent with the CapsFeatures that only contain
 // T_CAPS_FEATURE_MEMORY_SYSTEM_MEMORY. ANY CapsFeatures as created by
@@ -37348,7 +39653,7 @@ func NewCapsFeaturesSingle(feature string) *CapsFeatures {
 	return _capsFeatures
 }
 
-// Add adds feature to features.
+// Add (gst_caps_features_add) adds feature to features.
 //
 // The function takes the following parameters:
 //
@@ -37366,7 +39671,7 @@ func (features *CapsFeatures) Add(feature string) {
 	runtime.KeepAlive(feature)
 }
 
-// AddID adds feature to features.
+// AddID (gst_caps_features_add_id) adds feature to features.
 //
 // The function takes the following parameters:
 //
@@ -37383,7 +39688,7 @@ func (features *CapsFeatures) AddID(feature glib.Quark) {
 	runtime.KeepAlive(feature)
 }
 
-// Contains checks if features contains feature.
+// Contains (gst_caps_features_contains) checks if features contains feature.
 //
 // The function takes the following parameters:
 //
@@ -37414,7 +39719,8 @@ func (features *CapsFeatures) Contains(feature string) bool {
 	return _ok
 }
 
-// ContainsID checks if features contains feature.
+// ContainsID (gst_caps_features_contains_id) checks if features contains
+// feature.
 //
 // The function takes the following parameters:
 //
@@ -37444,7 +39750,7 @@ func (features *CapsFeatures) ContainsID(feature glib.Quark) bool {
 	return _ok
 }
 
-// Copy duplicates a CapsFeatures and all its values.
+// Copy (gst_caps_features_copy) duplicates a CapsFeatures and all its values.
 //
 // The function returns the following values:
 //
@@ -37471,7 +39777,7 @@ func (features *CapsFeatures) Copy() *CapsFeatures {
 	return _capsFeatures
 }
 
-// Nth returns the i-th feature of features.
+// Nth (gst_caps_features_get_nth) returns the i-th feature of features.
 //
 // The function takes the following parameters:
 //
@@ -37501,7 +39807,7 @@ func (features *CapsFeatures) Nth(i uint) string {
 	return _utf8
 }
 
-// NthID returns the i-th feature of features.
+// NthID (gst_caps_features_get_nth_id) returns the i-th feature of features.
 //
 // The function takes the following parameters:
 //
@@ -37529,7 +39835,7 @@ func (features *CapsFeatures) NthID(i uint) glib.Quark {
 	return _quark
 }
 
-// Size returns the number of features in features.
+// Size (gst_caps_features_get_size) returns the number of features in features.
 //
 // The function returns the following values:
 //
@@ -37550,7 +39856,7 @@ func (features *CapsFeatures) Size() uint {
 	return _guint
 }
 
-// IsAny checks if features is GST_CAPS_FEATURES_ANY.
+// IsAny (gst_caps_features_is_any) checks if features is GST_CAPS_FEATURES_ANY.
 //
 // The function returns the following values:
 //
@@ -37573,7 +39879,8 @@ func (features *CapsFeatures) IsAny() bool {
 	return _ok
 }
 
-// IsEqual checks if features1 and features2 are equal.
+// IsEqual (gst_caps_features_is_equal) checks if features1 and features2 are
+// equal.
 //
 // The function takes the following parameters:
 //
@@ -37603,7 +39910,7 @@ func (features1 *CapsFeatures) IsEqual(features2 *CapsFeatures) bool {
 	return _ok
 }
 
-// Remove removes feature from features.
+// Remove (gst_caps_features_remove) removes feature from features.
 //
 // The function takes the following parameters:
 //
@@ -37621,7 +39928,7 @@ func (features *CapsFeatures) Remove(feature string) {
 	runtime.KeepAlive(feature)
 }
 
-// RemoveID removes feature from features.
+// RemoveID (gst_caps_features_remove_id) removes feature from features.
 //
 // The function takes the following parameters:
 //
@@ -37638,11 +39945,11 @@ func (features *CapsFeatures) RemoveID(feature glib.Quark) {
 	runtime.KeepAlive(feature)
 }
 
-// SetParentRefcount sets the parent_refcount field of CapsFeatures.
-// This field is used to determine whether a caps features is mutable or not.
-// This function should only be called by code implementing parent objects
-// of CapsFeatures, as described in the MT refcounting design document
-// (additional/design/MT-refcounting.md).
+// SetParentRefcount (gst_caps_features_set_parent_refcount) sets the
+// parent_refcount field of CapsFeatures. This field is used to determine
+// whether a caps features is mutable or not. This function should only be
+// called by code implementing parent objects of CapsFeatures, as described in
+// the MT refcounting design document (additional/design/MT-refcounting.md).
 //
 // The function takes the following parameters:
 //
@@ -37672,7 +39979,8 @@ func (features *CapsFeatures) SetParentRefcount(refcount *int) bool {
 	return _ok
 }
 
-// String converts features to a human-readable string representation.
+// String (gst_caps_features_to_string) converts features to a human-readable
+// string representation.
 //
 // For debugging purposes its easier to do something like this:
 //
@@ -37700,7 +40008,8 @@ func (features *CapsFeatures) String() string {
 	return _utf8
 }
 
-// CapsFeaturesFromString creates a CapsFeatures from a string representation.
+// CapsFeaturesFromString (gst_caps_features_from_string) creates a CapsFeatures
+// from a string representation.
 //
 // The function takes the following parameters:
 //
@@ -37735,7 +40044,7 @@ func CapsFeaturesFromString(features string) *CapsFeatures {
 	return _capsFeatures
 }
 
-// ChildProxyInterface interface.
+// ChildProxyInterface (GstChildProxyInterface) interface.
 //
 // An instance of this type is always passed by reference.
 type ChildProxyInterface struct {
@@ -37747,8 +40056,8 @@ type childProxyInterface struct {
 	native *C.GstChildProxyInterface
 }
 
-// ClockClass: GStreamer clock class. Override the vmethods to implement the
-// clock functionality.
+// ClockClass (GstClockClass): GStreamer clock class. Override the vmethods to
+// implement the clock functionality.
 //
 // An instance of this type is always passed by reference.
 type ClockClass struct {
@@ -37768,9 +40077,10 @@ func (c *ClockClass) ParentClass() *ObjectClass {
 	return _v
 }
 
-// ClockEntry: all pending timeouts or periodic notifies are converted into an
-// entry. Note that GstClockEntry should be treated as an opaque structure.
-// It must not be extended or allocated using a custom allocator.
+// ClockEntry (GstClockEntry): all pending timeouts or periodic notifies are
+// converted into an entry. Note that GstClockEntry should be treated as an
+// opaque structure. It must not be extended or allocated using a custom
+// allocator.
 //
 // An instance of this type is always passed by reference.
 type ClockEntry struct {
@@ -37796,9 +40106,9 @@ func (c *ClockEntry) SetRefcount(refcount int) {
 	*valptr = C.gint(refcount)
 }
 
-// Context is a container object used to store contexts like a device context,
-// a display server connection and similar concepts that should be shared
-// between multiple elements.
+// Context (GstContext) is a container object used to store contexts like a
+// device context, a display server connection and similar concepts that should
+// be shared between multiple elements.
 //
 // Applications can set a context on a complete pipeline by using
 // gst_element_set_context(), which will then be propagated to all child
@@ -37868,7 +40178,7 @@ func NewContext(contextType string, persistent bool) *Context {
 	return _context
 }
 
-// ContextType gets the type of context.
+// ContextType (gst_context_get_context_type) gets the type of context.
 //
 // The function returns the following values:
 //
@@ -37889,7 +40199,7 @@ func (context *Context) ContextType() string {
 	return _utf8
 }
 
-// Structure accesses the structure of the context.
+// Structure (gst_context_get_structure) accesses the structure of the context.
 //
 // The function returns the following values:
 //
@@ -37918,7 +40228,8 @@ func (context *Context) Structure() *Structure {
 	return _structure
 }
 
-// HasContextType checks if context has context_type.
+// HasContextType (gst_context_has_context_type) checks if context has
+// context_type.
 //
 // The function takes the following parameters:
 //
@@ -37949,7 +40260,7 @@ func (context *Context) HasContextType(contextType string) bool {
 	return _ok
 }
 
-// IsPersistent checks if context is persistent.
+// IsPersistent (gst_context_is_persistent) checks if context is persistent.
 //
 // The function returns the following values:
 //
@@ -37972,7 +40283,8 @@ func (context *Context) IsPersistent() bool {
 	return _ok
 }
 
-// WritableStructure gets a writable version of the structure.
+// WritableStructure (gst_context_writable_structure) gets a writable version of
+// the structure.
 //
 // The function returns the following values:
 //
@@ -38002,7 +40314,8 @@ func (context *Context) WritableStructure() *Structure {
 	return _structure
 }
 
-// ControlBindingClass class structure of ControlBinding.
+// ControlBindingClass (GstControlBindingClass) class structure of
+// ControlBinding.
 //
 // An instance of this type is always passed by reference.
 type ControlBindingClass struct {
@@ -38022,7 +40335,7 @@ func (c *ControlBindingClass) ParentClass() *ObjectClass {
 	return _v
 }
 
-// ControlSourceClass class structure of ControlSource.
+// ControlSourceClass (GstControlSourceClass) class structure of ControlSource.
 //
 // An instance of this type is always passed by reference.
 type ControlSourceClass struct {
@@ -38042,8 +40355,8 @@ func (c *ControlSourceClass) ParentClass() *ObjectClass {
 	return _v
 }
 
-// CustomMeta: extra custom metadata. The structure field is the same as
-// returned by gst_custom_meta_get_structure().
+// CustomMeta (GstCustomMeta): extra custom metadata. The structure field is the
+// same as returned by gst_custom_meta_get_structure().
 //
 // Since 1.24 it can be serialized using gst_meta_serialize() and
 // gst_meta_deserialize(), but only if the Structure does not contain any fields
@@ -38067,9 +40380,9 @@ func (c *CustomMeta) Meta() *Meta {
 	return _v
 }
 
-// Structure: retrieve the Structure backing a custom meta, the structure's
-// mutability is conditioned to the writability of the Buffer meta is attached
-// to.
+// Structure (gst_custom_meta_get_structure): retrieve the Structure backing a
+// custom meta, the structure's mutability is conditioned to the writability of
+// the Buffer meta is attached to.
 //
 // The function returns the following values:
 //
@@ -38096,7 +40409,8 @@ func (meta *CustomMeta) Structure() *Structure {
 	return _structure
 }
 
-// HasName checks whether the name of the custom meta is name.
+// HasName (gst_custom_meta_has_name) checks whether the name of the custom meta
+// is name.
 //
 // The function returns the following values:
 //
@@ -38123,8 +40437,8 @@ func (meta *CustomMeta) HasName(name string) bool {
 	return _ok
 }
 
-// DateTime: struct to store date, time and timezone information altogether.
-// DateTime is refcounted and immutable.
+// DateTime (GstDateTime): struct to store date, time and timezone information
+// altogether. DateTime is refcounted and immutable.
 //
 // Date information is handled using the proleptic Gregorian calendar.
 //
@@ -38507,7 +40821,7 @@ func NewDateTimeYmd(year int, month int, day int) *DateTime {
 	return _dateTime
 }
 
-// Day returns the day of the month of this DateTime.
+// Day (gst_date_time_get_day) returns the day of the month of this DateTime.
 //
 // The function returns the following values:
 //
@@ -38528,8 +40842,8 @@ func (datetime *DateTime) Day() int {
 	return _gint
 }
 
-// Hour retrieves the hour of the day represented by datetime in the gregorian
-// calendar. The return is in the range of 0 to 23.
+// Hour (gst_date_time_get_hour) retrieves the hour of the day represented by
+// datetime in the gregorian calendar. The return is in the range of 0 to 23.
 //
 // The function returns the following values:
 //
@@ -38550,8 +40864,9 @@ func (datetime *DateTime) Hour() int {
 	return _gint
 }
 
-// Microsecond retrieves the fractional part of the seconds in microseconds
-// represented by datetime in the gregorian calendar.
+// Microsecond (gst_date_time_get_microsecond) retrieves the fractional part
+// of the seconds in microseconds represented by datetime in the gregorian
+// calendar.
 //
 // The function returns the following values:
 //
@@ -38572,8 +40887,8 @@ func (datetime *DateTime) Microsecond() int {
 	return _gint
 }
 
-// Minute retrieves the minute of the hour represented by datetime in the
-// gregorian calendar.
+// Minute (gst_date_time_get_minute) retrieves the minute of the hour
+// represented by datetime in the gregorian calendar.
 //
 // The function returns the following values:
 //
@@ -38594,7 +40909,8 @@ func (datetime *DateTime) Minute() int {
 	return _gint
 }
 
-// Month returns the month of this DateTime. January is 1, February is 2, etc..
+// Month (gst_date_time_get_month) returns the month of this DateTime. January
+// is 1, February is 2, etc..
 //
 // The function returns the following values:
 //
@@ -38615,8 +40931,8 @@ func (datetime *DateTime) Month() int {
 	return _gint
 }
 
-// Second retrieves the second of the minute represented by datetime in the
-// gregorian calendar.
+// Second (gst_date_time_get_second) retrieves the second of the minute
+// represented by datetime in the gregorian calendar.
 //
 // The function returns the following values:
 //
@@ -38637,10 +40953,11 @@ func (datetime *DateTime) Second() int {
 	return _gint
 }
 
-// TimeZoneOffset retrieves the offset from UTC in hours that the timezone
-// specified by datetime represents. Timezones ahead (to the east) of UTC have
-// positive values, timezones before (to the west) of UTC have negative values.
-// If datetime represents UTC time, then the offset is zero.
+// TimeZoneOffset (gst_date_time_get_time_zone_offset) retrieves the offset
+// from UTC in hours that the timezone specified by datetime represents.
+// Timezones ahead (to the east) of UTC have positive values, timezones before
+// (to the west) of UTC have negative values. If datetime represents UTC time,
+// then the offset is zero.
 //
 // The function returns the following values:
 //
@@ -38661,8 +40978,8 @@ func (datetime *DateTime) TimeZoneOffset() float32 {
 	return _gfloat
 }
 
-// Year returns the year of this DateTime. Call gst_date_time_has_year() before,
-// to avoid warnings.
+// Year (gst_date_time_get_year) returns the year of this DateTime. Call
+// gst_date_time_has_year() before, to avoid warnings.
 //
 // The function returns the following values:
 //
@@ -38790,7 +41107,8 @@ func (datetime *DateTime) HasYear() bool {
 	return _ok
 }
 
-// ToGDateTime creates a new Time from a fully defined DateTime object.
+// ToGDateTime (gst_date_time_to_g_date_time) creates a new Time from a fully
+// defined DateTime object.
 //
 // The function returns the following values:
 //
@@ -38820,10 +41138,10 @@ func (datetime *DateTime) ToGDateTime() *glib.DateTime {
 	return _dateTime
 }
 
-// ToISO8601String: create a minimal string compatible with ISO-8601.
-// Possible output formats are (for example): 2012, 2012-06, 2012-06-23,
-// 2012-06-23T23:30Z, 2012-06-23T23:30+0100, 2012-06-23T23:30:59Z,
-// 2012-06-23T23:30:59+0100.
+// ToISO8601String (gst_date_time_to_iso8601_string): create a minimal string
+// compatible with ISO-8601. Possible output formats are (for example):
+// 2012, 2012-06, 2012-06-23, 2012-06-23T23:30Z, 2012-06-23T23:30+0100,
+// 2012-06-23T23:30:59Z, 2012-06-23T23:30:59+0100.
 //
 // The function returns the following values:
 //
@@ -38849,8 +41167,9 @@ func (datetime *DateTime) ToISO8601String() string {
 	return _utf8
 }
 
-// DebugCategory: this is the struct that describes the categories. Once
-// initialized with T_DEBUG_CATEGORY_INIT, its values can't be changed anymore.
+// DebugCategory (GstDebugCategory): this is the struct that describes the
+// categories. Once initialized with T_DEBUG_CATEGORY_INIT, its values can't be
+// changed anymore.
 //
 // An instance of this type is always passed by reference.
 type DebugCategory struct {
@@ -38862,8 +41181,8 @@ type debugCategory struct {
 	native *C.GstDebugCategory
 }
 
-// Color returns the color of a debug category used when printing output in this
-// category.
+// Color (gst_debug_category_get_color) returns the color of a debug category
+// used when printing output in this category.
 //
 // The function returns the following values:
 //
@@ -38884,7 +41203,8 @@ func (category *DebugCategory) Color() uint {
 	return _guint
 }
 
-// Description returns the description of a debug category.
+// Description (gst_debug_category_get_description) returns the description of a
+// debug category.
 //
 // The function returns the following values:
 //
@@ -38905,7 +41225,7 @@ func (category *DebugCategory) Description() string {
 	return _utf8
 }
 
-// Name returns the name of a debug category.
+// Name (gst_debug_category_get_name) returns the name of a debug category.
 //
 // The function returns the following values:
 //
@@ -38926,7 +41246,8 @@ func (category *DebugCategory) Name() string {
 	return _utf8
 }
 
-// Threshold returns the threshold of a DebugCategory.
+// Threshold (gst_debug_category_get_threshold) returns the threshold of a
+// DebugCategory.
 //
 // The function returns the following values:
 //
@@ -38947,10 +41268,11 @@ func (category *DebugCategory) Threshold() DebugLevel {
 	return _debugLevel
 }
 
-// ResetThreshold resets the threshold of the category to the default level.
-// Debug information will only be output if the threshold is lower or equal to
-// the level of the debugging message. Use this function to set the threshold
-// back to where it was after using gst_debug_category_set_threshold().
+// ResetThreshold (gst_debug_category_reset_threshold) resets the threshold of
+// the category to the default level. Debug information will only be output
+// if the threshold is lower or equal to the level of the debugging message.
+// Use this function to set the threshold back to where it was after using
+// gst_debug_category_set_threshold().
 func (category *DebugCategory) ResetThreshold() {
 	var _arg0 *C.GstDebugCategory // out
 
@@ -38960,12 +41282,12 @@ func (category *DebugCategory) ResetThreshold() {
 	runtime.KeepAlive(category)
 }
 
-// SetThreshold sets the threshold of the category to the given level.
-// Debug information will only be output if the threshold is lower or equal to
-// the level of the debugging message. > Do not use this function in production
-// code, because other functions may > change the threshold of categories as
-// side effect. It is however a nice > function to use when debugging (even from
-// gdb).
+// SetThreshold (gst_debug_category_set_threshold) sets the threshold of the
+// category to the given level. Debug information will only be output if the
+// threshold is lower or equal to the level of the debugging message. > Do not
+// use this function in production code, because other functions may > change
+// the threshold of categories as side effect. It is however a nice > function
+// to use when debugging (even from gdb).
 //
 // The function takes the following parameters:
 //
@@ -38982,7 +41304,7 @@ func (category *DebugCategory) SetThreshold(level DebugLevel) {
 	runtime.KeepAlive(level)
 }
 
-// DeviceClass class structure for a Device object.
+// DeviceClass (GstDeviceClass) class structure for a Device object.
 //
 // An instance of this type is always passed by reference.
 type DeviceClass struct {
@@ -39002,7 +41324,8 @@ func (d *DeviceClass) ParentClass() *ObjectClass {
 	return _v
 }
 
-// DeviceMonitorClass: opaque device monitor class structure.
+// DeviceMonitorClass (GstDeviceMonitorClass): opaque device monitor class
+// structure.
 //
 // An instance of this type is always passed by reference.
 type DeviceMonitorClass struct {
@@ -39022,7 +41345,8 @@ func (d *DeviceMonitorClass) ParentClass() *ObjectClass {
 	return _v
 }
 
-// DeviceProviderClass: structure of the base DeviceProviderClass
+// DeviceProviderClass (GstDeviceProviderClass): structure of the base
+// DeviceProviderClass
 //
 // An instance of this type is always passed by reference.
 type DeviceProviderClass struct {
@@ -39050,7 +41374,8 @@ func (d *DeviceProviderClass) Factory() *DeviceProviderFactory {
 	return _v
 }
 
-// AddMetadata: set key with value as metadata in klass.
+// AddMetadata (gst_device_provider_class_add_metadata): set key with value as
+// metadata in klass.
 //
 // The function takes the following parameters:
 //
@@ -39073,7 +41398,8 @@ func (klass *DeviceProviderClass) AddMetadata(key string, value string) {
 	runtime.KeepAlive(value)
 }
 
-// AddStaticMetadata: set key with value as metadata in klass.
+// AddStaticMetadata (gst_device_provider_class_add_static_metadata): set key
+// with value as metadata in klass.
 //
 // Same as gst_device_provider_class_add_metadata(), but value must be a static
 // string or an inlined string, as it will not be copied. (GStreamer plugins
@@ -39100,7 +41426,8 @@ func (klass *DeviceProviderClass) AddStaticMetadata(key string, value string) {
 	runtime.KeepAlive(value)
 }
 
-// Metadata: get metadata with key in klass.
+// Metadata (gst_device_provider_class_get_metadata): get metadata with key in
+// klass.
 //
 // The function takes the following parameters:
 //
@@ -39131,7 +41458,8 @@ func (klass *DeviceProviderClass) Metadata(key string) string {
 	return _utf8
 }
 
-// SetMetadata sets the detailed information for a DeviceProviderClass.
+// SetMetadata (gst_device_provider_class_set_metadata) sets the detailed
+// information for a DeviceProviderClass.
 //
 // > This function is for use in _class_init functions only.
 //
@@ -39170,7 +41498,8 @@ func (klass *DeviceProviderClass) SetMetadata(longname string, classification st
 	runtime.KeepAlive(author)
 }
 
-// SetStaticMetadata sets the detailed information for a DeviceProviderClass.
+// SetStaticMetadata (gst_device_provider_class_set_static_metadata) sets the
+// detailed information for a DeviceProviderClass.
 //
 // > This function is for use in _class_init functions only.
 //
@@ -39211,8 +41540,8 @@ func (klass *DeviceProviderClass) SetStaticMetadata(longname string, classificat
 	runtime.KeepAlive(author)
 }
 
-// ElementClass: GStreamer element class. Override the vmethods to implement the
-// element functionality.
+// ElementClass (GstElementClass): GStreamer element class. Override the
+// vmethods to implement the element functionality.
 //
 // An instance of this type is always passed by reference.
 type ElementClass struct {
@@ -39256,7 +41585,8 @@ func (e *ElementClass) PadTemplCookie() uint32 {
 	return _v
 }
 
-// AddMetadata: set key with value as metadata in klass.
+// AddMetadata (gst_element_class_add_metadata): set key with value as metadata
+// in klass.
 //
 // The function takes the following parameters:
 //
@@ -39279,9 +41609,10 @@ func (klass *ElementClass) AddMetadata(key string, value string) {
 	runtime.KeepAlive(value)
 }
 
-// AddPadTemplate adds a padtemplate to an element class. This is mainly used in
-// the _class_init functions of classes. If a pad template with the same name as
-// an already existing one is added the old one is replaced by the new one.
+// AddPadTemplate (gst_element_class_add_pad_template) adds a padtemplate to an
+// element class. This is mainly used in the _class_init functions of classes.
+// If a pad template with the same name as an already existing one is added the
+// old one is replaced by the new one.
 //
 // templ's reference count will be incremented, and any floating reference will
 // be removed (see gst_object_ref_sink()).
@@ -39301,7 +41632,8 @@ func (klass *ElementClass) AddPadTemplate(templ *PadTemplate) {
 	runtime.KeepAlive(templ)
 }
 
-// AddStaticMetadata: set key with value as metadata in klass.
+// AddStaticMetadata (gst_element_class_add_static_metadata): set key with value
+// as metadata in klass.
 //
 // Same as gst_element_class_add_metadata(), but value must be a static string
 // or an inlined string, as it will not be copied. (GStreamer plugins will be
@@ -39329,10 +41661,11 @@ func (klass *ElementClass) AddStaticMetadata(key string, value string) {
 	runtime.KeepAlive(value)
 }
 
-// AddStaticPadTemplate adds a pad template to an element class based on the
-// static pad template templ. This is mainly used in the _class_init functions
-// of element implementations. If a pad template with the same name already
-// exists, the old one is replaced by the new one.
+// AddStaticPadTemplate (gst_element_class_add_static_pad_template) adds a
+// pad template to an element class based on the static pad template templ.
+// This is mainly used in the _class_init functions of element implementations.
+// If a pad template with the same name already exists, the old one is replaced
+// by the new one.
 //
 // The function takes the following parameters:
 //
@@ -39349,10 +41682,11 @@ func (klass *ElementClass) AddStaticPadTemplate(staticTempl *StaticPadTemplate) 
 	runtime.KeepAlive(staticTempl)
 }
 
-// AddStaticPadTemplateWithGType adds a pad template to an element class based
-// on the static pad template templ. This is mainly used in the _class_init
-// functions of element implementations. If a pad template with the same name
-// already exists, the old one is replaced by the new one.
+// AddStaticPadTemplateWithGType
+// (gst_element_class_add_static_pad_template_with_gtype) adds a pad template to
+// an element class based on the static pad template templ. This is mainly used
+// in the _class_init functions of element implementations. If a pad template
+// with the same name already exists, the old one is replaced by the new one.
 //
 // The function takes the following parameters:
 //
@@ -39373,7 +41707,7 @@ func (klass *ElementClass) AddStaticPadTemplateWithGType(staticTempl *StaticPadT
 	runtime.KeepAlive(padType)
 }
 
-// Metadata: get metadata with key in klass.
+// Metadata (gst_element_class_get_metadata): get metadata with key in klass.
 //
 // The function takes the following parameters:
 //
@@ -39402,10 +41736,10 @@ func (klass *ElementClass) Metadata(key string) string {
 	return _utf8
 }
 
-// PadTemplate retrieves a padtemplate from element_class with the given name.
-// > If you use this function in the GInstanceInitFunc of an object class
-// > that has subclasses, make sure to pass the g_class parameter of the >
-// GInstanceInitFunc here.
+// PadTemplate (gst_element_class_get_pad_template) retrieves a padtemplate
+// from element_class with the given name. > If you use this function in the
+// GInstanceInitFunc of an object class > that has subclasses, make sure to pass
+// the g_class parameter of the > GInstanceInitFunc here.
 //
 // The function takes the following parameters:
 //
@@ -39437,11 +41771,11 @@ func (elementClass *ElementClass) PadTemplate(name string) *PadTemplate {
 	return _padTemplate
 }
 
-// PadTemplateList retrieves a list of the pad templates associated with
-// element_class. The list must not be modified by the calling code.
-// > If you use this function in the GInstanceInitFunc of an object class
-// > that has subclasses, make sure to pass the g_class parameter of the >
-// GInstanceInitFunc here.
+// PadTemplateList (gst_element_class_get_pad_template_list) retrieves a
+// list of the pad templates associated with element_class. The list must
+// not be modified by the calling code. > If you use this function in the
+// GInstanceInitFunc of an object class > that has subclasses, make sure to pass
+// the g_class parameter of the > GInstanceInitFunc here.
 //
 // The function returns the following values:
 //
@@ -39468,8 +41802,8 @@ func (elementClass *ElementClass) PadTemplateList() []*PadTemplate {
 	return _list
 }
 
-// SetMetadata sets the detailed information for a ElementClass. > This function
-// is for use in _class_init functions only.
+// SetMetadata (gst_element_class_set_metadata) sets the detailed information
+// for a ElementClass. > This function is for use in _class_init functions only.
 //
 // The function takes the following parameters:
 //
@@ -39506,7 +41840,8 @@ func (klass *ElementClass) SetMetadata(longname string, classification string, d
 	runtime.KeepAlive(author)
 }
 
-// SetStaticMetadata sets the detailed information for a ElementClass.
+// SetStaticMetadata (gst_element_class_set_static_metadata) sets the detailed
+// information for a ElementClass.
 //
 // > This function is for use in _class_init functions only.
 //
@@ -39550,8 +41885,8 @@ func (klass *ElementClass) SetStaticMetadata(longname string, classification str
 	runtime.KeepAlive(author)
 }
 
-// Event: event class provides factory methods to construct events for sending
-// and functions to query (parse) received events.
+// Event (GstEvent): event class provides factory methods to construct events
+// for sending and functions to query (parse) received events.
 //
 // Events are usually created with gst_event_new_*() which takes event-type
 // specific parameters as arguments. To send an event application will usually
@@ -40331,8 +42666,8 @@ func (e *Event) SetTimestamp(timestamp uint64) {
 	*valptr = C.guint64(timestamp)
 }
 
-// CopySegment parses a segment event and copies the Segment into the location
-// given by segment.
+// CopySegment (gst_event_copy_segment) parses a segment event and copies the
+// Segment into the location given by segment.
 //
 // The function takes the following parameters:
 //
@@ -40349,7 +42684,8 @@ func (event *Event) CopySegment(segment *Segment) {
 	runtime.KeepAlive(segment)
 }
 
-// RunningTimeOffset: retrieve the accumulated running time offset of the event.
+// RunningTimeOffset (gst_event_get_running_time_offset): retrieve the
+// accumulated running time offset of the event.
 //
 // Events passing through Pads that have a running time offset set via
 // gst_pad_set_offset() will get their offset adjusted according to the pad's
@@ -40379,7 +42715,7 @@ func (event *Event) RunningTimeOffset() int64 {
 	return _gint64
 }
 
-// Seqnum: retrieve the sequence number of a event.
+// Seqnum (gst_event_get_seqnum): retrieve the sequence number of a event.
 //
 // Events have ever-incrementing sequence numbers, which may also be set
 // explicitly via gst_event_set_seqnum(). Sequence numbers are typically used to
@@ -40413,7 +42749,7 @@ func (event *Event) Seqnum() uint32 {
 	return _guint32
 }
 
-// Structure access the structure of the event.
+// Structure (gst_event_get_structure) access the structure of the event.
 //
 // The function returns the following values:
 //
@@ -40446,8 +42782,8 @@ func (event *Event) Structure() *Structure {
 	return _structure
 }
 
-// HasName checks if event has the given name. This function is usually used to
-// check the name of a custom event.
+// HasName (gst_event_has_name) checks if event has the given name. This
+// function is usually used to check the name of a custom event.
 //
 // The function takes the following parameters:
 //
@@ -40478,8 +42814,8 @@ func (event *Event) HasName(name string) bool {
 	return _ok
 }
 
-// HasNameID checks if event has the given name. This function is usually used
-// to check the name of a custom event.
+// HasNameID (gst_event_has_name_id) checks if event has the given name.
+// This function is usually used to check the name of a custom event.
 //
 // The function takes the following parameters:
 //
@@ -40509,8 +42845,8 @@ func (event *Event) HasNameID(name glib.Quark) bool {
 	return _ok
 }
 
-// ParseBufferSize: get the format, minsize, maxsize and async-flag in the
-// buffersize event.
+// ParseBufferSize (gst_event_parse_buffer_size): get the format, minsize,
+// maxsize and async-flag in the buffersize event.
 //
 // The function returns the following values:
 //
@@ -40545,8 +42881,8 @@ func (event *Event) ParseBufferSize() (format Format, minsize int64, maxsize int
 	return _format, _minsize, _maxsize, _async
 }
 
-// ParseCaps: get the caps from event. The caps remains valid as long as event
-// remains valid.
+// ParseCaps (gst_event_parse_caps): get the caps from event. The caps remains
+// valid as long as event remains valid.
 //
 // The function returns the following values:
 //
@@ -40575,8 +42911,8 @@ func (event *Event) ParseCaps() *Caps {
 	return _caps
 }
 
-// ParseFlushStop: parse the FLUSH_STOP event and retrieve the reset_time
-// member.
+// ParseFlushStop (gst_event_parse_flush_stop): parse the FLUSH_STOP event and
+// retrieve the reset_time member.
 //
 // The function returns the following values:
 //
@@ -40599,7 +42935,8 @@ func (event *Event) ParseFlushStop() bool {
 	return _resetTime
 }
 
-// ParseGap: extract timestamp and duration from a new GAP event.
+// ParseGap (gst_event_parse_gap): extract timestamp and duration from a new GAP
+// event.
 //
 // The function returns the following values:
 //
@@ -40626,8 +42963,8 @@ func (event *Event) ParseGap() (timestamp ClockTime, duration ClockTime) {
 	return _timestamp, _duration
 }
 
-// ParseGapFlags: retrieve the gap flags that may have been set on a gap event
-// with gst_event_set_gap_flags().
+// ParseGapFlags (gst_event_parse_gap_flags): retrieve the gap flags that may
+// have been set on a gap event with gst_event_set_gap_flags().
 //
 // The function returns the following values:
 //
@@ -40674,8 +43011,8 @@ func (event *Event) ParseGroupID() (uint, bool) {
 	return _groupId, _ok
 }
 
-// ParseInstantRateChange: extract rate and flags from an instant-rate-change
-// event.
+// ParseInstantRateChange (gst_event_parse_instant_rate_change): extract rate
+// and flags from an instant-rate-change event.
 //
 // The function returns the following values:
 //
@@ -40702,8 +43039,8 @@ func (event *Event) ParseInstantRateChange() (float64, SegmentFlags) {
 	return _rateMultiplier, _newFlags
 }
 
-// ParseInstantRateSyncTime: extract the rate multiplier and running times from
-// an instant-rate-sync-time event.
+// ParseInstantRateSyncTime (gst_event_parse_instant_rate_sync_time): extract
+// the rate multiplier and running times from an instant-rate-sync-time event.
 //
 // The function returns the following values:
 //
@@ -40735,7 +43072,7 @@ func (event *Event) ParseInstantRateSyncTime() (rateMultiplier float64, runningT
 	return _rateMultiplier, _runningTime, _upstreamRunningTime
 }
 
-// ParseLatency: get the latency in the latency event.
+// ParseLatency (gst_event_parse_latency): get the latency in the latency event.
 //
 // The function returns the following values:
 //
@@ -40756,9 +43093,10 @@ func (event *Event) ParseLatency() ClockTime {
 	return _latency
 }
 
-// ParseProtection parses an event containing protection system specific
-// information and stores the results in system_id, data and origin. The data
-// stored in system_id, origin and data are valid until event is released.
+// ParseProtection (gst_event_parse_protection) parses an event containing
+// protection system specific information and stores the results in system_id,
+// data and origin. The data stored in system_id, origin and data are valid
+// until event is released.
 //
 // The function returns the following values:
 //
@@ -40802,8 +43140,9 @@ func (event *Event) ParseProtection() (systemId string, data *Buffer, origin str
 	return _systemId, _data, _origin
 }
 
-// ParseQos: get the type, proportion, diff and timestamp in the qos event.
-// See gst_event_new_qos() for more information about the different QoS values.
+// ParseQos (gst_event_parse_qos): get the type, proportion, diff and timestamp
+// in the qos event. See gst_event_new_qos() for more information about the
+// different QoS values.
 //
 // timestamp will be adjusted for any pad offsets of pads it was passing
 // through.
@@ -40839,8 +43178,8 @@ func (event *Event) ParseQos() (QOSType, float64, ClockTimeDiff, ClockTime) {
 	return _typ, _proportion, _diff, _timestamp
 }
 
-// ParseSeek parses a seek event and stores the results in the given result
-// locations.
+// ParseSeek (gst_event_parse_seek) parses a seek event and stores the results
+// in the given result locations.
 //
 // The function returns the following values:
 //
@@ -40889,8 +43228,9 @@ func (event *Event) ParseSeek() (rate float64, format Format, flags SeekFlags, s
 	return _rate, _format, _flags, _startType, _start, _stopType, _stop
 }
 
-// ParseSeekTrickmodeInterval: retrieve the trickmode interval that may have
-// been set on a seek event with gst_event_set_seek_trickmode_interval().
+// ParseSeekTrickmodeInterval (gst_event_parse_seek_trickmode_interval):
+// retrieve the trickmode interval that may have been set on a seek event with
+// gst_event_set_seek_trickmode_interval().
 //
 // The function returns the following values:
 //
@@ -40911,10 +43251,10 @@ func (event *Event) ParseSeekTrickmodeInterval() ClockTime {
 	return _interval
 }
 
-// ParseSegment parses a segment event and stores the result in the given
-// segment location. segment remains valid only until the event is freed.
-// Don't modify the segment and make a copy if you want to modify it or store it
-// for later use.
+// ParseSegment (gst_event_parse_segment) parses a segment event and stores
+// the result in the given segment location. segment remains valid only until
+// the event is freed. Don't modify the segment and make a copy if you want to
+// modify it or store it for later use.
 //
 // The function returns the following values:
 //
@@ -40937,8 +43277,8 @@ func (event *Event) ParseSegment() *Segment {
 	return _segment
 }
 
-// ParseSegmentDone extracts the position and format from the segment done
-// message.
+// ParseSegmentDone (gst_event_parse_segment_done) extracts the position and
+// format from the segment done message.
 //
 // The function returns the following values:
 //
@@ -40963,8 +43303,8 @@ func (event *Event) ParseSegmentDone() (Format, int64) {
 	return _format, _position
 }
 
-// ParseSelectStreams: parse the SELECT_STREAMS event and retrieve the contained
-// streams.
+// ParseSelectStreams (gst_event_parse_select_streams): parse the SELECT_STREAMS
+// event and retrieve the contained streams.
 //
 // The function returns the following values:
 //
@@ -40993,7 +43333,8 @@ func (event *Event) ParseSelectStreams() []string {
 	return _streams
 }
 
-// ParseSinkMessage: parse the sink-message event. Unref msg after usage.
+// ParseSinkMessage (gst_event_parse_sink_message): parse the sink-message
+// event. Unref msg after usage.
 //
 // The function returns the following values:
 //
@@ -41021,7 +43362,7 @@ func (event *Event) ParseSinkMessage() *Message {
 	return _msg
 }
 
-// ParseStep: parse the step event.
+// ParseStep (gst_event_parse_step): parse the step event.
 //
 // The function returns the following values:
 //
@@ -41062,7 +43403,8 @@ func (event *Event) ParseStep() (format Format, amount uint64, rate float64, flu
 	return _format, _amount, _rate, _flush, _intermediate
 }
 
-// ParseStream: parse a stream-start event and extract the Stream from it.
+// ParseStream (gst_event_parse_stream): parse a stream-start event and extract
+// the Stream from it.
 //
 // The function returns the following values:
 //
@@ -41085,8 +43427,8 @@ func (event *Event) ParseStream() *Stream {
 	return _stream
 }
 
-// ParseStreamCollection: retrieve new StreamCollection from STREAM_COLLECTION
-// event event.
+// ParseStreamCollection (gst_event_parse_stream_collection): retrieve new
+// StreamCollection from STREAM_COLLECTION event event.
 //
 // The function returns the following values:
 //
@@ -41128,8 +43470,8 @@ func (event *Event) ParseStreamFlags() StreamFlags {
 	return _flags
 }
 
-// ParseStreamGroupDone: parse a stream-group-done event and store the result in
-// the given group_id location.
+// ParseStreamGroupDone (gst_event_parse_stream_group_done): parse a
+// stream-group-done event and store the result in the given group_id location.
 //
 // The function returns the following values:
 //
@@ -41150,10 +43492,10 @@ func (event *Event) ParseStreamGroupDone() uint {
 	return _groupId
 }
 
-// ParseStreamStart: parse a stream-id event and store the result in the given
-// stream_id location. The string stored in stream_id must not be modified and
-// will remain valid only until event gets freed. Make a copy if you want to
-// modify it or store it for later use.
+// ParseStreamStart (gst_event_parse_stream_start): parse a stream-id event
+// and store the result in the given stream_id location. The string stored in
+// stream_id must not be modified and will remain valid only until event gets
+// freed. Make a copy if you want to modify it or store it for later use.
 //
 // The function returns the following values:
 //
@@ -41176,10 +43518,10 @@ func (event *Event) ParseStreamStart() string {
 	return _streamId
 }
 
-// ParseTag parses a tag event and stores the results in the given taglist
-// location. No reference to the taglist will be returned, it remains valid only
-// until the event is freed. Don't modify or free the taglist, make a copy if
-// you want to modify it or store it for later use.
+// ParseTag (gst_event_parse_tag) parses a tag event and stores the results in
+// the given taglist location. No reference to the taglist will be returned,
+// it remains valid only until the event is freed. Don't modify or free the
+// taglist, make a copy if you want to modify it or store it for later use.
 //
 // The function returns the following values:
 //
@@ -41202,8 +43544,8 @@ func (event *Event) ParseTag() *TagList {
 	return _taglist
 }
 
-// ParseToc: parse a TOC event and store the results in the given toc and
-// updated locations.
+// ParseToc (gst_event_parse_toc): parse a TOC event and store the results in
+// the given toc and updated locations.
 //
 // The function returns the following values:
 //
@@ -41238,8 +43580,8 @@ func (event *Event) ParseToc() (*Toc, bool) {
 	return _toc, _updated
 }
 
-// ParseTocSelect: parse a TOC select event and store the results in the given
-// uid location.
+// ParseTocSelect (gst_event_parse_toc_select): parse a TOC select event and
+// store the results in the given uid location.
 //
 // The function returns the following values:
 //
@@ -41263,8 +43605,8 @@ func (event *Event) ParseTocSelect() string {
 	return _uid
 }
 
-// SetGapFlags sets flags on event to give additional information about the
-// reason for the T_EVENT_GAP.
+// SetGapFlags (gst_event_set_gap_flags) sets flags on event to give additional
+// information about the reason for the T_EVENT_GAP.
 //
 // The function takes the following parameters:
 //
@@ -41281,11 +43623,11 @@ func (event *Event) SetGapFlags(flags GapFlags) {
 	runtime.KeepAlive(flags)
 }
 
-// SetGroupID: all streams that have the same group id are supposed to be played
-// together, i.e. all streams inside a container file should have the same group
-// id but different stream ids. The group id should change each time the stream
-// is started, resulting in different group ids each time a file is played for
-// example.
+// SetGroupID (gst_event_set_group_id): all streams that have the same group id
+// are supposed to be played together, i.e. all streams inside a container file
+// should have the same group id but different stream ids. The group id should
+// change each time the stream is started, resulting in different group ids each
+// time a file is played for example.
 //
 // Use gst_util_group_id_next() to get a new group id.
 //
@@ -41304,8 +43646,9 @@ func (event *Event) SetGroupID(groupId uint) {
 	runtime.KeepAlive(groupId)
 }
 
-// SetRunningTimeOffset: set the running time offset of a event. See
-// gst_event_get_running_time_offset() for more information.
+// SetRunningTimeOffset (gst_event_set_running_time_offset): set the running
+// time offset of a event. See gst_event_get_running_time_offset() for more
+// information.
 //
 // MT safe.
 //
@@ -41324,9 +43667,10 @@ func (event *Event) SetRunningTimeOffset(offset int64) {
 	runtime.KeepAlive(offset)
 }
 
-// SetSeekTrickmodeInterval sets a trickmode interval on a (writable) seek
-// event. Elements that support TRICKMODE_KEY_UNITS seeks SHOULD use this as the
-// minimal interval between each frame they may output.
+// SetSeekTrickmodeInterval (gst_event_set_seek_trickmode_interval) sets
+// a trickmode interval on a (writable) seek event. Elements that support
+// TRICKMODE_KEY_UNITS seeks SHOULD use this as the minimal interval between
+// each frame they may output.
 func (event *Event) SetSeekTrickmodeInterval(interval ClockTime) {
 	var _arg0 *C.GstEvent    // out
 	var _arg1 C.GstClockTime // out
@@ -41339,7 +43683,7 @@ func (event *Event) SetSeekTrickmodeInterval(interval ClockTime) {
 	runtime.KeepAlive(interval)
 }
 
-// SetSeqnum: set the sequence number of a event.
+// SetSeqnum (gst_event_set_seqnum): set the sequence number of a event.
 //
 // This function might be called by the creator of a event to indicate that the
 // event relates to other events or messages. See gst_event_get_seqnum() for
@@ -41362,7 +43706,7 @@ func (event *Event) SetSeqnum(seqnum uint32) {
 	runtime.KeepAlive(seqnum)
 }
 
-// SetStream: set the stream on the stream-start event.
+// SetStream (gst_event_set_stream): set the stream on the stream-start event.
 //
 // The function takes the following parameters:
 //
@@ -41394,7 +43738,8 @@ func (event *Event) SetStreamFlags(flags StreamFlags) {
 	runtime.KeepAlive(flags)
 }
 
-// WritableStructure: get a writable version of the structure.
+// WritableStructure (gst_event_writable_structure): get a writable version of
+// the structure.
 //
 // The function returns the following values:
 //
@@ -41426,7 +43771,7 @@ func (event *Event) WritableStructure() *Structure {
 	return _structure
 }
 
-// FormatDefinition: format definition
+// FormatDefinition (GstFormatDefinition): format definition
 //
 // An instance of this type is always passed by reference.
 type FormatDefinition struct {
@@ -41470,7 +43815,8 @@ func (f *FormatDefinition) Quark() glib.Quark {
 	return _v
 }
 
-// GhostPadClass: instance of this type is always passed by reference.
+// GhostPadClass (GstGhostPadClass): instance of this type is always passed by
+// reference.
 type GhostPadClass struct {
 	*ghostPadClass
 }
@@ -41487,8 +43833,8 @@ func (g *GhostPadClass) ParentClass() *ProxyPadClass {
 	return _v
 }
 
-// Iterator is used to retrieve multiple objects from another object in a
-// threadsafe way.
+// Iterator (GstIterator) is used to retrieve multiple objects from another
+// object in a threadsafe way.
 //
 // Various GStreamer objects provide access to their internal structures using
 // an iterator.
@@ -41566,7 +43912,7 @@ func NewIteratorSingle(typ coreglib.Type, object *coreglib.Value) *Iterator {
 	return _iterator
 }
 
-// Copy the iterator and its state.
+// Copy (gst_iterator_copy) the iterator and its state.
 //
 // The function returns the following values:
 //
@@ -41593,10 +43939,10 @@ func (it *Iterator) Copy() *Iterator {
 	return _iterator
 }
 
-// Fold folds func over the elements of iter. That is to say, func will be
-// called as func (object, ret, user_data) for each object in it. The normal use
-// of this procedure is to accumulate the results of operating on the objects in
-// ret.
+// Fold (gst_iterator_fold) folds func over the elements of iter. That is to
+// say, func will be called as func (object, ret, user_data) for each object
+// in it. The normal use of this procedure is to accumulate the results of
+// operating on the objects in ret.
 //
 // This procedure can be used (and is used internally) to implement the
 // gst_iterator_foreach() and gst_iterator_find_custom() operations.
@@ -41644,8 +43990,8 @@ func (it *Iterator) Fold(fn IteratorFoldFunction, ret *coreglib.Value) IteratorR
 	return _iteratorResult
 }
 
-// ForEach: iterate over all element of it and call the given function func for
-// each element.
+// ForEach (gst_iterator_foreach): iterate over all element of it and call the
+// given function func for each element.
 //
 // The function takes the following parameters:
 //
@@ -41679,7 +44025,7 @@ func (it *Iterator) ForEach(fn IteratorForEachFunction) IteratorResult {
 	return _iteratorResult
 }
 
-// Next: get the next item from the iterator in elem.
+// Next (gst_iterator_next): get the next item from the iterator in elem.
 //
 // Only when this function returns GST_ITERATOR_OK, elem will contain a valid
 // value. elem must have been initialized to the type of the iterator or
@@ -41722,9 +44068,9 @@ func (it *Iterator) Next() (coreglib.Value, IteratorResult) {
 	return _elem, _iteratorResult
 }
 
-// Push pushes other iterator onto it. All calls performed on it are forwarded
-// to other. If other returns GST_ITERATOR_DONE, it is popped again and calls
-// are handled by it again.
+// Push (gst_iterator_push) pushes other iterator onto it. All calls performed
+// on it are forwarded to other. If other returns GST_ITERATOR_DONE, it is
+// popped again and calls are handled by it again.
 //
 // This function is mainly used by objects implementing the iterator next
 // function to recurse into substructures.
@@ -41749,8 +44095,8 @@ func (it *Iterator) Push(other *Iterator) {
 	runtime.KeepAlive(other)
 }
 
-// Resync the iterator. this function is mostly called after gst_iterator_next()
-// returned GST_ITERATOR_RESYNC.
+// Resync (gst_iterator_resync) the iterator. this function is mostly called
+// after gst_iterator_next() returned GST_ITERATOR_RESYNC.
 //
 // When an iterator was pushed on it, it will automatically be popped again with
 // this function.
@@ -41765,8 +44111,8 @@ func (it *Iterator) Resync() {
 	runtime.KeepAlive(it)
 }
 
-// MapInfo: structure containing the result of a map operation such as
-// gst_memory_map(). It contains the data and size.
+// MapInfo (GstMapInfo): structure containing the result of a map operation such
+// as gst_memory_map(). It contains the data and size.
 //
 // MapInfo cannot be used with g_auto() because it is ambiguous whether it
 // needs to be unmapped using gst_buffer_unmap() or gst_memory_unmap(). Instead,
@@ -41782,8 +44128,8 @@ type mapInfo struct {
 	native *C.GstMapInfo
 }
 
-// Memory is a lightweight refcounted object that wraps a region of memory.
-// They are typically used to manage the data of a Buffer.
+// Memory (GstMemory) is a lightweight refcounted object that wraps a region of
+// memory. They are typically used to manage the data of a Buffer.
 //
 // A GstMemory object has an allocated region of memory of maxsize. The maximum
 // size does not change during the lifetime of the memory object. The memory
@@ -41938,9 +44284,9 @@ func (m *Memory) SetSize(size uint) {
 	*valptr = C.gsize(size)
 }
 
-// Copy: return a copy of size bytes from mem starting from offset. This copy is
-// guaranteed to be writable. size can be set to -1 to return a copy from offset
-// to the end of the memory region.
+// Copy (gst_memory_copy): return a copy of size bytes from mem starting from
+// offset. This copy is guaranteed to be writable. size can be set to -1 to
+// return a copy from offset to the end of the memory region.
 //
 // The function takes the following parameters:
 //
@@ -41979,7 +44325,8 @@ func (mem *Memory) Copy(offset int, size int) *Memory {
 	return _memory
 }
 
-// Sizes: get the current size, offset and maxsize of mem.
+// Sizes (gst_memory_get_sizes): get the current size, offset and maxsize of
+// mem.
 //
 // The function returns the following values:
 //
@@ -42008,8 +44355,8 @@ func (mem *Memory) Sizes() (offset uint, maxsize uint, gsize uint) {
 	return _offset, _maxsize, _gsize
 }
 
-// IsSpan: check if mem1 and mem2 share the memory with a common parent memory
-// object and that the memory is contiguous.
+// IsSpan (gst_memory_is_span): check if mem1 and mem2 share the memory with a
+// common parent memory object and that the memory is contiguous.
 //
 // If this is the case, the memory of mem1 and mem2 can be merged efficiently by
 // performing gst_memory_share() on the parent object from the returned offset.
@@ -42046,7 +44393,8 @@ func (mem1 *Memory) IsSpan(mem2 *Memory) (uint, bool) {
 	return _offset, _ok
 }
 
-// IsType: check if mem if allocated with an allocator for mem_type.
+// IsType (gst_memory_is_type): check if mem if allocated with an allocator for
+// mem_type.
 //
 // The function takes the following parameters:
 //
@@ -42077,9 +44425,9 @@ func (mem *Memory) IsType(memType string) bool {
 	return _ok
 }
 
-// MakeMapped: create a Memory object that is mapped with flags. If mem is
-// mappable with flags, this function returns the mapped mem directly. Otherwise
-// a mapped copy of mem is returned.
+// MakeMapped (gst_memory_make_mapped): create a Memory object that is mapped
+// with flags. If mem is mappable with flags, this function returns the mapped
+// mem directly. Otherwise a mapped copy of mem is returned.
 //
 // This function takes ownership of old mem and returns a reference to a new
 // Memory.
@@ -42123,8 +44471,8 @@ func (mem *Memory) MakeMapped(flags MapFlags) (*MapInfo, *Memory) {
 	return _info, _memory
 }
 
-// Map: fill info with the pointer and sizes of the memory in mem that can be
-// accessed according to flags.
+// Map (gst_memory_map): fill info with the pointer and sizes of the memory in
+// mem that can be accessed according to flags.
 //
 // This function can return FALSE for various reasons:
 //
@@ -42170,8 +44518,8 @@ func (mem *Memory) Map(flags MapFlags) (*MapInfo, bool) {
 	return _info, _ok
 }
 
-// Resize the memory region. mem should be writable and offset + size should be
-// less than the maxsize of mem.
+// Resize (gst_memory_resize) the memory region. mem should be writable and
+// offset + size should be less than the maxsize of mem.
 //
 // T_MEMORY_FLAG_ZERO_PREFIXED and T_MEMORY_FLAG_ZERO_PADDED will be cleared
 // when offset or padding is increased respectively.
@@ -42195,10 +44543,10 @@ func (mem *Memory) Resize(offset int, size uint) {
 	runtime.KeepAlive(size)
 }
 
-// Share: return a shared copy of size bytes from mem starting from offset.
-// No memory copy is performed and the memory region is simply shared.
-// The result is guaranteed to be non-writable. size can be set to -1 to return
-// a shared copy from offset to the end of the memory region.
+// Share (gst_memory_share): return a shared copy of size bytes from mem
+// starting from offset. No memory copy is performed and the memory region is
+// simply shared. The result is guaranteed to be non-writable. size can be set
+// to -1 to return a shared copy from offset to the end of the memory region.
 //
 // The function takes the following parameters:
 //
@@ -42235,7 +44583,7 @@ func (mem *Memory) Share(offset int, size int) *Memory {
 	return _memory
 }
 
-// Unmap: release the memory obtained with gst_memory_map().
+// Unmap (gst_memory_unmap): release the memory obtained with gst_memory_map().
 //
 // The function takes the following parameters:
 //
@@ -42252,10 +44600,10 @@ func (mem *Memory) Unmap(info *MapInfo) {
 	runtime.KeepAlive(info)
 }
 
-// Message messages are implemented as a subclass of MiniObject with a generic
-// Structure as the content. This allows for writing custom messages without
-// requiring an API change while allowing a wide range of different types of
-// messages.
+// Message (GstMessage) messages are implemented as a subclass of MiniObject
+// with a generic Structure as the content. This allows for writing custom
+// messages without requiring an API change while allowing a wide range of
+// different types of messages.
 //
 // Messages are posted by objects in the pipeline and are passed to the
 // application using the Bus.
@@ -43669,7 +46017,8 @@ func (m *Message) SetTimestamp(timestamp uint64) {
 	*valptr = C.guint64(timestamp)
 }
 
-// AddRedirectEntry creates and appends a new entry.
+// AddRedirectEntry (gst_message_add_redirect_entry) creates and appends a new
+// entry.
 //
 // The specified location string is copied. However, ownership over the tag list
 // and structure are transferred to the message.
@@ -43723,7 +46072,7 @@ func (message *Message) NumRedirectEntries() uint {
 	return _gsize
 }
 
-// Seqnum: retrieve the sequence number of a message.
+// Seqnum (gst_message_get_seqnum): retrieve the sequence number of a message.
 //
 // Messages have ever-incrementing sequence numbers, which may also be set
 // explicitly via gst_message_set_seqnum(). Sequence numbers are typically
@@ -43757,8 +46106,8 @@ func (message *Message) Seqnum() uint32 {
 	return _guint32
 }
 
-// StreamStatusObject extracts the object managing the streaming thread from
-// message.
+// StreamStatusObject (gst_message_get_stream_status_object) extracts the object
+// managing the streaming thread from message.
 //
 // The function returns the following values:
 //
@@ -43784,7 +46133,7 @@ func (message *Message) StreamStatusObject() *coreglib.Value {
 	return _value
 }
 
-// Structure access the structure of the message.
+// Structure (gst_message_get_structure) access the structure of the message.
 //
 // The function returns the following values:
 //
@@ -43817,8 +46166,8 @@ func (message *Message) Structure() *Structure {
 	return _structure
 }
 
-// HasName checks if message has the given name. This function is usually used
-// to check the name of a custom message.
+// HasName (gst_message_has_name) checks if message has the given name. This
+// function is usually used to check the name of a custom message.
 //
 // The function takes the following parameters:
 //
@@ -43849,7 +46198,8 @@ func (message *Message) HasName(name string) bool {
 	return _ok
 }
 
-// ParseAsyncDone: extract the running_time from the async_done message.
+// ParseAsyncDone (gst_message_parse_async_done): extract the running_time from
+// the async_done message.
 //
 // MT safe.
 //
@@ -43872,8 +46222,8 @@ func (message *Message) ParseAsyncDone() ClockTime {
 	return _runningTime
 }
 
-// ParseBuffering extracts the buffering percent from the GstMessage. see also
-// gst_message_new_buffering().
+// ParseBuffering (gst_message_parse_buffering) extracts the buffering percent
+// from the GstMessage. see also gst_message_new_buffering().
 //
 // MT safe.
 //
@@ -43896,7 +46246,8 @@ func (message *Message) ParseBuffering() int {
 	return _percent
 }
 
-// ParseBufferingStats extracts the buffering stats values from message.
+// ParseBufferingStats (gst_message_parse_buffering_stats) extracts the
+// buffering stats values from message.
 //
 // The function returns the following values:
 //
@@ -43930,8 +46281,9 @@ func (message *Message) ParseBufferingStats() (mode BufferingMode, avgIn int, av
 	return _mode, _avgIn, _avgOut, _bufferingLeft
 }
 
-// ParseClockLost extracts the lost clock from the GstMessage. The clock object
-// returned remains valid until the message is freed.
+// ParseClockLost (gst_message_parse_clock_lost) extracts the lost clock from
+// the GstMessage. The clock object returned remains valid until the message is
+// freed.
 //
 // MT safe.
 //
@@ -43969,8 +46321,9 @@ func (message *Message) ParseClockLost() Clocker {
 	return _clock
 }
 
-// ParseClockProvide extracts the clock and ready flag from the GstMessage.
-// The clock object returned remains valid until the message is freed.
+// ParseClockProvide (gst_message_parse_clock_provide) extracts the clock and
+// ready flag from the GstMessage. The clock object returned remains valid until
+// the message is freed.
 //
 // MT safe.
 //
@@ -44014,8 +46367,8 @@ func (message *Message) ParseClockProvide() (Clocker, bool) {
 	return _clock, _ready
 }
 
-// ParseContextType: parse a context type from an existing
-// GST_MESSAGE_NEED_CONTEXT message.
+// ParseContextType (gst_message_parse_context_type): parse a context type from
+// an existing GST_MESSAGE_NEED_CONTEXT message.
 //
 // The function returns the following values:
 //
@@ -44044,9 +46397,9 @@ func (message *Message) ParseContextType() (string, bool) {
 	return _contextType, _ok
 }
 
-// ParseDeviceAdded parses a device-added message. The device-added message is
-// produced by DeviceProvider or a DeviceMonitor. It announces the appearance of
-// monitored devices.
+// ParseDeviceAdded (gst_message_parse_device_added) parses a device-added
+// message. The device-added message is produced by DeviceProvider or a
+// DeviceMonitor. It announces the appearance of monitored devices.
 //
 // The function returns the following values:
 //
@@ -44083,10 +46436,11 @@ func (message *Message) ParseDeviceAdded() Devicer {
 	return _device
 }
 
-// ParseDeviceChanged parses a device-changed message. The device-changed
-// message is produced by DeviceProvider or a DeviceMonitor. It announces the
-// disappearance of monitored devices. * It announce that a device properties
-// has changed and device represents the new modified version of changed_device.
+// ParseDeviceChanged (gst_message_parse_device_changed) parses a device-changed
+// message. The device-changed message is produced by DeviceProvider or a
+// DeviceMonitor. It announces the disappearance of monitored devices. * It
+// announce that a device properties has changed and device represents the new
+// modified version of changed_device.
 //
 // The function returns the following values:
 //
@@ -44143,9 +46497,9 @@ func (message *Message) ParseDeviceChanged() (device Devicer, changedDevice Devi
 	return _device, _changedDevice
 }
 
-// ParseDeviceRemoved parses a device-removed message. The device-removed
-// message is produced by DeviceProvider or a DeviceMonitor. It announces the
-// disappearance of monitored devices.
+// ParseDeviceRemoved (gst_message_parse_device_removed) parses a device-removed
+// message. The device-removed message is produced by DeviceProvider or a
+// DeviceMonitor. It announces the disappearance of monitored devices.
 //
 // The function returns the following values:
 //
@@ -44182,9 +46536,9 @@ func (message *Message) ParseDeviceRemoved() Devicer {
 	return _device
 }
 
-// ParseError extracts the GError and debug string from the GstMessage.
-// The values returned in the output arguments are copies; the caller must free
-// them when done.
+// ParseError (gst_message_parse_error) extracts the GError and debug string
+// from the GstMessage. The values returned in the output arguments are copies;
+// the caller must free them when done.
 //
 // Typical usage of this function might be:
 //
@@ -44236,8 +46590,9 @@ func (message *Message) ParseError() (error, string) {
 	return _gerror, _debug
 }
 
-// ParseErrorDetails returns the optional details structure, may be NULL if
-// none. The returned structure must not be freed.
+// ParseErrorDetails (gst_message_parse_error_details) returns the optional
+// details structure, may be NULL if none. The returned structure must not be
+// freed.
 //
 // The function returns the following values:
 //
@@ -44266,7 +46621,8 @@ func (message *Message) ParseErrorDetails() *Structure {
 	return _structure
 }
 
-// ParseGroupID: extract the group from the STREAM_START message.
+// ParseGroupID (gst_message_parse_group_id): extract the group from the
+// STREAM_START message.
 //
 // The function returns the following values:
 //
@@ -44296,7 +46652,8 @@ func (message *Message) ParseGroupID() (uint, bool) {
 	return _groupId, _ok
 }
 
-// ParseHaveContext: extract the context from the HAVE_CONTEXT message.
+// ParseHaveContext (gst_message_parse_have_context): extract the context from
+// the HAVE_CONTEXT message.
 //
 // MT safe.
 //
@@ -44327,9 +46684,9 @@ func (message *Message) ParseHaveContext() *Context {
 	return _context
 }
 
-// ParseInfo extracts the GError and debug string from the GstMessage. The
-// values returned in the output arguments are copies; the caller must free them
-// when done.
+// ParseInfo (gst_message_parse_info) extracts the GError and debug string from
+// the GstMessage. The values returned in the output arguments are copies;
+// the caller must free them when done.
 //
 // MT safe.
 //
@@ -44361,8 +46718,9 @@ func (message *Message) ParseInfo() (error, string) {
 	return _gerror, _debug
 }
 
-// ParseInfoDetails returns the optional details structure, may be NULL if none
-// The returned structure must not be freed.
+// ParseInfoDetails (gst_message_parse_info_details) returns the optional
+// details structure, may be NULL if none The returned structure must not be
+// freed.
 //
 // The function returns the following values:
 //
@@ -44391,8 +46749,8 @@ func (message *Message) ParseInfoDetails() *Structure {
 	return _structure
 }
 
-// ParseInstantRateRequest parses the rate_multiplier from the
-// instant-rate-request message.
+// ParseInstantRateRequest (gst_message_parse_instant_rate_request) parses the
+// rate_multiplier from the instant-rate-request message.
 //
 // The function returns the following values:
 //
@@ -44413,8 +46771,9 @@ func (message *Message) ParseInstantRateRequest() float64 {
 	return _rateMultiplier
 }
 
-// ParseNewClock extracts the new clock from the GstMessage. The clock object
-// returned remains valid until the message is freed.
+// ParseNewClock (gst_message_parse_new_clock) extracts the new clock from the
+// GstMessage. The clock object returned remains valid until the message is
+// freed.
 //
 // MT safe.
 //
@@ -44452,7 +46811,8 @@ func (message *Message) ParseNewClock() Clocker {
 	return _clock
 }
 
-// ParseProgress parses the progress type, code and text.
+// ParseProgress (gst_message_parse_progress) parses the progress type, code and
+// text.
 //
 // The function returns the following values:
 //
@@ -44487,8 +46847,9 @@ func (message *Message) ParseProgress() (typ ProgressType, code string, text str
 	return _typ, _code, _text
 }
 
-// ParsePropertyNotify parses a property-notify message. These will be posted
-// on the bus only when set up with gst_element_add_property_notify_watch() or
+// ParsePropertyNotify (gst_message_parse_property_notify) parses
+// a property-notify message. These will be posted on the bus only
+// when set up with gst_element_add_property_notify_watch() or
 // gst_element_add_property_deep_notify_watch().
 //
 // The function returns the following values:
@@ -44541,7 +46902,8 @@ func (message *Message) ParsePropertyNotify() (GstObjector, string, *coreglib.Va
 	return _object, _propertyName, _propertyValue
 }
 
-// ParseQos: extract the timestamps and live status from the QoS message.
+// ParseQos (gst_message_parse_qos): extract the timestamps and live status from
+// the QoS message.
 //
 // The returned values give the running_time, stream_time, timestamp and
 // duration of the dropped buffer. Values of GST_CLOCK_TIME_NONE mean unknown
@@ -44588,8 +46950,8 @@ func (message *Message) ParseQos() (live bool, runningTime uint64, streamTime ui
 	return _live, _runningTime, _streamTime, _timestamp, _duration
 }
 
-// ParseQosStats: extract the QoS stats representing the history of the current
-// continuous pipeline playback period.
+// ParseQosStats (gst_message_parse_qos_stats): extract the QoS stats
+// representing the history of the current continuous pipeline playback period.
 //
 // When format is GST_FORMAT_UNDEFINED both dropped and processed are invalid.
 // Values of -1 for either processed or dropped mean unknown values.
@@ -44627,8 +46989,8 @@ func (message *Message) ParseQosStats() (format Format, processed uint64, droppe
 	return _format, _processed, _dropped
 }
 
-// ParseQosValues: extract the QoS values that have been calculated/analysed
-// from the QoS data
+// ParseQosValues (gst_message_parse_qos_values): extract the QoS values that
+// have been calculated/analysed from the QoS data
 //
 // MT safe.
 //
@@ -44662,10 +47024,10 @@ func (message *Message) ParseQosValues() (int64, float64, int) {
 	return _jitter, _proportion, _quality
 }
 
-// ParseRedirectEntry parses the location and/or structure from
-// the entry with the given index. The index must be between 0 and
-// gst_message_get_num_redirect_entries() - 1. Returned pointers are valid for
-// as long as this message exists.
+// ParseRedirectEntry (gst_message_parse_redirect_entry) parses the location
+// and/or structure from the entry with the given index. The index must be
+// between 0 and gst_message_get_num_redirect_entries() - 1. Returned pointers
+// are valid for as long as this message exists.
 //
 // The function takes the following parameters:
 //
@@ -44716,8 +47078,8 @@ func (message *Message) ParseRedirectEntry(entryIndex uint) (string, *TagList, *
 	return _location, _tagList, _entryStruct
 }
 
-// ParseRequestState: extract the requested state from the request_state
-// message.
+// ParseRequestState (gst_message_parse_request_state): extract the requested
+// state from the request_state message.
 //
 // MT safe.
 //
@@ -44740,7 +47102,8 @@ func (message *Message) ParseRequestState() State {
 	return _state
 }
 
-// ParseResetTime: extract the running-time from the RESET_TIME message.
+// ParseResetTime (gst_message_parse_reset_time): extract the running-time from
+// the RESET_TIME message.
 //
 // MT safe.
 //
@@ -44763,8 +47126,8 @@ func (message *Message) ParseResetTime() ClockTime {
 	return _runningTime
 }
 
-// ParseSegmentDone extracts the position and format from the segment done
-// message.
+// ParseSegmentDone (gst_message_parse_segment_done) extracts the position and
+// format from the segment done message.
 //
 // MT safe.
 //
@@ -44791,8 +47154,8 @@ func (message *Message) ParseSegmentDone() (Format, int64) {
 	return _format, _position
 }
 
-// ParseSegmentStart extracts the position and format from the segment start
-// message.
+// ParseSegmentStart (gst_message_parse_segment_start) extracts the position and
+// format from the segment start message.
 //
 // MT safe.
 //
@@ -44819,7 +47182,8 @@ func (message *Message) ParseSegmentStart() (Format, int64) {
 	return _format, _position
 }
 
-// ParseStateChanged extracts the old and new states from the GstMessage.
+// ParseStateChanged (gst_message_parse_state_changed) extracts the old and new
+// states from the GstMessage.
 //
 // Typical usage of this function might be:
 //
@@ -44868,7 +47232,8 @@ func (message *Message) ParseStateChanged() (oldstate State, newstate State, pen
 	return _oldstate, _newstate, _pending
 }
 
-// ParseStepDone: extract the values the step_done message.
+// ParseStepDone (gst_message_parse_step_done): extract the values the step_done
+// message.
 //
 // MT safe.
 //
@@ -44921,7 +47286,8 @@ func (message *Message) ParseStepDone() (format Format, amount uint64, rate floa
 	return _format, _amount, _rate, _flush, _intermediate, _duration, _eos
 }
 
-// ParseStepStart: extract the values from step_start message.
+// ParseStepStart (gst_message_parse_step_start): extract the values from
+// step_start message.
 //
 // MT safe.
 //
@@ -44970,7 +47336,8 @@ func (message *Message) ParseStepStart() (active bool, format Format, amount uin
 	return _active, _format, _amount, _rate, _flush, _intermediate
 }
 
-// ParseStreamCollection parses a stream-collection message.
+// ParseStreamCollection (gst_message_parse_stream_collection) parses a
+// stream-collection message.
 //
 // The function returns the following values:
 //
@@ -44994,9 +47361,9 @@ func (message *Message) ParseStreamCollection() *StreamCollection {
 	return _collection
 }
 
-// ParseStreamStatus extracts the stream status type and owner the GstMessage.
-// The returned owner remains valid for as long as the reference to message is
-// valid and should thus not be unreffed.
+// ParseStreamStatus (gst_message_parse_stream_status) extracts the stream
+// status type and owner the GstMessage. The returned owner remains valid for as
+// long as the reference to message is valid and should thus not be unreffed.
 //
 // MT safe.
 //
@@ -45039,7 +47406,8 @@ func (message *Message) ParseStreamStatus() (StreamStatusType, Elementer) {
 	return _typ, _owner
 }
 
-// ParseStreamsSelected parses a streams-selected message.
+// ParseStreamsSelected (gst_message_parse_streams_selected) parses a
+// streams-selected message.
 //
 // The function returns the following values:
 //
@@ -45063,8 +47431,8 @@ func (message *Message) ParseStreamsSelected() *StreamCollection {
 	return _collection
 }
 
-// ParseStructureChange extracts the change type and completion status from the
-// GstMessage.
+// ParseStructureChange (gst_message_parse_structure_change) extracts the change
+// type and completion status from the GstMessage.
 //
 // MT safe.
 //
@@ -45113,8 +47481,9 @@ func (message *Message) ParseStructureChange() (StructureChangeType, Elementer, 
 	return _typ, _owner, _busy
 }
 
-// ParseTag extracts the tag list from the GstMessage. The tag list returned in
-// the output argument is a copy; the caller must free it when done.
+// ParseTag (gst_message_parse_tag) extracts the tag list from the GstMessage.
+// The tag list returned in the output argument is a copy; the caller must free
+// it when done.
 //
 // Typical usage of this function might be:
 //
@@ -45160,8 +47529,9 @@ func (message *Message) ParseTag() *TagList {
 	return _tagList
 }
 
-// ParseToc: extract the TOC from the Message. The TOC returned in the output
-// argument is a copy; the caller must free it with gst_toc_unref() when done.
+// ParseToc (gst_message_parse_toc): extract the TOC from the Message. The TOC
+// returned in the output argument is a copy; the caller must free it with
+// gst_toc_unref() when done.
 //
 // MT safe.
 //
@@ -45196,9 +47566,9 @@ func (message *Message) ParseToc() (*Toc, bool) {
 	return _toc, _updated
 }
 
-// ParseWarning extracts the GError and debug string from the GstMessage.
-// The values returned in the output arguments are copies; the caller must free
-// them when done.
+// ParseWarning (gst_message_parse_warning) extracts the GError and debug string
+// from the GstMessage. The values returned in the output arguments are copies;
+// the caller must free them when done.
 //
 // MT safe.
 //
@@ -45230,8 +47600,9 @@ func (message *Message) ParseWarning() (error, string) {
 	return _gerror, _debug
 }
 
-// ParseWarningDetails returns the optional details structure, may be NULL if
-// none The returned structure must not be freed.
+// ParseWarningDetails (gst_message_parse_warning_details) returns the optional
+// details structure, may be NULL if none The returned structure must not be
+// freed.
 //
 // The function returns the following values:
 //
@@ -45260,7 +47631,8 @@ func (message *Message) ParseWarningDetails() *Structure {
 	return _structure
 }
 
-// SetBufferingStats configures the buffering stats values in message.
+// SetBufferingStats (gst_message_set_buffering_stats) configures the buffering
+// stats values in message.
 //
 // The function takes the following parameters:
 //
@@ -45289,7 +47661,8 @@ func (message *Message) SetBufferingStats(mode BufferingMode, avgIn int, avgOut 
 	runtime.KeepAlive(bufferingLeft)
 }
 
-// SetGroupID sets the group id on the stream-start message.
+// SetGroupID (gst_message_set_group_id) sets the group id on the stream-start
+// message.
 //
 // All streams that have the same group id are supposed to be played together,
 // i.e. all streams inside a container file should have the same group id but
@@ -45314,8 +47687,8 @@ func (message *Message) SetGroupID(groupId uint) {
 	runtime.KeepAlive(groupId)
 }
 
-// SetQosStats: set the QoS stats representing the history of the current
-// continuous pipeline playback period.
+// SetQosStats (gst_message_set_qos_stats): set the QoS stats representing the
+// history of the current continuous pipeline playback period.
 //
 // When format is GST_FORMAT_UNDEFINED both dropped and processed are invalid.
 // Values of -1 for either processed or dropped mean unknown values.
@@ -45349,8 +47722,8 @@ func (message *Message) SetQosStats(format Format, processed uint64, dropped uin
 	runtime.KeepAlive(dropped)
 }
 
-// SetQosValues: set the QoS values that have been calculated/analysed from the
-// QoS data
+// SetQosValues (gst_message_set_qos_values): set the QoS values that have been
+// calculated/analysed from the QoS data
 //
 // MT safe.
 //
@@ -45379,7 +47752,7 @@ func (message *Message) SetQosValues(jitter int64, proportion float64, quality i
 	runtime.KeepAlive(quality)
 }
 
-// SetSeqnum: set the sequence number of a message.
+// SetSeqnum (gst_message_set_seqnum): set the sequence number of a message.
 //
 // This function might be called by the creator of a message to indicate that
 // the message relates to other messages or events. See gst_message_get_seqnum()
@@ -45402,9 +47775,9 @@ func (message *Message) SetSeqnum(seqnum uint32) {
 	runtime.KeepAlive(seqnum)
 }
 
-// SetStreamStatusObject configures the object handling the streaming thread.
-// This is usually a GstTask object but other objects might be added in the
-// future.
+// SetStreamStatusObject (gst_message_set_stream_status_object) configures the
+// object handling the streaming thread. This is usually a GstTask object but
+// other objects might be added in the future.
 //
 // The function takes the following parameters:
 //
@@ -45421,7 +47794,8 @@ func (message *Message) SetStreamStatusObject(object *coreglib.Value) {
 	runtime.KeepAlive(object)
 }
 
-// StreamsSelectedAdd adds the stream to the message.
+// StreamsSelectedAdd (gst_message_streams_selected_add) adds the stream to the
+// message.
 //
 // The function takes the following parameters:
 //
@@ -45438,8 +47812,8 @@ func (message *Message) StreamsSelectedAdd(stream *Stream) {
 	runtime.KeepAlive(stream)
 }
 
-// StreamsSelectedGetSize returns the number of streams contained in the
-// message.
+// StreamsSelectedGetSize (gst_message_streams_selected_get_size) returns the
+// number of streams contained in the message.
 //
 // The function returns the following values:
 //
@@ -45460,8 +47834,8 @@ func (message *Message) StreamsSelectedGetSize() uint {
 	return _guint
 }
 
-// StreamsSelectedGetStream retrieves the Stream with index index from the
-// message.
+// StreamsSelectedGetStream (gst_message_streams_selected_get_stream) retrieves
+// the Stream with index index from the message.
 //
 // The function takes the following parameters:
 //
@@ -45491,7 +47865,8 @@ func (message *Message) StreamsSelectedGetStream(idx uint) *Stream {
 	return _stream
 }
 
-// WritableStructure: get a writable version of the structure.
+// WritableStructure (gst_message_writable_structure): get a writable version of
+// the structure.
 //
 // The function returns the following values:
 //
@@ -45523,9 +47898,9 @@ func (message *Message) WritableStructure() *Structure {
 	return _structure
 }
 
-// Meta structure should be included as the first member of a Buffer metadata
-// structure. The structure defines the API of the metadata and should be
-// accessible to all elements using the metadata.
+// Meta (GstMeta) structure should be included as the first member of a Buffer
+// metadata structure. The structure defines the API of the metadata and should
+// be accessible to all elements using the metadata.
 //
 // A metadata API is registered with gst_meta_api_type_register() which takes
 // a name for the metadata API and some tags associated with the metadata.
@@ -45569,8 +47944,8 @@ func (m *Meta) Info() *MetaInfo {
 	return _v
 }
 
-// CompareSeqnum: meta sequence number compare function. Can be used as Func or
-// a DataFunc.
+// CompareSeqnum (gst_meta_compare_seqnum): meta sequence number compare
+// function. Can be used as Func or a DataFunc.
 //
 // The function takes the following parameters:
 //
@@ -45600,7 +47975,7 @@ func (meta1 *Meta) CompareSeqnum(meta2 *Meta) int {
 	return _gint
 }
 
-// Seqnum gets seqnum for this meta.
+// Seqnum (gst_meta_get_seqnum) gets seqnum for this meta.
 func (meta *Meta) Seqnum() uint64 {
 	var _arg0 *C.GstMeta // out
 	var _cret C.guint64  // in
@@ -45617,8 +47992,8 @@ func (meta *Meta) Seqnum() uint64 {
 	return _guint64
 }
 
-// Serialize meta into a format that can be stored or transmitted and later
-// deserialized by gst_meta_deserialize().
+// Serialize (gst_meta_serialize) meta into a format that can be stored or
+// transmitted and later deserialized by gst_meta_deserialize().
 //
 // This is only supported for meta that implements MetaInfo.serialize_func,
 // FALSE is returned otherwise.
@@ -45658,8 +48033,8 @@ func (meta *Meta) Serialize(data *ByteArrayInterface) bool {
 	return _ok
 }
 
-// SerializeSimple: same as gst_meta_serialize() but with a Array instead of
-// ByteArrayInterface.
+// SerializeSimple (gst_meta_serialize_simple): same as gst_meta_serialize() but
+// with a Array instead of ByteArrayInterface.
 //
 // The function takes the following parameters:
 //
@@ -45728,7 +48103,8 @@ func MetaApiTypeGetTags(api coreglib.Type) []string {
 	return _utf8s
 }
 
-// MetaApiTypeHasTag: check if api was registered with tag.
+// MetaApiTypeHasTag (gst_meta_api_type_has_tag): check if api was registered
+// with tag.
 //
 // The function takes the following parameters:
 //
@@ -45759,8 +48135,8 @@ func MetaApiTypeHasTag(api coreglib.Type, tag glib.Quark) bool {
 	return _ok
 }
 
-// MetaApiTypeRegister: register and return a GType for the api and associate it
-// with tags.
+// MetaApiTypeRegister (gst_meta_api_type_register): register and return a GType
+// for the api and associate it with tags.
 //
 // The function takes the following parameters:
 //
@@ -45802,8 +48178,8 @@ func MetaApiTypeRegister(api string, tags []string) coreglib.Type {
 	return _gType
 }
 
-// MetaDeserialize: recreate a Meta from serialized data returned by
-// gst_meta_serialize() and add it to buffer.
+// MetaDeserialize (gst_meta_deserialize): recreate a Meta from serialized data
+// returned by gst_meta_serialize() and add it to buffer.
 //
 // Note that the meta must have been previously registered by calling one of
 // gst_*_meta_get_info () functions.
@@ -45849,8 +48225,8 @@ func MetaDeserialize(buffer *Buffer, data *byte, size uint) (uint32, *Meta) {
 	return _consumed, _meta
 }
 
-// MetaGetInfo: lookup a previously registered meta info structure by its
-// implementation name impl.
+// MetaGetInfo (gst_meta_get_info): lookup a previously registered meta info
+// structure by its implementation name impl.
 //
 // The function takes the following parameters:
 //
@@ -45878,8 +48254,8 @@ func MetaGetInfo(impl string) *MetaInfo {
 	return _metaInfo
 }
 
-// MetaRegisterCustom: register a new custom Meta implementation, backed by an
-// opaque structure holding a Structure.
+// MetaRegisterCustom (gst_meta_register_custom): register a new custom Meta
+// implementation, backed by an opaque structure holding a Structure.
 //
 // The registered info can be retrieved later with gst_meta_get_info() by using
 // name as the key.
@@ -45942,8 +48318,9 @@ func MetaRegisterCustom(name string, tags []string, transformFunc CustomMetaTran
 	return _metaInfo
 }
 
-// MetaRegisterCustomSimple: simplified version of gst_meta_register_custom(),
-// with no tags and no transform function.
+// MetaRegisterCustomSimple (gst_meta_register_custom_simple): simplified
+// version of gst_meta_register_custom(), with no tags and no transform
+// function.
 //
 // The function takes the following parameters:
 //
@@ -45969,7 +48346,8 @@ func MetaRegisterCustomSimple(name string) *MetaInfo {
 	return _metaInfo
 }
 
-// MetaInfo provides information about a specific metadata structure.
+// MetaInfo (GstMetaInfo) provides information about a specific metadata
+// structure.
 //
 // An instance of this type is always passed by reference.
 type MetaInfo struct {
@@ -46003,7 +48381,7 @@ func (info *MetaInfo) IsCustom() bool {
 	return _ok
 }
 
-// Register registers a new meta.
+// Register (gst_meta_info_register) registers a new meta.
 //
 // Use the structure returned by gst_meta_info_new(), it consumes it and the
 // structure shouldnt be used after. The one returned by the function can be
@@ -46029,8 +48407,8 @@ func (info *MetaInfo) Register() *MetaInfo {
 	return _metaInfo
 }
 
-// MetaTransformCopy: extra data passed to a "gst-copy" transform
-// MetaTransformFunction.
+// MetaTransformCopy (GstMetaTransformCopy): extra data passed to a "gst-copy"
+// transform MetaTransformFunction.
 //
 // An instance of this type is always passed by reference.
 type MetaTransformCopy struct {
@@ -46110,8 +48488,8 @@ func (m *MetaTransformCopy) SetSize(size uint) {
 	*valptr = C.gsize(size)
 }
 
-// MiniObject is a simple structure that can be used to implement refcounted
-// types.
+// MiniObject (GstMiniObject) is a simple structure that can be used to
+// implement refcounted types.
 //
 // Subclasses will include MiniObject as the first member in their structure and
 // then call gst_mini_object_init() to initialize the MiniObject fields.
@@ -46152,10 +48530,11 @@ func marshalMiniObject(p uintptr) (interface{}, error) {
 	return &MiniObject{&miniObject{(*C.GstMiniObject)(b)}}, nil
 }
 
-// AddParent: this adds parent as a parent for object. Having one ore more
-// parents affects the writability of object: if a parent is not writable,
-// object is also not writable, regardless of its refcount. object is only
-// writable if all the parents are writable and its own refcount is exactly 1.
+// AddParent (gst_mini_object_add_parent): this adds parent as a parent for
+// object. Having one ore more parents affects the writability of object:
+// if a parent is not writable, object is also not writable, regardless of its
+// refcount. object is only writable if all the parents are writable and its own
+// refcount is exactly 1.
 //
 // Note: This function does not take ownership of parent and also does not take
 // an additional reference. It is the responsibility of the caller to remove the
@@ -46176,8 +48555,8 @@ func (object *MiniObject) AddParent(parent *MiniObject) {
 	runtime.KeepAlive(parent)
 }
 
-// Qdata: this function gets back user data pointers stored via
-// gst_mini_object_set_qdata().
+// Qdata (gst_mini_object_get_qdata): this function gets back user data pointers
+// stored via gst_mini_object_set_qdata().
 //
 // The function takes the following parameters:
 //
@@ -46205,9 +48584,9 @@ func (object *MiniObject) Qdata(quark glib.Quark) unsafe.Pointer {
 	return _gpointer
 }
 
-// IsWritable: if mini_object has the LOCKABLE flag set, check if the current
-// EXCLUSIVE lock on object is the only one, this means that changes to the
-// object will not be visible to any other object.
+// IsWritable (gst_mini_object_is_writable): if mini_object has the LOCKABLE
+// flag set, check if the current EXCLUSIVE lock on object is the only one, this
+// means that changes to the object will not be visible to any other object.
 //
 // If the LOCKABLE flag is not set, check if the refcount of mini_object is
 // exactly 1, meaning that no other reference exists to the object and that the
@@ -46237,7 +48616,8 @@ func (miniObject *MiniObject) IsWritable() bool {
 	return _ok
 }
 
-// Lock the mini-object with the specified access mode in flags.
+// Lock (gst_mini_object_lock) the mini-object with the specified access mode in
+// flags.
 //
 // The function takes the following parameters:
 //
@@ -46267,8 +48647,8 @@ func (object *MiniObject) Lock(flags LockFlags) bool {
 	return _ok
 }
 
-// RemoveParent: this removes parent as a parent for object. See
-// gst_mini_object_add_parent().
+// RemoveParent (gst_mini_object_remove_parent): this removes parent as a parent
+// for object. See gst_mini_object_add_parent().
 //
 // The function takes the following parameters:
 //
@@ -46285,9 +48665,9 @@ func (object *MiniObject) RemoveParent(parent *MiniObject) {
 	runtime.KeepAlive(parent)
 }
 
-// StealQdata: this function gets back user data pointers stored via
-// gst_mini_object_set_qdata() and removes the data from object without invoking
-// its destroy() function (if any was set).
+// StealQdata (gst_mini_object_steal_qdata): this function gets back user data
+// pointers stored via gst_mini_object_set_qdata() and removes the data from
+// object without invoking its destroy() function (if any was set).
 //
 // The function takes the following parameters:
 //
@@ -46315,7 +48695,8 @@ func (object *MiniObject) StealQdata(quark glib.Quark) unsafe.Pointer {
 	return _gpointer
 }
 
-// Unlock the mini-object with the specified access mode in flags.
+// Unlock (gst_mini_object_unlock) the mini-object with the specified access
+// mode in flags.
 //
 // The function takes the following parameters:
 //
@@ -46332,7 +48713,7 @@ func (object *MiniObject) Unlock(flags LockFlags) {
 	runtime.KeepAlive(flags)
 }
 
-// ObjectClass: GStreamer base object class.
+// ObjectClass (GstObjectClass): GStreamer base object class.
 //
 // An instance of this type is always passed by reference.
 type ObjectClass struct {
@@ -46352,7 +48733,7 @@ func (o *ObjectClass) PathStringSeparator() string {
 	return _v
 }
 
-// PadClass: instance of this type is always passed by reference.
+// PadClass (GstPadClass): instance of this type is always passed by reference.
 type PadClass struct {
 	*padClass
 }
@@ -46369,7 +48750,7 @@ func (p *PadClass) ParentClass() *ObjectClass {
 	return _v
 }
 
-// PadProbeInfo: info passed in the PadProbeCallback.
+// PadProbeInfo (GstPadProbeInfo): info passed in the PadProbeCallback.
 //
 // An instance of this type is always passed by reference.
 type PadProbeInfo struct {
@@ -46546,7 +48927,8 @@ func (info *PadProbeInfo) Query() *Query {
 	return _query
 }
 
-// PadTemplateClass: instance of this type is always passed by reference.
+// PadTemplateClass (GstPadTemplateClass): instance of this type is always
+// passed by reference.
 type PadTemplateClass struct {
 	*padTemplateClass
 }
@@ -46563,7 +48945,8 @@ func (p *PadTemplateClass) ParentClass() *ObjectClass {
 	return _v
 }
 
-// ParamSpecArray: GParamSpec derived structure for arrays of values.
+// ParamSpecArray (GstParamSpecArray): GParamSpec derived structure for arrays
+// of values.
 //
 // An instance of this type is always passed by reference.
 type ParamSpecArray struct {
@@ -46575,8 +48958,8 @@ type paramSpecArray struct {
 	native *C.GstParamSpecArray
 }
 
-// ParamSpecFraction: GParamSpec derived structure that contains the meta data
-// for fractional properties.
+// ParamSpecFraction (GstParamSpecFraction): GParamSpec derived structure that
+// contains the meta data for fractional properties.
 //
 // An instance of this type is always passed by reference.
 type ParamSpecFraction struct {
@@ -46672,9 +49055,9 @@ func (p *ParamSpecFraction) SetDefDen(defDen int) {
 	*valptr = C.gint(defDen)
 }
 
-// ParentBufferMeta is a Meta which can be attached to a Buffer to hold a
-// reference to another buffer that is only released when the child Buffer is
-// released.
+// ParentBufferMeta (GstParentBufferMeta) is a Meta which can be attached to a
+// Buffer to hold a reference to another buffer that is only released when the
+// child Buffer is released.
 //
 // Typically, ParentBufferMeta is used when the child buffer is directly using
 // the Memory of the parent buffer, and wants to prevent the parent buffer from
@@ -46711,8 +49094,8 @@ func (p *ParentBufferMeta) Buffer() *Buffer {
 	return _v
 }
 
-// ParentBufferMetaGetInfo gets the global MetaInfo describing the
-// ParentBufferMeta meta.
+// ParentBufferMetaGetInfo (gst_parent_buffer_meta_get_info) gets the global
+// MetaInfo describing the ParentBufferMeta meta.
 //
 // The function returns the following values:
 //
@@ -46729,7 +49112,7 @@ func ParentBufferMetaGetInfo() *MetaInfo {
 	return _metaInfo
 }
 
-// ParseContext: opaque structure.
+// ParseContext (GstParseContext): opaque structure.
 //
 // An instance of this type is always passed by reference.
 type ParseContext struct {
@@ -46767,7 +49150,7 @@ func NewParseContext() *ParseContext {
 	return _parseContext
 }
 
-// Copy copies the context.
+// Copy (gst_parse_context_copy) copies the context.
 //
 // The function returns the following values:
 //
@@ -46796,9 +49179,10 @@ func (context *ParseContext) Copy() *ParseContext {
 	return _parseContext
 }
 
-// MissingElements: retrieve missing elements from a previous run of
-// gst_parse_launch_full() or gst_parse_launchv_full(). Will only return results
-// if an error code of GST_PARSE_ERROR_NO_SUCH_ELEMENT was returned.
+// MissingElements (gst_parse_context_get_missing_elements): retrieve
+// missing elements from a previous run of gst_parse_launch_full() or
+// gst_parse_launchv_full(). Will only return results if an error code of
+// GST_PARSE_ERROR_NO_SUCH_ELEMENT was returned.
 //
 // The function returns the following values:
 //
@@ -46836,7 +49220,8 @@ func (context *ParseContext) MissingElements() []string {
 	return _utf8s
 }
 
-// PipelineClass: instance of this type is always passed by reference.
+// PipelineClass (GstPipelineClass): instance of this type is always passed by
+// reference.
 type PipelineClass struct {
 	*pipelineClass
 }
@@ -46853,8 +49238,9 @@ func (p *PipelineClass) ParentClass() *BinClass {
 	return _v
 }
 
-// PluginDesc: plugin should export a variable of this type called plugin_desc.
-// The plugin loader will use the data provided there to initialize the plugin.
+// PluginDesc (GstPluginDesc): plugin should export a variable of this type
+// called plugin_desc. The plugin loader will use the data provided there to
+// initialize the plugin.
 //
 // The licence parameter must be one of: LGPL, GPL, QPL, GPL/QPL, MPL, BSD,
 // MIT/X11, Proprietary, unknown.
@@ -46869,7 +49255,7 @@ type pluginDesc struct {
 	native *C.GstPluginDesc
 }
 
-// PollFD: file descriptor object.
+// PollFD (GstPollFD): file descriptor object.
 //
 // An instance of this type is always passed by reference.
 type PollFD struct {
@@ -46895,7 +49281,8 @@ func (p *PollFD) SetFd(fd int) {
 	*valptr = C.int(fd)
 }
 
-// Init initializes fd. Alternatively you can initialize it with T_POLL_FD_INIT.
+// Init (gst_poll_fd_init) initializes fd. Alternatively you can initialize it
+// with T_POLL_FD_INIT.
 func (fd *PollFD) Init() {
 	var _arg0 *C.GstPollFD // out
 
@@ -46905,7 +49292,7 @@ func (fd *PollFD) Init() {
 	runtime.KeepAlive(fd)
 }
 
-// PresetInterface interface.
+// PresetInterface (GstPresetInterface) interface.
 //
 // An instance of this type is always passed by reference.
 type PresetInterface struct {
@@ -46917,8 +49304,8 @@ type presetInterface struct {
 	native *C.GstPresetInterface
 }
 
-// Promise object implements the container for values that
-// may be available later. i.e. a Future or a Promise in
+// Promise (GstPromise) object implements the container for values
+// that may be available later. i.e. a Future or a Promise in
 // <https://en.wikipedia.org/wiki/Futures_and_promises>. As with all
 // Future/Promise-like functionality, there is the concept of the producer of
 // the value and the consumer of the value.
@@ -47039,7 +49426,7 @@ func (p *Promise) Parent() *MiniObject {
 	return _v
 }
 
-// Expire a promise. This will wake up any waiters with
+// Expire (gst_promise_expire) a promise. This will wake up any waiters with
 // GST_PROMISE_RESULT_EXPIRED. Called by a message loop when the parent message
 // is handled and/or destroyed (possibly unanswered).
 func (promise *Promise) Expire() {
@@ -47051,8 +49438,9 @@ func (promise *Promise) Expire() {
 	runtime.KeepAlive(promise)
 }
 
-// GetReply: retrieve the reply set on promise. promise must be in
-// GST_PROMISE_RESULT_REPLIED and the returned structure is owned by promise.
+// GetReply (gst_promise_get_reply): retrieve the reply set on promise. promise
+// must be in GST_PROMISE_RESULT_REPLIED and the returned structure is owned by
+// promise.
 //
 // The function returns the following values:
 //
@@ -47081,9 +49469,9 @@ func (promise *Promise) GetReply() *Structure {
 	return _structure
 }
 
-// Interrupt waiting for a promise. This will wake up any waiters with
-// GST_PROMISE_RESULT_INTERRUPTED. Called when the consumer does not want the
-// value produced anymore.
+// Interrupt (gst_promise_interrupt) waiting for a promise. This will wake up
+// any waiters with GST_PROMISE_RESULT_INTERRUPTED. Called when the consumer
+// does not want the value produced anymore.
 func (promise *Promise) Interrupt() {
 	var _arg0 *C.GstPromise // out
 
@@ -47093,9 +49481,9 @@ func (promise *Promise) Interrupt() {
 	runtime.KeepAlive(promise)
 }
 
-// Reply: set a reply on promise. This will wake up any waiters with
-// GST_PROMISE_RESULT_REPLIED. Called by the producer of the value to indicate
-// success (or failure).
+// Reply (gst_promise_reply): set a reply on promise. This will wake up any
+// waiters with GST_PROMISE_RESULT_REPLIED. Called by the producer of the value
+// to indicate success (or failure).
 //
 // If promise has already been interrupted by the consumer, then this reply is
 // not visible to the consumer.
@@ -47120,9 +49508,10 @@ func (promise *Promise) Reply(s *Structure) {
 	runtime.KeepAlive(s)
 }
 
-// Wait for promise to move out of the GST_PROMISE_RESULT_PENDING state. If
-// promise is not in GST_PROMISE_RESULT_PENDING then it will return immediately
-// with the current result.
+// Wait (gst_promise_wait) for promise to move out of the
+// GST_PROMISE_RESULT_PENDING state. If promise is not in
+// GST_PROMISE_RESULT_PENDING then it will return immediately with the current
+// result.
 //
 // The function returns the following values:
 //
@@ -47143,9 +49532,9 @@ func (promise *Promise) Wait() PromiseResult {
 	return _promiseResult
 }
 
-// ProtectionMeta: metadata type that holds information about a sample from a
-// protection-protected track, including the information needed to decrypt it
-// (if it is encrypted).
+// ProtectionMeta (GstProtectionMeta): metadata type that holds information
+// about a sample from a protection-protected track, including the information
+// needed to decrypt it (if it is encrypted).
 //
 // An instance of this type is always passed by reference.
 type ProtectionMeta struct {
@@ -47190,7 +49579,8 @@ func ProtectionMetaGetInfo() *MetaInfo {
 	return _metaInfo
 }
 
-// ProxyPadClass: instance of this type is always passed by reference.
+// ProxyPadClass (GstProxyPadClass): instance of this type is always passed by
+// reference.
 type ProxyPadClass struct {
 	*proxyPadClass
 }
@@ -47207,9 +49597,9 @@ func (p *ProxyPadClass) ParentClass() *PadClass {
 	return _v
 }
 
-// Query queries can be performed on pads (gst_pad_query()) and elements
-// (gst_element_query()). Please note that some queries might need a running
-// pipeline to work.
+// Query (GstQuery) queries can be performed on pads (gst_pad_query()) and
+// elements (gst_element_query()). Please note that some queries might need a
+// running pipeline to work.
 //
 // Queries can be created using the gst_query_new_*() functions. Query values
 // can be set using gst_query_set_*(), and parsed using gst_query_parse_*()
@@ -47654,8 +50044,8 @@ func (q *Query) Type() QueryType {
 	return _v
 }
 
-// AddAllocationMeta: add api with params as one of the supported metadata API
-// to query.
+// AddAllocationMeta (gst_query_add_allocation_meta): add api with params as one
+// of the supported metadata API to query.
 //
 // The function takes the following parameters:
 //
@@ -47678,8 +50068,8 @@ func (query *Query) AddAllocationMeta(api coreglib.Type, params *Structure) {
 	runtime.KeepAlive(params)
 }
 
-// AddAllocationParam: add allocator and its params as a supported memory
-// allocator.
+// AddAllocationParam (gst_query_add_allocation_param): add allocator and its
+// params as a supported memory allocator.
 //
 // The function takes the following parameters:
 //
@@ -47704,7 +50094,8 @@ func (query *Query) AddAllocationParam(allocator Allocatorrer, params *Allocatio
 	runtime.KeepAlive(params)
 }
 
-// AddAllocationPool: set the pool parameters in query.
+// AddAllocationPool (gst_query_add_allocation_pool): set the pool parameters in
+// query.
 //
 // The function takes the following parameters:
 //
@@ -47735,8 +50126,9 @@ func (query *Query) AddAllocationPool(pool *BufferPool, size uint, minBuffers ui
 	runtime.KeepAlive(maxBuffers)
 }
 
-// AddBufferingRange: set the buffering-ranges array field in query. The current
-// last start position of the array should be inferior to start.
+// AddBufferingRange (gst_query_add_buffering_range): set the buffering-ranges
+// array field in query. The current last start position of the array should be
+// inferior to start.
 //
 // The function takes the following parameters:
 //
@@ -47770,8 +50162,8 @@ func (query *Query) AddBufferingRange(start int64, stop int64) bool {
 	return _ok
 }
 
-// AddSchedulingMode: add mode as one of the supported scheduling modes to
-// query.
+// AddSchedulingMode (gst_query_add_scheduling_mode): add mode as one of the
+// supported scheduling modes to query.
 //
 // The function takes the following parameters:
 //
@@ -47788,9 +50180,9 @@ func (query *Query) AddSchedulingMode(mode PadMode) {
 	runtime.KeepAlive(mode)
 }
 
-// FindAllocationMeta: check if query has metadata api set. When this function
-// returns TRUE, index will contain the index where the requested API and the
-// parameters can be found.
+// FindAllocationMeta (gst_query_find_allocation_meta): check if query has
+// metadata api set. When this function returns TRUE, index will contain the
+// index where the requested API and the parameters can be found.
 //
 // The function takes the following parameters:
 //
@@ -47824,8 +50216,8 @@ func (query *Query) FindAllocationMeta(api coreglib.Type) (uint, bool) {
 	return _index, _ok
 }
 
-// NAllocationMetas: retrieve the number of values currently stored in the meta
-// API array of the query's structure.
+// NAllocationMetas (gst_query_get_n_allocation_metas): retrieve the number of
+// values currently stored in the meta API array of the query's structure.
 //
 // The function returns the following values:
 //
@@ -47846,8 +50238,9 @@ func (query *Query) NAllocationMetas() uint {
 	return _guint
 }
 
-// NAllocationParams: retrieve the number of values currently stored in the
-// allocator params array of the query's structure.
+// NAllocationParams (gst_query_get_n_allocation_params): retrieve the number
+// of values currently stored in the allocator params array of the query's
+// structure.
 //
 // If no memory allocator is specified, the downstream element can handle the
 // default memory allocator. The first memory allocator in the query should be
@@ -47873,8 +50266,8 @@ func (query *Query) NAllocationParams() uint {
 	return _guint
 }
 
-// NAllocationPools: retrieve the number of values currently stored in the pool
-// array of the query's structure.
+// NAllocationPools (gst_query_get_n_allocation_pools): retrieve the number of
+// values currently stored in the pool array of the query's structure.
 //
 // The function returns the following values:
 //
@@ -47895,8 +50288,9 @@ func (query *Query) NAllocationPools() uint {
 	return _guint
 }
 
-// NBufferingRanges: retrieve the number of values currently stored in the
-// buffered-ranges array of the query's structure.
+// NBufferingRanges (gst_query_get_n_buffering_ranges): retrieve the number
+// of values currently stored in the buffered-ranges array of the query's
+// structure.
 //
 // The function returns the following values:
 //
@@ -47917,8 +50311,9 @@ func (query *Query) NBufferingRanges() uint {
 	return _guint
 }
 
-// NSchedulingModes: retrieve the number of values currently stored in the
-// scheduling mode array of the query's structure.
+// NSchedulingModes (gst_query_get_n_scheduling_modes): retrieve the number
+// of values currently stored in the scheduling mode array of the query's
+// structure.
 //
 // The function returns the following values:
 //
@@ -47939,7 +50334,7 @@ func (query *Query) NSchedulingModes() uint {
 	return _guint
 }
 
-// Structure: get the structure of a query.
+// Structure (gst_query_get_structure): get the structure of a query.
 //
 // The function returns the following values:
 //
@@ -47969,7 +50364,8 @@ func (query *Query) Structure() *Structure {
 	return _structure
 }
 
-// HasSchedulingMode: check if query has scheduling mode set.
+// HasSchedulingMode (gst_query_has_scheduling_mode): check if query has
+// scheduling mode set.
 //
 // > When checking if upstream supports pull mode, it is usually not > enough
 // to just check for GST_PAD_MODE_PULL with this function, you > also want to
@@ -48005,8 +50401,8 @@ func (query *Query) HasSchedulingMode(mode PadMode) bool {
 	return _ok
 }
 
-// HasSchedulingModeWithFlags: check if query has scheduling mode set and flags
-// is set in query scheduling flags.
+// HasSchedulingModeWithFlags (gst_query_has_scheduling_mode_with_flags): check
+// if query has scheduling mode set and flags is set in query scheduling flags.
 //
 // The function takes the following parameters:
 //
@@ -48041,8 +50437,8 @@ func (query *Query) HasSchedulingModeWithFlags(mode PadMode, flags SchedulingFla
 	return _ok
 }
 
-// ParseAcceptCaps: get the caps from query. The caps remains valid as long as
-// query remains valid.
+// ParseAcceptCaps (gst_query_parse_accept_caps): get the caps from query.
+// The caps remains valid as long as query remains valid.
 //
 // The function returns the following values:
 //
@@ -48069,7 +50465,8 @@ func (query *Query) ParseAcceptCaps() *Caps {
 	return _caps
 }
 
-// ParseAcceptCapsResult: parse the result from query and store in result.
+// ParseAcceptCapsResult (gst_query_parse_accept_caps_result): parse the result
+// from query and store in result.
 //
 // The function returns the following values:
 //
@@ -48092,9 +50489,9 @@ func (query *Query) ParseAcceptCapsResult() bool {
 	return _result
 }
 
-// ParseAllocation: parse an allocation query, writing the requested caps in
-// caps and whether a pool is needed in need_pool, if the respective parameters
-// are non-NULL.
+// ParseAllocation (gst_query_parse_allocation): parse an allocation query,
+// writing the requested caps in caps and whether a pool is needed in need_pool,
+// if the respective parameters are non-NULL.
 //
 // Pool details can be retrieved using gst_query_get_n_allocation_pools() and
 // gst_query_parse_nth_allocation_pool().
@@ -48132,8 +50529,8 @@ func (query *Query) ParseAllocation() (*Caps, bool) {
 	return _caps, _needPool
 }
 
-// ParseBitrate: get the results of a bitrate query. See also
-// gst_query_set_bitrate().
+// ParseBitrate (gst_query_parse_bitrate): get the results of a bitrate query.
+// See also gst_query_set_bitrate().
 //
 // The function returns the following values:
 //
@@ -48154,9 +50551,9 @@ func (query *Query) ParseBitrate() uint {
 	return _nominalBitrate
 }
 
-// ParseBufferingPercent: get the percentage of buffered data. This is a value
-// between 0 and 100. The busy indicator is TRUE when the buffering is in
-// progress.
+// ParseBufferingPercent (gst_query_parse_buffering_percent): get the percentage
+// of buffered data. This is a value between 0 and 100. The busy indicator is
+// TRUE when the buffering is in progress.
 //
 // The function returns the following values:
 //
@@ -48183,9 +50580,9 @@ func (query *Query) ParseBufferingPercent() (bool, int) {
 	return _busy, _percent
 }
 
-// ParseBufferingRange: parse an available query, writing the format into
-// format, and other results into the passed parameters, if the respective
-// parameters are non-NULL.
+// ParseBufferingRange (gst_query_parse_buffering_range): parse an available
+// query, writing the format into format, and other results into the passed
+// parameters, if the respective parameters are non-NULL.
 //
 // The function returns the following values:
 //
@@ -48220,7 +50617,8 @@ func (query *Query) ParseBufferingRange() (format Format, start int64, stop int6
 	return _format, _start, _stop, _estimatedTotal
 }
 
-// ParseBufferingStats extracts the buffering stats values from query.
+// ParseBufferingStats (gst_query_parse_buffering_stats) extracts the buffering
+// stats values from query.
 //
 // The function returns the following values:
 //
@@ -48254,8 +50652,8 @@ func (query *Query) ParseBufferingStats() (mode BufferingMode, avgIn int, avgOut
 	return _mode, _avgIn, _avgOut, _bufferingLeft
 }
 
-// ParseCaps: get the filter from the caps query. The caps remains valid as long
-// as query remains valid.
+// ParseCaps (gst_query_parse_caps): get the filter from the caps query.
+// The caps remains valid as long as query remains valid.
 //
 // The function returns the following values:
 //
@@ -48282,8 +50680,8 @@ func (query *Query) ParseCaps() *Caps {
 	return _filter
 }
 
-// ParseCapsResult: get the caps result from query. The caps remains valid as
-// long as query remains valid.
+// ParseCapsResult (gst_query_parse_caps_result): get the caps result from
+// query. The caps remains valid as long as query remains valid.
 //
 // The function returns the following values:
 //
@@ -48312,8 +50710,8 @@ func (query *Query) ParseCapsResult() *Caps {
 	return _caps
 }
 
-// ParseContext: get the context from the context query. The context remains
-// valid as long as query remains valid.
+// ParseContext (gst_query_parse_context): get the context from the context
+// query. The context remains valid as long as query remains valid.
 //
 // The function returns the following values:
 //
@@ -48336,8 +50734,8 @@ func (query *Query) ParseContext() *Context {
 	return _context
 }
 
-// ParseContextType: parse a context type from an existing GST_QUERY_CONTEXT
-// query.
+// ParseContextType (gst_query_parse_context_type): parse a context type from an
+// existing GST_QUERY_CONTEXT query.
 //
 // The function returns the following values:
 //
@@ -48366,8 +50764,9 @@ func (query *Query) ParseContextType() (string, bool) {
 	return _contextType, _ok
 }
 
-// ParseConvert: parse a convert query answer. Any of src_format, src_value,
-// dest_format, and dest_value may be NULL, in which case that value is omitted.
+// ParseConvert (gst_query_parse_convert): parse a convert query answer.
+// Any of src_format, src_value, dest_format, and dest_value may be NULL,
+// in which case that value is omitted.
 //
 // The function returns the following values:
 //
@@ -48402,9 +50801,9 @@ func (query *Query) ParseConvert() (srcFormat Format, srcValue int64, destFormat
 	return _srcFormat, _srcValue, _destFormat, _destValue
 }
 
-// ParseDuration: parse a duration query answer. Write the format of the
-// duration into format, and the value into duration, if the respective
-// variables are non-NULL.
+// ParseDuration (gst_query_parse_duration): parse a duration query answer.
+// Write the format of the duration into format, and the value into duration,
+// if the respective variables are non-NULL.
 //
 // The function returns the following values:
 //
@@ -48429,7 +50828,7 @@ func (query *Query) ParseDuration() (Format, int64) {
 	return _format, _duration
 }
 
-// ParseLatency: parse a latency query answer.
+// ParseLatency (gst_query_parse_latency): parse a latency query answer.
 //
 // The function returns the following values:
 //
@@ -48460,7 +50859,8 @@ func (query *Query) ParseLatency() (live bool, minLatency ClockTime, maxLatency 
 	return _live, _minLatency, _maxLatency
 }
 
-// ParseNFormats: parse the number of formats in the formats query.
+// ParseNFormats (gst_query_parse_n_formats): parse the number of formats in the
+// formats query.
 //
 // The function returns the following values:
 //
@@ -48481,8 +50881,8 @@ func (query *Query) ParseNFormats() uint {
 	return _nFormats
 }
 
-// ParseNthAllocationMeta: parse an available query and get the metadata API at
-// index of the metadata API array.
+// ParseNthAllocationMeta (gst_query_parse_nth_allocation_meta): parse an
+// available query and get the metadata API at index of the metadata API array.
 //
 // The function takes the following parameters:
 //
@@ -48522,8 +50922,9 @@ func (query *Query) ParseNthAllocationMeta(index uint) (*Structure, coreglib.Typ
 	return _params, _gType
 }
 
-// ParseNthAllocationParam: parse an available query and get the allocator and
-// its params at index of the allocator array.
+// ParseNthAllocationParam (gst_query_parse_nth_allocation_param): parse
+// an available query and get the allocator and its params at index of the
+// allocator array.
 //
 // The function takes the following parameters:
 //
@@ -48570,7 +50971,8 @@ func (query *Query) ParseNthAllocationParam(index uint) (Allocatorrer, *Allocati
 	return _allocator, _params
 }
 
-// ParseNthAllocationPool: get the pool parameters in query.
+// ParseNthAllocationPool (gst_query_parse_nth_allocation_pool): get the pool
+// parameters in query.
 //
 // Unref pool with gst_object_unref() when it's not needed any more.
 //
@@ -48614,8 +51016,9 @@ func (query *Query) ParseNthAllocationPool(index uint) (pool *BufferPool, size u
 	return _pool, _size, _minBuffers, _maxBuffers
 }
 
-// ParseNthBufferingRange: parse an available query and get the start and stop
-// values stored at the index of the buffered ranges array.
+// ParseNthBufferingRange (gst_query_parse_nth_buffering_range): parse an
+// available query and get the start and stop values stored at the index of the
+// buffered ranges array.
 //
 // The function takes the following parameters:
 //
@@ -48653,9 +51056,9 @@ func (query *Query) ParseNthBufferingRange(index uint) (start int64, stop int64,
 	return _start, _stop, _ok
 }
 
-// ParseNthFormat: parse the format query and retrieve the nth format from it
-// into format. If the list contains less elements than nth, format will be set
-// to GST_FORMAT_UNDEFINED.
+// ParseNthFormat (gst_query_parse_nth_format): parse the format query and
+// retrieve the nth format from it into format. If the list contains less
+// elements than nth, format will be set to GST_FORMAT_UNDEFINED.
 //
 // The function takes the following parameters:
 //
@@ -48683,8 +51086,9 @@ func (query *Query) ParseNthFormat(nth uint) Format {
 	return _format
 }
 
-// ParseNthSchedulingMode: parse an available query and get the scheduling mode
-// at index of the scheduling modes array.
+// ParseNthSchedulingMode (gst_query_parse_nth_scheduling_mode): parse an
+// available query and get the scheduling mode at index of the scheduling modes
+// array.
 //
 // The function takes the following parameters:
 //
@@ -48712,8 +51116,9 @@ func (query *Query) ParseNthSchedulingMode(index uint) PadMode {
 	return _padMode
 }
 
-// ParsePosition: parse a position query, writing the format into format,
-// and the position into cur, if the respective parameters are non-NULL.
+// ParsePosition (gst_query_parse_position): parse a position query, writing the
+// format into format, and the position into cur, if the respective parameters
+// are non-NULL.
 //
 // The function returns the following values:
 //
@@ -48739,7 +51144,7 @@ func (query *Query) ParsePosition() (Format, int64) {
 	return _format, _cur
 }
 
-// ParseScheduling: set the scheduling properties.
+// ParseScheduling (gst_query_parse_scheduling): set the scheduling properties.
 //
 // The function returns the following values:
 //
@@ -48772,9 +51177,9 @@ func (query *Query) ParseScheduling() (flags SchedulingFlags, minsize int, maxsi
 	return _flags, _minsize, _maxsize, _align
 }
 
-// ParseSeeking: parse a seeking query, writing the format into format,
-// and other results into the passed parameters, if the respective parameters
-// are non-NULL.
+// ParseSeeking (gst_query_parse_seeking): parse a seeking query, writing the
+// format into format, and other results into the passed parameters, if the
+// respective parameters are non-NULL.
 //
 // The function returns the following values:
 //
@@ -48810,8 +51215,9 @@ func (query *Query) ParseSeeking() (format Format, seekable bool, segmentStart i
 	return _format, _seekable, _segmentStart, _segmentEnd
 }
 
-// ParseSegment: parse a segment query answer. Any of rate, format, start_value,
-// and stop_value may be NULL, which will cause this value to be omitted.
+// ParseSegment (gst_query_parse_segment): parse a segment query answer. Any of
+// rate, format, start_value, and stop_value may be NULL, which will cause this
+// value to be omitted.
 //
 // See gst_query_set_segment() for an explanation of the function arguments.
 //
@@ -48846,8 +51252,8 @@ func (query *Query) ParseSegment() (rate float64, format Format, startValue int6
 	return _rate, _format, _startValue, _stopValue
 }
 
-// ParseSelectable: get the results of a selectable query. See also
-// gst_query_set_selectable().
+// ParseSelectable (gst_query_parse_selectable): get the results of a selectable
+// query. See also gst_query_set_selectable().
 //
 // The function returns the following values:
 //
@@ -48870,9 +51276,9 @@ func (query *Query) ParseSelectable() bool {
 	return _selectable
 }
 
-// ParseURI: parse an URI query, writing the URI into uri as a newly allocated
-// string, if the respective parameters are non-NULL. Free the string with
-// g_free() after usage.
+// ParseURI (gst_query_parse_uri): parse an URI query, writing the URI into
+// uri as a newly allocated string, if the respective parameters are non-NULL.
+// Free the string with g_free() after usage.
 //
 // The function returns the following values:
 //
@@ -48896,9 +51302,9 @@ func (query *Query) ParseURI() string {
 	return _uri
 }
 
-// ParseURIRedirection: parse an URI query, writing the URI into uri as a newly
-// allocated string, if the respective parameters are non-NULL. Free the string
-// with g_free() after usage.
+// ParseURIRedirection (gst_query_parse_uri_redirection): parse an URI query,
+// writing the URI into uri as a newly allocated string, if the respective
+// parameters are non-NULL. Free the string with g_free() after usage.
 //
 // The function returns the following values:
 //
@@ -48922,11 +51328,11 @@ func (query *Query) ParseURIRedirection() string {
 	return _uri
 }
 
-// ParseURIRedirectionPermanent: parse an URI query, and set permanent to
-// TRUE if there is a redirection and it should be considered permanent. If a
-// redirection is permanent, applications should update their internal storage
-// of the URI, otherwise they should make all future requests to the original
-// URI.
+// ParseURIRedirectionPermanent (gst_query_parse_uri_redirection_permanent):
+// parse an URI query, and set permanent to TRUE if there is a redirection
+// and it should be considered permanent. If a redirection is permanent,
+// applications should update their internal storage of the URI, otherwise they
+// should make all future requests to the original URI.
 //
 // The function returns the following values:
 //
@@ -48949,8 +51355,8 @@ func (query *Query) ParseURIRedirectionPermanent() bool {
 	return _permanent
 }
 
-// RemoveNthAllocationMeta: remove the metadata API at index of the metadata API
-// array.
+// RemoveNthAllocationMeta (gst_query_remove_nth_allocation_meta): remove the
+// metadata API at index of the metadata API array.
 //
 // The function takes the following parameters:
 //
@@ -48967,8 +51373,8 @@ func (query *Query) RemoveNthAllocationMeta(index uint) {
 	runtime.KeepAlive(index)
 }
 
-// RemoveNthAllocationParam: remove the allocation param at index of the
-// allocation param array.
+// RemoveNthAllocationParam (gst_query_remove_nth_allocation_param): remove the
+// allocation param at index of the allocation param array.
 //
 // The function takes the following parameters:
 //
@@ -48985,8 +51391,8 @@ func (query *Query) RemoveNthAllocationParam(index uint) {
 	runtime.KeepAlive(index)
 }
 
-// RemoveNthAllocationPool: remove the allocation pool at index of the
-// allocation pool array.
+// RemoveNthAllocationPool (gst_query_remove_nth_allocation_pool): remove the
+// allocation pool at index of the allocation pool array.
 //
 // The function takes the following parameters:
 //
@@ -49003,7 +51409,8 @@ func (query *Query) RemoveNthAllocationPool(index uint) {
 	runtime.KeepAlive(index)
 }
 
-// SetAcceptCapsResult: set result as the result for the query.
+// SetAcceptCapsResult (gst_query_set_accept_caps_result): set result as the
+// result for the query.
 //
 // The function takes the following parameters:
 //
@@ -49022,9 +51429,9 @@ func (query *Query) SetAcceptCapsResult(result bool) {
 	runtime.KeepAlive(result)
 }
 
-// SetBitrate: set the results of a bitrate query. The nominal bitrate is the
-// average bitrate expected over the length of the stream as advertised in file
-// headers (or similar).
+// SetBitrate (gst_query_set_bitrate): set the results of a bitrate query.
+// The nominal bitrate is the average bitrate expected over the length of the
+// stream as advertised in file headers (or similar).
 //
 // The function takes the following parameters:
 //
@@ -49041,9 +51448,9 @@ func (query *Query) SetBitrate(nominalBitrate uint) {
 	runtime.KeepAlive(nominalBitrate)
 }
 
-// SetBufferingPercent: set the percentage of buffered data. This is a value
-// between 0 and 100. The busy indicator is TRUE when the buffering is in
-// progress.
+// SetBufferingPercent (gst_query_set_buffering_percent): set the percentage of
+// buffered data. This is a value between 0 and 100. The busy indicator is TRUE
+// when the buffering is in progress.
 //
 // The function takes the following parameters:
 //
@@ -49066,7 +51473,8 @@ func (query *Query) SetBufferingPercent(busy bool, percent int) {
 	runtime.KeepAlive(percent)
 }
 
-// SetBufferingRange: set the available query result fields in query.
+// SetBufferingRange (gst_query_set_buffering_range): set the available query
+// result fields in query.
 //
 // The function takes the following parameters:
 //
@@ -49096,7 +51504,8 @@ func (query *Query) SetBufferingRange(format Format, start int64, stop int64, es
 	runtime.KeepAlive(estimatedTotal)
 }
 
-// SetBufferingStats configures the buffering stats values in query.
+// SetBufferingStats (gst_query_set_buffering_stats) configures the buffering
+// stats values in query.
 //
 // The function takes the following parameters:
 //
@@ -49125,7 +51534,7 @@ func (query *Query) SetBufferingStats(mode BufferingMode, avgIn int, avgOut int,
 	runtime.KeepAlive(bufferingLeft)
 }
 
-// SetCapsResult: set the caps result in query.
+// SetCapsResult (gst_query_set_caps_result): set the caps result in query.
 //
 // The function takes the following parameters:
 //
@@ -49144,7 +51553,8 @@ func (query *Query) SetCapsResult(caps *Caps) {
 	runtime.KeepAlive(caps)
 }
 
-// SetContext: answer a context query by setting the requested context.
+// SetContext (gst_query_set_context): answer a context query by setting the
+// requested context.
 //
 // The function takes the following parameters:
 //
@@ -49163,7 +51573,8 @@ func (query *Query) SetContext(context *Context) {
 	runtime.KeepAlive(context)
 }
 
-// SetConvert: answer a convert query by setting the requested values.
+// SetConvert (gst_query_set_convert): answer a convert query by setting the
+// requested values.
 //
 // The function takes the following parameters:
 //
@@ -49192,8 +51603,8 @@ func (query *Query) SetConvert(srcFormat Format, srcValue int64, destFormat Form
 	runtime.KeepAlive(destValue)
 }
 
-// SetDuration: answer a duration query by setting the requested value in the
-// given format.
+// SetDuration (gst_query_set_duration): answer a duration query by setting the
+// requested value in the given format.
 //
 // The function takes the following parameters:
 //
@@ -49214,8 +51625,9 @@ func (query *Query) SetDuration(format Format, duration int64) {
 	runtime.KeepAlive(duration)
 }
 
-// SetFormatsv: set the formats query result fields in query. The number of
-// formats passed in the formats array must be equal to n_formats.
+// SetFormatsv (gst_query_set_formatsv): set the formats query result fields
+// in query. The number of formats passed in the formats array must be equal to
+// n_formats.
 //
 // The function takes the following parameters:
 //
@@ -49236,8 +51648,8 @@ func (query *Query) SetFormatsv(formats []Format) {
 	runtime.KeepAlive(formats)
 }
 
-// SetLatency: answer a latency query by setting the requested values in the
-// given format.
+// SetLatency (gst_query_set_latency): answer a latency query by setting the
+// requested values in the given format.
 //
 // The function takes the following parameters:
 //
@@ -49264,8 +51676,9 @@ func (query *Query) SetLatency(live bool, minLatency ClockTime, maxLatency Clock
 	runtime.KeepAlive(maxLatency)
 }
 
-// SetNthAllocationParam: parse an available query and get the allocator and its
-// params at index of the allocator array.
+// SetNthAllocationParam (gst_query_set_nth_allocation_param): parse an
+// available query and get the allocator and its params at index of the
+// allocator array.
 //
 // The function takes the following parameters:
 //
@@ -49294,7 +51707,8 @@ func (query *Query) SetNthAllocationParam(index uint, allocator Allocatorrer, pa
 	runtime.KeepAlive(params)
 }
 
-// SetNthAllocationPool: set the pool parameters in query.
+// SetNthAllocationPool (gst_query_set_nth_allocation_pool): set the pool
+// parameters in query.
 //
 // The function takes the following parameters:
 //
@@ -49329,8 +51743,8 @@ func (query *Query) SetNthAllocationPool(index uint, pool *BufferPool, size uint
 	runtime.KeepAlive(maxBuffers)
 }
 
-// SetPosition: answer a position query by setting the requested value in the
-// given format.
+// SetPosition (gst_query_set_position): answer a position query by setting the
+// requested value in the given format.
 //
 // The function takes the following parameters:
 //
@@ -49351,7 +51765,7 @@ func (query *Query) SetPosition(format Format, cur int64) {
 	runtime.KeepAlive(cur)
 }
 
-// SetScheduling: set the scheduling properties.
+// SetScheduling (gst_query_set_scheduling): set the scheduling properties.
 //
 // The function takes the following parameters:
 //
@@ -49380,7 +51794,8 @@ func (query *Query) SetScheduling(flags SchedulingFlags, minsize int, maxsize in
 	runtime.KeepAlive(align)
 }
 
-// SetSeeking: set the seeking query result fields in query.
+// SetSeeking (gst_query_set_seeking): set the seeking query result fields in
+// query.
 //
 // The function takes the following parameters:
 //
@@ -49411,10 +51826,11 @@ func (query *Query) SetSeeking(format Format, seekable bool, segmentStart int64,
 	runtime.KeepAlive(segmentEnd)
 }
 
-// SetSegment: answer a segment query by setting the requested values. The
-// normal playback segment of a pipeline is 0 to duration at the default rate
-// of 1.0. If a seek was performed on the pipeline to play a different segment,
-// this query will return the range specified in the last seek.
+// SetSegment (gst_query_set_segment): answer a segment query by setting the
+// requested values. The normal playback segment of a pipeline is 0 to duration
+// at the default rate of 1.0. If a seek was performed on the pipeline to play
+// a different segment, this query will return the range specified in the last
+// seek.
 //
 // start_value and stop_value will respectively contain the configured playback
 // range start and stop values expressed in format. The values are always
@@ -49449,9 +51865,9 @@ func (query *Query) SetSegment(rate float64, format Format, startValue int64, st
 	runtime.KeepAlive(stopValue)
 }
 
-// SetSelectable: set the results of a selectable query. If the element
-// answering the query can handle stream selection, selectable should be set to
-// TRUE.
+// SetSelectable (gst_query_set_selectable): set the results of a selectable
+// query. If the element answering the query can handle stream selection,
+// selectable should be set to TRUE.
 //
 // The function takes the following parameters:
 //
@@ -49470,7 +51886,7 @@ func (query *Query) SetSelectable(selectable bool) {
 	runtime.KeepAlive(selectable)
 }
 
-// SetURI: answer a URI query by setting the requested URI.
+// SetURI (gst_query_set_uri): answer a URI query by setting the requested URI.
 //
 // The function takes the following parameters:
 //
@@ -49490,8 +51906,8 @@ func (query *Query) SetURI(uri string) {
 	runtime.KeepAlive(uri)
 }
 
-// SetURIRedirection: answer a URI query by setting the requested URI
-// redirection.
+// SetURIRedirection (gst_query_set_uri_redirection): answer a URI query by
+// setting the requested URI redirection.
 //
 // The function takes the following parameters:
 //
@@ -49511,8 +51927,8 @@ func (query *Query) SetURIRedirection(uri string) {
 	runtime.KeepAlive(uri)
 }
 
-// SetURIRedirectionPermanent: answer a URI query by setting the requested URI
-// redirection to permanent or not.
+// SetURIRedirectionPermanent (gst_query_set_uri_redirection_permanent): answer
+// a URI query by setting the requested URI redirection to permanent or not.
 //
 // The function takes the following parameters:
 //
@@ -49531,9 +51947,9 @@ func (query *Query) SetURIRedirectionPermanent(permanent bool) {
 	runtime.KeepAlive(permanent)
 }
 
-// WritableStructure: get the structure of a query. This method should be called
-// with a writable query so that the returned structure is guaranteed to be
-// writable.
+// WritableStructure (gst_query_writable_structure): get the structure of
+// a query. This method should be called with a writable query so that the
+// returned structure is guaranteed to be writable.
 //
 // The function returns the following values:
 //
@@ -49561,10 +51977,10 @@ func (query *Query) WritableStructure() *Structure {
 	return _structure
 }
 
-// ReferenceTimestampMeta can be used to attach alternative timestamps and
-// possibly durations to a Buffer. These are generally not according to the
-// pipeline clock and could be e.g. the NTP timestamp when the media was
-// captured.
+// ReferenceTimestampMeta (GstReferenceTimestampMeta) can be used to attach
+// alternative timestamps and possibly durations to a Buffer. These are
+// generally not according to the pipeline clock and could be e.g. the NTP
+// timestamp when the media was captured.
 //
 // The reference is stored as a Caps in reference. Examples of valid references
 // would be
@@ -49630,8 +52046,8 @@ func (r *ReferenceTimestampMeta) Duration() ClockTime {
 	return _v
 }
 
-// ReferenceTimestampMetaGetInfo gets the global MetaInfo describing the
-// ReferenceTimestampMeta meta.
+// ReferenceTimestampMetaGetInfo (gst_reference_timestamp_meta_get_info) gets
+// the global MetaInfo describing the ReferenceTimestampMeta meta.
 //
 // The function returns the following values:
 //
@@ -49648,7 +52064,8 @@ func ReferenceTimestampMetaGetInfo() *MetaInfo {
 	return _metaInfo
 }
 
-// RegistryClass: instance of this type is always passed by reference.
+// RegistryClass (GstRegistryClass): instance of this type is always passed by
+// reference.
 type RegistryClass struct {
 	*registryClass
 }
@@ -49665,8 +52082,8 @@ func (r *RegistryClass) ParentClass() *ObjectClass {
 	return _v
 }
 
-// Sample is a small object containing data, a type, timing and extra arbitrary
-// information.
+// Sample (GstSample) is a small object containing data, a type, timing and
+// extra arbitrary information.
 //
 // An instance of this type is always passed by reference.
 type Sample struct {
@@ -49723,7 +52140,7 @@ func NewSample(buffer *Buffer, caps *Caps, segment *Segment, info *Structure) *S
 	return _sample
 }
 
-// Buffer: get the buffer associated with sample.
+// Buffer (gst_sample_get_buffer): get the buffer associated with sample.
 //
 // The function returns the following values:
 //
@@ -49754,7 +52171,8 @@ func (sample *Sample) Buffer() *Buffer {
 	return _buffer
 }
 
-// BufferList: get the buffer list associated with sample.
+// BufferList (gst_sample_get_buffer_list): get the buffer list associated with
+// sample.
 //
 // The function returns the following values:
 //
@@ -49786,7 +52204,7 @@ func (sample *Sample) BufferList() *BufferList {
 	return _bufferList
 }
 
-// Caps: get the caps associated with sample.
+// Caps (gst_sample_get_caps): get the caps associated with sample.
 //
 // The function returns the following values:
 //
@@ -49817,7 +52235,7 @@ func (sample *Sample) Caps() *Caps {
 	return _caps
 }
 
-// Info: get extra information associated with sample.
+// Info (gst_sample_get_info): get extra information associated with sample.
 //
 // The function returns the following values:
 //
@@ -49847,7 +52265,7 @@ func (sample *Sample) Info() *Structure {
 	return _structure
 }
 
-// Segment: get the segment associated with sample.
+// Segment (gst_sample_get_segment): get the segment associated with sample.
 //
 // The function returns the following values:
 //
@@ -49868,7 +52286,8 @@ func (sample *Sample) Segment() *Segment {
 	return _segment
 }
 
-// SetBuffer: set the buffer associated with sample. sample must be writable.
+// SetBuffer (gst_sample_set_buffer): set the buffer associated with sample.
+// sample must be writable.
 //
 // The function takes the following parameters:
 //
@@ -49885,8 +52304,8 @@ func (sample *Sample) SetBuffer(buffer *Buffer) {
 	runtime.KeepAlive(buffer)
 }
 
-// SetBufferList: set the buffer list associated with sample. sample must be
-// writable.
+// SetBufferList (gst_sample_set_buffer_list): set the buffer list associated
+// with sample. sample must be writable.
 //
 // The function takes the following parameters:
 //
@@ -49903,7 +52322,8 @@ func (sample *Sample) SetBufferList(bufferList *BufferList) {
 	runtime.KeepAlive(bufferList)
 }
 
-// SetCaps: set the caps associated with sample. sample must be writable.
+// SetCaps (gst_sample_set_caps): set the caps associated with sample. sample
+// must be writable.
 //
 // The function takes the following parameters:
 //
@@ -49920,8 +52340,8 @@ func (sample *Sample) SetCaps(caps *Caps) {
 	runtime.KeepAlive(caps)
 }
 
-// SetInfo: set the info structure associated with sample. sample must be
-// writable, and info must not have a parent set already.
+// SetInfo (gst_sample_set_info): set the info structure associated with sample.
+// sample must be writable, and info must not have a parent set already.
 //
 // The function takes the following parameters:
 //
@@ -49948,7 +52368,8 @@ func (sample *Sample) SetInfo(info *Structure) bool {
 	return _ok
 }
 
-// SetSegment: set the segment associated with sample. sample must be writable.
+// SetSegment (gst_sample_set_segment): set the segment associated with sample.
+// sample must be writable.
 //
 // The function takes the following parameters:
 //
@@ -49965,8 +52386,8 @@ func (sample *Sample) SetSegment(segment *Segment) {
 	runtime.KeepAlive(segment)
 }
 
-// Segment: this helper structure holds the relevant values for tracking the
-// region of interest in a media file, called a segment.
+// Segment (GstSegment): this helper structure holds the relevant values for
+// tracking the region of interest in a media file, called a segment.
 //
 // The structure can be used for two purposes:
 //
@@ -50265,9 +52686,9 @@ func (s *Segment) SetDuration(duration uint64) {
 	*valptr = C.guint64(duration)
 }
 
-// Clip the given start and stop values to the segment boundaries given in
-// segment. start and stop are compared and clipped to segment start and stop
-// values.
+// Clip (gst_segment_clip) the given start and stop values to the segment
+// boundaries given in segment. start and stop are compared and clipped to
+// segment start and stop values.
 //
 // If the function returns FALSE, start and stop are known to fall outside of
 // segment and clip_start and clip_stop are not updated.
@@ -50324,7 +52745,7 @@ func (segment *Segment) Clip(format Format, start uint64, stop uint64) (clipStar
 	return _clipStart, _clipStop, _ok
 }
 
-// Copy: create a copy of given segment.
+// Copy (gst_segment_copy): create a copy of given segment.
 //
 // Free-function: gst_segment_free.
 //
@@ -50353,7 +52774,7 @@ func (segment *Segment) Copy() *Segment {
 	return _ret
 }
 
-// CopyInto: copy the contents of src into dest.
+// CopyInto (gst_segment_copy_into): copy the contents of src into dest.
 //
 // The function takes the following parameters:
 //
@@ -50370,8 +52791,8 @@ func (src *Segment) CopyInto(dest *Segment) {
 	runtime.KeepAlive(dest)
 }
 
-// DoSeek: update the segment structure with the field values of a seek event
-// (see gst_event_new_seek()).
+// DoSeek (gst_segment_do_seek): update the segment structure with the field
+// values of a seek event (see gst_event_new_seek()).
 //
 // After calling this method, the segment field position and time will contain
 // the requested new position in the segment. The new requested position in the
@@ -50455,8 +52876,9 @@ func (segment *Segment) DoSeek(rate float64, format Format, flags SeekFlags, sta
 	return _update, _ok
 }
 
-// Init: start/position fields are set to 0 and the stop/duration fields are set
-// to -1 (unknown). The default rate of 1.0 and no flags are set.
+// Init (gst_segment_init): start/position fields are set to 0 and the
+// stop/duration fields are set to -1 (unknown). The default rate of 1.0 and no
+// flags are set.
 //
 // Initialize segment to its default values.
 //
@@ -50475,8 +52897,8 @@ func (segment *Segment) Init(format Format) {
 	runtime.KeepAlive(format)
 }
 
-// IsEqual checks for two segments being equal. Equality here is defined as
-// perfect equality, including floating point values.
+// IsEqual (gst_segment_is_equal) checks for two segments being equal. Equality
+// here is defined as perfect equality, including floating point values.
 //
 // The function takes the following parameters:
 //
@@ -50506,8 +52928,8 @@ func (s0 *Segment) IsEqual(s1 *Segment) bool {
 	return _ok
 }
 
-// OffsetRunningTime: adjust the values in segment so that offset is applied to
-// all future running-time calculations.
+// OffsetRunningTime (gst_segment_offset_running_time): adjust the values in
+// segment so that offset is applied to all future running-time calculations.
 //
 // The function takes the following parameters:
 //
@@ -50542,9 +52964,9 @@ func (segment *Segment) OffsetRunningTime(format Format, offset int64) bool {
 	return _ok
 }
 
-// PositionFromRunningTime: convert running_time into a position in the
-// segment so that gst_segment_to_running_time() with that position returns
-// running_time.
+// PositionFromRunningTime (gst_segment_position_from_running_time):
+// convert running_time into a position in the segment so that
+// gst_segment_to_running_time() with that position returns running_time.
 //
 // The function takes the following parameters:
 //
@@ -50577,10 +52999,10 @@ func (segment *Segment) PositionFromRunningTime(format Format, runningTime uint6
 	return _guint64
 }
 
-// PositionFromRunningTimeFull: translate running_time to the segment
-// position using the currently configured segment. Compared to
-// gst_segment_position_from_running_time() this function can return negative
-// segment position.
+// PositionFromRunningTimeFull (gst_segment_position_from_running_time_full):
+// translate running_time to the segment position using the currently configured
+// segment. Compared to gst_segment_position_from_running_time() this function
+// can return negative segment position.
 //
 // This function is typically used by elements that need to synchronize buffers
 // against the clock or each other.
@@ -50629,8 +53051,9 @@ func (segment *Segment) PositionFromRunningTimeFull(format Format, runningTime u
 	return _position, _gint
 }
 
-// PositionFromStreamTime: convert stream_time into a position in the segment so
-// that gst_segment_to_stream_time() with that position returns stream_time.
+// PositionFromStreamTime (gst_segment_position_from_stream_time):
+// convert stream_time into a position in the segment so that
+// gst_segment_to_stream_time() with that position returns stream_time.
 //
 // The function takes the following parameters:
 //
@@ -50663,10 +53086,10 @@ func (segment *Segment) PositionFromStreamTime(format Format, streamTime uint64)
 	return _guint64
 }
 
-// PositionFromStreamTimeFull: translate stream_time to the segment
-// position using the currently configured segment. Compared to
-// gst_segment_position_from_stream_time() this function can return negative
-// segment position.
+// PositionFromStreamTimeFull (gst_segment_position_from_stream_time_full):
+// translate stream_time to the segment position using the currently configured
+// segment. Compared to gst_segment_position_from_stream_time() this function
+// can return negative segment position.
 //
 // This function is typically used by elements that need to synchronize buffers
 // against the clock or each other.
@@ -50714,8 +53137,9 @@ func (segment *Segment) PositionFromStreamTimeFull(format Format, streamTime uin
 	return _position, _gint
 }
 
-// SetRunningTime: adjust the start/stop and base values of segment such that
-// the next valid buffer will be one with running_time.
+// SetRunningTime (gst_segment_set_running_time): adjust the start/stop and
+// base values of segment such that the next valid buffer will be one with
+// running_time.
 //
 // The function takes the following parameters:
 //
@@ -50750,8 +53174,9 @@ func (segment *Segment) SetRunningTime(format Format, runningTime uint64) bool {
 	return _ok
 }
 
-// ToPosition: convert running_time into a position in the segment so that
-// gst_segment_to_running_time() with that position returns running_time.
+// ToPosition (gst_segment_to_position): convert running_time into a position in
+// the segment so that gst_segment_to_running_time() with that position returns
+// running_time.
 //
 // Deprecated: Use gst_segment_position_from_running_time() instead.
 //
@@ -50786,9 +53211,9 @@ func (segment *Segment) ToPosition(format Format, runningTime uint64) uint64 {
 	return _guint64
 }
 
-// ToRunningTime: translate position to the total running time using the
-// currently configured segment. Position is a value between segment start and
-// stop time.
+// ToRunningTime (gst_segment_to_running_time): translate position to the total
+// running time using the currently configured segment. Position is a value
+// between segment start and stop time.
 //
 // This function is typically used by elements that need to synchronize to the
 // global clock in a pipeline. The running time is a constantly increasing value
@@ -50829,9 +53254,9 @@ func (segment *Segment) ToRunningTime(format Format, position uint64) uint64 {
 	return _guint64
 }
 
-// ToRunningTimeFull: translate position to the total running time using the
-// currently configured segment. Compared to gst_segment_to_running_time() this
-// function can return negative running-time.
+// ToRunningTimeFull (gst_segment_to_running_time_full): translate position to
+// the total running time using the currently configured segment. Compared to
+// gst_segment_to_running_time() this function can return negative running-time.
 //
 // This function is typically used by elements that need to synchronize buffers
 // against the clock or each other.
@@ -50879,9 +53304,9 @@ func (segment *Segment) ToRunningTimeFull(format Format, position uint64) (uint6
 	return _runningTime, _gint
 }
 
-// ToStreamTime: translate position to stream time using the currently
-// configured segment. The position value must be between segment start and stop
-// value.
+// ToStreamTime (gst_segment_to_stream_time): translate position to stream time
+// using the currently configured segment. The position value must be between
+// segment start and stop value.
 //
 // This function is typically used by elements that need to operate on the
 // stream time of the buffers it receives, such as effect plugins. In those
@@ -50920,9 +53345,9 @@ func (segment *Segment) ToStreamTime(format Format, position uint64) uint64 {
 	return _guint64
 }
 
-// ToStreamTimeFull: translate position to the total stream time using the
-// currently configured segment. Compared to gst_segment_to_stream_time() this
-// function can return negative stream-time.
+// ToStreamTimeFull (gst_segment_to_stream_time_full): translate position to
+// the total stream time using the currently configured segment. Compared to
+// gst_segment_to_stream_time() this function can return negative stream-time.
 //
 // This function is typically used by elements that need to synchronize buffers
 // against the clock or each other.
@@ -50970,9 +53395,9 @@ func (segment *Segment) ToStreamTimeFull(format Format, position uint64) (uint64
 	return _streamTime, _gint
 }
 
-// StaticCaps: data structure to initialize Caps from a string description
-// usually used in conjunction with GST_STATIC_CAPS() and gst_static_caps_get()
-// to instantiate a Caps.
+// StaticCaps (GstStaticCaps): data structure to initialize Caps from a
+// string description usually used in conjunction with GST_STATIC_CAPS() and
+// gst_static_caps_get() to instantiate a Caps.
 //
 // An instance of this type is always passed by reference.
 type StaticCaps struct {
@@ -51010,7 +53435,8 @@ func (s *StaticCaps) String() string {
 	return _v
 }
 
-// Cleanup cleans up the cached caps contained in static_caps.
+// Cleanup (gst_static_caps_cleanup) cleans up the cached caps contained in
+// static_caps.
 func (staticCaps *StaticCaps) Cleanup() {
 	var _arg0 *C.GstStaticCaps // out
 
@@ -51020,7 +53446,7 @@ func (staticCaps *StaticCaps) Cleanup() {
 	runtime.KeepAlive(staticCaps)
 }
 
-// Get converts a StaticCaps to a Caps.
+// Get (gst_static_caps_get) converts a StaticCaps to a Caps.
 //
 // The function returns the following values:
 //
@@ -51050,7 +53476,8 @@ func (staticCaps *StaticCaps) Get() *Caps {
 	return _caps
 }
 
-// StaticPadTemplate: structure describing the StaticPadTemplate.
+// StaticPadTemplate (GstStaticPadTemplate): structure describing the
+// StaticPadTemplate.
 //
 // An instance of this type is always passed by reference.
 type StaticPadTemplate struct {
@@ -51099,7 +53526,8 @@ func (s *StaticPadTemplate) StaticCaps() *StaticCaps {
 	return _v
 }
 
-// Get converts a StaticPadTemplate into a PadTemplate.
+// Get (gst_static_pad_template_get) converts a StaticPadTemplate into a
+// PadTemplate.
 //
 // The function returns the following values:
 //
@@ -51122,7 +53550,8 @@ func (padTemplate *StaticPadTemplate) Get() *PadTemplate {
 	return _padTemplate
 }
 
-// Caps gets the capabilities of the static pad template.
+// Caps (gst_static_pad_template_get_caps) gets the capabilities of the static
+// pad template.
 //
 // The function returns the following values:
 //
@@ -51150,7 +53579,7 @@ func (templ *StaticPadTemplate) Caps() *Caps {
 	return _caps
 }
 
-// StreamClass: gstStream class structure
+// StreamClass (GstStreamClass): gstStream class structure
 //
 // An instance of this type is always passed by reference.
 type StreamClass struct {
@@ -51170,7 +53599,8 @@ func (s *StreamClass) ParentClass() *ObjectClass {
 	return _v
 }
 
-// StreamCollectionClass: gstStreamCollection class structure
+// StreamCollectionClass (GstStreamCollectionClass): gstStreamCollection class
+// structure
 //
 // An instance of this type is always passed by reference.
 type StreamCollectionClass struct {
@@ -51190,8 +53620,8 @@ func (s *StreamCollectionClass) ParentClass() *ObjectClass {
 	return _v
 }
 
-// Structure is a collection of key/value pairs. The keys are expressed as
-// GQuarks and the values can be of any GType.
+// Structure (GstStructure) is a collection of key/value pairs. The keys are
+// expressed as GQuarks and the values can be of any GType.
 //
 // In addition to the key/value pairs, a Structure also has a name. The name
 // starts with a letter and can be filled by letters, numbers and any of
@@ -51355,8 +53785,8 @@ func (s *Structure) Type() coreglib.Type {
 	return _v
 }
 
-// CanIntersect tries intersecting struct1 and struct2 and reports whether the
-// result would not be empty.
+// CanIntersect (gst_structure_can_intersect) tries intersecting struct1 and
+// struct2 and reports whether the result would not be empty.
 //
 // The function takes the following parameters:
 //
@@ -51386,7 +53816,8 @@ func (struct1 *Structure) CanIntersect(struct2 *Structure) bool {
 	return _ok
 }
 
-// Copy duplicates a Structure and all its fields and values.
+// Copy (gst_structure_copy) duplicates a Structure and all its fields and
+// values.
 //
 // Free-function: gst_structure_free.
 //
@@ -51414,11 +53845,11 @@ func (structure *Structure) Copy() *Structure {
 	return _ret
 }
 
-// FilterAndMapInPlace calls the provided function once for each field in the
-// Structure. In contrast to gst_structure_foreach(), the function may modify
-// the fields. In contrast to gst_structure_map_in_place(), the field is removed
-// from the structure if FALSE is returned from the function. The structure must
-// be mutable.
+// FilterAndMapInPlace (gst_structure_filter_and_map_in_place) calls the
+// provided function once for each field in the Structure. In contrast to
+// gst_structure_foreach(), the function may modify the fields. In contrast
+// to gst_structure_map_in_place(), the field is removed from the structure if
+// FALSE is returned from the function. The structure must be mutable.
 //
 // The function takes the following parameters:
 //
@@ -51438,8 +53869,9 @@ func (structure *Structure) FilterAndMapInPlace(fn StructureFilterMapFunc) {
 	runtime.KeepAlive(fn)
 }
 
-// Fixate all values in structure using gst_value_fixate(). structure will be
-// modified in-place and should be writable.
+// Fixate (gst_structure_fixate) all values in structure using
+// gst_value_fixate(). structure will be modified in-place and should be
+// writable.
 func (structure *Structure) Fixate() {
 	var _arg0 *C.GstStructure // out
 
@@ -51449,8 +53881,8 @@ func (structure *Structure) Fixate() {
 	runtime.KeepAlive(structure)
 }
 
-// FixateField fixates a Structure by changing the given field with its fixated
-// value.
+// FixateField (gst_structure_fixate_field) fixates a Structure by changing the
+// given field with its fixated value.
 //
 // The function takes the following parameters:
 //
@@ -51481,8 +53913,9 @@ func (structure *Structure) FixateField(fieldName string) bool {
 	return _ok
 }
 
-// FixateFieldBoolean fixates a Structure by changing the given field_name field
-// to the given target boolean if that field is not fixed yet.
+// FixateFieldBoolean (gst_structure_fixate_field_boolean) fixates a Structure
+// by changing the given field_name field to the given target boolean if that
+// field is not fixed yet.
 //
 // The function takes the following parameters:
 //
@@ -51519,8 +53952,9 @@ func (structure *Structure) FixateFieldBoolean(fieldName string, target bool) bo
 	return _ok
 }
 
-// FixateFieldNearestDouble fixates a Structure by changing the given field to
-// the nearest double to target that is a subset of the existing field.
+// FixateFieldNearestDouble (gst_structure_fixate_field_nearest_double) fixates
+// a Structure by changing the given field to the nearest double to target that
+// is a subset of the existing field.
 //
 // The function takes the following parameters:
 //
@@ -51555,9 +53989,9 @@ func (structure *Structure) FixateFieldNearestDouble(fieldName string, target fl
 	return _ok
 }
 
-// FixateFieldNearestFraction fixates a Structure by changing the given field to
-// the nearest fraction to target_numerator/target_denominator that is a subset
-// of the existing field.
+// FixateFieldNearestFraction (gst_structure_fixate_field_nearest_fraction)
+// fixates a Structure by changing the given field to the nearest fraction to
+// target_numerator/target_denominator that is a subset of the existing field.
 //
 // The function takes the following parameters:
 //
@@ -51596,8 +54030,9 @@ func (structure *Structure) FixateFieldNearestFraction(fieldName string, targetN
 	return _ok
 }
 
-// FixateFieldNearestInt fixates a Structure by changing the given field to the
-// nearest integer to target that is a subset of the existing field.
+// FixateFieldNearestInt (gst_structure_fixate_field_nearest_int) fixates a
+// Structure by changing the given field to the nearest integer to target that
+// is a subset of the existing field.
 //
 // The function takes the following parameters:
 //
@@ -51632,8 +54067,9 @@ func (structure *Structure) FixateFieldNearestInt(fieldName string, target int) 
 	return _ok
 }
 
-// FixateFieldString fixates a Structure by changing the given field_name field
-// to the given target string if that field is not fixed yet.
+// FixateFieldString (gst_structure_fixate_field_string) fixates a Structure by
+// changing the given field_name field to the given target string if that field
+// is not fixed yet.
 //
 // The function takes the following parameters:
 //
@@ -51669,9 +54105,9 @@ func (structure *Structure) FixateFieldString(fieldName string, target string) b
 	return _ok
 }
 
-// ForEach calls the provided function once for each field in the Structure. The
-// function must not modify the fields. Also see gst_structure_map_in_place()
-// and gst_structure_filter_and_map_in_place().
+// ForEach (gst_structure_foreach) calls the provided function once for each
+// field in the Structure. The function must not modify the fields. Also see
+// gst_structure_map_in_place() and gst_structure_filter_and_map_in_place().
 //
 // The function takes the following parameters:
 //
@@ -51705,9 +54141,9 @@ func (structure *Structure) ForEach(fn StructureForEachFunc) bool {
 	return _ok
 }
 
-// Boolean sets the boolean pointed to by value corresponding to the value of
-// the given field. Caller is responsible for making sure the field exists and
-// has the correct type.
+// Boolean (gst_structure_get_boolean) sets the boolean pointed to by value
+// corresponding to the value of the given field. Caller is responsible for
+// making sure the field exists and has the correct type.
 //
 // The function takes the following parameters:
 //
@@ -51746,9 +54182,9 @@ func (structure *Structure) Boolean(fieldname string) (value bool, ok bool) {
 	return _value, _ok
 }
 
-// ClockTime sets the clock time pointed to by value corresponding to the clock
-// time of the given field. Caller is responsible for making sure the field
-// exists and has the correct type.
+// ClockTime (gst_structure_get_clock_time) sets the clock time pointed to
+// by value corresponding to the clock time of the given field. Caller is
+// responsible for making sure the field exists and has the correct type.
 //
 // The function takes the following parameters:
 //
@@ -51785,9 +54221,9 @@ func (structure *Structure) ClockTime(fieldname string) (ClockTime, bool) {
 	return _value, _ok
 }
 
-// DateTime sets the datetime pointed to by value corresponding to the datetime
-// of the given field. Caller is responsible for making sure the field exists
-// and has the correct type.
+// DateTime (gst_structure_get_date_time) sets the datetime pointed to by value
+// corresponding to the datetime of the given field. Caller is responsible for
+// making sure the field exists and has the correct type.
 //
 // On success value will point to a reference of the datetime which should be
 // unreffed with gst_date_time_unref() when no longer needed (note: this is
@@ -51835,9 +54271,9 @@ func (structure *Structure) DateTime(fieldname string) (*DateTime, bool) {
 	return _value, _ok
 }
 
-// Double sets the double pointed to by value corresponding to the value of the
-// given field. Caller is responsible for making sure the field exists and has
-// the correct type.
+// Double (gst_structure_get_double) sets the double pointed to by value
+// corresponding to the value of the given field. Caller is responsible for
+// making sure the field exists and has the correct type.
 //
 // The function takes the following parameters:
 //
@@ -51874,9 +54310,9 @@ func (structure *Structure) Double(fieldname string) (float64, bool) {
 	return _value, _ok
 }
 
-// Enum sets the int pointed to by value corresponding to the value of the
-// given field. Caller is responsible for making sure the field exists, has the
-// correct type and that the enumtype is correct.
+// Enum (gst_structure_get_enum) sets the int pointed to by value corresponding
+// to the value of the given field. Caller is responsible for making sure the
+// field exists, has the correct type and that the enumtype is correct.
 //
 // The function takes the following parameters:
 //
@@ -51917,8 +54353,9 @@ func (structure *Structure) Enum(fieldname string, enumtype coreglib.Type) (int,
 	return _value, _ok
 }
 
-// FieldType finds the field with the given name, and returns the type of the
-// value it contains. If the field is not found, G_TYPE_INVALID is returned.
+// FieldType (gst_structure_get_field_type) finds the field with the given name,
+// and returns the type of the value it contains. If the field is not found,
+// G_TYPE_INVALID is returned.
 //
 // The function takes the following parameters:
 //
@@ -51947,9 +54384,10 @@ func (structure *Structure) FieldType(fieldname string) coreglib.Type {
 	return _gType
 }
 
-// Flags sets the unsigned int pointed to by value corresponding to the value
-// of the given field. Caller is responsible for making sure the field exists,
-// has the correct type and that the flagstype is correct.
+// Flags (gst_structure_get_flags) sets the unsigned int pointed to by value
+// corresponding to the value of the given field. Caller is responsible for
+// making sure the field exists, has the correct type and that the flagstype is
+// correct.
 //
 // The function takes the following parameters:
 //
@@ -51990,8 +54428,8 @@ func (structure *Structure) Flags(fieldname string, flagsType coreglib.Type) (ui
 	return _value, _ok
 }
 
-// Flagset: read the GstFlagSet flags and mask out of the structure into the
-// provided pointers.
+// Flagset (gst_structure_get_flagset): read the GstFlagSet flags and mask out
+// of the structure into the provided pointers.
 //
 // The function takes the following parameters:
 //
@@ -52032,9 +54470,10 @@ func (structure *Structure) Flagset(fieldname string) (valueFlags uint, valueMas
 	return _valueFlags, _valueMask, _ok
 }
 
-// Fraction sets the integers pointed to by value_numerator and
-// value_denominator corresponding to the value of the given field. Caller is
-// responsible for making sure the field exists and has the correct type.
+// Fraction (gst_structure_get_fraction) sets the integers pointed to by
+// value_numerator and value_denominator corresponding to the value of the given
+// field. Caller is responsible for making sure the field exists and has the
+// correct type.
 //
 // The function takes the following parameters:
 //
@@ -52075,9 +54514,9 @@ func (structure *Structure) Fraction(fieldname string) (valueNumerator int, valu
 	return _valueNumerator, _valueDenominator, _ok
 }
 
-// Int sets the int pointed to by value corresponding to the value of the given
-// field. Caller is responsible for making sure the field exists and has the
-// correct type.
+// Int (gst_structure_get_int) sets the int pointed to by value corresponding to
+// the value of the given field. Caller is responsible for making sure the field
+// exists and has the correct type.
 //
 // The function takes the following parameters:
 //
@@ -52114,9 +54553,9 @@ func (structure *Structure) Int(fieldname string) (int, bool) {
 	return _value, _ok
 }
 
-// Int64 sets the #gint64 pointed to by value corresponding to the value of the
-// given field. Caller is responsible for making sure the field exists and has
-// the correct type.
+// Int64 (gst_structure_get_int64) sets the #gint64 pointed to by value
+// corresponding to the value of the given field. Caller is responsible for
+// making sure the field exists and has the correct type.
 //
 // The function takes the following parameters:
 //
@@ -52153,7 +54592,7 @@ func (structure *Structure) Int64(fieldname string) (int64, bool) {
 	return _value, _ok
 }
 
-// Name: get the name of structure as a string.
+// Name (gst_structure_get_name): get the name of structure as a string.
 //
 // The function returns the following values:
 //
@@ -52174,7 +54613,7 @@ func (structure *Structure) Name() string {
 	return _utf8
 }
 
-// NameID: get the name of structure as a GQuark.
+// NameID (gst_structure_get_name_id): get the name of structure as a GQuark.
 //
 // The function returns the following values:
 //
@@ -52195,9 +54634,9 @@ func (structure *Structure) NameID() glib.Quark {
 	return _quark
 }
 
-// String finds the field corresponding to fieldname, and returns the string
-// contained in the field's value. Caller is responsible for making sure the
-// field exists and has the correct type.
+// String (gst_structure_get_string) finds the field corresponding to fieldname,
+// and returns the string contained in the field's value. Caller is responsible
+// for making sure the field exists and has the correct type.
 //
 // The string should not be modified, and remains valid until the next call to a
 // gst_structure_*() function with the given structure.
@@ -52232,9 +54671,9 @@ func (structure *Structure) String(fieldname string) string {
 	return _utf8
 }
 
-// Uint sets the uint pointed to by value corresponding to the value of the
-// given field. Caller is responsible for making sure the field exists and has
-// the correct type.
+// Uint (gst_structure_get_uint) sets the uint pointed to by value corresponding
+// to the value of the given field. Caller is responsible for making sure the
+// field exists and has the correct type.
 //
 // The function takes the following parameters:
 //
@@ -52271,9 +54710,9 @@ func (structure *Structure) Uint(fieldname string) (uint, bool) {
 	return _value, _ok
 }
 
-// Uint64 sets the #guint64 pointed to by value corresponding to the value of
-// the given field. Caller is responsible for making sure the field exists and
-// has the correct type.
+// Uint64 (gst_structure_get_uint64) sets the #guint64 pointed to by value
+// corresponding to the value of the given field. Caller is responsible for
+// making sure the field exists and has the correct type.
 //
 // The function takes the following parameters:
 //
@@ -52310,7 +54749,8 @@ func (structure *Structure) Uint64(fieldname string) (uint64, bool) {
 	return _value, _ok
 }
 
-// Value: get the value of the field with name fieldname.
+// Value (gst_structure_get_value): get the value of the field with name
+// fieldname.
 //
 // The function takes the following parameters:
 //
@@ -52341,7 +54781,8 @@ func (structure *Structure) Value(fieldname string) *coreglib.Value {
 	return _value
 }
 
-// HasField: check if structure contains a field named fieldname.
+// HasField (gst_structure_has_field): check if structure contains a field named
+// fieldname.
 //
 // The function takes the following parameters:
 //
@@ -52372,8 +54813,8 @@ func (structure *Structure) HasField(fieldname string) bool {
 	return _ok
 }
 
-// HasFieldTyped: check if structure contains a field named fieldname and with
-// GType type.
+// HasFieldTyped (gst_structure_has_field_typed): check if structure contains a
+// field named fieldname and with GType type.
 //
 // The function takes the following parameters:
 //
@@ -52408,7 +54849,7 @@ func (structure *Structure) HasFieldTyped(fieldname string, typ coreglib.Type) b
 	return _ok
 }
 
-// HasName checks if the structure has the given name.
+// HasName (gst_structure_has_name) checks if the structure has the given name.
 //
 // The function takes the following parameters:
 //
@@ -52439,7 +54880,8 @@ func (structure *Structure) HasName(name string) bool {
 	return _ok
 }
 
-// IDGetValue: get the value of the field with GQuark field.
+// IDGetValue (gst_structure_id_get_value): get the value of the field with
+// GQuark field.
 //
 // The function takes the following parameters:
 //
@@ -52470,7 +54912,8 @@ func (structure *Structure) IDGetValue(field glib.Quark) *coreglib.Value {
 	return _value
 }
 
-// IDHasField: check if structure contains a field named field.
+// IDHasField (gst_structure_id_has_field): check if structure contains a field
+// named field.
 //
 // The function takes the following parameters:
 //
@@ -52500,8 +54943,8 @@ func (structure *Structure) IDHasField(field glib.Quark) bool {
 	return _ok
 }
 
-// IDHasFieldTyped: check if structure contains a field named field and with
-// GType type.
+// IDHasFieldTyped (gst_structure_id_has_field_typed): check if structure
+// contains a field named field and with GType type.
 //
 // The function takes the following parameters:
 //
@@ -52535,9 +54978,9 @@ func (structure *Structure) IDHasFieldTyped(field glib.Quark, typ coreglib.Type)
 	return _ok
 }
 
-// IDSetValue sets the field with the given GQuark field to value. If the field
-// does not exist, it is created. If the field exists, the previous value is
-// replaced and freed.
+// IDSetValue (gst_structure_id_set_value) sets the field with the given GQuark
+// field to value. If the field does not exist, it is created. If the field
+// exists, the previous value is replaced and freed.
 //
 // The function takes the following parameters:
 //
@@ -52558,9 +55001,9 @@ func (structure *Structure) IDSetValue(field glib.Quark, value *coreglib.Value) 
 	runtime.KeepAlive(value)
 }
 
-// IDTakeValue sets the field with the given GQuark field to value. If the field
-// does not exist, it is created. If the field exists, the previous value is
-// replaced and freed.
+// IDTakeValue (gst_structure_id_take_value) sets the field with the given
+// GQuark field to value. If the field does not exist, it is created. If the
+// field exists, the previous value is replaced and freed.
 //
 // The function takes the following parameters:
 //
@@ -52581,7 +55024,8 @@ func (structure *Structure) IDTakeValue(field glib.Quark, value *coreglib.Value)
 	runtime.KeepAlive(value)
 }
 
-// Intersect intersects struct1 and struct2 and returns the intersection.
+// Intersect (gst_structure_intersect) intersects struct1 and struct2 and
+// returns the intersection.
 //
 // The function takes the following parameters:
 //
@@ -52616,7 +55060,7 @@ func (struct1 *Structure) Intersect(struct2 *Structure) *Structure {
 	return _structure
 }
 
-// IsEqual tests if the two Structure are equal.
+// IsEqual (gst_structure_is_equal) tests if the two Structure are equal.
 //
 // The function takes the following parameters:
 //
@@ -52646,9 +55090,9 @@ func (structure1 *Structure) IsEqual(structure2 *Structure) bool {
 	return _ok
 }
 
-// IsSubset checks if subset is a subset of superset, i.e. has the same
-// structure name and for all fields that are existing in superset, subset has a
-// value that is a subset of the value in superset.
+// IsSubset (gst_structure_is_subset) checks if subset is a subset of superset,
+// i.e. has the same structure name and for all fields that are existing in
+// superset, subset has a value that is a subset of the value in superset.
 //
 // The function takes the following parameters:
 //
@@ -52678,9 +55122,9 @@ func (subset *Structure) IsSubset(superset *Structure) bool {
 	return _ok
 }
 
-// MapInPlace calls the provided function once for each field in the Structure.
-// In contrast to gst_structure_foreach(), the function may modify but not
-// delete the fields. The structure must be mutable.
+// MapInPlace (gst_structure_map_in_place) calls the provided function once
+// for each field in the Structure. In contrast to gst_structure_foreach(), the
+// function may modify but not delete the fields. The structure must be mutable.
 //
 // The function takes the following parameters:
 //
@@ -52714,7 +55158,7 @@ func (structure *Structure) MapInPlace(fn StructureMapFunc) bool {
 	return _ok
 }
 
-// NFields: get the number of fields in the structure.
+// NFields (gst_structure_n_fields): get the number of fields in the structure.
 //
 // The function returns the following values:
 //
@@ -52735,8 +55179,8 @@ func (structure *Structure) NFields() int {
 	return _gint
 }
 
-// NthFieldName: get the name of the given field number, counting from 0
-// onwards.
+// NthFieldName (gst_structure_nth_field_name): get the name of the given field
+// number, counting from 0 onwards.
 //
 // The function takes the following parameters:
 //
@@ -52764,7 +55208,8 @@ func (structure *Structure) NthFieldName(index uint) string {
 	return _utf8
 }
 
-// RemoveAllFields removes all fields in a GstStructure.
+// RemoveAllFields (gst_structure_remove_all_fields) removes all fields in a
+// GstStructure.
 func (structure *Structure) RemoveAllFields() {
 	var _arg0 *C.GstStructure // out
 
@@ -52774,8 +55219,9 @@ func (structure *Structure) RemoveAllFields() {
 	runtime.KeepAlive(structure)
 }
 
-// RemoveField removes the field with the given name. If the field with the
-// given name does not exist, the structure is unchanged.
+// RemoveField (gst_structure_remove_field) removes the field with the given
+// name. If the field with the given name does not exist, the structure is
+// unchanged.
 //
 // The function takes the following parameters:
 //
@@ -52793,7 +55239,8 @@ func (structure *Structure) RemoveField(fieldname string) {
 	runtime.KeepAlive(fieldname)
 }
 
-// Serialize converts structure to a human-readable string representation.
+// Serialize (gst_structure_serialize) converts structure to a human-readable
+// string representation.
 //
 // This version of the caps serialization function introduces support for
 // nested structures and caps but the resulting strings won't be parsable with
@@ -52835,9 +55282,9 @@ func (structure *Structure) Serialize(flags SerializeFlags) string {
 	return _utf8
 }
 
-// SerializeFull alias for gst_structure_serialize() but with nullable
-// annotation because it can return NULL when GST_SERIALIZE_FLAG_STRICT flag is
-// set.
+// SerializeFull (gst_structure_serialize_full) alias for
+// gst_structure_serialize() but with nullable annotation because it can return
+// NULL when GST_SERIALIZE_FLAG_STRICT flag is set.
 //
 // The function takes the following parameters:
 //
@@ -52869,9 +55316,10 @@ func (structure *Structure) SerializeFull(flags SerializeFlags) string {
 	return _utf8
 }
 
-// SetName sets the name of the structure to the given name. The string provided
-// is copied before being used. It must not be empty, start with a letter and
-// can be followed by letters, numbers and any of "/-_.:".
+// SetName (gst_structure_set_name) sets the name of the structure to the given
+// name. The string provided is copied before being used. It must not be empty,
+// start with a letter and can be followed by letters, numbers and any of
+// "/-_.:".
 //
 // The function takes the following parameters:
 //
@@ -52889,10 +55337,11 @@ func (structure *Structure) SetName(name string) {
 	runtime.KeepAlive(name)
 }
 
-// SetParentRefcount sets the parent_refcount field of Structure. This field is
-// used to determine whether a structure is mutable or not. This function should
-// only be called by code implementing parent objects of Structure, as described
-// in the MT Refcounting section of the design documents.
+// SetParentRefcount (gst_structure_set_parent_refcount) sets the
+// parent_refcount field of Structure. This field is used to determine whether
+// a structure is mutable or not. This function should only be called by code
+// implementing parent objects of Structure, as described in the MT Refcounting
+// section of the design documents.
 //
 // The function takes the following parameters:
 //
@@ -52922,9 +55371,9 @@ func (structure *Structure) SetParentRefcount(refcount *int) bool {
 	return _ok
 }
 
-// SetValue sets the field with the given name field to value. If the field does
-// not exist, it is created. If the field exists, the previous value is replaced
-// and freed.
+// SetValue (gst_structure_set_value) sets the field with the given name field
+// to value. If the field does not exist, it is created. If the field exists,
+// the previous value is replaced and freed.
 //
 // The function takes the following parameters:
 //
@@ -52946,9 +55395,10 @@ func (structure *Structure) SetValue(fieldname string, value *coreglib.Value) {
 	runtime.KeepAlive(value)
 }
 
-// TakeValue sets the field with the given name field to value. If the field
-// does not exist, it is created. If the field exists, the previous value is
-// replaced and freed. The function will take ownership of value.
+// TakeValue (gst_structure_take_value) sets the field with the given name field
+// to value. If the field does not exist, it is created. If the field exists,
+// the previous value is replaced and freed. The function will take ownership of
+// value.
 //
 // The function takes the following parameters:
 //
@@ -52970,7 +55420,8 @@ func (structure *Structure) TakeValue(fieldname string, value *coreglib.Value) {
 	runtime.KeepAlive(value)
 }
 
-// ToString converts structure to a human-readable string representation.
+// ToString (gst_structure_to_string) converts structure to a human-readable
+// string representation.
 //
 // For debugging purposes its easier to do something like this: |[<!--
 // language="C" --> GST_LOG ("structure is %" GST_PTR_FORMAT, structure);
@@ -53002,7 +55453,8 @@ func (structure *Structure) ToString() string {
 	return _utf8
 }
 
-// SystemClockClass: instance of this type is always passed by reference.
+// SystemClockClass (GstSystemClockClass): instance of this type is always
+// passed by reference.
 type SystemClockClass struct {
 	*systemClockClass
 }
@@ -53019,7 +55471,8 @@ func (s *SystemClockClass) ParentClass() *ClockClass {
 	return _v
 }
 
-// TagList: list of tags and values used to describe media metadata.
+// TagList (GstTagList): list of tags and values used to describe media
+// metadata.
 //
 // Strings in structures must be ASCII or UTF-8 encoded. Other encodings are not
 // allowed. Strings must not be empty or NULL.
@@ -53097,7 +55550,8 @@ func (t *TagList) MiniObject() *MiniObject {
 	return _v
 }
 
-// AddValue sets the GValue for a given tag using the specified mode.
+// AddValue (gst_tag_list_add_value) sets the GValue for a given tag using the
+// specified mode.
 //
 // The function takes the following parameters:
 //
@@ -53123,8 +55577,9 @@ func (list *TagList) AddValue(mode TagMergeMode, tag string, value *coreglib.Val
 	runtime.KeepAlive(value)
 }
 
-// Copy creates a new TagList as a copy of the old taglist. The new taglist will
-// have a refcount of 1, owned by the caller, and will be writable as a result.
+// Copy (gst_tag_list_copy) creates a new TagList as a copy of the old taglist.
+// The new taglist will have a refcount of 1, owned by the caller, and will be
+// writable as a result.
 //
 // Note that this function is the semantic equivalent of a gst_tag_list_ref()
 // followed by a gst_tag_list_make_writable(). If you only want to hold on to a
@@ -53157,8 +55612,9 @@ func (taglist *TagList) Copy() *TagList {
 	return _tagList
 }
 
-// ForEach calls the given function for each tag inside the tag list. Note that
-// if there is no tag, the function won't be called at all.
+// ForEach (gst_tag_list_foreach) calls the given function for each tag inside
+// the tag list. Note that if there is no tag, the function won't be called at
+// all.
 //
 // The function takes the following parameters:
 //
@@ -53178,8 +55634,9 @@ func (list *TagList) ForEach(fn TagForEachFunc) {
 	runtime.KeepAlive(fn)
 }
 
-// Boolean copies the contents for the given tag into the value, merging
-// multiple values into one if multiple values are associated with the tag.
+// Boolean (gst_tag_list_get_boolean) copies the contents for the given tag into
+// the value, merging multiple values into one if multiple values are associated
+// with the tag.
 //
 // The function takes the following parameters:
 //
@@ -53217,8 +55674,8 @@ func (list *TagList) Boolean(tag string) (value bool, ok bool) {
 	return _value, _ok
 }
 
-// BooleanIndex gets the value that is at the given index for the given tag in
-// the given list.
+// BooleanIndex (gst_tag_list_get_boolean_index) gets the value that is at the
+// given index for the given tag in the given list.
 //
 // The function takes the following parameters:
 //
@@ -53260,9 +55717,9 @@ func (list *TagList) BooleanIndex(tag string, index uint) (value bool, ok bool) 
 	return _value, _ok
 }
 
-// DateTime copies the first datetime for the given tag in the taglist into the
-// variable pointed to by value. Unref the date with gst_date_time_unref() when
-// it is no longer needed.
+// DateTime (gst_tag_list_get_date_time) copies the first datetime for the given
+// tag in the taglist into the variable pointed to by value. Unref the date with
+// gst_date_time_unref() when it is no longer needed.
 //
 // Free-function: gst_date_time_unref.
 //
@@ -53306,9 +55763,10 @@ func (list *TagList) DateTime(tag string) (*DateTime, bool) {
 	return _value, _ok
 }
 
-// DateTimeIndex gets the datetime that is at the given index for the given
-// tag in the given list and copies it into the variable pointed to by value.
-// Unref the datetime with gst_date_time_unref() when it is no longer needed.
+// DateTimeIndex (gst_tag_list_get_date_time_index) gets the datetime that is
+// at the given index for the given tag in the given list and copies it into the
+// variable pointed to by value. Unref the datetime with gst_date_time_unref()
+// when it is no longer needed.
 //
 // Free-function: gst_date_time_unref.
 //
@@ -53356,8 +55814,9 @@ func (list *TagList) DateTimeIndex(tag string, index uint) (*DateTime, bool) {
 	return _value, _ok
 }
 
-// Double copies the contents for the given tag into the value, merging multiple
-// values into one if multiple values are associated with the tag.
+// Double (gst_tag_list_get_double) copies the contents for the given tag into
+// the value, merging multiple values into one if multiple values are associated
+// with the tag.
 //
 // The function takes the following parameters:
 //
@@ -53393,8 +55852,8 @@ func (list *TagList) Double(tag string) (float64, bool) {
 	return _value, _ok
 }
 
-// DoubleIndex gets the value that is at the given index for the given tag in
-// the given list.
+// DoubleIndex (gst_tag_list_get_double_index) gets the value that is at the
+// given index for the given tag in the given list.
 //
 // The function takes the following parameters:
 //
@@ -53434,8 +55893,9 @@ func (list *TagList) DoubleIndex(tag string, index uint) (float64, bool) {
 	return _value, _ok
 }
 
-// Float copies the contents for the given tag into the value, merging multiple
-// values into one if multiple values are associated with the tag.
+// Float (gst_tag_list_get_float) copies the contents for the given tag into the
+// value, merging multiple values into one if multiple values are associated
+// with the tag.
 //
 // The function takes the following parameters:
 //
@@ -53471,8 +55931,8 @@ func (list *TagList) Float(tag string) (float32, bool) {
 	return _value, _ok
 }
 
-// FloatIndex gets the value that is at the given index for the given tag in the
-// given list.
+// FloatIndex (gst_tag_list_get_float_index) gets the value that is at the given
+// index for the given tag in the given list.
 //
 // The function takes the following parameters:
 //
@@ -53512,8 +55972,9 @@ func (list *TagList) FloatIndex(tag string, index uint) (float32, bool) {
 	return _value, _ok
 }
 
-// Int copies the contents for the given tag into the value, merging multiple
-// values into one if multiple values are associated with the tag.
+// Int (gst_tag_list_get_int) copies the contents for the given tag into the
+// value, merging multiple values into one if multiple values are associated
+// with the tag.
 //
 // The function takes the following parameters:
 //
@@ -53549,8 +56010,9 @@ func (list *TagList) Int(tag string) (int, bool) {
 	return _value, _ok
 }
 
-// Int64 copies the contents for the given tag into the value, merging multiple
-// values into one if multiple values are associated with the tag.
+// Int64 (gst_tag_list_get_int64) copies the contents for the given tag into the
+// value, merging multiple values into one if multiple values are associated
+// with the tag.
 //
 // The function takes the following parameters:
 //
@@ -53586,8 +56048,8 @@ func (list *TagList) Int64(tag string) (int64, bool) {
 	return _value, _ok
 }
 
-// Int64Index gets the value that is at the given index for the given tag in the
-// given list.
+// Int64Index (gst_tag_list_get_int64_index) gets the value that is at the given
+// index for the given tag in the given list.
 //
 // The function takes the following parameters:
 //
@@ -53627,8 +56089,8 @@ func (list *TagList) Int64Index(tag string, index uint) (int64, bool) {
 	return _value, _ok
 }
 
-// IntIndex gets the value that is at the given index for the given tag in the
-// given list.
+// IntIndex (gst_tag_list_get_int_index) gets the value that is at the given
+// index for the given tag in the given list.
 //
 // The function takes the following parameters:
 //
@@ -53668,8 +56130,9 @@ func (list *TagList) IntIndex(tag string, index uint) (int, bool) {
 	return _value, _ok
 }
 
-// Pointer copies the contents for the given tag into the value, merging
-// multiple values into one if multiple values are associated with the tag.
+// Pointer (gst_tag_list_get_pointer) copies the contents for the given tag into
+// the value, merging multiple values into one if multiple values are associated
+// with the tag.
 //
 // The function takes the following parameters:
 //
@@ -53705,8 +56168,8 @@ func (list *TagList) Pointer(tag string) (unsafe.Pointer, bool) {
 	return _value, _ok
 }
 
-// PointerIndex gets the value that is at the given index for the given tag in
-// the given list.
+// PointerIndex (gst_tag_list_get_pointer_index) gets the value that is at the
+// given index for the given tag in the given list.
 //
 // The function takes the following parameters:
 //
@@ -53746,11 +56209,11 @@ func (list *TagList) PointerIndex(tag string, index uint) (unsafe.Pointer, bool)
 	return _value, _ok
 }
 
-// Sample copies the first sample for the given tag in the taglist into the
-// variable pointed to by sample. Free the sample with gst_sample_unref()
-// when it is no longer needed. You can retrieve the buffer from the sample
-// using gst_sample_get_buffer() and the associated caps (if any) with
-// gst_sample_get_caps().
+// Sample (gst_tag_list_get_sample) copies the first sample for the given tag
+// in the taglist into the variable pointed to by sample. Free the sample with
+// gst_sample_unref() when it is no longer needed. You can retrieve the buffer
+// from the sample using gst_sample_get_buffer() and the associated caps (if
+// any) with gst_sample_get_caps().
 //
 // Free-function: gst_sample_unref.
 //
@@ -53793,11 +56256,12 @@ func (list *TagList) Sample(tag string) (*Sample, bool) {
 	return _sample, _ok
 }
 
-// SampleIndex gets the sample that is at the given index for the given tag in
-// the given list and copies it into the variable pointed to by sample. Free the
-// sample with gst_sample_unref() when it is no longer needed. You can retrieve
-// the buffer from the sample using gst_sample_get_buffer() and the associated
-// caps (if any) with gst_sample_get_caps().
+// SampleIndex (gst_tag_list_get_sample_index) gets the sample that is at
+// the given index for the given tag in the given list and copies it into the
+// variable pointed to by sample. Free the sample with gst_sample_unref()
+// when it is no longer needed. You can retrieve the buffer from the sample
+// using gst_sample_get_buffer() and the associated caps (if any) with
+// gst_sample_get_caps().
 //
 // Free-function: gst_sample_unref.
 //
@@ -53844,7 +56308,7 @@ func (list *TagList) SampleIndex(tag string, index uint) (*Sample, bool) {
 	return _sample, _ok
 }
 
-// Scope gets the scope of list.
+// Scope (gst_tag_list_get_scope) gets the scope of list.
 //
 // The function returns the following values:
 //
@@ -53865,8 +56329,9 @@ func (list *TagList) Scope() TagScope {
 	return _tagScope
 }
 
-// String copies the contents for the given tag into the value, possibly merging
-// multiple values into one if multiple values are associated with the tag.
+// String (gst_tag_list_get_string) copies the contents for the given tag into
+// the value, possibly merging multiple values into one if multiple values are
+// associated with the tag.
 //
 // Use gst_tag_list_get_string_index (list, tag, 0, value) if you want to
 // retrieve the first string associated with this tag unmodified.
@@ -53912,8 +56377,8 @@ func (list *TagList) String(tag string) (string, bool) {
 	return _value, _ok
 }
 
-// StringIndex gets the value that is at the given index for the given tag in
-// the given list.
+// StringIndex (gst_tag_list_get_string_index) gets the value that is at the
+// given index for the given tag in the given list.
 //
 // The resulting string in value will be in UTF-8 encoding and should be freed
 // by the caller using g_free when no longer needed. The returned string is also
@@ -53960,7 +56425,8 @@ func (list *TagList) StringIndex(tag string, index uint) (string, bool) {
 	return _value, _ok
 }
 
-// TagSize checks how many value are stored in this tag list for the given tag.
+// TagSize (gst_tag_list_get_tag_size) checks how many value are stored in this
+// tag list for the given tag.
 //
 // The function takes the following parameters:
 //
@@ -53989,8 +56455,9 @@ func (list *TagList) TagSize(tag string) uint {
 	return _guint
 }
 
-// Uint copies the contents for the given tag into the value, merging multiple
-// values into one if multiple values are associated with the tag.
+// Uint (gst_tag_list_get_uint) copies the contents for the given tag into the
+// value, merging multiple values into one if multiple values are associated
+// with the tag.
 //
 // The function takes the following parameters:
 //
@@ -54026,8 +56493,9 @@ func (list *TagList) Uint(tag string) (uint, bool) {
 	return _value, _ok
 }
 
-// Uint64 copies the contents for the given tag into the value, merging multiple
-// values into one if multiple values are associated with the tag.
+// Uint64 (gst_tag_list_get_uint64) copies the contents for the given tag into
+// the value, merging multiple values into one if multiple values are associated
+// with the tag.
 //
 // The function takes the following parameters:
 //
@@ -54063,8 +56531,8 @@ func (list *TagList) Uint64(tag string) (uint64, bool) {
 	return _value, _ok
 }
 
-// Uint64Index gets the value that is at the given index for the given tag in
-// the given list.
+// Uint64Index (gst_tag_list_get_uint64_index) gets the value that is at the
+// given index for the given tag in the given list.
 //
 // The function takes the following parameters:
 //
@@ -54104,8 +56572,8 @@ func (list *TagList) Uint64Index(tag string, index uint) (uint64, bool) {
 	return _value, _ok
 }
 
-// UintIndex gets the value that is at the given index for the given tag in the
-// given list.
+// UintIndex (gst_tag_list_get_uint_index) gets the value that is at the given
+// index for the given tag in the given list.
 //
 // The function takes the following parameters:
 //
@@ -54145,8 +56613,8 @@ func (list *TagList) UintIndex(tag string, index uint) (uint, bool) {
 	return _value, _ok
 }
 
-// ValueIndex gets the value that is at the given index for the given tag in the
-// given list.
+// ValueIndex (gst_tag_list_get_value_index) gets the value that is at the given
+// index for the given tag in the given list.
 //
 // The function takes the following parameters:
 //
@@ -54182,8 +56650,8 @@ func (list *TagList) ValueIndex(tag string, index uint) *coreglib.Value {
 	return _value
 }
 
-// Insert inserts the tags of the from list into the first list using the given
-// mode.
+// Insert (gst_tag_list_insert) inserts the tags of the from list into the first
+// list using the given mode.
 //
 // The function takes the following parameters:
 //
@@ -54204,7 +56672,7 @@ func (into *TagList) Insert(from *TagList, mode TagMergeMode) {
 	runtime.KeepAlive(mode)
 }
 
-// IsEmpty checks if the given taglist is empty.
+// IsEmpty (gst_tag_list_is_empty) checks if the given taglist is empty.
 //
 // The function returns the following values:
 //
@@ -54227,7 +56695,7 @@ func (list *TagList) IsEmpty() bool {
 	return _ok
 }
 
-// IsEqual checks if the two given taglists are equal.
+// IsEqual (gst_tag_list_is_equal) checks if the two given taglists are equal.
 //
 // The function takes the following parameters:
 //
@@ -54257,9 +56725,9 @@ func (list1 *TagList) IsEqual(list2 *TagList) bool {
 	return _ok
 }
 
-// Merge merges the two given lists into a new list. If one of the lists is
-// NULL, a copy of the other is returned. If both lists are NULL, NULL is
-// returned.
+// Merge (gst_tag_list_merge) merges the two given lists into a new list.
+// If one of the lists is NULL, a copy of the other is returned. If both lists
+// are NULL, NULL is returned.
 //
 // Free-function: gst_tag_list_unref.
 //
@@ -54305,7 +56773,7 @@ func (list1 *TagList) Merge(list2 *TagList, mode TagMergeMode) *TagList {
 	return _tagList
 }
 
-// NTags: get the number of tags in list.
+// NTags (gst_tag_list_n_tags): get the number of tags in list.
 //
 // The function returns the following values:
 //
@@ -54326,7 +56794,8 @@ func (list *TagList) NTags() int {
 	return _gint
 }
 
-// NthTagName: get the name of the tag in list at index.
+// NthTagName (gst_tag_list_nth_tag_name): get the name of the tag in list at
+// index.
 //
 // The function takes the following parameters:
 //
@@ -54354,8 +56823,8 @@ func (list *TagList) NthTagName(index uint) string {
 	return _utf8
 }
 
-// PeekStringIndex peeks at the value that is at the given index for the given
-// tag in the given list.
+// PeekStringIndex (gst_tag_list_peek_string_index) peeks at the value that is
+// at the given index for the given tag in the given list.
 //
 // The resulting string in value will be in UTF-8 encoding and doesn't need to
 // be freed by the caller. The returned string is also guaranteed to be non-NULL
@@ -54399,7 +56868,7 @@ func (list *TagList) PeekStringIndex(tag string, index uint) (string, bool) {
 	return _value, _ok
 }
 
-// RemoveTag removes the given tag from the taglist.
+// RemoveTag (gst_tag_list_remove_tag) removes the given tag from the taglist.
 //
 // The function takes the following parameters:
 //
@@ -54417,8 +56886,8 @@ func (list *TagList) RemoveTag(tag string) {
 	runtime.KeepAlive(tag)
 }
 
-// SetScope sets the scope of list to scope. By default the scope of a taglist
-// is stream scope.
+// SetScope (gst_tag_list_set_scope) sets the scope of list to scope. By default
+// the scope of a taglist is stream scope.
 //
 // The function takes the following parameters:
 //
@@ -54435,7 +56904,7 @@ func (list *TagList) SetScope(scope TagScope) {
 	runtime.KeepAlive(scope)
 }
 
-// ToString serializes a tag list to a string.
+// ToString (gst_tag_list_to_string) serializes a tag list to a string.
 //
 // The function returns the following values:
 //
@@ -54458,9 +56927,9 @@ func (list *TagList) ToString() string {
 	return _utf8
 }
 
-// TagListCopyValue copies the contents for the given tag into the value,
-// merging multiple values into one if multiple values are associated with the
-// tag. You must g_value_unset() the value after use.
+// TagListCopyValue (gst_tag_list_copy_value) copies the contents for the given
+// tag into the value, merging multiple values into one if multiple values are
+// associated with the tag. You must g_value_unset() the value after use.
 //
 // The function takes the following parameters:
 //
@@ -54497,7 +56966,7 @@ func TagListCopyValue(list *TagList, tag string) (coreglib.Value, bool) {
 	return _dest, _ok
 }
 
-// TagSetterInterface interface.
+// TagSetterInterface (GstTagSetterInterface) interface.
 //
 // An instance of this type is always passed by reference.
 type TagSetterInterface struct {
@@ -54509,7 +56978,8 @@ type tagSetterInterface struct {
 	native *C.GstTagSetterInterface
 }
 
-// TaskClass: instance of this type is always passed by reference.
+// TaskClass (GstTaskClass): instance of this type is always passed by
+// reference.
 type TaskClass struct {
 	*taskClass
 }
@@ -54526,7 +56996,7 @@ func (t *TaskClass) ParentClass() *ObjectClass {
 	return _v
 }
 
-// TimedValue: structure for storing a timestamp and a value.
+// TimedValue (GstTimedValue): structure for storing a timestamp and a value.
 //
 // An instance of this type is always passed by reference.
 type TimedValue struct {
@@ -54560,8 +57030,8 @@ func (t *TimedValue) SetValue(value float64) {
 	*valptr = C.gdouble(value)
 }
 
-// Toc functions are used to create/free Toc and TocEntry structures. Also they
-// are used to convert Toc into Structure and vice versa.
+// Toc (GstToc) functions are used to create/free Toc and TocEntry structures.
+// Also they are used to convert Toc into Structure and vice versa.
 //
 // Toc lets you to inform other elements in pipeline or application that playing
 // source has some kind of table of contents (TOC). These may be chapters,
@@ -54643,7 +57113,7 @@ func NewToc(scope TocScope) *Toc {
 	return _toc
 }
 
-// AppendEntry appends the TocEntry entry to toc.
+// AppendEntry (gst_toc_append_entry) appends the TocEntry entry to toc.
 //
 // The function takes the following parameters:
 //
@@ -54670,7 +57140,7 @@ func (toc *Toc) Dump() {
 	runtime.KeepAlive(toc)
 }
 
-// FindEntry: find TocEntry with given uid in the toc.
+// FindEntry (gst_toc_find_entry): find TocEntry with given uid in the toc.
 //
 // The function takes the following parameters:
 //
@@ -54702,7 +57172,7 @@ func (toc *Toc) FindEntry(uid string) *TocEntry {
 	return _tocEntry
 }
 
-// Entries gets the list of TocEntry of toc.
+// Entries (gst_toc_get_entries) gets the list of TocEntry of toc.
 //
 // The function returns the following values:
 //
@@ -54748,7 +57218,7 @@ func (toc *Toc) Scope() TocScope {
 	return _tocScope
 }
 
-// Tags gets the tags for toc.
+// Tags (gst_toc_get_tags) gets the tags for toc.
 //
 // The function returns the following values:
 //
@@ -54771,7 +57241,8 @@ func (toc *Toc) Tags() *TagList {
 	return _tagList
 }
 
-// MergeTags: merge tags into the existing tags of toc using mode.
+// MergeTags (gst_toc_merge_tags): merge tags into the existing tags of toc
+// using mode.
 //
 // The function takes the following parameters:
 //
@@ -54794,7 +57265,7 @@ func (toc *Toc) MergeTags(tags *TagList, mode TagMergeMode) {
 	runtime.KeepAlive(mode)
 }
 
-// SetTags: set a TagList with tags for the complete toc.
+// SetTags (gst_toc_set_tags): set a TagList with tags for the complete toc.
 //
 // The function takes the following parameters:
 //
@@ -54814,7 +57285,7 @@ func (toc *Toc) SetTags(tags *TagList) {
 	runtime.KeepAlive(tags)
 }
 
-// TocEntry: instance of this type is always passed by reference.
+// TocEntry (GstTocEntry): instance of this type is always passed by reference.
 type TocEntry struct {
 	*tocEntry
 }
@@ -54856,7 +57327,8 @@ func NewTocEntry(typ TocEntryType, uid string) *TocEntry {
 	return _tocEntry
 }
 
-// AppendSubEntry appends the TocEntry subentry to entry.
+// AppendSubEntry (gst_toc_entry_append_sub_entry) appends the TocEntry subentry
+// to entry.
 //
 // The function takes the following parameters:
 //
@@ -54893,10 +57365,11 @@ func (entry *TocEntry) EntryType() TocEntryType {
 	return _tocEntryType
 }
 
-// Loop: get loop_type and repeat_count values from the entry and write them
-// into appropriate storages. Loops are e.g. used by sampled instruments.
-// GStreamer is not automatically applying the loop. The application can process
-// this meta data and use it e.g. to send a seek-event to loop a section.
+// Loop (gst_toc_entry_get_loop): get loop_type and repeat_count values from
+// the entry and write them into appropriate storages. Loops are e.g. used by
+// sampled instruments. GStreamer is not automatically applying the loop. The
+// application can process this meta data and use it e.g. to send a seek-event
+// to loop a section.
 //
 // The function returns the following values:
 //
@@ -54930,7 +57403,7 @@ func (entry *TocEntry) Loop() (TocLoopType, int, bool) {
 	return _loopType, _repeatCount, _ok
 }
 
-// Parent gets the parent TocEntry of entry.
+// Parent (gst_toc_entry_get_parent) gets the parent TocEntry of entry.
 //
 // The function returns the following values:
 //
@@ -54953,8 +57426,8 @@ func (entry *TocEntry) Parent() *TocEntry {
 	return _tocEntry
 }
 
-// StartStopTimes: get start and stop values from the entry and write them into
-// appropriate storages.
+// StartStopTimes (gst_toc_entry_get_start_stop_times): get start and stop
+// values from the entry and write them into appropriate storages.
 //
 // The function returns the following values:
 //
@@ -54986,7 +57459,7 @@ func (entry *TocEntry) StartStopTimes() (start int64, stop int64, ok bool) {
 	return _start, _stop, _ok
 }
 
-// SubEntries gets the sub-entries of entry.
+// SubEntries (gst_toc_entry_get_sub_entries) gets the sub-entries of entry.
 //
 // The function returns the following values:
 //
@@ -55013,7 +57486,7 @@ func (entry *TocEntry) SubEntries() []*TocEntry {
 	return _list
 }
 
-// Tags gets the tags for entry.
+// Tags (gst_toc_entry_get_tags) gets the tags for entry.
 //
 // The function returns the following values:
 //
@@ -55036,7 +57509,7 @@ func (entry *TocEntry) Tags() *TagList {
 	return _tagList
 }
 
-// Toc gets the parent Toc of entry.
+// Toc (gst_toc_entry_get_toc) gets the parent Toc of entry.
 //
 // The function returns the following values:
 //
@@ -55059,7 +57532,7 @@ func (entry *TocEntry) Toc() *Toc {
 	return _toc
 }
 
-// Uid gets the UID of entry.
+// Uid (gst_toc_entry_get_uid) gets the UID of entry.
 //
 // The function returns the following values:
 //
@@ -55122,7 +57595,8 @@ func (entry *TocEntry) IsSequence() bool {
 	return _ok
 }
 
-// MergeTags: merge tags into the existing tags of entry using mode.
+// MergeTags (gst_toc_entry_merge_tags): merge tags into the existing tags of
+// entry using mode.
 //
 // The function takes the following parameters:
 //
@@ -55145,7 +57619,8 @@ func (entry *TocEntry) MergeTags(tags *TagList, mode TagMergeMode) {
 	runtime.KeepAlive(mode)
 }
 
-// SetLoop: set loop_type and repeat_count values for the entry.
+// SetLoop (gst_toc_entry_set_loop): set loop_type and repeat_count values for
+// the entry.
 //
 // The function takes the following parameters:
 //
@@ -55166,7 +57641,8 @@ func (entry *TocEntry) SetLoop(loopType TocLoopType, repeatCount int) {
 	runtime.KeepAlive(repeatCount)
 }
 
-// SetStartStopTimes: set start and stop values for the entry.
+// SetStartStopTimes (gst_toc_entry_set_start_stop_times): set start and stop
+// values for the entry.
 //
 // The function takes the following parameters:
 //
@@ -55187,7 +57663,8 @@ func (entry *TocEntry) SetStartStopTimes(start int64, stop int64) {
 	runtime.KeepAlive(stop)
 }
 
-// SetTags: set a TagList with tags for the complete entry.
+// SetTags (gst_toc_entry_set_tags): set a TagList with tags for the complete
+// entry.
 //
 // The function takes the following parameters:
 //
@@ -55207,7 +57684,7 @@ func (entry *TocEntry) SetTags(tags *TagList) {
 	runtime.KeepAlive(tags)
 }
 
-// TocSetterInterface interface.
+// TocSetterInterface (GstTocSetterInterface) interface.
 //
 // An instance of this type is always passed by reference.
 type TocSetterInterface struct {
@@ -55219,7 +57696,8 @@ type tocSetterInterface struct {
 	native *C.GstTocSetterInterface
 }
 
-// TracerClass: instance of this type is always passed by reference.
+// TracerClass (GstTracerClass): instance of this type is always passed by
+// reference.
 type TracerClass struct {
 	*tracerClass
 }
@@ -55236,8 +57714,8 @@ func (t *TracerClass) ParentClass() *ObjectClass {
 	return _v
 }
 
-// TypeFind: following functions allow you to detect the media type of an
-// unknown stream.
+// TypeFind (GstTypeFind): following functions allow you to detect the media
+// type of an unknown stream.
 //
 // An instance of this type is always passed by reference.
 type TypeFind struct {
@@ -55262,7 +57740,7 @@ func (t *TypeFind) Data() unsafe.Pointer {
 	return _v
 }
 
-// Length: get the length of the data stream.
+// Length (gst_type_find_get_length): get the length of the data stream.
 //
 // The function returns the following values:
 //
@@ -55283,11 +57761,11 @@ func (find *TypeFind) Length() uint64 {
 	return _guint64
 }
 
-// Peek returns the size bytes of the stream to identify beginning at offset.
-// If offset is a positive number, the offset is relative to the beginning of
-// the stream, if offset is a negative number the offset is relative to the end
-// of the stream. The returned memory is valid until the typefinding function
-// returns and must not be freed.
+// Peek (gst_type_find_peek) returns the size bytes of the stream to identify
+// beginning at offset. If offset is a positive number, the offset is relative
+// to the beginning of the stream, if offset is a negative number the offset
+// is relative to the end of the stream. The returned memory is valid until the
+// typefinding function returns and must not be freed.
 //
 // The function takes the following parameters:
 //
@@ -55322,10 +57800,10 @@ func (find *TypeFind) Peek(offset int64, size uint) *byte {
 	return _guint8
 }
 
-// Suggest: if a TypeFindFunction calls this function it suggests the caps with
-// the given probability. A TypeFindFunction may supply different suggestions in
-// one call. It is up to the caller of the TypeFindFunction to interpret these
-// values.
+// Suggest (gst_type_find_suggest): if a TypeFindFunction calls this function
+// it suggests the caps with the given probability. A TypeFindFunction may
+// supply different suggestions in one call. It is up to the caller of the
+// TypeFindFunction to interpret these values.
 //
 // The function takes the following parameters:
 //
@@ -55346,8 +57824,9 @@ func (find *TypeFind) Suggest(probability uint, caps *Caps) {
 	runtime.KeepAlive(caps)
 }
 
-// SuggestEmptySimple: if a TypeFindFunction calls this function it suggests
-// caps of the given media_type with the given probability.
+// SuggestEmptySimple (gst_type_find_suggest_empty_simple): if a
+// TypeFindFunction calls this function it suggests caps of the given media_type
+// with the given probability.
 //
 // This function is similar to gst_type_find_suggest_simple(), but uses a Caps
 // with no fields.
@@ -55372,9 +57851,9 @@ func (find *TypeFind) SuggestEmptySimple(probability uint, mediaType string) {
 	runtime.KeepAlive(mediaType)
 }
 
-// TypeFindRegister registers a new typefind function to be used for
-// typefinding. After registering this function will be available for
-// typefinding. This function is typically called during an element's plugin
+// TypeFindRegister (gst_type_find_register) registers a new typefind function
+// to be used for typefinding. After registering this function will be available
+// for typefinding. This function is typically called during an element's plugin
 // initialization.
 //
 // The function takes the following parameters:
@@ -55436,8 +57915,8 @@ func TypeFindRegister(plugin *Plugin, name string, rank uint, fn TypeFindFunctio
 	return _ok
 }
 
-// URIHandlerInterface: any Element using this interface should implement these
-// methods.
+// URIHandlerInterface (GstURIHandlerInterface): any Element using this
+// interface should implement these methods.
 //
 // An instance of this type is always passed by reference.
 type URIHandlerInterface struct {
@@ -55449,9 +57928,9 @@ type uriHandlerInterface struct {
 	native *C.GstURIHandlerInterface
 }
 
-// URI object can be used to parse and split a URI string into its constituent
-// parts. Two Uri objects can be joined to make a new Uri using the algorithm
-// described in RFC3986.
+// URI (GstUri) object can be used to parse and split a URI string into its
+// constituent parts. Two Uri objects can be joined to make a new Uri using the
+// algorithm described in RFC3986.
 //
 // An instance of this type is always passed by reference.
 type URI struct {
@@ -55527,8 +58006,9 @@ func NewURI(scheme string, userinfo string, host string, port uint, path string,
 	return _uri
 }
 
-// AppendPath: append a path onto the end of the path in the URI. The path is
-// not normalized, call #gst_uri_normalize() to normalize the path.
+// AppendPath (gst_uri_append_path): append a path onto the end of the path in
+// the URI. The path is not normalized, call #gst_uri_normalize() to normalize
+// the path.
 //
 // The function takes the following parameters:
 //
@@ -55564,7 +58044,8 @@ func (uri *URI) AppendPath(relativePath string) bool {
 	return _ok
 }
 
-// AppendPathSegment: append a single path segment onto the end of the URI path.
+// AppendPathSegment (gst_uri_append_path_segment): append a single path segment
+// onto the end of the URI path.
 //
 // The function takes the following parameters:
 //
@@ -55599,8 +58080,8 @@ func (uri *URI) AppendPathSegment(pathSegment string) bool {
 	return _ok
 }
 
-// Equal compares two Uri objects to see if they represent the same normalized
-// URI.
+// Equal (gst_uri_equal) compares two Uri objects to see if they represent the
+// same normalized URI.
 //
 // The function takes the following parameters:
 //
@@ -55630,8 +58111,8 @@ func (first *URI) Equal(second *URI) bool {
 	return _ok
 }
 
-// FromStringWithBase: like gst_uri_from_string() but also joins with a base
-// URI.
+// FromStringWithBase (gst_uri_from_string_with_base): like
+// gst_uri_from_string() but also joins with a base URI.
 //
 // The function takes the following parameters:
 //
@@ -55670,8 +58151,8 @@ func (base *URI) FromStringWithBase(uri string) *URI {
 	return _ret
 }
 
-// Fragment: get the fragment name from the URI or NULL if it doesn't exist.
-// If uri is NULL then returns NULL.
+// Fragment (gst_uri_get_fragment): get the fragment name from the URI or NULL
+// if it doesn't exist. If uri is NULL then returns NULL.
 //
 // The function returns the following values:
 //
@@ -55696,8 +58177,8 @@ func (uri *URI) Fragment() string {
 	return _utf8
 }
 
-// Host: get the host name from the URI or NULL if it doesn't exist. If uri is
-// NULL then returns NULL.
+// Host (gst_uri_get_host): get the host name from the URI or NULL if it doesn't
+// exist. If uri is NULL then returns NULL.
 //
 // The function returns the following values:
 //
@@ -55722,15 +58203,15 @@ func (uri *URI) Host() string {
 	return _utf8
 }
 
-// MediaFragmentTable: get the media fragment table from the URI, as defined
-// by "Media Fragments URI 1.0". Hash table returned by this API is a list of
-// "key-value" pairs, and the each pair is generated by splitting "URI fragment"
-// per "&" sub-delims, then "key" and "value" are split by "=" sub-delims.
-// The "key" returned by this API may be undefined keyword by standard.
-// A value may be NULL to indicate that the key should appear in the fragment
-// string in the URI, but does not have a value. Free the returned Table with
-// #g_hash_table_unref() when it is no longer required. Modifying this hash
-// table does not affect the fragment in the URI.
+// MediaFragmentTable (gst_uri_get_media_fragment_table): get the media fragment
+// table from the URI, as defined by "Media Fragments URI 1.0". Hash table
+// returned by this API is a list of "key-value" pairs, and the each pair is
+// generated by splitting "URI fragment" per "&" sub-delims, then "key" and
+// "value" are split by "=" sub-delims. The "key" returned by this API may be
+// undefined keyword by standard. A value may be NULL to indicate that the key
+// should appear in the fragment string in the URI, but does not have a value.
+// Free the returned Table with #g_hash_table_unref() when it is no longer
+// required. Modifying this hash table does not affect the fragment in the URI.
 //
 // See more about Media Fragments URI 1.0 (W3C) at
 // https://www.w3.org/TR/media-frags/.
@@ -55769,7 +58250,7 @@ func (uri *URI) MediaFragmentTable() map[string]string {
 	return _hashTable
 }
 
-// Path: extract the path string from the URI object.
+// Path (gst_uri_get_path): extract the path string from the URI object.
 //
 // The function returns the following values:
 //
@@ -55796,7 +58277,8 @@ func (uri *URI) Path() string {
 	return _utf8
 }
 
-// PathSegments: get a list of path segments from the URI.
+// PathSegments (gst_uri_get_path_segments): get a list of path segments from
+// the URI.
 //
 // The function returns the following values:
 //
@@ -55827,8 +58309,8 @@ func (uri *URI) PathSegments() []string {
 	return _list
 }
 
-// PathString: extract the path string from the URI object as a percent encoded
-// URI path.
+// PathString (gst_uri_get_path_string): extract the path string from the URI
+// object as a percent encoded URI path.
 //
 // The function returns the following values:
 //
@@ -55855,8 +58337,8 @@ func (uri *URI) PathString() string {
 	return _utf8
 }
 
-// Port: get the port number from the URI or GST_URI_NO_PORT if it doesn't
-// exist. If uri is NULL then returns GST_URI_NO_PORT.
+// Port (gst_uri_get_port): get the port number from the URI or GST_URI_NO_PORT
+// if it doesn't exist. If uri is NULL then returns GST_URI_NO_PORT.
 //
 // The function returns the following values:
 //
@@ -55879,7 +58361,8 @@ func (uri *URI) Port() uint {
 	return _guint
 }
 
-// QueryKeys: get a list of the query keys from the URI.
+// QueryKeys (gst_uri_get_query_keys): get a list of the query keys from the
+// URI.
 //
 // The function returns the following values:
 //
@@ -55908,7 +58391,8 @@ func (uri *URI) QueryKeys() []string {
 	return _list
 }
 
-// QueryString: get a percent encoded URI query string from the uri.
+// QueryString (gst_uri_get_query_string): get a percent encoded URI query
+// string from the uri.
 //
 // The function returns the following values:
 //
@@ -55935,11 +58419,11 @@ func (uri *URI) QueryString() string {
 	return _utf8
 }
 
-// QueryStringOrdered: get a percent encoded URI query string from the uri,
-// with query parameters in the order provided by the keys list. Only parameter
-// keys in the list will be added to the resulting URI string. This method can
-// be used by retrieving the keys with gst_uri_get_query_keys() and then sorting
-// the list, for example.
+// QueryStringOrdered (gst_uri_get_query_string_ordered): get a percent encoded
+// URI query string from the uri, with query parameters in the order provided
+// by the keys list. Only parameter keys in the list will be added to the
+// resulting URI string. This method can be used by retrieving the keys with
+// gst_uri_get_query_keys() and then sorting the list, for example.
 //
 // The function takes the following parameters:
 //
@@ -55982,11 +58466,12 @@ func (uri *URI) QueryStringOrdered(keys []string) string {
 	return _utf8
 }
 
-// QueryTable: get the query table from the URI. Keys and values in the table
-// are freed with g_free when they are deleted. A value may be NULL to indicate
-// that the key should appear in the query string in the URI, but does not have
-// a value. Free the returned Table with #g_hash_table_unref() when it is no
-// longer required. Modifying this hash table will modify the query in the URI.
+// QueryTable (gst_uri_get_query_table): get the query table from the URI.
+// Keys and values in the table are freed with g_free when they are deleted.
+// A value may be NULL to indicate that the key should appear in the query
+// string in the URI, but does not have a value. Free the returned Table with
+// #g_hash_table_unref() when it is no longer required. Modifying this hash
+// table will modify the query in the URI.
 //
 // The function returns the following values:
 //
@@ -56022,11 +58507,11 @@ func (uri *URI) QueryTable() map[string]string {
 	return _hashTable
 }
 
-// QueryValue: get the value associated with the query_key key. Will return NULL
-// if the key has no value or if the key does not exist in the URI query table.
-// Because NULL is returned for both missing keys and keys with no value,
-// you should use gst_uri_query_has_key() to determine if a key is present in
-// the URI query.
+// QueryValue (gst_uri_get_query_value): get the value associated with the
+// query_key key. Will return NULL if the key has no value or if the key does
+// not exist in the URI query table. Because NULL is returned for both missing
+// keys and keys with no value, you should use gst_uri_query_has_key() to
+// determine if a key is present in the URI query.
 //
 // The function takes the following parameters:
 //
@@ -56059,8 +58544,8 @@ func (uri *URI) QueryValue(queryKey string) string {
 	return _utf8
 }
 
-// Scheme: get the scheme name from the URI or NULL if it doesn't exist.
-// If uri is NULL then returns NULL.
+// Scheme (gst_uri_get_scheme): get the scheme name from the URI or NULL if it
+// doesn't exist. If uri is NULL then returns NULL.
 //
 // The function returns the following values:
 //
@@ -56085,8 +58570,9 @@ func (uri *URI) Scheme() string {
 	return _utf8
 }
 
-// Userinfo: get the userinfo (usually in the form "username:password") from the
-// URI or NULL if it doesn't exist. If uri is NULL then returns NULL.
+// Userinfo (gst_uri_get_userinfo): get the userinfo (usually in the form
+// "username:password") from the URI or NULL if it doesn't exist. If uri is NULL
+// then returns NULL.
 //
 // The function returns the following values:
 //
@@ -56111,8 +58597,8 @@ func (uri *URI) Userinfo() string {
 	return _utf8
 }
 
-// IsNormalized tests the uri to see if it is normalized. A NULL uri is
-// considered to be normalized.
+// IsNormalized (gst_uri_is_normalized) tests the uri to see if it is
+// normalized. A NULL uri is considered to be normalized.
 //
 // The function returns the following values:
 //
@@ -56137,7 +58623,7 @@ func (uri *URI) IsNormalized() bool {
 	return _ok
 }
 
-// IsWritable: check if it is safe to write to this Uri.
+// IsWritable (gst_uri_is_writable): check if it is safe to write to this Uri.
 //
 // Check if the refcount of uri is exactly 1, meaning that no other reference
 // exists to the Uri and that the Uri is therefore writable.
@@ -56166,9 +58652,9 @@ func (uri *URI) IsWritable() bool {
 	return _ok
 }
 
-// Join a reference URI onto a base URI using the method from RFC 3986.
-// If either URI is NULL then the other URI will be returned with the ref count
-// increased.
+// Join (gst_uri_join) a reference URI onto a base URI using the method from RFC
+// 3986. If either URI is NULL then the other URI will be returned with the ref
+// count increased.
 //
 // The function takes the following parameters:
 //
@@ -56209,7 +58695,7 @@ func (baseUri *URI) Join(refUri *URI) *URI {
 	return _uri
 }
 
-// MakeWritable: make the Uri writable.
+// MakeWritable (gst_uri_make_writable): make the Uri writable.
 //
 // Checks if uri is writable, and if so the original object is returned. If not,
 // then a writable copy is made and returned. This gives away the reference
@@ -56242,7 +58728,8 @@ func (uri *URI) MakeWritable() *URI {
 	return _ret
 }
 
-// NewWithBase: like gst_uri_new(), but joins the new URI onto a base URI.
+// NewWithBase (gst_uri_new_with_base): like gst_uri_new(), but joins the new
+// URI onto a base URI.
 //
 // The function takes the following parameters:
 //
@@ -56322,9 +58809,9 @@ func (base *URI) NewWithBase(scheme string, userinfo string, host string, port u
 	return _uri
 }
 
-// Normalize: normalization will remove extra path segments ("." and "..") from
-// the URI. It will also convert the scheme and host name to lower case and any
-// percent-encoded values to uppercase.
+// Normalize (gst_uri_normalize): normalization will remove extra path segments
+// ("." and "..") from the URI. It will also convert the scheme and host name to
+// lower case and any percent-encoded values to uppercase.
 //
 // The Uri object must be writable. Check with gst_uri_is_writable() or use
 // gst_uri_make_writable() first.
@@ -56350,7 +58837,8 @@ func (uri *URI) Normalize() bool {
 	return _ok
 }
 
-// QueryHasKey: check if there is a query table entry for the query_key key.
+// QueryHasKey (gst_uri_query_has_key): check if there is a query table entry
+// for the query_key key.
 //
 // The function takes the following parameters:
 //
@@ -56383,7 +58871,8 @@ func (uri *URI) QueryHasKey(queryKey string) bool {
 	return _ok
 }
 
-// RemoveQueryKey: remove an entry from the query table by key.
+// RemoveQueryKey (gst_uri_remove_query_key): remove an entry from the query
+// table by key.
 //
 // The function takes the following parameters:
 //
@@ -56416,8 +58905,8 @@ func (uri *URI) RemoveQueryKey(queryKey string) bool {
 	return _ok
 }
 
-// SetFragment sets the fragment string in the URI. Use a value of NULL in
-// fragment to unset the fragment string.
+// SetFragment (gst_uri_set_fragment) sets the fragment string in the URI.
+// Use a value of NULL in fragment to unset the fragment string.
 //
 // The function takes the following parameters:
 //
@@ -56452,7 +58941,7 @@ func (uri *URI) SetFragment(fragment string) bool {
 	return _ok
 }
 
-// SetHost: set or unset the host for the URI.
+// SetHost (gst_uri_set_host): set or unset the host for the URI.
 //
 // The function takes the following parameters:
 //
@@ -56485,7 +58974,7 @@ func (uri *URI) SetHost(host string) bool {
 	return _ok
 }
 
-// SetPath sets or unsets the path in the URI.
+// SetPath (gst_uri_set_path) sets or unsets the path in the URI.
 //
 // The function takes the following parameters:
 //
@@ -56521,7 +59010,8 @@ func (uri *URI) SetPath(path string) bool {
 	return _ok
 }
 
-// SetPathSegments: replace the path segments list in the URI.
+// SetPathSegments (gst_uri_set_path_segments): replace the path segments list
+// in the URI.
 //
 // The function takes the following parameters:
 //
@@ -56560,7 +59050,7 @@ func (uri *URI) SetPathSegments(pathSegments []string) bool {
 	return _ok
 }
 
-// SetPathString sets or unsets the path in the URI.
+// SetPathString (gst_uri_set_path_string) sets or unsets the path in the URI.
 //
 // The function takes the following parameters:
 //
@@ -56594,7 +59084,7 @@ func (uri *URI) SetPathString(path string) bool {
 	return _ok
 }
 
-// SetPort: set or unset the port number for the URI.
+// SetPort (gst_uri_set_port): set or unset the port number for the URI.
 //
 // The function takes the following parameters:
 //
@@ -56626,7 +59116,8 @@ func (uri *URI) SetPort(port uint) bool {
 	return _ok
 }
 
-// SetQueryString sets or unsets the query table in the URI.
+// SetQueryString (gst_uri_set_query_string) sets or unsets the query table in
+// the URI.
 //
 // The function takes the following parameters:
 //
@@ -56662,9 +59153,10 @@ func (uri *URI) SetQueryString(query string) bool {
 	return _ok
 }
 
-// SetQueryTable: set the query table to use in the URI. The old table is
-// unreferenced and a reference to the new one is used instead. A value if NULL
-// for query_table will remove the query string from the URI.
+// SetQueryTable (gst_uri_set_query_table): set the query table to use in the
+// URI. The old table is unreferenced and a reference to the new one is used
+// instead. A value if NULL for query_table will remove the query string from
+// the URI.
 //
 // The function takes the following parameters:
 //
@@ -56708,9 +59200,9 @@ func (uri *URI) SetQueryTable(queryTable map[string]string) bool {
 	return _ok
 }
 
-// SetQueryValue: this inserts or replaces a key in the query table.
-// A query_value of NULL indicates that the key has no associated value,
-// but will still be present in the query string.
+// SetQueryValue (gst_uri_set_query_value): this inserts or replaces a key
+// in the query table. A query_value of NULL indicates that the key has no
+// associated value, but will still be present in the query string.
 //
 // The function takes the following parameters:
 //
@@ -56750,7 +59242,7 @@ func (uri *URI) SetQueryValue(queryKey string, queryValue string) bool {
 	return _ok
 }
 
-// SetScheme: set or unset the scheme for the URI.
+// SetScheme (gst_uri_set_scheme): set or unset the scheme for the URI.
 //
 // The function takes the following parameters:
 //
@@ -56783,7 +59275,8 @@ func (uri *URI) SetScheme(scheme string) bool {
 	return _ok
 }
 
-// SetUserinfo: set or unset the user information for the URI.
+// SetUserinfo (gst_uri_set_userinfo): set or unset the user information for the
+// URI.
 //
 // The function takes the following parameters:
 //
@@ -56816,7 +59309,7 @@ func (uri *URI) SetUserinfo(userinfo string) bool {
 	return _ok
 }
 
-// String: convert the URI to a string.
+// String (gst_uri_to_string): convert the URI to a string.
 //
 // Returns the URI as held in this object as a #gchar* nul-terminated string.
 // The caller should g_free() the string once they are finished with it.
@@ -56842,9 +59335,9 @@ func (uri *URI) String() string {
 	return _utf8
 }
 
-// ToStringWithKeys: convert the URI to a string, with the query arguments in a
-// specific order. Only the keys in the keys list will be added to the resulting
-// string.
+// ToStringWithKeys (gst_uri_to_string_with_keys): convert the URI to a string,
+// with the query arguments in a specific order. Only the keys in the keys list
+// will be added to the resulting string.
 //
 // Returns the URI as held in this object as a #gchar* nul-terminated string.
 // The caller should g_free() the string once they are finished with it.
@@ -56888,7 +59381,8 @@ func (uri *URI) ToStringWithKeys(keys []string) string {
 	return _utf8
 }
 
-// URIConstruct constructs a URI for a given valid protocol and location.
+// URIConstruct (gst_uri_construct) constructs a URI for a given valid protocol
+// and location.
 //
 // Free-function: g_free
 //
@@ -56924,8 +59418,8 @@ func URIConstruct(protocol, location string) string {
 	return _utf8
 }
 
-// URIFromString parses a URI string into a new Uri object. Will return NULL if
-// the URI cannot be parsed.
+// URIFromString (gst_uri_from_string) parses a URI string into a new Uri
+// object. Will return NULL if the URI cannot be parsed.
 //
 // The function takes the following parameters:
 //
@@ -56959,10 +59453,10 @@ func URIFromString(uri string) *URI {
 	return _ret
 }
 
-// URIFromStringEscaped parses a URI string into a new Uri object. Will return
-// NULL if the URI cannot be parsed. This is identical to gst_uri_from_string()
-// except that the userinfo and fragment components of the URI will not be
-// unescaped while parsing.
+// URIFromStringEscaped (gst_uri_from_string_escaped) parses a URI string into
+// a new Uri object. Will return NULL if the URI cannot be parsed. This is
+// identical to gst_uri_from_string() except that the userinfo and fragment
+// components of the URI will not be unescaped while parsing.
 //
 // Use this when you need to extract a username and password from the
 // userinfo such as https://user:passwordexample.com since either may contain
@@ -57005,10 +59499,10 @@ func URIFromStringEscaped(uri string) *URI {
 	return _ret
 }
 
-// URIGetLocation extracts the location out of a given valid URI, ie. the
-// protocol and "://" are stripped from the URI, which means that the location
-// returned includes the hostname if one is specified. The returned string must
-// be freed using g_free().
+// URIGetLocation (gst_uri_get_location) extracts the location out of a given
+// valid URI, ie. the protocol and "://" are stripped from the URI, which
+// means that the location returned includes the hostname if one is specified.
+// The returned string must be freed using g_free().
 //
 // Free-function: g_free.
 //
@@ -57041,8 +59535,8 @@ func URIGetLocation(uri string) string {
 	return _utf8
 }
 
-// URIGetProtocol extracts the protocol out of a given valid URI. The returned
-// string must be freed using g_free().
+// URIGetProtocol (gst_uri_get_protocol) extracts the protocol out of a given
+// valid URI. The returned string must be freed using g_free().
 //
 // The function takes the following parameters:
 //
@@ -57071,7 +59565,8 @@ func URIGetProtocol(uri string) string {
 	return _utf8
 }
 
-// URIHasProtocol checks if the protocol of a given valid URI matches protocol.
+// URIHasProtocol (gst_uri_has_protocol) checks if the protocol of a given valid
+// URI matches protocol.
 //
 // The function takes the following parameters:
 //
@@ -57104,9 +59599,9 @@ func URIHasProtocol(uri, protocol string) bool {
 	return _ok
 }
 
-// URIIsValid tests if the given string is a valid URI identifier. URIs start
-// with a valid scheme followed by ":" and maybe a string identifying the
-// location.
+// URIIsValid (gst_uri_is_valid) tests if the given string is a valid URI
+// identifier. URIs start with a valid scheme followed by ":" and maybe a string
+// identifying the location.
 //
 // The function takes the following parameters:
 //
@@ -57134,8 +59629,9 @@ func URIIsValid(uri string) bool {
 	return _ok
 }
 
-// URIJoinStrings: this is a convenience function to join two URI strings and
-// return the result. The returned string should be g_free()'d after use.
+// URIJoinStrings (gst_uri_join_strings): this is a convenience function to
+// join two URI strings and return the result. The returned string should be
+// g_free()'d after use.
 //
 // The function takes the following parameters:
 //
@@ -57170,9 +59666,10 @@ func URIJoinStrings(baseUri, refUri string) string {
 	return _utf8
 }
 
-// URIProtocolIsSupported checks if an element exists that supports the given
-// URI protocol. Note that a positive return value does not imply that a
-// subsequent call to gst_element_make_from_uri() is guaranteed to work.
+// URIProtocolIsSupported (gst_uri_protocol_is_supported) checks if an element
+// exists that supports the given URI protocol. Note that a positive return
+// value does not imply that a subsequent call to gst_element_make_from_uri() is
+// guaranteed to work.
 //
 // The function takes the following parameters:
 //
@@ -57204,9 +59701,10 @@ func URIProtocolIsSupported(typ URIType, protocol string) bool {
 	return _ok
 }
 
-// URIProtocolIsValid tests if the given string is a valid protocol identifier.
-// Protocols must consist of alphanumeric characters, '+', '-' and '.' and must
-// start with a alphabetic character. See RFC 3986 Section 3.1.
+// URIProtocolIsValid (gst_uri_protocol_is_valid) tests if the given string is a
+// valid protocol identifier. Protocols must consist of alphanumeric characters,
+// '+', '-' and '.' and must start with a alphabetic character. See RFC 3986
+// Section 3.1.
 //
 // The function takes the following parameters:
 //
@@ -57234,7 +59732,7 @@ func URIProtocolIsValid(protocol string) bool {
 	return _ok
 }
 
-// ValueTable: VTable for the #GValue type.
+// ValueTable (GstValueTable): VTable for the #GValue type.
 //
 // An instance of this type is always passed by reference.
 type ValueTable struct {
@@ -57432,3 +59930,6 @@ func (s *Structure) UnmarshalInto(data interface{}) error {
 func Init() {
 	C.gst_init(nil, nil)
 }
+
+// ClockTimeNone means infinite timeout or an empty value
+const ClockTimeNone ClockTime = 0xffffffffffffffff // Ideally this would be set to C.GST_CLOCK_TIME_NONE but this causes issues on MacOS and Windows

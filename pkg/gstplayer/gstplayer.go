@@ -75,13 +75,17 @@ func init() {
 type PlayerColorBalanceType C.gint
 
 const (
-	// PlayerColorBalanceHue: hue or color balance.
+	// PlayerColorBalanceHue (GST_PLAYER_COLOR_BALANCE_HUE): hue or color
+	// balance.
 	PlayerColorBalanceHue PlayerColorBalanceType = 3
-	// PlayerColorBalanceBrightness brightness or black level.
+	// PlayerColorBalanceBrightness (GST_PLAYER_COLOR_BALANCE_BRIGHTNESS)
+	// brightness or black level.
 	PlayerColorBalanceBrightness PlayerColorBalanceType = 0
-	// PlayerColorBalanceSaturation: color saturation or chroma gain.
+	// PlayerColorBalanceSaturation (GST_PLAYER_COLOR_BALANCE_SATURATION):
+	// color saturation or chroma gain.
 	PlayerColorBalanceSaturation PlayerColorBalanceType = 2
-	// PlayerColorBalanceContrast: contrast or luma gain.
+	// PlayerColorBalanceContrast (GST_PLAYER_COLOR_BALANCE_CONTRAST): contrast
+	// or luma gain.
 	PlayerColorBalanceContrast PlayerColorBalanceType = 1
 )
 
@@ -105,8 +109,8 @@ func (p PlayerColorBalanceType) String() string {
 	}
 }
 
-// PlayerColorBalanceTypeGetName gets a string representing the given color
-// balance type.
+// PlayerColorBalanceTypeGetName (gst_player_color_balance_type_get_name) gets a
+// string representing the given color balance type.
 //
 // The function takes the following parameters:
 //
@@ -134,7 +138,7 @@ func PlayerColorBalanceTypeGetName(typ PlayerColorBalanceType) string {
 type PlayerError C.gint
 
 const (
-	// PlayerErrorFailed: generic error.
+	// PlayerErrorFailed (GST_PLAYER_ERROR_FAILED): generic error.
 	PlayerErrorFailed PlayerError = iota
 )
 
@@ -152,7 +156,8 @@ func (p PlayerError) String() string {
 	}
 }
 
-// PlayerErrorGetName gets a string representing the given error.
+// PlayerErrorGetName (gst_player_error_get_name) gets a string representing the
+// given error.
 //
 // The function takes the following parameters:
 //
@@ -220,13 +225,14 @@ func (p PlayerSnapshotFormat) String() string {
 type PlayerState C.gint
 
 const (
-	// PlayerStateStopped: player is stopped.
+	// PlayerStateStopped (GST_PLAYER_STATE_STOPPED): player is stopped.
 	PlayerStateStopped PlayerState = iota
-	// PlayerStateBuffering: player is buffering.
+	// PlayerStateBuffering (GST_PLAYER_STATE_BUFFERING): player is buffering.
 	PlayerStateBuffering
-	// PlayerStatePaused: player is paused.
+	// PlayerStatePaused (GST_PLAYER_STATE_PAUSED): player is paused.
 	PlayerStatePaused
-	// PlayerStatePlaying: player is currently playing a stream.
+	// PlayerStatePlaying (GST_PLAYER_STATE_PLAYING): player is currently
+	// playing a stream.
 	PlayerStatePlaying
 )
 
@@ -250,7 +256,8 @@ func (p PlayerState) String() string {
 	}
 }
 
-// PlayerStateGetName gets a string representing the given state.
+// PlayerStateGetName (gst_player_state_get_name) gets a string representing the
+// given state.
 //
 // The function takes the following parameters:
 //
@@ -291,7 +298,10 @@ var (
 	_ coreglib.Objector = (*PlayerSignalDispatcher)(nil)
 )
 
-// PlayerSignalDispatcherer describes PlayerSignalDispatcher's interface methods.
+// PlayerSignalDispatcherer describes types inherited from PlayerSignalDispatcher.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
 type PlayerSignalDispatcherer interface {
 	coreglib.Objector
 
@@ -338,7 +348,10 @@ var (
 	_ coreglib.Objector = (*PlayerVideoRenderer)(nil)
 )
 
-// PlayerVideoRendererer describes PlayerVideoRenderer's interface methods.
+// PlayerVideoRendererer describes types inherited from PlayerVideoRenderer.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
 type PlayerVideoRendererer interface {
 	coreglib.Objector
 
@@ -369,9 +382,9 @@ func BasePlayerVideoRenderer(obj PlayerVideoRendererer) *PlayerVideoRenderer {
 	return obj.basePlayerVideoRenderer()
 }
 
-// Player: starting from GStreamer 1.20, application developers are strongly
-// advised to migrate to Play. Player will be deprecated in 1.20 and most likely
-// removed by 1.24.
+// Player (GstPlayer): starting from GStreamer 1.20, application developers are
+// strongly advised to migrate to Play. Player will be deprecated in 1.20 and
+// most likely removed by 1.24.
 type Player struct {
 	_ [0]func() // equal guard
 	gst.GstObject
@@ -380,6 +393,140 @@ type Player struct {
 var (
 	_ gst.GstObjector = (*Player)(nil)
 )
+
+// Playerer describes types inherited from Player.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type Playerer interface {
+	gst.GstObjector
+
+	// AudioVideoOffset (gst_player_get_audio_video_offset): retrieve the
+	// current value of audio-video-offset property.
+	AudioVideoOffset() int64
+	// ColorBalance (gst_player_get_color_balance): retrieve the current value
+	// of the indicated type.
+	ColorBalance(typ PlayerColorBalanceType) float64
+	// Config (gst_player_get_config): get a copy of the current configuration
+	// of the player.
+	Config() *gst.Structure
+	// CurrentAudioTrack (gst_player_get_current_audio_track): function to get
+	// current audio PlayerAudioInfo instance.
+	CurrentAudioTrack() *PlayerAudioInfo
+	// CurrentSubtitleTrack (gst_player_get_current_subtitle_track): function to
+	// get current subtitle PlayerSubtitleInfo instance.
+	CurrentSubtitleTrack() *PlayerSubtitleInfo
+	// CurrentVideoTrack (gst_player_get_current_video_track): function to get
+	// current video PlayerVideoInfo instance.
+	CurrentVideoTrack() *PlayerVideoInfo
+	CurrentVisualization() string
+	// Duration (gst_player_get_duration) retrieves the duration of the media
+	// stream that self represents.
+	Duration() gst.ClockTime
+	// MediaInfo (gst_player_get_media_info): function to get the current media
+	// info PlayerMediaInfo instance.
+	MediaInfo() *PlayerMediaInfo
+	// MultiviewFlags (gst_player_get_multiview_flags): retrieve the current
+	// value of the indicated type.
+	MultiviewFlags() gstvideo.VideoMultiviewFlags
+	// MultiviewMode (gst_player_get_multiview_mode): retrieve the current value
+	// of the indicated type.
+	MultiviewMode() gstvideo.VideoMultiviewFramePacking
+	Mute() bool
+	Pipeline() gst.Elementer
+	Position() gst.ClockTime
+	Rate() float64
+	// SubtitleURI (gst_player_get_subtitle_uri): current subtitle URI.
+	SubtitleURI() string
+	// SubtitleVideoOffset (gst_player_get_subtitle_video_offset): retrieve the
+	// current value of subtitle-video-offset property.
+	SubtitleVideoOffset() int64
+	// URI (gst_player_get_uri) gets the URI of the currently-playing stream.
+	URI() string
+	// VideoSnapshot (gst_player_get_video_snapshot): get a snapshot of the
+	// currently selected video stream, if any.
+	VideoSnapshot(format PlayerSnapshotFormat, config *gst.Structure) *gst.Sample
+	// Volume (gst_player_get_volume) returns the current volume level, as a
+	// percentage between 0 and 1.
+	Volume() float64
+	// HasColorBalance (gst_player_has_color_balance) checks whether the player
+	// has color balance support available.
+	HasColorBalance() bool
+	// Pause (gst_player_pause) pauses the current stream.
+	Pause()
+	// Play (gst_player_play): request to play the loaded stream.
+	Play()
+	// Seek (gst_player_seek) seeks the currently-playing stream to the absolute
+	// position time in nanoseconds.
+	Seek(position gst.ClockTime)
+	SetAudioTrack(streamIndex int) bool
+	// SetAudioTrackEnabled (gst_player_set_audio_track_enabled): enable or
+	// disable the current audio track.
+	SetAudioTrackEnabled(enabled bool)
+	// SetAudioVideoOffset (gst_player_set_audio_video_offset) sets
+	// audio-video-offset property by value of offset.
+	SetAudioVideoOffset(offset int64)
+	// SetColorBalance (gst_player_set_color_balance) sets the current value of
+	// the indicated channel type to the passed value.
+	SetColorBalance(typ PlayerColorBalanceType, value float64)
+	// SetConfig (gst_player_set_config): set the configuration of the player.
+	SetConfig(config *gst.Structure) bool
+	// SetMultiviewFlags (gst_player_set_multiview_flags) sets the current value
+	// of the indicated mode type to the passed value.
+	SetMultiviewFlags(flags gstvideo.VideoMultiviewFlags)
+	// SetMultiviewMode (gst_player_set_multiview_mode) sets the current value
+	// of the indicated mode type to the passed value.
+	SetMultiviewMode(mode gstvideo.VideoMultiviewFramePacking)
+	// SetMute (gst_player_set_mute): TRUE if the currently-playing stream
+	// should be muted.
+	SetMute(val bool)
+	// SetRate (gst_player_set_rate): playback at specified rate.
+	SetRate(rate float64)
+	SetSubtitleTrack(streamIndex int) bool
+	// SetSubtitleTrackEnabled (gst_player_set_subtitle_track_enabled): enable
+	// or disable the current subtitle track.
+	SetSubtitleTrackEnabled(enabled bool)
+	// SetSubtitleURI (gst_player_set_subtitle_uri) sets the external subtitle
+	// URI.
+	SetSubtitleURI(uri string)
+	// SetSubtitleVideoOffset (gst_player_set_subtitle_video_offset) sets
+	// subtitle-video-offset property by value of offset.
+	SetSubtitleVideoOffset(offset int64)
+	// SetURI (gst_player_set_uri) sets the next URI to play.
+	SetURI(uri string)
+	SetVideoTrack(streamIndex int) bool
+	// SetVideoTrackEnabled (gst_player_set_video_track_enabled): enable or
+	// disable the current video track.
+	SetVideoTrackEnabled(enabled bool)
+	SetVisualization(name string) bool
+	// SetVisualizationEnabled (gst_player_set_visualization_enabled): enable or
+	// disable the visualization.
+	SetVisualizationEnabled(enabled bool)
+	// SetVolume (gst_player_set_volume) sets the volume level of the stream as
+	// a percentage between 0 and 1.
+	SetVolume(val float64)
+	// Stop (gst_player_stop) stops playing the current stream and resets to the
+	// first position in the stream.
+	Stop()
+
+	ConnectBuffering(func(object int)) coreglib.SignalHandle
+	ConnectDurationChanged(func(object uint64)) coreglib.SignalHandle
+	ConnectEndOfStream(func()) coreglib.SignalHandle
+	ConnectError(func(object error)) coreglib.SignalHandle
+	ConnectMediaInfoUpdated(func(object *PlayerMediaInfo)) coreglib.SignalHandle
+	ConnectMuteChanged(func()) coreglib.SignalHandle
+	ConnectPositionUpdated(func(object uint64)) coreglib.SignalHandle
+	ConnectSeekDone(func(object uint64)) coreglib.SignalHandle
+	ConnectStateChanged(func(object PlayerState)) coreglib.SignalHandle
+	ConnectURILoaded(func(object string)) coreglib.SignalHandle
+	ConnectVideoDimensionsChanged(func(object, p0 int)) coreglib.SignalHandle
+	ConnectVolumeChanged(func()) coreglib.SignalHandle
+	ConnectWarning(func(object error)) coreglib.SignalHandle
+
+	basePlayer() *Player
+}
+
+var _ Playerer = (*Player)(nil)
 
 func wrapPlayer(obj *coreglib.Object) *Player {
 	return &Player{
@@ -393,6 +540,15 @@ func wrapPlayer(obj *coreglib.Object) *Player {
 
 func marshalPlayer(p uintptr) (interface{}, error) {
 	return wrapPlayer(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
+}
+
+func (player *Player) basePlayer() *Player {
+	return player
+}
+
+// BasePlayer returns the underlying base object.
+func BasePlayer(obj Playerer) *Player {
+	return obj.basePlayer()
 }
 
 func (player *Player) ConnectBuffering(f func(object int)) coreglib.SignalHandle {
@@ -447,9 +603,10 @@ func (player *Player) ConnectWarning(f func(object error)) coreglib.SignalHandle
 	return coreglib.ConnectGeneratedClosure(player, "warning", false, unsafe.Pointer(C._gotk4_gstplayer1_Player_ConnectWarning), f)
 }
 
-// NewPlayer creates a new Player instance that uses signal_dispatcher to
-// dispatch signals to some event loop system, or emits signals directly if NULL
-// is passed. See gst_player_g_main_context_signal_dispatcher_new().
+// NewPlayer (gst_player_new) creates a new Player instance that
+// uses signal_dispatcher to dispatch signals to some event
+// loop system, or emits signals directly if NULL is passed. See
+// gst_player_g_main_context_signal_dispatcher_new().
 //
 // Video is going to be rendered by video_renderer, or if NULL is provided
 // no special video set up will be done and some default handling will be
@@ -491,7 +648,8 @@ func NewPlayer(videoRenderer PlayerVideoRendererer, signalDispatcher PlayerSigna
 	return _player
 }
 
-// AudioVideoOffset: retrieve the current value of audio-video-offset property.
+// AudioVideoOffset (gst_player_get_audio_video_offset): retrieve the current
+// value of audio-video-offset property.
 //
 // The function returns the following values:
 //
@@ -512,7 +670,8 @@ func (player *Player) AudioVideoOffset() int64 {
 	return _gint64
 }
 
-// ColorBalance: retrieve the current value of the indicated type.
+// ColorBalance (gst_player_get_color_balance): retrieve the current value of
+// the indicated type.
 //
 // The function takes the following parameters:
 //
@@ -541,9 +700,9 @@ func (player *Player) ColorBalance(typ PlayerColorBalanceType) float64 {
 	return _gdouble
 }
 
-// Config: get a copy of the current configuration of the player. This
-// configuration can either be modified and used for the gst_player_set_config()
-// call or it must be freed after usage.
+// Config (gst_player_get_config): get a copy of the current configuration
+// of the player. This configuration can either be modified and used for the
+// gst_player_set_config() call or it must be freed after usage.
 //
 // The function returns the following values:
 //
@@ -570,7 +729,8 @@ func (player *Player) Config() *gst.Structure {
 	return _structure
 }
 
-// CurrentAudioTrack: function to get current audio PlayerAudioInfo instance.
+// CurrentAudioTrack (gst_player_get_current_audio_track): function to get
+// current audio PlayerAudioInfo instance.
 //
 // The function returns the following values:
 //
@@ -595,8 +755,8 @@ func (player *Player) CurrentAudioTrack() *PlayerAudioInfo {
 	return _playerAudioInfo
 }
 
-// CurrentSubtitleTrack: function to get current subtitle PlayerSubtitleInfo
-// instance.
+// CurrentSubtitleTrack (gst_player_get_current_subtitle_track): function to get
+// current subtitle PlayerSubtitleInfo instance.
 //
 // The function returns the following values:
 //
@@ -621,7 +781,8 @@ func (player *Player) CurrentSubtitleTrack() *PlayerSubtitleInfo {
 	return _playerSubtitleInfo
 }
 
-// CurrentVideoTrack: function to get current video PlayerVideoInfo instance.
+// CurrentVideoTrack (gst_player_get_current_video_track): function to get
+// current video PlayerVideoInfo instance.
 //
 // The function returns the following values:
 //
@@ -669,7 +830,8 @@ func (player *Player) CurrentVisualization() string {
 	return _utf8
 }
 
-// Duration retrieves the duration of the media stream that self represents.
+// Duration (gst_player_get_duration) retrieves the duration of the media stream
+// that self represents.
 //
 // The function returns the following values:
 //
@@ -691,7 +853,8 @@ func (player *Player) Duration() gst.ClockTime {
 	return _clockTime
 }
 
-// MediaInfo: function to get the current media info PlayerMediaInfo instance.
+// MediaInfo (gst_player_get_media_info): function to get the current media info
+// PlayerMediaInfo instance.
 //
 // The function returns the following values:
 //
@@ -716,7 +879,8 @@ func (player *Player) MediaInfo() *PlayerMediaInfo {
 	return _playerMediaInfo
 }
 
-// MultiviewFlags: retrieve the current value of the indicated type.
+// MultiviewFlags (gst_player_get_multiview_flags): retrieve the current value
+// of the indicated type.
 //
 // The function returns the following values:
 //
@@ -737,7 +901,8 @@ func (player *Player) MultiviewFlags() gstvideo.VideoMultiviewFlags {
 	return _videoMultiviewFlags
 }
 
-// MultiviewMode: retrieve the current value of the indicated type.
+// MultiviewMode (gst_player_get_multiview_mode): retrieve the current value of
+// the indicated type.
 //
 // The function returns the following values:
 //
@@ -855,7 +1020,7 @@ func (player *Player) Rate() float64 {
 	return _gdouble
 }
 
-// SubtitleURI: current subtitle URI.
+// SubtitleURI (gst_player_get_subtitle_uri): current subtitle URI.
 //
 // The function returns the following values:
 //
@@ -880,8 +1045,8 @@ func (player *Player) SubtitleURI() string {
 	return _utf8
 }
 
-// SubtitleVideoOffset: retrieve the current value of subtitle-video-offset
-// property.
+// SubtitleVideoOffset (gst_player_get_subtitle_video_offset): retrieve the
+// current value of subtitle-video-offset property.
 //
 // The function returns the following values:
 //
@@ -902,7 +1067,7 @@ func (player *Player) SubtitleVideoOffset() int64 {
 	return _gint64
 }
 
-// URI gets the URI of the currently-playing stream.
+// URI (gst_player_get_uri) gets the URI of the currently-playing stream.
 //
 // The function returns the following values:
 //
@@ -927,9 +1092,10 @@ func (player *Player) URI() string {
 	return _utf8
 }
 
-// VideoSnapshot: get a snapshot of the currently selected video stream, if any.
-// The format can be selected with format and optional configuration is possible
-// with config Currently supported settings are:
+// VideoSnapshot (gst_player_get_video_snapshot): get a snapshot of the
+// currently selected video stream, if any. The format can be selected with
+// format and optional configuration is possible with config Currently supported
+// settings are:
 //
 // - width, height of type G_TYPE_INT
 //
@@ -976,7 +1142,8 @@ func (player *Player) VideoSnapshot(format PlayerSnapshotFormat, config *gst.Str
 	return _sample
 }
 
-// Volume returns the current volume level, as a percentage between 0 and 1.
+// Volume (gst_player_get_volume) returns the current volume level, as a
+// percentage between 0 and 1.
 //
 // The function returns the following values:
 //
@@ -997,8 +1164,8 @@ func (player *Player) Volume() float64 {
 	return _gdouble
 }
 
-// HasColorBalance checks whether the player has color balance support
-// available.
+// HasColorBalance (gst_player_has_color_balance) checks whether the player has
+// color balance support available.
 //
 // The function returns the following values:
 //
@@ -1021,7 +1188,7 @@ func (player *Player) HasColorBalance() bool {
 	return _ok
 }
 
-// Pause pauses the current stream.
+// Pause (gst_player_pause) pauses the current stream.
 func (player *Player) Pause() {
 	var _arg0 *C.GstPlayer // out
 
@@ -1031,7 +1198,7 @@ func (player *Player) Pause() {
 	runtime.KeepAlive(player)
 }
 
-// Play: request to play the loaded stream.
+// Play (gst_player_play): request to play the loaded stream.
 func (player *Player) Play() {
 	var _arg0 *C.GstPlayer // out
 
@@ -1041,8 +1208,8 @@ func (player *Player) Play() {
 	runtime.KeepAlive(player)
 }
 
-// Seek seeks the currently-playing stream to the absolute position time in
-// nanoseconds.
+// Seek (gst_player_seek) seeks the currently-playing stream to the absolute
+// position time in nanoseconds.
 //
 // The function takes the following parameters:
 //
@@ -1089,7 +1256,8 @@ func (player *Player) SetAudioTrack(streamIndex int) bool {
 	return _ok
 }
 
-// SetAudioTrackEnabled: enable or disable the current audio track.
+// SetAudioTrackEnabled (gst_player_set_audio_track_enabled): enable or disable
+// the current audio track.
 //
 // The function takes the following parameters:
 //
@@ -1108,7 +1276,8 @@ func (player *Player) SetAudioTrackEnabled(enabled bool) {
 	runtime.KeepAlive(enabled)
 }
 
-// SetAudioVideoOffset sets audio-video-offset property by value of offset.
+// SetAudioVideoOffset (gst_player_set_audio_video_offset) sets
+// audio-video-offset property by value of offset.
 //
 // The function takes the following parameters:
 //
@@ -1125,8 +1294,8 @@ func (player *Player) SetAudioVideoOffset(offset int64) {
 	runtime.KeepAlive(offset)
 }
 
-// SetColorBalance sets the current value of the indicated channel type to the
-// passed value.
+// SetColorBalance (gst_player_set_color_balance) sets the current value of the
+// indicated channel type to the passed value.
 //
 // The function takes the following parameters:
 //
@@ -1147,10 +1316,11 @@ func (player *Player) SetColorBalance(typ PlayerColorBalanceType, value float64)
 	runtime.KeepAlive(value)
 }
 
-// SetConfig: set the configuration of the player. If the player is already
-// configured, and the configuration haven't change, this function will return
-// TRUE. If the player is not in the GST_PLAYER_STATE_STOPPED, this method will
-// return FALSE and active configuration will remain.
+// SetConfig (gst_player_set_config): set the configuration of the player.
+// If the player is already configured, and the configuration haven't
+// change, this function will return TRUE. If the player is not in the
+// GST_PLAYER_STATE_STOPPED, this method will return FALSE and active
+// configuration will remain.
 //
 // config is a Structure that contains the configuration parameters for the
 // player.
@@ -1186,8 +1356,8 @@ func (player *Player) SetConfig(config *gst.Structure) bool {
 	return _ok
 }
 
-// SetMultiviewFlags sets the current value of the indicated mode type to the
-// passed value.
+// SetMultiviewFlags (gst_player_set_multiview_flags) sets the current value of
+// the indicated mode type to the passed value.
 //
 // The function takes the following parameters:
 //
@@ -1204,8 +1374,8 @@ func (player *Player) SetMultiviewFlags(flags gstvideo.VideoMultiviewFlags) {
 	runtime.KeepAlive(flags)
 }
 
-// SetMultiviewMode sets the current value of the indicated mode type to the
-// passed value.
+// SetMultiviewMode (gst_player_set_multiview_mode) sets the current value of
+// the indicated mode type to the passed value.
 //
 // The function takes the following parameters:
 //
@@ -1222,7 +1392,8 @@ func (player *Player) SetMultiviewMode(mode gstvideo.VideoMultiviewFramePacking)
 	runtime.KeepAlive(mode)
 }
 
-// SetMute: TRUE if the currently-playing stream should be muted.
+// SetMute (gst_player_set_mute): TRUE if the currently-playing stream should be
+// muted.
 //
 // The function takes the following parameters:
 //
@@ -1241,7 +1412,7 @@ func (player *Player) SetMute(val bool) {
 	runtime.KeepAlive(val)
 }
 
-// SetRate: playback at specified rate.
+// SetRate (gst_player_set_rate): playback at specified rate.
 //
 // The function takes the following parameters:
 //
@@ -1288,7 +1459,8 @@ func (player *Player) SetSubtitleTrack(streamIndex int) bool {
 	return _ok
 }
 
-// SetSubtitleTrackEnabled: enable or disable the current subtitle track.
+// SetSubtitleTrackEnabled (gst_player_set_subtitle_track_enabled): enable or
+// disable the current subtitle track.
 //
 // The function takes the following parameters:
 //
@@ -1307,9 +1479,10 @@ func (player *Player) SetSubtitleTrackEnabled(enabled bool) {
 	runtime.KeepAlive(enabled)
 }
 
-// SetSubtitleURI sets the external subtitle URI. This should be combined with a
-// call to gst_player_set_subtitle_track_enabled(player, TRUE) so the subtitles
-// are actually rendered.
+// SetSubtitleURI (gst_player_set_subtitle_uri) sets the
+// external subtitle URI. This should be combined with a call to
+// gst_player_set_subtitle_track_enabled(player, TRUE) so the subtitles are
+// actually rendered.
 //
 // The function takes the following parameters:
 //
@@ -1329,8 +1502,8 @@ func (player *Player) SetSubtitleURI(uri string) {
 	runtime.KeepAlive(uri)
 }
 
-// SetSubtitleVideoOffset sets subtitle-video-offset property by value of
-// offset.
+// SetSubtitleVideoOffset (gst_player_set_subtitle_video_offset) sets
+// subtitle-video-offset property by value of offset.
 //
 // The function takes the following parameters:
 //
@@ -1347,7 +1520,7 @@ func (player *Player) SetSubtitleVideoOffset(offset int64) {
 	runtime.KeepAlive(offset)
 }
 
-// SetURI sets the next URI to play.
+// SetURI (gst_player_set_uri) sets the next URI to play.
 //
 // The function takes the following parameters:
 //
@@ -1397,7 +1570,8 @@ func (player *Player) SetVideoTrack(streamIndex int) bool {
 	return _ok
 }
 
-// SetVideoTrackEnabled: enable or disable the current video track.
+// SetVideoTrackEnabled (gst_player_set_video_track_enabled): enable or disable
+// the current video track.
 //
 // The function takes the following parameters:
 //
@@ -1448,7 +1622,8 @@ func (player *Player) SetVisualization(name string) bool {
 	return _ok
 }
 
-// SetVisualizationEnabled: enable or disable the visualization.
+// SetVisualizationEnabled (gst_player_set_visualization_enabled): enable or
+// disable the visualization.
 //
 // The function takes the following parameters:
 //
@@ -1467,8 +1642,8 @@ func (player *Player) SetVisualizationEnabled(enabled bool) {
 	runtime.KeepAlive(enabled)
 }
 
-// SetVolume sets the volume level of the stream as a percentage between 0 and
-// 1.
+// SetVolume (gst_player_set_volume) sets the volume level of the stream as a
+// percentage between 0 and 1.
 //
 // This volume is a linear factor. For showing the volume in a GUI it might make
 // sense to first convert from a different format. Volume sliders should usually
@@ -1489,8 +1664,8 @@ func (player *Player) SetVolume(val float64) {
 	runtime.KeepAlive(val)
 }
 
-// Stop stops playing the current stream and resets to the first position in the
-// stream.
+// Stop (gst_player_stop) stops playing the current stream and resets to the
+// first position in the stream.
 func (player *Player) Stop() {
 	var _arg0 *C.GstPlayer // out
 
@@ -1548,8 +1723,9 @@ func PlayerConfigGetSeekAccurate(config *gst.Structure) bool {
 	return _ok
 }
 
-// PlayerConfigGetUserAgent: return the user agent which has been configured
-// using gst_player_config_set_user_agent() if any.
+// PlayerConfigGetUserAgent (gst_player_config_get_user_agent): return the user
+// agent which has been configured using gst_player_config_set_user_agent() if
+// any.
 //
 // The function takes the following parameters:
 //
@@ -1577,8 +1753,10 @@ func PlayerConfigGetUserAgent(config *gst.Structure) string {
 	return _utf8
 }
 
-// PlayerConfigSetPositionUpdateInterval: set interval in milliseconds between
-// two position-updated signals. pass 0 to stop updating the position.
+// PlayerConfigSetPositionUpdateInterval
+// (gst_player_config_set_position_update_interval): set interval in
+// milliseconds between two position-updated signals. pass 0 to stop updating
+// the position.
 //
 // The function takes the following parameters:
 //
@@ -1596,10 +1774,11 @@ func PlayerConfigSetPositionUpdateInterval(config *gst.Structure, interval uint)
 	runtime.KeepAlive(interval)
 }
 
-// PlayerConfigSetSeekAccurate: enable or disable accurate seeking. When
-// enabled, elements will try harder to seek as accurately as possible to the
-// requested seek position. Generally it will be slower especially for formats
-// that don't have any indexes or timestamp markers in the stream.
+// PlayerConfigSetSeekAccurate (gst_player_config_set_seek_accurate): enable
+// or disable accurate seeking. When enabled, elements will try harder to seek
+// as accurately as possible to the requested seek position. Generally it will
+// be slower especially for formats that don't have any indexes or timestamp
+// markers in the stream.
 //
 // If accurate seeking is disabled, elements will seek as close as the request
 // position without slowing down seeking too much.
@@ -1624,9 +1803,9 @@ func PlayerConfigSetSeekAccurate(config *gst.Structure, accurate bool) {
 	runtime.KeepAlive(accurate)
 }
 
-// PlayerConfigSetUserAgent: set the user agent to pass to the server if player
-// needs to connect to a server during playback. This is typically used when
-// playing HTTP or RTSP streams.
+// PlayerConfigSetUserAgent (gst_player_config_set_user_agent): set the user
+// agent to pass to the server if player needs to connect to a server during
+// playback. This is typically used when playing HTTP or RTSP streams.
 //
 // The function takes the following parameters:
 //
@@ -1769,7 +1948,7 @@ func PlayerVisualizationsGet() []*PlayerVisualization {
 	return _playerVisualizations
 }
 
-// PlayerAudioInfo specific to audio streams.
+// PlayerAudioInfo (GstPlayerAudioInfo) specific to audio streams.
 type PlayerAudioInfo struct {
 	_ [0]func() // equal guard
 	PlayerStreamInfo
@@ -1778,6 +1957,24 @@ type PlayerAudioInfo struct {
 var (
 	_ PlayerStreamInfor = (*PlayerAudioInfo)(nil)
 )
+
+// PlayerAudioInfor describes types inherited from PlayerAudioInfo.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type PlayerAudioInfor interface {
+	PlayerStreamInfor
+
+	Bitrate() int
+	Channels() int
+	Language() string
+	MaxBitrate() int
+	SampleRate() int
+
+	basePlayerAudioInfo() *PlayerAudioInfo
+}
+
+var _ PlayerAudioInfor = (*PlayerAudioInfo)(nil)
 
 func wrapPlayerAudioInfo(obj *coreglib.Object) *PlayerAudioInfo {
 	return &PlayerAudioInfo{
@@ -1789,6 +1986,15 @@ func wrapPlayerAudioInfo(obj *coreglib.Object) *PlayerAudioInfo {
 
 func marshalPlayerAudioInfo(p uintptr) (interface{}, error) {
 	return wrapPlayerAudioInfo(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
+}
+
+func (info *PlayerAudioInfo) basePlayerAudioInfo() *PlayerAudioInfo {
+	return info
+}
+
+// BasePlayerAudioInfo returns the underlying base object.
+func BasePlayerAudioInfo(obj PlayerAudioInfor) *PlayerAudioInfo {
+	return obj.basePlayerAudioInfo()
 }
 
 // The function returns the following values:
@@ -1899,6 +2105,19 @@ var (
 	_ coreglib.Objector = (*PlayerGMainContextSignalDispatcher)(nil)
 )
 
+// PlayerGMainContextSignalDispatcherer describes types inherited from PlayerGMainContextSignalDispatcher.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type PlayerGMainContextSignalDispatcherer interface {
+	coreglib.Objector
+	PlayerSignalDispatcherer
+
+	basePlayerGMainContextSignalDispatcher() *PlayerGMainContextSignalDispatcher
+}
+
+var _ PlayerGMainContextSignalDispatcherer = (*PlayerGMainContextSignalDispatcher)(nil)
+
 func wrapPlayerGMainContextSignalDispatcher(obj *coreglib.Object) *PlayerGMainContextSignalDispatcher {
 	return &PlayerGMainContextSignalDispatcher{
 		Object: obj,
@@ -1912,9 +2131,19 @@ func marshalPlayerGMainContextSignalDispatcher(p uintptr) (interface{}, error) {
 	return wrapPlayerGMainContextSignalDispatcher(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// NewPlayerGMainContextSignalDispatcher creates a new GstPlayerSignalDispatcher
-// that uses application_context, or the thread default one if NULL is used.
-// See gst_player_new().
+func (v *PlayerGMainContextSignalDispatcher) basePlayerGMainContextSignalDispatcher() *PlayerGMainContextSignalDispatcher {
+	return v
+}
+
+// BasePlayerGMainContextSignalDispatcher returns the underlying base object.
+func BasePlayerGMainContextSignalDispatcher(obj PlayerGMainContextSignalDispatcherer) *PlayerGMainContextSignalDispatcher {
+	return obj.basePlayerGMainContextSignalDispatcher()
+}
+
+// NewPlayerGMainContextSignalDispatcher
+// (gst_player_g_main_context_signal_dispatcher_new) creates a new
+// GstPlayerSignalDispatcher that uses application_context, or the thread
+// default one if NULL is used. See gst_player_new().
 //
 // The function takes the following parameters:
 //
@@ -1941,7 +2170,8 @@ func NewPlayerGMainContextSignalDispatcher(applicationContext *glib.MainContext)
 	return _playerSignalDispatcher
 }
 
-// PlayerMediaInfo: structure containing the media information of a URI.
+// PlayerMediaInfo (GstPlayerMediaInfo): structure containing the media
+// information of a URI.
 type PlayerMediaInfo struct {
 	_ [0]func() // equal guard
 	*coreglib.Object
@@ -1951,6 +2181,37 @@ var (
 	_ coreglib.Objector = (*PlayerMediaInfo)(nil)
 )
 
+// PlayerMediaInfor describes types inherited from PlayerMediaInfo.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type PlayerMediaInfor interface {
+	coreglib.Objector
+
+	AudioStreams() []*PlayerAudioInfo
+	ContainerFormat() string
+	Duration() gst.ClockTime
+	// ImageSample (gst_player_media_info_get_image_sample): function to get the
+	// image (or preview-image) stored in taglist.
+	ImageSample() *gst.Sample
+	NumberOfAudioStreams() uint
+	NumberOfStreams() uint
+	NumberOfSubtitleStreams() uint
+	NumberOfVideoStreams() uint
+	StreamList() []PlayerStreamInfor
+	SubtitleStreams() []*PlayerSubtitleInfo
+	Tags() *gst.TagList
+	Title() string
+	URI() string
+	VideoStreams() []*PlayerVideoInfo
+	IsLive() bool
+	IsSeekable() bool
+
+	basePlayerMediaInfo() *PlayerMediaInfo
+}
+
+var _ PlayerMediaInfor = (*PlayerMediaInfo)(nil)
+
 func wrapPlayerMediaInfo(obj *coreglib.Object) *PlayerMediaInfo {
 	return &PlayerMediaInfo{
 		Object: obj,
@@ -1959,6 +2220,15 @@ func wrapPlayerMediaInfo(obj *coreglib.Object) *PlayerMediaInfo {
 
 func marshalPlayerMediaInfo(p uintptr) (interface{}, error) {
 	return wrapPlayerMediaInfo(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
+}
+
+func (info *PlayerMediaInfo) basePlayerMediaInfo() *PlayerMediaInfo {
+	return info
+}
+
+// BasePlayerMediaInfo returns the underlying base object.
+func BasePlayerMediaInfo(obj PlayerMediaInfor) *PlayerMediaInfo {
+	return obj.basePlayerMediaInfo()
 }
 
 // The function returns the following values:
@@ -2026,8 +2296,9 @@ func (info *PlayerMediaInfo) Duration() gst.ClockTime {
 	return _clockTime
 }
 
-// ImageSample: function to get the image (or preview-image) stored in taglist.
-// Application can use gst_sample_*_() API's to get caps, buffer etc.
+// ImageSample (gst_player_media_info_get_image_sample): function to get
+// the image (or preview-image) stored in taglist. Application can use
+// gst_sample_*_() API's to get caps, buffer etc.
 //
 // The function returns the following values:
 //
@@ -2326,9 +2597,10 @@ func (info *PlayerMediaInfo) IsSeekable() bool {
 	return _ok
 }
 
-// PlayerStreamInfo: base structure for information concerning a media stream.
-// Depending on the stream type, one can find more media-specific information in
-// PlayerVideoInfo, PlayerAudioInfo, PlayerSubtitleInfo.
+// PlayerStreamInfo (GstPlayerStreamInfo): base structure for information
+// concerning a media stream. Depending on the stream type, one can find
+// more media-specific information in PlayerVideoInfo, PlayerAudioInfo,
+// PlayerSubtitleInfo.
 type PlayerStreamInfo struct {
 	_ [0]func() // equal guard
 	*coreglib.Object
@@ -2338,12 +2610,26 @@ var (
 	_ coreglib.Objector = (*PlayerStreamInfo)(nil)
 )
 
-// PlayerStreamInfor describes types inherited from class PlayerStreamInfo.
+// PlayerStreamInfor describes types inherited from PlayerStreamInfo.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type PlayerStreamInfor interface {
 	coreglib.Objector
+
+	Caps() *gst.Caps
+	// Codec (gst_player_stream_info_get_codec): string describing codec used in
+	// PlayerStreamInfo.
+	Codec() string
+	// Index (gst_player_stream_info_get_index): function to get stream index
+	// from PlayerStreamInfo instance or -1 if unknown.
+	Index() int
+	// StreamType (gst_player_stream_info_get_stream_type): function to return
+	// human readable name for the stream type of the given info (ex: "audio",
+	// "video", "subtitle").
+	StreamType() string
+	Tags() *gst.TagList
+
 	basePlayerStreamInfo() *PlayerStreamInfo
 }
 
@@ -2395,7 +2681,8 @@ func (info *PlayerStreamInfo) Caps() *gst.Caps {
 	return _caps
 }
 
-// Codec: string describing codec used in PlayerStreamInfo.
+// Codec (gst_player_stream_info_get_codec): string describing codec used in
+// PlayerStreamInfo.
 //
 // The function returns the following values:
 //
@@ -2418,8 +2705,8 @@ func (info *PlayerStreamInfo) Codec() string {
 	return _utf8
 }
 
-// Index: function to get stream index from PlayerStreamInfo instance or -1 if
-// unknown.
+// Index (gst_player_stream_info_get_index): function to get stream index from
+// PlayerStreamInfo instance or -1 if unknown.
 //
 // The function returns the following values:
 //
@@ -2440,8 +2727,9 @@ func (info *PlayerStreamInfo) Index() int {
 	return _gint
 }
 
-// StreamType: function to return human readable name for the stream type of the
-// given info (ex: "audio", "video", "subtitle").
+// StreamType (gst_player_stream_info_get_stream_type): function to return human
+// readable name for the stream type of the given info (ex: "audio", "video",
+// "subtitle").
 //
 // The function returns the following values:
 //
@@ -2483,7 +2771,7 @@ func (info *PlayerStreamInfo) Tags() *gst.TagList {
 	return _tagList
 }
 
-// PlayerSubtitleInfo specific to subtitle streams.
+// PlayerSubtitleInfo (GstPlayerSubtitleInfo) specific to subtitle streams.
 type PlayerSubtitleInfo struct {
 	_ [0]func() // equal guard
 	PlayerStreamInfo
@@ -2492,6 +2780,20 @@ type PlayerSubtitleInfo struct {
 var (
 	_ PlayerStreamInfor = (*PlayerSubtitleInfo)(nil)
 )
+
+// PlayerSubtitleInfor describes types inherited from PlayerSubtitleInfo.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type PlayerSubtitleInfor interface {
+	PlayerStreamInfor
+
+	Language() string
+
+	basePlayerSubtitleInfo() *PlayerSubtitleInfo
+}
+
+var _ PlayerSubtitleInfor = (*PlayerSubtitleInfo)(nil)
 
 func wrapPlayerSubtitleInfo(obj *coreglib.Object) *PlayerSubtitleInfo {
 	return &PlayerSubtitleInfo{
@@ -2503,6 +2805,15 @@ func wrapPlayerSubtitleInfo(obj *coreglib.Object) *PlayerSubtitleInfo {
 
 func marshalPlayerSubtitleInfo(p uintptr) (interface{}, error) {
 	return wrapPlayerSubtitleInfo(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
+}
+
+func (info *PlayerSubtitleInfo) basePlayerSubtitleInfo() *PlayerSubtitleInfo {
+	return info
+}
+
+// BasePlayerSubtitleInfo returns the underlying base object.
+func BasePlayerSubtitleInfo(obj PlayerSubtitleInfor) *PlayerSubtitleInfo {
+	return obj.basePlayerSubtitleInfo()
 }
 
 // The function returns the following values:
@@ -2526,7 +2837,7 @@ func (info *PlayerSubtitleInfo) Language() string {
 	return _utf8
 }
 
-// PlayerVideoInfo specific to video streams.
+// PlayerVideoInfo (GstPlayerVideoInfo) specific to video streams.
 type PlayerVideoInfo struct {
 	_ [0]func() // equal guard
 	PlayerStreamInfo
@@ -2535,6 +2846,27 @@ type PlayerVideoInfo struct {
 var (
 	_ PlayerStreamInfor = (*PlayerVideoInfo)(nil)
 )
+
+// PlayerVideoInfor describes types inherited from PlayerVideoInfo.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type PlayerVideoInfor interface {
+	PlayerStreamInfor
+
+	Bitrate() int
+	Framerate() (fpsN, fpsD int)
+	Height() int
+	MaxBitrate() int
+	// PixelAspectRatio (gst_player_video_info_get_pixel_aspect_ratio) returns
+	// the pixel aspect ratio in par_n and par_d.
+	PixelAspectRatio() (parN, parD uint)
+	Width() int
+
+	basePlayerVideoInfo() *PlayerVideoInfo
+}
+
+var _ PlayerVideoInfor = (*PlayerVideoInfo)(nil)
 
 func wrapPlayerVideoInfo(obj *coreglib.Object) *PlayerVideoInfo {
 	return &PlayerVideoInfo{
@@ -2546,6 +2878,15 @@ func wrapPlayerVideoInfo(obj *coreglib.Object) *PlayerVideoInfo {
 
 func marshalPlayerVideoInfo(p uintptr) (interface{}, error) {
 	return wrapPlayerVideoInfo(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
+}
+
+func (info *PlayerVideoInfo) basePlayerVideoInfo() *PlayerVideoInfo {
+	return info
+}
+
+// BasePlayerVideoInfo returns the underlying base object.
+func BasePlayerVideoInfo(obj PlayerVideoInfor) *PlayerVideoInfo {
+	return obj.basePlayerVideoInfo()
 }
 
 // The function returns the following values:
@@ -2628,7 +2969,8 @@ func (info *PlayerVideoInfo) MaxBitrate() int {
 	return _gint
 }
 
-// PixelAspectRatio returns the pixel aspect ratio in par_n and par_d.
+// PixelAspectRatio (gst_player_video_info_get_pixel_aspect_ratio) returns the
+// pixel aspect ratio in par_n and par_d.
 //
 // The function returns the following values:
 //
@@ -2683,6 +3025,37 @@ var (
 	_ coreglib.Objector = (*PlayerVideoOverlayVideoRenderer)(nil)
 )
 
+// PlayerVideoOverlayVideoRendererer describes types inherited from PlayerVideoOverlayVideoRenderer.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type PlayerVideoOverlayVideoRendererer interface {
+	coreglib.Objector
+	PlayerVideoRendererer
+
+	// Expose (gst_player_video_overlay_video_renderer_expose): tell an overlay
+	// that it has been exposed.
+	Expose()
+	// RenderRectangle
+	// (gst_player_video_overlay_video_renderer_get_render_rectangle): return
+	// the currently configured render rectangle.
+	RenderRectangle() (x, y, width, height int)
+	WindowHandle() unsafe.Pointer
+	// SetRenderRectangle
+	// (gst_player_video_overlay_video_renderer_set_render_rectangle):
+	// configure a subregion as a video target within the window set by
+	// gst_player_video_overlay_video_renderer_set_window_handle().
+	SetRenderRectangle(x, y, width, height int)
+	// SetWindowHandle
+	// (gst_player_video_overlay_video_renderer_set_window_handle) sets the
+	// platform specific window handle into which the video should be rendered.
+	SetWindowHandle(windowHandle unsafe.Pointer)
+
+	basePlayerVideoOverlayVideoRenderer() *PlayerVideoOverlayVideoRenderer
+}
+
+var _ PlayerVideoOverlayVideoRendererer = (*PlayerVideoOverlayVideoRenderer)(nil)
+
 func wrapPlayerVideoOverlayVideoRenderer(obj *coreglib.Object) *PlayerVideoOverlayVideoRenderer {
 	return &PlayerVideoOverlayVideoRenderer{
 		Object: obj,
@@ -2696,8 +3069,18 @@ func marshalPlayerVideoOverlayVideoRenderer(p uintptr) (interface{}, error) {
 	return wrapPlayerVideoOverlayVideoRenderer(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// Expose: tell an overlay that it has been exposed. This will redraw the
-// current frame in the drawable even if the pipeline is PAUSED.
+func (self *PlayerVideoOverlayVideoRenderer) basePlayerVideoOverlayVideoRenderer() *PlayerVideoOverlayVideoRenderer {
+	return self
+}
+
+// BasePlayerVideoOverlayVideoRenderer returns the underlying base object.
+func BasePlayerVideoOverlayVideoRenderer(obj PlayerVideoOverlayVideoRendererer) *PlayerVideoOverlayVideoRenderer {
+	return obj.basePlayerVideoOverlayVideoRenderer()
+}
+
+// Expose (gst_player_video_overlay_video_renderer_expose): tell an overlay that
+// it has been exposed. This will redraw the current frame in the drawable even
+// if the pipeline is PAUSED.
 func (self *PlayerVideoOverlayVideoRenderer) Expose() {
 	var _arg0 *C.GstPlayerVideoOverlayVideoRenderer // out
 
@@ -2707,7 +3090,9 @@ func (self *PlayerVideoOverlayVideoRenderer) Expose() {
 	runtime.KeepAlive(self)
 }
 
-// RenderRectangle: return the currently configured render rectangle. See
+// RenderRectangle
+// (gst_player_video_overlay_video_renderer_get_render_rectangle):
+// return the currently configured render rectangle. See
 // gst_player_video_overlay_video_renderer_set_render_rectangle() for details.
 //
 // The function returns the following values:
@@ -2760,14 +3145,15 @@ func (self *PlayerVideoOverlayVideoRenderer) WindowHandle() unsafe.Pointer {
 	return _gpointer
 }
 
-// SetRenderRectangle: configure a subregion as a video target within the
-// window set by gst_player_video_overlay_video_renderer_set_window_handle().
-// If this is not used or not supported the video will fill the area of the
-// window set as the overlay to 100%. By specifying the rectangle, the video can
-// be overlaid to a specific region of that window only. After setting the new
-// rectangle one should call gst_player_video_overlay_video_renderer_expose()
-// to force a redraw. To unset the region pass -1 for the width and height
-// parameters.
+// SetRenderRectangle
+// (gst_player_video_overlay_video_renderer_set_render_rectangle):
+// configure a subregion as a video target within the window set by
+// gst_player_video_overlay_video_renderer_set_window_handle(). If this is not
+// used or not supported the video will fill the area of the window set as the
+// overlay to 100%. By specifying the rectangle, the video can be overlaid to
+// a specific region of that window only. After setting the new rectangle one
+// should call gst_player_video_overlay_video_renderer_expose() to force a
+// redraw. To unset the region pass -1 for the width and height parameters.
 //
 // This method is needed for non fullscreen video overlay in UI toolkits that do
 // not support subwindows.
@@ -2799,8 +3185,9 @@ func (self *PlayerVideoOverlayVideoRenderer) SetRenderRectangle(x, y, width, hei
 	runtime.KeepAlive(height)
 }
 
-// SetWindowHandle sets the platform specific window handle into which the video
-// should be rendered.
+// SetWindowHandle (gst_player_video_overlay_video_renderer_set_window_handle)
+// sets the platform specific window handle into which the video should be
+// rendered.
 //
 // The function takes the following parameters:
 //
@@ -2860,8 +3247,8 @@ func NewPlayerVideoOverlayVideoRendererWithSink(windowHandle unsafe.Pointer, vid
 	return _playerVideoRenderer
 }
 
-// PlayerSignalDispatcherInterface: instance of this type is always passed by
-// reference.
+// PlayerSignalDispatcherInterface (GstPlayerSignalDispatcherInterface):
+// instance of this type is always passed by reference.
 type PlayerSignalDispatcherInterface struct {
 	*playerSignalDispatcherInterface
 }
@@ -2871,8 +3258,8 @@ type playerSignalDispatcherInterface struct {
 	native *C.GstPlayerSignalDispatcherInterface
 }
 
-// PlayerVideoRendererInterface: instance of this type is always passed by
-// reference.
+// PlayerVideoRendererInterface (GstPlayerVideoRendererInterface): instance of
+// this type is always passed by reference.
 type PlayerVideoRendererInterface struct {
 	*playerVideoRendererInterface
 }
@@ -2882,7 +3269,7 @@ type playerVideoRendererInterface struct {
 	native *C.GstPlayerVideoRendererInterface
 }
 
-// PlayerVisualization descriptor.
+// PlayerVisualization (GstPlayerVisualization) descriptor.
 //
 // An instance of this type is always passed by reference.
 type PlayerVisualization struct {
@@ -2915,8 +3302,8 @@ func (p *PlayerVisualization) Description() string {
 	return _v
 }
 
-// Copy makes a copy of the PlayerVisualization. The result must be freed using
-// gst_player_visualization_free().
+// Copy (gst_player_visualization_copy) makes a copy of the PlayerVisualization.
+// The result must be freed using gst_player_visualization_free().
 //
 // The function returns the following values:
 //

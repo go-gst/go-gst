@@ -58,34 +58,36 @@ func init() {
 	})
 }
 
-// TAG_ACOUSTID_FINGERPRINT: acoustID Fingerprint (Chromaprint).
+// TAG_ACOUSTID_FINGERPRINT (GST_TAG_ACOUSTID_FINGERPRINT): acoustID Fingerprint
+// (Chromaprint).
 const TAG_ACOUSTID_FINGERPRINT = "chromaprint-fingerprint"
 
-// TAG_ACOUSTID_ID: acoustID Identifier.
+// TAG_ACOUSTID_ID (GST_TAG_ACOUSTID_ID): acoustID Identifier.
 const TAG_ACOUSTID_ID = "acoustid-id"
 
-// TAG_CAPTURING_CONTRAST: direction of contrast processing applied when
-// capturing an image. (string)
+// TAG_CAPTURING_CONTRAST (GST_TAG_CAPTURING_CONTRAST): direction of contrast
+// processing applied when capturing an image. (string)
 //
 // The allowed values are: "normal" "soft" "hard".
 const TAG_CAPTURING_CONTRAST = "capturing-contrast"
 
-// TAG_CAPTURING_DIGITAL_ZOOM_RATIO: digital zoom ratio used when capturing an
-// image. (double).
+// TAG_CAPTURING_DIGITAL_ZOOM_RATIO (GST_TAG_CAPTURING_DIGITAL_ZOOM_RATIO):
+// digital zoom ratio used when capturing an image. (double).
 const TAG_CAPTURING_DIGITAL_ZOOM_RATIO = "capturing-digital-zoom-ratio"
 
-// TAG_CAPTURING_EXPOSURE_COMPENSATION: exposure compensation using when
+// TAG_CAPTURING_EXPOSURE_COMPENSATION
+// (GST_TAG_CAPTURING_EXPOSURE_COMPENSATION): exposure compensation using when
 // capturing an image in EV. (double).
 const TAG_CAPTURING_EXPOSURE_COMPENSATION = "capturing-exposure-compensation"
 
-// TAG_CAPTURING_EXPOSURE_MODE: exposure mode used when capturing an image.
-// (string)
+// TAG_CAPTURING_EXPOSURE_MODE (GST_TAG_CAPTURING_EXPOSURE_MODE): exposure mode
+// used when capturing an image. (string)
 //
 // The allowed values are: "auto-exposure" "manual-exposure" "auto-bracket".
 const TAG_CAPTURING_EXPOSURE_MODE = "capturing-exposure-mode"
 
-// TAG_CAPTURING_EXPOSURE_PROGRAM: type of exposure control used when capturing
-// an image. (string)
+// TAG_CAPTURING_EXPOSURE_PROGRAM (GST_TAG_CAPTURING_EXPOSURE_PROGRAM): type of
+// exposure control used when capturing an image. (string)
 //
 // The allowed values are: "undefined" "manual" "normal" - automatically
 // controlled "aperture-priority" - user selects aperture value
@@ -95,160 +97,172 @@ const TAG_CAPTURING_EXPOSURE_MODE = "capturing-exposure-mode"
 // background in focus.
 const TAG_CAPTURING_EXPOSURE_PROGRAM = "capturing-exposure-program"
 
-// TAG_CAPTURING_FLASH_FIRED: if flash was fired during the capture of an image.
-// (boolean)
+// TAG_CAPTURING_FLASH_FIRED (GST_TAG_CAPTURING_FLASH_FIRED): if flash was fired
+// during the capture of an image. (boolean)
 //
 // Note that if this tag isn't present, it should not be assumed that the flash
 // did not fire. It should be treated as unknown.
 const TAG_CAPTURING_FLASH_FIRED = "capturing-flash-fired"
 
-// TAG_CAPTURING_FLASH_MODE: flash mode selected during the capture of an image.
-// (string)
+// TAG_CAPTURING_FLASH_MODE (GST_TAG_CAPTURING_FLASH_MODE): flash mode selected
+// during the capture of an image. (string)
 //
 // The allowed values are: "auto" "always" "never".
 const TAG_CAPTURING_FLASH_MODE = "capturing-flash-mode"
 
-// TAG_CAPTURING_FOCAL_LENGTH: focal length used when capturing an image, in mm.
-// (double).
+// TAG_CAPTURING_FOCAL_LENGTH (GST_TAG_CAPTURING_FOCAL_LENGTH): focal length
+// used when capturing an image, in mm. (double).
 const TAG_CAPTURING_FOCAL_LENGTH = "capturing-focal-length"
 
-// TAG_CAPTURING_FOCAL_LENGTH_35_MM: 35 mm equivalent focal length used when
-// capturing an image, in mm. (double).
+// TAG_CAPTURING_FOCAL_LENGTH_35_MM (GST_TAG_CAPTURING_FOCAL_LENGTH_35_MM):
+// 35 mm equivalent focal length used when capturing an image, in mm. (double).
 const TAG_CAPTURING_FOCAL_LENGTH_35_MM = "capturing-focal-length-35mm"
 
-// TAG_CAPTURING_FOCAL_RATIO: focal ratio (f-number) used when capturing an
-// image. (double)
+// TAG_CAPTURING_FOCAL_RATIO (GST_TAG_CAPTURING_FOCAL_RATIO): focal ratio
+// (f-number) used when capturing an image. (double)
 //
 // The value stored is the denominator of the focal ratio (f-number). For
 // example, if this tag value is 2, the focal ratio is f/2.
 const TAG_CAPTURING_FOCAL_RATIO = "capturing-focal-ratio"
 
-// TAG_CAPTURING_GAIN_ADJUSTMENT: gain adjustment applied to an image. (string)
+// TAG_CAPTURING_GAIN_ADJUSTMENT (GST_TAG_CAPTURING_GAIN_ADJUSTMENT): gain
+// adjustment applied to an image. (string)
 //
 // The allowed values are: "none" "low-gain-up" "high-gain-up" "low-gain-down"
 // "high-gain-down".
 const TAG_CAPTURING_GAIN_ADJUSTMENT = "capturing-gain-adjustment"
 
-// TAG_CAPTURING_ISO_SPEED: ISO speed used when capturing an image. (integer).
+// TAG_CAPTURING_ISO_SPEED (GST_TAG_CAPTURING_ISO_SPEED): ISO speed used when
+// capturing an image. (integer).
 const TAG_CAPTURING_ISO_SPEED = "capturing-iso-speed"
 
-// TAG_CAPTURING_METERING_MODE defines the way a camera determines the exposure.
-// (string)
+// TAG_CAPTURING_METERING_MODE (GST_TAG_CAPTURING_METERING_MODE) defines the way
+// a camera determines the exposure. (string)
 //
 // The allowed values are: "unknown" "average" "center-weighted-average" "spot"
 // "multi-spot" "pattern" "partial" "other".
 const TAG_CAPTURING_METERING_MODE = "capturing-metering-mode"
 
-// TAG_CAPTURING_SATURATION: direction of saturation processing applied when
-// capturing an image. (string)
+// TAG_CAPTURING_SATURATION (GST_TAG_CAPTURING_SATURATION): direction of
+// saturation processing applied when capturing an image. (string)
 //
 // The allowed values are: "normal" "low-saturation" "high-saturation".
 const TAG_CAPTURING_SATURATION = "capturing-saturation"
 
-// TAG_CAPTURING_SCENE_CAPTURE_TYPE: scene mode used when capturing an image.
-// (string)
+// TAG_CAPTURING_SCENE_CAPTURE_TYPE (GST_TAG_CAPTURING_SCENE_CAPTURE_TYPE):
+// scene mode used when capturing an image. (string)
 //
 // The allowed values are: "standard" "landscape" "portrait" "night-scene".
 const TAG_CAPTURING_SCENE_CAPTURE_TYPE = "capturing-scene-capture-type"
 
-// TAG_CAPTURING_SHARPNESS: direction of sharpness processing applied when
-// capturing an image. (string)
+// TAG_CAPTURING_SHARPNESS (GST_TAG_CAPTURING_SHARPNESS): direction of sharpness
+// processing applied when capturing an image. (string)
 //
 // The allowed values are: "normal" "soft" "hard".
 const TAG_CAPTURING_SHARPNESS = "capturing-sharpness"
 
-// TAG_CAPTURING_SHUTTER_SPEED: shutter speed used when capturing an image,
-// in seconds. (fraction).
+// TAG_CAPTURING_SHUTTER_SPEED (GST_TAG_CAPTURING_SHUTTER_SPEED): shutter speed
+// used when capturing an image, in seconds. (fraction).
 const TAG_CAPTURING_SHUTTER_SPEED = "capturing-shutter-speed"
 
-// TAG_CAPTURING_SOURCE indicates the source of capture. The device/medium used
-// to do the capture. (string)
+// TAG_CAPTURING_SOURCE (GST_TAG_CAPTURING_SOURCE) indicates the source of
+// capture. The device/medium used to do the capture. (string)
 //
 // Allowed values are: "dsc" (= digital still camera) "transparent-scanner"
 // "reflex-scanner" "other".
 const TAG_CAPTURING_SOURCE = "capturing-source"
 
-// TAG_CAPTURING_WHITE_BALANCE: white balance mode used when capturing an image.
-// (string)
+// TAG_CAPTURING_WHITE_BALANCE (GST_TAG_CAPTURING_WHITE_BALANCE): white balance
+// mode used when capturing an image. (string)
 //
 // The allowed values are: "auto" "manual" "daylight" "cloudy" "tungsten"
 // "fluorescent" "fluorescent h" (newer daylight-calibrated fluorescents)
 // "flash".
 const TAG_CAPTURING_WHITE_BALANCE = "capturing-white-balance"
 
-// TAG_CDDA_CDDB_DISCID: CDDB disc id in its short form (e.g. 'aa063d0f').
+// TAG_CDDA_CDDB_DISCID (GST_TAG_CDDA_CDDB_DISCID): CDDB disc id in its short
+// form (e.g. 'aa063d0f').
 const TAG_CDDA_CDDB_DISCID = "discid"
 
-// TAG_CDDA_CDDB_DISCID_FULL: CDDB disc id including all details.
+// TAG_CDDA_CDDB_DISCID_FULL (GST_TAG_CDDA_CDDB_DISCID_FULL): CDDB disc id
+// including all details.
 const TAG_CDDA_CDDB_DISCID_FULL = "discid-full"
 
-// TAG_CDDA_MUSICBRAINZ_DISCID: musicbrainz disc id (e.g.
-// 'ahg7JUcfR3vCYBphSDIogOOWrr0-').
+// TAG_CDDA_MUSICBRAINZ_DISCID (GST_TAG_CDDA_MUSICBRAINZ_DISCID): musicbrainz
+// disc id (e.g. 'ahg7JUcfR3vCYBphSDIogOOWrr0-').
 const TAG_CDDA_MUSICBRAINZ_DISCID = "musicbrainz-discid"
 
-// TAG_CDDA_MUSICBRAINZ_DISCID_FULL: musicbrainz disc id details.
+// TAG_CDDA_MUSICBRAINZ_DISCID_FULL (GST_TAG_CDDA_MUSICBRAINZ_DISCID_FULL):
+// musicbrainz disc id details.
 const TAG_CDDA_MUSICBRAINZ_DISCID_FULL = "musicbrainz-discid-full"
 
-// TAG_CMML_CLIP: annodex CMML clip element tag.
+// TAG_CMML_CLIP (GST_TAG_CMML_CLIP): annodex CMML clip element tag.
 const TAG_CMML_CLIP = "cmml-clip"
 
-// TAG_CMML_HEAD: annodex CMML head element tag.
+// TAG_CMML_HEAD (GST_TAG_CMML_HEAD): annodex CMML head element tag.
 const TAG_CMML_HEAD = "cmml-head"
 
-// TAG_CMML_STREAM: annodex CMML stream element tag.
+// TAG_CMML_STREAM (GST_TAG_CMML_STREAM): annodex CMML stream element tag.
 const TAG_CMML_STREAM = "cmml-stream"
 
-// TAG_ID3V2_HEADER_SIZE: ID3V2 header size considered minimum input
-// for some functions such as gst_tag_list_from_id3v2_tag() and
-// gst_tag_get_id3v2_tag_size() for example.
+// TAG_ID3V2_HEADER_SIZE (GST_TAG_ID3V2_HEADER_SIZE): ID3V2
+// header size considered minimum input for some functions such as
+// gst_tag_list_from_id3v2_tag() and gst_tag_get_id3v2_tag_size() for example.
 const TAG_ID3V2_HEADER_SIZE = 10
 
-// TAG_IMAGE_HORIZONTAL_PPI: media (image/video) intended horizontal pixel
-// density in ppi. (double).
+// TAG_IMAGE_HORIZONTAL_PPI (GST_TAG_IMAGE_HORIZONTAL_PPI): media (image/video)
+// intended horizontal pixel density in ppi. (double).
 const TAG_IMAGE_HORIZONTAL_PPI = "image-horizontal-ppi"
 
-// TAG_IMAGE_VERTICAL_PPI: media (image/video) intended vertical pixel density
-// in ppi. (double).
+// TAG_IMAGE_VERTICAL_PPI (GST_TAG_IMAGE_VERTICAL_PPI): media (image/video)
+// intended vertical pixel density in ppi. (double).
 const TAG_IMAGE_VERTICAL_PPI = "image-vertical-ppi"
 
-// TAG_MUSICAL_KEY: musical key in which the sound starts. It is represented
-// as a string with a maximum length of three characters. The ground keys are
-// represented with "A","B","C","D","E", "F" and "G" and halfkeys represented
-// with "b" and "#". Minor is represented as "m" (e.g. "Dbm"). Off key is
-// represented with an "o" only. This notation might be extended in the future
-// to support non-minor/major keys.
+// TAG_MUSICAL_KEY (GST_TAG_MUSICAL_KEY): musical key in which the sound starts.
+// It is represented as a string with a maximum length of three characters.
+// The ground keys are represented with "A","B","C","D","E", "F" and "G" and
+// halfkeys represented with "b" and "#". Minor is represented as "m" (e.g.
+// "Dbm"). Off key is represented with an "o" only. This notation might be
+// extended in the future to support non-minor/major keys.
 const TAG_MUSICAL_KEY = "musical-key"
 
-// TAG_MUSICBRAINZ_ALBUMARTISTID: musicBrainz album artist ID.
+// TAG_MUSICBRAINZ_ALBUMARTISTID (GST_TAG_MUSICBRAINZ_ALBUMARTISTID):
+// musicBrainz album artist ID.
 const TAG_MUSICBRAINZ_ALBUMARTISTID = "musicbrainz-albumartistid"
 
-// TAG_MUSICBRAINZ_ALBUMID: musicBrainz album ID.
+// TAG_MUSICBRAINZ_ALBUMID (GST_TAG_MUSICBRAINZ_ALBUMID): musicBrainz album ID.
 const TAG_MUSICBRAINZ_ALBUMID = "musicbrainz-albumid"
 
-// TAG_MUSICBRAINZ_ARTISTID: musicBrainz artist ID.
+// TAG_MUSICBRAINZ_ARTISTID (GST_TAG_MUSICBRAINZ_ARTISTID): musicBrainz artist
+// ID.
 const TAG_MUSICBRAINZ_ARTISTID = "musicbrainz-artistid"
 
-// TAG_MUSICBRAINZ_RELEASEGROUPID: musicBrainz Release Group ID.
+// TAG_MUSICBRAINZ_RELEASEGROUPID (GST_TAG_MUSICBRAINZ_RELEASEGROUPID):
+// musicBrainz Release Group ID.
 const TAG_MUSICBRAINZ_RELEASEGROUPID = "musicbrainz-releasegroupid"
 
-// TAG_MUSICBRAINZ_RELEASETRACKID: musicBrainz Release Track ID.
+// TAG_MUSICBRAINZ_RELEASETRACKID (GST_TAG_MUSICBRAINZ_RELEASETRACKID):
+// musicBrainz Release Track ID.
 const TAG_MUSICBRAINZ_RELEASETRACKID = "musicbrainz-releasetrackid"
 
-// TAG_MUSICBRAINZ_TRACKID: musicBrainz track ID.
+// TAG_MUSICBRAINZ_TRACKID (GST_TAG_MUSICBRAINZ_TRACKID): musicBrainz track ID.
 const TAG_MUSICBRAINZ_TRACKID = "musicbrainz-trackid"
 
-// TAG_MUSICBRAINZ_TRMID: musicBrainz track TRM ID.
+// TAG_MUSICBRAINZ_TRMID (GST_TAG_MUSICBRAINZ_TRMID): musicBrainz track TRM ID.
 const TAG_MUSICBRAINZ_TRMID = "musicbrainz-trmid"
 
-// TagDemuxResult: result values from the parse_tag virtual function.
+// TagDemuxResult (GstTagDemuxResult): result values from the parse_tag virtual
+// function.
 type TagDemuxResult C.gint
 
 const (
-	// TagDemuxResultBrokenTag: cannot parse tag, just skip it.
+	// TagDemuxResultBrokenTag (GST_TAG_DEMUX_RESULT_BROKEN_TAG): cannot parse
+	// tag, just skip it.
 	TagDemuxResultBrokenTag TagDemuxResult = iota
-	// TagDemuxResultAgain: call again with less or more data.
+	// TagDemuxResultAgain (GST_TAG_DEMUX_RESULT_AGAIN): call again with less or
+	// more data.
 	TagDemuxResultAgain
-	// TagDemuxResultOK: parsed tag successfully.
+	// TagDemuxResultOK (GST_TAG_DEMUX_RESULT_OK): parsed tag successfully.
 	TagDemuxResultOK
 )
 
@@ -270,51 +284,64 @@ func (t TagDemuxResult) String() string {
 	}
 }
 
-// TagImageType: type of image contained in an image tag (specified as
-// "image-type" field in the info structure in the image's Sample).
+// TagImageType (GstTagImageType): type of image contained in an image tag
+// (specified as "image-type" field in the info structure in the image's
+// Sample).
 type TagImageType C.gint
 
 const (
-	// TagImageTypeNone: no image type. Can be used to tell functions such as
-	// gst_tag_image_data_to_image_sample() that no image type should be set.
+	// TagImageTypeNone (GST_TAG_IMAGE_TYPE_NONE): no image type. Can be used to
+	// tell functions such as gst_tag_image_data_to_image_sample() that no image
+	// type should be set.
 	TagImageTypeNone TagImageType = -1
-	// TagImageTypeUndefined: undefined/other image type.
+	// TagImageTypeUndefined (GST_TAG_IMAGE_TYPE_UNDEFINED): undefined/other
+	// image type.
 	TagImageTypeUndefined TagImageType = 0
-	// TagImageTypeFrontCover: cover (front).
+	// TagImageTypeFrontCover (GST_TAG_IMAGE_TYPE_FRONT_COVER): cover (front).
 	TagImageTypeFrontCover TagImageType = 1
-	// TagImageTypeBackCover: cover (back).
+	// TagImageTypeBackCover (GST_TAG_IMAGE_TYPE_BACK_COVER): cover (back).
 	TagImageTypeBackCover TagImageType = 2
-	// TagImageTypeLeafletPage: leaflet page.
+	// TagImageTypeLeafletPage (GST_TAG_IMAGE_TYPE_LEAFLET_PAGE): leaflet page.
 	TagImageTypeLeafletPage TagImageType = 3
-	// TagImageTypeMedium: medium (e.g. label side of CD).
+	// TagImageTypeMedium (GST_TAG_IMAGE_TYPE_MEDIUM): medium (e.g. label side
+	// of CD).
 	TagImageTypeMedium TagImageType = 4
-	// TagImageTypeLeadArtist: lead artist/lead performer/soloist.
+	// TagImageTypeLeadArtist (GST_TAG_IMAGE_TYPE_LEAD_ARTIST): lead artist/lead
+	// performer/soloist.
 	TagImageTypeLeadArtist TagImageType = 5
-	// TagImageTypeArtist: artist/performer.
+	// TagImageTypeArtist (GST_TAG_IMAGE_TYPE_ARTIST): artist/performer.
 	TagImageTypeArtist TagImageType = 6
-	// TagImageTypeConductor: conductor.
+	// TagImageTypeConductor (GST_TAG_IMAGE_TYPE_CONDUCTOR): conductor.
 	TagImageTypeConductor TagImageType = 7
-	// TagImageTypeBandOrchestra: band/orchestra.
+	// TagImageTypeBandOrchestra (GST_TAG_IMAGE_TYPE_BAND_ORCHESTRA):
+	// band/orchestra.
 	TagImageTypeBandOrchestra TagImageType = 8
-	// TagImageTypeComposer: composer.
+	// TagImageTypeComposer (GST_TAG_IMAGE_TYPE_COMPOSER): composer.
 	TagImageTypeComposer TagImageType = 9
-	// TagImageTypeLyricist: lyricist/text writer.
+	// TagImageTypeLyricist (GST_TAG_IMAGE_TYPE_LYRICIST): lyricist/text writer.
 	TagImageTypeLyricist TagImageType = 10
-	// TagImageTypeRecordingLocation: recording location.
+	// TagImageTypeRecordingLocation (GST_TAG_IMAGE_TYPE_RECORDING_LOCATION):
+	// recording location.
 	TagImageTypeRecordingLocation TagImageType = 11
-	// TagImageTypeDuringRecording: during recording.
+	// TagImageTypeDuringRecording (GST_TAG_IMAGE_TYPE_DURING_RECORDING):
+	// during recording.
 	TagImageTypeDuringRecording TagImageType = 12
-	// TagImageTypeDuringPerformance: during performance.
+	// TagImageTypeDuringPerformance (GST_TAG_IMAGE_TYPE_DURING_PERFORMANCE):
+	// during performance.
 	TagImageTypeDuringPerformance TagImageType = 13
-	// TagImageTypeVideoCapture: movie/video screen capture.
+	// TagImageTypeVideoCapture (GST_TAG_IMAGE_TYPE_VIDEO_CAPTURE): movie/video
+	// screen capture.
 	TagImageTypeVideoCapture TagImageType = 14
-	// TagImageTypeFish: fish as funny as the ID3v2 spec.
+	// TagImageTypeFish (GST_TAG_IMAGE_TYPE_FISH): fish as funny as the ID3v2
+	// spec.
 	TagImageTypeFish TagImageType = 15
-	// TagImageTypeIllustration: illustration.
+	// TagImageTypeIllustration (GST_TAG_IMAGE_TYPE_ILLUSTRATION): illustration.
 	TagImageTypeIllustration TagImageType = 16
-	// TagImageTypeBandArtistLogo: band/artist logotype.
+	// TagImageTypeBandArtistLogo (GST_TAG_IMAGE_TYPE_BAND_ARTIST_LOGO):
+	// band/artist logotype.
 	TagImageTypeBandArtistLogo TagImageType = 17
-	// TagImageTypePublisherStudioLogo: publisher/studio logotype.
+	// TagImageTypePublisherStudioLogo
+	// (GST_TAG_IMAGE_TYPE_PUBLISHER_STUDIO_LOGO): publisher/studio logotype.
 	TagImageTypePublisherStudioLogo TagImageType = 18
 )
 
@@ -370,52 +397,63 @@ func (t TagImageType) String() string {
 	}
 }
 
-// TagLicenseFlags: see http://creativecommons.org/ns for more information.
+// TagLicenseFlags (GstTagLicenseFlags): see http://creativecommons.org/ns for
+// more information.
 type TagLicenseFlags C.guint
 
 const (
-	// TagLicensePermitsReproduction: making multiple copies is allowed.
+	// TagLicensePermitsReproduction (GST_TAG_LICENSE_PERMITS_REPRODUCTION):
+	// making multiple copies is allowed.
 	TagLicensePermitsReproduction TagLicenseFlags = 0b1
-	// TagLicensePermitsDistribution: distribution, public display and public
-	// performance are allowed.
+	// TagLicensePermitsDistribution (GST_TAG_LICENSE_PERMITS_DISTRIBUTION):
+	// distribution, public display and public performance are allowed.
 	TagLicensePermitsDistribution TagLicenseFlags = 0b10
-	// TagLicensePermitsDerivativeWorks: distribution of derivative works is
-	// allowed.
+	// TagLicensePermitsDerivativeWorks
+	// (GST_TAG_LICENSE_PERMITS_DERIVATIVE_WORKS): distribution of derivative
+	// works is allowed.
 	TagLicensePermitsDerivativeWorks TagLicenseFlags = 0b100
-	// TagLicensePermitsSharing: commercial derivatives are allowed, but only
-	// non-commercial distribution is allowed.
+	// TagLicensePermitsSharing (GST_TAG_LICENSE_PERMITS_SHARING): commercial
+	// derivatives are allowed, but only non-commercial distribution is allowed.
 	TagLicensePermitsSharing TagLicenseFlags = 0b1000
-	// TagLicenseRequiresNotice: copyright and license notices must be kept
-	// intact.
+	// TagLicenseRequiresNotice (GST_TAG_LICENSE_REQUIRES_NOTICE): copyright and
+	// license notices must be kept intact.
 	TagLicenseRequiresNotice TagLicenseFlags = 0b100000000
-	// TagLicenseRequiresAttribution: credit must be given to copyright holder
-	// and/or author.
+	// TagLicenseRequiresAttribution (GST_TAG_LICENSE_REQUIRES_ATTRIBUTION):
+	// credit must be given to copyright holder and/or author.
 	TagLicenseRequiresAttribution TagLicenseFlags = 0b1000000000
-	// TagLicenseRequiresShareAlike: derivative works must be licensed under the
-	// same terms or compatible terms as the original work.
+	// TagLicenseRequiresShareAlike (GST_TAG_LICENSE_REQUIRES_SHARE_ALIKE):
+	// derivative works must be licensed under the same terms or compatible
+	// terms as the original work.
 	TagLicenseRequiresShareAlike TagLicenseFlags = 0b10000000000
-	// TagLicenseRequiresSourceCode: source code (the preferred form for making
-	// modifications) must be provided when exercising some rights granted by
-	// the license.
+	// TagLicenseRequiresSourceCode (GST_TAG_LICENSE_REQUIRES_SOURCE_CODE):
+	// source code (the preferred form for making modifications) must be
+	// provided when exercising some rights granted by the license.
 	TagLicenseRequiresSourceCode TagLicenseFlags = 0b100000000000
-	// TagLicenseRequiresCopyleft: derivative and combined works must be
-	// licensed under specified terms, similar to those of the original work.
+	// TagLicenseRequiresCopyleft (GST_TAG_LICENSE_REQUIRES_COPYLEFT):
+	// derivative and combined works must be licensed under specified terms,
+	// similar to those of the original work.
 	TagLicenseRequiresCopyleft TagLicenseFlags = 0b1000000000000
-	// TagLicenseRequiresLesserCopyleft: derivative works must be licensed under
-	// specified terms, with at least the same conditions as the original work;
-	// combinations with the work may be licensed under different terms.
+	// TagLicenseRequiresLesserCopyleft
+	// (GST_TAG_LICENSE_REQUIRES_LESSER_COPYLEFT): derivative works must be
+	// licensed under specified terms, with at least the same conditions as the
+	// original work; combinations with the work may be licensed under different
+	// terms.
 	TagLicenseRequiresLesserCopyleft TagLicenseFlags = 0b10000000000000
-	// TagLicenseProhibitsCommercialUse: exercising rights for commercial
-	// purposes is prohibited.
+	// TagLicenseProhibitsCommercialUse
+	// (GST_TAG_LICENSE_PROHIBITS_COMMERCIAL_USE): exercising rights for
+	// commercial purposes is prohibited.
 	TagLicenseProhibitsCommercialUse TagLicenseFlags = 0b10000000000000000
-	// TagLicenseProhibitsHighIncomeNationUse: use in a non-developing country
-	// is prohibited.
+	// TagLicenseProhibitsHighIncomeNationUse
+	// (GST_TAG_LICENSE_PROHIBITS_HIGH_INCOME_NATION_USE): use in a
+	// non-developing country is prohibited.
 	TagLicenseProhibitsHighIncomeNationUse TagLicenseFlags = 0b100000000000000000
-	// TagLicenseCreativeCommonsLicense: license was created by the Creative
-	// Commons project.
+	// TagLicenseCreativeCommonsLicense
+	// (GST_TAG_LICENSE_CREATIVE_COMMONS_LICENSE): license was created by the
+	// Creative Commons project.
 	TagLicenseCreativeCommonsLicense TagLicenseFlags = 0b1000000000000000000000000
-	// TagLicenseFreeSoftwareFoundationLicense: license was created by the Free
-	// Software Foundation (FSF).
+	// TagLicenseFreeSoftwareFoundationLicense
+	// (GST_TAG_LICENSE_FREE_SOFTWARE_FOUNDATION_LICENSE): license was created
+	// by the Free Software Foundation (FSF).
 	TagLicenseFreeSoftwareFoundationLicense TagLicenseFlags = 0b10000000000000000000000000
 )
 
@@ -480,8 +518,8 @@ func (t TagLicenseFlags) Has(other TagLicenseFlags) bool {
 	return (t & other) == other
 }
 
-// TagCheckLanguageCode: check if a given string contains a known ISO 639
-// language code.
+// TagCheckLanguageCode (gst_tag_check_language_code): check if a given string
+// contains a known ISO 639 language code.
 //
 // This is useful in situations where it's not clear whether a given string
 // is a language code (which should be put into a T_TAG_LANGUAGE_CODE tag)
@@ -515,14 +553,15 @@ func TagCheckLanguageCode(langCode string) bool {
 	return _ok
 }
 
-// TagFreeformStringToUTF8: convenience function to read a string with unknown
-// character encoding. If the string is already in UTF-8 encoding, it will be
-// returned right away. If not it tries to detect byte-order-mark for UTF-16/32
-// cases and use that. Otherwise, the environment will be searched for a number
-// of environment variables (whose names are specified in the NULL-terminated
-// string array env_vars) containing a list of character encodings to try/use.
-// If none are specified, the current locale will be tried. If that also doesn't
-// work, WINDOWS-1252/ISO-8859-1 is assumed (which will almost always succeed).
+// TagFreeformStringToUTF8 (gst_tag_freeform_string_to_utf8): convenience
+// function to read a string with unknown character encoding. If the string is
+// already in UTF-8 encoding, it will be returned right away. If not it tries
+// to detect byte-order-mark for UTF-16/32 cases and use that. Otherwise,
+// the environment will be searched for a number of environment variables (whose
+// names are specified in the NULL-terminated string array env_vars) containing
+// a list of character encodings to try/use. If none are specified, the current
+// locale will be tried. If that also doesn't work, WINDOWS-1252/ISO-8859-1 is
+// assumed (which will almost always succeed).
 //
 // The function takes the following parameters:
 //
@@ -571,7 +610,8 @@ func TagFreeformStringToUTF8(data string, envVars []string) string {
 	return _utf8
 }
 
-// TagFromID3Tag looks up the GStreamer tag for a ID3v2 tag.
+// TagFromID3Tag (gst_tag_from_id3_tag) looks up the GStreamer tag for a ID3v2
+// tag.
 //
 // The function takes the following parameters:
 //
@@ -599,8 +639,8 @@ func TagFromID3Tag(id3Tag string) string {
 	return _utf8
 }
 
-// TagFromID3UserTag looks up the GStreamer tag for an ID3v2 user tag (e.g.
-// description in TXXX frame or owner in UFID frame).
+// TagFromID3UserTag (gst_tag_from_id3_user_tag) looks up the GStreamer tag for
+// an ID3v2 user tag (e.g. description in TXXX frame or owner in UFID frame).
 //
 // The function takes the following parameters:
 //
@@ -633,7 +673,8 @@ func TagFromID3UserTag(typ, id3UserTag string) string {
 	return _utf8
 }
 
-// TagFromVorbisTag looks up the GStreamer tag for a vorbiscomment tag.
+// TagFromVorbisTag (gst_tag_from_vorbis_tag) looks up the GStreamer tag for a
+// vorbiscomment tag.
 //
 // The function takes the following parameters:
 //
@@ -661,8 +702,9 @@ func TagFromVorbisTag(vorbisTag string) string {
 	return _utf8
 }
 
-// TagGetID3V2TagSize determines size of an ID3v2 tag on buffer containing at
-// least ID3v2 header, i.e. at least T_TAG_ID3V2_HEADER_SIZE (10) bytes;.
+// TagGetID3V2TagSize (gst_tag_get_id3v2_tag_size) determines size of an
+// ID3v2 tag on buffer containing at least ID3v2 header, i.e. at least
+// T_TAG_ID3V2_HEADER_SIZE (10) bytes;.
 //
 // The function takes the following parameters:
 //
@@ -687,9 +729,10 @@ func TagGetID3V2TagSize(buffer *gst.Buffer) uint {
 	return _guint
 }
 
-// TagGetLanguageCodeISO6391 returns two-letter ISO-639-1 language code given
-// a three-letter ISO-639-2 language code or two-letter ISO-639-1 language code
-// (both are accepted for convenience).
+// TagGetLanguageCodeISO6391 (gst_tag_get_language_code_iso_639_1) returns
+// two-letter ISO-639-1 language code given a three-letter ISO-639-2
+// language code or two-letter ISO-639-1 language code (both are accepted for
+// convenience).
 //
 // Language codes are case-sensitive and expected to be lower case.
 //
@@ -721,9 +764,10 @@ func TagGetLanguageCodeISO6391(langCode string) string {
 	return _utf8
 }
 
-// TagGetLanguageCodeISO6392B returns three-letter ISO-639-2 "bibliographic"
-// language code given a two-letter ISO-639-1 language code or a three-letter
-// ISO-639-2 language code (both are accepted for convenience).
+// TagGetLanguageCodeISO6392B (gst_tag_get_language_code_iso_639_2B) returns
+// three-letter ISO-639-2 "bibliographic" language code given a two-letter
+// ISO-639-1 language code or a three-letter ISO-639-2 language code (both are
+// accepted for convenience).
 //
 // The "bibliographic" code is derived from the English name of the language
 // (e.g. "ger" for German instead of "de" or "deu"). In most scenarios,
@@ -759,9 +803,10 @@ func TagGetLanguageCodeISO6392B(langCode string) string {
 	return _utf8
 }
 
-// TagGetLanguageCodeISO6392T returns three-letter ISO-639-2 "terminological"
-// language code given a two-letter ISO-639-1 language code or a three-letter
-// ISO-639-2 language code (both are accepted for convenience).
+// TagGetLanguageCodeISO6392T (gst_tag_get_language_code_iso_639_2T) returns
+// three-letter ISO-639-2 "terminological" language code given a two-letter
+// ISO-639-1 language code or a three-letter ISO-639-2 language code (both are
+// accepted for convenience).
 //
 // The "terminological" code is derived from the local name of the language
 // (e.g. "deu" for German instead of "ger"). In most scenarios, the
@@ -797,10 +842,10 @@ func TagGetLanguageCodeISO6392T(langCode string) string {
 	return _utf8
 }
 
-// TagGetLanguageCodes returns a list of known language codes (in form of
-// two-letter ISO-639-1 codes). This is useful for UIs to build a list of
-// available languages for tagging purposes (e.g. to tag an audio track
-// appropriately in a video or audio editor).
+// TagGetLanguageCodes (gst_tag_get_language_codes) returns a list of known
+// language codes (in form of two-letter ISO-639-1 codes). This is useful
+// for UIs to build a list of available languages for tagging purposes (e.g.
+// to tag an audio track appropriately in a video or audio editor).
 //
 // The function returns the following values:
 //
@@ -832,10 +877,11 @@ func TagGetLanguageCodes() []string {
 	return _utf8s
 }
 
-// TagGetLanguageName returns the name of the language given an ISO-639 language
-// code as found in a GST_TAG_LANGUAGE_CODE tag. The name will be translated
-// according to the current locale (if the library was built against the
-// iso-codes package, otherwise the English name will be returned).
+// TagGetLanguageName (gst_tag_get_language_name) returns the name of the
+// language given an ISO-639 language code as found in a GST_TAG_LANGUAGE_CODE
+// tag. The name will be translated according to the current locale (if the
+// library was built against the iso-codes package, otherwise the English name
+// will be returned).
 //
 // Language codes are case-sensitive and expected to be lower case.
 //
@@ -868,8 +914,9 @@ func TagGetLanguageName(languageCode string) string {
 	return _utf8
 }
 
-// TagGetLicenseDescription: get the description of a license, which is a
-// translated description of the license's main features.
+// TagGetLicenseDescription (gst_tag_get_license_description): get the
+// description of a license, which is a translated description of the license's
+// main features.
 //
 // The function takes the following parameters:
 //
@@ -899,8 +946,8 @@ func TagGetLicenseDescription(licenseRef string) string {
 	return _utf8
 }
 
-// TagGetLicenseFlags: get the flags of a license, which describe most of the
-// features of a license in their most general form.
+// TagGetLicenseFlags (gst_tag_get_license_flags): get the flags of a license,
+// which describe most of the features of a license in their most general form.
 //
 // The function takes the following parameters:
 //
@@ -927,10 +974,10 @@ func TagGetLicenseFlags(licenseRef string) TagLicenseFlags {
 	return _tagLicenseFlags
 }
 
-// TagGetLicenseJurisdiction: get the jurisdiction code of a license. This is
-// usually a two-letter ISO 3166-1 alpha-2 code, but there is also the special
-// case of Scotland, for which no code exists and which is thus represented as
-// "scotland".
+// TagGetLicenseJurisdiction (gst_tag_get_license_jurisdiction): get the
+// jurisdiction code of a license. This is usually a two-letter ISO 3166-1
+// alpha-2 code, but there is also the special case of Scotland, for which no
+// code exists and which is thus represented as "scotland".
 //
 // Known jurisdictions: ar, at, au, be, bg, br, ca, ch, cl, cn, co, de, dk, es,
 // fi, fr, hr, hu, il, in, it, jp, kr, mk, mt, mx, my, nl, pe, pl, pt, scotland,
@@ -964,8 +1011,8 @@ func TagGetLicenseJurisdiction(licenseRef string) string {
 	return _utf8
 }
 
-// TagGetLicenseNick: get the nick name of a license, which is a short
-// (untranslated) string such as e.g. "CC BY-NC-ND 2.0 UK".
+// TagGetLicenseNick (gst_tag_get_license_nick): get the nick name of a license,
+// which is a short (untranslated) string such as e.g. "CC BY-NC-ND 2.0 UK".
 //
 // The function takes the following parameters:
 //
@@ -995,8 +1042,9 @@ func TagGetLicenseNick(licenseRef string) string {
 	return _utf8
 }
 
-// TagGetLicenseTitle: get the title of a license, which is a short translated
-// description of the license's features (generally not very pretty though).
+// TagGetLicenseTitle (gst_tag_get_license_title): get the title of a license,
+// which is a short translated description of the license's features (generally
+// not very pretty though).
 //
 // The function takes the following parameters:
 //
@@ -1026,7 +1074,8 @@ func TagGetLicenseTitle(licenseRef string) string {
 	return _utf8
 }
 
-// TagGetLicenseVersion: get the version of a license.
+// TagGetLicenseVersion (gst_tag_get_license_version): get the version of a
+// license.
 //
 // The function takes the following parameters:
 //
@@ -1056,10 +1105,11 @@ func TagGetLicenseVersion(licenseRef string) string {
 	return _utf8
 }
 
-// TagGetLicenses returns a list of known license references (in form of URIs).
-// This is useful for UIs to build a list of available licenses for tagging
-// purposes (e.g. to tag an audio track appropriately in a video or audio
-// editor, or an image in a camera application).
+// TagGetLicenses (gst_tag_get_licenses) returns a list of known license
+// references (in form of URIs). This is useful for UIs to build a list
+// of available licenses for tagging purposes (e.g. to tag an audio track
+// appropriately in a video or audio editor, or an image in a camera
+// application).
 //
 // The function returns the following values:
 //
@@ -1091,8 +1141,8 @@ func TagGetLicenses() []string {
 	return _utf8s
 }
 
-// TagID3GenreCount gets the number of ID3v1 genres that can be identified.
-// Winamp genres are included.
+// TagID3GenreCount (gst_tag_id3_genre_count) gets the number of ID3v1 genres
+// that can be identified. Winamp genres are included.
 //
 // The function returns the following values:
 //
@@ -1109,7 +1159,8 @@ func TagID3GenreCount() uint {
 	return _guint
 }
 
-// TagID3GenreGet gets the ID3v1 genre name for a given ID.
+// TagID3GenreGet (gst_tag_id3_genre_get) gets the ID3v1 genre name for a given
+// ID.
 //
 // The function takes the following parameters:
 //
@@ -1136,10 +1187,10 @@ func TagID3GenreGet(id uint) string {
 	return _utf8
 }
 
-// TagImageDataToImageSample: helper function for tag-reading plugins to create
-// a Sample suitable to add to a TagList as an image tag (such as T_TAG_IMAGE
-// or T_TAG_PREVIEW_IMAGE) from the encoded image data and an (optional) image
-// type.
+// TagImageDataToImageSample (gst_tag_image_data_to_image_sample): helper
+// function for tag-reading plugins to create a Sample suitable to add to a
+// TagList as an image tag (such as T_TAG_IMAGE or T_TAG_PREVIEW_IMAGE) from the
+// encoded image data and an (optional) image type.
 //
 // Background: cover art and other images in tags are usually stored as a blob
 // of binary image data, often accompanied by a MIME type or some other content
@@ -1199,8 +1250,8 @@ func TagImageDataToImageSample(imageData []byte, imageType TagImageType) *gst.Sa
 	return _sample
 }
 
-// TagListAddID3Image adds an image from an ID3 APIC frame (or
-// similar, such as used in FLAC) to the given tag list. Also see
+// TagListAddID3Image (gst_tag_list_add_id3_image) adds an image from an ID3
+// APIC frame (or similar, such as used in FLAC) to the given tag list. Also see
 // gst_tag_image_data_to_image_sample() for more information on image tags in
 // GStreamer.
 //
@@ -1242,10 +1293,10 @@ func TagListAddID3Image(tagList *gst.TagList, imageData []byte, id3PictureType u
 	return _ok
 }
 
-// TagListFromExifBuffer parses the IFD and IFD tags data contained in the
-// buffer and puts it on a taglist. The base_offset is used to subtract from
-// the offset in the tag entries and be able to get the offset relative to the
-// buffer start.
+// TagListFromExifBuffer (gst_tag_list_from_exif_buffer) parses the IFD and IFD
+// tags data contained in the buffer and puts it on a taglist. The base_offset
+// is used to subtract from the offset in the tag entries and be able to get the
+// offset relative to the buffer start.
 //
 // The function takes the following parameters:
 //
@@ -1284,8 +1335,9 @@ func TagListFromExifBuffer(buffer *gst.Buffer, byteOrder int, baseOffset uint32)
 	return _tagList
 }
 
-// TagListFromExifBufferWithTIFFHeader parses the exif tags starting with a tiff
-// header structure.
+// TagListFromExifBufferWithTIFFHeader
+// (gst_tag_list_from_exif_buffer_with_tiff_header) parses the exif tags
+// starting with a tiff header structure.
 //
 // The function takes the following parameters:
 //
@@ -1316,8 +1368,8 @@ func TagListFromExifBufferWithTIFFHeader(buffer *gst.Buffer) *gst.TagList {
 	return _tagList
 }
 
-// TagListFromID3V2Tag creates a new tag list that contains the information
-// parsed out of a ID3 tag.
+// TagListFromID3V2Tag (gst_tag_list_from_id3v2_tag) creates a new tag list that
+// contains the information parsed out of a ID3 tag.
 //
 // The function takes the following parameters:
 //
@@ -1351,8 +1403,8 @@ func TagListFromID3V2Tag(buffer *gst.Buffer) *gst.TagList {
 	return _tagList
 }
 
-// TagListFromVorbiscomment creates a new tag list that contains the information
-// parsed out of a vorbiscomment packet.
+// TagListFromVorbiscomment (gst_tag_list_from_vorbiscomment) creates a new tag
+// list that contains the information parsed out of a vorbiscomment packet.
 //
 // The function takes the following parameters:
 //
@@ -1406,8 +1458,9 @@ func TagListFromVorbiscomment(data, idData []byte) (string, *gst.TagList) {
 	return _vendorString, _tagList
 }
 
-// TagListFromVorbiscommentBuffer creates a new tag list that contains the
-// information parsed out of a vorbiscomment packet.
+// TagListFromVorbiscommentBuffer (gst_tag_list_from_vorbiscomment_buffer)
+// creates a new tag list that contains the information parsed out of a
+// vorbiscomment packet.
 //
 // The function takes the following parameters:
 //
@@ -1457,7 +1510,8 @@ func TagListFromVorbiscommentBuffer(buffer *gst.Buffer, idData []byte) (string, 
 	return _vendorString, _tagList
 }
 
-// TagListFromXmpBuffer: parse a xmp packet into a taglist.
+// TagListFromXmpBuffer (gst_tag_list_from_xmp_buffer): parse a xmp packet into
+// a taglist.
 //
 // The function takes the following parameters:
 //
@@ -1490,8 +1544,8 @@ func TagListFromXmpBuffer(buffer *gst.Buffer) *gst.TagList {
 	return _tagList
 }
 
-// TagListNewFromID3V1 parses the data containing an ID3v1 tag and returns a
-// TagList from the parsed data.
+// TagListNewFromID3V1 (gst_tag_list_new_from_id3v1) parses the data containing
+// an ID3v1 tag and returns a TagList from the parsed data.
 //
 // The function takes the following parameters:
 //
@@ -1525,9 +1579,9 @@ func TagListNewFromID3V1(data [128]byte) *gst.TagList {
 	return _tagList
 }
 
-// TagListToExifBuffer formats the tags in taglist on exif format. The resulting
-// buffer contains the tags IFD and is followed by the data pointed by the tag
-// entries.
+// TagListToExifBuffer (gst_tag_list_to_exif_buffer) formats the tags in taglist
+// on exif format. The resulting buffer contains the tags IFD and is followed by
+// the data pointed by the tag entries.
 //
 // The function takes the following parameters:
 //
@@ -1565,8 +1619,9 @@ func TagListToExifBuffer(taglist *gst.TagList, byteOrder int, baseOffset uint32)
 	return _buffer
 }
 
-// TagListToExifBufferWithTIFFHeader formats the tags in taglist into exif
-// structure, a tiff header is put in the beginning of the buffer.
+// TagListToExifBufferWithTIFFHeader
+// (gst_tag_list_to_exif_buffer_with_tiff_header) formats the tags in taglist
+// into exif structure, a tiff header is put in the beginning of the buffer.
 //
 // The function takes the following parameters:
 //
@@ -1596,8 +1651,8 @@ func TagListToExifBufferWithTIFFHeader(taglist *gst.TagList) *gst.Buffer {
 	return _buffer
 }
 
-// TagListToVorbiscommentBuffer creates a new vorbiscomment buffer from a tag
-// list.
+// TagListToVorbiscommentBuffer (gst_tag_list_to_vorbiscomment_buffer) creates a
+// new vorbiscomment buffer from a tag list.
 //
 // The function takes the following parameters:
 //
@@ -1643,8 +1698,9 @@ func TagListToVorbiscommentBuffer(list *gst.TagList, idData []byte, vendorString
 	return _buffer
 }
 
-// TagListToXmpBuffer formats a taglist as a xmp packet using only the selected
-// schemas. An empty list (NULL) means that all schemas should be used.
+// TagListToXmpBuffer (gst_tag_list_to_xmp_buffer) formats a taglist as a xmp
+// packet using only the selected schemas. An empty list (NULL) means that all
+// schemas should be used.
 //
 // The function takes the following parameters:
 //
@@ -1698,8 +1754,9 @@ func TagListToXmpBuffer(list *gst.TagList, readOnly bool, schemas []string) *gst
 	return _buffer
 }
 
-// TagParseExtendedComment: convenience function to parse a
-// GST_TAG_EXTENDED_COMMENT string and separate it into its components.
+// TagParseExtendedComment (gst_tag_parse_extended_comment): convenience
+// function to parse a GST_TAG_EXTENDED_COMMENT string and separate it into its
+// components.
 //
 // If successful, key, lang and/or value will be set to newly allocated strings
 // that you need to free with g_free() when done. key and lang may also be
@@ -1758,14 +1815,15 @@ func TagParseExtendedComment(extComment string, failIfNoKey bool) (key, lang, va
 	return _key, _lang, _value, _ok
 }
 
-// TagRegisterMusicbrainzTags registers additional musicbrainz-specific tags
-// with the GStreamer tag system. Plugins and applications that use these tags
-// should call this function before using them. Can be called multiple times.
+// TagRegisterMusicbrainzTags (gst_tag_register_musicbrainz_tags) registers
+// additional musicbrainz-specific tags with the GStreamer tag system. Plugins
+// and applications that use these tags should call this function before using
+// them. Can be called multiple times.
 func TagRegisterMusicbrainzTags() {
 	C.gst_tag_register_musicbrainz_tags()
 }
 
-// TagToID3Tag looks up the ID3v2 tag for a GStreamer tag.
+// TagToID3Tag (gst_tag_to_id3_tag) looks up the ID3v2 tag for a GStreamer tag.
 //
 // The function takes the following parameters:
 //
@@ -1793,8 +1851,8 @@ func TagToID3Tag(gstTag string) string {
 	return _utf8
 }
 
-// TagToVorbisComments creates a new tag list that contains the information
-// parsed out of a vorbiscomment packet.
+// TagToVorbisComments (gst_tag_to_vorbis_comments) creates a new tag list that
+// contains the information parsed out of a vorbiscomment packet.
 //
 // The function takes the following parameters:
 //
@@ -1832,7 +1890,8 @@ func TagToVorbisComments(list *gst.TagList, tag string) []string {
 	return _ret
 }
 
-// TagToVorbisTag looks up the vorbiscomment tag for a GStreamer tag.
+// TagToVorbisTag (gst_tag_to_vorbis_tag) looks up the vorbiscomment tag for a
+// GStreamer tag.
 //
 // The function takes the following parameters:
 //
@@ -1860,7 +1919,8 @@ func TagToVorbisTag(gstTag string) string {
 	return _utf8
 }
 
-// TagXmpListSchemas gets the list of supported schemas in the xmp lib.
+// TagXmpListSchemas (gst_tag_xmp_list_schemas) gets the list of supported
+// schemas in the xmp lib.
 //
 // The function returns the following values:
 //
@@ -1889,9 +1949,9 @@ func TagXmpListSchemas() []string {
 	return _utf8s
 }
 
-// VorbisTagAdd: convenience function using gst_tag_from_vorbis_tag(), parsing a
-// vorbis comment string into the right type and adding it to the given taglist
-// list.
+// VorbisTagAdd (gst_vorbis_tag_add): convenience function using
+// gst_tag_from_vorbis_tag(), parsing a vorbis comment string into the right
+// type and adding it to the given taglist list.
 //
 // Unknown vorbiscomment tags will be added to the tag list in form of a
 // T_TAG_EXTENDED_COMMENT.
@@ -1923,8 +1983,9 @@ func VorbisTagAdd(list *gst.TagList, tag, value string) {
 type TagXmpWriterOverrider interface {
 }
 
-// TagXmpWriter: this interface is implemented by elements that are able to do
-// XMP serialization. Examples for such elements are #jifmux and #qtmux.
+// TagXmpWriter (GstTagXmpWriter): this interface is implemented by elements
+// that are able to do XMP serialization. Examples for such elements are #jifmux
+// and #qtmux.
 //
 // Applications can use this interface to configure which XMP schemas
 // should be used when serializing tags into XMP. Schemas are represented
@@ -1942,19 +2003,27 @@ var (
 	_ gst.Elementer = (*TagXmpWriter)(nil)
 )
 
-// TagXmpWriterer describes TagXmpWriter's interface methods.
+// TagXmpWriterer describes types inherited from TagXmpWriter.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
 type TagXmpWriterer interface {
-	coreglib.Objector
+	gst.Elementer
 
-	// AddAllSchemas adds all available XMP schemas to the configuration.
+	// AddAllSchemas (gst_tag_xmp_writer_add_all_schemas) adds all available XMP
+	// schemas to the configuration.
 	AddAllSchemas()
-	// AddSchema adds schema to the list schemas.
+	// AddSchema (gst_tag_xmp_writer_add_schema) adds schema to the list
+	// schemas.
 	AddSchema(schema string)
-	// HasSchema checks if schema is going to be used.
+	// HasSchema (gst_tag_xmp_writer_has_schema) checks if schema is going to be
+	// used.
 	HasSchema(schema string) bool
-	// RemoveAllSchemas removes all schemas from the list of schemas to use.
+	// RemoveAllSchemas (gst_tag_xmp_writer_remove_all_schemas) removes all
+	// schemas from the list of schemas to use.
 	RemoveAllSchemas()
-	// RemoveSchema removes a schema from the list of schemas to use.
+	// RemoveSchema (gst_tag_xmp_writer_remove_schema) removes a schema from the
+	// list of schemas to use.
 	RemoveSchema(schema string)
 	TagListToXmpBuffer(taglist *gst.TagList, readOnly bool) *gst.Buffer
 }
@@ -1980,8 +2049,8 @@ func marshalTagXmpWriter(p uintptr) (interface{}, error) {
 	return wrapTagXmpWriter(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// AddAllSchemas adds all available XMP schemas to the configuration. Meaning
-// that all will be used.
+// AddAllSchemas (gst_tag_xmp_writer_add_all_schemas) adds all available XMP
+// schemas to the configuration. Meaning that all will be used.
 func (config *TagXmpWriter) AddAllSchemas() {
 	var _arg0 *C.GstTagXmpWriter // out
 
@@ -1991,7 +2060,7 @@ func (config *TagXmpWriter) AddAllSchemas() {
 	runtime.KeepAlive(config)
 }
 
-// AddSchema adds schema to the list schemas.
+// AddSchema (gst_tag_xmp_writer_add_schema) adds schema to the list schemas.
 //
 // The function takes the following parameters:
 //
@@ -2009,7 +2078,8 @@ func (config *TagXmpWriter) AddSchema(schema string) {
 	runtime.KeepAlive(schema)
 }
 
-// HasSchema checks if schema is going to be used.
+// HasSchema (gst_tag_xmp_writer_has_schema) checks if schema is going to be
+// used.
 //
 // The function takes the following parameters:
 //
@@ -2040,8 +2110,8 @@ func (config *TagXmpWriter) HasSchema(schema string) bool {
 	return _ok
 }
 
-// RemoveAllSchemas removes all schemas from the list of schemas to use. Meaning
-// that no XMP will be generated.
+// RemoveAllSchemas (gst_tag_xmp_writer_remove_all_schemas) removes all schemas
+// from the list of schemas to use. Meaning that no XMP will be generated.
 func (config *TagXmpWriter) RemoveAllSchemas() {
 	var _arg0 *C.GstTagXmpWriter // out
 
@@ -2051,8 +2121,8 @@ func (config *TagXmpWriter) RemoveAllSchemas() {
 	runtime.KeepAlive(config)
 }
 
-// RemoveSchema removes a schema from the list of schemas to use. Nothing is
-// done if the schema wasn't in the list.
+// RemoveSchema (gst_tag_xmp_writer_remove_schema) removes a schema from the
+// list of schemas to use. Nothing is done if the schema wasn't in the list.
 //
 // The function takes the following parameters:
 //
@@ -2134,15 +2204,15 @@ func defaultTagDemuxOverrides(v *TagDemux) TagDemuxOverrides {
 	}
 }
 
-// TagDemux provides a base class for demuxing tags at the beginning or end of a
-// stream and handles things like typefinding, querying, seeking, and different
-// modes of operation (chain-based, pull_range-based, and providing downstream
-// elements with random access if upstream supports that). The tag is stripped
-// from the output, and all offsets are adjusted for the tag sizes, so that to
-// the downstream element the stream will appear as if there was no tag at all.
-// Also, once the tag has been parsed, GstTagDemux will try to determine the
-// media type of the resulting stream and add a source pad with the appropriate
-// caps in order to facilitate auto-plugging.
+// TagDemux (GstTagDemux) provides a base class for demuxing tags at the
+// beginning or end of a stream and handles things like typefinding, querying,
+// seeking, and different modes of operation (chain-based, pull_range-based, and
+// providing downstream elements with random access if upstream supports that).
+// The tag is stripped from the output, and all offsets are adjusted for the tag
+// sizes, so that to the downstream element the stream will appear as if there
+// was no tag at all. Also, once the tag has been parsed, GstTagDemux will try
+// to determine the media type of the resulting stream and add a source pad with
+// the appropriate caps in order to facilitate auto-plugging.
 //
 // # Deriving from GstTagDemux
 //
@@ -2172,12 +2242,13 @@ var (
 	_ gst.Elementer = (*TagDemux)(nil)
 )
 
-// TagDemuxer describes types inherited from class TagDemux.
+// TagDemuxer describes types inherited from TagDemux.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type TagDemuxer interface {
-	coreglib.Objector
+	gst.Elementer
+
 	baseTagDemux() *TagDemux
 }
 
@@ -2332,8 +2403,8 @@ func defaultTagMuxOverrides(v *TagMux) TagMuxOverrides {
 	}
 }
 
-// TagMux provides a base class for adding tags at the beginning or end of a
-// stream.
+// TagMux (GstTagMux) provides a base class for adding tags at the beginning or
+// end of a stream.
 //
 // # Deriving from GstTagMux
 //
@@ -2357,12 +2428,14 @@ var (
 	_ gst.Elementer = (*TagMux)(nil)
 )
 
-// TagMuxer describes types inherited from class TagMux.
+// TagMuxer describes types inherited from TagMux.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type TagMuxer interface {
-	coreglib.Objector
+	gst.Elementer
+	gst.TagSetterer
+
 	baseTagMux() *TagMux
 }
 
@@ -2486,8 +2559,8 @@ func (mux *TagMux) renderStartTag(tagList *gst.TagList) *gst.Buffer {
 	return _buffer
 }
 
-// TagDemuxClass structure. See documentation at beginning of section for
-// details about what subclasses need to override and do.
+// TagDemuxClass (GstTagDemuxClass) structure. See documentation at beginning of
+// section for details about what subclasses need to override and do.
 //
 // An instance of this type is always passed by reference.
 type TagDemuxClass struct {
@@ -2527,8 +2600,8 @@ func (t *TagDemuxClass) MinEndSize() uint {
 	return _v
 }
 
-// TagMuxClass structure. Subclasses need to override at least one of the two
-// render vfuncs.
+// TagMuxClass (GstTagMuxClass) structure. Subclasses need to override at least
+// one of the two render vfuncs.
 //
 // An instance of this type is always passed by reference.
 type TagMuxClass struct {
@@ -2548,7 +2621,8 @@ func (t *TagMuxClass) ParentClass() *gst.ElementClass {
 	return _v
 }
 
-// TagXmpWriterInterface: instance of this type is always passed by reference.
+// TagXmpWriterInterface (GstTagXmpWriterInterface): instance of this type is
+// always passed by reference.
 type TagXmpWriterInterface struct {
 	*tagXmpWriterInterface
 }

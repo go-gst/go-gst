@@ -110,74 +110,90 @@ func init() {
 	})
 }
 
-// ENCODING_CATEGORY_CAPTURE category for recording and capture. Targets within
-// this category are optimized for low latency encoding.
+// ENCODING_CATEGORY_CAPTURE (GST_ENCODING_CATEGORY_CAPTURE) category for
+// recording and capture. Targets within this category are optimized for low
+// latency encoding.
 const ENCODING_CATEGORY_CAPTURE = "capture"
 
-// ENCODING_CATEGORY_DEVICE category for device-specific targets. The name of
-// the target will usually be the constructor and model of the device, and that
-// target will contain EncodingProfiles suitable for that device.
+// ENCODING_CATEGORY_DEVICE (GST_ENCODING_CATEGORY_DEVICE) category for
+// device-specific targets. The name of the target will usually be the
+// constructor and model of the device, and that target will contain
+// EncodingProfiles suitable for that device.
 const ENCODING_CATEGORY_DEVICE = "device"
 
-// ENCODING_CATEGORY_FILE_EXTENSION category for file extensions. The name of
-// the target will be the name of the file extensions possible for a particular
-// target. Those targets are defining like 'default' formats usually used for a
-// particular file extension.
+// ENCODING_CATEGORY_FILE_EXTENSION (GST_ENCODING_CATEGORY_FILE_EXTENSION)
+// category for file extensions. The name of the target will be the name of the
+// file extensions possible for a particular target. Those targets are defining
+// like 'default' formats usually used for a particular file extension.
 const ENCODING_CATEGORY_FILE_EXTENSION = "file-extension"
 
-// ENCODING_CATEGORY_ONLINE_SERVICE category for online-services. The name of
-// the target will usually be the name of the online service and that target
-// will contain EncodingProfiles suitable for that online service.
+// ENCODING_CATEGORY_ONLINE_SERVICE (GST_ENCODING_CATEGORY_ONLINE_SERVICE)
+// category for online-services. The name of the target will usually be the name
+// of the online service and that target will contain EncodingProfiles suitable
+// for that online service.
 const ENCODING_CATEGORY_ONLINE_SERVICE = "online-service"
 
-// ENCODING_CATEGORY_STORAGE_EDITING category for storage, archiving and editing
-// targets. Those targets can be lossless and/or provide very fast random access
-// content. The name of the target will usually be the container type or editing
-// target, and that target will contain EncodingProfiles suitable for editing or
-// storage.
+// ENCODING_CATEGORY_STORAGE_EDITING (GST_ENCODING_CATEGORY_STORAGE_EDITING)
+// category for storage, archiving and editing targets. Those targets can be
+// lossless and/or provide very fast random access content. The name of the
+// target will usually be the container type or editing target, and that target
+// will contain EncodingProfiles suitable for editing or storage.
 const ENCODING_CATEGORY_STORAGE_EDITING = "storage-editing"
 
-// PLUGINS_BASE_VERSION_MAJOR: major version of GStreamer's gst-plugins-base
-// libraries at compile time.
+// PLUGINS_BASE_VERSION_MAJOR (GST_PLUGINS_BASE_VERSION_MAJOR): major version of
+// GStreamer's gst-plugins-base libraries at compile time.
 const PLUGINS_BASE_VERSION_MAJOR = 1
 
-// PLUGINS_BASE_VERSION_MICRO: micro version of GStreamer's gst-plugins-base
-// libraries at compile time.
+// PLUGINS_BASE_VERSION_MICRO (GST_PLUGINS_BASE_VERSION_MICRO): micro version of
+// GStreamer's gst-plugins-base libraries at compile time.
 const PLUGINS_BASE_VERSION_MICRO = 10
 
-// PLUGINS_BASE_VERSION_MINOR: minor version of GStreamer's gst-plugins-base
-// libraries at compile time.
+// PLUGINS_BASE_VERSION_MINOR (GST_PLUGINS_BASE_VERSION_MINOR): minor version of
+// GStreamer's gst-plugins-base libraries at compile time.
 const PLUGINS_BASE_VERSION_MINOR = 24
 
-// PLUGINS_BASE_VERSION_NANO: nano version of GStreamer's gst-plugins-base
-// libraries at compile time. Actual releases have 0, GIT versions have 1,
-// prerelease versions have 2-...
+// PLUGINS_BASE_VERSION_NANO (GST_PLUGINS_BASE_VERSION_NANO): nano version of
+// GStreamer's gst-plugins-base libraries at compile time. Actual releases have
+// 0, GIT versions have 1, prerelease versions have 2-...
 const PLUGINS_BASE_VERSION_NANO = 0
 
-// AudioVisualizerShader: different types of supported background shading
-// functions.
+// AudioVisualizerShader (GstAudioVisualizerShader): different types of
+// supported background shading functions.
 type AudioVisualizerShader C.gint
 
 const (
-	// AudioVisualizerShaderNone: no shading.
+	// AudioVisualizerShaderNone (GST_AUDIO_VISUALIZER_SHADER_NONE): no shading.
 	AudioVisualizerShaderNone AudioVisualizerShader = iota
-	// AudioVisualizerShaderFade: plain fading.
+	// AudioVisualizerShaderFade (GST_AUDIO_VISUALIZER_SHADER_FADE): plain
+	// fading.
 	AudioVisualizerShaderFade
-	// AudioVisualizerShaderFadeAndMoveUp: fade and move up.
+	// AudioVisualizerShaderFadeAndMoveUp
+	// (GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_UP): fade and move up.
 	AudioVisualizerShaderFadeAndMoveUp
-	// AudioVisualizerShaderFadeAndMoveDown: fade and move down.
+	// AudioVisualizerShaderFadeAndMoveDown
+	// (GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_DOWN): fade and move down.
 	AudioVisualizerShaderFadeAndMoveDown
-	// AudioVisualizerShaderFadeAndMoveLeft: fade and move left.
+	// AudioVisualizerShaderFadeAndMoveLeft
+	// (GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_LEFT): fade and move left.
 	AudioVisualizerShaderFadeAndMoveLeft
-	// AudioVisualizerShaderFadeAndMoveRight: fade and move right.
+	// AudioVisualizerShaderFadeAndMoveRight
+	// (GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_RIGHT): fade and move right.
 	AudioVisualizerShaderFadeAndMoveRight
-	// AudioVisualizerShaderFadeAndMoveHorizOut: fade and move horizontally out.
+	// AudioVisualizerShaderFadeAndMoveHorizOut
+	// (GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_HORIZ_OUT): fade and move
+	// horizontally out.
 	AudioVisualizerShaderFadeAndMoveHorizOut
-	// AudioVisualizerShaderFadeAndMoveHorizIn: fade and move horizontally in.
+	// AudioVisualizerShaderFadeAndMoveHorizIn
+	// (GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_HORIZ_IN): fade and move
+	// horizontally in.
 	AudioVisualizerShaderFadeAndMoveHorizIn
-	// AudioVisualizerShaderFadeAndMoveVertOut: fade and move vertically out.
+	// AudioVisualizerShaderFadeAndMoveVertOut
+	// (GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_VERT_OUT): fade and move
+	// vertically out.
 	AudioVisualizerShaderFadeAndMoveVertOut
-	// AudioVisualizerShaderFadeAndMoveVertIn: fade and move vertically in.
+	// AudioVisualizerShaderFadeAndMoveVertIn
+	// (GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_VERT_IN): fade and move
+	// vertically in.
 	AudioVisualizerShaderFadeAndMoveVertIn
 )
 
@@ -213,21 +229,25 @@ func (a AudioVisualizerShader) String() string {
 	}
 }
 
-// DiscovererResult: result values for the discovery process.
+// DiscovererResult (GstDiscovererResult): result values for the discovery
+// process.
 type DiscovererResult C.gint
 
 const (
-	// DiscovererOK: discovery was successful.
+	// DiscovererOK (GST_DISCOVERER_OK): discovery was successful.
 	DiscovererOK DiscovererResult = iota
-	// DiscovererURIInvalid: URI is invalid.
+	// DiscovererURIInvalid (GST_DISCOVERER_URI_INVALID): URI is invalid.
 	DiscovererURIInvalid
-	// DiscovererError: error happened and the GError is set.
+	// DiscovererError (GST_DISCOVERER_ERROR): error happened and the GError is
+	// set.
 	DiscovererError
-	// DiscovererTimeout: discovery timed-out.
+	// DiscovererTimeout (GST_DISCOVERER_TIMEOUT): discovery timed-out.
 	DiscovererTimeout
-	// DiscovererBusy: discoverer was already discovering a file.
+	// DiscovererBusy (GST_DISCOVERER_BUSY): discoverer was already discovering
+	// a file.
 	DiscovererBusy
-	// DiscovererMissingPlugins: some plugins are missing for full discovery.
+	// DiscovererMissingPlugins (GST_DISCOVERER_MISSING_PLUGINS): some plugins
+	// are missing for full discovery.
 	DiscovererMissingPlugins
 )
 
@@ -255,48 +275,55 @@ func (d DiscovererResult) String() string {
 	}
 }
 
-// InstallPluginsReturn: result codes returned by gst_install_plugins_async()
-// and gst_install_plugins_sync(), and also the result code passed to the
-// InstallPluginsResultFunc specified with gst_install_plugins_async().
+// InstallPluginsReturn (GstInstallPluginsReturn): result codes returned
+// by gst_install_plugins_async() and gst_install_plugins_sync(), and also
+// the result code passed to the InstallPluginsResultFunc specified with
+// gst_install_plugins_async().
 //
 // These codes indicate success or failure of starting an external installer
 // program and to what extent the requested plugins could be installed.
 type InstallPluginsReturn C.gint
 
 const (
-	// InstallPluginsSuccess: all of the requested plugins could be installed.
+	// InstallPluginsSuccess (GST_INSTALL_PLUGINS_SUCCESS): all of the requested
+	// plugins could be installed.
 	InstallPluginsSuccess InstallPluginsReturn = 0
-	// InstallPluginsNotFound: no appropriate installation candidate for any
-	// of the requested plugins could be found. Only return this if nothing has
-	// been installed. Return T_INSTALL_PLUGINS_PARTIAL_SUCCESS if some (but not
-	// all) of the requested plugins could be installed.
+	// InstallPluginsNotFound (GST_INSTALL_PLUGINS_NOT_FOUND): no appropriate
+	// installation candidate for any of the requested plugins could be
+	// found. Only return this if nothing has been installed. Return
+	// T_INSTALL_PLUGINS_PARTIAL_SUCCESS if some (but not all) of the requested
+	// plugins could be installed.
 	InstallPluginsNotFound InstallPluginsReturn = 1
-	// InstallPluginsError: error occurred during the installation. If this
-	// happens, the user has already seen an error message and another one
-	// should not be displayed.
+	// InstallPluginsError (GST_INSTALL_PLUGINS_ERROR): error occurred during
+	// the installation. If this happens, the user has already seen an error
+	// message and another one should not be displayed.
 	InstallPluginsError InstallPluginsReturn = 2
-	// InstallPluginsPartialSuccess: some of the requested plugins could be
-	// installed, but not all.
+	// InstallPluginsPartialSuccess (GST_INSTALL_PLUGINS_PARTIAL_SUCCESS):
+	// some of the requested plugins could be installed, but not all.
 	InstallPluginsPartialSuccess InstallPluginsReturn = 3
-	// InstallPluginsUserAbort: user has aborted the installation.
+	// InstallPluginsUserAbort (GST_INSTALL_PLUGINS_USER_ABORT): user has
+	// aborted the installation.
 	InstallPluginsUserAbort InstallPluginsReturn = 4
-	// InstallPluginsCrashed: installer had an unclean exit code (ie. death by
-	// signal).
+	// InstallPluginsCrashed (GST_INSTALL_PLUGINS_CRASHED): installer had an
+	// unclean exit code (ie. death by signal).
 	InstallPluginsCrashed InstallPluginsReturn = 100
-	// InstallPluginsInvalid: helper returned an invalid status code.
+	// InstallPluginsInvalid (GST_INSTALL_PLUGINS_INVALID): helper returned an
+	// invalid status code.
 	InstallPluginsInvalid InstallPluginsReturn = 101
-	// InstallPluginsStartedOK: returned by gst_install_plugins_async() to
-	// indicate that everything went fine so far and the provided callback will
-	// be called with the result of the installation later.
+	// InstallPluginsStartedOK (GST_INSTALL_PLUGINS_STARTED_OK): returned by
+	// gst_install_plugins_async() to indicate that everything went fine so
+	// far and the provided callback will be called with the result of the
+	// installation later.
 	InstallPluginsStartedOK InstallPluginsReturn = 200
-	// InstallPluginsInternalFailure: some internal failure has occurred when
-	// trying to start the installer.
+	// InstallPluginsInternalFailure (GST_INSTALL_PLUGINS_INTERNAL_FAILURE):
+	// some internal failure has occurred when trying to start the installer.
 	InstallPluginsInternalFailure InstallPluginsReturn = 201
-	// InstallPluginsHelperMissing: helper script to call the actual installer
-	// is not installed.
+	// InstallPluginsHelperMissing (GST_INSTALL_PLUGINS_HELPER_MISSING):
+	// helper script to call the actual installer is not installed.
 	InstallPluginsHelperMissing InstallPluginsReturn = 202
-	// InstallPluginsInstallInProgress: previously-started plugin installation
-	// is still in progress, try again later.
+	// InstallPluginsInstallInProgress
+	// (GST_INSTALL_PLUGINS_INSTALL_IN_PROGRESS): previously-started plugin
+	// installation is still in progress, try again later.
 	InstallPluginsInstallInProgress InstallPluginsReturn = 203
 )
 
@@ -334,10 +361,10 @@ func (i InstallPluginsReturn) String() string {
 	}
 }
 
-// InstallPluginsReturnGetName: convenience function to return the descriptive
-// string associated with a status code. This function returns English strings
-// and should not be used for user messages. It is here only to assist in
-// debugging.
+// InstallPluginsReturnGetName (gst_install_plugins_return_get_name):
+// convenience function to return the descriptive string associated with a
+// status code. This function returns English strings and should not be used for
+// user messages. It is here only to assist in debugging.
 //
 // The function takes the following parameters:
 //
@@ -362,23 +389,25 @@ func InstallPluginsReturnGetName(ret InstallPluginsReturn) string {
 	return _utf8
 }
 
-// DiscovererSerializeFlags: you can use these flags to control what is
-// serialized by gst_discoverer_info_to_variant().
+// DiscovererSerializeFlags (GstDiscovererSerializeFlags): you can use these
+// flags to control what is serialized by gst_discoverer_info_to_variant().
 type DiscovererSerializeFlags C.guint
 
 const (
-	// DiscovererSerializeBasic: serialize only basic information, excluding
-	// caps, tags and miscellaneous information.
+	// DiscovererSerializeBasic (GST_DISCOVERER_SERIALIZE_BASIC): serialize only
+	// basic information, excluding caps, tags and miscellaneous information.
 	DiscovererSerializeBasic DiscovererSerializeFlags = 0b0
-	// DiscovererSerializeCaps: serialize the caps for each stream.
+	// DiscovererSerializeCaps (GST_DISCOVERER_SERIALIZE_CAPS): serialize the
+	// caps for each stream.
 	DiscovererSerializeCaps DiscovererSerializeFlags = 0b1
-	// DiscovererSerializeTags: serialize the tags for each stream.
+	// DiscovererSerializeTags (GST_DISCOVERER_SERIALIZE_TAGS): serialize the
+	// tags for each stream.
 	DiscovererSerializeTags DiscovererSerializeFlags = 0b10
-	// DiscovererSerializeMisc: serialize miscellaneous information for each
-	// stream.
+	// DiscovererSerializeMisc (GST_DISCOVERER_SERIALIZE_MISC): serialize
+	// miscellaneous information for each stream.
 	DiscovererSerializeMisc DiscovererSerializeFlags = 0b100
-	// DiscovererSerializeAll: serialize all the available info, including caps,
-	// tags and miscellaneous information.
+	// DiscovererSerializeAll (GST_DISCOVERER_SERIALIZE_ALL): serialize all the
+	// available info, including caps, tags and miscellaneous information.
 	DiscovererSerializeAll DiscovererSerializeFlags = 0b111
 )
 
@@ -425,33 +454,42 @@ func (d DiscovererSerializeFlags) Has(other DiscovererSerializeFlags) bool {
 	return (d & other) == other
 }
 
-// PbUtilsCapsDescriptionFlags flags that are returned by
-// gst_pb_utils_get_caps_description_flags() and describe the format of the
-// caps.
+// PbUtilsCapsDescriptionFlags (GstPbUtilsCapsDescriptionFlags) flags that are
+// returned by gst_pb_utils_get_caps_description_flags() and describe the format
+// of the caps.
 type PbUtilsCapsDescriptionFlags C.guint
 
 const (
-	// PbutilsCapsDescriptionFlagContainer caps describe a container format.
+	// PbutilsCapsDescriptionFlagContainer
+	// (GST_PBUTILS_CAPS_DESCRIPTION_FLAG_CONTAINER) caps describe a container
+	// format.
 	PbutilsCapsDescriptionFlagContainer PbUtilsCapsDescriptionFlags = 0b1
-	// PbutilsCapsDescriptionFlagAudio caps describe an audio format, or a
-	// container format that can store audio.
+	// PbutilsCapsDescriptionFlagAudio (GST_PBUTILS_CAPS_DESCRIPTION_FLAG_AUDIO)
+	// caps describe an audio format, or a container format that can store
+	// audio.
 	PbutilsCapsDescriptionFlagAudio PbUtilsCapsDescriptionFlags = 0b10
-	// PbutilsCapsDescriptionFlagVideo caps describe an video format, or a
-	// container format that can store video.
+	// PbutilsCapsDescriptionFlagVideo (GST_PBUTILS_CAPS_DESCRIPTION_FLAG_VIDEO)
+	// caps describe an video format, or a container format that can store
+	// video.
 	PbutilsCapsDescriptionFlagVideo PbUtilsCapsDescriptionFlags = 0b100
-	// PbutilsCapsDescriptionFlagImage caps describe an image format, or a
-	// container format that can store image.
+	// PbutilsCapsDescriptionFlagImage (GST_PBUTILS_CAPS_DESCRIPTION_FLAG_IMAGE)
+	// caps describe an image format, or a container format that can store
+	// image.
 	PbutilsCapsDescriptionFlagImage PbUtilsCapsDescriptionFlags = 0b1000
-	// PbutilsCapsDescriptionFlagSubtitle caps describe an subtitle format,
-	// or a container format that can store subtitles.
+	// PbutilsCapsDescriptionFlagSubtitle
+	// (GST_PBUTILS_CAPS_DESCRIPTION_FLAG_SUBTITLE) caps describe an subtitle
+	// format, or a container format that can store subtitles.
 	PbutilsCapsDescriptionFlagSubtitle PbUtilsCapsDescriptionFlags = 0b10000
-	// PbutilsCapsDescriptionFlagTag: container format is a tags container.
+	// PbutilsCapsDescriptionFlagTag (GST_PBUTILS_CAPS_DESCRIPTION_FLAG_TAG):
+	// container format is a tags container.
 	PbutilsCapsDescriptionFlagTag PbUtilsCapsDescriptionFlags = 0b100000
-	// PbutilsCapsDescriptionFlagGeneric: container format can store any kind of
-	// stream type.
+	// PbutilsCapsDescriptionFlagGeneric
+	// (GST_PBUTILS_CAPS_DESCRIPTION_FLAG_GENERIC): container format can store
+	// any kind of stream type.
 	PbutilsCapsDescriptionFlagGeneric PbUtilsCapsDescriptionFlags = 0b1000000
-	// PbutilsCapsDescriptionFlagMetadata caps describe a metadata format,
-	// or a container format that can store metadata.
+	// PbutilsCapsDescriptionFlagMetadata
+	// (GST_PBUTILS_CAPS_DESCRIPTION_FLAG_METADATA) caps describe a metadata
+	// format, or a container format that can store metadata.
 	PbutilsCapsDescriptionFlagMetadata PbUtilsCapsDescriptionFlags = 0b10000000
 )
 
@@ -509,11 +547,13 @@ func (p PbUtilsCapsDescriptionFlags) Has(other PbUtilsCapsDescriptionFlags) bool
 // to provide a callback function if you are using the asynchronous interface.
 type InstallPluginsResultFunc func(result InstallPluginsReturn)
 
-// CodecUtilsAacCapsSetLevelAndProfile sets the level and profile on caps if
-// it can be determined from audio_config. See gst_codec_utils_aac_get_level()
-// and gst_codec_utils_aac_get_profile() for more details on the parameters.
-// caps must be audio/mpeg caps with an "mpegversion" field of either 2 or 4.
-// If mpegversion is 4, the "base-profile" field is also set in caps.
+// CodecUtilsAacCapsSetLevelAndProfile
+// (gst_codec_utils_aac_caps_set_level_and_profile) sets the level
+// and profile on caps if it can be determined from audio_config.
+// See gst_codec_utils_aac_get_level() and gst_codec_utils_aac_get_profile()
+// for more details on the parameters. caps must be audio/mpeg caps with an
+// "mpegversion" field of either 2 or 4. If mpegversion is 4, the "base-profile"
+// field is also set in caps.
 //
 // The function takes the following parameters:
 //
@@ -550,7 +590,8 @@ func CodecUtilsAacCapsSetLevelAndProfile(caps *gst.Caps, audioConfig []byte) boo
 	return _ok
 }
 
-// CodecUtilsAacGetChannels returns the channels of the given AAC stream.
+// CodecUtilsAacGetChannels (gst_codec_utils_aac_get_channels) returns the
+// channels of the given AAC stream.
 //
 // The function takes the following parameters:
 //
@@ -580,8 +621,9 @@ func CodecUtilsAacGetChannels(audioConfig []byte) uint {
 	return _guint
 }
 
-// CodecUtilsAacGetIndexFromSampleRate translates the sample rate to the index
-// corresponding to it in AAC spec.
+// CodecUtilsAacGetIndexFromSampleRate
+// (gst_codec_utils_aac_get_index_from_sample_rate) translates the sample rate
+// to the index corresponding to it in AAC spec.
 //
 // The function takes the following parameters:
 //
@@ -607,9 +649,10 @@ func CodecUtilsAacGetIndexFromSampleRate(rate uint) int {
 	return _gint
 }
 
-// CodecUtilsAacGetLevel determines the level of a stream as defined in ISO/IEC
-// 14496-3. For AAC LC streams, the constraints from the AAC audio profile are
-// applied. For AAC Main, LTP, SSR and others, the Main profile is used.
+// CodecUtilsAacGetLevel (gst_codec_utils_aac_get_level) determines the level of
+// a stream as defined in ISO/IEC 14496-3. For AAC LC streams, the constraints
+// from the AAC audio profile are applied. For AAC Main, LTP, SSR and others,
+// the Main profile is used.
 //
 // The audio_config parameter follows the following format, starting from the
 // most significant bit of the first byte:
@@ -652,9 +695,9 @@ func CodecUtilsAacGetLevel(audioConfig []byte) string {
 	return _utf8
 }
 
-// CodecUtilsAacGetProfile returns the profile of the given AAC stream as a
-// string. The profile is normally determined using the AudioObjectType field
-// which is in the first 5 bits of audio_config.
+// CodecUtilsAacGetProfile (gst_codec_utils_aac_get_profile) returns the profile
+// of the given AAC stream as a string. The profile is normally determined using
+// the AudioObjectType field which is in the first 5 bits of audio_config.
 //
 // The function takes the following parameters:
 //
@@ -687,8 +730,8 @@ func CodecUtilsAacGetProfile(audioConfig []byte) string {
 	return _utf8
 }
 
-// CodecUtilsAacGetSampleRate translates the sample rate index found in AAC
-// headers to the actual sample rate.
+// CodecUtilsAacGetSampleRate (gst_codec_utils_aac_get_sample_rate) translates
+// the sample rate index found in AAC headers to the actual sample rate.
 //
 // The function takes the following parameters:
 //
@@ -718,8 +761,9 @@ func CodecUtilsAacGetSampleRate(audioConfig []byte) uint {
 	return _guint
 }
 
-// CodecUtilsAacGetSampleRateFromIndex translates the sample rate index found in
-// AAC headers to the actual sample rate.
+// CodecUtilsAacGetSampleRateFromIndex
+// (gst_codec_utils_aac_get_sample_rate_from_index) translates the sample rate
+// index found in AAC headers to the actual sample rate.
 //
 // The function takes the following parameters:
 //
@@ -745,8 +789,9 @@ func CodecUtilsAacGetSampleRateFromIndex(srIdx uint) uint {
 	return _guint
 }
 
-// CodecUtilsCapsFromMIMECodec converts a RFC 6381 compatible codec string to
-// Caps. More than one codec string can be present (separated by ,).
+// CodecUtilsCapsFromMIMECodec (gst_codec_utils_caps_from_mime_codec) converts
+// a RFC 6381 compatible codec string to Caps. More than one codec string can be
+// present (separated by ,).
 //
 // Registered codecs can be found at http://mp4ra.org/#/codecs.
 //
@@ -781,8 +826,8 @@ func CodecUtilsCapsFromMIMECodec(codecsField string) *gst.Caps {
 	return _caps
 }
 
-// CodecUtilsCapsGetMIMECodec converts caps to a RFC 6381 compatible codec
-// string if possible.
+// CodecUtilsCapsGetMIMECodec (gst_codec_utils_caps_get_mime_codec) converts
+// caps to a RFC 6381 compatible codec string if possible.
 //
 // Useful for providing the 'codecs' field inside the 'Content-Type' HTTP header
 // for containerized formats, such as mp4 or matroska.
@@ -815,9 +860,11 @@ func CodecUtilsCapsGetMIMECodec(caps *gst.Caps) string {
 	return _utf8
 }
 
-// CodecUtilsH264CapsSetLevelAndProfile sets the level and profile in caps
-// if it can be determined from sps. See gst_codec_utils_h264_get_level() and
-// gst_codec_utils_h264_get_profile() for more details on the parameters.
+// CodecUtilsH264CapsSetLevelAndProfile
+// (gst_codec_utils_h264_caps_set_level_and_profile) sets the
+// level and profile in caps if it can be determined from sps. See
+// gst_codec_utils_h264_get_level() and gst_codec_utils_h264_get_profile() for
+// more details on the parameters.
 //
 // The function takes the following parameters:
 //
@@ -852,9 +899,10 @@ func CodecUtilsH264CapsSetLevelAndProfile(caps *gst.Caps, sps []byte) bool {
 	return _ok
 }
 
-// CodecUtilsH264GetLevel converts the level indication (level_idc) in the
-// stream's sequence parameter set into a string. The SPS is expected to have
-// the same format as for gst_codec_utils_h264_get_profile().
+// CodecUtilsH264GetLevel (gst_codec_utils_h264_get_level) converts the
+// level indication (level_idc) in the stream's sequence parameter set
+// into a string. The SPS is expected to have the same format as for
+// gst_codec_utils_h264_get_profile().
 //
 // The function takes the following parameters:
 //
@@ -885,8 +933,8 @@ func CodecUtilsH264GetLevel(sps []byte) string {
 	return _utf8
 }
 
-// CodecUtilsH264GetLevelIdc: transform a level string from the caps into the
-// level_idc.
+// CodecUtilsH264GetLevelIdc (gst_codec_utils_h264_get_level_idc): transform a
+// level string from the caps into the level_idc.
 //
 // The function takes the following parameters:
 //
@@ -912,11 +960,11 @@ func CodecUtilsH264GetLevelIdc(level string) byte {
 	return _guint8
 }
 
-// CodecUtilsH264GetProfile converts the profile indication (profile_idc) in
-// the stream's sequence parameter set into a string. The SPS is expected to
-// have the following format, as defined in the H.264 specification. The SPS is
-// viewed as a bitstream here, with bit 0 being the most significant bit of the
-// first byte.
+// CodecUtilsH264GetProfile (gst_codec_utils_h264_get_profile) converts the
+// profile indication (profile_idc) in the stream's sequence parameter set into
+// a string. The SPS is expected to have the following format, as defined in the
+// H.264 specification. The SPS is viewed as a bitstream here, with bit 0 being
+// the most significant bit of the first byte.
 //
 // * Bit 0:7 - Profile indication * Bit 8 - constraint_set0_flag * Bit
 // 9 - constraint_set1_flag * Bit 10 - constraint_set2_flag * Bit 11 -
@@ -952,9 +1000,10 @@ func CodecUtilsH264GetProfile(sps []byte) string {
 	return _utf8
 }
 
-// CodecUtilsH264GetProfileFlagsLevel parses profile, flags, and level from a
-// H264 AVCC extradata/sequence_header. These are most commonly retrieved from a
-// video/x-h264 caps with a codec_data buffer.
+// CodecUtilsH264GetProfileFlagsLevel
+// (gst_codec_utils_h264_get_profile_flags_level) parses profile, flags,
+// and level from a H264 AVCC extradata/sequence_header. These are most commonly
+// retrieved from a video/x-h264 caps with a codec_data buffer.
 //
 // The format of H264 AVCC extradata/sequence_header is documented in the ITU-T
 // H.264 specification section 7.3.2.1.1 as well as in ISO/IEC 14496-15 section
@@ -1001,8 +1050,9 @@ func CodecUtilsH264GetProfileFlagsLevel(codecData []byte) (profile, flags, level
 	return _profile, _flags, _level, _ok
 }
 
-// CodecUtilsH265CapsSetLevelTierAndProfile sets the level, tier and
-// profile in caps if it can be determined from profile_tier_level.
+// CodecUtilsH265CapsSetLevelTierAndProfile
+// (gst_codec_utils_h265_caps_set_level_tier_and_profile) sets the level,
+// tier and profile in caps if it can be determined from profile_tier_level.
 // See gst_codec_utils_h265_get_level(), gst_codec_utils_h265_get_tier() and
 // gst_codec_utils_h265_get_profile() for more details on the parameters.
 //
@@ -1039,10 +1089,10 @@ func CodecUtilsH265CapsSetLevelTierAndProfile(caps *gst.Caps, profileTierLevel [
 	return _ok
 }
 
-// CodecUtilsH265GetLevel converts the level indication (general_level_idc)
-// in the stream's profile_tier_level structure into a string.
-// The profiel_tier_level is expected to have the same format as for
-// gst_codec_utils_h264_get_profile().
+// CodecUtilsH265GetLevel (gst_codec_utils_h265_get_level) converts the level
+// indication (general_level_idc) in the stream's profile_tier_level structure
+// into a string. The profiel_tier_level is expected to have the same format as
+// for gst_codec_utils_h264_get_profile().
 //
 // The function takes the following parameters:
 //
@@ -1073,8 +1123,8 @@ func CodecUtilsH265GetLevel(profileTierLevel []byte) string {
 	return _utf8
 }
 
-// CodecUtilsH265GetLevelIdc: transform a level string from the caps into the
-// level_idc.
+// CodecUtilsH265GetLevelIdc (gst_codec_utils_h265_get_level_idc): transform a
+// level string from the caps into the level_idc.
 //
 // The function takes the following parameters:
 //
@@ -1100,11 +1150,12 @@ func CodecUtilsH265GetLevelIdc(level string) byte {
 	return _guint8
 }
 
-// CodecUtilsH265GetProfile converts the profile indication
-// (general_profile_idc) in the stream's profile_level_tier structure into a
-// string. The profile_tier_level is expected to have the following format,
-// as defined in the H.265 specification. The profile_tier_level is viewed as a
-// bitstream here, with bit 0 being the most significant bit of the first byte.
+// CodecUtilsH265GetProfile (gst_codec_utils_h265_get_profile) converts the
+// profile indication (general_profile_idc) in the stream's profile_level_tier
+// structure into a string. The profile_tier_level is expected to have
+// the following format, as defined in the H.265 specification. The
+// profile_tier_level is viewed as a bitstream here, with bit 0 being the most
+// significant bit of the first byte.
 //
 // * Bit 0:1 - general_profile_space * Bit 2 - general_tier_flag * Bit 3:7 -
 // general_profile_idc * Bit 8:39 - gernal_profile_compatibility_flags * Bit 40
@@ -1143,10 +1194,10 @@ func CodecUtilsH265GetProfile(profileTierLevel []byte) string {
 	return _utf8
 }
 
-// CodecUtilsH265GetTier converts the tier indication (general_tier_flag)
-// in the stream's profile_tier_level structure into a string.
-// The profile_tier_level is expected to have the same format as for
-// gst_codec_utils_h264_get_profile().
+// CodecUtilsH265GetTier (gst_codec_utils_h265_get_tier) converts the tier
+// indication (general_tier_flag) in the stream's profile_tier_level structure
+// into a string. The profile_tier_level is expected to have the same format as
+// for gst_codec_utils_h264_get_profile().
 //
 // The function takes the following parameters:
 //
@@ -1177,8 +1228,9 @@ func CodecUtilsH265GetTier(profileTierLevel []byte) string {
 	return _utf8
 }
 
-// CodecUtilsMpeg4VideoCapsSetLevelAndProfile sets the
-// level and profile in caps if it can be determined from
+// CodecUtilsMpeg4VideoCapsSetLevelAndProfile
+// (gst_codec_utils_mpeg4video_caps_set_level_and_profile) sets
+// the level and profile in caps if it can be determined from
 // vis_obj_seq. See gst_codec_utils_mpeg4video_get_level() and
 // gst_codec_utils_mpeg4video_get_profile() for more details on the parameters.
 //
@@ -1215,10 +1267,10 @@ func CodecUtilsMpeg4VideoCapsSetLevelAndProfile(caps *gst.Caps, visObjSeq []byte
 	return _ok
 }
 
-// CodecUtilsMpeg4VideoGetLevel converts the level indication in the stream's
-// visual object sequence into a string. vis_obj_seq is expected to be the
-// data following the visual object sequence start code. Only the first byte
-// (profile_and_level_indication) is used.
+// CodecUtilsMpeg4VideoGetLevel (gst_codec_utils_mpeg4video_get_level) converts
+// the level indication in the stream's visual object sequence into a string.
+// vis_obj_seq is expected to be the data following the visual object sequence
+// start code. Only the first byte (profile_and_level_indication) is used.
 //
 // The function takes the following parameters:
 //
@@ -1249,10 +1301,11 @@ func CodecUtilsMpeg4VideoGetLevel(visObjSeq []byte) string {
 	return _utf8
 }
 
-// CodecUtilsMpeg4VideoGetProfile converts the profile indication in the
-// stream's visual object sequence into a string. vis_obj_seq is expected to be
-// the data following the visual object sequence start code. Only the first byte
-// (profile_and_level_indication) is used.
+// CodecUtilsMpeg4VideoGetProfile (gst_codec_utils_mpeg4video_get_profile)
+// converts the profile indication in the stream's visual object sequence into
+// a string. vis_obj_seq is expected to be the data following the visual object
+// sequence start code. Only the first byte (profile_and_level_indication) is
+// used.
 //
 // The function takes the following parameters:
 //
@@ -1283,8 +1336,9 @@ func CodecUtilsMpeg4VideoGetProfile(visObjSeq []byte) string {
 	return _utf8
 }
 
-// CodecUtilsOpusCreateCapsFromHeader creates Opus caps from the given OpusHead
-// header and comment header comments.
+// CodecUtilsOpusCreateCapsFromHeader
+// (gst_codec_utils_opus_create_caps_from_header) creates Opus caps from the
+// given OpusHead header and comment header comments.
 //
 // The function takes the following parameters:
 //
@@ -1322,8 +1376,8 @@ func CodecUtilsOpusCreateCapsFromHeader(header, comments *gst.Buffer) *gst.Caps 
 	return _caps
 }
 
-// CodecUtilsOpusParseCaps parses Opus caps and fills the different fields with
-// defaults if possible.
+// CodecUtilsOpusParseCaps (gst_codec_utils_opus_parse_caps) parses Opus caps
+// and fills the different fields with defaults if possible.
 //
 // The function takes the following parameters:
 //
@@ -1374,7 +1428,8 @@ func CodecUtilsOpusParseCaps(caps *gst.Caps) (rate uint32, channels, channelMapp
 	return _rate, _channels, _channelMappingFamily, _streamCount, _coupledCount, _channelMapping, _ok
 }
 
-// CodecUtilsOpusParseHeader parses the OpusHead header.
+// CodecUtilsOpusParseHeader (gst_codec_utils_opus_parse_header) parses the
+// OpusHead header.
 //
 // The function takes the following parameters:
 //
@@ -1433,8 +1488,9 @@ func CodecUtilsOpusParseHeader(header *gst.Buffer) (rate uint32, channels, chann
 	return _rate, _channels, _channelMappingFamily, _streamCount, _coupledCount, _channelMapping, _preSkip, _outputGain, _ok
 }
 
-// EncodingListAllTargets: list all available EncodingTarget for the specified
-// category, or all categories if categoryname is NULL.
+// EncodingListAllTargets (gst_encoding_list_all_targets): list all available
+// EncodingTarget for the specified category, or all categories if categoryname
+// is NULL.
 //
 // The function takes the following parameters:
 //
@@ -1469,8 +1525,8 @@ func EncodingListAllTargets(categoryname string) []*EncodingTarget {
 	return _list
 }
 
-// EncodingListAvailableCategories lists all EncodingTarget categories present
-// on disk.
+// EncodingListAvailableCategories (gst_encoding_list_available_categories)
+// lists all EncodingTarget categories present on disk.
 //
 // The function returns the following values:
 //
@@ -1494,9 +1550,10 @@ func EncodingListAvailableCategories() []string {
 	return _list
 }
 
-// InstallPluginsAsync requests plugin installation without blocking. Once the
-// plugins have been installed or installation has failed, func will be called
-// with the result of the installation and your provided user_data pointer.
+// InstallPluginsAsync (gst_install_plugins_async) requests plugin installation
+// without blocking. Once the plugins have been installed or installation has
+// failed, func will be called with the result of the installation and your
+// provided user_data pointer.
 //
 // This function requires a running GLib/Gtk main loop. If you are
 // not running a GLib/Gtk main loop, make sure to regularly call
@@ -1559,8 +1616,9 @@ func InstallPluginsAsync(details []string, ctx *InstallPluginsContext, fn Instal
 	return _installPluginsReturn
 }
 
-// InstallPluginsInstallationInProgress checks whether plugin installation
-// (initiated by this application only) is currently in progress.
+// InstallPluginsInstallationInProgress
+// (gst_install_plugins_installation_in_progress) checks whether plugin
+// installation (initiated by this application only) is currently in progress.
 //
 // The function returns the following values:
 //
@@ -1579,10 +1637,10 @@ func InstallPluginsInstallationInProgress() bool {
 	return _ok
 }
 
-// InstallPluginsSupported checks whether plugin installation is likely to be
-// supported by the current environment. This currently only checks whether the
-// helper script that is to be provided by the distribution or operating system
-// vendor exists.
+// InstallPluginsSupported (gst_install_plugins_supported) checks whether
+// plugin installation is likely to be supported by the current environment.
+// This currently only checks whether the helper script that is to be provided
+// by the distribution or operating system vendor exists.
 //
 // The function returns the following values:
 //
@@ -1601,8 +1659,8 @@ func InstallPluginsSupported() bool {
 	return _ok
 }
 
-// InstallPluginsSync requests plugin installation and block until the plugins
-// have been installed or installation has failed.
+// InstallPluginsSync (gst_install_plugins_sync) requests plugin installation
+// and block until the plugins have been installed or installation has failed.
 //
 // This function should almost never be used, it only exists for cases
 // where a non-GLib main loop is running and the user wants to run it in a
@@ -1651,7 +1709,8 @@ func InstallPluginsSync(details []string, ctx *InstallPluginsContext) InstallPlu
 	return _installPluginsReturn
 }
 
-// IsMissingPluginMessage checks whether msg is a missing plugins message.
+// IsMissingPluginMessage (gst_is_missing_plugin_message) checks whether msg is
+// a missing plugins message.
 //
 // The function takes the following parameters:
 //
@@ -1678,9 +1737,10 @@ func IsMissingPluginMessage(msg *gst.Message) bool {
 	return _ok
 }
 
-// NewMissingDecoderInstallerDetail returns an opaque string containing all
-// the details about the missing element to be passed to an external installer
-// called via gst_install_plugins_async() or gst_install_plugins_sync().
+// NewMissingDecoderInstallerDetail (gst_missing_decoder_installer_detail_new)
+// returns an opaque string containing all the details about the missing element
+// to be passed to an external installer called via gst_install_plugins_async()
+// or gst_install_plugins_sync().
 //
 // This function is mainly for applications that call external plugin
 // installation mechanisms using one of the two above-mentioned functions in the
@@ -1711,9 +1771,10 @@ func NewMissingDecoderInstallerDetail(decodeCaps *gst.Caps) string {
 	return _utf8
 }
 
-// NewMissingDecoderMessage creates a missing-plugin message for element to
-// notify the application that a decoder element for a particular set of (fixed)
-// caps is missing. This function is mainly for use in plugins.
+// NewMissingDecoderMessage (gst_missing_decoder_message_new) creates a
+// missing-plugin message for element to notify the application that a decoder
+// element for a particular set of (fixed) caps is missing. This function is
+// mainly for use in plugins.
 //
 // The function takes the following parameters:
 //
@@ -1747,9 +1808,10 @@ func NewMissingDecoderMessage(element gst.Elementer, decodeCaps *gst.Caps) *gst.
 	return _message
 }
 
-// NewMissingElementInstallerDetail returns an opaque string containing all
-// the details about the missing element to be passed to an external installer
-// called via gst_install_plugins_async() or gst_install_plugins_sync().
+// NewMissingElementInstallerDetail (gst_missing_element_installer_detail_new)
+// returns an opaque string containing all the details about the missing element
+// to be passed to an external installer called via gst_install_plugins_async()
+// or gst_install_plugins_sync().
 //
 // This function is mainly for applications that call external plugin
 // installation mechanisms using one of the two above-mentioned functions in the
@@ -1782,9 +1844,9 @@ func NewMissingElementInstallerDetail(factoryName string) string {
 	return _utf8
 }
 
-// NewMissingElementMessage creates a missing-plugin message for element to
-// notify the application that a certain required element is missing. This
-// function is mainly for use in plugins.
+// NewMissingElementMessage (gst_missing_element_message_new) creates a
+// missing-plugin message for element to notify the application that a certain
+// required element is missing. This function is mainly for use in plugins.
 //
 // The function takes the following parameters:
 //
@@ -1820,9 +1882,10 @@ func NewMissingElementMessage(element gst.Elementer, factoryName string) *gst.Me
 	return _message
 }
 
-// NewMissingEncoderInstallerDetail returns an opaque string containing all
-// the details about the missing element to be passed to an external installer
-// called via gst_install_plugins_async() or gst_install_plugins_sync().
+// NewMissingEncoderInstallerDetail (gst_missing_encoder_installer_detail_new)
+// returns an opaque string containing all the details about the missing element
+// to be passed to an external installer called via gst_install_plugins_async()
+// or gst_install_plugins_sync().
 //
 // This function is mainly for applications that call external plugin
 // installation mechanisms using one of the two above-mentioned functions in the
@@ -1853,9 +1916,10 @@ func NewMissingEncoderInstallerDetail(encodeCaps *gst.Caps) string {
 	return _utf8
 }
 
-// NewMissingEncoderMessage creates a missing-plugin message for element to
-// notify the application that an encoder element for a particular set of
-// (fixed) caps is missing. This function is mainly for use in plugins.
+// NewMissingEncoderMessage (gst_missing_encoder_message_new) creates a
+// missing-plugin message for element to notify the application that an encoder
+// element for a particular set of (fixed) caps is missing. This function is
+// mainly for use in plugins.
 //
 // The function takes the following parameters:
 //
@@ -1889,9 +1953,10 @@ func NewMissingEncoderMessage(element gst.Elementer, encodeCaps *gst.Caps) *gst.
 	return _message
 }
 
-// MissingPluginMessageGetDescription returns a localised string describing the
-// missing feature, for use in error dialogs and the like. Should never return
-// NULL unless msg is not a valid missing-plugin message.
+// MissingPluginMessageGetDescription
+// (gst_missing_plugin_message_get_description) returns a localised string
+// describing the missing feature, for use in error dialogs and the like.
+// Should never return NULL unless msg is not a valid missing-plugin message.
 //
 // This function is mainly for applications that need a human-readable string
 // describing a missing plugin, given a previously collected missing-plugin
@@ -1922,8 +1987,9 @@ func MissingPluginMessageGetDescription(msg *gst.Message) string {
 	return _utf8
 }
 
-// MissingPluginMessageGetInstallerDetail returns an opaque string
-// containing all the details about the missing element to be passed
+// MissingPluginMessageGetInstallerDetail
+// (gst_missing_plugin_message_get_installer_detail) returns an opaque
+// string containing all the details about the missing element to be passed
 // to an external installer called via gst_install_plugins_async() or
 // gst_install_plugins_sync().
 //
@@ -1957,9 +2023,10 @@ func MissingPluginMessageGetInstallerDetail(msg *gst.Message) string {
 	return _utf8
 }
 
-// NewMissingURISinkInstallerDetail returns an opaque string containing all
-// the details about the missing element to be passed to an external installer
-// called via gst_install_plugins_async() or gst_install_plugins_sync().
+// NewMissingURISinkInstallerDetail (gst_missing_uri_sink_installer_detail_new)
+// returns an opaque string containing all the details about the missing element
+// to be passed to an external installer called via gst_install_plugins_async()
+// or gst_install_plugins_sync().
 //
 // This function is mainly for applications that call external plugin
 // installation mechanisms using one of the two above-mentioned functions in the
@@ -1992,9 +2059,10 @@ func NewMissingURISinkInstallerDetail(protocol string) string {
 	return _utf8
 }
 
-// NewMissingURISinkMessage creates a missing-plugin message for element to
-// notify the application that a sink element for a particular URI protocol is
-// missing. This function is mainly for use in plugins.
+// NewMissingURISinkMessage (gst_missing_uri_sink_message_new) creates a
+// missing-plugin message for element to notify the application that a sink
+// element for a particular URI protocol is missing. This function is mainly for
+// use in plugins.
 //
 // The function takes the following parameters:
 //
@@ -2030,9 +2098,11 @@ func NewMissingURISinkMessage(element gst.Elementer, protocol string) *gst.Messa
 	return _message
 }
 
-// NewMissingURISourceInstallerDetail returns an opaque string containing all
-// the details about the missing element to be passed to an external installer
-// called via gst_install_plugins_async() or gst_install_plugins_sync().
+// NewMissingURISourceInstallerDetail
+// (gst_missing_uri_source_installer_detail_new) returns an opaque string
+// containing all the details about the missing element to be passed
+// to an external installer called via gst_install_plugins_async() or
+// gst_install_plugins_sync().
 //
 // This function is mainly for applications that call external plugin
 // installation mechanisms using one of the two above-mentioned functions in the
@@ -2065,9 +2135,10 @@ func NewMissingURISourceInstallerDetail(protocol string) string {
 	return _utf8
 }
 
-// NewMissingURISourceMessage creates a missing-plugin message for element to
-// notify the application that a source element for a particular URI protocol is
-// missing. This function is mainly for use in plugins.
+// NewMissingURISourceMessage (gst_missing_uri_source_message_new) creates a
+// missing-plugin message for element to notify the application that a source
+// element for a particular URI protocol is missing. This function is mainly for
+// use in plugins.
 //
 // The function takes the following parameters:
 //
@@ -2103,8 +2174,9 @@ func NewMissingURISourceMessage(element gst.Elementer, protocol string) *gst.Mes
 	return _message
 }
 
-// PbUtilsAddCodecDescriptionToTagList adds a codec tag describing the format
-// specified by caps to taglist.
+// PbUtilsAddCodecDescriptionToTagList
+// (gst_pb_utils_add_codec_description_to_tag_list) adds a codec tag describing
+// the format specified by caps to taglist.
 //
 // The function takes the following parameters:
 //
@@ -2144,8 +2216,9 @@ func PbUtilsAddCodecDescriptionToTagList(taglist *gst.TagList, codecTag string, 
 	return _ok
 }
 
-// PbUtilsGetCapsDescriptionFlags returns flags that describe the format of the
-// caps if known. No flags are set for unknown caps.
+// PbUtilsGetCapsDescriptionFlags (gst_pb_utils_get_caps_description_flags)
+// returns flags that describe the format of the caps if known. No flags are set
+// for unknown caps.
 //
 // The function takes the following parameters:
 //
@@ -2171,10 +2244,10 @@ func PbUtilsGetCapsDescriptionFlags(caps *gst.Caps) PbUtilsCapsDescriptionFlags 
 	return _pbUtilsCapsDescriptionFlags
 }
 
-// PbUtilsGetCodecDescription returns a localised (as far as this is possible)
-// string describing the media format specified in caps, for use in error
-// dialogs or other messages to be seen by the user. Should never return NULL
-// unless caps is invalid.
+// PbUtilsGetCodecDescription (gst_pb_utils_get_codec_description) returns a
+// localised (as far as this is possible) string describing the media format
+// specified in caps, for use in error dialogs or other messages to be seen by
+// the user. Should never return NULL unless caps is invalid.
 //
 // Also see the convenience function
 // gst_pb_utils_add_codec_description_to_tag_list().
@@ -2206,9 +2279,9 @@ func PbUtilsGetCodecDescription(caps *gst.Caps) string {
 	return _utf8
 }
 
-// PbUtilsGetDecoderDescription returns a localised string describing an decoder
-// for the format specified in caps, for use in error dialogs or other messages
-// to be seen by the user.
+// PbUtilsGetDecoderDescription (gst_pb_utils_get_decoder_description) returns
+// a localised string describing an decoder for the format specified in caps,
+// for use in error dialogs or other messages to be seen by the user.
 //
 // This function is mainly for internal use, applications would typically
 // use gst_missing_plugin_message_get_description() to get a description of a
@@ -2239,8 +2312,9 @@ func PbUtilsGetDecoderDescription(caps *gst.Caps) string {
 	return _utf8
 }
 
-// PbUtilsGetElementDescription returns a localised string describing the given
-// element, for use in error dialogs or other messages to be seen by the user.
+// PbUtilsGetElementDescription (gst_pb_utils_get_element_description) returns
+// a localised string describing the given element, for use in error dialogs or
+// other messages to be seen by the user.
 //
 // This function is mainly for internal use, applications would typically
 // use gst_missing_plugin_message_get_description() to get a description of a
@@ -2272,9 +2346,9 @@ func PbUtilsGetElementDescription(factoryName string) string {
 	return _utf8
 }
 
-// PbUtilsGetEncoderDescription returns a localised string describing an encoder
-// for the format specified in caps, for use in error dialogs or other messages
-// to be seen by the user.
+// PbUtilsGetEncoderDescription (gst_pb_utils_get_encoder_description) returns
+// a localised string describing an encoder for the format specified in caps,
+// for use in error dialogs or other messages to be seen by the user.
 //
 // This function is mainly for internal use, applications would typically
 // use gst_missing_plugin_message_get_description() to get a description of a
@@ -2305,8 +2379,8 @@ func PbUtilsGetEncoderDescription(caps *gst.Caps) string {
 	return _utf8
 }
 
-// PbUtilsGetFileExtensionFromCaps returns a possible file extension for the
-// given caps, if known.
+// PbUtilsGetFileExtensionFromCaps (gst_pb_utils_get_file_extension_from_caps)
+// returns a possible file extension for the given caps, if known.
 //
 // The function takes the following parameters:
 //
@@ -2335,9 +2409,9 @@ func PbUtilsGetFileExtensionFromCaps(caps *gst.Caps) string {
 	return _utf8
 }
 
-// PbUtilsGetSinkDescription returns a localised string describing a sink
-// element handling the protocol specified in protocol, for use in error dialogs
-// or other messages to be seen by the user.
+// PbUtilsGetSinkDescription (gst_pb_utils_get_sink_description) returns a
+// localised string describing a sink element handling the protocol specified in
+// protocol, for use in error dialogs or other messages to be seen by the user.
 //
 // This function is mainly for internal use, applications would typically
 // use gst_missing_plugin_message_get_description() to get a description of a
@@ -2369,9 +2443,10 @@ func PbUtilsGetSinkDescription(protocol string) string {
 	return _utf8
 }
 
-// PbUtilsGetSourceDescription returns a localised string describing a source
-// element handling the protocol specified in protocol, for use in error dialogs
-// or other messages to be seen by the user.
+// PbUtilsGetSourceDescription (gst_pb_utils_get_source_description) returns a
+// localised string describing a source element handling the protocol specified
+// in protocol, for use in error dialogs or other messages to be seen by the
+// user.
 //
 // This function is mainly for internal use, applications would typically
 // use gst_missing_plugin_message_get_description() to get a description of a
@@ -2403,9 +2478,9 @@ func PbUtilsGetSourceDescription(protocol string) string {
 	return _utf8
 }
 
-// PbUtilsInit initialises the base utils support library. This function is not
-// thread-safe. Applications should call it after calling gst_init(), plugins
-// should call it from their plugin_init function.
+// PbUtilsInit (gst_pb_utils_init) initialises the base utils support library.
+// This function is not thread-safe. Applications should call it after calling
+// gst_init(), plugins should call it from their plugin_init function.
 //
 // This function may be called multiple times. It will do nothing if the library
 // has already been initialised.
@@ -2413,8 +2488,8 @@ func PbUtilsInit() {
 	C.gst_pb_utils_init()
 }
 
-// PluginsBaseVersion gets the version number of the GStreamer Plugins Base
-// libraries.
+// PluginsBaseVersion (gst_plugins_base_version) gets the version number of the
+// GStreamer Plugins Base libraries.
 //
 // The function returns the following values:
 //
@@ -2443,9 +2518,10 @@ func PluginsBaseVersion() (major, minor, micro, nano uint) {
 	return _major, _minor, _micro, _nano
 }
 
-// PluginsBaseVersionString: this function returns a string that is useful for
-// describing this version of GStreamer's gst-plugins-base libraries to the
-// outside world: user agent strings, logging, about dialogs ...
+// PluginsBaseVersionString (gst_plugins_base_version_string): this function
+// returns a string that is useful for describing this version of GStreamer's
+// gst-plugins-base libraries to the outside world: user agent strings, logging,
+// about dialogs ...
 //
 // The function returns the following values:
 //
@@ -2482,9 +2558,9 @@ func defaultAudioVisualizerOverrides(v *AudioVisualizer) AudioVisualizerOverride
 	}
 }
 
-// AudioVisualizer baseclass for scopes (visualizers). It takes care of
-// re-fitting the audio-rate to video-rate and handles renegotiation (downstream
-// video size changes).
+// AudioVisualizer (GstAudioVisualizer) baseclass for scopes (visualizers).
+// It takes care of re-fitting the audio-rate to video-rate and handles
+// renegotiation (downstream video size changes).
 //
 // It also provides several background shading effects. These effects are
 // applied to a previous picture before the render() implementation can draw a
@@ -2498,12 +2574,13 @@ var (
 	_ gst.Elementer = (*AudioVisualizer)(nil)
 )
 
-// AudioVisualizerer describes types inherited from class AudioVisualizer.
+// AudioVisualizerer describes types inherited from AudioVisualizer.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type AudioVisualizerer interface {
-	coreglib.Objector
+	gst.Elementer
+
 	baseAudioVisualizer() *AudioVisualizer
 }
 
@@ -2672,8 +2749,8 @@ func defaultDiscovererOverrides(v *Discoverer) DiscovererOverrides {
 	}
 }
 
-// Discoverer is a utility object which allows to get as much information as
-// possible from one or many URIs.
+// Discoverer (GstDiscoverer) is a utility object which allows to get as much
+// information as possible from one or many URIs.
 //
 // It provides two APIs, allowing usage in blocking or non-blocking mode.
 //
@@ -2696,6 +2773,48 @@ type Discoverer struct {
 var (
 	_ coreglib.Objector = (*Discoverer)(nil)
 )
+
+// Discovererer describes types inherited from Discoverer.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type Discovererer interface {
+	coreglib.Objector
+
+	// DiscoverURI (gst_discoverer_discover_uri): synchronously discovers the
+	// given uri.
+	DiscoverURI(uri string) (*DiscovererInfo, error)
+	// DiscoverURIAsync (gst_discoverer_discover_uri_async) appends the given
+	// uri to the list of URIs to discoverer.
+	DiscoverURIAsync(uri string) bool
+	// Start (gst_discoverer_start): allow asynchronous discovering of URIs to
+	// take place.
+	Start()
+	// Stop (gst_discoverer_stop) the discovery of any pending URIs and clears
+	// the list of pending URIS (if any).
+	Stop()
+
+	// Discovered will be emitted in async mode when all information on a URI
+	// could be discovered, or an error occurred.
+	ConnectDiscovered(func(info *DiscovererInfo, err error)) coreglib.SignalHandle
+	// Finished will be emitted in async mode when all pending URIs have been
+	// processed.
+	ConnectFinished(func()) coreglib.SignalHandle
+	// Load-serialized-info retrieves information about a URI from and external
+	// source of information, like a cache file.
+	ConnectLoadSerializedInfo(func(uri string) (discovererInfo *DiscovererInfo)) coreglib.SignalHandle
+	// Source-setup: this signal is emitted after the source element has been
+	// created for, so the URI being discovered, so it can be configured by
+	// setting additional properties (e.g.
+	ConnectSourceSetup(func(source gst.Elementer)) coreglib.SignalHandle
+	// Starting will be emitted when the discover starts analyzing the pending
+	// URIs.
+	ConnectStarting(func()) coreglib.SignalHandle
+
+	baseDiscoverer() *Discoverer
+}
+
+var _ Discovererer = (*Discoverer)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*Discoverer, *DiscovererClass, DiscovererOverrides](
@@ -2745,6 +2864,15 @@ func marshalDiscoverer(p uintptr) (interface{}, error) {
 	return wrapDiscoverer(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
+func (discoverer *Discoverer) baseDiscoverer() *Discoverer {
+	return discoverer
+}
+
+// BaseDiscoverer returns the underlying base object.
+func BaseDiscoverer(obj Discovererer) *Discoverer {
+	return obj.baseDiscoverer()
+}
+
 // ConnectDiscovered will be emitted in async mode when all information on a URI
 // could be discovered, or an error occurred.
 //
@@ -2784,7 +2912,8 @@ func (discoverer *Discoverer) ConnectStarting(f func()) coreglib.SignalHandle {
 	return coreglib.ConnectGeneratedClosure(discoverer, "starting", false, unsafe.Pointer(C._gotk4_gstpbutils1_Discoverer_ConnectStarting), f)
 }
 
-// NewDiscoverer creates a new Discoverer with the provided timeout.
+// NewDiscoverer (gst_discoverer_new) creates a new Discoverer with the provided
+// timeout.
 //
 // The function takes the following parameters:
 //
@@ -2818,7 +2947,8 @@ func NewDiscoverer(timeout gst.ClockTime) (*Discoverer, error) {
 	return _discoverer, _goerr
 }
 
-// DiscoverURI: synchronously discovers the given uri.
+// DiscoverURI (gst_discoverer_discover_uri): synchronously discovers the given
+// uri.
 //
 // A copy of uri will be made internally, so the caller can safely g_free()
 // afterwards.
@@ -2855,9 +2985,9 @@ func (discoverer *Discoverer) DiscoverURI(uri string) (*DiscovererInfo, error) {
 	return _discovererInfo, _goerr
 }
 
-// DiscoverURIAsync appends the given uri to the list of URIs to discoverer. The
-// actual discovery of the uri will only take place if gst_discoverer_start()
-// has been called.
+// DiscoverURIAsync (gst_discoverer_discover_uri_async) appends the given uri
+// to the list of URIs to discoverer. The actual discovery of the uri will only
+// take place if gst_discoverer_start() has been called.
 //
 // A copy of uri will be made internally, so the caller can safely g_free()
 // afterwards.
@@ -2892,8 +3022,9 @@ func (discoverer *Discoverer) DiscoverURIAsync(uri string) bool {
 	return _ok
 }
 
-// Start: allow asynchronous discovering of URIs to take place. A Loop must be
-// available for Discoverer to properly work in asynchronous mode.
+// Start (gst_discoverer_start): allow asynchronous discovering of URIs to
+// take place. A Loop must be available for Discoverer to properly work in
+// asynchronous mode.
 func (discoverer *Discoverer) Start() {
 	var _arg0 *C.GstDiscoverer // out
 
@@ -2903,8 +3034,8 @@ func (discoverer *Discoverer) Start() {
 	runtime.KeepAlive(discoverer)
 }
 
-// Stop the discovery of any pending URIs and clears the list of pending URIS
-// (if any).
+// Stop (gst_discoverer_stop) the discovery of any pending URIs and clears the
+// list of pending URIS (if any).
 func (discoverer *Discoverer) Stop() {
 	var _arg0 *C.GstDiscoverer // out
 
@@ -3009,7 +3140,7 @@ func (discoverer *Discoverer) starting() {
 	runtime.KeepAlive(discoverer)
 }
 
-// DiscovererAudioInfo specific to audio streams.
+// DiscovererAudioInfo (GstDiscovererAudioInfo) specific to audio streams.
 type DiscovererAudioInfo struct {
 	_ [0]func() // equal guard
 	DiscovererStreamInfo
@@ -3018,6 +3149,26 @@ type DiscovererAudioInfo struct {
 var (
 	_ coreglib.Objector = (*DiscovererAudioInfo)(nil)
 )
+
+// DiscovererAudioInfor describes types inherited from DiscovererAudioInfo.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type DiscovererAudioInfor interface {
+	DiscovererStreamInfor
+
+	Bitrate() uint
+	ChannelMask() uint64
+	Channels() uint
+	Depth() uint
+	Language() string
+	MaxBitrate() uint
+	SampleRate() uint
+
+	baseDiscovererAudioInfo() *DiscovererAudioInfo
+}
+
+var _ DiscovererAudioInfor = (*DiscovererAudioInfo)(nil)
 
 func wrapDiscovererAudioInfo(obj *coreglib.Object) *DiscovererAudioInfo {
 	return &DiscovererAudioInfo{
@@ -3029,6 +3180,15 @@ func wrapDiscovererAudioInfo(obj *coreglib.Object) *DiscovererAudioInfo {
 
 func marshalDiscovererAudioInfo(p uintptr) (interface{}, error) {
 	return wrapDiscovererAudioInfo(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
+}
+
+func (info *DiscovererAudioInfo) baseDiscovererAudioInfo() *DiscovererAudioInfo {
+	return info
+}
+
+// BaseDiscovererAudioInfo returns the underlying base object.
+func BaseDiscovererAudioInfo(obj DiscovererAudioInfor) *DiscovererAudioInfo {
+	return obj.baseDiscovererAudioInfo()
 }
 
 // The function returns the following values:
@@ -3167,7 +3327,8 @@ func (info *DiscovererAudioInfo) SampleRate() uint {
 	return _guint
 }
 
-// DiscovererContainerInfo specific to container streams.
+// DiscovererContainerInfo (GstDiscovererContainerInfo) specific to container
+// streams.
 type DiscovererContainerInfo struct {
 	_ [0]func() // equal guard
 	DiscovererStreamInfo
@@ -3176,6 +3337,21 @@ type DiscovererContainerInfo struct {
 var (
 	_ coreglib.Objector = (*DiscovererContainerInfo)(nil)
 )
+
+// DiscovererContainerInfor describes types inherited from DiscovererContainerInfo.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type DiscovererContainerInfor interface {
+	DiscovererStreamInfor
+
+	Streams() []*DiscovererStreamInfo
+	Tags() *gst.TagList
+
+	baseDiscovererContainerInfo() *DiscovererContainerInfo
+}
+
+var _ DiscovererContainerInfor = (*DiscovererContainerInfo)(nil)
 
 func wrapDiscovererContainerInfo(obj *coreglib.Object) *DiscovererContainerInfo {
 	return &DiscovererContainerInfo{
@@ -3187,6 +3363,15 @@ func wrapDiscovererContainerInfo(obj *coreglib.Object) *DiscovererContainerInfo 
 
 func marshalDiscovererContainerInfo(p uintptr) (interface{}, error) {
 	return wrapDiscovererContainerInfo(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
+}
+
+func (info *DiscovererContainerInfo) baseDiscovererContainerInfo() *DiscovererContainerInfo {
+	return info
+}
+
+// BaseDiscovererContainerInfo returns the underlying base object.
+func BaseDiscovererContainerInfo(obj DiscovererContainerInfor) *DiscovererContainerInfo {
+	return obj.baseDiscovererContainerInfo()
 }
 
 // The function returns the following values:
@@ -3237,8 +3422,8 @@ func (info *DiscovererContainerInfo) Tags() *gst.TagList {
 	return _tagList
 }
 
-// DiscovererInfo: structure containing the information of a URI analyzed by
-// Discoverer.
+// DiscovererInfo (GstDiscovererInfo): structure containing the information of a
+// URI analyzed by Discoverer.
 type DiscovererInfo struct {
 	_ [0]func() // equal guard
 	*coreglib.Object
@@ -3248,6 +3433,57 @@ var (
 	_ coreglib.Objector = (*DiscovererInfo)(nil)
 )
 
+// DiscovererInfor describes types inherited from DiscovererInfo.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type DiscovererInfor interface {
+	coreglib.Objector
+
+	Copy() *DiscovererInfo
+	// AudioStreams (gst_discoverer_info_get_audio_streams) finds all the
+	// DiscovererAudioInfo contained in info.
+	AudioStreams() []*DiscovererAudioInfo
+	// ContainerStreams (gst_discoverer_info_get_container_streams) finds all
+	// the DiscovererContainerInfo contained in info.
+	ContainerStreams() []*DiscovererContainerInfo
+	Duration() gst.ClockTime
+	Live() bool
+	// Misc (gst_discoverer_info_get_misc): deprecated:
+	// This functions is deprecated since version 1.4, use
+	// #gst_discoverer_info_get_missing_elements_installer_details.
+	Misc() *gst.Structure
+	// MissingElementsInstallerDetails
+	// (gst_discoverer_info_get_missing_elements_installer_details): get the
+	// installer details for missing elements.
+	MissingElementsInstallerDetails() []string
+	Result() DiscovererResult
+	Seekable() bool
+	StreamInfo() *DiscovererStreamInfo
+	StreamList() []*DiscovererStreamInfo
+	// Streams (gst_discoverer_info_get_streams) finds the DiscovererStreamInfo
+	// contained in info that match the given streamtype.
+	Streams(streamtype coreglib.Type) []*DiscovererStreamInfo
+	// SubtitleStreams (gst_discoverer_info_get_subtitle_streams) finds all the
+	// DiscovererSubtitleInfo contained in info.
+	SubtitleStreams() []*DiscovererSubtitleInfo
+	// Tags (gst_discoverer_info_get_tags): deprecated: Use
+	// gst_discoverer_{container,stream}_info_get_tags() instead.
+	Tags() *gst.TagList
+	Toc() *gst.Toc
+	URI() string
+	// VideoStreams (gst_discoverer_info_get_video_streams) finds all the
+	// DiscovererVideoInfo contained in info.
+	VideoStreams() []*DiscovererVideoInfo
+	// ToVariant (gst_discoverer_info_to_variant) serializes info to a #GVariant
+	// that can be parsed again through gst_discoverer_info_from_variant().
+	ToVariant(flags DiscovererSerializeFlags) *glib.Variant
+
+	baseDiscovererInfo() *DiscovererInfo
+}
+
+var _ DiscovererInfor = (*DiscovererInfo)(nil)
+
 func wrapDiscovererInfo(obj *coreglib.Object) *DiscovererInfo {
 	return &DiscovererInfo{
 		Object: obj,
@@ -3256,6 +3492,15 @@ func wrapDiscovererInfo(obj *coreglib.Object) *DiscovererInfo {
 
 func marshalDiscovererInfo(p uintptr) (interface{}, error) {
 	return wrapDiscovererInfo(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
+}
+
+func (ptr *DiscovererInfo) baseDiscovererInfo() *DiscovererInfo {
+	return ptr
+}
+
+// BaseDiscovererInfo returns the underlying base object.
+func BaseDiscovererInfo(obj DiscovererInfor) *DiscovererInfo {
+	return obj.baseDiscovererInfo()
 }
 
 // The function returns the following values:
@@ -3277,7 +3522,8 @@ func (ptr *DiscovererInfo) Copy() *DiscovererInfo {
 	return _discovererInfo
 }
 
-// AudioStreams finds all the DiscovererAudioInfo contained in info.
+// AudioStreams (gst_discoverer_info_get_audio_streams) finds all the
+// DiscovererAudioInfo contained in info.
 //
 // The function returns the following values:
 //
@@ -3305,7 +3551,8 @@ func (info *DiscovererInfo) AudioStreams() []*DiscovererAudioInfo {
 	return _list
 }
 
-// ContainerStreams finds all the DiscovererContainerInfo contained in info.
+// ContainerStreams (gst_discoverer_info_get_container_streams) finds all the
+// DiscovererContainerInfo contained in info.
 //
 // The function returns the following values:
 //
@@ -3373,7 +3620,8 @@ func (info *DiscovererInfo) Live() bool {
 	return _ok
 }
 
-// Misc: deprecated: This functions is deprecated since version 1.4, use
+// Misc (gst_discoverer_info_get_misc): deprecated:
+// This functions is deprecated since version 1.4, use
 // #gst_discoverer_info_get_missing_elements_installer_details.
 //
 // The function returns the following values:
@@ -3405,8 +3653,9 @@ func (info *DiscovererInfo) Misc() *gst.Structure {
 	return _structure
 }
 
-// MissingElementsInstallerDetails: get the installer details for missing
-// elements.
+// MissingElementsInstallerDetails
+// (gst_discoverer_info_get_missing_elements_installer_details): get the
+// installer details for missing elements.
 //
 // The function returns the following values:
 //
@@ -3530,8 +3779,8 @@ func (info *DiscovererInfo) StreamList() []*DiscovererStreamInfo {
 	return _list
 }
 
-// Streams finds the DiscovererStreamInfo contained in info that match the given
-// streamtype.
+// Streams (gst_discoverer_info_get_streams) finds the DiscovererStreamInfo
+// contained in info that match the given streamtype.
 //
 // The function takes the following parameters:
 //
@@ -3566,7 +3815,8 @@ func (info *DiscovererInfo) Streams(streamtype coreglib.Type) []*DiscovererStrea
 	return _list
 }
 
-// SubtitleStreams finds all the DiscovererSubtitleInfo contained in info.
+// SubtitleStreams (gst_discoverer_info_get_subtitle_streams) finds all the
+// DiscovererSubtitleInfo contained in info.
 //
 // The function returns the following values:
 //
@@ -3594,8 +3844,8 @@ func (info *DiscovererInfo) SubtitleStreams() []*DiscovererSubtitleInfo {
 	return _list
 }
 
-// Tags: deprecated: Use gst_discoverer_{container,stream}_info_get_tags()
-// instead.
+// Tags (gst_discoverer_info_get_tags): deprecated: Use
+// gst_discoverer_{container,stream}_info_get_tags() instead.
 //
 // The function returns the following values:
 //
@@ -3661,7 +3911,8 @@ func (info *DiscovererInfo) URI() string {
 	return _utf8
 }
 
-// VideoStreams finds all the DiscovererVideoInfo contained in info.
+// VideoStreams (gst_discoverer_info_get_video_streams) finds all the
+// DiscovererVideoInfo contained in info.
 //
 // The function returns the following values:
 //
@@ -3689,8 +3940,8 @@ func (info *DiscovererInfo) VideoStreams() []*DiscovererVideoInfo {
 	return _list
 }
 
-// ToVariant serializes info to a #GVariant that can be parsed again through
-// gst_discoverer_info_from_variant().
+// ToVariant (gst_discoverer_info_to_variant) serializes info to a #GVariant
+// that can be parsed again through gst_discoverer_info_from_variant().
 //
 // Note that any Toc (s) that might have been discovered will not be serialized
 // for now.
@@ -3728,8 +3979,9 @@ func (info *DiscovererInfo) ToVariant(flags DiscovererSerializeFlags) *glib.Vari
 	return _variant
 }
 
-// DiscovererInfoFromVariant parses a #GVariant as produced by
-// gst_discoverer_info_to_variant() back to a DiscovererInfo.
+// DiscovererInfoFromVariant (gst_discoverer_info_from_variant) parses
+// a #GVariant as produced by gst_discoverer_info_to_variant() back to a
+// DiscovererInfo.
 //
 // The function takes the following parameters:
 //
@@ -3754,10 +4006,10 @@ func DiscovererInfoFromVariant(variant *glib.Variant) *DiscovererInfo {
 	return _discovererInfo
 }
 
-// DiscovererStreamInfo: base structure for information concerning
-// a media stream. Depending on the stream type, one can find more
-// media-specific information in DiscovererAudioInfo, DiscovererVideoInfo,
-// and DiscovererContainerInfo.
+// DiscovererStreamInfo (GstDiscovererStreamInfo): base structure for
+// information concerning a media stream. Depending on the stream type,
+// one can find more media-specific information in DiscovererAudioInfo,
+// DiscovererVideoInfo, and DiscovererContainerInfo.
 //
 // The DiscovererStreamInfo represents the topology of the stream. Siblings
 // can be iterated over with gst_discoverer_stream_info_get_next() and
@@ -3777,6 +4029,31 @@ var (
 	_ coreglib.Objector = (*DiscovererStreamInfo)(nil)
 )
 
+// DiscovererStreamInfor describes types inherited from DiscovererStreamInfo.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type DiscovererStreamInfor interface {
+	coreglib.Objector
+
+	Caps() *gst.Caps
+	// Misc (gst_discoverer_stream_info_get_misc): deprecated:
+	// This functions is deprecated since version 1.4, use
+	// #gst_discoverer_info_get_missing_elements_installer_details.
+	Misc() *gst.Structure
+	Next() *DiscovererStreamInfo
+	Previous() *DiscovererStreamInfo
+	StreamID() string
+	StreamNumber() int
+	StreamTypeNick() string
+	Tags() *gst.TagList
+	Toc() *gst.Toc
+
+	baseDiscovererStreamInfo() *DiscovererStreamInfo
+}
+
+var _ DiscovererStreamInfor = (*DiscovererStreamInfo)(nil)
+
 func wrapDiscovererStreamInfo(obj *coreglib.Object) *DiscovererStreamInfo {
 	return &DiscovererStreamInfo{
 		Object: obj,
@@ -3785,6 +4062,15 @@ func wrapDiscovererStreamInfo(obj *coreglib.Object) *DiscovererStreamInfo {
 
 func marshalDiscovererStreamInfo(p uintptr) (interface{}, error) {
 	return wrapDiscovererStreamInfo(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
+}
+
+func (info *DiscovererStreamInfo) baseDiscovererStreamInfo() *DiscovererStreamInfo {
+	return info
+}
+
+// BaseDiscovererStreamInfo returns the underlying base object.
+func BaseDiscovererStreamInfo(obj DiscovererStreamInfor) *DiscovererStreamInfo {
+	return obj.baseDiscovererStreamInfo()
 }
 
 // The function returns the following values:
@@ -3813,7 +4099,8 @@ func (info *DiscovererStreamInfo) Caps() *gst.Caps {
 	return _caps
 }
 
-// Misc: deprecated: This functions is deprecated since version 1.4, use
+// Misc (gst_discoverer_stream_info_get_misc): deprecated:
+// This functions is deprecated since version 1.4, use
 // #gst_discoverer_info_get_missing_elements_installer_details.
 //
 // The function returns the following values:
@@ -3997,8 +4284,8 @@ func (info *DiscovererStreamInfo) Toc() *gst.Toc {
 	return _toc
 }
 
-// DiscovererSubtitleInfo specific to subtitle streams (this includes text and
-// image based ones).
+// DiscovererSubtitleInfo (GstDiscovererSubtitleInfo) specific to subtitle
+// streams (this includes text and image based ones).
 type DiscovererSubtitleInfo struct {
 	_ [0]func() // equal guard
 	DiscovererStreamInfo
@@ -4007,6 +4294,20 @@ type DiscovererSubtitleInfo struct {
 var (
 	_ coreglib.Objector = (*DiscovererSubtitleInfo)(nil)
 )
+
+// DiscovererSubtitleInfor describes types inherited from DiscovererSubtitleInfo.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type DiscovererSubtitleInfor interface {
+	DiscovererStreamInfor
+
+	Language() string
+
+	baseDiscovererSubtitleInfo() *DiscovererSubtitleInfo
+}
+
+var _ DiscovererSubtitleInfor = (*DiscovererSubtitleInfo)(nil)
 
 func wrapDiscovererSubtitleInfo(obj *coreglib.Object) *DiscovererSubtitleInfo {
 	return &DiscovererSubtitleInfo{
@@ -4018,6 +4319,15 @@ func wrapDiscovererSubtitleInfo(obj *coreglib.Object) *DiscovererSubtitleInfo {
 
 func marshalDiscovererSubtitleInfo(p uintptr) (interface{}, error) {
 	return wrapDiscovererSubtitleInfo(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
+}
+
+func (info *DiscovererSubtitleInfo) baseDiscovererSubtitleInfo() *DiscovererSubtitleInfo {
+	return info
+}
+
+// BaseDiscovererSubtitleInfo returns the underlying base object.
+func BaseDiscovererSubtitleInfo(obj DiscovererSubtitleInfor) *DiscovererSubtitleInfo {
+	return obj.baseDiscovererSubtitleInfo()
 }
 
 // The function returns the following values:
@@ -4041,7 +4351,8 @@ func (info *DiscovererSubtitleInfo) Language() string {
 	return _utf8
 }
 
-// DiscovererVideoInfo specific to video streams (this includes images).
+// DiscovererVideoInfo (GstDiscovererVideoInfo) specific to video streams (this
+// includes images).
 type DiscovererVideoInfo struct {
 	_ [0]func() // equal guard
 	DiscovererStreamInfo
@@ -4050,6 +4361,30 @@ type DiscovererVideoInfo struct {
 var (
 	_ coreglib.Objector = (*DiscovererVideoInfo)(nil)
 )
+
+// DiscovererVideoInfor describes types inherited from DiscovererVideoInfo.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type DiscovererVideoInfor interface {
+	DiscovererStreamInfor
+
+	Bitrate() uint
+	Depth() uint
+	FramerateDenom() uint
+	FramerateNum() uint
+	Height() uint
+	MaxBitrate() uint
+	ParDenom() uint
+	ParNum() uint
+	Width() uint
+	IsImage() bool
+	IsInterlaced() bool
+
+	baseDiscovererVideoInfo() *DiscovererVideoInfo
+}
+
+var _ DiscovererVideoInfor = (*DiscovererVideoInfo)(nil)
 
 func wrapDiscovererVideoInfo(obj *coreglib.Object) *DiscovererVideoInfo {
 	return &DiscovererVideoInfo{
@@ -4061,6 +4396,15 @@ func wrapDiscovererVideoInfo(obj *coreglib.Object) *DiscovererVideoInfo {
 
 func marshalDiscovererVideoInfo(p uintptr) (interface{}, error) {
 	return wrapDiscovererVideoInfo(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
+}
+
+func (info *DiscovererVideoInfo) baseDiscovererVideoInfo() *DiscovererVideoInfo {
+	return info
+}
+
+// BaseDiscovererVideoInfo returns the underlying base object.
+func BaseDiscovererVideoInfo(obj DiscovererVideoInfor) *DiscovererVideoInfo {
+	return obj.baseDiscovererVideoInfo()
 }
 
 // The function returns the following values:
@@ -4277,7 +4621,8 @@ func (info *DiscovererVideoInfo) IsInterlaced() bool {
 	return _ok
 }
 
-// EncodingAudioProfile: variant of EncodingProfile for audio streams.
+// EncodingAudioProfile (GstEncodingAudioProfile): variant of EncodingProfile
+// for audio streams.
 type EncodingAudioProfile struct {
 	_ [0]func() // equal guard
 	EncodingProfile
@@ -4286,6 +4631,18 @@ type EncodingAudioProfile struct {
 var (
 	_ coreglib.Objector = (*EncodingAudioProfile)(nil)
 )
+
+// EncodingAudioProfiler describes types inherited from EncodingAudioProfile.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type EncodingAudioProfiler interface {
+	EncodingProfiler
+
+	baseEncodingAudioProfile() *EncodingAudioProfile
+}
+
+var _ EncodingAudioProfiler = (*EncodingAudioProfile)(nil)
 
 func wrapEncodingAudioProfile(obj *coreglib.Object) *EncodingAudioProfile {
 	return &EncodingAudioProfile{
@@ -4299,7 +4656,17 @@ func marshalEncodingAudioProfile(p uintptr) (interface{}, error) {
 	return wrapEncodingAudioProfile(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// NewEncodingAudioProfile creates a new EncodingAudioProfile
+func (v *EncodingAudioProfile) baseEncodingAudioProfile() *EncodingAudioProfile {
+	return v
+}
+
+// BaseEncodingAudioProfile returns the underlying base object.
+func BaseEncodingAudioProfile(obj EncodingAudioProfiler) *EncodingAudioProfile {
+	return obj.baseEncodingAudioProfile()
+}
+
+// NewEncodingAudioProfile (gst_encoding_audio_profile_new) creates a new
+// EncodingAudioProfile
 //
 // All provided allocatable arguments will be internally copied, so can be
 // safely freed/unreferenced after calling this method.
@@ -4346,8 +4713,8 @@ func NewEncodingAudioProfile(format *gst.Caps, preset string, restriction *gst.C
 	return _encodingAudioProfile
 }
 
-// EncodingContainerProfile: encoding profiles for containers. Keeps track of a
-// list of EncodingProfile.
+// EncodingContainerProfile (GstEncodingContainerProfile): encoding profiles for
+// containers. Keeps track of a list of EncodingProfile.
 type EncodingContainerProfile struct {
 	_ [0]func() // equal guard
 	EncodingProfile
@@ -4356,6 +4723,26 @@ type EncodingContainerProfile struct {
 var (
 	_ coreglib.Objector = (*EncodingContainerProfile)(nil)
 )
+
+// EncodingContainerProfiler describes types inherited from EncodingContainerProfile.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type EncodingContainerProfiler interface {
+	EncodingProfiler
+
+	// AddProfile (gst_encoding_container_profile_add_profile): add a
+	// EncodingProfile to the list of profiles handled by container.
+	AddProfile(profile *EncodingProfile) bool
+	// ContainsProfile (gst_encoding_container_profile_contains_profile) checks
+	// if container contains a EncodingProfile identical to profile.
+	ContainsProfile(profile *EncodingProfile) bool
+	Profiles() []*EncodingProfile
+
+	baseEncodingContainerProfile() *EncodingContainerProfile
+}
+
+var _ EncodingContainerProfiler = (*EncodingContainerProfile)(nil)
 
 func wrapEncodingContainerProfile(obj *coreglib.Object) *EncodingContainerProfile {
 	return &EncodingContainerProfile{
@@ -4369,7 +4756,17 @@ func marshalEncodingContainerProfile(p uintptr) (interface{}, error) {
 	return wrapEncodingContainerProfile(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// NewEncodingContainerProfile creates a new EncodingContainerProfile.
+func (container *EncodingContainerProfile) baseEncodingContainerProfile() *EncodingContainerProfile {
+	return container
+}
+
+// BaseEncodingContainerProfile returns the underlying base object.
+func BaseEncodingContainerProfile(obj EncodingContainerProfiler) *EncodingContainerProfile {
+	return obj.baseEncodingContainerProfile()
+}
+
+// NewEncodingContainerProfile (gst_encoding_container_profile_new) creates a
+// new EncodingContainerProfile.
 //
 // The function takes the following parameters:
 //
@@ -4415,8 +4812,8 @@ func NewEncodingContainerProfile(name, description string, format *gst.Caps, pre
 	return _encodingContainerProfile
 }
 
-// AddProfile: add a EncodingProfile to the list of profiles handled by
-// container.
+// AddProfile (gst_encoding_container_profile_add_profile): add a
+// EncodingProfile to the list of profiles handled by container.
 //
 // No copy of profile will be made, if you wish to use it elsewhere after this
 // method you should increment its reference count.
@@ -4450,8 +4847,8 @@ func (container *EncodingContainerProfile) AddProfile(profile *EncodingProfile) 
 	return _ok
 }
 
-// ContainsProfile checks if container contains a EncodingProfile identical to
-// profile.
+// ContainsProfile (gst_encoding_container_profile_contains_profile) checks if
+// container contains a EncodingProfile identical to profile.
 //
 // The function takes the following parameters:
 //
@@ -4507,8 +4904,9 @@ func (profile *EncodingContainerProfile) Profiles() []*EncodingProfile {
 	return _list
 }
 
-// EncodingProfile: opaque base class object for all encoding profiles. This
-// contains generic information like name, description, format and preset.
+// EncodingProfile (GstEncodingProfile): opaque base class object for all
+// encoding profiles. This contains generic information like name, description,
+// format and preset.
 type EncodingProfile struct {
 	_ [0]func() // equal guard
 	*coreglib.Object
@@ -4517,6 +4915,79 @@ type EncodingProfile struct {
 var (
 	_ coreglib.Objector = (*EncodingProfile)(nil)
 )
+
+// EncodingProfiler describes types inherited from EncodingProfile.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type EncodingProfiler interface {
+	coreglib.Objector
+
+	// Copy (gst_encoding_profile_copy) makes a deep copy of self.
+	Copy() *EncodingProfile
+	// AllowDynamicOutput (gst_encoding_profile_get_allow_dynamic_output):
+	// get whether the format that has been negotiated in at some point can be
+	// renegotiated later during the encoding.
+	AllowDynamicOutput() bool
+	Description() string
+	ElementProperties() *gst.Structure
+	FileExtension() string
+	Format() *gst.Caps
+	// InputCaps (gst_encoding_profile_get_input_caps) computes the full output
+	// caps that this profile will be able to consume.
+	InputCaps() *gst.Caps
+	Name() string
+	Presence() uint
+	Preset() string
+	PresetName() string
+	Restriction() *gst.Caps
+	SingleSegment() bool
+	TypeNick() string
+	IsEnabled() bool
+	// IsEqual (gst_encoding_profile_is_equal) checks whether the two
+	// EncodingProfile are equal.
+	IsEqual(b *EncodingProfile) bool
+	// SetAllowDynamicOutput (gst_encoding_profile_set_allow_dynamic_output)
+	// sets whether the format that has been negotiated in at some point can be
+	// renegotiated later during the encoding.
+	SetAllowDynamicOutput(allowDynamicOutput bool)
+	// SetDescription (gst_encoding_profile_set_description): set description as
+	// the given description for the profile.
+	SetDescription(description string)
+	// SetElementProperties (gst_encoding_profile_set_element_properties):
+	// this allows setting the muxing/encoding element properties.
+	SetElementProperties(elementProperties *gst.Structure)
+	// SetEnabled (gst_encoding_profile_set_enabled): set whether the profile
+	// should be used or not.
+	SetEnabled(enabled bool)
+	// SetFormat (gst_encoding_profile_set_format) sets the media format used in
+	// the profile.
+	SetFormat(format *gst.Caps)
+	// SetName (gst_encoding_profile_set_name): set name as the given name for
+	// the profile.
+	SetName(name string)
+	// SetPresence (gst_encoding_profile_set_presence): set the number of time
+	// the profile is used in its parent container profile.
+	SetPresence(presence uint)
+	// SetPreset (gst_encoding_profile_set_preset) sets the name of the Element
+	// that implements the Preset interface to use for the profile.
+	SetPreset(preset string)
+	// SetPresetName (gst_encoding_profile_set_preset_name) sets the name of the
+	// Preset's factory to be used in the profile.
+	SetPresetName(presetName string)
+	// SetRestriction (gst_encoding_profile_set_restriction): set the
+	// restriction Caps to apply before the encoder that will be used in the
+	// profile.
+	SetRestriction(restriction *gst.Caps)
+	// SetSingleSegment (gst_encoding_profile_set_single_segment): if using a
+	// single segment, buffers will be retimestamped and segments will be eat so
+	// as to appear as one segment.
+	SetSingleSegment(singleSegment bool)
+
+	baseEncodingProfile() *EncodingProfile
+}
+
+var _ EncodingProfiler = (*EncodingProfile)(nil)
 
 func wrapEncodingProfile(obj *coreglib.Object) *EncodingProfile {
 	return &EncodingProfile{
@@ -4528,7 +4999,16 @@ func marshalEncodingProfile(p uintptr) (interface{}, error) {
 	return wrapEncodingProfile(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// Copy makes a deep copy of self.
+func (self *EncodingProfile) baseEncodingProfile() *EncodingProfile {
+	return self
+}
+
+// BaseEncodingProfile returns the underlying base object.
+func BaseEncodingProfile(obj EncodingProfiler) *EncodingProfile {
+	return obj.baseEncodingProfile()
+}
+
+// Copy (gst_encoding_profile_copy) makes a deep copy of self.
 //
 // The function returns the following values:
 //
@@ -4549,8 +5029,9 @@ func (self *EncodingProfile) Copy() *EncodingProfile {
 	return _encodingProfile
 }
 
-// AllowDynamicOutput: get whether the format that has been negotiated in at
-// some point can be renegotiated later during the encoding.
+// AllowDynamicOutput (gst_encoding_profile_get_allow_dynamic_output):
+// get whether the format that has been negotiated in at some point can be
+// renegotiated later during the encoding.
 func (profile *EncodingProfile) AllowDynamicOutput() bool {
 	var _arg0 *C.GstEncodingProfile // out
 	var _cret C.gboolean            // in
@@ -4663,8 +5144,8 @@ func (profile *EncodingProfile) Format() *gst.Caps {
 	return _caps
 }
 
-// InputCaps computes the full output caps that this profile will be able to
-// consume.
+// InputCaps (gst_encoding_profile_get_input_caps) computes the full output caps
+// that this profile will be able to consume.
 //
 // The function returns the following values:
 //
@@ -4866,7 +5347,8 @@ func (profile *EncodingProfile) IsEnabled() bool {
 	return _ok
 }
 
-// IsEqual checks whether the two EncodingProfile are equal.
+// IsEqual (gst_encoding_profile_is_equal) checks whether the two
+// EncodingProfile are equal.
 //
 // The function takes the following parameters:
 //
@@ -4896,8 +5378,9 @@ func (a *EncodingProfile) IsEqual(b *EncodingProfile) bool {
 	return _ok
 }
 
-// SetAllowDynamicOutput sets whether the format that has been negotiated in at
-// some point can be renegotiated later during the encoding.
+// SetAllowDynamicOutput (gst_encoding_profile_set_allow_dynamic_output)
+// sets whether the format that has been negotiated in at some point can be
+// renegotiated later during the encoding.
 //
 // The function takes the following parameters:
 //
@@ -4917,8 +5400,9 @@ func (profile *EncodingProfile) SetAllowDynamicOutput(allowDynamicOutput bool) {
 	runtime.KeepAlive(allowDynamicOutput)
 }
 
-// SetDescription: set description as the given description for the profile.
-// A copy of description will be made internally.
+// SetDescription (gst_encoding_profile_set_description): set description as
+// the given description for the profile. A copy of description will be made
+// internally.
 //
 // The function takes the following parameters:
 //
@@ -4938,8 +5422,8 @@ func (profile *EncodingProfile) SetDescription(description string) {
 	runtime.KeepAlive(description)
 }
 
-// SetElementProperties: this allows setting the muxing/encoding element
-// properties.
+// SetElementProperties (gst_encoding_profile_set_element_properties): this
+// allows setting the muxing/encoding element properties.
 //
 // **Set properties generically**
 //
@@ -4975,7 +5459,8 @@ func (self *EncodingProfile) SetElementProperties(elementProperties *gst.Structu
 	runtime.KeepAlive(elementProperties)
 }
 
-// SetEnabled: set whether the profile should be used or not.
+// SetEnabled (gst_encoding_profile_set_enabled): set whether the profile should
+// be used or not.
 //
 // The function takes the following parameters:
 //
@@ -4994,7 +5479,8 @@ func (profile *EncodingProfile) SetEnabled(enabled bool) {
 	runtime.KeepAlive(enabled)
 }
 
-// SetFormat sets the media format used in the profile.
+// SetFormat (gst_encoding_profile_set_format) sets the media format used in the
+// profile.
 //
 // The function takes the following parameters:
 //
@@ -5011,8 +5497,8 @@ func (profile *EncodingProfile) SetFormat(format *gst.Caps) {
 	runtime.KeepAlive(format)
 }
 
-// SetName: set name as the given name for the profile. A copy of name will be
-// made internally.
+// SetName (gst_encoding_profile_set_name): set name as the given name for the
+// profile. A copy of name will be made internally.
 //
 // The function takes the following parameters:
 //
@@ -5032,8 +5518,9 @@ func (profile *EncodingProfile) SetName(name string) {
 	runtime.KeepAlive(name)
 }
 
-// SetPresence: set the number of time the profile is used in its parent
-// container profile. If 0, it is not a mandatory stream.
+// SetPresence (gst_encoding_profile_set_presence): set the number of time the
+// profile is used in its parent container profile. If 0, it is not a mandatory
+// stream.
 //
 // The function takes the following parameters:
 //
@@ -5050,9 +5537,9 @@ func (profile *EncodingProfile) SetPresence(presence uint) {
 	runtime.KeepAlive(presence)
 }
 
-// SetPreset sets the name of the Element that implements the Preset interface
-// to use for the profile. This is the name that has been set when saving the
-// preset.
+// SetPreset (gst_encoding_profile_set_preset) sets the name of the Element that
+// implements the Preset interface to use for the profile. This is the name that
+// has been set when saving the preset.
 //
 // The function takes the following parameters:
 //
@@ -5072,8 +5559,8 @@ func (profile *EncodingProfile) SetPreset(preset string) {
 	runtime.KeepAlive(preset)
 }
 
-// SetPresetName sets the name of the Preset's factory to be used in the
-// profile.
+// SetPresetName (gst_encoding_profile_set_preset_name) sets the name of the
+// Preset's factory to be used in the profile.
 //
 // The function takes the following parameters:
 //
@@ -5093,9 +5580,10 @@ func (profile *EncodingProfile) SetPresetName(presetName string) {
 	runtime.KeepAlive(presetName)
 }
 
-// SetRestriction: set the restriction Caps to apply before the encoder that
-// will be used in the profile. See gst_encoding_profile_get_restriction() for
-// more about restrictions. Does not apply to EncodingContainerProfile.
+// SetRestriction (gst_encoding_profile_set_restriction): set the restriction
+// Caps to apply before the encoder that will be used in the profile.
+// See gst_encoding_profile_get_restriction() for more about restrictions.
+// Does not apply to EncodingContainerProfile.
 //
 // The function takes the following parameters:
 //
@@ -5115,8 +5603,9 @@ func (profile *EncodingProfile) SetRestriction(restriction *gst.Caps) {
 	runtime.KeepAlive(restriction)
 }
 
-// SetSingleSegment: if using a single segment, buffers will be retimestamped
-// and segments will be eat so as to appear as one segment.
+// SetSingleSegment (gst_encoding_profile_set_single_segment): if using a single
+// segment, buffers will be retimestamped and segments will be eat so as to
+// appear as one segment.
 //
 // > *NOTE*: Single segment is not property supported when using >
 // #encodebin:avoid-reencoding.
@@ -5139,8 +5628,8 @@ func (profile *EncodingProfile) SetSingleSegment(singleSegment bool) {
 	runtime.KeepAlive(singleSegment)
 }
 
-// EncodingProfileFind: find the EncodingProfile with the specified name and
-// category.
+// EncodingProfileFind (gst_encoding_profile_find): find the EncodingProfile
+// with the specified name and category.
 //
 // The function takes the following parameters:
 //
@@ -5183,9 +5672,9 @@ func EncodingProfileFind(targetname, profilename, category string) *EncodingProf
 	return _encodingProfile
 }
 
-// EncodingProfileFromDiscoverer creates a EncodingProfile matching the formats
-// from the given DiscovererInfo. Streams other than audio or video (eg,
-// subtitles), are currently ignored.
+// EncodingProfileFromDiscoverer (gst_encoding_profile_from_discoverer) creates
+// a EncodingProfile matching the formats from the given DiscovererInfo.
+// Streams other than audio or video (eg, subtitles), are currently ignored.
 //
 // The function takes the following parameters:
 //
@@ -5212,8 +5701,8 @@ func EncodingProfileFromDiscoverer(info *DiscovererInfo) *EncodingProfile {
 	return _encodingProfile
 }
 
-// EncodingTarget: collection of EncodingProfile for a specific target or
-// use-case.
+// EncodingTarget (GstEncodingTarget): collection of EncodingProfile for a
+// specific target or use-case.
 //
 // When being stored/loaded, targets come from a specific category, like
 // T_ENCODING_CATEGORY_DEVICE.
@@ -5226,6 +5715,34 @@ var (
 	_ coreglib.Objector = (*EncodingTarget)(nil)
 )
 
+// EncodingTargetter describes types inherited from EncodingTarget.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type EncodingTargetter interface {
+	coreglib.Objector
+
+	// AddProfile (gst_encoding_target_add_profile) adds the given profile to
+	// the target.
+	AddProfile(profile *EncodingProfile) bool
+	Category() string
+	Description() string
+	Name() string
+	Path() string
+	Profile(name string) *EncodingProfile
+	Profiles() []*EncodingProfile
+	// Save (gst_encoding_target_save) saves the target to a default user-local
+	// directory.
+	Save() error
+	// SaveToFile (gst_encoding_target_save_to_file) saves the target to the
+	// provided file location.
+	SaveToFile(filepath string) error
+
+	baseEncodingTarget() *EncodingTarget
+}
+
+var _ EncodingTargetter = (*EncodingTarget)(nil)
+
 func wrapEncodingTarget(obj *coreglib.Object) *EncodingTarget {
 	return &EncodingTarget{
 		Object: obj,
@@ -5236,7 +5753,16 @@ func marshalEncodingTarget(p uintptr) (interface{}, error) {
 	return wrapEncodingTarget(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// NewEncodingTarget creates a new EncodingTarget.
+func (target *EncodingTarget) baseEncodingTarget() *EncodingTarget {
+	return target
+}
+
+// BaseEncodingTarget returns the underlying base object.
+func BaseEncodingTarget(obj EncodingTargetter) *EncodingTarget {
+	return obj.baseEncodingTarget()
+}
+
+// NewEncodingTarget (gst_encoding_target_new) creates a new EncodingTarget.
 //
 // The name and category can only consist of lowercase ASCII letters for the
 // first character, followed by either lowercase ASCII letters, digits or
@@ -5294,8 +5820,8 @@ func NewEncodingTarget(name, category, description string, profiles []*EncodingP
 	return _encodingTarget
 }
 
-// AddProfile adds the given profile to the target. Each added profile must have
-// a unique name within the profile.
+// AddProfile (gst_encoding_target_add_profile) adds the given profile to the
+// target. Each added profile must have a unique name within the profile.
 //
 // The target will steal a reference to the profile. If you wish to use the
 // profile after calling this method, you should increase its reference count.
@@ -5461,7 +5987,8 @@ func (target *EncodingTarget) Profiles() []*EncodingProfile {
 	return _list
 }
 
-// Save saves the target to a default user-local directory.
+// Save (gst_encoding_target_save) saves the target to a default user-local
+// directory.
 func (target *EncodingTarget) Save() error {
 	var _arg0 *C.GstEncodingTarget // out
 	var _cerr *C.GError            // in
@@ -5480,7 +6007,8 @@ func (target *EncodingTarget) Save() error {
 	return _goerr
 }
 
-// SaveToFile saves the target to the provided file location.
+// SaveToFile (gst_encoding_target_save_to_file) saves the target to the
+// provided file location.
 //
 // The function takes the following parameters:
 //
@@ -5507,8 +6035,8 @@ func (target *EncodingTarget) SaveToFile(filepath string) error {
 	return _goerr
 }
 
-// EncodingTargetLoad searches for the EncodingTarget with the given name,
-// loads it and returns it.
+// EncodingTargetLoad (gst_encoding_target_load) searches for the EncodingTarget
+// with the given name, loads it and returns it.
 //
 // If the category name is specified only targets from that category will be
 // searched for.
@@ -5551,8 +6079,8 @@ func EncodingTargetLoad(name, category string) (*EncodingTarget, error) {
 	return _encodingTarget, _goerr
 }
 
-// EncodingTargetLoadFromFile opens the provided file and returns the contained
-// EncodingTarget.
+// EncodingTargetLoadFromFile (gst_encoding_target_load_from_file) opens the
+// provided file and returns the contained EncodingTarget.
 //
 // The function takes the following parameters:
 //
@@ -5583,8 +6111,8 @@ func EncodingTargetLoadFromFile(filepath string) (*EncodingTarget, error) {
 	return _encodingTarget, _goerr
 }
 
-// EncodingVideoProfile: variant of EncodingProfile for video streams, allows
-// specifying the pass.
+// EncodingVideoProfile (GstEncodingVideoProfile): variant of EncodingProfile
+// for video streams, allows specifying the pass.
 type EncodingVideoProfile struct {
 	_ [0]func() // equal guard
 	EncodingProfile
@@ -5593,6 +6121,33 @@ type EncodingVideoProfile struct {
 var (
 	_ coreglib.Objector = (*EncodingVideoProfile)(nil)
 )
+
+// EncodingVideoProfiler describes types inherited from EncodingVideoProfile.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type EncodingVideoProfiler interface {
+	EncodingProfiler
+
+	// Pass (gst_encoding_video_profile_get_pass): get the pass number if this
+	// is part of a multi-pass profile.
+	Pass() uint
+	// Variableframerate (gst_encoding_video_profile_get_variableframerate):
+	// > *NOTE*: Fixed framerate won't be enforced when
+	// #encodebin:avoid-reencoding > is set.
+	Variableframerate() bool
+	// SetPass (gst_encoding_video_profile_set_pass) sets the pass number of
+	// this video profile.
+	SetPass(pass uint)
+	// SetVariableframerate (gst_encoding_video_profile_set_variableframerate):
+	// if set to TRUE, then the incoming stream will be allowed to have
+	// non-constant framerate.
+	SetVariableframerate(variableframerate bool)
+
+	baseEncodingVideoProfile() *EncodingVideoProfile
+}
+
+var _ EncodingVideoProfiler = (*EncodingVideoProfile)(nil)
 
 func wrapEncodingVideoProfile(obj *coreglib.Object) *EncodingVideoProfile {
 	return &EncodingVideoProfile{
@@ -5606,7 +6161,17 @@ func marshalEncodingVideoProfile(p uintptr) (interface{}, error) {
 	return wrapEncodingVideoProfile(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// NewEncodingVideoProfile creates a new EncodingVideoProfile
+func (prof *EncodingVideoProfile) baseEncodingVideoProfile() *EncodingVideoProfile {
+	return prof
+}
+
+// BaseEncodingVideoProfile returns the underlying base object.
+func BaseEncodingVideoProfile(obj EncodingVideoProfiler) *EncodingVideoProfile {
+	return obj.baseEncodingVideoProfile()
+}
+
+// NewEncodingVideoProfile (gst_encoding_video_profile_new) creates a new
+// EncodingVideoProfile
 //
 // All provided allocatable arguments will be internally copied, so can be
 // safely freed/unreferenced after calling this method.
@@ -5659,7 +6224,8 @@ func NewEncodingVideoProfile(format *gst.Caps, preset string, restriction *gst.C
 	return _encodingVideoProfile
 }
 
-// Pass: get the pass number if this is part of a multi-pass profile.
+// Pass (gst_encoding_video_profile_get_pass): get the pass number if this is
+// part of a multi-pass profile.
 //
 // The function returns the following values:
 //
@@ -5681,8 +6247,9 @@ func (prof *EncodingVideoProfile) Pass() uint {
 	return _guint
 }
 
-// Variableframerate: > *NOTE*: Fixed framerate won't be enforced when
-// #encodebin:avoid-reencoding > is set.
+// Variableframerate (gst_encoding_video_profile_get_variableframerate):
+// > *NOTE*: Fixed framerate won't be enforced when #encodebin:avoid-reencoding
+// > is set.
 //
 // The function returns the following values:
 //
@@ -5705,9 +6272,10 @@ func (prof *EncodingVideoProfile) Variableframerate() bool {
 	return _ok
 }
 
-// SetPass sets the pass number of this video profile. The first pass profile
-// should have this value set to 1. If this video profile isn't part of a
-// multi-pass profile, you may set it to 0 (the default value).
+// SetPass (gst_encoding_video_profile_set_pass) sets the pass number of this
+// video profile. The first pass profile should have this value set to 1.
+// If this video profile isn't part of a multi-pass profile, you may set it to 0
+// (the default value).
 //
 // The function takes the following parameters:
 //
@@ -5724,10 +6292,11 @@ func (prof *EncodingVideoProfile) SetPass(pass uint) {
 	runtime.KeepAlive(pass)
 }
 
-// SetVariableframerate: if set to TRUE, then the incoming stream will be
-// allowed to have non-constant framerate. If set to FALSE (default value),
-// then the incoming stream will be normalized by dropping/duplicating frames in
-// order to produce a constance framerate.
+// SetVariableframerate (gst_encoding_video_profile_set_variableframerate):
+// if set to TRUE, then the incoming stream will be allowed to have non-constant
+// framerate. If set to FALSE (default value), then the incoming stream will be
+// normalized by dropping/duplicating frames in order to produce a constance
+// framerate.
 //
 // The function takes the following parameters:
 //
@@ -5746,7 +6315,8 @@ func (prof *EncodingVideoProfile) SetVariableframerate(variableframerate bool) {
 	runtime.KeepAlive(variableframerate)
 }
 
-// AudioVisualizerClass: instance of this type is always passed by reference.
+// AudioVisualizerClass (GstAudioVisualizerClass): instance of this type is
+// always passed by reference.
 type AudioVisualizerClass struct {
 	*audioVisualizerClass
 }
@@ -5756,7 +6326,8 @@ type audioVisualizerClass struct {
 	native *C.GstAudioVisualizerClass
 }
 
-// DiscovererClass: instance of this type is always passed by reference.
+// DiscovererClass (GstDiscovererClass): instance of this type is always passed
+// by reference.
 type DiscovererClass struct {
 	*discovererClass
 }
@@ -5778,8 +6349,8 @@ func (d *DiscovererClass) Reserved() [3]unsafe.Pointer {
 	return _v
 }
 
-// InstallPluginsContext: opaque context structure for the plugin installation.
-// Use the provided API to set details on it.
+// InstallPluginsContext (GstInstallPluginsContext): opaque context structure
+// for the plugin installation. Use the provided API to set details on it.
 //
 // An instance of this type is always passed by reference.
 type InstallPluginsContext struct {
@@ -5815,7 +6386,7 @@ func NewInstallPluginsContext() *InstallPluginsContext {
 	return _installPluginsContext
 }
 
-// Copy copies a InstallPluginsContext.
+// Copy (gst_install_plugins_context_copy) copies a InstallPluginsContext.
 //
 // The function returns the following values:
 //
@@ -5842,9 +6413,9 @@ func (ctx *InstallPluginsContext) Copy() *InstallPluginsContext {
 	return _installPluginsContext
 }
 
-// SetConfirmSearch: this function is used to tell the external installer
-// process whether it should ask for confirmation or not before searching for
-// missing plugins.
+// SetConfirmSearch (gst_install_plugins_context_set_confirm_search): this
+// function is used to tell the external installer process whether it should ask
+// for confirmation or not before searching for missing plugins.
 //
 // If set, this option will be passed to the installer via a
 // --interaction=[show-confirm-search|hide-confirm-search] command line option.
@@ -5867,8 +6438,9 @@ func (ctx *InstallPluginsContext) SetConfirmSearch(confirmSearch bool) {
 	runtime.KeepAlive(confirmSearch)
 }
 
-// SetDesktopID: this function is used to pass the calling application's desktop
-// file ID to the external installer process.
+// SetDesktopID (gst_install_plugins_context_set_desktop_id): this function
+// is used to pass the calling application's desktop file ID to the external
+// installer process.
 //
 // A desktop file ID is the basename of the desktop file, including the .desktop
 // extension.
@@ -5892,8 +6464,9 @@ func (ctx *InstallPluginsContext) SetDesktopID(desktopId string) {
 	runtime.KeepAlive(desktopId)
 }
 
-// SetStartupNotificationID sets the startup notification ID for the launched
-// process.
+// SetStartupNotificationID
+// (gst_install_plugins_context_set_startup_notification_id) sets the startup
+// notification ID for the launched process.
 //
 // This is typically used to to pass the current X11 event timestamp to the
 // external installer process.
@@ -5928,11 +6501,11 @@ func (ctx *InstallPluginsContext) SetStartupNotificationID(startupId string) {
 	runtime.KeepAlive(startupId)
 }
 
-// SetXid: this function is for X11-based applications (such as most Gtk/Qt
-// applications on linux/unix) only. You can use it to tell the external
-// installer the XID of your main application window. That way the installer
-// can make its own window transient to your application window during the
-// installation.
+// SetXid (gst_install_plugins_context_set_xid): this function is for X11-based
+// applications (such as most Gtk/Qt applications on linux/unix) only. You
+// can use it to tell the external installer the XID of your main application
+// window. That way the installer can make its own window transient to your
+// application window during the installation.
 //
 // If set, the XID will be passed to the installer via a --transient-for=XID
 // command line option.

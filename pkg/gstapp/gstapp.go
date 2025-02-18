@@ -102,16 +102,18 @@ func init() {
 	})
 }
 
-// AppLeakyType: buffer dropping scheme to avoid the element's internal queue to
-// block when full.
+// AppLeakyType (GstAppLeakyType): buffer dropping scheme to avoid the element's
+// internal queue to block when full.
 type AppLeakyType C.gint
 
 const (
-	// AppLeakyTypeNone: not Leaky.
+	// AppLeakyTypeNone (GST_APP_LEAKY_TYPE_NONE): not Leaky.
 	AppLeakyTypeNone AppLeakyType = iota
-	// AppLeakyTypeUpstream: leaky on upstream (new buffers).
+	// AppLeakyTypeUpstream (GST_APP_LEAKY_TYPE_UPSTREAM): leaky on upstream
+	// (new buffers).
 	AppLeakyTypeUpstream
-	// AppLeakyTypeDownstream: leaky on downstream (old buffers).
+	// AppLeakyTypeDownstream (GST_APP_LEAKY_TYPE_DOWNSTREAM): leaky on
+	// downstream (old buffers).
 	AppLeakyTypeDownstream
 )
 
@@ -133,18 +135,18 @@ func (a AppLeakyType) String() string {
 	}
 }
 
-// AppStreamType: stream type.
+// AppStreamType (GstAppStreamType): stream type.
 type AppStreamType C.gint
 
 const (
-	// AppStreamTypeStream: no seeking is supported in the stream, such as a
-	// live stream.
+	// AppStreamTypeStream (GST_APP_STREAM_TYPE_STREAM): no seeking is supported
+	// in the stream, such as a live stream.
 	AppStreamTypeStream AppStreamType = iota
-	// AppStreamTypeSeekable: stream is seekable but seeking might not be very
-	// fast, such as data from a webserver.
+	// AppStreamTypeSeekable (GST_APP_STREAM_TYPE_SEEKABLE): stream is seekable
+	// but seeking might not be very fast, such as data from a webserver.
 	AppStreamTypeSeekable
-	// AppStreamTypeRandomAccess: stream is seekable and seeking is fast,
-	// such as in a local file.
+	// AppStreamTypeRandomAccess (GST_APP_STREAM_TYPE_RANDOM_ACCESS): stream is
+	// seekable and seeking is fast, such as in a local file.
 	AppStreamTypeRandomAccess
 )
 
@@ -278,9 +280,10 @@ func defaultAppSinkOverrides(v *AppSink) AppSinkOverrides {
 	}
 }
 
-// AppSink: appsink is a sink plugin that supports many different methods for
-// making the application get a handle on the GStreamer data in a pipeline.
-// Unlike most GStreamer elements, Appsink provides external API functions.
+// AppSink (GstAppSink): appsink is a sink plugin that supports many different
+// methods for making the application get a handle on the GStreamer data in
+// a pipeline. Unlike most GStreamer elements, Appsink provides external API
+// functions.
 //
 // appsink can be used by linking to the gstappsink.h header file to access the
 // methods or by using the appsink action signals and properties.
@@ -325,6 +328,99 @@ type AppSink struct {
 var (
 	_ gstbase.BaseSinker = (*AppSink)(nil)
 )
+
+// AppSinker describes types inherited from AppSink.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type AppSinker interface {
+	gstbase.BaseSinker
+	gst.URIHandlerer
+
+	// BufferListSupport (gst_app_sink_get_buffer_list_support): check if
+	// appsink supports buffer lists.
+	BufferListSupport() bool
+	// Caps (gst_app_sink_get_caps): get the configured caps on appsink.
+	Caps() *gst.Caps
+	// Drop (gst_app_sink_get_drop): check if appsink will drop old buffers
+	// when the maximum amount of queued data is reached (meaning max buffers,
+	// time or bytes limit, whichever is hit first).
+	Drop() bool
+	// EmitSignals (gst_app_sink_get_emit_signals): check if appsink will emit
+	// the "new-preroll" and "new-sample" signals.
+	EmitSignals() bool
+	// MaxBuffers (gst_app_sink_get_max_buffers): get the maximum amount of
+	// buffers that can be queued in appsink.
+	MaxBuffers() uint
+	// MaxBytes (gst_app_sink_get_max_bytes): get the maximum total size,
+	// in bytes, that can be queued in appsink.
+	MaxBytes() uint64
+	// MaxTime (gst_app_sink_get_max_time): get the maximum total duration that
+	// can be queued in appsink.
+	MaxTime() gst.ClockTime
+	// WaitOnEos (gst_app_sink_get_wait_on_eos): check if appsink will wait for
+	// all buffers to be consumed when an EOS is received.
+	WaitOnEos() bool
+	// IsEos (gst_app_sink_is_eos): check if appsink is EOS, which is when no
+	// more samples can be pulled because an EOS event was received.
+	IsEos() bool
+	// PullPreroll (gst_app_sink_pull_preroll): get the last preroll sample in
+	// appsink.
+	PullPreroll() *gst.Sample
+	// PullSample (gst_app_sink_pull_sample): this function blocks until a
+	// sample or EOS becomes available or the appsink element is set to the
+	// READY/NULL state.
+	PullSample() *gst.Sample
+	// SetBufferListSupport (gst_app_sink_set_buffer_list_support): instruct
+	// appsink to enable or disable buffer list support.
+	SetBufferListSupport(enableLists bool)
+	// SetCaps (gst_app_sink_set_caps): set the capabilities on the appsink
+	// element.
+	SetCaps(caps *gst.Caps)
+	// SetDrop (gst_app_sink_set_drop): instruct appsink to drop old buffers
+	// when the maximum amount of queued data is reached, that is, when any
+	// configured limit is hit (max-buffers, max-time or max-bytes).
+	SetDrop(drop bool)
+	// SetEmitSignals (gst_app_sink_set_emit_signals): make appsink emit the
+	// "new-preroll" and "new-sample" signals.
+	SetEmitSignals(emit bool)
+	// SetMaxBuffers (gst_app_sink_set_max_buffers): set the maximum amount of
+	// buffers that can be queued in appsink.
+	SetMaxBuffers(max uint)
+	// SetMaxBytes (gst_app_sink_set_max_bytes): set the maximum total size that
+	// can be queued in appsink.
+	SetMaxBytes(max uint64)
+	// SetMaxTime (gst_app_sink_set_max_time): set the maximum total duration
+	// that can be queued in appsink.
+	SetMaxTime(max gst.ClockTime)
+	// SetWaitOnEos (gst_app_sink_set_wait_on_eos): instruct appsink to wait for
+	// all buffers to be consumed when an EOS is received.
+	SetWaitOnEos(wait bool)
+	// TryPullPreroll (gst_app_sink_try_pull_preroll): get the last preroll
+	// sample in appsink.
+	TryPullPreroll(timeout gst.ClockTime) *gst.Sample
+	// TryPullSample (gst_app_sink_try_pull_sample): this function blocks until
+	// a sample or EOS becomes available or the appsink element is set to the
+	// READY/NULL state or the timeout expires.
+	TryPullSample(timeout gst.ClockTime) *gst.Sample
+
+	// Eos: signal that the end-of-stream has been reached.
+	ConnectEos(func()) coreglib.SignalHandle
+	// New-preroll: signal that a new preroll sample is available.
+	ConnectNewPreroll(func() (flowReturn gst.FlowReturn)) coreglib.SignalHandle
+	// New-sample: signal that a new sample is available.
+	ConnectNewSample(func() (flowReturn gst.FlowReturn)) coreglib.SignalHandle
+	// New-serialized-event: signal that a new downstream serialized event is
+	// available.
+	ConnectNewSerializedEvent(func() (ok bool)) coreglib.SignalHandle
+	// Propose-allocation: signal that a new propose_allocation query is
+	// available.
+	ConnectProposeAllocation(func(query *gst.Query) (ok bool)) coreglib.SignalHandle
+
+	baseAppSink() *AppSink
+}
+
+var _ AppSinker = (*AppSink)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*AppSink, *AppSinkClass, AppSinkOverrides](
@@ -391,6 +487,15 @@ func wrapAppSink(obj *coreglib.Object) *AppSink {
 
 func marshalAppSink(p uintptr) (interface{}, error) {
 	return wrapAppSink(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
+}
+
+func (appsink *AppSink) baseAppSink() *AppSink {
+	return appsink
+}
+
+// BaseAppSink returns the underlying base object.
+func BaseAppSink(obj AppSinker) *AppSink {
+	return obj.baseAppSink()
 }
 
 // ConnectEos: signal that the end-of-stream has been reached. This signal is
@@ -460,7 +565,8 @@ func (appsink *AppSink) ConnectProposeAllocation(f func(query *gst.Query) (ok bo
 	return coreglib.ConnectGeneratedClosure(appsink, "propose-allocation", false, unsafe.Pointer(C._gotk4_gstapp1_AppSink_ConnectProposeAllocation), f)
 }
 
-// BufferListSupport: check if appsink supports buffer lists.
+// BufferListSupport (gst_app_sink_get_buffer_list_support): check if appsink
+// supports buffer lists.
 //
 // The function returns the following values:
 //
@@ -483,7 +589,7 @@ func (appsink *AppSink) BufferListSupport() bool {
 	return _ok
 }
 
-// Caps: get the configured caps on appsink.
+// Caps (gst_app_sink_get_caps): get the configured caps on appsink.
 //
 // The function returns the following values:
 //
@@ -511,9 +617,9 @@ func (appsink *AppSink) Caps() *gst.Caps {
 	return _caps
 }
 
-// Drop: check if appsink will drop old buffers when the maximum amount of
-// queued data is reached (meaning max buffers, time or bytes limit, whichever
-// is hit first).
+// Drop (gst_app_sink_get_drop): check if appsink will drop old buffers when the
+// maximum amount of queued data is reached (meaning max buffers, time or bytes
+// limit, whichever is hit first).
 //
 // The function returns the following values:
 //
@@ -536,8 +642,8 @@ func (appsink *AppSink) Drop() bool {
 	return _ok
 }
 
-// EmitSignals: check if appsink will emit the "new-preroll" and "new-sample"
-// signals.
+// EmitSignals (gst_app_sink_get_emit_signals): check if appsink will emit the
+// "new-preroll" and "new-sample" signals.
 //
 // The function returns the following values:
 //
@@ -561,7 +667,8 @@ func (appsink *AppSink) EmitSignals() bool {
 	return _ok
 }
 
-// MaxBuffers: get the maximum amount of buffers that can be queued in appsink.
+// MaxBuffers (gst_app_sink_get_max_buffers): get the maximum amount of buffers
+// that can be queued in appsink.
 //
 // The function returns the following values:
 //
@@ -582,8 +689,8 @@ func (appsink *AppSink) MaxBuffers() uint {
 	return _guint
 }
 
-// MaxBytes: get the maximum total size, in bytes, that can be queued in
-// appsink.
+// MaxBytes (gst_app_sink_get_max_bytes): get the maximum total size, in bytes,
+// that can be queued in appsink.
 //
 // The function returns the following values:
 //
@@ -604,7 +711,8 @@ func (appsink *AppSink) MaxBytes() uint64 {
 	return _guint64
 }
 
-// MaxTime: get the maximum total duration that can be queued in appsink.
+// MaxTime (gst_app_sink_get_max_time): get the maximum total duration that can
+// be queued in appsink.
 //
 // The function returns the following values:
 //
@@ -625,8 +733,8 @@ func (appsink *AppSink) MaxTime() gst.ClockTime {
 	return _clockTime
 }
 
-// WaitOnEos: check if appsink will wait for all buffers to be consumed when an
-// EOS is received.
+// WaitOnEos (gst_app_sink_get_wait_on_eos): check if appsink will wait for all
+// buffers to be consumed when an EOS is received.
 //
 // The function returns the following values:
 //
@@ -650,8 +758,8 @@ func (appsink *AppSink) WaitOnEos() bool {
 	return _ok
 }
 
-// IsEos: check if appsink is EOS, which is when no more samples can be pulled
-// because an EOS event was received.
+// IsEos (gst_app_sink_is_eos): check if appsink is EOS, which is when no more
+// samples can be pulled because an EOS event was received.
 //
 // This function also returns TRUE when the appsink is not in the PAUSED or
 // PLAYING state.
@@ -677,8 +785,9 @@ func (appsink *AppSink) IsEos() bool {
 	return _ok
 }
 
-// PullPreroll: get the last preroll sample in appsink. This was the sample that
-// caused the appsink to preroll in the PAUSED state.
+// PullPreroll (gst_app_sink_pull_preroll): get the last preroll sample in
+// appsink. This was the sample that caused the appsink to preroll in the PAUSED
+// state.
 //
 // This function is typically used when dealing with a pipeline in the PAUSED
 // state. Calling this function after doing a seek will give the sample right
@@ -723,8 +832,8 @@ func (appsink *AppSink) PullPreroll() *gst.Sample {
 	return _sample
 }
 
-// PullSample: this function blocks until a sample or EOS becomes available or
-// the appsink element is set to the READY/NULL state.
+// PullSample (gst_app_sink_pull_sample): this function blocks until a sample or
+// EOS becomes available or the appsink element is set to the READY/NULL state.
 //
 // This function will only return samples when the appsink is in the PLAYING
 // state. All rendered buffers will be put in a queue so that the application
@@ -762,8 +871,8 @@ func (appsink *AppSink) PullSample() *gst.Sample {
 	return _sample
 }
 
-// SetBufferListSupport: instruct appsink to enable or disable buffer list
-// support.
+// SetBufferListSupport (gst_app_sink_set_buffer_list_support): instruct appsink
+// to enable or disable buffer list support.
 //
 // For backwards-compatibility reasons applications need to opt in to indicate
 // that they will be able to handle buffer lists.
@@ -785,10 +894,11 @@ func (appsink *AppSink) SetBufferListSupport(enableLists bool) {
 	runtime.KeepAlive(enableLists)
 }
 
-// SetCaps: set the capabilities on the appsink element. This function takes
-// a copy of the caps structure. After calling this method, the sink will only
-// accept caps that match caps. If caps is non-fixed, or incomplete, you must
-// check the caps on the samples to get the actual used caps.
+// SetCaps (gst_app_sink_set_caps): set the capabilities on the appsink element.
+// This function takes a copy of the caps structure. After calling this method,
+// the sink will only accept caps that match caps. If caps is non-fixed,
+// or incomplete, you must check the caps on the samples to get the actual used
+// caps.
 //
 // The function takes the following parameters:
 //
@@ -807,9 +917,9 @@ func (appsink *AppSink) SetCaps(caps *gst.Caps) {
 	runtime.KeepAlive(caps)
 }
 
-// SetDrop: instruct appsink to drop old buffers when the maximum amount
-// of queued data is reached, that is, when any configured limit is hit
-// (max-buffers, max-time or max-bytes).
+// SetDrop (gst_app_sink_set_drop): instruct appsink to drop old buffers when
+// the maximum amount of queued data is reached, that is, when any configured
+// limit is hit (max-buffers, max-time or max-bytes).
 //
 // The function takes the following parameters:
 //
@@ -828,9 +938,10 @@ func (appsink *AppSink) SetDrop(drop bool) {
 	runtime.KeepAlive(drop)
 }
 
-// SetEmitSignals: make appsink emit the "new-preroll" and "new-sample" signals.
-// This option is by default disabled because signal emission is expensive and
-// unneeded when the application prefers to operate in pull mode.
+// SetEmitSignals (gst_app_sink_set_emit_signals): make appsink emit the
+// "new-preroll" and "new-sample" signals. This option is by default disabled
+// because signal emission is expensive and unneeded when the application
+// prefers to operate in pull mode.
 //
 // The function takes the following parameters:
 //
@@ -849,10 +960,11 @@ func (appsink *AppSink) SetEmitSignals(emit bool) {
 	runtime.KeepAlive(emit)
 }
 
-// SetMaxBuffers: set the maximum amount of buffers that can be queued in
-// appsink. After this amount of buffers are queued in appsink, any more
-// buffers will block upstream elements until a sample is pulled from appsink,
-// unless 'drop' is set, in which case new buffers will be discarded.
+// SetMaxBuffers (gst_app_sink_set_max_buffers): set the maximum amount of
+// buffers that can be queued in appsink. After this amount of buffers are
+// queued in appsink, any more buffers will block upstream elements until
+// a sample is pulled from appsink, unless 'drop' is set, in which case new
+// buffers will be discarded.
 //
 // The function takes the following parameters:
 //
@@ -869,10 +981,10 @@ func (appsink *AppSink) SetMaxBuffers(max uint) {
 	runtime.KeepAlive(max)
 }
 
-// SetMaxBytes: set the maximum total size that can be queued in appsink.
-// After this amount of buffers are queued in appsink, any more buffers will
-// block upstream elements until a sample is pulled from appsink, unless 'drop'
-// is set, in which case new buffers will be discarded.
+// SetMaxBytes (gst_app_sink_set_max_bytes): set the maximum total size that can
+// be queued in appsink. After this amount of buffers are queued in appsink,
+// any more buffers will block upstream elements until a sample is pulled from
+// appsink, unless 'drop' is set, in which case new buffers will be discarded.
 //
 // The function takes the following parameters:
 //
@@ -889,10 +1001,10 @@ func (appsink *AppSink) SetMaxBytes(max uint64) {
 	runtime.KeepAlive(max)
 }
 
-// SetMaxTime: set the maximum total duration that can be queued in appsink.
-// After this amount of buffers are queued in appsink, any more buffers will
-// block upstream elements until a sample is pulled from appsink, unless 'drop'
-// is set, in which case new buffers will be discarded.
+// SetMaxTime (gst_app_sink_set_max_time): set the maximum total duration that
+// can be queued in appsink. After this amount of buffers are queued in appsink,
+// any more buffers will block upstream elements until a sample is pulled from
+// appsink, unless 'drop' is set, in which case new buffers will be discarded.
 //
 // The function takes the following parameters:
 //
@@ -909,8 +1021,8 @@ func (appsink *AppSink) SetMaxTime(max gst.ClockTime) {
 	runtime.KeepAlive(max)
 }
 
-// SetWaitOnEos: instruct appsink to wait for all buffers to be consumed when an
-// EOS is received.
+// SetWaitOnEos (gst_app_sink_set_wait_on_eos): instruct appsink to wait for all
+// buffers to be consumed when an EOS is received.
 //
 // The function takes the following parameters:
 //
@@ -929,8 +1041,9 @@ func (appsink *AppSink) SetWaitOnEos(wait bool) {
 	runtime.KeepAlive(wait)
 }
 
-// TryPullPreroll: get the last preroll sample in appsink. This was the sample
-// that caused the appsink to preroll in the PAUSED state.
+// TryPullPreroll (gst_app_sink_try_pull_preroll): get the last preroll sample
+// in appsink. This was the sample that caused the appsink to preroll in the
+// PAUSED state.
 //
 // This function is typically used when dealing with a pipeline in the PAUSED
 // state. Calling this function after doing a seek will give the sample right
@@ -983,8 +1096,9 @@ func (appsink *AppSink) TryPullPreroll(timeout gst.ClockTime) *gst.Sample {
 	return _sample
 }
 
-// TryPullSample: this function blocks until a sample or EOS becomes available
-// or the appsink element is set to the READY/NULL state or the timeout expires.
+// TryPullSample (gst_app_sink_try_pull_sample): this function blocks until
+// a sample or EOS becomes available or the appsink element is set to the
+// READY/NULL state or the timeout expires.
 //
 // This function will only return samples when the appsink is in the PLAYING
 // state. All rendered buffers will be put in a queue so that the application
@@ -1357,9 +1471,9 @@ func defaultAppSrcOverrides(v *AppSrc) AppSrcOverrides {
 	}
 }
 
-// AppSrc: appsrc element can be used by applications to insert data into a
-// GStreamer pipeline. Unlike most GStreamer elements, appsrc provides external
-// API functions.
+// AppSrc (GstAppSrc): appsrc element can be used by applications to insert data
+// into a GStreamer pipeline. Unlike most GStreamer elements, appsrc provides
+// external API functions.
 //
 // appsrc can be used by linking with the libgstapp library to access the
 // methods directly or by using the appsrc action signals.
@@ -1434,6 +1548,108 @@ var (
 	_ gstbase.BaseSrcer = (*AppSrc)(nil)
 )
 
+// AppSrcer describes types inherited from AppSrc.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type AppSrcer interface {
+	gstbase.BaseSrcer
+	gst.URIHandlerer
+
+	// EndOfStream (gst_app_src_end_of_stream) indicates to the appsrc element
+	// that the last buffer queued in the element is the last buffer of the
+	// stream.
+	EndOfStream() gst.FlowReturn
+	// Caps (gst_app_src_get_caps): get the configured caps on appsrc.
+	Caps() *gst.Caps
+	// CurrentLevelBuffers (gst_app_src_get_current_level_buffers): get the
+	// number of currently queued buffers inside appsrc.
+	CurrentLevelBuffers() uint64
+	// CurrentLevelBytes (gst_app_src_get_current_level_bytes): get the number
+	// of currently queued bytes inside appsrc.
+	CurrentLevelBytes() uint64
+	// CurrentLevelTime (gst_app_src_get_current_level_time): get the amount of
+	// currently queued time inside appsrc.
+	CurrentLevelTime() gst.ClockTime
+	// Duration (gst_app_src_get_duration): get the duration of the stream in
+	// nanoseconds.
+	Duration() gst.ClockTime
+	// EmitSignals (gst_app_src_get_emit_signals): check if appsrc will emit the
+	// "new-preroll" and "new-buffer" signals.
+	EmitSignals() bool
+	// Latency (gst_app_src_get_latency): retrieve the min and max latencies in
+	// min and max respectively.
+	Latency() (min, max uint64)
+	// LeakyType (gst_app_src_get_leaky_type) returns the currently set
+	// AppLeakyType.
+	LeakyType() AppLeakyType
+	// MaxBuffers (gst_app_src_get_max_buffers): get the maximum amount of
+	// buffers that can be queued in appsrc.
+	MaxBuffers() uint64
+	// MaxBytes (gst_app_src_get_max_bytes): get the maximum amount of bytes
+	// that can be queued in appsrc.
+	MaxBytes() uint64
+	// MaxTime (gst_app_src_get_max_time): get the maximum amount of time that
+	// can be queued in appsrc.
+	MaxTime() gst.ClockTime
+	// Size (gst_app_src_get_size): get the size of the stream in bytes.
+	Size() int64
+	// StreamType (gst_app_src_get_stream_type): get the stream type.
+	StreamType() AppStreamType
+	// PushBuffer (gst_app_src_push_buffer) adds a buffer to the queue of
+	// buffers that the appsrc element will push to its source pad.
+	PushBuffer(buffer *gst.Buffer) gst.FlowReturn
+	// PushBufferList (gst_app_src_push_buffer_list) adds a buffer list to the
+	// queue of buffers and buffer lists that the appsrc element will push to
+	// its source pad.
+	PushBufferList(bufferList *gst.BufferList) gst.FlowReturn
+	// PushSample (gst_app_src_push_sample): extract a buffer from the provided
+	// sample and adds it to the queue of buffers that the appsrc element will
+	// push to its source pad.
+	PushSample(sample *gst.Sample) gst.FlowReturn
+	// AppSrcSetCaps (gst_app_src_set_caps): set the capabilities on the appsrc
+	// element.
+	AppSrcSetCaps(caps *gst.Caps)
+	// SetDuration (gst_app_src_set_duration): set the duration of the stream in
+	// nanoseconds.
+	SetDuration(duration gst.ClockTime)
+	// SetEmitSignals (gst_app_src_set_emit_signals): make appsrc emit the
+	// "new-preroll" and "new-buffer" signals.
+	SetEmitSignals(emit bool)
+	// SetLatency (gst_app_src_set_latency): configure the min and max latency
+	// in src.
+	SetLatency(min, max uint64)
+	// SetLeakyType (gst_app_src_set_leaky_type): when set to any other value
+	// than GST_APP_LEAKY_TYPE_NONE then the appsrc will drop any buffers that
+	// are pushed into it once its internal queue is full.
+	SetLeakyType(leaky AppLeakyType)
+	// SetMaxBuffers (gst_app_src_set_max_buffers): set the maximum amount of
+	// buffers that can be queued in appsrc.
+	SetMaxBuffers(max uint64)
+	// SetMaxBytes (gst_app_src_set_max_bytes): set the maximum amount of bytes
+	// that can be queued in appsrc.
+	SetMaxBytes(max uint64)
+	// SetMaxTime (gst_app_src_set_max_time): set the maximum amount of time
+	// that can be queued in appsrc.
+	SetMaxTime(max gst.ClockTime)
+	// SetSize (gst_app_src_set_size): set the size of the stream in bytes.
+	SetSize(size int64)
+	// SetStreamType (gst_app_src_set_stream_type): set the stream type on
+	// appsrc.
+	SetStreamType(typ AppStreamType)
+
+	// Enough-data: signal that the source has enough data.
+	ConnectEnoughData(func()) coreglib.SignalHandle
+	// Need-data: signal that the source needs more data.
+	ConnectNeedData(func(length uint)) coreglib.SignalHandle
+	// Seek-data: seek to the given offset.
+	ConnectSeekData(func(offset uint64) (ok bool)) coreglib.SignalHandle
+
+	baseAppSrc() *AppSrc
+}
+
+var _ AppSrcer = (*AppSrc)(nil)
+
 func init() {
 	coreglib.RegisterClassInfo[*AppSrc, *AppSrcClass, AppSrcOverrides](
 		GTypeAppSrc,
@@ -1501,6 +1717,15 @@ func marshalAppSrc(p uintptr) (interface{}, error) {
 	return wrapAppSrc(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
+func (appsrc *AppSrc) baseAppSrc() *AppSrc {
+	return appsrc
+}
+
+// BaseAppSrc returns the underlying base object.
+func BaseAppSrc(obj AppSrcer) *AppSrc {
+	return obj.baseAppSrc()
+}
+
 // ConnectEnoughData: signal that the source has enough data. It is recommended
 // that the application stops calling push-buffer until the need-data signal is
 // emitted again to avoid excessive buffer queueing.
@@ -1527,8 +1752,8 @@ func (appsrc *AppSrc) ConnectSeekData(f func(offset uint64) (ok bool)) coreglib.
 	return coreglib.ConnectGeneratedClosure(appsrc, "seek-data", false, unsafe.Pointer(C._gotk4_gstapp1_AppSrc_ConnectSeekData), f)
 }
 
-// EndOfStream indicates to the appsrc element that the last buffer queued in
-// the element is the last buffer of the stream.
+// EndOfStream (gst_app_src_end_of_stream) indicates to the appsrc element that
+// the last buffer queued in the element is the last buffer of the stream.
 //
 // The function returns the following values:
 //
@@ -1550,7 +1775,7 @@ func (appsrc *AppSrc) EndOfStream() gst.FlowReturn {
 	return _flowReturn
 }
 
-// Caps: get the configured caps on appsrc.
+// Caps (gst_app_src_get_caps): get the configured caps on appsrc.
 //
 // The function returns the following values:
 //
@@ -1578,8 +1803,8 @@ func (appsrc *AppSrc) Caps() *gst.Caps {
 	return _caps
 }
 
-// CurrentLevelBuffers: get the number of currently queued buffers inside
-// appsrc.
+// CurrentLevelBuffers (gst_app_src_get_current_level_buffers): get the number
+// of currently queued buffers inside appsrc.
 //
 // The function returns the following values:
 //
@@ -1600,7 +1825,8 @@ func (appsrc *AppSrc) CurrentLevelBuffers() uint64 {
 	return _guint64
 }
 
-// CurrentLevelBytes: get the number of currently queued bytes inside appsrc.
+// CurrentLevelBytes (gst_app_src_get_current_level_bytes): get the number of
+// currently queued bytes inside appsrc.
 //
 // The function returns the following values:
 //
@@ -1621,7 +1847,8 @@ func (appsrc *AppSrc) CurrentLevelBytes() uint64 {
 	return _guint64
 }
 
-// CurrentLevelTime: get the amount of currently queued time inside appsrc.
+// CurrentLevelTime (gst_app_src_get_current_level_time): get the amount of
+// currently queued time inside appsrc.
 //
 // The function returns the following values:
 //
@@ -1642,8 +1869,9 @@ func (appsrc *AppSrc) CurrentLevelTime() gst.ClockTime {
 	return _clockTime
 }
 
-// Duration: get the duration of the stream in nanoseconds. A value of
-// GST_CLOCK_TIME_NONE means that the duration is not known.
+// Duration (gst_app_src_get_duration): get the duration of the stream in
+// nanoseconds. A value of GST_CLOCK_TIME_NONE means that the duration is not
+// known.
 //
 // The function returns the following values:
 //
@@ -1665,8 +1893,8 @@ func (appsrc *AppSrc) Duration() gst.ClockTime {
 	return _clockTime
 }
 
-// EmitSignals: check if appsrc will emit the "new-preroll" and "new-buffer"
-// signals.
+// EmitSignals (gst_app_src_get_emit_signals): check if appsrc will emit the
+// "new-preroll" and "new-buffer" signals.
 //
 // The function returns the following values:
 //
@@ -1690,7 +1918,8 @@ func (appsrc *AppSrc) EmitSignals() bool {
 	return _ok
 }
 
-// Latency: retrieve the min and max latencies in min and max respectively.
+// Latency (gst_app_src_get_latency): retrieve the min and max latencies in min
+// and max respectively.
 //
 // The function returns the following values:
 //
@@ -1715,8 +1944,8 @@ func (appsrc *AppSrc) Latency() (min, max uint64) {
 	return _min, _max
 }
 
-// LeakyType returns the currently set AppLeakyType. See
-// gst_app_src_set_leaky_type() for more details.
+// LeakyType (gst_app_src_get_leaky_type) returns the currently set
+// AppLeakyType. See gst_app_src_set_leaky_type() for more details.
 //
 // The function returns the following values:
 //
@@ -1737,7 +1966,8 @@ func (appsrc *AppSrc) LeakyType() AppLeakyType {
 	return _appLeakyType
 }
 
-// MaxBuffers: get the maximum amount of buffers that can be queued in appsrc.
+// MaxBuffers (gst_app_src_get_max_buffers): get the maximum amount of buffers
+// that can be queued in appsrc.
 //
 // The function returns the following values:
 //
@@ -1758,7 +1988,8 @@ func (appsrc *AppSrc) MaxBuffers() uint64 {
 	return _guint64
 }
 
-// MaxBytes: get the maximum amount of bytes that can be queued in appsrc.
+// MaxBytes (gst_app_src_get_max_bytes): get the maximum amount of bytes that
+// can be queued in appsrc.
 //
 // The function returns the following values:
 //
@@ -1779,7 +2010,8 @@ func (appsrc *AppSrc) MaxBytes() uint64 {
 	return _guint64
 }
 
-// MaxTime: get the maximum amount of time that can be queued in appsrc.
+// MaxTime (gst_app_src_get_max_time): get the maximum amount of time that can
+// be queued in appsrc.
 //
 // The function returns the following values:
 //
@@ -1800,8 +2032,8 @@ func (appsrc *AppSrc) MaxTime() gst.ClockTime {
 	return _clockTime
 }
 
-// Size: get the size of the stream in bytes. A value of -1 means that the size
-// is not known.
+// Size (gst_app_src_get_size): get the size of the stream in bytes. A value of
+// -1 means that the size is not known.
 //
 // The function returns the following values:
 //
@@ -1822,8 +2054,8 @@ func (appsrc *AppSrc) Size() int64 {
 	return _gint64
 }
 
-// StreamType: get the stream type. Control the stream type of appsrc with
-// gst_app_src_set_stream_type().
+// StreamType (gst_app_src_get_stream_type): get the stream type. Control the
+// stream type of appsrc with gst_app_src_set_stream_type().
 //
 // The function returns the following values:
 //
@@ -1844,8 +2076,9 @@ func (appsrc *AppSrc) StreamType() AppStreamType {
 	return _appStreamType
 }
 
-// PushBuffer adds a buffer to the queue of buffers that the appsrc element will
-// push to its source pad. This function takes ownership of the buffer.
+// PushBuffer (gst_app_src_push_buffer) adds a buffer to the queue of buffers
+// that the appsrc element will push to its source pad. This function takes
+// ownership of the buffer.
 //
 // When the block property is TRUE, this function can block until free space
 // becomes available in the queue.
@@ -1878,9 +2111,9 @@ func (appsrc *AppSrc) PushBuffer(buffer *gst.Buffer) gst.FlowReturn {
 	return _flowReturn
 }
 
-// PushBufferList adds a buffer list to the queue of buffers and buffer lists
-// that the appsrc element will push to its source pad. This function takes
-// ownership of buffer_list.
+// PushBufferList (gst_app_src_push_buffer_list) adds a buffer list to the queue
+// of buffers and buffer lists that the appsrc element will push to its source
+// pad. This function takes ownership of buffer_list.
 //
 // When the block property is TRUE, this function can block until free space
 // becomes available in the queue.
@@ -1913,10 +2146,10 @@ func (appsrc *AppSrc) PushBufferList(bufferList *gst.BufferList) gst.FlowReturn 
 	return _flowReturn
 }
 
-// PushSample: extract a buffer from the provided sample and adds it to the
-// queue of buffers that the appsrc element will push to its source pad. Any
-// previous caps that were set on appsrc will be replaced by the caps associated
-// with the sample if not equal.
+// PushSample (gst_app_src_push_sample): extract a buffer from the provided
+// sample and adds it to the queue of buffers that the appsrc element will push
+// to its source pad. Any previous caps that were set on appsrc will be replaced
+// by the caps associated with the sample if not equal.
 //
 // This function does not take ownership of the sample so the sample needs to be
 // unreffed after calling this function.
@@ -1951,15 +2184,15 @@ func (appsrc *AppSrc) PushSample(sample *gst.Sample) gst.FlowReturn {
 	return _flowReturn
 }
 
-// SetCaps: set the capabilities on the appsrc element. This function takes a
-// copy of the caps structure. After calling this method, the source will only
-// produce caps that match caps. caps must be fixed and the caps on the buffers
-// must match the caps or left NULL.
+// AppSrcSetCaps (gst_app_src_set_caps): set the capabilities on the appsrc
+// element. This function takes a copy of the caps structure. After calling this
+// method, the source will only produce caps that match caps. caps must be fixed
+// and the caps on the buffers must match the caps or left NULL.
 //
 // The function takes the following parameters:
 //
 //   - caps (optional) to set.
-func (appsrc *AppSrc) SetCaps(caps *gst.Caps) {
+func (appsrc *AppSrc) AppSrcSetCaps(caps *gst.Caps) {
 	var _arg0 *C.GstAppSrc // out
 	var _arg1 *C.GstCaps   // out
 
@@ -1973,8 +2206,9 @@ func (appsrc *AppSrc) SetCaps(caps *gst.Caps) {
 	runtime.KeepAlive(caps)
 }
 
-// SetDuration: set the duration of the stream in nanoseconds. A value of
-// GST_CLOCK_TIME_NONE means that the duration is not known.
+// SetDuration (gst_app_src_set_duration): set the duration of the stream in
+// nanoseconds. A value of GST_CLOCK_TIME_NONE means that the duration is not
+// known.
 //
 // The function takes the following parameters:
 //
@@ -1991,9 +2225,10 @@ func (appsrc *AppSrc) SetDuration(duration gst.ClockTime) {
 	runtime.KeepAlive(duration)
 }
 
-// SetEmitSignals: make appsrc emit the "new-preroll" and "new-buffer" signals.
-// This option is by default disabled because signal emission is expensive and
-// unneeded when the application prefers to operate in pull mode.
+// SetEmitSignals (gst_app_src_set_emit_signals): make appsrc emit the
+// "new-preroll" and "new-buffer" signals. This option is by default disabled
+// because signal emission is expensive and unneeded when the application
+// prefers to operate in pull mode.
 //
 // The function takes the following parameters:
 //
@@ -2012,8 +2247,9 @@ func (appsrc *AppSrc) SetEmitSignals(emit bool) {
 	runtime.KeepAlive(emit)
 }
 
-// SetLatency: configure the min and max latency in src. If min is set to -1,
-// the default latency calculations for pseudo-live sources will be used.
+// SetLatency (gst_app_src_set_latency): configure the min and max latency in
+// src. If min is set to -1, the default latency calculations for pseudo-live
+// sources will be used.
 //
 // The function takes the following parameters:
 //
@@ -2034,10 +2270,10 @@ func (appsrc *AppSrc) SetLatency(min, max uint64) {
 	runtime.KeepAlive(max)
 }
 
-// SetLeakyType: when set to any other value than GST_APP_LEAKY_TYPE_NONE then
-// the appsrc will drop any buffers that are pushed into it once its internal
-// queue is full. The selected type defines whether to drop the oldest or new
-// buffers.
+// SetLeakyType (gst_app_src_set_leaky_type): when set to any other value than
+// GST_APP_LEAKY_TYPE_NONE then the appsrc will drop any buffers that are pushed
+// into it once its internal queue is full. The selected type defines whether to
+// drop the oldest or new buffers.
 //
 // The function takes the following parameters:
 //
@@ -2054,9 +2290,9 @@ func (appsrc *AppSrc) SetLeakyType(leaky AppLeakyType) {
 	runtime.KeepAlive(leaky)
 }
 
-// SetMaxBuffers: set the maximum amount of buffers that can be queued in
-// appsrc. After the maximum amount of buffers are queued, appsrc will emit the
-// "enough-data" signal.
+// SetMaxBuffers (gst_app_src_set_max_buffers): set the maximum amount of
+// buffers that can be queued in appsrc. After the maximum amount of buffers are
+// queued, appsrc will emit the "enough-data" signal.
 //
 // The function takes the following parameters:
 //
@@ -2073,9 +2309,9 @@ func (appsrc *AppSrc) SetMaxBuffers(max uint64) {
 	runtime.KeepAlive(max)
 }
 
-// SetMaxBytes: set the maximum amount of bytes that can be queued in appsrc.
-// After the maximum amount of bytes are queued, appsrc will emit the
-// "enough-data" signal.
+// SetMaxBytes (gst_app_src_set_max_bytes): set the maximum amount of bytes
+// that can be queued in appsrc. After the maximum amount of bytes are queued,
+// appsrc will emit the "enough-data" signal.
 //
 // The function takes the following parameters:
 //
@@ -2092,9 +2328,9 @@ func (appsrc *AppSrc) SetMaxBytes(max uint64) {
 	runtime.KeepAlive(max)
 }
 
-// SetMaxTime: set the maximum amount of time that can be queued in appsrc.
-// After the maximum amount of time are queued, appsrc will emit the
-// "enough-data" signal.
+// SetMaxTime (gst_app_src_set_max_time): set the maximum amount of time that
+// can be queued in appsrc. After the maximum amount of time are queued,
+// appsrc will emit the "enough-data" signal.
 //
 // The function takes the following parameters:
 //
@@ -2111,8 +2347,8 @@ func (appsrc *AppSrc) SetMaxTime(max gst.ClockTime) {
 	runtime.KeepAlive(max)
 }
 
-// SetSize: set the size of the stream in bytes. A value of -1 means that the
-// size is not known.
+// SetSize (gst_app_src_set_size): set the size of the stream in bytes. A value
+// of -1 means that the size is not known.
 //
 // The function takes the following parameters:
 //
@@ -2129,8 +2365,8 @@ func (appsrc *AppSrc) SetSize(size int64) {
 	runtime.KeepAlive(size)
 }
 
-// SetStreamType: set the stream type on appsrc. For seekable streams, the
-// "seek" signal must be connected to.
+// SetStreamType (gst_app_src_set_stream_type): set the stream type on appsrc.
+// For seekable streams, the "seek" signal must be connected to.
 //
 // A stream_type stream.
 //
@@ -2342,7 +2578,8 @@ func (appsrc *AppSrc) seekData(offset uint64) bool {
 	return _ok
 }
 
-// AppSinkClass: instance of this type is always passed by reference.
+// AppSinkClass (GstAppSinkClass): instance of this type is always passed by
+// reference.
 type AppSinkClass struct {
 	*appSinkClass
 }
@@ -2359,7 +2596,8 @@ func (a *AppSinkClass) BasesinkClass() *gstbase.BaseSinkClass {
 	return _v
 }
 
-// AppSrcClass: instance of this type is always passed by reference.
+// AppSrcClass (GstAppSrcClass): instance of this type is always passed by
+// reference.
 type AppSrcClass struct {
 	*appSrcClass
 }

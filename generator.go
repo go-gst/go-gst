@@ -118,6 +118,21 @@ var Data = genmain.Overlay(
 			types.RemoveRecordFields("GstSdp-1.MIKEYPayloadSP", "params"),
 
 			MiniObjectExtenderBorrows(),
+
+			// collides with the base src extenders that actually provide a clock instead of returning the provided one
+			types.RenameCallable("Gst-1.Element.provide_clock", "ProvidedClock"),
+
+			// collides with base src set caps
+			types.RenameCallable("GstApp-1.AppSrc.set_caps", "AppSrcSetCaps"),
+
+			// collides with extending audio base payloader push
+			types.RenameCallable("GstRtp-1.RTPBasePayload.push", "PushBuffer"),
+
+			// collides with extending audio base payloader push
+			types.RenameCallable("GstAllocators-1.DRMDumbAllocator.alloc", "DRMAlloc"),
+
+			// otherwise clashes with control binding class extension
+			types.RenameCallable("Gst-1.Object.get_control_binding", "CurrentControlBinding"),
 		},
 		Postprocessors: map[string][]girgen.Postprocessor{
 			"Gst-1":       {ElementFactoryMakeWithProperties, ElementBlockSetState, BinAddMany, ElementLinkMany, IteratorValues, StructureGoMarshal},
@@ -144,6 +159,11 @@ var Data = genmain.Overlay(
 
 			// re-implemented in go to support a properties map instead of two lists
 			types.AbsoluteFilter("C.gst_element_factory_make_with_properties"),
+
+			// FIXME: creates a name clash with the parents GstObject:
+			types.AbsoluteFilter("C.gst_control_binding_get_g_value_array"), // vs gst_object_get_g_value_array
+			types.AbsoluteFilter("C.gst_control_binding_sync_values"),       // vs gst_object_sync_values
+			types.AbsoluteFilter("C.gst_control_binding_get_value"),         // vs gst_object_get_value
 		},
 		ExtraGoContents: ExtraGoContents,
 		SingleFile:      true,
@@ -509,5 +529,8 @@ var ExtraGoContents = map[string]string{
 		func Init() {
 			C.gst_init(nil, nil)
 		}
+
+		// ClockTimeNone means infinite timeout or an empty value
+		const ClockTimeNone ClockTime = 0xffffffffffffffff // Ideally this would be set to C.GST_CLOCK_TIME_NONE but this causes issues on MacOS and Windows
 	`,
 }
