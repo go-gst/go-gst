@@ -144,4 +144,8 @@ extern int sizeOfGCharArray (gchar ** arr);
 
 extern GstSample * getSampleValue (GValue * val);
 
+/* Registry utilities */
+
+extern GList * gst_registry_get_plugin_list (GstRegistry * registry);
+
 #endif
