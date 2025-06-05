@@ -45,6 +45,12 @@ func (o *Object) GetParent() *Object {
 	return wrapObject(glib.Take(unsafe.Pointer(C.gst_object_get_parent(o.Instance()))))
 }
 
+func (o *Object) GetPath() string {
+	cPath := C.gst_object_get_path_string(o.Instance())
+	defer C.g_free((C.gpointer)(unsafe.Pointer(cPath)))
+	return C.GoString(cPath)
+}
+
 // GetValue retrieves the value for the given controlled property at the given timestamp.
 func (o *Object) GetValue(property string, timestamp ClockTime) *glib.Value {
 	cprop := C.CString(property)
