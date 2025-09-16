@@ -9,7 +9,26 @@ on:
       - main
 
 jobs:
-  matrix:
+  generate:
+    name: "${{ github.event_name }} / generate"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: DeterminateSystems/nix-installer-action@main
+    - uses: DeterminateSystems/magic-nix-cache-action@main
+
+    - run: go generate
+      shell: nix develop -c bash -e {0}
+
+    - name: Git dirty check
+      run: |
+        git add .
+        if [[ -n "$(git status --porcelain)" ]]; then
+          PAGER= git diff --cached
+          exit 1
+        fi
+  build:
     strategy:
       matrix:
         os:
@@ -18,52 +37,26 @@ jobs:
           - macos-latest
     runs-on: ${{ matrix.os }}
     steps:
-      - name: install mingw 11.2.0 using choco
-        if: runner.os == 'Windows'
-        shell: powershell
-        run: choco install mingw --version 11.2.0
+      # - name: install mingw 11.2.0 using choco
+      #   if: runner.os == 'Windows'
+      #   shell: powershell
+      #   run: choco install mingw --version 11.2.0
 
-      - name: Add mingw to path on windows
-        if: runner.os == 'Windows'
-        run: Add-Content $env:GITHUB_PATH "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin"
-        shell: powershell
+      # - name: Add mingw to path on windows
+      #   if: runner.os == 'Windows'
+      #   run: Add-Content $env:GITHUB_PATH "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin"
+      #   shell: powershell
 
-      - name: install pkgconfiglite using choco
-        if: runner.os == 'Windows'
-        shell: powershell
-        run: choco install pkgconfiglite --allow-empty-checksums
+      # - name: install pkgconfiglite using choco
+      #   if: runner.os == 'Windows'
+      #   shell: powershell
+      #   run: choco install pkgconfiglite --allow-empty-checksums
 
-      - name: Setup GStreamer
-        id: setup_gstreamer
-        uses: blinemedical/setup-gstreamer@v1.4.0
-        with:
-          version: "1.24.10"
-          gstreamerOptions: |-
-            -Dauto_features=disabled
-            -Dgpl=enabled
-            -Dexamples=disabled
-            -Dgtk_doc=disabled
-            -Dintrospection=disabled
-            -Dlibav=disabled
-            -Dpython=disabled
-            -Dvaapi=disabled
-            -Dwebrtc=enabled
-            -Dgstreamer:coretracers=enabled
-            -Dgst-plugins-bad:dtls=enabled
-            -Dgst-plugins-bad:sctp=enabled
-            -Dgst-plugins-bad:srtp=enabled
-            -Dlibnice=enabled
-      - name: checkout
-        uses: actions/checkout@v3
-      - uses: actions/setup-go@v5
-        with:
-          go-version: "stable"
+      - uses: actions/checkout@v4
+
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+
       - name: build
         shell: bash
-        run: |
-          packages=$(go list ./...)
-          for package in $packages; do
-            echo "Building: $package"
-            go build $package || exit 1
-            echo "Build done: $package"
-          done
+        run: ./buildAll.sh
