@@ -6,7 +6,6 @@ import (
 	"runtime"
 	"unsafe"
 
-	"github.com/diamondburned/gotk4/pkg/core/profile"
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
@@ -969,12 +968,10 @@ func UnsafeHarnessFromGlibNone(p unsafe.Pointer) *Harness {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.harness)), 1)
 	runtime.SetFinalizer(
 		wrapped.harness,
 		func (intern *harness) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -986,12 +983,10 @@ func UnsafeHarnessFromGlibFull(p unsafe.Pointer) *Harness {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.harness)), 1)
 	runtime.SetFinalizer(
 		wrapped.harness,
 		func (intern *harness) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2783,12 +2778,10 @@ func UnsafeHarnessThreadFromGlibNone(p unsafe.Pointer) *HarnessThread {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.harnessThread)), 1)
 	runtime.SetFinalizer(
 		wrapped.harnessThread,
 		func (intern *harnessThread) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2800,12 +2793,10 @@ func UnsafeHarnessThreadFromGlibFull(p unsafe.Pointer) *HarnessThread {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.harnessThread)), 1)
 	runtime.SetFinalizer(
 		wrapped.harnessThread,
 		func (intern *harnessThread) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2873,12 +2864,10 @@ func UnsafeStreamConsistencyFromGlibNone(p unsafe.Pointer) *StreamConsistency {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.streamConsistency)), 1)
 	runtime.SetFinalizer(
 		wrapped.streamConsistency,
 		func (intern *streamConsistency) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2890,12 +2879,10 @@ func UnsafeStreamConsistencyFromGlibFull(p unsafe.Pointer) *StreamConsistency {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.streamConsistency)), 1)
 	runtime.SetFinalizer(
 		wrapped.streamConsistency,
 		func (intern *streamConsistency) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped

@@ -8,7 +8,6 @@ import (
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/core/classdata"
-	"github.com/diamondburned/gotk4/pkg/core/profile"
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
@@ -4721,12 +4720,10 @@ func UnsafeWebRTCICECandidateStatsFromGlibNone(p unsafe.Pointer) *WebRTCICECandi
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.webRTCICECandidateStats)), 1)
 	runtime.SetFinalizer(
 		wrapped.webRTCICECandidateStats,
 		func (intern *webRTCICECandidateStats) {
 			C.gst_webrtc_ice_candidate_stats_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -4738,12 +4735,10 @@ func UnsafeWebRTCICECandidateStatsFromGlibFull(p unsafe.Pointer) *WebRTCICECandi
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.webRTCICECandidateStats)), 1)
 	runtime.SetFinalizer(
 		wrapped.webRTCICECandidateStats,
 		func (intern *webRTCICECandidateStats) {
 			C.gst_webrtc_ice_candidate_stats_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -5211,12 +5206,10 @@ func UnsafeWebRTCSessionDescriptionFromGlibNone(p unsafe.Pointer) *WebRTCSession
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.webRTCSessionDescription)), 1)
 	runtime.SetFinalizer(
 		wrapped.webRTCSessionDescription,
 		func (intern *webRTCSessionDescription) {
 			C.gst_webrtc_session_description_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -5228,12 +5221,10 @@ func UnsafeWebRTCSessionDescriptionFromGlibFull(p unsafe.Pointer) *WebRTCSession
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.webRTCSessionDescription)), 1)
 	runtime.SetFinalizer(
 		wrapped.webRTCSessionDescription,
 		func (intern *webRTCSessionDescription) {
 			C.gst_webrtc_session_description_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped

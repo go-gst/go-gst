@@ -9,7 +9,6 @@ import (
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/core/classdata"
-	"github.com/diamondburned/gotk4/pkg/core/profile"
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
@@ -19894,12 +19893,10 @@ func UnsafeAncillaryMetaFromGlibNone(p unsafe.Pointer) *AncillaryMeta {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.ancillaryMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.ancillaryMeta,
 		func (intern *ancillaryMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -19911,12 +19908,10 @@ func UnsafeAncillaryMetaFromGlibFull(p unsafe.Pointer) *AncillaryMeta {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.ancillaryMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.ancillaryMeta,
 		func (intern *ancillaryMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -20055,12 +20050,10 @@ func UnsafeColorBalanceInterfaceFromGlibNone(p unsafe.Pointer) *ColorBalanceInte
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.colorBalanceInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.colorBalanceInterface,
 		func (intern *colorBalanceInterface) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -20072,12 +20065,10 @@ func UnsafeColorBalanceInterfaceFromGlibFull(p unsafe.Pointer) *ColorBalanceInte
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.colorBalanceInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.colorBalanceInterface,
 		func (intern *colorBalanceInterface) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -20145,12 +20136,10 @@ func UnsafeNavigationInterfaceFromGlibNone(p unsafe.Pointer) *NavigationInterfac
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.navigationInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.navigationInterface,
 		func (intern *navigationInterface) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -20162,12 +20151,10 @@ func UnsafeNavigationInterfaceFromGlibFull(p unsafe.Pointer) *NavigationInterfac
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.navigationInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.navigationInterface,
 		func (intern *navigationInterface) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -20248,12 +20235,10 @@ func UnsafeVideoAFDMetaFromGlibNone(p unsafe.Pointer) *VideoAFDMeta {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoAFDMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoAFDMeta,
 		func (intern *videoAFDMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -20265,12 +20250,10 @@ func UnsafeVideoAFDMetaFromGlibFull(p unsafe.Pointer) *VideoAFDMeta {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoAFDMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoAFDMeta,
 		func (intern *videoAFDMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -20364,12 +20347,10 @@ func UnsafeVideoAffineTransformationMetaFromGlibNone(p unsafe.Pointer) *VideoAff
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoAffineTransformationMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoAffineTransformationMeta,
 		func (intern *videoAffineTransformationMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -20381,12 +20362,10 @@ func UnsafeVideoAffineTransformationMetaFromGlibFull(p unsafe.Pointer) *VideoAff
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoAffineTransformationMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoAffineTransformationMeta,
 		func (intern *videoAffineTransformationMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -20703,12 +20682,10 @@ func UnsafeVideoAlignmentFromGlibNone(p unsafe.Pointer) *VideoAlignment {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoAlignment)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoAlignment,
 		func (intern *videoAlignment) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -20720,12 +20697,10 @@ func UnsafeVideoAlignmentFromGlibFull(p unsafe.Pointer) *VideoAlignment {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoAlignment)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoAlignment,
 		func (intern *videoAlignment) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -20808,12 +20783,10 @@ func UnsafeVideoAncillaryFromGlibNone(p unsafe.Pointer) *VideoAncillary {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoAncillary)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoAncillary,
 		func (intern *videoAncillary) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -20825,12 +20798,10 @@ func UnsafeVideoAncillaryFromGlibFull(p unsafe.Pointer) *VideoAncillary {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoAncillary)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoAncillary,
 		func (intern *videoAncillary) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -20909,12 +20880,10 @@ func UnsafeVideoBarMetaFromGlibNone(p unsafe.Pointer) *VideoBarMeta {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoBarMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoBarMeta,
 		func (intern *videoBarMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -20926,12 +20895,10 @@ func UnsafeVideoBarMetaFromGlibFull(p unsafe.Pointer) *VideoBarMeta {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoBarMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoBarMeta,
 		func (intern *videoBarMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21068,12 +21035,10 @@ func UnsafeVideoCaptionMetaFromGlibNone(p unsafe.Pointer) *VideoCaptionMeta {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoCaptionMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoCaptionMeta,
 		func (intern *videoCaptionMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21085,12 +21050,10 @@ func UnsafeVideoCaptionMetaFromGlibFull(p unsafe.Pointer) *VideoCaptionMeta {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoCaptionMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoCaptionMeta,
 		func (intern *videoCaptionMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21173,12 +21136,10 @@ func UnsafeVideoChromaResamplerFromGlibNone(p unsafe.Pointer) *VideoChromaResamp
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoChromaResample)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoChromaResample,
 		func (intern *videoChromaResample) {
 			C.gst_video_chroma_resample_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21190,12 +21151,10 @@ func UnsafeVideoChromaResamplerFromGlibFull(p unsafe.Pointer) *VideoChromaResamp
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoChromaResample)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoChromaResample,
 		func (intern *videoChromaResample) {
 			C.gst_video_chroma_resample_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21268,12 +21227,10 @@ func UnsafeVideoCodecAlphaMetaFromGlibNone(p unsafe.Pointer) *VideoCodecAlphaMet
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoCodecAlphaMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoCodecAlphaMeta,
 		func (intern *videoCodecAlphaMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21285,12 +21242,10 @@ func UnsafeVideoCodecAlphaMetaFromGlibFull(p unsafe.Pointer) *VideoCodecAlphaMet
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoCodecAlphaMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoCodecAlphaMeta,
 		func (intern *videoCodecAlphaMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21391,12 +21346,10 @@ func UnsafeVideoCodecFrameFromGlibNone(p unsafe.Pointer) *VideoCodecFrame {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoCodecFrame)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoCodecFrame,
 		func (intern *videoCodecFrame) {
 			C.gst_video_codec_frame_unref(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21408,12 +21361,10 @@ func UnsafeVideoCodecFrameFromGlibFull(p unsafe.Pointer) *VideoCodecFrame {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoCodecFrame)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoCodecFrame,
 		func (intern *videoCodecFrame) {
 			C.gst_video_codec_frame_unref(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21511,12 +21462,10 @@ func UnsafeVideoCodecStateFromGlibNone(p unsafe.Pointer) *VideoCodecState {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoCodecState)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoCodecState,
 		func (intern *videoCodecState) {
 			C.gst_video_codec_state_unref(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21528,12 +21477,10 @@ func UnsafeVideoCodecStateFromGlibFull(p unsafe.Pointer) *VideoCodecState {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoCodecState)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoCodecState,
 		func (intern *videoCodecState) {
 			C.gst_video_codec_state_unref(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21610,12 +21557,10 @@ func UnsafeVideoColorPrimariesInfoFromGlibNone(p unsafe.Pointer) *VideoColorPrim
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoColorPrimariesInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoColorPrimariesInfo,
 		func (intern *videoColorPrimariesInfo) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21627,12 +21572,10 @@ func UnsafeVideoColorPrimariesInfoFromGlibFull(p unsafe.Pointer) *VideoColorPrim
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoColorPrimariesInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoColorPrimariesInfo,
 		func (intern *videoColorPrimariesInfo) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21700,12 +21643,10 @@ func UnsafeVideoColorimetryFromGlibNone(p unsafe.Pointer) *VideoColorimetry {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoColorimetry)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoColorimetry,
 		func (intern *videoColorimetry) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21717,12 +21658,10 @@ func UnsafeVideoColorimetryFromGlibFull(p unsafe.Pointer) *VideoColorimetry {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoColorimetry)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoColorimetry,
 		func (intern *videoColorimetry) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21956,12 +21895,10 @@ func UnsafeVideoContentLightLevelFromGlibNone(p unsafe.Pointer) *VideoContentLig
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoContentLightLevel)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoContentLightLevel,
 		func (intern *videoContentLightLevel) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21973,12 +21910,10 @@ func UnsafeVideoContentLightLevelFromGlibFull(p unsafe.Pointer) *VideoContentLig
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoContentLightLevel)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoContentLightLevel,
 		func (intern *videoContentLightLevel) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22210,12 +22145,10 @@ func UnsafeVideoConverterFromGlibNone(p unsafe.Pointer) *VideoConverter {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoConverter)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoConverter,
 		func (intern *videoConverter) {
 			C.gst_video_converter_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22227,12 +22160,10 @@ func UnsafeVideoConverterFromGlibFull(p unsafe.Pointer) *VideoConverter {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoConverter)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoConverter,
 		func (intern *videoConverter) {
 			C.gst_video_converter_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22448,12 +22379,10 @@ func UnsafeVideoCropMetaFromGlibNone(p unsafe.Pointer) *VideoCropMeta {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoCropMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoCropMeta,
 		func (intern *videoCropMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22465,12 +22394,10 @@ func UnsafeVideoCropMetaFromGlibFull(p unsafe.Pointer) *VideoCropMeta {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoCropMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoCropMeta,
 		func (intern *videoCropMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22612,12 +22539,10 @@ func UnsafeVideoDirectionInterfaceFromGlibNone(p unsafe.Pointer) *VideoDirection
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoDirectionInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoDirectionInterface,
 		func (intern *videoDirectionInterface) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22629,12 +22554,10 @@ func UnsafeVideoDirectionInterfaceFromGlibFull(p unsafe.Pointer) *VideoDirection
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoDirectionInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoDirectionInterface,
 		func (intern *videoDirectionInterface) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22703,12 +22626,10 @@ func UnsafeVideoDitherFromGlibNone(p unsafe.Pointer) *VideoDither {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoDither)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoDither,
 		func (intern *videoDither) {
 			C.gst_video_dither_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22720,12 +22641,10 @@ func UnsafeVideoDitherFromGlibFull(p unsafe.Pointer) *VideoDither {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoDither)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoDither,
 		func (intern *videoDither) {
 			C.gst_video_dither_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22903,12 +22822,10 @@ func UnsafeVideoFormatInfoFromGlibNone(p unsafe.Pointer) *VideoFormatInfo {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoFormatInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoFormatInfo,
 		func (intern *videoFormatInfo) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22920,12 +22837,10 @@ func UnsafeVideoFormatInfoFromGlibFull(p unsafe.Pointer) *VideoFormatInfo {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoFormatInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoFormatInfo,
 		func (intern *videoFormatInfo) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -23060,12 +22975,10 @@ func UnsafeVideoFrameFromGlibNone(p unsafe.Pointer) *VideoFrame {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoFrame)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoFrame,
 		func (intern *videoFrame) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -23077,12 +22990,10 @@ func UnsafeVideoFrameFromGlibFull(p unsafe.Pointer) *VideoFrame {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoFrame)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoFrame,
 		func (intern *videoFrame) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -23378,12 +23289,10 @@ func UnsafeVideoGLTextureUploadMetaFromGlibNone(p unsafe.Pointer) *VideoGLTextur
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoGLTextureUploadMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoGLTextureUploadMeta,
 		func (intern *videoGLTextureUploadMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -23395,12 +23304,10 @@ func UnsafeVideoGLTextureUploadMetaFromGlibFull(p unsafe.Pointer) *VideoGLTextur
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoGLTextureUploadMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoGLTextureUploadMeta,
 		func (intern *videoGLTextureUploadMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -23539,12 +23446,10 @@ func UnsafeVideoInfoFromGlibNone(p unsafe.Pointer) *VideoInfo {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoInfo,
 		func (intern *videoInfo) {
 			C.gst_video_info_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -23556,12 +23461,10 @@ func UnsafeVideoInfoFromGlibFull(p unsafe.Pointer) *VideoInfo {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoInfo,
 		func (intern *videoInfo) {
 			C.gst_video_info_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -24045,12 +23948,10 @@ func UnsafeVideoInfoDmaDrmFromGlibNone(p unsafe.Pointer) *VideoInfoDmaDrm {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoInfoDmaDrm)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoInfoDmaDrm,
 		func (intern *videoInfoDmaDrm) {
 			C.gst_video_info_dma_drm_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -24062,12 +23963,10 @@ func UnsafeVideoInfoDmaDrmFromGlibFull(p unsafe.Pointer) *VideoInfoDmaDrm {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoInfoDmaDrm)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoInfoDmaDrm,
 		func (intern *videoInfoDmaDrm) {
 			C.gst_video_info_dma_drm_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -24348,12 +24247,10 @@ func UnsafeVideoMasteringDisplayInfoFromGlibNone(p unsafe.Pointer) *VideoMasteri
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoMasteringDisplayInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoMasteringDisplayInfo,
 		func (intern *videoMasteringDisplayInfo) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -24365,12 +24262,10 @@ func UnsafeVideoMasteringDisplayInfoFromGlibFull(p unsafe.Pointer) *VideoMasteri
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoMasteringDisplayInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoMasteringDisplayInfo,
 		func (intern *videoMasteringDisplayInfo) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -24607,12 +24502,10 @@ func UnsafeVideoMasteringDisplayInfoCoordinatesFromGlibNone(p unsafe.Pointer) *V
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoMasteringDisplayInfoCoordinates)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoMasteringDisplayInfoCoordinates,
 		func (intern *videoMasteringDisplayInfoCoordinates) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -24624,12 +24517,10 @@ func UnsafeVideoMasteringDisplayInfoCoordinatesFromGlibFull(p unsafe.Pointer) *V
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoMasteringDisplayInfoCoordinates)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoMasteringDisplayInfoCoordinates,
 		func (intern *videoMasteringDisplayInfoCoordinates) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -24719,12 +24610,10 @@ func UnsafeVideoMetaFromGlibNone(p unsafe.Pointer) *VideoMeta {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoMeta,
 		func (intern *videoMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -24736,12 +24625,10 @@ func UnsafeVideoMetaFromGlibFull(p unsafe.Pointer) *VideoMeta {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoMeta,
 		func (intern *videoMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -24863,12 +24750,10 @@ func UnsafeVideoMetaTransformFromGlibNone(p unsafe.Pointer) *VideoMetaTransform 
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoMetaTransform)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoMetaTransform,
 		func (intern *videoMetaTransform) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -24880,12 +24765,10 @@ func UnsafeVideoMetaTransformFromGlibFull(p unsafe.Pointer) *VideoMetaTransform 
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoMetaTransform)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoMetaTransform,
 		func (intern *videoMetaTransform) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -24972,12 +24855,10 @@ func UnsafeVideoOrientationInterfaceFromGlibNone(p unsafe.Pointer) *VideoOrienta
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoOrientationInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoOrientationInterface,
 		func (intern *videoOrientationInterface) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -24989,12 +24870,10 @@ func UnsafeVideoOrientationInterfaceFromGlibFull(p unsafe.Pointer) *VideoOrienta
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoOrientationInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoOrientationInterface,
 		func (intern *videoOrientationInterface) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -25098,12 +24977,10 @@ func UnsafeVideoOverlayCompositionFromGlibNone(p unsafe.Pointer) *VideoOverlayCo
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoOverlayComposition)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoOverlayComposition,
 		func (intern *videoOverlayComposition) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -25115,12 +24992,10 @@ func UnsafeVideoOverlayCompositionFromGlibFull(p unsafe.Pointer) *VideoOverlayCo
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoOverlayComposition)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoOverlayComposition,
 		func (intern *videoOverlayComposition) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -25415,12 +25290,10 @@ func UnsafeVideoOverlayCompositionMetaFromGlibNone(p unsafe.Pointer) *VideoOverl
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoOverlayCompositionMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoOverlayCompositionMeta,
 		func (intern *videoOverlayCompositionMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -25432,12 +25305,10 @@ func UnsafeVideoOverlayCompositionMetaFromGlibFull(p unsafe.Pointer) *VideoOverl
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoOverlayCompositionMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoOverlayCompositionMeta,
 		func (intern *videoOverlayCompositionMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -25522,12 +25393,10 @@ func UnsafeVideoOverlayInterfaceFromGlibNone(p unsafe.Pointer) *VideoOverlayInte
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoOverlayInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoOverlayInterface,
 		func (intern *videoOverlayInterface) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -25539,12 +25408,10 @@ func UnsafeVideoOverlayInterfaceFromGlibFull(p unsafe.Pointer) *VideoOverlayInte
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoOverlayInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoOverlayInterface,
 		func (intern *videoOverlayInterface) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -25628,12 +25495,10 @@ func UnsafeVideoOverlayRectangleFromGlibNone(p unsafe.Pointer) *VideoOverlayRect
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoOverlayRectangle)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoOverlayRectangle,
 		func (intern *videoOverlayRectangle) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -25645,12 +25510,10 @@ func UnsafeVideoOverlayRectangleFromGlibFull(p unsafe.Pointer) *VideoOverlayRect
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoOverlayRectangle)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoOverlayRectangle,
 		func (intern *videoOverlayRectangle) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -26203,12 +26066,10 @@ func UnsafeVideoRectangleFromGlibNone(p unsafe.Pointer) *VideoRectangle {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoRectangle)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoRectangle,
 		func (intern *videoRectangle) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -26220,12 +26081,10 @@ func UnsafeVideoRectangleFromGlibFull(p unsafe.Pointer) *VideoRectangle {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoRectangle)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoRectangle,
 		func (intern *videoRectangle) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -26293,12 +26152,10 @@ func UnsafeVideoRegionOfInterestMetaFromGlibNone(p unsafe.Pointer) *VideoRegionO
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoRegionOfInterestMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoRegionOfInterestMeta,
 		func (intern *videoRegionOfInterestMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -26310,12 +26167,10 @@ func UnsafeVideoRegionOfInterestMetaFromGlibFull(p unsafe.Pointer) *VideoRegionO
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoRegionOfInterestMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoRegionOfInterestMeta,
 		func (intern *videoRegionOfInterestMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -26462,12 +26317,10 @@ func UnsafeVideoResamplerFromGlibNone(p unsafe.Pointer) *VideoResampler {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoResampler)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoResampler,
 		func (intern *videoResampler) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -26479,12 +26332,10 @@ func UnsafeVideoResamplerFromGlibFull(p unsafe.Pointer) *VideoResampler {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoResampler)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoResampler,
 		func (intern *videoResampler) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -26622,12 +26473,10 @@ func UnsafeVideoSEIUserDataUnregisteredMetaFromGlibNone(p unsafe.Pointer) *Video
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoSEIUserDataUnregisteredMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoSEIUserDataUnregisteredMeta,
 		func (intern *videoSEIUserDataUnregisteredMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -26639,12 +26488,10 @@ func UnsafeVideoSEIUserDataUnregisteredMetaFromGlibFull(p unsafe.Pointer) *Video
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoSEIUserDataUnregisteredMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoSEIUserDataUnregisteredMeta,
 		func (intern *videoSEIUserDataUnregisteredMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -26730,12 +26577,10 @@ func UnsafeVideoScalerFromGlibNone(p unsafe.Pointer) *VideoScaler {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoScaler)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoScaler,
 		func (intern *videoScaler) {
 			C.gst_video_scaler_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -26747,12 +26592,10 @@ func UnsafeVideoScalerFromGlibFull(p unsafe.Pointer) *VideoScaler {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoScaler)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoScaler,
 		func (intern *videoScaler) {
 			C.gst_video_scaler_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -26943,12 +26786,10 @@ func UnsafeVideoTileInfoFromGlibNone(p unsafe.Pointer) *VideoTileInfo {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoTileInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoTileInfo,
 		func (intern *videoTileInfo) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -26960,12 +26801,10 @@ func UnsafeVideoTileInfoFromGlibFull(p unsafe.Pointer) *VideoTileInfo {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoTileInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoTileInfo,
 		func (intern *videoTileInfo) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -27040,12 +26879,10 @@ func UnsafeVideoTimeCodeFromGlibNone(p unsafe.Pointer) *VideoTimeCode {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoTimeCode)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoTimeCode,
 		func (intern *videoTimeCode) {
 			C.gst_video_time_code_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -27057,12 +26894,10 @@ func UnsafeVideoTimeCodeFromGlibFull(p unsafe.Pointer) *VideoTimeCode {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoTimeCode)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoTimeCode,
 		func (intern *videoTimeCode) {
 			C.gst_video_time_code_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -27404,12 +27239,10 @@ func UnsafeVideoTimeCodeConfigFromGlibNone(p unsafe.Pointer) *VideoTimeCodeConfi
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoTimeCodeConfig)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoTimeCodeConfig,
 		func (intern *videoTimeCodeConfig) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -27421,12 +27254,10 @@ func UnsafeVideoTimeCodeConfigFromGlibFull(p unsafe.Pointer) *VideoTimeCodeConfi
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoTimeCodeConfig)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoTimeCodeConfig,
 		func (intern *videoTimeCodeConfig) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -27510,12 +27341,10 @@ func UnsafeVideoTimeCodeIntervalFromGlibNone(p unsafe.Pointer) *VideoTimeCodeInt
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoTimeCodeInterval)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoTimeCodeInterval,
 		func (intern *videoTimeCodeInterval) {
 			C.gst_video_time_code_interval_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -27527,12 +27356,10 @@ func UnsafeVideoTimeCodeIntervalFromGlibFull(p unsafe.Pointer) *VideoTimeCodeInt
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoTimeCodeInterval)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoTimeCodeInterval,
 		func (intern *videoTimeCodeInterval) {
 			C.gst_video_time_code_interval_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -27734,12 +27561,10 @@ func UnsafeVideoTimeCodeMetaFromGlibNone(p unsafe.Pointer) *VideoTimeCodeMeta {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoTimeCodeMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoTimeCodeMeta,
 		func (intern *videoTimeCodeMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -27751,12 +27576,10 @@ func UnsafeVideoTimeCodeMetaFromGlibFull(p unsafe.Pointer) *VideoTimeCodeMeta {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoTimeCodeMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoTimeCodeMeta,
 		func (intern *videoTimeCodeMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -27857,12 +27680,10 @@ func UnsafeVideoVBIEncoderFromGlibNone(p unsafe.Pointer) *VideoVBIEncoder {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoVBIEncoder)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoVBIEncoder,
 		func (intern *videoVBIEncoder) {
 			C.gst_video_vbi_encoder_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -27874,12 +27695,10 @@ func UnsafeVideoVBIEncoderFromGlibFull(p unsafe.Pointer) *VideoVBIEncoder {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoVBIEncoder)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoVBIEncoder,
 		func (intern *videoVBIEncoder) {
 			C.gst_video_vbi_encoder_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -28091,12 +27910,10 @@ func UnsafeVideoVBIParserFromGlibNone(p unsafe.Pointer) *VideoVBIParser {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoVBIParser)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoVBIParser,
 		func (intern *videoVBIParser) {
 			C.gst_video_vbi_parser_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -28108,12 +27925,10 @@ func UnsafeVideoVBIParserFromGlibFull(p unsafe.Pointer) *VideoVBIParser {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.videoVBIParser)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoVBIParser,
 		func (intern *videoVBIParser) {
 			C.gst_video_vbi_parser_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped

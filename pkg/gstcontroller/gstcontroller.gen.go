@@ -7,7 +7,6 @@ import (
 	"runtime"
 	"unsafe"
 
-	"github.com/diamondburned/gotk4/pkg/core/profile"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
@@ -1588,12 +1587,10 @@ func UnsafeControlPointFromGlibNone(p unsafe.Pointer) *ControlPoint {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.controlPoint)), 1)
 	runtime.SetFinalizer(
 		wrapped.controlPoint,
 		func (intern *controlPoint) {
 			C.gst_control_point_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -1605,12 +1602,10 @@ func UnsafeControlPointFromGlibFull(p unsafe.Pointer) *ControlPoint {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.controlPoint)), 1)
 	runtime.SetFinalizer(
 		wrapped.controlPoint,
 		func (intern *controlPoint) {
 			C.gst_control_point_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped

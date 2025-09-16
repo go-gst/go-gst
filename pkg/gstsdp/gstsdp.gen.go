@@ -7,7 +7,6 @@ import (
 	"runtime"
 	"unsafe"
 
-	"github.com/diamondburned/gotk4/pkg/core/profile"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
@@ -636,12 +635,10 @@ func UnsafeMIKEYDecryptInfoFromGlibNone(p unsafe.Pointer) *MIKEYDecryptInfo {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYDecryptInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYDecryptInfo,
 		func (intern *mIKEYDecryptInfo) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -653,12 +650,10 @@ func UnsafeMIKEYDecryptInfoFromGlibFull(p unsafe.Pointer) *MIKEYDecryptInfo {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYDecryptInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYDecryptInfo,
 		func (intern *mIKEYDecryptInfo) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -724,12 +719,10 @@ func UnsafeMIKEYEncryptInfoFromGlibNone(p unsafe.Pointer) *MIKEYEncryptInfo {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYEncryptInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYEncryptInfo,
 		func (intern *mIKEYEncryptInfo) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -741,12 +734,10 @@ func UnsafeMIKEYEncryptInfoFromGlibFull(p unsafe.Pointer) *MIKEYEncryptInfo {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYEncryptInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYEncryptInfo,
 		func (intern *mIKEYEncryptInfo) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -814,12 +805,10 @@ func UnsafeMIKEYMapSRTPFromGlibNone(p unsafe.Pointer) *MIKEYMapSRTP {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYMapSRTP)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYMapSRTP,
 		func (intern *mIKEYMapSRTP) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -831,12 +820,10 @@ func UnsafeMIKEYMapSRTPFromGlibFull(p unsafe.Pointer) *MIKEYMapSRTP {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYMapSRTP)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYMapSRTP,
 		func (intern *mIKEYMapSRTP) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -919,12 +906,10 @@ func UnsafeMIKEYMessageFromGlibNone(p unsafe.Pointer) *MIKEYMessage {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYMessage)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYMessage,
 		func (intern *mIKEYMessage) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -936,12 +921,10 @@ func UnsafeMIKEYMessageFromGlibFull(p unsafe.Pointer) *MIKEYMessage {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYMessage)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYMessage,
 		func (intern *mIKEYMessage) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -1817,12 +1800,10 @@ func UnsafeMIKEYPayloadFromGlibNone(p unsafe.Pointer) *MIKEYPayload {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayload)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayload,
 		func (intern *mIKEYPayload) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -1834,12 +1815,10 @@ func UnsafeMIKEYPayloadFromGlibFull(p unsafe.Pointer) *MIKEYPayload {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayload)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayload,
 		func (intern *mIKEYPayload) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2496,12 +2475,10 @@ func UnsafeMIKEYPayloadKEMACFromGlibNone(p unsafe.Pointer) *MIKEYPayloadKEMAC {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayloadKEMAC)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadKEMAC,
 		func (intern *mIKEYPayloadKEMAC) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2513,12 +2490,10 @@ func UnsafeMIKEYPayloadKEMACFromGlibFull(p unsafe.Pointer) *MIKEYPayloadKEMAC {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayloadKEMAC)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadKEMAC,
 		func (intern *mIKEYPayloadKEMAC) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2587,12 +2562,10 @@ func UnsafeMIKEYPayloadKeyDataFromGlibNone(p unsafe.Pointer) *MIKEYPayloadKeyDat
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayloadKeyData)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadKeyData,
 		func (intern *mIKEYPayloadKeyData) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2604,12 +2577,10 @@ func UnsafeMIKEYPayloadKeyDataFromGlibFull(p unsafe.Pointer) *MIKEYPayloadKeyDat
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayloadKeyData)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadKeyData,
 		func (intern *mIKEYPayloadKeyData) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2680,12 +2651,10 @@ func UnsafeMIKEYPayloadPKEFromGlibNone(p unsafe.Pointer) *MIKEYPayloadPKE {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayloadPKE)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadPKE,
 		func (intern *mIKEYPayloadPKE) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2697,12 +2666,10 @@ func UnsafeMIKEYPayloadPKEFromGlibFull(p unsafe.Pointer) *MIKEYPayloadPKE {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayloadPKE)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadPKE,
 		func (intern *mIKEYPayloadPKE) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2770,12 +2737,10 @@ func UnsafeMIKEYPayloadRANDFromGlibNone(p unsafe.Pointer) *MIKEYPayloadRAND {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayloadRAND)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadRAND,
 		func (intern *mIKEYPayloadRAND) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2787,12 +2752,10 @@ func UnsafeMIKEYPayloadRANDFromGlibFull(p unsafe.Pointer) *MIKEYPayloadRAND {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayloadRAND)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadRAND,
 		func (intern *mIKEYPayloadRAND) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2861,12 +2824,10 @@ func UnsafeMIKEYPayloadSPFromGlibNone(p unsafe.Pointer) *MIKEYPayloadSP {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayloadSP)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadSP,
 		func (intern *mIKEYPayloadSP) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2878,12 +2839,10 @@ func UnsafeMIKEYPayloadSPFromGlibFull(p unsafe.Pointer) *MIKEYPayloadSP {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayloadSP)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadSP,
 		func (intern *mIKEYPayloadSP) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2951,12 +2910,10 @@ func UnsafeMIKEYPayloadSPParamFromGlibNone(p unsafe.Pointer) *MIKEYPayloadSPPara
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayloadSPParam)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadSPParam,
 		func (intern *mIKEYPayloadSPParam) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2968,12 +2925,10 @@ func UnsafeMIKEYPayloadSPParamFromGlibFull(p unsafe.Pointer) *MIKEYPayloadSPPara
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayloadSPParam)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadSPParam,
 		func (intern *mIKEYPayloadSPParam) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -3041,12 +2996,10 @@ func UnsafeMIKEYPayloadTFromGlibNone(p unsafe.Pointer) *MIKEYPayloadT {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayloadT)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadT,
 		func (intern *mIKEYPayloadT) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -3058,12 +3011,10 @@ func UnsafeMIKEYPayloadTFromGlibFull(p unsafe.Pointer) *MIKEYPayloadT {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayloadT)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadT,
 		func (intern *mIKEYPayloadT) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -3131,12 +3082,10 @@ func UnsafeSDPAttributeFromGlibNone(p unsafe.Pointer) *SDPAttribute {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPAttribute)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPAttribute,
 		func (intern *sDPAttribute) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -3148,12 +3097,10 @@ func UnsafeSDPAttributeFromGlibFull(p unsafe.Pointer) *SDPAttribute {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPAttribute)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPAttribute,
 		func (intern *sDPAttribute) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -3283,12 +3230,10 @@ func UnsafeSDPBandwidthFromGlibNone(p unsafe.Pointer) *SDPBandwidth {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPBandwidth)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPBandwidth,
 		func (intern *sDPBandwidth) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -3300,12 +3245,10 @@ func UnsafeSDPBandwidthFromGlibFull(p unsafe.Pointer) *SDPBandwidth {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPBandwidth)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPBandwidth,
 		func (intern *sDPBandwidth) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -3431,12 +3374,10 @@ func UnsafeSDPConnectionFromGlibNone(p unsafe.Pointer) *SDPConnection {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPConnection)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPConnection,
 		func (intern *sDPConnection) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -3448,12 +3389,10 @@ func UnsafeSDPConnectionFromGlibFull(p unsafe.Pointer) *SDPConnection {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPConnection)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPConnection,
 		func (intern *sDPConnection) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -3595,12 +3534,10 @@ func UnsafeSDPKeyFromGlibNone(p unsafe.Pointer) *SDPKey {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPKey)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPKey,
 		func (intern *sDPKey) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -3612,12 +3549,10 @@ func UnsafeSDPKeyFromGlibFull(p unsafe.Pointer) *SDPKey {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPKey)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPKey,
 		func (intern *sDPKey) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -3685,12 +3620,10 @@ func UnsafeSDPMediaFromGlibNone(p unsafe.Pointer) *SDPMedia {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPMedia)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPMedia,
 		func (intern *sDPMedia) {
 			C.gst_sdp_media_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -3702,12 +3635,10 @@ func UnsafeSDPMediaFromGlibFull(p unsafe.Pointer) *SDPMedia {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPMedia)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPMedia,
 		func (intern *sDPMedia) {
 			C.gst_sdp_media_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -5197,12 +5128,10 @@ func UnsafeSDPMessageFromGlibNone(p unsafe.Pointer) *SDPMessage {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPMessage)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPMessage,
 		func (intern *sDPMessage) {
 			C.gst_sdp_message_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -5214,12 +5143,10 @@ func UnsafeSDPMessageFromGlibFull(p unsafe.Pointer) *SDPMessage {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPMessage)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPMessage,
 		func (intern *sDPMessage) {
 			C.gst_sdp_message_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -7390,12 +7317,10 @@ func UnsafeSDPOriginFromGlibNone(p unsafe.Pointer) *SDPOrigin {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPOrigin)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPOrigin,
 		func (intern *sDPOrigin) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -7407,12 +7332,10 @@ func UnsafeSDPOriginFromGlibFull(p unsafe.Pointer) *SDPOrigin {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPOrigin)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPOrigin,
 		func (intern *sDPOrigin) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -7481,12 +7404,10 @@ func UnsafeSDPTimeFromGlibNone(p unsafe.Pointer) *SDPTime {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPTime)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPTime,
 		func (intern *sDPTime) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -7498,12 +7419,10 @@ func UnsafeSDPTimeFromGlibFull(p unsafe.Pointer) *SDPTime {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPTime)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPTime,
 		func (intern *sDPTime) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -7638,12 +7557,10 @@ func UnsafeSDPZoneFromGlibNone(p unsafe.Pointer) *SDPZone {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPZone)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPZone,
 		func (intern *sDPZone) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -7655,12 +7572,10 @@ func UnsafeSDPZoneFromGlibFull(p unsafe.Pointer) *SDPZone {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPZone)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPZone,
 		func (intern *sDPZone) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped

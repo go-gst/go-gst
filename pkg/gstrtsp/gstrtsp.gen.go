@@ -9,7 +9,6 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/diamondburned/gotk4/pkg/core/profile"
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
 	"github.com/diamondburned/gotk4/pkg/gio/v2"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
@@ -2456,12 +2455,10 @@ func UnsafeRTSPAuthCredentialFromGlibNone(p unsafe.Pointer) *RTSPAuthCredential 
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPAuthCredential)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPAuthCredential,
 		func (intern *rTSPAuthCredential) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2473,12 +2470,10 @@ func UnsafeRTSPAuthCredentialFromGlibFull(p unsafe.Pointer) *RTSPAuthCredential 
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPAuthCredential)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPAuthCredential,
 		func (intern *rTSPAuthCredential) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2561,12 +2556,10 @@ func UnsafeRTSPAuthParamFromGlibNone(p unsafe.Pointer) *RTSPAuthParam {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPAuthParam)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPAuthParam,
 		func (intern *rTSPAuthParam) {
 			C.gst_rtsp_auth_param_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2578,12 +2571,10 @@ func UnsafeRTSPAuthParamFromGlibFull(p unsafe.Pointer) *RTSPAuthParam {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPAuthParam)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPAuthParam,
 		func (intern *rTSPAuthParam) {
 			C.gst_rtsp_auth_param_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2673,12 +2664,10 @@ func UnsafeRTSPConnectionFromGlibNone(p unsafe.Pointer) *RTSPConnection {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPConnection)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPConnection,
 		func (intern *rTSPConnection) {
 			C.gst_rtsp_connection_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2690,12 +2679,10 @@ func UnsafeRTSPConnectionFromGlibFull(p unsafe.Pointer) *RTSPConnection {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPConnection)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPConnection,
 		func (intern *rTSPConnection) {
 			C.gst_rtsp_connection_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -4096,12 +4083,10 @@ func UnsafeRTSPExtensionInterfaceFromGlibNone(p unsafe.Pointer) *RTSPExtensionIn
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPExtensionInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPExtensionInterface,
 		func (intern *rTSPExtensionInterface) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -4113,12 +4098,10 @@ func UnsafeRTSPExtensionInterfaceFromGlibFull(p unsafe.Pointer) *RTSPExtensionIn
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPExtensionInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPExtensionInterface,
 		func (intern *rTSPExtensionInterface) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -4201,12 +4184,10 @@ func UnsafeRTSPMessageFromGlibNone(p unsafe.Pointer) *RTSPMessage {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPMessage)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPMessage,
 		func (intern *rTSPMessage) {
 			C.gst_rtsp_message_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -4218,12 +4199,10 @@ func UnsafeRTSPMessageFromGlibFull(p unsafe.Pointer) *RTSPMessage {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPMessage)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPMessage,
 		func (intern *rTSPMessage) {
 			C.gst_rtsp_message_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -5187,12 +5166,10 @@ func UnsafeRTSPRangeFromGlibNone(p unsafe.Pointer) *RTSPRange {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPRange)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPRange,
 		func (intern *rTSPRange) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -5204,12 +5181,10 @@ func UnsafeRTSPRangeFromGlibFull(p unsafe.Pointer) *RTSPRange {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPRange)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPRange,
 		func (intern *rTSPRange) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -5431,12 +5406,10 @@ func UnsafeRTSPTimeFromGlibNone(p unsafe.Pointer) *RTSPTime {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPTime)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPTime,
 		func (intern *rTSPTime) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -5448,12 +5421,10 @@ func UnsafeRTSPTimeFromGlibFull(p unsafe.Pointer) *RTSPTime {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPTime)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPTime,
 		func (intern *rTSPTime) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -5521,12 +5492,10 @@ func UnsafeRTSPTime2FromGlibNone(p unsafe.Pointer) *RTSPTime2 {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPTime2)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPTime2,
 		func (intern *rTSPTime2) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -5538,12 +5507,10 @@ func UnsafeRTSPTime2FromGlibFull(p unsafe.Pointer) *RTSPTime2 {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPTime2)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPTime2,
 		func (intern *rTSPTime2) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -5611,12 +5578,10 @@ func UnsafeRTSPTimeRangeFromGlibNone(p unsafe.Pointer) *RTSPTimeRange {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPTimeRange)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPTimeRange,
 		func (intern *rTSPTimeRange) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -5628,12 +5593,10 @@ func UnsafeRTSPTimeRangeFromGlibFull(p unsafe.Pointer) *RTSPTimeRange {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPTimeRange)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPTimeRange,
 		func (intern *rTSPTimeRange) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -5701,12 +5664,10 @@ func UnsafeRTSPTransportFromGlibNone(p unsafe.Pointer) *RTSPTransport {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPTransport)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPTransport,
 		func (intern *rTSPTransport) {
 			C.gst_rtsp_transport_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -5718,12 +5679,10 @@ func UnsafeRTSPTransportFromGlibFull(p unsafe.Pointer) *RTSPTransport {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPTransport)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPTransport,
 		func (intern *rTSPTransport) {
 			C.gst_rtsp_transport_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -6023,12 +5982,10 @@ func UnsafeRTSPUrlFromGlibNone(p unsafe.Pointer) *RTSPUrl {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPUrl)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPUrl,
 		func (intern *rTSPUrl) {
 			C.gst_rtsp_url_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -6040,12 +5997,10 @@ func UnsafeRTSPUrlFromGlibFull(p unsafe.Pointer) *RTSPUrl {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPUrl)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPUrl,
 		func (intern *rTSPUrl) {
 			C.gst_rtsp_url_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -6321,12 +6276,10 @@ func UnsafeRTSPWatchFromGlibNone(p unsafe.Pointer) *RTSPWatch {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPWatch)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPWatch,
 		func (intern *rTSPWatch) {
 			C.gst_rtsp_watch_unref(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -6338,12 +6291,10 @@ func UnsafeRTSPWatchFromGlibFull(p unsafe.Pointer) *RTSPWatch {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPWatch)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPWatch,
 		func (intern *rTSPWatch) {
 			C.gst_rtsp_watch_unref(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -6705,12 +6656,10 @@ func UnsafeRTSPWatchFuncsFromGlibNone(p unsafe.Pointer) *RTSPWatchFuncs {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPWatchFuncs)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPWatchFuncs,
 		func (intern *rTSPWatchFuncs) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -6722,12 +6671,10 @@ func UnsafeRTSPWatchFuncsFromGlibFull(p unsafe.Pointer) *RTSPWatchFuncs {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPWatchFuncs)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPWatchFuncs,
 		func (intern *rTSPWatchFuncs) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped

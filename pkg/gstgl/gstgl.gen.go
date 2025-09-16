@@ -9,7 +9,6 @@ import (
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/core/classdata"
-	"github.com/diamondburned/gotk4/pkg/core/profile"
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
@@ -14464,12 +14463,10 @@ func UnsafeGLAllocationParamsFromGlibNone(p unsafe.Pointer) *GLAllocationParams 
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.gLAllocationParams)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLAllocationParams,
 		func (intern *gLAllocationParams) {
 			C.gst_gl_allocation_params_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -14481,12 +14478,10 @@ func UnsafeGLAllocationParamsFromGlibFull(p unsafe.Pointer) *GLAllocationParams 
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.gLAllocationParams)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLAllocationParams,
 		func (intern *gLAllocationParams) {
 			C.gst_gl_allocation_params_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -14609,12 +14604,10 @@ func UnsafeGLAsyncDebugFromGlibNone(p unsafe.Pointer) *GLAsyncDebug {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.gLAsyncDebug)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLAsyncDebug,
 		func (intern *gLAsyncDebug) {
 			C.gst_gl_async_debug_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -14626,12 +14619,10 @@ func UnsafeGLAsyncDebugFromGlibFull(p unsafe.Pointer) *GLAsyncDebug {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.gLAsyncDebug)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLAsyncDebug,
 		func (intern *gLAsyncDebug) {
 			C.gst_gl_async_debug_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -14836,12 +14827,10 @@ func UnsafeGLBaseMemoryFromGlibNone(p unsafe.Pointer) *GLBaseMemory {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.gLBaseMemory)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLBaseMemory,
 		func (intern *gLBaseMemory) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -14853,12 +14842,10 @@ func UnsafeGLBaseMemoryFromGlibFull(p unsafe.Pointer) *GLBaseMemory {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.gLBaseMemory)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLBaseMemory,
 		func (intern *gLBaseMemory) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15259,12 +15246,10 @@ func UnsafeGLBufferFromGlibNone(p unsafe.Pointer) *GLBuffer {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.gLBuffer)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLBuffer,
 		func (intern *gLBuffer) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15276,12 +15261,10 @@ func UnsafeGLBufferFromGlibFull(p unsafe.Pointer) *GLBuffer {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.gLBuffer)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLBuffer,
 		func (intern *gLBuffer) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15371,12 +15354,10 @@ func UnsafeGLBufferAllocationParamsFromGlibNone(p unsafe.Pointer) *GLBufferAlloc
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.gLBufferAllocationParams)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLBufferAllocationParams,
 		func (intern *gLBufferAllocationParams) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15388,12 +15369,10 @@ func UnsafeGLBufferAllocationParamsFromGlibFull(p unsafe.Pointer) *GLBufferAlloc
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.gLBufferAllocationParams)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLBufferAllocationParams,
 		func (intern *gLBufferAllocationParams) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15879,12 +15858,10 @@ func UnsafeGLFuncsFromGlibNone(p unsafe.Pointer) *GLFuncs {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.gLFuncs)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLFuncs,
 		func (intern *gLFuncs) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15896,12 +15873,10 @@ func UnsafeGLFuncsFromGlibFull(p unsafe.Pointer) *GLFuncs {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.gLFuncs)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLFuncs,
 		func (intern *gLFuncs) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15996,12 +15971,10 @@ func UnsafeGLMemoryFromGlibNone(p unsafe.Pointer) *GLMemory {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.gLMemory)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLMemory,
 		func (intern *gLMemory) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -16013,12 +15986,10 @@ func UnsafeGLMemoryFromGlibFull(p unsafe.Pointer) *GLMemory {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.gLMemory)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLMemory,
 		func (intern *gLMemory) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -16368,12 +16339,10 @@ func UnsafeGLMemoryPBOFromGlibNone(p unsafe.Pointer) *GLMemoryPBO {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.gLMemoryPBO)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLMemoryPBO,
 		func (intern *gLMemoryPBO) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -16385,12 +16354,10 @@ func UnsafeGLMemoryPBOFromGlibFull(p unsafe.Pointer) *GLMemoryPBO {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.gLMemoryPBO)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLMemoryPBO,
 		func (intern *gLMemoryPBO) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -16784,12 +16751,10 @@ func UnsafeGLQueryFromGlibNone(p unsafe.Pointer) *GLQuery {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.gLQuery)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLQuery,
 		func (intern *gLQuery) {
 			C.gst_gl_query_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -16801,12 +16766,10 @@ func UnsafeGLQueryFromGlibFull(p unsafe.Pointer) *GLQuery {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.gLQuery)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLQuery,
 		func (intern *gLQuery) {
 			C.gst_gl_query_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -16983,12 +16946,10 @@ func UnsafeGLRenderbufferFromGlibNone(p unsafe.Pointer) *GLRenderbuffer {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.gLRenderbuffer)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLRenderbuffer,
 		func (intern *gLRenderbuffer) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -17000,12 +16961,10 @@ func UnsafeGLRenderbufferFromGlibFull(p unsafe.Pointer) *GLRenderbuffer {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.gLRenderbuffer)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLRenderbuffer,
 		func (intern *gLRenderbuffer) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -17181,12 +17140,10 @@ func UnsafeGLRenderbufferAllocationParamsFromGlibNone(p unsafe.Pointer) *GLRende
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.gLRenderbufferAllocationParams)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLRenderbufferAllocationParams,
 		func (intern *gLRenderbufferAllocationParams) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -17198,12 +17155,10 @@ func UnsafeGLRenderbufferAllocationParamsFromGlibFull(p unsafe.Pointer) *GLRende
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.gLRenderbufferAllocationParams)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLRenderbufferAllocationParams,
 		func (intern *gLRenderbufferAllocationParams) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -17475,12 +17430,10 @@ func UnsafeGLSyncMetaFromGlibNone(p unsafe.Pointer) *GLSyncMeta {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.gLSyncMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLSyncMeta,
 		func (intern *gLSyncMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -17492,12 +17445,10 @@ func UnsafeGLSyncMetaFromGlibFull(p unsafe.Pointer) *GLSyncMeta {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.gLSyncMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLSyncMeta,
 		func (intern *gLSyncMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -17709,12 +17660,10 @@ func UnsafeGLVideoAllocationParamsFromGlibNone(p unsafe.Pointer) *GLVideoAllocat
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.gLVideoAllocationParams)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLVideoAllocationParams,
 		func (intern *gLVideoAllocationParams) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -17726,12 +17675,10 @@ func UnsafeGLVideoAllocationParamsFromGlibFull(p unsafe.Pointer) *GLVideoAllocat
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.gLVideoAllocationParams)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLVideoAllocationParams,
 		func (intern *gLVideoAllocationParams) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
