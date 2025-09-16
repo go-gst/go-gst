@@ -45125,8 +45125,13 @@ func UnsafeCapsFromGlibNone(p unsafe.Pointer) *Caps {
 		return nil
 	}
 
-	return wrapped.Copy() // create an owned copy
-
+	runtime.SetFinalizer(
+		wrapped.caps,
+		func (intern *caps) {
+			C.gst_caps_unref(intern.native)
+		},
+	)
+	return wrapped
 }
 
 // UnsafeCapsFromGlibFull is used to convert raw C.GstCaps pointers to go while taking ownership. This is used by the bindings internally.
@@ -47537,8 +47542,13 @@ func UnsafeContextFromGlibNone(p unsafe.Pointer) *Context {
 		return nil
 	}
 
-	return wrapped.Copy() // create an owned copy
-
+	runtime.SetFinalizer(
+		wrapped._context,
+		func (intern *_context) {
+			C.gst_context_unref(intern.native)
+		},
+	)
+	return wrapped
 }
 
 // UnsafeContextFromGlibFull is used to convert raw C.GstContext pointers to go while taking ownership. This is used by the bindings internally.
@@ -53685,8 +53695,13 @@ func UnsafeMessageFromGlibNone(p unsafe.Pointer) *Message {
 		return nil
 	}
 
-	return wrapped.Copy() // create an owned copy
-
+	runtime.SetFinalizer(
+		wrapped.message,
+		func (intern *message) {
+			C.gst_message_unref(intern.native)
+		},
+	)
+	return wrapped
 }
 
 // UnsafeMessageFromGlibFull is used to convert raw C.GstMessage pointers to go while taking ownership. This is used by the bindings internally.
@@ -66752,8 +66767,13 @@ func UnsafeTagListFromGlibNone(p unsafe.Pointer) *TagList {
 		return nil
 	}
 
-	return wrapped.Copy() // create an owned copy
-
+	runtime.SetFinalizer(
+		wrapped.tagList,
+		func (intern *tagList) {
+			C.gst_tag_list_unref(intern.native)
+		},
+	)
+	return wrapped
 }
 
 // UnsafeTagListFromGlibFull is used to convert raw C.GstTagList pointers to go while taking ownership. This is used by the bindings internally.
@@ -70041,8 +70061,13 @@ func UnsafeUriFromGlibNone(p unsafe.Pointer) *Uri {
 		return nil
 	}
 
-	return wrapped.Copy() // create an owned copy
-
+	runtime.SetFinalizer(
+		wrapped.uri,
+		func (intern *uri) {
+			C.gst_uri_unref(intern.native)
+		},
+	)
+	return wrapped
 }
 
 // UnsafeUriFromGlibFull is used to convert raw C.GstUri pointers to go while taking ownership. This is used by the bindings internally.
