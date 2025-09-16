@@ -435,6 +435,15 @@ func unsafeWrapDRMDumbAllocator(base *gobject.ObjectInstance) *DRMDumbAllocatorI
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeDRMDumbAllocator,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapDRMDumbAllocator(inst)
+		},
+	)
+}
+
 func marshalDRMDumbAllocatorInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapDRMDumbAllocator(gobject.ValueFromNative(p).Object()), nil
 }
@@ -671,6 +680,15 @@ func unsafeWrapFdAllocator(base *gobject.ObjectInstance) *FdAllocatorInstance {
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeFdAllocator,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapFdAllocator(inst)
+		},
+	)
+}
+
 func marshalFdAllocatorInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapFdAllocator(gobject.ValueFromNative(p).Object()), nil
 }
@@ -844,6 +862,15 @@ func unsafeWrapShmAllocator(base *gobject.ObjectInstance) *ShmAllocatorInstance 
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeShmAllocator,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapShmAllocator(inst)
+		},
+	)
+}
+
 func marshalShmAllocatorInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapShmAllocator(gobject.ValueFromNative(p).Object()), nil
 }
@@ -978,6 +1005,15 @@ func unsafeWrapDmaBufAllocator(base *gobject.ObjectInstance) *DmaBufAllocatorIns
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeDmaBufAllocator,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapDmaBufAllocator(inst)
+		},
+	)
 }
 
 func marshalDmaBufAllocatorInstance(p unsafe.Pointer) (any, error) {

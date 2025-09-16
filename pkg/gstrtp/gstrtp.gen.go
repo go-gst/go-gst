@@ -1499,6 +1499,15 @@ func unsafeWrapRTPBaseDepayload(base *gobject.ObjectInstance) *RTPBaseDepayloadI
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeRTPBaseDepayload,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapRTPBaseDepayload(inst)
+		},
+	)
+}
+
 func marshalRTPBaseDepayloadInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapRTPBaseDepayload(gobject.ValueFromNative(p).Object()), nil
 }
@@ -2447,6 +2456,15 @@ func unsafeWrapRTPBasePayload(base *gobject.ObjectInstance) *RTPBasePayloadInsta
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeRTPBasePayload,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapRTPBasePayload(inst)
+		},
+	)
 }
 
 func marshalRTPBasePayloadInstance(p unsafe.Pointer) (any, error) {
@@ -3626,6 +3644,15 @@ func unsafeWrapRTPHeaderExtension(base *gobject.ObjectInstance) *RTPHeaderExtens
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeRTPHeaderExtension,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapRTPHeaderExtension(inst)
+		},
+	)
 }
 
 func marshalRTPHeaderExtensionInstance(p unsafe.Pointer) (any, error) {
@@ -5010,6 +5037,15 @@ func unsafeWrapRTPBaseAudioPayload(base *gobject.ObjectInstance) *RTPBaseAudioPa
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeRTPBaseAudioPayload,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapRTPBaseAudioPayload(inst)
+		},
+	)
 }
 
 func marshalRTPBaseAudioPayloadInstance(p unsafe.Pointer) (any, error) {

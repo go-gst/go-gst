@@ -12492,6 +12492,15 @@ func unsafeWrapColorBalanceChannel(base *gobject.ObjectInstance) *ColorBalanceCh
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeColorBalanceChannel,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapColorBalanceChannel(inst)
+		},
+	)
+}
+
 func marshalColorBalanceChannelInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapColorBalanceChannel(gobject.ValueFromNative(p).Object()), nil
 }
@@ -12718,6 +12727,15 @@ func unsafeWrapVideoAggregator(base *gobject.ObjectInstance) *VideoAggregatorIns
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeVideoAggregator,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapVideoAggregator(inst)
+		},
+	)
 }
 
 func marshalVideoAggregatorInstance(p unsafe.Pointer) (any, error) {
@@ -13180,6 +13198,15 @@ func unsafeWrapVideoAggregatorPad(base *gobject.ObjectInstance) *VideoAggregator
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeVideoAggregatorPad,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapVideoAggregatorPad(inst)
+		},
+	)
 }
 
 func marshalVideoAggregatorPadInstance(p unsafe.Pointer) (any, error) {
@@ -13695,6 +13722,15 @@ func unsafeWrapVideoBufferPool(base *gobject.ObjectInstance) *VideoBufferPoolIns
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeVideoBufferPool,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapVideoBufferPool(inst)
+		},
+	)
 }
 
 func marshalVideoBufferPoolInstance(p unsafe.Pointer) (any, error) {
@@ -14775,6 +14811,15 @@ func unsafeWrapVideoDecoder(base *gobject.ObjectInstance) *VideoDecoderInstance 
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeVideoDecoder,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapVideoDecoder(inst)
+		},
+	)
 }
 
 func marshalVideoDecoderInstance(p unsafe.Pointer) (any, error) {
@@ -18318,6 +18363,15 @@ func unsafeWrapVideoEncoder(base *gobject.ObjectInstance) *VideoEncoderInstance 
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeVideoEncoder,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapVideoEncoder(inst)
+		},
+	)
+}
+
 func marshalVideoEncoderInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapVideoEncoder(gobject.ValueFromNative(p).Object()), nil
 }
@@ -20541,6 +20595,15 @@ func unsafeWrapVideoFilter(base *gobject.ObjectInstance) *VideoFilterInstance {
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeVideoFilter,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapVideoFilter(inst)
+		},
+	)
+}
+
 func marshalVideoFilterInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapVideoFilter(gobject.ValueFromNative(p).Object()), nil
 }
@@ -20916,6 +20979,15 @@ func unsafeWrapVideoSink(base *gobject.ObjectInstance) *VideoSinkInstance {
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeVideoSink,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapVideoSink(inst)
+		},
+	)
+}
+
 func marshalVideoSinkInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapVideoSink(gobject.ValueFromNative(p).Object()), nil
 }
@@ -21237,6 +21309,15 @@ func unsafeWrapVideoAggregatorConvertPad(base *gobject.ObjectInstance) *VideoAgg
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeVideoAggregatorConvertPad,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapVideoAggregatorConvertPad(inst)
+		},
+	)
+}
+
 func marshalVideoAggregatorConvertPadInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapVideoAggregatorConvertPad(gobject.ValueFromNative(p).Object()), nil
 }
@@ -21411,6 +21492,15 @@ func unsafeWrapVideoAggregatorParallelConvertPad(base *gobject.ObjectInstance) *
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeVideoAggregatorParallelConvertPad,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapVideoAggregatorParallelConvertPad(inst)
+		},
+	)
 }
 
 func marshalVideoAggregatorParallelConvertPadInstance(p unsafe.Pointer) (any, error) {

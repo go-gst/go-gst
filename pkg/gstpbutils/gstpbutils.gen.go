@@ -2861,6 +2861,15 @@ func unsafeWrapAudioVisualizer(base *gobject.ObjectInstance) *AudioVisualizerIns
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeAudioVisualizer,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAudioVisualizer(inst)
+		},
+	)
+}
+
 func marshalAudioVisualizerInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapAudioVisualizer(gobject.ValueFromNative(p).Object()), nil
 }
@@ -3280,6 +3289,15 @@ func unsafeWrapDiscoverer(base *gobject.ObjectInstance) *DiscovererInstance {
 	return &DiscovererInstance{
 		ObjectInstance: *base,
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeDiscoverer,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapDiscoverer(inst)
+		},
+	)
 }
 
 func marshalDiscovererInstance(p unsafe.Pointer) (any, error) {
@@ -3913,6 +3931,15 @@ func unsafeWrapDiscovererInfo(base *gobject.ObjectInstance) *DiscovererInfoInsta
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeDiscovererInfo,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapDiscovererInfo(inst)
+		},
+	)
+}
+
 func marshalDiscovererInfoInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapDiscovererInfo(gobject.ValueFromNative(p).Object()), nil
 }
@@ -4481,6 +4508,15 @@ func unsafeWrapDiscovererStreamInfo(base *gobject.ObjectInstance) *DiscovererStr
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeDiscovererStreamInfo,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapDiscovererStreamInfo(inst)
+		},
+	)
+}
+
 func marshalDiscovererStreamInfoInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapDiscovererStreamInfo(gobject.ValueFromNative(p).Object()), nil
 }
@@ -4753,6 +4789,15 @@ func unsafeWrapDiscovererSubtitleInfo(base *gobject.ObjectInstance) *DiscovererS
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeDiscovererSubtitleInfo,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapDiscovererSubtitleInfo(inst)
+		},
+	)
+}
+
 func marshalDiscovererSubtitleInfoInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapDiscovererSubtitleInfo(gobject.ValueFromNative(p).Object()), nil
 }
@@ -4898,6 +4943,15 @@ func unsafeWrapDiscovererVideoInfo(base *gobject.ObjectInstance) *DiscovererVide
 			ObjectInstance: *base,
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeDiscovererVideoInfo,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapDiscovererVideoInfo(inst)
+		},
+	)
 }
 
 func marshalDiscovererVideoInfoInstance(p unsafe.Pointer) (any, error) {
@@ -5445,6 +5499,15 @@ func unsafeWrapEncodingProfile(base *gobject.ObjectInstance) *EncodingProfileIns
 	return &EncodingProfileInstance{
 		ObjectInstance: *base,
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeEncodingProfile,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapEncodingProfile(inst)
+		},
+	)
 }
 
 func marshalEncodingProfileInstance(p unsafe.Pointer) (any, error) {
@@ -6370,6 +6433,15 @@ func unsafeWrapEncodingTarget(base *gobject.ObjectInstance) *EncodingTargetInsta
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeEncodingTarget,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapEncodingTarget(inst)
+		},
+	)
+}
+
 func marshalEncodingTargetInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapEncodingTarget(gobject.ValueFromNative(p).Object()), nil
 }
@@ -6800,6 +6872,15 @@ func unsafeWrapEncodingVideoProfile(base *gobject.ObjectInstance) *EncodingVideo
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeEncodingVideoProfile,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapEncodingVideoProfile(inst)
+		},
+	)
+}
+
 func marshalEncodingVideoProfileInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapEncodingVideoProfile(gobject.ValueFromNative(p).Object()), nil
 }
@@ -7049,6 +7130,15 @@ func unsafeWrapDiscovererAudioInfo(base *gobject.ObjectInstance) *DiscovererAudi
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeDiscovererAudioInfo,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapDiscovererAudioInfo(inst)
+		},
+	)
+}
+
 func marshalDiscovererAudioInfoInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapDiscovererAudioInfo(gobject.ValueFromNative(p).Object()), nil
 }
@@ -7268,6 +7358,15 @@ func unsafeWrapDiscovererContainerInfo(base *gobject.ObjectInstance) *Discoverer
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeDiscovererContainerInfo,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapDiscovererContainerInfo(inst)
+		},
+	)
+}
+
 func marshalDiscovererContainerInfoInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapDiscovererContainerInfo(gobject.ValueFromNative(p).Object()), nil
 }
@@ -7374,6 +7473,15 @@ func unsafeWrapEncodingAudioProfile(base *gobject.ObjectInstance) *EncodingAudio
 			ObjectInstance: *base,
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeEncodingAudioProfile,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapEncodingAudioProfile(inst)
+		},
+	)
 }
 
 func marshalEncodingAudioProfileInstance(p unsafe.Pointer) (any, error) {
@@ -7515,6 +7623,15 @@ func unsafeWrapEncodingContainerProfile(base *gobject.ObjectInstance) *EncodingC
 			ObjectInstance: *base,
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeEncodingContainerProfile,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapEncodingContainerProfile(inst)
+		},
+	)
 }
 
 func marshalEncodingContainerProfileInstance(p unsafe.Pointer) (any, error) {

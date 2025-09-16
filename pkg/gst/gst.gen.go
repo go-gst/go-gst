@@ -15775,6 +15775,15 @@ func unsafeWrapObject(base *gobject.ObjectInstance) *ObjectInstance {
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeObject,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapObject(inst)
+		},
+	)
+}
+
 func marshalObjectInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapObject(gobject.ValueFromNative(p).Object()), nil
 }
@@ -17639,6 +17648,15 @@ func unsafeWrapPad(base *gobject.ObjectInstance) *PadInstance {
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypePad,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapPad(inst)
+		},
+	)
 }
 
 func marshalPadInstance(p unsafe.Pointer) (any, error) {
@@ -20376,6 +20394,15 @@ func unsafeWrapPadTemplate(base *gobject.ObjectInstance) *PadTemplateInstance {
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypePadTemplate,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapPadTemplate(inst)
+		},
+	)
+}
+
 func marshalPadTemplateInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapPadTemplate(gobject.ValueFromNative(p).Object()), nil
 }
@@ -20974,6 +21001,15 @@ func unsafeWrapPlugin(base *gobject.ObjectInstance) *PluginInstance {
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypePlugin,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapPlugin(inst)
+		},
+	)
 }
 
 func marshalPluginInstance(p unsafe.Pointer) (any, error) {
@@ -21819,6 +21855,15 @@ func unsafeWrapPluginFeature(base *gobject.ObjectInstance) *PluginFeatureInstanc
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypePluginFeature,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapPluginFeature(inst)
+		},
+	)
+}
+
 func marshalPluginFeatureInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapPluginFeature(gobject.ValueFromNative(p).Object()), nil
 }
@@ -22065,6 +22110,15 @@ func unsafeWrapProxyPad(base *gobject.ObjectInstance) *ProxyPadInstance {
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeProxyPad,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapProxyPad(inst)
+		},
+	)
 }
 
 func marshalProxyPadInstance(p unsafe.Pointer) (any, error) {
@@ -22623,6 +22677,15 @@ func unsafeWrapRegistry(base *gobject.ObjectInstance) *RegistryInstance {
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeRegistry,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapRegistry(inst)
+		},
+	)
 }
 
 func marshalRegistryInstance(p unsafe.Pointer) (any, error) {
@@ -23453,6 +23516,15 @@ func unsafeWrapStream(base *gobject.ObjectInstance) *StreamInstance {
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeStream,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapStream(inst)
+		},
+	)
+}
+
 func marshalStreamInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapStream(gobject.ValueFromNative(p).Object()), nil
 }
@@ -23873,6 +23945,15 @@ func unsafeWrapStreamCollection(base *gobject.ObjectInstance) *StreamCollectionI
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeStreamCollection,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapStreamCollection(inst)
+		},
+	)
 }
 
 func marshalStreamCollectionInstance(p unsafe.Pointer) (any, error) {
@@ -24325,6 +24406,15 @@ func unsafeWrapTask(base *gobject.ObjectInstance) *TaskInstance {
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeTask,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapTask(inst)
+		},
+	)
+}
+
 func marshalTaskInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapTask(gobject.ValueFromNative(p).Object()), nil
 }
@@ -24769,6 +24859,15 @@ func unsafeWrapTaskPool(base *gobject.ObjectInstance) *TaskPoolInstance {
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeTaskPool,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapTaskPool(inst)
+		},
+	)
+}
+
 func marshalTaskPoolInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapTaskPool(gobject.ValueFromNative(p).Object()), nil
 }
@@ -25035,6 +25134,15 @@ func unsafeWrapTracer(base *gobject.ObjectInstance) *TracerInstance {
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeTracer,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapTracer(inst)
+		},
+	)
+}
+
 func marshalTracerInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapTracer(gobject.ValueFromNative(p).Object()), nil
 }
@@ -25189,6 +25297,15 @@ func unsafeWrapTracerFactory(base *gobject.ObjectInstance) *TracerFactoryInstanc
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeTracerFactory,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapTracerFactory(inst)
+		},
+	)
+}
+
 func marshalTracerFactoryInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapTracerFactory(gobject.ValueFromNative(p).Object()), nil
 }
@@ -25303,6 +25420,15 @@ func unsafeWrapTracerRecord(base *gobject.ObjectInstance) *TracerRecordInstance 
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeTracerRecord,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapTracerRecord(inst)
+		},
+	)
 }
 
 func marshalTracerRecordInstance(p unsafe.Pointer) (any, error) {
@@ -25451,6 +25577,15 @@ func unsafeWrapTypeFindFactory(base *gobject.ObjectInstance) *TypeFindFactoryIns
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeTypeFindFactory,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapTypeFindFactory(inst)
+		},
+	)
 }
 
 func marshalTypeFindFactoryInstance(p unsafe.Pointer) (any, error) {
@@ -25732,6 +25867,15 @@ func unsafeWrapAllocator(base *gobject.ObjectInstance) *AllocatorInstance {
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeAllocator,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAllocator(inst)
+		},
+	)
 }
 
 func marshalAllocatorInstance(p unsafe.Pointer) (any, error) {
@@ -26437,6 +26581,15 @@ func unsafeWrapBufferPool(base *gobject.ObjectInstance) *BufferPoolInstance {
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeBufferPool,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapBufferPool(inst)
+		},
+	)
 }
 
 func marshalBufferPoolInstance(p unsafe.Pointer) (any, error) {
@@ -28257,6 +28410,15 @@ func unsafeWrapBus(base *gobject.ObjectInstance) *BusInstance {
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeBus,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapBus(inst)
+		},
+	)
+}
+
 func marshalBusInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapBus(gobject.ValueFromNative(p).Object()), nil
 }
@@ -29614,6 +29776,15 @@ func unsafeWrapClock(base *gobject.ObjectInstance) *ClockInstance {
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeClock,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapClock(inst)
+		},
+	)
 }
 
 func marshalClockInstance(p unsafe.Pointer) (any, error) {
@@ -31240,6 +31411,15 @@ func unsafeWrapControlBinding(base *gobject.ObjectInstance) *ControlBindingInsta
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeControlBinding,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapControlBinding(inst)
+		},
+	)
+}
+
 func marshalControlBindingInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapControlBinding(gobject.ValueFromNative(p).Object()), nil
 }
@@ -31569,6 +31749,15 @@ func unsafeWrapControlSource(base *gobject.ObjectInstance) *ControlSourceInstanc
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeControlSource,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapControlSource(inst)
+		},
+	)
+}
+
 func marshalControlSourceInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapControlSource(gobject.ValueFromNative(p).Object()), nil
 }
@@ -31882,6 +32071,15 @@ func unsafeWrapDevice(base *gobject.ObjectInstance) *DeviceInstance {
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeDevice,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapDevice(inst)
+		},
+	)
 }
 
 func marshalDeviceInstance(p unsafe.Pointer) (any, error) {
@@ -32552,6 +32750,15 @@ func unsafeWrapDeviceMonitor(base *gobject.ObjectInstance) *DeviceMonitorInstanc
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeDeviceMonitor,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapDeviceMonitor(inst)
+		},
+	)
+}
+
 func marshalDeviceMonitorInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapDeviceMonitor(gobject.ValueFromNative(p).Object()), nil
 }
@@ -33112,6 +33319,15 @@ func unsafeWrapDeviceProvider(base *gobject.ObjectInstance) *DeviceProviderInsta
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeDeviceProvider,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapDeviceProvider(inst)
+		},
+	)
 }
 
 func marshalDeviceProviderInstance(p unsafe.Pointer) (any, error) {
@@ -33824,6 +34040,15 @@ func unsafeWrapDeviceProviderFactory(base *gobject.ObjectInstance) *DeviceProvid
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeDeviceProviderFactory,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapDeviceProviderFactory(inst)
+		},
+	)
+}
+
 func marshalDeviceProviderFactoryInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapDeviceProviderFactory(gobject.ValueFromNative(p).Object()), nil
 }
@@ -34178,6 +34403,15 @@ func unsafeWrapDynamicTypeFactory(base *gobject.ObjectInstance) *DynamicTypeFact
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeDynamicTypeFactory,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapDynamicTypeFactory(inst)
+		},
+	)
 }
 
 func marshalDynamicTypeFactoryInstance(p unsafe.Pointer) (any, error) {
@@ -35633,6 +35867,15 @@ func unsafeWrapElement(base *gobject.ObjectInstance) *ElementInstance {
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeElement,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapElement(inst)
+		},
+	)
 }
 
 func marshalElementInstance(p unsafe.Pointer) (any, error) {
@@ -39649,6 +39892,15 @@ func unsafeWrapElementFactory(base *gobject.ObjectInstance) *ElementFactoryInsta
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeElementFactory,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapElementFactory(inst)
+		},
+	)
+}
+
 func marshalElementFactoryInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapElementFactory(gobject.ValueFromNative(p).Object()), nil
 }
@@ -40349,6 +40601,15 @@ func unsafeWrapGhostPad(base *gobject.ObjectInstance) *GhostPadInstance {
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeGhostPad,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGhostPad(inst)
+		},
+	)
+}
+
 func marshalGhostPadInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapGhostPad(gobject.ValueFromNative(p).Object()), nil
 }
@@ -40782,6 +41043,15 @@ func unsafeWrapSharedTaskPool(base *gobject.ObjectInstance) *SharedTaskPoolInsta
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeSharedTaskPool,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapSharedTaskPool(inst)
+		},
+	)
+}
+
 func marshalSharedTaskPoolInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapSharedTaskPool(gobject.ValueFromNative(p).Object()), nil
 }
@@ -40959,6 +41229,15 @@ func unsafeWrapSystemClock(base *gobject.ObjectInstance) *SystemClockInstance {
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeSystemClock,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapSystemClock(inst)
+		},
+	)
 }
 
 func marshalSystemClockInstance(p unsafe.Pointer) (any, error) {
@@ -41548,6 +41827,15 @@ func unsafeWrapBin(base *gobject.ObjectInstance) *BinInstance {
 			Instance: *base,
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeBin,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapBin(inst)
+		},
+	)
 }
 
 func marshalBinInstance(p unsafe.Pointer) (any, error) {
@@ -42894,6 +43182,15 @@ func unsafeWrapPipeline(base *gobject.ObjectInstance) *PipelineInstance {
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypePipeline,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapPipeline(inst)
+		},
+	)
 }
 
 func marshalPipelineInstance(p unsafe.Pointer) (any, error) {
