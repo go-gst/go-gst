@@ -3138,11 +3138,12 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 func (ice *WebRTCICEInstance) ParentAddCandidate(stream WebRTCICEStream, candidate string, promise *gst.Promise) {
 	var carg0 *C.GstWebRTCICE
 	var carg1 *C.GstWebRTCICEStream // in, none, converted
-	var carg2 *C.gchar              // in, none, string
-	var carg3 *C.GstPromise         // in, none, converted, nullable
+	var carg2 *C.gchar              // in, none, converted
+	var carg3 *C.GstPromise         // in, none, string
 
 	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
 
+	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
 	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(candidate)))
 	defer C.free(unsafe.Pointer(carg2))
@@ -3169,11 +3170,12 @@ func (ice *WebRTCICEInstance) ParentAddCandidate(stream WebRTCICEStream, candida
 // 	- goret WebRTCICEStream (nullable) 
 func (ice *WebRTCICEInstance) ParentAddStream(sessionId uint) WebRTCICEStream {
 	var carg0 *C.GstWebRTCICE
-	var carg1 C.guint               // in, none, casted
+	var carg1 C.guint               // in, none, converted
 	var cret  *C.GstWebRTCICEStream // return, full, converted, nullable
 
 	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
 
+	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = C.guint(sessionId)
 
 	cret = C._gotk4_gstwebrtc1_WebRTCICE_virtual_add_stream(unsafe.Pointer(parentclass.add_stream), carg0, carg1)
@@ -3201,11 +3203,12 @@ func (ice *WebRTCICEInstance) ParentAddStream(sessionId uint) WebRTCICEStream {
 // 	- goret bool 
 func (ice *WebRTCICEInstance) ParentAddTurnServer(uri string) bool {
 	var carg0 *C.GstWebRTCICE
-	var carg1 *C.gchar   // in, none, string
+	var carg1 *C.gchar   // in, none, converted
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
 
+	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
 	defer C.free(unsafe.Pointer(carg1))
 
@@ -3236,11 +3239,12 @@ func (ice *WebRTCICEInstance) ParentAddTurnServer(uri string) bool {
 func (ice *WebRTCICEInstance) ParentFindTransport(stream WebRTCICEStream, component WebRTCICEComponent) WebRTCICETransport {
 	var carg0 *C.GstWebRTCICE
 	var carg1 *C.GstWebRTCICEStream    // in, none, converted
-	var carg2 C.GstWebRTCICEComponent  // in, none, casted
+	var carg2 C.GstWebRTCICEComponent  // in, none, converted
 	var cret  *C.GstWebRTCICETransport // return, full, converted, nullable
 
 	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
 
+	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
 	carg2 = C.GstWebRTCICEComponent(component)
 
@@ -3275,6 +3279,7 @@ func (ice *WebRTCICEInstance) ParentGatherCandidates(stream WebRTCICEStream) boo
 
 	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
 
+	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
 
 	cret = C._gotk4_gstwebrtc1_WebRTCICE_virtual_gather_candidates(unsafe.Pointer(parentclass.gather_candidates), carg0, carg1)
@@ -3304,6 +3309,8 @@ func (ice *WebRTCICEInstance) ParentGetHTTPProxy() string {
 
 	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
 
+	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
+
 	cret = C._gotk4_gstwebrtc1_WebRTCICE_virtual_get_http_proxy(unsafe.Pointer(parentclass.get_http_proxy), carg0)
 	runtime.KeepAlive(ice)
 
@@ -3326,6 +3333,8 @@ func (ice *WebRTCICEInstance) ParentGetIsController() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
+
+	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 
 	cret = C._gotk4_gstwebrtc1_WebRTCICE_virtual_get_is_controller(unsafe.Pointer(parentclass.get_is_controller), carg0)
 	runtime.KeepAlive(ice)
@@ -3360,6 +3369,7 @@ func (ice *WebRTCICEInstance) ParentGetSelectedPair(stream WebRTCICEStream) (*We
 
 	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
 
+	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
 
 	cret = C._gotk4_gstwebrtc1_WebRTCICE_virtual_get_selected_pair(unsafe.Pointer(parentclass.get_selected_pair), carg0, carg1, &carg2, &carg3)
@@ -3391,6 +3401,8 @@ func (ice *WebRTCICEInstance) ParentGetStunServer() string {
 
 	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
 
+	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
+
 	cret = C._gotk4_gstwebrtc1_WebRTCICE_virtual_get_stun_server(unsafe.Pointer(parentclass.get_stun_server), carg0)
 	runtime.KeepAlive(ice)
 
@@ -3416,6 +3428,8 @@ func (ice *WebRTCICEInstance) ParentGetTurnServer() string {
 
 	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
 
+	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
+
 	cret = C._gotk4_gstwebrtc1_WebRTCICE_virtual_get_turn_server(unsafe.Pointer(parentclass.get_turn_server), carg0)
 	runtime.KeepAlive(ice)
 
@@ -3437,10 +3451,11 @@ func (ice *WebRTCICEInstance) ParentGetTurnServer() string {
 // 	- forceRelay bool: TRUE to enable force relay 
 func (ice *WebRTCICEInstance) ParentSetForceRelay(forceRelay bool) {
 	var carg0 *C.GstWebRTCICE
-	var carg1 C.gboolean // in
+	var carg1 C.gboolean // in, none, converted
 
 	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
 
+	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	if forceRelay {
 		carg1 = C.TRUE
 	}
@@ -3461,10 +3476,11 @@ func (ice *WebRTCICEInstance) ParentSetForceRelay(forceRelay bool) {
 // Set HTTP Proxy to be used when connecting to TURN server.
 func (ice *WebRTCICEInstance) ParentSetHTTPProxy(uri string) {
 	var carg0 *C.GstWebRTCICE
-	var carg1 *C.gchar // in, none, string
+	var carg1 *C.gchar // in, none, converted
 
 	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
 
+	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
 	defer C.free(unsafe.Pointer(carg1))
 
@@ -3481,10 +3497,11 @@ func (ice *WebRTCICEInstance) ParentSetHTTPProxy(uri string) {
 // 	- controller bool: TRUE to set as controller 
 func (ice *WebRTCICEInstance) ParentSetIsController(controller bool) {
 	var carg0 *C.GstWebRTCICE
-	var carg1 C.gboolean // in
+	var carg1 C.gboolean // in, none, converted
 
 	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
 
+	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	if controller {
 		carg1 = C.TRUE
 	}
@@ -3509,12 +3526,13 @@ func (ice *WebRTCICEInstance) ParentSetIsController(controller bool) {
 func (ice *WebRTCICEInstance) ParentSetLocalCredentials(stream WebRTCICEStream, ufrag string, pwd string) bool {
 	var carg0 *C.GstWebRTCICE
 	var carg1 *C.GstWebRTCICEStream // in, none, converted
-	var carg2 *C.gchar              // in, none, string
+	var carg2 *C.gchar              // in, none, converted
 	var carg3 *C.gchar              // in, none, string
 	var cret  C.gboolean            // return
 
 	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
 
+	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
 	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(ufrag)))
 	defer C.free(unsafe.Pointer(carg2))
@@ -3551,12 +3569,13 @@ func (ice *WebRTCICEInstance) ParentSetLocalCredentials(stream WebRTCICEStream, 
 func (ice *WebRTCICEInstance) ParentSetRemoteCredentials(stream WebRTCICEStream, ufrag string, pwd string) bool {
 	var carg0 *C.GstWebRTCICE
 	var carg1 *C.GstWebRTCICEStream // in, none, converted
-	var carg2 *C.gchar              // in, none, string
+	var carg2 *C.gchar              // in, none, converted
 	var carg3 *C.gchar              // in, none, string
 	var cret  C.gboolean            // return
 
 	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
 
+	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
 	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(ufrag)))
 	defer C.free(unsafe.Pointer(carg2))
@@ -3586,10 +3605,11 @@ func (ice *WebRTCICEInstance) ParentSetRemoteCredentials(stream WebRTCICEStream,
 // 	- uri string (nullable): URI of the STUN server 
 func (ice *WebRTCICEInstance) ParentSetStunServer(uri string) {
 	var carg0 *C.GstWebRTCICE
-	var carg1 *C.gchar // in, none, string, nullable-string
+	var carg1 *C.gchar // in, none, converted
 
 	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
 
+	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	if uri != "" {
 		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
 		defer C.free(unsafe.Pointer(carg1))
@@ -3610,10 +3630,11 @@ func (ice *WebRTCICEInstance) ParentSetStunServer(uri string) {
 func (ice *WebRTCICEInstance) ParentSetTos(stream WebRTCICEStream, tos uint) {
 	var carg0 *C.GstWebRTCICE
 	var carg1 *C.GstWebRTCICEStream // in, none, converted
-	var carg2 C.guint               // in, none, casted
+	var carg2 C.guint               // in, none, converted
 
 	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
 
+	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
 	carg2 = C.guint(tos)
 
@@ -3631,10 +3652,11 @@ func (ice *WebRTCICEInstance) ParentSetTos(stream WebRTCICEStream, tos uint) {
 // 	- uri string (nullable): URI of the TURN sever 
 func (ice *WebRTCICEInstance) ParentSetTurnServer(uri string) {
 	var carg0 *C.GstWebRTCICE
-	var carg1 *C.gchar // in, none, string, nullable-string
+	var carg1 *C.gchar // in, none, converted
 
 	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
 
+	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	if uri != "" {
 		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
 		defer C.free(unsafe.Pointer(carg1))
@@ -3909,11 +3931,12 @@ func UnsafeApplyWebRTCICEStreamOverrides[Instance WebRTCICEStream](gclass unsafe
 // 	- goret WebRTCICETransport (nullable) 
 func (stream *WebRTCICEStreamInstance) ParentFindTransport(component WebRTCICEComponent) WebRTCICETransport {
 	var carg0 *C.GstWebRTCICEStream
-	var carg1 C.GstWebRTCICEComponent  // in, none, casted
+	var carg1 C.GstWebRTCICEComponent  // in, none, converted
 	var cret  *C.GstWebRTCICETransport // return, full, converted, nullable
 
 	parentclass := (*C.GstWebRTCICEStreamClass)(classdata.PeekParentClass(UnsafeWebRTCICEStreamToGlibNone(stream)))
 
+	carg0 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
 	carg1 = C.GstWebRTCICEComponent(component)
 
 	cret = C._gotk4_gstwebrtc1_WebRTCICEStream_virtual_find_transport(unsafe.Pointer(parentclass.find_transport), carg0, carg1)
@@ -3940,6 +3963,8 @@ func (ice *WebRTCICEStreamInstance) ParentGatherCandidates() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstWebRTCICEStreamClass)(classdata.PeekParentClass(UnsafeWebRTCICEStreamToGlibNone(ice)))
+
+	carg0 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(ice))
 
 	cret = C._gotk4_gstwebrtc1_WebRTCICEStream_virtual_gather_candidates(unsafe.Pointer(parentclass.gather_candidates), carg0)
 	runtime.KeepAlive(ice)
@@ -4208,6 +4233,8 @@ func (transport *WebRTCICETransportInstance) ParentGatherCandidates() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstWebRTCICETransportClass)(classdata.PeekParentClass(UnsafeWebRTCICETransportToGlibNone(transport)))
+
+	carg0 = (*C.GstWebRTCICETransport)(UnsafeWebRTCICETransportToGlibNone(transport))
 
 	cret = C._gotk4_gstwebrtc1_WebRTCICETransport_virtual_gather_candidates(unsafe.Pointer(parentclass.gather_candidates), carg0)
 	runtime.KeepAlive(transport)

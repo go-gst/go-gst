@@ -3292,6 +3292,7 @@ func (filter *GLBaseFilterInstance) ParentGLSetCaps(incaps *gst.Caps, outcaps *g
 
 	parentclass := (*C.GstGLBaseFilterClass)(classdata.PeekParentClass(UnsafeGLBaseFilterToGlibNone(filter)))
 
+	carg0 = (*C.GstGLBaseFilter)(UnsafeGLBaseFilterToGlibNone(filter))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(incaps))
 	carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(outcaps))
 
@@ -3323,6 +3324,8 @@ func (filter *GLBaseFilterInstance) ParentGLStart() bool {
 
 	parentclass := (*C.GstGLBaseFilterClass)(classdata.PeekParentClass(UnsafeGLBaseFilterToGlibNone(filter)))
 
+	carg0 = (*C.GstGLBaseFilter)(UnsafeGLBaseFilterToGlibNone(filter))
+
 	cret = C._gotk4_gstgl1_GLBaseFilter_virtual_gl_start(unsafe.Pointer(parentclass.gl_start), carg0)
 	runtime.KeepAlive(filter)
 
@@ -3343,6 +3346,8 @@ func (filter *GLBaseFilterInstance) ParentGLStop() {
 	var carg0 *C.GstGLBaseFilter
 
 	parentclass := (*C.GstGLBaseFilterClass)(classdata.PeekParentClass(UnsafeGLBaseFilterToGlibNone(filter)))
+
+	carg0 = (*C.GstGLBaseFilter)(UnsafeGLBaseFilterToGlibNone(filter))
 
 	C._gotk4_gstgl1_GLBaseFilter_virtual_gl_stop(unsafe.Pointer(parentclass.gl_stop), carg0)
 	runtime.KeepAlive(filter)
@@ -3670,6 +3675,8 @@ func (mix *GLBaseMixerInstance) ParentGLStart() bool {
 
 	parentclass := (*C.GstGLBaseMixerClass)(classdata.PeekParentClass(UnsafeGLBaseMixerToGlibNone(mix)))
 
+	carg0 = (*C.GstGLBaseMixer)(UnsafeGLBaseMixerToGlibNone(mix))
+
 	cret = C._gotk4_gstgl1_GLBaseMixer_virtual_gl_start(unsafe.Pointer(parentclass.gl_start), carg0)
 	runtime.KeepAlive(mix)
 
@@ -3690,6 +3697,8 @@ func (mix *GLBaseMixerInstance) ParentGLStop() {
 	var carg0 *C.GstGLBaseMixer
 
 	parentclass := (*C.GstGLBaseMixerClass)(classdata.PeekParentClass(UnsafeGLBaseMixerToGlibNone(mix)))
+
+	carg0 = (*C.GstGLBaseMixer)(UnsafeGLBaseMixerToGlibNone(mix))
 
 	C._gotk4_gstgl1_GLBaseMixer_virtual_gl_stop(unsafe.Pointer(parentclass.gl_stop), carg0)
 	runtime.KeepAlive(mix)
@@ -4044,6 +4053,7 @@ func (src *GLBaseSrcInstance) ParentFillGLMemory(mem *GLMemory) bool {
 
 	parentclass := (*C.GstGLBaseSrcClass)(classdata.PeekParentClass(UnsafeGLBaseSrcToGlibNone(src)))
 
+	carg0 = (*C.GstGLBaseSrc)(UnsafeGLBaseSrcToGlibNone(src))
 	carg1 = (*C.GstGLMemory)(UnsafeGLMemoryToGlibNone(mem))
 
 	cret = C._gotk4_gstgl1_GLBaseSrc_virtual_fill_gl_memory(unsafe.Pointer(parentclass.fill_gl_memory), carg0, carg1)
@@ -4073,6 +4083,8 @@ func (src *GLBaseSrcInstance) ParentGLStart() bool {
 
 	parentclass := (*C.GstGLBaseSrcClass)(classdata.PeekParentClass(UnsafeGLBaseSrcToGlibNone(src)))
 
+	carg0 = (*C.GstGLBaseSrc)(UnsafeGLBaseSrcToGlibNone(src))
+
 	cret = C._gotk4_gstgl1_GLBaseSrc_virtual_gl_start(unsafe.Pointer(parentclass.gl_start), carg0)
 	runtime.KeepAlive(src)
 
@@ -4093,6 +4105,8 @@ func (src *GLBaseSrcInstance) ParentGLStop() {
 	var carg0 *C.GstGLBaseSrc
 
 	parentclass := (*C.GstGLBaseSrcClass)(classdata.PeekParentClass(UnsafeGLBaseSrcToGlibNone(src)))
+
+	carg0 = (*C.GstGLBaseSrc)(UnsafeGLBaseSrcToGlibNone(src))
 
 	C._gotk4_gstgl1_GLBaseSrc_virtual_gl_stop(unsafe.Pointer(parentclass.gl_stop), carg0)
 	runtime.KeepAlive(src)
@@ -6527,11 +6541,12 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 // currently set window.  See gst_gl_context_set_window() for details.
 func (_context *GLContextInstance) ParentActivate(activate bool) bool {
 	var carg0 *C.GstGLContext
-	var carg1 C.gboolean // in
+	var carg1 C.gboolean // in, none, converted
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstGLContextClass)(classdata.PeekParentClass(UnsafeGLContextToGlibNone(_context)))
 
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	if activate {
 		carg1 = C.TRUE
 	}
@@ -6567,11 +6582,12 @@ func (_context *GLContextInstance) ParentActivate(activate bool) bool {
 // case.
 func (_context *GLContextInstance) ParentCheckFeature(feature string) bool {
 	var carg0 *C.GstGLContext
-	var carg1 *C.gchar   // in, none, string
+	var carg1 *C.gchar   // in, none, converted
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstGLContextClass)(classdata.PeekParentClass(UnsafeGLContextToGlibNone(_context)))
 
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(feature)))
 	defer C.free(unsafe.Pointer(carg1))
 
@@ -6603,6 +6619,8 @@ func (_context *GLContextInstance) ParentChooseFormat() (bool, error) {
 	var _cerr *C.GError  // out, full, converted, nullable
 
 	parentclass := (*C.GstGLContextClass)(classdata.PeekParentClass(UnsafeGLContextToGlibNone(_context)))
+
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	cret = C._gotk4_gstgl1_GLContext_virtual_choose_format(unsafe.Pointer(parentclass.choose_format), carg0, &_cerr)
 	runtime.KeepAlive(_context)
@@ -6636,13 +6654,14 @@ func (_context *GLContextInstance) ParentChooseFormat() (bool, error) {
 // create the OpenGL context
 func (_context *GLContextInstance) ParentCreateContext(glApi GLAPI, otherContext GLContext) (bool, error) {
 	var carg0 *C.GstGLContext
-	var carg1 C.GstGLAPI      // in, none, casted
-	var carg2 *C.GstGLContext // in, none, converted
+	var carg1 C.GstGLAPI      // in, none, converted
+	var carg2 *C.GstGLContext // in, none, casted
 	var cret  C.gboolean      // return
 	var _cerr *C.GError       // out, full, converted, nullable
 
 	parentclass := (*C.GstGLContextClass)(classdata.PeekParentClass(UnsafeGLContextToGlibNone(_context)))
 
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	carg1 = C.GstGLAPI(glApi)
 	carg2 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(otherContext))
 
@@ -6673,6 +6692,8 @@ func (_context *GLContextInstance) ParentDestroyContext() {
 
 	parentclass := (*C.GstGLContextClass)(classdata.PeekParentClass(UnsafeGLContextToGlibNone(_context)))
 
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
+
 	C._gotk4_gstgl1_GLContext_virtual_destroy_context(unsafe.Pointer(parentclass.destroy_context), carg0)
 	runtime.KeepAlive(_context)
 }
@@ -6694,6 +6715,8 @@ func (_context *GLContextInstance) ParentGetConfig() *gst.Structure {
 	var cret  *C.GstStructure // return, full, converted, nullable
 
 	parentclass := (*C.GstGLContextClass)(classdata.PeekParentClass(UnsafeGLContextToGlibNone(_context)))
+
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	cret = C._gotk4_gstgl1_GLContext_virtual_get_config(unsafe.Pointer(parentclass.get_config), carg0)
 	runtime.KeepAlive(_context)
@@ -6724,6 +6747,8 @@ func (_context *GLContextInstance) ParentGetGLApi() GLAPI {
 
 	parentclass := (*C.GstGLContextClass)(classdata.PeekParentClass(UnsafeGLContextToGlibNone(_context)))
 
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
+
 	cret = C._gotk4_gstgl1_GLContext_virtual_get_gl_api(unsafe.Pointer(parentclass.get_gl_api), carg0)
 	runtime.KeepAlive(_context)
 
@@ -6747,6 +6772,8 @@ func (_context *GLContextInstance) ParentGetGLPlatform() GLPlatform {
 	var cret  C.GstGLPlatform // return, none, casted
 
 	parentclass := (*C.GstGLContextClass)(classdata.PeekParentClass(UnsafeGLContextToGlibNone(_context)))
+
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	cret = C._gotk4_gstgl1_GLContext_virtual_get_gl_platform(unsafe.Pointer(parentclass.get_gl_platform), carg0)
 	runtime.KeepAlive(_context)
@@ -6774,6 +6801,8 @@ func (_context *GLContextInstance) ParentGetGLPlatformVersion() (int32, int32) {
 	var carg2 C.gint // out, full, casted
 
 	parentclass := (*C.GstGLContextClass)(classdata.PeekParentClass(UnsafeGLContextToGlibNone(_context)))
+
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	C._gotk4_gstgl1_GLContext_virtual_get_gl_platform_version(unsafe.Pointer(parentclass.get_gl_platform_version), carg0, &carg1, &carg2)
 	runtime.KeepAlive(_context)
@@ -6813,11 +6842,12 @@ func (_context *GLContextInstance) ParentGetGLPlatformVersion() (int32, int32) {
 // Note that the actual config used may be differ from the requested values.
 func (_context *GLContextInstance) ParentRequestConfig(glConfig *gst.Structure) bool {
 	var carg0 *C.GstGLContext
-	var carg1 *C.GstStructure // in, full, converted, nullable
+	var carg1 *C.GstStructure // in, none, converted
 	var cret  C.gboolean      // return
 
 	parentclass := (*C.GstGLContextClass)(classdata.PeekParentClass(UnsafeGLContextToGlibNone(_context)))
 
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	if glConfig != nil {
 		carg1 = (*C.GstStructure)(gst.UnsafeStructureToGlibFull(glConfig))
 	}
@@ -6844,6 +6874,8 @@ func (_context *GLContextInstance) ParentSwapBuffers() {
 	var carg0 *C.GstGLContext
 
 	parentclass := (*C.GstGLContextClass)(classdata.PeekParentClass(UnsafeGLContextToGlibNone(_context)))
+
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	C._gotk4_gstgl1_GLContext_virtual_swap_buffers(unsafe.Pointer(parentclass.swap_buffers), carg0)
 	runtime.KeepAlive(_context)
@@ -7395,6 +7427,8 @@ func (display *GLDisplayInstance) ParentCreateWindow() GLWindow {
 	var cret  *C.GstGLWindow // return, full, converted, nullable
 
 	parentclass := (*C.GstGLDisplayClass)(classdata.PeekParentClass(UnsafeGLDisplayToGlibNone(display)))
+
+	carg0 = (*C.GstGLDisplay)(UnsafeGLDisplayToGlibNone(display))
 
 	cret = C._gotk4_gstgl1_GLDisplay_virtual_create_window(unsafe.Pointer(parentclass.create_window), carg0)
 	runtime.KeepAlive(display)
@@ -7988,6 +8022,7 @@ func (filter *GLFilterInstance) ParentFilter(inbuf *gst.Buffer, outbuf *gst.Buff
 
 	parentclass := (*C.GstGLFilterClass)(classdata.PeekParentClass(UnsafeGLFilterToGlibNone(filter)))
 
+	carg0 = (*C.GstGLFilter)(UnsafeGLFilterToGlibNone(filter))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(inbuf))
 	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(outbuf))
 
@@ -8026,6 +8061,7 @@ func (filter *GLFilterInstance) ParentFilterTexture(input *GLMemory, output *GLM
 
 	parentclass := (*C.GstGLFilterClass)(classdata.PeekParentClass(UnsafeGLFilterToGlibNone(filter)))
 
+	carg0 = (*C.GstGLFilter)(UnsafeGLFilterToGlibNone(filter))
 	carg1 = (*C.GstGLMemory)(UnsafeGLMemoryToGlibNone(input))
 	carg2 = (*C.GstGLMemory)(UnsafeGLMemoryToGlibNone(output))
 
@@ -8056,6 +8092,8 @@ func (filter *GLFilterInstance) ParentInitFbo() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstGLFilterClass)(classdata.PeekParentClass(UnsafeGLFilterToGlibNone(filter)))
+
+	carg0 = (*C.GstGLFilter)(UnsafeGLFilterToGlibNone(filter))
 
 	cret = C._gotk4_gstgl1_GLFilter_virtual_init_fbo(unsafe.Pointer(parentclass.init_fbo), carg0)
 	runtime.KeepAlive(filter)
@@ -8090,6 +8128,7 @@ func (filter *GLFilterInstance) ParentSetCaps(incaps *gst.Caps, outcaps *gst.Cap
 
 	parentclass := (*C.GstGLFilterClass)(classdata.PeekParentClass(UnsafeGLFilterToGlibNone(filter)))
 
+	carg0 = (*C.GstGLFilter)(UnsafeGLFilterToGlibNone(filter))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(incaps))
 	carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(outcaps))
 
@@ -8124,13 +8163,14 @@ func (filter *GLFilterInstance) ParentSetCaps(incaps *gst.Caps, outcaps *gst.Cap
 //   caps to be processed between upload on input and before download for output.
 func (filter *GLFilterInstance) ParentTransformInternalCaps(direction gst.PadDirection, caps *gst.Caps, filterCaps *gst.Caps) *gst.Caps {
 	var carg0 *C.GstGLFilter
-	var carg1 C.GstPadDirection // in, none, casted
-	var carg2 *C.GstCaps        // in, none, converted
+	var carg1 C.GstPadDirection // in, none, converted
+	var carg2 *C.GstCaps        // in, none, casted
 	var carg3 *C.GstCaps        // in, none, converted
 	var cret  *C.GstCaps        // return, full, converted
 
 	parentclass := (*C.GstGLFilterClass)(classdata.PeekParentClass(UnsafeGLFilterToGlibNone(filter)))
 
+	carg0 = (*C.GstGLFilter)(UnsafeGLFilterToGlibNone(filter))
 	carg1 = C.GstPadDirection(direction)
 	carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 	carg3 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filterCaps))
@@ -8997,6 +9037,7 @@ func (mix *GLMixerInstance) ParentProcessBuffers(outbuf *gst.Buffer) bool {
 
 	parentclass := (*C.GstGLMixerClass)(classdata.PeekParentClass(UnsafeGLMixerToGlibNone(mix)))
 
+	carg0 = (*C.GstGLMixer)(UnsafeGLMixerToGlibNone(mix))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(outbuf))
 
 	cret = C._gotk4_gstgl1_GLMixer_virtual_process_buffers(unsafe.Pointer(parentclass.process_buffers), carg0, carg1)
@@ -9033,6 +9074,7 @@ func (mix *GLMixerInstance) ParentProcessTextures(outTex *GLMemory) bool {
 
 	parentclass := (*C.GstGLMixerClass)(classdata.PeekParentClass(UnsafeGLMixerToGlibNone(mix)))
 
+	carg0 = (*C.GstGLMixer)(UnsafeGLMixerToGlibNone(mix))
 	carg1 = (*C.GstGLMemory)(UnsafeGLMemoryToGlibNone(outTex))
 
 	cret = C._gotk4_gstgl1_GLMixer_virtual_process_textures(unsafe.Pointer(parentclass.process_textures), carg0, carg1)
@@ -13706,6 +13748,8 @@ func (window *GLWindowInstance) ParentClose() {
 
 	parentclass := (*C.GstGLWindowClass)(classdata.PeekParentClass(UnsafeGLWindowToGlibNone(window)))
 
+	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
+
 	C._gotk4_gstgl1_GLWindow_virtual_close(unsafe.Pointer(parentclass.close), carg0)
 	runtime.KeepAlive(window)
 }
@@ -13723,6 +13767,8 @@ func (window *GLWindowInstance) ParentControlsViewport() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstGLWindowClass)(classdata.PeekParentClass(UnsafeGLWindowToGlibNone(window)))
+
+	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
 
 	cret = C._gotk4_gstgl1_GLWindow_virtual_controls_viewport(unsafe.Pointer(parentclass.controls_viewport), carg0)
 	runtime.KeepAlive(window)
@@ -13745,6 +13791,8 @@ func (window *GLWindowInstance) ParentDraw() {
 
 	parentclass := (*C.GstGLWindowClass)(classdata.PeekParentClass(UnsafeGLWindowToGlibNone(window)))
 
+	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
+
 	C._gotk4_gstgl1_GLWindow_virtual_draw(unsafe.Pointer(parentclass.draw), carg0)
 	runtime.KeepAlive(window)
 }
@@ -13763,10 +13811,11 @@ func (window *GLWindowInstance) ParentDraw() {
 // from the @window.
 func (window *GLWindowInstance) ParentHandleEvents(handleEvents bool) {
 	var carg0 *C.GstGLWindow
-	var carg1 C.gboolean // in
+	var carg1 C.gboolean // in, none, converted
 
 	parentclass := (*C.GstGLWindowClass)(classdata.PeekParentClass(UnsafeGLWindowToGlibNone(window)))
 
+	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
 	if handleEvents {
 		carg1 = C.TRUE
 	}
@@ -13789,6 +13838,8 @@ func (window *GLWindowInstance) ParentHasOutputSurface() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstGLWindowClass)(classdata.PeekParentClass(UnsafeGLWindowToGlibNone(window)))
+
+	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
 
 	cret = C._gotk4_gstgl1_GLWindow_virtual_has_output_surface(unsafe.Pointer(parentclass.has_output_surface), carg0)
 	runtime.KeepAlive(window)
@@ -13818,6 +13869,8 @@ func (window *GLWindowInstance) ParentOpen() (bool, error) {
 
 	parentclass := (*C.GstGLWindowClass)(classdata.PeekParentClass(UnsafeGLWindowToGlibNone(window)))
 
+	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
+
 	cret = C._gotk4_gstgl1_GLWindow_virtual_open(unsafe.Pointer(parentclass.open), carg0, &_cerr)
 	runtime.KeepAlive(window)
 
@@ -13843,6 +13896,8 @@ func (window *GLWindowInstance) ParentQueueResize() {
 
 	parentclass := (*C.GstGLWindowClass)(classdata.PeekParentClass(UnsafeGLWindowToGlibNone(window)))
 
+	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
+
 	C._gotk4_gstgl1_GLWindow_virtual_queue_resize(unsafe.Pointer(parentclass.queue_resize), carg0)
 	runtime.KeepAlive(window)
 }
@@ -13856,6 +13911,8 @@ func (window *GLWindowInstance) ParentQuit() {
 
 	parentclass := (*C.GstGLWindowClass)(classdata.PeekParentClass(UnsafeGLWindowToGlibNone(window)))
 
+	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
+
 	C._gotk4_gstgl1_GLWindow_virtual_quit(unsafe.Pointer(parentclass.quit), carg0)
 	runtime.KeepAlive(window)
 }
@@ -13868,6 +13925,8 @@ func (window *GLWindowInstance) ParentRun() {
 	var carg0 *C.GstGLWindow
 
 	parentclass := (*C.GstGLWindowClass)(classdata.PeekParentClass(UnsafeGLWindowToGlibNone(window)))
+
+	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
 
 	C._gotk4_gstgl1_GLWindow_virtual_run(unsafe.Pointer(parentclass.run), carg0)
 	runtime.KeepAlive(window)
@@ -13885,11 +13944,12 @@ func (window *GLWindowInstance) ParentRun() {
 // to ignore this information.
 func (window *GLWindowInstance) ParentSetPreferredSize(width int32, height int32) {
 	var carg0 *C.GstGLWindow
-	var carg1 C.gint // in, none, casted
+	var carg1 C.gint // in, none, converted
 	var carg2 C.gint // in, none, casted
 
 	parentclass := (*C.GstGLWindowClass)(classdata.PeekParentClass(UnsafeGLWindowToGlibNone(window)))
 
+	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
 	carg1 = C.gint(width)
 	carg2 = C.gint(height)
 
@@ -13917,7 +13977,7 @@ func (window *GLWindowInstance) ParentSetPreferredSize(width int32, height int32
 // according to the #GstVideoOverlay interface.
 func (window *GLWindowInstance) ParentSetRenderRectangle(x int32, y int32, width int32, height int32) bool {
 	var carg0 *C.GstGLWindow
-	var carg1 C.gint     // in, none, casted
+	var carg1 C.gint     // in, none, converted
 	var carg2 C.gint     // in, none, casted
 	var carg3 C.gint     // in, none, casted
 	var carg4 C.gint     // in, none, casted
@@ -13925,6 +13985,7 @@ func (window *GLWindowInstance) ParentSetRenderRectangle(x int32, y int32, width
 
 	parentclass := (*C.GstGLWindowClass)(classdata.PeekParentClass(UnsafeGLWindowToGlibNone(window)))
 
+	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
 	carg1 = C.gint(x)
 	carg2 = C.gint(y)
 	carg3 = C.gint(width)
@@ -13954,6 +14015,8 @@ func (window *GLWindowInstance) ParentShow() {
 	var carg0 *C.GstGLWindow
 
 	parentclass := (*C.GstGLWindowClass)(classdata.PeekParentClass(UnsafeGLWindowToGlibNone(window)))
+
+	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
 
 	C._gotk4_gstgl1_GLWindow_virtual_show(unsafe.Pointer(parentclass.show), carg0)
 	runtime.KeepAlive(window)

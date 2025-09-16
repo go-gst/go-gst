@@ -1873,6 +1873,8 @@ func (appsink *AppSinkInstance) ParentEos() {
 
 	parentclass := (*C.GstAppSinkClass)(classdata.PeekParentClass(UnsafeAppSinkToGlibNone(appsink)))
 
+	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
+
 	C._gotk4_gstapp1_AppSink_virtual_eos(unsafe.Pointer(parentclass.eos), carg0)
 	runtime.KeepAlive(appsink)
 }
@@ -1888,6 +1890,8 @@ func (appsink *AppSinkInstance) ParentNewPreroll() gst.FlowReturn {
 	var cret  C.GstFlowReturn // return, none, casted
 
 	parentclass := (*C.GstAppSinkClass)(classdata.PeekParentClass(UnsafeAppSinkToGlibNone(appsink)))
+
+	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 
 	cret = C._gotk4_gstapp1_AppSink_virtual_new_preroll(unsafe.Pointer(parentclass.new_preroll), carg0)
 	runtime.KeepAlive(appsink)
@@ -1910,6 +1914,8 @@ func (appsink *AppSinkInstance) ParentNewSample() gst.FlowReturn {
 	var cret  C.GstFlowReturn // return, none, casted
 
 	parentclass := (*C.GstAppSinkClass)(classdata.PeekParentClass(UnsafeAppSinkToGlibNone(appsink)))
+
+	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 
 	cret = C._gotk4_gstapp1_AppSink_virtual_new_sample(unsafe.Pointer(parentclass.new_sample), carg0)
 	runtime.KeepAlive(appsink)
@@ -1952,6 +1958,8 @@ func (appsink *AppSinkInstance) ParentPullPreroll() *gst.Sample {
 
 	parentclass := (*C.GstAppSinkClass)(classdata.PeekParentClass(UnsafeAppSinkToGlibNone(appsink)))
 
+	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
+
 	cret = C._gotk4_gstapp1_AppSink_virtual_pull_preroll(unsafe.Pointer(parentclass.pull_preroll), carg0)
 	runtime.KeepAlive(appsink)
 
@@ -1987,6 +1995,8 @@ func (appsink *AppSinkInstance) ParentPullSample() *gst.Sample {
 	var cret  *C.GstSample // return, full, converted, nullable
 
 	parentclass := (*C.GstAppSinkClass)(classdata.PeekParentClass(UnsafeAppSinkToGlibNone(appsink)))
+
+	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 
 	cret = C._gotk4_gstapp1_AppSink_virtual_pull_sample(unsafe.Pointer(parentclass.pull_sample), carg0)
 	runtime.KeepAlive(appsink)
@@ -2032,11 +2042,12 @@ func (appsink *AppSinkInstance) ParentPullSample() *gst.Sample {
 // element is set to the READY/NULL state, or the timeout expires.
 func (appsink *AppSinkInstance) ParentTryPullPreroll(timeout gst.ClockTime) *gst.Sample {
 	var carg0 *C.GstAppSink
-	var carg1 C.GstClockTime // in, none, casted, alias
+	var carg1 C.GstClockTime // in, none, converted
 	var cret  *C.GstSample   // return, full, converted, nullable
 
 	parentclass := (*C.GstAppSinkClass)(classdata.PeekParentClass(UnsafeAppSinkToGlibNone(appsink)))
 
+	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 	carg1 = C.GstClockTime(timeout)
 
 	cret = C._gotk4_gstapp1_AppSink_virtual_try_pull_preroll(unsafe.Pointer(parentclass.try_pull_preroll), carg0, carg1)
@@ -2077,11 +2088,12 @@ func (appsink *AppSinkInstance) ParentTryPullPreroll(timeout gst.ClockTime) *gst
 // condition.
 func (appsink *AppSinkInstance) ParentTryPullSample(timeout gst.ClockTime) *gst.Sample {
 	var carg0 *C.GstAppSink
-	var carg1 C.GstClockTime // in, none, casted, alias
+	var carg1 C.GstClockTime // in, none, converted
 	var cret  *C.GstSample   // return, full, converted, nullable
 
 	parentclass := (*C.GstAppSinkClass)(classdata.PeekParentClass(UnsafeAppSinkToGlibNone(appsink)))
 
+	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 	carg1 = C.GstClockTime(timeout)
 
 	cret = C._gotk4_gstapp1_AppSink_virtual_try_pull_sample(unsafe.Pointer(parentclass.try_pull_sample), carg0, carg1)
@@ -3695,6 +3707,8 @@ func (appsrc *AppSrcInstance) ParentEndOfStream() gst.FlowReturn {
 
 	parentclass := (*C.GstAppSrcClass)(classdata.PeekParentClass(UnsafeAppSrcToGlibNone(appsrc)))
 
+	carg0 = (*C.GstAppSrc)(UnsafeAppSrcToGlibNone(appsrc))
+
 	cret = C._gotk4_gstapp1_AppSrc_virtual_end_of_stream(unsafe.Pointer(parentclass.end_of_stream), carg0)
 	runtime.KeepAlive(appsrc)
 
@@ -3712,6 +3726,8 @@ func (appsrc *AppSrcInstance) ParentEnoughData() {
 
 	parentclass := (*C.GstAppSrcClass)(classdata.PeekParentClass(UnsafeAppSrcToGlibNone(appsrc)))
 
+	carg0 = (*C.GstAppSrc)(UnsafeAppSrcToGlibNone(appsrc))
+
 	C._gotk4_gstapp1_AppSrc_virtual_enough_data(unsafe.Pointer(parentclass.enough_data), carg0)
 	runtime.KeepAlive(appsrc)
 }
@@ -3724,10 +3740,11 @@ func (appsrc *AppSrcInstance) ParentEnoughData() {
 // 	- length uint 
 func (appsrc *AppSrcInstance) ParentNeedData(length uint) {
 	var carg0 *C.GstAppSrc
-	var carg1 C.guint // in, none, casted
+	var carg1 C.guint // in, none, converted
 
 	parentclass := (*C.GstAppSrcClass)(classdata.PeekParentClass(UnsafeAppSrcToGlibNone(appsrc)))
 
+	carg0 = (*C.GstAppSrc)(UnsafeAppSrcToGlibNone(appsrc))
 	carg1 = C.guint(length)
 
 	C._gotk4_gstapp1_AppSrc_virtual_need_data(unsafe.Pointer(parentclass.need_data), carg0, carg1)
@@ -3753,11 +3770,12 @@ func (appsrc *AppSrcInstance) ParentNeedData(length uint) {
 // space becomes available in the queue.
 func (appsrc *AppSrcInstance) ParentPushBuffer(buffer *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstAppSrc
-	var carg1 *C.GstBuffer    // in, full, converted
+	var carg1 *C.GstBuffer    // in, none, converted
 	var cret  C.GstFlowReturn // return, none, casted
 
 	parentclass := (*C.GstAppSrcClass)(classdata.PeekParentClass(UnsafeAppSrcToGlibNone(appsrc)))
 
+	carg0 = (*C.GstAppSrc)(UnsafeAppSrcToGlibNone(appsrc))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibFull(buffer))
 
 	cret = C._gotk4_gstapp1_AppSrc_virtual_push_buffer(unsafe.Pointer(parentclass.push_buffer), carg0, carg1)
@@ -3790,11 +3808,12 @@ func (appsrc *AppSrcInstance) ParentPushBuffer(buffer *gst.Buffer) gst.FlowRetur
 // space becomes available in the queue.
 func (appsrc *AppSrcInstance) ParentPushBufferList(bufferList *gst.BufferList) gst.FlowReturn {
 	var carg0 *C.GstAppSrc
-	var carg1 *C.GstBufferList // in, full, converted
+	var carg1 *C.GstBufferList // in, none, converted
 	var cret  C.GstFlowReturn  // return, none, casted
 
 	parentclass := (*C.GstAppSrcClass)(classdata.PeekParentClass(UnsafeAppSrcToGlibNone(appsrc)))
 
+	carg0 = (*C.GstAppSrc)(UnsafeAppSrcToGlibNone(appsrc))
 	carg1 = (*C.GstBufferList)(gst.UnsafeBufferListToGlibFull(bufferList))
 
 	cret = C._gotk4_gstapp1_AppSrc_virtual_push_buffer_list(unsafe.Pointer(parentclass.push_buffer_list), carg0, carg1)
@@ -3837,6 +3856,7 @@ func (appsrc *AppSrcInstance) ParentPushSample(sample *gst.Sample) gst.FlowRetur
 
 	parentclass := (*C.GstAppSrcClass)(classdata.PeekParentClass(UnsafeAppSrcToGlibNone(appsrc)))
 
+	carg0 = (*C.GstAppSrc)(UnsafeAppSrcToGlibNone(appsrc))
 	carg1 = (*C.GstSample)(gst.UnsafeSampleToGlibNone(sample))
 
 	cret = C._gotk4_gstapp1_AppSrc_virtual_push_sample(unsafe.Pointer(parentclass.push_sample), carg0, carg1)
@@ -3862,11 +3882,12 @@ func (appsrc *AppSrcInstance) ParentPushSample(sample *gst.Sample) gst.FlowRetur
 // 	- goret bool 
 func (appsrc *AppSrcInstance) ParentSeekData(offset uint64) bool {
 	var carg0 *C.GstAppSrc
-	var carg1 C.guint64  // in, none, casted
+	var carg1 C.guint64  // in, none, converted
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstAppSrcClass)(classdata.PeekParentClass(UnsafeAppSrcToGlibNone(appsrc)))
 
+	carg0 = (*C.GstAppSrc)(UnsafeAppSrcToGlibNone(appsrc))
 	carg1 = C.guint64(offset)
 
 	cret = C._gotk4_gstapp1_AppSrc_virtual_seek_data(unsafe.Pointer(parentclass.seek_data), carg0, carg1)
