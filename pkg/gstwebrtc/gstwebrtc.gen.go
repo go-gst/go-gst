@@ -274,10 +274,10 @@ func (e WebRTCDTLSSetup) String() string {
 type WebRTCDTLSTransportState C.int
 
 const (
-	// NewWebrtcDTLSTransportState wraps WEBRTC_DTLS_TRANSPORT_STATE_NEW
+	// WebrtcDTLSTransportStateNew wraps WEBRTC_DTLS_TRANSPORT_STATE_NEW
 	//
 	// new
-	NewWebrtcDTLSTransportState WebRTCDTLSTransportState = 0
+	WebrtcDTLSTransportStateNew WebRTCDTLSTransportState = 0
 	// WebrtcDTLSTransportStateClosed wraps WEBRTC_DTLS_TRANSPORT_STATE_CLOSED
 	//
 	// closed
@@ -312,11 +312,11 @@ func (e WebRTCDTLSTransportState) SetGoValue(v *gobject.Value) {
 
 func (e WebRTCDTLSTransportState) String() string {
 	switch e {
-		case NewWebrtcDTLSTransportState: return "NewWebrtcDTLSTransportState"
 		case WebrtcDTLSTransportStateClosed: return "WebrtcDTLSTransportStateClosed"
 		case WebrtcDTLSTransportStateConnected: return "WebrtcDTLSTransportStateConnected"
 		case WebrtcDTLSTransportStateConnecting: return "WebrtcDTLSTransportStateConnecting"
 		case WebrtcDTLSTransportStateFailed: return "WebrtcDTLSTransportStateFailed"
+		case WebrtcDTLSTransportStateNew: return "WebrtcDTLSTransportStateNew"
 		default: return fmt.Sprintf("WebRTCDTLSTransportState(%d)", e)
 	}
 }
@@ -547,10 +547,10 @@ func (e WebRTCICEComponent) String() string {
 type WebRTCICEConnectionState C.int
 
 const (
-	// NewWebrtcIceConnectionState wraps WEBRTC_ICE_CONNECTION_STATE_NEW
+	// WebrtcIceConnectionStateNew wraps WEBRTC_ICE_CONNECTION_STATE_NEW
 	//
 	// new
-	NewWebrtcIceConnectionState WebRTCICEConnectionState = 0
+	WebrtcIceConnectionStateNew WebRTCICEConnectionState = 0
 	// WebrtcIceConnectionStateChecking wraps WEBRTC_ICE_CONNECTION_STATE_CHECKING
 	//
 	// checking
@@ -593,13 +593,13 @@ func (e WebRTCICEConnectionState) SetGoValue(v *gobject.Value) {
 
 func (e WebRTCICEConnectionState) String() string {
 	switch e {
-		case NewWebrtcIceConnectionState: return "NewWebrtcIceConnectionState"
 		case WebrtcIceConnectionStateChecking: return "WebrtcIceConnectionStateChecking"
 		case WebrtcIceConnectionStateClosed: return "WebrtcIceConnectionStateClosed"
 		case WebrtcIceConnectionStateCompleted: return "WebrtcIceConnectionStateCompleted"
 		case WebrtcIceConnectionStateConnected: return "WebrtcIceConnectionStateConnected"
 		case WebrtcIceConnectionStateDisconnected: return "WebrtcIceConnectionStateDisconnected"
 		case WebrtcIceConnectionStateFailed: return "WebrtcIceConnectionStateFailed"
+		case WebrtcIceConnectionStateNew: return "WebrtcIceConnectionStateNew"
 		default: return fmt.Sprintf("WebRTCICEConnectionState(%d)", e)
 	}
 }
@@ -610,10 +610,10 @@ func (e WebRTCICEConnectionState) String() string {
 type WebRTCICEGatheringState C.int
 
 const (
-	// NewWebrtcIceGatheringState wraps WEBRTC_ICE_GATHERING_STATE_NEW
+	// WebrtcIceGatheringStateNew wraps WEBRTC_ICE_GATHERING_STATE_NEW
 	//
 	// new
-	NewWebrtcIceGatheringState WebRTCICEGatheringState = 0
+	WebrtcIceGatheringStateNew WebRTCICEGatheringState = 0
 	// WebrtcIceGatheringStateGathering wraps WEBRTC_ICE_GATHERING_STATE_GATHERING
 	//
 	// gathering
@@ -640,9 +640,9 @@ func (e WebRTCICEGatheringState) SetGoValue(v *gobject.Value) {
 
 func (e WebRTCICEGatheringState) String() string {
 	switch e {
-		case NewWebrtcIceGatheringState: return "NewWebrtcIceGatheringState"
 		case WebrtcIceGatheringStateComplete: return "WebrtcIceGatheringStateComplete"
 		case WebrtcIceGatheringStateGathering: return "WebrtcIceGatheringStateGathering"
+		case WebrtcIceGatheringStateNew: return "WebrtcIceGatheringStateNew"
 		default: return fmt.Sprintf("WebRTCICEGatheringState(%d)", e)
 	}
 }
@@ -771,10 +771,10 @@ func (e WebRTCKind) String() string {
 type WebRTCPeerConnectionState C.int
 
 const (
-	// NewWebrtcPeerConnectionState wraps WEBRTC_PEER_CONNECTION_STATE_NEW
+	// WebrtcPeerConnectionStateNew wraps WEBRTC_PEER_CONNECTION_STATE_NEW
 	//
 	// new
-	NewWebrtcPeerConnectionState WebRTCPeerConnectionState = 0
+	WebrtcPeerConnectionStateNew WebRTCPeerConnectionState = 0
 	// WebrtcPeerConnectionStateConnecting wraps WEBRTC_PEER_CONNECTION_STATE_CONNECTING
 	//
 	// connecting
@@ -813,12 +813,12 @@ func (e WebRTCPeerConnectionState) SetGoValue(v *gobject.Value) {
 
 func (e WebRTCPeerConnectionState) String() string {
 	switch e {
-		case NewWebrtcPeerConnectionState: return "NewWebrtcPeerConnectionState"
 		case WebrtcPeerConnectionStateClosed: return "WebrtcPeerConnectionStateClosed"
 		case WebrtcPeerConnectionStateConnected: return "WebrtcPeerConnectionStateConnected"
 		case WebrtcPeerConnectionStateConnecting: return "WebrtcPeerConnectionStateConnecting"
 		case WebrtcPeerConnectionStateDisconnected: return "WebrtcPeerConnectionStateDisconnected"
 		case WebrtcPeerConnectionStateFailed: return "WebrtcPeerConnectionStateFailed"
+		case WebrtcPeerConnectionStateNew: return "WebrtcPeerConnectionStateNew"
 		default: return fmt.Sprintf("WebRTCPeerConnectionState(%d)", e)
 	}
 }
@@ -928,10 +928,10 @@ func (e WebRTCRTPTransceiverDirection) String() string {
 type WebRTCSCTPTransportState C.int
 
 const (
-	// NewWebrtcSCTPTransportState wraps WEBRTC_SCTP_TRANSPORT_STATE_NEW
+	// WebrtcSCTPTransportStateNew wraps WEBRTC_SCTP_TRANSPORT_STATE_NEW
 	//
 	// new
-	NewWebrtcSCTPTransportState WebRTCSCTPTransportState = 0
+	WebrtcSCTPTransportStateNew WebRTCSCTPTransportState = 0
 	// WebrtcSCTPTransportStateConnecting wraps WEBRTC_SCTP_TRANSPORT_STATE_CONNECTING
 	//
 	// connecting
@@ -962,10 +962,10 @@ func (e WebRTCSCTPTransportState) SetGoValue(v *gobject.Value) {
 
 func (e WebRTCSCTPTransportState) String() string {
 	switch e {
-		case NewWebrtcSCTPTransportState: return "NewWebrtcSCTPTransportState"
 		case WebrtcSCTPTransportStateClosed: return "WebrtcSCTPTransportStateClosed"
 		case WebrtcSCTPTransportStateConnected: return "WebrtcSCTPTransportStateConnected"
 		case WebrtcSCTPTransportStateConnecting: return "WebrtcSCTPTransportStateConnecting"
+		case WebrtcSCTPTransportStateNew: return "WebrtcSCTPTransportStateNew"
 		default: return fmt.Sprintf("WebRTCSCTPTransportState(%d)", e)
 	}
 }
