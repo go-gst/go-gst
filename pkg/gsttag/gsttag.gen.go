@@ -17,21 +17,21 @@ import (
 // #cgo pkg-config: gstreamer-tag-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/tag/tag.h>
-// extern C.gboolean _gotk4_gsttag1_TagDemux_identify_tag(*C.GstTagDemux, *C.GstBuffer, C.gboolean, *C.guint);
-// extern *C.GstTagList _gotk4_gsttag1_TagDemux_merge_tags(*C.GstTagDemux, *C.GstTagList, *C.GstTagList);
-// C.gboolean _gotk4_gsttag1_TagDemux_virtual_identify_tag(void* fnptr, *C.GstTagDemux carg0, *C.GstBuffer carg1, C.gboolean carg2, *C.guint carg3) {
-// 	return ((C.gboolean (*) (*C.GstTagDemux, *C.GstBuffer, C.gboolean, *C.guint))(fnptr))(carg0, carg1, carg2, carg3);
+// extern gboolean _gotk4_gsttag1_TagDemux_identify_tag(GstTagDemux*, GstBuffer*, gboolean, guint*);
+// extern GstTagList* _gotk4_gsttag1_TagDemux_merge_tags(GstTagDemux*, const GstTagList*, const GstTagList*);
+// gboolean _gotk4_gsttag1_TagDemux_virtual_identify_tag(void* fnptr, GstTagDemux* carg0, GstBuffer* carg1, gboolean carg2, guint* carg3) {
+// 	return ((gboolean (*) (GstTagDemux*, GstBuffer*, gboolean, guint*))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// *C.GstTagList _gotk4_gsttag1_TagDemux_virtual_merge_tags(void* fnptr, *C.GstTagDemux carg0, *C.GstTagList carg1, *C.GstTagList carg2) {
-// 	return ((*C.GstTagList (*) (*C.GstTagDemux, *C.GstTagList, *C.GstTagList))(fnptr))(carg0, carg1, carg2);
+// GstTagList* _gotk4_gsttag1_TagDemux_virtual_merge_tags(void* fnptr, GstTagDemux* carg0, const GstTagList* carg1, const GstTagList* carg2) {
+// 	return ((GstTagList* (*) (GstTagDemux*, const GstTagList*, const GstTagList*))(fnptr))(carg0, carg1, carg2);
 // }
-// extern *C.GstBuffer _gotk4_gsttag1_TagMux_render_end_tag(*C.GstTagMux, *C.GstTagList);
-// extern *C.GstBuffer _gotk4_gsttag1_TagMux_render_start_tag(*C.GstTagMux, *C.GstTagList);
-// *C.GstBuffer _gotk4_gsttag1_TagMux_virtual_render_end_tag(void* fnptr, *C.GstTagMux carg0, *C.GstTagList carg1) {
-// 	return ((*C.GstBuffer (*) (*C.GstTagMux, *C.GstTagList))(fnptr))(carg0, carg1);
+// extern GstBuffer* _gotk4_gsttag1_TagMux_render_end_tag(GstTagMux*, const GstTagList*);
+// extern GstBuffer* _gotk4_gsttag1_TagMux_render_start_tag(GstTagMux*, const GstTagList*);
+// GstBuffer* _gotk4_gsttag1_TagMux_virtual_render_end_tag(void* fnptr, GstTagMux* carg0, const GstTagList* carg1) {
+// 	return ((GstBuffer* (*) (GstTagMux*, const GstTagList*))(fnptr))(carg0, carg1);
 // }
-// *C.GstBuffer _gotk4_gsttag1_TagMux_virtual_render_start_tag(void* fnptr, *C.GstTagMux carg0, *C.GstTagList carg1) {
-// 	return ((*C.GstBuffer (*) (*C.GstTagMux, *C.GstTagList))(fnptr))(carg0, carg1);
+// GstBuffer* _gotk4_gsttag1_TagMux_virtual_render_start_tag(void* fnptr, GstTagMux* carg0, const GstTagList* carg1) {
+// 	return ((GstBuffer* (*) (GstTagMux*, const GstTagList*))(fnptr))(carg0, carg1);
 // }
 import "C"
 
@@ -450,10 +450,10 @@ func TagFreeformStringToUTF8(data string, envVars []string) string {
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of string (*C.gchar)")
+	panic("unimplemented conversion of string (const gchar*)")
 	_ = envVars
 	_ = carg3
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (const gchar**)")
 
 	cret = C.gst_tag_freeform_string_to_utf8(carg1, carg2, carg3)
 	runtime.KeepAlive(data)
@@ -722,7 +722,7 @@ func TagGetLanguageCodes() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (gchar**)")
 
 	return goret
 }
@@ -975,7 +975,7 @@ func TagGetLicenses() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (gchar**)")
 
 	return goret
 }
@@ -1073,7 +1073,7 @@ func TagImageDataToImageSample(imageData []uint8, imageType TagImageType) *gst.S
 	_ = imageData
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 	carg3 = C.GstTagImageType(imageType)
 
 	cret = C.gst_tag_image_data_to_image_sample(carg1, carg2, carg3)
@@ -1116,7 +1116,7 @@ func TagListAddID3Image(tagList *gst.TagList, imageData []uint8, id3PictureType 
 	_ = imageData
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 	carg4 = C.guint(id3PictureType)
 
 	cret = C.gst_tag_list_add_id3_image(carg1, carg2, carg3, carg4)
@@ -1254,11 +1254,11 @@ func TagListFromVorbiscomment(data []uint8, idData []uint8) (string, *gst.TagLis
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 	_ = idData
 	_ = carg3
 	_ = carg4
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_tag_list_from_vorbiscomment(carg1, carg2, carg3, carg4, &carg5)
 	runtime.KeepAlive(data)
@@ -1302,7 +1302,7 @@ func TagListFromVorbiscommentBuffer(buffer *gst.Buffer, idData []uint8) (string,
 	_ = idData
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_tag_list_from_vorbiscomment_buffer(carg1, carg2, carg3, &carg4)
 	runtime.KeepAlive(buffer)
@@ -1367,7 +1367,7 @@ func TagListNewFromID3V1(data [128]uint8) *gst.TagList {
 
 	_ = data
 	_ = carg1
-	panic("unimplemented conversion of [128]uint8 (*C.guint8)")
+	panic("unimplemented conversion of [128]uint8 (const guint8*)")
 
 	cret = C.gst_tag_list_new_from_id3v1(carg1)
 	runtime.KeepAlive(data)
@@ -1469,7 +1469,7 @@ func TagListToVorbiscommentBuffer(list *gst.TagList, idData []uint8, vendorStrin
 	_ = idData
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 	if vendorString != "" {
 		carg4 = (*C.gchar)(unsafe.Pointer(C.CString(vendorString)))
 		defer C.free(unsafe.Pointer(carg4))
@@ -1515,7 +1515,7 @@ func TagListToXmpBuffer(list *gst.TagList, readOnly bool, schemas []string) *gst
 	}
 	_ = schemas
 	_ = carg3
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (const gchar**)")
 
 	cret = C.gst_tag_list_to_xmp_buffer(carg1, carg2, carg3)
 	runtime.KeepAlive(list)
@@ -1721,7 +1721,7 @@ func TagXmpListSchemas() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (const gchar**)")
 
 	return goret
 }
@@ -2209,7 +2209,7 @@ func UnsafeApplyTagDemuxOverrides[Instance TagDemux](gclass unsafe.Pointer, over
 				}
 				_ = tagSize
 				_ = carg3
-				panic("unimplemented conversion of *uint (*C.guint)")
+				panic("unimplemented conversion of *uint (guint*)")
 
 				goret = overrides.IdentifyTag(demux, buffer, startTag, tagSize)
 
@@ -2278,7 +2278,7 @@ func (demux *TagDemuxInstance) ParentIdentifyTag(buffer *gst.Buffer, startTag bo
 	}
 	_ = tagSize
 	_ = carg3
-	panic("unimplemented conversion of *uint (*C.guint)")
+	panic("unimplemented conversion of *uint (guint*)")
 
 	cret = C._gotk4_gsttag1_TagDemux_virtual_identify_tag(unsafe.Pointer(parentclass.identify_tag), carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(demux)

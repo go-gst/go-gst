@@ -1049,7 +1049,7 @@ func (msg *MIKEYMessage) AddPke(C MIKEYCacheType, data []uint8) bool {
 	_ = data
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_mikey_message_add_pke(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(msg)
@@ -1086,7 +1086,7 @@ func (msg *MIKEYMessage) AddRand(rand []uint8) bool {
 	_ = rand
 	_ = carg2
 	_ = carg1
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_mikey_message_add_rand(carg0, carg1, carg2)
 	runtime.KeepAlive(msg)
@@ -1947,11 +1947,11 @@ func (payload *MIKEYPayload) KeyDataSetInterval(vfData []uint8, vtData []uint8) 
 	_ = vfData
 	_ = carg2
 	_ = carg1
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 	_ = vtData
 	_ = carg4
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_mikey_payload_key_data_set_interval(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(payload)
@@ -1992,7 +1992,7 @@ func (payload *MIKEYPayload) KeyDataSetKey(keyType MIKEYKeyDataType, keyData []u
 	_ = keyData
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_mikey_payload_key_data_set_key(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(payload)
@@ -2030,7 +2030,7 @@ func (payload *MIKEYPayload) KeyDataSetSalt(saltData []uint8) bool {
 	_ = saltData
 	_ = carg2
 	_ = carg1
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_mikey_payload_key_data_set_salt(carg0, carg1, carg2)
 	runtime.KeepAlive(payload)
@@ -2066,7 +2066,7 @@ func (payload *MIKEYPayload) KeyDataSetSpi(spiData []uint8) bool {
 	_ = spiData
 	_ = carg2
 	_ = carg1
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_mikey_payload_key_data_set_spi(carg0, carg1, carg2)
 	runtime.KeepAlive(payload)
@@ -2106,7 +2106,7 @@ func (payload *MIKEYPayload) PkeSet(C MIKEYCacheType, data []uint8) bool {
 	_ = data
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_mikey_payload_pke_set(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(payload)
@@ -2143,7 +2143,7 @@ func (payload *MIKEYPayload) RandSet(rand []uint8) bool {
 	_ = rand
 	_ = carg2
 	_ = carg1
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_mikey_payload_rand_set(carg0, carg1, carg2)
 	runtime.KeepAlive(payload)
@@ -2183,7 +2183,7 @@ func (payload *MIKEYPayload) SpAddParam(typ uint8, val []uint8) bool {
 	_ = val
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_mikey_payload_sp_add_param(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(payload)
@@ -3304,7 +3304,7 @@ func SDPMediaInit() (SDPMedia, SDPResult) {
 
 	_ = media
 	_ = carg1
-	panic("unimplemented conversion of SDPMedia (C.GstSDPMedia)")
+	panic("unimplemented conversion of SDPMedia (GstSDPMedia)")
 	goret = SDPResult(cret)
 
 	return media, goret
@@ -3370,7 +3370,7 @@ func SDPMediaSetMediaFromCaps(caps *gst.Caps) (SDPMedia, SDPResult) {
 
 	_ = media
 	_ = carg2
-	panic("unimplemented conversion of SDPMedia (C.GstSDPMedia)")
+	panic("unimplemented conversion of SDPMedia (GstSDPMedia)")
 	goret = SDPResult(cret)
 
 	return media, goret
@@ -4826,7 +4826,7 @@ func SDPMessageInit() (SDPMessage, SDPResult) {
 
 	_ = msg
 	_ = carg1
-	panic("unimplemented conversion of SDPMessage (C.GstSDPMessage)")
+	panic("unimplemented conversion of SDPMessage (GstSDPMessage)")
 	goret = SDPResult(cret)
 
 	return msg, goret
@@ -4909,7 +4909,7 @@ func SDPMessageParseBuffer(data []uint8, msg *SDPMessage) SDPResult {
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 	carg3 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 
 	cret = C.gst_sdp_message_parse_buffer(carg1, carg2, carg3)
@@ -5157,7 +5157,7 @@ func (msg *SDPMessage) AddTime(start string, stop string, repeat []string) SDPRe
 	defer C.free(unsafe.Pointer(carg2))
 	_ = repeat
 	_ = carg3
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (const gchar**)")
 
 	cret = C.gst_sdp_message_add_time(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(msg)
@@ -7045,7 +7045,7 @@ func (t *SDPTime) Set(start string, stop string, repeat []string) SDPResult {
 	defer C.free(unsafe.Pointer(carg2))
 	_ = repeat
 	_ = carg3
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (const gchar**)")
 
 	cret = C.gst_sdp_time_set(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(t)

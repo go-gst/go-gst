@@ -19,299 +19,299 @@ import (
 // #cgo pkg-config: gstreamer-video-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/video/video.h>
-// extern C.void _gotk4_gstvideo1_VideoConvertSampleCallback(*C.GstSample, *C.GError, C.gpointer);
+// extern void _gotk4_gstvideo1_VideoConvertSampleCallback(GstSample*, GError*, gpointer);
 // extern void destroyUserdata(gpointer);
-// extern C.GstColorBalanceType _gotk4_gstvideo1_ColorBalance_get_balance_type(*C.GstColorBalance);
-// extern C.gint _gotk4_gstvideo1_ColorBalance_get_value(*C.GstColorBalance, *C.GstColorBalanceChannel);
-// extern *C.GList _gotk4_gstvideo1_ColorBalance_list_channels(*C.GstColorBalance);
-// extern C.void _gotk4_gstvideo1_ColorBalance_set_value(*C.GstColorBalance, *C.GstColorBalanceChannel, C.gint);
-// extern C.void _gotk4_gstvideo1_ColorBalance_value_changed(*C.GstColorBalance, *C.GstColorBalanceChannel, C.gint);
-// C.GstColorBalanceType _gotk4_gstvideo1_ColorBalance_virtual_get_balance_type(void* fnptr, *C.GstColorBalance carg0) {
-// 	return ((C.GstColorBalanceType (*) (*C.GstColorBalance))(fnptr))(carg0);
-// }
-// C.gint _gotk4_gstvideo1_ColorBalance_virtual_get_value(void* fnptr, *C.GstColorBalance carg0, *C.GstColorBalanceChannel carg1) {
-// 	return ((C.gint (*) (*C.GstColorBalance, *C.GstColorBalanceChannel))(fnptr))(carg0, carg1);
-// }
-// *C.GList _gotk4_gstvideo1_ColorBalance_virtual_list_channels(void* fnptr, *C.GstColorBalance carg0) {
-// 	return ((*C.GList (*) (*C.GstColorBalance))(fnptr))(carg0);
-// }
-// C.void _gotk4_gstvideo1_ColorBalance_virtual_set_value(void* fnptr, *C.GstColorBalance carg0, *C.GstColorBalanceChannel carg1, C.gint carg2) {
-// 	return ((C.void (*) (*C.GstColorBalance, *C.GstColorBalanceChannel, C.gint))(fnptr))(carg0, carg1, carg2);
-// }
-// C.void _gotk4_gstvideo1_ColorBalance_virtual_value_changed(void* fnptr, *C.GstColorBalance carg0, *C.GstColorBalanceChannel carg1, C.gint carg2) {
-// 	return ((C.void (*) (*C.GstColorBalance, *C.GstColorBalanceChannel, C.gint))(fnptr))(carg0, carg1, carg2);
-// }
-// extern C.void _gotk4_gstvideo1_Navigation_send_event(*C.GstNavigation, *C.GstStructure);
-// extern C.void _gotk4_gstvideo1_Navigation_send_event_simple(*C.GstNavigation, *C.GstEvent);
-// C.void _gotk4_gstvideo1_Navigation_virtual_send_event(void* fnptr, *C.GstNavigation carg0, *C.GstStructure carg1) {
-// 	return ((C.void (*) (*C.GstNavigation, *C.GstStructure))(fnptr))(carg0, carg1);
-// }
-// C.void _gotk4_gstvideo1_Navigation_virtual_send_event_simple(void* fnptr, *C.GstNavigation carg0, *C.GstEvent carg1) {
-// 	return ((C.void (*) (*C.GstNavigation, *C.GstEvent))(fnptr))(carg0, carg1);
-// }
-// extern C.gboolean _gotk4_gstvideo1_VideoOrientation_get_hcenter(*C.GstVideoOrientation, C.gint);
-// extern C.gboolean _gotk4_gstvideo1_VideoOrientation_get_hflip(*C.GstVideoOrientation, C.gboolean);
-// extern C.gboolean _gotk4_gstvideo1_VideoOrientation_get_vcenter(*C.GstVideoOrientation, C.gint);
-// extern C.gboolean _gotk4_gstvideo1_VideoOrientation_get_vflip(*C.GstVideoOrientation, C.gboolean);
-// extern C.gboolean _gotk4_gstvideo1_VideoOrientation_set_hcenter(*C.GstVideoOrientation, C.gint);
-// extern C.gboolean _gotk4_gstvideo1_VideoOrientation_set_hflip(*C.GstVideoOrientation, C.gboolean);
-// extern C.gboolean _gotk4_gstvideo1_VideoOrientation_set_vcenter(*C.GstVideoOrientation, C.gint);
-// extern C.gboolean _gotk4_gstvideo1_VideoOrientation_set_vflip(*C.GstVideoOrientation, C.gboolean);
-// C.gboolean _gotk4_gstvideo1_VideoOrientation_virtual_get_hcenter(void* fnptr, *C.GstVideoOrientation carg0, C.gint* carg1) {
-// 	return ((C.gboolean (*) (*C.GstVideoOrientation, C.gint*))(fnptr))(carg0, carg1);
-// }
-// C.gboolean _gotk4_gstvideo1_VideoOrientation_virtual_get_hflip(void* fnptr, *C.GstVideoOrientation carg0, C.gboolean* carg1) {
-// 	return ((C.gboolean (*) (*C.GstVideoOrientation, C.gboolean*))(fnptr))(carg0, carg1);
-// }
-// C.gboolean _gotk4_gstvideo1_VideoOrientation_virtual_get_vcenter(void* fnptr, *C.GstVideoOrientation carg0, C.gint* carg1) {
-// 	return ((C.gboolean (*) (*C.GstVideoOrientation, C.gint*))(fnptr))(carg0, carg1);
-// }
-// C.gboolean _gotk4_gstvideo1_VideoOrientation_virtual_get_vflip(void* fnptr, *C.GstVideoOrientation carg0, C.gboolean* carg1) {
-// 	return ((C.gboolean (*) (*C.GstVideoOrientation, C.gboolean*))(fnptr))(carg0, carg1);
-// }
-// C.gboolean _gotk4_gstvideo1_VideoOrientation_virtual_set_hcenter(void* fnptr, *C.GstVideoOrientation carg0, C.gint carg1) {
-// 	return ((C.gboolean (*) (*C.GstVideoOrientation, C.gint))(fnptr))(carg0, carg1);
-// }
-// C.gboolean _gotk4_gstvideo1_VideoOrientation_virtual_set_hflip(void* fnptr, *C.GstVideoOrientation carg0, C.gboolean carg1) {
-// 	return ((C.gboolean (*) (*C.GstVideoOrientation, C.gboolean))(fnptr))(carg0, carg1);
-// }
-// C.gboolean _gotk4_gstvideo1_VideoOrientation_virtual_set_vcenter(void* fnptr, *C.GstVideoOrientation carg0, C.gint carg1) {
-// 	return ((C.gboolean (*) (*C.GstVideoOrientation, C.gint))(fnptr))(carg0, carg1);
-// }
-// C.gboolean _gotk4_gstvideo1_VideoOrientation_virtual_set_vflip(void* fnptr, *C.GstVideoOrientation carg0, C.gboolean carg1) {
-// 	return ((C.gboolean (*) (*C.GstVideoOrientation, C.gboolean))(fnptr))(carg0, carg1);
-// }
-// extern C.void _gotk4_gstvideo1_VideoOverlay_expose(*C.GstVideoOverlay);
-// extern C.void _gotk4_gstvideo1_VideoOverlay_handle_events(*C.GstVideoOverlay, C.gboolean);
-// extern C.void _gotk4_gstvideo1_VideoOverlay_set_render_rectangle(*C.GstVideoOverlay, C.gint, C.gint, C.gint, C.gint);
-// C.void _gotk4_gstvideo1_VideoOverlay_virtual_expose(void* fnptr, *C.GstVideoOverlay carg0) {
-// 	return ((C.void (*) (*C.GstVideoOverlay))(fnptr))(carg0);
-// }
-// C.void _gotk4_gstvideo1_VideoOverlay_virtual_handle_events(void* fnptr, *C.GstVideoOverlay carg0, C.gboolean carg1) {
-// 	return ((C.void (*) (*C.GstVideoOverlay, C.gboolean))(fnptr))(carg0, carg1);
-// }
-// C.void _gotk4_gstvideo1_VideoOverlay_virtual_set_render_rectangle(void* fnptr, *C.GstVideoOverlay carg0, C.gint carg1, C.gint carg2, C.gint carg3, C.gint carg4) {
-// 	return ((C.void (*) (*C.GstVideoOverlay, C.gint, C.gint, C.gint, C.gint))(fnptr))(carg0, carg1, carg2, carg3, carg4);
-// }
-// extern C.void _gotk4_gstvideo1_ColorBalanceChannel_value_changed(*C.GstColorBalanceChannel, C.gint);
-// C.void _gotk4_gstvideo1_ColorBalanceChannel_virtual_value_changed(void* fnptr, *C.GstColorBalanceChannel carg0, C.gint carg1) {
-// 	return ((C.void (*) (*C.GstColorBalanceChannel, C.gint))(fnptr))(carg0, carg1);
-// }
-// extern C.GstFlowReturn _gotk4_gstvideo1_VideoAggregator_aggregate_frames(*C.GstVideoAggregator, *C.GstBuffer);
-// extern C.void _gotk4_gstvideo1_VideoAggregator_find_best_format(*C.GstVideoAggregator, *C.GstCaps, *C.GstVideoInfo, C.gboolean);
-// extern *C.GstCaps _gotk4_gstvideo1_VideoAggregator_update_caps(*C.GstVideoAggregator, *C.GstCaps);
-// C.GstFlowReturn _gotk4_gstvideo1_VideoAggregator_virtual_aggregate_frames(void* fnptr, *C.GstVideoAggregator carg0, *C.GstBuffer carg1) {
-// 	return ((C.GstFlowReturn (*) (*C.GstVideoAggregator, *C.GstBuffer))(fnptr))(carg0, carg1);
-// }
-// C.void _gotk4_gstvideo1_VideoAggregator_virtual_find_best_format(void* fnptr, *C.GstVideoAggregator carg0, *C.GstCaps carg1, *C.GstVideoInfo carg2, C.gboolean* carg3) {
-// 	return ((C.void (*) (*C.GstVideoAggregator, *C.GstCaps, *C.GstVideoInfo, C.gboolean*))(fnptr))(carg0, carg1, carg2, carg3);
-// }
-// *C.GstCaps _gotk4_gstvideo1_VideoAggregator_virtual_update_caps(void* fnptr, *C.GstVideoAggregator carg0, *C.GstCaps carg1) {
-// 	return ((*C.GstCaps (*) (*C.GstVideoAggregator, *C.GstCaps))(fnptr))(carg0, carg1);
-// }
-// extern C.void _gotk4_gstvideo1_VideoAggregatorPad_clean_frame(*C.GstVideoAggregatorPad, *C.GstVideoAggregator, *C.GstVideoFrame);
-// extern C.gboolean _gotk4_gstvideo1_VideoAggregatorPad_prepare_frame(*C.GstVideoAggregatorPad, *C.GstVideoAggregator, *C.GstBuffer, *C.GstVideoFrame);
-// extern C.void _gotk4_gstvideo1_VideoAggregatorPad_prepare_frame_finish(*C.GstVideoAggregatorPad, *C.GstVideoAggregator, *C.GstVideoFrame);
-// extern C.void _gotk4_gstvideo1_VideoAggregatorPad_prepare_frame_start(*C.GstVideoAggregatorPad, *C.GstVideoAggregator, *C.GstBuffer, *C.GstVideoFrame);
-// extern C.void _gotk4_gstvideo1_VideoAggregatorPad_update_conversion_info(*C.GstVideoAggregatorPad);
-// C.void _gotk4_gstvideo1_VideoAggregatorPad_virtual_clean_frame(void* fnptr, *C.GstVideoAggregatorPad carg0, *C.GstVideoAggregator carg1, *C.GstVideoFrame carg2) {
-// 	return ((C.void (*) (*C.GstVideoAggregatorPad, *C.GstVideoAggregator, *C.GstVideoFrame))(fnptr))(carg0, carg1, carg2);
-// }
-// C.gboolean _gotk4_gstvideo1_VideoAggregatorPad_virtual_prepare_frame(void* fnptr, *C.GstVideoAggregatorPad carg0, *C.GstVideoAggregator carg1, *C.GstBuffer carg2, *C.GstVideoFrame carg3) {
-// 	return ((C.gboolean (*) (*C.GstVideoAggregatorPad, *C.GstVideoAggregator, *C.GstBuffer, *C.GstVideoFrame))(fnptr))(carg0, carg1, carg2, carg3);
-// }
-// C.void _gotk4_gstvideo1_VideoAggregatorPad_virtual_prepare_frame_finish(void* fnptr, *C.GstVideoAggregatorPad carg0, *C.GstVideoAggregator carg1, *C.GstVideoFrame carg2) {
-// 	return ((C.void (*) (*C.GstVideoAggregatorPad, *C.GstVideoAggregator, *C.GstVideoFrame))(fnptr))(carg0, carg1, carg2);
-// }
-// C.void _gotk4_gstvideo1_VideoAggregatorPad_virtual_prepare_frame_start(void* fnptr, *C.GstVideoAggregatorPad carg0, *C.GstVideoAggregator carg1, *C.GstBuffer carg2, *C.GstVideoFrame carg3) {
-// 	return ((C.void (*) (*C.GstVideoAggregatorPad, *C.GstVideoAggregator, *C.GstBuffer, *C.GstVideoFrame))(fnptr))(carg0, carg1, carg2, carg3);
-// }
-// C.void _gotk4_gstvideo1_VideoAggregatorPad_virtual_update_conversion_info(void* fnptr, *C.GstVideoAggregatorPad carg0) {
-// 	return ((C.void (*) (*C.GstVideoAggregatorPad))(fnptr))(carg0);
-// }
-// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_close(*C.GstVideoDecoder);
-// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_decide_allocation(*C.GstVideoDecoder, *C.GstQuery);
-// extern C.GstFlowReturn _gotk4_gstvideo1_VideoDecoder_drain(*C.GstVideoDecoder);
-// extern C.GstFlowReturn _gotk4_gstvideo1_VideoDecoder_finish(*C.GstVideoDecoder);
-// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_flush(*C.GstVideoDecoder);
-// extern *C.GstCaps _gotk4_gstvideo1_VideoDecoder_getcaps(*C.GstVideoDecoder, *C.GstCaps);
-// extern C.GstFlowReturn _gotk4_gstvideo1_VideoDecoder_handle_frame(*C.GstVideoDecoder, *C.GstVideoCodecFrame);
-// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_handle_missing_data(*C.GstVideoDecoder, C.GstClockTime, C.GstClockTime);
-// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_negotiate(*C.GstVideoDecoder);
-// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_open(*C.GstVideoDecoder);
-// extern C.GstFlowReturn _gotk4_gstvideo1_VideoDecoder_parse(*C.GstVideoDecoder, *C.GstVideoCodecFrame, *C.GstAdapter, C.gboolean);
-// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_propose_allocation(*C.GstVideoDecoder, *C.GstQuery);
-// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_reset(*C.GstVideoDecoder, C.gboolean);
-// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_set_format(*C.GstVideoDecoder, *C.GstVideoCodecState);
-// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_sink_event(*C.GstVideoDecoder, *C.GstEvent);
-// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_sink_query(*C.GstVideoDecoder, *C.GstQuery);
-// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_src_event(*C.GstVideoDecoder, *C.GstEvent);
-// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_src_query(*C.GstVideoDecoder, *C.GstQuery);
-// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_start(*C.GstVideoDecoder);
-// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_stop(*C.GstVideoDecoder);
-// extern C.gboolean _gotk4_gstvideo1_VideoDecoder_transform_meta(*C.GstVideoDecoder, *C.GstVideoCodecFrame, *C.GstMeta);
-// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_close(void* fnptr, *C.GstVideoDecoder carg0) {
-// 	return ((C.gboolean (*) (*C.GstVideoDecoder))(fnptr))(carg0);
-// }
-// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_decide_allocation(void* fnptr, *C.GstVideoDecoder carg0, *C.GstQuery carg1) {
-// 	return ((C.gboolean (*) (*C.GstVideoDecoder, *C.GstQuery))(fnptr))(carg0, carg1);
-// }
-// C.GstFlowReturn _gotk4_gstvideo1_VideoDecoder_virtual_drain(void* fnptr, *C.GstVideoDecoder carg0) {
-// 	return ((C.GstFlowReturn (*) (*C.GstVideoDecoder))(fnptr))(carg0);
-// }
-// C.GstFlowReturn _gotk4_gstvideo1_VideoDecoder_virtual_finish(void* fnptr, *C.GstVideoDecoder carg0) {
-// 	return ((C.GstFlowReturn (*) (*C.GstVideoDecoder))(fnptr))(carg0);
-// }
-// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_flush(void* fnptr, *C.GstVideoDecoder carg0) {
-// 	return ((C.gboolean (*) (*C.GstVideoDecoder))(fnptr))(carg0);
-// }
-// *C.GstCaps _gotk4_gstvideo1_VideoDecoder_virtual_getcaps(void* fnptr, *C.GstVideoDecoder carg0, *C.GstCaps carg1) {
-// 	return ((*C.GstCaps (*) (*C.GstVideoDecoder, *C.GstCaps))(fnptr))(carg0, carg1);
-// }
-// C.GstFlowReturn _gotk4_gstvideo1_VideoDecoder_virtual_handle_frame(void* fnptr, *C.GstVideoDecoder carg0, *C.GstVideoCodecFrame carg1) {
-// 	return ((C.GstFlowReturn (*) (*C.GstVideoDecoder, *C.GstVideoCodecFrame))(fnptr))(carg0, carg1);
-// }
-// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_handle_missing_data(void* fnptr, *C.GstVideoDecoder carg0, C.GstClockTime carg1, C.GstClockTime carg2) {
-// 	return ((C.gboolean (*) (*C.GstVideoDecoder, C.GstClockTime, C.GstClockTime))(fnptr))(carg0, carg1, carg2);
-// }
-// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_negotiate(void* fnptr, *C.GstVideoDecoder carg0) {
-// 	return ((C.gboolean (*) (*C.GstVideoDecoder))(fnptr))(carg0);
-// }
-// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_open(void* fnptr, *C.GstVideoDecoder carg0) {
-// 	return ((C.gboolean (*) (*C.GstVideoDecoder))(fnptr))(carg0);
-// }
-// C.GstFlowReturn _gotk4_gstvideo1_VideoDecoder_virtual_parse(void* fnptr, *C.GstVideoDecoder carg0, *C.GstVideoCodecFrame carg1, *C.GstAdapter carg2, C.gboolean carg3) {
-// 	return ((C.GstFlowReturn (*) (*C.GstVideoDecoder, *C.GstVideoCodecFrame, *C.GstAdapter, C.gboolean))(fnptr))(carg0, carg1, carg2, carg3);
-// }
-// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_propose_allocation(void* fnptr, *C.GstVideoDecoder carg0, *C.GstQuery carg1) {
-// 	return ((C.gboolean (*) (*C.GstVideoDecoder, *C.GstQuery))(fnptr))(carg0, carg1);
+// extern GstColorBalanceType _gotk4_gstvideo1_ColorBalance_get_balance_type(GstColorBalance*);
+// extern gint _gotk4_gstvideo1_ColorBalance_get_value(GstColorBalance*, GstColorBalanceChannel*);
+// extern const GList* _gotk4_gstvideo1_ColorBalance_list_channels(GstColorBalance*);
+// extern void _gotk4_gstvideo1_ColorBalance_set_value(GstColorBalance*, GstColorBalanceChannel*, gint);
+// extern void _gotk4_gstvideo1_ColorBalance_value_changed(GstColorBalance*, GstColorBalanceChannel*, gint);
+// GstColorBalanceType _gotk4_gstvideo1_ColorBalance_virtual_get_balance_type(void* fnptr, GstColorBalance* carg0) {
+// 	return ((GstColorBalanceType (*) (GstColorBalance*))(fnptr))(carg0);
+// }
+// gint _gotk4_gstvideo1_ColorBalance_virtual_get_value(void* fnptr, GstColorBalance* carg0, GstColorBalanceChannel* carg1) {
+// 	return ((gint (*) (GstColorBalance*, GstColorBalanceChannel*))(fnptr))(carg0, carg1);
+// }
+// const GList* _gotk4_gstvideo1_ColorBalance_virtual_list_channels(void* fnptr, GstColorBalance* carg0) {
+// 	return ((const GList* (*) (GstColorBalance*))(fnptr))(carg0);
+// }
+// void _gotk4_gstvideo1_ColorBalance_virtual_set_value(void* fnptr, GstColorBalance* carg0, GstColorBalanceChannel* carg1, gint carg2) {
+// 	return ((void (*) (GstColorBalance*, GstColorBalanceChannel*, gint))(fnptr))(carg0, carg1, carg2);
+// }
+// void _gotk4_gstvideo1_ColorBalance_virtual_value_changed(void* fnptr, GstColorBalance* carg0, GstColorBalanceChannel* carg1, gint carg2) {
+// 	return ((void (*) (GstColorBalance*, GstColorBalanceChannel*, gint))(fnptr))(carg0, carg1, carg2);
+// }
+// extern void _gotk4_gstvideo1_Navigation_send_event(GstNavigation*, GstStructure*);
+// extern void _gotk4_gstvideo1_Navigation_send_event_simple(GstNavigation*, GstEvent*);
+// void _gotk4_gstvideo1_Navigation_virtual_send_event(void* fnptr, GstNavigation* carg0, GstStructure* carg1) {
+// 	return ((void (*) (GstNavigation*, GstStructure*))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gstvideo1_Navigation_virtual_send_event_simple(void* fnptr, GstNavigation* carg0, GstEvent* carg1) {
+// 	return ((void (*) (GstNavigation*, GstEvent*))(fnptr))(carg0, carg1);
+// }
+// extern gboolean _gotk4_gstvideo1_VideoOrientation_get_hcenter(GstVideoOrientation*, gint);
+// extern gboolean _gotk4_gstvideo1_VideoOrientation_get_hflip(GstVideoOrientation*, gboolean);
+// extern gboolean _gotk4_gstvideo1_VideoOrientation_get_vcenter(GstVideoOrientation*, gint);
+// extern gboolean _gotk4_gstvideo1_VideoOrientation_get_vflip(GstVideoOrientation*, gboolean);
+// extern gboolean _gotk4_gstvideo1_VideoOrientation_set_hcenter(GstVideoOrientation*, gint);
+// extern gboolean _gotk4_gstvideo1_VideoOrientation_set_hflip(GstVideoOrientation*, gboolean);
+// extern gboolean _gotk4_gstvideo1_VideoOrientation_set_vcenter(GstVideoOrientation*, gint);
+// extern gboolean _gotk4_gstvideo1_VideoOrientation_set_vflip(GstVideoOrientation*, gboolean);
+// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_get_hcenter(void* fnptr, GstVideoOrientation* carg0, gint* carg1) {
+// 	return ((gboolean (*) (GstVideoOrientation*, gint*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_get_hflip(void* fnptr, GstVideoOrientation* carg0, gboolean* carg1) {
+// 	return ((gboolean (*) (GstVideoOrientation*, gboolean*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_get_vcenter(void* fnptr, GstVideoOrientation* carg0, gint* carg1) {
+// 	return ((gboolean (*) (GstVideoOrientation*, gint*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_get_vflip(void* fnptr, GstVideoOrientation* carg0, gboolean* carg1) {
+// 	return ((gboolean (*) (GstVideoOrientation*, gboolean*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_set_hcenter(void* fnptr, GstVideoOrientation* carg0, gint carg1) {
+// 	return ((gboolean (*) (GstVideoOrientation*, gint))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_set_hflip(void* fnptr, GstVideoOrientation* carg0, gboolean carg1) {
+// 	return ((gboolean (*) (GstVideoOrientation*, gboolean))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_set_vcenter(void* fnptr, GstVideoOrientation* carg0, gint carg1) {
+// 	return ((gboolean (*) (GstVideoOrientation*, gint))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_set_vflip(void* fnptr, GstVideoOrientation* carg0, gboolean carg1) {
+// 	return ((gboolean (*) (GstVideoOrientation*, gboolean))(fnptr))(carg0, carg1);
+// }
+// extern void _gotk4_gstvideo1_VideoOverlay_expose(GstVideoOverlay*);
+// extern void _gotk4_gstvideo1_VideoOverlay_handle_events(GstVideoOverlay*, gboolean);
+// extern void _gotk4_gstvideo1_VideoOverlay_set_render_rectangle(GstVideoOverlay*, gint, gint, gint, gint);
+// void _gotk4_gstvideo1_VideoOverlay_virtual_expose(void* fnptr, GstVideoOverlay* carg0) {
+// 	return ((void (*) (GstVideoOverlay*))(fnptr))(carg0);
+// }
+// void _gotk4_gstvideo1_VideoOverlay_virtual_handle_events(void* fnptr, GstVideoOverlay* carg0, gboolean carg1) {
+// 	return ((void (*) (GstVideoOverlay*, gboolean))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gstvideo1_VideoOverlay_virtual_set_render_rectangle(void* fnptr, GstVideoOverlay* carg0, gint carg1, gint carg2, gint carg3, gint carg4) {
+// 	return ((void (*) (GstVideoOverlay*, gint, gint, gint, gint))(fnptr))(carg0, carg1, carg2, carg3, carg4);
+// }
+// extern void _gotk4_gstvideo1_ColorBalanceChannel_value_changed(GstColorBalanceChannel*, gint);
+// void _gotk4_gstvideo1_ColorBalanceChannel_virtual_value_changed(void* fnptr, GstColorBalanceChannel* carg0, gint carg1) {
+// 	return ((void (*) (GstColorBalanceChannel*, gint))(fnptr))(carg0, carg1);
+// }
+// extern GstFlowReturn _gotk4_gstvideo1_VideoAggregator_aggregate_frames(GstVideoAggregator*, GstBuffer*);
+// extern void _gotk4_gstvideo1_VideoAggregator_find_best_format(GstVideoAggregator*, GstCaps*, GstVideoInfo*, gboolean);
+// extern GstCaps* _gotk4_gstvideo1_VideoAggregator_update_caps(GstVideoAggregator*, GstCaps*);
+// GstFlowReturn _gotk4_gstvideo1_VideoAggregator_virtual_aggregate_frames(void* fnptr, GstVideoAggregator* carg0, GstBuffer* carg1) {
+// 	return ((GstFlowReturn (*) (GstVideoAggregator*, GstBuffer*))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gstvideo1_VideoAggregator_virtual_find_best_format(void* fnptr, GstVideoAggregator* carg0, GstCaps* carg1, GstVideoInfo* carg2, gboolean* carg3) {
+// 	return ((void (*) (GstVideoAggregator*, GstCaps*, GstVideoInfo*, gboolean*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// GstCaps* _gotk4_gstvideo1_VideoAggregator_virtual_update_caps(void* fnptr, GstVideoAggregator* carg0, GstCaps* carg1) {
+// 	return ((GstCaps* (*) (GstVideoAggregator*, GstCaps*))(fnptr))(carg0, carg1);
+// }
+// extern void _gotk4_gstvideo1_VideoAggregatorPad_clean_frame(GstVideoAggregatorPad*, GstVideoAggregator*, GstVideoFrame*);
+// extern gboolean _gotk4_gstvideo1_VideoAggregatorPad_prepare_frame(GstVideoAggregatorPad*, GstVideoAggregator*, GstBuffer*, GstVideoFrame*);
+// extern void _gotk4_gstvideo1_VideoAggregatorPad_prepare_frame_finish(GstVideoAggregatorPad*, GstVideoAggregator*, GstVideoFrame*);
+// extern void _gotk4_gstvideo1_VideoAggregatorPad_prepare_frame_start(GstVideoAggregatorPad*, GstVideoAggregator*, GstBuffer*, GstVideoFrame*);
+// extern void _gotk4_gstvideo1_VideoAggregatorPad_update_conversion_info(GstVideoAggregatorPad*);
+// void _gotk4_gstvideo1_VideoAggregatorPad_virtual_clean_frame(void* fnptr, GstVideoAggregatorPad* carg0, GstVideoAggregator* carg1, GstVideoFrame* carg2) {
+// 	return ((void (*) (GstVideoAggregatorPad*, GstVideoAggregator*, GstVideoFrame*))(fnptr))(carg0, carg1, carg2);
+// }
+// gboolean _gotk4_gstvideo1_VideoAggregatorPad_virtual_prepare_frame(void* fnptr, GstVideoAggregatorPad* carg0, GstVideoAggregator* carg1, GstBuffer* carg2, GstVideoFrame* carg3) {
+// 	return ((gboolean (*) (GstVideoAggregatorPad*, GstVideoAggregator*, GstBuffer*, GstVideoFrame*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// void _gotk4_gstvideo1_VideoAggregatorPad_virtual_prepare_frame_finish(void* fnptr, GstVideoAggregatorPad* carg0, GstVideoAggregator* carg1, GstVideoFrame* carg2) {
+// 	return ((void (*) (GstVideoAggregatorPad*, GstVideoAggregator*, GstVideoFrame*))(fnptr))(carg0, carg1, carg2);
+// }
+// void _gotk4_gstvideo1_VideoAggregatorPad_virtual_prepare_frame_start(void* fnptr, GstVideoAggregatorPad* carg0, GstVideoAggregator* carg1, GstBuffer* carg2, GstVideoFrame* carg3) {
+// 	return ((void (*) (GstVideoAggregatorPad*, GstVideoAggregator*, GstBuffer*, GstVideoFrame*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// void _gotk4_gstvideo1_VideoAggregatorPad_virtual_update_conversion_info(void* fnptr, GstVideoAggregatorPad* carg0) {
+// 	return ((void (*) (GstVideoAggregatorPad*))(fnptr))(carg0);
+// }
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_close(GstVideoDecoder*);
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_decide_allocation(GstVideoDecoder*, GstQuery*);
+// extern GstFlowReturn _gotk4_gstvideo1_VideoDecoder_drain(GstVideoDecoder*);
+// extern GstFlowReturn _gotk4_gstvideo1_VideoDecoder_finish(GstVideoDecoder*);
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_flush(GstVideoDecoder*);
+// extern GstCaps* _gotk4_gstvideo1_VideoDecoder_getcaps(GstVideoDecoder*, GstCaps*);
+// extern GstFlowReturn _gotk4_gstvideo1_VideoDecoder_handle_frame(GstVideoDecoder*, GstVideoCodecFrame*);
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_handle_missing_data(GstVideoDecoder*, GstClockTime, GstClockTime);
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_negotiate(GstVideoDecoder*);
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_open(GstVideoDecoder*);
+// extern GstFlowReturn _gotk4_gstvideo1_VideoDecoder_parse(GstVideoDecoder*, GstVideoCodecFrame*, GstAdapter*, gboolean);
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_propose_allocation(GstVideoDecoder*, GstQuery*);
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_reset(GstVideoDecoder*, gboolean);
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_set_format(GstVideoDecoder*, GstVideoCodecState*);
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_sink_event(GstVideoDecoder*, GstEvent*);
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_sink_query(GstVideoDecoder*, GstQuery*);
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_src_event(GstVideoDecoder*, GstEvent*);
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_src_query(GstVideoDecoder*, GstQuery*);
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_start(GstVideoDecoder*);
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_stop(GstVideoDecoder*);
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_transform_meta(GstVideoDecoder*, GstVideoCodecFrame*, GstMeta*);
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_close(void* fnptr, GstVideoDecoder* carg0) {
+// 	return ((gboolean (*) (GstVideoDecoder*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_decide_allocation(void* fnptr, GstVideoDecoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstVideoDecoder*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// GstFlowReturn _gotk4_gstvideo1_VideoDecoder_virtual_drain(void* fnptr, GstVideoDecoder* carg0) {
+// 	return ((GstFlowReturn (*) (GstVideoDecoder*))(fnptr))(carg0);
+// }
+// GstFlowReturn _gotk4_gstvideo1_VideoDecoder_virtual_finish(void* fnptr, GstVideoDecoder* carg0) {
+// 	return ((GstFlowReturn (*) (GstVideoDecoder*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_flush(void* fnptr, GstVideoDecoder* carg0) {
+// 	return ((gboolean (*) (GstVideoDecoder*))(fnptr))(carg0);
+// }
+// GstCaps* _gotk4_gstvideo1_VideoDecoder_virtual_getcaps(void* fnptr, GstVideoDecoder* carg0, GstCaps* carg1) {
+// 	return ((GstCaps* (*) (GstVideoDecoder*, GstCaps*))(fnptr))(carg0, carg1);
+// }
+// GstFlowReturn _gotk4_gstvideo1_VideoDecoder_virtual_handle_frame(void* fnptr, GstVideoDecoder* carg0, GstVideoCodecFrame* carg1) {
+// 	return ((GstFlowReturn (*) (GstVideoDecoder*, GstVideoCodecFrame*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_handle_missing_data(void* fnptr, GstVideoDecoder* carg0, GstClockTime carg1, GstClockTime carg2) {
+// 	return ((gboolean (*) (GstVideoDecoder*, GstClockTime, GstClockTime))(fnptr))(carg0, carg1, carg2);
+// }
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_negotiate(void* fnptr, GstVideoDecoder* carg0) {
+// 	return ((gboolean (*) (GstVideoDecoder*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_open(void* fnptr, GstVideoDecoder* carg0) {
+// 	return ((gboolean (*) (GstVideoDecoder*))(fnptr))(carg0);
+// }
+// GstFlowReturn _gotk4_gstvideo1_VideoDecoder_virtual_parse(void* fnptr, GstVideoDecoder* carg0, GstVideoCodecFrame* carg1, GstAdapter* carg2, gboolean carg3) {
+// 	return ((GstFlowReturn (*) (GstVideoDecoder*, GstVideoCodecFrame*, GstAdapter*, gboolean))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_propose_allocation(void* fnptr, GstVideoDecoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstVideoDecoder*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_reset(void* fnptr, *C.GstVideoDecoder carg0, C.gboolean carg1) {
-// 	return ((C.gboolean (*) (*C.GstVideoDecoder, C.gboolean))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_reset(void* fnptr, GstVideoDecoder* carg0, gboolean carg1) {
+// 	return ((gboolean (*) (GstVideoDecoder*, gboolean))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_set_format(void* fnptr, *C.GstVideoDecoder carg0, *C.GstVideoCodecState carg1) {
-// 	return ((C.gboolean (*) (*C.GstVideoDecoder, *C.GstVideoCodecState))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_set_format(void* fnptr, GstVideoDecoder* carg0, GstVideoCodecState* carg1) {
+// 	return ((gboolean (*) (GstVideoDecoder*, GstVideoCodecState*))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_sink_event(void* fnptr, *C.GstVideoDecoder carg0, *C.GstEvent carg1) {
-// 	return ((C.gboolean (*) (*C.GstVideoDecoder, *C.GstEvent))(fnptr))(carg0, carg1);
-// }
-// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_sink_query(void* fnptr, *C.GstVideoDecoder carg0, *C.GstQuery carg1) {
-// 	return ((C.gboolean (*) (*C.GstVideoDecoder, *C.GstQuery))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_sink_event(void* fnptr, GstVideoDecoder* carg0, GstEvent* carg1) {
+// 	return ((gboolean (*) (GstVideoDecoder*, GstEvent*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_sink_query(void* fnptr, GstVideoDecoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstVideoDecoder*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_src_event(void* fnptr, *C.GstVideoDecoder carg0, *C.GstEvent carg1) {
-// 	return ((C.gboolean (*) (*C.GstVideoDecoder, *C.GstEvent))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_src_event(void* fnptr, GstVideoDecoder* carg0, GstEvent* carg1) {
+// 	return ((gboolean (*) (GstVideoDecoder*, GstEvent*))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_src_query(void* fnptr, *C.GstVideoDecoder carg0, *C.GstQuery carg1) {
-// 	return ((C.gboolean (*) (*C.GstVideoDecoder, *C.GstQuery))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_src_query(void* fnptr, GstVideoDecoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstVideoDecoder*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_start(void* fnptr, *C.GstVideoDecoder carg0) {
-// 	return ((C.gboolean (*) (*C.GstVideoDecoder))(fnptr))(carg0);
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_start(void* fnptr, GstVideoDecoder* carg0) {
+// 	return ((gboolean (*) (GstVideoDecoder*))(fnptr))(carg0);
 // }
-// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_stop(void* fnptr, *C.GstVideoDecoder carg0) {
-// 	return ((C.gboolean (*) (*C.GstVideoDecoder))(fnptr))(carg0);
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_stop(void* fnptr, GstVideoDecoder* carg0) {
+// 	return ((gboolean (*) (GstVideoDecoder*))(fnptr))(carg0);
 // }
-// C.gboolean _gotk4_gstvideo1_VideoDecoder_virtual_transform_meta(void* fnptr, *C.GstVideoDecoder carg0, *C.GstVideoCodecFrame carg1, *C.GstMeta carg2) {
-// 	return ((C.gboolean (*) (*C.GstVideoDecoder, *C.GstVideoCodecFrame, *C.GstMeta))(fnptr))(carg0, carg1, carg2);
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_transform_meta(void* fnptr, GstVideoDecoder* carg0, GstVideoCodecFrame* carg1, GstMeta* carg2) {
+// 	return ((gboolean (*) (GstVideoDecoder*, GstVideoCodecFrame*, GstMeta*))(fnptr))(carg0, carg1, carg2);
 // }
-// extern C.gboolean _gotk4_gstvideo1_VideoEncoder_close(*C.GstVideoEncoder);
-// extern C.gboolean _gotk4_gstvideo1_VideoEncoder_decide_allocation(*C.GstVideoEncoder, *C.GstQuery);
-// extern C.GstFlowReturn _gotk4_gstvideo1_VideoEncoder_finish(*C.GstVideoEncoder);
-// extern C.gboolean _gotk4_gstvideo1_VideoEncoder_flush(*C.GstVideoEncoder);
-// extern *C.GstCaps _gotk4_gstvideo1_VideoEncoder_getcaps(*C.GstVideoEncoder, *C.GstCaps);
-// extern C.GstFlowReturn _gotk4_gstvideo1_VideoEncoder_handle_frame(*C.GstVideoEncoder, *C.GstVideoCodecFrame);
-// extern C.gboolean _gotk4_gstvideo1_VideoEncoder_negotiate(*C.GstVideoEncoder);
-// extern C.gboolean _gotk4_gstvideo1_VideoEncoder_open(*C.GstVideoEncoder);
-// extern C.GstFlowReturn _gotk4_gstvideo1_VideoEncoder_pre_push(*C.GstVideoEncoder, *C.GstVideoCodecFrame);
-// extern C.gboolean _gotk4_gstvideo1_VideoEncoder_propose_allocation(*C.GstVideoEncoder, *C.GstQuery);
-// extern C.gboolean _gotk4_gstvideo1_VideoEncoder_reset(*C.GstVideoEncoder, C.gboolean);
-// extern C.gboolean _gotk4_gstvideo1_VideoEncoder_set_format(*C.GstVideoEncoder, *C.GstVideoCodecState);
-// extern C.gboolean _gotk4_gstvideo1_VideoEncoder_sink_event(*C.GstVideoEncoder, *C.GstEvent);
-// extern C.gboolean _gotk4_gstvideo1_VideoEncoder_sink_query(*C.GstVideoEncoder, *C.GstQuery);
-// extern C.gboolean _gotk4_gstvideo1_VideoEncoder_src_event(*C.GstVideoEncoder, *C.GstEvent);
-// extern C.gboolean _gotk4_gstvideo1_VideoEncoder_src_query(*C.GstVideoEncoder, *C.GstQuery);
-// extern C.gboolean _gotk4_gstvideo1_VideoEncoder_start(*C.GstVideoEncoder);
-// extern C.gboolean _gotk4_gstvideo1_VideoEncoder_stop(*C.GstVideoEncoder);
-// extern C.gboolean _gotk4_gstvideo1_VideoEncoder_transform_meta(*C.GstVideoEncoder, *C.GstVideoCodecFrame, *C.GstMeta);
-// C.gboolean _gotk4_gstvideo1_VideoEncoder_virtual_close(void* fnptr, *C.GstVideoEncoder carg0) {
-// 	return ((C.gboolean (*) (*C.GstVideoEncoder))(fnptr))(carg0);
+// extern gboolean _gotk4_gstvideo1_VideoEncoder_close(GstVideoEncoder*);
+// extern gboolean _gotk4_gstvideo1_VideoEncoder_decide_allocation(GstVideoEncoder*, GstQuery*);
+// extern GstFlowReturn _gotk4_gstvideo1_VideoEncoder_finish(GstVideoEncoder*);
+// extern gboolean _gotk4_gstvideo1_VideoEncoder_flush(GstVideoEncoder*);
+// extern GstCaps* _gotk4_gstvideo1_VideoEncoder_getcaps(GstVideoEncoder*, GstCaps*);
+// extern GstFlowReturn _gotk4_gstvideo1_VideoEncoder_handle_frame(GstVideoEncoder*, GstVideoCodecFrame*);
+// extern gboolean _gotk4_gstvideo1_VideoEncoder_negotiate(GstVideoEncoder*);
+// extern gboolean _gotk4_gstvideo1_VideoEncoder_open(GstVideoEncoder*);
+// extern GstFlowReturn _gotk4_gstvideo1_VideoEncoder_pre_push(GstVideoEncoder*, GstVideoCodecFrame*);
+// extern gboolean _gotk4_gstvideo1_VideoEncoder_propose_allocation(GstVideoEncoder*, GstQuery*);
+// extern gboolean _gotk4_gstvideo1_VideoEncoder_reset(GstVideoEncoder*, gboolean);
+// extern gboolean _gotk4_gstvideo1_VideoEncoder_set_format(GstVideoEncoder*, GstVideoCodecState*);
+// extern gboolean _gotk4_gstvideo1_VideoEncoder_sink_event(GstVideoEncoder*, GstEvent*);
+// extern gboolean _gotk4_gstvideo1_VideoEncoder_sink_query(GstVideoEncoder*, GstQuery*);
+// extern gboolean _gotk4_gstvideo1_VideoEncoder_src_event(GstVideoEncoder*, GstEvent*);
+// extern gboolean _gotk4_gstvideo1_VideoEncoder_src_query(GstVideoEncoder*, GstQuery*);
+// extern gboolean _gotk4_gstvideo1_VideoEncoder_start(GstVideoEncoder*);
+// extern gboolean _gotk4_gstvideo1_VideoEncoder_stop(GstVideoEncoder*);
+// extern gboolean _gotk4_gstvideo1_VideoEncoder_transform_meta(GstVideoEncoder*, GstVideoCodecFrame*, GstMeta*);
+// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_close(void* fnptr, GstVideoEncoder* carg0) {
+// 	return ((gboolean (*) (GstVideoEncoder*))(fnptr))(carg0);
 // }
-// C.gboolean _gotk4_gstvideo1_VideoEncoder_virtual_decide_allocation(void* fnptr, *C.GstVideoEncoder carg0, *C.GstQuery carg1) {
-// 	return ((C.gboolean (*) (*C.GstVideoEncoder, *C.GstQuery))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_decide_allocation(void* fnptr, GstVideoEncoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstVideoEncoder*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// C.GstFlowReturn _gotk4_gstvideo1_VideoEncoder_virtual_finish(void* fnptr, *C.GstVideoEncoder carg0) {
-// 	return ((C.GstFlowReturn (*) (*C.GstVideoEncoder))(fnptr))(carg0);
+// GstFlowReturn _gotk4_gstvideo1_VideoEncoder_virtual_finish(void* fnptr, GstVideoEncoder* carg0) {
+// 	return ((GstFlowReturn (*) (GstVideoEncoder*))(fnptr))(carg0);
 // }
-// C.gboolean _gotk4_gstvideo1_VideoEncoder_virtual_flush(void* fnptr, *C.GstVideoEncoder carg0) {
-// 	return ((C.gboolean (*) (*C.GstVideoEncoder))(fnptr))(carg0);
+// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_flush(void* fnptr, GstVideoEncoder* carg0) {
+// 	return ((gboolean (*) (GstVideoEncoder*))(fnptr))(carg0);
 // }
-// *C.GstCaps _gotk4_gstvideo1_VideoEncoder_virtual_getcaps(void* fnptr, *C.GstVideoEncoder carg0, *C.GstCaps carg1) {
-// 	return ((*C.GstCaps (*) (*C.GstVideoEncoder, *C.GstCaps))(fnptr))(carg0, carg1);
+// GstCaps* _gotk4_gstvideo1_VideoEncoder_virtual_getcaps(void* fnptr, GstVideoEncoder* carg0, GstCaps* carg1) {
+// 	return ((GstCaps* (*) (GstVideoEncoder*, GstCaps*))(fnptr))(carg0, carg1);
 // }
-// C.GstFlowReturn _gotk4_gstvideo1_VideoEncoder_virtual_handle_frame(void* fnptr, *C.GstVideoEncoder carg0, *C.GstVideoCodecFrame carg1) {
-// 	return ((C.GstFlowReturn (*) (*C.GstVideoEncoder, *C.GstVideoCodecFrame))(fnptr))(carg0, carg1);
+// GstFlowReturn _gotk4_gstvideo1_VideoEncoder_virtual_handle_frame(void* fnptr, GstVideoEncoder* carg0, GstVideoCodecFrame* carg1) {
+// 	return ((GstFlowReturn (*) (GstVideoEncoder*, GstVideoCodecFrame*))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstvideo1_VideoEncoder_virtual_negotiate(void* fnptr, *C.GstVideoEncoder carg0) {
-// 	return ((C.gboolean (*) (*C.GstVideoEncoder))(fnptr))(carg0);
+// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_negotiate(void* fnptr, GstVideoEncoder* carg0) {
+// 	return ((gboolean (*) (GstVideoEncoder*))(fnptr))(carg0);
 // }
-// C.gboolean _gotk4_gstvideo1_VideoEncoder_virtual_open(void* fnptr, *C.GstVideoEncoder carg0) {
-// 	return ((C.gboolean (*) (*C.GstVideoEncoder))(fnptr))(carg0);
+// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_open(void* fnptr, GstVideoEncoder* carg0) {
+// 	return ((gboolean (*) (GstVideoEncoder*))(fnptr))(carg0);
 // }
-// C.GstFlowReturn _gotk4_gstvideo1_VideoEncoder_virtual_pre_push(void* fnptr, *C.GstVideoEncoder carg0, *C.GstVideoCodecFrame carg1) {
-// 	return ((C.GstFlowReturn (*) (*C.GstVideoEncoder, *C.GstVideoCodecFrame))(fnptr))(carg0, carg1);
+// GstFlowReturn _gotk4_gstvideo1_VideoEncoder_virtual_pre_push(void* fnptr, GstVideoEncoder* carg0, GstVideoCodecFrame* carg1) {
+// 	return ((GstFlowReturn (*) (GstVideoEncoder*, GstVideoCodecFrame*))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstvideo1_VideoEncoder_virtual_propose_allocation(void* fnptr, *C.GstVideoEncoder carg0, *C.GstQuery carg1) {
-// 	return ((C.gboolean (*) (*C.GstVideoEncoder, *C.GstQuery))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_propose_allocation(void* fnptr, GstVideoEncoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstVideoEncoder*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstvideo1_VideoEncoder_virtual_reset(void* fnptr, *C.GstVideoEncoder carg0, C.gboolean carg1) {
-// 	return ((C.gboolean (*) (*C.GstVideoEncoder, C.gboolean))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_reset(void* fnptr, GstVideoEncoder* carg0, gboolean carg1) {
+// 	return ((gboolean (*) (GstVideoEncoder*, gboolean))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstvideo1_VideoEncoder_virtual_set_format(void* fnptr, *C.GstVideoEncoder carg0, *C.GstVideoCodecState carg1) {
-// 	return ((C.gboolean (*) (*C.GstVideoEncoder, *C.GstVideoCodecState))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_set_format(void* fnptr, GstVideoEncoder* carg0, GstVideoCodecState* carg1) {
+// 	return ((gboolean (*) (GstVideoEncoder*, GstVideoCodecState*))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstvideo1_VideoEncoder_virtual_sink_event(void* fnptr, *C.GstVideoEncoder carg0, *C.GstEvent carg1) {
-// 	return ((C.gboolean (*) (*C.GstVideoEncoder, *C.GstEvent))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_sink_event(void* fnptr, GstVideoEncoder* carg0, GstEvent* carg1) {
+// 	return ((gboolean (*) (GstVideoEncoder*, GstEvent*))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstvideo1_VideoEncoder_virtual_sink_query(void* fnptr, *C.GstVideoEncoder carg0, *C.GstQuery carg1) {
-// 	return ((C.gboolean (*) (*C.GstVideoEncoder, *C.GstQuery))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_sink_query(void* fnptr, GstVideoEncoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstVideoEncoder*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstvideo1_VideoEncoder_virtual_src_event(void* fnptr, *C.GstVideoEncoder carg0, *C.GstEvent carg1) {
-// 	return ((C.gboolean (*) (*C.GstVideoEncoder, *C.GstEvent))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_src_event(void* fnptr, GstVideoEncoder* carg0, GstEvent* carg1) {
+// 	return ((gboolean (*) (GstVideoEncoder*, GstEvent*))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstvideo1_VideoEncoder_virtual_src_query(void* fnptr, *C.GstVideoEncoder carg0, *C.GstQuery carg1) {
-// 	return ((C.gboolean (*) (*C.GstVideoEncoder, *C.GstQuery))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_src_query(void* fnptr, GstVideoEncoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstVideoEncoder*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstvideo1_VideoEncoder_virtual_start(void* fnptr, *C.GstVideoEncoder carg0) {
-// 	return ((C.gboolean (*) (*C.GstVideoEncoder))(fnptr))(carg0);
+// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_start(void* fnptr, GstVideoEncoder* carg0) {
+// 	return ((gboolean (*) (GstVideoEncoder*))(fnptr))(carg0);
 // }
-// C.gboolean _gotk4_gstvideo1_VideoEncoder_virtual_stop(void* fnptr, *C.GstVideoEncoder carg0) {
-// 	return ((C.gboolean (*) (*C.GstVideoEncoder))(fnptr))(carg0);
+// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_stop(void* fnptr, GstVideoEncoder* carg0) {
+// 	return ((gboolean (*) (GstVideoEncoder*))(fnptr))(carg0);
 // }
-// C.gboolean _gotk4_gstvideo1_VideoEncoder_virtual_transform_meta(void* fnptr, *C.GstVideoEncoder carg0, *C.GstVideoCodecFrame carg1, *C.GstMeta carg2) {
-// 	return ((C.gboolean (*) (*C.GstVideoEncoder, *C.GstVideoCodecFrame, *C.GstMeta))(fnptr))(carg0, carg1, carg2);
+// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_transform_meta(void* fnptr, GstVideoEncoder* carg0, GstVideoCodecFrame* carg1, GstMeta* carg2) {
+// 	return ((gboolean (*) (GstVideoEncoder*, GstVideoCodecFrame*, GstMeta*))(fnptr))(carg0, carg1, carg2);
 // }
-// extern C.gboolean _gotk4_gstvideo1_VideoFilter_set_info(*C.GstVideoFilter, *C.GstCaps, *C.GstVideoInfo, *C.GstCaps, *C.GstVideoInfo);
-// extern C.GstFlowReturn _gotk4_gstvideo1_VideoFilter_transform_frame(*C.GstVideoFilter, *C.GstVideoFrame, *C.GstVideoFrame);
-// extern C.GstFlowReturn _gotk4_gstvideo1_VideoFilter_transform_frame_ip(*C.GstVideoFilter, *C.GstVideoFrame);
-// C.gboolean _gotk4_gstvideo1_VideoFilter_virtual_set_info(void* fnptr, *C.GstVideoFilter carg0, *C.GstCaps carg1, *C.GstVideoInfo carg2, *C.GstCaps carg3, *C.GstVideoInfo carg4) {
-// 	return ((C.gboolean (*) (*C.GstVideoFilter, *C.GstCaps, *C.GstVideoInfo, *C.GstCaps, *C.GstVideoInfo))(fnptr))(carg0, carg1, carg2, carg3, carg4);
+// extern gboolean _gotk4_gstvideo1_VideoFilter_set_info(GstVideoFilter*, GstCaps*, GstVideoInfo*, GstCaps*, GstVideoInfo*);
+// extern GstFlowReturn _gotk4_gstvideo1_VideoFilter_transform_frame(GstVideoFilter*, GstVideoFrame*, GstVideoFrame*);
+// extern GstFlowReturn _gotk4_gstvideo1_VideoFilter_transform_frame_ip(GstVideoFilter*, GstVideoFrame*);
+// gboolean _gotk4_gstvideo1_VideoFilter_virtual_set_info(void* fnptr, GstVideoFilter* carg0, GstCaps* carg1, GstVideoInfo* carg2, GstCaps* carg3, GstVideoInfo* carg4) {
+// 	return ((gboolean (*) (GstVideoFilter*, GstCaps*, GstVideoInfo*, GstCaps*, GstVideoInfo*))(fnptr))(carg0, carg1, carg2, carg3, carg4);
 // }
-// C.GstFlowReturn _gotk4_gstvideo1_VideoFilter_virtual_transform_frame(void* fnptr, *C.GstVideoFilter carg0, *C.GstVideoFrame carg1, *C.GstVideoFrame carg2) {
-// 	return ((C.GstFlowReturn (*) (*C.GstVideoFilter, *C.GstVideoFrame, *C.GstVideoFrame))(fnptr))(carg0, carg1, carg2);
+// GstFlowReturn _gotk4_gstvideo1_VideoFilter_virtual_transform_frame(void* fnptr, GstVideoFilter* carg0, GstVideoFrame* carg1, GstVideoFrame* carg2) {
+// 	return ((GstFlowReturn (*) (GstVideoFilter*, GstVideoFrame*, GstVideoFrame*))(fnptr))(carg0, carg1, carg2);
 // }
-// C.GstFlowReturn _gotk4_gstvideo1_VideoFilter_virtual_transform_frame_ip(void* fnptr, *C.GstVideoFilter carg0, *C.GstVideoFrame carg1) {
-// 	return ((C.GstFlowReturn (*) (*C.GstVideoFilter, *C.GstVideoFrame))(fnptr))(carg0, carg1);
+// GstFlowReturn _gotk4_gstvideo1_VideoFilter_virtual_transform_frame_ip(void* fnptr, GstVideoFilter* carg0, GstVideoFrame* carg1) {
+// 	return ((GstFlowReturn (*) (GstVideoFilter*, GstVideoFrame*))(fnptr))(carg0, carg1);
 // }
-// extern C.gboolean _gotk4_gstvideo1_VideoSink_set_info(*C.GstVideoSink, *C.GstCaps, *C.GstVideoInfo);
-// extern C.GstFlowReturn _gotk4_gstvideo1_VideoSink_show_frame(*C.GstVideoSink, *C.GstBuffer);
-// C.gboolean _gotk4_gstvideo1_VideoSink_virtual_set_info(void* fnptr, *C.GstVideoSink carg0, *C.GstCaps carg1, *C.GstVideoInfo carg2) {
-// 	return ((C.gboolean (*) (*C.GstVideoSink, *C.GstCaps, *C.GstVideoInfo))(fnptr))(carg0, carg1, carg2);
+// extern gboolean _gotk4_gstvideo1_VideoSink_set_info(GstVideoSink*, GstCaps*, const GstVideoInfo*);
+// extern GstFlowReturn _gotk4_gstvideo1_VideoSink_show_frame(GstVideoSink*, GstBuffer*);
+// gboolean _gotk4_gstvideo1_VideoSink_virtual_set_info(void* fnptr, GstVideoSink* carg0, GstCaps* carg1, const GstVideoInfo* carg2) {
+// 	return ((gboolean (*) (GstVideoSink*, GstCaps*, const GstVideoInfo*))(fnptr))(carg0, carg1, carg2);
 // }
-// C.GstFlowReturn _gotk4_gstvideo1_VideoSink_virtual_show_frame(void* fnptr, *C.GstVideoSink carg0, *C.GstBuffer carg1) {
-// 	return ((C.GstFlowReturn (*) (*C.GstVideoSink, *C.GstBuffer))(fnptr))(carg0, carg1);
+// GstFlowReturn _gotk4_gstvideo1_VideoSink_virtual_show_frame(void* fnptr, GstVideoSink* carg0, GstBuffer* carg1) {
+// 	return ((GstFlowReturn (*) (GstVideoSink*, GstBuffer*))(fnptr))(carg0, carg1);
 // }
-// extern C.void _gotk4_gstvideo1_VideoAggregatorConvertPad_create_conversion_info(*C.GstVideoAggregatorConvertPad, *C.GstVideoAggregator, *C.GstVideoInfo);
-// C.void _gotk4_gstvideo1_VideoAggregatorConvertPad_virtual_create_conversion_info(void* fnptr, *C.GstVideoAggregatorConvertPad carg0, *C.GstVideoAggregator carg1, *C.GstVideoInfo carg2) {
-// 	return ((C.void (*) (*C.GstVideoAggregatorConvertPad, *C.GstVideoAggregator, *C.GstVideoInfo))(fnptr))(carg0, carg1, carg2);
+// extern void _gotk4_gstvideo1_VideoAggregatorConvertPad_create_conversion_info(GstVideoAggregatorConvertPad*, GstVideoAggregator*, GstVideoInfo*);
+// void _gotk4_gstvideo1_VideoAggregatorConvertPad_virtual_create_conversion_info(void* fnptr, GstVideoAggregatorConvertPad* carg0, GstVideoAggregator* carg1, GstVideoInfo* carg2) {
+// 	return ((void (*) (GstVideoAggregatorConvertPad*, GstVideoAggregator*, GstVideoInfo*))(fnptr))(carg0, carg1, carg2);
 // }
 import "C"
 
@@ -5840,7 +5840,7 @@ func BufferAddVideoCaptionMeta(buffer *gst.Buffer, captionType VideoCaptionType,
 	_ = data
 	_ = carg3
 	_ = carg4
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_buffer_add_video_caption_meta(carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(buffer)
@@ -5970,10 +5970,10 @@ func BufferAddVideoMetaFull(buffer *gst.Buffer, flags VideoFrameFlags, format Vi
 	carg6 = C.guint(nPlanes)
 	_ = offset
 	_ = carg7
-	panic("unimplemented conversion of [4]uint (*C.gsize)")
+	panic("unimplemented conversion of [4]uint (const gsize*)")
 	_ = stride
 	_ = carg8
-	panic("unimplemented conversion of [4]int32 (*C.gint)")
+	panic("unimplemented conversion of [4]int32 (const gint*)")
 
 	cret = C.gst_buffer_add_video_meta_full(carg1, carg2, carg3, carg4, carg5, carg6, carg7, carg8)
 	runtime.KeepAlive(buffer)
@@ -6149,11 +6149,11 @@ func BufferAddVideoSeiUserDataUnregisteredMeta(buffer *gst.Buffer, uuid *uint8, 
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 	_ = uuid
 	_ = carg2
-	panic("unimplemented conversion of *uint8 (*C.guint8)")
+	panic("unimplemented conversion of *uint8 (guint8*)")
 	if data != nil {
 		_ = data
 		_ = carg3
-		panic("unimplemented conversion of *uint8 (*C.guint8)")
+		panic("unimplemented conversion of *uint8 (guint8*)")
 	}
 	carg4 = C.gsize(size)
 
@@ -6600,7 +6600,7 @@ func VideoBlendScaleLinearRGBA(src *VideoInfo, srcBuffer *gst.Buffer, destHeight
 
 	_ = dest
 	_ = carg5
-	panic("unimplemented conversion of VideoInfo (C.GstVideoInfo)")
+	panic("unimplemented conversion of VideoInfo (GstVideoInfo)")
 	destBuffer = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(carg6))
 
 	return dest, destBuffer
@@ -6718,7 +6718,7 @@ func VideoCenterRect(src *VideoRectangle, dst *VideoRectangle, scaling bool) Vid
 
 	_ = result
 	_ = carg3
-	panic("unimplemented conversion of VideoRectangle (C.GstVideoRectangle)")
+	panic("unimplemented conversion of VideoRectangle (GstVideoRectangle)")
 
 	return result
 }
@@ -6994,7 +6994,7 @@ func VideoDmaDRMFormatFromGstFormat(format VideoFormat, modifier *uint64) uint32
 	if modifier != nil {
 		_ = modifier
 		_ = carg2
-		panic("unimplemented conversion of *uint64 (*C.guint64)")
+		panic("unimplemented conversion of *uint64 (guint64*)")
 	}
 
 	cret = C.gst_video_dma_drm_format_from_gst_format(carg1, carg2)
@@ -7497,7 +7497,7 @@ func VideoFormatsAny() (uint, []VideoFormat) {
 	len = uint(carg1)
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []VideoFormat (*C.GstVideoFormat)")
+	panic("unimplemented conversion of []VideoFormat (const GstVideoFormat*)")
 
 	return len, goret
 }
@@ -7522,7 +7522,7 @@ func VideoFormatsRaw() (uint, []VideoFormat) {
 	len = uint(carg1)
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []VideoFormat (*C.GstVideoFormat)")
+	panic("unimplemented conversion of []VideoFormat (const GstVideoFormat*)")
 
 	return len, goret
 }
@@ -7682,7 +7682,7 @@ func VideoMakeRawCaps(formats []VideoFormat) *gst.Caps {
 	_ = formats
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []VideoFormat (*C.GstVideoFormat)")
+	panic("unimplemented conversion of []VideoFormat (const GstVideoFormat*)")
 
 	cret = C.gst_video_make_raw_caps(carg1, carg2)
 	runtime.KeepAlive(formats)
@@ -7718,7 +7718,7 @@ func VideoMakeRawCapsWithFeatures(formats []VideoFormat, features *gst.CapsFeatu
 	_ = formats
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []VideoFormat (*C.GstVideoFormat)")
+	panic("unimplemented conversion of []VideoFormat (const GstVideoFormat*)")
 	if features != nil {
 		carg3 = (*C.GstCapsFeatures)(gst.UnsafeCapsFeaturesToGlibFull(features))
 	}
@@ -8524,7 +8524,7 @@ func UnsafeApplyColorBalanceOverrides[Instance ColorBalance](gclass unsafe.Point
 
 				_ = goret
 				_ = cret
-				panic("unimplemented conversion of []ColorBalanceChannel (*C.GList)")
+				panic("unimplemented conversion of []ColorBalanceChannel (const GList*)")
 
 				return cret
 			},
@@ -10284,7 +10284,7 @@ func NavigationQuerySetCommandsv(query *gst.Query, cmds []NavigationCommand) {
 	_ = cmds
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []NavigationCommand (*C.GstNavigationCommand)")
+	panic("unimplemented conversion of []NavigationCommand (GstNavigationCommand*)")
 
 	C.gst_navigation_query_set_commandsv(carg1, carg2, carg3)
 	runtime.KeepAlive(query)
@@ -15058,7 +15058,7 @@ func (decoder *VideoDecoderInstance) GetAllocator() (gst.Allocator, gst.Allocati
 	}
 	_ = params
 	_ = carg2
-	panic("unimplemented conversion of gst.AllocationParams (C.GstAllocationParams)")
+	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams)")
 
 	return allocator, params
 }
@@ -18492,7 +18492,7 @@ func (encoder *VideoEncoderInstance) GetAllocator() (gst.Allocator, gst.Allocati
 	}
 	_ = params
 	_ = carg2
-	panic("unimplemented conversion of gst.AllocationParams (C.GstAllocationParams)")
+	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams)")
 
 	return allocator, params
 }
@@ -20878,10 +20878,10 @@ func VideoSinkCenterRect(src VideoRectangle, dst VideoRectangle, scaling bool) V
 
 	_ = src
 	_ = carg1
-	panic("unimplemented conversion of VideoRectangle (C.GstVideoRectangle)")
+	panic("unimplemented conversion of VideoRectangle (GstVideoRectangle)")
 	_ = dst
 	_ = carg2
-	panic("unimplemented conversion of VideoRectangle (C.GstVideoRectangle)")
+	panic("unimplemented conversion of VideoRectangle (GstVideoRectangle)")
 	if scaling {
 		carg4 = C.TRUE
 	}
@@ -20895,7 +20895,7 @@ func VideoSinkCenterRect(src VideoRectangle, dst VideoRectangle, scaling bool) V
 
 	_ = result
 	_ = carg3
-	panic("unimplemented conversion of VideoRectangle (C.GstVideoRectangle)")
+	panic("unimplemented conversion of VideoRectangle (GstVideoRectangle)")
 
 	return result
 }
@@ -21834,7 +21834,7 @@ func (meta *VideoAffineTransformationMeta) ApplyMatrix(matrix [16]float32) {
 	carg0 = (*C.GstVideoAffineTransformationMeta)(UnsafeVideoAffineTransformationMetaToGlibNone(meta))
 	_ = matrix
 	_ = carg1
-	panic("unimplemented conversion of [16]float32 (*C.gfloat)")
+	panic("unimplemented conversion of [16]float32 (const gfloat*)")
 
 	C.gst_video_affine_transformation_meta_apply_matrix(carg0, carg1)
 	runtime.KeepAlive(meta)
@@ -24004,7 +24004,7 @@ func VideoFrameMap(info *VideoInfo, buffer *gst.Buffer, flags gst.MapFlags) (Vid
 
 	_ = frame
 	_ = carg1
-	panic("unimplemented conversion of VideoFrame (C.GstVideoFrame)")
+	panic("unimplemented conversion of VideoFrame (GstVideoFrame)")
 	if cret != 0 {
 		goret = true
 	}
@@ -24058,7 +24058,7 @@ func VideoFrameMapID(info *VideoInfo, buffer *gst.Buffer, id int32, flags gst.Ma
 
 	_ = frame
 	_ = carg1
-	panic("unimplemented conversion of VideoFrame (C.GstVideoFrame)")
+	panic("unimplemented conversion of VideoFrame (GstVideoFrame)")
 	if cret != 0 {
 		goret = true
 	}
@@ -24254,7 +24254,7 @@ func (meta *VideoGLTextureUploadMeta) Upload(textureId *uint) bool {
 	carg0 = (*C.GstVideoGLTextureUploadMeta)(UnsafeVideoGLTextureUploadMetaToGlibNone(meta))
 	_ = textureId
 	_ = carg1
-	panic("unimplemented conversion of *uint (*C.guint)")
+	panic("unimplemented conversion of *uint (guint*)")
 
 	cret = C.gst_video_gl_texture_upload_meta_upload(carg0, carg1)
 	runtime.KeepAlive(meta)
@@ -24428,7 +24428,7 @@ func VideoInfoFromCaps(caps *gst.Caps) (VideoInfo, bool) {
 
 	_ = info
 	_ = carg1
-	panic("unimplemented conversion of VideoInfo (C.GstVideoInfo)")
+	panic("unimplemented conversion of VideoInfo (GstVideoInfo)")
 	if cret != 0 {
 		goret = true
 	}
@@ -24452,7 +24452,7 @@ func VideoInfoInit() VideoInfo {
 
 	_ = info
 	_ = carg1
-	panic("unimplemented conversion of VideoInfo (C.GstVideoInfo)")
+	panic("unimplemented conversion of VideoInfo (GstVideoInfo)")
 
 	return info
 }
@@ -24911,7 +24911,7 @@ func VideoInfoDmaDrmFromCaps(caps *gst.Caps) (VideoInfoDmaDrm, bool) {
 
 	_ = drmInfo
 	_ = carg1
-	panic("unimplemented conversion of VideoInfoDmaDrm (C.GstVideoInfoDmaDrm)")
+	panic("unimplemented conversion of VideoInfoDmaDrm (GstVideoInfoDmaDrm)")
 	if cret != 0 {
 		goret = true
 	}
@@ -24951,7 +24951,7 @@ func VideoInfoDmaDrmFromVideoInfo(info *VideoInfo, modifier uint64) (VideoInfoDm
 
 	_ = drmInfo
 	_ = carg1
-	panic("unimplemented conversion of VideoInfoDmaDrm (C.GstVideoInfoDmaDrm)")
+	panic("unimplemented conversion of VideoInfoDmaDrm (GstVideoInfoDmaDrm)")
 	if cret != 0 {
 		goret = true
 	}
@@ -24975,7 +24975,7 @@ func VideoInfoDmaDrmInit() VideoInfoDmaDrm {
 
 	_ = drmInfo
 	_ = carg1
-	panic("unimplemented conversion of VideoInfoDmaDrm (C.GstVideoInfoDmaDrm)")
+	panic("unimplemented conversion of VideoInfoDmaDrm (GstVideoInfoDmaDrm)")
 
 	return drmInfo
 }
@@ -25035,7 +25035,7 @@ func (drmInfo *VideoInfoDmaDrm) ToVideoInfo() (VideoInfo, bool) {
 
 	_ = info
 	_ = carg1
-	panic("unimplemented conversion of VideoInfo (C.GstVideoInfo)")
+	panic("unimplemented conversion of VideoInfo (GstVideoInfo)")
 	if cret != 0 {
 		goret = true
 	}
@@ -25135,7 +25135,7 @@ func VideoMasteringDisplayInfoFromString(mastering string) (VideoMasteringDispla
 
 	_ = minfo
 	_ = carg1
-	panic("unimplemented conversion of VideoMasteringDisplayInfo (C.GstVideoMasteringDisplayInfo)")
+	panic("unimplemented conversion of VideoMasteringDisplayInfo (GstVideoMasteringDisplayInfo)")
 	if cret != 0 {
 		goret = true
 	}
@@ -25462,7 +25462,7 @@ func (meta *VideoMeta) SetAlignment(alignment VideoAlignment) bool {
 	carg0 = (*C.GstVideoMeta)(UnsafeVideoMetaToGlibNone(meta))
 	_ = alignment
 	_ = carg1
-	panic("unimplemented conversion of VideoAlignment (C.GstVideoAlignment)")
+	panic("unimplemented conversion of VideoAlignment (GstVideoAlignment)")
 
 	cret = C.gst_video_meta_set_alignment(carg0, carg1)
 	runtime.KeepAlive(meta)
@@ -27177,7 +27177,7 @@ func (scale *VideoScaler) GetCoeff(outOffset uint) (uint, uint, *float64) {
 	nTaps = uint(carg3)
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of *float64 (*C.gdouble)")
+	panic("unimplemented conversion of *float64 (const gdouble*)")
 
 	return inOffset, nTaps, goret
 }
@@ -28484,7 +28484,7 @@ func (encoder *VideoVBIEncoder) AddAncillary(composite bool, DID uint8, SDIDBloc
 	_ = data
 	_ = carg4
 	_ = carg5
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_video_vbi_encoder_add_ancillary(carg0, carg1, carg2, carg3, carg4, carg5)
 	runtime.KeepAlive(encoder)
@@ -28535,7 +28535,7 @@ func (encoder *VideoVBIEncoder) WriteLine(data *uint8) {
 	carg0 = (*C.GstVideoVBIEncoder)(UnsafeVideoVBIEncoderToGlibNone(encoder))
 	_ = data
 	_ = carg1
-	panic("unimplemented conversion of *uint8 (*C.guint8)")
+	panic("unimplemented conversion of *uint8 (guint8*)")
 
 	C.gst_video_vbi_encoder_write_line(carg0, carg1)
 	runtime.KeepAlive(encoder)
@@ -28698,7 +28698,7 @@ func (parser *VideoVBIParser) GetAncillary() (VideoAncillary, VideoVBIParserResu
 
 	_ = anc
 	_ = carg1
-	panic("unimplemented conversion of VideoAncillary (C.GstVideoAncillary)")
+	panic("unimplemented conversion of VideoAncillary (GstVideoAncillary)")
 	goret = VideoVBIParserResult(cret)
 
 	return anc, goret

@@ -17,322 +17,322 @@ import (
 // #cgo pkg-config: gstreamer-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/gst.h>
-// extern C.GstBusSyncReply _gotk4_gst1_BusSyncHandler(*C.GstBus, *C.GstMessage, C.gpointer);
-// extern C.GstPadProbeReturn _gotk4_gst1_PadProbeCallback(*C.GstPad, *C.GstPadProbeInfo, C.gpointer);
-// extern C.gboolean _gotk4_gst1_BufferForEachMetaFunc(*C.GstBuffer, *C.GstMeta, C.gpointer);
-// extern C.gboolean _gotk4_gst1_BufferListFunc(*C.GstBuffer, C.guint, C.gpointer);
-// extern C.gboolean _gotk4_gst1_BusFunc(*C.GstBus, *C.GstMessage, C.gpointer);
-// extern C.gboolean _gotk4_gst1_CapsFilterMapFunc(*C.GstCapsFeatures, *C.GstStructure, C.gpointer);
-// extern C.gboolean _gotk4_gst1_CapsForEachFunc(*C.GstCapsFeatures, *C.GstStructure, C.gpointer);
-// extern C.gboolean _gotk4_gst1_CapsMapFunc(*C.GstCapsFeatures, *C.GstStructure, C.gpointer);
-// extern C.gboolean _gotk4_gst1_ClockCallback(*C.GstClock, C.GstClockTime, C.GstClockID, C.gpointer);
-// extern C.gboolean _gotk4_gst1_ElementForEachPadFunc(*C.GstElement, *C.GstPad, C.gpointer);
-// extern C.gboolean _gotk4_gst1_IteratorFoldFunction(*C.GValue, *C.GValue, C.gpointer);
-// extern C.gboolean _gotk4_gst1_PadForwardFunction(*C.GstPad, C.gpointer);
-// extern C.gboolean _gotk4_gst1_PluginFeatureFilter(*C.GstPluginFeature, C.gpointer);
-// extern C.gboolean _gotk4_gst1_PluginFilter(*C.GstPlugin, C.gpointer);
-// extern C.gboolean _gotk4_gst1_PluginInitFullFunc(*C.GstPlugin, C.gpointer);
-// extern C.gboolean _gotk4_gst1_StructureFilterMapFunc(C.GQuark, *C.GValue, C.gpointer);
-// extern C.gboolean _gotk4_gst1_StructureFilterMapIDStrFunc(*C.GstIdStr, *C.GValue, C.gpointer);
-// extern C.gboolean _gotk4_gst1_StructureForEachFunc(C.GQuark, *C.GValue, C.gpointer);
-// extern C.gboolean _gotk4_gst1_StructureForEachIDStrFunc(*C.GstIdStr, *C.GValue, C.gpointer);
-// extern C.gboolean _gotk4_gst1_StructureMapFunc(C.GQuark, *C.GValue, C.gpointer);
-// extern C.gboolean _gotk4_gst1_StructureMapIDStrFunc(*C.GstIdStr, *C.GValue, C.gpointer);
-// extern C.void _gotk4_gst1_ElementCallAsyncFunc(*C.GstElement, C.gpointer);
-// extern C.void _gotk4_gst1_IteratorForEachFunction(*C.GValue, C.gpointer);
-// extern C.void _gotk4_gst1_LogFunction(*C.GstDebugCategory, C.GstDebugLevel, *C.gchar, *C.gchar, C.gint, *C.GObject, *C.GstDebugMessage, C.gpointer);
-// extern C.void _gotk4_gst1_PromiseChangeFunc(*C.GstPromise, C.gpointer);
-// extern C.void _gotk4_gst1_TagForEachFunc(*C.GstTagList, *C.gchar, C.gpointer);
-// extern C.void _gotk4_gst1_TaskFunction(C.gpointer);
-// extern C.void _gotk4_gst1_TypeFindFunction(*C.GstTypeFind, C.gpointer);
+// extern GstBusSyncReply _gotk4_gst1_BusSyncHandler(GstBus*, GstMessage*, gpointer);
+// extern GstPadProbeReturn _gotk4_gst1_PadProbeCallback(GstPad*, GstPadProbeInfo*, gpointer);
+// extern gboolean _gotk4_gst1_BufferForEachMetaFunc(GstBuffer*, GstMeta*, gpointer);
+// extern gboolean _gotk4_gst1_BufferListFunc(GstBuffer*, guint, gpointer);
+// extern gboolean _gotk4_gst1_BusFunc(GstBus*, GstMessage*, gpointer);
+// extern gboolean _gotk4_gst1_CapsFilterMapFunc(GstCapsFeatures*, GstStructure*, gpointer);
+// extern gboolean _gotk4_gst1_CapsForEachFunc(GstCapsFeatures*, GstStructure*, gpointer);
+// extern gboolean _gotk4_gst1_CapsMapFunc(GstCapsFeatures*, GstStructure*, gpointer);
+// extern gboolean _gotk4_gst1_ClockCallback(GstClock*, GstClockTime, GstClockID, gpointer);
+// extern gboolean _gotk4_gst1_ElementForEachPadFunc(GstElement*, GstPad*, gpointer);
+// extern gboolean _gotk4_gst1_IteratorFoldFunction(const GValue*, GValue*, gpointer);
+// extern gboolean _gotk4_gst1_PadForwardFunction(GstPad*, gpointer);
+// extern gboolean _gotk4_gst1_PluginFeatureFilter(GstPluginFeature*, gpointer);
+// extern gboolean _gotk4_gst1_PluginFilter(GstPlugin*, gpointer);
+// extern gboolean _gotk4_gst1_PluginInitFullFunc(GstPlugin*, gpointer);
+// extern gboolean _gotk4_gst1_StructureFilterMapFunc(GQuark, GValue*, gpointer);
+// extern gboolean _gotk4_gst1_StructureFilterMapIDStrFunc(const GstIdStr*, GValue*, gpointer);
+// extern gboolean _gotk4_gst1_StructureForEachFunc(GQuark, const GValue*, gpointer);
+// extern gboolean _gotk4_gst1_StructureForEachIDStrFunc(const GstIdStr*, const GValue*, gpointer);
+// extern gboolean _gotk4_gst1_StructureMapFunc(GQuark, GValue*, gpointer);
+// extern gboolean _gotk4_gst1_StructureMapIDStrFunc(const GstIdStr*, GValue*, gpointer);
+// extern void _gotk4_gst1_ElementCallAsyncFunc(GstElement*, gpointer);
+// extern void _gotk4_gst1_IteratorForEachFunction(const GValue*, gpointer);
+// extern void _gotk4_gst1_LogFunction(GstDebugCategory*, GstDebugLevel, const gchar*, const gchar*, gint, GObject*, GstDebugMessage*, gpointer);
+// extern void _gotk4_gst1_PromiseChangeFunc(GstPromise*, gpointer);
+// extern void _gotk4_gst1_TagForEachFunc(const GstTagList*, const gchar*, gpointer);
+// extern void _gotk4_gst1_TaskFunction(gpointer);
+// extern void _gotk4_gst1_TypeFindFunction(GstTypeFind*, gpointer);
 // extern void destroyUserdata(gpointer);
-// extern C.void _gotk4_gst1_ChildProxy_child_added(*C.GstChildProxy, *C.GObject, *C.gchar);
-// extern C.void _gotk4_gst1_ChildProxy_child_removed(*C.GstChildProxy, *C.GObject, *C.gchar);
-// extern *C.GObject _gotk4_gst1_ChildProxy_get_child_by_index(*C.GstChildProxy, C.guint);
-// extern *C.GObject _gotk4_gst1_ChildProxy_get_child_by_name(*C.GstChildProxy, *C.gchar);
-// extern C.guint _gotk4_gst1_ChildProxy_get_children_count(*C.GstChildProxy);
-// C.void _gotk4_gst1_ChildProxy_virtual_child_added(void* fnptr, *C.GstChildProxy carg0, *C.GObject carg1, *C.gchar carg2) {
-// 	return ((C.void (*) (*C.GstChildProxy, *C.GObject, *C.gchar))(fnptr))(carg0, carg1, carg2);
-// }
-// C.void _gotk4_gst1_ChildProxy_virtual_child_removed(void* fnptr, *C.GstChildProxy carg0, *C.GObject carg1, *C.gchar carg2) {
-// 	return ((C.void (*) (*C.GstChildProxy, *C.GObject, *C.gchar))(fnptr))(carg0, carg1, carg2);
-// }
-// *C.GObject _gotk4_gst1_ChildProxy_virtual_get_child_by_index(void* fnptr, *C.GstChildProxy carg0, C.guint carg1) {
-// 	return ((*C.GObject (*) (*C.GstChildProxy, C.guint))(fnptr))(carg0, carg1);
-// }
-// *C.GObject _gotk4_gst1_ChildProxy_virtual_get_child_by_name(void* fnptr, *C.GstChildProxy carg0, *C.gchar carg1) {
-// 	return ((*C.GObject (*) (*C.GstChildProxy, *C.gchar))(fnptr))(carg0, carg1);
-// }
-// C.guint _gotk4_gst1_ChildProxy_virtual_get_children_count(void* fnptr, *C.GstChildProxy carg0) {
-// 	return ((C.guint (*) (*C.GstChildProxy))(fnptr))(carg0);
-// }
-// extern C.gboolean _gotk4_gst1_Preset_delete_preset(*C.GstPreset, *C.gchar);
-// extern C.gboolean _gotk4_gst1_Preset_get_meta(*C.GstPreset, *C.gchar, *C.gchar, *C.gchar);
-// extern **C.gchar _gotk4_gst1_Preset_get_preset_names(*C.GstPreset);
-// extern **C.gchar _gotk4_gst1_Preset_get_property_names(*C.GstPreset);
-// extern C.gboolean _gotk4_gst1_Preset_load_preset(*C.GstPreset, *C.gchar);
-// extern C.gboolean _gotk4_gst1_Preset_rename_preset(*C.GstPreset, *C.gchar, *C.gchar);
-// extern C.gboolean _gotk4_gst1_Preset_save_preset(*C.GstPreset, *C.gchar);
-// extern C.gboolean _gotk4_gst1_Preset_set_meta(*C.GstPreset, *C.gchar, *C.gchar, *C.gchar);
-// C.gboolean _gotk4_gst1_Preset_virtual_delete_preset(void* fnptr, *C.GstPreset carg0, *C.gchar carg1) {
-// 	return ((C.gboolean (*) (*C.GstPreset, *C.gchar))(fnptr))(carg0, carg1);
-// }
-// C.gboolean _gotk4_gst1_Preset_virtual_get_meta(void* fnptr, *C.GstPreset carg0, *C.gchar carg1, *C.gchar carg2, *C.gchar* carg3) {
-// 	return ((C.gboolean (*) (*C.GstPreset, *C.gchar, *C.gchar, *C.gchar*))(fnptr))(carg0, carg1, carg2, carg3);
-// }
-// **C.gchar _gotk4_gst1_Preset_virtual_get_preset_names(void* fnptr, *C.GstPreset carg0) {
-// 	return ((**C.gchar (*) (*C.GstPreset))(fnptr))(carg0);
-// }
-// **C.gchar _gotk4_gst1_Preset_virtual_get_property_names(void* fnptr, *C.GstPreset carg0) {
-// 	return ((**C.gchar (*) (*C.GstPreset))(fnptr))(carg0);
-// }
-// C.gboolean _gotk4_gst1_Preset_virtual_load_preset(void* fnptr, *C.GstPreset carg0, *C.gchar carg1) {
-// 	return ((C.gboolean (*) (*C.GstPreset, *C.gchar))(fnptr))(carg0, carg1);
-// }
-// C.gboolean _gotk4_gst1_Preset_virtual_rename_preset(void* fnptr, *C.GstPreset carg0, *C.gchar carg1, *C.gchar carg2) {
-// 	return ((C.gboolean (*) (*C.GstPreset, *C.gchar, *C.gchar))(fnptr))(carg0, carg1, carg2);
-// }
-// C.gboolean _gotk4_gst1_Preset_virtual_save_preset(void* fnptr, *C.GstPreset carg0, *C.gchar carg1) {
-// 	return ((C.gboolean (*) (*C.GstPreset, *C.gchar))(fnptr))(carg0, carg1);
+// extern void _gotk4_gst1_ChildProxy_child_added(GstChildProxy*, GObject*, const gchar*);
+// extern void _gotk4_gst1_ChildProxy_child_removed(GstChildProxy*, GObject*, const gchar*);
+// extern GObject* _gotk4_gst1_ChildProxy_get_child_by_index(GstChildProxy*, guint);
+// extern GObject* _gotk4_gst1_ChildProxy_get_child_by_name(GstChildProxy*, const gchar*);
+// extern guint _gotk4_gst1_ChildProxy_get_children_count(GstChildProxy*);
+// void _gotk4_gst1_ChildProxy_virtual_child_added(void* fnptr, GstChildProxy* carg0, GObject* carg1, const gchar* carg2) {
+// 	return ((void (*) (GstChildProxy*, GObject*, const gchar*))(fnptr))(carg0, carg1, carg2);
+// }
+// void _gotk4_gst1_ChildProxy_virtual_child_removed(void* fnptr, GstChildProxy* carg0, GObject* carg1, const gchar* carg2) {
+// 	return ((void (*) (GstChildProxy*, GObject*, const gchar*))(fnptr))(carg0, carg1, carg2);
+// }
+// GObject* _gotk4_gst1_ChildProxy_virtual_get_child_by_index(void* fnptr, GstChildProxy* carg0, guint carg1) {
+// 	return ((GObject* (*) (GstChildProxy*, guint))(fnptr))(carg0, carg1);
+// }
+// GObject* _gotk4_gst1_ChildProxy_virtual_get_child_by_name(void* fnptr, GstChildProxy* carg0, const gchar* carg1) {
+// 	return ((GObject* (*) (GstChildProxy*, const gchar*))(fnptr))(carg0, carg1);
+// }
+// guint _gotk4_gst1_ChildProxy_virtual_get_children_count(void* fnptr, GstChildProxy* carg0) {
+// 	return ((guint (*) (GstChildProxy*))(fnptr))(carg0);
+// }
+// extern gboolean _gotk4_gst1_Preset_delete_preset(GstPreset*, const gchar*);
+// extern gboolean _gotk4_gst1_Preset_get_meta(GstPreset*, const gchar*, const gchar*, gchar*);
+// extern gchar** _gotk4_gst1_Preset_get_preset_names(GstPreset*);
+// extern gchar** _gotk4_gst1_Preset_get_property_names(GstPreset*);
+// extern gboolean _gotk4_gst1_Preset_load_preset(GstPreset*, const gchar*);
+// extern gboolean _gotk4_gst1_Preset_rename_preset(GstPreset*, const gchar*, const gchar*);
+// extern gboolean _gotk4_gst1_Preset_save_preset(GstPreset*, const gchar*);
+// extern gboolean _gotk4_gst1_Preset_set_meta(GstPreset*, const gchar*, const gchar*, const gchar*);
+// gboolean _gotk4_gst1_Preset_virtual_delete_preset(void* fnptr, GstPreset* carg0, const gchar* carg1) {
+// 	return ((gboolean (*) (GstPreset*, const gchar*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gst1_Preset_virtual_get_meta(void* fnptr, GstPreset* carg0, const gchar* carg1, const gchar* carg2, gchar** carg3) {
+// 	return ((gboolean (*) (GstPreset*, const gchar*, const gchar*, gchar**))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// gchar** _gotk4_gst1_Preset_virtual_get_preset_names(void* fnptr, GstPreset* carg0) {
+// 	return ((gchar** (*) (GstPreset*))(fnptr))(carg0);
+// }
+// gchar** _gotk4_gst1_Preset_virtual_get_property_names(void* fnptr, GstPreset* carg0) {
+// 	return ((gchar** (*) (GstPreset*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gst1_Preset_virtual_load_preset(void* fnptr, GstPreset* carg0, const gchar* carg1) {
+// 	return ((gboolean (*) (GstPreset*, const gchar*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gst1_Preset_virtual_rename_preset(void* fnptr, GstPreset* carg0, const gchar* carg1, const gchar* carg2) {
+// 	return ((gboolean (*) (GstPreset*, const gchar*, const gchar*))(fnptr))(carg0, carg1, carg2);
+// }
+// gboolean _gotk4_gst1_Preset_virtual_save_preset(void* fnptr, GstPreset* carg0, const gchar* carg1) {
+// 	return ((gboolean (*) (GstPreset*, const gchar*))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gst1_Preset_virtual_set_meta(void* fnptr, *C.GstPreset carg0, *C.gchar carg1, *C.gchar carg2, *C.gchar carg3) {
-// 	return ((C.gboolean (*) (*C.GstPreset, *C.gchar, *C.gchar, *C.gchar))(fnptr))(carg0, carg1, carg2, carg3);
-// }
-// extern *C.gchar _gotk4_gst1_URIHandler_get_uri(*C.GstURIHandler);
-// extern C.gboolean _gotk4_gst1_URIHandler_set_uri(*C.GstURIHandler, *C.gchar, GError*);
-// *C.gchar _gotk4_gst1_URIHandler_virtual_get_uri(void* fnptr, *C.GstURIHandler carg0) {
-// 	return ((*C.gchar (*) (*C.GstURIHandler))(fnptr))(carg0);
-// }
-// C.gboolean _gotk4_gst1_URIHandler_virtual_set_uri(void* fnptr, *C.GstURIHandler carg0, *C.gchar carg1, GError** _cerr) {
-// 	return ((C.gboolean (*) (*C.GstURIHandler, *C.gchar, GError**))(fnptr))(carg0, carg1, _cerr);
-// }
-// extern C.void _gotk4_gst1_Object_deep_notify(*C.GstObject, *C.GstObject, *C.GParamSpec);
-// C.void _gotk4_gst1_Object_virtual_deep_notify(void* fnptr, *C.GstObject carg0, *C.GstObject carg1, *C.GParamSpec carg2) {
-// 	return ((C.void (*) (*C.GstObject, *C.GstObject, *C.GParamSpec))(fnptr))(carg0, carg1, carg2);
-// }
-// extern C.void _gotk4_gst1_Pad_linked(*C.GstPad, *C.GstPad);
-// extern C.void _gotk4_gst1_Pad_unlinked(*C.GstPad, *C.GstPad);
-// C.void _gotk4_gst1_Pad_virtual_linked(void* fnptr, *C.GstPad carg0, *C.GstPad carg1) {
-// 	return ((C.void (*) (*C.GstPad, *C.GstPad))(fnptr))(carg0, carg1);
-// }
-// C.void _gotk4_gst1_Pad_virtual_unlinked(void* fnptr, *C.GstPad carg0, *C.GstPad carg1) {
-// 	return ((C.void (*) (*C.GstPad, *C.GstPad))(fnptr))(carg0, carg1);
-// }
-// extern C.void _gotk4_gst1_PadTemplate_pad_created(*C.GstPadTemplate, *C.GstPad);
-// C.void _gotk4_gst1_PadTemplate_virtual_pad_created(void* fnptr, *C.GstPadTemplate carg0, *C.GstPad carg1) {
-// 	return ((C.void (*) (*C.GstPadTemplate, *C.GstPad))(fnptr))(carg0, carg1);
-// }
-// extern C.void _gotk4_gst1_StreamCollection_stream_notify(*C.GstStreamCollection, *C.GstStream, *C.GParamSpec);
-// C.void _gotk4_gst1_StreamCollection_virtual_stream_notify(void* fnptr, *C.GstStreamCollection carg0, *C.GstStream carg1, *C.GParamSpec carg2) {
-// 	return ((C.void (*) (*C.GstStreamCollection, *C.GstStream, *C.GParamSpec))(fnptr))(carg0, carg1, carg2);
-// }
-// extern C.void _gotk4_gst1_TaskPool_cleanup(*C.GstTaskPool);
-// extern C.void _gotk4_gst1_TaskPool_prepare(*C.GstTaskPool, GError*);
-// C.void _gotk4_gst1_TaskPool_virtual_cleanup(void* fnptr, *C.GstTaskPool carg0) {
-// 	return ((C.void (*) (*C.GstTaskPool))(fnptr))(carg0);
+// gboolean _gotk4_gst1_Preset_virtual_set_meta(void* fnptr, GstPreset* carg0, const gchar* carg1, const gchar* carg2, const gchar* carg3) {
+// 	return ((gboolean (*) (GstPreset*, const gchar*, const gchar*, const gchar*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// extern gchar* _gotk4_gst1_URIHandler_get_uri(GstURIHandler*);
+// extern gboolean _gotk4_gst1_URIHandler_set_uri(GstURIHandler*, const gchar*, GError*);
+// gchar* _gotk4_gst1_URIHandler_virtual_get_uri(void* fnptr, GstURIHandler* carg0) {
+// 	return ((gchar* (*) (GstURIHandler*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gst1_URIHandler_virtual_set_uri(void* fnptr, GstURIHandler* carg0, const gchar* carg1, GError** _cerr) {
+// 	return ((gboolean (*) (GstURIHandler*, const gchar*, GError**))(fnptr))(carg0, carg1, _cerr);
+// }
+// extern void _gotk4_gst1_Object_deep_notify(GstObject*, GstObject*, GParamSpec*);
+// void _gotk4_gst1_Object_virtual_deep_notify(void* fnptr, GstObject* carg0, GstObject* carg1, GParamSpec* carg2) {
+// 	return ((void (*) (GstObject*, GstObject*, GParamSpec*))(fnptr))(carg0, carg1, carg2);
+// }
+// extern void _gotk4_gst1_Pad_linked(GstPad*, GstPad*);
+// extern void _gotk4_gst1_Pad_unlinked(GstPad*, GstPad*);
+// void _gotk4_gst1_Pad_virtual_linked(void* fnptr, GstPad* carg0, GstPad* carg1) {
+// 	return ((void (*) (GstPad*, GstPad*))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gst1_Pad_virtual_unlinked(void* fnptr, GstPad* carg0, GstPad* carg1) {
+// 	return ((void (*) (GstPad*, GstPad*))(fnptr))(carg0, carg1);
+// }
+// extern void _gotk4_gst1_PadTemplate_pad_created(GstPadTemplate*, GstPad*);
+// void _gotk4_gst1_PadTemplate_virtual_pad_created(void* fnptr, GstPadTemplate* carg0, GstPad* carg1) {
+// 	return ((void (*) (GstPadTemplate*, GstPad*))(fnptr))(carg0, carg1);
+// }
+// extern void _gotk4_gst1_StreamCollection_stream_notify(GstStreamCollection*, GstStream*, GParamSpec*);
+// void _gotk4_gst1_StreamCollection_virtual_stream_notify(void* fnptr, GstStreamCollection* carg0, GstStream* carg1, GParamSpec* carg2) {
+// 	return ((void (*) (GstStreamCollection*, GstStream*, GParamSpec*))(fnptr))(carg0, carg1, carg2);
+// }
+// extern void _gotk4_gst1_TaskPool_cleanup(GstTaskPool*);
+// extern void _gotk4_gst1_TaskPool_prepare(GstTaskPool*, GError*);
+// void _gotk4_gst1_TaskPool_virtual_cleanup(void* fnptr, GstTaskPool* carg0) {
+// 	return ((void (*) (GstTaskPool*))(fnptr))(carg0);
 // }
-// C.void _gotk4_gst1_TaskPool_virtual_prepare(void* fnptr, *C.GstTaskPool carg0, GError** _cerr) {
-// 	return ((C.void (*) (*C.GstTaskPool, GError**))(fnptr))(carg0, _cerr);
-// }
-// extern *C.GstMemory _gotk4_gst1_Allocator_alloc(*C.GstAllocator, C.gsize, *C.GstAllocationParams);
-// extern C.void _gotk4_gst1_Allocator_free(*C.GstAllocator, *C.GstMemory);
-// *C.GstMemory _gotk4_gst1_Allocator_virtual_alloc(void* fnptr, *C.GstAllocator carg0, C.gsize carg1, *C.GstAllocationParams carg2) {
-// 	return ((*C.GstMemory (*) (*C.GstAllocator, C.gsize, *C.GstAllocationParams))(fnptr))(carg0, carg1, carg2);
+// void _gotk4_gst1_TaskPool_virtual_prepare(void* fnptr, GstTaskPool* carg0, GError** _cerr) {
+// 	return ((void (*) (GstTaskPool*, GError**))(fnptr))(carg0, _cerr);
+// }
+// extern GstMemory* _gotk4_gst1_Allocator_alloc(GstAllocator*, gsize, GstAllocationParams*);
+// extern void _gotk4_gst1_Allocator_free(GstAllocator*, GstMemory*);
+// GstMemory* _gotk4_gst1_Allocator_virtual_alloc(void* fnptr, GstAllocator* carg0, gsize carg1, GstAllocationParams* carg2) {
+// 	return ((GstMemory* (*) (GstAllocator*, gsize, GstAllocationParams*))(fnptr))(carg0, carg1, carg2);
 // }
-// C.void _gotk4_gst1_Allocator_virtual_free(void* fnptr, *C.GstAllocator carg0, *C.GstMemory carg1) {
-// 	return ((C.void (*) (*C.GstAllocator, *C.GstMemory))(fnptr))(carg0, carg1);
-// }
-// extern C.GstFlowReturn _gotk4_gst1_BufferPool_acquire_buffer(*C.GstBufferPool, *C.GstBuffer, *C.GstBufferPoolAcquireParams);
-// extern C.GstFlowReturn _gotk4_gst1_BufferPool_alloc_buffer(*C.GstBufferPool, *C.GstBuffer, *C.GstBufferPoolAcquireParams);
-// extern C.void _gotk4_gst1_BufferPool_flush_start(*C.GstBufferPool);
-// extern C.void _gotk4_gst1_BufferPool_flush_stop(*C.GstBufferPool);
-// extern C.void _gotk4_gst1_BufferPool_free_buffer(*C.GstBufferPool, *C.GstBuffer);
-// extern **C.gchar _gotk4_gst1_BufferPool_get_options(*C.GstBufferPool);
-// extern C.void _gotk4_gst1_BufferPool_release_buffer(*C.GstBufferPool, *C.GstBuffer);
-// extern C.void _gotk4_gst1_BufferPool_reset_buffer(*C.GstBufferPool, *C.GstBuffer);
-// extern C.gboolean _gotk4_gst1_BufferPool_set_config(*C.GstBufferPool, *C.GstStructure);
-// extern C.gboolean _gotk4_gst1_BufferPool_start(*C.GstBufferPool);
-// extern C.gboolean _gotk4_gst1_BufferPool_stop(*C.GstBufferPool);
-// C.GstFlowReturn _gotk4_gst1_BufferPool_virtual_acquire_buffer(void* fnptr, *C.GstBufferPool carg0, *C.GstBuffer* carg1, *C.GstBufferPoolAcquireParams carg2) {
-// 	return ((C.GstFlowReturn (*) (*C.GstBufferPool, *C.GstBuffer*, *C.GstBufferPoolAcquireParams))(fnptr))(carg0, carg1, carg2);
-// }
-// C.GstFlowReturn _gotk4_gst1_BufferPool_virtual_alloc_buffer(void* fnptr, *C.GstBufferPool carg0, *C.GstBuffer* carg1, *C.GstBufferPoolAcquireParams carg2) {
-// 	return ((C.GstFlowReturn (*) (*C.GstBufferPool, *C.GstBuffer*, *C.GstBufferPoolAcquireParams))(fnptr))(carg0, carg1, carg2);
-// }
-// C.void _gotk4_gst1_BufferPool_virtual_flush_start(void* fnptr, *C.GstBufferPool carg0) {
-// 	return ((C.void (*) (*C.GstBufferPool))(fnptr))(carg0);
-// }
-// C.void _gotk4_gst1_BufferPool_virtual_flush_stop(void* fnptr, *C.GstBufferPool carg0) {
-// 	return ((C.void (*) (*C.GstBufferPool))(fnptr))(carg0);
-// }
-// C.void _gotk4_gst1_BufferPool_virtual_free_buffer(void* fnptr, *C.GstBufferPool carg0, *C.GstBuffer carg1) {
-// 	return ((C.void (*) (*C.GstBufferPool, *C.GstBuffer))(fnptr))(carg0, carg1);
-// }
-// **C.gchar _gotk4_gst1_BufferPool_virtual_get_options(void* fnptr, *C.GstBufferPool carg0) {
-// 	return ((**C.gchar (*) (*C.GstBufferPool))(fnptr))(carg0);
-// }
-// C.void _gotk4_gst1_BufferPool_virtual_release_buffer(void* fnptr, *C.GstBufferPool carg0, *C.GstBuffer carg1) {
-// 	return ((C.void (*) (*C.GstBufferPool, *C.GstBuffer))(fnptr))(carg0, carg1);
-// }
-// C.void _gotk4_gst1_BufferPool_virtual_reset_buffer(void* fnptr, *C.GstBufferPool carg0, *C.GstBuffer carg1) {
-// 	return ((C.void (*) (*C.GstBufferPool, *C.GstBuffer))(fnptr))(carg0, carg1);
-// }
-// C.gboolean _gotk4_gst1_BufferPool_virtual_set_config(void* fnptr, *C.GstBufferPool carg0, *C.GstStructure carg1) {
-// 	return ((C.gboolean (*) (*C.GstBufferPool, *C.GstStructure))(fnptr))(carg0, carg1);
-// }
-// C.gboolean _gotk4_gst1_BufferPool_virtual_start(void* fnptr, *C.GstBufferPool carg0) {
-// 	return ((C.gboolean (*) (*C.GstBufferPool))(fnptr))(carg0);
-// }
-// C.gboolean _gotk4_gst1_BufferPool_virtual_stop(void* fnptr, *C.GstBufferPool carg0) {
-// 	return ((C.gboolean (*) (*C.GstBufferPool))(fnptr))(carg0);
-// }
-// extern C.void _gotk4_gst1_Bus_message(*C.GstBus, *C.GstMessage);
-// extern C.void _gotk4_gst1_Bus_sync_message(*C.GstBus, *C.GstMessage);
-// C.void _gotk4_gst1_Bus_virtual_message(void* fnptr, *C.GstBus carg0, *C.GstMessage carg1) {
-// 	return ((C.void (*) (*C.GstBus, *C.GstMessage))(fnptr))(carg0, carg1);
+// void _gotk4_gst1_Allocator_virtual_free(void* fnptr, GstAllocator* carg0, GstMemory* carg1) {
+// 	return ((void (*) (GstAllocator*, GstMemory*))(fnptr))(carg0, carg1);
+// }
+// extern GstFlowReturn _gotk4_gst1_BufferPool_acquire_buffer(GstBufferPool*, GstBuffer*, GstBufferPoolAcquireParams*);
+// extern GstFlowReturn _gotk4_gst1_BufferPool_alloc_buffer(GstBufferPool*, GstBuffer*, GstBufferPoolAcquireParams*);
+// extern void _gotk4_gst1_BufferPool_flush_start(GstBufferPool*);
+// extern void _gotk4_gst1_BufferPool_flush_stop(GstBufferPool*);
+// extern void _gotk4_gst1_BufferPool_free_buffer(GstBufferPool*, GstBuffer*);
+// extern const gchar** _gotk4_gst1_BufferPool_get_options(GstBufferPool*);
+// extern void _gotk4_gst1_BufferPool_release_buffer(GstBufferPool*, GstBuffer*);
+// extern void _gotk4_gst1_BufferPool_reset_buffer(GstBufferPool*, GstBuffer*);
+// extern gboolean _gotk4_gst1_BufferPool_set_config(GstBufferPool*, GstStructure*);
+// extern gboolean _gotk4_gst1_BufferPool_start(GstBufferPool*);
+// extern gboolean _gotk4_gst1_BufferPool_stop(GstBufferPool*);
+// GstFlowReturn _gotk4_gst1_BufferPool_virtual_acquire_buffer(void* fnptr, GstBufferPool* carg0, GstBuffer** carg1, GstBufferPoolAcquireParams* carg2) {
+// 	return ((GstFlowReturn (*) (GstBufferPool*, GstBuffer**, GstBufferPoolAcquireParams*))(fnptr))(carg0, carg1, carg2);
+// }
+// GstFlowReturn _gotk4_gst1_BufferPool_virtual_alloc_buffer(void* fnptr, GstBufferPool* carg0, GstBuffer** carg1, GstBufferPoolAcquireParams* carg2) {
+// 	return ((GstFlowReturn (*) (GstBufferPool*, GstBuffer**, GstBufferPoolAcquireParams*))(fnptr))(carg0, carg1, carg2);
+// }
+// void _gotk4_gst1_BufferPool_virtual_flush_start(void* fnptr, GstBufferPool* carg0) {
+// 	return ((void (*) (GstBufferPool*))(fnptr))(carg0);
+// }
+// void _gotk4_gst1_BufferPool_virtual_flush_stop(void* fnptr, GstBufferPool* carg0) {
+// 	return ((void (*) (GstBufferPool*))(fnptr))(carg0);
+// }
+// void _gotk4_gst1_BufferPool_virtual_free_buffer(void* fnptr, GstBufferPool* carg0, GstBuffer* carg1) {
+// 	return ((void (*) (GstBufferPool*, GstBuffer*))(fnptr))(carg0, carg1);
+// }
+// const gchar** _gotk4_gst1_BufferPool_virtual_get_options(void* fnptr, GstBufferPool* carg0) {
+// 	return ((const gchar** (*) (GstBufferPool*))(fnptr))(carg0);
+// }
+// void _gotk4_gst1_BufferPool_virtual_release_buffer(void* fnptr, GstBufferPool* carg0, GstBuffer* carg1) {
+// 	return ((void (*) (GstBufferPool*, GstBuffer*))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gst1_BufferPool_virtual_reset_buffer(void* fnptr, GstBufferPool* carg0, GstBuffer* carg1) {
+// 	return ((void (*) (GstBufferPool*, GstBuffer*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gst1_BufferPool_virtual_set_config(void* fnptr, GstBufferPool* carg0, GstStructure* carg1) {
+// 	return ((gboolean (*) (GstBufferPool*, GstStructure*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gst1_BufferPool_virtual_start(void* fnptr, GstBufferPool* carg0) {
+// 	return ((gboolean (*) (GstBufferPool*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gst1_BufferPool_virtual_stop(void* fnptr, GstBufferPool* carg0) {
+// 	return ((gboolean (*) (GstBufferPool*))(fnptr))(carg0);
+// }
+// extern void _gotk4_gst1_Bus_message(GstBus*, GstMessage*);
+// extern void _gotk4_gst1_Bus_sync_message(GstBus*, GstMessage*);
+// void _gotk4_gst1_Bus_virtual_message(void* fnptr, GstBus* carg0, GstMessage* carg1) {
+// 	return ((void (*) (GstBus*, GstMessage*))(fnptr))(carg0, carg1);
 // }
-// C.void _gotk4_gst1_Bus_virtual_sync_message(void* fnptr, *C.GstBus carg0, *C.GstMessage carg1) {
-// 	return ((C.void (*) (*C.GstBus, *C.GstMessage))(fnptr))(carg0, carg1);
+// void _gotk4_gst1_Bus_virtual_sync_message(void* fnptr, GstBus* carg0, GstMessage* carg1) {
+// 	return ((void (*) (GstBus*, GstMessage*))(fnptr))(carg0, carg1);
 // }
-// extern C.GstClockTime _gotk4_gst1_Clock_change_resolution(*C.GstClock, C.GstClockTime, C.GstClockTime);
-// extern C.GstClockTime _gotk4_gst1_Clock_get_internal_time(*C.GstClock);
-// extern C.GstClockTime _gotk4_gst1_Clock_get_resolution(*C.GstClock);
-// extern C.void _gotk4_gst1_Clock_unschedule(*C.GstClock, *C.GstClockEntry);
-// extern C.GstClockReturn _gotk4_gst1_Clock_wait(*C.GstClock, *C.GstClockEntry, C.GstClockTimeDiff);
-// extern C.GstClockReturn _gotk4_gst1_Clock_wait_async(*C.GstClock, *C.GstClockEntry);
-// C.GstClockTime _gotk4_gst1_Clock_virtual_change_resolution(void* fnptr, *C.GstClock carg0, C.GstClockTime carg1, C.GstClockTime carg2) {
-// 	return ((C.GstClockTime (*) (*C.GstClock, C.GstClockTime, C.GstClockTime))(fnptr))(carg0, carg1, carg2);
+// extern GstClockTime _gotk4_gst1_Clock_change_resolution(GstClock*, GstClockTime, GstClockTime);
+// extern GstClockTime _gotk4_gst1_Clock_get_internal_time(GstClock*);
+// extern GstClockTime _gotk4_gst1_Clock_get_resolution(GstClock*);
+// extern void _gotk4_gst1_Clock_unschedule(GstClock*, GstClockEntry*);
+// extern GstClockReturn _gotk4_gst1_Clock_wait(GstClock*, GstClockEntry*, GstClockTimeDiff);
+// extern GstClockReturn _gotk4_gst1_Clock_wait_async(GstClock*, GstClockEntry*);
+// GstClockTime _gotk4_gst1_Clock_virtual_change_resolution(void* fnptr, GstClock* carg0, GstClockTime carg1, GstClockTime carg2) {
+// 	return ((GstClockTime (*) (GstClock*, GstClockTime, GstClockTime))(fnptr))(carg0, carg1, carg2);
 // }
-// C.GstClockTime _gotk4_gst1_Clock_virtual_get_internal_time(void* fnptr, *C.GstClock carg0) {
-// 	return ((C.GstClockTime (*) (*C.GstClock))(fnptr))(carg0);
+// GstClockTime _gotk4_gst1_Clock_virtual_get_internal_time(void* fnptr, GstClock* carg0) {
+// 	return ((GstClockTime (*) (GstClock*))(fnptr))(carg0);
 // }
-// C.GstClockTime _gotk4_gst1_Clock_virtual_get_resolution(void* fnptr, *C.GstClock carg0) {
-// 	return ((C.GstClockTime (*) (*C.GstClock))(fnptr))(carg0);
-// }
-// C.void _gotk4_gst1_Clock_virtual_unschedule(void* fnptr, *C.GstClock carg0, *C.GstClockEntry carg1) {
-// 	return ((C.void (*) (*C.GstClock, *C.GstClockEntry))(fnptr))(carg0, carg1);
-// }
-// C.GstClockReturn _gotk4_gst1_Clock_virtual_wait(void* fnptr, *C.GstClock carg0, *C.GstClockEntry carg1, C.GstClockTimeDiff* carg2) {
-// 	return ((C.GstClockReturn (*) (*C.GstClock, *C.GstClockEntry, C.GstClockTimeDiff*))(fnptr))(carg0, carg1, carg2);
-// }
-// C.GstClockReturn _gotk4_gst1_Clock_virtual_wait_async(void* fnptr, *C.GstClock carg0, *C.GstClockEntry carg1) {
-// 	return ((C.GstClockReturn (*) (*C.GstClock, *C.GstClockEntry))(fnptr))(carg0, carg1);
-// }
-// extern C.gboolean _gotk4_gst1_ControlBinding_sync_values(*C.GstControlBinding, *C.GstObject, C.GstClockTime, C.GstClockTime);
-// C.gboolean _gotk4_gst1_ControlBinding_virtual_sync_values(void* fnptr, *C.GstControlBinding carg0, *C.GstObject carg1, C.GstClockTime carg2, C.GstClockTime carg3) {
-// 	return ((C.gboolean (*) (*C.GstControlBinding, *C.GstObject, C.GstClockTime, C.GstClockTime))(fnptr))(carg0, carg1, carg2, carg3);
-// }
-// extern *C.GstElement _gotk4_gst1_Device_create_element(*C.GstDevice, *C.gchar);
-// extern C.gboolean _gotk4_gst1_Device_reconfigure_element(*C.GstDevice, *C.GstElement);
-// *C.GstElement _gotk4_gst1_Device_virtual_create_element(void* fnptr, *C.GstDevice carg0, *C.gchar carg1) {
-// 	return ((*C.GstElement (*) (*C.GstDevice, *C.gchar))(fnptr))(carg0, carg1);
+// GstClockTime _gotk4_gst1_Clock_virtual_get_resolution(void* fnptr, GstClock* carg0) {
+// 	return ((GstClockTime (*) (GstClock*))(fnptr))(carg0);
+// }
+// void _gotk4_gst1_Clock_virtual_unschedule(void* fnptr, GstClock* carg0, GstClockEntry* carg1) {
+// 	return ((void (*) (GstClock*, GstClockEntry*))(fnptr))(carg0, carg1);
+// }
+// GstClockReturn _gotk4_gst1_Clock_virtual_wait(void* fnptr, GstClock* carg0, GstClockEntry* carg1, GstClockTimeDiff* carg2) {
+// 	return ((GstClockReturn (*) (GstClock*, GstClockEntry*, GstClockTimeDiff*))(fnptr))(carg0, carg1, carg2);
+// }
+// GstClockReturn _gotk4_gst1_Clock_virtual_wait_async(void* fnptr, GstClock* carg0, GstClockEntry* carg1) {
+// 	return ((GstClockReturn (*) (GstClock*, GstClockEntry*))(fnptr))(carg0, carg1);
+// }
+// extern gboolean _gotk4_gst1_ControlBinding_sync_values(GstControlBinding*, GstObject*, GstClockTime, GstClockTime);
+// gboolean _gotk4_gst1_ControlBinding_virtual_sync_values(void* fnptr, GstControlBinding* carg0, GstObject* carg1, GstClockTime carg2, GstClockTime carg3) {
+// 	return ((gboolean (*) (GstControlBinding*, GstObject*, GstClockTime, GstClockTime))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// extern GstElement* _gotk4_gst1_Device_create_element(GstDevice*, const gchar*);
+// extern gboolean _gotk4_gst1_Device_reconfigure_element(GstDevice*, GstElement*);
+// GstElement* _gotk4_gst1_Device_virtual_create_element(void* fnptr, GstDevice* carg0, const gchar* carg1) {
+// 	return ((GstElement* (*) (GstDevice*, const gchar*))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gst1_Device_virtual_reconfigure_element(void* fnptr, *C.GstDevice carg0, *C.GstElement carg1) {
-// 	return ((C.gboolean (*) (*C.GstDevice, *C.GstElement))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gst1_Device_virtual_reconfigure_element(void* fnptr, GstDevice* carg0, GstElement* carg1) {
+// 	return ((gboolean (*) (GstDevice*, GstElement*))(fnptr))(carg0, carg1);
 // }
-// extern C.gboolean _gotk4_gst1_DeviceProvider_start(*C.GstDeviceProvider);
-// extern C.void _gotk4_gst1_DeviceProvider_stop(*C.GstDeviceProvider);
-// C.gboolean _gotk4_gst1_DeviceProvider_virtual_start(void* fnptr, *C.GstDeviceProvider carg0) {
-// 	return ((C.gboolean (*) (*C.GstDeviceProvider))(fnptr))(carg0);
+// extern gboolean _gotk4_gst1_DeviceProvider_start(GstDeviceProvider*);
+// extern void _gotk4_gst1_DeviceProvider_stop(GstDeviceProvider*);
+// gboolean _gotk4_gst1_DeviceProvider_virtual_start(void* fnptr, GstDeviceProvider* carg0) {
+// 	return ((gboolean (*) (GstDeviceProvider*))(fnptr))(carg0);
 // }
-// C.void _gotk4_gst1_DeviceProvider_virtual_stop(void* fnptr, *C.GstDeviceProvider carg0) {
-// 	return ((C.void (*) (*C.GstDeviceProvider))(fnptr))(carg0);
+// void _gotk4_gst1_DeviceProvider_virtual_stop(void* fnptr, GstDeviceProvider* carg0) {
+// 	return ((void (*) (GstDeviceProvider*))(fnptr))(carg0);
 // }
-// extern C.GstStateChangeReturn _gotk4_gst1_Element_change_state(*C.GstElement, C.GstStateChange);
-// extern C.GstStateChangeReturn _gotk4_gst1_Element_get_state(*C.GstElement, C.GstState, C.GstState, C.GstClockTime);
-// extern C.void _gotk4_gst1_Element_no_more_pads(*C.GstElement);
-// extern C.void _gotk4_gst1_Element_pad_added(*C.GstElement, *C.GstPad);
-// extern C.void _gotk4_gst1_Element_pad_removed(*C.GstElement, *C.GstPad);
-// extern C.gboolean _gotk4_gst1_Element_post_message(*C.GstElement, *C.GstMessage);
-// extern *C.GstClock _gotk4_gst1_Element_provide_clock(*C.GstElement);
-// extern C.gboolean _gotk4_gst1_Element_query(*C.GstElement, *C.GstQuery);
-// extern C.void _gotk4_gst1_Element_release_pad(*C.GstElement, *C.GstPad);
-// extern *C.GstPad _gotk4_gst1_Element_request_new_pad(*C.GstElement, *C.GstPadTemplate, *C.gchar, *C.GstCaps);
-// extern C.gboolean _gotk4_gst1_Element_send_event(*C.GstElement, *C.GstEvent);
-// extern C.void _gotk4_gst1_Element_set_bus(*C.GstElement, *C.GstBus);
-// extern C.gboolean _gotk4_gst1_Element_set_clock(*C.GstElement, *C.GstClock);
-// extern C.void _gotk4_gst1_Element_set_context(*C.GstElement, *C.GstContext);
-// extern C.GstStateChangeReturn _gotk4_gst1_Element_set_state(*C.GstElement, C.GstState);
-// extern C.void _gotk4_gst1_Element_state_changed(*C.GstElement, C.GstState, C.GstState, C.GstState);
-// C.GstStateChangeReturn _gotk4_gst1_Element_virtual_change_state(void* fnptr, *C.GstElement carg0, C.GstStateChange carg1) {
-// 	return ((C.GstStateChangeReturn (*) (*C.GstElement, C.GstStateChange))(fnptr))(carg0, carg1);
+// extern GstStateChangeReturn _gotk4_gst1_Element_change_state(GstElement*, GstStateChange);
+// extern GstStateChangeReturn _gotk4_gst1_Element_get_state(GstElement*, GstState, GstState, GstClockTime);
+// extern void _gotk4_gst1_Element_no_more_pads(GstElement*);
+// extern void _gotk4_gst1_Element_pad_added(GstElement*, GstPad*);
+// extern void _gotk4_gst1_Element_pad_removed(GstElement*, GstPad*);
+// extern gboolean _gotk4_gst1_Element_post_message(GstElement*, GstMessage*);
+// extern GstClock* _gotk4_gst1_Element_provide_clock(GstElement*);
+// extern gboolean _gotk4_gst1_Element_query(GstElement*, GstQuery*);
+// extern void _gotk4_gst1_Element_release_pad(GstElement*, GstPad*);
+// extern GstPad* _gotk4_gst1_Element_request_new_pad(GstElement*, GstPadTemplate*, const gchar*, const GstCaps*);
+// extern gboolean _gotk4_gst1_Element_send_event(GstElement*, GstEvent*);
+// extern void _gotk4_gst1_Element_set_bus(GstElement*, GstBus*);
+// extern gboolean _gotk4_gst1_Element_set_clock(GstElement*, GstClock*);
+// extern void _gotk4_gst1_Element_set_context(GstElement*, GstContext*);
+// extern GstStateChangeReturn _gotk4_gst1_Element_set_state(GstElement*, GstState);
+// extern void _gotk4_gst1_Element_state_changed(GstElement*, GstState, GstState, GstState);
+// GstStateChangeReturn _gotk4_gst1_Element_virtual_change_state(void* fnptr, GstElement* carg0, GstStateChange carg1) {
+// 	return ((GstStateChangeReturn (*) (GstElement*, GstStateChange))(fnptr))(carg0, carg1);
 // }
-// C.GstStateChangeReturn _gotk4_gst1_Element_virtual_get_state(void* fnptr, *C.GstElement carg0, C.GstState* carg1, C.GstState* carg2, C.GstClockTime carg3) {
-// 	return ((C.GstStateChangeReturn (*) (*C.GstElement, C.GstState*, C.GstState*, C.GstClockTime))(fnptr))(carg0, carg1, carg2, carg3);
+// GstStateChangeReturn _gotk4_gst1_Element_virtual_get_state(void* fnptr, GstElement* carg0, GstState* carg1, GstState* carg2, GstClockTime carg3) {
+// 	return ((GstStateChangeReturn (*) (GstElement*, GstState*, GstState*, GstClockTime))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// C.void _gotk4_gst1_Element_virtual_no_more_pads(void* fnptr, *C.GstElement carg0) {
-// 	return ((C.void (*) (*C.GstElement))(fnptr))(carg0);
+// void _gotk4_gst1_Element_virtual_no_more_pads(void* fnptr, GstElement* carg0) {
+// 	return ((void (*) (GstElement*))(fnptr))(carg0);
 // }
-// C.void _gotk4_gst1_Element_virtual_pad_added(void* fnptr, *C.GstElement carg0, *C.GstPad carg1) {
-// 	return ((C.void (*) (*C.GstElement, *C.GstPad))(fnptr))(carg0, carg1);
+// void _gotk4_gst1_Element_virtual_pad_added(void* fnptr, GstElement* carg0, GstPad* carg1) {
+// 	return ((void (*) (GstElement*, GstPad*))(fnptr))(carg0, carg1);
 // }
-// C.void _gotk4_gst1_Element_virtual_pad_removed(void* fnptr, *C.GstElement carg0, *C.GstPad carg1) {
-// 	return ((C.void (*) (*C.GstElement, *C.GstPad))(fnptr))(carg0, carg1);
+// void _gotk4_gst1_Element_virtual_pad_removed(void* fnptr, GstElement* carg0, GstPad* carg1) {
+// 	return ((void (*) (GstElement*, GstPad*))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gst1_Element_virtual_post_message(void* fnptr, *C.GstElement carg0, *C.GstMessage carg1) {
-// 	return ((C.gboolean (*) (*C.GstElement, *C.GstMessage))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gst1_Element_virtual_post_message(void* fnptr, GstElement* carg0, GstMessage* carg1) {
+// 	return ((gboolean (*) (GstElement*, GstMessage*))(fnptr))(carg0, carg1);
 // }
-// *C.GstClock _gotk4_gst1_Element_virtual_provide_clock(void* fnptr, *C.GstElement carg0) {
-// 	return ((*C.GstClock (*) (*C.GstElement))(fnptr))(carg0);
+// GstClock* _gotk4_gst1_Element_virtual_provide_clock(void* fnptr, GstElement* carg0) {
+// 	return ((GstClock* (*) (GstElement*))(fnptr))(carg0);
 // }
-// C.gboolean _gotk4_gst1_Element_virtual_query(void* fnptr, *C.GstElement carg0, *C.GstQuery carg1) {
-// 	return ((C.gboolean (*) (*C.GstElement, *C.GstQuery))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gst1_Element_virtual_query(void* fnptr, GstElement* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstElement*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// C.void _gotk4_gst1_Element_virtual_release_pad(void* fnptr, *C.GstElement carg0, *C.GstPad carg1) {
-// 	return ((C.void (*) (*C.GstElement, *C.GstPad))(fnptr))(carg0, carg1);
+// void _gotk4_gst1_Element_virtual_release_pad(void* fnptr, GstElement* carg0, GstPad* carg1) {
+// 	return ((void (*) (GstElement*, GstPad*))(fnptr))(carg0, carg1);
 // }
-// *C.GstPad _gotk4_gst1_Element_virtual_request_new_pad(void* fnptr, *C.GstElement carg0, *C.GstPadTemplate carg1, *C.gchar carg2, *C.GstCaps carg3) {
-// 	return ((*C.GstPad (*) (*C.GstElement, *C.GstPadTemplate, *C.gchar, *C.GstCaps))(fnptr))(carg0, carg1, carg2, carg3);
+// GstPad* _gotk4_gst1_Element_virtual_request_new_pad(void* fnptr, GstElement* carg0, GstPadTemplate* carg1, const gchar* carg2, const GstCaps* carg3) {
+// 	return ((GstPad* (*) (GstElement*, GstPadTemplate*, const gchar*, const GstCaps*))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// C.gboolean _gotk4_gst1_Element_virtual_send_event(void* fnptr, *C.GstElement carg0, *C.GstEvent carg1) {
-// 	return ((C.gboolean (*) (*C.GstElement, *C.GstEvent))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gst1_Element_virtual_send_event(void* fnptr, GstElement* carg0, GstEvent* carg1) {
+// 	return ((gboolean (*) (GstElement*, GstEvent*))(fnptr))(carg0, carg1);
 // }
-// C.void _gotk4_gst1_Element_virtual_set_bus(void* fnptr, *C.GstElement carg0, *C.GstBus carg1) {
-// 	return ((C.void (*) (*C.GstElement, *C.GstBus))(fnptr))(carg0, carg1);
+// void _gotk4_gst1_Element_virtual_set_bus(void* fnptr, GstElement* carg0, GstBus* carg1) {
+// 	return ((void (*) (GstElement*, GstBus*))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gst1_Element_virtual_set_clock(void* fnptr, *C.GstElement carg0, *C.GstClock carg1) {
-// 	return ((C.gboolean (*) (*C.GstElement, *C.GstClock))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gst1_Element_virtual_set_clock(void* fnptr, GstElement* carg0, GstClock* carg1) {
+// 	return ((gboolean (*) (GstElement*, GstClock*))(fnptr))(carg0, carg1);
 // }
-// C.void _gotk4_gst1_Element_virtual_set_context(void* fnptr, *C.GstElement carg0, *C.GstContext carg1) {
-// 	return ((C.void (*) (*C.GstElement, *C.GstContext))(fnptr))(carg0, carg1);
+// void _gotk4_gst1_Element_virtual_set_context(void* fnptr, GstElement* carg0, GstContext* carg1) {
+// 	return ((void (*) (GstElement*, GstContext*))(fnptr))(carg0, carg1);
 // }
-// C.GstStateChangeReturn _gotk4_gst1_Element_virtual_set_state(void* fnptr, *C.GstElement carg0, C.GstState carg1) {
-// 	return ((C.GstStateChangeReturn (*) (*C.GstElement, C.GstState))(fnptr))(carg0, carg1);
+// GstStateChangeReturn _gotk4_gst1_Element_virtual_set_state(void* fnptr, GstElement* carg0, GstState carg1) {
+// 	return ((GstStateChangeReturn (*) (GstElement*, GstState))(fnptr))(carg0, carg1);
 // }
-// C.void _gotk4_gst1_Element_virtual_state_changed(void* fnptr, *C.GstElement carg0, C.GstState carg1, C.GstState carg2, C.GstState carg3) {
-// 	return ((C.void (*) (*C.GstElement, C.GstState, C.GstState, C.GstState))(fnptr))(carg0, carg1, carg2, carg3);
+// void _gotk4_gst1_Element_virtual_state_changed(void* fnptr, GstElement* carg0, GstState carg1, GstState carg2, GstState carg3) {
+// 	return ((void (*) (GstElement*, GstState, GstState, GstState))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// extern C.gboolean _gotk4_gst1_Bin_add_element(*C.GstBin, *C.GstElement);
-// extern C.void _gotk4_gst1_Bin_deep_element_added(*C.GstBin, *C.GstBin, *C.GstElement);
-// extern C.void _gotk4_gst1_Bin_deep_element_removed(*C.GstBin, *C.GstBin, *C.GstElement);
-// extern C.gboolean _gotk4_gst1_Bin_do_latency(*C.GstBin);
-// extern C.void _gotk4_gst1_Bin_element_added(*C.GstBin, *C.GstElement);
-// extern C.void _gotk4_gst1_Bin_element_removed(*C.GstBin, *C.GstElement);
-// extern C.void _gotk4_gst1_Bin_handle_message(*C.GstBin, *C.GstMessage);
-// extern C.gboolean _gotk4_gst1_Bin_remove_element(*C.GstBin, *C.GstElement);
-// C.gboolean _gotk4_gst1_Bin_virtual_add_element(void* fnptr, *C.GstBin carg0, *C.GstElement carg1) {
-// 	return ((C.gboolean (*) (*C.GstBin, *C.GstElement))(fnptr))(carg0, carg1);
+// extern gboolean _gotk4_gst1_Bin_add_element(GstBin*, GstElement*);
+// extern void _gotk4_gst1_Bin_deep_element_added(GstBin*, GstBin*, GstElement*);
+// extern void _gotk4_gst1_Bin_deep_element_removed(GstBin*, GstBin*, GstElement*);
+// extern gboolean _gotk4_gst1_Bin_do_latency(GstBin*);
+// extern void _gotk4_gst1_Bin_element_added(GstBin*, GstElement*);
+// extern void _gotk4_gst1_Bin_element_removed(GstBin*, GstElement*);
+// extern void _gotk4_gst1_Bin_handle_message(GstBin*, GstMessage*);
+// extern gboolean _gotk4_gst1_Bin_remove_element(GstBin*, GstElement*);
+// gboolean _gotk4_gst1_Bin_virtual_add_element(void* fnptr, GstBin* carg0, GstElement* carg1) {
+// 	return ((gboolean (*) (GstBin*, GstElement*))(fnptr))(carg0, carg1);
 // }
-// C.void _gotk4_gst1_Bin_virtual_deep_element_added(void* fnptr, *C.GstBin carg0, *C.GstBin carg1, *C.GstElement carg2) {
-// 	return ((C.void (*) (*C.GstBin, *C.GstBin, *C.GstElement))(fnptr))(carg0, carg1, carg2);
+// void _gotk4_gst1_Bin_virtual_deep_element_added(void* fnptr, GstBin* carg0, GstBin* carg1, GstElement* carg2) {
+// 	return ((void (*) (GstBin*, GstBin*, GstElement*))(fnptr))(carg0, carg1, carg2);
 // }
-// C.void _gotk4_gst1_Bin_virtual_deep_element_removed(void* fnptr, *C.GstBin carg0, *C.GstBin carg1, *C.GstElement carg2) {
-// 	return ((C.void (*) (*C.GstBin, *C.GstBin, *C.GstElement))(fnptr))(carg0, carg1, carg2);
+// void _gotk4_gst1_Bin_virtual_deep_element_removed(void* fnptr, GstBin* carg0, GstBin* carg1, GstElement* carg2) {
+// 	return ((void (*) (GstBin*, GstBin*, GstElement*))(fnptr))(carg0, carg1, carg2);
 // }
-// C.gboolean _gotk4_gst1_Bin_virtual_do_latency(void* fnptr, *C.GstBin carg0) {
-// 	return ((C.gboolean (*) (*C.GstBin))(fnptr))(carg0);
+// gboolean _gotk4_gst1_Bin_virtual_do_latency(void* fnptr, GstBin* carg0) {
+// 	return ((gboolean (*) (GstBin*))(fnptr))(carg0);
 // }
-// C.void _gotk4_gst1_Bin_virtual_element_added(void* fnptr, *C.GstBin carg0, *C.GstElement carg1) {
-// 	return ((C.void (*) (*C.GstBin, *C.GstElement))(fnptr))(carg0, carg1);
+// void _gotk4_gst1_Bin_virtual_element_added(void* fnptr, GstBin* carg0, GstElement* carg1) {
+// 	return ((void (*) (GstBin*, GstElement*))(fnptr))(carg0, carg1);
 // }
-// C.void _gotk4_gst1_Bin_virtual_element_removed(void* fnptr, *C.GstBin carg0, *C.GstElement carg1) {
-// 	return ((C.void (*) (*C.GstBin, *C.GstElement))(fnptr))(carg0, carg1);
+// void _gotk4_gst1_Bin_virtual_element_removed(void* fnptr, GstBin* carg0, GstElement* carg1) {
+// 	return ((void (*) (GstBin*, GstElement*))(fnptr))(carg0, carg1);
 // }
-// C.void _gotk4_gst1_Bin_virtual_handle_message(void* fnptr, *C.GstBin carg0, *C.GstMessage carg1) {
-// 	return ((C.void (*) (*C.GstBin, *C.GstMessage))(fnptr))(carg0, carg1);
+// void _gotk4_gst1_Bin_virtual_handle_message(void* fnptr, GstBin* carg0, GstMessage* carg1) {
+// 	return ((void (*) (GstBin*, GstMessage*))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gst1_Bin_virtual_remove_element(void* fnptr, *C.GstBin carg0, *C.GstElement carg1) {
-// 	return ((C.gboolean (*) (*C.GstBin, *C.GstElement))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gst1_Bin_virtual_remove_element(void* fnptr, GstBin* carg0, GstElement* carg1) {
+// 	return ((gboolean (*) (GstBin*, GstElement*))(fnptr))(carg0, carg1);
 // }
 import "C"
 
@@ -8886,7 +8886,7 @@ func DebugRingBufferLoggerGetLogs() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (gchar**)")
 
 	return goret
 }
@@ -9255,7 +9255,7 @@ func FormatsContains(formats []Format, format Format) bool {
 
 	_ = formats
 	_ = carg1
-	panic("unimplemented conversion of []Format (*C.GstFormat)")
+	panic("unimplemented conversion of []Format (const GstFormat*)")
 	carg2 = C.GstFormat(format)
 
 	cret = C.gst_formats_contains(carg1, carg2)
@@ -9677,7 +9677,7 @@ func ProtectionFilterSystemsByAvailableDecryptors(systemIdentifiers []string) []
 
 	_ = systemIdentifiers
 	_ = carg1
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (const gchar**)")
 
 	cret = C.gst_protection_filter_systems_by_available_decryptors(carg1)
 	runtime.KeepAlive(systemIdentifiers)
@@ -9686,7 +9686,7 @@ func ProtectionFilterSystemsByAvailableDecryptors(systemIdentifiers []string) []
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (gchar**)")
 
 	return goret
 }
@@ -9729,7 +9729,7 @@ func ProtectionSelectSystem(systemIdentifiers []string) string {
 
 	_ = systemIdentifiers
 	_ = carg1
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (const gchar**)")
 
 	cret = C.gst_protection_select_system(carg1)
 	runtime.KeepAlive(systemIdentifiers)
@@ -10007,7 +10007,7 @@ func TagMergeStringsWithComma(src *gobject.Value) gobject.Value {
 
 	_ = dest
 	_ = carg1
-	panic("unimplemented conversion of gobject.Value (C.GValue)")
+	panic("unimplemented conversion of gobject.Value (GValue)")
 
 	return dest
 }
@@ -10037,7 +10037,7 @@ func TagMergeUseFirst(src *gobject.Value) gobject.Value {
 
 	_ = dest
 	_ = carg1
-	panic("unimplemented conversion of gobject.Value (C.GValue)")
+	panic("unimplemented conversion of gobject.Value (GValue)")
 
 	return dest
 }
@@ -10257,7 +10257,7 @@ func UtilDumpMem(mem []byte) {
 	_ = mem
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []byte (*C.guchar)")
+	panic("unimplemented conversion of []byte (const guchar*)")
 
 	C.gst_util_dump_mem(carg1, carg2)
 	runtime.KeepAlive(mem)
@@ -10817,10 +10817,10 @@ func UtilSimplifyFraction(numerator *int32, denominator *int32, nTerms uint, thr
 
 	_ = numerator
 	_ = carg1
-	panic("unimplemented conversion of *int32 (*C.gint)")
+	panic("unimplemented conversion of *int32 (gint*)")
 	_ = denominator
 	_ = carg2
-	panic("unimplemented conversion of *int32 (*C.gint)")
+	panic("unimplemented conversion of *int32 (gint*)")
 	carg3 = C.guint(nTerms)
 	carg4 = C.guint(threshold)
 
@@ -11264,7 +11264,7 @@ func ValueDeserialize(src string) (gobject.Value, bool) {
 
 	_ = dest
 	_ = carg1
-	panic("unimplemented conversion of gobject.Value (C.GValue)")
+	panic("unimplemented conversion of gobject.Value (GValue)")
 	if cret != 0 {
 		goret = true
 	}
@@ -11309,7 +11309,7 @@ func ValueDeserializeWithPspec(src string, pspec *gobject.ParamSpec) (gobject.Va
 
 	_ = dest
 	_ = carg1
-	panic("unimplemented conversion of gobject.Value (C.GValue)")
+	panic("unimplemented conversion of gobject.Value (GValue)")
 	if cret != 0 {
 		goret = true
 	}
@@ -11945,7 +11945,7 @@ func ValueInitAndCopy(src *gobject.Value) gobject.Value {
 
 	_ = dest
 	_ = carg1
-	panic("unimplemented conversion of gobject.Value (C.GValue)")
+	panic("unimplemented conversion of gobject.Value (GValue)")
 
 	return dest
 }
@@ -11987,7 +11987,7 @@ func ValueIntersect(value1 *gobject.Value, value2 *gobject.Value) (gobject.Value
 
 	_ = dest
 	_ = carg1
-	panic("unimplemented conversion of gobject.Value (C.GValue)")
+	panic("unimplemented conversion of gobject.Value (GValue)")
 	if cret != 0 {
 		goret = true
 	}
@@ -12463,7 +12463,7 @@ func ValueSubtract(minuend *gobject.Value, subtrahend *gobject.Value) (gobject.V
 
 	_ = dest
 	_ = carg1
-	panic("unimplemented conversion of gobject.Value (C.GValue)")
+	panic("unimplemented conversion of gobject.Value (GValue)")
 	if cret != 0 {
 		goret = true
 	}
@@ -12502,7 +12502,7 @@ func ValueUnion(value1 *gobject.Value, value2 *gobject.Value) (gobject.Value, bo
 
 	_ = dest
 	_ = carg1
-	panic("unimplemented conversion of gobject.Value (C.GValue)")
+	panic("unimplemented conversion of gobject.Value (GValue)")
 	if cret != 0 {
 		goret = true
 	}
@@ -13797,7 +13797,7 @@ func (preset *PresetInstance) GetPresetNames() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (gchar**)")
 
 	return goret
 }
@@ -13822,7 +13822,7 @@ func (preset *PresetInstance) GetPropertyNames() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (gchar**)")
 
 	return goret
 }
@@ -14180,7 +14180,7 @@ func UnsafeApplyPresetOverrides[Instance Preset](gclass unsafe.Pointer, override
 
 				_ = goret
 				_ = cret
-				panic("unimplemented conversion of []string (**C.gchar)")
+				panic("unimplemented conversion of []string (gchar**)")
 
 				return cret
 			},
@@ -14202,7 +14202,7 @@ func UnsafeApplyPresetOverrides[Instance Preset](gclass unsafe.Pointer, override
 
 				_ = goret
 				_ = cret
-				panic("unimplemented conversion of []string (**C.gchar)")
+				panic("unimplemented conversion of []string (gchar**)")
 
 				return cret
 			},
@@ -14416,7 +14416,7 @@ func (preset *PresetInstance) ParentGetPresetNames() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (gchar**)")
 
 	return goret
 }
@@ -14442,7 +14442,7 @@ func (preset *PresetInstance) ParentGetPropertyNames() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (gchar**)")
 
 	return goret
 }
@@ -14759,7 +14759,7 @@ func (handler *URIHandlerInstance) GetProtocols() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (const gchar* const*)")
 
 	return goret
 }
@@ -15838,7 +15838,7 @@ func ObjectDefaultDeepNotify(object gobject.Object, orig Object, pspec *gobject.
 	carg3 = (*C.GParamSpec)(gobject.UnsafeParamSpecToGlibNone(pspec))
 	_ = excludedProps
 	_ = carg4
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (gchar**)")
 
 	C.gst_object_default_deep_notify(carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(object)
@@ -21232,13 +21232,13 @@ func (plugin *PluginInstance) AddDependency(envVars []string, paths []string, na
 	carg0 = (*C.GstPlugin)(UnsafePluginToGlibNone(plugin))
 	_ = envVars
 	_ = carg1
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (const gchar**)")
 	_ = paths
 	_ = carg2
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (const gchar**)")
 	_ = names
 	_ = carg3
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (const gchar**)")
 	carg4 = C.GstPluginDependencyFlags(flags)
 
 	C.gst_plugin_add_dependency(carg0, carg1, carg2, carg3, carg4)
@@ -21599,7 +21599,7 @@ func (plugin *PluginInstance) GetStatusErrors() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (gchar**)")
 
 	return goret
 }
@@ -21622,7 +21622,7 @@ func (plugin *PluginInstance) GetStatusInfos() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (gchar**)")
 
 	return goret
 }
@@ -21645,7 +21645,7 @@ func (plugin *PluginInstance) GetStatusWarnings() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (gchar**)")
 
 	return goret
 }
@@ -25615,7 +25615,7 @@ func (factory *TypeFindFactoryInstance) GetExtensions() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (const gchar* const*)")
 
 	return goret
 }
@@ -26575,7 +26575,7 @@ func BufferPoolConfigGetAllocator(config *Structure) (Allocator, AllocationParam
 	}
 	_ = params
 	_ = carg3
-	panic("unimplemented conversion of AllocationParams (C.GstAllocationParams)")
+	panic("unimplemented conversion of AllocationParams (GstAllocationParams)")
 	if cret != 0 {
 		goret = true
 	}
@@ -26942,7 +26942,7 @@ func (pool *BufferPoolInstance) GetOptions() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (const gchar**)")
 
 	return goret
 }
@@ -27405,7 +27405,7 @@ func UnsafeApplyBufferPoolOverrides[Instance BufferPool](gclass unsafe.Pointer, 
 
 				_ = goret
 				_ = cret
-				panic("unimplemented conversion of []string (**C.gchar)")
+				panic("unimplemented conversion of []string (const gchar**)")
 
 				return cret
 			},
@@ -27675,7 +27675,7 @@ func (pool *BufferPoolInstance) ParentGetOptions() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (const gchar**)")
 
 	return goret
 }
@@ -28537,7 +28537,7 @@ func (bus *BusInstance) GetPollfd() glib.PollFD {
 
 	_ = fd
 	_ = carg1
-	panic("unimplemented conversion of glib.PollFD (C.GPollFD)")
+	panic("unimplemented conversion of glib.PollFD (GPollFD)")
 
 	return fd
 }
@@ -31666,7 +31666,7 @@ func (self *ControlSourceInstance) ControlSourceGetValueArray(timestamp ClockTim
 	_ = values
 	_ = carg4
 	_ = carg3
-	panic("unimplemented conversion of []float64 (*C.gdouble)")
+	panic("unimplemented conversion of []float64 (gdouble*)")
 
 	cret = C.gst_control_source_get_value_array(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(self)
@@ -32108,7 +32108,7 @@ func (device *DeviceInstance) HasClassesv(classes []string) bool {
 	carg0 = (*C.GstDevice)(UnsafeDeviceToGlibNone(device))
 	_ = classes
 	_ = carg1
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (gchar**)")
 
 	cret = C.gst_device_has_classesv(carg0, carg1)
 	runtime.KeepAlive(device)
@@ -32727,7 +32727,7 @@ func (monitor *DeviceMonitorInstance) GetProviders() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (gchar**)")
 
 	return goret
 }
@@ -33391,7 +33391,7 @@ func (provider *DeviceProviderInstance) GetHiddenProviders() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (gchar**)")
 
 	return goret
 }
@@ -34052,7 +34052,7 @@ func (factory *DeviceProviderFactoryInstance) GetMetadataKeys() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (gchar**)")
 
 	return goret
 }
@@ -34113,7 +34113,7 @@ func (factory *DeviceProviderFactoryInstance) HasClassesv(classes []string) bool
 	carg0 = (*C.GstDeviceProviderFactory)(UnsafeDeviceProviderFactoryToGlibNone(factory))
 	_ = classes
 	_ = carg1
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (gchar**)")
 
 	cret = C.gst_device_provider_factory_has_classesv(carg0, carg1)
 	runtime.KeepAlive(factory)
@@ -40015,11 +40015,11 @@ func (factory *ElementFactoryInstance) CreateWithProperties(names []string, valu
 	_ = names
 	_ = carg2
 	_ = carg1
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (const gchar**)")
 	_ = values
 	_ = carg3
 	_ = carg1
-	panic("unimplemented conversion of []gobject.Value (*C.GValue)")
+	panic("unimplemented conversion of []gobject.Value (const GValue*)")
 
 	cret = C.gst_element_factory_create_with_properties(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(factory)
@@ -40113,7 +40113,7 @@ func (factory *ElementFactoryInstance) GetMetadataKeys() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (gchar**)")
 
 	return goret
 }
@@ -40220,7 +40220,7 @@ func (factory *ElementFactoryInstance) GetURIProtocols() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (const gchar* const*)")
 
 	return goret
 }
@@ -48200,7 +48200,7 @@ func (features *CapsFeatures) SetParentRefcount(refcount *int32) bool {
 	carg0 = (*C.GstCapsFeatures)(UnsafeCapsFeaturesToGlibNone(features))
 	_ = refcount
 	_ = carg1
-	panic("unimplemented conversion of *int32 (*C.gint)")
+	panic("unimplemented conversion of *int32 (gint*)")
 
 	cret = C.gst_caps_features_set_parent_refcount(carg0, carg1)
 	runtime.KeepAlive(features)
@@ -58023,7 +58023,7 @@ func MetaApiTypeGetTags(api gobject.Type) []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (const gchar* const*)")
 
 	return goret
 }
@@ -58083,7 +58083,7 @@ func MetaApiTypeRegister(api string, tags []string) gobject.Type {
 	defer C.free(unsafe.Pointer(carg1))
 	_ = tags
 	_ = carg2
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (const gchar**)")
 
 	cret = C.gst_meta_api_type_register(carg1, carg2)
 	runtime.KeepAlive(api)
@@ -58128,7 +58128,7 @@ func MetaDeserialize(buffer *Buffer, data *uint8, size uint) (uint32, *Meta) {
 	carg1 = (*C.GstBuffer)(UnsafeBufferToGlibNone(buffer))
 	_ = data
 	_ = carg2
-	panic("unimplemented conversion of *uint8 (*C.guint8)")
+	panic("unimplemented conversion of *uint8 (const guint8*)")
 	carg3 = C.gsize(size)
 
 	cret = C.gst_meta_deserialize(carg1, carg2, carg3, &carg4)
@@ -59231,7 +59231,7 @@ func (_context *ParseContext) GetMissingElements() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (gchar**)")
 
 	return goret
 }
@@ -62161,7 +62161,7 @@ func (query *Query) ParseNthAllocationParam(index uint) (Allocator, AllocationPa
 	}
 	_ = params
 	_ = carg3
-	panic("unimplemented conversion of AllocationParams (C.GstAllocationParams)")
+	panic("unimplemented conversion of AllocationParams (GstAllocationParams)")
 
 	return allocator, params
 }
@@ -62873,7 +62873,7 @@ func (query *Query) SetFormatsv(formats []Format) {
 	_ = formats
 	_ = carg2
 	_ = carg1
-	panic("unimplemented conversion of []Format (*C.GstFormat)")
+	panic("unimplemented conversion of []Format (const GstFormat*)")
 
 	C.gst_query_set_formatsv(carg0, carg1, carg2)
 	runtime.KeepAlive(query)
@@ -67266,7 +67266,7 @@ func (structure *Structure) SetParentRefcount(refcount *int32) bool {
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
 	_ = refcount
 	_ = carg1
-	panic("unimplemented conversion of *int32 (*C.gint)")
+	panic("unimplemented conversion of *int32 (gint*)")
 
 	cret = C.gst_structure_set_parent_refcount(carg0, carg1)
 	runtime.KeepAlive(structure)
@@ -67579,7 +67579,7 @@ func TagListCopyValue(list *TagList, tag string) (gobject.Value, bool) {
 
 	_ = dest
 	_ = carg1
-	panic("unimplemented conversion of gobject.Value (C.GValue)")
+	panic("unimplemented conversion of gobject.Value (GValue)")
 	if cret != 0 {
 		goret = true
 	}
@@ -70305,7 +70305,7 @@ func (find *TypeFind) Peek(offset int64, size uint) *uint8 {
 	if cret != nil {
 		_ = goret
 		_ = cret
-		panic("unimplemented conversion of *uint8 (*C.guint8)")
+		panic("unimplemented conversion of *uint8 (const guint8*)")
 	}
 
 	return goret

@@ -35,7 +35,7 @@ func _gotk4_gstaudio1_AudioBaseSinkCustomSlavingCallback(carg1 *C.GstAudioBaseSi
 	itime = gst.ClockTime(carg3)
 	_ = requestedSkew
 	_ = carg4
-	panic("unimplemented conversion of *gst.ClockTimeDiff (*C.GstClockTimeDiff)")
+	panic("unimplemented conversion of *gst.ClockTimeDiff (GstClockTimeDiff*)")
 	discontReason = AudioBaseSinkDiscontReason(carg5)
 
 	fn(sink, etime, itime, requestedSkew, discontReason)
@@ -82,7 +82,7 @@ func _gotk4_gstaudio1_AudioRingBufferCallback(carg1 *C.GstAudioRingBuffer, carg2
 	_ = data
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (guint8*)")
 
 	fn(rbuf, data)
 }
