@@ -1271,8 +1271,7 @@ func (o *AppSinkInstance) ConnectProposeAllocation(fn func(AppSink, gst.Query) b
 // This function blocks until a preroll sample or EOS is received or the appsink
 // element is set to the READY/NULL state.
 func (o *AppSinkInstance) EmitPullPreroll() gst.Sample {
-	return 
-	o.Emit("pull-preroll")
+	return o.Emit("pull-preroll").(gst.Sample)
 }
 // EmitPullSample emits the "pull-sample" signal
 //
@@ -1291,8 +1290,7 @@ func (o *AppSinkInstance) EmitPullPreroll() gst.Sample {
 // If an EOS event was received before any buffers, this function returns
 // %NULL. Use gst_app_sink_is_eos () to check for the EOS condition.
 func (o *AppSinkInstance) EmitPullSample() gst.Sample {
-	return 
-	o.Emit("pull-sample")
+	return o.Emit("pull-sample").(gst.Sample)
 }
 // EmitTryPullObject emits the "try-pull-object" signal
 //
@@ -1319,8 +1317,7 @@ func (o *AppSinkInstance) EmitPullSample() gst.Sample {
 // Note that future releases may extend this API to return other object types
 // so make sure that your code is checking for the actual type it is handling.
 func (o *AppSinkInstance) EmitTryPullObject(arg0 uint64) gst.MiniObject {
-	return 
-	o.Emit("try-pull-object", arg0)
+	return o.Emit("try-pull-object", arg0).(gst.MiniObject)
 }
 // EmitTryPullPreroll emits the "try-pull-preroll" signal
 //
@@ -1344,8 +1341,7 @@ func (o *AppSinkInstance) EmitTryPullObject(arg0 uint64) gst.MiniObject {
 // This function blocks until a preroll sample or EOS is received, the appsink
 // element is set to the READY/NULL state, or the timeout expires.
 func (o *AppSinkInstance) EmitTryPullPreroll(arg0 uint64) gst.Sample {
-	return 
-	o.Emit("try-pull-preroll", arg0)
+	return o.Emit("try-pull-preroll", arg0).(gst.Sample)
 }
 // EmitTryPullSample emits the "try-pull-sample" signal
 //
@@ -1365,8 +1361,7 @@ func (o *AppSinkInstance) EmitTryPullPreroll(arg0 uint64) gst.Sample {
 // this function returns %NULL. Use gst_app_sink_is_eos () to check
 // for the EOS condition.
 func (o *AppSinkInstance) EmitTryPullSample(arg0 uint64) gst.Sample {
-	return 
-	o.Emit("try-pull-sample", arg0)
+	return o.Emit("try-pull-sample", arg0).(gst.Sample)
 }
 // AppSrcInstance is the instance type used by all types extending GstAppSrc. It is used internally by the bindings. Users should use the interface [AppSrc] instead.
 type AppSrcInstance struct {
@@ -2474,8 +2469,7 @@ func (appsrc *AppSrcInstance) SetStreamType(typ AppStreamType) {
 //
 // Notify @appsrc that no more buffer are available.
 func (o *AppSrcInstance) EmitEndOfStream() gst.FlowReturn {
-	return 
-	o.Emit("end-of-stream")
+	return o.Emit("end-of-stream").(gst.FlowReturn)
 }
 // ConnectEnoughData connects the provided callback to the "enough-data" signal
 //
@@ -2510,8 +2504,7 @@ func (o *AppSrcInstance) ConnectNeedData(fn func(AppSrc, uint)) gobject.SignalHa
 // When the block property is TRUE, this function can block until free space
 // becomes available in the queue.
 func (o *AppSrcInstance) EmitPushBuffer(arg0 gst.Buffer) gst.FlowReturn {
-	return 
-	o.Emit("push-buffer", arg0)
+	return o.Emit("push-buffer", arg0).(gst.FlowReturn)
 }
 // EmitPushBufferList emits the "push-buffer-list" signal
 //
@@ -2525,8 +2518,7 @@ func (o *AppSrcInstance) EmitPushBuffer(arg0 gst.Buffer) gst.FlowReturn {
 // When the block property is TRUE, this function can block until free space
 // becomes available in the queue.
 func (o *AppSrcInstance) EmitPushBufferList(arg0 gst.BufferList) gst.FlowReturn {
-	return 
-	o.Emit("push-buffer-list", arg0)
+	return o.Emit("push-buffer-list", arg0).(gst.FlowReturn)
 }
 // EmitPushSample emits the "push-sample" signal
 //
@@ -2544,8 +2536,7 @@ func (o *AppSrcInstance) EmitPushBufferList(arg0 gst.BufferList) gst.FlowReturn 
 // When the block property is TRUE, this function can block until free space
 // becomes available in the queue.
 func (o *AppSrcInstance) EmitPushSample(arg0 gst.Sample) gst.FlowReturn {
-	return 
-	o.Emit("push-sample", arg0)
+	return o.Emit("push-sample", arg0).(gst.FlowReturn)
 }
 // ConnectSeekData connects the provided callback to the "seek-data" signal
 //
