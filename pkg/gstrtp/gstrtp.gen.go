@@ -9,9 +9,9 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/diamondburned/gotk4/pkg/core/classdata"
-	"github.com/diamondburned/gotk4/pkg/glib/v2"
-	"github.com/diamondburned/gotk4/pkg/gobject/v2"
+	"github.com/go-gst/go-glib/pkg/core/classdata"
+	"github.com/go-gst/go-glib/pkg/glib/v2"
+	"github.com/go-gst/go-glib/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
 	"github.com/go-gst/go-gst/pkg/gstbase"
 )
@@ -19,80 +19,80 @@ import (
 // #cgo pkg-config: gstreamer-rtp-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/rtp/rtp.h>
-// extern gboolean _gotk4_gstrtp1_RTPBaseDepayload_handle_event(GstRTPBaseDepayload*, GstEvent*);
-// extern gboolean _gotk4_gstrtp1_RTPBaseDepayload_packet_lost(GstRTPBaseDepayload*, GstEvent*);
-// extern GstBuffer* _gotk4_gstrtp1_RTPBaseDepayload_process(GstRTPBaseDepayload*, GstBuffer*);
-// extern GstBuffer* _gotk4_gstrtp1_RTPBaseDepayload_process_rtp_packet(GstRTPBaseDepayload*, GstRTPBuffer*);
-// extern gboolean _gotk4_gstrtp1_RTPBaseDepayload_set_caps(GstRTPBaseDepayload*, GstCaps*);
-// gboolean _gotk4_gstrtp1_RTPBaseDepayload_virtual_handle_event(void* fnptr, GstRTPBaseDepayload* carg0, GstEvent* carg1) {
+// extern gboolean _goglib_gstrtp1_RTPBaseDepayload_handle_event(GstRTPBaseDepayload*, GstEvent*);
+// extern gboolean _goglib_gstrtp1_RTPBaseDepayload_packet_lost(GstRTPBaseDepayload*, GstEvent*);
+// extern GstBuffer* _goglib_gstrtp1_RTPBaseDepayload_process(GstRTPBaseDepayload*, GstBuffer*);
+// extern GstBuffer* _goglib_gstrtp1_RTPBaseDepayload_process_rtp_packet(GstRTPBaseDepayload*, GstRTPBuffer*);
+// extern gboolean _goglib_gstrtp1_RTPBaseDepayload_set_caps(GstRTPBaseDepayload*, GstCaps*);
+// gboolean _goglib_gstrtp1_RTPBaseDepayload_virtual_handle_event(void* fnptr, GstRTPBaseDepayload* carg0, GstEvent* carg1) {
 // 	return ((gboolean (*) (GstRTPBaseDepayload*, GstEvent*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstrtp1_RTPBaseDepayload_virtual_packet_lost(void* fnptr, GstRTPBaseDepayload* carg0, GstEvent* carg1) {
+// gboolean _goglib_gstrtp1_RTPBaseDepayload_virtual_packet_lost(void* fnptr, GstRTPBaseDepayload* carg0, GstEvent* carg1) {
 // 	return ((gboolean (*) (GstRTPBaseDepayload*, GstEvent*))(fnptr))(carg0, carg1);
 // }
-// GstBuffer* _gotk4_gstrtp1_RTPBaseDepayload_virtual_process(void* fnptr, GstRTPBaseDepayload* carg0, GstBuffer* carg1) {
+// GstBuffer* _goglib_gstrtp1_RTPBaseDepayload_virtual_process(void* fnptr, GstRTPBaseDepayload* carg0, GstBuffer* carg1) {
 // 	return ((GstBuffer* (*) (GstRTPBaseDepayload*, GstBuffer*))(fnptr))(carg0, carg1);
 // }
-// GstBuffer* _gotk4_gstrtp1_RTPBaseDepayload_virtual_process_rtp_packet(void* fnptr, GstRTPBaseDepayload* carg0, GstRTPBuffer* carg1) {
+// GstBuffer* _goglib_gstrtp1_RTPBaseDepayload_virtual_process_rtp_packet(void* fnptr, GstRTPBaseDepayload* carg0, GstRTPBuffer* carg1) {
 // 	return ((GstBuffer* (*) (GstRTPBaseDepayload*, GstRTPBuffer*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstrtp1_RTPBaseDepayload_virtual_set_caps(void* fnptr, GstRTPBaseDepayload* carg0, GstCaps* carg1) {
+// gboolean _goglib_gstrtp1_RTPBaseDepayload_virtual_set_caps(void* fnptr, GstRTPBaseDepayload* carg0, GstCaps* carg1) {
 // 	return ((gboolean (*) (GstRTPBaseDepayload*, GstCaps*))(fnptr))(carg0, carg1);
 // }
-// extern GstCaps* _gotk4_gstrtp1_RTPBasePayload_get_caps(GstRTPBasePayload*, GstPad*, GstCaps*);
-// extern GstFlowReturn _gotk4_gstrtp1_RTPBasePayload_handle_buffer(GstRTPBasePayload*, GstBuffer*);
-// extern gboolean _gotk4_gstrtp1_RTPBasePayload_query(GstRTPBasePayload*, GstPad*, GstQuery*);
-// extern gboolean _gotk4_gstrtp1_RTPBasePayload_set_caps(GstRTPBasePayload*, GstCaps*);
-// extern gboolean _gotk4_gstrtp1_RTPBasePayload_sink_event(GstRTPBasePayload*, GstEvent*);
-// extern gboolean _gotk4_gstrtp1_RTPBasePayload_src_event(GstRTPBasePayload*, GstEvent*);
-// GstCaps* _gotk4_gstrtp1_RTPBasePayload_virtual_get_caps(void* fnptr, GstRTPBasePayload* carg0, GstPad* carg1, GstCaps* carg2) {
+// extern GstCaps* _goglib_gstrtp1_RTPBasePayload_get_caps(GstRTPBasePayload*, GstPad*, GstCaps*);
+// extern GstFlowReturn _goglib_gstrtp1_RTPBasePayload_handle_buffer(GstRTPBasePayload*, GstBuffer*);
+// extern gboolean _goglib_gstrtp1_RTPBasePayload_query(GstRTPBasePayload*, GstPad*, GstQuery*);
+// extern gboolean _goglib_gstrtp1_RTPBasePayload_set_caps(GstRTPBasePayload*, GstCaps*);
+// extern gboolean _goglib_gstrtp1_RTPBasePayload_sink_event(GstRTPBasePayload*, GstEvent*);
+// extern gboolean _goglib_gstrtp1_RTPBasePayload_src_event(GstRTPBasePayload*, GstEvent*);
+// GstCaps* _goglib_gstrtp1_RTPBasePayload_virtual_get_caps(void* fnptr, GstRTPBasePayload* carg0, GstPad* carg1, GstCaps* carg2) {
 // 	return ((GstCaps* (*) (GstRTPBasePayload*, GstPad*, GstCaps*))(fnptr))(carg0, carg1, carg2);
 // }
-// GstFlowReturn _gotk4_gstrtp1_RTPBasePayload_virtual_handle_buffer(void* fnptr, GstRTPBasePayload* carg0, GstBuffer* carg1) {
+// GstFlowReturn _goglib_gstrtp1_RTPBasePayload_virtual_handle_buffer(void* fnptr, GstRTPBasePayload* carg0, GstBuffer* carg1) {
 // 	return ((GstFlowReturn (*) (GstRTPBasePayload*, GstBuffer*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstrtp1_RTPBasePayload_virtual_query(void* fnptr, GstRTPBasePayload* carg0, GstPad* carg1, GstQuery* carg2) {
+// gboolean _goglib_gstrtp1_RTPBasePayload_virtual_query(void* fnptr, GstRTPBasePayload* carg0, GstPad* carg1, GstQuery* carg2) {
 // 	return ((gboolean (*) (GstRTPBasePayload*, GstPad*, GstQuery*))(fnptr))(carg0, carg1, carg2);
 // }
-// gboolean _gotk4_gstrtp1_RTPBasePayload_virtual_set_caps(void* fnptr, GstRTPBasePayload* carg0, GstCaps* carg1) {
+// gboolean _goglib_gstrtp1_RTPBasePayload_virtual_set_caps(void* fnptr, GstRTPBasePayload* carg0, GstCaps* carg1) {
 // 	return ((gboolean (*) (GstRTPBasePayload*, GstCaps*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstrtp1_RTPBasePayload_virtual_sink_event(void* fnptr, GstRTPBasePayload* carg0, GstEvent* carg1) {
+// gboolean _goglib_gstrtp1_RTPBasePayload_virtual_sink_event(void* fnptr, GstRTPBasePayload* carg0, GstEvent* carg1) {
 // 	return ((gboolean (*) (GstRTPBasePayload*, GstEvent*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstrtp1_RTPBasePayload_virtual_src_event(void* fnptr, GstRTPBasePayload* carg0, GstEvent* carg1) {
+// gboolean _goglib_gstrtp1_RTPBasePayload_virtual_src_event(void* fnptr, GstRTPBasePayload* carg0, GstEvent* carg1) {
 // 	return ((gboolean (*) (GstRTPBasePayload*, GstEvent*))(fnptr))(carg0, carg1);
 // }
-// extern gsize _gotk4_gstrtp1_RTPHeaderExtension_get_max_size(GstRTPHeaderExtension*, const GstBuffer*);
-// extern GstRTPHeaderExtensionFlags _gotk4_gstrtp1_RTPHeaderExtension_get_supported_flags(GstRTPHeaderExtension*);
-// extern gboolean _gotk4_gstrtp1_RTPHeaderExtension_read(GstRTPHeaderExtension*, GstRTPHeaderExtensionFlags, const guint8*, gsize, GstBuffer*);
-// extern gboolean _gotk4_gstrtp1_RTPHeaderExtension_set_attributes(GstRTPHeaderExtension*, GstRTPHeaderExtensionDirection, const gchar*);
-// extern gboolean _gotk4_gstrtp1_RTPHeaderExtension_set_caps_from_attributes(GstRTPHeaderExtension*, GstCaps*);
-// extern gboolean _gotk4_gstrtp1_RTPHeaderExtension_set_non_rtp_sink_caps(GstRTPHeaderExtension*, const GstCaps*);
-// extern gboolean _gotk4_gstrtp1_RTPHeaderExtension_update_non_rtp_src_caps(GstRTPHeaderExtension*, GstCaps*);
-// extern gssize _gotk4_gstrtp1_RTPHeaderExtension_write(GstRTPHeaderExtension*, const GstBuffer*, GstRTPHeaderExtensionFlags, GstBuffer*, guint8*, gsize);
-// gsize _gotk4_gstrtp1_RTPHeaderExtension_virtual_get_max_size(void* fnptr, GstRTPHeaderExtension* carg0, const GstBuffer* carg1) {
+// extern gsize _goglib_gstrtp1_RTPHeaderExtension_get_max_size(GstRTPHeaderExtension*, const GstBuffer*);
+// extern GstRTPHeaderExtensionFlags _goglib_gstrtp1_RTPHeaderExtension_get_supported_flags(GstRTPHeaderExtension*);
+// extern gboolean _goglib_gstrtp1_RTPHeaderExtension_read(GstRTPHeaderExtension*, GstRTPHeaderExtensionFlags, const guint8*, gsize, GstBuffer*);
+// extern gboolean _goglib_gstrtp1_RTPHeaderExtension_set_attributes(GstRTPHeaderExtension*, GstRTPHeaderExtensionDirection, const gchar*);
+// extern gboolean _goglib_gstrtp1_RTPHeaderExtension_set_caps_from_attributes(GstRTPHeaderExtension*, GstCaps*);
+// extern gboolean _goglib_gstrtp1_RTPHeaderExtension_set_non_rtp_sink_caps(GstRTPHeaderExtension*, const GstCaps*);
+// extern gboolean _goglib_gstrtp1_RTPHeaderExtension_update_non_rtp_src_caps(GstRTPHeaderExtension*, GstCaps*);
+// extern gssize _goglib_gstrtp1_RTPHeaderExtension_write(GstRTPHeaderExtension*, const GstBuffer*, GstRTPHeaderExtensionFlags, GstBuffer*, guint8*, gsize);
+// gsize _goglib_gstrtp1_RTPHeaderExtension_virtual_get_max_size(void* fnptr, GstRTPHeaderExtension* carg0, const GstBuffer* carg1) {
 // 	return ((gsize (*) (GstRTPHeaderExtension*, const GstBuffer*))(fnptr))(carg0, carg1);
 // }
-// GstRTPHeaderExtensionFlags _gotk4_gstrtp1_RTPHeaderExtension_virtual_get_supported_flags(void* fnptr, GstRTPHeaderExtension* carg0) {
+// GstRTPHeaderExtensionFlags _goglib_gstrtp1_RTPHeaderExtension_virtual_get_supported_flags(void* fnptr, GstRTPHeaderExtension* carg0) {
 // 	return ((GstRTPHeaderExtensionFlags (*) (GstRTPHeaderExtension*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstrtp1_RTPHeaderExtension_virtual_read(void* fnptr, GstRTPHeaderExtension* carg0, GstRTPHeaderExtensionFlags carg1, const guint8* carg2, gsize carg3, GstBuffer* carg4) {
+// gboolean _goglib_gstrtp1_RTPHeaderExtension_virtual_read(void* fnptr, GstRTPHeaderExtension* carg0, GstRTPHeaderExtensionFlags carg1, const guint8* carg2, gsize carg3, GstBuffer* carg4) {
 // 	return ((gboolean (*) (GstRTPHeaderExtension*, GstRTPHeaderExtensionFlags, const guint8*, gsize, GstBuffer*))(fnptr))(carg0, carg1, carg2, carg3, carg4);
 // }
-// gboolean _gotk4_gstrtp1_RTPHeaderExtension_virtual_set_attributes(void* fnptr, GstRTPHeaderExtension* carg0, GstRTPHeaderExtensionDirection carg1, const gchar* carg2) {
+// gboolean _goglib_gstrtp1_RTPHeaderExtension_virtual_set_attributes(void* fnptr, GstRTPHeaderExtension* carg0, GstRTPHeaderExtensionDirection carg1, const gchar* carg2) {
 // 	return ((gboolean (*) (GstRTPHeaderExtension*, GstRTPHeaderExtensionDirection, const gchar*))(fnptr))(carg0, carg1, carg2);
 // }
-// gboolean _gotk4_gstrtp1_RTPHeaderExtension_virtual_set_caps_from_attributes(void* fnptr, GstRTPHeaderExtension* carg0, GstCaps* carg1) {
+// gboolean _goglib_gstrtp1_RTPHeaderExtension_virtual_set_caps_from_attributes(void* fnptr, GstRTPHeaderExtension* carg0, GstCaps* carg1) {
 // 	return ((gboolean (*) (GstRTPHeaderExtension*, GstCaps*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstrtp1_RTPHeaderExtension_virtual_set_non_rtp_sink_caps(void* fnptr, GstRTPHeaderExtension* carg0, const GstCaps* carg1) {
+// gboolean _goglib_gstrtp1_RTPHeaderExtension_virtual_set_non_rtp_sink_caps(void* fnptr, GstRTPHeaderExtension* carg0, const GstCaps* carg1) {
 // 	return ((gboolean (*) (GstRTPHeaderExtension*, const GstCaps*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstrtp1_RTPHeaderExtension_virtual_update_non_rtp_src_caps(void* fnptr, GstRTPHeaderExtension* carg0, GstCaps* carg1) {
+// gboolean _goglib_gstrtp1_RTPHeaderExtension_virtual_update_non_rtp_src_caps(void* fnptr, GstRTPHeaderExtension* carg0, GstCaps* carg1) {
 // 	return ((gboolean (*) (GstRTPHeaderExtension*, GstCaps*))(fnptr))(carg0, carg1);
 // }
-// gssize _gotk4_gstrtp1_RTPHeaderExtension_virtual_write(void* fnptr, GstRTPHeaderExtension* carg0, const GstBuffer* carg1, GstRTPHeaderExtensionFlags carg2, GstBuffer* carg3, guint8* carg4, gsize carg5) {
+// gssize _goglib_gstrtp1_RTPHeaderExtension_virtual_write(void* fnptr, GstRTPHeaderExtension* carg0, const GstBuffer* carg1, GstRTPHeaderExtensionFlags carg2, GstBuffer* carg3, guint8* carg4, gsize carg5) {
 // 	return ((gssize (*) (GstRTPHeaderExtension*, const GstBuffer*, GstRTPHeaderExtensionFlags, GstBuffer*, guint8*, gsize))(fnptr))(carg0, carg1, carg2, carg3, carg4, carg5);
 // }
 import "C"
@@ -1013,7 +1013,7 @@ func (f RTPHeaderExtensionFlags) String() string {
 func BufferAddRtpSourceMeta(buffer *gst.Buffer, ssrc *uint32, csrc []uint32) *RTPSourceMeta {
 	var carg1 *C.GstBuffer        // in, none, converted
 	var carg2 *C.guint32          // in, transfer: none, C Pointers: 1, Name: guint32, nullable, nullable
-	var carg3 *C.guint32          // in, transfer: none, C Pointers: 1, Name: array[guint32], nullable, array (inner: *typesystem.CastablePrimitive, length-by: carg4)
+	var carg3 *C.guint32          // in, transfer: none, C Pointers: 1, Name: array[guint32], nullable, array (inner guint32 (*typesystem.CastablePrimitive), length-by: carg4)
 	var carg4 C.guint             // implicit
 	var cret  *C.GstRTPSourceMeta // return, none, converted
 
@@ -1021,12 +1021,12 @@ func BufferAddRtpSourceMeta(buffer *gst.Buffer, ssrc *uint32, csrc []uint32) *RT
 	if ssrc != nil {
 		_ = ssrc
 		_ = carg2
-		panic("unimplemented conversion of *uint32 (const guint32*)")
+		panic("unimplemented conversion of *uint32 (const guint32*) because of no basic converter found")
 	}
 	_ = csrc
 	_ = carg3
 	_ = carg4
-	panic("unimplemented conversion of []uint32 (const guint32*)")
+	panic("unimplemented conversion of []uint32 (const guint32*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_buffer_add_rtp_source_meta(carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(buffer)
@@ -1891,10 +1891,10 @@ func UnsafeApplyRTPBaseDepayloadOverrides[Instance RTPBaseDepayload](gclass unsa
 	pclass := (*C.GstRTPBaseDepayloadClass)(gclass)
 
 	if overrides.HandleEvent != nil {
-		pclass.handle_event = (*[0]byte)(C._gotk4_gstrtp1_RTPBaseDepayload_handle_event)
+		pclass.handle_event = (*[0]byte)(C._goglib_gstrtp1_RTPBaseDepayload_handle_event)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstrtp1_RTPBaseDepayload_handle_event",
+			"_goglib_gstrtp1_RTPBaseDepayload_handle_event",
 			func(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstEvent) (cret C.gboolean) {
 				var filter Instance   // go GstRTPBaseDepayload subclass
 				var event  *gst.Event // in, none, converted
@@ -1915,10 +1915,10 @@ func UnsafeApplyRTPBaseDepayloadOverrides[Instance RTPBaseDepayload](gclass unsa
 	}
 
 	if overrides.PacketLost != nil {
-		pclass.packet_lost = (*[0]byte)(C._gotk4_gstrtp1_RTPBaseDepayload_packet_lost)
+		pclass.packet_lost = (*[0]byte)(C._goglib_gstrtp1_RTPBaseDepayload_packet_lost)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstrtp1_RTPBaseDepayload_packet_lost",
+			"_goglib_gstrtp1_RTPBaseDepayload_packet_lost",
 			func(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstEvent) (cret C.gboolean) {
 				var filter Instance   // go GstRTPBaseDepayload subclass
 				var event  *gst.Event // in, none, converted
@@ -1939,10 +1939,10 @@ func UnsafeApplyRTPBaseDepayloadOverrides[Instance RTPBaseDepayload](gclass unsa
 	}
 
 	if overrides.Process != nil {
-		pclass.process = (*[0]byte)(C._gotk4_gstrtp1_RTPBaseDepayload_process)
+		pclass.process = (*[0]byte)(C._goglib_gstrtp1_RTPBaseDepayload_process)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstrtp1_RTPBaseDepayload_process",
+			"_goglib_gstrtp1_RTPBaseDepayload_process",
 			func(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstBuffer) (cret *C.GstBuffer) {
 				var base  Instance    // go GstRTPBaseDepayload subclass
 				var in    *gst.Buffer // in, none, converted
@@ -1961,10 +1961,10 @@ func UnsafeApplyRTPBaseDepayloadOverrides[Instance RTPBaseDepayload](gclass unsa
 	}
 
 	if overrides.ProcessRtpPacket != nil {
-		pclass.process_rtp_packet = (*[0]byte)(C._gotk4_gstrtp1_RTPBaseDepayload_process_rtp_packet)
+		pclass.process_rtp_packet = (*[0]byte)(C._goglib_gstrtp1_RTPBaseDepayload_process_rtp_packet)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstrtp1_RTPBaseDepayload_process_rtp_packet",
+			"_goglib_gstrtp1_RTPBaseDepayload_process_rtp_packet",
 			func(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstRTPBuffer) (cret *C.GstBuffer) {
 				var base      Instance    // go GstRTPBaseDepayload subclass
 				var rtpBuffer *RTPBuffer  // in, none, converted
@@ -1983,10 +1983,10 @@ func UnsafeApplyRTPBaseDepayloadOverrides[Instance RTPBaseDepayload](gclass unsa
 	}
 
 	if overrides.SetCaps != nil {
-		pclass.set_caps = (*[0]byte)(C._gotk4_gstrtp1_RTPBaseDepayload_set_caps)
+		pclass.set_caps = (*[0]byte)(C._goglib_gstrtp1_RTPBaseDepayload_set_caps)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstrtp1_RTPBaseDepayload_set_caps",
+			"_goglib_gstrtp1_RTPBaseDepayload_set_caps",
 			func(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstCaps) (cret C.gboolean) {
 				var filter Instance  // go GstRTPBaseDepayload subclass
 				var caps   *gst.Caps // in, none, converted
@@ -2029,7 +2029,7 @@ func (filter *RTPBaseDepayloadInstance) ParentHandleEvent(event *gst.Event) bool
 	carg0 = (*C.GstRTPBaseDepayload)(UnsafeRTPBaseDepayloadToGlibNone(filter))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
-	cret = C._gotk4_gstrtp1_RTPBaseDepayload_virtual_handle_event(unsafe.Pointer(parentclass.handle_event), carg0, carg1)
+	cret = C._goglib_gstrtp1_RTPBaseDepayload_virtual_handle_event(unsafe.Pointer(parentclass.handle_event), carg0, carg1)
 	runtime.KeepAlive(filter)
 	runtime.KeepAlive(event)
 
@@ -2064,7 +2064,7 @@ func (filter *RTPBaseDepayloadInstance) ParentPacketLost(event *gst.Event) bool 
 	carg0 = (*C.GstRTPBaseDepayload)(UnsafeRTPBaseDepayloadToGlibNone(filter))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
-	cret = C._gotk4_gstrtp1_RTPBaseDepayload_virtual_packet_lost(unsafe.Pointer(parentclass.packet_lost), carg0, carg1)
+	cret = C._goglib_gstrtp1_RTPBaseDepayload_virtual_packet_lost(unsafe.Pointer(parentclass.packet_lost), carg0, carg1)
 	runtime.KeepAlive(filter)
 	runtime.KeepAlive(event)
 
@@ -2103,7 +2103,7 @@ func (base *RTPBaseDepayloadInstance) ParentProcess(in *gst.Buffer) *gst.Buffer 
 	carg0 = (*C.GstRTPBaseDepayload)(UnsafeRTPBaseDepayloadToGlibNone(base))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(in))
 
-	cret = C._gotk4_gstrtp1_RTPBaseDepayload_virtual_process(unsafe.Pointer(parentclass.process), carg0, carg1)
+	cret = C._goglib_gstrtp1_RTPBaseDepayload_virtual_process(unsafe.Pointer(parentclass.process), carg0, carg1)
 	runtime.KeepAlive(base)
 	runtime.KeepAlive(in)
 
@@ -2143,7 +2143,7 @@ func (base *RTPBaseDepayloadInstance) ParentProcessRtpPacket(rtpBuffer *RTPBuffe
 	carg0 = (*C.GstRTPBaseDepayload)(UnsafeRTPBaseDepayloadToGlibNone(base))
 	carg1 = (*C.GstRTPBuffer)(UnsafeRTPBufferToGlibNone(rtpBuffer))
 
-	cret = C._gotk4_gstrtp1_RTPBaseDepayload_virtual_process_rtp_packet(unsafe.Pointer(parentclass.process_rtp_packet), carg0, carg1)
+	cret = C._goglib_gstrtp1_RTPBaseDepayload_virtual_process_rtp_packet(unsafe.Pointer(parentclass.process_rtp_packet), carg0, carg1)
 	runtime.KeepAlive(base)
 	runtime.KeepAlive(rtpBuffer)
 
@@ -2176,7 +2176,7 @@ func (filter *RTPBaseDepayloadInstance) ParentSetCaps(caps *gst.Caps) bool {
 	carg0 = (*C.GstRTPBaseDepayload)(UnsafeRTPBaseDepayloadToGlibNone(filter))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
-	cret = C._gotk4_gstrtp1_RTPBaseDepayload_virtual_set_caps(unsafe.Pointer(parentclass.set_caps), carg0, carg1)
+	cret = C._goglib_gstrtp1_RTPBaseDepayload_virtual_set_caps(unsafe.Pointer(parentclass.set_caps), carg0, carg1)
 	runtime.KeepAlive(filter)
 	runtime.KeepAlive(caps)
 
@@ -2909,10 +2909,10 @@ func UnsafeApplyRTPBasePayloadOverrides[Instance RTPBasePayload](gclass unsafe.P
 	pclass := (*C.GstRTPBasePayloadClass)(gclass)
 
 	if overrides.GetCaps != nil {
-		pclass.get_caps = (*[0]byte)(C._gotk4_gstrtp1_RTPBasePayload_get_caps)
+		pclass.get_caps = (*[0]byte)(C._goglib_gstrtp1_RTPBasePayload_get_caps)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstrtp1_RTPBasePayload_get_caps",
+			"_goglib_gstrtp1_RTPBasePayload_get_caps",
 			func(carg0 *C.GstRTPBasePayload, carg1 *C.GstPad, carg2 *C.GstCaps) (cret *C.GstCaps) {
 				var payload Instance  // go GstRTPBasePayload subclass
 				var pad     gst.Pad   // in, none, converted
@@ -2933,10 +2933,10 @@ func UnsafeApplyRTPBasePayloadOverrides[Instance RTPBasePayload](gclass unsafe.P
 	}
 
 	if overrides.HandleBuffer != nil {
-		pclass.handle_buffer = (*[0]byte)(C._gotk4_gstrtp1_RTPBasePayload_handle_buffer)
+		pclass.handle_buffer = (*[0]byte)(C._goglib_gstrtp1_RTPBasePayload_handle_buffer)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstrtp1_RTPBasePayload_handle_buffer",
+			"_goglib_gstrtp1_RTPBasePayload_handle_buffer",
 			func(carg0 *C.GstRTPBasePayload, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
 				var payload Instance       // go GstRTPBasePayload subclass
 				var buffer  *gst.Buffer    // in, none, converted
@@ -2955,10 +2955,10 @@ func UnsafeApplyRTPBasePayloadOverrides[Instance RTPBasePayload](gclass unsafe.P
 	}
 
 	if overrides.Query != nil {
-		pclass.query = (*[0]byte)(C._gotk4_gstrtp1_RTPBasePayload_query)
+		pclass.query = (*[0]byte)(C._goglib_gstrtp1_RTPBasePayload_query)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstrtp1_RTPBasePayload_query",
+			"_goglib_gstrtp1_RTPBasePayload_query",
 			func(carg0 *C.GstRTPBasePayload, carg1 *C.GstPad, carg2 *C.GstQuery) (cret C.gboolean) {
 				var payload Instance   // go GstRTPBasePayload subclass
 				var pad     gst.Pad    // in, none, converted
@@ -2981,10 +2981,10 @@ func UnsafeApplyRTPBasePayloadOverrides[Instance RTPBasePayload](gclass unsafe.P
 	}
 
 	if overrides.SetCaps != nil {
-		pclass.set_caps = (*[0]byte)(C._gotk4_gstrtp1_RTPBasePayload_set_caps)
+		pclass.set_caps = (*[0]byte)(C._goglib_gstrtp1_RTPBasePayload_set_caps)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstrtp1_RTPBasePayload_set_caps",
+			"_goglib_gstrtp1_RTPBasePayload_set_caps",
 			func(carg0 *C.GstRTPBasePayload, carg1 *C.GstCaps) (cret C.gboolean) {
 				var payload Instance  // go GstRTPBasePayload subclass
 				var caps    *gst.Caps // in, none, converted
@@ -3005,10 +3005,10 @@ func UnsafeApplyRTPBasePayloadOverrides[Instance RTPBasePayload](gclass unsafe.P
 	}
 
 	if overrides.SinkEvent != nil {
-		pclass.sink_event = (*[0]byte)(C._gotk4_gstrtp1_RTPBasePayload_sink_event)
+		pclass.sink_event = (*[0]byte)(C._goglib_gstrtp1_RTPBasePayload_sink_event)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstrtp1_RTPBasePayload_sink_event",
+			"_goglib_gstrtp1_RTPBasePayload_sink_event",
 			func(carg0 *C.GstRTPBasePayload, carg1 *C.GstEvent) (cret C.gboolean) {
 				var payload Instance   // go GstRTPBasePayload subclass
 				var event   *gst.Event // in, none, converted
@@ -3029,10 +3029,10 @@ func UnsafeApplyRTPBasePayloadOverrides[Instance RTPBasePayload](gclass unsafe.P
 	}
 
 	if overrides.SrcEvent != nil {
-		pclass.src_event = (*[0]byte)(C._gotk4_gstrtp1_RTPBasePayload_src_event)
+		pclass.src_event = (*[0]byte)(C._goglib_gstrtp1_RTPBasePayload_src_event)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstrtp1_RTPBasePayload_src_event",
+			"_goglib_gstrtp1_RTPBasePayload_src_event",
 			func(carg0 *C.GstRTPBasePayload, carg1 *C.GstEvent) (cret C.gboolean) {
 				var payload Instance   // go GstRTPBasePayload subclass
 				var event   *gst.Event // in, none, converted
@@ -3078,7 +3078,7 @@ func (payload *RTPBasePayloadInstance) ParentGetCaps(pad gst.Pad, filter *gst.Ca
 	carg1 = (*C.GstPad)(gst.UnsafePadToGlibNone(pad))
 	carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filter))
 
-	cret = C._gotk4_gstrtp1_RTPBasePayload_virtual_get_caps(unsafe.Pointer(parentclass.get_caps), carg0, carg1, carg2)
+	cret = C._goglib_gstrtp1_RTPBasePayload_virtual_get_caps(unsafe.Pointer(parentclass.get_caps), carg0, carg1, carg2)
 	runtime.KeepAlive(payload)
 	runtime.KeepAlive(pad)
 	runtime.KeepAlive(filter)
@@ -3112,7 +3112,7 @@ func (payload *RTPBasePayloadInstance) ParentHandleBuffer(buffer *gst.Buffer) gs
 	carg0 = (*C.GstRTPBasePayload)(UnsafeRTPBasePayloadToGlibNone(payload))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
-	cret = C._gotk4_gstrtp1_RTPBasePayload_virtual_handle_buffer(unsafe.Pointer(parentclass.handle_buffer), carg0, carg1)
+	cret = C._goglib_gstrtp1_RTPBasePayload_virtual_handle_buffer(unsafe.Pointer(parentclass.handle_buffer), carg0, carg1)
 	runtime.KeepAlive(payload)
 	runtime.KeepAlive(buffer)
 
@@ -3148,7 +3148,7 @@ func (payload *RTPBasePayloadInstance) ParentQueryRTPBasePayload(pad gst.Pad, qu
 	carg1 = (*C.GstPad)(gst.UnsafePadToGlibNone(pad))
 	carg2 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstrtp1_RTPBasePayload_virtual_query(unsafe.Pointer(parentclass.query), carg0, carg1, carg2)
+	cret = C._goglib_gstrtp1_RTPBasePayload_virtual_query(unsafe.Pointer(parentclass.query), carg0, carg1, carg2)
 	runtime.KeepAlive(payload)
 	runtime.KeepAlive(pad)
 	runtime.KeepAlive(query)
@@ -3184,7 +3184,7 @@ func (payload *RTPBasePayloadInstance) ParentSetCaps(caps *gst.Caps) bool {
 	carg0 = (*C.GstRTPBasePayload)(UnsafeRTPBasePayloadToGlibNone(payload))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
-	cret = C._gotk4_gstrtp1_RTPBasePayload_virtual_set_caps(unsafe.Pointer(parentclass.set_caps), carg0, carg1)
+	cret = C._goglib_gstrtp1_RTPBasePayload_virtual_set_caps(unsafe.Pointer(parentclass.set_caps), carg0, carg1)
 	runtime.KeepAlive(payload)
 	runtime.KeepAlive(caps)
 
@@ -3219,7 +3219,7 @@ func (payload *RTPBasePayloadInstance) ParentSinkEvent(event *gst.Event) bool {
 	carg0 = (*C.GstRTPBasePayload)(UnsafeRTPBasePayloadToGlibNone(payload))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
-	cret = C._gotk4_gstrtp1_RTPBasePayload_virtual_sink_event(unsafe.Pointer(parentclass.sink_event), carg0, carg1)
+	cret = C._goglib_gstrtp1_RTPBasePayload_virtual_sink_event(unsafe.Pointer(parentclass.sink_event), carg0, carg1)
 	runtime.KeepAlive(payload)
 	runtime.KeepAlive(event)
 
@@ -3254,7 +3254,7 @@ func (payload *RTPBasePayloadInstance) ParentSrcEvent(event *gst.Event) bool {
 	carg0 = (*C.GstRTPBasePayload)(UnsafeRTPBasePayloadToGlibNone(payload))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
-	cret = C._gotk4_gstrtp1_RTPBasePayload_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
+	cret = C._goglib_gstrtp1_RTPBasePayload_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
 	runtime.KeepAlive(payload)
 	runtime.KeepAlive(event)
 
@@ -3879,7 +3879,7 @@ func (ext *RTPHeaderExtensionInstance) GetURI() string {
 func (ext *RTPHeaderExtensionInstance) Read(readFlags RTPHeaderExtensionFlags, data []uint8, buffer *gst.Buffer) bool {
 	var carg0 *C.GstRTPHeaderExtension     // in, none, converted
 	var carg1 C.GstRTPHeaderExtensionFlags // in, none, casted
-	var carg2 *C.guint8                    // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg3)
+	var carg2 *C.guint8                    // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
 	var carg3 C.gsize                      // implicit
 	var carg4 *C.GstBuffer                 // in, none, converted
 	var cret  C.gboolean                   // return
@@ -3889,7 +3889,7 @@ func (ext *RTPHeaderExtensionInstance) Read(readFlags RTPHeaderExtensionFlags, d
 	_ = data
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 	carg4 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
 	cret = C.gst_rtp_header_extension_read(carg0, carg1, carg2, carg3, carg4)
@@ -4203,7 +4203,7 @@ func (ext *RTPHeaderExtensionInstance) Write(inputMeta *gst.Buffer, writeFlags R
 	var carg1 *C.GstBuffer                 // in, none, converted
 	var carg2 C.GstRTPHeaderExtensionFlags // in, none, casted
 	var carg3 *C.GstBuffer                 // in, none, converted
-	var carg4 *C.guint8                    // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg5)
+	var carg4 *C.guint8                    // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg5)
 	var carg5 C.gsize                      // implicit
 	var cret  C.gssize                     // return, none, casted
 
@@ -4214,7 +4214,7 @@ func (ext *RTPHeaderExtensionInstance) Write(inputMeta *gst.Buffer, writeFlags R
 	_ = data
 	_ = carg4
 	_ = carg5
-	panic("unimplemented conversion of []uint8 (guint8*)")
+	panic("unimplemented conversion of []uint8 (guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_rtp_header_extension_write(carg0, carg1, carg2, carg3, carg4, carg5)
 	runtime.KeepAlive(ext)
@@ -4360,10 +4360,10 @@ func UnsafeApplyRTPHeaderExtensionOverrides[Instance RTPHeaderExtension](gclass 
 	pclass := (*C.GstRTPHeaderExtensionClass)(gclass)
 
 	if overrides.GetMaxSize != nil {
-		pclass.get_max_size = (*[0]byte)(C._gotk4_gstrtp1_RTPHeaderExtension_get_max_size)
+		pclass.get_max_size = (*[0]byte)(C._goglib_gstrtp1_RTPHeaderExtension_get_max_size)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstrtp1_RTPHeaderExtension_get_max_size",
+			"_goglib_gstrtp1_RTPHeaderExtension_get_max_size",
 			func(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstBuffer) (cret C.gsize) {
 				var ext       Instance    // go GstRTPHeaderExtension subclass
 				var inputMeta *gst.Buffer // in, none, converted
@@ -4382,10 +4382,10 @@ func UnsafeApplyRTPHeaderExtensionOverrides[Instance RTPHeaderExtension](gclass 
 	}
 
 	if overrides.GetSupportedFlags != nil {
-		pclass.get_supported_flags = (*[0]byte)(C._gotk4_gstrtp1_RTPHeaderExtension_get_supported_flags)
+		pclass.get_supported_flags = (*[0]byte)(C._goglib_gstrtp1_RTPHeaderExtension_get_supported_flags)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstrtp1_RTPHeaderExtension_get_supported_flags",
+			"_goglib_gstrtp1_RTPHeaderExtension_get_supported_flags",
 			func(carg0 *C.GstRTPHeaderExtension) (cret C.GstRTPHeaderExtensionFlags) {
 				var ext   Instance                // go GstRTPHeaderExtension subclass
 				var goret RTPHeaderExtensionFlags // return, none, casted
@@ -4402,14 +4402,14 @@ func UnsafeApplyRTPHeaderExtensionOverrides[Instance RTPHeaderExtension](gclass 
 	}
 
 	if overrides.Read != nil {
-		pclass.read = (*[0]byte)(C._gotk4_gstrtp1_RTPHeaderExtension_read)
+		pclass.read = (*[0]byte)(C._goglib_gstrtp1_RTPHeaderExtension_read)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstrtp1_RTPHeaderExtension_read",
+			"_goglib_gstrtp1_RTPHeaderExtension_read",
 			func(carg0 *C.GstRTPHeaderExtension, carg1 C.GstRTPHeaderExtensionFlags, carg2 *C.guint8, carg3 C.gsize, carg4 *C.GstBuffer) (cret C.gboolean) {
 				var ext       Instance                // go GstRTPHeaderExtension subclass
 				var readFlags RTPHeaderExtensionFlags // in, none, casted
-				var data      []uint8                 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg3)
+				var data      []uint8                 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
 				var buffer    *gst.Buffer             // in, none, converted
 				var goret     bool                    // return
 
@@ -4418,7 +4418,7 @@ func UnsafeApplyRTPHeaderExtensionOverrides[Instance RTPHeaderExtension](gclass 
 				_ = data
 				_ = carg2
 				_ = carg3
-				panic("unimplemented conversion of []uint8 (const guint8*)")
+				panic("unimplemented conversion of []uint8 (const guint8*) because of unknown reason")
 				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg4))
 
 				goret = overrides.Read(ext, readFlags, data, buffer)
@@ -4433,10 +4433,10 @@ func UnsafeApplyRTPHeaderExtensionOverrides[Instance RTPHeaderExtension](gclass 
 	}
 
 	if overrides.SetAttributes != nil {
-		pclass.set_attributes = (*[0]byte)(C._gotk4_gstrtp1_RTPHeaderExtension_set_attributes)
+		pclass.set_attributes = (*[0]byte)(C._goglib_gstrtp1_RTPHeaderExtension_set_attributes)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstrtp1_RTPHeaderExtension_set_attributes",
+			"_goglib_gstrtp1_RTPHeaderExtension_set_attributes",
 			func(carg0 *C.GstRTPHeaderExtension, carg1 C.GstRTPHeaderExtensionDirection, carg2 *C.gchar) (cret C.gboolean) {
 				var ext        Instance                    // go GstRTPHeaderExtension subclass
 				var direction  RTPHeaderExtensionDirection // in, none, casted
@@ -4459,10 +4459,10 @@ func UnsafeApplyRTPHeaderExtensionOverrides[Instance RTPHeaderExtension](gclass 
 	}
 
 	if overrides.SetCapsFromAttributes != nil {
-		pclass.set_caps_from_attributes = (*[0]byte)(C._gotk4_gstrtp1_RTPHeaderExtension_set_caps_from_attributes)
+		pclass.set_caps_from_attributes = (*[0]byte)(C._goglib_gstrtp1_RTPHeaderExtension_set_caps_from_attributes)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstrtp1_RTPHeaderExtension_set_caps_from_attributes",
+			"_goglib_gstrtp1_RTPHeaderExtension_set_caps_from_attributes",
 			func(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstCaps) (cret C.gboolean) {
 				var ext   Instance  // go GstRTPHeaderExtension subclass
 				var caps  *gst.Caps // in, none, converted
@@ -4483,10 +4483,10 @@ func UnsafeApplyRTPHeaderExtensionOverrides[Instance RTPHeaderExtension](gclass 
 	}
 
 	if overrides.SetNonRtpSinkCaps != nil {
-		pclass.set_non_rtp_sink_caps = (*[0]byte)(C._gotk4_gstrtp1_RTPHeaderExtension_set_non_rtp_sink_caps)
+		pclass.set_non_rtp_sink_caps = (*[0]byte)(C._goglib_gstrtp1_RTPHeaderExtension_set_non_rtp_sink_caps)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstrtp1_RTPHeaderExtension_set_non_rtp_sink_caps",
+			"_goglib_gstrtp1_RTPHeaderExtension_set_non_rtp_sink_caps",
 			func(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstCaps) (cret C.gboolean) {
 				var ext   Instance  // go GstRTPHeaderExtension subclass
 				var caps  *gst.Caps // in, none, converted
@@ -4507,10 +4507,10 @@ func UnsafeApplyRTPHeaderExtensionOverrides[Instance RTPHeaderExtension](gclass 
 	}
 
 	if overrides.UpdateNonRtpSrcCaps != nil {
-		pclass.update_non_rtp_src_caps = (*[0]byte)(C._gotk4_gstrtp1_RTPHeaderExtension_update_non_rtp_src_caps)
+		pclass.update_non_rtp_src_caps = (*[0]byte)(C._goglib_gstrtp1_RTPHeaderExtension_update_non_rtp_src_caps)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstrtp1_RTPHeaderExtension_update_non_rtp_src_caps",
+			"_goglib_gstrtp1_RTPHeaderExtension_update_non_rtp_src_caps",
 			func(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstCaps) (cret C.gboolean) {
 				var ext   Instance  // go GstRTPHeaderExtension subclass
 				var caps  *gst.Caps // in, none, converted
@@ -4531,16 +4531,16 @@ func UnsafeApplyRTPHeaderExtensionOverrides[Instance RTPHeaderExtension](gclass 
 	}
 
 	if overrides.Write != nil {
-		pclass.write = (*[0]byte)(C._gotk4_gstrtp1_RTPHeaderExtension_write)
+		pclass.write = (*[0]byte)(C._goglib_gstrtp1_RTPHeaderExtension_write)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstrtp1_RTPHeaderExtension_write",
+			"_goglib_gstrtp1_RTPHeaderExtension_write",
 			func(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstBuffer, carg2 C.GstRTPHeaderExtensionFlags, carg3 *C.GstBuffer, carg4 *C.guint8, carg5 C.gsize) (cret C.gssize) {
 				var ext        Instance                // go GstRTPHeaderExtension subclass
 				var inputMeta  *gst.Buffer             // in, none, converted
 				var writeFlags RTPHeaderExtensionFlags // in, none, casted
 				var output     *gst.Buffer             // in, none, converted
-				var data       []uint8                 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg5)
+				var data       []uint8                 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg5)
 				var goret      int                     // return, none, casted
 
 				ext = UnsafeRTPHeaderExtensionFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
@@ -4550,7 +4550,7 @@ func UnsafeApplyRTPHeaderExtensionOverrides[Instance RTPHeaderExtension](gclass 
 				_ = data
 				_ = carg4
 				_ = carg5
-				panic("unimplemented conversion of []uint8 (guint8*)")
+				panic("unimplemented conversion of []uint8 (guint8*) because of unknown reason")
 
 				goret = overrides.Write(ext, inputMeta, writeFlags, output, data)
 
@@ -4589,7 +4589,7 @@ func (ext *RTPHeaderExtensionInstance) ParentGetMaxSize(inputMeta *gst.Buffer) u
 	carg0 = (*C.GstRTPHeaderExtension)(UnsafeRTPHeaderExtensionToGlibNone(ext))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(inputMeta))
 
-	cret = C._gotk4_gstrtp1_RTPHeaderExtension_virtual_get_max_size(unsafe.Pointer(parentclass.get_max_size), carg0, carg1)
+	cret = C._goglib_gstrtp1_RTPHeaderExtension_virtual_get_max_size(unsafe.Pointer(parentclass.get_max_size), carg0, carg1)
 	runtime.KeepAlive(ext)
 	runtime.KeepAlive(inputMeta)
 
@@ -4616,7 +4616,7 @@ func (ext *RTPHeaderExtensionInstance) ParentGetSupportedFlags() RTPHeaderExtens
 
 	carg0 = (*C.GstRTPHeaderExtension)(UnsafeRTPHeaderExtensionToGlibNone(ext))
 
-	cret = C._gotk4_gstrtp1_RTPHeaderExtension_virtual_get_supported_flags(unsafe.Pointer(parentclass.get_supported_flags), carg0)
+	cret = C._goglib_gstrtp1_RTPHeaderExtension_virtual_get_supported_flags(unsafe.Pointer(parentclass.get_supported_flags), carg0)
 	runtime.KeepAlive(ext)
 
 	var goret RTPHeaderExtensionFlags
@@ -4645,7 +4645,7 @@ func (ext *RTPHeaderExtensionInstance) ParentRead(readFlags RTPHeaderExtensionFl
 	var carg0 *C.GstRTPHeaderExtension
 	var carg1 C.GstRTPHeaderExtensionFlags // in, none, converted
 	var carg2 *C.guint8                    // in, none, casted
-	var carg3 C.gsize                      // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg3)
+	var carg3 C.gsize                      // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
 	var carg4 *C.GstBuffer                 // implicit
 	var cret  C.gboolean                   // return
 
@@ -4656,10 +4656,10 @@ func (ext *RTPHeaderExtensionInstance) ParentRead(readFlags RTPHeaderExtensionFl
 	_ = data
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 	carg4 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
-	cret = C._gotk4_gstrtp1_RTPHeaderExtension_virtual_read(unsafe.Pointer(parentclass.read), carg0, carg1, carg2, carg3, carg4)
+	cret = C._goglib_gstrtp1_RTPHeaderExtension_virtual_read(unsafe.Pointer(parentclass.read), carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(ext)
 	runtime.KeepAlive(readFlags)
 	runtime.KeepAlive(data)
@@ -4701,7 +4701,7 @@ func (ext *RTPHeaderExtensionInstance) ParentSetAttributes(direction RTPHeaderEx
 	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(attributes)))
 	defer C.free(unsafe.Pointer(carg2))
 
-	cret = C._gotk4_gstrtp1_RTPHeaderExtension_virtual_set_attributes(unsafe.Pointer(parentclass.set_attributes), carg0, carg1, carg2)
+	cret = C._goglib_gstrtp1_RTPHeaderExtension_virtual_set_attributes(unsafe.Pointer(parentclass.set_attributes), carg0, carg1, carg2)
 	runtime.KeepAlive(ext)
 	runtime.KeepAlive(direction)
 	runtime.KeepAlive(attributes)
@@ -4741,7 +4741,7 @@ func (ext *RTPHeaderExtensionInstance) ParentSetCapsFromAttributes(caps *gst.Cap
 	carg0 = (*C.GstRTPHeaderExtension)(UnsafeRTPHeaderExtensionToGlibNone(ext))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
-	cret = C._gotk4_gstrtp1_RTPHeaderExtension_virtual_set_caps_from_attributes(unsafe.Pointer(parentclass.set_caps_from_attributes), carg0, carg1)
+	cret = C._goglib_gstrtp1_RTPHeaderExtension_virtual_set_caps_from_attributes(unsafe.Pointer(parentclass.set_caps_from_attributes), carg0, carg1)
 	runtime.KeepAlive(ext)
 	runtime.KeepAlive(caps)
 
@@ -4777,7 +4777,7 @@ func (ext *RTPHeaderExtensionInstance) ParentSetNonRtpSinkCaps(caps *gst.Caps) b
 	carg0 = (*C.GstRTPHeaderExtension)(UnsafeRTPHeaderExtensionToGlibNone(ext))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
-	cret = C._gotk4_gstrtp1_RTPHeaderExtension_virtual_set_non_rtp_sink_caps(unsafe.Pointer(parentclass.set_non_rtp_sink_caps), carg0, carg1)
+	cret = C._goglib_gstrtp1_RTPHeaderExtension_virtual_set_non_rtp_sink_caps(unsafe.Pointer(parentclass.set_non_rtp_sink_caps), carg0, carg1)
 	runtime.KeepAlive(ext)
 	runtime.KeepAlive(caps)
 
@@ -4813,7 +4813,7 @@ func (ext *RTPHeaderExtensionInstance) ParentUpdateNonRtpSrcCaps(caps *gst.Caps)
 	carg0 = (*C.GstRTPHeaderExtension)(UnsafeRTPHeaderExtensionToGlibNone(ext))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
-	cret = C._gotk4_gstrtp1_RTPHeaderExtension_virtual_update_non_rtp_src_caps(unsafe.Pointer(parentclass.update_non_rtp_src_caps), carg0, carg1)
+	cret = C._goglib_gstrtp1_RTPHeaderExtension_virtual_update_non_rtp_src_caps(unsafe.Pointer(parentclass.update_non_rtp_src_caps), carg0, carg1)
 	runtime.KeepAlive(ext)
 	runtime.KeepAlive(caps)
 
@@ -4850,7 +4850,7 @@ func (ext *RTPHeaderExtensionInstance) ParentWrite(inputMeta *gst.Buffer, writeF
 	var carg2 C.GstRTPHeaderExtensionFlags // in, none, converted
 	var carg3 *C.GstBuffer                 // in, none, casted
 	var carg4 *C.guint8                    // in, none, converted
-	var carg5 C.gsize                      // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg5)
+	var carg5 C.gsize                      // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg5)
 	var cret  C.gssize                     // return, none, casted
 
 	parentclass := (*C.GstRTPHeaderExtensionClass)(classdata.PeekParentClass(UnsafeRTPHeaderExtensionToGlibNone(ext)))
@@ -4862,9 +4862,9 @@ func (ext *RTPHeaderExtensionInstance) ParentWrite(inputMeta *gst.Buffer, writeF
 	_ = data
 	_ = carg4
 	_ = carg5
-	panic("unimplemented conversion of []uint8 (guint8*)")
+	panic("unimplemented conversion of []uint8 (guint8*) because of unimplemented: non-fixed size array")
 
-	cret = C._gotk4_gstrtp1_RTPHeaderExtension_virtual_write(unsafe.Pointer(parentclass.write), carg0, carg1, carg2, carg3, carg4, carg5)
+	cret = C._goglib_gstrtp1_RTPHeaderExtension_virtual_write(unsafe.Pointer(parentclass.write), carg0, carg1, carg2, carg3, carg4, carg5)
 	runtime.KeepAlive(ext)
 	runtime.KeepAlive(inputMeta)
 	runtime.KeepAlive(writeFlags)
@@ -5160,7 +5160,7 @@ func (rtpbaseaudiopayload *RTPBaseAudioPayloadInstance) GetAdapter() gstbase.Ada
 // the buffer downstream.
 func (baseaudiopayload *RTPBaseAudioPayloadInstance) Push(data []uint8, timestamp gst.ClockTime) gst.FlowReturn {
 	var carg0 *C.GstRTPBaseAudioPayload // in, none, converted
-	var carg1 *C.guint8                 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint8                 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint                   // implicit
 	var carg3 C.GstClockTime            // in, none, casted, alias
 	var cret  C.GstFlowReturn           // return, none, casted
@@ -5169,7 +5169,7 @@ func (baseaudiopayload *RTPBaseAudioPayloadInstance) Push(data []uint8, timestam
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 	carg3 = C.GstClockTime(timestamp)
 
 	cret = C.gst_rtp_base_audio_payload_push(carg0, carg1, carg2, carg3)
@@ -5512,14 +5512,14 @@ func RTCPBufferValidate(buffer *gst.Buffer) bool {
 // Use this function to validate a packet before using the other functions in
 // this module.
 func RTCPBufferValidateData(data []uint8) bool {
-	var carg1 *C.guint8  // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint8  // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint    // implicit
 	var cret  C.gboolean // return
 
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (guint8*)")
+	panic("unimplemented conversion of []uint8 (guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_rtcp_buffer_validate_data(carg1, carg2)
 	runtime.KeepAlive(data)
@@ -5551,14 +5551,14 @@ func RTCPBufferValidateData(data []uint8) bool {
 // RFC 5506 and will validate full compound RTCP packets as well as reduced
 // size RTCP packets.
 func RTCPBufferValidateDataReduced(data []uint8) bool {
-	var carg1 *C.guint8  // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint8  // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint    // implicit
 	var cret  C.gboolean // return
 
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (guint8*)")
+	panic("unimplemented conversion of []uint8 (guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_rtcp_buffer_validate_data_reduced(carg1, carg2)
 	runtime.KeepAlive(data)
@@ -5821,7 +5821,7 @@ func UnsafeRTCPPacketToGlibFull(r *RTCPPacket) unsafe.Pointer {
 // extension.
 func (packet *RTCPPacket) AddProfileSpecificExt(data []uint8) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
-	var carg1 *C.guint8        // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint8        // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint          // implicit
 	var cret  C.gboolean       // return
 
@@ -5829,7 +5829,7 @@ func (packet *RTCPPacket) AddProfileSpecificExt(data []uint8) bool {
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_rtcp_packet_add_profile_specific_ext(carg0, carg1, carg2)
 	runtime.KeepAlive(packet)
@@ -5920,7 +5920,7 @@ func (packet *RTCPPacket) AppGetData() *uint8 {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	panic("unimplemented conversion of *uint8 (guint8*) because of unknown reason")
 
 	return goret
 }
@@ -6154,7 +6154,7 @@ func (packet *RTCPPacket) ByeAddSsrc(ssrc uint32) bool {
 // Adds @len SSRCs in @ssrc to BYE @packet.
 func (packet *RTCPPacket) ByeAddSsrcs(ssrc []uint32) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
-	var carg1 *C.guint32       // in, transfer: none, C Pointers: 1, Name: array[guint32], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint32       // in, transfer: none, C Pointers: 1, Name: array[guint32], array (inner guint32 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint          // implicit
 	var cret  C.gboolean       // return
 
@@ -6162,7 +6162,7 @@ func (packet *RTCPPacket) ByeAddSsrcs(ssrc []uint32) bool {
 	_ = ssrc
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint32 (guint32*)")
+	panic("unimplemented conversion of []uint32 (guint32*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_rtcp_packet_bye_add_ssrcs(carg0, carg1, carg2)
 	runtime.KeepAlive(packet)
@@ -6332,7 +6332,7 @@ func (packet *RTCPPacket) FbGetFci() *uint8 {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	panic("unimplemented conversion of *uint8 (guint8*) because of unknown reason")
 
 	return goret
 }
@@ -6823,7 +6823,7 @@ func (packet *RTCPPacket) SdesAddEntry(typ RTCPSDESType, data []uint8) bool {
 	var carg0 *C.GstRTCPPacket  // in, none, converted
 	var carg1 C.GstRTCPSDESType // in, none, casted
 	var carg2 C.guint8          // implicit
-	var carg3 *C.guint8         // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg3 *C.guint8         // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var cret  C.gboolean        // return
 
 	carg0 = (*C.GstRTCPPacket)(UnsafeRTCPPacketToGlibNone(packet))
@@ -6831,7 +6831,7 @@ func (packet *RTCPPacket) SdesAddEntry(typ RTCPSDESType, data []uint8) bool {
 	_ = data
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_rtcp_packet_sdes_add_entry(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(packet)
@@ -7243,13 +7243,13 @@ func (packet *RTCPPacket) XrGetDlrrBlock(nth uint, ssrc *uint32, lastRr *uint32,
 	carg1 = C.guint(nth)
 	_ = ssrc
 	_ = carg2
-	panic("unimplemented conversion of *uint32 (guint32*)")
+	panic("unimplemented conversion of *uint32 (guint32*) because of no basic converter found")
 	_ = lastRr
 	_ = carg3
-	panic("unimplemented conversion of *uint32 (guint32*)")
+	panic("unimplemented conversion of *uint32 (guint32*) because of no basic converter found")
 	_ = delay
 	_ = carg4
-	panic("unimplemented conversion of *uint32 (guint32*)")
+	panic("unimplemented conversion of *uint32 (guint32*) because of no basic converter found")
 
 	cret = C.gst_rtcp_packet_xr_get_dlrr_block(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(packet)
@@ -7289,7 +7289,7 @@ func (packet *RTCPPacket) XrGetPrtBySeq(seq uint16, receiptTime *uint32) bool {
 	carg1 = C.guint16(seq)
 	_ = receiptTime
 	_ = carg2
-	panic("unimplemented conversion of *uint32 (guint32*)")
+	panic("unimplemented conversion of *uint32 (guint32*) because of no basic converter found")
 
 	cret = C.gst_rtcp_packet_xr_get_prt_by_seq(carg0, carg1, carg2)
 	runtime.KeepAlive(packet)
@@ -7330,16 +7330,16 @@ func (packet *RTCPPacket) XrGetPrtInfo(ssrc *uint32, thinning *uint8, beginSeq *
 	carg0 = (*C.GstRTCPPacket)(UnsafeRTCPPacketToGlibNone(packet))
 	_ = ssrc
 	_ = carg1
-	panic("unimplemented conversion of *uint32 (guint32*)")
+	panic("unimplemented conversion of *uint32 (guint32*) because of no basic converter found")
 	_ = thinning
 	_ = carg2
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	panic("unimplemented conversion of *uint8 (guint8*) because of no basic converter found")
 	_ = beginSeq
 	_ = carg3
-	panic("unimplemented conversion of *uint16 (guint16*)")
+	panic("unimplemented conversion of *uint16 (guint16*) because of no basic converter found")
 	_ = endSeq
 	_ = carg4
-	panic("unimplemented conversion of *uint16 (guint16*)")
+	panic("unimplemented conversion of *uint16 (guint16*) because of no basic converter found")
 
 	cret = C.gst_rtcp_packet_xr_get_prt_info(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(packet)
@@ -7384,19 +7384,19 @@ func (packet *RTCPPacket) XrGetRleInfo(ssrc *uint32, thinning *uint8, beginSeq *
 	carg0 = (*C.GstRTCPPacket)(UnsafeRTCPPacketToGlibNone(packet))
 	_ = ssrc
 	_ = carg1
-	panic("unimplemented conversion of *uint32 (guint32*)")
+	panic("unimplemented conversion of *uint32 (guint32*) because of no basic converter found")
 	_ = thinning
 	_ = carg2
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	panic("unimplemented conversion of *uint8 (guint8*) because of no basic converter found")
 	_ = beginSeq
 	_ = carg3
-	panic("unimplemented conversion of *uint16 (guint16*)")
+	panic("unimplemented conversion of *uint16 (guint16*) because of no basic converter found")
 	_ = endSeq
 	_ = carg4
-	panic("unimplemented conversion of *uint16 (guint16*)")
+	panic("unimplemented conversion of *uint16 (guint16*) because of no basic converter found")
 	_ = chunkCount
 	_ = carg5
-	panic("unimplemented conversion of *uint32 (guint32*)")
+	panic("unimplemented conversion of *uint32 (guint32*) because of no basic converter found")
 
 	cret = C.gst_rtcp_packet_xr_get_rle_info(carg0, carg1, carg2, carg3, carg4, carg5)
 	runtime.KeepAlive(packet)
@@ -7437,7 +7437,7 @@ func (packet *RTCPPacket) XrGetRleNthChunk(nth uint, chunk *uint16) bool {
 	carg1 = C.guint(nth)
 	_ = chunk
 	_ = carg2
-	panic("unimplemented conversion of *uint16 (guint16*)")
+	panic("unimplemented conversion of *uint16 (guint16*) because of no basic converter found")
 
 	cret = C.gst_rtcp_packet_xr_get_rle_nth_chunk(carg0, carg1, carg2)
 	runtime.KeepAlive(packet)
@@ -7470,7 +7470,7 @@ func (packet *RTCPPacket) XrGetRrt(timestamp *uint64) bool {
 	carg0 = (*C.GstRTCPPacket)(UnsafeRTCPPacketToGlibNone(packet))
 	_ = timestamp
 	_ = carg1
-	panic("unimplemented conversion of *uint64 (guint64*)")
+	panic("unimplemented conversion of *uint64 (guint64*) because of no basic converter found")
 
 	cret = C.gst_rtcp_packet_xr_get_rrt(carg0, carg1)
 	runtime.KeepAlive(packet)
@@ -7531,13 +7531,13 @@ func (packet *RTCPPacket) XrGetSummaryInfo(ssrc *uint32, beginSeq *uint16, endSe
 	carg0 = (*C.GstRTCPPacket)(UnsafeRTCPPacketToGlibNone(packet))
 	_ = ssrc
 	_ = carg1
-	panic("unimplemented conversion of *uint32 (guint32*)")
+	panic("unimplemented conversion of *uint32 (guint32*) because of no basic converter found")
 	_ = beginSeq
 	_ = carg2
-	panic("unimplemented conversion of *uint16 (guint16*)")
+	panic("unimplemented conversion of *uint16 (guint16*) because of no basic converter found")
 	_ = endSeq
 	_ = carg3
-	panic("unimplemented conversion of *uint16 (guint16*)")
+	panic("unimplemented conversion of *uint16 (guint16*) because of no basic converter found")
 
 	cret = C.gst_rtcp_packet_xr_get_summary_info(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(packet)
@@ -7580,16 +7580,16 @@ func (packet *RTCPPacket) XrGetSummaryJitter(minJitter *uint32, maxJitter *uint3
 	carg0 = (*C.GstRTCPPacket)(UnsafeRTCPPacketToGlibNone(packet))
 	_ = minJitter
 	_ = carg1
-	panic("unimplemented conversion of *uint32 (guint32*)")
+	panic("unimplemented conversion of *uint32 (guint32*) because of no basic converter found")
 	_ = maxJitter
 	_ = carg2
-	panic("unimplemented conversion of *uint32 (guint32*)")
+	panic("unimplemented conversion of *uint32 (guint32*) because of no basic converter found")
 	_ = meanJitter
 	_ = carg3
-	panic("unimplemented conversion of *uint32 (guint32*)")
+	panic("unimplemented conversion of *uint32 (guint32*) because of no basic converter found")
 	_ = devJitter
 	_ = carg4
-	panic("unimplemented conversion of *uint32 (guint32*)")
+	panic("unimplemented conversion of *uint32 (guint32*) because of no basic converter found")
 
 	cret = C.gst_rtcp_packet_xr_get_summary_jitter(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(packet)
@@ -7629,10 +7629,10 @@ func (packet *RTCPPacket) XrGetSummaryPkt(lostPackets *uint32, dupPackets *uint3
 	carg0 = (*C.GstRTCPPacket)(UnsafeRTCPPacketToGlibNone(packet))
 	_ = lostPackets
 	_ = carg1
-	panic("unimplemented conversion of *uint32 (guint32*)")
+	panic("unimplemented conversion of *uint32 (guint32*) because of no basic converter found")
 	_ = dupPackets
 	_ = carg2
-	panic("unimplemented conversion of *uint32 (guint32*)")
+	panic("unimplemented conversion of *uint32 (guint32*) because of no basic converter found")
 
 	cret = C.gst_rtcp_packet_xr_get_summary_pkt(carg0, carg1, carg2)
 	runtime.KeepAlive(packet)
@@ -7675,19 +7675,19 @@ func (packet *RTCPPacket) XrGetSummaryTtl(isIpv4 *bool, minTtl *uint8, maxTtl *u
 	carg0 = (*C.GstRTCPPacket)(UnsafeRTCPPacketToGlibNone(packet))
 	_ = isIpv4
 	_ = carg1
-	panic("unimplemented conversion of *bool (gboolean*)")
+	panic("unimplemented conversion of *bool (gboolean*) because of no basic converter found")
 	_ = minTtl
 	_ = carg2
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	panic("unimplemented conversion of *uint8 (guint8*) because of no basic converter found")
 	_ = maxTtl
 	_ = carg3
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	panic("unimplemented conversion of *uint8 (guint8*) because of no basic converter found")
 	_ = meanTtl
 	_ = carg4
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	panic("unimplemented conversion of *uint8 (guint8*) because of no basic converter found")
 	_ = devTtl
 	_ = carg5
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	panic("unimplemented conversion of *uint8 (guint8*) because of no basic converter found")
 
 	cret = C.gst_rtcp_packet_xr_get_summary_ttl(carg0, carg1, carg2, carg3, carg4, carg5)
 	runtime.KeepAlive(packet)
@@ -7729,16 +7729,16 @@ func (packet *RTCPPacket) XrGetVoipBurstMetrics(burstDensity *uint8, gapDensity 
 	carg0 = (*C.GstRTCPPacket)(UnsafeRTCPPacketToGlibNone(packet))
 	_ = burstDensity
 	_ = carg1
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	panic("unimplemented conversion of *uint8 (guint8*) because of no basic converter found")
 	_ = gapDensity
 	_ = carg2
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	panic("unimplemented conversion of *uint8 (guint8*) because of no basic converter found")
 	_ = burstDuration
 	_ = carg3
-	panic("unimplemented conversion of *uint16 (guint16*)")
+	panic("unimplemented conversion of *uint16 (guint16*) because of no basic converter found")
 	_ = gapDuration
 	_ = carg4
-	panic("unimplemented conversion of *uint16 (guint16*)")
+	panic("unimplemented conversion of *uint16 (guint16*) because of no basic converter found")
 
 	cret = C.gst_rtcp_packet_xr_get_voip_burst_metrics(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(packet)
@@ -7775,10 +7775,10 @@ func (packet *RTCPPacket) XrGetVoipConfigurationParams(gmin *uint8, rxConfig *ui
 	carg0 = (*C.GstRTCPPacket)(UnsafeRTCPPacketToGlibNone(packet))
 	_ = gmin
 	_ = carg1
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	panic("unimplemented conversion of *uint8 (guint8*) because of no basic converter found")
 	_ = rxConfig
 	_ = carg2
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	panic("unimplemented conversion of *uint8 (guint8*) because of no basic converter found")
 
 	cret = C.gst_rtcp_packet_xr_get_voip_configuration_params(carg0, carg1, carg2)
 	runtime.KeepAlive(packet)
@@ -7813,10 +7813,10 @@ func (packet *RTCPPacket) XrGetVoipDelayMetrics(roundtripDelay *uint16, endSyste
 	carg0 = (*C.GstRTCPPacket)(UnsafeRTCPPacketToGlibNone(packet))
 	_ = roundtripDelay
 	_ = carg1
-	panic("unimplemented conversion of *uint16 (guint16*)")
+	panic("unimplemented conversion of *uint16 (guint16*) because of no basic converter found")
 	_ = endSystemDelay
 	_ = carg2
-	panic("unimplemented conversion of *uint16 (guint16*)")
+	panic("unimplemented conversion of *uint16 (guint16*) because of no basic converter found")
 
 	cret = C.gst_rtcp_packet_xr_get_voip_delay_metrics(carg0, carg1, carg2)
 	runtime.KeepAlive(packet)
@@ -7853,13 +7853,13 @@ func (packet *RTCPPacket) XrGetVoipJitterBufferParams(jbNominal *uint16, jbMaxim
 	carg0 = (*C.GstRTCPPacket)(UnsafeRTCPPacketToGlibNone(packet))
 	_ = jbNominal
 	_ = carg1
-	panic("unimplemented conversion of *uint16 (guint16*)")
+	panic("unimplemented conversion of *uint16 (guint16*) because of no basic converter found")
 	_ = jbMaximum
 	_ = carg2
-	panic("unimplemented conversion of *uint16 (guint16*)")
+	panic("unimplemented conversion of *uint16 (guint16*) because of no basic converter found")
 	_ = jbAbsMax
 	_ = carg3
-	panic("unimplemented conversion of *uint16 (guint16*)")
+	panic("unimplemented conversion of *uint16 (guint16*) because of no basic converter found")
 
 	cret = C.gst_rtcp_packet_xr_get_voip_jitter_buffer_params(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(packet)
@@ -7893,7 +7893,7 @@ func (packet *RTCPPacket) XrGetVoipMetricsSsrc(ssrc *uint32) bool {
 	carg0 = (*C.GstRTCPPacket)(UnsafeRTCPPacketToGlibNone(packet))
 	_ = ssrc
 	_ = carg1
-	panic("unimplemented conversion of *uint32 (guint32*)")
+	panic("unimplemented conversion of *uint32 (guint32*) because of no basic converter found")
 
 	cret = C.gst_rtcp_packet_xr_get_voip_metrics_ssrc(carg0, carg1)
 	runtime.KeepAlive(packet)
@@ -7927,10 +7927,10 @@ func (packet *RTCPPacket) XrGetVoipPacketMetrics(lossRate *uint8, discardRate *u
 	carg0 = (*C.GstRTCPPacket)(UnsafeRTCPPacketToGlibNone(packet))
 	_ = lossRate
 	_ = carg1
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	panic("unimplemented conversion of *uint8 (guint8*) because of no basic converter found")
 	_ = discardRate
 	_ = carg2
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	panic("unimplemented conversion of *uint8 (guint8*) because of no basic converter found")
 
 	cret = C.gst_rtcp_packet_xr_get_voip_packet_metrics(carg0, carg1, carg2)
 	runtime.KeepAlive(packet)
@@ -7969,16 +7969,16 @@ func (packet *RTCPPacket) XrGetVoipQualityMetrics(rFactor *uint8, extRFactor *ui
 	carg0 = (*C.GstRTCPPacket)(UnsafeRTCPPacketToGlibNone(packet))
 	_ = rFactor
 	_ = carg1
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	panic("unimplemented conversion of *uint8 (guint8*) because of no basic converter found")
 	_ = extRFactor
 	_ = carg2
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	panic("unimplemented conversion of *uint8 (guint8*) because of no basic converter found")
 	_ = mosLq
 	_ = carg3
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	panic("unimplemented conversion of *uint8 (guint8*) because of no basic converter found")
 	_ = mosCq
 	_ = carg4
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	panic("unimplemented conversion of *uint8 (guint8*) because of no basic converter found")
 
 	cret = C.gst_rtcp_packet_xr_get_voip_quality_metrics(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(packet)
@@ -8019,16 +8019,16 @@ func (packet *RTCPPacket) XrGetVoipSignalMetrics(signalLevel *uint8, noiseLevel 
 	carg0 = (*C.GstRTCPPacket)(UnsafeRTCPPacketToGlibNone(packet))
 	_ = signalLevel
 	_ = carg1
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	panic("unimplemented conversion of *uint8 (guint8*) because of no basic converter found")
 	_ = noiseLevel
 	_ = carg2
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	panic("unimplemented conversion of *uint8 (guint8*) because of no basic converter found")
 	_ = rerl
 	_ = carg3
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	panic("unimplemented conversion of *uint8 (guint8*) because of no basic converter found")
 	_ = gmin
 	_ = carg4
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	panic("unimplemented conversion of *uint8 (guint8*) because of no basic converter found")
 
 	cret = C.gst_rtcp_packet_xr_get_voip_signal_metrics(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(packet)
@@ -8538,7 +8538,7 @@ func RTPBufferMap(buffer *gst.Buffer, flags gst.MapFlags) (RTPBuffer, bool) {
 
 	_ = rtp
 	_ = carg3
-	panic("unimplemented conversion of RTPBuffer (GstRTPBuffer)")
+	panic("unimplemented conversion of RTPBuffer (GstRTPBuffer) because of unknown reason")
 	if cret != 0 {
 		goret = true
 	}
@@ -9687,7 +9687,7 @@ func RTPSourceMetaGetInfo() *gst.MetaInfo {
 // Appends @csrc to the list of contributing sources in @meta.
 func (meta *RTPSourceMeta) AppendCsrc(csrc []uint32) bool {
 	var carg0 *C.GstRTPSourceMeta // in, none, converted
-	var carg1 *C.guint32          // in, transfer: none, C Pointers: 1, Name: array[guint32], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint32          // in, transfer: none, C Pointers: 1, Name: array[guint32], array (inner guint32 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint             // implicit
 	var cret  C.gboolean          // return
 
@@ -9695,7 +9695,7 @@ func (meta *RTPSourceMeta) AppendCsrc(csrc []uint32) bool {
 	_ = csrc
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint32 (const guint32*)")
+	panic("unimplemented conversion of []uint32 (const guint32*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_rtp_source_meta_append_csrc(carg0, carg1, carg2)
 	runtime.KeepAlive(meta)
@@ -9753,7 +9753,7 @@ func (meta *RTPSourceMeta) SetSsrc(ssrc *uint32) bool {
 	if ssrc != nil {
 		_ = ssrc
 		_ = carg1
-		panic("unimplemented conversion of *uint32 (guint32*)")
+		panic("unimplemented conversion of *uint32 (guint32*) because of no basic converter found")
 	}
 
 	cret = C.gst_rtp_source_meta_set_ssrc(carg0, carg1)

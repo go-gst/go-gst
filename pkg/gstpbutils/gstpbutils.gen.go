@@ -8,10 +8,10 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/diamondburned/gotk4/pkg/core/classdata"
-	"github.com/diamondburned/gotk4/pkg/core/userdata"
-	"github.com/diamondburned/gotk4/pkg/glib/v2"
-	"github.com/diamondburned/gotk4/pkg/gobject/v2"
+	"github.com/go-gst/go-glib/pkg/core/classdata"
+	"github.com/go-gst/go-glib/pkg/core/userdata"
+	"github.com/go-gst/go-glib/pkg/glib/v2"
+	"github.com/go-gst/go-glib/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
 	"github.com/go-gst/go-gst/pkg/gstvideo"
 )
@@ -19,37 +19,33 @@ import (
 // #cgo pkg-config: gstreamer-pbutils-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/pbutils/pbutils.h>
-// extern void _gotk4_gstpbutils1_InstallPluginsResultFunc(GstInstallPluginsReturn, gpointer);
-// extern gboolean _gotk4_gstpbutils1_AudioVisualizer_decide_allocation(GstAudioVisualizer*, GstQuery*);
-// extern gboolean _gotk4_gstpbutils1_AudioVisualizer_render(GstAudioVisualizer*, GstBuffer*, GstVideoFrame*);
-// extern gboolean _gotk4_gstpbutils1_AudioVisualizer_setup(GstAudioVisualizer*);
-// gboolean _gotk4_gstpbutils1_AudioVisualizer_virtual_decide_allocation(void* fnptr, GstAudioVisualizer* carg0, GstQuery* carg1) {
+// extern void _goglib_gstpbutils1_InstallPluginsResultFunc(GstInstallPluginsReturn, gpointer);
+// extern gboolean _goglib_gstpbutils1_AudioVisualizer_decide_allocation(GstAudioVisualizer*, GstQuery*);
+// extern gboolean _goglib_gstpbutils1_AudioVisualizer_render(GstAudioVisualizer*, GstBuffer*, GstVideoFrame*);
+// extern gboolean _goglib_gstpbutils1_AudioVisualizer_setup(GstAudioVisualizer*);
+// gboolean _goglib_gstpbutils1_AudioVisualizer_virtual_decide_allocation(void* fnptr, GstAudioVisualizer* carg0, GstQuery* carg1) {
 // 	return ((gboolean (*) (GstAudioVisualizer*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstpbutils1_AudioVisualizer_virtual_render(void* fnptr, GstAudioVisualizer* carg0, GstBuffer* carg1, GstVideoFrame* carg2) {
+// gboolean _goglib_gstpbutils1_AudioVisualizer_virtual_render(void* fnptr, GstAudioVisualizer* carg0, GstBuffer* carg1, GstVideoFrame* carg2) {
 // 	return ((gboolean (*) (GstAudioVisualizer*, GstBuffer*, GstVideoFrame*))(fnptr))(carg0, carg1, carg2);
 // }
-// gboolean _gotk4_gstpbutils1_AudioVisualizer_virtual_setup(void* fnptr, GstAudioVisualizer* carg0) {
+// gboolean _goglib_gstpbutils1_AudioVisualizer_virtual_setup(void* fnptr, GstAudioVisualizer* carg0) {
 // 	return ((gboolean (*) (GstAudioVisualizer*))(fnptr))(carg0);
 // }
-// extern void _gotk4_gstpbutils1_Discoverer_discovered(GstDiscoverer*, GstDiscovererInfo*, const GError*);
-// extern void _gotk4_gstpbutils1_Discoverer_finished(GstDiscoverer*);
-// extern GstDiscovererInfo* _gotk4_gstpbutils1_Discoverer_load_serialize_info(GstDiscoverer*, gchar*);
-// extern void _gotk4_gstpbutils1_Discoverer_source_setup(GstDiscoverer*, GstElement*);
-// extern void _gotk4_gstpbutils1_Discoverer_starting(GstDiscoverer*);
-// void _gotk4_gstpbutils1_Discoverer_virtual_discovered(void* fnptr, GstDiscoverer* carg0, GstDiscovererInfo* carg1, const GError* carg2) {
-// 	return ((void (*) (GstDiscoverer*, GstDiscovererInfo*, const GError*))(fnptr))(carg0, carg1, carg2);
-// }
-// void _gotk4_gstpbutils1_Discoverer_virtual_finished(void* fnptr, GstDiscoverer* carg0) {
+// extern void _goglib_gstpbutils1_Discoverer_finished(GstDiscoverer*);
+// extern GstDiscovererInfo* _goglib_gstpbutils1_Discoverer_load_serialize_info(GstDiscoverer*, gchar*);
+// extern void _goglib_gstpbutils1_Discoverer_source_setup(GstDiscoverer*, GstElement*);
+// extern void _goglib_gstpbutils1_Discoverer_starting(GstDiscoverer*);
+// void _goglib_gstpbutils1_Discoverer_virtual_finished(void* fnptr, GstDiscoverer* carg0) {
 // 	return ((void (*) (GstDiscoverer*))(fnptr))(carg0);
 // }
-// GstDiscovererInfo* _gotk4_gstpbutils1_Discoverer_virtual_load_serialize_info(void* fnptr, GstDiscoverer* carg0, gchar* carg1) {
+// GstDiscovererInfo* _goglib_gstpbutils1_Discoverer_virtual_load_serialize_info(void* fnptr, GstDiscoverer* carg0, gchar* carg1) {
 // 	return ((GstDiscovererInfo* (*) (GstDiscoverer*, gchar*))(fnptr))(carg0, carg1);
 // }
-// void _gotk4_gstpbutils1_Discoverer_virtual_source_setup(void* fnptr, GstDiscoverer* carg0, GstElement* carg1) {
+// void _goglib_gstpbutils1_Discoverer_virtual_source_setup(void* fnptr, GstDiscoverer* carg0, GstElement* carg1) {
 // 	return ((void (*) (GstDiscoverer*, GstElement*))(fnptr))(carg0, carg1);
 // }
-// void _gotk4_gstpbutils1_Discoverer_virtual_starting(void* fnptr, GstDiscoverer* carg0) {
+// void _goglib_gstpbutils1_Discoverer_virtual_starting(void* fnptr, GstDiscoverer* carg0) {
 // 	return ((void (*) (GstDiscoverer*))(fnptr))(carg0);
 // }
 import "C"
@@ -587,7 +583,7 @@ type InstallPluginsResultFunc func(result InstallPluginsReturn)
 // If mpegversion is 4, the "base-profile" field is also set in @caps.
 func CodecUtilsAacCapsSetLevelAndProfile(caps *gst.Caps, audioConfig []uint8) bool {
 	var carg1 *C.GstCaps // in, none, converted
-	var carg2 *C.guint8  // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg3)
+	var carg2 *C.guint8  // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
 	var carg3 C.guint    // implicit
 	var cret  C.gboolean // return
 
@@ -595,7 +591,7 @@ func CodecUtilsAacCapsSetLevelAndProfile(caps *gst.Caps, audioConfig []uint8) bo
 	_ = audioConfig
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_codec_utils_aac_caps_set_level_and_profile(carg1, carg2, carg3)
 	runtime.KeepAlive(caps)
@@ -624,14 +620,14 @@ func CodecUtilsAacCapsSetLevelAndProfile(caps *gst.Caps, audioConfig []uint8) bo
 //
 // Returns the channels of the given AAC stream.
 func CodecUtilsAacGetChannels(audioConfig []uint8) uint {
-	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint   // implicit
 	var cret  C.guint   // return, none, casted
 
 	_ = audioConfig
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_codec_utils_aac_get_channels(carg1, carg2)
 	runtime.KeepAlive(audioConfig)
@@ -696,14 +692,14 @@ func CodecUtilsAacGetIndexFromSampleRate(rate uint) int32 {
 //     fields are appropriately shifted).
 //   * Bit 9:12 contains the channel configuration
 func CodecUtilsAacGetLevel(audioConfig []uint8) string {
-	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint   // implicit
 	var cret  *C.gchar  // return, none, string, nullable-string
 
 	_ = audioConfig
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_codec_utils_aac_get_level(carg1, carg2)
 	runtime.KeepAlive(audioConfig)
@@ -733,14 +729,14 @@ func CodecUtilsAacGetLevel(audioConfig []uint8) string {
 // normally determined using the AudioObjectType field which is in the first
 // 5 bits of @audio_config
 func CodecUtilsAacGetProfile(audioConfig []uint8) string {
-	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint   // implicit
 	var cret  *C.gchar  // return, none, string, nullable-string
 
 	_ = audioConfig
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_codec_utils_aac_get_profile(carg1, carg2)
 	runtime.KeepAlive(audioConfig)
@@ -769,14 +765,14 @@ func CodecUtilsAacGetProfile(audioConfig []uint8) string {
 // Translates the sample rate index found in AAC headers to the actual sample
 // rate.
 func CodecUtilsAacGetSampleRate(audioConfig []uint8) uint {
-	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint   // implicit
 	var cret  C.guint   // return, none, casted
 
 	_ = audioConfig
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_codec_utils_aac_get_sample_rate(carg1, carg2)
 	runtime.KeepAlive(audioConfig)
@@ -1016,7 +1012,7 @@ func CodecUtilsCapsGetMimeCodec(caps *gst.Caps) string {
 // for more details on the parameters.
 func CodecUtilsH264CapsSetLevelAndProfile(caps *gst.Caps, sps []uint8) bool {
 	var carg1 *C.GstCaps // in, none, converted
-	var carg2 *C.guint8  // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg3)
+	var carg2 *C.guint8  // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
 	var carg3 C.guint    // implicit
 	var cret  C.gboolean // return
 
@@ -1024,7 +1020,7 @@ func CodecUtilsH264CapsSetLevelAndProfile(caps *gst.Caps, sps []uint8) bool {
 	_ = sps
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_codec_utils_h264_caps_set_level_and_profile(carg1, carg2, carg3)
 	runtime.KeepAlive(caps)
@@ -1053,14 +1049,14 @@ func CodecUtilsH264CapsSetLevelAndProfile(caps *gst.Caps, sps []uint8) bool {
 // sequence parameter set into a string. The SPS is expected to have the
 // same format as for gst_codec_utils_h264_get_profile().
 func CodecUtilsH264GetLevel(sps []uint8) string {
-	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint   // implicit
 	var cret  *C.gchar  // return, none, string, nullable-string
 
 	_ = sps
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_codec_utils_h264_get_level(carg1, carg2)
 	runtime.KeepAlive(sps)
@@ -1127,14 +1123,14 @@ func CodecUtilsH264GetLevelIdc(level string) uint8 {
 // * Bit 13:15 - Reserved
 // * Bit 16:24 - Level indication
 func CodecUtilsH264GetProfile(sps []uint8) string {
-	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint   // implicit
 	var cret  *C.gchar  // return, none, string, nullable-string
 
 	_ = sps
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_codec_utils_h264_get_profile(carg1, carg2)
 	runtime.KeepAlive(sps)
@@ -1169,7 +1165,7 @@ func CodecUtilsH264GetProfile(sps []uint8) string {
 // ITU-T H.264 specification section 7.3.2.1.1 as well as in ISO/IEC 14496-15
 // section 5.3.3.1.2.
 func CodecUtilsH264GetProfileFlagsLevel(codecData []uint8) (uint8, uint8, uint8, bool) {
-	var carg1 *C.guint8  // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint8  // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint    // implicit
 	var carg3 C.guint8   // out, full, casted
 	var carg4 C.guint8   // out, full, casted
@@ -1179,7 +1175,7 @@ func CodecUtilsH264GetProfileFlagsLevel(codecData []uint8) (uint8, uint8, uint8,
 	_ = codecData
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_codec_utils_h264_get_profile_flags_level(carg1, carg2, &carg3, &carg4, &carg5)
 	runtime.KeepAlive(codecData)
@@ -1217,7 +1213,7 @@ func CodecUtilsH264GetProfileFlagsLevel(codecData []uint8) (uint8, uint8, uint8,
 // for more details on the parameters.
 func CodecUtilsH265CapsSetLevelTierAndProfile(caps *gst.Caps, profileTierLevel []uint8) bool {
 	var carg1 *C.GstCaps // in, none, converted
-	var carg2 *C.guint8  // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg3)
+	var carg2 *C.guint8  // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
 	var carg3 C.guint    // implicit
 	var cret  C.gboolean // return
 
@@ -1225,7 +1221,7 @@ func CodecUtilsH265CapsSetLevelTierAndProfile(caps *gst.Caps, profileTierLevel [
 	_ = profileTierLevel
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_codec_utils_h265_caps_set_level_tier_and_profile(carg1, carg2, carg3)
 	runtime.KeepAlive(caps)
@@ -1255,14 +1251,14 @@ func CodecUtilsH265CapsSetLevelTierAndProfile(caps *gst.Caps, profileTierLevel [
 // profile_tier_level structure into a string. The profiel_tier_level is
 // expected to have the same format as for gst_codec_utils_h264_get_profile().
 func CodecUtilsH265GetLevel(profileTierLevel []uint8) string {
-	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint   // implicit
 	var cret  *C.gchar  // return, none, string, nullable-string
 
 	_ = profileTierLevel
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_codec_utils_h265_get_level(carg1, carg2)
 	runtime.KeepAlive(profileTierLevel)
@@ -1332,14 +1328,14 @@ func CodecUtilsH265GetLevelIdc(level string) uint8 {
 // * Bit 44:87 - See below
 // * Bit 88:95 - general_level_idc
 func CodecUtilsH265GetProfile(profileTierLevel []uint8) string {
-	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint   // implicit
 	var cret  *C.gchar  // return, none, string, nullable-string
 
 	_ = profileTierLevel
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_codec_utils_h265_get_profile(carg1, carg2)
 	runtime.KeepAlive(profileTierLevel)
@@ -1368,14 +1364,14 @@ func CodecUtilsH265GetProfile(profileTierLevel []uint8) string {
 // profile_tier_level structure into a string. The profile_tier_level
 // is expected to have the same format as for gst_codec_utils_h264_get_profile().
 func CodecUtilsH265GetTier(profileTierLevel []uint8) string {
-	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint   // implicit
 	var cret  *C.gchar  // return, none, string, nullable-string
 
 	_ = profileTierLevel
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_codec_utils_h265_get_tier(carg1, carg2)
 	runtime.KeepAlive(profileTierLevel)
@@ -1406,7 +1402,7 @@ func CodecUtilsH265GetTier(profileTierLevel []uint8) string {
 // for more details on the parameters.
 func CodecUtilsH266CapsSetLevelTierAndProfile(caps *gst.Caps, decoderConfiguration []uint8) bool {
 	var carg1 *C.GstCaps // in, none, converted
-	var carg2 *C.guint8  // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg3)
+	var carg2 *C.guint8  // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
 	var carg3 C.guint    // implicit
 	var cret  C.gboolean // return
 
@@ -1414,7 +1410,7 @@ func CodecUtilsH266CapsSetLevelTierAndProfile(caps *gst.Caps, decoderConfigurati
 	_ = decoderConfiguration
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_codec_utils_h266_caps_set_level_tier_and_profile(carg1, carg2, carg3)
 	runtime.KeepAlive(caps)
@@ -1442,14 +1438,14 @@ func CodecUtilsH266CapsSetLevelTierAndProfile(caps *gst.Caps, decoderConfigurati
 // Converts the level indication (general_level_idc) in the stream's
 // ptl_record structure into a string.
 func CodecUtilsH266GetLevel(ptlRecord []uint8) string {
-	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint   // implicit
 	var cret  *C.gchar  // return, none, string, nullable-string
 
 	_ = ptlRecord
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_codec_utils_h266_get_level(carg1, carg2)
 	runtime.KeepAlive(ptlRecord)
@@ -1504,14 +1500,14 @@ func CodecUtilsH266GetLevelIdc(level string) uint8 {
 // Converts the profile indication (general_profile_idc) in the stream's
 // ptl_record structure into a string.
 func CodecUtilsH266GetProfile(ptlRecord []uint8) string {
-	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint   // implicit
 	var cret  *C.gchar  // return, none, string, nullable-string
 
 	_ = ptlRecord
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_codec_utils_h266_get_profile(carg1, carg2)
 	runtime.KeepAlive(ptlRecord)
@@ -1538,14 +1534,14 @@ func CodecUtilsH266GetProfile(ptlRecord []uint8) string {
 // Converts the tier indication (general_tier_flag) in the stream's
 // ptl_record structure into a string.
 func CodecUtilsH266GetTier(ptlRecord []uint8) string {
-	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint   // implicit
 	var cret  *C.gchar  // return, none, string, nullable-string
 
 	_ = ptlRecord
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_codec_utils_h266_get_tier(carg1, carg2)
 	runtime.KeepAlive(ptlRecord)
@@ -1577,7 +1573,7 @@ func CodecUtilsH266GetTier(ptlRecord []uint8) string {
 // parameters.
 func CodecUtilsMpeg4videoCapsSetLevelAndProfile(caps *gst.Caps, visObjSeq []uint8) bool {
 	var carg1 *C.GstCaps // in, none, converted
-	var carg2 *C.guint8  // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg3)
+	var carg2 *C.guint8  // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
 	var carg3 C.guint    // implicit
 	var cret  C.gboolean // return
 
@@ -1585,7 +1581,7 @@ func CodecUtilsMpeg4videoCapsSetLevelAndProfile(caps *gst.Caps, visObjSeq []uint
 	_ = visObjSeq
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_codec_utils_mpeg4video_caps_set_level_and_profile(carg1, carg2, carg3)
 	runtime.KeepAlive(caps)
@@ -1616,14 +1612,14 @@ func CodecUtilsMpeg4videoCapsSetLevelAndProfile(caps *gst.Caps, visObjSeq []uint
 // object sequence start code. Only the first byte
 // (profile_and_level_indication) is used.
 func CodecUtilsMpeg4videoGetLevel(visObjSeq []uint8) string {
-	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint   // implicit
 	var cret  *C.gchar  // return, none, string, nullable-string
 
 	_ = visObjSeq
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_codec_utils_mpeg4video_get_level(carg1, carg2)
 	runtime.KeepAlive(visObjSeq)
@@ -1653,14 +1649,14 @@ func CodecUtilsMpeg4videoGetLevel(visObjSeq []uint8) string {
 // object sequence start code. Only the first byte
 // (profile_and_level_indication) is used.
 func CodecUtilsMpeg4videoGetProfile(visObjSeq []uint8) string {
-	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint   // implicit
 	var cret  *C.gchar  // return, none, string, nullable-string
 
 	_ = visObjSeq
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_codec_utils_mpeg4video_get_profile(carg1, carg2)
 	runtime.KeepAlive(visObjSeq)
@@ -1807,7 +1803,7 @@ func EncodingListAvailableCategories() []string {
 // one go (as might be required if there is a demuxer for a certain format
 // installed but no suitable video decoder and no suitable audio decoder).
 func InstallPluginsAsync(details []string, ctx *InstallPluginsContext, fn InstallPluginsResultFunc) InstallPluginsReturn {
-	var carg1 **C.gchar                     // in, transfer: none, C Pointers: 2, Name: array[utf8], array (inner: *typesystem.StringPrimitive, zero-terminated)
+	var carg1 **C.gchar                     // in, transfer: none, C Pointers: 2, Name: array[utf8], array (inner gchar* (*typesystem.StringPrimitive), zero-terminated)
 	var carg2 *C.GstInstallPluginsContext   // in, none, converted, nullable
 	var carg3 C.GstInstallPluginsResultFunc // callback, scope: async, closure: carg4
 	var carg4 C.gpointer                    // implicit
@@ -1815,11 +1811,11 @@ func InstallPluginsAsync(details []string, ctx *InstallPluginsContext, fn Instal
 
 	_ = details
 	_ = carg1
-	panic("unimplemented conversion of []string (const gchar* const*)")
+	panic("unimplemented conversion of []string (const gchar* const*) because of unimplemented: inner pointers in array")
 	if ctx != nil {
 		carg2 = (*C.GstInstallPluginsContext)(UnsafeInstallPluginsContextToGlibNone(ctx))
 	}
-	carg3 = (*[0]byte)(C._gotk4_gstpbutils1_InstallPluginsResultFunc)
+	carg3 = (*[0]byte)(C._goglib_gstpbutils1_InstallPluginsResultFunc)
 	carg4 = C.gpointer(userdata.RegisterOnce(fn))
 
 	cret = C.gst_install_plugins_async(carg1, carg2, carg3, carg4)
@@ -1901,13 +1897,13 @@ func InstallPluginsSupported() bool {
 // using the other non-GLib main loop. You should almost always use
 // gst_install_plugins_async() instead of this function.
 func InstallPluginsSync(details []string, ctx *InstallPluginsContext) InstallPluginsReturn {
-	var carg1 **C.gchar                   // in, transfer: none, C Pointers: 2, Name: array[utf8], array (inner: *typesystem.StringPrimitive, zero-terminated)
+	var carg1 **C.gchar                   // in, transfer: none, C Pointers: 2, Name: array[utf8], array (inner gchar* (*typesystem.StringPrimitive), zero-terminated)
 	var carg2 *C.GstInstallPluginsContext // in, none, converted, nullable
 	var cret  C.GstInstallPluginsReturn   // return, none, casted
 
 	_ = details
 	_ = carg1
-	panic("unimplemented conversion of []string (const gchar* const*)")
+	panic("unimplemented conversion of []string (const gchar* const*) because of unimplemented: inner pointers in array")
 	if ctx != nil {
 		carg2 = (*C.GstInstallPluginsContext)(UnsafeInstallPluginsContextToGlibNone(ctx))
 	}
@@ -2946,10 +2942,10 @@ func UnsafeApplyAudioVisualizerOverrides[Instance AudioVisualizer](gclass unsafe
 	pclass := (*C.GstAudioVisualizerClass)(gclass)
 
 	if overrides.DecideAllocation != nil {
-		pclass.decide_allocation = (*[0]byte)(C._gotk4_gstpbutils1_AudioVisualizer_decide_allocation)
+		pclass.decide_allocation = (*[0]byte)(C._goglib_gstpbutils1_AudioVisualizer_decide_allocation)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstpbutils1_AudioVisualizer_decide_allocation",
+			"_goglib_gstpbutils1_AudioVisualizer_decide_allocation",
 			func(carg0 *C.GstAudioVisualizer, carg1 *C.GstQuery) (cret C.gboolean) {
 				var scope Instance   // go GstAudioVisualizer subclass
 				var query *gst.Query // in, none, converted
@@ -2970,10 +2966,10 @@ func UnsafeApplyAudioVisualizerOverrides[Instance AudioVisualizer](gclass unsafe
 	}
 
 	if overrides.Render != nil {
-		pclass.render = (*[0]byte)(C._gotk4_gstpbutils1_AudioVisualizer_render)
+		pclass.render = (*[0]byte)(C._goglib_gstpbutils1_AudioVisualizer_render)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstpbutils1_AudioVisualizer_render",
+			"_goglib_gstpbutils1_AudioVisualizer_render",
 			func(carg0 *C.GstAudioVisualizer, carg1 *C.GstBuffer, carg2 *C.GstVideoFrame) (cret C.gboolean) {
 				var scope Instance             // go GstAudioVisualizer subclass
 				var audio *gst.Buffer          // in, none, converted
@@ -2996,10 +2992,10 @@ func UnsafeApplyAudioVisualizerOverrides[Instance AudioVisualizer](gclass unsafe
 	}
 
 	if overrides.Setup != nil {
-		pclass.setup = (*[0]byte)(C._gotk4_gstpbutils1_AudioVisualizer_setup)
+		pclass.setup = (*[0]byte)(C._goglib_gstpbutils1_AudioVisualizer_setup)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstpbutils1_AudioVisualizer_setup",
+			"_goglib_gstpbutils1_AudioVisualizer_setup",
 			func(carg0 *C.GstAudioVisualizer) (cret C.gboolean) {
 				var scope Instance // go GstAudioVisualizer subclass
 				var goret bool     // return
@@ -3038,7 +3034,7 @@ func (scope *AudioVisualizerInstance) ParentDecideAllocation(query *gst.Query) b
 	carg0 = (*C.GstAudioVisualizer)(UnsafeAudioVisualizerToGlibNone(scope))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstpbutils1_AudioVisualizer_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
+	cret = C._goglib_gstpbutils1_AudioVisualizer_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
 	runtime.KeepAlive(scope)
 	runtime.KeepAlive(query)
 
@@ -3074,7 +3070,7 @@ func (scope *AudioVisualizerInstance) ParentRender(audio *gst.Buffer, video *gst
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(audio))
 	carg2 = (*C.GstVideoFrame)(gstvideo.UnsafeVideoFrameToGlibNone(video))
 
-	cret = C._gotk4_gstpbutils1_AudioVisualizer_virtual_render(unsafe.Pointer(parentclass.render), carg0, carg1, carg2)
+	cret = C._goglib_gstpbutils1_AudioVisualizer_virtual_render(unsafe.Pointer(parentclass.render), carg0, carg1, carg2)
 	runtime.KeepAlive(scope)
 	runtime.KeepAlive(audio)
 	runtime.KeepAlive(video)
@@ -3102,7 +3098,7 @@ func (scope *AudioVisualizerInstance) ParentSetup() bool {
 
 	carg0 = (*C.GstAudioVisualizer)(UnsafeAudioVisualizerToGlibNone(scope))
 
-	cret = C._gotk4_gstpbutils1_AudioVisualizer_virtual_setup(unsafe.Pointer(parentclass.setup), carg0)
+	cret = C._goglib_gstpbutils1_AudioVisualizer_virtual_setup(unsafe.Pointer(parentclass.setup), carg0)
 	runtime.KeepAlive(scope)
 
 	var goret bool
@@ -3249,14 +3245,6 @@ type Discoverer interface {
 
 	// chain up virtual methods:
 
-	// ParentDiscovered calls the default implementations of the `GstDiscoverer.discovered` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- info DiscovererInfo 
-	// 	- err error 
-	ParentDiscovered(info DiscovererInfo, err error)
 	// ParentFinished calls the default implementations of the `GstDiscoverer.finished` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	ParentFinished()
@@ -3525,13 +3513,6 @@ type DiscovererOverrides[Instance Discoverer] struct {
 	// gobject.ObjectOverrides allows you to override virtual methods from the parent class gobject.Object
 	gobject.ObjectOverrides[Instance]
 
-	// // Discovered allows you to override the implementation of the virtual method discovered.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- info DiscovererInfo 
-	// 	- err error 
-	Discovered func(Instance, DiscovererInfo, error)
 	// // Finished allows you to override the implementation of the virtual method finished.
 	Finished func(Instance)
 	// // LoadSerializeInfo allows you to override the implementation of the virtual method load_serialize_info.
@@ -3563,30 +3544,11 @@ func UnsafeApplyDiscovererOverrides[Instance Discoverer](gclass unsafe.Pointer, 
 
 	pclass := (*C.GstDiscovererClass)(gclass)
 
-	if overrides.Discovered != nil {
-		pclass.discovered = (*[0]byte)(C._gotk4_gstpbutils1_Discoverer_discovered)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gstpbutils1_Discoverer_discovered",
-			func(carg0 *C.GstDiscoverer, carg1 *C.GstDiscovererInfo, carg2 *C.GError) {
-				var discoverer Instance       // go GstDiscoverer subclass
-				var info       DiscovererInfo // in, none, converted
-				var err        error          // in, none, converted
-
-				discoverer = UnsafeDiscovererFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
-				info = UnsafeDiscovererInfoFromGlibNone(unsafe.Pointer(carg1))
-				err = glib.UnsafeErrorFromGlibNone(unsafe.Pointer(carg2))
-
-				overrides.Discovered(discoverer, info, err)
-			},
-		)
-	}
-
 	if overrides.Finished != nil {
-		pclass.finished = (*[0]byte)(C._gotk4_gstpbutils1_Discoverer_finished)
+		pclass.finished = (*[0]byte)(C._goglib_gstpbutils1_Discoverer_finished)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstpbutils1_Discoverer_finished",
+			"_goglib_gstpbutils1_Discoverer_finished",
 			func(carg0 *C.GstDiscoverer) {
 				var discoverer Instance // go GstDiscoverer subclass
 
@@ -3598,10 +3560,10 @@ func UnsafeApplyDiscovererOverrides[Instance Discoverer](gclass unsafe.Pointer, 
 	}
 
 	if overrides.LoadSerializeInfo != nil {
-		pclass.load_serialize_info = (*[0]byte)(C._gotk4_gstpbutils1_Discoverer_load_serialize_info)
+		pclass.load_serialize_info = (*[0]byte)(C._goglib_gstpbutils1_Discoverer_load_serialize_info)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstpbutils1_Discoverer_load_serialize_info",
+			"_goglib_gstpbutils1_Discoverer_load_serialize_info",
 			func(carg0 *C.GstDiscoverer, carg1 *C.gchar) (cret *C.GstDiscovererInfo) {
 				var dc    Instance       // go GstDiscoverer subclass
 				var uri   string         // in, none, string
@@ -3620,10 +3582,10 @@ func UnsafeApplyDiscovererOverrides[Instance Discoverer](gclass unsafe.Pointer, 
 	}
 
 	if overrides.SourceSetup != nil {
-		pclass.source_setup = (*[0]byte)(C._gotk4_gstpbutils1_Discoverer_source_setup)
+		pclass.source_setup = (*[0]byte)(C._goglib_gstpbutils1_Discoverer_source_setup)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstpbutils1_Discoverer_source_setup",
+			"_goglib_gstpbutils1_Discoverer_source_setup",
 			func(carg0 *C.GstDiscoverer, carg1 *C.GstElement) {
 				var discoverer Instance    // go GstDiscoverer subclass
 				var source     gst.Element // in, none, converted
@@ -3637,10 +3599,10 @@ func UnsafeApplyDiscovererOverrides[Instance Discoverer](gclass unsafe.Pointer, 
 	}
 
 	if overrides.Starting != nil {
-		pclass.starting = (*[0]byte)(C._gotk4_gstpbutils1_Discoverer_starting)
+		pclass.starting = (*[0]byte)(C._goglib_gstpbutils1_Discoverer_starting)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstpbutils1_Discoverer_starting",
+			"_goglib_gstpbutils1_Discoverer_starting",
 			func(carg0 *C.GstDiscoverer) {
 				var discoverer Instance // go GstDiscoverer subclass
 
@@ -3652,30 +3614,6 @@ func UnsafeApplyDiscovererOverrides[Instance Discoverer](gclass unsafe.Pointer, 
 	}
 }
 
-// ParentDiscovered calls the default implementations of the `GstDiscoverer.discovered` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function takes the following parameters:
-// 
-// 	- info DiscovererInfo 
-// 	- err error 
-func (discoverer *DiscovererInstance) ParentDiscovered(info DiscovererInfo, err error) {
-	var carg0 *C.GstDiscoverer
-	var carg1 *C.GstDiscovererInfo // in, none, converted
-	var carg2 *C.GError            // in, none, converted
-
-	parentclass := (*C.GstDiscovererClass)(classdata.PeekParentClass(UnsafeDiscovererToGlibNone(discoverer)))
-
-	carg0 = (*C.GstDiscoverer)(UnsafeDiscovererToGlibNone(discoverer))
-	carg1 = (*C.GstDiscovererInfo)(UnsafeDiscovererInfoToGlibNone(info))
-	carg2 = (*C.GError)(glib.UnsafeErrorToGlibNone(err))
-
-	C._gotk4_gstpbutils1_Discoverer_virtual_discovered(unsafe.Pointer(parentclass.discovered), carg0, carg1, carg2)
-	runtime.KeepAlive(discoverer)
-	runtime.KeepAlive(info)
-	runtime.KeepAlive(err)
-}
-
 // ParentFinished calls the default implementations of the `GstDiscoverer.finished` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 func (discoverer *DiscovererInstance) ParentFinished() {
@@ -3685,7 +3623,7 @@ func (discoverer *DiscovererInstance) ParentFinished() {
 
 	carg0 = (*C.GstDiscoverer)(UnsafeDiscovererToGlibNone(discoverer))
 
-	C._gotk4_gstpbutils1_Discoverer_virtual_finished(unsafe.Pointer(parentclass.finished), carg0)
+	C._goglib_gstpbutils1_Discoverer_virtual_finished(unsafe.Pointer(parentclass.finished), carg0)
 	runtime.KeepAlive(discoverer)
 }
 
@@ -3712,7 +3650,7 @@ func (dc *DiscovererInstance) ParentLoadSerializeInfo(uri string) DiscovererInfo
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
 	defer C.free(unsafe.Pointer(carg1))
 
-	cret = C._gotk4_gstpbutils1_Discoverer_virtual_load_serialize_info(unsafe.Pointer(parentclass.load_serialize_info), carg0, carg1)
+	cret = C._goglib_gstpbutils1_Discoverer_virtual_load_serialize_info(unsafe.Pointer(parentclass.load_serialize_info), carg0, carg1)
 	runtime.KeepAlive(dc)
 	runtime.KeepAlive(uri)
 
@@ -3738,7 +3676,7 @@ func (discoverer *DiscovererInstance) ParentSourceSetup(source gst.Element) {
 	carg0 = (*C.GstDiscoverer)(UnsafeDiscovererToGlibNone(discoverer))
 	carg1 = (*C.GstElement)(gst.UnsafeElementToGlibNone(source))
 
-	C._gotk4_gstpbutils1_Discoverer_virtual_source_setup(unsafe.Pointer(parentclass.source_setup), carg0, carg1)
+	C._goglib_gstpbutils1_Discoverer_virtual_source_setup(unsafe.Pointer(parentclass.source_setup), carg0, carg1)
 	runtime.KeepAlive(discoverer)
 	runtime.KeepAlive(source)
 }
@@ -3752,7 +3690,7 @@ func (discoverer *DiscovererInstance) ParentStarting() {
 
 	carg0 = (*C.GstDiscoverer)(UnsafeDiscovererToGlibNone(discoverer))
 
-	C._gotk4_gstpbutils1_Discoverer_virtual_starting(unsafe.Pointer(parentclass.starting), carg0)
+	C._goglib_gstpbutils1_Discoverer_virtual_starting(unsafe.Pointer(parentclass.starting), carg0)
 	runtime.KeepAlive(discoverer)
 }
 
@@ -4088,7 +4026,7 @@ func (info *DiscovererInfoInstance) GetLive() bool {
 // Get the installer details for missing elements
 func (info *DiscovererInfoInstance) GetMissingElementsInstallerDetails() []string {
 	var carg0 *C.GstDiscovererInfo // in, none, converted
-	var cret  **C.gchar            // return, transfer: none, C Pointers: 2, Name: array[utf8], scope: , array (inner: *typesystem.StringPrimitive, zero-terminated)
+	var cret  **C.gchar            // return, transfer: none, C Pointers: 2, Name: array[utf8], scope: , array (inner gchar* (*typesystem.StringPrimitive), zero-terminated)
 
 	carg0 = (*C.GstDiscovererInfo)(UnsafeDiscovererInfoToGlibNone(info))
 
@@ -4099,7 +4037,7 @@ func (info *DiscovererInfoInstance) GetMissingElementsInstallerDetails() []strin
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (const gchar**)")
+	panic("unimplemented conversion of []string (const gchar**) because of unknown reason")
 
 	return goret
 }

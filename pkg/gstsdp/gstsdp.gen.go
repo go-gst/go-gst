@@ -8,8 +8,8 @@ import (
 	"runtime"
 	"unsafe"
 
-	"github.com/diamondburned/gotk4/pkg/glib/v2"
-	"github.com/diamondburned/gotk4/pkg/gobject/v2"
+	"github.com/go-gst/go-glib/pkg/glib/v2"
+	"github.com/go-gst/go-glib/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
 )
 
@@ -1114,7 +1114,7 @@ func (msg *MIKEYMessage) AddPke(c MIKEYCacheType, data []uint8) bool {
 	var carg0 *C.GstMIKEYMessage  // in, none, converted
 	var carg1 C.GstMIKEYCacheType // in, none, casted
 	var carg2 C.guint16           // implicit
-	var carg3 *C.guint8           // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg3 *C.guint8           // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var cret  C.gboolean          // return
 
 	carg0 = (*C.GstMIKEYMessage)(UnsafeMIKEYMessageToGlibNone(msg))
@@ -1122,7 +1122,7 @@ func (msg *MIKEYMessage) AddPke(c MIKEYCacheType, data []uint8) bool {
 	_ = data
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_mikey_message_add_pke(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(msg)
@@ -1152,14 +1152,14 @@ func (msg *MIKEYMessage) AddPke(c MIKEYCacheType, data []uint8) bool {
 func (msg *MIKEYMessage) AddRand(rand []uint8) bool {
 	var carg0 *C.GstMIKEYMessage // in, none, converted
 	var carg1 C.guint8           // implicit
-	var carg2 *C.guint8          // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg1)
+	var carg2 *C.guint8          // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg1)
 	var cret  C.gboolean         // return
 
 	carg0 = (*C.GstMIKEYMessage)(UnsafeMIKEYMessageToGlibNone(msg))
 	_ = rand
 	_ = carg2
 	_ = carg1
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_mikey_message_add_rand(carg0, carg1, carg2)
 	runtime.KeepAlive(msg)
@@ -2029,20 +2029,20 @@ func (payload *MIKEYPayload) KemacSet(encAlg MIKEYEncAlg, macAlg MIKEYMacAlg) bo
 func (payload *MIKEYPayload) KeyDataSetInterval(vfData []uint8, vtData []uint8) bool {
 	var carg0 *C.GstMIKEYPayload // in, none, converted
 	var carg1 C.guint8           // implicit
-	var carg2 *C.guint8          // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg1)
+	var carg2 *C.guint8          // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg1)
 	var carg3 C.guint8           // implicit
-	var carg4 *C.guint8          // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg3)
+	var carg4 *C.guint8          // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
 	var cret  C.gboolean         // return
 
 	carg0 = (*C.GstMIKEYPayload)(UnsafeMIKEYPayloadToGlibNone(payload))
 	_ = vfData
 	_ = carg2
 	_ = carg1
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 	_ = vtData
 	_ = carg4
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_mikey_payload_key_data_set_interval(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(payload)
@@ -2075,7 +2075,7 @@ func (payload *MIKEYPayload) KeyDataSetKey(keyType MIKEYKeyDataType, keyData []u
 	var carg0 *C.GstMIKEYPayload    // in, none, converted
 	var carg1 C.GstMIKEYKeyDataType // in, none, casted
 	var carg2 C.guint16             // implicit
-	var carg3 *C.guint8             // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg3 *C.guint8             // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var cret  C.gboolean            // return
 
 	carg0 = (*C.GstMIKEYPayload)(UnsafeMIKEYPayloadToGlibNone(payload))
@@ -2083,7 +2083,7 @@ func (payload *MIKEYPayload) KeyDataSetKey(keyType MIKEYKeyDataType, keyData []u
 	_ = keyData
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_mikey_payload_key_data_set_key(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(payload)
@@ -2114,14 +2114,14 @@ func (payload *MIKEYPayload) KeyDataSetKey(keyType MIKEYKeyDataType, keyData []u
 func (payload *MIKEYPayload) KeyDataSetSalt(saltData []uint8) bool {
 	var carg0 *C.GstMIKEYPayload // in, none, converted
 	var carg1 C.guint16          // implicit
-	var carg2 *C.guint8          // in, transfer: none, C Pointers: 1, Name: array[guint8], nullable, array (inner: *typesystem.CastablePrimitive, length-by: carg1)
+	var carg2 *C.guint8          // in, transfer: none, C Pointers: 1, Name: array[guint8], nullable, array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg1)
 	var cret  C.gboolean         // return
 
 	carg0 = (*C.GstMIKEYPayload)(UnsafeMIKEYPayloadToGlibNone(payload))
 	_ = saltData
 	_ = carg2
 	_ = carg1
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_mikey_payload_key_data_set_salt(carg0, carg1, carg2)
 	runtime.KeepAlive(payload)
@@ -2150,14 +2150,14 @@ func (payload *MIKEYPayload) KeyDataSetSalt(saltData []uint8) bool {
 func (payload *MIKEYPayload) KeyDataSetSpi(spiData []uint8) bool {
 	var carg0 *C.GstMIKEYPayload // in, none, converted
 	var carg1 C.guint8           // implicit
-	var carg2 *C.guint8          // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg1)
+	var carg2 *C.guint8          // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg1)
 	var cret  C.gboolean         // return
 
 	carg0 = (*C.GstMIKEYPayload)(UnsafeMIKEYPayloadToGlibNone(payload))
 	_ = spiData
 	_ = carg2
 	_ = carg1
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_mikey_payload_key_data_set_spi(carg0, carg1, carg2)
 	runtime.KeepAlive(payload)
@@ -2189,7 +2189,7 @@ func (payload *MIKEYPayload) PkeSet(c MIKEYCacheType, data []uint8) bool {
 	var carg0 *C.GstMIKEYPayload  // in, none, converted
 	var carg1 C.GstMIKEYCacheType // in, none, casted
 	var carg2 C.guint16           // implicit
-	var carg3 *C.guint8           // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg3 *C.guint8           // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var cret  C.gboolean          // return
 
 	carg0 = (*C.GstMIKEYPayload)(UnsafeMIKEYPayloadToGlibNone(payload))
@@ -2197,7 +2197,7 @@ func (payload *MIKEYPayload) PkeSet(c MIKEYCacheType, data []uint8) bool {
 	_ = data
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_mikey_payload_pke_set(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(payload)
@@ -2227,14 +2227,14 @@ func (payload *MIKEYPayload) PkeSet(c MIKEYCacheType, data []uint8) bool {
 func (payload *MIKEYPayload) RandSet(rand []uint8) bool {
 	var carg0 *C.GstMIKEYPayload // in, none, converted
 	var carg1 C.guint8           // implicit
-	var carg2 *C.guint8          // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg1)
+	var carg2 *C.guint8          // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg1)
 	var cret  C.gboolean         // return
 
 	carg0 = (*C.GstMIKEYPayload)(UnsafeMIKEYPayloadToGlibNone(payload))
 	_ = rand
 	_ = carg2
 	_ = carg1
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_mikey_payload_rand_set(carg0, carg1, carg2)
 	runtime.KeepAlive(payload)
@@ -2266,7 +2266,7 @@ func (payload *MIKEYPayload) SpAddParam(typ uint8, val []uint8) bool {
 	var carg0 *C.GstMIKEYPayload // in, none, converted
 	var carg1 C.guint8           // in, none, casted
 	var carg2 C.guint8           // implicit
-	var carg3 *C.guint8          // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg3 *C.guint8          // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var cret  C.gboolean         // return
 
 	carg0 = (*C.GstMIKEYPayload)(UnsafeMIKEYPayloadToGlibNone(payload))
@@ -2274,7 +2274,7 @@ func (payload *MIKEYPayload) SpAddParam(typ uint8, val []uint8) bool {
 	_ = val
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_mikey_payload_sp_add_param(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(payload)
@@ -3611,7 +3611,7 @@ func SDPMediaInit() (SDPMedia, SDPResult) {
 
 	_ = media
 	_ = carg1
-	panic("unimplemented conversion of SDPMedia (GstSDPMedia)")
+	panic("unimplemented conversion of SDPMedia (GstSDPMedia) because of unknown reason")
 	goret = SDPResult(cret)
 
 	return media, goret
@@ -3677,7 +3677,7 @@ func SDPMediaSetMediaFromCaps(caps *gst.Caps) (SDPMedia, SDPResult) {
 
 	_ = media
 	_ = carg2
-	panic("unimplemented conversion of SDPMedia (GstSDPMedia)")
+	panic("unimplemented conversion of SDPMedia (GstSDPMedia) because of unknown reason")
 	goret = SDPResult(cret)
 
 	return media, goret
@@ -5154,7 +5154,7 @@ func SDPMessageInit() (SDPMessage, SDPResult) {
 
 	_ = msg
 	_ = carg1
-	panic("unimplemented conversion of SDPMessage (GstSDPMessage)")
+	panic("unimplemented conversion of SDPMessage (GstSDPMessage) because of unknown reason")
 	goret = SDPResult(cret)
 
 	return msg, goret
@@ -5229,7 +5229,7 @@ func NewSDPMessageFromText(text string) (*SDPMessage, SDPResult) {
 // Parse the contents of @size bytes pointed to by @data and store the result in
 // @msg.
 func SDPMessageParseBuffer(data []uint8, msg *SDPMessage) SDPResult {
-	var carg1 *C.guint8        // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint8        // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint          // implicit
 	var carg3 *C.GstSDPMessage // in, none, converted
 	var cret  C.GstSDPResult   // return, none, casted
@@ -5237,7 +5237,7 @@ func SDPMessageParseBuffer(data []uint8, msg *SDPMessage) SDPResult {
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 	carg3 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 
 	cret = C.gst_sdp_message_parse_buffer(carg1, carg2, carg3)
@@ -5475,7 +5475,7 @@ func (msg *SDPMessage) AddTime(start string, stop string, repeat []string) SDPRe
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 *C.gchar         // in, none, string
 	var carg2 *C.gchar         // in, none, string
-	var carg3 **C.gchar        // in, transfer: none, C Pointers: 2, Name: array[utf8], array (inner: *typesystem.StringPrimitive, zero-terminated)
+	var carg3 **C.gchar        // in, transfer: none, C Pointers: 2, Name: array[utf8], array (inner gchar* (*typesystem.StringPrimitive), zero-terminated)
 	var cret  C.GstSDPResult   // return, none, casted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
@@ -5485,7 +5485,7 @@ func (msg *SDPMessage) AddTime(start string, stop string, repeat []string) SDPRe
 	defer C.free(unsafe.Pointer(carg2))
 	_ = repeat
 	_ = carg3
-	panic("unimplemented conversion of []string (const gchar**)")
+	panic("unimplemented conversion of []string (const gchar**) because of unimplemented: inner pointers in array")
 
 	cret = C.gst_sdp_message_add_time(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(msg)
@@ -7404,7 +7404,7 @@ func (t *SDPTime) Set(start string, stop string, repeat []string) SDPResult {
 	var carg0 *C.GstSDPTime  // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 *C.gchar       // in, none, string
-	var carg3 **C.gchar      // in, transfer: none, C Pointers: 2, Name: array[utf8], array (inner: *typesystem.StringPrimitive, zero-terminated)
+	var carg3 **C.gchar      // in, transfer: none, C Pointers: 2, Name: array[utf8], array (inner gchar* (*typesystem.StringPrimitive), zero-terminated)
 	var cret  C.GstSDPResult // return, none, casted
 
 	carg0 = (*C.GstSDPTime)(UnsafeSDPTimeToGlibNone(t))
@@ -7414,7 +7414,7 @@ func (t *SDPTime) Set(start string, stop string, repeat []string) SDPResult {
 	defer C.free(unsafe.Pointer(carg2))
 	_ = repeat
 	_ = carg3
-	panic("unimplemented conversion of []string (const gchar**)")
+	panic("unimplemented conversion of []string (const gchar**) because of unimplemented: inner pointers in array")
 
 	cret = C.gst_sdp_time_set(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(t)

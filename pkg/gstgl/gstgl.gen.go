@@ -9,10 +9,10 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/diamondburned/gotk4/pkg/core/classdata"
-	"github.com/diamondburned/gotk4/pkg/core/userdata"
-	"github.com/diamondburned/gotk4/pkg/glib/v2"
-	"github.com/diamondburned/gotk4/pkg/gobject/v2"
+	"github.com/go-gst/go-glib/pkg/core/classdata"
+	"github.com/go-gst/go-glib/pkg/core/userdata"
+	"github.com/go-gst/go-glib/pkg/glib/v2"
+	"github.com/go-gst/go-glib/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
 	"github.com/go-gst/go-gst/pkg/gstbase"
 	"github.com/go-gst/go-gst/pkg/gstvideo"
@@ -21,165 +21,165 @@ import (
 // #cgo pkg-config: gstreamer-gl-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/gl/gl.h>
-// extern gboolean _gotk4_gstgl1_GLFilterRenderFunc(GstGLFilter*, GstGLMemory*, gpointer);
-// extern gboolean _gotk4_gstgl1_GLBaseFilter_gl_set_caps(GstGLBaseFilter*, GstCaps*, GstCaps*);
-// extern gboolean _gotk4_gstgl1_GLBaseFilter_gl_start(GstGLBaseFilter*);
-// extern void _gotk4_gstgl1_GLBaseFilter_gl_stop(GstGLBaseFilter*);
-// gboolean _gotk4_gstgl1_GLBaseFilter_virtual_gl_set_caps(void* fnptr, GstGLBaseFilter* carg0, GstCaps* carg1, GstCaps* carg2) {
+// extern gboolean _goglib_gstgl1_GLFilterRenderFunc(GstGLFilter*, GstGLMemory*, gpointer);
+// extern gboolean _goglib_gstgl1_GLBaseFilter_gl_set_caps(GstGLBaseFilter*, GstCaps*, GstCaps*);
+// extern gboolean _goglib_gstgl1_GLBaseFilter_gl_start(GstGLBaseFilter*);
+// extern void _goglib_gstgl1_GLBaseFilter_gl_stop(GstGLBaseFilter*);
+// gboolean _goglib_gstgl1_GLBaseFilter_virtual_gl_set_caps(void* fnptr, GstGLBaseFilter* carg0, GstCaps* carg1, GstCaps* carg2) {
 // 	return ((gboolean (*) (GstGLBaseFilter*, GstCaps*, GstCaps*))(fnptr))(carg0, carg1, carg2);
 // }
-// gboolean _gotk4_gstgl1_GLBaseFilter_virtual_gl_start(void* fnptr, GstGLBaseFilter* carg0) {
+// gboolean _goglib_gstgl1_GLBaseFilter_virtual_gl_start(void* fnptr, GstGLBaseFilter* carg0) {
 // 	return ((gboolean (*) (GstGLBaseFilter*))(fnptr))(carg0);
 // }
-// void _gotk4_gstgl1_GLBaseFilter_virtual_gl_stop(void* fnptr, GstGLBaseFilter* carg0) {
+// void _goglib_gstgl1_GLBaseFilter_virtual_gl_stop(void* fnptr, GstGLBaseFilter* carg0) {
 // 	return ((void (*) (GstGLBaseFilter*))(fnptr))(carg0);
 // }
-// extern GstGLBaseMemory* _gotk4_gstgl1_GLBaseMemoryAllocator_alloc(GstGLBaseMemoryAllocator*, GstGLAllocationParams*);
-// GstGLBaseMemory* _gotk4_gstgl1_GLBaseMemoryAllocator_virtual_alloc(void* fnptr, GstGLBaseMemoryAllocator* carg0, GstGLAllocationParams* carg1) {
+// extern GstGLBaseMemory* _goglib_gstgl1_GLBaseMemoryAllocator_alloc(GstGLBaseMemoryAllocator*, GstGLAllocationParams*);
+// GstGLBaseMemory* _goglib_gstgl1_GLBaseMemoryAllocator_virtual_alloc(void* fnptr, GstGLBaseMemoryAllocator* carg0, GstGLAllocationParams* carg1) {
 // 	return ((GstGLBaseMemory* (*) (GstGLBaseMemoryAllocator*, GstGLAllocationParams*))(fnptr))(carg0, carg1);
 // }
-// extern gboolean _gotk4_gstgl1_GLBaseMixer_gl_start(GstGLBaseMixer*);
-// extern void _gotk4_gstgl1_GLBaseMixer_gl_stop(GstGLBaseMixer*);
-// gboolean _gotk4_gstgl1_GLBaseMixer_virtual_gl_start(void* fnptr, GstGLBaseMixer* carg0) {
+// extern gboolean _goglib_gstgl1_GLBaseMixer_gl_start(GstGLBaseMixer*);
+// extern void _goglib_gstgl1_GLBaseMixer_gl_stop(GstGLBaseMixer*);
+// gboolean _goglib_gstgl1_GLBaseMixer_virtual_gl_start(void* fnptr, GstGLBaseMixer* carg0) {
 // 	return ((gboolean (*) (GstGLBaseMixer*))(fnptr))(carg0);
 // }
-// void _gotk4_gstgl1_GLBaseMixer_virtual_gl_stop(void* fnptr, GstGLBaseMixer* carg0) {
+// void _goglib_gstgl1_GLBaseMixer_virtual_gl_stop(void* fnptr, GstGLBaseMixer* carg0) {
 // 	return ((void (*) (GstGLBaseMixer*))(fnptr))(carg0);
 // }
-// extern gboolean _gotk4_gstgl1_GLBaseSrc_fill_gl_memory(GstGLBaseSrc*, GstGLMemory*);
-// extern gboolean _gotk4_gstgl1_GLBaseSrc_gl_start(GstGLBaseSrc*);
-// extern void _gotk4_gstgl1_GLBaseSrc_gl_stop(GstGLBaseSrc*);
-// gboolean _gotk4_gstgl1_GLBaseSrc_virtual_fill_gl_memory(void* fnptr, GstGLBaseSrc* carg0, GstGLMemory* carg1) {
+// extern gboolean _goglib_gstgl1_GLBaseSrc_fill_gl_memory(GstGLBaseSrc*, GstGLMemory*);
+// extern gboolean _goglib_gstgl1_GLBaseSrc_gl_start(GstGLBaseSrc*);
+// extern void _goglib_gstgl1_GLBaseSrc_gl_stop(GstGLBaseSrc*);
+// gboolean _goglib_gstgl1_GLBaseSrc_virtual_fill_gl_memory(void* fnptr, GstGLBaseSrc* carg0, GstGLMemory* carg1) {
 // 	return ((gboolean (*) (GstGLBaseSrc*, GstGLMemory*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstgl1_GLBaseSrc_virtual_gl_start(void* fnptr, GstGLBaseSrc* carg0) {
+// gboolean _goglib_gstgl1_GLBaseSrc_virtual_gl_start(void* fnptr, GstGLBaseSrc* carg0) {
 // 	return ((gboolean (*) (GstGLBaseSrc*))(fnptr))(carg0);
 // }
-// void _gotk4_gstgl1_GLBaseSrc_virtual_gl_stop(void* fnptr, GstGLBaseSrc* carg0) {
+// void _goglib_gstgl1_GLBaseSrc_virtual_gl_stop(void* fnptr, GstGLBaseSrc* carg0) {
 // 	return ((void (*) (GstGLBaseSrc*))(fnptr))(carg0);
 // }
-// extern gboolean _gotk4_gstgl1_GLContext_activate(GstGLContext*, gboolean);
-// extern gboolean _gotk4_gstgl1_GLContext_check_feature(GstGLContext*, const gchar*);
-// extern gboolean _gotk4_gstgl1_GLContext_choose_format(GstGLContext*, GError*);
-// extern gboolean _gotk4_gstgl1_GLContext_create_context(GstGLContext*, GstGLAPI, GstGLContext*, GError*);
-// extern void _gotk4_gstgl1_GLContext_destroy_context(GstGLContext*);
-// extern GstStructure* _gotk4_gstgl1_GLContext_get_config(GstGLContext*);
-// extern GstGLAPI _gotk4_gstgl1_GLContext_get_gl_api(GstGLContext*);
-// extern GstGLPlatform _gotk4_gstgl1_GLContext_get_gl_platform(GstGLContext*);
-// extern void _gotk4_gstgl1_GLContext_get_gl_platform_version(GstGLContext*, gint, gint);
-// extern gboolean _gotk4_gstgl1_GLContext_request_config(GstGLContext*, GstStructure*);
-// extern void _gotk4_gstgl1_GLContext_swap_buffers(GstGLContext*);
-// gboolean _gotk4_gstgl1_GLContext_virtual_activate(void* fnptr, GstGLContext* carg0, gboolean carg1) {
+// extern gboolean _goglib_gstgl1_GLContext_activate(GstGLContext*, gboolean);
+// extern gboolean _goglib_gstgl1_GLContext_check_feature(GstGLContext*, const gchar*);
+// extern gboolean _goglib_gstgl1_GLContext_choose_format(GstGLContext*, GError*);
+// extern gboolean _goglib_gstgl1_GLContext_create_context(GstGLContext*, GstGLAPI, GstGLContext*, GError*);
+// extern void _goglib_gstgl1_GLContext_destroy_context(GstGLContext*);
+// extern GstStructure* _goglib_gstgl1_GLContext_get_config(GstGLContext*);
+// extern GstGLAPI _goglib_gstgl1_GLContext_get_gl_api(GstGLContext*);
+// extern GstGLPlatform _goglib_gstgl1_GLContext_get_gl_platform(GstGLContext*);
+// extern void _goglib_gstgl1_GLContext_get_gl_platform_version(GstGLContext*, gint, gint);
+// extern gboolean _goglib_gstgl1_GLContext_request_config(GstGLContext*, GstStructure*);
+// extern void _goglib_gstgl1_GLContext_swap_buffers(GstGLContext*);
+// gboolean _goglib_gstgl1_GLContext_virtual_activate(void* fnptr, GstGLContext* carg0, gboolean carg1) {
 // 	return ((gboolean (*) (GstGLContext*, gboolean))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstgl1_GLContext_virtual_check_feature(void* fnptr, GstGLContext* carg0, const gchar* carg1) {
+// gboolean _goglib_gstgl1_GLContext_virtual_check_feature(void* fnptr, GstGLContext* carg0, const gchar* carg1) {
 // 	return ((gboolean (*) (GstGLContext*, const gchar*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstgl1_GLContext_virtual_choose_format(void* fnptr, GstGLContext* carg0, GError** _cerr) {
+// gboolean _goglib_gstgl1_GLContext_virtual_choose_format(void* fnptr, GstGLContext* carg0, GError** _cerr) {
 // 	return ((gboolean (*) (GstGLContext*, GError**))(fnptr))(carg0, _cerr);
 // }
-// gboolean _gotk4_gstgl1_GLContext_virtual_create_context(void* fnptr, GstGLContext* carg0, GstGLAPI carg1, GstGLContext* carg2, GError** _cerr) {
+// gboolean _goglib_gstgl1_GLContext_virtual_create_context(void* fnptr, GstGLContext* carg0, GstGLAPI carg1, GstGLContext* carg2, GError** _cerr) {
 // 	return ((gboolean (*) (GstGLContext*, GstGLAPI, GstGLContext*, GError**))(fnptr))(carg0, carg1, carg2, _cerr);
 // }
-// void _gotk4_gstgl1_GLContext_virtual_destroy_context(void* fnptr, GstGLContext* carg0) {
+// void _goglib_gstgl1_GLContext_virtual_destroy_context(void* fnptr, GstGLContext* carg0) {
 // 	return ((void (*) (GstGLContext*))(fnptr))(carg0);
 // }
-// GstStructure* _gotk4_gstgl1_GLContext_virtual_get_config(void* fnptr, GstGLContext* carg0) {
+// GstStructure* _goglib_gstgl1_GLContext_virtual_get_config(void* fnptr, GstGLContext* carg0) {
 // 	return ((GstStructure* (*) (GstGLContext*))(fnptr))(carg0);
 // }
-// GstGLAPI _gotk4_gstgl1_GLContext_virtual_get_gl_api(void* fnptr, GstGLContext* carg0) {
+// GstGLAPI _goglib_gstgl1_GLContext_virtual_get_gl_api(void* fnptr, GstGLContext* carg0) {
 // 	return ((GstGLAPI (*) (GstGLContext*))(fnptr))(carg0);
 // }
-// GstGLPlatform _gotk4_gstgl1_GLContext_virtual_get_gl_platform(void* fnptr, GstGLContext* carg0) {
+// GstGLPlatform _goglib_gstgl1_GLContext_virtual_get_gl_platform(void* fnptr, GstGLContext* carg0) {
 // 	return ((GstGLPlatform (*) (GstGLContext*))(fnptr))(carg0);
 // }
-// void _gotk4_gstgl1_GLContext_virtual_get_gl_platform_version(void* fnptr, GstGLContext* carg0, gint* carg1, gint* carg2) {
+// void _goglib_gstgl1_GLContext_virtual_get_gl_platform_version(void* fnptr, GstGLContext* carg0, gint* carg1, gint* carg2) {
 // 	return ((void (*) (GstGLContext*, gint*, gint*))(fnptr))(carg0, carg1, carg2);
 // }
-// gboolean _gotk4_gstgl1_GLContext_virtual_request_config(void* fnptr, GstGLContext* carg0, GstStructure* carg1) {
+// gboolean _goglib_gstgl1_GLContext_virtual_request_config(void* fnptr, GstGLContext* carg0, GstStructure* carg1) {
 // 	return ((gboolean (*) (GstGLContext*, GstStructure*))(fnptr))(carg0, carg1);
 // }
-// void _gotk4_gstgl1_GLContext_virtual_swap_buffers(void* fnptr, GstGLContext* carg0) {
+// void _goglib_gstgl1_GLContext_virtual_swap_buffers(void* fnptr, GstGLContext* carg0) {
 // 	return ((void (*) (GstGLContext*))(fnptr))(carg0);
 // }
-// extern GstGLWindow* _gotk4_gstgl1_GLDisplay_create_window(GstGLDisplay*);
-// GstGLWindow* _gotk4_gstgl1_GLDisplay_virtual_create_window(void* fnptr, GstGLDisplay* carg0) {
+// extern GstGLWindow* _goglib_gstgl1_GLDisplay_create_window(GstGLDisplay*);
+// GstGLWindow* _goglib_gstgl1_GLDisplay_virtual_create_window(void* fnptr, GstGLDisplay* carg0) {
 // 	return ((GstGLWindow* (*) (GstGLDisplay*))(fnptr))(carg0);
 // }
-// extern gboolean _gotk4_gstgl1_GLFilter_filter(GstGLFilter*, GstBuffer*, GstBuffer*);
-// extern gboolean _gotk4_gstgl1_GLFilter_filter_texture(GstGLFilter*, GstGLMemory*, GstGLMemory*);
-// extern gboolean _gotk4_gstgl1_GLFilter_init_fbo(GstGLFilter*);
-// extern gboolean _gotk4_gstgl1_GLFilter_set_caps(GstGLFilter*, GstCaps*, GstCaps*);
-// extern GstCaps* _gotk4_gstgl1_GLFilter_transform_internal_caps(GstGLFilter*, GstPadDirection, GstCaps*, GstCaps*);
-// gboolean _gotk4_gstgl1_GLFilter_virtual_filter(void* fnptr, GstGLFilter* carg0, GstBuffer* carg1, GstBuffer* carg2) {
+// extern gboolean _goglib_gstgl1_GLFilter_filter(GstGLFilter*, GstBuffer*, GstBuffer*);
+// extern gboolean _goglib_gstgl1_GLFilter_filter_texture(GstGLFilter*, GstGLMemory*, GstGLMemory*);
+// extern gboolean _goglib_gstgl1_GLFilter_init_fbo(GstGLFilter*);
+// extern gboolean _goglib_gstgl1_GLFilter_set_caps(GstGLFilter*, GstCaps*, GstCaps*);
+// extern GstCaps* _goglib_gstgl1_GLFilter_transform_internal_caps(GstGLFilter*, GstPadDirection, GstCaps*, GstCaps*);
+// gboolean _goglib_gstgl1_GLFilter_virtual_filter(void* fnptr, GstGLFilter* carg0, GstBuffer* carg1, GstBuffer* carg2) {
 // 	return ((gboolean (*) (GstGLFilter*, GstBuffer*, GstBuffer*))(fnptr))(carg0, carg1, carg2);
 // }
-// gboolean _gotk4_gstgl1_GLFilter_virtual_filter_texture(void* fnptr, GstGLFilter* carg0, GstGLMemory* carg1, GstGLMemory* carg2) {
+// gboolean _goglib_gstgl1_GLFilter_virtual_filter_texture(void* fnptr, GstGLFilter* carg0, GstGLMemory* carg1, GstGLMemory* carg2) {
 // 	return ((gboolean (*) (GstGLFilter*, GstGLMemory*, GstGLMemory*))(fnptr))(carg0, carg1, carg2);
 // }
-// gboolean _gotk4_gstgl1_GLFilter_virtual_init_fbo(void* fnptr, GstGLFilter* carg0) {
+// gboolean _goglib_gstgl1_GLFilter_virtual_init_fbo(void* fnptr, GstGLFilter* carg0) {
 // 	return ((gboolean (*) (GstGLFilter*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstgl1_GLFilter_virtual_set_caps(void* fnptr, GstGLFilter* carg0, GstCaps* carg1, GstCaps* carg2) {
+// gboolean _goglib_gstgl1_GLFilter_virtual_set_caps(void* fnptr, GstGLFilter* carg0, GstCaps* carg1, GstCaps* carg2) {
 // 	return ((gboolean (*) (GstGLFilter*, GstCaps*, GstCaps*))(fnptr))(carg0, carg1, carg2);
 // }
-// GstCaps* _gotk4_gstgl1_GLFilter_virtual_transform_internal_caps(void* fnptr, GstGLFilter* carg0, GstPadDirection carg1, GstCaps* carg2, GstCaps* carg3) {
+// GstCaps* _goglib_gstgl1_GLFilter_virtual_transform_internal_caps(void* fnptr, GstGLFilter* carg0, GstPadDirection carg1, GstCaps* carg2, GstCaps* carg3) {
 // 	return ((GstCaps* (*) (GstGLFilter*, GstPadDirection, GstCaps*, GstCaps*))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// extern gboolean _gotk4_gstgl1_GLMixer_process_buffers(GstGLMixer*, GstBuffer*);
-// extern gboolean _gotk4_gstgl1_GLMixer_process_textures(GstGLMixer*, GstGLMemory*);
-// gboolean _gotk4_gstgl1_GLMixer_virtual_process_buffers(void* fnptr, GstGLMixer* carg0, GstBuffer* carg1) {
+// extern gboolean _goglib_gstgl1_GLMixer_process_buffers(GstGLMixer*, GstBuffer*);
+// extern gboolean _goglib_gstgl1_GLMixer_process_textures(GstGLMixer*, GstGLMemory*);
+// gboolean _goglib_gstgl1_GLMixer_virtual_process_buffers(void* fnptr, GstGLMixer* carg0, GstBuffer* carg1) {
 // 	return ((gboolean (*) (GstGLMixer*, GstBuffer*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstgl1_GLMixer_virtual_process_textures(void* fnptr, GstGLMixer* carg0, GstGLMemory* carg1) {
+// gboolean _goglib_gstgl1_GLMixer_virtual_process_textures(void* fnptr, GstGLMixer* carg0, GstGLMemory* carg1) {
 // 	return ((gboolean (*) (GstGLMixer*, GstGLMemory*))(fnptr))(carg0, carg1);
 // }
-// extern void _gotk4_gstgl1_GLWindow_close(GstGLWindow*);
-// extern gboolean _gotk4_gstgl1_GLWindow_controls_viewport(GstGLWindow*);
-// extern void _gotk4_gstgl1_GLWindow_draw(GstGLWindow*);
-// extern void _gotk4_gstgl1_GLWindow_handle_events(GstGLWindow*, gboolean);
-// extern gboolean _gotk4_gstgl1_GLWindow_has_output_surface(GstGLWindow*);
-// extern gboolean _gotk4_gstgl1_GLWindow_open(GstGLWindow*, GError*);
-// extern void _gotk4_gstgl1_GLWindow_queue_resize(GstGLWindow*);
-// extern void _gotk4_gstgl1_GLWindow_quit(GstGLWindow*);
-// extern void _gotk4_gstgl1_GLWindow_run(GstGLWindow*);
-// extern void _gotk4_gstgl1_GLWindow_set_preferred_size(GstGLWindow*, gint, gint);
-// extern gboolean _gotk4_gstgl1_GLWindow_set_render_rectangle(GstGLWindow*, gint, gint, gint, gint);
-// extern void _gotk4_gstgl1_GLWindow_show(GstGLWindow*);
-// void _gotk4_gstgl1_GLWindow_virtual_close(void* fnptr, GstGLWindow* carg0) {
+// extern void _goglib_gstgl1_GLWindow_close(GstGLWindow*);
+// extern gboolean _goglib_gstgl1_GLWindow_controls_viewport(GstGLWindow*);
+// extern void _goglib_gstgl1_GLWindow_draw(GstGLWindow*);
+// extern void _goglib_gstgl1_GLWindow_handle_events(GstGLWindow*, gboolean);
+// extern gboolean _goglib_gstgl1_GLWindow_has_output_surface(GstGLWindow*);
+// extern gboolean _goglib_gstgl1_GLWindow_open(GstGLWindow*, GError*);
+// extern void _goglib_gstgl1_GLWindow_queue_resize(GstGLWindow*);
+// extern void _goglib_gstgl1_GLWindow_quit(GstGLWindow*);
+// extern void _goglib_gstgl1_GLWindow_run(GstGLWindow*);
+// extern void _goglib_gstgl1_GLWindow_set_preferred_size(GstGLWindow*, gint, gint);
+// extern gboolean _goglib_gstgl1_GLWindow_set_render_rectangle(GstGLWindow*, gint, gint, gint, gint);
+// extern void _goglib_gstgl1_GLWindow_show(GstGLWindow*);
+// void _goglib_gstgl1_GLWindow_virtual_close(void* fnptr, GstGLWindow* carg0) {
 // 	return ((void (*) (GstGLWindow*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstgl1_GLWindow_virtual_controls_viewport(void* fnptr, GstGLWindow* carg0) {
+// gboolean _goglib_gstgl1_GLWindow_virtual_controls_viewport(void* fnptr, GstGLWindow* carg0) {
 // 	return ((gboolean (*) (GstGLWindow*))(fnptr))(carg0);
 // }
-// void _gotk4_gstgl1_GLWindow_virtual_draw(void* fnptr, GstGLWindow* carg0) {
+// void _goglib_gstgl1_GLWindow_virtual_draw(void* fnptr, GstGLWindow* carg0) {
 // 	return ((void (*) (GstGLWindow*))(fnptr))(carg0);
 // }
-// void _gotk4_gstgl1_GLWindow_virtual_handle_events(void* fnptr, GstGLWindow* carg0, gboolean carg1) {
+// void _goglib_gstgl1_GLWindow_virtual_handle_events(void* fnptr, GstGLWindow* carg0, gboolean carg1) {
 // 	return ((void (*) (GstGLWindow*, gboolean))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstgl1_GLWindow_virtual_has_output_surface(void* fnptr, GstGLWindow* carg0) {
+// gboolean _goglib_gstgl1_GLWindow_virtual_has_output_surface(void* fnptr, GstGLWindow* carg0) {
 // 	return ((gboolean (*) (GstGLWindow*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstgl1_GLWindow_virtual_open(void* fnptr, GstGLWindow* carg0, GError** _cerr) {
+// gboolean _goglib_gstgl1_GLWindow_virtual_open(void* fnptr, GstGLWindow* carg0, GError** _cerr) {
 // 	return ((gboolean (*) (GstGLWindow*, GError**))(fnptr))(carg0, _cerr);
 // }
-// void _gotk4_gstgl1_GLWindow_virtual_queue_resize(void* fnptr, GstGLWindow* carg0) {
+// void _goglib_gstgl1_GLWindow_virtual_queue_resize(void* fnptr, GstGLWindow* carg0) {
 // 	return ((void (*) (GstGLWindow*))(fnptr))(carg0);
 // }
-// void _gotk4_gstgl1_GLWindow_virtual_quit(void* fnptr, GstGLWindow* carg0) {
+// void _goglib_gstgl1_GLWindow_virtual_quit(void* fnptr, GstGLWindow* carg0) {
 // 	return ((void (*) (GstGLWindow*))(fnptr))(carg0);
 // }
-// void _gotk4_gstgl1_GLWindow_virtual_run(void* fnptr, GstGLWindow* carg0) {
+// void _goglib_gstgl1_GLWindow_virtual_run(void* fnptr, GstGLWindow* carg0) {
 // 	return ((void (*) (GstGLWindow*))(fnptr))(carg0);
 // }
-// void _gotk4_gstgl1_GLWindow_virtual_set_preferred_size(void* fnptr, GstGLWindow* carg0, gint carg1, gint carg2) {
+// void _goglib_gstgl1_GLWindow_virtual_set_preferred_size(void* fnptr, GstGLWindow* carg0, gint carg1, gint carg2) {
 // 	return ((void (*) (GstGLWindow*, gint, gint))(fnptr))(carg0, carg1, carg2);
 // }
-// gboolean _gotk4_gstgl1_GLWindow_virtual_set_render_rectangle(void* fnptr, GstGLWindow* carg0, gint carg1, gint carg2, gint carg3, gint carg4) {
+// gboolean _goglib_gstgl1_GLWindow_virtual_set_render_rectangle(void* fnptr, GstGLWindow* carg0, gint carg1, gint carg2, gint carg3, gint carg4) {
 // 	return ((gboolean (*) (GstGLWindow*, gint, gint, gint, gint))(fnptr))(carg0, carg1, carg2, carg3, carg4);
 // }
-// void _gotk4_gstgl1_GLWindow_virtual_show(void* fnptr, GstGLWindow* carg0) {
+// void _goglib_gstgl1_GLWindow_virtual_show(void* fnptr, GstGLWindow* carg0) {
 // 	return ((void (*) (GstGLWindow*))(fnptr))(carg0);
 // }
 import "C"
@@ -2632,12 +2632,16 @@ func GlHandleSetContext(element gst.Element, _context *gst.Context) (GLDisplay, 
 // NDC coordinates in @matrix.
 func GlSetAffineTransformationMetaFromNdc(meta *gstvideo.VideoAffineTransformationMeta, matrix [16]float32) {
 	var carg1 *C.GstVideoAffineTransformationMeta // in, none, converted
-	var carg2 *C.gfloat                           // in, transfer: none, C Pointers: 1, Name: array[gfloat], array (inner: *typesystem.CastablePrimitive, fixed-size: 16)
+	var carg2 *C.gfloat                           // in, none, array fixed size (inner: gfloat, size: 16)
 
 	carg1 = (*C.GstVideoAffineTransformationMeta)(gstvideo.UnsafeVideoAffineTransformationMetaToGlibNone(meta))
-	_ = matrix
-	_ = carg2
-	panic("unimplemented conversion of [16]float32 (const gfloat*)")
+	{
+		var carr [16]C.gfloat
+		for i := range 16 {
+			carr[i] = C.gfloat(matrix[i])
+			carg2 = unsafe.SliceData(carr[:])
+		}
+	}
 
 	C.gst_gl_set_affine_transformation_meta_from_ndc(carg1, carg2)
 	runtime.KeepAlive(meta)
@@ -3220,10 +3224,10 @@ func UnsafeApplyGLBaseFilterOverrides[Instance GLBaseFilter](gclass unsafe.Point
 	pclass := (*C.GstGLBaseFilterClass)(gclass)
 
 	if overrides.GlSetCaps != nil {
-		pclass.gl_set_caps = (*[0]byte)(C._gotk4_gstgl1_GLBaseFilter_gl_set_caps)
+		pclass.gl_set_caps = (*[0]byte)(C._goglib_gstgl1_GLBaseFilter_gl_set_caps)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLBaseFilter_gl_set_caps",
+			"_goglib_gstgl1_GLBaseFilter_gl_set_caps",
 			func(carg0 *C.GstGLBaseFilter, carg1 *C.GstCaps, carg2 *C.GstCaps) (cret C.gboolean) {
 				var filter  Instance  // go GstGLBaseFilter subclass
 				var incaps  *gst.Caps // in, none, converted
@@ -3246,10 +3250,10 @@ func UnsafeApplyGLBaseFilterOverrides[Instance GLBaseFilter](gclass unsafe.Point
 	}
 
 	if overrides.GlStart != nil {
-		pclass.gl_start = (*[0]byte)(C._gotk4_gstgl1_GLBaseFilter_gl_start)
+		pclass.gl_start = (*[0]byte)(C._goglib_gstgl1_GLBaseFilter_gl_start)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLBaseFilter_gl_start",
+			"_goglib_gstgl1_GLBaseFilter_gl_start",
 			func(carg0 *C.GstGLBaseFilter) (cret C.gboolean) {
 				var filter Instance // go GstGLBaseFilter subclass
 				var goret  bool     // return
@@ -3268,10 +3272,10 @@ func UnsafeApplyGLBaseFilterOverrides[Instance GLBaseFilter](gclass unsafe.Point
 	}
 
 	if overrides.GlStop != nil {
-		pclass.gl_stop = (*[0]byte)(C._gotk4_gstgl1_GLBaseFilter_gl_stop)
+		pclass.gl_stop = (*[0]byte)(C._goglib_gstgl1_GLBaseFilter_gl_stop)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLBaseFilter_gl_stop",
+			"_goglib_gstgl1_GLBaseFilter_gl_stop",
 			func(carg0 *C.GstGLBaseFilter) {
 				var filter Instance // go GstGLBaseFilter subclass
 
@@ -3310,7 +3314,7 @@ func (filter *GLBaseFilterInstance) ParentGlSetCaps(incaps *gst.Caps, outcaps *g
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(incaps))
 	carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(outcaps))
 
-	cret = C._gotk4_gstgl1_GLBaseFilter_virtual_gl_set_caps(unsafe.Pointer(parentclass.gl_set_caps), carg0, carg1, carg2)
+	cret = C._goglib_gstgl1_GLBaseFilter_virtual_gl_set_caps(unsafe.Pointer(parentclass.gl_set_caps), carg0, carg1, carg2)
 	runtime.KeepAlive(filter)
 	runtime.KeepAlive(incaps)
 	runtime.KeepAlive(outcaps)
@@ -3340,7 +3344,7 @@ func (filter *GLBaseFilterInstance) ParentGlStart() bool {
 
 	carg0 = (*C.GstGLBaseFilter)(UnsafeGLBaseFilterToGlibNone(filter))
 
-	cret = C._gotk4_gstgl1_GLBaseFilter_virtual_gl_start(unsafe.Pointer(parentclass.gl_start), carg0)
+	cret = C._goglib_gstgl1_GLBaseFilter_virtual_gl_start(unsafe.Pointer(parentclass.gl_start), carg0)
 	runtime.KeepAlive(filter)
 
 	var goret bool
@@ -3363,7 +3367,7 @@ func (filter *GLBaseFilterInstance) ParentGlStop() {
 
 	carg0 = (*C.GstGLBaseFilter)(UnsafeGLBaseFilterToGlibNone(filter))
 
-	C._gotk4_gstgl1_GLBaseFilter_virtual_gl_stop(unsafe.Pointer(parentclass.gl_stop), carg0)
+	C._goglib_gstgl1_GLBaseFilter_virtual_gl_stop(unsafe.Pointer(parentclass.gl_stop), carg0)
 	runtime.KeepAlive(filter)
 }
 
@@ -3507,10 +3511,10 @@ func UnsafeApplyGLBaseMemoryAllocatorOverrides[Instance GLBaseMemoryAllocator](g
 	pclass := (*C.GstGLBaseMemoryAllocatorClass)(gclass)
 
 	if overrides.Alloc != nil {
-		pclass.alloc = (*[0]byte)(C._gotk4_gstgl1_GLBaseMemoryAllocator_alloc)
+		pclass.alloc = (*[0]byte)(C._goglib_gstgl1_GLBaseMemoryAllocator_alloc)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLBaseMemoryAllocator_alloc",
+			"_goglib_gstgl1_GLBaseMemoryAllocator_alloc",
 			func(carg0 *C.GstGLBaseMemoryAllocator, carg1 *C.GstGLAllocationParams) (cret *C.GstGLBaseMemory) {
 				var allocator Instance            // go GstGLBaseMemoryAllocator subclass
 				var params    *GLAllocationParams // in, none, converted
@@ -3553,7 +3557,7 @@ func (allocator *GLBaseMemoryAllocatorInstance) ParentAllocGLBaseMemoryAllocator
 	carg0 = (*C.GstGLBaseMemoryAllocator)(UnsafeGLBaseMemoryAllocatorToGlibNone(allocator))
 	carg1 = (*C.GstGLAllocationParams)(UnsafeGLAllocationParamsToGlibNone(params))
 
-	cret = C._gotk4_gstgl1_GLBaseMemoryAllocator_virtual_alloc(unsafe.Pointer(parentclass.alloc), carg0, carg1)
+	cret = C._goglib_gstgl1_GLBaseMemoryAllocator_virtual_alloc(unsafe.Pointer(parentclass.alloc), carg0, carg1)
 	runtime.KeepAlive(allocator)
 	runtime.KeepAlive(params)
 
@@ -3743,10 +3747,10 @@ func UnsafeApplyGLBaseMixerOverrides[Instance GLBaseMixer](gclass unsafe.Pointer
 	pclass := (*C.GstGLBaseMixerClass)(gclass)
 
 	if overrides.GlStart != nil {
-		pclass.gl_start = (*[0]byte)(C._gotk4_gstgl1_GLBaseMixer_gl_start)
+		pclass.gl_start = (*[0]byte)(C._goglib_gstgl1_GLBaseMixer_gl_start)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLBaseMixer_gl_start",
+			"_goglib_gstgl1_GLBaseMixer_gl_start",
 			func(carg0 *C.GstGLBaseMixer) (cret C.gboolean) {
 				var mix   Instance // go GstGLBaseMixer subclass
 				var goret bool     // return
@@ -3765,10 +3769,10 @@ func UnsafeApplyGLBaseMixerOverrides[Instance GLBaseMixer](gclass unsafe.Pointer
 	}
 
 	if overrides.GlStop != nil {
-		pclass.gl_stop = (*[0]byte)(C._gotk4_gstgl1_GLBaseMixer_gl_stop)
+		pclass.gl_stop = (*[0]byte)(C._goglib_gstgl1_GLBaseMixer_gl_stop)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLBaseMixer_gl_stop",
+			"_goglib_gstgl1_GLBaseMixer_gl_stop",
 			func(carg0 *C.GstGLBaseMixer) {
 				var mix Instance // go GstGLBaseMixer subclass
 
@@ -3796,7 +3800,7 @@ func (mix *GLBaseMixerInstance) ParentGlStart() bool {
 
 	carg0 = (*C.GstGLBaseMixer)(UnsafeGLBaseMixerToGlibNone(mix))
 
-	cret = C._gotk4_gstgl1_GLBaseMixer_virtual_gl_start(unsafe.Pointer(parentclass.gl_start), carg0)
+	cret = C._goglib_gstgl1_GLBaseMixer_virtual_gl_start(unsafe.Pointer(parentclass.gl_start), carg0)
 	runtime.KeepAlive(mix)
 
 	var goret bool
@@ -3819,7 +3823,7 @@ func (mix *GLBaseMixerInstance) ParentGlStop() {
 
 	carg0 = (*C.GstGLBaseMixer)(UnsafeGLBaseMixerToGlibNone(mix))
 
-	C._gotk4_gstgl1_GLBaseMixer_virtual_gl_stop(unsafe.Pointer(parentclass.gl_stop), carg0)
+	C._goglib_gstgl1_GLBaseMixer_virtual_gl_stop(unsafe.Pointer(parentclass.gl_stop), carg0)
 	runtime.KeepAlive(mix)
 }
 
@@ -4110,10 +4114,10 @@ func UnsafeApplyGLBaseSrcOverrides[Instance GLBaseSrc](gclass unsafe.Pointer, ov
 	pclass := (*C.GstGLBaseSrcClass)(gclass)
 
 	if overrides.FillGlMemory != nil {
-		pclass.fill_gl_memory = (*[0]byte)(C._gotk4_gstgl1_GLBaseSrc_fill_gl_memory)
+		pclass.fill_gl_memory = (*[0]byte)(C._goglib_gstgl1_GLBaseSrc_fill_gl_memory)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLBaseSrc_fill_gl_memory",
+			"_goglib_gstgl1_GLBaseSrc_fill_gl_memory",
 			func(carg0 *C.GstGLBaseSrc, carg1 *C.GstGLMemory) (cret C.gboolean) {
 				var src   Instance  // go GstGLBaseSrc subclass
 				var mem   *GLMemory // in, none, converted
@@ -4134,10 +4138,10 @@ func UnsafeApplyGLBaseSrcOverrides[Instance GLBaseSrc](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.GlStart != nil {
-		pclass.gl_start = (*[0]byte)(C._gotk4_gstgl1_GLBaseSrc_gl_start)
+		pclass.gl_start = (*[0]byte)(C._goglib_gstgl1_GLBaseSrc_gl_start)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLBaseSrc_gl_start",
+			"_goglib_gstgl1_GLBaseSrc_gl_start",
 			func(carg0 *C.GstGLBaseSrc) (cret C.gboolean) {
 				var src   Instance // go GstGLBaseSrc subclass
 				var goret bool     // return
@@ -4156,10 +4160,10 @@ func UnsafeApplyGLBaseSrcOverrides[Instance GLBaseSrc](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.GlStop != nil {
-		pclass.gl_stop = (*[0]byte)(C._gotk4_gstgl1_GLBaseSrc_gl_stop)
+		pclass.gl_stop = (*[0]byte)(C._goglib_gstgl1_GLBaseSrc_gl_stop)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLBaseSrc_gl_stop",
+			"_goglib_gstgl1_GLBaseSrc_gl_stop",
 			func(carg0 *C.GstGLBaseSrc) {
 				var src Instance // go GstGLBaseSrc subclass
 
@@ -4193,7 +4197,7 @@ func (src *GLBaseSrcInstance) ParentFillGlMemory(mem *GLMemory) bool {
 	carg0 = (*C.GstGLBaseSrc)(UnsafeGLBaseSrcToGlibNone(src))
 	carg1 = (*C.GstGLMemory)(UnsafeGLMemoryToGlibNone(mem))
 
-	cret = C._gotk4_gstgl1_GLBaseSrc_virtual_fill_gl_memory(unsafe.Pointer(parentclass.fill_gl_memory), carg0, carg1)
+	cret = C._goglib_gstgl1_GLBaseSrc_virtual_fill_gl_memory(unsafe.Pointer(parentclass.fill_gl_memory), carg0, carg1)
 	runtime.KeepAlive(src)
 	runtime.KeepAlive(mem)
 
@@ -4222,7 +4226,7 @@ func (src *GLBaseSrcInstance) ParentGlStart() bool {
 
 	carg0 = (*C.GstGLBaseSrc)(UnsafeGLBaseSrcToGlibNone(src))
 
-	cret = C._gotk4_gstgl1_GLBaseSrc_virtual_gl_start(unsafe.Pointer(parentclass.gl_start), carg0)
+	cret = C._goglib_gstgl1_GLBaseSrc_virtual_gl_start(unsafe.Pointer(parentclass.gl_start), carg0)
 	runtime.KeepAlive(src)
 
 	var goret bool
@@ -4245,7 +4249,7 @@ func (src *GLBaseSrcInstance) ParentGlStop() {
 
 	carg0 = (*C.GstGLBaseSrc)(UnsafeGLBaseSrcToGlibNone(src))
 
-	C._gotk4_gstgl1_GLBaseSrc_virtual_gl_stop(unsafe.Pointer(parentclass.gl_stop), carg0)
+	C._goglib_gstgl1_GLBaseSrc_virtual_gl_stop(unsafe.Pointer(parentclass.gl_stop), carg0)
 	runtime.KeepAlive(src)
 }
 
@@ -5212,12 +5216,6 @@ type GLContext interface {
 	// gst_gl_context_get_gl_api() for retrieving the OpenGL api implemented by
 	// @context.
 	GetGlVersion() (int32, int32)
-	// GetThread wraps gst_gl_context_get_thread
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *glib.Thread (nullable) 
-	GetThread() *glib.Thread
 	// GetWindow wraps gst_gl_context_get_window
 	// 
 	// The function returns the following values:
@@ -6059,29 +6057,6 @@ func (_context *GLContextInstance) GetGlVersion() (int32, int32) {
 	return maj, min
 }
 
-// GetThread wraps gst_gl_context_get_thread
-// 
-// The function returns the following values:
-// 
-// 	- goret *glib.Thread (nullable) 
-func (_context *GLContextInstance) GetThread() *glib.Thread {
-	var carg0 *C.GstGLContext // in, none, converted
-	var cret  *C.GThread      // return, full, converted, nullable
-
-	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
-
-	cret = C.gst_gl_context_get_thread(carg0)
-	runtime.KeepAlive(_context)
-
-	var goret *glib.Thread
-
-	if cret != nil {
-		goret = glib.UnsafeThreadFromGlibFull(unsafe.Pointer(cret))
-	}
-
-	return goret
-}
-
 // GetWindow wraps gst_gl_context_get_window
 // 
 // The function returns the following values:
@@ -6486,10 +6461,10 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 	pclass := (*C.GstGLContextClass)(gclass)
 
 	if overrides.Activate != nil {
-		pclass.activate = (*[0]byte)(C._gotk4_gstgl1_GLContext_activate)
+		pclass.activate = (*[0]byte)(C._goglib_gstgl1_GLContext_activate)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLContext_activate",
+			"_goglib_gstgl1_GLContext_activate",
 			func(carg0 *C.GstGLContext, carg1 C.gboolean) (cret C.gboolean) {
 				var _context Instance // go GstGLContext subclass
 				var activate bool     // in
@@ -6512,10 +6487,10 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.CheckFeature != nil {
-		pclass.check_feature = (*[0]byte)(C._gotk4_gstgl1_GLContext_check_feature)
+		pclass.check_feature = (*[0]byte)(C._goglib_gstgl1_GLContext_check_feature)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLContext_check_feature",
+			"_goglib_gstgl1_GLContext_check_feature",
 			func(carg0 *C.GstGLContext, carg1 *C.gchar) (cret C.gboolean) {
 				var _context Instance // go GstGLContext subclass
 				var feature  string   // in, none, string
@@ -6536,10 +6511,10 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.ChooseFormat != nil {
-		pclass.choose_format = (*[0]byte)(C._gotk4_gstgl1_GLContext_choose_format)
+		pclass.choose_format = (*[0]byte)(C._goglib_gstgl1_GLContext_choose_format)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLContext_choose_format",
+			"_goglib_gstgl1_GLContext_choose_format",
 			func(carg0 *C.GstGLContext, _cerr **C.GError) (cret C.gboolean) {
 				var _context Instance // go GstGLContext subclass
 				var goret    bool     // return
@@ -6560,10 +6535,10 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.CreateContext != nil {
-		pclass.create_context = (*[0]byte)(C._gotk4_gstgl1_GLContext_create_context)
+		pclass.create_context = (*[0]byte)(C._goglib_gstgl1_GLContext_create_context)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLContext_create_context",
+			"_goglib_gstgl1_GLContext_create_context",
 			func(carg0 *C.GstGLContext, carg1 C.GstGLAPI, carg2 *C.GstGLContext, _cerr **C.GError) (cret C.gboolean) {
 				var _context     Instance  // go GstGLContext subclass
 				var glApi        GLAPI     // in, none, casted
@@ -6588,10 +6563,10 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.DestroyContext != nil {
-		pclass.destroy_context = (*[0]byte)(C._gotk4_gstgl1_GLContext_destroy_context)
+		pclass.destroy_context = (*[0]byte)(C._goglib_gstgl1_GLContext_destroy_context)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLContext_destroy_context",
+			"_goglib_gstgl1_GLContext_destroy_context",
 			func(carg0 *C.GstGLContext) {
 				var _context Instance // go GstGLContext subclass
 
@@ -6603,10 +6578,10 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.GetConfig != nil {
-		pclass.get_config = (*[0]byte)(C._gotk4_gstgl1_GLContext_get_config)
+		pclass.get_config = (*[0]byte)(C._goglib_gstgl1_GLContext_get_config)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLContext_get_config",
+			"_goglib_gstgl1_GLContext_get_config",
 			func(carg0 *C.GstGLContext) (cret *C.GstStructure) {
 				var _context Instance       // go GstGLContext subclass
 				var goret    *gst.Structure // return, full, converted, nullable
@@ -6625,10 +6600,10 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.GetGlAPI != nil {
-		pclass.get_gl_api = (*[0]byte)(C._gotk4_gstgl1_GLContext_get_gl_api)
+		pclass.get_gl_api = (*[0]byte)(C._goglib_gstgl1_GLContext_get_gl_api)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLContext_get_gl_api",
+			"_goglib_gstgl1_GLContext_get_gl_api",
 			func(carg0 *C.GstGLContext) (cret C.GstGLAPI) {
 				var _context Instance // go GstGLContext subclass
 				var goret    GLAPI    // return, none, casted
@@ -6645,10 +6620,10 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.GetGlPlatform != nil {
-		pclass.get_gl_platform = (*[0]byte)(C._gotk4_gstgl1_GLContext_get_gl_platform)
+		pclass.get_gl_platform = (*[0]byte)(C._goglib_gstgl1_GLContext_get_gl_platform)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLContext_get_gl_platform",
+			"_goglib_gstgl1_GLContext_get_gl_platform",
 			func(carg0 *C.GstGLContext) (cret C.GstGLPlatform) {
 				var _context Instance   // go GstGLContext subclass
 				var goret    GLPlatform // return, none, casted
@@ -6665,10 +6640,10 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.GetGlPlatformVersion != nil {
-		pclass.get_gl_platform_version = (*[0]byte)(C._gotk4_gstgl1_GLContext_get_gl_platform_version)
+		pclass.get_gl_platform_version = (*[0]byte)(C._goglib_gstgl1_GLContext_get_gl_platform_version)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLContext_get_gl_platform_version",
+			"_goglib_gstgl1_GLContext_get_gl_platform_version",
 			func(carg0 *C.GstGLContext, carg1 *C.gint, carg2 *C.gint) {
 				var _context Instance // go GstGLContext subclass
 				var major    int32    // out, full, casted
@@ -6685,10 +6660,10 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.RequestConfig != nil {
-		pclass.request_config = (*[0]byte)(C._gotk4_gstgl1_GLContext_request_config)
+		pclass.request_config = (*[0]byte)(C._goglib_gstgl1_GLContext_request_config)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLContext_request_config",
+			"_goglib_gstgl1_GLContext_request_config",
 			func(carg0 *C.GstGLContext, carg1 *C.GstStructure) (cret C.gboolean) {
 				var _context Instance       // go GstGLContext subclass
 				var glConfig *gst.Structure // in, full, converted, nullable
@@ -6711,10 +6686,10 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.SwapBuffers != nil {
-		pclass.swap_buffers = (*[0]byte)(C._gotk4_gstgl1_GLContext_swap_buffers)
+		pclass.swap_buffers = (*[0]byte)(C._goglib_gstgl1_GLContext_swap_buffers)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLContext_swap_buffers",
+			"_goglib_gstgl1_GLContext_swap_buffers",
 			func(carg0 *C.GstGLContext) {
 				var _context Instance // go GstGLContext subclass
 
@@ -6753,7 +6728,7 @@ func (_context *GLContextInstance) ParentActivate(activate bool) bool {
 		carg1 = C.TRUE
 	}
 
-	cret = C._gotk4_gstgl1_GLContext_virtual_activate(unsafe.Pointer(parentclass.activate), carg0, carg1)
+	cret = C._goglib_gstgl1_GLContext_virtual_activate(unsafe.Pointer(parentclass.activate), carg0, carg1)
 	runtime.KeepAlive(_context)
 	runtime.KeepAlive(activate)
 
@@ -6793,7 +6768,7 @@ func (_context *GLContextInstance) ParentCheckFeature(feature string) bool {
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(feature)))
 	defer C.free(unsafe.Pointer(carg1))
 
-	cret = C._gotk4_gstgl1_GLContext_virtual_check_feature(unsafe.Pointer(parentclass.check_feature), carg0, carg1)
+	cret = C._goglib_gstgl1_GLContext_virtual_check_feature(unsafe.Pointer(parentclass.check_feature), carg0, carg1)
 	runtime.KeepAlive(_context)
 	runtime.KeepAlive(feature)
 
@@ -6824,7 +6799,7 @@ func (_context *GLContextInstance) ParentChooseFormat() (bool, error) {
 
 	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
-	cret = C._gotk4_gstgl1_GLContext_virtual_choose_format(unsafe.Pointer(parentclass.choose_format), carg0, &_cerr)
+	cret = C._goglib_gstgl1_GLContext_virtual_choose_format(unsafe.Pointer(parentclass.choose_format), carg0, &_cerr)
 	runtime.KeepAlive(_context)
 
 	var goret  bool
@@ -6867,7 +6842,7 @@ func (_context *GLContextInstance) ParentCreateContext(glApi GLAPI, otherContext
 	carg1 = C.GstGLAPI(glApi)
 	carg2 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(otherContext))
 
-	cret = C._gotk4_gstgl1_GLContext_virtual_create_context(unsafe.Pointer(parentclass.create_context), carg0, carg1, carg2, &_cerr)
+	cret = C._goglib_gstgl1_GLContext_virtual_create_context(unsafe.Pointer(parentclass.create_context), carg0, carg1, carg2, &_cerr)
 	runtime.KeepAlive(_context)
 	runtime.KeepAlive(glApi)
 	runtime.KeepAlive(otherContext)
@@ -6896,7 +6871,7 @@ func (_context *GLContextInstance) ParentDestroyContext() {
 
 	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
-	C._gotk4_gstgl1_GLContext_virtual_destroy_context(unsafe.Pointer(parentclass.destroy_context), carg0)
+	C._goglib_gstgl1_GLContext_virtual_destroy_context(unsafe.Pointer(parentclass.destroy_context), carg0)
 	runtime.KeepAlive(_context)
 }
 
@@ -6920,7 +6895,7 @@ func (_context *GLContextInstance) ParentGetConfig() *gst.Structure {
 
 	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
-	cret = C._gotk4_gstgl1_GLContext_virtual_get_config(unsafe.Pointer(parentclass.get_config), carg0)
+	cret = C._goglib_gstgl1_GLContext_virtual_get_config(unsafe.Pointer(parentclass.get_config), carg0)
 	runtime.KeepAlive(_context)
 
 	var goret *gst.Structure
@@ -6951,7 +6926,7 @@ func (_context *GLContextInstance) ParentGetGlAPI() GLAPI {
 
 	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
-	cret = C._gotk4_gstgl1_GLContext_virtual_get_gl_api(unsafe.Pointer(parentclass.get_gl_api), carg0)
+	cret = C._goglib_gstgl1_GLContext_virtual_get_gl_api(unsafe.Pointer(parentclass.get_gl_api), carg0)
 	runtime.KeepAlive(_context)
 
 	var goret GLAPI
@@ -6977,7 +6952,7 @@ func (_context *GLContextInstance) ParentGetGlPlatform() GLPlatform {
 
 	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
-	cret = C._gotk4_gstgl1_GLContext_virtual_get_gl_platform(unsafe.Pointer(parentclass.get_gl_platform), carg0)
+	cret = C._goglib_gstgl1_GLContext_virtual_get_gl_platform(unsafe.Pointer(parentclass.get_gl_platform), carg0)
 	runtime.KeepAlive(_context)
 
 	var goret GLPlatform
@@ -7006,7 +6981,7 @@ func (_context *GLContextInstance) ParentGetGlPlatformVersion() (int32, int32) {
 
 	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
-	C._gotk4_gstgl1_GLContext_virtual_get_gl_platform_version(unsafe.Pointer(parentclass.get_gl_platform_version), carg0, &carg1, &carg2)
+	C._goglib_gstgl1_GLContext_virtual_get_gl_platform_version(unsafe.Pointer(parentclass.get_gl_platform_version), carg0, &carg1, &carg2)
 	runtime.KeepAlive(_context)
 
 	var major int32
@@ -7054,7 +7029,7 @@ func (_context *GLContextInstance) ParentRequestConfig(glConfig *gst.Structure) 
 		carg1 = (*C.GstStructure)(gst.UnsafeStructureToGlibFull(glConfig))
 	}
 
-	cret = C._gotk4_gstgl1_GLContext_virtual_request_config(unsafe.Pointer(parentclass.request_config), carg0, carg1)
+	cret = C._goglib_gstgl1_GLContext_virtual_request_config(unsafe.Pointer(parentclass.request_config), carg0, carg1)
 	runtime.KeepAlive(_context)
 	runtime.KeepAlive(glConfig)
 
@@ -7079,7 +7054,7 @@ func (_context *GLContextInstance) ParentSwapBuffers() {
 
 	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
-	C._gotk4_gstgl1_GLContext_virtual_swap_buffers(unsafe.Pointer(parentclass.swap_buffers), carg0)
+	C._goglib_gstgl1_GLContext_virtual_swap_buffers(unsafe.Pointer(parentclass.swap_buffers), carg0)
 	runtime.KeepAlive(_context)
 }
 
@@ -7198,16 +7173,6 @@ type GLDisplay interface {
 	// 
 	// 	- goret GLAPI 
 	GetGlAPIUnlocked() GLAPI
-	// GetGlContextForThread wraps gst_gl_display_get_gl_context_for_thread
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- thread *glib.Thread: a #GThread 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret GLContext (nullable) 
-	GetGlContextForThread(*glib.Thread) GLContext
 	// GetHandleType wraps gst_gl_display_get_handle_type
 	// 
 	// The function returns the following values:
@@ -7514,36 +7479,6 @@ func (display *GLDisplayInstance) GetGlAPIUnlocked() GLAPI {
 	return goret
 }
 
-// GetGlContextForThread wraps gst_gl_display_get_gl_context_for_thread
-// 
-// The function takes the following parameters:
-// 
-// 	- thread *glib.Thread: a #GThread 
-// 
-// The function returns the following values:
-// 
-// 	- goret GLContext (nullable) 
-func (display *GLDisplayInstance) GetGlContextForThread(thread *glib.Thread) GLContext {
-	var carg0 *C.GstGLDisplay // in, none, converted
-	var carg1 *C.GThread      // in, none, converted
-	var cret  *C.GstGLContext // return, full, converted, nullable
-
-	carg0 = (*C.GstGLDisplay)(UnsafeGLDisplayToGlibNone(display))
-	carg1 = (*C.GThread)(glib.UnsafeThreadToGlibNone(thread))
-
-	cret = C.gst_gl_display_get_gl_context_for_thread(carg0, carg1)
-	runtime.KeepAlive(display)
-	runtime.KeepAlive(thread)
-
-	var goret GLContext
-
-	if cret != nil {
-		goret = UnsafeGLContextFromGlibFull(unsafe.Pointer(cret))
-	}
-
-	return goret
-}
-
 // GetHandleType wraps gst_gl_display_get_handle_type
 // 
 // The function returns the following values:
@@ -7645,10 +7580,10 @@ func UnsafeApplyGLDisplayOverrides[Instance GLDisplay](gclass unsafe.Pointer, ov
 	pclass := (*C.GstGLDisplayClass)(gclass)
 
 	if overrides.CreateWindow != nil {
-		pclass.create_window = (*[0]byte)(C._gotk4_gstgl1_GLDisplay_create_window)
+		pclass.create_window = (*[0]byte)(C._goglib_gstgl1_GLDisplay_create_window)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLDisplay_create_window",
+			"_goglib_gstgl1_GLDisplay_create_window",
 			func(carg0 *C.GstGLDisplay) (cret *C.GstGLWindow) {
 				var display Instance // go GstGLDisplay subclass
 				var goret   GLWindow // return, full, converted, nullable
@@ -7681,7 +7616,7 @@ func (display *GLDisplayInstance) ParentCreateWindow() GLWindow {
 
 	carg0 = (*C.GstGLDisplay)(UnsafeGLDisplayToGlibNone(display))
 
-	cret = C._gotk4_gstgl1_GLDisplay_virtual_create_window(unsafe.Pointer(parentclass.create_window), carg0)
+	cret = C._goglib_gstgl1_GLDisplay_virtual_create_window(unsafe.Pointer(parentclass.create_window), carg0)
 	runtime.KeepAlive(display)
 
 	var goret GLWindow
@@ -8003,7 +7938,7 @@ func (filter *GLFilterInstance) RenderToTarget(input *GLMemory, output *GLMemory
 	carg0 = (*C.GstGLFilter)(UnsafeGLFilterToGlibNone(filter))
 	carg1 = (*C.GstGLMemory)(UnsafeGLMemoryToGlibNone(input))
 	carg2 = (*C.GstGLMemory)(UnsafeGLMemoryToGlibNone(output))
-	carg3 = (*[0]byte)(C._gotk4_gstgl1_GLFilterRenderFunc)
+	carg3 = (*[0]byte)(C._goglib_gstgl1_GLFilterRenderFunc)
 	carg4 = C.gpointer(userdata.Register(fn))
 	defer userdata.Delete(unsafe.Pointer(carg4))
 
@@ -8132,10 +8067,10 @@ func UnsafeApplyGLFilterOverrides[Instance GLFilter](gclass unsafe.Pointer, over
 	pclass := (*C.GstGLFilterClass)(gclass)
 
 	if overrides.Filter != nil {
-		pclass.filter = (*[0]byte)(C._gotk4_gstgl1_GLFilter_filter)
+		pclass.filter = (*[0]byte)(C._goglib_gstgl1_GLFilter_filter)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLFilter_filter",
+			"_goglib_gstgl1_GLFilter_filter",
 			func(carg0 *C.GstGLFilter, carg1 *C.GstBuffer, carg2 *C.GstBuffer) (cret C.gboolean) {
 				var filter Instance    // go GstGLFilter subclass
 				var inbuf  *gst.Buffer // in, none, converted
@@ -8158,10 +8093,10 @@ func UnsafeApplyGLFilterOverrides[Instance GLFilter](gclass unsafe.Pointer, over
 	}
 
 	if overrides.FilterTexture != nil {
-		pclass.filter_texture = (*[0]byte)(C._gotk4_gstgl1_GLFilter_filter_texture)
+		pclass.filter_texture = (*[0]byte)(C._goglib_gstgl1_GLFilter_filter_texture)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLFilter_filter_texture",
+			"_goglib_gstgl1_GLFilter_filter_texture",
 			func(carg0 *C.GstGLFilter, carg1 *C.GstGLMemory, carg2 *C.GstGLMemory) (cret C.gboolean) {
 				var filter Instance  // go GstGLFilter subclass
 				var input  *GLMemory // in, none, converted
@@ -8184,10 +8119,10 @@ func UnsafeApplyGLFilterOverrides[Instance GLFilter](gclass unsafe.Pointer, over
 	}
 
 	if overrides.InitFbo != nil {
-		pclass.init_fbo = (*[0]byte)(C._gotk4_gstgl1_GLFilter_init_fbo)
+		pclass.init_fbo = (*[0]byte)(C._goglib_gstgl1_GLFilter_init_fbo)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLFilter_init_fbo",
+			"_goglib_gstgl1_GLFilter_init_fbo",
 			func(carg0 *C.GstGLFilter) (cret C.gboolean) {
 				var filter Instance // go GstGLFilter subclass
 				var goret  bool     // return
@@ -8206,10 +8141,10 @@ func UnsafeApplyGLFilterOverrides[Instance GLFilter](gclass unsafe.Pointer, over
 	}
 
 	if overrides.SetCaps != nil {
-		pclass.set_caps = (*[0]byte)(C._gotk4_gstgl1_GLFilter_set_caps)
+		pclass.set_caps = (*[0]byte)(C._goglib_gstgl1_GLFilter_set_caps)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLFilter_set_caps",
+			"_goglib_gstgl1_GLFilter_set_caps",
 			func(carg0 *C.GstGLFilter, carg1 *C.GstCaps, carg2 *C.GstCaps) (cret C.gboolean) {
 				var filter  Instance  // go GstGLFilter subclass
 				var incaps  *gst.Caps // in, none, converted
@@ -8232,10 +8167,10 @@ func UnsafeApplyGLFilterOverrides[Instance GLFilter](gclass unsafe.Pointer, over
 	}
 
 	if overrides.TransformInternalCaps != nil {
-		pclass.transform_internal_caps = (*[0]byte)(C._gotk4_gstgl1_GLFilter_transform_internal_caps)
+		pclass.transform_internal_caps = (*[0]byte)(C._goglib_gstgl1_GLFilter_transform_internal_caps)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLFilter_transform_internal_caps",
+			"_goglib_gstgl1_GLFilter_transform_internal_caps",
 			func(carg0 *C.GstGLFilter, carg1 C.GstPadDirection, carg2 *C.GstCaps, carg3 *C.GstCaps) (cret *C.GstCaps) {
 				var filter     Instance         // go GstGLFilter subclass
 				var direction  gst.PadDirection // in, none, casted
@@ -8286,7 +8221,7 @@ func (filter *GLFilterInstance) ParentFilter(inbuf *gst.Buffer, outbuf *gst.Buff
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(inbuf))
 	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(outbuf))
 
-	cret = C._gotk4_gstgl1_GLFilter_virtual_filter(unsafe.Pointer(parentclass.filter), carg0, carg1, carg2)
+	cret = C._goglib_gstgl1_GLFilter_virtual_filter(unsafe.Pointer(parentclass.filter), carg0, carg1, carg2)
 	runtime.KeepAlive(filter)
 	runtime.KeepAlive(inbuf)
 	runtime.KeepAlive(outbuf)
@@ -8325,7 +8260,7 @@ func (filter *GLFilterInstance) ParentFilterTexture(input *GLMemory, output *GLM
 	carg1 = (*C.GstGLMemory)(UnsafeGLMemoryToGlibNone(input))
 	carg2 = (*C.GstGLMemory)(UnsafeGLMemoryToGlibNone(output))
 
-	cret = C._gotk4_gstgl1_GLFilter_virtual_filter_texture(unsafe.Pointer(parentclass.filter_texture), carg0, carg1, carg2)
+	cret = C._goglib_gstgl1_GLFilter_virtual_filter_texture(unsafe.Pointer(parentclass.filter_texture), carg0, carg1, carg2)
 	runtime.KeepAlive(filter)
 	runtime.KeepAlive(input)
 	runtime.KeepAlive(output)
@@ -8355,7 +8290,7 @@ func (filter *GLFilterInstance) ParentInitFbo() bool {
 
 	carg0 = (*C.GstGLFilter)(UnsafeGLFilterToGlibNone(filter))
 
-	cret = C._gotk4_gstgl1_GLFilter_virtual_init_fbo(unsafe.Pointer(parentclass.init_fbo), carg0)
+	cret = C._goglib_gstgl1_GLFilter_virtual_init_fbo(unsafe.Pointer(parentclass.init_fbo), carg0)
 	runtime.KeepAlive(filter)
 
 	var goret bool
@@ -8392,7 +8327,7 @@ func (filter *GLFilterInstance) ParentSetCaps(incaps *gst.Caps, outcaps *gst.Cap
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(incaps))
 	carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(outcaps))
 
-	cret = C._gotk4_gstgl1_GLFilter_virtual_set_caps(unsafe.Pointer(parentclass.set_caps), carg0, carg1, carg2)
+	cret = C._goglib_gstgl1_GLFilter_virtual_set_caps(unsafe.Pointer(parentclass.set_caps), carg0, carg1, carg2)
 	runtime.KeepAlive(filter)
 	runtime.KeepAlive(incaps)
 	runtime.KeepAlive(outcaps)
@@ -8435,7 +8370,7 @@ func (filter *GLFilterInstance) ParentTransformInternalCaps(direction gst.PadDir
 	carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 	carg3 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filterCaps))
 
-	cret = C._gotk4_gstgl1_GLFilter_virtual_transform_internal_caps(unsafe.Pointer(parentclass.transform_internal_caps), carg0, carg1, carg2, carg3)
+	cret = C._goglib_gstgl1_GLFilter_virtual_transform_internal_caps(unsafe.Pointer(parentclass.transform_internal_caps), carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(filter)
 	runtime.KeepAlive(direction)
 	runtime.KeepAlive(caps)
@@ -9265,10 +9200,10 @@ func UnsafeApplyGLMixerOverrides[Instance GLMixer](gclass unsafe.Pointer, overri
 	pclass := (*C.GstGLMixerClass)(gclass)
 
 	if overrides.ProcessBuffers != nil {
-		pclass.process_buffers = (*[0]byte)(C._gotk4_gstgl1_GLMixer_process_buffers)
+		pclass.process_buffers = (*[0]byte)(C._goglib_gstgl1_GLMixer_process_buffers)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLMixer_process_buffers",
+			"_goglib_gstgl1_GLMixer_process_buffers",
 			func(carg0 *C.GstGLMixer, carg1 *C.GstBuffer) (cret C.gboolean) {
 				var mix    Instance    // go GstGLMixer subclass
 				var outbuf *gst.Buffer // in, none, converted
@@ -9289,10 +9224,10 @@ func UnsafeApplyGLMixerOverrides[Instance GLMixer](gclass unsafe.Pointer, overri
 	}
 
 	if overrides.ProcessTextures != nil {
-		pclass.process_textures = (*[0]byte)(C._gotk4_gstgl1_GLMixer_process_textures)
+		pclass.process_textures = (*[0]byte)(C._goglib_gstgl1_GLMixer_process_textures)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLMixer_process_textures",
+			"_goglib_gstgl1_GLMixer_process_textures",
 			func(carg0 *C.GstGLMixer, carg1 *C.GstGLMemory) (cret C.gboolean) {
 				var mix    Instance  // go GstGLMixer subclass
 				var outTex *GLMemory // in, none, converted
@@ -9336,7 +9271,7 @@ func (mix *GLMixerInstance) ParentProcessBuffers(outbuf *gst.Buffer) bool {
 	carg0 = (*C.GstGLMixer)(UnsafeGLMixerToGlibNone(mix))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(outbuf))
 
-	cret = C._gotk4_gstgl1_GLMixer_virtual_process_buffers(unsafe.Pointer(parentclass.process_buffers), carg0, carg1)
+	cret = C._goglib_gstgl1_GLMixer_virtual_process_buffers(unsafe.Pointer(parentclass.process_buffers), carg0, carg1)
 	runtime.KeepAlive(mix)
 	runtime.KeepAlive(outbuf)
 
@@ -9373,7 +9308,7 @@ func (mix *GLMixerInstance) ParentProcessTextures(outTex *GLMemory) bool {
 	carg0 = (*C.GstGLMixer)(UnsafeGLMixerToGlibNone(mix))
 	carg1 = (*C.GstGLMemory)(UnsafeGLMemoryToGlibNone(outTex))
 
-	cret = C._gotk4_gstgl1_GLMixer_virtual_process_textures(unsafe.Pointer(parentclass.process_textures), carg0, carg1)
+	cret = C._goglib_gstgl1_GLMixer_virtual_process_textures(unsafe.Pointer(parentclass.process_textures), carg0, carg1)
 	runtime.KeepAlive(mix)
 	runtime.KeepAlive(outTex)
 
@@ -10107,7 +10042,7 @@ func NewGLSLStageWithStrings(_context GLContext, typ uint, version GLSLVersion, 
 	var carg3 C.GstGLSLVersion // in, none, casted
 	var carg4 C.GstGLSLProfile // in, none, casted
 	var carg5 C.gint           // implicit
-	var carg6 **C.gchar        // in, transfer: none, C Pointers: 2, Name: array[utf8], array (inner: *typesystem.StringPrimitive, length-by: carg5)
+	var carg6 **C.gchar        // in, transfer: none, C Pointers: 2, Name: array[utf8], array (inner gchar* (*typesystem.StringPrimitive), length-by: carg5)
 	var cret  *C.GstGLSLStage  // return, none, converted
 
 	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
@@ -10117,7 +10052,7 @@ func NewGLSLStageWithStrings(_context GLContext, typ uint, version GLSLVersion, 
 	_ = str
 	_ = carg6
 	_ = carg5
-	panic("unimplemented conversion of []string (const gchar**)")
+	panic("unimplemented conversion of []string (const gchar**) because of unimplemented: inner pointers in array")
 
 	cret = C.gst_glsl_stage_new_with_strings(carg1, carg2, carg3, carg4, carg5, carg6)
 	runtime.KeepAlive(_context)
@@ -10264,7 +10199,7 @@ func (stage *GLSLStageInstance) SetStrings(version GLSLVersion, profile GLSLProf
 	var carg1 C.GstGLSLVersion // in, none, casted
 	var carg2 C.GstGLSLProfile // in, none, casted
 	var carg3 C.gint           // implicit
-	var carg4 **C.gchar        // in, transfer: none, C Pointers: 2, Name: array[utf8], array (inner: *typesystem.StringPrimitive, length-by: carg3)
+	var carg4 **C.gchar        // in, transfer: none, C Pointers: 2, Name: array[utf8], array (inner gchar* (*typesystem.StringPrimitive), length-by: carg3)
 	var cret  C.gboolean       // return
 
 	carg0 = (*C.GstGLSLStage)(UnsafeGLSLStageToGlibNone(stage))
@@ -10273,7 +10208,7 @@ func (stage *GLSLStageInstance) SetStrings(version GLSLVersion, profile GLSLProf
 	_ = str
 	_ = carg4
 	_ = carg3
-	panic("unimplemented conversion of []string (const gchar**)")
+	panic("unimplemented conversion of []string (const gchar**) because of unimplemented: inner pointers in array")
 
 	cret = C.gst_glsl_stage_set_strings(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(stage)
@@ -11339,7 +11274,7 @@ func (shader *GLShaderInstance) SetUniform1fv(name string, value []float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.guint        // implicit
-	var carg3 *C.gfloat      // in, transfer: none, C Pointers: 1, Name: array[gfloat], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg3 *C.gfloat      // in, transfer: none, C Pointers: 1, Name: array[gfloat], array (inner gfloat (*typesystem.CastablePrimitive), length-by: carg2)
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
@@ -11347,7 +11282,7 @@ func (shader *GLShaderInstance) SetUniform1fv(name string, value []float32) {
 	_ = value
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []float32 (const gfloat*)")
+	panic("unimplemented conversion of []float32 (const gfloat*) because of unimplemented: non-fixed size array")
 
 	C.gst_gl_shader_set_uniform_1fv(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(shader)
@@ -11391,7 +11326,7 @@ func (shader *GLShaderInstance) SetUniform1iv(name string, value []int32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.guint        // implicit
-	var carg3 *C.gint        // in, transfer: none, C Pointers: 1, Name: array[gint], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg3 *C.gint        // in, transfer: none, C Pointers: 1, Name: array[gint], array (inner gint (*typesystem.CastablePrimitive), length-by: carg2)
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
@@ -11399,7 +11334,7 @@ func (shader *GLShaderInstance) SetUniform1iv(name string, value []int32) {
 	_ = value
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []int32 (const gint*)")
+	panic("unimplemented conversion of []int32 (const gint*) because of unimplemented: non-fixed size array")
 
 	C.gst_gl_shader_set_uniform_1iv(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(shader)
@@ -11447,7 +11382,7 @@ func (shader *GLShaderInstance) SetUniform2fv(name string, value []float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.guint        // implicit
-	var carg3 *C.gfloat      // in, transfer: none, C Pointers: 1, Name: array[gfloat], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg3 *C.gfloat      // in, transfer: none, C Pointers: 1, Name: array[gfloat], array (inner gfloat (*typesystem.CastablePrimitive), length-by: carg2)
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
@@ -11455,7 +11390,7 @@ func (shader *GLShaderInstance) SetUniform2fv(name string, value []float32) {
 	_ = value
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []float32 (const gfloat*)")
+	panic("unimplemented conversion of []float32 (const gfloat*) because of unimplemented: non-fixed size array")
 
 	C.gst_gl_shader_set_uniform_2fv(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(shader)
@@ -11503,7 +11438,7 @@ func (shader *GLShaderInstance) SetUniform2iv(name string, value []int32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.guint        // implicit
-	var carg3 *C.gint        // in, transfer: none, C Pointers: 1, Name: array[gint], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg3 *C.gint        // in, transfer: none, C Pointers: 1, Name: array[gint], array (inner gint (*typesystem.CastablePrimitive), length-by: carg2)
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
@@ -11511,7 +11446,7 @@ func (shader *GLShaderInstance) SetUniform2iv(name string, value []int32) {
 	_ = value
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []int32 (const gint*)")
+	panic("unimplemented conversion of []int32 (const gint*) because of unimplemented: non-fixed size array")
 
 	C.gst_gl_shader_set_uniform_2iv(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(shader)
@@ -11563,7 +11498,7 @@ func (shader *GLShaderInstance) SetUniform3fv(name string, value []float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.guint        // implicit
-	var carg3 *C.gfloat      // in, transfer: none, C Pointers: 1, Name: array[gfloat], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg3 *C.gfloat      // in, transfer: none, C Pointers: 1, Name: array[gfloat], array (inner gfloat (*typesystem.CastablePrimitive), length-by: carg2)
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
@@ -11571,7 +11506,7 @@ func (shader *GLShaderInstance) SetUniform3fv(name string, value []float32) {
 	_ = value
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []float32 (const gfloat*)")
+	panic("unimplemented conversion of []float32 (const gfloat*) because of unimplemented: non-fixed size array")
 
 	C.gst_gl_shader_set_uniform_3fv(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(shader)
@@ -11623,7 +11558,7 @@ func (shader *GLShaderInstance) SetUniform3iv(name string, value []int32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.guint        // implicit
-	var carg3 *C.gint        // in, transfer: none, C Pointers: 1, Name: array[gint], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg3 *C.gint        // in, transfer: none, C Pointers: 1, Name: array[gint], array (inner gint (*typesystem.CastablePrimitive), length-by: carg2)
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
@@ -11631,7 +11566,7 @@ func (shader *GLShaderInstance) SetUniform3iv(name string, value []int32) {
 	_ = value
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []int32 (const gint*)")
+	panic("unimplemented conversion of []int32 (const gint*) because of unimplemented: non-fixed size array")
 
 	C.gst_gl_shader_set_uniform_3iv(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(shader)
@@ -11687,7 +11622,7 @@ func (shader *GLShaderInstance) SetUniform4fv(name string, value []float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.guint        // implicit
-	var carg3 *C.gfloat      // in, transfer: none, C Pointers: 1, Name: array[gfloat], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg3 *C.gfloat      // in, transfer: none, C Pointers: 1, Name: array[gfloat], array (inner gfloat (*typesystem.CastablePrimitive), length-by: carg2)
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
@@ -11695,7 +11630,7 @@ func (shader *GLShaderInstance) SetUniform4fv(name string, value []float32) {
 	_ = value
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []float32 (const gfloat*)")
+	panic("unimplemented conversion of []float32 (const gfloat*) because of unimplemented: non-fixed size array")
 
 	C.gst_gl_shader_set_uniform_4fv(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(shader)
@@ -11751,7 +11686,7 @@ func (shader *GLShaderInstance) SetUniform4iv(name string, value []int32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.guint        // implicit
-	var carg3 *C.gint        // in, transfer: none, C Pointers: 1, Name: array[gint], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg3 *C.gint        // in, transfer: none, C Pointers: 1, Name: array[gint], array (inner gint (*typesystem.CastablePrimitive), length-by: carg2)
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
@@ -11759,7 +11694,7 @@ func (shader *GLShaderInstance) SetUniform4iv(name string, value []int32) {
 	_ = value
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []int32 (const gint*)")
+	panic("unimplemented conversion of []int32 (const gint*) because of unimplemented: non-fixed size array")
 
 	C.gst_gl_shader_set_uniform_4iv(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(shader)
@@ -11793,7 +11728,7 @@ func (shader *GLShaderInstance) SetUniformMatrix2fv(name string, count int32, tr
 	}
 	_ = value
 	_ = carg4
-	panic("unimplemented conversion of *float32 (const gfloat*)")
+	panic("unimplemented conversion of *float32 (const gfloat*) because of no basic converter found")
 
 	C.gst_gl_shader_set_uniform_matrix_2fv(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(shader)
@@ -11829,7 +11764,7 @@ func (shader *GLShaderInstance) SetUniformMatrix2x3fv(name string, count int32, 
 	}
 	_ = value
 	_ = carg4
-	panic("unimplemented conversion of *float32 (const gfloat*)")
+	panic("unimplemented conversion of *float32 (const gfloat*) because of no basic converter found")
 
 	C.gst_gl_shader_set_uniform_matrix_2x3fv(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(shader)
@@ -11865,7 +11800,7 @@ func (shader *GLShaderInstance) SetUniformMatrix2x4fv(name string, count int32, 
 	}
 	_ = value
 	_ = carg4
-	panic("unimplemented conversion of *float32 (const gfloat*)")
+	panic("unimplemented conversion of *float32 (const gfloat*) because of no basic converter found")
 
 	C.gst_gl_shader_set_uniform_matrix_2x4fv(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(shader)
@@ -11901,7 +11836,7 @@ func (shader *GLShaderInstance) SetUniformMatrix3fv(name string, count int32, tr
 	}
 	_ = value
 	_ = carg4
-	panic("unimplemented conversion of *float32 (const gfloat*)")
+	panic("unimplemented conversion of *float32 (const gfloat*) because of no basic converter found")
 
 	C.gst_gl_shader_set_uniform_matrix_3fv(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(shader)
@@ -11937,7 +11872,7 @@ func (shader *GLShaderInstance) SetUniformMatrix3x2fv(name string, count int32, 
 	}
 	_ = value
 	_ = carg4
-	panic("unimplemented conversion of *float32 (const gfloat*)")
+	panic("unimplemented conversion of *float32 (const gfloat*) because of no basic converter found")
 
 	C.gst_gl_shader_set_uniform_matrix_3x2fv(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(shader)
@@ -11973,7 +11908,7 @@ func (shader *GLShaderInstance) SetUniformMatrix3x4fv(name string, count int32, 
 	}
 	_ = value
 	_ = carg4
-	panic("unimplemented conversion of *float32 (const gfloat*)")
+	panic("unimplemented conversion of *float32 (const gfloat*) because of no basic converter found")
 
 	C.gst_gl_shader_set_uniform_matrix_3x4fv(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(shader)
@@ -12009,7 +11944,7 @@ func (shader *GLShaderInstance) SetUniformMatrix4fv(name string, count int32, tr
 	}
 	_ = value
 	_ = carg4
-	panic("unimplemented conversion of *float32 (const gfloat*)")
+	panic("unimplemented conversion of *float32 (const gfloat*) because of no basic converter found")
 
 	C.gst_gl_shader_set_uniform_matrix_4fv(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(shader)
@@ -12045,7 +11980,7 @@ func (shader *GLShaderInstance) SetUniformMatrix4x2fv(name string, count int32, 
 	}
 	_ = value
 	_ = carg4
-	panic("unimplemented conversion of *float32 (const gfloat*)")
+	panic("unimplemented conversion of *float32 (const gfloat*) because of no basic converter found")
 
 	C.gst_gl_shader_set_uniform_matrix_4x2fv(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(shader)
@@ -12081,7 +12016,7 @@ func (shader *GLShaderInstance) SetUniformMatrix4x3fv(name string, count int32, 
 	}
 	_ = value
 	_ = carg4
-	panic("unimplemented conversion of *float32 (const gfloat*)")
+	panic("unimplemented conversion of *float32 (const gfloat*) because of no basic converter found")
 
 	C.gst_gl_shader_set_uniform_matrix_4x3fv(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(shader)
@@ -13881,10 +13816,10 @@ func UnsafeApplyGLWindowOverrides[Instance GLWindow](gclass unsafe.Pointer, over
 	pclass := (*C.GstGLWindowClass)(gclass)
 
 	if overrides.Close != nil {
-		pclass.close = (*[0]byte)(C._gotk4_gstgl1_GLWindow_close)
+		pclass.close = (*[0]byte)(C._goglib_gstgl1_GLWindow_close)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLWindow_close",
+			"_goglib_gstgl1_GLWindow_close",
 			func(carg0 *C.GstGLWindow) {
 				var window Instance // go GstGLWindow subclass
 
@@ -13896,10 +13831,10 @@ func UnsafeApplyGLWindowOverrides[Instance GLWindow](gclass unsafe.Pointer, over
 	}
 
 	if overrides.ControlsViewport != nil {
-		pclass.controls_viewport = (*[0]byte)(C._gotk4_gstgl1_GLWindow_controls_viewport)
+		pclass.controls_viewport = (*[0]byte)(C._goglib_gstgl1_GLWindow_controls_viewport)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLWindow_controls_viewport",
+			"_goglib_gstgl1_GLWindow_controls_viewport",
 			func(carg0 *C.GstGLWindow) (cret C.gboolean) {
 				var window Instance // go GstGLWindow subclass
 				var goret  bool     // return
@@ -13918,10 +13853,10 @@ func UnsafeApplyGLWindowOverrides[Instance GLWindow](gclass unsafe.Pointer, over
 	}
 
 	if overrides.Draw != nil {
-		pclass.draw = (*[0]byte)(C._gotk4_gstgl1_GLWindow_draw)
+		pclass.draw = (*[0]byte)(C._goglib_gstgl1_GLWindow_draw)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLWindow_draw",
+			"_goglib_gstgl1_GLWindow_draw",
 			func(carg0 *C.GstGLWindow) {
 				var window Instance // go GstGLWindow subclass
 
@@ -13933,10 +13868,10 @@ func UnsafeApplyGLWindowOverrides[Instance GLWindow](gclass unsafe.Pointer, over
 	}
 
 	if overrides.HandleEvents != nil {
-		pclass.handle_events = (*[0]byte)(C._gotk4_gstgl1_GLWindow_handle_events)
+		pclass.handle_events = (*[0]byte)(C._goglib_gstgl1_GLWindow_handle_events)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLWindow_handle_events",
+			"_goglib_gstgl1_GLWindow_handle_events",
 			func(carg0 *C.GstGLWindow, carg1 C.gboolean) {
 				var window       Instance // go GstGLWindow subclass
 				var handleEvents bool     // in
@@ -13952,10 +13887,10 @@ func UnsafeApplyGLWindowOverrides[Instance GLWindow](gclass unsafe.Pointer, over
 	}
 
 	if overrides.HasOutputSurface != nil {
-		pclass.has_output_surface = (*[0]byte)(C._gotk4_gstgl1_GLWindow_has_output_surface)
+		pclass.has_output_surface = (*[0]byte)(C._goglib_gstgl1_GLWindow_has_output_surface)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLWindow_has_output_surface",
+			"_goglib_gstgl1_GLWindow_has_output_surface",
 			func(carg0 *C.GstGLWindow) (cret C.gboolean) {
 				var window Instance // go GstGLWindow subclass
 				var goret  bool     // return
@@ -13974,10 +13909,10 @@ func UnsafeApplyGLWindowOverrides[Instance GLWindow](gclass unsafe.Pointer, over
 	}
 
 	if overrides.Open != nil {
-		pclass.open = (*[0]byte)(C._gotk4_gstgl1_GLWindow_open)
+		pclass.open = (*[0]byte)(C._goglib_gstgl1_GLWindow_open)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLWindow_open",
+			"_goglib_gstgl1_GLWindow_open",
 			func(carg0 *C.GstGLWindow, _cerr **C.GError) (cret C.gboolean) {
 				var window Instance // go GstGLWindow subclass
 				var goret  bool     // return
@@ -13998,10 +13933,10 @@ func UnsafeApplyGLWindowOverrides[Instance GLWindow](gclass unsafe.Pointer, over
 	}
 
 	if overrides.QueueResize != nil {
-		pclass.queue_resize = (*[0]byte)(C._gotk4_gstgl1_GLWindow_queue_resize)
+		pclass.queue_resize = (*[0]byte)(C._goglib_gstgl1_GLWindow_queue_resize)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLWindow_queue_resize",
+			"_goglib_gstgl1_GLWindow_queue_resize",
 			func(carg0 *C.GstGLWindow) {
 				var window Instance // go GstGLWindow subclass
 
@@ -14013,10 +13948,10 @@ func UnsafeApplyGLWindowOverrides[Instance GLWindow](gclass unsafe.Pointer, over
 	}
 
 	if overrides.Quit != nil {
-		pclass.quit = (*[0]byte)(C._gotk4_gstgl1_GLWindow_quit)
+		pclass.quit = (*[0]byte)(C._goglib_gstgl1_GLWindow_quit)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLWindow_quit",
+			"_goglib_gstgl1_GLWindow_quit",
 			func(carg0 *C.GstGLWindow) {
 				var window Instance // go GstGLWindow subclass
 
@@ -14028,10 +13963,10 @@ func UnsafeApplyGLWindowOverrides[Instance GLWindow](gclass unsafe.Pointer, over
 	}
 
 	if overrides.Run != nil {
-		pclass.run = (*[0]byte)(C._gotk4_gstgl1_GLWindow_run)
+		pclass.run = (*[0]byte)(C._goglib_gstgl1_GLWindow_run)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLWindow_run",
+			"_goglib_gstgl1_GLWindow_run",
 			func(carg0 *C.GstGLWindow) {
 				var window Instance // go GstGLWindow subclass
 
@@ -14043,10 +13978,10 @@ func UnsafeApplyGLWindowOverrides[Instance GLWindow](gclass unsafe.Pointer, over
 	}
 
 	if overrides.SetPreferredSize != nil {
-		pclass.set_preferred_size = (*[0]byte)(C._gotk4_gstgl1_GLWindow_set_preferred_size)
+		pclass.set_preferred_size = (*[0]byte)(C._goglib_gstgl1_GLWindow_set_preferred_size)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLWindow_set_preferred_size",
+			"_goglib_gstgl1_GLWindow_set_preferred_size",
 			func(carg0 *C.GstGLWindow, carg1 C.gint, carg2 C.gint) {
 				var window Instance // go GstGLWindow subclass
 				var width  int32    // in, none, casted
@@ -14062,10 +13997,10 @@ func UnsafeApplyGLWindowOverrides[Instance GLWindow](gclass unsafe.Pointer, over
 	}
 
 	if overrides.SetRenderRectangle != nil {
-		pclass.set_render_rectangle = (*[0]byte)(C._gotk4_gstgl1_GLWindow_set_render_rectangle)
+		pclass.set_render_rectangle = (*[0]byte)(C._goglib_gstgl1_GLWindow_set_render_rectangle)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLWindow_set_render_rectangle",
+			"_goglib_gstgl1_GLWindow_set_render_rectangle",
 			func(carg0 *C.GstGLWindow, carg1 C.gint, carg2 C.gint, carg3 C.gint, carg4 C.gint) (cret C.gboolean) {
 				var window Instance // go GstGLWindow subclass
 				var x      int32    // in, none, casted
@@ -14092,10 +14027,10 @@ func UnsafeApplyGLWindowOverrides[Instance GLWindow](gclass unsafe.Pointer, over
 	}
 
 	if overrides.Show != nil {
-		pclass.show = (*[0]byte)(C._gotk4_gstgl1_GLWindow_show)
+		pclass.show = (*[0]byte)(C._goglib_gstgl1_GLWindow_show)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLWindow_show",
+			"_goglib_gstgl1_GLWindow_show",
 			func(carg0 *C.GstGLWindow) {
 				var window Instance // go GstGLWindow subclass
 
@@ -14118,7 +14053,7 @@ func (window *GLWindowInstance) ParentClose() {
 
 	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
 
-	C._gotk4_gstgl1_GLWindow_virtual_close(unsafe.Pointer(parentclass.close), carg0)
+	C._goglib_gstgl1_GLWindow_virtual_close(unsafe.Pointer(parentclass.close), carg0)
 	runtime.KeepAlive(window)
 }
 
@@ -14138,7 +14073,7 @@ func (window *GLWindowInstance) ParentControlsViewport() bool {
 
 	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
 
-	cret = C._gotk4_gstgl1_GLWindow_virtual_controls_viewport(unsafe.Pointer(parentclass.controls_viewport), carg0)
+	cret = C._goglib_gstgl1_GLWindow_virtual_controls_viewport(unsafe.Pointer(parentclass.controls_viewport), carg0)
 	runtime.KeepAlive(window)
 
 	var goret bool
@@ -14161,7 +14096,7 @@ func (window *GLWindowInstance) ParentDraw() {
 
 	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
 
-	C._gotk4_gstgl1_GLWindow_virtual_draw(unsafe.Pointer(parentclass.draw), carg0)
+	C._goglib_gstgl1_GLWindow_virtual_draw(unsafe.Pointer(parentclass.draw), carg0)
 	runtime.KeepAlive(window)
 }
 
@@ -14188,7 +14123,7 @@ func (window *GLWindowInstance) ParentHandleEvents(handleEvents bool) {
 		carg1 = C.TRUE
 	}
 
-	C._gotk4_gstgl1_GLWindow_virtual_handle_events(unsafe.Pointer(parentclass.handle_events), carg0, carg1)
+	C._goglib_gstgl1_GLWindow_virtual_handle_events(unsafe.Pointer(parentclass.handle_events), carg0, carg1)
 	runtime.KeepAlive(window)
 	runtime.KeepAlive(handleEvents)
 }
@@ -14209,7 +14144,7 @@ func (window *GLWindowInstance) ParentHasOutputSurface() bool {
 
 	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
 
-	cret = C._gotk4_gstgl1_GLWindow_virtual_has_output_surface(unsafe.Pointer(parentclass.has_output_surface), carg0)
+	cret = C._goglib_gstgl1_GLWindow_virtual_has_output_surface(unsafe.Pointer(parentclass.has_output_surface), carg0)
 	runtime.KeepAlive(window)
 
 	var goret bool
@@ -14239,7 +14174,7 @@ func (window *GLWindowInstance) ParentOpen() (bool, error) {
 
 	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
 
-	cret = C._gotk4_gstgl1_GLWindow_virtual_open(unsafe.Pointer(parentclass.open), carg0, &_cerr)
+	cret = C._goglib_gstgl1_GLWindow_virtual_open(unsafe.Pointer(parentclass.open), carg0, &_cerr)
 	runtime.KeepAlive(window)
 
 	var goret  bool
@@ -14266,7 +14201,7 @@ func (window *GLWindowInstance) ParentQueueResize() {
 
 	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
 
-	C._gotk4_gstgl1_GLWindow_virtual_queue_resize(unsafe.Pointer(parentclass.queue_resize), carg0)
+	C._goglib_gstgl1_GLWindow_virtual_queue_resize(unsafe.Pointer(parentclass.queue_resize), carg0)
 	runtime.KeepAlive(window)
 }
 
@@ -14281,7 +14216,7 @@ func (window *GLWindowInstance) ParentQuit() {
 
 	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
 
-	C._gotk4_gstgl1_GLWindow_virtual_quit(unsafe.Pointer(parentclass.quit), carg0)
+	C._goglib_gstgl1_GLWindow_virtual_quit(unsafe.Pointer(parentclass.quit), carg0)
 	runtime.KeepAlive(window)
 }
 
@@ -14296,7 +14231,7 @@ func (window *GLWindowInstance) ParentRun() {
 
 	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
 
-	C._gotk4_gstgl1_GLWindow_virtual_run(unsafe.Pointer(parentclass.run), carg0)
+	C._goglib_gstgl1_GLWindow_virtual_run(unsafe.Pointer(parentclass.run), carg0)
 	runtime.KeepAlive(window)
 }
 
@@ -14321,7 +14256,7 @@ func (window *GLWindowInstance) ParentSetPreferredSize(width int32, height int32
 	carg1 = C.gint(width)
 	carg2 = C.gint(height)
 
-	C._gotk4_gstgl1_GLWindow_virtual_set_preferred_size(unsafe.Pointer(parentclass.set_preferred_size), carg0, carg1, carg2)
+	C._goglib_gstgl1_GLWindow_virtual_set_preferred_size(unsafe.Pointer(parentclass.set_preferred_size), carg0, carg1, carg2)
 	runtime.KeepAlive(window)
 	runtime.KeepAlive(width)
 	runtime.KeepAlive(height)
@@ -14359,7 +14294,7 @@ func (window *GLWindowInstance) ParentSetRenderRectangle(x int32, y int32, width
 	carg3 = C.gint(width)
 	carg4 = C.gint(height)
 
-	cret = C._gotk4_gstgl1_GLWindow_virtual_set_render_rectangle(unsafe.Pointer(parentclass.set_render_rectangle), carg0, carg1, carg2, carg3, carg4)
+	cret = C._goglib_gstgl1_GLWindow_virtual_set_render_rectangle(unsafe.Pointer(parentclass.set_render_rectangle), carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(window)
 	runtime.KeepAlive(x)
 	runtime.KeepAlive(y)
@@ -14386,7 +14321,7 @@ func (window *GLWindowInstance) ParentShow() {
 
 	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
 
-	C._gotk4_gstgl1_GLWindow_virtual_show(unsafe.Pointer(parentclass.show), carg0)
+	C._goglib_gstgl1_GLWindow_virtual_show(unsafe.Pointer(parentclass.show), carg0)
 	runtime.KeepAlive(window)
 }
 

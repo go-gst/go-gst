@@ -6,14 +6,14 @@ import (
 	"runtime"
 	"unsafe"
 
-	"github.com/diamondburned/gotk4/pkg/core/userdata"
-	"github.com/diamondburned/gotk4/pkg/gobject/v2"
+	"github.com/go-gst/go-glib/pkg/core/userdata"
+	"github.com/go-gst/go-glib/pkg/gobject/v2"
 )
 
 // #cgo pkg-config: gstreamer-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/gst.h>
-// extern void _gotk4_gst1_PromiseChangeFunc(GstPromise*, gpointer);
+// extern void _gogst_gst1_PromiseChangeFunc(GstPromise*, gpointer);
 // extern void destroyUserdata(gpointer);
 import "C"
 
@@ -198,7 +198,7 @@ func NewPromise() *Promise {
 		close(done)
 	}
 
-	var carg1 C.GstPromiseChangeFunc = (*[0]byte)(C._gotk4_gst1_PromiseChangeFunc)
+	var carg1 C.GstPromiseChangeFunc = (*[0]byte)(C._gogst_gst1_PromiseChangeFunc)
 	var carg2 C.gpointer = C.gpointer(userdata.Register(changefunc))
 	var carg3 C.GDestroyNotify = (C.GDestroyNotify)((*[0]byte)(C.destroyUserdata))
 

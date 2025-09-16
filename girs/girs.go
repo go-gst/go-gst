@@ -3,10 +3,10 @@ package girfiles_gst
 import (
 	"embed"
 
-	girfiles_gotk4 "github.com/diamondburned/gotk4/girs"
+	girfiles "github.com/go-gst/go-glib/girs"
 )
 
 //go:embed *.gir
 var girFiles embed.FS
 
-var GirFiles = girfiles_gotk4.ReadGirFiles(girFiles)
+var GirFiles = girfiles.ReadGirFiles(girFiles)

@@ -3,17 +3,16 @@
 package gstrtsp
 
 import (
-	"context"
 	"fmt"
 	"log"
 	"runtime"
 	"strings"
 	"unsafe"
 
-	"github.com/diamondburned/gotk4/pkg/core/userdata"
-	"github.com/diamondburned/gotk4/pkg/gio/v2"
-	"github.com/diamondburned/gotk4/pkg/glib/v2"
-	"github.com/diamondburned/gotk4/pkg/gobject/v2"
+	"github.com/go-gst/go-glib/pkg/core/userdata"
+	"github.com/go-gst/go-glib/pkg/gio/v2"
+	"github.com/go-gst/go-glib/pkg/glib/v2"
+	"github.com/go-gst/go-glib/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
 	"github.com/go-gst/go-gst/pkg/gstsdp"
 )
@@ -21,7 +20,7 @@ import (
 // #cgo pkg-config: gstreamer-rtsp-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/rtsp/rtsp.h>
-// extern gboolean _gotk4_gstrtsp1_RTSPConnectionAcceptCertificateFunc(GTlsConnection*, GTlsCertificate*, GTlsCertificateFlags, gpointer);
+// extern gboolean _goglib_gstrtsp1_RTSPConnectionAcceptCertificateFunc(GTlsConnection*, GTlsCertificate*, GTlsCertificateFlags, gpointer);
 // extern void destroyUserdata(gpointer);
 import "C"
 
@@ -2705,8 +2704,8 @@ func UnsafeRTSPConnectionToGlibFull(r *RTSPConnection) unsafe.Pointer {
 // 
 // The function takes the following parameters:
 // 
-// 	- cancellable context.Context (nullable): a #GCancellable to cancel the operation 
 // 	- socket gio.Socket: a socket 
+// 	- cancellable gio.Cancellable (nullable): a #GCancellable to cancel the operation 
 // 
 // The function returns the following values:
 // 
@@ -2715,20 +2714,20 @@ func UnsafeRTSPConnectionToGlibFull(r *RTSPConnection) unsafe.Pointer {
 //
 // Accept a new connection on @socket and create a new #GstRTSPConnection for
 // handling communication on new socket.
-func RTSPConnectionAccept(cancellable context.Context, socket gio.Socket) (*RTSPConnection, RTSPResult) {
-	var carg3 *C.GCancellable      // in, none, converted, nullable
+func RTSPConnectionAccept(socket gio.Socket, cancellable gio.Cancellable) (*RTSPConnection, RTSPResult) {
 	var carg1 *C.GSocket           // in, none, converted
+	var carg3 *C.GCancellable      // in, none, converted, nullable
 	var carg2 *C.GstRTSPConnection // out, full, converted, nullable
 	var cret  C.GstRTSPResult      // return, none, casted
 
-	if cancellable != nil {
-		carg3 = (*C.GCancellable)(gio.UnsafeGCancellableToGlibNone(cancellable))
-	}
 	carg1 = (*C.GSocket)(gio.UnsafeSocketToGlibNone(socket))
+	if cancellable != nil {
+		carg3 = (*C.GCancellable)(gio.UnsafeCancellableToGlibNone(cancellable))
+	}
 
 	cret = C.gst_rtsp_connection_accept(carg1, &carg2, carg3)
-	runtime.KeepAlive(cancellable)
 	runtime.KeepAlive(socket)
+	runtime.KeepAlive(cancellable)
 
 	var conn  *RTSPConnection
 	var goret RTSPResult
@@ -3419,7 +3418,7 @@ func (conn *RTSPConnection) PollUsec(events RTSPEvent, timeout int64) (RTSPEvent
 
 	_ = revents
 	_ = carg2
-	panic("unimplemented conversion of RTSPEvent (GstRTSPEvent)")
+	panic("unimplemented conversion of RTSPEvent (GstRTSPEvent) because of unknown reason")
 	goret = RTSPResult(cret)
 
 	return revents, goret
@@ -3443,7 +3442,7 @@ func (conn *RTSPConnection) PollUsec(events RTSPEvent, timeout int64) (RTSPEvent
 // This function can be cancelled with gst_rtsp_connection_flush().
 func (conn *RTSPConnection) ReadUsec(data []uint8, timeout int64) RTSPResult {
 	var carg0 *C.GstRTSPConnection // in, none, converted
-	var carg1 *C.guint8            // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint8            // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint              // implicit
 	var carg3 C.gint64             // in, none, casted
 	var cret  C.GstRTSPResult      // return, none, casted
@@ -3452,7 +3451,7 @@ func (conn *RTSPConnection) ReadUsec(data []uint8, timeout int64) RTSPResult {
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (guint8*)")
+	panic("unimplemented conversion of []uint8 (guint8*) because of unimplemented: non-fixed size array")
 	carg3 = C.gint64(timeout)
 
 	cret = C.gst_rtsp_connection_read_usec(carg0, carg1, carg2, carg3)
@@ -3546,7 +3545,7 @@ func (conn *RTSPConnection) ResetTimeout() RTSPResult {
 // This function can be cancelled with gst_rtsp_connection_flush().
 func (conn *RTSPConnection) SendMessagesUsec(messages []RTSPMessage, timeout int64) RTSPResult {
 	var carg0 *C.GstRTSPConnection // in, none, converted
-	var carg1 *C.GstRTSPMessage    // in, transfer: none, C Pointers: 1, Name: array[RTSPMessage], array (inner: *typesystem.Record, length-by: carg2)
+	var carg1 *C.GstRTSPMessage    // in, transfer: none, C Pointers: 1, Name: array[RTSPMessage], array (inner GstRTSPMessage (*typesystem.Record), length-by: carg2)
 	var carg2 C.guint              // implicit
 	var carg3 C.gint64             // in, none, casted
 	var cret  C.GstRTSPResult      // return, none, casted
@@ -3555,7 +3554,7 @@ func (conn *RTSPConnection) SendMessagesUsec(messages []RTSPMessage, timeout int
 	_ = messages
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []RTSPMessage (GstRTSPMessage*)")
+	panic("unimplemented conversion of []RTSPMessage (GstRTSPMessage*) because of unimplemented: non-fixed size array")
 	carg3 = C.gint64(timeout)
 
 	cret = C.gst_rtsp_connection_send_messages_usec(carg0, carg1, carg2, carg3)
@@ -3627,7 +3626,7 @@ func (conn *RTSPConnection) SetAcceptCertificateFunc(fn RTSPConnectionAcceptCert
 	var carg3 C.GDestroyNotify                         // implicit
 
 	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
-	carg1 = (*[0]byte)(C._gotk4_gstrtsp1_RTSPConnectionAcceptCertificateFunc)
+	carg1 = (*[0]byte)(C._goglib_gstrtsp1_RTSPConnectionAcceptCertificateFunc)
 	carg2 = C.gpointer(userdata.Register(fn))
 	carg3 = (C.GDestroyNotify)((*[0]byte)(C.destroyUserdata))
 
@@ -4010,7 +4009,7 @@ func (conn *RTSPConnection) SetTunneled(tunneled bool) {
 // This function can be cancelled with gst_rtsp_connection_flush().
 func (conn *RTSPConnection) WriteUsec(data []uint8, timeout int64) RTSPResult {
 	var carg0 *C.GstRTSPConnection // in, none, converted
-	var carg1 *C.guint8            // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint8            // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint              // implicit
 	var carg3 C.gint64             // in, none, casted
 	var cret  C.GstRTSPResult      // return, none, casted
@@ -4019,7 +4018,7 @@ func (conn *RTSPConnection) WriteUsec(data []uint8, timeout int64) RTSPResult {
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 	carg3 = C.gint64(timeout)
 
 	cret = C.gst_rtsp_connection_write_usec(carg0, carg1, carg2, carg3)
@@ -4652,7 +4651,7 @@ func (msg *RTSPMessage) InitResponse(code RTSPStatusCode, reason string, request
 func (msg *RTSPMessage) ParseAuthCredentials(field RTSPHeaderField) []*RTSPAuthCredential {
 	var carg0 *C.GstRTSPMessage         // in, none, converted
 	var carg1 C.GstRTSPHeaderField      // in, none, casted
-	var cret  **C.GstRTSPAuthCredential // return, transfer: full, C Pointers: 2, Name: array[RTSPAuthCredential], scope: , array (inner: *typesystem.Record, zero-terminated)
+	var cret  **C.GstRTSPAuthCredential // return, transfer: full, C Pointers: 2, Name: array[RTSPAuthCredential], scope: , array (inner GstRTSPAuthCredential* (*typesystem.Record), zero-terminated)
 
 	carg0 = (*C.GstRTSPMessage)(UnsafeRTSPMessageToGlibNone(msg))
 	carg1 = C.GstRTSPHeaderField(field)
@@ -4665,7 +4664,7 @@ func (msg *RTSPMessage) ParseAuthCredentials(field RTSPHeaderField) []*RTSPAuthC
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []*RTSPAuthCredential (GstRTSPAuthCredential**)")
+	panic("unimplemented conversion of []*RTSPAuthCredential (GstRTSPAuthCredential**) because of unknown reason")
 
 	return goret
 }
@@ -4860,7 +4859,7 @@ func (msg *RTSPMessage) RemoveHeaderByName(header string, index int32) RTSPResul
 // will be replaced by the new body.
 func (msg *RTSPMessage) SetBody(data []uint8) RTSPResult {
 	var carg0 *C.GstRTSPMessage // in, none, converted
-	var carg1 *C.guint8         // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint8         // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint           // implicit
 	var cret  C.GstRTSPResult   // return, none, casted
 
@@ -4868,7 +4867,7 @@ func (msg *RTSPMessage) SetBody(data []uint8) RTSPResult {
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_rtsp_message_set_body(carg0, carg1, carg2)
 	runtime.KeepAlive(msg)
@@ -4958,7 +4957,7 @@ func (msg *RTSPMessage) StealBodyBuffer() (*gst.Buffer, RTSPResult) {
 // @data. Any existing body or body buffer will be replaced by the new body.
 func (msg *RTSPMessage) TakeBody(data []uint8) RTSPResult {
 	var carg0 *C.GstRTSPMessage // in, none, converted
-	var carg1 *C.guint8         // in, transfer: full, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint8         // in, transfer: full, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint           // implicit
 	var cret  C.GstRTSPResult   // return, none, casted
 
@@ -4966,7 +4965,7 @@ func (msg *RTSPMessage) TakeBody(data []uint8) RTSPResult {
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (guint8*)")
+	panic("unimplemented conversion of []uint8 (guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_rtsp_message_take_body(carg0, carg1, carg2)
 	runtime.KeepAlive(msg)
@@ -5764,7 +5763,7 @@ func RTSPTransportInit() (RTSPTransport, RTSPResult) {
 
 	_ = transport
 	_ = carg1
-	panic("unimplemented conversion of RTSPTransport (GstRTSPTransport)")
+	panic("unimplemented conversion of RTSPTransport (GstRTSPTransport) because of unknown reason")
 	goret = RTSPResult(cret)
 
 	return transport, goret
@@ -5822,7 +5821,7 @@ func RTSPTransportParse(str string) (RTSPTransport, RTSPResult) {
 
 	_ = transport
 	_ = carg2
-	panic("unimplemented conversion of RTSPTransport (GstRTSPTransport)")
+	panic("unimplemented conversion of RTSPTransport (GstRTSPTransport) because of unknown reason")
 	goret = RTSPResult(cret)
 
 	return transport, goret
@@ -6056,7 +6055,7 @@ func (url *RTSPUrl) Copy() *RTSPUrl {
 // will usually be the empty string.
 func (url *RTSPUrl) DecodePathComponents() []string {
 	var carg0 *C.GstRTSPUrl // in, none, converted
-	var cret  **C.gchar     // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , array (inner: *typesystem.StringPrimitive, zero-terminated)
+	var cret  **C.gchar     // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , array (inner gchar* (*typesystem.StringPrimitive), zero-terminated)
 
 	carg0 = (*C.GstRTSPUrl)(UnsafeRTSPUrlToGlibNone(url))
 
@@ -6067,7 +6066,7 @@ func (url *RTSPUrl) DecodePathComponents() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (gchar**)")
+	panic("unimplemented conversion of []string (gchar**) because of unknown reason")
 
 	return goret
 }
@@ -6400,7 +6399,7 @@ func (watch *RTSPWatch) SendMessage(message *RTSPMessage) (uint, RTSPResult) {
 // once for the last message.
 func (watch *RTSPWatch) SendMessages(messages []RTSPMessage) (uint, RTSPResult) {
 	var carg0 *C.GstRTSPWatch   // in, none, converted
-	var carg1 *C.GstRTSPMessage // in, transfer: none, C Pointers: 1, Name: array[RTSPMessage], array (inner: *typesystem.Record, length-by: carg2)
+	var carg1 *C.GstRTSPMessage // in, transfer: none, C Pointers: 1, Name: array[RTSPMessage], array (inner GstRTSPMessage (*typesystem.Record), length-by: carg2)
 	var carg2 C.guint           // implicit
 	var carg3 C.guint           // out, full, casted
 	var cret  C.GstRTSPResult   // return, none, casted
@@ -6409,7 +6408,7 @@ func (watch *RTSPWatch) SendMessages(messages []RTSPMessage) (uint, RTSPResult) 
 	_ = messages
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []RTSPMessage (GstRTSPMessage*)")
+	panic("unimplemented conversion of []RTSPMessage (GstRTSPMessage*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_rtsp_watch_send_messages(carg0, carg1, carg2, &carg3)
 	runtime.KeepAlive(watch)
@@ -6538,7 +6537,7 @@ func (watch *RTSPWatch) WaitBacklogUsec(timeout int64) RTSPResult {
 // #GST_RTSP_ENOMEM.
 func (watch *RTSPWatch) WriteData(data []uint8) (uint, RTSPResult) {
 	var carg0 *C.GstRTSPWatch // in, none, converted
-	var carg1 *C.guint8       // in, transfer: full, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint8       // in, transfer: full, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint         // implicit
 	var carg3 C.guint         // out, full, casted
 	var cret  C.GstRTSPResult // return, none, casted
@@ -6547,7 +6546,7 @@ func (watch *RTSPWatch) WriteData(data []uint8) (uint, RTSPResult) {
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_rtsp_watch_write_data(carg0, carg1, carg2, &carg3)
 	runtime.KeepAlive(watch)

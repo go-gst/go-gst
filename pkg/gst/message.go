@@ -6,7 +6,8 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/diamondburned/gotk4/pkg/gobject/v2"
+	"github.com/go-gst/go-glib/pkg/glib/v2"
+	"github.com/go-gst/go-glib/pkg/gobject/v2"
 )
 
 // #cgo pkg-config: gstreamer-1.0
@@ -320,4 +321,25 @@ func (m *Message) String() string {
 		msg += "Message did not match any known types"
 	}
 	return msg
+}
+
+// Create a new error message. The message will copy error and debug. This message is posted by element when a fatal event occurred.
+// The pipeline will probably (partially) stop. The application receiving this message should stop the pipeline.
+func NewMessageError(src Object, debug string, err error) *Message {
+	// must be manually implemented because we need to convert error to GError
+
+	var carg1 *C.GstObject // in, none, converted
+	var carg2 *C.GError    // in, full, converted, nullable
+	var carg3 *C.gchar     // in, none, string, casted *C.gchar
+	var cret *C.GstMessage // return, full, converted
+
+	carg1 = (*C.GstObject)(UnsafeObjectToGlibNone(src))
+	carg2 = (*C.GError)(glib.UnsafeErrorToGlibFull(err))
+	defer C.g_error_free(carg2)
+	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(debug)))
+	defer C.free(unsafe.Pointer(carg3))
+
+	cret = C.gst_message_new_error_with_details(carg1, carg2, carg3, nil)
+
+	return UnsafeMessageFromGlibFull(unsafe.Pointer(cret))
 }

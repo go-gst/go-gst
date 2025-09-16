@@ -7,17 +7,17 @@ import (
 	"runtime"
 	"unsafe"
 
-	"github.com/diamondburned/gotk4/pkg/core/userdata"
-	"github.com/diamondburned/gotk4/pkg/gio/v2"
-	"github.com/diamondburned/gotk4/pkg/glib/v2"
-	"github.com/diamondburned/gotk4/pkg/gobject/v2"
+	"github.com/go-gst/go-glib/pkg/core/userdata"
+	"github.com/go-gst/go-glib/pkg/gio/v2"
+	"github.com/go-gst/go-glib/pkg/glib/v2"
+	"github.com/go-gst/go-glib/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
 )
 
 // #cgo pkg-config: gstreamer-net-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/net/net.h>
-// extern gboolean _gotk4_gstnet1_PtpStatisticsCallback(guint8, const GstStructure*, gpointer);
+// extern gboolean _goglib_gstnet1_PtpStatisticsCallback(guint8, const GstStructure*, gpointer);
 // extern void destroyUserdata(gpointer);
 import "C"
 
@@ -288,13 +288,13 @@ func PtpDeinit() {
 // parameters if it wasn't called before.
 func PtpInit(clockId uint64, interfaces []string) bool {
 	var carg1 C.guint64  // in, none, casted
-	var carg2 **C.gchar  // in, transfer: none, C Pointers: 2, Name: array[utf8], nullable, array (inner: *typesystem.StringPrimitive, zero-terminated)
+	var carg2 **C.gchar  // in, transfer: none, C Pointers: 2, Name: array[utf8], nullable, array (inner gchar* (*typesystem.StringPrimitive), zero-terminated)
 	var cret  C.gboolean // return
 
 	carg1 = C.guint64(clockId)
 	_ = interfaces
 	_ = carg2
-	panic("unimplemented conversion of []string (gchar**)")
+	panic("unimplemented conversion of []string (gchar**) because of unimplemented: inner pointers in array")
 
 	cret = C.gst_ptp_init(carg1, carg2)
 	runtime.KeepAlive(clockId)
@@ -413,7 +413,7 @@ func PtpStatisticsCallbackAdd(callback PtpStatisticsCallback) uint32 {
 	var carg3 C.GDestroyNotify           // implicit
 	var cret  C.gulong                   // return, none, casted
 
-	carg1 = (*[0]byte)(C._gotk4_gstnet1_PtpStatisticsCallback)
+	carg1 = (*[0]byte)(C._goglib_gstnet1_PtpStatisticsCallback)
 	carg2 = C.gpointer(userdata.Register(callback))
 	carg3 = (C.GDestroyNotify)((*[0]byte)(C.destroyUserdata))
 
@@ -1497,12 +1497,16 @@ func UnsafeNetTimePacketToGlibFull(n *NetTimePacket) unsafe.Pointer {
 // 
 // MT safe. Caller owns return value (gst_net_time_packet_free to free).
 func NewNetTimePacket(buffer [16]uint8) *NetTimePacket {
-	var carg1 *C.guint8           // in, transfer: none, C Pointers: 1, Name: array[guint8], nullable, array (inner: *typesystem.CastablePrimitive, fixed-size: 16)
+	var carg1 *C.guint8           // in, none, array fixed size (inner: guint8, size: 16)
 	var cret  *C.GstNetTimePacket // return, full, converted
 
-	_ = buffer
-	_ = carg1
-	panic("unimplemented conversion of [16]uint8 (const guint8*)")
+	{
+		var carr [16]C.guint8
+		for i := range 16 {
+			carr[i] = C.guint8(buffer[i])
+			carg1 = unsafe.SliceData(carr[:])
+		}
+	}
 
 	cret = C.gst_net_time_packet_new(carg1)
 	runtime.KeepAlive(buffer)
@@ -1633,7 +1637,7 @@ func (packet *NetTimePacket) Send(socket gio.Socket, destAddress gio.SocketAddre
 // MT safe. Caller owns return value (g_free to free).
 func (packet *NetTimePacket) Serialize() [16]uint8 {
 	var carg0 *C.GstNetTimePacket // in, none, converted
-	var cret  *C.guint8           // return, transfer: full, C Pointers: 1, Name: array[guint8], scope: , array (inner: *typesystem.CastablePrimitive, fixed-size: 16)
+	var cret  *C.guint8           // return, transfer: full, C Pointers: 1, Name: array[guint8], scope: , array (inner guint8 (*typesystem.CastablePrimitive), fixed-size: 16)
 
 	carg0 = (*C.GstNetTimePacket)(UnsafeNetTimePacketToGlibNone(packet))
 
@@ -1644,7 +1648,7 @@ func (packet *NetTimePacket) Serialize() [16]uint8 {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of [16]uint8 (guint8*)")
+	panic("unimplemented conversion of [16]uint8 (guint8*) because of unknown reason")
 
 	return goret
 }

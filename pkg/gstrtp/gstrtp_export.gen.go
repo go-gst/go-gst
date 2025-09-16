@@ -5,235 +5,235 @@ package gstrtp
 import (
 	"unsafe"
 
-	"github.com/diamondburned/gotk4/pkg/core/classdata"
+	"github.com/go-gst/go-glib/pkg/core/classdata"
 )
 
 // #include <gst/rtp/rtp.h>
 import "C"
 
-//export _gotk4_gstrtp1_RTPBaseDepayload_handle_event
-func _gotk4_gstrtp1_RTPBaseDepayload_handle_event(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstEvent) (cret C.gboolean) {
+//export _goglib_gstrtp1_RTPBaseDepayload_handle_event
+func _goglib_gstrtp1_RTPBaseDepayload_handle_event(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstEvent) (cret C.gboolean) {
 	var fn func(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstEvent) (cret C.gboolean)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstrtp1_RTPBaseDepayload_handle_event").(func(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstEvent) (cret C.gboolean))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstrtp1_RTPBaseDepayload_handle_event").(func(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstEvent) (cret C.gboolean))
 		if fn == nil {
-			panic("_gotk4_gstrtp1_RTPBaseDepayload_handle_event: no function pointer found")
+			panic("_goglib_gstrtp1_RTPBaseDepayload_handle_event: no function pointer found")
 		}
 	}
 	return fn(carg0, carg1)
 }
 
-//export _gotk4_gstrtp1_RTPBaseDepayload_packet_lost
-func _gotk4_gstrtp1_RTPBaseDepayload_packet_lost(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstEvent) (cret C.gboolean) {
+//export _goglib_gstrtp1_RTPBaseDepayload_packet_lost
+func _goglib_gstrtp1_RTPBaseDepayload_packet_lost(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstEvent) (cret C.gboolean) {
 	var fn func(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstEvent) (cret C.gboolean)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstrtp1_RTPBaseDepayload_packet_lost").(func(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstEvent) (cret C.gboolean))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstrtp1_RTPBaseDepayload_packet_lost").(func(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstEvent) (cret C.gboolean))
 		if fn == nil {
-			panic("_gotk4_gstrtp1_RTPBaseDepayload_packet_lost: no function pointer found")
+			panic("_goglib_gstrtp1_RTPBaseDepayload_packet_lost: no function pointer found")
 		}
 	}
 	return fn(carg0, carg1)
 }
 
-//export _gotk4_gstrtp1_RTPBaseDepayload_process
-func _gotk4_gstrtp1_RTPBaseDepayload_process(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstBuffer) (cret *C.GstBuffer) {
+//export _goglib_gstrtp1_RTPBaseDepayload_process
+func _goglib_gstrtp1_RTPBaseDepayload_process(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstBuffer) (cret *C.GstBuffer) {
 	var fn func(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstBuffer) (cret *C.GstBuffer)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstrtp1_RTPBaseDepayload_process").(func(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstBuffer) (cret *C.GstBuffer))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstrtp1_RTPBaseDepayload_process").(func(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstBuffer) (cret *C.GstBuffer))
 		if fn == nil {
-			panic("_gotk4_gstrtp1_RTPBaseDepayload_process: no function pointer found")
+			panic("_goglib_gstrtp1_RTPBaseDepayload_process: no function pointer found")
 		}
 	}
 	return fn(carg0, carg1)
 }
 
-//export _gotk4_gstrtp1_RTPBaseDepayload_process_rtp_packet
-func _gotk4_gstrtp1_RTPBaseDepayload_process_rtp_packet(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstRTPBuffer) (cret *C.GstBuffer) {
+//export _goglib_gstrtp1_RTPBaseDepayload_process_rtp_packet
+func _goglib_gstrtp1_RTPBaseDepayload_process_rtp_packet(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstRTPBuffer) (cret *C.GstBuffer) {
 	var fn func(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstRTPBuffer) (cret *C.GstBuffer)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstrtp1_RTPBaseDepayload_process_rtp_packet").(func(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstRTPBuffer) (cret *C.GstBuffer))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstrtp1_RTPBaseDepayload_process_rtp_packet").(func(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstRTPBuffer) (cret *C.GstBuffer))
 		if fn == nil {
-			panic("_gotk4_gstrtp1_RTPBaseDepayload_process_rtp_packet: no function pointer found")
+			panic("_goglib_gstrtp1_RTPBaseDepayload_process_rtp_packet: no function pointer found")
 		}
 	}
 	return fn(carg0, carg1)
 }
 
-//export _gotk4_gstrtp1_RTPBaseDepayload_set_caps
-func _gotk4_gstrtp1_RTPBaseDepayload_set_caps(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstCaps) (cret C.gboolean) {
+//export _goglib_gstrtp1_RTPBaseDepayload_set_caps
+func _goglib_gstrtp1_RTPBaseDepayload_set_caps(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstCaps) (cret C.gboolean) {
 	var fn func(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstCaps) (cret C.gboolean)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstrtp1_RTPBaseDepayload_set_caps").(func(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstCaps) (cret C.gboolean))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstrtp1_RTPBaseDepayload_set_caps").(func(carg0 *C.GstRTPBaseDepayload, carg1 *C.GstCaps) (cret C.gboolean))
 		if fn == nil {
-			panic("_gotk4_gstrtp1_RTPBaseDepayload_set_caps: no function pointer found")
+			panic("_goglib_gstrtp1_RTPBaseDepayload_set_caps: no function pointer found")
 		}
 	}
 	return fn(carg0, carg1)
 }
 
-//export _gotk4_gstrtp1_RTPBasePayload_get_caps
-func _gotk4_gstrtp1_RTPBasePayload_get_caps(carg0 *C.GstRTPBasePayload, carg1 *C.GstPad, carg2 *C.GstCaps) (cret *C.GstCaps) {
+//export _goglib_gstrtp1_RTPBasePayload_get_caps
+func _goglib_gstrtp1_RTPBasePayload_get_caps(carg0 *C.GstRTPBasePayload, carg1 *C.GstPad, carg2 *C.GstCaps) (cret *C.GstCaps) {
 	var fn func(carg0 *C.GstRTPBasePayload, carg1 *C.GstPad, carg2 *C.GstCaps) (cret *C.GstCaps)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstrtp1_RTPBasePayload_get_caps").(func(carg0 *C.GstRTPBasePayload, carg1 *C.GstPad, carg2 *C.GstCaps) (cret *C.GstCaps))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstrtp1_RTPBasePayload_get_caps").(func(carg0 *C.GstRTPBasePayload, carg1 *C.GstPad, carg2 *C.GstCaps) (cret *C.GstCaps))
 		if fn == nil {
-			panic("_gotk4_gstrtp1_RTPBasePayload_get_caps: no function pointer found")
+			panic("_goglib_gstrtp1_RTPBasePayload_get_caps: no function pointer found")
 		}
 	}
 	return fn(carg0, carg1, carg2)
 }
 
-//export _gotk4_gstrtp1_RTPBasePayload_handle_buffer
-func _gotk4_gstrtp1_RTPBasePayload_handle_buffer(carg0 *C.GstRTPBasePayload, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
+//export _goglib_gstrtp1_RTPBasePayload_handle_buffer
+func _goglib_gstrtp1_RTPBasePayload_handle_buffer(carg0 *C.GstRTPBasePayload, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
 	var fn func(carg0 *C.GstRTPBasePayload, carg1 *C.GstBuffer) (cret C.GstFlowReturn)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstrtp1_RTPBasePayload_handle_buffer").(func(carg0 *C.GstRTPBasePayload, carg1 *C.GstBuffer) (cret C.GstFlowReturn))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstrtp1_RTPBasePayload_handle_buffer").(func(carg0 *C.GstRTPBasePayload, carg1 *C.GstBuffer) (cret C.GstFlowReturn))
 		if fn == nil {
-			panic("_gotk4_gstrtp1_RTPBasePayload_handle_buffer: no function pointer found")
+			panic("_goglib_gstrtp1_RTPBasePayload_handle_buffer: no function pointer found")
 		}
 	}
 	return fn(carg0, carg1)
 }
 
-//export _gotk4_gstrtp1_RTPBasePayload_query
-func _gotk4_gstrtp1_RTPBasePayload_query(carg0 *C.GstRTPBasePayload, carg1 *C.GstPad, carg2 *C.GstQuery) (cret C.gboolean) {
+//export _goglib_gstrtp1_RTPBasePayload_query
+func _goglib_gstrtp1_RTPBasePayload_query(carg0 *C.GstRTPBasePayload, carg1 *C.GstPad, carg2 *C.GstQuery) (cret C.gboolean) {
 	var fn func(carg0 *C.GstRTPBasePayload, carg1 *C.GstPad, carg2 *C.GstQuery) (cret C.gboolean)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstrtp1_RTPBasePayload_query").(func(carg0 *C.GstRTPBasePayload, carg1 *C.GstPad, carg2 *C.GstQuery) (cret C.gboolean))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstrtp1_RTPBasePayload_query").(func(carg0 *C.GstRTPBasePayload, carg1 *C.GstPad, carg2 *C.GstQuery) (cret C.gboolean))
 		if fn == nil {
-			panic("_gotk4_gstrtp1_RTPBasePayload_query: no function pointer found")
+			panic("_goglib_gstrtp1_RTPBasePayload_query: no function pointer found")
 		}
 	}
 	return fn(carg0, carg1, carg2)
 }
 
-//export _gotk4_gstrtp1_RTPBasePayload_set_caps
-func _gotk4_gstrtp1_RTPBasePayload_set_caps(carg0 *C.GstRTPBasePayload, carg1 *C.GstCaps) (cret C.gboolean) {
+//export _goglib_gstrtp1_RTPBasePayload_set_caps
+func _goglib_gstrtp1_RTPBasePayload_set_caps(carg0 *C.GstRTPBasePayload, carg1 *C.GstCaps) (cret C.gboolean) {
 	var fn func(carg0 *C.GstRTPBasePayload, carg1 *C.GstCaps) (cret C.gboolean)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstrtp1_RTPBasePayload_set_caps").(func(carg0 *C.GstRTPBasePayload, carg1 *C.GstCaps) (cret C.gboolean))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstrtp1_RTPBasePayload_set_caps").(func(carg0 *C.GstRTPBasePayload, carg1 *C.GstCaps) (cret C.gboolean))
 		if fn == nil {
-			panic("_gotk4_gstrtp1_RTPBasePayload_set_caps: no function pointer found")
+			panic("_goglib_gstrtp1_RTPBasePayload_set_caps: no function pointer found")
 		}
 	}
 	return fn(carg0, carg1)
 }
 
-//export _gotk4_gstrtp1_RTPBasePayload_sink_event
-func _gotk4_gstrtp1_RTPBasePayload_sink_event(carg0 *C.GstRTPBasePayload, carg1 *C.GstEvent) (cret C.gboolean) {
+//export _goglib_gstrtp1_RTPBasePayload_sink_event
+func _goglib_gstrtp1_RTPBasePayload_sink_event(carg0 *C.GstRTPBasePayload, carg1 *C.GstEvent) (cret C.gboolean) {
 	var fn func(carg0 *C.GstRTPBasePayload, carg1 *C.GstEvent) (cret C.gboolean)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstrtp1_RTPBasePayload_sink_event").(func(carg0 *C.GstRTPBasePayload, carg1 *C.GstEvent) (cret C.gboolean))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstrtp1_RTPBasePayload_sink_event").(func(carg0 *C.GstRTPBasePayload, carg1 *C.GstEvent) (cret C.gboolean))
 		if fn == nil {
-			panic("_gotk4_gstrtp1_RTPBasePayload_sink_event: no function pointer found")
+			panic("_goglib_gstrtp1_RTPBasePayload_sink_event: no function pointer found")
 		}
 	}
 	return fn(carg0, carg1)
 }
 
-//export _gotk4_gstrtp1_RTPBasePayload_src_event
-func _gotk4_gstrtp1_RTPBasePayload_src_event(carg0 *C.GstRTPBasePayload, carg1 *C.GstEvent) (cret C.gboolean) {
+//export _goglib_gstrtp1_RTPBasePayload_src_event
+func _goglib_gstrtp1_RTPBasePayload_src_event(carg0 *C.GstRTPBasePayload, carg1 *C.GstEvent) (cret C.gboolean) {
 	var fn func(carg0 *C.GstRTPBasePayload, carg1 *C.GstEvent) (cret C.gboolean)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstrtp1_RTPBasePayload_src_event").(func(carg0 *C.GstRTPBasePayload, carg1 *C.GstEvent) (cret C.gboolean))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstrtp1_RTPBasePayload_src_event").(func(carg0 *C.GstRTPBasePayload, carg1 *C.GstEvent) (cret C.gboolean))
 		if fn == nil {
-			panic("_gotk4_gstrtp1_RTPBasePayload_src_event: no function pointer found")
+			panic("_goglib_gstrtp1_RTPBasePayload_src_event: no function pointer found")
 		}
 	}
 	return fn(carg0, carg1)
 }
 
-//export _gotk4_gstrtp1_RTPHeaderExtension_get_max_size
-func _gotk4_gstrtp1_RTPHeaderExtension_get_max_size(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstBuffer) (cret C.gsize) {
+//export _goglib_gstrtp1_RTPHeaderExtension_get_max_size
+func _goglib_gstrtp1_RTPHeaderExtension_get_max_size(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstBuffer) (cret C.gsize) {
 	var fn func(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstBuffer) (cret C.gsize)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstrtp1_RTPHeaderExtension_get_max_size").(func(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstBuffer) (cret C.gsize))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstrtp1_RTPHeaderExtension_get_max_size").(func(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstBuffer) (cret C.gsize))
 		if fn == nil {
-			panic("_gotk4_gstrtp1_RTPHeaderExtension_get_max_size: no function pointer found")
+			panic("_goglib_gstrtp1_RTPHeaderExtension_get_max_size: no function pointer found")
 		}
 	}
 	return fn(carg0, carg1)
 }
 
-//export _gotk4_gstrtp1_RTPHeaderExtension_get_supported_flags
-func _gotk4_gstrtp1_RTPHeaderExtension_get_supported_flags(carg0 *C.GstRTPHeaderExtension) (cret C.GstRTPHeaderExtensionFlags) {
+//export _goglib_gstrtp1_RTPHeaderExtension_get_supported_flags
+func _goglib_gstrtp1_RTPHeaderExtension_get_supported_flags(carg0 *C.GstRTPHeaderExtension) (cret C.GstRTPHeaderExtensionFlags) {
 	var fn func(carg0 *C.GstRTPHeaderExtension) (cret C.GstRTPHeaderExtensionFlags)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstrtp1_RTPHeaderExtension_get_supported_flags").(func(carg0 *C.GstRTPHeaderExtension) (cret C.GstRTPHeaderExtensionFlags))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstrtp1_RTPHeaderExtension_get_supported_flags").(func(carg0 *C.GstRTPHeaderExtension) (cret C.GstRTPHeaderExtensionFlags))
 		if fn == nil {
-			panic("_gotk4_gstrtp1_RTPHeaderExtension_get_supported_flags: no function pointer found")
+			panic("_goglib_gstrtp1_RTPHeaderExtension_get_supported_flags: no function pointer found")
 		}
 	}
 	return fn(carg0)
 }
 
-//export _gotk4_gstrtp1_RTPHeaderExtension_read
-func _gotk4_gstrtp1_RTPHeaderExtension_read(carg0 *C.GstRTPHeaderExtension, carg1 C.GstRTPHeaderExtensionFlags, carg2 *C.guint8, carg3 C.gsize, carg4 *C.GstBuffer) (cret C.gboolean) {
+//export _goglib_gstrtp1_RTPHeaderExtension_read
+func _goglib_gstrtp1_RTPHeaderExtension_read(carg0 *C.GstRTPHeaderExtension, carg1 C.GstRTPHeaderExtensionFlags, carg2 *C.guint8, carg3 C.gsize, carg4 *C.GstBuffer) (cret C.gboolean) {
 	var fn func(carg0 *C.GstRTPHeaderExtension, carg1 C.GstRTPHeaderExtensionFlags, carg2 *C.guint8, carg3 C.gsize, carg4 *C.GstBuffer) (cret C.gboolean)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstrtp1_RTPHeaderExtension_read").(func(carg0 *C.GstRTPHeaderExtension, carg1 C.GstRTPHeaderExtensionFlags, carg2 *C.guint8, carg3 C.gsize, carg4 *C.GstBuffer) (cret C.gboolean))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstrtp1_RTPHeaderExtension_read").(func(carg0 *C.GstRTPHeaderExtension, carg1 C.GstRTPHeaderExtensionFlags, carg2 *C.guint8, carg3 C.gsize, carg4 *C.GstBuffer) (cret C.gboolean))
 		if fn == nil {
-			panic("_gotk4_gstrtp1_RTPHeaderExtension_read: no function pointer found")
+			panic("_goglib_gstrtp1_RTPHeaderExtension_read: no function pointer found")
 		}
 	}
 	return fn(carg0, carg1, carg2, carg3, carg4)
 }
 
-//export _gotk4_gstrtp1_RTPHeaderExtension_set_attributes
-func _gotk4_gstrtp1_RTPHeaderExtension_set_attributes(carg0 *C.GstRTPHeaderExtension, carg1 C.GstRTPHeaderExtensionDirection, carg2 *C.gchar) (cret C.gboolean) {
+//export _goglib_gstrtp1_RTPHeaderExtension_set_attributes
+func _goglib_gstrtp1_RTPHeaderExtension_set_attributes(carg0 *C.GstRTPHeaderExtension, carg1 C.GstRTPHeaderExtensionDirection, carg2 *C.gchar) (cret C.gboolean) {
 	var fn func(carg0 *C.GstRTPHeaderExtension, carg1 C.GstRTPHeaderExtensionDirection, carg2 *C.gchar) (cret C.gboolean)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstrtp1_RTPHeaderExtension_set_attributes").(func(carg0 *C.GstRTPHeaderExtension, carg1 C.GstRTPHeaderExtensionDirection, carg2 *C.gchar) (cret C.gboolean))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstrtp1_RTPHeaderExtension_set_attributes").(func(carg0 *C.GstRTPHeaderExtension, carg1 C.GstRTPHeaderExtensionDirection, carg2 *C.gchar) (cret C.gboolean))
 		if fn == nil {
-			panic("_gotk4_gstrtp1_RTPHeaderExtension_set_attributes: no function pointer found")
+			panic("_goglib_gstrtp1_RTPHeaderExtension_set_attributes: no function pointer found")
 		}
 	}
 	return fn(carg0, carg1, carg2)
 }
 
-//export _gotk4_gstrtp1_RTPHeaderExtension_set_caps_from_attributes
-func _gotk4_gstrtp1_RTPHeaderExtension_set_caps_from_attributes(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstCaps) (cret C.gboolean) {
+//export _goglib_gstrtp1_RTPHeaderExtension_set_caps_from_attributes
+func _goglib_gstrtp1_RTPHeaderExtension_set_caps_from_attributes(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstCaps) (cret C.gboolean) {
 	var fn func(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstCaps) (cret C.gboolean)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstrtp1_RTPHeaderExtension_set_caps_from_attributes").(func(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstCaps) (cret C.gboolean))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstrtp1_RTPHeaderExtension_set_caps_from_attributes").(func(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstCaps) (cret C.gboolean))
 		if fn == nil {
-			panic("_gotk4_gstrtp1_RTPHeaderExtension_set_caps_from_attributes: no function pointer found")
+			panic("_goglib_gstrtp1_RTPHeaderExtension_set_caps_from_attributes: no function pointer found")
 		}
 	}
 	return fn(carg0, carg1)
 }
 
-//export _gotk4_gstrtp1_RTPHeaderExtension_set_non_rtp_sink_caps
-func _gotk4_gstrtp1_RTPHeaderExtension_set_non_rtp_sink_caps(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstCaps) (cret C.gboolean) {
+//export _goglib_gstrtp1_RTPHeaderExtension_set_non_rtp_sink_caps
+func _goglib_gstrtp1_RTPHeaderExtension_set_non_rtp_sink_caps(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstCaps) (cret C.gboolean) {
 	var fn func(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstCaps) (cret C.gboolean)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstrtp1_RTPHeaderExtension_set_non_rtp_sink_caps").(func(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstCaps) (cret C.gboolean))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstrtp1_RTPHeaderExtension_set_non_rtp_sink_caps").(func(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstCaps) (cret C.gboolean))
 		if fn == nil {
-			panic("_gotk4_gstrtp1_RTPHeaderExtension_set_non_rtp_sink_caps: no function pointer found")
+			panic("_goglib_gstrtp1_RTPHeaderExtension_set_non_rtp_sink_caps: no function pointer found")
 		}
 	}
 	return fn(carg0, carg1)
 }
 
-//export _gotk4_gstrtp1_RTPHeaderExtension_update_non_rtp_src_caps
-func _gotk4_gstrtp1_RTPHeaderExtension_update_non_rtp_src_caps(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstCaps) (cret C.gboolean) {
+//export _goglib_gstrtp1_RTPHeaderExtension_update_non_rtp_src_caps
+func _goglib_gstrtp1_RTPHeaderExtension_update_non_rtp_src_caps(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstCaps) (cret C.gboolean) {
 	var fn func(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstCaps) (cret C.gboolean)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstrtp1_RTPHeaderExtension_update_non_rtp_src_caps").(func(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstCaps) (cret C.gboolean))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstrtp1_RTPHeaderExtension_update_non_rtp_src_caps").(func(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstCaps) (cret C.gboolean))
 		if fn == nil {
-			panic("_gotk4_gstrtp1_RTPHeaderExtension_update_non_rtp_src_caps: no function pointer found")
+			panic("_goglib_gstrtp1_RTPHeaderExtension_update_non_rtp_src_caps: no function pointer found")
 		}
 	}
 	return fn(carg0, carg1)
 }
 
-//export _gotk4_gstrtp1_RTPHeaderExtension_write
-func _gotk4_gstrtp1_RTPHeaderExtension_write(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstBuffer, carg2 C.GstRTPHeaderExtensionFlags, carg3 *C.GstBuffer, carg4 *C.guint8, carg5 C.gsize) (cret C.gssize) {
+//export _goglib_gstrtp1_RTPHeaderExtension_write
+func _goglib_gstrtp1_RTPHeaderExtension_write(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstBuffer, carg2 C.GstRTPHeaderExtensionFlags, carg3 *C.GstBuffer, carg4 *C.guint8, carg5 C.gsize) (cret C.gssize) {
 	var fn func(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstBuffer, carg2 C.GstRTPHeaderExtensionFlags, carg3 *C.GstBuffer, carg4 *C.guint8, carg5 C.gsize) (cret C.gssize)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstrtp1_RTPHeaderExtension_write").(func(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstBuffer, carg2 C.GstRTPHeaderExtensionFlags, carg3 *C.GstBuffer, carg4 *C.guint8, carg5 C.gsize) (cret C.gssize))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstrtp1_RTPHeaderExtension_write").(func(carg0 *C.GstRTPHeaderExtension, carg1 *C.GstBuffer, carg2 C.GstRTPHeaderExtensionFlags, carg3 *C.GstBuffer, carg4 *C.guint8, carg5 C.gsize) (cret C.gssize))
 		if fn == nil {
-			panic("_gotk4_gstrtp1_RTPHeaderExtension_write: no function pointer found")
+			panic("_goglib_gstrtp1_RTPHeaderExtension_write: no function pointer found")
 		}
 	}
 	return fn(carg0, carg1, carg2, carg3, carg4, carg5)

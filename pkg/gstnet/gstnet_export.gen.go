@@ -5,15 +5,15 @@ package gstnet
 import (
 	"unsafe"
 
-	"github.com/diamondburned/gotk4/pkg/core/userdata"
+	"github.com/go-gst/go-glib/pkg/core/userdata"
 	"github.com/go-gst/go-gst/pkg/gst"
 )
 
 // #include <gst/net/net.h>
 import "C"
 
-//export _gotk4_gstnet1_PtpStatisticsCallback
-func _gotk4_gstnet1_PtpStatisticsCallback(carg1 C.guint8, carg2 *C.GstStructure, carg3 C.gpointer) (cret C.gboolean) {
+//export _goglib_gstnet1_PtpStatisticsCallback
+func _goglib_gstnet1_PtpStatisticsCallback(carg1 C.guint8, carg2 *C.GstStructure, carg3 C.gpointer) (cret C.gboolean) {
 	var fn PtpStatisticsCallback
 	{
 		v := userdata.Load(unsafe.Pointer(carg3))

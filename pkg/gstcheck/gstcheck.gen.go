@@ -7,16 +7,16 @@ import (
 	"runtime"
 	"unsafe"
 
-	"github.com/diamondburned/gotk4/pkg/core/userdata"
-	"github.com/diamondburned/gotk4/pkg/glib/v2"
-	"github.com/diamondburned/gotk4/pkg/gobject/v2"
+	"github.com/go-gst/go-glib/pkg/core/userdata"
+	"github.com/go-gst/go-glib/pkg/glib/v2"
+	"github.com/go-gst/go-glib/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
 )
 
 // #cgo pkg-config: gstreamer-check-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/check/check.h>
-// extern GstPadProbeReturn _gotk4_gst1_PadProbeCallback(GstPad*, GstPadProbeInfo*, gpointer);
+// extern GstPadProbeReturn _goglib_gst1_PadProbeCallback(GstPad*, GstPadProbeInfo*, gpointer);
 // extern void destroyUserdata(gpointer);
 import "C"
 
@@ -1117,7 +1117,7 @@ func (h *Harness) AddProbe(elementName string, padName string, mask gst.PadProbe
 	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(padName)))
 	defer C.free(unsafe.Pointer(carg2))
 	carg3 = C.GstPadProbeType(mask)
-	carg4 = (*[0]byte)(C._gotk4_gst1_PadProbeCallback)
+	carg4 = (*[0]byte)(C._goglib_gst1_PadProbeCallback)
 	carg5 = C.gpointer(userdata.Register(callback))
 	carg6 = (C.GDestroyNotify)((*[0]byte)(C.destroyUserdata))
 
@@ -1631,7 +1631,7 @@ func (h *Harness) GetAllocator() (gst.Allocator, gst.AllocationParams) {
 	}
 	_ = params
 	_ = carg2
-	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams)")
+	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams) because of unknown reason")
 
 	return allocator, params
 }

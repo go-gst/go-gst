@@ -9,10 +9,9 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/diamondburned/gotk4/pkg/core/classdata"
-	"github.com/diamondburned/gotk4/pkg/core/userdata"
-	"github.com/diamondburned/gotk4/pkg/glib/v2"
-	"github.com/diamondburned/gotk4/pkg/gobject/v2"
+	"github.com/go-gst/go-glib/pkg/core/classdata"
+	"github.com/go-gst/go-glib/pkg/glib/v2"
+	"github.com/go-gst/go-glib/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
 	"github.com/go-gst/go-gst/pkg/gstbase"
 )
@@ -20,226 +19,224 @@ import (
 // #cgo pkg-config: gstreamer-video-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/video/video.h>
-// extern void _gotk4_gstvideo1_VideoConvertSampleCallback(GstSample*, GError*, gpointer);
-// extern void destroyUserdata(gpointer);
-// extern void _gotk4_gstvideo1_ColorBalanceChannel_value_changed(GstColorBalanceChannel*, gint);
-// void _gotk4_gstvideo1_ColorBalanceChannel_virtual_value_changed(void* fnptr, GstColorBalanceChannel* carg0, gint carg1) {
+// extern void _goglib_gstvideo1_ColorBalanceChannel_value_changed(GstColorBalanceChannel*, gint);
+// void _goglib_gstvideo1_ColorBalanceChannel_virtual_value_changed(void* fnptr, GstColorBalanceChannel* carg0, gint carg1) {
 // 	return ((void (*) (GstColorBalanceChannel*, gint))(fnptr))(carg0, carg1);
 // }
-// extern GstFlowReturn _gotk4_gstvideo1_VideoAggregator_aggregate_frames(GstVideoAggregator*, GstBuffer*);
-// extern void _gotk4_gstvideo1_VideoAggregator_find_best_format(GstVideoAggregator*, GstCaps*, GstVideoInfo*, gboolean);
-// extern GstCaps* _gotk4_gstvideo1_VideoAggregator_update_caps(GstVideoAggregator*, GstCaps*);
-// GstFlowReturn _gotk4_gstvideo1_VideoAggregator_virtual_aggregate_frames(void* fnptr, GstVideoAggregator* carg0, GstBuffer* carg1) {
+// extern GstFlowReturn _goglib_gstvideo1_VideoAggregator_aggregate_frames(GstVideoAggregator*, GstBuffer*);
+// extern void _goglib_gstvideo1_VideoAggregator_find_best_format(GstVideoAggregator*, GstCaps*, GstVideoInfo*, gboolean);
+// extern GstCaps* _goglib_gstvideo1_VideoAggregator_update_caps(GstVideoAggregator*, GstCaps*);
+// GstFlowReturn _goglib_gstvideo1_VideoAggregator_virtual_aggregate_frames(void* fnptr, GstVideoAggregator* carg0, GstBuffer* carg1) {
 // 	return ((GstFlowReturn (*) (GstVideoAggregator*, GstBuffer*))(fnptr))(carg0, carg1);
 // }
-// void _gotk4_gstvideo1_VideoAggregator_virtual_find_best_format(void* fnptr, GstVideoAggregator* carg0, GstCaps* carg1, GstVideoInfo* carg2, gboolean* carg3) {
+// void _goglib_gstvideo1_VideoAggregator_virtual_find_best_format(void* fnptr, GstVideoAggregator* carg0, GstCaps* carg1, GstVideoInfo* carg2, gboolean* carg3) {
 // 	return ((void (*) (GstVideoAggregator*, GstCaps*, GstVideoInfo*, gboolean*))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// GstCaps* _gotk4_gstvideo1_VideoAggregator_virtual_update_caps(void* fnptr, GstVideoAggregator* carg0, GstCaps* carg1) {
+// GstCaps* _goglib_gstvideo1_VideoAggregator_virtual_update_caps(void* fnptr, GstVideoAggregator* carg0, GstCaps* carg1) {
 // 	return ((GstCaps* (*) (GstVideoAggregator*, GstCaps*))(fnptr))(carg0, carg1);
 // }
-// extern void _gotk4_gstvideo1_VideoAggregatorPad_clean_frame(GstVideoAggregatorPad*, GstVideoAggregator*, GstVideoFrame*);
-// extern gboolean _gotk4_gstvideo1_VideoAggregatorPad_prepare_frame(GstVideoAggregatorPad*, GstVideoAggregator*, GstBuffer*, GstVideoFrame*);
-// extern void _gotk4_gstvideo1_VideoAggregatorPad_prepare_frame_finish(GstVideoAggregatorPad*, GstVideoAggregator*, GstVideoFrame*);
-// extern void _gotk4_gstvideo1_VideoAggregatorPad_prepare_frame_start(GstVideoAggregatorPad*, GstVideoAggregator*, GstBuffer*, GstVideoFrame*);
-// extern void _gotk4_gstvideo1_VideoAggregatorPad_update_conversion_info(GstVideoAggregatorPad*);
-// void _gotk4_gstvideo1_VideoAggregatorPad_virtual_clean_frame(void* fnptr, GstVideoAggregatorPad* carg0, GstVideoAggregator* carg1, GstVideoFrame* carg2) {
+// extern void _goglib_gstvideo1_VideoAggregatorPad_clean_frame(GstVideoAggregatorPad*, GstVideoAggregator*, GstVideoFrame*);
+// extern gboolean _goglib_gstvideo1_VideoAggregatorPad_prepare_frame(GstVideoAggregatorPad*, GstVideoAggregator*, GstBuffer*, GstVideoFrame*);
+// extern void _goglib_gstvideo1_VideoAggregatorPad_prepare_frame_finish(GstVideoAggregatorPad*, GstVideoAggregator*, GstVideoFrame*);
+// extern void _goglib_gstvideo1_VideoAggregatorPad_prepare_frame_start(GstVideoAggregatorPad*, GstVideoAggregator*, GstBuffer*, GstVideoFrame*);
+// extern void _goglib_gstvideo1_VideoAggregatorPad_update_conversion_info(GstVideoAggregatorPad*);
+// void _goglib_gstvideo1_VideoAggregatorPad_virtual_clean_frame(void* fnptr, GstVideoAggregatorPad* carg0, GstVideoAggregator* carg1, GstVideoFrame* carg2) {
 // 	return ((void (*) (GstVideoAggregatorPad*, GstVideoAggregator*, GstVideoFrame*))(fnptr))(carg0, carg1, carg2);
 // }
-// gboolean _gotk4_gstvideo1_VideoAggregatorPad_virtual_prepare_frame(void* fnptr, GstVideoAggregatorPad* carg0, GstVideoAggregator* carg1, GstBuffer* carg2, GstVideoFrame* carg3) {
+// gboolean _goglib_gstvideo1_VideoAggregatorPad_virtual_prepare_frame(void* fnptr, GstVideoAggregatorPad* carg0, GstVideoAggregator* carg1, GstBuffer* carg2, GstVideoFrame* carg3) {
 // 	return ((gboolean (*) (GstVideoAggregatorPad*, GstVideoAggregator*, GstBuffer*, GstVideoFrame*))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// void _gotk4_gstvideo1_VideoAggregatorPad_virtual_prepare_frame_finish(void* fnptr, GstVideoAggregatorPad* carg0, GstVideoAggregator* carg1, GstVideoFrame* carg2) {
+// void _goglib_gstvideo1_VideoAggregatorPad_virtual_prepare_frame_finish(void* fnptr, GstVideoAggregatorPad* carg0, GstVideoAggregator* carg1, GstVideoFrame* carg2) {
 // 	return ((void (*) (GstVideoAggregatorPad*, GstVideoAggregator*, GstVideoFrame*))(fnptr))(carg0, carg1, carg2);
 // }
-// void _gotk4_gstvideo1_VideoAggregatorPad_virtual_prepare_frame_start(void* fnptr, GstVideoAggregatorPad* carg0, GstVideoAggregator* carg1, GstBuffer* carg2, GstVideoFrame* carg3) {
+// void _goglib_gstvideo1_VideoAggregatorPad_virtual_prepare_frame_start(void* fnptr, GstVideoAggregatorPad* carg0, GstVideoAggregator* carg1, GstBuffer* carg2, GstVideoFrame* carg3) {
 // 	return ((void (*) (GstVideoAggregatorPad*, GstVideoAggregator*, GstBuffer*, GstVideoFrame*))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// void _gotk4_gstvideo1_VideoAggregatorPad_virtual_update_conversion_info(void* fnptr, GstVideoAggregatorPad* carg0) {
+// void _goglib_gstvideo1_VideoAggregatorPad_virtual_update_conversion_info(void* fnptr, GstVideoAggregatorPad* carg0) {
 // 	return ((void (*) (GstVideoAggregatorPad*))(fnptr))(carg0);
 // }
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_close(GstVideoDecoder*);
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_decide_allocation(GstVideoDecoder*, GstQuery*);
-// extern GstFlowReturn _gotk4_gstvideo1_VideoDecoder_drain(GstVideoDecoder*);
-// extern GstFlowReturn _gotk4_gstvideo1_VideoDecoder_finish(GstVideoDecoder*);
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_flush(GstVideoDecoder*);
-// extern GstCaps* _gotk4_gstvideo1_VideoDecoder_getcaps(GstVideoDecoder*, GstCaps*);
-// extern GstFlowReturn _gotk4_gstvideo1_VideoDecoder_handle_frame(GstVideoDecoder*, GstVideoCodecFrame*);
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_handle_missing_data(GstVideoDecoder*, GstClockTime, GstClockTime);
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_negotiate(GstVideoDecoder*);
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_open(GstVideoDecoder*);
-// extern GstFlowReturn _gotk4_gstvideo1_VideoDecoder_parse(GstVideoDecoder*, GstVideoCodecFrame*, GstAdapter*, gboolean);
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_propose_allocation(GstVideoDecoder*, GstQuery*);
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_reset(GstVideoDecoder*, gboolean);
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_set_format(GstVideoDecoder*, GstVideoCodecState*);
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_sink_event(GstVideoDecoder*, GstEvent*);
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_sink_query(GstVideoDecoder*, GstQuery*);
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_src_event(GstVideoDecoder*, GstEvent*);
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_src_query(GstVideoDecoder*, GstQuery*);
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_start(GstVideoDecoder*);
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_stop(GstVideoDecoder*);
-// extern gboolean _gotk4_gstvideo1_VideoDecoder_transform_meta(GstVideoDecoder*, GstVideoCodecFrame*, GstMeta*);
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_close(void* fnptr, GstVideoDecoder* carg0) {
+// extern gboolean _goglib_gstvideo1_VideoDecoder_close(GstVideoDecoder*);
+// extern gboolean _goglib_gstvideo1_VideoDecoder_decide_allocation(GstVideoDecoder*, GstQuery*);
+// extern GstFlowReturn _goglib_gstvideo1_VideoDecoder_drain(GstVideoDecoder*);
+// extern GstFlowReturn _goglib_gstvideo1_VideoDecoder_finish(GstVideoDecoder*);
+// extern gboolean _goglib_gstvideo1_VideoDecoder_flush(GstVideoDecoder*);
+// extern GstCaps* _goglib_gstvideo1_VideoDecoder_getcaps(GstVideoDecoder*, GstCaps*);
+// extern GstFlowReturn _goglib_gstvideo1_VideoDecoder_handle_frame(GstVideoDecoder*, GstVideoCodecFrame*);
+// extern gboolean _goglib_gstvideo1_VideoDecoder_handle_missing_data(GstVideoDecoder*, GstClockTime, GstClockTime);
+// extern gboolean _goglib_gstvideo1_VideoDecoder_negotiate(GstVideoDecoder*);
+// extern gboolean _goglib_gstvideo1_VideoDecoder_open(GstVideoDecoder*);
+// extern GstFlowReturn _goglib_gstvideo1_VideoDecoder_parse(GstVideoDecoder*, GstVideoCodecFrame*, GstAdapter*, gboolean);
+// extern gboolean _goglib_gstvideo1_VideoDecoder_propose_allocation(GstVideoDecoder*, GstQuery*);
+// extern gboolean _goglib_gstvideo1_VideoDecoder_reset(GstVideoDecoder*, gboolean);
+// extern gboolean _goglib_gstvideo1_VideoDecoder_set_format(GstVideoDecoder*, GstVideoCodecState*);
+// extern gboolean _goglib_gstvideo1_VideoDecoder_sink_event(GstVideoDecoder*, GstEvent*);
+// extern gboolean _goglib_gstvideo1_VideoDecoder_sink_query(GstVideoDecoder*, GstQuery*);
+// extern gboolean _goglib_gstvideo1_VideoDecoder_src_event(GstVideoDecoder*, GstEvent*);
+// extern gboolean _goglib_gstvideo1_VideoDecoder_src_query(GstVideoDecoder*, GstQuery*);
+// extern gboolean _goglib_gstvideo1_VideoDecoder_start(GstVideoDecoder*);
+// extern gboolean _goglib_gstvideo1_VideoDecoder_stop(GstVideoDecoder*);
+// extern gboolean _goglib_gstvideo1_VideoDecoder_transform_meta(GstVideoDecoder*, GstVideoCodecFrame*, GstMeta*);
+// gboolean _goglib_gstvideo1_VideoDecoder_virtual_close(void* fnptr, GstVideoDecoder* carg0) {
 // 	return ((gboolean (*) (GstVideoDecoder*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_decide_allocation(void* fnptr, GstVideoDecoder* carg0, GstQuery* carg1) {
+// gboolean _goglib_gstvideo1_VideoDecoder_virtual_decide_allocation(void* fnptr, GstVideoDecoder* carg0, GstQuery* carg1) {
 // 	return ((gboolean (*) (GstVideoDecoder*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// GstFlowReturn _gotk4_gstvideo1_VideoDecoder_virtual_drain(void* fnptr, GstVideoDecoder* carg0) {
+// GstFlowReturn _goglib_gstvideo1_VideoDecoder_virtual_drain(void* fnptr, GstVideoDecoder* carg0) {
 // 	return ((GstFlowReturn (*) (GstVideoDecoder*))(fnptr))(carg0);
 // }
-// GstFlowReturn _gotk4_gstvideo1_VideoDecoder_virtual_finish(void* fnptr, GstVideoDecoder* carg0) {
+// GstFlowReturn _goglib_gstvideo1_VideoDecoder_virtual_finish(void* fnptr, GstVideoDecoder* carg0) {
 // 	return ((GstFlowReturn (*) (GstVideoDecoder*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_flush(void* fnptr, GstVideoDecoder* carg0) {
+// gboolean _goglib_gstvideo1_VideoDecoder_virtual_flush(void* fnptr, GstVideoDecoder* carg0) {
 // 	return ((gboolean (*) (GstVideoDecoder*))(fnptr))(carg0);
 // }
-// GstCaps* _gotk4_gstvideo1_VideoDecoder_virtual_getcaps(void* fnptr, GstVideoDecoder* carg0, GstCaps* carg1) {
+// GstCaps* _goglib_gstvideo1_VideoDecoder_virtual_getcaps(void* fnptr, GstVideoDecoder* carg0, GstCaps* carg1) {
 // 	return ((GstCaps* (*) (GstVideoDecoder*, GstCaps*))(fnptr))(carg0, carg1);
 // }
-// GstFlowReturn _gotk4_gstvideo1_VideoDecoder_virtual_handle_frame(void* fnptr, GstVideoDecoder* carg0, GstVideoCodecFrame* carg1) {
+// GstFlowReturn _goglib_gstvideo1_VideoDecoder_virtual_handle_frame(void* fnptr, GstVideoDecoder* carg0, GstVideoCodecFrame* carg1) {
 // 	return ((GstFlowReturn (*) (GstVideoDecoder*, GstVideoCodecFrame*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_handle_missing_data(void* fnptr, GstVideoDecoder* carg0, GstClockTime carg1, GstClockTime carg2) {
+// gboolean _goglib_gstvideo1_VideoDecoder_virtual_handle_missing_data(void* fnptr, GstVideoDecoder* carg0, GstClockTime carg1, GstClockTime carg2) {
 // 	return ((gboolean (*) (GstVideoDecoder*, GstClockTime, GstClockTime))(fnptr))(carg0, carg1, carg2);
 // }
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_negotiate(void* fnptr, GstVideoDecoder* carg0) {
+// gboolean _goglib_gstvideo1_VideoDecoder_virtual_negotiate(void* fnptr, GstVideoDecoder* carg0) {
 // 	return ((gboolean (*) (GstVideoDecoder*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_open(void* fnptr, GstVideoDecoder* carg0) {
+// gboolean _goglib_gstvideo1_VideoDecoder_virtual_open(void* fnptr, GstVideoDecoder* carg0) {
 // 	return ((gboolean (*) (GstVideoDecoder*))(fnptr))(carg0);
 // }
-// GstFlowReturn _gotk4_gstvideo1_VideoDecoder_virtual_parse(void* fnptr, GstVideoDecoder* carg0, GstVideoCodecFrame* carg1, GstAdapter* carg2, gboolean carg3) {
+// GstFlowReturn _goglib_gstvideo1_VideoDecoder_virtual_parse(void* fnptr, GstVideoDecoder* carg0, GstVideoCodecFrame* carg1, GstAdapter* carg2, gboolean carg3) {
 // 	return ((GstFlowReturn (*) (GstVideoDecoder*, GstVideoCodecFrame*, GstAdapter*, gboolean))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_propose_allocation(void* fnptr, GstVideoDecoder* carg0, GstQuery* carg1) {
+// gboolean _goglib_gstvideo1_VideoDecoder_virtual_propose_allocation(void* fnptr, GstVideoDecoder* carg0, GstQuery* carg1) {
 // 	return ((gboolean (*) (GstVideoDecoder*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_reset(void* fnptr, GstVideoDecoder* carg0, gboolean carg1) {
+// gboolean _goglib_gstvideo1_VideoDecoder_virtual_reset(void* fnptr, GstVideoDecoder* carg0, gboolean carg1) {
 // 	return ((gboolean (*) (GstVideoDecoder*, gboolean))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_set_format(void* fnptr, GstVideoDecoder* carg0, GstVideoCodecState* carg1) {
+// gboolean _goglib_gstvideo1_VideoDecoder_virtual_set_format(void* fnptr, GstVideoDecoder* carg0, GstVideoCodecState* carg1) {
 // 	return ((gboolean (*) (GstVideoDecoder*, GstVideoCodecState*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_sink_event(void* fnptr, GstVideoDecoder* carg0, GstEvent* carg1) {
+// gboolean _goglib_gstvideo1_VideoDecoder_virtual_sink_event(void* fnptr, GstVideoDecoder* carg0, GstEvent* carg1) {
 // 	return ((gboolean (*) (GstVideoDecoder*, GstEvent*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_sink_query(void* fnptr, GstVideoDecoder* carg0, GstQuery* carg1) {
+// gboolean _goglib_gstvideo1_VideoDecoder_virtual_sink_query(void* fnptr, GstVideoDecoder* carg0, GstQuery* carg1) {
 // 	return ((gboolean (*) (GstVideoDecoder*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_src_event(void* fnptr, GstVideoDecoder* carg0, GstEvent* carg1) {
+// gboolean _goglib_gstvideo1_VideoDecoder_virtual_src_event(void* fnptr, GstVideoDecoder* carg0, GstEvent* carg1) {
 // 	return ((gboolean (*) (GstVideoDecoder*, GstEvent*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_src_query(void* fnptr, GstVideoDecoder* carg0, GstQuery* carg1) {
+// gboolean _goglib_gstvideo1_VideoDecoder_virtual_src_query(void* fnptr, GstVideoDecoder* carg0, GstQuery* carg1) {
 // 	return ((gboolean (*) (GstVideoDecoder*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_start(void* fnptr, GstVideoDecoder* carg0) {
+// gboolean _goglib_gstvideo1_VideoDecoder_virtual_start(void* fnptr, GstVideoDecoder* carg0) {
 // 	return ((gboolean (*) (GstVideoDecoder*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_stop(void* fnptr, GstVideoDecoder* carg0) {
+// gboolean _goglib_gstvideo1_VideoDecoder_virtual_stop(void* fnptr, GstVideoDecoder* carg0) {
 // 	return ((gboolean (*) (GstVideoDecoder*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_transform_meta(void* fnptr, GstVideoDecoder* carg0, GstVideoCodecFrame* carg1, GstMeta* carg2) {
+// gboolean _goglib_gstvideo1_VideoDecoder_virtual_transform_meta(void* fnptr, GstVideoDecoder* carg0, GstVideoCodecFrame* carg1, GstMeta* carg2) {
 // 	return ((gboolean (*) (GstVideoDecoder*, GstVideoCodecFrame*, GstMeta*))(fnptr))(carg0, carg1, carg2);
 // }
-// extern gboolean _gotk4_gstvideo1_VideoEncoder_close(GstVideoEncoder*);
-// extern gboolean _gotk4_gstvideo1_VideoEncoder_decide_allocation(GstVideoEncoder*, GstQuery*);
-// extern GstFlowReturn _gotk4_gstvideo1_VideoEncoder_finish(GstVideoEncoder*);
-// extern gboolean _gotk4_gstvideo1_VideoEncoder_flush(GstVideoEncoder*);
-// extern GstCaps* _gotk4_gstvideo1_VideoEncoder_getcaps(GstVideoEncoder*, GstCaps*);
-// extern GstFlowReturn _gotk4_gstvideo1_VideoEncoder_handle_frame(GstVideoEncoder*, GstVideoCodecFrame*);
-// extern gboolean _gotk4_gstvideo1_VideoEncoder_negotiate(GstVideoEncoder*);
-// extern gboolean _gotk4_gstvideo1_VideoEncoder_open(GstVideoEncoder*);
-// extern GstFlowReturn _gotk4_gstvideo1_VideoEncoder_pre_push(GstVideoEncoder*, GstVideoCodecFrame*);
-// extern gboolean _gotk4_gstvideo1_VideoEncoder_propose_allocation(GstVideoEncoder*, GstQuery*);
-// extern gboolean _gotk4_gstvideo1_VideoEncoder_reset(GstVideoEncoder*, gboolean);
-// extern gboolean _gotk4_gstvideo1_VideoEncoder_set_format(GstVideoEncoder*, GstVideoCodecState*);
-// extern gboolean _gotk4_gstvideo1_VideoEncoder_sink_event(GstVideoEncoder*, GstEvent*);
-// extern gboolean _gotk4_gstvideo1_VideoEncoder_sink_query(GstVideoEncoder*, GstQuery*);
-// extern gboolean _gotk4_gstvideo1_VideoEncoder_src_event(GstVideoEncoder*, GstEvent*);
-// extern gboolean _gotk4_gstvideo1_VideoEncoder_src_query(GstVideoEncoder*, GstQuery*);
-// extern gboolean _gotk4_gstvideo1_VideoEncoder_start(GstVideoEncoder*);
-// extern gboolean _gotk4_gstvideo1_VideoEncoder_stop(GstVideoEncoder*);
-// extern gboolean _gotk4_gstvideo1_VideoEncoder_transform_meta(GstVideoEncoder*, GstVideoCodecFrame*, GstMeta*);
-// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_close(void* fnptr, GstVideoEncoder* carg0) {
+// extern gboolean _goglib_gstvideo1_VideoEncoder_close(GstVideoEncoder*);
+// extern gboolean _goglib_gstvideo1_VideoEncoder_decide_allocation(GstVideoEncoder*, GstQuery*);
+// extern GstFlowReturn _goglib_gstvideo1_VideoEncoder_finish(GstVideoEncoder*);
+// extern gboolean _goglib_gstvideo1_VideoEncoder_flush(GstVideoEncoder*);
+// extern GstCaps* _goglib_gstvideo1_VideoEncoder_getcaps(GstVideoEncoder*, GstCaps*);
+// extern GstFlowReturn _goglib_gstvideo1_VideoEncoder_handle_frame(GstVideoEncoder*, GstVideoCodecFrame*);
+// extern gboolean _goglib_gstvideo1_VideoEncoder_negotiate(GstVideoEncoder*);
+// extern gboolean _goglib_gstvideo1_VideoEncoder_open(GstVideoEncoder*);
+// extern GstFlowReturn _goglib_gstvideo1_VideoEncoder_pre_push(GstVideoEncoder*, GstVideoCodecFrame*);
+// extern gboolean _goglib_gstvideo1_VideoEncoder_propose_allocation(GstVideoEncoder*, GstQuery*);
+// extern gboolean _goglib_gstvideo1_VideoEncoder_reset(GstVideoEncoder*, gboolean);
+// extern gboolean _goglib_gstvideo1_VideoEncoder_set_format(GstVideoEncoder*, GstVideoCodecState*);
+// extern gboolean _goglib_gstvideo1_VideoEncoder_sink_event(GstVideoEncoder*, GstEvent*);
+// extern gboolean _goglib_gstvideo1_VideoEncoder_sink_query(GstVideoEncoder*, GstQuery*);
+// extern gboolean _goglib_gstvideo1_VideoEncoder_src_event(GstVideoEncoder*, GstEvent*);
+// extern gboolean _goglib_gstvideo1_VideoEncoder_src_query(GstVideoEncoder*, GstQuery*);
+// extern gboolean _goglib_gstvideo1_VideoEncoder_start(GstVideoEncoder*);
+// extern gboolean _goglib_gstvideo1_VideoEncoder_stop(GstVideoEncoder*);
+// extern gboolean _goglib_gstvideo1_VideoEncoder_transform_meta(GstVideoEncoder*, GstVideoCodecFrame*, GstMeta*);
+// gboolean _goglib_gstvideo1_VideoEncoder_virtual_close(void* fnptr, GstVideoEncoder* carg0) {
 // 	return ((gboolean (*) (GstVideoEncoder*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_decide_allocation(void* fnptr, GstVideoEncoder* carg0, GstQuery* carg1) {
+// gboolean _goglib_gstvideo1_VideoEncoder_virtual_decide_allocation(void* fnptr, GstVideoEncoder* carg0, GstQuery* carg1) {
 // 	return ((gboolean (*) (GstVideoEncoder*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// GstFlowReturn _gotk4_gstvideo1_VideoEncoder_virtual_finish(void* fnptr, GstVideoEncoder* carg0) {
+// GstFlowReturn _goglib_gstvideo1_VideoEncoder_virtual_finish(void* fnptr, GstVideoEncoder* carg0) {
 // 	return ((GstFlowReturn (*) (GstVideoEncoder*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_flush(void* fnptr, GstVideoEncoder* carg0) {
+// gboolean _goglib_gstvideo1_VideoEncoder_virtual_flush(void* fnptr, GstVideoEncoder* carg0) {
 // 	return ((gboolean (*) (GstVideoEncoder*))(fnptr))(carg0);
 // }
-// GstCaps* _gotk4_gstvideo1_VideoEncoder_virtual_getcaps(void* fnptr, GstVideoEncoder* carg0, GstCaps* carg1) {
+// GstCaps* _goglib_gstvideo1_VideoEncoder_virtual_getcaps(void* fnptr, GstVideoEncoder* carg0, GstCaps* carg1) {
 // 	return ((GstCaps* (*) (GstVideoEncoder*, GstCaps*))(fnptr))(carg0, carg1);
 // }
-// GstFlowReturn _gotk4_gstvideo1_VideoEncoder_virtual_handle_frame(void* fnptr, GstVideoEncoder* carg0, GstVideoCodecFrame* carg1) {
+// GstFlowReturn _goglib_gstvideo1_VideoEncoder_virtual_handle_frame(void* fnptr, GstVideoEncoder* carg0, GstVideoCodecFrame* carg1) {
 // 	return ((GstFlowReturn (*) (GstVideoEncoder*, GstVideoCodecFrame*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_negotiate(void* fnptr, GstVideoEncoder* carg0) {
+// gboolean _goglib_gstvideo1_VideoEncoder_virtual_negotiate(void* fnptr, GstVideoEncoder* carg0) {
 // 	return ((gboolean (*) (GstVideoEncoder*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_open(void* fnptr, GstVideoEncoder* carg0) {
+// gboolean _goglib_gstvideo1_VideoEncoder_virtual_open(void* fnptr, GstVideoEncoder* carg0) {
 // 	return ((gboolean (*) (GstVideoEncoder*))(fnptr))(carg0);
 // }
-// GstFlowReturn _gotk4_gstvideo1_VideoEncoder_virtual_pre_push(void* fnptr, GstVideoEncoder* carg0, GstVideoCodecFrame* carg1) {
+// GstFlowReturn _goglib_gstvideo1_VideoEncoder_virtual_pre_push(void* fnptr, GstVideoEncoder* carg0, GstVideoCodecFrame* carg1) {
 // 	return ((GstFlowReturn (*) (GstVideoEncoder*, GstVideoCodecFrame*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_propose_allocation(void* fnptr, GstVideoEncoder* carg0, GstQuery* carg1) {
+// gboolean _goglib_gstvideo1_VideoEncoder_virtual_propose_allocation(void* fnptr, GstVideoEncoder* carg0, GstQuery* carg1) {
 // 	return ((gboolean (*) (GstVideoEncoder*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_reset(void* fnptr, GstVideoEncoder* carg0, gboolean carg1) {
+// gboolean _goglib_gstvideo1_VideoEncoder_virtual_reset(void* fnptr, GstVideoEncoder* carg0, gboolean carg1) {
 // 	return ((gboolean (*) (GstVideoEncoder*, gboolean))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_set_format(void* fnptr, GstVideoEncoder* carg0, GstVideoCodecState* carg1) {
+// gboolean _goglib_gstvideo1_VideoEncoder_virtual_set_format(void* fnptr, GstVideoEncoder* carg0, GstVideoCodecState* carg1) {
 // 	return ((gboolean (*) (GstVideoEncoder*, GstVideoCodecState*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_sink_event(void* fnptr, GstVideoEncoder* carg0, GstEvent* carg1) {
+// gboolean _goglib_gstvideo1_VideoEncoder_virtual_sink_event(void* fnptr, GstVideoEncoder* carg0, GstEvent* carg1) {
 // 	return ((gboolean (*) (GstVideoEncoder*, GstEvent*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_sink_query(void* fnptr, GstVideoEncoder* carg0, GstQuery* carg1) {
+// gboolean _goglib_gstvideo1_VideoEncoder_virtual_sink_query(void* fnptr, GstVideoEncoder* carg0, GstQuery* carg1) {
 // 	return ((gboolean (*) (GstVideoEncoder*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_src_event(void* fnptr, GstVideoEncoder* carg0, GstEvent* carg1) {
+// gboolean _goglib_gstvideo1_VideoEncoder_virtual_src_event(void* fnptr, GstVideoEncoder* carg0, GstEvent* carg1) {
 // 	return ((gboolean (*) (GstVideoEncoder*, GstEvent*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_src_query(void* fnptr, GstVideoEncoder* carg0, GstQuery* carg1) {
+// gboolean _goglib_gstvideo1_VideoEncoder_virtual_src_query(void* fnptr, GstVideoEncoder* carg0, GstQuery* carg1) {
 // 	return ((gboolean (*) (GstVideoEncoder*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_start(void* fnptr, GstVideoEncoder* carg0) {
+// gboolean _goglib_gstvideo1_VideoEncoder_virtual_start(void* fnptr, GstVideoEncoder* carg0) {
 // 	return ((gboolean (*) (GstVideoEncoder*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_stop(void* fnptr, GstVideoEncoder* carg0) {
+// gboolean _goglib_gstvideo1_VideoEncoder_virtual_stop(void* fnptr, GstVideoEncoder* carg0) {
 // 	return ((gboolean (*) (GstVideoEncoder*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_transform_meta(void* fnptr, GstVideoEncoder* carg0, GstVideoCodecFrame* carg1, GstMeta* carg2) {
+// gboolean _goglib_gstvideo1_VideoEncoder_virtual_transform_meta(void* fnptr, GstVideoEncoder* carg0, GstVideoCodecFrame* carg1, GstMeta* carg2) {
 // 	return ((gboolean (*) (GstVideoEncoder*, GstVideoCodecFrame*, GstMeta*))(fnptr))(carg0, carg1, carg2);
 // }
-// extern gboolean _gotk4_gstvideo1_VideoFilter_set_info(GstVideoFilter*, GstCaps*, GstVideoInfo*, GstCaps*, GstVideoInfo*);
-// extern GstFlowReturn _gotk4_gstvideo1_VideoFilter_transform_frame(GstVideoFilter*, GstVideoFrame*, GstVideoFrame*);
-// extern GstFlowReturn _gotk4_gstvideo1_VideoFilter_transform_frame_ip(GstVideoFilter*, GstVideoFrame*);
-// gboolean _gotk4_gstvideo1_VideoFilter_virtual_set_info(void* fnptr, GstVideoFilter* carg0, GstCaps* carg1, GstVideoInfo* carg2, GstCaps* carg3, GstVideoInfo* carg4) {
+// extern gboolean _goglib_gstvideo1_VideoFilter_set_info(GstVideoFilter*, GstCaps*, GstVideoInfo*, GstCaps*, GstVideoInfo*);
+// extern GstFlowReturn _goglib_gstvideo1_VideoFilter_transform_frame(GstVideoFilter*, GstVideoFrame*, GstVideoFrame*);
+// extern GstFlowReturn _goglib_gstvideo1_VideoFilter_transform_frame_ip(GstVideoFilter*, GstVideoFrame*);
+// gboolean _goglib_gstvideo1_VideoFilter_virtual_set_info(void* fnptr, GstVideoFilter* carg0, GstCaps* carg1, GstVideoInfo* carg2, GstCaps* carg3, GstVideoInfo* carg4) {
 // 	return ((gboolean (*) (GstVideoFilter*, GstCaps*, GstVideoInfo*, GstCaps*, GstVideoInfo*))(fnptr))(carg0, carg1, carg2, carg3, carg4);
 // }
-// GstFlowReturn _gotk4_gstvideo1_VideoFilter_virtual_transform_frame(void* fnptr, GstVideoFilter* carg0, GstVideoFrame* carg1, GstVideoFrame* carg2) {
+// GstFlowReturn _goglib_gstvideo1_VideoFilter_virtual_transform_frame(void* fnptr, GstVideoFilter* carg0, GstVideoFrame* carg1, GstVideoFrame* carg2) {
 // 	return ((GstFlowReturn (*) (GstVideoFilter*, GstVideoFrame*, GstVideoFrame*))(fnptr))(carg0, carg1, carg2);
 // }
-// GstFlowReturn _gotk4_gstvideo1_VideoFilter_virtual_transform_frame_ip(void* fnptr, GstVideoFilter* carg0, GstVideoFrame* carg1) {
+// GstFlowReturn _goglib_gstvideo1_VideoFilter_virtual_transform_frame_ip(void* fnptr, GstVideoFilter* carg0, GstVideoFrame* carg1) {
 // 	return ((GstFlowReturn (*) (GstVideoFilter*, GstVideoFrame*))(fnptr))(carg0, carg1);
 // }
-// extern gboolean _gotk4_gstvideo1_VideoSink_set_info(GstVideoSink*, GstCaps*, const GstVideoInfo*);
-// extern GstFlowReturn _gotk4_gstvideo1_VideoSink_show_frame(GstVideoSink*, GstBuffer*);
-// gboolean _gotk4_gstvideo1_VideoSink_virtual_set_info(void* fnptr, GstVideoSink* carg0, GstCaps* carg1, const GstVideoInfo* carg2) {
+// extern gboolean _goglib_gstvideo1_VideoSink_set_info(GstVideoSink*, GstCaps*, const GstVideoInfo*);
+// extern GstFlowReturn _goglib_gstvideo1_VideoSink_show_frame(GstVideoSink*, GstBuffer*);
+// gboolean _goglib_gstvideo1_VideoSink_virtual_set_info(void* fnptr, GstVideoSink* carg0, GstCaps* carg1, const GstVideoInfo* carg2) {
 // 	return ((gboolean (*) (GstVideoSink*, GstCaps*, const GstVideoInfo*))(fnptr))(carg0, carg1, carg2);
 // }
-// GstFlowReturn _gotk4_gstvideo1_VideoSink_virtual_show_frame(void* fnptr, GstVideoSink* carg0, GstBuffer* carg1) {
+// GstFlowReturn _goglib_gstvideo1_VideoSink_virtual_show_frame(void* fnptr, GstVideoSink* carg0, GstBuffer* carg1) {
 // 	return ((GstFlowReturn (*) (GstVideoSink*, GstBuffer*))(fnptr))(carg0, carg1);
 // }
-// extern void _gotk4_gstvideo1_VideoAggregatorConvertPad_create_conversion_info(GstVideoAggregatorConvertPad*, GstVideoAggregator*, GstVideoInfo*);
-// void _gotk4_gstvideo1_VideoAggregatorConvertPad_virtual_create_conversion_info(void* fnptr, GstVideoAggregatorConvertPad* carg0, GstVideoAggregator* carg1, GstVideoInfo* carg2) {
+// extern void _goglib_gstvideo1_VideoAggregatorConvertPad_create_conversion_info(GstVideoAggregatorConvertPad*, GstVideoAggregator*, GstVideoInfo*);
+// void _goglib_gstvideo1_VideoAggregatorConvertPad_virtual_create_conversion_info(void* fnptr, GstVideoAggregatorConvertPad* carg0, GstVideoAggregator* carg1, GstVideoInfo* carg2) {
 // 	return ((void (*) (GstVideoAggregatorConvertPad*, GstVideoAggregator*, GstVideoInfo*))(fnptr))(carg0, carg1, carg2);
 // }
 import "C"
@@ -5570,14 +5567,6 @@ func (f VideoTimeCodeFlags) String() string {
 	return "VideoTimeCodeFlags(" + strings.Join(parts, "|") + ")"
 }
 
-// VideoConvertSampleCallback wraps GstVideoConvertSampleCallback
-// 
-// The function takes the following parameters:
-// 
-// 	- sample *gst.Sample 
-// 	- err error 
-type VideoConvertSampleCallback func(sample *gst.Sample, err error)
-
 // AncillaryMetaAPIGetType wraps gst_ancillary_meta_api_get_type
 // 
 // The function returns the following values:
@@ -5760,7 +5749,7 @@ func BufferAddVideoBarMeta(buffer *gst.Buffer, field uint8, isLetterbox bool, ba
 func BufferAddVideoCaptionMeta(buffer *gst.Buffer, captionType VideoCaptionType, data []uint8) *VideoCaptionMeta {
 	var carg1 *C.GstBuffer           // in, none, converted
 	var carg2 C.GstVideoCaptionType  // in, none, casted
-	var carg3 *C.guint8              // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg4)
+	var carg3 *C.guint8              // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg4)
 	var carg4 C.gsize                // implicit
 	var cret  *C.GstVideoCaptionMeta // return, none, converted
 
@@ -5769,7 +5758,7 @@ func BufferAddVideoCaptionMeta(buffer *gst.Buffer, captionType VideoCaptionType,
 	_ = data
 	_ = carg3
 	_ = carg4
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_buffer_add_video_caption_meta(carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(buffer)
@@ -5887,8 +5876,8 @@ func BufferAddVideoMetaFull(buffer *gst.Buffer, flags VideoFrameFlags, format Vi
 	var carg4 C.guint              // in, none, casted
 	var carg5 C.guint              // in, none, casted
 	var carg6 C.guint              // in, none, casted
-	var carg7 *C.gsize             // in, transfer: none, C Pointers: 1, Name: array[gsize], array (inner: *typesystem.CastablePrimitive, fixed-size: 4)
-	var carg8 *C.gint              // in, transfer: none, C Pointers: 1, Name: array[gint], array (inner: *typesystem.CastablePrimitive, fixed-size: 4)
+	var carg7 *C.gsize             // in, none, array fixed size (inner: gsize, size: 4)
+	var carg8 *C.gint              // in, none, array fixed size (inner: gint, size: 4)
 	var cret  *C.GstVideoMeta      // return, none, converted
 
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
@@ -5897,12 +5886,20 @@ func BufferAddVideoMetaFull(buffer *gst.Buffer, flags VideoFrameFlags, format Vi
 	carg4 = C.guint(width)
 	carg5 = C.guint(height)
 	carg6 = C.guint(nPlanes)
-	_ = offset
-	_ = carg7
-	panic("unimplemented conversion of [4]uint (const gsize*)")
-	_ = stride
-	_ = carg8
-	panic("unimplemented conversion of [4]int32 (const gint*)")
+	{
+		var carr [4]C.gsize
+		for i := range 4 {
+			carr[i] = C.gsize(offset[i])
+			carg7 = unsafe.SliceData(carr[:])
+		}
+	}
+	{
+		var carr [4]C.gint
+		for i := range 4 {
+			carr[i] = C.gint(stride[i])
+			carg8 = unsafe.SliceData(carr[:])
+		}
+	}
 
 	cret = C.gst_buffer_add_video_meta_full(carg1, carg2, carg3, carg4, carg5, carg6, carg7, carg8)
 	runtime.KeepAlive(buffer)
@@ -6078,11 +6075,11 @@ func BufferAddVideoSeiUserDataUnregisteredMeta(buffer *gst.Buffer, uuid *uint8, 
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 	_ = uuid
 	_ = carg2
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	panic("unimplemented conversion of *uint8 (guint8*) because of no basic converter found")
 	if data != nil {
 		_ = data
 		_ = carg3
-		panic("unimplemented conversion of *uint8 (guint8*)")
+		panic("unimplemented conversion of *uint8 (guint8*) because of no basic converter found")
 	}
 	carg4 = C.gsize(size)
 
@@ -6463,7 +6460,7 @@ func VideoBlendScaleLinearRgba(src *VideoInfo, srcBuffer *gst.Buffer, destHeight
 
 	_ = dest
 	_ = carg5
-	panic("unimplemented conversion of VideoInfo (GstVideoInfo)")
+	panic("unimplemented conversion of VideoInfo (GstVideoInfo) because of unknown reason")
 	destBuffer = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(carg6))
 
 	return dest, destBuffer
@@ -6581,7 +6578,7 @@ func VideoCenterRect(src *VideoRectangle, dst *VideoRectangle, scaling bool) Vid
 
 	_ = result
 	_ = carg3
-	panic("unimplemented conversion of VideoRectangle (GstVideoRectangle)")
+	panic("unimplemented conversion of VideoRectangle (GstVideoRectangle) because of unknown reason")
 
 	return result
 }
@@ -6650,50 +6647,6 @@ func VideoConvertSample(sample *gst.Sample, toCaps *gst.Caps, timeout gst.ClockT
 	return goret, _goerr
 }
 
-// VideoConvertSampleAsync wraps gst_video_convert_sample_async
-// 
-// The function takes the following parameters:
-// 
-// 	- sample *gst.Sample: a #GstSample 
-// 	- toCaps *gst.Caps: the #GstCaps to convert to 
-// 	- timeout gst.ClockTime: the maximum amount of time allowed for the processing. 
-// 	- callback VideoConvertSampleCallback: %GstVideoConvertSampleCallback that will be called after conversion. 
-//
-// Converts a raw video buffer into the specified output caps.
-// 
-// The output caps can be any raw video formats or any image formats (jpeg, png, ...).
-// 
-// The width, height and pixel-aspect-ratio can also be specified in the output caps.
-// 
-// @callback will be called after conversion, when an error occurred or if conversion didn't
-// finish after @timeout. @callback will always be called from the thread default
-// %GMainContext, see g_main_context_get_thread_default(). If GLib before 2.22 is used,
-// this will always be the global default main context.
-// 
-// @destroy_notify will be called after the callback was called and @user_data is not needed
-// anymore.
-func VideoConvertSampleAsync(sample *gst.Sample, toCaps *gst.Caps, timeout gst.ClockTime, callback VideoConvertSampleCallback) {
-	var carg1 *C.GstSample                    // in, none, converted
-	var carg2 *C.GstCaps                      // in, none, converted
-	var carg3 C.GstClockTime                  // in, none, casted, alias
-	var carg4 C.GstVideoConvertSampleCallback // callback, scope: notified, closure: carg5, destroy: carg6
-	var carg5 C.gpointer                      // implicit
-	var carg6 C.GDestroyNotify                // implicit
-
-	carg1 = (*C.GstSample)(gst.UnsafeSampleToGlibNone(sample))
-	carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(toCaps))
-	carg3 = C.GstClockTime(timeout)
-	carg4 = (*[0]byte)(C._gotk4_gstvideo1_VideoConvertSampleCallback)
-	carg5 = C.gpointer(userdata.Register(callback))
-	carg6 = (C.GDestroyNotify)((*[0]byte)(C.destroyUserdata))
-
-	C.gst_video_convert_sample_async(carg1, carg2, carg3, carg4, carg5, carg6)
-	runtime.KeepAlive(sample)
-	runtime.KeepAlive(toCaps)
-	runtime.KeepAlive(timeout)
-	runtime.KeepAlive(callback)
-}
-
 // VideoCropMetaAPIGetType wraps gst_video_crop_meta_api_get_type
 // 
 // The function returns the following values:
@@ -6734,7 +6687,7 @@ func VideoDmaDrmFormatFromGstFormat(format VideoFormat, modifier *uint64) uint32
 	if modifier != nil {
 		_ = modifier
 		_ = carg2
-		panic("unimplemented conversion of *uint64 (guint64*)")
+		panic("unimplemented conversion of *uint64 (guint64*) because of no basic converter found")
 	}
 
 	cret = C.gst_video_dma_drm_format_from_gst_format(carg1, carg2)
@@ -7227,7 +7180,7 @@ func VideoEventParseUpstreamForceKeyUnit(event *gst.Event) (gst.ClockTime, bool,
 // template cpas.
 func VideoFormatsAny() (uint, []VideoFormat) {
 	var carg1 C.guint           // out, full, casted
-	var cret  *C.GstVideoFormat // return, transfer: none, C Pointers: 1, Name: array[VideoFormat], scope: , array (inner: *typesystem.Enum)
+	var cret  *C.GstVideoFormat // return, transfer: none, C Pointers: 1, Name: array[VideoFormat], scope: , array (inner GstVideoFormat (*typesystem.Enum))
 
 	cret = C.gst_video_formats_any(&carg1)
 
@@ -7237,7 +7190,7 @@ func VideoFormatsAny() (uint, []VideoFormat) {
 	len = uint(carg1)
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []VideoFormat (const GstVideoFormat*)")
+	panic("unimplemented conversion of []VideoFormat (const GstVideoFormat*) because of unknown reason")
 
 	return len, goret
 }
@@ -7252,7 +7205,7 @@ func VideoFormatsAny() (uint, []VideoFormat) {
 // Return all the raw video formats supported by GStreamer.
 func VideoFormatsRaw() (uint, []VideoFormat) {
 	var carg1 C.guint           // out, full, casted
-	var cret  *C.GstVideoFormat // return, transfer: none, C Pointers: 1, Name: array[VideoFormat], scope: , array (inner: *typesystem.Enum)
+	var cret  *C.GstVideoFormat // return, transfer: none, C Pointers: 1, Name: array[VideoFormat], scope: , array (inner GstVideoFormat (*typesystem.Enum))
 
 	cret = C.gst_video_formats_raw(&carg1)
 
@@ -7262,7 +7215,7 @@ func VideoFormatsRaw() (uint, []VideoFormat) {
 	len = uint(carg1)
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []VideoFormat (const GstVideoFormat*)")
+	panic("unimplemented conversion of []VideoFormat (const GstVideoFormat*) because of unknown reason")
 
 	return len, goret
 }
@@ -7415,14 +7368,14 @@ func VideoIsDmaDrmCaps(caps *gst.Caps) bool {
 // If @formats is %NULL returns a caps for all the supported raw video formats,
 // see gst_video_formats_raw().
 func VideoMakeRawCaps(formats []VideoFormat) *gst.Caps {
-	var carg1 *C.GstVideoFormat // in, transfer: none, C Pointers: 1, Name: array[VideoFormat], nullable, array (inner: *typesystem.Enum, length-by: carg2)
+	var carg1 *C.GstVideoFormat // in, transfer: none, C Pointers: 1, Name: array[VideoFormat], nullable, array (inner GstVideoFormat (*typesystem.Enum), length-by: carg2)
 	var carg2 C.guint           // implicit
 	var cret  *C.GstCaps        // return, full, converted
 
 	_ = formats
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []VideoFormat (const GstVideoFormat*)")
+	panic("unimplemented conversion of []VideoFormat (const GstVideoFormat*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_video_make_raw_caps(carg1, carg2)
 	runtime.KeepAlive(formats)
@@ -7450,7 +7403,7 @@ func VideoMakeRawCaps(formats []VideoFormat) *gst.Caps {
 // If @formats is %NULL returns a caps for all the supported video formats,
 // see gst_video_formats_raw().
 func VideoMakeRawCapsWithFeatures(formats []VideoFormat, features *gst.CapsFeatures) *gst.Caps {
-	var carg1 *C.GstVideoFormat  // in, transfer: none, C Pointers: 1, Name: array[VideoFormat], nullable, array (inner: *typesystem.Enum, length-by: carg2)
+	var carg1 *C.GstVideoFormat  // in, transfer: none, C Pointers: 1, Name: array[VideoFormat], nullable, array (inner GstVideoFormat (*typesystem.Enum), length-by: carg2)
 	var carg2 C.guint            // implicit
 	var carg3 *C.GstCapsFeatures // in, full, converted, nullable
 	var cret  *C.GstCaps         // return, full, converted
@@ -7458,7 +7411,7 @@ func VideoMakeRawCapsWithFeatures(formats []VideoFormat, features *gst.CapsFeatu
 	_ = formats
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []VideoFormat (const GstVideoFormat*)")
+	panic("unimplemented conversion of []VideoFormat (const GstVideoFormat*) because of unimplemented: non-fixed size array")
 	if features != nil {
 		carg3 = (*C.GstCapsFeatures)(gst.UnsafeCapsFeaturesToGlibFull(features))
 	}
@@ -9606,13 +9559,13 @@ func NavigationQuerySetAngles(query *gst.Query, curAngle uint, nAngles uint) {
 func NavigationQuerySetCommandsv(query *gst.Query, cmds []NavigationCommand) {
 	var carg1 *C.GstQuery             // in, none, converted
 	var carg2 C.gint                  // implicit
-	var carg3 *C.GstNavigationCommand // in, transfer: none, C Pointers: 1, Name: array[NavigationCommand], array (inner: *typesystem.Enum, length-by: carg2)
+	var carg3 *C.GstNavigationCommand // in, transfer: none, C Pointers: 1, Name: array[NavigationCommand], array (inner GstNavigationCommand (*typesystem.Enum), length-by: carg2)
 
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 	_ = cmds
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []NavigationCommand (GstNavigationCommand*)")
+	panic("unimplemented conversion of []NavigationCommand (GstNavigationCommand*) because of unimplemented: non-fixed size array")
 
 	C.gst_navigation_query_set_commandsv(carg1, carg2, carg3)
 	runtime.KeepAlive(query)
@@ -10891,10 +10844,10 @@ func UnsafeApplyColorBalanceChannelOverrides[Instance ColorBalanceChannel](gclas
 	pclass := (*C.GstColorBalanceChannelClass)(gclass)
 
 	if overrides.ValueChanged != nil {
-		pclass.value_changed = (*[0]byte)(C._gotk4_gstvideo1_ColorBalanceChannel_value_changed)
+		pclass.value_changed = (*[0]byte)(C._goglib_gstvideo1_ColorBalanceChannel_value_changed)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_ColorBalanceChannel_value_changed",
+			"_goglib_gstvideo1_ColorBalanceChannel_value_changed",
 			func(carg0 *C.GstColorBalanceChannel, carg1 C.gint) {
 				var channel Instance // go GstColorBalanceChannel subclass
 				var value   int32    // in, none, casted
@@ -10925,7 +10878,7 @@ func (channel *ColorBalanceChannelInstance) ParentValueChanged(value int32) {
 	carg0 = (*C.GstColorBalanceChannel)(UnsafeColorBalanceChannelToGlibNone(channel))
 	carg1 = C.gint(value)
 
-	C._gotk4_gstvideo1_ColorBalanceChannel_virtual_value_changed(unsafe.Pointer(parentclass.value_changed), carg0, carg1)
+	C._goglib_gstvideo1_ColorBalanceChannel_virtual_value_changed(unsafe.Pointer(parentclass.value_changed), carg0, carg1)
 	runtime.KeepAlive(channel)
 	runtime.KeepAlive(value)
 }
@@ -11182,10 +11135,10 @@ func UnsafeApplyVideoAggregatorOverrides[Instance VideoAggregator](gclass unsafe
 	pclass := (*C.GstVideoAggregatorClass)(gclass)
 
 	if overrides.AggregateFrames != nil {
-		pclass.aggregate_frames = (*[0]byte)(C._gotk4_gstvideo1_VideoAggregator_aggregate_frames)
+		pclass.aggregate_frames = (*[0]byte)(C._goglib_gstvideo1_VideoAggregator_aggregate_frames)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoAggregator_aggregate_frames",
+			"_goglib_gstvideo1_VideoAggregator_aggregate_frames",
 			func(carg0 *C.GstVideoAggregator, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
 				var videoaggregator Instance       // go GstVideoAggregator subclass
 				var outbuffer       *gst.Buffer    // in, none, converted
@@ -11204,10 +11157,10 @@ func UnsafeApplyVideoAggregatorOverrides[Instance VideoAggregator](gclass unsafe
 	}
 
 	if overrides.FindBestFormat != nil {
-		pclass.find_best_format = (*[0]byte)(C._gotk4_gstvideo1_VideoAggregator_find_best_format)
+		pclass.find_best_format = (*[0]byte)(C._goglib_gstvideo1_VideoAggregator_find_best_format)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoAggregator_find_best_format",
+			"_goglib_gstvideo1_VideoAggregator_find_best_format",
 			func(carg0 *C.GstVideoAggregator, carg1 *C.GstCaps, carg2 *C.GstVideoInfo, carg3 *C.gboolean) {
 				var vagg            Instance   // go GstVideoAggregator subclass
 				var downstreamCaps  *gst.Caps  // in, none, converted
@@ -11228,10 +11181,10 @@ func UnsafeApplyVideoAggregatorOverrides[Instance VideoAggregator](gclass unsafe
 	}
 
 	if overrides.UpdateCaps != nil {
-		pclass.update_caps = (*[0]byte)(C._gotk4_gstvideo1_VideoAggregator_update_caps)
+		pclass.update_caps = (*[0]byte)(C._goglib_gstvideo1_VideoAggregator_update_caps)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoAggregator_update_caps",
+			"_goglib_gstvideo1_VideoAggregator_update_caps",
 			func(carg0 *C.GstVideoAggregator, carg1 *C.GstCaps) (cret *C.GstCaps) {
 				var videoaggregator Instance  // go GstVideoAggregator subclass
 				var caps            *gst.Caps // in, none, converted
@@ -11277,7 +11230,7 @@ func (videoaggregator *VideoAggregatorInstance) ParentAggregateFrames(outbuffer 
 	carg0 = (*C.GstVideoAggregator)(UnsafeVideoAggregatorToGlibNone(videoaggregator))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(outbuffer))
 
-	cret = C._gotk4_gstvideo1_VideoAggregator_virtual_aggregate_frames(unsafe.Pointer(parentclass.aggregate_frames), carg0, carg1)
+	cret = C._goglib_gstvideo1_VideoAggregator_virtual_aggregate_frames(unsafe.Pointer(parentclass.aggregate_frames), carg0, carg1)
 	runtime.KeepAlive(videoaggregator)
 	runtime.KeepAlive(outbuffer)
 
@@ -11311,7 +11264,7 @@ func (vagg *VideoAggregatorInstance) ParentFindBestFormat(downstreamCaps *gst.Ca
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(downstreamCaps))
 	carg2 = (*C.GstVideoInfo)(UnsafeVideoInfoToGlibNone(bestInfo))
 
-	C._gotk4_gstvideo1_VideoAggregator_virtual_find_best_format(unsafe.Pointer(parentclass.find_best_format), carg0, carg1, carg2, &carg3)
+	C._goglib_gstvideo1_VideoAggregator_virtual_find_best_format(unsafe.Pointer(parentclass.find_best_format), carg0, carg1, carg2, &carg3)
 	runtime.KeepAlive(vagg)
 	runtime.KeepAlive(downstreamCaps)
 	runtime.KeepAlive(bestInfo)
@@ -11349,7 +11302,7 @@ func (videoaggregator *VideoAggregatorInstance) ParentUpdateCaps(caps *gst.Caps)
 	carg0 = (*C.GstVideoAggregator)(UnsafeVideoAggregatorToGlibNone(videoaggregator))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
-	cret = C._gotk4_gstvideo1_VideoAggregator_virtual_update_caps(unsafe.Pointer(parentclass.update_caps), carg0, carg1)
+	cret = C._goglib_gstvideo1_VideoAggregator_virtual_update_caps(unsafe.Pointer(parentclass.update_caps), carg0, carg1)
 	runtime.KeepAlive(videoaggregator)
 	runtime.KeepAlive(caps)
 
@@ -11747,10 +11700,10 @@ func UnsafeApplyVideoAggregatorPadOverrides[Instance VideoAggregatorPad](gclass 
 	pclass := (*C.GstVideoAggregatorPadClass)(gclass)
 
 	if overrides.CleanFrame != nil {
-		pclass.clean_frame = (*[0]byte)(C._gotk4_gstvideo1_VideoAggregatorPad_clean_frame)
+		pclass.clean_frame = (*[0]byte)(C._goglib_gstvideo1_VideoAggregatorPad_clean_frame)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoAggregatorPad_clean_frame",
+			"_goglib_gstvideo1_VideoAggregatorPad_clean_frame",
 			func(carg0 *C.GstVideoAggregatorPad, carg1 *C.GstVideoAggregator, carg2 *C.GstVideoFrame) {
 				var pad             Instance        // go GstVideoAggregatorPad subclass
 				var videoaggregator VideoAggregator // in, none, converted
@@ -11766,10 +11719,10 @@ func UnsafeApplyVideoAggregatorPadOverrides[Instance VideoAggregatorPad](gclass 
 	}
 
 	if overrides.PrepareFrame != nil {
-		pclass.prepare_frame = (*[0]byte)(C._gotk4_gstvideo1_VideoAggregatorPad_prepare_frame)
+		pclass.prepare_frame = (*[0]byte)(C._goglib_gstvideo1_VideoAggregatorPad_prepare_frame)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoAggregatorPad_prepare_frame",
+			"_goglib_gstvideo1_VideoAggregatorPad_prepare_frame",
 			func(carg0 *C.GstVideoAggregatorPad, carg1 *C.GstVideoAggregator, carg2 *C.GstBuffer, carg3 *C.GstVideoFrame) (cret C.gboolean) {
 				var pad             Instance        // go GstVideoAggregatorPad subclass
 				var videoaggregator VideoAggregator // in, none, converted
@@ -11794,10 +11747,10 @@ func UnsafeApplyVideoAggregatorPadOverrides[Instance VideoAggregatorPad](gclass 
 	}
 
 	if overrides.PrepareFrameFinish != nil {
-		pclass.prepare_frame_finish = (*[0]byte)(C._gotk4_gstvideo1_VideoAggregatorPad_prepare_frame_finish)
+		pclass.prepare_frame_finish = (*[0]byte)(C._goglib_gstvideo1_VideoAggregatorPad_prepare_frame_finish)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoAggregatorPad_prepare_frame_finish",
+			"_goglib_gstvideo1_VideoAggregatorPad_prepare_frame_finish",
 			func(carg0 *C.GstVideoAggregatorPad, carg1 *C.GstVideoAggregator, carg2 *C.GstVideoFrame) {
 				var pad             Instance        // go GstVideoAggregatorPad subclass
 				var videoaggregator VideoAggregator // in, none, converted
@@ -11813,10 +11766,10 @@ func UnsafeApplyVideoAggregatorPadOverrides[Instance VideoAggregatorPad](gclass 
 	}
 
 	if overrides.PrepareFrameStart != nil {
-		pclass.prepare_frame_start = (*[0]byte)(C._gotk4_gstvideo1_VideoAggregatorPad_prepare_frame_start)
+		pclass.prepare_frame_start = (*[0]byte)(C._goglib_gstvideo1_VideoAggregatorPad_prepare_frame_start)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoAggregatorPad_prepare_frame_start",
+			"_goglib_gstvideo1_VideoAggregatorPad_prepare_frame_start",
 			func(carg0 *C.GstVideoAggregatorPad, carg1 *C.GstVideoAggregator, carg2 *C.GstBuffer, carg3 *C.GstVideoFrame) {
 				var pad             Instance        // go GstVideoAggregatorPad subclass
 				var videoaggregator VideoAggregator // in, none, converted
@@ -11834,10 +11787,10 @@ func UnsafeApplyVideoAggregatorPadOverrides[Instance VideoAggregatorPad](gclass 
 	}
 
 	if overrides.UpdateConversionInfo != nil {
-		pclass.update_conversion_info = (*[0]byte)(C._gotk4_gstvideo1_VideoAggregatorPad_update_conversion_info)
+		pclass.update_conversion_info = (*[0]byte)(C._goglib_gstvideo1_VideoAggregatorPad_update_conversion_info)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoAggregatorPad_update_conversion_info",
+			"_goglib_gstvideo1_VideoAggregatorPad_update_conversion_info",
 			func(carg0 *C.GstVideoAggregatorPad) {
 				var pad Instance // go GstVideoAggregatorPad subclass
 
@@ -11869,7 +11822,7 @@ func (pad *VideoAggregatorPadInstance) ParentCleanFrame(videoaggregator VideoAgg
 	carg1 = (*C.GstVideoAggregator)(UnsafeVideoAggregatorToGlibNone(videoaggregator))
 	carg2 = (*C.GstVideoFrame)(UnsafeVideoFrameToGlibNone(preparedFrame))
 
-	C._gotk4_gstvideo1_VideoAggregatorPad_virtual_clean_frame(unsafe.Pointer(parentclass.clean_frame), carg0, carg1, carg2)
+	C._goglib_gstvideo1_VideoAggregatorPad_virtual_clean_frame(unsafe.Pointer(parentclass.clean_frame), carg0, carg1, carg2)
 	runtime.KeepAlive(pad)
 	runtime.KeepAlive(videoaggregator)
 	runtime.KeepAlive(preparedFrame)
@@ -11905,7 +11858,7 @@ func (pad *VideoAggregatorPadInstance) ParentPrepareFrame(videoaggregator VideoA
 	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 	carg3 = (*C.GstVideoFrame)(UnsafeVideoFrameToGlibNone(preparedFrame))
 
-	cret = C._gotk4_gstvideo1_VideoAggregatorPad_virtual_prepare_frame(unsafe.Pointer(parentclass.prepare_frame), carg0, carg1, carg2, carg3)
+	cret = C._goglib_gstvideo1_VideoAggregatorPad_virtual_prepare_frame(unsafe.Pointer(parentclass.prepare_frame), carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(pad)
 	runtime.KeepAlive(videoaggregator)
 	runtime.KeepAlive(buffer)
@@ -11942,7 +11895,7 @@ func (pad *VideoAggregatorPadInstance) ParentPrepareFrameFinish(videoaggregator 
 	carg1 = (*C.GstVideoAggregator)(UnsafeVideoAggregatorToGlibNone(videoaggregator))
 	carg2 = (*C.GstVideoFrame)(UnsafeVideoFrameToGlibNone(preparedFrame))
 
-	C._gotk4_gstvideo1_VideoAggregatorPad_virtual_prepare_frame_finish(unsafe.Pointer(parentclass.prepare_frame_finish), carg0, carg1, carg2)
+	C._goglib_gstvideo1_VideoAggregatorPad_virtual_prepare_frame_finish(unsafe.Pointer(parentclass.prepare_frame_finish), carg0, carg1, carg2)
 	runtime.KeepAlive(pad)
 	runtime.KeepAlive(videoaggregator)
 	runtime.KeepAlive(preparedFrame)
@@ -11973,7 +11926,7 @@ func (pad *VideoAggregatorPadInstance) ParentPrepareFrameStart(videoaggregator V
 	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 	carg3 = (*C.GstVideoFrame)(UnsafeVideoFrameToGlibNone(preparedFrame))
 
-	C._gotk4_gstvideo1_VideoAggregatorPad_virtual_prepare_frame_start(unsafe.Pointer(parentclass.prepare_frame_start), carg0, carg1, carg2, carg3)
+	C._goglib_gstvideo1_VideoAggregatorPad_virtual_prepare_frame_start(unsafe.Pointer(parentclass.prepare_frame_start), carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(pad)
 	runtime.KeepAlive(videoaggregator)
 	runtime.KeepAlive(buffer)
@@ -11992,7 +11945,7 @@ func (pad *VideoAggregatorPadInstance) ParentUpdateConversionInfo() {
 
 	carg0 = (*C.GstVideoAggregatorPad)(UnsafeVideoAggregatorPadToGlibNone(pad))
 
-	C._gotk4_gstvideo1_VideoAggregatorPad_virtual_update_conversion_info(unsafe.Pointer(parentclass.update_conversion_info), carg0)
+	C._goglib_gstvideo1_VideoAggregatorPad_virtual_update_conversion_info(unsafe.Pointer(parentclass.update_conversion_info), carg0)
 	runtime.KeepAlive(pad)
 }
 
@@ -13464,7 +13417,7 @@ func (decoder *VideoDecoderInstance) GetAllocator() (gst.Allocator, gst.Allocati
 	}
 	_ = params
 	_ = carg2
-	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams)")
+	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams) because of unknown reason")
 
 	return allocator, params
 }
@@ -14752,10 +14705,10 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 	pclass := (*C.GstVideoDecoderClass)(gclass)
 
 	if overrides.Close != nil {
-		pclass.close = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_close)
+		pclass.close = (*[0]byte)(C._goglib_gstvideo1_VideoDecoder_close)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoDecoder_close",
+			"_goglib_gstvideo1_VideoDecoder_close",
 			func(carg0 *C.GstVideoDecoder) (cret C.gboolean) {
 				var decoder Instance // go GstVideoDecoder subclass
 				var goret   bool     // return
@@ -14774,10 +14727,10 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 	}
 
 	if overrides.DecideAllocation != nil {
-		pclass.decide_allocation = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_decide_allocation)
+		pclass.decide_allocation = (*[0]byte)(C._goglib_gstvideo1_VideoDecoder_decide_allocation)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoDecoder_decide_allocation",
+			"_goglib_gstvideo1_VideoDecoder_decide_allocation",
 			func(carg0 *C.GstVideoDecoder, carg1 *C.GstQuery) (cret C.gboolean) {
 				var decoder Instance   // go GstVideoDecoder subclass
 				var query   *gst.Query // in, none, converted
@@ -14798,10 +14751,10 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 	}
 
 	if overrides.Drain != nil {
-		pclass.drain = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_drain)
+		pclass.drain = (*[0]byte)(C._goglib_gstvideo1_VideoDecoder_drain)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoDecoder_drain",
+			"_goglib_gstvideo1_VideoDecoder_drain",
 			func(carg0 *C.GstVideoDecoder) (cret C.GstFlowReturn) {
 				var decoder Instance       // go GstVideoDecoder subclass
 				var goret   gst.FlowReturn // return, none, casted
@@ -14818,10 +14771,10 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 	}
 
 	if overrides.Finish != nil {
-		pclass.finish = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_finish)
+		pclass.finish = (*[0]byte)(C._goglib_gstvideo1_VideoDecoder_finish)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoDecoder_finish",
+			"_goglib_gstvideo1_VideoDecoder_finish",
 			func(carg0 *C.GstVideoDecoder) (cret C.GstFlowReturn) {
 				var decoder Instance       // go GstVideoDecoder subclass
 				var goret   gst.FlowReturn // return, none, casted
@@ -14838,10 +14791,10 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 	}
 
 	if overrides.Flush != nil {
-		pclass.flush = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_flush)
+		pclass.flush = (*[0]byte)(C._goglib_gstvideo1_VideoDecoder_flush)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoDecoder_flush",
+			"_goglib_gstvideo1_VideoDecoder_flush",
 			func(carg0 *C.GstVideoDecoder) (cret C.gboolean) {
 				var decoder Instance // go GstVideoDecoder subclass
 				var goret   bool     // return
@@ -14860,10 +14813,10 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 	}
 
 	if overrides.Getcaps != nil {
-		pclass.getcaps = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_getcaps)
+		pclass.getcaps = (*[0]byte)(C._goglib_gstvideo1_VideoDecoder_getcaps)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoDecoder_getcaps",
+			"_goglib_gstvideo1_VideoDecoder_getcaps",
 			func(carg0 *C.GstVideoDecoder, carg1 *C.GstCaps) (cret *C.GstCaps) {
 				var decoder Instance  // go GstVideoDecoder subclass
 				var filter  *gst.Caps // in, none, converted
@@ -14882,10 +14835,10 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 	}
 
 	if overrides.HandleFrame != nil {
-		pclass.handle_frame = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_handle_frame)
+		pclass.handle_frame = (*[0]byte)(C._goglib_gstvideo1_VideoDecoder_handle_frame)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoDecoder_handle_frame",
+			"_goglib_gstvideo1_VideoDecoder_handle_frame",
 			func(carg0 *C.GstVideoDecoder, carg1 *C.GstVideoCodecFrame) (cret C.GstFlowReturn) {
 				var decoder Instance         // go GstVideoDecoder subclass
 				var frame   *VideoCodecFrame // in, full, converted
@@ -14904,10 +14857,10 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 	}
 
 	if overrides.HandleMissingData != nil {
-		pclass.handle_missing_data = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_handle_missing_data)
+		pclass.handle_missing_data = (*[0]byte)(C._goglib_gstvideo1_VideoDecoder_handle_missing_data)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoDecoder_handle_missing_data",
+			"_goglib_gstvideo1_VideoDecoder_handle_missing_data",
 			func(carg0 *C.GstVideoDecoder, carg1 C.GstClockTime, carg2 C.GstClockTime) (cret C.gboolean) {
 				var decoder   Instance      // go GstVideoDecoder subclass
 				var timestamp gst.ClockTime // in, none, casted, alias
@@ -14930,10 +14883,10 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 	}
 
 	if overrides.Negotiate != nil {
-		pclass.negotiate = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_negotiate)
+		pclass.negotiate = (*[0]byte)(C._goglib_gstvideo1_VideoDecoder_negotiate)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoDecoder_negotiate",
+			"_goglib_gstvideo1_VideoDecoder_negotiate",
 			func(carg0 *C.GstVideoDecoder) (cret C.gboolean) {
 				var decoder Instance // go GstVideoDecoder subclass
 				var goret   bool     // return
@@ -14952,10 +14905,10 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 	}
 
 	if overrides.Open != nil {
-		pclass.open = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_open)
+		pclass.open = (*[0]byte)(C._goglib_gstvideo1_VideoDecoder_open)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoDecoder_open",
+			"_goglib_gstvideo1_VideoDecoder_open",
 			func(carg0 *C.GstVideoDecoder) (cret C.gboolean) {
 				var decoder Instance // go GstVideoDecoder subclass
 				var goret   bool     // return
@@ -14974,10 +14927,10 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 	}
 
 	if overrides.Parse != nil {
-		pclass.parse = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_parse)
+		pclass.parse = (*[0]byte)(C._goglib_gstvideo1_VideoDecoder_parse)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoDecoder_parse",
+			"_goglib_gstvideo1_VideoDecoder_parse",
 			func(carg0 *C.GstVideoDecoder, carg1 *C.GstVideoCodecFrame, carg2 *C.GstAdapter, carg3 C.gboolean) (cret C.GstFlowReturn) {
 				var decoder Instance         // go GstVideoDecoder subclass
 				var frame   *VideoCodecFrame // in, none, converted
@@ -15002,10 +14955,10 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 	}
 
 	if overrides.ProposeAllocation != nil {
-		pclass.propose_allocation = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_propose_allocation)
+		pclass.propose_allocation = (*[0]byte)(C._goglib_gstvideo1_VideoDecoder_propose_allocation)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoDecoder_propose_allocation",
+			"_goglib_gstvideo1_VideoDecoder_propose_allocation",
 			func(carg0 *C.GstVideoDecoder, carg1 *C.GstQuery) (cret C.gboolean) {
 				var decoder Instance   // go GstVideoDecoder subclass
 				var query   *gst.Query // in, none, converted
@@ -15026,10 +14979,10 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 	}
 
 	if overrides.Reset != nil {
-		pclass.reset = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_reset)
+		pclass.reset = (*[0]byte)(C._goglib_gstvideo1_VideoDecoder_reset)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoDecoder_reset",
+			"_goglib_gstvideo1_VideoDecoder_reset",
 			func(carg0 *C.GstVideoDecoder, carg1 C.gboolean) (cret C.gboolean) {
 				var decoder Instance // go GstVideoDecoder subclass
 				var hard    bool     // in
@@ -15052,10 +15005,10 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 	}
 
 	if overrides.SetFormat != nil {
-		pclass.set_format = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_set_format)
+		pclass.set_format = (*[0]byte)(C._goglib_gstvideo1_VideoDecoder_set_format)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoDecoder_set_format",
+			"_goglib_gstvideo1_VideoDecoder_set_format",
 			func(carg0 *C.GstVideoDecoder, carg1 *C.GstVideoCodecState) (cret C.gboolean) {
 				var decoder Instance         // go GstVideoDecoder subclass
 				var state   *VideoCodecState // in, none, converted
@@ -15076,10 +15029,10 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 	}
 
 	if overrides.SinkEvent != nil {
-		pclass.sink_event = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_sink_event)
+		pclass.sink_event = (*[0]byte)(C._goglib_gstvideo1_VideoDecoder_sink_event)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoDecoder_sink_event",
+			"_goglib_gstvideo1_VideoDecoder_sink_event",
 			func(carg0 *C.GstVideoDecoder, carg1 *C.GstEvent) (cret C.gboolean) {
 				var decoder Instance   // go GstVideoDecoder subclass
 				var event   *gst.Event // in, none, converted
@@ -15100,10 +15053,10 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 	}
 
 	if overrides.SinkQuery != nil {
-		pclass.sink_query = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_sink_query)
+		pclass.sink_query = (*[0]byte)(C._goglib_gstvideo1_VideoDecoder_sink_query)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoDecoder_sink_query",
+			"_goglib_gstvideo1_VideoDecoder_sink_query",
 			func(carg0 *C.GstVideoDecoder, carg1 *C.GstQuery) (cret C.gboolean) {
 				var decoder Instance   // go GstVideoDecoder subclass
 				var query   *gst.Query // in, none, converted
@@ -15124,10 +15077,10 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 	}
 
 	if overrides.SrcEvent != nil {
-		pclass.src_event = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_src_event)
+		pclass.src_event = (*[0]byte)(C._goglib_gstvideo1_VideoDecoder_src_event)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoDecoder_src_event",
+			"_goglib_gstvideo1_VideoDecoder_src_event",
 			func(carg0 *C.GstVideoDecoder, carg1 *C.GstEvent) (cret C.gboolean) {
 				var decoder Instance   // go GstVideoDecoder subclass
 				var event   *gst.Event // in, none, converted
@@ -15148,10 +15101,10 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 	}
 
 	if overrides.SrcQuery != nil {
-		pclass.src_query = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_src_query)
+		pclass.src_query = (*[0]byte)(C._goglib_gstvideo1_VideoDecoder_src_query)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoDecoder_src_query",
+			"_goglib_gstvideo1_VideoDecoder_src_query",
 			func(carg0 *C.GstVideoDecoder, carg1 *C.GstQuery) (cret C.gboolean) {
 				var decoder Instance   // go GstVideoDecoder subclass
 				var query   *gst.Query // in, none, converted
@@ -15172,10 +15125,10 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 	}
 
 	if overrides.Start != nil {
-		pclass.start = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_start)
+		pclass.start = (*[0]byte)(C._goglib_gstvideo1_VideoDecoder_start)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoDecoder_start",
+			"_goglib_gstvideo1_VideoDecoder_start",
 			func(carg0 *C.GstVideoDecoder) (cret C.gboolean) {
 				var decoder Instance // go GstVideoDecoder subclass
 				var goret   bool     // return
@@ -15194,10 +15147,10 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 	}
 
 	if overrides.Stop != nil {
-		pclass.stop = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_stop)
+		pclass.stop = (*[0]byte)(C._goglib_gstvideo1_VideoDecoder_stop)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoDecoder_stop",
+			"_goglib_gstvideo1_VideoDecoder_stop",
 			func(carg0 *C.GstVideoDecoder) (cret C.gboolean) {
 				var decoder Instance // go GstVideoDecoder subclass
 				var goret   bool     // return
@@ -15216,10 +15169,10 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 	}
 
 	if overrides.TransformMeta != nil {
-		pclass.transform_meta = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_transform_meta)
+		pclass.transform_meta = (*[0]byte)(C._goglib_gstvideo1_VideoDecoder_transform_meta)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoDecoder_transform_meta",
+			"_goglib_gstvideo1_VideoDecoder_transform_meta",
 			func(carg0 *C.GstVideoDecoder, carg1 *C.GstVideoCodecFrame, carg2 *C.GstMeta) (cret C.gboolean) {
 				var decoder Instance         // go GstVideoDecoder subclass
 				var frame   *VideoCodecFrame // in, none, converted
@@ -15260,7 +15213,7 @@ func (decoder *VideoDecoderInstance) ParentClose() bool {
 
 	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 
-	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_close(unsafe.Pointer(parentclass.close), carg0)
+	cret = C._goglib_gstvideo1_VideoDecoder_virtual_close(unsafe.Pointer(parentclass.close), carg0)
 	runtime.KeepAlive(decoder)
 
 	var goret bool
@@ -15299,7 +15252,7 @@ func (decoder *VideoDecoderInstance) ParentDecideAllocation(query *gst.Query) bo
 	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
+	cret = C._goglib_gstvideo1_VideoDecoder_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
 	runtime.KeepAlive(decoder)
 	runtime.KeepAlive(query)
 
@@ -15332,7 +15285,7 @@ func (decoder *VideoDecoderInstance) ParentDrain() gst.FlowReturn {
 
 	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 
-	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_drain(unsafe.Pointer(parentclass.drain), carg0)
+	cret = C._goglib_gstvideo1_VideoDecoder_virtual_drain(unsafe.Pointer(parentclass.drain), carg0)
 	runtime.KeepAlive(decoder)
 
 	var goret gst.FlowReturn
@@ -15360,7 +15313,7 @@ func (decoder *VideoDecoderInstance) ParentFinish() gst.FlowReturn {
 
 	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 
-	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_finish(unsafe.Pointer(parentclass.finish), carg0)
+	cret = C._goglib_gstvideo1_VideoDecoder_virtual_finish(unsafe.Pointer(parentclass.finish), carg0)
 	runtime.KeepAlive(decoder)
 
 	var goret gst.FlowReturn
@@ -15388,7 +15341,7 @@ func (decoder *VideoDecoderInstance) ParentFlush() bool {
 
 	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 
-	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_flush(unsafe.Pointer(parentclass.flush), carg0)
+	cret = C._goglib_gstvideo1_VideoDecoder_virtual_flush(unsafe.Pointer(parentclass.flush), carg0)
 	runtime.KeepAlive(decoder)
 
 	var goret bool
@@ -15426,7 +15379,7 @@ func (decoder *VideoDecoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
 	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filter))
 
-	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_getcaps(unsafe.Pointer(parentclass.getcaps), carg0, carg1)
+	cret = C._goglib_gstvideo1_VideoDecoder_virtual_getcaps(unsafe.Pointer(parentclass.getcaps), carg0, carg1)
 	runtime.KeepAlive(decoder)
 	runtime.KeepAlive(filter)
 
@@ -15457,7 +15410,7 @@ func (decoder *VideoDecoderInstance) ParentHandleFrame(frame *VideoCodecFrame) g
 	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 	carg1 = (*C.GstVideoCodecFrame)(UnsafeVideoCodecFrameToGlibFull(frame))
 
-	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_handle_frame(unsafe.Pointer(parentclass.handle_frame), carg0, carg1)
+	cret = C._goglib_gstvideo1_VideoDecoder_virtual_handle_frame(unsafe.Pointer(parentclass.handle_frame), carg0, carg1)
 	runtime.KeepAlive(decoder)
 	runtime.KeepAlive(frame)
 
@@ -15491,7 +15444,7 @@ func (decoder *VideoDecoderInstance) ParentHandleMissingData(timestamp gst.Clock
 	carg1 = C.GstClockTime(timestamp)
 	carg2 = C.GstClockTime(duration)
 
-	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_handle_missing_data(unsafe.Pointer(parentclass.handle_missing_data), carg0, carg1, carg2)
+	cret = C._goglib_gstvideo1_VideoDecoder_virtual_handle_missing_data(unsafe.Pointer(parentclass.handle_missing_data), carg0, carg1, carg2)
 	runtime.KeepAlive(decoder)
 	runtime.KeepAlive(timestamp)
 	runtime.KeepAlive(duration)
@@ -15523,7 +15476,7 @@ func (decoder *VideoDecoderInstance) ParentNegotiate() bool {
 
 	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 
-	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_negotiate(unsafe.Pointer(parentclass.negotiate), carg0)
+	cret = C._goglib_gstvideo1_VideoDecoder_virtual_negotiate(unsafe.Pointer(parentclass.negotiate), carg0)
 	runtime.KeepAlive(decoder)
 
 	var goret bool
@@ -15553,7 +15506,7 @@ func (decoder *VideoDecoderInstance) ParentOpen() bool {
 
 	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 
-	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_open(unsafe.Pointer(parentclass.open), carg0)
+	cret = C._goglib_gstvideo1_VideoDecoder_virtual_open(unsafe.Pointer(parentclass.open), carg0)
 	runtime.KeepAlive(decoder)
 
 	var goret bool
@@ -15597,7 +15550,7 @@ func (decoder *VideoDecoderInstance) ParentParse(frame *VideoCodecFrame, adapter
 		carg3 = C.TRUE
 	}
 
-	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_parse(unsafe.Pointer(parentclass.parse), carg0, carg1, carg2, carg3)
+	cret = C._goglib_gstvideo1_VideoDecoder_virtual_parse(unsafe.Pointer(parentclass.parse), carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(decoder)
 	runtime.KeepAlive(frame)
 	runtime.KeepAlive(adapter)
@@ -15635,7 +15588,7 @@ func (decoder *VideoDecoderInstance) ParentProposeAllocation(query *gst.Query) b
 	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_propose_allocation(unsafe.Pointer(parentclass.propose_allocation), carg0, carg1)
+	cret = C._goglib_gstvideo1_VideoDecoder_virtual_propose_allocation(unsafe.Pointer(parentclass.propose_allocation), carg0, carg1)
 	runtime.KeepAlive(decoder)
 	runtime.KeepAlive(query)
 
@@ -15674,7 +15627,7 @@ func (decoder *VideoDecoderInstance) ParentReset(hard bool) bool {
 		carg1 = C.TRUE
 	}
 
-	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_reset(unsafe.Pointer(parentclass.reset), carg0, carg1)
+	cret = C._goglib_gstvideo1_VideoDecoder_virtual_reset(unsafe.Pointer(parentclass.reset), carg0, carg1)
 	runtime.KeepAlive(decoder)
 	runtime.KeepAlive(hard)
 
@@ -15709,7 +15662,7 @@ func (decoder *VideoDecoderInstance) ParentSetFormat(state *VideoCodecState) boo
 	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 	carg1 = (*C.GstVideoCodecState)(UnsafeVideoCodecStateToGlibNone(state))
 
-	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_set_format(unsafe.Pointer(parentclass.set_format), carg0, carg1)
+	cret = C._goglib_gstvideo1_VideoDecoder_virtual_set_format(unsafe.Pointer(parentclass.set_format), carg0, carg1)
 	runtime.KeepAlive(decoder)
 	runtime.KeepAlive(state)
 
@@ -15749,7 +15702,7 @@ func (decoder *VideoDecoderInstance) ParentSinkEvent(event *gst.Event) bool {
 	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
-	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_sink_event(unsafe.Pointer(parentclass.sink_event), carg0, carg1)
+	cret = C._goglib_gstvideo1_VideoDecoder_virtual_sink_event(unsafe.Pointer(parentclass.sink_event), carg0, carg1)
 	runtime.KeepAlive(decoder)
 	runtime.KeepAlive(event)
 
@@ -15788,7 +15741,7 @@ func (decoder *VideoDecoderInstance) ParentSinkQuery(query *gst.Query) bool {
 	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_sink_query(unsafe.Pointer(parentclass.sink_query), carg0, carg1)
+	cret = C._goglib_gstvideo1_VideoDecoder_virtual_sink_query(unsafe.Pointer(parentclass.sink_query), carg0, carg1)
 	runtime.KeepAlive(decoder)
 	runtime.KeepAlive(query)
 
@@ -15828,7 +15781,7 @@ func (decoder *VideoDecoderInstance) ParentSrcEvent(event *gst.Event) bool {
 	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
-	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
+	cret = C._goglib_gstvideo1_VideoDecoder_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
 	runtime.KeepAlive(decoder)
 	runtime.KeepAlive(event)
 
@@ -15867,7 +15820,7 @@ func (decoder *VideoDecoderInstance) ParentSrcQuery(query *gst.Query) bool {
 	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_src_query(unsafe.Pointer(parentclass.src_query), carg0, carg1)
+	cret = C._goglib_gstvideo1_VideoDecoder_virtual_src_query(unsafe.Pointer(parentclass.src_query), carg0, carg1)
 	runtime.KeepAlive(decoder)
 	runtime.KeepAlive(query)
 
@@ -15898,7 +15851,7 @@ func (decoder *VideoDecoderInstance) ParentStart() bool {
 
 	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 
-	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_start(unsafe.Pointer(parentclass.start), carg0)
+	cret = C._goglib_gstvideo1_VideoDecoder_virtual_start(unsafe.Pointer(parentclass.start), carg0)
 	runtime.KeepAlive(decoder)
 
 	var goret bool
@@ -15928,7 +15881,7 @@ func (decoder *VideoDecoderInstance) ParentStop() bool {
 
 	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 
-	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
+	cret = C._goglib_gstvideo1_VideoDecoder_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
 	runtime.KeepAlive(decoder)
 
 	var goret bool
@@ -15969,7 +15922,7 @@ func (decoder *VideoDecoderInstance) ParentTransformMeta(frame *VideoCodecFrame,
 	carg1 = (*C.GstVideoCodecFrame)(UnsafeVideoCodecFrameToGlibNone(frame))
 	carg2 = (*C.GstMeta)(gst.UnsafeMetaToGlibNone(meta))
 
-	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_transform_meta(unsafe.Pointer(parentclass.transform_meta), carg0, carg1, carg2)
+	cret = C._goglib_gstvideo1_VideoDecoder_virtual_transform_meta(unsafe.Pointer(parentclass.transform_meta), carg0, carg1, carg2)
 	runtime.KeepAlive(decoder)
 	runtime.KeepAlive(frame)
 	runtime.KeepAlive(meta)
@@ -16936,7 +16889,7 @@ func (encoder *VideoEncoderInstance) GetAllocator() (gst.Allocator, gst.Allocati
 	}
 	_ = params
 	_ = carg2
-	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams)")
+	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams) because of unknown reason")
 
 	return allocator, params
 }
@@ -17708,10 +17661,10 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 	pclass := (*C.GstVideoEncoderClass)(gclass)
 
 	if overrides.Close != nil {
-		pclass.close = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_close)
+		pclass.close = (*[0]byte)(C._goglib_gstvideo1_VideoEncoder_close)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoEncoder_close",
+			"_goglib_gstvideo1_VideoEncoder_close",
 			func(carg0 *C.GstVideoEncoder) (cret C.gboolean) {
 				var encoder Instance // go GstVideoEncoder subclass
 				var goret   bool     // return
@@ -17730,10 +17683,10 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 	}
 
 	if overrides.DecideAllocation != nil {
-		pclass.decide_allocation = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_decide_allocation)
+		pclass.decide_allocation = (*[0]byte)(C._goglib_gstvideo1_VideoEncoder_decide_allocation)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoEncoder_decide_allocation",
+			"_goglib_gstvideo1_VideoEncoder_decide_allocation",
 			func(carg0 *C.GstVideoEncoder, carg1 *C.GstQuery) (cret C.gboolean) {
 				var encoder Instance   // go GstVideoEncoder subclass
 				var query   *gst.Query // in, none, converted
@@ -17754,10 +17707,10 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 	}
 
 	if overrides.Finish != nil {
-		pclass.finish = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_finish)
+		pclass.finish = (*[0]byte)(C._goglib_gstvideo1_VideoEncoder_finish)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoEncoder_finish",
+			"_goglib_gstvideo1_VideoEncoder_finish",
 			func(carg0 *C.GstVideoEncoder) (cret C.GstFlowReturn) {
 				var encoder Instance       // go GstVideoEncoder subclass
 				var goret   gst.FlowReturn // return, none, casted
@@ -17774,10 +17727,10 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 	}
 
 	if overrides.Flush != nil {
-		pclass.flush = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_flush)
+		pclass.flush = (*[0]byte)(C._goglib_gstvideo1_VideoEncoder_flush)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoEncoder_flush",
+			"_goglib_gstvideo1_VideoEncoder_flush",
 			func(carg0 *C.GstVideoEncoder) (cret C.gboolean) {
 				var encoder Instance // go GstVideoEncoder subclass
 				var goret   bool     // return
@@ -17796,10 +17749,10 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 	}
 
 	if overrides.Getcaps != nil {
-		pclass.getcaps = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_getcaps)
+		pclass.getcaps = (*[0]byte)(C._goglib_gstvideo1_VideoEncoder_getcaps)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoEncoder_getcaps",
+			"_goglib_gstvideo1_VideoEncoder_getcaps",
 			func(carg0 *C.GstVideoEncoder, carg1 *C.GstCaps) (cret *C.GstCaps) {
 				var enc    Instance  // go GstVideoEncoder subclass
 				var filter *gst.Caps // in, none, converted
@@ -17818,10 +17771,10 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 	}
 
 	if overrides.HandleFrame != nil {
-		pclass.handle_frame = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_handle_frame)
+		pclass.handle_frame = (*[0]byte)(C._goglib_gstvideo1_VideoEncoder_handle_frame)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoEncoder_handle_frame",
+			"_goglib_gstvideo1_VideoEncoder_handle_frame",
 			func(carg0 *C.GstVideoEncoder, carg1 *C.GstVideoCodecFrame) (cret C.GstFlowReturn) {
 				var encoder Instance         // go GstVideoEncoder subclass
 				var frame   *VideoCodecFrame // in, none, converted
@@ -17840,10 +17793,10 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 	}
 
 	if overrides.Negotiate != nil {
-		pclass.negotiate = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_negotiate)
+		pclass.negotiate = (*[0]byte)(C._goglib_gstvideo1_VideoEncoder_negotiate)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoEncoder_negotiate",
+			"_goglib_gstvideo1_VideoEncoder_negotiate",
 			func(carg0 *C.GstVideoEncoder) (cret C.gboolean) {
 				var encoder Instance // go GstVideoEncoder subclass
 				var goret   bool     // return
@@ -17862,10 +17815,10 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 	}
 
 	if overrides.Open != nil {
-		pclass.open = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_open)
+		pclass.open = (*[0]byte)(C._goglib_gstvideo1_VideoEncoder_open)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoEncoder_open",
+			"_goglib_gstvideo1_VideoEncoder_open",
 			func(carg0 *C.GstVideoEncoder) (cret C.gboolean) {
 				var encoder Instance // go GstVideoEncoder subclass
 				var goret   bool     // return
@@ -17884,10 +17837,10 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 	}
 
 	if overrides.PrePush != nil {
-		pclass.pre_push = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_pre_push)
+		pclass.pre_push = (*[0]byte)(C._goglib_gstvideo1_VideoEncoder_pre_push)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoEncoder_pre_push",
+			"_goglib_gstvideo1_VideoEncoder_pre_push",
 			func(carg0 *C.GstVideoEncoder, carg1 *C.GstVideoCodecFrame) (cret C.GstFlowReturn) {
 				var encoder Instance         // go GstVideoEncoder subclass
 				var frame   *VideoCodecFrame // in, none, converted
@@ -17906,10 +17859,10 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 	}
 
 	if overrides.ProposeAllocation != nil {
-		pclass.propose_allocation = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_propose_allocation)
+		pclass.propose_allocation = (*[0]byte)(C._goglib_gstvideo1_VideoEncoder_propose_allocation)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoEncoder_propose_allocation",
+			"_goglib_gstvideo1_VideoEncoder_propose_allocation",
 			func(carg0 *C.GstVideoEncoder, carg1 *C.GstQuery) (cret C.gboolean) {
 				var encoder Instance   // go GstVideoEncoder subclass
 				var query   *gst.Query // in, none, converted
@@ -17930,10 +17883,10 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 	}
 
 	if overrides.Reset != nil {
-		pclass.reset = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_reset)
+		pclass.reset = (*[0]byte)(C._goglib_gstvideo1_VideoEncoder_reset)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoEncoder_reset",
+			"_goglib_gstvideo1_VideoEncoder_reset",
 			func(carg0 *C.GstVideoEncoder, carg1 C.gboolean) (cret C.gboolean) {
 				var encoder Instance // go GstVideoEncoder subclass
 				var hard    bool     // in
@@ -17956,10 +17909,10 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 	}
 
 	if overrides.SetFormat != nil {
-		pclass.set_format = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_set_format)
+		pclass.set_format = (*[0]byte)(C._goglib_gstvideo1_VideoEncoder_set_format)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoEncoder_set_format",
+			"_goglib_gstvideo1_VideoEncoder_set_format",
 			func(carg0 *C.GstVideoEncoder, carg1 *C.GstVideoCodecState) (cret C.gboolean) {
 				var encoder Instance         // go GstVideoEncoder subclass
 				var state   *VideoCodecState // in, none, converted
@@ -17980,10 +17933,10 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 	}
 
 	if overrides.SinkEvent != nil {
-		pclass.sink_event = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_sink_event)
+		pclass.sink_event = (*[0]byte)(C._goglib_gstvideo1_VideoEncoder_sink_event)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoEncoder_sink_event",
+			"_goglib_gstvideo1_VideoEncoder_sink_event",
 			func(carg0 *C.GstVideoEncoder, carg1 *C.GstEvent) (cret C.gboolean) {
 				var encoder Instance   // go GstVideoEncoder subclass
 				var event   *gst.Event // in, none, converted
@@ -18004,10 +17957,10 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 	}
 
 	if overrides.SinkQuery != nil {
-		pclass.sink_query = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_sink_query)
+		pclass.sink_query = (*[0]byte)(C._goglib_gstvideo1_VideoEncoder_sink_query)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoEncoder_sink_query",
+			"_goglib_gstvideo1_VideoEncoder_sink_query",
 			func(carg0 *C.GstVideoEncoder, carg1 *C.GstQuery) (cret C.gboolean) {
 				var encoder Instance   // go GstVideoEncoder subclass
 				var query   *gst.Query // in, none, converted
@@ -18028,10 +17981,10 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 	}
 
 	if overrides.SrcEvent != nil {
-		pclass.src_event = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_src_event)
+		pclass.src_event = (*[0]byte)(C._goglib_gstvideo1_VideoEncoder_src_event)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoEncoder_src_event",
+			"_goglib_gstvideo1_VideoEncoder_src_event",
 			func(carg0 *C.GstVideoEncoder, carg1 *C.GstEvent) (cret C.gboolean) {
 				var encoder Instance   // go GstVideoEncoder subclass
 				var event   *gst.Event // in, none, converted
@@ -18052,10 +18005,10 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 	}
 
 	if overrides.SrcQuery != nil {
-		pclass.src_query = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_src_query)
+		pclass.src_query = (*[0]byte)(C._goglib_gstvideo1_VideoEncoder_src_query)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoEncoder_src_query",
+			"_goglib_gstvideo1_VideoEncoder_src_query",
 			func(carg0 *C.GstVideoEncoder, carg1 *C.GstQuery) (cret C.gboolean) {
 				var encoder Instance   // go GstVideoEncoder subclass
 				var query   *gst.Query // in, none, converted
@@ -18076,10 +18029,10 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 	}
 
 	if overrides.Start != nil {
-		pclass.start = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_start)
+		pclass.start = (*[0]byte)(C._goglib_gstvideo1_VideoEncoder_start)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoEncoder_start",
+			"_goglib_gstvideo1_VideoEncoder_start",
 			func(carg0 *C.GstVideoEncoder) (cret C.gboolean) {
 				var encoder Instance // go GstVideoEncoder subclass
 				var goret   bool     // return
@@ -18098,10 +18051,10 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 	}
 
 	if overrides.Stop != nil {
-		pclass.stop = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_stop)
+		pclass.stop = (*[0]byte)(C._goglib_gstvideo1_VideoEncoder_stop)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoEncoder_stop",
+			"_goglib_gstvideo1_VideoEncoder_stop",
 			func(carg0 *C.GstVideoEncoder) (cret C.gboolean) {
 				var encoder Instance // go GstVideoEncoder subclass
 				var goret   bool     // return
@@ -18120,10 +18073,10 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 	}
 
 	if overrides.TransformMeta != nil {
-		pclass.transform_meta = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_transform_meta)
+		pclass.transform_meta = (*[0]byte)(C._goglib_gstvideo1_VideoEncoder_transform_meta)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoEncoder_transform_meta",
+			"_goglib_gstvideo1_VideoEncoder_transform_meta",
 			func(carg0 *C.GstVideoEncoder, carg1 *C.GstVideoCodecFrame, carg2 *C.GstMeta) (cret C.gboolean) {
 				var encoder Instance         // go GstVideoEncoder subclass
 				var frame   *VideoCodecFrame // in, none, converted
@@ -18164,7 +18117,7 @@ func (encoder *VideoEncoderInstance) ParentClose() bool {
 
 	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 
-	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_close(unsafe.Pointer(parentclass.close), carg0)
+	cret = C._goglib_gstvideo1_VideoEncoder_virtual_close(unsafe.Pointer(parentclass.close), carg0)
 	runtime.KeepAlive(encoder)
 
 	var goret bool
@@ -18203,7 +18156,7 @@ func (encoder *VideoEncoderInstance) ParentDecideAllocation(query *gst.Query) bo
 	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
+	cret = C._goglib_gstvideo1_VideoEncoder_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
 	runtime.KeepAlive(encoder)
 	runtime.KeepAlive(query)
 
@@ -18234,7 +18187,7 @@ func (encoder *VideoEncoderInstance) ParentFinish() gst.FlowReturn {
 
 	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 
-	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_finish(unsafe.Pointer(parentclass.finish), carg0)
+	cret = C._goglib_gstvideo1_VideoEncoder_virtual_finish(unsafe.Pointer(parentclass.finish), carg0)
 	runtime.KeepAlive(encoder)
 
 	var goret gst.FlowReturn
@@ -18262,7 +18215,7 @@ func (encoder *VideoEncoderInstance) ParentFlush() bool {
 
 	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 
-	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_flush(unsafe.Pointer(parentclass.flush), carg0)
+	cret = C._goglib_gstvideo1_VideoEncoder_virtual_flush(unsafe.Pointer(parentclass.flush), carg0)
 	runtime.KeepAlive(encoder)
 
 	var goret bool
@@ -18300,7 +18253,7 @@ func (enc *VideoEncoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
 	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(enc))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filter))
 
-	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_getcaps(unsafe.Pointer(parentclass.getcaps), carg0, carg1)
+	cret = C._goglib_gstvideo1_VideoEncoder_virtual_getcaps(unsafe.Pointer(parentclass.getcaps), carg0, carg1)
 	runtime.KeepAlive(enc)
 	runtime.KeepAlive(filter)
 
@@ -18333,7 +18286,7 @@ func (encoder *VideoEncoderInstance) ParentHandleFrame(frame *VideoCodecFrame) g
 	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 	carg1 = (*C.GstVideoCodecFrame)(UnsafeVideoCodecFrameToGlibNone(frame))
 
-	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_handle_frame(unsafe.Pointer(parentclass.handle_frame), carg0, carg1)
+	cret = C._goglib_gstvideo1_VideoEncoder_virtual_handle_frame(unsafe.Pointer(parentclass.handle_frame), carg0, carg1)
 	runtime.KeepAlive(encoder)
 	runtime.KeepAlive(frame)
 
@@ -18362,7 +18315,7 @@ func (encoder *VideoEncoderInstance) ParentNegotiate() bool {
 
 	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 
-	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_negotiate(unsafe.Pointer(parentclass.negotiate), carg0)
+	cret = C._goglib_gstvideo1_VideoEncoder_virtual_negotiate(unsafe.Pointer(parentclass.negotiate), carg0)
 	runtime.KeepAlive(encoder)
 
 	var goret bool
@@ -18392,7 +18345,7 @@ func (encoder *VideoEncoderInstance) ParentOpen() bool {
 
 	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 
-	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_open(unsafe.Pointer(parentclass.open), carg0)
+	cret = C._goglib_gstvideo1_VideoEncoder_virtual_open(unsafe.Pointer(parentclass.open), carg0)
 	runtime.KeepAlive(encoder)
 
 	var goret bool
@@ -18429,7 +18382,7 @@ func (encoder *VideoEncoderInstance) ParentPrePush(frame *VideoCodecFrame) gst.F
 	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 	carg1 = (*C.GstVideoCodecFrame)(UnsafeVideoCodecFrameToGlibNone(frame))
 
-	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_pre_push(unsafe.Pointer(parentclass.pre_push), carg0, carg1)
+	cret = C._goglib_gstvideo1_VideoEncoder_virtual_pre_push(unsafe.Pointer(parentclass.pre_push), carg0, carg1)
 	runtime.KeepAlive(encoder)
 	runtime.KeepAlive(frame)
 
@@ -18465,7 +18418,7 @@ func (encoder *VideoEncoderInstance) ParentProposeAllocation(query *gst.Query) b
 	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_propose_allocation(unsafe.Pointer(parentclass.propose_allocation), carg0, carg1)
+	cret = C._goglib_gstvideo1_VideoEncoder_virtual_propose_allocation(unsafe.Pointer(parentclass.propose_allocation), carg0, carg1)
 	runtime.KeepAlive(encoder)
 	runtime.KeepAlive(query)
 
@@ -18504,7 +18457,7 @@ func (encoder *VideoEncoderInstance) ParentReset(hard bool) bool {
 		carg1 = C.TRUE
 	}
 
-	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_reset(unsafe.Pointer(parentclass.reset), carg0, carg1)
+	cret = C._goglib_gstvideo1_VideoEncoder_virtual_reset(unsafe.Pointer(parentclass.reset), carg0, carg1)
 	runtime.KeepAlive(encoder)
 	runtime.KeepAlive(hard)
 
@@ -18542,7 +18495,7 @@ func (encoder *VideoEncoderInstance) ParentSetFormat(state *VideoCodecState) boo
 	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 	carg1 = (*C.GstVideoCodecState)(UnsafeVideoCodecStateToGlibNone(state))
 
-	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_set_format(unsafe.Pointer(parentclass.set_format), carg0, carg1)
+	cret = C._goglib_gstvideo1_VideoEncoder_virtual_set_format(unsafe.Pointer(parentclass.set_format), carg0, carg1)
 	runtime.KeepAlive(encoder)
 	runtime.KeepAlive(state)
 
@@ -18582,7 +18535,7 @@ func (encoder *VideoEncoderInstance) ParentSinkEvent(event *gst.Event) bool {
 	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
-	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_sink_event(unsafe.Pointer(parentclass.sink_event), carg0, carg1)
+	cret = C._goglib_gstvideo1_VideoEncoder_virtual_sink_event(unsafe.Pointer(parentclass.sink_event), carg0, carg1)
 	runtime.KeepAlive(encoder)
 	runtime.KeepAlive(event)
 
@@ -18621,7 +18574,7 @@ func (encoder *VideoEncoderInstance) ParentSinkQuery(query *gst.Query) bool {
 	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_sink_query(unsafe.Pointer(parentclass.sink_query), carg0, carg1)
+	cret = C._goglib_gstvideo1_VideoEncoder_virtual_sink_query(unsafe.Pointer(parentclass.sink_query), carg0, carg1)
 	runtime.KeepAlive(encoder)
 	runtime.KeepAlive(query)
 
@@ -18661,7 +18614,7 @@ func (encoder *VideoEncoderInstance) ParentSrcEvent(event *gst.Event) bool {
 	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
-	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
+	cret = C._goglib_gstvideo1_VideoEncoder_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
 	runtime.KeepAlive(encoder)
 	runtime.KeepAlive(event)
 
@@ -18700,7 +18653,7 @@ func (encoder *VideoEncoderInstance) ParentSrcQuery(query *gst.Query) bool {
 	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_src_query(unsafe.Pointer(parentclass.src_query), carg0, carg1)
+	cret = C._goglib_gstvideo1_VideoEncoder_virtual_src_query(unsafe.Pointer(parentclass.src_query), carg0, carg1)
 	runtime.KeepAlive(encoder)
 	runtime.KeepAlive(query)
 
@@ -18731,7 +18684,7 @@ func (encoder *VideoEncoderInstance) ParentStart() bool {
 
 	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 
-	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_start(unsafe.Pointer(parentclass.start), carg0)
+	cret = C._goglib_gstvideo1_VideoEncoder_virtual_start(unsafe.Pointer(parentclass.start), carg0)
 	runtime.KeepAlive(encoder)
 
 	var goret bool
@@ -18761,7 +18714,7 @@ func (encoder *VideoEncoderInstance) ParentStop() bool {
 
 	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 
-	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
+	cret = C._goglib_gstvideo1_VideoEncoder_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
 	runtime.KeepAlive(encoder)
 
 	var goret bool
@@ -18802,7 +18755,7 @@ func (encoder *VideoEncoderInstance) ParentTransformMeta(frame *VideoCodecFrame,
 	carg1 = (*C.GstVideoCodecFrame)(UnsafeVideoCodecFrameToGlibNone(frame))
 	carg2 = (*C.GstMeta)(gst.UnsafeMetaToGlibNone(meta))
 
-	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_transform_meta(unsafe.Pointer(parentclass.transform_meta), carg0, carg1, carg2)
+	cret = C._goglib_gstvideo1_VideoEncoder_virtual_transform_meta(unsafe.Pointer(parentclass.transform_meta), carg0, carg1, carg2)
 	runtime.KeepAlive(encoder)
 	runtime.KeepAlive(frame)
 	runtime.KeepAlive(meta)
@@ -19019,10 +18972,10 @@ func UnsafeApplyVideoFilterOverrides[Instance VideoFilter](gclass unsafe.Pointer
 	pclass := (*C.GstVideoFilterClass)(gclass)
 
 	if overrides.SetInfo != nil {
-		pclass.set_info = (*[0]byte)(C._gotk4_gstvideo1_VideoFilter_set_info)
+		pclass.set_info = (*[0]byte)(C._goglib_gstvideo1_VideoFilter_set_info)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoFilter_set_info",
+			"_goglib_gstvideo1_VideoFilter_set_info",
 			func(carg0 *C.GstVideoFilter, carg1 *C.GstCaps, carg2 *C.GstVideoInfo, carg3 *C.GstCaps, carg4 *C.GstVideoInfo) (cret C.gboolean) {
 				var filter  Instance   // go GstVideoFilter subclass
 				var incaps  *gst.Caps  // in, none, converted
@@ -19049,10 +19002,10 @@ func UnsafeApplyVideoFilterOverrides[Instance VideoFilter](gclass unsafe.Pointer
 	}
 
 	if overrides.TransformFrame != nil {
-		pclass.transform_frame = (*[0]byte)(C._gotk4_gstvideo1_VideoFilter_transform_frame)
+		pclass.transform_frame = (*[0]byte)(C._goglib_gstvideo1_VideoFilter_transform_frame)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoFilter_transform_frame",
+			"_goglib_gstvideo1_VideoFilter_transform_frame",
 			func(carg0 *C.GstVideoFilter, carg1 *C.GstVideoFrame, carg2 *C.GstVideoFrame) (cret C.GstFlowReturn) {
 				var filter   Instance       // go GstVideoFilter subclass
 				var inframe  *VideoFrame    // in, none, converted
@@ -19073,10 +19026,10 @@ func UnsafeApplyVideoFilterOverrides[Instance VideoFilter](gclass unsafe.Pointer
 	}
 
 	if overrides.TransformFrameIp != nil {
-		pclass.transform_frame_ip = (*[0]byte)(C._gotk4_gstvideo1_VideoFilter_transform_frame_ip)
+		pclass.transform_frame_ip = (*[0]byte)(C._goglib_gstvideo1_VideoFilter_transform_frame_ip)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoFilter_transform_frame_ip",
+			"_goglib_gstvideo1_VideoFilter_transform_frame_ip",
 			func(carg0 *C.GstVideoFilter, carg1 *C.GstVideoFrame) (cret C.GstFlowReturn) {
 				var trans Instance       // go GstVideoFilter subclass
 				var frame *VideoFrame    // in, none, converted
@@ -19126,7 +19079,7 @@ func (filter *VideoFilterInstance) ParentSetInfo(incaps *gst.Caps, inInfo *Video
 	carg3 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(outcaps))
 	carg4 = (*C.GstVideoInfo)(UnsafeVideoInfoToGlibNone(outInfo))
 
-	cret = C._gotk4_gstvideo1_VideoFilter_virtual_set_info(unsafe.Pointer(parentclass.set_info), carg0, carg1, carg2, carg3, carg4)
+	cret = C._goglib_gstvideo1_VideoFilter_virtual_set_info(unsafe.Pointer(parentclass.set_info), carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(filter)
 	runtime.KeepAlive(incaps)
 	runtime.KeepAlive(inInfo)
@@ -19167,7 +19120,7 @@ func (filter *VideoFilterInstance) ParentTransformFrame(inframe *VideoFrame, out
 	carg1 = (*C.GstVideoFrame)(UnsafeVideoFrameToGlibNone(inframe))
 	carg2 = (*C.GstVideoFrame)(UnsafeVideoFrameToGlibNone(outframe))
 
-	cret = C._gotk4_gstvideo1_VideoFilter_virtual_transform_frame(unsafe.Pointer(parentclass.transform_frame), carg0, carg1, carg2)
+	cret = C._goglib_gstvideo1_VideoFilter_virtual_transform_frame(unsafe.Pointer(parentclass.transform_frame), carg0, carg1, carg2)
 	runtime.KeepAlive(filter)
 	runtime.KeepAlive(inframe)
 	runtime.KeepAlive(outframe)
@@ -19201,7 +19154,7 @@ func (trans *VideoFilterInstance) ParentTransformFrameIp(frame *VideoFrame) gst.
 	carg0 = (*C.GstVideoFilter)(UnsafeVideoFilterToGlibNone(trans))
 	carg1 = (*C.GstVideoFrame)(UnsafeVideoFrameToGlibNone(frame))
 
-	cret = C._gotk4_gstvideo1_VideoFilter_virtual_transform_frame_ip(unsafe.Pointer(parentclass.transform_frame_ip), carg0, carg1)
+	cret = C._goglib_gstvideo1_VideoFilter_virtual_transform_frame_ip(unsafe.Pointer(parentclass.transform_frame_ip), carg0, carg1)
 	runtime.KeepAlive(trans)
 	runtime.KeepAlive(frame)
 
@@ -19391,10 +19344,10 @@ func UnsafeApplyVideoSinkOverrides[Instance VideoSink](gclass unsafe.Pointer, ov
 	pclass := (*C.GstVideoSinkClass)(gclass)
 
 	if overrides.SetInfo != nil {
-		pclass.set_info = (*[0]byte)(C._gotk4_gstvideo1_VideoSink_set_info)
+		pclass.set_info = (*[0]byte)(C._goglib_gstvideo1_VideoSink_set_info)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoSink_set_info",
+			"_goglib_gstvideo1_VideoSink_set_info",
 			func(carg0 *C.GstVideoSink, carg1 *C.GstCaps, carg2 *C.GstVideoInfo) (cret C.gboolean) {
 				var videoSink Instance   // go GstVideoSink subclass
 				var caps      *gst.Caps  // in, none, converted
@@ -19417,10 +19370,10 @@ func UnsafeApplyVideoSinkOverrides[Instance VideoSink](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.ShowFrame != nil {
-		pclass.show_frame = (*[0]byte)(C._gotk4_gstvideo1_VideoSink_show_frame)
+		pclass.show_frame = (*[0]byte)(C._goglib_gstvideo1_VideoSink_show_frame)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoSink_show_frame",
+			"_goglib_gstvideo1_VideoSink_show_frame",
 			func(carg0 *C.GstVideoSink, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
 				var videoSink Instance       // go GstVideoSink subclass
 				var buf       *gst.Buffer    // in, none, converted
@@ -19464,7 +19417,7 @@ func (videoSink *VideoSinkInstance) ParentSetInfo(caps *gst.Caps, info *VideoInf
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 	carg2 = (*C.GstVideoInfo)(UnsafeVideoInfoToGlibNone(info))
 
-	cret = C._gotk4_gstvideo1_VideoSink_virtual_set_info(unsafe.Pointer(parentclass.set_info), carg0, carg1, carg2)
+	cret = C._goglib_gstvideo1_VideoSink_virtual_set_info(unsafe.Pointer(parentclass.set_info), carg0, carg1, carg2)
 	runtime.KeepAlive(videoSink)
 	runtime.KeepAlive(caps)
 	runtime.KeepAlive(info)
@@ -19503,7 +19456,7 @@ func (videoSink *VideoSinkInstance) ParentShowFrame(buf *gst.Buffer) gst.FlowRet
 	carg0 = (*C.GstVideoSink)(UnsafeVideoSinkToGlibNone(videoSink))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buf))
 
-	cret = C._gotk4_gstvideo1_VideoSink_virtual_show_frame(unsafe.Pointer(parentclass.show_frame), carg0, carg1)
+	cret = C._goglib_gstvideo1_VideoSink_virtual_show_frame(unsafe.Pointer(parentclass.show_frame), carg0, carg1)
 	runtime.KeepAlive(videoSink)
 	runtime.KeepAlive(buf)
 
@@ -19669,10 +19622,10 @@ func UnsafeApplyVideoAggregatorConvertPadOverrides[Instance VideoAggregatorConve
 	pclass := (*C.GstVideoAggregatorConvertPadClass)(gclass)
 
 	if overrides.CreateConversionInfo != nil {
-		pclass.create_conversion_info = (*[0]byte)(C._gotk4_gstvideo1_VideoAggregatorConvertPad_create_conversion_info)
+		pclass.create_conversion_info = (*[0]byte)(C._goglib_gstvideo1_VideoAggregatorConvertPad_create_conversion_info)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_VideoAggregatorConvertPad_create_conversion_info",
+			"_goglib_gstvideo1_VideoAggregatorConvertPad_create_conversion_info",
 			func(carg0 *C.GstVideoAggregatorConvertPad, carg1 *C.GstVideoAggregator, carg2 *C.GstVideoInfo) {
 				var pad            Instance        // go GstVideoAggregatorConvertPad subclass
 				var agg            VideoAggregator // in, none, converted
@@ -19706,7 +19659,7 @@ func (pad *VideoAggregatorConvertPadInstance) ParentCreateConversionInfo(agg Vid
 	carg1 = (*C.GstVideoAggregator)(UnsafeVideoAggregatorToGlibNone(agg))
 	carg2 = (*C.GstVideoInfo)(UnsafeVideoInfoToGlibNone(conversionInfo))
 
-	C._gotk4_gstvideo1_VideoAggregatorConvertPad_virtual_create_conversion_info(unsafe.Pointer(parentclass.create_conversion_info), carg0, carg1, carg2)
+	C._goglib_gstvideo1_VideoAggregatorConvertPad_virtual_create_conversion_info(unsafe.Pointer(parentclass.create_conversion_info), carg0, carg1, carg2)
 	runtime.KeepAlive(pad)
 	runtime.KeepAlive(agg)
 	runtime.KeepAlive(conversionInfo)
@@ -20401,12 +20354,16 @@ func VideoAffineTransformationMetaGetInfo() *gst.MetaInfo {
 // Performs the multiplication, meta-&gt;matrix X matrix.
 func (meta *VideoAffineTransformationMeta) ApplyMatrix(matrix [16]float32) {
 	var carg0 *C.GstVideoAffineTransformationMeta // in, none, converted
-	var carg1 *C.gfloat                           // in, transfer: none, C Pointers: 1, Name: array[gfloat], array (inner: *typesystem.CastablePrimitive, fixed-size: 16)
+	var carg1 *C.gfloat                           // in, none, array fixed size (inner: gfloat, size: 16)
 
 	carg0 = (*C.GstVideoAffineTransformationMeta)(UnsafeVideoAffineTransformationMetaToGlibNone(meta))
-	_ = matrix
-	_ = carg1
-	panic("unimplemented conversion of [16]float32 (const gfloat*)")
+	{
+		var carr [16]C.gfloat
+		for i := range 16 {
+			carr[i] = C.gfloat(matrix[i])
+			carg1 = unsafe.SliceData(carr[:])
+		}
+	}
 
 	C.gst_video_affine_transformation_meta_apply_matrix(carg0, carg1)
 	runtime.KeepAlive(meta)
@@ -23006,7 +22963,7 @@ func VideoFrameMap(info *VideoInfo, buffer *gst.Buffer, flags gst.MapFlags) (Vid
 
 	_ = frame
 	_ = carg1
-	panic("unimplemented conversion of VideoFrame (GstVideoFrame)")
+	panic("unimplemented conversion of VideoFrame (GstVideoFrame) because of unknown reason")
 	if cret != 0 {
 		goret = true
 	}
@@ -23060,7 +23017,7 @@ func VideoFrameMapID(info *VideoInfo, buffer *gst.Buffer, id int32, flags gst.Ma
 
 	_ = frame
 	_ = carg1
-	panic("unimplemented conversion of VideoFrame (GstVideoFrame)")
+	panic("unimplemented conversion of VideoFrame (GstVideoFrame) because of unknown reason")
 	if cret != 0 {
 		goret = true
 	}
@@ -23274,7 +23231,7 @@ func (meta *VideoGLTextureUploadMeta) Upload(textureId *uint) bool {
 	carg0 = (*C.GstVideoGLTextureUploadMeta)(UnsafeVideoGLTextureUploadMetaToGlibNone(meta))
 	_ = textureId
 	_ = carg1
-	panic("unimplemented conversion of *uint (guint*)")
+	panic("unimplemented conversion of *uint (guint*) because of no basic converter found")
 
 	cret = C.gst_video_gl_texture_upload_meta_upload(carg0, carg1)
 	runtime.KeepAlive(meta)
@@ -23466,7 +23423,7 @@ func VideoInfoFromCaps(caps *gst.Caps) (VideoInfo, bool) {
 
 	_ = info
 	_ = carg1
-	panic("unimplemented conversion of VideoInfo (GstVideoInfo)")
+	panic("unimplemented conversion of VideoInfo (GstVideoInfo) because of unknown reason")
 	if cret != 0 {
 		goret = true
 	}
@@ -23490,7 +23447,7 @@ func VideoInfoInit() VideoInfo {
 
 	_ = info
 	_ = carg1
-	panic("unimplemented conversion of VideoInfo (GstVideoInfo)")
+	panic("unimplemented conversion of VideoInfo (GstVideoInfo) because of unknown reason")
 
 	return info
 }
@@ -23967,7 +23924,7 @@ func VideoInfoDmaDrmFromCaps(caps *gst.Caps) (VideoInfoDmaDrm, bool) {
 
 	_ = drmInfo
 	_ = carg1
-	panic("unimplemented conversion of VideoInfoDmaDrm (GstVideoInfoDmaDrm)")
+	panic("unimplemented conversion of VideoInfoDmaDrm (GstVideoInfoDmaDrm) because of unknown reason")
 	if cret != 0 {
 		goret = true
 	}
@@ -24007,7 +23964,7 @@ func VideoInfoDmaDrmFromVideoInfo(info *VideoInfo, modifier uint64) (VideoInfoDm
 
 	_ = drmInfo
 	_ = carg1
-	panic("unimplemented conversion of VideoInfoDmaDrm (GstVideoInfoDmaDrm)")
+	panic("unimplemented conversion of VideoInfoDmaDrm (GstVideoInfoDmaDrm) because of unknown reason")
 	if cret != 0 {
 		goret = true
 	}
@@ -24031,7 +23988,7 @@ func VideoInfoDmaDrmInit() VideoInfoDmaDrm {
 
 	_ = drmInfo
 	_ = carg1
-	panic("unimplemented conversion of VideoInfoDmaDrm (GstVideoInfoDmaDrm)")
+	panic("unimplemented conversion of VideoInfoDmaDrm (GstVideoInfoDmaDrm) because of unknown reason")
 
 	return drmInfo
 }
@@ -24091,7 +24048,7 @@ func (drmInfo *VideoInfoDmaDrm) ToVideoInfo() (VideoInfo, bool) {
 
 	_ = info
 	_ = carg1
-	panic("unimplemented conversion of VideoInfo (GstVideoInfo)")
+	panic("unimplemented conversion of VideoInfo (GstVideoInfo) because of unknown reason")
 	if cret != 0 {
 		goret = true
 	}
@@ -24209,7 +24166,7 @@ func VideoMasteringDisplayInfoFromString(mastering string) (VideoMasteringDispla
 
 	_ = minfo
 	_ = carg1
-	panic("unimplemented conversion of VideoMasteringDisplayInfo (GstVideoMasteringDisplayInfo)")
+	panic("unimplemented conversion of VideoMasteringDisplayInfo (GstVideoMasteringDisplayInfo) because of unknown reason")
 	if cret != 0 {
 		goret = true
 	}
@@ -24572,7 +24529,7 @@ func (meta *VideoMeta) SetAlignment(alignment VideoAlignment) bool {
 	carg0 = (*C.GstVideoMeta)(UnsafeVideoMetaToGlibNone(meta))
 	_ = alignment
 	_ = carg1
-	panic("unimplemented conversion of VideoAlignment (GstVideoAlignment)")
+	panic("unimplemented conversion of VideoAlignment (GstVideoAlignment) because of no basic converter found")
 
 	cret = C.gst_video_meta_set_alignment(carg0, carg1)
 	runtime.KeepAlive(meta)
@@ -26485,7 +26442,7 @@ func (scale *VideoScaler) GetCoeff(outOffset uint) (uint, uint, *float64) {
 	nTaps = uint(carg3)
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of *float64 (const gdouble*)")
+	panic("unimplemented conversion of *float64 (const gdouble*) because of unknown reason")
 
 	return inOffset, nTaps, goret
 }
@@ -27576,7 +27533,7 @@ func (encoder *VideoVBIEncoder) AddAncillary(composite bool, did uint8, sdidBloc
 	var carg1 C.gboolean            // in
 	var carg2 C.guint8              // in, none, casted
 	var carg3 C.guint8              // in, none, casted
-	var carg4 *C.guint8             // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg5)
+	var carg4 *C.guint8             // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg5)
 	var carg5 C.guint               // implicit
 	var cret  C.gboolean            // return
 
@@ -27589,7 +27546,7 @@ func (encoder *VideoVBIEncoder) AddAncillary(composite bool, did uint8, sdidBloc
 	_ = data
 	_ = carg4
 	_ = carg5
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_video_vbi_encoder_add_ancillary(carg0, carg1, carg2, carg3, carg4, carg5)
 	runtime.KeepAlive(encoder)
@@ -27640,7 +27597,7 @@ func (encoder *VideoVBIEncoder) WriteLine(data *uint8) {
 	carg0 = (*C.GstVideoVBIEncoder)(UnsafeVideoVBIEncoderToGlibNone(encoder))
 	_ = data
 	_ = carg1
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	panic("unimplemented conversion of *uint8 (guint8*) because of no basic converter found")
 
 	C.gst_video_vbi_encoder_write_line(carg0, carg1)
 	runtime.KeepAlive(encoder)
@@ -27821,7 +27778,7 @@ func (parser *VideoVBIParser) GetAncillary() (VideoAncillary, VideoVBIParserResu
 
 	_ = anc
 	_ = carg1
-	panic("unimplemented conversion of VideoAncillary (GstVideoAncillary)")
+	panic("unimplemented conversion of VideoAncillary (GstVideoAncillary) because of unknown reason")
 	goret = VideoVBIParserResult(cret)
 
 	return anc, goret

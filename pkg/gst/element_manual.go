@@ -4,7 +4,7 @@ import (
 	"path"
 	"runtime"
 
-	"github.com/diamondburned/gotk4/pkg/glib/v2"
+	"github.com/go-gst/go-glib/pkg/glib/v2"
 )
 
 // #cgo pkg-config: gstreamer-1.0
