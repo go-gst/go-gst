@@ -85,7 +85,7 @@ func buildPipeline() (gst.Pipeline, error) {
 			err := errors.New("could not detect media stream type")
 			// We can send errors directly to the pipeline bus if they occur.
 			// These will be handled downstream.
-			msg := gst.NewMessageError(decodebin, fmt.Sprintf("Received caps: %s", caps.ToString()), err)
+			msg := gst.NewMessageError(decodebin, fmt.Sprintf("Received caps: %s", caps.String()), err)
 			pipeline.GetBus().Post(msg)
 			return
 		}
