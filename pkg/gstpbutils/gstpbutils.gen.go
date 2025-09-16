@@ -557,6 +557,10 @@ func (f PbUtilsCapsDescriptionFlags) String() string {
 }
 
 // InstallPluginsResultFunc wraps GstInstallPluginsResultFunc
+// 
+// The function takes the following parameters:
+// 
+// 	- result InstallPluginsReturn: whether the installation of the requested plugins succeeded or not 
 //
 // The prototype of the callback function that will be called once the
 // external plugin installer program has returned. You only need to provide
@@ -2810,6 +2814,36 @@ var _ AudioVisualizer = (*AudioVisualizerInstance)(nil)
 type AudioVisualizer interface {
 	gst.Element
 	upcastToGstAudioVisualizer() *AudioVisualizerInstance
+
+	// chain up virtual methods:
+
+	// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	ParentDecideAllocation(query *gst.Query) bool
+	// ParentRender calls the default implementations of the render virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- audio *gst.Buffer 
+	// 	- video *gstvideo.VideoFrame 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	ParentRender(audio *gst.Buffer, video *gstvideo.VideoFrame) bool
+	// ParentSetup calls the default implementations of the setup virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	ParentSetup() bool
 }
 
 func unsafeWrapAudioVisualizer(base *gobject.ObjectInstance) *AudioVisualizerInstance {
@@ -2969,6 +3003,95 @@ func UnsafeApplyAudioVisualizerOverrides[Instance AudioVisualizer](gclass unsafe
 	}
 }
 
+// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+func (scope *AudioVisualizerInstance) ParentDecideAllocation(query *gst.Query) bool {
+	var carg0 *C.GstAudioVisualizer
+	var carg1 *C.GstQuery // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstAudioVisualizerClass)(classdata.PeekParentClass(UnsafeAudioVisualizerToGlibNone(scope)))
+
+	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstpbutils1_AudioVisualizer_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
+	runtime.KeepAlive(scope)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentRender calls the default implementations of the render virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- audio *gst.Buffer 
+// 	- video *gstvideo.VideoFrame 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+func (scope *AudioVisualizerInstance) ParentRender(audio *gst.Buffer, video *gstvideo.VideoFrame) bool {
+	var carg0 *C.GstAudioVisualizer
+	var carg1 *C.GstBuffer     // in, none, converted
+	var carg2 *C.GstVideoFrame // in, none, converted
+	var cret  C.gboolean       // return
+
+	parentclass := (*C.GstAudioVisualizerClass)(classdata.PeekParentClass(UnsafeAudioVisualizerToGlibNone(scope)))
+
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(audio))
+	carg2 = (*C.GstVideoFrame)(gstvideo.UnsafeVideoFrameToGlibNone(video))
+
+	cret = C._gotk4_gstpbutils1_AudioVisualizer_virtual_render(unsafe.Pointer(parentclass.render), carg0, carg1, carg2)
+	runtime.KeepAlive(scope)
+	runtime.KeepAlive(audio)
+	runtime.KeepAlive(video)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSetup calls the default implementations of the setup virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+func (scope *AudioVisualizerInstance) ParentSetup() bool {
+	var carg0 *C.GstAudioVisualizer
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAudioVisualizerClass)(classdata.PeekParentClass(UnsafeAudioVisualizerToGlibNone(scope)))
+
+	cret = C._gotk4_gstpbutils1_AudioVisualizer_virtual_setup(unsafe.Pointer(parentclass.setup), carg0)
+	runtime.KeepAlive(scope)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
 // RegisterAudioVisualizerSubClass is used to register a go subclass of GstAudioVisualizer. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterAudioVisualizerSubClass[InstanceT AudioVisualizer](
@@ -3101,6 +3224,40 @@ type Discoverer interface {
 	//
 	// Will be emitted when the discover starts analyzing the pending URIs
 	ConnectStarting(func(Discoverer)) gobject.SignalHandle
+
+	// chain up virtual methods:
+
+	// ParentDiscovered calls the default implementations of the discovered virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- info DiscovererInfo 
+	// 	- err error 
+	ParentDiscovered(info DiscovererInfo, err error)
+	// ParentFinished calls the default implementations of the finished virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	ParentFinished()
+	// ParentLoadSerializeInfo calls the default implementations of the load_serialize_info virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- uri string: the uri to load the info from 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret DiscovererInfo 
+	//
+	// Loads the serialized info from the given uri.
+	ParentLoadSerializeInfo(uri string) DiscovererInfo
+	// ParentSourceSetup calls the default implementations of the source_setup virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- source gst.Element 
+	ParentSourceSetup(source gst.Element)
+	// ParentStarting calls the default implementations of the starting virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	ParentStarting()
 }
 
 func unsafeWrapDiscoverer(base *gobject.ObjectInstance) *DiscovererInstance {
@@ -3350,6 +3507,8 @@ type DiscovererOverrides[Instance Discoverer] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret DiscovererInfo 
+	//
+	// Loads the serialized info from the given uri.
 	LoadSerializeInfo func(Instance, string) DiscovererInfo
 	// SourceSetup allows you to override the implementation of the virtual method source_setup.
 	// The function takes the following parameters:
@@ -3454,6 +3613,100 @@ func UnsafeApplyDiscovererOverrides[Instance Discoverer](gclass unsafe.Pointer, 
 			},
 		)
 	}
+}
+
+// ParentDiscovered calls the default implementations of the discovered virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- info DiscovererInfo 
+// 	- err error 
+func (discoverer *DiscovererInstance) ParentDiscovered(info DiscovererInfo, err error) {
+	var carg0 *C.GstDiscoverer
+	var carg1 *C.GstDiscovererInfo // in, none, converted
+	var carg2 *C.GError            // in, none, converted
+
+	parentclass := (*C.GstDiscovererClass)(classdata.PeekParentClass(UnsafeDiscovererToGlibNone(discoverer)))
+
+	carg1 = (*C.GstDiscovererInfo)(UnsafeDiscovererInfoToGlibNone(info))
+	carg2 = (*C.GError)(glib.UnsafeErrorToGlibNone(err))
+
+	C._gotk4_gstpbutils1_Discoverer_virtual_discovered(unsafe.Pointer(parentclass.discovered), carg0, carg1, carg2)
+	runtime.KeepAlive(discoverer)
+	runtime.KeepAlive(info)
+	runtime.KeepAlive(err)
+}
+
+// ParentFinished calls the default implementations of the finished virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+func (discoverer *DiscovererInstance) ParentFinished() {
+	var carg0 *C.GstDiscoverer
+
+	parentclass := (*C.GstDiscovererClass)(classdata.PeekParentClass(UnsafeDiscovererToGlibNone(discoverer)))
+
+	C._gotk4_gstpbutils1_Discoverer_virtual_finished(unsafe.Pointer(parentclass.finished), carg0)
+	runtime.KeepAlive(discoverer)
+}
+
+// ParentLoadSerializeInfo calls the default implementations of the load_serialize_info virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- uri string: the uri to load the info from 
+// 
+// The function returns the following values:
+// 
+// 	- goret DiscovererInfo 
+//
+// Loads the serialized info from the given uri.
+func (dc *DiscovererInstance) ParentLoadSerializeInfo(uri string) DiscovererInfo {
+	var carg0 *C.GstDiscoverer
+	var carg1 *C.gchar             // in, none, string
+	var cret  *C.GstDiscovererInfo // return, full, converted
+
+	parentclass := (*C.GstDiscovererClass)(classdata.PeekParentClass(UnsafeDiscovererToGlibNone(dc)))
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	cret = C._gotk4_gstpbutils1_Discoverer_virtual_load_serialize_info(unsafe.Pointer(parentclass.load_serialize_info), carg0, carg1)
+	runtime.KeepAlive(dc)
+	runtime.KeepAlive(uri)
+
+	var goret DiscovererInfo
+
+	goret = UnsafeDiscovererInfoFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// ParentSourceSetup calls the default implementations of the source_setup virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- source gst.Element 
+func (discoverer *DiscovererInstance) ParentSourceSetup(source gst.Element) {
+	var carg0 *C.GstDiscoverer
+	var carg1 *C.GstElement // in, none, converted
+
+	parentclass := (*C.GstDiscovererClass)(classdata.PeekParentClass(UnsafeDiscovererToGlibNone(discoverer)))
+
+	carg1 = (*C.GstElement)(gst.UnsafeElementToGlibNone(source))
+
+	C._gotk4_gstpbutils1_Discoverer_virtual_source_setup(unsafe.Pointer(parentclass.source_setup), carg0, carg1)
+	runtime.KeepAlive(discoverer)
+	runtime.KeepAlive(source)
+}
+
+// ParentStarting calls the default implementations of the starting virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+func (discoverer *DiscovererInstance) ParentStarting() {
+	var carg0 *C.GstDiscoverer
+
+	parentclass := (*C.GstDiscovererClass)(classdata.PeekParentClass(UnsafeDiscovererToGlibNone(discoverer)))
+
+	C._gotk4_gstpbutils1_Discoverer_virtual_starting(unsafe.Pointer(parentclass.starting), carg0)
+	runtime.KeepAlive(discoverer)
 }
 
 // RegisterDiscovererSubClass is used to register a go subclass of GstDiscoverer. For this to work safely please implement the

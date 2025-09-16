@@ -2192,9 +2192,25 @@ func GLSLProfileToString(profile GLSLProfile) string {
 }
 
 // GLAsyncDebugLogGetMessage wraps GstGLAsyncDebugLogGetMessage
+// 
+// The function takes the following parameters:
+// 
+// 
+// The function returns the following values:
+// 
+// 	- goret string 
 type GLAsyncDebugLogGetMessage func() (goret string)
 
 // GLFilterRenderFunc wraps GstGLFilterRenderFunc
+// 
+// The function takes the following parameters:
+// 
+// 	- filter GLFilter: the #GstGLFilter 
+// 	- inTex *GLMemory: the input #GstGLMemory to render 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
 type GLFilterRenderFunc func(filter GLFilter, inTex *GLMemory) (goret bool)
 
 // BufferAddGLSyncMeta wraps gst_buffer_add_gl_sync_meta
@@ -3019,6 +3035,37 @@ type GLBaseFilter interface {
 	// 
 	// 	- goret GLContext (nullable) 
 	GetGLContext() GLContext
+
+	// chain up virtual methods:
+
+	// ParentGLSetCaps calls the default implementations of the gl_set_caps virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- incaps *gst.Caps 
+	// 	- outcaps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// called in the GL thread when caps are set on @filter.
+	//               Note: this will also be called when changing OpenGL contexts
+	//               where #GstBaseTransform::set_caps may not.
+	ParentGLSetCaps(incaps *gst.Caps, outcaps *gst.Caps) bool
+	// ParentGLStart calls the default implementations of the gl_start virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// called in the GL thread to setup the element GL state.
+	ParentGLStart() bool
+	// ParentGLStop calls the default implementations of the gl_stop virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	//
+	// called in the GL thread to setup the element GL state.
+	ParentGLStop()
 }
 
 func unsafeWrapGLBaseFilter(base *gobject.ObjectInstance) *GLBaseFilterInstance {
@@ -3129,13 +3176,21 @@ type GLBaseFilterOverrides[Instance GLBaseFilter] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// called in the GL thread when caps are set on @filter.
+	//               Note: this will also be called when changing OpenGL contexts
+	//               where #GstBaseTransform::set_caps may not.
 	GLSetCaps func(Instance, *gst.Caps, *gst.Caps) bool
 	// GLStart allows you to override the implementation of the virtual method gl_start.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// called in the GL thread to setup the element GL state.
 	GLStart func(Instance) bool
 	// GLStop allows you to override the implementation of the virtual method gl_stop.
+	//
+	// called in the GL thread to setup the element GL state.
 	GLStop func(Instance)
 }
 
@@ -3210,6 +3265,83 @@ func UnsafeApplyGLBaseFilterOverrides[Instance GLBaseFilter](gclass unsafe.Point
 	}
 }
 
+// ParentGLSetCaps calls the default implementations of the gl_set_caps virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- incaps *gst.Caps 
+// 	- outcaps *gst.Caps 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// called in the GL thread when caps are set on @filter.
+//               Note: this will also be called when changing OpenGL contexts
+//               where #GstBaseTransform::set_caps may not.
+func (filter *GLBaseFilterInstance) ParentGLSetCaps(incaps *gst.Caps, outcaps *gst.Caps) bool {
+	var carg0 *C.GstGLBaseFilter
+	var carg1 *C.GstCaps // in, none, converted
+	var carg2 *C.GstCaps // in, none, converted
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstGLBaseFilterClass)(classdata.PeekParentClass(UnsafeGLBaseFilterToGlibNone(filter)))
+
+	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(incaps))
+	carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(outcaps))
+
+	cret = C._gotk4_gstgl1_GLBaseFilter_virtual_gl_set_caps(unsafe.Pointer(parentclass.gl_set_caps), carg0, carg1, carg2)
+	runtime.KeepAlive(filter)
+	runtime.KeepAlive(incaps)
+	runtime.KeepAlive(outcaps)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentGLStart calls the default implementations of the gl_start virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// called in the GL thread to setup the element GL state.
+func (filter *GLBaseFilterInstance) ParentGLStart() bool {
+	var carg0 *C.GstGLBaseFilter
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstGLBaseFilterClass)(classdata.PeekParentClass(UnsafeGLBaseFilterToGlibNone(filter)))
+
+	cret = C._gotk4_gstgl1_GLBaseFilter_virtual_gl_start(unsafe.Pointer(parentclass.gl_start), carg0)
+	runtime.KeepAlive(filter)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentGLStop calls the default implementations of the gl_stop virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+//
+// called in the GL thread to setup the element GL state.
+func (filter *GLBaseFilterInstance) ParentGLStop() {
+	var carg0 *C.GstGLBaseFilter
+
+	parentclass := (*C.GstGLBaseFilterClass)(classdata.PeekParentClass(UnsafeGLBaseFilterToGlibNone(filter)))
+
+	C._gotk4_gstgl1_GLBaseFilter_virtual_gl_stop(unsafe.Pointer(parentclass.gl_stop), carg0)
+	runtime.KeepAlive(filter)
+}
+
 // RegisterGLBaseFilterSubClass is used to register a go subclass of GstGLBaseFilter. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterGLBaseFilterSubClass[InstanceT GLBaseFilter](
@@ -3250,6 +3382,8 @@ var _ GLBaseMemoryAllocator = (*GLBaseMemoryAllocatorInstance)(nil)
 type GLBaseMemoryAllocator interface {
 	gst.Allocator
 	upcastToGstGLBaseMemoryAllocator() *GLBaseMemoryAllocatorInstance
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapGLBaseMemoryAllocator(base *gobject.ObjectInstance) *GLBaseMemoryAllocatorInstance {
@@ -3360,6 +3494,22 @@ type GLBaseMixer interface {
 	// 
 	// 	- goret GLContext (nullable) 
 	GetGLContext() GLContext
+
+	// chain up virtual methods:
+
+	// ParentGLStart calls the default implementations of the gl_start virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// called in the GL thread to setup the element GL state.
+	ParentGLStart() bool
+	// ParentGLStop calls the default implementations of the gl_stop virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	//
+	// called in the GL thread to setup the element GL state.
+	ParentGLStop()
 }
 
 func unsafeWrapGLBaseMixer(base *gobject.ObjectInstance) *GLBaseMixerInstance {
@@ -3444,8 +3594,12 @@ type GLBaseMixerOverrides[Instance GLBaseMixer] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// called in the GL thread to setup the element GL state.
 	GLStart func(Instance) bool
 	// GLStop allows you to override the implementation of the virtual method gl_stop.
+	//
+	// called in the GL thread to setup the element GL state.
 	GLStop func(Instance)
 }
 
@@ -3494,6 +3648,44 @@ func UnsafeApplyGLBaseMixerOverrides[Instance GLBaseMixer](gclass unsafe.Pointer
 	}
 }
 
+// ParentGLStart calls the default implementations of the gl_start virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// called in the GL thread to setup the element GL state.
+func (mix *GLBaseMixerInstance) ParentGLStart() bool {
+	var carg0 *C.GstGLBaseMixer
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstGLBaseMixerClass)(classdata.PeekParentClass(UnsafeGLBaseMixerToGlibNone(mix)))
+
+	cret = C._gotk4_gstgl1_GLBaseMixer_virtual_gl_start(unsafe.Pointer(parentclass.gl_start), carg0)
+	runtime.KeepAlive(mix)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentGLStop calls the default implementations of the gl_stop virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+//
+// called in the GL thread to setup the element GL state.
+func (mix *GLBaseMixerInstance) ParentGLStop() {
+	var carg0 *C.GstGLBaseMixer
+
+	parentclass := (*C.GstGLBaseMixerClass)(classdata.PeekParentClass(UnsafeGLBaseMixerToGlibNone(mix)))
+
+	C._gotk4_gstgl1_GLBaseMixer_virtual_gl_stop(unsafe.Pointer(parentclass.gl_stop), carg0)
+	runtime.KeepAlive(mix)
+}
+
 // RegisterGLBaseMixerSubClass is used to register a go subclass of GstGLBaseMixer. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterGLBaseMixerSubClass[InstanceT GLBaseMixer](
@@ -3532,6 +3724,8 @@ var _ GLBaseMixerPad = (*GLBaseMixerPadInstance)(nil)
 type GLBaseMixerPad interface {
 	gstvideo.VideoAggregatorPad
 	upcastToGstGLBaseMixerPad() *GLBaseMixerPadInstance
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapGLBaseMixerPad(base *gobject.ObjectInstance) *GLBaseMixerPadInstance {
@@ -3640,6 +3834,34 @@ var _ GLBaseSrc = (*GLBaseSrcInstance)(nil)
 type GLBaseSrc interface {
 	gstbase.PushSrc
 	upcastToGstGLBaseSrc() *GLBaseSrcInstance
+
+	// chain up virtual methods:
+
+	// ParentFillGLMemory calls the default implementations of the fill_gl_memory virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- mem *GLMemory 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// called in the GL thread to fill the current video texture.
+	ParentFillGLMemory(mem *GLMemory) bool
+	// ParentGLStart calls the default implementations of the gl_start virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// called in the GL thread to setup the element GL state.
+	ParentGLStart() bool
+	// ParentGLStop calls the default implementations of the gl_stop virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	//
+	// called in the GL thread to setup the element GL state.
+	ParentGLStop()
 }
 
 func unsafeWrapGLBaseSrc(base *gobject.ObjectInstance) *GLBaseSrcInstance {
@@ -3705,13 +3927,19 @@ type GLBaseSrcOverrides[Instance GLBaseSrc] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// called in the GL thread to fill the current video texture.
 	FillGLMemory func(Instance, *GLMemory) bool
 	// GLStart allows you to override the implementation of the virtual method gl_start.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// called in the GL thread to setup the element GL state.
 	GLStart func(Instance) bool
 	// GLStop allows you to override the implementation of the virtual method gl_stop.
+	//
+	// called in the GL thread to setup the element GL state.
 	GLStop func(Instance)
 }
 
@@ -3784,6 +4012,77 @@ func UnsafeApplyGLBaseSrcOverrides[Instance GLBaseSrc](gclass unsafe.Pointer, ov
 	}
 }
 
+// ParentFillGLMemory calls the default implementations of the fill_gl_memory virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- mem *GLMemory 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// called in the GL thread to fill the current video texture.
+func (src *GLBaseSrcInstance) ParentFillGLMemory(mem *GLMemory) bool {
+	var carg0 *C.GstGLBaseSrc
+	var carg1 *C.GstGLMemory // in, none, converted
+	var cret  C.gboolean     // return
+
+	parentclass := (*C.GstGLBaseSrcClass)(classdata.PeekParentClass(UnsafeGLBaseSrcToGlibNone(src)))
+
+	carg1 = (*C.GstGLMemory)(UnsafeGLMemoryToGlibNone(mem))
+
+	cret = C._gotk4_gstgl1_GLBaseSrc_virtual_fill_gl_memory(unsafe.Pointer(parentclass.fill_gl_memory), carg0, carg1)
+	runtime.KeepAlive(src)
+	runtime.KeepAlive(mem)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentGLStart calls the default implementations of the gl_start virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// called in the GL thread to setup the element GL state.
+func (src *GLBaseSrcInstance) ParentGLStart() bool {
+	var carg0 *C.GstGLBaseSrc
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstGLBaseSrcClass)(classdata.PeekParentClass(UnsafeGLBaseSrcToGlibNone(src)))
+
+	cret = C._gotk4_gstgl1_GLBaseSrc_virtual_gl_start(unsafe.Pointer(parentclass.gl_start), carg0)
+	runtime.KeepAlive(src)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentGLStop calls the default implementations of the gl_stop virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+//
+// called in the GL thread to setup the element GL state.
+func (src *GLBaseSrcInstance) ParentGLStop() {
+	var carg0 *C.GstGLBaseSrc
+
+	parentclass := (*C.GstGLBaseSrcClass)(classdata.PeekParentClass(UnsafeGLBaseSrcToGlibNone(src)))
+
+	C._gotk4_gstgl1_GLBaseSrc_virtual_gl_stop(unsafe.Pointer(parentclass.gl_stop), carg0)
+	runtime.KeepAlive(src)
+}
+
 // RegisterGLBaseSrcSubClass is used to register a go subclass of GstGLBaseSrc. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterGLBaseSrcSubClass[InstanceT GLBaseSrc](
@@ -3824,6 +4123,8 @@ var _ GLBufferAllocator = (*GLBufferAllocatorInstance)(nil)
 type GLBufferAllocator interface {
 	GLBaseMemoryAllocator
 	upcastToGstGLBufferAllocator() *GLBufferAllocatorInstance
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapGLBufferAllocator(base *gobject.ObjectInstance) *GLBufferAllocatorInstance {
@@ -3946,6 +4247,8 @@ type GLBufferPool interface {
 	// gst_buffer_pool_set_config() will cause this function to return a new
 	// #GstGLAllocationParams which may or may not contain the same information.
 	GetGLAllocationParams() *GLAllocationParams
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapGLBufferPool(base *gobject.ObjectInstance) *GLBufferPoolInstance {
@@ -4147,6 +4450,8 @@ type GLColorConvert interface {
 	//
 	// Initializes @convert with the information required for conversion.
 	SetCaps(*gst.Caps, *gst.Caps) bool
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapGLColorConvert(base *gobject.ObjectInstance) *GLColorConvertInstance {
@@ -4810,6 +5115,139 @@ type GLContext interface {
 	// Swap the front and back buffers on the window attached to @context.
 	// This will display the frame on the next refresh cycle.
 	SwapBuffers()
+
+	// chain up virtual methods:
+
+	// ParentActivate calls the default implementations of the activate virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- activate bool: %TRUE to activate, %FALSE to deactivate 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// (De)activate the OpenGL context represented by this @context.
+	// 
+	// In OpenGL terms, calls eglMakeCurrent or similar with this context and the
+	// currently set window.  See gst_gl_context_set_window() for details.
+	ParentActivate(activate bool) bool
+	// ParentCheckFeature calls the default implementations of the check_feature virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- feature string: a platform specific feature 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Check for an OpenGL @feature being supported.
+	// 
+	// Note: Most features require that the context be created before it is
+	// possible to determine their existence and so will fail if that is not the
+	// case.
+	ParentCheckFeature(feature string) bool
+	// ParentChooseFormat calls the default implementations of the choose_format virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	// 	- _goerr error (nullable): an error 
+	//
+	// choose a format for the framebuffer
+	ParentChooseFormat() (bool, error)
+	// ParentCreateContext calls the default implementations of the create_context virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- glApi GLAPI 
+	// 	- otherContext GLContext 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	// 	- _goerr error (nullable): an error 
+	//
+	// create the OpenGL context
+	ParentCreateContext(glApi GLAPI, otherContext GLContext) (bool, error)
+	// ParentDestroyContext calls the default implementations of the destroy_context virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	//
+	// destroy the OpenGL context
+	ParentDestroyContext()
+	// ParentGetConfig calls the default implementations of the get_config virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Structure (nullable) 
+	//
+	// Retrieve the OpenGL configuration for this context.  The context must
+	// have been successfully created for this function to return a valid value.
+	// 
+	// Not all implementations currently support retrieving the config and will
+	// return %NULL when not supported.
+	ParentGetConfig() *gst.Structure
+	// ParentGetGLApi calls the default implementations of the get_gl_api virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret GLAPI 
+	//
+	// Get the currently enabled OpenGL api.
+	// 
+	// The currently available API may be limited by the #GstGLDisplay in use and/or
+	// the #GstGLWindow chosen.
+	ParentGetGLApi() GLAPI
+	// ParentGetGLPlatform calls the default implementations of the get_gl_platform virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret GLPlatform 
+	//
+	// Gets the OpenGL platform that used by @context.
+	ParentGetGLPlatform() GLPlatform
+	// ParentGetGLPlatformVersion calls the default implementations of the get_gl_platform_version virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- major int32: return for the major version 
+	// 	- minor int32: return for the minor version 
+	//
+	// Get the version of the OpenGL platform (GLX, EGL, etc) used.  Only valid
+	// after a call to gst_gl_context_create().
+	ParentGetGLPlatformVersion() (int32, int32)
+	// ParentRequestConfig calls the default implementations of the request_config virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- glConfig *gst.Structure (nullable): a configuration structure for
+	//             configuring the OpenGL context 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Set the OpenGL configuration for this context.  The context must not
+	// have been created for this function to succeed.  Setting a %NULL
+	// @config has the affect of removing any specific configuration request.
+	// 
+	// Not all implementations currently support retrieving the config and this
+	// function will return FALSE when not supported.
+	// 
+	// Note that calling this function may cause a subsequent
+	// gst_gl_context_create() to fail if @config could not be matched with
+	// the platform-specific configuration.
+	// 
+	// Note that the actual config used may be differ from the requested values.
+	ParentRequestConfig(glConfig *gst.Structure) bool
+	// ParentSwapBuffers calls the default implementations of the swap_buffers virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	//
+	// Swap the front and back buffers on the window attached to @context.
+	// This will display the frame on the next refresh cycle.
+	ParentSwapBuffers()
 }
 
 func unsafeWrapGLContext(base *gobject.ObjectInstance) *GLContextInstance {
@@ -5678,6 +6116,11 @@ type GLContextOverrides[Instance GLContext] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// (De)activate the OpenGL context represented by this @context.
+	// 
+	// In OpenGL terms, calls eglMakeCurrent or similar with this context and the
+	// currently set window.  See gst_gl_context_set_window() for details.
 	Activate func(Instance, bool) bool
 	// CheckFeature allows you to override the implementation of the virtual method check_feature.
 	// The function takes the following parameters:
@@ -5687,12 +6130,20 @@ type GLContextOverrides[Instance GLContext] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Check for an OpenGL @feature being supported.
+	// 
+	// Note: Most features require that the context be created before it is
+	// possible to determine their existence and so will fail if that is not the
+	// case.
 	CheckFeature func(Instance, string) bool
 	// ChooseFormat allows you to override the implementation of the virtual method choose_format.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	// 	- _goerr error (nullable): an error 
+	//
+	// choose a format for the framebuffer
 	ChooseFormat func(Instance) (bool, error)
 	// CreateContext allows you to override the implementation of the virtual method create_context.
 	// The function takes the following parameters:
@@ -5704,29 +6155,49 @@ type GLContextOverrides[Instance GLContext] struct {
 	// 
 	// 	- goret bool 
 	// 	- _goerr error (nullable): an error 
+	//
+	// create the OpenGL context
 	CreateContext func(Instance, GLAPI, GLContext) (bool, error)
 	// DestroyContext allows you to override the implementation of the virtual method destroy_context.
+	//
+	// destroy the OpenGL context
 	DestroyContext func(Instance)
 	// GetConfig allows you to override the implementation of the virtual method get_config.
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Structure (nullable) 
+	//
+	// Retrieve the OpenGL configuration for this context.  The context must
+	// have been successfully created for this function to return a valid value.
+	// 
+	// Not all implementations currently support retrieving the config and will
+	// return %NULL when not supported.
 	GetConfig func(Instance) *gst.Structure
 	// GetGLApi allows you to override the implementation of the virtual method get_gl_api.
 	// The function returns the following values:
 	// 
 	// 	- goret GLAPI 
+	//
+	// Get the currently enabled OpenGL api.
+	// 
+	// The currently available API may be limited by the #GstGLDisplay in use and/or
+	// the #GstGLWindow chosen.
 	GetGLApi func(Instance) GLAPI
 	// GetGLPlatform allows you to override the implementation of the virtual method get_gl_platform.
 	// The function returns the following values:
 	// 
 	// 	- goret GLPlatform 
+	//
+	// Gets the OpenGL platform that used by @context.
 	GetGLPlatform func(Instance) GLPlatform
 	// GetGLPlatformVersion allows you to override the implementation of the virtual method get_gl_platform_version.
 	// The function returns the following values:
 	// 
 	// 	- major int32: return for the major version 
 	// 	- minor int32: return for the minor version 
+	//
+	// Get the version of the OpenGL platform (GLX, EGL, etc) used.  Only valid
+	// after a call to gst_gl_context_create().
 	GetGLPlatformVersion func(Instance) (int32, int32)
 	// RequestConfig allows you to override the implementation of the virtual method request_config.
 	// The function takes the following parameters:
@@ -5737,8 +6208,24 @@ type GLContextOverrides[Instance GLContext] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Set the OpenGL configuration for this context.  The context must not
+	// have been created for this function to succeed.  Setting a %NULL
+	// @config has the affect of removing any specific configuration request.
+	// 
+	// Not all implementations currently support retrieving the config and this
+	// function will return FALSE when not supported.
+	// 
+	// Note that calling this function may cause a subsequent
+	// gst_gl_context_create() to fail if @config could not be matched with
+	// the platform-specific configuration.
+	// 
+	// Note that the actual config used may be differ from the requested values.
 	RequestConfig func(Instance, *gst.Structure) bool
 	// SwapBuffers allows you to override the implementation of the virtual method swap_buffers.
+	//
+	// Swap the front and back buffers on the window attached to @context.
+	// This will display the frame on the next refresh cycle.
 	SwapBuffers func(Instance)
 }
 
@@ -5990,6 +6477,336 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 	}
 }
 
+// ParentActivate calls the default implementations of the activate virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- activate bool: %TRUE to activate, %FALSE to deactivate 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// (De)activate the OpenGL context represented by this @context.
+// 
+// In OpenGL terms, calls eglMakeCurrent or similar with this context and the
+// currently set window.  See gst_gl_context_set_window() for details.
+func (_context *GLContextInstance) ParentActivate(activate bool) bool {
+	var carg0 *C.GstGLContext
+	var carg1 C.gboolean // in
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstGLContextClass)(classdata.PeekParentClass(UnsafeGLContextToGlibNone(_context)))
+
+	if activate {
+		carg1 = C.TRUE
+	}
+
+	cret = C._gotk4_gstgl1_GLContext_virtual_activate(unsafe.Pointer(parentclass.activate), carg0, carg1)
+	runtime.KeepAlive(_context)
+	runtime.KeepAlive(activate)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentCheckFeature calls the default implementations of the check_feature virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- feature string: a platform specific feature 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Check for an OpenGL @feature being supported.
+// 
+// Note: Most features require that the context be created before it is
+// possible to determine their existence and so will fail if that is not the
+// case.
+func (_context *GLContextInstance) ParentCheckFeature(feature string) bool {
+	var carg0 *C.GstGLContext
+	var carg1 *C.gchar   // in, none, string
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstGLContextClass)(classdata.PeekParentClass(UnsafeGLContextToGlibNone(_context)))
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(feature)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	cret = C._gotk4_gstgl1_GLContext_virtual_check_feature(unsafe.Pointer(parentclass.check_feature), carg0, carg1)
+	runtime.KeepAlive(_context)
+	runtime.KeepAlive(feature)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentChooseFormat calls the default implementations of the choose_format virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+// 	- _goerr error (nullable): an error 
+//
+// choose a format for the framebuffer
+func (_context *GLContextInstance) ParentChooseFormat() (bool, error) {
+	var carg0 *C.GstGLContext
+	var cret  C.gboolean // return
+	var _cerr *C.GError  // out, full, converted, nullable
+
+	parentclass := (*C.GstGLContextClass)(classdata.PeekParentClass(UnsafeGLContextToGlibNone(_context)))
+
+	cret = C._gotk4_gstgl1_GLContext_virtual_choose_format(unsafe.Pointer(parentclass.choose_format), carg0, &_cerr)
+	runtime.KeepAlive(_context)
+
+	var goret  bool
+	var _goerr error
+
+	if cret != 0 {
+		goret = true
+	}
+	if _cerr != nil {
+		_goerr = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(_cerr))
+	}
+
+	return goret, _goerr
+}
+
+// ParentCreateContext calls the default implementations of the create_context virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- glApi GLAPI 
+// 	- otherContext GLContext 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+// 	- _goerr error (nullable): an error 
+//
+// create the OpenGL context
+func (_context *GLContextInstance) ParentCreateContext(glApi GLAPI, otherContext GLContext) (bool, error) {
+	var carg0 *C.GstGLContext
+	var carg1 C.GstGLAPI      // in, none, casted
+	var carg2 *C.GstGLContext // in, none, converted
+	var cret  C.gboolean      // return
+	var _cerr *C.GError       // out, full, converted, nullable
+
+	parentclass := (*C.GstGLContextClass)(classdata.PeekParentClass(UnsafeGLContextToGlibNone(_context)))
+
+	carg1 = C.GstGLAPI(glApi)
+	carg2 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(otherContext))
+
+	cret = C._gotk4_gstgl1_GLContext_virtual_create_context(unsafe.Pointer(parentclass.create_context), carg0, carg1, carg2, &_cerr)
+	runtime.KeepAlive(_context)
+	runtime.KeepAlive(glApi)
+	runtime.KeepAlive(otherContext)
+
+	var goret  bool
+	var _goerr error
+
+	if cret != 0 {
+		goret = true
+	}
+	if _cerr != nil {
+		_goerr = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(_cerr))
+	}
+
+	return goret, _goerr
+}
+
+// ParentDestroyContext calls the default implementations of the destroy_context virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+//
+// destroy the OpenGL context
+func (_context *GLContextInstance) ParentDestroyContext() {
+	var carg0 *C.GstGLContext
+
+	parentclass := (*C.GstGLContextClass)(classdata.PeekParentClass(UnsafeGLContextToGlibNone(_context)))
+
+	C._gotk4_gstgl1_GLContext_virtual_destroy_context(unsafe.Pointer(parentclass.destroy_context), carg0)
+	runtime.KeepAlive(_context)
+}
+
+// ParentGetConfig calls the default implementations of the get_config virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret *gst.Structure (nullable) 
+//
+// Retrieve the OpenGL configuration for this context.  The context must
+// have been successfully created for this function to return a valid value.
+// 
+// Not all implementations currently support retrieving the config and will
+// return %NULL when not supported.
+func (_context *GLContextInstance) ParentGetConfig() *gst.Structure {
+	var carg0 *C.GstGLContext
+	var cret  *C.GstStructure // return, full, converted, nullable
+
+	parentclass := (*C.GstGLContextClass)(classdata.PeekParentClass(UnsafeGLContextToGlibNone(_context)))
+
+	cret = C._gotk4_gstgl1_GLContext_virtual_get_config(unsafe.Pointer(parentclass.get_config), carg0)
+	runtime.KeepAlive(_context)
+
+	var goret *gst.Structure
+
+	if cret != nil {
+		goret = gst.UnsafeStructureFromGlibFull(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
+// ParentGetGLApi calls the default implementations of the get_gl_api virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret GLAPI 
+//
+// Get the currently enabled OpenGL api.
+// 
+// The currently available API may be limited by the #GstGLDisplay in use and/or
+// the #GstGLWindow chosen.
+func (_context *GLContextInstance) ParentGetGLApi() GLAPI {
+	var carg0 *C.GstGLContext
+	var cret  C.GstGLAPI // return, none, casted
+
+	parentclass := (*C.GstGLContextClass)(classdata.PeekParentClass(UnsafeGLContextToGlibNone(_context)))
+
+	cret = C._gotk4_gstgl1_GLContext_virtual_get_gl_api(unsafe.Pointer(parentclass.get_gl_api), carg0)
+	runtime.KeepAlive(_context)
+
+	var goret GLAPI
+
+	goret = GLAPI(cret)
+
+	return goret
+}
+
+// ParentGetGLPlatform calls the default implementations of the get_gl_platform virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret GLPlatform 
+//
+// Gets the OpenGL platform that used by @context.
+func (_context *GLContextInstance) ParentGetGLPlatform() GLPlatform {
+	var carg0 *C.GstGLContext
+	var cret  C.GstGLPlatform // return, none, casted
+
+	parentclass := (*C.GstGLContextClass)(classdata.PeekParentClass(UnsafeGLContextToGlibNone(_context)))
+
+	cret = C._gotk4_gstgl1_GLContext_virtual_get_gl_platform(unsafe.Pointer(parentclass.get_gl_platform), carg0)
+	runtime.KeepAlive(_context)
+
+	var goret GLPlatform
+
+	goret = GLPlatform(cret)
+
+	return goret
+}
+
+// ParentGetGLPlatformVersion calls the default implementations of the get_gl_platform_version virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- major int32: return for the major version 
+// 	- minor int32: return for the minor version 
+//
+// Get the version of the OpenGL platform (GLX, EGL, etc) used.  Only valid
+// after a call to gst_gl_context_create().
+func (_context *GLContextInstance) ParentGetGLPlatformVersion() (int32, int32) {
+	var carg0 *C.GstGLContext
+	var carg1 C.gint // out, full, casted
+	var carg2 C.gint // out, full, casted
+
+	parentclass := (*C.GstGLContextClass)(classdata.PeekParentClass(UnsafeGLContextToGlibNone(_context)))
+
+	C._gotk4_gstgl1_GLContext_virtual_get_gl_platform_version(unsafe.Pointer(parentclass.get_gl_platform_version), carg0, &carg1, &carg2)
+	runtime.KeepAlive(_context)
+
+	var major int32
+	var minor int32
+
+	major = int32(carg1)
+	minor = int32(carg2)
+
+	return major, minor
+}
+
+// ParentRequestConfig calls the default implementations of the request_config virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- glConfig *gst.Structure (nullable): a configuration structure for
+//             configuring the OpenGL context 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Set the OpenGL configuration for this context.  The context must not
+// have been created for this function to succeed.  Setting a %NULL
+// @config has the affect of removing any specific configuration request.
+// 
+// Not all implementations currently support retrieving the config and this
+// function will return FALSE when not supported.
+// 
+// Note that calling this function may cause a subsequent
+// gst_gl_context_create() to fail if @config could not be matched with
+// the platform-specific configuration.
+// 
+// Note that the actual config used may be differ from the requested values.
+func (_context *GLContextInstance) ParentRequestConfig(glConfig *gst.Structure) bool {
+	var carg0 *C.GstGLContext
+	var carg1 *C.GstStructure // in, full, converted, nullable
+	var cret  C.gboolean      // return
+
+	parentclass := (*C.GstGLContextClass)(classdata.PeekParentClass(UnsafeGLContextToGlibNone(_context)))
+
+	if glConfig != nil {
+		carg1 = (*C.GstStructure)(gst.UnsafeStructureToGlibFull(glConfig))
+	}
+
+	cret = C._gotk4_gstgl1_GLContext_virtual_request_config(unsafe.Pointer(parentclass.request_config), carg0, carg1)
+	runtime.KeepAlive(_context)
+	runtime.KeepAlive(glConfig)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSwapBuffers calls the default implementations of the swap_buffers virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+//
+// Swap the front and back buffers on the window attached to @context.
+// This will display the frame on the next refresh cycle.
+func (_context *GLContextInstance) ParentSwapBuffers() {
+	var carg0 *C.GstGLContext
+
+	parentclass := (*C.GstGLContextClass)(classdata.PeekParentClass(UnsafeGLContextToGlibNone(_context)))
+
+	C._gotk4_gstgl1_GLContext_virtual_swap_buffers(unsafe.Pointer(parentclass.swap_buffers), carg0)
+	runtime.KeepAlive(_context)
+}
+
 // RegisterGLContextSubClass is used to register a go subclass of GstGLContext. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterGLContextSubClass[InstanceT GLContext](
@@ -6135,6 +6952,15 @@ type GLDisplay interface {
 	// It can be called in any thread and it is emitted with
 	// display's object lock held.
 	ConnectCreateContext(func(GLDisplay, GLContext) GLContextInstance) gobject.SignalHandle
+
+	// chain up virtual methods:
+
+	// ParentCreateWindow calls the default implementations of the create_window virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret GLWindow (nullable) 
+	ParentCreateWindow() GLWindow
 }
 
 func unsafeWrapGLDisplay(base *gobject.ObjectInstance) *GLDisplayInstance {
@@ -6514,6 +7340,29 @@ func UnsafeApplyGLDisplayOverrides[Instance GLDisplay](gclass unsafe.Pointer, ov
 	}
 }
 
+// ParentCreateWindow calls the default implementations of the create_window virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret GLWindow (nullable) 
+func (display *GLDisplayInstance) ParentCreateWindow() GLWindow {
+	var carg0 *C.GstGLDisplay
+	var cret  *C.GstGLWindow // return, full, converted, nullable
+
+	parentclass := (*C.GstGLDisplayClass)(classdata.PeekParentClass(UnsafeGLDisplayToGlibNone(display)))
+
+	cret = C._gotk4_gstgl1_GLDisplay_virtual_create_window(unsafe.Pointer(parentclass.create_window), carg0)
+	runtime.KeepAlive(display)
+
+	var goret GLWindow
+
+	if cret != nil {
+		goret = UnsafeGLWindowFromGlibFull(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
 // RegisterGLDisplaySubClass is used to register a go subclass of GstGLDisplay. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterGLDisplaySubClass[InstanceT GLDisplay](
@@ -6602,6 +7451,74 @@ type GLFilter interface {
 	// 
 	// See also: gst_gl_filter_render_to_target()
 	RenderToTargetWithShader(*GLMemory, *GLMemory, GLShader)
+
+	// chain up virtual methods:
+
+	// ParentFilter calls the default implementations of the filter virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- inbuf *gst.Buffer 
+	// 	- outbuf *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// perform operations on the input and output buffers.  In general,
+	//          you should avoid using this method if at all possible. One valid
+	//          use-case for using this is keeping previous buffers for future calculations.
+	//          Note: If @filter exists, then @filter_texture is not run
+	ParentFilter(inbuf *gst.Buffer, outbuf *gst.Buffer) bool
+	// ParentFilterTexture calls the default implementations of the filter_texture virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- input *GLMemory: an input buffer 
+	// 	- output *GLMemory: an output buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Calls filter_texture vfunc with correctly mapped #GstGLMemorys
+	ParentFilterTexture(input *GLMemory, output *GLMemory) bool
+	// ParentInitFbo calls the default implementations of the init_fbo virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// perform initialization when the Framebuffer object is created
+	ParentInitFbo() bool
+	// ParentSetCaps calls the default implementations of the set_caps virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- incaps *gst.Caps 
+	// 	- outcaps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// mirror from #GstBaseTransform
+	ParentSetCaps(incaps *gst.Caps, outcaps *gst.Caps) bool
+	// ParentTransformInternalCaps calls the default implementations of the transform_internal_caps virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- direction gst.PadDirection 
+	// 	- caps *gst.Caps 
+	// 	- filterCaps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Caps 
+	//
+	// Perform sub-class specific modifications of the
+	//   caps to be processed between upload on input and before download for output.
+	ParentTransformInternalCaps(direction gst.PadDirection, caps *gst.Caps, filterCaps *gst.Caps) *gst.Caps
 }
 
 func unsafeWrapGLFilter(base *gobject.ObjectInstance) *GLFilterInstance {
@@ -6805,6 +7722,11 @@ type GLFilterOverrides[Instance GLFilter] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// perform operations on the input and output buffers.  In general,
+	//          you should avoid using this method if at all possible. One valid
+	//          use-case for using this is keeping previous buffers for future calculations.
+	//          Note: If @filter exists, then @filter_texture is not run
 	Filter func(Instance, *gst.Buffer, *gst.Buffer) bool
 	// FilterTexture allows you to override the implementation of the virtual method filter_texture.
 	// The function takes the following parameters:
@@ -6815,11 +7737,15 @@ type GLFilterOverrides[Instance GLFilter] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Calls filter_texture vfunc with correctly mapped #GstGLMemorys
 	FilterTexture func(Instance, *GLMemory, *GLMemory) bool
 	// InitFbo allows you to override the implementation of the virtual method init_fbo.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// perform initialization when the Framebuffer object is created
 	InitFbo func(Instance) bool
 	// SetCaps allows you to override the implementation of the virtual method set_caps.
 	// The function takes the following parameters:
@@ -6830,6 +7756,8 @@ type GLFilterOverrides[Instance GLFilter] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// mirror from #GstBaseTransform
 	SetCaps func(Instance, *gst.Caps, *gst.Caps) bool
 	// TransformInternalCaps allows you to override the implementation of the virtual method transform_internal_caps.
 	// The function takes the following parameters:
@@ -6841,6 +7769,9 @@ type GLFilterOverrides[Instance GLFilter] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Caps 
+	//
+	// Perform sub-class specific modifications of the
+	//   caps to be processed between upload on input and before download for output.
 	TransformInternalCaps func(Instance, gst.PadDirection, *gst.Caps, *gst.Caps) *gst.Caps
 }
 
@@ -6978,6 +7909,185 @@ func UnsafeApplyGLFilterOverrides[Instance GLFilter](gclass unsafe.Pointer, over
 	}
 }
 
+// ParentFilter calls the default implementations of the filter virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- inbuf *gst.Buffer 
+// 	- outbuf *gst.Buffer 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// perform operations on the input and output buffers.  In general,
+//          you should avoid using this method if at all possible. One valid
+//          use-case for using this is keeping previous buffers for future calculations.
+//          Note: If @filter exists, then @filter_texture is not run
+func (filter *GLFilterInstance) ParentFilter(inbuf *gst.Buffer, outbuf *gst.Buffer) bool {
+	var carg0 *C.GstGLFilter
+	var carg1 *C.GstBuffer // in, none, converted
+	var carg2 *C.GstBuffer // in, none, converted
+	var cret  C.gboolean   // return
+
+	parentclass := (*C.GstGLFilterClass)(classdata.PeekParentClass(UnsafeGLFilterToGlibNone(filter)))
+
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(inbuf))
+	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(outbuf))
+
+	cret = C._gotk4_gstgl1_GLFilter_virtual_filter(unsafe.Pointer(parentclass.filter), carg0, carg1, carg2)
+	runtime.KeepAlive(filter)
+	runtime.KeepAlive(inbuf)
+	runtime.KeepAlive(outbuf)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentFilterTexture calls the default implementations of the filter_texture virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- input *GLMemory: an input buffer 
+// 	- output *GLMemory: an output buffer 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Calls filter_texture vfunc with correctly mapped #GstGLMemorys
+func (filter *GLFilterInstance) ParentFilterTexture(input *GLMemory, output *GLMemory) bool {
+	var carg0 *C.GstGLFilter
+	var carg1 *C.GstGLMemory // in, none, converted
+	var carg2 *C.GstGLMemory // in, none, converted
+	var cret  C.gboolean     // return
+
+	parentclass := (*C.GstGLFilterClass)(classdata.PeekParentClass(UnsafeGLFilterToGlibNone(filter)))
+
+	carg1 = (*C.GstGLMemory)(UnsafeGLMemoryToGlibNone(input))
+	carg2 = (*C.GstGLMemory)(UnsafeGLMemoryToGlibNone(output))
+
+	cret = C._gotk4_gstgl1_GLFilter_virtual_filter_texture(unsafe.Pointer(parentclass.filter_texture), carg0, carg1, carg2)
+	runtime.KeepAlive(filter)
+	runtime.KeepAlive(input)
+	runtime.KeepAlive(output)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentInitFbo calls the default implementations of the init_fbo virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// perform initialization when the Framebuffer object is created
+func (filter *GLFilterInstance) ParentInitFbo() bool {
+	var carg0 *C.GstGLFilter
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstGLFilterClass)(classdata.PeekParentClass(UnsafeGLFilterToGlibNone(filter)))
+
+	cret = C._gotk4_gstgl1_GLFilter_virtual_init_fbo(unsafe.Pointer(parentclass.init_fbo), carg0)
+	runtime.KeepAlive(filter)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSetCaps calls the default implementations of the set_caps virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- incaps *gst.Caps 
+// 	- outcaps *gst.Caps 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// mirror from #GstBaseTransform
+func (filter *GLFilterInstance) ParentSetCaps(incaps *gst.Caps, outcaps *gst.Caps) bool {
+	var carg0 *C.GstGLFilter
+	var carg1 *C.GstCaps // in, none, converted
+	var carg2 *C.GstCaps // in, none, converted
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstGLFilterClass)(classdata.PeekParentClass(UnsafeGLFilterToGlibNone(filter)))
+
+	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(incaps))
+	carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(outcaps))
+
+	cret = C._gotk4_gstgl1_GLFilter_virtual_set_caps(unsafe.Pointer(parentclass.set_caps), carg0, carg1, carg2)
+	runtime.KeepAlive(filter)
+	runtime.KeepAlive(incaps)
+	runtime.KeepAlive(outcaps)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentTransformInternalCaps calls the default implementations of the transform_internal_caps virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- direction gst.PadDirection 
+// 	- caps *gst.Caps 
+// 	- filterCaps *gst.Caps 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.Caps 
+//
+// Perform sub-class specific modifications of the
+//   caps to be processed between upload on input and before download for output.
+func (filter *GLFilterInstance) ParentTransformInternalCaps(direction gst.PadDirection, caps *gst.Caps, filterCaps *gst.Caps) *gst.Caps {
+	var carg0 *C.GstGLFilter
+	var carg1 C.GstPadDirection // in, none, casted
+	var carg2 *C.GstCaps        // in, none, converted
+	var carg3 *C.GstCaps        // in, none, converted
+	var cret  *C.GstCaps        // return, full, converted
+
+	parentclass := (*C.GstGLFilterClass)(classdata.PeekParentClass(UnsafeGLFilterToGlibNone(filter)))
+
+	carg1 = C.GstPadDirection(direction)
+	carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
+	carg3 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filterCaps))
+
+	cret = C._gotk4_gstgl1_GLFilter_virtual_transform_internal_caps(unsafe.Pointer(parentclass.transform_internal_caps), carg0, carg1, carg2, carg3)
+	runtime.KeepAlive(filter)
+	runtime.KeepAlive(direction)
+	runtime.KeepAlive(caps)
+	runtime.KeepAlive(filterCaps)
+
+	var goret *gst.Caps
+
+	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
 // RegisterGLFilterSubClass is used to register a go subclass of GstGLFilter. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterGLFilterSubClass[InstanceT GLFilter](
@@ -7063,6 +8173,8 @@ type GLFramebuffer interface {
 	// 
 	// 	- goret uint 
 	GetID() uint
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapGLFramebuffer(base *gobject.ObjectInstance) *GLFramebufferInstance {
@@ -7316,6 +8428,8 @@ var _ GLMemoryAllocator = (*GLMemoryAllocatorInstance)(nil)
 type GLMemoryAllocator interface {
 	GLBaseMemoryAllocator
 	upcastToGstGLMemoryAllocator() *GLMemoryAllocatorInstance
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapGLMemoryAllocator(base *gobject.ObjectInstance) *GLMemoryAllocatorInstance {
@@ -7444,6 +8558,8 @@ var _ GLMemoryPBOAllocator = (*GLMemoryPBOAllocatorInstance)(nil)
 type GLMemoryPBOAllocator interface {
 	GLMemoryAllocator
 	upcastToGstGLMemoryPBOAllocator() *GLMemoryPBOAllocatorInstance
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapGLMemoryPBOAllocator(base *gobject.ObjectInstance) *GLMemoryPBOAllocatorInstance {
@@ -7570,6 +8686,36 @@ type GLMixer interface {
 	// Intended for use within implementations of
 	// #GstGLMixerClass::process_buffers().
 	ProcessTextures(*gst.Buffer) bool
+
+	// chain up virtual methods:
+
+	// ParentProcessBuffers calls the default implementations of the process_buffers virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- outbuf *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Perform operations on the input buffers to produce an
+	// output buffer.
+	ParentProcessBuffers(outbuf *gst.Buffer) bool
+	// ParentProcessTextures calls the default implementations of the process_textures virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- outTex *GLMemory 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Perform processing required and call #GstGLMixerClass::process_textures().
+	// Intended for use within implementations of
+	// #GstGLMixerClass::process_buffers().
+	ParentProcessTextures(outTex *GLMemory) bool
 }
 
 func unsafeWrapGLMixer(base *gobject.ObjectInstance) *GLMixerInstance {
@@ -7692,6 +8838,9 @@ type GLMixerOverrides[Instance GLMixer] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Perform operations on the input buffers to produce an
+	// output buffer.
 	ProcessBuffers func(Instance, *gst.Buffer) bool
 	// ProcessTextures allows you to override the implementation of the virtual method process_textures.
 	// The function takes the following parameters:
@@ -7701,6 +8850,10 @@ type GLMixerOverrides[Instance GLMixer] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Perform processing required and call #GstGLMixerClass::process_textures().
+	// Intended for use within implementations of
+	// #GstGLMixerClass::process_buffers().
 	ProcessTextures func(Instance, *GLMemory) bool
 }
 
@@ -7760,6 +8913,75 @@ func UnsafeApplyGLMixerOverrides[Instance GLMixer](gclass unsafe.Pointer, overri
 	}
 }
 
+// ParentProcessBuffers calls the default implementations of the process_buffers virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- outbuf *gst.Buffer 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Perform operations on the input buffers to produce an
+// output buffer.
+func (mix *GLMixerInstance) ParentProcessBuffers(outbuf *gst.Buffer) bool {
+	var carg0 *C.GstGLMixer
+	var carg1 *C.GstBuffer // in, none, converted
+	var cret  C.gboolean   // return
+
+	parentclass := (*C.GstGLMixerClass)(classdata.PeekParentClass(UnsafeGLMixerToGlibNone(mix)))
+
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(outbuf))
+
+	cret = C._gotk4_gstgl1_GLMixer_virtual_process_buffers(unsafe.Pointer(parentclass.process_buffers), carg0, carg1)
+	runtime.KeepAlive(mix)
+	runtime.KeepAlive(outbuf)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentProcessTextures calls the default implementations of the process_textures virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- outTex *GLMemory 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Perform processing required and call #GstGLMixerClass::process_textures().
+// Intended for use within implementations of
+// #GstGLMixerClass::process_buffers().
+func (mix *GLMixerInstance) ParentProcessTextures(outTex *GLMemory) bool {
+	var carg0 *C.GstGLMixer
+	var carg1 *C.GstGLMemory // in, none, converted
+	var cret  C.gboolean     // return
+
+	parentclass := (*C.GstGLMixerClass)(classdata.PeekParentClass(UnsafeGLMixerToGlibNone(mix)))
+
+	carg1 = (*C.GstGLMemory)(UnsafeGLMemoryToGlibNone(outTex))
+
+	cret = C._gotk4_gstgl1_GLMixer_virtual_process_textures(unsafe.Pointer(parentclass.process_textures), carg0, carg1)
+	runtime.KeepAlive(mix)
+	runtime.KeepAlive(outTex)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
 // RegisterGLMixerSubClass is used to register a go subclass of GstGLMixer. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterGLMixerSubClass[InstanceT GLMixer](
@@ -7798,6 +9020,8 @@ var _ GLMixerPad = (*GLMixerPadInstance)(nil)
 type GLMixerPad interface {
 	GLBaseMixerPad
 	upcastToGstGLMixerPad() *GLMixerPadInstance
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapGLMixerPad(base *gobject.ObjectInstance) *GLMixerPadInstance {
@@ -7916,6 +9140,8 @@ type GLOverlayCompositor interface {
 	// 
 	// 	- buf *gst.Buffer 
 	UploadOverlays(*gst.Buffer)
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapGLOverlayCompositor(base *gobject.ObjectInstance) *GLOverlayCompositorInstance {
@@ -8102,6 +9328,8 @@ var _ GLRenderbufferAllocator = (*GLRenderbufferAllocatorInstance)(nil)
 type GLRenderbufferAllocator interface {
 	GLBaseMemoryAllocator
 	upcastToGstGLRenderbufferAllocator() *GLRenderbufferAllocatorInstance
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapGLRenderbufferAllocator(base *gobject.ObjectInstance) *GLRenderbufferAllocatorInstance {
@@ -8251,6 +9479,8 @@ type GLSLStage interface {
 	//
 	// Replaces the current shader string with @str.
 	SetStrings(GLSLVersion, GLSLProfile, []string) bool
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapGLSLStage(base *gobject.ObjectInstance) *GLSLStageInstance {
@@ -9068,6 +10298,8 @@ type GLShader interface {
 	// 
 	// Note: must be called in the GL thread and @shader must have been linked.
 	Use()
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapGLShader(base *gobject.ObjectInstance) *GLShaderInstance {
@@ -10557,6 +11789,8 @@ type GLUpload interface {
 	// 
 	// 	- goret *gst.Caps 
 	TransformCaps(GLContext, gst.PadDirection, *gst.Caps, *gst.Caps) *gst.Caps
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapGLUpload(base *gobject.ObjectInstance) *GLUploadInstance {
@@ -11004,6 +12238,8 @@ type GLViewConvert interface {
 	//
 	// Provides an implementation of #GstBaseTransformClass.transform_caps()
 	TransformCaps(gst.PadDirection, *gst.Caps, *gst.Caps) *gst.Caps
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapGLViewConvert(base *gobject.ObjectInstance) *GLViewConvertInstance {
@@ -11505,6 +12741,102 @@ type GLWindow interface {
 	// signal, elements can refresh associated resource without relying on
 	// direct handle comparision.
 	ConnectWindowHandleChanged(func(GLWindow)) gobject.SignalHandle
+
+	// chain up virtual methods:
+
+	// ParentClose calls the default implementations of the close virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	//
+	// close the connection to the display
+	ParentClose()
+	// ParentControlsViewport calls the default implementations of the controls_viewport virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Checks if @window controls the GL viewport.
+	ParentControlsViewport() bool
+	// ParentDraw calls the default implementations of the draw virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	//
+	// Redraw the window contents.  Implementations should invoke the draw callback.
+	ParentDraw()
+	// ParentHandleEvents calls the default implementations of the handle_events virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- handleEvents bool: a #gboolean indicating if events should be handled or not. 
+	//
+	// Tell a @window that it should handle events from the window system. These
+	// events are forwarded upstream as navigation events. In some window systems
+	// events are not propagated in the window hierarchy if a client is listening
+	// for them. This method allows you to disable events handling completely
+	// from the @window.
+	ParentHandleEvents(handleEvents bool)
+	// ParentHasOutputSurface calls the default implementations of the has_output_surface virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Query whether @window has output surface or not
+	ParentHasOutputSurface() bool
+	// ParentOpen calls the default implementations of the open virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	// 	- _goerr error (nullable): an error 
+	//
+	// open the connection to the display
+	ParentOpen() (bool, error)
+	// ParentQueueResize calls the default implementations of the queue_resize virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	//
+	// Queue resizing of @window.
+	ParentQueueResize()
+	// ParentQuit calls the default implementations of the quit virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	//
+	// Quit the runloop's execution.
+	ParentQuit()
+	// ParentRun calls the default implementations of the run virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	//
+	// Start the execution of the runloop.
+	ParentRun()
+	// ParentSetPreferredSize calls the default implementations of the set_preferred_size virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- width int32: new preferred width 
+	// 	- height int32: new preferred height 
+	//
+	// Set the preferred width and height of the window.  Implementations are free
+	// to ignore this information.
+	ParentSetPreferredSize(width int32, height int32)
+	// ParentSetRenderRectangle calls the default implementations of the set_render_rectangle virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- x int32: x position 
+	// 	- y int32: y position 
+	// 	- width int32: width 
+	// 	- height int32: height 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Tell a @window that it should render into a specific region of the window
+	// according to the #GstVideoOverlay interface.
+	ParentSetRenderRectangle(x int32, y int32, width int32, height int32) bool
+	// ParentShow calls the default implementations of the show virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	//
+	// Present the window to the screen.
+	ParentShow()
 }
 
 func unsafeWrapGLWindow(base *gobject.ObjectInstance) *GLWindowInstance {
@@ -11971,41 +13303,66 @@ type GLWindowOverrides[Instance GLWindow] struct {
 	gst.ObjectOverrides[Instance]
 
 	// Close allows you to override the implementation of the virtual method close.
+	//
+	// close the connection to the display
 	Close func(Instance)
 	// ControlsViewport allows you to override the implementation of the virtual method controls_viewport.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Checks if @window controls the GL viewport.
 	ControlsViewport func(Instance) bool
 	// Draw allows you to override the implementation of the virtual method draw.
+	//
+	// Redraw the window contents.  Implementations should invoke the draw callback.
 	Draw func(Instance)
 	// HandleEvents allows you to override the implementation of the virtual method handle_events.
 	// The function takes the following parameters:
 	// 
 	// 	- handleEvents bool: a #gboolean indicating if events should be handled or not. 
+	//
+	// Tell a @window that it should handle events from the window system. These
+	// events are forwarded upstream as navigation events. In some window systems
+	// events are not propagated in the window hierarchy if a client is listening
+	// for them. This method allows you to disable events handling completely
+	// from the @window.
 	HandleEvents func(Instance, bool)
 	// HasOutputSurface allows you to override the implementation of the virtual method has_output_surface.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Query whether @window has output surface or not
 	HasOutputSurface func(Instance) bool
 	// Open allows you to override the implementation of the virtual method open.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	// 	- _goerr error (nullable): an error 
+	//
+	// open the connection to the display
 	Open func(Instance) (bool, error)
 	// QueueResize allows you to override the implementation of the virtual method queue_resize.
+	//
+	// Queue resizing of @window.
 	QueueResize func(Instance)
 	// Quit allows you to override the implementation of the virtual method quit.
+	//
+	// Quit the runloop's execution.
 	Quit func(Instance)
 	// Run allows you to override the implementation of the virtual method run.
+	//
+	// Start the execution of the runloop.
 	Run func(Instance)
 	// SetPreferredSize allows you to override the implementation of the virtual method set_preferred_size.
 	// The function takes the following parameters:
 	// 
 	// 	- width int32: new preferred width 
 	// 	- height int32: new preferred height 
+	//
+	// Set the preferred width and height of the window.  Implementations are free
+	// to ignore this information.
 	SetPreferredSize func(Instance, int32, int32)
 	// SetRenderRectangle allows you to override the implementation of the virtual method set_render_rectangle.
 	// The function takes the following parameters:
@@ -12018,8 +13375,13 @@ type GLWindowOverrides[Instance GLWindow] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Tell a @window that it should render into a specific region of the window
+	// according to the #GstVideoOverlay interface.
 	SetRenderRectangle func(Instance, int32, int32, int32, int32) bool
 	// Show allows you to override the implementation of the virtual method show.
+	//
+	// Present the window to the screen.
 	Show func(Instance)
 }
 
@@ -12255,6 +13617,262 @@ func UnsafeApplyGLWindowOverrides[Instance GLWindow](gclass unsafe.Pointer, over
 			},
 		)
 	}
+}
+
+// ParentClose calls the default implementations of the close virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+//
+// close the connection to the display
+func (window *GLWindowInstance) ParentClose() {
+	var carg0 *C.GstGLWindow
+
+	parentclass := (*C.GstGLWindowClass)(classdata.PeekParentClass(UnsafeGLWindowToGlibNone(window)))
+
+	C._gotk4_gstgl1_GLWindow_virtual_close(unsafe.Pointer(parentclass.close), carg0)
+	runtime.KeepAlive(window)
+}
+
+// ParentControlsViewport calls the default implementations of the controls_viewport virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Checks if @window controls the GL viewport.
+func (window *GLWindowInstance) ParentControlsViewport() bool {
+	var carg0 *C.GstGLWindow
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstGLWindowClass)(classdata.PeekParentClass(UnsafeGLWindowToGlibNone(window)))
+
+	cret = C._gotk4_gstgl1_GLWindow_virtual_controls_viewport(unsafe.Pointer(parentclass.controls_viewport), carg0)
+	runtime.KeepAlive(window)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentDraw calls the default implementations of the draw virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+//
+// Redraw the window contents.  Implementations should invoke the draw callback.
+func (window *GLWindowInstance) ParentDraw() {
+	var carg0 *C.GstGLWindow
+
+	parentclass := (*C.GstGLWindowClass)(classdata.PeekParentClass(UnsafeGLWindowToGlibNone(window)))
+
+	C._gotk4_gstgl1_GLWindow_virtual_draw(unsafe.Pointer(parentclass.draw), carg0)
+	runtime.KeepAlive(window)
+}
+
+// ParentHandleEvents calls the default implementations of the handle_events virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- handleEvents bool: a #gboolean indicating if events should be handled or not. 
+//
+// Tell a @window that it should handle events from the window system. These
+// events are forwarded upstream as navigation events. In some window systems
+// events are not propagated in the window hierarchy if a client is listening
+// for them. This method allows you to disable events handling completely
+// from the @window.
+func (window *GLWindowInstance) ParentHandleEvents(handleEvents bool) {
+	var carg0 *C.GstGLWindow
+	var carg1 C.gboolean // in
+
+	parentclass := (*C.GstGLWindowClass)(classdata.PeekParentClass(UnsafeGLWindowToGlibNone(window)))
+
+	if handleEvents {
+		carg1 = C.TRUE
+	}
+
+	C._gotk4_gstgl1_GLWindow_virtual_handle_events(unsafe.Pointer(parentclass.handle_events), carg0, carg1)
+	runtime.KeepAlive(window)
+	runtime.KeepAlive(handleEvents)
+}
+
+// ParentHasOutputSurface calls the default implementations of the has_output_surface virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Query whether @window has output surface or not
+func (window *GLWindowInstance) ParentHasOutputSurface() bool {
+	var carg0 *C.GstGLWindow
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstGLWindowClass)(classdata.PeekParentClass(UnsafeGLWindowToGlibNone(window)))
+
+	cret = C._gotk4_gstgl1_GLWindow_virtual_has_output_surface(unsafe.Pointer(parentclass.has_output_surface), carg0)
+	runtime.KeepAlive(window)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentOpen calls the default implementations of the open virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+// 	- _goerr error (nullable): an error 
+//
+// open the connection to the display
+func (window *GLWindowInstance) ParentOpen() (bool, error) {
+	var carg0 *C.GstGLWindow
+	var cret  C.gboolean // return
+	var _cerr *C.GError  // out, full, converted, nullable
+
+	parentclass := (*C.GstGLWindowClass)(classdata.PeekParentClass(UnsafeGLWindowToGlibNone(window)))
+
+	cret = C._gotk4_gstgl1_GLWindow_virtual_open(unsafe.Pointer(parentclass.open), carg0, &_cerr)
+	runtime.KeepAlive(window)
+
+	var goret  bool
+	var _goerr error
+
+	if cret != 0 {
+		goret = true
+	}
+	if _cerr != nil {
+		_goerr = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(_cerr))
+	}
+
+	return goret, _goerr
+}
+
+// ParentQueueResize calls the default implementations of the queue_resize virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+//
+// Queue resizing of @window.
+func (window *GLWindowInstance) ParentQueueResize() {
+	var carg0 *C.GstGLWindow
+
+	parentclass := (*C.GstGLWindowClass)(classdata.PeekParentClass(UnsafeGLWindowToGlibNone(window)))
+
+	C._gotk4_gstgl1_GLWindow_virtual_queue_resize(unsafe.Pointer(parentclass.queue_resize), carg0)
+	runtime.KeepAlive(window)
+}
+
+// ParentQuit calls the default implementations of the quit virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+//
+// Quit the runloop's execution.
+func (window *GLWindowInstance) ParentQuit() {
+	var carg0 *C.GstGLWindow
+
+	parentclass := (*C.GstGLWindowClass)(classdata.PeekParentClass(UnsafeGLWindowToGlibNone(window)))
+
+	C._gotk4_gstgl1_GLWindow_virtual_quit(unsafe.Pointer(parentclass.quit), carg0)
+	runtime.KeepAlive(window)
+}
+
+// ParentRun calls the default implementations of the run virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+//
+// Start the execution of the runloop.
+func (window *GLWindowInstance) ParentRun() {
+	var carg0 *C.GstGLWindow
+
+	parentclass := (*C.GstGLWindowClass)(classdata.PeekParentClass(UnsafeGLWindowToGlibNone(window)))
+
+	C._gotk4_gstgl1_GLWindow_virtual_run(unsafe.Pointer(parentclass.run), carg0)
+	runtime.KeepAlive(window)
+}
+
+// ParentSetPreferredSize calls the default implementations of the set_preferred_size virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- width int32: new preferred width 
+// 	- height int32: new preferred height 
+//
+// Set the preferred width and height of the window.  Implementations are free
+// to ignore this information.
+func (window *GLWindowInstance) ParentSetPreferredSize(width int32, height int32) {
+	var carg0 *C.GstGLWindow
+	var carg1 C.gint // in, none, casted
+	var carg2 C.gint // in, none, casted
+
+	parentclass := (*C.GstGLWindowClass)(classdata.PeekParentClass(UnsafeGLWindowToGlibNone(window)))
+
+	carg1 = C.gint(width)
+	carg2 = C.gint(height)
+
+	C._gotk4_gstgl1_GLWindow_virtual_set_preferred_size(unsafe.Pointer(parentclass.set_preferred_size), carg0, carg1, carg2)
+	runtime.KeepAlive(window)
+	runtime.KeepAlive(width)
+	runtime.KeepAlive(height)
+}
+
+// ParentSetRenderRectangle calls the default implementations of the set_render_rectangle virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- x int32: x position 
+// 	- y int32: y position 
+// 	- width int32: width 
+// 	- height int32: height 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Tell a @window that it should render into a specific region of the window
+// according to the #GstVideoOverlay interface.
+func (window *GLWindowInstance) ParentSetRenderRectangle(x int32, y int32, width int32, height int32) bool {
+	var carg0 *C.GstGLWindow
+	var carg1 C.gint     // in, none, casted
+	var carg2 C.gint     // in, none, casted
+	var carg3 C.gint     // in, none, casted
+	var carg4 C.gint     // in, none, casted
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstGLWindowClass)(classdata.PeekParentClass(UnsafeGLWindowToGlibNone(window)))
+
+	carg1 = C.gint(x)
+	carg2 = C.gint(y)
+	carg3 = C.gint(width)
+	carg4 = C.gint(height)
+
+	cret = C._gotk4_gstgl1_GLWindow_virtual_set_render_rectangle(unsafe.Pointer(parentclass.set_render_rectangle), carg0, carg1, carg2, carg3, carg4)
+	runtime.KeepAlive(window)
+	runtime.KeepAlive(x)
+	runtime.KeepAlive(y)
+	runtime.KeepAlive(width)
+	runtime.KeepAlive(height)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentShow calls the default implementations of the show virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+//
+// Present the window to the screen.
+func (window *GLWindowInstance) ParentShow() {
+	var carg0 *C.GstGLWindow
+
+	parentclass := (*C.GstGLWindowClass)(classdata.PeekParentClass(UnsafeGLWindowToGlibNone(window)))
+
+	C._gotk4_gstgl1_GLWindow_virtual_show(unsafe.Pointer(parentclass.show), carg0)
+	runtime.KeepAlive(window)
 }
 
 // RegisterGLWindowSubClass is used to register a go subclass of GstGLWindow. For this to work safely please implement the

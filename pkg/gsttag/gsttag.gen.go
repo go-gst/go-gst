@@ -1760,7 +1760,7 @@ func VorbisTagAdd(list *gst.TagList, tag string, value string) {
 // TagXmpWriterInstance is the instance type used by all types implementing GstTagXmpWriter. It is used internally by the bindings. Users should use the interface [TagXmpWriter] instead.
 type TagXmpWriterInstance struct {
 	_ [0]func() // equal guard
-	Instance gobject.ObjectInstance
+	gobject.ObjectInstance
 }
 
 var _ TagXmpWriter = (*TagXmpWriterInstance)(nil)
@@ -1774,6 +1774,7 @@ var _ TagXmpWriter = (*TagXmpWriterInstance)(nil)
 // tags into XMP. Schemas are represented by their names, a full list of the supported schemas can be
 // obtained from gst_tag_xmp_list_schemas(). By default, all schemas are used.
 type TagXmpWriter interface {
+	gobject.Object
 	upcastToGstTagXmpWriter() *TagXmpWriterInstance
 
 	// AddAllSchemas wraps gst_tag_xmp_writer_add_all_schemas
@@ -1826,13 +1827,15 @@ type TagXmpWriter interface {
 	// 
 	// 	- goret *gst.Buffer 
 	TagListToXmpBuffer(*gst.TagList, bool) *gst.Buffer
+
+	// chain up virtual methods:
 }
 
 var _ TagXmpWriter = (*TagXmpWriterInstance)(nil)
 
 func unsafeWrapTagXmpWriter(base *gobject.ObjectInstance) *TagXmpWriterInstance {
 	return &TagXmpWriterInstance{
-		Instance: *base,
+		ObjectInstance: *base,
 	}
 }
 
@@ -1862,13 +1865,13 @@ func UnsafeTagXmpWriterFromGlibBorrow(c unsafe.Pointer) TagXmpWriter {
 // UnsafeTagXmpWriterToGlibNone is used to convert the instance to it's C value GstTagXmpWriter. This is used by the bindings internally.
 func UnsafeTagXmpWriterToGlibNone(c TagXmpWriter) unsafe.Pointer {
 	i := c.upcastToGstTagXmpWriter()
-	return gobject.UnsafeObjectToGlibNone(&i.Instance)
+	return gobject.UnsafeObjectToGlibNone(i)
 }
 
 // UnsafeTagXmpWriterToGlibFull is used to convert the instance to it's C value GstTagXmpWriter, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeTagXmpWriterToGlibFull(c TagXmpWriter) unsafe.Pointer {
 	i := c.upcastToGstTagXmpWriter()
-	return gobject.UnsafeObjectToGlibFull(&i.Instance)
+	return gobject.UnsafeObjectToGlibFull(i)
 }
 
 // AddAllSchemas wraps gst_tag_xmp_writer_add_all_schemas
@@ -2057,6 +2060,41 @@ var _ TagDemux = (*TagDemuxInstance)(nil)
 type TagDemux interface {
 	gst.Element
 	upcastToGstTagDemux() *TagDemuxInstance
+
+	// chain up virtual methods:
+
+	// ParentIdentifyTag calls the default implementations of the identify_tag virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *gst.Buffer 
+	// 	- startTag bool 
+	// 	- tagSize *uint 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// identify tag and determine the size required to parse the
+	// tag. Buffer may be larger than the specified minimum size.
+	// Subclassed MUST override this vfunc in their class_init function.
+	ParentIdentifyTag(buffer *gst.Buffer, startTag bool, tagSize *uint) bool
+	// ParentMergeTags calls the default implementations of the merge_tags virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- startTags *gst.TagList 
+	// 	- endTags *gst.TagList 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.TagList 
+	//
+	// merge start and end tags. Subclasses may want to override this
+	// vfunc to allow prioritising of start or end tag according to user
+	// preference.  Note that both start_tags and end_tags may be NULL. By default
+	// start tags are preferred over end tags.
+	ParentMergeTags(startTags *gst.TagList, endTags *gst.TagList) *gst.TagList
 }
 
 func unsafeWrapTagDemux(base *gobject.ObjectInstance) *TagDemuxInstance {
@@ -2120,6 +2158,10 @@ type TagDemuxOverrides[Instance TagDemux] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// identify tag and determine the size required to parse the
+	// tag. Buffer may be larger than the specified minimum size.
+	// Subclassed MUST override this vfunc in their class_init function.
 	IdentifyTag func(Instance, *gst.Buffer, bool, *uint) bool
 	// MergeTags allows you to override the implementation of the virtual method merge_tags.
 	// The function takes the following parameters:
@@ -2130,6 +2172,11 @@ type TagDemuxOverrides[Instance TagDemux] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.TagList 
+	//
+	// merge start and end tags. Subclasses may want to override this
+	// vfunc to allow prioritising of start or end tag according to user
+	// preference.  Note that both start_tags and end_tags may be NULL. By default
+	// start tags are preferred over end tags.
 	MergeTags func(Instance, *gst.TagList, *gst.TagList) *gst.TagList
 }
 
@@ -2197,6 +2244,91 @@ func UnsafeApplyTagDemuxOverrides[Instance TagDemux](gclass unsafe.Pointer, over
 	}
 }
 
+// ParentIdentifyTag calls the default implementations of the identify_tag virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- buffer *gst.Buffer 
+// 	- startTag bool 
+// 	- tagSize *uint 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// identify tag and determine the size required to parse the
+// tag. Buffer may be larger than the specified minimum size.
+// Subclassed MUST override this vfunc in their class_init function.
+func (demux *TagDemuxInstance) ParentIdentifyTag(buffer *gst.Buffer, startTag bool, tagSize *uint) bool {
+	var carg0 *C.GstTagDemux
+	var carg1 *C.GstBuffer // in, none, converted
+	var carg2 C.gboolean   // in
+	var carg3 *C.guint     // in, transfer: none, C Pointers: 1, Name: guint
+	var cret  C.gboolean   // return
+
+	parentclass := (*C.GstTagDemuxClass)(classdata.PeekParentClass(UnsafeTagDemuxToGlibNone(demux)))
+
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
+	if startTag {
+		carg2 = C.TRUE
+	}
+	_ = tagSize
+	_ = carg3
+	panic("unimplemented conversion of *uint (guint*)")
+
+	cret = C._gotk4_gsttag1_TagDemux_virtual_identify_tag(unsafe.Pointer(parentclass.identify_tag), carg0, carg1, carg2, carg3)
+	runtime.KeepAlive(demux)
+	runtime.KeepAlive(buffer)
+	runtime.KeepAlive(startTag)
+	runtime.KeepAlive(tagSize)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentMergeTags calls the default implementations of the merge_tags virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- startTags *gst.TagList 
+// 	- endTags *gst.TagList 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.TagList 
+//
+// merge start and end tags. Subclasses may want to override this
+// vfunc to allow prioritising of start or end tag according to user
+// preference.  Note that both start_tags and end_tags may be NULL. By default
+// start tags are preferred over end tags.
+func (demux *TagDemuxInstance) ParentMergeTags(startTags *gst.TagList, endTags *gst.TagList) *gst.TagList {
+	var carg0 *C.GstTagDemux
+	var carg1 *C.GstTagList // in, none, converted
+	var carg2 *C.GstTagList // in, none, converted
+	var cret  *C.GstTagList // return, full, converted
+
+	parentclass := (*C.GstTagDemuxClass)(classdata.PeekParentClass(UnsafeTagDemuxToGlibNone(demux)))
+
+	carg1 = (*C.GstTagList)(gst.UnsafeTagListToGlibNone(startTags))
+	carg2 = (*C.GstTagList)(gst.UnsafeTagListToGlibNone(endTags))
+
+	cret = C._gotk4_gsttag1_TagDemux_virtual_merge_tags(unsafe.Pointer(parentclass.merge_tags), carg0, carg1, carg2)
+	runtime.KeepAlive(demux)
+	runtime.KeepAlive(startTags)
+	runtime.KeepAlive(endTags)
+
+	var goret *gst.TagList
+
+	goret = gst.UnsafeTagListFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
 // RegisterTagDemuxSubClass is used to register a go subclass of GstTagDemux. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterTagDemuxSubClass[InstanceT TagDemux](
@@ -2253,6 +2385,35 @@ type TagMux interface {
 	gst.Element
 	gst.TagSetter
 	upcastToGstTagMux() *TagMuxInstance
+
+	// chain up virtual methods:
+
+	// ParentRenderEndTag calls the default implementations of the render_end_tag virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- tagList *gst.TagList 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Buffer 
+	//
+	// create a tag buffer to add to the end of the
+	//     input stream given a tag list, or NULL
+	ParentRenderEndTag(tagList *gst.TagList) *gst.Buffer
+	// ParentRenderStartTag calls the default implementations of the render_start_tag virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- tagList *gst.TagList 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Buffer 
+	//
+	// create a tag buffer to add to the beginning of the
+	//     input stream given a tag list, or NULL
+	ParentRenderStartTag(tagList *gst.TagList) *gst.Buffer
 }
 
 func unsafeWrapTagMux(base *gobject.ObjectInstance) *TagMuxInstance {
@@ -2265,7 +2426,7 @@ func unsafeWrapTagMux(base *gobject.ObjectInstance) *TagMuxInstance {
 			},
 		},
 		TagSetterInstance: gst.TagSetterInstance{
-			Instance: *base,
+			ObjectInstance: *base,
 		},
 	}
 }
@@ -2317,6 +2478,9 @@ type TagMuxOverrides[Instance TagMux] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Buffer 
+	//
+	// create a tag buffer to add to the end of the
+	//     input stream given a tag list, or NULL
 	RenderEndTag func(Instance, *gst.TagList) *gst.Buffer
 	// RenderStartTag allows you to override the implementation of the virtual method render_start_tag.
 	// The function takes the following parameters:
@@ -2326,6 +2490,9 @@ type TagMuxOverrides[Instance TagMux] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Buffer 
+	//
+	// create a tag buffer to add to the beginning of the
+	//     input stream given a tag list, or NULL
 	RenderStartTag func(Instance, *gst.TagList) *gst.Buffer
 }
 
@@ -2379,6 +2546,70 @@ func UnsafeApplyTagMuxOverrides[Instance TagMux](gclass unsafe.Pointer, override
 			},
 		)
 	}
+}
+
+// ParentRenderEndTag calls the default implementations of the render_end_tag virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- tagList *gst.TagList 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.Buffer 
+//
+// create a tag buffer to add to the end of the
+//     input stream given a tag list, or NULL
+func (mux *TagMuxInstance) ParentRenderEndTag(tagList *gst.TagList) *gst.Buffer {
+	var carg0 *C.GstTagMux
+	var carg1 *C.GstTagList // in, none, converted
+	var cret  *C.GstBuffer  // return, full, converted
+
+	parentclass := (*C.GstTagMuxClass)(classdata.PeekParentClass(UnsafeTagMuxToGlibNone(mux)))
+
+	carg1 = (*C.GstTagList)(gst.UnsafeTagListToGlibNone(tagList))
+
+	cret = C._gotk4_gsttag1_TagMux_virtual_render_end_tag(unsafe.Pointer(parentclass.render_end_tag), carg0, carg1)
+	runtime.KeepAlive(mux)
+	runtime.KeepAlive(tagList)
+
+	var goret *gst.Buffer
+
+	goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// ParentRenderStartTag calls the default implementations of the render_start_tag virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- tagList *gst.TagList 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.Buffer 
+//
+// create a tag buffer to add to the beginning of the
+//     input stream given a tag list, or NULL
+func (mux *TagMuxInstance) ParentRenderStartTag(tagList *gst.TagList) *gst.Buffer {
+	var carg0 *C.GstTagMux
+	var carg1 *C.GstTagList // in, none, converted
+	var cret  *C.GstBuffer  // return, full, converted
+
+	parentclass := (*C.GstTagMuxClass)(classdata.PeekParentClass(UnsafeTagMuxToGlibNone(mux)))
+
+	carg1 = (*C.GstTagList)(gst.UnsafeTagListToGlibNone(tagList))
+
+	cret = C._gotk4_gsttag1_TagMux_virtual_render_start_tag(unsafe.Pointer(parentclass.render_start_tag), carg0, carg1)
+	runtime.KeepAlive(mux)
+	runtime.KeepAlive(tagList)
+
+	var goret *gst.Buffer
+
+	goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
 }
 
 // RegisterTagMuxSubClass is used to register a go subclass of GstTagMux. For this to work safely please implement the

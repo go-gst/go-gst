@@ -31,6 +31,16 @@ func init() {
 }
 
 // CheckLogFilterFunc wraps GstCheckLogFilterFunc
+// 
+// The function takes the following parameters:
+// 
+// 	- logDomain string: the log domain of the message 
+// 	- logLevel glib.LogLevelFlags: the log level of the message 
+// 	- message string: the message that has occurred 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
 //
 // A function that is called for messages matching the filter added by
 // @gst_check_add_log_filter.
@@ -1123,6 +1133,8 @@ type TestClock interface {
 	//
 	// Deprecated: use gst_test_clock_wait_for_multiple_pending_ids() instead.
 	WaitForPendingIDCount(uint)
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapTestClock(base *gobject.ObjectInstance) *TestClockInstance {

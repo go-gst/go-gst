@@ -313,21 +313,24 @@ func IsPhysMemory(mem *gst.Memory) bool {
 // PhysMemoryAllocatorInstance is the instance type used by all types implementing GstPhysMemoryAllocator. It is used internally by the bindings. Users should use the interface [PhysMemoryAllocator] instead.
 type PhysMemoryAllocatorInstance struct {
 	_ [0]func() // equal guard
-	Instance gobject.ObjectInstance
+	gobject.ObjectInstance
 }
 
 var _ PhysMemoryAllocator = (*PhysMemoryAllocatorInstance)(nil)
 
 // PhysMemoryAllocator wraps GstPhysMemoryAllocator
 type PhysMemoryAllocator interface {
+	gobject.Object
 	upcastToGstPhysMemoryAllocator() *PhysMemoryAllocatorInstance
+
+	// chain up virtual methods:
 }
 
 var _ PhysMemoryAllocator = (*PhysMemoryAllocatorInstance)(nil)
 
 func unsafeWrapPhysMemoryAllocator(base *gobject.ObjectInstance) *PhysMemoryAllocatorInstance {
 	return &PhysMemoryAllocatorInstance{
-		Instance: *base,
+		ObjectInstance: *base,
 	}
 }
 
@@ -357,13 +360,13 @@ func UnsafePhysMemoryAllocatorFromGlibBorrow(c unsafe.Pointer) PhysMemoryAllocat
 // UnsafePhysMemoryAllocatorToGlibNone is used to convert the instance to it's C value GstPhysMemoryAllocator. This is used by the bindings internally.
 func UnsafePhysMemoryAllocatorToGlibNone(c PhysMemoryAllocator) unsafe.Pointer {
 	i := c.upcastToGstPhysMemoryAllocator()
-	return gobject.UnsafeObjectToGlibNone(&i.Instance)
+	return gobject.UnsafeObjectToGlibNone(i)
 }
 
 // UnsafePhysMemoryAllocatorToGlibFull is used to convert the instance to it's C value GstPhysMemoryAllocator, while removeing the finalizer. This is used by the bindings internally.
 func UnsafePhysMemoryAllocatorToGlibFull(c PhysMemoryAllocator) unsafe.Pointer {
 	i := c.upcastToGstPhysMemoryAllocator()
-	return gobject.UnsafeObjectToGlibFull(&i.Instance)
+	return gobject.UnsafeObjectToGlibFull(i)
 }
 
 // PhysMemoryAllocatorOverrides is the struct used to override the default implementation of virtual methods.
@@ -417,6 +420,8 @@ type DRMDumbAllocator interface {
 	//
 	// This function allow verifying if the driver support dma-buf exportation.
 	HasPrimeExport() bool
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapDRMDumbAllocator(base *gobject.ObjectInstance) *DRMDumbAllocatorInstance {
@@ -651,6 +656,8 @@ var _ FdAllocator = (*FdAllocatorInstance)(nil)
 type FdAllocator interface {
 	gst.Allocator
 	upcastToGstFdAllocator() *FdAllocatorInstance
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapFdAllocator(base *gobject.ObjectInstance) *FdAllocatorInstance {
@@ -820,6 +827,8 @@ var _ ShmAllocator = (*ShmAllocatorInstance)(nil)
 type ShmAllocator interface {
 	FdAllocator
 	upcastToGstShmAllocator() *ShmAllocatorInstance
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapShmAllocator(base *gobject.ObjectInstance) *ShmAllocatorInstance {
@@ -954,6 +963,8 @@ var _ DmaBufAllocator = (*DmaBufAllocatorInstance)(nil)
 type DmaBufAllocator interface {
 	FdAllocator
 	upcastToGstDmaBufAllocator() *DmaBufAllocatorInstance
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapDmaBufAllocator(base *gobject.ObjectInstance) *DmaBufAllocatorInstance {

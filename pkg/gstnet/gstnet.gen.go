@@ -49,6 +49,15 @@ const NET_TIME_PACKET_SIZE = 16
 // automatically select one based on the MAC address of interfaces
 const PTP_CLOCK_ID_NONE = 18446744073709551615
 // PtpStatisticsCallback wraps GstPtpStatisticsCallback
+// 
+// The function takes the following parameters:
+// 
+// 	- domain uint8: PTP domain identifier 
+// 	- stats *gst.Structure: New statistics 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
 //
 // The statistics can be the following structures:
 // 
@@ -469,6 +478,8 @@ var _ NetClientClock = (*NetClientClockInstance)(nil)
 type NetClientClock interface {
 	gst.SystemClock
 	upcastToGstNetClientClock() *NetClientClockInstance
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapNetClientClock(base *gobject.ObjectInstance) *NetClientClockInstance {
@@ -628,6 +639,8 @@ type NetTimeProvider interface {
 	gst.Object
 	gio.Initable
 	upcastToGstNetTimeProvider() *NetTimeProviderInstance
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapNetTimeProvider(base *gobject.ObjectInstance) *NetTimeProviderInstance {
@@ -638,7 +651,7 @@ func unsafeWrapNetTimeProvider(base *gobject.ObjectInstance) *NetTimeProviderIns
 			},
 		},
 		InitableInstance: gio.InitableInstance{
-			Instance: *base,
+			ObjectInstance: *base,
 		},
 	}
 }
@@ -769,6 +782,8 @@ var _ NtpClock = (*NtpClockInstance)(nil)
 type NtpClock interface {
 	NetClientClock
 	upcastToGstNtpClock() *NtpClockInstance
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapNtpClock(base *gobject.ObjectInstance) *NtpClockInstance {
@@ -938,6 +953,8 @@ var _ PtpClock = (*PtpClockInstance)(nil)
 type PtpClock interface {
 	gst.SystemClock
 	upcastToGstPtpClock() *PtpClockInstance
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapPtpClock(base *gobject.ObjectInstance) *PtpClockInstance {

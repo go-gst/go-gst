@@ -653,6 +653,120 @@ type AppSink interface {
 	// this function returns %NULL. Use gst_app_sink_is_eos () to check
 	// for the EOS condition.
 	EmitTryPullSample(uint64) gst.Sample
+
+	// chain up virtual methods:
+
+	// ParentEos calls the default implementations of the eos virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	ParentEos()
+	// ParentNewPreroll calls the default implementations of the new_preroll virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	ParentNewPreroll() gst.FlowReturn
+	// ParentNewSample calls the default implementations of the new_sample virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	ParentNewSample() gst.FlowReturn
+	// ParentPullPreroll calls the default implementations of the pull_preroll virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Sample (nullable) 
+	//
+	// Get the last preroll sample in @appsink. This was the sample that caused the
+	// appsink to preroll in the PAUSED state.
+	// 
+	// This function is typically used when dealing with a pipeline in the PAUSED
+	// state. Calling this function after doing a seek will give the sample right
+	// after the seek position.
+	// 
+	// Calling this function will clear the internal reference to the preroll
+	// buffer.
+	// 
+	// Note that the preroll sample will also be returned as the first sample
+	// when calling gst_app_sink_pull_sample().
+	// 
+	// If an EOS event was received before any buffers, this function returns
+	// %NULL. Use gst_app_sink_is_eos () to check for the EOS condition.
+	// 
+	// This function blocks until a preroll sample or EOS is received or the appsink
+	// element is set to the READY/NULL state.
+	ParentPullPreroll() *gst.Sample
+	// ParentPullSample calls the default implementations of the pull_sample virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Sample (nullable) 
+	//
+	// This function blocks until a sample or EOS becomes available or the appsink
+	// element is set to the READY/NULL state.
+	// 
+	// This function will only return samples when the appsink is in the PLAYING
+	// state. All rendered buffers will be put in a queue so that the application
+	// can pull samples at its own rate. Note that when the application does not
+	// pull samples fast enough, the queued buffers could consume a lot of memory,
+	// especially when dealing with raw video frames.
+	// 
+	// If an EOS event was received before any buffers, this function returns
+	// %NULL. Use gst_app_sink_is_eos () to check for the EOS condition.
+	ParentPullSample() *gst.Sample
+	// ParentTryPullPreroll calls the default implementations of the try_pull_preroll virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- timeout gst.ClockTime: the maximum amount of time to wait for the preroll sample 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Sample (nullable) 
+	//
+	// Get the last preroll sample in @appsink. This was the sample that caused the
+	// appsink to preroll in the PAUSED state.
+	// 
+	// This function is typically used when dealing with a pipeline in the PAUSED
+	// state. Calling this function after doing a seek will give the sample right
+	// after the seek position.
+	// 
+	// Calling this function will clear the internal reference to the preroll
+	// buffer.
+	// 
+	// Note that the preroll sample will also be returned as the first sample
+	// when calling gst_app_sink_pull_sample().
+	// 
+	// If an EOS event was received before any buffers or the timeout expires,
+	// this function returns %NULL. Use gst_app_sink_is_eos () to check for the EOS
+	// condition.
+	// 
+	// This function blocks until a preroll sample or EOS is received, the appsink
+	// element is set to the READY/NULL state, or the timeout expires.
+	ParentTryPullPreroll(timeout gst.ClockTime) *gst.Sample
+	// ParentTryPullSample calls the default implementations of the try_pull_sample virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- timeout gst.ClockTime: the maximum amount of time to wait for a sample 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Sample (nullable) 
+	//
+	// This function blocks until a sample or EOS becomes available or the appsink
+	// element is set to the READY/NULL state or the timeout expires.
+	// 
+	// This function will only return samples when the appsink is in the PLAYING
+	// state. All rendered buffers will be put in a queue so that the application
+	// can pull samples at its own rate. Note that when the application does not
+	// pull samples fast enough, the queued buffers could consume a lot of memory,
+	// especially when dealing with raw video frames.
+	// 
+	// If an EOS event was received before any buffers or the timeout expires,
+	// this function returns %NULL. Use gst_app_sink_is_eos () to check for the EOS
+	// condition.
+	ParentTryPullSample(timeout gst.ClockTime) *gst.Sample
 }
 
 func unsafeWrapAppSink(base *gobject.ObjectInstance) *AppSinkInstance {
@@ -667,7 +781,7 @@ func unsafeWrapAppSink(base *gobject.ObjectInstance) *AppSinkInstance {
 			},
 		},
 		URIHandlerInstance: gst.URIHandlerInstance{
-			Instance: *base,
+			ObjectInstance: *base,
 		},
 	}
 }
@@ -1495,11 +1609,42 @@ type AppSinkOverrides[Instance AppSink] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Sample (nullable) 
+	//
+	// Get the last preroll sample in @appsink. This was the sample that caused the
+	// appsink to preroll in the PAUSED state.
+	// 
+	// This function is typically used when dealing with a pipeline in the PAUSED
+	// state. Calling this function after doing a seek will give the sample right
+	// after the seek position.
+	// 
+	// Calling this function will clear the internal reference to the preroll
+	// buffer.
+	// 
+	// Note that the preroll sample will also be returned as the first sample
+	// when calling gst_app_sink_pull_sample().
+	// 
+	// If an EOS event was received before any buffers, this function returns
+	// %NULL. Use gst_app_sink_is_eos () to check for the EOS condition.
+	// 
+	// This function blocks until a preroll sample or EOS is received or the appsink
+	// element is set to the READY/NULL state.
 	PullPreroll func(Instance) *gst.Sample
 	// PullSample allows you to override the implementation of the virtual method pull_sample.
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Sample (nullable) 
+	//
+	// This function blocks until a sample or EOS becomes available or the appsink
+	// element is set to the READY/NULL state.
+	// 
+	// This function will only return samples when the appsink is in the PLAYING
+	// state. All rendered buffers will be put in a queue so that the application
+	// can pull samples at its own rate. Note that when the application does not
+	// pull samples fast enough, the queued buffers could consume a lot of memory,
+	// especially when dealing with raw video frames.
+	// 
+	// If an EOS event was received before any buffers, this function returns
+	// %NULL. Use gst_app_sink_is_eos () to check for the EOS condition.
 	PullSample func(Instance) *gst.Sample
 	// TryPullPreroll allows you to override the implementation of the virtual method try_pull_preroll.
 	// The function takes the following parameters:
@@ -1509,6 +1654,26 @@ type AppSinkOverrides[Instance AppSink] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Sample (nullable) 
+	//
+	// Get the last preroll sample in @appsink. This was the sample that caused the
+	// appsink to preroll in the PAUSED state.
+	// 
+	// This function is typically used when dealing with a pipeline in the PAUSED
+	// state. Calling this function after doing a seek will give the sample right
+	// after the seek position.
+	// 
+	// Calling this function will clear the internal reference to the preroll
+	// buffer.
+	// 
+	// Note that the preroll sample will also be returned as the first sample
+	// when calling gst_app_sink_pull_sample().
+	// 
+	// If an EOS event was received before any buffers or the timeout expires,
+	// this function returns %NULL. Use gst_app_sink_is_eos () to check for the EOS
+	// condition.
+	// 
+	// This function blocks until a preroll sample or EOS is received, the appsink
+	// element is set to the READY/NULL state, or the timeout expires.
 	TryPullPreroll func(Instance, gst.ClockTime) *gst.Sample
 	// TryPullSample allows you to override the implementation of the virtual method try_pull_sample.
 	// The function takes the following parameters:
@@ -1518,6 +1683,19 @@ type AppSinkOverrides[Instance AppSink] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Sample (nullable) 
+	//
+	// This function blocks until a sample or EOS becomes available or the appsink
+	// element is set to the READY/NULL state or the timeout expires.
+	// 
+	// This function will only return samples when the appsink is in the PLAYING
+	// state. All rendered buffers will be put in a queue so that the application
+	// can pull samples at its own rate. Note that when the application does not
+	// pull samples fast enough, the queued buffers could consume a lot of memory,
+	// especially when dealing with raw video frames.
+	// 
+	// If an EOS event was received before any buffers or the timeout expires,
+	// this function returns %NULL. Use gst_app_sink_is_eos () to check for the EOS
+	// condition.
 	TryPullSample func(Instance, gst.ClockTime) *gst.Sample
 }
 
@@ -1674,6 +1852,231 @@ func UnsafeApplyAppSinkOverrides[Instance AppSink](gclass unsafe.Pointer, overri
 			},
 		)
 	}
+}
+
+// ParentEos calls the default implementations of the eos virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+func (appsink *AppSinkInstance) ParentEos() {
+	var carg0 *C.GstAppSink
+
+	parentclass := (*C.GstAppSinkClass)(classdata.PeekParentClass(UnsafeAppSinkToGlibNone(appsink)))
+
+	C._gotk4_gstapp1_AppSink_virtual_eos(unsafe.Pointer(parentclass.eos), carg0)
+	runtime.KeepAlive(appsink)
+}
+
+// ParentNewPreroll calls the default implementations of the new_preroll virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+func (appsink *AppSinkInstance) ParentNewPreroll() gst.FlowReturn {
+	var carg0 *C.GstAppSink
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstAppSinkClass)(classdata.PeekParentClass(UnsafeAppSinkToGlibNone(appsink)))
+
+	cret = C._gotk4_gstapp1_AppSink_virtual_new_preroll(unsafe.Pointer(parentclass.new_preroll), carg0)
+	runtime.KeepAlive(appsink)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentNewSample calls the default implementations of the new_sample virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+func (appsink *AppSinkInstance) ParentNewSample() gst.FlowReturn {
+	var carg0 *C.GstAppSink
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstAppSinkClass)(classdata.PeekParentClass(UnsafeAppSinkToGlibNone(appsink)))
+
+	cret = C._gotk4_gstapp1_AppSink_virtual_new_sample(unsafe.Pointer(parentclass.new_sample), carg0)
+	runtime.KeepAlive(appsink)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentPullPreroll calls the default implementations of the pull_preroll virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret *gst.Sample (nullable) 
+//
+// Get the last preroll sample in @appsink. This was the sample that caused the
+// appsink to preroll in the PAUSED state.
+// 
+// This function is typically used when dealing with a pipeline in the PAUSED
+// state. Calling this function after doing a seek will give the sample right
+// after the seek position.
+// 
+// Calling this function will clear the internal reference to the preroll
+// buffer.
+// 
+// Note that the preroll sample will also be returned as the first sample
+// when calling gst_app_sink_pull_sample().
+// 
+// If an EOS event was received before any buffers, this function returns
+// %NULL. Use gst_app_sink_is_eos () to check for the EOS condition.
+// 
+// This function blocks until a preroll sample or EOS is received or the appsink
+// element is set to the READY/NULL state.
+func (appsink *AppSinkInstance) ParentPullPreroll() *gst.Sample {
+	var carg0 *C.GstAppSink
+	var cret  *C.GstSample // return, full, converted, nullable
+
+	parentclass := (*C.GstAppSinkClass)(classdata.PeekParentClass(UnsafeAppSinkToGlibNone(appsink)))
+
+	cret = C._gotk4_gstapp1_AppSink_virtual_pull_preroll(unsafe.Pointer(parentclass.pull_preroll), carg0)
+	runtime.KeepAlive(appsink)
+
+	var goret *gst.Sample
+
+	if cret != nil {
+		goret = gst.UnsafeSampleFromGlibFull(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
+// ParentPullSample calls the default implementations of the pull_sample virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret *gst.Sample (nullable) 
+//
+// This function blocks until a sample or EOS becomes available or the appsink
+// element is set to the READY/NULL state.
+// 
+// This function will only return samples when the appsink is in the PLAYING
+// state. All rendered buffers will be put in a queue so that the application
+// can pull samples at its own rate. Note that when the application does not
+// pull samples fast enough, the queued buffers could consume a lot of memory,
+// especially when dealing with raw video frames.
+// 
+// If an EOS event was received before any buffers, this function returns
+// %NULL. Use gst_app_sink_is_eos () to check for the EOS condition.
+func (appsink *AppSinkInstance) ParentPullSample() *gst.Sample {
+	var carg0 *C.GstAppSink
+	var cret  *C.GstSample // return, full, converted, nullable
+
+	parentclass := (*C.GstAppSinkClass)(classdata.PeekParentClass(UnsafeAppSinkToGlibNone(appsink)))
+
+	cret = C._gotk4_gstapp1_AppSink_virtual_pull_sample(unsafe.Pointer(parentclass.pull_sample), carg0)
+	runtime.KeepAlive(appsink)
+
+	var goret *gst.Sample
+
+	if cret != nil {
+		goret = gst.UnsafeSampleFromGlibFull(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
+// ParentTryPullPreroll calls the default implementations of the try_pull_preroll virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- timeout gst.ClockTime: the maximum amount of time to wait for the preroll sample 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.Sample (nullable) 
+//
+// Get the last preroll sample in @appsink. This was the sample that caused the
+// appsink to preroll in the PAUSED state.
+// 
+// This function is typically used when dealing with a pipeline in the PAUSED
+// state. Calling this function after doing a seek will give the sample right
+// after the seek position.
+// 
+// Calling this function will clear the internal reference to the preroll
+// buffer.
+// 
+// Note that the preroll sample will also be returned as the first sample
+// when calling gst_app_sink_pull_sample().
+// 
+// If an EOS event was received before any buffers or the timeout expires,
+// this function returns %NULL. Use gst_app_sink_is_eos () to check for the EOS
+// condition.
+// 
+// This function blocks until a preroll sample or EOS is received, the appsink
+// element is set to the READY/NULL state, or the timeout expires.
+func (appsink *AppSinkInstance) ParentTryPullPreroll(timeout gst.ClockTime) *gst.Sample {
+	var carg0 *C.GstAppSink
+	var carg1 C.GstClockTime // in, none, casted, alias
+	var cret  *C.GstSample   // return, full, converted, nullable
+
+	parentclass := (*C.GstAppSinkClass)(classdata.PeekParentClass(UnsafeAppSinkToGlibNone(appsink)))
+
+	carg1 = C.GstClockTime(timeout)
+
+	cret = C._gotk4_gstapp1_AppSink_virtual_try_pull_preroll(unsafe.Pointer(parentclass.try_pull_preroll), carg0, carg1)
+	runtime.KeepAlive(appsink)
+	runtime.KeepAlive(timeout)
+
+	var goret *gst.Sample
+
+	if cret != nil {
+		goret = gst.UnsafeSampleFromGlibFull(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
+// ParentTryPullSample calls the default implementations of the try_pull_sample virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- timeout gst.ClockTime: the maximum amount of time to wait for a sample 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.Sample (nullable) 
+//
+// This function blocks until a sample or EOS becomes available or the appsink
+// element is set to the READY/NULL state or the timeout expires.
+// 
+// This function will only return samples when the appsink is in the PLAYING
+// state. All rendered buffers will be put in a queue so that the application
+// can pull samples at its own rate. Note that when the application does not
+// pull samples fast enough, the queued buffers could consume a lot of memory,
+// especially when dealing with raw video frames.
+// 
+// If an EOS event was received before any buffers or the timeout expires,
+// this function returns %NULL. Use gst_app_sink_is_eos () to check for the EOS
+// condition.
+func (appsink *AppSinkInstance) ParentTryPullSample(timeout gst.ClockTime) *gst.Sample {
+	var carg0 *C.GstAppSink
+	var carg1 C.GstClockTime // in, none, casted, alias
+	var cret  *C.GstSample   // return, full, converted, nullable
+
+	parentclass := (*C.GstAppSinkClass)(classdata.PeekParentClass(UnsafeAppSinkToGlibNone(appsink)))
+
+	carg1 = C.GstClockTime(timeout)
+
+	cret = C._gotk4_gstapp1_AppSink_virtual_try_pull_sample(unsafe.Pointer(parentclass.try_pull_sample), carg0, carg1)
+	runtime.KeepAlive(appsink)
+	runtime.KeepAlive(timeout)
+
+	var goret *gst.Sample
+
+	if cret != nil {
+		goret = gst.UnsafeSampleFromGlibFull(unsafe.Pointer(cret))
+	}
+
+	return goret
 }
 
 // RegisterAppSinkSubClass is used to register a go subclass of GstAppSink. For this to work safely please implement the
@@ -2125,6 +2528,92 @@ type AppSrc interface {
 	// the new @offset.
 	// This callback is only called for seekable stream types.
 	ConnectSeekData(func(AppSrc, uint64) bool) gobject.SignalHandle
+
+	// chain up virtual methods:
+
+	// ParentEndOfStream calls the default implementations of the end_of_stream virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// Indicates to the appsrc element that the last buffer queued in the
+	// element is the last buffer of the stream.
+	ParentEndOfStream() gst.FlowReturn
+	// ParentEnoughData calls the default implementations of the enough_data virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	ParentEnoughData()
+	// ParentNeedData calls the default implementations of the need_data virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- length uint 
+	ParentNeedData(length uint)
+	// ParentPushBuffer calls the default implementations of the push_buffer virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *gst.Buffer: a #GstBuffer to push 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// Adds a buffer to the queue of buffers that the appsrc element will
+	// push to its source pad.  This function takes ownership of the buffer.
+	// 
+	// When the block property is TRUE, this function can block until free
+	// space becomes available in the queue.
+	ParentPushBuffer(buffer *gst.Buffer) gst.FlowReturn
+	// ParentPushBufferList calls the default implementations of the push_buffer_list virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- bufferList *gst.BufferList: a #GstBufferList to push 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// Adds a buffer list to the queue of buffers and buffer lists that the
+	// appsrc element will push to its source pad.  This function takes ownership
+	// of @buffer_list.
+	// 
+	// When the block property is TRUE, this function can block until free
+	// space becomes available in the queue.
+	ParentPushBufferList(bufferList *gst.BufferList) gst.FlowReturn
+	// ParentPushSample calls the default implementations of the push_sample virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- sample *gst.Sample: a #GstSample from which buffer and caps may be
+	// extracted 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// Extract a buffer from the provided sample and adds it to the queue of
+	// buffers that the appsrc element will push to its source pad. Any
+	// previous caps that were set on appsrc will be replaced by the caps
+	// associated with the sample if not equal.
+	// 
+	// This function does not take ownership of the
+	// sample so the sample needs to be unreffed after calling this function.
+	// 
+	// When the block property is TRUE, this function can block until free
+	// space becomes available in the queue.
+	ParentPushSample(sample *gst.Sample) gst.FlowReturn
+	// ParentSeekData calls the default implementations of the seek_data virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- offset uint64 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	ParentSeekData(offset uint64) bool
 }
 
 func unsafeWrapAppSrc(base *gobject.ObjectInstance) *AppSrcInstance {
@@ -2139,7 +2628,7 @@ func unsafeWrapAppSrc(base *gobject.ObjectInstance) *AppSrcInstance {
 			},
 		},
 		URIHandlerInstance: gst.URIHandlerInstance{
-			Instance: *base,
+			ObjectInstance: *base,
 		},
 	}
 }
@@ -2937,6 +3426,9 @@ type AppSrcOverrides[Instance AppSrc] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// Indicates to the appsrc element that the last buffer queued in the
+	// element is the last buffer of the stream.
 	EndOfStream func(Instance) gst.FlowReturn
 	// EnoughData allows you to override the implementation of the virtual method enough_data.
 	EnoughData func(Instance)
@@ -2953,6 +3445,12 @@ type AppSrcOverrides[Instance AppSrc] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// Adds a buffer to the queue of buffers that the appsrc element will
+	// push to its source pad.  This function takes ownership of the buffer.
+	// 
+	// When the block property is TRUE, this function can block until free
+	// space becomes available in the queue.
 	PushBuffer func(Instance, *gst.Buffer) gst.FlowReturn
 	// PushBufferList allows you to override the implementation of the virtual method push_buffer_list.
 	// The function takes the following parameters:
@@ -2962,6 +3460,13 @@ type AppSrcOverrides[Instance AppSrc] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// Adds a buffer list to the queue of buffers and buffer lists that the
+	// appsrc element will push to its source pad.  This function takes ownership
+	// of @buffer_list.
+	// 
+	// When the block property is TRUE, this function can block until free
+	// space becomes available in the queue.
 	PushBufferList func(Instance, *gst.BufferList) gst.FlowReturn
 	// PushSample allows you to override the implementation of the virtual method push_sample.
 	// The function takes the following parameters:
@@ -2972,6 +3477,17 @@ type AppSrcOverrides[Instance AppSrc] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// Extract a buffer from the provided sample and adds it to the queue of
+	// buffers that the appsrc element will push to its source pad. Any
+	// previous caps that were set on appsrc will be replaced by the caps
+	// associated with the sample if not equal.
+	// 
+	// This function does not take ownership of the
+	// sample so the sample needs to be unreffed after calling this function.
+	// 
+	// When the block property is TRUE, this function can block until free
+	// space becomes available in the queue.
 	PushSample func(Instance, *gst.Sample) gst.FlowReturn
 	// SeekData allows you to override the implementation of the virtual method seek_data.
 	// The function takes the following parameters:
@@ -3132,6 +3648,202 @@ func UnsafeApplyAppSrcOverrides[Instance AppSrc](gclass unsafe.Pointer, override
 			},
 		)
 	}
+}
+
+// ParentEndOfStream calls the default implementations of the end_of_stream virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// Indicates to the appsrc element that the last buffer queued in the
+// element is the last buffer of the stream.
+func (appsrc *AppSrcInstance) ParentEndOfStream() gst.FlowReturn {
+	var carg0 *C.GstAppSrc
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstAppSrcClass)(classdata.PeekParentClass(UnsafeAppSrcToGlibNone(appsrc)))
+
+	cret = C._gotk4_gstapp1_AppSrc_virtual_end_of_stream(unsafe.Pointer(parentclass.end_of_stream), carg0)
+	runtime.KeepAlive(appsrc)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentEnoughData calls the default implementations of the enough_data virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+func (appsrc *AppSrcInstance) ParentEnoughData() {
+	var carg0 *C.GstAppSrc
+
+	parentclass := (*C.GstAppSrcClass)(classdata.PeekParentClass(UnsafeAppSrcToGlibNone(appsrc)))
+
+	C._gotk4_gstapp1_AppSrc_virtual_enough_data(unsafe.Pointer(parentclass.enough_data), carg0)
+	runtime.KeepAlive(appsrc)
+}
+
+// ParentNeedData calls the default implementations of the need_data virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- length uint 
+func (appsrc *AppSrcInstance) ParentNeedData(length uint) {
+	var carg0 *C.GstAppSrc
+	var carg1 C.guint // in, none, casted
+
+	parentclass := (*C.GstAppSrcClass)(classdata.PeekParentClass(UnsafeAppSrcToGlibNone(appsrc)))
+
+	carg1 = C.guint(length)
+
+	C._gotk4_gstapp1_AppSrc_virtual_need_data(unsafe.Pointer(parentclass.need_data), carg0, carg1)
+	runtime.KeepAlive(appsrc)
+	runtime.KeepAlive(length)
+}
+
+// ParentPushBuffer calls the default implementations of the push_buffer virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- buffer *gst.Buffer: a #GstBuffer to push 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// Adds a buffer to the queue of buffers that the appsrc element will
+// push to its source pad.  This function takes ownership of the buffer.
+// 
+// When the block property is TRUE, this function can block until free
+// space becomes available in the queue.
+func (appsrc *AppSrcInstance) ParentPushBuffer(buffer *gst.Buffer) gst.FlowReturn {
+	var carg0 *C.GstAppSrc
+	var carg1 *C.GstBuffer    // in, full, converted
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstAppSrcClass)(classdata.PeekParentClass(UnsafeAppSrcToGlibNone(appsrc)))
+
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibFull(buffer))
+
+	cret = C._gotk4_gstapp1_AppSrc_virtual_push_buffer(unsafe.Pointer(parentclass.push_buffer), carg0, carg1)
+	runtime.KeepAlive(appsrc)
+	runtime.KeepAlive(buffer)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentPushBufferList calls the default implementations of the push_buffer_list virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- bufferList *gst.BufferList: a #GstBufferList to push 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// Adds a buffer list to the queue of buffers and buffer lists that the
+// appsrc element will push to its source pad.  This function takes ownership
+// of @buffer_list.
+// 
+// When the block property is TRUE, this function can block until free
+// space becomes available in the queue.
+func (appsrc *AppSrcInstance) ParentPushBufferList(bufferList *gst.BufferList) gst.FlowReturn {
+	var carg0 *C.GstAppSrc
+	var carg1 *C.GstBufferList // in, full, converted
+	var cret  C.GstFlowReturn  // return, none, casted
+
+	parentclass := (*C.GstAppSrcClass)(classdata.PeekParentClass(UnsafeAppSrcToGlibNone(appsrc)))
+
+	carg1 = (*C.GstBufferList)(gst.UnsafeBufferListToGlibFull(bufferList))
+
+	cret = C._gotk4_gstapp1_AppSrc_virtual_push_buffer_list(unsafe.Pointer(parentclass.push_buffer_list), carg0, carg1)
+	runtime.KeepAlive(appsrc)
+	runtime.KeepAlive(bufferList)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentPushSample calls the default implementations of the push_sample virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- sample *gst.Sample: a #GstSample from which buffer and caps may be
+// extracted 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// Extract a buffer from the provided sample and adds it to the queue of
+// buffers that the appsrc element will push to its source pad. Any
+// previous caps that were set on appsrc will be replaced by the caps
+// associated with the sample if not equal.
+// 
+// This function does not take ownership of the
+// sample so the sample needs to be unreffed after calling this function.
+// 
+// When the block property is TRUE, this function can block until free
+// space becomes available in the queue.
+func (appsrc *AppSrcInstance) ParentPushSample(sample *gst.Sample) gst.FlowReturn {
+	var carg0 *C.GstAppSrc
+	var carg1 *C.GstSample    // in, none, converted
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstAppSrcClass)(classdata.PeekParentClass(UnsafeAppSrcToGlibNone(appsrc)))
+
+	carg1 = (*C.GstSample)(gst.UnsafeSampleToGlibNone(sample))
+
+	cret = C._gotk4_gstapp1_AppSrc_virtual_push_sample(unsafe.Pointer(parentclass.push_sample), carg0, carg1)
+	runtime.KeepAlive(appsrc)
+	runtime.KeepAlive(sample)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentSeekData calls the default implementations of the seek_data virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- offset uint64 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+func (appsrc *AppSrcInstance) ParentSeekData(offset uint64) bool {
+	var carg0 *C.GstAppSrc
+	var carg1 C.guint64  // in, none, casted
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAppSrcClass)(classdata.PeekParentClass(UnsafeAppSrcToGlibNone(appsrc)))
+
+	carg1 = C.guint64(offset)
+
+	cret = C._gotk4_gstapp1_AppSrc_virtual_seek_data(unsafe.Pointer(parentclass.seek_data), carg0, carg1)
+	runtime.KeepAlive(appsrc)
+	runtime.KeepAlive(offset)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
 }
 
 // RegisterAppSrcSubClass is used to register a go subclass of GstAppSrc. For this to work safely please implement the

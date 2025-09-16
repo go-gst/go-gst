@@ -927,21 +927,24 @@ func PlayStateGetName(state PlayState) string {
 // PlayVideoRendererInstance is the instance type used by all types implementing GstPlayVideoRenderer. It is used internally by the bindings. Users should use the interface [PlayVideoRenderer] instead.
 type PlayVideoRendererInstance struct {
 	_ [0]func() // equal guard
-	Instance gobject.ObjectInstance
+	gobject.ObjectInstance
 }
 
 var _ PlayVideoRenderer = (*PlayVideoRendererInstance)(nil)
 
 // PlayVideoRenderer wraps GstPlayVideoRenderer
 type PlayVideoRenderer interface {
+	gobject.Object
 	upcastToGstPlayVideoRenderer() *PlayVideoRendererInstance
+
+	// chain up virtual methods:
 }
 
 var _ PlayVideoRenderer = (*PlayVideoRendererInstance)(nil)
 
 func unsafeWrapPlayVideoRenderer(base *gobject.ObjectInstance) *PlayVideoRendererInstance {
 	return &PlayVideoRendererInstance{
-		Instance: *base,
+		ObjectInstance: *base,
 	}
 }
 
@@ -971,13 +974,13 @@ func UnsafePlayVideoRendererFromGlibBorrow(c unsafe.Pointer) PlayVideoRenderer {
 // UnsafePlayVideoRendererToGlibNone is used to convert the instance to it's C value GstPlayVideoRenderer. This is used by the bindings internally.
 func UnsafePlayVideoRendererToGlibNone(c PlayVideoRenderer) unsafe.Pointer {
 	i := c.upcastToGstPlayVideoRenderer()
-	return gobject.UnsafeObjectToGlibNone(&i.Instance)
+	return gobject.UnsafeObjectToGlibNone(i)
 }
 
 // UnsafePlayVideoRendererToGlibFull is used to convert the instance to it's C value GstPlayVideoRenderer, while removeing the finalizer. This is used by the bindings internally.
 func UnsafePlayVideoRendererToGlibFull(c PlayVideoRenderer) unsafe.Pointer {
 	i := c.upcastToGstPlayVideoRenderer()
-	return gobject.UnsafeObjectToGlibFull(&i.Instance)
+	return gobject.UnsafeObjectToGlibFull(i)
 }
 
 // PlayVideoRendererOverrides is the struct used to override the default implementation of virtual methods.

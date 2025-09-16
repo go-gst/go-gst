@@ -1509,6 +1509,16 @@ func (f RTSPTransMode) String() string {
 }
 
 // RTSPConnectionAcceptCertificateFunc wraps GstRTSPConnectionAcceptCertificateFunc
+// 
+// The function takes the following parameters:
+// 
+// 	- conn gio.TlsConnection 
+// 	- peerCert gio.TlsCertificate 
+// 	- errors gio.TLSCertificateFlags 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
 type RTSPConnectionAcceptCertificateFunc func(conn gio.TlsConnection, peerCert gio.TlsCertificate, errors gio.TLSCertificateFlags) (goret bool)
 
 // RtspFindHeaderField wraps gst_rtsp_find_header_field
@@ -2007,7 +2017,7 @@ func RtspStrresult(result RTSPResult) string {
 // RTSPExtensionInstance is the instance type used by all types implementing GstRTSPExtension. It is used internally by the bindings. Users should use the interface [RTSPExtension] instead.
 type RTSPExtensionInstance struct {
 	_ [0]func() // equal guard
-	Instance gobject.ObjectInstance
+	gobject.ObjectInstance
 }
 
 var _ RTSPExtension = (*RTSPExtensionInstance)(nil)
@@ -2017,6 +2027,7 @@ var _ RTSPExtension = (*RTSPExtensionInstance)(nil)
 // This interface is implemented e.g. by the Windows Media Streaming RTSP
 //  exentension (rtspwms) and the RealMedia RTSP extension (rtspreal).
 type RTSPExtension interface {
+	gobject.Object
 	upcastToGstRTSPExtension() *RTSPExtensionInstance
 
 	// AfterSend wraps gst_rtsp_extension_after_send
@@ -2114,13 +2125,109 @@ type RTSPExtension interface {
 	StreamSelect(*RTSPUrl) RTSPResult
 	// ConnectSend connects the provided callback to the "send" signal
 	ConnectSend(func(RTSPExtension, unsafe.Pointer, unsafe.Pointer) RTSPResult) gobject.SignalHandle
+
+	// chain up virtual methods:
+
+	// ParentAfterSend calls the default implementations of the after_send virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- req *RTSPMessage 
+	// 	- resp *RTSPMessage 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret RTSPResult 
+	ParentAfterSend(req *RTSPMessage, resp *RTSPMessage) RTSPResult
+	// ParentBeforeSend calls the default implementations of the before_send virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- req *RTSPMessage 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret RTSPResult 
+	ParentBeforeSend(req *RTSPMessage) RTSPResult
+	// ParentConfigureStream calls the default implementations of the configure_stream virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	ParentConfigureStream(caps *gst.Caps) bool
+	// ParentDetectServer calls the default implementations of the detect_server virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- resp *RTSPMessage 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	ParentDetectServer(resp *RTSPMessage) bool
+	// ParentParseSdp calls the default implementations of the parse_sdp virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- sdp *gstsdp.SDPMessage 
+	// 	- s *gst.Structure 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret RTSPResult 
+	ParentParseSdp(sdp *gstsdp.SDPMessage, s *gst.Structure) RTSPResult
+	// ParentReceiveRequest calls the default implementations of the receive_request virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- req *RTSPMessage 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret RTSPResult 
+	ParentReceiveRequest(req *RTSPMessage) RTSPResult
+	// ParentSend calls the default implementations of the send virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- req *RTSPMessage 
+	// 	- resp *RTSPMessage 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret RTSPResult 
+	ParentSend(req *RTSPMessage, resp *RTSPMessage) RTSPResult
+	// ParentSetupMedia calls the default implementations of the setup_media virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- media *gstsdp.SDPMedia 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret RTSPResult 
+	ParentSetupMedia(media *gstsdp.SDPMedia) RTSPResult
+	// ParentStreamSelect calls the default implementations of the stream_select virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- url *RTSPUrl 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret RTSPResult 
+	ParentStreamSelect(url *RTSPUrl) RTSPResult
 }
 
 var _ RTSPExtension = (*RTSPExtensionInstance)(nil)
 
 func unsafeWrapRTSPExtension(base *gobject.ObjectInstance) *RTSPExtensionInstance {
 	return &RTSPExtensionInstance{
-		Instance: *base,
+		ObjectInstance: *base,
 	}
 }
 
@@ -2150,13 +2257,13 @@ func UnsafeRTSPExtensionFromGlibBorrow(c unsafe.Pointer) RTSPExtension {
 // UnsafeRTSPExtensionToGlibNone is used to convert the instance to it's C value GstRTSPExtension. This is used by the bindings internally.
 func UnsafeRTSPExtensionToGlibNone(c RTSPExtension) unsafe.Pointer {
 	i := c.upcastToGstRTSPExtension()
-	return gobject.UnsafeObjectToGlibNone(&i.Instance)
+	return gobject.UnsafeObjectToGlibNone(i)
 }
 
 // UnsafeRTSPExtensionToGlibFull is used to convert the instance to it's C value GstRTSPExtension, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeRTSPExtensionToGlibFull(c RTSPExtension) unsafe.Pointer {
 	i := c.upcastToGstRTSPExtension()
-	return gobject.UnsafeObjectToGlibFull(&i.Instance)
+	return gobject.UnsafeObjectToGlibFull(i)
 }
 
 // AfterSend wraps gst_rtsp_extension_after_send
@@ -2429,7 +2536,7 @@ func (ext *RTSPExtensionInstance) StreamSelect(url *RTSPUrl) RTSPResult {
 
 // ConnectSend connects the provided callback to the "send" signal
 func (o *RTSPExtensionInstance) ConnectSend(fn func(RTSPExtension, unsafe.Pointer, unsafe.Pointer) RTSPResult) gobject.SignalHandle {
-	return o.Instance.Connect("send", fn)
+	return o.Connect("send", fn)
 }
 
 // RTSPExtensionOverrides is the struct used to override the default implementation of virtual methods.
@@ -2733,6 +2840,283 @@ func UnsafeApplyRTSPExtensionOverrides[Instance RTSPExtension](gclass unsafe.Poi
 			},
 		)
 	}
+}
+
+// ParentAfterSend calls the default implementations of the after_send virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- req *RTSPMessage 
+// 	- resp *RTSPMessage 
+// 
+// The function returns the following values:
+// 
+// 	- goret RTSPResult 
+func (ext *RTSPExtensionInstance) ParentAfterSend(req *RTSPMessage, resp *RTSPMessage) RTSPResult {
+	var carg0 *C.GstRTSPExtension
+	var carg1 *C.GstRTSPMessage // in, none, converted
+	var carg2 *C.GstRTSPMessage // in, none, converted
+	var cret  C.GstRTSPResult   // return, none, casted
+
+	parentclass := (*C.GstRTSPExtensionInterface)(classdata.PeekParentInterface(UnsafeRTSPExtensionToGlibNone(ext), uint64(TypeRTSPExtension)))
+
+	carg1 = (*C.GstRTSPMessage)(UnsafeRTSPMessageToGlibNone(req))
+	carg2 = (*C.GstRTSPMessage)(UnsafeRTSPMessageToGlibNone(resp))
+
+	cret = C._gotk4_gstrtsp1_RTSPExtension_virtual_after_send(unsafe.Pointer(parentclass.after_send), carg0, carg1, carg2)
+	runtime.KeepAlive(ext)
+	runtime.KeepAlive(req)
+	runtime.KeepAlive(resp)
+
+	var goret RTSPResult
+
+	goret = RTSPResult(cret)
+
+	return goret
+}
+
+// ParentBeforeSend calls the default implementations of the before_send virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- req *RTSPMessage 
+// 
+// The function returns the following values:
+// 
+// 	- goret RTSPResult 
+func (ext *RTSPExtensionInstance) ParentBeforeSend(req *RTSPMessage) RTSPResult {
+	var carg0 *C.GstRTSPExtension
+	var carg1 *C.GstRTSPMessage // in, none, converted
+	var cret  C.GstRTSPResult   // return, none, casted
+
+	parentclass := (*C.GstRTSPExtensionInterface)(classdata.PeekParentInterface(UnsafeRTSPExtensionToGlibNone(ext), uint64(TypeRTSPExtension)))
+
+	carg1 = (*C.GstRTSPMessage)(UnsafeRTSPMessageToGlibNone(req))
+
+	cret = C._gotk4_gstrtsp1_RTSPExtension_virtual_before_send(unsafe.Pointer(parentclass.before_send), carg0, carg1)
+	runtime.KeepAlive(ext)
+	runtime.KeepAlive(req)
+
+	var goret RTSPResult
+
+	goret = RTSPResult(cret)
+
+	return goret
+}
+
+// ParentConfigureStream calls the default implementations of the configure_stream virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- caps *gst.Caps 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+func (ext *RTSPExtensionInstance) ParentConfigureStream(caps *gst.Caps) bool {
+	var carg0 *C.GstRTSPExtension
+	var carg1 *C.GstCaps // in, none, converted
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstRTSPExtensionInterface)(classdata.PeekParentInterface(UnsafeRTSPExtensionToGlibNone(ext), uint64(TypeRTSPExtension)))
+
+	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
+
+	cret = C._gotk4_gstrtsp1_RTSPExtension_virtual_configure_stream(unsafe.Pointer(parentclass.configure_stream), carg0, carg1)
+	runtime.KeepAlive(ext)
+	runtime.KeepAlive(caps)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentDetectServer calls the default implementations of the detect_server virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- resp *RTSPMessage 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+func (ext *RTSPExtensionInstance) ParentDetectServer(resp *RTSPMessage) bool {
+	var carg0 *C.GstRTSPExtension
+	var carg1 *C.GstRTSPMessage // in, none, converted
+	var cret  C.gboolean        // return
+
+	parentclass := (*C.GstRTSPExtensionInterface)(classdata.PeekParentInterface(UnsafeRTSPExtensionToGlibNone(ext), uint64(TypeRTSPExtension)))
+
+	carg1 = (*C.GstRTSPMessage)(UnsafeRTSPMessageToGlibNone(resp))
+
+	cret = C._gotk4_gstrtsp1_RTSPExtension_virtual_detect_server(unsafe.Pointer(parentclass.detect_server), carg0, carg1)
+	runtime.KeepAlive(ext)
+	runtime.KeepAlive(resp)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentParseSdp calls the default implementations of the parse_sdp virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- sdp *gstsdp.SDPMessage 
+// 	- s *gst.Structure 
+// 
+// The function returns the following values:
+// 
+// 	- goret RTSPResult 
+func (ext *RTSPExtensionInstance) ParentParseSdp(sdp *gstsdp.SDPMessage, s *gst.Structure) RTSPResult {
+	var carg0 *C.GstRTSPExtension
+	var carg1 *C.GstSDPMessage // in, none, converted
+	var carg2 *C.GstStructure  // in, none, converted
+	var cret  C.GstRTSPResult  // return, none, casted
+
+	parentclass := (*C.GstRTSPExtensionInterface)(classdata.PeekParentInterface(UnsafeRTSPExtensionToGlibNone(ext), uint64(TypeRTSPExtension)))
+
+	carg1 = (*C.GstSDPMessage)(gstsdp.UnsafeSDPMessageToGlibNone(sdp))
+	carg2 = (*C.GstStructure)(gst.UnsafeStructureToGlibNone(s))
+
+	cret = C._gotk4_gstrtsp1_RTSPExtension_virtual_parse_sdp(unsafe.Pointer(parentclass.parse_sdp), carg0, carg1, carg2)
+	runtime.KeepAlive(ext)
+	runtime.KeepAlive(sdp)
+	runtime.KeepAlive(s)
+
+	var goret RTSPResult
+
+	goret = RTSPResult(cret)
+
+	return goret
+}
+
+// ParentReceiveRequest calls the default implementations of the receive_request virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- req *RTSPMessage 
+// 
+// The function returns the following values:
+// 
+// 	- goret RTSPResult 
+func (ext *RTSPExtensionInstance) ParentReceiveRequest(req *RTSPMessage) RTSPResult {
+	var carg0 *C.GstRTSPExtension
+	var carg1 *C.GstRTSPMessage // in, none, converted
+	var cret  C.GstRTSPResult   // return, none, casted
+
+	parentclass := (*C.GstRTSPExtensionInterface)(classdata.PeekParentInterface(UnsafeRTSPExtensionToGlibNone(ext), uint64(TypeRTSPExtension)))
+
+	carg1 = (*C.GstRTSPMessage)(UnsafeRTSPMessageToGlibNone(req))
+
+	cret = C._gotk4_gstrtsp1_RTSPExtension_virtual_receive_request(unsafe.Pointer(parentclass.receive_request), carg0, carg1)
+	runtime.KeepAlive(ext)
+	runtime.KeepAlive(req)
+
+	var goret RTSPResult
+
+	goret = RTSPResult(cret)
+
+	return goret
+}
+
+// ParentSend calls the default implementations of the send virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- req *RTSPMessage 
+// 	- resp *RTSPMessage 
+// 
+// The function returns the following values:
+// 
+// 	- goret RTSPResult 
+func (ext *RTSPExtensionInstance) ParentSend(req *RTSPMessage, resp *RTSPMessage) RTSPResult {
+	var carg0 *C.GstRTSPExtension
+	var carg1 *C.GstRTSPMessage // in, none, converted
+	var carg2 *C.GstRTSPMessage // in, none, converted
+	var cret  C.GstRTSPResult   // return, none, casted
+
+	parentclass := (*C.GstRTSPExtensionInterface)(classdata.PeekParentInterface(UnsafeRTSPExtensionToGlibNone(ext), uint64(TypeRTSPExtension)))
+
+	carg1 = (*C.GstRTSPMessage)(UnsafeRTSPMessageToGlibNone(req))
+	carg2 = (*C.GstRTSPMessage)(UnsafeRTSPMessageToGlibNone(resp))
+
+	cret = C._gotk4_gstrtsp1_RTSPExtension_virtual_send(unsafe.Pointer(parentclass.send), carg0, carg1, carg2)
+	runtime.KeepAlive(ext)
+	runtime.KeepAlive(req)
+	runtime.KeepAlive(resp)
+
+	var goret RTSPResult
+
+	goret = RTSPResult(cret)
+
+	return goret
+}
+
+// ParentSetupMedia calls the default implementations of the setup_media virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- media *gstsdp.SDPMedia 
+// 
+// The function returns the following values:
+// 
+// 	- goret RTSPResult 
+func (ext *RTSPExtensionInstance) ParentSetupMedia(media *gstsdp.SDPMedia) RTSPResult {
+	var carg0 *C.GstRTSPExtension
+	var carg1 *C.GstSDPMedia  // in, none, converted
+	var cret  C.GstRTSPResult // return, none, casted
+
+	parentclass := (*C.GstRTSPExtensionInterface)(classdata.PeekParentInterface(UnsafeRTSPExtensionToGlibNone(ext), uint64(TypeRTSPExtension)))
+
+	carg1 = (*C.GstSDPMedia)(gstsdp.UnsafeSDPMediaToGlibNone(media))
+
+	cret = C._gotk4_gstrtsp1_RTSPExtension_virtual_setup_media(unsafe.Pointer(parentclass.setup_media), carg0, carg1)
+	runtime.KeepAlive(ext)
+	runtime.KeepAlive(media)
+
+	var goret RTSPResult
+
+	goret = RTSPResult(cret)
+
+	return goret
+}
+
+// ParentStreamSelect calls the default implementations of the stream_select virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- url *RTSPUrl 
+// 
+// The function returns the following values:
+// 
+// 	- goret RTSPResult 
+func (ext *RTSPExtensionInstance) ParentStreamSelect(url *RTSPUrl) RTSPResult {
+	var carg0 *C.GstRTSPExtension
+	var carg1 *C.GstRTSPUrl   // in, none, converted
+	var cret  C.GstRTSPResult // return, none, casted
+
+	parentclass := (*C.GstRTSPExtensionInterface)(classdata.PeekParentInterface(UnsafeRTSPExtensionToGlibNone(ext), uint64(TypeRTSPExtension)))
+
+	carg1 = (*C.GstRTSPUrl)(UnsafeRTSPUrlToGlibNone(url))
+
+	cret = C._gotk4_gstrtsp1_RTSPExtension_virtual_stream_select(unsafe.Pointer(parentclass.stream_select), carg0, carg1)
+	runtime.KeepAlive(ext)
+	runtime.KeepAlive(url)
+
+	var goret RTSPResult
+
+	goret = RTSPResult(cret)
+
+	return goret
 }
 
 // RTSPAuthCredential wraps GstRTSPAuthCredential
