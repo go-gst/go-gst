@@ -416,6 +416,169 @@ type AppSink interface {
 	// this function returns %NULL. Use gst_app_sink_is_eos () to check for the EOS
 	// condition.
 	TryPullSample(gst.ClockTime) *gst.Sample
+	// ConnectEos connects the provided callback to the "eos" signal
+	//
+	// Signal that the end-of-stream has been reached. This signal is emitted from
+	// the streaming thread.
+	ConnectEos(func(AppSink)) gobject.SignalHandle
+	// ConnectNewPreroll connects the provided callback to the "new-preroll" signal
+	//
+	// Signal that a new preroll sample is available.
+	// 
+	// This signal is emitted from the streaming thread and only when the
+	// "emit-signals" property is %TRUE.
+	// 
+	// The new preroll sample can be retrieved with the "pull-preroll" action
+	// signal or gst_app_sink_pull_preroll() either from this signal callback
+	// or from any other thread.
+	// 
+	// Note that this signal is only emitted when the "emit-signals" property is
+	// set to %TRUE, which it is not by default for performance reasons.
+	ConnectNewPreroll(func(AppSink) gst.FlowReturn) gobject.SignalHandle
+	// ConnectNewSample connects the provided callback to the "new-sample" signal
+	//
+	// Signal that a new sample is available.
+	// 
+	// This signal is emitted from the streaming thread and only when the
+	// "emit-signals" property is %TRUE.
+	// 
+	// The new sample can be retrieved with the "pull-sample" action
+	// signal or gst_app_sink_pull_sample() either from this signal callback
+	// or from any other thread.
+	// 
+	// Note that this signal is only emitted when the "emit-signals" property is
+	// set to %TRUE, which it is not by default for performance reasons.
+	ConnectNewSample(func(AppSink) gst.FlowReturn) gobject.SignalHandle
+	// ConnectNewSerializedEvent connects the provided callback to the "new-serialized-event" signal
+	//
+	// Signal that a new downstream serialized event is available.
+	// 
+	// This signal is emitted from the streaming thread and only when the
+	// "emit-signals" property is %TRUE.
+	// 
+	// The new event can be retrieved with the "try-pull-object" action
+	// signal or gst_app_sink_pull_object() either from this signal callback
+	// or from any other thread.
+	// 
+	// EOS will not be notified using this signal, use #GstAppSink::eos instead.
+	// EOS cannot be pulled either, use gst_app_sink_is_eos() to check for it.
+	// 
+	// Note that this signal is only emitted when the "emit-signals" property is
+	// set to %TRUE, which it is not by default for performance reasons.
+	// 
+	// The callback should return %TRUE if the event has been handled, which will
+	// skip basesink handling of the event, %FALSE otherwise.
+	ConnectNewSerializedEvent(func(AppSink) bool) gobject.SignalHandle
+	// ConnectProposeAllocation connects the provided callback to the "propose-allocation" signal
+	//
+	// Signal that a new propose_allocation query is available.
+	// 
+	// This signal is emitted from the streaming thread and only when the
+	// "emit-signals" property is %TRUE.
+	ConnectProposeAllocation(func(AppSink, gst.Query) bool) gobject.SignalHandle
+	// EmitPullPreroll emits the "pull-preroll" signal
+	//
+	// Get the last preroll sample in @appsink. This was the sample that caused the
+	// appsink to preroll in the PAUSED state.
+	// 
+	// This function is typically used when dealing with a pipeline in the PAUSED
+	// state. Calling this function after doing a seek will give the sample right
+	// after the seek position.
+	// 
+	// Calling this function will clear the internal reference to the preroll
+	// buffer.
+	// 
+	// Note that the preroll sample will also be returned as the first sample
+	// when calling gst_app_sink_pull_sample() or the "pull-sample" action signal.
+	// 
+	// If an EOS event was received before any buffers, this function returns
+	// %NULL. Use gst_app_sink_is_eos () to check for the EOS condition.
+	// 
+	// This function blocks until a preroll sample or EOS is received or the appsink
+	// element is set to the READY/NULL state.
+	EmitPullPreroll() gst.Sample
+	// EmitPullSample emits the "pull-sample" signal
+	//
+	// This function blocks until a sample or EOS becomes available or the appsink
+	// element is set to the READY/NULL state.
+	// 
+	// This function will only return samples when the appsink is in the PLAYING
+	// state. All rendered samples will be put in a queue so that the application
+	// can pull samples at its own rate.
+	// 
+	// Note that when the application does not pull samples fast enough, the
+	// queued samples could consume a lot of memory, especially when dealing with
+	// raw video frames. It's possible to control the behaviour of the queue with
+	// the "drop" and "max-buffers" / "max-bytes" / "max-time" set of properties.
+	// 
+	// If an EOS event was received before any buffers, this function returns
+	// %NULL. Use gst_app_sink_is_eos () to check for the EOS condition.
+	EmitPullSample() gst.Sample
+	// EmitTryPullObject emits the "try-pull-object" signal
+	//
+	// This function blocks until a sample or an event becomes available or the appsink
+	// element is set to the READY/NULL state or the timeout expires.
+	// 
+	// This function will only return samples when the appsink is in the PLAYING
+	// state. All rendered samples and events will be put in a queue so that the application
+	// can pull them at its own rate.
+	// Events can be pulled when the appsink is in the READY, PAUSED or PLAYING state.
+	// 
+	// Note that when the application does not pull samples fast enough, the
+	// queued samples could consume a lot of memory, especially when dealing with
+	// raw video frames. It's possible to control the behaviour of the queue with
+	// the "drop" and "max-buffers" / "max-bytes" / "max-time" set of properties.
+	// 
+	// This function will only pull serialized events, excluding
+	// the EOS event for which this functions returns
+	// %NULL. Use gst_app_sink_is_eos() to check for the EOS condition.
+	// 
+	// This signal is a variant of #GstAppSink::try-pull-sample: that can be used
+	// to handle incoming events as well as samples.
+	// 
+	// Note that future releases may extend this API to return other object types
+	// so make sure that your code is checking for the actual type it is handling.
+	EmitTryPullObject(uint64) gst.MiniObject
+	// EmitTryPullPreroll emits the "try-pull-preroll" signal
+	//
+	// Get the last preroll sample in @appsink. This was the sample that caused the
+	// appsink to preroll in the PAUSED state.
+	// 
+	// This function is typically used when dealing with a pipeline in the PAUSED
+	// state. Calling this function after doing a seek will give the sample right
+	// after the seek position.
+	// 
+	// Calling this function will clear the internal reference to the preroll
+	// buffer.
+	// 
+	// Note that the preroll sample will also be returned as the first sample
+	// when calling gst_app_sink_pull_sample() or the "pull-sample" action signal.
+	// 
+	// If an EOS event was received before any buffers or the timeout expires,
+	// this function returns %NULL. Use gst_app_sink_is_eos () to check for the EOS
+	// condition.
+	// 
+	// This function blocks until a preroll sample or EOS is received, the appsink
+	// element is set to the READY/NULL state, or the timeout expires.
+	EmitTryPullPreroll(uint64) gst.Sample
+	// EmitTryPullSample emits the "try-pull-sample" signal
+	//
+	// This function blocks until a sample or EOS becomes available or the appsink
+	// element is set to the READY/NULL state or the timeout expires.
+	// 
+	// This function will only return samples when the appsink is in the PLAYING
+	// state. All rendered samples will be put in a queue so that the application
+	// can pull samples at its own rate.
+	// 
+	// Note that when the application does not pull samples fast enough, the
+	// queued samples could consume a lot of memory, especially when dealing with
+	// raw video frames. It's possible to control the behaviour of the queue with
+	// the "drop" and "max-buffers" / "max-bytes" / "max-time" set of properties.
+	// 
+	// If an EOS event was received before any buffers or the timeout expires,
+	// this function returns %NULL. Use gst_app_sink_is_eos () to check
+	// for the EOS condition.
+	EmitTryPullSample(uint64) gst.Sample
 }
 
 func unsafeWrapAppSink(base *gobject.ObjectInstance) *AppSinkInstance {
@@ -1017,6 +1180,194 @@ func (appsink *AppSinkInstance) TryPullSample(timeout gst.ClockTime) *gst.Sample
 	return goret
 }
 
+// ConnectEos connects the provided callback to the "eos" signal
+//
+// Signal that the end-of-stream has been reached. This signal is emitted from
+// the streaming thread.
+func (o *AppSinkInstance) ConnectEos(fn func(AppSink)) gobject.SignalHandle {
+	return o.Connect("eos", fn)
+}
+// ConnectNewPreroll connects the provided callback to the "new-preroll" signal
+//
+// Signal that a new preroll sample is available.
+// 
+// This signal is emitted from the streaming thread and only when the
+// "emit-signals" property is %TRUE.
+// 
+// The new preroll sample can be retrieved with the "pull-preroll" action
+// signal or gst_app_sink_pull_preroll() either from this signal callback
+// or from any other thread.
+// 
+// Note that this signal is only emitted when the "emit-signals" property is
+// set to %TRUE, which it is not by default for performance reasons.
+func (o *AppSinkInstance) ConnectNewPreroll(fn func(AppSink) gst.FlowReturn) gobject.SignalHandle {
+	return o.Connect("new-preroll", fn)
+}
+// ConnectNewSample connects the provided callback to the "new-sample" signal
+//
+// Signal that a new sample is available.
+// 
+// This signal is emitted from the streaming thread and only when the
+// "emit-signals" property is %TRUE.
+// 
+// The new sample can be retrieved with the "pull-sample" action
+// signal or gst_app_sink_pull_sample() either from this signal callback
+// or from any other thread.
+// 
+// Note that this signal is only emitted when the "emit-signals" property is
+// set to %TRUE, which it is not by default for performance reasons.
+func (o *AppSinkInstance) ConnectNewSample(fn func(AppSink) gst.FlowReturn) gobject.SignalHandle {
+	return o.Connect("new-sample", fn)
+}
+// ConnectNewSerializedEvent connects the provided callback to the "new-serialized-event" signal
+//
+// Signal that a new downstream serialized event is available.
+// 
+// This signal is emitted from the streaming thread and only when the
+// "emit-signals" property is %TRUE.
+// 
+// The new event can be retrieved with the "try-pull-object" action
+// signal or gst_app_sink_pull_object() either from this signal callback
+// or from any other thread.
+// 
+// EOS will not be notified using this signal, use #GstAppSink::eos instead.
+// EOS cannot be pulled either, use gst_app_sink_is_eos() to check for it.
+// 
+// Note that this signal is only emitted when the "emit-signals" property is
+// set to %TRUE, which it is not by default for performance reasons.
+// 
+// The callback should return %TRUE if the event has been handled, which will
+// skip basesink handling of the event, %FALSE otherwise.
+func (o *AppSinkInstance) ConnectNewSerializedEvent(fn func(AppSink) bool) gobject.SignalHandle {
+	return o.Connect("new-serialized-event", fn)
+}
+// ConnectProposeAllocation connects the provided callback to the "propose-allocation" signal
+//
+// Signal that a new propose_allocation query is available.
+// 
+// This signal is emitted from the streaming thread and only when the
+// "emit-signals" property is %TRUE.
+func (o *AppSinkInstance) ConnectProposeAllocation(fn func(AppSink, gst.Query) bool) gobject.SignalHandle {
+	return o.Connect("propose-allocation", fn)
+}
+// EmitPullPreroll emits the "pull-preroll" signal
+//
+// Get the last preroll sample in @appsink. This was the sample that caused the
+// appsink to preroll in the PAUSED state.
+// 
+// This function is typically used when dealing with a pipeline in the PAUSED
+// state. Calling this function after doing a seek will give the sample right
+// after the seek position.
+// 
+// Calling this function will clear the internal reference to the preroll
+// buffer.
+// 
+// Note that the preroll sample will also be returned as the first sample
+// when calling gst_app_sink_pull_sample() or the "pull-sample" action signal.
+// 
+// If an EOS event was received before any buffers, this function returns
+// %NULL. Use gst_app_sink_is_eos () to check for the EOS condition.
+// 
+// This function blocks until a preroll sample or EOS is received or the appsink
+// element is set to the READY/NULL state.
+func (o *AppSinkInstance) EmitPullPreroll() gst.Sample {
+	return 
+	o.Emit("pull-preroll")
+}
+// EmitPullSample emits the "pull-sample" signal
+//
+// This function blocks until a sample or EOS becomes available or the appsink
+// element is set to the READY/NULL state.
+// 
+// This function will only return samples when the appsink is in the PLAYING
+// state. All rendered samples will be put in a queue so that the application
+// can pull samples at its own rate.
+// 
+// Note that when the application does not pull samples fast enough, the
+// queued samples could consume a lot of memory, especially when dealing with
+// raw video frames. It's possible to control the behaviour of the queue with
+// the "drop" and "max-buffers" / "max-bytes" / "max-time" set of properties.
+// 
+// If an EOS event was received before any buffers, this function returns
+// %NULL. Use gst_app_sink_is_eos () to check for the EOS condition.
+func (o *AppSinkInstance) EmitPullSample() gst.Sample {
+	return 
+	o.Emit("pull-sample")
+}
+// EmitTryPullObject emits the "try-pull-object" signal
+//
+// This function blocks until a sample or an event becomes available or the appsink
+// element is set to the READY/NULL state or the timeout expires.
+// 
+// This function will only return samples when the appsink is in the PLAYING
+// state. All rendered samples and events will be put in a queue so that the application
+// can pull them at its own rate.
+// Events can be pulled when the appsink is in the READY, PAUSED or PLAYING state.
+// 
+// Note that when the application does not pull samples fast enough, the
+// queued samples could consume a lot of memory, especially when dealing with
+// raw video frames. It's possible to control the behaviour of the queue with
+// the "drop" and "max-buffers" / "max-bytes" / "max-time" set of properties.
+// 
+// This function will only pull serialized events, excluding
+// the EOS event for which this functions returns
+// %NULL. Use gst_app_sink_is_eos() to check for the EOS condition.
+// 
+// This signal is a variant of #GstAppSink::try-pull-sample: that can be used
+// to handle incoming events as well as samples.
+// 
+// Note that future releases may extend this API to return other object types
+// so make sure that your code is checking for the actual type it is handling.
+func (o *AppSinkInstance) EmitTryPullObject(arg0 uint64) gst.MiniObject {
+	return 
+	o.Emit("try-pull-object", arg0)
+}
+// EmitTryPullPreroll emits the "try-pull-preroll" signal
+//
+// Get the last preroll sample in @appsink. This was the sample that caused the
+// appsink to preroll in the PAUSED state.
+// 
+// This function is typically used when dealing with a pipeline in the PAUSED
+// state. Calling this function after doing a seek will give the sample right
+// after the seek position.
+// 
+// Calling this function will clear the internal reference to the preroll
+// buffer.
+// 
+// Note that the preroll sample will also be returned as the first sample
+// when calling gst_app_sink_pull_sample() or the "pull-sample" action signal.
+// 
+// If an EOS event was received before any buffers or the timeout expires,
+// this function returns %NULL. Use gst_app_sink_is_eos () to check for the EOS
+// condition.
+// 
+// This function blocks until a preroll sample or EOS is received, the appsink
+// element is set to the READY/NULL state, or the timeout expires.
+func (o *AppSinkInstance) EmitTryPullPreroll(arg0 uint64) gst.Sample {
+	return 
+	o.Emit("try-pull-preroll", arg0)
+}
+// EmitTryPullSample emits the "try-pull-sample" signal
+//
+// This function blocks until a sample or EOS becomes available or the appsink
+// element is set to the READY/NULL state or the timeout expires.
+// 
+// This function will only return samples when the appsink is in the PLAYING
+// state. All rendered samples will be put in a queue so that the application
+// can pull samples at its own rate.
+// 
+// Note that when the application does not pull samples fast enough, the
+// queued samples could consume a lot of memory, especially when dealing with
+// raw video frames. It's possible to control the behaviour of the queue with
+// the "drop" and "max-buffers" / "max-bytes" / "max-time" set of properties.
+// 
+// If an EOS event was received before any buffers or the timeout expires,
+// this function returns %NULL. Use gst_app_sink_is_eos () to check
+// for the EOS condition.
+func (o *AppSinkInstance) EmitTryPullSample(arg0 uint64) gst.Sample {
+	return 
+	o.Emit("try-pull-sample", arg0)
+}
 // AppSrcInstance is the instance type used by all types extending GstAppSrc. It is used internally by the bindings. Users should use the interface [AppSrc] instead.
 type AppSrcInstance struct {
 	_ [0]func() // equal guard
@@ -1359,6 +1710,73 @@ type AppSrc interface {
 	// 
 	// A stream_type stream
 	SetStreamType(AppStreamType)
+	// EmitEndOfStream emits the "end-of-stream" signal
+	//
+	// Notify @appsrc that no more buffer are available.
+	EmitEndOfStream() gst.FlowReturn
+	// ConnectEnoughData connects the provided callback to the "enough-data" signal
+	//
+	// Signal that the source has enough data. It is recommended that the
+	// application stops calling push-buffer until the need-data signal is
+	// emitted again to avoid excessive buffer queueing.
+	ConnectEnoughData(func(AppSrc)) gobject.SignalHandle
+	// ConnectNeedData connects the provided callback to the "need-data" signal
+	//
+	// Signal that the source needs more data. In the callback or from another
+	// thread you should call push-buffer or end-of-stream.
+	// 
+	// @length is just a hint and when it is set to -1, any number of bytes can be
+	// pushed into @appsrc.
+	// 
+	// You can call push-buffer multiple times until the enough-data signal is
+	// fired.
+	ConnectNeedData(func(AppSrc, uint)) gobject.SignalHandle
+	// EmitPushBuffer emits the "push-buffer" signal
+	//
+	// Adds a buffer to the queue of buffers that the appsrc element will
+	// push to its source pad.
+	// 
+	// This function does not take ownership of the buffer, but it takes a
+	// reference so the buffer can be unreffed at any time after calling this
+	// function.
+	// 
+	// When the block property is TRUE, this function can block until free space
+	// becomes available in the queue.
+	EmitPushBuffer(gst.Buffer) gst.FlowReturn
+	// EmitPushBufferList emits the "push-buffer-list" signal
+	//
+	// Adds a buffer list to the queue of buffers and buffer lists that the
+	// appsrc element will push to its source pad.
+	// 
+	// This function does not take ownership of the buffer list, but it takes a
+	// reference so the buffer list can be unreffed at any time after calling
+	// this function.
+	// 
+	// When the block property is TRUE, this function can block until free space
+	// becomes available in the queue.
+	EmitPushBufferList(gst.BufferList) gst.FlowReturn
+	// EmitPushSample emits the "push-sample" signal
+	//
+	// Extract a buffer from the provided sample and adds the extracted buffer
+	// to the queue of buffers that the appsrc element will
+	// push to its source pad. This function set the appsrc caps based on the caps
+	// in the sample and reset the caps if they change.
+	// Only the caps and the buffer of the provided sample are used and not
+	// for example the segment in the sample.
+	// 
+	// This function does not take ownership of the sample, but it takes a
+	// reference so the sample can be unreffed at any time after calling this
+	// function.
+	// 
+	// When the block property is TRUE, this function can block until free space
+	// becomes available in the queue.
+	EmitPushSample(gst.Sample) gst.FlowReturn
+	// ConnectSeekData connects the provided callback to the "seek-data" signal
+	//
+	// Seek to the given offset. The next push-buffer should produce buffers from
+	// the new @offset.
+	// This callback is only called for seekable stream types.
+	ConnectSeekData(func(AppSrc, uint64) bool) gobject.SignalHandle
 }
 
 func unsafeWrapAppSrc(base *gobject.ObjectInstance) *AppSrcInstance {
@@ -2052,6 +2470,91 @@ func (appsrc *AppSrcInstance) SetStreamType(typ AppStreamType) {
 	runtime.KeepAlive(typ)
 }
 
+// EmitEndOfStream emits the "end-of-stream" signal
+//
+// Notify @appsrc that no more buffer are available.
+func (o *AppSrcInstance) EmitEndOfStream() gst.FlowReturn {
+	return 
+	o.Emit("end-of-stream")
+}
+// ConnectEnoughData connects the provided callback to the "enough-data" signal
+//
+// Signal that the source has enough data. It is recommended that the
+// application stops calling push-buffer until the need-data signal is
+// emitted again to avoid excessive buffer queueing.
+func (o *AppSrcInstance) ConnectEnoughData(fn func(AppSrc)) gobject.SignalHandle {
+	return o.Connect("enough-data", fn)
+}
+// ConnectNeedData connects the provided callback to the "need-data" signal
+//
+// Signal that the source needs more data. In the callback or from another
+// thread you should call push-buffer or end-of-stream.
+// 
+// @length is just a hint and when it is set to -1, any number of bytes can be
+// pushed into @appsrc.
+// 
+// You can call push-buffer multiple times until the enough-data signal is
+// fired.
+func (o *AppSrcInstance) ConnectNeedData(fn func(AppSrc, uint)) gobject.SignalHandle {
+	return o.Connect("need-data", fn)
+}
+// EmitPushBuffer emits the "push-buffer" signal
+//
+// Adds a buffer to the queue of buffers that the appsrc element will
+// push to its source pad.
+// 
+// This function does not take ownership of the buffer, but it takes a
+// reference so the buffer can be unreffed at any time after calling this
+// function.
+// 
+// When the block property is TRUE, this function can block until free space
+// becomes available in the queue.
+func (o *AppSrcInstance) EmitPushBuffer(arg0 gst.Buffer) gst.FlowReturn {
+	return 
+	o.Emit("push-buffer", arg0)
+}
+// EmitPushBufferList emits the "push-buffer-list" signal
+//
+// Adds a buffer list to the queue of buffers and buffer lists that the
+// appsrc element will push to its source pad.
+// 
+// This function does not take ownership of the buffer list, but it takes a
+// reference so the buffer list can be unreffed at any time after calling
+// this function.
+// 
+// When the block property is TRUE, this function can block until free space
+// becomes available in the queue.
+func (o *AppSrcInstance) EmitPushBufferList(arg0 gst.BufferList) gst.FlowReturn {
+	return 
+	o.Emit("push-buffer-list", arg0)
+}
+// EmitPushSample emits the "push-sample" signal
+//
+// Extract a buffer from the provided sample and adds the extracted buffer
+// to the queue of buffers that the appsrc element will
+// push to its source pad. This function set the appsrc caps based on the caps
+// in the sample and reset the caps if they change.
+// Only the caps and the buffer of the provided sample are used and not
+// for example the segment in the sample.
+// 
+// This function does not take ownership of the sample, but it takes a
+// reference so the sample can be unreffed at any time after calling this
+// function.
+// 
+// When the block property is TRUE, this function can block until free space
+// becomes available in the queue.
+func (o *AppSrcInstance) EmitPushSample(arg0 gst.Sample) gst.FlowReturn {
+	return 
+	o.Emit("push-sample", arg0)
+}
+// ConnectSeekData connects the provided callback to the "seek-data" signal
+//
+// Seek to the given offset. The next push-buffer should produce buffers from
+// the new @offset.
+// This callback is only called for seekable stream types.
+func (o *AppSrcInstance) ConnectSeekData(fn func(AppSrc, uint64) bool) gobject.SignalHandle {
+	return o.Connect("seek-data", fn)
+}
 // AppSinkClass wraps GstAppSinkClass
 type AppSinkClass struct {
 	*appSinkClass

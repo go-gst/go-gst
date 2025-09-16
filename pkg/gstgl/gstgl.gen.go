@@ -1279,41 +1279,6 @@ func BufferAddGLSyncMeta(_context GLContext, buffer *gst.Buffer) *GLSyncMeta {
 	return goret
 }
 
-// BufferAddGLSyncMetaFull wraps gst_buffer_add_gl_sync_meta_full
-// 
-// The function takes the following parameters:
-// 
-// 	- _context GLContext: a #GstGLContext 
-// 	- buffer *gst.Buffer: a #GstBuffer 
-// 	- data unsafe.Pointer (nullable): sync data to hold 
-// 
-// The function returns the following values:
-// 
-// 	- goret *GLSyncMeta 
-func BufferAddGLSyncMetaFull(_context GLContext, buffer *gst.Buffer, data unsafe.Pointer) *GLSyncMeta {
-	var carg1 *C.GstGLContext  // in, none, converted
-	var carg2 *C.GstBuffer     // in, none, converted
-	var carg3 C.gpointer       // in, none, casted, nullable
-	var cret  *C.GstGLSyncMeta // return, none, converted
-
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
-	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
-	if data != nil {
-		carg3 = C.gpointer(data)
-	}
-
-	cret = C.gst_buffer_add_gl_sync_meta_full(carg1, carg2, carg3)
-	runtime.KeepAlive(_context)
-	runtime.KeepAlive(buffer)
-	runtime.KeepAlive(data)
-
-	var goret *GLSyncMeta
-
-	goret = UnsafeGLSyncMetaFromGlibNone(unsafe.Pointer(cret))
-
-	return goret
-}
-
 // BufferPoolConfigGetGLAllocationParams wraps gst_buffer_pool_config_get_gl_allocation_params
 // 
 // The function takes the following parameters:
@@ -3182,13 +3147,6 @@ type GLContext interface {
 	// The currently available API may be limited by the #GstGLDisplay in use and/or
 	// the #GstGLWindow chosen.
 	GetGLApi() GLAPI
-	// GetGLContext wraps gst_gl_context_get_gl_context
-	// The function returns the following values:
-	// 
-	// 	- goret uintptr 
-	//
-	// Gets the backing OpenGL context used by @context.
-	GetGLContext() uintptr
 	// GetGLPlatform wraps gst_gl_context_get_gl_platform
 	// The function returns the following values:
 	// 
@@ -3215,36 +3173,6 @@ type GLContext interface {
 	// gst_gl_context_get_gl_api() for retrieving the OpenGL api implemented by
 	// @context.
 	GetGLVersion() (int, int)
-	// GetProcAddress wraps gst_gl_context_get_proc_address
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- name string: an opengl function name 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret unsafe.Pointer 
-	//
-	// Get a function pointer to a specified opengl function, @name.  If the the
-	// specific function does not exist, NULL is returned instead.
-	// 
-	// Platform specific functions (names starting 'egl', 'glX', 'wgl', etc) can also
-	// be retrieved using this method.
-	// 
-	// Note: This function may return valid function pointers that may not be valid
-	// to call in @context.  The caller is responsible for ensuring that the
-	// returned function is a valid function to call in @context by either checking
-	// the OpenGL API and version or for an appropriate OpenGL extension.
-	// 
-	// Note: On success, you need to cast the returned function pointer to the
-	// correct type to be able to call it correctly.  On 32-bit Windows, this will
-	// include the `GSTGLAPI` identifier to use the correct calling convention.
-	// e.g.
-	// 
-	// |[&lt;!-- language="C" --&gt;
-	// void (GSTGLAPI *PFN_glGetIntegerv) (GLenum name, GLint * ret)
-	// ]|
-	GetProcAddress(string) unsafe.Pointer
 	// GetWindow wraps gst_gl_context_get_window
 	// The function returns the following values:
 	// 
@@ -3406,88 +3334,6 @@ func NewGLContext(display GLDisplay) GLContext {
 	return goret
 }
 
-// NewGLContextWrapped wraps gst_gl_context_new_wrapped
-// 
-// The function takes the following parameters:
-// 
-// 	- display GLDisplay: a #GstGLDisplay 
-// 	- handle uintptr: the OpenGL context to wrap 
-// 	- contextType GLPlatform: a #GstGLPlatform specifying the type of context in @handle 
-// 	- availableApis GLAPI: a #GstGLAPI containing the available OpenGL apis in @handle 
-// 
-// The function returns the following values:
-// 
-// 	- goret GLContext 
-//
-// Wraps an existing OpenGL context into a #GstGLContext.
-// 
-// Note: The caller is responsible for ensuring that the OpenGL context
-// represented by @handle stays alive while the returned #GstGLContext is
-// active.
-// 
-// @context_type must not be %GST_GL_PLATFORM_NONE or %GST_GL_PLATFORM_ANY
-// 
-// @available_apis must not be %GST_GL_API_NONE or %GST_GL_API_ANY
-func NewGLContextWrapped(display GLDisplay, handle uintptr, contextType GLPlatform, availableApis GLAPI) GLContext {
-	var carg1 *C.GstGLDisplay // in, none, converted
-	var carg2 C.guintptr      // in, none, casted
-	var carg3 C.GstGLPlatform // in, none, casted
-	var carg4 C.GstGLAPI      // in, none, casted
-	var cret  *C.GstGLContext // return, full, converted
-
-	carg1 = (*C.GstGLDisplay)(UnsafeGLDisplayToGlibNone(display))
-	carg2 = C.guintptr(handle)
-	carg3 = C.GstGLPlatform(contextType)
-	carg4 = C.GstGLAPI(availableApis)
-
-	cret = C.gst_gl_context_new_wrapped(carg1, carg2, carg3, carg4)
-	runtime.KeepAlive(display)
-	runtime.KeepAlive(handle)
-	runtime.KeepAlive(contextType)
-	runtime.KeepAlive(availableApis)
-
-	var goret GLContext
-
-	goret = UnsafeGLContextFromGlibFull(unsafe.Pointer(cret))
-
-	return goret
-}
-
-// GLContextDefaultGetProcAddress wraps gst_gl_context_default_get_proc_address
-// 
-// The function takes the following parameters:
-// 
-// 	- glApi GLAPI: a #GstGLAPI 
-// 	- name string: then function to get the address of 
-// 
-// The function returns the following values:
-// 
-// 	- goret unsafe.Pointer 
-//
-// A default implementation of the various GetProcAddress functions that looks
-// for @name in the OpenGL shared libraries or in the current process.
-// 
-// See also: gst_gl_context_get_proc_address()
-func GLContextDefaultGetProcAddress(glApi GLAPI, name string) unsafe.Pointer {
-	var carg1 C.GstGLAPI // in, none, casted
-	var carg2 *C.gchar   // in, none, string, casted *C.gchar
-	var cret  C.gpointer // return, none, casted
-
-	carg1 = C.GstGLAPI(glApi)
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg2))
-
-	cret = C.gst_gl_context_default_get_proc_address(carg1, carg2)
-	runtime.KeepAlive(glApi)
-	runtime.KeepAlive(name)
-
-	var goret unsafe.Pointer
-
-	goret = unsafe.Pointer(cret)
-
-	return goret
-}
-
 // GLContextGetCurrent wraps gst_gl_context_get_current
 // The function returns the following values:
 // 
@@ -3540,70 +3386,6 @@ func GLContextGetCurrentGLApi(platform GLPlatform) (uint, uint, GLAPI) {
 	goret = GLAPI(cret)
 
 	return major, minor, goret
-}
-
-// GLContextGetCurrentGLContext wraps gst_gl_context_get_current_gl_context
-// 
-// The function takes the following parameters:
-// 
-// 	- contextType GLPlatform: a #GstGLPlatform specifying the type of context to retrieve 
-// 
-// The function returns the following values:
-// 
-// 	- goret uintptr 
-func GLContextGetCurrentGLContext(contextType GLPlatform) uintptr {
-	var carg1 C.GstGLPlatform // in, none, casted
-	var cret  C.guintptr      // return, none, casted
-
-	carg1 = C.GstGLPlatform(contextType)
-
-	cret = C.gst_gl_context_get_current_gl_context(carg1)
-	runtime.KeepAlive(contextType)
-
-	var goret uintptr
-
-	goret = uintptr(cret)
-
-	return goret
-}
-
-// GLContextGetProcAddressWithPlatform wraps gst_gl_context_get_proc_address_with_platform
-// 
-// The function takes the following parameters:
-// 
-// 	- contextType GLPlatform: a #GstGLPlatform 
-// 	- glApi GLAPI: a #GstGLAPI 
-// 	- name string: the name of the function to retrieve 
-// 
-// The function returns the following values:
-// 
-// 	- goret unsafe.Pointer 
-//
-// Attempts to use the @context_type specific GetProcAddress implementations
-// to retrieve @name.
-// 
-// See also gst_gl_context_get_proc_address().
-func GLContextGetProcAddressWithPlatform(contextType GLPlatform, glApi GLAPI, name string) unsafe.Pointer {
-	var carg1 C.GstGLPlatform // in, none, casted
-	var carg2 C.GstGLAPI      // in, none, casted
-	var carg3 *C.gchar        // in, none, string, casted *C.gchar
-	var cret  C.gpointer      // return, none, casted
-
-	carg1 = C.GstGLPlatform(contextType)
-	carg2 = C.GstGLAPI(glApi)
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg3))
-
-	cret = C.gst_gl_context_get_proc_address_with_platform(carg1, carg2, carg3)
-	runtime.KeepAlive(contextType)
-	runtime.KeepAlive(glApi)
-	runtime.KeepAlive(name)
-
-	var goret unsafe.Pointer
-
-	goret = unsafe.Pointer(cret)
-
-	return goret
 }
 
 // Activate wraps gst_gl_context_activate
@@ -3985,28 +3767,6 @@ func (_context *GLContextInstance) GetGLApi() GLAPI {
 	return goret
 }
 
-// GetGLContext wraps gst_gl_context_get_gl_context
-// The function returns the following values:
-// 
-// 	- goret uintptr 
-//
-// Gets the backing OpenGL context used by @context.
-func (_context *GLContextInstance) GetGLContext() uintptr {
-	var carg0 *C.GstGLContext // in, none, converted
-	var cret  C.guintptr      // return, none, casted
-
-	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
-
-	cret = C.gst_gl_context_get_gl_context(carg0)
-	runtime.KeepAlive(_context)
-
-	var goret uintptr
-
-	goret = uintptr(cret)
-
-	return goret
-}
-
 // GetGLPlatform wraps gst_gl_context_get_gl_platform
 // The function returns the following values:
 // 
@@ -4082,55 +3842,6 @@ func (_context *GLContextInstance) GetGLVersion() (int, int) {
 	min = int(carg2)
 
 	return maj, min
-}
-
-// GetProcAddress wraps gst_gl_context_get_proc_address
-// 
-// The function takes the following parameters:
-// 
-// 	- name string: an opengl function name 
-// 
-// The function returns the following values:
-// 
-// 	- goret unsafe.Pointer 
-//
-// Get a function pointer to a specified opengl function, @name.  If the the
-// specific function does not exist, NULL is returned instead.
-// 
-// Platform specific functions (names starting 'egl', 'glX', 'wgl', etc) can also
-// be retrieved using this method.
-// 
-// Note: This function may return valid function pointers that may not be valid
-// to call in @context.  The caller is responsible for ensuring that the
-// returned function is a valid function to call in @context by either checking
-// the OpenGL API and version or for an appropriate OpenGL extension.
-// 
-// Note: On success, you need to cast the returned function pointer to the
-// correct type to be able to call it correctly.  On 32-bit Windows, this will
-// include the `GSTGLAPI` identifier to use the correct calling convention.
-// e.g.
-// 
-// |[&lt;!-- language="C" --&gt;
-// void (GSTGLAPI *PFN_glGetIntegerv) (GLenum name, GLint * ret)
-// ]|
-func (_context *GLContextInstance) GetProcAddress(name string) unsafe.Pointer {
-	var carg0 *C.GstGLContext // in, none, converted
-	var carg1 *C.gchar        // in, none, string, casted *C.gchar
-	var cret  C.gpointer      // return, none, casted
-
-	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
-
-	cret = C.gst_gl_context_get_proc_address(carg0, carg1)
-	runtime.KeepAlive(_context)
-	runtime.KeepAlive(name)
-
-	var goret unsafe.Pointer
-
-	goret = unsafe.Pointer(cret)
-
-	return goret
 }
 
 // GetWindow wraps gst_gl_context_get_window
@@ -4475,11 +4186,6 @@ type GLDisplay interface {
 	// 
 	// 	- goret GLAPI 
 	GetGLApiUnlocked() GLAPI
-	// GetHandle wraps gst_gl_display_get_handle
-	// The function returns the following values:
-	// 
-	// 	- goret uintptr 
-	GetHandle() uintptr
 	// GetHandleType wraps gst_gl_display_get_handle_type
 	// The function returns the following values:
 	// 
@@ -4503,6 +4209,12 @@ type GLDisplay interface {
 	// 
 	// 	- goret bool 
 	RemoveWindow(GLWindow) bool
+	// ConnectCreateContext connects the provided callback to the "create-context" signal
+	//
+	// Overrides the @GstGLContext creation mechanism.
+	// It can be called in any thread and it is emitted with
+	// display's object lock held.
+	ConnectCreateContext(func(GLDisplay, GLContext) GLContextInstance) gobject.SignalHandle
 }
 
 func unsafeWrapGLDisplay(base *gobject.ObjectInstance) *GLDisplayInstance {
@@ -4747,26 +4459,6 @@ func (display *GLDisplayInstance) GetGLApiUnlocked() GLAPI {
 	return goret
 }
 
-// GetHandle wraps gst_gl_display_get_handle
-// The function returns the following values:
-// 
-// 	- goret uintptr 
-func (display *GLDisplayInstance) GetHandle() uintptr {
-	var carg0 *C.GstGLDisplay // in, none, converted
-	var cret  C.guintptr      // return, none, casted
-
-	carg0 = (*C.GstGLDisplay)(UnsafeGLDisplayToGlibNone(display))
-
-	cret = C.gst_gl_display_get_handle(carg0)
-	runtime.KeepAlive(display)
-
-	var goret uintptr
-
-	goret = uintptr(cret)
-
-	return goret
-}
-
 // GetHandleType wraps gst_gl_display_get_handle_type
 // The function returns the following values:
 // 
@@ -4836,6 +4528,14 @@ func (display *GLDisplayInstance) RemoveWindow(window GLWindow) bool {
 	return goret
 }
 
+// ConnectCreateContext connects the provided callback to the "create-context" signal
+//
+// Overrides the @GstGLContext creation mechanism.
+// It can be called in any thread and it is emitted with
+// display's object lock held.
+func (o *GLDisplayInstance) ConnectCreateContext(fn func(GLDisplay, GLContext) GLContextInstance) gobject.SignalHandle {
+	return o.Connect("create-context", fn)
+}
 // GLFilterInstance is the instance type used by all types extending GstGLFilter. It is used internally by the bindings. Users should use the interface [GLFilter] instead.
 type GLFilterInstance struct {
 	_ [0]func() // equal guard
@@ -8862,22 +8562,12 @@ type GLWindow interface {
 	// 
 	// 	- goret GLContext 
 	GetContext() GLContext
-	// GetDisplay wraps gst_gl_window_get_display
-	// The function returns the following values:
-	// 
-	// 	- goret uintptr 
-	GetDisplay() uintptr
 	// GetSurfaceDimensions wraps gst_gl_window_get_surface_dimensions
 	// The function returns the following values:
 	// 
 	// 	- width uint: resulting surface width 
 	// 	- height uint: resulting surface height 
 	GetSurfaceDimensions() (uint, uint)
-	// GetWindowHandle wraps gst_gl_window_get_window_handle
-	// The function returns the following values:
-	// 
-	// 	- goret uintptr 
-	GetWindowHandle() uintptr
 	// HandleEvents wraps gst_gl_window_handle_events
 	// 
 	// The function takes the following parameters:
@@ -8972,19 +8662,29 @@ type GLWindow interface {
 	// Tell a @window that it should render into a specific region of the window
 	// according to the #GstVideoOverlay interface.
 	SetRenderRectangle(int, int, int, int) bool
-	// SetWindowHandle wraps gst_gl_window_set_window_handle
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- handle uintptr: handle to the window 
-	//
-	// Sets the window that this @window should render into.  Some implementations
-	// require this to be called with a valid handle before drawing can commence.
-	SetWindowHandle(uintptr)
 	// Show wraps gst_gl_window_show
 	//
 	// Present the window to the screen.
 	Show()
+	// ConnectKeyEvent connects the provided callback to the "key-event" signal
+	//
+	// Will be emitted when a key event is received by the GstGLwindow.
+	ConnectKeyEvent(func(GLWindow, string, string)) gobject.SignalHandle
+	// ConnectMouseEvent connects the provided callback to the "mouse-event" signal
+	//
+	// Will be emitted when a mouse event is received by the GstGLwindow.
+	ConnectMouseEvent(func(GLWindow, string, int, float64, float64)) gobject.SignalHandle
+	// ConnectScrollEvent connects the provided callback to the "scroll-event" signal
+	//
+	// Will be emitted when a mouse scroll event is received by the GstGLwindow.
+	ConnectScrollEvent(func(GLWindow, float64, float64, float64, float64)) gobject.SignalHandle
+	// ConnectWindowHandleChanged connects the provided callback to the "window-handle-changed" signal
+	//
+	// Will be emitted when the window handle has been set into the native
+	// implementation, but before the context is re-activated. By using this
+	// signal, elements can refresh associated resource without relying on
+	// direct handle comparision.
+	ConnectWindowHandleChanged(func(GLWindow)) gobject.SignalHandle
 }
 
 func unsafeWrapGLWindow(base *gobject.ObjectInstance) *GLWindowInstance {
@@ -9106,26 +8806,6 @@ func (window *GLWindowInstance) GetContext() GLContext {
 	return goret
 }
 
-// GetDisplay wraps gst_gl_window_get_display
-// The function returns the following values:
-// 
-// 	- goret uintptr 
-func (window *GLWindowInstance) GetDisplay() uintptr {
-	var carg0 *C.GstGLWindow // in, none, converted
-	var cret  C.guintptr     // return, none, casted
-
-	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
-
-	cret = C.gst_gl_window_get_display(carg0)
-	runtime.KeepAlive(window)
-
-	var goret uintptr
-
-	goret = uintptr(cret)
-
-	return goret
-}
-
 // GetSurfaceDimensions wraps gst_gl_window_get_surface_dimensions
 // The function returns the following values:
 // 
@@ -9148,26 +8828,6 @@ func (window *GLWindowInstance) GetSurfaceDimensions() (uint, uint) {
 	height = uint(carg2)
 
 	return width, height
-}
-
-// GetWindowHandle wraps gst_gl_window_get_window_handle
-// The function returns the following values:
-// 
-// 	- goret uintptr 
-func (window *GLWindowInstance) GetWindowHandle() uintptr {
-	var carg0 *C.GstGLWindow // in, none, converted
-	var cret  C.guintptr     // return, none, casted
-
-	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
-
-	cret = C.gst_gl_window_get_window_handle(carg0)
-	runtime.KeepAlive(window)
-
-	var goret uintptr
-
-	goret = uintptr(cret)
-
-	return goret
 }
 
 // HandleEvents wraps gst_gl_window_handle_events
@@ -9432,26 +9092,6 @@ func (window *GLWindowInstance) SetRenderRectangle(x int, y int, width int, heig
 	return goret
 }
 
-// SetWindowHandle wraps gst_gl_window_set_window_handle
-// 
-// The function takes the following parameters:
-// 
-// 	- handle uintptr: handle to the window 
-//
-// Sets the window that this @window should render into.  Some implementations
-// require this to be called with a valid handle before drawing can commence.
-func (window *GLWindowInstance) SetWindowHandle(handle uintptr) {
-	var carg0 *C.GstGLWindow // in, none, converted
-	var carg1 C.guintptr     // in, none, casted
-
-	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
-	carg1 = C.guintptr(handle)
-
-	C.gst_gl_window_set_window_handle(carg0, carg1)
-	runtime.KeepAlive(window)
-	runtime.KeepAlive(handle)
-}
-
 // Show wraps gst_gl_window_show
 //
 // Present the window to the screen.
@@ -9464,6 +9104,33 @@ func (window *GLWindowInstance) Show() {
 	runtime.KeepAlive(window)
 }
 
+// ConnectKeyEvent connects the provided callback to the "key-event" signal
+//
+// Will be emitted when a key event is received by the GstGLwindow.
+func (o *GLWindowInstance) ConnectKeyEvent(fn func(GLWindow, string, string)) gobject.SignalHandle {
+	return o.Connect("key-event", fn)
+}
+// ConnectMouseEvent connects the provided callback to the "mouse-event" signal
+//
+// Will be emitted when a mouse event is received by the GstGLwindow.
+func (o *GLWindowInstance) ConnectMouseEvent(fn func(GLWindow, string, int, float64, float64)) gobject.SignalHandle {
+	return o.Connect("mouse-event", fn)
+}
+// ConnectScrollEvent connects the provided callback to the "scroll-event" signal
+//
+// Will be emitted when a mouse scroll event is received by the GstGLwindow.
+func (o *GLWindowInstance) ConnectScrollEvent(fn func(GLWindow, float64, float64, float64, float64)) gobject.SignalHandle {
+	return o.Connect("scroll-event", fn)
+}
+// ConnectWindowHandleChanged connects the provided callback to the "window-handle-changed" signal
+//
+// Will be emitted when the window handle has been set into the native
+// implementation, but before the context is re-activated. By using this
+// signal, elements can refresh associated resource without relying on
+// direct handle comparision.
+func (o *GLWindowInstance) ConnectWindowHandleChanged(fn func(GLWindow)) gobject.SignalHandle {
+	return o.Connect("window-handle-changed", fn)
+}
 // GLAllocationParams wraps GstGLAllocationParams
 type GLAllocationParams struct {
 	*glAllocationParams
@@ -11129,67 +10796,6 @@ func (glMem *GLMemory) GetTextureWidth() int {
 	goret = int(cret)
 
 	return goret
-}
-
-// ReadPixels wraps gst_gl_memory_read_pixels
-// 
-// The function takes the following parameters:
-// 
-// 	- writePointer unsafe.Pointer (nullable): the data pointer to pass to glReadPixels 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Reads the texture in #GstGLMemory into @write_pointer if no buffer is bound
-// to `GL_PIXEL_PACK_BUFFER`.  Otherwise @write_pointer is the byte offset into
-// the currently bound `GL_PIXEL_PACK_BUFFER` buffer to store the result of
-// glReadPixels.  See the OpenGL specification for glReadPixels for more
-// details.
-func (glMem *GLMemory) ReadPixels(writePointer unsafe.Pointer) bool {
-	var carg0 *C.GstGLMemory // in, none, converted
-	var carg1 C.gpointer     // in, none, casted, nullable
-	var cret  C.gboolean     // return
-
-	carg0 = (*C.GstGLMemory)(UnsafeGLMemoryToGlibNone(glMem))
-	if writePointer != nil {
-		carg1 = C.gpointer(writePointer)
-	}
-
-	cret = C.gst_gl_memory_read_pixels(carg0, carg1)
-	runtime.KeepAlive(glMem)
-	runtime.KeepAlive(writePointer)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
-// Texsubimage wraps gst_gl_memory_texsubimage
-// 
-// The function takes the following parameters:
-// 
-// 	- readPointer unsafe.Pointer (nullable): the data pointer to pass to glTexSubImage 
-//
-// Reads the texture in @read_pointer into @gl_mem.
-// 
-// See gst_gl_memory_read_pixels() for what @read_pointer signifies.
-func (glMem *GLMemory) Texsubimage(readPointer unsafe.Pointer) {
-	var carg0 *C.GstGLMemory // in, none, converted
-	var carg1 C.gpointer     // in, none, casted, nullable
-
-	carg0 = (*C.GstGLMemory)(UnsafeGLMemoryToGlibNone(glMem))
-	if readPointer != nil {
-		carg1 = C.gpointer(readPointer)
-	}
-
-	C.gst_gl_memory_texsubimage(carg0, carg1)
-	runtime.KeepAlive(glMem)
-	runtime.KeepAlive(readPointer)
 }
 
 // GLMemoryAllocatorClass wraps GstGLMemoryAllocatorClass

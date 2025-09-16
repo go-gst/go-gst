@@ -100,6 +100,33 @@ func (structure *Structure) GetValue(fieldname string) any {
 	return goret
 }
 
+// SetValue wraps gst_structure_set_value
+//
+// The function takes the following parameters:
+//
+//   - fieldname string: the name of the field to set
+//   - value any: the new value of the field
+//
+// Sets the field with the given name @field to @value.  If the field
+// does not exist, it is created.  If the field exists, the previous
+// value is replaced and freed.
+func (structure *Structure) SetValue(fieldname string, value any) {
+	var carg0 *C.GstStructure // in, none, converted
+	var carg1 *C.gchar        // in, none, string, casted *C.gchar
+	var carg2 *C.GValue       // in, none, converted
+
+	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(fieldname)))
+	defer C.free(unsafe.Pointer(carg1))
+	v := gobject.NewValue(value)
+	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibNone(v))
+
+	C.gst_structure_set_value(carg0, carg1, carg2)
+	runtime.KeepAlive(structure)
+	runtime.KeepAlive(fieldname)
+	runtime.KeepAlive(value)
+}
+
 // IDGetValue wraps gst_structure_id_get_value
 //
 // The function takes the following parameters:

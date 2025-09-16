@@ -1866,7 +1866,7 @@ type RTSPExtensionInstance struct {
 
 var _ RTSPExtension = (*RTSPExtensionInstance)(nil)
 
-// RTSPExtensionInstance wraps GstRTSPExtension
+// RTSPExtension wraps GstRTSPExtension
 //
 // This interface is implemented e.g. by the Windows Media Streaming RTSP
 //  exentension (rtspwms) and the RealMedia RTSP extension (rtspreal).
@@ -1977,6 +1977,8 @@ type RTSPExtension interface {
 	// 
 	// 	- goret RTSPResult 
 	StreamSelect(*RTSPUrl) RTSPResult
+	// ConnectSend connects the provided callback to the "send" signal
+	ConnectSend(func(RTSPExtension, unsafe.Pointer, unsafe.Pointer) RTSPResult) gobject.SignalHandle
 }
 
 var _ RTSPExtension = (*RTSPExtensionInstance)(nil)
@@ -2318,6 +2320,10 @@ func (ext *RTSPExtensionInstance) StreamSelect(url *RTSPUrl) RTSPResult {
 	return goret
 }
 
+// ConnectSend connects the provided callback to the "send" signal
+func (o *RTSPExtensionInstance) ConnectSend(fn func(RTSPExtension, unsafe.Pointer, unsafe.Pointer) RTSPResult) gobject.SignalHandle {
+	return o.Instance.Connect("send", fn)
+}
 // RTSPAuthCredential wraps GstRTSPAuthCredential
 //
 // RTSP Authentication credentials

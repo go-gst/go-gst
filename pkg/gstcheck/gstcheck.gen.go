@@ -340,25 +340,6 @@ func CheckMessageError(message *gst.Message, typ gst.MessageType, domain glib.Qu
 	runtime.KeepAlive(code)
 }
 
-// CheckObjectDestroyedOnUnref wraps gst_check_object_destroyed_on_unref
-// 
-// The function takes the following parameters:
-// 
-// 	- objectToUnref unsafe.Pointer (nullable): The #GObject to unref 
-//
-// Unrefs @object_to_unref and checks that is has properly been
-// destroyed.
-func CheckObjectDestroyedOnUnref(objectToUnref unsafe.Pointer) {
-	var carg1 C.gpointer // in, none, casted, nullable
-
-	if objectToUnref != nil {
-		carg1 = C.gpointer(objectToUnref)
-	}
-
-	C.gst_check_object_destroyed_on_unref(carg1)
-	runtime.KeepAlive(objectToUnref)
-}
-
 // CheckRemoveLogFilter wraps gst_check_remove_log_filter
 // 
 // The function takes the following parameters:

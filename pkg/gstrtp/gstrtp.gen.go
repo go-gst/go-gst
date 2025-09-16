@@ -1077,86 +1077,6 @@ func RtcpUnixToNtp(unixtime uint64) uint64 {
 	return goret
 }
 
-// RtpHdrextSetNtp56 wraps gst_rtp_hdrext_set_ntp_56
-// 
-// The function takes the following parameters:
-// 
-// 	- data unsafe.Pointer (nullable): the data to write to 
-// 	- size uint: the size of @data 
-// 	- ntptime uint64: the NTP time 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Writes the NTP time in @ntptime to the format required for the NTP-56 header
-// extension. @data must hold at least #GST_RTP_HDREXT_NTP_56_SIZE bytes.
-func RtpHdrextSetNtp56(data unsafe.Pointer, size uint, ntptime uint64) bool {
-	var carg1 C.gpointer // in, none, casted, nullable
-	var carg2 C.guint    // in, none, casted
-	var carg3 C.guint64  // in, none, casted
-	var cret  C.gboolean // return
-
-	if data != nil {
-		carg1 = C.gpointer(data)
-	}
-	carg2 = C.guint(size)
-	carg3 = C.guint64(ntptime)
-
-	cret = C.gst_rtp_hdrext_set_ntp_56(carg1, carg2, carg3)
-	runtime.KeepAlive(data)
-	runtime.KeepAlive(size)
-	runtime.KeepAlive(ntptime)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
-// RtpHdrextSetNtp64 wraps gst_rtp_hdrext_set_ntp_64
-// 
-// The function takes the following parameters:
-// 
-// 	- data unsafe.Pointer (nullable): the data to write to 
-// 	- size uint: the size of @data 
-// 	- ntptime uint64: the NTP time 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Writes the NTP time in @ntptime to the format required for the NTP-64 header
-// extension. @data must hold at least #GST_RTP_HDREXT_NTP_64_SIZE bytes.
-func RtpHdrextSetNtp64(data unsafe.Pointer, size uint, ntptime uint64) bool {
-	var carg1 C.gpointer // in, none, casted, nullable
-	var carg2 C.guint    // in, none, casted
-	var carg3 C.guint64  // in, none, casted
-	var cret  C.gboolean // return
-
-	if data != nil {
-		carg1 = C.gpointer(data)
-	}
-	carg2 = C.guint(size)
-	carg3 = C.guint64(ntptime)
-
-	cret = C.gst_rtp_hdrext_set_ntp_64(carg1, carg2, carg3)
-	runtime.KeepAlive(data)
-	runtime.KeepAlive(size)
-	runtime.KeepAlive(ntptime)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
 // RtpSourceMetaApiGetType wraps gst_rtp_source_meta_api_get_type
 // The function returns the following values:
 // 
@@ -1332,6 +1252,20 @@ type RTPBaseDepayload interface {
 	//
 	// Enable or disable adding #GstRTPSourceMeta to depayloaded buffers.
 	SetSourceInfoEnabled(bool)
+	// EmitAddExtension emits the "add-extension" signal
+	//
+	// Add @ext as an extension for reading part of an RTP header extension from
+	// incoming RTP packets.
+	EmitAddExtension(RTPHeaderExtension)
+	// EmitClearExtensions emits the "clear-extensions" signal
+	//
+	// Clear all RTP header extensions used by this depayloader.
+	EmitClearExtensions()
+	// ConnectRequestExtension connects the provided callback to the "request-extension" signal
+	//
+	// The returned @ext must be configured with the correct @ext_id and with the
+	// necessary attributes as required by the extension implementation.
+	ConnectRequestExtension(func(RTPBaseDepayload, uint, string) RTPHeaderExtensionInstance) gobject.SignalHandle
 }
 
 func unsafeWrapRTPBaseDepayload(base *gobject.ObjectInstance) *RTPBaseDepayloadInstance {
@@ -1611,6 +1545,26 @@ func (depayload *RTPBaseDepayloadInstance) SetSourceInfoEnabled(enable bool) {
 	runtime.KeepAlive(enable)
 }
 
+// EmitAddExtension emits the "add-extension" signal
+//
+// Add @ext as an extension for reading part of an RTP header extension from
+// incoming RTP packets.
+func (o *RTPBaseDepayloadInstance) EmitAddExtension(arg0 RTPHeaderExtension) {
+	o.Emit("add-extension", arg0)
+}
+// EmitClearExtensions emits the "clear-extensions" signal
+//
+// Clear all RTP header extensions used by this depayloader.
+func (o *RTPBaseDepayloadInstance) EmitClearExtensions() {
+	o.Emit("clear-extensions")
+}
+// ConnectRequestExtension connects the provided callback to the "request-extension" signal
+//
+// The returned @ext must be configured with the correct @ext_id and with the
+// necessary attributes as required by the extension implementation.
+func (o *RTPBaseDepayloadInstance) ConnectRequestExtension(fn func(RTPBaseDepayload, uint, string) RTPHeaderExtensionInstance) gobject.SignalHandle {
+	return o.Connect("request-extension", fn)
+}
 // RTPBasePayloadInstance is the instance type used by all types extending GstRTPBasePayload. It is used internally by the bindings. Users should use the interface [RTPBasePayload] instead.
 type RTPBasePayloadInstance struct {
 	_ [0]func() // equal guard
@@ -1743,6 +1697,20 @@ type RTPBasePayload interface {
 	// Enable or disable adding contributing sources to RTP packets from
 	// #GstRTPSourceMeta.
 	SetSourceInfoEnabled(bool)
+	// EmitAddExtension emits the "add-extension" signal
+	//
+	// Add @ext as an extension for writing part of an RTP header extension onto
+	// outgoing RTP packets.
+	EmitAddExtension(RTPHeaderExtension)
+	// EmitClearExtensions emits the "clear-extensions" signal
+	//
+	// Clear all RTP header extensions used by this payloader.
+	EmitClearExtensions()
+	// ConnectRequestExtension connects the provided callback to the "request-extension" signal
+	//
+	// The returned @ext must be configured with the correct @ext_id and with the
+	// necessary attributes as required by the extension implementation.
+	ConnectRequestExtension(func(RTPBasePayload, uint, string) RTPHeaderExtensionInstance) gobject.SignalHandle
 }
 
 func unsafeWrapRTPBasePayload(base *gobject.ObjectInstance) *RTPBasePayloadInstance {
@@ -2079,6 +2047,26 @@ func (payload *RTPBasePayloadInstance) SetSourceInfoEnabled(enable bool) {
 	runtime.KeepAlive(enable)
 }
 
+// EmitAddExtension emits the "add-extension" signal
+//
+// Add @ext as an extension for writing part of an RTP header extension onto
+// outgoing RTP packets.
+func (o *RTPBasePayloadInstance) EmitAddExtension(arg0 RTPHeaderExtension) {
+	o.Emit("add-extension", arg0)
+}
+// EmitClearExtensions emits the "clear-extensions" signal
+//
+// Clear all RTP header extensions used by this payloader.
+func (o *RTPBasePayloadInstance) EmitClearExtensions() {
+	o.Emit("clear-extensions")
+}
+// ConnectRequestExtension connects the provided callback to the "request-extension" signal
+//
+// The returned @ext must be configured with the correct @ext_id and with the
+// necessary attributes as required by the extension implementation.
+func (o *RTPBasePayloadInstance) ConnectRequestExtension(fn func(RTPBasePayload, uint, string) RTPHeaderExtensionInstance) gobject.SignalHandle {
+	return o.Connect("request-extension", fn)
+}
 // RTPHeaderExtensionInstance is the instance type used by all types extending GstRTPHeaderExtension. It is used internally by the bindings. Users should use the interface [RTPHeaderExtension] instead.
 type RTPHeaderExtensionInstance struct {
 	_ [0]func() // equal guard

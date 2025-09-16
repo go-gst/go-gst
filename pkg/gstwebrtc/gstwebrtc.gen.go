@@ -1134,6 +1134,26 @@ type WebRTCDataChannel interface {
 	//
 	// Send @str as a string message over @channel.
 	SendStringFull(string) (bool, error)
+	// EmitClose emits the "close" signal
+	//
+	// Close the data channel
+	EmitClose()
+	// ConnectOnBufferedAmountLow connects the provided callback to the "on-buffered-amount-low" signal
+	ConnectOnBufferedAmountLow(func(WebRTCDataChannel)) gobject.SignalHandle
+	// ConnectOnClose connects the provided callback to the "on-close" signal
+	ConnectOnClose(func(WebRTCDataChannel)) gobject.SignalHandle
+	// ConnectOnError connects the provided callback to the "on-error" signal
+	ConnectOnError(func(WebRTCDataChannel, error)) gobject.SignalHandle
+	// ConnectOnMessageData connects the provided callback to the "on-message-data" signal
+	ConnectOnMessageData(func(WebRTCDataChannel, glib.Bytes)) gobject.SignalHandle
+	// ConnectOnMessageString connects the provided callback to the "on-message-string" signal
+	ConnectOnMessageString(func(WebRTCDataChannel, string)) gobject.SignalHandle
+	// ConnectOnOpen connects the provided callback to the "on-open" signal
+	ConnectOnOpen(func(WebRTCDataChannel)) gobject.SignalHandle
+	// EmitSendData emits the "send-data" signal
+	EmitSendData(glib.Bytes)
+	// EmitSendString emits the "send-string" signal
+	EmitSendString(string)
 }
 
 func unsafeWrapWebRTCDataChannel(base *gobject.ObjectInstance) *WebRTCDataChannelInstance {
@@ -1306,6 +1326,44 @@ func (channel *WebRTCDataChannelInstance) SendStringFull(str string) (bool, erro
 	return goret, _goerr
 }
 
+// EmitClose emits the "close" signal
+//
+// Close the data channel
+func (o *WebRTCDataChannelInstance) EmitClose() {
+	o.Emit("close")
+}
+// ConnectOnBufferedAmountLow connects the provided callback to the "on-buffered-amount-low" signal
+func (o *WebRTCDataChannelInstance) ConnectOnBufferedAmountLow(fn func(WebRTCDataChannel)) gobject.SignalHandle {
+	return o.Connect("on-buffered-amount-low", fn)
+}
+// ConnectOnClose connects the provided callback to the "on-close" signal
+func (o *WebRTCDataChannelInstance) ConnectOnClose(fn func(WebRTCDataChannel)) gobject.SignalHandle {
+	return o.Connect("on-close", fn)
+}
+// ConnectOnError connects the provided callback to the "on-error" signal
+func (o *WebRTCDataChannelInstance) ConnectOnError(fn func(WebRTCDataChannel, error)) gobject.SignalHandle {
+	return o.Connect("on-error", fn)
+}
+// ConnectOnMessageData connects the provided callback to the "on-message-data" signal
+func (o *WebRTCDataChannelInstance) ConnectOnMessageData(fn func(WebRTCDataChannel, glib.Bytes)) gobject.SignalHandle {
+	return o.Connect("on-message-data", fn)
+}
+// ConnectOnMessageString connects the provided callback to the "on-message-string" signal
+func (o *WebRTCDataChannelInstance) ConnectOnMessageString(fn func(WebRTCDataChannel, string)) gobject.SignalHandle {
+	return o.Connect("on-message-string", fn)
+}
+// ConnectOnOpen connects the provided callback to the "on-open" signal
+func (o *WebRTCDataChannelInstance) ConnectOnOpen(fn func(WebRTCDataChannel)) gobject.SignalHandle {
+	return o.Connect("on-open", fn)
+}
+// EmitSendData emits the "send-data" signal
+func (o *WebRTCDataChannelInstance) EmitSendData(arg0 glib.Bytes) {
+	o.Emit("send-data", arg0)
+}
+// EmitSendString emits the "send-string" signal
+func (o *WebRTCDataChannelInstance) EmitSendString(arg0 string) {
+	o.Emit("send-string", arg0)
+}
 // WebRTCICEInstance is the instance type used by all types extending GstWebRTCICE. It is used internally by the bindings. Users should use the interface [WebRTCICE] instead.
 type WebRTCICEInstance struct {
 	_ [0]func() // equal guard
@@ -1490,6 +1548,12 @@ type WebRTCICE interface {
 	// 
 	// 	- uri string (nullable): URI of the TURN sever 
 	SetTurnServer(string)
+	// EmitAddLocalIPAddress emits the "add-local-ip-address" signal
+	//
+	// Add a local IP address to use for ICE candidate gathering.  If none
+	// are supplied, they will be discovered automatically. Calling this signal
+	// stops automatic ICE gathering.
+	EmitAddLocalIPAddress(string) bool
 }
 
 func unsafeWrapWebRTCICE(base *gobject.ObjectInstance) *WebRTCICEInstance {
@@ -2083,6 +2147,15 @@ func (ice *WebRTCICEInstance) SetTurnServer(uri string) {
 	runtime.KeepAlive(uri)
 }
 
+// EmitAddLocalIPAddress emits the "add-local-ip-address" signal
+//
+// Add a local IP address to use for ICE candidate gathering.  If none
+// are supplied, they will be discovered automatically. Calling this signal
+// stops automatic ICE gathering.
+func (o *WebRTCICEInstance) EmitAddLocalIPAddress(arg0 string) bool {
+	return 
+	o.Emit("add-local-ip-address", arg0)
+}
 // WebRTCICEStreamInstance is the instance type used by all types extending GstWebRTCICEStream. It is used internally by the bindings. Users should use the interface [WebRTCICEStream] instead.
 type WebRTCICEStreamInstance struct {
 	_ [0]func() // equal guard
@@ -2236,6 +2309,10 @@ type WebRTCICETransport interface {
 	NewCandidate(uint, WebRTCICEComponent, string)
 	// SelectedPairChange wraps gst_webrtc_ice_transport_selected_pair_change
 	SelectedPairChange()
+	// ConnectOnNewCandidate connects the provided callback to the "on-new-candidate" signal
+	ConnectOnNewCandidate(func(WebRTCICETransport, string)) gobject.SignalHandle
+	// ConnectOnSelectedCandidatePairChange connects the provided callback to the "on-selected-candidate-pair-change" signal
+	ConnectOnSelectedCandidatePairChange(func(WebRTCICETransport)) gobject.SignalHandle
 }
 
 func unsafeWrapWebRTCICETransport(base *gobject.ObjectInstance) *WebRTCICETransportInstance {
@@ -2346,6 +2423,14 @@ func (ice *WebRTCICETransportInstance) SelectedPairChange() {
 	runtime.KeepAlive(ice)
 }
 
+// ConnectOnNewCandidate connects the provided callback to the "on-new-candidate" signal
+func (o *WebRTCICETransportInstance) ConnectOnNewCandidate(fn func(WebRTCICETransport, string)) gobject.SignalHandle {
+	return o.Connect("on-new-candidate", fn)
+}
+// ConnectOnSelectedCandidatePairChange connects the provided callback to the "on-selected-candidate-pair-change" signal
+func (o *WebRTCICETransportInstance) ConnectOnSelectedCandidatePairChange(fn func(WebRTCICETransport)) gobject.SignalHandle {
+	return o.Connect("on-selected-candidate-pair-change", fn)
+}
 // WebRTCRTPReceiverInstance is the instance type used by all types extending GstWebRTCRTPReceiver. It is used internally by the bindings. Users should use the interface [WebRTCRTPReceiver] instead.
 type WebRTCRTPReceiverInstance struct {
 	_ [0]func() // equal guard

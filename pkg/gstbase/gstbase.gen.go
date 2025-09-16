@@ -2321,6 +2321,12 @@ type Aggregator interface {
 	// Subclasses MUST call this before gst_aggregator_selected_samples(),
 	// if it is used at all.
 	UpdateSegment(*gst.Segment)
+	// ConnectSamplesSelected connects the provided callback to the "samples-selected" signal
+	//
+	// Signals that the #GstAggregator subclass has selected the next set
+	// of input samples it will aggregate. Handlers may call
+	// gst_aggregator_peek_next_sample() at that point.
+	ConnectSamplesSelected(func(Aggregator, gst.Segment, uint64, uint64, uint64, gst.Structure)) gobject.SignalHandle
 }
 
 func unsafeWrapAggregator(base *gobject.ObjectInstance) *AggregatorInstance {
@@ -2800,6 +2806,14 @@ func (self *AggregatorInstance) UpdateSegment(segment *gst.Segment) {
 	runtime.KeepAlive(segment)
 }
 
+// ConnectSamplesSelected connects the provided callback to the "samples-selected" signal
+//
+// Signals that the #GstAggregator subclass has selected the next set
+// of input samples it will aggregate. Handlers may call
+// gst_aggregator_peek_next_sample() at that point.
+func (o *AggregatorInstance) ConnectSamplesSelected(fn func(Aggregator, gst.Segment, uint64, uint64, uint64, gst.Structure)) gobject.SignalHandle {
+	return o.Connect("samples-selected", fn)
+}
 // AggregatorPadInstance is the instance type used by all types extending GstAggregatorPad. It is used internally by the bindings. Users should use the interface [AggregatorPad] instead.
 type AggregatorPadInstance struct {
 	_ [0]func() // equal guard
@@ -2857,6 +2871,8 @@ type AggregatorPad interface {
 	//
 	// Steal the ref to the buffer currently queued in @pad.
 	PopBuffer() *gst.Buffer
+	// ConnectBufferConsumed connects the provided callback to the "buffer-consumed" signal
+	ConnectBufferConsumed(func(AggregatorPad, gst.Buffer)) gobject.SignalHandle
 }
 
 func unsafeWrapAggregatorPad(base *gobject.ObjectInstance) *AggregatorPadInstance {
@@ -3037,6 +3053,10 @@ func (pad *AggregatorPadInstance) PopBuffer() *gst.Buffer {
 	return goret
 }
 
+// ConnectBufferConsumed connects the provided callback to the "buffer-consumed" signal
+func (o *AggregatorPadInstance) ConnectBufferConsumed(fn func(AggregatorPad, gst.Buffer)) gobject.SignalHandle {
+	return o.Connect("buffer-consumed", fn)
+}
 // BaseParseInstance is the instance type used by all types extending GstBaseParse. It is used internally by the bindings. Users should use the interface [BaseParse] instead.
 type BaseParseInstance struct {
 	_ [0]func() // equal guard
@@ -7270,26 +7290,6 @@ type CollectPads interface {
 	// 
 	// MT safe.
 	Available() uint
-	// ClipRunningTime wraps gst_collect_pads_clip_running_time
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- cdata *CollectData: collect data of corresponding pad 
-	// 	- buf *gst.Buffer: buffer being clipped 
-	// 	- userData unsafe.Pointer (nullable): user data (unused) 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- outbuf *gst.Buffer: output buffer with running time, or NULL if clipped 
-	// 	- goret gst.FlowReturn 
-	//
-	// Convenience clipping function that converts incoming buffer's timestamp
-	// to running time, or clips the buffer if outside configured segment.
-	// 
-	// Since 1.6, this clipping function also sets the DTS parameter of the
-	// GstCollectData structure. This version of the running time DTS can be
-	// negative. G_MININT64 is used to indicate invalid value.
-	ClipRunningTime(*CollectData, *gst.Buffer, unsafe.Pointer) (*gst.Buffer, gst.FlowReturn)
 	// EventDefault wraps gst_collect_pads_event_default
 	// 
 	// The function takes the following parameters:
@@ -7663,55 +7663,6 @@ func (pads *CollectPadsInstance) Available() uint {
 	goret = uint(cret)
 
 	return goret
-}
-
-// ClipRunningTime wraps gst_collect_pads_clip_running_time
-// 
-// The function takes the following parameters:
-// 
-// 	- cdata *CollectData: collect data of corresponding pad 
-// 	- buf *gst.Buffer: buffer being clipped 
-// 	- userData unsafe.Pointer (nullable): user data (unused) 
-// 
-// The function returns the following values:
-// 
-// 	- outbuf *gst.Buffer: output buffer with running time, or NULL if clipped 
-// 	- goret gst.FlowReturn 
-//
-// Convenience clipping function that converts incoming buffer's timestamp
-// to running time, or clips the buffer if outside configured segment.
-// 
-// Since 1.6, this clipping function also sets the DTS parameter of the
-// GstCollectData structure. This version of the running time DTS can be
-// negative. G_MININT64 is used to indicate invalid value.
-func (pads *CollectPadsInstance) ClipRunningTime(cdata *CollectData, buf *gst.Buffer, userData unsafe.Pointer) (*gst.Buffer, gst.FlowReturn) {
-	var carg0 *C.GstCollectPads // in, none, converted
-	var carg1 *C.GstCollectData // in, none, converted
-	var carg2 *C.GstBuffer      // in, none, converted
-	var carg4 C.gpointer        // in, none, casted, nullable
-	var carg3 *C.GstBuffer      // out, full, converted
-	var cret  C.GstFlowReturn   // return, none, casted
-
-	carg0 = (*C.GstCollectPads)(UnsafeCollectPadsToGlibNone(pads))
-	carg1 = (*C.GstCollectData)(UnsafeCollectDataToGlibNone(cdata))
-	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buf))
-	if userData != nil {
-		carg4 = C.gpointer(userData)
-	}
-
-	cret = C.gst_collect_pads_clip_running_time(carg0, carg1, carg2, &carg3, carg4)
-	runtime.KeepAlive(pads)
-	runtime.KeepAlive(cdata)
-	runtime.KeepAlive(buf)
-	runtime.KeepAlive(userData)
-
-	var outbuf *gst.Buffer
-	var goret  gst.FlowReturn
-
-	outbuf = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(carg3))
-	goret = gst.FlowReturn(cret)
-
-	return outbuf, goret
 }
 
 // EventDefault wraps gst_collect_pads_event_default
@@ -8357,6 +8308,21 @@ var _ DataQueue = (*DataQueueInstance)(nil)
 type DataQueue interface {
 	gobject.Object
 	upcastToGstDataQueue() *DataQueueInstance
+
+	// ConnectEmpty connects the provided callback to the "empty" signal
+	//
+	// Reports that the queue became empty (empty).
+	// A queue is empty if the total amount of visible items inside it (num-visible, time,
+	// size) is lower than the boundary values which can be set through the GObject
+	// properties.
+	ConnectEmpty(func(DataQueue)) gobject.SignalHandle
+	// ConnectFull connects the provided callback to the "full" signal
+	//
+	// Reports that the queue became full (full).
+	// A queue is full if the total amount of data inside it (num-visible, time,
+	// size) is higher than the boundary values which can be set through the GObject
+	// properties.
+	ConnectFull(func(DataQueue)) gobject.SignalHandle
 }
 
 func unsafeWrapDataQueue(base *gobject.ObjectInstance) *DataQueueInstance {
@@ -8393,6 +8359,24 @@ func UnsafeDataQueueToGlibFull(c DataQueue) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
+// ConnectEmpty connects the provided callback to the "empty" signal
+//
+// Reports that the queue became empty (empty).
+// A queue is empty if the total amount of visible items inside it (num-visible, time,
+// size) is lower than the boundary values which can be set through the GObject
+// properties.
+func (o *DataQueueInstance) ConnectEmpty(fn func(DataQueue)) gobject.SignalHandle {
+	return o.Connect("empty", fn)
+}
+// ConnectFull connects the provided callback to the "full" signal
+//
+// Reports that the queue became full (full).
+// A queue is full if the total amount of data inside it (num-visible, time,
+// size) is higher than the boundary values which can be set through the GObject
+// properties.
+func (o *DataQueueInstance) ConnectFull(fn func(DataQueue)) gobject.SignalHandle {
+	return o.Connect("full", fn)
+}
 // PushSrcInstance is the instance type used by all types extending GstPushSrc. It is used internally by the bindings. Users should use the interface [PushSrc] instead.
 type PushSrcInstance struct {
 	_ [0]func() // equal guard

@@ -310,31 +310,6 @@ func IsPhysMemory(mem *gst.Memory) bool {
 	return goret
 }
 
-// PhysMemoryGetPhysAddr wraps gst_phys_memory_get_phys_addr
-// 
-// The function takes the following parameters:
-// 
-// 	- mem *gst.Memory: a #GstMemory 
-// 
-// The function returns the following values:
-// 
-// 	- goret uintptr 
-func PhysMemoryGetPhysAddr(mem *gst.Memory) uintptr {
-	var carg1 *C.GstMemory // in, none, converted
-	var cret  C.guintptr   // return, none, casted
-
-	carg1 = (*C.GstMemory)(gst.UnsafeMemoryToGlibNone(mem))
-
-	cret = C.gst_phys_memory_get_phys_addr(carg1)
-	runtime.KeepAlive(mem)
-
-	var goret uintptr
-
-	goret = uintptr(cret)
-
-	return goret
-}
-
 // PhysMemoryAllocatorInstance is the instance type used by all types implementing GstPhysMemoryAllocator. It is used internally by the bindings. Users should use the interface [PhysMemoryAllocator] instead.
 type PhysMemoryAllocatorInstance struct {
 	_ [0]func() // equal guard
@@ -343,7 +318,7 @@ type PhysMemoryAllocatorInstance struct {
 
 var _ PhysMemoryAllocator = (*PhysMemoryAllocatorInstance)(nil)
 
-// PhysMemoryAllocatorInstance wraps GstPhysMemoryAllocator
+// PhysMemoryAllocator wraps GstPhysMemoryAllocator
 type PhysMemoryAllocator interface {
 	upcastToGstPhysMemoryAllocator() *PhysMemoryAllocatorInstance
 }

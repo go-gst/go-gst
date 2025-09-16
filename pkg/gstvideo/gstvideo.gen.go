@@ -6570,7 +6570,7 @@ type ColorBalanceInstance struct {
 
 var _ ColorBalance = (*ColorBalanceInstance)(nil)
 
-// ColorBalanceInstance wraps GstColorBalance
+// ColorBalance wraps GstColorBalance
 //
 // This interface is implemented by elements which can perform some color
 // balance operation on video frames they process. For example, modifying
@@ -6630,6 +6630,10 @@ type ColorBalance interface {
 	// instance, and the #GstColorBalanceChannel::value-changed signal on the
 	// channel object.
 	ValueChanged(ColorBalanceChannel, int)
+	// ConnectValueChanged connects the provided callback to the "value-changed" signal
+	//
+	// Fired when the value of the indicated channel has changed.
+	ConnectValueChanged(func(ColorBalance, ColorBalanceChannel, int)) gobject.SignalHandle
 }
 
 var _ ColorBalance = (*ColorBalanceInstance)(nil)
@@ -6781,6 +6785,12 @@ func (balance *ColorBalanceInstance) ValueChanged(channel ColorBalanceChannel, v
 	runtime.KeepAlive(value)
 }
 
+// ConnectValueChanged connects the provided callback to the "value-changed" signal
+//
+// Fired when the value of the indicated channel has changed.
+func (o *ColorBalanceInstance) ConnectValueChanged(fn func(ColorBalance, ColorBalanceChannel, int)) gobject.SignalHandle {
+	return o.Instance.Connect("value-changed", fn)
+}
 // NavigationInstance is the instance type used by all types implementing GstNavigation. It is used internally by the bindings. Users should use the interface [Navigation] instead.
 type NavigationInstance struct {
 	_ [0]func() // equal guard
@@ -6789,7 +6799,7 @@ type NavigationInstance struct {
 
 var _ Navigation = (*NavigationInstance)(nil)
 
-// NavigationInstance wraps GstNavigation
+// Navigation wraps GstNavigation
 //
 // The Navigation interface is used for creating and injecting navigation
 // related events such as mouse button presses, cursor motion and key presses.
@@ -8441,7 +8451,7 @@ type VideoDirectionInstance struct {
 
 var _ VideoDirection = (*VideoDirectionInstance)(nil)
 
-// VideoDirectionInstance wraps GstVideoDirection
+// VideoDirection wraps GstVideoDirection
 //
 // The interface allows unified access to control flipping and rotation
 // operations of video-sources or operators.
@@ -8495,7 +8505,7 @@ type VideoOrientationInstance struct {
 
 var _ VideoOrientation = (*VideoOrientationInstance)(nil)
 
-// VideoOrientationInstance wraps GstVideoOrientation
+// VideoOrientation wraps GstVideoOrientation
 //
 // The interface allows unified access to control flipping and autocenter
 // operation of video-sources or operators.
@@ -8912,7 +8922,7 @@ type VideoOverlayInstance struct {
 
 var _ VideoOverlay = (*VideoOverlayInstance)(nil)
 
-// VideoOverlayInstance wraps GstVideoOverlay
+// VideoOverlay wraps GstVideoOverlay
 //
 // The #GstVideoOverlay interface is used for 2 main purposes :
 // 
@@ -9180,16 +9190,6 @@ type VideoOverlay interface {
 	// Tell an overlay that it has been exposed. This will redraw the current frame
 	// in the drawable even if the pipeline is PAUSED.
 	Expose()
-	// GotWindowHandle wraps gst_video_overlay_got_window_handle
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- handle uintptr: a platform-specific handle referencing the window 
-	//
-	// This will post a "have-window-handle" element message on the bus.
-	// 
-	// This function should only be used by video overlay plugin developers.
-	GotWindowHandle(uintptr)
 	// HandleEvents wraps gst_video_overlay_handle_events
 	// 
 	// The function takes the following parameters:
@@ -9235,17 +9235,6 @@ type VideoOverlay interface {
 	// This method is needed for non fullscreen video overlay in UI toolkits that
 	// do not support subwindows.
 	SetRenderRectangle(int, int, int, int) bool
-	// SetWindowHandle wraps gst_video_overlay_set_window_handle
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- handle uintptr: a handle referencing the window. 
-	//
-	// This will call the video overlay's set_window_handle method. You
-	// should use this method to tell to an overlay to display video output to a
-	// specific window (e.g. an XWindow on X11). Passing 0 as the  @handle will
-	// tell the overlay to stop using that window and create an internal one.
-	SetWindowHandle(uintptr)
 }
 
 var _ VideoOverlay = (*VideoOverlayInstance)(nil)
@@ -9343,27 +9332,6 @@ func (overlay *VideoOverlayInstance) Expose() {
 	runtime.KeepAlive(overlay)
 }
 
-// GotWindowHandle wraps gst_video_overlay_got_window_handle
-// 
-// The function takes the following parameters:
-// 
-// 	- handle uintptr: a platform-specific handle referencing the window 
-//
-// This will post a "have-window-handle" element message on the bus.
-// 
-// This function should only be used by video overlay plugin developers.
-func (overlay *VideoOverlayInstance) GotWindowHandle(handle uintptr) {
-	var carg0 *C.GstVideoOverlay // in, none, converted
-	var carg1 C.guintptr         // in, none, casted
-
-	carg0 = (*C.GstVideoOverlay)(UnsafeVideoOverlayToGlibNone(overlay))
-	carg1 = C.guintptr(handle)
-
-	C.gst_video_overlay_got_window_handle(carg0, carg1)
-	runtime.KeepAlive(overlay)
-	runtime.KeepAlive(handle)
-}
-
 // HandleEvents wraps gst_video_overlay_handle_events
 // 
 // The function takes the following parameters:
@@ -9459,28 +9427,6 @@ func (overlay *VideoOverlayInstance) SetRenderRectangle(x int, y int, width int,
 	return goret
 }
 
-// SetWindowHandle wraps gst_video_overlay_set_window_handle
-// 
-// The function takes the following parameters:
-// 
-// 	- handle uintptr: a handle referencing the window. 
-//
-// This will call the video overlay's set_window_handle method. You
-// should use this method to tell to an overlay to display video output to a
-// specific window (e.g. an XWindow on X11). Passing 0 as the  @handle will
-// tell the overlay to stop using that window and create an internal one.
-func (overlay *VideoOverlayInstance) SetWindowHandle(handle uintptr) {
-	var carg0 *C.GstVideoOverlay // in, none, converted
-	var carg1 C.guintptr         // in, none, casted
-
-	carg0 = (*C.GstVideoOverlay)(UnsafeVideoOverlayToGlibNone(overlay))
-	carg1 = C.guintptr(handle)
-
-	C.gst_video_overlay_set_window_handle(carg0, carg1)
-	runtime.KeepAlive(overlay)
-	runtime.KeepAlive(handle)
-}
-
 // ColorBalanceChannelInstance is the instance type used by all types extending GstColorBalanceChannel. It is used internally by the bindings. Users should use the interface [ColorBalanceChannel] instead.
 type ColorBalanceChannelInstance struct {
 	_ [0]func() // equal guard
@@ -9497,6 +9443,11 @@ var _ ColorBalanceChannel = (*ColorBalanceChannelInstance)(nil)
 type ColorBalanceChannel interface {
 	gobject.Object
 	upcastToGstColorBalanceChannel() *ColorBalanceChannelInstance
+
+	// ConnectValueChanged connects the provided callback to the "value-changed" signal
+	//
+	// Fired when the value of the indicated channel has changed.
+	ConnectValueChanged(func(ColorBalanceChannel, int)) gobject.SignalHandle
 }
 
 func unsafeWrapColorBalanceChannel(base *gobject.ObjectInstance) *ColorBalanceChannelInstance {
@@ -9533,6 +9484,12 @@ func UnsafeColorBalanceChannelToGlibFull(c ColorBalanceChannel) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
+// ConnectValueChanged connects the provided callback to the "value-changed" signal
+//
+// Fired when the value of the indicated channel has changed.
+func (o *ColorBalanceChannelInstance) ConnectValueChanged(fn func(ColorBalanceChannel, int)) gobject.SignalHandle {
+	return o.Connect("value-changed", fn)
+}
 // VideoAggregatorInstance is the instance type used by all types extending GstVideoAggregator. It is used internally by the bindings. Users should use the interface [VideoAggregator] instead.
 type VideoAggregatorInstance struct {
 	_ [0]func() // equal guard
@@ -15402,41 +15359,6 @@ func UnsafeVideoDitherToGlibFull(v *VideoDither) unsafe.Pointer {
 	v.native = nil // VideoDither is invalid from here on
 	return _p
 }
-// Line wraps gst_video_dither_line
-// 
-// The function takes the following parameters:
-// 
-// 	- line unsafe.Pointer (nullable): pointer to the pixels of the line 
-// 	- x uint: x coordinate 
-// 	- y uint: y coordinate 
-// 	- width uint: the width 
-//
-// Dither @width pixels starting from offset @x in @line using @dither.
-// 
-// @y is the line number of @line in the output image.
-func (dither *VideoDither) Line(line unsafe.Pointer, x uint, y uint, width uint) {
-	var carg0 *C.GstVideoDither // in, none, converted
-	var carg1 C.gpointer        // in, none, casted, nullable
-	var carg2 C.guint           // in, none, casted
-	var carg3 C.guint           // in, none, casted
-	var carg4 C.guint           // in, none, casted
-
-	carg0 = (*C.GstVideoDither)(UnsafeVideoDitherToGlibNone(dither))
-	if line != nil {
-		carg1 = C.gpointer(line)
-	}
-	carg2 = C.guint(x)
-	carg3 = C.guint(y)
-	carg4 = C.guint(width)
-
-	C.gst_video_dither_line(carg0, carg1, carg2, carg3, carg4)
-	runtime.KeepAlive(dither)
-	runtime.KeepAlive(line)
-	runtime.KeepAlive(x)
-	runtime.KeepAlive(y)
-	runtime.KeepAlive(width)
-}
-
 // VideoEncoderClass wraps GstVideoEncoderClass
 //
 // Subclasses can override any of the available virtual methods or not, as
@@ -16876,57 +16798,6 @@ func UnsafeVideoMetaToGlibFull(v *VideoMeta) unsafe.Pointer {
 	v.native = nil // VideoMeta is invalid from here on
 	return _p
 }
-// Map wraps gst_video_meta_map
-// 
-// The function takes the following parameters:
-// 
-// 	- plane uint: a plane 
-// 	- info *gst.MapInfo: a #GstMapInfo 
-// 	- flags gst.MapFlags: @GstMapFlags 
-// 
-// The function returns the following values:
-// 
-// 	- data unsafe.Pointer (nullable): the data of @plane 
-// 	- stride int: the stride of @plane 
-// 	- goret bool 
-//
-// Map the video plane with index @plane in @meta and return a pointer to the
-// first byte of the plane and the stride of the plane.
-func (meta *VideoMeta) Map(plane uint, info *gst.MapInfo, flags gst.MapFlags) (unsafe.Pointer, int, bool) {
-	var carg0 *C.GstVideoMeta // in, none, converted
-	var carg1 C.guint         // in, none, casted
-	var carg2 *C.GstMapInfo   // in, none, converted
-	var carg5 C.GstMapFlags   // in, none, casted
-	var carg3 C.gpointer      // out, full, casted, nullable
-	var carg4 C.gint          // out, full, casted
-	var cret  C.gboolean      // return
-
-	carg0 = (*C.GstVideoMeta)(UnsafeVideoMetaToGlibNone(meta))
-	carg1 = C.guint(plane)
-	carg2 = (*C.GstMapInfo)(gst.UnsafeMapInfoToGlibNone(info))
-	carg5 = C.GstMapFlags(flags)
-
-	cret = C.gst_video_meta_map(carg0, carg1, carg2, &carg3, &carg4, carg5)
-	runtime.KeepAlive(meta)
-	runtime.KeepAlive(plane)
-	runtime.KeepAlive(info)
-	runtime.KeepAlive(flags)
-
-	var data   unsafe.Pointer
-	var stride int
-	var goret  bool
-
-	if carg3 != nil {
-		data = unsafe.Pointer(carg3)
-	}
-	stride = int(carg4)
-	if cret != 0 {
-		goret = true
-	}
-
-	return data, stride, goret
-}
-
 // SetAlignment wraps gst_video_meta_set_alignment
 // 
 // The function takes the following parameters:
@@ -18560,72 +18431,6 @@ func UnsafeVideoScalerToGlibFull(v *VideoScaler) unsafe.Pointer {
 	v.native = nil // VideoScaler is invalid from here on
 	return _p
 }
-// Gotk2D wraps gst_video_scaler_2d
-// 
-// The function takes the following parameters:
-// 
-// 	- vscale *VideoScaler: a vertical #GstVideoScaler 
-// 	- format VideoFormat: a #GstVideoFormat for @srcs and @dest 
-// 	- src unsafe.Pointer (nullable): source pixels 
-// 	- srcStride int: source pixels stride 
-// 	- dest unsafe.Pointer (nullable): destination pixels 
-// 	- destStride int: destination pixels stride 
-// 	- x uint: the horizontal destination offset 
-// 	- y uint: the vertical destination offset 
-// 	- width uint: the number of output pixels to scale 
-// 	- height uint: the number of output lines to scale 
-//
-// Scale a rectangle of pixels in @src with @src_stride to @dest with
-// @dest_stride using the horizontal scaler @hscaler and the vertical
-// scaler @vscale.
-// 
-// One or both of @hscale and @vscale can be NULL to only perform scaling in
-// one dimension or do a copy without scaling.
-// 
-// @x and @y are the coordinates in the destination image to process.
-func (hscale *VideoScaler) Gotk2D(vscale *VideoScaler, format VideoFormat, src unsafe.Pointer, srcStride int, dest unsafe.Pointer, destStride int, x uint, y uint, width uint, height uint) {
-	var carg0  *C.GstVideoScaler // in, none, converted
-	var carg1  *C.GstVideoScaler // in, none, converted
-	var carg2  C.GstVideoFormat  // in, none, casted
-	var carg3  C.gpointer        // in, none, casted, nullable
-	var carg4  C.gint            // in, none, casted
-	var carg5  C.gpointer        // in, none, casted, nullable
-	var carg6  C.gint            // in, none, casted
-	var carg7  C.guint           // in, none, casted
-	var carg8  C.guint           // in, none, casted
-	var carg9  C.guint           // in, none, casted
-	var carg10 C.guint           // in, none, casted
-
-	carg0 = (*C.GstVideoScaler)(UnsafeVideoScalerToGlibNone(hscale))
-	carg1 = (*C.GstVideoScaler)(UnsafeVideoScalerToGlibNone(vscale))
-	carg2 = C.GstVideoFormat(format)
-	if src != nil {
-		carg3 = C.gpointer(src)
-	}
-	carg4 = C.gint(srcStride)
-	if dest != nil {
-		carg5 = C.gpointer(dest)
-	}
-	carg6 = C.gint(destStride)
-	carg7 = C.guint(x)
-	carg8 = C.guint(y)
-	carg9 = C.guint(width)
-	carg10 = C.guint(height)
-
-	C.gst_video_scaler_2d(carg0, carg1, carg2, carg3, carg4, carg5, carg6, carg7, carg8, carg9, carg10)
-	runtime.KeepAlive(hscale)
-	runtime.KeepAlive(vscale)
-	runtime.KeepAlive(format)
-	runtime.KeepAlive(src)
-	runtime.KeepAlive(srcStride)
-	runtime.KeepAlive(dest)
-	runtime.KeepAlive(destStride)
-	runtime.KeepAlive(x)
-	runtime.KeepAlive(y)
-	runtime.KeepAlive(width)
-	runtime.KeepAlive(height)
-}
-
 // GetCoeff wraps gst_video_scaler_get_coeff
 // 
 // The function takes the following parameters:
@@ -18690,89 +18495,6 @@ func (scale *VideoScaler) GetMaxTaps() uint {
 	goret = uint(cret)
 
 	return goret
-}
-
-// Horizontal wraps gst_video_scaler_horizontal
-// 
-// The function takes the following parameters:
-// 
-// 	- format VideoFormat: a #GstVideoFormat for @src and @dest 
-// 	- src unsafe.Pointer (nullable): source pixels 
-// 	- dest unsafe.Pointer (nullable): destination pixels 
-// 	- destOffset uint: the horizontal destination offset 
-// 	- width uint: the number of pixels to scale 
-//
-// Horizontally scale the pixels in @src to @dest, starting from @dest_offset
-// for @width samples.
-func (scale *VideoScaler) Horizontal(format VideoFormat, src unsafe.Pointer, dest unsafe.Pointer, destOffset uint, width uint) {
-	var carg0 *C.GstVideoScaler // in, none, converted
-	var carg1 C.GstVideoFormat  // in, none, casted
-	var carg2 C.gpointer        // in, none, casted, nullable
-	var carg3 C.gpointer        // in, none, casted, nullable
-	var carg4 C.guint           // in, none, casted
-	var carg5 C.guint           // in, none, casted
-
-	carg0 = (*C.GstVideoScaler)(UnsafeVideoScalerToGlibNone(scale))
-	carg1 = C.GstVideoFormat(format)
-	if src != nil {
-		carg2 = C.gpointer(src)
-	}
-	if dest != nil {
-		carg3 = C.gpointer(dest)
-	}
-	carg4 = C.guint(destOffset)
-	carg5 = C.guint(width)
-
-	C.gst_video_scaler_horizontal(carg0, carg1, carg2, carg3, carg4, carg5)
-	runtime.KeepAlive(scale)
-	runtime.KeepAlive(format)
-	runtime.KeepAlive(src)
-	runtime.KeepAlive(dest)
-	runtime.KeepAlive(destOffset)
-	runtime.KeepAlive(width)
-}
-
-// Vertical wraps gst_video_scaler_vertical
-// 
-// The function takes the following parameters:
-// 
-// 	- format VideoFormat: a #GstVideoFormat for @srcs and @dest 
-// 	- srcLines *unsafe.Pointer (nullable): source pixels lines 
-// 	- dest unsafe.Pointer (nullable): destination pixels 
-// 	- destOffset uint: the vertical destination offset 
-// 	- width uint: the number of pixels to scale 
-//
-// Vertically combine @width pixels in the lines in @src_lines to @dest.
-// @dest is the location of the target line at @dest_offset and
-// @srcs are the input lines for @dest_offset.
-func (scale *VideoScaler) Vertical(format VideoFormat, srcLines *unsafe.Pointer, dest unsafe.Pointer, destOffset uint, width uint) {
-	var carg0 *C.GstVideoScaler // in, none, converted
-	var carg1 C.GstVideoFormat  // in, none, casted
-	var carg2 *C.gpointer       // in, transfer: none, C Pointers: 1, Name: gpointer, nullable, nullable
-	var carg3 C.gpointer        // in, none, casted, nullable
-	var carg4 C.guint           // in, none, casted
-	var carg5 C.guint           // in, none, casted
-
-	carg0 = (*C.GstVideoScaler)(UnsafeVideoScalerToGlibNone(scale))
-	carg1 = C.GstVideoFormat(format)
-	if srcLines != nil {
-		_ = srcLines
-		_ = carg2
-		panic("unimplemented conversion of *unsafe.Pointer (gpointer*)")
-	}
-	if dest != nil {
-		carg3 = C.gpointer(dest)
-	}
-	carg4 = C.guint(destOffset)
-	carg5 = C.guint(width)
-
-	C.gst_video_scaler_vertical(carg0, carg1, carg2, carg3, carg4, carg5)
-	runtime.KeepAlive(scale)
-	runtime.KeepAlive(format)
-	runtime.KeepAlive(srcLines)
-	runtime.KeepAlive(dest)
-	runtime.KeepAlive(destOffset)
-	runtime.KeepAlive(width)
 }
 
 // VideoSinkClass wraps GstVideoSinkClass
