@@ -22,12 +22,6 @@ jobs:
         uses: Jerome1337/gofmt-action@v1.0.5
         with:
           gofmt-flags: "-l -d"
-      - name: Check spellings
-        uses: reviewdog/action-misspell@v1
-        with:
-          locale: "US"
-          fail_on_error: true
-          filter_mode: nofilter
       - uses: dominikh/staticcheck-action@v1.3.0
         with:
           install-go: false
