@@ -3,7 +3,9 @@
 package gstgl
 
 import (
+	"fmt"
 	"runtime"
+	"strings"
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
@@ -191,6 +193,15 @@ func (e GLBaseMemoryError) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e GLBaseMemoryError) String() string {
+	switch e {
+		case GLBaseMemoryErrorFailed: return "GLBaseMemoryErrorFailed"
+		case GLBaseMemoryErrorOldLibs: return "GLBaseMemoryErrorOldLibs"
+		case GLBaseMemoryErrorResourceUnavailable: return "GLBaseMemoryErrorResourceUnavailable"
+		default: return fmt.Sprintf("GLBaseMemoryError(%d)", e)
+	}
+}
+
 // GLConfigCaveat wraps GstGLConfigCaveat
 type GLConfigCaveat C.int
 
@@ -218,6 +229,15 @@ var _ gobject.GoValueInitializer = GLConfigCaveat(0)
 func (e GLConfigCaveat) InitGoValue(v *gobject.Value) {
 	v.Init(TypeGLConfigCaveat)
 	v.SetEnum(int(e))
+}
+
+func (e GLConfigCaveat) String() string {
+	switch e {
+		case GLConfigCaveatNone: return "GLConfigCaveatNone"
+		case GLConfigCaveatSlow: return "GLConfigCaveatSlow"
+		case GLConfigCaveatNonConformant: return "GLConfigCaveatNonConformant"
+		default: return fmt.Sprintf("GLConfigCaveat(%d)", e)
+	}
 }
 
 // GLContextError wraps GstGLContextError
@@ -261,6 +281,18 @@ var _ gobject.GoValueInitializer = GLContextError(0)
 func (e GLContextError) InitGoValue(v *gobject.Value) {
 	v.Init(TypeGLContextError)
 	v.SetEnum(int(e))
+}
+
+func (e GLContextError) String() string {
+	switch e {
+		case GLContextErrorCreateContext: return "GLContextErrorCreateContext"
+		case GLContextErrorResourceUnavailable: return "GLContextErrorResourceUnavailable"
+		case GLContextErrorFailed: return "GLContextErrorFailed"
+		case GLContextErrorWrongConfig: return "GLContextErrorWrongConfig"
+		case GLContextErrorWrongApi: return "GLContextErrorWrongApi"
+		case GLContextErrorOldLibs: return "GLContextErrorOldLibs"
+		default: return fmt.Sprintf("GLContextError(%d)", e)
+	}
 }
 
 // GLFormat wraps GstGLFormat
@@ -362,6 +394,31 @@ func (e GLFormat) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e GLFormat) String() string {
+	switch e {
+		case GLAlpha: return "GLAlpha"
+		case GLRed: return "GLRed"
+		case GLRGB: return "GLRGB"
+		case GLRGBA: return "GLRGBA"
+		case GLDepth24Stencil8: return "GLDepth24Stencil8"
+		case GLLuminance: return "GLLuminance"
+		case GLLuminanceAlpha: return "GLLuminanceAlpha"
+		case GLRg: return "GLRg"
+		case GLRGB8: return "GLRGB8"
+		case GLRGBA8: return "GLRGBA8"
+		case GLRGB10A2: return "GLRGB10A2"
+		case GLR8: return "GLR8"
+		case GLRg8: return "GLRg8"
+		case GLRGB565: return "GLRGB565"
+		case GLDepthComponent16: return "GLDepthComponent16"
+		case GLR16: return "GLR16"
+		case GLRg16: return "GLRg16"
+		case GLRGB16: return "GLRGB16"
+		case GLRGBA16: return "GLRGBA16"
+		default: return fmt.Sprintf("GLFormat(%d)", e)
+	}
+}
+
 // GLQueryType wraps GstGLQueryType
 type GLQueryType C.int
 
@@ -389,6 +446,15 @@ var _ gobject.GoValueInitializer = GLQueryType(0)
 func (e GLQueryType) InitGoValue(v *gobject.Value) {
 	v.Init(TypeGLQueryType)
 	v.SetEnum(int(e))
+}
+
+func (e GLQueryType) String() string {
+	switch e {
+		case GLQueryNone: return "GLQueryNone"
+		case GLQueryTimeElapsed: return "GLQueryTimeElapsed"
+		case GLQueryTimestamp: return "GLQueryTimestamp"
+		default: return fmt.Sprintf("GLQueryType(%d)", e)
+	}
 }
 
 // GLSLError wraps GstGLSLError
@@ -420,6 +486,15 @@ var _ gobject.GoValueInitializer = GLSLError(0)
 func (e GLSLError) InitGoValue(v *gobject.Value) {
 	v.Init(TypeGLSLError)
 	v.SetEnum(int(e))
+}
+
+func (e GLSLError) String() string {
+	switch e {
+		case GlslErrorCompile: return "GlslErrorCompile"
+		case GlslErrorLink: return "GlslErrorLink"
+		case GlslErrorProgram: return "GlslErrorProgram"
+		default: return fmt.Sprintf("GLSLError(%d)", e)
+	}
 }
 
 // GLSLVersion wraps GstGLSLVersion
@@ -509,6 +584,29 @@ func (e GLSLVersion) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e GLSLVersion) String() string {
+	switch e {
+		case GlslVersion440: return "GlslVersion440"
+		case GlslVersion110: return "GlslVersion110"
+		case GlslVersionNone: return "GlslVersionNone"
+		case GlslVersion130: return "GlslVersion130"
+		case GlslVersion410: return "GlslVersion410"
+		case GlslVersion140: return "GlslVersion140"
+		case GlslVersion150: return "GlslVersion150"
+		case GlslVersion310: return "GlslVersion310"
+		case GlslVersion320: return "GlslVersion320"
+		case GlslVersion330: return "GlslVersion330"
+		case GlslVersion400: return "GlslVersion400"
+		case GlslVersion430: return "GlslVersion430"
+		case GlslVersion450: return "GlslVersion450"
+		case GlslVersion100: return "GlslVersion100"
+		case GlslVersion120: return "GlslVersion120"
+		case GlslVersion300: return "GlslVersion300"
+		case GlslVersion420: return "GlslVersion420"
+		default: return fmt.Sprintf("GLSLVersion(%d)", e)
+	}
+}
+
 // GLStereoDownmix wraps GstGLStereoDownmix
 //
 // Output anaglyph type to generate when downmixing to mono
@@ -538,6 +636,15 @@ var _ gobject.GoValueInitializer = GLStereoDownmix(0)
 func (e GLStereoDownmix) InitGoValue(v *gobject.Value) {
 	v.Init(TypeGLStereoDownmix)
 	v.SetEnum(int(e))
+}
+
+func (e GLStereoDownmix) String() string {
+	switch e {
+		case GLStereoDownmixAnaglyphGreenMagentaDubois: return "GLStereoDownmixAnaglyphGreenMagentaDubois"
+		case GLStereoDownmixAnaglyphRedCyanDubois: return "GLStereoDownmixAnaglyphRedCyanDubois"
+		case GLStereoDownmixAnaglyphAmberBlueDubois: return "GLStereoDownmixAnaglyphAmberBlueDubois"
+		default: return fmt.Sprintf("GLStereoDownmix(%d)", e)
+	}
 }
 
 // GLTextureTarget wraps GstGLTextureTarget
@@ -581,6 +688,16 @@ func (e GLTextureTarget) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e GLTextureTarget) String() string {
+	switch e {
+		case GLTextureTargetNone: return "GLTextureTargetNone"
+		case GLTextureTarget2D: return "GLTextureTarget2D"
+		case GLTextureTargetRectangle: return "GLTextureTargetRectangle"
+		case GLTextureTargetExternalOes: return "GLTextureTargetExternalOes"
+		default: return fmt.Sprintf("GLTextureTarget(%d)", e)
+	}
+}
+
 // GLUploadReturn wraps GstGLUploadReturn
 type GLUploadReturn C.int
 
@@ -618,6 +735,17 @@ func (e GLUploadReturn) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e GLUploadReturn) String() string {
+	switch e {
+		case GLUploadReconfigure: return "GLUploadReconfigure"
+		case GLUploadUnsharedGLContext: return "GLUploadUnsharedGLContext"
+		case GLUploadDone: return "GLUploadDone"
+		case GLUploadError: return "GLUploadError"
+		case GLUploadUnsupported: return "GLUploadUnsupported"
+		default: return fmt.Sprintf("GLUploadReturn(%d)", e)
+	}
+}
+
 // GLWindowError wraps GstGLWindowError
 type GLWindowError C.int
 
@@ -645,6 +773,15 @@ var _ gobject.GoValueInitializer = GLWindowError(0)
 func (e GLWindowError) InitGoValue(v *gobject.Value) {
 	v.Init(TypeGLWindowError)
 	v.SetEnum(int(e))
+}
+
+func (e GLWindowError) String() string {
+	switch e {
+		case GLWindowErrorFailed: return "GLWindowErrorFailed"
+		case GLWindowErrorOldLibs: return "GLWindowErrorOldLibs"
+		case GLWindowErrorResourceUnavailable: return "GLWindowErrorResourceUnavailable"
+		default: return fmt.Sprintf("GLWindowError(%d)", e)
+	}
 }
 
 // GLAPI wraps GstGLAPI
@@ -693,6 +830,33 @@ func (f GLAPI) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f GLAPI) String() string {
+	if f == 0 {
+		return "GLAPI(0)"
+	}
+
+	var parts []string
+	if (f & GLApiNone) != 0 {
+		parts = append(parts, "GLApiNone")
+	}
+	if (f & GLApiOpengl) != 0 {
+		parts = append(parts, "GLApiOpengl")
+	}
+	if (f & GLApiOpengl3) != 0 {
+		parts = append(parts, "GLApiOpengl3")
+	}
+	if (f & GLApiGles1) != 0 {
+		parts = append(parts, "GLApiGles1")
+	}
+	if (f & GLApiGles2) != 0 {
+		parts = append(parts, "GLApiGles2")
+	}
+	if (f & GLApiAny) != 0 {
+		parts = append(parts, "GLApiAny")
+	}
+	return "GLAPI(" + strings.Join(parts, "|") + ")"
+}
+
 // GLBaseMemoryTransfer wraps GstGLBaseMemoryTransfer
 type GLBaseMemoryTransfer C.gint
 
@@ -722,6 +886,21 @@ var _ gobject.GoValueInitializer = GLBaseMemoryTransfer(0)
 func (f GLBaseMemoryTransfer) InitGoValue(v *gobject.Value) {
 	v.Init(TypeGLBaseMemoryTransfer)
 	v.SetFlags(int(f))
+}
+
+func (f GLBaseMemoryTransfer) String() string {
+	if f == 0 {
+		return "GLBaseMemoryTransfer(0)"
+	}
+
+	var parts []string
+	if (f & GLBaseMemoryTransferNeedDownload) != 0 {
+		parts = append(parts, "GLBaseMemoryTransferNeedDownload")
+	}
+	if (f & GLBaseMemoryTransferNeedUpload) != 0 {
+		parts = append(parts, "GLBaseMemoryTransferNeedUpload")
+	}
+	return "GLBaseMemoryTransfer(" + strings.Join(parts, "|") + ")"
 }
 
 // GLConfigSurfaceType wraps GstGLConfigSurfaceType
@@ -759,6 +938,27 @@ var _ gobject.GoValueInitializer = GLConfigSurfaceType(0)
 func (f GLConfigSurfaceType) InitGoValue(v *gobject.Value) {
 	v.Init(TypeGLConfigSurfaceType)
 	v.SetFlags(int(f))
+}
+
+func (f GLConfigSurfaceType) String() string {
+	if f == 0 {
+		return "GLConfigSurfaceType(0)"
+	}
+
+	var parts []string
+	if (f & GLConfigSurfaceTypeNone) != 0 {
+		parts = append(parts, "GLConfigSurfaceTypeNone")
+	}
+	if (f & GLConfigSurfaceTypeWindow) != 0 {
+		parts = append(parts, "GLConfigSurfaceTypeWindow")
+	}
+	if (f & GLConfigSurfaceTypePbuffer) != 0 {
+		parts = append(parts, "GLConfigSurfaceTypePbuffer")
+	}
+	if (f & GLConfigSurfaceTypePixmap) != 0 {
+		parts = append(parts, "GLConfigSurfaceTypePixmap")
+	}
+	return "GLConfigSurfaceType(" + strings.Join(parts, "|") + ")"
 }
 
 // GLDisplayType wraps GstGLDisplayType
@@ -843,6 +1043,60 @@ func (f GLDisplayType) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f GLDisplayType) String() string {
+	if f == 0 {
+		return "GLDisplayType(0)"
+	}
+
+	var parts []string
+	if (f & GLDisplayTypeNone) != 0 {
+		parts = append(parts, "GLDisplayTypeNone")
+	}
+	if (f & GLDisplayTypeX11) != 0 {
+		parts = append(parts, "GLDisplayTypeX11")
+	}
+	if (f & GLDisplayTypeWayland) != 0 {
+		parts = append(parts, "GLDisplayTypeWayland")
+	}
+	if (f & GLDisplayTypeCocoa) != 0 {
+		parts = append(parts, "GLDisplayTypeCocoa")
+	}
+	if (f & GLDisplayTypeWin32) != 0 {
+		parts = append(parts, "GLDisplayTypeWin32")
+	}
+	if (f & GLDisplayTypeDispmanx) != 0 {
+		parts = append(parts, "GLDisplayTypeDispmanx")
+	}
+	if (f & GLDisplayTypeEgl) != 0 {
+		parts = append(parts, "GLDisplayTypeEgl")
+	}
+	if (f & GLDisplayTypeVivFb) != 0 {
+		parts = append(parts, "GLDisplayTypeVivFb")
+	}
+	if (f & GLDisplayTypeGbm) != 0 {
+		parts = append(parts, "GLDisplayTypeGbm")
+	}
+	if (f & GLDisplayTypeEglDevice) != 0 {
+		parts = append(parts, "GLDisplayTypeEglDevice")
+	}
+	if (f & GLDisplayTypeEagl) != 0 {
+		parts = append(parts, "GLDisplayTypeEagl")
+	}
+	if (f & GLDisplayTypeWinrt) != 0 {
+		parts = append(parts, "GLDisplayTypeWinrt")
+	}
+	if (f & GLDisplayTypeAndroid) != 0 {
+		parts = append(parts, "GLDisplayTypeAndroid")
+	}
+	if (f & GLDisplayTypeEglSurfaceless) != 0 {
+		parts = append(parts, "GLDisplayTypeEglSurfaceless")
+	}
+	if (f & GLDisplayTypeAny) != 0 {
+		parts = append(parts, "GLDisplayTypeAny")
+	}
+	return "GLDisplayType(" + strings.Join(parts, "|") + ")"
+}
+
 // GLPlatform wraps GstGLPlatform
 type GLPlatform C.gint
 
@@ -893,6 +1147,36 @@ func (f GLPlatform) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f GLPlatform) String() string {
+	if f == 0 {
+		return "GLPlatform(0)"
+	}
+
+	var parts []string
+	if (f & GLPlatformNone) != 0 {
+		parts = append(parts, "GLPlatformNone")
+	}
+	if (f & GLPlatformEgl) != 0 {
+		parts = append(parts, "GLPlatformEgl")
+	}
+	if (f & GLPlatformGLX) != 0 {
+		parts = append(parts, "GLPlatformGLX")
+	}
+	if (f & GLPlatformWgl) != 0 {
+		parts = append(parts, "GLPlatformWgl")
+	}
+	if (f & GLPlatformCgl) != 0 {
+		parts = append(parts, "GLPlatformCgl")
+	}
+	if (f & GLPlatformEagl) != 0 {
+		parts = append(parts, "GLPlatformEagl")
+	}
+	if (f & GLPlatformAny) != 0 {
+		parts = append(parts, "GLPlatformAny")
+	}
+	return "GLPlatform(" + strings.Join(parts, "|") + ")"
+}
+
 // GLSLProfile wraps GstGLSLProfile
 //
 // GLSL profiles
@@ -934,6 +1218,30 @@ var _ gobject.GoValueInitializer = GLSLProfile(0)
 func (f GLSLProfile) InitGoValue(v *gobject.Value) {
 	v.Init(TypeGLSLProfile)
 	v.SetFlags(int(f))
+}
+
+func (f GLSLProfile) String() string {
+	if f == 0 {
+		return "GLSLProfile(0)"
+	}
+
+	var parts []string
+	if (f & GlslProfileNone) != 0 {
+		parts = append(parts, "GlslProfileNone")
+	}
+	if (f & GlslProfileES) != 0 {
+		parts = append(parts, "GlslProfileES")
+	}
+	if (f & GlslProfileCore) != 0 {
+		parts = append(parts, "GlslProfileCore")
+	}
+	if (f & GlslProfileCompatibility) != 0 {
+		parts = append(parts, "GlslProfileCompatibility")
+	}
+	if (f & GlslProfileAny) != 0 {
+		parts = append(parts, "GlslProfileAny")
+	}
+	return "GLSLProfile(" + strings.Join(parts, "|") + ")"
 }
 
 // GLAsyncDebugLogGetMessage wraps GstGLAsyncDebugLogGetMessage
@@ -2276,7 +2584,7 @@ func UnsafeGLBufferPoolToGlibFull(c GLBufferPool) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewGLBufferPoolInstance wraps gst_gl_buffer_pool_new
+// NewGLBufferPool wraps gst_gl_buffer_pool_new
 // 
 // The function takes the following parameters:
 // 
@@ -2285,7 +2593,7 @@ func UnsafeGLBufferPoolToGlibFull(c GLBufferPool) unsafe.Pointer {
 // The function returns the following values:
 // 
 // 	- goret gst.BufferPool 
-func NewGLBufferPoolInstance(context GLContext) gst.BufferPool {
+func NewGLBufferPool(context GLContext) gst.BufferPool {
 	var carg1 *C.GstGLContext  // in, none, converted
 	var cret  *C.GstBufferPool // return, none, converted
 
@@ -2427,7 +2735,7 @@ func UnsafeGLColorConvertToGlibFull(c GLColorConvert) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewGLColorConvertInstance wraps gst_gl_color_convert_new
+// NewGLColorConvert wraps gst_gl_color_convert_new
 // 
 // The function takes the following parameters:
 // 
@@ -2436,7 +2744,7 @@ func UnsafeGLColorConvertToGlibFull(c GLColorConvert) unsafe.Pointer {
 // The function returns the following values:
 // 
 // 	- goret GLColorConvert 
-func NewGLColorConvertInstance(context GLContext) GLColorConvert {
+func NewGLColorConvert(context GLContext) GLColorConvert {
 	var carg1 *C.GstGLContext      // in, none, converted
 	var cret  *C.GstGLColorConvert // return, full, converted
 
@@ -2452,7 +2760,7 @@ func NewGLColorConvertInstance(context GLContext) GLColorConvert {
 	return goret
 }
 
-// GLColorConvertInstanceFixateCaps wraps gst_gl_color_convert_fixate_caps
+// GLColorConvertFixateCaps wraps gst_gl_color_convert_fixate_caps
 // 
 // The function takes the following parameters:
 // 
@@ -2466,7 +2774,7 @@ func NewGLColorConvertInstance(context GLContext) GLColorConvert {
 // 	- goret *gst.Caps 
 //
 // Provides an implementation of #GstBaseTransformClass.fixate_caps()
-func GLColorConvertInstanceFixateCaps(context GLContext, direction gst.PadDirection, caps *gst.Caps, other *gst.Caps) *gst.Caps {
+func GLColorConvertFixateCaps(context GLContext, direction gst.PadDirection, caps *gst.Caps, other *gst.Caps) *gst.Caps {
 	var carg1 *C.GstGLContext   // in, none, converted
 	var carg2 C.GstPadDirection // in, none, casted
 	var carg3 *C.GstCaps        // in, none, converted
@@ -2491,7 +2799,7 @@ func GLColorConvertInstanceFixateCaps(context GLContext, direction gst.PadDirect
 	return goret
 }
 
-// GLColorConvertInstanceSwizzleShaderString wraps gst_gl_color_convert_swizzle_shader_string
+// GLColorConvertSwizzleShaderString wraps gst_gl_color_convert_swizzle_shader_string
 // 
 // The function takes the following parameters:
 // 
@@ -2500,7 +2808,7 @@ func GLColorConvertInstanceFixateCaps(context GLContext, direction gst.PadDirect
 // The function returns the following values:
 // 
 // 	- goret string 
-func GLColorConvertInstanceSwizzleShaderString(context GLContext) string {
+func GLColorConvertSwizzleShaderString(context GLContext) string {
 	var carg1 *C.GstGLContext // in, none, converted
 	var cret  *C.gchar        // return, full, string, casted *C.gchar
 
@@ -2517,7 +2825,7 @@ func GLColorConvertInstanceSwizzleShaderString(context GLContext) string {
 	return goret
 }
 
-// GLColorConvertInstanceTransformCaps wraps gst_gl_color_convert_transform_caps
+// GLColorConvertTransformCaps wraps gst_gl_color_convert_transform_caps
 // 
 // The function takes the following parameters:
 // 
@@ -2531,7 +2839,7 @@ func GLColorConvertInstanceSwizzleShaderString(context GLContext) string {
 // 	- goret *gst.Caps 
 //
 // Provides an implementation of #GstBaseTransformClass.transform_caps()
-func GLColorConvertInstanceTransformCaps(context GLContext, direction gst.PadDirection, caps *gst.Caps, filter *gst.Caps) *gst.Caps {
+func GLColorConvertTransformCaps(context GLContext, direction gst.PadDirection, caps *gst.Caps, filter *gst.Caps) *gst.Caps {
 	var carg1 *C.GstGLContext   // in, none, converted
 	var carg2 C.GstPadDirection // in, none, casted
 	var carg3 *C.GstCaps        // in, none, converted
@@ -2556,7 +2864,7 @@ func GLColorConvertInstanceTransformCaps(context GLContext, direction gst.PadDir
 	return goret
 }
 
-// GLColorConvertInstanceYuvToRGBShaderString wraps gst_gl_color_convert_yuv_to_rgb_shader_string
+// GLColorConvertYuvToRGBShaderString wraps gst_gl_color_convert_yuv_to_rgb_shader_string
 // 
 // The function takes the following parameters:
 // 
@@ -2573,7 +2881,7 @@ func GLColorConvertInstanceTransformCaps(context GLContext, direction gst.PadDir
 // The Y component is placed in the 0th index of the returned value, The U component in the
 // 1st, and the V component in the 2nd.  offset, ycoeff, ucoeff, and vcoeff are the
 // specific coefficients and offset used for the conversion.
-func GLColorConvertInstanceYuvToRGBShaderString(context GLContext) string {
+func GLColorConvertYuvToRGBShaderString(context GLContext) string {
 	var carg1 *C.GstGLContext // in, none, converted
 	var cret  *C.gchar        // return, full, string, casted *C.gchar
 
@@ -3071,7 +3379,7 @@ func UnsafeGLContextToGlibFull(c GLContext) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewGLContextInstance wraps gst_gl_context_new
+// NewGLContext wraps gst_gl_context_new
 // 
 // The function takes the following parameters:
 // 
@@ -3082,7 +3390,7 @@ func UnsafeGLContextToGlibFull(c GLContext) unsafe.Pointer {
 // 	- goret GLContext 
 //
 // Create a new #GstGLContext with the specified @display
-func NewGLContextInstance(display GLDisplay) GLContext {
+func NewGLContext(display GLDisplay) GLContext {
 	var carg1 *C.GstGLDisplay // in, none, converted
 	var cret  *C.GstGLContext // return, none, converted
 
@@ -3098,7 +3406,7 @@ func NewGLContextInstance(display GLDisplay) GLContext {
 	return goret
 }
 
-// NewGLContextInstanceWrapped wraps gst_gl_context_new_wrapped
+// NewGLContextWrapped wraps gst_gl_context_new_wrapped
 // 
 // The function takes the following parameters:
 // 
@@ -3120,7 +3428,7 @@ func NewGLContextInstance(display GLDisplay) GLContext {
 // @context_type must not be %GST_GL_PLATFORM_NONE or %GST_GL_PLATFORM_ANY
 // 
 // @available_apis must not be %GST_GL_API_NONE or %GST_GL_API_ANY
-func NewGLContextInstanceWrapped(display GLDisplay, handle uintptr, contextType GLPlatform, availableApis GLAPI) GLContext {
+func NewGLContextWrapped(display GLDisplay, handle uintptr, contextType GLPlatform, availableApis GLAPI) GLContext {
 	var carg1 *C.GstGLDisplay // in, none, converted
 	var carg2 C.guintptr      // in, none, casted
 	var carg3 C.GstGLPlatform // in, none, casted
@@ -3145,7 +3453,7 @@ func NewGLContextInstanceWrapped(display GLDisplay, handle uintptr, contextType 
 	return goret
 }
 
-// GLContextInstanceDefaultGetProcAddress wraps gst_gl_context_default_get_proc_address
+// GLContextDefaultGetProcAddress wraps gst_gl_context_default_get_proc_address
 // 
 // The function takes the following parameters:
 // 
@@ -3160,7 +3468,7 @@ func NewGLContextInstanceWrapped(display GLDisplay, handle uintptr, contextType 
 // for @name in the OpenGL shared libraries or in the current process.
 // 
 // See also: gst_gl_context_get_proc_address()
-func GLContextInstanceDefaultGetProcAddress(glApi GLAPI, name string) unsafe.Pointer {
+func GLContextDefaultGetProcAddress(glApi GLAPI, name string) unsafe.Pointer {
 	var carg1 C.GstGLAPI // in, none, casted
 	var carg2 *C.gchar   // in, none, string, casted *C.gchar
 	var cret  C.gpointer // return, none, casted
@@ -3180,13 +3488,13 @@ func GLContextInstanceDefaultGetProcAddress(glApi GLAPI, name string) unsafe.Poi
 	return goret
 }
 
-// GLContextInstanceGetCurrent wraps gst_gl_context_get_current
+// GLContextGetCurrent wraps gst_gl_context_get_current
 // The function returns the following values:
 // 
 // 	- goret GLContext 
 //
 // See also gst_gl_context_activate().
-func GLContextInstanceGetCurrent() GLContext {
+func GLContextGetCurrent() GLContext {
 	var cret *C.GstGLContext // return, none, converted
 
 	cret = C.gst_gl_context_get_current()
@@ -3198,7 +3506,7 @@ func GLContextInstanceGetCurrent() GLContext {
 	return goret
 }
 
-// GLContextInstanceGetCurrentGLApi wraps gst_gl_context_get_current_gl_api
+// GLContextGetCurrentGLApi wraps gst_gl_context_get_current_gl_api
 // 
 // The function takes the following parameters:
 // 
@@ -3212,7 +3520,7 @@ func GLContextInstanceGetCurrent() GLContext {
 //
 // If an error occurs, @major and @minor are not modified and %GST_GL_API_NONE is
 // returned.
-func GLContextInstanceGetCurrentGLApi(platform GLPlatform) (uint, uint, GLAPI) {
+func GLContextGetCurrentGLApi(platform GLPlatform) (uint, uint, GLAPI) {
 	var carg1 C.GstGLPlatform // in, none, casted
 	var carg2 C.guint         // out, full, casted
 	var carg3 C.guint         // out, full, casted
@@ -3234,7 +3542,7 @@ func GLContextInstanceGetCurrentGLApi(platform GLPlatform) (uint, uint, GLAPI) {
 	return major, minor, goret
 }
 
-// GLContextInstanceGetCurrentGLContext wraps gst_gl_context_get_current_gl_context
+// GLContextGetCurrentGLContext wraps gst_gl_context_get_current_gl_context
 // 
 // The function takes the following parameters:
 // 
@@ -3243,7 +3551,7 @@ func GLContextInstanceGetCurrentGLApi(platform GLPlatform) (uint, uint, GLAPI) {
 // The function returns the following values:
 // 
 // 	- goret uintptr 
-func GLContextInstanceGetCurrentGLContext(contextType GLPlatform) uintptr {
+func GLContextGetCurrentGLContext(contextType GLPlatform) uintptr {
 	var carg1 C.GstGLPlatform // in, none, casted
 	var cret  C.guintptr      // return, none, casted
 
@@ -3259,7 +3567,7 @@ func GLContextInstanceGetCurrentGLContext(contextType GLPlatform) uintptr {
 	return goret
 }
 
-// GLContextInstanceGetProcAddressWithPlatform wraps gst_gl_context_get_proc_address_with_platform
+// GLContextGetProcAddressWithPlatform wraps gst_gl_context_get_proc_address_with_platform
 // 
 // The function takes the following parameters:
 // 
@@ -3275,7 +3583,7 @@ func GLContextInstanceGetCurrentGLContext(contextType GLPlatform) uintptr {
 // to retrieve @name.
 // 
 // See also gst_gl_context_get_proc_address().
-func GLContextInstanceGetProcAddressWithPlatform(contextType GLPlatform, glApi GLAPI, name string) unsafe.Pointer {
+func GLContextGetProcAddressWithPlatform(contextType GLPlatform, glApi GLAPI, name string) unsafe.Pointer {
 	var carg1 C.GstGLPlatform // in, none, casted
 	var carg2 C.GstGLAPI      // in, none, casted
 	var carg3 *C.gchar        // in, none, string, casted *C.gchar
@@ -4235,11 +4543,11 @@ func UnsafeGLDisplayToGlibFull(c GLDisplay) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewGLDisplayInstance wraps gst_gl_display_new
+// NewGLDisplay wraps gst_gl_display_new
 // The function returns the following values:
 // 
 // 	- goret GLDisplay 
-func NewGLDisplayInstance() GLDisplay {
+func NewGLDisplay() GLDisplay {
 	var cret *C.GstGLDisplay // return, full, converted
 
 	cret = C.gst_gl_display_new()
@@ -4251,7 +4559,7 @@ func NewGLDisplayInstance() GLDisplay {
 	return goret
 }
 
-// NewGLDisplayInstanceWithType wraps gst_gl_display_new_with_type
+// NewGLDisplayWithType wraps gst_gl_display_new_with_type
 // 
 // The function takes the following parameters:
 // 
@@ -4265,7 +4573,7 @@ func NewGLDisplayInstance() GLDisplay {
 // gst_gl_display_new() and the seemingly equivalent call
 // gst_gl_display_new_with_type (GST_GL_DISPLAY_TYPE_ANY) in that the latter
 // may return NULL.
-func NewGLDisplayInstanceWithType(typ GLDisplayType) GLDisplay {
+func NewGLDisplayWithType(typ GLDisplayType) GLDisplay {
 	var carg1 C.GstGLDisplayType // in, none, casted
 	var cret  *C.GstGLDisplay    // return, full, converted
 
@@ -4636,12 +4944,12 @@ func UnsafeGLFilterToGlibFull(c GLFilter) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// GLFilterInstanceAddRGBAPadTemplates wraps gst_gl_filter_add_rgba_pad_templates
+// GLFilterAddRGBAPadTemplates wraps gst_gl_filter_add_rgba_pad_templates
 // 
 // The function takes the following parameters:
 // 
 // 	- klass *GLFilterClass 
-func GLFilterInstanceAddRGBAPadTemplates(klass *GLFilterClass) {
+func GLFilterAddRGBAPadTemplates(klass *GLFilterClass) {
 	var carg1 *C.GstGLFilterClass // in, none, converted
 
 	carg1 = (*C.GstGLFilterClass)(UnsafeGLFilterClassToGlibNone(klass))
@@ -4870,7 +5178,7 @@ func UnsafeGLFramebufferToGlibFull(c GLFramebuffer) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewGLFramebufferInstance wraps gst_gl_framebuffer_new
+// NewGLFramebuffer wraps gst_gl_framebuffer_new
 // 
 // The function takes the following parameters:
 // 
@@ -4882,7 +5190,7 @@ func UnsafeGLFramebufferToGlibFull(c GLFramebuffer) unsafe.Pointer {
 //
 // This function will internally create an OpenGL framebuffer object and must
 // be called on @context's OpenGL thread.
-func NewGLFramebufferInstance(context GLContext) GLFramebuffer {
+func NewGLFramebuffer(context GLContext) GLFramebuffer {
 	var carg1 *C.GstGLContext     // in, none, converted
 	var cret  *C.GstGLFramebuffer // return, full, converted
 
@@ -4898,7 +5206,7 @@ func NewGLFramebufferInstance(context GLContext) GLFramebuffer {
 	return goret
 }
 
-// NewGLFramebufferInstanceWithDefaultDepth wraps gst_gl_framebuffer_new_with_default_depth
+// NewGLFramebufferWithDefaultDepth wraps gst_gl_framebuffer_new_with_default_depth
 // 
 // The function takes the following parameters:
 // 
@@ -4912,7 +5220,7 @@ func NewGLFramebufferInstance(context GLContext) GLFramebuffer {
 //
 // This function will internally create an OpenGL framebuffer object and must
 // be called on @context's OpenGL thread.
-func NewGLFramebufferInstanceWithDefaultDepth(context GLContext, width uint, height uint) GLFramebuffer {
+func NewGLFramebufferWithDefaultDepth(context GLContext, width uint, height uint) GLFramebuffer {
 	var carg1 *C.GstGLContext     // in, none, converted
 	var carg2 C.guint             // in, none, casted
 	var carg3 C.guint             // in, none, casted
@@ -5080,7 +5388,7 @@ func UnsafeGLMemoryAllocatorToGlibFull(c GLMemoryAllocator) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// GLMemoryAllocatorInstanceGetDefault wraps gst_gl_memory_allocator_get_default
+// GLMemoryAllocatorGetDefault wraps gst_gl_memory_allocator_get_default
 // 
 // The function takes the following parameters:
 // 
@@ -5089,7 +5397,7 @@ func UnsafeGLMemoryAllocatorToGlibFull(c GLMemoryAllocator) unsafe.Pointer {
 // The function returns the following values:
 // 
 // 	- goret GLMemoryAllocator 
-func GLMemoryAllocatorInstanceGetDefault(context GLContext) GLMemoryAllocator {
+func GLMemoryAllocatorGetDefault(context GLContext) GLMemoryAllocator {
 	var carg1 *C.GstGLContext         // in, none, converted
 	var cret  *C.GstGLMemoryAllocator // return, full, converted
 
@@ -5426,7 +5734,7 @@ func UnsafeGLOverlayCompositorToGlibFull(c GLOverlayCompositor) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewGLOverlayCompositorInstance wraps gst_gl_overlay_compositor_new
+// NewGLOverlayCompositor wraps gst_gl_overlay_compositor_new
 // 
 // The function takes the following parameters:
 // 
@@ -5435,7 +5743,7 @@ func UnsafeGLOverlayCompositorToGlibFull(c GLOverlayCompositor) unsafe.Pointer {
 // The function returns the following values:
 // 
 // 	- goret GLOverlayCompositor 
-func NewGLOverlayCompositorInstance(context GLContext) GLOverlayCompositor {
+func NewGLOverlayCompositor(context GLContext) GLOverlayCompositor {
 	var carg1 *C.GstGLContext           // in, none, converted
 	var cret  *C.GstGLOverlayCompositor // return, none, converted
 
@@ -5451,7 +5759,7 @@ func NewGLOverlayCompositorInstance(context GLContext) GLOverlayCompositor {
 	return goret
 }
 
-// GLOverlayCompositorInstanceAddCaps wraps gst_gl_overlay_compositor_add_caps
+// GLOverlayCompositorAddCaps wraps gst_gl_overlay_compositor_add_caps
 // 
 // The function takes the following parameters:
 // 
@@ -5460,7 +5768,7 @@ func NewGLOverlayCompositorInstance(context GLContext) GLOverlayCompositor {
 // The function returns the following values:
 // 
 // 	- goret *gst.Caps 
-func GLOverlayCompositorInstanceAddCaps(caps *gst.Caps) *gst.Caps {
+func GLOverlayCompositorAddCaps(caps *gst.Caps) *gst.Caps {
 	var carg1 *C.GstCaps // in, none, converted
 	var cret  *C.GstCaps // return, full, converted
 
@@ -5666,7 +5974,7 @@ func UnsafeGLSLStageToGlibFull(c GLSLStage) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewGLSLStageInstance wraps gst_glsl_stage_new
+// NewGLSLStage wraps gst_glsl_stage_new
 // 
 // The function takes the following parameters:
 // 
@@ -5676,7 +5984,7 @@ func UnsafeGLSLStageToGlibFull(c GLSLStage) unsafe.Pointer {
 // The function returns the following values:
 // 
 // 	- goret GLSLStage 
-func NewGLSLStageInstance(context GLContext, typ uint) GLSLStage {
+func NewGLSLStage(context GLContext, typ uint) GLSLStage {
 	var carg1 *C.GstGLContext // in, none, converted
 	var carg2 C.guint         // in, none, casted
 	var cret  *C.GstGLSLStage // return, none, converted
@@ -5695,7 +6003,7 @@ func NewGLSLStageInstance(context GLContext, typ uint) GLSLStage {
 	return goret
 }
 
-// NewGLSLStageInstanceDefaultFragment wraps gst_glsl_stage_new_default_fragment
+// NewGLSLStageDefaultFragment wraps gst_glsl_stage_new_default_fragment
 // 
 // The function takes the following parameters:
 // 
@@ -5704,7 +6012,7 @@ func NewGLSLStageInstance(context GLContext, typ uint) GLSLStage {
 // The function returns the following values:
 // 
 // 	- goret GLSLStage 
-func NewGLSLStageInstanceDefaultFragment(context GLContext) GLSLStage {
+func NewGLSLStageDefaultFragment(context GLContext) GLSLStage {
 	var carg1 *C.GstGLContext // in, none, converted
 	var cret  *C.GstGLSLStage // return, none, converted
 
@@ -5720,7 +6028,7 @@ func NewGLSLStageInstanceDefaultFragment(context GLContext) GLSLStage {
 	return goret
 }
 
-// NewGLSLStageInstanceDefaultVertex wraps gst_glsl_stage_new_default_vertex
+// NewGLSLStageDefaultVertex wraps gst_glsl_stage_new_default_vertex
 // 
 // The function takes the following parameters:
 // 
@@ -5729,7 +6037,7 @@ func NewGLSLStageInstanceDefaultFragment(context GLContext) GLSLStage {
 // The function returns the following values:
 // 
 // 	- goret GLSLStage 
-func NewGLSLStageInstanceDefaultVertex(context GLContext) GLSLStage {
+func NewGLSLStageDefaultVertex(context GLContext) GLSLStage {
 	var carg1 *C.GstGLContext // in, none, converted
 	var cret  *C.GstGLSLStage // return, none, converted
 
@@ -5745,7 +6053,7 @@ func NewGLSLStageInstanceDefaultVertex(context GLContext) GLSLStage {
 	return goret
 }
 
-// NewGLSLStageInstanceWithString wraps gst_glsl_stage_new_with_string
+// NewGLSLStageWithString wraps gst_glsl_stage_new_with_string
 // 
 // The function takes the following parameters:
 // 
@@ -5758,7 +6066,7 @@ func NewGLSLStageInstanceDefaultVertex(context GLContext) GLSLStage {
 // The function returns the following values:
 // 
 // 	- goret GLSLStage 
-func NewGLSLStageInstanceWithString(context GLContext, typ uint, version GLSLVersion, profile GLSLProfile, str string) GLSLStage {
+func NewGLSLStageWithString(context GLContext, typ uint, version GLSLVersion, profile GLSLProfile, str string) GLSLStage {
 	var carg1 *C.GstGLContext  // in, none, converted
 	var carg2 C.guint          // in, none, casted
 	var carg3 C.GstGLSLVersion // in, none, casted
@@ -5787,7 +6095,7 @@ func NewGLSLStageInstanceWithString(context GLContext, typ uint, version GLSLVer
 	return goret
 }
 
-// NewGLSLStageInstanceWithStrings wraps gst_glsl_stage_new_with_strings
+// NewGLSLStageWithStrings wraps gst_glsl_stage_new_with_strings
 // 
 // The function takes the following parameters:
 // 
@@ -5801,7 +6109,7 @@ func NewGLSLStageInstanceWithString(context GLContext, typ uint, version GLSLVer
 // The function returns the following values:
 // 
 // 	- goret GLSLStage 
-func NewGLSLStageInstanceWithStrings(context GLContext, typ uint, version GLSLVersion, profile GLSLProfile, str []string) GLSLStage {
+func NewGLSLStageWithStrings(context GLContext, typ uint, version GLSLVersion, profile GLSLProfile, str []string) GLSLStage {
 	var carg1 *C.GstGLContext  // in, none, converted
 	var carg2 C.guint          // in, none, casted
 	var carg3 C.GstGLSLVersion // in, none, casted
@@ -6430,7 +6738,7 @@ func UnsafeGLShaderToGlibFull(c GLShader) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewGLShaderInstance wraps gst_gl_shader_new
+// NewGLShader wraps gst_gl_shader_new
 // 
 // The function takes the following parameters:
 // 
@@ -6441,7 +6749,7 @@ func UnsafeGLShaderToGlibFull(c GLShader) unsafe.Pointer {
 // 	- goret GLShader 
 //
 // Note: must be called in the GL thread
-func NewGLShaderInstance(context GLContext) GLShader {
+func NewGLShader(context GLContext) GLShader {
 	var carg1 *C.GstGLContext // in, none, converted
 	var cret  *C.GstGLShader  // return, full, converted
 
@@ -6457,7 +6765,7 @@ func NewGLShaderInstance(context GLContext) GLShader {
 	return goret
 }
 
-// NewGLShaderInstanceDefault wraps gst_gl_shader_new_default
+// NewGLShaderDefault wraps gst_gl_shader_new_default
 // 
 // The function takes the following parameters:
 // 
@@ -6469,7 +6777,7 @@ func NewGLShaderInstance(context GLContext) GLShader {
 // 	- _goerr error (nullable): an error 
 //
 // Note: must be called in the GL thread
-func NewGLShaderInstanceDefault(context GLContext) (GLShader, error) {
+func NewGLShaderDefault(context GLContext) (GLShader, error) {
 	var carg1 *C.GstGLContext // in, none, converted
 	var cret  *C.GstGLShader  // return, full, converted
 	var _cerr *C.GError       // out, full, converted, nullable
@@ -6490,7 +6798,7 @@ func NewGLShaderInstanceDefault(context GLContext) (GLShader, error) {
 	return goret, _goerr
 }
 
-// GLShaderInstanceStringFragmentExternalOesGetDefault wraps gst_gl_shader_string_fragment_external_oes_get_default
+// GLShaderStringFragmentExternalOesGetDefault wraps gst_gl_shader_string_fragment_external_oes_get_default
 // 
 // The function takes the following parameters:
 // 
@@ -6501,7 +6809,7 @@ func NewGLShaderInstanceDefault(context GLContext) (GLShader, error) {
 // The function returns the following values:
 // 
 // 	- goret string 
-func GLShaderInstanceStringFragmentExternalOesGetDefault(context GLContext, version GLSLVersion, profile GLSLProfile) string {
+func GLShaderStringFragmentExternalOesGetDefault(context GLContext, version GLSLVersion, profile GLSLProfile) string {
 	var carg1 *C.GstGLContext  // in, none, converted
 	var carg2 C.GstGLSLVersion // in, none, casted
 	var carg3 C.GstGLSLProfile // in, none, casted
@@ -6524,7 +6832,7 @@ func GLShaderInstanceStringFragmentExternalOesGetDefault(context GLContext, vers
 	return goret
 }
 
-// GLShaderInstanceStringFragmentGetDefault wraps gst_gl_shader_string_fragment_get_default
+// GLShaderStringFragmentGetDefault wraps gst_gl_shader_string_fragment_get_default
 // 
 // The function takes the following parameters:
 // 
@@ -6535,7 +6843,7 @@ func GLShaderInstanceStringFragmentExternalOesGetDefault(context GLContext, vers
 // The function returns the following values:
 // 
 // 	- goret string 
-func GLShaderInstanceStringFragmentGetDefault(context GLContext, version GLSLVersion, profile GLSLProfile) string {
+func GLShaderStringFragmentGetDefault(context GLContext, version GLSLVersion, profile GLSLProfile) string {
 	var carg1 *C.GstGLContext  // in, none, converted
 	var carg2 C.GstGLSLVersion // in, none, casted
 	var carg3 C.GstGLSLProfile // in, none, casted
@@ -6558,7 +6866,7 @@ func GLShaderInstanceStringFragmentGetDefault(context GLContext, version GLSLVer
 	return goret
 }
 
-// GLShaderInstanceStringGetHighestPrecision wraps gst_gl_shader_string_get_highest_precision
+// GLShaderStringGetHighestPrecision wraps gst_gl_shader_string_get_highest_precision
 // 
 // The function takes the following parameters:
 // 
@@ -6577,7 +6885,7 @@ func GLShaderInstanceStringFragmentGetDefault(context GLContext, version GLSLVer
 // Practically, this will return the string 'precision mediump float'
 // or 'precision highp float' depending on if high precision floats are
 // determined to be supported.
-func GLShaderInstanceStringGetHighestPrecision(context GLContext, version GLSLVersion, profile GLSLProfile) string {
+func GLShaderStringGetHighestPrecision(context GLContext, version GLSLVersion, profile GLSLProfile) string {
 	var carg1 *C.GstGLContext  // in, none, converted
 	var carg2 C.GstGLSLVersion // in, none, casted
 	var carg3 C.GstGLSLProfile // in, none, casted
@@ -7870,7 +8178,7 @@ func UnsafeGLUploadToGlibFull(c GLUpload) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewGLUploadInstance wraps gst_gl_upload_new
+// NewGLUpload wraps gst_gl_upload_new
 // 
 // The function takes the following parameters:
 // 
@@ -7879,7 +8187,7 @@ func UnsafeGLUploadToGlibFull(c GLUpload) unsafe.Pointer {
 // The function returns the following values:
 // 
 // 	- goret GLUpload 
-func NewGLUploadInstance(context GLContext) GLUpload {
+func NewGLUpload(context GLContext) GLUpload {
 	var carg1 *C.GstGLContext // in, none, converted
 	var cret  *C.GstGLUpload  // return, full, converted
 
@@ -7895,11 +8203,11 @@ func NewGLUploadInstance(context GLContext) GLUpload {
 	return goret
 }
 
-// GLUploadInstanceGetInputTemplateCaps wraps gst_gl_upload_get_input_template_caps
+// GLUploadGetInputTemplateCaps wraps gst_gl_upload_get_input_template_caps
 // The function returns the following values:
 // 
 // 	- goret *gst.Caps 
-func GLUploadInstanceGetInputTemplateCaps() *gst.Caps {
+func GLUploadGetInputTemplateCaps() *gst.Caps {
 	var cret *C.GstCaps // return, full, converted
 
 	cret = C.gst_gl_upload_get_input_template_caps()
@@ -8269,11 +8577,11 @@ func UnsafeGLViewConvertToGlibFull(c GLViewConvert) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewGLViewConvertInstance wraps gst_gl_view_convert_new
+// NewGLViewConvert wraps gst_gl_view_convert_new
 // The function returns the following values:
 // 
 // 	- goret GLViewConvert 
-func NewGLViewConvertInstance() GLViewConvert {
+func NewGLViewConvert() GLViewConvert {
 	var cret *C.GstGLViewConvert // return, full, converted
 
 	cret = C.gst_gl_view_convert_new()
@@ -8717,7 +9025,7 @@ func UnsafeGLWindowToGlibFull(c GLWindow) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewGLWindowInstance wraps gst_gl_window_new
+// NewGLWindow wraps gst_gl_window_new
 // 
 // The function takes the following parameters:
 // 
@@ -8726,7 +9034,7 @@ func UnsafeGLWindowToGlibFull(c GLWindow) unsafe.Pointer {
 // The function returns the following values:
 // 
 // 	- goret GLWindow 
-func NewGLWindowInstance(display GLDisplay) GLWindow {
+func NewGLWindow(display GLDisplay) GLWindow {
 	var carg1 *C.GstGLDisplay // in, none, converted
 	var cret  *C.GstGLWindow  // return, full, converted
 

@@ -1225,7 +1225,7 @@ func UnsafeTestClockToGlibFull(c TestClock) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewTestClockInstance wraps gst_test_clock_new
+// NewTestClock wraps gst_test_clock_new
 // The function returns the following values:
 // 
 // 	- goret gst.Clock 
@@ -1233,7 +1233,7 @@ func UnsafeTestClockToGlibFull(c TestClock) unsafe.Pointer {
 // Creates a new test clock with its time set to zero.
 // 
 // MT safe.
-func NewTestClockInstance() gst.Clock {
+func NewTestClock() gst.Clock {
 	var cret *C.GstClock // return, full, converted
 
 	cret = C.gst_test_clock_new()
@@ -1245,7 +1245,7 @@ func NewTestClockInstance() gst.Clock {
 	return goret
 }
 
-// NewTestClockInstanceWithStartTime wraps gst_test_clock_new_with_start_time
+// NewTestClockWithStartTime wraps gst_test_clock_new_with_start_time
 // 
 // The function takes the following parameters:
 // 
@@ -1258,7 +1258,7 @@ func NewTestClockInstance() gst.Clock {
 // Creates a new test clock with its time set to the specified time.
 // 
 // MT safe.
-func NewTestClockInstanceWithStartTime(startTime gst.ClockTime) gst.Clock {
+func NewTestClockWithStartTime(startTime gst.ClockTime) gst.Clock {
 	var carg1 C.GstClockTime // in, none, casted, alias
 	var cret  *C.GstClock    // return, full, converted
 

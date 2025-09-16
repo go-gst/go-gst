@@ -3,6 +3,7 @@
 package gstcontroller
 
 import (
+	"fmt"
 	"runtime"
 	"unsafe"
 
@@ -83,6 +84,16 @@ func (e InterpolationMode) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e InterpolationMode) String() string {
+	switch e {
+		case InterpolationModeNone: return "InterpolationModeNone"
+		case InterpolationModeLinear: return "InterpolationModeLinear"
+		case InterpolationModeCubic: return "InterpolationModeCubic"
+		case InterpolationModeCubicMonotonic: return "InterpolationModeCubicMonotonic"
+		default: return fmt.Sprintf("InterpolationMode(%d)", e)
+	}
+}
+
 // LFOWaveform wraps GstLFOWaveform
 //
 // The various waveform modes available.
@@ -120,6 +131,17 @@ var _ gobject.GoValueInitializer = LFOWaveform(0)
 func (e LFOWaveform) InitGoValue(v *gobject.Value) {
 	v.Init(TypeLFOWaveform)
 	v.SetEnum(int(e))
+}
+
+func (e LFOWaveform) String() string {
+	switch e {
+		case LfoWaveformReverseSaw: return "LfoWaveformReverseSaw"
+		case LfoWaveformTriangle: return "LfoWaveformTriangle"
+		case LfoWaveformSine: return "LfoWaveformSine"
+		case LfoWaveformSquare: return "LfoWaveformSquare"
+		case LfoWaveformSaw: return "LfoWaveformSaw"
+		default: return fmt.Sprintf("LFOWaveform(%d)", e)
+	}
 }
 
 // TimedValueControlInvalidateCache wraps gst_timed_value_control_invalidate_cache
@@ -196,7 +218,7 @@ func UnsafeARGBControlBindingToGlibFull(c ARGBControlBinding) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewARGBControlBindingInstance wraps gst_argb_control_binding_new
+// NewARGBControlBinding wraps gst_argb_control_binding_new
 // 
 // The function takes the following parameters:
 // 
@@ -213,7 +235,7 @@ func UnsafeARGBControlBindingToGlibFull(c ARGBControlBinding) unsafe.Pointer {
 //
 // Create a new control-binding that attaches the given #GstControlSource to the
 // #GObject property.
-func NewARGBControlBindingInstance(object gst.Object, propertyName string, csA gst.ControlSource, csR gst.ControlSource, csG gst.ControlSource, csB gst.ControlSource) gst.ControlBinding {
+func NewARGBControlBinding(object gst.Object, propertyName string, csA gst.ControlSource, csR gst.ControlSource, csG gst.ControlSource, csB gst.ControlSource) gst.ControlBinding {
 	var carg1 *C.GstObject         // in, none, converted
 	var carg2 *C.gchar             // in, none, string, casted *C.gchar
 	var carg3 *C.GstControlSource  // in, none, converted
@@ -306,7 +328,7 @@ func UnsafeDirectControlBindingToGlibFull(c DirectControlBinding) unsafe.Pointer
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewDirectControlBindingInstance wraps gst_direct_control_binding_new
+// NewDirectControlBinding wraps gst_direct_control_binding_new
 // 
 // The function takes the following parameters:
 // 
@@ -321,7 +343,7 @@ func UnsafeDirectControlBindingToGlibFull(c DirectControlBinding) unsafe.Pointer
 // Create a new control-binding that attaches the #GstControlSource to the
 // #GObject property. It will map the control source range [0.0 ... 1.0] to
 // the full target property range, and clip all values outside this range.
-func NewDirectControlBindingInstance(object gst.Object, propertyName string, cs gst.ControlSource) gst.ControlBinding {
+func NewDirectControlBinding(object gst.Object, propertyName string, cs gst.ControlSource) gst.ControlBinding {
 	var carg1 *C.GstObject         // in, none, converted
 	var carg2 *C.gchar             // in, none, string, casted *C.gchar
 	var carg3 *C.GstControlSource  // in, none, converted
@@ -344,7 +366,7 @@ func NewDirectControlBindingInstance(object gst.Object, propertyName string, cs 
 	return goret
 }
 
-// NewDirectControlBindingInstanceAbsolute wraps gst_direct_control_binding_new_absolute
+// NewDirectControlBindingAbsolute wraps gst_direct_control_binding_new_absolute
 // 
 // The function takes the following parameters:
 // 
@@ -359,7 +381,7 @@ func NewDirectControlBindingInstance(object gst.Object, propertyName string, cs 
 // Create a new control-binding that attaches the #GstControlSource to the
 // #GObject property. It will directly map the control source values to the
 // target property range without any transformations.
-func NewDirectControlBindingInstanceAbsolute(object gst.Object, propertyName string, cs gst.ControlSource) gst.ControlBinding {
+func NewDirectControlBindingAbsolute(object gst.Object, propertyName string, cs gst.ControlSource) gst.ControlBinding {
 	var carg1 *C.GstObject         // in, none, converted
 	var carg2 *C.gchar             // in, none, string, casted *C.gchar
 	var carg3 *C.GstControlSource  // in, none, converted
@@ -445,13 +467,13 @@ func UnsafeLFOControlSourceToGlibFull(c LFOControlSource) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewLFOControlSourceInstance wraps gst_lfo_control_source_new
+// NewLFOControlSource wraps gst_lfo_control_source_new
 // The function returns the following values:
 // 
 // 	- goret gst.ControlSource 
 //
 // This returns a new, unbound #GstLFOControlSource.
-func NewLFOControlSourceInstance() gst.ControlSource {
+func NewLFOControlSource() gst.ControlSource {
 	var cret *C.GstControlSource // return, full, converted
 
 	cret = C.gst_lfo_control_source_new()
@@ -519,7 +541,7 @@ func UnsafeProxyControlBindingToGlibFull(c ProxyControlBinding) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewProxyControlBindingInstance wraps gst_proxy_control_binding_new
+// NewProxyControlBinding wraps gst_proxy_control_binding_new
 // 
 // The function takes the following parameters:
 // 
@@ -536,7 +558,7 @@ func UnsafeProxyControlBindingToGlibFull(c ProxyControlBinding) unsafe.Pointer {
 // #GstProxyControlBinding forwards all access to data or `sync_values()`
 // requests from @property_name on @object to the control binding at
 // @ref_property_name on @ref_object.
-func NewProxyControlBindingInstance(object gst.Object, propertyName string, refObject gst.Object, refPropertyName string) gst.ControlBinding {
+func NewProxyControlBinding(object gst.Object, propertyName string, refObject gst.Object, refPropertyName string) gst.ControlBinding {
 	var carg1 *C.GstObject         // in, none, converted
 	var carg2 *C.gchar             // in, none, string, casted *C.gchar
 	var carg3 *C.GstObject         // in, none, converted
@@ -880,13 +902,13 @@ func UnsafeTriggerControlSourceToGlibFull(c TriggerControlSource) unsafe.Pointer
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewTriggerControlSourceInstance wraps gst_trigger_control_source_new
+// NewTriggerControlSource wraps gst_trigger_control_source_new
 // The function returns the following values:
 // 
 // 	- goret gst.ControlSource 
 //
 // This returns a new, unbound #GstTriggerControlSource.
-func NewTriggerControlSourceInstance() gst.ControlSource {
+func NewTriggerControlSource() gst.ControlSource {
 	var cret *C.GstControlSource // return, full, converted
 
 	cret = C.gst_trigger_control_source_new()
@@ -963,13 +985,13 @@ func UnsafeInterpolationControlSourceToGlibFull(c InterpolationControlSource) un
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewInterpolationControlSourceInstance wraps gst_interpolation_control_source_new
+// NewInterpolationControlSource wraps gst_interpolation_control_source_new
 // The function returns the following values:
 // 
 // 	- goret gst.ControlSource 
 //
 // This returns a new, unbound #GstInterpolationControlSource.
-func NewInterpolationControlSourceInstance() gst.ControlSource {
+func NewInterpolationControlSource() gst.ControlSource {
 	var cret *C.GstControlSource // return, full, converted
 
 	cret = C.gst_interpolation_control_source_new()

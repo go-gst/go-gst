@@ -4,6 +4,7 @@ package gstallocators
 
 import (
 	"runtime"
+	"strings"
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
@@ -64,6 +65,27 @@ const (
 // Has returns true if f contains other
 func (f FdMemoryFlags) Has(other FdMemoryFlags) bool {
 	return (f & other) == other
+}
+
+func (f FdMemoryFlags) String() string {
+	if f == 0 {
+		return "FdMemoryFlags(0)"
+	}
+
+	var parts []string
+	if (f & FdMemoryFlagNone) != 0 {
+		parts = append(parts, "FdMemoryFlagNone")
+	}
+	if (f & FdMemoryFlagKeepMapped) != 0 {
+		parts = append(parts, "FdMemoryFlagKeepMapped")
+	}
+	if (f & FdMemoryFlagMapPrivate) != 0 {
+		parts = append(parts, "FdMemoryFlagMapPrivate")
+	}
+	if (f & FdMemoryFlagDontClose) != 0 {
+		parts = append(parts, "FdMemoryFlagDontClose")
+	}
+	return "FdMemoryFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // DmabufMemoryGetFd wraps gst_dmabuf_memory_get_fd
@@ -446,7 +468,7 @@ func UnsafeDRMDumbAllocatorToGlibFull(c DRMDumbAllocator) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewDRMDumbAllocatorInstanceWithDevicePath wraps gst_drm_dumb_allocator_new_with_device_path
+// NewDRMDumbAllocatorWithDevicePath wraps gst_drm_dumb_allocator_new_with_device_path
 // 
 // The function takes the following parameters:
 // 
@@ -459,7 +481,7 @@ func UnsafeDRMDumbAllocatorToGlibFull(c DRMDumbAllocator) unsafe.Pointer {
 // Creates a new #GstDRMDumbAllocator for the specific device path. This
 // function can fail if the path does not exist, is not a DRM device or if
 // the DRM device doesnot support DUMB allocation.
-func NewDRMDumbAllocatorInstanceWithDevicePath(drmDevicePath string) gst.Allocator {
+func NewDRMDumbAllocatorWithDevicePath(drmDevicePath string) gst.Allocator {
 	var carg1 *C.gchar        // in, none, string, casted *C.gchar
 	var cret  *C.GstAllocator // return, full, converted
 
@@ -476,7 +498,7 @@ func NewDRMDumbAllocatorInstanceWithDevicePath(drmDevicePath string) gst.Allocat
 	return goret
 }
 
-// NewDRMDumbAllocatorInstanceWithFd wraps gst_drm_dumb_allocator_new_with_fd
+// NewDRMDumbAllocatorWithFd wraps gst_drm_dumb_allocator_new_with_fd
 // 
 // The function takes the following parameters:
 // 
@@ -489,7 +511,7 @@ func NewDRMDumbAllocatorInstanceWithDevicePath(drmDevicePath string) gst.Allocat
 // Creates a new #GstDRMDumbAllocator for the specific file desciptor. This
 // function can fail if the file descriptor is not a DRM device or if
 // the DRM device does not support DUMB allocation.
-func NewDRMDumbAllocatorInstanceWithFd(drmFd int) gst.Allocator {
+func NewDRMDumbAllocatorWithFd(drmFd int) gst.Allocator {
 	var carg1 C.gint          // in, none, casted
 	var cret  *C.GstAllocator // return, full, converted
 
@@ -630,13 +652,13 @@ func UnsafeFdAllocatorToGlibFull(c FdAllocator) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewFdAllocatorInstance wraps gst_fd_allocator_new
+// NewFdAllocator wraps gst_fd_allocator_new
 // The function returns the following values:
 // 
 // 	- goret gst.Allocator 
 //
 // Return a new fd allocator.
-func NewFdAllocatorInstance() gst.Allocator {
+func NewFdAllocator() gst.Allocator {
 	var cret *C.GstAllocator // return, full, converted
 
 	cret = C.gst_fd_allocator_new()
@@ -648,7 +670,7 @@ func NewFdAllocatorInstance() gst.Allocator {
 	return goret
 }
 
-// FdAllocatorInstanceAlloc wraps gst_fd_allocator_alloc
+// FdAllocatorAlloc wraps gst_fd_allocator_alloc
 // 
 // The function takes the following parameters:
 // 
@@ -662,7 +684,7 @@ func NewFdAllocatorInstance() gst.Allocator {
 // 	- goret *gst.Memory 
 //
 // Return a %GstMemory that wraps a generic file descriptor.
-func FdAllocatorInstanceAlloc(allocator gst.Allocator, fd int, size uint, flags FdMemoryFlags) *gst.Memory {
+func FdAllocatorAlloc(allocator gst.Allocator, fd int, size uint, flags FdMemoryFlags) *gst.Memory {
 	var carg1 *C.GstAllocator    // in, none, converted
 	var carg2 C.gint             // in, none, casted
 	var carg3 C.gsize            // in, none, casted
@@ -753,14 +775,14 @@ func UnsafeShmAllocatorToGlibFull(c ShmAllocator) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// ShmAllocatorInstanceGet wraps gst_shm_allocator_get
+// ShmAllocatorGet wraps gst_shm_allocator_get
 // The function returns the following values:
 // 
 // 	- goret gst.Allocator 
 //
 // Get the #GstShmAllocator singleton previously registered with
 // gst_shm_allocator_init_once().
-func ShmAllocatorInstanceGet() gst.Allocator {
+func ShmAllocatorGet() gst.Allocator {
 	var cret *C.GstAllocator // return, full, converted
 
 	cret = C.gst_shm_allocator_get()
@@ -772,11 +794,11 @@ func ShmAllocatorInstanceGet() gst.Allocator {
 	return goret
 }
 
-// ShmAllocatorInstanceInitOnce wraps gst_shm_allocator_init_once
+// ShmAllocatorInitOnce wraps gst_shm_allocator_init_once
 //
 // Register a #GstShmAllocator using gst_allocator_register() with the name
 // %GST_ALLOCATOR_SHM. This is no-op after the first call.
-func ShmAllocatorInstanceInitOnce() {
+func ShmAllocatorInitOnce() {
 
 	C.gst_shm_allocator_init_once()
 }
@@ -839,13 +861,13 @@ func UnsafeDmaBufAllocatorToGlibFull(c DmaBufAllocator) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewDmaBufAllocatorInstance wraps gst_dmabuf_allocator_new
+// NewDmaBufAllocator wraps gst_dmabuf_allocator_new
 // The function returns the following values:
 // 
 // 	- goret gst.Allocator 
 //
 // Return a new dmabuf allocator.
-func NewDmaBufAllocatorInstance() gst.Allocator {
+func NewDmaBufAllocator() gst.Allocator {
 	var cret *C.GstAllocator // return, full, converted
 
 	cret = C.gst_dmabuf_allocator_new()
@@ -857,7 +879,7 @@ func NewDmaBufAllocatorInstance() gst.Allocator {
 	return goret
 }
 
-// DmaBufAllocatorInstanceAlloc wraps gst_dmabuf_allocator_alloc
+// DmaBufAllocatorAlloc wraps gst_dmabuf_allocator_alloc
 // 
 // The function takes the following parameters:
 // 
@@ -870,7 +892,7 @@ func NewDmaBufAllocatorInstance() gst.Allocator {
 // 	- goret *gst.Memory 
 //
 // Return a %GstMemory that wraps a dmabuf file descriptor.
-func DmaBufAllocatorInstanceAlloc(allocator gst.Allocator, fd int, size uint) *gst.Memory {
+func DmaBufAllocatorAlloc(allocator gst.Allocator, fd int, size uint) *gst.Memory {
 	var carg1 *C.GstAllocator // in, none, converted
 	var carg2 C.gint          // in, none, casted
 	var carg3 C.gsize         // in, none, casted
@@ -892,7 +914,7 @@ func DmaBufAllocatorInstanceAlloc(allocator gst.Allocator, fd int, size uint) *g
 	return goret
 }
 
-// DmaBufAllocatorInstanceAllocWithFlags wraps gst_dmabuf_allocator_alloc_with_flags
+// DmaBufAllocatorAllocWithFlags wraps gst_dmabuf_allocator_alloc_with_flags
 // 
 // The function takes the following parameters:
 // 
@@ -906,7 +928,7 @@ func DmaBufAllocatorInstanceAlloc(allocator gst.Allocator, fd int, size uint) *g
 // 	- goret *gst.Memory 
 //
 // Return a %GstMemory that wraps a dmabuf file descriptor.
-func DmaBufAllocatorInstanceAllocWithFlags(allocator gst.Allocator, fd int, size uint, flags FdMemoryFlags) *gst.Memory {
+func DmaBufAllocatorAllocWithFlags(allocator gst.Allocator, fd int, size uint, flags FdMemoryFlags) *gst.Memory {
 	var carg1 *C.GstAllocator    // in, none, converted
 	var carg2 C.gint             // in, none, casted
 	var carg3 C.gsize            // in, none, casted

@@ -61,6 +61,8 @@ var Data = genmain.Overlay(
 			{Name: "gstreamer-player-1.0", Namespaces: []string{"GstPlayer-1"}},
 		},
 		Preprocessors: []types.Preprocessor{
+			types.MustIntrospect("Gst-1.Message.copy"),
+
 			// Enum has a member of same name:
 			types.TypeRenamer("Gst-1.BufferCopyFlags", "BufferCopyFlagsType"),
 
@@ -97,6 +99,19 @@ var Data = genmain.Overlay(
 		Config: typesystem.Config{
 			Namespaces: map[string]typesystem.NamespaceConfig{
 				"Gst-1": {
+					ManualTypes: []typesystem.Type{
+						&typesystem.Alias{
+							BaseType: typesystem.BaseType{
+								GirName: "ClockTime",
+								GoTyp:   "ClockTime",
+								CGoTyp:  "C.GstClockTime",
+								CTyp:    "GstClockTime",
+							},
+							AliasedType: typesystem.CouldBeForeign[typesystem.Type]{
+								Type: typesystem.Guint64,
+							},
+						},
+					},
 					IgnoredDefinitions: []typesystem.IgnoreFunc{
 						// Collide and use an out array of values. TODO: manually implement
 						typesystem.IgnoreMatching("Object.get_g_value_array"),
@@ -153,6 +168,7 @@ var Data = genmain.Overlay(
 			typesystem.MarkAsManuallyExtended("Gst", 1, "Object"),
 			typesystem.MarkAsManuallyExtended("Gst", 1, "Element"),
 			typesystem.MarkAsManuallyExtended("Gst", 1, "Bin"),
+			typesystem.MarkAsManuallyExtended("Gst", 1, "Bus"),
 			typesystem.MarkAsManuallyExtended("Gst", 1, "ChildProxy"),
 		},
 		GeneratorHooks: []genmain.GeneratorHook{

@@ -3,7 +3,9 @@
 package gstpbutils
 
 import (
+	"fmt"
 	"runtime"
+	"strings"
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
@@ -141,6 +143,22 @@ func (e AudioVisualizerShader) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e AudioVisualizerShader) String() string {
+	switch e {
+		case AudioVisualizerShaderFade: return "AudioVisualizerShaderFade"
+		case AudioVisualizerShaderFadeAndMoveUp: return "AudioVisualizerShaderFadeAndMoveUp"
+		case AudioVisualizerShaderFadeAndMoveDown: return "AudioVisualizerShaderFadeAndMoveDown"
+		case AudioVisualizerShaderFadeAndMoveLeft: return "AudioVisualizerShaderFadeAndMoveLeft"
+		case AudioVisualizerShaderFadeAndMoveHorizIn: return "AudioVisualizerShaderFadeAndMoveHorizIn"
+		case AudioVisualizerShaderFadeAndMoveVertIn: return "AudioVisualizerShaderFadeAndMoveVertIn"
+		case AudioVisualizerShaderNone: return "AudioVisualizerShaderNone"
+		case AudioVisualizerShaderFadeAndMoveRight: return "AudioVisualizerShaderFadeAndMoveRight"
+		case AudioVisualizerShaderFadeAndMoveHorizOut: return "AudioVisualizerShaderFadeAndMoveHorizOut"
+		case AudioVisualizerShaderFadeAndMoveVertOut: return "AudioVisualizerShaderFadeAndMoveVertOut"
+		default: return fmt.Sprintf("AudioVisualizerShader(%d)", e)
+	}
+}
+
 // DiscovererResult wraps GstDiscovererResult
 //
 // Result values for the discovery process.
@@ -182,6 +200,18 @@ var _ gobject.GoValueInitializer = DiscovererResult(0)
 func (e DiscovererResult) InitGoValue(v *gobject.Value) {
 	v.Init(TypeDiscovererResult)
 	v.SetEnum(int(e))
+}
+
+func (e DiscovererResult) String() string {
+	switch e {
+		case DiscovererOK: return "DiscovererOK"
+		case DiscovererURIInvalid: return "DiscovererURIInvalid"
+		case DiscovererError: return "DiscovererError"
+		case DiscovererTimeout: return "DiscovererTimeout"
+		case DiscovererBusy: return "DiscovererBusy"
+		case DiscovererMissingPlugins: return "DiscovererMissingPlugins"
+		default: return fmt.Sprintf("DiscovererResult(%d)", e)
+	}
 }
 
 // InstallPluginsReturn wraps GstInstallPluginsReturn
@@ -265,6 +295,23 @@ func (e InstallPluginsReturn) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e InstallPluginsReturn) String() string {
+	switch e {
+		case InstallPluginsInvalid: return "InstallPluginsInvalid"
+		case InstallPluginsSuccess: return "InstallPluginsSuccess"
+		case InstallPluginsCrashed: return "InstallPluginsCrashed"
+		case InstallPluginsStartedOK: return "InstallPluginsStartedOK"
+		case InstallPluginsInternalFailure: return "InstallPluginsInternalFailure"
+		case InstallPluginsHelperMissing: return "InstallPluginsHelperMissing"
+		case InstallPluginsInstallInProgress: return "InstallPluginsInstallInProgress"
+		case InstallPluginsNotFound: return "InstallPluginsNotFound"
+		case InstallPluginsError: return "InstallPluginsError"
+		case InstallPluginsPartialSuccess: return "InstallPluginsPartialSuccess"
+		case InstallPluginsUserAbort: return "InstallPluginsUserAbort"
+		default: return fmt.Sprintf("InstallPluginsReturn(%d)", e)
+	}
+}
+
 // DiscovererSerializeFlags wraps GstDiscovererSerializeFlags
 //
 // You can use these flags to control what is serialized by
@@ -309,6 +356,30 @@ var _ gobject.GoValueInitializer = DiscovererSerializeFlags(0)
 func (f DiscovererSerializeFlags) InitGoValue(v *gobject.Value) {
 	v.Init(TypeDiscovererSerializeFlags)
 	v.SetFlags(int(f))
+}
+
+func (f DiscovererSerializeFlags) String() string {
+	if f == 0 {
+		return "DiscovererSerializeFlags(0)"
+	}
+
+	var parts []string
+	if (f & DiscovererSerializeBasic) != 0 {
+		parts = append(parts, "DiscovererSerializeBasic")
+	}
+	if (f & DiscovererSerializeCaps) != 0 {
+		parts = append(parts, "DiscovererSerializeCaps")
+	}
+	if (f & DiscovererSerializeTags) != 0 {
+		parts = append(parts, "DiscovererSerializeTags")
+	}
+	if (f & DiscovererSerializeMisc) != 0 {
+		parts = append(parts, "DiscovererSerializeMisc")
+	}
+	if (f & DiscovererSerializeAll) != 0 {
+		parts = append(parts, "DiscovererSerializeAll")
+	}
+	return "DiscovererSerializeFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // PbUtilsCapsDescriptionFlags wraps GstPbUtilsCapsDescriptionFlags
@@ -371,6 +442,39 @@ var _ gobject.GoValueInitializer = PbUtilsCapsDescriptionFlags(0)
 func (f PbUtilsCapsDescriptionFlags) InitGoValue(v *gobject.Value) {
 	v.Init(TypePbUtilsCapsDescriptionFlags)
 	v.SetFlags(int(f))
+}
+
+func (f PbUtilsCapsDescriptionFlags) String() string {
+	if f == 0 {
+		return "PbUtilsCapsDescriptionFlags(0)"
+	}
+
+	var parts []string
+	if (f & PbutilsCapsDescriptionFlagContainer) != 0 {
+		parts = append(parts, "PbutilsCapsDescriptionFlagContainer")
+	}
+	if (f & PbutilsCapsDescriptionFlagAudio) != 0 {
+		parts = append(parts, "PbutilsCapsDescriptionFlagAudio")
+	}
+	if (f & PbutilsCapsDescriptionFlagVideo) != 0 {
+		parts = append(parts, "PbutilsCapsDescriptionFlagVideo")
+	}
+	if (f & PbutilsCapsDescriptionFlagImage) != 0 {
+		parts = append(parts, "PbutilsCapsDescriptionFlagImage")
+	}
+	if (f & PbutilsCapsDescriptionFlagSubtitle) != 0 {
+		parts = append(parts, "PbutilsCapsDescriptionFlagSubtitle")
+	}
+	if (f & PbutilsCapsDescriptionFlagTag) != 0 {
+		parts = append(parts, "PbutilsCapsDescriptionFlagTag")
+	}
+	if (f & PbutilsCapsDescriptionFlagGeneric) != 0 {
+		parts = append(parts, "PbutilsCapsDescriptionFlagGeneric")
+	}
+	if (f & PbutilsCapsDescriptionFlagMetadata) != 0 {
+		parts = append(parts, "PbutilsCapsDescriptionFlagMetadata")
+	}
+	return "PbUtilsCapsDescriptionFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // InstallPluginsResultFunc wraps GstInstallPluginsResultFunc
@@ -2343,7 +2447,7 @@ func UnsafeDiscovererToGlibFull(c Discoverer) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewDiscovererInstance wraps gst_discoverer_new
+// NewDiscoverer wraps gst_discoverer_new
 // 
 // The function takes the following parameters:
 // 
@@ -2356,7 +2460,7 @@ func UnsafeDiscovererToGlibFull(c Discoverer) unsafe.Pointer {
 // 	- _goerr error (nullable): an error 
 //
 // Creates a new #GstDiscoverer with the provided timeout.
-func NewDiscovererInstance(timeout gst.ClockTime) (Discoverer, error) {
+func NewDiscoverer(timeout gst.ClockTime) (Discoverer, error) {
 	var carg1 C.GstClockTime   // in, none, casted, alias
 	var cret  *C.GstDiscoverer // return, full, converted
 	var _cerr *C.GError        // out, full, converted, nullable
@@ -3805,7 +3909,7 @@ func UnsafeEncodingProfileToGlibFull(c EncodingProfile) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// EncodingProfileInstanceFind wraps gst_encoding_profile_find
+// EncodingProfileFind wraps gst_encoding_profile_find
 // 
 // The function takes the following parameters:
 // 
@@ -3819,7 +3923,7 @@ func UnsafeEncodingProfileToGlibFull(c EncodingProfile) unsafe.Pointer {
 // 	- goret EncodingProfile 
 //
 // Find the #GstEncodingProfile with the specified name and category.
-func EncodingProfileInstanceFind(targetname string, profilename string, category string) EncodingProfile {
+func EncodingProfileFind(targetname string, profilename string, category string) EncodingProfile {
 	var carg1 *C.gchar              // in, none, string, casted *C.gchar
 	var carg2 *C.gchar              // in, none, string, nullable-string
 	var carg3 *C.gchar              // in, none, string, nullable-string
@@ -3848,7 +3952,7 @@ func EncodingProfileInstanceFind(targetname string, profilename string, category
 	return goret
 }
 
-// EncodingProfileInstanceFromDiscoverer wraps gst_encoding_profile_from_discoverer
+// EncodingProfileFromDiscoverer wraps gst_encoding_profile_from_discoverer
 // 
 // The function takes the following parameters:
 // 
@@ -3861,7 +3965,7 @@ func EncodingProfileInstanceFind(targetname string, profilename string, category
 // Creates a #GstEncodingProfile matching the formats from the given
 // #GstDiscovererInfo. Streams other than audio or video (eg,
 // subtitles), are currently ignored.
-func EncodingProfileInstanceFromDiscoverer(info DiscovererInfo) EncodingProfile {
+func EncodingProfileFromDiscoverer(info DiscovererInfo) EncodingProfile {
 	var carg1 *C.GstDiscovererInfo  // in, none, converted
 	var cret  *C.GstEncodingProfile // return, full, converted
 
@@ -4603,7 +4707,7 @@ func UnsafeEncodingTargetToGlibFull(c EncodingTarget) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// EncodingTargetInstanceLoad wraps gst_encoding_target_load
+// EncodingTargetLoad wraps gst_encoding_target_load
 // 
 // The function takes the following parameters:
 // 
@@ -4623,7 +4727,7 @@ func UnsafeEncodingTargetToGlibFull(c EncodingTarget) unsafe.Pointer {
 // 
 // If the category name is specified only targets from that category will be
 // searched for.
-func EncodingTargetInstanceLoad(name string, category string) (EncodingTarget, error) {
+func EncodingTargetLoad(name string, category string) (EncodingTarget, error) {
 	var carg1 *C.gchar             // in, none, string, casted *C.gchar
 	var carg2 *C.gchar             // in, none, string, nullable-string
 	var cret  *C.GstEncodingTarget // return, full, converted
@@ -4651,7 +4755,7 @@ func EncodingTargetInstanceLoad(name string, category string) (EncodingTarget, e
 	return goret, _goerr
 }
 
-// EncodingTargetInstanceLoadFromFile wraps gst_encoding_target_load_from_file
+// EncodingTargetLoadFromFile wraps gst_encoding_target_load_from_file
 // 
 // The function takes the following parameters:
 // 
@@ -4663,7 +4767,7 @@ func EncodingTargetInstanceLoad(name string, category string) (EncodingTarget, e
 // 	- _goerr error (nullable): an error 
 //
 // Opens the provided file and returns the contained #GstEncodingTarget.
-func EncodingTargetInstanceLoadFromFile(filepath string) (EncodingTarget, error) {
+func EncodingTargetLoadFromFile(filepath string) (EncodingTarget, error) {
 	var carg1 *C.gchar             // in, none, string, casted *C.gchar
 	var cret  *C.GstEncodingTarget // return, full, converted
 	var _cerr *C.GError            // out, full, converted, nullable
@@ -4989,7 +5093,7 @@ func UnsafeEncodingVideoProfileToGlibFull(c EncodingVideoProfile) unsafe.Pointer
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewEncodingVideoProfileInstance wraps gst_encoding_video_profile_new
+// NewEncodingVideoProfile wraps gst_encoding_video_profile_new
 // 
 // The function takes the following parameters:
 // 
@@ -5014,7 +5118,7 @@ func UnsafeEncodingVideoProfileToGlibFull(c EncodingVideoProfile) unsafe.Pointer
 // 
 // If you wish to use/force a constant framerate please refer to the
 // gst_encoding_video_profile_set_variableframerate() documentation.
-func NewEncodingVideoProfileInstance(format *gst.Caps, preset string, restriction *gst.Caps, presence uint) EncodingVideoProfile {
+func NewEncodingVideoProfile(format *gst.Caps, preset string, restriction *gst.Caps, presence uint) EncodingVideoProfile {
 	var carg1 *C.GstCaps                 // in, none, converted
 	var carg2 *C.gchar                   // in, none, string, nullable-string
 	var carg3 *C.GstCaps                 // in, none, converted, nullable
@@ -5494,7 +5598,7 @@ func UnsafeEncodingAudioProfileToGlibFull(c EncodingAudioProfile) unsafe.Pointer
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewEncodingAudioProfileInstance wraps gst_encoding_audio_profile_new
+// NewEncodingAudioProfile wraps gst_encoding_audio_profile_new
 // 
 // The function takes the following parameters:
 // 
@@ -5513,7 +5617,7 @@ func UnsafeEncodingAudioProfileToGlibFull(c EncodingAudioProfile) unsafe.Pointer
 // 
 // All provided allocatable arguments will be internally copied, so can be
 // safely freed/unreferenced after calling this method.
-func NewEncodingAudioProfileInstance(format *gst.Caps, preset string, restriction *gst.Caps, presence uint) EncodingAudioProfile {
+func NewEncodingAudioProfile(format *gst.Caps, preset string, restriction *gst.Caps, presence uint) EncodingAudioProfile {
 	var carg1 *C.GstCaps                 // in, none, converted
 	var carg2 *C.gchar                   // in, none, string, nullable-string
 	var carg3 *C.GstCaps                 // in, none, converted, nullable
@@ -5624,7 +5728,7 @@ func UnsafeEncodingContainerProfileToGlibFull(c EncodingContainerProfile) unsafe
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewEncodingContainerProfileInstance wraps gst_encoding_container_profile_new
+// NewEncodingContainerProfile wraps gst_encoding_container_profile_new
 // 
 // The function takes the following parameters:
 // 
@@ -5639,7 +5743,7 @@ func UnsafeEncodingContainerProfileToGlibFull(c EncodingContainerProfile) unsafe
 // 	- goret EncodingContainerProfile 
 //
 // Creates a new #GstEncodingContainerProfile.
-func NewEncodingContainerProfileInstance(name string, description string, format *gst.Caps, preset string) EncodingContainerProfile {
+func NewEncodingContainerProfile(name string, description string, format *gst.Caps, preset string) EncodingContainerProfile {
 	var carg1 *C.gchar                       // in, none, string, nullable-string
 	var carg2 *C.gchar                       // in, none, string, nullable-string
 	var carg3 *C.GstCaps                     // in, none, converted

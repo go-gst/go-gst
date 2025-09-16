@@ -3,7 +3,9 @@
 package gstrtsp
 
 import (
+	"fmt"
 	"runtime"
+	"strings"
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
@@ -105,6 +107,15 @@ func (e RTSPAuthMethod) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e RTSPAuthMethod) String() string {
+	switch e {
+		case RtspAuthNone: return "RtspAuthNone"
+		case RtspAuthBasic: return "RtspAuthBasic"
+		case RtspAuthDigest: return "RtspAuthDigest"
+		default: return fmt.Sprintf("RTSPAuthMethod(%d)", e)
+	}
+}
+
 // RTSPFamily wraps GstRTSPFamily
 //
 // The possible network families.
@@ -134,6 +145,15 @@ var _ gobject.GoValueInitializer = RTSPFamily(0)
 func (e RTSPFamily) InitGoValue(v *gobject.Value) {
 	v.Init(TypeRTSPFamily)
 	v.SetEnum(int(e))
+}
+
+func (e RTSPFamily) String() string {
+	switch e {
+		case RtspFamNone: return "RtspFamNone"
+		case RtspFamInet: return "RtspFamInet"
+		case RtspFamInet6: return "RtspFamInet6"
+		default: return fmt.Sprintf("RTSPFamily(%d)", e)
+	}
 }
 
 // RTSPHeaderField wraps GstRTSPHeaderField
@@ -335,6 +355,102 @@ func (e RTSPHeaderField) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e RTSPHeaderField) String() string {
+	switch e {
+		case RtspHdrRealChallenge2: return "RtspHdrRealChallenge2"
+		case RtspHdrRealChallenge1: return "RtspHdrRealChallenge1"
+		case RtspHdrXAccelerateStreaming: return "RtspHdrXAccelerateStreaming"
+		case RtspHdrXBurstStreaming: return "RtspHdrXBurstStreaming"
+		case RtspHdrPragma: return "RtspHdrPragma"
+		case RtspHdrLast: return "RtspHdrLast"
+		case RtspHdrAuthorization: return "RtspHdrAuthorization"
+		case RtspHdrBandwidth: return "RtspHdrBandwidth"
+		case RtspHdrRetryAfter: return "RtspHdrRetryAfter"
+		case RtspHdrSubscribe: return "RtspHdrSubscribe"
+		case RtspHdrLocation: return "RtspHdrLocation"
+		case RtspHdrIfMatch: return "RtspHdrIfMatch"
+		case RtspHdrRegionData: return "RtspHdrRegionData"
+		case RtspHdrXAcceptProxyAuthent: return "RtspHdrXAcceptProxyAuthent"
+		case RtspHdrInvalid: return "RtspHdrInvalid"
+		case RtspHdrContentLanguage: return "RtspHdrContentLanguage"
+		case RtspHdrScale: return "RtspHdrScale"
+		case RtspHdrTransport: return "RtspHdrTransport"
+		case RtspHdrUserAgent: return "RtspHdrUserAgent"
+		case RtspHdrGUID: return "RtspHdrGUID"
+		case RtspHdrXProxyClientVerb: return "RtspHdrXProxyClientVerb"
+		case RtspHdrHost: return "RtspHdrHost"
+		case RtspHdrCacheControl: return "RtspHdrCacheControl"
+		case RtspHdrPipelinedRequests: return "RtspHdrPipelinedRequests"
+		case RtspHdrContentLocation: return "RtspHdrContentLocation"
+		case RtspHdrAlert: return "RtspHdrAlert"
+		case RtspHdrLanguage: return "RtspHdrLanguage"
+		case RtspHdrSeekStyle: return "RtspHdrSeekStyle"
+		case RtspHdrExpires: return "RtspHdrExpires"
+		case RtspHdrSupported: return "RtspHdrSupported"
+		case RtspHdrMediaProperties: return "RtspHdrMediaProperties"
+		case RtspHdrWwwAuthenticate: return "RtspHdrWwwAuthenticate"
+		case RtspHdrXPlaylistSeekID: return "RtspHdrXPlaylistSeekID"
+		case RtspHdrXServerIPAddress: return "RtspHdrXServerIPAddress"
+		case RtspHdrContentType: return "RtspHdrContentType"
+		case RtspHdrRtpInfo: return "RtspHdrRtpInfo"
+		case RtspHdrSession: return "RtspHdrSession"
+		case RtspHdrMaxAsmWidth: return "RtspHdrMaxAsmWidth"
+		case RtspHdrXPlaylistGenID: return "RtspHdrXPlaylistGenID"
+		case RtspHdrXProxyClientAgent: return "RtspHdrXProxyClientAgent"
+		case RtspHdrXStartupprofile: return "RtspHdrXStartupprofile"
+		case RtspHdrAccept: return "RtspHdrAccept"
+		case RtspHdrRealChallenge3: return "RtspHdrRealChallenge3"
+		case RtspHdrAcceptCharset: return "RtspHdrAcceptCharset"
+		case RtspHdrXRecedingPlaylistchange: return "RtspHdrXRecedingPlaylistchange"
+		case RtspHdrXRtpInfo: return "RtspHdrXRtpInfo"
+		case RtspHdrAcceptRanges: return "RtspHdrAcceptRanges"
+		case RtspHdrContentEncoding: return "RtspHdrContentEncoding"
+		case RtspHdrFrom: return "RtspHdrFrom"
+		case RtspHdrIfModifiedSince: return "RtspHdrIfModifiedSince"
+		case RtspHdrPublic: return "RtspHdrPublic"
+		case RtspHdrUnsupported: return "RtspHdrUnsupported"
+		case RtspHdrVia: return "RtspHdrVia"
+		case RtspHdrETag: return "RtspHdrETag"
+		case RtspHdrCompanyID: return "RtspHdrCompanyID"
+		case RtspHdrAcceptEncoding: return "RtspHdrAcceptEncoding"
+		case RtspHdrClientID: return "RtspHdrClientID"
+		case RtspHdrPlayerStartTime: return "RtspHdrPlayerStartTime"
+		case RtspHdrVary: return "RtspHdrVary"
+		case RtspHdrXPlayerLagTime: return "RtspHdrXPlayerLagTime"
+		case RtspHdrAuthenticationInfo: return "RtspHdrAuthenticationInfo"
+		case RtspHdrXSessioncookie: return "RtspHdrXSessioncookie"
+		case RtspHdrKeymgmt: return "RtspHdrKeymgmt"
+		case RtspHdrSpeed: return "RtspHdrSpeed"
+		case RtspHdrClientChallenge: return "RtspHdrClientChallenge"
+		case RtspHdrTimestamp: return "RtspHdrTimestamp"
+		case RtspHdrFrames: return "RtspHdrFrames"
+		case RtspHdrBlocksize: return "RtspHdrBlocksize"
+		case RtspHdrProxyRequire: return "RtspHdrProxyRequire"
+		case RtspHdrXBroadcastID: return "RtspHdrXBroadcastID"
+		case RtspHdrXPlaylist: return "RtspHdrXPlaylist"
+		case RtspHdrAllow: return "RtspHdrAllow"
+		case RtspHdrConference: return "RtspHdrConference"
+		case RtspHdrConnection: return "RtspHdrConnection"
+		case RtspHdrContentBase: return "RtspHdrContentBase"
+		case RtspHdrContentLength: return "RtspHdrContentLength"
+		case RtspHdrLastModified: return "RtspHdrLastModified"
+		case RtspHdrReferer: return "RtspHdrReferer"
+		case RtspHdrXPlaylistChangeNotice: return "RtspHdrXPlaylistChangeNotice"
+		case RtspHdrCseq: return "RtspHdrCseq"
+		case RtspHdrRequire: return "RtspHdrRequire"
+		case RtspHdrXAcceptAuthent: return "RtspHdrXAcceptAuthent"
+		case RtspHdrXNotice: return "RtspHdrXNotice"
+		case RtspHdrRtcpInterval: return "RtspHdrRtcpInterval"
+		case RtspHdrRateControl: return "RtspHdrRateControl"
+		case RtspHdrAcceptLanguage: return "RtspHdrAcceptLanguage"
+		case RtspHdrDate: return "RtspHdrDate"
+		case RtspHdrProxyAuthenticate: return "RtspHdrProxyAuthenticate"
+		case RtspHdrRange: return "RtspHdrRange"
+		case RtspHdrServer: return "RtspHdrServer"
+		default: return fmt.Sprintf("RTSPHeaderField(%d)", e)
+	}
+}
+
 // RTSPMsgType wraps GstRTSPMsgType
 //
 // The type of a message.
@@ -378,6 +494,18 @@ func (e RTSPMsgType) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e RTSPMsgType) String() string {
+	switch e {
+		case RtspMessageHTTPRequest: return "RtspMessageHTTPRequest"
+		case RtspMessageHTTPResponse: return "RtspMessageHTTPResponse"
+		case RtspMessageData: return "RtspMessageData"
+		case RtspMessageInvalid: return "RtspMessageInvalid"
+		case RtspMessageRequest: return "RtspMessageRequest"
+		case RtspMessageResponse: return "RtspMessageResponse"
+		default: return fmt.Sprintf("RTSPMsgType(%d)", e)
+	}
+}
+
 // RTSPRangeUnit wraps GstRTSPRangeUnit
 //
 // Different possible time range units.
@@ -415,6 +543,17 @@ var _ gobject.GoValueInitializer = RTSPRangeUnit(0)
 func (e RTSPRangeUnit) InitGoValue(v *gobject.Value) {
 	v.Init(TypeRTSPRangeUnit)
 	v.SetEnum(int(e))
+}
+
+func (e RTSPRangeUnit) String() string {
+	switch e {
+		case RtspRangeSmpte: return "RtspRangeSmpte"
+		case RtspRangeSmpte30Drop: return "RtspRangeSmpte30Drop"
+		case RtspRangeSmpte25: return "RtspRangeSmpte25"
+		case RtspRangeNpt: return "RtspRangeNpt"
+		case RtspRangeClock: return "RtspRangeClock"
+		default: return fmt.Sprintf("RTSPRangeUnit(%d)", e)
+	}
 }
 
 // RTSPResult wraps GstRTSPResult
@@ -512,6 +651,31 @@ func (e RTSPResult) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e RTSPResult) String() string {
+	switch e {
+		case RtspEwsaversion: return "RtspEwsaversion"
+		case RtspOKRedirect: return "RtspOKRedirect"
+		case RtspError: return "RtspError"
+		case RtspEinval: return "RtspEinval"
+		case RtspEnomem: return "RtspEnomem"
+		case RtspEnotip: return "RtspEnotip"
+		case RtspOK: return "RtspOK"
+		case RtspEresolv: return "RtspEresolv"
+		case RtspEwsastart: return "RtspEwsastart"
+		case RtspEeof: return "RtspEeof"
+		case RtspEtpost: return "RtspEtpost"
+		case RtspEintr: return "RtspEintr"
+		case RtspEsys: return "RtspEsys"
+		case RtspEparse: return "RtspEparse"
+		case RtspEnet: return "RtspEnet"
+		case RtspEtimeout: return "RtspEtimeout"
+		case RtspEtget: return "RtspEtget"
+		case RtspElast: return "RtspElast"
+		case RtspEnotimpl: return "RtspEnotimpl"
+		default: return fmt.Sprintf("RTSPResult(%d)", e)
+	}
+}
+
 // RTSPState wraps GstRTSPState
 //
 // The different RTSP states.
@@ -553,6 +717,18 @@ var _ gobject.GoValueInitializer = RTSPState(0)
 func (e RTSPState) InitGoValue(v *gobject.Value) {
 	v.Init(TypeRTSPState)
 	v.SetEnum(int(e))
+}
+
+func (e RTSPState) String() string {
+	switch e {
+		case RtspStateInvalid: return "RtspStateInvalid"
+		case RtspStateInit: return "RtspStateInit"
+		case RtspStateReady: return "RtspStateReady"
+		case RtspStateSeeking: return "RtspStateSeeking"
+		case RtspStatePlaying: return "RtspStatePlaying"
+		case RtspStateRecording: return "RtspStateRecording"
+		default: return fmt.Sprintf("RTSPState(%d)", e)
+	}
 }
 
 // RTSPStatusCode wraps GstRTSPStatusCode
@@ -674,6 +850,60 @@ func (e RTSPStatusCode) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e RTSPStatusCode) String() string {
+	switch e {
+		case RtspStsInvalid: return "RtspStsInvalid"
+		case RtspStsMultipleChoices: return "RtspStsMultipleChoices"
+		case RtspStsNotAcceptable: return "RtspStsNotAcceptable"
+		case RtspStsUnsupportedMediaType: return "RtspStsUnsupportedMediaType"
+		case RtspStsHeaderFieldNotValidForResource: return "RtspStsHeaderFieldNotValidForResource"
+		case RtspStsParameterIsReadonly: return "RtspStsParameterIsReadonly"
+		case RtspStsAggregateOperationNotAllowed: return "RtspStsAggregateOperationNotAllowed"
+		case RtspStsOnlyAggregateOperationAllowed: return "RtspStsOnlyAggregateOperationAllowed"
+		case RtspStsMovedPermanently: return "RtspStsMovedPermanently"
+		case RtspStsSeeOther: return "RtspStsSeeOther"
+		case RtspStsUseProxy: return "RtspStsUseProxy"
+		case RtspStsGone: return "RtspStsGone"
+		case RtspStsKeyManagementFailure: return "RtspStsKeyManagementFailure"
+		case RtspStsNotImplemented: return "RtspStsNotImplemented"
+		case RtspStsOK: return "RtspStsOK"
+		case RtspStsUnauthorized: return "RtspStsUnauthorized"
+		case RtspStsRequestTimeout: return "RtspStsRequestTimeout"
+		case RtspStsPreconditionFailed: return "RtspStsPreconditionFailed"
+		case RtspStsSessionNotFound: return "RtspStsSessionNotFound"
+		case RtspStsDestinationUnreachable: return "RtspStsDestinationUnreachable"
+		case RtspStsContinue: return "RtspStsContinue"
+		case RtspStsCreated: return "RtspStsCreated"
+		case RtspStsRedirectTemporarily: return "RtspStsRedirectTemporarily"
+		case RtspStsProxyAuthRequired: return "RtspStsProxyAuthRequired"
+		case RtspStsRequestEntityTooLarge: return "RtspStsRequestEntityTooLarge"
+		case RtspStsConferenceNotFound: return "RtspStsConferenceNotFound"
+		case RtspStsInvalidRange: return "RtspStsInvalidRange"
+		case RtspStsBadGateway: return "RtspStsBadGateway"
+		case RtspStsPaymentRequired: return "RtspStsPaymentRequired"
+		case RtspStsForbidden: return "RtspStsForbidden"
+		case RtspStsInternalServerError: return "RtspStsInternalServerError"
+		case RtspStsServiceUnavailable: return "RtspStsServiceUnavailable"
+		case RtspStsGatewayTimeout: return "RtspStsGatewayTimeout"
+		case RtspStsOptionNotSupported: return "RtspStsOptionNotSupported"
+		case RtspStsNotModified: return "RtspStsNotModified"
+		case RtspStsNotFound: return "RtspStsNotFound"
+		case RtspStsMethodNotAllowed: return "RtspStsMethodNotAllowed"
+		case RtspStsLengthRequired: return "RtspStsLengthRequired"
+		case RtspStsParameterNotUnderstood: return "RtspStsParameterNotUnderstood"
+		case RtspStsNotEnoughBandwidth: return "RtspStsNotEnoughBandwidth"
+		case RtspStsMoveTemporarily: return "RtspStsMoveTemporarily"
+		case RtspStsBadRequest: return "RtspStsBadRequest"
+		case RtspStsMethodNotValidInThisState: return "RtspStsMethodNotValidInThisState"
+		case RtspStsUnsupportedTransport: return "RtspStsUnsupportedTransport"
+		case RtspStsRtspVersionNotSupported: return "RtspStsRtspVersionNotSupported"
+		case RtspStsLowOnStorage: return "RtspStsLowOnStorage"
+		case RtspStsRedirectPermanently: return "RtspStsRedirectPermanently"
+		case RtspStsRequestURITooLarge: return "RtspStsRequestURITooLarge"
+		default: return fmt.Sprintf("RTSPStatusCode(%d)", e)
+	}
+}
+
 // RTSPTimeType wraps GstRTSPTimeType
 //
 // Possible time types.
@@ -713,6 +943,17 @@ func (e RTSPTimeType) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e RTSPTimeType) String() string {
+	switch e {
+		case RtspTimeSeconds: return "RtspTimeSeconds"
+		case RtspTimeNow: return "RtspTimeNow"
+		case RtspTimeEnd: return "RtspTimeEnd"
+		case RtspTimeFrames: return "RtspTimeFrames"
+		case RtspTimeUTC: return "RtspTimeUTC"
+		default: return fmt.Sprintf("RTSPTimeType(%d)", e)
+	}
+}
+
 // RTSPVersion wraps GstRTSPVersion
 //
 // The supported RTSP versions.
@@ -748,6 +989,16 @@ func (e RTSPVersion) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e RTSPVersion) String() string {
+	switch e {
+		case RtspVersion10: return "RtspVersion10"
+		case RtspVersion11: return "RtspVersion11"
+		case RtspVersion20: return "RtspVersion20"
+		case RtspVersionInvalid: return "RtspVersionInvalid"
+		default: return fmt.Sprintf("RTSPVersion(%d)", e)
+	}
+}
+
 // RTSPEvent wraps GstRTSPEvent
 //
 // The possible events for the connection.
@@ -777,6 +1028,21 @@ var _ gobject.GoValueInitializer = RTSPEvent(0)
 func (f RTSPEvent) InitGoValue(v *gobject.Value) {
 	v.Init(TypeRTSPEvent)
 	v.SetFlags(int(f))
+}
+
+func (f RTSPEvent) String() string {
+	if f == 0 {
+		return "RTSPEvent(0)"
+	}
+
+	var parts []string
+	if (f & RtspEvRead) != 0 {
+		parts = append(parts, "RtspEvRead")
+	}
+	if (f & RtspEvWrite) != 0 {
+		parts = append(parts, "RtspEvWrite")
+	}
+	return "RTSPEvent(" + strings.Join(parts, "|") + ")"
 }
 
 // RTSPLowerTrans wraps GstRTSPLowerTrans
@@ -824,6 +1090,33 @@ var _ gobject.GoValueInitializer = RTSPLowerTrans(0)
 func (f RTSPLowerTrans) InitGoValue(v *gobject.Value) {
 	v.Init(TypeRTSPLowerTrans)
 	v.SetFlags(int(f))
+}
+
+func (f RTSPLowerTrans) String() string {
+	if f == 0 {
+		return "RTSPLowerTrans(0)"
+	}
+
+	var parts []string
+	if (f & RtspLowerTransUnknown) != 0 {
+		parts = append(parts, "RtspLowerTransUnknown")
+	}
+	if (f & RtspLowerTransUDP) != 0 {
+		parts = append(parts, "RtspLowerTransUDP")
+	}
+	if (f & RtspLowerTransUDPMcast) != 0 {
+		parts = append(parts, "RtspLowerTransUDPMcast")
+	}
+	if (f & RtspLowerTransTCP) != 0 {
+		parts = append(parts, "RtspLowerTransTCP")
+	}
+	if (f & RtspLowerTransHTTP) != 0 {
+		parts = append(parts, "RtspLowerTransHTTP")
+	}
+	if (f & RtspLowerTransTLS) != 0 {
+		parts = append(parts, "RtspLowerTransTLS")
+	}
+	return "RTSPLowerTrans(" + strings.Join(parts, "|") + ")"
 }
 
 // RTSPMethod wraps GstRTSPMethod
@@ -905,6 +1198,57 @@ func (f RTSPMethod) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f RTSPMethod) String() string {
+	if f == 0 {
+		return "RTSPMethod(0)"
+	}
+
+	var parts []string
+	if (f & RtspInvalid) != 0 {
+		parts = append(parts, "RtspInvalid")
+	}
+	if (f & RtspDescribe) != 0 {
+		parts = append(parts, "RtspDescribe")
+	}
+	if (f & RtspAnnounce) != 0 {
+		parts = append(parts, "RtspAnnounce")
+	}
+	if (f & RtspGetParameter) != 0 {
+		parts = append(parts, "RtspGetParameter")
+	}
+	if (f & RtspOptions) != 0 {
+		parts = append(parts, "RtspOptions")
+	}
+	if (f & RtspPause) != 0 {
+		parts = append(parts, "RtspPause")
+	}
+	if (f & RtspPlay) != 0 {
+		parts = append(parts, "RtspPlay")
+	}
+	if (f & RtspRecord) != 0 {
+		parts = append(parts, "RtspRecord")
+	}
+	if (f & RtspRedirect) != 0 {
+		parts = append(parts, "RtspRedirect")
+	}
+	if (f & RtspSetup) != 0 {
+		parts = append(parts, "RtspSetup")
+	}
+	if (f & RtspSetParameter) != 0 {
+		parts = append(parts, "RtspSetParameter")
+	}
+	if (f & RtspTeardown) != 0 {
+		parts = append(parts, "RtspTeardown")
+	}
+	if (f & RtspGet) != 0 {
+		parts = append(parts, "RtspGet")
+	}
+	if (f & RtspPost) != 0 {
+		parts = append(parts, "RtspPost")
+	}
+	return "RTSPMethod(" + strings.Join(parts, "|") + ")"
+}
+
 // RTSPProfile wraps GstRTSPProfile
 //
 // The transfer profile to use.
@@ -948,6 +1292,30 @@ func (f RTSPProfile) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f RTSPProfile) String() string {
+	if f == 0 {
+		return "RTSPProfile(0)"
+	}
+
+	var parts []string
+	if (f & RtspProfileUnknown) != 0 {
+		parts = append(parts, "RtspProfileUnknown")
+	}
+	if (f & RtspProfileAvp) != 0 {
+		parts = append(parts, "RtspProfileAvp")
+	}
+	if (f & RtspProfileSavp) != 0 {
+		parts = append(parts, "RtspProfileSavp")
+	}
+	if (f & RtspProfileAvpf) != 0 {
+		parts = append(parts, "RtspProfileAvpf")
+	}
+	if (f & RtspProfileSavpf) != 0 {
+		parts = append(parts, "RtspProfileSavpf")
+	}
+	return "RTSPProfile(" + strings.Join(parts, "|") + ")"
+}
+
 // RTSPTransMode wraps GstRTSPTransMode
 //
 // The transfer mode to use.
@@ -981,6 +1349,24 @@ var _ gobject.GoValueInitializer = RTSPTransMode(0)
 func (f RTSPTransMode) InitGoValue(v *gobject.Value) {
 	v.Init(TypeRTSPTransMode)
 	v.SetFlags(int(f))
+}
+
+func (f RTSPTransMode) String() string {
+	if f == 0 {
+		return "RTSPTransMode(0)"
+	}
+
+	var parts []string
+	if (f & RtspTransUnknown) != 0 {
+		parts = append(parts, "RtspTransUnknown")
+	}
+	if (f & RtspTransRtp) != 0 {
+		parts = append(parts, "RtspTransRtp")
+	}
+	if (f & RtspTransRdt) != 0 {
+		parts = append(parts, "RtspTransRdt")
+	}
+	return "RTSPTransMode(" + strings.Join(parts, "|") + ")"
 }
 
 // RTSPConnectionAcceptCertificateFunc wraps GstRTSPConnectionAcceptCertificateFunc

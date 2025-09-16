@@ -3,6 +3,7 @@
 package gstplay
 
 import (
+	"fmt"
 	"runtime"
 	"unsafe"
 
@@ -88,6 +89,16 @@ func (e PlayColorBalanceType) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e PlayColorBalanceType) String() string {
+	switch e {
+		case PlayColorBalanceHue: return "PlayColorBalanceHue"
+		case PlayColorBalanceBrightness: return "PlayColorBalanceBrightness"
+		case PlayColorBalanceSaturation: return "PlayColorBalanceSaturation"
+		case PlayColorBalanceContrast: return "PlayColorBalanceContrast"
+		default: return fmt.Sprintf("PlayColorBalanceType(%d)", e)
+	}
+}
+
 // PlayError wraps GstPlayError
 type PlayError C.int
 
@@ -107,6 +118,13 @@ var _ gobject.GoValueInitializer = PlayError(0)
 func (e PlayError) InitGoValue(v *gobject.Value) {
 	v.Init(TypePlayError)
 	v.SetEnum(int(e))
+}
+
+func (e PlayError) String() string {
+	switch e {
+		case PlayErrorFailed: return "PlayErrorFailed"
+		default: return fmt.Sprintf("PlayError(%d)", e)
+	}
 }
 
 // PlayMessage wraps GstPlayMessage
@@ -178,6 +196,25 @@ func (e PlayMessage) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e PlayMessage) String() string {
+	switch e {
+		case PlayMessageStateChanged: return "PlayMessageStateChanged"
+		case PlayMessageBuffering: return "PlayMessageBuffering"
+		case PlayMessageError: return "PlayMessageError"
+		case PlayMessageVideoDimensionsChanged: return "PlayMessageVideoDimensionsChanged"
+		case PlayMessageMuteChanged: return "PlayMessageMuteChanged"
+		case PlayMessageURILoaded: return "PlayMessageURILoaded"
+		case PlayMessageEndOfStream: return "PlayMessageEndOfStream"
+		case PlayMessageWarning: return "PlayMessageWarning"
+		case PlayMessageMediaInfoUpdated: return "PlayMessageMediaInfoUpdated"
+		case PlayMessageVolumeChanged: return "PlayMessageVolumeChanged"
+		case PlayMessageSeekDone: return "PlayMessageSeekDone"
+		case PlayMessagePositionUpdated: return "PlayMessagePositionUpdated"
+		case PlayMessageDurationChanged: return "PlayMessageDurationChanged"
+		default: return fmt.Sprintf("PlayMessage(%d)", e)
+	}
+}
+
 // PlaySnapshotFormat wraps GstPlaySnapshotFormat
 type PlaySnapshotFormat C.int
 
@@ -204,6 +241,17 @@ const (
 	PlayThumbnailPNG PlaySnapshotFormat = 4
 )
 
+
+func (e PlaySnapshotFormat) String() string {
+	switch e {
+		case PlayThumbnailRawNative: return "PlayThumbnailRawNative"
+		case PlayThumbnailRawXrgb: return "PlayThumbnailRawXrgb"
+		case PlayThumbnailRawBgrx: return "PlayThumbnailRawBgrx"
+		case PlayThumbnailJPG: return "PlayThumbnailJPG"
+		case PlayThumbnailPNG: return "PlayThumbnailPNG"
+		default: return fmt.Sprintf("PlaySnapshotFormat(%d)", e)
+	}
+}
 
 // PlayState wraps GstPlayState
 type PlayState C.int
@@ -237,6 +285,16 @@ var _ gobject.GoValueInitializer = PlayState(0)
 func (e PlayState) InitGoValue(v *gobject.Value) {
 	v.Init(TypePlayState)
 	v.SetEnum(int(e))
+}
+
+func (e PlayState) String() string {
+	switch e {
+		case PlayStateStopped: return "PlayStateStopped"
+		case PlayStateBuffering: return "PlayStateBuffering"
+		case PlayStatePaused: return "PlayStatePaused"
+		case PlayStatePlaying: return "PlayStatePlaying"
+		default: return fmt.Sprintf("PlayState(%d)", e)
+	}
 }
 
 // PlayVideoRendererInstance is the instance type used by all types implementing GstPlayVideoRenderer. It is used internally by the bindings. Users should use the interface [PlayVideoRenderer] instead.
@@ -751,7 +809,7 @@ func UnsafePlayToGlibFull(c Play) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewPlayInstance wraps gst_play_new
+// NewPlay wraps gst_play_new
 // 
 // The function takes the following parameters:
 // 
@@ -769,7 +827,7 @@ func UnsafePlayToGlibFull(c Play) unsafe.Pointer {
 // 
 // This also initializes GStreamer via `gst_init()` on the first call if this
 // didn't happen before.
-func NewPlayInstance(videoRenderer PlayVideoRenderer) Play {
+func NewPlay(videoRenderer PlayVideoRenderer) Play {
 	var carg1 *C.GstPlayVideoRenderer // in, full, converted, nullable
 	var cret  *C.GstPlay              // return, full, converted
 
@@ -787,7 +845,7 @@ func NewPlayInstance(videoRenderer PlayVideoRenderer) Play {
 	return goret
 }
 
-// PlayInstanceConfigGetPipelineDumpInErrorDetails wraps gst_play_config_get_pipeline_dump_in_error_details
+// PlayConfigGetPipelineDumpInErrorDetails wraps gst_play_config_get_pipeline_dump_in_error_details
 // 
 // The function takes the following parameters:
 // 
@@ -796,7 +854,7 @@ func NewPlayInstance(videoRenderer PlayVideoRenderer) Play {
 // The function returns the following values:
 // 
 // 	- goret bool 
-func PlayInstanceConfigGetPipelineDumpInErrorDetails(config *gst.Structure) bool {
+func PlayConfigGetPipelineDumpInErrorDetails(config *gst.Structure) bool {
 	var carg1 *C.GstStructure // in, none, converted
 	var cret  C.gboolean      // return
 
@@ -814,7 +872,7 @@ func PlayInstanceConfigGetPipelineDumpInErrorDetails(config *gst.Structure) bool
 	return goret
 }
 
-// PlayInstanceConfigGetPositionUpdateInterval wraps gst_play_config_get_position_update_interval
+// PlayConfigGetPositionUpdateInterval wraps gst_play_config_get_position_update_interval
 // 
 // The function takes the following parameters:
 // 
@@ -823,7 +881,7 @@ func PlayInstanceConfigGetPipelineDumpInErrorDetails(config *gst.Structure) bool
 // The function returns the following values:
 // 
 // 	- goret uint 
-func PlayInstanceConfigGetPositionUpdateInterval(config *gst.Structure) uint {
+func PlayConfigGetPositionUpdateInterval(config *gst.Structure) uint {
 	var carg1 *C.GstStructure // in, none, converted
 	var cret  C.guint         // return, none, casted
 
@@ -839,7 +897,7 @@ func PlayInstanceConfigGetPositionUpdateInterval(config *gst.Structure) uint {
 	return goret
 }
 
-// PlayInstanceConfigGetSeekAccurate wraps gst_play_config_get_seek_accurate
+// PlayConfigGetSeekAccurate wraps gst_play_config_get_seek_accurate
 // 
 // The function takes the following parameters:
 // 
@@ -848,7 +906,7 @@ func PlayInstanceConfigGetPositionUpdateInterval(config *gst.Structure) uint {
 // The function returns the following values:
 // 
 // 	- goret bool 
-func PlayInstanceConfigGetSeekAccurate(config *gst.Structure) bool {
+func PlayConfigGetSeekAccurate(config *gst.Structure) bool {
 	var carg1 *C.GstStructure // in, none, converted
 	var cret  C.gboolean      // return
 
@@ -866,7 +924,7 @@ func PlayInstanceConfigGetSeekAccurate(config *gst.Structure) bool {
 	return goret
 }
 
-// PlayInstanceConfigGetUserAgent wraps gst_play_config_get_user_agent
+// PlayConfigGetUserAgent wraps gst_play_config_get_user_agent
 // 
 // The function takes the following parameters:
 // 
@@ -878,7 +936,7 @@ func PlayInstanceConfigGetSeekAccurate(config *gst.Structure) bool {
 //
 // Return the user agent which has been configured using
 // gst_play_config_set_user_agent() if any.
-func PlayInstanceConfigGetUserAgent(config *gst.Structure) string {
+func PlayConfigGetUserAgent(config *gst.Structure) string {
 	var carg1 *C.GstStructure // in, none, converted
 	var cret  *C.gchar        // return, full, string, casted *C.gchar
 
@@ -895,7 +953,7 @@ func PlayInstanceConfigGetUserAgent(config *gst.Structure) string {
 	return goret
 }
 
-// PlayInstanceConfigSetPipelineDumpInErrorDetails wraps gst_play_config_set_pipeline_dump_in_error_details
+// PlayConfigSetPipelineDumpInErrorDetails wraps gst_play_config_set_pipeline_dump_in_error_details
 // 
 // The function takes the following parameters:
 // 
@@ -907,7 +965,7 @@ func PlayInstanceConfigGetUserAgent(config *gst.Structure) string {
 // name is `pipeline-dump`.
 // 
 // This option is disabled by default.
-func PlayInstanceConfigSetPipelineDumpInErrorDetails(config *gst.Structure, value bool) {
+func PlayConfigSetPipelineDumpInErrorDetails(config *gst.Structure, value bool) {
 	var carg1 *C.GstStructure // in, none, converted
 	var carg2 C.gboolean      // in
 
@@ -921,7 +979,7 @@ func PlayInstanceConfigSetPipelineDumpInErrorDetails(config *gst.Structure, valu
 	runtime.KeepAlive(value)
 }
 
-// PlayInstanceConfigSetPositionUpdateInterval wraps gst_play_config_set_position_update_interval
+// PlayConfigSetPositionUpdateInterval wraps gst_play_config_set_position_update_interval
 // 
 // The function takes the following parameters:
 // 
@@ -930,7 +988,7 @@ func PlayInstanceConfigSetPipelineDumpInErrorDetails(config *gst.Structure, valu
 //
 // Set desired interval in milliseconds between two position-updated messages.
 // Pass 0 to stop updating the position.
-func PlayInstanceConfigSetPositionUpdateInterval(config *gst.Structure, interval uint) {
+func PlayConfigSetPositionUpdateInterval(config *gst.Structure, interval uint) {
 	var carg1 *C.GstStructure // in, none, converted
 	var carg2 C.guint         // in, none, casted
 
@@ -942,7 +1000,7 @@ func PlayInstanceConfigSetPositionUpdateInterval(config *gst.Structure, interval
 	runtime.KeepAlive(interval)
 }
 
-// PlayInstanceConfigSetSeekAccurate wraps gst_play_config_set_seek_accurate
+// PlayConfigSetSeekAccurate wraps gst_play_config_set_seek_accurate
 // 
 // The function takes the following parameters:
 // 
@@ -958,7 +1016,7 @@ func PlayInstanceConfigSetPositionUpdateInterval(config *gst.Structure, interval
 // position without slowing down seeking too much.
 // 
 // Accurate seeking is disabled by default.
-func PlayInstanceConfigSetSeekAccurate(config *gst.Structure, accurate bool) {
+func PlayConfigSetSeekAccurate(config *gst.Structure, accurate bool) {
 	var carg1 *C.GstStructure // in, none, converted
 	var carg2 C.gboolean      // in
 
@@ -972,7 +1030,7 @@ func PlayInstanceConfigSetSeekAccurate(config *gst.Structure, accurate bool) {
 	runtime.KeepAlive(accurate)
 }
 
-// PlayInstanceConfigSetUserAgent wraps gst_play_config_set_user_agent
+// PlayConfigSetUserAgent wraps gst_play_config_set_user_agent
 // 
 // The function takes the following parameters:
 // 
@@ -982,7 +1040,7 @@ func PlayInstanceConfigSetSeekAccurate(config *gst.Structure, accurate bool) {
 // Set the user agent to pass to the server if @play needs to connect
 // to a server during playback. This is typically used when playing HTTP
 // or RTSP streams.
-func PlayInstanceConfigSetUserAgent(config *gst.Structure, agent string) {
+func PlayConfigSetUserAgent(config *gst.Structure, agent string) {
 	var carg1 *C.GstStructure // in, none, converted
 	var carg2 *C.gchar        // in, none, string, nullable-string
 
@@ -997,7 +1055,7 @@ func PlayInstanceConfigSetUserAgent(config *gst.Structure, agent string) {
 	runtime.KeepAlive(agent)
 }
 
-// PlayInstanceIsPlayMessage wraps gst_play_is_play_message
+// PlayIsPlayMessage wraps gst_play_is_play_message
 // 
 // The function takes the following parameters:
 // 
@@ -1006,7 +1064,7 @@ func PlayInstanceConfigSetUserAgent(config *gst.Structure, agent string) {
 // The function returns the following values:
 // 
 // 	- goret bool 
-func PlayInstanceIsPlayMessage(msg *gst.Message) bool {
+func PlayIsPlayMessage(msg *gst.Message) bool {
 	var carg1 *C.GstMessage // in, none, converted
 	var cret  C.gboolean    // return
 
@@ -2472,7 +2530,7 @@ func UnsafePlaySignalAdapterToGlibFull(c PlaySignalAdapter) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewPlaySignalAdapterInstance wraps gst_play_signal_adapter_new
+// NewPlaySignalAdapter wraps gst_play_signal_adapter_new
 // 
 // The function takes the following parameters:
 // 
@@ -2486,7 +2544,7 @@ func UnsafePlaySignalAdapterToGlibFull(c PlaySignalAdapter) unsafe.Pointer {
 // thread-default #GMainContext. The attached callback will emit the
 // corresponding signal for the message received. Matching signals for play
 // messages from the bus will be emitted by it on the created adapter object.
-func NewPlaySignalAdapterInstance(play Play) PlaySignalAdapter {
+func NewPlaySignalAdapter(play Play) PlaySignalAdapter {
 	var carg1 *C.GstPlay              // in, none, converted
 	var cret  *C.GstPlaySignalAdapter // return, full, converted
 
@@ -2502,7 +2560,7 @@ func NewPlaySignalAdapterInstance(play Play) PlaySignalAdapter {
 	return goret
 }
 
-// NewPlaySignalAdapterInstanceSyncEmit wraps gst_play_signal_adapter_new_sync_emit
+// NewPlaySignalAdapterSyncEmit wraps gst_play_signal_adapter_new_sync_emit
 // 
 // The function takes the following parameters:
 // 
@@ -2514,7 +2572,7 @@ func NewPlaySignalAdapterInstance(play Play) PlaySignalAdapter {
 //
 // Create an adapter that synchronously emits its signals, from the thread in
 // which the messages have been posted.
-func NewPlaySignalAdapterInstanceSyncEmit(play Play) PlaySignalAdapter {
+func NewPlaySignalAdapterSyncEmit(play Play) PlaySignalAdapter {
 	var carg1 *C.GstPlay              // in, none, converted
 	var cret  *C.GstPlaySignalAdapter // return, full, converted
 
@@ -2530,7 +2588,7 @@ func NewPlaySignalAdapterInstanceSyncEmit(play Play) PlaySignalAdapter {
 	return goret
 }
 
-// NewPlaySignalAdapterInstanceWithMainContext wraps gst_play_signal_adapter_new_with_main_context
+// NewPlaySignalAdapterWithMainContext wraps gst_play_signal_adapter_new_with_main_context
 // 
 // The function takes the following parameters:
 // 
@@ -2545,7 +2603,7 @@ func NewPlaySignalAdapterInstanceSyncEmit(play Play) PlaySignalAdapter {
 // attached callback will emit the corresponding signal for the message
 // received. Matching signals for play messages from the bus will be emitted by
 // it on the created adapter object.
-func NewPlaySignalAdapterInstanceWithMainContext(play Play, context *glib.MainContext) PlaySignalAdapter {
+func NewPlaySignalAdapterWithMainContext(play Play, context *glib.MainContext) PlaySignalAdapter {
 	var carg1 *C.GstPlay              // in, none, converted
 	var carg2 *C.GMainContext         // in, none, converted
 	var cret  *C.GstPlaySignalAdapter // return, full, converted
@@ -3172,7 +3230,7 @@ func UnsafePlayVideoOverlayVideoRendererToGlibFull(c PlayVideoOverlayVideoRender
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// NewPlayVideoOverlayVideoRendererInstance wraps gst_play_video_overlay_video_renderer_new
+// NewPlayVideoOverlayVideoRenderer wraps gst_play_video_overlay_video_renderer_new
 // 
 // The function takes the following parameters:
 // 
@@ -3181,7 +3239,7 @@ func UnsafePlayVideoOverlayVideoRendererToGlibFull(c PlayVideoOverlayVideoRender
 // The function returns the following values:
 // 
 // 	- goret PlayVideoRenderer 
-func NewPlayVideoOverlayVideoRendererInstance(windowHandle unsafe.Pointer) PlayVideoRenderer {
+func NewPlayVideoOverlayVideoRenderer(windowHandle unsafe.Pointer) PlayVideoRenderer {
 	var carg1 C.gpointer              // in, none, casted, nullable
 	var cret  *C.GstPlayVideoRenderer // return, full, converted
 
@@ -3199,7 +3257,7 @@ func NewPlayVideoOverlayVideoRendererInstance(windowHandle unsafe.Pointer) PlayV
 	return goret
 }
 
-// NewPlayVideoOverlayVideoRendererInstanceWithSink wraps gst_play_video_overlay_video_renderer_new_with_sink
+// NewPlayVideoOverlayVideoRendererWithSink wraps gst_play_video_overlay_video_renderer_new_with_sink
 // 
 // The function takes the following parameters:
 // 
@@ -3209,7 +3267,7 @@ func NewPlayVideoOverlayVideoRendererInstance(windowHandle unsafe.Pointer) PlayV
 // The function returns the following values:
 // 
 // 	- goret PlayVideoRenderer 
-func NewPlayVideoOverlayVideoRendererInstanceWithSink(windowHandle unsafe.Pointer, videoSink gst.Element) PlayVideoRenderer {
+func NewPlayVideoOverlayVideoRendererWithSink(windowHandle unsafe.Pointer, videoSink gst.Element) PlayVideoRenderer {
 	var carg1 C.gpointer              // in, none, casted, nullable
 	var carg2 *C.GstElement           // in, none, converted
 	var cret  *C.GstPlayVideoRenderer // return, full, converted

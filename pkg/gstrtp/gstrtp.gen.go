@@ -3,7 +3,9 @@
 package gstrtp
 
 import (
+	"fmt"
 	"runtime"
+	"strings"
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
@@ -181,6 +183,21 @@ func (e RTCPFBType) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e RTCPFBType) String() string {
+	switch e {
+		case RtcpPsfbTypeVbcn: return "RtcpPsfbTypeVbcn"
+		case RtcpFbTypeInvalid: return "RtcpFbTypeInvalid"
+		case RtcpRtpfbTypeNack: return "RtcpRtpfbTypeNack"
+		case RtcpRtpfbTypeTmmbr: return "RtcpRtpfbTypeTmmbr"
+		case RtcpRtpfbTypeTmmbn: return "RtcpRtpfbTypeTmmbn"
+		case RtcpRtpfbTypeRtcpSrReq: return "RtcpRtpfbTypeRtcpSrReq"
+		case RtcpRtpfbTypeTwcc: return "RtcpRtpfbTypeTwcc"
+		case RtcpPsfbTypeSli: return "RtcpPsfbTypeSli"
+		case RtcpPsfbTypeTstn: return "RtcpPsfbTypeTstn"
+		default: return fmt.Sprintf("RTCPFBType(%d)", e)
+	}
+}
+
 // RTCPSDESType wraps GstRTCPSDESType
 //
 // Different types of SDES content.
@@ -268,6 +285,29 @@ func (e RTCPSDESType) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e RTCPSDESType) String() string {
+	switch e {
+		case RtcpSdesName: return "RtcpSdesName"
+		case RtcpSdesLoc: return "RtcpSdesLoc"
+		case RtcpSdesH323Caddr: return "RtcpSdesH323Caddr"
+		case RtcpSdesApsi: return "RtcpSdesApsi"
+		case RtcpSdesInvalid: return "RtcpSdesInvalid"
+		case RtcpSdesEnd: return "RtcpSdesEnd"
+		case RtcpSdesCname: return "RtcpSdesCname"
+		case RtcpSdesPriv: return "RtcpSdesPriv"
+		case RtcpSdesRgrp: return "RtcpSdesRgrp"
+		case RtcpSdesRtpStreamID: return "RtcpSdesRtpStreamID"
+		case RtcpSdesRepairedRtpStreamID: return "RtcpSdesRepairedRtpStreamID"
+		case RtcpSdesCcid: return "RtcpSdesCcid"
+		case RtcpSdesEmail: return "RtcpSdesEmail"
+		case RtcpSdesPhone: return "RtcpSdesPhone"
+		case RtcpSdesTool: return "RtcpSdesTool"
+		case RtcpSdesNote: return "RtcpSdesNote"
+		case RtcpSdesMid: return "RtcpSdesMid"
+		default: return fmt.Sprintf("RTCPSDESType(%d)", e)
+	}
+}
+
 // RTCPType wraps GstRTCPType
 //
 // Different RTCP packet types.
@@ -323,6 +363,21 @@ func (e RTCPType) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e RTCPType) String() string {
+	switch e {
+		case RtcpTypeSr: return "RtcpTypeSr"
+		case RtcpTypeRr: return "RtcpTypeRr"
+		case RtcpTypeRtpfb: return "RtcpTypeRtpfb"
+		case RtcpTypeXR: return "RtcpTypeXR"
+		case RtcpTypeInvalid: return "RtcpTypeInvalid"
+		case RtcpTypeSdes: return "RtcpTypeSdes"
+		case RtcpTypeBye: return "RtcpTypeBye"
+		case RtcpTypeApp: return "RtcpTypeApp"
+		case RtcpTypePsfb: return "RtcpTypePsfb"
+		default: return fmt.Sprintf("RTCPType(%d)", e)
+	}
+}
+
 // RTCPXRType wraps GstRTCPXRType
 //
 // Types of RTCP Extended Reports, those are defined in RFC 3611 and other RFCs
@@ -373,6 +428,20 @@ var _ gobject.GoValueInitializer = RTCPXRType(0)
 func (e RTCPXRType) InitGoValue(v *gobject.Value) {
 	v.Init(TypeRTCPXRType)
 	v.SetEnum(int(e))
+}
+
+func (e RTCPXRType) String() string {
+	switch e {
+		case RtcpXRTypeDlrr: return "RtcpXRTypeDlrr"
+		case RtcpXRTypeSsumm: return "RtcpXRTypeSsumm"
+		case RtcpXRTypeVoipMetrics: return "RtcpXRTypeVoipMetrics"
+		case RtcpXRTypeInvalid: return "RtcpXRTypeInvalid"
+		case RtcpXRTypeLrle: return "RtcpXRTypeLrle"
+		case RtcpXRTypeDrle: return "RtcpXRTypeDrle"
+		case RtcpXRTypePrt: return "RtcpXRTypePrt"
+		case RtcpXRTypeRrt: return "RtcpXRTypeRrt"
+		default: return fmt.Sprintf("RTCPXRType(%d)", e)
+	}
 }
 
 // RTPPayload wraps GstRTPPayload
@@ -509,6 +578,38 @@ func (e RTPPayload) InitGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
+func (e RTPPayload) String() string {
+	switch e {
+		case RtpPayloadMpa: return "RtpPayloadMpa"
+		case RtpPayloadG728: return "RtpPayloadG728"
+		case RtpPayloadG729: return "RtpPayloadG729"
+		case RtpPayloadH261: return "RtpPayloadH261"
+		case RtpPayloadMp2T: return "RtpPayloadMp2T"
+		case RtpPayloadG721: return "RtpPayloadG721"
+		case RtpPayloadGsm: return "RtpPayloadGsm"
+		case RtpPayloadG723: return "RtpPayloadG723"
+		case RtpPayloadH263: return "RtpPayloadH263"
+		case RtpPayloadG722: return "RtpPayloadG722"
+		case RtpPayloadCn: return "RtpPayloadCn"
+		case RtpPayloadDvi411025: return "RtpPayloadDvi411025"
+		case RtpPayloadCellb: return "RtpPayloadCellb"
+		case RtpPayloadJPEG: return "RtpPayloadJPEG"
+		case RtpPayloadMpv: return "RtpPayloadMpv"
+		case RtpPayloadPcmu: return "RtpPayloadPcmu"
+		case RtpPayload1016: return "RtpPayload1016"
+		case RtpPayloadDvi48000: return "RtpPayloadDvi48000"
+		case RtpPayloadPcma: return "RtpPayloadPcma"
+		case RtpPayloadL16Mono: return "RtpPayloadL16Mono"
+		case RtpPayloadQcelp: return "RtpPayloadQcelp"
+		case RtpPayloadDvi422050: return "RtpPayloadDvi422050"
+		case RtpPayloadNv: return "RtpPayloadNv"
+		case RtpPayloadDvi416000: return "RtpPayloadDvi416000"
+		case RtpPayloadLpc: return "RtpPayloadLpc"
+		case RtpPayloadL16Stereo: return "RtpPayloadL16Stereo"
+		default: return fmt.Sprintf("RTPPayload(%d)", e)
+	}
+}
+
 // RTPProfile wraps GstRTPProfile
 //
 // The transfer profile to use.
@@ -546,6 +647,17 @@ var _ gobject.GoValueInitializer = RTPProfile(0)
 func (e RTPProfile) InitGoValue(v *gobject.Value) {
 	v.Init(TypeRTPProfile)
 	v.SetEnum(int(e))
+}
+
+func (e RTPProfile) String() string {
+	switch e {
+		case RtpProfileAvp: return "RtpProfileAvp"
+		case RtpProfileSavp: return "RtpProfileSavp"
+		case RtpProfileAvpf: return "RtpProfileAvpf"
+		case RtpProfileSavpf: return "RtpProfileSavpf"
+		case RtpProfileUnknown: return "RtpProfileUnknown"
+		default: return fmt.Sprintf("RTPProfile(%d)", e)
+	}
 }
 
 // RTPBufferFlags wraps GstRTPBufferFlags
@@ -591,6 +703,24 @@ func (f RTPBufferFlags) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f RTPBufferFlags) String() string {
+	if f == 0 {
+		return "RTPBufferFlags(0)"
+	}
+
+	var parts []string
+	if (f & RtpBufferFlagRetransmission) != 0 {
+		parts = append(parts, "RtpBufferFlagRetransmission")
+	}
+	if (f & RtpBufferFlagRedundant) != 0 {
+		parts = append(parts, "RtpBufferFlagRedundant")
+	}
+	if (f & RtpBufferFlagLast) != 0 {
+		parts = append(parts, "RtpBufferFlagLast")
+	}
+	return "RTPBufferFlags(" + strings.Join(parts, "|") + ")"
+}
+
 // RTPBufferMapFlags wraps GstRTPBufferMapFlags
 //
 // Additional mapping flags for gst_rtp_buffer_map().
@@ -622,6 +752,21 @@ var _ gobject.GoValueInitializer = RTPBufferMapFlags(0)
 func (f RTPBufferMapFlags) InitGoValue(v *gobject.Value) {
 	v.Init(TypeRTPBufferMapFlags)
 	v.SetFlags(int(f))
+}
+
+func (f RTPBufferMapFlags) String() string {
+	if f == 0 {
+		return "RTPBufferMapFlags(0)"
+	}
+
+	var parts []string
+	if (f & RtpBufferMapFlagSkipPadding) != 0 {
+		parts = append(parts, "RtpBufferMapFlagSkipPadding")
+	}
+	if (f & RtpBufferMapFlagLast) != 0 {
+		parts = append(parts, "RtpBufferMapFlagLast")
+	}
+	return "RTPBufferMapFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // RTPHeaderExtensionDirection wraps GstRTPHeaderExtensionDirection
@@ -670,6 +815,30 @@ func (f RTPHeaderExtensionDirection) InitGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
+func (f RTPHeaderExtensionDirection) String() string {
+	if f == 0 {
+		return "RTPHeaderExtensionDirection(0)"
+	}
+
+	var parts []string
+	if (f & RtpHeaderExtensionDirectionInactive) != 0 {
+		parts = append(parts, "RtpHeaderExtensionDirectionInactive")
+	}
+	if (f & RtpHeaderExtensionDirectionSendonly) != 0 {
+		parts = append(parts, "RtpHeaderExtensionDirectionSendonly")
+	}
+	if (f & RtpHeaderExtensionDirectionRecvonly) != 0 {
+		parts = append(parts, "RtpHeaderExtensionDirectionRecvonly")
+	}
+	if (f & RtpHeaderExtensionDirectionSendrecv) != 0 {
+		parts = append(parts, "RtpHeaderExtensionDirectionSendrecv")
+	}
+	if (f & RtpHeaderExtensionDirectionInherited) != 0 {
+		parts = append(parts, "RtpHeaderExtensionDirectionInherited")
+	}
+	return "RTPHeaderExtensionDirection(" + strings.Join(parts, "|") + ")"
+}
+
 // RTPHeaderExtensionFlags wraps GstRTPHeaderExtensionFlags
 //
 // Flags that apply to a RTP Audio/Video header extension.
@@ -703,6 +872,21 @@ var _ gobject.GoValueInitializer = RTPHeaderExtensionFlags(0)
 func (f RTPHeaderExtensionFlags) InitGoValue(v *gobject.Value) {
 	v.Init(TypeRTPHeaderExtensionFlags)
 	v.SetFlags(int(f))
+}
+
+func (f RTPHeaderExtensionFlags) String() string {
+	if f == 0 {
+		return "RTPHeaderExtensionFlags(0)"
+	}
+
+	var parts []string
+	if (f & RtpHeaderExtensionOneByte) != 0 {
+		parts = append(parts, "RtpHeaderExtensionOneByte")
+	}
+	if (f & RtpHeaderExtensionTwoByte) != 0 {
+		parts = append(parts, "RtpHeaderExtensionTwoByte")
+	}
+	return "RTPHeaderExtensionFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // BufferAddRtpSourceMeta wraps gst_buffer_add_rtp_source_meta
@@ -2146,7 +2330,7 @@ func UnsafeRTPHeaderExtensionToGlibFull(c RTPHeaderExtension) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// RTPHeaderExtensionInstanceCreateFromURI wraps gst_rtp_header_extension_create_from_uri
+// RTPHeaderExtensionCreateFromURI wraps gst_rtp_header_extension_create_from_uri
 // 
 // The function takes the following parameters:
 // 
@@ -2155,7 +2339,7 @@ func UnsafeRTPHeaderExtensionToGlibFull(c RTPHeaderExtension) unsafe.Pointer {
 // The function returns the following values:
 // 
 // 	- goret RTPHeaderExtension 
-func RTPHeaderExtensionInstanceCreateFromURI(uri string) RTPHeaderExtension {
+func RTPHeaderExtensionCreateFromURI(uri string) RTPHeaderExtension {
 	var carg1 *C.gchar                 // in, none, string, casted *C.gchar
 	var cret  *C.GstRTPHeaderExtension // return, full, converted
 
