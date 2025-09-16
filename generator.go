@@ -160,6 +160,10 @@ var Data = genmain.Overlay(
 
 						// Requires a gvalue arg, manually implemented:
 						typesystem.IgnoreMatching("TagSetter.add_tag_value"),
+
+						// ParamSpec subclass colliding with constructor:
+						typesystem.IgnoreMatching("ParamSpecArray"),
+						typesystem.IgnoreMatching("ParamSpecFraction"),
 					},
 				},
 				"GstBase-1": {

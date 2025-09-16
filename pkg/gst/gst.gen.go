@@ -103,6 +103,10 @@ import (
 // gboolean _gotk4_gst1_URIHandler_virtual_set_uri(void* fnptr, GstURIHandler* carg0, gchar* carg1, GError** _cerr) {
 // 	return ((gboolean (*) (GstURIHandler*, gchar*, GError**))(fnptr))(carg0, carg1, _cerr);
 // }
+// extern void _gotk4_gst1_Object_deep_notify(GstObject*, GstObject*, GParamSpec*);
+// void _gotk4_gst1_Object_virtual_deep_notify(void* fnptr, GstObject* carg0, GstObject* carg1, GParamSpec* carg2) {
+// 	return ((void (*) (GstObject*, GstObject*, GParamSpec*))(fnptr))(carg0, carg1, carg2);
+// }
 // extern void _gotk4_gst1_Pad_linked(GstPad*, GstPad*);
 // extern void _gotk4_gst1_Pad_unlinked(GstPad*, GstPad*);
 // void _gotk4_gst1_Pad_virtual_linked(void* fnptr, GstPad* carg0, GstPad* carg1) {
@@ -114,6 +118,10 @@ import (
 // extern void _gotk4_gst1_PadTemplate_pad_created(GstPadTemplate*, GstPad*);
 // void _gotk4_gst1_PadTemplate_virtual_pad_created(void* fnptr, GstPadTemplate* carg0, GstPad* carg1) {
 // 	return ((void (*) (GstPadTemplate*, GstPad*))(fnptr))(carg0, carg1);
+// }
+// extern void _gotk4_gst1_StreamCollection_stream_notify(GstStreamCollection*, GstStream*, GParamSpec*);
+// void _gotk4_gst1_StreamCollection_virtual_stream_notify(void* fnptr, GstStreamCollection* carg0, GstStream* carg1, GParamSpec* carg2) {
+// 	return ((void (*) (GstStreamCollection*, GstStream*, GParamSpec*))(fnptr))(carg0, carg1, carg2);
 // }
 // extern void _gotk4_gst1_TaskPool_cleanup(GstTaskPool*);
 // extern void _gotk4_gst1_TaskPool_prepare(GstTaskPool*, GError*);
@@ -8804,6 +8812,126 @@ func IsInitialized() bool {
 	return goret
 }
 
+// ParamSpecArray wraps gst_param_spec_array
+// 
+// The function takes the following parameters:
+// 
+// 	- name string: canonical name of the property specified 
+// 	- nick string: nick name for the property specified 
+// 	- blurb string: description of the property specified 
+// 	- elementSpec *gobject.ParamSpec: GParamSpec of the array 
+// 	- flags gobject.ParamFlags: flags for the property specified 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gobject.ParamSpec 
+//
+// This function creates a GstArray GParamSpec for use by objects/elements
+// that want to expose properties of GstArray type. This function is
+// typically * used in connection with g_object_class_install_property() in a
+// GObjects's instance_init function.
+func ParamSpecArray(name string, nick string, blurb string, elementSpec *gobject.ParamSpec, flags gobject.ParamFlags) *gobject.ParamSpec {
+	var carg1 *C.gchar      // in, none, string
+	var carg2 *C.gchar      // in, none, string
+	var carg3 *C.gchar      // in, none, string
+	var carg4 *C.GParamSpec // in, none, converted
+	var carg5 C.GParamFlags // in, none, casted
+	var cret  *C.GParamSpec // return, full, converted
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
+	defer C.free(unsafe.Pointer(carg1))
+	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(nick)))
+	defer C.free(unsafe.Pointer(carg2))
+	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(blurb)))
+	defer C.free(unsafe.Pointer(carg3))
+	carg4 = (*C.GParamSpec)(gobject.UnsafeParamSpecToGlibNone(elementSpec))
+	carg5 = C.GParamFlags(flags)
+
+	cret = C.gst_param_spec_array(carg1, carg2, carg3, carg4, carg5)
+	runtime.KeepAlive(name)
+	runtime.KeepAlive(nick)
+	runtime.KeepAlive(blurb)
+	runtime.KeepAlive(elementSpec)
+	runtime.KeepAlive(flags)
+
+	var goret *gobject.ParamSpec
+
+	goret = gobject.UnsafeParamSpecFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// ParamSpecFraction wraps gst_param_spec_fraction
+// 
+// The function takes the following parameters:
+// 
+// 	- name string: canonical name of the property specified 
+// 	- nick string: nick name for the property specified 
+// 	- blurb string: description of the property specified 
+// 	- minNum int: minimum value (fraction numerator) 
+// 	- minDenom int: minimum value (fraction denominator) 
+// 	- maxNum int: maximum value (fraction numerator) 
+// 	- maxDenom int: maximum value (fraction denominator) 
+// 	- defaultNum int: default value (fraction numerator) 
+// 	- defaultDenom int: default value (fraction denominator) 
+// 	- flags gobject.ParamFlags: flags for the property specified 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gobject.ParamSpec (nullable) 
+//
+// This function creates a fraction GParamSpec for use by objects/elements
+// that want to expose properties of fraction type. This function is typically
+// used in connection with g_object_class_install_property() in a GObjects's
+// instance_init function.
+func ParamSpecFraction(name string, nick string, blurb string, minNum int, minDenom int, maxNum int, maxDenom int, defaultNum int, defaultDenom int, flags gobject.ParamFlags) *gobject.ParamSpec {
+	var carg1  *C.gchar      // in, none, string
+	var carg2  *C.gchar      // in, none, string
+	var carg3  *C.gchar      // in, none, string
+	var carg4  C.gint        // in, none, casted
+	var carg5  C.gint        // in, none, casted
+	var carg6  C.gint        // in, none, casted
+	var carg7  C.gint        // in, none, casted
+	var carg8  C.gint        // in, none, casted
+	var carg9  C.gint        // in, none, casted
+	var carg10 C.GParamFlags // in, none, casted
+	var cret   *C.GParamSpec // return, full, converted, nullable
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
+	defer C.free(unsafe.Pointer(carg1))
+	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(nick)))
+	defer C.free(unsafe.Pointer(carg2))
+	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(blurb)))
+	defer C.free(unsafe.Pointer(carg3))
+	carg4 = C.gint(minNum)
+	carg5 = C.gint(minDenom)
+	carg6 = C.gint(maxNum)
+	carg7 = C.gint(maxDenom)
+	carg8 = C.gint(defaultNum)
+	carg9 = C.gint(defaultDenom)
+	carg10 = C.GParamFlags(flags)
+
+	cret = C.gst_param_spec_fraction(carg1, carg2, carg3, carg4, carg5, carg6, carg7, carg8, carg9, carg10)
+	runtime.KeepAlive(name)
+	runtime.KeepAlive(nick)
+	runtime.KeepAlive(blurb)
+	runtime.KeepAlive(minNum)
+	runtime.KeepAlive(minDenom)
+	runtime.KeepAlive(maxNum)
+	runtime.KeepAlive(maxDenom)
+	runtime.KeepAlive(defaultNum)
+	runtime.KeepAlive(defaultDenom)
+	runtime.KeepAlive(flags)
+
+	var goret *gobject.ParamSpec
+
+	if cret != nil {
+		goret = gobject.UnsafeParamSpecFromGlibFull(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
 // ParentBufferMetaApiGetType wraps gst_parent_buffer_meta_api_get_type
 // 
 // The function returns the following values:
@@ -10559,6 +10687,51 @@ func ValueDeserialize(src string) (gobject.Value, bool) {
 	return dest, goret
 }
 
+// ValueDeserializeWithPspec wraps gst_value_deserialize_with_pspec
+// 
+// The function takes the following parameters:
+// 
+// 	- src string: string to deserialize 
+// 	- pspec *gobject.ParamSpec (nullable): the #GParamSpec describing the expected value 
+// 
+// The function returns the following values:
+// 
+// 	- dest gobject.Value: #GValue to fill with contents of
+//     deserialization 
+// 	- goret bool 
+//
+// Tries to deserialize a string into the type specified by the given GValue.
+// @pspec may be used to guide the deserializing of nested members.
+// If the operation succeeds, %TRUE is returned, %FALSE otherwise.
+func ValueDeserializeWithPspec(src string, pspec *gobject.ParamSpec) (gobject.Value, bool) {
+	var carg2 *C.gchar      // in, none, string
+	var carg3 *C.GParamSpec // in, none, converted, nullable
+	var carg1 C.GValue      // out, transfer: none, C Pointers: 0, Name: Value, caller-allocates
+	var cret  C.gboolean    // return
+
+	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(src)))
+	defer C.free(unsafe.Pointer(carg2))
+	if pspec != nil {
+		carg3 = (*C.GParamSpec)(gobject.UnsafeParamSpecToGlibNone(pspec))
+	}
+
+	cret = C.gst_value_deserialize_with_pspec(&carg1, carg2, carg3)
+	runtime.KeepAlive(src)
+	runtime.KeepAlive(pspec)
+
+	var dest  gobject.Value
+	var goret bool
+
+	_ = dest
+	_ = carg1
+	panic("unimplemented conversion of gobject.Value (GValue)")
+	if cret != 0 {
+		goret = true
+	}
+
+	return dest, goret
+}
+
 // ValueFixate wraps gst_value_fixate
 // 
 // The function takes the following parameters:
@@ -11904,6 +12077,22 @@ type ChildProxy interface {
 	//
 	// Gets the number of child objects this parent contains.
 	GetChildrenCount() uint
+	// Lookup wraps gst_child_proxy_lookup
+	// 
+	// The function takes the following parameters:
+	// 
+	// 	- name string: name of the property to look up 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- target gobject.Object: pointer to a #GObject that
+	//     takes the real object to set property on 
+	// 	- pspec *gobject.ParamSpec: pointer to take the #GParamSpec
+	//     describing the property 
+	// 	- goret bool 
+	//
+	// Looks up which object and #GParamSpec would be effected by the given @name.
+	Lookup(string) (gobject.Object, *gobject.ParamSpec, bool)
 	// ConnectChildAdded connects the provided callback to the "child-added" signal
 	//
 	// Will be emitted after the @object was added to the @child_proxy.
@@ -12130,6 +12319,49 @@ func (parent *ChildProxyInstance) GetChildrenCount() uint {
 	goret = uint(cret)
 
 	return goret
+}
+
+// Lookup wraps gst_child_proxy_lookup
+// 
+// The function takes the following parameters:
+// 
+// 	- name string: name of the property to look up 
+// 
+// The function returns the following values:
+// 
+// 	- target gobject.Object: pointer to a #GObject that
+//     takes the real object to set property on 
+// 	- pspec *gobject.ParamSpec: pointer to take the #GParamSpec
+//     describing the property 
+// 	- goret bool 
+//
+// Looks up which object and #GParamSpec would be effected by the given @name.
+func (object *ChildProxyInstance) Lookup(name string) (gobject.Object, *gobject.ParamSpec, bool) {
+	var carg0 *C.GstChildProxy // in, none, converted
+	var carg1 *C.gchar         // in, none, string
+	var carg2 *C.GObject       // out, full, converted
+	var carg3 *C.GParamSpec    // out, none, converted
+	var cret  C.gboolean       // return
+
+	carg0 = (*C.GstChildProxy)(UnsafeChildProxyToGlibNone(object))
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	cret = C.gst_child_proxy_lookup(carg0, carg1, &carg2, &carg3)
+	runtime.KeepAlive(object)
+	runtime.KeepAlive(name)
+
+	var target gobject.Object
+	var pspec  *gobject.ParamSpec
+	var goret  bool
+
+	target = gobject.UnsafeObjectFromGlibFull(unsafe.Pointer(carg2))
+	pspec = gobject.UnsafeParamSpecFromGlibNone(unsafe.Pointer(carg3))
+	if cret != 0 {
+		goret = true
+	}
+
+	return target, pspec, goret
 }
 
 // ConnectChildAdded connects the provided callback to the "child-added" signal
@@ -12960,7 +13192,7 @@ func UnsafeApplyPresetOverrides[Instance Preset](gclass unsafe.Pointer, override
 
 				value, goret = overrides.GetMeta(preset, name, tag)
 
-				carg3 = (*C.gchar)(unsafe.Pointer(C.CString(value)))
+				*carg3 = (*C.gchar)(unsafe.Pointer(C.CString(value)))
 				if goret {
 					cret = C.TRUE
 				}
@@ -14139,6 +14371,12 @@ type Object interface {
 	// 
 	// MT safe. Grabs and releases @object's lock.
 	Unparent()
+	// ConnectDeepNotify connects the provided callback to the "deep-notify" signal
+	//
+	// The deep notify signal is used to be notified of property changes. It is
+	// typically attached to the toplevel bin to receive notifications from all
+	// the elements contained in that bin.
+	ConnectDeepNotify(func(Object, Object, gobject.ParamSpec)) gobject.SignalHandle
 }
 
 func unsafeWrapObject(base *gobject.ObjectInstance) *ObjectInstance {
@@ -14175,6 +14413,44 @@ func UnsafeObjectToGlibNone(c Object) unsafe.Pointer {
 // UnsafeObjectToGlibFull is used to convert the instance to it's C value GstObject, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeObjectToGlibFull(c Object) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
+}
+
+// ObjectDefaultDeepNotify wraps gst_object_default_deep_notify
+// 
+// The function takes the following parameters:
+// 
+// 	- object gobject.Object: the #GObject that signalled the notify. 
+// 	- orig Object: a #GstObject that initiated the notify. 
+// 	- pspec *gobject.ParamSpec: a #GParamSpec of the property. 
+// 	- excludedProps []string (nullable): 
+//     a set of user-specified properties to exclude or %NULL to show
+//     all changes. 
+//
+// A default deep_notify signal callback for an object. The user data
+// should contain a pointer to an array of strings that should be excluded
+// from the notify. The default handler will print the new value of the property
+// using g_print.
+// 
+// MT safe. This function grabs and releases @object's LOCK for getting its
+//          path string.
+func ObjectDefaultDeepNotify(object gobject.Object, orig Object, pspec *gobject.ParamSpec, excludedProps []string) {
+	var carg1 *C.GObject    // in, none, converted
+	var carg2 *C.GstObject  // in, none, converted
+	var carg3 *C.GParamSpec // in, none, converted
+	var carg4 **C.gchar     // in, transfer: none, C Pointers: 2, Name: array[utf8], nullable, array (inner: *typesystem.StringPrimitive, zero-terminated)
+
+	carg1 = (*C.GObject)(gobject.UnsafeObjectToGlibNone(object))
+	carg2 = (*C.GstObject)(UnsafeObjectToGlibNone(orig))
+	carg3 = (*C.GParamSpec)(gobject.UnsafeParamSpecToGlibNone(pspec))
+	_ = excludedProps
+	_ = carg4
+	panic("unimplemented conversion of []string (gchar**)")
+
+	C.gst_object_default_deep_notify(carg1, carg2, carg3, carg4)
+	runtime.KeepAlive(object)
+	runtime.KeepAlive(orig)
+	runtime.KeepAlive(pspec)
+	runtime.KeepAlive(excludedProps)
 }
 
 // AddControlBinding wraps gst_object_add_control_binding
@@ -14776,18 +15052,54 @@ func (object *ObjectInstance) Unparent() {
 	runtime.KeepAlive(object)
 }
 
+// ConnectDeepNotify connects the provided callback to the "deep-notify" signal
+//
+// The deep notify signal is used to be notified of property changes. It is
+// typically attached to the toplevel bin to receive notifications from all
+// the elements contained in that bin.
+func (o *ObjectInstance) ConnectDeepNotify(fn func(Object, Object, gobject.ParamSpec)) gobject.SignalHandle {
+	return o.Connect("deep-notify", fn)
+}
+
 // ObjectOverrides is the struct used to override the default implementation of virtual methods.
 // it is generic over the extending instance type.
 type ObjectOverrides[Instance Object] struct {
 	// gobject.InitiallyUnownedOverrides allows you to override virtual methods from the parent class gobject.InitiallyUnowned
 	gobject.InitiallyUnownedOverrides[Instance]
 
+	// DeepNotify allows you to override the implementation of the virtual method deep_notify.
+	// The function takes the following parameters:
+	// 
+	// 	- orig Object 
+	// 	- pspec *gobject.ParamSpec 
+	DeepNotify func(Instance, Object, *gobject.ParamSpec)
 }
 
 // UnsafeApplyObjectOverrides applies the overrides to init the gclass by setting the trampoline functions.
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyObjectOverrides[Instance Object](gclass unsafe.Pointer, overrides ObjectOverrides[Instance]) {
 	gobject.UnsafeApplyInitiallyUnownedOverrides(gclass, overrides.InitiallyUnownedOverrides)
+
+	pclass := (*C.GstObjectClass)(gclass)
+
+	if overrides.DeepNotify != nil {
+		pclass.deep_notify = (*[0]byte)(C._gotk4_gst1_Object_deep_notify)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_Object_deep_notify",
+			func(carg0 *C.GstObject, carg1 *C.GstObject, carg2 *C.GParamSpec) {
+				var object Instance           // go GstObject subclass
+				var orig   Object             // in, none, converted
+				var pspec  *gobject.ParamSpec // in, none, converted
+
+				object = UnsafeObjectFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				orig = UnsafeObjectFromGlibNone(unsafe.Pointer(carg1))
+				pspec = gobject.UnsafeParamSpecFromGlibNone(unsafe.Pointer(carg2))
+
+				overrides.DeepNotify(object, orig, pspec)
+			},
+		)
+	}
 }
 
 // RegisterObjectSubClass is used to register a go subclass of GstObject. For this to work safely please implement the
@@ -22041,6 +22353,11 @@ type StreamCollection interface {
 	//
 	// Returns the upstream id of the @collection.
 	GetUpstreamID() string
+	// ConnectStreamNotify connects the provided callback to the "stream-notify" signal
+	//
+	// The stream notify signal is used to be notified of property changes to
+	// streams within the collection.
+	ConnectStreamNotify(func(StreamCollection, Stream, gobject.ParamSpec)) gobject.SignalHandle
 }
 
 func unsafeWrapStreamCollection(base *gobject.ObjectInstance) *StreamCollectionInstance {
@@ -22225,18 +22542,53 @@ func (collection *StreamCollectionInstance) GetUpstreamID() string {
 	return goret
 }
 
+// ConnectStreamNotify connects the provided callback to the "stream-notify" signal
+//
+// The stream notify signal is used to be notified of property changes to
+// streams within the collection.
+func (o *StreamCollectionInstance) ConnectStreamNotify(fn func(StreamCollection, Stream, gobject.ParamSpec)) gobject.SignalHandle {
+	return o.Connect("stream-notify", fn)
+}
+
 // StreamCollectionOverrides is the struct used to override the default implementation of virtual methods.
 // it is generic over the extending instance type.
 type StreamCollectionOverrides[Instance StreamCollection] struct {
 	// ObjectOverrides allows you to override virtual methods from the parent class Object
 	ObjectOverrides[Instance]
 
+	// StreamNotify allows you to override the implementation of the virtual method stream_notify.
+	// The function takes the following parameters:
+	// 
+	// 	- stream Stream 
+	// 	- pspec *gobject.ParamSpec 
+	StreamNotify func(Instance, Stream, *gobject.ParamSpec)
 }
 
 // UnsafeApplyStreamCollectionOverrides applies the overrides to init the gclass by setting the trampoline functions.
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyStreamCollectionOverrides[Instance StreamCollection](gclass unsafe.Pointer, overrides StreamCollectionOverrides[Instance]) {
 	UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+
+	pclass := (*C.GstStreamCollectionClass)(gclass)
+
+	if overrides.StreamNotify != nil {
+		pclass.stream_notify = (*[0]byte)(C._gotk4_gst1_StreamCollection_stream_notify)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gst1_StreamCollection_stream_notify",
+			func(carg0 *C.GstStreamCollection, carg1 *C.GstStream, carg2 *C.GParamSpec) {
+				var collection Instance           // go GstStreamCollection subclass
+				var stream     Stream             // in, none, converted
+				var pspec      *gobject.ParamSpec // in, none, converted
+
+				collection = UnsafeStreamCollectionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				stream = UnsafeStreamFromGlibNone(unsafe.Pointer(carg1))
+				pspec = gobject.UnsafeParamSpecFromGlibNone(unsafe.Pointer(carg2))
+
+				overrides.StreamNotify(collection, stream, pspec)
+			},
+		)
+	}
 }
 
 // RegisterStreamCollectionSubClass is used to register a go subclass of GstStreamCollection. For this to work safely please implement the
@@ -53446,133 +53798,6 @@ func (p *PadTemplateClass) ParentClass() *ObjectClass {
 	// attach a cleanup to keep the instance alive as long as the parent is referenced
 	runtime.AddCleanup(parent, func(_ *PadTemplateClass) {}, p)
 	return parent
-}
-
-// ParamSpecArray wraps GstParamSpecArray
-//
-// A GParamSpec derived structure for arrays of values.
-type ParamSpecArray struct {
-	*paramSpecArray
-}
-
-// paramSpecArray is the struct that's finalized
-type paramSpecArray struct {
-	native *C.GstParamSpecArray
-}
-
-// UnsafeParamSpecArrayFromGlibBorrow is used to convert raw C.GstParamSpecArray pointers to go. This is used by the bindings internally.
-func UnsafeParamSpecArrayFromGlibBorrow(p unsafe.Pointer) *ParamSpecArray {
-	return &ParamSpecArray{&paramSpecArray{(*C.GstParamSpecArray)(p)}}
-}
-
-// UnsafeParamSpecArrayFromGlibNone is used to convert raw C.GstParamSpecArray pointers to go without transferring ownership. This is used by the bindings internally.
-func UnsafeParamSpecArrayFromGlibNone(p unsafe.Pointer) *ParamSpecArray {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeParamSpecArrayFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.paramSpecArray,
-		func (intern *paramSpecArray) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeParamSpecArrayFromGlibFull is used to convert raw C.GstParamSpecArray pointers to go while taking ownership. This is used by the bindings internally.
-func UnsafeParamSpecArrayFromGlibFull(p unsafe.Pointer) *ParamSpecArray {
-	wrapped := UnsafeParamSpecArrayFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.paramSpecArray,
-		func (intern *paramSpecArray) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeParamSpecArrayFree unrefs/frees the underlying resource. This is used by the bindings internally.
-// 
-// After this is called, no other method on [ParamSpecArray] is expected to work anymore.
-func UnsafeParamSpecArrayFree(p *ParamSpecArray) {
-	C.free(unsafe.Pointer(p.native))
-}
-
-// UnsafeParamSpecArrayToGlibNone returns the underlying C pointer. This is used by the bindings internally.
-func UnsafeParamSpecArrayToGlibNone(p *ParamSpecArray) unsafe.Pointer {
-	return unsafe.Pointer(p.native)
-}
-
-// UnsafeParamSpecArrayToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeParamSpecArrayToGlibFull(p *ParamSpecArray) unsafe.Pointer {
-	runtime.SetFinalizer(p.paramSpecArray, nil)
-	_p := unsafe.Pointer(p.native)
-	p.native = nil // ParamSpecArray is invalid from here on
-	return _p
-}
-
-// ParamSpecFraction wraps GstParamSpecFraction
-//
-// A GParamSpec derived structure that contains the meta data for fractional
-// properties.
-type ParamSpecFraction struct {
-	*paramSpecFraction
-}
-
-// paramSpecFraction is the struct that's finalized
-type paramSpecFraction struct {
-	native *C.GstParamSpecFraction
-}
-
-// UnsafeParamSpecFractionFromGlibBorrow is used to convert raw C.GstParamSpecFraction pointers to go. This is used by the bindings internally.
-func UnsafeParamSpecFractionFromGlibBorrow(p unsafe.Pointer) *ParamSpecFraction {
-	return &ParamSpecFraction{&paramSpecFraction{(*C.GstParamSpecFraction)(p)}}
-}
-
-// UnsafeParamSpecFractionFromGlibNone is used to convert raw C.GstParamSpecFraction pointers to go without transferring ownership. This is used by the bindings internally.
-func UnsafeParamSpecFractionFromGlibNone(p unsafe.Pointer) *ParamSpecFraction {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeParamSpecFractionFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.paramSpecFraction,
-		func (intern *paramSpecFraction) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeParamSpecFractionFromGlibFull is used to convert raw C.GstParamSpecFraction pointers to go while taking ownership. This is used by the bindings internally.
-func UnsafeParamSpecFractionFromGlibFull(p unsafe.Pointer) *ParamSpecFraction {
-	wrapped := UnsafeParamSpecFractionFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.paramSpecFraction,
-		func (intern *paramSpecFraction) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeParamSpecFractionFree unrefs/frees the underlying resource. This is used by the bindings internally.
-// 
-// After this is called, no other method on [ParamSpecFraction] is expected to work anymore.
-func UnsafeParamSpecFractionFree(p *ParamSpecFraction) {
-	C.free(unsafe.Pointer(p.native))
-}
-
-// UnsafeParamSpecFractionToGlibNone returns the underlying C pointer. This is used by the bindings internally.
-func UnsafeParamSpecFractionToGlibNone(p *ParamSpecFraction) unsafe.Pointer {
-	return unsafe.Pointer(p.native)
-}
-
-// UnsafeParamSpecFractionToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeParamSpecFractionToGlibFull(p *ParamSpecFraction) unsafe.Pointer {
-	runtime.SetFinalizer(p.paramSpecFraction, nil)
-	_p := unsafe.Pointer(p.native)
-	p.native = nil // ParamSpecFraction is invalid from here on
-	return _p
 }
 
 // ParentBufferMeta wraps GstParentBufferMeta

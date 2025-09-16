@@ -2791,9 +2791,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				ice = UnsafeWebRTCICEFromGlibNone(unsafe.Pointer(carg0)).(Instance)
 				_ = fn
 				_ = carg1
-				_ = _
 				_ = carg2
-				_ = notify
 				_ = carg3
 				panic("unimplemented conversion of WebRTCICEOnCandidateFunc (GstWebRTCICEOnCandidateFunc)")
 
