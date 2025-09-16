@@ -35,10 +35,18 @@ func createPipeline() (gst.Pipeline, error) {
 	// by creating a video info with the given format and creating caps from it for the appsrc element.
 	videoInfo := gstvideo.NewVideoInfo()
 
-	videoInfo.SetFormat(gstvideo.VideoFormatRGBA, width, height)
+	ok := videoInfo.SetFormat(gstvideo.VideoFormatRGBA, width, height)
+
+	if !ok {
+		return nil, fmt.Errorf("failed to set video format")
+	}
+
 	videoInfo.SetFramerate(2, 1)
 
-	src.SetCaps(videoInfo.ToCaps())
+	ok = src.SetCaps(videoInfo.ToCaps())
+	if !ok {
+		return nil, fmt.Errorf("failed to set caps on appsrc")
+	}
 	src.SetObjectProperty("format", gst.FormatTime)
 
 	// Initialize a frame counter
@@ -127,7 +135,11 @@ func mainLoop(pipeline gst.Pipeline) error {
 				fmt.Println(gerr.Error(), debug)
 			}
 			return gerr
+		default:
+			fmt.Println(msg)
 		}
+
+		pipeline.DebugBinToDotFileWithTs(gst.DebugGraphShowVerbose, "pipeline")
 	}
 
 	return fmt.Errorf("unexpected end of messages without EOS")
