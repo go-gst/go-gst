@@ -22,6 +22,7 @@
       default = pkgs.mkShell {
         packages = with pkgs; [
           go
+          go-tools # staticcheck & co.
           pkg-config
 
           gst_all_1.gst-editing-services

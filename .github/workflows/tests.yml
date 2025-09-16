@@ -15,9 +15,8 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/magic-nix-cache-action@main
       - name: Check formatting
-        uses: Jerome1337/gofmt-action@v1.0.5
-        with:
-          gofmt-flags: "-l -d"
-      - uses: dominikh/staticcheck-action@v1.3.0
-        with:
-          install-go: false
+        run: test -z "$(gofmt -l .)"
+        shell: nix develop -c bash -e {0}
+      - name: staticcheck
+        shell: nix develop -c bash -e {0}
+        run: staticcheck ./...
