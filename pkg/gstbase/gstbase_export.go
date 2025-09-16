@@ -38,9 +38,8 @@ func _gotk4_gstbase1_CollectPadsBufferFunction(arg1 *C.GstCollectPads, arg2 *C.G
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	flowReturn := fn(_pads, _data, _buffer)
 
@@ -72,9 +71,8 @@ func _gotk4_gstbase1_CollectPadsClipFunction(arg1 *C.GstCollectPads, arg2 *C.Gst
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_inbuffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	outbuffer, flowReturn := fn(_pads, _data, _inbuffer)
 
@@ -210,6 +208,12 @@ func _gotk4_gstbase1_CollectPadsQueryFunction(arg1 *C.GstCollectPads, arg2 *C.Gs
 	_pads = wrapCollectPads(coreglib.Take(unsafe.Pointer(arg1)))
 	_pad = (*CollectData)(gextras.NewStructNative(unsafe.Pointer(arg2)))
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg3)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg3)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := fn(_pads, _pad, _query)
 
@@ -258,6 +262,12 @@ func _gotk4_gstbase1_AggregatorClass_clip(arg0 *C.GstAggregator, arg1 *C.GstAggr
 
 	_aggregatorPad = wrapAggregatorPad(coreglib.Take(unsafe.Pointer(arg1)))
 	_buf = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg2)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg2)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_buf)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	buffer := overrides.Clip(_aggregatorPad, _buf)
 
@@ -280,6 +290,12 @@ func _gotk4_gstbase1_AggregatorClass_decide_allocation(arg0 *C.GstAggregator, ar
 	var _query *gst.Query // out
 
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.DecideAllocation(_query)
 
@@ -306,9 +322,8 @@ func _gotk4_gstbase1_AggregatorClass_finish_buffer(arg0 *C.GstAggregator, arg1 *
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	flowReturn := overrides.FinishBuffer(_buffer)
 
@@ -333,9 +348,8 @@ func _gotk4_gstbase1_AggregatorClass_finish_buffer_list(arg0 *C.GstAggregator, a
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_bufferlist)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	flowReturn := overrides.FinishBufferList(_bufferlist)
 
@@ -357,6 +371,12 @@ func _gotk4_gstbase1_AggregatorClass_fixate_src_caps(arg0 *C.GstAggregator, arg1
 	var _caps *gst.Caps // out
 
 	_caps = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_caps)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ret := overrides.FixateSrcCaps(_caps)
 
@@ -432,6 +452,12 @@ func _gotk4_gstbase1_AggregatorClass_negotiated_src_caps(arg0 *C.GstAggregator, 
 	var _caps *gst.Caps // out
 
 	_caps = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_caps)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.NegotiatedSrcCaps(_caps)
 
@@ -482,7 +508,19 @@ func _gotk4_gstbase1_AggregatorClass_propose_allocation(arg0 *C.GstAggregator, a
 
 	_pad = wrapAggregatorPad(coreglib.Take(unsafe.Pointer(arg1)))
 	_decideQuery = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg2)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg2)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_decideQuery)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg3)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg3)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.ProposeAllocation(_pad, _decideQuery, _query)
 
@@ -556,6 +594,12 @@ func _gotk4_gstbase1_AggregatorClass_sink_query(arg0 *C.GstAggregator, arg1 *C.G
 
 	_aggregatorPad = wrapAggregatorPad(coreglib.Take(unsafe.Pointer(arg1)))
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg2)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg2)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.SinkQuery(_aggregatorPad, _query)
 
@@ -581,6 +625,12 @@ func _gotk4_gstbase1_AggregatorClass_sink_query_pre_queue(arg0 *C.GstAggregator,
 
 	_aggregatorPad = wrapAggregatorPad(coreglib.Take(unsafe.Pointer(arg1)))
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg2)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg2)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.SinkQueryPreQueue(_aggregatorPad, _query)
 
@@ -654,6 +704,12 @@ func _gotk4_gstbase1_AggregatorClass_src_query(arg0 *C.GstAggregator, arg1 *C.Gs
 	var _query *gst.Query // out
 
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.SrcQuery(_query)
 
@@ -715,6 +771,12 @@ func _gotk4_gstbase1_AggregatorClass_update_src_caps(arg0 *C.GstAggregator, arg1
 	var _caps *gst.Caps // out
 
 	_caps = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_caps)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ret, flowReturn := overrides.UpdateSrcCaps(_caps)
 
@@ -757,6 +819,12 @@ func _gotk4_gstbase1_Aggregator_ConnectSamplesSelected(arg0 C.gpointer, arg1 *C.
 	_duration = uint64(arg4)
 	if arg5 != nil {
 		_info = (*gst.Structure)(gextras.NewStructNative(unsafe.Pointer(arg5)))
+		C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg5)))
+		runtime.SetFinalizer(
+			gextras.StructIntern(unsafe.Pointer(_info)),
+			func(intern *struct{ C unsafe.Pointer }) {
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	f(_segment, _pts, _dts, _duration, _info)
@@ -828,6 +896,12 @@ func _gotk4_gstbase1_AggregatorPadClass_skip_buffer(arg0 *C.GstAggregatorPad, ar
 		_aggregator = rv
 	}
 	_buffer = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg2)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg2)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_buffer)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.SkipBuffer(_aggregator, _buffer)
 
@@ -856,6 +930,12 @@ func _gotk4_gstbase1_AggregatorPad_ConnectBufferConsumed(arg0 C.gpointer, arg1 *
 	var _object *gst.Buffer // out
 
 	_object = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_object)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	f(_object)
 }
@@ -900,6 +980,12 @@ func _gotk4_gstbase1_BaseParseClass_detect(arg0 *C.GstBaseParse, arg1 *C.GstBuff
 	var _buffer *gst.Buffer // out
 
 	_buffer = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_buffer)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	flowReturn := overrides.Detect(_buffer)
 
@@ -921,6 +1007,12 @@ func _gotk4_gstbase1_BaseParseClass_get_sink_caps(arg0 *C.GstBaseParse, arg1 *C.
 	var _filter *gst.Caps // out
 
 	_filter = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_filter)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	caps := overrides.SinkCaps(_filter)
 
@@ -987,6 +1079,12 @@ func _gotk4_gstbase1_BaseParseClass_set_sink_caps(arg0 *C.GstBaseParse, arg1 *C.
 	var _caps *gst.Caps // out
 
 	_caps = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_caps)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.SetSinkCaps(_caps)
 
@@ -1033,6 +1131,12 @@ func _gotk4_gstbase1_BaseParseClass_sink_query(arg0 *C.GstBaseParse, arg1 *C.Gst
 	var _query *gst.Query // out
 
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.SinkQuery(_query)
 
@@ -1079,6 +1183,12 @@ func _gotk4_gstbase1_BaseParseClass_src_query(arg0 *C.GstBaseParse, arg1 *C.GstQ
 	var _query *gst.Query // out
 
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.SrcQuery(_query)
 
@@ -1188,6 +1298,12 @@ func _gotk4_gstbase1_BaseSinkClass_fixate(arg0 *C.GstBaseSink, arg1 *C.GstCaps) 
 	var _caps *gst.Caps // out
 
 	_caps = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_caps)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ret := overrides.Fixate(_caps)
 
@@ -1211,6 +1327,12 @@ func _gotk4_gstbase1_BaseSinkClass_get_caps(arg0 *C.GstBaseSink, arg1 *C.GstCaps
 
 	if arg1 != nil {
 		_filter = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+		C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+		runtime.SetFinalizer(
+			gextras.StructIntern(unsafe.Pointer(_filter)),
+			func(intern *struct{ C unsafe.Pointer }) {
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	caps := overrides.Caps(_filter)
@@ -1234,6 +1356,12 @@ func _gotk4_gstbase1_BaseSinkClass_get_times(arg0 *C.GstBaseSink, arg1 *C.GstBuf
 	var _buffer *gst.Buffer // out
 
 	_buffer = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_buffer)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	start, end := overrides.Times(_buffer)
 
@@ -1255,6 +1383,12 @@ func _gotk4_gstbase1_BaseSinkClass_prepare(arg0 *C.GstBaseSink, arg1 *C.GstBuffe
 	var _buffer *gst.Buffer // out
 
 	_buffer = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_buffer)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	flowReturn := overrides.Prepare(_buffer)
 
@@ -1276,6 +1410,12 @@ func _gotk4_gstbase1_BaseSinkClass_prepare_list(arg0 *C.GstBaseSink, arg1 *C.Gst
 	var _bufferList *gst.BufferList // out
 
 	_bufferList = (*gst.BufferList)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_bufferList)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	flowReturn := overrides.PrepareList(_bufferList)
 
@@ -1297,6 +1437,12 @@ func _gotk4_gstbase1_BaseSinkClass_preroll(arg0 *C.GstBaseSink, arg1 *C.GstBuffe
 	var _buffer *gst.Buffer // out
 
 	_buffer = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_buffer)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	flowReturn := overrides.Preroll(_buffer)
 
@@ -1318,6 +1464,12 @@ func _gotk4_gstbase1_BaseSinkClass_propose_allocation(arg0 *C.GstBaseSink, arg1 
 	var _query *gst.Query // out
 
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.ProposeAllocation(_query)
 
@@ -1341,6 +1493,12 @@ func _gotk4_gstbase1_BaseSinkClass_query(arg0 *C.GstBaseSink, arg1 *C.GstQuery) 
 	var _query *gst.Query // out
 
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.Query(_query)
 
@@ -1364,6 +1522,12 @@ func _gotk4_gstbase1_BaseSinkClass_render(arg0 *C.GstBaseSink, arg1 *C.GstBuffer
 	var _buffer *gst.Buffer // out
 
 	_buffer = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_buffer)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	flowReturn := overrides.Render(_buffer)
 
@@ -1385,6 +1549,12 @@ func _gotk4_gstbase1_BaseSinkClass_render_list(arg0 *C.GstBaseSink, arg1 *C.GstB
 	var _bufferList *gst.BufferList // out
 
 	_bufferList = (*gst.BufferList)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_bufferList)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	flowReturn := overrides.RenderList(_bufferList)
 
@@ -1406,6 +1576,12 @@ func _gotk4_gstbase1_BaseSinkClass_set_caps(arg0 *C.GstBaseSink, arg1 *C.GstCaps
 	var _caps *gst.Caps // out
 
 	_caps = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_caps)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.SetCaps(_caps)
 
@@ -1554,6 +1730,12 @@ func _gotk4_gstbase1_BaseSrcClass_decide_allocation(arg0 *C.GstBaseSrc, arg1 *C.
 	var _query *gst.Query // out
 
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.DecideAllocation(_query)
 
@@ -1627,6 +1809,12 @@ func _gotk4_gstbase1_BaseSrcClass_fill(arg0 *C.GstBaseSrc, arg1 C.guint64, arg2 
 	_offset = uint64(arg1)
 	_size = uint(arg2)
 	_buf = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg3)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg3)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_buf)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	flowReturn := overrides.Fill(_offset, _size, _buf)
 
@@ -1651,9 +1839,8 @@ func _gotk4_gstbase1_BaseSrcClass_fixate(arg0 *C.GstBaseSrc, arg1 *C.GstCaps) (c
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_caps)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ret := overrides.Fixate(_caps)
 
@@ -1677,6 +1864,12 @@ func _gotk4_gstbase1_BaseSrcClass_get_caps(arg0 *C.GstBaseSrc, arg1 *C.GstCaps) 
 
 	if arg1 != nil {
 		_filter = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+		C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+		runtime.SetFinalizer(
+			gextras.StructIntern(unsafe.Pointer(_filter)),
+			func(intern *struct{ C unsafe.Pointer }) {
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	caps := overrides.Caps(_filter)
@@ -1721,6 +1914,12 @@ func _gotk4_gstbase1_BaseSrcClass_get_times(arg0 *C.GstBaseSrc, arg1 *C.GstBuffe
 	var _buffer *gst.Buffer // out
 
 	_buffer = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_buffer)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	start, end := overrides.Times(_buffer)
 
@@ -1805,6 +2004,12 @@ func _gotk4_gstbase1_BaseSrcClass_query(arg0 *C.GstBaseSrc, arg1 *C.GstQuery) (c
 	var _query *gst.Query // out
 
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.Query(_query)
 
@@ -1828,6 +2033,12 @@ func _gotk4_gstbase1_BaseSrcClass_set_caps(arg0 *C.GstBaseSrc, arg1 *C.GstCaps) 
 	var _caps *gst.Caps // out
 
 	_caps = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_caps)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.SetCaps(_caps)
 
@@ -1929,6 +2140,12 @@ func _gotk4_gstbase1_BaseTransformClass_accept_caps(arg0 *C.GstBaseTransform, ar
 
 	_direction = gst.PadDirection(arg1)
 	_caps = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg2)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg2)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_caps)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.AcceptCaps(_direction, _caps)
 
@@ -1952,6 +2169,12 @@ func _gotk4_gstbase1_BaseTransformClass_before_transform(arg0 *C.GstBaseTransfor
 	var _buffer *gst.Buffer // out
 
 	_buffer = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_buffer)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	overrides.BeforeTransform(_buffer)
 }
@@ -1968,7 +2191,19 @@ func _gotk4_gstbase1_BaseTransformClass_copy_metadata(arg0 *C.GstBaseTransform, 
 	var _outbuf *gst.Buffer // out
 
 	_input = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_input)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_outbuf = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg2)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg2)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_outbuf)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.CopyMetadata(_input, _outbuf)
 
@@ -1992,6 +2227,12 @@ func _gotk4_gstbase1_BaseTransformClass_decide_allocation(arg0 *C.GstBaseTransfo
 	var _query *gst.Query // out
 
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.DecideAllocation(_query)
 
@@ -2017,8 +2258,20 @@ func _gotk4_gstbase1_BaseTransformClass_filter_meta(arg0 *C.GstBaseTransform, ar
 	var _params *gst.Structure // out
 
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_api = coreglib.Type(arg2)
 	_params = (*gst.Structure)(gextras.NewStructNative(unsafe.Pointer(arg3)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg3)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_params)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.FilterMeta(_query, _api, _params)
 
@@ -2045,13 +2298,18 @@ func _gotk4_gstbase1_BaseTransformClass_fixate_caps(arg0 *C.GstBaseTransform, ar
 
 	_direction = gst.PadDirection(arg1)
 	_caps = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg2)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg2)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_caps)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_othercaps = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg3)))
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_othercaps)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ret := overrides.FixateCaps(_direction, _caps, _othercaps)
 
@@ -2094,6 +2352,12 @@ func _gotk4_gstbase1_BaseTransformClass_get_unit_size(arg0 *C.GstBaseTransform, 
 	var _caps *gst.Caps // out
 
 	_caps = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_caps)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	size, ok := overrides.UnitSize(_caps)
 
@@ -2119,6 +2383,12 @@ func _gotk4_gstbase1_BaseTransformClass_prepare_output_buffer(arg0 *C.GstBaseTra
 	var _input *gst.Buffer // out
 
 	_input = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_input)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	outbuf, flowReturn := overrides.PrepareOutputBuffer(_input)
 
@@ -2144,7 +2414,19 @@ func _gotk4_gstbase1_BaseTransformClass_propose_allocation(arg0 *C.GstBaseTransf
 	var _query *gst.Query       // out
 
 	_decideQuery = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_decideQuery)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg2)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg2)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.ProposeAllocation(_decideQuery, _query)
 
@@ -2170,6 +2452,12 @@ func _gotk4_gstbase1_BaseTransformClass_query(arg0 *C.GstBaseTransform, arg1 C.G
 
 	_direction = gst.PadDirection(arg1)
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg2)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg2)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.Query(_direction, _query)
 
@@ -2194,7 +2482,19 @@ func _gotk4_gstbase1_BaseTransformClass_set_caps(arg0 *C.GstBaseTransform, arg1 
 	var _outcaps *gst.Caps // out
 
 	_incaps = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_incaps)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_outcaps = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg2)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg2)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_outcaps)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.SetCaps(_incaps, _outcaps)
 
@@ -2318,6 +2618,12 @@ func _gotk4_gstbase1_BaseTransformClass_submit_input_buffer(arg0 *C.GstBaseTrans
 		_isDiscont = true
 	}
 	_input = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg2)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg2)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_input)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	flowReturn := overrides.SubmitInputBuffer(_isDiscont, _input)
 
@@ -2340,7 +2646,19 @@ func _gotk4_gstbase1_BaseTransformClass_transform(arg0 *C.GstBaseTransform, arg1
 	var _outbuf *gst.Buffer // out
 
 	_inbuf = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_inbuf)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_outbuf = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg2)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg2)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_outbuf)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	flowReturn := overrides.Transform(_inbuf, _outbuf)
 
@@ -2365,7 +2683,19 @@ func _gotk4_gstbase1_BaseTransformClass_transform_caps(arg0 *C.GstBaseTransform,
 
 	_direction = gst.PadDirection(arg1)
 	_caps = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg2)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg2)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_caps)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_filter = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg3)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg3)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_filter)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ret := overrides.TransformCaps(_direction, _caps, _filter)
 
@@ -2388,6 +2718,12 @@ func _gotk4_gstbase1_BaseTransformClass_transform_ip(arg0 *C.GstBaseTransform, a
 	var _buf *gst.Buffer // out
 
 	_buf = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_buf)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	flowReturn := overrides.TransformIP(_buf)
 
@@ -2411,8 +2747,20 @@ func _gotk4_gstbase1_BaseTransformClass_transform_meta(arg0 *C.GstBaseTransform,
 	var _inbuf *gst.Buffer  // out
 
 	_outbuf = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_outbuf)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_meta = (*gst.Meta)(gextras.NewStructNative(unsafe.Pointer(arg2)))
 	_inbuf = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg3)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg3)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_inbuf)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.TransformMeta(_outbuf, _meta, _inbuf)
 
@@ -2440,8 +2788,20 @@ func _gotk4_gstbase1_BaseTransformClass_transform_size(arg0 *C.GstBaseTransform,
 
 	_direction = gst.PadDirection(arg1)
 	_caps = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg2)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg2)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_caps)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_size = uint(arg3)
 	_othercaps = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg4)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg4)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_othercaps)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	othersize, ok := overrides.TransformSize(_direction, _caps, _size, _othercaps)
 
@@ -2543,6 +2903,12 @@ func _gotk4_gstbase1_PushSrcClass_fill(arg0 *C.GstPushSrc, arg1 *C.GstBuffer) (c
 	var _buf *gst.Buffer // out
 
 	_buf = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_buf)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	flowReturn := overrides.Fill(_buf)
 

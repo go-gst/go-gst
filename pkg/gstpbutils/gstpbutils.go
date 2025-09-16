@@ -774,9 +774,8 @@ func CodecUtilsCapsFromMIMECodec(codecsField string) *gst.Caps {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_caps)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _caps
@@ -1316,9 +1315,8 @@ func CodecUtilsOpusCreateCapsFromHeader(header, comments *gst.Buffer) *gst.Caps 
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_caps)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _caps
@@ -1743,9 +1741,8 @@ func NewMissingDecoderMessage(element gst.Elementer, decodeCaps *gst.Caps) *gst.
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -1817,9 +1814,8 @@ func NewMissingElementMessage(element gst.Elementer, factoryName string) *gst.Me
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -1887,9 +1883,8 @@ func NewMissingEncoderMessage(element gst.Elementer, encodeCaps *gst.Caps) *gst.
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -2029,9 +2024,8 @@ func NewMissingURISinkMessage(element gst.Elementer, protocol string) *gst.Messa
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -2103,9 +2097,8 @@ func NewMissingURISourceMessage(element gst.Elementer, protocol string) *gst.Mes
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -3401,6 +3394,12 @@ func (info *DiscovererInfo) Misc() *gst.Structure {
 
 	if _cret != nil {
 		_structure = (*gst.Structure)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+		C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_cret)))
+		runtime.SetFinalizer(
+			gextras.StructIntern(unsafe.Pointer(_structure)),
+			func(intern *struct{ C unsafe.Pointer }) {
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _structure
@@ -3807,9 +3806,8 @@ func (info *DiscovererStreamInfo) Caps() *gst.Caps {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_caps)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _caps
@@ -3836,6 +3834,12 @@ func (info *DiscovererStreamInfo) Misc() *gst.Structure {
 
 	if _cret != nil {
 		_structure = (*gst.Structure)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+		C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_cret)))
+		runtime.SetFinalizer(
+			gextras.StructIntern(unsafe.Pointer(_structure)),
+			func(intern *struct{ C unsafe.Pointer }) {
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _structure
@@ -4606,9 +4610,8 @@ func (self *EncodingProfile) ElementProperties() *gst.Structure {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_structure)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.gst_structure_free((*C.GstStructure)(intern.C))
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _structure
@@ -4654,9 +4657,8 @@ func (profile *EncodingProfile) Format() *gst.Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_caps)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _caps
 }
@@ -4683,9 +4685,8 @@ func (profile *EncodingProfile) InputCaps() *gst.Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_caps)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _caps
 }
@@ -4798,9 +4799,8 @@ func (profile *EncodingProfile) Restriction() *gst.Caps {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_caps)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _caps

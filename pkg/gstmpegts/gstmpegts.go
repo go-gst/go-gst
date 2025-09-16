@@ -2805,9 +2805,8 @@ func MessageNewMpegtsSection(parent gst.GstObjector, section *Section) *gst.Mess
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }

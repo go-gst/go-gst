@@ -3,6 +3,7 @@
 package gstnet
 
 import (
+	"runtime"
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/core/gbox"
@@ -30,6 +31,12 @@ func _gotk4_gstnet1_PtpStatisticsCallback(arg1 C.guint8, arg2 *C.GstStructure, a
 
 	_domain = byte(arg1)
 	_stats = (*gst.Structure)(gextras.NewStructNative(unsafe.Pointer(arg2)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg2)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_stats)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := fn(_domain, _stats)
 

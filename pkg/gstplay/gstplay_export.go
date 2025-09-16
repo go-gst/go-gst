@@ -3,6 +3,7 @@
 package gstplay
 
 import (
+	"runtime"
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/core/gerror"
@@ -90,6 +91,12 @@ func _gotk4_gstplay1_PlaySignalAdapter_ConnectError(arg0 C.gpointer, arg1 *C.GEr
 	_err = gerror.Take(unsafe.Pointer(arg1))
 	if arg2 != nil {
 		_details = (*gst.Structure)(gextras.NewStructNative(unsafe.Pointer(arg2)))
+		C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg2)))
+		runtime.SetFinalizer(
+			gextras.StructIntern(unsafe.Pointer(_details)),
+			func(intern *struct{ C unsafe.Pointer }) {
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	f(_err, _details)
@@ -278,6 +285,12 @@ func _gotk4_gstplay1_PlaySignalAdapter_ConnectWarning(arg0 C.gpointer, arg1 *C.G
 	_err = gerror.Take(unsafe.Pointer(arg1))
 	if arg2 != nil {
 		_details = (*gst.Structure)(gextras.NewStructNative(unsafe.Pointer(arg2)))
+		C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg2)))
+		runtime.SetFinalizer(
+			gextras.StructIntern(unsafe.Pointer(_details)),
+			func(intern *struct{ C unsafe.Pointer }) {
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	f(_err, _details)
