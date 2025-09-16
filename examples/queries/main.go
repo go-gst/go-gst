@@ -15,12 +15,12 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"os"
 	"strings"
 	"time"
 
-	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
 )
 
@@ -33,8 +33,6 @@ func queries() error {
 
 	gst.Init()
 
-	mainLoop := glib.NewMainLoop(glib.MainContextDefault(), false)
-
 	// Let GStreamer create a pipeline from the parsed launch syntax on the cli.
 	pipelineStr := strings.Join(os.Args[1:], " ")
 	ret, err := gst.ParseLaunch(pipelineStr)
@@ -42,10 +40,10 @@ func queries() error {
 		return err
 	}
 
-	pipeline := ret.(gst.Binner)
+	pipeline := ret.(gst.Pipeline)
 
 	// Get a reference to the pipeline bus
-	bus := pipeline.Bus()
+	bus := pipeline.GetBus()
 
 	// Start the pipeline
 	pipeline.SetState(gst.StatePlaying)
@@ -80,24 +78,22 @@ func queries() error {
 		}
 	}()
 
-	bus.AddWatch(0, func(bus *gst.Bus, msg *gst.Message) bool {
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	for msg := range bus.Messages(ctx) {
 		switch msg.Type() {
 		case gst.MessageEos:
-			mainLoop.Quit()
+			return nil
 		case gst.MessageError:
-			gstErr, debug := msg.ParseError()
-			fmt.Printf("Error from %s: %s\n", msg.Src(), gstErr.Error())
+			debug, gstErr := msg.ParseError()
+			fmt.Printf("Error from %s: %s\n", msg.Source().GetName(), gstErr.Error())
 			if debug != "" {
 				fmt.Println("go-gst-debug:", debug)
 			}
-			mainLoop.Quit()
+			return nil
 		}
-		return true
-	})
-
-	mainLoop.Run()
-
-	bus.RemoveWatch()
+	}
 
 	return nil
 }

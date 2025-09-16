@@ -4,19 +4,17 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"os"
 	"strings"
 	"time"
 
-	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
 )
 
 func main() {
 	gst.Init()
-
-	mainLoop := glib.NewMainLoop(glib.MainContextDefault(), false)
 
 	// Let GStreamer create a pipeline from the parsed launch syntax on the cli.
 	res, err := gst.ParseLaunch(strings.Join(os.Args[1:], " "))
@@ -25,78 +23,79 @@ func main() {
 		return
 	}
 
-	pipeline := res.(*gst.Pipeline)
+	pipeline := res.(gst.Pipeline)
 
-	// Add a message handler to the pipeline bus, printing interesting information to the console.
-	pipeline.Bus().AddWatch(0, func(_ *gst.Bus, msg *gst.Message) bool {
-		switch msg.Type() {
-		case gst.MessageEos: // When end-of-stream is received stop the main loop
-			pipeline.BlockSetState(gst.StateNull, gst.ClockTime(time.Second))
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
 
-			mainLoop.Quit()
-		case gst.MessageError: // Error messages are always fatal
-			err, debug := msg.ParseError()
-			fmt.Println("ERROR:", err.Error())
-			if debug != "" {
-				fmt.Println("DEBUG:", debug)
+	go func() {
+		for msg := range pipeline.GetBus().Messages(ctx) {
+			switch msg.Type() {
+			case gst.MessageEos: // When end-of-stream is received stop the main loop
+				fmt.Println("End-of-stream received")
+				cancel()
+			case gst.MessageError: // Error messages are always fatal
+				debug, err := msg.ParseError()
+				fmt.Println("ERROR:", err.Error())
+				if debug != "" {
+					fmt.Println("DEBUG:", debug)
+				}
+				cancel()
+
+			case gst.MessageAny:
+			case gst.MessageApplication:
+			case gst.MessageAsyncDone:
+			case gst.MessageAsyncStart:
+			case gst.MessageBuffering:
+			case gst.MessageClockLost:
+			case gst.MessageClockProvide:
+			case gst.MessageDeviceAdded:
+			case gst.MessageDeviceChanged:
+			case gst.MessageDeviceRemoved:
+			case gst.MessageDurationChanged:
+			case gst.MessageElement:
+			case gst.MessageExtended:
+			case gst.MessageHaveContext:
+			case gst.MessageInfo:
+			case gst.MessageInstantRateRequest:
+			case gst.MessageLatency:
+			case gst.MessageNeedContext:
+			case gst.MessageNewClock:
+			case gst.MessageProgress:
+			case gst.MessagePropertyNotify:
+			case gst.MessageQos:
+			case gst.MessageRedirect:
+			case gst.MessageRequestState:
+			case gst.MessageResetTime:
+			case gst.MessageSegmentDone:
+			case gst.MessageSegmentStart:
+			case gst.MessageStateChanged:
+				old, state, pending := msg.ParseStateChanged()
+
+				fmt.Printf("State changed: %s => %s (%s)\n", old, state, pending)
+			case gst.MessageStateDirty:
+			case gst.MessageStepDone:
+			case gst.MessageStepStart:
+			case gst.MessageStreamCollection:
+			case gst.MessageStreamStart:
+			case gst.MessageStreamStatus:
+			case gst.MessageStreamsSelected:
+			case gst.MessageStructureChange:
+			case gst.MessageTag:
+			case gst.MessageToc:
+			case gst.MessageUnknown:
+			case gst.MessageWarning:
+			default:
+				panic("unexpected gst.MessageType")
 			}
-			mainLoop.Quit()
-
-		case gst.MessageAny:
-		case gst.MessageApplication:
-		case gst.MessageAsyncDone:
-		case gst.MessageAsyncStart:
-		case gst.MessageBuffering:
-		case gst.MessageClockLost:
-		case gst.MessageClockProvide:
-		case gst.MessageDeviceAdded:
-		case gst.MessageDeviceChanged:
-		case gst.MessageDeviceRemoved:
-		case gst.MessageDurationChanged:
-		case gst.MessageElement:
-		case gst.MessageExtended:
-		case gst.MessageHaveContext:
-		case gst.MessageInfo:
-		case gst.MessageInstantRateRequest:
-		case gst.MessageLatency:
-		case gst.MessageNeedContext:
-		case gst.MessageNewClock:
-		case gst.MessageProgress:
-		case gst.MessagePropertyNotify:
-		case gst.MessageQos:
-		case gst.MessageRedirect:
-		case gst.MessageRequestState:
-		case gst.MessageResetTime:
-		case gst.MessageSegmentDone:
-		case gst.MessageSegmentStart:
-		case gst.MessageStateChanged:
-			old, state, pending := msg.ParseStateChanged()
-
-			fmt.Printf("State changed: %s => %s (%s)\n", old, state, pending)
-		case gst.MessageStateDirty:
-		case gst.MessageStepDone:
-		case gst.MessageStepStart:
-		case gst.MessageStreamCollection:
-		case gst.MessageStreamStart:
-		case gst.MessageStreamStatus:
-		case gst.MessageStreamsSelected:
-		case gst.MessageStructureChange:
-		case gst.MessageTag:
-		case gst.MessageToc:
-		case gst.MessageUnknown:
-		case gst.MessageWarning:
-		default:
-			panic("unexpected gst.MessageType")
 		}
-		return true
-	})
+	}()
 
 	// Start the pipeline
 	pipeline.SetState(gst.StatePlaying)
 
-	// Block on the main loop
-
-	mainLoop.Run()
+	<-ctx.Done()
+	pipeline.BlockSetState(gst.StateNull, gst.ClockTime(time.Second))
 
 	return
 }

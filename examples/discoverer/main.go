@@ -45,23 +45,23 @@ func main() {
 	printDiscovererInfo(info)
 }
 
-func printDiscovererInfo(info *gstpbutils.DiscovererInfo) {
-	fmt.Println("URI:", info.URI())
-	fmt.Println("Duration:", info.Duration())
+func printDiscovererInfo(info gstpbutils.DiscovererInfo) {
+	fmt.Println("URI:", info.GetURI())
+	fmt.Println("Duration:", info.GetDuration())
 
 	printTags(info)
-	printStreamInfo(info.StreamInfo())
+	printStreamInfo(info.GetStreamInfo())
 
-	children := info.StreamList()
+	children := info.GetStreamList()
 	fmt.Println("Children streams:")
 	for _, child := range children {
 		printStreamInfo(child)
 	}
 }
 
-func printTags(info *gstpbutils.DiscovererInfo) {
+func printTags(info gstpbutils.DiscovererInfo) {
 	fmt.Println("Tags:")
-	tags := info.Tags()
+	tags := info.GetTags()
 	if tags != nil {
 		fmt.Println("  ", tags)
 		return
@@ -69,13 +69,13 @@ func printTags(info *gstpbutils.DiscovererInfo) {
 	fmt.Println("  no tags")
 }
 
-func printStreamInfo(info *gstpbutils.DiscovererStreamInfo) {
+func printStreamInfo(info gstpbutils.DiscovererStreamInfo) {
 	if info == nil {
 		return
 	}
 	fmt.Println("Stream: ")
-	fmt.Println("  Stream id:", info.StreamID())
-	if caps := info.Caps(); caps != nil {
+	fmt.Println("  Stream id:", info.GetStreamID())
+	if caps := info.GetCaps(); caps != nil {
 		fmt.Println("  Format:", caps)
 	}
 }

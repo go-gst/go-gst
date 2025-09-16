@@ -21,17 +21,15 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"time"
 
-	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
 )
 
 func main() {
 	gst.Init()
-
-	mainLoop := glib.NewMainLoop(glib.MainContextDefault(), false)
 
 	// Build a pipeline with fake audio data going to a fakesink
 	res, err := gst.ParseLaunch("audiotestsrc ! fakesink")
@@ -40,34 +38,16 @@ func main() {
 		return
 	}
 
-	pipeline := res.(*gst.Pipeline)
+	pipeline := res.(gst.Pipeline)
 
 	// Retrieve the message bus for the pipeline
-	bus := pipeline.Bus()
+	bus := pipeline.GetBus()
 
 	// Start the pipeline
 	pipeline.SetState(gst.StatePlaying)
 
-	// This sets the bus's signal handler (don't be mislead by the "add", there can only be one).
-	// Every message from the bus is passed through this function. Its return value determines
-	// whether the handler wants to be called again.
-	bus.AddWatch(0, func(_ *gst.Bus, msg *gst.Message) bool {
-
-		switch msg.Type() {
-		case gst.MessageEos:
-			fmt.Println("Received EOS")
-			// An EndOfStream event was sent to the pipeline, so we tell our main loop
-			// to stop execution here.
-			mainLoop.Quit()
-		case gst.MessageError:
-			err, debug := msg.ParseError()
-			fmt.Println("ERROR:", err)
-			fmt.Println("DEBUG:", debug)
-			mainLoop.Quit()
-		}
-
-		return true
-	})
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
 
 	// Kick off a goroutine that after 5 seconds will send an eos event to the pipeline.
 	go func() {
@@ -89,7 +69,20 @@ func main() {
 		}
 	}()
 
-	mainLoop.Run()
+	for msg := range bus.Messages(ctx) {
+		switch msg.Type() {
+		case gst.MessageEos:
+			fmt.Println("Received EOS")
+			// An EndOfStream event was sent to the pipeline, so we tell our main loop
+			// to stop execution here.
+			cancel()
+		case gst.MessageError:
+			err, debug := msg.ParseError()
+			fmt.Println("ERROR:", err)
+			fmt.Println("DEBUG:", debug)
+			cancel()
+		}
+	}
 
 	return
 }

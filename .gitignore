@@ -2,6 +2,8 @@ __debug*
 gotk4
 gstreamer
 
+*.log
+
 # Binaries for programs and plugins
 *.exe
 *.exe~

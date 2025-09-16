@@ -25,7 +25,7 @@ func run(ctx context.Context) error {
 		return err
 	}
 
-	pipeline := ret.(*gst.Pipeline)
+	pipeline := ret.(gst.Pipeline)
 
 	pipeline.SetState(gst.StatePlaying)
 

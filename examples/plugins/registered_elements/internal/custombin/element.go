@@ -8,9 +8,9 @@ import (
 
 type customBin struct {
 	gst.Bin // parent object must be first embedded field
-	source1 gst.Elementer
-	source2 gst.Elementer
-	mixer   gst.Elementer
+	source1 gst.Element
+	source2 gst.Element
+	mixer   gst.Element
 }
 
 // init should initialize the element. Keep in mind that the properties are not yet present. When this is called.
@@ -31,12 +31,12 @@ func (bin *customBin) init() {
 		bin.mixer,
 	)
 
-	srcpad := bin.mixer.StaticPad("src")
+	srcpad := bin.mixer.GetStaticPad("src")
 
-	ghostpad := gst.NewGhostPadFromTemplate("src", srcpad, bin.PadTemplate("src"))
+	ghostpad := gst.NewGhostPadFromTemplate("src", srcpad, bin.GetPadTemplate("src"))
 
 	bin.source1.Link(bin.mixer)
 	bin.source2.Link(bin.mixer)
 
-	bin.AddPad(&ghostpad.Pad)
+	bin.AddPad(ghostpad)
 }

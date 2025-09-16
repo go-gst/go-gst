@@ -24,7 +24,6 @@ package main
 import (
 	"fmt"
 
-	coreglib "github.com/diamondburned/gotk4/pkg/core/glib"
 	"github.com/go-gst/go-gst/pkg/gst"
 )
 
@@ -38,15 +37,15 @@ func tagsetter() error {
 		return err
 	}
 
-	pipeline := ret.(*gst.Pipeline)
+	pipeline := ret.(gst.Pipeline)
 
 	// Query the pipeline for elements implementing the GstTagsetter interface.
 	// In our case, this will return the flacenc element.
-	element := pipeline.ByInterface(gst.GTypeTagSetter)
+	element := pipeline.GetByInterface(gst.TypeTagSetter)
 
 	// We actually just retrieved a *gst.Element with the above call. We can retrieve
 	// the underying TagSetter interface like this.
-	tagsetter := element.(*gst.TagSetter)
+	tagsetter := element.(gst.TagSetter)
 
 	// Tell the element implementing the GstTagsetter interface how to handle already existing
 	// metadata.
@@ -56,14 +55,14 @@ func tagsetter() error {
 	//
 	// The first parameter gst.TagMergeAppend tells the tagsetter to append this title
 	// if there already is one.
-	tagsetter.AddTagValue(gst.TagMergeAppend, gst.TAG_TITLE, coreglib.NewValue("Special randomized white-noise"))
+	tagsetter.AddTagValue(gst.TagMergeAppend, gst.TAG_TITLE, "Special randomized white-noise")
 
 	pipeline.SetState(gst.StatePlaying)
 
 	var cont bool
 	var pipelineErr error
 	for {
-		msg := pipeline.Bus().TimedPop(gst.ClockTimeNone)
+		msg := pipeline.GetBus().TimedPop(gst.ClockTimeNone)
 		if msg == nil {
 			break
 		}
@@ -83,7 +82,7 @@ func handleMessage(msg *gst.Message) (bool, error) {
 	case gst.MessageEos:
 		return false, nil
 	case gst.MessageError:
-		err, _ := msg.ParseError()
+		_, err := msg.ParseError()
 		return false, err
 	}
 	return true, nil
