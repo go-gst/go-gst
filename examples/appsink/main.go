@@ -37,7 +37,7 @@ func createPipeline() (gst.Pipeline, error) {
 		// Pull the sample that triggered this callback
 		sample := sink.PullSample()
 		if sample == nil {
-			return gst.FlowEos
+			return gst.FlowEOS
 		}
 
 		// Retrieve the buffer from the sample
@@ -101,7 +101,7 @@ func runPipeline(pipeline gst.Pipeline) error {
 	signal.Notify(c, os.Interrupt)
 	go func() {
 		<-c
-		pipeline.SendEvent(gst.NewEventEos())
+		pipeline.SendEvent(gst.NewEventEOS())
 	}()
 
 	// Loop over messsages from the pipeline

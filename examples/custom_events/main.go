@@ -71,7 +71,7 @@ func createPipeline() (gst.Pipeline, error) {
 			// however displayed this way for demonstration purposes.
 			sink.CallAsync(func(el gst.Element) {
 				fmt.Println("Send EOS is true, sending eos")
-				if !pipeline.SendEvent(gst.NewEventEos()) {
+				if !pipeline.SendEvent(gst.NewEventEOS()) {
 					fmt.Println("WARNING: Failed to send EOS to pipeline")
 				}
 				fmt.Println("Sent EOS")

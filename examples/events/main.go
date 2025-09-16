@@ -64,7 +64,7 @@ func main() {
 			// Once all sinks are done handling the EOS event (and all buffers that were before the
 			// EOS event in the pipeline already), the pipeline would post an EOS message on the bus,
 			// essentially telling the application that the pipeline is completely drained.
-			pipeline.SendEvent(gst.NewEventEos())
+			pipeline.SendEvent(gst.NewEventEOS())
 			return
 		}
 	}()
