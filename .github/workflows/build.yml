@@ -58,5 +58,5 @@ jobs:
       - uses: DeterminateSystems/magic-nix-cache-action@main
 
       - name: build
-        shell: bash
+        shell: nix develop -c bash -e {0}
         run: ./buildAll.sh
