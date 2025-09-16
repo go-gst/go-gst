@@ -3603,6 +3603,15 @@ func unsafeWrapAudioAggregator(base *gobject.ObjectInstance) *AudioAggregatorIns
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeAudioAggregator,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAudioAggregator(inst)
+		},
+	)
+}
+
 func marshalAudioAggregatorInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapAudioAggregator(gobject.ValueFromNative(p).Object()), nil
 }
@@ -3930,6 +3939,15 @@ func unsafeWrapAudioAggregatorPad(base *gobject.ObjectInstance) *AudioAggregator
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeAudioAggregatorPad,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAudioAggregatorPad(inst)
+		},
+	)
 }
 
 func marshalAudioAggregatorPadInstance(p unsafe.Pointer) (any, error) {
@@ -4302,6 +4320,15 @@ func unsafeWrapAudioBaseSink(base *gobject.ObjectInstance) *AudioBaseSinkInstanc
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeAudioBaseSink,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAudioBaseSink(inst)
+		},
+	)
 }
 
 func marshalAudioBaseSinkInstance(p unsafe.Pointer) (any, error) {
@@ -4899,6 +4926,15 @@ func unsafeWrapAudioBaseSrc(base *gobject.ObjectInstance) *AudioBaseSrcInstance 
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeAudioBaseSrc,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAudioBaseSrc(inst)
+		},
+	)
+}
+
 func marshalAudioBaseSrcInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapAudioBaseSrc(gobject.ValueFromNative(p).Object()), nil
 }
@@ -5284,6 +5320,15 @@ func unsafeWrapAudioCdSrc(base *gobject.ObjectInstance) *AudioCdSrcInstance {
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeAudioCdSrc,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAudioCdSrc(inst)
+		},
+	)
+}
+
 func marshalAudioCdSrcInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapAudioCdSrc(gobject.ValueFromNative(p).Object()), nil
 }
@@ -5642,6 +5687,15 @@ func unsafeWrapAudioClock(base *gobject.ObjectInstance) *AudioClockInstance {
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeAudioClock,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAudioClock(inst)
+		},
+	)
 }
 
 func marshalAudioClockInstance(p unsafe.Pointer) (any, error) {
@@ -6560,6 +6614,15 @@ func unsafeWrapAudioDecoder(base *gobject.ObjectInstance) *AudioDecoderInstance 
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeAudioDecoder,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAudioDecoder(inst)
+		},
+	)
 }
 
 func marshalAudioDecoderInstance(p unsafe.Pointer) (any, error) {
@@ -9410,6 +9473,15 @@ func unsafeWrapAudioEncoder(base *gobject.ObjectInstance) *AudioEncoderInstance 
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeAudioEncoder,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAudioEncoder(inst)
+		},
+	)
+}
+
 func marshalAudioEncoderInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapAudioEncoder(gobject.ValueFromNative(p).Object()), nil
 }
@@ -11482,6 +11554,15 @@ func unsafeWrapAudioFilter(base *gobject.ObjectInstance) *AudioFilterInstance {
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeAudioFilter,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAudioFilter(inst)
+		},
+	)
+}
+
 func marshalAudioFilterInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapAudioFilter(gobject.ValueFromNative(p).Object()), nil
 }
@@ -12082,6 +12163,15 @@ func unsafeWrapAudioRingBuffer(base *gobject.ObjectInstance) *AudioRingBufferIns
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeAudioRingBuffer,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAudioRingBuffer(inst)
+		},
+	)
 }
 
 func marshalAudioRingBufferInstance(p unsafe.Pointer) (any, error) {
@@ -13777,6 +13867,15 @@ func unsafeWrapAudioSink(base *gobject.ObjectInstance) *AudioSinkInstance {
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeAudioSink,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAudioSink(inst)
+		},
+	)
+}
+
 func marshalAudioSinkInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapAudioSink(gobject.ValueFromNative(p).Object()), nil
 }
@@ -14409,6 +14508,15 @@ func unsafeWrapAudioSrc(base *gobject.ObjectInstance) *AudioSrcInstance {
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeAudioSrc,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAudioSrc(inst)
+		},
+	)
+}
+
 func marshalAudioSrcInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapAudioSrc(gobject.ValueFromNative(p).Object()), nil
 }
@@ -14851,6 +14959,15 @@ func unsafeWrapAudioAggregatorConvertPad(base *gobject.ObjectInstance) *AudioAgg
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeAudioAggregatorConvertPad,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAudioAggregatorConvertPad(inst)
+		},
+	)
 }
 
 func marshalAudioAggregatorConvertPadInstance(p unsafe.Pointer) (any, error) {

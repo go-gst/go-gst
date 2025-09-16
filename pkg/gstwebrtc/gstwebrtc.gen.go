@@ -1236,6 +1236,15 @@ func unsafeWrapWebRTCDTLSTransport(base *gobject.ObjectInstance) *WebRTCDTLSTran
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeWebRTCDTLSTransport,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapWebRTCDTLSTransport(inst)
+		},
+	)
+}
+
 func marshalWebRTCDTLSTransportInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapWebRTCDTLSTransport(gobject.ValueFromNative(p).Object()), nil
 }
@@ -1354,6 +1363,15 @@ func unsafeWrapWebRTCDataChannel(base *gobject.ObjectInstance) *WebRTCDataChanne
 	return &WebRTCDataChannelInstance{
 		ObjectInstance: *base,
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeWebRTCDataChannel,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapWebRTCDataChannel(inst)
+		},
+	)
 }
 
 func marshalWebRTCDataChannelInstance(p unsafe.Pointer) (any, error) {
@@ -1948,6 +1966,15 @@ func unsafeWrapWebRTCICE(base *gobject.ObjectInstance) *WebRTCICEInstance {
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeWebRTCICE,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapWebRTCICE(inst)
+		},
+	)
 }
 
 func marshalWebRTCICEInstance(p unsafe.Pointer) (any, error) {
@@ -3755,6 +3782,15 @@ func unsafeWrapWebRTCICEStream(base *gobject.ObjectInstance) *WebRTCICEStreamIns
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeWebRTCICEStream,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapWebRTCICEStream(inst)
+		},
+	)
+}
+
 func marshalWebRTCICEStreamInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapWebRTCICEStream(gobject.ValueFromNative(p).Object()), nil
 }
@@ -4065,6 +4101,15 @@ func unsafeWrapWebRTCICETransport(base *gobject.ObjectInstance) *WebRTCICETransp
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeWebRTCICETransport,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapWebRTCICETransport(inst)
+		},
+	)
+}
+
 func marshalWebRTCICETransportInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapWebRTCICETransport(gobject.ValueFromNative(p).Object()), nil
 }
@@ -4302,6 +4347,15 @@ func unsafeWrapWebRTCRTPReceiver(base *gobject.ObjectInstance) *WebRTCRTPReceive
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeWebRTCRTPReceiver,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapWebRTCRTPReceiver(inst)
+		},
+	)
+}
+
 func marshalWebRTCRTPReceiverInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapWebRTCRTPReceiver(gobject.ValueFromNative(p).Object()), nil
 }
@@ -4372,6 +4426,15 @@ func unsafeWrapWebRTCRTPSender(base *gobject.ObjectInstance) *WebRTCRTPSenderIns
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeWebRTCRTPSender,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapWebRTCRTPSender(inst)
+		},
+	)
 }
 
 func marshalWebRTCRTPSenderInstance(p unsafe.Pointer) (any, error) {
@@ -4454,6 +4517,15 @@ func unsafeWrapWebRTCRTPTransceiver(base *gobject.ObjectInstance) *WebRTCRTPTran
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeWebRTCRTPTransceiver,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapWebRTCRTPTransceiver(inst)
+		},
+	)
+}
+
 func marshalWebRTCRTPTransceiverInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapWebRTCRTPTransceiver(gobject.ValueFromNative(p).Object()), nil
 }
@@ -4509,6 +4581,15 @@ func unsafeWrapWebRTCSCTPTransport(base *gobject.ObjectInstance) *WebRTCSCTPTran
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeWebRTCSCTPTransport,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapWebRTCSCTPTransport(inst)
+		},
+	)
 }
 
 func marshalWebRTCSCTPTransportInstance(p unsafe.Pointer) (any, error) {

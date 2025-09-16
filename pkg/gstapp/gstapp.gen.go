@@ -792,6 +792,15 @@ func unsafeWrapAppSink(base *gobject.ObjectInstance) *AppSinkInstance {
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeAppSink,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAppSink(inst)
+		},
+	)
+}
+
 func marshalAppSinkInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapAppSink(gobject.ValueFromNative(p).Object()), nil
 }
@@ -2667,6 +2676,15 @@ func unsafeWrapAppSrc(base *gobject.ObjectInstance) *AppSrcInstance {
 			Instance: *base,
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeAppSrc,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapAppSrc(inst)
+		},
+	)
 }
 
 func marshalAppSrcInstance(p unsafe.Pointer) (any, error) {

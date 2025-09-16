@@ -198,6 +198,15 @@ func unsafeWrapARGBControlBinding(base *gobject.ObjectInstance) *ARGBControlBind
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeARGBControlBinding,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapARGBControlBinding(inst)
+		},
+	)
+}
+
 func marshalARGBControlBindingInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapARGBControlBinding(gobject.ValueFromNative(p).Object()), nil
 }
@@ -353,6 +362,15 @@ func unsafeWrapDirectControlBinding(base *gobject.ObjectInstance) *DirectControl
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeDirectControlBinding,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapDirectControlBinding(inst)
+		},
+	)
 }
 
 func marshalDirectControlBindingInstance(p unsafe.Pointer) (any, error) {
@@ -541,6 +559,15 @@ func unsafeWrapLFOControlSource(base *gobject.ObjectInstance) *LFOControlSourceI
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeLFOControlSource,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapLFOControlSource(inst)
+		},
+	)
+}
+
 func marshalLFOControlSourceInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapLFOControlSource(gobject.ValueFromNative(p).Object()), nil
 }
@@ -661,6 +688,15 @@ func unsafeWrapProxyControlBinding(base *gobject.ObjectInstance) *ProxyControlBi
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeProxyControlBinding,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapProxyControlBinding(inst)
+		},
+	)
 }
 
 func marshalProxyControlBindingInstance(p unsafe.Pointer) (any, error) {
@@ -889,6 +925,15 @@ func unsafeWrapTimedValueControlSource(base *gobject.ObjectInstance) *TimedValue
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeTimedValueControlSource,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapTimedValueControlSource(inst)
+		},
+	)
 }
 
 func marshalTimedValueControlSourceInstance(p unsafe.Pointer) (any, error) {
@@ -1195,6 +1240,15 @@ func unsafeWrapTriggerControlSource(base *gobject.ObjectInstance) *TriggerContro
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeTriggerControlSource,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapTriggerControlSource(inst)
+		},
+	)
+}
+
 func marshalTriggerControlSourceInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapTriggerControlSource(gobject.ValueFromNative(p).Object()), nil
 }
@@ -1324,6 +1378,15 @@ func unsafeWrapInterpolationControlSource(base *gobject.ObjectInstance) *Interpo
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeInterpolationControlSource,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapInterpolationControlSource(inst)
+		},
+	)
 }
 
 func marshalInterpolationControlSourceInstance(p unsafe.Pointer) (any, error) {

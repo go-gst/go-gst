@@ -3084,6 +3084,15 @@ func unsafeWrapGLBaseFilter(base *gobject.ObjectInstance) *GLBaseFilterInstance 
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeGLBaseFilter,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLBaseFilter(inst)
+		},
+	)
+}
+
 func marshalGLBaseFilterInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapGLBaseFilter(gobject.ValueFromNative(p).Object()), nil
 }
@@ -3409,6 +3418,15 @@ func unsafeWrapGLBaseMemoryAllocator(base *gobject.ObjectInstance) *GLBaseMemory
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeGLBaseMemoryAllocator,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLBaseMemoryAllocator(inst)
+		},
+	)
+}
+
 func marshalGLBaseMemoryAllocatorInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapGLBaseMemoryAllocator(gobject.ValueFromNative(p).Object()), nil
 }
@@ -3538,6 +3556,15 @@ func unsafeWrapGLBaseMixer(base *gobject.ObjectInstance) *GLBaseMixerInstance {
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeGLBaseMixer,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLBaseMixer(inst)
+		},
+	)
 }
 
 func marshalGLBaseMixerInstance(p unsafe.Pointer) (any, error) {
@@ -3762,6 +3789,15 @@ func unsafeWrapGLBaseMixerPad(base *gobject.ObjectInstance) *GLBaseMixerPadInsta
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeGLBaseMixerPad,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLBaseMixerPad(inst)
+		},
+	)
+}
+
 func marshalGLBaseMixerPadInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapGLBaseMixerPad(gobject.ValueFromNative(p).Object()), nil
 }
@@ -3898,6 +3934,15 @@ func unsafeWrapGLBaseSrc(base *gobject.ObjectInstance) *GLBaseSrcInstance {
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeGLBaseSrc,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLBaseSrc(inst)
+		},
+	)
 }
 
 func marshalGLBaseSrcInstance(p unsafe.Pointer) (any, error) {
@@ -4170,6 +4215,15 @@ func unsafeWrapGLBufferAllocator(base *gobject.ObjectInstance) *GLBufferAllocato
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeGLBufferAllocator,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLBufferAllocator(inst)
+		},
+	)
+}
+
 func marshalGLBufferAllocatorInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapGLBufferAllocator(gobject.ValueFromNative(p).Object()), nil
 }
@@ -4290,6 +4344,15 @@ func unsafeWrapGLBufferPool(base *gobject.ObjectInstance) *GLBufferPoolInstance 
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeGLBufferPool,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLBufferPool(inst)
+		},
+	)
 }
 
 func marshalGLBufferPoolInstance(p unsafe.Pointer) (any, error) {
@@ -4491,6 +4554,15 @@ func unsafeWrapGLColorConvert(base *gobject.ObjectInstance) *GLColorConvertInsta
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeGLColorConvert,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLColorConvert(inst)
+		},
+	)
 }
 
 func marshalGLColorConvertInstance(p unsafe.Pointer) (any, error) {
@@ -5296,6 +5368,15 @@ func unsafeWrapGLContext(base *gobject.ObjectInstance) *GLContextInstance {
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeGLContext,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLContext(inst)
+		},
+	)
 }
 
 func marshalGLContextInstance(p unsafe.Pointer) (any, error) {
@@ -7048,6 +7129,15 @@ func unsafeWrapGLDisplay(base *gobject.ObjectInstance) *GLDisplayInstance {
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeGLDisplay,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLDisplay(inst)
+		},
+	)
+}
+
 func marshalGLDisplayInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapGLDisplay(gobject.ValueFromNative(p).Object()), nil
 }
@@ -7619,6 +7709,15 @@ func unsafeWrapGLFilter(base *gobject.ObjectInstance) *GLFilterInstance {
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeGLFilter,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLFilter(inst)
+		},
+	)
 }
 
 func marshalGLFilterInstance(p unsafe.Pointer) (any, error) {
@@ -8287,6 +8386,15 @@ func unsafeWrapGLFramebuffer(base *gobject.ObjectInstance) *GLFramebufferInstanc
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeGLFramebuffer,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLFramebuffer(inst)
+		},
+	)
+}
+
 func marshalGLFramebufferInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapGLFramebuffer(gobject.ValueFromNative(p).Object()), nil
 }
@@ -8546,6 +8654,15 @@ func unsafeWrapGLMemoryAllocator(base *gobject.ObjectInstance) *GLMemoryAllocato
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeGLMemoryAllocator,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLMemoryAllocator(inst)
+		},
+	)
+}
+
 func marshalGLMemoryAllocatorInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapGLMemoryAllocator(gobject.ValueFromNative(p).Object()), nil
 }
@@ -8676,6 +8793,15 @@ func unsafeWrapGLMemoryPBOAllocator(base *gobject.ObjectInstance) *GLMemoryPBOAl
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeGLMemoryPBOAllocator,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLMemoryPBOAllocator(inst)
+		},
+	)
 }
 
 func marshalGLMemoryPBOAllocatorInstance(p unsafe.Pointer) (any, error) {
@@ -8836,6 +8962,15 @@ func unsafeWrapGLMixer(base *gobject.ObjectInstance) *GLMixerInstance {
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeGLMixer,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLMixer(inst)
+		},
+	)
 }
 
 func marshalGLMixerInstance(p unsafe.Pointer) (any, error) {
@@ -9150,6 +9285,15 @@ func unsafeWrapGLMixerPad(base *gobject.ObjectInstance) *GLMixerPadInstance {
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeGLMixerPad,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLMixerPad(inst)
+		},
+	)
+}
+
 func marshalGLMixerPadInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapGLMixerPad(gobject.ValueFromNative(p).Object()), nil
 }
@@ -9260,6 +9404,15 @@ func unsafeWrapGLOverlayCompositor(base *gobject.ObjectInstance) *GLOverlayCompo
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeGLOverlayCompositor,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLOverlayCompositor(inst)
+		},
+	)
 }
 
 func marshalGLOverlayCompositorInstance(p unsafe.Pointer) (any, error) {
@@ -9454,6 +9607,15 @@ func unsafeWrapGLRenderbufferAllocator(base *gobject.ObjectInstance) *GLRenderbu
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeGLRenderbufferAllocator,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLRenderbufferAllocator(inst)
+		},
+	)
+}
+
 func marshalGLRenderbufferAllocatorInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapGLRenderbufferAllocator(gobject.ValueFromNative(p).Object()), nil
 }
@@ -9599,6 +9761,15 @@ func unsafeWrapGLSLStage(base *gobject.ObjectInstance) *GLSLStageInstance {
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeGLSLStage,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLSLStage(inst)
+		},
+	)
 }
 
 func marshalGLSLStageInstance(p unsafe.Pointer) (any, error) {
@@ -10418,6 +10589,15 @@ func unsafeWrapGLShader(base *gobject.ObjectInstance) *GLShaderInstance {
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeGLShader,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLShader(inst)
+		},
+	)
 }
 
 func marshalGLShaderInstance(p unsafe.Pointer) (any, error) {
@@ -11911,6 +12091,15 @@ func unsafeWrapGLUpload(base *gobject.ObjectInstance) *GLUploadInstance {
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeGLUpload,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLUpload(inst)
+		},
+	)
+}
+
 func marshalGLUploadInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapGLUpload(gobject.ValueFromNative(p).Object()), nil
 }
@@ -12358,6 +12547,15 @@ func unsafeWrapGLViewConvert(base *gobject.ObjectInstance) *GLViewConvertInstanc
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeGLViewConvert,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLViewConvert(inst)
+		},
+	)
 }
 
 func marshalGLViewConvertInstance(p unsafe.Pointer) (any, error) {
@@ -12961,6 +13159,15 @@ func unsafeWrapGLWindow(base *gobject.ObjectInstance) *GLWindowInstance {
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeGLWindow,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapGLWindow(inst)
+		},
+	)
 }
 
 func marshalGLWindowInstance(p unsafe.Pointer) (any, error) {

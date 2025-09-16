@@ -2110,6 +2110,15 @@ func unsafeWrapTagDemux(base *gobject.ObjectInstance) *TagDemuxInstance {
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeTagDemux,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapTagDemux(inst)
+		},
+	)
+}
+
 func marshalTagDemuxInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapTagDemux(gobject.ValueFromNative(p).Object()), nil
 }
@@ -2438,6 +2447,15 @@ func unsafeWrapTagMux(base *gobject.ObjectInstance) *TagMuxInstance {
 			Instance: *base,
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeTagMux,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapTagMux(inst)
+		},
+	)
 }
 
 func marshalTagMuxInstance(p unsafe.Pointer) (any, error) {

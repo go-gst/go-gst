@@ -496,6 +496,15 @@ func unsafeWrapNetClientClock(base *gobject.ObjectInstance) *NetClientClockInsta
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeNetClientClock,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapNetClientClock(inst)
+		},
+	)
+}
+
 func marshalNetClientClockInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapNetClientClock(gobject.ValueFromNative(p).Object()), nil
 }
@@ -656,6 +665,15 @@ func unsafeWrapNetTimeProvider(base *gobject.ObjectInstance) *NetTimeProviderIns
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeNetTimeProvider,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapNetTimeProvider(inst)
+		},
+	)
+}
+
 func marshalNetTimeProviderInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapNetTimeProvider(gobject.ValueFromNative(p).Object()), nil
 }
@@ -800,6 +818,15 @@ func unsafeWrapNtpClock(base *gobject.ObjectInstance) *NtpClockInstance {
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeNtpClock,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapNtpClock(inst)
+		},
+	)
 }
 
 func marshalNtpClockInstance(p unsafe.Pointer) (any, error) {
@@ -969,6 +996,15 @@ func unsafeWrapPtpClock(base *gobject.ObjectInstance) *PtpClockInstance {
 			},
 		},
 	}
+}
+
+func init() {
+	gobject.RegisterObjectCasting(
+		TypePtpClock,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapPtpClock(inst)
+		},
+	)
 }
 
 func marshalPtpClockInstance(p unsafe.Pointer) (any, error) {

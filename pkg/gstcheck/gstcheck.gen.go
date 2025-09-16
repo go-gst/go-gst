@@ -1149,6 +1149,15 @@ func unsafeWrapTestClock(base *gobject.ObjectInstance) *TestClockInstance {
 	}
 }
 
+func init() {
+	gobject.RegisterObjectCasting(
+		TypeTestClock,
+		func (inst *gobject.ObjectInstance) gobject.Object {
+			return unsafeWrapTestClock(inst)
+		},
+	)
+}
+
 func marshalTestClockInstance(p unsafe.Pointer) (any, error) {
 	return unsafeWrapTestClock(gobject.ValueFromNative(p).Object()), nil
 }
