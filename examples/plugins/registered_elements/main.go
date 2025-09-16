@@ -72,6 +72,8 @@ func run(ctx context.Context) error {
 				fmt.Println("reached EOS")
 				cancel()
 				return
+			default:
+				fmt.Println("got message:", msg.String())
 			}
 
 			return

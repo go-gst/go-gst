@@ -4,6 +4,7 @@ import (
 	"math"
 	"time"
 
+	"github.com/diamondburned/gotk4/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
 )
 
@@ -13,12 +14,12 @@ const samplesperbuffer = 4800
 const samplerate = 48000
 
 type customSrc struct {
-	gst.Bin // parent must be embedded as the first field
+	gst.BinInstance // parent must be embedded as the first field
 
 	source gst.Element
 	volume gst.Element
 
-	Duration time.Duration `glib:"duration"`
+	Duration time.Duration
 }
 
 // InstanceInit should initialize the element. Keep in mind that the properties are not yet present. When this is called.
@@ -43,6 +44,25 @@ func (bin *customSrc) init() {
 	bin.AddPad(ghostpad)
 
 	bin.updateSource()
+}
+
+func (bin *customSrc) setProperty(_ uint, value any, pspec *gobject.ParamSpec) {
+	switch pspec.Name() {
+	case "duration":
+		bin.Duration = value.(time.Duration)
+		bin.updateSource()
+	default:
+		panic("unknown property")
+	}
+}
+
+func (bin *customSrc) getProperty(_ uint, pspec *gobject.ParamSpec) any {
+	switch pspec.Name() {
+	case "duration":
+		return bin.Duration
+	default:
+		panic("unknown property")
+	}
 }
 
 // updateSource will get called to update the audiotestsrc when a property changes

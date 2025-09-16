@@ -7,14 +7,14 @@ import (
 )
 
 type customBin struct {
-	gst.Bin // parent object must be first embedded field
-	source1 gst.Element
-	source2 gst.Element
-	mixer   gst.Element
+	gst.BinInstance // parent object must be first embedded field
+	source1         gst.Element
+	source2         gst.Element
+	mixer           gst.Element
 }
 
-// init should initialize the element. Keep in mind that the properties are not yet present. When this is called.
-func (bin *customBin) init() {
+// constructed is the method we use to override the GOBject.constructed method.
+func (bin *customBin) constructed() {
 	bin.source1 = gst.ElementFactoryMakeWithProperties("gocustomsrc", map[string]interface{}{
 		"duration": int64(5 * time.Second),
 	})

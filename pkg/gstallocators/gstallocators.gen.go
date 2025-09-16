@@ -7,7 +7,6 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/diamondburned/gotk4/pkg/core/classdata"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
 )

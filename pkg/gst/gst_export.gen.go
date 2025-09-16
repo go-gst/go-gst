@@ -838,6 +838,18 @@ func _gotk4_gst1_URIHandler_set_uri(carg0 *C.GstURIHandler, carg1 *C.gchar, _cer
 	return fn(carg0, carg1, _cerr)
 }
 
+//export _gotk4_gst1_Object_deep_notify
+func _gotk4_gst1_Object_deep_notify(carg0 *C.GstObject, carg1 *C.GstObject, carg2 *C.GParamSpec) {
+	var fn func(carg0 *C.GstObject, carg1 *C.GstObject, carg2 *C.GParamSpec)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gst1_Object_deep_notify").(func(carg0 *C.GstObject, carg1 *C.GstObject, carg2 *C.GParamSpec))
+		if fn == nil {
+			panic("_gotk4_gst1_Object_deep_notify: no function pointer found")
+		}
+	}
+	fn(carg0, carg1, carg2)
+}
+
 //export _gotk4_gst1_Pad_linked
 func _gotk4_gst1_Pad_linked(carg0 *C.GstPad, carg1 *C.GstPad) {
 	var fn func(carg0 *C.GstPad, carg1 *C.GstPad)
@@ -872,6 +884,18 @@ func _gotk4_gst1_PadTemplate_pad_created(carg0 *C.GstPadTemplate, carg1 *C.GstPa
 		}
 	}
 	fn(carg0, carg1)
+}
+
+//export _gotk4_gst1_StreamCollection_stream_notify
+func _gotk4_gst1_StreamCollection_stream_notify(carg0 *C.GstStreamCollection, carg1 *C.GstStream, carg2 *C.GParamSpec) {
+	var fn func(carg0 *C.GstStreamCollection, carg1 *C.GstStream, carg2 *C.GParamSpec)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gst1_StreamCollection_stream_notify").(func(carg0 *C.GstStreamCollection, carg1 *C.GstStream, carg2 *C.GParamSpec))
+		if fn == nil {
+			panic("_gotk4_gst1_StreamCollection_stream_notify: no function pointer found")
+		}
+	}
+	fn(carg0, carg1, carg2)
 }
 
 //export _gotk4_gst1_TaskPool_cleanup
