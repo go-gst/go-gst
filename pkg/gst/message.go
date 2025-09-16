@@ -231,7 +231,7 @@ func (m *Message) String() string {
 	case MessageAsyncDone:
 		msg += "Async task completed"
 		if dur := m.ParseAsyncDone(); dur > 0 {
-			msg += fmt.Sprintf(" in %d", dur)
+			msg += fmt.Sprintf(" in %s", dur)
 		}
 
 	case MessageRequestState:
