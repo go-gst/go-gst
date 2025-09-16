@@ -8,6 +8,7 @@ import (
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/core/classdata"
+	"github.com/diamondburned/gotk4/pkg/core/profile"
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
@@ -1244,7 +1245,7 @@ func init() {
 }
 
 func marshalWebRTCDTLSTransportInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapWebRTCDTLSTransport(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeWebRTCDTLSTransportFromGlibNone is used to convert raw GstWebRTCDTLSTransport pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -1359,7 +1360,7 @@ func init() {
 }
 
 func marshalWebRTCDataChannelInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapWebRTCDataChannel(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeWebRTCDataChannelFromGlibNone is used to convert raw GstWebRTCDataChannel pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -1921,7 +1922,7 @@ func init() {
 }
 
 func marshalWebRTCICEInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapWebRTCICE(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeWebRTCICEFromGlibNone is used to convert raw GstWebRTCICE pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -3735,7 +3736,7 @@ func init() {
 }
 
 func marshalWebRTCICEStreamInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapWebRTCICEStream(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeWebRTCICEStreamFromGlibNone is used to convert raw GstWebRTCICEStream pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -4054,7 +4055,7 @@ func init() {
 }
 
 func marshalWebRTCICETransportInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapWebRTCICETransport(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeWebRTCICETransportFromGlibNone is used to convert raw GstWebRTCICETransport pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -4300,7 +4301,7 @@ func init() {
 }
 
 func marshalWebRTCRTPReceiverInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapWebRTCRTPReceiver(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeWebRTCRTPReceiverFromGlibNone is used to convert raw GstWebRTCRTPReceiver pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -4381,7 +4382,7 @@ func init() {
 }
 
 func marshalWebRTCRTPSenderInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapWebRTCRTPSender(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeWebRTCRTPSenderFromGlibNone is used to convert raw GstWebRTCRTPSender pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -4470,7 +4471,7 @@ func init() {
 }
 
 func marshalWebRTCRTPTransceiverInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapWebRTCRTPTransceiver(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeWebRTCRTPTransceiverFromGlibNone is used to convert raw GstWebRTCRTPTransceiver pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -4536,7 +4537,7 @@ func init() {
 }
 
 func marshalWebRTCSCTPTransportInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapWebRTCSCTPTransport(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeWebRTCSCTPTransportFromGlibNone is used to convert raw GstWebRTCSCTPTransport pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -4678,10 +4679,12 @@ func UnsafeWebRTCICECandidateStatsFromGlibBorrow(p unsafe.Pointer) *WebRTCICECan
 func UnsafeWebRTCICECandidateStatsFromGlibNone(p unsafe.Pointer) *WebRTCICECandidateStats {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeWebRTCICECandidateStatsFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.webRTCICECandidateStats)), 1)
 	runtime.SetFinalizer(
 		wrapped.webRTCICECandidateStats,
 		func (intern *webRTCICECandidateStats) {
 			C.gst_webrtc_ice_candidate_stats_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -4690,10 +4693,12 @@ func UnsafeWebRTCICECandidateStatsFromGlibNone(p unsafe.Pointer) *WebRTCICECandi
 // UnsafeWebRTCICECandidateStatsFromGlibFull is used to convert raw C.GstWebRTCICECandidateStats pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeWebRTCICECandidateStatsFromGlibFull(p unsafe.Pointer) *WebRTCICECandidateStats {
 	wrapped := UnsafeWebRTCICECandidateStatsFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.webRTCICECandidateStats)), 1)
 	runtime.SetFinalizer(
 		wrapped.webRTCICECandidateStats,
 		func (intern *webRTCICECandidateStats) {
 			C.gst_webrtc_ice_candidate_stats_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -5043,10 +5048,12 @@ func UnsafeWebRTCSessionDescriptionFromGlibBorrow(p unsafe.Pointer) *WebRTCSessi
 func UnsafeWebRTCSessionDescriptionFromGlibNone(p unsafe.Pointer) *WebRTCSessionDescription {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeWebRTCSessionDescriptionFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.webRTCSessionDescription)), 1)
 	runtime.SetFinalizer(
 		wrapped.webRTCSessionDescription,
 		func (intern *webRTCSessionDescription) {
 			C.gst_webrtc_session_description_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -5055,10 +5062,12 @@ func UnsafeWebRTCSessionDescriptionFromGlibNone(p unsafe.Pointer) *WebRTCSession
 // UnsafeWebRTCSessionDescriptionFromGlibFull is used to convert raw C.GstWebRTCSessionDescription pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeWebRTCSessionDescriptionFromGlibFull(p unsafe.Pointer) *WebRTCSessionDescription {
 	wrapped := UnsafeWebRTCSessionDescriptionFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.webRTCSessionDescription)), 1)
 	runtime.SetFinalizer(
 		wrapped.webRTCSessionDescription,
 		func (intern *webRTCSessionDescription) {
 			C.gst_webrtc_session_description_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped

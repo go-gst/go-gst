@@ -7,6 +7,7 @@ import (
 	"runtime"
 	"unsafe"
 
+	"github.com/diamondburned/gotk4/pkg/core/profile"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
@@ -621,10 +622,12 @@ func UnsafeMIKEYDecryptInfoFromGlibBorrow(p unsafe.Pointer) *MIKEYDecryptInfo {
 func UnsafeMIKEYDecryptInfoFromGlibNone(p unsafe.Pointer) *MIKEYDecryptInfo {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeMIKEYDecryptInfoFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYDecryptInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYDecryptInfo,
 		func (intern *mIKEYDecryptInfo) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -633,10 +636,12 @@ func UnsafeMIKEYDecryptInfoFromGlibNone(p unsafe.Pointer) *MIKEYDecryptInfo {
 // UnsafeMIKEYDecryptInfoFromGlibFull is used to convert raw C.GstMIKEYDecryptInfo pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeMIKEYDecryptInfoFromGlibFull(p unsafe.Pointer) *MIKEYDecryptInfo {
 	wrapped := UnsafeMIKEYDecryptInfoFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYDecryptInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYDecryptInfo,
 		func (intern *mIKEYDecryptInfo) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -682,10 +687,12 @@ func UnsafeMIKEYEncryptInfoFromGlibBorrow(p unsafe.Pointer) *MIKEYEncryptInfo {
 func UnsafeMIKEYEncryptInfoFromGlibNone(p unsafe.Pointer) *MIKEYEncryptInfo {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeMIKEYEncryptInfoFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYEncryptInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYEncryptInfo,
 		func (intern *mIKEYEncryptInfo) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -694,10 +701,12 @@ func UnsafeMIKEYEncryptInfoFromGlibNone(p unsafe.Pointer) *MIKEYEncryptInfo {
 // UnsafeMIKEYEncryptInfoFromGlibFull is used to convert raw C.GstMIKEYEncryptInfo pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeMIKEYEncryptInfoFromGlibFull(p unsafe.Pointer) *MIKEYEncryptInfo {
 	wrapped := UnsafeMIKEYEncryptInfoFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYEncryptInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYEncryptInfo,
 		func (intern *mIKEYEncryptInfo) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -745,10 +754,12 @@ func UnsafeMIKEYMapSRTPFromGlibBorrow(p unsafe.Pointer) *MIKEYMapSRTP {
 func UnsafeMIKEYMapSRTPFromGlibNone(p unsafe.Pointer) *MIKEYMapSRTP {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeMIKEYMapSRTPFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYMapSRTP)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYMapSRTP,
 		func (intern *mIKEYMapSRTP) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -757,10 +768,12 @@ func UnsafeMIKEYMapSRTPFromGlibNone(p unsafe.Pointer) *MIKEYMapSRTP {
 // UnsafeMIKEYMapSRTPFromGlibFull is used to convert raw C.GstMIKEYMapSRTP pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeMIKEYMapSRTPFromGlibFull(p unsafe.Pointer) *MIKEYMapSRTP {
 	wrapped := UnsafeMIKEYMapSRTPFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYMapSRTP)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYMapSRTP,
 		func (intern *mIKEYMapSRTP) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -823,10 +836,12 @@ func UnsafeMIKEYMessageFromGlibBorrow(p unsafe.Pointer) *MIKEYMessage {
 func UnsafeMIKEYMessageFromGlibNone(p unsafe.Pointer) *MIKEYMessage {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeMIKEYMessageFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYMessage)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYMessage,
 		func (intern *mIKEYMessage) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -835,10 +850,12 @@ func UnsafeMIKEYMessageFromGlibNone(p unsafe.Pointer) *MIKEYMessage {
 // UnsafeMIKEYMessageFromGlibFull is used to convert raw C.GstMIKEYMessage pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeMIKEYMessageFromGlibFull(p unsafe.Pointer) *MIKEYMessage {
 	wrapped := UnsafeMIKEYMessageFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYMessage)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYMessage,
 		func (intern *mIKEYMessage) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -1694,10 +1711,12 @@ func UnsafeMIKEYPayloadFromGlibBorrow(p unsafe.Pointer) *MIKEYPayload {
 func UnsafeMIKEYPayloadFromGlibNone(p unsafe.Pointer) *MIKEYPayload {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeMIKEYPayloadFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayload)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayload,
 		func (intern *mIKEYPayload) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -1706,10 +1725,12 @@ func UnsafeMIKEYPayloadFromGlibNone(p unsafe.Pointer) *MIKEYPayload {
 // UnsafeMIKEYPayloadFromGlibFull is used to convert raw C.GstMIKEYPayload pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeMIKEYPayloadFromGlibFull(p unsafe.Pointer) *MIKEYPayload {
 	wrapped := UnsafeMIKEYPayloadFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayload)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayload,
 		func (intern *mIKEYPayload) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2346,10 +2367,12 @@ func UnsafeMIKEYPayloadKEMACFromGlibBorrow(p unsafe.Pointer) *MIKEYPayloadKEMAC 
 func UnsafeMIKEYPayloadKEMACFromGlibNone(p unsafe.Pointer) *MIKEYPayloadKEMAC {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeMIKEYPayloadKEMACFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayloadKEMAC)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadKEMAC,
 		func (intern *mIKEYPayloadKEMAC) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2358,10 +2381,12 @@ func UnsafeMIKEYPayloadKEMACFromGlibNone(p unsafe.Pointer) *MIKEYPayloadKEMAC {
 // UnsafeMIKEYPayloadKEMACFromGlibFull is used to convert raw C.GstMIKEYPayloadKEMAC pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeMIKEYPayloadKEMACFromGlibFull(p unsafe.Pointer) *MIKEYPayloadKEMAC {
 	wrapped := UnsafeMIKEYPayloadKEMACFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayloadKEMAC)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadKEMAC,
 		func (intern *mIKEYPayloadKEMAC) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2410,10 +2435,12 @@ func UnsafeMIKEYPayloadKeyDataFromGlibBorrow(p unsafe.Pointer) *MIKEYPayloadKeyD
 func UnsafeMIKEYPayloadKeyDataFromGlibNone(p unsafe.Pointer) *MIKEYPayloadKeyData {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeMIKEYPayloadKeyDataFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayloadKeyData)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadKeyData,
 		func (intern *mIKEYPayloadKeyData) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2422,10 +2449,12 @@ func UnsafeMIKEYPayloadKeyDataFromGlibNone(p unsafe.Pointer) *MIKEYPayloadKeyDat
 // UnsafeMIKEYPayloadKeyDataFromGlibFull is used to convert raw C.GstMIKEYPayloadKeyData pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeMIKEYPayloadKeyDataFromGlibFull(p unsafe.Pointer) *MIKEYPayloadKeyData {
 	wrapped := UnsafeMIKEYPayloadKeyDataFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayloadKeyData)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadKeyData,
 		func (intern *mIKEYPayloadKeyData) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2476,10 +2505,12 @@ func UnsafeMIKEYPayloadPKEFromGlibBorrow(p unsafe.Pointer) *MIKEYPayloadPKE {
 func UnsafeMIKEYPayloadPKEFromGlibNone(p unsafe.Pointer) *MIKEYPayloadPKE {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeMIKEYPayloadPKEFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayloadPKE)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadPKE,
 		func (intern *mIKEYPayloadPKE) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2488,10 +2519,12 @@ func UnsafeMIKEYPayloadPKEFromGlibNone(p unsafe.Pointer) *MIKEYPayloadPKE {
 // UnsafeMIKEYPayloadPKEFromGlibFull is used to convert raw C.GstMIKEYPayloadPKE pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeMIKEYPayloadPKEFromGlibFull(p unsafe.Pointer) *MIKEYPayloadPKE {
 	wrapped := UnsafeMIKEYPayloadPKEFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayloadPKE)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadPKE,
 		func (intern *mIKEYPayloadPKE) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2539,10 +2572,12 @@ func UnsafeMIKEYPayloadRANDFromGlibBorrow(p unsafe.Pointer) *MIKEYPayloadRAND {
 func UnsafeMIKEYPayloadRANDFromGlibNone(p unsafe.Pointer) *MIKEYPayloadRAND {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeMIKEYPayloadRANDFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayloadRAND)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadRAND,
 		func (intern *mIKEYPayloadRAND) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2551,10 +2586,12 @@ func UnsafeMIKEYPayloadRANDFromGlibNone(p unsafe.Pointer) *MIKEYPayloadRAND {
 // UnsafeMIKEYPayloadRANDFromGlibFull is used to convert raw C.GstMIKEYPayloadRAND pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeMIKEYPayloadRANDFromGlibFull(p unsafe.Pointer) *MIKEYPayloadRAND {
 	wrapped := UnsafeMIKEYPayloadRANDFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayloadRAND)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadRAND,
 		func (intern *mIKEYPayloadRAND) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2603,10 +2640,12 @@ func UnsafeMIKEYPayloadSPFromGlibBorrow(p unsafe.Pointer) *MIKEYPayloadSP {
 func UnsafeMIKEYPayloadSPFromGlibNone(p unsafe.Pointer) *MIKEYPayloadSP {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeMIKEYPayloadSPFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayloadSP)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadSP,
 		func (intern *mIKEYPayloadSP) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2615,10 +2654,12 @@ func UnsafeMIKEYPayloadSPFromGlibNone(p unsafe.Pointer) *MIKEYPayloadSP {
 // UnsafeMIKEYPayloadSPFromGlibFull is used to convert raw C.GstMIKEYPayloadSP pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeMIKEYPayloadSPFromGlibFull(p unsafe.Pointer) *MIKEYPayloadSP {
 	wrapped := UnsafeMIKEYPayloadSPFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayloadSP)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadSP,
 		func (intern *mIKEYPayloadSP) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2666,10 +2707,12 @@ func UnsafeMIKEYPayloadSPParamFromGlibBorrow(p unsafe.Pointer) *MIKEYPayloadSPPa
 func UnsafeMIKEYPayloadSPParamFromGlibNone(p unsafe.Pointer) *MIKEYPayloadSPParam {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeMIKEYPayloadSPParamFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayloadSPParam)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadSPParam,
 		func (intern *mIKEYPayloadSPParam) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2678,10 +2721,12 @@ func UnsafeMIKEYPayloadSPParamFromGlibNone(p unsafe.Pointer) *MIKEYPayloadSPPara
 // UnsafeMIKEYPayloadSPParamFromGlibFull is used to convert raw C.GstMIKEYPayloadSPParam pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeMIKEYPayloadSPParamFromGlibFull(p unsafe.Pointer) *MIKEYPayloadSPParam {
 	wrapped := UnsafeMIKEYPayloadSPParamFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayloadSPParam)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadSPParam,
 		func (intern *mIKEYPayloadSPParam) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2729,10 +2774,12 @@ func UnsafeMIKEYPayloadTFromGlibBorrow(p unsafe.Pointer) *MIKEYPayloadT {
 func UnsafeMIKEYPayloadTFromGlibNone(p unsafe.Pointer) *MIKEYPayloadT {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeMIKEYPayloadTFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayloadT)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadT,
 		func (intern *mIKEYPayloadT) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2741,10 +2788,12 @@ func UnsafeMIKEYPayloadTFromGlibNone(p unsafe.Pointer) *MIKEYPayloadT {
 // UnsafeMIKEYPayloadTFromGlibFull is used to convert raw C.GstMIKEYPayloadT pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeMIKEYPayloadTFromGlibFull(p unsafe.Pointer) *MIKEYPayloadT {
 	wrapped := UnsafeMIKEYPayloadTFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.mIKEYPayloadT)), 1)
 	runtime.SetFinalizer(
 		wrapped.mIKEYPayloadT,
 		func (intern *mIKEYPayloadT) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2792,10 +2841,12 @@ func UnsafeSDPAttributeFromGlibBorrow(p unsafe.Pointer) *SDPAttribute {
 func UnsafeSDPAttributeFromGlibNone(p unsafe.Pointer) *SDPAttribute {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSDPAttributeFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPAttribute)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPAttribute,
 		func (intern *sDPAttribute) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2804,10 +2855,12 @@ func UnsafeSDPAttributeFromGlibNone(p unsafe.Pointer) *SDPAttribute {
 // UnsafeSDPAttributeFromGlibFull is used to convert raw C.GstSDPAttribute pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeSDPAttributeFromGlibFull(p unsafe.Pointer) *SDPAttribute {
 	wrapped := UnsafeSDPAttributeFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPAttribute)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPAttribute,
 		func (intern *sDPAttribute) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2917,10 +2970,12 @@ func UnsafeSDPBandwidthFromGlibBorrow(p unsafe.Pointer) *SDPBandwidth {
 func UnsafeSDPBandwidthFromGlibNone(p unsafe.Pointer) *SDPBandwidth {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSDPBandwidthFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPBandwidth)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPBandwidth,
 		func (intern *sDPBandwidth) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2929,10 +2984,12 @@ func UnsafeSDPBandwidthFromGlibNone(p unsafe.Pointer) *SDPBandwidth {
 // UnsafeSDPBandwidthFromGlibFull is used to convert raw C.GstSDPBandwidth pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeSDPBandwidthFromGlibFull(p unsafe.Pointer) *SDPBandwidth {
 	wrapped := UnsafeSDPBandwidthFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPBandwidth)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPBandwidth,
 		func (intern *sDPBandwidth) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -3038,10 +3095,12 @@ func UnsafeSDPConnectionFromGlibBorrow(p unsafe.Pointer) *SDPConnection {
 func UnsafeSDPConnectionFromGlibNone(p unsafe.Pointer) *SDPConnection {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSDPConnectionFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPConnection)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPConnection,
 		func (intern *sDPConnection) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -3050,10 +3109,12 @@ func UnsafeSDPConnectionFromGlibNone(p unsafe.Pointer) *SDPConnection {
 // UnsafeSDPConnectionFromGlibFull is used to convert raw C.GstSDPConnection pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeSDPConnectionFromGlibFull(p unsafe.Pointer) *SDPConnection {
 	wrapped := UnsafeSDPConnectionFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPConnection)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPConnection,
 		func (intern *sDPConnection) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -3175,10 +3236,12 @@ func UnsafeSDPKeyFromGlibBorrow(p unsafe.Pointer) *SDPKey {
 func UnsafeSDPKeyFromGlibNone(p unsafe.Pointer) *SDPKey {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSDPKeyFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPKey)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPKey,
 		func (intern *sDPKey) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -3187,10 +3250,12 @@ func UnsafeSDPKeyFromGlibNone(p unsafe.Pointer) *SDPKey {
 // UnsafeSDPKeyFromGlibFull is used to convert raw C.GstSDPKey pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeSDPKeyFromGlibFull(p unsafe.Pointer) *SDPKey {
 	wrapped := UnsafeSDPKeyFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPKey)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPKey,
 		func (intern *sDPKey) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -3238,10 +3303,12 @@ func UnsafeSDPMediaFromGlibBorrow(p unsafe.Pointer) *SDPMedia {
 func UnsafeSDPMediaFromGlibNone(p unsafe.Pointer) *SDPMedia {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSDPMediaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPMedia)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPMedia,
 		func (intern *sDPMedia) {
 			C.gst_sdp_media_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -3250,10 +3317,12 @@ func UnsafeSDPMediaFromGlibNone(p unsafe.Pointer) *SDPMedia {
 // UnsafeSDPMediaFromGlibFull is used to convert raw C.GstSDPMedia pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeSDPMediaFromGlibFull(p unsafe.Pointer) *SDPMedia {
 	wrapped := UnsafeSDPMediaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPMedia)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPMedia,
 		func (intern *sDPMedia) {
 			C.gst_sdp_media_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -4723,10 +4792,12 @@ func UnsafeSDPMessageFromGlibBorrow(p unsafe.Pointer) *SDPMessage {
 func UnsafeSDPMessageFromGlibNone(p unsafe.Pointer) *SDPMessage {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSDPMessageFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPMessage)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPMessage,
 		func (intern *sDPMessage) {
 			C.gst_sdp_message_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -4735,10 +4806,12 @@ func UnsafeSDPMessageFromGlibNone(p unsafe.Pointer) *SDPMessage {
 // UnsafeSDPMessageFromGlibFull is used to convert raw C.GstSDPMessage pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeSDPMessageFromGlibFull(p unsafe.Pointer) *SDPMessage {
 	wrapped := UnsafeSDPMessageFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPMessage)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPMessage,
 		func (intern *sDPMessage) {
 			C.gst_sdp_message_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -6889,10 +6962,12 @@ func UnsafeSDPOriginFromGlibBorrow(p unsafe.Pointer) *SDPOrigin {
 func UnsafeSDPOriginFromGlibNone(p unsafe.Pointer) *SDPOrigin {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSDPOriginFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPOrigin)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPOrigin,
 		func (intern *sDPOrigin) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -6901,10 +6976,12 @@ func UnsafeSDPOriginFromGlibNone(p unsafe.Pointer) *SDPOrigin {
 // UnsafeSDPOriginFromGlibFull is used to convert raw C.GstSDPOrigin pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeSDPOriginFromGlibFull(p unsafe.Pointer) *SDPOrigin {
 	wrapped := UnsafeSDPOriginFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPOrigin)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPOrigin,
 		func (intern *sDPOrigin) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -6953,10 +7030,12 @@ func UnsafeSDPTimeFromGlibBorrow(p unsafe.Pointer) *SDPTime {
 func UnsafeSDPTimeFromGlibNone(p unsafe.Pointer) *SDPTime {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSDPTimeFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPTime)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPTime,
 		func (intern *sDPTime) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -6965,10 +7044,12 @@ func UnsafeSDPTimeFromGlibNone(p unsafe.Pointer) *SDPTime {
 // UnsafeSDPTimeFromGlibFull is used to convert raw C.GstSDPTime pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeSDPTimeFromGlibFull(p unsafe.Pointer) *SDPTime {
 	wrapped := UnsafeSDPTimeFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPTime)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPTime,
 		func (intern *sDPTime) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -7083,10 +7164,12 @@ func UnsafeSDPZoneFromGlibBorrow(p unsafe.Pointer) *SDPZone {
 func UnsafeSDPZoneFromGlibNone(p unsafe.Pointer) *SDPZone {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeSDPZoneFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPZone)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPZone,
 		func (intern *sDPZone) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -7095,10 +7178,12 @@ func UnsafeSDPZoneFromGlibNone(p unsafe.Pointer) *SDPZone {
 // UnsafeSDPZoneFromGlibFull is used to convert raw C.GstSDPZone pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeSDPZoneFromGlibFull(p unsafe.Pointer) *SDPZone {
 	wrapped := UnsafeSDPZoneFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.sDPZone)), 1)
 	runtime.SetFinalizer(
 		wrapped.sDPZone,
 		func (intern *sDPZone) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped

@@ -9,6 +9,7 @@ import (
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/core/classdata"
+	"github.com/diamondburned/gotk4/pkg/core/profile"
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
@@ -8022,7 +8023,7 @@ func unsafeWrapColorBalance(base *gobject.ObjectInstance) *ColorBalanceInstance 
 }
 
 func marshalColorBalanceInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapColorBalance(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 func (c *ColorBalanceInstance) upcastToGstColorBalance() *ColorBalanceInstance {
@@ -8654,7 +8655,7 @@ func unsafeWrapNavigation(base *gobject.ObjectInstance) *NavigationInstance {
 }
 
 func marshalNavigationInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapNavigation(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 func (n *NavigationInstance) upcastToGstNavigation() *NavigationInstance {
@@ -10330,7 +10331,7 @@ func unsafeWrapVideoDirection(base *gobject.ObjectInstance) *VideoDirectionInsta
 }
 
 func marshalVideoDirectionInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapVideoDirection(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 func (v *VideoDirectionInstance) upcastToGstVideoDirection() *VideoDirectionInstance {
@@ -10579,7 +10580,7 @@ func unsafeWrapVideoOrientation(base *gobject.ObjectInstance) *VideoOrientationI
 }
 
 func marshalVideoOrientationInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapVideoOrientation(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 func (v *VideoOrientationInstance) upcastToGstVideoOrientation() *VideoOrientationInstance {
@@ -11836,7 +11837,7 @@ func unsafeWrapVideoOverlay(base *gobject.ObjectInstance) *VideoOverlayInstance 
 }
 
 func marshalVideoOverlayInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapVideoOverlay(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 func (v *VideoOverlayInstance) upcastToGstVideoOverlay() *VideoOverlayInstance {
@@ -12247,7 +12248,7 @@ func init() {
 }
 
 func marshalColorBalanceChannelInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapColorBalanceChannel(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeColorBalanceChannelFromGlibNone is used to convert raw GstColorBalanceChannel pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -12484,7 +12485,7 @@ func init() {
 }
 
 func marshalVideoAggregatorInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapVideoAggregator(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeVideoAggregatorFromGlibNone is used to convert raw GstVideoAggregator pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -12955,7 +12956,7 @@ func init() {
 }
 
 func marshalVideoAggregatorPadInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapVideoAggregatorPad(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeVideoAggregatorPadFromGlibNone is used to convert raw GstVideoAggregatorPad pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -13479,7 +13480,7 @@ func init() {
 }
 
 func marshalVideoBufferPoolInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapVideoBufferPool(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeVideoBufferPoolFromGlibNone is used to convert raw GstVideoBufferPool pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -14568,7 +14569,7 @@ func init() {
 }
 
 func marshalVideoDecoderInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapVideoDecoder(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeVideoDecoderFromGlibNone is used to convert raw GstVideoDecoder pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -18118,7 +18119,7 @@ func init() {
 }
 
 func marshalVideoEncoderInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapVideoEncoder(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeVideoEncoderFromGlibNone is used to convert raw GstVideoEncoder pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -20350,7 +20351,7 @@ func init() {
 }
 
 func marshalVideoFilterInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapVideoFilter(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeVideoFilterFromGlibNone is used to convert raw GstVideoFilter pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -20734,7 +20735,7 @@ func init() {
 }
 
 func marshalVideoSinkInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapVideoSink(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeVideoSinkFromGlibNone is used to convert raw GstVideoSink pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -21020,7 +21021,7 @@ func init() {
 }
 
 func marshalVideoAggregatorConvertPadInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapVideoAggregatorConvertPad(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeVideoAggregatorConvertPadFromGlibNone is used to convert raw GstVideoAggregatorConvertPad pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -21205,7 +21206,7 @@ func init() {
 }
 
 func marshalVideoAggregatorParallelConvertPadInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapVideoAggregatorParallelConvertPad(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeVideoAggregatorParallelConvertPadFromGlibNone is used to convert raw GstVideoAggregatorParallelConvertPad pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -21299,10 +21300,12 @@ func UnsafeAncillaryMetaFromGlibBorrow(p unsafe.Pointer) *AncillaryMeta {
 func UnsafeAncillaryMetaFromGlibNone(p unsafe.Pointer) *AncillaryMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAncillaryMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.ancillaryMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.ancillaryMeta,
 		func (intern *ancillaryMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21311,10 +21314,12 @@ func UnsafeAncillaryMetaFromGlibNone(p unsafe.Pointer) *AncillaryMeta {
 // UnsafeAncillaryMetaFromGlibFull is used to convert raw C.GstAncillaryMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAncillaryMetaFromGlibFull(p unsafe.Pointer) *AncillaryMeta {
 	wrapped := UnsafeAncillaryMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.ancillaryMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.ancillaryMeta,
 		func (intern *ancillaryMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21419,10 +21424,12 @@ func UnsafeColorBalanceInterfaceFromGlibBorrow(p unsafe.Pointer) *ColorBalanceIn
 func UnsafeColorBalanceInterfaceFromGlibNone(p unsafe.Pointer) *ColorBalanceInterface {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeColorBalanceInterfaceFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.colorBalanceInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.colorBalanceInterface,
 		func (intern *colorBalanceInterface) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21431,10 +21438,12 @@ func UnsafeColorBalanceInterfaceFromGlibNone(p unsafe.Pointer) *ColorBalanceInte
 // UnsafeColorBalanceInterfaceFromGlibFull is used to convert raw C.GstColorBalanceInterface pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeColorBalanceInterfaceFromGlibFull(p unsafe.Pointer) *ColorBalanceInterface {
 	wrapped := UnsafeColorBalanceInterfaceFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.colorBalanceInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.colorBalanceInterface,
 		func (intern *colorBalanceInterface) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21482,10 +21491,12 @@ func UnsafeNavigationInterfaceFromGlibBorrow(p unsafe.Pointer) *NavigationInterf
 func UnsafeNavigationInterfaceFromGlibNone(p unsafe.Pointer) *NavigationInterface {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeNavigationInterfaceFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.navigationInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.navigationInterface,
 		func (intern *navigationInterface) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21494,10 +21505,12 @@ func UnsafeNavigationInterfaceFromGlibNone(p unsafe.Pointer) *NavigationInterfac
 // UnsafeNavigationInterfaceFromGlibFull is used to convert raw C.GstNavigationInterface pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeNavigationInterfaceFromGlibFull(p unsafe.Pointer) *NavigationInterface {
 	wrapped := UnsafeNavigationInterfaceFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.navigationInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.navigationInterface,
 		func (intern *navigationInterface) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21558,10 +21571,12 @@ func UnsafeVideoAFDMetaFromGlibBorrow(p unsafe.Pointer) *VideoAFDMeta {
 func UnsafeVideoAFDMetaFromGlibNone(p unsafe.Pointer) *VideoAFDMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoAFDMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoAFDMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoAFDMeta,
 		func (intern *videoAFDMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21570,10 +21585,12 @@ func UnsafeVideoAFDMetaFromGlibNone(p unsafe.Pointer) *VideoAFDMeta {
 // UnsafeVideoAFDMetaFromGlibFull is used to convert raw C.GstVideoAFDMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoAFDMetaFromGlibFull(p unsafe.Pointer) *VideoAFDMeta {
 	wrapped := UnsafeVideoAFDMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoAFDMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoAFDMeta,
 		func (intern *videoAFDMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21647,10 +21664,12 @@ func UnsafeVideoAffineTransformationMetaFromGlibBorrow(p unsafe.Pointer) *VideoA
 func UnsafeVideoAffineTransformationMetaFromGlibNone(p unsafe.Pointer) *VideoAffineTransformationMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoAffineTransformationMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoAffineTransformationMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoAffineTransformationMeta,
 		func (intern *videoAffineTransformationMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21659,10 +21678,12 @@ func UnsafeVideoAffineTransformationMetaFromGlibNone(p unsafe.Pointer) *VideoAff
 // UnsafeVideoAffineTransformationMetaFromGlibFull is used to convert raw C.GstVideoAffineTransformationMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoAffineTransformationMetaFromGlibFull(p unsafe.Pointer) *VideoAffineTransformationMeta {
 	wrapped := UnsafeVideoAffineTransformationMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoAffineTransformationMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoAffineTransformationMeta,
 		func (intern *videoAffineTransformationMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21903,10 +21924,12 @@ func UnsafeVideoAlignmentFromGlibBorrow(p unsafe.Pointer) *VideoAlignment {
 func UnsafeVideoAlignmentFromGlibNone(p unsafe.Pointer) *VideoAlignment {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoAlignmentFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoAlignment)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoAlignment,
 		func (intern *videoAlignment) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21915,10 +21938,12 @@ func UnsafeVideoAlignmentFromGlibNone(p unsafe.Pointer) *VideoAlignment {
 // UnsafeVideoAlignmentFromGlibFull is used to convert raw C.GstVideoAlignment pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoAlignmentFromGlibFull(p unsafe.Pointer) *VideoAlignment {
 	wrapped := UnsafeVideoAlignmentFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoAlignment)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoAlignment,
 		func (intern *videoAlignment) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21981,10 +22006,12 @@ func UnsafeVideoAncillaryFromGlibBorrow(p unsafe.Pointer) *VideoAncillary {
 func UnsafeVideoAncillaryFromGlibNone(p unsafe.Pointer) *VideoAncillary {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoAncillaryFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoAncillary)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoAncillary,
 		func (intern *videoAncillary) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21993,10 +22020,12 @@ func UnsafeVideoAncillaryFromGlibNone(p unsafe.Pointer) *VideoAncillary {
 // UnsafeVideoAncillaryFromGlibFull is used to convert raw C.GstVideoAncillary pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoAncillaryFromGlibFull(p unsafe.Pointer) *VideoAncillary {
 	wrapped := UnsafeVideoAncillaryFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoAncillary)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoAncillary,
 		func (intern *videoAncillary) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22055,10 +22084,12 @@ func UnsafeVideoBarMetaFromGlibBorrow(p unsafe.Pointer) *VideoBarMeta {
 func UnsafeVideoBarMetaFromGlibNone(p unsafe.Pointer) *VideoBarMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoBarMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoBarMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoBarMeta,
 		func (intern *videoBarMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22067,10 +22098,12 @@ func UnsafeVideoBarMetaFromGlibNone(p unsafe.Pointer) *VideoBarMeta {
 // UnsafeVideoBarMetaFromGlibFull is used to convert raw C.GstVideoBarMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoBarMetaFromGlibFull(p unsafe.Pointer) *VideoBarMeta {
 	wrapped := UnsafeVideoBarMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoBarMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoBarMeta,
 		func (intern *videoBarMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22173,10 +22206,12 @@ func UnsafeVideoCaptionMetaFromGlibBorrow(p unsafe.Pointer) *VideoCaptionMeta {
 func UnsafeVideoCaptionMetaFromGlibNone(p unsafe.Pointer) *VideoCaptionMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoCaptionMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoCaptionMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoCaptionMeta,
 		func (intern *videoCaptionMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22185,10 +22220,12 @@ func UnsafeVideoCaptionMetaFromGlibNone(p unsafe.Pointer) *VideoCaptionMeta {
 // UnsafeVideoCaptionMetaFromGlibFull is used to convert raw C.GstVideoCaptionMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoCaptionMetaFromGlibFull(p unsafe.Pointer) *VideoCaptionMeta {
 	wrapped := UnsafeVideoCaptionMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoCaptionMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoCaptionMeta,
 		func (intern *videoCaptionMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22251,10 +22288,12 @@ func UnsafeVideoChromaResamplerFromGlibBorrow(p unsafe.Pointer) *VideoChromaResa
 func UnsafeVideoChromaResamplerFromGlibNone(p unsafe.Pointer) *VideoChromaResample {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoChromaResamplerFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoChromaResample)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoChromaResample,
 		func (intern *videoChromaResample) {
 			C.gst_video_chroma_resample_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22263,10 +22302,12 @@ func UnsafeVideoChromaResamplerFromGlibNone(p unsafe.Pointer) *VideoChromaResamp
 // UnsafeVideoChromaResamplerFromGlibFull is used to convert raw C.GstVideoChromaResample pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoChromaResamplerFromGlibFull(p unsafe.Pointer) *VideoChromaResample {
 	wrapped := UnsafeVideoChromaResamplerFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoChromaResample)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoChromaResample,
 		func (intern *videoChromaResample) {
 			C.gst_video_chroma_resample_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22319,10 +22360,12 @@ func UnsafeVideoCodecAlphaMetaFromGlibBorrow(p unsafe.Pointer) *VideoCodecAlphaM
 func UnsafeVideoCodecAlphaMetaFromGlibNone(p unsafe.Pointer) *VideoCodecAlphaMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoCodecAlphaMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoCodecAlphaMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoCodecAlphaMeta,
 		func (intern *videoCodecAlphaMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22331,10 +22374,12 @@ func UnsafeVideoCodecAlphaMetaFromGlibNone(p unsafe.Pointer) *VideoCodecAlphaMet
 // UnsafeVideoCodecAlphaMetaFromGlibFull is used to convert raw C.GstVideoCodecAlphaMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoCodecAlphaMetaFromGlibFull(p unsafe.Pointer) *VideoCodecAlphaMeta {
 	wrapped := UnsafeVideoCodecAlphaMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoCodecAlphaMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoCodecAlphaMeta,
 		func (intern *videoCodecAlphaMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22415,10 +22460,12 @@ func UnsafeVideoCodecFrameFromGlibBorrow(p unsafe.Pointer) *VideoCodecFrame {
 func UnsafeVideoCodecFrameFromGlibNone(p unsafe.Pointer) *VideoCodecFrame {
 	C.gst_video_codec_frame_ref((*C.GstVideoCodecFrame)(p))
 	wrapped := UnsafeVideoCodecFrameFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoCodecFrame)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoCodecFrame,
 		func (intern *videoCodecFrame) {
 			C.gst_video_codec_frame_unref(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22427,10 +22474,12 @@ func UnsafeVideoCodecFrameFromGlibNone(p unsafe.Pointer) *VideoCodecFrame {
 // UnsafeVideoCodecFrameFromGlibFull is used to convert raw C.GstVideoCodecFrame pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoCodecFrameFromGlibFull(p unsafe.Pointer) *VideoCodecFrame {
 	wrapped := UnsafeVideoCodecFrameFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoCodecFrame)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoCodecFrame,
 		func (intern *videoCodecFrame) {
 			C.gst_video_codec_frame_unref(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22508,10 +22557,12 @@ func UnsafeVideoCodecStateFromGlibBorrow(p unsafe.Pointer) *VideoCodecState {
 func UnsafeVideoCodecStateFromGlibNone(p unsafe.Pointer) *VideoCodecState {
 	C.gst_video_codec_state_ref((*C.GstVideoCodecState)(p))
 	wrapped := UnsafeVideoCodecStateFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoCodecState)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoCodecState,
 		func (intern *videoCodecState) {
 			C.gst_video_codec_state_unref(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22520,10 +22571,12 @@ func UnsafeVideoCodecStateFromGlibNone(p unsafe.Pointer) *VideoCodecState {
 // UnsafeVideoCodecStateFromGlibFull is used to convert raw C.GstVideoCodecState pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoCodecStateFromGlibFull(p unsafe.Pointer) *VideoCodecState {
 	wrapped := UnsafeVideoCodecStateFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoCodecState)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoCodecState,
 		func (intern *videoCodecState) {
 			C.gst_video_codec_state_unref(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22580,10 +22633,12 @@ func UnsafeVideoColorPrimariesInfoFromGlibBorrow(p unsafe.Pointer) *VideoColorPr
 func UnsafeVideoColorPrimariesInfoFromGlibNone(p unsafe.Pointer) *VideoColorPrimariesInfo {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoColorPrimariesInfoFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoColorPrimariesInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoColorPrimariesInfo,
 		func (intern *videoColorPrimariesInfo) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22592,10 +22647,12 @@ func UnsafeVideoColorPrimariesInfoFromGlibNone(p unsafe.Pointer) *VideoColorPrim
 // UnsafeVideoColorPrimariesInfoFromGlibFull is used to convert raw C.GstVideoColorPrimariesInfo pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoColorPrimariesInfoFromGlibFull(p unsafe.Pointer) *VideoColorPrimariesInfo {
 	wrapped := UnsafeVideoColorPrimariesInfoFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoColorPrimariesInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoColorPrimariesInfo,
 		func (intern *videoColorPrimariesInfo) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22643,10 +22700,12 @@ func UnsafeVideoColorimetryFromGlibBorrow(p unsafe.Pointer) *VideoColorimetry {
 func UnsafeVideoColorimetryFromGlibNone(p unsafe.Pointer) *VideoColorimetry {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoColorimetryFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoColorimetry)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoColorimetry,
 		func (intern *videoColorimetry) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22655,10 +22714,12 @@ func UnsafeVideoColorimetryFromGlibNone(p unsafe.Pointer) *VideoColorimetry {
 // UnsafeVideoColorimetryFromGlibFull is used to convert raw C.GstVideoColorimetry pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoColorimetryFromGlibFull(p unsafe.Pointer) *VideoColorimetry {
 	wrapped := UnsafeVideoColorimetryFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoColorimetry)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoColorimetry,
 		func (intern *videoColorimetry) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22872,10 +22933,12 @@ func UnsafeVideoContentLightLevelFromGlibBorrow(p unsafe.Pointer) *VideoContentL
 func UnsafeVideoContentLightLevelFromGlibNone(p unsafe.Pointer) *VideoContentLightLevel {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoContentLightLevelFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoContentLightLevel)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoContentLightLevel,
 		func (intern *videoContentLightLevel) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22884,10 +22947,12 @@ func UnsafeVideoContentLightLevelFromGlibNone(p unsafe.Pointer) *VideoContentLig
 // UnsafeVideoContentLightLevelFromGlibFull is used to convert raw C.GstVideoContentLightLevel pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoContentLightLevelFromGlibFull(p unsafe.Pointer) *VideoContentLightLevel {
 	wrapped := UnsafeVideoContentLightLevelFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoContentLightLevel)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoContentLightLevel,
 		func (intern *videoContentLightLevel) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -23099,10 +23164,12 @@ func UnsafeVideoConverterFromGlibBorrow(p unsafe.Pointer) *VideoConverter {
 func UnsafeVideoConverterFromGlibNone(p unsafe.Pointer) *VideoConverter {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoConverterFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoConverter)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoConverter,
 		func (intern *videoConverter) {
 			C.gst_video_converter_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -23111,10 +23178,12 @@ func UnsafeVideoConverterFromGlibNone(p unsafe.Pointer) *VideoConverter {
 // UnsafeVideoConverterFromGlibFull is used to convert raw C.GstVideoConverter pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoConverterFromGlibFull(p unsafe.Pointer) *VideoConverter {
 	wrapped := UnsafeVideoConverterFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoConverter)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoConverter,
 		func (intern *videoConverter) {
 			C.gst_video_converter_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -23310,10 +23379,12 @@ func UnsafeVideoCropMetaFromGlibBorrow(p unsafe.Pointer) *VideoCropMeta {
 func UnsafeVideoCropMetaFromGlibNone(p unsafe.Pointer) *VideoCropMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoCropMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoCropMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoCropMeta,
 		func (intern *videoCropMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -23322,10 +23393,12 @@ func UnsafeVideoCropMetaFromGlibNone(p unsafe.Pointer) *VideoCropMeta {
 // UnsafeVideoCropMetaFromGlibFull is used to convert raw C.GstVideoCropMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoCropMetaFromGlibFull(p unsafe.Pointer) *VideoCropMeta {
 	wrapped := UnsafeVideoCropMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoCropMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoCropMeta,
 		func (intern *videoCropMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -23433,10 +23506,12 @@ func UnsafeVideoDirectionInterfaceFromGlibBorrow(p unsafe.Pointer) *VideoDirecti
 func UnsafeVideoDirectionInterfaceFromGlibNone(p unsafe.Pointer) *VideoDirectionInterface {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoDirectionInterfaceFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoDirectionInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoDirectionInterface,
 		func (intern *videoDirectionInterface) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -23445,10 +23520,12 @@ func UnsafeVideoDirectionInterfaceFromGlibNone(p unsafe.Pointer) *VideoDirection
 // UnsafeVideoDirectionInterfaceFromGlibFull is used to convert raw C.GstVideoDirectionInterface pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoDirectionInterfaceFromGlibFull(p unsafe.Pointer) *VideoDirectionInterface {
 	wrapped := UnsafeVideoDirectionInterfaceFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoDirectionInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoDirectionInterface,
 		func (intern *videoDirectionInterface) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -23497,10 +23574,12 @@ func UnsafeVideoDitherFromGlibBorrow(p unsafe.Pointer) *VideoDither {
 func UnsafeVideoDitherFromGlibNone(p unsafe.Pointer) *VideoDither {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoDitherFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoDither)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoDither,
 		func (intern *videoDither) {
 			C.gst_video_dither_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -23509,10 +23588,12 @@ func UnsafeVideoDitherFromGlibNone(p unsafe.Pointer) *VideoDither {
 // UnsafeVideoDitherFromGlibFull is used to convert raw C.GstVideoDither pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoDitherFromGlibFull(p unsafe.Pointer) *VideoDither {
 	wrapped := UnsafeVideoDitherFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoDither)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoDither,
 		func (intern *videoDither) {
 			C.gst_video_dither_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -23642,10 +23723,12 @@ func UnsafeVideoFormatInfoFromGlibBorrow(p unsafe.Pointer) *VideoFormatInfo {
 func UnsafeVideoFormatInfoFromGlibNone(p unsafe.Pointer) *VideoFormatInfo {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoFormatInfoFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoFormatInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoFormatInfo,
 		func (intern *videoFormatInfo) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -23654,10 +23737,12 @@ func UnsafeVideoFormatInfoFromGlibNone(p unsafe.Pointer) *VideoFormatInfo {
 // UnsafeVideoFormatInfoFromGlibFull is used to convert raw C.GstVideoFormatInfo pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoFormatInfoFromGlibFull(p unsafe.Pointer) *VideoFormatInfo {
 	wrapped := UnsafeVideoFormatInfoFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoFormatInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoFormatInfo,
 		func (intern *videoFormatInfo) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -23772,10 +23857,12 @@ func UnsafeVideoFrameFromGlibBorrow(p unsafe.Pointer) *VideoFrame {
 func UnsafeVideoFrameFromGlibNone(p unsafe.Pointer) *VideoFrame {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoFrameFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoFrame)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoFrame,
 		func (intern *videoFrame) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -23784,10 +23871,12 @@ func UnsafeVideoFrameFromGlibNone(p unsafe.Pointer) *VideoFrame {
 // UnsafeVideoFrameFromGlibFull is used to convert raw C.GstVideoFrame pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoFrameFromGlibFull(p unsafe.Pointer) *VideoFrame {
 	wrapped := UnsafeVideoFrameFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoFrame)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoFrame,
 		func (intern *videoFrame) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -24063,10 +24152,12 @@ func UnsafeVideoGLTextureUploadMetaFromGlibBorrow(p unsafe.Pointer) *VideoGLText
 func UnsafeVideoGLTextureUploadMetaFromGlibNone(p unsafe.Pointer) *VideoGLTextureUploadMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoGLTextureUploadMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoGLTextureUploadMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoGLTextureUploadMeta,
 		func (intern *videoGLTextureUploadMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -24075,10 +24166,12 @@ func UnsafeVideoGLTextureUploadMetaFromGlibNone(p unsafe.Pointer) *VideoGLTextur
 // UnsafeVideoGLTextureUploadMetaFromGlibFull is used to convert raw C.GstVideoGLTextureUploadMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoGLTextureUploadMetaFromGlibFull(p unsafe.Pointer) *VideoGLTextureUploadMeta {
 	wrapped := UnsafeVideoGLTextureUploadMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoGLTextureUploadMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoGLTextureUploadMeta,
 		func (intern *videoGLTextureUploadMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -24197,10 +24290,12 @@ func UnsafeVideoInfoFromGlibBorrow(p unsafe.Pointer) *VideoInfo {
 func UnsafeVideoInfoFromGlibNone(p unsafe.Pointer) *VideoInfo {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoInfoFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoInfo,
 		func (intern *videoInfo) {
 			C.gst_video_info_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -24209,10 +24304,12 @@ func UnsafeVideoInfoFromGlibNone(p unsafe.Pointer) *VideoInfo {
 // UnsafeVideoInfoFromGlibFull is used to convert raw C.GstVideoInfo pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoInfoFromGlibFull(p unsafe.Pointer) *VideoInfo {
 	wrapped := UnsafeVideoInfoFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoInfo,
 		func (intern *videoInfo) {
 			C.gst_video_info_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -24676,10 +24773,12 @@ func UnsafeVideoInfoDmaDrmFromGlibBorrow(p unsafe.Pointer) *VideoInfoDmaDrm {
 func UnsafeVideoInfoDmaDrmFromGlibNone(p unsafe.Pointer) *VideoInfoDmaDrm {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoInfoDmaDrmFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoInfoDmaDrm)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoInfoDmaDrm,
 		func (intern *videoInfoDmaDrm) {
 			C.gst_video_info_dma_drm_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -24688,10 +24787,12 @@ func UnsafeVideoInfoDmaDrmFromGlibNone(p unsafe.Pointer) *VideoInfoDmaDrm {
 // UnsafeVideoInfoDmaDrmFromGlibFull is used to convert raw C.GstVideoInfoDmaDrm pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoInfoDmaDrmFromGlibFull(p unsafe.Pointer) *VideoInfoDmaDrm {
 	wrapped := UnsafeVideoInfoDmaDrmFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoInfoDmaDrm)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoInfoDmaDrm,
 		func (intern *videoInfoDmaDrm) {
 			C.gst_video_info_dma_drm_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -24952,10 +25053,12 @@ func UnsafeVideoMasteringDisplayInfoFromGlibBorrow(p unsafe.Pointer) *VideoMaste
 func UnsafeVideoMasteringDisplayInfoFromGlibNone(p unsafe.Pointer) *VideoMasteringDisplayInfo {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoMasteringDisplayInfoFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoMasteringDisplayInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoMasteringDisplayInfo,
 		func (intern *videoMasteringDisplayInfo) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -24964,10 +25067,12 @@ func UnsafeVideoMasteringDisplayInfoFromGlibNone(p unsafe.Pointer) *VideoMasteri
 // UnsafeVideoMasteringDisplayInfoFromGlibFull is used to convert raw C.GstVideoMasteringDisplayInfo pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoMasteringDisplayInfoFromGlibFull(p unsafe.Pointer) *VideoMasteringDisplayInfo {
 	wrapped := UnsafeVideoMasteringDisplayInfoFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoMasteringDisplayInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoMasteringDisplayInfo,
 		func (intern *videoMasteringDisplayInfo) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -25184,10 +25289,12 @@ func UnsafeVideoMasteringDisplayInfoCoordinatesFromGlibBorrow(p unsafe.Pointer) 
 func UnsafeVideoMasteringDisplayInfoCoordinatesFromGlibNone(p unsafe.Pointer) *VideoMasteringDisplayInfoCoordinates {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoMasteringDisplayInfoCoordinatesFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoMasteringDisplayInfoCoordinates)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoMasteringDisplayInfoCoordinates,
 		func (intern *videoMasteringDisplayInfoCoordinates) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -25196,10 +25303,12 @@ func UnsafeVideoMasteringDisplayInfoCoordinatesFromGlibNone(p unsafe.Pointer) *V
 // UnsafeVideoMasteringDisplayInfoCoordinatesFromGlibFull is used to convert raw C.GstVideoMasteringDisplayInfoCoordinates pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoMasteringDisplayInfoCoordinatesFromGlibFull(p unsafe.Pointer) *VideoMasteringDisplayInfoCoordinates {
 	wrapped := UnsafeVideoMasteringDisplayInfoCoordinatesFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoMasteringDisplayInfoCoordinates)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoMasteringDisplayInfoCoordinates,
 		func (intern *videoMasteringDisplayInfoCoordinates) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -25269,10 +25378,12 @@ func UnsafeVideoMetaFromGlibBorrow(p unsafe.Pointer) *VideoMeta {
 func UnsafeVideoMetaFromGlibNone(p unsafe.Pointer) *VideoMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoMeta,
 		func (intern *videoMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -25281,10 +25392,12 @@ func UnsafeVideoMetaFromGlibNone(p unsafe.Pointer) *VideoMeta {
 // UnsafeVideoMetaFromGlibFull is used to convert raw C.GstVideoMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoMetaFromGlibFull(p unsafe.Pointer) *VideoMeta {
 	wrapped := UnsafeVideoMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoMeta,
 		func (intern *videoMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -25386,10 +25499,12 @@ func UnsafeVideoMetaTransformFromGlibBorrow(p unsafe.Pointer) *VideoMetaTransfor
 func UnsafeVideoMetaTransformFromGlibNone(p unsafe.Pointer) *VideoMetaTransform {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoMetaTransformFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoMetaTransform)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoMetaTransform,
 		func (intern *videoMetaTransform) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -25398,10 +25513,12 @@ func UnsafeVideoMetaTransformFromGlibNone(p unsafe.Pointer) *VideoMetaTransform 
 // UnsafeVideoMetaTransformFromGlibFull is used to convert raw C.GstVideoMetaTransform pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoMetaTransformFromGlibFull(p unsafe.Pointer) *VideoMetaTransform {
 	wrapped := UnsafeVideoMetaTransformFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoMetaTransform)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoMetaTransform,
 		func (intern *videoMetaTransform) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -25468,10 +25585,12 @@ func UnsafeVideoOrientationInterfaceFromGlibBorrow(p unsafe.Pointer) *VideoOrien
 func UnsafeVideoOrientationInterfaceFromGlibNone(p unsafe.Pointer) *VideoOrientationInterface {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoOrientationInterfaceFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoOrientationInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoOrientationInterface,
 		func (intern *videoOrientationInterface) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -25480,10 +25599,12 @@ func UnsafeVideoOrientationInterfaceFromGlibNone(p unsafe.Pointer) *VideoOrienta
 // UnsafeVideoOrientationInterfaceFromGlibFull is used to convert raw C.GstVideoOrientationInterface pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoOrientationInterfaceFromGlibFull(p unsafe.Pointer) *VideoOrientationInterface {
 	wrapped := UnsafeVideoOrientationInterfaceFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoOrientationInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoOrientationInterface,
 		func (intern *videoOrientationInterface) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -25567,10 +25688,12 @@ func UnsafeVideoOverlayCompositionFromGlibBorrow(p unsafe.Pointer) *VideoOverlay
 func UnsafeVideoOverlayCompositionFromGlibNone(p unsafe.Pointer) *VideoOverlayComposition {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoOverlayCompositionFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoOverlayComposition)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoOverlayComposition,
 		func (intern *videoOverlayComposition) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -25579,10 +25702,12 @@ func UnsafeVideoOverlayCompositionFromGlibNone(p unsafe.Pointer) *VideoOverlayCo
 // UnsafeVideoOverlayCompositionFromGlibFull is used to convert raw C.GstVideoOverlayComposition pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoOverlayCompositionFromGlibFull(p unsafe.Pointer) *VideoOverlayComposition {
 	wrapped := UnsafeVideoOverlayCompositionFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoOverlayComposition)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoOverlayComposition,
 		func (intern *videoOverlayComposition) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -25857,10 +25982,12 @@ func UnsafeVideoOverlayCompositionMetaFromGlibBorrow(p unsafe.Pointer) *VideoOve
 func UnsafeVideoOverlayCompositionMetaFromGlibNone(p unsafe.Pointer) *VideoOverlayCompositionMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoOverlayCompositionMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoOverlayCompositionMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoOverlayCompositionMeta,
 		func (intern *videoOverlayCompositionMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -25869,10 +25996,12 @@ func UnsafeVideoOverlayCompositionMetaFromGlibNone(p unsafe.Pointer) *VideoOverl
 // UnsafeVideoOverlayCompositionMetaFromGlibFull is used to convert raw C.GstVideoOverlayCompositionMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoOverlayCompositionMetaFromGlibFull(p unsafe.Pointer) *VideoOverlayCompositionMeta {
 	wrapped := UnsafeVideoOverlayCompositionMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoOverlayCompositionMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoOverlayCompositionMeta,
 		func (intern *videoOverlayCompositionMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -25937,10 +26066,12 @@ func UnsafeVideoOverlayInterfaceFromGlibBorrow(p unsafe.Pointer) *VideoOverlayIn
 func UnsafeVideoOverlayInterfaceFromGlibNone(p unsafe.Pointer) *VideoOverlayInterface {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoOverlayInterfaceFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoOverlayInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoOverlayInterface,
 		func (intern *videoOverlayInterface) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -25949,10 +26080,12 @@ func UnsafeVideoOverlayInterfaceFromGlibNone(p unsafe.Pointer) *VideoOverlayInte
 // UnsafeVideoOverlayInterfaceFromGlibFull is used to convert raw C.GstVideoOverlayInterface pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoOverlayInterfaceFromGlibFull(p unsafe.Pointer) *VideoOverlayInterface {
 	wrapped := UnsafeVideoOverlayInterfaceFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoOverlayInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoOverlayInterface,
 		func (intern *videoOverlayInterface) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -26016,10 +26149,12 @@ func UnsafeVideoOverlayRectangleFromGlibBorrow(p unsafe.Pointer) *VideoOverlayRe
 func UnsafeVideoOverlayRectangleFromGlibNone(p unsafe.Pointer) *VideoOverlayRectangle {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoOverlayRectangleFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoOverlayRectangle)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoOverlayRectangle,
 		func (intern *videoOverlayRectangle) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -26028,10 +26163,12 @@ func UnsafeVideoOverlayRectangleFromGlibNone(p unsafe.Pointer) *VideoOverlayRect
 // UnsafeVideoOverlayRectangleFromGlibFull is used to convert raw C.GstVideoOverlayRectangle pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoOverlayRectangleFromGlibFull(p unsafe.Pointer) *VideoOverlayRectangle {
 	wrapped := UnsafeVideoOverlayRectangleFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoOverlayRectangle)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoOverlayRectangle,
 		func (intern *videoOverlayRectangle) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -26564,10 +26701,12 @@ func UnsafeVideoRectangleFromGlibBorrow(p unsafe.Pointer) *VideoRectangle {
 func UnsafeVideoRectangleFromGlibNone(p unsafe.Pointer) *VideoRectangle {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoRectangleFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoRectangle)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoRectangle,
 		func (intern *videoRectangle) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -26576,10 +26715,12 @@ func UnsafeVideoRectangleFromGlibNone(p unsafe.Pointer) *VideoRectangle {
 // UnsafeVideoRectangleFromGlibFull is used to convert raw C.GstVideoRectangle pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoRectangleFromGlibFull(p unsafe.Pointer) *VideoRectangle {
 	wrapped := UnsafeVideoRectangleFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoRectangle)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoRectangle,
 		func (intern *videoRectangle) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -26627,10 +26768,12 @@ func UnsafeVideoRegionOfInterestMetaFromGlibBorrow(p unsafe.Pointer) *VideoRegio
 func UnsafeVideoRegionOfInterestMetaFromGlibNone(p unsafe.Pointer) *VideoRegionOfInterestMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoRegionOfInterestMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoRegionOfInterestMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoRegionOfInterestMeta,
 		func (intern *videoRegionOfInterestMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -26639,10 +26782,12 @@ func UnsafeVideoRegionOfInterestMetaFromGlibNone(p unsafe.Pointer) *VideoRegionO
 // UnsafeVideoRegionOfInterestMetaFromGlibFull is used to convert raw C.GstVideoRegionOfInterestMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoRegionOfInterestMetaFromGlibFull(p unsafe.Pointer) *VideoRegionOfInterestMeta {
 	wrapped := UnsafeVideoRegionOfInterestMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoRegionOfInterestMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoRegionOfInterestMeta,
 		func (intern *videoRegionOfInterestMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -26769,10 +26914,12 @@ func UnsafeVideoResamplerFromGlibBorrow(p unsafe.Pointer) *VideoResampler {
 func UnsafeVideoResamplerFromGlibNone(p unsafe.Pointer) *VideoResampler {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoResamplerFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoResampler)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoResampler,
 		func (intern *videoResampler) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -26781,10 +26928,12 @@ func UnsafeVideoResamplerFromGlibNone(p unsafe.Pointer) *VideoResampler {
 // UnsafeVideoResamplerFromGlibFull is used to convert raw C.GstVideoResampler pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoResamplerFromGlibFull(p unsafe.Pointer) *VideoResampler {
 	wrapped := UnsafeVideoResamplerFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoResampler)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoResampler,
 		func (intern *videoResampler) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -26902,10 +27051,12 @@ func UnsafeVideoSEIUserDataUnregisteredMetaFromGlibBorrow(p unsafe.Pointer) *Vid
 func UnsafeVideoSEIUserDataUnregisteredMetaFromGlibNone(p unsafe.Pointer) *VideoSEIUserDataUnregisteredMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoSEIUserDataUnregisteredMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoSEIUserDataUnregisteredMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoSEIUserDataUnregisteredMeta,
 		func (intern *videoSEIUserDataUnregisteredMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -26914,10 +27065,12 @@ func UnsafeVideoSEIUserDataUnregisteredMetaFromGlibNone(p unsafe.Pointer) *Video
 // UnsafeVideoSEIUserDataUnregisteredMetaFromGlibFull is used to convert raw C.GstVideoSEIUserDataUnregisteredMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoSEIUserDataUnregisteredMetaFromGlibFull(p unsafe.Pointer) *VideoSEIUserDataUnregisteredMeta {
 	wrapped := UnsafeVideoSEIUserDataUnregisteredMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoSEIUserDataUnregisteredMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoSEIUserDataUnregisteredMeta,
 		func (intern *videoSEIUserDataUnregisteredMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -26983,10 +27136,12 @@ func UnsafeVideoScalerFromGlibBorrow(p unsafe.Pointer) *VideoScaler {
 func UnsafeVideoScalerFromGlibNone(p unsafe.Pointer) *VideoScaler {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoScalerFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoScaler)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoScaler,
 		func (intern *videoScaler) {
 			C.gst_video_scaler_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -26995,10 +27150,12 @@ func UnsafeVideoScalerFromGlibNone(p unsafe.Pointer) *VideoScaler {
 // UnsafeVideoScalerFromGlibFull is used to convert raw C.GstVideoScaler pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoScalerFromGlibFull(p unsafe.Pointer) *VideoScaler {
 	wrapped := UnsafeVideoScalerFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoScaler)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoScaler,
 		func (intern *videoScaler) {
 			C.gst_video_scaler_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -27155,10 +27312,12 @@ func UnsafeVideoTileInfoFromGlibBorrow(p unsafe.Pointer) *VideoTileInfo {
 func UnsafeVideoTileInfoFromGlibNone(p unsafe.Pointer) *VideoTileInfo {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoTileInfoFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoTileInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoTileInfo,
 		func (intern *videoTileInfo) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -27167,10 +27326,12 @@ func UnsafeVideoTileInfoFromGlibNone(p unsafe.Pointer) *VideoTileInfo {
 // UnsafeVideoTileInfoFromGlibFull is used to convert raw C.GstVideoTileInfo pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoTileInfoFromGlibFull(p unsafe.Pointer) *VideoTileInfo {
 	wrapped := UnsafeVideoTileInfoFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoTileInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoTileInfo,
 		func (intern *videoTileInfo) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -27225,10 +27386,12 @@ func UnsafeVideoTimeCodeFromGlibBorrow(p unsafe.Pointer) *VideoTimeCode {
 func UnsafeVideoTimeCodeFromGlibNone(p unsafe.Pointer) *VideoTimeCode {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoTimeCodeFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoTimeCode)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoTimeCode,
 		func (intern *videoTimeCode) {
 			C.gst_video_time_code_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -27237,10 +27400,12 @@ func UnsafeVideoTimeCodeFromGlibNone(p unsafe.Pointer) *VideoTimeCode {
 // UnsafeVideoTimeCodeFromGlibFull is used to convert raw C.GstVideoTimeCode pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoTimeCodeFromGlibFull(p unsafe.Pointer) *VideoTimeCode {
 	wrapped := UnsafeVideoTimeCodeFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoTimeCode)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoTimeCode,
 		func (intern *videoTimeCode) {
 			C.gst_video_time_code_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -27562,10 +27727,12 @@ func UnsafeVideoTimeCodeConfigFromGlibBorrow(p unsafe.Pointer) *VideoTimeCodeCon
 func UnsafeVideoTimeCodeConfigFromGlibNone(p unsafe.Pointer) *VideoTimeCodeConfig {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoTimeCodeConfigFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoTimeCodeConfig)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoTimeCodeConfig,
 		func (intern *videoTimeCodeConfig) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -27574,10 +27741,12 @@ func UnsafeVideoTimeCodeConfigFromGlibNone(p unsafe.Pointer) *VideoTimeCodeConfi
 // UnsafeVideoTimeCodeConfigFromGlibFull is used to convert raw C.GstVideoTimeCodeConfig pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoTimeCodeConfigFromGlibFull(p unsafe.Pointer) *VideoTimeCodeConfig {
 	wrapped := UnsafeVideoTimeCodeConfigFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoTimeCodeConfig)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoTimeCodeConfig,
 		func (intern *videoTimeCodeConfig) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -27641,10 +27810,12 @@ func UnsafeVideoTimeCodeIntervalFromGlibBorrow(p unsafe.Pointer) *VideoTimeCodeI
 func UnsafeVideoTimeCodeIntervalFromGlibNone(p unsafe.Pointer) *VideoTimeCodeInterval {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoTimeCodeIntervalFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoTimeCodeInterval)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoTimeCodeInterval,
 		func (intern *videoTimeCodeInterval) {
 			C.gst_video_time_code_interval_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -27653,10 +27824,12 @@ func UnsafeVideoTimeCodeIntervalFromGlibNone(p unsafe.Pointer) *VideoTimeCodeInt
 // UnsafeVideoTimeCodeIntervalFromGlibFull is used to convert raw C.GstVideoTimeCodeInterval pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoTimeCodeIntervalFromGlibFull(p unsafe.Pointer) *VideoTimeCodeInterval {
 	wrapped := UnsafeVideoTimeCodeIntervalFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoTimeCodeInterval)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoTimeCodeInterval,
 		func (intern *videoTimeCodeInterval) {
 			C.gst_video_time_code_interval_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -27838,10 +28011,12 @@ func UnsafeVideoTimeCodeMetaFromGlibBorrow(p unsafe.Pointer) *VideoTimeCodeMeta 
 func UnsafeVideoTimeCodeMetaFromGlibNone(p unsafe.Pointer) *VideoTimeCodeMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoTimeCodeMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoTimeCodeMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoTimeCodeMeta,
 		func (intern *videoTimeCodeMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -27850,10 +28025,12 @@ func UnsafeVideoTimeCodeMetaFromGlibNone(p unsafe.Pointer) *VideoTimeCodeMeta {
 // UnsafeVideoTimeCodeMetaFromGlibFull is used to convert raw C.GstVideoTimeCodeMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoTimeCodeMetaFromGlibFull(p unsafe.Pointer) *VideoTimeCodeMeta {
 	wrapped := UnsafeVideoTimeCodeMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoTimeCodeMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoTimeCodeMeta,
 		func (intern *videoTimeCodeMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -27934,10 +28111,12 @@ func UnsafeVideoVBIEncoderFromGlibBorrow(p unsafe.Pointer) *VideoVBIEncoder {
 func UnsafeVideoVBIEncoderFromGlibNone(p unsafe.Pointer) *VideoVBIEncoder {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoVBIEncoderFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoVBIEncoder)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoVBIEncoder,
 		func (intern *videoVBIEncoder) {
 			C.gst_video_vbi_encoder_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -27946,10 +28125,12 @@ func UnsafeVideoVBIEncoderFromGlibNone(p unsafe.Pointer) *VideoVBIEncoder {
 // UnsafeVideoVBIEncoderFromGlibFull is used to convert raw C.GstVideoVBIEncoder pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoVBIEncoderFromGlibFull(p unsafe.Pointer) *VideoVBIEncoder {
 	wrapped := UnsafeVideoVBIEncoderFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoVBIEncoder)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoVBIEncoder,
 		func (intern *videoVBIEncoder) {
 			C.gst_video_vbi_encoder_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -28141,10 +28322,12 @@ func UnsafeVideoVBIParserFromGlibBorrow(p unsafe.Pointer) *VideoVBIParser {
 func UnsafeVideoVBIParserFromGlibNone(p unsafe.Pointer) *VideoVBIParser {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoVBIParserFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoVBIParser)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoVBIParser,
 		func (intern *videoVBIParser) {
 			C.gst_video_vbi_parser_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -28153,10 +28336,12 @@ func UnsafeVideoVBIParserFromGlibNone(p unsafe.Pointer) *VideoVBIParser {
 // UnsafeVideoVBIParserFromGlibFull is used to convert raw C.GstVideoVBIParser pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoVBIParserFromGlibFull(p unsafe.Pointer) *VideoVBIParser {
 	wrapped := UnsafeVideoVBIParserFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.videoVBIParser)), 1)
 	runtime.SetFinalizer(
 		wrapped.videoVBIParser,
 		func (intern *videoVBIParser) {
 			C.gst_video_vbi_parser_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped

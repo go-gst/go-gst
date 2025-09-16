@@ -9,6 +9,7 @@ import (
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/core/classdata"
+	"github.com/diamondburned/gotk4/pkg/core/profile"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
@@ -1839,7 +1840,7 @@ func unsafeWrapTagXmpWriter(base *gobject.ObjectInstance) *TagXmpWriterInstance 
 }
 
 func marshalTagXmpWriterInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapTagXmpWriter(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 func (t *TagXmpWriterInstance) upcastToGstTagXmpWriter() *TagXmpWriterInstance {
@@ -2120,7 +2121,7 @@ func init() {
 }
 
 func marshalTagDemuxInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapTagDemux(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeTagDemuxFromGlibNone is used to convert raw GstTagDemux pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -2459,7 +2460,7 @@ func init() {
 }
 
 func marshalTagMuxInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapTagMux(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeTagMuxFromGlibNone is used to convert raw GstTagMux pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -2772,10 +2773,12 @@ func UnsafeTagXmpWriterInterfaceFromGlibBorrow(p unsafe.Pointer) *TagXmpWriterIn
 func UnsafeTagXmpWriterInterfaceFromGlibNone(p unsafe.Pointer) *TagXmpWriterInterface {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeTagXmpWriterInterfaceFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.tagXmpWriterInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.tagXmpWriterInterface,
 		func (intern *tagXmpWriterInterface) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2784,10 +2787,12 @@ func UnsafeTagXmpWriterInterfaceFromGlibNone(p unsafe.Pointer) *TagXmpWriterInte
 // UnsafeTagXmpWriterInterfaceFromGlibFull is used to convert raw C.GstTagXmpWriterInterface pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeTagXmpWriterInterfaceFromGlibFull(p unsafe.Pointer) *TagXmpWriterInterface {
 	wrapped := UnsafeTagXmpWriterInterfaceFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.tagXmpWriterInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.tagXmpWriterInterface,
 		func (intern *tagXmpWriterInterface) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped

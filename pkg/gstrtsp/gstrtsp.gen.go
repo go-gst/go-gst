@@ -10,6 +10,7 @@ import (
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/core/classdata"
+	"github.com/diamondburned/gotk4/pkg/core/profile"
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
 	"github.com/diamondburned/gotk4/pkg/gio/v2"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
@@ -2240,7 +2241,7 @@ func unsafeWrapRTSPExtension(base *gobject.ObjectInstance) *RTSPExtensionInstanc
 }
 
 func marshalRTSPExtensionInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapRTSPExtension(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 func (r *RTSPExtensionInstance) upcastToGstRTSPExtension() *RTSPExtensionInstance {
@@ -3190,10 +3191,12 @@ func UnsafeRTSPAuthCredentialFromGlibBorrow(p unsafe.Pointer) *RTSPAuthCredentia
 func UnsafeRTSPAuthCredentialFromGlibNone(p unsafe.Pointer) *RTSPAuthCredential {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPAuthCredentialFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPAuthCredential)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPAuthCredential,
 		func (intern *rTSPAuthCredential) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -3202,10 +3205,12 @@ func UnsafeRTSPAuthCredentialFromGlibNone(p unsafe.Pointer) *RTSPAuthCredential 
 // UnsafeRTSPAuthCredentialFromGlibFull is used to convert raw C.GstRTSPAuthCredential pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTSPAuthCredentialFromGlibFull(p unsafe.Pointer) *RTSPAuthCredential {
 	wrapped := UnsafeRTSPAuthCredentialFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPAuthCredential)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPAuthCredential,
 		func (intern *rTSPAuthCredential) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -3268,10 +3273,12 @@ func UnsafeRTSPAuthParamFromGlibBorrow(p unsafe.Pointer) *RTSPAuthParam {
 func UnsafeRTSPAuthParamFromGlibNone(p unsafe.Pointer) *RTSPAuthParam {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPAuthParamFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPAuthParam)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPAuthParam,
 		func (intern *rTSPAuthParam) {
 			C.gst_rtsp_auth_param_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -3280,10 +3287,12 @@ func UnsafeRTSPAuthParamFromGlibNone(p unsafe.Pointer) *RTSPAuthParam {
 // UnsafeRTSPAuthParamFromGlibFull is used to convert raw C.GstRTSPAuthParam pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTSPAuthParamFromGlibFull(p unsafe.Pointer) *RTSPAuthParam {
 	wrapped := UnsafeRTSPAuthParamFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPAuthParam)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPAuthParam,
 		func (intern *rTSPAuthParam) {
 			C.gst_rtsp_auth_param_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -3353,10 +3362,12 @@ func UnsafeRTSPConnectionFromGlibBorrow(p unsafe.Pointer) *RTSPConnection {
 func UnsafeRTSPConnectionFromGlibNone(p unsafe.Pointer) *RTSPConnection {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPConnectionFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPConnection)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPConnection,
 		func (intern *rTSPConnection) {
 			C.gst_rtsp_connection_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -3365,10 +3376,12 @@ func UnsafeRTSPConnectionFromGlibNone(p unsafe.Pointer) *RTSPConnection {
 // UnsafeRTSPConnectionFromGlibFull is used to convert raw C.GstRTSPConnection pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTSPConnectionFromGlibFull(p unsafe.Pointer) *RTSPConnection {
 	wrapped := UnsafeRTSPConnectionFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPConnection)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPConnection,
 		func (intern *rTSPConnection) {
 			C.gst_rtsp_connection_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -4749,10 +4762,12 @@ func UnsafeRTSPExtensionInterfaceFromGlibBorrow(p unsafe.Pointer) *RTSPExtension
 func UnsafeRTSPExtensionInterfaceFromGlibNone(p unsafe.Pointer) *RTSPExtensionInterface {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPExtensionInterfaceFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPExtensionInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPExtensionInterface,
 		func (intern *rTSPExtensionInterface) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -4761,10 +4776,12 @@ func UnsafeRTSPExtensionInterfaceFromGlibNone(p unsafe.Pointer) *RTSPExtensionIn
 // UnsafeRTSPExtensionInterfaceFromGlibFull is used to convert raw C.GstRTSPExtensionInterface pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTSPExtensionInterfaceFromGlibFull(p unsafe.Pointer) *RTSPExtensionInterface {
 	wrapped := UnsafeRTSPExtensionInterfaceFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPExtensionInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPExtensionInterface,
 		func (intern *rTSPExtensionInterface) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -4827,10 +4844,12 @@ func UnsafeRTSPMessageFromGlibBorrow(p unsafe.Pointer) *RTSPMessage {
 func UnsafeRTSPMessageFromGlibNone(p unsafe.Pointer) *RTSPMessage {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPMessageFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPMessage)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPMessage,
 		func (intern *rTSPMessage) {
 			C.gst_rtsp_message_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -4839,10 +4858,12 @@ func UnsafeRTSPMessageFromGlibNone(p unsafe.Pointer) *RTSPMessage {
 // UnsafeRTSPMessageFromGlibFull is used to convert raw C.GstRTSPMessage pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTSPMessageFromGlibFull(p unsafe.Pointer) *RTSPMessage {
 	wrapped := UnsafeRTSPMessageFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPMessage)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPMessage,
 		func (intern *rTSPMessage) {
 			C.gst_rtsp_message_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -5786,10 +5807,12 @@ func UnsafeRTSPRangeFromGlibBorrow(p unsafe.Pointer) *RTSPRange {
 func UnsafeRTSPRangeFromGlibNone(p unsafe.Pointer) *RTSPRange {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPRangeFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPRange)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPRange,
 		func (intern *rTSPRange) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -5798,10 +5821,12 @@ func UnsafeRTSPRangeFromGlibNone(p unsafe.Pointer) *RTSPRange {
 // UnsafeRTSPRangeFromGlibFull is used to convert raw C.GstRTSPRange pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTSPRangeFromGlibFull(p unsafe.Pointer) *RTSPRange {
 	wrapped := UnsafeRTSPRangeFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPRange)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPRange,
 		func (intern *rTSPRange) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -6003,10 +6028,12 @@ func UnsafeRTSPTimeFromGlibBorrow(p unsafe.Pointer) *RTSPTime {
 func UnsafeRTSPTimeFromGlibNone(p unsafe.Pointer) *RTSPTime {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPTimeFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPTime)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPTime,
 		func (intern *rTSPTime) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -6015,10 +6042,12 @@ func UnsafeRTSPTimeFromGlibNone(p unsafe.Pointer) *RTSPTime {
 // UnsafeRTSPTimeFromGlibFull is used to convert raw C.GstRTSPTime pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTSPTimeFromGlibFull(p unsafe.Pointer) *RTSPTime {
 	wrapped := UnsafeRTSPTimeFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPTime)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPTime,
 		func (intern *rTSPTime) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -6066,10 +6095,12 @@ func UnsafeRTSPTime2FromGlibBorrow(p unsafe.Pointer) *RTSPTime2 {
 func UnsafeRTSPTime2FromGlibNone(p unsafe.Pointer) *RTSPTime2 {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPTime2FromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPTime2)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPTime2,
 		func (intern *rTSPTime2) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -6078,10 +6109,12 @@ func UnsafeRTSPTime2FromGlibNone(p unsafe.Pointer) *RTSPTime2 {
 // UnsafeRTSPTime2FromGlibFull is used to convert raw C.GstRTSPTime2 pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTSPTime2FromGlibFull(p unsafe.Pointer) *RTSPTime2 {
 	wrapped := UnsafeRTSPTime2FromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPTime2)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPTime2,
 		func (intern *rTSPTime2) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -6129,10 +6162,12 @@ func UnsafeRTSPTimeRangeFromGlibBorrow(p unsafe.Pointer) *RTSPTimeRange {
 func UnsafeRTSPTimeRangeFromGlibNone(p unsafe.Pointer) *RTSPTimeRange {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPTimeRangeFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPTimeRange)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPTimeRange,
 		func (intern *rTSPTimeRange) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -6141,10 +6176,12 @@ func UnsafeRTSPTimeRangeFromGlibNone(p unsafe.Pointer) *RTSPTimeRange {
 // UnsafeRTSPTimeRangeFromGlibFull is used to convert raw C.GstRTSPTimeRange pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTSPTimeRangeFromGlibFull(p unsafe.Pointer) *RTSPTimeRange {
 	wrapped := UnsafeRTSPTimeRangeFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPTimeRange)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPTimeRange,
 		func (intern *rTSPTimeRange) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -6192,10 +6229,12 @@ func UnsafeRTSPTransportFromGlibBorrow(p unsafe.Pointer) *RTSPTransport {
 func UnsafeRTSPTransportFromGlibNone(p unsafe.Pointer) *RTSPTransport {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPTransportFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPTransport)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPTransport,
 		func (intern *rTSPTransport) {
 			C.gst_rtsp_transport_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -6204,10 +6243,12 @@ func UnsafeRTSPTransportFromGlibNone(p unsafe.Pointer) *RTSPTransport {
 // UnsafeRTSPTransportFromGlibFull is used to convert raw C.GstRTSPTransport pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTSPTransportFromGlibFull(p unsafe.Pointer) *RTSPTransport {
 	wrapped := UnsafeRTSPTransportFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPTransport)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPTransport,
 		func (intern *rTSPTransport) {
 			C.gst_rtsp_transport_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -6487,10 +6528,12 @@ func UnsafeRTSPUrlFromGlibBorrow(p unsafe.Pointer) *RTSPUrl {
 func UnsafeRTSPUrlFromGlibNone(p unsafe.Pointer) *RTSPUrl {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPUrlFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPUrl)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPUrl,
 		func (intern *rTSPUrl) {
 			C.gst_rtsp_url_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -6499,10 +6542,12 @@ func UnsafeRTSPUrlFromGlibNone(p unsafe.Pointer) *RTSPUrl {
 // UnsafeRTSPUrlFromGlibFull is used to convert raw C.GstRTSPUrl pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTSPUrlFromGlibFull(p unsafe.Pointer) *RTSPUrl {
 	wrapped := UnsafeRTSPUrlFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPUrl)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPUrl,
 		func (intern *rTSPUrl) {
 			C.gst_rtsp_url_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -6758,10 +6803,12 @@ func UnsafeRTSPWatchFromGlibBorrow(p unsafe.Pointer) *RTSPWatch {
 func UnsafeRTSPWatchFromGlibNone(p unsafe.Pointer) *RTSPWatch {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPWatchFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPWatch)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPWatch,
 		func (intern *rTSPWatch) {
 			C.gst_rtsp_watch_unref(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -6770,10 +6817,12 @@ func UnsafeRTSPWatchFromGlibNone(p unsafe.Pointer) *RTSPWatch {
 // UnsafeRTSPWatchFromGlibFull is used to convert raw C.GstRTSPWatch pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTSPWatchFromGlibFull(p unsafe.Pointer) *RTSPWatch {
 	wrapped := UnsafeRTSPWatchFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPWatch)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPWatch,
 		func (intern *rTSPWatch) {
 			C.gst_rtsp_watch_unref(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -7115,10 +7164,12 @@ func UnsafeRTSPWatchFuncsFromGlibBorrow(p unsafe.Pointer) *RTSPWatchFuncs {
 func UnsafeRTSPWatchFuncsFromGlibNone(p unsafe.Pointer) *RTSPWatchFuncs {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPWatchFuncsFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPWatchFuncs)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPWatchFuncs,
 		func (intern *rTSPWatchFuncs) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -7127,10 +7178,12 @@ func UnsafeRTSPWatchFuncsFromGlibNone(p unsafe.Pointer) *RTSPWatchFuncs {
 // UnsafeRTSPWatchFuncsFromGlibFull is used to convert raw C.GstRTSPWatchFuncs pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTSPWatchFuncsFromGlibFull(p unsafe.Pointer) *RTSPWatchFuncs {
 	wrapped := UnsafeRTSPWatchFuncsFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.rTSPWatchFuncs)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTSPWatchFuncs,
 		func (intern *rTSPWatchFuncs) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped

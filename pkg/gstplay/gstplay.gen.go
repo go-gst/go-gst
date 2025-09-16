@@ -7,6 +7,7 @@ import (
 	"runtime"
 	"unsafe"
 
+	"github.com/diamondburned/gotk4/pkg/core/profile"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
@@ -948,7 +949,7 @@ func unsafeWrapPlayVideoRenderer(base *gobject.ObjectInstance) *PlayVideoRendere
 }
 
 func marshalPlayVideoRendererInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapPlayVideoRenderer(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 func (p *PlayVideoRendererInstance) upcastToGstPlayVideoRenderer() *PlayVideoRendererInstance {
@@ -1506,7 +1507,7 @@ func init() {
 }
 
 func marshalPlayInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapPlay(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafePlayFromGlibNone is used to convert raw GstPlay pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -3265,7 +3266,7 @@ func init() {
 }
 
 func marshalPlayMediaInfoInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapPlayMediaInfo(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafePlayMediaInfoFromGlibNone is used to convert raw GstPlayMediaInfo pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -3743,7 +3744,7 @@ func init() {
 }
 
 func marshalPlaySignalAdapterInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapPlaySignalAdapter(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafePlaySignalAdapterFromGlibNone is used to convert raw GstPlaySignalAdapter pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -4040,7 +4041,7 @@ func init() {
 }
 
 func marshalPlayStreamInfoInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapPlayStreamInfo(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafePlayStreamInfoFromGlibNone is used to convert raw GstPlayStreamInfo pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -4257,7 +4258,7 @@ func init() {
 }
 
 func marshalPlaySubtitleInfoInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapPlaySubtitleInfo(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafePlaySubtitleInfoFromGlibNone is used to convert raw GstPlaySubtitleInfo pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -4387,7 +4388,7 @@ func init() {
 }
 
 func marshalPlayVideoInfoInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapPlayVideoInfo(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafePlayVideoInfoFromGlibNone is used to convert raw GstPlayVideoInfo pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -4623,7 +4624,7 @@ func init() {
 }
 
 func marshalPlayVideoOverlayVideoRendererInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapPlayVideoOverlayVideoRenderer(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafePlayVideoOverlayVideoRendererFromGlibNone is used to convert raw GstPlayVideoOverlayVideoRenderer pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -4809,7 +4810,7 @@ func init() {
 }
 
 func marshalPlayAudioInfoInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapPlayAudioInfo(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafePlayAudioInfoFromGlibNone is used to convert raw GstPlayAudioInfo pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -5271,10 +5272,12 @@ func UnsafePlayVideoRendererInterfaceFromGlibBorrow(p unsafe.Pointer) *PlayVideo
 func UnsafePlayVideoRendererInterfaceFromGlibNone(p unsafe.Pointer) *PlayVideoRendererInterface {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafePlayVideoRendererInterfaceFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.playVideoRendererInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.playVideoRendererInterface,
 		func (intern *playVideoRendererInterface) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -5283,10 +5286,12 @@ func UnsafePlayVideoRendererInterfaceFromGlibNone(p unsafe.Pointer) *PlayVideoRe
 // UnsafePlayVideoRendererInterfaceFromGlibFull is used to convert raw C.GstPlayVideoRendererInterface pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafePlayVideoRendererInterfaceFromGlibFull(p unsafe.Pointer) *PlayVideoRendererInterface {
 	wrapped := UnsafePlayVideoRendererInterfaceFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.playVideoRendererInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.playVideoRendererInterface,
 		func (intern *playVideoRendererInterface) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -5349,10 +5354,12 @@ func UnsafePlayVisualizationFromGlibBorrow(p unsafe.Pointer) *PlayVisualization 
 func UnsafePlayVisualizationFromGlibNone(p unsafe.Pointer) *PlayVisualization {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafePlayVisualizationFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.playVisualization)), 1)
 	runtime.SetFinalizer(
 		wrapped.playVisualization,
 		func (intern *playVisualization) {
 			C.gst_play_visualization_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -5361,10 +5368,12 @@ func UnsafePlayVisualizationFromGlibNone(p unsafe.Pointer) *PlayVisualization {
 // UnsafePlayVisualizationFromGlibFull is used to convert raw C.GstPlayVisualization pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafePlayVisualizationFromGlibFull(p unsafe.Pointer) *PlayVisualization {
 	wrapped := UnsafePlayVisualizationFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.playVisualization)), 1)
 	runtime.SetFinalizer(
 		wrapped.playVisualization,
 		func (intern *playVisualization) {
 			C.gst_play_visualization_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped

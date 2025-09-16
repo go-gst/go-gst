@@ -6,6 +6,7 @@ import (
 	"runtime"
 	"unsafe"
 
+	"github.com/diamondburned/gotk4/pkg/core/profile"
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
 	"github.com/diamondburned/gotk4/pkg/gio/v2"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
@@ -506,7 +507,7 @@ func init() {
 }
 
 func marshalNetClientClockInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapNetClientClock(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeNetClientClockFromGlibNone is used to convert raw GstNetClientClock pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -675,7 +676,7 @@ func init() {
 }
 
 func marshalNetTimeProviderInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapNetTimeProvider(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeNetTimeProviderFromGlibNone is used to convert raw GstNetTimeProvider pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -830,7 +831,7 @@ func init() {
 }
 
 func marshalNtpClockInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapNtpClock(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeNtpClockFromGlibNone is used to convert raw GstNtpClock pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -1008,7 +1009,7 @@ func init() {
 }
 
 func marshalPtpClockInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapPtpClock(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafePtpClockFromGlibNone is used to convert raw GstPtpClock pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -1149,10 +1150,12 @@ func UnsafeNetAddressMetaFromGlibBorrow(p unsafe.Pointer) *NetAddressMeta {
 func UnsafeNetAddressMetaFromGlibNone(p unsafe.Pointer) *NetAddressMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeNetAddressMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.netAddressMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.netAddressMeta,
 		func (intern *netAddressMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -1161,10 +1164,12 @@ func UnsafeNetAddressMetaFromGlibNone(p unsafe.Pointer) *NetAddressMeta {
 // UnsafeNetAddressMetaFromGlibFull is used to convert raw C.GstNetAddressMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeNetAddressMetaFromGlibFull(p unsafe.Pointer) *NetAddressMeta {
 	wrapped := UnsafeNetAddressMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.netAddressMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.netAddressMeta,
 		func (intern *netAddressMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -1271,10 +1276,12 @@ func UnsafeNetControlMessageMetaFromGlibBorrow(p unsafe.Pointer) *NetControlMess
 func UnsafeNetControlMessageMetaFromGlibNone(p unsafe.Pointer) *NetControlMessageMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeNetControlMessageMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.netControlMessageMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.netControlMessageMeta,
 		func (intern *netControlMessageMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -1283,10 +1290,12 @@ func UnsafeNetControlMessageMetaFromGlibNone(p unsafe.Pointer) *NetControlMessag
 // UnsafeNetControlMessageMetaFromGlibFull is used to convert raw C.GstNetControlMessageMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeNetControlMessageMetaFromGlibFull(p unsafe.Pointer) *NetControlMessageMeta {
 	wrapped := UnsafeNetControlMessageMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.netControlMessageMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.netControlMessageMeta,
 		func (intern *netControlMessageMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -1367,10 +1376,12 @@ func UnsafeNetTimePacketFromGlibBorrow(p unsafe.Pointer) *NetTimePacket {
 func UnsafeNetTimePacketFromGlibNone(p unsafe.Pointer) *NetTimePacket {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeNetTimePacketFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.netTimePacket)), 1)
 	runtime.SetFinalizer(
 		wrapped.netTimePacket,
 		func (intern *netTimePacket) {
 			C.gst_net_time_packet_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -1379,10 +1390,12 @@ func UnsafeNetTimePacketFromGlibNone(p unsafe.Pointer) *NetTimePacket {
 // UnsafeNetTimePacketFromGlibFull is used to convert raw C.GstNetTimePacket pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeNetTimePacketFromGlibFull(p unsafe.Pointer) *NetTimePacket {
 	wrapped := UnsafeNetTimePacketFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.netTimePacket)), 1)
 	runtime.SetFinalizer(
 		wrapped.netTimePacket,
 		func (intern *netTimePacket) {
 			C.gst_net_time_packet_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped

@@ -2,8 +2,8 @@ github.com/go-gst/go-glib v1.4.1-0.20241209142714-f53cebf18559 h1:AK60n6W3FLZTp9
 github.com/go-gst/go-glib v1.4.1-0.20241209142714-f53cebf18559/go.mod h1:ZWT4LXOO2PH8lSNu/dR5O2yoNQJKEgmijNa2d7nByK8=
 github.com/go-gst/go-pointer v0.0.0-20241127163939-ba766f075b4c h1:x8kKRVDmz5BRlolmDZGcsuZ1l+js6TRL3QWBJjGVctM=
 github.com/go-gst/go-pointer v0.0.0-20241127163939-ba766f075b4c/go.mod h1:qKw5ZZ0U58W6PU/7F/Lopv+14nKYmdXlOd7VnAZ17Mk=
-github.com/rswilli/gotk4 v0.0.0-20250701112939-1be8c14e14f9 h1:nwcMF9yiEzM3DlK/P4q/nter7+f4nJoe+NnI0AHcc18=
-github.com/rswilli/gotk4 v0.0.0-20250701112939-1be8c14e14f9/go.mod h1:alpfblIRIC6MejV4eBLjWx61VeJvfQ/6dHGQZUkzSYE=
+github.com/rswilli/gotk4 v0.0.0-20250702095942-ee47e3d80eaa h1:bXhSWU3jjKm/jlfJGNRCuM8m9HIhgyUnzAtMLQHOMJ4=
+github.com/rswilli/gotk4 v0.0.0-20250702095942-ee47e3d80eaa/go.mod h1:alpfblIRIC6MejV4eBLjWx61VeJvfQ/6dHGQZUkzSYE=
 golang.org/x/exp v0.0.0-20250305212735-054e65f0b394 h1:nDVHiLt8aIbd/VzvPWN6kSOPE7+F/fNFDSXLVYkE/Iw=
 golang.org/x/exp v0.0.0-20250305212735-054e65f0b394/go.mod h1:sIifuuw/Yco/y6yb6+bDNfyeQ/MdPUy/hKEMYQV17cM=
 golang.org/x/sync v0.15.0 h1:KWH3jNZsfyT6xfAfKiz6MRNmd46ByHDYaZ7KSkCtdW8=
