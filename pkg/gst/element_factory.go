@@ -26,15 +26,14 @@ import "C"
 // Create a new element of the type defined by the given elementfactory.
 // The supplied list of properties, will be passed at object construction.
 func ElementFactoryMakeWithProperties(factoryname string, properties map[string]any) Element {
-	var _arg1 *C.gchar // out
-	var _arg2 C.guint
+	var cname *C.gchar      // out
 	var _cret *C.GstElement // in
 
-	_arg1 = (*C.gchar)(unsafe.Pointer(C.CString(factoryname)))
-	defer C.free(unsafe.Pointer(_arg1))
+	cname = (*C.gchar)(unsafe.Pointer(C.CString(factoryname)))
+	defer C.free(unsafe.Pointer(cname))
 
-	var names_ **C.gchar
-	var values_ *C.GValue
+	var cnames **C.gchar
+	var cvalues *C.GValue
 
 	if len(properties) > 0 {
 		names := make([]*C.char, 0, len(properties))
@@ -51,11 +50,13 @@ func ElementFactoryMakeWithProperties(factoryname string, properties map[string]
 			values = append(values, *(*C.GValue)(gobject.UnsafeValueToGlibNone(gvalue)))
 		}
 
-		names_ = &names[0]
-		values_ = &values[0]
+		cnames = unsafe.SliceData(names)
+		cvalues = unsafe.SliceData(values)
 	}
 
-	_cret = C.gst_element_factory_make_with_properties(_arg1, _arg2, names_, values_)
+	n_params := C.guint(len(properties))
+
+	_cret = C.gst_element_factory_make_with_properties(cname, n_params, cnames, cvalues)
 	runtime.KeepAlive(factoryname)
 
 	var _element Element // out
