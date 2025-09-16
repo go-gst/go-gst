@@ -243,6 +243,16 @@ var Data = genmain.Overlay(
 
 				return nil
 			},
+			// Virtual methods of RTPBasePayload collide with Element
+			func(r *typesystem.Registry) error {
+				rtp := r.FindNamespaceByName("GstRtp-1")
+
+				rtpBasePayload := rtp.FindLocalTypeByGIRName("RTPBasePayload").(*typesystem.Class)
+
+				rtpBasePayload.FindVirtualMethod("query").ParentName = "ParentQueryRTPBasePayload"
+
+				return nil
+			},
 		},
 		GeneratorHooks: []genmain.GeneratorHook{
 			genmain.AddGeneratorToPackage("gstmpegts", &GstUseUnstableAPI{}),
