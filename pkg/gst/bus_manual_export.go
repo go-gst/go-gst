@@ -3,7 +3,7 @@ package gst
 import (
 	"unsafe"
 
-	"github.com/diamondburned/gotk4/pkg/core/userdata"
+	"github.com/go-gst/go-glib/pkg/core/userdata"
 )
 
 // #cgo pkg-config: gstreamer-1.0
@@ -11,8 +11,8 @@ import (
 // #include <gst/gst.h>
 import "C"
 
-//export _gotk4_gst1_BusSyncHandler
-func _gotk4_gst1_BusSyncHandler(carg1 *C.GstBus, carg2 *C.GstMessage, carg3 C.gpointer) (cret C.GstBusSyncReply) {
+//export _gogst_gst1_BusSyncHandler
+func _gogst_gst1_BusSyncHandler(carg1 *C.GstBus, carg2 *C.GstMessage, carg3 C.gpointer) (cret C.GstBusSyncReply) {
 	var fn BusSyncHandler
 	{
 		v := userdata.Load(unsafe.Pointer(carg3))

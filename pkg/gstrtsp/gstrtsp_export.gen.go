@@ -5,15 +5,15 @@ package gstrtsp
 import (
 	"unsafe"
 
-	"github.com/diamondburned/gotk4/pkg/core/userdata"
-	"github.com/diamondburned/gotk4/pkg/gio/v2"
+	"github.com/go-gst/go-glib/pkg/core/userdata"
+	"github.com/go-gst/go-glib/pkg/gio/v2"
 )
 
 // #include <gst/rtsp/rtsp.h>
 import "C"
 
-//export _gotk4_gstrtsp1_RTSPConnectionAcceptCertificateFunc
-func _gotk4_gstrtsp1_RTSPConnectionAcceptCertificateFunc(carg1 *C.GTlsConnection, carg2 *C.GTlsCertificate, carg3 C.GTlsCertificateFlags, carg4 C.gpointer) (cret C.gboolean) {
+//export _goglib_gstrtsp1_RTSPConnectionAcceptCertificateFunc
+func _goglib_gstrtsp1_RTSPConnectionAcceptCertificateFunc(carg1 *C.GTlsConnection, carg2 *C.GTlsCertificate, carg3 C.GTlsCertificateFlags, carg4 C.gpointer) (cret C.gboolean) {
 	var fn RTSPConnectionAcceptCertificateFunc
 	{
 		v := userdata.Load(unsafe.Pointer(carg4))

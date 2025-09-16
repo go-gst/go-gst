@@ -5,14 +5,14 @@ import (
 	"iter"
 	"runtime"
 
-	"github.com/diamondburned/gotk4/pkg/core/userdata"
+	"github.com/go-gst/go-glib/pkg/core/userdata"
 	"github.com/go-gst/go-gst/pkg/gst/internal/channel"
 )
 
 // #cgo pkg-config: gstreamer-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/gst.h>
-// extern GstBusSyncReply _gotk4_gst1_BusSyncHandler(GstBus*, GstMessage*, gpointer);
+// extern GstBusSyncReply _gogst_gst1_BusSyncHandler(GstBus*, GstMessage*, gpointer);
 // extern void destroyUserdata(gpointer);
 import "C"
 
@@ -99,7 +99,7 @@ func (bus *BusInstance) SetSyncHandler(fn BusSyncHandler) {
 
 	carg0 = (*C.GstBus)(UnsafeBusToGlibNone(bus))
 	if fn != nil {
-		carg1 = (*[0]byte)(C._gotk4_gst1_BusSyncHandler)
+		carg1 = (*[0]byte)(C._gogst_gst1_BusSyncHandler)
 		carg2 = C.gpointer(userdata.Register(fn))
 		carg3 = (C.GDestroyNotify)((*[0]byte)(C.destroyUserdata))
 	}

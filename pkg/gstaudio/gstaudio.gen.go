@@ -9,9 +9,9 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/diamondburned/gotk4/pkg/core/classdata"
-	"github.com/diamondburned/gotk4/pkg/core/userdata"
-	"github.com/diamondburned/gotk4/pkg/gobject/v2"
+	"github.com/go-gst/go-glib/pkg/core/classdata"
+	"github.com/go-gst/go-glib/pkg/core/userdata"
+	"github.com/go-gst/go-glib/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
 	"github.com/go-gst/go-gst/pkg/gstbase"
 )
@@ -19,288 +19,288 @@ import (
 // #cgo pkg-config: gstreamer-audio-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/audio/audio.h>
-// extern GstClockTime _gotk4_gstaudio1_AudioClockGetTimeFunc(GstClock*, gpointer);
-// extern void _gotk4_gstaudio1_AudioBaseSinkCustomSlavingCallback(GstAudioBaseSink*, GstClockTime, GstClockTime, GstClockTimeDiff*, GstAudioBaseSinkDiscontReason, gpointer);
-// extern void _gotk4_gstaudio1_AudioRingBufferCallback(GstAudioRingBuffer*, guint8*, guint, gpointer);
+// extern GstClockTime _goglib_gstaudio1_AudioClockGetTimeFunc(GstClock*, gpointer);
+// extern void _goglib_gstaudio1_AudioBaseSinkCustomSlavingCallback(GstAudioBaseSink*, GstClockTime, GstClockTime, GstClockTimeDiff*, GstAudioBaseSinkDiscontReason, gpointer);
+// extern void _goglib_gstaudio1_AudioRingBufferCallback(GstAudioRingBuffer*, guint8*, guint, gpointer);
 // extern void destroyUserdata(gpointer);
-// extern gboolean _gotk4_gstaudio1_AudioAggregator_aggregate_one_buffer(GstAudioAggregator*, GstAudioAggregatorPad*, GstBuffer*, guint, GstBuffer*, guint, guint);
-// extern GstBuffer* _gotk4_gstaudio1_AudioAggregator_create_output_buffer(GstAudioAggregator*, guint);
-// gboolean _gotk4_gstaudio1_AudioAggregator_virtual_aggregate_one_buffer(void* fnptr, GstAudioAggregator* carg0, GstAudioAggregatorPad* carg1, GstBuffer* carg2, guint carg3, GstBuffer* carg4, guint carg5, guint carg6) {
+// extern gboolean _goglib_gstaudio1_AudioAggregator_aggregate_one_buffer(GstAudioAggregator*, GstAudioAggregatorPad*, GstBuffer*, guint, GstBuffer*, guint, guint);
+// extern GstBuffer* _goglib_gstaudio1_AudioAggregator_create_output_buffer(GstAudioAggregator*, guint);
+// gboolean _goglib_gstaudio1_AudioAggregator_virtual_aggregate_one_buffer(void* fnptr, GstAudioAggregator* carg0, GstAudioAggregatorPad* carg1, GstBuffer* carg2, guint carg3, GstBuffer* carg4, guint carg5, guint carg6) {
 // 	return ((gboolean (*) (GstAudioAggregator*, GstAudioAggregatorPad*, GstBuffer*, guint, GstBuffer*, guint, guint))(fnptr))(carg0, carg1, carg2, carg3, carg4, carg5, carg6);
 // }
-// GstBuffer* _gotk4_gstaudio1_AudioAggregator_virtual_create_output_buffer(void* fnptr, GstAudioAggregator* carg0, guint carg1) {
+// GstBuffer* _goglib_gstaudio1_AudioAggregator_virtual_create_output_buffer(void* fnptr, GstAudioAggregator* carg0, guint carg1) {
 // 	return ((GstBuffer* (*) (GstAudioAggregator*, guint))(fnptr))(carg0, carg1);
 // }
-// extern GstBuffer* _gotk4_gstaudio1_AudioAggregatorPad_convert_buffer(GstAudioAggregatorPad*, GstAudioInfo*, GstAudioInfo*, GstBuffer*);
-// extern void _gotk4_gstaudio1_AudioAggregatorPad_update_conversion_info(GstAudioAggregatorPad*);
-// GstBuffer* _gotk4_gstaudio1_AudioAggregatorPad_virtual_convert_buffer(void* fnptr, GstAudioAggregatorPad* carg0, GstAudioInfo* carg1, GstAudioInfo* carg2, GstBuffer* carg3) {
+// extern GstBuffer* _goglib_gstaudio1_AudioAggregatorPad_convert_buffer(GstAudioAggregatorPad*, GstAudioInfo*, GstAudioInfo*, GstBuffer*);
+// extern void _goglib_gstaudio1_AudioAggregatorPad_update_conversion_info(GstAudioAggregatorPad*);
+// GstBuffer* _goglib_gstaudio1_AudioAggregatorPad_virtual_convert_buffer(void* fnptr, GstAudioAggregatorPad* carg0, GstAudioInfo* carg1, GstAudioInfo* carg2, GstBuffer* carg3) {
 // 	return ((GstBuffer* (*) (GstAudioAggregatorPad*, GstAudioInfo*, GstAudioInfo*, GstBuffer*))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// void _gotk4_gstaudio1_AudioAggregatorPad_virtual_update_conversion_info(void* fnptr, GstAudioAggregatorPad* carg0) {
+// void _goglib_gstaudio1_AudioAggregatorPad_virtual_update_conversion_info(void* fnptr, GstAudioAggregatorPad* carg0) {
 // 	return ((void (*) (GstAudioAggregatorPad*))(fnptr))(carg0);
 // }
-// extern GstAudioRingBuffer* _gotk4_gstaudio1_AudioBaseSink_create_ringbuffer(GstAudioBaseSink*);
-// extern GstBuffer* _gotk4_gstaudio1_AudioBaseSink_payload(GstAudioBaseSink*, GstBuffer*);
-// GstAudioRingBuffer* _gotk4_gstaudio1_AudioBaseSink_virtual_create_ringbuffer(void* fnptr, GstAudioBaseSink* carg0) {
+// extern GstAudioRingBuffer* _goglib_gstaudio1_AudioBaseSink_create_ringbuffer(GstAudioBaseSink*);
+// extern GstBuffer* _goglib_gstaudio1_AudioBaseSink_payload(GstAudioBaseSink*, GstBuffer*);
+// GstAudioRingBuffer* _goglib_gstaudio1_AudioBaseSink_virtual_create_ringbuffer(void* fnptr, GstAudioBaseSink* carg0) {
 // 	return ((GstAudioRingBuffer* (*) (GstAudioBaseSink*))(fnptr))(carg0);
 // }
-// GstBuffer* _gotk4_gstaudio1_AudioBaseSink_virtual_payload(void* fnptr, GstAudioBaseSink* carg0, GstBuffer* carg1) {
+// GstBuffer* _goglib_gstaudio1_AudioBaseSink_virtual_payload(void* fnptr, GstAudioBaseSink* carg0, GstBuffer* carg1) {
 // 	return ((GstBuffer* (*) (GstAudioBaseSink*, GstBuffer*))(fnptr))(carg0, carg1);
 // }
-// extern GstAudioRingBuffer* _gotk4_gstaudio1_AudioBaseSrc_create_ringbuffer(GstAudioBaseSrc*);
-// GstAudioRingBuffer* _gotk4_gstaudio1_AudioBaseSrc_virtual_create_ringbuffer(void* fnptr, GstAudioBaseSrc* carg0) {
+// extern GstAudioRingBuffer* _goglib_gstaudio1_AudioBaseSrc_create_ringbuffer(GstAudioBaseSrc*);
+// GstAudioRingBuffer* _goglib_gstaudio1_AudioBaseSrc_virtual_create_ringbuffer(void* fnptr, GstAudioBaseSrc* carg0) {
 // 	return ((GstAudioRingBuffer* (*) (GstAudioBaseSrc*))(fnptr))(carg0);
 // }
-// extern void _gotk4_gstaudio1_AudioCdSrc_close(GstAudioCdSrc*);
-// extern gboolean _gotk4_gstaudio1_AudioCdSrc_open(GstAudioCdSrc*, const gchar*);
-// extern GstBuffer* _gotk4_gstaudio1_AudioCdSrc_read_sector(GstAudioCdSrc*, gint);
-// void _gotk4_gstaudio1_AudioCdSrc_virtual_close(void* fnptr, GstAudioCdSrc* carg0) {
+// extern void _goglib_gstaudio1_AudioCdSrc_close(GstAudioCdSrc*);
+// extern gboolean _goglib_gstaudio1_AudioCdSrc_open(GstAudioCdSrc*, const gchar*);
+// extern GstBuffer* _goglib_gstaudio1_AudioCdSrc_read_sector(GstAudioCdSrc*, gint);
+// void _goglib_gstaudio1_AudioCdSrc_virtual_close(void* fnptr, GstAudioCdSrc* carg0) {
 // 	return ((void (*) (GstAudioCdSrc*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstaudio1_AudioCdSrc_virtual_open(void* fnptr, GstAudioCdSrc* carg0, const gchar* carg1) {
+// gboolean _goglib_gstaudio1_AudioCdSrc_virtual_open(void* fnptr, GstAudioCdSrc* carg0, const gchar* carg1) {
 // 	return ((gboolean (*) (GstAudioCdSrc*, const gchar*))(fnptr))(carg0, carg1);
 // }
-// GstBuffer* _gotk4_gstaudio1_AudioCdSrc_virtual_read_sector(void* fnptr, GstAudioCdSrc* carg0, gint carg1) {
+// GstBuffer* _goglib_gstaudio1_AudioCdSrc_virtual_read_sector(void* fnptr, GstAudioCdSrc* carg0, gint carg1) {
 // 	return ((GstBuffer* (*) (GstAudioCdSrc*, gint))(fnptr))(carg0, carg1);
 // }
-// extern gboolean _gotk4_gstaudio1_AudioDecoder_close(GstAudioDecoder*);
-// extern gboolean _gotk4_gstaudio1_AudioDecoder_decide_allocation(GstAudioDecoder*, GstQuery*);
-// extern void _gotk4_gstaudio1_AudioDecoder_flush(GstAudioDecoder*, gboolean);
-// extern GstCaps* _gotk4_gstaudio1_AudioDecoder_getcaps(GstAudioDecoder*, GstCaps*);
-// extern GstFlowReturn _gotk4_gstaudio1_AudioDecoder_handle_frame(GstAudioDecoder*, GstBuffer*);
-// extern gboolean _gotk4_gstaudio1_AudioDecoder_negotiate(GstAudioDecoder*);
-// extern gboolean _gotk4_gstaudio1_AudioDecoder_open(GstAudioDecoder*);
-// extern GstFlowReturn _gotk4_gstaudio1_AudioDecoder_parse(GstAudioDecoder*, GstAdapter*, gint, gint);
-// extern gboolean _gotk4_gstaudio1_AudioDecoder_propose_allocation(GstAudioDecoder*, GstQuery*);
-// extern gboolean _gotk4_gstaudio1_AudioDecoder_set_format(GstAudioDecoder*, GstCaps*);
-// extern gboolean _gotk4_gstaudio1_AudioDecoder_sink_event(GstAudioDecoder*, GstEvent*);
-// extern gboolean _gotk4_gstaudio1_AudioDecoder_sink_query(GstAudioDecoder*, GstQuery*);
-// extern gboolean _gotk4_gstaudio1_AudioDecoder_src_event(GstAudioDecoder*, GstEvent*);
-// extern gboolean _gotk4_gstaudio1_AudioDecoder_src_query(GstAudioDecoder*, GstQuery*);
-// extern gboolean _gotk4_gstaudio1_AudioDecoder_start(GstAudioDecoder*);
-// extern gboolean _gotk4_gstaudio1_AudioDecoder_stop(GstAudioDecoder*);
-// extern gboolean _gotk4_gstaudio1_AudioDecoder_transform_meta(GstAudioDecoder*, GstBuffer*, GstMeta*, GstBuffer*);
-// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_close(void* fnptr, GstAudioDecoder* carg0) {
+// extern gboolean _goglib_gstaudio1_AudioDecoder_close(GstAudioDecoder*);
+// extern gboolean _goglib_gstaudio1_AudioDecoder_decide_allocation(GstAudioDecoder*, GstQuery*);
+// extern void _goglib_gstaudio1_AudioDecoder_flush(GstAudioDecoder*, gboolean);
+// extern GstCaps* _goglib_gstaudio1_AudioDecoder_getcaps(GstAudioDecoder*, GstCaps*);
+// extern GstFlowReturn _goglib_gstaudio1_AudioDecoder_handle_frame(GstAudioDecoder*, GstBuffer*);
+// extern gboolean _goglib_gstaudio1_AudioDecoder_negotiate(GstAudioDecoder*);
+// extern gboolean _goglib_gstaudio1_AudioDecoder_open(GstAudioDecoder*);
+// extern GstFlowReturn _goglib_gstaudio1_AudioDecoder_parse(GstAudioDecoder*, GstAdapter*, gint, gint);
+// extern gboolean _goglib_gstaudio1_AudioDecoder_propose_allocation(GstAudioDecoder*, GstQuery*);
+// extern gboolean _goglib_gstaudio1_AudioDecoder_set_format(GstAudioDecoder*, GstCaps*);
+// extern gboolean _goglib_gstaudio1_AudioDecoder_sink_event(GstAudioDecoder*, GstEvent*);
+// extern gboolean _goglib_gstaudio1_AudioDecoder_sink_query(GstAudioDecoder*, GstQuery*);
+// extern gboolean _goglib_gstaudio1_AudioDecoder_src_event(GstAudioDecoder*, GstEvent*);
+// extern gboolean _goglib_gstaudio1_AudioDecoder_src_query(GstAudioDecoder*, GstQuery*);
+// extern gboolean _goglib_gstaudio1_AudioDecoder_start(GstAudioDecoder*);
+// extern gboolean _goglib_gstaudio1_AudioDecoder_stop(GstAudioDecoder*);
+// extern gboolean _goglib_gstaudio1_AudioDecoder_transform_meta(GstAudioDecoder*, GstBuffer*, GstMeta*, GstBuffer*);
+// gboolean _goglib_gstaudio1_AudioDecoder_virtual_close(void* fnptr, GstAudioDecoder* carg0) {
 // 	return ((gboolean (*) (GstAudioDecoder*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_decide_allocation(void* fnptr, GstAudioDecoder* carg0, GstQuery* carg1) {
+// gboolean _goglib_gstaudio1_AudioDecoder_virtual_decide_allocation(void* fnptr, GstAudioDecoder* carg0, GstQuery* carg1) {
 // 	return ((gboolean (*) (GstAudioDecoder*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// void _gotk4_gstaudio1_AudioDecoder_virtual_flush(void* fnptr, GstAudioDecoder* carg0, gboolean carg1) {
+// void _goglib_gstaudio1_AudioDecoder_virtual_flush(void* fnptr, GstAudioDecoder* carg0, gboolean carg1) {
 // 	return ((void (*) (GstAudioDecoder*, gboolean))(fnptr))(carg0, carg1);
 // }
-// GstCaps* _gotk4_gstaudio1_AudioDecoder_virtual_getcaps(void* fnptr, GstAudioDecoder* carg0, GstCaps* carg1) {
+// GstCaps* _goglib_gstaudio1_AudioDecoder_virtual_getcaps(void* fnptr, GstAudioDecoder* carg0, GstCaps* carg1) {
 // 	return ((GstCaps* (*) (GstAudioDecoder*, GstCaps*))(fnptr))(carg0, carg1);
 // }
-// GstFlowReturn _gotk4_gstaudio1_AudioDecoder_virtual_handle_frame(void* fnptr, GstAudioDecoder* carg0, GstBuffer* carg1) {
+// GstFlowReturn _goglib_gstaudio1_AudioDecoder_virtual_handle_frame(void* fnptr, GstAudioDecoder* carg0, GstBuffer* carg1) {
 // 	return ((GstFlowReturn (*) (GstAudioDecoder*, GstBuffer*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_negotiate(void* fnptr, GstAudioDecoder* carg0) {
+// gboolean _goglib_gstaudio1_AudioDecoder_virtual_negotiate(void* fnptr, GstAudioDecoder* carg0) {
 // 	return ((gboolean (*) (GstAudioDecoder*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_open(void* fnptr, GstAudioDecoder* carg0) {
+// gboolean _goglib_gstaudio1_AudioDecoder_virtual_open(void* fnptr, GstAudioDecoder* carg0) {
 // 	return ((gboolean (*) (GstAudioDecoder*))(fnptr))(carg0);
 // }
-// GstFlowReturn _gotk4_gstaudio1_AudioDecoder_virtual_parse(void* fnptr, GstAudioDecoder* carg0, GstAdapter* carg1, gint* carg2, gint* carg3) {
+// GstFlowReturn _goglib_gstaudio1_AudioDecoder_virtual_parse(void* fnptr, GstAudioDecoder* carg0, GstAdapter* carg1, gint* carg2, gint* carg3) {
 // 	return ((GstFlowReturn (*) (GstAudioDecoder*, GstAdapter*, gint*, gint*))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_propose_allocation(void* fnptr, GstAudioDecoder* carg0, GstQuery* carg1) {
+// gboolean _goglib_gstaudio1_AudioDecoder_virtual_propose_allocation(void* fnptr, GstAudioDecoder* carg0, GstQuery* carg1) {
 // 	return ((gboolean (*) (GstAudioDecoder*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_set_format(void* fnptr, GstAudioDecoder* carg0, GstCaps* carg1) {
+// gboolean _goglib_gstaudio1_AudioDecoder_virtual_set_format(void* fnptr, GstAudioDecoder* carg0, GstCaps* carg1) {
 // 	return ((gboolean (*) (GstAudioDecoder*, GstCaps*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_sink_event(void* fnptr, GstAudioDecoder* carg0, GstEvent* carg1) {
+// gboolean _goglib_gstaudio1_AudioDecoder_virtual_sink_event(void* fnptr, GstAudioDecoder* carg0, GstEvent* carg1) {
 // 	return ((gboolean (*) (GstAudioDecoder*, GstEvent*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_sink_query(void* fnptr, GstAudioDecoder* carg0, GstQuery* carg1) {
+// gboolean _goglib_gstaudio1_AudioDecoder_virtual_sink_query(void* fnptr, GstAudioDecoder* carg0, GstQuery* carg1) {
 // 	return ((gboolean (*) (GstAudioDecoder*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_src_event(void* fnptr, GstAudioDecoder* carg0, GstEvent* carg1) {
+// gboolean _goglib_gstaudio1_AudioDecoder_virtual_src_event(void* fnptr, GstAudioDecoder* carg0, GstEvent* carg1) {
 // 	return ((gboolean (*) (GstAudioDecoder*, GstEvent*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_src_query(void* fnptr, GstAudioDecoder* carg0, GstQuery* carg1) {
+// gboolean _goglib_gstaudio1_AudioDecoder_virtual_src_query(void* fnptr, GstAudioDecoder* carg0, GstQuery* carg1) {
 // 	return ((gboolean (*) (GstAudioDecoder*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_start(void* fnptr, GstAudioDecoder* carg0) {
+// gboolean _goglib_gstaudio1_AudioDecoder_virtual_start(void* fnptr, GstAudioDecoder* carg0) {
 // 	return ((gboolean (*) (GstAudioDecoder*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_stop(void* fnptr, GstAudioDecoder* carg0) {
+// gboolean _goglib_gstaudio1_AudioDecoder_virtual_stop(void* fnptr, GstAudioDecoder* carg0) {
 // 	return ((gboolean (*) (GstAudioDecoder*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_transform_meta(void* fnptr, GstAudioDecoder* carg0, GstBuffer* carg1, GstMeta* carg2, GstBuffer* carg3) {
+// gboolean _goglib_gstaudio1_AudioDecoder_virtual_transform_meta(void* fnptr, GstAudioDecoder* carg0, GstBuffer* carg1, GstMeta* carg2, GstBuffer* carg3) {
 // 	return ((gboolean (*) (GstAudioDecoder*, GstBuffer*, GstMeta*, GstBuffer*))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// extern gboolean _gotk4_gstaudio1_AudioEncoder_close(GstAudioEncoder*);
-// extern gboolean _gotk4_gstaudio1_AudioEncoder_decide_allocation(GstAudioEncoder*, GstQuery*);
-// extern void _gotk4_gstaudio1_AudioEncoder_flush(GstAudioEncoder*);
-// extern GstCaps* _gotk4_gstaudio1_AudioEncoder_getcaps(GstAudioEncoder*, GstCaps*);
-// extern GstFlowReturn _gotk4_gstaudio1_AudioEncoder_handle_frame(GstAudioEncoder*, GstBuffer*);
-// extern gboolean _gotk4_gstaudio1_AudioEncoder_negotiate(GstAudioEncoder*);
-// extern gboolean _gotk4_gstaudio1_AudioEncoder_open(GstAudioEncoder*);
-// extern gboolean _gotk4_gstaudio1_AudioEncoder_propose_allocation(GstAudioEncoder*, GstQuery*);
-// extern gboolean _gotk4_gstaudio1_AudioEncoder_set_format(GstAudioEncoder*, GstAudioInfo*);
-// extern gboolean _gotk4_gstaudio1_AudioEncoder_sink_event(GstAudioEncoder*, GstEvent*);
-// extern gboolean _gotk4_gstaudio1_AudioEncoder_sink_query(GstAudioEncoder*, GstQuery*);
-// extern gboolean _gotk4_gstaudio1_AudioEncoder_src_event(GstAudioEncoder*, GstEvent*);
-// extern gboolean _gotk4_gstaudio1_AudioEncoder_src_query(GstAudioEncoder*, GstQuery*);
-// extern gboolean _gotk4_gstaudio1_AudioEncoder_start(GstAudioEncoder*);
-// extern gboolean _gotk4_gstaudio1_AudioEncoder_stop(GstAudioEncoder*);
-// extern gboolean _gotk4_gstaudio1_AudioEncoder_transform_meta(GstAudioEncoder*, GstBuffer*, GstMeta*, GstBuffer*);
-// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_close(void* fnptr, GstAudioEncoder* carg0) {
+// extern gboolean _goglib_gstaudio1_AudioEncoder_close(GstAudioEncoder*);
+// extern gboolean _goglib_gstaudio1_AudioEncoder_decide_allocation(GstAudioEncoder*, GstQuery*);
+// extern void _goglib_gstaudio1_AudioEncoder_flush(GstAudioEncoder*);
+// extern GstCaps* _goglib_gstaudio1_AudioEncoder_getcaps(GstAudioEncoder*, GstCaps*);
+// extern GstFlowReturn _goglib_gstaudio1_AudioEncoder_handle_frame(GstAudioEncoder*, GstBuffer*);
+// extern gboolean _goglib_gstaudio1_AudioEncoder_negotiate(GstAudioEncoder*);
+// extern gboolean _goglib_gstaudio1_AudioEncoder_open(GstAudioEncoder*);
+// extern gboolean _goglib_gstaudio1_AudioEncoder_propose_allocation(GstAudioEncoder*, GstQuery*);
+// extern gboolean _goglib_gstaudio1_AudioEncoder_set_format(GstAudioEncoder*, GstAudioInfo*);
+// extern gboolean _goglib_gstaudio1_AudioEncoder_sink_event(GstAudioEncoder*, GstEvent*);
+// extern gboolean _goglib_gstaudio1_AudioEncoder_sink_query(GstAudioEncoder*, GstQuery*);
+// extern gboolean _goglib_gstaudio1_AudioEncoder_src_event(GstAudioEncoder*, GstEvent*);
+// extern gboolean _goglib_gstaudio1_AudioEncoder_src_query(GstAudioEncoder*, GstQuery*);
+// extern gboolean _goglib_gstaudio1_AudioEncoder_start(GstAudioEncoder*);
+// extern gboolean _goglib_gstaudio1_AudioEncoder_stop(GstAudioEncoder*);
+// extern gboolean _goglib_gstaudio1_AudioEncoder_transform_meta(GstAudioEncoder*, GstBuffer*, GstMeta*, GstBuffer*);
+// gboolean _goglib_gstaudio1_AudioEncoder_virtual_close(void* fnptr, GstAudioEncoder* carg0) {
 // 	return ((gboolean (*) (GstAudioEncoder*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_decide_allocation(void* fnptr, GstAudioEncoder* carg0, GstQuery* carg1) {
+// gboolean _goglib_gstaudio1_AudioEncoder_virtual_decide_allocation(void* fnptr, GstAudioEncoder* carg0, GstQuery* carg1) {
 // 	return ((gboolean (*) (GstAudioEncoder*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// void _gotk4_gstaudio1_AudioEncoder_virtual_flush(void* fnptr, GstAudioEncoder* carg0) {
+// void _goglib_gstaudio1_AudioEncoder_virtual_flush(void* fnptr, GstAudioEncoder* carg0) {
 // 	return ((void (*) (GstAudioEncoder*))(fnptr))(carg0);
 // }
-// GstCaps* _gotk4_gstaudio1_AudioEncoder_virtual_getcaps(void* fnptr, GstAudioEncoder* carg0, GstCaps* carg1) {
+// GstCaps* _goglib_gstaudio1_AudioEncoder_virtual_getcaps(void* fnptr, GstAudioEncoder* carg0, GstCaps* carg1) {
 // 	return ((GstCaps* (*) (GstAudioEncoder*, GstCaps*))(fnptr))(carg0, carg1);
 // }
-// GstFlowReturn _gotk4_gstaudio1_AudioEncoder_virtual_handle_frame(void* fnptr, GstAudioEncoder* carg0, GstBuffer* carg1) {
+// GstFlowReturn _goglib_gstaudio1_AudioEncoder_virtual_handle_frame(void* fnptr, GstAudioEncoder* carg0, GstBuffer* carg1) {
 // 	return ((GstFlowReturn (*) (GstAudioEncoder*, GstBuffer*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_negotiate(void* fnptr, GstAudioEncoder* carg0) {
+// gboolean _goglib_gstaudio1_AudioEncoder_virtual_negotiate(void* fnptr, GstAudioEncoder* carg0) {
 // 	return ((gboolean (*) (GstAudioEncoder*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_open(void* fnptr, GstAudioEncoder* carg0) {
+// gboolean _goglib_gstaudio1_AudioEncoder_virtual_open(void* fnptr, GstAudioEncoder* carg0) {
 // 	return ((gboolean (*) (GstAudioEncoder*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_propose_allocation(void* fnptr, GstAudioEncoder* carg0, GstQuery* carg1) {
+// gboolean _goglib_gstaudio1_AudioEncoder_virtual_propose_allocation(void* fnptr, GstAudioEncoder* carg0, GstQuery* carg1) {
 // 	return ((gboolean (*) (GstAudioEncoder*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_set_format(void* fnptr, GstAudioEncoder* carg0, GstAudioInfo* carg1) {
+// gboolean _goglib_gstaudio1_AudioEncoder_virtual_set_format(void* fnptr, GstAudioEncoder* carg0, GstAudioInfo* carg1) {
 // 	return ((gboolean (*) (GstAudioEncoder*, GstAudioInfo*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_sink_event(void* fnptr, GstAudioEncoder* carg0, GstEvent* carg1) {
+// gboolean _goglib_gstaudio1_AudioEncoder_virtual_sink_event(void* fnptr, GstAudioEncoder* carg0, GstEvent* carg1) {
 // 	return ((gboolean (*) (GstAudioEncoder*, GstEvent*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_sink_query(void* fnptr, GstAudioEncoder* carg0, GstQuery* carg1) {
+// gboolean _goglib_gstaudio1_AudioEncoder_virtual_sink_query(void* fnptr, GstAudioEncoder* carg0, GstQuery* carg1) {
 // 	return ((gboolean (*) (GstAudioEncoder*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_src_event(void* fnptr, GstAudioEncoder* carg0, GstEvent* carg1) {
+// gboolean _goglib_gstaudio1_AudioEncoder_virtual_src_event(void* fnptr, GstAudioEncoder* carg0, GstEvent* carg1) {
 // 	return ((gboolean (*) (GstAudioEncoder*, GstEvent*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_src_query(void* fnptr, GstAudioEncoder* carg0, GstQuery* carg1) {
+// gboolean _goglib_gstaudio1_AudioEncoder_virtual_src_query(void* fnptr, GstAudioEncoder* carg0, GstQuery* carg1) {
 // 	return ((gboolean (*) (GstAudioEncoder*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_start(void* fnptr, GstAudioEncoder* carg0) {
+// gboolean _goglib_gstaudio1_AudioEncoder_virtual_start(void* fnptr, GstAudioEncoder* carg0) {
 // 	return ((gboolean (*) (GstAudioEncoder*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_stop(void* fnptr, GstAudioEncoder* carg0) {
+// gboolean _goglib_gstaudio1_AudioEncoder_virtual_stop(void* fnptr, GstAudioEncoder* carg0) {
 // 	return ((gboolean (*) (GstAudioEncoder*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_transform_meta(void* fnptr, GstAudioEncoder* carg0, GstBuffer* carg1, GstMeta* carg2, GstBuffer* carg3) {
+// gboolean _goglib_gstaudio1_AudioEncoder_virtual_transform_meta(void* fnptr, GstAudioEncoder* carg0, GstBuffer* carg1, GstMeta* carg2, GstBuffer* carg3) {
 // 	return ((gboolean (*) (GstAudioEncoder*, GstBuffer*, GstMeta*, GstBuffer*))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// extern gboolean _gotk4_gstaudio1_AudioFilter_setup(GstAudioFilter*, const GstAudioInfo*);
-// gboolean _gotk4_gstaudio1_AudioFilter_virtual_setup(void* fnptr, GstAudioFilter* carg0, const GstAudioInfo* carg1) {
+// extern gboolean _goglib_gstaudio1_AudioFilter_setup(GstAudioFilter*, const GstAudioInfo*);
+// gboolean _goglib_gstaudio1_AudioFilter_virtual_setup(void* fnptr, GstAudioFilter* carg0, const GstAudioInfo* carg1) {
 // 	return ((gboolean (*) (GstAudioFilter*, const GstAudioInfo*))(fnptr))(carg0, carg1);
 // }
-// extern gboolean _gotk4_gstaudio1_AudioRingBuffer_acquire(GstAudioRingBuffer*, GstAudioRingBufferSpec*);
-// extern gboolean _gotk4_gstaudio1_AudioRingBuffer_activate(GstAudioRingBuffer*, gboolean);
-// extern void _gotk4_gstaudio1_AudioRingBuffer_clear_all(GstAudioRingBuffer*);
-// extern gboolean _gotk4_gstaudio1_AudioRingBuffer_close_device(GstAudioRingBuffer*);
-// extern guint _gotk4_gstaudio1_AudioRingBuffer_delay(GstAudioRingBuffer*);
-// extern gboolean _gotk4_gstaudio1_AudioRingBuffer_open_device(GstAudioRingBuffer*);
-// extern gboolean _gotk4_gstaudio1_AudioRingBuffer_pause(GstAudioRingBuffer*);
-// extern gboolean _gotk4_gstaudio1_AudioRingBuffer_release(GstAudioRingBuffer*);
-// extern gboolean _gotk4_gstaudio1_AudioRingBuffer_resume(GstAudioRingBuffer*);
-// extern gboolean _gotk4_gstaudio1_AudioRingBuffer_start(GstAudioRingBuffer*);
-// extern gboolean _gotk4_gstaudio1_AudioRingBuffer_stop(GstAudioRingBuffer*);
-// gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_acquire(void* fnptr, GstAudioRingBuffer* carg0, GstAudioRingBufferSpec* carg1) {
+// extern gboolean _goglib_gstaudio1_AudioRingBuffer_acquire(GstAudioRingBuffer*, GstAudioRingBufferSpec*);
+// extern gboolean _goglib_gstaudio1_AudioRingBuffer_activate(GstAudioRingBuffer*, gboolean);
+// extern void _goglib_gstaudio1_AudioRingBuffer_clear_all(GstAudioRingBuffer*);
+// extern gboolean _goglib_gstaudio1_AudioRingBuffer_close_device(GstAudioRingBuffer*);
+// extern guint _goglib_gstaudio1_AudioRingBuffer_delay(GstAudioRingBuffer*);
+// extern gboolean _goglib_gstaudio1_AudioRingBuffer_open_device(GstAudioRingBuffer*);
+// extern gboolean _goglib_gstaudio1_AudioRingBuffer_pause(GstAudioRingBuffer*);
+// extern gboolean _goglib_gstaudio1_AudioRingBuffer_release(GstAudioRingBuffer*);
+// extern gboolean _goglib_gstaudio1_AudioRingBuffer_resume(GstAudioRingBuffer*);
+// extern gboolean _goglib_gstaudio1_AudioRingBuffer_start(GstAudioRingBuffer*);
+// extern gboolean _goglib_gstaudio1_AudioRingBuffer_stop(GstAudioRingBuffer*);
+// gboolean _goglib_gstaudio1_AudioRingBuffer_virtual_acquire(void* fnptr, GstAudioRingBuffer* carg0, GstAudioRingBufferSpec* carg1) {
 // 	return ((gboolean (*) (GstAudioRingBuffer*, GstAudioRingBufferSpec*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_activate(void* fnptr, GstAudioRingBuffer* carg0, gboolean carg1) {
+// gboolean _goglib_gstaudio1_AudioRingBuffer_virtual_activate(void* fnptr, GstAudioRingBuffer* carg0, gboolean carg1) {
 // 	return ((gboolean (*) (GstAudioRingBuffer*, gboolean))(fnptr))(carg0, carg1);
 // }
-// void _gotk4_gstaudio1_AudioRingBuffer_virtual_clear_all(void* fnptr, GstAudioRingBuffer* carg0) {
+// void _goglib_gstaudio1_AudioRingBuffer_virtual_clear_all(void* fnptr, GstAudioRingBuffer* carg0) {
 // 	return ((void (*) (GstAudioRingBuffer*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_close_device(void* fnptr, GstAudioRingBuffer* carg0) {
+// gboolean _goglib_gstaudio1_AudioRingBuffer_virtual_close_device(void* fnptr, GstAudioRingBuffer* carg0) {
 // 	return ((gboolean (*) (GstAudioRingBuffer*))(fnptr))(carg0);
 // }
-// guint _gotk4_gstaudio1_AudioRingBuffer_virtual_delay(void* fnptr, GstAudioRingBuffer* carg0) {
+// guint _goglib_gstaudio1_AudioRingBuffer_virtual_delay(void* fnptr, GstAudioRingBuffer* carg0) {
 // 	return ((guint (*) (GstAudioRingBuffer*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_open_device(void* fnptr, GstAudioRingBuffer* carg0) {
+// gboolean _goglib_gstaudio1_AudioRingBuffer_virtual_open_device(void* fnptr, GstAudioRingBuffer* carg0) {
 // 	return ((gboolean (*) (GstAudioRingBuffer*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_pause(void* fnptr, GstAudioRingBuffer* carg0) {
+// gboolean _goglib_gstaudio1_AudioRingBuffer_virtual_pause(void* fnptr, GstAudioRingBuffer* carg0) {
 // 	return ((gboolean (*) (GstAudioRingBuffer*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_release(void* fnptr, GstAudioRingBuffer* carg0) {
+// gboolean _goglib_gstaudio1_AudioRingBuffer_virtual_release(void* fnptr, GstAudioRingBuffer* carg0) {
 // 	return ((gboolean (*) (GstAudioRingBuffer*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_resume(void* fnptr, GstAudioRingBuffer* carg0) {
+// gboolean _goglib_gstaudio1_AudioRingBuffer_virtual_resume(void* fnptr, GstAudioRingBuffer* carg0) {
 // 	return ((gboolean (*) (GstAudioRingBuffer*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_start(void* fnptr, GstAudioRingBuffer* carg0) {
+// gboolean _goglib_gstaudio1_AudioRingBuffer_virtual_start(void* fnptr, GstAudioRingBuffer* carg0) {
 // 	return ((gboolean (*) (GstAudioRingBuffer*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_stop(void* fnptr, GstAudioRingBuffer* carg0) {
+// gboolean _goglib_gstaudio1_AudioRingBuffer_virtual_stop(void* fnptr, GstAudioRingBuffer* carg0) {
 // 	return ((gboolean (*) (GstAudioRingBuffer*))(fnptr))(carg0);
 // }
-// extern gboolean _gotk4_gstaudio1_AudioSink_close(GstAudioSink*);
-// extern guint _gotk4_gstaudio1_AudioSink_delay(GstAudioSink*);
-// extern gboolean _gotk4_gstaudio1_AudioSink_open(GstAudioSink*);
-// extern void _gotk4_gstaudio1_AudioSink_pause(GstAudioSink*);
-// extern gboolean _gotk4_gstaudio1_AudioSink_prepare(GstAudioSink*, GstAudioRingBufferSpec*);
-// extern void _gotk4_gstaudio1_AudioSink_reset(GstAudioSink*);
-// extern void _gotk4_gstaudio1_AudioSink_resume(GstAudioSink*);
-// extern void _gotk4_gstaudio1_AudioSink_stop(GstAudioSink*);
-// extern gboolean _gotk4_gstaudio1_AudioSink_unprepare(GstAudioSink*);
-// gboolean _gotk4_gstaudio1_AudioSink_virtual_close(void* fnptr, GstAudioSink* carg0) {
+// extern gboolean _goglib_gstaudio1_AudioSink_close(GstAudioSink*);
+// extern guint _goglib_gstaudio1_AudioSink_delay(GstAudioSink*);
+// extern gboolean _goglib_gstaudio1_AudioSink_open(GstAudioSink*);
+// extern void _goglib_gstaudio1_AudioSink_pause(GstAudioSink*);
+// extern gboolean _goglib_gstaudio1_AudioSink_prepare(GstAudioSink*, GstAudioRingBufferSpec*);
+// extern void _goglib_gstaudio1_AudioSink_reset(GstAudioSink*);
+// extern void _goglib_gstaudio1_AudioSink_resume(GstAudioSink*);
+// extern void _goglib_gstaudio1_AudioSink_stop(GstAudioSink*);
+// extern gboolean _goglib_gstaudio1_AudioSink_unprepare(GstAudioSink*);
+// gboolean _goglib_gstaudio1_AudioSink_virtual_close(void* fnptr, GstAudioSink* carg0) {
 // 	return ((gboolean (*) (GstAudioSink*))(fnptr))(carg0);
 // }
-// guint _gotk4_gstaudio1_AudioSink_virtual_delay(void* fnptr, GstAudioSink* carg0) {
+// guint _goglib_gstaudio1_AudioSink_virtual_delay(void* fnptr, GstAudioSink* carg0) {
 // 	return ((guint (*) (GstAudioSink*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstaudio1_AudioSink_virtual_open(void* fnptr, GstAudioSink* carg0) {
+// gboolean _goglib_gstaudio1_AudioSink_virtual_open(void* fnptr, GstAudioSink* carg0) {
 // 	return ((gboolean (*) (GstAudioSink*))(fnptr))(carg0);
 // }
-// void _gotk4_gstaudio1_AudioSink_virtual_pause(void* fnptr, GstAudioSink* carg0) {
+// void _goglib_gstaudio1_AudioSink_virtual_pause(void* fnptr, GstAudioSink* carg0) {
 // 	return ((void (*) (GstAudioSink*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstaudio1_AudioSink_virtual_prepare(void* fnptr, GstAudioSink* carg0, GstAudioRingBufferSpec* carg1) {
+// gboolean _goglib_gstaudio1_AudioSink_virtual_prepare(void* fnptr, GstAudioSink* carg0, GstAudioRingBufferSpec* carg1) {
 // 	return ((gboolean (*) (GstAudioSink*, GstAudioRingBufferSpec*))(fnptr))(carg0, carg1);
 // }
-// void _gotk4_gstaudio1_AudioSink_virtual_reset(void* fnptr, GstAudioSink* carg0) {
+// void _goglib_gstaudio1_AudioSink_virtual_reset(void* fnptr, GstAudioSink* carg0) {
 // 	return ((void (*) (GstAudioSink*))(fnptr))(carg0);
 // }
-// void _gotk4_gstaudio1_AudioSink_virtual_resume(void* fnptr, GstAudioSink* carg0) {
+// void _goglib_gstaudio1_AudioSink_virtual_resume(void* fnptr, GstAudioSink* carg0) {
 // 	return ((void (*) (GstAudioSink*))(fnptr))(carg0);
 // }
-// void _gotk4_gstaudio1_AudioSink_virtual_stop(void* fnptr, GstAudioSink* carg0) {
+// void _goglib_gstaudio1_AudioSink_virtual_stop(void* fnptr, GstAudioSink* carg0) {
 // 	return ((void (*) (GstAudioSink*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstaudio1_AudioSink_virtual_unprepare(void* fnptr, GstAudioSink* carg0) {
+// gboolean _goglib_gstaudio1_AudioSink_virtual_unprepare(void* fnptr, GstAudioSink* carg0) {
 // 	return ((gboolean (*) (GstAudioSink*))(fnptr))(carg0);
 // }
-// extern gboolean _gotk4_gstaudio1_AudioSrc_close(GstAudioSrc*);
-// extern guint _gotk4_gstaudio1_AudioSrc_delay(GstAudioSrc*);
-// extern gboolean _gotk4_gstaudio1_AudioSrc_open(GstAudioSrc*);
-// extern gboolean _gotk4_gstaudio1_AudioSrc_prepare(GstAudioSrc*, GstAudioRingBufferSpec*);
-// extern void _gotk4_gstaudio1_AudioSrc_reset(GstAudioSrc*);
-// extern gboolean _gotk4_gstaudio1_AudioSrc_unprepare(GstAudioSrc*);
-// gboolean _gotk4_gstaudio1_AudioSrc_virtual_close(void* fnptr, GstAudioSrc* carg0) {
+// extern gboolean _goglib_gstaudio1_AudioSrc_close(GstAudioSrc*);
+// extern guint _goglib_gstaudio1_AudioSrc_delay(GstAudioSrc*);
+// extern gboolean _goglib_gstaudio1_AudioSrc_open(GstAudioSrc*);
+// extern gboolean _goglib_gstaudio1_AudioSrc_prepare(GstAudioSrc*, GstAudioRingBufferSpec*);
+// extern void _goglib_gstaudio1_AudioSrc_reset(GstAudioSrc*);
+// extern gboolean _goglib_gstaudio1_AudioSrc_unprepare(GstAudioSrc*);
+// gboolean _goglib_gstaudio1_AudioSrc_virtual_close(void* fnptr, GstAudioSrc* carg0) {
 // 	return ((gboolean (*) (GstAudioSrc*))(fnptr))(carg0);
 // }
-// guint _gotk4_gstaudio1_AudioSrc_virtual_delay(void* fnptr, GstAudioSrc* carg0) {
+// guint _goglib_gstaudio1_AudioSrc_virtual_delay(void* fnptr, GstAudioSrc* carg0) {
 // 	return ((guint (*) (GstAudioSrc*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstaudio1_AudioSrc_virtual_open(void* fnptr, GstAudioSrc* carg0) {
+// gboolean _goglib_gstaudio1_AudioSrc_virtual_open(void* fnptr, GstAudioSrc* carg0) {
 // 	return ((gboolean (*) (GstAudioSrc*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstaudio1_AudioSrc_virtual_prepare(void* fnptr, GstAudioSrc* carg0, GstAudioRingBufferSpec* carg1) {
+// gboolean _goglib_gstaudio1_AudioSrc_virtual_prepare(void* fnptr, GstAudioSrc* carg0, GstAudioRingBufferSpec* carg1) {
 // 	return ((gboolean (*) (GstAudioSrc*, GstAudioRingBufferSpec*))(fnptr))(carg0, carg1);
 // }
-// void _gotk4_gstaudio1_AudioSrc_virtual_reset(void* fnptr, GstAudioSrc* carg0) {
+// void _goglib_gstaudio1_AudioSrc_virtual_reset(void* fnptr, GstAudioSrc* carg0) {
 // 	return ((void (*) (GstAudioSrc*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstaudio1_AudioSrc_virtual_unprepare(void* fnptr, GstAudioSrc* carg0) {
+// gboolean _goglib_gstaudio1_AudioSrc_virtual_unprepare(void* fnptr, GstAudioSrc* carg0) {
 // 	return ((gboolean (*) (GstAudioSrc*))(fnptr))(carg0);
 // }
 import "C"
@@ -2377,14 +2377,14 @@ func AudioChannelGetFallbackMask(channels int32) uint64 {
 func AudioChannelPositionsFromMask(channelMask uint64, position []AudioChannelPosition) bool {
 	var carg1 C.gint                     // implicit
 	var carg2 C.guint64                  // in, none, casted
-	var carg3 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner: *typesystem.Enum, length-by: carg1)
+	var carg3 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner GstAudioChannelPosition (*typesystem.Enum), length-by: carg1)
 	var cret  C.gboolean                 // return
 
 	carg2 = C.guint64(channelMask)
 	_ = position
 	_ = carg3
 	_ = carg1
-	panic("unimplemented conversion of []AudioChannelPosition (GstAudioChannelPosition*)")
+	panic("unimplemented conversion of []AudioChannelPosition (GstAudioChannelPosition*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_audio_channel_positions_from_mask(carg1, carg2, carg3)
 	runtime.KeepAlive(channelMask)
@@ -2416,7 +2416,7 @@ func AudioChannelPositionsFromMask(channelMask uint64, position []AudioChannelPo
 // If @force_order is %TRUE it additionally checks if the channels are
 // in the order required by GStreamer.
 func AudioChannelPositionsToMask(position []AudioChannelPosition, forceOrder bool) (uint64, bool) {
-	var carg1 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner: *typesystem.Enum, length-by: carg2)
+	var carg1 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner GstAudioChannelPosition (*typesystem.Enum), length-by: carg2)
 	var carg2 C.gint                     // implicit
 	var carg3 C.gboolean                 // in
 	var carg4 C.guint64                  // out, full, casted
@@ -2425,7 +2425,7 @@ func AudioChannelPositionsToMask(position []AudioChannelPosition, forceOrder boo
 	_ = position
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []AudioChannelPosition (const GstAudioChannelPosition*)")
+	panic("unimplemented conversion of []AudioChannelPosition (const GstAudioChannelPosition*) because of unimplemented: non-fixed size array")
 	if forceOrder {
 		carg3 = C.TRUE
 	}
@@ -2459,14 +2459,14 @@ func AudioChannelPositionsToMask(position []AudioChannelPosition, forceOrder boo
 // Converts @position to a human-readable string representation for
 // debugging purposes.
 func AudioChannelPositionsToString(position []AudioChannelPosition) string {
-	var carg1 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner: *typesystem.Enum, length-by: carg2)
+	var carg1 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner GstAudioChannelPosition (*typesystem.Enum), length-by: carg2)
 	var carg2 C.gint                     // implicit
 	var cret  *C.gchar                   // return, full, string
 
 	_ = position
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []AudioChannelPosition (const GstAudioChannelPosition*)")
+	panic("unimplemented conversion of []AudioChannelPosition (const GstAudioChannelPosition*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_audio_channel_positions_to_string(carg1, carg2)
 	runtime.KeepAlive(position)
@@ -2493,14 +2493,14 @@ func AudioChannelPositionsToString(position []AudioChannelPosition) string {
 // Reorders the channel positions in @position from any order to
 // the GStreamer channel order.
 func AudioChannelPositionsToValidOrder(position []AudioChannelPosition) bool {
-	var carg1 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner: *typesystem.Enum, length-by: carg2)
+	var carg1 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner GstAudioChannelPosition (*typesystem.Enum), length-by: carg2)
 	var carg2 C.gint                     // implicit
 	var cret  C.gboolean                 // return
 
 	_ = position
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []AudioChannelPosition (GstAudioChannelPosition*)")
+	panic("unimplemented conversion of []AudioChannelPosition (GstAudioChannelPosition*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_audio_channel_positions_to_valid_order(carg1, carg2)
 	runtime.KeepAlive(position)
@@ -2530,7 +2530,7 @@ func AudioChannelPositionsToValidOrder(position []AudioChannelPosition) bool {
 // @channels channels. If @force_order is %TRUE it additionally
 // checks if the channels are in the order required by GStreamer.
 func AudioCheckValidChannelPositions(position []AudioChannelPosition, forceOrder bool) bool {
-	var carg1 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner: *typesystem.Enum, length-by: carg2)
+	var carg1 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner GstAudioChannelPosition (*typesystem.Enum), length-by: carg2)
 	var carg2 C.gint                     // implicit
 	var carg3 C.gboolean                 // in
 	var cret  C.gboolean                 // return
@@ -2538,7 +2538,7 @@ func AudioCheckValidChannelPositions(position []AudioChannelPosition, forceOrder
 	_ = position
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []AudioChannelPosition (const GstAudioChannelPosition*)")
+	panic("unimplemented conversion of []AudioChannelPosition (const GstAudioChannelPosition*) because of unimplemented: non-fixed size array")
 	if forceOrder {
 		carg3 = C.TRUE
 	}
@@ -2600,7 +2600,7 @@ func AudioDownmixMetaAPIGetType() gobject.Type {
 // Return all the raw audio formats supported by GStreamer.
 func AudioFormatsRaw() (uint, []AudioFormat) {
 	var carg1 C.guint           // out, full, casted
-	var cret  *C.GstAudioFormat // return, transfer: none, C Pointers: 1, Name: array[AudioFormat], scope: , array (inner: *typesystem.Enum)
+	var cret  *C.GstAudioFormat // return, transfer: none, C Pointers: 1, Name: array[AudioFormat], scope: , array (inner GstAudioFormat (*typesystem.Enum))
 
 	cret = C.gst_audio_formats_raw(&carg1)
 
@@ -2610,7 +2610,7 @@ func AudioFormatsRaw() (uint, []AudioFormat) {
 	len = uint(carg1)
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []AudioFormat (const GstAudioFormat*)")
+	panic("unimplemented conversion of []AudioFormat (const GstAudioFormat*) because of unknown reason")
 
 	return len, goret
 }
@@ -2637,23 +2637,23 @@ func AudioFormatsRaw() (uint, []AudioFormat) {
 // channel i of the input to channel reorder_map[i] of the output.
 func AudioGetChannelReorderMap(from []AudioChannelPosition, to []AudioChannelPosition, reorderMap []int32) bool {
 	var carg1 C.gint                     // implicit
-	var carg2 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner: *typesystem.Enum, length-by: carg1)
-	var carg3 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner: *typesystem.Enum, length-by: carg1)
-	var carg4 *C.gint                    // in, transfer: none, C Pointers: 1, Name: array[gint], array (inner: *typesystem.CastablePrimitive, length-by: carg1)
+	var carg2 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner GstAudioChannelPosition (*typesystem.Enum), length-by: carg1)
+	var carg3 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner GstAudioChannelPosition (*typesystem.Enum), length-by: carg1)
+	var carg4 *C.gint                    // in, transfer: none, C Pointers: 1, Name: array[gint], array (inner gint (*typesystem.CastablePrimitive), length-by: carg1)
 	var cret  C.gboolean                 // return
 
 	_ = from
 	_ = carg2
 	_ = carg1
-	panic("unimplemented conversion of []AudioChannelPosition (const GstAudioChannelPosition*)")
+	panic("unimplemented conversion of []AudioChannelPosition (const GstAudioChannelPosition*) because of unimplemented: non-fixed size array")
 	_ = to
 	_ = carg3
 	_ = carg1
-	panic("unimplemented conversion of []AudioChannelPosition (const GstAudioChannelPosition*)")
+	panic("unimplemented conversion of []AudioChannelPosition (const GstAudioChannelPosition*) because of unimplemented: non-fixed size array")
 	_ = reorderMap
 	_ = carg4
 	_ = carg1
-	panic("unimplemented conversion of []int32 (gint*)")
+	panic("unimplemented conversion of []int32 (gint*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_audio_get_channel_reorder_map(carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(from)
@@ -2715,9 +2715,9 @@ func AudioIec61937FrameSize(spec *AudioRingBufferSpec) uint {
 // stores the result in @dst. @src must contain exactly one frame of data and
 // the frame is not checked for errors.
 func AudioIec61937Payload(src []uint8, dst []uint8, spec *AudioRingBufferSpec, endianness int32) bool {
-	var carg1 *C.guint8                 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint8                 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint                   // implicit
-	var carg3 *C.guint8                 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg4)
+	var carg3 *C.guint8                 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg4)
 	var carg4 C.guint                   // implicit
 	var carg5 *C.GstAudioRingBufferSpec // in, none, converted
 	var carg6 C.gint                    // in, none, casted
@@ -2726,11 +2726,11 @@ func AudioIec61937Payload(src []uint8, dst []uint8, spec *AudioRingBufferSpec, e
 	_ = src
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 	_ = dst
 	_ = carg3
 	_ = carg4
-	panic("unimplemented conversion of []uint8 (guint8*)")
+	panic("unimplemented conversion of []uint8 (guint8*) because of unimplemented: non-fixed size array")
 	carg5 = (*C.GstAudioRingBufferSpec)(UnsafeAudioRingBufferSpecToGlibNone(spec))
 	carg6 = C.gint(endianness)
 
@@ -2783,7 +2783,7 @@ func AudioLevelMetaAPIGetType() gobject.Type {
 // If @formats is %NULL returns a caps for all the supported raw audio formats,
 // see gst_audio_formats_raw().
 func AudioMakeRawCaps(formats []AudioFormat, layout AudioLayout) *gst.Caps {
-	var carg1 *C.GstAudioFormat // in, transfer: none, C Pointers: 1, Name: array[AudioFormat], nullable, array (inner: *typesystem.Enum, length-by: carg2)
+	var carg1 *C.GstAudioFormat // in, transfer: none, C Pointers: 1, Name: array[AudioFormat], nullable, array (inner GstAudioFormat (*typesystem.Enum), length-by: carg2)
 	var carg2 C.guint           // implicit
 	var carg3 C.GstAudioLayout  // in, none, casted
 	var cret  *C.GstCaps        // return, full, converted
@@ -2791,7 +2791,7 @@ func AudioMakeRawCaps(formats []AudioFormat, layout AudioLayout) *gst.Caps {
 	_ = formats
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []AudioFormat (const GstAudioFormat*)")
+	panic("unimplemented conversion of []AudioFormat (const GstAudioFormat*) because of unimplemented: non-fixed size array")
 	carg3 = C.GstAudioLayout(layout)
 
 	cret = C.gst_audio_make_raw_caps(carg1, carg2, carg3)
@@ -2884,9 +2884,9 @@ func BufferAddAudioClippingMeta(buffer *gst.Buffer, format gst.Format, start uin
 // of the results.
 func BufferAddAudioDownmixMeta(buffer *gst.Buffer, fromPosition []AudioChannelPosition, toPosition []AudioChannelPosition, matrix **float32) *AudioDownmixMeta {
 	var carg1 *C.GstBuffer               // in, none, converted
-	var carg2 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner: *typesystem.Enum, length-by: carg3)
+	var carg2 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner GstAudioChannelPosition (*typesystem.Enum), length-by: carg3)
 	var carg3 C.gint                     // implicit
-	var carg4 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner: *typesystem.Enum, length-by: carg5)
+	var carg4 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner GstAudioChannelPosition (*typesystem.Enum), length-by: carg5)
 	var carg5 C.gint                     // implicit
 	var carg6 **C.gfloat                 // in, transfer: none, C Pointers: 2, Name: gfloat
 	var cret  *C.GstAudioDownmixMeta     // return, none, converted
@@ -2895,14 +2895,14 @@ func BufferAddAudioDownmixMeta(buffer *gst.Buffer, fromPosition []AudioChannelPo
 	_ = fromPosition
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []AudioChannelPosition (const GstAudioChannelPosition*)")
+	panic("unimplemented conversion of []AudioChannelPosition (const GstAudioChannelPosition*) because of unimplemented: non-fixed size array")
 	_ = toPosition
 	_ = carg4
 	_ = carg5
-	panic("unimplemented conversion of []AudioChannelPosition (const GstAudioChannelPosition*)")
+	panic("unimplemented conversion of []AudioChannelPosition (const GstAudioChannelPosition*) because of unimplemented: non-fixed size array")
 	_ = matrix
 	_ = carg6
-	panic("unimplemented conversion of **float32 (const gfloat**)")
+	panic("unimplemented conversion of **float32 (const gfloat**) because of no basic converter found")
 
 	cret = C.gst_buffer_add_audio_downmix_meta(carg1, carg2, carg3, carg4, carg5, carg6)
 	runtime.KeepAlive(buffer)
@@ -3002,7 +3002,7 @@ func BufferAddAudioMeta(buffer *gst.Buffer, info *AudioInfo, samples uint, offse
 	if offsets != nil {
 		_ = offsets
 		_ = carg4
-		panic("unimplemented conversion of *uint (gsize*)")
+		panic("unimplemented conversion of *uint (gsize*) because of no basic converter found")
 	}
 
 	cret = C.gst_buffer_add_audio_meta(carg1, carg2, carg3, carg4)
@@ -3066,7 +3066,7 @@ func BufferAddDsdPlaneOffsetMeta(buffer *gst.Buffer, numChannels int32, numBytes
 	if offsets != nil {
 		_ = offsets
 		_ = carg4
-		panic("unimplemented conversion of *uint (gsize*)")
+		panic("unimplemented conversion of *uint (gsize*) because of no basic converter found")
 	}
 
 	cret = C.gst_buffer_add_dsd_plane_offset_meta(carg1, carg2, carg3, carg4)
@@ -3098,7 +3098,7 @@ func BufferAddDsdPlaneOffsetMeta(buffer *gst.Buffer, numChannels int32, numBytes
 // channel positions.
 func BufferGetAudioDownmixMetaForChannels(buffer *gst.Buffer, toPosition []AudioChannelPosition) *AudioDownmixMeta {
 	var carg1 *C.GstBuffer               // in, none, converted
-	var carg2 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner: *typesystem.Enum, length-by: carg3)
+	var carg2 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner GstAudioChannelPosition (*typesystem.Enum), length-by: carg3)
 	var carg3 C.gint                     // implicit
 	var cret  *C.GstAudioDownmixMeta     // return, none, converted
 
@@ -3106,7 +3106,7 @@ func BufferGetAudioDownmixMetaForChannels(buffer *gst.Buffer, toPosition []Audio
 	_ = toPosition
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []AudioChannelPosition (const GstAudioChannelPosition*)")
+	panic("unimplemented conversion of []AudioChannelPosition (const GstAudioChannelPosition*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_buffer_get_audio_downmix_meta_for_channels(carg1, carg2, carg3)
 	runtime.KeepAlive(buffer)
@@ -3196,20 +3196,20 @@ func DsdConvert(inputData *uint8, outputData *uint8, inputFormat DsdFormat, outp
 
 	_ = inputData
 	_ = carg1
-	panic("unimplemented conversion of *uint8 (const guint8*)")
+	panic("unimplemented conversion of *uint8 (const guint8*) because of no basic converter found")
 	_ = outputData
 	_ = carg2
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	panic("unimplemented conversion of *uint8 (guint8*) because of no basic converter found")
 	carg3 = C.GstDsdFormat(inputFormat)
 	carg4 = C.GstDsdFormat(outputFormat)
 	carg5 = C.GstAudioLayout(inputLayout)
 	carg6 = C.GstAudioLayout(outputLayout)
 	_ = inputPlaneOffsets
 	_ = carg7
-	panic("unimplemented conversion of *uint (const gsize*)")
+	panic("unimplemented conversion of *uint (const gsize*) because of no basic converter found")
 	_ = outputPlaneOffsets
 	_ = carg8
-	panic("unimplemented conversion of *uint (const gsize*)")
+	panic("unimplemented conversion of *uint (const gsize*) because of no basic converter found")
 	carg9 = C.gsize(numDsdBytes)
 	carg10 = C.gint(numChannels)
 	if reverseByteBits {
@@ -3703,10 +3703,10 @@ func UnsafeApplyAudioAggregatorOverrides[Instance AudioAggregator](gclass unsafe
 	pclass := (*C.GstAudioAggregatorClass)(gclass)
 
 	if overrides.AggregateOneBuffer != nil {
-		pclass.aggregate_one_buffer = (*[0]byte)(C._gotk4_gstaudio1_AudioAggregator_aggregate_one_buffer)
+		pclass.aggregate_one_buffer = (*[0]byte)(C._goglib_gstaudio1_AudioAggregator_aggregate_one_buffer)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioAggregator_aggregate_one_buffer",
+			"_goglib_gstaudio1_AudioAggregator_aggregate_one_buffer",
 			func(carg0 *C.GstAudioAggregator, carg1 *C.GstAudioAggregatorPad, carg2 *C.GstBuffer, carg3 C.guint, carg4 *C.GstBuffer, carg5 C.guint, carg6 C.guint) (cret C.gboolean) {
 				var aagg      Instance           // go GstAudioAggregator subclass
 				var pad       AudioAggregatorPad // in, none, converted
@@ -3737,10 +3737,10 @@ func UnsafeApplyAudioAggregatorOverrides[Instance AudioAggregator](gclass unsafe
 	}
 
 	if overrides.CreateOutputBuffer != nil {
-		pclass.create_output_buffer = (*[0]byte)(C._gotk4_gstaudio1_AudioAggregator_create_output_buffer)
+		pclass.create_output_buffer = (*[0]byte)(C._goglib_gstaudio1_AudioAggregator_create_output_buffer)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioAggregator_create_output_buffer",
+			"_goglib_gstaudio1_AudioAggregator_create_output_buffer",
 			func(carg0 *C.GstAudioAggregator, carg1 C.guint) (cret *C.GstBuffer) {
 				var aagg      Instance    // go GstAudioAggregator subclass
 				var numFrames uint        // in, none, casted
@@ -3799,7 +3799,7 @@ func (aagg *AudioAggregatorInstance) ParentAggregateOneBuffer(pad AudioAggregato
 	carg5 = C.guint(outOffset)
 	carg6 = C.guint(numFrames)
 
-	cret = C._gotk4_gstaudio1_AudioAggregator_virtual_aggregate_one_buffer(unsafe.Pointer(parentclass.aggregate_one_buffer), carg0, carg1, carg2, carg3, carg4, carg5, carg6)
+	cret = C._goglib_gstaudio1_AudioAggregator_virtual_aggregate_one_buffer(unsafe.Pointer(parentclass.aggregate_one_buffer), carg0, carg1, carg2, carg3, carg4, carg5, carg6)
 	runtime.KeepAlive(aagg)
 	runtime.KeepAlive(pad)
 	runtime.KeepAlive(inbuf)
@@ -3839,7 +3839,7 @@ func (aagg *AudioAggregatorInstance) ParentCreateOutputBuffer(numFrames uint) *g
 	carg0 = (*C.GstAudioAggregator)(UnsafeAudioAggregatorToGlibNone(aagg))
 	carg1 = C.guint(numFrames)
 
-	cret = C._gotk4_gstaudio1_AudioAggregator_virtual_create_output_buffer(unsafe.Pointer(parentclass.create_output_buffer), carg0, carg1)
+	cret = C._goglib_gstaudio1_AudioAggregator_virtual_create_output_buffer(unsafe.Pointer(parentclass.create_output_buffer), carg0, carg1)
 	runtime.KeepAlive(aagg)
 	runtime.KeepAlive(numFrames)
 
@@ -4007,10 +4007,10 @@ func UnsafeApplyAudioAggregatorPadOverrides[Instance AudioAggregatorPad](gclass 
 	pclass := (*C.GstAudioAggregatorPadClass)(gclass)
 
 	if overrides.ConvertBuffer != nil {
-		pclass.convert_buffer = (*[0]byte)(C._gotk4_gstaudio1_AudioAggregatorPad_convert_buffer)
+		pclass.convert_buffer = (*[0]byte)(C._goglib_gstaudio1_AudioAggregatorPad_convert_buffer)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioAggregatorPad_convert_buffer",
+			"_goglib_gstaudio1_AudioAggregatorPad_convert_buffer",
 			func(carg0 *C.GstAudioAggregatorPad, carg1 *C.GstAudioInfo, carg2 *C.GstAudioInfo, carg3 *C.GstBuffer) (cret *C.GstBuffer) {
 				var pad     Instance    // go GstAudioAggregatorPad subclass
 				var inInfo  *AudioInfo  // in, none, converted
@@ -4033,10 +4033,10 @@ func UnsafeApplyAudioAggregatorPadOverrides[Instance AudioAggregatorPad](gclass 
 	}
 
 	if overrides.UpdateConversionInfo != nil {
-		pclass.update_conversion_info = (*[0]byte)(C._gotk4_gstaudio1_AudioAggregatorPad_update_conversion_info)
+		pclass.update_conversion_info = (*[0]byte)(C._goglib_gstaudio1_AudioAggregatorPad_update_conversion_info)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioAggregatorPad_update_conversion_info",
+			"_goglib_gstaudio1_AudioAggregatorPad_update_conversion_info",
 			func(carg0 *C.GstAudioAggregatorPad) {
 				var pad Instance // go GstAudioAggregatorPad subclass
 
@@ -4076,7 +4076,7 @@ func (pad *AudioAggregatorPadInstance) ParentConvertBuffer(inInfo *AudioInfo, ou
 	carg2 = (*C.GstAudioInfo)(UnsafeAudioInfoToGlibNone(outInfo))
 	carg3 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
-	cret = C._gotk4_gstaudio1_AudioAggregatorPad_virtual_convert_buffer(unsafe.Pointer(parentclass.convert_buffer), carg0, carg1, carg2, carg3)
+	cret = C._goglib_gstaudio1_AudioAggregatorPad_virtual_convert_buffer(unsafe.Pointer(parentclass.convert_buffer), carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(pad)
 	runtime.KeepAlive(inInfo)
 	runtime.KeepAlive(outInfo)
@@ -4101,7 +4101,7 @@ func (pad *AudioAggregatorPadInstance) ParentUpdateConversionInfo() {
 
 	carg0 = (*C.GstAudioAggregatorPad)(UnsafeAudioAggregatorPadToGlibNone(pad))
 
-	C._gotk4_gstaudio1_AudioAggregatorPad_virtual_update_conversion_info(unsafe.Pointer(parentclass.update_conversion_info), carg0)
+	C._goglib_gstaudio1_AudioAggregatorPad_virtual_update_conversion_info(unsafe.Pointer(parentclass.update_conversion_info), carg0)
 	runtime.KeepAlive(pad)
 }
 
@@ -4554,7 +4554,7 @@ func (sink *AudioBaseSinkInstance) SetCustomSlavingCallback(callback AudioBaseSi
 	var carg3 C.GDestroyNotify                        // implicit
 
 	carg0 = (*C.GstAudioBaseSink)(UnsafeAudioBaseSinkToGlibNone(sink))
-	carg1 = (*[0]byte)(C._gotk4_gstaudio1_AudioBaseSinkCustomSlavingCallback)
+	carg1 = (*[0]byte)(C._goglib_gstaudio1_AudioBaseSinkCustomSlavingCallback)
 	carg2 = C.gpointer(userdata.Register(callback))
 	carg3 = (C.GDestroyNotify)((*[0]byte)(C.destroyUserdata))
 
@@ -4685,10 +4685,10 @@ func UnsafeApplyAudioBaseSinkOverrides[Instance AudioBaseSink](gclass unsafe.Poi
 	pclass := (*C.GstAudioBaseSinkClass)(gclass)
 
 	if overrides.CreateRingbuffer != nil {
-		pclass.create_ringbuffer = (*[0]byte)(C._gotk4_gstaudio1_AudioBaseSink_create_ringbuffer)
+		pclass.create_ringbuffer = (*[0]byte)(C._goglib_gstaudio1_AudioBaseSink_create_ringbuffer)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioBaseSink_create_ringbuffer",
+			"_goglib_gstaudio1_AudioBaseSink_create_ringbuffer",
 			func(carg0 *C.GstAudioBaseSink) (cret *C.GstAudioRingBuffer) {
 				var sink  Instance        // go GstAudioBaseSink subclass
 				var goret AudioRingBuffer // return, none, converted, nullable
@@ -4707,10 +4707,10 @@ func UnsafeApplyAudioBaseSinkOverrides[Instance AudioBaseSink](gclass unsafe.Poi
 	}
 
 	if overrides.Payload != nil {
-		pclass.payload = (*[0]byte)(C._gotk4_gstaudio1_AudioBaseSink_payload)
+		pclass.payload = (*[0]byte)(C._goglib_gstaudio1_AudioBaseSink_payload)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioBaseSink_payload",
+			"_goglib_gstaudio1_AudioBaseSink_payload",
 			func(carg0 *C.GstAudioBaseSink, carg1 *C.GstBuffer) (cret *C.GstBuffer) {
 				var sink   Instance    // go GstAudioBaseSink subclass
 				var buffer *gst.Buffer // in, none, converted
@@ -4747,7 +4747,7 @@ func (sink *AudioBaseSinkInstance) ParentCreateRingbuffer() AudioRingBuffer {
 
 	carg0 = (*C.GstAudioBaseSink)(UnsafeAudioBaseSinkToGlibNone(sink))
 
-	cret = C._gotk4_gstaudio1_AudioBaseSink_virtual_create_ringbuffer(unsafe.Pointer(parentclass.create_ringbuffer), carg0)
+	cret = C._goglib_gstaudio1_AudioBaseSink_virtual_create_ringbuffer(unsafe.Pointer(parentclass.create_ringbuffer), carg0)
 	runtime.KeepAlive(sink)
 
 	var goret AudioRingBuffer
@@ -4784,7 +4784,7 @@ func (sink *AudioBaseSinkInstance) ParentPayload(buffer *gst.Buffer) *gst.Buffer
 	carg0 = (*C.GstAudioBaseSink)(UnsafeAudioBaseSinkToGlibNone(sink))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
-	cret = C._gotk4_gstaudio1_AudioBaseSink_virtual_payload(unsafe.Pointer(parentclass.payload), carg0, carg1)
+	cret = C._goglib_gstaudio1_AudioBaseSink_virtual_payload(unsafe.Pointer(parentclass.payload), carg0, carg1)
 	runtime.KeepAlive(sink)
 	runtime.KeepAlive(buffer)
 
@@ -5101,10 +5101,10 @@ func UnsafeApplyAudioBaseSrcOverrides[Instance AudioBaseSrc](gclass unsafe.Point
 	pclass := (*C.GstAudioBaseSrcClass)(gclass)
 
 	if overrides.CreateRingbuffer != nil {
-		pclass.create_ringbuffer = (*[0]byte)(C._gotk4_gstaudio1_AudioBaseSrc_create_ringbuffer)
+		pclass.create_ringbuffer = (*[0]byte)(C._goglib_gstaudio1_AudioBaseSrc_create_ringbuffer)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioBaseSrc_create_ringbuffer",
+			"_goglib_gstaudio1_AudioBaseSrc_create_ringbuffer",
 			func(carg0 *C.GstAudioBaseSrc) (cret *C.GstAudioRingBuffer) {
 				var src   Instance        // go GstAudioBaseSrc subclass
 				var goret AudioRingBuffer // return, none, converted, nullable
@@ -5141,7 +5141,7 @@ func (src *AudioBaseSrcInstance) ParentCreateRingbuffer() AudioRingBuffer {
 
 	carg0 = (*C.GstAudioBaseSrc)(UnsafeAudioBaseSrcToGlibNone(src))
 
-	cret = C._gotk4_gstaudio1_AudioBaseSrc_virtual_create_ringbuffer(unsafe.Pointer(parentclass.create_ringbuffer), carg0)
+	cret = C._goglib_gstaudio1_AudioBaseSrc_virtual_create_ringbuffer(unsafe.Pointer(parentclass.create_ringbuffer), carg0)
 	runtime.KeepAlive(src)
 
 	var goret AudioRingBuffer
@@ -5430,10 +5430,10 @@ func UnsafeApplyAudioCdSrcOverrides[Instance AudioCdSrc](gclass unsafe.Pointer, 
 	pclass := (*C.GstAudioCdSrcClass)(gclass)
 
 	if overrides.Close != nil {
-		pclass.close = (*[0]byte)(C._gotk4_gstaudio1_AudioCdSrc_close)
+		pclass.close = (*[0]byte)(C._goglib_gstaudio1_AudioCdSrc_close)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioCdSrc_close",
+			"_goglib_gstaudio1_AudioCdSrc_close",
 			func(carg0 *C.GstAudioCdSrc) {
 				var src Instance // go GstAudioCdSrc subclass
 
@@ -5445,10 +5445,10 @@ func UnsafeApplyAudioCdSrcOverrides[Instance AudioCdSrc](gclass unsafe.Pointer, 
 	}
 
 	if overrides.Open != nil {
-		pclass.open = (*[0]byte)(C._gotk4_gstaudio1_AudioCdSrc_open)
+		pclass.open = (*[0]byte)(C._goglib_gstaudio1_AudioCdSrc_open)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioCdSrc_open",
+			"_goglib_gstaudio1_AudioCdSrc_open",
 			func(carg0 *C.GstAudioCdSrc, carg1 *C.gchar) (cret C.gboolean) {
 				var src    Instance // go GstAudioCdSrc subclass
 				var device string   // in, none, string
@@ -5469,10 +5469,10 @@ func UnsafeApplyAudioCdSrcOverrides[Instance AudioCdSrc](gclass unsafe.Pointer, 
 	}
 
 	if overrides.ReadSector != nil {
-		pclass.read_sector = (*[0]byte)(C._gotk4_gstaudio1_AudioCdSrc_read_sector)
+		pclass.read_sector = (*[0]byte)(C._goglib_gstaudio1_AudioCdSrc_read_sector)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioCdSrc_read_sector",
+			"_goglib_gstaudio1_AudioCdSrc_read_sector",
 			func(carg0 *C.GstAudioCdSrc, carg1 C.gint) (cret *C.GstBuffer) {
 				var src    Instance    // go GstAudioCdSrc subclass
 				var sector int32       // in, none, casted
@@ -5502,7 +5502,7 @@ func (src *AudioCdSrcInstance) ParentClose() {
 
 	carg0 = (*C.GstAudioCdSrc)(UnsafeAudioCdSrcToGlibNone(src))
 
-	C._gotk4_gstaudio1_AudioCdSrc_virtual_close(unsafe.Pointer(parentclass.close), carg0)
+	C._goglib_gstaudio1_AudioCdSrc_virtual_close(unsafe.Pointer(parentclass.close), carg0)
 	runtime.KeepAlive(src)
 }
 
@@ -5529,7 +5529,7 @@ func (src *AudioCdSrcInstance) ParentOpen(device string) bool {
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(device)))
 	defer C.free(unsafe.Pointer(carg1))
 
-	cret = C._gotk4_gstaudio1_AudioCdSrc_virtual_open(unsafe.Pointer(parentclass.open), carg0, carg1)
+	cret = C._goglib_gstaudio1_AudioCdSrc_virtual_open(unsafe.Pointer(parentclass.open), carg0, carg1)
 	runtime.KeepAlive(src)
 	runtime.KeepAlive(device)
 
@@ -5564,7 +5564,7 @@ func (src *AudioCdSrcInstance) ParentReadSector(sector int32) *gst.Buffer {
 	carg0 = (*C.GstAudioCdSrc)(UnsafeAudioCdSrcToGlibNone(src))
 	carg1 = C.gint(sector)
 
-	cret = C._gotk4_gstaudio1_AudioCdSrc_virtual_read_sector(unsafe.Pointer(parentclass.read_sector), carg0, carg1)
+	cret = C._goglib_gstaudio1_AudioCdSrc_virtual_read_sector(unsafe.Pointer(parentclass.read_sector), carg0, carg1)
 	runtime.KeepAlive(src)
 	runtime.KeepAlive(sector)
 
@@ -5743,7 +5743,7 @@ func NewAudioClock(name string, fn AudioClockGetTimeFunc) gst.Clock {
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*[0]byte)(C._gotk4_gstaudio1_AudioClockGetTimeFunc)
+	carg2 = (*[0]byte)(C._goglib_gstaudio1_AudioClockGetTimeFunc)
 	carg3 = C.gpointer(userdata.Register(fn))
 	carg4 = (C.GDestroyNotify)((*[0]byte)(C.destroyUserdata))
 
@@ -6798,7 +6798,7 @@ func (dec *AudioDecoderInstance) GetAllocator() (gst.Allocator, gst.AllocationPa
 	}
 	_ = params
 	_ = carg2
-	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams)")
+	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams) because of unknown reason")
 
 	return allocator, params
 }
@@ -7755,10 +7755,10 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 	pclass := (*C.GstAudioDecoderClass)(gclass)
 
 	if overrides.Close != nil {
-		pclass.close = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_close)
+		pclass.close = (*[0]byte)(C._goglib_gstaudio1_AudioDecoder_close)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioDecoder_close",
+			"_goglib_gstaudio1_AudioDecoder_close",
 			func(carg0 *C.GstAudioDecoder) (cret C.gboolean) {
 				var dec   Instance // go GstAudioDecoder subclass
 				var goret bool     // return
@@ -7777,10 +7777,10 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 	}
 
 	if overrides.DecideAllocation != nil {
-		pclass.decide_allocation = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_decide_allocation)
+		pclass.decide_allocation = (*[0]byte)(C._goglib_gstaudio1_AudioDecoder_decide_allocation)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioDecoder_decide_allocation",
+			"_goglib_gstaudio1_AudioDecoder_decide_allocation",
 			func(carg0 *C.GstAudioDecoder, carg1 *C.GstQuery) (cret C.gboolean) {
 				var dec   Instance   // go GstAudioDecoder subclass
 				var query *gst.Query // in, none, converted
@@ -7801,10 +7801,10 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 	}
 
 	if overrides.Flush != nil {
-		pclass.flush = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_flush)
+		pclass.flush = (*[0]byte)(C._goglib_gstaudio1_AudioDecoder_flush)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioDecoder_flush",
+			"_goglib_gstaudio1_AudioDecoder_flush",
 			func(carg0 *C.GstAudioDecoder, carg1 C.gboolean) {
 				var dec  Instance // go GstAudioDecoder subclass
 				var hard bool     // in
@@ -7820,10 +7820,10 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 	}
 
 	if overrides.Getcaps != nil {
-		pclass.getcaps = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_getcaps)
+		pclass.getcaps = (*[0]byte)(C._goglib_gstaudio1_AudioDecoder_getcaps)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioDecoder_getcaps",
+			"_goglib_gstaudio1_AudioDecoder_getcaps",
 			func(carg0 *C.GstAudioDecoder, carg1 *C.GstCaps) (cret *C.GstCaps) {
 				var dec    Instance  // go GstAudioDecoder subclass
 				var filter *gst.Caps // in, none, converted
@@ -7842,10 +7842,10 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 	}
 
 	if overrides.HandleFrame != nil {
-		pclass.handle_frame = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_handle_frame)
+		pclass.handle_frame = (*[0]byte)(C._goglib_gstaudio1_AudioDecoder_handle_frame)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioDecoder_handle_frame",
+			"_goglib_gstaudio1_AudioDecoder_handle_frame",
 			func(carg0 *C.GstAudioDecoder, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
 				var dec    Instance       // go GstAudioDecoder subclass
 				var buffer *gst.Buffer    // in, none, converted
@@ -7864,10 +7864,10 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 	}
 
 	if overrides.Negotiate != nil {
-		pclass.negotiate = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_negotiate)
+		pclass.negotiate = (*[0]byte)(C._goglib_gstaudio1_AudioDecoder_negotiate)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioDecoder_negotiate",
+			"_goglib_gstaudio1_AudioDecoder_negotiate",
 			func(carg0 *C.GstAudioDecoder) (cret C.gboolean) {
 				var dec   Instance // go GstAudioDecoder subclass
 				var goret bool     // return
@@ -7886,10 +7886,10 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 	}
 
 	if overrides.Open != nil {
-		pclass.open = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_open)
+		pclass.open = (*[0]byte)(C._goglib_gstaudio1_AudioDecoder_open)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioDecoder_open",
+			"_goglib_gstaudio1_AudioDecoder_open",
 			func(carg0 *C.GstAudioDecoder) (cret C.gboolean) {
 				var dec   Instance // go GstAudioDecoder subclass
 				var goret bool     // return
@@ -7908,10 +7908,10 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 	}
 
 	if overrides.Parse != nil {
-		pclass.parse = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_parse)
+		pclass.parse = (*[0]byte)(C._goglib_gstaudio1_AudioDecoder_parse)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioDecoder_parse",
+			"_goglib_gstaudio1_AudioDecoder_parse",
 			func(carg0 *C.GstAudioDecoder, carg1 *C.GstAdapter, carg2 *C.gint, carg3 *C.gint) (cret C.GstFlowReturn) {
 				var dec     Instance        // go GstAudioDecoder subclass
 				var adapter gstbase.Adapter // in, none, converted
@@ -7934,10 +7934,10 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 	}
 
 	if overrides.ProposeAllocation != nil {
-		pclass.propose_allocation = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_propose_allocation)
+		pclass.propose_allocation = (*[0]byte)(C._goglib_gstaudio1_AudioDecoder_propose_allocation)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioDecoder_propose_allocation",
+			"_goglib_gstaudio1_AudioDecoder_propose_allocation",
 			func(carg0 *C.GstAudioDecoder, carg1 *C.GstQuery) (cret C.gboolean) {
 				var dec   Instance   // go GstAudioDecoder subclass
 				var query *gst.Query // in, none, converted
@@ -7958,10 +7958,10 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 	}
 
 	if overrides.SetFormat != nil {
-		pclass.set_format = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_set_format)
+		pclass.set_format = (*[0]byte)(C._goglib_gstaudio1_AudioDecoder_set_format)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioDecoder_set_format",
+			"_goglib_gstaudio1_AudioDecoder_set_format",
 			func(carg0 *C.GstAudioDecoder, carg1 *C.GstCaps) (cret C.gboolean) {
 				var dec   Instance  // go GstAudioDecoder subclass
 				var caps  *gst.Caps // in, none, converted
@@ -7982,10 +7982,10 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 	}
 
 	if overrides.SinkEvent != nil {
-		pclass.sink_event = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_sink_event)
+		pclass.sink_event = (*[0]byte)(C._goglib_gstaudio1_AudioDecoder_sink_event)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioDecoder_sink_event",
+			"_goglib_gstaudio1_AudioDecoder_sink_event",
 			func(carg0 *C.GstAudioDecoder, carg1 *C.GstEvent) (cret C.gboolean) {
 				var dec   Instance   // go GstAudioDecoder subclass
 				var event *gst.Event // in, none, converted
@@ -8006,10 +8006,10 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 	}
 
 	if overrides.SinkQuery != nil {
-		pclass.sink_query = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_sink_query)
+		pclass.sink_query = (*[0]byte)(C._goglib_gstaudio1_AudioDecoder_sink_query)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioDecoder_sink_query",
+			"_goglib_gstaudio1_AudioDecoder_sink_query",
 			func(carg0 *C.GstAudioDecoder, carg1 *C.GstQuery) (cret C.gboolean) {
 				var dec   Instance   // go GstAudioDecoder subclass
 				var query *gst.Query // in, none, converted
@@ -8030,10 +8030,10 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 	}
 
 	if overrides.SrcEvent != nil {
-		pclass.src_event = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_src_event)
+		pclass.src_event = (*[0]byte)(C._goglib_gstaudio1_AudioDecoder_src_event)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioDecoder_src_event",
+			"_goglib_gstaudio1_AudioDecoder_src_event",
 			func(carg0 *C.GstAudioDecoder, carg1 *C.GstEvent) (cret C.gboolean) {
 				var dec   Instance   // go GstAudioDecoder subclass
 				var event *gst.Event // in, none, converted
@@ -8054,10 +8054,10 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 	}
 
 	if overrides.SrcQuery != nil {
-		pclass.src_query = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_src_query)
+		pclass.src_query = (*[0]byte)(C._goglib_gstaudio1_AudioDecoder_src_query)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioDecoder_src_query",
+			"_goglib_gstaudio1_AudioDecoder_src_query",
 			func(carg0 *C.GstAudioDecoder, carg1 *C.GstQuery) (cret C.gboolean) {
 				var dec   Instance   // go GstAudioDecoder subclass
 				var query *gst.Query // in, none, converted
@@ -8078,10 +8078,10 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 	}
 
 	if overrides.Start != nil {
-		pclass.start = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_start)
+		pclass.start = (*[0]byte)(C._goglib_gstaudio1_AudioDecoder_start)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioDecoder_start",
+			"_goglib_gstaudio1_AudioDecoder_start",
 			func(carg0 *C.GstAudioDecoder) (cret C.gboolean) {
 				var dec   Instance // go GstAudioDecoder subclass
 				var goret bool     // return
@@ -8100,10 +8100,10 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 	}
 
 	if overrides.Stop != nil {
-		pclass.stop = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_stop)
+		pclass.stop = (*[0]byte)(C._goglib_gstaudio1_AudioDecoder_stop)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioDecoder_stop",
+			"_goglib_gstaudio1_AudioDecoder_stop",
 			func(carg0 *C.GstAudioDecoder) (cret C.gboolean) {
 				var dec   Instance // go GstAudioDecoder subclass
 				var goret bool     // return
@@ -8122,10 +8122,10 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 	}
 
 	if overrides.TransformMeta != nil {
-		pclass.transform_meta = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_transform_meta)
+		pclass.transform_meta = (*[0]byte)(C._goglib_gstaudio1_AudioDecoder_transform_meta)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioDecoder_transform_meta",
+			"_goglib_gstaudio1_AudioDecoder_transform_meta",
 			func(carg0 *C.GstAudioDecoder, carg1 *C.GstBuffer, carg2 *C.GstMeta, carg3 *C.GstBuffer) (cret C.gboolean) {
 				var enc    Instance    // go GstAudioDecoder subclass
 				var outbuf *gst.Buffer // in, none, converted
@@ -8168,7 +8168,7 @@ func (dec *AudioDecoderInstance) ParentClose() bool {
 
 	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
 
-	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_close(unsafe.Pointer(parentclass.close), carg0)
+	cret = C._goglib_gstaudio1_AudioDecoder_virtual_close(unsafe.Pointer(parentclass.close), carg0)
 	runtime.KeepAlive(dec)
 
 	var goret bool
@@ -8207,7 +8207,7 @@ func (dec *AudioDecoderInstance) ParentDecideAllocation(query *gst.Query) bool {
 	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
+	cret = C._goglib_gstaudio1_AudioDecoder_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
 	runtime.KeepAlive(dec)
 	runtime.KeepAlive(query)
 
@@ -8243,7 +8243,7 @@ func (dec *AudioDecoderInstance) ParentFlush(hard bool) {
 		carg1 = C.TRUE
 	}
 
-	C._gotk4_gstaudio1_AudioDecoder_virtual_flush(unsafe.Pointer(parentclass.flush), carg0, carg1)
+	C._goglib_gstaudio1_AudioDecoder_virtual_flush(unsafe.Pointer(parentclass.flush), carg0, carg1)
 	runtime.KeepAlive(dec)
 	runtime.KeepAlive(hard)
 }
@@ -8274,7 +8274,7 @@ func (dec *AudioDecoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
 	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filter))
 
-	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_getcaps(unsafe.Pointer(parentclass.getcaps), carg0, carg1)
+	cret = C._goglib_gstaudio1_AudioDecoder_virtual_getcaps(unsafe.Pointer(parentclass.getcaps), carg0, carg1)
 	runtime.KeepAlive(dec)
 	runtime.KeepAlive(filter)
 
@@ -8311,7 +8311,7 @@ func (dec *AudioDecoderInstance) ParentHandleFrame(buffer *gst.Buffer) gst.FlowR
 	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
-	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_handle_frame(unsafe.Pointer(parentclass.handle_frame), carg0, carg1)
+	cret = C._goglib_gstaudio1_AudioDecoder_virtual_handle_frame(unsafe.Pointer(parentclass.handle_frame), carg0, carg1)
 	runtime.KeepAlive(dec)
 	runtime.KeepAlive(buffer)
 
@@ -8340,7 +8340,7 @@ func (dec *AudioDecoderInstance) ParentNegotiate() bool {
 
 	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
 
-	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_negotiate(unsafe.Pointer(parentclass.negotiate), carg0)
+	cret = C._goglib_gstaudio1_AudioDecoder_virtual_negotiate(unsafe.Pointer(parentclass.negotiate), carg0)
 	runtime.KeepAlive(dec)
 
 	var goret bool
@@ -8370,7 +8370,7 @@ func (dec *AudioDecoderInstance) ParentOpen() bool {
 
 	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
 
-	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_open(unsafe.Pointer(parentclass.open), carg0)
+	cret = C._goglib_gstaudio1_AudioDecoder_virtual_open(unsafe.Pointer(parentclass.open), carg0)
 	runtime.KeepAlive(dec)
 
 	var goret bool
@@ -8406,7 +8406,7 @@ func (dec *AudioDecoderInstance) ParentParse(adapter gstbase.Adapter) (int32, in
 	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
 	carg1 = (*C.GstAdapter)(gstbase.UnsafeAdapterToGlibNone(adapter))
 
-	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_parse(unsafe.Pointer(parentclass.parse), carg0, carg1, &carg2, &carg3)
+	cret = C._goglib_gstaudio1_AudioDecoder_virtual_parse(unsafe.Pointer(parentclass.parse), carg0, carg1, &carg2, &carg3)
 	runtime.KeepAlive(dec)
 	runtime.KeepAlive(adapter)
 
@@ -8446,7 +8446,7 @@ func (dec *AudioDecoderInstance) ParentProposeAllocation(query *gst.Query) bool 
 	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_propose_allocation(unsafe.Pointer(parentclass.propose_allocation), carg0, carg1)
+	cret = C._goglib_gstaudio1_AudioDecoder_virtual_propose_allocation(unsafe.Pointer(parentclass.propose_allocation), carg0, carg1)
 	runtime.KeepAlive(dec)
 	runtime.KeepAlive(query)
 
@@ -8481,7 +8481,7 @@ func (dec *AudioDecoderInstance) ParentSetFormat(caps *gst.Caps) bool {
 	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
-	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_set_format(unsafe.Pointer(parentclass.set_format), carg0, carg1)
+	cret = C._goglib_gstaudio1_AudioDecoder_virtual_set_format(unsafe.Pointer(parentclass.set_format), carg0, carg1)
 	runtime.KeepAlive(dec)
 	runtime.KeepAlive(caps)
 
@@ -8518,7 +8518,7 @@ func (dec *AudioDecoderInstance) ParentSinkEvent(event *gst.Event) bool {
 	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
-	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_sink_event(unsafe.Pointer(parentclass.sink_event), carg0, carg1)
+	cret = C._goglib_gstaudio1_AudioDecoder_virtual_sink_event(unsafe.Pointer(parentclass.sink_event), carg0, carg1)
 	runtime.KeepAlive(dec)
 	runtime.KeepAlive(event)
 
@@ -8557,7 +8557,7 @@ func (dec *AudioDecoderInstance) ParentSinkQuery(query *gst.Query) bool {
 	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_sink_query(unsafe.Pointer(parentclass.sink_query), carg0, carg1)
+	cret = C._goglib_gstaudio1_AudioDecoder_virtual_sink_query(unsafe.Pointer(parentclass.sink_query), carg0, carg1)
 	runtime.KeepAlive(dec)
 	runtime.KeepAlive(query)
 
@@ -8594,7 +8594,7 @@ func (dec *AudioDecoderInstance) ParentSrcEvent(event *gst.Event) bool {
 	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
-	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
+	cret = C._goglib_gstaudio1_AudioDecoder_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
 	runtime.KeepAlive(dec)
 	runtime.KeepAlive(event)
 
@@ -8633,7 +8633,7 @@ func (dec *AudioDecoderInstance) ParentSrcQuery(query *gst.Query) bool {
 	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_src_query(unsafe.Pointer(parentclass.src_query), carg0, carg1)
+	cret = C._goglib_gstaudio1_AudioDecoder_virtual_src_query(unsafe.Pointer(parentclass.src_query), carg0, carg1)
 	runtime.KeepAlive(dec)
 	runtime.KeepAlive(query)
 
@@ -8664,7 +8664,7 @@ func (dec *AudioDecoderInstance) ParentStart() bool {
 
 	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
 
-	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_start(unsafe.Pointer(parentclass.start), carg0)
+	cret = C._goglib_gstaudio1_AudioDecoder_virtual_start(unsafe.Pointer(parentclass.start), carg0)
 	runtime.KeepAlive(dec)
 
 	var goret bool
@@ -8694,7 +8694,7 @@ func (dec *AudioDecoderInstance) ParentStop() bool {
 
 	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
 
-	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
+	cret = C._goglib_gstaudio1_AudioDecoder_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
 	runtime.KeepAlive(dec)
 
 	var goret bool
@@ -8738,7 +8738,7 @@ func (enc *AudioDecoderInstance) ParentTransformMeta(outbuf *gst.Buffer, meta *g
 	carg2 = (*C.GstMeta)(gst.UnsafeMetaToGlibNone(meta))
 	carg3 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(inbuf))
 
-	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_transform_meta(unsafe.Pointer(parentclass.transform_meta), carg0, carg1, carg2, carg3)
+	cret = C._goglib_gstaudio1_AudioDecoder_virtual_transform_meta(unsafe.Pointer(parentclass.transform_meta), carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(enc)
 	runtime.KeepAlive(outbuf)
 	runtime.KeepAlive(meta)
@@ -9611,7 +9611,7 @@ func (enc *AudioEncoderInstance) GetAllocator() (gst.Allocator, gst.AllocationPa
 	}
 	_ = params
 	_ = carg2
-	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams)")
+	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams) because of unknown reason")
 
 	return allocator, params
 }
@@ -10539,10 +10539,10 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 	pclass := (*C.GstAudioEncoderClass)(gclass)
 
 	if overrides.Close != nil {
-		pclass.close = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_close)
+		pclass.close = (*[0]byte)(C._goglib_gstaudio1_AudioEncoder_close)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioEncoder_close",
+			"_goglib_gstaudio1_AudioEncoder_close",
 			func(carg0 *C.GstAudioEncoder) (cret C.gboolean) {
 				var enc   Instance // go GstAudioEncoder subclass
 				var goret bool     // return
@@ -10561,10 +10561,10 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 	}
 
 	if overrides.DecideAllocation != nil {
-		pclass.decide_allocation = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_decide_allocation)
+		pclass.decide_allocation = (*[0]byte)(C._goglib_gstaudio1_AudioEncoder_decide_allocation)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioEncoder_decide_allocation",
+			"_goglib_gstaudio1_AudioEncoder_decide_allocation",
 			func(carg0 *C.GstAudioEncoder, carg1 *C.GstQuery) (cret C.gboolean) {
 				var enc   Instance   // go GstAudioEncoder subclass
 				var query *gst.Query // in, none, converted
@@ -10585,10 +10585,10 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 	}
 
 	if overrides.Flush != nil {
-		pclass.flush = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_flush)
+		pclass.flush = (*[0]byte)(C._goglib_gstaudio1_AudioEncoder_flush)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioEncoder_flush",
+			"_goglib_gstaudio1_AudioEncoder_flush",
 			func(carg0 *C.GstAudioEncoder) {
 				var enc Instance // go GstAudioEncoder subclass
 
@@ -10600,10 +10600,10 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 	}
 
 	if overrides.Getcaps != nil {
-		pclass.getcaps = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_getcaps)
+		pclass.getcaps = (*[0]byte)(C._goglib_gstaudio1_AudioEncoder_getcaps)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioEncoder_getcaps",
+			"_goglib_gstaudio1_AudioEncoder_getcaps",
 			func(carg0 *C.GstAudioEncoder, carg1 *C.GstCaps) (cret *C.GstCaps) {
 				var enc    Instance  // go GstAudioEncoder subclass
 				var filter *gst.Caps // in, none, converted
@@ -10622,10 +10622,10 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 	}
 
 	if overrides.HandleFrame != nil {
-		pclass.handle_frame = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_handle_frame)
+		pclass.handle_frame = (*[0]byte)(C._goglib_gstaudio1_AudioEncoder_handle_frame)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioEncoder_handle_frame",
+			"_goglib_gstaudio1_AudioEncoder_handle_frame",
 			func(carg0 *C.GstAudioEncoder, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
 				var enc    Instance       // go GstAudioEncoder subclass
 				var buffer *gst.Buffer    // in, none, converted
@@ -10644,10 +10644,10 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 	}
 
 	if overrides.Negotiate != nil {
-		pclass.negotiate = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_negotiate)
+		pclass.negotiate = (*[0]byte)(C._goglib_gstaudio1_AudioEncoder_negotiate)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioEncoder_negotiate",
+			"_goglib_gstaudio1_AudioEncoder_negotiate",
 			func(carg0 *C.GstAudioEncoder) (cret C.gboolean) {
 				var enc   Instance // go GstAudioEncoder subclass
 				var goret bool     // return
@@ -10666,10 +10666,10 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 	}
 
 	if overrides.Open != nil {
-		pclass.open = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_open)
+		pclass.open = (*[0]byte)(C._goglib_gstaudio1_AudioEncoder_open)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioEncoder_open",
+			"_goglib_gstaudio1_AudioEncoder_open",
 			func(carg0 *C.GstAudioEncoder) (cret C.gboolean) {
 				var enc   Instance // go GstAudioEncoder subclass
 				var goret bool     // return
@@ -10688,10 +10688,10 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 	}
 
 	if overrides.ProposeAllocation != nil {
-		pclass.propose_allocation = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_propose_allocation)
+		pclass.propose_allocation = (*[0]byte)(C._goglib_gstaudio1_AudioEncoder_propose_allocation)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioEncoder_propose_allocation",
+			"_goglib_gstaudio1_AudioEncoder_propose_allocation",
 			func(carg0 *C.GstAudioEncoder, carg1 *C.GstQuery) (cret C.gboolean) {
 				var enc   Instance   // go GstAudioEncoder subclass
 				var query *gst.Query // in, none, converted
@@ -10712,10 +10712,10 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 	}
 
 	if overrides.SetFormat != nil {
-		pclass.set_format = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_set_format)
+		pclass.set_format = (*[0]byte)(C._goglib_gstaudio1_AudioEncoder_set_format)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioEncoder_set_format",
+			"_goglib_gstaudio1_AudioEncoder_set_format",
 			func(carg0 *C.GstAudioEncoder, carg1 *C.GstAudioInfo) (cret C.gboolean) {
 				var enc   Instance   // go GstAudioEncoder subclass
 				var info  *AudioInfo // in, none, converted
@@ -10736,10 +10736,10 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 	}
 
 	if overrides.SinkEvent != nil {
-		pclass.sink_event = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_sink_event)
+		pclass.sink_event = (*[0]byte)(C._goglib_gstaudio1_AudioEncoder_sink_event)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioEncoder_sink_event",
+			"_goglib_gstaudio1_AudioEncoder_sink_event",
 			func(carg0 *C.GstAudioEncoder, carg1 *C.GstEvent) (cret C.gboolean) {
 				var enc   Instance   // go GstAudioEncoder subclass
 				var event *gst.Event // in, none, converted
@@ -10760,10 +10760,10 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 	}
 
 	if overrides.SinkQuery != nil {
-		pclass.sink_query = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_sink_query)
+		pclass.sink_query = (*[0]byte)(C._goglib_gstaudio1_AudioEncoder_sink_query)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioEncoder_sink_query",
+			"_goglib_gstaudio1_AudioEncoder_sink_query",
 			func(carg0 *C.GstAudioEncoder, carg1 *C.GstQuery) (cret C.gboolean) {
 				var encoder Instance   // go GstAudioEncoder subclass
 				var query   *gst.Query // in, none, converted
@@ -10784,10 +10784,10 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 	}
 
 	if overrides.SrcEvent != nil {
-		pclass.src_event = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_src_event)
+		pclass.src_event = (*[0]byte)(C._goglib_gstaudio1_AudioEncoder_src_event)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioEncoder_src_event",
+			"_goglib_gstaudio1_AudioEncoder_src_event",
 			func(carg0 *C.GstAudioEncoder, carg1 *C.GstEvent) (cret C.gboolean) {
 				var enc   Instance   // go GstAudioEncoder subclass
 				var event *gst.Event // in, none, converted
@@ -10808,10 +10808,10 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 	}
 
 	if overrides.SrcQuery != nil {
-		pclass.src_query = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_src_query)
+		pclass.src_query = (*[0]byte)(C._goglib_gstaudio1_AudioEncoder_src_query)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioEncoder_src_query",
+			"_goglib_gstaudio1_AudioEncoder_src_query",
 			func(carg0 *C.GstAudioEncoder, carg1 *C.GstQuery) (cret C.gboolean) {
 				var encoder Instance   // go GstAudioEncoder subclass
 				var query   *gst.Query // in, none, converted
@@ -10832,10 +10832,10 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 	}
 
 	if overrides.Start != nil {
-		pclass.start = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_start)
+		pclass.start = (*[0]byte)(C._goglib_gstaudio1_AudioEncoder_start)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioEncoder_start",
+			"_goglib_gstaudio1_AudioEncoder_start",
 			func(carg0 *C.GstAudioEncoder) (cret C.gboolean) {
 				var enc   Instance // go GstAudioEncoder subclass
 				var goret bool     // return
@@ -10854,10 +10854,10 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 	}
 
 	if overrides.Stop != nil {
-		pclass.stop = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_stop)
+		pclass.stop = (*[0]byte)(C._goglib_gstaudio1_AudioEncoder_stop)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioEncoder_stop",
+			"_goglib_gstaudio1_AudioEncoder_stop",
 			func(carg0 *C.GstAudioEncoder) (cret C.gboolean) {
 				var enc   Instance // go GstAudioEncoder subclass
 				var goret bool     // return
@@ -10876,10 +10876,10 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 	}
 
 	if overrides.TransformMeta != nil {
-		pclass.transform_meta = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_transform_meta)
+		pclass.transform_meta = (*[0]byte)(C._goglib_gstaudio1_AudioEncoder_transform_meta)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioEncoder_transform_meta",
+			"_goglib_gstaudio1_AudioEncoder_transform_meta",
 			func(carg0 *C.GstAudioEncoder, carg1 *C.GstBuffer, carg2 *C.GstMeta, carg3 *C.GstBuffer) (cret C.gboolean) {
 				var enc    Instance    // go GstAudioEncoder subclass
 				var outbuf *gst.Buffer // in, none, converted
@@ -10922,7 +10922,7 @@ func (enc *AudioEncoderInstance) ParentClose() bool {
 
 	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(enc))
 
-	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_close(unsafe.Pointer(parentclass.close), carg0)
+	cret = C._goglib_gstaudio1_AudioEncoder_virtual_close(unsafe.Pointer(parentclass.close), carg0)
 	runtime.KeepAlive(enc)
 
 	var goret bool
@@ -10961,7 +10961,7 @@ func (enc *AudioEncoderInstance) ParentDecideAllocation(query *gst.Query) bool {
 	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(enc))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
+	cret = C._goglib_gstaudio1_AudioEncoder_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
 	runtime.KeepAlive(enc)
 	runtime.KeepAlive(query)
 
@@ -10987,7 +10987,7 @@ func (enc *AudioEncoderInstance) ParentFlush() {
 
 	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(enc))
 
-	C._gotk4_gstaudio1_AudioEncoder_virtual_flush(unsafe.Pointer(parentclass.flush), carg0)
+	C._goglib_gstaudio1_AudioEncoder_virtual_flush(unsafe.Pointer(parentclass.flush), carg0)
 	runtime.KeepAlive(enc)
 }
 
@@ -11017,7 +11017,7 @@ func (enc *AudioEncoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
 	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(enc))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filter))
 
-	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_getcaps(unsafe.Pointer(parentclass.getcaps), carg0, carg1)
+	cret = C._goglib_gstaudio1_AudioEncoder_virtual_getcaps(unsafe.Pointer(parentclass.getcaps), carg0, carg1)
 	runtime.KeepAlive(enc)
 	runtime.KeepAlive(filter)
 
@@ -11055,7 +11055,7 @@ func (enc *AudioEncoderInstance) ParentHandleFrame(buffer *gst.Buffer) gst.FlowR
 	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(enc))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
-	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_handle_frame(unsafe.Pointer(parentclass.handle_frame), carg0, carg1)
+	cret = C._goglib_gstaudio1_AudioEncoder_virtual_handle_frame(unsafe.Pointer(parentclass.handle_frame), carg0, carg1)
 	runtime.KeepAlive(enc)
 	runtime.KeepAlive(buffer)
 
@@ -11084,7 +11084,7 @@ func (enc *AudioEncoderInstance) ParentNegotiate() bool {
 
 	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(enc))
 
-	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_negotiate(unsafe.Pointer(parentclass.negotiate), carg0)
+	cret = C._goglib_gstaudio1_AudioEncoder_virtual_negotiate(unsafe.Pointer(parentclass.negotiate), carg0)
 	runtime.KeepAlive(enc)
 
 	var goret bool
@@ -11114,7 +11114,7 @@ func (enc *AudioEncoderInstance) ParentOpen() bool {
 
 	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(enc))
 
-	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_open(unsafe.Pointer(parentclass.open), carg0)
+	cret = C._goglib_gstaudio1_AudioEncoder_virtual_open(unsafe.Pointer(parentclass.open), carg0)
 	runtime.KeepAlive(enc)
 
 	var goret bool
@@ -11151,7 +11151,7 @@ func (enc *AudioEncoderInstance) ParentProposeAllocation(query *gst.Query) bool 
 	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(enc))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_propose_allocation(unsafe.Pointer(parentclass.propose_allocation), carg0, carg1)
+	cret = C._goglib_gstaudio1_AudioEncoder_virtual_propose_allocation(unsafe.Pointer(parentclass.propose_allocation), carg0, carg1)
 	runtime.KeepAlive(enc)
 	runtime.KeepAlive(query)
 
@@ -11187,7 +11187,7 @@ func (enc *AudioEncoderInstance) ParentSetFormat(info *AudioInfo) bool {
 	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(enc))
 	carg1 = (*C.GstAudioInfo)(UnsafeAudioInfoToGlibNone(info))
 
-	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_set_format(unsafe.Pointer(parentclass.set_format), carg0, carg1)
+	cret = C._goglib_gstaudio1_AudioEncoder_virtual_set_format(unsafe.Pointer(parentclass.set_format), carg0, carg1)
 	runtime.KeepAlive(enc)
 	runtime.KeepAlive(info)
 
@@ -11224,7 +11224,7 @@ func (enc *AudioEncoderInstance) ParentSinkEvent(event *gst.Event) bool {
 	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(enc))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
-	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_sink_event(unsafe.Pointer(parentclass.sink_event), carg0, carg1)
+	cret = C._goglib_gstaudio1_AudioEncoder_virtual_sink_event(unsafe.Pointer(parentclass.sink_event), carg0, carg1)
 	runtime.KeepAlive(enc)
 	runtime.KeepAlive(event)
 
@@ -11263,7 +11263,7 @@ func (encoder *AudioEncoderInstance) ParentSinkQuery(query *gst.Query) bool {
 	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(encoder))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_sink_query(unsafe.Pointer(parentclass.sink_query), carg0, carg1)
+	cret = C._goglib_gstaudio1_AudioEncoder_virtual_sink_query(unsafe.Pointer(parentclass.sink_query), carg0, carg1)
 	runtime.KeepAlive(encoder)
 	runtime.KeepAlive(query)
 
@@ -11300,7 +11300,7 @@ func (enc *AudioEncoderInstance) ParentSrcEvent(event *gst.Event) bool {
 	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(enc))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
-	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
+	cret = C._goglib_gstaudio1_AudioEncoder_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
 	runtime.KeepAlive(enc)
 	runtime.KeepAlive(event)
 
@@ -11339,7 +11339,7 @@ func (encoder *AudioEncoderInstance) ParentSrcQuery(query *gst.Query) bool {
 	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(encoder))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_src_query(unsafe.Pointer(parentclass.src_query), carg0, carg1)
+	cret = C._goglib_gstaudio1_AudioEncoder_virtual_src_query(unsafe.Pointer(parentclass.src_query), carg0, carg1)
 	runtime.KeepAlive(encoder)
 	runtime.KeepAlive(query)
 
@@ -11370,7 +11370,7 @@ func (enc *AudioEncoderInstance) ParentStart() bool {
 
 	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(enc))
 
-	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_start(unsafe.Pointer(parentclass.start), carg0)
+	cret = C._goglib_gstaudio1_AudioEncoder_virtual_start(unsafe.Pointer(parentclass.start), carg0)
 	runtime.KeepAlive(enc)
 
 	var goret bool
@@ -11400,7 +11400,7 @@ func (enc *AudioEncoderInstance) ParentStop() bool {
 
 	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(enc))
 
-	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
+	cret = C._goglib_gstaudio1_AudioEncoder_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
 	runtime.KeepAlive(enc)
 
 	var goret bool
@@ -11444,7 +11444,7 @@ func (enc *AudioEncoderInstance) ParentTransformMeta(outbuf *gst.Buffer, meta *g
 	carg2 = (*C.GstMeta)(gst.UnsafeMetaToGlibNone(meta))
 	carg3 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(inbuf))
 
-	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_transform_meta(unsafe.Pointer(parentclass.transform_meta), carg0, carg1, carg2, carg3)
+	cret = C._goglib_gstaudio1_AudioEncoder_virtual_transform_meta(unsafe.Pointer(parentclass.transform_meta), carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(enc)
 	runtime.KeepAlive(outbuf)
 	runtime.KeepAlive(meta)
@@ -11613,10 +11613,10 @@ func UnsafeApplyAudioFilterOverrides[Instance AudioFilter](gclass unsafe.Pointer
 	pclass := (*C.GstAudioFilterClass)(gclass)
 
 	if overrides.Setup != nil {
-		pclass.setup = (*[0]byte)(C._gotk4_gstaudio1_AudioFilter_setup)
+		pclass.setup = (*[0]byte)(C._goglib_gstaudio1_AudioFilter_setup)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioFilter_setup",
+			"_goglib_gstaudio1_AudioFilter_setup",
 			func(carg0 *C.GstAudioFilter, carg1 *C.GstAudioInfo) (cret C.gboolean) {
 				var filter Instance   // go GstAudioFilter subclass
 				var info   *AudioInfo // in, none, converted
@@ -11659,7 +11659,7 @@ func (filter *AudioFilterInstance) ParentSetup(info *AudioInfo) bool {
 	carg0 = (*C.GstAudioFilter)(UnsafeAudioFilterToGlibNone(filter))
 	carg1 = (*C.GstAudioInfo)(UnsafeAudioInfoToGlibNone(info))
 
-	cret = C._gotk4_gstaudio1_AudioFilter_virtual_setup(unsafe.Pointer(parentclass.setup), carg0, carg1)
+	cret = C._goglib_gstaudio1_AudioFilter_virtual_setup(unsafe.Pointer(parentclass.setup), carg0, carg1)
 	runtime.KeepAlive(filter)
 	runtime.KeepAlive(info)
 
@@ -12746,7 +12746,7 @@ func (buf *AudioRingBufferInstance) Pause() bool {
 func (buf *AudioRingBufferInstance) Read(sample uint64, data []uint8) (gst.ClockTime, uint) {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var carg1 C.guint64             // in, none, casted
-	var carg2 *C.guint8             // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg3)
+	var carg2 *C.guint8             // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
 	var carg3 C.guint               // implicit
 	var carg4 C.GstClockTime        // out, full, casted, alias
 	var cret  C.guint               // return, none, casted
@@ -12756,7 +12756,7 @@ func (buf *AudioRingBufferInstance) Read(sample uint64, data []uint8) (gst.Clock
 	_ = data
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (guint8*)")
+	panic("unimplemented conversion of []uint8 (guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_audio_ring_buffer_read(carg0, carg1, carg2, carg3, &carg4)
 	runtime.KeepAlive(buf)
@@ -12840,7 +12840,7 @@ func (buf *AudioRingBufferInstance) SetCallbackFull(cb AudioRingBufferCallback) 
 
 	carg0 = (*C.GstAudioRingBuffer)(UnsafeAudioRingBufferToGlibNone(buf))
 	if cb != nil {
-		carg1 = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBufferCallback)
+		carg1 = (*[0]byte)(C._goglib_gstaudio1_AudioRingBufferCallback)
 		carg2 = C.gpointer(userdata.Register(cb))
 		carg3 = (C.GDestroyNotify)((*[0]byte)(C.destroyUserdata))
 	}
@@ -13131,10 +13131,10 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 	pclass := (*C.GstAudioRingBufferClass)(gclass)
 
 	if overrides.Acquire != nil {
-		pclass.acquire = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_acquire)
+		pclass.acquire = (*[0]byte)(C._goglib_gstaudio1_AudioRingBuffer_acquire)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioRingBuffer_acquire",
+			"_goglib_gstaudio1_AudioRingBuffer_acquire",
 			func(carg0 *C.GstAudioRingBuffer, carg1 *C.GstAudioRingBufferSpec) (cret C.gboolean) {
 				var buf   Instance             // go GstAudioRingBuffer subclass
 				var spec  *AudioRingBufferSpec // in, none, converted
@@ -13155,10 +13155,10 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 	}
 
 	if overrides.Activate != nil {
-		pclass.activate = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_activate)
+		pclass.activate = (*[0]byte)(C._goglib_gstaudio1_AudioRingBuffer_activate)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioRingBuffer_activate",
+			"_goglib_gstaudio1_AudioRingBuffer_activate",
 			func(carg0 *C.GstAudioRingBuffer, carg1 C.gboolean) (cret C.gboolean) {
 				var buf    Instance // go GstAudioRingBuffer subclass
 				var active bool     // in
@@ -13181,10 +13181,10 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 	}
 
 	if overrides.ClearAll != nil {
-		pclass.clear_all = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_clear_all)
+		pclass.clear_all = (*[0]byte)(C._goglib_gstaudio1_AudioRingBuffer_clear_all)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioRingBuffer_clear_all",
+			"_goglib_gstaudio1_AudioRingBuffer_clear_all",
 			func(carg0 *C.GstAudioRingBuffer) {
 				var buf Instance // go GstAudioRingBuffer subclass
 
@@ -13196,10 +13196,10 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 	}
 
 	if overrides.CloseDevice != nil {
-		pclass.close_device = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_close_device)
+		pclass.close_device = (*[0]byte)(C._goglib_gstaudio1_AudioRingBuffer_close_device)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioRingBuffer_close_device",
+			"_goglib_gstaudio1_AudioRingBuffer_close_device",
 			func(carg0 *C.GstAudioRingBuffer) (cret C.gboolean) {
 				var buf   Instance // go GstAudioRingBuffer subclass
 				var goret bool     // return
@@ -13218,10 +13218,10 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 	}
 
 	if overrides.Delay != nil {
-		pclass.delay = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_delay)
+		pclass.delay = (*[0]byte)(C._goglib_gstaudio1_AudioRingBuffer_delay)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioRingBuffer_delay",
+			"_goglib_gstaudio1_AudioRingBuffer_delay",
 			func(carg0 *C.GstAudioRingBuffer) (cret C.guint) {
 				var buf   Instance // go GstAudioRingBuffer subclass
 				var goret uint     // return, none, casted
@@ -13238,10 +13238,10 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 	}
 
 	if overrides.OpenDevice != nil {
-		pclass.open_device = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_open_device)
+		pclass.open_device = (*[0]byte)(C._goglib_gstaudio1_AudioRingBuffer_open_device)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioRingBuffer_open_device",
+			"_goglib_gstaudio1_AudioRingBuffer_open_device",
 			func(carg0 *C.GstAudioRingBuffer) (cret C.gboolean) {
 				var buf   Instance // go GstAudioRingBuffer subclass
 				var goret bool     // return
@@ -13260,10 +13260,10 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 	}
 
 	if overrides.Pause != nil {
-		pclass.pause = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_pause)
+		pclass.pause = (*[0]byte)(C._goglib_gstaudio1_AudioRingBuffer_pause)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioRingBuffer_pause",
+			"_goglib_gstaudio1_AudioRingBuffer_pause",
 			func(carg0 *C.GstAudioRingBuffer) (cret C.gboolean) {
 				var buf   Instance // go GstAudioRingBuffer subclass
 				var goret bool     // return
@@ -13282,10 +13282,10 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 	}
 
 	if overrides.Release != nil {
-		pclass.release = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_release)
+		pclass.release = (*[0]byte)(C._goglib_gstaudio1_AudioRingBuffer_release)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioRingBuffer_release",
+			"_goglib_gstaudio1_AudioRingBuffer_release",
 			func(carg0 *C.GstAudioRingBuffer) (cret C.gboolean) {
 				var buf   Instance // go GstAudioRingBuffer subclass
 				var goret bool     // return
@@ -13304,10 +13304,10 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 	}
 
 	if overrides.Resume != nil {
-		pclass.resume = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_resume)
+		pclass.resume = (*[0]byte)(C._goglib_gstaudio1_AudioRingBuffer_resume)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioRingBuffer_resume",
+			"_goglib_gstaudio1_AudioRingBuffer_resume",
 			func(carg0 *C.GstAudioRingBuffer) (cret C.gboolean) {
 				var buf   Instance // go GstAudioRingBuffer subclass
 				var goret bool     // return
@@ -13326,10 +13326,10 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 	}
 
 	if overrides.Start != nil {
-		pclass.start = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_start)
+		pclass.start = (*[0]byte)(C._goglib_gstaudio1_AudioRingBuffer_start)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioRingBuffer_start",
+			"_goglib_gstaudio1_AudioRingBuffer_start",
 			func(carg0 *C.GstAudioRingBuffer) (cret C.gboolean) {
 				var buf   Instance // go GstAudioRingBuffer subclass
 				var goret bool     // return
@@ -13348,10 +13348,10 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 	}
 
 	if overrides.Stop != nil {
-		pclass.stop = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_stop)
+		pclass.stop = (*[0]byte)(C._goglib_gstaudio1_AudioRingBuffer_stop)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioRingBuffer_stop",
+			"_goglib_gstaudio1_AudioRingBuffer_stop",
 			func(carg0 *C.GstAudioRingBuffer) (cret C.gboolean) {
 				var buf   Instance // go GstAudioRingBuffer subclass
 				var goret bool     // return
@@ -13394,7 +13394,7 @@ func (buf *AudioRingBufferInstance) ParentAcquire(spec *AudioRingBufferSpec) boo
 	carg0 = (*C.GstAudioRingBuffer)(UnsafeAudioRingBufferToGlibNone(buf))
 	carg1 = (*C.GstAudioRingBufferSpec)(UnsafeAudioRingBufferSpecToGlibNone(spec))
 
-	cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_acquire(unsafe.Pointer(parentclass.acquire), carg0, carg1)
+	cret = C._goglib_gstaudio1_AudioRingBuffer_virtual_acquire(unsafe.Pointer(parentclass.acquire), carg0, carg1)
 	runtime.KeepAlive(buf)
 	runtime.KeepAlive(spec)
 
@@ -13433,7 +13433,7 @@ func (buf *AudioRingBufferInstance) ParentActivate(active bool) bool {
 		carg1 = C.TRUE
 	}
 
-	cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_activate(unsafe.Pointer(parentclass.activate), carg0, carg1)
+	cret = C._goglib_gstaudio1_AudioRingBuffer_virtual_activate(unsafe.Pointer(parentclass.activate), carg0, carg1)
 	runtime.KeepAlive(buf)
 	runtime.KeepAlive(active)
 
@@ -13459,7 +13459,7 @@ func (buf *AudioRingBufferInstance) ParentClearAll() {
 
 	carg0 = (*C.GstAudioRingBuffer)(UnsafeAudioRingBufferToGlibNone(buf))
 
-	C._gotk4_gstaudio1_AudioRingBuffer_virtual_clear_all(unsafe.Pointer(parentclass.clear_all), carg0)
+	C._goglib_gstaudio1_AudioRingBuffer_virtual_clear_all(unsafe.Pointer(parentclass.clear_all), carg0)
 	runtime.KeepAlive(buf)
 }
 
@@ -13480,7 +13480,7 @@ func (buf *AudioRingBufferInstance) ParentCloseDevice() bool {
 
 	carg0 = (*C.GstAudioRingBuffer)(UnsafeAudioRingBufferToGlibNone(buf))
 
-	cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_close_device(unsafe.Pointer(parentclass.close_device), carg0)
+	cret = C._goglib_gstaudio1_AudioRingBuffer_virtual_close_device(unsafe.Pointer(parentclass.close_device), carg0)
 	runtime.KeepAlive(buf)
 
 	var goret bool
@@ -13517,7 +13517,7 @@ func (buf *AudioRingBufferInstance) ParentDelay() uint {
 
 	carg0 = (*C.GstAudioRingBuffer)(UnsafeAudioRingBufferToGlibNone(buf))
 
-	cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_delay(unsafe.Pointer(parentclass.delay), carg0)
+	cret = C._goglib_gstaudio1_AudioRingBuffer_virtual_delay(unsafe.Pointer(parentclass.delay), carg0)
 	runtime.KeepAlive(buf)
 
 	var goret uint
@@ -13545,7 +13545,7 @@ func (buf *AudioRingBufferInstance) ParentOpenDevice() bool {
 
 	carg0 = (*C.GstAudioRingBuffer)(UnsafeAudioRingBufferToGlibNone(buf))
 
-	cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_open_device(unsafe.Pointer(parentclass.open_device), carg0)
+	cret = C._goglib_gstaudio1_AudioRingBuffer_virtual_open_device(unsafe.Pointer(parentclass.open_device), carg0)
 	runtime.KeepAlive(buf)
 
 	var goret bool
@@ -13573,7 +13573,7 @@ func (buf *AudioRingBufferInstance) ParentPause() bool {
 
 	carg0 = (*C.GstAudioRingBuffer)(UnsafeAudioRingBufferToGlibNone(buf))
 
-	cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_pause(unsafe.Pointer(parentclass.pause), carg0)
+	cret = C._goglib_gstaudio1_AudioRingBuffer_virtual_pause(unsafe.Pointer(parentclass.pause), carg0)
 	runtime.KeepAlive(buf)
 
 	var goret bool
@@ -13601,7 +13601,7 @@ func (buf *AudioRingBufferInstance) ParentRelease() bool {
 
 	carg0 = (*C.GstAudioRingBuffer)(UnsafeAudioRingBufferToGlibNone(buf))
 
-	cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_release(unsafe.Pointer(parentclass.release), carg0)
+	cret = C._goglib_gstaudio1_AudioRingBuffer_virtual_release(unsafe.Pointer(parentclass.release), carg0)
 	runtime.KeepAlive(buf)
 
 	var goret bool
@@ -13629,7 +13629,7 @@ func (buf *AudioRingBufferInstance) ParentResume() bool {
 
 	carg0 = (*C.GstAudioRingBuffer)(UnsafeAudioRingBufferToGlibNone(buf))
 
-	cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_resume(unsafe.Pointer(parentclass.resume), carg0)
+	cret = C._goglib_gstaudio1_AudioRingBuffer_virtual_resume(unsafe.Pointer(parentclass.resume), carg0)
 	runtime.KeepAlive(buf)
 
 	var goret bool
@@ -13657,7 +13657,7 @@ func (buf *AudioRingBufferInstance) ParentStart() bool {
 
 	carg0 = (*C.GstAudioRingBuffer)(UnsafeAudioRingBufferToGlibNone(buf))
 
-	cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_start(unsafe.Pointer(parentclass.start), carg0)
+	cret = C._goglib_gstaudio1_AudioRingBuffer_virtual_start(unsafe.Pointer(parentclass.start), carg0)
 	runtime.KeepAlive(buf)
 
 	var goret bool
@@ -13685,7 +13685,7 @@ func (buf *AudioRingBufferInstance) ParentStop() bool {
 
 	carg0 = (*C.GstAudioRingBuffer)(UnsafeAudioRingBufferToGlibNone(buf))
 
-	cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
+	cret = C._goglib_gstaudio1_AudioRingBuffer_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
 	runtime.KeepAlive(buf)
 
 	var goret bool
@@ -13983,10 +13983,10 @@ func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, ov
 	pclass := (*C.GstAudioSinkClass)(gclass)
 
 	if overrides.Close != nil {
-		pclass.close = (*[0]byte)(C._gotk4_gstaudio1_AudioSink_close)
+		pclass.close = (*[0]byte)(C._goglib_gstaudio1_AudioSink_close)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioSink_close",
+			"_goglib_gstaudio1_AudioSink_close",
 			func(carg0 *C.GstAudioSink) (cret C.gboolean) {
 				var sink  Instance // go GstAudioSink subclass
 				var goret bool     // return
@@ -14005,10 +14005,10 @@ func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.Delay != nil {
-		pclass.delay = (*[0]byte)(C._gotk4_gstaudio1_AudioSink_delay)
+		pclass.delay = (*[0]byte)(C._goglib_gstaudio1_AudioSink_delay)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioSink_delay",
+			"_goglib_gstaudio1_AudioSink_delay",
 			func(carg0 *C.GstAudioSink) (cret C.guint) {
 				var sink  Instance // go GstAudioSink subclass
 				var goret uint     // return, none, casted
@@ -14025,10 +14025,10 @@ func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.Open != nil {
-		pclass.open = (*[0]byte)(C._gotk4_gstaudio1_AudioSink_open)
+		pclass.open = (*[0]byte)(C._goglib_gstaudio1_AudioSink_open)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioSink_open",
+			"_goglib_gstaudio1_AudioSink_open",
 			func(carg0 *C.GstAudioSink) (cret C.gboolean) {
 				var sink  Instance // go GstAudioSink subclass
 				var goret bool     // return
@@ -14047,10 +14047,10 @@ func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.Pause != nil {
-		pclass.pause = (*[0]byte)(C._gotk4_gstaudio1_AudioSink_pause)
+		pclass.pause = (*[0]byte)(C._goglib_gstaudio1_AudioSink_pause)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioSink_pause",
+			"_goglib_gstaudio1_AudioSink_pause",
 			func(carg0 *C.GstAudioSink) {
 				var sink Instance // go GstAudioSink subclass
 
@@ -14062,10 +14062,10 @@ func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.Prepare != nil {
-		pclass.prepare = (*[0]byte)(C._gotk4_gstaudio1_AudioSink_prepare)
+		pclass.prepare = (*[0]byte)(C._goglib_gstaudio1_AudioSink_prepare)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioSink_prepare",
+			"_goglib_gstaudio1_AudioSink_prepare",
 			func(carg0 *C.GstAudioSink, carg1 *C.GstAudioRingBufferSpec) (cret C.gboolean) {
 				var sink  Instance             // go GstAudioSink subclass
 				var spec  *AudioRingBufferSpec // in, none, converted
@@ -14086,10 +14086,10 @@ func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.Reset != nil {
-		pclass.reset = (*[0]byte)(C._gotk4_gstaudio1_AudioSink_reset)
+		pclass.reset = (*[0]byte)(C._goglib_gstaudio1_AudioSink_reset)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioSink_reset",
+			"_goglib_gstaudio1_AudioSink_reset",
 			func(carg0 *C.GstAudioSink) {
 				var sink Instance // go GstAudioSink subclass
 
@@ -14101,10 +14101,10 @@ func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.Resume != nil {
-		pclass.resume = (*[0]byte)(C._gotk4_gstaudio1_AudioSink_resume)
+		pclass.resume = (*[0]byte)(C._goglib_gstaudio1_AudioSink_resume)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioSink_resume",
+			"_goglib_gstaudio1_AudioSink_resume",
 			func(carg0 *C.GstAudioSink) {
 				var sink Instance // go GstAudioSink subclass
 
@@ -14116,10 +14116,10 @@ func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.Stop != nil {
-		pclass.stop = (*[0]byte)(C._gotk4_gstaudio1_AudioSink_stop)
+		pclass.stop = (*[0]byte)(C._goglib_gstaudio1_AudioSink_stop)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioSink_stop",
+			"_goglib_gstaudio1_AudioSink_stop",
 			func(carg0 *C.GstAudioSink) {
 				var sink Instance // go GstAudioSink subclass
 
@@ -14131,10 +14131,10 @@ func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.Unprepare != nil {
-		pclass.unprepare = (*[0]byte)(C._gotk4_gstaudio1_AudioSink_unprepare)
+		pclass.unprepare = (*[0]byte)(C._goglib_gstaudio1_AudioSink_unprepare)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioSink_unprepare",
+			"_goglib_gstaudio1_AudioSink_unprepare",
 			func(carg0 *C.GstAudioSink) (cret C.gboolean) {
 				var sink  Instance // go GstAudioSink subclass
 				var goret bool     // return
@@ -14169,7 +14169,7 @@ func (sink *AudioSinkInstance) ParentClose() bool {
 
 	carg0 = (*C.GstAudioSink)(UnsafeAudioSinkToGlibNone(sink))
 
-	cret = C._gotk4_gstaudio1_AudioSink_virtual_close(unsafe.Pointer(parentclass.close), carg0)
+	cret = C._goglib_gstaudio1_AudioSink_virtual_close(unsafe.Pointer(parentclass.close), carg0)
 	runtime.KeepAlive(sink)
 
 	var goret bool
@@ -14198,7 +14198,7 @@ func (sink *AudioSinkInstance) ParentDelay() uint {
 
 	carg0 = (*C.GstAudioSink)(UnsafeAudioSinkToGlibNone(sink))
 
-	cret = C._gotk4_gstaudio1_AudioSink_virtual_delay(unsafe.Pointer(parentclass.delay), carg0)
+	cret = C._goglib_gstaudio1_AudioSink_virtual_delay(unsafe.Pointer(parentclass.delay), carg0)
 	runtime.KeepAlive(sink)
 
 	var goret uint
@@ -14225,7 +14225,7 @@ func (sink *AudioSinkInstance) ParentOpen() bool {
 
 	carg0 = (*C.GstAudioSink)(UnsafeAudioSinkToGlibNone(sink))
 
-	cret = C._gotk4_gstaudio1_AudioSink_virtual_open(unsafe.Pointer(parentclass.open), carg0)
+	cret = C._goglib_gstaudio1_AudioSink_virtual_open(unsafe.Pointer(parentclass.open), carg0)
 	runtime.KeepAlive(sink)
 
 	var goret bool
@@ -14250,7 +14250,7 @@ func (sink *AudioSinkInstance) ParentPause() {
 
 	carg0 = (*C.GstAudioSink)(UnsafeAudioSinkToGlibNone(sink))
 
-	C._gotk4_gstaudio1_AudioSink_virtual_pause(unsafe.Pointer(parentclass.pause), carg0)
+	C._goglib_gstaudio1_AudioSink_virtual_pause(unsafe.Pointer(parentclass.pause), carg0)
 	runtime.KeepAlive(sink)
 }
 
@@ -14276,7 +14276,7 @@ func (sink *AudioSinkInstance) ParentPrepareAudioSink(spec *AudioRingBufferSpec)
 	carg0 = (*C.GstAudioSink)(UnsafeAudioSinkToGlibNone(sink))
 	carg1 = (*C.GstAudioRingBufferSpec)(UnsafeAudioRingBufferSpecToGlibNone(spec))
 
-	cret = C._gotk4_gstaudio1_AudioSink_virtual_prepare(unsafe.Pointer(parentclass.prepare), carg0, carg1)
+	cret = C._goglib_gstaudio1_AudioSink_virtual_prepare(unsafe.Pointer(parentclass.prepare), carg0, carg1)
 	runtime.KeepAlive(sink)
 	runtime.KeepAlive(spec)
 
@@ -14302,7 +14302,7 @@ func (sink *AudioSinkInstance) ParentReset() {
 
 	carg0 = (*C.GstAudioSink)(UnsafeAudioSinkToGlibNone(sink))
 
-	C._gotk4_gstaudio1_AudioSink_virtual_reset(unsafe.Pointer(parentclass.reset), carg0)
+	C._goglib_gstaudio1_AudioSink_virtual_reset(unsafe.Pointer(parentclass.reset), carg0)
 	runtime.KeepAlive(sink)
 }
 
@@ -14317,7 +14317,7 @@ func (sink *AudioSinkInstance) ParentResume() {
 
 	carg0 = (*C.GstAudioSink)(UnsafeAudioSinkToGlibNone(sink))
 
-	C._gotk4_gstaudio1_AudioSink_virtual_resume(unsafe.Pointer(parentclass.resume), carg0)
+	C._goglib_gstaudio1_AudioSink_virtual_resume(unsafe.Pointer(parentclass.resume), carg0)
 	runtime.KeepAlive(sink)
 }
 
@@ -14335,7 +14335,7 @@ func (sink *AudioSinkInstance) ParentStopAudioSink() {
 
 	carg0 = (*C.GstAudioSink)(UnsafeAudioSinkToGlibNone(sink))
 
-	C._gotk4_gstaudio1_AudioSink_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
+	C._goglib_gstaudio1_AudioSink_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
 	runtime.KeepAlive(sink)
 }
 
@@ -14355,7 +14355,7 @@ func (sink *AudioSinkInstance) ParentUnprepare() bool {
 
 	carg0 = (*C.GstAudioSink)(UnsafeAudioSinkToGlibNone(sink))
 
-	cret = C._gotk4_gstaudio1_AudioSink_virtual_unprepare(unsafe.Pointer(parentclass.unprepare), carg0)
+	cret = C._goglib_gstaudio1_AudioSink_virtual_unprepare(unsafe.Pointer(parentclass.unprepare), carg0)
 	runtime.KeepAlive(sink)
 
 	var goret bool
@@ -14603,10 +14603,10 @@ func UnsafeApplyAudioSrcOverrides[Instance AudioSrc](gclass unsafe.Pointer, over
 	pclass := (*C.GstAudioSrcClass)(gclass)
 
 	if overrides.Close != nil {
-		pclass.close = (*[0]byte)(C._gotk4_gstaudio1_AudioSrc_close)
+		pclass.close = (*[0]byte)(C._goglib_gstaudio1_AudioSrc_close)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioSrc_close",
+			"_goglib_gstaudio1_AudioSrc_close",
 			func(carg0 *C.GstAudioSrc) (cret C.gboolean) {
 				var src   Instance // go GstAudioSrc subclass
 				var goret bool     // return
@@ -14625,10 +14625,10 @@ func UnsafeApplyAudioSrcOverrides[Instance AudioSrc](gclass unsafe.Pointer, over
 	}
 
 	if overrides.Delay != nil {
-		pclass.delay = (*[0]byte)(C._gotk4_gstaudio1_AudioSrc_delay)
+		pclass.delay = (*[0]byte)(C._goglib_gstaudio1_AudioSrc_delay)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioSrc_delay",
+			"_goglib_gstaudio1_AudioSrc_delay",
 			func(carg0 *C.GstAudioSrc) (cret C.guint) {
 				var src   Instance // go GstAudioSrc subclass
 				var goret uint     // return, none, casted
@@ -14645,10 +14645,10 @@ func UnsafeApplyAudioSrcOverrides[Instance AudioSrc](gclass unsafe.Pointer, over
 	}
 
 	if overrides.Open != nil {
-		pclass.open = (*[0]byte)(C._gotk4_gstaudio1_AudioSrc_open)
+		pclass.open = (*[0]byte)(C._goglib_gstaudio1_AudioSrc_open)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioSrc_open",
+			"_goglib_gstaudio1_AudioSrc_open",
 			func(carg0 *C.GstAudioSrc) (cret C.gboolean) {
 				var src   Instance // go GstAudioSrc subclass
 				var goret bool     // return
@@ -14667,10 +14667,10 @@ func UnsafeApplyAudioSrcOverrides[Instance AudioSrc](gclass unsafe.Pointer, over
 	}
 
 	if overrides.Prepare != nil {
-		pclass.prepare = (*[0]byte)(C._gotk4_gstaudio1_AudioSrc_prepare)
+		pclass.prepare = (*[0]byte)(C._goglib_gstaudio1_AudioSrc_prepare)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioSrc_prepare",
+			"_goglib_gstaudio1_AudioSrc_prepare",
 			func(carg0 *C.GstAudioSrc, carg1 *C.GstAudioRingBufferSpec) (cret C.gboolean) {
 				var src   Instance             // go GstAudioSrc subclass
 				var spec  *AudioRingBufferSpec // in, none, converted
@@ -14691,10 +14691,10 @@ func UnsafeApplyAudioSrcOverrides[Instance AudioSrc](gclass unsafe.Pointer, over
 	}
 
 	if overrides.Reset != nil {
-		pclass.reset = (*[0]byte)(C._gotk4_gstaudio1_AudioSrc_reset)
+		pclass.reset = (*[0]byte)(C._goglib_gstaudio1_AudioSrc_reset)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioSrc_reset",
+			"_goglib_gstaudio1_AudioSrc_reset",
 			func(carg0 *C.GstAudioSrc) {
 				var src Instance // go GstAudioSrc subclass
 
@@ -14706,10 +14706,10 @@ func UnsafeApplyAudioSrcOverrides[Instance AudioSrc](gclass unsafe.Pointer, over
 	}
 
 	if overrides.Unprepare != nil {
-		pclass.unprepare = (*[0]byte)(C._gotk4_gstaudio1_AudioSrc_unprepare)
+		pclass.unprepare = (*[0]byte)(C._goglib_gstaudio1_AudioSrc_unprepare)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstaudio1_AudioSrc_unprepare",
+			"_goglib_gstaudio1_AudioSrc_unprepare",
 			func(carg0 *C.GstAudioSrc) (cret C.gboolean) {
 				var src   Instance // go GstAudioSrc subclass
 				var goret bool     // return
@@ -14744,7 +14744,7 @@ func (src *AudioSrcInstance) ParentClose() bool {
 
 	carg0 = (*C.GstAudioSrc)(UnsafeAudioSrcToGlibNone(src))
 
-	cret = C._gotk4_gstaudio1_AudioSrc_virtual_close(unsafe.Pointer(parentclass.close), carg0)
+	cret = C._goglib_gstaudio1_AudioSrc_virtual_close(unsafe.Pointer(parentclass.close), carg0)
 	runtime.KeepAlive(src)
 
 	var goret bool
@@ -14772,7 +14772,7 @@ func (src *AudioSrcInstance) ParentDelay() uint {
 
 	carg0 = (*C.GstAudioSrc)(UnsafeAudioSrcToGlibNone(src))
 
-	cret = C._gotk4_gstaudio1_AudioSrc_virtual_delay(unsafe.Pointer(parentclass.delay), carg0)
+	cret = C._goglib_gstaudio1_AudioSrc_virtual_delay(unsafe.Pointer(parentclass.delay), carg0)
 	runtime.KeepAlive(src)
 
 	var goret uint
@@ -14798,7 +14798,7 @@ func (src *AudioSrcInstance) ParentOpen() bool {
 
 	carg0 = (*C.GstAudioSrc)(UnsafeAudioSrcToGlibNone(src))
 
-	cret = C._gotk4_gstaudio1_AudioSrc_virtual_open(unsafe.Pointer(parentclass.open), carg0)
+	cret = C._goglib_gstaudio1_AudioSrc_virtual_open(unsafe.Pointer(parentclass.open), carg0)
 	runtime.KeepAlive(src)
 
 	var goret bool
@@ -14832,7 +14832,7 @@ func (src *AudioSrcInstance) ParentPrepare(spec *AudioRingBufferSpec) bool {
 	carg0 = (*C.GstAudioSrc)(UnsafeAudioSrcToGlibNone(src))
 	carg1 = (*C.GstAudioRingBufferSpec)(UnsafeAudioRingBufferSpecToGlibNone(spec))
 
-	cret = C._gotk4_gstaudio1_AudioSrc_virtual_prepare(unsafe.Pointer(parentclass.prepare), carg0, carg1)
+	cret = C._goglib_gstaudio1_AudioSrc_virtual_prepare(unsafe.Pointer(parentclass.prepare), carg0, carg1)
 	runtime.KeepAlive(src)
 	runtime.KeepAlive(spec)
 
@@ -14856,7 +14856,7 @@ func (src *AudioSrcInstance) ParentReset() {
 
 	carg0 = (*C.GstAudioSrc)(UnsafeAudioSrcToGlibNone(src))
 
-	C._gotk4_gstaudio1_AudioSrc_virtual_reset(unsafe.Pointer(parentclass.reset), carg0)
+	C._goglib_gstaudio1_AudioSrc_virtual_reset(unsafe.Pointer(parentclass.reset), carg0)
 	runtime.KeepAlive(src)
 }
 
@@ -14876,7 +14876,7 @@ func (src *AudioSrcInstance) ParentUnprepare() bool {
 
 	carg0 = (*C.GstAudioSrc)(UnsafeAudioSrcToGlibNone(src))
 
-	cret = C._gotk4_gstaudio1_AudioSrc_virtual_unprepare(unsafe.Pointer(parentclass.unprepare), carg0)
+	cret = C._goglib_gstaudio1_AudioSrc_virtual_unprepare(unsafe.Pointer(parentclass.unprepare), carg0)
 	runtime.KeepAlive(src)
 
 	var goret bool
@@ -15490,7 +15490,7 @@ func AudioBufferMap(info *AudioInfo, gstbuffer *gst.Buffer, flags gst.MapFlags) 
 
 	_ = buffer
 	_ = carg1
-	panic("unimplemented conversion of AudioBuffer (GstAudioBuffer)")
+	panic("unimplemented conversion of AudioBuffer (GstAudioBuffer) because of unknown reason")
 	if cret != 0 {
 		goret = true
 	}
@@ -15519,8 +15519,8 @@ func AudioBufferReorderChannels(buffer *gst.Buffer, format AudioFormat, from []A
 	var carg1 *C.GstBuffer               // in, none, converted
 	var carg2 C.GstAudioFormat           // in, none, casted
 	var carg3 C.gint                     // implicit
-	var carg4 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner: *typesystem.Enum, length-by: carg3)
-	var carg5 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner: *typesystem.Enum, length-by: carg3)
+	var carg4 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner GstAudioChannelPosition (*typesystem.Enum), length-by: carg3)
+	var carg5 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner GstAudioChannelPosition (*typesystem.Enum), length-by: carg3)
 	var cret  C.gboolean                 // return
 
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
@@ -15528,11 +15528,11 @@ func AudioBufferReorderChannels(buffer *gst.Buffer, format AudioFormat, from []A
 	_ = from
 	_ = carg4
 	_ = carg3
-	panic("unimplemented conversion of []AudioChannelPosition (const GstAudioChannelPosition*)")
+	panic("unimplemented conversion of []AudioChannelPosition (const GstAudioChannelPosition*) because of unimplemented: non-fixed size array")
 	_ = to
 	_ = carg5
 	_ = carg3
-	panic("unimplemented conversion of []AudioChannelPosition (const GstAudioChannelPosition*)")
+	panic("unimplemented conversion of []AudioChannelPosition (const GstAudioChannelPosition*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_audio_buffer_reorder_channels(carg1, carg2, carg3, carg4, carg5)
 	runtime.KeepAlive(buffer)
@@ -16982,7 +16982,7 @@ func AudioInfoFromCaps(caps *gst.Caps) (AudioInfo, bool) {
 
 	_ = info
 	_ = carg1
-	panic("unimplemented conversion of AudioInfo (GstAudioInfo)")
+	panic("unimplemented conversion of AudioInfo (GstAudioInfo) because of unknown reason")
 	if cret != 0 {
 		goret = true
 	}
@@ -17006,7 +17006,7 @@ func AudioInfoInit() AudioInfo {
 
 	_ = info
 	_ = carg1
-	panic("unimplemented conversion of AudioInfo (GstAudioInfo)")
+	panic("unimplemented conversion of AudioInfo (GstAudioInfo) because of unknown reason")
 
 	return info
 }
@@ -17130,15 +17130,19 @@ func (info *AudioInfo) SetFormat(format AudioFormat, rate int32, channels int32,
 	var carg1 C.GstAudioFormat           // in, none, casted
 	var carg2 C.gint                     // in, none, casted
 	var carg3 C.gint                     // in, none, casted
-	var carg4 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], nullable, array (inner: *typesystem.Enum, fixed-size: 64)
+	var carg4 *C.GstAudioChannelPosition // in, none, array fixed size (inner: GstAudioChannelPosition, size: 64)
 
 	carg0 = (*C.GstAudioInfo)(UnsafeAudioInfoToGlibNone(info))
 	carg1 = C.GstAudioFormat(format)
 	carg2 = C.gint(rate)
 	carg3 = C.gint(channels)
-	_ = position
-	_ = carg4
-	panic("unimplemented conversion of [64]AudioChannelPosition (const GstAudioChannelPosition*)")
+	{
+		var carr [64]C.GstAudioChannelPosition
+		for i := range 64 {
+			carr[i] = C.GstAudioChannelPosition(position[i])
+			carg4 = unsafe.SliceData(carr[:])
+		}
+	}
 
 	C.gst_audio_info_set_format(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(info)
@@ -18743,7 +18747,7 @@ func DsdInfoFromCaps(caps *gst.Caps) (DsdInfo, bool) {
 
 	_ = info
 	_ = carg1
-	panic("unimplemented conversion of DsdInfo (GstDsdInfo)")
+	panic("unimplemented conversion of DsdInfo (GstDsdInfo) because of unknown reason")
 	if cret != 0 {
 		goret = true
 	}
@@ -18767,7 +18771,7 @@ func DsdInfoInit() DsdInfo {
 
 	_ = info
 	_ = carg1
-	panic("unimplemented conversion of DsdInfo (GstDsdInfo)")
+	panic("unimplemented conversion of DsdInfo (GstDsdInfo) because of unknown reason")
 
 	return info
 }
@@ -18844,15 +18848,19 @@ func (info *DsdInfo) SetFormat(format DsdFormat, rate int32, channels int32, pos
 	var carg1 C.GstDsdFormat             // in, none, casted
 	var carg2 C.gint                     // in, none, casted
 	var carg3 C.gint                     // in, none, casted
-	var carg4 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], nullable, array (inner: *typesystem.Enum, fixed-size: 64)
+	var carg4 *C.GstAudioChannelPosition // in, none, array fixed size (inner: GstAudioChannelPosition, size: 64)
 
 	carg0 = (*C.GstDsdInfo)(UnsafeDsdInfoToGlibNone(info))
 	carg1 = C.GstDsdFormat(format)
 	carg2 = C.gint(rate)
 	carg3 = C.gint(channels)
-	_ = positions
-	_ = carg4
-	panic("unimplemented conversion of [64]AudioChannelPosition (const GstAudioChannelPosition*)")
+	{
+		var carr [64]C.GstAudioChannelPosition
+		for i := range 64 {
+			carr[i] = C.GstAudioChannelPosition(positions[i])
+			carg4 = unsafe.SliceData(carr[:])
+		}
+	}
 
 	C.gst_dsd_info_set_format(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(info)

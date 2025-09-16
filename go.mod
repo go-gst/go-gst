@@ -1,16 +1,7 @@
 module github.com/go-gst/go-gst
 
-go 1.24.0
+go 1.25.0
 
-require (
-	github.com/diamondburned/gotk4 v0.3.1
-	github.com/go-gst/go-glib v1.4.1-0.20241209142714-f53cebf18559
-	github.com/go-gst/go-pointer v0.0.0-20241127163939-ba766f075b4c
-)
+require github.com/go-gst/go-glib v1.4.1-0.20250916203041-96c5e8f8aebe
 
-require (
-	golang.org/x/exp v0.0.0-20250305212735-054e65f0b394 // indirect
-	golang.org/x/sync v0.15.0 // indirect
-)
-
-replace github.com/diamondburned/gotk4 => github.com/rswilli/gotk4 v0.0.0-20250813123434-5660317ba8f5
+retract [v1.0.0, v1.4.0] // Handwritten bindings, not as stable as planned and not licensed open enough

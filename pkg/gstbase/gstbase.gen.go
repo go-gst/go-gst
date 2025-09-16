@@ -9,413 +9,413 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/diamondburned/gotk4/pkg/core/classdata"
-	"github.com/diamondburned/gotk4/pkg/core/userdata"
-	"github.com/diamondburned/gotk4/pkg/glib/v2"
-	"github.com/diamondburned/gotk4/pkg/gobject/v2"
+	"github.com/go-gst/go-glib/pkg/core/classdata"
+	"github.com/go-gst/go-glib/pkg/core/userdata"
+	"github.com/go-gst/go-glib/pkg/glib/v2"
+	"github.com/go-gst/go-glib/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
 )
 
 // #cgo pkg-config: gstreamer-base-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/base/base.h>
-// extern GstFlowReturn _gotk4_gstbase1_CollectPadsBufferFunction(GstCollectPads*, GstCollectData*, GstBuffer*, gpointer);
-// extern GstFlowReturn _gotk4_gstbase1_CollectPadsClipFunction(GstCollectPads*, GstCollectData*, GstBuffer*, GstBuffer*, gpointer);
-// extern GstFlowReturn _gotk4_gstbase1_CollectPadsFunction(GstCollectPads*, gpointer);
-// extern gboolean _gotk4_gstbase1_CollectPadsEventFunction(GstCollectPads*, GstCollectData*, GstEvent*, gpointer);
-// extern gboolean _gotk4_gstbase1_CollectPadsQueryFunction(GstCollectPads*, GstCollectData*, GstQuery*, gpointer);
-// extern gint _gotk4_gstbase1_CollectPadsCompareFunction(GstCollectPads*, GstCollectData*, GstClockTime, GstCollectData*, GstClockTime, gpointer);
-// extern void _gotk4_gstbase1_CollectPadsFlushFunction(GstCollectPads*, gpointer);
-// extern GstFlowReturn _gotk4_gstbase1_Aggregator_aggregate(GstAggregator*, gboolean);
-// extern GstBuffer* _gotk4_gstbase1_Aggregator_clip(GstAggregator*, GstAggregatorPad*, GstBuffer*);
-// extern gboolean _gotk4_gstbase1_Aggregator_decide_allocation(GstAggregator*, GstQuery*);
-// extern GstFlowReturn _gotk4_gstbase1_Aggregator_finish_buffer(GstAggregator*, GstBuffer*);
-// extern GstFlowReturn _gotk4_gstbase1_Aggregator_finish_buffer_list(GstAggregator*, GstBufferList*);
-// extern GstCaps* _gotk4_gstbase1_Aggregator_fixate_src_caps(GstAggregator*, GstCaps*);
-// extern GstFlowReturn _gotk4_gstbase1_Aggregator_flush(GstAggregator*);
-// extern GstClockTime _gotk4_gstbase1_Aggregator_get_next_time(GstAggregator*);
-// extern gboolean _gotk4_gstbase1_Aggregator_negotiate(GstAggregator*);
-// extern gboolean _gotk4_gstbase1_Aggregator_negotiated_src_caps(GstAggregator*, GstCaps*);
-// extern GstSample* _gotk4_gstbase1_Aggregator_peek_next_sample(GstAggregator*, GstAggregatorPad*);
-// extern gboolean _gotk4_gstbase1_Aggregator_propose_allocation(GstAggregator*, GstAggregatorPad*, GstQuery*, GstQuery*);
-// extern gboolean _gotk4_gstbase1_Aggregator_sink_event(GstAggregator*, GstAggregatorPad*, GstEvent*);
-// extern GstFlowReturn _gotk4_gstbase1_Aggregator_sink_event_pre_queue(GstAggregator*, GstAggregatorPad*, GstEvent*);
-// extern gboolean _gotk4_gstbase1_Aggregator_sink_query(GstAggregator*, GstAggregatorPad*, GstQuery*);
-// extern gboolean _gotk4_gstbase1_Aggregator_sink_query_pre_queue(GstAggregator*, GstAggregatorPad*, GstQuery*);
-// extern gboolean _gotk4_gstbase1_Aggregator_src_activate(GstAggregator*, GstPadMode, gboolean);
-// extern gboolean _gotk4_gstbase1_Aggregator_src_event(GstAggregator*, GstEvent*);
-// extern gboolean _gotk4_gstbase1_Aggregator_src_query(GstAggregator*, GstQuery*);
-// extern gboolean _gotk4_gstbase1_Aggregator_start(GstAggregator*);
-// extern gboolean _gotk4_gstbase1_Aggregator_stop(GstAggregator*);
-// extern GstFlowReturn _gotk4_gstbase1_Aggregator_update_src_caps(GstAggregator*, GstCaps*, GstCaps*);
-// GstFlowReturn _gotk4_gstbase1_Aggregator_virtual_aggregate(void* fnptr, GstAggregator* carg0, gboolean carg1) {
+// extern GstFlowReturn _goglib_gstbase1_CollectPadsBufferFunction(GstCollectPads*, GstCollectData*, GstBuffer*, gpointer);
+// extern GstFlowReturn _goglib_gstbase1_CollectPadsClipFunction(GstCollectPads*, GstCollectData*, GstBuffer*, GstBuffer*, gpointer);
+// extern GstFlowReturn _goglib_gstbase1_CollectPadsFunction(GstCollectPads*, gpointer);
+// extern gboolean _goglib_gstbase1_CollectPadsEventFunction(GstCollectPads*, GstCollectData*, GstEvent*, gpointer);
+// extern gboolean _goglib_gstbase1_CollectPadsQueryFunction(GstCollectPads*, GstCollectData*, GstQuery*, gpointer);
+// extern gint _goglib_gstbase1_CollectPadsCompareFunction(GstCollectPads*, GstCollectData*, GstClockTime, GstCollectData*, GstClockTime, gpointer);
+// extern void _goglib_gstbase1_CollectPadsFlushFunction(GstCollectPads*, gpointer);
+// extern GstFlowReturn _goglib_gstbase1_Aggregator_aggregate(GstAggregator*, gboolean);
+// extern GstBuffer* _goglib_gstbase1_Aggregator_clip(GstAggregator*, GstAggregatorPad*, GstBuffer*);
+// extern gboolean _goglib_gstbase1_Aggregator_decide_allocation(GstAggregator*, GstQuery*);
+// extern GstFlowReturn _goglib_gstbase1_Aggregator_finish_buffer(GstAggregator*, GstBuffer*);
+// extern GstFlowReturn _goglib_gstbase1_Aggregator_finish_buffer_list(GstAggregator*, GstBufferList*);
+// extern GstCaps* _goglib_gstbase1_Aggregator_fixate_src_caps(GstAggregator*, GstCaps*);
+// extern GstFlowReturn _goglib_gstbase1_Aggregator_flush(GstAggregator*);
+// extern GstClockTime _goglib_gstbase1_Aggregator_get_next_time(GstAggregator*);
+// extern gboolean _goglib_gstbase1_Aggregator_negotiate(GstAggregator*);
+// extern gboolean _goglib_gstbase1_Aggregator_negotiated_src_caps(GstAggregator*, GstCaps*);
+// extern GstSample* _goglib_gstbase1_Aggregator_peek_next_sample(GstAggregator*, GstAggregatorPad*);
+// extern gboolean _goglib_gstbase1_Aggregator_propose_allocation(GstAggregator*, GstAggregatorPad*, GstQuery*, GstQuery*);
+// extern gboolean _goglib_gstbase1_Aggregator_sink_event(GstAggregator*, GstAggregatorPad*, GstEvent*);
+// extern GstFlowReturn _goglib_gstbase1_Aggregator_sink_event_pre_queue(GstAggregator*, GstAggregatorPad*, GstEvent*);
+// extern gboolean _goglib_gstbase1_Aggregator_sink_query(GstAggregator*, GstAggregatorPad*, GstQuery*);
+// extern gboolean _goglib_gstbase1_Aggregator_sink_query_pre_queue(GstAggregator*, GstAggregatorPad*, GstQuery*);
+// extern gboolean _goglib_gstbase1_Aggregator_src_activate(GstAggregator*, GstPadMode, gboolean);
+// extern gboolean _goglib_gstbase1_Aggregator_src_event(GstAggregator*, GstEvent*);
+// extern gboolean _goglib_gstbase1_Aggregator_src_query(GstAggregator*, GstQuery*);
+// extern gboolean _goglib_gstbase1_Aggregator_start(GstAggregator*);
+// extern gboolean _goglib_gstbase1_Aggregator_stop(GstAggregator*);
+// extern GstFlowReturn _goglib_gstbase1_Aggregator_update_src_caps(GstAggregator*, GstCaps*, GstCaps*);
+// GstFlowReturn _goglib_gstbase1_Aggregator_virtual_aggregate(void* fnptr, GstAggregator* carg0, gboolean carg1) {
 // 	return ((GstFlowReturn (*) (GstAggregator*, gboolean))(fnptr))(carg0, carg1);
 // }
-// GstBuffer* _gotk4_gstbase1_Aggregator_virtual_clip(void* fnptr, GstAggregator* carg0, GstAggregatorPad* carg1, GstBuffer* carg2) {
+// GstBuffer* _goglib_gstbase1_Aggregator_virtual_clip(void* fnptr, GstAggregator* carg0, GstAggregatorPad* carg1, GstBuffer* carg2) {
 // 	return ((GstBuffer* (*) (GstAggregator*, GstAggregatorPad*, GstBuffer*))(fnptr))(carg0, carg1, carg2);
 // }
-// gboolean _gotk4_gstbase1_Aggregator_virtual_decide_allocation(void* fnptr, GstAggregator* carg0, GstQuery* carg1) {
+// gboolean _goglib_gstbase1_Aggregator_virtual_decide_allocation(void* fnptr, GstAggregator* carg0, GstQuery* carg1) {
 // 	return ((gboolean (*) (GstAggregator*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// GstFlowReturn _gotk4_gstbase1_Aggregator_virtual_finish_buffer(void* fnptr, GstAggregator* carg0, GstBuffer* carg1) {
+// GstFlowReturn _goglib_gstbase1_Aggregator_virtual_finish_buffer(void* fnptr, GstAggregator* carg0, GstBuffer* carg1) {
 // 	return ((GstFlowReturn (*) (GstAggregator*, GstBuffer*))(fnptr))(carg0, carg1);
 // }
-// GstFlowReturn _gotk4_gstbase1_Aggregator_virtual_finish_buffer_list(void* fnptr, GstAggregator* carg0, GstBufferList* carg1) {
+// GstFlowReturn _goglib_gstbase1_Aggregator_virtual_finish_buffer_list(void* fnptr, GstAggregator* carg0, GstBufferList* carg1) {
 // 	return ((GstFlowReturn (*) (GstAggregator*, GstBufferList*))(fnptr))(carg0, carg1);
 // }
-// GstCaps* _gotk4_gstbase1_Aggregator_virtual_fixate_src_caps(void* fnptr, GstAggregator* carg0, GstCaps* carg1) {
+// GstCaps* _goglib_gstbase1_Aggregator_virtual_fixate_src_caps(void* fnptr, GstAggregator* carg0, GstCaps* carg1) {
 // 	return ((GstCaps* (*) (GstAggregator*, GstCaps*))(fnptr))(carg0, carg1);
 // }
-// GstFlowReturn _gotk4_gstbase1_Aggregator_virtual_flush(void* fnptr, GstAggregator* carg0) {
+// GstFlowReturn _goglib_gstbase1_Aggregator_virtual_flush(void* fnptr, GstAggregator* carg0) {
 // 	return ((GstFlowReturn (*) (GstAggregator*))(fnptr))(carg0);
 // }
-// GstClockTime _gotk4_gstbase1_Aggregator_virtual_get_next_time(void* fnptr, GstAggregator* carg0) {
+// GstClockTime _goglib_gstbase1_Aggregator_virtual_get_next_time(void* fnptr, GstAggregator* carg0) {
 // 	return ((GstClockTime (*) (GstAggregator*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstbase1_Aggregator_virtual_negotiate(void* fnptr, GstAggregator* carg0) {
+// gboolean _goglib_gstbase1_Aggregator_virtual_negotiate(void* fnptr, GstAggregator* carg0) {
 // 	return ((gboolean (*) (GstAggregator*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstbase1_Aggregator_virtual_negotiated_src_caps(void* fnptr, GstAggregator* carg0, GstCaps* carg1) {
+// gboolean _goglib_gstbase1_Aggregator_virtual_negotiated_src_caps(void* fnptr, GstAggregator* carg0, GstCaps* carg1) {
 // 	return ((gboolean (*) (GstAggregator*, GstCaps*))(fnptr))(carg0, carg1);
 // }
-// GstSample* _gotk4_gstbase1_Aggregator_virtual_peek_next_sample(void* fnptr, GstAggregator* carg0, GstAggregatorPad* carg1) {
+// GstSample* _goglib_gstbase1_Aggregator_virtual_peek_next_sample(void* fnptr, GstAggregator* carg0, GstAggregatorPad* carg1) {
 // 	return ((GstSample* (*) (GstAggregator*, GstAggregatorPad*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstbase1_Aggregator_virtual_propose_allocation(void* fnptr, GstAggregator* carg0, GstAggregatorPad* carg1, GstQuery* carg2, GstQuery* carg3) {
+// gboolean _goglib_gstbase1_Aggregator_virtual_propose_allocation(void* fnptr, GstAggregator* carg0, GstAggregatorPad* carg1, GstQuery* carg2, GstQuery* carg3) {
 // 	return ((gboolean (*) (GstAggregator*, GstAggregatorPad*, GstQuery*, GstQuery*))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// gboolean _gotk4_gstbase1_Aggregator_virtual_sink_event(void* fnptr, GstAggregator* carg0, GstAggregatorPad* carg1, GstEvent* carg2) {
+// gboolean _goglib_gstbase1_Aggregator_virtual_sink_event(void* fnptr, GstAggregator* carg0, GstAggregatorPad* carg1, GstEvent* carg2) {
 // 	return ((gboolean (*) (GstAggregator*, GstAggregatorPad*, GstEvent*))(fnptr))(carg0, carg1, carg2);
 // }
-// GstFlowReturn _gotk4_gstbase1_Aggregator_virtual_sink_event_pre_queue(void* fnptr, GstAggregator* carg0, GstAggregatorPad* carg1, GstEvent* carg2) {
+// GstFlowReturn _goglib_gstbase1_Aggregator_virtual_sink_event_pre_queue(void* fnptr, GstAggregator* carg0, GstAggregatorPad* carg1, GstEvent* carg2) {
 // 	return ((GstFlowReturn (*) (GstAggregator*, GstAggregatorPad*, GstEvent*))(fnptr))(carg0, carg1, carg2);
 // }
-// gboolean _gotk4_gstbase1_Aggregator_virtual_sink_query(void* fnptr, GstAggregator* carg0, GstAggregatorPad* carg1, GstQuery* carg2) {
+// gboolean _goglib_gstbase1_Aggregator_virtual_sink_query(void* fnptr, GstAggregator* carg0, GstAggregatorPad* carg1, GstQuery* carg2) {
 // 	return ((gboolean (*) (GstAggregator*, GstAggregatorPad*, GstQuery*))(fnptr))(carg0, carg1, carg2);
 // }
-// gboolean _gotk4_gstbase1_Aggregator_virtual_sink_query_pre_queue(void* fnptr, GstAggregator* carg0, GstAggregatorPad* carg1, GstQuery* carg2) {
+// gboolean _goglib_gstbase1_Aggregator_virtual_sink_query_pre_queue(void* fnptr, GstAggregator* carg0, GstAggregatorPad* carg1, GstQuery* carg2) {
 // 	return ((gboolean (*) (GstAggregator*, GstAggregatorPad*, GstQuery*))(fnptr))(carg0, carg1, carg2);
 // }
-// gboolean _gotk4_gstbase1_Aggregator_virtual_src_activate(void* fnptr, GstAggregator* carg0, GstPadMode carg1, gboolean carg2) {
+// gboolean _goglib_gstbase1_Aggregator_virtual_src_activate(void* fnptr, GstAggregator* carg0, GstPadMode carg1, gboolean carg2) {
 // 	return ((gboolean (*) (GstAggregator*, GstPadMode, gboolean))(fnptr))(carg0, carg1, carg2);
 // }
-// gboolean _gotk4_gstbase1_Aggregator_virtual_src_event(void* fnptr, GstAggregator* carg0, GstEvent* carg1) {
+// gboolean _goglib_gstbase1_Aggregator_virtual_src_event(void* fnptr, GstAggregator* carg0, GstEvent* carg1) {
 // 	return ((gboolean (*) (GstAggregator*, GstEvent*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstbase1_Aggregator_virtual_src_query(void* fnptr, GstAggregator* carg0, GstQuery* carg1) {
+// gboolean _goglib_gstbase1_Aggregator_virtual_src_query(void* fnptr, GstAggregator* carg0, GstQuery* carg1) {
 // 	return ((gboolean (*) (GstAggregator*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstbase1_Aggregator_virtual_start(void* fnptr, GstAggregator* carg0) {
+// gboolean _goglib_gstbase1_Aggregator_virtual_start(void* fnptr, GstAggregator* carg0) {
 // 	return ((gboolean (*) (GstAggregator*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstbase1_Aggregator_virtual_stop(void* fnptr, GstAggregator* carg0) {
+// gboolean _goglib_gstbase1_Aggregator_virtual_stop(void* fnptr, GstAggregator* carg0) {
 // 	return ((gboolean (*) (GstAggregator*))(fnptr))(carg0);
 // }
-// GstFlowReturn _gotk4_gstbase1_Aggregator_virtual_update_src_caps(void* fnptr, GstAggregator* carg0, GstCaps* carg1, GstCaps** carg2) {
+// GstFlowReturn _goglib_gstbase1_Aggregator_virtual_update_src_caps(void* fnptr, GstAggregator* carg0, GstCaps* carg1, GstCaps** carg2) {
 // 	return ((GstFlowReturn (*) (GstAggregator*, GstCaps*, GstCaps**))(fnptr))(carg0, carg1, carg2);
 // }
-// extern GstFlowReturn _gotk4_gstbase1_AggregatorPad_flush(GstAggregatorPad*, GstAggregator*);
-// extern gboolean _gotk4_gstbase1_AggregatorPad_skip_buffer(GstAggregatorPad*, GstAggregator*, GstBuffer*);
-// GstFlowReturn _gotk4_gstbase1_AggregatorPad_virtual_flush(void* fnptr, GstAggregatorPad* carg0, GstAggregator* carg1) {
+// extern GstFlowReturn _goglib_gstbase1_AggregatorPad_flush(GstAggregatorPad*, GstAggregator*);
+// extern gboolean _goglib_gstbase1_AggregatorPad_skip_buffer(GstAggregatorPad*, GstAggregator*, GstBuffer*);
+// GstFlowReturn _goglib_gstbase1_AggregatorPad_virtual_flush(void* fnptr, GstAggregatorPad* carg0, GstAggregator* carg1) {
 // 	return ((GstFlowReturn (*) (GstAggregatorPad*, GstAggregator*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstbase1_AggregatorPad_virtual_skip_buffer(void* fnptr, GstAggregatorPad* carg0, GstAggregator* carg1, GstBuffer* carg2) {
+// gboolean _goglib_gstbase1_AggregatorPad_virtual_skip_buffer(void* fnptr, GstAggregatorPad* carg0, GstAggregator* carg1, GstBuffer* carg2) {
 // 	return ((gboolean (*) (GstAggregatorPad*, GstAggregator*, GstBuffer*))(fnptr))(carg0, carg1, carg2);
 // }
-// extern gboolean _gotk4_gstbase1_BaseParse_convert(GstBaseParse*, GstFormat, gint64, GstFormat, gint64*);
-// extern GstFlowReturn _gotk4_gstbase1_BaseParse_detect(GstBaseParse*, GstBuffer*);
-// extern GstCaps* _gotk4_gstbase1_BaseParse_get_sink_caps(GstBaseParse*, GstCaps*);
-// extern GstFlowReturn _gotk4_gstbase1_BaseParse_handle_frame(GstBaseParse*, GstBaseParseFrame*, gint);
-// extern GstFlowReturn _gotk4_gstbase1_BaseParse_pre_push_frame(GstBaseParse*, GstBaseParseFrame*);
-// extern gboolean _gotk4_gstbase1_BaseParse_set_sink_caps(GstBaseParse*, GstCaps*);
-// extern gboolean _gotk4_gstbase1_BaseParse_sink_event(GstBaseParse*, GstEvent*);
-// extern gboolean _gotk4_gstbase1_BaseParse_sink_query(GstBaseParse*, GstQuery*);
-// extern gboolean _gotk4_gstbase1_BaseParse_src_event(GstBaseParse*, GstEvent*);
-// extern gboolean _gotk4_gstbase1_BaseParse_src_query(GstBaseParse*, GstQuery*);
-// extern gboolean _gotk4_gstbase1_BaseParse_start(GstBaseParse*);
-// extern gboolean _gotk4_gstbase1_BaseParse_stop(GstBaseParse*);
-// gboolean _gotk4_gstbase1_BaseParse_virtual_convert(void* fnptr, GstBaseParse* carg0, GstFormat carg1, gint64 carg2, GstFormat carg3, gint64* carg4) {
+// extern gboolean _goglib_gstbase1_BaseParse_convert(GstBaseParse*, GstFormat, gint64, GstFormat, gint64*);
+// extern GstFlowReturn _goglib_gstbase1_BaseParse_detect(GstBaseParse*, GstBuffer*);
+// extern GstCaps* _goglib_gstbase1_BaseParse_get_sink_caps(GstBaseParse*, GstCaps*);
+// extern GstFlowReturn _goglib_gstbase1_BaseParse_handle_frame(GstBaseParse*, GstBaseParseFrame*, gint);
+// extern GstFlowReturn _goglib_gstbase1_BaseParse_pre_push_frame(GstBaseParse*, GstBaseParseFrame*);
+// extern gboolean _goglib_gstbase1_BaseParse_set_sink_caps(GstBaseParse*, GstCaps*);
+// extern gboolean _goglib_gstbase1_BaseParse_sink_event(GstBaseParse*, GstEvent*);
+// extern gboolean _goglib_gstbase1_BaseParse_sink_query(GstBaseParse*, GstQuery*);
+// extern gboolean _goglib_gstbase1_BaseParse_src_event(GstBaseParse*, GstEvent*);
+// extern gboolean _goglib_gstbase1_BaseParse_src_query(GstBaseParse*, GstQuery*);
+// extern gboolean _goglib_gstbase1_BaseParse_start(GstBaseParse*);
+// extern gboolean _goglib_gstbase1_BaseParse_stop(GstBaseParse*);
+// gboolean _goglib_gstbase1_BaseParse_virtual_convert(void* fnptr, GstBaseParse* carg0, GstFormat carg1, gint64 carg2, GstFormat carg3, gint64* carg4) {
 // 	return ((gboolean (*) (GstBaseParse*, GstFormat, gint64, GstFormat, gint64*))(fnptr))(carg0, carg1, carg2, carg3, carg4);
 // }
-// GstFlowReturn _gotk4_gstbase1_BaseParse_virtual_detect(void* fnptr, GstBaseParse* carg0, GstBuffer* carg1) {
+// GstFlowReturn _goglib_gstbase1_BaseParse_virtual_detect(void* fnptr, GstBaseParse* carg0, GstBuffer* carg1) {
 // 	return ((GstFlowReturn (*) (GstBaseParse*, GstBuffer*))(fnptr))(carg0, carg1);
 // }
-// GstCaps* _gotk4_gstbase1_BaseParse_virtual_get_sink_caps(void* fnptr, GstBaseParse* carg0, GstCaps* carg1) {
+// GstCaps* _goglib_gstbase1_BaseParse_virtual_get_sink_caps(void* fnptr, GstBaseParse* carg0, GstCaps* carg1) {
 // 	return ((GstCaps* (*) (GstBaseParse*, GstCaps*))(fnptr))(carg0, carg1);
 // }
-// GstFlowReturn _gotk4_gstbase1_BaseParse_virtual_handle_frame(void* fnptr, GstBaseParse* carg0, GstBaseParseFrame* carg1, gint* carg2) {
+// GstFlowReturn _goglib_gstbase1_BaseParse_virtual_handle_frame(void* fnptr, GstBaseParse* carg0, GstBaseParseFrame* carg1, gint* carg2) {
 // 	return ((GstFlowReturn (*) (GstBaseParse*, GstBaseParseFrame*, gint*))(fnptr))(carg0, carg1, carg2);
 // }
-// GstFlowReturn _gotk4_gstbase1_BaseParse_virtual_pre_push_frame(void* fnptr, GstBaseParse* carg0, GstBaseParseFrame* carg1) {
+// GstFlowReturn _goglib_gstbase1_BaseParse_virtual_pre_push_frame(void* fnptr, GstBaseParse* carg0, GstBaseParseFrame* carg1) {
 // 	return ((GstFlowReturn (*) (GstBaseParse*, GstBaseParseFrame*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstbase1_BaseParse_virtual_set_sink_caps(void* fnptr, GstBaseParse* carg0, GstCaps* carg1) {
+// gboolean _goglib_gstbase1_BaseParse_virtual_set_sink_caps(void* fnptr, GstBaseParse* carg0, GstCaps* carg1) {
 // 	return ((gboolean (*) (GstBaseParse*, GstCaps*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstbase1_BaseParse_virtual_sink_event(void* fnptr, GstBaseParse* carg0, GstEvent* carg1) {
+// gboolean _goglib_gstbase1_BaseParse_virtual_sink_event(void* fnptr, GstBaseParse* carg0, GstEvent* carg1) {
 // 	return ((gboolean (*) (GstBaseParse*, GstEvent*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstbase1_BaseParse_virtual_sink_query(void* fnptr, GstBaseParse* carg0, GstQuery* carg1) {
+// gboolean _goglib_gstbase1_BaseParse_virtual_sink_query(void* fnptr, GstBaseParse* carg0, GstQuery* carg1) {
 // 	return ((gboolean (*) (GstBaseParse*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstbase1_BaseParse_virtual_src_event(void* fnptr, GstBaseParse* carg0, GstEvent* carg1) {
+// gboolean _goglib_gstbase1_BaseParse_virtual_src_event(void* fnptr, GstBaseParse* carg0, GstEvent* carg1) {
 // 	return ((gboolean (*) (GstBaseParse*, GstEvent*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstbase1_BaseParse_virtual_src_query(void* fnptr, GstBaseParse* carg0, GstQuery* carg1) {
+// gboolean _goglib_gstbase1_BaseParse_virtual_src_query(void* fnptr, GstBaseParse* carg0, GstQuery* carg1) {
 // 	return ((gboolean (*) (GstBaseParse*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstbase1_BaseParse_virtual_start(void* fnptr, GstBaseParse* carg0) {
+// gboolean _goglib_gstbase1_BaseParse_virtual_start(void* fnptr, GstBaseParse* carg0) {
 // 	return ((gboolean (*) (GstBaseParse*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstbase1_BaseParse_virtual_stop(void* fnptr, GstBaseParse* carg0) {
+// gboolean _goglib_gstbase1_BaseParse_virtual_stop(void* fnptr, GstBaseParse* carg0) {
 // 	return ((gboolean (*) (GstBaseParse*))(fnptr))(carg0);
 // }
-// extern gboolean _gotk4_gstbase1_BaseSink_activate_pull(GstBaseSink*, gboolean);
-// extern gboolean _gotk4_gstbase1_BaseSink_event(GstBaseSink*, GstEvent*);
-// extern GstCaps* _gotk4_gstbase1_BaseSink_fixate(GstBaseSink*, GstCaps*);
-// extern GstCaps* _gotk4_gstbase1_BaseSink_get_caps(GstBaseSink*, GstCaps*);
-// extern void _gotk4_gstbase1_BaseSink_get_times(GstBaseSink*, GstBuffer*, GstClockTime, GstClockTime);
-// extern GstFlowReturn _gotk4_gstbase1_BaseSink_prepare(GstBaseSink*, GstBuffer*);
-// extern GstFlowReturn _gotk4_gstbase1_BaseSink_prepare_list(GstBaseSink*, GstBufferList*);
-// extern GstFlowReturn _gotk4_gstbase1_BaseSink_preroll(GstBaseSink*, GstBuffer*);
-// extern gboolean _gotk4_gstbase1_BaseSink_propose_allocation(GstBaseSink*, GstQuery*);
-// extern gboolean _gotk4_gstbase1_BaseSink_query(GstBaseSink*, GstQuery*);
-// extern GstFlowReturn _gotk4_gstbase1_BaseSink_render(GstBaseSink*, GstBuffer*);
-// extern GstFlowReturn _gotk4_gstbase1_BaseSink_render_list(GstBaseSink*, GstBufferList*);
-// extern gboolean _gotk4_gstbase1_BaseSink_set_caps(GstBaseSink*, GstCaps*);
-// extern gboolean _gotk4_gstbase1_BaseSink_start(GstBaseSink*);
-// extern gboolean _gotk4_gstbase1_BaseSink_stop(GstBaseSink*);
-// extern gboolean _gotk4_gstbase1_BaseSink_unlock(GstBaseSink*);
-// extern gboolean _gotk4_gstbase1_BaseSink_unlock_stop(GstBaseSink*);
-// extern GstFlowReturn _gotk4_gstbase1_BaseSink_wait_event(GstBaseSink*, GstEvent*);
-// gboolean _gotk4_gstbase1_BaseSink_virtual_activate_pull(void* fnptr, GstBaseSink* carg0, gboolean carg1) {
+// extern gboolean _goglib_gstbase1_BaseSink_activate_pull(GstBaseSink*, gboolean);
+// extern gboolean _goglib_gstbase1_BaseSink_event(GstBaseSink*, GstEvent*);
+// extern GstCaps* _goglib_gstbase1_BaseSink_fixate(GstBaseSink*, GstCaps*);
+// extern GstCaps* _goglib_gstbase1_BaseSink_get_caps(GstBaseSink*, GstCaps*);
+// extern void _goglib_gstbase1_BaseSink_get_times(GstBaseSink*, GstBuffer*, GstClockTime, GstClockTime);
+// extern GstFlowReturn _goglib_gstbase1_BaseSink_prepare(GstBaseSink*, GstBuffer*);
+// extern GstFlowReturn _goglib_gstbase1_BaseSink_prepare_list(GstBaseSink*, GstBufferList*);
+// extern GstFlowReturn _goglib_gstbase1_BaseSink_preroll(GstBaseSink*, GstBuffer*);
+// extern gboolean _goglib_gstbase1_BaseSink_propose_allocation(GstBaseSink*, GstQuery*);
+// extern gboolean _goglib_gstbase1_BaseSink_query(GstBaseSink*, GstQuery*);
+// extern GstFlowReturn _goglib_gstbase1_BaseSink_render(GstBaseSink*, GstBuffer*);
+// extern GstFlowReturn _goglib_gstbase1_BaseSink_render_list(GstBaseSink*, GstBufferList*);
+// extern gboolean _goglib_gstbase1_BaseSink_set_caps(GstBaseSink*, GstCaps*);
+// extern gboolean _goglib_gstbase1_BaseSink_start(GstBaseSink*);
+// extern gboolean _goglib_gstbase1_BaseSink_stop(GstBaseSink*);
+// extern gboolean _goglib_gstbase1_BaseSink_unlock(GstBaseSink*);
+// extern gboolean _goglib_gstbase1_BaseSink_unlock_stop(GstBaseSink*);
+// extern GstFlowReturn _goglib_gstbase1_BaseSink_wait_event(GstBaseSink*, GstEvent*);
+// gboolean _goglib_gstbase1_BaseSink_virtual_activate_pull(void* fnptr, GstBaseSink* carg0, gboolean carg1) {
 // 	return ((gboolean (*) (GstBaseSink*, gboolean))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstbase1_BaseSink_virtual_event(void* fnptr, GstBaseSink* carg0, GstEvent* carg1) {
+// gboolean _goglib_gstbase1_BaseSink_virtual_event(void* fnptr, GstBaseSink* carg0, GstEvent* carg1) {
 // 	return ((gboolean (*) (GstBaseSink*, GstEvent*))(fnptr))(carg0, carg1);
 // }
-// GstCaps* _gotk4_gstbase1_BaseSink_virtual_fixate(void* fnptr, GstBaseSink* carg0, GstCaps* carg1) {
+// GstCaps* _goglib_gstbase1_BaseSink_virtual_fixate(void* fnptr, GstBaseSink* carg0, GstCaps* carg1) {
 // 	return ((GstCaps* (*) (GstBaseSink*, GstCaps*))(fnptr))(carg0, carg1);
 // }
-// GstCaps* _gotk4_gstbase1_BaseSink_virtual_get_caps(void* fnptr, GstBaseSink* carg0, GstCaps* carg1) {
+// GstCaps* _goglib_gstbase1_BaseSink_virtual_get_caps(void* fnptr, GstBaseSink* carg0, GstCaps* carg1) {
 // 	return ((GstCaps* (*) (GstBaseSink*, GstCaps*))(fnptr))(carg0, carg1);
 // }
-// void _gotk4_gstbase1_BaseSink_virtual_get_times(void* fnptr, GstBaseSink* carg0, GstBuffer* carg1, GstClockTime* carg2, GstClockTime* carg3) {
+// void _goglib_gstbase1_BaseSink_virtual_get_times(void* fnptr, GstBaseSink* carg0, GstBuffer* carg1, GstClockTime* carg2, GstClockTime* carg3) {
 // 	return ((void (*) (GstBaseSink*, GstBuffer*, GstClockTime*, GstClockTime*))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// GstFlowReturn _gotk4_gstbase1_BaseSink_virtual_prepare(void* fnptr, GstBaseSink* carg0, GstBuffer* carg1) {
+// GstFlowReturn _goglib_gstbase1_BaseSink_virtual_prepare(void* fnptr, GstBaseSink* carg0, GstBuffer* carg1) {
 // 	return ((GstFlowReturn (*) (GstBaseSink*, GstBuffer*))(fnptr))(carg0, carg1);
 // }
-// GstFlowReturn _gotk4_gstbase1_BaseSink_virtual_prepare_list(void* fnptr, GstBaseSink* carg0, GstBufferList* carg1) {
+// GstFlowReturn _goglib_gstbase1_BaseSink_virtual_prepare_list(void* fnptr, GstBaseSink* carg0, GstBufferList* carg1) {
 // 	return ((GstFlowReturn (*) (GstBaseSink*, GstBufferList*))(fnptr))(carg0, carg1);
 // }
-// GstFlowReturn _gotk4_gstbase1_BaseSink_virtual_preroll(void* fnptr, GstBaseSink* carg0, GstBuffer* carg1) {
+// GstFlowReturn _goglib_gstbase1_BaseSink_virtual_preroll(void* fnptr, GstBaseSink* carg0, GstBuffer* carg1) {
 // 	return ((GstFlowReturn (*) (GstBaseSink*, GstBuffer*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstbase1_BaseSink_virtual_propose_allocation(void* fnptr, GstBaseSink* carg0, GstQuery* carg1) {
+// gboolean _goglib_gstbase1_BaseSink_virtual_propose_allocation(void* fnptr, GstBaseSink* carg0, GstQuery* carg1) {
 // 	return ((gboolean (*) (GstBaseSink*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstbase1_BaseSink_virtual_query(void* fnptr, GstBaseSink* carg0, GstQuery* carg1) {
+// gboolean _goglib_gstbase1_BaseSink_virtual_query(void* fnptr, GstBaseSink* carg0, GstQuery* carg1) {
 // 	return ((gboolean (*) (GstBaseSink*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// GstFlowReturn _gotk4_gstbase1_BaseSink_virtual_render(void* fnptr, GstBaseSink* carg0, GstBuffer* carg1) {
+// GstFlowReturn _goglib_gstbase1_BaseSink_virtual_render(void* fnptr, GstBaseSink* carg0, GstBuffer* carg1) {
 // 	return ((GstFlowReturn (*) (GstBaseSink*, GstBuffer*))(fnptr))(carg0, carg1);
 // }
-// GstFlowReturn _gotk4_gstbase1_BaseSink_virtual_render_list(void* fnptr, GstBaseSink* carg0, GstBufferList* carg1) {
+// GstFlowReturn _goglib_gstbase1_BaseSink_virtual_render_list(void* fnptr, GstBaseSink* carg0, GstBufferList* carg1) {
 // 	return ((GstFlowReturn (*) (GstBaseSink*, GstBufferList*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstbase1_BaseSink_virtual_set_caps(void* fnptr, GstBaseSink* carg0, GstCaps* carg1) {
+// gboolean _goglib_gstbase1_BaseSink_virtual_set_caps(void* fnptr, GstBaseSink* carg0, GstCaps* carg1) {
 // 	return ((gboolean (*) (GstBaseSink*, GstCaps*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstbase1_BaseSink_virtual_start(void* fnptr, GstBaseSink* carg0) {
+// gboolean _goglib_gstbase1_BaseSink_virtual_start(void* fnptr, GstBaseSink* carg0) {
 // 	return ((gboolean (*) (GstBaseSink*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstbase1_BaseSink_virtual_stop(void* fnptr, GstBaseSink* carg0) {
+// gboolean _goglib_gstbase1_BaseSink_virtual_stop(void* fnptr, GstBaseSink* carg0) {
 // 	return ((gboolean (*) (GstBaseSink*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstbase1_BaseSink_virtual_unlock(void* fnptr, GstBaseSink* carg0) {
+// gboolean _goglib_gstbase1_BaseSink_virtual_unlock(void* fnptr, GstBaseSink* carg0) {
 // 	return ((gboolean (*) (GstBaseSink*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstbase1_BaseSink_virtual_unlock_stop(void* fnptr, GstBaseSink* carg0) {
+// gboolean _goglib_gstbase1_BaseSink_virtual_unlock_stop(void* fnptr, GstBaseSink* carg0) {
 // 	return ((gboolean (*) (GstBaseSink*))(fnptr))(carg0);
 // }
-// GstFlowReturn _gotk4_gstbase1_BaseSink_virtual_wait_event(void* fnptr, GstBaseSink* carg0, GstEvent* carg1) {
+// GstFlowReturn _goglib_gstbase1_BaseSink_virtual_wait_event(void* fnptr, GstBaseSink* carg0, GstEvent* carg1) {
 // 	return ((GstFlowReturn (*) (GstBaseSink*, GstEvent*))(fnptr))(carg0, carg1);
 // }
-// extern GstFlowReturn _gotk4_gstbase1_BaseSrc_alloc(GstBaseSrc*, guint64, guint, GstBuffer*);
-// extern gboolean _gotk4_gstbase1_BaseSrc_decide_allocation(GstBaseSrc*, GstQuery*);
-// extern gboolean _gotk4_gstbase1_BaseSrc_do_seek(GstBaseSrc*, GstSegment*);
-// extern gboolean _gotk4_gstbase1_BaseSrc_event(GstBaseSrc*, GstEvent*);
-// extern GstFlowReturn _gotk4_gstbase1_BaseSrc_fill(GstBaseSrc*, guint64, guint, GstBuffer*);
-// extern GstCaps* _gotk4_gstbase1_BaseSrc_fixate(GstBaseSrc*, GstCaps*);
-// extern GstCaps* _gotk4_gstbase1_BaseSrc_get_caps(GstBaseSrc*, GstCaps*);
-// extern gboolean _gotk4_gstbase1_BaseSrc_get_size(GstBaseSrc*, guint64);
-// extern void _gotk4_gstbase1_BaseSrc_get_times(GstBaseSrc*, GstBuffer*, GstClockTime, GstClockTime);
-// extern gboolean _gotk4_gstbase1_BaseSrc_is_seekable(GstBaseSrc*);
-// extern gboolean _gotk4_gstbase1_BaseSrc_negotiate(GstBaseSrc*);
-// extern gboolean _gotk4_gstbase1_BaseSrc_prepare_seek_segment(GstBaseSrc*, GstEvent*, GstSegment*);
-// extern gboolean _gotk4_gstbase1_BaseSrc_query(GstBaseSrc*, GstQuery*);
-// extern gboolean _gotk4_gstbase1_BaseSrc_set_caps(GstBaseSrc*, GstCaps*);
-// extern gboolean _gotk4_gstbase1_BaseSrc_start(GstBaseSrc*);
-// extern gboolean _gotk4_gstbase1_BaseSrc_stop(GstBaseSrc*);
-// extern gboolean _gotk4_gstbase1_BaseSrc_unlock(GstBaseSrc*);
-// extern gboolean _gotk4_gstbase1_BaseSrc_unlock_stop(GstBaseSrc*);
-// GstFlowReturn _gotk4_gstbase1_BaseSrc_virtual_alloc(void* fnptr, GstBaseSrc* carg0, guint64 carg1, guint carg2, GstBuffer** carg3) {
+// extern GstFlowReturn _goglib_gstbase1_BaseSrc_alloc(GstBaseSrc*, guint64, guint, GstBuffer*);
+// extern gboolean _goglib_gstbase1_BaseSrc_decide_allocation(GstBaseSrc*, GstQuery*);
+// extern gboolean _goglib_gstbase1_BaseSrc_do_seek(GstBaseSrc*, GstSegment*);
+// extern gboolean _goglib_gstbase1_BaseSrc_event(GstBaseSrc*, GstEvent*);
+// extern GstFlowReturn _goglib_gstbase1_BaseSrc_fill(GstBaseSrc*, guint64, guint, GstBuffer*);
+// extern GstCaps* _goglib_gstbase1_BaseSrc_fixate(GstBaseSrc*, GstCaps*);
+// extern GstCaps* _goglib_gstbase1_BaseSrc_get_caps(GstBaseSrc*, GstCaps*);
+// extern gboolean _goglib_gstbase1_BaseSrc_get_size(GstBaseSrc*, guint64);
+// extern void _goglib_gstbase1_BaseSrc_get_times(GstBaseSrc*, GstBuffer*, GstClockTime, GstClockTime);
+// extern gboolean _goglib_gstbase1_BaseSrc_is_seekable(GstBaseSrc*);
+// extern gboolean _goglib_gstbase1_BaseSrc_negotiate(GstBaseSrc*);
+// extern gboolean _goglib_gstbase1_BaseSrc_prepare_seek_segment(GstBaseSrc*, GstEvent*, GstSegment*);
+// extern gboolean _goglib_gstbase1_BaseSrc_query(GstBaseSrc*, GstQuery*);
+// extern gboolean _goglib_gstbase1_BaseSrc_set_caps(GstBaseSrc*, GstCaps*);
+// extern gboolean _goglib_gstbase1_BaseSrc_start(GstBaseSrc*);
+// extern gboolean _goglib_gstbase1_BaseSrc_stop(GstBaseSrc*);
+// extern gboolean _goglib_gstbase1_BaseSrc_unlock(GstBaseSrc*);
+// extern gboolean _goglib_gstbase1_BaseSrc_unlock_stop(GstBaseSrc*);
+// GstFlowReturn _goglib_gstbase1_BaseSrc_virtual_alloc(void* fnptr, GstBaseSrc* carg0, guint64 carg1, guint carg2, GstBuffer** carg3) {
 // 	return ((GstFlowReturn (*) (GstBaseSrc*, guint64, guint, GstBuffer**))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// gboolean _gotk4_gstbase1_BaseSrc_virtual_decide_allocation(void* fnptr, GstBaseSrc* carg0, GstQuery* carg1) {
+// gboolean _goglib_gstbase1_BaseSrc_virtual_decide_allocation(void* fnptr, GstBaseSrc* carg0, GstQuery* carg1) {
 // 	return ((gboolean (*) (GstBaseSrc*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstbase1_BaseSrc_virtual_do_seek(void* fnptr, GstBaseSrc* carg0, GstSegment* carg1) {
+// gboolean _goglib_gstbase1_BaseSrc_virtual_do_seek(void* fnptr, GstBaseSrc* carg0, GstSegment* carg1) {
 // 	return ((gboolean (*) (GstBaseSrc*, GstSegment*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstbase1_BaseSrc_virtual_event(void* fnptr, GstBaseSrc* carg0, GstEvent* carg1) {
+// gboolean _goglib_gstbase1_BaseSrc_virtual_event(void* fnptr, GstBaseSrc* carg0, GstEvent* carg1) {
 // 	return ((gboolean (*) (GstBaseSrc*, GstEvent*))(fnptr))(carg0, carg1);
 // }
-// GstFlowReturn _gotk4_gstbase1_BaseSrc_virtual_fill(void* fnptr, GstBaseSrc* carg0, guint64 carg1, guint carg2, GstBuffer* carg3) {
+// GstFlowReturn _goglib_gstbase1_BaseSrc_virtual_fill(void* fnptr, GstBaseSrc* carg0, guint64 carg1, guint carg2, GstBuffer* carg3) {
 // 	return ((GstFlowReturn (*) (GstBaseSrc*, guint64, guint, GstBuffer*))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// GstCaps* _gotk4_gstbase1_BaseSrc_virtual_fixate(void* fnptr, GstBaseSrc* carg0, GstCaps* carg1) {
+// GstCaps* _goglib_gstbase1_BaseSrc_virtual_fixate(void* fnptr, GstBaseSrc* carg0, GstCaps* carg1) {
 // 	return ((GstCaps* (*) (GstBaseSrc*, GstCaps*))(fnptr))(carg0, carg1);
 // }
-// GstCaps* _gotk4_gstbase1_BaseSrc_virtual_get_caps(void* fnptr, GstBaseSrc* carg0, GstCaps* carg1) {
+// GstCaps* _goglib_gstbase1_BaseSrc_virtual_get_caps(void* fnptr, GstBaseSrc* carg0, GstCaps* carg1) {
 // 	return ((GstCaps* (*) (GstBaseSrc*, GstCaps*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstbase1_BaseSrc_virtual_get_size(void* fnptr, GstBaseSrc* carg0, guint64* carg1) {
+// gboolean _goglib_gstbase1_BaseSrc_virtual_get_size(void* fnptr, GstBaseSrc* carg0, guint64* carg1) {
 // 	return ((gboolean (*) (GstBaseSrc*, guint64*))(fnptr))(carg0, carg1);
 // }
-// void _gotk4_gstbase1_BaseSrc_virtual_get_times(void* fnptr, GstBaseSrc* carg0, GstBuffer* carg1, GstClockTime* carg2, GstClockTime* carg3) {
+// void _goglib_gstbase1_BaseSrc_virtual_get_times(void* fnptr, GstBaseSrc* carg0, GstBuffer* carg1, GstClockTime* carg2, GstClockTime* carg3) {
 // 	return ((void (*) (GstBaseSrc*, GstBuffer*, GstClockTime*, GstClockTime*))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// gboolean _gotk4_gstbase1_BaseSrc_virtual_is_seekable(void* fnptr, GstBaseSrc* carg0) {
+// gboolean _goglib_gstbase1_BaseSrc_virtual_is_seekable(void* fnptr, GstBaseSrc* carg0) {
 // 	return ((gboolean (*) (GstBaseSrc*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstbase1_BaseSrc_virtual_negotiate(void* fnptr, GstBaseSrc* carg0) {
+// gboolean _goglib_gstbase1_BaseSrc_virtual_negotiate(void* fnptr, GstBaseSrc* carg0) {
 // 	return ((gboolean (*) (GstBaseSrc*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstbase1_BaseSrc_virtual_prepare_seek_segment(void* fnptr, GstBaseSrc* carg0, GstEvent* carg1, GstSegment* carg2) {
+// gboolean _goglib_gstbase1_BaseSrc_virtual_prepare_seek_segment(void* fnptr, GstBaseSrc* carg0, GstEvent* carg1, GstSegment* carg2) {
 // 	return ((gboolean (*) (GstBaseSrc*, GstEvent*, GstSegment*))(fnptr))(carg0, carg1, carg2);
 // }
-// gboolean _gotk4_gstbase1_BaseSrc_virtual_query(void* fnptr, GstBaseSrc* carg0, GstQuery* carg1) {
+// gboolean _goglib_gstbase1_BaseSrc_virtual_query(void* fnptr, GstBaseSrc* carg0, GstQuery* carg1) {
 // 	return ((gboolean (*) (GstBaseSrc*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstbase1_BaseSrc_virtual_set_caps(void* fnptr, GstBaseSrc* carg0, GstCaps* carg1) {
+// gboolean _goglib_gstbase1_BaseSrc_virtual_set_caps(void* fnptr, GstBaseSrc* carg0, GstCaps* carg1) {
 // 	return ((gboolean (*) (GstBaseSrc*, GstCaps*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstbase1_BaseSrc_virtual_start(void* fnptr, GstBaseSrc* carg0) {
+// gboolean _goglib_gstbase1_BaseSrc_virtual_start(void* fnptr, GstBaseSrc* carg0) {
 // 	return ((gboolean (*) (GstBaseSrc*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstbase1_BaseSrc_virtual_stop(void* fnptr, GstBaseSrc* carg0) {
+// gboolean _goglib_gstbase1_BaseSrc_virtual_stop(void* fnptr, GstBaseSrc* carg0) {
 // 	return ((gboolean (*) (GstBaseSrc*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstbase1_BaseSrc_virtual_unlock(void* fnptr, GstBaseSrc* carg0) {
+// gboolean _goglib_gstbase1_BaseSrc_virtual_unlock(void* fnptr, GstBaseSrc* carg0) {
 // 	return ((gboolean (*) (GstBaseSrc*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstbase1_BaseSrc_virtual_unlock_stop(void* fnptr, GstBaseSrc* carg0) {
+// gboolean _goglib_gstbase1_BaseSrc_virtual_unlock_stop(void* fnptr, GstBaseSrc* carg0) {
 // 	return ((gboolean (*) (GstBaseSrc*))(fnptr))(carg0);
 // }
-// extern gboolean _gotk4_gstbase1_BaseTransform_accept_caps(GstBaseTransform*, GstPadDirection, GstCaps*);
-// extern void _gotk4_gstbase1_BaseTransform_before_transform(GstBaseTransform*, GstBuffer*);
-// extern gboolean _gotk4_gstbase1_BaseTransform_copy_metadata(GstBaseTransform*, GstBuffer*, GstBuffer*);
-// extern gboolean _gotk4_gstbase1_BaseTransform_decide_allocation(GstBaseTransform*, GstQuery*);
-// extern gboolean _gotk4_gstbase1_BaseTransform_filter_meta(GstBaseTransform*, GstQuery*, GType, const GstStructure*);
-// extern GstCaps* _gotk4_gstbase1_BaseTransform_fixate_caps(GstBaseTransform*, GstPadDirection, GstCaps*, GstCaps*);
-// extern GstFlowReturn _gotk4_gstbase1_BaseTransform_generate_output(GstBaseTransform*, GstBuffer*);
-// extern gboolean _gotk4_gstbase1_BaseTransform_get_unit_size(GstBaseTransform*, GstCaps*, gsize);
-// extern GstFlowReturn _gotk4_gstbase1_BaseTransform_prepare_output_buffer(GstBaseTransform*, GstBuffer*, GstBuffer*);
-// extern gboolean _gotk4_gstbase1_BaseTransform_propose_allocation(GstBaseTransform*, GstQuery*, GstQuery*);
-// extern gboolean _gotk4_gstbase1_BaseTransform_query(GstBaseTransform*, GstPadDirection, GstQuery*);
-// extern gboolean _gotk4_gstbase1_BaseTransform_set_caps(GstBaseTransform*, GstCaps*, GstCaps*);
-// extern gboolean _gotk4_gstbase1_BaseTransform_sink_event(GstBaseTransform*, GstEvent*);
-// extern gboolean _gotk4_gstbase1_BaseTransform_src_event(GstBaseTransform*, GstEvent*);
-// extern gboolean _gotk4_gstbase1_BaseTransform_start(GstBaseTransform*);
-// extern gboolean _gotk4_gstbase1_BaseTransform_stop(GstBaseTransform*);
-// extern GstFlowReturn _gotk4_gstbase1_BaseTransform_submit_input_buffer(GstBaseTransform*, gboolean, GstBuffer*);
-// extern GstFlowReturn _gotk4_gstbase1_BaseTransform_transform(GstBaseTransform*, GstBuffer*, GstBuffer*);
-// extern GstCaps* _gotk4_gstbase1_BaseTransform_transform_caps(GstBaseTransform*, GstPadDirection, GstCaps*, GstCaps*);
-// extern GstFlowReturn _gotk4_gstbase1_BaseTransform_transform_ip(GstBaseTransform*, GstBuffer*);
-// extern gboolean _gotk4_gstbase1_BaseTransform_transform_meta(GstBaseTransform*, GstBuffer*, GstMeta*, GstBuffer*);
-// extern gboolean _gotk4_gstbase1_BaseTransform_transform_size(GstBaseTransform*, GstPadDirection, GstCaps*, gsize, GstCaps*, gsize);
-// gboolean _gotk4_gstbase1_BaseTransform_virtual_accept_caps(void* fnptr, GstBaseTransform* carg0, GstPadDirection carg1, GstCaps* carg2) {
+// extern gboolean _goglib_gstbase1_BaseTransform_accept_caps(GstBaseTransform*, GstPadDirection, GstCaps*);
+// extern void _goglib_gstbase1_BaseTransform_before_transform(GstBaseTransform*, GstBuffer*);
+// extern gboolean _goglib_gstbase1_BaseTransform_copy_metadata(GstBaseTransform*, GstBuffer*, GstBuffer*);
+// extern gboolean _goglib_gstbase1_BaseTransform_decide_allocation(GstBaseTransform*, GstQuery*);
+// extern gboolean _goglib_gstbase1_BaseTransform_filter_meta(GstBaseTransform*, GstQuery*, GType, const GstStructure*);
+// extern GstCaps* _goglib_gstbase1_BaseTransform_fixate_caps(GstBaseTransform*, GstPadDirection, GstCaps*, GstCaps*);
+// extern GstFlowReturn _goglib_gstbase1_BaseTransform_generate_output(GstBaseTransform*, GstBuffer*);
+// extern gboolean _goglib_gstbase1_BaseTransform_get_unit_size(GstBaseTransform*, GstCaps*, gsize);
+// extern GstFlowReturn _goglib_gstbase1_BaseTransform_prepare_output_buffer(GstBaseTransform*, GstBuffer*, GstBuffer*);
+// extern gboolean _goglib_gstbase1_BaseTransform_propose_allocation(GstBaseTransform*, GstQuery*, GstQuery*);
+// extern gboolean _goglib_gstbase1_BaseTransform_query(GstBaseTransform*, GstPadDirection, GstQuery*);
+// extern gboolean _goglib_gstbase1_BaseTransform_set_caps(GstBaseTransform*, GstCaps*, GstCaps*);
+// extern gboolean _goglib_gstbase1_BaseTransform_sink_event(GstBaseTransform*, GstEvent*);
+// extern gboolean _goglib_gstbase1_BaseTransform_src_event(GstBaseTransform*, GstEvent*);
+// extern gboolean _goglib_gstbase1_BaseTransform_start(GstBaseTransform*);
+// extern gboolean _goglib_gstbase1_BaseTransform_stop(GstBaseTransform*);
+// extern GstFlowReturn _goglib_gstbase1_BaseTransform_submit_input_buffer(GstBaseTransform*, gboolean, GstBuffer*);
+// extern GstFlowReturn _goglib_gstbase1_BaseTransform_transform(GstBaseTransform*, GstBuffer*, GstBuffer*);
+// extern GstCaps* _goglib_gstbase1_BaseTransform_transform_caps(GstBaseTransform*, GstPadDirection, GstCaps*, GstCaps*);
+// extern GstFlowReturn _goglib_gstbase1_BaseTransform_transform_ip(GstBaseTransform*, GstBuffer*);
+// extern gboolean _goglib_gstbase1_BaseTransform_transform_meta(GstBaseTransform*, GstBuffer*, GstMeta*, GstBuffer*);
+// extern gboolean _goglib_gstbase1_BaseTransform_transform_size(GstBaseTransform*, GstPadDirection, GstCaps*, gsize, GstCaps*, gsize);
+// gboolean _goglib_gstbase1_BaseTransform_virtual_accept_caps(void* fnptr, GstBaseTransform* carg0, GstPadDirection carg1, GstCaps* carg2) {
 // 	return ((gboolean (*) (GstBaseTransform*, GstPadDirection, GstCaps*))(fnptr))(carg0, carg1, carg2);
 // }
-// void _gotk4_gstbase1_BaseTransform_virtual_before_transform(void* fnptr, GstBaseTransform* carg0, GstBuffer* carg1) {
+// void _goglib_gstbase1_BaseTransform_virtual_before_transform(void* fnptr, GstBaseTransform* carg0, GstBuffer* carg1) {
 // 	return ((void (*) (GstBaseTransform*, GstBuffer*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstbase1_BaseTransform_virtual_copy_metadata(void* fnptr, GstBaseTransform* carg0, GstBuffer* carg1, GstBuffer* carg2) {
+// gboolean _goglib_gstbase1_BaseTransform_virtual_copy_metadata(void* fnptr, GstBaseTransform* carg0, GstBuffer* carg1, GstBuffer* carg2) {
 // 	return ((gboolean (*) (GstBaseTransform*, GstBuffer*, GstBuffer*))(fnptr))(carg0, carg1, carg2);
 // }
-// gboolean _gotk4_gstbase1_BaseTransform_virtual_decide_allocation(void* fnptr, GstBaseTransform* carg0, GstQuery* carg1) {
+// gboolean _goglib_gstbase1_BaseTransform_virtual_decide_allocation(void* fnptr, GstBaseTransform* carg0, GstQuery* carg1) {
 // 	return ((gboolean (*) (GstBaseTransform*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstbase1_BaseTransform_virtual_filter_meta(void* fnptr, GstBaseTransform* carg0, GstQuery* carg1, GType carg2, const GstStructure* carg3) {
+// gboolean _goglib_gstbase1_BaseTransform_virtual_filter_meta(void* fnptr, GstBaseTransform* carg0, GstQuery* carg1, GType carg2, const GstStructure* carg3) {
 // 	return ((gboolean (*) (GstBaseTransform*, GstQuery*, GType, const GstStructure*))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// GstCaps* _gotk4_gstbase1_BaseTransform_virtual_fixate_caps(void* fnptr, GstBaseTransform* carg0, GstPadDirection carg1, GstCaps* carg2, GstCaps* carg3) {
+// GstCaps* _goglib_gstbase1_BaseTransform_virtual_fixate_caps(void* fnptr, GstBaseTransform* carg0, GstPadDirection carg1, GstCaps* carg2, GstCaps* carg3) {
 // 	return ((GstCaps* (*) (GstBaseTransform*, GstPadDirection, GstCaps*, GstCaps*))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// GstFlowReturn _gotk4_gstbase1_BaseTransform_virtual_generate_output(void* fnptr, GstBaseTransform* carg0, GstBuffer** carg1) {
+// GstFlowReturn _goglib_gstbase1_BaseTransform_virtual_generate_output(void* fnptr, GstBaseTransform* carg0, GstBuffer** carg1) {
 // 	return ((GstFlowReturn (*) (GstBaseTransform*, GstBuffer**))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstbase1_BaseTransform_virtual_get_unit_size(void* fnptr, GstBaseTransform* carg0, GstCaps* carg1, gsize* carg2) {
+// gboolean _goglib_gstbase1_BaseTransform_virtual_get_unit_size(void* fnptr, GstBaseTransform* carg0, GstCaps* carg1, gsize* carg2) {
 // 	return ((gboolean (*) (GstBaseTransform*, GstCaps*, gsize*))(fnptr))(carg0, carg1, carg2);
 // }
-// GstFlowReturn _gotk4_gstbase1_BaseTransform_virtual_prepare_output_buffer(void* fnptr, GstBaseTransform* carg0, GstBuffer* carg1, GstBuffer** carg2) {
+// GstFlowReturn _goglib_gstbase1_BaseTransform_virtual_prepare_output_buffer(void* fnptr, GstBaseTransform* carg0, GstBuffer* carg1, GstBuffer** carg2) {
 // 	return ((GstFlowReturn (*) (GstBaseTransform*, GstBuffer*, GstBuffer**))(fnptr))(carg0, carg1, carg2);
 // }
-// gboolean _gotk4_gstbase1_BaseTransform_virtual_propose_allocation(void* fnptr, GstBaseTransform* carg0, GstQuery* carg1, GstQuery* carg2) {
+// gboolean _goglib_gstbase1_BaseTransform_virtual_propose_allocation(void* fnptr, GstBaseTransform* carg0, GstQuery* carg1, GstQuery* carg2) {
 // 	return ((gboolean (*) (GstBaseTransform*, GstQuery*, GstQuery*))(fnptr))(carg0, carg1, carg2);
 // }
-// gboolean _gotk4_gstbase1_BaseTransform_virtual_query(void* fnptr, GstBaseTransform* carg0, GstPadDirection carg1, GstQuery* carg2) {
+// gboolean _goglib_gstbase1_BaseTransform_virtual_query(void* fnptr, GstBaseTransform* carg0, GstPadDirection carg1, GstQuery* carg2) {
 // 	return ((gboolean (*) (GstBaseTransform*, GstPadDirection, GstQuery*))(fnptr))(carg0, carg1, carg2);
 // }
-// gboolean _gotk4_gstbase1_BaseTransform_virtual_set_caps(void* fnptr, GstBaseTransform* carg0, GstCaps* carg1, GstCaps* carg2) {
+// gboolean _goglib_gstbase1_BaseTransform_virtual_set_caps(void* fnptr, GstBaseTransform* carg0, GstCaps* carg1, GstCaps* carg2) {
 // 	return ((gboolean (*) (GstBaseTransform*, GstCaps*, GstCaps*))(fnptr))(carg0, carg1, carg2);
 // }
-// gboolean _gotk4_gstbase1_BaseTransform_virtual_sink_event(void* fnptr, GstBaseTransform* carg0, GstEvent* carg1) {
+// gboolean _goglib_gstbase1_BaseTransform_virtual_sink_event(void* fnptr, GstBaseTransform* carg0, GstEvent* carg1) {
 // 	return ((gboolean (*) (GstBaseTransform*, GstEvent*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstbase1_BaseTransform_virtual_src_event(void* fnptr, GstBaseTransform* carg0, GstEvent* carg1) {
+// gboolean _goglib_gstbase1_BaseTransform_virtual_src_event(void* fnptr, GstBaseTransform* carg0, GstEvent* carg1) {
 // 	return ((gboolean (*) (GstBaseTransform*, GstEvent*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstbase1_BaseTransform_virtual_start(void* fnptr, GstBaseTransform* carg0) {
+// gboolean _goglib_gstbase1_BaseTransform_virtual_start(void* fnptr, GstBaseTransform* carg0) {
 // 	return ((gboolean (*) (GstBaseTransform*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstbase1_BaseTransform_virtual_stop(void* fnptr, GstBaseTransform* carg0) {
+// gboolean _goglib_gstbase1_BaseTransform_virtual_stop(void* fnptr, GstBaseTransform* carg0) {
 // 	return ((gboolean (*) (GstBaseTransform*))(fnptr))(carg0);
 // }
-// GstFlowReturn _gotk4_gstbase1_BaseTransform_virtual_submit_input_buffer(void* fnptr, GstBaseTransform* carg0, gboolean carg1, GstBuffer* carg2) {
+// GstFlowReturn _goglib_gstbase1_BaseTransform_virtual_submit_input_buffer(void* fnptr, GstBaseTransform* carg0, gboolean carg1, GstBuffer* carg2) {
 // 	return ((GstFlowReturn (*) (GstBaseTransform*, gboolean, GstBuffer*))(fnptr))(carg0, carg1, carg2);
 // }
-// GstFlowReturn _gotk4_gstbase1_BaseTransform_virtual_transform(void* fnptr, GstBaseTransform* carg0, GstBuffer* carg1, GstBuffer* carg2) {
+// GstFlowReturn _goglib_gstbase1_BaseTransform_virtual_transform(void* fnptr, GstBaseTransform* carg0, GstBuffer* carg1, GstBuffer* carg2) {
 // 	return ((GstFlowReturn (*) (GstBaseTransform*, GstBuffer*, GstBuffer*))(fnptr))(carg0, carg1, carg2);
 // }
-// GstCaps* _gotk4_gstbase1_BaseTransform_virtual_transform_caps(void* fnptr, GstBaseTransform* carg0, GstPadDirection carg1, GstCaps* carg2, GstCaps* carg3) {
+// GstCaps* _goglib_gstbase1_BaseTransform_virtual_transform_caps(void* fnptr, GstBaseTransform* carg0, GstPadDirection carg1, GstCaps* carg2, GstCaps* carg3) {
 // 	return ((GstCaps* (*) (GstBaseTransform*, GstPadDirection, GstCaps*, GstCaps*))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// GstFlowReturn _gotk4_gstbase1_BaseTransform_virtual_transform_ip(void* fnptr, GstBaseTransform* carg0, GstBuffer* carg1) {
+// GstFlowReturn _goglib_gstbase1_BaseTransform_virtual_transform_ip(void* fnptr, GstBaseTransform* carg0, GstBuffer* carg1) {
 // 	return ((GstFlowReturn (*) (GstBaseTransform*, GstBuffer*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstbase1_BaseTransform_virtual_transform_meta(void* fnptr, GstBaseTransform* carg0, GstBuffer* carg1, GstMeta* carg2, GstBuffer* carg3) {
+// gboolean _goglib_gstbase1_BaseTransform_virtual_transform_meta(void* fnptr, GstBaseTransform* carg0, GstBuffer* carg1, GstMeta* carg2, GstBuffer* carg3) {
 // 	return ((gboolean (*) (GstBaseTransform*, GstBuffer*, GstMeta*, GstBuffer*))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// gboolean _gotk4_gstbase1_BaseTransform_virtual_transform_size(void* fnptr, GstBaseTransform* carg0, GstPadDirection carg1, GstCaps* carg2, gsize carg3, GstCaps* carg4, gsize* carg5) {
+// gboolean _goglib_gstbase1_BaseTransform_virtual_transform_size(void* fnptr, GstBaseTransform* carg0, GstPadDirection carg1, GstCaps* carg2, gsize carg3, GstCaps* carg4, gsize* carg5) {
 // 	return ((gboolean (*) (GstBaseTransform*, GstPadDirection, GstCaps*, gsize, GstCaps*, gsize*))(fnptr))(carg0, carg1, carg2, carg3, carg4, carg5);
 // }
-// extern void _gotk4_gstbase1_DataQueue_empty(GstDataQueue*);
-// extern void _gotk4_gstbase1_DataQueue_full(GstDataQueue*);
-// void _gotk4_gstbase1_DataQueue_virtual_empty(void* fnptr, GstDataQueue* carg0) {
+// extern void _goglib_gstbase1_DataQueue_empty(GstDataQueue*);
+// extern void _goglib_gstbase1_DataQueue_full(GstDataQueue*);
+// void _goglib_gstbase1_DataQueue_virtual_empty(void* fnptr, GstDataQueue* carg0) {
 // 	return ((void (*) (GstDataQueue*))(fnptr))(carg0);
 // }
-// void _gotk4_gstbase1_DataQueue_virtual_full(void* fnptr, GstDataQueue* carg0) {
+// void _goglib_gstbase1_DataQueue_virtual_full(void* fnptr, GstDataQueue* carg0) {
 // 	return ((void (*) (GstDataQueue*))(fnptr))(carg0);
 // }
-// extern GstFlowReturn _gotk4_gstbase1_PushSrc_alloc(GstPushSrc*, GstBuffer*);
-// extern GstFlowReturn _gotk4_gstbase1_PushSrc_fill(GstPushSrc*, GstBuffer*);
-// GstFlowReturn _gotk4_gstbase1_PushSrc_virtual_alloc(void* fnptr, GstPushSrc* carg0, GstBuffer** carg1) {
+// extern GstFlowReturn _goglib_gstbase1_PushSrc_alloc(GstPushSrc*, GstBuffer*);
+// extern GstFlowReturn _goglib_gstbase1_PushSrc_fill(GstPushSrc*, GstBuffer*);
+// GstFlowReturn _goglib_gstbase1_PushSrc_virtual_alloc(void* fnptr, GstPushSrc* carg0, GstBuffer** carg1) {
 // 	return ((GstFlowReturn (*) (GstPushSrc*, GstBuffer**))(fnptr))(carg0, carg1);
 // }
-// GstFlowReturn _gotk4_gstbase1_PushSrc_virtual_fill(void* fnptr, GstPushSrc* carg0, GstBuffer* carg1) {
+// GstFlowReturn _goglib_gstbase1_PushSrc_virtual_fill(void* fnptr, GstPushSrc* carg0, GstBuffer* carg1) {
 // 	return ((GstFlowReturn (*) (GstPushSrc*, GstBuffer*))(fnptr))(carg0, carg1);
 // }
 import "C"
@@ -1028,7 +1028,7 @@ func TypeFindHelperForBufferWithExtension(obj gst.Object, buf *gst.Buffer, exten
 // Free-function: gst_caps_unref
 func TypeFindHelperForData(obj gst.Object, data []uint8) (gst.TypeFindProbability, *gst.Caps) {
 	var carg1 *C.GstObject             // in, none, converted, nullable
-	var carg2 *C.guint8                // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg3)
+	var carg2 *C.guint8                // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
 	var carg3 C.gsize                  // implicit
 	var carg4 C.GstTypeFindProbability // out, full, casted
 	var cret  *C.GstCaps               // return, full, converted, nullable
@@ -1039,7 +1039,7 @@ func TypeFindHelperForData(obj gst.Object, data []uint8) (gst.TypeFindProbabilit
 	_ = data
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_type_find_helper_for_data(carg1, carg2, carg3, &carg4)
 	runtime.KeepAlive(obj)
@@ -1081,7 +1081,7 @@ func TypeFindHelperForData(obj gst.Object, data []uint8) (gst.TypeFindProbabilit
 // Free-function: gst_caps_unref
 func TypeFindHelperForDataWithCaps(obj gst.Object, data []uint8, caps *gst.Caps) (gst.TypeFindProbability, *gst.Caps) {
 	var carg1 *C.GstObject             // in, none, converted, nullable
-	var carg2 *C.guint8                // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg3)
+	var carg2 *C.guint8                // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
 	var carg3 C.gsize                  // implicit
 	var carg4 *C.GstCaps               // in, none, converted
 	var carg5 C.GstTypeFindProbability // out, full, casted
@@ -1093,7 +1093,7 @@ func TypeFindHelperForDataWithCaps(obj gst.Object, data []uint8, caps *gst.Caps)
 	_ = data
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 	carg4 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
 	cret = C.gst_type_find_helper_for_data_with_caps(carg1, carg2, carg3, carg4, &carg5)
@@ -1144,7 +1144,7 @@ func TypeFindHelperForDataWithCaps(obj gst.Object, data []uint8, caps *gst.Caps)
 // Free-function: gst_caps_unref
 func TypeFindHelperForDataWithExtension(obj gst.Object, data []uint8, extension string) (gst.TypeFindProbability, *gst.Caps) {
 	var carg1 *C.GstObject             // in, none, converted, nullable
-	var carg2 *C.guint8                // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg3)
+	var carg2 *C.guint8                // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg3)
 	var carg3 C.gsize                  // implicit
 	var carg4 *C.gchar                 // in, none, string, nullable-string
 	var carg5 C.GstTypeFindProbability // out, full, casted
@@ -1156,7 +1156,7 @@ func TypeFindHelperForDataWithExtension(obj gst.Object, data []uint8, extension 
 	_ = data
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 	if extension != "" {
 		carg4 = (*C.gchar)(unsafe.Pointer(C.CString(extension)))
 		defer C.free(unsafe.Pointer(carg4))
@@ -3537,7 +3537,7 @@ func (self *AggregatorInstance) GetAllocator() (gst.Allocator, gst.AllocationPar
 	}
 	_ = params
 	_ = carg2
-	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams)")
+	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams) because of unknown reason")
 
 	return allocator, params
 }
@@ -4261,10 +4261,10 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 	pclass := (*C.GstAggregatorClass)(gclass)
 
 	if overrides.Aggregate != nil {
-		pclass.aggregate = (*[0]byte)(C._gotk4_gstbase1_Aggregator_aggregate)
+		pclass.aggregate = (*[0]byte)(C._goglib_gstbase1_Aggregator_aggregate)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_Aggregator_aggregate",
+			"_goglib_gstbase1_Aggregator_aggregate",
 			func(carg0 *C.GstAggregator, carg1 C.gboolean) (cret C.GstFlowReturn) {
 				var aggregator Instance       // go GstAggregator subclass
 				var timeout    bool           // in
@@ -4285,10 +4285,10 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 	}
 
 	if overrides.Clip != nil {
-		pclass.clip = (*[0]byte)(C._gotk4_gstbase1_Aggregator_clip)
+		pclass.clip = (*[0]byte)(C._goglib_gstbase1_Aggregator_clip)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_Aggregator_clip",
+			"_goglib_gstbase1_Aggregator_clip",
 			func(carg0 *C.GstAggregator, carg1 *C.GstAggregatorPad, carg2 *C.GstBuffer) (cret *C.GstBuffer) {
 				var aggregator    Instance      // go GstAggregator subclass
 				var aggregatorPad AggregatorPad // in, none, converted
@@ -4309,10 +4309,10 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 	}
 
 	if overrides.DecideAllocation != nil {
-		pclass.decide_allocation = (*[0]byte)(C._gotk4_gstbase1_Aggregator_decide_allocation)
+		pclass.decide_allocation = (*[0]byte)(C._goglib_gstbase1_Aggregator_decide_allocation)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_Aggregator_decide_allocation",
+			"_goglib_gstbase1_Aggregator_decide_allocation",
 			func(carg0 *C.GstAggregator, carg1 *C.GstQuery) (cret C.gboolean) {
 				var self  Instance   // go GstAggregator subclass
 				var query *gst.Query // in, none, converted
@@ -4333,10 +4333,10 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 	}
 
 	if overrides.FinishBuffer != nil {
-		pclass.finish_buffer = (*[0]byte)(C._gotk4_gstbase1_Aggregator_finish_buffer)
+		pclass.finish_buffer = (*[0]byte)(C._goglib_gstbase1_Aggregator_finish_buffer)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_Aggregator_finish_buffer",
+			"_goglib_gstbase1_Aggregator_finish_buffer",
 			func(carg0 *C.GstAggregator, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
 				var aggregator Instance       // go GstAggregator subclass
 				var buffer     *gst.Buffer    // in, full, converted
@@ -4355,10 +4355,10 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 	}
 
 	if overrides.FinishBufferList != nil {
-		pclass.finish_buffer_list = (*[0]byte)(C._gotk4_gstbase1_Aggregator_finish_buffer_list)
+		pclass.finish_buffer_list = (*[0]byte)(C._goglib_gstbase1_Aggregator_finish_buffer_list)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_Aggregator_finish_buffer_list",
+			"_goglib_gstbase1_Aggregator_finish_buffer_list",
 			func(carg0 *C.GstAggregator, carg1 *C.GstBufferList) (cret C.GstFlowReturn) {
 				var aggregator Instance        // go GstAggregator subclass
 				var bufferlist *gst.BufferList // in, full, converted
@@ -4377,10 +4377,10 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 	}
 
 	if overrides.FixateSrcCaps != nil {
-		pclass.fixate_src_caps = (*[0]byte)(C._gotk4_gstbase1_Aggregator_fixate_src_caps)
+		pclass.fixate_src_caps = (*[0]byte)(C._goglib_gstbase1_Aggregator_fixate_src_caps)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_Aggregator_fixate_src_caps",
+			"_goglib_gstbase1_Aggregator_fixate_src_caps",
 			func(carg0 *C.GstAggregator, carg1 *C.GstCaps) (cret *C.GstCaps) {
 				var self  Instance  // go GstAggregator subclass
 				var caps  *gst.Caps // in, none, converted
@@ -4399,10 +4399,10 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 	}
 
 	if overrides.Flush != nil {
-		pclass.flush = (*[0]byte)(C._gotk4_gstbase1_Aggregator_flush)
+		pclass.flush = (*[0]byte)(C._goglib_gstbase1_Aggregator_flush)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_Aggregator_flush",
+			"_goglib_gstbase1_Aggregator_flush",
 			func(carg0 *C.GstAggregator) (cret C.GstFlowReturn) {
 				var aggregator Instance       // go GstAggregator subclass
 				var goret      gst.FlowReturn // return, none, casted
@@ -4419,10 +4419,10 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 	}
 
 	if overrides.GetNextTime != nil {
-		pclass.get_next_time = (*[0]byte)(C._gotk4_gstbase1_Aggregator_get_next_time)
+		pclass.get_next_time = (*[0]byte)(C._goglib_gstbase1_Aggregator_get_next_time)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_Aggregator_get_next_time",
+			"_goglib_gstbase1_Aggregator_get_next_time",
 			func(carg0 *C.GstAggregator) (cret C.GstClockTime) {
 				var aggregator Instance      // go GstAggregator subclass
 				var goret      gst.ClockTime // return, none, casted, alias
@@ -4439,10 +4439,10 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 	}
 
 	if overrides.Negotiate != nil {
-		pclass.negotiate = (*[0]byte)(C._gotk4_gstbase1_Aggregator_negotiate)
+		pclass.negotiate = (*[0]byte)(C._goglib_gstbase1_Aggregator_negotiate)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_Aggregator_negotiate",
+			"_goglib_gstbase1_Aggregator_negotiate",
 			func(carg0 *C.GstAggregator) (cret C.gboolean) {
 				var self  Instance // go GstAggregator subclass
 				var goret bool     // return
@@ -4461,10 +4461,10 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 	}
 
 	if overrides.NegotiatedSrcCaps != nil {
-		pclass.negotiated_src_caps = (*[0]byte)(C._gotk4_gstbase1_Aggregator_negotiated_src_caps)
+		pclass.negotiated_src_caps = (*[0]byte)(C._goglib_gstbase1_Aggregator_negotiated_src_caps)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_Aggregator_negotiated_src_caps",
+			"_goglib_gstbase1_Aggregator_negotiated_src_caps",
 			func(carg0 *C.GstAggregator, carg1 *C.GstCaps) (cret C.gboolean) {
 				var self  Instance  // go GstAggregator subclass
 				var caps  *gst.Caps // in, none, converted
@@ -4485,10 +4485,10 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 	}
 
 	if overrides.PeekNextSample != nil {
-		pclass.peek_next_sample = (*[0]byte)(C._gotk4_gstbase1_Aggregator_peek_next_sample)
+		pclass.peek_next_sample = (*[0]byte)(C._goglib_gstbase1_Aggregator_peek_next_sample)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_Aggregator_peek_next_sample",
+			"_goglib_gstbase1_Aggregator_peek_next_sample",
 			func(carg0 *C.GstAggregator, carg1 *C.GstAggregatorPad) (cret *C.GstSample) {
 				var aggregator    Instance      // go GstAggregator subclass
 				var aggregatorPad AggregatorPad // in, none, converted
@@ -4509,10 +4509,10 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 	}
 
 	if overrides.ProposeAllocation != nil {
-		pclass.propose_allocation = (*[0]byte)(C._gotk4_gstbase1_Aggregator_propose_allocation)
+		pclass.propose_allocation = (*[0]byte)(C._goglib_gstbase1_Aggregator_propose_allocation)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_Aggregator_propose_allocation",
+			"_goglib_gstbase1_Aggregator_propose_allocation",
 			func(carg0 *C.GstAggregator, carg1 *C.GstAggregatorPad, carg2 *C.GstQuery, carg3 *C.GstQuery) (cret C.gboolean) {
 				var self        Instance      // go GstAggregator subclass
 				var pad         AggregatorPad // in, none, converted
@@ -4537,10 +4537,10 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 	}
 
 	if overrides.SinkEvent != nil {
-		pclass.sink_event = (*[0]byte)(C._gotk4_gstbase1_Aggregator_sink_event)
+		pclass.sink_event = (*[0]byte)(C._goglib_gstbase1_Aggregator_sink_event)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_Aggregator_sink_event",
+			"_goglib_gstbase1_Aggregator_sink_event",
 			func(carg0 *C.GstAggregator, carg1 *C.GstAggregatorPad, carg2 *C.GstEvent) (cret C.gboolean) {
 				var aggregator    Instance      // go GstAggregator subclass
 				var aggregatorPad AggregatorPad // in, none, converted
@@ -4563,10 +4563,10 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 	}
 
 	if overrides.SinkEventPreQueue != nil {
-		pclass.sink_event_pre_queue = (*[0]byte)(C._gotk4_gstbase1_Aggregator_sink_event_pre_queue)
+		pclass.sink_event_pre_queue = (*[0]byte)(C._goglib_gstbase1_Aggregator_sink_event_pre_queue)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_Aggregator_sink_event_pre_queue",
+			"_goglib_gstbase1_Aggregator_sink_event_pre_queue",
 			func(carg0 *C.GstAggregator, carg1 *C.GstAggregatorPad, carg2 *C.GstEvent) (cret C.GstFlowReturn) {
 				var aggregator    Instance       // go GstAggregator subclass
 				var aggregatorPad AggregatorPad  // in, none, converted
@@ -4587,10 +4587,10 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 	}
 
 	if overrides.SinkQuery != nil {
-		pclass.sink_query = (*[0]byte)(C._gotk4_gstbase1_Aggregator_sink_query)
+		pclass.sink_query = (*[0]byte)(C._goglib_gstbase1_Aggregator_sink_query)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_Aggregator_sink_query",
+			"_goglib_gstbase1_Aggregator_sink_query",
 			func(carg0 *C.GstAggregator, carg1 *C.GstAggregatorPad, carg2 *C.GstQuery) (cret C.gboolean) {
 				var aggregator    Instance      // go GstAggregator subclass
 				var aggregatorPad AggregatorPad // in, none, converted
@@ -4613,10 +4613,10 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 	}
 
 	if overrides.SinkQueryPreQueue != nil {
-		pclass.sink_query_pre_queue = (*[0]byte)(C._gotk4_gstbase1_Aggregator_sink_query_pre_queue)
+		pclass.sink_query_pre_queue = (*[0]byte)(C._goglib_gstbase1_Aggregator_sink_query_pre_queue)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_Aggregator_sink_query_pre_queue",
+			"_goglib_gstbase1_Aggregator_sink_query_pre_queue",
 			func(carg0 *C.GstAggregator, carg1 *C.GstAggregatorPad, carg2 *C.GstQuery) (cret C.gboolean) {
 				var aggregator    Instance      // go GstAggregator subclass
 				var aggregatorPad AggregatorPad // in, none, converted
@@ -4639,10 +4639,10 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 	}
 
 	if overrides.SrcActivate != nil {
-		pclass.src_activate = (*[0]byte)(C._gotk4_gstbase1_Aggregator_src_activate)
+		pclass.src_activate = (*[0]byte)(C._goglib_gstbase1_Aggregator_src_activate)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_Aggregator_src_activate",
+			"_goglib_gstbase1_Aggregator_src_activate",
 			func(carg0 *C.GstAggregator, carg1 C.GstPadMode, carg2 C.gboolean) (cret C.gboolean) {
 				var aggregator Instance    // go GstAggregator subclass
 				var mode       gst.PadMode // in, none, casted
@@ -4667,10 +4667,10 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 	}
 
 	if overrides.SrcEvent != nil {
-		pclass.src_event = (*[0]byte)(C._gotk4_gstbase1_Aggregator_src_event)
+		pclass.src_event = (*[0]byte)(C._goglib_gstbase1_Aggregator_src_event)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_Aggregator_src_event",
+			"_goglib_gstbase1_Aggregator_src_event",
 			func(carg0 *C.GstAggregator, carg1 *C.GstEvent) (cret C.gboolean) {
 				var aggregator Instance   // go GstAggregator subclass
 				var event      *gst.Event // in, none, converted
@@ -4691,10 +4691,10 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 	}
 
 	if overrides.SrcQuery != nil {
-		pclass.src_query = (*[0]byte)(C._gotk4_gstbase1_Aggregator_src_query)
+		pclass.src_query = (*[0]byte)(C._goglib_gstbase1_Aggregator_src_query)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_Aggregator_src_query",
+			"_goglib_gstbase1_Aggregator_src_query",
 			func(carg0 *C.GstAggregator, carg1 *C.GstQuery) (cret C.gboolean) {
 				var aggregator Instance   // go GstAggregator subclass
 				var query      *gst.Query // in, none, converted
@@ -4715,10 +4715,10 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 	}
 
 	if overrides.Start != nil {
-		pclass.start = (*[0]byte)(C._gotk4_gstbase1_Aggregator_start)
+		pclass.start = (*[0]byte)(C._goglib_gstbase1_Aggregator_start)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_Aggregator_start",
+			"_goglib_gstbase1_Aggregator_start",
 			func(carg0 *C.GstAggregator) (cret C.gboolean) {
 				var aggregator Instance // go GstAggregator subclass
 				var goret      bool     // return
@@ -4737,10 +4737,10 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 	}
 
 	if overrides.Stop != nil {
-		pclass.stop = (*[0]byte)(C._gotk4_gstbase1_Aggregator_stop)
+		pclass.stop = (*[0]byte)(C._goglib_gstbase1_Aggregator_stop)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_Aggregator_stop",
+			"_goglib_gstbase1_Aggregator_stop",
 			func(carg0 *C.GstAggregator) (cret C.gboolean) {
 				var aggregator Instance // go GstAggregator subclass
 				var goret      bool     // return
@@ -4759,10 +4759,10 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 	}
 
 	if overrides.UpdateSrcCaps != nil {
-		pclass.update_src_caps = (*[0]byte)(C._gotk4_gstbase1_Aggregator_update_src_caps)
+		pclass.update_src_caps = (*[0]byte)(C._goglib_gstbase1_Aggregator_update_src_caps)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_Aggregator_update_src_caps",
+			"_goglib_gstbase1_Aggregator_update_src_caps",
 			func(carg0 *C.GstAggregator, carg1 *C.GstCaps, carg2 **C.GstCaps) (cret C.GstFlowReturn) {
 				var self  Instance       // go GstAggregator subclass
 				var caps  *gst.Caps      // in, none, converted
@@ -4813,7 +4813,7 @@ func (aggregator *AggregatorInstance) ParentAggregate(timeout bool) gst.FlowRetu
 		carg1 = C.TRUE
 	}
 
-	cret = C._gotk4_gstbase1_Aggregator_virtual_aggregate(unsafe.Pointer(parentclass.aggregate), carg0, carg1)
+	cret = C._goglib_gstbase1_Aggregator_virtual_aggregate(unsafe.Pointer(parentclass.aggregate), carg0, carg1)
 	runtime.KeepAlive(aggregator)
 	runtime.KeepAlive(timeout)
 
@@ -4856,7 +4856,7 @@ func (aggregator *AggregatorInstance) ParentClip(aggregatorPad AggregatorPad, bu
 	carg1 = (*C.GstAggregatorPad)(UnsafeAggregatorPadToGlibNone(aggregatorPad))
 	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buf))
 
-	cret = C._gotk4_gstbase1_Aggregator_virtual_clip(unsafe.Pointer(parentclass.clip), carg0, carg1, carg2)
+	cret = C._goglib_gstbase1_Aggregator_virtual_clip(unsafe.Pointer(parentclass.clip), carg0, carg1, carg2)
 	runtime.KeepAlive(aggregator)
 	runtime.KeepAlive(aggregatorPad)
 	runtime.KeepAlive(buf)
@@ -4894,7 +4894,7 @@ func (self *AggregatorInstance) ParentDecideAllocation(query *gst.Query) bool {
 	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(self))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstbase1_Aggregator_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
+	cret = C._goglib_gstbase1_Aggregator_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
 	runtime.KeepAlive(self)
 	runtime.KeepAlive(query)
 
@@ -4931,7 +4931,7 @@ func (aggregator *AggregatorInstance) ParentFinishBuffer(buffer *gst.Buffer) gst
 	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibFull(buffer))
 
-	cret = C._gotk4_gstbase1_Aggregator_virtual_finish_buffer(unsafe.Pointer(parentclass.finish_buffer), carg0, carg1)
+	cret = C._goglib_gstbase1_Aggregator_virtual_finish_buffer(unsafe.Pointer(parentclass.finish_buffer), carg0, carg1)
 	runtime.KeepAlive(aggregator)
 	runtime.KeepAlive(buffer)
 
@@ -4966,7 +4966,7 @@ func (aggregator *AggregatorInstance) ParentFinishBufferList(bufferlist *gst.Buf
 	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
 	carg1 = (*C.GstBufferList)(gst.UnsafeBufferListToGlibFull(bufferlist))
 
-	cret = C._gotk4_gstbase1_Aggregator_virtual_finish_buffer_list(unsafe.Pointer(parentclass.finish_buffer_list), carg0, carg1)
+	cret = C._goglib_gstbase1_Aggregator_virtual_finish_buffer_list(unsafe.Pointer(parentclass.finish_buffer_list), carg0, carg1)
 	runtime.KeepAlive(aggregator)
 	runtime.KeepAlive(bufferlist)
 
@@ -5002,7 +5002,7 @@ func (self *AggregatorInstance) ParentFixateSrcCaps(caps *gst.Caps) *gst.Caps {
 	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(self))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
-	cret = C._gotk4_gstbase1_Aggregator_virtual_fixate_src_caps(unsafe.Pointer(parentclass.fixate_src_caps), carg0, carg1)
+	cret = C._goglib_gstbase1_Aggregator_virtual_fixate_src_caps(unsafe.Pointer(parentclass.fixate_src_caps), carg0, carg1)
 	runtime.KeepAlive(self)
 	runtime.KeepAlive(caps)
 
@@ -5032,7 +5032,7 @@ func (aggregator *AggregatorInstance) ParentFlush() gst.FlowReturn {
 
 	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
 
-	cret = C._gotk4_gstbase1_Aggregator_virtual_flush(unsafe.Pointer(parentclass.flush), carg0)
+	cret = C._goglib_gstbase1_Aggregator_virtual_flush(unsafe.Pointer(parentclass.flush), carg0)
 	runtime.KeepAlive(aggregator)
 
 	var goret gst.FlowReturn
@@ -5063,7 +5063,7 @@ func (aggregator *AggregatorInstance) ParentGetNextTime() gst.ClockTime {
 
 	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
 
-	cret = C._gotk4_gstbase1_Aggregator_virtual_get_next_time(unsafe.Pointer(parentclass.get_next_time), carg0)
+	cret = C._goglib_gstbase1_Aggregator_virtual_get_next_time(unsafe.Pointer(parentclass.get_next_time), carg0)
 	runtime.KeepAlive(aggregator)
 
 	var goret gst.ClockTime
@@ -5091,7 +5091,7 @@ func (self *AggregatorInstance) ParentNegotiate() bool {
 
 	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(self))
 
-	cret = C._gotk4_gstbase1_Aggregator_virtual_negotiate(unsafe.Pointer(parentclass.negotiate), carg0)
+	cret = C._goglib_gstbase1_Aggregator_virtual_negotiate(unsafe.Pointer(parentclass.negotiate), carg0)
 	runtime.KeepAlive(self)
 
 	var goret bool
@@ -5126,7 +5126,7 @@ func (self *AggregatorInstance) ParentNegotiatedSrcCaps(caps *gst.Caps) bool {
 	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(self))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
-	cret = C._gotk4_gstbase1_Aggregator_virtual_negotiated_src_caps(unsafe.Pointer(parentclass.negotiated_src_caps), carg0, carg1)
+	cret = C._goglib_gstbase1_Aggregator_virtual_negotiated_src_caps(unsafe.Pointer(parentclass.negotiated_src_caps), carg0, carg1)
 	runtime.KeepAlive(self)
 	runtime.KeepAlive(caps)
 
@@ -5164,7 +5164,7 @@ func (aggregator *AggregatorInstance) ParentPeekNextSample(aggregatorPad Aggrega
 	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
 	carg1 = (*C.GstAggregatorPad)(UnsafeAggregatorPadToGlibNone(aggregatorPad))
 
-	cret = C._gotk4_gstbase1_Aggregator_virtual_peek_next_sample(unsafe.Pointer(parentclass.peek_next_sample), carg0, carg1)
+	cret = C._goglib_gstbase1_Aggregator_virtual_peek_next_sample(unsafe.Pointer(parentclass.peek_next_sample), carg0, carg1)
 	runtime.KeepAlive(aggregator)
 	runtime.KeepAlive(aggregatorPad)
 
@@ -5206,7 +5206,7 @@ func (self *AggregatorInstance) ParentProposeAllocation(pad AggregatorPad, decid
 	carg2 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(decideQuery))
 	carg3 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstbase1_Aggregator_virtual_propose_allocation(unsafe.Pointer(parentclass.propose_allocation), carg0, carg1, carg2, carg3)
+	cret = C._goglib_gstbase1_Aggregator_virtual_propose_allocation(unsafe.Pointer(parentclass.propose_allocation), carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(self)
 	runtime.KeepAlive(pad)
 	runtime.KeepAlive(decideQuery)
@@ -5248,7 +5248,7 @@ func (aggregator *AggregatorInstance) ParentSinkEvent(aggregatorPad AggregatorPa
 	carg1 = (*C.GstAggregatorPad)(UnsafeAggregatorPadToGlibNone(aggregatorPad))
 	carg2 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
-	cret = C._gotk4_gstbase1_Aggregator_virtual_sink_event(unsafe.Pointer(parentclass.sink_event), carg0, carg1, carg2)
+	cret = C._goglib_gstbase1_Aggregator_virtual_sink_event(unsafe.Pointer(parentclass.sink_event), carg0, carg1, carg2)
 	runtime.KeepAlive(aggregator)
 	runtime.KeepAlive(aggregatorPad)
 	runtime.KeepAlive(event)
@@ -5289,7 +5289,7 @@ func (aggregator *AggregatorInstance) ParentSinkEventPreQueue(aggregatorPad Aggr
 	carg1 = (*C.GstAggregatorPad)(UnsafeAggregatorPadToGlibNone(aggregatorPad))
 	carg2 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
-	cret = C._gotk4_gstbase1_Aggregator_virtual_sink_event_pre_queue(unsafe.Pointer(parentclass.sink_event_pre_queue), carg0, carg1, carg2)
+	cret = C._goglib_gstbase1_Aggregator_virtual_sink_event_pre_queue(unsafe.Pointer(parentclass.sink_event_pre_queue), carg0, carg1, carg2)
 	runtime.KeepAlive(aggregator)
 	runtime.KeepAlive(aggregatorPad)
 	runtime.KeepAlive(event)
@@ -5328,7 +5328,7 @@ func (aggregator *AggregatorInstance) ParentSinkQuery(aggregatorPad AggregatorPa
 	carg1 = (*C.GstAggregatorPad)(UnsafeAggregatorPadToGlibNone(aggregatorPad))
 	carg2 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstbase1_Aggregator_virtual_sink_query(unsafe.Pointer(parentclass.sink_query), carg0, carg1, carg2)
+	cret = C._goglib_gstbase1_Aggregator_virtual_sink_query(unsafe.Pointer(parentclass.sink_query), carg0, carg1, carg2)
 	runtime.KeepAlive(aggregator)
 	runtime.KeepAlive(aggregatorPad)
 	runtime.KeepAlive(query)
@@ -5369,7 +5369,7 @@ func (aggregator *AggregatorInstance) ParentSinkQueryPreQueue(aggregatorPad Aggr
 	carg1 = (*C.GstAggregatorPad)(UnsafeAggregatorPadToGlibNone(aggregatorPad))
 	carg2 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstbase1_Aggregator_virtual_sink_query_pre_queue(unsafe.Pointer(parentclass.sink_query_pre_queue), carg0, carg1, carg2)
+	cret = C._goglib_gstbase1_Aggregator_virtual_sink_query_pre_queue(unsafe.Pointer(parentclass.sink_query_pre_queue), carg0, carg1, carg2)
 	runtime.KeepAlive(aggregator)
 	runtime.KeepAlive(aggregatorPad)
 	runtime.KeepAlive(query)
@@ -5412,7 +5412,7 @@ func (aggregator *AggregatorInstance) ParentSrcActivate(mode gst.PadMode, active
 		carg2 = C.TRUE
 	}
 
-	cret = C._gotk4_gstbase1_Aggregator_virtual_src_activate(unsafe.Pointer(parentclass.src_activate), carg0, carg1, carg2)
+	cret = C._goglib_gstbase1_Aggregator_virtual_src_activate(unsafe.Pointer(parentclass.src_activate), carg0, carg1, carg2)
 	runtime.KeepAlive(aggregator)
 	runtime.KeepAlive(mode)
 	runtime.KeepAlive(active)
@@ -5450,7 +5450,7 @@ func (aggregator *AggregatorInstance) ParentSrcEvent(event *gst.Event) bool {
 	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
-	cret = C._gotk4_gstbase1_Aggregator_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
+	cret = C._goglib_gstbase1_Aggregator_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
 	runtime.KeepAlive(aggregator)
 	runtime.KeepAlive(event)
 
@@ -5487,7 +5487,7 @@ func (aggregator *AggregatorInstance) ParentSrcQuery(query *gst.Query) bool {
 	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstbase1_Aggregator_virtual_src_query(unsafe.Pointer(parentclass.src_query), carg0, carg1)
+	cret = C._goglib_gstbase1_Aggregator_virtual_src_query(unsafe.Pointer(parentclass.src_query), carg0, carg1)
 	runtime.KeepAlive(aggregator)
 	runtime.KeepAlive(query)
 
@@ -5519,7 +5519,7 @@ func (aggregator *AggregatorInstance) ParentStart() bool {
 
 	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
 
-	cret = C._gotk4_gstbase1_Aggregator_virtual_start(unsafe.Pointer(parentclass.start), carg0)
+	cret = C._goglib_gstbase1_Aggregator_virtual_start(unsafe.Pointer(parentclass.start), carg0)
 	runtime.KeepAlive(aggregator)
 
 	var goret bool
@@ -5549,7 +5549,7 @@ func (aggregator *AggregatorInstance) ParentStop() bool {
 
 	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
 
-	cret = C._gotk4_gstbase1_Aggregator_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
+	cret = C._goglib_gstbase1_Aggregator_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
 	runtime.KeepAlive(aggregator)
 
 	var goret bool
@@ -5583,7 +5583,7 @@ func (self *AggregatorInstance) ParentUpdateSrcCaps(caps *gst.Caps) (*gst.Caps, 
 	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(self))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
-	cret = C._gotk4_gstbase1_Aggregator_virtual_update_src_caps(unsafe.Pointer(parentclass.update_src_caps), carg0, carg1, &carg2)
+	cret = C._goglib_gstbase1_Aggregator_virtual_update_src_caps(unsafe.Pointer(parentclass.update_src_caps), carg0, carg1, &carg2)
 	runtime.KeepAlive(self)
 	runtime.KeepAlive(caps)
 
@@ -5977,10 +5977,10 @@ func UnsafeApplyAggregatorPadOverrides[Instance AggregatorPad](gclass unsafe.Poi
 	pclass := (*C.GstAggregatorPadClass)(gclass)
 
 	if overrides.Flush != nil {
-		pclass.flush = (*[0]byte)(C._gotk4_gstbase1_AggregatorPad_flush)
+		pclass.flush = (*[0]byte)(C._goglib_gstbase1_AggregatorPad_flush)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_AggregatorPad_flush",
+			"_goglib_gstbase1_AggregatorPad_flush",
 			func(carg0 *C.GstAggregatorPad, carg1 *C.GstAggregator) (cret C.GstFlowReturn) {
 				var aggpad     Instance       // go GstAggregatorPad subclass
 				var aggregator Aggregator     // in, none, converted
@@ -5999,10 +5999,10 @@ func UnsafeApplyAggregatorPadOverrides[Instance AggregatorPad](gclass unsafe.Poi
 	}
 
 	if overrides.SkipBuffer != nil {
-		pclass.skip_buffer = (*[0]byte)(C._gotk4_gstbase1_AggregatorPad_skip_buffer)
+		pclass.skip_buffer = (*[0]byte)(C._goglib_gstbase1_AggregatorPad_skip_buffer)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_AggregatorPad_skip_buffer",
+			"_goglib_gstbase1_AggregatorPad_skip_buffer",
 			func(carg0 *C.GstAggregatorPad, carg1 *C.GstAggregator, carg2 *C.GstBuffer) (cret C.gboolean) {
 				var aggpad     Instance    // go GstAggregatorPad subclass
 				var aggregator Aggregator  // in, none, converted
@@ -6050,7 +6050,7 @@ func (aggpad *AggregatorPadInstance) ParentFlush(aggregator Aggregator) gst.Flow
 	carg0 = (*C.GstAggregatorPad)(UnsafeAggregatorPadToGlibNone(aggpad))
 	carg1 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
 
-	cret = C._gotk4_gstbase1_AggregatorPad_virtual_flush(unsafe.Pointer(parentclass.flush), carg0, carg1)
+	cret = C._goglib_gstbase1_AggregatorPad_virtual_flush(unsafe.Pointer(parentclass.flush), carg0, carg1)
 	runtime.KeepAlive(aggpad)
 	runtime.KeepAlive(aggregator)
 
@@ -6088,7 +6088,7 @@ func (aggpad *AggregatorPadInstance) ParentSkipBuffer(aggregator Aggregator, buf
 	carg1 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
 	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
-	cret = C._gotk4_gstbase1_AggregatorPad_virtual_skip_buffer(unsafe.Pointer(parentclass.skip_buffer), carg0, carg1, carg2)
+	cret = C._goglib_gstbase1_AggregatorPad_virtual_skip_buffer(unsafe.Pointer(parentclass.skip_buffer), carg0, carg1, carg2)
 	runtime.KeepAlive(aggpad)
 	runtime.KeepAlive(aggregator)
 	runtime.KeepAlive(buffer)
@@ -7456,10 +7456,10 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 	pclass := (*C.GstBaseParseClass)(gclass)
 
 	if overrides.Convert != nil {
-		pclass.convert = (*[0]byte)(C._gotk4_gstbase1_BaseParse_convert)
+		pclass.convert = (*[0]byte)(C._goglib_gstbase1_BaseParse_convert)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseParse_convert",
+			"_goglib_gstbase1_BaseParse_convert",
 			func(carg0 *C.GstBaseParse, carg1 C.GstFormat, carg2 C.gint64, carg3 C.GstFormat, carg4 *C.gint64) (cret C.gboolean) {
 				var parse      Instance   // go GstBaseParse subclass
 				var srcFormat  gst.Format // in, none, casted
@@ -7474,7 +7474,7 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 				destFormat = gst.Format(carg3)
 				_ = destValue
 				_ = carg4
-				panic("unimplemented conversion of *int64 (gint64*)")
+				panic("unimplemented conversion of *int64 (gint64*) because of unknown reason")
 
 				goret = overrides.Convert(parse, srcFormat, srcValue, destFormat, destValue)
 
@@ -7488,10 +7488,10 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.Detect != nil {
-		pclass.detect = (*[0]byte)(C._gotk4_gstbase1_BaseParse_detect)
+		pclass.detect = (*[0]byte)(C._goglib_gstbase1_BaseParse_detect)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseParse_detect",
+			"_goglib_gstbase1_BaseParse_detect",
 			func(carg0 *C.GstBaseParse, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
 				var parse  Instance       // go GstBaseParse subclass
 				var buffer *gst.Buffer    // in, none, converted
@@ -7510,10 +7510,10 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.GetSinkCaps != nil {
-		pclass.get_sink_caps = (*[0]byte)(C._gotk4_gstbase1_BaseParse_get_sink_caps)
+		pclass.get_sink_caps = (*[0]byte)(C._goglib_gstbase1_BaseParse_get_sink_caps)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseParse_get_sink_caps",
+			"_goglib_gstbase1_BaseParse_get_sink_caps",
 			func(carg0 *C.GstBaseParse, carg1 *C.GstCaps) (cret *C.GstCaps) {
 				var parse  Instance  // go GstBaseParse subclass
 				var filter *gst.Caps // in, none, converted
@@ -7532,10 +7532,10 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.HandleFrame != nil {
-		pclass.handle_frame = (*[0]byte)(C._gotk4_gstbase1_BaseParse_handle_frame)
+		pclass.handle_frame = (*[0]byte)(C._goglib_gstbase1_BaseParse_handle_frame)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseParse_handle_frame",
+			"_goglib_gstbase1_BaseParse_handle_frame",
 			func(carg0 *C.GstBaseParse, carg1 *C.GstBaseParseFrame, carg2 *C.gint) (cret C.GstFlowReturn) {
 				var parse    Instance        // go GstBaseParse subclass
 				var frame    *BaseParseFrame // in, none, converted
@@ -7556,10 +7556,10 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.PrePushFrame != nil {
-		pclass.pre_push_frame = (*[0]byte)(C._gotk4_gstbase1_BaseParse_pre_push_frame)
+		pclass.pre_push_frame = (*[0]byte)(C._goglib_gstbase1_BaseParse_pre_push_frame)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseParse_pre_push_frame",
+			"_goglib_gstbase1_BaseParse_pre_push_frame",
 			func(carg0 *C.GstBaseParse, carg1 *C.GstBaseParseFrame) (cret C.GstFlowReturn) {
 				var parse Instance        // go GstBaseParse subclass
 				var frame *BaseParseFrame // in, none, converted
@@ -7578,10 +7578,10 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.SetSinkCaps != nil {
-		pclass.set_sink_caps = (*[0]byte)(C._gotk4_gstbase1_BaseParse_set_sink_caps)
+		pclass.set_sink_caps = (*[0]byte)(C._goglib_gstbase1_BaseParse_set_sink_caps)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseParse_set_sink_caps",
+			"_goglib_gstbase1_BaseParse_set_sink_caps",
 			func(carg0 *C.GstBaseParse, carg1 *C.GstCaps) (cret C.gboolean) {
 				var parse Instance  // go GstBaseParse subclass
 				var caps  *gst.Caps // in, none, converted
@@ -7602,10 +7602,10 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.SinkEvent != nil {
-		pclass.sink_event = (*[0]byte)(C._gotk4_gstbase1_BaseParse_sink_event)
+		pclass.sink_event = (*[0]byte)(C._goglib_gstbase1_BaseParse_sink_event)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseParse_sink_event",
+			"_goglib_gstbase1_BaseParse_sink_event",
 			func(carg0 *C.GstBaseParse, carg1 *C.GstEvent) (cret C.gboolean) {
 				var parse Instance   // go GstBaseParse subclass
 				var event *gst.Event // in, none, converted
@@ -7626,10 +7626,10 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.SinkQuery != nil {
-		pclass.sink_query = (*[0]byte)(C._gotk4_gstbase1_BaseParse_sink_query)
+		pclass.sink_query = (*[0]byte)(C._goglib_gstbase1_BaseParse_sink_query)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseParse_sink_query",
+			"_goglib_gstbase1_BaseParse_sink_query",
 			func(carg0 *C.GstBaseParse, carg1 *C.GstQuery) (cret C.gboolean) {
 				var parse Instance   // go GstBaseParse subclass
 				var query *gst.Query // in, none, converted
@@ -7650,10 +7650,10 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.SrcEvent != nil {
-		pclass.src_event = (*[0]byte)(C._gotk4_gstbase1_BaseParse_src_event)
+		pclass.src_event = (*[0]byte)(C._goglib_gstbase1_BaseParse_src_event)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseParse_src_event",
+			"_goglib_gstbase1_BaseParse_src_event",
 			func(carg0 *C.GstBaseParse, carg1 *C.GstEvent) (cret C.gboolean) {
 				var parse Instance   // go GstBaseParse subclass
 				var event *gst.Event // in, none, converted
@@ -7674,10 +7674,10 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.SrcQuery != nil {
-		pclass.src_query = (*[0]byte)(C._gotk4_gstbase1_BaseParse_src_query)
+		pclass.src_query = (*[0]byte)(C._goglib_gstbase1_BaseParse_src_query)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseParse_src_query",
+			"_goglib_gstbase1_BaseParse_src_query",
 			func(carg0 *C.GstBaseParse, carg1 *C.GstQuery) (cret C.gboolean) {
 				var parse Instance   // go GstBaseParse subclass
 				var query *gst.Query // in, none, converted
@@ -7698,10 +7698,10 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.Start != nil {
-		pclass.start = (*[0]byte)(C._gotk4_gstbase1_BaseParse_start)
+		pclass.start = (*[0]byte)(C._goglib_gstbase1_BaseParse_start)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseParse_start",
+			"_goglib_gstbase1_BaseParse_start",
 			func(carg0 *C.GstBaseParse) (cret C.gboolean) {
 				var parse Instance // go GstBaseParse subclass
 				var goret bool     // return
@@ -7720,10 +7720,10 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.Stop != nil {
-		pclass.stop = (*[0]byte)(C._gotk4_gstbase1_BaseParse_stop)
+		pclass.stop = (*[0]byte)(C._goglib_gstbase1_BaseParse_stop)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseParse_stop",
+			"_goglib_gstbase1_BaseParse_stop",
 			func(carg0 *C.GstBaseParse) (cret C.gboolean) {
 				var parse Instance // go GstBaseParse subclass
 				var goret bool     // return
@@ -7774,9 +7774,9 @@ func (parse *BaseParseInstance) ParentConvert(srcFormat gst.Format, srcValue int
 	carg3 = C.GstFormat(destFormat)
 	_ = destValue
 	_ = carg4
-	panic("unimplemented conversion of *int64 (gint64*)")
+	panic("unimplemented conversion of *int64 (gint64*) because of no basic converter found")
 
-	cret = C._gotk4_gstbase1_BaseParse_virtual_convert(unsafe.Pointer(parentclass.convert), carg0, carg1, carg2, carg3, carg4)
+	cret = C._goglib_gstbase1_BaseParse_virtual_convert(unsafe.Pointer(parentclass.convert), carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(parse)
 	runtime.KeepAlive(srcFormat)
 	runtime.KeepAlive(srcValue)
@@ -7817,7 +7817,7 @@ func (parse *BaseParseInstance) ParentDetect(buffer *gst.Buffer) gst.FlowReturn 
 	carg0 = (*C.GstBaseParse)(UnsafeBaseParseToGlibNone(parse))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
-	cret = C._gotk4_gstbase1_BaseParse_virtual_detect(unsafe.Pointer(parentclass.detect), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseParse_virtual_detect(unsafe.Pointer(parentclass.detect), carg0, carg1)
 	runtime.KeepAlive(parse)
 	runtime.KeepAlive(buffer)
 
@@ -7851,7 +7851,7 @@ func (parse *BaseParseInstance) ParentGetSinkCaps(filter *gst.Caps) *gst.Caps {
 	carg0 = (*C.GstBaseParse)(UnsafeBaseParseToGlibNone(parse))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filter))
 
-	cret = C._gotk4_gstbase1_BaseParse_virtual_get_sink_caps(unsafe.Pointer(parentclass.get_sink_caps), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseParse_virtual_get_sink_caps(unsafe.Pointer(parentclass.get_sink_caps), carg0, carg1)
 	runtime.KeepAlive(parse)
 	runtime.KeepAlive(filter)
 
@@ -7895,7 +7895,7 @@ func (parse *BaseParseInstance) ParentHandleFrame(frame *BaseParseFrame) (int32,
 	carg0 = (*C.GstBaseParse)(UnsafeBaseParseToGlibNone(parse))
 	carg1 = (*C.GstBaseParseFrame)(UnsafeBaseParseFrameToGlibNone(frame))
 
-	cret = C._gotk4_gstbase1_BaseParse_virtual_handle_frame(unsafe.Pointer(parentclass.handle_frame), carg0, carg1, &carg2)
+	cret = C._goglib_gstbase1_BaseParse_virtual_handle_frame(unsafe.Pointer(parentclass.handle_frame), carg0, carg1, &carg2)
 	runtime.KeepAlive(parse)
 	runtime.KeepAlive(frame)
 
@@ -7935,7 +7935,7 @@ func (parse *BaseParseInstance) ParentPrePushFrame(frame *BaseParseFrame) gst.Fl
 	carg0 = (*C.GstBaseParse)(UnsafeBaseParseToGlibNone(parse))
 	carg1 = (*C.GstBaseParseFrame)(UnsafeBaseParseFrameToGlibNone(frame))
 
-	cret = C._gotk4_gstbase1_BaseParse_virtual_pre_push_frame(unsafe.Pointer(parentclass.pre_push_frame), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseParse_virtual_pre_push_frame(unsafe.Pointer(parentclass.pre_push_frame), carg0, carg1)
 	runtime.KeepAlive(parse)
 	runtime.KeepAlive(frame)
 
@@ -7969,7 +7969,7 @@ func (parse *BaseParseInstance) ParentSetSinkCaps(caps *gst.Caps) bool {
 	carg0 = (*C.GstBaseParse)(UnsafeBaseParseToGlibNone(parse))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
-	cret = C._gotk4_gstbase1_BaseParse_virtual_set_sink_caps(unsafe.Pointer(parentclass.set_sink_caps), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseParse_virtual_set_sink_caps(unsafe.Pointer(parentclass.set_sink_caps), carg0, carg1)
 	runtime.KeepAlive(parse)
 	runtime.KeepAlive(caps)
 
@@ -8007,7 +8007,7 @@ func (parse *BaseParseInstance) ParentSinkEvent(event *gst.Event) bool {
 	carg0 = (*C.GstBaseParse)(UnsafeBaseParseToGlibNone(parse))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
-	cret = C._gotk4_gstbase1_BaseParse_virtual_sink_event(unsafe.Pointer(parentclass.sink_event), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseParse_virtual_sink_event(unsafe.Pointer(parentclass.sink_event), carg0, carg1)
 	runtime.KeepAlive(parse)
 	runtime.KeepAlive(event)
 
@@ -8045,7 +8045,7 @@ func (parse *BaseParseInstance) ParentSinkQuery(query *gst.Query) bool {
 	carg0 = (*C.GstBaseParse)(UnsafeBaseParseToGlibNone(parse))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstbase1_BaseParse_virtual_sink_query(unsafe.Pointer(parentclass.sink_query), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseParse_virtual_sink_query(unsafe.Pointer(parentclass.sink_query), carg0, carg1)
 	runtime.KeepAlive(parse)
 	runtime.KeepAlive(query)
 
@@ -8082,7 +8082,7 @@ func (parse *BaseParseInstance) ParentSrcEvent(event *gst.Event) bool {
 	carg0 = (*C.GstBaseParse)(UnsafeBaseParseToGlibNone(parse))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
-	cret = C._gotk4_gstbase1_BaseParse_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseParse_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
 	runtime.KeepAlive(parse)
 	runtime.KeepAlive(event)
 
@@ -8119,7 +8119,7 @@ func (parse *BaseParseInstance) ParentSrcQuery(query *gst.Query) bool {
 	carg0 = (*C.GstBaseParse)(UnsafeBaseParseToGlibNone(parse))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstbase1_BaseParse_virtual_src_query(unsafe.Pointer(parentclass.src_query), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseParse_virtual_src_query(unsafe.Pointer(parentclass.src_query), carg0, carg1)
 	runtime.KeepAlive(parse)
 	runtime.KeepAlive(query)
 
@@ -8150,7 +8150,7 @@ func (parse *BaseParseInstance) ParentStart() bool {
 
 	carg0 = (*C.GstBaseParse)(UnsafeBaseParseToGlibNone(parse))
 
-	cret = C._gotk4_gstbase1_BaseParse_virtual_start(unsafe.Pointer(parentclass.start), carg0)
+	cret = C._goglib_gstbase1_BaseParse_virtual_start(unsafe.Pointer(parentclass.start), carg0)
 	runtime.KeepAlive(parse)
 
 	var goret bool
@@ -8180,7 +8180,7 @@ func (parse *BaseParseInstance) ParentStop() bool {
 
 	carg0 = (*C.GstBaseParse)(UnsafeBaseParseToGlibNone(parse))
 
-	cret = C._gotk4_gstbase1_BaseParse_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
+	cret = C._goglib_gstbase1_BaseParse_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
 	runtime.KeepAlive(parse)
 
 	var goret bool
@@ -10117,10 +10117,10 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 	pclass := (*C.GstBaseSinkClass)(gclass)
 
 	if overrides.ActivatePull != nil {
-		pclass.activate_pull = (*[0]byte)(C._gotk4_gstbase1_BaseSink_activate_pull)
+		pclass.activate_pull = (*[0]byte)(C._goglib_gstbase1_BaseSink_activate_pull)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSink_activate_pull",
+			"_goglib_gstbase1_BaseSink_activate_pull",
 			func(carg0 *C.GstBaseSink, carg1 C.gboolean) (cret C.gboolean) {
 				var sink   Instance // go GstBaseSink subclass
 				var active bool     // in
@@ -10143,10 +10143,10 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 	}
 
 	if overrides.Event != nil {
-		pclass.event = (*[0]byte)(C._gotk4_gstbase1_BaseSink_event)
+		pclass.event = (*[0]byte)(C._goglib_gstbase1_BaseSink_event)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSink_event",
+			"_goglib_gstbase1_BaseSink_event",
 			func(carg0 *C.GstBaseSink, carg1 *C.GstEvent) (cret C.gboolean) {
 				var sink  Instance   // go GstBaseSink subclass
 				var event *gst.Event // in, none, converted
@@ -10167,10 +10167,10 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 	}
 
 	if overrides.Fixate != nil {
-		pclass.fixate = (*[0]byte)(C._gotk4_gstbase1_BaseSink_fixate)
+		pclass.fixate = (*[0]byte)(C._goglib_gstbase1_BaseSink_fixate)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSink_fixate",
+			"_goglib_gstbase1_BaseSink_fixate",
 			func(carg0 *C.GstBaseSink, carg1 *C.GstCaps) (cret *C.GstCaps) {
 				var sink  Instance  // go GstBaseSink subclass
 				var caps  *gst.Caps // in, none, converted
@@ -10189,10 +10189,10 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 	}
 
 	if overrides.GetCaps != nil {
-		pclass.get_caps = (*[0]byte)(C._gotk4_gstbase1_BaseSink_get_caps)
+		pclass.get_caps = (*[0]byte)(C._goglib_gstbase1_BaseSink_get_caps)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSink_get_caps",
+			"_goglib_gstbase1_BaseSink_get_caps",
 			func(carg0 *C.GstBaseSink, carg1 *C.GstCaps) (cret *C.GstCaps) {
 				var sink   Instance  // go GstBaseSink subclass
 				var filter *gst.Caps // in, none, converted, nullable
@@ -10213,10 +10213,10 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 	}
 
 	if overrides.GetTimes != nil {
-		pclass.get_times = (*[0]byte)(C._gotk4_gstbase1_BaseSink_get_times)
+		pclass.get_times = (*[0]byte)(C._goglib_gstbase1_BaseSink_get_times)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSink_get_times",
+			"_goglib_gstbase1_BaseSink_get_times",
 			func(carg0 *C.GstBaseSink, carg1 *C.GstBuffer, carg2 *C.GstClockTime, carg3 *C.GstClockTime) {
 				var sink   Instance      // go GstBaseSink subclass
 				var buffer *gst.Buffer   // in, none, converted
@@ -10235,10 +10235,10 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 	}
 
 	if overrides.Prepare != nil {
-		pclass.prepare = (*[0]byte)(C._gotk4_gstbase1_BaseSink_prepare)
+		pclass.prepare = (*[0]byte)(C._goglib_gstbase1_BaseSink_prepare)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSink_prepare",
+			"_goglib_gstbase1_BaseSink_prepare",
 			func(carg0 *C.GstBaseSink, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
 				var sink   Instance       // go GstBaseSink subclass
 				var buffer *gst.Buffer    // in, none, converted
@@ -10257,10 +10257,10 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 	}
 
 	if overrides.PrepareList != nil {
-		pclass.prepare_list = (*[0]byte)(C._gotk4_gstbase1_BaseSink_prepare_list)
+		pclass.prepare_list = (*[0]byte)(C._goglib_gstbase1_BaseSink_prepare_list)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSink_prepare_list",
+			"_goglib_gstbase1_BaseSink_prepare_list",
 			func(carg0 *C.GstBaseSink, carg1 *C.GstBufferList) (cret C.GstFlowReturn) {
 				var sink       Instance        // go GstBaseSink subclass
 				var bufferList *gst.BufferList // in, none, converted
@@ -10279,10 +10279,10 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 	}
 
 	if overrides.Preroll != nil {
-		pclass.preroll = (*[0]byte)(C._gotk4_gstbase1_BaseSink_preroll)
+		pclass.preroll = (*[0]byte)(C._goglib_gstbase1_BaseSink_preroll)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSink_preroll",
+			"_goglib_gstbase1_BaseSink_preroll",
 			func(carg0 *C.GstBaseSink, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
 				var sink   Instance       // go GstBaseSink subclass
 				var buffer *gst.Buffer    // in, none, converted
@@ -10301,10 +10301,10 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 	}
 
 	if overrides.ProposeAllocation != nil {
-		pclass.propose_allocation = (*[0]byte)(C._gotk4_gstbase1_BaseSink_propose_allocation)
+		pclass.propose_allocation = (*[0]byte)(C._goglib_gstbase1_BaseSink_propose_allocation)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSink_propose_allocation",
+			"_goglib_gstbase1_BaseSink_propose_allocation",
 			func(carg0 *C.GstBaseSink, carg1 *C.GstQuery) (cret C.gboolean) {
 				var sink  Instance   // go GstBaseSink subclass
 				var query *gst.Query // in, none, converted
@@ -10325,10 +10325,10 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 	}
 
 	if overrides.Query != nil {
-		pclass.query = (*[0]byte)(C._gotk4_gstbase1_BaseSink_query)
+		pclass.query = (*[0]byte)(C._goglib_gstbase1_BaseSink_query)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSink_query",
+			"_goglib_gstbase1_BaseSink_query",
 			func(carg0 *C.GstBaseSink, carg1 *C.GstQuery) (cret C.gboolean) {
 				var sink  Instance   // go GstBaseSink subclass
 				var query *gst.Query // in, none, converted
@@ -10349,10 +10349,10 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 	}
 
 	if overrides.Render != nil {
-		pclass.render = (*[0]byte)(C._gotk4_gstbase1_BaseSink_render)
+		pclass.render = (*[0]byte)(C._goglib_gstbase1_BaseSink_render)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSink_render",
+			"_goglib_gstbase1_BaseSink_render",
 			func(carg0 *C.GstBaseSink, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
 				var sink   Instance       // go GstBaseSink subclass
 				var buffer *gst.Buffer    // in, none, converted
@@ -10371,10 +10371,10 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 	}
 
 	if overrides.RenderList != nil {
-		pclass.render_list = (*[0]byte)(C._gotk4_gstbase1_BaseSink_render_list)
+		pclass.render_list = (*[0]byte)(C._goglib_gstbase1_BaseSink_render_list)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSink_render_list",
+			"_goglib_gstbase1_BaseSink_render_list",
 			func(carg0 *C.GstBaseSink, carg1 *C.GstBufferList) (cret C.GstFlowReturn) {
 				var sink       Instance        // go GstBaseSink subclass
 				var bufferList *gst.BufferList // in, none, converted
@@ -10393,10 +10393,10 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 	}
 
 	if overrides.SetCaps != nil {
-		pclass.set_caps = (*[0]byte)(C._gotk4_gstbase1_BaseSink_set_caps)
+		pclass.set_caps = (*[0]byte)(C._goglib_gstbase1_BaseSink_set_caps)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSink_set_caps",
+			"_goglib_gstbase1_BaseSink_set_caps",
 			func(carg0 *C.GstBaseSink, carg1 *C.GstCaps) (cret C.gboolean) {
 				var sink  Instance  // go GstBaseSink subclass
 				var caps  *gst.Caps // in, none, converted
@@ -10417,10 +10417,10 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 	}
 
 	if overrides.Start != nil {
-		pclass.start = (*[0]byte)(C._gotk4_gstbase1_BaseSink_start)
+		pclass.start = (*[0]byte)(C._goglib_gstbase1_BaseSink_start)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSink_start",
+			"_goglib_gstbase1_BaseSink_start",
 			func(carg0 *C.GstBaseSink) (cret C.gboolean) {
 				var sink  Instance // go GstBaseSink subclass
 				var goret bool     // return
@@ -10439,10 +10439,10 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 	}
 
 	if overrides.Stop != nil {
-		pclass.stop = (*[0]byte)(C._gotk4_gstbase1_BaseSink_stop)
+		pclass.stop = (*[0]byte)(C._goglib_gstbase1_BaseSink_stop)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSink_stop",
+			"_goglib_gstbase1_BaseSink_stop",
 			func(carg0 *C.GstBaseSink) (cret C.gboolean) {
 				var sink  Instance // go GstBaseSink subclass
 				var goret bool     // return
@@ -10461,10 +10461,10 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 	}
 
 	if overrides.Unlock != nil {
-		pclass.unlock = (*[0]byte)(C._gotk4_gstbase1_BaseSink_unlock)
+		pclass.unlock = (*[0]byte)(C._goglib_gstbase1_BaseSink_unlock)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSink_unlock",
+			"_goglib_gstbase1_BaseSink_unlock",
 			func(carg0 *C.GstBaseSink) (cret C.gboolean) {
 				var sink  Instance // go GstBaseSink subclass
 				var goret bool     // return
@@ -10483,10 +10483,10 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 	}
 
 	if overrides.UnlockStop != nil {
-		pclass.unlock_stop = (*[0]byte)(C._gotk4_gstbase1_BaseSink_unlock_stop)
+		pclass.unlock_stop = (*[0]byte)(C._goglib_gstbase1_BaseSink_unlock_stop)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSink_unlock_stop",
+			"_goglib_gstbase1_BaseSink_unlock_stop",
 			func(carg0 *C.GstBaseSink) (cret C.gboolean) {
 				var sink  Instance // go GstBaseSink subclass
 				var goret bool     // return
@@ -10505,10 +10505,10 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 	}
 
 	if overrides.WaitEvent != nil {
-		pclass.wait_event = (*[0]byte)(C._gotk4_gstbase1_BaseSink_wait_event)
+		pclass.wait_event = (*[0]byte)(C._goglib_gstbase1_BaseSink_wait_event)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSink_wait_event",
+			"_goglib_gstbase1_BaseSink_wait_event",
 			func(carg0 *C.GstBaseSink, carg1 *C.GstEvent) (cret C.GstFlowReturn) {
 				var sink  Instance       // go GstBaseSink subclass
 				var event *gst.Event     // in, none, converted
@@ -10555,7 +10555,7 @@ func (sink *BaseSinkInstance) ParentActivatePull(active bool) bool {
 		carg1 = C.TRUE
 	}
 
-	cret = C._gotk4_gstbase1_BaseSink_virtual_activate_pull(unsafe.Pointer(parentclass.activate_pull), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseSink_virtual_activate_pull(unsafe.Pointer(parentclass.activate_pull), carg0, carg1)
 	runtime.KeepAlive(sink)
 	runtime.KeepAlive(active)
 
@@ -10590,7 +10590,7 @@ func (sink *BaseSinkInstance) ParentEvent(event *gst.Event) bool {
 	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
-	cret = C._gotk4_gstbase1_BaseSink_virtual_event(unsafe.Pointer(parentclass.event), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseSink_virtual_event(unsafe.Pointer(parentclass.event), carg0, carg1)
 	runtime.KeepAlive(sink)
 	runtime.KeepAlive(event)
 
@@ -10626,7 +10626,7 @@ func (sink *BaseSinkInstance) ParentFixate(caps *gst.Caps) *gst.Caps {
 	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
-	cret = C._gotk4_gstbase1_BaseSink_virtual_fixate(unsafe.Pointer(parentclass.fixate), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseSink_virtual_fixate(unsafe.Pointer(parentclass.fixate), carg0, carg1)
 	runtime.KeepAlive(sink)
 	runtime.KeepAlive(caps)
 
@@ -10661,7 +10661,7 @@ func (sink *BaseSinkInstance) ParentGetCaps(filter *gst.Caps) *gst.Caps {
 		carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filter))
 	}
 
-	cret = C._gotk4_gstbase1_BaseSink_virtual_get_caps(unsafe.Pointer(parentclass.get_caps), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseSink_virtual_get_caps(unsafe.Pointer(parentclass.get_caps), carg0, carg1)
 	runtime.KeepAlive(sink)
 	runtime.KeepAlive(filter)
 
@@ -10696,7 +10696,7 @@ func (sink *BaseSinkInstance) ParentGetTimes(buffer *gst.Buffer) (gst.ClockTime,
 	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
-	C._gotk4_gstbase1_BaseSink_virtual_get_times(unsafe.Pointer(parentclass.get_times), carg0, carg1, &carg2, &carg3)
+	C._goglib_gstbase1_BaseSink_virtual_get_times(unsafe.Pointer(parentclass.get_times), carg0, carg1, &carg2, &carg3)
 	runtime.KeepAlive(sink)
 	runtime.KeepAlive(buffer)
 
@@ -10732,7 +10732,7 @@ func (sink *BaseSinkInstance) ParentPrepare(buffer *gst.Buffer) gst.FlowReturn {
 	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
-	cret = C._gotk4_gstbase1_BaseSink_virtual_prepare(unsafe.Pointer(parentclass.prepare), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseSink_virtual_prepare(unsafe.Pointer(parentclass.prepare), carg0, carg1)
 	runtime.KeepAlive(sink)
 	runtime.KeepAlive(buffer)
 
@@ -10766,7 +10766,7 @@ func (sink *BaseSinkInstance) ParentPrepareList(bufferList *gst.BufferList) gst.
 	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 	carg1 = (*C.GstBufferList)(gst.UnsafeBufferListToGlibNone(bufferList))
 
-	cret = C._gotk4_gstbase1_BaseSink_virtual_prepare_list(unsafe.Pointer(parentclass.prepare_list), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseSink_virtual_prepare_list(unsafe.Pointer(parentclass.prepare_list), carg0, carg1)
 	runtime.KeepAlive(sink)
 	runtime.KeepAlive(bufferList)
 
@@ -10799,7 +10799,7 @@ func (sink *BaseSinkInstance) ParentPreroll(buffer *gst.Buffer) gst.FlowReturn {
 	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
-	cret = C._gotk4_gstbase1_BaseSink_virtual_preroll(unsafe.Pointer(parentclass.preroll), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseSink_virtual_preroll(unsafe.Pointer(parentclass.preroll), carg0, carg1)
 	runtime.KeepAlive(sink)
 	runtime.KeepAlive(buffer)
 
@@ -10832,7 +10832,7 @@ func (sink *BaseSinkInstance) ParentProposeAllocation(query *gst.Query) bool {
 	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstbase1_BaseSink_virtual_propose_allocation(unsafe.Pointer(parentclass.propose_allocation), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseSink_virtual_propose_allocation(unsafe.Pointer(parentclass.propose_allocation), carg0, carg1)
 	runtime.KeepAlive(sink)
 	runtime.KeepAlive(query)
 
@@ -10867,7 +10867,7 @@ func (sink *BaseSinkInstance) ParentQuery(query *gst.Query) bool {
 	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstbase1_BaseSink_virtual_query(unsafe.Pointer(parentclass.query), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseSink_virtual_query(unsafe.Pointer(parentclass.query), carg0, carg1)
 	runtime.KeepAlive(sink)
 	runtime.KeepAlive(query)
 
@@ -10903,7 +10903,7 @@ func (sink *BaseSinkInstance) ParentRender(buffer *gst.Buffer) gst.FlowReturn {
 	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
-	cret = C._gotk4_gstbase1_BaseSink_virtual_render(unsafe.Pointer(parentclass.render), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseSink_virtual_render(unsafe.Pointer(parentclass.render), carg0, carg1)
 	runtime.KeepAlive(sink)
 	runtime.KeepAlive(buffer)
 
@@ -10937,7 +10937,7 @@ func (sink *BaseSinkInstance) ParentRenderList(bufferList *gst.BufferList) gst.F
 	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 	carg1 = (*C.GstBufferList)(gst.UnsafeBufferListToGlibNone(bufferList))
 
-	cret = C._gotk4_gstbase1_BaseSink_virtual_render_list(unsafe.Pointer(parentclass.render_list), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseSink_virtual_render_list(unsafe.Pointer(parentclass.render_list), carg0, carg1)
 	runtime.KeepAlive(sink)
 	runtime.KeepAlive(bufferList)
 
@@ -10970,7 +10970,7 @@ func (sink *BaseSinkInstance) ParentSetCaps(caps *gst.Caps) bool {
 	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
-	cret = C._gotk4_gstbase1_BaseSink_virtual_set_caps(unsafe.Pointer(parentclass.set_caps), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseSink_virtual_set_caps(unsafe.Pointer(parentclass.set_caps), carg0, carg1)
 	runtime.KeepAlive(sink)
 	runtime.KeepAlive(caps)
 
@@ -10999,7 +10999,7 @@ func (sink *BaseSinkInstance) ParentStart() bool {
 
 	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 
-	cret = C._gotk4_gstbase1_BaseSink_virtual_start(unsafe.Pointer(parentclass.start), carg0)
+	cret = C._goglib_gstbase1_BaseSink_virtual_start(unsafe.Pointer(parentclass.start), carg0)
 	runtime.KeepAlive(sink)
 
 	var goret bool
@@ -11027,7 +11027,7 @@ func (sink *BaseSinkInstance) ParentStop() bool {
 
 	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 
-	cret = C._gotk4_gstbase1_BaseSink_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
+	cret = C._goglib_gstbase1_BaseSink_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
 	runtime.KeepAlive(sink)
 
 	var goret bool
@@ -11056,7 +11056,7 @@ func (sink *BaseSinkInstance) ParentUnlock() bool {
 
 	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 
-	cret = C._gotk4_gstbase1_BaseSink_virtual_unlock(unsafe.Pointer(parentclass.unlock), carg0)
+	cret = C._goglib_gstbase1_BaseSink_virtual_unlock(unsafe.Pointer(parentclass.unlock), carg0)
 	runtime.KeepAlive(sink)
 
 	var goret bool
@@ -11088,7 +11088,7 @@ func (sink *BaseSinkInstance) ParentUnlockStop() bool {
 
 	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 
-	cret = C._gotk4_gstbase1_BaseSink_virtual_unlock_stop(unsafe.Pointer(parentclass.unlock_stop), carg0)
+	cret = C._goglib_gstbase1_BaseSink_virtual_unlock_stop(unsafe.Pointer(parentclass.unlock_stop), carg0)
 	runtime.KeepAlive(sink)
 
 	var goret bool
@@ -11124,7 +11124,7 @@ func (sink *BaseSinkInstance) ParentWaitEvent(event *gst.Event) gst.FlowReturn {
 	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
-	cret = C._gotk4_gstbase1_BaseSink_virtual_wait_event(unsafe.Pointer(parentclass.wait_event), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseSink_virtual_wait_event(unsafe.Pointer(parentclass.wait_event), carg0, carg1)
 	runtime.KeepAlive(sink)
 	runtime.KeepAlive(event)
 
@@ -11895,7 +11895,7 @@ func (src *BaseSrcInstance) GetAllocator() (gst.Allocator, gst.AllocationParams)
 	}
 	_ = params
 	_ = carg2
-	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams)")
+	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams) because of unknown reason")
 
 	return allocator, params
 }
@@ -12731,10 +12731,10 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 	pclass := (*C.GstBaseSrcClass)(gclass)
 
 	if overrides.Alloc != nil {
-		pclass.alloc = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_alloc)
+		pclass.alloc = (*[0]byte)(C._goglib_gstbase1_BaseSrc_alloc)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSrc_alloc",
+			"_goglib_gstbase1_BaseSrc_alloc",
 			func(carg0 *C.GstBaseSrc, carg1 C.guint64, carg2 C.guint, carg3 **C.GstBuffer) (cret C.GstFlowReturn) {
 				var src    Instance       // go GstBaseSrc subclass
 				var offset uint64         // in, none, casted
@@ -12757,10 +12757,10 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 	}
 
 	if overrides.DecideAllocation != nil {
-		pclass.decide_allocation = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_decide_allocation)
+		pclass.decide_allocation = (*[0]byte)(C._goglib_gstbase1_BaseSrc_decide_allocation)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSrc_decide_allocation",
+			"_goglib_gstbase1_BaseSrc_decide_allocation",
 			func(carg0 *C.GstBaseSrc, carg1 *C.GstQuery) (cret C.gboolean) {
 				var src   Instance   // go GstBaseSrc subclass
 				var query *gst.Query // in, none, converted
@@ -12781,10 +12781,10 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 	}
 
 	if overrides.DoSeek != nil {
-		pclass.do_seek = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_do_seek)
+		pclass.do_seek = (*[0]byte)(C._goglib_gstbase1_BaseSrc_do_seek)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSrc_do_seek",
+			"_goglib_gstbase1_BaseSrc_do_seek",
 			func(carg0 *C.GstBaseSrc, carg1 *C.GstSegment) (cret C.gboolean) {
 				var src     Instance     // go GstBaseSrc subclass
 				var segment *gst.Segment // in, none, converted
@@ -12805,10 +12805,10 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 	}
 
 	if overrides.Event != nil {
-		pclass.event = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_event)
+		pclass.event = (*[0]byte)(C._goglib_gstbase1_BaseSrc_event)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSrc_event",
+			"_goglib_gstbase1_BaseSrc_event",
 			func(carg0 *C.GstBaseSrc, carg1 *C.GstEvent) (cret C.gboolean) {
 				var src   Instance   // go GstBaseSrc subclass
 				var event *gst.Event // in, none, converted
@@ -12829,10 +12829,10 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 	}
 
 	if overrides.Fill != nil {
-		pclass.fill = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_fill)
+		pclass.fill = (*[0]byte)(C._goglib_gstbase1_BaseSrc_fill)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSrc_fill",
+			"_goglib_gstbase1_BaseSrc_fill",
 			func(carg0 *C.GstBaseSrc, carg1 C.guint64, carg2 C.guint, carg3 *C.GstBuffer) (cret C.GstFlowReturn) {
 				var src    Instance       // go GstBaseSrc subclass
 				var offset uint64         // in, none, casted
@@ -12855,10 +12855,10 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 	}
 
 	if overrides.Fixate != nil {
-		pclass.fixate = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_fixate)
+		pclass.fixate = (*[0]byte)(C._goglib_gstbase1_BaseSrc_fixate)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSrc_fixate",
+			"_goglib_gstbase1_BaseSrc_fixate",
 			func(carg0 *C.GstBaseSrc, carg1 *C.GstCaps) (cret *C.GstCaps) {
 				var src   Instance  // go GstBaseSrc subclass
 				var caps  *gst.Caps // in, full, converted
@@ -12877,10 +12877,10 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 	}
 
 	if overrides.GetCaps != nil {
-		pclass.get_caps = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_get_caps)
+		pclass.get_caps = (*[0]byte)(C._goglib_gstbase1_BaseSrc_get_caps)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSrc_get_caps",
+			"_goglib_gstbase1_BaseSrc_get_caps",
 			func(carg0 *C.GstBaseSrc, carg1 *C.GstCaps) (cret *C.GstCaps) {
 				var src    Instance  // go GstBaseSrc subclass
 				var filter *gst.Caps // in, none, converted, nullable
@@ -12901,10 +12901,10 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 	}
 
 	if overrides.GetSize != nil {
-		pclass.get_size = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_get_size)
+		pclass.get_size = (*[0]byte)(C._goglib_gstbase1_BaseSrc_get_size)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSrc_get_size",
+			"_goglib_gstbase1_BaseSrc_get_size",
 			func(carg0 *C.GstBaseSrc, carg1 *C.guint64) (cret C.gboolean) {
 				var src   Instance // go GstBaseSrc subclass
 				var size  uint64   // out, full, casted
@@ -12925,10 +12925,10 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 	}
 
 	if overrides.GetTimes != nil {
-		pclass.get_times = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_get_times)
+		pclass.get_times = (*[0]byte)(C._goglib_gstbase1_BaseSrc_get_times)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSrc_get_times",
+			"_goglib_gstbase1_BaseSrc_get_times",
 			func(carg0 *C.GstBaseSrc, carg1 *C.GstBuffer, carg2 *C.GstClockTime, carg3 *C.GstClockTime) {
 				var src    Instance      // go GstBaseSrc subclass
 				var buffer *gst.Buffer   // in, none, converted
@@ -12947,10 +12947,10 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 	}
 
 	if overrides.IsSeekable != nil {
-		pclass.is_seekable = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_is_seekable)
+		pclass.is_seekable = (*[0]byte)(C._goglib_gstbase1_BaseSrc_is_seekable)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSrc_is_seekable",
+			"_goglib_gstbase1_BaseSrc_is_seekable",
 			func(carg0 *C.GstBaseSrc) (cret C.gboolean) {
 				var src   Instance // go GstBaseSrc subclass
 				var goret bool     // return
@@ -12969,10 +12969,10 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 	}
 
 	if overrides.Negotiate != nil {
-		pclass.negotiate = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_negotiate)
+		pclass.negotiate = (*[0]byte)(C._goglib_gstbase1_BaseSrc_negotiate)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSrc_negotiate",
+			"_goglib_gstbase1_BaseSrc_negotiate",
 			func(carg0 *C.GstBaseSrc) (cret C.gboolean) {
 				var src   Instance // go GstBaseSrc subclass
 				var goret bool     // return
@@ -12991,10 +12991,10 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 	}
 
 	if overrides.PrepareSeekSegment != nil {
-		pclass.prepare_seek_segment = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_prepare_seek_segment)
+		pclass.prepare_seek_segment = (*[0]byte)(C._goglib_gstbase1_BaseSrc_prepare_seek_segment)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSrc_prepare_seek_segment",
+			"_goglib_gstbase1_BaseSrc_prepare_seek_segment",
 			func(carg0 *C.GstBaseSrc, carg1 *C.GstEvent, carg2 *C.GstSegment) (cret C.gboolean) {
 				var src     Instance     // go GstBaseSrc subclass
 				var seek    *gst.Event   // in, none, converted
@@ -13017,10 +13017,10 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 	}
 
 	if overrides.Query != nil {
-		pclass.query = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_query)
+		pclass.query = (*[0]byte)(C._goglib_gstbase1_BaseSrc_query)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSrc_query",
+			"_goglib_gstbase1_BaseSrc_query",
 			func(carg0 *C.GstBaseSrc, carg1 *C.GstQuery) (cret C.gboolean) {
 				var src   Instance   // go GstBaseSrc subclass
 				var query *gst.Query // in, none, converted
@@ -13041,10 +13041,10 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 	}
 
 	if overrides.SetCaps != nil {
-		pclass.set_caps = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_set_caps)
+		pclass.set_caps = (*[0]byte)(C._goglib_gstbase1_BaseSrc_set_caps)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSrc_set_caps",
+			"_goglib_gstbase1_BaseSrc_set_caps",
 			func(carg0 *C.GstBaseSrc, carg1 *C.GstCaps) (cret C.gboolean) {
 				var src   Instance  // go GstBaseSrc subclass
 				var caps  *gst.Caps // in, none, converted
@@ -13065,10 +13065,10 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 	}
 
 	if overrides.Start != nil {
-		pclass.start = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_start)
+		pclass.start = (*[0]byte)(C._goglib_gstbase1_BaseSrc_start)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSrc_start",
+			"_goglib_gstbase1_BaseSrc_start",
 			func(carg0 *C.GstBaseSrc) (cret C.gboolean) {
 				var src   Instance // go GstBaseSrc subclass
 				var goret bool     // return
@@ -13087,10 +13087,10 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 	}
 
 	if overrides.Stop != nil {
-		pclass.stop = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_stop)
+		pclass.stop = (*[0]byte)(C._goglib_gstbase1_BaseSrc_stop)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSrc_stop",
+			"_goglib_gstbase1_BaseSrc_stop",
 			func(carg0 *C.GstBaseSrc) (cret C.gboolean) {
 				var src   Instance // go GstBaseSrc subclass
 				var goret bool     // return
@@ -13109,10 +13109,10 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 	}
 
 	if overrides.Unlock != nil {
-		pclass.unlock = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_unlock)
+		pclass.unlock = (*[0]byte)(C._goglib_gstbase1_BaseSrc_unlock)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSrc_unlock",
+			"_goglib_gstbase1_BaseSrc_unlock",
 			func(carg0 *C.GstBaseSrc) (cret C.gboolean) {
 				var src   Instance // go GstBaseSrc subclass
 				var goret bool     // return
@@ -13131,10 +13131,10 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 	}
 
 	if overrides.UnlockStop != nil {
-		pclass.unlock_stop = (*[0]byte)(C._gotk4_gstbase1_BaseSrc_unlock_stop)
+		pclass.unlock_stop = (*[0]byte)(C._goglib_gstbase1_BaseSrc_unlock_stop)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseSrc_unlock_stop",
+			"_goglib_gstbase1_BaseSrc_unlock_stop",
 			func(carg0 *C.GstBaseSrc) (cret C.gboolean) {
 				var src   Instance // go GstBaseSrc subclass
 				var goret bool     // return
@@ -13181,7 +13181,7 @@ func (src *BaseSrcInstance) ParentAlloc(offset uint64, size uint) (*gst.Buffer, 
 	carg1 = C.guint64(offset)
 	carg2 = C.guint(size)
 
-	cret = C._gotk4_gstbase1_BaseSrc_virtual_alloc(unsafe.Pointer(parentclass.alloc), carg0, carg1, carg2, &carg3)
+	cret = C._goglib_gstbase1_BaseSrc_virtual_alloc(unsafe.Pointer(parentclass.alloc), carg0, carg1, carg2, &carg3)
 	runtime.KeepAlive(src)
 	runtime.KeepAlive(offset)
 	runtime.KeepAlive(size)
@@ -13219,7 +13219,7 @@ func (src *BaseSrcInstance) ParentDecideAllocation(query *gst.Query) bool {
 	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstbase1_BaseSrc_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseSrc_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
 	runtime.KeepAlive(src)
 	runtime.KeepAlive(query)
 
@@ -13254,7 +13254,7 @@ func (src *BaseSrcInstance) ParentDoSeek(segment *gst.Segment) bool {
 	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
 	carg1 = (*C.GstSegment)(gst.UnsafeSegmentToGlibNone(segment))
 
-	cret = C._gotk4_gstbase1_BaseSrc_virtual_do_seek(unsafe.Pointer(parentclass.do_seek), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseSrc_virtual_do_seek(unsafe.Pointer(parentclass.do_seek), carg0, carg1)
 	runtime.KeepAlive(src)
 	runtime.KeepAlive(segment)
 
@@ -13289,7 +13289,7 @@ func (src *BaseSrcInstance) ParentEvent(event *gst.Event) bool {
 	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
-	cret = C._gotk4_gstbase1_BaseSrc_virtual_event(unsafe.Pointer(parentclass.event), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseSrc_virtual_event(unsafe.Pointer(parentclass.event), carg0, carg1)
 	runtime.KeepAlive(src)
 	runtime.KeepAlive(event)
 
@@ -13331,7 +13331,7 @@ func (src *BaseSrcInstance) ParentFill(offset uint64, size uint, buf *gst.Buffer
 	carg2 = C.guint(size)
 	carg3 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buf))
 
-	cret = C._gotk4_gstbase1_BaseSrc_virtual_fill(unsafe.Pointer(parentclass.fill), carg0, carg1, carg2, carg3)
+	cret = C._goglib_gstbase1_BaseSrc_virtual_fill(unsafe.Pointer(parentclass.fill), carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(src)
 	runtime.KeepAlive(offset)
 	runtime.KeepAlive(size)
@@ -13366,7 +13366,7 @@ func (src *BaseSrcInstance) ParentFixate(caps *gst.Caps) *gst.Caps {
 	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibFull(caps))
 
-	cret = C._gotk4_gstbase1_BaseSrc_virtual_fixate(unsafe.Pointer(parentclass.fixate), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseSrc_virtual_fixate(unsafe.Pointer(parentclass.fixate), carg0, carg1)
 	runtime.KeepAlive(src)
 	runtime.KeepAlive(caps)
 
@@ -13401,7 +13401,7 @@ func (src *BaseSrcInstance) ParentGetCaps(filter *gst.Caps) *gst.Caps {
 		carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filter))
 	}
 
-	cret = C._gotk4_gstbase1_BaseSrc_virtual_get_caps(unsafe.Pointer(parentclass.get_caps), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseSrc_virtual_get_caps(unsafe.Pointer(parentclass.get_caps), carg0, carg1)
 	runtime.KeepAlive(src)
 	runtime.KeepAlive(filter)
 
@@ -13431,7 +13431,7 @@ func (src *BaseSrcInstance) ParentGetSize() (uint64, bool) {
 
 	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
 
-	cret = C._gotk4_gstbase1_BaseSrc_virtual_get_size(unsafe.Pointer(parentclass.get_size), carg0, &carg1)
+	cret = C._goglib_gstbase1_BaseSrc_virtual_get_size(unsafe.Pointer(parentclass.get_size), carg0, &carg1)
 	runtime.KeepAlive(src)
 
 	var size  uint64
@@ -13470,7 +13470,7 @@ func (src *BaseSrcInstance) ParentGetTimes(buffer *gst.Buffer) (gst.ClockTime, g
 	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
-	C._gotk4_gstbase1_BaseSrc_virtual_get_times(unsafe.Pointer(parentclass.get_times), carg0, carg1, &carg2, &carg3)
+	C._goglib_gstbase1_BaseSrc_virtual_get_times(unsafe.Pointer(parentclass.get_times), carg0, carg1, &carg2, &carg3)
 	runtime.KeepAlive(src)
 	runtime.KeepAlive(buffer)
 
@@ -13499,7 +13499,7 @@ func (src *BaseSrcInstance) ParentIsSeekable() bool {
 
 	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
 
-	cret = C._gotk4_gstbase1_BaseSrc_virtual_is_seekable(unsafe.Pointer(parentclass.is_seekable), carg0)
+	cret = C._goglib_gstbase1_BaseSrc_virtual_is_seekable(unsafe.Pointer(parentclass.is_seekable), carg0)
 	runtime.KeepAlive(src)
 
 	var goret bool
@@ -13533,7 +13533,7 @@ func (src *BaseSrcInstance) ParentNegotiate() bool {
 
 	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
 
-	cret = C._gotk4_gstbase1_BaseSrc_virtual_negotiate(unsafe.Pointer(parentclass.negotiate), carg0)
+	cret = C._goglib_gstbase1_BaseSrc_virtual_negotiate(unsafe.Pointer(parentclass.negotiate), carg0)
 	runtime.KeepAlive(src)
 
 	var goret bool
@@ -13575,7 +13575,7 @@ func (src *BaseSrcInstance) ParentPrepareSeekSegment(seek *gst.Event, segment *g
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(seek))
 	carg2 = (*C.GstSegment)(gst.UnsafeSegmentToGlibNone(segment))
 
-	cret = C._gotk4_gstbase1_BaseSrc_virtual_prepare_seek_segment(unsafe.Pointer(parentclass.prepare_seek_segment), carg0, carg1, carg2)
+	cret = C._goglib_gstbase1_BaseSrc_virtual_prepare_seek_segment(unsafe.Pointer(parentclass.prepare_seek_segment), carg0, carg1, carg2)
 	runtime.KeepAlive(src)
 	runtime.KeepAlive(seek)
 	runtime.KeepAlive(segment)
@@ -13611,7 +13611,7 @@ func (src *BaseSrcInstance) ParentQuery(query *gst.Query) bool {
 	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstbase1_BaseSrc_virtual_query(unsafe.Pointer(parentclass.query), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseSrc_virtual_query(unsafe.Pointer(parentclass.query), carg0, carg1)
 	runtime.KeepAlive(src)
 	runtime.KeepAlive(query)
 
@@ -13646,7 +13646,7 @@ func (src *BaseSrcInstance) ParentSetCaps(caps *gst.Caps) bool {
 	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
-	cret = C._gotk4_gstbase1_BaseSrc_virtual_set_caps(unsafe.Pointer(parentclass.set_caps), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseSrc_virtual_set_caps(unsafe.Pointer(parentclass.set_caps), carg0, carg1)
 	runtime.KeepAlive(src)
 	runtime.KeepAlive(caps)
 
@@ -13678,7 +13678,7 @@ func (src *BaseSrcInstance) ParentStart() bool {
 
 	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
 
-	cret = C._gotk4_gstbase1_BaseSrc_virtual_start(unsafe.Pointer(parentclass.start), carg0)
+	cret = C._goglib_gstbase1_BaseSrc_virtual_start(unsafe.Pointer(parentclass.start), carg0)
 	runtime.KeepAlive(src)
 
 	var goret bool
@@ -13706,7 +13706,7 @@ func (src *BaseSrcInstance) ParentStop() bool {
 
 	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
 
-	cret = C._gotk4_gstbase1_BaseSrc_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
+	cret = C._goglib_gstbase1_BaseSrc_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
 	runtime.KeepAlive(src)
 
 	var goret bool
@@ -13739,7 +13739,7 @@ func (src *BaseSrcInstance) ParentUnlock() bool {
 
 	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
 
-	cret = C._gotk4_gstbase1_BaseSrc_virtual_unlock(unsafe.Pointer(parentclass.unlock), carg0)
+	cret = C._goglib_gstbase1_BaseSrc_virtual_unlock(unsafe.Pointer(parentclass.unlock), carg0)
 	runtime.KeepAlive(src)
 
 	var goret bool
@@ -13769,7 +13769,7 @@ func (src *BaseSrcInstance) ParentUnlockStop() bool {
 
 	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
 
-	cret = C._gotk4_gstbase1_BaseSrc_virtual_unlock_stop(unsafe.Pointer(parentclass.unlock_stop), carg0)
+	cret = C._goglib_gstbase1_BaseSrc_virtual_unlock_stop(unsafe.Pointer(parentclass.unlock_stop), carg0)
 	runtime.KeepAlive(src)
 
 	var goret bool
@@ -14519,7 +14519,7 @@ func (trans *BaseTransformInstance) GetAllocator() (gst.Allocator, gst.Allocatio
 	}
 	_ = params
 	_ = carg2
-	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams)")
+	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams) because of unknown reason")
 
 	return allocator, params
 }
@@ -15213,10 +15213,10 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 	pclass := (*C.GstBaseTransformClass)(gclass)
 
 	if overrides.AcceptCaps != nil {
-		pclass.accept_caps = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_accept_caps)
+		pclass.accept_caps = (*[0]byte)(C._goglib_gstbase1_BaseTransform_accept_caps)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseTransform_accept_caps",
+			"_goglib_gstbase1_BaseTransform_accept_caps",
 			func(carg0 *C.GstBaseTransform, carg1 C.GstPadDirection, carg2 *C.GstCaps) (cret C.gboolean) {
 				var trans     Instance         // go GstBaseTransform subclass
 				var direction gst.PadDirection // in, none, casted
@@ -15239,10 +15239,10 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 	}
 
 	if overrides.BeforeTransform != nil {
-		pclass.before_transform = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_before_transform)
+		pclass.before_transform = (*[0]byte)(C._goglib_gstbase1_BaseTransform_before_transform)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseTransform_before_transform",
+			"_goglib_gstbase1_BaseTransform_before_transform",
 			func(carg0 *C.GstBaseTransform, carg1 *C.GstBuffer) {
 				var trans  Instance    // go GstBaseTransform subclass
 				var buffer *gst.Buffer // in, none, converted
@@ -15256,10 +15256,10 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 	}
 
 	if overrides.CopyMetadata != nil {
-		pclass.copy_metadata = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_copy_metadata)
+		pclass.copy_metadata = (*[0]byte)(C._goglib_gstbase1_BaseTransform_copy_metadata)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseTransform_copy_metadata",
+			"_goglib_gstbase1_BaseTransform_copy_metadata",
 			func(carg0 *C.GstBaseTransform, carg1 *C.GstBuffer, carg2 *C.GstBuffer) (cret C.gboolean) {
 				var trans  Instance    // go GstBaseTransform subclass
 				var input  *gst.Buffer // in, none, converted
@@ -15282,10 +15282,10 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 	}
 
 	if overrides.DecideAllocation != nil {
-		pclass.decide_allocation = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_decide_allocation)
+		pclass.decide_allocation = (*[0]byte)(C._goglib_gstbase1_BaseTransform_decide_allocation)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseTransform_decide_allocation",
+			"_goglib_gstbase1_BaseTransform_decide_allocation",
 			func(carg0 *C.GstBaseTransform, carg1 *C.GstQuery) (cret C.gboolean) {
 				var trans Instance   // go GstBaseTransform subclass
 				var query *gst.Query // in, none, converted
@@ -15306,10 +15306,10 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 	}
 
 	if overrides.FilterMeta != nil {
-		pclass.filter_meta = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_filter_meta)
+		pclass.filter_meta = (*[0]byte)(C._goglib_gstbase1_BaseTransform_filter_meta)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseTransform_filter_meta",
+			"_goglib_gstbase1_BaseTransform_filter_meta",
 			func(carg0 *C.GstBaseTransform, carg1 *C.GstQuery, carg2 C.GType, carg3 *C.GstStructure) (cret C.gboolean) {
 				var trans  Instance       // go GstBaseTransform subclass
 				var query  *gst.Query     // in, none, converted
@@ -15334,10 +15334,10 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 	}
 
 	if overrides.FixateCaps != nil {
-		pclass.fixate_caps = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_fixate_caps)
+		pclass.fixate_caps = (*[0]byte)(C._goglib_gstbase1_BaseTransform_fixate_caps)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseTransform_fixate_caps",
+			"_goglib_gstbase1_BaseTransform_fixate_caps",
 			func(carg0 *C.GstBaseTransform, carg1 C.GstPadDirection, carg2 *C.GstCaps, carg3 *C.GstCaps) (cret *C.GstCaps) {
 				var trans     Instance         // go GstBaseTransform subclass
 				var direction gst.PadDirection // in, none, casted
@@ -15360,10 +15360,10 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 	}
 
 	if overrides.GenerateOutput != nil {
-		pclass.generate_output = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_generate_output)
+		pclass.generate_output = (*[0]byte)(C._goglib_gstbase1_BaseTransform_generate_output)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseTransform_generate_output",
+			"_goglib_gstbase1_BaseTransform_generate_output",
 			func(carg0 *C.GstBaseTransform, carg1 **C.GstBuffer) (cret C.GstFlowReturn) {
 				var trans  Instance       // go GstBaseTransform subclass
 				var outbuf *gst.Buffer    // out, full, converted
@@ -15382,10 +15382,10 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 	}
 
 	if overrides.GetUnitSize != nil {
-		pclass.get_unit_size = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_get_unit_size)
+		pclass.get_unit_size = (*[0]byte)(C._goglib_gstbase1_BaseTransform_get_unit_size)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseTransform_get_unit_size",
+			"_goglib_gstbase1_BaseTransform_get_unit_size",
 			func(carg0 *C.GstBaseTransform, carg1 *C.GstCaps, carg2 *C.gsize) (cret C.gboolean) {
 				var trans Instance  // go GstBaseTransform subclass
 				var caps  *gst.Caps // in, none, converted
@@ -15408,10 +15408,10 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 	}
 
 	if overrides.PrepareOutputBuffer != nil {
-		pclass.prepare_output_buffer = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_prepare_output_buffer)
+		pclass.prepare_output_buffer = (*[0]byte)(C._goglib_gstbase1_BaseTransform_prepare_output_buffer)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseTransform_prepare_output_buffer",
+			"_goglib_gstbase1_BaseTransform_prepare_output_buffer",
 			func(carg0 *C.GstBaseTransform, carg1 *C.GstBuffer, carg2 **C.GstBuffer) (cret C.GstFlowReturn) {
 				var trans  Instance       // go GstBaseTransform subclass
 				var input  *gst.Buffer    // in, none, converted
@@ -15432,10 +15432,10 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 	}
 
 	if overrides.ProposeAllocation != nil {
-		pclass.propose_allocation = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_propose_allocation)
+		pclass.propose_allocation = (*[0]byte)(C._goglib_gstbase1_BaseTransform_propose_allocation)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseTransform_propose_allocation",
+			"_goglib_gstbase1_BaseTransform_propose_allocation",
 			func(carg0 *C.GstBaseTransform, carg1 *C.GstQuery, carg2 *C.GstQuery) (cret C.gboolean) {
 				var trans       Instance   // go GstBaseTransform subclass
 				var decideQuery *gst.Query // in, none, converted
@@ -15458,10 +15458,10 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 	}
 
 	if overrides.Query != nil {
-		pclass.query = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_query)
+		pclass.query = (*[0]byte)(C._goglib_gstbase1_BaseTransform_query)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseTransform_query",
+			"_goglib_gstbase1_BaseTransform_query",
 			func(carg0 *C.GstBaseTransform, carg1 C.GstPadDirection, carg2 *C.GstQuery) (cret C.gboolean) {
 				var trans     Instance         // go GstBaseTransform subclass
 				var direction gst.PadDirection // in, none, casted
@@ -15484,10 +15484,10 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 	}
 
 	if overrides.SetCaps != nil {
-		pclass.set_caps = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_set_caps)
+		pclass.set_caps = (*[0]byte)(C._goglib_gstbase1_BaseTransform_set_caps)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseTransform_set_caps",
+			"_goglib_gstbase1_BaseTransform_set_caps",
 			func(carg0 *C.GstBaseTransform, carg1 *C.GstCaps, carg2 *C.GstCaps) (cret C.gboolean) {
 				var trans   Instance  // go GstBaseTransform subclass
 				var incaps  *gst.Caps // in, none, converted
@@ -15510,10 +15510,10 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 	}
 
 	if overrides.SinkEvent != nil {
-		pclass.sink_event = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_sink_event)
+		pclass.sink_event = (*[0]byte)(C._goglib_gstbase1_BaseTransform_sink_event)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseTransform_sink_event",
+			"_goglib_gstbase1_BaseTransform_sink_event",
 			func(carg0 *C.GstBaseTransform, carg1 *C.GstEvent) (cret C.gboolean) {
 				var trans Instance   // go GstBaseTransform subclass
 				var event *gst.Event // in, full, converted
@@ -15534,10 +15534,10 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 	}
 
 	if overrides.SrcEvent != nil {
-		pclass.src_event = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_src_event)
+		pclass.src_event = (*[0]byte)(C._goglib_gstbase1_BaseTransform_src_event)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseTransform_src_event",
+			"_goglib_gstbase1_BaseTransform_src_event",
 			func(carg0 *C.GstBaseTransform, carg1 *C.GstEvent) (cret C.gboolean) {
 				var trans Instance   // go GstBaseTransform subclass
 				var event *gst.Event // in, full, converted
@@ -15558,10 +15558,10 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 	}
 
 	if overrides.Start != nil {
-		pclass.start = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_start)
+		pclass.start = (*[0]byte)(C._goglib_gstbase1_BaseTransform_start)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseTransform_start",
+			"_goglib_gstbase1_BaseTransform_start",
 			func(carg0 *C.GstBaseTransform) (cret C.gboolean) {
 				var trans Instance // go GstBaseTransform subclass
 				var goret bool     // return
@@ -15580,10 +15580,10 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 	}
 
 	if overrides.Stop != nil {
-		pclass.stop = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_stop)
+		pclass.stop = (*[0]byte)(C._goglib_gstbase1_BaseTransform_stop)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseTransform_stop",
+			"_goglib_gstbase1_BaseTransform_stop",
 			func(carg0 *C.GstBaseTransform) (cret C.gboolean) {
 				var trans Instance // go GstBaseTransform subclass
 				var goret bool     // return
@@ -15602,10 +15602,10 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 	}
 
 	if overrides.SubmitInputBuffer != nil {
-		pclass.submit_input_buffer = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_submit_input_buffer)
+		pclass.submit_input_buffer = (*[0]byte)(C._goglib_gstbase1_BaseTransform_submit_input_buffer)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseTransform_submit_input_buffer",
+			"_goglib_gstbase1_BaseTransform_submit_input_buffer",
 			func(carg0 *C.GstBaseTransform, carg1 C.gboolean, carg2 *C.GstBuffer) (cret C.GstFlowReturn) {
 				var trans     Instance       // go GstBaseTransform subclass
 				var isDiscont bool           // in
@@ -15628,10 +15628,10 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 	}
 
 	if overrides.Transform != nil {
-		pclass.transform = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_transform)
+		pclass.transform = (*[0]byte)(C._goglib_gstbase1_BaseTransform_transform)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseTransform_transform",
+			"_goglib_gstbase1_BaseTransform_transform",
 			func(carg0 *C.GstBaseTransform, carg1 *C.GstBuffer, carg2 *C.GstBuffer) (cret C.GstFlowReturn) {
 				var trans  Instance       // go GstBaseTransform subclass
 				var inbuf  *gst.Buffer    // in, none, converted
@@ -15652,10 +15652,10 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 	}
 
 	if overrides.TransformCaps != nil {
-		pclass.transform_caps = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_transform_caps)
+		pclass.transform_caps = (*[0]byte)(C._goglib_gstbase1_BaseTransform_transform_caps)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseTransform_transform_caps",
+			"_goglib_gstbase1_BaseTransform_transform_caps",
 			func(carg0 *C.GstBaseTransform, carg1 C.GstPadDirection, carg2 *C.GstCaps, carg3 *C.GstCaps) (cret *C.GstCaps) {
 				var trans     Instance         // go GstBaseTransform subclass
 				var direction gst.PadDirection // in, none, casted
@@ -15678,10 +15678,10 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 	}
 
 	if overrides.TransformIp != nil {
-		pclass.transform_ip = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_transform_ip)
+		pclass.transform_ip = (*[0]byte)(C._goglib_gstbase1_BaseTransform_transform_ip)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseTransform_transform_ip",
+			"_goglib_gstbase1_BaseTransform_transform_ip",
 			func(carg0 *C.GstBaseTransform, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
 				var trans Instance       // go GstBaseTransform subclass
 				var buf   *gst.Buffer    // in, none, converted
@@ -15700,10 +15700,10 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 	}
 
 	if overrides.TransformMeta != nil {
-		pclass.transform_meta = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_transform_meta)
+		pclass.transform_meta = (*[0]byte)(C._goglib_gstbase1_BaseTransform_transform_meta)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseTransform_transform_meta",
+			"_goglib_gstbase1_BaseTransform_transform_meta",
 			func(carg0 *C.GstBaseTransform, carg1 *C.GstBuffer, carg2 *C.GstMeta, carg3 *C.GstBuffer) (cret C.gboolean) {
 				var trans  Instance    // go GstBaseTransform subclass
 				var outbuf *gst.Buffer // in, none, converted
@@ -15728,10 +15728,10 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 	}
 
 	if overrides.TransformSize != nil {
-		pclass.transform_size = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_transform_size)
+		pclass.transform_size = (*[0]byte)(C._goglib_gstbase1_BaseTransform_transform_size)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_BaseTransform_transform_size",
+			"_goglib_gstbase1_BaseTransform_transform_size",
 			func(carg0 *C.GstBaseTransform, carg1 C.GstPadDirection, carg2 *C.GstCaps, carg3 C.gsize, carg4 *C.GstCaps, carg5 *C.gsize) (cret C.gboolean) {
 				var trans     Instance         // go GstBaseTransform subclass
 				var direction gst.PadDirection // in, none, casted
@@ -15788,7 +15788,7 @@ func (trans *BaseTransformInstance) ParentAcceptCaps(direction gst.PadDirection,
 	carg1 = C.GstPadDirection(direction)
 	carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
-	cret = C._gotk4_gstbase1_BaseTransform_virtual_accept_caps(unsafe.Pointer(parentclass.accept_caps), carg0, carg1, carg2)
+	cret = C._goglib_gstbase1_BaseTransform_virtual_accept_caps(unsafe.Pointer(parentclass.accept_caps), carg0, carg1, carg2)
 	runtime.KeepAlive(trans)
 	runtime.KeepAlive(direction)
 	runtime.KeepAlive(caps)
@@ -15822,7 +15822,7 @@ func (trans *BaseTransformInstance) ParentBeforeTransform(buffer *gst.Buffer) {
 	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
-	C._gotk4_gstbase1_BaseTransform_virtual_before_transform(unsafe.Pointer(parentclass.before_transform), carg0, carg1)
+	C._goglib_gstbase1_BaseTransform_virtual_before_transform(unsafe.Pointer(parentclass.before_transform), carg0, carg1)
 	runtime.KeepAlive(trans)
 	runtime.KeepAlive(buffer)
 }
@@ -15855,7 +15855,7 @@ func (trans *BaseTransformInstance) ParentCopyMetadata(input *gst.Buffer, outbuf
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(input))
 	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(outbuf))
 
-	cret = C._gotk4_gstbase1_BaseTransform_virtual_copy_metadata(unsafe.Pointer(parentclass.copy_metadata), carg0, carg1, carg2)
+	cret = C._goglib_gstbase1_BaseTransform_virtual_copy_metadata(unsafe.Pointer(parentclass.copy_metadata), carg0, carg1, carg2)
 	runtime.KeepAlive(trans)
 	runtime.KeepAlive(input)
 	runtime.KeepAlive(outbuf)
@@ -15898,7 +15898,7 @@ func (trans *BaseTransformInstance) ParentDecideAllocation(query *gst.Query) boo
 	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstbase1_BaseTransform_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseTransform_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
 	runtime.KeepAlive(trans)
 	runtime.KeepAlive(query)
 
@@ -15941,7 +15941,7 @@ func (trans *BaseTransformInstance) ParentFilterMeta(query *gst.Query, api gobje
 	carg2 = C.GType(api)
 	carg3 = (*C.GstStructure)(gst.UnsafeStructureToGlibNone(params))
 
-	cret = C._gotk4_gstbase1_BaseTransform_virtual_filter_meta(unsafe.Pointer(parentclass.filter_meta), carg0, carg1, carg2, carg3)
+	cret = C._goglib_gstbase1_BaseTransform_virtual_filter_meta(unsafe.Pointer(parentclass.filter_meta), carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(trans)
 	runtime.KeepAlive(query)
 	runtime.KeepAlive(api)
@@ -15982,7 +15982,7 @@ func (trans *BaseTransformInstance) ParentFixateCaps(direction gst.PadDirection,
 	carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 	carg3 = (*C.GstCaps)(gst.UnsafeCapsToGlibFull(othercaps))
 
-	cret = C._gotk4_gstbase1_BaseTransform_virtual_fixate_caps(unsafe.Pointer(parentclass.fixate_caps), carg0, carg1, carg2, carg3)
+	cret = C._goglib_gstbase1_BaseTransform_virtual_fixate_caps(unsafe.Pointer(parentclass.fixate_caps), carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(trans)
 	runtime.KeepAlive(direction)
 	runtime.KeepAlive(caps)
@@ -16011,7 +16011,7 @@ func (trans *BaseTransformInstance) ParentGenerateOutput() (*gst.Buffer, gst.Flo
 
 	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 
-	cret = C._gotk4_gstbase1_BaseTransform_virtual_generate_output(unsafe.Pointer(parentclass.generate_output), carg0, &carg1)
+	cret = C._goglib_gstbase1_BaseTransform_virtual_generate_output(unsafe.Pointer(parentclass.generate_output), carg0, &carg1)
 	runtime.KeepAlive(trans)
 
 	var outbuf *gst.Buffer
@@ -16045,7 +16045,7 @@ func (trans *BaseTransformInstance) ParentGetUnitSize(caps *gst.Caps) (uint, boo
 	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
-	cret = C._gotk4_gstbase1_BaseTransform_virtual_get_unit_size(unsafe.Pointer(parentclass.get_unit_size), carg0, carg1, &carg2)
+	cret = C._goglib_gstbase1_BaseTransform_virtual_get_unit_size(unsafe.Pointer(parentclass.get_unit_size), carg0, carg1, &carg2)
 	runtime.KeepAlive(trans)
 	runtime.KeepAlive(caps)
 
@@ -16082,7 +16082,7 @@ func (trans *BaseTransformInstance) ParentPrepareOutputBuffer(input *gst.Buffer)
 	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(input))
 
-	cret = C._gotk4_gstbase1_BaseTransform_virtual_prepare_output_buffer(unsafe.Pointer(parentclass.prepare_output_buffer), carg0, carg1, &carg2)
+	cret = C._goglib_gstbase1_BaseTransform_virtual_prepare_output_buffer(unsafe.Pointer(parentclass.prepare_output_buffer), carg0, carg1, &carg2)
 	runtime.KeepAlive(trans)
 	runtime.KeepAlive(input)
 
@@ -16127,7 +16127,7 @@ func (trans *BaseTransformInstance) ParentProposeAllocation(decideQuery *gst.Que
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(decideQuery))
 	carg2 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstbase1_BaseTransform_virtual_propose_allocation(unsafe.Pointer(parentclass.propose_allocation), carg0, carg1, carg2)
+	cret = C._goglib_gstbase1_BaseTransform_virtual_propose_allocation(unsafe.Pointer(parentclass.propose_allocation), carg0, carg1, carg2)
 	runtime.KeepAlive(trans)
 	runtime.KeepAlive(decideQuery)
 	runtime.KeepAlive(query)
@@ -16169,7 +16169,7 @@ func (trans *BaseTransformInstance) ParentQueryBaseTransform(direction gst.PadDi
 	carg1 = C.GstPadDirection(direction)
 	carg2 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
-	cret = C._gotk4_gstbase1_BaseTransform_virtual_query(unsafe.Pointer(parentclass.query), carg0, carg1, carg2)
+	cret = C._goglib_gstbase1_BaseTransform_virtual_query(unsafe.Pointer(parentclass.query), carg0, carg1, carg2)
 	runtime.KeepAlive(trans)
 	runtime.KeepAlive(direction)
 	runtime.KeepAlive(query)
@@ -16208,7 +16208,7 @@ func (trans *BaseTransformInstance) ParentSetCaps(incaps *gst.Caps, outcaps *gst
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(incaps))
 	carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(outcaps))
 
-	cret = C._gotk4_gstbase1_BaseTransform_virtual_set_caps(unsafe.Pointer(parentclass.set_caps), carg0, carg1, carg2)
+	cret = C._goglib_gstbase1_BaseTransform_virtual_set_caps(unsafe.Pointer(parentclass.set_caps), carg0, carg1, carg2)
 	runtime.KeepAlive(trans)
 	runtime.KeepAlive(incaps)
 	runtime.KeepAlive(outcaps)
@@ -16242,7 +16242,7 @@ func (trans *BaseTransformInstance) ParentSinkEvent(event *gst.Event) bool {
 	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibFull(event))
 
-	cret = C._gotk4_gstbase1_BaseTransform_virtual_sink_event(unsafe.Pointer(parentclass.sink_event), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseTransform_virtual_sink_event(unsafe.Pointer(parentclass.sink_event), carg0, carg1)
 	runtime.KeepAlive(trans)
 	runtime.KeepAlive(event)
 
@@ -16275,7 +16275,7 @@ func (trans *BaseTransformInstance) ParentSrcEvent(event *gst.Event) bool {
 	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibFull(event))
 
-	cret = C._gotk4_gstbase1_BaseTransform_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseTransform_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
 	runtime.KeepAlive(trans)
 	runtime.KeepAlive(event)
 
@@ -16306,7 +16306,7 @@ func (trans *BaseTransformInstance) ParentStart() bool {
 
 	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 
-	cret = C._gotk4_gstbase1_BaseTransform_virtual_start(unsafe.Pointer(parentclass.start), carg0)
+	cret = C._goglib_gstbase1_BaseTransform_virtual_start(unsafe.Pointer(parentclass.start), carg0)
 	runtime.KeepAlive(trans)
 
 	var goret bool
@@ -16336,7 +16336,7 @@ func (trans *BaseTransformInstance) ParentStop() bool {
 
 	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 
-	cret = C._gotk4_gstbase1_BaseTransform_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
+	cret = C._goglib_gstbase1_BaseTransform_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
 	runtime.KeepAlive(trans)
 
 	var goret bool
@@ -16381,7 +16381,7 @@ func (trans *BaseTransformInstance) ParentSubmitInputBuffer(isDiscont bool, inpu
 	}
 	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(input))
 
-	cret = C._gotk4_gstbase1_BaseTransform_virtual_submit_input_buffer(unsafe.Pointer(parentclass.submit_input_buffer), carg0, carg1, carg2)
+	cret = C._goglib_gstbase1_BaseTransform_virtual_submit_input_buffer(unsafe.Pointer(parentclass.submit_input_buffer), carg0, carg1, carg2)
 	runtime.KeepAlive(trans)
 	runtime.KeepAlive(isDiscont)
 	runtime.KeepAlive(input)
@@ -16421,7 +16421,7 @@ func (trans *BaseTransformInstance) ParentTransform(inbuf *gst.Buffer, outbuf *g
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(inbuf))
 	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(outbuf))
 
-	cret = C._gotk4_gstbase1_BaseTransform_virtual_transform(unsafe.Pointer(parentclass.transform), carg0, carg1, carg2)
+	cret = C._goglib_gstbase1_BaseTransform_virtual_transform(unsafe.Pointer(parentclass.transform), carg0, carg1, carg2)
 	runtime.KeepAlive(trans)
 	runtime.KeepAlive(inbuf)
 	runtime.KeepAlive(outbuf)
@@ -16463,7 +16463,7 @@ func (trans *BaseTransformInstance) ParentTransformCaps(direction gst.PadDirecti
 	carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 	carg3 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filter))
 
-	cret = C._gotk4_gstbase1_BaseTransform_virtual_transform_caps(unsafe.Pointer(parentclass.transform_caps), carg0, carg1, carg2, carg3)
+	cret = C._goglib_gstbase1_BaseTransform_virtual_transform_caps(unsafe.Pointer(parentclass.transform_caps), carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(trans)
 	runtime.KeepAlive(direction)
 	runtime.KeepAlive(caps)
@@ -16499,7 +16499,7 @@ func (trans *BaseTransformInstance) ParentTransformIp(buf *gst.Buffer) gst.FlowR
 	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buf))
 
-	cret = C._gotk4_gstbase1_BaseTransform_virtual_transform_ip(unsafe.Pointer(parentclass.transform_ip), carg0, carg1)
+	cret = C._goglib_gstbase1_BaseTransform_virtual_transform_ip(unsafe.Pointer(parentclass.transform_ip), carg0, carg1)
 	runtime.KeepAlive(trans)
 	runtime.KeepAlive(buf)
 
@@ -16541,7 +16541,7 @@ func (trans *BaseTransformInstance) ParentTransformMeta(outbuf *gst.Buffer, meta
 	carg2 = (*C.GstMeta)(gst.UnsafeMetaToGlibNone(meta))
 	carg3 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(inbuf))
 
-	cret = C._gotk4_gstbase1_BaseTransform_virtual_transform_meta(unsafe.Pointer(parentclass.transform_meta), carg0, carg1, carg2, carg3)
+	cret = C._goglib_gstbase1_BaseTransform_virtual_transform_meta(unsafe.Pointer(parentclass.transform_meta), carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(trans)
 	runtime.KeepAlive(outbuf)
 	runtime.KeepAlive(meta)
@@ -16587,7 +16587,7 @@ func (trans *BaseTransformInstance) ParentTransformSize(direction gst.PadDirecti
 	carg3 = C.gsize(size)
 	carg4 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(othercaps))
 
-	cret = C._gotk4_gstbase1_BaseTransform_virtual_transform_size(unsafe.Pointer(parentclass.transform_size), carg0, carg1, carg2, carg3, carg4, &carg5)
+	cret = C._goglib_gstbase1_BaseTransform_virtual_transform_size(unsafe.Pointer(parentclass.transform_size), carg0, carg1, carg2, carg3, carg4, &carg5)
 	runtime.KeepAlive(trans)
 	runtime.KeepAlive(direction)
 	runtime.KeepAlive(caps)
@@ -17385,7 +17385,7 @@ func (pads *CollectPadsInstance) SetBufferFunction(fn CollectPadsBufferFunction)
 	var carg2 C.gpointer                     // implicit
 
 	carg0 = (*C.GstCollectPads)(UnsafeCollectPadsToGlibNone(pads))
-	carg1 = (*[0]byte)(C._gotk4_gstbase1_CollectPadsBufferFunction)
+	carg1 = (*[0]byte)(C._goglib_gstbase1_CollectPadsBufferFunction)
 	carg2 = C.gpointer(userdata.Register(fn))
 	defer userdata.Delete(unsafe.Pointer(carg2))
 
@@ -17408,7 +17408,7 @@ func (pads *CollectPadsInstance) SetClipFunction(clipfunc CollectPadsClipFunctio
 	var carg2 C.gpointer                   // implicit
 
 	carg0 = (*C.GstCollectPads)(UnsafeCollectPadsToGlibNone(pads))
-	carg1 = (*[0]byte)(C._gotk4_gstbase1_CollectPadsClipFunction)
+	carg1 = (*[0]byte)(C._goglib_gstbase1_CollectPadsClipFunction)
 	carg2 = C.gpointer(userdata.Register(clipfunc))
 	defer userdata.Delete(unsafe.Pointer(carg2))
 
@@ -17432,7 +17432,7 @@ func (pads *CollectPadsInstance) SetCompareFunction(fn CollectPadsCompareFunctio
 	var carg2 C.gpointer                      // implicit
 
 	carg0 = (*C.GstCollectPads)(UnsafeCollectPadsToGlibNone(pads))
-	carg1 = (*[0]byte)(C._gotk4_gstbase1_CollectPadsCompareFunction)
+	carg1 = (*[0]byte)(C._goglib_gstbase1_CollectPadsCompareFunction)
 	carg2 = C.gpointer(userdata.Register(fn))
 	defer userdata.Delete(unsafe.Pointer(carg2))
 
@@ -17461,7 +17461,7 @@ func (pads *CollectPadsInstance) SetEventFunction(fn CollectPadsEventFunction) {
 	var carg2 C.gpointer                    // implicit
 
 	carg0 = (*C.GstCollectPads)(UnsafeCollectPadsToGlibNone(pads))
-	carg1 = (*[0]byte)(C._gotk4_gstbase1_CollectPadsEventFunction)
+	carg1 = (*[0]byte)(C._goglib_gstbase1_CollectPadsEventFunction)
 	carg2 = C.gpointer(userdata.Register(fn))
 	defer userdata.Delete(unsafe.Pointer(carg2))
 
@@ -17485,7 +17485,7 @@ func (pads *CollectPadsInstance) SetFlushFunction(fn CollectPadsFlushFunction) {
 	var carg2 C.gpointer                    // implicit
 
 	carg0 = (*C.GstCollectPads)(UnsafeCollectPadsToGlibNone(pads))
-	carg1 = (*[0]byte)(C._gotk4_gstbase1_CollectPadsFlushFunction)
+	carg1 = (*[0]byte)(C._goglib_gstbase1_CollectPadsFlushFunction)
 	carg2 = C.gpointer(userdata.Register(fn))
 	defer userdata.Delete(unsafe.Pointer(carg2))
 
@@ -17544,7 +17544,7 @@ func (pads *CollectPadsInstance) SetFunction(fn CollectPadsFunction) {
 	var carg2 C.gpointer               // implicit
 
 	carg0 = (*C.GstCollectPads)(UnsafeCollectPadsToGlibNone(pads))
-	carg1 = (*[0]byte)(C._gotk4_gstbase1_CollectPadsFunction)
+	carg1 = (*[0]byte)(C._goglib_gstbase1_CollectPadsFunction)
 	carg2 = C.gpointer(userdata.Register(fn))
 	defer userdata.Delete(unsafe.Pointer(carg2))
 
@@ -17573,7 +17573,7 @@ func (pads *CollectPadsInstance) SetQueryFunction(fn CollectPadsQueryFunction) {
 	var carg2 C.gpointer                    // implicit
 
 	carg0 = (*C.GstCollectPads)(UnsafeCollectPadsToGlibNone(pads))
-	carg1 = (*[0]byte)(C._gotk4_gstbase1_CollectPadsQueryFunction)
+	carg1 = (*[0]byte)(C._goglib_gstbase1_CollectPadsQueryFunction)
 	carg2 = C.gpointer(userdata.Register(fn))
 	defer userdata.Delete(unsafe.Pointer(carg2))
 
@@ -17894,10 +17894,10 @@ func UnsafeApplyDataQueueOverrides[Instance DataQueue](gclass unsafe.Pointer, ov
 	pclass := (*C.GstDataQueueClass)(gclass)
 
 	if overrides.Empty != nil {
-		pclass.empty = (*[0]byte)(C._gotk4_gstbase1_DataQueue_empty)
+		pclass.empty = (*[0]byte)(C._goglib_gstbase1_DataQueue_empty)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_DataQueue_empty",
+			"_goglib_gstbase1_DataQueue_empty",
 			func(carg0 *C.GstDataQueue) {
 				var queue Instance // go GstDataQueue subclass
 
@@ -17909,10 +17909,10 @@ func UnsafeApplyDataQueueOverrides[Instance DataQueue](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.Full != nil {
-		pclass.full = (*[0]byte)(C._gotk4_gstbase1_DataQueue_full)
+		pclass.full = (*[0]byte)(C._goglib_gstbase1_DataQueue_full)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_DataQueue_full",
+			"_goglib_gstbase1_DataQueue_full",
 			func(carg0 *C.GstDataQueue) {
 				var queue Instance // go GstDataQueue subclass
 
@@ -17933,7 +17933,7 @@ func (queue *DataQueueInstance) ParentEmpty() {
 
 	carg0 = (*C.GstDataQueue)(UnsafeDataQueueToGlibNone(queue))
 
-	C._gotk4_gstbase1_DataQueue_virtual_empty(unsafe.Pointer(parentclass.empty), carg0)
+	C._goglib_gstbase1_DataQueue_virtual_empty(unsafe.Pointer(parentclass.empty), carg0)
 	runtime.KeepAlive(queue)
 }
 
@@ -17946,7 +17946,7 @@ func (queue *DataQueueInstance) ParentFull() {
 
 	carg0 = (*C.GstDataQueue)(UnsafeDataQueueToGlibNone(queue))
 
-	C._gotk4_gstbase1_DataQueue_virtual_full(unsafe.Pointer(parentclass.full), carg0)
+	C._goglib_gstbase1_DataQueue_virtual_full(unsafe.Pointer(parentclass.full), carg0)
 	runtime.KeepAlive(queue)
 }
 
@@ -18129,10 +18129,10 @@ func UnsafeApplyPushSrcOverrides[Instance PushSrc](gclass unsafe.Pointer, overri
 	pclass := (*C.GstPushSrcClass)(gclass)
 
 	if overrides.Alloc != nil {
-		pclass.alloc = (*[0]byte)(C._gotk4_gstbase1_PushSrc_alloc)
+		pclass.alloc = (*[0]byte)(C._goglib_gstbase1_PushSrc_alloc)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_PushSrc_alloc",
+			"_goglib_gstbase1_PushSrc_alloc",
 			func(carg0 *C.GstPushSrc, carg1 **C.GstBuffer) (cret C.GstFlowReturn) {
 				var src   Instance       // go GstPushSrc subclass
 				var buf   *gst.Buffer    // out, full, converted
@@ -18151,10 +18151,10 @@ func UnsafeApplyPushSrcOverrides[Instance PushSrc](gclass unsafe.Pointer, overri
 	}
 
 	if overrides.Fill != nil {
-		pclass.fill = (*[0]byte)(C._gotk4_gstbase1_PushSrc_fill)
+		pclass.fill = (*[0]byte)(C._goglib_gstbase1_PushSrc_fill)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstbase1_PushSrc_fill",
+			"_goglib_gstbase1_PushSrc_fill",
 			func(carg0 *C.GstPushSrc, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
 				var src   Instance       // go GstPushSrc subclass
 				var buf   *gst.Buffer    // in, none, converted
@@ -18191,7 +18191,7 @@ func (src *PushSrcInstance) ParentAllocPushSrc() (*gst.Buffer, gst.FlowReturn) {
 
 	carg0 = (*C.GstPushSrc)(UnsafePushSrcToGlibNone(src))
 
-	cret = C._gotk4_gstbase1_PushSrc_virtual_alloc(unsafe.Pointer(parentclass.alloc), carg0, &carg1)
+	cret = C._goglib_gstbase1_PushSrc_virtual_alloc(unsafe.Pointer(parentclass.alloc), carg0, &carg1)
 	runtime.KeepAlive(src)
 
 	var buf   *gst.Buffer
@@ -18227,7 +18227,7 @@ func (src *PushSrcInstance) ParentFillPushSrc(buf *gst.Buffer) gst.FlowReturn {
 	carg0 = (*C.GstPushSrc)(UnsafePushSrcToGlibNone(src))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buf))
 
-	cret = C._gotk4_gstbase1_PushSrc_virtual_fill(unsafe.Pointer(parentclass.fill), carg0, carg1)
+	cret = C._goglib_gstbase1_PushSrc_virtual_fill(unsafe.Pointer(parentclass.fill), carg0, carg1)
 	runtime.KeepAlive(src)
 	runtime.KeepAlive(buf)
 
@@ -19140,14 +19140,14 @@ func (reader *BitReader) GetSize() uint {
 // can be called on already initialized instances.
 func (reader *BitReader) Init(data []uint8) {
 	var carg0 *C.GstBitReader // in, none, converted
-	var carg1 *C.guint8       // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint8       // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint         // implicit
 
 	carg0 = (*C.GstBitReader)(UnsafeBitReaderToGlibNone(reader))
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	C.gst_bit_reader_init(carg0, carg1, carg2)
 	runtime.KeepAlive(reader)
@@ -19888,7 +19888,7 @@ func UnsafeByteReaderToGlibFull(b *ByteReader) unsafe.Pointer {
 // This function will fail if no NUL-terminator was found in in the data.
 func (reader *ByteReader) DupStringUTF8() (string, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
-	var carg1 *C.gchar         // out, transfer: full, C Pointers: 1, Name: array[unknown], array (inner: <nil>, zero-terminated)
+	var carg1 *C.gchar         // out, transfer: full, C Pointers: 1, Name: array[unknown], array (inner unknown, zero-terminated)
 	var cret  C.gboolean       // return
 
 	carg0 = (*C.GstByteReader)(UnsafeByteReaderToGlibNone(reader))
@@ -19901,7 +19901,7 @@ func (reader *ByteReader) DupStringUTF8() (string, bool) {
 
 	_ = str
 	_ = carg1
-	panic("unimplemented conversion of string (gchar*)")
+	panic("unimplemented conversion of string (gchar*) because of unknown reason")
 	if cret != 0 {
 		goret = true
 	}
@@ -20386,7 +20386,7 @@ func (reader *ByteReader) GetSize() uint {
 // This function will fail if no NUL-terminator was found in in the data.
 func (reader *ByteReader) GetStringUTF8() (string, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
-	var carg1 *C.gchar         // out, transfer: none, C Pointers: 1, Name: array[unknown], array (inner: <nil>, zero-terminated)
+	var carg1 *C.gchar         // out, transfer: none, C Pointers: 1, Name: array[unknown], array (inner unknown, zero-terminated)
 	var cret  C.gboolean       // return
 
 	carg0 = (*C.GstByteReader)(UnsafeByteReaderToGlibNone(reader))
@@ -20399,7 +20399,7 @@ func (reader *ByteReader) GetStringUTF8() (string, bool) {
 
 	_ = str
 	_ = carg1
-	panic("unimplemented conversion of string (const gchar*)")
+	panic("unimplemented conversion of string (const gchar*) because of unknown reason")
 	if cret != 0 {
 		goret = true
 	}
@@ -20687,14 +20687,14 @@ func (reader *ByteReader) GetUint8() (uint8, bool) {
 // can be called on already initialized instances.
 func (reader *ByteReader) Init(data []uint8) {
 	var carg0 *C.GstByteReader // in, none, converted
-	var carg1 *C.guint8        // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint8        // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint          // implicit
 
 	carg0 = (*C.GstByteReader)(UnsafeByteReaderToGlibNone(reader))
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	C.gst_byte_reader_init(carg0, carg1, carg2)
 	runtime.KeepAlive(reader)
@@ -21217,7 +21217,7 @@ func (reader *ByteReader) PeekInt8() (int8, bool) {
 // This function will fail if no NUL-terminator was found in in the data.
 func (reader *ByteReader) PeekStringUTF8() (string, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
-	var carg1 *C.gchar         // out, transfer: none, C Pointers: 1, Name: array[unknown], array (inner: <nil>, zero-terminated)
+	var carg1 *C.gchar         // out, transfer: none, C Pointers: 1, Name: array[unknown], array (inner unknown, zero-terminated)
 	var cret  C.gboolean       // return
 
 	carg0 = (*C.GstByteReader)(UnsafeByteReaderToGlibNone(reader))
@@ -21230,7 +21230,7 @@ func (reader *ByteReader) PeekStringUTF8() (string, bool) {
 
 	_ = str
 	_ = carg1
-	panic("unimplemented conversion of string (const gchar*)")
+	panic("unimplemented conversion of string (const gchar*) because of unknown reason")
 	if cret != 0 {
 		goret = true
 	}
@@ -21865,7 +21865,7 @@ func (writer *ByteWriter) FreeAndGetData() *uint8 {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	panic("unimplemented conversion of *uint8 (guint8*) because of unknown reason")
 
 	return goret
 }
@@ -21918,7 +21918,7 @@ func (writer *ByteWriter) Init() {
 // read @size bytes from the #GstByteWriter from the beginning.
 func (writer *ByteWriter) InitWithData(data []uint8, initialized bool) {
 	var carg0 *C.GstByteWriter // in, none, converted
-	var carg1 *C.guint8        // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint8        // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint          // implicit
 	var carg3 C.gboolean       // in
 
@@ -21926,7 +21926,7 @@ func (writer *ByteWriter) InitWithData(data []uint8, initialized bool) {
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (guint8*)")
+	panic("unimplemented conversion of []uint8 (guint8*) because of unimplemented: non-fixed size array")
 	if initialized {
 		carg3 = C.TRUE
 	}
@@ -22015,7 +22015,7 @@ func (writer *ByteWriter) PutBuffer(buffer *gst.Buffer, offset uint, size int) b
 // Writes @size bytes of @data to @writer.
 func (writer *ByteWriter) PutData(data []uint8) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
-	var carg1 *C.guint8        // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg1 *C.guint8        // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner guint8 (*typesystem.CastablePrimitive), length-by: carg2)
 	var carg2 C.guint          // implicit
 	var cret  C.gboolean       // return
 
@@ -22023,7 +22023,7 @@ func (writer *ByteWriter) PutData(data []uint8) bool {
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (const guint8*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_byte_writer_put_data(carg0, carg1, carg2)
 	runtime.KeepAlive(writer)
@@ -22467,13 +22467,13 @@ func (writer *ByteWriter) PutInt8(val int8) bool {
 // Writes a NUL-terminated UTF16 string to @writer (including the terminator).
 func (writer *ByteWriter) PutStringUTF16(data []uint16) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
-	var carg1 *C.guint16       // in, transfer: none, C Pointers: 1, Name: array[guint16], array (inner: *typesystem.CastablePrimitive, zero-terminated)
+	var carg1 *C.guint16       // in, transfer: none, C Pointers: 1, Name: array[guint16], array (inner guint16 (*typesystem.CastablePrimitive), zero-terminated)
 	var cret  C.gboolean       // return
 
 	carg0 = (*C.GstByteWriter)(UnsafeByteWriterToGlibNone(writer))
 	_ = data
 	_ = carg1
-	panic("unimplemented conversion of []uint16 (const guint16*)")
+	panic("unimplemented conversion of []uint16 (const guint16*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_byte_writer_put_string_utf16(carg0, carg1)
 	runtime.KeepAlive(writer)
@@ -22501,13 +22501,13 @@ func (writer *ByteWriter) PutStringUTF16(data []uint16) bool {
 // Writes a NUL-terminated UTF32 string to @writer (including the terminator).
 func (writer *ByteWriter) PutStringUtf32(data []uint32) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
-	var carg1 *C.guint32       // in, transfer: none, C Pointers: 1, Name: array[guint32], array (inner: *typesystem.CastablePrimitive, zero-terminated)
+	var carg1 *C.guint32       // in, transfer: none, C Pointers: 1, Name: array[guint32], array (inner guint32 (*typesystem.CastablePrimitive), zero-terminated)
 	var cret  C.gboolean       // return
 
 	carg0 = (*C.GstByteWriter)(UnsafeByteWriterToGlibNone(writer))
 	_ = data
 	_ = carg1
-	panic("unimplemented conversion of []uint32 (const guint32*)")
+	panic("unimplemented conversion of []uint32 (const guint32*) because of unimplemented: non-fixed size array")
 
 	cret = C.gst_byte_writer_put_string_utf32(carg0, carg1)
 	runtime.KeepAlive(writer)

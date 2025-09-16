@@ -8,11 +8,11 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/diamondburned/gotk4/gir"
-	"github.com/diamondburned/gotk4/gir/cmd/gir-generate/gendata"
-	"github.com/diamondburned/gotk4/gir/cmd/gir-generate/genmain"
-	"github.com/diamondburned/gotk4/gir/girgen/strcases"
-	"github.com/diamondburned/gotk4/gir/girgen/typesystem"
+	"github.com/go-gst/go-glib/gir"
+	"github.com/go-gst/go-glib/gir/cmd/gir-generate/gendata"
+	"github.com/go-gst/go-glib/gir/cmd/gir-generate/genmain"
+	"github.com/go-gst/go-glib/gir/girgen/strcases"
+	"github.com/go-gst/go-glib/gir/girgen/typesystem"
 	girfiles_gst "github.com/go-gst/go-gst/girs"
 )
 

@@ -7,8 +7,8 @@ import (
 	"runtime"
 	"unsafe"
 
-	"github.com/diamondburned/gotk4/pkg/core/classdata"
-	"github.com/diamondburned/gotk4/pkg/gobject/v2"
+	"github.com/go-gst/go-glib/pkg/core/classdata"
+	"github.com/go-gst/go-glib/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
 	"github.com/go-gst/go-gst/pkg/gstbase"
 )
@@ -16,60 +16,60 @@ import (
 // #cgo pkg-config: gstreamer-app-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/app/app.h>
-// extern void _gotk4_gstapp1_AppSink_eos(GstAppSink*);
-// extern GstFlowReturn _gotk4_gstapp1_AppSink_new_preroll(GstAppSink*);
-// extern GstFlowReturn _gotk4_gstapp1_AppSink_new_sample(GstAppSink*);
-// extern GstSample* _gotk4_gstapp1_AppSink_pull_preroll(GstAppSink*);
-// extern GstSample* _gotk4_gstapp1_AppSink_pull_sample(GstAppSink*);
-// extern GstSample* _gotk4_gstapp1_AppSink_try_pull_preroll(GstAppSink*, GstClockTime);
-// extern GstSample* _gotk4_gstapp1_AppSink_try_pull_sample(GstAppSink*, GstClockTime);
-// void _gotk4_gstapp1_AppSink_virtual_eos(void* fnptr, GstAppSink* carg0) {
+// extern void _goglib_gstapp1_AppSink_eos(GstAppSink*);
+// extern GstFlowReturn _goglib_gstapp1_AppSink_new_preroll(GstAppSink*);
+// extern GstFlowReturn _goglib_gstapp1_AppSink_new_sample(GstAppSink*);
+// extern GstSample* _goglib_gstapp1_AppSink_pull_preroll(GstAppSink*);
+// extern GstSample* _goglib_gstapp1_AppSink_pull_sample(GstAppSink*);
+// extern GstSample* _goglib_gstapp1_AppSink_try_pull_preroll(GstAppSink*, GstClockTime);
+// extern GstSample* _goglib_gstapp1_AppSink_try_pull_sample(GstAppSink*, GstClockTime);
+// void _goglib_gstapp1_AppSink_virtual_eos(void* fnptr, GstAppSink* carg0) {
 // 	return ((void (*) (GstAppSink*))(fnptr))(carg0);
 // }
-// GstFlowReturn _gotk4_gstapp1_AppSink_virtual_new_preroll(void* fnptr, GstAppSink* carg0) {
+// GstFlowReturn _goglib_gstapp1_AppSink_virtual_new_preroll(void* fnptr, GstAppSink* carg0) {
 // 	return ((GstFlowReturn (*) (GstAppSink*))(fnptr))(carg0);
 // }
-// GstFlowReturn _gotk4_gstapp1_AppSink_virtual_new_sample(void* fnptr, GstAppSink* carg0) {
+// GstFlowReturn _goglib_gstapp1_AppSink_virtual_new_sample(void* fnptr, GstAppSink* carg0) {
 // 	return ((GstFlowReturn (*) (GstAppSink*))(fnptr))(carg0);
 // }
-// GstSample* _gotk4_gstapp1_AppSink_virtual_pull_preroll(void* fnptr, GstAppSink* carg0) {
+// GstSample* _goglib_gstapp1_AppSink_virtual_pull_preroll(void* fnptr, GstAppSink* carg0) {
 // 	return ((GstSample* (*) (GstAppSink*))(fnptr))(carg0);
 // }
-// GstSample* _gotk4_gstapp1_AppSink_virtual_pull_sample(void* fnptr, GstAppSink* carg0) {
+// GstSample* _goglib_gstapp1_AppSink_virtual_pull_sample(void* fnptr, GstAppSink* carg0) {
 // 	return ((GstSample* (*) (GstAppSink*))(fnptr))(carg0);
 // }
-// GstSample* _gotk4_gstapp1_AppSink_virtual_try_pull_preroll(void* fnptr, GstAppSink* carg0, GstClockTime carg1) {
+// GstSample* _goglib_gstapp1_AppSink_virtual_try_pull_preroll(void* fnptr, GstAppSink* carg0, GstClockTime carg1) {
 // 	return ((GstSample* (*) (GstAppSink*, GstClockTime))(fnptr))(carg0, carg1);
 // }
-// GstSample* _gotk4_gstapp1_AppSink_virtual_try_pull_sample(void* fnptr, GstAppSink* carg0, GstClockTime carg1) {
+// GstSample* _goglib_gstapp1_AppSink_virtual_try_pull_sample(void* fnptr, GstAppSink* carg0, GstClockTime carg1) {
 // 	return ((GstSample* (*) (GstAppSink*, GstClockTime))(fnptr))(carg0, carg1);
 // }
-// extern GstFlowReturn _gotk4_gstapp1_AppSrc_end_of_stream(GstAppSrc*);
-// extern void _gotk4_gstapp1_AppSrc_enough_data(GstAppSrc*);
-// extern void _gotk4_gstapp1_AppSrc_need_data(GstAppSrc*, guint);
-// extern GstFlowReturn _gotk4_gstapp1_AppSrc_push_buffer(GstAppSrc*, GstBuffer*);
-// extern GstFlowReturn _gotk4_gstapp1_AppSrc_push_buffer_list(GstAppSrc*, GstBufferList*);
-// extern GstFlowReturn _gotk4_gstapp1_AppSrc_push_sample(GstAppSrc*, GstSample*);
-// extern gboolean _gotk4_gstapp1_AppSrc_seek_data(GstAppSrc*, guint64);
-// GstFlowReturn _gotk4_gstapp1_AppSrc_virtual_end_of_stream(void* fnptr, GstAppSrc* carg0) {
+// extern GstFlowReturn _goglib_gstapp1_AppSrc_end_of_stream(GstAppSrc*);
+// extern void _goglib_gstapp1_AppSrc_enough_data(GstAppSrc*);
+// extern void _goglib_gstapp1_AppSrc_need_data(GstAppSrc*, guint);
+// extern GstFlowReturn _goglib_gstapp1_AppSrc_push_buffer(GstAppSrc*, GstBuffer*);
+// extern GstFlowReturn _goglib_gstapp1_AppSrc_push_buffer_list(GstAppSrc*, GstBufferList*);
+// extern GstFlowReturn _goglib_gstapp1_AppSrc_push_sample(GstAppSrc*, GstSample*);
+// extern gboolean _goglib_gstapp1_AppSrc_seek_data(GstAppSrc*, guint64);
+// GstFlowReturn _goglib_gstapp1_AppSrc_virtual_end_of_stream(void* fnptr, GstAppSrc* carg0) {
 // 	return ((GstFlowReturn (*) (GstAppSrc*))(fnptr))(carg0);
 // }
-// void _gotk4_gstapp1_AppSrc_virtual_enough_data(void* fnptr, GstAppSrc* carg0) {
+// void _goglib_gstapp1_AppSrc_virtual_enough_data(void* fnptr, GstAppSrc* carg0) {
 // 	return ((void (*) (GstAppSrc*))(fnptr))(carg0);
 // }
-// void _gotk4_gstapp1_AppSrc_virtual_need_data(void* fnptr, GstAppSrc* carg0, guint carg1) {
+// void _goglib_gstapp1_AppSrc_virtual_need_data(void* fnptr, GstAppSrc* carg0, guint carg1) {
 // 	return ((void (*) (GstAppSrc*, guint))(fnptr))(carg0, carg1);
 // }
-// GstFlowReturn _gotk4_gstapp1_AppSrc_virtual_push_buffer(void* fnptr, GstAppSrc* carg0, GstBuffer* carg1) {
+// GstFlowReturn _goglib_gstapp1_AppSrc_virtual_push_buffer(void* fnptr, GstAppSrc* carg0, GstBuffer* carg1) {
 // 	return ((GstFlowReturn (*) (GstAppSrc*, GstBuffer*))(fnptr))(carg0, carg1);
 // }
-// GstFlowReturn _gotk4_gstapp1_AppSrc_virtual_push_buffer_list(void* fnptr, GstAppSrc* carg0, GstBufferList* carg1) {
+// GstFlowReturn _goglib_gstapp1_AppSrc_virtual_push_buffer_list(void* fnptr, GstAppSrc* carg0, GstBufferList* carg1) {
 // 	return ((GstFlowReturn (*) (GstAppSrc*, GstBufferList*))(fnptr))(carg0, carg1);
 // }
-// GstFlowReturn _gotk4_gstapp1_AppSrc_virtual_push_sample(void* fnptr, GstAppSrc* carg0, GstSample* carg1) {
+// GstFlowReturn _goglib_gstapp1_AppSrc_virtual_push_sample(void* fnptr, GstAppSrc* carg0, GstSample* carg1) {
 // 	return ((GstFlowReturn (*) (GstAppSrc*, GstSample*))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstapp1_AppSrc_virtual_seek_data(void* fnptr, GstAppSrc* carg0, guint64 carg1) {
+// gboolean _goglib_gstapp1_AppSrc_virtual_seek_data(void* fnptr, GstAppSrc* carg0, guint64 carg1) {
 // 	return ((gboolean (*) (GstAppSrc*, guint64))(fnptr))(carg0, carg1);
 // }
 import "C"
@@ -1736,10 +1736,10 @@ func UnsafeApplyAppSinkOverrides[Instance AppSink](gclass unsafe.Pointer, overri
 	pclass := (*C.GstAppSinkClass)(gclass)
 
 	if overrides.EOS != nil {
-		pclass.eos = (*[0]byte)(C._gotk4_gstapp1_AppSink_eos)
+		pclass.eos = (*[0]byte)(C._goglib_gstapp1_AppSink_eos)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstapp1_AppSink_eos",
+			"_goglib_gstapp1_AppSink_eos",
 			func(carg0 *C.GstAppSink) {
 				var appsink Instance // go GstAppSink subclass
 
@@ -1751,10 +1751,10 @@ func UnsafeApplyAppSinkOverrides[Instance AppSink](gclass unsafe.Pointer, overri
 	}
 
 	if overrides.NewPreroll != nil {
-		pclass.new_preroll = (*[0]byte)(C._gotk4_gstapp1_AppSink_new_preroll)
+		pclass.new_preroll = (*[0]byte)(C._goglib_gstapp1_AppSink_new_preroll)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstapp1_AppSink_new_preroll",
+			"_goglib_gstapp1_AppSink_new_preroll",
 			func(carg0 *C.GstAppSink) (cret C.GstFlowReturn) {
 				var appsink Instance       // go GstAppSink subclass
 				var goret   gst.FlowReturn // return, none, casted
@@ -1771,10 +1771,10 @@ func UnsafeApplyAppSinkOverrides[Instance AppSink](gclass unsafe.Pointer, overri
 	}
 
 	if overrides.NewSample != nil {
-		pclass.new_sample = (*[0]byte)(C._gotk4_gstapp1_AppSink_new_sample)
+		pclass.new_sample = (*[0]byte)(C._goglib_gstapp1_AppSink_new_sample)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstapp1_AppSink_new_sample",
+			"_goglib_gstapp1_AppSink_new_sample",
 			func(carg0 *C.GstAppSink) (cret C.GstFlowReturn) {
 				var appsink Instance       // go GstAppSink subclass
 				var goret   gst.FlowReturn // return, none, casted
@@ -1791,10 +1791,10 @@ func UnsafeApplyAppSinkOverrides[Instance AppSink](gclass unsafe.Pointer, overri
 	}
 
 	if overrides.PullPreroll != nil {
-		pclass.pull_preroll = (*[0]byte)(C._gotk4_gstapp1_AppSink_pull_preroll)
+		pclass.pull_preroll = (*[0]byte)(C._goglib_gstapp1_AppSink_pull_preroll)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstapp1_AppSink_pull_preroll",
+			"_goglib_gstapp1_AppSink_pull_preroll",
 			func(carg0 *C.GstAppSink) (cret *C.GstSample) {
 				var appsink Instance    // go GstAppSink subclass
 				var goret   *gst.Sample // return, full, converted, nullable
@@ -1813,10 +1813,10 @@ func UnsafeApplyAppSinkOverrides[Instance AppSink](gclass unsafe.Pointer, overri
 	}
 
 	if overrides.PullSample != nil {
-		pclass.pull_sample = (*[0]byte)(C._gotk4_gstapp1_AppSink_pull_sample)
+		pclass.pull_sample = (*[0]byte)(C._goglib_gstapp1_AppSink_pull_sample)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstapp1_AppSink_pull_sample",
+			"_goglib_gstapp1_AppSink_pull_sample",
 			func(carg0 *C.GstAppSink) (cret *C.GstSample) {
 				var appsink Instance    // go GstAppSink subclass
 				var goret   *gst.Sample // return, full, converted, nullable
@@ -1835,10 +1835,10 @@ func UnsafeApplyAppSinkOverrides[Instance AppSink](gclass unsafe.Pointer, overri
 	}
 
 	if overrides.TryPullPreroll != nil {
-		pclass.try_pull_preroll = (*[0]byte)(C._gotk4_gstapp1_AppSink_try_pull_preroll)
+		pclass.try_pull_preroll = (*[0]byte)(C._goglib_gstapp1_AppSink_try_pull_preroll)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstapp1_AppSink_try_pull_preroll",
+			"_goglib_gstapp1_AppSink_try_pull_preroll",
 			func(carg0 *C.GstAppSink, carg1 C.GstClockTime) (cret *C.GstSample) {
 				var appsink Instance      // go GstAppSink subclass
 				var timeout gst.ClockTime // in, none, casted, alias
@@ -1859,10 +1859,10 @@ func UnsafeApplyAppSinkOverrides[Instance AppSink](gclass unsafe.Pointer, overri
 	}
 
 	if overrides.TryPullSample != nil {
-		pclass.try_pull_sample = (*[0]byte)(C._gotk4_gstapp1_AppSink_try_pull_sample)
+		pclass.try_pull_sample = (*[0]byte)(C._goglib_gstapp1_AppSink_try_pull_sample)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstapp1_AppSink_try_pull_sample",
+			"_goglib_gstapp1_AppSink_try_pull_sample",
 			func(carg0 *C.GstAppSink, carg1 C.GstClockTime) (cret *C.GstSample) {
 				var appsink Instance      // go GstAppSink subclass
 				var timeout gst.ClockTime // in, none, casted, alias
@@ -1892,7 +1892,7 @@ func (appsink *AppSinkInstance) ParentEOS() {
 
 	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 
-	C._gotk4_gstapp1_AppSink_virtual_eos(unsafe.Pointer(parentclass.eos), carg0)
+	C._goglib_gstapp1_AppSink_virtual_eos(unsafe.Pointer(parentclass.eos), carg0)
 	runtime.KeepAlive(appsink)
 }
 
@@ -1910,7 +1910,7 @@ func (appsink *AppSinkInstance) ParentNewPreroll() gst.FlowReturn {
 
 	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 
-	cret = C._gotk4_gstapp1_AppSink_virtual_new_preroll(unsafe.Pointer(parentclass.new_preroll), carg0)
+	cret = C._goglib_gstapp1_AppSink_virtual_new_preroll(unsafe.Pointer(parentclass.new_preroll), carg0)
 	runtime.KeepAlive(appsink)
 
 	var goret gst.FlowReturn
@@ -1934,7 +1934,7 @@ func (appsink *AppSinkInstance) ParentNewSample() gst.FlowReturn {
 
 	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 
-	cret = C._gotk4_gstapp1_AppSink_virtual_new_sample(unsafe.Pointer(parentclass.new_sample), carg0)
+	cret = C._goglib_gstapp1_AppSink_virtual_new_sample(unsafe.Pointer(parentclass.new_sample), carg0)
 	runtime.KeepAlive(appsink)
 
 	var goret gst.FlowReturn
@@ -1977,7 +1977,7 @@ func (appsink *AppSinkInstance) ParentPullPreroll() *gst.Sample {
 
 	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 
-	cret = C._gotk4_gstapp1_AppSink_virtual_pull_preroll(unsafe.Pointer(parentclass.pull_preroll), carg0)
+	cret = C._goglib_gstapp1_AppSink_virtual_pull_preroll(unsafe.Pointer(parentclass.pull_preroll), carg0)
 	runtime.KeepAlive(appsink)
 
 	var goret *gst.Sample
@@ -2015,7 +2015,7 @@ func (appsink *AppSinkInstance) ParentPullSample() *gst.Sample {
 
 	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 
-	cret = C._gotk4_gstapp1_AppSink_virtual_pull_sample(unsafe.Pointer(parentclass.pull_sample), carg0)
+	cret = C._goglib_gstapp1_AppSink_virtual_pull_sample(unsafe.Pointer(parentclass.pull_sample), carg0)
 	runtime.KeepAlive(appsink)
 
 	var goret *gst.Sample
@@ -2067,7 +2067,7 @@ func (appsink *AppSinkInstance) ParentTryPullPreroll(timeout gst.ClockTime) *gst
 	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 	carg1 = C.GstClockTime(timeout)
 
-	cret = C._gotk4_gstapp1_AppSink_virtual_try_pull_preroll(unsafe.Pointer(parentclass.try_pull_preroll), carg0, carg1)
+	cret = C._goglib_gstapp1_AppSink_virtual_try_pull_preroll(unsafe.Pointer(parentclass.try_pull_preroll), carg0, carg1)
 	runtime.KeepAlive(appsink)
 	runtime.KeepAlive(timeout)
 
@@ -2113,7 +2113,7 @@ func (appsink *AppSinkInstance) ParentTryPullSample(timeout gst.ClockTime) *gst.
 	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 	carg1 = C.GstClockTime(timeout)
 
-	cret = C._gotk4_gstapp1_AppSink_virtual_try_pull_sample(unsafe.Pointer(parentclass.try_pull_sample), carg0, carg1)
+	cret = C._goglib_gstapp1_AppSink_virtual_try_pull_sample(unsafe.Pointer(parentclass.try_pull_sample), carg0, carg1)
 	runtime.KeepAlive(appsink)
 	runtime.KeepAlive(timeout)
 
@@ -3576,10 +3576,10 @@ func UnsafeApplyAppSrcOverrides[Instance AppSrc](gclass unsafe.Pointer, override
 	pclass := (*C.GstAppSrcClass)(gclass)
 
 	if overrides.EndOfStream != nil {
-		pclass.end_of_stream = (*[0]byte)(C._gotk4_gstapp1_AppSrc_end_of_stream)
+		pclass.end_of_stream = (*[0]byte)(C._goglib_gstapp1_AppSrc_end_of_stream)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstapp1_AppSrc_end_of_stream",
+			"_goglib_gstapp1_AppSrc_end_of_stream",
 			func(carg0 *C.GstAppSrc) (cret C.GstFlowReturn) {
 				var appsrc Instance       // go GstAppSrc subclass
 				var goret  gst.FlowReturn // return, none, casted
@@ -3596,10 +3596,10 @@ func UnsafeApplyAppSrcOverrides[Instance AppSrc](gclass unsafe.Pointer, override
 	}
 
 	if overrides.EnoughData != nil {
-		pclass.enough_data = (*[0]byte)(C._gotk4_gstapp1_AppSrc_enough_data)
+		pclass.enough_data = (*[0]byte)(C._goglib_gstapp1_AppSrc_enough_data)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstapp1_AppSrc_enough_data",
+			"_goglib_gstapp1_AppSrc_enough_data",
 			func(carg0 *C.GstAppSrc) {
 				var appsrc Instance // go GstAppSrc subclass
 
@@ -3611,10 +3611,10 @@ func UnsafeApplyAppSrcOverrides[Instance AppSrc](gclass unsafe.Pointer, override
 	}
 
 	if overrides.NeedData != nil {
-		pclass.need_data = (*[0]byte)(C._gotk4_gstapp1_AppSrc_need_data)
+		pclass.need_data = (*[0]byte)(C._goglib_gstapp1_AppSrc_need_data)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstapp1_AppSrc_need_data",
+			"_goglib_gstapp1_AppSrc_need_data",
 			func(carg0 *C.GstAppSrc, carg1 C.guint) {
 				var appsrc Instance // go GstAppSrc subclass
 				var length uint     // in, none, casted
@@ -3628,10 +3628,10 @@ func UnsafeApplyAppSrcOverrides[Instance AppSrc](gclass unsafe.Pointer, override
 	}
 
 	if overrides.PushBuffer != nil {
-		pclass.push_buffer = (*[0]byte)(C._gotk4_gstapp1_AppSrc_push_buffer)
+		pclass.push_buffer = (*[0]byte)(C._goglib_gstapp1_AppSrc_push_buffer)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstapp1_AppSrc_push_buffer",
+			"_goglib_gstapp1_AppSrc_push_buffer",
 			func(carg0 *C.GstAppSrc, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
 				var appsrc Instance       // go GstAppSrc subclass
 				var buffer *gst.Buffer    // in, full, converted
@@ -3650,10 +3650,10 @@ func UnsafeApplyAppSrcOverrides[Instance AppSrc](gclass unsafe.Pointer, override
 	}
 
 	if overrides.PushBufferList != nil {
-		pclass.push_buffer_list = (*[0]byte)(C._gotk4_gstapp1_AppSrc_push_buffer_list)
+		pclass.push_buffer_list = (*[0]byte)(C._goglib_gstapp1_AppSrc_push_buffer_list)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstapp1_AppSrc_push_buffer_list",
+			"_goglib_gstapp1_AppSrc_push_buffer_list",
 			func(carg0 *C.GstAppSrc, carg1 *C.GstBufferList) (cret C.GstFlowReturn) {
 				var appsrc     Instance        // go GstAppSrc subclass
 				var bufferList *gst.BufferList // in, full, converted
@@ -3672,10 +3672,10 @@ func UnsafeApplyAppSrcOverrides[Instance AppSrc](gclass unsafe.Pointer, override
 	}
 
 	if overrides.PushSample != nil {
-		pclass.push_sample = (*[0]byte)(C._gotk4_gstapp1_AppSrc_push_sample)
+		pclass.push_sample = (*[0]byte)(C._goglib_gstapp1_AppSrc_push_sample)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstapp1_AppSrc_push_sample",
+			"_goglib_gstapp1_AppSrc_push_sample",
 			func(carg0 *C.GstAppSrc, carg1 *C.GstSample) (cret C.GstFlowReturn) {
 				var appsrc Instance       // go GstAppSrc subclass
 				var sample *gst.Sample    // in, none, converted
@@ -3694,10 +3694,10 @@ func UnsafeApplyAppSrcOverrides[Instance AppSrc](gclass unsafe.Pointer, override
 	}
 
 	if overrides.SeekData != nil {
-		pclass.seek_data = (*[0]byte)(C._gotk4_gstapp1_AppSrc_seek_data)
+		pclass.seek_data = (*[0]byte)(C._goglib_gstapp1_AppSrc_seek_data)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstapp1_AppSrc_seek_data",
+			"_goglib_gstapp1_AppSrc_seek_data",
 			func(carg0 *C.GstAppSrc, carg1 C.guint64) (cret C.gboolean) {
 				var appsrc Instance // go GstAppSrc subclass
 				var offset uint64   // in, none, casted
@@ -3735,7 +3735,7 @@ func (appsrc *AppSrcInstance) ParentEndOfStream() gst.FlowReturn {
 
 	carg0 = (*C.GstAppSrc)(UnsafeAppSrcToGlibNone(appsrc))
 
-	cret = C._gotk4_gstapp1_AppSrc_virtual_end_of_stream(unsafe.Pointer(parentclass.end_of_stream), carg0)
+	cret = C._goglib_gstapp1_AppSrc_virtual_end_of_stream(unsafe.Pointer(parentclass.end_of_stream), carg0)
 	runtime.KeepAlive(appsrc)
 
 	var goret gst.FlowReturn
@@ -3754,7 +3754,7 @@ func (appsrc *AppSrcInstance) ParentEnoughData() {
 
 	carg0 = (*C.GstAppSrc)(UnsafeAppSrcToGlibNone(appsrc))
 
-	C._gotk4_gstapp1_AppSrc_virtual_enough_data(unsafe.Pointer(parentclass.enough_data), carg0)
+	C._goglib_gstapp1_AppSrc_virtual_enough_data(unsafe.Pointer(parentclass.enough_data), carg0)
 	runtime.KeepAlive(appsrc)
 }
 
@@ -3773,7 +3773,7 @@ func (appsrc *AppSrcInstance) ParentNeedData(length uint) {
 	carg0 = (*C.GstAppSrc)(UnsafeAppSrcToGlibNone(appsrc))
 	carg1 = C.guint(length)
 
-	C._gotk4_gstapp1_AppSrc_virtual_need_data(unsafe.Pointer(parentclass.need_data), carg0, carg1)
+	C._goglib_gstapp1_AppSrc_virtual_need_data(unsafe.Pointer(parentclass.need_data), carg0, carg1)
 	runtime.KeepAlive(appsrc)
 	runtime.KeepAlive(length)
 }
@@ -3804,7 +3804,7 @@ func (appsrc *AppSrcInstance) ParentPushBuffer(buffer *gst.Buffer) gst.FlowRetur
 	carg0 = (*C.GstAppSrc)(UnsafeAppSrcToGlibNone(appsrc))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibFull(buffer))
 
-	cret = C._gotk4_gstapp1_AppSrc_virtual_push_buffer(unsafe.Pointer(parentclass.push_buffer), carg0, carg1)
+	cret = C._goglib_gstapp1_AppSrc_virtual_push_buffer(unsafe.Pointer(parentclass.push_buffer), carg0, carg1)
 	runtime.KeepAlive(appsrc)
 	runtime.KeepAlive(buffer)
 
@@ -3842,7 +3842,7 @@ func (appsrc *AppSrcInstance) ParentPushBufferList(bufferList *gst.BufferList) g
 	carg0 = (*C.GstAppSrc)(UnsafeAppSrcToGlibNone(appsrc))
 	carg1 = (*C.GstBufferList)(gst.UnsafeBufferListToGlibFull(bufferList))
 
-	cret = C._gotk4_gstapp1_AppSrc_virtual_push_buffer_list(unsafe.Pointer(parentclass.push_buffer_list), carg0, carg1)
+	cret = C._goglib_gstapp1_AppSrc_virtual_push_buffer_list(unsafe.Pointer(parentclass.push_buffer_list), carg0, carg1)
 	runtime.KeepAlive(appsrc)
 	runtime.KeepAlive(bufferList)
 
@@ -3885,7 +3885,7 @@ func (appsrc *AppSrcInstance) ParentPushSample(sample *gst.Sample) gst.FlowRetur
 	carg0 = (*C.GstAppSrc)(UnsafeAppSrcToGlibNone(appsrc))
 	carg1 = (*C.GstSample)(gst.UnsafeSampleToGlibNone(sample))
 
-	cret = C._gotk4_gstapp1_AppSrc_virtual_push_sample(unsafe.Pointer(parentclass.push_sample), carg0, carg1)
+	cret = C._goglib_gstapp1_AppSrc_virtual_push_sample(unsafe.Pointer(parentclass.push_sample), carg0, carg1)
 	runtime.KeepAlive(appsrc)
 	runtime.KeepAlive(sample)
 
@@ -3916,7 +3916,7 @@ func (appsrc *AppSrcInstance) ParentSeekData(offset uint64) bool {
 	carg0 = (*C.GstAppSrc)(UnsafeAppSrcToGlibNone(appsrc))
 	carg1 = C.guint64(offset)
 
-	cret = C._gotk4_gstapp1_AppSrc_virtual_seek_data(unsafe.Pointer(parentclass.seek_data), carg0, carg1)
+	cret = C._goglib_gstapp1_AppSrc_virtual_seek_data(unsafe.Pointer(parentclass.seek_data), carg0, carg1)
 	runtime.KeepAlive(appsrc)
 	runtime.KeepAlive(offset)
 

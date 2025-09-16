@@ -1,6 +1,6 @@
 package gst
 
-import "github.com/diamondburned/gotk4/pkg/gobject/v2"
+import "github.com/go-gst/go-glib/pkg/gobject/v2"
 
 // NewSystemClock creates a new instance of a SystemClock, with the given clock type parameter
 //

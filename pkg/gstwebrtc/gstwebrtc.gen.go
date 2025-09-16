@@ -7,10 +7,10 @@ import (
 	"runtime"
 	"unsafe"
 
-	"github.com/diamondburned/gotk4/pkg/core/classdata"
-	"github.com/diamondburned/gotk4/pkg/core/userdata"
-	"github.com/diamondburned/gotk4/pkg/glib/v2"
-	"github.com/diamondburned/gotk4/pkg/gobject/v2"
+	"github.com/go-gst/go-glib/pkg/core/classdata"
+	"github.com/go-gst/go-glib/pkg/core/userdata"
+	"github.com/go-gst/go-glib/pkg/glib/v2"
+	"github.com/go-gst/go-glib/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
 	"github.com/go-gst/go-gst/pkg/gstsdp"
 )
@@ -18,90 +18,90 @@ import (
 // #cgo pkg-config: gstreamer-webrtc-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/webrtc/webrtc.h>
-// extern void _gotk4_gstwebrtc1_WebRTCICEOnCandidateFunc(GstWebRTCICE*, guint, const gchar*, gpointer);
+// extern void _goglib_gstwebrtc1_WebRTCICEOnCandidateFunc(GstWebRTCICE*, guint, const gchar*, gpointer);
 // extern void destroyUserdata(gpointer);
-// extern void _gotk4_gstwebrtc1_WebRTCICE_add_candidate(GstWebRTCICE*, GstWebRTCICEStream*, const gchar*, GstPromise*);
-// extern GstWebRTCICEStream* _gotk4_gstwebrtc1_WebRTCICE_add_stream(GstWebRTCICE*, guint);
-// extern gboolean _gotk4_gstwebrtc1_WebRTCICE_add_turn_server(GstWebRTCICE*, const gchar*);
-// extern GstWebRTCICETransport* _gotk4_gstwebrtc1_WebRTCICE_find_transport(GstWebRTCICE*, GstWebRTCICEStream*, GstWebRTCICEComponent);
-// extern gboolean _gotk4_gstwebrtc1_WebRTCICE_gather_candidates(GstWebRTCICE*, GstWebRTCICEStream*);
-// extern gchar* _gotk4_gstwebrtc1_WebRTCICE_get_http_proxy(GstWebRTCICE*);
-// extern gboolean _gotk4_gstwebrtc1_WebRTCICE_get_is_controller(GstWebRTCICE*);
-// extern gboolean _gotk4_gstwebrtc1_WebRTCICE_get_selected_pair(GstWebRTCICE*, GstWebRTCICEStream*, GstWebRTCICECandidateStats*, GstWebRTCICECandidateStats*);
-// extern gchar* _gotk4_gstwebrtc1_WebRTCICE_get_stun_server(GstWebRTCICE*);
-// extern gchar* _gotk4_gstwebrtc1_WebRTCICE_get_turn_server(GstWebRTCICE*);
-// extern void _gotk4_gstwebrtc1_WebRTCICE_set_force_relay(GstWebRTCICE*, gboolean);
-// extern void _gotk4_gstwebrtc1_WebRTCICE_set_http_proxy(GstWebRTCICE*, const gchar*);
-// extern void _gotk4_gstwebrtc1_WebRTCICE_set_is_controller(GstWebRTCICE*, gboolean);
-// extern gboolean _gotk4_gstwebrtc1_WebRTCICE_set_local_credentials(GstWebRTCICE*, GstWebRTCICEStream*, const gchar*, const gchar*);
-// extern gboolean _gotk4_gstwebrtc1_WebRTCICE_set_remote_credentials(GstWebRTCICE*, GstWebRTCICEStream*, const gchar*, const gchar*);
-// extern void _gotk4_gstwebrtc1_WebRTCICE_set_stun_server(GstWebRTCICE*, const gchar*);
-// extern void _gotk4_gstwebrtc1_WebRTCICE_set_tos(GstWebRTCICE*, GstWebRTCICEStream*, guint);
-// extern void _gotk4_gstwebrtc1_WebRTCICE_set_turn_server(GstWebRTCICE*, const gchar*);
-// void _gotk4_gstwebrtc1_WebRTCICE_virtual_add_candidate(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, const gchar* carg2, GstPromise* carg3) {
+// extern void _goglib_gstwebrtc1_WebRTCICE_add_candidate(GstWebRTCICE*, GstWebRTCICEStream*, const gchar*, GstPromise*);
+// extern GstWebRTCICEStream* _goglib_gstwebrtc1_WebRTCICE_add_stream(GstWebRTCICE*, guint);
+// extern gboolean _goglib_gstwebrtc1_WebRTCICE_add_turn_server(GstWebRTCICE*, const gchar*);
+// extern GstWebRTCICETransport* _goglib_gstwebrtc1_WebRTCICE_find_transport(GstWebRTCICE*, GstWebRTCICEStream*, GstWebRTCICEComponent);
+// extern gboolean _goglib_gstwebrtc1_WebRTCICE_gather_candidates(GstWebRTCICE*, GstWebRTCICEStream*);
+// extern gchar* _goglib_gstwebrtc1_WebRTCICE_get_http_proxy(GstWebRTCICE*);
+// extern gboolean _goglib_gstwebrtc1_WebRTCICE_get_is_controller(GstWebRTCICE*);
+// extern gboolean _goglib_gstwebrtc1_WebRTCICE_get_selected_pair(GstWebRTCICE*, GstWebRTCICEStream*, GstWebRTCICECandidateStats*, GstWebRTCICECandidateStats*);
+// extern gchar* _goglib_gstwebrtc1_WebRTCICE_get_stun_server(GstWebRTCICE*);
+// extern gchar* _goglib_gstwebrtc1_WebRTCICE_get_turn_server(GstWebRTCICE*);
+// extern void _goglib_gstwebrtc1_WebRTCICE_set_force_relay(GstWebRTCICE*, gboolean);
+// extern void _goglib_gstwebrtc1_WebRTCICE_set_http_proxy(GstWebRTCICE*, const gchar*);
+// extern void _goglib_gstwebrtc1_WebRTCICE_set_is_controller(GstWebRTCICE*, gboolean);
+// extern gboolean _goglib_gstwebrtc1_WebRTCICE_set_local_credentials(GstWebRTCICE*, GstWebRTCICEStream*, const gchar*, const gchar*);
+// extern gboolean _goglib_gstwebrtc1_WebRTCICE_set_remote_credentials(GstWebRTCICE*, GstWebRTCICEStream*, const gchar*, const gchar*);
+// extern void _goglib_gstwebrtc1_WebRTCICE_set_stun_server(GstWebRTCICE*, const gchar*);
+// extern void _goglib_gstwebrtc1_WebRTCICE_set_tos(GstWebRTCICE*, GstWebRTCICEStream*, guint);
+// extern void _goglib_gstwebrtc1_WebRTCICE_set_turn_server(GstWebRTCICE*, const gchar*);
+// void _goglib_gstwebrtc1_WebRTCICE_virtual_add_candidate(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, const gchar* carg2, GstPromise* carg3) {
 // 	return ((void (*) (GstWebRTCICE*, GstWebRTCICEStream*, const gchar*, GstPromise*))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// GstWebRTCICEStream* _gotk4_gstwebrtc1_WebRTCICE_virtual_add_stream(void* fnptr, GstWebRTCICE* carg0, guint carg1) {
+// GstWebRTCICEStream* _goglib_gstwebrtc1_WebRTCICE_virtual_add_stream(void* fnptr, GstWebRTCICE* carg0, guint carg1) {
 // 	return ((GstWebRTCICEStream* (*) (GstWebRTCICE*, guint))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_add_turn_server(void* fnptr, GstWebRTCICE* carg0, const gchar* carg1) {
+// gboolean _goglib_gstwebrtc1_WebRTCICE_virtual_add_turn_server(void* fnptr, GstWebRTCICE* carg0, const gchar* carg1) {
 // 	return ((gboolean (*) (GstWebRTCICE*, const gchar*))(fnptr))(carg0, carg1);
 // }
-// GstWebRTCICETransport* _gotk4_gstwebrtc1_WebRTCICE_virtual_find_transport(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, GstWebRTCICEComponent carg2) {
+// GstWebRTCICETransport* _goglib_gstwebrtc1_WebRTCICE_virtual_find_transport(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, GstWebRTCICEComponent carg2) {
 // 	return ((GstWebRTCICETransport* (*) (GstWebRTCICE*, GstWebRTCICEStream*, GstWebRTCICEComponent))(fnptr))(carg0, carg1, carg2);
 // }
-// gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_gather_candidates(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1) {
+// gboolean _goglib_gstwebrtc1_WebRTCICE_virtual_gather_candidates(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1) {
 // 	return ((gboolean (*) (GstWebRTCICE*, GstWebRTCICEStream*))(fnptr))(carg0, carg1);
 // }
-// gchar* _gotk4_gstwebrtc1_WebRTCICE_virtual_get_http_proxy(void* fnptr, GstWebRTCICE* carg0) {
+// gchar* _goglib_gstwebrtc1_WebRTCICE_virtual_get_http_proxy(void* fnptr, GstWebRTCICE* carg0) {
 // 	return ((gchar* (*) (GstWebRTCICE*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_get_is_controller(void* fnptr, GstWebRTCICE* carg0) {
+// gboolean _goglib_gstwebrtc1_WebRTCICE_virtual_get_is_controller(void* fnptr, GstWebRTCICE* carg0) {
 // 	return ((gboolean (*) (GstWebRTCICE*))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_get_selected_pair(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, GstWebRTCICECandidateStats** carg2, GstWebRTCICECandidateStats** carg3) {
+// gboolean _goglib_gstwebrtc1_WebRTCICE_virtual_get_selected_pair(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, GstWebRTCICECandidateStats** carg2, GstWebRTCICECandidateStats** carg3) {
 // 	return ((gboolean (*) (GstWebRTCICE*, GstWebRTCICEStream*, GstWebRTCICECandidateStats**, GstWebRTCICECandidateStats**))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// gchar* _gotk4_gstwebrtc1_WebRTCICE_virtual_get_stun_server(void* fnptr, GstWebRTCICE* carg0) {
+// gchar* _goglib_gstwebrtc1_WebRTCICE_virtual_get_stun_server(void* fnptr, GstWebRTCICE* carg0) {
 // 	return ((gchar* (*) (GstWebRTCICE*))(fnptr))(carg0);
 // }
-// gchar* _gotk4_gstwebrtc1_WebRTCICE_virtual_get_turn_server(void* fnptr, GstWebRTCICE* carg0) {
+// gchar* _goglib_gstwebrtc1_WebRTCICE_virtual_get_turn_server(void* fnptr, GstWebRTCICE* carg0) {
 // 	return ((gchar* (*) (GstWebRTCICE*))(fnptr))(carg0);
 // }
-// void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_force_relay(void* fnptr, GstWebRTCICE* carg0, gboolean carg1) {
+// void _goglib_gstwebrtc1_WebRTCICE_virtual_set_force_relay(void* fnptr, GstWebRTCICE* carg0, gboolean carg1) {
 // 	return ((void (*) (GstWebRTCICE*, gboolean))(fnptr))(carg0, carg1);
 // }
-// void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_http_proxy(void* fnptr, GstWebRTCICE* carg0, const gchar* carg1) {
+// void _goglib_gstwebrtc1_WebRTCICE_virtual_set_http_proxy(void* fnptr, GstWebRTCICE* carg0, const gchar* carg1) {
 // 	return ((void (*) (GstWebRTCICE*, const gchar*))(fnptr))(carg0, carg1);
 // }
-// void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_is_controller(void* fnptr, GstWebRTCICE* carg0, gboolean carg1) {
+// void _goglib_gstwebrtc1_WebRTCICE_virtual_set_is_controller(void* fnptr, GstWebRTCICE* carg0, gboolean carg1) {
 // 	return ((void (*) (GstWebRTCICE*, gboolean))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_set_local_credentials(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, const gchar* carg2, const gchar* carg3) {
+// gboolean _goglib_gstwebrtc1_WebRTCICE_virtual_set_local_credentials(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, const gchar* carg2, const gchar* carg3) {
 // 	return ((gboolean (*) (GstWebRTCICE*, GstWebRTCICEStream*, const gchar*, const gchar*))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_set_remote_credentials(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, const gchar* carg2, const gchar* carg3) {
+// gboolean _goglib_gstwebrtc1_WebRTCICE_virtual_set_remote_credentials(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, const gchar* carg2, const gchar* carg3) {
 // 	return ((gboolean (*) (GstWebRTCICE*, GstWebRTCICEStream*, const gchar*, const gchar*))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_stun_server(void* fnptr, GstWebRTCICE* carg0, const gchar* carg1) {
+// void _goglib_gstwebrtc1_WebRTCICE_virtual_set_stun_server(void* fnptr, GstWebRTCICE* carg0, const gchar* carg1) {
 // 	return ((void (*) (GstWebRTCICE*, const gchar*))(fnptr))(carg0, carg1);
 // }
-// void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_tos(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, guint carg2) {
+// void _goglib_gstwebrtc1_WebRTCICE_virtual_set_tos(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, guint carg2) {
 // 	return ((void (*) (GstWebRTCICE*, GstWebRTCICEStream*, guint))(fnptr))(carg0, carg1, carg2);
 // }
-// void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_turn_server(void* fnptr, GstWebRTCICE* carg0, const gchar* carg1) {
+// void _goglib_gstwebrtc1_WebRTCICE_virtual_set_turn_server(void* fnptr, GstWebRTCICE* carg0, const gchar* carg1) {
 // 	return ((void (*) (GstWebRTCICE*, const gchar*))(fnptr))(carg0, carg1);
 // }
-// extern GstWebRTCICETransport* _gotk4_gstwebrtc1_WebRTCICEStream_find_transport(GstWebRTCICEStream*, GstWebRTCICEComponent);
-// extern gboolean _gotk4_gstwebrtc1_WebRTCICEStream_gather_candidates(GstWebRTCICEStream*);
-// GstWebRTCICETransport* _gotk4_gstwebrtc1_WebRTCICEStream_virtual_find_transport(void* fnptr, GstWebRTCICEStream* carg0, GstWebRTCICEComponent carg1) {
+// extern GstWebRTCICETransport* _goglib_gstwebrtc1_WebRTCICEStream_find_transport(GstWebRTCICEStream*, GstWebRTCICEComponent);
+// extern gboolean _goglib_gstwebrtc1_WebRTCICEStream_gather_candidates(GstWebRTCICEStream*);
+// GstWebRTCICETransport* _goglib_gstwebrtc1_WebRTCICEStream_virtual_find_transport(void* fnptr, GstWebRTCICEStream* carg0, GstWebRTCICEComponent carg1) {
 // 	return ((GstWebRTCICETransport* (*) (GstWebRTCICEStream*, GstWebRTCICEComponent))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstwebrtc1_WebRTCICEStream_virtual_gather_candidates(void* fnptr, GstWebRTCICEStream* carg0) {
+// gboolean _goglib_gstwebrtc1_WebRTCICEStream_virtual_gather_candidates(void* fnptr, GstWebRTCICEStream* carg0) {
 // 	return ((gboolean (*) (GstWebRTCICEStream*))(fnptr))(carg0);
 // }
-// extern gboolean _gotk4_gstwebrtc1_WebRTCICETransport_gather_candidates(GstWebRTCICETransport*);
-// gboolean _gotk4_gstwebrtc1_WebRTCICETransport_virtual_gather_candidates(void* fnptr, GstWebRTCICETransport* carg0) {
+// extern gboolean _goglib_gstwebrtc1_WebRTCICETransport_gather_candidates(GstWebRTCICETransport*);
+// gboolean _goglib_gstwebrtc1_WebRTCICETransport_virtual_gather_candidates(void* fnptr, GstWebRTCICETransport* carg0) {
 // 	return ((gboolean (*) (GstWebRTCICETransport*))(fnptr))(carg0);
 // }
 import "C"
@@ -2163,7 +2163,7 @@ func (ice *WebRTCICEInstance) GetIsController() bool {
 func (ice *WebRTCICEInstance) GetLocalCandidates(stream WebRTCICEStream) []*WebRTCICECandidateStats {
 	var carg0 *C.GstWebRTCICE                // in, none, converted
 	var carg1 *C.GstWebRTCICEStream          // in, none, converted
-	var cret  **C.GstWebRTCICECandidateStats // return, transfer: full, C Pointers: 2, Name: array[WebRTCICECandidateStats], scope: , array (inner: *typesystem.Record, zero-terminated)
+	var cret  **C.GstWebRTCICECandidateStats // return, transfer: full, C Pointers: 2, Name: array[WebRTCICECandidateStats], scope: , array (inner GstWebRTCICECandidateStats* (*typesystem.Record), zero-terminated)
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
@@ -2176,7 +2176,7 @@ func (ice *WebRTCICEInstance) GetLocalCandidates(stream WebRTCICEStream) []*WebR
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []*WebRTCICECandidateStats (GstWebRTCICECandidateStats**)")
+	panic("unimplemented conversion of []*WebRTCICECandidateStats (GstWebRTCICECandidateStats**) because of unknown reason")
 
 	return goret
 }
@@ -2193,7 +2193,7 @@ func (ice *WebRTCICEInstance) GetLocalCandidates(stream WebRTCICEStream) []*WebR
 func (ice *WebRTCICEInstance) GetRemoteCandidates(stream WebRTCICEStream) []*WebRTCICECandidateStats {
 	var carg0 *C.GstWebRTCICE                // in, none, converted
 	var carg1 *C.GstWebRTCICEStream          // in, none, converted
-	var cret  **C.GstWebRTCICECandidateStats // return, transfer: full, C Pointers: 2, Name: array[WebRTCICECandidateStats], scope: , array (inner: *typesystem.Record, zero-terminated)
+	var cret  **C.GstWebRTCICECandidateStats // return, transfer: full, C Pointers: 2, Name: array[WebRTCICECandidateStats], scope: , array (inner GstWebRTCICECandidateStats* (*typesystem.Record), zero-terminated)
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
@@ -2206,7 +2206,7 @@ func (ice *WebRTCICEInstance) GetRemoteCandidates(stream WebRTCICEStream) []*Web
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []*WebRTCICECandidateStats (GstWebRTCICECandidateStats**)")
+	panic("unimplemented conversion of []*WebRTCICECandidateStats (GstWebRTCICECandidateStats**) because of unknown reason")
 
 	return goret
 }
@@ -2408,7 +2408,7 @@ func (ice *WebRTCICEInstance) SetOnIceCandidate(fn WebRTCICEOnCandidateFunc) {
 	var carg3 C.GDestroyNotify              // implicit
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
-	carg1 = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICEOnCandidateFunc)
+	carg1 = (*[0]byte)(C._goglib_gstwebrtc1_WebRTCICEOnCandidateFunc)
 	carg2 = C.gpointer(userdata.Register(fn))
 	carg3 = (C.GDestroyNotify)((*[0]byte)(C.destroyUserdata))
 
@@ -2694,10 +2694,10 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 	pclass := (*C.GstWebRTCICEClass)(gclass)
 
 	if overrides.AddCandidate != nil {
-		pclass.add_candidate = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_add_candidate)
+		pclass.add_candidate = (*[0]byte)(C._goglib_gstwebrtc1_WebRTCICE_add_candidate)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstwebrtc1_WebRTCICE_add_candidate",
+			"_goglib_gstwebrtc1_WebRTCICE_add_candidate",
 			func(carg0 *C.GstWebRTCICE, carg1 *C.GstWebRTCICEStream, carg2 *C.gchar, carg3 *C.GstPromise) {
 				var ice       Instance        // go GstWebRTCICE subclass
 				var stream    WebRTCICEStream // in, none, converted
@@ -2717,10 +2717,10 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.AddStream != nil {
-		pclass.add_stream = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_add_stream)
+		pclass.add_stream = (*[0]byte)(C._goglib_gstwebrtc1_WebRTCICE_add_stream)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstwebrtc1_WebRTCICE_add_stream",
+			"_goglib_gstwebrtc1_WebRTCICE_add_stream",
 			func(carg0 *C.GstWebRTCICE, carg1 C.guint) (cret *C.GstWebRTCICEStream) {
 				var ice       Instance        // go GstWebRTCICE subclass
 				var sessionId uint            // in, none, casted
@@ -2741,10 +2741,10 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.AddTurnServer != nil {
-		pclass.add_turn_server = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_add_turn_server)
+		pclass.add_turn_server = (*[0]byte)(C._goglib_gstwebrtc1_WebRTCICE_add_turn_server)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstwebrtc1_WebRTCICE_add_turn_server",
+			"_goglib_gstwebrtc1_WebRTCICE_add_turn_server",
 			func(carg0 *C.GstWebRTCICE, carg1 *C.gchar) (cret C.gboolean) {
 				var ice   Instance // go GstWebRTCICE subclass
 				var uri   string   // in, none, string
@@ -2765,10 +2765,10 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.FindTransport != nil {
-		pclass.find_transport = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_find_transport)
+		pclass.find_transport = (*[0]byte)(C._goglib_gstwebrtc1_WebRTCICE_find_transport)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstwebrtc1_WebRTCICE_find_transport",
+			"_goglib_gstwebrtc1_WebRTCICE_find_transport",
 			func(carg0 *C.GstWebRTCICE, carg1 *C.GstWebRTCICEStream, carg2 C.GstWebRTCICEComponent) (cret *C.GstWebRTCICETransport) {
 				var ice       Instance           // go GstWebRTCICE subclass
 				var stream    WebRTCICEStream    // in, none, converted
@@ -2791,10 +2791,10 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.GatherCandidates != nil {
-		pclass.gather_candidates = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_gather_candidates)
+		pclass.gather_candidates = (*[0]byte)(C._goglib_gstwebrtc1_WebRTCICE_gather_candidates)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstwebrtc1_WebRTCICE_gather_candidates",
+			"_goglib_gstwebrtc1_WebRTCICE_gather_candidates",
 			func(carg0 *C.GstWebRTCICE, carg1 *C.GstWebRTCICEStream) (cret C.gboolean) {
 				var ice    Instance        // go GstWebRTCICE subclass
 				var stream WebRTCICEStream // in, none, converted
@@ -2815,10 +2815,10 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.GetHttpProxy != nil {
-		pclass.get_http_proxy = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_get_http_proxy)
+		pclass.get_http_proxy = (*[0]byte)(C._goglib_gstwebrtc1_WebRTCICE_get_http_proxy)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstwebrtc1_WebRTCICE_get_http_proxy",
+			"_goglib_gstwebrtc1_WebRTCICE_get_http_proxy",
 			func(carg0 *C.GstWebRTCICE) (cret *C.gchar) {
 				var ice   Instance // go GstWebRTCICE subclass
 				var goret string   // return, full, string
@@ -2835,10 +2835,10 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.GetIsController != nil {
-		pclass.get_is_controller = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_get_is_controller)
+		pclass.get_is_controller = (*[0]byte)(C._goglib_gstwebrtc1_WebRTCICE_get_is_controller)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstwebrtc1_WebRTCICE_get_is_controller",
+			"_goglib_gstwebrtc1_WebRTCICE_get_is_controller",
 			func(carg0 *C.GstWebRTCICE) (cret C.gboolean) {
 				var ice   Instance // go GstWebRTCICE subclass
 				var goret bool     // return
@@ -2857,10 +2857,10 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.GetSelectedPair != nil {
-		pclass.get_selected_pair = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_get_selected_pair)
+		pclass.get_selected_pair = (*[0]byte)(C._goglib_gstwebrtc1_WebRTCICE_get_selected_pair)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstwebrtc1_WebRTCICE_get_selected_pair",
+			"_goglib_gstwebrtc1_WebRTCICE_get_selected_pair",
 			func(carg0 *C.GstWebRTCICE, carg1 *C.GstWebRTCICEStream, carg2 **C.GstWebRTCICECandidateStats, carg3 **C.GstWebRTCICECandidateStats) (cret C.gboolean) {
 				var ice         Instance                 // go GstWebRTCICE subclass
 				var stream      WebRTCICEStream          // in, none, converted
@@ -2885,10 +2885,10 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.GetStunServer != nil {
-		pclass.get_stun_server = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_get_stun_server)
+		pclass.get_stun_server = (*[0]byte)(C._goglib_gstwebrtc1_WebRTCICE_get_stun_server)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstwebrtc1_WebRTCICE_get_stun_server",
+			"_goglib_gstwebrtc1_WebRTCICE_get_stun_server",
 			func(carg0 *C.GstWebRTCICE) (cret *C.gchar) {
 				var ice   Instance // go GstWebRTCICE subclass
 				var goret string   // return, full, string, nullable-string
@@ -2907,10 +2907,10 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.GetTurnServer != nil {
-		pclass.get_turn_server = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_get_turn_server)
+		pclass.get_turn_server = (*[0]byte)(C._goglib_gstwebrtc1_WebRTCICE_get_turn_server)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstwebrtc1_WebRTCICE_get_turn_server",
+			"_goglib_gstwebrtc1_WebRTCICE_get_turn_server",
 			func(carg0 *C.GstWebRTCICE) (cret *C.gchar) {
 				var ice   Instance // go GstWebRTCICE subclass
 				var goret string   // return, full, string, nullable-string
@@ -2929,10 +2929,10 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.SetForceRelay != nil {
-		pclass.set_force_relay = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_set_force_relay)
+		pclass.set_force_relay = (*[0]byte)(C._goglib_gstwebrtc1_WebRTCICE_set_force_relay)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstwebrtc1_WebRTCICE_set_force_relay",
+			"_goglib_gstwebrtc1_WebRTCICE_set_force_relay",
 			func(carg0 *C.GstWebRTCICE, carg1 C.gboolean) {
 				var ice        Instance // go GstWebRTCICE subclass
 				var forceRelay bool     // in
@@ -2948,10 +2948,10 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.SetHttpProxy != nil {
-		pclass.set_http_proxy = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_set_http_proxy)
+		pclass.set_http_proxy = (*[0]byte)(C._goglib_gstwebrtc1_WebRTCICE_set_http_proxy)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstwebrtc1_WebRTCICE_set_http_proxy",
+			"_goglib_gstwebrtc1_WebRTCICE_set_http_proxy",
 			func(carg0 *C.GstWebRTCICE, carg1 *C.gchar) {
 				var ice Instance // go GstWebRTCICE subclass
 				var uri string   // in, none, string
@@ -2965,10 +2965,10 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.SetIsController != nil {
-		pclass.set_is_controller = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_set_is_controller)
+		pclass.set_is_controller = (*[0]byte)(C._goglib_gstwebrtc1_WebRTCICE_set_is_controller)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstwebrtc1_WebRTCICE_set_is_controller",
+			"_goglib_gstwebrtc1_WebRTCICE_set_is_controller",
 			func(carg0 *C.GstWebRTCICE, carg1 C.gboolean) {
 				var ice        Instance // go GstWebRTCICE subclass
 				var controller bool     // in
@@ -2984,10 +2984,10 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.SetLocalCredentials != nil {
-		pclass.set_local_credentials = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_set_local_credentials)
+		pclass.set_local_credentials = (*[0]byte)(C._goglib_gstwebrtc1_WebRTCICE_set_local_credentials)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstwebrtc1_WebRTCICE_set_local_credentials",
+			"_goglib_gstwebrtc1_WebRTCICE_set_local_credentials",
 			func(carg0 *C.GstWebRTCICE, carg1 *C.GstWebRTCICEStream, carg2 *C.gchar, carg3 *C.gchar) (cret C.gboolean) {
 				var ice    Instance        // go GstWebRTCICE subclass
 				var stream WebRTCICEStream // in, none, converted
@@ -3012,10 +3012,10 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.SetRemoteCredentials != nil {
-		pclass.set_remote_credentials = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_set_remote_credentials)
+		pclass.set_remote_credentials = (*[0]byte)(C._goglib_gstwebrtc1_WebRTCICE_set_remote_credentials)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstwebrtc1_WebRTCICE_set_remote_credentials",
+			"_goglib_gstwebrtc1_WebRTCICE_set_remote_credentials",
 			func(carg0 *C.GstWebRTCICE, carg1 *C.GstWebRTCICEStream, carg2 *C.gchar, carg3 *C.gchar) (cret C.gboolean) {
 				var ice    Instance        // go GstWebRTCICE subclass
 				var stream WebRTCICEStream // in, none, converted
@@ -3040,10 +3040,10 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.SetStunServer != nil {
-		pclass.set_stun_server = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_set_stun_server)
+		pclass.set_stun_server = (*[0]byte)(C._goglib_gstwebrtc1_WebRTCICE_set_stun_server)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstwebrtc1_WebRTCICE_set_stun_server",
+			"_goglib_gstwebrtc1_WebRTCICE_set_stun_server",
 			func(carg0 *C.GstWebRTCICE, carg1 *C.gchar) {
 				var ice Instance // go GstWebRTCICE subclass
 				var uri string   // in, none, string, nullable-string
@@ -3059,10 +3059,10 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.SetTos != nil {
-		pclass.set_tos = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_set_tos)
+		pclass.set_tos = (*[0]byte)(C._goglib_gstwebrtc1_WebRTCICE_set_tos)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstwebrtc1_WebRTCICE_set_tos",
+			"_goglib_gstwebrtc1_WebRTCICE_set_tos",
 			func(carg0 *C.GstWebRTCICE, carg1 *C.GstWebRTCICEStream, carg2 C.guint) {
 				var ice    Instance        // go GstWebRTCICE subclass
 				var stream WebRTCICEStream // in, none, converted
@@ -3078,10 +3078,10 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 	}
 
 	if overrides.SetTurnServer != nil {
-		pclass.set_turn_server = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_set_turn_server)
+		pclass.set_turn_server = (*[0]byte)(C._goglib_gstwebrtc1_WebRTCICE_set_turn_server)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstwebrtc1_WebRTCICE_set_turn_server",
+			"_goglib_gstwebrtc1_WebRTCICE_set_turn_server",
 			func(carg0 *C.GstWebRTCICE, carg1 *C.gchar) {
 				var ice Instance // go GstWebRTCICE subclass
 				var uri string   // in, none, string, nullable-string
@@ -3121,7 +3121,7 @@ func (ice *WebRTCICEInstance) ParentAddCandidate(stream WebRTCICEStream, candida
 		carg3 = (*C.GstPromise)(gst.UnsafePromiseToGlibNone(promise))
 	}
 
-	C._gotk4_gstwebrtc1_WebRTCICE_virtual_add_candidate(unsafe.Pointer(parentclass.add_candidate), carg0, carg1, carg2, carg3)
+	C._goglib_gstwebrtc1_WebRTCICE_virtual_add_candidate(unsafe.Pointer(parentclass.add_candidate), carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(ice)
 	runtime.KeepAlive(stream)
 	runtime.KeepAlive(candidate)
@@ -3148,7 +3148,7 @@ func (ice *WebRTCICEInstance) ParentAddStream(sessionId uint) WebRTCICEStream {
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = C.guint(sessionId)
 
-	cret = C._gotk4_gstwebrtc1_WebRTCICE_virtual_add_stream(unsafe.Pointer(parentclass.add_stream), carg0, carg1)
+	cret = C._goglib_gstwebrtc1_WebRTCICE_virtual_add_stream(unsafe.Pointer(parentclass.add_stream), carg0, carg1)
 	runtime.KeepAlive(ice)
 	runtime.KeepAlive(sessionId)
 
@@ -3182,7 +3182,7 @@ func (ice *WebRTCICEInstance) ParentAddTurnServer(uri string) bool {
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
 	defer C.free(unsafe.Pointer(carg1))
 
-	cret = C._gotk4_gstwebrtc1_WebRTCICE_virtual_add_turn_server(unsafe.Pointer(parentclass.add_turn_server), carg0, carg1)
+	cret = C._goglib_gstwebrtc1_WebRTCICE_virtual_add_turn_server(unsafe.Pointer(parentclass.add_turn_server), carg0, carg1)
 	runtime.KeepAlive(ice)
 	runtime.KeepAlive(uri)
 
@@ -3218,7 +3218,7 @@ func (ice *WebRTCICEInstance) ParentFindTransport(stream WebRTCICEStream, compon
 	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
 	carg2 = C.GstWebRTCICEComponent(component)
 
-	cret = C._gotk4_gstwebrtc1_WebRTCICE_virtual_find_transport(unsafe.Pointer(parentclass.find_transport), carg0, carg1, carg2)
+	cret = C._goglib_gstwebrtc1_WebRTCICE_virtual_find_transport(unsafe.Pointer(parentclass.find_transport), carg0, carg1, carg2)
 	runtime.KeepAlive(ice)
 	runtime.KeepAlive(stream)
 	runtime.KeepAlive(component)
@@ -3252,7 +3252,7 @@ func (ice *WebRTCICEInstance) ParentGatherCandidates(stream WebRTCICEStream) boo
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
 
-	cret = C._gotk4_gstwebrtc1_WebRTCICE_virtual_gather_candidates(unsafe.Pointer(parentclass.gather_candidates), carg0, carg1)
+	cret = C._goglib_gstwebrtc1_WebRTCICE_virtual_gather_candidates(unsafe.Pointer(parentclass.gather_candidates), carg0, carg1)
 	runtime.KeepAlive(ice)
 	runtime.KeepAlive(stream)
 
@@ -3281,7 +3281,7 @@ func (ice *WebRTCICEInstance) ParentGetHttpProxy() string {
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 
-	cret = C._gotk4_gstwebrtc1_WebRTCICE_virtual_get_http_proxy(unsafe.Pointer(parentclass.get_http_proxy), carg0)
+	cret = C._goglib_gstwebrtc1_WebRTCICE_virtual_get_http_proxy(unsafe.Pointer(parentclass.get_http_proxy), carg0)
 	runtime.KeepAlive(ice)
 
 	var goret string
@@ -3306,7 +3306,7 @@ func (ice *WebRTCICEInstance) ParentGetIsController() bool {
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 
-	cret = C._gotk4_gstwebrtc1_WebRTCICE_virtual_get_is_controller(unsafe.Pointer(parentclass.get_is_controller), carg0)
+	cret = C._goglib_gstwebrtc1_WebRTCICE_virtual_get_is_controller(unsafe.Pointer(parentclass.get_is_controller), carg0)
 	runtime.KeepAlive(ice)
 
 	var goret bool
@@ -3342,7 +3342,7 @@ func (ice *WebRTCICEInstance) ParentGetSelectedPair(stream WebRTCICEStream) (*We
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
 
-	cret = C._gotk4_gstwebrtc1_WebRTCICE_virtual_get_selected_pair(unsafe.Pointer(parentclass.get_selected_pair), carg0, carg1, &carg2, &carg3)
+	cret = C._goglib_gstwebrtc1_WebRTCICE_virtual_get_selected_pair(unsafe.Pointer(parentclass.get_selected_pair), carg0, carg1, &carg2, &carg3)
 	runtime.KeepAlive(ice)
 	runtime.KeepAlive(stream)
 
@@ -3373,7 +3373,7 @@ func (ice *WebRTCICEInstance) ParentGetStunServer() string {
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 
-	cret = C._gotk4_gstwebrtc1_WebRTCICE_virtual_get_stun_server(unsafe.Pointer(parentclass.get_stun_server), carg0)
+	cret = C._goglib_gstwebrtc1_WebRTCICE_virtual_get_stun_server(unsafe.Pointer(parentclass.get_stun_server), carg0)
 	runtime.KeepAlive(ice)
 
 	var goret string
@@ -3400,7 +3400,7 @@ func (ice *WebRTCICEInstance) ParentGetTurnServer() string {
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 
-	cret = C._gotk4_gstwebrtc1_WebRTCICE_virtual_get_turn_server(unsafe.Pointer(parentclass.get_turn_server), carg0)
+	cret = C._goglib_gstwebrtc1_WebRTCICE_virtual_get_turn_server(unsafe.Pointer(parentclass.get_turn_server), carg0)
 	runtime.KeepAlive(ice)
 
 	var goret string
@@ -3430,7 +3430,7 @@ func (ice *WebRTCICEInstance) ParentSetForceRelay(forceRelay bool) {
 		carg1 = C.TRUE
 	}
 
-	C._gotk4_gstwebrtc1_WebRTCICE_virtual_set_force_relay(unsafe.Pointer(parentclass.set_force_relay), carg0, carg1)
+	C._goglib_gstwebrtc1_WebRTCICE_virtual_set_force_relay(unsafe.Pointer(parentclass.set_force_relay), carg0, carg1)
 	runtime.KeepAlive(ice)
 	runtime.KeepAlive(forceRelay)
 }
@@ -3454,7 +3454,7 @@ func (ice *WebRTCICEInstance) ParentSetHttpProxy(uri string) {
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
 	defer C.free(unsafe.Pointer(carg1))
 
-	C._gotk4_gstwebrtc1_WebRTCICE_virtual_set_http_proxy(unsafe.Pointer(parentclass.set_http_proxy), carg0, carg1)
+	C._goglib_gstwebrtc1_WebRTCICE_virtual_set_http_proxy(unsafe.Pointer(parentclass.set_http_proxy), carg0, carg1)
 	runtime.KeepAlive(ice)
 	runtime.KeepAlive(uri)
 }
@@ -3476,7 +3476,7 @@ func (ice *WebRTCICEInstance) ParentSetIsController(controller bool) {
 		carg1 = C.TRUE
 	}
 
-	C._gotk4_gstwebrtc1_WebRTCICE_virtual_set_is_controller(unsafe.Pointer(parentclass.set_is_controller), carg0, carg1)
+	C._goglib_gstwebrtc1_WebRTCICE_virtual_set_is_controller(unsafe.Pointer(parentclass.set_is_controller), carg0, carg1)
 	runtime.KeepAlive(ice)
 	runtime.KeepAlive(controller)
 }
@@ -3509,7 +3509,7 @@ func (ice *WebRTCICEInstance) ParentSetLocalCredentials(stream WebRTCICEStream, 
 	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(pwd)))
 	defer C.free(unsafe.Pointer(carg3))
 
-	cret = C._gotk4_gstwebrtc1_WebRTCICE_virtual_set_local_credentials(unsafe.Pointer(parentclass.set_local_credentials), carg0, carg1, carg2, carg3)
+	cret = C._goglib_gstwebrtc1_WebRTCICE_virtual_set_local_credentials(unsafe.Pointer(parentclass.set_local_credentials), carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(ice)
 	runtime.KeepAlive(stream)
 	runtime.KeepAlive(ufrag)
@@ -3552,7 +3552,7 @@ func (ice *WebRTCICEInstance) ParentSetRemoteCredentials(stream WebRTCICEStream,
 	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(pwd)))
 	defer C.free(unsafe.Pointer(carg3))
 
-	cret = C._gotk4_gstwebrtc1_WebRTCICE_virtual_set_remote_credentials(unsafe.Pointer(parentclass.set_remote_credentials), carg0, carg1, carg2, carg3)
+	cret = C._goglib_gstwebrtc1_WebRTCICE_virtual_set_remote_credentials(unsafe.Pointer(parentclass.set_remote_credentials), carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(ice)
 	runtime.KeepAlive(stream)
 	runtime.KeepAlive(ufrag)
@@ -3585,7 +3585,7 @@ func (ice *WebRTCICEInstance) ParentSetStunServer(uri string) {
 		defer C.free(unsafe.Pointer(carg1))
 	}
 
-	C._gotk4_gstwebrtc1_WebRTCICE_virtual_set_stun_server(unsafe.Pointer(parentclass.set_stun_server), carg0, carg1)
+	C._goglib_gstwebrtc1_WebRTCICE_virtual_set_stun_server(unsafe.Pointer(parentclass.set_stun_server), carg0, carg1)
 	runtime.KeepAlive(ice)
 	runtime.KeepAlive(uri)
 }
@@ -3608,7 +3608,7 @@ func (ice *WebRTCICEInstance) ParentSetTos(stream WebRTCICEStream, tos uint) {
 	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
 	carg2 = C.guint(tos)
 
-	C._gotk4_gstwebrtc1_WebRTCICE_virtual_set_tos(unsafe.Pointer(parentclass.set_tos), carg0, carg1, carg2)
+	C._goglib_gstwebrtc1_WebRTCICE_virtual_set_tos(unsafe.Pointer(parentclass.set_tos), carg0, carg1, carg2)
 	runtime.KeepAlive(ice)
 	runtime.KeepAlive(stream)
 	runtime.KeepAlive(tos)
@@ -3632,7 +3632,7 @@ func (ice *WebRTCICEInstance) ParentSetTurnServer(uri string) {
 		defer C.free(unsafe.Pointer(carg1))
 	}
 
-	C._gotk4_gstwebrtc1_WebRTCICE_virtual_set_turn_server(unsafe.Pointer(parentclass.set_turn_server), carg0, carg1)
+	C._goglib_gstwebrtc1_WebRTCICE_virtual_set_turn_server(unsafe.Pointer(parentclass.set_turn_server), carg0, carg1)
 	runtime.KeepAlive(ice)
 	runtime.KeepAlive(uri)
 }
@@ -3852,10 +3852,10 @@ func UnsafeApplyWebRTCICEStreamOverrides[Instance WebRTCICEStream](gclass unsafe
 	pclass := (*C.GstWebRTCICEStreamClass)(gclass)
 
 	if overrides.FindTransport != nil {
-		pclass.find_transport = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICEStream_find_transport)
+		pclass.find_transport = (*[0]byte)(C._goglib_gstwebrtc1_WebRTCICEStream_find_transport)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstwebrtc1_WebRTCICEStream_find_transport",
+			"_goglib_gstwebrtc1_WebRTCICEStream_find_transport",
 			func(carg0 *C.GstWebRTCICEStream, carg1 C.GstWebRTCICEComponent) (cret *C.GstWebRTCICETransport) {
 				var stream    Instance           // go GstWebRTCICEStream subclass
 				var component WebRTCICEComponent // in, none, casted
@@ -3876,10 +3876,10 @@ func UnsafeApplyWebRTCICEStreamOverrides[Instance WebRTCICEStream](gclass unsafe
 	}
 
 	if overrides.GatherCandidates != nil {
-		pclass.gather_candidates = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICEStream_gather_candidates)
+		pclass.gather_candidates = (*[0]byte)(C._goglib_gstwebrtc1_WebRTCICEStream_gather_candidates)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstwebrtc1_WebRTCICEStream_gather_candidates",
+			"_goglib_gstwebrtc1_WebRTCICEStream_gather_candidates",
 			func(carg0 *C.GstWebRTCICEStream) (cret C.gboolean) {
 				var ice   Instance // go GstWebRTCICEStream subclass
 				var goret bool     // return
@@ -3918,7 +3918,7 @@ func (stream *WebRTCICEStreamInstance) ParentFindTransport(component WebRTCICECo
 	carg0 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
 	carg1 = C.GstWebRTCICEComponent(component)
 
-	cret = C._gotk4_gstwebrtc1_WebRTCICEStream_virtual_find_transport(unsafe.Pointer(parentclass.find_transport), carg0, carg1)
+	cret = C._goglib_gstwebrtc1_WebRTCICEStream_virtual_find_transport(unsafe.Pointer(parentclass.find_transport), carg0, carg1)
 	runtime.KeepAlive(stream)
 	runtime.KeepAlive(component)
 
@@ -3945,7 +3945,7 @@ func (ice *WebRTCICEStreamInstance) ParentGatherCandidates() bool {
 
 	carg0 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(ice))
 
-	cret = C._gotk4_gstwebrtc1_WebRTCICEStream_virtual_gather_candidates(unsafe.Pointer(parentclass.gather_candidates), carg0)
+	cret = C._goglib_gstwebrtc1_WebRTCICEStream_virtual_gather_candidates(unsafe.Pointer(parentclass.gather_candidates), carg0)
 	runtime.KeepAlive(ice)
 
 	var goret bool
@@ -4188,10 +4188,10 @@ func UnsafeApplyWebRTCICETransportOverrides[Instance WebRTCICETransport](gclass 
 	pclass := (*C.GstWebRTCICETransportClass)(gclass)
 
 	if overrides.GatherCandidates != nil {
-		pclass.gather_candidates = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICETransport_gather_candidates)
+		pclass.gather_candidates = (*[0]byte)(C._goglib_gstwebrtc1_WebRTCICETransport_gather_candidates)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
-			"_gotk4_gstwebrtc1_WebRTCICETransport_gather_candidates",
+			"_goglib_gstwebrtc1_WebRTCICETransport_gather_candidates",
 			func(carg0 *C.GstWebRTCICETransport) (cret C.gboolean) {
 				var transport Instance // go GstWebRTCICETransport subclass
 				var goret     bool     // return
@@ -4224,7 +4224,7 @@ func (transport *WebRTCICETransportInstance) ParentGatherCandidates() bool {
 
 	carg0 = (*C.GstWebRTCICETransport)(UnsafeWebRTCICETransportToGlibNone(transport))
 
-	cret = C._gotk4_gstwebrtc1_WebRTCICETransport_virtual_gather_candidates(unsafe.Pointer(parentclass.gather_candidates), carg0)
+	cret = C._goglib_gstwebrtc1_WebRTCICETransport_virtual_gather_candidates(unsafe.Pointer(parentclass.gather_candidates), carg0)
 	runtime.KeepAlive(transport)
 
 	var goret bool

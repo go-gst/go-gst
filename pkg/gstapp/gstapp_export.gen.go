@@ -5,175 +5,175 @@ package gstapp
 import (
 	"unsafe"
 
-	"github.com/diamondburned/gotk4/pkg/core/classdata"
+	"github.com/go-gst/go-glib/pkg/core/classdata"
 )
 
 // #include <gst/app/app.h>
 import "C"
 
-//export _gotk4_gstapp1_AppSink_eos
-func _gotk4_gstapp1_AppSink_eos(carg0 *C.GstAppSink) {
+//export _goglib_gstapp1_AppSink_eos
+func _goglib_gstapp1_AppSink_eos(carg0 *C.GstAppSink) {
 	var fn func(carg0 *C.GstAppSink)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstapp1_AppSink_eos").(func(carg0 *C.GstAppSink))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstapp1_AppSink_eos").(func(carg0 *C.GstAppSink))
 		if fn == nil {
-			panic("_gotk4_gstapp1_AppSink_eos: no function pointer found")
+			panic("_goglib_gstapp1_AppSink_eos: no function pointer found")
 		}
 	}
 	fn(carg0)
 }
 
-//export _gotk4_gstapp1_AppSink_new_preroll
-func _gotk4_gstapp1_AppSink_new_preroll(carg0 *C.GstAppSink) (cret C.GstFlowReturn) {
+//export _goglib_gstapp1_AppSink_new_preroll
+func _goglib_gstapp1_AppSink_new_preroll(carg0 *C.GstAppSink) (cret C.GstFlowReturn) {
 	var fn func(carg0 *C.GstAppSink) (cret C.GstFlowReturn)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstapp1_AppSink_new_preroll").(func(carg0 *C.GstAppSink) (cret C.GstFlowReturn))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstapp1_AppSink_new_preroll").(func(carg0 *C.GstAppSink) (cret C.GstFlowReturn))
 		if fn == nil {
-			panic("_gotk4_gstapp1_AppSink_new_preroll: no function pointer found")
+			panic("_goglib_gstapp1_AppSink_new_preroll: no function pointer found")
 		}
 	}
 	return fn(carg0)
 }
 
-//export _gotk4_gstapp1_AppSink_new_sample
-func _gotk4_gstapp1_AppSink_new_sample(carg0 *C.GstAppSink) (cret C.GstFlowReturn) {
+//export _goglib_gstapp1_AppSink_new_sample
+func _goglib_gstapp1_AppSink_new_sample(carg0 *C.GstAppSink) (cret C.GstFlowReturn) {
 	var fn func(carg0 *C.GstAppSink) (cret C.GstFlowReturn)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstapp1_AppSink_new_sample").(func(carg0 *C.GstAppSink) (cret C.GstFlowReturn))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstapp1_AppSink_new_sample").(func(carg0 *C.GstAppSink) (cret C.GstFlowReturn))
 		if fn == nil {
-			panic("_gotk4_gstapp1_AppSink_new_sample: no function pointer found")
+			panic("_goglib_gstapp1_AppSink_new_sample: no function pointer found")
 		}
 	}
 	return fn(carg0)
 }
 
-//export _gotk4_gstapp1_AppSink_pull_preroll
-func _gotk4_gstapp1_AppSink_pull_preroll(carg0 *C.GstAppSink) (cret *C.GstSample) {
+//export _goglib_gstapp1_AppSink_pull_preroll
+func _goglib_gstapp1_AppSink_pull_preroll(carg0 *C.GstAppSink) (cret *C.GstSample) {
 	var fn func(carg0 *C.GstAppSink) (cret *C.GstSample)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstapp1_AppSink_pull_preroll").(func(carg0 *C.GstAppSink) (cret *C.GstSample))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstapp1_AppSink_pull_preroll").(func(carg0 *C.GstAppSink) (cret *C.GstSample))
 		if fn == nil {
-			panic("_gotk4_gstapp1_AppSink_pull_preroll: no function pointer found")
+			panic("_goglib_gstapp1_AppSink_pull_preroll: no function pointer found")
 		}
 	}
 	return fn(carg0)
 }
 
-//export _gotk4_gstapp1_AppSink_pull_sample
-func _gotk4_gstapp1_AppSink_pull_sample(carg0 *C.GstAppSink) (cret *C.GstSample) {
+//export _goglib_gstapp1_AppSink_pull_sample
+func _goglib_gstapp1_AppSink_pull_sample(carg0 *C.GstAppSink) (cret *C.GstSample) {
 	var fn func(carg0 *C.GstAppSink) (cret *C.GstSample)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstapp1_AppSink_pull_sample").(func(carg0 *C.GstAppSink) (cret *C.GstSample))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstapp1_AppSink_pull_sample").(func(carg0 *C.GstAppSink) (cret *C.GstSample))
 		if fn == nil {
-			panic("_gotk4_gstapp1_AppSink_pull_sample: no function pointer found")
+			panic("_goglib_gstapp1_AppSink_pull_sample: no function pointer found")
 		}
 	}
 	return fn(carg0)
 }
 
-//export _gotk4_gstapp1_AppSink_try_pull_preroll
-func _gotk4_gstapp1_AppSink_try_pull_preroll(carg0 *C.GstAppSink, carg1 C.GstClockTime) (cret *C.GstSample) {
+//export _goglib_gstapp1_AppSink_try_pull_preroll
+func _goglib_gstapp1_AppSink_try_pull_preroll(carg0 *C.GstAppSink, carg1 C.GstClockTime) (cret *C.GstSample) {
 	var fn func(carg0 *C.GstAppSink, carg1 C.GstClockTime) (cret *C.GstSample)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstapp1_AppSink_try_pull_preroll").(func(carg0 *C.GstAppSink, carg1 C.GstClockTime) (cret *C.GstSample))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstapp1_AppSink_try_pull_preroll").(func(carg0 *C.GstAppSink, carg1 C.GstClockTime) (cret *C.GstSample))
 		if fn == nil {
-			panic("_gotk4_gstapp1_AppSink_try_pull_preroll: no function pointer found")
+			panic("_goglib_gstapp1_AppSink_try_pull_preroll: no function pointer found")
 		}
 	}
 	return fn(carg0, carg1)
 }
 
-//export _gotk4_gstapp1_AppSink_try_pull_sample
-func _gotk4_gstapp1_AppSink_try_pull_sample(carg0 *C.GstAppSink, carg1 C.GstClockTime) (cret *C.GstSample) {
+//export _goglib_gstapp1_AppSink_try_pull_sample
+func _goglib_gstapp1_AppSink_try_pull_sample(carg0 *C.GstAppSink, carg1 C.GstClockTime) (cret *C.GstSample) {
 	var fn func(carg0 *C.GstAppSink, carg1 C.GstClockTime) (cret *C.GstSample)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstapp1_AppSink_try_pull_sample").(func(carg0 *C.GstAppSink, carg1 C.GstClockTime) (cret *C.GstSample))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstapp1_AppSink_try_pull_sample").(func(carg0 *C.GstAppSink, carg1 C.GstClockTime) (cret *C.GstSample))
 		if fn == nil {
-			panic("_gotk4_gstapp1_AppSink_try_pull_sample: no function pointer found")
+			panic("_goglib_gstapp1_AppSink_try_pull_sample: no function pointer found")
 		}
 	}
 	return fn(carg0, carg1)
 }
 
-//export _gotk4_gstapp1_AppSrc_end_of_stream
-func _gotk4_gstapp1_AppSrc_end_of_stream(carg0 *C.GstAppSrc) (cret C.GstFlowReturn) {
+//export _goglib_gstapp1_AppSrc_end_of_stream
+func _goglib_gstapp1_AppSrc_end_of_stream(carg0 *C.GstAppSrc) (cret C.GstFlowReturn) {
 	var fn func(carg0 *C.GstAppSrc) (cret C.GstFlowReturn)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstapp1_AppSrc_end_of_stream").(func(carg0 *C.GstAppSrc) (cret C.GstFlowReturn))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstapp1_AppSrc_end_of_stream").(func(carg0 *C.GstAppSrc) (cret C.GstFlowReturn))
 		if fn == nil {
-			panic("_gotk4_gstapp1_AppSrc_end_of_stream: no function pointer found")
+			panic("_goglib_gstapp1_AppSrc_end_of_stream: no function pointer found")
 		}
 	}
 	return fn(carg0)
 }
 
-//export _gotk4_gstapp1_AppSrc_enough_data
-func _gotk4_gstapp1_AppSrc_enough_data(carg0 *C.GstAppSrc) {
+//export _goglib_gstapp1_AppSrc_enough_data
+func _goglib_gstapp1_AppSrc_enough_data(carg0 *C.GstAppSrc) {
 	var fn func(carg0 *C.GstAppSrc)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstapp1_AppSrc_enough_data").(func(carg0 *C.GstAppSrc))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstapp1_AppSrc_enough_data").(func(carg0 *C.GstAppSrc))
 		if fn == nil {
-			panic("_gotk4_gstapp1_AppSrc_enough_data: no function pointer found")
+			panic("_goglib_gstapp1_AppSrc_enough_data: no function pointer found")
 		}
 	}
 	fn(carg0)
 }
 
-//export _gotk4_gstapp1_AppSrc_need_data
-func _gotk4_gstapp1_AppSrc_need_data(carg0 *C.GstAppSrc, carg1 C.guint) {
+//export _goglib_gstapp1_AppSrc_need_data
+func _goglib_gstapp1_AppSrc_need_data(carg0 *C.GstAppSrc, carg1 C.guint) {
 	var fn func(carg0 *C.GstAppSrc, carg1 C.guint)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstapp1_AppSrc_need_data").(func(carg0 *C.GstAppSrc, carg1 C.guint))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstapp1_AppSrc_need_data").(func(carg0 *C.GstAppSrc, carg1 C.guint))
 		if fn == nil {
-			panic("_gotk4_gstapp1_AppSrc_need_data: no function pointer found")
+			panic("_goglib_gstapp1_AppSrc_need_data: no function pointer found")
 		}
 	}
 	fn(carg0, carg1)
 }
 
-//export _gotk4_gstapp1_AppSrc_push_buffer
-func _gotk4_gstapp1_AppSrc_push_buffer(carg0 *C.GstAppSrc, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
+//export _goglib_gstapp1_AppSrc_push_buffer
+func _goglib_gstapp1_AppSrc_push_buffer(carg0 *C.GstAppSrc, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
 	var fn func(carg0 *C.GstAppSrc, carg1 *C.GstBuffer) (cret C.GstFlowReturn)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstapp1_AppSrc_push_buffer").(func(carg0 *C.GstAppSrc, carg1 *C.GstBuffer) (cret C.GstFlowReturn))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstapp1_AppSrc_push_buffer").(func(carg0 *C.GstAppSrc, carg1 *C.GstBuffer) (cret C.GstFlowReturn))
 		if fn == nil {
-			panic("_gotk4_gstapp1_AppSrc_push_buffer: no function pointer found")
+			panic("_goglib_gstapp1_AppSrc_push_buffer: no function pointer found")
 		}
 	}
 	return fn(carg0, carg1)
 }
 
-//export _gotk4_gstapp1_AppSrc_push_buffer_list
-func _gotk4_gstapp1_AppSrc_push_buffer_list(carg0 *C.GstAppSrc, carg1 *C.GstBufferList) (cret C.GstFlowReturn) {
+//export _goglib_gstapp1_AppSrc_push_buffer_list
+func _goglib_gstapp1_AppSrc_push_buffer_list(carg0 *C.GstAppSrc, carg1 *C.GstBufferList) (cret C.GstFlowReturn) {
 	var fn func(carg0 *C.GstAppSrc, carg1 *C.GstBufferList) (cret C.GstFlowReturn)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstapp1_AppSrc_push_buffer_list").(func(carg0 *C.GstAppSrc, carg1 *C.GstBufferList) (cret C.GstFlowReturn))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstapp1_AppSrc_push_buffer_list").(func(carg0 *C.GstAppSrc, carg1 *C.GstBufferList) (cret C.GstFlowReturn))
 		if fn == nil {
-			panic("_gotk4_gstapp1_AppSrc_push_buffer_list: no function pointer found")
+			panic("_goglib_gstapp1_AppSrc_push_buffer_list: no function pointer found")
 		}
 	}
 	return fn(carg0, carg1)
 }
 
-//export _gotk4_gstapp1_AppSrc_push_sample
-func _gotk4_gstapp1_AppSrc_push_sample(carg0 *C.GstAppSrc, carg1 *C.GstSample) (cret C.GstFlowReturn) {
+//export _goglib_gstapp1_AppSrc_push_sample
+func _goglib_gstapp1_AppSrc_push_sample(carg0 *C.GstAppSrc, carg1 *C.GstSample) (cret C.GstFlowReturn) {
 	var fn func(carg0 *C.GstAppSrc, carg1 *C.GstSample) (cret C.GstFlowReturn)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstapp1_AppSrc_push_sample").(func(carg0 *C.GstAppSrc, carg1 *C.GstSample) (cret C.GstFlowReturn))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstapp1_AppSrc_push_sample").(func(carg0 *C.GstAppSrc, carg1 *C.GstSample) (cret C.GstFlowReturn))
 		if fn == nil {
-			panic("_gotk4_gstapp1_AppSrc_push_sample: no function pointer found")
+			panic("_goglib_gstapp1_AppSrc_push_sample: no function pointer found")
 		}
 	}
 	return fn(carg0, carg1)
 }
 
-//export _gotk4_gstapp1_AppSrc_seek_data
-func _gotk4_gstapp1_AppSrc_seek_data(carg0 *C.GstAppSrc, carg1 C.guint64) (cret C.gboolean) {
+//export _goglib_gstapp1_AppSrc_seek_data
+func _goglib_gstapp1_AppSrc_seek_data(carg0 *C.GstAppSrc, carg1 C.guint64) (cret C.gboolean) {
 	var fn func(carg0 *C.GstAppSrc, carg1 C.guint64) (cret C.gboolean)
 	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstapp1_AppSrc_seek_data").(func(carg0 *C.GstAppSrc, carg1 C.guint64) (cret C.gboolean))
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_goglib_gstapp1_AppSrc_seek_data").(func(carg0 *C.GstAppSrc, carg1 C.guint64) (cret C.gboolean))
 		if fn == nil {
-			panic("_gotk4_gstapp1_AppSrc_seek_data: no function pointer found")
+			panic("_goglib_gstapp1_AppSrc_seek_data: no function pointer found")
 		}
 	}
 	return fn(carg0, carg1)
