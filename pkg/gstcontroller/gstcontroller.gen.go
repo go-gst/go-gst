@@ -1587,15 +1587,8 @@ func UnsafeControlPointFromGlibNone(p unsafe.Pointer) *ControlPoint {
 		return nil
 	}
 
-	wrapped = wrapped.Copy() // create an owned copy
+	return wrapped.Copy() // create an owned copy
 
-	runtime.SetFinalizer(
-		wrapped.controlPoint,
-		func (intern *controlPoint) {
-			C.gst_control_point_free(intern.native)
-		},
-	)
-	return wrapped
 }
 
 // UnsafeControlPointFromGlibFull is used to convert raw C.GstControlPoint pointers to go while taking ownership. This is used by the bindings internally.

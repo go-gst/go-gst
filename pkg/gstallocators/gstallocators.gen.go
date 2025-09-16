@@ -3,6 +3,7 @@
 package gstallocators
 
 import (
+	"log"
 	"runtime"
 	"strings"
 	"unsafe"
@@ -1360,18 +1361,12 @@ func UnsafePhysMemoryAllocatorInterfaceFromGlibBorrow(p unsafe.Pointer) *PhysMem
 
 // UnsafePhysMemoryAllocatorInterfaceFromGlibNone is used to convert raw C.GstPhysMemoryAllocatorInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafePhysMemoryAllocatorInterfaceFromGlibNone(p unsafe.Pointer) *PhysMemoryAllocatorInterface {
-	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafePhysMemoryAllocatorInterfaceFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
 
-	runtime.SetFinalizer(
-		wrapped.physMemoryAllocatorInterface,
-		func (intern *physMemoryAllocatorInterface) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
+	log.Println("WARNING: not attaching a finalizer to PhysMemoryAllocatorInterface because no cgo ref function or copy method is available. This may leak memory. Please file an issue")
 	return wrapped
 }
 

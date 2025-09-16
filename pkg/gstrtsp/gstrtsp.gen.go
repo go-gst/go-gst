@@ -5,6 +5,7 @@ package gstrtsp
 import (
 	"context"
 	"fmt"
+	"log"
 	"runtime"
 	"strings"
 	"unsafe"
@@ -2450,18 +2451,12 @@ func UnsafeRTSPAuthCredentialFromGlibBorrow(p unsafe.Pointer) *RTSPAuthCredentia
 
 // UnsafeRTSPAuthCredentialFromGlibNone is used to convert raw C.GstRTSPAuthCredential pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPAuthCredentialFromGlibNone(p unsafe.Pointer) *RTSPAuthCredential {
-	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeRTSPAuthCredentialFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
 
-	runtime.SetFinalizer(
-		wrapped.rTSPAuthCredential,
-		func (intern *rTSPAuthCredential) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
+	log.Println("WARNING: not attaching a finalizer to RTSPAuthCredential because no cgo ref function or copy method is available. This may leak memory. Please file an issue")
 	return wrapped
 }
 
@@ -2557,15 +2552,8 @@ func UnsafeRTSPAuthParamFromGlibNone(p unsafe.Pointer) *RTSPAuthParam {
 		return nil
 	}
 
-	wrapped = wrapped.Copy() // create an owned copy
+	return wrapped.Copy() // create an owned copy
 
-	runtime.SetFinalizer(
-		wrapped.rTSPAuthParam,
-		func (intern *rTSPAuthParam) {
-			C.gst_rtsp_auth_param_free(intern.native)
-		},
-	)
-	return wrapped
 }
 
 // UnsafeRTSPAuthParamFromGlibFull is used to convert raw C.GstRTSPAuthParam pointers to go while taking ownership. This is used by the bindings internally.
@@ -2662,18 +2650,12 @@ func UnsafeRTSPConnectionFromGlibBorrow(p unsafe.Pointer) *RTSPConnection {
 
 // UnsafeRTSPConnectionFromGlibNone is used to convert raw C.GstRTSPConnection pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPConnectionFromGlibNone(p unsafe.Pointer) *RTSPConnection {
-	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeRTSPConnectionFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
 
-	runtime.SetFinalizer(
-		wrapped.rTSPConnection,
-		func (intern *rTSPConnection) {
-			C.gst_rtsp_connection_free(intern.native)
-		},
-	)
+	log.Println("WARNING: not attaching a finalizer to RTSPConnection because no cgo ref function or copy method is available. This may leak memory. Please file an issue")
 	return wrapped
 }
 
@@ -4082,18 +4064,12 @@ func UnsafeRTSPExtensionInterfaceFromGlibBorrow(p unsafe.Pointer) *RTSPExtension
 
 // UnsafeRTSPExtensionInterfaceFromGlibNone is used to convert raw C.GstRTSPExtensionInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPExtensionInterfaceFromGlibNone(p unsafe.Pointer) *RTSPExtensionInterface {
-	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeRTSPExtensionInterfaceFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
 
-	runtime.SetFinalizer(
-		wrapped.rTSPExtensionInterface,
-		func (intern *rTSPExtensionInterface) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
+	log.Println("WARNING: not attaching a finalizer to RTSPExtensionInterface because no cgo ref function or copy method is available. This may leak memory. Please file an issue")
 	return wrapped
 }
 
@@ -4184,18 +4160,12 @@ func UnsafeRTSPMessageFromGlibBorrow(p unsafe.Pointer) *RTSPMessage {
 
 // UnsafeRTSPMessageFromGlibNone is used to convert raw C.GstRTSPMessage pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPMessageFromGlibNone(p unsafe.Pointer) *RTSPMessage {
-	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeRTSPMessageFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
 
-	runtime.SetFinalizer(
-		wrapped.rTSPMessage,
-		func (intern *rTSPMessage) {
-			C.gst_rtsp_message_free(intern.native)
-		},
-	)
+	log.Println("WARNING: not attaching a finalizer to RTSPMessage because no cgo ref function or copy method is available. This may leak memory. Please file an issue")
 	return wrapped
 }
 
@@ -5167,18 +5137,12 @@ func UnsafeRTSPRangeFromGlibBorrow(p unsafe.Pointer) *RTSPRange {
 
 // UnsafeRTSPRangeFromGlibNone is used to convert raw C.GstRTSPRange pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPRangeFromGlibNone(p unsafe.Pointer) *RTSPRange {
-	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeRTSPRangeFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
 
-	runtime.SetFinalizer(
-		wrapped.rTSPRange,
-		func (intern *rTSPRange) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
+	log.Println("WARNING: not attaching a finalizer to RTSPRange because no cgo ref function or copy method is available. This may leak memory. Please file an issue")
 	return wrapped
 }
 
@@ -5408,18 +5372,12 @@ func UnsafeRTSPTimeFromGlibBorrow(p unsafe.Pointer) *RTSPTime {
 
 // UnsafeRTSPTimeFromGlibNone is used to convert raw C.GstRTSPTime pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPTimeFromGlibNone(p unsafe.Pointer) *RTSPTime {
-	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeRTSPTimeFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
 
-	runtime.SetFinalizer(
-		wrapped.rTSPTime,
-		func (intern *rTSPTime) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
+	log.Println("WARNING: not attaching a finalizer to RTSPTime because no cgo ref function or copy method is available. This may leak memory. Please file an issue")
 	return wrapped
 }
 
@@ -5495,18 +5453,12 @@ func UnsafeRTSPTime2FromGlibBorrow(p unsafe.Pointer) *RTSPTime2 {
 
 // UnsafeRTSPTime2FromGlibNone is used to convert raw C.GstRTSPTime2 pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPTime2FromGlibNone(p unsafe.Pointer) *RTSPTime2 {
-	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeRTSPTime2FromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
 
-	runtime.SetFinalizer(
-		wrapped.rTSPTime2,
-		func (intern *rTSPTime2) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
+	log.Println("WARNING: not attaching a finalizer to RTSPTime2 because no cgo ref function or copy method is available. This may leak memory. Please file an issue")
 	return wrapped
 }
 
@@ -5582,18 +5534,12 @@ func UnsafeRTSPTimeRangeFromGlibBorrow(p unsafe.Pointer) *RTSPTimeRange {
 
 // UnsafeRTSPTimeRangeFromGlibNone is used to convert raw C.GstRTSPTimeRange pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPTimeRangeFromGlibNone(p unsafe.Pointer) *RTSPTimeRange {
-	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeRTSPTimeRangeFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
 
-	runtime.SetFinalizer(
-		wrapped.rTSPTimeRange,
-		func (intern *rTSPTimeRange) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
+	log.Println("WARNING: not attaching a finalizer to RTSPTimeRange because no cgo ref function or copy method is available. This may leak memory. Please file an issue")
 	return wrapped
 }
 
@@ -5669,18 +5615,12 @@ func UnsafeRTSPTransportFromGlibBorrow(p unsafe.Pointer) *RTSPTransport {
 
 // UnsafeRTSPTransportFromGlibNone is used to convert raw C.GstRTSPTransport pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPTransportFromGlibNone(p unsafe.Pointer) *RTSPTransport {
-	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeRTSPTransportFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
 
-	runtime.SetFinalizer(
-		wrapped.rTSPTransport,
-		func (intern *rTSPTransport) {
-			C.gst_rtsp_transport_free(intern.native)
-		},
-	)
+	log.Println("WARNING: not attaching a finalizer to RTSPTransport because no cgo ref function or copy method is available. This may leak memory. Please file an issue")
 	return wrapped
 }
 
@@ -5993,15 +5933,8 @@ func UnsafeRTSPUrlFromGlibNone(p unsafe.Pointer) *RTSPUrl {
 		return nil
 	}
 
-	wrapped = wrapped.Copy() // create an owned copy
+	return wrapped.Copy() // create an owned copy
 
-	runtime.SetFinalizer(
-		wrapped.rTSPUrl,
-		func (intern *rTSPUrl) {
-			C.gst_rtsp_url_free(intern.native)
-		},
-	)
-	return wrapped
 }
 
 // UnsafeRTSPUrlFromGlibFull is used to convert raw C.GstRTSPUrl pointers to go while taking ownership. This is used by the bindings internally.
@@ -6284,18 +6217,12 @@ func UnsafeRTSPWatchFromGlibBorrow(p unsafe.Pointer) *RTSPWatch {
 
 // UnsafeRTSPWatchFromGlibNone is used to convert raw C.GstRTSPWatch pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPWatchFromGlibNone(p unsafe.Pointer) *RTSPWatch {
-	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeRTSPWatchFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
 
-	runtime.SetFinalizer(
-		wrapped.rTSPWatch,
-		func (intern *rTSPWatch) {
-			C.gst_rtsp_watch_unref(intern.native)
-		},
-	)
+	log.Println("WARNING: not attaching a finalizer to RTSPWatch because no cgo ref function or copy method is available. This may leak memory. Please file an issue")
 	return wrapped
 }
 
@@ -6665,18 +6592,12 @@ func UnsafeRTSPWatchFuncsFromGlibBorrow(p unsafe.Pointer) *RTSPWatchFuncs {
 
 // UnsafeRTSPWatchFuncsFromGlibNone is used to convert raw C.GstRTSPWatchFuncs pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPWatchFuncsFromGlibNone(p unsafe.Pointer) *RTSPWatchFuncs {
-	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeRTSPWatchFuncsFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
 
-	runtime.SetFinalizer(
-		wrapped.rTSPWatchFuncs,
-		func (intern *rTSPWatchFuncs) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
+	log.Println("WARNING: not attaching a finalizer to RTSPWatchFuncs because no cgo ref function or copy method is available. This may leak memory. Please file an issue")
 	return wrapped
 }
 

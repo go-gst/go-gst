@@ -4,6 +4,7 @@ package gstbase
 
 import (
 	"fmt"
+	"log"
 	"runtime"
 	"strings"
 	"unsafe"
@@ -18540,15 +18541,8 @@ func UnsafeBaseParseFrameFromGlibNone(p unsafe.Pointer) *BaseParseFrame {
 		return nil
 	}
 
-	wrapped = wrapped.Copy() // create an owned copy
+	return wrapped.Copy() // create an owned copy
 
-	runtime.SetFinalizer(
-		wrapped.baseParseFrame,
-		func (intern *baseParseFrame) {
-			C.gst_base_parse_frame_free(intern.native)
-		},
-	)
-	return wrapped
 }
 
 // UnsafeBaseParseFrameFromGlibFull is used to convert raw C.GstBaseParseFrame pointers to go while taking ownership. This is used by the bindings internally.
@@ -18872,18 +18866,12 @@ func UnsafeBitReaderFromGlibBorrow(p unsafe.Pointer) *BitReader {
 
 // UnsafeBitReaderFromGlibNone is used to convert raw C.GstBitReader pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeBitReaderFromGlibNone(p unsafe.Pointer) *BitReader {
-	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeBitReaderFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
 
-	runtime.SetFinalizer(
-		wrapped.bitReader,
-		func (intern *bitReader) {
-			C.gst_bit_reader_free(intern.native)
-		},
-	)
+	log.Println("WARNING: not attaching a finalizer to BitReader because no cgo ref function or copy method is available. This may leak memory. Please file an issue")
 	return wrapped
 }
 
@@ -19431,18 +19419,12 @@ func UnsafeBitWriterFromGlibBorrow(p unsafe.Pointer) *BitWriter {
 
 // UnsafeBitWriterFromGlibNone is used to convert raw C.GstBitWriter pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeBitWriterFromGlibNone(p unsafe.Pointer) *BitWriter {
-	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeBitWriterFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
 
-	runtime.SetFinalizer(
-		wrapped.bitWriter,
-		func (intern *bitWriter) {
-			C.gst_bit_writer_free(intern.native)
-		},
-	)
+	log.Println("WARNING: not attaching a finalizer to BitWriter because no cgo ref function or copy method is available. This may leak memory. Please file an issue")
 	return wrapped
 }
 
@@ -19837,18 +19819,12 @@ func UnsafeByteReaderFromGlibBorrow(p unsafe.Pointer) *ByteReader {
 
 // UnsafeByteReaderFromGlibNone is used to convert raw C.GstByteReader pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeByteReaderFromGlibNone(p unsafe.Pointer) *ByteReader {
-	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeByteReaderFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
 
-	runtime.SetFinalizer(
-		wrapped.byteReader,
-		func (intern *byteReader) {
-			C.gst_byte_reader_free(intern.native)
-		},
-	)
+	log.Println("WARNING: not attaching a finalizer to ByteReader because no cgo ref function or copy method is available. This may leak memory. Please file an issue")
 	return wrapped
 }
 
@@ -21720,18 +21696,12 @@ func UnsafeByteWriterFromGlibBorrow(p unsafe.Pointer) *ByteWriter {
 
 // UnsafeByteWriterFromGlibNone is used to convert raw C.GstByteWriter pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeByteWriterFromGlibNone(p unsafe.Pointer) *ByteWriter {
-	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeByteWriterFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
 
-	runtime.SetFinalizer(
-		wrapped.byteWriter,
-		func (intern *byteWriter) {
-			C.gst_byte_writer_free(intern.native)
-		},
-	)
+	log.Println("WARNING: not attaching a finalizer to ByteWriter because no cgo ref function or copy method is available. This may leak memory. Please file an issue")
 	return wrapped
 }
 
@@ -22941,18 +22911,12 @@ func UnsafeCollectDataFromGlibBorrow(p unsafe.Pointer) *CollectData {
 
 // UnsafeCollectDataFromGlibNone is used to convert raw C.GstCollectData pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeCollectDataFromGlibNone(p unsafe.Pointer) *CollectData {
-	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeCollectDataFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
 
-	runtime.SetFinalizer(
-		wrapped.collectData,
-		func (intern *collectData) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
+	log.Println("WARNING: not attaching a finalizer to CollectData because no cgo ref function or copy method is available. This may leak memory. Please file an issue")
 	return wrapped
 }
 

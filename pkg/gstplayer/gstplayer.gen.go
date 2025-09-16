@@ -4,6 +4,7 @@ package gstplayer
 
 import (
 	"fmt"
+	"log"
 	"runtime"
 	"unsafe"
 
@@ -4123,18 +4124,12 @@ func UnsafePlayerSignalDispatcherInterfaceFromGlibBorrow(p unsafe.Pointer) *Play
 
 // UnsafePlayerSignalDispatcherInterfaceFromGlibNone is used to convert raw C.GstPlayerSignalDispatcherInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafePlayerSignalDispatcherInterfaceFromGlibNone(p unsafe.Pointer) *PlayerSignalDispatcherInterface {
-	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafePlayerSignalDispatcherInterfaceFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
 
-	runtime.SetFinalizer(
-		wrapped.playerSignalDispatcherInterface,
-		func (intern *playerSignalDispatcherInterface) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
+	log.Println("WARNING: not attaching a finalizer to PlayerSignalDispatcherInterface because no cgo ref function or copy method is available. This may leak memory. Please file an issue")
 	return wrapped
 }
 
@@ -4416,18 +4411,12 @@ func UnsafePlayerVideoRendererInterfaceFromGlibBorrow(p unsafe.Pointer) *PlayerV
 
 // UnsafePlayerVideoRendererInterfaceFromGlibNone is used to convert raw C.GstPlayerVideoRendererInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafePlayerVideoRendererInterfaceFromGlibNone(p unsafe.Pointer) *PlayerVideoRendererInterface {
-	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafePlayerVideoRendererInterfaceFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
 
-	runtime.SetFinalizer(
-		wrapped.playerVideoRendererInterface,
-		func (intern *playerVideoRendererInterface) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
+	log.Println("WARNING: not attaching a finalizer to PlayerVideoRendererInterface because no cgo ref function or copy method is available. This may leak memory. Please file an issue")
 	return wrapped
 }
 
@@ -4523,15 +4512,8 @@ func UnsafePlayerVisualizationFromGlibNone(p unsafe.Pointer) *PlayerVisualizatio
 		return nil
 	}
 
-	wrapped = wrapped.Copy() // create an owned copy
+	return wrapped.Copy() // create an owned copy
 
-	runtime.SetFinalizer(
-		wrapped.playerVisualization,
-		func (intern *playerVisualization) {
-			C.gst_player_visualization_free(intern.native)
-		},
-	)
-	return wrapped
 }
 
 // UnsafePlayerVisualizationFromGlibFull is used to convert raw C.GstPlayerVisualization pointers to go while taking ownership. This is used by the bindings internally.

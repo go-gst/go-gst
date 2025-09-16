@@ -3,6 +3,7 @@
 package gstnet
 
 import (
+	"log"
 	"runtime"
 	"unsafe"
 
@@ -1158,18 +1159,12 @@ func UnsafeNetAddressMetaFromGlibBorrow(p unsafe.Pointer) *NetAddressMeta {
 
 // UnsafeNetAddressMetaFromGlibNone is used to convert raw C.GstNetAddressMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeNetAddressMetaFromGlibNone(p unsafe.Pointer) *NetAddressMeta {
-	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeNetAddressMetaFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
 
-	runtime.SetFinalizer(
-		wrapped.netAddressMeta,
-		func (intern *netAddressMeta) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
+	log.Println("WARNING: not attaching a finalizer to NetAddressMeta because no cgo ref function or copy method is available. This may leak memory. Please file an issue")
 	return wrapped
 }
 
@@ -1318,18 +1313,12 @@ func UnsafeNetControlMessageMetaFromGlibBorrow(p unsafe.Pointer) *NetControlMess
 
 // UnsafeNetControlMessageMetaFromGlibNone is used to convert raw C.GstNetControlMessageMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeNetControlMessageMetaFromGlibNone(p unsafe.Pointer) *NetControlMessageMeta {
-	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeNetControlMessageMetaFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
 
-	runtime.SetFinalizer(
-		wrapped.netControlMessageMeta,
-		func (intern *netControlMessageMeta) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
+	log.Println("WARNING: not attaching a finalizer to NetControlMessageMeta because no cgo ref function or copy method is available. This may leak memory. Please file an issue")
 	return wrapped
 }
 
@@ -1443,15 +1432,8 @@ func UnsafeNetTimePacketFromGlibNone(p unsafe.Pointer) *NetTimePacket {
 		return nil
 	}
 
-	wrapped = wrapped.Copy() // create an owned copy
+	return wrapped.Copy() // create an owned copy
 
-	runtime.SetFinalizer(
-		wrapped.netTimePacket,
-		func (intern *netTimePacket) {
-			C.gst_net_time_packet_free(intern.native)
-		},
-	)
-	return wrapped
 }
 
 // UnsafeNetTimePacketFromGlibFull is used to convert raw C.GstNetTimePacket pointers to go while taking ownership. This is used by the bindings internally.
