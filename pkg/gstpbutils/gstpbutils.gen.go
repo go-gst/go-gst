@@ -2817,7 +2817,7 @@ type AudioVisualizer interface {
 
 	// chain up virtual methods:
 
-	// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
+	// ParentDecideAllocation calls the default implementations of the `GstAudioVisualizer.decide_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -2828,7 +2828,7 @@ type AudioVisualizer interface {
 	// 
 	// 	- goret bool 
 	ParentDecideAllocation(query *gst.Query) bool
-	// ParentRender calls the default implementations of the render virtual method.
+	// ParentRender calls the default implementations of the `GstAudioVisualizer.render` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -2840,7 +2840,7 @@ type AudioVisualizer interface {
 	// 
 	// 	- goret bool 
 	ParentRender(audio *gst.Buffer, video *gstvideo.VideoFrame) bool
-	// ParentSetup calls the default implementations of the setup virtual method.
+	// ParentSetup calls the default implementations of the `GstAudioVisualizer.setup` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -3018,7 +3018,7 @@ func UnsafeApplyAudioVisualizerOverrides[Instance AudioVisualizer](gclass unsafe
 	}
 }
 
-// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
+// ParentDecideAllocation calls the default implementations of the `GstAudioVisualizer.decide_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3051,7 +3051,7 @@ func (scope *AudioVisualizerInstance) ParentDecideAllocation(query *gst.Query) b
 	return goret
 }
 
-// ParentRender calls the default implementations of the render virtual method.
+// ParentRender calls the default implementations of the `GstAudioVisualizer.render` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3088,7 +3088,7 @@ func (scope *AudioVisualizerInstance) ParentRender(audio *gst.Buffer, video *gst
 	return goret
 }
 
-// ParentSetup calls the default implementations of the setup virtual method.
+// ParentSetup calls the default implementations of the `GstAudioVisualizer.setup` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -3249,7 +3249,7 @@ type Discoverer interface {
 
 	// chain up virtual methods:
 
-	// ParentDiscovered calls the default implementations of the discovered virtual method.
+	// ParentDiscovered calls the default implementations of the `GstDiscoverer.discovered` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -3257,10 +3257,10 @@ type Discoverer interface {
 	// 	- info DiscovererInfo 
 	// 	- err error 
 	ParentDiscovered(info DiscovererInfo, err error)
-	// ParentFinished calls the default implementations of the finished virtual method.
+	// ParentFinished calls the default implementations of the `GstDiscoverer.finished` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	ParentFinished()
-	// ParentLoadSerializeInfo calls the default implementations of the load_serialize_info virtual method.
+	// ParentLoadSerializeInfo calls the default implementations of the `GstDiscoverer.load_serialize_info` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -3273,14 +3273,14 @@ type Discoverer interface {
 	//
 	// Loads the serialized info from the given uri.
 	ParentLoadSerializeInfo(uri string) DiscovererInfo
-	// ParentSourceSetup calls the default implementations of the source_setup virtual method.
+	// ParentSourceSetup calls the default implementations of the `GstDiscoverer.source_setup` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
 	// 
 	// 	- source gst.Element 
 	ParentSourceSetup(source gst.Element)
-	// ParentStarting calls the default implementations of the starting virtual method.
+	// ParentStarting calls the default implementations of the `GstDiscoverer.starting` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	ParentStarting()
 }
@@ -3652,7 +3652,7 @@ func UnsafeApplyDiscovererOverrides[Instance Discoverer](gclass unsafe.Pointer, 
 	}
 }
 
-// ParentDiscovered calls the default implementations of the discovered virtual method.
+// ParentDiscovered calls the default implementations of the `GstDiscoverer.discovered` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3676,7 +3676,7 @@ func (discoverer *DiscovererInstance) ParentDiscovered(info DiscovererInfo, err 
 	runtime.KeepAlive(err)
 }
 
-// ParentFinished calls the default implementations of the finished virtual method.
+// ParentFinished calls the default implementations of the `GstDiscoverer.finished` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 func (discoverer *DiscovererInstance) ParentFinished() {
 	var carg0 *C.GstDiscoverer
@@ -3689,7 +3689,7 @@ func (discoverer *DiscovererInstance) ParentFinished() {
 	runtime.KeepAlive(discoverer)
 }
 
-// ParentLoadSerializeInfo calls the default implementations of the load_serialize_info virtual method.
+// ParentLoadSerializeInfo calls the default implementations of the `GstDiscoverer.load_serialize_info` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3723,7 +3723,7 @@ func (dc *DiscovererInstance) ParentLoadSerializeInfo(uri string) DiscovererInfo
 	return goret
 }
 
-// ParentSourceSetup calls the default implementations of the source_setup virtual method.
+// ParentSourceSetup calls the default implementations of the `GstDiscoverer.source_setup` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3743,7 +3743,7 @@ func (discoverer *DiscovererInstance) ParentSourceSetup(source gst.Element) {
 	runtime.KeepAlive(source)
 }
 
-// ParentStarting calls the default implementations of the starting virtual method.
+// ParentStarting calls the default implementations of the `GstDiscoverer.starting` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 func (discoverer *DiscovererInstance) ParentStarting() {
 	var carg0 *C.GstDiscoverer

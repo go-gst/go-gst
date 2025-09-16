@@ -1409,7 +1409,7 @@ type RTPBaseDepayload interface {
 
 	// chain up virtual methods:
 
-	// ParentHandleEvent calls the default implementations of the handle_event virtual method.
+	// ParentHandleEvent calls the default implementations of the `GstRTPBaseDepayload.handle_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -1422,7 +1422,7 @@ type RTPBaseDepayload interface {
 	//
 	// custom event handling
 	ParentHandleEvent(event *gst.Event) bool
-	// ParentPacketLost calls the default implementations of the packet_lost virtual method.
+	// ParentPacketLost calls the default implementations of the `GstRTPBaseDepayload.packet_lost` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -1435,7 +1435,7 @@ type RTPBaseDepayload interface {
 	//
 	// signal the depayloader about packet loss
 	ParentPacketLost(event *gst.Event) bool
-	// ParentProcess calls the default implementations of the process virtual method.
+	// ParentProcess calls the default implementations of the `GstRTPBaseDepayload.process` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -1452,7 +1452,7 @@ type RTPBaseDepayload interface {
 	//   of the provided buffer will be applied to the result buffer and the
 	//   buffer will be pushed. If this function returns %NULL, nothing is pushed.
 	ParentProcess(in *gst.Buffer) *gst.Buffer
-	// ParentProcessRtpPacket calls the default implementations of the process_rtp_packet virtual method.
+	// ParentProcessRtpPacket calls the default implementations of the `GstRTPBaseDepayload.process_rtp_packet` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -1472,7 +1472,7 @@ type RTPBaseDepayload interface {
 	// buffer and the output buffer will be pushed out. If this function returns
 	// %NULL, nothing is pushed out. Since: 1.6.
 	ParentProcessRtpPacket(rtpBuffer *RTPBuffer) *gst.Buffer
-	// ParentSetCaps calls the default implementations of the set_caps virtual method.
+	// ParentSetCaps calls the default implementations of the `GstRTPBaseDepayload.set_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -2006,7 +2006,7 @@ func UnsafeApplyRTPBaseDepayloadOverrides[Instance RTPBaseDepayload](gclass unsa
 	}
 }
 
-// ParentHandleEvent calls the default implementations of the handle_event virtual method.
+// ParentHandleEvent calls the default implementations of the `GstRTPBaseDepayload.handle_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -2041,7 +2041,7 @@ func (filter *RTPBaseDepayloadInstance) ParentHandleEvent(event *gst.Event) bool
 	return goret
 }
 
-// ParentPacketLost calls the default implementations of the packet_lost virtual method.
+// ParentPacketLost calls the default implementations of the `GstRTPBaseDepayload.packet_lost` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -2076,7 +2076,7 @@ func (filter *RTPBaseDepayloadInstance) ParentPacketLost(event *gst.Event) bool 
 	return goret
 }
 
-// ParentProcess calls the default implementations of the process virtual method.
+// ParentProcess calls the default implementations of the `GstRTPBaseDepayload.process` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -2113,7 +2113,7 @@ func (base *RTPBaseDepayloadInstance) ParentProcess(in *gst.Buffer) *gst.Buffer 
 	return goret
 }
 
-// ParentProcessRtpPacket calls the default implementations of the process_rtp_packet virtual method.
+// ParentProcessRtpPacket calls the default implementations of the `GstRTPBaseDepayload.process_rtp_packet` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -2153,7 +2153,7 @@ func (base *RTPBaseDepayloadInstance) ParentProcessRtpPacket(rtpBuffer *RTPBuffe
 	return goret
 }
 
-// ParentSetCaps calls the default implementations of the set_caps virtual method.
+// ParentSetCaps calls the default implementations of the `GstRTPBaseDepayload.set_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -2364,7 +2364,7 @@ type RTPBasePayload interface {
 
 	// chain up virtual methods:
 
-	// ParentGetCaps calls the default implementations of the get_caps virtual method.
+	// ParentGetCaps calls the default implementations of the `GstRTPBasePayload.get_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -2378,7 +2378,7 @@ type RTPBasePayload interface {
 	//
 	// get desired caps
 	ParentGetCaps(pad gst.Pad, filter *gst.Caps) *gst.Caps
-	// ParentHandleBuffer calls the default implementations of the handle_buffer virtual method.
+	// ParentHandleBuffer calls the default implementations of the `GstRTPBasePayload.handle_buffer` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -2391,7 +2391,7 @@ type RTPBasePayload interface {
 	//
 	// process data
 	ParentHandleBuffer(buffer *gst.Buffer) gst.FlowReturn
-	// ParentQueryRTPBasePayload calls the default implementations of the query virtual method.
+	// ParentQueryRTPBasePayload calls the default implementations of the `GstRTPBasePayload.query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -2405,7 +2405,7 @@ type RTPBasePayload interface {
 	//
 	// custom query handling
 	ParentQueryRTPBasePayload(pad gst.Pad, query *gst.Query) bool
-	// ParentSetCaps calls the default implementations of the set_caps virtual method.
+	// ParentSetCaps calls the default implementations of the `GstRTPBasePayload.set_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -2418,7 +2418,7 @@ type RTPBasePayload interface {
 	//
 	// configure the payloader
 	ParentSetCaps(caps *gst.Caps) bool
-	// ParentSinkEvent calls the default implementations of the sink_event virtual method.
+	// ParentSinkEvent calls the default implementations of the `GstRTPBasePayload.sink_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -2431,7 +2431,7 @@ type RTPBasePayload interface {
 	//
 	// custom event handling on the sinkpad
 	ParentSinkEvent(event *gst.Event) bool
-	// ParentSrcEvent calls the default implementations of the src_event virtual method.
+	// ParentSrcEvent calls the default implementations of the `GstRTPBasePayload.src_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -3052,7 +3052,7 @@ func UnsafeApplyRTPBasePayloadOverrides[Instance RTPBasePayload](gclass unsafe.P
 	}
 }
 
-// ParentGetCaps calls the default implementations of the get_caps virtual method.
+// ParentGetCaps calls the default implementations of the `GstRTPBasePayload.get_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3089,7 +3089,7 @@ func (payload *RTPBasePayloadInstance) ParentGetCaps(pad gst.Pad, filter *gst.Ca
 	return goret
 }
 
-// ParentHandleBuffer calls the default implementations of the handle_buffer virtual method.
+// ParentHandleBuffer calls the default implementations of the `GstRTPBasePayload.handle_buffer` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3122,7 +3122,7 @@ func (payload *RTPBasePayloadInstance) ParentHandleBuffer(buffer *gst.Buffer) gs
 	return goret
 }
 
-// ParentQueryRTPBasePayload calls the default implementations of the query virtual method.
+// ParentQueryRTPBasePayload calls the default implementations of the `GstRTPBasePayload.query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3161,7 +3161,7 @@ func (payload *RTPBasePayloadInstance) ParentQueryRTPBasePayload(pad gst.Pad, qu
 	return goret
 }
 
-// ParentSetCaps calls the default implementations of the set_caps virtual method.
+// ParentSetCaps calls the default implementations of the `GstRTPBasePayload.set_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3196,7 +3196,7 @@ func (payload *RTPBasePayloadInstance) ParentSetCaps(caps *gst.Caps) bool {
 	return goret
 }
 
-// ParentSinkEvent calls the default implementations of the sink_event virtual method.
+// ParentSinkEvent calls the default implementations of the `GstRTPBasePayload.sink_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3231,7 +3231,7 @@ func (payload *RTPBasePayloadInstance) ParentSinkEvent(event *gst.Event) bool {
 	return goret
 }
 
-// ParentSrcEvent calls the default implementations of the src_event virtual method.
+// ParentSrcEvent calls the default implementations of the `GstRTPBasePayload.src_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3510,7 +3510,7 @@ type RTPHeaderExtension interface {
 
 	// chain up virtual methods:
 
-	// ParentGetMaxSize calls the default implementations of the get_max_size virtual method.
+	// ParentGetMaxSize calls the default implementations of the `GstRTPHeaderExtension.get_max_size` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -3528,7 +3528,7 @@ type RTPHeaderExtension interface {
 	// Implementations should return as accurate a value as is possible using the
 	// information given in the input @buffer.
 	ParentGetMaxSize(inputMeta *gst.Buffer) uint
-	// ParentGetSupportedFlags calls the default implementations of the get_supported_flags virtual method.
+	// ParentGetSupportedFlags calls the default implementations of the `GstRTPHeaderExtension.get_supported_flags` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -3537,7 +3537,7 @@ type RTPHeaderExtension interface {
 	//
 	// retrieve the supported flags
 	ParentGetSupportedFlags() RTPHeaderExtensionFlags
-	// ParentRead calls the default implementations of the read virtual method.
+	// ParentRead calls the default implementations of the `GstRTPHeaderExtension.read` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -3553,7 +3553,7 @@ type RTPHeaderExtension interface {
 	//
 	// Read the RTP header extension from @data.
 	ParentRead(readFlags RTPHeaderExtensionFlags, data []uint8, buffer *gst.Buffer) bool
-	// ParentSetAttributes calls the default implementations of the set_attributes virtual method.
+	// ParentSetAttributes calls the default implementations of the `GstRTPHeaderExtension.set_attributes` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -3568,7 +3568,7 @@ type RTPHeaderExtension interface {
 	// set the necessary attributes that may be signaled e.g. with
 	//     an SDP.
 	ParentSetAttributes(direction RTPHeaderExtensionDirection, attributes string) bool
-	// ParentSetCapsFromAttributes calls the default implementations of the set_caps_from_attributes virtual method.
+	// ParentSetCapsFromAttributes calls the default implementations of the `GstRTPHeaderExtension.set_caps_from_attributes` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -3585,7 +3585,7 @@ type RTPHeaderExtension interface {
 	// The only current known caps format is based on the SDP standard as produced
 	// by gst_sdp_media_attributes_to_caps().
 	ParentSetCapsFromAttributes(caps *gst.Caps) bool
-	// ParentSetNonRtpSinkCaps calls the default implementations of the set_non_rtp_sink_caps virtual method.
+	// ParentSetNonRtpSinkCaps calls the default implementations of the `GstRTPHeaderExtension.set_non_rtp_sink_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -3599,7 +3599,7 @@ type RTPHeaderExtension interface {
 	// Passes RTP payloader's sink (i.e. not payloaded) @caps to the header
 	// extension.
 	ParentSetNonRtpSinkCaps(caps *gst.Caps) bool
-	// ParentUpdateNonRtpSrcCaps calls the default implementations of the update_non_rtp_src_caps virtual method.
+	// ParentUpdateNonRtpSrcCaps calls the default implementations of the `GstRTPHeaderExtension.update_non_rtp_src_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -3613,7 +3613,7 @@ type RTPHeaderExtension interface {
 	// Updates depayloader src caps based on the information received in RTP header.
 	// @caps must be writable as this function may modify them.
 	ParentUpdateNonRtpSrcCaps(caps *gst.Caps) bool
-	// ParentWrite calls the default implementations of the write virtual method.
+	// ParentWrite calls the default implementations of the `GstRTPHeaderExtension.write` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -4561,7 +4561,7 @@ func UnsafeApplyRTPHeaderExtensionOverrides[Instance RTPHeaderExtension](gclass 
 	}
 }
 
-// ParentGetMaxSize calls the default implementations of the get_max_size virtual method.
+// ParentGetMaxSize calls the default implementations of the `GstRTPHeaderExtension.get_max_size` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -4599,7 +4599,7 @@ func (ext *RTPHeaderExtensionInstance) ParentGetMaxSize(inputMeta *gst.Buffer) u
 	return goret
 }
 
-// ParentGetSupportedFlags calls the default implementations of the get_supported_flags virtual method.
+// ParentGetSupportedFlags calls the default implementations of the `GstRTPHeaderExtension.get_supported_flags` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -4625,7 +4625,7 @@ func (ext *RTPHeaderExtensionInstance) ParentGetSupportedFlags() RTPHeaderExtens
 	return goret
 }
 
-// ParentRead calls the default implementations of the read virtual method.
+// ParentRead calls the default implementations of the `GstRTPHeaderExtension.read` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -4673,7 +4673,7 @@ func (ext *RTPHeaderExtensionInstance) ParentRead(readFlags RTPHeaderExtensionFl
 	return goret
 }
 
-// ParentSetAttributes calls the default implementations of the set_attributes virtual method.
+// ParentSetAttributes calls the default implementations of the `GstRTPHeaderExtension.set_attributes` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -4714,7 +4714,7 @@ func (ext *RTPHeaderExtensionInstance) ParentSetAttributes(direction RTPHeaderEx
 	return goret
 }
 
-// ParentSetCapsFromAttributes calls the default implementations of the set_caps_from_attributes virtual method.
+// ParentSetCapsFromAttributes calls the default implementations of the `GstRTPHeaderExtension.set_caps_from_attributes` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -4753,7 +4753,7 @@ func (ext *RTPHeaderExtensionInstance) ParentSetCapsFromAttributes(caps *gst.Cap
 	return goret
 }
 
-// ParentSetNonRtpSinkCaps calls the default implementations of the set_non_rtp_sink_caps virtual method.
+// ParentSetNonRtpSinkCaps calls the default implementations of the `GstRTPHeaderExtension.set_non_rtp_sink_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -4789,7 +4789,7 @@ func (ext *RTPHeaderExtensionInstance) ParentSetNonRtpSinkCaps(caps *gst.Caps) b
 	return goret
 }
 
-// ParentUpdateNonRtpSrcCaps calls the default implementations of the update_non_rtp_src_caps virtual method.
+// ParentUpdateNonRtpSrcCaps calls the default implementations of the `GstRTPHeaderExtension.update_non_rtp_src_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -4825,7 +4825,7 @@ func (ext *RTPHeaderExtensionInstance) ParentUpdateNonRtpSrcCaps(caps *gst.Caps)
 	return goret
 }
 
-// ParentWrite calls the default implementations of the write virtual method.
+// ParentWrite calls the default implementations of the `GstRTPHeaderExtension.write` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:

@@ -7947,7 +7947,7 @@ type ColorBalance interface {
 
 	// chain up virtual methods:
 
-	// ParentGetBalanceType calls the default implementations of the get_balance_type virtual method.
+	// ParentGetBalanceType calls the default implementations of the `GstColorBalance.get_balance_type` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -7956,7 +7956,7 @@ type ColorBalance interface {
 	//
 	// Get the #GstColorBalanceType of this implementation.
 	ParentGetBalanceType() ColorBalanceType
-	// ParentGetValue calls the default implementations of the get_value virtual method.
+	// ParentGetValue calls the default implementations of the `GstColorBalance.get_value` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -7974,7 +7974,7 @@ type ColorBalance interface {
 	//         #GstColorBalanceChannel.max_value members of the
 	//         #GstColorBalanceChannel object.
 	ParentGetValue(channel ColorBalanceChannel) int32
-	// ParentListChannels calls the default implementations of the list_channels virtual method.
+	// ParentListChannels calls the default implementations of the `GstColorBalance.list_channels` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -7983,7 +7983,7 @@ type ColorBalance interface {
 	//
 	// Retrieve a list of the available channels.
 	ParentListChannels() []ColorBalanceChannel
-	// ParentSetValue calls the default implementations of the set_value virtual method.
+	// ParentSetValue calls the default implementations of the `GstColorBalance.set_value` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -7998,7 +7998,7 @@ type ColorBalance interface {
 	//         #GstColorBalanceChannel.max_value members of the
 	//         #GstColorBalanceChannel object.
 	ParentSetValue(channel ColorBalanceChannel, value int32)
-	// ParentValueChanged calls the default implementations of the value_changed virtual method.
+	// ParentValueChanged calls the default implementations of the `GstColorBalance.value_changed` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -8377,7 +8377,7 @@ func UnsafeApplyColorBalanceOverrides[Instance ColorBalance](gclass unsafe.Point
 	}
 }
 
-// ParentGetBalanceType calls the default implementations of the get_balance_type virtual method.
+// ParentGetBalanceType calls the default implementations of the `GstColorBalance.get_balance_type` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -8403,7 +8403,7 @@ func (balance *ColorBalanceInstance) ParentGetBalanceType() ColorBalanceType {
 	return goret
 }
 
-// ParentGetValue calls the default implementations of the get_value virtual method.
+// ParentGetValue calls the default implementations of the `GstColorBalance.get_value` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -8441,7 +8441,7 @@ func (balance *ColorBalanceInstance) ParentGetValue(channel ColorBalanceChannel)
 	return goret
 }
 
-// ParentListChannels calls the default implementations of the list_channels virtual method.
+// ParentListChannels calls the default implementations of the `GstColorBalance.list_channels` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -8474,7 +8474,7 @@ func (balance *ColorBalanceInstance) ParentListChannels() []ColorBalanceChannel 
 	return goret
 }
 
-// ParentSetValue calls the default implementations of the set_value virtual method.
+// ParentSetValue calls the default implementations of the `GstColorBalance.set_value` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -8505,7 +8505,7 @@ func (balance *ColorBalanceInstance) ParentSetValue(channel ColorBalanceChannel,
 	runtime.KeepAlive(value)
 }
 
-// ParentValueChanged calls the default implementations of the value_changed virtual method.
+// ParentValueChanged calls the default implementations of the `GstColorBalance.value_changed` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -8634,7 +8634,7 @@ type Navigation interface {
 
 	// chain up virtual methods:
 
-	// ParentSendEventSimple calls the default implementations of the send_event_simple virtual method.
+	// ParentSendEventSimple calls the default implementations of the `GstNavigation.send_event_simple` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -10281,7 +10281,7 @@ func UnsafeApplyNavigationOverrides[Instance Navigation](gclass unsafe.Pointer, 
 	}
 }
 
-// ParentSendEventSimple calls the default implementations of the send_event_simple virtual method.
+// ParentSendEventSimple calls the default implementations of the `GstNavigation.send_event_simple` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -10476,7 +10476,7 @@ type VideoOrientation interface {
 
 	// chain up virtual methods:
 
-	// ParentGetHcenter calls the default implementations of the get_hcenter virtual method.
+	// ParentGetHcenter calls the default implementations of the `GstVideoOrientation.get_hcenter` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -10486,7 +10486,7 @@ type VideoOrientation interface {
 	//
 	// Get the horizontal centering offset from the given object.
 	ParentGetHcenter() (int32, bool)
-	// ParentGetHflip calls the default implementations of the get_hflip virtual method.
+	// ParentGetHflip calls the default implementations of the `GstVideoOrientation.get_hflip` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -10496,7 +10496,7 @@ type VideoOrientation interface {
 	//
 	// Get the horizontal flipping state (%TRUE for flipped) from the given object.
 	ParentGetHflip() (bool, bool)
-	// ParentGetVcenter calls the default implementations of the get_vcenter virtual method.
+	// ParentGetVcenter calls the default implementations of the `GstVideoOrientation.get_vcenter` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -10506,7 +10506,7 @@ type VideoOrientation interface {
 	//
 	// Get the vertical centering offset from the given object.
 	ParentGetVcenter() (int32, bool)
-	// ParentGetVflip calls the default implementations of the get_vflip virtual method.
+	// ParentGetVflip calls the default implementations of the `GstVideoOrientation.get_vflip` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -10516,7 +10516,7 @@ type VideoOrientation interface {
 	//
 	// Get the vertical flipping state (%TRUE for flipped) from the given object.
 	ParentGetVflip() (bool, bool)
-	// ParentSetHcenter calls the default implementations of the set_hcenter virtual method.
+	// ParentSetHcenter calls the default implementations of the `GstVideoOrientation.set_hcenter` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -10529,7 +10529,7 @@ type VideoOrientation interface {
 	//
 	// Set the horizontal centering offset for the given object.
 	ParentSetHcenter(center int32) bool
-	// ParentSetHflip calls the default implementations of the set_hflip virtual method.
+	// ParentSetHflip calls the default implementations of the `GstVideoOrientation.set_hflip` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -10542,7 +10542,7 @@ type VideoOrientation interface {
 	//
 	// Set the horizontal flipping state (%TRUE for flipped) for the given object.
 	ParentSetHflip(flip bool) bool
-	// ParentSetVcenter calls the default implementations of the set_vcenter virtual method.
+	// ParentSetVcenter calls the default implementations of the `GstVideoOrientation.set_vcenter` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -10555,7 +10555,7 @@ type VideoOrientation interface {
 	//
 	// Set the vertical centering offset for the given object.
 	ParentSetVcenter(center int32) bool
-	// ParentSetVflip calls the default implementations of the set_vflip virtual method.
+	// ParentSetVflip calls the default implementations of the `GstVideoOrientation.set_vflip` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -11194,7 +11194,7 @@ func UnsafeApplyVideoOrientationOverrides[Instance VideoOrientation](gclass unsa
 	}
 }
 
-// ParentGetHcenter calls the default implementations of the get_hcenter virtual method.
+// ParentGetHcenter calls the default implementations of the `GstVideoOrientation.get_hcenter` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -11226,7 +11226,7 @@ func (videoOrientation *VideoOrientationInstance) ParentGetHcenter() (int32, boo
 	return center, goret
 }
 
-// ParentGetHflip calls the default implementations of the get_hflip virtual method.
+// ParentGetHflip calls the default implementations of the `GstVideoOrientation.get_hflip` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -11260,7 +11260,7 @@ func (videoOrientation *VideoOrientationInstance) ParentGetHflip() (bool, bool) 
 	return flip, goret
 }
 
-// ParentGetVcenter calls the default implementations of the get_vcenter virtual method.
+// ParentGetVcenter calls the default implementations of the `GstVideoOrientation.get_vcenter` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -11292,7 +11292,7 @@ func (videoOrientation *VideoOrientationInstance) ParentGetVcenter() (int32, boo
 	return center, goret
 }
 
-// ParentGetVflip calls the default implementations of the get_vflip virtual method.
+// ParentGetVflip calls the default implementations of the `GstVideoOrientation.get_vflip` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -11326,7 +11326,7 @@ func (videoOrientation *VideoOrientationInstance) ParentGetVflip() (bool, bool) 
 	return flip, goret
 }
 
-// ParentSetHcenter calls the default implementations of the set_hcenter virtual method.
+// ParentSetHcenter calls the default implementations of the `GstVideoOrientation.set_hcenter` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -11361,7 +11361,7 @@ func (videoOrientation *VideoOrientationInstance) ParentSetHcenter(center int32)
 	return goret
 }
 
-// ParentSetHflip calls the default implementations of the set_hflip virtual method.
+// ParentSetHflip calls the default implementations of the `GstVideoOrientation.set_hflip` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -11398,7 +11398,7 @@ func (videoOrientation *VideoOrientationInstance) ParentSetHflip(flip bool) bool
 	return goret
 }
 
-// ParentSetVcenter calls the default implementations of the set_vcenter virtual method.
+// ParentSetVcenter calls the default implementations of the `GstVideoOrientation.set_vcenter` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -11433,7 +11433,7 @@ func (videoOrientation *VideoOrientationInstance) ParentSetVcenter(center int32)
 	return goret
 }
 
-// ParentSetVflip calls the default implementations of the set_vflip virtual method.
+// ParentSetVflip calls the default implementations of the `GstVideoOrientation.set_vflip` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -11794,13 +11794,13 @@ type VideoOverlay interface {
 
 	// chain up virtual methods:
 
-	// ParentExpose calls the default implementations of the expose virtual method.
+	// ParentExpose calls the default implementations of the `GstVideoOverlay.expose` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	//
 	// Tell an overlay that it has been exposed. This will redraw the current frame
 	// in the drawable even if the pipeline is PAUSED.
 	ParentExpose()
-	// ParentHandleEvents calls the default implementations of the handle_events virtual method.
+	// ParentHandleEvents calls the default implementations of the `GstVideoOverlay.handle_events` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -11813,7 +11813,7 @@ type VideoOverlay interface {
 	// for them. This method allows you to disable events handling completely
 	// from the #GstVideoOverlay.
 	ParentHandleEvents(handleEvents bool)
-	// ParentSetRenderRectangle calls the default implementations of the set_render_rectangle virtual method.
+	// ParentSetRenderRectangle calls the default implementations of the `GstVideoOverlay.set_render_rectangle` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -12118,7 +12118,7 @@ func UnsafeApplyVideoOverlayOverrides[Instance VideoOverlay](gclass unsafe.Point
 	}
 }
 
-// ParentExpose calls the default implementations of the expose virtual method.
+// ParentExpose calls the default implementations of the `GstVideoOverlay.expose` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 //
 // Tell an overlay that it has been exposed. This will redraw the current frame
@@ -12134,7 +12134,7 @@ func (overlay *VideoOverlayInstance) ParentExpose() {
 	runtime.KeepAlive(overlay)
 }
 
-// ParentHandleEvents calls the default implementations of the handle_events virtual method.
+// ParentHandleEvents calls the default implementations of the `GstVideoOverlay.handle_events` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -12162,7 +12162,7 @@ func (overlay *VideoOverlayInstance) ParentHandleEvents(handleEvents bool) {
 	runtime.KeepAlive(handleEvents)
 }
 
-// ParentSetRenderRectangle calls the default implementations of the set_render_rectangle virtual method.
+// ParentSetRenderRectangle calls the default implementations of the `GstVideoOverlay.set_render_rectangle` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -12220,7 +12220,7 @@ type ColorBalanceChannel interface {
 
 	// chain up virtual methods:
 
-	// ParentValueChanged calls the default implementations of the value_changed virtual method.
+	// ParentValueChanged calls the default implementations of the `GstColorBalanceChannel.value_changed` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -12327,7 +12327,7 @@ func UnsafeApplyColorBalanceChannelOverrides[Instance ColorBalanceChannel](gclas
 	}
 }
 
-// ParentValueChanged calls the default implementations of the value_changed virtual method.
+// ParentValueChanged calls the default implementations of the `GstColorBalanceChannel.value_changed` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -12413,7 +12413,7 @@ type VideoAggregator interface {
 
 	// chain up virtual methods:
 
-	// ParentAggregateFrames calls the default implementations of the aggregate_frames virtual method.
+	// ParentAggregateFrames calls the default implementations of the `GstVideoAggregator.aggregate_frames` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -12431,7 +12431,7 @@ type VideoAggregator interface {
 	//                            if it needs to map the buffer in a special way. The result of the
 	//                            aggregation should land in @outbuffer.
 	ParentAggregateFrames(outbuffer *gst.Buffer) gst.FlowReturn
-	// ParentFindBestFormat calls the default implementations of the find_best_format virtual method.
+	// ParentFindBestFormat calls the default implementations of the `GstVideoAggregator.find_best_format` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -12443,7 +12443,7 @@ type VideoAggregator interface {
 	// 
 	// 	- atLeastOneAlpha bool 
 	ParentFindBestFormat(downstreamCaps *gst.Caps, bestInfo *VideoInfo) bool
-	// ParentUpdateCaps calls the default implementations of the update_caps virtual method.
+	// ParentUpdateCaps calls the default implementations of the `GstVideoAggregator.update_caps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -12669,7 +12669,7 @@ func UnsafeApplyVideoAggregatorOverrides[Instance VideoAggregator](gclass unsafe
 	}
 }
 
-// ParentAggregateFrames calls the default implementations of the aggregate_frames virtual method.
+// ParentAggregateFrames calls the default implementations of the `GstVideoAggregator.aggregate_frames` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -12707,7 +12707,7 @@ func (videoaggregator *VideoAggregatorInstance) ParentAggregateFrames(outbuffer 
 	return goret
 }
 
-// ParentFindBestFormat calls the default implementations of the find_best_format virtual method.
+// ParentFindBestFormat calls the default implementations of the `GstVideoAggregator.find_best_format` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -12744,7 +12744,7 @@ func (vagg *VideoAggregatorInstance) ParentFindBestFormat(downstreamCaps *gst.Ca
 	return atLeastOneAlpha
 }
 
-// ParentUpdateCaps calls the default implementations of the update_caps virtual method.
+// ParentUpdateCaps calls the default implementations of the `GstVideoAggregator.update_caps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -12871,7 +12871,7 @@ type VideoAggregatorPad interface {
 
 	// chain up virtual methods:
 
-	// ParentCleanFrame calls the default implementations of the clean_frame virtual method.
+	// ParentCleanFrame calls the default implementations of the `GstVideoAggregatorPad.clean_frame` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -12881,7 +12881,7 @@ type VideoAggregatorPad interface {
 	//
 	// clean the frame previously prepared in prepare_frame
 	ParentCleanFrame(videoaggregator VideoAggregator, preparedFrame *VideoFrame)
-	// ParentPrepareFrame calls the default implementations of the prepare_frame virtual method.
+	// ParentPrepareFrame calls the default implementations of the `GstVideoAggregatorPad.prepare_frame` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -12898,7 +12898,7 @@ type VideoAggregatorPad interface {
 	//      Implementations should always return TRUE.  Returning FALSE will cease
 	//      iteration over subsequent pads.
 	ParentPrepareFrame(videoaggregator VideoAggregator, buffer *gst.Buffer, preparedFrame *VideoFrame) bool
-	// ParentPrepareFrameFinish calls the default implementations of the prepare_frame_finish virtual method.
+	// ParentPrepareFrameFinish calls the default implementations of the `GstVideoAggregatorPad.prepare_frame_finish` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -12910,7 +12910,7 @@ type VideoAggregatorPad interface {
 	// 
 	// If overriden, `prepare_frame_start` must also be overriden.
 	ParentPrepareFrameFinish(videoaggregator VideoAggregator, preparedFrame *VideoFrame)
-	// ParentPrepareFrameStart calls the default implementations of the prepare_frame_start virtual method.
+	// ParentPrepareFrameStart calls the default implementations of the `GstVideoAggregatorPad.prepare_frame_start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -12923,7 +12923,7 @@ type VideoAggregatorPad interface {
 	// 
 	// If overriden, `prepare_frame_finish` must also be overriden.
 	ParentPrepareFrameStart(videoaggregator VideoAggregator, buffer *gst.Buffer, preparedFrame *VideoFrame)
-	// ParentUpdateConversionInfo calls the default implementations of the update_conversion_info virtual method.
+	// ParentUpdateConversionInfo calls the default implementations of the `GstVideoAggregatorPad.update_conversion_info` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	//
 	// Called when either the input or output formats
@@ -13268,7 +13268,7 @@ func UnsafeApplyVideoAggregatorPadOverrides[Instance VideoAggregatorPad](gclass 
 	}
 }
 
-// ParentCleanFrame calls the default implementations of the clean_frame virtual method.
+// ParentCleanFrame calls the default implementations of the `GstVideoAggregatorPad.clean_frame` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -13294,7 +13294,7 @@ func (pad *VideoAggregatorPadInstance) ParentCleanFrame(videoaggregator VideoAgg
 	runtime.KeepAlive(preparedFrame)
 }
 
-// ParentPrepareFrame calls the default implementations of the prepare_frame virtual method.
+// ParentPrepareFrame calls the default implementations of the `GstVideoAggregatorPad.prepare_frame` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -13339,7 +13339,7 @@ func (pad *VideoAggregatorPadInstance) ParentPrepareFrame(videoaggregator VideoA
 	return goret
 }
 
-// ParentPrepareFrameFinish calls the default implementations of the prepare_frame_finish virtual method.
+// ParentPrepareFrameFinish calls the default implementations of the `GstVideoAggregatorPad.prepare_frame_finish` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -13367,7 +13367,7 @@ func (pad *VideoAggregatorPadInstance) ParentPrepareFrameFinish(videoaggregator 
 	runtime.KeepAlive(preparedFrame)
 }
 
-// ParentPrepareFrameStart calls the default implementations of the prepare_frame_start virtual method.
+// ParentPrepareFrameStart calls the default implementations of the `GstVideoAggregatorPad.prepare_frame_start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -13399,7 +13399,7 @@ func (pad *VideoAggregatorPadInstance) ParentPrepareFrameStart(videoaggregator V
 	runtime.KeepAlive(preparedFrame)
 }
 
-// ParentUpdateConversionInfo calls the default implementations of the update_conversion_info virtual method.
+// ParentUpdateConversionInfo calls the default implementations of the `GstVideoAggregatorPad.update_conversion_info` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 //
 // Called when either the input or output formats
@@ -14247,7 +14247,7 @@ type VideoDecoder interface {
 
 	// chain up virtual methods:
 
-	// ParentClose calls the default implementations of the close virtual method.
+	// ParentClose calls the default implementations of the `GstVideoDecoder.close` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -14258,7 +14258,7 @@ type VideoDecoder interface {
 	//                  Called when the element changes to GST_STATE_NULL.
 	//                  Allows closing external resources.
 	ParentClose() bool
-	// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
+	// ParentDecideAllocation calls the default implementations of the `GstVideoDecoder.decide_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14276,7 +14276,7 @@ type VideoDecoder interface {
 	//                     Subclasses should chain up to the parent implementation to
 	//                     invoke the default handler.
 	ParentDecideAllocation(query *gst.Query) bool
-	// ParentDrain calls the default implementations of the drain virtual method.
+	// ParentDrain calls the default implementations of the `GstVideoDecoder.drain` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -14289,7 +14289,7 @@ type VideoDecoder interface {
 	//                  Sub-classes should be prepared to handle new data afterward,
 	//                  or seamless segment processing will break. Since: 1.6
 	ParentDrain() gst.FlowReturn
-	// ParentFinish calls the default implementations of the finish virtual method.
+	// ParentFinish calls the default implementations of the `GstVideoDecoder.finish` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -14300,7 +14300,7 @@ type VideoDecoder interface {
 	//                  Called to request subclass to dispatch any pending remaining
 	//                  data at EOS. Sub-classes can refuse to decode new data after.
 	ParentFinish() gst.FlowReturn
-	// ParentFlush calls the default implementations of the flush virtual method.
+	// ParentFlush calls the default implementations of the `GstVideoDecoder.flush` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -14311,7 +14311,7 @@ type VideoDecoder interface {
 	//                      Flush all remaining data from the decoder without
 	//                      pushing it downstream. Since: 1.2
 	ParentFlush() bool
-	// ParentGetcaps calls the default implementations of the getcaps virtual method.
+	// ParentGetcaps calls the default implementations of the `GstVideoDecoder.getcaps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14328,7 +14328,7 @@ type VideoDecoder interface {
 	//                  gst_video_decoder_proxy_getcaps
 	//                  applied to sink template caps.
 	ParentGetcaps(filter *gst.Caps) *gst.Caps
-	// ParentHandleFrame calls the default implementations of the handle_frame virtual method.
+	// ParentHandleFrame calls the default implementations of the `GstVideoDecoder.handle_frame` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14339,7 +14339,7 @@ type VideoDecoder interface {
 	// 
 	// 	- goret gst.FlowReturn 
 	ParentHandleFrame(frame *VideoCodecFrame) gst.FlowReturn
-	// ParentHandleMissingData calls the default implementations of the handle_missing_data virtual method.
+	// ParentHandleMissingData calls the default implementations of the `GstVideoDecoder.handle_missing_data` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14351,7 +14351,7 @@ type VideoDecoder interface {
 	// 
 	// 	- goret bool 
 	ParentHandleMissingData(timestamp gst.ClockTime, duration gst.ClockTime) bool
-	// ParentNegotiate calls the default implementations of the negotiate virtual method.
+	// ParentNegotiate calls the default implementations of the `GstVideoDecoder.negotiate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -14362,7 +14362,7 @@ type VideoDecoder interface {
 	// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
 	// negotiate fails.
 	ParentNegotiate() bool
-	// ParentOpen calls the default implementations of the open virtual method.
+	// ParentOpen calls the default implementations of the `GstVideoDecoder.open` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -14373,7 +14373,7 @@ type VideoDecoder interface {
 	//                  Called when the element changes to GST_STATE_READY.
 	//                  Allows opening external resources.
 	ParentOpen() bool
-	// ParentParse calls the default implementations of the parse virtual method.
+	// ParentParse calls the default implementations of the `GstVideoDecoder.parse` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14390,7 +14390,7 @@ type VideoDecoder interface {
 	//                  Allows chopping incoming data into manageable units (frames)
 	//                  for subsequent decoding.
 	ParentParse(frame *VideoCodecFrame, adapter gstbase.Adapter, atEos bool) gst.FlowReturn
-	// ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
+	// ParentProposeAllocation calls the default implementations of the `GstVideoDecoder.propose_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14406,7 +14406,7 @@ type VideoDecoder interface {
 	//                      Subclasses should chain up to the parent implementation to
 	//                      invoke the default handler.
 	ParentProposeAllocation(query *gst.Query) bool
-	// ParentReset calls the default implementations of the reset virtual method.
+	// ParentReset calls the default implementations of the `GstVideoDecoder.reset` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14421,7 +14421,7 @@ type VideoDecoder interface {
 	//                  Allows subclass (decoder) to perform post-seek semantics reset.
 	//                  Deprecated.
 	ParentReset(hard bool) bool
-	// ParentSetFormat calls the default implementations of the set_format virtual method.
+	// ParentSetFormat calls the default implementations of the `GstVideoDecoder.set_format` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14434,7 +14434,7 @@ type VideoDecoder interface {
 	//
 	// Notifies subclass of incoming data format (caps).
 	ParentSetFormat(state *VideoCodecState) bool
-	// ParentSinkEvent calls the default implementations of the sink_event virtual method.
+	// ParentSinkEvent calls the default implementations of the `GstVideoDecoder.sink_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14452,7 +14452,7 @@ type VideoDecoder interface {
 	//                  Subclasses should chain up to the parent implementation to
 	//                  invoke the default handler.
 	ParentSinkEvent(event *gst.Event) bool
-	// ParentSinkQuery calls the default implementations of the sink_query virtual method.
+	// ParentSinkQuery calls the default implementations of the `GstVideoDecoder.sink_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14469,7 +14469,7 @@ type VideoDecoder interface {
 	//                  should chain up to the parent implementation to invoke the
 	//                  default handler. Since: 1.4
 	ParentSinkQuery(query *gst.Query) bool
-	// ParentSrcEvent calls the default implementations of the src_event virtual method.
+	// ParentSrcEvent calls the default implementations of the `GstVideoDecoder.src_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14487,7 +14487,7 @@ type VideoDecoder interface {
 	//                  Subclasses should chain up to the parent implementation to
 	//                  invoke the default handler.
 	ParentSrcEvent(event *gst.Event) bool
-	// ParentSrcQuery calls the default implementations of the src_query virtual method.
+	// ParentSrcQuery calls the default implementations of the `GstVideoDecoder.src_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14504,7 +14504,7 @@ type VideoDecoder interface {
 	//                  should chain up to the parent implementation to invoke the
 	//                  default handler. Since: 1.4
 	ParentSrcQuery(query *gst.Query) bool
-	// ParentStart calls the default implementations of the start virtual method.
+	// ParentStart calls the default implementations of the `GstVideoDecoder.start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -14515,7 +14515,7 @@ type VideoDecoder interface {
 	//                  Called when the element starts processing.
 	//                  Allows opening external resources.
 	ParentStart() bool
-	// ParentStop calls the default implementations of the stop virtual method.
+	// ParentStop calls the default implementations of the `GstVideoDecoder.stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -14526,7 +14526,7 @@ type VideoDecoder interface {
 	//                  Called when the element stops processing.
 	//                  Allows closing external resources.
 	ParentStop() bool
-	// ParentTransformMeta calls the default implementations of the transform_meta virtual method.
+	// ParentTransformMeta calls the default implementations of the `GstVideoDecoder.transform_meta` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -16661,7 +16661,7 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 	}
 }
 
-// ParentClose calls the default implementations of the close virtual method.
+// ParentClose calls the default implementations of the `GstVideoDecoder.close` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -16691,7 +16691,7 @@ func (decoder *VideoDecoderInstance) ParentClose() bool {
 	return goret
 }
 
-// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
+// ParentDecideAllocation calls the default implementations of the `GstVideoDecoder.decide_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -16731,7 +16731,7 @@ func (decoder *VideoDecoderInstance) ParentDecideAllocation(query *gst.Query) bo
 	return goret
 }
 
-// ParentDrain calls the default implementations of the drain virtual method.
+// ParentDrain calls the default implementations of the `GstVideoDecoder.drain` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -16761,7 +16761,7 @@ func (decoder *VideoDecoderInstance) ParentDrain() gst.FlowReturn {
 	return goret
 }
 
-// ParentFinish calls the default implementations of the finish virtual method.
+// ParentFinish calls the default implementations of the `GstVideoDecoder.finish` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -16789,7 +16789,7 @@ func (decoder *VideoDecoderInstance) ParentFinish() gst.FlowReturn {
 	return goret
 }
 
-// ParentFlush calls the default implementations of the flush virtual method.
+// ParentFlush calls the default implementations of the `GstVideoDecoder.flush` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -16819,7 +16819,7 @@ func (decoder *VideoDecoderInstance) ParentFlush() bool {
 	return goret
 }
 
-// ParentGetcaps calls the default implementations of the getcaps virtual method.
+// ParentGetcaps calls the default implementations of the `GstVideoDecoder.getcaps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -16856,7 +16856,7 @@ func (decoder *VideoDecoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
 	return goret
 }
 
-// ParentHandleFrame calls the default implementations of the handle_frame virtual method.
+// ParentHandleFrame calls the default implementations of the `GstVideoDecoder.handle_frame` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -16887,7 +16887,7 @@ func (decoder *VideoDecoderInstance) ParentHandleFrame(frame *VideoCodecFrame) g
 	return goret
 }
 
-// ParentHandleMissingData calls the default implementations of the handle_missing_data virtual method.
+// ParentHandleMissingData calls the default implementations of the `GstVideoDecoder.handle_missing_data` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -16924,7 +16924,7 @@ func (decoder *VideoDecoderInstance) ParentHandleMissingData(timestamp gst.Clock
 	return goret
 }
 
-// ParentNegotiate calls the default implementations of the negotiate virtual method.
+// ParentNegotiate calls the default implementations of the `GstVideoDecoder.negotiate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -16954,7 +16954,7 @@ func (decoder *VideoDecoderInstance) ParentNegotiate() bool {
 	return goret
 }
 
-// ParentOpen calls the default implementations of the open virtual method.
+// ParentOpen calls the default implementations of the `GstVideoDecoder.open` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -16984,7 +16984,7 @@ func (decoder *VideoDecoderInstance) ParentOpen() bool {
 	return goret
 }
 
-// ParentParse calls the default implementations of the parse virtual method.
+// ParentParse calls the default implementations of the `GstVideoDecoder.parse` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -17029,7 +17029,7 @@ func (decoder *VideoDecoderInstance) ParentParse(frame *VideoCodecFrame, adapter
 	return goret
 }
 
-// ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
+// ParentProposeAllocation calls the default implementations of the `GstVideoDecoder.propose_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -17067,7 +17067,7 @@ func (decoder *VideoDecoderInstance) ParentProposeAllocation(query *gst.Query) b
 	return goret
 }
 
-// ParentReset calls the default implementations of the reset virtual method.
+// ParentReset calls the default implementations of the `GstVideoDecoder.reset` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -17106,7 +17106,7 @@ func (decoder *VideoDecoderInstance) ParentReset(hard bool) bool {
 	return goret
 }
 
-// ParentSetFormat calls the default implementations of the set_format virtual method.
+// ParentSetFormat calls the default implementations of the `GstVideoDecoder.set_format` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -17141,7 +17141,7 @@ func (decoder *VideoDecoderInstance) ParentSetFormat(state *VideoCodecState) boo
 	return goret
 }
 
-// ParentSinkEvent calls the default implementations of the sink_event virtual method.
+// ParentSinkEvent calls the default implementations of the `GstVideoDecoder.sink_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -17181,7 +17181,7 @@ func (decoder *VideoDecoderInstance) ParentSinkEvent(event *gst.Event) bool {
 	return goret
 }
 
-// ParentSinkQuery calls the default implementations of the sink_query virtual method.
+// ParentSinkQuery calls the default implementations of the `GstVideoDecoder.sink_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -17220,7 +17220,7 @@ func (decoder *VideoDecoderInstance) ParentSinkQuery(query *gst.Query) bool {
 	return goret
 }
 
-// ParentSrcEvent calls the default implementations of the src_event virtual method.
+// ParentSrcEvent calls the default implementations of the `GstVideoDecoder.src_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -17260,7 +17260,7 @@ func (decoder *VideoDecoderInstance) ParentSrcEvent(event *gst.Event) bool {
 	return goret
 }
 
-// ParentSrcQuery calls the default implementations of the src_query virtual method.
+// ParentSrcQuery calls the default implementations of the `GstVideoDecoder.src_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -17299,7 +17299,7 @@ func (decoder *VideoDecoderInstance) ParentSrcQuery(query *gst.Query) bool {
 	return goret
 }
 
-// ParentStart calls the default implementations of the start virtual method.
+// ParentStart calls the default implementations of the `GstVideoDecoder.start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -17329,7 +17329,7 @@ func (decoder *VideoDecoderInstance) ParentStart() bool {
 	return goret
 }
 
-// ParentStop calls the default implementations of the stop virtual method.
+// ParentStop calls the default implementations of the `GstVideoDecoder.stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -17359,7 +17359,7 @@ func (decoder *VideoDecoderInstance) ParentStop() bool {
 	return goret
 }
 
-// ParentTransformMeta calls the default implementations of the transform_meta virtual method.
+// ParentTransformMeta calls the default implementations of the `GstVideoDecoder.transform_meta` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -17815,7 +17815,7 @@ type VideoEncoder interface {
 
 	// chain up virtual methods:
 
-	// ParentClose calls the default implementations of the close virtual method.
+	// ParentClose calls the default implementations of the `GstVideoEncoder.close` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -17826,7 +17826,7 @@ type VideoEncoder interface {
 	//                  Called when the element changes to GST_STATE_NULL.
 	//                  Allows closing external resources.
 	ParentClose() bool
-	// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
+	// ParentDecideAllocation calls the default implementations of the `GstVideoEncoder.decide_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -17844,7 +17844,7 @@ type VideoEncoder interface {
 	//                     Subclasses should chain up to the parent implementation to
 	//                     invoke the default handler.
 	ParentDecideAllocation(query *gst.Query) bool
-	// ParentFinish calls the default implementations of the finish virtual method.
+	// ParentFinish calls the default implementations of the `GstVideoEncoder.finish` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -17855,7 +17855,7 @@ type VideoEncoder interface {
 	//                  Called to request subclass to dispatch any pending remaining
 	//                  data (e.g. at EOS).
 	ParentFinish() gst.FlowReturn
-	// ParentFlush calls the default implementations of the flush virtual method.
+	// ParentFlush calls the default implementations of the `GstVideoEncoder.flush` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -17866,7 +17866,7 @@ type VideoEncoder interface {
 	//                      Flush all remaining data from the encoder without
 	//                      pushing it downstream. Since: 1.2
 	ParentFlush() bool
-	// ParentGetcaps calls the default implementations of the getcaps virtual method.
+	// ParentGetcaps calls the default implementations of the `GstVideoEncoder.getcaps` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -17883,7 +17883,7 @@ type VideoEncoder interface {
 	//                  default returns gst_video_encoder_proxy_getcaps
 	//                  applied to sink template caps.
 	ParentGetcaps(filter *gst.Caps) *gst.Caps
-	// ParentHandleFrame calls the default implementations of the handle_frame virtual method.
+	// ParentHandleFrame calls the default implementations of the `GstVideoEncoder.handle_frame` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -17896,7 +17896,7 @@ type VideoEncoder interface {
 	//
 	// Provides input frame to subclass.
 	ParentHandleFrame(frame *VideoCodecFrame) gst.FlowReturn
-	// ParentNegotiate calls the default implementations of the negotiate virtual method.
+	// ParentNegotiate calls the default implementations of the `GstVideoEncoder.negotiate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -17907,7 +17907,7 @@ type VideoEncoder interface {
 	// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
 	// negotiate fails.
 	ParentNegotiate() bool
-	// ParentOpen calls the default implementations of the open virtual method.
+	// ParentOpen calls the default implementations of the `GstVideoEncoder.open` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -17918,7 +17918,7 @@ type VideoEncoder interface {
 	//                  Called when the element changes to GST_STATE_READY.
 	//                  Allows opening external resources.
 	ParentOpen() bool
-	// ParentPrePush calls the default implementations of the pre_push virtual method.
+	// ParentPrePush calls the default implementations of the `GstVideoEncoder.pre_push` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -17934,7 +17934,7 @@ type VideoEncoder interface {
 	//                  shape or form it deems appropriate.  If not provided,
 	//                  provided encoded frame data is simply pushed downstream.
 	ParentPrePush(frame *VideoCodecFrame) gst.FlowReturn
-	// ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
+	// ParentProposeAllocation calls the default implementations of the `GstVideoEncoder.propose_allocation` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -17950,7 +17950,7 @@ type VideoEncoder interface {
 	//                      Subclasses should chain up to the parent implementation to
 	//                      invoke the default handler.
 	ParentProposeAllocation(query *gst.Query) bool
-	// ParentReset calls the default implementations of the reset virtual method.
+	// ParentReset calls the default implementations of the `GstVideoEncoder.reset` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -17965,7 +17965,7 @@ type VideoEncoder interface {
 	//                  Allows subclass (encoder) to perform post-seek semantics reset.
 	//                  Deprecated.
 	ParentReset(hard bool) bool
-	// ParentSetFormat calls the default implementations of the set_format virtual method.
+	// ParentSetFormat calls the default implementations of the `GstVideoEncoder.set_format` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -17981,7 +17981,7 @@ type VideoEncoder interface {
 	//                  GstVideoCodecState fields have already been
 	//                  set according to provided caps.
 	ParentSetFormat(state *VideoCodecState) bool
-	// ParentSinkEvent calls the default implementations of the sink_event virtual method.
+	// ParentSinkEvent calls the default implementations of the `GstVideoEncoder.sink_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -17999,7 +17999,7 @@ type VideoEncoder interface {
 	//                  Subclasses should chain up to the parent implementation to
 	//                  invoke the default handler.
 	ParentSinkEvent(event *gst.Event) bool
-	// ParentSinkQuery calls the default implementations of the sink_query virtual method.
+	// ParentSinkQuery calls the default implementations of the `GstVideoEncoder.sink_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -18016,7 +18016,7 @@ type VideoEncoder interface {
 	//                  should chain up to the parent implementation to invoke the
 	//                  default handler. Since: 1.4
 	ParentSinkQuery(query *gst.Query) bool
-	// ParentSrcEvent calls the default implementations of the src_event virtual method.
+	// ParentSrcEvent calls the default implementations of the `GstVideoEncoder.src_event` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -18034,7 +18034,7 @@ type VideoEncoder interface {
 	//                  Subclasses should chain up to the parent implementation to
 	//                  invoke the default handler.
 	ParentSrcEvent(event *gst.Event) bool
-	// ParentSrcQuery calls the default implementations of the src_query virtual method.
+	// ParentSrcQuery calls the default implementations of the `GstVideoEncoder.src_query` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -18051,7 +18051,7 @@ type VideoEncoder interface {
 	//                  should chain up to the parent implementation to invoke the
 	//                  default handler. Since: 1.4
 	ParentSrcQuery(query *gst.Query) bool
-	// ParentStart calls the default implementations of the start virtual method.
+	// ParentStart calls the default implementations of the `GstVideoEncoder.start` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -18062,7 +18062,7 @@ type VideoEncoder interface {
 	//                  Called when the element starts processing.
 	//                  Allows opening external resources.
 	ParentStart() bool
-	// ParentStop calls the default implementations of the stop virtual method.
+	// ParentStop calls the default implementations of the `GstVideoEncoder.stop` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -18073,7 +18073,7 @@ type VideoEncoder interface {
 	//                  Called when the element stops processing.
 	//                  Allows closing external resources.
 	ParentStop() bool
-	// ParentTransformMeta calls the default implementations of the transform_meta virtual method.
+	// ParentTransformMeta calls the default implementations of the `GstVideoEncoder.transform_meta` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -19565,7 +19565,7 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 	}
 }
 
-// ParentClose calls the default implementations of the close virtual method.
+// ParentClose calls the default implementations of the `GstVideoEncoder.close` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -19595,7 +19595,7 @@ func (encoder *VideoEncoderInstance) ParentClose() bool {
 	return goret
 }
 
-// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
+// ParentDecideAllocation calls the default implementations of the `GstVideoEncoder.decide_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -19635,7 +19635,7 @@ func (encoder *VideoEncoderInstance) ParentDecideAllocation(query *gst.Query) bo
 	return goret
 }
 
-// ParentFinish calls the default implementations of the finish virtual method.
+// ParentFinish calls the default implementations of the `GstVideoEncoder.finish` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -19663,7 +19663,7 @@ func (encoder *VideoEncoderInstance) ParentFinish() gst.FlowReturn {
 	return goret
 }
 
-// ParentFlush calls the default implementations of the flush virtual method.
+// ParentFlush calls the default implementations of the `GstVideoEncoder.flush` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -19693,7 +19693,7 @@ func (encoder *VideoEncoderInstance) ParentFlush() bool {
 	return goret
 }
 
-// ParentGetcaps calls the default implementations of the getcaps virtual method.
+// ParentGetcaps calls the default implementations of the `GstVideoEncoder.getcaps` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -19730,7 +19730,7 @@ func (enc *VideoEncoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
 	return goret
 }
 
-// ParentHandleFrame calls the default implementations of the handle_frame virtual method.
+// ParentHandleFrame calls the default implementations of the `GstVideoEncoder.handle_frame` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -19763,7 +19763,7 @@ func (encoder *VideoEncoderInstance) ParentHandleFrame(frame *VideoCodecFrame) g
 	return goret
 }
 
-// ParentNegotiate calls the default implementations of the negotiate virtual method.
+// ParentNegotiate calls the default implementations of the `GstVideoEncoder.negotiate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -19793,7 +19793,7 @@ func (encoder *VideoEncoderInstance) ParentNegotiate() bool {
 	return goret
 }
 
-// ParentOpen calls the default implementations of the open virtual method.
+// ParentOpen calls the default implementations of the `GstVideoEncoder.open` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -19823,7 +19823,7 @@ func (encoder *VideoEncoderInstance) ParentOpen() bool {
 	return goret
 }
 
-// ParentPrePush calls the default implementations of the pre_push virtual method.
+// ParentPrePush calls the default implementations of the `GstVideoEncoder.pre_push` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -19859,7 +19859,7 @@ func (encoder *VideoEncoderInstance) ParentPrePush(frame *VideoCodecFrame) gst.F
 	return goret
 }
 
-// ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
+// ParentProposeAllocation calls the default implementations of the `GstVideoEncoder.propose_allocation` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -19897,7 +19897,7 @@ func (encoder *VideoEncoderInstance) ParentProposeAllocation(query *gst.Query) b
 	return goret
 }
 
-// ParentReset calls the default implementations of the reset virtual method.
+// ParentReset calls the default implementations of the `GstVideoEncoder.reset` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -19936,7 +19936,7 @@ func (encoder *VideoEncoderInstance) ParentReset(hard bool) bool {
 	return goret
 }
 
-// ParentSetFormat calls the default implementations of the set_format virtual method.
+// ParentSetFormat calls the default implementations of the `GstVideoEncoder.set_format` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -19974,7 +19974,7 @@ func (encoder *VideoEncoderInstance) ParentSetFormat(state *VideoCodecState) boo
 	return goret
 }
 
-// ParentSinkEvent calls the default implementations of the sink_event virtual method.
+// ParentSinkEvent calls the default implementations of the `GstVideoEncoder.sink_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -20014,7 +20014,7 @@ func (encoder *VideoEncoderInstance) ParentSinkEvent(event *gst.Event) bool {
 	return goret
 }
 
-// ParentSinkQuery calls the default implementations of the sink_query virtual method.
+// ParentSinkQuery calls the default implementations of the `GstVideoEncoder.sink_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -20053,7 +20053,7 @@ func (encoder *VideoEncoderInstance) ParentSinkQuery(query *gst.Query) bool {
 	return goret
 }
 
-// ParentSrcEvent calls the default implementations of the src_event virtual method.
+// ParentSrcEvent calls the default implementations of the `GstVideoEncoder.src_event` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -20093,7 +20093,7 @@ func (encoder *VideoEncoderInstance) ParentSrcEvent(event *gst.Event) bool {
 	return goret
 }
 
-// ParentSrcQuery calls the default implementations of the src_query virtual method.
+// ParentSrcQuery calls the default implementations of the `GstVideoEncoder.src_query` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -20132,7 +20132,7 @@ func (encoder *VideoEncoderInstance) ParentSrcQuery(query *gst.Query) bool {
 	return goret
 }
 
-// ParentStart calls the default implementations of the start virtual method.
+// ParentStart calls the default implementations of the `GstVideoEncoder.start` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -20162,7 +20162,7 @@ func (encoder *VideoEncoderInstance) ParentStart() bool {
 	return goret
 }
 
-// ParentStop calls the default implementations of the stop virtual method.
+// ParentStop calls the default implementations of the `GstVideoEncoder.stop` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -20192,7 +20192,7 @@ func (encoder *VideoEncoderInstance) ParentStop() bool {
 	return goret
 }
 
-// ParentTransformMeta calls the default implementations of the transform_meta virtual method.
+// ParentTransformMeta calls the default implementations of the `GstVideoEncoder.transform_meta` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -20281,7 +20281,7 @@ type VideoFilter interface {
 
 	// chain up virtual methods:
 
-	// ParentSetInfo calls the default implementations of the set_info virtual method.
+	// ParentSetInfo calls the default implementations of the `GstVideoFilter.set_info` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -20297,7 +20297,7 @@ type VideoFilter interface {
 	//
 	// function to be called with the negotiated caps and video infos
 	ParentSetInfo(incaps *gst.Caps, inInfo *VideoInfo, outcaps *gst.Caps, outInfo *VideoInfo) bool
-	// ParentTransformFrame calls the default implementations of the transform_frame virtual method.
+	// ParentTransformFrame calls the default implementations of the `GstVideoFilter.transform_frame` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -20311,7 +20311,7 @@ type VideoFilter interface {
 	//
 	// transform a video frame
 	ParentTransformFrame(inframe *VideoFrame, outframe *VideoFrame) gst.FlowReturn
-	// ParentTransformFrameIp calls the default implementations of the transform_frame_ip virtual method.
+	// ParentTransformFrameIp calls the default implementations of the `GstVideoFilter.transform_frame_ip` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -20514,7 +20514,7 @@ func UnsafeApplyVideoFilterOverrides[Instance VideoFilter](gclass unsafe.Pointer
 	}
 }
 
-// ParentSetInfo calls the default implementations of the set_info virtual method.
+// ParentSetInfo calls the default implementations of the `GstVideoFilter.set_info` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -20561,7 +20561,7 @@ func (filter *VideoFilterInstance) ParentSetInfo(incaps *gst.Caps, inInfo *Video
 	return goret
 }
 
-// ParentTransformFrame calls the default implementations of the transform_frame virtual method.
+// ParentTransformFrame calls the default implementations of the `GstVideoFilter.transform_frame` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -20598,7 +20598,7 @@ func (filter *VideoFilterInstance) ParentTransformFrame(inframe *VideoFrame, out
 	return goret
 }
 
-// ParentTransformFrameIp calls the default implementations of the transform_frame_ip virtual method.
+// ParentTransformFrameIp calls the default implementations of the `GstVideoFilter.transform_frame_ip` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -20678,7 +20678,7 @@ type VideoSink interface {
 
 	// chain up virtual methods:
 
-	// ParentSetInfo calls the default implementations of the set_info virtual method.
+	// ParentSetInfo calls the default implementations of the `GstVideoSink.set_info` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -20692,7 +20692,7 @@ type VideoSink interface {
 	//
 	// Notifies the subclass of changed #GstVideoInfo.
 	ParentSetInfo(caps *gst.Caps, info *VideoInfo) bool
-	// ParentShowFrame calls the default implementations of the show_frame virtual method.
+	// ParentShowFrame calls the default implementations of the `GstVideoSink.show_frame` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -20858,7 +20858,7 @@ func UnsafeApplyVideoSinkOverrides[Instance VideoSink](gclass unsafe.Pointer, ov
 	}
 }
 
-// ParentSetInfo calls the default implementations of the set_info virtual method.
+// ParentSetInfo calls the default implementations of the `GstVideoSink.set_info` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -20897,7 +20897,7 @@ func (videoSink *VideoSinkInstance) ParentSetInfo(caps *gst.Caps, info *VideoInf
 	return goret
 }
 
-// ParentShowFrame calls the default implementations of the show_frame virtual method.
+// ParentShowFrame calls the default implementations of the `GstVideoSink.show_frame` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -20984,7 +20984,7 @@ type VideoAggregatorConvertPad interface {
 
 	// chain up virtual methods:
 
-	// ParentCreateConversionInfo calls the default implementations of the create_conversion_info virtual method.
+	// ParentCreateConversionInfo calls the default implementations of the `GstVideoAggregatorConvertPad.create_conversion_info` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -21107,7 +21107,7 @@ func UnsafeApplyVideoAggregatorConvertPadOverrides[Instance VideoAggregatorConve
 	}
 }
 
-// ParentCreateConversionInfo calls the default implementations of the create_conversion_info virtual method.
+// ParentCreateConversionInfo calls the default implementations of the `GstVideoAggregatorConvertPad.create_conversion_info` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:

@@ -1730,7 +1730,7 @@ type WebRTCICE interface {
 
 	// chain up virtual methods:
 
-	// ParentAddCandidate calls the default implementations of the add_candidate virtual method.
+	// ParentAddCandidate calls the default implementations of the `GstWebRTCICE.add_candidate` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -1739,7 +1739,7 @@ type WebRTCICE interface {
 	// 	- candidate string: The ICE candidate 
 	// 	- promise *gst.Promise (nullable): A #GstPromise for task notifications (Since: 1.24) 
 	ParentAddCandidate(stream WebRTCICEStream, candidate string, promise *gst.Promise)
-	// ParentAddStream calls the default implementations of the add_stream virtual method.
+	// ParentAddStream calls the default implementations of the `GstWebRTCICE.add_stream` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -1750,7 +1750,7 @@ type WebRTCICE interface {
 	// 
 	// 	- goret WebRTCICEStream (nullable) 
 	ParentAddStream(sessionId uint) WebRTCICEStream
-	// ParentAddTurnServer calls the default implementations of the add_turn_server virtual method.
+	// ParentAddTurnServer calls the default implementations of the `GstWebRTCICE.add_turn_server` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -1761,7 +1761,7 @@ type WebRTCICE interface {
 	// 
 	// 	- goret bool 
 	ParentAddTurnServer(uri string) bool
-	// ParentFindTransport calls the default implementations of the find_transport virtual method.
+	// ParentFindTransport calls the default implementations of the `GstWebRTCICE.find_transport` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -1773,7 +1773,7 @@ type WebRTCICE interface {
 	// 
 	// 	- goret WebRTCICETransport (nullable) 
 	ParentFindTransport(stream WebRTCICEStream, component WebRTCICEComponent) WebRTCICETransport
-	// ParentGatherCandidates calls the default implementations of the gather_candidates virtual method.
+	// ParentGatherCandidates calls the default implementations of the `GstWebRTCICE.gather_candidates` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -1784,7 +1784,7 @@ type WebRTCICE interface {
 	// 
 	// 	- goret bool 
 	ParentGatherCandidates(stream WebRTCICEStream) bool
-	// ParentGetHttpProxy calls the default implementations of the get_http_proxy virtual method.
+	// ParentGetHttpProxy calls the default implementations of the `GstWebRTCICE.get_http_proxy` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -1793,14 +1793,14 @@ type WebRTCICE interface {
 	//
 	// Get HTTP Proxy to be used when connecting to TURN server.
 	ParentGetHttpProxy() string
-	// ParentGetIsController calls the default implementations of the get_is_controller virtual method.
+	// ParentGetIsController calls the default implementations of the `GstWebRTCICE.get_is_controller` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	ParentGetIsController() bool
-	// ParentGetSelectedPair calls the default implementations of the get_selected_pair virtual method.
+	// ParentGetSelectedPair calls the default implementations of the `GstWebRTCICE.get_selected_pair` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -1813,28 +1813,28 @@ type WebRTCICE interface {
 	// 	- remoteStats *WebRTCICECandidateStats: pointer to #GstWebRTCICECandidateStats for remote candidate 
 	// 	- goret bool 
 	ParentGetSelectedPair(stream WebRTCICEStream) (*WebRTCICECandidateStats, *WebRTCICECandidateStats, bool)
-	// ParentGetStunServer calls the default implementations of the get_stun_server virtual method.
+	// ParentGetStunServer calls the default implementations of the `GstWebRTCICE.get_stun_server` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
 	ParentGetStunServer() string
-	// ParentGetTurnServer calls the default implementations of the get_turn_server virtual method.
+	// ParentGetTurnServer calls the default implementations of the `GstWebRTCICE.get_turn_server` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
 	ParentGetTurnServer() string
-	// ParentSetForceRelay calls the default implementations of the set_force_relay virtual method.
+	// ParentSetForceRelay calls the default implementations of the `GstWebRTCICE.set_force_relay` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
 	// 
 	// 	- forceRelay bool: TRUE to enable force relay 
 	ParentSetForceRelay(forceRelay bool)
-	// ParentSetHttpProxy calls the default implementations of the set_http_proxy virtual method.
+	// ParentSetHttpProxy calls the default implementations of the `GstWebRTCICE.set_http_proxy` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -1844,14 +1844,14 @@ type WebRTCICE interface {
 	//
 	// Set HTTP Proxy to be used when connecting to TURN server.
 	ParentSetHttpProxy(uri string)
-	// ParentSetIsController calls the default implementations of the set_is_controller virtual method.
+	// ParentSetIsController calls the default implementations of the `GstWebRTCICE.set_is_controller` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
 	// 
 	// 	- controller bool: TRUE to set as controller 
 	ParentSetIsController(controller bool)
-	// ParentSetLocalCredentials calls the default implementations of the set_local_credentials virtual method.
+	// ParentSetLocalCredentials calls the default implementations of the `GstWebRTCICE.set_local_credentials` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -1864,7 +1864,7 @@ type WebRTCICE interface {
 	// 
 	// 	- goret bool 
 	ParentSetLocalCredentials(stream WebRTCICEStream, ufrag string, pwd string) bool
-	// ParentSetRemoteCredentials calls the default implementations of the set_remote_credentials virtual method.
+	// ParentSetRemoteCredentials calls the default implementations of the `GstWebRTCICE.set_remote_credentials` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -1877,14 +1877,14 @@ type WebRTCICE interface {
 	// 
 	// 	- goret bool 
 	ParentSetRemoteCredentials(stream WebRTCICEStream, ufrag string, pwd string) bool
-	// ParentSetStunServer calls the default implementations of the set_stun_server virtual method.
+	// ParentSetStunServer calls the default implementations of the `GstWebRTCICE.set_stun_server` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
 	// 
 	// 	- uri string (nullable): URI of the STUN server 
 	ParentSetStunServer(uri string)
-	// ParentSetTos calls the default implementations of the set_tos virtual method.
+	// ParentSetTos calls the default implementations of the `GstWebRTCICE.set_tos` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -1892,7 +1892,7 @@ type WebRTCICE interface {
 	// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
 	// 	- tos uint: ToS to be set 
 	ParentSetTos(stream WebRTCICEStream, tos uint)
-	// ParentSetTurnServer calls the default implementations of the set_turn_server virtual method.
+	// ParentSetTurnServer calls the default implementations of the `GstWebRTCICE.set_turn_server` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -3097,7 +3097,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 	}
 }
 
-// ParentAddCandidate calls the default implementations of the add_candidate virtual method.
+// ParentAddCandidate calls the default implementations of the `GstWebRTCICE.add_candidate` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3128,7 +3128,7 @@ func (ice *WebRTCICEInstance) ParentAddCandidate(stream WebRTCICEStream, candida
 	runtime.KeepAlive(promise)
 }
 
-// ParentAddStream calls the default implementations of the add_stream virtual method.
+// ParentAddStream calls the default implementations of the `GstWebRTCICE.add_stream` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3161,7 +3161,7 @@ func (ice *WebRTCICEInstance) ParentAddStream(sessionId uint) WebRTCICEStream {
 	return goret
 }
 
-// ParentAddTurnServer calls the default implementations of the add_turn_server virtual method.
+// ParentAddTurnServer calls the default implementations of the `GstWebRTCICE.add_turn_server` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3195,7 +3195,7 @@ func (ice *WebRTCICEInstance) ParentAddTurnServer(uri string) bool {
 	return goret
 }
 
-// ParentFindTransport calls the default implementations of the find_transport virtual method.
+// ParentFindTransport calls the default implementations of the `GstWebRTCICE.find_transport` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3232,7 +3232,7 @@ func (ice *WebRTCICEInstance) ParentFindTransport(stream WebRTCICEStream, compon
 	return goret
 }
 
-// ParentGatherCandidates calls the default implementations of the gather_candidates virtual method.
+// ParentGatherCandidates calls the default implementations of the `GstWebRTCICE.gather_candidates` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3265,7 +3265,7 @@ func (ice *WebRTCICEInstance) ParentGatherCandidates(stream WebRTCICEStream) boo
 	return goret
 }
 
-// ParentGetHttpProxy calls the default implementations of the get_http_proxy virtual method.
+// ParentGetHttpProxy calls the default implementations of the `GstWebRTCICE.get_http_proxy` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -3292,7 +3292,7 @@ func (ice *WebRTCICEInstance) ParentGetHttpProxy() string {
 	return goret
 }
 
-// ParentGetIsController calls the default implementations of the get_is_controller virtual method.
+// ParentGetIsController calls the default implementations of the `GstWebRTCICE.get_is_controller` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -3318,7 +3318,7 @@ func (ice *WebRTCICEInstance) ParentGetIsController() bool {
 	return goret
 }
 
-// ParentGetSelectedPair calls the default implementations of the get_selected_pair virtual method.
+// ParentGetSelectedPair calls the default implementations of the `GstWebRTCICE.get_selected_pair` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3359,7 +3359,7 @@ func (ice *WebRTCICEInstance) ParentGetSelectedPair(stream WebRTCICEStream) (*We
 	return localStats, remoteStats, goret
 }
 
-// ParentGetStunServer calls the default implementations of the get_stun_server virtual method.
+// ParentGetStunServer calls the default implementations of the `GstWebRTCICE.get_stun_server` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -3386,7 +3386,7 @@ func (ice *WebRTCICEInstance) ParentGetStunServer() string {
 	return goret
 }
 
-// ParentGetTurnServer calls the default implementations of the get_turn_server virtual method.
+// ParentGetTurnServer calls the default implementations of the `GstWebRTCICE.get_turn_server` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -3413,7 +3413,7 @@ func (ice *WebRTCICEInstance) ParentGetTurnServer() string {
 	return goret
 }
 
-// ParentSetForceRelay calls the default implementations of the set_force_relay virtual method.
+// ParentSetForceRelay calls the default implementations of the `GstWebRTCICE.set_force_relay` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3435,7 +3435,7 @@ func (ice *WebRTCICEInstance) ParentSetForceRelay(forceRelay bool) {
 	runtime.KeepAlive(forceRelay)
 }
 
-// ParentSetHttpProxy calls the default implementations of the set_http_proxy virtual method.
+// ParentSetHttpProxy calls the default implementations of the `GstWebRTCICE.set_http_proxy` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3459,7 +3459,7 @@ func (ice *WebRTCICEInstance) ParentSetHttpProxy(uri string) {
 	runtime.KeepAlive(uri)
 }
 
-// ParentSetIsController calls the default implementations of the set_is_controller virtual method.
+// ParentSetIsController calls the default implementations of the `GstWebRTCICE.set_is_controller` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3481,7 +3481,7 @@ func (ice *WebRTCICEInstance) ParentSetIsController(controller bool) {
 	runtime.KeepAlive(controller)
 }
 
-// ParentSetLocalCredentials calls the default implementations of the set_local_credentials virtual method.
+// ParentSetLocalCredentials calls the default implementations of the `GstWebRTCICE.set_local_credentials` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3524,7 +3524,7 @@ func (ice *WebRTCICEInstance) ParentSetLocalCredentials(stream WebRTCICEStream, 
 	return goret
 }
 
-// ParentSetRemoteCredentials calls the default implementations of the set_remote_credentials virtual method.
+// ParentSetRemoteCredentials calls the default implementations of the `GstWebRTCICE.set_remote_credentials` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3567,7 +3567,7 @@ func (ice *WebRTCICEInstance) ParentSetRemoteCredentials(stream WebRTCICEStream,
 	return goret
 }
 
-// ParentSetStunServer calls the default implementations of the set_stun_server virtual method.
+// ParentSetStunServer calls the default implementations of the `GstWebRTCICE.set_stun_server` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3590,7 +3590,7 @@ func (ice *WebRTCICEInstance) ParentSetStunServer(uri string) {
 	runtime.KeepAlive(uri)
 }
 
-// ParentSetTos calls the default implementations of the set_tos virtual method.
+// ParentSetTos calls the default implementations of the `GstWebRTCICE.set_tos` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3614,7 +3614,7 @@ func (ice *WebRTCICEInstance) ParentSetTos(stream WebRTCICEStream, tos uint) {
 	runtime.KeepAlive(tos)
 }
 
-// ParentSetTurnServer calls the default implementations of the set_turn_server virtual method.
+// ParentSetTurnServer calls the default implementations of the `GstWebRTCICE.set_turn_server` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3695,7 +3695,7 @@ type WebRTCICEStream interface {
 
 	// chain up virtual methods:
 
-	// ParentFindTransport calls the default implementations of the find_transport virtual method.
+	// ParentFindTransport calls the default implementations of the `GstWebRTCICEStream.find_transport` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -3706,7 +3706,7 @@ type WebRTCICEStream interface {
 	// 
 	// 	- goret WebRTCICETransport (nullable) 
 	ParentFindTransport(component WebRTCICEComponent) WebRTCICETransport
-	// ParentGatherCandidates calls the default implementations of the gather_candidates virtual method.
+	// ParentGatherCandidates calls the default implementations of the `GstWebRTCICEStream.gather_candidates` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -3898,7 +3898,7 @@ func UnsafeApplyWebRTCICEStreamOverrides[Instance WebRTCICEStream](gclass unsafe
 	}
 }
 
-// ParentFindTransport calls the default implementations of the find_transport virtual method.
+// ParentFindTransport calls the default implementations of the `GstWebRTCICEStream.find_transport` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3931,7 +3931,7 @@ func (stream *WebRTCICEStreamInstance) ParentFindTransport(component WebRTCICECo
 	return goret
 }
 
-// ParentGatherCandidates calls the default implementations of the gather_candidates virtual method.
+// ParentGatherCandidates calls the default implementations of the `GstWebRTCICEStream.gather_candidates` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -4025,7 +4025,7 @@ type WebRTCICETransport interface {
 
 	// chain up virtual methods:
 
-	// ParentGatherCandidates calls the default implementations of the gather_candidates virtual method.
+	// ParentGatherCandidates calls the default implementations of the `GstWebRTCICETransport.gather_candidates` virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -4210,7 +4210,7 @@ func UnsafeApplyWebRTCICETransportOverrides[Instance WebRTCICETransport](gclass 
 	}
 }
 
-// ParentGatherCandidates calls the default implementations of the gather_candidates virtual method.
+// ParentGatherCandidates calls the default implementations of the `GstWebRTCICETransport.gather_candidates` virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
