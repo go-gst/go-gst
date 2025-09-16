@@ -17,7 +17,7 @@ import (
 	"github.com/go-gst/go-gst/pkg/gstsdp"
 )
 
-// #cgo pkg-config: gstreamer-webrtc-1.0
+// #cgo pkg-config: gstreamer-webrtc-1.0 gstreamer-sdp-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #define GST_USE_UNSTABLE_API // APIs in this package are unstable
 // #include <stdlib.h>

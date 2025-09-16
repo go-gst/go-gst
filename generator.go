@@ -239,10 +239,12 @@ func GstUseUnstableAPI(nsgen *girgen.NamespaceGenerator) error {
 }
 
 func FixWebrtcPkgConfig(nsgen *girgen.NamespaceGenerator) error {
-	for _, f := range nsgen.Files {
-		// see: https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/8433, remove after release
-		f.Header().AddPackage("gstreamer-sdp-1.0")
+	// see: https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/8433, remove after release
+	nsgen.Namespace().Repository.Packages = append(nsgen.Namespace().Repository.Packages, gir.Package{
+		Name: "gstreamer-sdp-1.0",
+	})
 
+	for _, f := range nsgen.Files {
 		// see https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/8470 , remove after release
 		f.Header().IncludeC("gst/webrtc/sctptransport.h")
 	}
