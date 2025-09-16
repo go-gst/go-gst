@@ -12,8 +12,8 @@ github.com/mattn/go-colorable v0.1.8 h1:c1ghPdyEDarC70ftn0y+A/Ee++9zz8ljHG1b13eJ
 github.com/mattn/go-colorable v0.1.8/go.mod h1:u6P/XSegPjTcexA+o6vUJrdnUu04hMope9wVRipJSqc=
 github.com/mattn/go-isatty v0.0.12 h1:wuysRhFDzyxgEmMf5xjvJ2M9dZoWAXNNr5LSBS7uHXY=
 github.com/mattn/go-isatty v0.0.12/go.mod h1:cbi8OIDigv2wuxKPP5vlRcQ1OAZbq2CE4Kysco4FUpU=
-github.com/rswilli/gotk4 v0.0.0-20250424135740-c21352bf183b h1:NwdqnyPT8AOZfSSlymwsoMBmfl77PAsBhB/UAORVUpw=
-github.com/rswilli/gotk4 v0.0.0-20250424135740-c21352bf183b/go.mod h1:bvqvG9zCPsZpqPMKfx0TvmR6ltWKEOaBHzLHY02/Rf8=
+github.com/rswilli/gotk4 v0.0.0-20250502131654-c922409941a2 h1:BoGvQ/dV7fIfDF7hyXfEHG/Y9yHuPG6sSN6hyHbbWH8=
+github.com/rswilli/gotk4 v0.0.0-20250502131654-c922409941a2/go.mod h1:bvqvG9zCPsZpqPMKfx0TvmR6ltWKEOaBHzLHY02/Rf8=
 golang.org/x/sync v0.8.0 h1:3NFvSEYkUoMifnESzZl15y791HH1qU2xm6eCJU5ZPXQ=
 golang.org/x/sync v0.8.0/go.mod h1:Czt+wKu1gCyEFDUtn0jG5QVvpJ6rzVqr5aXyt9drQfk=
 golang.org/x/sys v0.0.0-20200116001909-b77594299b42/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
