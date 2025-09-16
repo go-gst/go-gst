@@ -1481,7 +1481,7 @@ func GLValueGetTextureTargetMask(value *gobject.Value) GLTextureTarget {
 	var carg1 *C.GValue            // in, none, converted
 	var cret  C.GstGLTextureTarget // return, none, casted
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
 	cret = C.gst_gl_value_get_texture_target_mask(carg1)
 	runtime.KeepAlive(value)
@@ -1508,7 +1508,7 @@ func GLValueSetTextureTarget(value *gobject.Value, target GLTextureTarget) bool 
 	var carg2 C.GstGLTextureTarget // in, none, casted
 	var cret  C.gboolean           // return
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 	carg2 = C.GstGLTextureTarget(target)
 
 	cret = C.gst_gl_value_set_texture_target(carg1, carg2)
@@ -1542,7 +1542,7 @@ func GLValueSetTextureTargetFromMask(value *gobject.Value, targetMask GLTextureT
 	var carg2 C.GstGLTextureTarget // in, none, casted
 	var cret  C.gboolean           // return
 
-	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibNone(value))
+	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 	carg2 = C.GstGLTextureTarget(targetMask)
 
 	cret = C.gst_gl_value_set_texture_target_from_mask(carg1, carg2)
