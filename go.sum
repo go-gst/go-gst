@@ -18,8 +18,8 @@ github.com/mattn/go-isatty v0.0.12 h1:wuysRhFDzyxgEmMf5xjvJ2M9dZoWAXNNr5LSBS7uHX
 github.com/mattn/go-isatty v0.0.12/go.mod h1:cbi8OIDigv2wuxKPP5vlRcQ1OAZbq2CE4Kysco4FUpU=
 github.com/mattn/go-pointer v0.0.1 h1:n+XhsuGeVO6MEAp7xyEukFINEa+Quek5psIR/ylA6o0=
 github.com/mattn/go-pointer v0.0.1/go.mod h1:2zXcozF6qYGgmsG+SeTZz3oAbFLdD3OWqnUbNvJZAlc=
-github.com/rswilli/gotk4 v0.0.0-20250502131654-c922409941a2 h1:BoGvQ/dV7fIfDF7hyXfEHG/Y9yHuPG6sSN6hyHbbWH8=
-github.com/rswilli/gotk4 v0.0.0-20250502131654-c922409941a2/go.mod h1:bvqvG9zCPsZpqPMKfx0TvmR6ltWKEOaBHzLHY02/Rf8=
+github.com/rswilli/gotk4 v0.0.0-20250506222613-a4c455e7109b h1:p4/HisqQjauJIAy3B1cbNgprnOgsFZLXlJoG0XaOL2w=
+github.com/rswilli/gotk4 v0.0.0-20250506222613-a4c455e7109b/go.mod h1:KAKkz3MmLKBuGE+NlY9snuxUmmhBMsMQwNBEm98FcHE=
 golang.org/x/exp v0.0.0-20240909161429-701f63a606c0 h1:e66Fs6Z+fZTbFBAxKfP3PALWBtpfqks2bwGcexMxgtk=
 golang.org/x/exp v0.0.0-20240909161429-701f63a606c0/go.mod h1:2TbTHSBQa924w8M6Xs1QcRcFwyucIwBGpK1p2f1YFFY=
 golang.org/x/sync v0.8.0 h1:3NFvSEYkUoMifnESzZl15y791HH1qU2xm6eCJU5ZPXQ=
