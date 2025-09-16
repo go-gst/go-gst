@@ -133,7 +133,7 @@ func (m *Message) String() string {
 	msg := fmt.Sprintf("[%s] %s - ", m.Source().GetName(), m.Type().String())
 	switch m.Type() {
 
-	case MessageEos:
+	case MessageEOS:
 		msg += "End-of-stream reached in the pipeline"
 
 	case MessageInfo:

@@ -130,7 +130,7 @@ func mainLoop(pipeline gst.Pipeline) error {
 
 	for msg := range pipeline.GetBus().Messages(context.Background()) {
 		switch msg.Type() {
-		case gst.MessageEos:
+		case gst.MessageEOS:
 			return nil
 		case gst.MessageError:
 			debug, gerr := msg.ParseError()

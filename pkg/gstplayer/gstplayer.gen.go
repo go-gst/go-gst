@@ -59,20 +59,20 @@ func init() {
 type PlayerColorBalanceType C.int
 
 const (
-	// PlayerColorBalanceHue wraps PLAYER_COLOR_BALANCE_HUE
+	// PlayerColorBalanceHue wraps GST_PLAYER_COLOR_BALANCE_HUE
 	//
 	// hue or color balance.
 	PlayerColorBalanceHue PlayerColorBalanceType = 3
-	// PlayerColorBalanceBrightness wraps PLAYER_COLOR_BALANCE_BRIGHTNESS
+	// PlayerColorBalanceBrightness wraps GST_PLAYER_COLOR_BALANCE_BRIGHTNESS
 	//
 	// brightness or black level.
 	PlayerColorBalanceBrightness PlayerColorBalanceType = 0
-	// PlayerColorBalanceSaturation wraps PLAYER_COLOR_BALANCE_SATURATION
+	// PlayerColorBalanceSaturation wraps GST_PLAYER_COLOR_BALANCE_SATURATION
 	//
 	// color saturation or chroma
 	// gain.
 	PlayerColorBalanceSaturation PlayerColorBalanceType = 2
-	// PlayerColorBalanceContrast wraps PLAYER_COLOR_BALANCE_CONTRAST
+	// PlayerColorBalanceContrast wraps GST_PLAYER_COLOR_BALANCE_CONTRAST
 	//
 	// contrast or luma gain.
 	PlayerColorBalanceContrast PlayerColorBalanceType = 1
@@ -133,7 +133,7 @@ func PlayerColorBalanceTypeGetName(typ PlayerColorBalanceType) string {
 type PlayerError C.int
 
 const (
-	// PlayerErrorFailed wraps PLAYER_ERROR_FAILED
+	// PlayerErrorFailed wraps GST_PLAYER_ERROR_FAILED
 	//
 	// generic error.
 	PlayerErrorFailed PlayerError = 0
@@ -208,23 +208,23 @@ func PlayerErrorQuark() glib.Quark {
 type PlayerSnapshotFormat C.int
 
 const (
-	// PlayerThumbnailRawNative wraps PLAYER_THUMBNAIL_RAW_NATIVE
+	// PlayerThumbnailRawNative wraps GST_PLAYER_THUMBNAIL_RAW_NATIVE
 	PlayerThumbnailRawNative PlayerSnapshotFormat = 0
-	// PlayerThumbnailRawXrgb wraps PLAYER_THUMBNAIL_RAW_xRGB
+	// PlayerThumbnailRawXrgb wraps GST_PLAYER_THUMBNAIL_RAW_xRGB
 	PlayerThumbnailRawXrgb PlayerSnapshotFormat = 1
-	// PlayerThumbnailRawBgrx wraps PLAYER_THUMBNAIL_RAW_BGRx
+	// PlayerThumbnailRawBgrx wraps GST_PLAYER_THUMBNAIL_RAW_BGRx
 	PlayerThumbnailRawBgrx PlayerSnapshotFormat = 2
-	// PlayerThumbnailJPG wraps PLAYER_THUMBNAIL_JPG
-	PlayerThumbnailJPG PlayerSnapshotFormat = 3
-	// PlayerThumbnailPNG wraps PLAYER_THUMBNAIL_PNG
-	PlayerThumbnailPNG PlayerSnapshotFormat = 4
+	// PlayerThumbnailJpg wraps GST_PLAYER_THUMBNAIL_JPG
+	PlayerThumbnailJpg PlayerSnapshotFormat = 3
+	// PlayerThumbnailPng wraps GST_PLAYER_THUMBNAIL_PNG
+	PlayerThumbnailPng PlayerSnapshotFormat = 4
 )
 
 
 func (e PlayerSnapshotFormat) String() string {
 	switch e {
-		case PlayerThumbnailJPG: return "PlayerThumbnailJPG"
-		case PlayerThumbnailPNG: return "PlayerThumbnailPNG"
+		case PlayerThumbnailJpg: return "PlayerThumbnailJpg"
+		case PlayerThumbnailPng: return "PlayerThumbnailPng"
 		case PlayerThumbnailRawBgrx: return "PlayerThumbnailRawBgrx"
 		case PlayerThumbnailRawNative: return "PlayerThumbnailRawNative"
 		case PlayerThumbnailRawXrgb: return "PlayerThumbnailRawXrgb"
@@ -236,19 +236,19 @@ func (e PlayerSnapshotFormat) String() string {
 type PlayerState C.int
 
 const (
-	// PlayerStateStopped wraps PLAYER_STATE_STOPPED
+	// PlayerStateStopped wraps GST_PLAYER_STATE_STOPPED
 	//
 	// the player is stopped.
 	PlayerStateStopped PlayerState = 0
-	// PlayerStateBuffering wraps PLAYER_STATE_BUFFERING
+	// PlayerStateBuffering wraps GST_PLAYER_STATE_BUFFERING
 	//
 	// the player is buffering.
 	PlayerStateBuffering PlayerState = 1
-	// PlayerStatePaused wraps PLAYER_STATE_PAUSED
+	// PlayerStatePaused wraps GST_PLAYER_STATE_PAUSED
 	//
 	// the player is paused.
 	PlayerStatePaused PlayerState = 2
-	// PlayerStatePlaying wraps PLAYER_STATE_PLAYING
+	// PlayerStatePlaying wraps GST_PLAYER_STATE_PLAYING
 	//
 	// the player is currently playing a
 	// stream.

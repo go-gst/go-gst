@@ -67,15 +67,15 @@ const TAG_ID3V2_HEADER_SIZE = 10
 type TagDemuxResult C.int
 
 const (
-	// TagDemuxResultBrokenTag wraps TAG_DEMUX_RESULT_BROKEN_TAG
+	// TagDemuxResultBrokenTag wraps GST_TAG_DEMUX_RESULT_BROKEN_TAG
 	//
 	// cannot parse tag, just skip it
 	TagDemuxResultBrokenTag TagDemuxResult = 0
-	// TagDemuxResultAgain wraps TAG_DEMUX_RESULT_AGAIN
+	// TagDemuxResultAgain wraps GST_TAG_DEMUX_RESULT_AGAIN
 	//
 	// call again with less or more data
 	TagDemuxResultAgain TagDemuxResult = 1
-	// TagDemuxResultOK wraps TAG_DEMUX_RESULT_OK
+	// TagDemuxResultOK wraps GST_TAG_DEMUX_RESULT_OK
 	//
 	// parsed tag successfully
 	TagDemuxResultOK TagDemuxResult = 2
@@ -111,85 +111,85 @@ func (e TagDemuxResult) String() string {
 type TagImageType C.int
 
 const (
-	// TagImageTypeNone wraps TAG_IMAGE_TYPE_NONE
+	// TagImageTypeNone wraps GST_TAG_IMAGE_TYPE_NONE
 	//
 	// No image type. Can be used to
 	//      tell functions such as gst_tag_image_data_to_image_sample() that no
 	//      image type should be set.
 	TagImageTypeNone TagImageType = -1
-	// TagImageTypeUndefined wraps TAG_IMAGE_TYPE_UNDEFINED
+	// TagImageTypeUndefined wraps GST_TAG_IMAGE_TYPE_UNDEFINED
 	//
 	// Undefined/other image type
 	TagImageTypeUndefined TagImageType = 0
-	// TagImageTypeFrontCover wraps TAG_IMAGE_TYPE_FRONT_COVER
+	// TagImageTypeFrontCover wraps GST_TAG_IMAGE_TYPE_FRONT_COVER
 	//
 	// Cover (front)
 	TagImageTypeFrontCover TagImageType = 1
-	// TagImageTypeBackCover wraps TAG_IMAGE_TYPE_BACK_COVER
+	// TagImageTypeBackCover wraps GST_TAG_IMAGE_TYPE_BACK_COVER
 	//
 	// Cover (back)
 	TagImageTypeBackCover TagImageType = 2
-	// TagImageTypeLeafletPage wraps TAG_IMAGE_TYPE_LEAFLET_PAGE
+	// TagImageTypeLeafletPage wraps GST_TAG_IMAGE_TYPE_LEAFLET_PAGE
 	//
 	// Leaflet page
 	TagImageTypeLeafletPage TagImageType = 3
-	// TagImageTypeMedium wraps TAG_IMAGE_TYPE_MEDIUM
+	// TagImageTypeMedium wraps GST_TAG_IMAGE_TYPE_MEDIUM
 	//
 	// Medium (e.g. label side of CD)
 	TagImageTypeMedium TagImageType = 4
-	// TagImageTypeLeadArtist wraps TAG_IMAGE_TYPE_LEAD_ARTIST
+	// TagImageTypeLeadArtist wraps GST_TAG_IMAGE_TYPE_LEAD_ARTIST
 	//
 	// Lead artist/lead performer/soloist
 	TagImageTypeLeadArtist TagImageType = 5
-	// TagImageTypeArtist wraps TAG_IMAGE_TYPE_ARTIST
+	// TagImageTypeArtist wraps GST_TAG_IMAGE_TYPE_ARTIST
 	//
 	// Artist/performer
 	TagImageTypeArtist TagImageType = 6
-	// TagImageTypeConductor wraps TAG_IMAGE_TYPE_CONDUCTOR
+	// TagImageTypeConductor wraps GST_TAG_IMAGE_TYPE_CONDUCTOR
 	//
 	// Conductor
 	TagImageTypeConductor TagImageType = 7
-	// TagImageTypeBandOrchestra wraps TAG_IMAGE_TYPE_BAND_ORCHESTRA
+	// TagImageTypeBandOrchestra wraps GST_TAG_IMAGE_TYPE_BAND_ORCHESTRA
 	//
 	// Band/orchestra
 	TagImageTypeBandOrchestra TagImageType = 8
-	// TagImageTypeComposer wraps TAG_IMAGE_TYPE_COMPOSER
+	// TagImageTypeComposer wraps GST_TAG_IMAGE_TYPE_COMPOSER
 	//
 	// Composer
 	TagImageTypeComposer TagImageType = 9
-	// TagImageTypeLyricist wraps TAG_IMAGE_TYPE_LYRICIST
+	// TagImageTypeLyricist wraps GST_TAG_IMAGE_TYPE_LYRICIST
 	//
 	// Lyricist/text writer
 	TagImageTypeLyricist TagImageType = 10
-	// TagImageTypeRecordingLocation wraps TAG_IMAGE_TYPE_RECORDING_LOCATION
+	// TagImageTypeRecordingLocation wraps GST_TAG_IMAGE_TYPE_RECORDING_LOCATION
 	//
 	// Recording location
 	TagImageTypeRecordingLocation TagImageType = 11
-	// TagImageTypeDuringRecording wraps TAG_IMAGE_TYPE_DURING_RECORDING
+	// TagImageTypeDuringRecording wraps GST_TAG_IMAGE_TYPE_DURING_RECORDING
 	//
 	// During recording
 	TagImageTypeDuringRecording TagImageType = 12
-	// TagImageTypeDuringPerformance wraps TAG_IMAGE_TYPE_DURING_PERFORMANCE
+	// TagImageTypeDuringPerformance wraps GST_TAG_IMAGE_TYPE_DURING_PERFORMANCE
 	//
 	// During performance
 	TagImageTypeDuringPerformance TagImageType = 13
-	// TagImageTypeVideoCapture wraps TAG_IMAGE_TYPE_VIDEO_CAPTURE
+	// TagImageTypeVideoCapture wraps GST_TAG_IMAGE_TYPE_VIDEO_CAPTURE
 	//
 	// Movie/video screen capture
 	TagImageTypeVideoCapture TagImageType = 14
-	// TagImageTypeFish wraps TAG_IMAGE_TYPE_FISH
+	// TagImageTypeFish wraps GST_TAG_IMAGE_TYPE_FISH
 	//
 	// A fish as funny as the ID3v2 spec
 	TagImageTypeFish TagImageType = 15
-	// TagImageTypeIllustration wraps TAG_IMAGE_TYPE_ILLUSTRATION
+	// TagImageTypeIllustration wraps GST_TAG_IMAGE_TYPE_ILLUSTRATION
 	//
 	// Illustration
 	TagImageTypeIllustration TagImageType = 16
-	// TagImageTypeBandArtistLogo wraps TAG_IMAGE_TYPE_BAND_ARTIST_LOGO
+	// TagImageTypeBandArtistLogo wraps GST_TAG_IMAGE_TYPE_BAND_ARTIST_LOGO
 	//
 	// Band/artist logotype
 	TagImageTypeBandArtistLogo TagImageType = 17
-	// TagImageTypePublisherStudioLogo wraps TAG_IMAGE_TYPE_PUBLISHER_STUDIO_LOGO
+	// TagImageTypePublisherStudioLogo wraps GST_TAG_IMAGE_TYPE_PUBLISHER_STUDIO_LOGO
 	//
 	// Publisher/studio logotype
 	TagImageTypePublisherStudioLogo TagImageType = 18
@@ -241,76 +241,76 @@ func (e TagImageType) String() string {
 type TagLicenseFlags C.gint
 
 const (
-	// TagLicensePermitsReproduction wraps TAG_LICENSE_PERMITS_REPRODUCTION
+	// TagLicensePermitsReproduction wraps GST_TAG_LICENSE_PERMITS_REPRODUCTION
 	//
 	// making multiple copies
 	//     is allowed
 	TagLicensePermitsReproduction TagLicenseFlags = 1
-	// TagLicensePermitsDistribution wraps TAG_LICENSE_PERMITS_DISTRIBUTION
+	// TagLicensePermitsDistribution wraps GST_TAG_LICENSE_PERMITS_DISTRIBUTION
 	//
 	// distribution, public display
 	//     and public performance are allowed
 	TagLicensePermitsDistribution TagLicenseFlags = 2
-	// TagLicensePermitsDerivativeWorks wraps TAG_LICENSE_PERMITS_DERIVATIVE_WORKS
+	// TagLicensePermitsDerivativeWorks wraps GST_TAG_LICENSE_PERMITS_DERIVATIVE_WORKS
 	//
 	// distribution of derivative
 	//     works is allowed
 	TagLicensePermitsDerivativeWorks TagLicenseFlags = 4
-	// TagLicensePermitsSharing wraps TAG_LICENSE_PERMITS_SHARING
+	// TagLicensePermitsSharing wraps GST_TAG_LICENSE_PERMITS_SHARING
 	//
 	// commercial derivatives are allowed,
 	//     but only non-commercial distribution is allowed
 	TagLicensePermitsSharing TagLicenseFlags = 8
-	// TagLicenseRequiresNotice wraps TAG_LICENSE_REQUIRES_NOTICE
+	// TagLicenseRequiresNotice wraps GST_TAG_LICENSE_REQUIRES_NOTICE
 	//
 	// copyright and license notices
 	//     must be kept intact
 	TagLicenseRequiresNotice TagLicenseFlags = 256
-	// TagLicenseRequiresAttribution wraps TAG_LICENSE_REQUIRES_ATTRIBUTION
+	// TagLicenseRequiresAttribution wraps GST_TAG_LICENSE_REQUIRES_ATTRIBUTION
 	//
 	// credit must be given to
 	//     copyright holder and/or author
 	TagLicenseRequiresAttribution TagLicenseFlags = 512
-	// TagLicenseRequiresShareAlike wraps TAG_LICENSE_REQUIRES_SHARE_ALIKE
+	// TagLicenseRequiresShareAlike wraps GST_TAG_LICENSE_REQUIRES_SHARE_ALIKE
 	//
 	// derivative works must be
 	//     licensed under the same terms or compatible terms as the original work
 	TagLicenseRequiresShareAlike TagLicenseFlags = 1024
-	// TagLicenseRequiresSourceCode wraps TAG_LICENSE_REQUIRES_SOURCE_CODE
+	// TagLicenseRequiresSourceCode wraps GST_TAG_LICENSE_REQUIRES_SOURCE_CODE
 	//
 	// source code (the preferred
 	//     form for making modifications) must be provided when exercising some
 	//     rights granted by the license
 	TagLicenseRequiresSourceCode TagLicenseFlags = 2048
-	// TagLicenseRequiresCopyleft wraps TAG_LICENSE_REQUIRES_COPYLEFT
+	// TagLicenseRequiresCopyleft wraps GST_TAG_LICENSE_REQUIRES_COPYLEFT
 	//
 	// derivative and combined works
 	//     must be licensed under specified terms, similar to those of the original
 	//     work
 	TagLicenseRequiresCopyleft TagLicenseFlags = 4096
-	// TagLicenseRequiresLesserCopyleft wraps TAG_LICENSE_REQUIRES_LESSER_COPYLEFT
+	// TagLicenseRequiresLesserCopyleft wraps GST_TAG_LICENSE_REQUIRES_LESSER_COPYLEFT
 	//
 	// derivative works must be
 	//     licensed under specified terms, with at least the same conditions as
 	//     the original work; combinations with the work may be licensed under
 	//     different terms
 	TagLicenseRequiresLesserCopyleft TagLicenseFlags = 8192
-	// TagLicenseProhibitsCommercialUse wraps TAG_LICENSE_PROHIBITS_COMMERCIAL_USE
+	// TagLicenseProhibitsCommercialUse wraps GST_TAG_LICENSE_PROHIBITS_COMMERCIAL_USE
 	//
 	// exercising rights for
 	//     commercial purposes is prohibited
 	TagLicenseProhibitsCommercialUse TagLicenseFlags = 65536
-	// TagLicenseProhibitsHighIncomeNationUse wraps TAG_LICENSE_PROHIBITS_HIGH_INCOME_NATION_USE
+	// TagLicenseProhibitsHighIncomeNationUse wraps GST_TAG_LICENSE_PROHIBITS_HIGH_INCOME_NATION_USE
 	//
 	// use in a
 	//     non-developing country is prohibited
 	TagLicenseProhibitsHighIncomeNationUse TagLicenseFlags = 131072
-	// TagLicenseCreativeCommonsLicense wraps TAG_LICENSE_CREATIVE_COMMONS_LICENSE
+	// TagLicenseCreativeCommonsLicense wraps GST_TAG_LICENSE_CREATIVE_COMMONS_LICENSE
 	//
 	// this license was created
 	//     by the Creative Commons project
 	TagLicenseCreativeCommonsLicense TagLicenseFlags = 16777216
-	// TagLicenseFreeSoftwareFoundationLicense wraps TAG_LICENSE_FREE_SOFTWARE_FOUNDATION_LICENSE
+	// TagLicenseFreeSoftwareFoundationLicense wraps GST_TAG_LICENSE_FREE_SOFTWARE_FOUNDATION_LICENSE
 	//
 	// this license was
 	//     created by the Free Software Foundation (FSF)
@@ -469,7 +469,7 @@ func TagFreeformStringToUTF8(data string, envVars []string) string {
 	return goret
 }
 
-// TagFromID3Tag wraps gst_tag_from_id3_tag
+// TagFromId3Tag wraps gst_tag_from_id3_tag
 // 
 // The function takes the following parameters:
 // 
@@ -480,7 +480,7 @@ func TagFreeformStringToUTF8(data string, envVars []string) string {
 // 	- goret string (nullable) 
 //
 // Looks up the GStreamer tag for a ID3v2 tag.
-func TagFromID3Tag(id3Tag string) string {
+func TagFromId3Tag(id3Tag string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
 
@@ -499,7 +499,7 @@ func TagFromID3Tag(id3Tag string) string {
 	return goret
 }
 
-// TagFromID3UserTag wraps gst_tag_from_id3_user_tag
+// TagFromId3UserTag wraps gst_tag_from_id3_user_tag
 // 
 // The function takes the following parameters:
 // 
@@ -512,7 +512,7 @@ func TagFromID3Tag(id3Tag string) string {
 //
 // Looks up the GStreamer tag for an ID3v2 user tag (e.g. description in
 // TXXX frame or owner in UFID frame).
-func TagFromID3UserTag(typ string, id3UserTag string) string {
+func TagFromId3UserTag(typ string, id3UserTag string) string {
 	var carg1 *C.gchar // in, none, string
 	var carg2 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
@@ -565,7 +565,7 @@ func TagFromVorbisTag(vorbisTag string) string {
 	return goret
 }
 
-// TagGetID3V2TagSize wraps gst_tag_get_id3v2_tag_size
+// TagGetId3v2TagSize wraps gst_tag_get_id3v2_tag_size
 // 
 // The function takes the following parameters:
 // 
@@ -577,7 +577,7 @@ func TagFromVorbisTag(vorbisTag string) string {
 //
 // Determines size of an ID3v2 tag on buffer containing at least ID3v2 header,
 // i.e. at least #GST_TAG_ID3V2_HEADER_SIZE (10) bytes;
-func TagGetID3V2TagSize(buffer *gst.Buffer) uint {
+func TagGetId3v2TagSize(buffer *gst.Buffer) uint {
 	var carg1 *C.GstBuffer // in, none, converted
 	var cret  C.guint      // return, none, casted
 
@@ -593,7 +593,7 @@ func TagGetID3V2TagSize(buffer *gst.Buffer) uint {
 	return goret
 }
 
-// TagGetLanguageCodeISO6391 wraps gst_tag_get_language_code_iso_639_1
+// TagGetLanguageCodeIso6391 wraps gst_tag_get_language_code_iso_639_1
 // 
 // The function takes the following parameters:
 // 
@@ -608,7 +608,7 @@ func TagGetID3V2TagSize(buffer *gst.Buffer) uint {
 // convenience).
 // 
 // Language codes are case-sensitive and expected to be lower case.
-func TagGetLanguageCodeISO6391(langCode string) string {
+func TagGetLanguageCodeIso6391(langCode string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
 
@@ -627,7 +627,7 @@ func TagGetLanguageCodeISO6391(langCode string) string {
 	return goret
 }
 
-// TagGetLanguageCodeISO6392B wraps gst_tag_get_language_code_iso_639_2B
+// TagGetLanguageCodeIso6392b wraps gst_tag_get_language_code_iso_639_2B
 // 
 // The function takes the following parameters:
 // 
@@ -646,7 +646,7 @@ func TagGetLanguageCodeISO6391(langCode string) string {
 // "terminological" codes are preferred.
 // 
 // Language codes are case-sensitive and expected to be lower case.
-func TagGetLanguageCodeISO6392B(langCode string) string {
+func TagGetLanguageCodeIso6392b(langCode string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
 
@@ -665,7 +665,7 @@ func TagGetLanguageCodeISO6392B(langCode string) string {
 	return goret
 }
 
-// TagGetLanguageCodeISO6392T wraps gst_tag_get_language_code_iso_639_2T
+// TagGetLanguageCodeIso6392t wraps gst_tag_get_language_code_iso_639_2T
 // 
 // The function takes the following parameters:
 // 
@@ -684,7 +684,7 @@ func TagGetLanguageCodeISO6392B(langCode string) string {
 // "terminological" codes are preferred over the "bibliographic" ones.
 // 
 // Language codes are case-sensitive and expected to be lower case.
-func TagGetLanguageCodeISO6392T(langCode string) string {
+func TagGetLanguageCodeIso6392t(langCode string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
 
@@ -980,7 +980,7 @@ func TagGetLicenses() []string {
 	return goret
 }
 
-// TagID3GenreCount wraps gst_tag_id3_genre_count
+// TagId3GenreCount wraps gst_tag_id3_genre_count
 // 
 // The function returns the following values:
 // 
@@ -988,7 +988,7 @@ func TagGetLicenses() []string {
 //
 // Gets the number of ID3v1 genres that can be identified. Winamp genres are
 // included.
-func TagID3GenreCount() uint {
+func TagId3GenreCount() uint {
 	var cret C.guint // return, none, casted
 
 	cret = C.gst_tag_id3_genre_count()
@@ -1000,7 +1000,7 @@ func TagID3GenreCount() uint {
 	return goret
 }
 
-// TagID3GenreGet wraps gst_tag_id3_genre_get
+// TagId3GenreGet wraps gst_tag_id3_genre_get
 // 
 // The function takes the following parameters:
 // 
@@ -1011,7 +1011,7 @@ func TagID3GenreCount() uint {
 // 	- goret string (nullable) 
 //
 // Gets the ID3v1 genre name for a given ID.
-func TagID3GenreGet(id uint) string {
+func TagId3GenreGet(id uint) string {
 	var carg1 C.guint  // in, none, casted
 	var cret  *C.gchar // return, none, string, nullable-string
 
@@ -1089,7 +1089,7 @@ func TagImageDataToImageSample(imageData []uint8, imageType TagImageType) *gst.S
 	return goret
 }
 
-// TagListAddID3Image wraps gst_tag_list_add_id3_image
+// TagListAddId3Image wraps gst_tag_list_add_id3_image
 // 
 // The function takes the following parameters:
 // 
@@ -1105,7 +1105,7 @@ func TagImageDataToImageSample(imageData []uint8, imageType TagImageType) *gst.S
 // Adds an image from an ID3 APIC frame (or similar, such as used in FLAC)
 // to the given tag list. Also see gst_tag_image_data_to_image_sample() for
 // more information on image tags in GStreamer.
-func TagListAddID3Image(tagList *gst.TagList, imageData []uint8, id3PictureType uint) bool {
+func TagListAddId3Image(tagList *gst.TagList, imageData []uint8, id3PictureType uint) bool {
 	var carg1 *C.GstTagList // in, none, converted
 	var carg2 *C.guint8     // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg3)
 	var carg3 C.guint       // implicit
@@ -1171,7 +1171,7 @@ func TagListFromExifBuffer(buffer *gst.Buffer, byteOrder int32, baseOffset uint3
 	return goret
 }
 
-// TagListFromExifBufferWithTIFFHeader wraps gst_tag_list_from_exif_buffer_with_tiff_header
+// TagListFromExifBufferWithTiffHeader wraps gst_tag_list_from_exif_buffer_with_tiff_header
 // 
 // The function takes the following parameters:
 // 
@@ -1182,7 +1182,7 @@ func TagListFromExifBuffer(buffer *gst.Buffer, byteOrder int32, baseOffset uint3
 // 	- goret *gst.TagList 
 //
 // Parses the exif tags starting with a tiff header structure.
-func TagListFromExifBufferWithTIFFHeader(buffer *gst.Buffer) *gst.TagList {
+func TagListFromExifBufferWithTiffHeader(buffer *gst.Buffer) *gst.TagList {
 	var carg1 *C.GstBuffer  // in, none, converted
 	var cret  *C.GstTagList // return, full, converted
 
@@ -1198,7 +1198,7 @@ func TagListFromExifBufferWithTIFFHeader(buffer *gst.Buffer) *gst.TagList {
 	return goret
 }
 
-// TagListFromID3V2Tag wraps gst_tag_list_from_id3v2_tag
+// TagListFromId3v2Tag wraps gst_tag_list_from_id3v2_tag
 // 
 // The function takes the following parameters:
 // 
@@ -1210,7 +1210,7 @@ func TagListFromExifBufferWithTIFFHeader(buffer *gst.Buffer) *gst.TagList {
 //
 // Creates a new tag list that contains the information parsed out of a
 // ID3 tag.
-func TagListFromID3V2Tag(buffer *gst.Buffer) *gst.TagList {
+func TagListFromId3v2Tag(buffer *gst.Buffer) *gst.TagList {
 	var carg1 *C.GstBuffer  // in, none, converted
 	var cret  *C.GstTagList // return, full, converted, nullable
 
@@ -1349,7 +1349,7 @@ func TagListFromXmpBuffer(buffer *gst.Buffer) *gst.TagList {
 	return goret
 }
 
-// TagListNewFromID3V1 wraps gst_tag_list_new_from_id3v1
+// TagListNewFromId3v1 wraps gst_tag_list_new_from_id3v1
 // 
 // The function takes the following parameters:
 // 
@@ -1361,7 +1361,7 @@ func TagListFromXmpBuffer(buffer *gst.Buffer) *gst.TagList {
 //
 // Parses the data containing an ID3v1 tag and returns a #GstTagList from the
 // parsed data.
-func TagListNewFromID3V1(data [128]uint8) *gst.TagList {
+func TagListNewFromId3v1(data [128]uint8) *gst.TagList {
 	var carg1 *C.guint8     // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, fixed-size: 128)
 	var cret  *C.GstTagList // return, full, converted, nullable
 
@@ -1417,7 +1417,7 @@ func TagListToExifBuffer(taglist *gst.TagList, byteOrder int32, baseOffset uint3
 	return goret
 }
 
-// TagListToExifBufferWithTIFFHeader wraps gst_tag_list_to_exif_buffer_with_tiff_header
+// TagListToExifBufferWithTiffHeader wraps gst_tag_list_to_exif_buffer_with_tiff_header
 // 
 // The function takes the following parameters:
 // 
@@ -1429,7 +1429,7 @@ func TagListToExifBuffer(taglist *gst.TagList, byteOrder int32, baseOffset uint3
 //
 // Formats the tags in taglist into exif structure, a tiff header
 // is put in the beginning of the buffer.
-func TagListToExifBufferWithTIFFHeader(taglist *gst.TagList) *gst.Buffer {
+func TagListToExifBufferWithTiffHeader(taglist *gst.TagList) *gst.Buffer {
 	var carg1 *C.GstTagList // in, none, converted
 	var cret  *C.GstBuffer  // return, full, converted
 
@@ -1604,7 +1604,7 @@ func TagRegisterMusicbrainzTags() {
 	C.gst_tag_register_musicbrainz_tags()
 }
 
-// TagToID3Tag wraps gst_tag_to_id3_tag
+// TagToId3Tag wraps gst_tag_to_id3_tag
 // 
 // The function takes the following parameters:
 // 
@@ -1615,7 +1615,7 @@ func TagRegisterMusicbrainzTags() {
 // 	- goret string (nullable) 
 //
 // Looks up the ID3v2 tag for a GStreamer tag.
-func TagToID3Tag(gstTag string) string {
+func TagToId3Tag(gstTag string) string {
 	var carg1 *C.gchar // in, none, string
 	var cret  *C.gchar // return, none, string, nullable-string
 

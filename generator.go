@@ -24,8 +24,18 @@ var Data = genmain.Data{
 	Preprocessors: []gir.Preprocessor{
 		gir.MustIntrospect("Gst-1.Message.copy"),
 
-		// Enum has a member of same name:
-		gir.TypeRenamer("Gst-1.BufferCopyFlags", "BufferCopyFlagsType"),
+		// Bitfield has a member of same name:
+		gir.PreprocessorFunc(func(r gir.Repositories) {
+			bitfield := r.FindFullType("Gst-1.BufferCopyFlags").(*gir.Bitfield)
+
+			for _, m := range bitfield.Members {
+				if m.CIdentifier == "GST_BUFFER_COPY_FLAGS" {
+					m.CIdentifier = "GST_BUFFER_COPY_BUFFER_FLAGS"
+
+					m.Doc.String += " (go-gst: renamed from BufferCopyFlags)"
+				}
+			}
+		}),
 
 		// a member of the enum is generated twice:
 		DedupBitfieldMembers("GstVideo-1.VideoBufferFlags"),
@@ -38,21 +48,21 @@ var Data = genmain.Data{
 		MiniObjectExtenderBorrows(),
 
 		// collides with the base src extenders that actually provide a clock instead of returning the provided one
-		gir.RenameCallable("Gst-1.Element.provide_clock", "ProvidedClock"),
+		gir.RenameCallable("Gst-1.Element.provide_clock", "provided_clock"),
 
 		// collides with base src set caps
-		gir.RenameCallable("GstApp-1.AppSrc.set_caps", "AppSrcSetCaps"),
+		gir.RenameCallable("GstApp-1.AppSrc.set_caps", "app_src_set_caps"),
 
 		// collides with extending audio base payloader push
-		gir.RenameCallable("GstRtp-1.RTPBasePayload.push", "PushBuffer"),
+		gir.RenameCallable("GstRtp-1.RTPBasePayload.push", "push_buffer"),
 
 		// collides with extending audio base payloader push
-		gir.RenameCallable("GstAllocators-1.DRMDumbAllocator.alloc", "DRMAlloc"),
+		gir.RenameCallable("GstAllocators-1.DRMDumbAllocator.alloc", "drm_dumb_alloc"),
 
 		// otherwise clashes with control binding class extension
-		gir.RenameCallable("Gst-1.Object.get_control_binding", "CurrentControlBinding"),
+		gir.RenameCallable("Gst-1.Object.get_control_binding", "current_control_binding"),
 		// Collides with GstObject:
-		gir.RenameCallable("Gst-1.ControlBinding.sync_values", "SyncControlBindingValues"),
+		gir.RenameCallable("Gst-1.ControlBinding.sync_values", "sync_control_binding_values"),
 
 		// Collides with method of the same name
 		gir.TypeRenamer("GstVideo-1.VideoChromaResample", "VideoChromaResampler"),
@@ -64,10 +74,6 @@ var Data = genmain.Data{
 			// during init
 			t.GLibGetType = ""
 		}),
-
-		// String() is more go like than ToString()
-		gir.RenameCallable("Gst-1.Caps.to_string", "string"),
-		gir.RenameCallable("Gst-1.TagList.to_string", "string"),
 	},
 	Config: typesystem.Config{
 		Namespaces: map[string]typesystem.NamespaceConfig{

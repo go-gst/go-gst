@@ -33,6 +33,10 @@ import (
 // void _gotk4_gstgl1_GLBaseFilter_virtual_gl_stop(void* fnptr, GstGLBaseFilter* carg0) {
 // 	return ((void (*) (GstGLBaseFilter*))(fnptr))(carg0);
 // }
+// extern GstGLBaseMemory* _gotk4_gstgl1_GLBaseMemoryAllocator_alloc(GstGLBaseMemoryAllocator*, GstGLAllocationParams*);
+// GstGLBaseMemory* _gotk4_gstgl1_GLBaseMemoryAllocator_virtual_alloc(void* fnptr, GstGLBaseMemoryAllocator* carg0, GstGLAllocationParams* carg1) {
+// 	return ((GstGLBaseMemory* (*) (GstGLBaseMemoryAllocator*, GstGLAllocationParams*))(fnptr))(carg0, carg1);
+// }
 // extern gboolean _gotk4_gstgl1_GLBaseMixer_gl_start(GstGLBaseMixer*);
 // extern void _gotk4_gstgl1_GLBaseMixer_gl_stop(GstGLBaseMixer*);
 // gboolean _gotk4_gstgl1_GLBaseMixer_virtual_gl_start(void* fnptr, GstGLBaseMixer* carg0) {
@@ -250,7 +254,7 @@ func init() {
 		gobject.TypeMarshaler{T: TypeGLBaseMemoryTransfer, F: marshalGLBaseMemoryTransfer},
 		gobject.TypeMarshaler{T: TypeGLConfigSurfaceType, F: marshalGLConfigSurfaceType},
 		gobject.TypeMarshaler{T: TypeGLDisplayType, F: marshalGLDisplayType},
-		gobject.TypeMarshaler{T: TypeGLDrmFormatFlags, F: marshalGLDRMFormatFlags},
+		gobject.TypeMarshaler{T: TypeGLDrmFormatFlags, F: marshalGLDrmFormatFlags},
 		gobject.TypeMarshaler{T: TypeGLPlatform, F: marshalGLPlatform},
 		gobject.TypeMarshaler{T: TypeGLSLProfile, F: marshalGLSLProfile},
 		gobject.TypeMarshaler{T: TypeGLBaseFilter, F: marshalGLBaseFilterInstance},
@@ -326,19 +330,19 @@ const MAP_GL = 131072
 type GLBaseMemoryError C.int
 
 const (
-	// GLBaseMemoryErrorFailed wraps GL_BASE_MEMORY_ERROR_FAILED
+	// GlBaseMemoryErrorFailed wraps GST_GL_BASE_MEMORY_ERROR_FAILED
 	//
 	// generic failure
-	GLBaseMemoryErrorFailed GLBaseMemoryError = 0
-	// GLBaseMemoryErrorOldLibs wraps GL_BASE_MEMORY_ERROR_OLD_LIBS
+	GlBaseMemoryErrorFailed GLBaseMemoryError = 0
+	// GlBaseMemoryErrorOldLibs wraps GST_GL_BASE_MEMORY_ERROR_OLD_LIBS
 	//
 	// the implementation is too old and doesn't
 	//                                     implement enough features
-	GLBaseMemoryErrorOldLibs GLBaseMemoryError = 1
-	// GLBaseMemoryErrorResourceUnavailable wraps GL_BASE_MEMORY_ERROR_RESOURCE_UNAVAILABLE
+	GlBaseMemoryErrorOldLibs GLBaseMemoryError = 1
+	// GlBaseMemoryErrorResourceUnavailable wraps GST_GL_BASE_MEMORY_ERROR_RESOURCE_UNAVAILABLE
 	//
 	// a resource could not be found
-	GLBaseMemoryErrorResourceUnavailable GLBaseMemoryError = 2
+	GlBaseMemoryErrorResourceUnavailable GLBaseMemoryError = 2
 )
 
 func marshalGLBaseMemoryError(p unsafe.Pointer) (any, error) {
@@ -357,9 +361,9 @@ func (e GLBaseMemoryError) SetGoValue(v *gobject.Value) {
 
 func (e GLBaseMemoryError) String() string {
 	switch e {
-		case GLBaseMemoryErrorFailed: return "GLBaseMemoryErrorFailed"
-		case GLBaseMemoryErrorOldLibs: return "GLBaseMemoryErrorOldLibs"
-		case GLBaseMemoryErrorResourceUnavailable: return "GLBaseMemoryErrorResourceUnavailable"
+		case GlBaseMemoryErrorFailed: return "GlBaseMemoryErrorFailed"
+		case GlBaseMemoryErrorOldLibs: return "GlBaseMemoryErrorOldLibs"
+		case GlBaseMemoryErrorResourceUnavailable: return "GlBaseMemoryErrorResourceUnavailable"
 		default: return fmt.Sprintf("GLBaseMemoryError(%d)", e)
 	}
 }
@@ -385,18 +389,18 @@ func GLBaseMemoryErrorQuark() glib.Quark {
 type GLConfigCaveat C.int
 
 const (
-	// GLConfigCaveatNone wraps GL_CONFIG_CAVEAT_NONE
+	// GlConfigCaveatNone wraps GST_GL_CONFIG_CAVEAT_NONE
 	//
 	// none
-	GLConfigCaveatNone GLConfigCaveat = 0
-	// GLConfigCaveatSlow wraps GL_CONFIG_CAVEAT_SLOW
+	GlConfigCaveatNone GLConfigCaveat = 0
+	// GlConfigCaveatSlow wraps GST_GL_CONFIG_CAVEAT_SLOW
 	//
 	// slow
-	GLConfigCaveatSlow GLConfigCaveat = 1
-	// GLConfigCaveatNonConformant wraps GL_CONFIG_CAVEAT_NON_CONFORMANT
+	GlConfigCaveatSlow GLConfigCaveat = 1
+	// GlConfigCaveatNonConformant wraps GST_GL_CONFIG_CAVEAT_NON_CONFORMANT
 	//
 	// non-conformant
-	GLConfigCaveatNonConformant GLConfigCaveat = 2
+	GlConfigCaveatNonConformant GLConfigCaveat = 2
 )
 
 func marshalGLConfigCaveat(p unsafe.Pointer) (any, error) {
@@ -415,14 +419,14 @@ func (e GLConfigCaveat) SetGoValue(v *gobject.Value) {
 
 func (e GLConfigCaveat) String() string {
 	switch e {
-		case GLConfigCaveatNonConformant: return "GLConfigCaveatNonConformant"
-		case GLConfigCaveatNone: return "GLConfigCaveatNone"
-		case GLConfigCaveatSlow: return "GLConfigCaveatSlow"
+		case GlConfigCaveatNonConformant: return "GlConfigCaveatNonConformant"
+		case GlConfigCaveatNone: return "GlConfigCaveatNone"
+		case GlConfigCaveatSlow: return "GlConfigCaveatSlow"
 		default: return fmt.Sprintf("GLConfigCaveat(%d)", e)
 	}
 }
 
-// GLConfigCaveatToString wraps gst_gl_config_caveat_to_string
+// String wraps gst_gl_config_caveat_to_string
 // 
 // The function takes the following parameters:
 // 
@@ -431,7 +435,7 @@ func (e GLConfigCaveat) String() string {
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
-func GLConfigCaveatToString(caveat GLConfigCaveat) string {
+func String(caveat GLConfigCaveat) string {
 	var carg1 C.GstGLConfigCaveat // in, none, casted
 	var cret  *C.gchar            // return, none, string, nullable-string
 
@@ -455,30 +459,30 @@ func GLConfigCaveatToString(caveat GLConfigCaveat) string {
 type GLContextError C.int
 
 const (
-	// GLContextErrorFailed wraps GL_CONTEXT_ERROR_FAILED
+	// GlContextErrorFailed wraps GST_GL_CONTEXT_ERROR_FAILED
 	//
 	// Failed for an unspecified reason
-	GLContextErrorFailed GLContextError = 0
-	// GLContextErrorWrongConfig wraps GL_CONTEXT_ERROR_WRONG_CONFIG
+	GlContextErrorFailed GLContextError = 0
+	// GlContextErrorWrongConfig wraps GST_GL_CONTEXT_ERROR_WRONG_CONFIG
 	//
 	// The configuration requested is not correct
-	GLContextErrorWrongConfig GLContextError = 1
-	// GLContextErrorWrongApi wraps GL_CONTEXT_ERROR_WRONG_API
+	GlContextErrorWrongConfig GLContextError = 1
+	// GlContextErrorWrongAPI wraps GST_GL_CONTEXT_ERROR_WRONG_API
 	//
 	// The OpenGL API requested is not correct
-	GLContextErrorWrongApi GLContextError = 2
-	// GLContextErrorOldLibs wraps GL_CONTEXT_ERROR_OLD_LIBS
+	GlContextErrorWrongAPI GLContextError = 2
+	// GlContextErrorOldLibs wraps GST_GL_CONTEXT_ERROR_OLD_LIBS
 	//
 	// The OpenGL libraries are too old
-	GLContextErrorOldLibs GLContextError = 3
-	// GLContextErrorCreateContext wraps GL_CONTEXT_ERROR_CREATE_CONTEXT
+	GlContextErrorOldLibs GLContextError = 3
+	// GlContextErrorCreateContext wraps GST_GL_CONTEXT_ERROR_CREATE_CONTEXT
 	//
 	// glXCreateContext (or similar) failed
-	GLContextErrorCreateContext GLContextError = 4
-	// GLContextErrorResourceUnavailable wraps GL_CONTEXT_ERROR_RESOURCE_UNAVAILABLE
+	GlContextErrorCreateContext GLContextError = 4
+	// GlContextErrorResourceUnavailable wraps GST_GL_CONTEXT_ERROR_RESOURCE_UNAVAILABLE
 	//
 	// A resource is not available
-	GLContextErrorResourceUnavailable GLContextError = 5
+	GlContextErrorResourceUnavailable GLContextError = 5
 )
 
 func marshalGLContextError(p unsafe.Pointer) (any, error) {
@@ -497,12 +501,12 @@ func (e GLContextError) SetGoValue(v *gobject.Value) {
 
 func (e GLContextError) String() string {
 	switch e {
-		case GLContextErrorCreateContext: return "GLContextErrorCreateContext"
-		case GLContextErrorFailed: return "GLContextErrorFailed"
-		case GLContextErrorOldLibs: return "GLContextErrorOldLibs"
-		case GLContextErrorResourceUnavailable: return "GLContextErrorResourceUnavailable"
-		case GLContextErrorWrongApi: return "GLContextErrorWrongApi"
-		case GLContextErrorWrongConfig: return "GLContextErrorWrongConfig"
+		case GlContextErrorCreateContext: return "GlContextErrorCreateContext"
+		case GlContextErrorFailed: return "GlContextErrorFailed"
+		case GlContextErrorOldLibs: return "GlContextErrorOldLibs"
+		case GlContextErrorResourceUnavailable: return "GlContextErrorResourceUnavailable"
+		case GlContextErrorWrongAPI: return "GlContextErrorWrongAPI"
+		case GlContextErrorWrongConfig: return "GlContextErrorWrongConfig"
 		default: return fmt.Sprintf("GLContextError(%d)", e)
 	}
 }
@@ -528,88 +532,88 @@ func GLContextErrorQuark() glib.Quark {
 type GLFormat C.int
 
 const (
-	// GLLuminance wraps GL_LUMINANCE
+	// GlLuminance wraps GST_GL_LUMINANCE
 	//
 	// Single component replicated across R, G, and B textures
 	//                    components
-	GLLuminance GLFormat = 6409
-	// GLAlpha wraps GL_ALPHA
+	GlLuminance GLFormat = 6409
+	// GlAlpha wraps GST_GL_ALPHA
 	//
 	// Single component stored in the A texture component
-	GLAlpha GLFormat = 6406
-	// GLLuminanceAlpha wraps GL_LUMINANCE_ALPHA
+	GlAlpha GLFormat = 6406
+	// GlLuminanceAlpha wraps GST_GL_LUMINANCE_ALPHA
 	//
 	// Combination of #GST_GL_LUMINANCE and #GST_GL_ALPHA
-	GLLuminanceAlpha GLFormat = 6410
-	// GLRed wraps GL_RED
+	GlLuminanceAlpha GLFormat = 6410
+	// GlRed wraps GST_GL_RED
 	//
 	// Single component stored in the R texture component
-	GLRed GLFormat = 6403
-	// GLR8 wraps GL_R8
+	GlRed GLFormat = 6403
+	// GlR8 wraps GST_GL_R8
 	//
 	// Single 8-bit component stored in the R texture component
-	GLR8 GLFormat = 33321
-	// GLRg wraps GL_RG
+	GlR8 GLFormat = 33321
+	// GlRg wraps GST_GL_RG
 	//
 	// Two components stored in the R and G texture components
-	GLRg GLFormat = 33319
-	// GLRg8 wraps GL_RG8
+	GlRg GLFormat = 33319
+	// GlRg8 wraps GST_GL_RG8
 	//
 	// Two 8-bit components stored in the R and G texture components
-	GLRg8 GLFormat = 33323
-	// GLRGB wraps GL_RGB
+	GlRg8 GLFormat = 33323
+	// GlRgb wraps GST_GL_RGB
 	//
 	// Three components stored in the R, G, and B texture components
-	GLRGB GLFormat = 6407
-	// GLRGB8 wraps GL_RGB8
+	GlRgb GLFormat = 6407
+	// GlRgb8 wraps GST_GL_RGB8
 	//
 	// Three 8-bit components stored in the R, G, and B
 	//               texture components
-	GLRGB8 GLFormat = 32849
-	// GLRGB565 wraps GL_RGB565
+	GlRgb8 GLFormat = 32849
+	// GlRgb565 wraps GST_GL_RGB565
 	//
 	// Three components of bit depth 5, 6 and 5 stored in the R, G,
 	//                 and B texture components respectively.
-	GLRGB565 GLFormat = 36194
-	// GLRGB16 wraps GL_RGB16
+	GlRgb565 GLFormat = 36194
+	// GlRgb16 wraps GST_GL_RGB16
 	//
 	// Three 16-bit components stored in the R, G, and B
 	//               texture components
-	GLRGB16 GLFormat = 32852
-	// GLRGBA wraps GL_RGBA
+	GlRgb16 GLFormat = 32852
+	// GlRgba wraps GST_GL_RGBA
 	//
 	// Four components stored in the R, G, B, and A texture
 	//               components respectively.
-	GLRGBA GLFormat = 6408
-	// GLRGBA8 wraps GL_RGBA8
+	GlRgba GLFormat = 6408
+	// GlRgba8 wraps GST_GL_RGBA8
 	//
 	// Four 8-bit components stored in the R, G, B, and A texture
 	//                components respectively.
-	GLRGBA8 GLFormat = 32856
-	// GLRGBA16 wraps GL_RGBA16
+	GlRgba8 GLFormat = 32856
+	// GlRgba16 wraps GST_GL_RGBA16
 	//
 	// Four 16-bit components stored in the R, G, B, and A texture
 	//                components respectively.
-	GLRGBA16 GLFormat = 32859
-	// GLDepthComponent16 wraps GL_DEPTH_COMPONENT16
+	GlRgba16 GLFormat = 32859
+	// GlDepthComponent16 wraps GST_GL_DEPTH_COMPONENT16
 	//
 	// A single 16-bit component for depth information.
-	GLDepthComponent16 GLFormat = 33189
-	// GLDepth24Stencil8 wraps GL_DEPTH24_STENCIL8
+	GlDepthComponent16 GLFormat = 33189
+	// GlDepth24Stencil8 wraps GST_GL_DEPTH24_STENCIL8
 	//
 	// A 24-bit component for depth information and
 	//                           a 8-bit component for stencil informat.
-	GLDepth24Stencil8 GLFormat = 35056
-	// GLRGB10A2 wraps GL_RGB10_A2
-	GLRGB10A2 GLFormat = 32857
-	// GLR16 wraps GL_R16
+	GlDepth24Stencil8 GLFormat = 35056
+	// GlRgb10A2 wraps GST_GL_RGB10_A2
+	GlRgb10A2 GLFormat = 32857
+	// GlR16 wraps GST_GL_R16
 	//
 	// Single 16-bit component stored in the R texture component
-	GLR16 GLFormat = 33322
-	// GLRg16 wraps GL_RG16
+	GlR16 GLFormat = 33322
+	// GlRg16 wraps GST_GL_RG16
 	//
 	// Two 16-bit components stored in the R and G texture components
-	GLRg16 GLFormat = 33324
+	GlRg16 GLFormat = 33324
 )
 
 func marshalGLFormat(p unsafe.Pointer) (any, error) {
@@ -628,25 +632,25 @@ func (e GLFormat) SetGoValue(v *gobject.Value) {
 
 func (e GLFormat) String() string {
 	switch e {
-		case GLAlpha: return "GLAlpha"
-		case GLDepth24Stencil8: return "GLDepth24Stencil8"
-		case GLDepthComponent16: return "GLDepthComponent16"
-		case GLLuminance: return "GLLuminance"
-		case GLLuminanceAlpha: return "GLLuminanceAlpha"
-		case GLR16: return "GLR16"
-		case GLR8: return "GLR8"
-		case GLRGB: return "GLRGB"
-		case GLRGB10A2: return "GLRGB10A2"
-		case GLRGB16: return "GLRGB16"
-		case GLRGB565: return "GLRGB565"
-		case GLRGB8: return "GLRGB8"
-		case GLRGBA: return "GLRGBA"
-		case GLRGBA16: return "GLRGBA16"
-		case GLRGBA8: return "GLRGBA8"
-		case GLRed: return "GLRed"
-		case GLRg: return "GLRg"
-		case GLRg16: return "GLRg16"
-		case GLRg8: return "GLRg8"
+		case GlAlpha: return "GlAlpha"
+		case GlDepth24Stencil8: return "GlDepth24Stencil8"
+		case GlDepthComponent16: return "GlDepthComponent16"
+		case GlLuminance: return "GlLuminance"
+		case GlLuminanceAlpha: return "GlLuminanceAlpha"
+		case GlR16: return "GlR16"
+		case GlR8: return "GlR8"
+		case GlRed: return "GlRed"
+		case GlRg: return "GlRg"
+		case GlRg16: return "GlRg16"
+		case GlRg8: return "GlRg8"
+		case GlRgb: return "GlRgb"
+		case GlRgb10A2: return "GlRgb10A2"
+		case GlRgb16: return "GlRgb16"
+		case GlRgb565: return "GlRgb565"
+		case GlRgb8: return "GlRgb8"
+		case GlRgba: return "GlRgba"
+		case GlRgba16: return "GlRgba16"
+		case GlRgba8: return "GlRgba8"
 		default: return fmt.Sprintf("GLFormat(%d)", e)
 	}
 }
@@ -740,7 +744,7 @@ func GLFormatNComponents(glFormat GLFormat) uint {
 	return goret
 }
 
-// GLFormatTypeFromSizedGLFormat wraps gst_gl_format_type_from_sized_gl_format
+// GLFormatTypeFromSizedGlFormat wraps gst_gl_format_type_from_sized_gl_format
 // 
 // The function takes the following parameters:
 // 
@@ -753,7 +757,7 @@ func GLFormatNComponents(glFormat GLFormat) uint {
 //
 // Get the unsized format and type from @format for usage in glReadPixels,
 // glTex{Sub}Image*, glTexImage* and similar functions.
-func GLFormatTypeFromSizedGLFormat(format GLFormat) (GLFormat, uint) {
+func GLFormatTypeFromSizedGlFormat(format GLFormat) (GLFormat, uint) {
 	var carg1 C.GstGLFormat // in, none, casted
 	var carg2 C.GstGLFormat // out, full, casted
 	var carg3 C.guint       // out, full, casted
@@ -805,18 +809,18 @@ func GLFormatTypeNBytes(format uint, typ uint) uint {
 type GLQueryType C.int
 
 const (
-	// GLQueryNone wraps GL_QUERY_NONE
+	// GlQueryNone wraps GST_GL_QUERY_NONE
 	//
 	// no query
-	GLQueryNone GLQueryType = 0
-	// GLQueryTimeElapsed wraps GL_QUERY_TIME_ELAPSED
+	GlQueryNone GLQueryType = 0
+	// GlQueryTimeElapsed wraps GST_GL_QUERY_TIME_ELAPSED
 	//
 	// query the time elapsed
-	GLQueryTimeElapsed GLQueryType = 1
-	// GLQueryTimestamp wraps GL_QUERY_TIMESTAMP
+	GlQueryTimeElapsed GLQueryType = 1
+	// GlQueryTimestamp wraps GST_GL_QUERY_TIMESTAMP
 	//
 	// query the current time
-	GLQueryTimestamp GLQueryType = 2
+	GlQueryTimestamp GLQueryType = 2
 )
 
 func marshalGLQueryType(p unsafe.Pointer) (any, error) {
@@ -835,9 +839,9 @@ func (e GLQueryType) SetGoValue(v *gobject.Value) {
 
 func (e GLQueryType) String() string {
 	switch e {
-		case GLQueryNone: return "GLQueryNone"
-		case GLQueryTimeElapsed: return "GLQueryTimeElapsed"
-		case GLQueryTimestamp: return "GLQueryTimestamp"
+		case GlQueryNone: return "GlQueryNone"
+		case GlQueryTimeElapsed: return "GlQueryTimeElapsed"
+		case GlQueryTimestamp: return "GlQueryTimestamp"
 		default: return fmt.Sprintf("GLQueryType(%d)", e)
 	}
 }
@@ -848,15 +852,15 @@ func (e GLQueryType) String() string {
 type GLSLError C.int
 
 const (
-	// GlslErrorCompile wraps GLSL_ERROR_COMPILE
+	// GlslErrorCompile wraps GST_GLSL_ERROR_COMPILE
 	//
 	// Compilation error occurred
 	GlslErrorCompile GLSLError = 0
-	// GlslErrorLink wraps GLSL_ERROR_LINK
+	// GlslErrorLink wraps GST_GLSL_ERROR_LINK
 	//
 	// Link error occurred
 	GlslErrorLink GLSLError = 1
-	// GlslErrorProgram wraps GLSL_ERROR_PROGRAM
+	// GlslErrorProgram wraps GST_GLSL_ERROR_PROGRAM
 	//
 	// General program error occurred
 	GlslErrorProgram GLSLError = 2
@@ -908,71 +912,71 @@ func GLSLErrorQuark() glib.Quark {
 type GLSLVersion C.int
 
 const (
-	// GlslVersionNone wraps GLSL_VERSION_NONE
+	// GlslVersionNone wraps GST_GLSL_VERSION_NONE
 	//
 	// no version
 	GlslVersionNone GLSLVersion = 0
-	// GlslVersion100 wraps GLSL_VERSION_100
+	// GlslVersion100 wraps GST_GLSL_VERSION_100
 	//
 	// version 100 (only valid for ES)
 	GlslVersion100 GLSLVersion = 100
-	// GlslVersion110 wraps GLSL_VERSION_110
+	// GlslVersion110 wraps GST_GLSL_VERSION_110
 	//
 	// version 110 (only valid for compatibility desktop GL)
 	GlslVersion110 GLSLVersion = 110
-	// GlslVersion120 wraps GLSL_VERSION_120
+	// GlslVersion120 wraps GST_GLSL_VERSION_120
 	//
 	// version 120 (only valid for compatibility desktop GL)
 	GlslVersion120 GLSLVersion = 120
-	// GlslVersion130 wraps GLSL_VERSION_130
+	// GlslVersion130 wraps GST_GLSL_VERSION_130
 	//
 	// version 130 (only valid for compatibility desktop GL)
 	GlslVersion130 GLSLVersion = 130
-	// GlslVersion140 wraps GLSL_VERSION_140
+	// GlslVersion140 wraps GST_GLSL_VERSION_140
 	//
 	// version 140 (only valid for compatibility desktop GL)
 	GlslVersion140 GLSLVersion = 140
-	// GlslVersion150 wraps GLSL_VERSION_150
+	// GlslVersion150 wraps GST_GLSL_VERSION_150
 	//
 	// version 150 (valid for compatibility/core desktop GL)
 	GlslVersion150 GLSLVersion = 150
-	// GlslVersion300 wraps GLSL_VERSION_300
+	// GlslVersion300 wraps GST_GLSL_VERSION_300
 	//
 	// version 300 (only valid for ES)
 	GlslVersion300 GLSLVersion = 300
-	// GlslVersion310 wraps GLSL_VERSION_310
+	// GlslVersion310 wraps GST_GLSL_VERSION_310
 	//
 	// version 310 (only valid for ES)
 	GlslVersion310 GLSLVersion = 310
-	// GlslVersion320 wraps GLSL_VERSION_320
+	// GlslVersion320 wraps GST_GLSL_VERSION_320
 	//
 	// version 320 (only valid for ES)
 	GlslVersion320 GLSLVersion = 320
-	// GlslVersion330 wraps GLSL_VERSION_330
+	// GlslVersion330 wraps GST_GLSL_VERSION_330
 	//
 	// version 330 (valid for compatibility/core desktop GL)
 	GlslVersion330 GLSLVersion = 330
-	// GlslVersion400 wraps GLSL_VERSION_400
+	// GlslVersion400 wraps GST_GLSL_VERSION_400
 	//
 	// version 400 (valid for compatibility/core desktop GL)
 	GlslVersion400 GLSLVersion = 400
-	// GlslVersion410 wraps GLSL_VERSION_410
+	// GlslVersion410 wraps GST_GLSL_VERSION_410
 	//
 	// version 410 (valid for compatibility/core desktop GL)
 	GlslVersion410 GLSLVersion = 410
-	// GlslVersion420 wraps GLSL_VERSION_420
+	// GlslVersion420 wraps GST_GLSL_VERSION_420
 	//
 	// version 420 (valid for compatibility/core desktop GL)
 	GlslVersion420 GLSLVersion = 420
-	// GlslVersion430 wraps GLSL_VERSION_430
+	// GlslVersion430 wraps GST_GLSL_VERSION_430
 	//
 	// version 430 (valid for compatibility/core desktop GL)
 	GlslVersion430 GLSLVersion = 430
-	// GlslVersion440 wraps GLSL_VERSION_440
+	// GlslVersion440 wraps GST_GLSL_VERSION_440
 	//
 	// version 440 (valid for compatibility/core desktop GL)
 	GlslVersion440 GLSLVersion = 440
-	// GlslVersion450 wraps GLSL_VERSION_450
+	// GlslVersion450 wraps GST_GLSL_VERSION_450
 	//
 	// version 450 (valid for compatibility/core desktop GL)
 	GlslVersion450 GLSLVersion = 450
@@ -1112,7 +1116,7 @@ func GLSLVersionProfileToString(version GLSLVersion, profile GLSLProfile) string
 	return goret
 }
 
-// GLSLVersionToString wraps gst_glsl_version_to_string
+// String wraps gst_glsl_version_to_string
 // 
 // The function takes the following parameters:
 // 
@@ -1121,7 +1125,7 @@ func GLSLVersionProfileToString(version GLSLVersion, profile GLSLProfile) string
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
-func GLSLVersionToString(version GLSLVersion) string {
+func String(version GLSLVersion) string {
 	var carg1 C.GstGLSLVersion // in, none, casted
 	var cret  *C.gchar         // return, none, string, nullable-string
 
@@ -1145,18 +1149,18 @@ func GLSLVersionToString(version GLSLVersion) string {
 type GLStereoDownmix C.int
 
 const (
-	// GLStereoDownmixAnaglyphGreenMagentaDubois wraps GL_STEREO_DOWNMIX_ANAGLYPH_GREEN_MAGENTA_DUBOIS
+	// GlStereoDownmixAnaglyphGreenMagentaDubois wraps GST_GL_STEREO_DOWNMIX_ANAGLYPH_GREEN_MAGENTA_DUBOIS
 	//
 	// Dubois optimised Green-Magenta anaglyph
-	GLStereoDownmixAnaglyphGreenMagentaDubois GLStereoDownmix = 0
-	// GLStereoDownmixAnaglyphRedCyanDubois wraps GL_STEREO_DOWNMIX_ANAGLYPH_RED_CYAN_DUBOIS
+	GlStereoDownmixAnaglyphGreenMagentaDubois GLStereoDownmix = 0
+	// GlStereoDownmixAnaglyphRedCyanDubois wraps GST_GL_STEREO_DOWNMIX_ANAGLYPH_RED_CYAN_DUBOIS
 	//
 	// Dubois optimised Red-Cyan anaglyph
-	GLStereoDownmixAnaglyphRedCyanDubois GLStereoDownmix = 1
-	// GLStereoDownmixAnaglyphAmberBlueDubois wraps GL_STEREO_DOWNMIX_ANAGLYPH_AMBER_BLUE_DUBOIS
+	GlStereoDownmixAnaglyphRedCyanDubois GLStereoDownmix = 1
+	// GlStereoDownmixAnaglyphAmberBlueDubois wraps GST_GL_STEREO_DOWNMIX_ANAGLYPH_AMBER_BLUE_DUBOIS
 	//
 	// Dubois optimised Amber-Blue anaglyph
-	GLStereoDownmixAnaglyphAmberBlueDubois GLStereoDownmix = 2
+	GlStereoDownmixAnaglyphAmberBlueDubois GLStereoDownmix = 2
 )
 
 func marshalGLStereoDownmix(p unsafe.Pointer) (any, error) {
@@ -1175,9 +1179,9 @@ func (e GLStereoDownmix) SetGoValue(v *gobject.Value) {
 
 func (e GLStereoDownmix) String() string {
 	switch e {
-		case GLStereoDownmixAnaglyphAmberBlueDubois: return "GLStereoDownmixAnaglyphAmberBlueDubois"
-		case GLStereoDownmixAnaglyphGreenMagentaDubois: return "GLStereoDownmixAnaglyphGreenMagentaDubois"
-		case GLStereoDownmixAnaglyphRedCyanDubois: return "GLStereoDownmixAnaglyphRedCyanDubois"
+		case GlStereoDownmixAnaglyphAmberBlueDubois: return "GlStereoDownmixAnaglyphAmberBlueDubois"
+		case GlStereoDownmixAnaglyphGreenMagentaDubois: return "GlStereoDownmixAnaglyphGreenMagentaDubois"
+		case GlStereoDownmixAnaglyphRedCyanDubois: return "GlStereoDownmixAnaglyphRedCyanDubois"
 		default: return fmt.Sprintf("GLStereoDownmix(%d)", e)
 	}
 }
@@ -1192,24 +1196,24 @@ func (e GLStereoDownmix) String() string {
 type GLTextureTarget C.int
 
 const (
-	// GLTextureTargetNone wraps GL_TEXTURE_TARGET_NONE
+	// GlTextureTargetNone wraps GST_GL_TEXTURE_TARGET_NONE
 	//
 	// no texture target
-	GLTextureTargetNone GLTextureTarget = 0
-	// GLTextureTarget2D wraps GL_TEXTURE_TARGET_2D
+	GlTextureTargetNone GLTextureTarget = 0
+	// GlTextureTarget2d wraps GST_GL_TEXTURE_TARGET_2D
 	//
 	// 2D texture target (`GL_TEXTURE_2D`)
-	GLTextureTarget2D GLTextureTarget = 1
-	// GLTextureTargetRectangle wraps GL_TEXTURE_TARGET_RECTANGLE
+	GlTextureTarget2d GLTextureTarget = 1
+	// GlTextureTargetRectangle wraps GST_GL_TEXTURE_TARGET_RECTANGLE
 	//
 	// rectangle texture target
 	//     (`GL_TEXTURE_RECTANGLE`)
-	GLTextureTargetRectangle GLTextureTarget = 2
-	// GLTextureTargetExternalOes wraps GL_TEXTURE_TARGET_EXTERNAL_OES
+	GlTextureTargetRectangle GLTextureTarget = 2
+	// GlTextureTargetExternalOes wraps GST_GL_TEXTURE_TARGET_EXTERNAL_OES
 	//
 	// external oes texture target
 	//     (`GL_TEXTURE_EXTERNAL_OES`)
-	GLTextureTargetExternalOes GLTextureTarget = 3
+	GlTextureTargetExternalOes GLTextureTarget = 3
 )
 
 func marshalGLTextureTarget(p unsafe.Pointer) (any, error) {
@@ -1228,15 +1232,15 @@ func (e GLTextureTarget) SetGoValue(v *gobject.Value) {
 
 func (e GLTextureTarget) String() string {
 	switch e {
-		case GLTextureTarget2D: return "GLTextureTarget2D"
-		case GLTextureTargetExternalOes: return "GLTextureTargetExternalOes"
-		case GLTextureTargetNone: return "GLTextureTargetNone"
-		case GLTextureTargetRectangle: return "GLTextureTargetRectangle"
+		case GlTextureTarget2d: return "GlTextureTarget2d"
+		case GlTextureTargetExternalOes: return "GlTextureTargetExternalOes"
+		case GlTextureTargetNone: return "GlTextureTargetNone"
+		case GlTextureTargetRectangle: return "GlTextureTargetRectangle"
 		default: return fmt.Sprintf("GLTextureTarget(%d)", e)
 	}
 }
 
-// GLTextureTargetFromGL wraps gst_gl_texture_target_from_gl
+// GLTextureTargetFromGl wraps gst_gl_texture_target_from_gl
 // 
 // The function takes the following parameters:
 // 
@@ -1245,7 +1249,7 @@ func (e GLTextureTarget) String() string {
 // The function returns the following values:
 // 
 // 	- goret GLTextureTarget 
-func GLTextureTargetFromGL(target uint) GLTextureTarget {
+func GLTextureTargetFromGl(target uint) GLTextureTarget {
 	var carg1 C.guint              // in, none, casted
 	var cret  C.GstGLTextureTarget // return, none, casted
 
@@ -1314,7 +1318,7 @@ func GLTextureTargetToBufferPoolOption(target GLTextureTarget) string {
 	return goret
 }
 
-// GLTextureTargetToGL wraps gst_gl_texture_target_to_gl
+// GLTextureTargetToGl wraps gst_gl_texture_target_to_gl
 // 
 // The function takes the following parameters:
 // 
@@ -1323,7 +1327,7 @@ func GLTextureTargetToBufferPoolOption(target GLTextureTarget) string {
 // The function returns the following values:
 // 
 // 	- goret uint 
-func GLTextureTargetToGL(target GLTextureTarget) uint {
+func GLTextureTargetToGl(target GLTextureTarget) uint {
 	var carg1 C.GstGLTextureTarget // in, none, casted
 	var cret  C.guint              // return, none, casted
 
@@ -1339,7 +1343,7 @@ func GLTextureTargetToGL(target GLTextureTarget) uint {
 	return goret
 }
 
-// GLTextureTargetToString wraps gst_gl_texture_target_to_string
+// String wraps gst_gl_texture_target_to_string
 // 
 // The function takes the following parameters:
 // 
@@ -1348,7 +1352,7 @@ func GLTextureTargetToGL(target GLTextureTarget) uint {
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
-func GLTextureTargetToString(target GLTextureTarget) string {
+func String(target GLTextureTarget) string {
 	var carg1 C.GstGLTextureTarget // in, none, casted
 	var cret  *C.gchar             // return, none, string, nullable-string
 
@@ -1370,26 +1374,26 @@ func GLTextureTargetToString(target GLTextureTarget) string {
 type GLUploadReturn C.int
 
 const (
-	// GLUploadDone wraps GL_UPLOAD_DONE
+	// GlUploadDone wraps GST_GL_UPLOAD_DONE
 	//
 	// No further processing required
-	GLUploadDone GLUploadReturn = 1
-	// GLUploadError wraps GL_UPLOAD_ERROR
+	GlUploadDone GLUploadReturn = 1
+	// GlUploadError wraps GST_GL_UPLOAD_ERROR
 	//
 	// An unspecified error occurred
-	GLUploadError GLUploadReturn = -1
-	// GLUploadUnsupported wraps GL_UPLOAD_UNSUPPORTED
+	GlUploadError GLUploadReturn = -1
+	// GlUploadUnsupported wraps GST_GL_UPLOAD_UNSUPPORTED
 	//
 	// The configuration is unsupported.
-	GLUploadUnsupported GLUploadReturn = -2
-	// GLUploadReconfigure wraps GL_UPLOAD_RECONFIGURE
+	GlUploadUnsupported GLUploadReturn = -2
+	// GlUploadReconfigure wraps GST_GL_UPLOAD_RECONFIGURE
 	//
 	// This element requires a reconfiguration.
-	GLUploadReconfigure GLUploadReturn = -3
-	// GLUploadUnsharedGLContext wraps GL_UPLOAD_UNSHARED_GL_CONTEXT
+	GlUploadReconfigure GLUploadReturn = -3
+	// GlUploadUnsharedGlContext wraps GST_GL_UPLOAD_UNSHARED_GL_CONTEXT
 	//
 	// private return value.
-	GLUploadUnsharedGLContext GLUploadReturn = -100
+	GlUploadUnsharedGlContext GLUploadReturn = -100
 )
 
 func marshalGLUploadReturn(p unsafe.Pointer) (any, error) {
@@ -1408,11 +1412,11 @@ func (e GLUploadReturn) SetGoValue(v *gobject.Value) {
 
 func (e GLUploadReturn) String() string {
 	switch e {
-		case GLUploadDone: return "GLUploadDone"
-		case GLUploadError: return "GLUploadError"
-		case GLUploadReconfigure: return "GLUploadReconfigure"
-		case GLUploadUnsharedGLContext: return "GLUploadUnsharedGLContext"
-		case GLUploadUnsupported: return "GLUploadUnsupported"
+		case GlUploadDone: return "GlUploadDone"
+		case GlUploadError: return "GlUploadError"
+		case GlUploadReconfigure: return "GlUploadReconfigure"
+		case GlUploadUnsharedGlContext: return "GlUploadUnsharedGlContext"
+		case GlUploadUnsupported: return "GlUploadUnsupported"
 		default: return fmt.Sprintf("GLUploadReturn(%d)", e)
 	}
 }
@@ -1421,18 +1425,18 @@ func (e GLUploadReturn) String() string {
 type GLWindowError C.int
 
 const (
-	// GLWindowErrorFailed wraps GL_WINDOW_ERROR_FAILED
+	// GlWindowErrorFailed wraps GST_GL_WINDOW_ERROR_FAILED
 	//
 	// failed for a unspecified reason
-	GLWindowErrorFailed GLWindowError = 0
-	// GLWindowErrorOldLibs wraps GL_WINDOW_ERROR_OLD_LIBS
+	GlWindowErrorFailed GLWindowError = 0
+	// GlWindowErrorOldLibs wraps GST_GL_WINDOW_ERROR_OLD_LIBS
 	//
 	// the implementation is too old
-	GLWindowErrorOldLibs GLWindowError = 1
-	// GLWindowErrorResourceUnavailable wraps GL_WINDOW_ERROR_RESOURCE_UNAVAILABLE
+	GlWindowErrorOldLibs GLWindowError = 1
+	// GlWindowErrorResourceUnavailable wraps GST_GL_WINDOW_ERROR_RESOURCE_UNAVAILABLE
 	//
 	// no such resource was found
-	GLWindowErrorResourceUnavailable GLWindowError = 2
+	GlWindowErrorResourceUnavailable GLWindowError = 2
 )
 
 func marshalGLWindowError(p unsafe.Pointer) (any, error) {
@@ -1451,9 +1455,9 @@ func (e GLWindowError) SetGoValue(v *gobject.Value) {
 
 func (e GLWindowError) String() string {
 	switch e {
-		case GLWindowErrorFailed: return "GLWindowErrorFailed"
-		case GLWindowErrorOldLibs: return "GLWindowErrorOldLibs"
-		case GLWindowErrorResourceUnavailable: return "GLWindowErrorResourceUnavailable"
+		case GlWindowErrorFailed: return "GlWindowErrorFailed"
+		case GlWindowErrorOldLibs: return "GlWindowErrorOldLibs"
+		case GlWindowErrorResourceUnavailable: return "GlWindowErrorResourceUnavailable"
 		default: return fmt.Sprintf("GLWindowError(%d)", e)
 	}
 }
@@ -1479,31 +1483,31 @@ func GLWindowErrorQuark() glib.Quark {
 type GLAPI C.gint
 
 const (
-	// GLApiNone wraps GL_API_NONE
+	// GlAPINone wraps GST_GL_API_NONE
 	//
 	// no API
-	GLApiNone GLAPI = 0
-	// GLApiOpengl wraps GL_API_OPENGL
+	GlAPINone GLAPI = 0
+	// GlAPIOpengl wraps GST_GL_API_OPENGL
 	//
 	// Desktop OpenGL up to and including 3.1.  The
 	//                    compatibility profile when the OpenGL version is &gt;= 3.2
-	GLApiOpengl GLAPI = 1
-	// GLApiOpengl3 wraps GL_API_OPENGL3
+	GlAPIOpengl GLAPI = 1
+	// GlAPIOpengl3 wraps GST_GL_API_OPENGL3
 	//
 	// Desktop OpenGL &gt;= 3.2 core profile
-	GLApiOpengl3 GLAPI = 2
-	// GLApiGles1 wraps GL_API_GLES1
+	GlAPIOpengl3 GLAPI = 2
+	// GlAPIGles1 wraps GST_GL_API_GLES1
 	//
 	// OpenGL ES 1.x
-	GLApiGles1 GLAPI = 32768
-	// GLApiGles2 wraps GL_API_GLES2
+	GlAPIGles1 GLAPI = 32768
+	// GlAPIGles2 wraps GST_GL_API_GLES2
 	//
 	// OpenGL ES 2.x and 3.x
-	GLApiGles2 GLAPI = 65536
-	// GLApiAny wraps GL_API_ANY
+	GlAPIGles2 GLAPI = 65536
+	// GlAPIAny wraps GST_GL_API_ANY
 	//
 	// Any OpenGL API
-	GLApiAny GLAPI = -1
+	GlAPIAny GLAPI = -1
 )
 
 func marshalGLAPI(p unsafe.Pointer) (any, error) {
@@ -1530,23 +1534,23 @@ func (f GLAPI) String() string {
 	}
 
 	var parts []string
-	if (f & GLApiNone) != 0 {
-		parts = append(parts, "GLApiNone")
+	if (f & GlAPINone) != 0 {
+		parts = append(parts, "GlAPINone")
 	}
-	if (f & GLApiOpengl) != 0 {
-		parts = append(parts, "GLApiOpengl")
+	if (f & GlAPIOpengl) != 0 {
+		parts = append(parts, "GlAPIOpengl")
 	}
-	if (f & GLApiOpengl3) != 0 {
-		parts = append(parts, "GLApiOpengl3")
+	if (f & GlAPIOpengl3) != 0 {
+		parts = append(parts, "GlAPIOpengl3")
 	}
-	if (f & GLApiGles1) != 0 {
-		parts = append(parts, "GLApiGles1")
+	if (f & GlAPIGles1) != 0 {
+		parts = append(parts, "GlAPIGles1")
 	}
-	if (f & GLApiGles2) != 0 {
-		parts = append(parts, "GLApiGles2")
+	if (f & GlAPIGles2) != 0 {
+		parts = append(parts, "GlAPIGles2")
 	}
-	if (f & GLApiAny) != 0 {
-		parts = append(parts, "GLApiAny")
+	if (f & GlAPIAny) != 0 {
+		parts = append(parts, "GlAPIAny")
 	}
 	return "GLAPI(" + strings.Join(parts, "|") + ")"
 }
@@ -1577,7 +1581,7 @@ func GLAPIFromString(apiS string) GLAPI {
 	return goret
 }
 
-// GLAPIToString wraps gst_gl_api_to_string
+// String wraps gst_gl_api_to_string
 // 
 // The function takes the following parameters:
 // 
@@ -1586,7 +1590,7 @@ func GLAPIFromString(apiS string) GLAPI {
 // The function returns the following values:
 // 
 // 	- goret string 
-func GLAPIToString(api GLAPI) string {
+func String(api GLAPI) string {
 	var carg1 C.GstGLAPI // in, none, casted
 	var cret  *C.gchar   // return, full, string
 
@@ -1607,16 +1611,16 @@ func GLAPIToString(api GLAPI) string {
 type GLBaseMemoryTransfer C.gint
 
 const (
-	// GLBaseMemoryTransferNeedDownload wraps GL_BASE_MEMORY_TRANSFER_NEED_DOWNLOAD
+	// GlBaseMemoryTransferNeedDownload wraps GST_GL_BASE_MEMORY_TRANSFER_NEED_DOWNLOAD
 	//
 	// the texture needs downloading
 	//                                             to the data pointer
-	GLBaseMemoryTransferNeedDownload GLBaseMemoryTransfer = 1048576
-	// GLBaseMemoryTransferNeedUpload wraps GL_BASE_MEMORY_TRANSFER_NEED_UPLOAD
+	GlBaseMemoryTransferNeedDownload GLBaseMemoryTransfer = 1048576
+	// GlBaseMemoryTransferNeedUpload wraps GST_GL_BASE_MEMORY_TRANSFER_NEED_UPLOAD
 	//
 	// the data pointer needs uploading
 	//                                             to the texture
-	GLBaseMemoryTransferNeedUpload GLBaseMemoryTransfer = 2097152
+	GlBaseMemoryTransferNeedUpload GLBaseMemoryTransfer = 2097152
 )
 
 func marshalGLBaseMemoryTransfer(p unsafe.Pointer) (any, error) {
@@ -1643,11 +1647,11 @@ func (f GLBaseMemoryTransfer) String() string {
 	}
 
 	var parts []string
-	if (f & GLBaseMemoryTransferNeedDownload) != 0 {
-		parts = append(parts, "GLBaseMemoryTransferNeedDownload")
+	if (f & GlBaseMemoryTransferNeedDownload) != 0 {
+		parts = append(parts, "GlBaseMemoryTransferNeedDownload")
 	}
-	if (f & GLBaseMemoryTransferNeedUpload) != 0 {
-		parts = append(parts, "GLBaseMemoryTransferNeedUpload")
+	if (f & GlBaseMemoryTransferNeedUpload) != 0 {
+		parts = append(parts, "GlBaseMemoryTransferNeedUpload")
 	}
 	return "GLBaseMemoryTransfer(" + strings.Join(parts, "|") + ")"
 }
@@ -1656,22 +1660,22 @@ func (f GLBaseMemoryTransfer) String() string {
 type GLConfigSurfaceType C.gint
 
 const (
-	// GLConfigSurfaceTypeNone wraps GL_CONFIG_SURFACE_TYPE_NONE
+	// GlConfigSurfaceTypeNone wraps GST_GL_CONFIG_SURFACE_TYPE_NONE
 	//
 	// none
-	GLConfigSurfaceTypeNone GLConfigSurfaceType = 0
-	// GLConfigSurfaceTypeWindow wraps GL_CONFIG_SURFACE_TYPE_WINDOW
+	GlConfigSurfaceTypeNone GLConfigSurfaceType = 0
+	// GlConfigSurfaceTypeWindow wraps GST_GL_CONFIG_SURFACE_TYPE_WINDOW
 	//
 	// window
-	GLConfigSurfaceTypeWindow GLConfigSurfaceType = 1
-	// GLConfigSurfaceTypePbuffer wraps GL_CONFIG_SURFACE_TYPE_PBUFFER
+	GlConfigSurfaceTypeWindow GLConfigSurfaceType = 1
+	// GlConfigSurfaceTypePbuffer wraps GST_GL_CONFIG_SURFACE_TYPE_PBUFFER
 	//
 	// pbuffer
-	GLConfigSurfaceTypePbuffer GLConfigSurfaceType = 2
-	// GLConfigSurfaceTypePixmap wraps GL_CONFIG_SURFACE_TYPE_PIXMAP
+	GlConfigSurfaceTypePbuffer GLConfigSurfaceType = 2
+	// GlConfigSurfaceTypePixmap wraps GST_GL_CONFIG_SURFACE_TYPE_PIXMAP
 	//
 	// pixmap
-	GLConfigSurfaceTypePixmap GLConfigSurfaceType = 4
+	GlConfigSurfaceTypePixmap GLConfigSurfaceType = 4
 )
 
 func marshalGLConfigSurfaceType(p unsafe.Pointer) (any, error) {
@@ -1698,22 +1702,22 @@ func (f GLConfigSurfaceType) String() string {
 	}
 
 	var parts []string
-	if (f & GLConfigSurfaceTypeNone) != 0 {
-		parts = append(parts, "GLConfigSurfaceTypeNone")
+	if (f & GlConfigSurfaceTypeNone) != 0 {
+		parts = append(parts, "GlConfigSurfaceTypeNone")
 	}
-	if (f & GLConfigSurfaceTypeWindow) != 0 {
-		parts = append(parts, "GLConfigSurfaceTypeWindow")
+	if (f & GlConfigSurfaceTypeWindow) != 0 {
+		parts = append(parts, "GlConfigSurfaceTypeWindow")
 	}
-	if (f & GLConfigSurfaceTypePbuffer) != 0 {
-		parts = append(parts, "GLConfigSurfaceTypePbuffer")
+	if (f & GlConfigSurfaceTypePbuffer) != 0 {
+		parts = append(parts, "GlConfigSurfaceTypePbuffer")
 	}
-	if (f & GLConfigSurfaceTypePixmap) != 0 {
-		parts = append(parts, "GLConfigSurfaceTypePixmap")
+	if (f & GlConfigSurfaceTypePixmap) != 0 {
+		parts = append(parts, "GlConfigSurfaceTypePixmap")
 	}
 	return "GLConfigSurfaceType(" + strings.Join(parts, "|") + ")"
 }
 
-// GLConfigSurfaceTypeToString wraps gst_gl_config_surface_type_to_string
+// String wraps gst_gl_config_surface_type_to_string
 // 
 // The function takes the following parameters:
 // 
@@ -1722,7 +1726,7 @@ func (f GLConfigSurfaceType) String() string {
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
-func GLConfigSurfaceTypeToString(surfaceType GLConfigSurfaceType) string {
+func String(surfaceType GLConfigSurfaceType) string {
 	var carg1 C.GstGLConfigSurfaceType // in, none, casted
 	var cret  *C.gchar                 // return, none, string, nullable-string
 
@@ -1744,67 +1748,67 @@ func GLConfigSurfaceTypeToString(surfaceType GLConfigSurfaceType) string {
 type GLDisplayType C.gint
 
 const (
-	// GLDisplayTypeNone wraps GL_DISPLAY_TYPE_NONE
+	// GlDisplayTypeNone wraps GST_GL_DISPLAY_TYPE_NONE
 	//
 	// no display type
-	GLDisplayTypeNone GLDisplayType = 0
-	// GLDisplayTypeX11 wraps GL_DISPLAY_TYPE_X11
+	GlDisplayTypeNone GLDisplayType = 0
+	// GlDisplayTypeX11 wraps GST_GL_DISPLAY_TYPE_X11
 	//
 	// X11 display
-	GLDisplayTypeX11 GLDisplayType = 1
-	// GLDisplayTypeWayland wraps GL_DISPLAY_TYPE_WAYLAND
+	GlDisplayTypeX11 GLDisplayType = 1
+	// GlDisplayTypeWayland wraps GST_GL_DISPLAY_TYPE_WAYLAND
 	//
 	// Wayland display
-	GLDisplayTypeWayland GLDisplayType = 2
-	// GLDisplayTypeCocoa wraps GL_DISPLAY_TYPE_COCOA
+	GlDisplayTypeWayland GLDisplayType = 2
+	// GlDisplayTypeCocoa wraps GST_GL_DISPLAY_TYPE_COCOA
 	//
 	// Cocoa display
-	GLDisplayTypeCocoa GLDisplayType = 4
-	// GLDisplayTypeWin32 wraps GL_DISPLAY_TYPE_WIN32
+	GlDisplayTypeCocoa GLDisplayType = 4
+	// GlDisplayTypeWin32 wraps GST_GL_DISPLAY_TYPE_WIN32
 	//
 	// Win32 display
-	GLDisplayTypeWin32 GLDisplayType = 8
-	// GLDisplayTypeDispmanx wraps GL_DISPLAY_TYPE_DISPMANX
+	GlDisplayTypeWin32 GLDisplayType = 8
+	// GlDisplayTypeDispmanx wraps GST_GL_DISPLAY_TYPE_DISPMANX
 	//
 	// Dispmanx display
-	GLDisplayTypeDispmanx GLDisplayType = 16
-	// GLDisplayTypeEgl wraps GL_DISPLAY_TYPE_EGL
+	GlDisplayTypeDispmanx GLDisplayType = 16
+	// GlDisplayTypeEgl wraps GST_GL_DISPLAY_TYPE_EGL
 	//
 	// EGL display
-	GLDisplayTypeEgl GLDisplayType = 32
-	// GLDisplayTypeVivFb wraps GL_DISPLAY_TYPE_VIV_FB
+	GlDisplayTypeEgl GLDisplayType = 32
+	// GlDisplayTypeVivFb wraps GST_GL_DISPLAY_TYPE_VIV_FB
 	//
 	// Vivante Framebuffer display
-	GLDisplayTypeVivFb GLDisplayType = 64
-	// GLDisplayTypeGbm wraps GL_DISPLAY_TYPE_GBM
+	GlDisplayTypeVivFb GLDisplayType = 64
+	// GlDisplayTypeGbm wraps GST_GL_DISPLAY_TYPE_GBM
 	//
 	// Mesa3D GBM display
-	GLDisplayTypeGbm GLDisplayType = 128
-	// GLDisplayTypeEglDevice wraps GL_DISPLAY_TYPE_EGL_DEVICE
+	GlDisplayTypeGbm GLDisplayType = 128
+	// GlDisplayTypeEglDevice wraps GST_GL_DISPLAY_TYPE_EGL_DEVICE
 	//
 	// EGLDevice display.
-	GLDisplayTypeEglDevice GLDisplayType = 256
-	// GLDisplayTypeEagl wraps GL_DISPLAY_TYPE_EAGL
+	GlDisplayTypeEglDevice GLDisplayType = 256
+	// GlDisplayTypeEagl wraps GST_GL_DISPLAY_TYPE_EAGL
 	//
 	// EAGL display.
-	GLDisplayTypeEagl GLDisplayType = 512
-	// GLDisplayTypeWinrt wraps GL_DISPLAY_TYPE_WINRT
+	GlDisplayTypeEagl GLDisplayType = 512
+	// GlDisplayTypeWinrt wraps GST_GL_DISPLAY_TYPE_WINRT
 	//
 	// WinRT display.
-	GLDisplayTypeWinrt GLDisplayType = 1024
-	// GLDisplayTypeAndroid wraps GL_DISPLAY_TYPE_ANDROID
+	GlDisplayTypeWinrt GLDisplayType = 1024
+	// GlDisplayTypeAndroid wraps GST_GL_DISPLAY_TYPE_ANDROID
 	//
 	// Android display.
-	GLDisplayTypeAndroid GLDisplayType = 2048
-	// GLDisplayTypeEglSurfaceless wraps GL_DISPLAY_TYPE_EGL_SURFACELESS
+	GlDisplayTypeAndroid GLDisplayType = 2048
+	// GlDisplayTypeEglSurfaceless wraps GST_GL_DISPLAY_TYPE_EGL_SURFACELESS
 	//
 	// Mesa3D surfaceless display using the EGL_PLATFORM_SURFACELESS_MESA
 	// extension.
-	GLDisplayTypeEglSurfaceless GLDisplayType = 4096
-	// GLDisplayTypeAny wraps GL_DISPLAY_TYPE_ANY
+	GlDisplayTypeEglSurfaceless GLDisplayType = 4096
+	// GlDisplayTypeAny wraps GST_GL_DISPLAY_TYPE_ANY
 	//
 	// any display type
-	GLDisplayTypeAny GLDisplayType = -1
+	GlDisplayTypeAny GLDisplayType = -1
 )
 
 func marshalGLDisplayType(p unsafe.Pointer) (any, error) {
@@ -1831,141 +1835,141 @@ func (f GLDisplayType) String() string {
 	}
 
 	var parts []string
-	if (f & GLDisplayTypeNone) != 0 {
-		parts = append(parts, "GLDisplayTypeNone")
+	if (f & GlDisplayTypeNone) != 0 {
+		parts = append(parts, "GlDisplayTypeNone")
 	}
-	if (f & GLDisplayTypeX11) != 0 {
-		parts = append(parts, "GLDisplayTypeX11")
+	if (f & GlDisplayTypeX11) != 0 {
+		parts = append(parts, "GlDisplayTypeX11")
 	}
-	if (f & GLDisplayTypeWayland) != 0 {
-		parts = append(parts, "GLDisplayTypeWayland")
+	if (f & GlDisplayTypeWayland) != 0 {
+		parts = append(parts, "GlDisplayTypeWayland")
 	}
-	if (f & GLDisplayTypeCocoa) != 0 {
-		parts = append(parts, "GLDisplayTypeCocoa")
+	if (f & GlDisplayTypeCocoa) != 0 {
+		parts = append(parts, "GlDisplayTypeCocoa")
 	}
-	if (f & GLDisplayTypeWin32) != 0 {
-		parts = append(parts, "GLDisplayTypeWin32")
+	if (f & GlDisplayTypeWin32) != 0 {
+		parts = append(parts, "GlDisplayTypeWin32")
 	}
-	if (f & GLDisplayTypeDispmanx) != 0 {
-		parts = append(parts, "GLDisplayTypeDispmanx")
+	if (f & GlDisplayTypeDispmanx) != 0 {
+		parts = append(parts, "GlDisplayTypeDispmanx")
 	}
-	if (f & GLDisplayTypeEgl) != 0 {
-		parts = append(parts, "GLDisplayTypeEgl")
+	if (f & GlDisplayTypeEgl) != 0 {
+		parts = append(parts, "GlDisplayTypeEgl")
 	}
-	if (f & GLDisplayTypeVivFb) != 0 {
-		parts = append(parts, "GLDisplayTypeVivFb")
+	if (f & GlDisplayTypeVivFb) != 0 {
+		parts = append(parts, "GlDisplayTypeVivFb")
 	}
-	if (f & GLDisplayTypeGbm) != 0 {
-		parts = append(parts, "GLDisplayTypeGbm")
+	if (f & GlDisplayTypeGbm) != 0 {
+		parts = append(parts, "GlDisplayTypeGbm")
 	}
-	if (f & GLDisplayTypeEglDevice) != 0 {
-		parts = append(parts, "GLDisplayTypeEglDevice")
+	if (f & GlDisplayTypeEglDevice) != 0 {
+		parts = append(parts, "GlDisplayTypeEglDevice")
 	}
-	if (f & GLDisplayTypeEagl) != 0 {
-		parts = append(parts, "GLDisplayTypeEagl")
+	if (f & GlDisplayTypeEagl) != 0 {
+		parts = append(parts, "GlDisplayTypeEagl")
 	}
-	if (f & GLDisplayTypeWinrt) != 0 {
-		parts = append(parts, "GLDisplayTypeWinrt")
+	if (f & GlDisplayTypeWinrt) != 0 {
+		parts = append(parts, "GlDisplayTypeWinrt")
 	}
-	if (f & GLDisplayTypeAndroid) != 0 {
-		parts = append(parts, "GLDisplayTypeAndroid")
+	if (f & GlDisplayTypeAndroid) != 0 {
+		parts = append(parts, "GlDisplayTypeAndroid")
 	}
-	if (f & GLDisplayTypeEglSurfaceless) != 0 {
-		parts = append(parts, "GLDisplayTypeEglSurfaceless")
+	if (f & GlDisplayTypeEglSurfaceless) != 0 {
+		parts = append(parts, "GlDisplayTypeEglSurfaceless")
 	}
-	if (f & GLDisplayTypeAny) != 0 {
-		parts = append(parts, "GLDisplayTypeAny")
+	if (f & GlDisplayTypeAny) != 0 {
+		parts = append(parts, "GlDisplayTypeAny")
 	}
 	return "GLDisplayType(" + strings.Join(parts, "|") + ")"
 }
 
-// GLDRMFormatFlags wraps GstGLDrmFormatFlags
-type GLDRMFormatFlags C.gint
+// GLDrmFormatFlags wraps GstGLDrmFormatFlags
+type GLDrmFormatFlags C.gint
 
 const (
-	// GLDRMFormatIncludeExternal wraps GL_DRM_FORMAT_INCLUDE_EXTERNAL
+	// GlDrmFormatIncludeExternal wraps GST_GL_DRM_FORMAT_INCLUDE_EXTERNAL
 	//
 	// include external-only formats
-	GLDRMFormatIncludeExternal GLDRMFormatFlags = 1
-	// GLDRMFormatLinearOnly wraps GL_DRM_FORMAT_LINEAR_ONLY
+	GlDrmFormatIncludeExternal GLDrmFormatFlags = 1
+	// GlDrmFormatLinearOnly wraps GST_GL_DRM_FORMAT_LINEAR_ONLY
 	//
 	// only include formats with linear modifier
-	GLDRMFormatLinearOnly GLDRMFormatFlags = 2
-	// GLDRMFormatIncludeEmulated wraps GL_DRM_FORMAT_INCLUDE_EMULATED
+	GlDrmFormatLinearOnly GLDrmFormatFlags = 2
+	// GlDrmFormatIncludeEmulated wraps GST_GL_DRM_FORMAT_INCLUDE_EMULATED
 	//
 	// include emulated formats
-	GLDRMFormatIncludeEmulated GLDRMFormatFlags = 4
+	GlDrmFormatIncludeEmulated GLDrmFormatFlags = 4
 )
 
-func marshalGLDRMFormatFlags(p unsafe.Pointer) (any, error) {
-	return GLDRMFormatFlags(gobject.ValueFromNative(p).Flags()), nil
+func marshalGLDrmFormatFlags(p unsafe.Pointer) (any, error) {
+	return GLDrmFormatFlags(gobject.ValueFromNative(p).Flags()), nil
 }
 // Has returns true if g contains other
-func (g GLDRMFormatFlags) Has(other GLDRMFormatFlags) bool {
+func (g GLDrmFormatFlags) Has(other GLDrmFormatFlags) bool {
 	return (g & other) == other
 }
 
-var _ gobject.GoValueInitializer = GLDRMFormatFlags(0)
+var _ gobject.GoValueInitializer = GLDrmFormatFlags(0)
 
-func (f GLDRMFormatFlags) GoValueType() gobject.Type {
+func (f GLDrmFormatFlags) GoValueType() gobject.Type {
 	return TypeGLDrmFormatFlags
 }
 
-func (f GLDRMFormatFlags) SetGoValue(v *gobject.Value) {
+func (f GLDrmFormatFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
-func (f GLDRMFormatFlags) String() string {
+func (f GLDrmFormatFlags) String() string {
 	if f == 0 {
-		return "GLDRMFormatFlags(0)"
+		return "GLDrmFormatFlags(0)"
 	}
 
 	var parts []string
-	if (f & GLDRMFormatIncludeExternal) != 0 {
-		parts = append(parts, "GLDRMFormatIncludeExternal")
+	if (f & GlDrmFormatIncludeExternal) != 0 {
+		parts = append(parts, "GlDrmFormatIncludeExternal")
 	}
-	if (f & GLDRMFormatLinearOnly) != 0 {
-		parts = append(parts, "GLDRMFormatLinearOnly")
+	if (f & GlDrmFormatLinearOnly) != 0 {
+		parts = append(parts, "GlDrmFormatLinearOnly")
 	}
-	if (f & GLDRMFormatIncludeEmulated) != 0 {
-		parts = append(parts, "GLDRMFormatIncludeEmulated")
+	if (f & GlDrmFormatIncludeEmulated) != 0 {
+		parts = append(parts, "GlDrmFormatIncludeEmulated")
 	}
-	return "GLDRMFormatFlags(" + strings.Join(parts, "|") + ")"
+	return "GLDrmFormatFlags(" + strings.Join(parts, "|") + ")"
 }
 
 // GLPlatform wraps GstGLPlatform
 type GLPlatform C.gint
 
 const (
-	// GLPlatformNone wraps GL_PLATFORM_NONE
+	// GlPlatformNone wraps GST_GL_PLATFORM_NONE
 	//
 	// no platform
-	GLPlatformNone GLPlatform = 0
-	// GLPlatformEgl wraps GL_PLATFORM_EGL
+	GlPlatformNone GLPlatform = 0
+	// GlPlatformEgl wraps GST_GL_PLATFORM_EGL
 	//
 	// the EGL platform used primarily with the X11, wayland
 	//                      and android window systems as well as on embedded Linux
-	GLPlatformEgl GLPlatform = 1
-	// GLPlatformGLX wraps GL_PLATFORM_GLX
+	GlPlatformEgl GLPlatform = 1
+	// GlPlatformGlx wraps GST_GL_PLATFORM_GLX
 	//
 	// the GLX platform used primarily with the X11 window system
-	GLPlatformGLX GLPlatform = 2
-	// GLPlatformWgl wraps GL_PLATFORM_WGL
+	GlPlatformGlx GLPlatform = 2
+	// GlPlatformWgl wraps GST_GL_PLATFORM_WGL
 	//
 	// the WGL platform used primarily on Windows
-	GLPlatformWgl GLPlatform = 4
-	// GLPlatformCgl wraps GL_PLATFORM_CGL
+	GlPlatformWgl GLPlatform = 4
+	// GlPlatformCgl wraps GST_GL_PLATFORM_CGL
 	//
 	// the CGL platform used primarily on OS X
-	GLPlatformCgl GLPlatform = 8
-	// GLPlatformEagl wraps GL_PLATFORM_EAGL
+	GlPlatformCgl GLPlatform = 8
+	// GlPlatformEagl wraps GST_GL_PLATFORM_EAGL
 	//
 	// the EAGL platform used primarily on iOS
-	GLPlatformEagl GLPlatform = 16
-	// GLPlatformAny wraps GL_PLATFORM_ANY
+	GlPlatformEagl GLPlatform = 16
+	// GlPlatformAny wraps GST_GL_PLATFORM_ANY
 	//
 	// any OpenGL platform
-	GLPlatformAny GLPlatform = -1
+	GlPlatformAny GLPlatform = -1
 )
 
 func marshalGLPlatform(p unsafe.Pointer) (any, error) {
@@ -1992,26 +1996,26 @@ func (f GLPlatform) String() string {
 	}
 
 	var parts []string
-	if (f & GLPlatformNone) != 0 {
-		parts = append(parts, "GLPlatformNone")
+	if (f & GlPlatformNone) != 0 {
+		parts = append(parts, "GlPlatformNone")
 	}
-	if (f & GLPlatformEgl) != 0 {
-		parts = append(parts, "GLPlatformEgl")
+	if (f & GlPlatformEgl) != 0 {
+		parts = append(parts, "GlPlatformEgl")
 	}
-	if (f & GLPlatformGLX) != 0 {
-		parts = append(parts, "GLPlatformGLX")
+	if (f & GlPlatformGlx) != 0 {
+		parts = append(parts, "GlPlatformGlx")
 	}
-	if (f & GLPlatformWgl) != 0 {
-		parts = append(parts, "GLPlatformWgl")
+	if (f & GlPlatformWgl) != 0 {
+		parts = append(parts, "GlPlatformWgl")
 	}
-	if (f & GLPlatformCgl) != 0 {
-		parts = append(parts, "GLPlatformCgl")
+	if (f & GlPlatformCgl) != 0 {
+		parts = append(parts, "GlPlatformCgl")
 	}
-	if (f & GLPlatformEagl) != 0 {
-		parts = append(parts, "GLPlatformEagl")
+	if (f & GlPlatformEagl) != 0 {
+		parts = append(parts, "GlPlatformEagl")
 	}
-	if (f & GLPlatformAny) != 0 {
-		parts = append(parts, "GLPlatformAny")
+	if (f & GlPlatformAny) != 0 {
+		parts = append(parts, "GlPlatformAny")
 	}
 	return "GLPlatform(" + strings.Join(parts, "|") + ")"
 }
@@ -2042,7 +2046,7 @@ func GLPlatformFromString(platformS string) GLPlatform {
 	return goret
 }
 
-// GLPlatformToString wraps gst_gl_platform_to_string
+// String wraps gst_gl_platform_to_string
 // 
 // The function takes the following parameters:
 // 
@@ -2051,7 +2055,7 @@ func GLPlatformFromString(platformS string) GLPlatform {
 // The function returns the following values:
 // 
 // 	- goret string 
-func GLPlatformToString(platform GLPlatform) string {
+func String(platform GLPlatform) string {
 	var carg1 C.GstGLPlatform // in, none, casted
 	var cret  *C.gchar        // return, full, string
 
@@ -2074,23 +2078,23 @@ func GLPlatformToString(platform GLPlatform) string {
 type GLSLProfile C.gint
 
 const (
-	// GlslProfileNone wraps GLSL_PROFILE_NONE
+	// GlslProfileNone wraps GST_GLSL_PROFILE_NONE
 	//
 	// no profile supported/available
 	GlslProfileNone GLSLProfile = 0
-	// GlslProfileES wraps GLSL_PROFILE_ES
+	// GlslProfileEs wraps GST_GLSL_PROFILE_ES
 	//
 	// OpenGL|ES profile
-	GlslProfileES GLSLProfile = 1
-	// GlslProfileCore wraps GLSL_PROFILE_CORE
+	GlslProfileEs GLSLProfile = 1
+	// GlslProfileCore wraps GST_GLSL_PROFILE_CORE
 	//
 	// OpenGL core profile
 	GlslProfileCore GLSLProfile = 2
-	// GlslProfileCompatibility wraps GLSL_PROFILE_COMPATIBILITY
+	// GlslProfileCompatibility wraps GST_GLSL_PROFILE_COMPATIBILITY
 	//
 	// OpenGL compatibility profile
 	GlslProfileCompatibility GLSLProfile = 4
-	// GlslProfileAny wraps GLSL_PROFILE_ANY
+	// GlslProfileAny wraps GST_GLSL_PROFILE_ANY
 	//
 	// any OpenGL/OpenGL|ES profile
 	GlslProfileAny GLSLProfile = -1
@@ -2123,8 +2127,8 @@ func (f GLSLProfile) String() string {
 	if (f & GlslProfileNone) != 0 {
 		parts = append(parts, "GlslProfileNone")
 	}
-	if (f & GlslProfileES) != 0 {
-		parts = append(parts, "GlslProfileES")
+	if (f & GlslProfileEs) != 0 {
+		parts = append(parts, "GlslProfileEs")
 	}
 	if (f & GlslProfileCore) != 0 {
 		parts = append(parts, "GlslProfileCore")
@@ -2164,7 +2168,7 @@ func GLSLProfileFromString(str string) GLSLProfile {
 	return goret
 }
 
-// GLSLProfileToString wraps gst_glsl_profile_to_string
+// String wraps gst_glsl_profile_to_string
 // 
 // The function takes the following parameters:
 // 
@@ -2173,7 +2177,7 @@ func GLSLProfileFromString(str string) GLSLProfile {
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
-func GLSLProfileToString(profile GLSLProfile) string {
+func String(profile GLSLProfile) string {
 	var carg1 C.GstGLSLProfile // in, none, casted
 	var cret  *C.gchar         // return, none, string, nullable-string
 
@@ -2213,7 +2217,7 @@ type GLAsyncDebugLogGetMessage func() (goret string)
 // 	- goret bool 
 type GLFilterRenderFunc func(filter GLFilter, inTex *GLMemory) (goret bool)
 
-// BufferAddGLSyncMeta wraps gst_buffer_add_gl_sync_meta
+// BufferAddGlSyncMeta wraps gst_buffer_add_gl_sync_meta
 // 
 // The function takes the following parameters:
 // 
@@ -2223,7 +2227,7 @@ type GLFilterRenderFunc func(filter GLFilter, inTex *GLMemory) (goret bool)
 // The function returns the following values:
 // 
 // 	- goret *GLSyncMeta 
-func BufferAddGLSyncMeta(_context GLContext, buffer *gst.Buffer) *GLSyncMeta {
+func BufferAddGlSyncMeta(_context GLContext, buffer *gst.Buffer) *GLSyncMeta {
 	var carg1 *C.GstGLContext  // in, none, converted
 	var carg2 *C.GstBuffer     // in, none, converted
 	var cret  *C.GstGLSyncMeta // return, none, converted
@@ -2242,7 +2246,7 @@ func BufferAddGLSyncMeta(_context GLContext, buffer *gst.Buffer) *GLSyncMeta {
 	return goret
 }
 
-// BufferPoolConfigGetGLAllocationParams wraps gst_buffer_pool_config_get_gl_allocation_params
+// BufferPoolConfigGetGlAllocationParams wraps gst_buffer_pool_config_get_gl_allocation_params
 // 
 // The function takes the following parameters:
 // 
@@ -2251,7 +2255,7 @@ func BufferAddGLSyncMeta(_context GLContext, buffer *gst.Buffer) *GLSyncMeta {
 // The function returns the following values:
 // 
 // 	- goret *GLAllocationParams (nullable) 
-func BufferPoolConfigGetGLAllocationParams(config *gst.Structure) *GLAllocationParams {
+func BufferPoolConfigGetGlAllocationParams(config *gst.Structure) *GLAllocationParams {
 	var carg1 *C.GstStructure          // in, none, converted
 	var cret  *C.GstGLAllocationParams // return, full, converted, nullable
 
@@ -2269,7 +2273,7 @@ func BufferPoolConfigGetGLAllocationParams(config *gst.Structure) *GLAllocationP
 	return goret
 }
 
-// BufferPoolConfigGetGLMinFreeQueueSize wraps gst_buffer_pool_config_get_gl_min_free_queue_size
+// BufferPoolConfigGetGlMinFreeQueueSize wraps gst_buffer_pool_config_get_gl_min_free_queue_size
 // 
 // The function takes the following parameters:
 // 
@@ -2280,7 +2284,7 @@ func BufferPoolConfigGetGLAllocationParams(config *gst.Structure) *GLAllocationP
 // 	- goret uint 
 //
 // See gst_buffer_pool_config_set_gl_min_free_queue_size().
-func BufferPoolConfigGetGLMinFreeQueueSize(config *gst.Structure) uint {
+func BufferPoolConfigGetGlMinFreeQueueSize(config *gst.Structure) uint {
 	var carg1 *C.GstStructure // in, none, converted
 	var cret  C.guint         // return, none, casted
 
@@ -2296,7 +2300,7 @@ func BufferPoolConfigGetGLMinFreeQueueSize(config *gst.Structure) uint {
 	return goret
 }
 
-// BufferPoolConfigSetGLAllocationParams wraps gst_buffer_pool_config_set_gl_allocation_params
+// BufferPoolConfigSetGlAllocationParams wraps gst_buffer_pool_config_set_gl_allocation_params
 // 
 // The function takes the following parameters:
 // 
@@ -2304,7 +2308,7 @@ func BufferPoolConfigGetGLMinFreeQueueSize(config *gst.Structure) uint {
 // 	- params *GLAllocationParams (nullable): a #GstGLAllocationParams 
 //
 // Sets @params on @config
-func BufferPoolConfigSetGLAllocationParams(config *gst.Structure, params *GLAllocationParams) {
+func BufferPoolConfigSetGlAllocationParams(config *gst.Structure, params *GLAllocationParams) {
 	var carg1 *C.GstStructure          // in, none, converted
 	var carg2 *C.GstGLAllocationParams // in, none, converted, nullable
 
@@ -2318,7 +2322,7 @@ func BufferPoolConfigSetGLAllocationParams(config *gst.Structure, params *GLAllo
 	runtime.KeepAlive(params)
 }
 
-// BufferPoolConfigSetGLMinFreeQueueSize wraps gst_buffer_pool_config_set_gl_min_free_queue_size
+// BufferPoolConfigSetGlMinFreeQueueSize wraps gst_buffer_pool_config_set_gl_min_free_queue_size
 // 
 // The function takes the following parameters:
 // 
@@ -2336,7 +2340,7 @@ func BufferPoolConfigSetGLAllocationParams(config *gst.Structure, params *GLAllo
 // 
 // This value must be less than the configured maximum amount of buffers for
 // this @config.
-func BufferPoolConfigSetGLMinFreeQueueSize(config *gst.Structure, queueSize uint) {
+func BufferPoolConfigSetGlMinFreeQueueSize(config *gst.Structure, queueSize uint) {
 	var carg1 *C.GstStructure // in, none, converted
 	var carg2 C.guint         // in, none, casted
 
@@ -2348,7 +2352,7 @@ func BufferPoolConfigSetGLMinFreeQueueSize(config *gst.Structure, queueSize uint
 	runtime.KeepAlive(queueSize)
 }
 
-// ContextGetGLDisplay wraps gst_context_get_gl_display
+// ContextGetGlDisplay wraps gst_context_get_gl_display
 // 
 // The function takes the following parameters:
 // 
@@ -2358,7 +2362,7 @@ func BufferPoolConfigSetGLMinFreeQueueSize(config *gst.Structure, queueSize uint
 // 
 // 	- display GLDisplay (nullable): resulting #GstGLDisplay 
 // 	- goret bool 
-func ContextGetGLDisplay(_context *gst.Context) (GLDisplay, bool) {
+func ContextGetGlDisplay(_context *gst.Context) (GLDisplay, bool) {
 	var carg1 *C.GstContext   // in, none, converted
 	var carg2 *C.GstGLDisplay // out, full, converted, nullable
 	var cret  C.gboolean      // return
@@ -2381,7 +2385,7 @@ func ContextGetGLDisplay(_context *gst.Context) (GLDisplay, bool) {
 	return display, goret
 }
 
-// ContextSetGLDisplay wraps gst_context_set_gl_display
+// ContextSetGlDisplay wraps gst_context_set_gl_display
 // 
 // The function takes the following parameters:
 // 
@@ -2389,7 +2393,7 @@ func ContextGetGLDisplay(_context *gst.Context) (GLDisplay, bool) {
 // 	- display GLDisplay (nullable): resulting #GstGLDisplay 
 //
 // Sets @display on @context
-func ContextSetGLDisplay(_context *gst.Context, display GLDisplay) {
+func ContextSetGlDisplay(_context *gst.Context, display GLDisplay) {
 	var carg1 *C.GstContext   // in, none, converted
 	var carg2 *C.GstGLDisplay // in, none, converted, nullable
 
@@ -2403,7 +2407,7 @@ func ContextSetGLDisplay(_context *gst.Context, display GLDisplay) {
 	runtime.KeepAlive(display)
 }
 
-// GLCheckExtension wraps gst_gl_check_extension
+// GlCheckExtension wraps gst_gl_check_extension
 // 
 // The function takes the following parameters:
 // 
@@ -2413,7 +2417,7 @@ func ContextSetGLDisplay(_context *gst.Context, display GLDisplay) {
 // The function returns the following values:
 // 
 // 	- goret bool 
-func GLCheckExtension(name string, ext string) bool {
+func GlCheckExtension(name string, ext string) bool {
 	var carg1 *C.char    // in, none, string
 	var carg2 *C.gchar   // in, none, string
 	var cret  C.gboolean // return
@@ -2436,13 +2440,13 @@ func GLCheckExtension(name string, ext string) bool {
 	return goret
 }
 
-// GLElementPropagateDisplayContext wraps gst_gl_element_propagate_display_context
+// GlElementPropagateDisplayContext wraps gst_gl_element_propagate_display_context
 // 
 // The function takes the following parameters:
 // 
 // 	- element gst.Element 
 // 	- display GLDisplay 
-func GLElementPropagateDisplayContext(element gst.Element, display GLDisplay) {
+func GlElementPropagateDisplayContext(element gst.Element, display GLDisplay) {
 	var carg1 *C.GstElement   // in, none, converted
 	var carg2 *C.GstGLDisplay // in, none, converted
 
@@ -2454,7 +2458,7 @@ func GLElementPropagateDisplayContext(element gst.Element, display GLDisplay) {
 	runtime.KeepAlive(display)
 }
 
-// GLGetPlaneDataSize wraps gst_gl_get_plane_data_size
+// GlGetPlaneDataSize wraps gst_gl_get_plane_data_size
 // 
 // The function takes the following parameters:
 // 
@@ -2467,7 +2471,7 @@ func GLElementPropagateDisplayContext(element gst.Element, display GLDisplay) {
 // 	- goret uint 
 //
 // Retrieve the size in bytes of a video plane of data with a certain alignment
-func GLGetPlaneDataSize(info *gstvideo.VideoInfo, align *gstvideo.VideoAlignment, plane uint) uint {
+func GlGetPlaneDataSize(info *gstvideo.VideoInfo, align *gstvideo.VideoAlignment, plane uint) uint {
 	var carg1 *C.GstVideoInfo      // in, none, converted
 	var carg2 *C.GstVideoAlignment // in, none, converted
 	var carg3 C.guint              // in, none, casted
@@ -2489,7 +2493,7 @@ func GLGetPlaneDataSize(info *gstvideo.VideoInfo, align *gstvideo.VideoAlignment
 	return goret
 }
 
-// GLGetPlaneStart wraps gst_gl_get_plane_start
+// GlGetPlaneStart wraps gst_gl_get_plane_start
 // 
 // The function takes the following parameters:
 // 
@@ -2500,7 +2504,7 @@ func GLGetPlaneDataSize(info *gstvideo.VideoInfo, align *gstvideo.VideoAlignment
 // The function returns the following values:
 // 
 // 	- goret uint 
-func GLGetPlaneStart(info *gstvideo.VideoInfo, valign *gstvideo.VideoAlignment, plane uint) uint {
+func GlGetPlaneStart(info *gstvideo.VideoInfo, valign *gstvideo.VideoAlignment, plane uint) uint {
 	var carg1 *C.GstVideoInfo      // in, none, converted
 	var carg2 *C.GstVideoAlignment // in, none, converted
 	var carg3 C.guint              // in, none, casted
@@ -2522,7 +2526,7 @@ func GLGetPlaneStart(info *gstvideo.VideoInfo, valign *gstvideo.VideoAlignment, 
 	return goret
 }
 
-// GLHandleContextQuery wraps gst_gl_handle_context_query
+// GlHandleContextQuery wraps gst_gl_handle_context_query
 // 
 // The function takes the following parameters:
 // 
@@ -2535,7 +2539,7 @@ func GLGetPlaneStart(info *gstvideo.VideoInfo, valign *gstvideo.VideoAlignment, 
 // The function returns the following values:
 // 
 // 	- goret bool 
-func GLHandleContextQuery(element gst.Element, query *gst.Query, display GLDisplay, _context GLContext, otherContext GLContext) bool {
+func GlHandleContextQuery(element gst.Element, query *gst.Query, display GLDisplay, _context GLContext, otherContext GLContext) bool {
 	var carg1 *C.GstElement   // in, none, converted
 	var carg2 *C.GstQuery     // in, none, converted
 	var carg3 *C.GstGLDisplay // in, none, converted, nullable
@@ -2571,7 +2575,7 @@ func GLHandleContextQuery(element gst.Element, query *gst.Query, display GLDispl
 	return goret
 }
 
-// GLHandleSetContext wraps gst_gl_handle_set_context
+// GlHandleSetContext wraps gst_gl_handle_set_context
 // 
 // The function takes the following parameters:
 // 
@@ -2589,7 +2593,7 @@ func GLHandleContextQuery(element gst.Element, query *gst.Query, display GLDispl
 // 
 // Retrieve's the #GstGLDisplay or #GstGLContext in @context and places the
 // result in @display or @other_context respectively.
-func GLHandleSetContext(element gst.Element, _context *gst.Context) (GLDisplay, GLContext, bool) {
+func GlHandleSetContext(element gst.Element, _context *gst.Context) (GLDisplay, GLContext, bool) {
 	var carg1 *C.GstElement   // in, none, converted
 	var carg2 *C.GstContext   // in, none, converted
 	var carg3 *C.GstGLDisplay // out, full, converted
@@ -2616,7 +2620,7 @@ func GLHandleSetContext(element gst.Element, _context *gst.Context) (GLDisplay, 
 	return display, otherContext, goret
 }
 
-// GLSetAffineTransformationMetaFromNdc wraps gst_gl_set_affine_transformation_meta_from_ndc
+// GlSetAffineTransformationMetaFromNdc wraps gst_gl_set_affine_transformation_meta_from_ndc
 // 
 // The function takes the following parameters:
 // 
@@ -2625,7 +2629,7 @@ func GLHandleSetContext(element gst.Element, _context *gst.Context) (GLDisplay, 
 //
 // Set the 4x4 affine transformation matrix stored in @meta from the
 // NDC coordinates in @matrix.
-func GLSetAffineTransformationMetaFromNdc(meta *gstvideo.VideoAffineTransformationMeta, matrix [16]float32) {
+func GlSetAffineTransformationMetaFromNdc(meta *gstvideo.VideoAffineTransformationMeta, matrix [16]float32) {
 	var carg1 *C.GstVideoAffineTransformationMeta // in, none, converted
 	var carg2 *C.gfloat                           // in, transfer: none, C Pointers: 1, Name: array[gfloat], array (inner: *typesystem.CastablePrimitive, fixed-size: 16)
 
@@ -2639,7 +2643,7 @@ func GLSetAffineTransformationMetaFromNdc(meta *gstvideo.VideoAffineTransformati
 	runtime.KeepAlive(matrix)
 }
 
-// GLSizedGLFormatFromGLFormatType wraps gst_gl_sized_gl_format_from_gl_format_type
+// GlSizedGlFormatFromGlFormatType wraps gst_gl_sized_gl_format_from_gl_format_type
 // 
 // The function takes the following parameters:
 // 
@@ -2650,7 +2654,7 @@ func GLSetAffineTransformationMetaFromNdc(meta *gstvideo.VideoAffineTransformati
 // The function returns the following values:
 // 
 // 	- goret uint 
-func GLSizedGLFormatFromGLFormatType(_context GLContext, format uint, typ uint) uint {
+func GlSizedGlFormatFromGlFormatType(_context GLContext, format uint, typ uint) uint {
 	var carg1 *C.GstGLContext // in, none, converted
 	var carg2 C.guint         // in, none, casted
 	var carg3 C.guint         // in, none, casted
@@ -2672,12 +2676,12 @@ func GLSizedGLFormatFromGLFormatType(_context GLContext, format uint, typ uint) 
 	return goret
 }
 
-// GLStereoDownmixModeGetType wraps gst_gl_stereo_downmix_mode_get_type
+// GlStereoDownmixModeGetType wraps gst_gl_stereo_downmix_mode_get_type
 // 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
-func GLStereoDownmixModeGetType() gobject.Type {
+func GlStereoDownmixModeGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
 	cret = C.gst_gl_stereo_downmix_mode_get_type()
@@ -2689,12 +2693,12 @@ func GLStereoDownmixModeGetType() gobject.Type {
 	return goret
 }
 
-// GLSyncMetaApiGetType wraps gst_gl_sync_meta_api_get_type
+// GlSyncMetaAPIGetType wraps gst_gl_sync_meta_api_get_type
 // 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
-func GLSyncMetaApiGetType() gobject.Type {
+func GlSyncMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
 	cret = C.gst_gl_sync_meta_api_get_type()
@@ -2706,7 +2710,7 @@ func GLSyncMetaApiGetType() gobject.Type {
 	return goret
 }
 
-// GLValueGetTextureTargetMask wraps gst_gl_value_get_texture_target_mask
+// GlValueGetTextureTargetMask wraps gst_gl_value_get_texture_target_mask
 // 
 // The function takes the following parameters:
 // 
@@ -2717,7 +2721,7 @@ func GLSyncMetaApiGetType() gobject.Type {
 // 	- goret GLTextureTarget 
 //
 // See gst_gl_value_set_texture_target_from_mask() for what entails a mask
-func GLValueGetTextureTargetMask(value *gobject.Value) GLTextureTarget {
+func GlValueGetTextureTargetMask(value *gobject.Value) GLTextureTarget {
 	var carg1 *C.GValue            // in, none, converted
 	var cret  C.GstGLTextureTarget // return, none, casted
 
@@ -2733,7 +2737,7 @@ func GLValueGetTextureTargetMask(value *gobject.Value) GLTextureTarget {
 	return goret
 }
 
-// GLValueSetTextureTarget wraps gst_gl_value_set_texture_target
+// GlValueSetTextureTarget wraps gst_gl_value_set_texture_target
 // 
 // The function takes the following parameters:
 // 
@@ -2743,7 +2747,7 @@ func GLValueGetTextureTargetMask(value *gobject.Value) GLTextureTarget {
 // The function returns the following values:
 // 
 // 	- goret bool 
-func GLValueSetTextureTarget(value *gobject.Value, target GLTextureTarget) bool {
+func GlValueSetTextureTarget(value *gobject.Value, target GLTextureTarget) bool {
 	var carg1 *C.GValue            // in, none, converted
 	var carg2 C.GstGLTextureTarget // in, none, casted
 	var cret  C.gboolean           // return
@@ -2764,7 +2768,7 @@ func GLValueSetTextureTarget(value *gobject.Value, target GLTextureTarget) bool 
 	return goret
 }
 
-// GLValueSetTextureTargetFromMask wraps gst_gl_value_set_texture_target_from_mask
+// GlValueSetTextureTargetFromMask wraps gst_gl_value_set_texture_target_from_mask
 // 
 // The function takes the following parameters:
 // 
@@ -2777,7 +2781,7 @@ func GLValueSetTextureTarget(value *gobject.Value, target GLTextureTarget) bool 
 //
 // A mask is a bitwise OR of (1 &lt;&lt; target) where target is a valid
 // #GstGLTextureTarget
-func GLValueSetTextureTargetFromMask(value *gobject.Value, targetMask GLTextureTarget) bool {
+func GlValueSetTextureTargetFromMask(value *gobject.Value, targetMask GLTextureTarget) bool {
 	var carg1 *C.GValue            // in, none, converted
 	var carg2 C.GstGLTextureTarget // in, none, casted
 	var cret  C.gboolean           // return
@@ -2798,7 +2802,7 @@ func GLValueSetTextureTargetFromMask(value *gobject.Value, targetMask GLTextureT
 	return goret
 }
 
-// GLVersionToGlslVersion wraps gst_gl_version_to_glsl_version
+// GlVersionToGlslVersion wraps gst_gl_version_to_glsl_version
 // 
 // The function takes the following parameters:
 // 
@@ -2809,7 +2813,7 @@ func GLValueSetTextureTargetFromMask(value *gobject.Value, targetMask GLTextureT
 // The function returns the following values:
 // 
 // 	- goret GLSLVersion 
-func GLVersionToGlslVersion(glApi GLAPI, maj int32, min int32) GLSLVersion {
+func GlVersionToGlslVersion(glApi GLAPI, maj int32, min int32) GLSLVersion {
 	var carg1 C.GstGLAPI       // in, none, casted
 	var carg2 C.gint           // in, none, casted
 	var carg3 C.gint           // in, none, casted
@@ -2870,7 +2874,7 @@ func GlslStringGetVersionProfile(s string) (GLSLVersion, GLSLProfile, bool) {
 	return version, profile, goret
 }
 
-// IsGLBaseMemory wraps gst_is_gl_base_memory
+// IsGlBaseMemory wraps gst_is_gl_base_memory
 // 
 // The function takes the following parameters:
 // 
@@ -2879,7 +2883,7 @@ func GlslStringGetVersionProfile(s string) (GLSLVersion, GLSLProfile, bool) {
 // The function returns the following values:
 // 
 // 	- goret bool 
-func IsGLBaseMemory(mem *gst.Memory) bool {
+func IsGlBaseMemory(mem *gst.Memory) bool {
 	var carg1 *C.GstMemory // in, none, converted
 	var cret  C.gboolean   // return
 
@@ -2897,7 +2901,7 @@ func IsGLBaseMemory(mem *gst.Memory) bool {
 	return goret
 }
 
-// IsGLBuffer wraps gst_is_gl_buffer
+// IsGlBuffer wraps gst_is_gl_buffer
 // 
 // The function takes the following parameters:
 // 
@@ -2906,7 +2910,7 @@ func IsGLBaseMemory(mem *gst.Memory) bool {
 // The function returns the following values:
 // 
 // 	- goret bool 
-func IsGLBuffer(mem *gst.Memory) bool {
+func IsGlBuffer(mem *gst.Memory) bool {
 	var carg1 *C.GstMemory // in, none, converted
 	var cret  C.gboolean   // return
 
@@ -2924,7 +2928,7 @@ func IsGLBuffer(mem *gst.Memory) bool {
 	return goret
 }
 
-// IsGLMemory wraps gst_is_gl_memory
+// IsGlMemory wraps gst_is_gl_memory
 // 
 // The function takes the following parameters:
 // 
@@ -2933,7 +2937,7 @@ func IsGLBuffer(mem *gst.Memory) bool {
 // The function returns the following values:
 // 
 // 	- goret bool 
-func IsGLMemory(mem *gst.Memory) bool {
+func IsGlMemory(mem *gst.Memory) bool {
 	var carg1 *C.GstMemory // in, none, converted
 	var cret  C.gboolean   // return
 
@@ -2951,7 +2955,7 @@ func IsGLMemory(mem *gst.Memory) bool {
 	return goret
 }
 
-// IsGLMemoryPbo wraps gst_is_gl_memory_pbo
+// IsGlMemoryPbo wraps gst_is_gl_memory_pbo
 // 
 // The function takes the following parameters:
 // 
@@ -2960,7 +2964,7 @@ func IsGLMemory(mem *gst.Memory) bool {
 // The function returns the following values:
 // 
 // 	- goret bool 
-func IsGLMemoryPbo(mem *gst.Memory) bool {
+func IsGlMemoryPbo(mem *gst.Memory) bool {
 	var carg1 *C.GstMemory // in, none, converted
 	var cret  C.gboolean   // return
 
@@ -2978,7 +2982,7 @@ func IsGLMemoryPbo(mem *gst.Memory) bool {
 	return goret
 }
 
-// IsGLRenderbuffer wraps gst_is_gl_renderbuffer
+// IsGlRenderbuffer wraps gst_is_gl_renderbuffer
 // 
 // The function takes the following parameters:
 // 
@@ -2987,7 +2991,7 @@ func IsGLMemoryPbo(mem *gst.Memory) bool {
 // The function returns the following values:
 // 
 // 	- goret bool 
-func IsGLRenderbuffer(mem *gst.Memory) bool {
+func IsGlRenderbuffer(mem *gst.Memory) bool {
 	var carg1 *C.GstMemory // in, none, converted
 	var cret  C.gboolean   // return
 
@@ -3023,22 +3027,22 @@ type GLBaseFilter interface {
 	gstbase.BaseTransform
 	upcastToGstGLBaseFilter() *GLBaseFilterInstance
 
-	// FindGLContext wraps gst_gl_base_filter_find_gl_context
+	// FindGlContext wraps gst_gl_base_filter_find_gl_context
 	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
-	FindGLContext() bool
-	// GetGLContext wraps gst_gl_base_filter_get_gl_context
+	FindGlContext() bool
+	// GetGlContext wraps gst_gl_base_filter_get_gl_context
 	// 
 	// The function returns the following values:
 	// 
 	// 	- goret GLContext (nullable) 
-	GetGLContext() GLContext
+	GetGlContext() GLContext
 
 	// chain up virtual methods:
 
-	// ParentGLSetCaps calls the default implementations of the gl_set_caps virtual method.
+	// ParentGlSetCaps calls the default implementations of the gl_set_caps virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -3053,8 +3057,8 @@ type GLBaseFilter interface {
 	// called in the GL thread when caps are set on @filter.
 	//               Note: this will also be called when changing OpenGL contexts
 	//               where #GstBaseTransform::set_caps may not.
-	ParentGLSetCaps(incaps *gst.Caps, outcaps *gst.Caps) bool
-	// ParentGLStart calls the default implementations of the gl_start virtual method.
+	ParentGlSetCaps(incaps *gst.Caps, outcaps *gst.Caps) bool
+	// ParentGlStart calls the default implementations of the gl_start virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -3062,12 +3066,12 @@ type GLBaseFilter interface {
 	// 	- goret bool 
 	//
 	// called in the GL thread to setup the element GL state.
-	ParentGLStart() bool
-	// ParentGLStop calls the default implementations of the gl_stop virtual method.
+	ParentGlStart() bool
+	// ParentGlStop calls the default implementations of the gl_stop virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	//
 	// called in the GL thread to setup the element GL state.
-	ParentGLStop()
+	ParentGlStop()
 }
 
 func unsafeWrapGLBaseFilter(base *gobject.ObjectInstance) *GLBaseFilterInstance {
@@ -3126,12 +3130,12 @@ func UnsafeGLBaseFilterToGlibFull(c GLBaseFilter) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// FindGLContext wraps gst_gl_base_filter_find_gl_context
+// FindGlContext wraps gst_gl_base_filter_find_gl_context
 // 
 // The function returns the following values:
 // 
 // 	- goret bool 
-func (filter *GLBaseFilterInstance) FindGLContext() bool {
+func (filter *GLBaseFilterInstance) FindGlContext() bool {
 	var carg0 *C.GstGLBaseFilter // in, none, converted
 	var cret  C.gboolean         // return
 
@@ -3149,12 +3153,12 @@ func (filter *GLBaseFilterInstance) FindGLContext() bool {
 	return goret
 }
 
-// GetGLContext wraps gst_gl_base_filter_get_gl_context
+// GetGlContext wraps gst_gl_base_filter_get_gl_context
 // 
 // The function returns the following values:
 // 
 // 	- goret GLContext (nullable) 
-func (filter *GLBaseFilterInstance) GetGLContext() GLContext {
+func (filter *GLBaseFilterInstance) GetGlContext() GLContext {
 	var carg0 *C.GstGLBaseFilter // in, none, converted
 	var cret  *C.GstGLContext    // return, full, converted, nullable
 
@@ -3178,7 +3182,7 @@ type GLBaseFilterOverrides[Instance GLBaseFilter] struct {
 	// gstbase.BaseTransformOverrides allows you to override virtual methods from the parent class gstbase.BaseTransform
 	gstbase.BaseTransformOverrides[Instance]
 
-	// // GLSetCaps allows you to override the implementation of the virtual method gl_set_caps.
+	// // GlSetCaps allows you to override the implementation of the virtual method gl_set_caps.
 	// 
 	// The function takes the following parameters:
 	// 
@@ -3192,19 +3196,19 @@ type GLBaseFilterOverrides[Instance GLBaseFilter] struct {
 	// called in the GL thread when caps are set on @filter.
 	//               Note: this will also be called when changing OpenGL contexts
 	//               where #GstBaseTransform::set_caps may not.
-	GLSetCaps func(Instance, *gst.Caps, *gst.Caps) bool
-	// // GLStart allows you to override the implementation of the virtual method gl_start.
+	GlSetCaps func(Instance, *gst.Caps, *gst.Caps) bool
+	// // GlStart allows you to override the implementation of the virtual method gl_start.
 	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	//
 	// called in the GL thread to setup the element GL state.
-	GLStart func(Instance) bool
-	// // GLStop allows you to override the implementation of the virtual method gl_stop.
+	GlStart func(Instance) bool
+	// // GlStop allows you to override the implementation of the virtual method gl_stop.
 	//
 	// called in the GL thread to setup the element GL state.
-	GLStop func(Instance)
+	GlStop func(Instance)
 }
 
 // UnsafeApplyGLBaseFilterOverrides applies the overrides to init the gclass by setting the trampoline functions.
@@ -3214,7 +3218,7 @@ func UnsafeApplyGLBaseFilterOverrides[Instance GLBaseFilter](gclass unsafe.Point
 
 	pclass := (*C.GstGLBaseFilterClass)(gclass)
 
-	if overrides.GLSetCaps != nil {
+	if overrides.GlSetCaps != nil {
 		pclass.gl_set_caps = (*[0]byte)(C._gotk4_gstgl1_GLBaseFilter_gl_set_caps)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
@@ -3229,7 +3233,7 @@ func UnsafeApplyGLBaseFilterOverrides[Instance GLBaseFilter](gclass unsafe.Point
 				incaps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 				outcaps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg2))
 
-				goret = overrides.GLSetCaps(filter, incaps, outcaps)
+				goret = overrides.GlSetCaps(filter, incaps, outcaps)
 
 				if goret {
 					cret = C.TRUE
@@ -3240,7 +3244,7 @@ func UnsafeApplyGLBaseFilterOverrides[Instance GLBaseFilter](gclass unsafe.Point
 		)
 	}
 
-	if overrides.GLStart != nil {
+	if overrides.GlStart != nil {
 		pclass.gl_start = (*[0]byte)(C._gotk4_gstgl1_GLBaseFilter_gl_start)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
@@ -3251,7 +3255,7 @@ func UnsafeApplyGLBaseFilterOverrides[Instance GLBaseFilter](gclass unsafe.Point
 
 				filter = UnsafeGLBaseFilterFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
-				goret = overrides.GLStart(filter)
+				goret = overrides.GlStart(filter)
 
 				if goret {
 					cret = C.TRUE
@@ -3262,7 +3266,7 @@ func UnsafeApplyGLBaseFilterOverrides[Instance GLBaseFilter](gclass unsafe.Point
 		)
 	}
 
-	if overrides.GLStop != nil {
+	if overrides.GlStop != nil {
 		pclass.gl_stop = (*[0]byte)(C._gotk4_gstgl1_GLBaseFilter_gl_stop)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
@@ -3272,13 +3276,13 @@ func UnsafeApplyGLBaseFilterOverrides[Instance GLBaseFilter](gclass unsafe.Point
 
 				filter = UnsafeGLBaseFilterFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
-				overrides.GLStop(filter)
+				overrides.GlStop(filter)
 			},
 		)
 	}
 }
 
-// ParentGLSetCaps calls the default implementations of the gl_set_caps virtual method.
+// ParentGlSetCaps calls the default implementations of the gl_set_caps virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3293,7 +3297,7 @@ func UnsafeApplyGLBaseFilterOverrides[Instance GLBaseFilter](gclass unsafe.Point
 // called in the GL thread when caps are set on @filter.
 //               Note: this will also be called when changing OpenGL contexts
 //               where #GstBaseTransform::set_caps may not.
-func (filter *GLBaseFilterInstance) ParentGLSetCaps(incaps *gst.Caps, outcaps *gst.Caps) bool {
+func (filter *GLBaseFilterInstance) ParentGlSetCaps(incaps *gst.Caps, outcaps *gst.Caps) bool {
 	var carg0 *C.GstGLBaseFilter
 	var carg1 *C.GstCaps // in, none, converted
 	var carg2 *C.GstCaps // in, none, converted
@@ -3319,7 +3323,7 @@ func (filter *GLBaseFilterInstance) ParentGLSetCaps(incaps *gst.Caps, outcaps *g
 	return goret
 }
 
-// ParentGLStart calls the default implementations of the gl_start virtual method.
+// ParentGlStart calls the default implementations of the gl_start virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -3327,7 +3331,7 @@ func (filter *GLBaseFilterInstance) ParentGLSetCaps(incaps *gst.Caps, outcaps *g
 // 	- goret bool 
 //
 // called in the GL thread to setup the element GL state.
-func (filter *GLBaseFilterInstance) ParentGLStart() bool {
+func (filter *GLBaseFilterInstance) ParentGlStart() bool {
 	var carg0 *C.GstGLBaseFilter
 	var cret  C.gboolean // return
 
@@ -3347,11 +3351,11 @@ func (filter *GLBaseFilterInstance) ParentGLStart() bool {
 	return goret
 }
 
-// ParentGLStop calls the default implementations of the gl_stop virtual method.
+// ParentGlStop calls the default implementations of the gl_stop virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 //
 // called in the GL thread to setup the element GL state.
-func (filter *GLBaseFilterInstance) ParentGLStop() {
+func (filter *GLBaseFilterInstance) ParentGlStop() {
 	var carg0 *C.GstGLBaseFilter
 
 	parentclass := (*C.GstGLBaseFilterClass)(classdata.PeekParentClass(UnsafeGLBaseFilterToGlibNone(filter)))
@@ -3404,6 +3408,20 @@ type GLBaseMemoryAllocator interface {
 	upcastToGstGLBaseMemoryAllocator() *GLBaseMemoryAllocatorInstance
 
 	// chain up virtual methods:
+
+	// ParentAlloc calls the default implementations of the alloc virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
+	// The function takes the following parameters:
+	// 
+	// 	- params *GLAllocationParams: the #GstGLAllocationParams to allocate the memory with 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *GLBaseMemory (nullable) 
+	//
+	// a #GstGLBaseMemoryAllocatorAllocFunction
+	ParentAlloc(params *GLAllocationParams) *GLBaseMemory
 }
 
 func unsafeWrapGLBaseMemoryAllocator(base *gobject.ObjectInstance) *GLBaseMemoryAllocatorInstance {
@@ -3466,12 +3484,85 @@ type GLBaseMemoryAllocatorOverrides[Instance GLBaseMemoryAllocator] struct {
 	// gst.AllocatorOverrides allows you to override virtual methods from the parent class gst.Allocator
 	gst.AllocatorOverrides[Instance]
 
+	// // Alloc allows you to override the implementation of the virtual method alloc.
+	// 
+	// The function takes the following parameters:
+	// 
+	// 	- params *GLAllocationParams: the #GstGLAllocationParams to allocate the memory with 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *GLBaseMemory (nullable) 
+	//
+	// a #GstGLBaseMemoryAllocatorAllocFunction
+	Alloc func(Instance, *GLAllocationParams) *GLBaseMemory
 }
 
 // UnsafeApplyGLBaseMemoryAllocatorOverrides applies the overrides to init the gclass by setting the trampoline functions.
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyGLBaseMemoryAllocatorOverrides[Instance GLBaseMemoryAllocator](gclass unsafe.Pointer, overrides GLBaseMemoryAllocatorOverrides[Instance]) {
 	gst.UnsafeApplyAllocatorOverrides(gclass, overrides.AllocatorOverrides)
+
+	pclass := (*C.GstGLBaseMemoryAllocatorClass)(gclass)
+
+	if overrides.Alloc != nil {
+		pclass.alloc = (*[0]byte)(C._gotk4_gstgl1_GLBaseMemoryAllocator_alloc)
+		classdata.StoreVirtualMethod(
+			unsafe.Pointer(pclass),
+			"_gotk4_gstgl1_GLBaseMemoryAllocator_alloc",
+			func(carg0 *C.GstGLBaseMemoryAllocator, carg1 *C.GstGLAllocationParams) (cret *C.GstGLBaseMemory) {
+				var allocator Instance            // go GstGLBaseMemoryAllocator subclass
+				var params    *GLAllocationParams // in, none, converted
+				var goret     *GLBaseMemory       // return, full, converted, nullable
+
+				allocator = UnsafeGLBaseMemoryAllocatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				params = UnsafeGLAllocationParamsFromGlibNone(unsafe.Pointer(carg1))
+
+				goret = overrides.Alloc(allocator, params)
+
+				if goret != nil {
+					cret = (*C.GstGLBaseMemory)(UnsafeGLBaseMemoryToGlibFull(goret))
+				}
+
+				return cret
+			},
+		)
+	}
+}
+
+// ParentAlloc calls the default implementations of the alloc virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
+// The function takes the following parameters:
+// 
+// 	- params *GLAllocationParams: the #GstGLAllocationParams to allocate the memory with 
+// 
+// The function returns the following values:
+// 
+// 	- goret *GLBaseMemory (nullable) 
+//
+// a #GstGLBaseMemoryAllocatorAllocFunction
+func (allocator *GLBaseMemoryAllocatorInstance) ParentAlloc(params *GLAllocationParams) *GLBaseMemory {
+	var carg0 *C.GstGLBaseMemoryAllocator
+	var carg1 *C.GstGLAllocationParams // in, none, converted
+	var cret  *C.GstGLBaseMemory       // return, full, converted, nullable
+
+	parentclass := (*C.GstGLBaseMemoryAllocatorClass)(classdata.PeekParentClass(UnsafeGLBaseMemoryAllocatorToGlibNone(allocator)))
+
+	carg0 = (*C.GstGLBaseMemoryAllocator)(UnsafeGLBaseMemoryAllocatorToGlibNone(allocator))
+	carg1 = (*C.GstGLAllocationParams)(UnsafeGLAllocationParamsToGlibNone(params))
+
+	cret = C._gotk4_gstgl1_GLBaseMemoryAllocator_virtual_alloc(unsafe.Pointer(parentclass.alloc), carg0, carg1)
+	runtime.KeepAlive(allocator)
+	runtime.KeepAlive(params)
+
+	var goret *GLBaseMemory
+
+	if cret != nil {
+		goret = UnsafeGLBaseMemoryFromGlibFull(unsafe.Pointer(cret))
+	}
+
+	return goret
 }
 
 // RegisterGLBaseMemoryAllocatorSubClass is used to register a go subclass of GstGLBaseMemoryAllocator. For this to work safely please implement the
@@ -3517,16 +3608,16 @@ type GLBaseMixer interface {
 	gstvideo.VideoAggregator
 	upcastToGstGLBaseMixer() *GLBaseMixerInstance
 
-	// GetGLContext wraps gst_gl_base_mixer_get_gl_context
+	// GetGlContext wraps gst_gl_base_mixer_get_gl_context
 	// 
 	// The function returns the following values:
 	// 
 	// 	- goret GLContext (nullable) 
-	GetGLContext() GLContext
+	GetGlContext() GLContext
 
 	// chain up virtual methods:
 
-	// ParentGLStart calls the default implementations of the gl_start virtual method.
+	// ParentGlStart calls the default implementations of the gl_start virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -3534,12 +3625,12 @@ type GLBaseMixer interface {
 	// 	- goret bool 
 	//
 	// called in the GL thread to setup the element GL state.
-	ParentGLStart() bool
-	// ParentGLStop calls the default implementations of the gl_stop virtual method.
+	ParentGlStart() bool
+	// ParentGlStop calls the default implementations of the gl_stop virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	//
 	// called in the GL thread to setup the element GL state.
-	ParentGLStop()
+	ParentGlStop()
 }
 
 func unsafeWrapGLBaseMixer(base *gobject.ObjectInstance) *GLBaseMixerInstance {
@@ -3600,12 +3691,12 @@ func UnsafeGLBaseMixerToGlibFull(c GLBaseMixer) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// GetGLContext wraps gst_gl_base_mixer_get_gl_context
+// GetGlContext wraps gst_gl_base_mixer_get_gl_context
 // 
 // The function returns the following values:
 // 
 // 	- goret GLContext (nullable) 
-func (mix *GLBaseMixerInstance) GetGLContext() GLContext {
+func (mix *GLBaseMixerInstance) GetGlContext() GLContext {
 	var carg0 *C.GstGLBaseMixer // in, none, converted
 	var cret  *C.GstGLContext   // return, full, converted, nullable
 
@@ -3629,18 +3720,18 @@ type GLBaseMixerOverrides[Instance GLBaseMixer] struct {
 	// gstvideo.VideoAggregatorOverrides allows you to override virtual methods from the parent class gstvideo.VideoAggregator
 	gstvideo.VideoAggregatorOverrides[Instance]
 
-	// // GLStart allows you to override the implementation of the virtual method gl_start.
+	// // GlStart allows you to override the implementation of the virtual method gl_start.
 	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	//
 	// called in the GL thread to setup the element GL state.
-	GLStart func(Instance) bool
-	// // GLStop allows you to override the implementation of the virtual method gl_stop.
+	GlStart func(Instance) bool
+	// // GlStop allows you to override the implementation of the virtual method gl_stop.
 	//
 	// called in the GL thread to setup the element GL state.
-	GLStop func(Instance)
+	GlStop func(Instance)
 }
 
 // UnsafeApplyGLBaseMixerOverrides applies the overrides to init the gclass by setting the trampoline functions.
@@ -3650,7 +3741,7 @@ func UnsafeApplyGLBaseMixerOverrides[Instance GLBaseMixer](gclass unsafe.Pointer
 
 	pclass := (*C.GstGLBaseMixerClass)(gclass)
 
-	if overrides.GLStart != nil {
+	if overrides.GlStart != nil {
 		pclass.gl_start = (*[0]byte)(C._gotk4_gstgl1_GLBaseMixer_gl_start)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
@@ -3661,7 +3752,7 @@ func UnsafeApplyGLBaseMixerOverrides[Instance GLBaseMixer](gclass unsafe.Pointer
 
 				mix = UnsafeGLBaseMixerFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
-				goret = overrides.GLStart(mix)
+				goret = overrides.GlStart(mix)
 
 				if goret {
 					cret = C.TRUE
@@ -3672,7 +3763,7 @@ func UnsafeApplyGLBaseMixerOverrides[Instance GLBaseMixer](gclass unsafe.Pointer
 		)
 	}
 
-	if overrides.GLStop != nil {
+	if overrides.GlStop != nil {
 		pclass.gl_stop = (*[0]byte)(C._gotk4_gstgl1_GLBaseMixer_gl_stop)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
@@ -3682,13 +3773,13 @@ func UnsafeApplyGLBaseMixerOverrides[Instance GLBaseMixer](gclass unsafe.Pointer
 
 				mix = UnsafeGLBaseMixerFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
-				overrides.GLStop(mix)
+				overrides.GlStop(mix)
 			},
 		)
 	}
 }
 
-// ParentGLStart calls the default implementations of the gl_start virtual method.
+// ParentGlStart calls the default implementations of the gl_start virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -3696,7 +3787,7 @@ func UnsafeApplyGLBaseMixerOverrides[Instance GLBaseMixer](gclass unsafe.Pointer
 // 	- goret bool 
 //
 // called in the GL thread to setup the element GL state.
-func (mix *GLBaseMixerInstance) ParentGLStart() bool {
+func (mix *GLBaseMixerInstance) ParentGlStart() bool {
 	var carg0 *C.GstGLBaseMixer
 	var cret  C.gboolean // return
 
@@ -3716,11 +3807,11 @@ func (mix *GLBaseMixerInstance) ParentGLStart() bool {
 	return goret
 }
 
-// ParentGLStop calls the default implementations of the gl_stop virtual method.
+// ParentGlStop calls the default implementations of the gl_stop virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 //
 // called in the GL thread to setup the element GL state.
-func (mix *GLBaseMixerInstance) ParentGLStop() {
+func (mix *GLBaseMixerInstance) ParentGlStop() {
 	var carg0 *C.GstGLBaseMixer
 
 	parentclass := (*C.GstGLBaseMixerClass)(classdata.PeekParentClass(UnsafeGLBaseMixerToGlibNone(mix)))
@@ -3891,7 +3982,7 @@ type GLBaseSrc interface {
 
 	// chain up virtual methods:
 
-	// ParentFillGLMemory calls the default implementations of the fill_gl_memory virtual method.
+	// ParentFillGlMemory calls the default implementations of the fill_gl_memory virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -3903,8 +3994,8 @@ type GLBaseSrc interface {
 	// 	- goret bool 
 	//
 	// called in the GL thread to fill the current video texture.
-	ParentFillGLMemory(mem *GLMemory) bool
-	// ParentGLStart calls the default implementations of the gl_start virtual method.
+	ParentFillGlMemory(mem *GLMemory) bool
+	// ParentGlStart calls the default implementations of the gl_start virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -3912,12 +4003,12 @@ type GLBaseSrc interface {
 	// 	- goret bool 
 	//
 	// called in the GL thread to setup the element GL state.
-	ParentGLStart() bool
-	// ParentGLStop calls the default implementations of the gl_stop virtual method.
+	ParentGlStart() bool
+	// ParentGlStop calls the default implementations of the gl_stop virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	//
 	// called in the GL thread to setup the element GL state.
-	ParentGLStop()
+	ParentGlStop()
 }
 
 func unsafeWrapGLBaseSrc(base *gobject.ObjectInstance) *GLBaseSrcInstance {
@@ -3984,7 +4075,7 @@ type GLBaseSrcOverrides[Instance GLBaseSrc] struct {
 	// gstbase.PushSrcOverrides allows you to override virtual methods from the parent class gstbase.PushSrc
 	gstbase.PushSrcOverrides[Instance]
 
-	// // FillGLMemory allows you to override the implementation of the virtual method fill_gl_memory.
+	// // FillGlMemory allows you to override the implementation of the virtual method fill_gl_memory.
 	// 
 	// The function takes the following parameters:
 	// 
@@ -3995,19 +4086,19 @@ type GLBaseSrcOverrides[Instance GLBaseSrc] struct {
 	// 	- goret bool 
 	//
 	// called in the GL thread to fill the current video texture.
-	FillGLMemory func(Instance, *GLMemory) bool
-	// // GLStart allows you to override the implementation of the virtual method gl_start.
+	FillGlMemory func(Instance, *GLMemory) bool
+	// // GlStart allows you to override the implementation of the virtual method gl_start.
 	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	//
 	// called in the GL thread to setup the element GL state.
-	GLStart func(Instance) bool
-	// // GLStop allows you to override the implementation of the virtual method gl_stop.
+	GlStart func(Instance) bool
+	// // GlStop allows you to override the implementation of the virtual method gl_stop.
 	//
 	// called in the GL thread to setup the element GL state.
-	GLStop func(Instance)
+	GlStop func(Instance)
 }
 
 // UnsafeApplyGLBaseSrcOverrides applies the overrides to init the gclass by setting the trampoline functions.
@@ -4017,7 +4108,7 @@ func UnsafeApplyGLBaseSrcOverrides[Instance GLBaseSrc](gclass unsafe.Pointer, ov
 
 	pclass := (*C.GstGLBaseSrcClass)(gclass)
 
-	if overrides.FillGLMemory != nil {
+	if overrides.FillGlMemory != nil {
 		pclass.fill_gl_memory = (*[0]byte)(C._gotk4_gstgl1_GLBaseSrc_fill_gl_memory)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
@@ -4030,7 +4121,7 @@ func UnsafeApplyGLBaseSrcOverrides[Instance GLBaseSrc](gclass unsafe.Pointer, ov
 				src = UnsafeGLBaseSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				mem = UnsafeGLMemoryFromGlibNone(unsafe.Pointer(carg1))
 
-				goret = overrides.FillGLMemory(src, mem)
+				goret = overrides.FillGlMemory(src, mem)
 
 				if goret {
 					cret = C.TRUE
@@ -4041,7 +4132,7 @@ func UnsafeApplyGLBaseSrcOverrides[Instance GLBaseSrc](gclass unsafe.Pointer, ov
 		)
 	}
 
-	if overrides.GLStart != nil {
+	if overrides.GlStart != nil {
 		pclass.gl_start = (*[0]byte)(C._gotk4_gstgl1_GLBaseSrc_gl_start)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
@@ -4052,7 +4143,7 @@ func UnsafeApplyGLBaseSrcOverrides[Instance GLBaseSrc](gclass unsafe.Pointer, ov
 
 				src = UnsafeGLBaseSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
-				goret = overrides.GLStart(src)
+				goret = overrides.GlStart(src)
 
 				if goret {
 					cret = C.TRUE
@@ -4063,7 +4154,7 @@ func UnsafeApplyGLBaseSrcOverrides[Instance GLBaseSrc](gclass unsafe.Pointer, ov
 		)
 	}
 
-	if overrides.GLStop != nil {
+	if overrides.GlStop != nil {
 		pclass.gl_stop = (*[0]byte)(C._gotk4_gstgl1_GLBaseSrc_gl_stop)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
@@ -4073,13 +4164,13 @@ func UnsafeApplyGLBaseSrcOverrides[Instance GLBaseSrc](gclass unsafe.Pointer, ov
 
 				src = UnsafeGLBaseSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
-				overrides.GLStop(src)
+				overrides.GlStop(src)
 			},
 		)
 	}
 }
 
-// ParentFillGLMemory calls the default implementations of the fill_gl_memory virtual method.
+// ParentFillGlMemory calls the default implementations of the fill_gl_memory virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -4091,7 +4182,7 @@ func UnsafeApplyGLBaseSrcOverrides[Instance GLBaseSrc](gclass unsafe.Pointer, ov
 // 	- goret bool 
 //
 // called in the GL thread to fill the current video texture.
-func (src *GLBaseSrcInstance) ParentFillGLMemory(mem *GLMemory) bool {
+func (src *GLBaseSrcInstance) ParentFillGlMemory(mem *GLMemory) bool {
 	var carg0 *C.GstGLBaseSrc
 	var carg1 *C.GstGLMemory // in, none, converted
 	var cret  C.gboolean     // return
@@ -4114,7 +4205,7 @@ func (src *GLBaseSrcInstance) ParentFillGLMemory(mem *GLMemory) bool {
 	return goret
 }
 
-// ParentGLStart calls the default implementations of the gl_start virtual method.
+// ParentGlStart calls the default implementations of the gl_start virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -4122,7 +4213,7 @@ func (src *GLBaseSrcInstance) ParentFillGLMemory(mem *GLMemory) bool {
 // 	- goret bool 
 //
 // called in the GL thread to setup the element GL state.
-func (src *GLBaseSrcInstance) ParentGLStart() bool {
+func (src *GLBaseSrcInstance) ParentGlStart() bool {
 	var carg0 *C.GstGLBaseSrc
 	var cret  C.gboolean // return
 
@@ -4142,11 +4233,11 @@ func (src *GLBaseSrcInstance) ParentGLStart() bool {
 	return goret
 }
 
-// ParentGLStop calls the default implementations of the gl_stop virtual method.
+// ParentGlStop calls the default implementations of the gl_stop virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 //
 // called in the GL thread to setup the element GL state.
-func (src *GLBaseSrcInstance) ParentGLStop() {
+func (src *GLBaseSrcInstance) ParentGlStop() {
 	var carg0 *C.GstGLBaseSrc
 
 	parentclass := (*C.GstGLBaseSrcClass)(classdata.PeekParentClass(UnsafeGLBaseSrcToGlibNone(src)))
@@ -4319,7 +4410,7 @@ type GLBufferPool interface {
 	gst.BufferPool
 	upcastToGstGLBufferPool() *GLBufferPoolInstance
 
-	// GetGLAllocationParams wraps gst_gl_buffer_pool_get_gl_allocation_params
+	// GetGlAllocationParams wraps gst_gl_buffer_pool_get_gl_allocation_params
 	// 
 	// The function returns the following values:
 	// 
@@ -4329,7 +4420,7 @@ type GLBufferPool interface {
 	// call to gst_buffer_pool_set_config().  Subsequent successful calls to
 	// gst_buffer_pool_set_config() will cause this function to return a new
 	// #GstGLAllocationParams which may or may not contain the same information.
-	GetGLAllocationParams() *GLAllocationParams
+	GetGlAllocationParams() *GLAllocationParams
 
 	// chain up virtual methods:
 }
@@ -4413,7 +4504,7 @@ func NewGLBufferPool(_context GLContext) gst.BufferPool {
 	return goret
 }
 
-// GetGLAllocationParams wraps gst_gl_buffer_pool_get_gl_allocation_params
+// GetGlAllocationParams wraps gst_gl_buffer_pool_get_gl_allocation_params
 // 
 // The function returns the following values:
 // 
@@ -4423,7 +4514,7 @@ func NewGLBufferPool(_context GLContext) gst.BufferPool {
 // call to gst_buffer_pool_set_config().  Subsequent successful calls to
 // gst_buffer_pool_set_config() will cause this function to return a new
 // #GstGLAllocationParams which may or may not contain the same information.
-func (pool *GLBufferPoolInstance) GetGLAllocationParams() *GLAllocationParams {
+func (pool *GLBufferPoolInstance) GetGlAllocationParams() *GLAllocationParams {
 	var carg0 *C.GstGLBufferPool       // in, none, converted
 	var cret  *C.GstGLAllocationParams // return, full, converted, nullable
 
@@ -4727,7 +4818,7 @@ func GLColorConvertTransformCaps(_context GLContext, direction gst.PadDirection,
 	return goret
 }
 
-// GLColorConvertYuvToRGBShaderString wraps gst_gl_color_convert_yuv_to_rgb_shader_string
+// GLColorConvertYuvToRgbShaderString wraps gst_gl_color_convert_yuv_to_rgb_shader_string
 // 
 // The function takes the following parameters:
 // 
@@ -4744,7 +4835,7 @@ func GLColorConvertTransformCaps(_context GLContext, direction gst.PadDirection,
 // The Y component is placed in the 0th index of the returned value, The U component in the
 // 1st, and the V component in the 2nd.  offset, ycoeff, ucoeff, and vcoeff are the
 // specific coefficients and offset used for the conversion.
-func GLColorConvertYuvToRGBShaderString(_context GLContext) string {
+func GLColorConvertYuvToRgbShaderString(_context GLContext) string {
 	var carg1 *C.GstGLContext // in, none, converted
 	var cret  *C.gchar        // return, full, string
 
@@ -4991,7 +5082,7 @@ type GLContext interface {
 	//
 	// Must be called with @context current.
 	CheckFramebufferStatus(uint) bool
-	// CheckGLVersion wraps gst_gl_context_check_gl_version
+	// CheckGlVersion wraps gst_gl_context_check_gl_version
 	// 
 	// The function takes the following parameters:
 	// 
@@ -5002,7 +5093,7 @@ type GLContext interface {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
-	CheckGLVersion(GLAPI, int32, int32) bool
+	CheckGlVersion(GLAPI, int32, int32) bool
 	// ClearFramebuffer wraps gst_gl_context_clear_framebuffer
 	//
 	// Unbind the current framebuffer
@@ -5080,7 +5171,7 @@ type GLContext interface {
 	// 
 	// 	- goret GLDisplay 
 	GetDisplay() GLDisplay
-	// GetGLApi wraps gst_gl_context_get_gl_api
+	// GetGlAPI wraps gst_gl_context_get_gl_api
 	// 
 	// The function returns the following values:
 	// 
@@ -5090,16 +5181,16 @@ type GLContext interface {
 	// 
 	// The currently available API may be limited by the #GstGLDisplay in use and/or
 	// the #GstGLWindow chosen.
-	GetGLApi() GLAPI
-	// GetGLPlatform wraps gst_gl_context_get_gl_platform
+	GetGlAPI() GLAPI
+	// GetGlPlatform wraps gst_gl_context_get_gl_platform
 	// 
 	// The function returns the following values:
 	// 
 	// 	- goret GLPlatform 
 	//
 	// Gets the OpenGL platform that used by @context.
-	GetGLPlatform() GLPlatform
-	// GetGLPlatformVersion wraps gst_gl_context_get_gl_platform_version
+	GetGlPlatform() GLPlatform
+	// GetGlPlatformVersion wraps gst_gl_context_get_gl_platform_version
 	// 
 	// The function returns the following values:
 	// 
@@ -5108,8 +5199,8 @@ type GLContext interface {
 	//
 	// Get the version of the OpenGL platform (GLX, EGL, etc) used.  Only valid
 	// after a call to gst_gl_context_create().
-	GetGLPlatformVersion() (int32, int32)
-	// GetGLVersion wraps gst_gl_context_get_gl_version
+	GetGlPlatformVersion() (int32, int32)
+	// GetGlVersion wraps gst_gl_context_get_gl_version
 	// 
 	// The function returns the following values:
 	// 
@@ -5119,7 +5210,7 @@ type GLContext interface {
 	// Returns the OpenGL version implemented by @context.  See
 	// gst_gl_context_get_gl_api() for retrieving the OpenGL api implemented by
 	// @context.
-	GetGLVersion() (int32, int32)
+	GetGlVersion() (int32, int32)
 	// GetThread wraps gst_gl_context_get_thread
 	// 
 	// The function returns the following values:
@@ -5301,7 +5392,7 @@ type GLContext interface {
 	// Not all implementations currently support retrieving the config and will
 	// return %NULL when not supported.
 	ParentGetConfig() *gst.Structure
-	// ParentGetGLApi calls the default implementations of the get_gl_api virtual method.
+	// ParentGetGlAPI calls the default implementations of the get_gl_api virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -5312,8 +5403,8 @@ type GLContext interface {
 	// 
 	// The currently available API may be limited by the #GstGLDisplay in use and/or
 	// the #GstGLWindow chosen.
-	ParentGetGLApi() GLAPI
-	// ParentGetGLPlatform calls the default implementations of the get_gl_platform virtual method.
+	ParentGetGlAPI() GLAPI
+	// ParentGetGlPlatform calls the default implementations of the get_gl_platform virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -5321,8 +5412,8 @@ type GLContext interface {
 	// 	- goret GLPlatform 
 	//
 	// Gets the OpenGL platform that used by @context.
-	ParentGetGLPlatform() GLPlatform
-	// ParentGetGLPlatformVersion calls the default implementations of the get_gl_platform_version virtual method.
+	ParentGetGlPlatform() GLPlatform
+	// ParentGetGlPlatformVersion calls the default implementations of the get_gl_platform_version virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function returns the following values:
@@ -5332,7 +5423,7 @@ type GLContext interface {
 	//
 	// Get the version of the OpenGL platform (GLX, EGL, etc) used.  Only valid
 	// after a call to gst_gl_context_create().
-	ParentGetGLPlatformVersion() (int32, int32)
+	ParentGetGlPlatformVersion() (int32, int32)
 	// ParentRequestConfig calls the default implementations of the request_config virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
@@ -5466,7 +5557,7 @@ func GLContextGetCurrent() GLContext {
 	return goret
 }
 
-// GLContextGetCurrentGLApi wraps gst_gl_context_get_current_gl_api
+// GLContextGetCurrentGlAPI wraps gst_gl_context_get_current_gl_api
 // 
 // The function takes the following parameters:
 // 
@@ -5480,7 +5571,7 @@ func GLContextGetCurrent() GLContext {
 //
 // If an error occurs, @major and @minor are not modified and %GST_GL_API_NONE is
 // returned.
-func GLContextGetCurrentGLApi(platform GLPlatform) (uint, uint, GLAPI) {
+func GLContextGetCurrentGlAPI(platform GLPlatform) (uint, uint, GLAPI) {
 	var carg1 C.GstGLPlatform // in, none, casted
 	var carg2 C.guint         // out, full, casted
 	var carg3 C.guint         // out, full, casted
@@ -5641,7 +5732,7 @@ func (_context *GLContextInstance) CheckFramebufferStatus(fboTarget uint) bool {
 	return goret
 }
 
-// CheckGLVersion wraps gst_gl_context_check_gl_version
+// CheckGlVersion wraps gst_gl_context_check_gl_version
 // 
 // The function takes the following parameters:
 // 
@@ -5652,7 +5743,7 @@ func (_context *GLContextInstance) CheckFramebufferStatus(fboTarget uint) bool {
 // The function returns the following values:
 // 
 // 	- goret bool 
-func (_context *GLContextInstance) CheckGLVersion(api GLAPI, maj int32, min int32) bool {
+func (_context *GLContextInstance) CheckGlVersion(api GLAPI, maj int32, min int32) bool {
 	var carg0 *C.GstGLContext // in, none, converted
 	var carg1 C.GstGLAPI      // in, none, casted
 	var carg2 C.gint          // in, none, casted
@@ -5861,7 +5952,7 @@ func (_context *GLContextInstance) GetDisplay() GLDisplay {
 	return goret
 }
 
-// GetGLApi wraps gst_gl_context_get_gl_api
+// GetGlAPI wraps gst_gl_context_get_gl_api
 // 
 // The function returns the following values:
 // 
@@ -5871,7 +5962,7 @@ func (_context *GLContextInstance) GetDisplay() GLDisplay {
 // 
 // The currently available API may be limited by the #GstGLDisplay in use and/or
 // the #GstGLWindow chosen.
-func (_context *GLContextInstance) GetGLApi() GLAPI {
+func (_context *GLContextInstance) GetGlAPI() GLAPI {
 	var carg0 *C.GstGLContext // in, none, converted
 	var cret  C.GstGLAPI      // return, none, casted
 
@@ -5887,14 +5978,14 @@ func (_context *GLContextInstance) GetGLApi() GLAPI {
 	return goret
 }
 
-// GetGLPlatform wraps gst_gl_context_get_gl_platform
+// GetGlPlatform wraps gst_gl_context_get_gl_platform
 // 
 // The function returns the following values:
 // 
 // 	- goret GLPlatform 
 //
 // Gets the OpenGL platform that used by @context.
-func (_context *GLContextInstance) GetGLPlatform() GLPlatform {
+func (_context *GLContextInstance) GetGlPlatform() GLPlatform {
 	var carg0 *C.GstGLContext // in, none, converted
 	var cret  C.GstGLPlatform // return, none, casted
 
@@ -5910,7 +6001,7 @@ func (_context *GLContextInstance) GetGLPlatform() GLPlatform {
 	return goret
 }
 
-// GetGLPlatformVersion wraps gst_gl_context_get_gl_platform_version
+// GetGlPlatformVersion wraps gst_gl_context_get_gl_platform_version
 // 
 // The function returns the following values:
 // 
@@ -5919,7 +6010,7 @@ func (_context *GLContextInstance) GetGLPlatform() GLPlatform {
 //
 // Get the version of the OpenGL platform (GLX, EGL, etc) used.  Only valid
 // after a call to gst_gl_context_create().
-func (_context *GLContextInstance) GetGLPlatformVersion() (int32, int32) {
+func (_context *GLContextInstance) GetGlPlatformVersion() (int32, int32) {
 	var carg0 *C.GstGLContext // in, none, converted
 	var carg1 C.gint          // out, full, casted
 	var carg2 C.gint          // out, full, casted
@@ -5938,7 +6029,7 @@ func (_context *GLContextInstance) GetGLPlatformVersion() (int32, int32) {
 	return major, minor
 }
 
-// GetGLVersion wraps gst_gl_context_get_gl_version
+// GetGlVersion wraps gst_gl_context_get_gl_version
 // 
 // The function returns the following values:
 // 
@@ -5948,7 +6039,7 @@ func (_context *GLContextInstance) GetGLPlatformVersion() (int32, int32) {
 // Returns the OpenGL version implemented by @context.  See
 // gst_gl_context_get_gl_api() for retrieving the OpenGL api implemented by
 // @context.
-func (_context *GLContextInstance) GetGLVersion() (int32, int32) {
+func (_context *GLContextInstance) GetGlVersion() (int32, int32) {
 	var carg0 *C.GstGLContext // in, none, converted
 	var carg1 C.gint          // out, full, casted
 	var carg2 C.gint          // out, full, casted
@@ -6326,7 +6417,7 @@ type GLContextOverrides[Instance GLContext] struct {
 	// Not all implementations currently support retrieving the config and will
 	// return %NULL when not supported.
 	GetConfig func(Instance) *gst.Structure
-	// // GetGLApi allows you to override the implementation of the virtual method get_gl_api.
+	// // GetGlAPI allows you to override the implementation of the virtual method get_gl_api.
 	// 
 	// The function returns the following values:
 	// 
@@ -6336,16 +6427,16 @@ type GLContextOverrides[Instance GLContext] struct {
 	// 
 	// The currently available API may be limited by the #GstGLDisplay in use and/or
 	// the #GstGLWindow chosen.
-	GetGLApi func(Instance) GLAPI
-	// // GetGLPlatform allows you to override the implementation of the virtual method get_gl_platform.
+	GetGlAPI func(Instance) GLAPI
+	// // GetGlPlatform allows you to override the implementation of the virtual method get_gl_platform.
 	// 
 	// The function returns the following values:
 	// 
 	// 	- goret GLPlatform 
 	//
 	// Gets the OpenGL platform that used by @context.
-	GetGLPlatform func(Instance) GLPlatform
-	// // GetGLPlatformVersion allows you to override the implementation of the virtual method get_gl_platform_version.
+	GetGlPlatform func(Instance) GLPlatform
+	// // GetGlPlatformVersion allows you to override the implementation of the virtual method get_gl_platform_version.
 	// 
 	// The function returns the following values:
 	// 
@@ -6354,7 +6445,7 @@ type GLContextOverrides[Instance GLContext] struct {
 	//
 	// Get the version of the OpenGL platform (GLX, EGL, etc) used.  Only valid
 	// after a call to gst_gl_context_create().
-	GetGLPlatformVersion func(Instance) (int32, int32)
+	GetGlPlatformVersion func(Instance) (int32, int32)
 	// // RequestConfig allows you to override the implementation of the virtual method request_config.
 	// 
 	// The function takes the following parameters:
@@ -6532,7 +6623,7 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 		)
 	}
 
-	if overrides.GetGLApi != nil {
+	if overrides.GetGlAPI != nil {
 		pclass.get_gl_api = (*[0]byte)(C._gotk4_gstgl1_GLContext_get_gl_api)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
@@ -6543,7 +6634,7 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 
 				_context = UnsafeGLContextFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
-				goret = overrides.GetGLApi(_context)
+				goret = overrides.GetGlAPI(_context)
 
 				cret = C.GstGLAPI(goret)
 
@@ -6552,7 +6643,7 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 		)
 	}
 
-	if overrides.GetGLPlatform != nil {
+	if overrides.GetGlPlatform != nil {
 		pclass.get_gl_platform = (*[0]byte)(C._gotk4_gstgl1_GLContext_get_gl_platform)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
@@ -6563,7 +6654,7 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 
 				_context = UnsafeGLContextFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
-				goret = overrides.GetGLPlatform(_context)
+				goret = overrides.GetGlPlatform(_context)
 
 				cret = C.GstGLPlatform(goret)
 
@@ -6572,7 +6663,7 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 		)
 	}
 
-	if overrides.GetGLPlatformVersion != nil {
+	if overrides.GetGlPlatformVersion != nil {
 		pclass.get_gl_platform_version = (*[0]byte)(C._gotk4_gstgl1_GLContext_get_gl_platform_version)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
@@ -6584,7 +6675,7 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 
 				_context = UnsafeGLContextFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
-				major, minor = overrides.GetGLPlatformVersion(_context)
+				major, minor = overrides.GetGlPlatformVersion(_context)
 
 				*carg1 = C.gint(major)
 				*carg2 = C.gint(minor)
@@ -6840,7 +6931,7 @@ func (_context *GLContextInstance) ParentGetConfig() *gst.Structure {
 	return goret
 }
 
-// ParentGetGLApi calls the default implementations of the get_gl_api virtual method.
+// ParentGetGlAPI calls the default implementations of the get_gl_api virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -6851,7 +6942,7 @@ func (_context *GLContextInstance) ParentGetConfig() *gst.Structure {
 // 
 // The currently available API may be limited by the #GstGLDisplay in use and/or
 // the #GstGLWindow chosen.
-func (_context *GLContextInstance) ParentGetGLApi() GLAPI {
+func (_context *GLContextInstance) ParentGetGlAPI() GLAPI {
 	var carg0 *C.GstGLContext
 	var cret  C.GstGLAPI // return, none, casted
 
@@ -6869,7 +6960,7 @@ func (_context *GLContextInstance) ParentGetGLApi() GLAPI {
 	return goret
 }
 
-// ParentGetGLPlatform calls the default implementations of the get_gl_platform virtual method.
+// ParentGetGlPlatform calls the default implementations of the get_gl_platform virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -6877,7 +6968,7 @@ func (_context *GLContextInstance) ParentGetGLApi() GLAPI {
 // 	- goret GLPlatform 
 //
 // Gets the OpenGL platform that used by @context.
-func (_context *GLContextInstance) ParentGetGLPlatform() GLPlatform {
+func (_context *GLContextInstance) ParentGetGlPlatform() GLPlatform {
 	var carg0 *C.GstGLContext
 	var cret  C.GstGLPlatform // return, none, casted
 
@@ -6895,7 +6986,7 @@ func (_context *GLContextInstance) ParentGetGLPlatform() GLPlatform {
 	return goret
 }
 
-// ParentGetGLPlatformVersion calls the default implementations of the get_gl_platform_version virtual method.
+// ParentGetGlPlatformVersion calls the default implementations of the get_gl_platform_version virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function returns the following values:
@@ -6905,7 +6996,7 @@ func (_context *GLContextInstance) ParentGetGLPlatform() GLPlatform {
 //
 // Get the version of the OpenGL platform (GLX, EGL, etc) used.  Only valid
 // after a call to gst_gl_context_create().
-func (_context *GLContextInstance) ParentGetGLPlatformVersion() (int32, int32) {
+func (_context *GLContextInstance) ParentGetGlPlatformVersion() (int32, int32) {
 	var carg0 *C.GstGLContext
 	var carg1 C.gint // out, full, casted
 	var carg2 C.gint // out, full, casted
@@ -7081,7 +7172,7 @@ type GLDisplay interface {
 	// 
 	// 	- goret GLWindow (nullable) 
 	CreateWindow() GLWindow
-	// FilterGLApi wraps gst_gl_display_filter_gl_api
+	// FilterGlAPI wraps gst_gl_display_filter_gl_api
 	// 
 	// The function takes the following parameters:
 	// 
@@ -7091,22 +7182,22 @@ type GLDisplay interface {
 	// application and elements to request a specific set of OpenGL API's based on
 	// what they support.  See gst_gl_context_get_gl_api() for the retrieving the
 	// API supported by a #GstGLContext.
-	FilterGLApi(GLAPI)
-	// GetGLApi wraps gst_gl_display_get_gl_api
+	FilterGlAPI(GLAPI)
+	// GetGlAPI wraps gst_gl_display_get_gl_api
 	// 
 	// The function returns the following values:
 	// 
 	// 	- goret GLAPI 
 	//
 	// see gst_gl_display_filter_gl_api() for what the returned value represents
-	GetGLApi() GLAPI
-	// GetGLApiUnlocked wraps gst_gl_display_get_gl_api_unlocked
+	GetGlAPI() GLAPI
+	// GetGlAPIUnlocked wraps gst_gl_display_get_gl_api_unlocked
 	// 
 	// The function returns the following values:
 	// 
 	// 	- goret GLAPI 
-	GetGLApiUnlocked() GLAPI
-	// GetGLContextForThread wraps gst_gl_display_get_gl_context_for_thread
+	GetGlAPIUnlocked() GLAPI
+	// GetGlContextForThread wraps gst_gl_display_get_gl_context_for_thread
 	// 
 	// The function takes the following parameters:
 	// 
@@ -7115,7 +7206,7 @@ type GLDisplay interface {
 	// The function returns the following values:
 	// 
 	// 	- goret GLContext (nullable) 
-	GetGLContextForThread(*glib.Thread) GLContext
+	GetGlContextForThread(*glib.Thread) GLContext
 	// GetHandleType wraps gst_gl_display_get_handle_type
 	// 
 	// The function returns the following values:
@@ -7356,7 +7447,7 @@ func (display *GLDisplayInstance) CreateWindow() GLWindow {
 	return goret
 }
 
-// FilterGLApi wraps gst_gl_display_filter_gl_api
+// FilterGlAPI wraps gst_gl_display_filter_gl_api
 // 
 // The function takes the following parameters:
 // 
@@ -7366,7 +7457,7 @@ func (display *GLDisplayInstance) CreateWindow() GLWindow {
 // application and elements to request a specific set of OpenGL API's based on
 // what they support.  See gst_gl_context_get_gl_api() for the retrieving the
 // API supported by a #GstGLContext.
-func (display *GLDisplayInstance) FilterGLApi(glApi GLAPI) {
+func (display *GLDisplayInstance) FilterGlAPI(glApi GLAPI) {
 	var carg0 *C.GstGLDisplay // in, none, converted
 	var carg1 C.GstGLAPI      // in, none, casted
 
@@ -7378,14 +7469,14 @@ func (display *GLDisplayInstance) FilterGLApi(glApi GLAPI) {
 	runtime.KeepAlive(glApi)
 }
 
-// GetGLApi wraps gst_gl_display_get_gl_api
+// GetGlAPI wraps gst_gl_display_get_gl_api
 // 
 // The function returns the following values:
 // 
 // 	- goret GLAPI 
 //
 // see gst_gl_display_filter_gl_api() for what the returned value represents
-func (display *GLDisplayInstance) GetGLApi() GLAPI {
+func (display *GLDisplayInstance) GetGlAPI() GLAPI {
 	var carg0 *C.GstGLDisplay // in, none, converted
 	var cret  C.GstGLAPI      // return, none, casted
 
@@ -7401,12 +7492,12 @@ func (display *GLDisplayInstance) GetGLApi() GLAPI {
 	return goret
 }
 
-// GetGLApiUnlocked wraps gst_gl_display_get_gl_api_unlocked
+// GetGlAPIUnlocked wraps gst_gl_display_get_gl_api_unlocked
 // 
 // The function returns the following values:
 // 
 // 	- goret GLAPI 
-func (display *GLDisplayInstance) GetGLApiUnlocked() GLAPI {
+func (display *GLDisplayInstance) GetGlAPIUnlocked() GLAPI {
 	var carg0 *C.GstGLDisplay // in, none, converted
 	var cret  C.GstGLAPI      // return, none, casted
 
@@ -7422,7 +7513,7 @@ func (display *GLDisplayInstance) GetGLApiUnlocked() GLAPI {
 	return goret
 }
 
-// GetGLContextForThread wraps gst_gl_display_get_gl_context_for_thread
+// GetGlContextForThread wraps gst_gl_display_get_gl_context_for_thread
 // 
 // The function takes the following parameters:
 // 
@@ -7431,7 +7522,7 @@ func (display *GLDisplayInstance) GetGLApiUnlocked() GLAPI {
 // The function returns the following values:
 // 
 // 	- goret GLContext (nullable) 
-func (display *GLDisplayInstance) GetGLContextForThread(thread *glib.Thread) GLContext {
+func (display *GLDisplayInstance) GetGlContextForThread(thread *glib.Thread) GLContext {
 	var carg0 *C.GstGLDisplay // in, none, converted
 	var carg1 *C.GThread      // in, none, converted
 	var cret  *C.GstGLContext // return, full, converted, nullable
@@ -7822,12 +7913,12 @@ func UnsafeGLFilterToGlibFull(c GLFilter) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// GLFilterAddRGBAPadTemplates wraps gst_gl_filter_add_rgba_pad_templates
+// GLFilterAddRgbaPadTemplates wraps gst_gl_filter_add_rgba_pad_templates
 // 
 // The function takes the following parameters:
 // 
 // 	- klass *GLFilterClass 
-func GLFilterAddRGBAPadTemplates(klass *GLFilterClass) {
+func GLFilterAddRgbaPadTemplates(klass *GLFilterClass) {
 	var carg1 *C.GstGLFilterClass // in, none, converted
 
 	carg1 = (*C.GstGLFilterClass)(UnsafeGLFilterClassToGlibNone(klass))
@@ -10385,7 +10476,7 @@ type GLShader interface {
 	// 
 	// Note: must be called in the GL thread
 	ReleaseUnlocked()
-	// SetUniform1F wraps gst_gl_shader_set_uniform_1f
+	// SetUniform1f wraps gst_gl_shader_set_uniform_1f
 	// 
 	// The function takes the following parameters:
 	// 
@@ -10393,8 +10484,8 @@ type GLShader interface {
 	// 	- value float32: value to set 
 	//
 	// Perform `glUniform1f()` for @name on @shader
-	SetUniform1F(string, float32)
-	// SetUniform1Fv wraps gst_gl_shader_set_uniform_1fv
+	SetUniform1f(string, float32)
+	// SetUniform1fv wraps gst_gl_shader_set_uniform_1fv
 	// 
 	// The function takes the following parameters:
 	// 
@@ -10402,8 +10493,8 @@ type GLShader interface {
 	// 	- value []float32: values to set 
 	//
 	// Perform `glUniform1fv()` for @name on @shader
-	SetUniform1Fv(string, []float32)
-	// SetUniform1I wraps gst_gl_shader_set_uniform_1i
+	SetUniform1fv(string, []float32)
+	// SetUniform1i wraps gst_gl_shader_set_uniform_1i
 	// 
 	// The function takes the following parameters:
 	// 
@@ -10411,8 +10502,8 @@ type GLShader interface {
 	// 	- value int32: value to set 
 	//
 	// Perform `glUniform1i()` for @name on @shader
-	SetUniform1I(string, int32)
-	// SetUniform1Iv wraps gst_gl_shader_set_uniform_1iv
+	SetUniform1i(string, int32)
+	// SetUniform1iv wraps gst_gl_shader_set_uniform_1iv
 	// 
 	// The function takes the following parameters:
 	// 
@@ -10420,8 +10511,8 @@ type GLShader interface {
 	// 	- value []int32: values to set 
 	//
 	// Perform `glUniform1iv()` for @name on @shader
-	SetUniform1Iv(string, []int32)
-	// SetUniform2F wraps gst_gl_shader_set_uniform_2f
+	SetUniform1iv(string, []int32)
+	// SetUniform2f wraps gst_gl_shader_set_uniform_2f
 	// 
 	// The function takes the following parameters:
 	// 
@@ -10430,8 +10521,8 @@ type GLShader interface {
 	// 	- v1 float32: second value to set 
 	//
 	// Perform `glUniform2f()` for @name on @shader
-	SetUniform2F(string, float32, float32)
-	// SetUniform2Fv wraps gst_gl_shader_set_uniform_2fv
+	SetUniform2f(string, float32, float32)
+	// SetUniform2fv wraps gst_gl_shader_set_uniform_2fv
 	// 
 	// The function takes the following parameters:
 	// 
@@ -10439,8 +10530,8 @@ type GLShader interface {
 	// 	- value []float32: values to set 
 	//
 	// Perform `glUniform2fv()` for @name on @shader
-	SetUniform2Fv(string, []float32)
-	// SetUniform2I wraps gst_gl_shader_set_uniform_2i
+	SetUniform2fv(string, []float32)
+	// SetUniform2i wraps gst_gl_shader_set_uniform_2i
 	// 
 	// The function takes the following parameters:
 	// 
@@ -10449,8 +10540,8 @@ type GLShader interface {
 	// 	- v1 int32: second value to set 
 	//
 	// Perform `glUniform2i()` for @name on @shader
-	SetUniform2I(string, int32, int32)
-	// SetUniform2Iv wraps gst_gl_shader_set_uniform_2iv
+	SetUniform2i(string, int32, int32)
+	// SetUniform2iv wraps gst_gl_shader_set_uniform_2iv
 	// 
 	// The function takes the following parameters:
 	// 
@@ -10458,8 +10549,8 @@ type GLShader interface {
 	// 	- value []int32: values to set 
 	//
 	// Perform `glUniform2iv()` for @name on @shader
-	SetUniform2Iv(string, []int32)
-	// SetUniform3F wraps gst_gl_shader_set_uniform_3f
+	SetUniform2iv(string, []int32)
+	// SetUniform3f wraps gst_gl_shader_set_uniform_3f
 	// 
 	// The function takes the following parameters:
 	// 
@@ -10469,8 +10560,8 @@ type GLShader interface {
 	// 	- v2 float32: third value to set 
 	//
 	// Perform `glUniform3f()` for @name on @shader
-	SetUniform3F(string, float32, float32, float32)
-	// SetUniform3Fv wraps gst_gl_shader_set_uniform_3fv
+	SetUniform3f(string, float32, float32, float32)
+	// SetUniform3fv wraps gst_gl_shader_set_uniform_3fv
 	// 
 	// The function takes the following parameters:
 	// 
@@ -10478,8 +10569,8 @@ type GLShader interface {
 	// 	- value []float32: values to set 
 	//
 	// Perform `glUniform3fv()` for @name on @shader
-	SetUniform3Fv(string, []float32)
-	// SetUniform3I wraps gst_gl_shader_set_uniform_3i
+	SetUniform3fv(string, []float32)
+	// SetUniform3i wraps gst_gl_shader_set_uniform_3i
 	// 
 	// The function takes the following parameters:
 	// 
@@ -10489,8 +10580,8 @@ type GLShader interface {
 	// 	- v2 int32: third value to set 
 	//
 	// Perform `glUniform3i()` for @name on @shader
-	SetUniform3I(string, int32, int32, int32)
-	// SetUniform3Iv wraps gst_gl_shader_set_uniform_3iv
+	SetUniform3i(string, int32, int32, int32)
+	// SetUniform3iv wraps gst_gl_shader_set_uniform_3iv
 	// 
 	// The function takes the following parameters:
 	// 
@@ -10498,8 +10589,8 @@ type GLShader interface {
 	// 	- value []int32: values to set 
 	//
 	// Perform `glUniform3iv()` for @name on @shader
-	SetUniform3Iv(string, []int32)
-	// SetUniform4F wraps gst_gl_shader_set_uniform_4f
+	SetUniform3iv(string, []int32)
+	// SetUniform4f wraps gst_gl_shader_set_uniform_4f
 	// 
 	// The function takes the following parameters:
 	// 
@@ -10510,8 +10601,8 @@ type GLShader interface {
 	// 	- v3 float32: fourth value to set 
 	//
 	// Perform `glUniform4f()` for @name on @shader
-	SetUniform4F(string, float32, float32, float32, float32)
-	// SetUniform4Fv wraps gst_gl_shader_set_uniform_4fv
+	SetUniform4f(string, float32, float32, float32, float32)
+	// SetUniform4fv wraps gst_gl_shader_set_uniform_4fv
 	// 
 	// The function takes the following parameters:
 	// 
@@ -10519,8 +10610,8 @@ type GLShader interface {
 	// 	- value []float32: values to set 
 	//
 	// Perform `glUniform4fv()` for @name on @shader
-	SetUniform4Fv(string, []float32)
-	// SetUniform4I wraps gst_gl_shader_set_uniform_4i
+	SetUniform4fv(string, []float32)
+	// SetUniform4i wraps gst_gl_shader_set_uniform_4i
 	// 
 	// The function takes the following parameters:
 	// 
@@ -10531,8 +10622,8 @@ type GLShader interface {
 	// 	- v3 int32: fourth value to set 
 	//
 	// Perform `glUniform4i()` for @name on @shader
-	SetUniform4I(string, int32, int32, int32, int32)
-	// SetUniform4Iv wraps gst_gl_shader_set_uniform_4iv
+	SetUniform4i(string, int32, int32, int32, int32)
+	// SetUniform4iv wraps gst_gl_shader_set_uniform_4iv
 	// 
 	// The function takes the following parameters:
 	// 
@@ -10540,8 +10631,8 @@ type GLShader interface {
 	// 	- value []int32: values to set 
 	//
 	// Perform `glUniform4iv()` for @name on @shader
-	SetUniform4Iv(string, []int32)
-	// SetUniformMatrix2Fv wraps gst_gl_shader_set_uniform_matrix_2fv
+	SetUniform4iv(string, []int32)
+	// SetUniformMatrix2fv wraps gst_gl_shader_set_uniform_matrix_2fv
 	// 
 	// The function takes the following parameters:
 	// 
@@ -10551,8 +10642,8 @@ type GLShader interface {
 	// 	- value *float32: matrix to set 
 	//
 	// Perform `glUniformMatrix2fv()` for @name on @shader
-	SetUniformMatrix2Fv(string, int32, bool, *float32)
-	// SetUniformMatrix2X3Fv wraps gst_gl_shader_set_uniform_matrix_2x3fv
+	SetUniformMatrix2fv(string, int32, bool, *float32)
+	// SetUniformMatrix2x3fv wraps gst_gl_shader_set_uniform_matrix_2x3fv
 	// 
 	// The function takes the following parameters:
 	// 
@@ -10562,8 +10653,8 @@ type GLShader interface {
 	// 	- value *float32: values to set 
 	//
 	// Perform `glUniformMatrix2x3fv()` for @name on @shader
-	SetUniformMatrix2X3Fv(string, int32, bool, *float32)
-	// SetUniformMatrix2X4Fv wraps gst_gl_shader_set_uniform_matrix_2x4fv
+	SetUniformMatrix2x3fv(string, int32, bool, *float32)
+	// SetUniformMatrix2x4fv wraps gst_gl_shader_set_uniform_matrix_2x4fv
 	// 
 	// The function takes the following parameters:
 	// 
@@ -10573,8 +10664,8 @@ type GLShader interface {
 	// 	- value *float32: values to set 
 	//
 	// Perform `glUniformMatrix2x4fv()` for @name on @shader
-	SetUniformMatrix2X4Fv(string, int32, bool, *float32)
-	// SetUniformMatrix3Fv wraps gst_gl_shader_set_uniform_matrix_3fv
+	SetUniformMatrix2x4fv(string, int32, bool, *float32)
+	// SetUniformMatrix3fv wraps gst_gl_shader_set_uniform_matrix_3fv
 	// 
 	// The function takes the following parameters:
 	// 
@@ -10584,8 +10675,8 @@ type GLShader interface {
 	// 	- value *float32: values to set 
 	//
 	// Perform `glUniformMatrix3fv()` for @name on @shader
-	SetUniformMatrix3Fv(string, int32, bool, *float32)
-	// SetUniformMatrix3X2Fv wraps gst_gl_shader_set_uniform_matrix_3x2fv
+	SetUniformMatrix3fv(string, int32, bool, *float32)
+	// SetUniformMatrix3x2fv wraps gst_gl_shader_set_uniform_matrix_3x2fv
 	// 
 	// The function takes the following parameters:
 	// 
@@ -10595,8 +10686,8 @@ type GLShader interface {
 	// 	- value *float32: values to set 
 	//
 	// Perform `glUniformMatrix3x2fv()` for @name on @shader
-	SetUniformMatrix3X2Fv(string, int32, bool, *float32)
-	// SetUniformMatrix3X4Fv wraps gst_gl_shader_set_uniform_matrix_3x4fv
+	SetUniformMatrix3x2fv(string, int32, bool, *float32)
+	// SetUniformMatrix3x4fv wraps gst_gl_shader_set_uniform_matrix_3x4fv
 	// 
 	// The function takes the following parameters:
 	// 
@@ -10606,8 +10697,8 @@ type GLShader interface {
 	// 	- value *float32: values to set 
 	//
 	// Perform `glUniformMatrix3x4fv()` for @name on @shader
-	SetUniformMatrix3X4Fv(string, int32, bool, *float32)
-	// SetUniformMatrix4Fv wraps gst_gl_shader_set_uniform_matrix_4fv
+	SetUniformMatrix3x4fv(string, int32, bool, *float32)
+	// SetUniformMatrix4fv wraps gst_gl_shader_set_uniform_matrix_4fv
 	// 
 	// The function takes the following parameters:
 	// 
@@ -10617,8 +10708,8 @@ type GLShader interface {
 	// 	- value *float32: values to set 
 	//
 	// Perform `glUniformMatrix4fv()` for @name on @shader
-	SetUniformMatrix4Fv(string, int32, bool, *float32)
-	// SetUniformMatrix4X2Fv wraps gst_gl_shader_set_uniform_matrix_4x2fv
+	SetUniformMatrix4fv(string, int32, bool, *float32)
+	// SetUniformMatrix4x2fv wraps gst_gl_shader_set_uniform_matrix_4x2fv
 	// 
 	// The function takes the following parameters:
 	// 
@@ -10628,8 +10719,8 @@ type GLShader interface {
 	// 	- value *float32: values to set 
 	//
 	// Perform `glUniformMatrix4x2fv()` for @name on @shader
-	SetUniformMatrix4X2Fv(string, int32, bool, *float32)
-	// SetUniformMatrix4X3Fv wraps gst_gl_shader_set_uniform_matrix_4x3fv
+	SetUniformMatrix4x2fv(string, int32, bool, *float32)
+	// SetUniformMatrix4x3fv wraps gst_gl_shader_set_uniform_matrix_4x3fv
 	// 
 	// The function takes the following parameters:
 	// 
@@ -10639,7 +10730,7 @@ type GLShader interface {
 	// 	- value *float32: values to set 
 	//
 	// Perform `glUniformMatrix4x3fv()` for @name on @shader
-	SetUniformMatrix4X3Fv(string, int32, bool, *float32)
+	SetUniformMatrix4x3fv(string, int32, bool, *float32)
 	// Use wraps gst_gl_shader_use
 	//
 	// Mark's @shader as being used for the next GL draw command.
@@ -11211,7 +11302,7 @@ func (shader *GLShaderInstance) ReleaseUnlocked() {
 	runtime.KeepAlive(shader)
 }
 
-// SetUniform1F wraps gst_gl_shader_set_uniform_1f
+// SetUniform1f wraps gst_gl_shader_set_uniform_1f
 // 
 // The function takes the following parameters:
 // 
@@ -11219,7 +11310,7 @@ func (shader *GLShaderInstance) ReleaseUnlocked() {
 // 	- value float32: value to set 
 //
 // Perform `glUniform1f()` for @name on @shader
-func (shader *GLShaderInstance) SetUniform1F(name string, value float32) {
+func (shader *GLShaderInstance) SetUniform1f(name string, value float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.gfloat       // in, none, casted
@@ -11235,7 +11326,7 @@ func (shader *GLShaderInstance) SetUniform1F(name string, value float32) {
 	runtime.KeepAlive(value)
 }
 
-// SetUniform1Fv wraps gst_gl_shader_set_uniform_1fv
+// SetUniform1fv wraps gst_gl_shader_set_uniform_1fv
 // 
 // The function takes the following parameters:
 // 
@@ -11243,7 +11334,7 @@ func (shader *GLShaderInstance) SetUniform1F(name string, value float32) {
 // 	- value []float32: values to set 
 //
 // Perform `glUniform1fv()` for @name on @shader
-func (shader *GLShaderInstance) SetUniform1Fv(name string, value []float32) {
+func (shader *GLShaderInstance) SetUniform1fv(name string, value []float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.guint        // implicit
@@ -11263,7 +11354,7 @@ func (shader *GLShaderInstance) SetUniform1Fv(name string, value []float32) {
 	runtime.KeepAlive(value)
 }
 
-// SetUniform1I wraps gst_gl_shader_set_uniform_1i
+// SetUniform1i wraps gst_gl_shader_set_uniform_1i
 // 
 // The function takes the following parameters:
 // 
@@ -11271,7 +11362,7 @@ func (shader *GLShaderInstance) SetUniform1Fv(name string, value []float32) {
 // 	- value int32: value to set 
 //
 // Perform `glUniform1i()` for @name on @shader
-func (shader *GLShaderInstance) SetUniform1I(name string, value int32) {
+func (shader *GLShaderInstance) SetUniform1i(name string, value int32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.gint         // in, none, casted
@@ -11287,7 +11378,7 @@ func (shader *GLShaderInstance) SetUniform1I(name string, value int32) {
 	runtime.KeepAlive(value)
 }
 
-// SetUniform1Iv wraps gst_gl_shader_set_uniform_1iv
+// SetUniform1iv wraps gst_gl_shader_set_uniform_1iv
 // 
 // The function takes the following parameters:
 // 
@@ -11295,7 +11386,7 @@ func (shader *GLShaderInstance) SetUniform1I(name string, value int32) {
 // 	- value []int32: values to set 
 //
 // Perform `glUniform1iv()` for @name on @shader
-func (shader *GLShaderInstance) SetUniform1Iv(name string, value []int32) {
+func (shader *GLShaderInstance) SetUniform1iv(name string, value []int32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.guint        // implicit
@@ -11315,7 +11406,7 @@ func (shader *GLShaderInstance) SetUniform1Iv(name string, value []int32) {
 	runtime.KeepAlive(value)
 }
 
-// SetUniform2F wraps gst_gl_shader_set_uniform_2f
+// SetUniform2f wraps gst_gl_shader_set_uniform_2f
 // 
 // The function takes the following parameters:
 // 
@@ -11324,7 +11415,7 @@ func (shader *GLShaderInstance) SetUniform1Iv(name string, value []int32) {
 // 	- v1 float32: second value to set 
 //
 // Perform `glUniform2f()` for @name on @shader
-func (shader *GLShaderInstance) SetUniform2F(name string, v0 float32, v1 float32) {
+func (shader *GLShaderInstance) SetUniform2f(name string, v0 float32, v1 float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.gfloat       // in, none, casted
@@ -11343,7 +11434,7 @@ func (shader *GLShaderInstance) SetUniform2F(name string, v0 float32, v1 float32
 	runtime.KeepAlive(v1)
 }
 
-// SetUniform2Fv wraps gst_gl_shader_set_uniform_2fv
+// SetUniform2fv wraps gst_gl_shader_set_uniform_2fv
 // 
 // The function takes the following parameters:
 // 
@@ -11351,7 +11442,7 @@ func (shader *GLShaderInstance) SetUniform2F(name string, v0 float32, v1 float32
 // 	- value []float32: values to set 
 //
 // Perform `glUniform2fv()` for @name on @shader
-func (shader *GLShaderInstance) SetUniform2Fv(name string, value []float32) {
+func (shader *GLShaderInstance) SetUniform2fv(name string, value []float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.guint        // implicit
@@ -11371,7 +11462,7 @@ func (shader *GLShaderInstance) SetUniform2Fv(name string, value []float32) {
 	runtime.KeepAlive(value)
 }
 
-// SetUniform2I wraps gst_gl_shader_set_uniform_2i
+// SetUniform2i wraps gst_gl_shader_set_uniform_2i
 // 
 // The function takes the following parameters:
 // 
@@ -11380,7 +11471,7 @@ func (shader *GLShaderInstance) SetUniform2Fv(name string, value []float32) {
 // 	- v1 int32: second value to set 
 //
 // Perform `glUniform2i()` for @name on @shader
-func (shader *GLShaderInstance) SetUniform2I(name string, v0 int32, v1 int32) {
+func (shader *GLShaderInstance) SetUniform2i(name string, v0 int32, v1 int32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.gint         // in, none, casted
@@ -11399,7 +11490,7 @@ func (shader *GLShaderInstance) SetUniform2I(name string, v0 int32, v1 int32) {
 	runtime.KeepAlive(v1)
 }
 
-// SetUniform2Iv wraps gst_gl_shader_set_uniform_2iv
+// SetUniform2iv wraps gst_gl_shader_set_uniform_2iv
 // 
 // The function takes the following parameters:
 // 
@@ -11407,7 +11498,7 @@ func (shader *GLShaderInstance) SetUniform2I(name string, v0 int32, v1 int32) {
 // 	- value []int32: values to set 
 //
 // Perform `glUniform2iv()` for @name on @shader
-func (shader *GLShaderInstance) SetUniform2Iv(name string, value []int32) {
+func (shader *GLShaderInstance) SetUniform2iv(name string, value []int32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.guint        // implicit
@@ -11427,7 +11518,7 @@ func (shader *GLShaderInstance) SetUniform2Iv(name string, value []int32) {
 	runtime.KeepAlive(value)
 }
 
-// SetUniform3F wraps gst_gl_shader_set_uniform_3f
+// SetUniform3f wraps gst_gl_shader_set_uniform_3f
 // 
 // The function takes the following parameters:
 // 
@@ -11437,7 +11528,7 @@ func (shader *GLShaderInstance) SetUniform2Iv(name string, value []int32) {
 // 	- v2 float32: third value to set 
 //
 // Perform `glUniform3f()` for @name on @shader
-func (shader *GLShaderInstance) SetUniform3F(name string, v0 float32, v1 float32, v2 float32) {
+func (shader *GLShaderInstance) SetUniform3f(name string, v0 float32, v1 float32, v2 float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.gfloat       // in, none, casted
@@ -11459,7 +11550,7 @@ func (shader *GLShaderInstance) SetUniform3F(name string, v0 float32, v1 float32
 	runtime.KeepAlive(v2)
 }
 
-// SetUniform3Fv wraps gst_gl_shader_set_uniform_3fv
+// SetUniform3fv wraps gst_gl_shader_set_uniform_3fv
 // 
 // The function takes the following parameters:
 // 
@@ -11467,7 +11558,7 @@ func (shader *GLShaderInstance) SetUniform3F(name string, v0 float32, v1 float32
 // 	- value []float32: values to set 
 //
 // Perform `glUniform3fv()` for @name on @shader
-func (shader *GLShaderInstance) SetUniform3Fv(name string, value []float32) {
+func (shader *GLShaderInstance) SetUniform3fv(name string, value []float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.guint        // implicit
@@ -11487,7 +11578,7 @@ func (shader *GLShaderInstance) SetUniform3Fv(name string, value []float32) {
 	runtime.KeepAlive(value)
 }
 
-// SetUniform3I wraps gst_gl_shader_set_uniform_3i
+// SetUniform3i wraps gst_gl_shader_set_uniform_3i
 // 
 // The function takes the following parameters:
 // 
@@ -11497,7 +11588,7 @@ func (shader *GLShaderInstance) SetUniform3Fv(name string, value []float32) {
 // 	- v2 int32: third value to set 
 //
 // Perform `glUniform3i()` for @name on @shader
-func (shader *GLShaderInstance) SetUniform3I(name string, v0 int32, v1 int32, v2 int32) {
+func (shader *GLShaderInstance) SetUniform3i(name string, v0 int32, v1 int32, v2 int32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.gint         // in, none, casted
@@ -11519,7 +11610,7 @@ func (shader *GLShaderInstance) SetUniform3I(name string, v0 int32, v1 int32, v2
 	runtime.KeepAlive(v2)
 }
 
-// SetUniform3Iv wraps gst_gl_shader_set_uniform_3iv
+// SetUniform3iv wraps gst_gl_shader_set_uniform_3iv
 // 
 // The function takes the following parameters:
 // 
@@ -11527,7 +11618,7 @@ func (shader *GLShaderInstance) SetUniform3I(name string, v0 int32, v1 int32, v2
 // 	- value []int32: values to set 
 //
 // Perform `glUniform3iv()` for @name on @shader
-func (shader *GLShaderInstance) SetUniform3Iv(name string, value []int32) {
+func (shader *GLShaderInstance) SetUniform3iv(name string, value []int32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.guint        // implicit
@@ -11547,7 +11638,7 @@ func (shader *GLShaderInstance) SetUniform3Iv(name string, value []int32) {
 	runtime.KeepAlive(value)
 }
 
-// SetUniform4F wraps gst_gl_shader_set_uniform_4f
+// SetUniform4f wraps gst_gl_shader_set_uniform_4f
 // 
 // The function takes the following parameters:
 // 
@@ -11558,7 +11649,7 @@ func (shader *GLShaderInstance) SetUniform3Iv(name string, value []int32) {
 // 	- v3 float32: fourth value to set 
 //
 // Perform `glUniform4f()` for @name on @shader
-func (shader *GLShaderInstance) SetUniform4F(name string, v0 float32, v1 float32, v2 float32, v3 float32) {
+func (shader *GLShaderInstance) SetUniform4f(name string, v0 float32, v1 float32, v2 float32, v3 float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.gfloat       // in, none, casted
@@ -11583,7 +11674,7 @@ func (shader *GLShaderInstance) SetUniform4F(name string, v0 float32, v1 float32
 	runtime.KeepAlive(v3)
 }
 
-// SetUniform4Fv wraps gst_gl_shader_set_uniform_4fv
+// SetUniform4fv wraps gst_gl_shader_set_uniform_4fv
 // 
 // The function takes the following parameters:
 // 
@@ -11591,7 +11682,7 @@ func (shader *GLShaderInstance) SetUniform4F(name string, v0 float32, v1 float32
 // 	- value []float32: values to set 
 //
 // Perform `glUniform4fv()` for @name on @shader
-func (shader *GLShaderInstance) SetUniform4Fv(name string, value []float32) {
+func (shader *GLShaderInstance) SetUniform4fv(name string, value []float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.guint        // implicit
@@ -11611,7 +11702,7 @@ func (shader *GLShaderInstance) SetUniform4Fv(name string, value []float32) {
 	runtime.KeepAlive(value)
 }
 
-// SetUniform4I wraps gst_gl_shader_set_uniform_4i
+// SetUniform4i wraps gst_gl_shader_set_uniform_4i
 // 
 // The function takes the following parameters:
 // 
@@ -11622,7 +11713,7 @@ func (shader *GLShaderInstance) SetUniform4Fv(name string, value []float32) {
 // 	- v3 int32: fourth value to set 
 //
 // Perform `glUniform4i()` for @name on @shader
-func (shader *GLShaderInstance) SetUniform4I(name string, v0 int32, v1 int32, v2 int32, v3 int32) {
+func (shader *GLShaderInstance) SetUniform4i(name string, v0 int32, v1 int32, v2 int32, v3 int32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.gint         // in, none, casted
@@ -11647,7 +11738,7 @@ func (shader *GLShaderInstance) SetUniform4I(name string, v0 int32, v1 int32, v2
 	runtime.KeepAlive(v3)
 }
 
-// SetUniform4Iv wraps gst_gl_shader_set_uniform_4iv
+// SetUniform4iv wraps gst_gl_shader_set_uniform_4iv
 // 
 // The function takes the following parameters:
 // 
@@ -11655,7 +11746,7 @@ func (shader *GLShaderInstance) SetUniform4I(name string, v0 int32, v1 int32, v2
 // 	- value []int32: values to set 
 //
 // Perform `glUniform4iv()` for @name on @shader
-func (shader *GLShaderInstance) SetUniform4Iv(name string, value []int32) {
+func (shader *GLShaderInstance) SetUniform4iv(name string, value []int32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.guint        // implicit
@@ -11675,7 +11766,7 @@ func (shader *GLShaderInstance) SetUniform4Iv(name string, value []int32) {
 	runtime.KeepAlive(value)
 }
 
-// SetUniformMatrix2Fv wraps gst_gl_shader_set_uniform_matrix_2fv
+// SetUniformMatrix2fv wraps gst_gl_shader_set_uniform_matrix_2fv
 // 
 // The function takes the following parameters:
 // 
@@ -11685,7 +11776,7 @@ func (shader *GLShaderInstance) SetUniform4Iv(name string, value []int32) {
 // 	- value *float32: matrix to set 
 //
 // Perform `glUniformMatrix2fv()` for @name on @shader
-func (shader *GLShaderInstance) SetUniformMatrix2Fv(name string, count int32, transpose bool, value *float32) {
+func (shader *GLShaderInstance) SetUniformMatrix2fv(name string, count int32, transpose bool, value *float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.gint         // in, none, casted
@@ -11711,7 +11802,7 @@ func (shader *GLShaderInstance) SetUniformMatrix2Fv(name string, count int32, tr
 	runtime.KeepAlive(value)
 }
 
-// SetUniformMatrix2X3Fv wraps gst_gl_shader_set_uniform_matrix_2x3fv
+// SetUniformMatrix2x3fv wraps gst_gl_shader_set_uniform_matrix_2x3fv
 // 
 // The function takes the following parameters:
 // 
@@ -11721,7 +11812,7 @@ func (shader *GLShaderInstance) SetUniformMatrix2Fv(name string, count int32, tr
 // 	- value *float32: values to set 
 //
 // Perform `glUniformMatrix2x3fv()` for @name on @shader
-func (shader *GLShaderInstance) SetUniformMatrix2X3Fv(name string, count int32, transpose bool, value *float32) {
+func (shader *GLShaderInstance) SetUniformMatrix2x3fv(name string, count int32, transpose bool, value *float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.gint         // in, none, casted
@@ -11747,7 +11838,7 @@ func (shader *GLShaderInstance) SetUniformMatrix2X3Fv(name string, count int32, 
 	runtime.KeepAlive(value)
 }
 
-// SetUniformMatrix2X4Fv wraps gst_gl_shader_set_uniform_matrix_2x4fv
+// SetUniformMatrix2x4fv wraps gst_gl_shader_set_uniform_matrix_2x4fv
 // 
 // The function takes the following parameters:
 // 
@@ -11757,7 +11848,7 @@ func (shader *GLShaderInstance) SetUniformMatrix2X3Fv(name string, count int32, 
 // 	- value *float32: values to set 
 //
 // Perform `glUniformMatrix2x4fv()` for @name on @shader
-func (shader *GLShaderInstance) SetUniformMatrix2X4Fv(name string, count int32, transpose bool, value *float32) {
+func (shader *GLShaderInstance) SetUniformMatrix2x4fv(name string, count int32, transpose bool, value *float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.gint         // in, none, casted
@@ -11783,7 +11874,7 @@ func (shader *GLShaderInstance) SetUniformMatrix2X4Fv(name string, count int32, 
 	runtime.KeepAlive(value)
 }
 
-// SetUniformMatrix3Fv wraps gst_gl_shader_set_uniform_matrix_3fv
+// SetUniformMatrix3fv wraps gst_gl_shader_set_uniform_matrix_3fv
 // 
 // The function takes the following parameters:
 // 
@@ -11793,7 +11884,7 @@ func (shader *GLShaderInstance) SetUniformMatrix2X4Fv(name string, count int32, 
 // 	- value *float32: values to set 
 //
 // Perform `glUniformMatrix3fv()` for @name on @shader
-func (shader *GLShaderInstance) SetUniformMatrix3Fv(name string, count int32, transpose bool, value *float32) {
+func (shader *GLShaderInstance) SetUniformMatrix3fv(name string, count int32, transpose bool, value *float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.gint         // in, none, casted
@@ -11819,7 +11910,7 @@ func (shader *GLShaderInstance) SetUniformMatrix3Fv(name string, count int32, tr
 	runtime.KeepAlive(value)
 }
 
-// SetUniformMatrix3X2Fv wraps gst_gl_shader_set_uniform_matrix_3x2fv
+// SetUniformMatrix3x2fv wraps gst_gl_shader_set_uniform_matrix_3x2fv
 // 
 // The function takes the following parameters:
 // 
@@ -11829,7 +11920,7 @@ func (shader *GLShaderInstance) SetUniformMatrix3Fv(name string, count int32, tr
 // 	- value *float32: values to set 
 //
 // Perform `glUniformMatrix3x2fv()` for @name on @shader
-func (shader *GLShaderInstance) SetUniformMatrix3X2Fv(name string, count int32, transpose bool, value *float32) {
+func (shader *GLShaderInstance) SetUniformMatrix3x2fv(name string, count int32, transpose bool, value *float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.gint         // in, none, casted
@@ -11855,7 +11946,7 @@ func (shader *GLShaderInstance) SetUniformMatrix3X2Fv(name string, count int32, 
 	runtime.KeepAlive(value)
 }
 
-// SetUniformMatrix3X4Fv wraps gst_gl_shader_set_uniform_matrix_3x4fv
+// SetUniformMatrix3x4fv wraps gst_gl_shader_set_uniform_matrix_3x4fv
 // 
 // The function takes the following parameters:
 // 
@@ -11865,7 +11956,7 @@ func (shader *GLShaderInstance) SetUniformMatrix3X2Fv(name string, count int32, 
 // 	- value *float32: values to set 
 //
 // Perform `glUniformMatrix3x4fv()` for @name on @shader
-func (shader *GLShaderInstance) SetUniformMatrix3X4Fv(name string, count int32, transpose bool, value *float32) {
+func (shader *GLShaderInstance) SetUniformMatrix3x4fv(name string, count int32, transpose bool, value *float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.gint         // in, none, casted
@@ -11891,7 +11982,7 @@ func (shader *GLShaderInstance) SetUniformMatrix3X4Fv(name string, count int32, 
 	runtime.KeepAlive(value)
 }
 
-// SetUniformMatrix4Fv wraps gst_gl_shader_set_uniform_matrix_4fv
+// SetUniformMatrix4fv wraps gst_gl_shader_set_uniform_matrix_4fv
 // 
 // The function takes the following parameters:
 // 
@@ -11901,7 +11992,7 @@ func (shader *GLShaderInstance) SetUniformMatrix3X4Fv(name string, count int32, 
 // 	- value *float32: values to set 
 //
 // Perform `glUniformMatrix4fv()` for @name on @shader
-func (shader *GLShaderInstance) SetUniformMatrix4Fv(name string, count int32, transpose bool, value *float32) {
+func (shader *GLShaderInstance) SetUniformMatrix4fv(name string, count int32, transpose bool, value *float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.gint         // in, none, casted
@@ -11927,7 +12018,7 @@ func (shader *GLShaderInstance) SetUniformMatrix4Fv(name string, count int32, tr
 	runtime.KeepAlive(value)
 }
 
-// SetUniformMatrix4X2Fv wraps gst_gl_shader_set_uniform_matrix_4x2fv
+// SetUniformMatrix4x2fv wraps gst_gl_shader_set_uniform_matrix_4x2fv
 // 
 // The function takes the following parameters:
 // 
@@ -11937,7 +12028,7 @@ func (shader *GLShaderInstance) SetUniformMatrix4Fv(name string, count int32, tr
 // 	- value *float32: values to set 
 //
 // Perform `glUniformMatrix4x2fv()` for @name on @shader
-func (shader *GLShaderInstance) SetUniformMatrix4X2Fv(name string, count int32, transpose bool, value *float32) {
+func (shader *GLShaderInstance) SetUniformMatrix4x2fv(name string, count int32, transpose bool, value *float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.gint         // in, none, casted
@@ -11963,7 +12054,7 @@ func (shader *GLShaderInstance) SetUniformMatrix4X2Fv(name string, count int32, 
 	runtime.KeepAlive(value)
 }
 
-// SetUniformMatrix4X3Fv wraps gst_gl_shader_set_uniform_matrix_4x3fv
+// SetUniformMatrix4x3fv wraps gst_gl_shader_set_uniform_matrix_4x3fv
 // 
 // The function takes the following parameters:
 // 
@@ -11973,7 +12064,7 @@ func (shader *GLShaderInstance) SetUniformMatrix4X2Fv(name string, count int32, 
 // 	- value *float32: values to set 
 //
 // Perform `glUniformMatrix4x3fv()` for @name on @shader
-func (shader *GLShaderInstance) SetUniformMatrix4X3Fv(name string, count int32, transpose bool, value *float32) {
+func (shader *GLShaderInstance) SetUniformMatrix4x3fv(name string, count int32, transpose bool, value *float32) {
 	var carg0 *C.GstGLShader // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.gint         // in, none, casted
@@ -14326,11 +14417,11 @@ func RegisterGLWindowSubClass[InstanceT GLWindow](
 
 // GLAllocationParams wraps GstGLAllocationParams
 type GLAllocationParams struct {
-	*glAllocationParams
+	*gLAllocationParams
 }
 
-// glAllocationParams is the struct that's finalized
-type glAllocationParams struct {
+// gLAllocationParams is the struct that's finalized
+type gLAllocationParams struct {
 	native *C.GstGLAllocationParams
 }
 
@@ -14351,7 +14442,7 @@ func (r *GLAllocationParams) SetGoValue(v *gobject.Value) {
 
 // UnsafeGLAllocationParamsFromGlibBorrow is used to convert raw C.GstGLAllocationParams pointers to go. This is used by the bindings internally.
 func UnsafeGLAllocationParamsFromGlibBorrow(p unsafe.Pointer) *GLAllocationParams {
-	return &GLAllocationParams{&glAllocationParams{(*C.GstGLAllocationParams)(p)}}
+	return &GLAllocationParams{&gLAllocationParams{(*C.GstGLAllocationParams)(p)}}
 }
 
 // UnsafeGLAllocationParamsFromGlibNone is used to convert raw C.GstGLAllocationParams pointers to go without transferring ownership. This is used by the bindings internally.
@@ -14359,8 +14450,8 @@ func UnsafeGLAllocationParamsFromGlibNone(p unsafe.Pointer) *GLAllocationParams 
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLAllocationParamsFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.glAllocationParams,
-		func (intern *glAllocationParams) {
+		wrapped.gLAllocationParams,
+		func (intern *gLAllocationParams) {
 			C.gst_gl_allocation_params_free(intern.native)
 		},
 	)
@@ -14371,8 +14462,8 @@ func UnsafeGLAllocationParamsFromGlibNone(p unsafe.Pointer) *GLAllocationParams 
 func UnsafeGLAllocationParamsFromGlibFull(p unsafe.Pointer) *GLAllocationParams {
 	wrapped := UnsafeGLAllocationParamsFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.glAllocationParams,
-		func (intern *glAllocationParams) {
+		wrapped.gLAllocationParams,
+		func (intern *gLAllocationParams) {
 			C.gst_gl_allocation_params_free(intern.native)
 		},
 	)
@@ -14394,7 +14485,7 @@ func UnsafeGLAllocationParamsToGlibNone(g *GLAllocationParams) unsafe.Pointer {
 // UnsafeGLAllocationParamsToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeGLAllocationParamsToGlibFull(g *GLAllocationParams) unsafe.Pointer {
-	runtime.SetFinalizer(g.glAllocationParams, nil)
+	runtime.SetFinalizer(g.gLAllocationParams, nil)
 	_p := unsafe.Pointer(g.native)
 	g.native = nil // GLAllocationParams is invalid from here on
 	return _p
@@ -14459,17 +14550,17 @@ func (params *GLAllocationParams) FreeData() {
 // #GstGLAsyncDebug an opaque structure and should only be accessed through the
 // provided API.
 type GLAsyncDebug struct {
-	*glAsyncDebug
+	*gLAsyncDebug
 }
 
-// glAsyncDebug is the struct that's finalized
-type glAsyncDebug struct {
+// gLAsyncDebug is the struct that's finalized
+type gLAsyncDebug struct {
 	native *C.GstGLAsyncDebug
 }
 
 // UnsafeGLAsyncDebugFromGlibBorrow is used to convert raw C.GstGLAsyncDebug pointers to go. This is used by the bindings internally.
 func UnsafeGLAsyncDebugFromGlibBorrow(p unsafe.Pointer) *GLAsyncDebug {
-	return &GLAsyncDebug{&glAsyncDebug{(*C.GstGLAsyncDebug)(p)}}
+	return &GLAsyncDebug{&gLAsyncDebug{(*C.GstGLAsyncDebug)(p)}}
 }
 
 // UnsafeGLAsyncDebugFromGlibNone is used to convert raw C.GstGLAsyncDebug pointers to go without transferring ownership. This is used by the bindings internally.
@@ -14477,8 +14568,8 @@ func UnsafeGLAsyncDebugFromGlibNone(p unsafe.Pointer) *GLAsyncDebug {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLAsyncDebugFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.glAsyncDebug,
-		func (intern *glAsyncDebug) {
+		wrapped.gLAsyncDebug,
+		func (intern *gLAsyncDebug) {
 			C.gst_gl_async_debug_free(intern.native)
 		},
 	)
@@ -14489,8 +14580,8 @@ func UnsafeGLAsyncDebugFromGlibNone(p unsafe.Pointer) *GLAsyncDebug {
 func UnsafeGLAsyncDebugFromGlibFull(p unsafe.Pointer) *GLAsyncDebug {
 	wrapped := UnsafeGLAsyncDebugFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.glAsyncDebug,
-		func (intern *glAsyncDebug) {
+		wrapped.gLAsyncDebug,
+		func (intern *gLAsyncDebug) {
 			C.gst_gl_async_debug_free(intern.native)
 		},
 	)
@@ -14512,7 +14603,7 @@ func UnsafeGLAsyncDebugToGlibNone(g *GLAsyncDebug) unsafe.Pointer {
 // UnsafeGLAsyncDebugToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeGLAsyncDebugToGlibFull(g *GLAsyncDebug) unsafe.Pointer {
-	runtime.SetFinalizer(g.glAsyncDebug, nil)
+	runtime.SetFinalizer(g.gLAsyncDebug, nil)
 	_p := unsafe.Pointer(g.native)
 	g.native = nil // GLAsyncDebug is invalid from here on
 	return _p
@@ -14589,17 +14680,17 @@ func (ad *GLAsyncDebug) Unset() {
 // 
 // GLBaseFilterClass is the type struct for [GLBaseFilter]
 type GLBaseFilterClass struct {
-	*glBaseFilterClass
+	*gLBaseFilterClass
 }
 
-// glBaseFilterClass is the struct that's finalized
-type glBaseFilterClass struct {
+// gLBaseFilterClass is the struct that's finalized
+type gLBaseFilterClass struct {
 	native *C.GstGLBaseFilterClass
 }
 
 // UnsafeGLBaseFilterClassFromGlibBorrow is used to convert raw C.GstGLBaseFilterClass pointers to go. This is used by the bindings internally.
 func UnsafeGLBaseFilterClassFromGlibBorrow(p unsafe.Pointer) *GLBaseFilterClass {
-	return &GLBaseFilterClass{&glBaseFilterClass{(*C.GstGLBaseFilterClass)(p)}}
+	return &GLBaseFilterClass{&gLBaseFilterClass{(*C.GstGLBaseFilterClass)(p)}}
 }
 
 // UnsafeGLBaseFilterClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
@@ -14630,11 +14721,11 @@ func (g *GLBaseFilterClass) ParentClass() *gstbase.BaseTransformClass {
 // 
 // Data is uploaded or downloaded from the GPU as is necessary.
 type GLBaseMemory struct {
-	*glBaseMemory
+	*gLBaseMemory
 }
 
-// glBaseMemory is the struct that's finalized
-type glBaseMemory struct {
+// gLBaseMemory is the struct that's finalized
+type gLBaseMemory struct {
 	native *C.GstGLBaseMemory
 }
 
@@ -14655,7 +14746,7 @@ func (r *GLBaseMemory) SetGoValue(v *gobject.Value) {
 
 // UnsafeGLBaseMemoryFromGlibBorrow is used to convert raw C.GstGLBaseMemory pointers to go. This is used by the bindings internally.
 func UnsafeGLBaseMemoryFromGlibBorrow(p unsafe.Pointer) *GLBaseMemory {
-	return &GLBaseMemory{&glBaseMemory{(*C.GstGLBaseMemory)(p)}}
+	return &GLBaseMemory{&gLBaseMemory{(*C.GstGLBaseMemory)(p)}}
 }
 
 // UnsafeGLBaseMemoryFromGlibNone is used to convert raw C.GstGLBaseMemory pointers to go without transferring ownership. This is used by the bindings internally.
@@ -14663,8 +14754,8 @@ func UnsafeGLBaseMemoryFromGlibNone(p unsafe.Pointer) *GLBaseMemory {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLBaseMemoryFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.glBaseMemory,
-		func (intern *glBaseMemory) {
+		wrapped.gLBaseMemory,
+		func (intern *gLBaseMemory) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -14675,8 +14766,8 @@ func UnsafeGLBaseMemoryFromGlibNone(p unsafe.Pointer) *GLBaseMemory {
 func UnsafeGLBaseMemoryFromGlibFull(p unsafe.Pointer) *GLBaseMemory {
 	wrapped := UnsafeGLBaseMemoryFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.glBaseMemory,
-		func (intern *glBaseMemory) {
+		wrapped.gLBaseMemory,
+		func (intern *gLBaseMemory) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -14698,7 +14789,7 @@ func UnsafeGLBaseMemoryToGlibNone(g *GLBaseMemory) unsafe.Pointer {
 // UnsafeGLBaseMemoryToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeGLBaseMemoryToGlibFull(g *GLBaseMemory) unsafe.Pointer {
-	runtime.SetFinalizer(g.glBaseMemory, nil)
+	runtime.SetFinalizer(g.gLBaseMemory, nil)
 	_p := unsafe.Pointer(g.native)
 	g.native = nil // GLBaseMemory is invalid from here on
 	return _p
@@ -14813,17 +14904,17 @@ func (src *GLBaseMemory) Memcpy(dest *GLBaseMemory, offset int, size int) bool {
 // 
 // GLBaseMemoryAllocatorClass is the type struct for [GLBaseMemoryAllocator]
 type GLBaseMemoryAllocatorClass struct {
-	*glBaseMemoryAllocatorClass
+	*gLBaseMemoryAllocatorClass
 }
 
-// glBaseMemoryAllocatorClass is the struct that's finalized
-type glBaseMemoryAllocatorClass struct {
+// gLBaseMemoryAllocatorClass is the struct that's finalized
+type gLBaseMemoryAllocatorClass struct {
 	native *C.GstGLBaseMemoryAllocatorClass
 }
 
 // UnsafeGLBaseMemoryAllocatorClassFromGlibBorrow is used to convert raw C.GstGLBaseMemoryAllocatorClass pointers to go. This is used by the bindings internally.
 func UnsafeGLBaseMemoryAllocatorClassFromGlibBorrow(p unsafe.Pointer) *GLBaseMemoryAllocatorClass {
-	return &GLBaseMemoryAllocatorClass{&glBaseMemoryAllocatorClass{(*C.GstGLBaseMemoryAllocatorClass)(p)}}
+	return &GLBaseMemoryAllocatorClass{&gLBaseMemoryAllocatorClass{(*C.GstGLBaseMemoryAllocatorClass)(p)}}
 }
 
 // UnsafeGLBaseMemoryAllocatorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
@@ -14851,17 +14942,17 @@ func (g *GLBaseMemoryAllocatorClass) ParentClass() *gst.AllocatorClass {
 // 
 // GLBaseMixerClass is the type struct for [GLBaseMixer]
 type GLBaseMixerClass struct {
-	*glBaseMixerClass
+	*gLBaseMixerClass
 }
 
-// glBaseMixerClass is the struct that's finalized
-type glBaseMixerClass struct {
+// gLBaseMixerClass is the struct that's finalized
+type gLBaseMixerClass struct {
 	native *C.GstGLBaseMixerClass
 }
 
 // UnsafeGLBaseMixerClassFromGlibBorrow is used to convert raw C.GstGLBaseMixerClass pointers to go. This is used by the bindings internally.
 func UnsafeGLBaseMixerClassFromGlibBorrow(p unsafe.Pointer) *GLBaseMixerClass {
-	return &GLBaseMixerClass{&glBaseMixerClass{(*C.GstGLBaseMixerClass)(p)}}
+	return &GLBaseMixerClass{&gLBaseMixerClass{(*C.GstGLBaseMixerClass)(p)}}
 }
 
 // UnsafeGLBaseMixerClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
@@ -14889,17 +14980,17 @@ func (g *GLBaseMixerClass) ParentClass() *gstvideo.VideoAggregatorClass {
 // 
 // GLBaseMixerPadClass is the type struct for [GLBaseMixerPad]
 type GLBaseMixerPadClass struct {
-	*glBaseMixerPadClass
+	*gLBaseMixerPadClass
 }
 
-// glBaseMixerPadClass is the struct that's finalized
-type glBaseMixerPadClass struct {
+// gLBaseMixerPadClass is the struct that's finalized
+type gLBaseMixerPadClass struct {
 	native *C.GstGLBaseMixerPadClass
 }
 
 // UnsafeGLBaseMixerPadClassFromGlibBorrow is used to convert raw C.GstGLBaseMixerPadClass pointers to go. This is used by the bindings internally.
 func UnsafeGLBaseMixerPadClassFromGlibBorrow(p unsafe.Pointer) *GLBaseMixerPadClass {
-	return &GLBaseMixerPadClass{&glBaseMixerPadClass{(*C.GstGLBaseMixerPadClass)(p)}}
+	return &GLBaseMixerPadClass{&gLBaseMixerPadClass{(*C.GstGLBaseMixerPadClass)(p)}}
 }
 
 // UnsafeGLBaseMixerPadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
@@ -14929,17 +15020,17 @@ func (g *GLBaseMixerPadClass) ParentClass() *gstvideo.VideoAggregatorPadClass {
 // 
 // GLBaseSrcClass is the type struct for [GLBaseSrc]
 type GLBaseSrcClass struct {
-	*glBaseSrcClass
+	*gLBaseSrcClass
 }
 
-// glBaseSrcClass is the struct that's finalized
-type glBaseSrcClass struct {
+// gLBaseSrcClass is the struct that's finalized
+type gLBaseSrcClass struct {
 	native *C.GstGLBaseSrcClass
 }
 
 // UnsafeGLBaseSrcClassFromGlibBorrow is used to convert raw C.GstGLBaseSrcClass pointers to go. This is used by the bindings internally.
 func UnsafeGLBaseSrcClassFromGlibBorrow(p unsafe.Pointer) *GLBaseSrcClass {
-	return &GLBaseSrcClass{&glBaseSrcClass{(*C.GstGLBaseSrcClass)(p)}}
+	return &GLBaseSrcClass{&gLBaseSrcClass{(*C.GstGLBaseSrcClass)(p)}}
 }
 
 // UnsafeGLBaseSrcClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
@@ -14970,11 +15061,11 @@ func (g *GLBaseSrcClass) ParentClass() *gstbase.PushSrcClass {
 // 
 // Data is uploaded or downloaded from the GPU as is necessary.
 type GLBuffer struct {
-	*glBuffer
+	*gLBuffer
 }
 
-// glBuffer is the struct that's finalized
-type glBuffer struct {
+// gLBuffer is the struct that's finalized
+type gLBuffer struct {
 	native *C.GstGLBuffer
 }
 
@@ -14995,7 +15086,7 @@ func (r *GLBuffer) SetGoValue(v *gobject.Value) {
 
 // UnsafeGLBufferFromGlibBorrow is used to convert raw C.GstGLBuffer pointers to go. This is used by the bindings internally.
 func UnsafeGLBufferFromGlibBorrow(p unsafe.Pointer) *GLBuffer {
-	return &GLBuffer{&glBuffer{(*C.GstGLBuffer)(p)}}
+	return &GLBuffer{&gLBuffer{(*C.GstGLBuffer)(p)}}
 }
 
 // UnsafeGLBufferFromGlibNone is used to convert raw C.GstGLBuffer pointers to go without transferring ownership. This is used by the bindings internally.
@@ -15003,8 +15094,8 @@ func UnsafeGLBufferFromGlibNone(p unsafe.Pointer) *GLBuffer {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLBufferFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.glBuffer,
-		func (intern *glBuffer) {
+		wrapped.gLBuffer,
+		func (intern *gLBuffer) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -15015,8 +15106,8 @@ func UnsafeGLBufferFromGlibNone(p unsafe.Pointer) *GLBuffer {
 func UnsafeGLBufferFromGlibFull(p unsafe.Pointer) *GLBuffer {
 	wrapped := UnsafeGLBufferFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.glBuffer,
-		func (intern *glBuffer) {
+		wrapped.gLBuffer,
+		func (intern *gLBuffer) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -15038,7 +15129,7 @@ func UnsafeGLBufferToGlibNone(g *GLBuffer) unsafe.Pointer {
 // UnsafeGLBufferToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeGLBufferToGlibFull(g *GLBuffer) unsafe.Pointer {
-	runtime.SetFinalizer(g.glBuffer, nil)
+	runtime.SetFinalizer(g.gLBuffer, nil)
 	_p := unsafe.Pointer(g.native)
 	g.native = nil // GLBuffer is invalid from here on
 	return _p
@@ -15055,11 +15146,11 @@ func GLBufferInitOnce() {
 
 // GLBufferAllocationParams wraps GstGLBufferAllocationParams
 type GLBufferAllocationParams struct {
-	*glBufferAllocationParams
+	*gLBufferAllocationParams
 }
 
-// glBufferAllocationParams is the struct that's finalized
-type glBufferAllocationParams struct {
+// gLBufferAllocationParams is the struct that's finalized
+type gLBufferAllocationParams struct {
 	native *C.GstGLBufferAllocationParams
 }
 
@@ -15080,7 +15171,7 @@ func (r *GLBufferAllocationParams) SetGoValue(v *gobject.Value) {
 
 // UnsafeGLBufferAllocationParamsFromGlibBorrow is used to convert raw C.GstGLBufferAllocationParams pointers to go. This is used by the bindings internally.
 func UnsafeGLBufferAllocationParamsFromGlibBorrow(p unsafe.Pointer) *GLBufferAllocationParams {
-	return &GLBufferAllocationParams{&glBufferAllocationParams{(*C.GstGLBufferAllocationParams)(p)}}
+	return &GLBufferAllocationParams{&gLBufferAllocationParams{(*C.GstGLBufferAllocationParams)(p)}}
 }
 
 // UnsafeGLBufferAllocationParamsFromGlibNone is used to convert raw C.GstGLBufferAllocationParams pointers to go without transferring ownership. This is used by the bindings internally.
@@ -15088,8 +15179,8 @@ func UnsafeGLBufferAllocationParamsFromGlibNone(p unsafe.Pointer) *GLBufferAlloc
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLBufferAllocationParamsFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.glBufferAllocationParams,
-		func (intern *glBufferAllocationParams) {
+		wrapped.gLBufferAllocationParams,
+		func (intern *gLBufferAllocationParams) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -15100,8 +15191,8 @@ func UnsafeGLBufferAllocationParamsFromGlibNone(p unsafe.Pointer) *GLBufferAlloc
 func UnsafeGLBufferAllocationParamsFromGlibFull(p unsafe.Pointer) *GLBufferAllocationParams {
 	wrapped := UnsafeGLBufferAllocationParamsFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.glBufferAllocationParams,
-		func (intern *glBufferAllocationParams) {
+		wrapped.gLBufferAllocationParams,
+		func (intern *gLBufferAllocationParams) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -15123,7 +15214,7 @@ func UnsafeGLBufferAllocationParamsToGlibNone(g *GLBufferAllocationParams) unsaf
 // UnsafeGLBufferAllocationParamsToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeGLBufferAllocationParamsToGlibFull(g *GLBufferAllocationParams) unsafe.Pointer {
-	runtime.SetFinalizer(g.glBufferAllocationParams, nil)
+	runtime.SetFinalizer(g.gLBufferAllocationParams, nil)
 	_p := unsafe.Pointer(g.native)
 	g.native = nil // GLBufferAllocationParams is invalid from here on
 	return _p
@@ -15178,17 +15269,17 @@ func NewGLBufferAllocationParams(_context GLContext, allocSize uint, allocParams
 // 
 // GLBufferAllocatorClass is the type struct for [GLBufferAllocator]
 type GLBufferAllocatorClass struct {
-	*glBufferAllocatorClass
+	*gLBufferAllocatorClass
 }
 
-// glBufferAllocatorClass is the struct that's finalized
-type glBufferAllocatorClass struct {
+// gLBufferAllocatorClass is the struct that's finalized
+type gLBufferAllocatorClass struct {
 	native *C.GstGLBufferAllocatorClass
 }
 
 // UnsafeGLBufferAllocatorClassFromGlibBorrow is used to convert raw C.GstGLBufferAllocatorClass pointers to go. This is used by the bindings internally.
 func UnsafeGLBufferAllocatorClassFromGlibBorrow(p unsafe.Pointer) *GLBufferAllocatorClass {
-	return &GLBufferAllocatorClass{&glBufferAllocatorClass{(*C.GstGLBufferAllocatorClass)(p)}}
+	return &GLBufferAllocatorClass{&gLBufferAllocatorClass{(*C.GstGLBufferAllocatorClass)(p)}}
 }
 
 // UnsafeGLBufferAllocatorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
@@ -15218,17 +15309,17 @@ func (g *GLBufferAllocatorClass) ParentClass() *GLBaseMemoryAllocatorClass {
 // 
 // GLBufferPoolClass is the type struct for [GLBufferPool]
 type GLBufferPoolClass struct {
-	*glBufferPoolClass
+	*gLBufferPoolClass
 }
 
-// glBufferPoolClass is the struct that's finalized
-type glBufferPoolClass struct {
+// gLBufferPoolClass is the struct that's finalized
+type gLBufferPoolClass struct {
 	native *C.GstGLBufferPoolClass
 }
 
 // UnsafeGLBufferPoolClassFromGlibBorrow is used to convert raw C.GstGLBufferPoolClass pointers to go. This is used by the bindings internally.
 func UnsafeGLBufferPoolClassFromGlibBorrow(p unsafe.Pointer) *GLBufferPoolClass {
-	return &GLBufferPoolClass{&glBufferPoolClass{(*C.GstGLBufferPoolClass)(p)}}
+	return &GLBufferPoolClass{&gLBufferPoolClass{(*C.GstGLBufferPoolClass)(p)}}
 }
 
 // UnsafeGLBufferPoolClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
@@ -15258,17 +15349,17 @@ func (g *GLBufferPoolClass) ParentClass() *gst.BufferPoolClass {
 // 
 // GLColorConvertClass is the type struct for [GLColorConvert]
 type GLColorConvertClass struct {
-	*glColorConvertClass
+	*gLColorConvertClass
 }
 
-// glColorConvertClass is the struct that's finalized
-type glColorConvertClass struct {
+// gLColorConvertClass is the struct that's finalized
+type gLColorConvertClass struct {
 	native *C.GstGLColorConvertClass
 }
 
 // UnsafeGLColorConvertClassFromGlibBorrow is used to convert raw C.GstGLColorConvertClass pointers to go. This is used by the bindings internally.
 func UnsafeGLColorConvertClassFromGlibBorrow(p unsafe.Pointer) *GLColorConvertClass {
-	return &GLColorConvertClass{&glColorConvertClass{(*C.GstGLColorConvertClass)(p)}}
+	return &GLColorConvertClass{&gLColorConvertClass{(*C.GstGLColorConvertClass)(p)}}
 }
 
 // UnsafeGLColorConvertClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
@@ -15296,17 +15387,17 @@ func (g *GLColorConvertClass) ParentClass() *gst.ObjectClass {
 // 
 // GLContextClass is the type struct for [GLContext]
 type GLContextClass struct {
-	*glContextClass
+	*gLContextClass
 }
 
-// glContextClass is the struct that's finalized
-type glContextClass struct {
+// gLContextClass is the struct that's finalized
+type gLContextClass struct {
 	native *C.GstGLContextClass
 }
 
 // UnsafeGLContextClassFromGlibBorrow is used to convert raw C.GstGLContextClass pointers to go. This is used by the bindings internally.
 func UnsafeGLContextClassFromGlibBorrow(p unsafe.Pointer) *GLContextClass {
-	return &GLContextClass{&glContextClass{(*C.GstGLContextClass)(p)}}
+	return &GLContextClass{&gLContextClass{(*C.GstGLContextClass)(p)}}
 }
 
 // UnsafeGLContextClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
@@ -15334,17 +15425,17 @@ func (g *GLContextClass) ParentClass() *gst.ObjectClass {
 // 
 // GLDisplayClass is the type struct for [GLDisplay]
 type GLDisplayClass struct {
-	*glDisplayClass
+	*gLDisplayClass
 }
 
-// glDisplayClass is the struct that's finalized
-type glDisplayClass struct {
+// gLDisplayClass is the struct that's finalized
+type gLDisplayClass struct {
 	native *C.GstGLDisplayClass
 }
 
 // UnsafeGLDisplayClassFromGlibBorrow is used to convert raw C.GstGLDisplayClass pointers to go. This is used by the bindings internally.
 func UnsafeGLDisplayClassFromGlibBorrow(p unsafe.Pointer) *GLDisplayClass {
-	return &GLDisplayClass{&glDisplayClass{(*C.GstGLDisplayClass)(p)}}
+	return &GLDisplayClass{&gLDisplayClass{(*C.GstGLDisplayClass)(p)}}
 }
 
 // UnsafeGLDisplayClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
@@ -15372,17 +15463,17 @@ func (g *GLDisplayClass) ParentClass() *gst.ObjectClass {
 // 
 // GLFilterClass is the type struct for [GLFilter]
 type GLFilterClass struct {
-	*glFilterClass
+	*gLFilterClass
 }
 
-// glFilterClass is the struct that's finalized
-type glFilterClass struct {
+// gLFilterClass is the struct that's finalized
+type gLFilterClass struct {
 	native *C.GstGLFilterClass
 }
 
 // UnsafeGLFilterClassFromGlibBorrow is used to convert raw C.GstGLFilterClass pointers to go. This is used by the bindings internally.
 func UnsafeGLFilterClassFromGlibBorrow(p unsafe.Pointer) *GLFilterClass {
-	return &GLFilterClass{&glFilterClass{(*C.GstGLFilterClass)(p)}}
+	return &GLFilterClass{&gLFilterClass{(*C.GstGLFilterClass)(p)}}
 }
 
 // UnsafeGLFilterClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
@@ -15412,17 +15503,17 @@ func (g *GLFilterClass) ParentClass() *GLBaseFilterClass {
 // 
 // GLFramebufferClass is the type struct for [GLFramebuffer]
 type GLFramebufferClass struct {
-	*glFramebufferClass
+	*gLFramebufferClass
 }
 
-// glFramebufferClass is the struct that's finalized
-type glFramebufferClass struct {
+// gLFramebufferClass is the struct that's finalized
+type gLFramebufferClass struct {
 	native *C.GstGLFramebufferClass
 }
 
 // UnsafeGLFramebufferClassFromGlibBorrow is used to convert raw C.GstGLFramebufferClass pointers to go. This is used by the bindings internally.
 func UnsafeGLFramebufferClassFromGlibBorrow(p unsafe.Pointer) *GLFramebufferClass {
-	return &GLFramebufferClass{&glFramebufferClass{(*C.GstGLFramebufferClass)(p)}}
+	return &GLFramebufferClass{&gLFramebufferClass{(*C.GstGLFramebufferClass)(p)}}
 }
 
 // UnsafeGLFramebufferClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
@@ -15453,17 +15544,17 @@ func (g *GLFramebufferClass) ParentClass() *gst.ObjectClass {
 // Each field is named exactly the same as the OpenGL function without the
 // `gl` prefix.
 type GLFuncs struct {
-	*glFuncs
+	*gLFuncs
 }
 
-// glFuncs is the struct that's finalized
-type glFuncs struct {
+// gLFuncs is the struct that's finalized
+type gLFuncs struct {
 	native *C.GstGLFuncs
 }
 
 // UnsafeGLFuncsFromGlibBorrow is used to convert raw C.GstGLFuncs pointers to go. This is used by the bindings internally.
 func UnsafeGLFuncsFromGlibBorrow(p unsafe.Pointer) *GLFuncs {
-	return &GLFuncs{&glFuncs{(*C.GstGLFuncs)(p)}}
+	return &GLFuncs{&gLFuncs{(*C.GstGLFuncs)(p)}}
 }
 
 // UnsafeGLFuncsFromGlibNone is used to convert raw C.GstGLFuncs pointers to go without transferring ownership. This is used by the bindings internally.
@@ -15471,8 +15562,8 @@ func UnsafeGLFuncsFromGlibNone(p unsafe.Pointer) *GLFuncs {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLFuncsFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.glFuncs,
-		func (intern *glFuncs) {
+		wrapped.gLFuncs,
+		func (intern *gLFuncs) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -15483,8 +15574,8 @@ func UnsafeGLFuncsFromGlibNone(p unsafe.Pointer) *GLFuncs {
 func UnsafeGLFuncsFromGlibFull(p unsafe.Pointer) *GLFuncs {
 	wrapped := UnsafeGLFuncsFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.glFuncs,
-		func (intern *glFuncs) {
+		wrapped.gLFuncs,
+		func (intern *gLFuncs) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -15506,7 +15597,7 @@ func UnsafeGLFuncsToGlibNone(g *GLFuncs) unsafe.Pointer {
 // UnsafeGLFuncsToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeGLFuncsToGlibFull(g *GLFuncs) unsafe.Pointer {
-	runtime.SetFinalizer(g.glFuncs, nil)
+	runtime.SetFinalizer(g.gLFuncs, nil)
 	_p := unsafe.Pointer(g.native)
 	g.native = nil // GLFuncs is invalid from here on
 	return _p
@@ -15528,11 +15619,11 @@ func UnsafeGLFuncsToGlibFull(g *GLFuncs) unsafe.Pointer {
 // as a string, i.e. some combination of 'texture-target=(string){2D,
 // rectangle, external-oes}'.
 type GLMemory struct {
-	*glMemory
+	*gLMemory
 }
 
-// glMemory is the struct that's finalized
-type glMemory struct {
+// gLMemory is the struct that's finalized
+type gLMemory struct {
 	native *C.GstGLMemory
 }
 
@@ -15553,7 +15644,7 @@ func (r *GLMemory) SetGoValue(v *gobject.Value) {
 
 // UnsafeGLMemoryFromGlibBorrow is used to convert raw C.GstGLMemory pointers to go. This is used by the bindings internally.
 func UnsafeGLMemoryFromGlibBorrow(p unsafe.Pointer) *GLMemory {
-	return &GLMemory{&glMemory{(*C.GstGLMemory)(p)}}
+	return &GLMemory{&gLMemory{(*C.GstGLMemory)(p)}}
 }
 
 // UnsafeGLMemoryFromGlibNone is used to convert raw C.GstGLMemory pointers to go without transferring ownership. This is used by the bindings internally.
@@ -15561,8 +15652,8 @@ func UnsafeGLMemoryFromGlibNone(p unsafe.Pointer) *GLMemory {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLMemoryFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.glMemory,
-		func (intern *glMemory) {
+		wrapped.gLMemory,
+		func (intern *gLMemory) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -15573,8 +15664,8 @@ func UnsafeGLMemoryFromGlibNone(p unsafe.Pointer) *GLMemory {
 func UnsafeGLMemoryFromGlibFull(p unsafe.Pointer) *GLMemory {
 	wrapped := UnsafeGLMemoryFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.glMemory,
-		func (intern *glMemory) {
+		wrapped.gLMemory,
+		func (intern *gLMemory) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -15596,7 +15687,7 @@ func UnsafeGLMemoryToGlibNone(g *GLMemory) unsafe.Pointer {
 // UnsafeGLMemoryToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeGLMemoryToGlibFull(g *GLMemory) unsafe.Pointer {
-	runtime.SetFinalizer(g.glMemory, nil)
+	runtime.SetFinalizer(g.gLMemory, nil)
 	_p := unsafe.Pointer(g.native)
 	g.native = nil // GLMemory is invalid from here on
 	return _p
@@ -15818,17 +15909,17 @@ func (glMem *GLMemory) GetTextureWidth() int32 {
 // 
 // GLMemoryAllocatorClass is the type struct for [GLMemoryAllocator]
 type GLMemoryAllocatorClass struct {
-	*glMemoryAllocatorClass
+	*gLMemoryAllocatorClass
 }
 
-// glMemoryAllocatorClass is the struct that's finalized
-type glMemoryAllocatorClass struct {
+// gLMemoryAllocatorClass is the struct that's finalized
+type gLMemoryAllocatorClass struct {
 	native *C.GstGLMemoryAllocatorClass
 }
 
 // UnsafeGLMemoryAllocatorClassFromGlibBorrow is used to convert raw C.GstGLMemoryAllocatorClass pointers to go. This is used by the bindings internally.
 func UnsafeGLMemoryAllocatorClassFromGlibBorrow(p unsafe.Pointer) *GLMemoryAllocatorClass {
-	return &GLMemoryAllocatorClass{&glMemoryAllocatorClass{(*C.GstGLMemoryAllocatorClass)(p)}}
+	return &GLMemoryAllocatorClass{&gLMemoryAllocatorClass{(*C.GstGLMemoryAllocatorClass)(p)}}
 }
 
 // UnsafeGLMemoryAllocatorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
@@ -15859,11 +15950,11 @@ func (g *GLMemoryAllocatorClass) ParentClass() *GLBaseMemoryAllocatorClass {
 // 
 // Data is uploaded or downloaded from the GPU as is necessary.
 type GLMemoryPBO struct {
-	*glMemoryPBO
+	*gLMemoryPBO
 }
 
-// glMemoryPBO is the struct that's finalized
-type glMemoryPBO struct {
+// gLMemoryPBO is the struct that's finalized
+type gLMemoryPBO struct {
 	native *C.GstGLMemoryPBO
 }
 
@@ -15884,7 +15975,7 @@ func (r *GLMemoryPBO) SetGoValue(v *gobject.Value) {
 
 // UnsafeGLMemoryPBOFromGlibBorrow is used to convert raw C.GstGLMemoryPBO pointers to go. This is used by the bindings internally.
 func UnsafeGLMemoryPBOFromGlibBorrow(p unsafe.Pointer) *GLMemoryPBO {
-	return &GLMemoryPBO{&glMemoryPBO{(*C.GstGLMemoryPBO)(p)}}
+	return &GLMemoryPBO{&gLMemoryPBO{(*C.GstGLMemoryPBO)(p)}}
 }
 
 // UnsafeGLMemoryPBOFromGlibNone is used to convert raw C.GstGLMemoryPBO pointers to go without transferring ownership. This is used by the bindings internally.
@@ -15892,8 +15983,8 @@ func UnsafeGLMemoryPBOFromGlibNone(p unsafe.Pointer) *GLMemoryPBO {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLMemoryPBOFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.glMemoryPBO,
-		func (intern *glMemoryPBO) {
+		wrapped.gLMemoryPBO,
+		func (intern *gLMemoryPBO) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -15904,8 +15995,8 @@ func UnsafeGLMemoryPBOFromGlibNone(p unsafe.Pointer) *GLMemoryPBO {
 func UnsafeGLMemoryPBOFromGlibFull(p unsafe.Pointer) *GLMemoryPBO {
 	wrapped := UnsafeGLMemoryPBOFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.glMemoryPBO,
-		func (intern *glMemoryPBO) {
+		wrapped.gLMemoryPBO,
+		func (intern *gLMemoryPBO) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -15927,7 +16018,7 @@ func UnsafeGLMemoryPBOToGlibNone(g *GLMemoryPBO) unsafe.Pointer {
 // UnsafeGLMemoryPBOToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeGLMemoryPBOToGlibFull(g *GLMemoryPBO) unsafe.Pointer {
-	runtime.SetFinalizer(g.glMemoryPBO, nil)
+	runtime.SetFinalizer(g.gLMemoryPBO, nil)
 	_p := unsafe.Pointer(g.native)
 	g.native = nil // GLMemoryPBO is invalid from here on
 	return _p
@@ -16039,17 +16130,17 @@ func (glMem *GLMemoryPBO) UploadTransfer() {
 // 
 // GLMemoryPBOAllocatorClass is the type struct for [GLMemoryPBOAllocator]
 type GLMemoryPBOAllocatorClass struct {
-	*glMemoryPBOAllocatorClass
+	*gLMemoryPBOAllocatorClass
 }
 
-// glMemoryPBOAllocatorClass is the struct that's finalized
-type glMemoryPBOAllocatorClass struct {
+// gLMemoryPBOAllocatorClass is the struct that's finalized
+type gLMemoryPBOAllocatorClass struct {
 	native *C.GstGLMemoryPBOAllocatorClass
 }
 
 // UnsafeGLMemoryPBOAllocatorClassFromGlibBorrow is used to convert raw C.GstGLMemoryPBOAllocatorClass pointers to go. This is used by the bindings internally.
 func UnsafeGLMemoryPBOAllocatorClassFromGlibBorrow(p unsafe.Pointer) *GLMemoryPBOAllocatorClass {
-	return &GLMemoryPBOAllocatorClass{&glMemoryPBOAllocatorClass{(*C.GstGLMemoryPBOAllocatorClass)(p)}}
+	return &GLMemoryPBOAllocatorClass{&gLMemoryPBOAllocatorClass{(*C.GstGLMemoryPBOAllocatorClass)(p)}}
 }
 
 // UnsafeGLMemoryPBOAllocatorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
@@ -16077,17 +16168,17 @@ func (g *GLMemoryPBOAllocatorClass) ParentClass() *GLMemoryAllocatorClass {
 // 
 // GLMixerClass is the type struct for [GLMixer]
 type GLMixerClass struct {
-	*glMixerClass
+	*gLMixerClass
 }
 
-// glMixerClass is the struct that's finalized
-type glMixerClass struct {
+// gLMixerClass is the struct that's finalized
+type gLMixerClass struct {
 	native *C.GstGLMixerClass
 }
 
 // UnsafeGLMixerClassFromGlibBorrow is used to convert raw C.GstGLMixerClass pointers to go. This is used by the bindings internally.
 func UnsafeGLMixerClassFromGlibBorrow(p unsafe.Pointer) *GLMixerClass {
-	return &GLMixerClass{&glMixerClass{(*C.GstGLMixerClass)(p)}}
+	return &GLMixerClass{&gLMixerClass{(*C.GstGLMixerClass)(p)}}
 }
 
 // UnsafeGLMixerClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
@@ -16111,13 +16202,13 @@ func (g *GLMixerClass) ParentClass() *GLBaseMixerClass {
 	return parent
 }
 
-// AddRGBAPadTemplates wraps gst_gl_mixer_class_add_rgba_pad_templates
+// AddRgbaPadTemplates wraps gst_gl_mixer_class_add_rgba_pad_templates
 //
 // Adds the default RGBA pad templates to this class.  If you have any special
 // template requirements like a different pad subclass or different supported
 // caps, you should not call this function and add the pad templates yourself
 // manually.
-func (klass *GLMixerClass) AddRGBAPadTemplates() {
+func (klass *GLMixerClass) AddRgbaPadTemplates() {
 	var carg0 *C.GstGLMixerClass // in, none, converted
 
 	carg0 = (*C.GstGLMixerClass)(UnsafeGLMixerClassToGlibNone(klass))
@@ -16130,17 +16221,17 @@ func (klass *GLMixerClass) AddRGBAPadTemplates() {
 // 
 // GLMixerPadClass is the type struct for [GLMixerPad]
 type GLMixerPadClass struct {
-	*glMixerPadClass
+	*gLMixerPadClass
 }
 
-// glMixerPadClass is the struct that's finalized
-type glMixerPadClass struct {
+// gLMixerPadClass is the struct that's finalized
+type gLMixerPadClass struct {
 	native *C.GstGLMixerPadClass
 }
 
 // UnsafeGLMixerPadClassFromGlibBorrow is used to convert raw C.GstGLMixerPadClass pointers to go. This is used by the bindings internally.
 func UnsafeGLMixerPadClassFromGlibBorrow(p unsafe.Pointer) *GLMixerPadClass {
-	return &GLMixerPadClass{&glMixerPadClass{(*C.GstGLMixerPadClass)(p)}}
+	return &GLMixerPadClass{&gLMixerPadClass{(*C.GstGLMixerPadClass)(p)}}
 }
 
 // UnsafeGLMixerPadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
@@ -16168,17 +16259,17 @@ func (g *GLMixerPadClass) ParentClass() *GLBaseMixerPadClass {
 // 
 // GLOverlayCompositorClass is the type struct for [GLOverlayCompositor]
 type GLOverlayCompositorClass struct {
-	*glOverlayCompositorClass
+	*gLOverlayCompositorClass
 }
 
-// glOverlayCompositorClass is the struct that's finalized
-type glOverlayCompositorClass struct {
+// gLOverlayCompositorClass is the struct that's finalized
+type gLOverlayCompositorClass struct {
 	native *C.GstGLOverlayCompositorClass
 }
 
 // UnsafeGLOverlayCompositorClassFromGlibBorrow is used to convert raw C.GstGLOverlayCompositorClass pointers to go. This is used by the bindings internally.
 func UnsafeGLOverlayCompositorClassFromGlibBorrow(p unsafe.Pointer) *GLOverlayCompositorClass {
-	return &GLOverlayCompositorClass{&glOverlayCompositorClass{(*C.GstGLOverlayCompositorClass)(p)}}
+	return &GLOverlayCompositorClass{&gLOverlayCompositorClass{(*C.GstGLOverlayCompositorClass)(p)}}
 }
 
 // UnsafeGLOverlayCompositorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
@@ -16207,17 +16298,17 @@ func (g *GLOverlayCompositorClass) ParentClass() *gst.ObjectClass {
 // A #GstGLQuery represents and holds an OpenGL query object.  Various types of
 // queries can be run or counters retrieved.
 type GLQuery struct {
-	*glQuery
+	*gLQuery
 }
 
-// glQuery is the struct that's finalized
-type glQuery struct {
+// gLQuery is the struct that's finalized
+type gLQuery struct {
 	native *C.GstGLQuery
 }
 
 // UnsafeGLQueryFromGlibBorrow is used to convert raw C.GstGLQuery pointers to go. This is used by the bindings internally.
 func UnsafeGLQueryFromGlibBorrow(p unsafe.Pointer) *GLQuery {
-	return &GLQuery{&glQuery{(*C.GstGLQuery)(p)}}
+	return &GLQuery{&gLQuery{(*C.GstGLQuery)(p)}}
 }
 
 // UnsafeGLQueryFromGlibNone is used to convert raw C.GstGLQuery pointers to go without transferring ownership. This is used by the bindings internally.
@@ -16225,8 +16316,8 @@ func UnsafeGLQueryFromGlibNone(p unsafe.Pointer) *GLQuery {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLQueryFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.glQuery,
-		func (intern *glQuery) {
+		wrapped.gLQuery,
+		func (intern *gLQuery) {
 			C.gst_gl_query_free(intern.native)
 		},
 	)
@@ -16237,8 +16328,8 @@ func UnsafeGLQueryFromGlibNone(p unsafe.Pointer) *GLQuery {
 func UnsafeGLQueryFromGlibFull(p unsafe.Pointer) *GLQuery {
 	wrapped := UnsafeGLQueryFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.glQuery,
-		func (intern *glQuery) {
+		wrapped.gLQuery,
+		func (intern *gLQuery) {
 			C.gst_gl_query_free(intern.native)
 		},
 	)
@@ -16260,7 +16351,7 @@ func UnsafeGLQueryToGlibNone(g *GLQuery) unsafe.Pointer {
 // UnsafeGLQueryToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeGLQueryToGlibFull(g *GLQuery) unsafe.Pointer {
-	runtime.SetFinalizer(g.glQuery, nil)
+	runtime.SetFinalizer(g.gLQuery, nil)
 	_p := unsafe.Pointer(g.native)
 	g.native = nil // GLQuery is invalid from here on
 	return _p
@@ -16364,11 +16455,11 @@ func (query *GLQuery) Unset() {
 // #GstGLRenderbuffer is created or wrapped through gst_gl_base_memory_alloc()
 // with #GstGLRenderbufferAllocationParams.
 type GLRenderbuffer struct {
-	*glRenderbuffer
+	*gLRenderbuffer
 }
 
-// glRenderbuffer is the struct that's finalized
-type glRenderbuffer struct {
+// gLRenderbuffer is the struct that's finalized
+type gLRenderbuffer struct {
 	native *C.GstGLRenderbuffer
 }
 
@@ -16389,7 +16480,7 @@ func (r *GLRenderbuffer) SetGoValue(v *gobject.Value) {
 
 // UnsafeGLRenderbufferFromGlibBorrow is used to convert raw C.GstGLRenderbuffer pointers to go. This is used by the bindings internally.
 func UnsafeGLRenderbufferFromGlibBorrow(p unsafe.Pointer) *GLRenderbuffer {
-	return &GLRenderbuffer{&glRenderbuffer{(*C.GstGLRenderbuffer)(p)}}
+	return &GLRenderbuffer{&gLRenderbuffer{(*C.GstGLRenderbuffer)(p)}}
 }
 
 // UnsafeGLRenderbufferFromGlibNone is used to convert raw C.GstGLRenderbuffer pointers to go without transferring ownership. This is used by the bindings internally.
@@ -16397,8 +16488,8 @@ func UnsafeGLRenderbufferFromGlibNone(p unsafe.Pointer) *GLRenderbuffer {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLRenderbufferFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.glRenderbuffer,
-		func (intern *glRenderbuffer) {
+		wrapped.gLRenderbuffer,
+		func (intern *gLRenderbuffer) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -16409,8 +16500,8 @@ func UnsafeGLRenderbufferFromGlibNone(p unsafe.Pointer) *GLRenderbuffer {
 func UnsafeGLRenderbufferFromGlibFull(p unsafe.Pointer) *GLRenderbuffer {
 	wrapped := UnsafeGLRenderbufferFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.glRenderbuffer,
-		func (intern *glRenderbuffer) {
+		wrapped.gLRenderbuffer,
+		func (intern *gLRenderbuffer) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -16432,7 +16523,7 @@ func UnsafeGLRenderbufferToGlibNone(g *GLRenderbuffer) unsafe.Pointer {
 // UnsafeGLRenderbufferToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeGLRenderbufferToGlibFull(g *GLRenderbuffer) unsafe.Pointer {
-	runtime.SetFinalizer(g.glRenderbuffer, nil)
+	runtime.SetFinalizer(g.gLRenderbuffer, nil)
 	_p := unsafe.Pointer(g.native)
 	g.native = nil // GLRenderbuffer is invalid from here on
 	return _p
@@ -16535,11 +16626,11 @@ func (glMem *GLRenderbuffer) GetWidth() int32 {
 //
 // Allocation parameters
 type GLRenderbufferAllocationParams struct {
-	*glRenderbufferAllocationParams
+	*gLRenderbufferAllocationParams
 }
 
-// glRenderbufferAllocationParams is the struct that's finalized
-type glRenderbufferAllocationParams struct {
+// gLRenderbufferAllocationParams is the struct that's finalized
+type gLRenderbufferAllocationParams struct {
 	native *C.GstGLRenderbufferAllocationParams
 }
 
@@ -16560,7 +16651,7 @@ func (r *GLRenderbufferAllocationParams) SetGoValue(v *gobject.Value) {
 
 // UnsafeGLRenderbufferAllocationParamsFromGlibBorrow is used to convert raw C.GstGLRenderbufferAllocationParams pointers to go. This is used by the bindings internally.
 func UnsafeGLRenderbufferAllocationParamsFromGlibBorrow(p unsafe.Pointer) *GLRenderbufferAllocationParams {
-	return &GLRenderbufferAllocationParams{&glRenderbufferAllocationParams{(*C.GstGLRenderbufferAllocationParams)(p)}}
+	return &GLRenderbufferAllocationParams{&gLRenderbufferAllocationParams{(*C.GstGLRenderbufferAllocationParams)(p)}}
 }
 
 // UnsafeGLRenderbufferAllocationParamsFromGlibNone is used to convert raw C.GstGLRenderbufferAllocationParams pointers to go without transferring ownership. This is used by the bindings internally.
@@ -16568,8 +16659,8 @@ func UnsafeGLRenderbufferAllocationParamsFromGlibNone(p unsafe.Pointer) *GLRende
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLRenderbufferAllocationParamsFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.glRenderbufferAllocationParams,
-		func (intern *glRenderbufferAllocationParams) {
+		wrapped.gLRenderbufferAllocationParams,
+		func (intern *gLRenderbufferAllocationParams) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -16580,8 +16671,8 @@ func UnsafeGLRenderbufferAllocationParamsFromGlibNone(p unsafe.Pointer) *GLRende
 func UnsafeGLRenderbufferAllocationParamsFromGlibFull(p unsafe.Pointer) *GLRenderbufferAllocationParams {
 	wrapped := UnsafeGLRenderbufferAllocationParamsFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.glRenderbufferAllocationParams,
-		func (intern *glRenderbufferAllocationParams) {
+		wrapped.gLRenderbufferAllocationParams,
+		func (intern *gLRenderbufferAllocationParams) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -16603,7 +16694,7 @@ func UnsafeGLRenderbufferAllocationParamsToGlibNone(g *GLRenderbufferAllocationP
 // UnsafeGLRenderbufferAllocationParamsToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeGLRenderbufferAllocationParamsToGlibFull(g *GLRenderbufferAllocationParams) unsafe.Pointer {
-	runtime.SetFinalizer(g.glRenderbufferAllocationParams, nil)
+	runtime.SetFinalizer(g.gLRenderbufferAllocationParams, nil)
 	_p := unsafe.Pointer(g.native)
 	g.native = nil // GLRenderbufferAllocationParams is invalid from here on
 	return _p
@@ -16658,17 +16749,17 @@ func NewGLRenderbufferAllocationParams(_context GLContext, allocParams *gst.Allo
 // 
 // GLRenderbufferAllocatorClass is the type struct for [GLRenderbufferAllocator]
 type GLRenderbufferAllocatorClass struct {
-	*glRenderbufferAllocatorClass
+	*gLRenderbufferAllocatorClass
 }
 
-// glRenderbufferAllocatorClass is the struct that's finalized
-type glRenderbufferAllocatorClass struct {
+// gLRenderbufferAllocatorClass is the struct that's finalized
+type gLRenderbufferAllocatorClass struct {
 	native *C.GstGLRenderbufferAllocatorClass
 }
 
 // UnsafeGLRenderbufferAllocatorClassFromGlibBorrow is used to convert raw C.GstGLRenderbufferAllocatorClass pointers to go. This is used by the bindings internally.
 func UnsafeGLRenderbufferAllocatorClassFromGlibBorrow(p unsafe.Pointer) *GLRenderbufferAllocatorClass {
-	return &GLRenderbufferAllocatorClass{&glRenderbufferAllocatorClass{(*C.GstGLRenderbufferAllocatorClass)(p)}}
+	return &GLRenderbufferAllocatorClass{&gLRenderbufferAllocatorClass{(*C.GstGLRenderbufferAllocatorClass)(p)}}
 }
 
 // UnsafeGLRenderbufferAllocatorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
@@ -16698,17 +16789,17 @@ func (g *GLRenderbufferAllocatorClass) ParentClass() *GLBaseMemoryAllocatorClass
 // 
 // GLSLStageClass is the type struct for [GLSLStage]
 type GLSLStageClass struct {
-	*glslStageClass
+	*gLSLStageClass
 }
 
-// glslStageClass is the struct that's finalized
-type glslStageClass struct {
+// gLSLStageClass is the struct that's finalized
+type gLSLStageClass struct {
 	native *C.GstGLSLStageClass
 }
 
 // UnsafeGLSLStageClassFromGlibBorrow is used to convert raw C.GstGLSLStageClass pointers to go. This is used by the bindings internally.
 func UnsafeGLSLStageClassFromGlibBorrow(p unsafe.Pointer) *GLSLStageClass {
-	return &GLSLStageClass{&glslStageClass{(*C.GstGLSLStageClass)(p)}}
+	return &GLSLStageClass{&gLSLStageClass{(*C.GstGLSLStageClass)(p)}}
 }
 
 // UnsafeGLSLStageClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
@@ -16736,17 +16827,17 @@ func (g *GLSLStageClass) ParentClass() *gst.ObjectClass {
 // 
 // GLShaderClass is the type struct for [GLShader]
 type GLShaderClass struct {
-	*glShaderClass
+	*gLShaderClass
 }
 
-// glShaderClass is the struct that's finalized
-type glShaderClass struct {
+// gLShaderClass is the struct that's finalized
+type gLShaderClass struct {
 	native *C.GstGLShaderClass
 }
 
 // UnsafeGLShaderClassFromGlibBorrow is used to convert raw C.GstGLShaderClass pointers to go. This is used by the bindings internally.
 func UnsafeGLShaderClassFromGlibBorrow(p unsafe.Pointer) *GLShaderClass {
-	return &GLShaderClass{&glShaderClass{(*C.GstGLShaderClass)(p)}}
+	return &GLShaderClass{&gLShaderClass{(*C.GstGLShaderClass)(p)}}
 }
 
 // UnsafeGLShaderClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
@@ -16775,17 +16866,17 @@ func (g *GLShaderClass) ParentClass() *gst.ObjectClass {
 // #GstGLSyncMeta provides the ability to synchronize the OpenGL command stream
 // with the CPU or with other OpenGL contexts.
 type GLSyncMeta struct {
-	*glSyncMeta
+	*gLSyncMeta
 }
 
-// glSyncMeta is the struct that's finalized
-type glSyncMeta struct {
+// gLSyncMeta is the struct that's finalized
+type gLSyncMeta struct {
 	native *C.GstGLSyncMeta
 }
 
 // UnsafeGLSyncMetaFromGlibBorrow is used to convert raw C.GstGLSyncMeta pointers to go. This is used by the bindings internally.
 func UnsafeGLSyncMetaFromGlibBorrow(p unsafe.Pointer) *GLSyncMeta {
-	return &GLSyncMeta{&glSyncMeta{(*C.GstGLSyncMeta)(p)}}
+	return &GLSyncMeta{&gLSyncMeta{(*C.GstGLSyncMeta)(p)}}
 }
 
 // UnsafeGLSyncMetaFromGlibNone is used to convert raw C.GstGLSyncMeta pointers to go without transferring ownership. This is used by the bindings internally.
@@ -16793,8 +16884,8 @@ func UnsafeGLSyncMetaFromGlibNone(p unsafe.Pointer) *GLSyncMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLSyncMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.glSyncMeta,
-		func (intern *glSyncMeta) {
+		wrapped.gLSyncMeta,
+		func (intern *gLSyncMeta) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -16805,8 +16896,8 @@ func UnsafeGLSyncMetaFromGlibNone(p unsafe.Pointer) *GLSyncMeta {
 func UnsafeGLSyncMetaFromGlibFull(p unsafe.Pointer) *GLSyncMeta {
 	wrapped := UnsafeGLSyncMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.glSyncMeta,
-		func (intern *glSyncMeta) {
+		wrapped.gLSyncMeta,
+		func (intern *gLSyncMeta) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -16828,7 +16919,7 @@ func UnsafeGLSyncMetaToGlibNone(g *GLSyncMeta) unsafe.Pointer {
 // UnsafeGLSyncMetaToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeGLSyncMetaToGlibFull(g *GLSyncMeta) unsafe.Pointer {
-	runtime.SetFinalizer(g.glSyncMeta, nil)
+	runtime.SetFinalizer(g.gLSyncMeta, nil)
 	_p := unsafe.Pointer(g.native)
 	g.native = nil // GLSyncMeta is invalid from here on
 	return _p
@@ -16917,17 +17008,17 @@ func (syncMeta *GLSyncMeta) WaitCpu(_context GLContext) {
 // 
 // GLUploadClass is the type struct for [GLUpload]
 type GLUploadClass struct {
-	*glUploadClass
+	*gLUploadClass
 }
 
-// glUploadClass is the struct that's finalized
-type glUploadClass struct {
+// gLUploadClass is the struct that's finalized
+type gLUploadClass struct {
 	native *C.GstGLUploadClass
 }
 
 // UnsafeGLUploadClassFromGlibBorrow is used to convert raw C.GstGLUploadClass pointers to go. This is used by the bindings internally.
 func UnsafeGLUploadClassFromGlibBorrow(p unsafe.Pointer) *GLUploadClass {
-	return &GLUploadClass{&glUploadClass{(*C.GstGLUploadClass)(p)}}
+	return &GLUploadClass{&gLUploadClass{(*C.GstGLUploadClass)(p)}}
 }
 
 // UnsafeGLUploadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
@@ -16953,11 +17044,11 @@ func (g *GLUploadClass) ParentClass() *gst.ObjectClass {
 
 // GLVideoAllocationParams wraps GstGLVideoAllocationParams
 type GLVideoAllocationParams struct {
-	*glVideoAllocationParams
+	*gLVideoAllocationParams
 }
 
-// glVideoAllocationParams is the struct that's finalized
-type glVideoAllocationParams struct {
+// gLVideoAllocationParams is the struct that's finalized
+type gLVideoAllocationParams struct {
 	native *C.GstGLVideoAllocationParams
 }
 
@@ -16978,7 +17069,7 @@ func (r *GLVideoAllocationParams) SetGoValue(v *gobject.Value) {
 
 // UnsafeGLVideoAllocationParamsFromGlibBorrow is used to convert raw C.GstGLVideoAllocationParams pointers to go. This is used by the bindings internally.
 func UnsafeGLVideoAllocationParamsFromGlibBorrow(p unsafe.Pointer) *GLVideoAllocationParams {
-	return &GLVideoAllocationParams{&glVideoAllocationParams{(*C.GstGLVideoAllocationParams)(p)}}
+	return &GLVideoAllocationParams{&gLVideoAllocationParams{(*C.GstGLVideoAllocationParams)(p)}}
 }
 
 // UnsafeGLVideoAllocationParamsFromGlibNone is used to convert raw C.GstGLVideoAllocationParams pointers to go without transferring ownership. This is used by the bindings internally.
@@ -16986,8 +17077,8 @@ func UnsafeGLVideoAllocationParamsFromGlibNone(p unsafe.Pointer) *GLVideoAllocat
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLVideoAllocationParamsFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.glVideoAllocationParams,
-		func (intern *glVideoAllocationParams) {
+		wrapped.gLVideoAllocationParams,
+		func (intern *gLVideoAllocationParams) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -16998,8 +17089,8 @@ func UnsafeGLVideoAllocationParamsFromGlibNone(p unsafe.Pointer) *GLVideoAllocat
 func UnsafeGLVideoAllocationParamsFromGlibFull(p unsafe.Pointer) *GLVideoAllocationParams {
 	wrapped := UnsafeGLVideoAllocationParamsFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.glVideoAllocationParams,
-		func (intern *glVideoAllocationParams) {
+		wrapped.gLVideoAllocationParams,
+		func (intern *gLVideoAllocationParams) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -17021,7 +17112,7 @@ func UnsafeGLVideoAllocationParamsToGlibNone(g *GLVideoAllocationParams) unsafe.
 // UnsafeGLVideoAllocationParamsToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeGLVideoAllocationParamsToGlibFull(g *GLVideoAllocationParams) unsafe.Pointer {
-	runtime.SetFinalizer(g.glVideoAllocationParams, nil)
+	runtime.SetFinalizer(g.gLVideoAllocationParams, nil)
 	_p := unsafe.Pointer(g.native)
 	g.native = nil // GLVideoAllocationParams is invalid from here on
 	return _p
@@ -17119,17 +17210,17 @@ func (params *GLVideoAllocationParams) FreeData() {
 // 
 // GLViewConvertClass is the type struct for [GLViewConvert]
 type GLViewConvertClass struct {
-	*glViewConvertClass
+	*gLViewConvertClass
 }
 
-// glViewConvertClass is the struct that's finalized
-type glViewConvertClass struct {
+// gLViewConvertClass is the struct that's finalized
+type gLViewConvertClass struct {
 	native *C.GstGLViewConvertClass
 }
 
 // UnsafeGLViewConvertClassFromGlibBorrow is used to convert raw C.GstGLViewConvertClass pointers to go. This is used by the bindings internally.
 func UnsafeGLViewConvertClassFromGlibBorrow(p unsafe.Pointer) *GLViewConvertClass {
-	return &GLViewConvertClass{&glViewConvertClass{(*C.GstGLViewConvertClass)(p)}}
+	return &GLViewConvertClass{&gLViewConvertClass{(*C.GstGLViewConvertClass)(p)}}
 }
 
 // UnsafeGLViewConvertClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
@@ -17157,17 +17248,17 @@ func (g *GLViewConvertClass) ParentClass() *gst.ObjectClass {
 // 
 // GLWindowClass is the type struct for [GLWindow]
 type GLWindowClass struct {
-	*glWindowClass
+	*gLWindowClass
 }
 
-// glWindowClass is the struct that's finalized
-type glWindowClass struct {
+// gLWindowClass is the struct that's finalized
+type gLWindowClass struct {
 	native *C.GstGLWindowClass
 }
 
 // UnsafeGLWindowClassFromGlibBorrow is used to convert raw C.GstGLWindowClass pointers to go. This is used by the bindings internally.
 func UnsafeGLWindowClassFromGlibBorrow(p unsafe.Pointer) *GLWindowClass {
-	return &GLWindowClass{&glWindowClass{(*C.GstGLWindowClass)(p)}}
+	return &GLWindowClass{&gLWindowClass{(*C.GstGLWindowClass)(p)}}
 }
 
 // UnsafeGLWindowClassFree unrefs/frees the underlying resource. This is used by the bindings internally.

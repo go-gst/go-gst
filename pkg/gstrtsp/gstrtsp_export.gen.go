@@ -26,12 +26,12 @@ func _gotk4_gstrtsp1_RTSPConnectionAcceptCertificateFunc(carg1 *C.GTlsConnection
 
 	var conn     gio.TlsConnection       // in, none, converted
 	var peerCert gio.TlsCertificate      // in, none, converted
-	var errors   gio.TLSCertificateFlags // in, none, casted
+	var errors   gio.TlsCertificateFlags // in, none, casted
 	var goret    bool                    // return
 
 	conn = gio.UnsafeTlsConnectionFromGlibNone(unsafe.Pointer(carg1))
 	peerCert = gio.UnsafeTlsCertificateFromGlibNone(unsafe.Pointer(carg2))
-	errors = gio.TLSCertificateFlags(carg3)
+	errors = gio.TlsCertificateFlags(carg3)
 
 	goret = fn(conn, peerCert, errors)
 

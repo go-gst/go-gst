@@ -95,7 +95,7 @@ func runPipeline(pipeline gst.Pipeline) error {
 		// If the stream has ended or any element posts an error to the
 		// bus, populate error.
 		switch msg.Type() {
-		case gst.MessageEos:
+		case gst.MessageEOS:
 			err = errors.New("end-of-stream")
 		case gst.MessageError:
 			// The parsed error implements the error interface, but also

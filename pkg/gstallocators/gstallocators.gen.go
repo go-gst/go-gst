@@ -41,21 +41,21 @@ func init() {
 type FdMemoryFlags C.gint
 
 const (
-	// FdMemoryFlagNone wraps FD_MEMORY_FLAG_NONE
+	// FdMemoryFlagNone wraps GST_FD_MEMORY_FLAG_NONE
 	//
 	// no flag
 	FdMemoryFlagNone FdMemoryFlags = 0
-	// FdMemoryFlagKeepMapped wraps FD_MEMORY_FLAG_KEEP_MAPPED
+	// FdMemoryFlagKeepMapped wraps GST_FD_MEMORY_FLAG_KEEP_MAPPED
 	//
 	// once the memory is mapped,
 	//        keep it mapped until the memory is destroyed.
 	FdMemoryFlagKeepMapped FdMemoryFlags = 1
-	// FdMemoryFlagMapPrivate wraps FD_MEMORY_FLAG_MAP_PRIVATE
+	// FdMemoryFlagMapPrivate wraps GST_FD_MEMORY_FLAG_MAP_PRIVATE
 	//
 	// do a private mapping instead of
 	//        the default shared mapping.
 	FdMemoryFlagMapPrivate FdMemoryFlags = 2
-	// FdMemoryFlagDontClose wraps FD_MEMORY_FLAG_DONT_CLOSE
+	// FdMemoryFlagDontClose wraps GST_FD_MEMORY_FLAG_DONT_CLOSE
 	//
 	// don't close the file descriptor when
 	//        the memory is freed. Since: 1.10
@@ -115,7 +115,7 @@ func DmabufMemoryGetFd(mem *gst.Memory) int32 {
 	return goret
 }
 
-// DRMDumbMemoryExportDmabuf wraps gst_drm_dumb_memory_export_dmabuf
+// DrmDumbMemoryExportDmabuf wraps gst_drm_dumb_memory_export_dmabuf
 // 
 // The function takes the following parameters:
 // 
@@ -127,7 +127,7 @@ func DmabufMemoryGetFd(mem *gst.Memory) int32 {
 //
 // Exports a DMABuf from the DRM Bumb buffer object. One can check if this
 // feature is supported using gst_drm_dumb_allocator_has_prime_export();
-func DRMDumbMemoryExportDmabuf(mem *gst.Memory) *gst.Memory {
+func DrmDumbMemoryExportDmabuf(mem *gst.Memory) *gst.Memory {
 	var carg1 *C.GstMemory // in, none, converted
 	var cret  *C.GstMemory // return, full, converted
 
@@ -143,7 +143,7 @@ func DRMDumbMemoryExportDmabuf(mem *gst.Memory) *gst.Memory {
 	return goret
 }
 
-// DRMDumbMemoryGetHandle wraps gst_drm_dumb_memory_get_handle
+// DrmDumbMemoryGetHandle wraps gst_drm_dumb_memory_get_handle
 // 
 // The function takes the following parameters:
 // 
@@ -154,7 +154,7 @@ func DRMDumbMemoryExportDmabuf(mem *gst.Memory) *gst.Memory {
 // 	- goret uint32 
 //
 // Return the DRM buffer object handle associated with @mem.
-func DRMDumbMemoryGetHandle(mem *gst.Memory) uint32 {
+func DrmDumbMemoryGetHandle(mem *gst.Memory) uint32 {
 	var carg1 *C.GstMemory // in, none, converted
 	var cret  C.guint32    // return, none, casted
 
@@ -227,7 +227,7 @@ func IsDmabufMemory(mem *gst.Memory) bool {
 	return goret
 }
 
-// IsDRMDumbMemory wraps gst_is_drm_dumb_memory
+// IsDrmDumbMemory wraps gst_is_drm_dumb_memory
 // 
 // The function takes the following parameters:
 // 
@@ -236,7 +236,7 @@ func IsDmabufMemory(mem *gst.Memory) bool {
 // The function returns the following values:
 // 
 // 	- goret bool 
-func IsDRMDumbMemory(mem *gst.Memory) bool {
+func IsDrmDumbMemory(mem *gst.Memory) bool {
 	var carg1 *C.GstMemory // in, none, converted
 	var cret  C.gboolean   // return
 
@@ -393,7 +393,7 @@ type DRMDumbAllocator interface {
 	gst.Allocator
 	upcastToGstDRMDumbAllocator() *DRMDumbAllocatorInstance
 
-	// DRMAlloc wraps gst_drm_dumb_allocator_alloc
+	// DrmDumbAlloc wraps gst_drm_dumb_allocator_alloc
 	// 
 	// The function takes the following parameters:
 	// 
@@ -410,7 +410,7 @@ type DRMDumbAllocator interface {
 	// @height. Note that the DRM Dumb allocation interface is agnostic to the
 	// pixel format. This @drm_fourcc is converted into a bpp (bit-per-pixel)
 	// number and the height is scaled according to the sub-sampling.
-	DRMAlloc(uint32, uint32, uint32) (uint32, *gst.Memory)
+	DrmDumbAlloc(uint32, uint32, uint32) (uint32, *gst.Memory)
 	// HasPrimeExport wraps gst_drm_dumb_allocator_has_prime_export
 	// 
 	// The function returns the following values:
@@ -540,7 +540,7 @@ func NewDRMDumbAllocatorWithFd(drmFd int32) gst.Allocator {
 	return goret
 }
 
-// DRMAlloc wraps gst_drm_dumb_allocator_alloc
+// DrmDumbAlloc wraps gst_drm_dumb_allocator_alloc
 // 
 // The function takes the following parameters:
 // 
@@ -557,7 +557,7 @@ func NewDRMDumbAllocatorWithFd(drmFd int32) gst.Allocator {
 // @height. Note that the DRM Dumb allocation interface is agnostic to the
 // pixel format. This @drm_fourcc is converted into a bpp (bit-per-pixel)
 // number and the height is scaled according to the sub-sampling.
-func (allocator *DRMDumbAllocatorInstance) DRMAlloc(drmFourcc uint32, width uint32, height uint32) (uint32, *gst.Memory) {
+func (allocator *DRMDumbAllocatorInstance) DrmDumbAlloc(drmFourcc uint32, width uint32, height uint32) (uint32, *gst.Memory) {
 	var carg0 *C.GstAllocator // in, none, converted
 	var carg1 C.guint32       // in, none, casted
 	var carg2 C.guint32       // in, none, casted
@@ -1190,17 +1190,17 @@ func RegisterDmaBufAllocatorSubClass[InstanceT DmaBufAllocator](
 // 
 // DRMDumbAllocatorClass is the type struct for [DRMDumbAllocator]
 type DRMDumbAllocatorClass struct {
-	*drmDumbAllocatorClass
+	*dRMDumbAllocatorClass
 }
 
-// drmDumbAllocatorClass is the struct that's finalized
-type drmDumbAllocatorClass struct {
+// dRMDumbAllocatorClass is the struct that's finalized
+type dRMDumbAllocatorClass struct {
 	native *C.GstDRMDumbAllocatorClass
 }
 
 // UnsafeDRMDumbAllocatorClassFromGlibBorrow is used to convert raw C.GstDRMDumbAllocatorClass pointers to go. This is used by the bindings internally.
 func UnsafeDRMDumbAllocatorClassFromGlibBorrow(p unsafe.Pointer) *DRMDumbAllocatorClass {
-	return &DRMDumbAllocatorClass{&drmDumbAllocatorClass{(*C.GstDRMDumbAllocatorClass)(p)}}
+	return &DRMDumbAllocatorClass{&dRMDumbAllocatorClass{(*C.GstDRMDumbAllocatorClass)(p)}}
 }
 
 // UnsafeDRMDumbAllocatorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.

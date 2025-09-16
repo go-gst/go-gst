@@ -116,7 +116,7 @@ func runPipeline(pipeline gst.Pipeline) {
 
 	for msg := range pipeline.GetBus().Messages(context.Background()) {
 		switch msg.Type() {
-		case gst.MessageEos:
+		case gst.MessageEOS:
 			fmt.Println("Got EOS message")
 			return
 		default:

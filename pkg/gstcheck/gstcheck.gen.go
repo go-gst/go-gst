@@ -1748,7 +1748,7 @@ func (h *Harness) PullEvent() *gst.Event {
 	return goret
 }
 
-// PullUntilEos wraps gst_harness_pull_until_eos
+// PullUntilEOS wraps gst_harness_pull_until_eos
 // 
 // The function returns the following values:
 // 
@@ -1759,7 +1759,7 @@ func (h *Harness) PullEvent() *gst.Event {
 // Pulls a #GstBuffer from the #GAsyncQueue on the #GstHarness sinkpad. The pull
 // will block until an EOS event is received, or timeout in 60 seconds.
 // MT safe.
-func (h *Harness) PullUntilEos() (*gst.Buffer, bool) {
+func (h *Harness) PullUntilEOS() (*gst.Buffer, bool) {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 *C.GstBuffer  // out, full, converted, nullable
 	var cret  C.gboolean    // return

@@ -191,59 +191,59 @@ const RTP_VERSION = 2
 type RTCPFBType C.int
 
 const (
-	// RtcpFbTypeInvalid wraps RTCP_FB_TYPE_INVALID
+	// RtcpFbTypeInvalid wraps GST_RTCP_FB_TYPE_INVALID
 	//
 	// Invalid type
 	RtcpFbTypeInvalid RTCPFBType = 0
-	// RtcpRtpfbTypeNack wraps RTCP_RTPFB_TYPE_NACK
+	// RtcpRtpfbTypeNack wraps GST_RTCP_RTPFB_TYPE_NACK
 	//
 	// Generic NACK
 	RtcpRtpfbTypeNack RTCPFBType = 1
-	// RtcpRtpfbTypeTmmbr wraps RTCP_RTPFB_TYPE_TMMBR
+	// RtcpRtpfbTypeTmmbr wraps GST_RTCP_RTPFB_TYPE_TMMBR
 	//
 	// Temporary Maximum Media Stream Bit Rate Request
 	RtcpRtpfbTypeTmmbr RTCPFBType = 3
-	// RtcpRtpfbTypeTmmbn wraps RTCP_RTPFB_TYPE_TMMBN
+	// RtcpRtpfbTypeTmmbn wraps GST_RTCP_RTPFB_TYPE_TMMBN
 	//
 	// Temporary Maximum Media Stream Bit Rate
 	//    Notification
 	RtcpRtpfbTypeTmmbn RTCPFBType = 4
-	// RtcpRtpfbTypeRtcpSrReq wraps RTCP_RTPFB_TYPE_RTCP_SR_REQ
+	// RtcpRtpfbTypeRtcpSrReq wraps GST_RTCP_RTPFB_TYPE_RTCP_SR_REQ
 	//
 	// Request an SR packet for early
 	//    synchronization
 	RtcpRtpfbTypeRtcpSrReq RTCPFBType = 5
-	// RtcpRtpfbTypeTwcc wraps RTCP_RTPFB_TYPE_TWCC
+	// RtcpRtpfbTypeTwcc wraps GST_RTCP_RTPFB_TYPE_TWCC
 	RtcpRtpfbTypeTwcc RTCPFBType = 15
-	// RtcpPsfbTypePli wraps RTCP_PSFB_TYPE_PLI
+	// RtcpPsfbTypePli wraps GST_RTCP_PSFB_TYPE_PLI
 	//
 	// Picture Loss Indication
 	RtcpPsfbTypePli RTCPFBType = 1
-	// RtcpPsfbTypeSli wraps RTCP_PSFB_TYPE_SLI
+	// RtcpPsfbTypeSli wraps GST_RTCP_PSFB_TYPE_SLI
 	//
 	// Slice Loss Indication
 	RtcpPsfbTypeSli RTCPFBType = 2
-	// RtcpPsfbTypeRpsi wraps RTCP_PSFB_TYPE_RPSI
+	// RtcpPsfbTypeRpsi wraps GST_RTCP_PSFB_TYPE_RPSI
 	//
 	// Reference Picture Selection Indication
 	RtcpPsfbTypeRpsi RTCPFBType = 3
-	// RtcpPsfbTypeAfb wraps RTCP_PSFB_TYPE_AFB
+	// RtcpPsfbTypeAfb wraps GST_RTCP_PSFB_TYPE_AFB
 	//
 	// Application layer Feedback
 	RtcpPsfbTypeAfb RTCPFBType = 15
-	// RtcpPsfbTypeFir wraps RTCP_PSFB_TYPE_FIR
+	// RtcpPsfbTypeFir wraps GST_RTCP_PSFB_TYPE_FIR
 	//
 	// Full Intra Request Command
 	RtcpPsfbTypeFir RTCPFBType = 4
-	// RtcpPsfbTypeTstr wraps RTCP_PSFB_TYPE_TSTR
+	// RtcpPsfbTypeTstr wraps GST_RTCP_PSFB_TYPE_TSTR
 	//
 	// Temporal-Spatial Trade-off Request
 	RtcpPsfbTypeTstr RTCPFBType = 5
-	// RtcpPsfbTypeTstn wraps RTCP_PSFB_TYPE_TSTN
+	// RtcpPsfbTypeTstn wraps GST_RTCP_PSFB_TYPE_TSTN
 	//
 	// Temporal-Spatial Trade-off Notification
 	RtcpPsfbTypeTstn RTCPFBType = 6
-	// RtcpPsfbTypeVbcn wraps RTCP_PSFB_TYPE_VBCN
+	// RtcpPsfbTypeVbcn wraps GST_RTCP_PSFB_TYPE_VBCN
 	//
 	// Video Back Channel Message
 	RtcpPsfbTypeVbcn RTCPFBType = 7
@@ -284,71 +284,71 @@ func (e RTCPFBType) String() string {
 type RTCPSDESType C.int
 
 const (
-	// RtcpSdesInvalid wraps RTCP_SDES_INVALID
+	// RtcpSdesInvalid wraps GST_RTCP_SDES_INVALID
 	//
 	// Invalid SDES entry
 	RtcpSdesInvalid RTCPSDESType = -1
-	// RtcpSdesEnd wraps RTCP_SDES_END
+	// RtcpSdesEnd wraps GST_RTCP_SDES_END
 	//
 	// End of SDES list
 	RtcpSdesEnd RTCPSDESType = 0
-	// RtcpSdesCname wraps RTCP_SDES_CNAME
+	// RtcpSdesCname wraps GST_RTCP_SDES_CNAME
 	//
 	// Canonical name
 	RtcpSdesCname RTCPSDESType = 1
-	// RtcpSdesName wraps RTCP_SDES_NAME
+	// RtcpSdesName wraps GST_RTCP_SDES_NAME
 	//
 	// User name
 	RtcpSdesName RTCPSDESType = 2
-	// RtcpSdesEmail wraps RTCP_SDES_EMAIL
+	// RtcpSdesEmail wraps GST_RTCP_SDES_EMAIL
 	//
 	// User's electronic mail address
 	RtcpSdesEmail RTCPSDESType = 3
-	// RtcpSdesPhone wraps RTCP_SDES_PHONE
+	// RtcpSdesPhone wraps GST_RTCP_SDES_PHONE
 	//
 	// User's phone number
 	RtcpSdesPhone RTCPSDESType = 4
-	// RtcpSdesLoc wraps RTCP_SDES_LOC
+	// RtcpSdesLoc wraps GST_RTCP_SDES_LOC
 	//
 	// Geographic user location
 	RtcpSdesLoc RTCPSDESType = 5
-	// RtcpSdesTool wraps RTCP_SDES_TOOL
+	// RtcpSdesTool wraps GST_RTCP_SDES_TOOL
 	//
 	// Name of application or tool
 	RtcpSdesTool RTCPSDESType = 6
-	// RtcpSdesNote wraps RTCP_SDES_NOTE
+	// RtcpSdesNote wraps GST_RTCP_SDES_NOTE
 	//
 	// Notice about the source
 	RtcpSdesNote RTCPSDESType = 7
-	// RtcpSdesPriv wraps RTCP_SDES_PRIV
+	// RtcpSdesPriv wraps GST_RTCP_SDES_PRIV
 	//
 	// Private extensions
 	RtcpSdesPriv RTCPSDESType = 8
-	// RtcpSdesH323Caddr wraps RTCP_SDES_H323_CADDR
+	// RtcpSdesH323Caddr wraps GST_RTCP_SDES_H323_CADDR
 	//
 	// H.323 callable address
 	RtcpSdesH323Caddr RTCPSDESType = 9
-	// RtcpSdesApsi wraps RTCP_SDES_APSI
+	// RtcpSdesApsi wraps GST_RTCP_SDES_APSI
 	//
 	// Application Specific Identifier (RFC6776)
 	RtcpSdesApsi RTCPSDESType = 10
-	// RtcpSdesRgrp wraps RTCP_SDES_RGRP
+	// RtcpSdesRgrp wraps GST_RTCP_SDES_RGRP
 	//
 	// Reporting Group Identifier (RFC8861)
 	RtcpSdesRgrp RTCPSDESType = 11
-	// RtcpSdesRtpStreamID wraps RTCP_SDES_RTP_STREAM_ID
+	// RtcpSdesRtpStreamID wraps GST_RTCP_SDES_RTP_STREAM_ID
 	//
 	// RtpStreamId SDES item (RFC8852).
 	RtcpSdesRtpStreamID RTCPSDESType = 12
-	// RtcpSdesRepairedRtpStreamID wraps RTCP_SDES_REPAIRED_RTP_STREAM_ID
+	// RtcpSdesRepairedRtpStreamID wraps GST_RTCP_SDES_REPAIRED_RTP_STREAM_ID
 	//
 	// RepairedRtpStreamId SDES item (RFC8852).
 	RtcpSdesRepairedRtpStreamID RTCPSDESType = 13
-	// RtcpSdesCcid wraps RTCP_SDES_CCID
+	// RtcpSdesCcid wraps GST_RTCP_SDES_CCID
 	//
 	// CLUE CaptId (RFC8849)
 	RtcpSdesCcid RTCPSDESType = 14
-	// RtcpSdesMid wraps RTCP_SDES_MID
+	// RtcpSdesMid wraps GST_RTCP_SDES_MID
 	//
 	// MID SDES item (RFC8843).
 	RtcpSdesMid RTCPSDESType = 15
@@ -397,42 +397,42 @@ func (e RTCPSDESType) String() string {
 type RTCPType C.int
 
 const (
-	// RtcpTypeInvalid wraps RTCP_TYPE_INVALID
+	// RtcpTypeInvalid wraps GST_RTCP_TYPE_INVALID
 	//
 	// Invalid type
 	RtcpTypeInvalid RTCPType = 0
-	// RtcpTypeSr wraps RTCP_TYPE_SR
+	// RtcpTypeSr wraps GST_RTCP_TYPE_SR
 	//
 	// Sender report
 	RtcpTypeSr RTCPType = 200
-	// RtcpTypeRr wraps RTCP_TYPE_RR
+	// RtcpTypeRr wraps GST_RTCP_TYPE_RR
 	//
 	// Receiver report
 	RtcpTypeRr RTCPType = 201
-	// RtcpTypeSdes wraps RTCP_TYPE_SDES
+	// RtcpTypeSdes wraps GST_RTCP_TYPE_SDES
 	//
 	// Source description
 	RtcpTypeSdes RTCPType = 202
-	// RtcpTypeBye wraps RTCP_TYPE_BYE
+	// RtcpTypeBye wraps GST_RTCP_TYPE_BYE
 	//
 	// Goodbye
 	RtcpTypeBye RTCPType = 203
-	// RtcpTypeApp wraps RTCP_TYPE_APP
+	// RtcpTypeApp wraps GST_RTCP_TYPE_APP
 	//
 	// Application defined
 	RtcpTypeApp RTCPType = 204
-	// RtcpTypeRtpfb wraps RTCP_TYPE_RTPFB
+	// RtcpTypeRtpfb wraps GST_RTCP_TYPE_RTPFB
 	//
 	// Transport layer feedback.
 	RtcpTypeRtpfb RTCPType = 205
-	// RtcpTypePsfb wraps RTCP_TYPE_PSFB
+	// RtcpTypePsfb wraps GST_RTCP_TYPE_PSFB
 	//
 	// Payload-specific feedback.
 	RtcpTypePsfb RTCPType = 206
-	// RtcpTypeXR wraps RTCP_TYPE_XR
+	// RtcpTypeXr wraps GST_RTCP_TYPE_XR
 	//
 	// Extended report.
-	RtcpTypeXR RTCPType = 207
+	RtcpTypeXr RTCPType = 207
 )
 
 func marshalRTCPType(p unsafe.Pointer) (any, error) {
@@ -459,7 +459,7 @@ func (e RTCPType) String() string {
 		case RtcpTypeRtpfb: return "RtcpTypeRtpfb"
 		case RtcpTypeSdes: return "RtcpTypeSdes"
 		case RtcpTypeSr: return "RtcpTypeSr"
-		case RtcpTypeXR: return "RtcpTypeXR"
+		case RtcpTypeXr: return "RtcpTypeXr"
 		default: return fmt.Sprintf("RTCPType(%d)", e)
 	}
 }
@@ -471,38 +471,38 @@ func (e RTCPType) String() string {
 type RTCPXRType C.int
 
 const (
-	// RtcpXRTypeInvalid wraps RTCP_XR_TYPE_INVALID
+	// RtcpXrTypeInvalid wraps GST_RTCP_XR_TYPE_INVALID
 	//
 	// Invalid XR Report Block
-	RtcpXRTypeInvalid RTCPXRType = -1
-	// RtcpXRTypeLrle wraps RTCP_XR_TYPE_LRLE
+	RtcpXrTypeInvalid RTCPXRType = -1
+	// RtcpXrTypeLrle wraps GST_RTCP_XR_TYPE_LRLE
 	//
 	// Loss RLE Report Block
-	RtcpXRTypeLrle RTCPXRType = 1
-	// RtcpXRTypeDrle wraps RTCP_XR_TYPE_DRLE
+	RtcpXrTypeLrle RTCPXRType = 1
+	// RtcpXrTypeDrle wraps GST_RTCP_XR_TYPE_DRLE
 	//
 	// Duplicate RLE Report Block
-	RtcpXRTypeDrle RTCPXRType = 2
-	// RtcpXRTypePrt wraps RTCP_XR_TYPE_PRT
+	RtcpXrTypeDrle RTCPXRType = 2
+	// RtcpXrTypePrt wraps GST_RTCP_XR_TYPE_PRT
 	//
 	// Packet Receipt Times Report Block
-	RtcpXRTypePrt RTCPXRType = 3
-	// RtcpXRTypeRrt wraps RTCP_XR_TYPE_RRT
+	RtcpXrTypePrt RTCPXRType = 3
+	// RtcpXrTypeRrt wraps GST_RTCP_XR_TYPE_RRT
 	//
 	// Receiver Reference Time Report Block
-	RtcpXRTypeRrt RTCPXRType = 4
-	// RtcpXRTypeDlrr wraps RTCP_XR_TYPE_DLRR
+	RtcpXrTypeRrt RTCPXRType = 4
+	// RtcpXrTypeDlrr wraps GST_RTCP_XR_TYPE_DLRR
 	//
 	// Delay since the last Receiver Report
-	RtcpXRTypeDlrr RTCPXRType = 5
-	// RtcpXRTypeSsumm wraps RTCP_XR_TYPE_SSUMM
+	RtcpXrTypeDlrr RTCPXRType = 5
+	// RtcpXrTypeSsumm wraps GST_RTCP_XR_TYPE_SSUMM
 	//
 	// Statistics Summary Report Block
-	RtcpXRTypeSsumm RTCPXRType = 6
-	// RtcpXRTypeVoipMetrics wraps RTCP_XR_TYPE_VOIP_METRICS
+	RtcpXrTypeSsumm RTCPXRType = 6
+	// RtcpXrTypeVoipMetrics wraps GST_RTCP_XR_TYPE_VOIP_METRICS
 	//
 	// VoIP Metrics Report Block
-	RtcpXRTypeVoipMetrics RTCPXRType = 7
+	RtcpXrTypeVoipMetrics RTCPXRType = 7
 )
 
 func marshalRTCPXRType(p unsafe.Pointer) (any, error) {
@@ -521,14 +521,14 @@ func (e RTCPXRType) SetGoValue(v *gobject.Value) {
 
 func (e RTCPXRType) String() string {
 	switch e {
-		case RtcpXRTypeDlrr: return "RtcpXRTypeDlrr"
-		case RtcpXRTypeDrle: return "RtcpXRTypeDrle"
-		case RtcpXRTypeInvalid: return "RtcpXRTypeInvalid"
-		case RtcpXRTypeLrle: return "RtcpXRTypeLrle"
-		case RtcpXRTypePrt: return "RtcpXRTypePrt"
-		case RtcpXRTypeRrt: return "RtcpXRTypeRrt"
-		case RtcpXRTypeSsumm: return "RtcpXRTypeSsumm"
-		case RtcpXRTypeVoipMetrics: return "RtcpXRTypeVoipMetrics"
+		case RtcpXrTypeDlrr: return "RtcpXrTypeDlrr"
+		case RtcpXrTypeDrle: return "RtcpXrTypeDrle"
+		case RtcpXrTypeInvalid: return "RtcpXrTypeInvalid"
+		case RtcpXrTypeLrle: return "RtcpXrTypeLrle"
+		case RtcpXrTypePrt: return "RtcpXrTypePrt"
+		case RtcpXrTypeRrt: return "RtcpXrTypeRrt"
+		case RtcpXrTypeSsumm: return "RtcpXrTypeSsumm"
+		case RtcpXrTypeVoipMetrics: return "RtcpXrTypeVoipMetrics"
 		default: return fmt.Sprintf("RTCPXRType(%d)", e)
 	}
 }
@@ -550,107 +550,107 @@ func (e RTCPXRType) String() string {
 type RTPPayload C.int
 
 const (
-	// RtpPayloadPcmu wraps RTP_PAYLOAD_PCMU
+	// RtpPayloadPcmu wraps GST_RTP_PAYLOAD_PCMU
 	//
 	// ITU-T G.711. mu-law audio (RFC 3551)
 	RtpPayloadPcmu RTPPayload = 0
-	// RtpPayload1016 wraps RTP_PAYLOAD_1016
+	// RtpPayload1016 wraps GST_RTP_PAYLOAD_1016
 	//
 	// RFC 3551 says reserved
 	RtpPayload1016 RTPPayload = 1
-	// RtpPayloadG721 wraps RTP_PAYLOAD_G721
+	// RtpPayloadG721 wraps GST_RTP_PAYLOAD_G721
 	//
 	// RFC 3551 says reserved
 	RtpPayloadG721 RTPPayload = 2
-	// RtpPayloadGsm wraps RTP_PAYLOAD_GSM
+	// RtpPayloadGsm wraps GST_RTP_PAYLOAD_GSM
 	//
 	// GSM audio
 	RtpPayloadGsm RTPPayload = 3
-	// RtpPayloadG723 wraps RTP_PAYLOAD_G723
+	// RtpPayloadG723 wraps GST_RTP_PAYLOAD_G723
 	//
 	// ITU G.723.1 audio
 	RtpPayloadG723 RTPPayload = 4
-	// RtpPayloadDvi48000 wraps RTP_PAYLOAD_DVI4_8000
+	// RtpPayloadDvi48000 wraps GST_RTP_PAYLOAD_DVI4_8000
 	//
 	// IMA ADPCM wave type (RFC 3551)
 	RtpPayloadDvi48000 RTPPayload = 5
-	// RtpPayloadDvi416000 wraps RTP_PAYLOAD_DVI4_16000
+	// RtpPayloadDvi416000 wraps GST_RTP_PAYLOAD_DVI4_16000
 	//
 	// IMA ADPCM wave type (RFC 3551)
 	RtpPayloadDvi416000 RTPPayload = 6
-	// RtpPayloadLpc wraps RTP_PAYLOAD_LPC
+	// RtpPayloadLpc wraps GST_RTP_PAYLOAD_LPC
 	//
 	// experimental linear predictive encoding
 	RtpPayloadLpc RTPPayload = 7
-	// RtpPayloadPcma wraps RTP_PAYLOAD_PCMA
+	// RtpPayloadPcma wraps GST_RTP_PAYLOAD_PCMA
 	//
 	// ITU-T G.711 A-law audio (RFC 3551)
 	RtpPayloadPcma RTPPayload = 8
-	// RtpPayloadG722 wraps RTP_PAYLOAD_G722
+	// RtpPayloadG722 wraps GST_RTP_PAYLOAD_G722
 	//
 	// ITU-T G.722 (RFC 3551)
 	RtpPayloadG722 RTPPayload = 9
-	// RtpPayloadL16Stereo wraps RTP_PAYLOAD_L16_STEREO
+	// RtpPayloadL16Stereo wraps GST_RTP_PAYLOAD_L16_STEREO
 	//
 	// stereo PCM
 	RtpPayloadL16Stereo RTPPayload = 10
-	// RtpPayloadL16Mono wraps RTP_PAYLOAD_L16_MONO
+	// RtpPayloadL16Mono wraps GST_RTP_PAYLOAD_L16_MONO
 	//
 	// mono PCM
 	RtpPayloadL16Mono RTPPayload = 11
-	// RtpPayloadQcelp wraps RTP_PAYLOAD_QCELP
+	// RtpPayloadQcelp wraps GST_RTP_PAYLOAD_QCELP
 	//
 	// EIA &amp; TIA standard IS-733
 	RtpPayloadQcelp RTPPayload = 12
-	// RtpPayloadCn wraps RTP_PAYLOAD_CN
+	// RtpPayloadCn wraps GST_RTP_PAYLOAD_CN
 	//
 	// Comfort Noise (RFC 3389)
 	RtpPayloadCn RTPPayload = 13
-	// RtpPayloadMpa wraps RTP_PAYLOAD_MPA
+	// RtpPayloadMpa wraps GST_RTP_PAYLOAD_MPA
 	//
 	// Audio MPEG 1-3.
 	RtpPayloadMpa RTPPayload = 14
-	// RtpPayloadG728 wraps RTP_PAYLOAD_G728
+	// RtpPayloadG728 wraps GST_RTP_PAYLOAD_G728
 	//
 	// ITU-T G.728 Speech coder (RFC 3551)
 	RtpPayloadG728 RTPPayload = 15
-	// RtpPayloadDvi411025 wraps RTP_PAYLOAD_DVI4_11025
+	// RtpPayloadDvi411025 wraps GST_RTP_PAYLOAD_DVI4_11025
 	//
 	// IMA ADPCM wave type (RFC 3551)
 	RtpPayloadDvi411025 RTPPayload = 16
-	// RtpPayloadDvi422050 wraps RTP_PAYLOAD_DVI4_22050
+	// RtpPayloadDvi422050 wraps GST_RTP_PAYLOAD_DVI4_22050
 	//
 	// IMA ADPCM wave type (RFC 3551)
 	RtpPayloadDvi422050 RTPPayload = 17
-	// RtpPayloadG729 wraps RTP_PAYLOAD_G729
+	// RtpPayloadG729 wraps GST_RTP_PAYLOAD_G729
 	//
 	// ITU-T G.729 Speech coder (RFC 3551)
 	RtpPayloadG729 RTPPayload = 18
-	// RtpPayloadCellb wraps RTP_PAYLOAD_CELLB
+	// RtpPayloadCellb wraps GST_RTP_PAYLOAD_CELLB
 	//
 	// See RFC 2029
 	RtpPayloadCellb RTPPayload = 25
-	// RtpPayloadJPEG wraps RTP_PAYLOAD_JPEG
+	// RtpPayloadJpeg wraps GST_RTP_PAYLOAD_JPEG
 	//
 	// ISO Standards 10918-1 and 10918-2 (RFC 2435)
-	RtpPayloadJPEG RTPPayload = 26
-	// RtpPayloadNv wraps RTP_PAYLOAD_NV
+	RtpPayloadJpeg RTPPayload = 26
+	// RtpPayloadNv wraps GST_RTP_PAYLOAD_NV
 	//
 	// nv encoding by Ron Frederick
 	RtpPayloadNv RTPPayload = 28
-	// RtpPayloadH261 wraps RTP_PAYLOAD_H261
+	// RtpPayloadH261 wraps GST_RTP_PAYLOAD_H261
 	//
 	// ITU-T Recommendation H.261 (RFC 2032)
 	RtpPayloadH261 RTPPayload = 31
-	// RtpPayloadMpv wraps RTP_PAYLOAD_MPV
+	// RtpPayloadMpv wraps GST_RTP_PAYLOAD_MPV
 	//
 	// Video MPEG 1 &amp; 2 (RFC 2250)
 	RtpPayloadMpv RTPPayload = 32
-	// RtpPayloadMp2T wraps RTP_PAYLOAD_MP2T
+	// RtpPayloadMp2t wraps GST_RTP_PAYLOAD_MP2T
 	//
 	// MPEG-2 transport stream (RFC 2250)
-	RtpPayloadMp2T RTPPayload = 33
-	// RtpPayloadH263 wraps RTP_PAYLOAD_H263
+	RtpPayloadMp2t RTPPayload = 33
+	// RtpPayloadH263 wraps GST_RTP_PAYLOAD_H263
 	//
 	// Video H263 (RFC 2190)
 	RtpPayloadH263 RTPPayload = 34
@@ -687,11 +687,11 @@ func (e RTPPayload) String() string {
 		case RtpPayloadGsm: return "RtpPayloadGsm"
 		case RtpPayloadH261: return "RtpPayloadH261"
 		case RtpPayloadH263: return "RtpPayloadH263"
-		case RtpPayloadJPEG: return "RtpPayloadJPEG"
+		case RtpPayloadJpeg: return "RtpPayloadJpeg"
 		case RtpPayloadL16Mono: return "RtpPayloadL16Mono"
 		case RtpPayloadL16Stereo: return "RtpPayloadL16Stereo"
 		case RtpPayloadLpc: return "RtpPayloadLpc"
-		case RtpPayloadMp2T: return "RtpPayloadMp2T"
+		case RtpPayloadMp2t: return "RtpPayloadMp2t"
 		case RtpPayloadMpa: return "RtpPayloadMpa"
 		case RtpPayloadMpv: return "RtpPayloadMpv"
 		case RtpPayloadNv: return "RtpPayloadNv"
@@ -708,23 +708,23 @@ func (e RTPPayload) String() string {
 type RTPProfile C.int
 
 const (
-	// RtpProfileUnknown wraps RTP_PROFILE_UNKNOWN
+	// RtpProfileUnknown wraps GST_RTP_PROFILE_UNKNOWN
 	//
 	// invalid profile
 	RtpProfileUnknown RTPProfile = 0
-	// RtpProfileAvp wraps RTP_PROFILE_AVP
+	// RtpProfileAvp wraps GST_RTP_PROFILE_AVP
 	//
 	// the Audio/Visual profile (RFC 3551)
 	RtpProfileAvp RTPProfile = 1
-	// RtpProfileSavp wraps RTP_PROFILE_SAVP
+	// RtpProfileSavp wraps GST_RTP_PROFILE_SAVP
 	//
 	// the secure Audio/Visual profile (RFC 3711)
 	RtpProfileSavp RTPProfile = 2
-	// RtpProfileAvpf wraps RTP_PROFILE_AVPF
+	// RtpProfileAvpf wraps GST_RTP_PROFILE_AVPF
 	//
 	// the Audio/Visual profile with feedback (RFC 4585)
 	RtpProfileAvpf RTPProfile = 3
-	// RtpProfileSavpf wraps RTP_PROFILE_SAVPF
+	// RtpProfileSavpf wraps GST_RTP_PROFILE_SAVPF
 	//
 	// the secure Audio/Visual profile with feedback (RFC 5124)
 	RtpProfileSavpf RTPProfile = 4
@@ -765,19 +765,19 @@ func (e RTPProfile) String() string {
 type RTPBufferFlags C.gint
 
 const (
-	// RtpBufferFlagRetransmission wraps RTP_BUFFER_FLAG_RETRANSMISSION
+	// RtpBufferFlagRetransmission wraps GST_RTP_BUFFER_FLAG_RETRANSMISSION
 	//
 	// The #GstBuffer was once wrapped
 	//           in a retransmitted packet as specified by RFC 4588.
 	RtpBufferFlagRetransmission RTPBufferFlags = 1048576
-	// RtpBufferFlagRedundant wraps RTP_BUFFER_FLAG_REDUNDANT
+	// RtpBufferFlagRedundant wraps GST_RTP_BUFFER_FLAG_REDUNDANT
 	//
 	// The packet represents redundant RTP packet.
 	//           The flag is used in gstrtpstorage to be able to hold the packetback
 	//           and use it only for recovery from packet loss.
 	//           Since: 1.14
 	RtpBufferFlagRedundant RTPBufferFlags = 2097152
-	// RtpBufferFlagLast wraps RTP_BUFFER_FLAG_LAST
+	// RtpBufferFlagLast wraps GST_RTP_BUFFER_FLAG_LAST
 	//
 	// Offset to define more flags.
 	RtpBufferFlagLast RTPBufferFlags = 268435456
@@ -825,13 +825,13 @@ func (f RTPBufferFlags) String() string {
 type RTPBufferMapFlags C.gint
 
 const (
-	// RtpBufferMapFlagSkipPadding wraps RTP_BUFFER_MAP_FLAG_SKIP_PADDING
+	// RtpBufferMapFlagSkipPadding wraps GST_RTP_BUFFER_MAP_FLAG_SKIP_PADDING
 	//
 	// Skip mapping and validation of RTP
 	//           padding and RTP pad count when present. Useful for buffers where
 	//           the padding may be encrypted.
 	RtpBufferMapFlagSkipPadding RTPBufferMapFlags = 65536
-	// RtpBufferMapFlagLast wraps RTP_BUFFER_MAP_FLAG_LAST
+	// RtpBufferMapFlagLast wraps GST_RTP_BUFFER_MAP_FLAG_LAST
 	//
 	// Offset to define more flags
 	RtpBufferMapFlagLast RTPBufferMapFlags = 16777216
@@ -876,25 +876,25 @@ func (f RTPBufferMapFlags) String() string {
 type RTPHeaderExtensionDirection C.gint
 
 const (
-	// RtpHeaderExtensionDirectionInactive wraps RTP_HEADER_EXTENSION_DIRECTION_INACTIVE
+	// RtpHeaderExtensionDirectionInactive wraps GST_RTP_HEADER_EXTENSION_DIRECTION_INACTIVE
 	//
 	// Neither send nor
 	// receive RTP Header Extensions
 	RtpHeaderExtensionDirectionInactive RTPHeaderExtensionDirection = 0
-	// RtpHeaderExtensionDirectionSendonly wraps RTP_HEADER_EXTENSION_DIRECTION_SENDONLY
+	// RtpHeaderExtensionDirectionSendonly wraps GST_RTP_HEADER_EXTENSION_DIRECTION_SENDONLY
 	//
 	// Only send RTP Header
 	// Extensions @GST_RTP_HEADER_EXTENSION_DIRECTION_RECVONLY: Only
 	// receive RTP Header Extensions
 	RtpHeaderExtensionDirectionSendonly RTPHeaderExtensionDirection = 1
-	// RtpHeaderExtensionDirectionRecvonly wraps RTP_HEADER_EXTENSION_DIRECTION_RECVONLY
+	// RtpHeaderExtensionDirectionRecvonly wraps GST_RTP_HEADER_EXTENSION_DIRECTION_RECVONLY
 	RtpHeaderExtensionDirectionRecvonly RTPHeaderExtensionDirection = 2
-	// RtpHeaderExtensionDirectionSendrecv wraps RTP_HEADER_EXTENSION_DIRECTION_SENDRECV
+	// RtpHeaderExtensionDirectionSendrecv wraps GST_RTP_HEADER_EXTENSION_DIRECTION_SENDRECV
 	//
 	// Send and receive RTP
 	// Header Extensions ext
 	RtpHeaderExtensionDirectionSendrecv RTPHeaderExtensionDirection = 3
-	// RtpHeaderExtensionDirectionInherited wraps RTP_HEADER_EXTENSION_DIRECTION_INHERITED
+	// RtpHeaderExtensionDirectionInherited wraps GST_RTP_HEADER_EXTENSION_DIRECTION_INHERITED
 	//
 	// RTP header extension
 	// direction is inherited from the stream
@@ -949,13 +949,13 @@ func (f RTPHeaderExtensionDirection) String() string {
 type RTPHeaderExtensionFlags C.gint
 
 const (
-	// RtpHeaderExtensionOneByte wraps RTP_HEADER_EXTENSION_ONE_BYTE
+	// RtpHeaderExtensionOneByte wraps GST_RTP_HEADER_EXTENSION_ONE_BYTE
 	//
 	// The one byte rtp extension header.
 	//              1-16 data bytes per extension with a maximum of
 	//              14 extension ids in total.
 	RtpHeaderExtensionOneByte RTPHeaderExtensionFlags = 1
-	// RtpHeaderExtensionTwoByte wraps RTP_HEADER_EXTENSION_TWO_BYTE
+	// RtpHeaderExtensionTwoByte wraps GST_RTP_HEADER_EXTENSION_TWO_BYTE
 	//
 	// The two byte rtp extension header.
 	//              256 data bytes per extension with a maximum of 255 (or 256
@@ -1214,12 +1214,12 @@ func RtpGetHeaderExtensionList() []gst.ElementFactory {
 	return goret
 }
 
-// RtpSourceMetaApiGetType wraps gst_rtp_source_meta_api_get_type
+// RtpSourceMetaAPIGetType wraps gst_rtp_source_meta_api_get_type
 // 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
-func RtpSourceMetaApiGetType() gobject.Type {
+func RtpSourceMetaAPIGetType() gobject.Type {
 	var cret C.GType // return, none, casted, alias
 
 	cret = C.gst_rtp_source_meta_api_get_type()
@@ -5323,17 +5323,17 @@ func RegisterRTPBaseAudioPayloadSubClass[InstanceT RTPBaseAudioPayload](
 // into the RTCP buffer; you can move to the next packet with
 // gst_rtcp_packet_move_to_next().
 type RTCPBuffer struct {
-	*rtcpBuffer
+	*rTCPBuffer
 }
 
-// rtcpBuffer is the struct that's finalized
-type rtcpBuffer struct {
+// rTCPBuffer is the struct that's finalized
+type rTCPBuffer struct {
 	native *C.GstRTCPBuffer
 }
 
 // UnsafeRTCPBufferFromGlibBorrow is used to convert raw C.GstRTCPBuffer pointers to go. This is used by the bindings internally.
 func UnsafeRTCPBufferFromGlibBorrow(p unsafe.Pointer) *RTCPBuffer {
-	return &RTCPBuffer{&rtcpBuffer{(*C.GstRTCPBuffer)(p)}}
+	return &RTCPBuffer{&rTCPBuffer{(*C.GstRTCPBuffer)(p)}}
 }
 
 // UnsafeRTCPBufferFromGlibNone is used to convert raw C.GstRTCPBuffer pointers to go without transferring ownership. This is used by the bindings internally.
@@ -5341,8 +5341,8 @@ func UnsafeRTCPBufferFromGlibNone(p unsafe.Pointer) *RTCPBuffer {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTCPBufferFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtcpBuffer,
-		func (intern *rtcpBuffer) {
+		wrapped.rTCPBuffer,
+		func (intern *rTCPBuffer) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -5353,8 +5353,8 @@ func UnsafeRTCPBufferFromGlibNone(p unsafe.Pointer) *RTCPBuffer {
 func UnsafeRTCPBufferFromGlibFull(p unsafe.Pointer) *RTCPBuffer {
 	wrapped := UnsafeRTCPBufferFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtcpBuffer,
-		func (intern *rtcpBuffer) {
+		wrapped.rTCPBuffer,
+		func (intern *rTCPBuffer) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -5376,7 +5376,7 @@ func UnsafeRTCPBufferToGlibNone(r *RTCPBuffer) unsafe.Pointer {
 // UnsafeRTCPBufferToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeRTCPBufferToGlibFull(r *RTCPBuffer) unsafe.Pointer {
-	runtime.SetFinalizer(r.rtcpBuffer, nil)
+	runtime.SetFinalizer(r.rTCPBuffer, nil)
 	_p := unsafe.Pointer(r.native)
 	r.native = nil // RTCPBuffer is invalid from here on
 	return _p
@@ -5710,17 +5710,17 @@ func (rtcp *RTCPBuffer) Unmap() bool {
 // Data structure that points to a packet at @offset in @buffer.
 // The size of the structure is made public to allow stack allocations.
 type RTCPPacket struct {
-	*rtcpPacket
+	*rTCPPacket
 }
 
-// rtcpPacket is the struct that's finalized
-type rtcpPacket struct {
+// rTCPPacket is the struct that's finalized
+type rTCPPacket struct {
 	native *C.GstRTCPPacket
 }
 
 // UnsafeRTCPPacketFromGlibBorrow is used to convert raw C.GstRTCPPacket pointers to go. This is used by the bindings internally.
 func UnsafeRTCPPacketFromGlibBorrow(p unsafe.Pointer) *RTCPPacket {
-	return &RTCPPacket{&rtcpPacket{(*C.GstRTCPPacket)(p)}}
+	return &RTCPPacket{&rTCPPacket{(*C.GstRTCPPacket)(p)}}
 }
 
 // UnsafeRTCPPacketFromGlibNone is used to convert raw C.GstRTCPPacket pointers to go without transferring ownership. This is used by the bindings internally.
@@ -5728,8 +5728,8 @@ func UnsafeRTCPPacketFromGlibNone(p unsafe.Pointer) *RTCPPacket {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTCPPacketFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtcpPacket,
-		func (intern *rtcpPacket) {
+		wrapped.rTCPPacket,
+		func (intern *rTCPPacket) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -5740,8 +5740,8 @@ func UnsafeRTCPPacketFromGlibNone(p unsafe.Pointer) *RTCPPacket {
 func UnsafeRTCPPacketFromGlibFull(p unsafe.Pointer) *RTCPPacket {
 	wrapped := UnsafeRTCPPacketFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtcpPacket,
-		func (intern *rtcpPacket) {
+		wrapped.rTCPPacket,
+		func (intern *rTCPPacket) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -5763,7 +5763,7 @@ func UnsafeRTCPPacketToGlibNone(r *RTCPPacket) unsafe.Pointer {
 // UnsafeRTCPPacketToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeRTCPPacketToGlibFull(r *RTCPPacket) unsafe.Pointer {
-	runtime.SetFinalizer(r.rtcpPacket, nil)
+	runtime.SetFinalizer(r.rTCPPacket, nil)
 	_p := unsafe.Pointer(r.native)
 	r.native = nil // RTCPPacket is invalid from here on
 	return _p
@@ -7111,14 +7111,14 @@ func (packet *RTCPPacket) SrSetSenderInfo(ssrc uint32, ntptime uint64, rtptime u
 	runtime.KeepAlive(octetCount)
 }
 
-// XRFirstRb wraps gst_rtcp_packet_xr_first_rb
+// XrFirstRb wraps gst_rtcp_packet_xr_first_rb
 // 
 // The function returns the following values:
 // 
 // 	- goret bool 
 //
 // Move to the first extended report block in XR @packet.
-func (packet *RTCPPacket) XRFirstRb() bool {
+func (packet *RTCPPacket) XrFirstRb() bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.gboolean       // return
 
@@ -7136,12 +7136,12 @@ func (packet *RTCPPacket) XRFirstRb() bool {
 	return goret
 }
 
-// XRGetBlockLength wraps gst_rtcp_packet_xr_get_block_length
+// XrGetBlockLength wraps gst_rtcp_packet_xr_get_block_length
 // 
 // The function returns the following values:
 // 
 // 	- goret uint16 
-func (packet *RTCPPacket) XRGetBlockLength() uint16 {
+func (packet *RTCPPacket) XrGetBlockLength() uint16 {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.guint16        // return, none, casted
 
@@ -7157,14 +7157,14 @@ func (packet *RTCPPacket) XRGetBlockLength() uint16 {
 	return goret
 }
 
-// XRGetBlockType wraps gst_rtcp_packet_xr_get_block_type
+// XrGetBlockType wraps gst_rtcp_packet_xr_get_block_type
 // 
 // The function returns the following values:
 // 
 // 	- goret RTCPXRType 
 //
 // Get the extended report block type of the XR @packet.
-func (packet *RTCPPacket) XRGetBlockType() RTCPXRType {
+func (packet *RTCPPacket) XrGetBlockType() RTCPXRType {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.GstRTCPXRType  // return, none, casted
 
@@ -7180,7 +7180,7 @@ func (packet *RTCPPacket) XRGetBlockType() RTCPXRType {
 	return goret
 }
 
-// XRGetDlrrBlock wraps gst_rtcp_packet_xr_get_dlrr_block
+// XrGetDlrrBlock wraps gst_rtcp_packet_xr_get_dlrr_block
 // 
 // The function takes the following parameters:
 // 
@@ -7194,7 +7194,7 @@ func (packet *RTCPPacket) XRGetBlockType() RTCPXRType {
 // 	- goret bool 
 //
 // Parse the extended report block for DLRR report block type.
-func (packet *RTCPPacket) XRGetDlrrBlock(nth uint, ssrc *uint32, lastRr *uint32, delay *uint32) bool {
+func (packet *RTCPPacket) XrGetDlrrBlock(nth uint, ssrc *uint32, lastRr *uint32, delay *uint32) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 C.guint          // in, none, casted
 	var carg2 *C.guint32       // in, transfer: none, C Pointers: 1, Name: guint32
@@ -7230,7 +7230,7 @@ func (packet *RTCPPacket) XRGetDlrrBlock(nth uint, ssrc *uint32, lastRr *uint32,
 	return goret
 }
 
-// XRGetPrtBySeq wraps gst_rtcp_packet_xr_get_prt_by_seq
+// XrGetPrtBySeq wraps gst_rtcp_packet_xr_get_prt_by_seq
 // 
 // The function takes the following parameters:
 // 
@@ -7242,7 +7242,7 @@ func (packet *RTCPPacket) XRGetDlrrBlock(nth uint, ssrc *uint32, lastRr *uint32,
 // 	- goret bool 
 //
 // Retrieve the packet receipt time of @seq which ranges in [begin_seq, end_seq).
-func (packet *RTCPPacket) XRGetPrtBySeq(seq uint16, receiptTime *uint32) bool {
+func (packet *RTCPPacket) XrGetPrtBySeq(seq uint16, receiptTime *uint32) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 C.guint16        // in, none, casted
 	var carg2 *C.guint32       // in, transfer: none, C Pointers: 1, Name: guint32
@@ -7268,7 +7268,7 @@ func (packet *RTCPPacket) XRGetPrtBySeq(seq uint16, receiptTime *uint32) bool {
 	return goret
 }
 
-// XRGetPrtInfo wraps gst_rtcp_packet_xr_get_prt_info
+// XrGetPrtInfo wraps gst_rtcp_packet_xr_get_prt_info
 // 
 // The function takes the following parameters:
 // 
@@ -7282,7 +7282,7 @@ func (packet *RTCPPacket) XRGetPrtBySeq(seq uint16, receiptTime *uint32) bool {
 // 	- goret bool 
 //
 // Parse the Packet Recept Times Report Block from a XR @packet
-func (packet *RTCPPacket) XRGetPrtInfo(ssrc *uint32, thinning *uint8, beginSeq *uint16, endSeq *uint16) bool {
+func (packet *RTCPPacket) XrGetPrtInfo(ssrc *uint32, thinning *uint8, beginSeq *uint16, endSeq *uint16) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.guint32       // in, transfer: none, C Pointers: 1, Name: guint32
 	var carg2 *C.guint8        // in, transfer: none, C Pointers: 1, Name: guint8
@@ -7320,7 +7320,7 @@ func (packet *RTCPPacket) XRGetPrtInfo(ssrc *uint32, thinning *uint8, beginSeq *
 	return goret
 }
 
-// XRGetRLEInfo wraps gst_rtcp_packet_xr_get_rle_info
+// XrGetRleInfo wraps gst_rtcp_packet_xr_get_rle_info
 // 
 // The function takes the following parameters:
 // 
@@ -7335,7 +7335,7 @@ func (packet *RTCPPacket) XRGetPrtInfo(ssrc *uint32, thinning *uint8, beginSeq *
 // 	- goret bool 
 //
 // Parse the extended report block for Loss RLE and Duplicated LRE block type.
-func (packet *RTCPPacket) XRGetRLEInfo(ssrc *uint32, thinning *uint8, beginSeq *uint16, endSeq *uint16, chunkCount *uint32) bool {
+func (packet *RTCPPacket) XrGetRleInfo(ssrc *uint32, thinning *uint8, beginSeq *uint16, endSeq *uint16, chunkCount *uint32) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.guint32       // in, transfer: none, C Pointers: 1, Name: guint32
 	var carg2 *C.guint8        // in, transfer: none, C Pointers: 1, Name: guint8
@@ -7378,7 +7378,7 @@ func (packet *RTCPPacket) XRGetRLEInfo(ssrc *uint32, thinning *uint8, beginSeq *
 	return goret
 }
 
-// XRGetRLENthChunk wraps gst_rtcp_packet_xr_get_rle_nth_chunk
+// XrGetRleNthChunk wraps gst_rtcp_packet_xr_get_rle_nth_chunk
 // 
 // The function takes the following parameters:
 // 
@@ -7390,7 +7390,7 @@ func (packet *RTCPPacket) XRGetRLEInfo(ssrc *uint32, thinning *uint8, beginSeq *
 // 	- goret bool 
 //
 // Retrieve actual chunk data.
-func (packet *RTCPPacket) XRGetRLENthChunk(nth uint, chunk *uint16) bool {
+func (packet *RTCPPacket) XrGetRleNthChunk(nth uint, chunk *uint16) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 C.guint          // in, none, casted
 	var carg2 *C.guint16       // in, transfer: none, C Pointers: 1, Name: guint16
@@ -7416,7 +7416,7 @@ func (packet *RTCPPacket) XRGetRLENthChunk(nth uint, chunk *uint16) bool {
 	return goret
 }
 
-// XRGetRrt wraps gst_rtcp_packet_xr_get_rrt
+// XrGetRrt wraps gst_rtcp_packet_xr_get_rrt
 // 
 // The function takes the following parameters:
 // 
@@ -7425,7 +7425,7 @@ func (packet *RTCPPacket) XRGetRLENthChunk(nth uint, chunk *uint16) bool {
 // The function returns the following values:
 // 
 // 	- goret bool 
-func (packet *RTCPPacket) XRGetRrt(timestamp *uint64) bool {
+func (packet *RTCPPacket) XrGetRrt(timestamp *uint64) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.guint64       // in, transfer: none, C Pointers: 1, Name: guint64
 	var cret  C.gboolean       // return
@@ -7448,14 +7448,14 @@ func (packet *RTCPPacket) XRGetRrt(timestamp *uint64) bool {
 	return goret
 }
 
-// XRGetSsrc wraps gst_rtcp_packet_xr_get_ssrc
+// XrGetSsrc wraps gst_rtcp_packet_xr_get_ssrc
 // 
 // The function returns the following values:
 // 
 // 	- goret uint32 
 //
 // Get the ssrc field of the XR @packet.
-func (packet *RTCPPacket) XRGetSsrc() uint32 {
+func (packet *RTCPPacket) XrGetSsrc() uint32 {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.guint32        // return, none, casted
 
@@ -7471,7 +7471,7 @@ func (packet *RTCPPacket) XRGetSsrc() uint32 {
 	return goret
 }
 
-// XRGetSummaryInfo wraps gst_rtcp_packet_xr_get_summary_info
+// XrGetSummaryInfo wraps gst_rtcp_packet_xr_get_summary_info
 // 
 // The function takes the following parameters:
 // 
@@ -7484,7 +7484,7 @@ func (packet *RTCPPacket) XRGetSsrc() uint32 {
 // 	- goret bool 
 //
 // Extract a basic information from static summary report block of XR @packet.
-func (packet *RTCPPacket) XRGetSummaryInfo(ssrc *uint32, beginSeq *uint16, endSeq *uint16) bool {
+func (packet *RTCPPacket) XrGetSummaryInfo(ssrc *uint32, beginSeq *uint16, endSeq *uint16) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.guint32       // in, transfer: none, C Pointers: 1, Name: guint32
 	var carg2 *C.guint16       // in, transfer: none, C Pointers: 1, Name: guint16
@@ -7517,7 +7517,7 @@ func (packet *RTCPPacket) XRGetSummaryInfo(ssrc *uint32, beginSeq *uint16, endSe
 	return goret
 }
 
-// XRGetSummaryJitter wraps gst_rtcp_packet_xr_get_summary_jitter
+// XrGetSummaryJitter wraps gst_rtcp_packet_xr_get_summary_jitter
 // 
 // The function takes the following parameters:
 // 
@@ -7532,7 +7532,7 @@ func (packet *RTCPPacket) XRGetSummaryInfo(ssrc *uint32, beginSeq *uint16, endSe
 //
 // Extract jitter information from the statistics summary. If the jitter flag in
 // a block header is set as zero, all of jitters will be zero.
-func (packet *RTCPPacket) XRGetSummaryJitter(minJitter *uint32, maxJitter *uint32, meanJitter *uint32, devJitter *uint32) bool {
+func (packet *RTCPPacket) XrGetSummaryJitter(minJitter *uint32, maxJitter *uint32, meanJitter *uint32, devJitter *uint32) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.guint32       // in, transfer: none, C Pointers: 1, Name: guint32
 	var carg2 *C.guint32       // in, transfer: none, C Pointers: 1, Name: guint32
@@ -7570,7 +7570,7 @@ func (packet *RTCPPacket) XRGetSummaryJitter(minJitter *uint32, maxJitter *uint3
 	return goret
 }
 
-// XRGetSummaryPkt wraps gst_rtcp_packet_xr_get_summary_pkt
+// XrGetSummaryPkt wraps gst_rtcp_packet_xr_get_summary_pkt
 // 
 // The function takes the following parameters:
 // 
@@ -7583,7 +7583,7 @@ func (packet *RTCPPacket) XRGetSummaryJitter(minJitter *uint32, maxJitter *uint3
 //
 // Get the number of lost or duplicate packets. If the flag in a block header
 // is set as zero, @lost_packets or @dup_packets will be zero.
-func (packet *RTCPPacket) XRGetSummaryPkt(lostPackets *uint32, dupPackets *uint32) bool {
+func (packet *RTCPPacket) XrGetSummaryPkt(lostPackets *uint32, dupPackets *uint32) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.guint32       // in, transfer: none, C Pointers: 1, Name: guint32
 	var carg2 *C.guint32       // in, transfer: none, C Pointers: 1, Name: guint32
@@ -7611,7 +7611,7 @@ func (packet *RTCPPacket) XRGetSummaryPkt(lostPackets *uint32, dupPackets *uint3
 	return goret
 }
 
-// XRGetSummaryTTL wraps gst_rtcp_packet_xr_get_summary_ttl
+// XrGetSummaryTtl wraps gst_rtcp_packet_xr_get_summary_ttl
 // 
 // The function takes the following parameters:
 // 
@@ -7626,7 +7626,7 @@ func (packet *RTCPPacket) XRGetSummaryPkt(lostPackets *uint32, dupPackets *uint3
 // 	- goret bool 
 //
 // Extract the value of ttl for ipv4, or hop limit for ipv6.
-func (packet *RTCPPacket) XRGetSummaryTTL(isIpv4 *bool, minTtl *uint8, maxTtl *uint8, meanTtl *uint8, devTtl *uint8) bool {
+func (packet *RTCPPacket) XrGetSummaryTtl(isIpv4 *bool, minTtl *uint8, maxTtl *uint8, meanTtl *uint8, devTtl *uint8) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.gboolean      // in, transfer: none, C Pointers: 1, Name: gboolean
 	var carg2 *C.guint8        // in, transfer: none, C Pointers: 1, Name: guint8
@@ -7669,7 +7669,7 @@ func (packet *RTCPPacket) XRGetSummaryTTL(isIpv4 *bool, minTtl *uint8, maxTtl *u
 	return goret
 }
 
-// XRGetVoipBurstMetrics wraps gst_rtcp_packet_xr_get_voip_burst_metrics
+// XrGetVoipBurstMetrics wraps gst_rtcp_packet_xr_get_voip_burst_metrics
 // 
 // The function takes the following parameters:
 // 
@@ -7681,7 +7681,7 @@ func (packet *RTCPPacket) XRGetSummaryTTL(isIpv4 *bool, minTtl *uint8, maxTtl *u
 // The function returns the following values:
 // 
 // 	- goret bool 
-func (packet *RTCPPacket) XRGetVoipBurstMetrics(burstDensity *uint8, gapDensity *uint8, burstDuration *uint16, gapDuration *uint16) bool {
+func (packet *RTCPPacket) XrGetVoipBurstMetrics(burstDensity *uint8, gapDensity *uint8, burstDuration *uint16, gapDuration *uint16) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.guint8        // in, transfer: none, C Pointers: 1, Name: guint8
 	var carg2 *C.guint8        // in, transfer: none, C Pointers: 1, Name: guint8
@@ -7719,7 +7719,7 @@ func (packet *RTCPPacket) XRGetVoipBurstMetrics(burstDensity *uint8, gapDensity 
 	return goret
 }
 
-// XRGetVoipConfigurationParams wraps gst_rtcp_packet_xr_get_voip_configuration_params
+// XrGetVoipConfigurationParams wraps gst_rtcp_packet_xr_get_voip_configuration_params
 // 
 // The function takes the following parameters:
 // 
@@ -7729,7 +7729,7 @@ func (packet *RTCPPacket) XRGetVoipBurstMetrics(burstDensity *uint8, gapDensity 
 // The function returns the following values:
 // 
 // 	- goret bool 
-func (packet *RTCPPacket) XRGetVoipConfigurationParams(gmin *uint8, rxConfig *uint8) bool {
+func (packet *RTCPPacket) XrGetVoipConfigurationParams(gmin *uint8, rxConfig *uint8) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.guint8        // in, transfer: none, C Pointers: 1, Name: guint8
 	var carg2 *C.guint8        // in, transfer: none, C Pointers: 1, Name: guint8
@@ -7757,7 +7757,7 @@ func (packet *RTCPPacket) XRGetVoipConfigurationParams(gmin *uint8, rxConfig *ui
 	return goret
 }
 
-// XRGetVoipDelayMetrics wraps gst_rtcp_packet_xr_get_voip_delay_metrics
+// XrGetVoipDelayMetrics wraps gst_rtcp_packet_xr_get_voip_delay_metrics
 // 
 // The function takes the following parameters:
 // 
@@ -7767,7 +7767,7 @@ func (packet *RTCPPacket) XRGetVoipConfigurationParams(gmin *uint8, rxConfig *ui
 // The function returns the following values:
 // 
 // 	- goret bool 
-func (packet *RTCPPacket) XRGetVoipDelayMetrics(roundtripDelay *uint16, endSystemDelay *uint16) bool {
+func (packet *RTCPPacket) XrGetVoipDelayMetrics(roundtripDelay *uint16, endSystemDelay *uint16) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.guint16       // in, transfer: none, C Pointers: 1, Name: guint16
 	var carg2 *C.guint16       // in, transfer: none, C Pointers: 1, Name: guint16
@@ -7795,7 +7795,7 @@ func (packet *RTCPPacket) XRGetVoipDelayMetrics(roundtripDelay *uint16, endSyste
 	return goret
 }
 
-// XRGetVoipJitterBufferParams wraps gst_rtcp_packet_xr_get_voip_jitter_buffer_params
+// XrGetVoipJitterBufferParams wraps gst_rtcp_packet_xr_get_voip_jitter_buffer_params
 // 
 // The function takes the following parameters:
 // 
@@ -7806,7 +7806,7 @@ func (packet *RTCPPacket) XRGetVoipDelayMetrics(roundtripDelay *uint16, endSyste
 // The function returns the following values:
 // 
 // 	- goret bool 
-func (packet *RTCPPacket) XRGetVoipJitterBufferParams(jbNominal *uint16, jbMaximum *uint16, jbAbsMax *uint16) bool {
+func (packet *RTCPPacket) XrGetVoipJitterBufferParams(jbNominal *uint16, jbMaximum *uint16, jbAbsMax *uint16) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.guint16       // in, transfer: none, C Pointers: 1, Name: guint16
 	var carg2 *C.guint16       // in, transfer: none, C Pointers: 1, Name: guint16
@@ -7839,7 +7839,7 @@ func (packet *RTCPPacket) XRGetVoipJitterBufferParams(jbNominal *uint16, jbMaxim
 	return goret
 }
 
-// XRGetVoipMetricsSsrc wraps gst_rtcp_packet_xr_get_voip_metrics_ssrc
+// XrGetVoipMetricsSsrc wraps gst_rtcp_packet_xr_get_voip_metrics_ssrc
 // 
 // The function takes the following parameters:
 // 
@@ -7848,7 +7848,7 @@ func (packet *RTCPPacket) XRGetVoipJitterBufferParams(jbNominal *uint16, jbMaxim
 // The function returns the following values:
 // 
 // 	- goret bool 
-func (packet *RTCPPacket) XRGetVoipMetricsSsrc(ssrc *uint32) bool {
+func (packet *RTCPPacket) XrGetVoipMetricsSsrc(ssrc *uint32) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.guint32       // in, transfer: none, C Pointers: 1, Name: guint32
 	var cret  C.gboolean       // return
@@ -7871,7 +7871,7 @@ func (packet *RTCPPacket) XRGetVoipMetricsSsrc(ssrc *uint32) bool {
 	return goret
 }
 
-// XRGetVoipPacketMetrics wraps gst_rtcp_packet_xr_get_voip_packet_metrics
+// XrGetVoipPacketMetrics wraps gst_rtcp_packet_xr_get_voip_packet_metrics
 // 
 // The function takes the following parameters:
 // 
@@ -7881,7 +7881,7 @@ func (packet *RTCPPacket) XRGetVoipMetricsSsrc(ssrc *uint32) bool {
 // The function returns the following values:
 // 
 // 	- goret bool 
-func (packet *RTCPPacket) XRGetVoipPacketMetrics(lossRate *uint8, discardRate *uint8) bool {
+func (packet *RTCPPacket) XrGetVoipPacketMetrics(lossRate *uint8, discardRate *uint8) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.guint8        // in, transfer: none, C Pointers: 1, Name: guint8
 	var carg2 *C.guint8        // in, transfer: none, C Pointers: 1, Name: guint8
@@ -7909,7 +7909,7 @@ func (packet *RTCPPacket) XRGetVoipPacketMetrics(lossRate *uint8, discardRate *u
 	return goret
 }
 
-// XRGetVoipQualityMetrics wraps gst_rtcp_packet_xr_get_voip_quality_metrics
+// XrGetVoipQualityMetrics wraps gst_rtcp_packet_xr_get_voip_quality_metrics
 // 
 // The function takes the following parameters:
 // 
@@ -7921,7 +7921,7 @@ func (packet *RTCPPacket) XRGetVoipPacketMetrics(lossRate *uint8, discardRate *u
 // The function returns the following values:
 // 
 // 	- goret bool 
-func (packet *RTCPPacket) XRGetVoipQualityMetrics(rFactor *uint8, extRFactor *uint8, mosLq *uint8, mosCq *uint8) bool {
+func (packet *RTCPPacket) XrGetVoipQualityMetrics(rFactor *uint8, extRFactor *uint8, mosLq *uint8, mosCq *uint8) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.guint8        // in, transfer: none, C Pointers: 1, Name: guint8
 	var carg2 *C.guint8        // in, transfer: none, C Pointers: 1, Name: guint8
@@ -7959,7 +7959,7 @@ func (packet *RTCPPacket) XRGetVoipQualityMetrics(rFactor *uint8, extRFactor *ui
 	return goret
 }
 
-// XRGetVoipSignalMetrics wraps gst_rtcp_packet_xr_get_voip_signal_metrics
+// XrGetVoipSignalMetrics wraps gst_rtcp_packet_xr_get_voip_signal_metrics
 // 
 // The function takes the following parameters:
 // 
@@ -7971,7 +7971,7 @@ func (packet *RTCPPacket) XRGetVoipQualityMetrics(rFactor *uint8, extRFactor *ui
 // The function returns the following values:
 // 
 // 	- goret bool 
-func (packet *RTCPPacket) XRGetVoipSignalMetrics(signalLevel *uint8, noiseLevel *uint8, rerl *uint8, gmin *uint8) bool {
+func (packet *RTCPPacket) XrGetVoipSignalMetrics(signalLevel *uint8, noiseLevel *uint8, rerl *uint8, gmin *uint8) bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var carg1 *C.guint8        // in, transfer: none, C Pointers: 1, Name: guint8
 	var carg2 *C.guint8        // in, transfer: none, C Pointers: 1, Name: guint8
@@ -8009,14 +8009,14 @@ func (packet *RTCPPacket) XRGetVoipSignalMetrics(signalLevel *uint8, noiseLevel 
 	return goret
 }
 
-// XRNextRb wraps gst_rtcp_packet_xr_next_rb
+// XrNextRb wraps gst_rtcp_packet_xr_next_rb
 // 
 // The function returns the following values:
 // 
 // 	- goret bool 
 //
 // Move to the next extended report block in XR @packet.
-func (packet *RTCPPacket) XRNextRb() bool {
+func (packet *RTCPPacket) XrNextRb() bool {
 	var carg0 *C.GstRTCPPacket // in, none, converted
 	var cret  C.gboolean       // return
 
@@ -8040,17 +8040,17 @@ func (packet *RTCPPacket) XRNextRb() bool {
 // 
 // RTPBaseAudioPayloadClass is the type struct for [RTPBaseAudioPayload]
 type RTPBaseAudioPayloadClass struct {
-	*rtpBaseAudioPayloadClass
+	*rTPBaseAudioPayloadClass
 }
 
-// rtpBaseAudioPayloadClass is the struct that's finalized
-type rtpBaseAudioPayloadClass struct {
+// rTPBaseAudioPayloadClass is the struct that's finalized
+type rTPBaseAudioPayloadClass struct {
 	native *C.GstRTPBaseAudioPayloadClass
 }
 
 // UnsafeRTPBaseAudioPayloadClassFromGlibBorrow is used to convert raw C.GstRTPBaseAudioPayloadClass pointers to go. This is used by the bindings internally.
 func UnsafeRTPBaseAudioPayloadClassFromGlibBorrow(p unsafe.Pointer) *RTPBaseAudioPayloadClass {
-	return &RTPBaseAudioPayloadClass{&rtpBaseAudioPayloadClass{(*C.GstRTPBaseAudioPayloadClass)(p)}}
+	return &RTPBaseAudioPayloadClass{&rTPBaseAudioPayloadClass{(*C.GstRTPBaseAudioPayloadClass)(p)}}
 }
 
 // UnsafeRTPBaseAudioPayloadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
@@ -8080,17 +8080,17 @@ func (r *RTPBaseAudioPayloadClass) ParentClass() *RTPBasePayloadClass {
 // 
 // RTPBaseDepayloadClass is the type struct for [RTPBaseDepayload]
 type RTPBaseDepayloadClass struct {
-	*rtpBaseDepayloadClass
+	*rTPBaseDepayloadClass
 }
 
-// rtpBaseDepayloadClass is the struct that's finalized
-type rtpBaseDepayloadClass struct {
+// rTPBaseDepayloadClass is the struct that's finalized
+type rTPBaseDepayloadClass struct {
 	native *C.GstRTPBaseDepayloadClass
 }
 
 // UnsafeRTPBaseDepayloadClassFromGlibBorrow is used to convert raw C.GstRTPBaseDepayloadClass pointers to go. This is used by the bindings internally.
 func UnsafeRTPBaseDepayloadClassFromGlibBorrow(p unsafe.Pointer) *RTPBaseDepayloadClass {
-	return &RTPBaseDepayloadClass{&rtpBaseDepayloadClass{(*C.GstRTPBaseDepayloadClass)(p)}}
+	return &RTPBaseDepayloadClass{&rTPBaseDepayloadClass{(*C.GstRTPBaseDepayloadClass)(p)}}
 }
 
 // UnsafeRTPBaseDepayloadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
@@ -8120,17 +8120,17 @@ func (r *RTPBaseDepayloadClass) ParentClass() *gst.ElementClass {
 // 
 // RTPBasePayloadClass is the type struct for [RTPBasePayload]
 type RTPBasePayloadClass struct {
-	*rtpBasePayloadClass
+	*rTPBasePayloadClass
 }
 
-// rtpBasePayloadClass is the struct that's finalized
-type rtpBasePayloadClass struct {
+// rTPBasePayloadClass is the struct that's finalized
+type rTPBasePayloadClass struct {
 	native *C.GstRTPBasePayloadClass
 }
 
 // UnsafeRTPBasePayloadClassFromGlibBorrow is used to convert raw C.GstRTPBasePayloadClass pointers to go. This is used by the bindings internally.
 func UnsafeRTPBasePayloadClassFromGlibBorrow(p unsafe.Pointer) *RTPBasePayloadClass {
-	return &RTPBasePayloadClass{&rtpBasePayloadClass{(*C.GstRTPBasePayloadClass)(p)}}
+	return &RTPBasePayloadClass{&rTPBasePayloadClass{(*C.GstRTPBasePayloadClass)(p)}}
 }
 
 // UnsafeRTPBasePayloadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
@@ -8160,17 +8160,17 @@ func (r *RTPBasePayloadClass) ParentClass() *gst.ElementClass {
 // #GstBuffer objects that contain RTP payloads. These buffers are typically of
 // 'application/x-rtp' #GstCaps.
 type RTPBuffer struct {
-	*rtpBuffer
+	*rTPBuffer
 }
 
-// rtpBuffer is the struct that's finalized
-type rtpBuffer struct {
+// rTPBuffer is the struct that's finalized
+type rTPBuffer struct {
 	native *C.GstRTPBuffer
 }
 
 // UnsafeRTPBufferFromGlibBorrow is used to convert raw C.GstRTPBuffer pointers to go. This is used by the bindings internally.
 func UnsafeRTPBufferFromGlibBorrow(p unsafe.Pointer) *RTPBuffer {
-	return &RTPBuffer{&rtpBuffer{(*C.GstRTPBuffer)(p)}}
+	return &RTPBuffer{&rTPBuffer{(*C.GstRTPBuffer)(p)}}
 }
 
 // UnsafeRTPBufferFromGlibNone is used to convert raw C.GstRTPBuffer pointers to go without transferring ownership. This is used by the bindings internally.
@@ -8178,8 +8178,8 @@ func UnsafeRTPBufferFromGlibNone(p unsafe.Pointer) *RTPBuffer {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTPBufferFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtpBuffer,
-		func (intern *rtpBuffer) {
+		wrapped.rTPBuffer,
+		func (intern *rTPBuffer) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -8190,8 +8190,8 @@ func UnsafeRTPBufferFromGlibNone(p unsafe.Pointer) *RTPBuffer {
 func UnsafeRTPBufferFromGlibFull(p unsafe.Pointer) *RTPBuffer {
 	wrapped := UnsafeRTPBufferFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtpBuffer,
-		func (intern *rtpBuffer) {
+		wrapped.rTPBuffer,
+		func (intern *rTPBuffer) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -8213,7 +8213,7 @@ func UnsafeRTPBufferToGlibNone(r *RTPBuffer) unsafe.Pointer {
 // UnsafeRTPBufferToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeRTPBufferToGlibFull(r *RTPBuffer) unsafe.Pointer {
-	runtime.SetFinalizer(r.rtpBuffer, nil)
+	runtime.SetFinalizer(r.rTPBuffer, nil)
 	_p := unsafe.Pointer(r.native)
 	r.native = nil // RTPBuffer is invalid from here on
 	return _p
@@ -9260,17 +9260,17 @@ func (rtp *RTPBuffer) Unmap() {
 // 
 // RTPHeaderExtensionClass is the type struct for [RTPHeaderExtension]
 type RTPHeaderExtensionClass struct {
-	*rtpHeaderExtensionClass
+	*rTPHeaderExtensionClass
 }
 
-// rtpHeaderExtensionClass is the struct that's finalized
-type rtpHeaderExtensionClass struct {
+// rTPHeaderExtensionClass is the struct that's finalized
+type rTPHeaderExtensionClass struct {
 	native *C.GstRTPHeaderExtensionClass
 }
 
 // UnsafeRTPHeaderExtensionClassFromGlibBorrow is used to convert raw C.GstRTPHeaderExtensionClass pointers to go. This is used by the bindings internally.
 func UnsafeRTPHeaderExtensionClassFromGlibBorrow(p unsafe.Pointer) *RTPHeaderExtensionClass {
-	return &RTPHeaderExtensionClass{&rtpHeaderExtensionClass{(*C.GstRTPHeaderExtensionClass)(p)}}
+	return &RTPHeaderExtensionClass{&rTPHeaderExtensionClass{(*C.GstRTPHeaderExtensionClass)(p)}}
 }
 
 // UnsafeRTPHeaderExtensionClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
@@ -9318,17 +9318,17 @@ func (klass *RTPHeaderExtensionClass) SetURI(uri string) {
 //
 // Structure holding default payload type information.
 type RTPPayloadInfo struct {
-	*rtpPayloadInfo
+	*rTPPayloadInfo
 }
 
-// rtpPayloadInfo is the struct that's finalized
-type rtpPayloadInfo struct {
+// rTPPayloadInfo is the struct that's finalized
+type rTPPayloadInfo struct {
 	native *C.GstRTPPayloadInfo
 }
 
 // UnsafeRTPPayloadInfoFromGlibBorrow is used to convert raw C.GstRTPPayloadInfo pointers to go. This is used by the bindings internally.
 func UnsafeRTPPayloadInfoFromGlibBorrow(p unsafe.Pointer) *RTPPayloadInfo {
-	return &RTPPayloadInfo{&rtpPayloadInfo{(*C.GstRTPPayloadInfo)(p)}}
+	return &RTPPayloadInfo{&rTPPayloadInfo{(*C.GstRTPPayloadInfo)(p)}}
 }
 
 // UnsafeRTPPayloadInfoFromGlibNone is used to convert raw C.GstRTPPayloadInfo pointers to go without transferring ownership. This is used by the bindings internally.
@@ -9336,8 +9336,8 @@ func UnsafeRTPPayloadInfoFromGlibNone(p unsafe.Pointer) *RTPPayloadInfo {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTPPayloadInfoFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtpPayloadInfo,
-		func (intern *rtpPayloadInfo) {
+		wrapped.rTPPayloadInfo,
+		func (intern *rTPPayloadInfo) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -9348,8 +9348,8 @@ func UnsafeRTPPayloadInfoFromGlibNone(p unsafe.Pointer) *RTPPayloadInfo {
 func UnsafeRTPPayloadInfoFromGlibFull(p unsafe.Pointer) *RTPPayloadInfo {
 	wrapped := UnsafeRTPPayloadInfoFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtpPayloadInfo,
-		func (intern *rtpPayloadInfo) {
+		wrapped.rTPPayloadInfo,
+		func (intern *rTPPayloadInfo) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -9371,7 +9371,7 @@ func UnsafeRTPPayloadInfoToGlibNone(r *RTPPayloadInfo) unsafe.Pointer {
 // UnsafeRTPPayloadInfoToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeRTPPayloadInfoToGlibFull(r *RTPPayloadInfo) unsafe.Pointer {
-	runtime.SetFinalizer(r.rtpPayloadInfo, nil)
+	runtime.SetFinalizer(r.rTPPayloadInfo, nil)
 	_p := unsafe.Pointer(r.native)
 	r.native = nil // RTPPayloadInfo is invalid from here on
 	return _p
@@ -9451,17 +9451,17 @@ func RTPPayloadInfoForPt(payloadType uint8) *RTPPayloadInfo {
 //
 // Meta describing the source(s) of the buffer.
 type RTPSourceMeta struct {
-	*rtpSourceMeta
+	*rTPSourceMeta
 }
 
-// rtpSourceMeta is the struct that's finalized
-type rtpSourceMeta struct {
+// rTPSourceMeta is the struct that's finalized
+type rTPSourceMeta struct {
 	native *C.GstRTPSourceMeta
 }
 
 // UnsafeRTPSourceMetaFromGlibBorrow is used to convert raw C.GstRTPSourceMeta pointers to go. This is used by the bindings internally.
 func UnsafeRTPSourceMetaFromGlibBorrow(p unsafe.Pointer) *RTPSourceMeta {
-	return &RTPSourceMeta{&rtpSourceMeta{(*C.GstRTPSourceMeta)(p)}}
+	return &RTPSourceMeta{&rTPSourceMeta{(*C.GstRTPSourceMeta)(p)}}
 }
 
 // UnsafeRTPSourceMetaFromGlibNone is used to convert raw C.GstRTPSourceMeta pointers to go without transferring ownership. This is used by the bindings internally.
@@ -9469,8 +9469,8 @@ func UnsafeRTPSourceMetaFromGlibNone(p unsafe.Pointer) *RTPSourceMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTPSourceMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtpSourceMeta,
-		func (intern *rtpSourceMeta) {
+		wrapped.rTPSourceMeta,
+		func (intern *rTPSourceMeta) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -9481,8 +9481,8 @@ func UnsafeRTPSourceMetaFromGlibNone(p unsafe.Pointer) *RTPSourceMeta {
 func UnsafeRTPSourceMetaFromGlibFull(p unsafe.Pointer) *RTPSourceMeta {
 	wrapped := UnsafeRTPSourceMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtpSourceMeta,
-		func (intern *rtpSourceMeta) {
+		wrapped.rTPSourceMeta,
+		func (intern *rTPSourceMeta) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -9504,7 +9504,7 @@ func UnsafeRTPSourceMetaToGlibNone(r *RTPSourceMeta) unsafe.Pointer {
 // UnsafeRTPSourceMetaToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeRTPSourceMetaToGlibFull(r *RTPSourceMeta) unsafe.Pointer {
-	runtime.SetFinalizer(r.rtpSourceMeta, nil)
+	runtime.SetFinalizer(r.rTPSourceMeta, nil)
 	_p := unsafe.Pointer(r.native)
 	r.native = nil // RTPSourceMeta is invalid from here on
 	return _p

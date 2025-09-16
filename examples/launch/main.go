@@ -31,7 +31,7 @@ func main() {
 	go func() {
 		for msg := range pipeline.GetBus().Messages(ctx) {
 			switch msg.Type() {
-			case gst.MessageEos: // When end-of-stream is received stop the main loop
+			case gst.MessageEOS: // When end-of-stream is received stop the main loop
 				fmt.Println("End-of-stream received")
 				cancel()
 			case gst.MessageError: // Error messages are always fatal

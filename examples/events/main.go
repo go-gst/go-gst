@@ -71,7 +71,7 @@ func main() {
 
 	for msg := range bus.Messages(ctx) {
 		switch msg.Type() {
-		case gst.MessageEos:
+		case gst.MessageEOS:
 			fmt.Println("Received EOS")
 			// An EndOfStream event was sent to the pipeline, so we tell our main loop
 			// to stop execution here.

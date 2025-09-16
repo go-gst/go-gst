@@ -71,7 +71,7 @@ func run(ctx context.Context) error {
 					return
 				}
 
-			case gst.MessageEos:
+			case gst.MessageEOS:
 				fmt.Println("reached EOS")
 				cancel()
 				return

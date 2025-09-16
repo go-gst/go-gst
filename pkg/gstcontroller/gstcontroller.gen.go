@@ -52,20 +52,20 @@ func init() {
 type InterpolationMode C.int
 
 const (
-	// InterpolationModeNone wraps INTERPOLATION_MODE_NONE
+	// InterpolationModeNone wraps GST_INTERPOLATION_MODE_NONE
 	//
 	// steps-like interpolation, default
 	InterpolationModeNone InterpolationMode = 0
-	// InterpolationModeLinear wraps INTERPOLATION_MODE_LINEAR
+	// InterpolationModeLinear wraps GST_INTERPOLATION_MODE_LINEAR
 	//
 	// linear interpolation
 	InterpolationModeLinear InterpolationMode = 1
-	// InterpolationModeCubic wraps INTERPOLATION_MODE_CUBIC
+	// InterpolationModeCubic wraps GST_INTERPOLATION_MODE_CUBIC
 	//
 	// cubic interpolation (natural), may overshoot
 	//   the min or max values set by the control point, but is more 'curvy'
 	InterpolationModeCubic InterpolationMode = 2
-	// InterpolationModeCubicMonotonic wraps INTERPOLATION_MODE_CUBIC_MONOTONIC
+	// InterpolationModeCubicMonotonic wraps GST_INTERPOLATION_MODE_CUBIC_MONOTONIC
 	//
 	// monotonic cubic interpolation, will not
 	//   produce any values outside of the min-max range set by the control points
@@ -103,23 +103,23 @@ func (e InterpolationMode) String() string {
 type LFOWaveform C.int
 
 const (
-	// LfoWaveformSine wraps LFO_WAVEFORM_SINE
+	// LfoWaveformSine wraps GST_LFO_WAVEFORM_SINE
 	//
 	// sine waveform
 	LfoWaveformSine LFOWaveform = 0
-	// LfoWaveformSquare wraps LFO_WAVEFORM_SQUARE
+	// LfoWaveformSquare wraps GST_LFO_WAVEFORM_SQUARE
 	//
 	// square waveform
 	LfoWaveformSquare LFOWaveform = 1
-	// LfoWaveformSaw wraps LFO_WAVEFORM_SAW
+	// LfoWaveformSaw wraps GST_LFO_WAVEFORM_SAW
 	//
 	// saw waveform
 	LfoWaveformSaw LFOWaveform = 2
-	// LfoWaveformReverseSaw wraps LFO_WAVEFORM_REVERSE_SAW
+	// LfoWaveformReverseSaw wraps GST_LFO_WAVEFORM_REVERSE_SAW
 	//
 	// reverse saw waveform
 	LfoWaveformReverseSaw LFOWaveform = 3
-	// LfoWaveformTriangle wraps LFO_WAVEFORM_TRIANGLE
+	// LfoWaveformTriangle wraps GST_LFO_WAVEFORM_TRIANGLE
 	//
 	// triangle waveform
 	LfoWaveformTriangle LFOWaveform = 4
@@ -1487,17 +1487,17 @@ func RegisterInterpolationControlSourceSubClass[InstanceT InterpolationControlSo
 // 
 // ARGBControlBindingClass is the type struct for [ARGBControlBinding]
 type ARGBControlBindingClass struct {
-	*argbControlBindingClass
+	*aRGBControlBindingClass
 }
 
-// argbControlBindingClass is the struct that's finalized
-type argbControlBindingClass struct {
+// aRGBControlBindingClass is the struct that's finalized
+type aRGBControlBindingClass struct {
 	native *C.GstARGBControlBindingClass
 }
 
 // UnsafeARGBControlBindingClassFromGlibBorrow is used to convert raw C.GstARGBControlBindingClass pointers to go. This is used by the bindings internally.
 func UnsafeARGBControlBindingClassFromGlibBorrow(p unsafe.Pointer) *ARGBControlBindingClass {
-	return &ARGBControlBindingClass{&argbControlBindingClass{(*C.GstARGBControlBindingClass)(p)}}
+	return &ARGBControlBindingClass{&aRGBControlBindingClass{(*C.GstARGBControlBindingClass)(p)}}
 }
 
 // UnsafeARGBControlBindingClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
@@ -1706,17 +1706,17 @@ func (i *InterpolationControlSourceClass) ParentClass() *TimedValueControlSource
 // 
 // LFOControlSourceClass is the type struct for [LFOControlSource]
 type LFOControlSourceClass struct {
-	*lfoControlSourceClass
+	*lFOControlSourceClass
 }
 
-// lfoControlSourceClass is the struct that's finalized
-type lfoControlSourceClass struct {
+// lFOControlSourceClass is the struct that's finalized
+type lFOControlSourceClass struct {
 	native *C.GstLFOControlSourceClass
 }
 
 // UnsafeLFOControlSourceClassFromGlibBorrow is used to convert raw C.GstLFOControlSourceClass pointers to go. This is used by the bindings internally.
 func UnsafeLFOControlSourceClassFromGlibBorrow(p unsafe.Pointer) *LFOControlSourceClass {
-	return &LFOControlSourceClass{&lfoControlSourceClass{(*C.GstLFOControlSourceClass)(p)}}
+	return &LFOControlSourceClass{&lFOControlSourceClass{(*C.GstLFOControlSourceClass)(p)}}
 }
 
 // UnsafeLFOControlSourceClassFree unrefs/frees the underlying resource. This is used by the bindings internally.

@@ -95,6 +95,18 @@ func _gotk4_gstgl1_GLBaseFilter_gl_stop(carg0 *C.GstGLBaseFilter) {
 	fn(carg0)
 }
 
+//export _gotk4_gstgl1_GLBaseMemoryAllocator_alloc
+func _gotk4_gstgl1_GLBaseMemoryAllocator_alloc(carg0 *C.GstGLBaseMemoryAllocator, carg1 *C.GstGLAllocationParams) (cret *C.GstGLBaseMemory) {
+	var fn func(carg0 *C.GstGLBaseMemoryAllocator, carg1 *C.GstGLAllocationParams) (cret *C.GstGLBaseMemory)
+	{
+		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstgl1_GLBaseMemoryAllocator_alloc").(func(carg0 *C.GstGLBaseMemoryAllocator, carg1 *C.GstGLAllocationParams) (cret *C.GstGLBaseMemory))
+		if fn == nil {
+			panic("_gotk4_gstgl1_GLBaseMemoryAllocator_alloc: no function pointer found")
+		}
+	}
+	return fn(carg0, carg1)
+}
+
 //export _gotk4_gstgl1_GLBaseMixer_gl_start
 func _gotk4_gstgl1_GLBaseMixer_gl_start(carg0 *C.GstGLBaseMixer) (cret C.gboolean) {
 	var fn func(carg0 *C.GstGLBaseMixer) (cret C.gboolean)

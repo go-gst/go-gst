@@ -462,16 +462,16 @@ const BASE_PARSE_FLAG_LOST_SYNC = 1
 type AggregatorStartTimeSelection C.int
 
 const (
-	// AggregatorStartTimeSelectionZero wraps AGGREGATOR_START_TIME_SELECTION_ZERO
+	// AggregatorStartTimeSelectionZero wraps GST_AGGREGATOR_START_TIME_SELECTION_ZERO
 	//
 	// Start at running time 0.
 	AggregatorStartTimeSelectionZero AggregatorStartTimeSelection = 0
-	// AggregatorStartTimeSelectionFirst wraps AGGREGATOR_START_TIME_SELECTION_FIRST
+	// AggregatorStartTimeSelectionFirst wraps GST_AGGREGATOR_START_TIME_SELECTION_FIRST
 	//
 	// Start at the running time of
 	// the first buffer that is received.
 	AggregatorStartTimeSelectionFirst AggregatorStartTimeSelection = 1
-	// AggregatorStartTimeSelectionSet wraps AGGREGATOR_START_TIME_SELECTION_SET
+	// AggregatorStartTimeSelectionSet wraps GST_AGGREGATOR_START_TIME_SELECTION_SET
 	//
 	// Start at the running time
 	// selected by the `start-time` property.
@@ -507,35 +507,35 @@ func (e AggregatorStartTimeSelection) String() string {
 type BaseParseFrameFlags C.gint
 
 const (
-	// BaseParseFrameFlagNone wraps BASE_PARSE_FRAME_FLAG_NONE
+	// BaseParseFrameFlagNone wraps GST_BASE_PARSE_FRAME_FLAG_NONE
 	//
 	// no flag
 	BaseParseFrameFlagNone BaseParseFrameFlags = 0
-	// BaseParseFrameFlagNewFrame wraps BASE_PARSE_FRAME_FLAG_NEW_FRAME
+	// BaseParseFrameFlagNewFrame wraps GST_BASE_PARSE_FRAME_FLAG_NEW_FRAME
 	//
 	// set by baseclass if current frame
 	//   is passed for processing to the subclass for the first time
 	//   (and not set on subsequent calls with same data).
 	BaseParseFrameFlagNewFrame BaseParseFrameFlags = 1
-	// BaseParseFrameFlagNoFrame wraps BASE_PARSE_FRAME_FLAG_NO_FRAME
+	// BaseParseFrameFlagNoFrame wraps GST_BASE_PARSE_FRAME_FLAG_NO_FRAME
 	//
 	// set to indicate this buffer should not be
 	//   counted as frame, e.g. if this frame is dependent on a previous one.
 	//   As it is not counted as a frame, bitrate increases but frame to time
 	//   conversions are maintained.
 	BaseParseFrameFlagNoFrame BaseParseFrameFlags = 2
-	// BaseParseFrameFlagClip wraps BASE_PARSE_FRAME_FLAG_CLIP
+	// BaseParseFrameFlagClip wraps GST_BASE_PARSE_FRAME_FLAG_CLIP
 	//
 	// @pre_push_frame can set this to indicate
 	//    that regular segment clipping can still be performed (as opposed to
 	//    any custom one having been done).
 	BaseParseFrameFlagClip BaseParseFrameFlags = 4
-	// BaseParseFrameFlagDrop wraps BASE_PARSE_FRAME_FLAG_DROP
+	// BaseParseFrameFlagDrop wraps GST_BASE_PARSE_FRAME_FLAG_DROP
 	//
 	// indicates to @finish_frame that the
 	//    the frame should be dropped (and might be handled internally by subclass)
 	BaseParseFrameFlagDrop BaseParseFrameFlags = 8
-	// BaseParseFrameFlagQueue wraps BASE_PARSE_FRAME_FLAG_QUEUE
+	// BaseParseFrameFlagQueue wraps GST_BASE_PARSE_FRAME_FLAG_QUEUE
 	//
 	// indicates to @finish_frame that the
 	//    the frame should be queued for now and processed fully later
@@ -581,15 +581,15 @@ func (f BaseParseFrameFlags) String() string {
 type BaseSrcFlags C.gint
 
 const (
-	// BaseSrcFlagStarting wraps BASE_SRC_FLAG_STARTING
+	// BaseSrcFlagStarting wraps GST_BASE_SRC_FLAG_STARTING
 	//
 	// has source is starting
 	BaseSrcFlagStarting BaseSrcFlags = 16384
-	// BaseSrcFlagStarted wraps BASE_SRC_FLAG_STARTED
+	// BaseSrcFlagStarted wraps GST_BASE_SRC_FLAG_STARTED
 	//
 	// has source been started
 	BaseSrcFlagStarted BaseSrcFlags = 32768
-	// BaseSrcFlagLast wraps BASE_SRC_FLAG_LAST
+	// BaseSrcFlagLast wraps GST_BASE_SRC_FLAG_LAST
 	//
 	// offset to define more flags
 	BaseSrcFlagLast BaseSrcFlags = 1048576
@@ -622,25 +622,25 @@ func (f BaseSrcFlags) String() string {
 type CollectPadsStateFlags C.gint
 
 const (
-	// CollectPadsStateEos wraps COLLECT_PADS_STATE_EOS
+	// CollectPadsStateEOS wraps GST_COLLECT_PADS_STATE_EOS
 	//
 	// Set if collectdata's pad is EOS.
-	CollectPadsStateEos CollectPadsStateFlags = 1
-	// CollectPadsStateFlushing wraps COLLECT_PADS_STATE_FLUSHING
+	CollectPadsStateEOS CollectPadsStateFlags = 1
+	// CollectPadsStateFlushing wraps GST_COLLECT_PADS_STATE_FLUSHING
 	//
 	// Set if collectdata's pad is flushing.
 	CollectPadsStateFlushing CollectPadsStateFlags = 2
-	// CollectPadsStateNewSegment wraps COLLECT_PADS_STATE_NEW_SEGMENT
+	// CollectPadsStateNewSegment wraps GST_COLLECT_PADS_STATE_NEW_SEGMENT
 	//
 	// Set if collectdata's pad received a
 	//                                      new_segment event.
 	CollectPadsStateNewSegment CollectPadsStateFlags = 4
-	// CollectPadsStateWaiting wraps COLLECT_PADS_STATE_WAITING
+	// CollectPadsStateWaiting wraps GST_COLLECT_PADS_STATE_WAITING
 	//
 	// Set if collectdata's pad must be waited
 	//                                      for when collecting.
 	CollectPadsStateWaiting CollectPadsStateFlags = 8
-	// CollectPadsStateLocked wraps COLLECT_PADS_STATE_LOCKED
+	// CollectPadsStateLocked wraps GST_COLLECT_PADS_STATE_LOCKED
 	//
 	// Set collectdata's pad WAITING state must
 	//                                      not be changed.
@@ -659,8 +659,8 @@ func (f CollectPadsStateFlags) String() string {
 	}
 
 	var parts []string
-	if (f & CollectPadsStateEos) != 0 {
-		parts = append(parts, "CollectPadsStateEos")
+	if (f & CollectPadsStateEOS) != 0 {
+		parts = append(parts, "CollectPadsStateEOS")
 	}
 	if (f & CollectPadsStateFlushing) != 0 {
 		parts = append(parts, "CollectPadsStateFlushing")
@@ -5656,12 +5656,12 @@ type AggregatorPad interface {
 	// a call to gst_aggregator_pad_peek_buffer() or
 	// gst_aggregator_pad_pop_buffer().
 	HasBuffer() bool
-	// IsEos wraps gst_aggregator_pad_is_eos
+	// IsEOS wraps gst_aggregator_pad_is_eos
 	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
-	IsEos() bool
+	IsEOS() bool
 	// IsInactive wraps gst_aggregator_pad_is_inactive
 	// 
 	// The function returns the following values:
@@ -5829,12 +5829,12 @@ func (pad *AggregatorPadInstance) HasBuffer() bool {
 	return goret
 }
 
-// IsEos wraps gst_aggregator_pad_is_eos
+// IsEOS wraps gst_aggregator_pad_is_eos
 // 
 // The function returns the following values:
 // 
 // 	- goret bool 
-func (pad *AggregatorPadInstance) IsEos() bool {
+func (pad *AggregatorPadInstance) IsEOS() bool {
 	var carg0 *C.GstAggregatorPad // in, none, converted
 	var cret  C.gboolean          // return
 
@@ -11423,7 +11423,7 @@ type BaseSrc interface {
 	// different thread and are thus allowed to perform blocking operations. Any
 	// blocking operation should be unblocked with the unlock vmethod.
 	SetAsync(bool)
-	// SetAutomaticEos wraps gst_base_src_set_automatic_eos
+	// SetAutomaticEOS wraps gst_base_src_set_automatic_eos
 	// 
 	// The function takes the following parameters:
 	// 
@@ -11439,7 +11439,7 @@ type BaseSrc interface {
 	// @automatic_eos is %TRUE. Since 1.16, if @automatic_eos is %FALSE an
 	// EOS will be pushed only when the #GstBaseSrcClass::create implementation
 	// returns %GST_FLOW_EOS.
-	SetAutomaticEos(bool)
+	SetAutomaticEOS(bool)
 	// SetBlocksize wraps gst_base_src_set_blocksize
 	// 
 	// The function takes the following parameters:
@@ -12204,7 +12204,7 @@ func (src *BaseSrcInstance) SetAsync(async bool) {
 	runtime.KeepAlive(async)
 }
 
-// SetAutomaticEos wraps gst_base_src_set_automatic_eos
+// SetAutomaticEOS wraps gst_base_src_set_automatic_eos
 // 
 // The function takes the following parameters:
 // 
@@ -12220,7 +12220,7 @@ func (src *BaseSrcInstance) SetAsync(async bool) {
 // @automatic_eos is %TRUE. Since 1.16, if @automatic_eos is %FALSE an
 // EOS will be pushed only when the #GstBaseSrcClass::create implementation
 // returns %GST_FLOW_EOS.
-func (src *BaseSrcInstance) SetAutomaticEos(automaticEos bool) {
+func (src *BaseSrcInstance) SetAutomaticEOS(automaticEos bool) {
 	var carg0 *C.GstBaseSrc // in, none, converted
 	var carg1 C.gboolean    // in
 
@@ -14385,7 +14385,7 @@ type BaseTransform interface {
 	//                  caps, what caps are allowed on the other pad in this
 	//                  element ?
 	ParentTransformCaps(direction gst.PadDirection, caps *gst.Caps, filter *gst.Caps) *gst.Caps
-	// ParentTransformIP calls the default implementations of the transform_ip virtual method.
+	// ParentTransformIp calls the default implementations of the transform_ip virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -14398,7 +14398,7 @@ type BaseTransform interface {
 	//
 	// Required if the element operates in-place.
 	//                  Transform the incoming buffer in-place.
-	ParentTransformIP(buf *gst.Buffer) gst.FlowReturn
+	ParentTransformIp(buf *gst.Buffer) gst.FlowReturn
 	// ParentTransformMeta calls the default implementations of the transform_meta virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
@@ -15158,7 +15158,7 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	//                  caps, what caps are allowed on the other pad in this
 	//                  element ?
 	TransformCaps func(Instance, gst.PadDirection, *gst.Caps, *gst.Caps) *gst.Caps
-	// // TransformIP allows you to override the implementation of the virtual method transform_ip.
+	// // TransformIp allows you to override the implementation of the virtual method transform_ip.
 	// 
 	// The function takes the following parameters:
 	// 
@@ -15170,7 +15170,7 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	//
 	// Required if the element operates in-place.
 	//                  Transform the incoming buffer in-place.
-	TransformIP func(Instance, *gst.Buffer) gst.FlowReturn
+	TransformIp func(Instance, *gst.Buffer) gst.FlowReturn
 	// // TransformMeta allows you to override the implementation of the virtual method transform_meta.
 	// 
 	// The function takes the following parameters:
@@ -15676,7 +15676,7 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 		)
 	}
 
-	if overrides.TransformIP != nil {
+	if overrides.TransformIp != nil {
 		pclass.transform_ip = (*[0]byte)(C._gotk4_gstbase1_BaseTransform_transform_ip)
 		classdata.StoreVirtualMethod(
 			unsafe.Pointer(pclass),
@@ -15689,7 +15689,7 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 				trans = UnsafeBaseTransformFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				buf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
-				goret = overrides.TransformIP(trans, buf)
+				goret = overrides.TransformIp(trans, buf)
 
 				cret = C.GstFlowReturn(goret)
 
@@ -16475,7 +16475,7 @@ func (trans *BaseTransformInstance) ParentTransformCaps(direction gst.PadDirecti
 	return goret
 }
 
-// ParentTransformIP calls the default implementations of the transform_ip virtual method.
+// ParentTransformIp calls the default implementations of the transform_ip virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -16488,7 +16488,7 @@ func (trans *BaseTransformInstance) ParentTransformCaps(direction gst.PadDirecti
 //
 // Required if the element operates in-place.
 //                  Transform the incoming buffer in-place.
-func (trans *BaseTransformInstance) ParentTransformIP(buf *gst.Buffer) gst.FlowReturn {
+func (trans *BaseTransformInstance) ParentTransformIp(buf *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstBaseTransform
 	var carg1 *C.GstBuffer    // in, none, converted
 	var cret  C.GstFlowReturn // return, none, casted
@@ -19768,7 +19768,7 @@ func (reader *ByteReader) GetFloat32Be() (float32, bool) {
 	return val, goret
 }
 
-// GetFloat32LE wraps gst_byte_reader_get_float32_le
+// GetFloat32Le wraps gst_byte_reader_get_float32_le
 // 
 // The function returns the following values:
 // 
@@ -19777,7 +19777,7 @@ func (reader *ByteReader) GetFloat32Be() (float32, bool) {
 //
 // Read a 32 bit little endian floating point value into @val
 // and update the current position.
-func (reader *ByteReader) GetFloat32LE() (float32, bool) {
+func (reader *ByteReader) GetFloat32Le() (float32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gfloat         // out, full, casted
 	var cret  C.gboolean       // return
@@ -19828,7 +19828,7 @@ func (reader *ByteReader) GetFloat64Be() (float64, bool) {
 	return val, goret
 }
 
-// GetFloat64LE wraps gst_byte_reader_get_float64_le
+// GetFloat64Le wraps gst_byte_reader_get_float64_le
 // 
 // The function returns the following values:
 // 
@@ -19837,7 +19837,7 @@ func (reader *ByteReader) GetFloat64Be() (float64, bool) {
 //
 // Read a 64 bit little endian floating point value into @val
 // and update the current position.
-func (reader *ByteReader) GetFloat64LE() (float64, bool) {
+func (reader *ByteReader) GetFloat64Le() (float64, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gdouble        // out, full, casted
 	var cret  C.gboolean       // return
@@ -19888,7 +19888,7 @@ func (reader *ByteReader) GetInt16Be() (int16, bool) {
 	return val, goret
 }
 
-// GetInt16LE wraps gst_byte_reader_get_int16_le
+// GetInt16Le wraps gst_byte_reader_get_int16_le
 // 
 // The function returns the following values:
 // 
@@ -19897,7 +19897,7 @@ func (reader *ByteReader) GetInt16Be() (int16, bool) {
 //
 // Read a signed 16 bit little endian integer into @val
 // and update the current position.
-func (reader *ByteReader) GetInt16LE() (int16, bool) {
+func (reader *ByteReader) GetInt16Le() (int16, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint16         // out, full, casted
 	var cret  C.gboolean       // return
@@ -19948,7 +19948,7 @@ func (reader *ByteReader) GetInt24Be() (int32, bool) {
 	return val, goret
 }
 
-// GetInt24LE wraps gst_byte_reader_get_int24_le
+// GetInt24Le wraps gst_byte_reader_get_int24_le
 // 
 // The function returns the following values:
 // 
@@ -19957,7 +19957,7 @@ func (reader *ByteReader) GetInt24Be() (int32, bool) {
 //
 // Read a signed 24 bit little endian integer into @val
 // and update the current position.
-func (reader *ByteReader) GetInt24LE() (int32, bool) {
+func (reader *ByteReader) GetInt24Le() (int32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint32         // out, full, casted
 	var cret  C.gboolean       // return
@@ -20008,7 +20008,7 @@ func (reader *ByteReader) GetInt32Be() (int32, bool) {
 	return val, goret
 }
 
-// GetInt32LE wraps gst_byte_reader_get_int32_le
+// GetInt32Le wraps gst_byte_reader_get_int32_le
 // 
 // The function returns the following values:
 // 
@@ -20017,7 +20017,7 @@ func (reader *ByteReader) GetInt32Be() (int32, bool) {
 //
 // Read a signed 32 bit little endian integer into @val
 // and update the current position.
-func (reader *ByteReader) GetInt32LE() (int32, bool) {
+func (reader *ByteReader) GetInt32Le() (int32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint32         // out, full, casted
 	var cret  C.gboolean       // return
@@ -20068,7 +20068,7 @@ func (reader *ByteReader) GetInt64Be() (int64, bool) {
 	return val, goret
 }
 
-// GetInt64LE wraps gst_byte_reader_get_int64_le
+// GetInt64Le wraps gst_byte_reader_get_int64_le
 // 
 // The function returns the following values:
 // 
@@ -20077,7 +20077,7 @@ func (reader *ByteReader) GetInt64Be() (int64, bool) {
 //
 // Read a signed 64 bit little endian integer into @val
 // and update the current position.
-func (reader *ByteReader) GetInt64LE() (int64, bool) {
+func (reader *ByteReader) GetInt64Le() (int64, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint64         // out, full, casted
 	var cret  C.gboolean       // return
@@ -20266,7 +20266,7 @@ func (reader *ByteReader) GetUint16Be() (uint16, bool) {
 	return val, goret
 }
 
-// GetUint16LE wraps gst_byte_reader_get_uint16_le
+// GetUint16Le wraps gst_byte_reader_get_uint16_le
 // 
 // The function returns the following values:
 // 
@@ -20275,7 +20275,7 @@ func (reader *ByteReader) GetUint16Be() (uint16, bool) {
 //
 // Read an unsigned 16 bit little endian integer into @val
 // and update the current position.
-func (reader *ByteReader) GetUint16LE() (uint16, bool) {
+func (reader *ByteReader) GetUint16Le() (uint16, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint16        // out, full, casted
 	var cret  C.gboolean       // return
@@ -20326,7 +20326,7 @@ func (reader *ByteReader) GetUint24Be() (uint32, bool) {
 	return val, goret
 }
 
-// GetUint24LE wraps gst_byte_reader_get_uint24_le
+// GetUint24Le wraps gst_byte_reader_get_uint24_le
 // 
 // The function returns the following values:
 // 
@@ -20335,7 +20335,7 @@ func (reader *ByteReader) GetUint24Be() (uint32, bool) {
 //
 // Read an unsigned 24 bit little endian integer into @val
 // and update the current position.
-func (reader *ByteReader) GetUint24LE() (uint32, bool) {
+func (reader *ByteReader) GetUint24Le() (uint32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint32        // out, full, casted
 	var cret  C.gboolean       // return
@@ -20386,7 +20386,7 @@ func (reader *ByteReader) GetUint32Be() (uint32, bool) {
 	return val, goret
 }
 
-// GetUint32LE wraps gst_byte_reader_get_uint32_le
+// GetUint32Le wraps gst_byte_reader_get_uint32_le
 // 
 // The function returns the following values:
 // 
@@ -20395,7 +20395,7 @@ func (reader *ByteReader) GetUint32Be() (uint32, bool) {
 //
 // Read an unsigned 32 bit little endian integer into @val
 // and update the current position.
-func (reader *ByteReader) GetUint32LE() (uint32, bool) {
+func (reader *ByteReader) GetUint32Le() (uint32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint32        // out, full, casted
 	var cret  C.gboolean       // return
@@ -20446,7 +20446,7 @@ func (reader *ByteReader) GetUint64Be() (uint64, bool) {
 	return val, goret
 }
 
-// GetUint64LE wraps gst_byte_reader_get_uint64_le
+// GetUint64Le wraps gst_byte_reader_get_uint64_le
 // 
 // The function returns the following values:
 // 
@@ -20455,7 +20455,7 @@ func (reader *ByteReader) GetUint64Be() (uint64, bool) {
 //
 // Read an unsigned 64 bit little endian integer into @val
 // and update the current position.
-func (reader *ByteReader) GetUint64LE() (uint64, bool) {
+func (reader *ByteReader) GetUint64Le() (uint64, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint64        // out, full, casted
 	var cret  C.gboolean       // return
@@ -20668,7 +20668,7 @@ func (reader *ByteReader) PeekFloat32Be() (float32, bool) {
 	return val, goret
 }
 
-// PeekFloat32LE wraps gst_byte_reader_peek_float32_le
+// PeekFloat32Le wraps gst_byte_reader_peek_float32_le
 // 
 // The function returns the following values:
 // 
@@ -20677,7 +20677,7 @@ func (reader *ByteReader) PeekFloat32Be() (float32, bool) {
 //
 // Read a 32 bit little endian floating point value into @val
 // but keep the current position.
-func (reader *ByteReader) PeekFloat32LE() (float32, bool) {
+func (reader *ByteReader) PeekFloat32Le() (float32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gfloat         // out, full, casted
 	var cret  C.gboolean       // return
@@ -20728,7 +20728,7 @@ func (reader *ByteReader) PeekFloat64Be() (float64, bool) {
 	return val, goret
 }
 
-// PeekFloat64LE wraps gst_byte_reader_peek_float64_le
+// PeekFloat64Le wraps gst_byte_reader_peek_float64_le
 // 
 // The function returns the following values:
 // 
@@ -20737,7 +20737,7 @@ func (reader *ByteReader) PeekFloat64Be() (float64, bool) {
 //
 // Read a 64 bit little endian floating point value into @val
 // but keep the current position.
-func (reader *ByteReader) PeekFloat64LE() (float64, bool) {
+func (reader *ByteReader) PeekFloat64Le() (float64, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gdouble        // out, full, casted
 	var cret  C.gboolean       // return
@@ -20788,7 +20788,7 @@ func (reader *ByteReader) PeekInt16Be() (int16, bool) {
 	return val, goret
 }
 
-// PeekInt16LE wraps gst_byte_reader_peek_int16_le
+// PeekInt16Le wraps gst_byte_reader_peek_int16_le
 // 
 // The function returns the following values:
 // 
@@ -20797,7 +20797,7 @@ func (reader *ByteReader) PeekInt16Be() (int16, bool) {
 //
 // Read a signed 16 bit little endian integer into @val
 // but keep the current position.
-func (reader *ByteReader) PeekInt16LE() (int16, bool) {
+func (reader *ByteReader) PeekInt16Le() (int16, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint16         // out, full, casted
 	var cret  C.gboolean       // return
@@ -20848,7 +20848,7 @@ func (reader *ByteReader) PeekInt24Be() (int32, bool) {
 	return val, goret
 }
 
-// PeekInt24LE wraps gst_byte_reader_peek_int24_le
+// PeekInt24Le wraps gst_byte_reader_peek_int24_le
 // 
 // The function returns the following values:
 // 
@@ -20857,7 +20857,7 @@ func (reader *ByteReader) PeekInt24Be() (int32, bool) {
 //
 // Read a signed 24 bit little endian integer into @val
 // but keep the current position.
-func (reader *ByteReader) PeekInt24LE() (int32, bool) {
+func (reader *ByteReader) PeekInt24Le() (int32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint32         // out, full, casted
 	var cret  C.gboolean       // return
@@ -20908,7 +20908,7 @@ func (reader *ByteReader) PeekInt32Be() (int32, bool) {
 	return val, goret
 }
 
-// PeekInt32LE wraps gst_byte_reader_peek_int32_le
+// PeekInt32Le wraps gst_byte_reader_peek_int32_le
 // 
 // The function returns the following values:
 // 
@@ -20917,7 +20917,7 @@ func (reader *ByteReader) PeekInt32Be() (int32, bool) {
 //
 // Read a signed 32 bit little endian integer into @val
 // but keep the current position.
-func (reader *ByteReader) PeekInt32LE() (int32, bool) {
+func (reader *ByteReader) PeekInt32Le() (int32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint32         // out, full, casted
 	var cret  C.gboolean       // return
@@ -20968,7 +20968,7 @@ func (reader *ByteReader) PeekInt64Be() (int64, bool) {
 	return val, goret
 }
 
-// PeekInt64LE wraps gst_byte_reader_peek_int64_le
+// PeekInt64Le wraps gst_byte_reader_peek_int64_le
 // 
 // The function returns the following values:
 // 
@@ -20977,7 +20977,7 @@ func (reader *ByteReader) PeekInt64Be() (int64, bool) {
 //
 // Read a signed 64 bit little endian integer into @val
 // but keep the current position.
-func (reader *ByteReader) PeekInt64LE() (int64, bool) {
+func (reader *ByteReader) PeekInt64Le() (int64, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.gint64         // out, full, casted
 	var cret  C.gboolean       // return
@@ -21097,7 +21097,7 @@ func (reader *ByteReader) PeekUint16Be() (uint16, bool) {
 	return val, goret
 }
 
-// PeekUint16LE wraps gst_byte_reader_peek_uint16_le
+// PeekUint16Le wraps gst_byte_reader_peek_uint16_le
 // 
 // The function returns the following values:
 // 
@@ -21106,7 +21106,7 @@ func (reader *ByteReader) PeekUint16Be() (uint16, bool) {
 //
 // Read an unsigned 16 bit little endian integer into @val
 // but keep the current position.
-func (reader *ByteReader) PeekUint16LE() (uint16, bool) {
+func (reader *ByteReader) PeekUint16Le() (uint16, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint16        // out, full, casted
 	var cret  C.gboolean       // return
@@ -21157,7 +21157,7 @@ func (reader *ByteReader) PeekUint24Be() (uint32, bool) {
 	return val, goret
 }
 
-// PeekUint24LE wraps gst_byte_reader_peek_uint24_le
+// PeekUint24Le wraps gst_byte_reader_peek_uint24_le
 // 
 // The function returns the following values:
 // 
@@ -21166,7 +21166,7 @@ func (reader *ByteReader) PeekUint24Be() (uint32, bool) {
 //
 // Read an unsigned 24 bit little endian integer into @val
 // but keep the current position.
-func (reader *ByteReader) PeekUint24LE() (uint32, bool) {
+func (reader *ByteReader) PeekUint24Le() (uint32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint32        // out, full, casted
 	var cret  C.gboolean       // return
@@ -21217,7 +21217,7 @@ func (reader *ByteReader) PeekUint32Be() (uint32, bool) {
 	return val, goret
 }
 
-// PeekUint32LE wraps gst_byte_reader_peek_uint32_le
+// PeekUint32Le wraps gst_byte_reader_peek_uint32_le
 // 
 // The function returns the following values:
 // 
@@ -21226,7 +21226,7 @@ func (reader *ByteReader) PeekUint32Be() (uint32, bool) {
 //
 // Read an unsigned 32 bit little endian integer into @val
 // but keep the current position.
-func (reader *ByteReader) PeekUint32LE() (uint32, bool) {
+func (reader *ByteReader) PeekUint32Le() (uint32, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint32        // out, full, casted
 	var cret  C.gboolean       // return
@@ -21277,7 +21277,7 @@ func (reader *ByteReader) PeekUint64Be() (uint64, bool) {
 	return val, goret
 }
 
-// PeekUint64LE wraps gst_byte_reader_peek_uint64_le
+// PeekUint64Le wraps gst_byte_reader_peek_uint64_le
 // 
 // The function returns the following values:
 // 
@@ -21286,7 +21286,7 @@ func (reader *ByteReader) PeekUint64Be() (uint64, bool) {
 //
 // Read an unsigned 64 bit little endian integer into @val
 // but keep the current position.
-func (reader *ByteReader) PeekUint64LE() (uint64, bool) {
+func (reader *ByteReader) PeekUint64Le() (uint64, bool) {
 	var carg0 *C.GstByteReader // in, none, converted
 	var carg1 C.guint64        // out, full, casted
 	var cret  C.gboolean       // return
@@ -21430,7 +21430,7 @@ func (reader *ByteReader) SkipStringUTF16() bool {
 	return goret
 }
 
-// SkipStringUTF32 wraps gst_byte_reader_skip_string_utf32
+// SkipStringUtf32 wraps gst_byte_reader_skip_string_utf32
 // 
 // The function returns the following values:
 // 
@@ -21442,7 +21442,7 @@ func (reader *ByteReader) SkipStringUTF16() bool {
 // No input checking for valid UTF-32 is done.
 // 
 // This function will fail if no NUL-terminator was found in in the data.
-func (reader *ByteReader) SkipStringUTF32() bool {
+func (reader *ByteReader) SkipStringUtf32() bool {
 	var carg0 *C.GstByteReader // in, none, converted
 	var cret  C.gboolean       // return
 
@@ -21881,7 +21881,7 @@ func (writer *ByteWriter) PutFloat32Be(val float32) bool {
 	return goret
 }
 
-// PutFloat32LE wraps gst_byte_writer_put_float32_le
+// PutFloat32Le wraps gst_byte_writer_put_float32_le
 // 
 // The function takes the following parameters:
 // 
@@ -21892,7 +21892,7 @@ func (writer *ByteWriter) PutFloat32Be(val float32) bool {
 // 	- goret bool 
 //
 // Writes a little endian 32 bit float to @writer.
-func (writer *ByteWriter) PutFloat32LE(val float32) bool {
+func (writer *ByteWriter) PutFloat32Le(val float32) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gfloat         // in, none, casted
 	var cret  C.gboolean       // return
@@ -21945,7 +21945,7 @@ func (writer *ByteWriter) PutFloat64Be(val float64) bool {
 	return goret
 }
 
-// PutFloat64LE wraps gst_byte_writer_put_float64_le
+// PutFloat64Le wraps gst_byte_writer_put_float64_le
 // 
 // The function takes the following parameters:
 // 
@@ -21956,7 +21956,7 @@ func (writer *ByteWriter) PutFloat64Be(val float64) bool {
 // 	- goret bool 
 //
 // Writes a little endian 64 bit float to @writer.
-func (writer *ByteWriter) PutFloat64LE(val float64) bool {
+func (writer *ByteWriter) PutFloat64Le(val float64) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gdouble        // in, none, casted
 	var cret  C.gboolean       // return
@@ -22009,7 +22009,7 @@ func (writer *ByteWriter) PutInt16Be(val int16) bool {
 	return goret
 }
 
-// PutInt16LE wraps gst_byte_writer_put_int16_le
+// PutInt16Le wraps gst_byte_writer_put_int16_le
 // 
 // The function takes the following parameters:
 // 
@@ -22020,7 +22020,7 @@ func (writer *ByteWriter) PutInt16Be(val int16) bool {
 // 	- goret bool 
 //
 // Writes a signed little endian 16 bit integer to @writer.
-func (writer *ByteWriter) PutInt16LE(val int16) bool {
+func (writer *ByteWriter) PutInt16Le(val int16) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gint16         // in, none, casted
 	var cret  C.gboolean       // return
@@ -22073,7 +22073,7 @@ func (writer *ByteWriter) PutInt24Be(val int32) bool {
 	return goret
 }
 
-// PutInt24LE wraps gst_byte_writer_put_int24_le
+// PutInt24Le wraps gst_byte_writer_put_int24_le
 // 
 // The function takes the following parameters:
 // 
@@ -22084,7 +22084,7 @@ func (writer *ByteWriter) PutInt24Be(val int32) bool {
 // 	- goret bool 
 //
 // Writes a signed little endian 24 bit integer to @writer.
-func (writer *ByteWriter) PutInt24LE(val int32) bool {
+func (writer *ByteWriter) PutInt24Le(val int32) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gint32         // in, none, casted
 	var cret  C.gboolean       // return
@@ -22137,7 +22137,7 @@ func (writer *ByteWriter) PutInt32Be(val int32) bool {
 	return goret
 }
 
-// PutInt32LE wraps gst_byte_writer_put_int32_le
+// PutInt32Le wraps gst_byte_writer_put_int32_le
 // 
 // The function takes the following parameters:
 // 
@@ -22148,7 +22148,7 @@ func (writer *ByteWriter) PutInt32Be(val int32) bool {
 // 	- goret bool 
 //
 // Writes a signed little endian 32 bit integer to @writer.
-func (writer *ByteWriter) PutInt32LE(val int32) bool {
+func (writer *ByteWriter) PutInt32Le(val int32) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gint32         // in, none, casted
 	var cret  C.gboolean       // return
@@ -22201,7 +22201,7 @@ func (writer *ByteWriter) PutInt64Be(val int64) bool {
 	return goret
 }
 
-// PutInt64LE wraps gst_byte_writer_put_int64_le
+// PutInt64Le wraps gst_byte_writer_put_int64_le
 // 
 // The function takes the following parameters:
 // 
@@ -22212,7 +22212,7 @@ func (writer *ByteWriter) PutInt64Be(val int64) bool {
 // 	- goret bool 
 //
 // Writes a signed little endian 64 bit integer to @writer.
-func (writer *ByteWriter) PutInt64LE(val int64) bool {
+func (writer *ByteWriter) PutInt64Le(val int64) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.gint64         // in, none, casted
 	var cret  C.gboolean       // return
@@ -22299,7 +22299,7 @@ func (writer *ByteWriter) PutStringUTF16(data []uint16) bool {
 	return goret
 }
 
-// PutStringUTF32 wraps gst_byte_writer_put_string_utf32
+// PutStringUtf32 wraps gst_byte_writer_put_string_utf32
 // 
 // The function takes the following parameters:
 // 
@@ -22310,7 +22310,7 @@ func (writer *ByteWriter) PutStringUTF16(data []uint16) bool {
 // 	- goret bool 
 //
 // Writes a NUL-terminated UTF32 string to @writer (including the terminator).
-func (writer *ByteWriter) PutStringUTF32(data []uint32) bool {
+func (writer *ByteWriter) PutStringUtf32(data []uint32) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 *C.guint32       // in, transfer: none, C Pointers: 1, Name: array[guint32], array (inner: *typesystem.CastablePrimitive, zero-terminated)
 	var cret  C.gboolean       // return
@@ -22398,7 +22398,7 @@ func (writer *ByteWriter) PutUint16Be(val uint16) bool {
 	return goret
 }
 
-// PutUint16LE wraps gst_byte_writer_put_uint16_le
+// PutUint16Le wraps gst_byte_writer_put_uint16_le
 // 
 // The function takes the following parameters:
 // 
@@ -22409,7 +22409,7 @@ func (writer *ByteWriter) PutUint16Be(val uint16) bool {
 // 	- goret bool 
 //
 // Writes a unsigned little endian 16 bit integer to @writer.
-func (writer *ByteWriter) PutUint16LE(val uint16) bool {
+func (writer *ByteWriter) PutUint16Le(val uint16) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.guint16        // in, none, casted
 	var cret  C.gboolean       // return
@@ -22462,7 +22462,7 @@ func (writer *ByteWriter) PutUint24Be(val uint32) bool {
 	return goret
 }
 
-// PutUint24LE wraps gst_byte_writer_put_uint24_le
+// PutUint24Le wraps gst_byte_writer_put_uint24_le
 // 
 // The function takes the following parameters:
 // 
@@ -22473,7 +22473,7 @@ func (writer *ByteWriter) PutUint24Be(val uint32) bool {
 // 	- goret bool 
 //
 // Writes a unsigned little endian 24 bit integer to @writer.
-func (writer *ByteWriter) PutUint24LE(val uint32) bool {
+func (writer *ByteWriter) PutUint24Le(val uint32) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.guint32        // in, none, casted
 	var cret  C.gboolean       // return
@@ -22526,7 +22526,7 @@ func (writer *ByteWriter) PutUint32Be(val uint32) bool {
 	return goret
 }
 
-// PutUint32LE wraps gst_byte_writer_put_uint32_le
+// PutUint32Le wraps gst_byte_writer_put_uint32_le
 // 
 // The function takes the following parameters:
 // 
@@ -22537,7 +22537,7 @@ func (writer *ByteWriter) PutUint32Be(val uint32) bool {
 // 	- goret bool 
 //
 // Writes a unsigned little endian 32 bit integer to @writer.
-func (writer *ByteWriter) PutUint32LE(val uint32) bool {
+func (writer *ByteWriter) PutUint32Le(val uint32) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.guint32        // in, none, casted
 	var cret  C.gboolean       // return
@@ -22590,7 +22590,7 @@ func (writer *ByteWriter) PutUint64Be(val uint64) bool {
 	return goret
 }
 
-// PutUint64LE wraps gst_byte_writer_put_uint64_le
+// PutUint64Le wraps gst_byte_writer_put_uint64_le
 // 
 // The function takes the following parameters:
 // 
@@ -22601,7 +22601,7 @@ func (writer *ByteWriter) PutUint64Be(val uint64) bool {
 // 	- goret bool 
 //
 // Writes a unsigned little endian 64 bit integer to @writer.
-func (writer *ByteWriter) PutUint64LE(val uint64) bool {
+func (writer *ByteWriter) PutUint64Le(val uint64) bool {
 	var carg0 *C.GstByteWriter // in, none, converted
 	var carg1 C.guint64        // in, none, casted
 	var cret  C.gboolean       // return

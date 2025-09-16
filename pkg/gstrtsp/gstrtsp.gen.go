@@ -120,15 +120,15 @@ const RTSP_DEFAULT_PORT = 554
 type RTSPAuthMethod C.int
 
 const (
-	// RtspAuthNone wraps RTSP_AUTH_NONE
+	// RtspAuthNone wraps GST_RTSP_AUTH_NONE
 	//
 	// no authentication
 	RtspAuthNone RTSPAuthMethod = 0
-	// RtspAuthBasic wraps RTSP_AUTH_BASIC
+	// RtspAuthBasic wraps GST_RTSP_AUTH_BASIC
 	//
 	// basic authentication
 	RtspAuthBasic RTSPAuthMethod = 1
-	// RtspAuthDigest wraps RTSP_AUTH_DIGEST
+	// RtspAuthDigest wraps GST_RTSP_AUTH_DIGEST
 	//
 	// digest authentication
 	RtspAuthDigest RTSPAuthMethod = 2
@@ -163,15 +163,15 @@ func (e RTSPAuthMethod) String() string {
 type RTSPFamily C.int
 
 const (
-	// RtspFamNone wraps RTSP_FAM_NONE
+	// RtspFamNone wraps GST_RTSP_FAM_NONE
 	//
 	// unknown network family
 	RtspFamNone RTSPFamily = 0
-	// RtspFamInet wraps RTSP_FAM_INET
+	// RtspFamInet wraps GST_RTSP_FAM_INET
 	//
 	// internet
 	RtspFamInet RTSPFamily = 1
-	// RtspFamInet6 wraps RTSP_FAM_INET6
+	// RtspFamInet6 wraps GST_RTSP_FAM_INET6
 	//
 	// internet V6
 	RtspFamInet6 RTSPFamily = 2
@@ -206,185 +206,185 @@ func (e RTSPFamily) String() string {
 type RTSPHeaderField C.int
 
 const (
-	// RtspHdrInvalid wraps RTSP_HDR_INVALID
+	// RtspHdrInvalid wraps GST_RTSP_HDR_INVALID
 	RtspHdrInvalid RTSPHeaderField = 0
-	// RtspHdrAccept wraps RTSP_HDR_ACCEPT
+	// RtspHdrAccept wraps GST_RTSP_HDR_ACCEPT
 	RtspHdrAccept RTSPHeaderField = 1
-	// RtspHdrAcceptEncoding wraps RTSP_HDR_ACCEPT_ENCODING
+	// RtspHdrAcceptEncoding wraps GST_RTSP_HDR_ACCEPT_ENCODING
 	RtspHdrAcceptEncoding RTSPHeaderField = 2
-	// RtspHdrAcceptLanguage wraps RTSP_HDR_ACCEPT_LANGUAGE
+	// RtspHdrAcceptLanguage wraps GST_RTSP_HDR_ACCEPT_LANGUAGE
 	RtspHdrAcceptLanguage RTSPHeaderField = 3
-	// RtspHdrAllow wraps RTSP_HDR_ALLOW
+	// RtspHdrAllow wraps GST_RTSP_HDR_ALLOW
 	RtspHdrAllow RTSPHeaderField = 4
-	// RtspHdrAuthorization wraps RTSP_HDR_AUTHORIZATION
+	// RtspHdrAuthorization wraps GST_RTSP_HDR_AUTHORIZATION
 	RtspHdrAuthorization RTSPHeaderField = 5
-	// RtspHdrBandwidth wraps RTSP_HDR_BANDWIDTH
+	// RtspHdrBandwidth wraps GST_RTSP_HDR_BANDWIDTH
 	RtspHdrBandwidth RTSPHeaderField = 6
-	// RtspHdrBlocksize wraps RTSP_HDR_BLOCKSIZE
+	// RtspHdrBlocksize wraps GST_RTSP_HDR_BLOCKSIZE
 	RtspHdrBlocksize RTSPHeaderField = 7
-	// RtspHdrCacheControl wraps RTSP_HDR_CACHE_CONTROL
+	// RtspHdrCacheControl wraps GST_RTSP_HDR_CACHE_CONTROL
 	RtspHdrCacheControl RTSPHeaderField = 8
-	// RtspHdrConference wraps RTSP_HDR_CONFERENCE
+	// RtspHdrConference wraps GST_RTSP_HDR_CONFERENCE
 	RtspHdrConference RTSPHeaderField = 9
-	// RtspHdrConnection wraps RTSP_HDR_CONNECTION
+	// RtspHdrConnection wraps GST_RTSP_HDR_CONNECTION
 	RtspHdrConnection RTSPHeaderField = 10
-	// RtspHdrContentBase wraps RTSP_HDR_CONTENT_BASE
+	// RtspHdrContentBase wraps GST_RTSP_HDR_CONTENT_BASE
 	RtspHdrContentBase RTSPHeaderField = 11
-	// RtspHdrContentEncoding wraps RTSP_HDR_CONTENT_ENCODING
+	// RtspHdrContentEncoding wraps GST_RTSP_HDR_CONTENT_ENCODING
 	RtspHdrContentEncoding RTSPHeaderField = 12
-	// RtspHdrContentLanguage wraps RTSP_HDR_CONTENT_LANGUAGE
+	// RtspHdrContentLanguage wraps GST_RTSP_HDR_CONTENT_LANGUAGE
 	RtspHdrContentLanguage RTSPHeaderField = 13
-	// RtspHdrContentLength wraps RTSP_HDR_CONTENT_LENGTH
+	// RtspHdrContentLength wraps GST_RTSP_HDR_CONTENT_LENGTH
 	RtspHdrContentLength RTSPHeaderField = 14
-	// RtspHdrContentLocation wraps RTSP_HDR_CONTENT_LOCATION
+	// RtspHdrContentLocation wraps GST_RTSP_HDR_CONTENT_LOCATION
 	RtspHdrContentLocation RTSPHeaderField = 15
-	// RtspHdrContentType wraps RTSP_HDR_CONTENT_TYPE
+	// RtspHdrContentType wraps GST_RTSP_HDR_CONTENT_TYPE
 	RtspHdrContentType RTSPHeaderField = 16
-	// RtspHdrCseq wraps RTSP_HDR_CSEQ
+	// RtspHdrCseq wraps GST_RTSP_HDR_CSEQ
 	RtspHdrCseq RTSPHeaderField = 17
-	// RtspHdrDate wraps RTSP_HDR_DATE
+	// RtspHdrDate wraps GST_RTSP_HDR_DATE
 	RtspHdrDate RTSPHeaderField = 18
-	// RtspHdrExpires wraps RTSP_HDR_EXPIRES
+	// RtspHdrExpires wraps GST_RTSP_HDR_EXPIRES
 	RtspHdrExpires RTSPHeaderField = 19
-	// RtspHdrFrom wraps RTSP_HDR_FROM
+	// RtspHdrFrom wraps GST_RTSP_HDR_FROM
 	RtspHdrFrom RTSPHeaderField = 20
-	// RtspHdrIfModifiedSince wraps RTSP_HDR_IF_MODIFIED_SINCE
+	// RtspHdrIfModifiedSince wraps GST_RTSP_HDR_IF_MODIFIED_SINCE
 	RtspHdrIfModifiedSince RTSPHeaderField = 21
-	// RtspHdrLastModified wraps RTSP_HDR_LAST_MODIFIED
+	// RtspHdrLastModified wraps GST_RTSP_HDR_LAST_MODIFIED
 	RtspHdrLastModified RTSPHeaderField = 22
-	// RtspHdrProxyAuthenticate wraps RTSP_HDR_PROXY_AUTHENTICATE
+	// RtspHdrProxyAuthenticate wraps GST_RTSP_HDR_PROXY_AUTHENTICATE
 	RtspHdrProxyAuthenticate RTSPHeaderField = 23
-	// RtspHdrProxyRequire wraps RTSP_HDR_PROXY_REQUIRE
+	// RtspHdrProxyRequire wraps GST_RTSP_HDR_PROXY_REQUIRE
 	RtspHdrProxyRequire RTSPHeaderField = 24
-	// RtspHdrPublic wraps RTSP_HDR_PUBLIC
+	// RtspHdrPublic wraps GST_RTSP_HDR_PUBLIC
 	RtspHdrPublic RTSPHeaderField = 25
-	// RtspHdrRange wraps RTSP_HDR_RANGE
+	// RtspHdrRange wraps GST_RTSP_HDR_RANGE
 	RtspHdrRange RTSPHeaderField = 26
-	// RtspHdrReferer wraps RTSP_HDR_REFERER
+	// RtspHdrReferer wraps GST_RTSP_HDR_REFERER
 	RtspHdrReferer RTSPHeaderField = 27
-	// RtspHdrRequire wraps RTSP_HDR_REQUIRE
+	// RtspHdrRequire wraps GST_RTSP_HDR_REQUIRE
 	RtspHdrRequire RTSPHeaderField = 28
-	// RtspHdrRetryAfter wraps RTSP_HDR_RETRY_AFTER
+	// RtspHdrRetryAfter wraps GST_RTSP_HDR_RETRY_AFTER
 	RtspHdrRetryAfter RTSPHeaderField = 29
-	// RtspHdrRtpInfo wraps RTSP_HDR_RTP_INFO
+	// RtspHdrRtpInfo wraps GST_RTSP_HDR_RTP_INFO
 	RtspHdrRtpInfo RTSPHeaderField = 30
-	// RtspHdrScale wraps RTSP_HDR_SCALE
+	// RtspHdrScale wraps GST_RTSP_HDR_SCALE
 	RtspHdrScale RTSPHeaderField = 31
-	// RtspHdrSession wraps RTSP_HDR_SESSION
+	// RtspHdrSession wraps GST_RTSP_HDR_SESSION
 	RtspHdrSession RTSPHeaderField = 32
-	// RtspHdrServer wraps RTSP_HDR_SERVER
+	// RtspHdrServer wraps GST_RTSP_HDR_SERVER
 	RtspHdrServer RTSPHeaderField = 33
-	// RtspHdrSpeed wraps RTSP_HDR_SPEED
+	// RtspHdrSpeed wraps GST_RTSP_HDR_SPEED
 	RtspHdrSpeed RTSPHeaderField = 34
-	// RtspHdrTransport wraps RTSP_HDR_TRANSPORT
+	// RtspHdrTransport wraps GST_RTSP_HDR_TRANSPORT
 	RtspHdrTransport RTSPHeaderField = 35
-	// RtspHdrUnsupported wraps RTSP_HDR_UNSUPPORTED
+	// RtspHdrUnsupported wraps GST_RTSP_HDR_UNSUPPORTED
 	RtspHdrUnsupported RTSPHeaderField = 36
-	// RtspHdrUserAgent wraps RTSP_HDR_USER_AGENT
+	// RtspHdrUserAgent wraps GST_RTSP_HDR_USER_AGENT
 	RtspHdrUserAgent RTSPHeaderField = 37
-	// RtspHdrVia wraps RTSP_HDR_VIA
+	// RtspHdrVia wraps GST_RTSP_HDR_VIA
 	RtspHdrVia RTSPHeaderField = 38
-	// RtspHdrWwwAuthenticate wraps RTSP_HDR_WWW_AUTHENTICATE
+	// RtspHdrWwwAuthenticate wraps GST_RTSP_HDR_WWW_AUTHENTICATE
 	RtspHdrWwwAuthenticate RTSPHeaderField = 39
-	// RtspHdrClientChallenge wraps RTSP_HDR_CLIENT_CHALLENGE
+	// RtspHdrClientChallenge wraps GST_RTSP_HDR_CLIENT_CHALLENGE
 	RtspHdrClientChallenge RTSPHeaderField = 40
-	// RtspHdrRealChallenge1 wraps RTSP_HDR_REAL_CHALLENGE1
+	// RtspHdrRealChallenge1 wraps GST_RTSP_HDR_REAL_CHALLENGE1
 	RtspHdrRealChallenge1 RTSPHeaderField = 41
-	// RtspHdrRealChallenge2 wraps RTSP_HDR_REAL_CHALLENGE2
+	// RtspHdrRealChallenge2 wraps GST_RTSP_HDR_REAL_CHALLENGE2
 	RtspHdrRealChallenge2 RTSPHeaderField = 42
-	// RtspHdrRealChallenge3 wraps RTSP_HDR_REAL_CHALLENGE3
+	// RtspHdrRealChallenge3 wraps GST_RTSP_HDR_REAL_CHALLENGE3
 	RtspHdrRealChallenge3 RTSPHeaderField = 43
-	// RtspHdrSubscribe wraps RTSP_HDR_SUBSCRIBE
+	// RtspHdrSubscribe wraps GST_RTSP_HDR_SUBSCRIBE
 	RtspHdrSubscribe RTSPHeaderField = 44
-	// RtspHdrAlert wraps RTSP_HDR_ALERT
+	// RtspHdrAlert wraps GST_RTSP_HDR_ALERT
 	RtspHdrAlert RTSPHeaderField = 45
-	// RtspHdrClientID wraps RTSP_HDR_CLIENT_ID
+	// RtspHdrClientID wraps GST_RTSP_HDR_CLIENT_ID
 	RtspHdrClientID RTSPHeaderField = 46
-	// RtspHdrCompanyID wraps RTSP_HDR_COMPANY_ID
+	// RtspHdrCompanyID wraps GST_RTSP_HDR_COMPANY_ID
 	RtspHdrCompanyID RTSPHeaderField = 47
-	// RtspHdrGUID wraps RTSP_HDR_GUID
-	RtspHdrGUID RTSPHeaderField = 48
-	// RtspHdrRegionData wraps RTSP_HDR_REGION_DATA
+	// RtspHdrGuid wraps GST_RTSP_HDR_GUID
+	RtspHdrGuid RTSPHeaderField = 48
+	// RtspHdrRegionData wraps GST_RTSP_HDR_REGION_DATA
 	RtspHdrRegionData RTSPHeaderField = 49
-	// RtspHdrMaxAsmWidth wraps RTSP_HDR_MAX_ASM_WIDTH
+	// RtspHdrMaxAsmWidth wraps GST_RTSP_HDR_MAX_ASM_WIDTH
 	RtspHdrMaxAsmWidth RTSPHeaderField = 50
-	// RtspHdrLanguage wraps RTSP_HDR_LANGUAGE
+	// RtspHdrLanguage wraps GST_RTSP_HDR_LANGUAGE
 	RtspHdrLanguage RTSPHeaderField = 51
-	// RtspHdrPlayerStartTime wraps RTSP_HDR_PLAYER_START_TIME
+	// RtspHdrPlayerStartTime wraps GST_RTSP_HDR_PLAYER_START_TIME
 	RtspHdrPlayerStartTime RTSPHeaderField = 52
-	// RtspHdrLocation wraps RTSP_HDR_LOCATION
+	// RtspHdrLocation wraps GST_RTSP_HDR_LOCATION
 	RtspHdrLocation RTSPHeaderField = 53
-	// RtspHdrETag wraps RTSP_HDR_ETAG
-	RtspHdrETag RTSPHeaderField = 54
-	// RtspHdrIfMatch wraps RTSP_HDR_IF_MATCH
+	// RtspHdrEtag wraps GST_RTSP_HDR_ETAG
+	RtspHdrEtag RTSPHeaderField = 54
+	// RtspHdrIfMatch wraps GST_RTSP_HDR_IF_MATCH
 	RtspHdrIfMatch RTSPHeaderField = 55
-	// RtspHdrAcceptCharset wraps RTSP_HDR_ACCEPT_CHARSET
+	// RtspHdrAcceptCharset wraps GST_RTSP_HDR_ACCEPT_CHARSET
 	RtspHdrAcceptCharset RTSPHeaderField = 56
-	// RtspHdrSupported wraps RTSP_HDR_SUPPORTED
+	// RtspHdrSupported wraps GST_RTSP_HDR_SUPPORTED
 	RtspHdrSupported RTSPHeaderField = 57
-	// RtspHdrVary wraps RTSP_HDR_VARY
+	// RtspHdrVary wraps GST_RTSP_HDR_VARY
 	RtspHdrVary RTSPHeaderField = 58
-	// RtspHdrXAccelerateStreaming wraps RTSP_HDR_X_ACCELERATE_STREAMING
+	// RtspHdrXAccelerateStreaming wraps GST_RTSP_HDR_X_ACCELERATE_STREAMING
 	RtspHdrXAccelerateStreaming RTSPHeaderField = 59
-	// RtspHdrXAcceptAuthent wraps RTSP_HDR_X_ACCEPT_AUTHENT
+	// RtspHdrXAcceptAuthent wraps GST_RTSP_HDR_X_ACCEPT_AUTHENT
 	RtspHdrXAcceptAuthent RTSPHeaderField = 60
-	// RtspHdrXAcceptProxyAuthent wraps RTSP_HDR_X_ACCEPT_PROXY_AUTHENT
+	// RtspHdrXAcceptProxyAuthent wraps GST_RTSP_HDR_X_ACCEPT_PROXY_AUTHENT
 	RtspHdrXAcceptProxyAuthent RTSPHeaderField = 61
-	// RtspHdrXBroadcastID wraps RTSP_HDR_X_BROADCAST_ID
+	// RtspHdrXBroadcastID wraps GST_RTSP_HDR_X_BROADCAST_ID
 	RtspHdrXBroadcastID RTSPHeaderField = 62
-	// RtspHdrXBurstStreaming wraps RTSP_HDR_X_BURST_STREAMING
+	// RtspHdrXBurstStreaming wraps GST_RTSP_HDR_X_BURST_STREAMING
 	RtspHdrXBurstStreaming RTSPHeaderField = 63
-	// RtspHdrXNotice wraps RTSP_HDR_X_NOTICE
+	// RtspHdrXNotice wraps GST_RTSP_HDR_X_NOTICE
 	RtspHdrXNotice RTSPHeaderField = 64
-	// RtspHdrXPlayerLagTime wraps RTSP_HDR_X_PLAYER_LAG_TIME
+	// RtspHdrXPlayerLagTime wraps GST_RTSP_HDR_X_PLAYER_LAG_TIME
 	RtspHdrXPlayerLagTime RTSPHeaderField = 65
-	// RtspHdrXPlaylist wraps RTSP_HDR_X_PLAYLIST
+	// RtspHdrXPlaylist wraps GST_RTSP_HDR_X_PLAYLIST
 	RtspHdrXPlaylist RTSPHeaderField = 66
-	// RtspHdrXPlaylistChangeNotice wraps RTSP_HDR_X_PLAYLIST_CHANGE_NOTICE
+	// RtspHdrXPlaylistChangeNotice wraps GST_RTSP_HDR_X_PLAYLIST_CHANGE_NOTICE
 	RtspHdrXPlaylistChangeNotice RTSPHeaderField = 67
-	// RtspHdrXPlaylistGenID wraps RTSP_HDR_X_PLAYLIST_GEN_ID
+	// RtspHdrXPlaylistGenID wraps GST_RTSP_HDR_X_PLAYLIST_GEN_ID
 	RtspHdrXPlaylistGenID RTSPHeaderField = 68
-	// RtspHdrXPlaylistSeekID wraps RTSP_HDR_X_PLAYLIST_SEEK_ID
+	// RtspHdrXPlaylistSeekID wraps GST_RTSP_HDR_X_PLAYLIST_SEEK_ID
 	RtspHdrXPlaylistSeekID RTSPHeaderField = 69
-	// RtspHdrXProxyClientAgent wraps RTSP_HDR_X_PROXY_CLIENT_AGENT
+	// RtspHdrXProxyClientAgent wraps GST_RTSP_HDR_X_PROXY_CLIENT_AGENT
 	RtspHdrXProxyClientAgent RTSPHeaderField = 70
-	// RtspHdrXProxyClientVerb wraps RTSP_HDR_X_PROXY_CLIENT_VERB
+	// RtspHdrXProxyClientVerb wraps GST_RTSP_HDR_X_PROXY_CLIENT_VERB
 	RtspHdrXProxyClientVerb RTSPHeaderField = 71
-	// RtspHdrXRecedingPlaylistchange wraps RTSP_HDR_X_RECEDING_PLAYLISTCHANGE
+	// RtspHdrXRecedingPlaylistchange wraps GST_RTSP_HDR_X_RECEDING_PLAYLISTCHANGE
 	RtspHdrXRecedingPlaylistchange RTSPHeaderField = 72
-	// RtspHdrXRtpInfo wraps RTSP_HDR_X_RTP_INFO
+	// RtspHdrXRtpInfo wraps GST_RTSP_HDR_X_RTP_INFO
 	RtspHdrXRtpInfo RTSPHeaderField = 73
-	// RtspHdrXStartupprofile wraps RTSP_HDR_X_STARTUPPROFILE
+	// RtspHdrXStartupprofile wraps GST_RTSP_HDR_X_STARTUPPROFILE
 	RtspHdrXStartupprofile RTSPHeaderField = 74
-	// RtspHdrTimestamp wraps RTSP_HDR_TIMESTAMP
+	// RtspHdrTimestamp wraps GST_RTSP_HDR_TIMESTAMP
 	RtspHdrTimestamp RTSPHeaderField = 75
-	// RtspHdrAuthenticationInfo wraps RTSP_HDR_AUTHENTICATION_INFO
+	// RtspHdrAuthenticationInfo wraps GST_RTSP_HDR_AUTHENTICATION_INFO
 	RtspHdrAuthenticationInfo RTSPHeaderField = 76
-	// RtspHdrHost wraps RTSP_HDR_HOST
+	// RtspHdrHost wraps GST_RTSP_HDR_HOST
 	RtspHdrHost RTSPHeaderField = 77
-	// RtspHdrPragma wraps RTSP_HDR_PRAGMA
+	// RtspHdrPragma wraps GST_RTSP_HDR_PRAGMA
 	RtspHdrPragma RTSPHeaderField = 78
-	// RtspHdrXServerIPAddress wraps RTSP_HDR_X_SERVER_IP_ADDRESS
-	RtspHdrXServerIPAddress RTSPHeaderField = 79
-	// RtspHdrXSessioncookie wraps RTSP_HDR_X_SESSIONCOOKIE
+	// RtspHdrXServerIpAddress wraps GST_RTSP_HDR_X_SERVER_IP_ADDRESS
+	RtspHdrXServerIpAddress RTSPHeaderField = 79
+	// RtspHdrXSessioncookie wraps GST_RTSP_HDR_X_SESSIONCOOKIE
 	RtspHdrXSessioncookie RTSPHeaderField = 80
-	// RtspHdrRtcpInterval wraps RTSP_HDR_RTCP_INTERVAL
+	// RtspHdrRtcpInterval wraps GST_RTSP_HDR_RTCP_INTERVAL
 	RtspHdrRtcpInterval RTSPHeaderField = 81
-	// RtspHdrKeymgmt wraps RTSP_HDR_KEYMGMT
+	// RtspHdrKeymgmt wraps GST_RTSP_HDR_KEYMGMT
 	RtspHdrKeymgmt RTSPHeaderField = 82
-	// RtspHdrPipelinedRequests wraps RTSP_HDR_PIPELINED_REQUESTS
+	// RtspHdrPipelinedRequests wraps GST_RTSP_HDR_PIPELINED_REQUESTS
 	RtspHdrPipelinedRequests RTSPHeaderField = 83
-	// RtspHdrMediaProperties wraps RTSP_HDR_MEDIA_PROPERTIES
+	// RtspHdrMediaProperties wraps GST_RTSP_HDR_MEDIA_PROPERTIES
 	RtspHdrMediaProperties RTSPHeaderField = 84
-	// RtspHdrSeekStyle wraps RTSP_HDR_SEEK_STYLE
+	// RtspHdrSeekStyle wraps GST_RTSP_HDR_SEEK_STYLE
 	RtspHdrSeekStyle RTSPHeaderField = 85
-	// RtspHdrAcceptRanges wraps RTSP_HDR_ACCEPT_RANGES
+	// RtspHdrAcceptRanges wraps GST_RTSP_HDR_ACCEPT_RANGES
 	RtspHdrAcceptRanges RTSPHeaderField = 86
-	// RtspHdrFrames wraps RTSP_HDR_FRAMES
+	// RtspHdrFrames wraps GST_RTSP_HDR_FRAMES
 	RtspHdrFrames RTSPHeaderField = 87
-	// RtspHdrRateControl wraps RTSP_HDR_RATE_CONTROL
+	// RtspHdrRateControl wraps GST_RTSP_HDR_RATE_CONTROL
 	RtspHdrRateControl RTSPHeaderField = 88
-	// RtspHdrLast wraps RTSP_HDR_LAST
+	// RtspHdrLast wraps GST_RTSP_HDR_LAST
 	RtspHdrLast RTSPHeaderField = 89
 )
 
@@ -429,11 +429,11 @@ func (e RTSPHeaderField) String() string {
 		case RtspHdrContentType: return "RtspHdrContentType"
 		case RtspHdrCseq: return "RtspHdrCseq"
 		case RtspHdrDate: return "RtspHdrDate"
-		case RtspHdrETag: return "RtspHdrETag"
+		case RtspHdrEtag: return "RtspHdrEtag"
 		case RtspHdrExpires: return "RtspHdrExpires"
 		case RtspHdrFrames: return "RtspHdrFrames"
 		case RtspHdrFrom: return "RtspHdrFrom"
-		case RtspHdrGUID: return "RtspHdrGUID"
+		case RtspHdrGuid: return "RtspHdrGuid"
 		case RtspHdrHost: return "RtspHdrHost"
 		case RtspHdrIfMatch: return "RtspHdrIfMatch"
 		case RtspHdrIfModifiedSince: return "RtspHdrIfModifiedSince"
@@ -491,7 +491,7 @@ func (e RTSPHeaderField) String() string {
 		case RtspHdrXProxyClientVerb: return "RtspHdrXProxyClientVerb"
 		case RtspHdrXRecedingPlaylistchange: return "RtspHdrXRecedingPlaylistchange"
 		case RtspHdrXRtpInfo: return "RtspHdrXRtpInfo"
-		case RtspHdrXServerIPAddress: return "RtspHdrXServerIPAddress"
+		case RtspHdrXServerIpAddress: return "RtspHdrXServerIpAddress"
 		case RtspHdrXSessioncookie: return "RtspHdrXSessioncookie"
 		case RtspHdrXStartupprofile: return "RtspHdrXStartupprofile"
 		default: return fmt.Sprintf("RTSPHeaderField(%d)", e)
@@ -504,27 +504,27 @@ func (e RTSPHeaderField) String() string {
 type RTSPMsgType C.int
 
 const (
-	// RtspMessageInvalid wraps RTSP_MESSAGE_INVALID
+	// RtspMessageInvalid wraps GST_RTSP_MESSAGE_INVALID
 	//
 	// invalid message type
 	RtspMessageInvalid RTSPMsgType = 0
-	// RtspMessageRequest wraps RTSP_MESSAGE_REQUEST
+	// RtspMessageRequest wraps GST_RTSP_MESSAGE_REQUEST
 	//
 	// RTSP request message
 	RtspMessageRequest RTSPMsgType = 1
-	// RtspMessageResponse wraps RTSP_MESSAGE_RESPONSE
+	// RtspMessageResponse wraps GST_RTSP_MESSAGE_RESPONSE
 	//
 	// RTSP response message
 	RtspMessageResponse RTSPMsgType = 2
-	// RtspMessageHTTPRequest wraps RTSP_MESSAGE_HTTP_REQUEST
+	// RtspMessageHttpRequest wraps GST_RTSP_MESSAGE_HTTP_REQUEST
 	//
 	// HTTP request message.
-	RtspMessageHTTPRequest RTSPMsgType = 3
-	// RtspMessageHTTPResponse wraps RTSP_MESSAGE_HTTP_RESPONSE
+	RtspMessageHttpRequest RTSPMsgType = 3
+	// RtspMessageHttpResponse wraps GST_RTSP_MESSAGE_HTTP_RESPONSE
 	//
 	// HTTP response message.
-	RtspMessageHTTPResponse RTSPMsgType = 4
-	// RtspMessageData wraps RTSP_MESSAGE_DATA
+	RtspMessageHttpResponse RTSPMsgType = 4
+	// RtspMessageData wraps GST_RTSP_MESSAGE_DATA
 	//
 	// data message
 	RtspMessageData RTSPMsgType = 5
@@ -547,8 +547,8 @@ func (e RTSPMsgType) SetGoValue(v *gobject.Value) {
 func (e RTSPMsgType) String() string {
 	switch e {
 		case RtspMessageData: return "RtspMessageData"
-		case RtspMessageHTTPRequest: return "RtspMessageHTTPRequest"
-		case RtspMessageHTTPResponse: return "RtspMessageHTTPResponse"
+		case RtspMessageHttpRequest: return "RtspMessageHttpRequest"
+		case RtspMessageHttpResponse: return "RtspMessageHttpResponse"
 		case RtspMessageInvalid: return "RtspMessageInvalid"
 		case RtspMessageRequest: return "RtspMessageRequest"
 		case RtspMessageResponse: return "RtspMessageResponse"
@@ -562,23 +562,23 @@ func (e RTSPMsgType) String() string {
 type RTSPRangeUnit C.int
 
 const (
-	// RtspRangeSmpte wraps RTSP_RANGE_SMPTE
+	// RtspRangeSmpte wraps GST_RTSP_RANGE_SMPTE
 	//
 	// SMPTE timecode
 	RtspRangeSmpte RTSPRangeUnit = 0
-	// RtspRangeSmpte30Drop wraps RTSP_RANGE_SMPTE_30_DROP
+	// RtspRangeSmpte30Drop wraps GST_RTSP_RANGE_SMPTE_30_DROP
 	//
 	// 29.97 frames per second
 	RtspRangeSmpte30Drop RTSPRangeUnit = 1
-	// RtspRangeSmpte25 wraps RTSP_RANGE_SMPTE_25
+	// RtspRangeSmpte25 wraps GST_RTSP_RANGE_SMPTE_25
 	//
 	// 25 frames per second
 	RtspRangeSmpte25 RTSPRangeUnit = 2
-	// RtspRangeNpt wraps RTSP_RANGE_NPT
+	// RtspRangeNpt wraps GST_RTSP_RANGE_NPT
 	//
 	// Normal play time
 	RtspRangeNpt RTSPRangeUnit = 3
-	// RtspRangeClock wraps RTSP_RANGE_CLOCK
+	// RtspRangeClock wraps GST_RTSP_RANGE_CLOCK
 	//
 	// Absolute time expressed as ISO 8601 timestamps
 	RtspRangeClock RTSPRangeUnit = 4
@@ -615,79 +615,79 @@ func (e RTSPRangeUnit) String() string {
 type RTSPResult C.int
 
 const (
-	// RtspOK wraps RTSP_OK
+	// RtspOK wraps GST_RTSP_OK
 	//
 	// no error
 	RtspOK RTSPResult = 0
-	// RtspOKRedirect wraps RTSP_OK_REDIRECT
+	// RtspOKRedirect wraps GST_RTSP_OK_REDIRECT
 	//
 	// RTSP request is successful, but was redirected.
 	RtspOKRedirect RTSPResult = 1
-	// RtspError wraps RTSP_ERROR
+	// RtspError wraps GST_RTSP_ERROR
 	//
 	// some unspecified error occurred
 	RtspError RTSPResult = -1
-	// RtspEinval wraps RTSP_EINVAL
+	// RtspEinval wraps GST_RTSP_EINVAL
 	//
 	// invalid arguments were provided to a function
 	RtspEinval RTSPResult = -2
-	// RtspEintr wraps RTSP_EINTR
+	// RtspEintr wraps GST_RTSP_EINTR
 	//
 	// an operation was canceled
 	RtspEintr RTSPResult = -3
-	// RtspEnomem wraps RTSP_ENOMEM
+	// RtspEnomem wraps GST_RTSP_ENOMEM
 	//
 	// no memory was available for the operation
 	RtspEnomem RTSPResult = -4
-	// RtspEresolv wraps RTSP_ERESOLV
+	// RtspEresolv wraps GST_RTSP_ERESOLV
 	//
 	// a host resolve error occurred
 	RtspEresolv RTSPResult = -5
-	// RtspEnotimpl wraps RTSP_ENOTIMPL
+	// RtspEnotimpl wraps GST_RTSP_ENOTIMPL
 	//
 	// function not implemented
 	RtspEnotimpl RTSPResult = -6
-	// RtspEsys wraps RTSP_ESYS
+	// RtspEsys wraps GST_RTSP_ESYS
 	//
 	// a system error occurred, errno contains more details
 	RtspEsys RTSPResult = -7
-	// RtspEparse wraps RTSP_EPARSE
+	// RtspEparse wraps GST_RTSP_EPARSE
 	//
 	// a parsing error occurred
 	RtspEparse RTSPResult = -8
-	// RtspEwsastart wraps RTSP_EWSASTART
+	// RtspEwsastart wraps GST_RTSP_EWSASTART
 	//
 	// windows networking could not start
 	RtspEwsastart RTSPResult = -9
-	// RtspEwsaversion wraps RTSP_EWSAVERSION
+	// RtspEwsaversion wraps GST_RTSP_EWSAVERSION
 	//
 	// windows networking stack has wrong version
 	RtspEwsaversion RTSPResult = -10
-	// RtspEeof wraps RTSP_EEOF
+	// RtspEeof wraps GST_RTSP_EEOF
 	//
 	// end-of-file was reached
 	RtspEeof RTSPResult = -11
-	// RtspEnet wraps RTSP_ENET
+	// RtspEnet wraps GST_RTSP_ENET
 	//
 	// a network problem occurred, h_errno contains more details
 	RtspEnet RTSPResult = -12
-	// RtspEnotip wraps RTSP_ENOTIP
+	// RtspEnotip wraps GST_RTSP_ENOTIP
 	//
 	// the host is not an IP host
 	RtspEnotip RTSPResult = -13
-	// RtspEtimeout wraps RTSP_ETIMEOUT
+	// RtspEtimeout wraps GST_RTSP_ETIMEOUT
 	//
 	// a timeout occurred
 	RtspEtimeout RTSPResult = -14
-	// RtspEtget wraps RTSP_ETGET
+	// RtspEtget wraps GST_RTSP_ETGET
 	//
 	// the tunnel GET request has been performed
 	RtspEtget RTSPResult = -15
-	// RtspEtpost wraps RTSP_ETPOST
+	// RtspEtpost wraps GST_RTSP_ETPOST
 	//
 	// the tunnel POST request has been performed
 	RtspEtpost RTSPResult = -16
-	// RtspElast wraps RTSP_ELAST
+	// RtspElast wraps GST_RTSP_ELAST
 	//
 	// last error
 	RtspElast RTSPResult = -17
@@ -738,27 +738,27 @@ func (e RTSPResult) String() string {
 type RTSPState C.int
 
 const (
-	// RtspStateInvalid wraps RTSP_STATE_INVALID
+	// RtspStateInvalid wraps GST_RTSP_STATE_INVALID
 	//
 	// invalid state
 	RtspStateInvalid RTSPState = 0
-	// RtspStateInit wraps RTSP_STATE_INIT
+	// RtspStateInit wraps GST_RTSP_STATE_INIT
 	//
 	// initializing
 	RtspStateInit RTSPState = 1
-	// RtspStateReady wraps RTSP_STATE_READY
+	// RtspStateReady wraps GST_RTSP_STATE_READY
 	//
 	// ready for operation
 	RtspStateReady RTSPState = 2
-	// RtspStateSeeking wraps RTSP_STATE_SEEKING
+	// RtspStateSeeking wraps GST_RTSP_STATE_SEEKING
 	//
 	// seeking in progress
 	RtspStateSeeking RTSPState = 3
-	// RtspStatePlaying wraps RTSP_STATE_PLAYING
+	// RtspStatePlaying wraps GST_RTSP_STATE_PLAYING
 	//
 	// playing
 	RtspStatePlaying RTSPState = 4
-	// RtspStateRecording wraps RTSP_STATE_RECORDING
+	// RtspStateRecording wraps GST_RTSP_STATE_RECORDING
 	//
 	// recording
 	RtspStateRecording RTSPState = 5
@@ -796,105 +796,105 @@ func (e RTSPState) String() string {
 type RTSPStatusCode C.int
 
 const (
-	// RtspStsInvalid wraps RTSP_STS_INVALID
+	// RtspStsInvalid wraps GST_RTSP_STS_INVALID
 	RtspStsInvalid RTSPStatusCode = 0
-	// RtspStsContinue wraps RTSP_STS_CONTINUE
+	// RtspStsContinue wraps GST_RTSP_STS_CONTINUE
 	RtspStsContinue RTSPStatusCode = 100
-	// RtspStsOK wraps RTSP_STS_OK
+	// RtspStsOK wraps GST_RTSP_STS_OK
 	RtspStsOK RTSPStatusCode = 200
-	// RtspStsCreated wraps RTSP_STS_CREATED
+	// RtspStsCreated wraps GST_RTSP_STS_CREATED
 	RtspStsCreated RTSPStatusCode = 201
-	// RtspStsLowOnStorage wraps RTSP_STS_LOW_ON_STORAGE
+	// RtspStsLowOnStorage wraps GST_RTSP_STS_LOW_ON_STORAGE
 	RtspStsLowOnStorage RTSPStatusCode = 250
-	// RtspStsMultipleChoices wraps RTSP_STS_MULTIPLE_CHOICES
+	// RtspStsMultipleChoices wraps GST_RTSP_STS_MULTIPLE_CHOICES
 	RtspStsMultipleChoices RTSPStatusCode = 300
-	// RtspStsMovedPermanently wraps RTSP_STS_MOVED_PERMANENTLY
+	// RtspStsMovedPermanently wraps GST_RTSP_STS_MOVED_PERMANENTLY
 	RtspStsMovedPermanently RTSPStatusCode = 301
-	// RtspStsMoveTemporarily wraps RTSP_STS_MOVE_TEMPORARILY
+	// RtspStsMoveTemporarily wraps GST_RTSP_STS_MOVE_TEMPORARILY
 	RtspStsMoveTemporarily RTSPStatusCode = 302
-	// RtspStsSeeOther wraps RTSP_STS_SEE_OTHER
+	// RtspStsSeeOther wraps GST_RTSP_STS_SEE_OTHER
 	RtspStsSeeOther RTSPStatusCode = 303
-	// RtspStsNotModified wraps RTSP_STS_NOT_MODIFIED
+	// RtspStsNotModified wraps GST_RTSP_STS_NOT_MODIFIED
 	RtspStsNotModified RTSPStatusCode = 304
-	// RtspStsUseProxy wraps RTSP_STS_USE_PROXY
+	// RtspStsUseProxy wraps GST_RTSP_STS_USE_PROXY
 	RtspStsUseProxy RTSPStatusCode = 305
-	// RtspStsRedirectTemporarily wraps RTSP_STS_REDIRECT_TEMPORARILY
+	// RtspStsRedirectTemporarily wraps GST_RTSP_STS_REDIRECT_TEMPORARILY
 	//
 	// RTSP request is temporarily redirected
 	RtspStsRedirectTemporarily RTSPStatusCode = 307
-	// RtspStsRedirectPermanently wraps RTSP_STS_REDIRECT_PERMANENTLY
+	// RtspStsRedirectPermanently wraps GST_RTSP_STS_REDIRECT_PERMANENTLY
 	//
 	// RTSP request is permanently redirected
 	RtspStsRedirectPermanently RTSPStatusCode = 308
-	// RtspStsBadRequest wraps RTSP_STS_BAD_REQUEST
+	// RtspStsBadRequest wraps GST_RTSP_STS_BAD_REQUEST
 	RtspStsBadRequest RTSPStatusCode = 400
-	// RtspStsUnauthorized wraps RTSP_STS_UNAUTHORIZED
+	// RtspStsUnauthorized wraps GST_RTSP_STS_UNAUTHORIZED
 	RtspStsUnauthorized RTSPStatusCode = 401
-	// RtspStsPaymentRequired wraps RTSP_STS_PAYMENT_REQUIRED
+	// RtspStsPaymentRequired wraps GST_RTSP_STS_PAYMENT_REQUIRED
 	RtspStsPaymentRequired RTSPStatusCode = 402
-	// RtspStsForbidden wraps RTSP_STS_FORBIDDEN
+	// RtspStsForbidden wraps GST_RTSP_STS_FORBIDDEN
 	RtspStsForbidden RTSPStatusCode = 403
-	// RtspStsNotFound wraps RTSP_STS_NOT_FOUND
+	// RtspStsNotFound wraps GST_RTSP_STS_NOT_FOUND
 	RtspStsNotFound RTSPStatusCode = 404
-	// RtspStsMethodNotAllowed wraps RTSP_STS_METHOD_NOT_ALLOWED
+	// RtspStsMethodNotAllowed wraps GST_RTSP_STS_METHOD_NOT_ALLOWED
 	RtspStsMethodNotAllowed RTSPStatusCode = 405
-	// RtspStsNotAcceptable wraps RTSP_STS_NOT_ACCEPTABLE
+	// RtspStsNotAcceptable wraps GST_RTSP_STS_NOT_ACCEPTABLE
 	RtspStsNotAcceptable RTSPStatusCode = 406
-	// RtspStsProxyAuthRequired wraps RTSP_STS_PROXY_AUTH_REQUIRED
+	// RtspStsProxyAuthRequired wraps GST_RTSP_STS_PROXY_AUTH_REQUIRED
 	RtspStsProxyAuthRequired RTSPStatusCode = 407
-	// RtspStsRequestTimeout wraps RTSP_STS_REQUEST_TIMEOUT
+	// RtspStsRequestTimeout wraps GST_RTSP_STS_REQUEST_TIMEOUT
 	RtspStsRequestTimeout RTSPStatusCode = 408
-	// RtspStsGone wraps RTSP_STS_GONE
+	// RtspStsGone wraps GST_RTSP_STS_GONE
 	RtspStsGone RTSPStatusCode = 410
-	// RtspStsLengthRequired wraps RTSP_STS_LENGTH_REQUIRED
+	// RtspStsLengthRequired wraps GST_RTSP_STS_LENGTH_REQUIRED
 	RtspStsLengthRequired RTSPStatusCode = 411
-	// RtspStsPreconditionFailed wraps RTSP_STS_PRECONDITION_FAILED
+	// RtspStsPreconditionFailed wraps GST_RTSP_STS_PRECONDITION_FAILED
 	RtspStsPreconditionFailed RTSPStatusCode = 412
-	// RtspStsRequestEntityTooLarge wraps RTSP_STS_REQUEST_ENTITY_TOO_LARGE
+	// RtspStsRequestEntityTooLarge wraps GST_RTSP_STS_REQUEST_ENTITY_TOO_LARGE
 	RtspStsRequestEntityTooLarge RTSPStatusCode = 413
-	// RtspStsRequestURITooLarge wraps RTSP_STS_REQUEST_URI_TOO_LARGE
+	// RtspStsRequestURITooLarge wraps GST_RTSP_STS_REQUEST_URI_TOO_LARGE
 	RtspStsRequestURITooLarge RTSPStatusCode = 414
-	// RtspStsUnsupportedMediaType wraps RTSP_STS_UNSUPPORTED_MEDIA_TYPE
+	// RtspStsUnsupportedMediaType wraps GST_RTSP_STS_UNSUPPORTED_MEDIA_TYPE
 	RtspStsUnsupportedMediaType RTSPStatusCode = 415
-	// RtspStsParameterNotUnderstood wraps RTSP_STS_PARAMETER_NOT_UNDERSTOOD
+	// RtspStsParameterNotUnderstood wraps GST_RTSP_STS_PARAMETER_NOT_UNDERSTOOD
 	RtspStsParameterNotUnderstood RTSPStatusCode = 451
-	// RtspStsConferenceNotFound wraps RTSP_STS_CONFERENCE_NOT_FOUND
+	// RtspStsConferenceNotFound wraps GST_RTSP_STS_CONFERENCE_NOT_FOUND
 	RtspStsConferenceNotFound RTSPStatusCode = 452
-	// RtspStsNotEnoughBandwidth wraps RTSP_STS_NOT_ENOUGH_BANDWIDTH
+	// RtspStsNotEnoughBandwidth wraps GST_RTSP_STS_NOT_ENOUGH_BANDWIDTH
 	RtspStsNotEnoughBandwidth RTSPStatusCode = 453
-	// RtspStsSessionNotFound wraps RTSP_STS_SESSION_NOT_FOUND
+	// RtspStsSessionNotFound wraps GST_RTSP_STS_SESSION_NOT_FOUND
 	RtspStsSessionNotFound RTSPStatusCode = 454
-	// RtspStsMethodNotValidInThisState wraps RTSP_STS_METHOD_NOT_VALID_IN_THIS_STATE
+	// RtspStsMethodNotValidInThisState wraps GST_RTSP_STS_METHOD_NOT_VALID_IN_THIS_STATE
 	RtspStsMethodNotValidInThisState RTSPStatusCode = 455
-	// RtspStsHeaderFieldNotValidForResource wraps RTSP_STS_HEADER_FIELD_NOT_VALID_FOR_RESOURCE
+	// RtspStsHeaderFieldNotValidForResource wraps GST_RTSP_STS_HEADER_FIELD_NOT_VALID_FOR_RESOURCE
 	RtspStsHeaderFieldNotValidForResource RTSPStatusCode = 456
-	// RtspStsInvalidRange wraps RTSP_STS_INVALID_RANGE
+	// RtspStsInvalidRange wraps GST_RTSP_STS_INVALID_RANGE
 	RtspStsInvalidRange RTSPStatusCode = 457
-	// RtspStsParameterIsReadonly wraps RTSP_STS_PARAMETER_IS_READONLY
+	// RtspStsParameterIsReadonly wraps GST_RTSP_STS_PARAMETER_IS_READONLY
 	RtspStsParameterIsReadonly RTSPStatusCode = 458
-	// RtspStsAggregateOperationNotAllowed wraps RTSP_STS_AGGREGATE_OPERATION_NOT_ALLOWED
+	// RtspStsAggregateOperationNotAllowed wraps GST_RTSP_STS_AGGREGATE_OPERATION_NOT_ALLOWED
 	RtspStsAggregateOperationNotAllowed RTSPStatusCode = 459
-	// RtspStsOnlyAggregateOperationAllowed wraps RTSP_STS_ONLY_AGGREGATE_OPERATION_ALLOWED
+	// RtspStsOnlyAggregateOperationAllowed wraps GST_RTSP_STS_ONLY_AGGREGATE_OPERATION_ALLOWED
 	RtspStsOnlyAggregateOperationAllowed RTSPStatusCode = 460
-	// RtspStsUnsupportedTransport wraps RTSP_STS_UNSUPPORTED_TRANSPORT
+	// RtspStsUnsupportedTransport wraps GST_RTSP_STS_UNSUPPORTED_TRANSPORT
 	RtspStsUnsupportedTransport RTSPStatusCode = 461
-	// RtspStsDestinationUnreachable wraps RTSP_STS_DESTINATION_UNREACHABLE
+	// RtspStsDestinationUnreachable wraps GST_RTSP_STS_DESTINATION_UNREACHABLE
 	RtspStsDestinationUnreachable RTSPStatusCode = 462
-	// RtspStsKeyManagementFailure wraps RTSP_STS_KEY_MANAGEMENT_FAILURE
+	// RtspStsKeyManagementFailure wraps GST_RTSP_STS_KEY_MANAGEMENT_FAILURE
 	RtspStsKeyManagementFailure RTSPStatusCode = 463
-	// RtspStsInternalServerError wraps RTSP_STS_INTERNAL_SERVER_ERROR
+	// RtspStsInternalServerError wraps GST_RTSP_STS_INTERNAL_SERVER_ERROR
 	RtspStsInternalServerError RTSPStatusCode = 500
-	// RtspStsNotImplemented wraps RTSP_STS_NOT_IMPLEMENTED
+	// RtspStsNotImplemented wraps GST_RTSP_STS_NOT_IMPLEMENTED
 	RtspStsNotImplemented RTSPStatusCode = 501
-	// RtspStsBadGateway wraps RTSP_STS_BAD_GATEWAY
+	// RtspStsBadGateway wraps GST_RTSP_STS_BAD_GATEWAY
 	RtspStsBadGateway RTSPStatusCode = 502
-	// RtspStsServiceUnavailable wraps RTSP_STS_SERVICE_UNAVAILABLE
+	// RtspStsServiceUnavailable wraps GST_RTSP_STS_SERVICE_UNAVAILABLE
 	RtspStsServiceUnavailable RTSPStatusCode = 503
-	// RtspStsGatewayTimeout wraps RTSP_STS_GATEWAY_TIMEOUT
+	// RtspStsGatewayTimeout wraps GST_RTSP_STS_GATEWAY_TIMEOUT
 	RtspStsGatewayTimeout RTSPStatusCode = 504
-	// RtspStsRtspVersionNotSupported wraps RTSP_STS_RTSP_VERSION_NOT_SUPPORTED
+	// RtspStsRtspVersionNotSupported wraps GST_RTSP_STS_RTSP_VERSION_NOT_SUPPORTED
 	RtspStsRtspVersionNotSupported RTSPStatusCode = 505
-	// RtspStsOptionNotSupported wraps RTSP_STS_OPTION_NOT_SUPPORTED
+	// RtspStsOptionNotSupported wraps GST_RTSP_STS_OPTION_NOT_SUPPORTED
 	RtspStsOptionNotSupported RTSPStatusCode = 551
 )
 
@@ -972,26 +972,26 @@ func (e RTSPStatusCode) String() string {
 type RTSPTimeType C.int
 
 const (
-	// RtspTimeSeconds wraps RTSP_TIME_SECONDS
+	// RtspTimeSeconds wraps GST_RTSP_TIME_SECONDS
 	//
 	// seconds
 	RtspTimeSeconds RTSPTimeType = 0
-	// RtspTimeNow wraps RTSP_TIME_NOW
+	// RtspTimeNow wraps GST_RTSP_TIME_NOW
 	//
 	// now
 	RtspTimeNow RTSPTimeType = 1
-	// RtspTimeEnd wraps RTSP_TIME_END
+	// RtspTimeEnd wraps GST_RTSP_TIME_END
 	//
 	// end
 	RtspTimeEnd RTSPTimeType = 2
-	// RtspTimeFrames wraps RTSP_TIME_FRAMES
+	// RtspTimeFrames wraps GST_RTSP_TIME_FRAMES
 	//
 	// frames and subframes
 	RtspTimeFrames RTSPTimeType = 3
-	// RtspTimeUTC wraps RTSP_TIME_UTC
+	// RtspTimeUtc wraps GST_RTSP_TIME_UTC
 	//
 	// UTC time
-	RtspTimeUTC RTSPTimeType = 4
+	RtspTimeUtc RTSPTimeType = 4
 )
 
 func marshalRTSPTimeType(p unsafe.Pointer) (any, error) {
@@ -1014,7 +1014,7 @@ func (e RTSPTimeType) String() string {
 		case RtspTimeFrames: return "RtspTimeFrames"
 		case RtspTimeNow: return "RtspTimeNow"
 		case RtspTimeSeconds: return "RtspTimeSeconds"
-		case RtspTimeUTC: return "RtspTimeUTC"
+		case RtspTimeUtc: return "RtspTimeUtc"
 		default: return fmt.Sprintf("RTSPTimeType(%d)", e)
 	}
 }
@@ -1025,19 +1025,19 @@ func (e RTSPTimeType) String() string {
 type RTSPVersion C.int
 
 const (
-	// RtspVersionInvalid wraps RTSP_VERSION_INVALID
+	// RtspVersionInvalid wraps GST_RTSP_VERSION_INVALID
 	//
 	// unknown/invalid version
 	RtspVersionInvalid RTSPVersion = 0
-	// RtspVersion10 wraps RTSP_VERSION_1_0
+	// RtspVersion10 wraps GST_RTSP_VERSION_1_0
 	//
 	// version 1.0
 	RtspVersion10 RTSPVersion = 16
-	// RtspVersion11 wraps RTSP_VERSION_1_1
+	// RtspVersion11 wraps GST_RTSP_VERSION_1_1
 	//
 	// version 1.1.
 	RtspVersion11 RTSPVersion = 17
-	// RtspVersion20 wraps RTSP_VERSION_2_0
+	// RtspVersion20 wraps GST_RTSP_VERSION_2_0
 	//
 	// version 2.0.
 	RtspVersion20 RTSPVersion = 32
@@ -1100,11 +1100,11 @@ func RTSPVersionAsText(version RTSPVersion) string {
 type RTSPEvent C.gint
 
 const (
-	// RtspEvRead wraps RTSP_EV_READ
+	// RtspEvRead wraps GST_RTSP_EV_READ
 	//
 	// connection is readable
 	RtspEvRead RTSPEvent = 1
-	// RtspEvWrite wraps RTSP_EV_WRITE
+	// RtspEvWrite wraps GST_RTSP_EV_WRITE
 	//
 	// connection is writable
 	RtspEvWrite RTSPEvent = 2
@@ -1149,30 +1149,30 @@ func (f RTSPEvent) String() string {
 type RTSPLowerTrans C.gint
 
 const (
-	// RtspLowerTransUnknown wraps RTSP_LOWER_TRANS_UNKNOWN
+	// RtspLowerTransUnknown wraps GST_RTSP_LOWER_TRANS_UNKNOWN
 	//
 	// invalid transport flag
 	RtspLowerTransUnknown RTSPLowerTrans = 0
-	// RtspLowerTransUDP wraps RTSP_LOWER_TRANS_UDP
+	// RtspLowerTransUdp wraps GST_RTSP_LOWER_TRANS_UDP
 	//
 	// stream data over UDP
-	RtspLowerTransUDP RTSPLowerTrans = 1
-	// RtspLowerTransUDPMcast wraps RTSP_LOWER_TRANS_UDP_MCAST
+	RtspLowerTransUdp RTSPLowerTrans = 1
+	// RtspLowerTransUdpMcast wraps GST_RTSP_LOWER_TRANS_UDP_MCAST
 	//
 	// stream data over UDP multicast
-	RtspLowerTransUDPMcast RTSPLowerTrans = 2
-	// RtspLowerTransTCP wraps RTSP_LOWER_TRANS_TCP
+	RtspLowerTransUdpMcast RTSPLowerTrans = 2
+	// RtspLowerTransTcp wraps GST_RTSP_LOWER_TRANS_TCP
 	//
 	// stream data over TCP
-	RtspLowerTransTCP RTSPLowerTrans = 4
-	// RtspLowerTransHTTP wraps RTSP_LOWER_TRANS_HTTP
+	RtspLowerTransTcp RTSPLowerTrans = 4
+	// RtspLowerTransHttp wraps GST_RTSP_LOWER_TRANS_HTTP
 	//
 	// stream data tunneled over HTTP.
-	RtspLowerTransHTTP RTSPLowerTrans = 16
-	// RtspLowerTransTLS wraps RTSP_LOWER_TRANS_TLS
+	RtspLowerTransHttp RTSPLowerTrans = 16
+	// RtspLowerTransTls wraps GST_RTSP_LOWER_TRANS_TLS
 	//
 	// encrypt TCP and HTTP with TLS
-	RtspLowerTransTLS RTSPLowerTrans = 32
+	RtspLowerTransTls RTSPLowerTrans = 32
 )
 
 func marshalRTSPLowerTrans(p unsafe.Pointer) (any, error) {
@@ -1202,20 +1202,20 @@ func (f RTSPLowerTrans) String() string {
 	if (f & RtspLowerTransUnknown) != 0 {
 		parts = append(parts, "RtspLowerTransUnknown")
 	}
-	if (f & RtspLowerTransUDP) != 0 {
-		parts = append(parts, "RtspLowerTransUDP")
+	if (f & RtspLowerTransUdp) != 0 {
+		parts = append(parts, "RtspLowerTransUdp")
 	}
-	if (f & RtspLowerTransUDPMcast) != 0 {
-		parts = append(parts, "RtspLowerTransUDPMcast")
+	if (f & RtspLowerTransUdpMcast) != 0 {
+		parts = append(parts, "RtspLowerTransUdpMcast")
 	}
-	if (f & RtspLowerTransTCP) != 0 {
-		parts = append(parts, "RtspLowerTransTCP")
+	if (f & RtspLowerTransTcp) != 0 {
+		parts = append(parts, "RtspLowerTransTcp")
 	}
-	if (f & RtspLowerTransHTTP) != 0 {
-		parts = append(parts, "RtspLowerTransHTTP")
+	if (f & RtspLowerTransHttp) != 0 {
+		parts = append(parts, "RtspLowerTransHttp")
 	}
-	if (f & RtspLowerTransTLS) != 0 {
-		parts = append(parts, "RtspLowerTransTLS")
+	if (f & RtspLowerTransTls) != 0 {
+		parts = append(parts, "RtspLowerTransTls")
 	}
 	return "RTSPLowerTrans(" + strings.Join(parts, "|") + ")"
 }
@@ -1226,59 +1226,59 @@ func (f RTSPLowerTrans) String() string {
 type RTSPMethod C.gint
 
 const (
-	// RtspInvalid wraps RTSP_INVALID
+	// RtspInvalid wraps GST_RTSP_INVALID
 	//
 	// invalid method
 	RtspInvalid RTSPMethod = 0
-	// RtspDescribe wraps RTSP_DESCRIBE
+	// RtspDescribe wraps GST_RTSP_DESCRIBE
 	//
 	// the DESCRIBE method
 	RtspDescribe RTSPMethod = 1
-	// RtspAnnounce wraps RTSP_ANNOUNCE
+	// RtspAnnounce wraps GST_RTSP_ANNOUNCE
 	//
 	// the ANNOUNCE method
 	RtspAnnounce RTSPMethod = 2
-	// RtspGetParameter wraps RTSP_GET_PARAMETER
+	// RtspGetParameter wraps GST_RTSP_GET_PARAMETER
 	//
 	// the GET_PARAMETER method
 	RtspGetParameter RTSPMethod = 4
-	// RtspOptions wraps RTSP_OPTIONS
+	// RtspOptions wraps GST_RTSP_OPTIONS
 	//
 	// the OPTIONS method
 	RtspOptions RTSPMethod = 8
-	// RtspPause wraps RTSP_PAUSE
+	// RtspPause wraps GST_RTSP_PAUSE
 	//
 	// the PAUSE method
 	RtspPause RTSPMethod = 16
-	// RtspPlay wraps RTSP_PLAY
+	// RtspPlay wraps GST_RTSP_PLAY
 	//
 	// the PLAY method
 	RtspPlay RTSPMethod = 32
-	// RtspRecord wraps RTSP_RECORD
+	// RtspRecord wraps GST_RTSP_RECORD
 	//
 	// the RECORD method
 	RtspRecord RTSPMethod = 64
-	// RtspRedirect wraps RTSP_REDIRECT
+	// RtspRedirect wraps GST_RTSP_REDIRECT
 	//
 	// the REDIRECT method
 	RtspRedirect RTSPMethod = 128
-	// RtspSetup wraps RTSP_SETUP
+	// RtspSetup wraps GST_RTSP_SETUP
 	//
 	// the SETUP method
 	RtspSetup RTSPMethod = 256
-	// RtspSetParameter wraps RTSP_SET_PARAMETER
+	// RtspSetParameter wraps GST_RTSP_SET_PARAMETER
 	//
 	// the SET_PARAMETER method
 	RtspSetParameter RTSPMethod = 512
-	// RtspTeardown wraps RTSP_TEARDOWN
+	// RtspTeardown wraps GST_RTSP_TEARDOWN
 	//
 	// the TEARDOWN method
 	RtspTeardown RTSPMethod = 1024
-	// RtspGet wraps RTSP_GET
+	// RtspGet wraps GST_RTSP_GET
 	//
 	// the GET method (HTTP).
 	RtspGet RTSPMethod = 2048
-	// RtspPost wraps RTSP_POST
+	// RtspPost wraps GST_RTSP_POST
 	//
 	// the POST method (HTTP).
 	RtspPost RTSPMethod = 4096
@@ -1388,23 +1388,23 @@ func RTSPMethodAsText(method RTSPMethod) string {
 type RTSPProfile C.gint
 
 const (
-	// RtspProfileUnknown wraps RTSP_PROFILE_UNKNOWN
+	// RtspProfileUnknown wraps GST_RTSP_PROFILE_UNKNOWN
 	//
 	// invalid profile
 	RtspProfileUnknown RTSPProfile = 0
-	// RtspProfileAvp wraps RTSP_PROFILE_AVP
+	// RtspProfileAvp wraps GST_RTSP_PROFILE_AVP
 	//
 	// the Audio/Visual profile (RFC 3551)
 	RtspProfileAvp RTSPProfile = 1
-	// RtspProfileSavp wraps RTSP_PROFILE_SAVP
+	// RtspProfileSavp wraps GST_RTSP_PROFILE_SAVP
 	//
 	// the secure Audio/Visual profile (RFC 3711)
 	RtspProfileSavp RTSPProfile = 2
-	// RtspProfileAvpf wraps RTSP_PROFILE_AVPF
+	// RtspProfileAvpf wraps GST_RTSP_PROFILE_AVPF
 	//
 	// the Audio/Visual profile with feedback (RFC 4585)
 	RtspProfileAvpf RTSPProfile = 4
-	// RtspProfileSavpf wraps RTSP_PROFILE_SAVPF
+	// RtspProfileSavpf wraps GST_RTSP_PROFILE_SAVPF
 	//
 	// the secure Audio/Visual profile with feedback (RFC 5124)
 	RtspProfileSavpf RTSPProfile = 8
@@ -1458,15 +1458,15 @@ func (f RTSPProfile) String() string {
 type RTSPTransMode C.gint
 
 const (
-	// RtspTransUnknown wraps RTSP_TRANS_UNKNOWN
+	// RtspTransUnknown wraps GST_RTSP_TRANS_UNKNOWN
 	//
 	// invalid tansport mode
 	RtspTransUnknown RTSPTransMode = 0
-	// RtspTransRtp wraps RTSP_TRANS_RTP
+	// RtspTransRtp wraps GST_RTSP_TRANS_RTP
 	//
 	// transfer RTP data
 	RtspTransRtp RTSPTransMode = 1
-	// RtspTransRdt wraps RTSP_TRANS_RDT
+	// RtspTransRdt wraps GST_RTSP_TRANS_RDT
 	//
 	// transfer RDT (RealMedia) data
 	RtspTransRdt RTSPTransMode = 2
@@ -1514,12 +1514,12 @@ func (f RTSPTransMode) String() string {
 // 
 // 	- conn gio.TlsConnection 
 // 	- peerCert gio.TlsCertificate 
-// 	- errors gio.TLSCertificateFlags 
+// 	- errors gio.TlsCertificateFlags 
 // 
 // The function returns the following values:
 // 
 // 	- goret bool 
-type RTSPConnectionAcceptCertificateFunc func(conn gio.TlsConnection, peerCert gio.TlsCertificate, errors gio.TLSCertificateFlags) (goret bool)
+type RTSPConnectionAcceptCertificateFunc func(conn gio.TlsConnection, peerCert gio.TlsCertificate, errors gio.TlsCertificateFlags) (goret bool)
 
 // RtspFindHeaderField wraps gst_rtsp_find_header_field
 // 
@@ -3158,11 +3158,11 @@ func (ext *RTSPExtensionInstance) ParentStreamSelect(url *RTSPUrl) RTSPResult {
 //
 // RTSP Authentication credentials
 type RTSPAuthCredential struct {
-	*rtspAuthCredential
+	*rTSPAuthCredential
 }
 
-// rtspAuthCredential is the struct that's finalized
-type rtspAuthCredential struct {
+// rTSPAuthCredential is the struct that's finalized
+type rTSPAuthCredential struct {
 	native *C.GstRTSPAuthCredential
 }
 
@@ -3183,7 +3183,7 @@ func (r *RTSPAuthCredential) SetGoValue(v *gobject.Value) {
 
 // UnsafeRTSPAuthCredentialFromGlibBorrow is used to convert raw C.GstRTSPAuthCredential pointers to go. This is used by the bindings internally.
 func UnsafeRTSPAuthCredentialFromGlibBorrow(p unsafe.Pointer) *RTSPAuthCredential {
-	return &RTSPAuthCredential{&rtspAuthCredential{(*C.GstRTSPAuthCredential)(p)}}
+	return &RTSPAuthCredential{&rTSPAuthCredential{(*C.GstRTSPAuthCredential)(p)}}
 }
 
 // UnsafeRTSPAuthCredentialFromGlibNone is used to convert raw C.GstRTSPAuthCredential pointers to go without transferring ownership. This is used by the bindings internally.
@@ -3191,8 +3191,8 @@ func UnsafeRTSPAuthCredentialFromGlibNone(p unsafe.Pointer) *RTSPAuthCredential 
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPAuthCredentialFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtspAuthCredential,
-		func (intern *rtspAuthCredential) {
+		wrapped.rTSPAuthCredential,
+		func (intern *rTSPAuthCredential) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -3203,8 +3203,8 @@ func UnsafeRTSPAuthCredentialFromGlibNone(p unsafe.Pointer) *RTSPAuthCredential 
 func UnsafeRTSPAuthCredentialFromGlibFull(p unsafe.Pointer) *RTSPAuthCredential {
 	wrapped := UnsafeRTSPAuthCredentialFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtspAuthCredential,
-		func (intern *rtspAuthCredential) {
+		wrapped.rTSPAuthCredential,
+		func (intern *rTSPAuthCredential) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -3226,7 +3226,7 @@ func UnsafeRTSPAuthCredentialToGlibNone(r *RTSPAuthCredential) unsafe.Pointer {
 // UnsafeRTSPAuthCredentialToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeRTSPAuthCredentialToGlibFull(r *RTSPAuthCredential) unsafe.Pointer {
-	runtime.SetFinalizer(r.rtspAuthCredential, nil)
+	runtime.SetFinalizer(r.rTSPAuthCredential, nil)
 	_p := unsafe.Pointer(r.native)
 	r.native = nil // RTSPAuthCredential is invalid from here on
 	return _p
@@ -3236,11 +3236,11 @@ func UnsafeRTSPAuthCredentialToGlibFull(r *RTSPAuthCredential) unsafe.Pointer {
 //
 // RTSP Authentication parameter
 type RTSPAuthParam struct {
-	*rtspAuthParam
+	*rTSPAuthParam
 }
 
-// rtspAuthParam is the struct that's finalized
-type rtspAuthParam struct {
+// rTSPAuthParam is the struct that's finalized
+type rTSPAuthParam struct {
 	native *C.GstRTSPAuthParam
 }
 
@@ -3261,7 +3261,7 @@ func (r *RTSPAuthParam) SetGoValue(v *gobject.Value) {
 
 // UnsafeRTSPAuthParamFromGlibBorrow is used to convert raw C.GstRTSPAuthParam pointers to go. This is used by the bindings internally.
 func UnsafeRTSPAuthParamFromGlibBorrow(p unsafe.Pointer) *RTSPAuthParam {
-	return &RTSPAuthParam{&rtspAuthParam{(*C.GstRTSPAuthParam)(p)}}
+	return &RTSPAuthParam{&rTSPAuthParam{(*C.GstRTSPAuthParam)(p)}}
 }
 
 // UnsafeRTSPAuthParamFromGlibNone is used to convert raw C.GstRTSPAuthParam pointers to go without transferring ownership. This is used by the bindings internally.
@@ -3269,8 +3269,8 @@ func UnsafeRTSPAuthParamFromGlibNone(p unsafe.Pointer) *RTSPAuthParam {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPAuthParamFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtspAuthParam,
-		func (intern *rtspAuthParam) {
+		wrapped.rTSPAuthParam,
+		func (intern *rTSPAuthParam) {
 			C.gst_rtsp_auth_param_free(intern.native)
 		},
 	)
@@ -3281,8 +3281,8 @@ func UnsafeRTSPAuthParamFromGlibNone(p unsafe.Pointer) *RTSPAuthParam {
 func UnsafeRTSPAuthParamFromGlibFull(p unsafe.Pointer) *RTSPAuthParam {
 	wrapped := UnsafeRTSPAuthParamFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtspAuthParam,
-		func (intern *rtspAuthParam) {
+		wrapped.rTSPAuthParam,
+		func (intern *rTSPAuthParam) {
 			C.gst_rtsp_auth_param_free(intern.native)
 		},
 	)
@@ -3304,7 +3304,7 @@ func UnsafeRTSPAuthParamToGlibNone(r *RTSPAuthParam) unsafe.Pointer {
 // UnsafeRTSPAuthParamToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeRTSPAuthParamToGlibFull(r *RTSPAuthParam) unsafe.Pointer {
-	runtime.SetFinalizer(r.rtspAuthParam, nil)
+	runtime.SetFinalizer(r.rTSPAuthParam, nil)
 	_p := unsafe.Pointer(r.native)
 	r.native = nil // RTSPAuthParam is invalid from here on
 	return _p
@@ -3336,17 +3336,17 @@ func (param *RTSPAuthParam) Copy() *RTSPAuthParam {
 // This object manages the RTSP connection to the server. It provides function
 // to receive and send bytes and messages.
 type RTSPConnection struct {
-	*rtspConnection
+	*rTSPConnection
 }
 
-// rtspConnection is the struct that's finalized
-type rtspConnection struct {
+// rTSPConnection is the struct that's finalized
+type rTSPConnection struct {
 	native *C.GstRTSPConnection
 }
 
 // UnsafeRTSPConnectionFromGlibBorrow is used to convert raw C.GstRTSPConnection pointers to go. This is used by the bindings internally.
 func UnsafeRTSPConnectionFromGlibBorrow(p unsafe.Pointer) *RTSPConnection {
-	return &RTSPConnection{&rtspConnection{(*C.GstRTSPConnection)(p)}}
+	return &RTSPConnection{&rTSPConnection{(*C.GstRTSPConnection)(p)}}
 }
 
 // UnsafeRTSPConnectionFromGlibNone is used to convert raw C.GstRTSPConnection pointers to go without transferring ownership. This is used by the bindings internally.
@@ -3354,8 +3354,8 @@ func UnsafeRTSPConnectionFromGlibNone(p unsafe.Pointer) *RTSPConnection {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPConnectionFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtspConnection,
-		func (intern *rtspConnection) {
+		wrapped.rTSPConnection,
+		func (intern *rTSPConnection) {
 			C.gst_rtsp_connection_free(intern.native)
 		},
 	)
@@ -3366,8 +3366,8 @@ func UnsafeRTSPConnectionFromGlibNone(p unsafe.Pointer) *RTSPConnection {
 func UnsafeRTSPConnectionFromGlibFull(p unsafe.Pointer) *RTSPConnection {
 	wrapped := UnsafeRTSPConnectionFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtspConnection,
-		func (intern *rtspConnection) {
+		wrapped.rTSPConnection,
+		func (intern *rTSPConnection) {
 			C.gst_rtsp_connection_free(intern.native)
 		},
 	)
@@ -3389,7 +3389,7 @@ func UnsafeRTSPConnectionToGlibNone(r *RTSPConnection) unsafe.Pointer {
 // UnsafeRTSPConnectionToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeRTSPConnectionToGlibFull(r *RTSPConnection) unsafe.Pointer {
-	runtime.SetFinalizer(r.rtspConnection, nil)
+	runtime.SetFinalizer(r.rTSPConnection, nil)
 	_p := unsafe.Pointer(r.native)
 	r.native = nil // RTSPConnection is invalid from here on
 	return _p
@@ -3519,7 +3519,7 @@ func RTSPConnectionCreateFromSocket(socket gio.Socket, ip string, port uint16, i
 	return conn, goret
 }
 
-// AddExtraHTTPRequestHeader wraps gst_rtsp_connection_add_extra_http_request_header
+// AddExtraHttpRequestHeader wraps gst_rtsp_connection_add_extra_http_request_header
 // 
 // The function takes the following parameters:
 // 
@@ -3530,7 +3530,7 @@ func RTSPConnectionCreateFromSocket(socket gio.Socket, ip string, port uint16, i
 // If the header already exists then the old header is replaced by the new header.
 // 
 // Only applicable in HTTP tunnel mode.
-func (conn *RTSPConnection) AddExtraHTTPRequestHeader(key string, value string) {
+func (conn *RTSPConnection) AddExtraHttpRequestHeader(key string, value string) {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var carg1 *C.gchar             // in, none, string
 	var carg2 *C.gchar             // in, none, string
@@ -3757,14 +3757,14 @@ func (conn *RTSPConnection) GetIgnoreXServerReply() bool {
 	return goret
 }
 
-// GetIP wraps gst_rtsp_connection_get_ip
+// GetIp wraps gst_rtsp_connection_get_ip
 // 
 // The function returns the following values:
 // 
 // 	- goret string 
 //
 // Retrieve the IP address of the other end of @conn.
-func (conn *RTSPConnection) GetIP() string {
+func (conn *RTSPConnection) GetIp() string {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var cret  *C.gchar             // return, none, string
 
@@ -3828,7 +3828,7 @@ func (conn *RTSPConnection) GetRememberSessionID() bool {
 	return goret
 }
 
-// GetTLS wraps gst_rtsp_connection_get_tls
+// GetTls wraps gst_rtsp_connection_get_tls
 // 
 // The function returns the following values:
 // 
@@ -3843,7 +3843,7 @@ func (conn *RTSPConnection) GetRememberSessionID() bool {
 // For server side connections, this function will create a GTlsServerConnection
 // when called the first time and will return that same connection on subsequent
 // calls. The server is then responsible for configuring the TLS connection.
-func (conn *RTSPConnection) GetTLS() (gio.TlsConnection, error) {
+func (conn *RTSPConnection) GetTls() (gio.TlsConnection, error) {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var cret  *C.GTlsConnection    // return, none, converted
 	var _cerr *C.GError            // out, full, converted, nullable
@@ -3864,7 +3864,7 @@ func (conn *RTSPConnection) GetTLS() (gio.TlsConnection, error) {
 	return goret, _goerr
 }
 
-// GetTLSDatabase wraps gst_rtsp_connection_get_tls_database
+// GetTlsDatabase wraps gst_rtsp_connection_get_tls_database
 // 
 // The function returns the following values:
 // 
@@ -3873,7 +3873,7 @@ func (conn *RTSPConnection) GetTLS() (gio.TlsConnection, error) {
 // Gets the anchor certificate authorities database that will be used
 // after a server certificate can't be verified with the default
 // certificate database.
-func (conn *RTSPConnection) GetTLSDatabase() gio.TlsDatabase {
+func (conn *RTSPConnection) GetTlsDatabase() gio.TlsDatabase {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var cret  *C.GTlsDatabase      // return, full, converted, nullable
 
@@ -3891,7 +3891,7 @@ func (conn *RTSPConnection) GetTLSDatabase() gio.TlsDatabase {
 	return goret
 }
 
-// GetTLSInteraction wraps gst_rtsp_connection_get_tls_interaction
+// GetTlsInteraction wraps gst_rtsp_connection_get_tls_interaction
 // 
 // The function returns the following values:
 // 
@@ -3900,7 +3900,7 @@ func (conn *RTSPConnection) GetTLSDatabase() gio.TlsDatabase {
 // Gets a #GTlsInteraction object to be used when the connection or certificate
 // database need to interact with the user. This will be used to prompt the
 // user for passwords where necessary.
-func (conn *RTSPConnection) GetTLSInteraction() gio.TlsInteraction {
+func (conn *RTSPConnection) GetTlsInteraction() gio.TlsInteraction {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var cret  *C.GTlsInteraction   // return, full, converted, nullable
 
@@ -3918,11 +3918,11 @@ func (conn *RTSPConnection) GetTLSInteraction() gio.TlsInteraction {
 	return goret
 }
 
-// GetTLSValidationFlags wraps gst_rtsp_connection_get_tls_validation_flags
+// GetTlsValidationFlags wraps gst_rtsp_connection_get_tls_validation_flags
 // 
 // The function returns the following values:
 // 
-// 	- goret gio.TLSCertificateFlags 
+// 	- goret gio.TlsCertificateFlags 
 //
 // Gets the TLS validation flags used to verify the peer certificate
 // when a TLS connection is established.
@@ -3935,7 +3935,7 @@ func (conn *RTSPConnection) GetTLSInteraction() gio.TlsInteraction {
 // For example, it would be incorrect to ignore %G_TLS_CERTIFICATE_EXPIRED if
 // you want to allow expired certificates, because this could potentially be
 // the only error flag set even if other problems exist with the certificate.
-func (conn *RTSPConnection) GetTLSValidationFlags() gio.TLSCertificateFlags {
+func (conn *RTSPConnection) GetTlsValidationFlags() gio.TlsCertificateFlags {
 	var carg0 *C.GstRTSPConnection   // in, none, converted
 	var cret  C.GTlsCertificateFlags // return, none, casted
 
@@ -3944,9 +3944,9 @@ func (conn *RTSPConnection) GetTLSValidationFlags() gio.TLSCertificateFlags {
 	cret = C.gst_rtsp_connection_get_tls_validation_flags(carg0)
 	runtime.KeepAlive(conn)
 
-	var goret gio.TLSCertificateFlags
+	var goret gio.TlsCertificateFlags
 
-	goret = gio.TLSCertificateFlags(cret)
+	goret = gio.TlsCertificateFlags(cret)
 
 	return goret
 }
@@ -3976,14 +3976,14 @@ func (conn *RTSPConnection) GetTunnelid() string {
 	return goret
 }
 
-// GetURL wraps gst_rtsp_connection_get_url
+// GetUrl wraps gst_rtsp_connection_get_url
 // 
 // The function returns the following values:
 // 
 // 	- goret *RTSPUrl 
 //
 // Retrieve the URL of the other end of @conn.
-func (conn *RTSPConnection) GetURL() *RTSPUrl {
+func (conn *RTSPConnection) GetUrl() *RTSPUrl {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var cret  *C.GstRTSPUrl        // return, full, converted
 
@@ -4421,7 +4421,7 @@ func (conn *RTSPConnection) SetContentLengthLimit(limit uint) {
 	runtime.KeepAlive(limit)
 }
 
-// SetHTTPMode wraps gst_rtsp_connection_set_http_mode
+// SetHttpMode wraps gst_rtsp_connection_set_http_mode
 // 
 // The function takes the following parameters:
 // 
@@ -4430,7 +4430,7 @@ func (conn *RTSPConnection) SetContentLengthLimit(limit uint) {
 // By setting the HTTP mode to %TRUE the message parsing will support HTTP
 // messages in addition to the RTSP messages. It will also disable the
 // automatic handling of setting up an HTTP tunnel.
-func (conn *RTSPConnection) SetHTTPMode(enable bool) {
+func (conn *RTSPConnection) SetHttpMode(enable bool) {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var carg1 C.gboolean           // in
 
@@ -4467,14 +4467,14 @@ func (conn *RTSPConnection) SetIgnoreXServerReply(ignore bool) {
 	runtime.KeepAlive(ignore)
 }
 
-// SetIP wraps gst_rtsp_connection_set_ip
+// SetIp wraps gst_rtsp_connection_set_ip
 // 
 // The function takes the following parameters:
 // 
 // 	- ip string: an ip address 
 //
 // Set the IP address of the server.
-func (conn *RTSPConnection) SetIP(ip string) {
+func (conn *RTSPConnection) SetIp(ip string) {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var carg1 *C.gchar             // in, none, string
 
@@ -4576,7 +4576,7 @@ func (conn *RTSPConnection) SetRememberSessionID(remember bool) {
 	runtime.KeepAlive(remember)
 }
 
-// SetTLSDatabase wraps gst_rtsp_connection_set_tls_database
+// SetTlsDatabase wraps gst_rtsp_connection_set_tls_database
 // 
 // The function takes the following parameters:
 // 
@@ -4585,7 +4585,7 @@ func (conn *RTSPConnection) SetRememberSessionID(remember bool) {
 // Sets the anchor certificate authorities database. This certificate
 // database will be used to verify the server's certificate in case it
 // can't be verified with the default certificate database first.
-func (conn *RTSPConnection) SetTLSDatabase(database gio.TlsDatabase) {
+func (conn *RTSPConnection) SetTlsDatabase(database gio.TlsDatabase) {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var carg1 *C.GTlsDatabase      // in, none, converted, nullable
 
@@ -4599,7 +4599,7 @@ func (conn *RTSPConnection) SetTLSDatabase(database gio.TlsDatabase) {
 	runtime.KeepAlive(database)
 }
 
-// SetTLSInteraction wraps gst_rtsp_connection_set_tls_interaction
+// SetTlsInteraction wraps gst_rtsp_connection_set_tls_interaction
 // 
 // The function takes the following parameters:
 // 
@@ -4608,7 +4608,7 @@ func (conn *RTSPConnection) SetTLSDatabase(database gio.TlsDatabase) {
 // Sets a #GTlsInteraction object to be used when the connection or certificate
 // database need to interact with the user. This will be used to prompt the
 // user for passwords where necessary.
-func (conn *RTSPConnection) SetTLSInteraction(interaction gio.TlsInteraction) {
+func (conn *RTSPConnection) SetTlsInteraction(interaction gio.TlsInteraction) {
 	var carg0 *C.GstRTSPConnection // in, none, converted
 	var carg1 *C.GTlsInteraction   // in, none, converted, nullable
 
@@ -4622,11 +4622,11 @@ func (conn *RTSPConnection) SetTLSInteraction(interaction gio.TlsInteraction) {
 	runtime.KeepAlive(interaction)
 }
 
-// SetTLSValidationFlags wraps gst_rtsp_connection_set_tls_validation_flags
+// SetTlsValidationFlags wraps gst_rtsp_connection_set_tls_validation_flags
 // 
 // The function takes the following parameters:
 // 
-// 	- flags gio.TLSCertificateFlags: the validation flags. 
+// 	- flags gio.TlsCertificateFlags: the validation flags. 
 // 
 // The function returns the following values:
 // 
@@ -4643,7 +4643,7 @@ func (conn *RTSPConnection) SetTLSInteraction(interaction gio.TlsInteraction) {
 // For example, it would be incorrect to mask %G_TLS_CERTIFICATE_EXPIRED if
 // you want to allow expired certificates, because this could potentially be
 // the only error flag set even if other problems exist with the certificate.
-func (conn *RTSPConnection) SetTLSValidationFlags(flags gio.TLSCertificateFlags) bool {
+func (conn *RTSPConnection) SetTlsValidationFlags(flags gio.TlsCertificateFlags) bool {
 	var carg0 *C.GstRTSPConnection   // in, none, converted
 	var carg1 C.GTlsCertificateFlags // in, none, casted
 	var cret  C.gboolean             // return
@@ -4732,17 +4732,17 @@ func (conn *RTSPConnection) WriteUsec(data []uint8, timeout int64) RTSPResult {
 //
 // An interface representing RTSP extensions.
 type RTSPExtensionInterface struct {
-	*rtspExtensionInterface
+	*rTSPExtensionInterface
 }
 
-// rtspExtensionInterface is the struct that's finalized
-type rtspExtensionInterface struct {
+// rTSPExtensionInterface is the struct that's finalized
+type rTSPExtensionInterface struct {
 	native *C.GstRTSPExtensionInterface
 }
 
 // UnsafeRTSPExtensionInterfaceFromGlibBorrow is used to convert raw C.GstRTSPExtensionInterface pointers to go. This is used by the bindings internally.
 func UnsafeRTSPExtensionInterfaceFromGlibBorrow(p unsafe.Pointer) *RTSPExtensionInterface {
-	return &RTSPExtensionInterface{&rtspExtensionInterface{(*C.GstRTSPExtensionInterface)(p)}}
+	return &RTSPExtensionInterface{&rTSPExtensionInterface{(*C.GstRTSPExtensionInterface)(p)}}
 }
 
 // UnsafeRTSPExtensionInterfaceFromGlibNone is used to convert raw C.GstRTSPExtensionInterface pointers to go without transferring ownership. This is used by the bindings internally.
@@ -4750,8 +4750,8 @@ func UnsafeRTSPExtensionInterfaceFromGlibNone(p unsafe.Pointer) *RTSPExtensionIn
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPExtensionInterfaceFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtspExtensionInterface,
-		func (intern *rtspExtensionInterface) {
+		wrapped.rTSPExtensionInterface,
+		func (intern *rTSPExtensionInterface) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -4762,8 +4762,8 @@ func UnsafeRTSPExtensionInterfaceFromGlibNone(p unsafe.Pointer) *RTSPExtensionIn
 func UnsafeRTSPExtensionInterfaceFromGlibFull(p unsafe.Pointer) *RTSPExtensionInterface {
 	wrapped := UnsafeRTSPExtensionInterfaceFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtspExtensionInterface,
-		func (intern *rtspExtensionInterface) {
+		wrapped.rTSPExtensionInterface,
+		func (intern *rTSPExtensionInterface) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -4785,7 +4785,7 @@ func UnsafeRTSPExtensionInterfaceToGlibNone(r *RTSPExtensionInterface) unsafe.Po
 // UnsafeRTSPExtensionInterfaceToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeRTSPExtensionInterfaceToGlibFull(r *RTSPExtensionInterface) unsafe.Pointer {
-	runtime.SetFinalizer(r.rtspExtensionInterface, nil)
+	runtime.SetFinalizer(r.rTSPExtensionInterface, nil)
 	_p := unsafe.Pointer(r.native)
 	r.native = nil // RTSPExtensionInterface is invalid from here on
 	return _p
@@ -4795,11 +4795,11 @@ func UnsafeRTSPExtensionInterfaceToGlibFull(r *RTSPExtensionInterface) unsafe.Po
 //
 // Provides methods for creating and parsing request, response and data messages.
 type RTSPMessage struct {
-	*rtspMessage
+	*rTSPMessage
 }
 
-// rtspMessage is the struct that's finalized
-type rtspMessage struct {
+// rTSPMessage is the struct that's finalized
+type rTSPMessage struct {
 	native *C.GstRTSPMessage
 }
 
@@ -4820,7 +4820,7 @@ func (r *RTSPMessage) SetGoValue(v *gobject.Value) {
 
 // UnsafeRTSPMessageFromGlibBorrow is used to convert raw C.GstRTSPMessage pointers to go. This is used by the bindings internally.
 func UnsafeRTSPMessageFromGlibBorrow(p unsafe.Pointer) *RTSPMessage {
-	return &RTSPMessage{&rtspMessage{(*C.GstRTSPMessage)(p)}}
+	return &RTSPMessage{&rTSPMessage{(*C.GstRTSPMessage)(p)}}
 }
 
 // UnsafeRTSPMessageFromGlibNone is used to convert raw C.GstRTSPMessage pointers to go without transferring ownership. This is used by the bindings internally.
@@ -4828,8 +4828,8 @@ func UnsafeRTSPMessageFromGlibNone(p unsafe.Pointer) *RTSPMessage {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPMessageFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtspMessage,
-		func (intern *rtspMessage) {
+		wrapped.rTSPMessage,
+		func (intern *rTSPMessage) {
 			C.gst_rtsp_message_free(intern.native)
 		},
 	)
@@ -4840,8 +4840,8 @@ func UnsafeRTSPMessageFromGlibNone(p unsafe.Pointer) *RTSPMessage {
 func UnsafeRTSPMessageFromGlibFull(p unsafe.Pointer) *RTSPMessage {
 	wrapped := UnsafeRTSPMessageFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtspMessage,
-		func (intern *rtspMessage) {
+		wrapped.rTSPMessage,
+		func (intern *rTSPMessage) {
 			C.gst_rtsp_message_free(intern.native)
 		},
 	)
@@ -4863,7 +4863,7 @@ func UnsafeRTSPMessageToGlibNone(r *RTSPMessage) unsafe.Pointer {
 // UnsafeRTSPMessageToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeRTSPMessageToGlibFull(r *RTSPMessage) unsafe.Pointer {
-	runtime.SetFinalizer(r.rtspMessage, nil)
+	runtime.SetFinalizer(r.rTSPMessage, nil)
 	_p := unsafe.Pointer(r.native)
 	r.native = nil // RTSPMessage is invalid from here on
 	return _p
@@ -5769,17 +5769,17 @@ func (msg *RTSPMessage) Unset() RTSPResult {
 //
 // Provides helper functions to deal with time ranges.
 type RTSPRange struct {
-	*rtspRange
+	*rTSPRange
 }
 
-// rtspRange is the struct that's finalized
-type rtspRange struct {
+// rTSPRange is the struct that's finalized
+type rTSPRange struct {
 	native *C.GstRTSPRange
 }
 
 // UnsafeRTSPRangeFromGlibBorrow is used to convert raw C.GstRTSPRange pointers to go. This is used by the bindings internally.
 func UnsafeRTSPRangeFromGlibBorrow(p unsafe.Pointer) *RTSPRange {
-	return &RTSPRange{&rtspRange{(*C.GstRTSPRange)(p)}}
+	return &RTSPRange{&rTSPRange{(*C.GstRTSPRange)(p)}}
 }
 
 // UnsafeRTSPRangeFromGlibNone is used to convert raw C.GstRTSPRange pointers to go without transferring ownership. This is used by the bindings internally.
@@ -5787,8 +5787,8 @@ func UnsafeRTSPRangeFromGlibNone(p unsafe.Pointer) *RTSPRange {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPRangeFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtspRange,
-		func (intern *rtspRange) {
+		wrapped.rTSPRange,
+		func (intern *rTSPRange) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -5799,8 +5799,8 @@ func UnsafeRTSPRangeFromGlibNone(p unsafe.Pointer) *RTSPRange {
 func UnsafeRTSPRangeFromGlibFull(p unsafe.Pointer) *RTSPRange {
 	wrapped := UnsafeRTSPRangeFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtspRange,
-		func (intern *rtspRange) {
+		wrapped.rTSPRange,
+		func (intern *rTSPRange) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -5822,7 +5822,7 @@ func UnsafeRTSPRangeToGlibNone(r *RTSPRange) unsafe.Pointer {
 // UnsafeRTSPRangeToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeRTSPRangeToGlibFull(r *RTSPRange) unsafe.Pointer {
-	runtime.SetFinalizer(r.rtspRange, nil)
+	runtime.SetFinalizer(r.rTSPRange, nil)
 	_p := unsafe.Pointer(r.native)
 	r.native = nil // RTSPRange is invalid from here on
 	return _p
@@ -5954,7 +5954,7 @@ func RTSPRangeParse(rangestr string) (*RTSPTimeRange, RTSPResult) {
 	return _range, goret
 }
 
-// RTSPRangeToString wraps gst_rtsp_range_to_string
+// String wraps gst_rtsp_range_to_string
 // 
 // The function takes the following parameters:
 // 
@@ -5965,7 +5965,7 @@ func RTSPRangeParse(rangestr string) (*RTSPTimeRange, RTSPResult) {
 // 	- goret string 
 //
 // Convert @range into a string representation.
-func RTSPRangeToString(_range *RTSPTimeRange) string {
+func String(_range *RTSPTimeRange) string {
 	var carg1 *C.GstRTSPTimeRange // in, none, converted
 	var cret  *C.gchar            // return, full, string
 
@@ -5986,17 +5986,17 @@ func RTSPRangeToString(_range *RTSPTimeRange) string {
 //
 // A time indication.
 type RTSPTime struct {
-	*rtspTime
+	*rTSPTime
 }
 
-// rtspTime is the struct that's finalized
-type rtspTime struct {
+// rTSPTime is the struct that's finalized
+type rTSPTime struct {
 	native *C.GstRTSPTime
 }
 
 // UnsafeRTSPTimeFromGlibBorrow is used to convert raw C.GstRTSPTime pointers to go. This is used by the bindings internally.
 func UnsafeRTSPTimeFromGlibBorrow(p unsafe.Pointer) *RTSPTime {
-	return &RTSPTime{&rtspTime{(*C.GstRTSPTime)(p)}}
+	return &RTSPTime{&rTSPTime{(*C.GstRTSPTime)(p)}}
 }
 
 // UnsafeRTSPTimeFromGlibNone is used to convert raw C.GstRTSPTime pointers to go without transferring ownership. This is used by the bindings internally.
@@ -6004,8 +6004,8 @@ func UnsafeRTSPTimeFromGlibNone(p unsafe.Pointer) *RTSPTime {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPTimeFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtspTime,
-		func (intern *rtspTime) {
+		wrapped.rTSPTime,
+		func (intern *rTSPTime) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -6016,8 +6016,8 @@ func UnsafeRTSPTimeFromGlibNone(p unsafe.Pointer) *RTSPTime {
 func UnsafeRTSPTimeFromGlibFull(p unsafe.Pointer) *RTSPTime {
 	wrapped := UnsafeRTSPTimeFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtspTime,
-		func (intern *rtspTime) {
+		wrapped.rTSPTime,
+		func (intern *rTSPTime) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -6039,7 +6039,7 @@ func UnsafeRTSPTimeToGlibNone(r *RTSPTime) unsafe.Pointer {
 // UnsafeRTSPTimeToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeRTSPTimeToGlibFull(r *RTSPTime) unsafe.Pointer {
-	runtime.SetFinalizer(r.rtspTime, nil)
+	runtime.SetFinalizer(r.rTSPTime, nil)
 	_p := unsafe.Pointer(r.native)
 	r.native = nil // RTSPTime is invalid from here on
 	return _p
@@ -6049,17 +6049,17 @@ func UnsafeRTSPTimeToGlibFull(r *RTSPTime) unsafe.Pointer {
 //
 // Extra fields for a time indication.
 type RTSPTime2 struct {
-	*rtspTime2
+	*rTSPTime2
 }
 
-// rtspTime2 is the struct that's finalized
-type rtspTime2 struct {
+// rTSPTime2 is the struct that's finalized
+type rTSPTime2 struct {
 	native *C.GstRTSPTime2
 }
 
 // UnsafeRTSPTime2FromGlibBorrow is used to convert raw C.GstRTSPTime2 pointers to go. This is used by the bindings internally.
 func UnsafeRTSPTime2FromGlibBorrow(p unsafe.Pointer) *RTSPTime2 {
-	return &RTSPTime2{&rtspTime2{(*C.GstRTSPTime2)(p)}}
+	return &RTSPTime2{&rTSPTime2{(*C.GstRTSPTime2)(p)}}
 }
 
 // UnsafeRTSPTime2FromGlibNone is used to convert raw C.GstRTSPTime2 pointers to go without transferring ownership. This is used by the bindings internally.
@@ -6067,8 +6067,8 @@ func UnsafeRTSPTime2FromGlibNone(p unsafe.Pointer) *RTSPTime2 {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPTime2FromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtspTime2,
-		func (intern *rtspTime2) {
+		wrapped.rTSPTime2,
+		func (intern *rTSPTime2) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -6079,8 +6079,8 @@ func UnsafeRTSPTime2FromGlibNone(p unsafe.Pointer) *RTSPTime2 {
 func UnsafeRTSPTime2FromGlibFull(p unsafe.Pointer) *RTSPTime2 {
 	wrapped := UnsafeRTSPTime2FromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtspTime2,
-		func (intern *rtspTime2) {
+		wrapped.rTSPTime2,
+		func (intern *rTSPTime2) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -6102,7 +6102,7 @@ func UnsafeRTSPTime2ToGlibNone(r *RTSPTime2) unsafe.Pointer {
 // UnsafeRTSPTime2ToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeRTSPTime2ToGlibFull(r *RTSPTime2) unsafe.Pointer {
-	runtime.SetFinalizer(r.rtspTime2, nil)
+	runtime.SetFinalizer(r.rTSPTime2, nil)
 	_p := unsafe.Pointer(r.native)
 	r.native = nil // RTSPTime2 is invalid from here on
 	return _p
@@ -6112,17 +6112,17 @@ func UnsafeRTSPTime2ToGlibFull(r *RTSPTime2) unsafe.Pointer {
 //
 // A time range.
 type RTSPTimeRange struct {
-	*rtspTimeRange
+	*rTSPTimeRange
 }
 
-// rtspTimeRange is the struct that's finalized
-type rtspTimeRange struct {
+// rTSPTimeRange is the struct that's finalized
+type rTSPTimeRange struct {
 	native *C.GstRTSPTimeRange
 }
 
 // UnsafeRTSPTimeRangeFromGlibBorrow is used to convert raw C.GstRTSPTimeRange pointers to go. This is used by the bindings internally.
 func UnsafeRTSPTimeRangeFromGlibBorrow(p unsafe.Pointer) *RTSPTimeRange {
-	return &RTSPTimeRange{&rtspTimeRange{(*C.GstRTSPTimeRange)(p)}}
+	return &RTSPTimeRange{&rTSPTimeRange{(*C.GstRTSPTimeRange)(p)}}
 }
 
 // UnsafeRTSPTimeRangeFromGlibNone is used to convert raw C.GstRTSPTimeRange pointers to go without transferring ownership. This is used by the bindings internally.
@@ -6130,8 +6130,8 @@ func UnsafeRTSPTimeRangeFromGlibNone(p unsafe.Pointer) *RTSPTimeRange {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPTimeRangeFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtspTimeRange,
-		func (intern *rtspTimeRange) {
+		wrapped.rTSPTimeRange,
+		func (intern *rTSPTimeRange) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -6142,8 +6142,8 @@ func UnsafeRTSPTimeRangeFromGlibNone(p unsafe.Pointer) *RTSPTimeRange {
 func UnsafeRTSPTimeRangeFromGlibFull(p unsafe.Pointer) *RTSPTimeRange {
 	wrapped := UnsafeRTSPTimeRangeFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtspTimeRange,
-		func (intern *rtspTimeRange) {
+		wrapped.rTSPTimeRange,
+		func (intern *rTSPTimeRange) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -6165,7 +6165,7 @@ func UnsafeRTSPTimeRangeToGlibNone(r *RTSPTimeRange) unsafe.Pointer {
 // UnsafeRTSPTimeRangeToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeRTSPTimeRangeToGlibFull(r *RTSPTimeRange) unsafe.Pointer {
-	runtime.SetFinalizer(r.rtspTimeRange, nil)
+	runtime.SetFinalizer(r.rTSPTimeRange, nil)
 	_p := unsafe.Pointer(r.native)
 	r.native = nil // RTSPTimeRange is invalid from here on
 	return _p
@@ -6175,17 +6175,17 @@ func UnsafeRTSPTimeRangeToGlibFull(r *RTSPTimeRange) unsafe.Pointer {
 //
 // Provides helper functions to deal with RTSP transport strings.
 type RTSPTransport struct {
-	*rtspTransport
+	*rTSPTransport
 }
 
-// rtspTransport is the struct that's finalized
-type rtspTransport struct {
+// rTSPTransport is the struct that's finalized
+type rTSPTransport struct {
 	native *C.GstRTSPTransport
 }
 
 // UnsafeRTSPTransportFromGlibBorrow is used to convert raw C.GstRTSPTransport pointers to go. This is used by the bindings internally.
 func UnsafeRTSPTransportFromGlibBorrow(p unsafe.Pointer) *RTSPTransport {
-	return &RTSPTransport{&rtspTransport{(*C.GstRTSPTransport)(p)}}
+	return &RTSPTransport{&rTSPTransport{(*C.GstRTSPTransport)(p)}}
 }
 
 // UnsafeRTSPTransportFromGlibNone is used to convert raw C.GstRTSPTransport pointers to go without transferring ownership. This is used by the bindings internally.
@@ -6193,8 +6193,8 @@ func UnsafeRTSPTransportFromGlibNone(p unsafe.Pointer) *RTSPTransport {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPTransportFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtspTransport,
-		func (intern *rtspTransport) {
+		wrapped.rTSPTransport,
+		func (intern *rTSPTransport) {
 			C.gst_rtsp_transport_free(intern.native)
 		},
 	)
@@ -6205,8 +6205,8 @@ func UnsafeRTSPTransportFromGlibNone(p unsafe.Pointer) *RTSPTransport {
 func UnsafeRTSPTransportFromGlibFull(p unsafe.Pointer) *RTSPTransport {
 	wrapped := UnsafeRTSPTransportFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtspTransport,
-		func (intern *rtspTransport) {
+		wrapped.rTSPTransport,
+		func (intern *rTSPTransport) {
 			C.gst_rtsp_transport_free(intern.native)
 		},
 	)
@@ -6228,7 +6228,7 @@ func UnsafeRTSPTransportToGlibNone(r *RTSPTransport) unsafe.Pointer {
 // UnsafeRTSPTransportToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeRTSPTransportToGlibFull(r *RTSPTransport) unsafe.Pointer {
-	runtime.SetFinalizer(r.rtspTransport, nil)
+	runtime.SetFinalizer(r.rTSPTransport, nil)
 	_p := unsafe.Pointer(r.native)
 	r.native = nil // RTSPTransport is invalid from here on
 	return _p
@@ -6277,7 +6277,7 @@ func RTSPTransportGetManager(trans RTSPTransMode, option uint) (string, RTSPResu
 	return manager, goret
 }
 
-// RTSPTransportGetMIME wraps gst_rtsp_transport_get_mime
+// RTSPTransportGetMime wraps gst_rtsp_transport_get_mime
 // 
 // The function takes the following parameters:
 // 
@@ -6294,7 +6294,7 @@ func RTSPTransportGetManager(trans RTSPTransMode, option uint) (string, RTSPResu
 // Deprecated: This functions only deals with the GstRTSPTransMode and only
 //    returns the mime type for #GST_RTSP_PROFILE_AVP. Use
 //    gst_rtsp_transport_get_media_type() instead.
-func RTSPTransportGetMIME(trans RTSPTransMode) (string, RTSPResult) {
+func RTSPTransportGetMime(trans RTSPTransMode) (string, RTSPResult) {
 	var carg1 C.GstRTSPTransMode // in, none, casted
 	var carg2 *C.gchar           // out, none, string
 	var cret  C.GstRTSPResult    // return, none, casted
@@ -6455,11 +6455,11 @@ func (transport *RTSPTransport) GetMediaType() (string, RTSPResult) {
 //
 // Provides helper functions to handle RTSP urls.
 type RTSPUrl struct {
-	*rtspUrl
+	*rTSPUrl
 }
 
-// rtspUrl is the struct that's finalized
-type rtspUrl struct {
+// rTSPUrl is the struct that's finalized
+type rTSPUrl struct {
 	native *C.GstRTSPUrl
 }
 
@@ -6480,7 +6480,7 @@ func (r *RTSPUrl) SetGoValue(v *gobject.Value) {
 
 // UnsafeRTSPUrlFromGlibBorrow is used to convert raw C.GstRTSPUrl pointers to go. This is used by the bindings internally.
 func UnsafeRTSPUrlFromGlibBorrow(p unsafe.Pointer) *RTSPUrl {
-	return &RTSPUrl{&rtspUrl{(*C.GstRTSPUrl)(p)}}
+	return &RTSPUrl{&rTSPUrl{(*C.GstRTSPUrl)(p)}}
 }
 
 // UnsafeRTSPUrlFromGlibNone is used to convert raw C.GstRTSPUrl pointers to go without transferring ownership. This is used by the bindings internally.
@@ -6488,8 +6488,8 @@ func UnsafeRTSPUrlFromGlibNone(p unsafe.Pointer) *RTSPUrl {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPUrlFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtspUrl,
-		func (intern *rtspUrl) {
+		wrapped.rTSPUrl,
+		func (intern *rTSPUrl) {
 			C.gst_rtsp_url_free(intern.native)
 		},
 	)
@@ -6500,8 +6500,8 @@ func UnsafeRTSPUrlFromGlibNone(p unsafe.Pointer) *RTSPUrl {
 func UnsafeRTSPUrlFromGlibFull(p unsafe.Pointer) *RTSPUrl {
 	wrapped := UnsafeRTSPUrlFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtspUrl,
-		func (intern *rtspUrl) {
+		wrapped.rTSPUrl,
+		func (intern *rTSPUrl) {
 			C.gst_rtsp_url_free(intern.native)
 		},
 	)
@@ -6523,7 +6523,7 @@ func UnsafeRTSPUrlToGlibNone(r *RTSPUrl) unsafe.Pointer {
 // UnsafeRTSPUrlToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeRTSPUrlToGlibFull(r *RTSPUrl) unsafe.Pointer {
-	runtime.SetFinalizer(r.rtspUrl, nil)
+	runtime.SetFinalizer(r.rTSPUrl, nil)
 	_p := unsafe.Pointer(r.native)
 	r.native = nil // RTSPUrl is invalid from here on
 	return _p
@@ -6741,17 +6741,17 @@ func (url *RTSPUrl) SetPort(port uint16) RTSPResult {
 // Opaque RTSP watch object that can be used for asynchronous RTSP
 // operations.
 type RTSPWatch struct {
-	*rtspWatch
+	*rTSPWatch
 }
 
-// rtspWatch is the struct that's finalized
-type rtspWatch struct {
+// rTSPWatch is the struct that's finalized
+type rTSPWatch struct {
 	native *C.GstRTSPWatch
 }
 
 // UnsafeRTSPWatchFromGlibBorrow is used to convert raw C.GstRTSPWatch pointers to go. This is used by the bindings internally.
 func UnsafeRTSPWatchFromGlibBorrow(p unsafe.Pointer) *RTSPWatch {
-	return &RTSPWatch{&rtspWatch{(*C.GstRTSPWatch)(p)}}
+	return &RTSPWatch{&rTSPWatch{(*C.GstRTSPWatch)(p)}}
 }
 
 // UnsafeRTSPWatchFromGlibNone is used to convert raw C.GstRTSPWatch pointers to go without transferring ownership. This is used by the bindings internally.
@@ -6759,8 +6759,8 @@ func UnsafeRTSPWatchFromGlibNone(p unsafe.Pointer) *RTSPWatch {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPWatchFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtspWatch,
-		func (intern *rtspWatch) {
+		wrapped.rTSPWatch,
+		func (intern *rTSPWatch) {
 			C.gst_rtsp_watch_unref(intern.native)
 		},
 	)
@@ -6771,8 +6771,8 @@ func UnsafeRTSPWatchFromGlibNone(p unsafe.Pointer) *RTSPWatch {
 func UnsafeRTSPWatchFromGlibFull(p unsafe.Pointer) *RTSPWatch {
 	wrapped := UnsafeRTSPWatchFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtspWatch,
-		func (intern *rtspWatch) {
+		wrapped.rTSPWatch,
+		func (intern *rTSPWatch) {
 			C.gst_rtsp_watch_unref(intern.native)
 		},
 	)
@@ -6794,7 +6794,7 @@ func UnsafeRTSPWatchToGlibNone(r *RTSPWatch) unsafe.Pointer {
 // UnsafeRTSPWatchToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeRTSPWatchToGlibFull(r *RTSPWatch) unsafe.Pointer {
-	runtime.SetFinalizer(r.rtspWatch, nil)
+	runtime.SetFinalizer(r.rTSPWatch, nil)
 	_p := unsafe.Pointer(r.native)
 	r.native = nil // RTSPWatch is invalid from here on
 	return _p
@@ -7098,17 +7098,17 @@ func (watch *RTSPWatch) WriteData(data []uint8) (uint, RTSPResult) {
 //
 // Callback functions from a #GstRTSPWatch.
 type RTSPWatchFuncs struct {
-	*rtspWatchFuncs
+	*rTSPWatchFuncs
 }
 
-// rtspWatchFuncs is the struct that's finalized
-type rtspWatchFuncs struct {
+// rTSPWatchFuncs is the struct that's finalized
+type rTSPWatchFuncs struct {
 	native *C.GstRTSPWatchFuncs
 }
 
 // UnsafeRTSPWatchFuncsFromGlibBorrow is used to convert raw C.GstRTSPWatchFuncs pointers to go. This is used by the bindings internally.
 func UnsafeRTSPWatchFuncsFromGlibBorrow(p unsafe.Pointer) *RTSPWatchFuncs {
-	return &RTSPWatchFuncs{&rtspWatchFuncs{(*C.GstRTSPWatchFuncs)(p)}}
+	return &RTSPWatchFuncs{&rTSPWatchFuncs{(*C.GstRTSPWatchFuncs)(p)}}
 }
 
 // UnsafeRTSPWatchFuncsFromGlibNone is used to convert raw C.GstRTSPWatchFuncs pointers to go without transferring ownership. This is used by the bindings internally.
@@ -7116,8 +7116,8 @@ func UnsafeRTSPWatchFuncsFromGlibNone(p unsafe.Pointer) *RTSPWatchFuncs {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPWatchFuncsFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtspWatchFuncs,
-		func (intern *rtspWatchFuncs) {
+		wrapped.rTSPWatchFuncs,
+		func (intern *rTSPWatchFuncs) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -7128,8 +7128,8 @@ func UnsafeRTSPWatchFuncsFromGlibNone(p unsafe.Pointer) *RTSPWatchFuncs {
 func UnsafeRTSPWatchFuncsFromGlibFull(p unsafe.Pointer) *RTSPWatchFuncs {
 	wrapped := UnsafeRTSPWatchFuncsFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.rtspWatchFuncs,
-		func (intern *rtspWatchFuncs) {
+		wrapped.rTSPWatchFuncs,
+		func (intern *rTSPWatchFuncs) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -7151,7 +7151,7 @@ func UnsafeRTSPWatchFuncsToGlibNone(r *RTSPWatchFuncs) unsafe.Pointer {
 // UnsafeRTSPWatchFuncsToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeRTSPWatchFuncsToGlibFull(r *RTSPWatchFuncs) unsafe.Pointer {
-	runtime.SetFinalizer(r.rtspWatchFuncs, nil)
+	runtime.SetFinalizer(r.rTSPWatchFuncs, nil)
 	_p := unsafe.Pointer(r.native)
 	r.native = nil // RTSPWatchFuncs is invalid from here on
 	return _p

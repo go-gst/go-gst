@@ -100,7 +100,7 @@ func main() {
 
 func handleMessage(msg *gst.Message) error {
 	switch msg.Type() {
-	case gst.MessageEos:
+	case gst.MessageEOS:
 		return errors.New("end-of-stream")
 	case gst.MessageError:
 		_, err := msg.ParseError()
