@@ -4,6 +4,7 @@ package main
 
 import (
 	"encoding/xml"
+	"fmt"
 	"log"
 	"slices"
 	"strings"
@@ -12,8 +13,11 @@ import (
 	"github.com/diamondburned/gotk4/gir/cmd/gir-generate/gendata"
 	"github.com/diamondburned/gotk4/gir/cmd/gir-generate/genmain"
 	"github.com/diamondburned/gotk4/gir/girgen"
+	"github.com/diamondburned/gotk4/gir/girgen/file"
+	"github.com/diamondburned/gotk4/gir/girgen/generators"
 	"github.com/diamondburned/gotk4/gir/girgen/strcases"
 	"github.com/diamondburned/gotk4/gir/girgen/types"
+	"github.com/diamondburned/gotk4/gir/girgen/typesystem"
 )
 
 const Module = "github.com/go-gst/go-gst/pkg"
@@ -25,29 +29,25 @@ var Data = genmain.Overlay(
 		Packages: []genmain.Package{
 			// {Name: "gst-editing-services-1.0", Namespaces: []string{"GES-1"}},
 			{Name: "gstreamer-1.0", Namespaces: []string{"Gst-1"}},
+			{Name: "gstreamer-base-1.0", Namespaces: []string{"GstBase-1"}},
 			{Name: "gstreamer-allocators-1.0", Namespaces: []string{"GstAllocators-1"}},
 			// {Name: "gstreamer-analytics-1.0", Namespaces: []string{"GstAnalytics-1"}},
 			{Name: "gstreamer-app-1.0", Namespaces: []string{"GstApp-1"}},
 			{Name: "gstreamer-audio-1.0", Namespaces: []string{"GstAudio-1"}},
 			// {Name: "gstreamer-bad-audio-1.0", Namespaces: []string{"GstBadAudio-1"}},
 			// {Name: "gstreamer-bad-base-camerabinsrc-1.0", Namespaces: []string{"GstBadBaseCameraBin-1"}},
-			{Name: "gstreamer-base-1.0", Namespaces: []string{"GstBase-1"}},
 			{Name: "gstreamer-check-1.0", Namespaces: []string{"GstCheck-1"}},
 			// {Name: "gstreamer-codecs-1.0", Namespaces: []string{"GstCodecs-1"}},
 			{Name: "gstreamer-controller-1.0", Namespaces: []string{"GstController-1"}},
 			// {Name: "gstreamer-cuda-1.0", Namespaces: []string{"GstCuda-1"}},
-			{Name: "gstreamer-gl-1.0", Namespaces: []string{"GstGL-1"}},
 			// {Name: "gstreamer-insertbin-1.0", Namespaces: []string{"GstInsertBin-1"}},
 			{Name: "gstreamer-mpegts-1.0", Namespaces: []string{"GstMpegts-1"}},
 			// {Name: "gstreamer-mse-1.0", Namespaces: []string{"GstMse-1"}},
 			{Name: "gstreamer-net-1.0", Namespaces: []string{"GstNet-1"}},
-			{Name: "gstreamer-pbutils-1.0", Namespaces: []string{"GstPbutils-1"}},
-			{Name: "gstreamer-play-1.0", Namespaces: []string{"GstPlay-1"}},
-			{Name: "gstreamer-player-1.0", Namespaces: []string{"GstPlayer-1"}},
-			{Name: "gstreamer-rtp-1.0", Namespaces: []string{"GstRtp-1"}},
-			{Name: "gstreamer-rtsp-1.0", Namespaces: []string{"GstRtsp-1"}},
 			// {Name: "gstreamer-rtsp-server-1.0", Namespaces: []string{"GstRtspServer-1"}},
 			{Name: "gstreamer-sdp-1.0", Namespaces: []string{"GstSdp-1"}},
+			{Name: "gstreamer-rtp-1.0", Namespaces: []string{"GstRtp-1"}},
+			{Name: "gstreamer-rtsp-1.0", Namespaces: []string{"GstRtsp-1"}},
 			{Name: "gstreamer-tag-1.0", Namespaces: []string{"GstTag-1"}},
 			// {Name: "gstreamer-transcoder-1.0", Namespaces: []string{"GstTranscoder-1"}},
 			// {Name: "gstreamer-va-1.0", Namespaces: []string{"GstVa-1"}},
@@ -55,47 +55,10 @@ var Data = genmain.Overlay(
 			{Name: "gstreamer-video-1.0", Namespaces: []string{"GstVideo-1"}},
 			// {Name: "gstreamer-vulkan-1.0", Namespaces: []string{"GstVulkan-1"}},
 			{Name: "gstreamer-webrtc-1.0", Namespaces: []string{"GstWebRTC-1"}},
-		},
-		PkgExceptions: []string{
-			"core",
-		},
-		PkgGenerated: []string{
-			// gst packages:
-			// "cudagst",
-			// "ges",
-			"gst",
-			"gstallocators",
-			// "gstanalytics",
-			"gstapp",
-			"gstaudio",
-			// "gstbadaudio",
-			"gstbase",
-			"gstcheck",
-			// "gstcodecs",
-			"gstcontroller",
-			// "gstcuda",
-			// "gstdxva",
-			"gstgl",
-			// "gstglegl",
-			// "gstglwayland",
-			// "gstglx11",
-			// "gstinsertbin",
-			"gstmpegts",
-			// "gstmse",
-			"gstnet",
-			"gstpbutils",
-			"gstplay",
-			"gstplayer",
-			"gstrtp",
-			"gstrtsp",
-			// "gstrtspserver",
-			"gstsdp",
-			"gsttag",
-			// "gsttranscoder",
-			// "gstva",
-			// "gstvalidate",
-			"gstvideo",
-			"gstwebrtc",
+			{Name: "gstreamer-gl-1.0", Namespaces: []string{"GstGL-1"}},
+			{Name: "gstreamer-pbutils-1.0", Namespaces: []string{"GstPbutils-1"}},
+			{Name: "gstreamer-play-1.0", Namespaces: []string{"GstPlay-1"}},
+			{Name: "gstreamer-player-1.0", Namespaces: []string{"GstPlayer-1"}},
 		},
 		Preprocessors: []types.Preprocessor{
 			// Enum has a member of same name:
@@ -108,14 +71,6 @@ var Data = genmain.Overlay(
 
 			// the member names do not have a GST prefix, which creates collisions:
 			FixCutoffEnumMemberNames("GstMpegts-1.DVBTeletextType"),
-
-			// GArray record fields in SDP, not needed anyways because there are accessors
-			types.RemoveRecordFields("GstSdp-1.SDPMedia", "fmts", "connections", "bandwidths", "attributes"),
-			types.RemoveRecordFields("GstSdp-1.SDPMessage", "emails", "phones", "bandwidths", "times", "zones", "attributes", "medias"),
-			types.RemoveRecordFields("GstSdp-1.SDPTime", "repeat"),
-			types.RemoveRecordFields("GstSdp-1.MIKEYMessage", "map_info", "payloads"),
-			types.RemoveRecordFields("GstSdp-1.MIKEYPayloadKEMAC", "subpayloads"),
-			types.RemoveRecordFields("GstSdp-1.MIKEYPayloadSP", "params"),
 
 			MiniObjectExtenderBorrows(),
 
@@ -133,40 +88,77 @@ var Data = genmain.Overlay(
 
 			// otherwise clashes with control binding class extension
 			types.RenameCallable("Gst-1.Object.get_control_binding", "CurrentControlBinding"),
+			// Collides with GstObject:
+			types.RenameCallable("Gst-1.ControlBinding.sync_values", "SyncControlBindingValues"),
+
+			// Collides with method of the same name
+			types.TypeRenamer("GstVideo-1.VideoChromaResample", "VideoChromaResampler"),
 		},
-		Postprocessors: map[string][]girgen.Postprocessor{
-			"Gst-1":       {ElementFactoryMakeWithProperties, ElementBlockSetState, BinAddMany, ElementLinkMany, IteratorValues, StructureGoMarshal},
-			"GstMpegts-1": {GstUseUnstableAPI},
-			"GstWebRTC-1": {GstUseUnstableAPI, FixWebrtcPkgConfig},
+		Config: typesystem.Config{
+			Namespaces: map[string]typesystem.NamespaceConfig{
+				"Gst-1": {
+					IgnoredDefinitions: []typesystem.IgnoreFunc{
+						// Collide and use an out array of values. TODO: manually implement
+						typesystem.IgnoreMatching("Object.get_g_value_array"),
+						typesystem.IgnoreMatching("ControlBinding.get_g_value_array"),
+
+						// Manually implemented:
+						typesystem.IgnoreMatching("Object.get_value"),
+						typesystem.IgnoreMatching("ControlBinding.get_value"), // TODO
+
+						typesystem.IgnoreMatching("ElementFactory.make_with_properties"),
+						typesystem.IgnoreMatching("Message.parse_property_notify"),
+						typesystem.IgnoreMatching("Message.new_property_notify"),
+						typesystem.IgnoreMatching("Message.get_stream_status_object"),
+						typesystem.IgnoreMatching("Structure.get_value"),
+						typesystem.IgnoreMatching("Structure.id_get_value"),
+						typesystem.IgnoreMatching("Structure.id_take_value"),
+						typesystem.IgnoreMatching("Structure.take_value"),
+						typesystem.IgnoreMatching("ChildProxy.set_property"),
+						typesystem.IgnoreMatching("ChildProxy.get_property"),
+						typesystem.IgnoreMatching("Iterator.next"),
+						typesystem.IgnoreMatching("TagList.get_value_index"),
+
+						// we have bindings for parse_launch(_full), if we need the v variants,
+						// then manually implement them
+						typesystem.IgnoreMatching("parse_launchv"),
+						typesystem.IgnoreMatching("parse_launchv_full"),
+
+						// gobject.NewValue handles this already.
+						typesystem.IgnoreMatching("util_set_value_from_string"),
+					},
+				},
+				"GstVideo-1": {
+					IgnoredDefinitions: []typesystem.IgnoreFunc{
+						// must be implemented manually
+						typesystem.IgnoreMatching("VideoCodecFrame.set_user_data"),
+						typesystem.IgnoreMatching("VideoCodecFrame.get_user_data"),
+					},
+				},
+				"GstPbutils-1": {
+					IgnoredDefinitions: []typesystem.IgnoreFunc{
+						// Resolve to ObjectClass:
+						typesystem.IgnoreMatching("DiscovererAudioInfoClass"),
+						typesystem.IgnoreMatching("DiscovererContainerInfoClass"),
+						typesystem.IgnoreMatching("DiscovererInfoClass"),
+						typesystem.IgnoreMatching("DiscovererStreamInfoClass"),
+						typesystem.IgnoreMatching("DiscovererSubtitleInfoClass"),
+						typesystem.IgnoreMatching("DiscovererVideoInfoClass"),
+						typesystem.IgnoreMatching("EncodingTargetClass"),
+					},
+				},
+			},
 		},
-		Filters: []types.FilterMatcher{
-			// these collide and are not really useful:
-			types.AbsoluteFilter("C.gst_structure_new_from_string"),
-			types.AbsoluteFilter("C.gst_structure_from_string"),
-			// we have goroutines :) (also creates compile errors)
-			types.FileFilterNamespace("Gst", "taskpool"),
-
-			// GArray not working here
-			types.AbsoluteFilter("C.gst_mpegts_descriptor_parse_dvb_ca_identifier"),
-			types.AbsoluteFilter("C.gst_mpegts_descriptor_parse_dvb_frequency_list"),
-			types.AbsoluteFilter("C.gst_source_buffer_get_buffered"),
-
-			// Excluded because the additional_info param seems to have changed between my local gstreamer and 1.24.10 (used in github actions)
-			types.AbsoluteFilter("C.gst_mpegts_descriptor_parse_registration"),
-
-			// In-out array pointer, not very go like and not correctly handled by girgen, needs custom implementation
-			types.AbsoluteFilter("C.gst_audio_get_channel_reorder_map"),
-
-			// re-implemented in go to support a properties map instead of two lists
-			types.AbsoluteFilter("C.gst_element_factory_make_with_properties"),
-
-			// FIXME: creates a name clash with the parents GstObject:
-			types.AbsoluteFilter("C.gst_control_binding_get_g_value_array"), // vs gst_object_get_g_value_array
-			types.AbsoluteFilter("C.gst_control_binding_sync_values"),       // vs gst_object_sync_values
-			types.AbsoluteFilter("C.gst_control_binding_get_value"),         // vs gst_object_get_value
+		Postprocessors: []typesystem.PostProcessor{
+			typesystem.MarkAsManuallyExtended("Gst", 1, "Object"),
+			typesystem.MarkAsManuallyExtended("Gst", 1, "Element"),
+			typesystem.MarkAsManuallyExtended("Gst", 1, "Bin"),
+			typesystem.MarkAsManuallyExtended("Gst", 1, "ChildProxy"),
 		},
-		ExtraGoContents: ExtraGoContents,
-		SingleFile:      true,
+		GeneratorHooks: []genmain.GeneratorHook{
+			genmain.AddGeneratorToPackage("gstmpegts", &GstUseUnstableAPI{}),
+			genmain.AddGeneratorToPackage("gstwebrtc", &GstUseUnstableAPI{}),
+		},
 	},
 )
 
@@ -252,14 +244,28 @@ func FixCutoffEnumMemberNames(fulltype string) types.Preprocessor {
 	})
 }
 
-// GstUseUnstableAPI adds a define GST_USE_UNSTABLE_API in every file of the namespace
-func GstUseUnstableAPI(nsgen *girgen.NamespaceGenerator) error {
-	for _, f := range nsgen.Files {
-		f.Header().DefineC("GST_USE_UNSTABLE_API // APIs in this package are unstable")
-	}
+// GstUseUnstableAPI defines the C macro to suppress compilation warnings, but also creates
+// an init func that logs a warning message that can be opt-outted out by the user.
+type GstUseUnstableAPI struct{}
 
-	return nil
+// Generate implements generators.Generator.
+func (g *GstUseUnstableAPI) Generate(w *file.Package) {
+	w.DefineC("GST_USE_UNSTABLE_API // APIs in this package are unstable")
+
+	w.GoImport("log")
+
+	fmt.Fprintln(w.Go(), "// SuppressUnstableWarning should be overwritten by the user to suppress the warning")
+	fmt.Fprintln(w.Go(), "var SuppressUnstableWarning = false")
+	fmt.Fprintln(w.Go(), "func init() {")
+	w.Go().Indent()
+	fmt.Fprintln(w.Go(), "if !SuppressUnstableWarning {")
+	fmt.Fprintln(w.Go(), "\tlog.Println(\"Warning: using unstable API\")")
+	fmt.Fprintln(w.Go(), "}")
+	w.Go().Unindent()
+	fmt.Fprintln(w.Go(), "}")
 }
+
+var _ generators.Generator = &GstUseUnstableAPI{}
 
 func FixWebrtcPkgConfig(nsgen *girgen.NamespaceGenerator) error {
 	// see: https://gitlab.freedesktop.org/gstreamer/gstreamer/-/merge_requests/8433, remove after release

@@ -6,7 +6,6 @@ import (
 	"os"
 	"time"
 
-	"github.com/go-gst/go-glib/glib"
 	"github.com/go-gst/go-gst/pkg/gst"
 )
 
