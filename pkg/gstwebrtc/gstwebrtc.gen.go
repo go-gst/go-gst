@@ -20,91 +20,91 @@ import (
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #define GST_USE_UNSTABLE_API // APIs in this package are unstable
 // #include <gst/webrtc/webrtc.h>
-// extern C.void _gotk4_gstwebrtc1_WebRTCICEOnCandidateFunc(*C.GstWebRTCICE, C.guint, *C.gchar, C.gpointer);
+// extern void _gotk4_gstwebrtc1_WebRTCICEOnCandidateFunc(GstWebRTCICE*, guint, const gchar*, gpointer);
 // extern void destroyUserdata(gpointer);
-// extern C.void _gotk4_gstwebrtc1_WebRTCICE_add_candidate(*C.GstWebRTCICE, *C.GstWebRTCICEStream, *C.gchar, *C.GstPromise);
-// extern *C.GstWebRTCICEStream _gotk4_gstwebrtc1_WebRTCICE_add_stream(*C.GstWebRTCICE, C.guint);
-// extern C.gboolean _gotk4_gstwebrtc1_WebRTCICE_add_turn_server(*C.GstWebRTCICE, *C.gchar);
-// extern *C.GstWebRTCICETransport _gotk4_gstwebrtc1_WebRTCICE_find_transport(*C.GstWebRTCICE, *C.GstWebRTCICEStream, C.GstWebRTCICEComponent);
-// extern C.gboolean _gotk4_gstwebrtc1_WebRTCICE_gather_candidates(*C.GstWebRTCICE, *C.GstWebRTCICEStream);
-// extern *C.gchar _gotk4_gstwebrtc1_WebRTCICE_get_http_proxy(*C.GstWebRTCICE);
-// extern C.gboolean _gotk4_gstwebrtc1_WebRTCICE_get_is_controller(*C.GstWebRTCICE);
-// extern C.gboolean _gotk4_gstwebrtc1_WebRTCICE_get_selected_pair(*C.GstWebRTCICE, *C.GstWebRTCICEStream, *C.GstWebRTCICECandidateStats, *C.GstWebRTCICECandidateStats);
-// extern *C.gchar _gotk4_gstwebrtc1_WebRTCICE_get_stun_server(*C.GstWebRTCICE);
-// extern *C.gchar _gotk4_gstwebrtc1_WebRTCICE_get_turn_server(*C.GstWebRTCICE);
-// extern C.void _gotk4_gstwebrtc1_WebRTCICE_set_force_relay(*C.GstWebRTCICE, C.gboolean);
-// extern C.void _gotk4_gstwebrtc1_WebRTCICE_set_http_proxy(*C.GstWebRTCICE, *C.gchar);
-// extern C.void _gotk4_gstwebrtc1_WebRTCICE_set_is_controller(*C.GstWebRTCICE, C.gboolean);
-// extern C.gboolean _gotk4_gstwebrtc1_WebRTCICE_set_local_credentials(*C.GstWebRTCICE, *C.GstWebRTCICEStream, *C.gchar, *C.gchar);
-// extern C.gboolean _gotk4_gstwebrtc1_WebRTCICE_set_remote_credentials(*C.GstWebRTCICE, *C.GstWebRTCICEStream, *C.gchar, *C.gchar);
-// extern C.void _gotk4_gstwebrtc1_WebRTCICE_set_stun_server(*C.GstWebRTCICE, *C.gchar);
-// extern C.void _gotk4_gstwebrtc1_WebRTCICE_set_tos(*C.GstWebRTCICE, *C.GstWebRTCICEStream, C.guint);
-// extern C.void _gotk4_gstwebrtc1_WebRTCICE_set_turn_server(*C.GstWebRTCICE, *C.gchar);
-// C.void _gotk4_gstwebrtc1_WebRTCICE_virtual_add_candidate(void* fnptr, *C.GstWebRTCICE carg0, *C.GstWebRTCICEStream carg1, *C.gchar carg2, *C.GstPromise carg3) {
-// 	return ((C.void (*) (*C.GstWebRTCICE, *C.GstWebRTCICEStream, *C.gchar, *C.GstPromise))(fnptr))(carg0, carg1, carg2, carg3);
+// extern void _gotk4_gstwebrtc1_WebRTCICE_add_candidate(GstWebRTCICE*, GstWebRTCICEStream*, const gchar*, GstPromise*);
+// extern GstWebRTCICEStream* _gotk4_gstwebrtc1_WebRTCICE_add_stream(GstWebRTCICE*, guint);
+// extern gboolean _gotk4_gstwebrtc1_WebRTCICE_add_turn_server(GstWebRTCICE*, const gchar*);
+// extern GstWebRTCICETransport* _gotk4_gstwebrtc1_WebRTCICE_find_transport(GstWebRTCICE*, GstWebRTCICEStream*, GstWebRTCICEComponent);
+// extern gboolean _gotk4_gstwebrtc1_WebRTCICE_gather_candidates(GstWebRTCICE*, GstWebRTCICEStream*);
+// extern gchar* _gotk4_gstwebrtc1_WebRTCICE_get_http_proxy(GstWebRTCICE*);
+// extern gboolean _gotk4_gstwebrtc1_WebRTCICE_get_is_controller(GstWebRTCICE*);
+// extern gboolean _gotk4_gstwebrtc1_WebRTCICE_get_selected_pair(GstWebRTCICE*, GstWebRTCICEStream*, GstWebRTCICECandidateStats*, GstWebRTCICECandidateStats*);
+// extern gchar* _gotk4_gstwebrtc1_WebRTCICE_get_stun_server(GstWebRTCICE*);
+// extern gchar* _gotk4_gstwebrtc1_WebRTCICE_get_turn_server(GstWebRTCICE*);
+// extern void _gotk4_gstwebrtc1_WebRTCICE_set_force_relay(GstWebRTCICE*, gboolean);
+// extern void _gotk4_gstwebrtc1_WebRTCICE_set_http_proxy(GstWebRTCICE*, const gchar*);
+// extern void _gotk4_gstwebrtc1_WebRTCICE_set_is_controller(GstWebRTCICE*, gboolean);
+// extern gboolean _gotk4_gstwebrtc1_WebRTCICE_set_local_credentials(GstWebRTCICE*, GstWebRTCICEStream*, const gchar*, const gchar*);
+// extern gboolean _gotk4_gstwebrtc1_WebRTCICE_set_remote_credentials(GstWebRTCICE*, GstWebRTCICEStream*, const gchar*, const gchar*);
+// extern void _gotk4_gstwebrtc1_WebRTCICE_set_stun_server(GstWebRTCICE*, const gchar*);
+// extern void _gotk4_gstwebrtc1_WebRTCICE_set_tos(GstWebRTCICE*, GstWebRTCICEStream*, guint);
+// extern void _gotk4_gstwebrtc1_WebRTCICE_set_turn_server(GstWebRTCICE*, const gchar*);
+// void _gotk4_gstwebrtc1_WebRTCICE_virtual_add_candidate(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, const gchar* carg2, GstPromise* carg3) {
+// 	return ((void (*) (GstWebRTCICE*, GstWebRTCICEStream*, const gchar*, GstPromise*))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// *C.GstWebRTCICEStream _gotk4_gstwebrtc1_WebRTCICE_virtual_add_stream(void* fnptr, *C.GstWebRTCICE carg0, C.guint carg1) {
-// 	return ((*C.GstWebRTCICEStream (*) (*C.GstWebRTCICE, C.guint))(fnptr))(carg0, carg1);
+// GstWebRTCICEStream* _gotk4_gstwebrtc1_WebRTCICE_virtual_add_stream(void* fnptr, GstWebRTCICE* carg0, guint carg1) {
+// 	return ((GstWebRTCICEStream* (*) (GstWebRTCICE*, guint))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_add_turn_server(void* fnptr, *C.GstWebRTCICE carg0, *C.gchar carg1) {
-// 	return ((C.gboolean (*) (*C.GstWebRTCICE, *C.gchar))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_add_turn_server(void* fnptr, GstWebRTCICE* carg0, const gchar* carg1) {
+// 	return ((gboolean (*) (GstWebRTCICE*, const gchar*))(fnptr))(carg0, carg1);
 // }
-// *C.GstWebRTCICETransport _gotk4_gstwebrtc1_WebRTCICE_virtual_find_transport(void* fnptr, *C.GstWebRTCICE carg0, *C.GstWebRTCICEStream carg1, C.GstWebRTCICEComponent carg2) {
-// 	return ((*C.GstWebRTCICETransport (*) (*C.GstWebRTCICE, *C.GstWebRTCICEStream, C.GstWebRTCICEComponent))(fnptr))(carg0, carg1, carg2);
+// GstWebRTCICETransport* _gotk4_gstwebrtc1_WebRTCICE_virtual_find_transport(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, GstWebRTCICEComponent carg2) {
+// 	return ((GstWebRTCICETransport* (*) (GstWebRTCICE*, GstWebRTCICEStream*, GstWebRTCICEComponent))(fnptr))(carg0, carg1, carg2);
 // }
-// C.gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_gather_candidates(void* fnptr, *C.GstWebRTCICE carg0, *C.GstWebRTCICEStream carg1) {
-// 	return ((C.gboolean (*) (*C.GstWebRTCICE, *C.GstWebRTCICEStream))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_gather_candidates(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1) {
+// 	return ((gboolean (*) (GstWebRTCICE*, GstWebRTCICEStream*))(fnptr))(carg0, carg1);
 // }
-// *C.gchar _gotk4_gstwebrtc1_WebRTCICE_virtual_get_http_proxy(void* fnptr, *C.GstWebRTCICE carg0) {
-// 	return ((*C.gchar (*) (*C.GstWebRTCICE))(fnptr))(carg0);
+// gchar* _gotk4_gstwebrtc1_WebRTCICE_virtual_get_http_proxy(void* fnptr, GstWebRTCICE* carg0) {
+// 	return ((gchar* (*) (GstWebRTCICE*))(fnptr))(carg0);
 // }
-// C.gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_get_is_controller(void* fnptr, *C.GstWebRTCICE carg0) {
-// 	return ((C.gboolean (*) (*C.GstWebRTCICE))(fnptr))(carg0);
+// gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_get_is_controller(void* fnptr, GstWebRTCICE* carg0) {
+// 	return ((gboolean (*) (GstWebRTCICE*))(fnptr))(carg0);
 // }
-// C.gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_get_selected_pair(void* fnptr, *C.GstWebRTCICE carg0, *C.GstWebRTCICEStream carg1, *C.GstWebRTCICECandidateStats* carg2, *C.GstWebRTCICECandidateStats* carg3) {
-// 	return ((C.gboolean (*) (*C.GstWebRTCICE, *C.GstWebRTCICEStream, *C.GstWebRTCICECandidateStats*, *C.GstWebRTCICECandidateStats*))(fnptr))(carg0, carg1, carg2, carg3);
+// gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_get_selected_pair(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, GstWebRTCICECandidateStats** carg2, GstWebRTCICECandidateStats** carg3) {
+// 	return ((gboolean (*) (GstWebRTCICE*, GstWebRTCICEStream*, GstWebRTCICECandidateStats**, GstWebRTCICECandidateStats**))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// *C.gchar _gotk4_gstwebrtc1_WebRTCICE_virtual_get_stun_server(void* fnptr, *C.GstWebRTCICE carg0) {
-// 	return ((*C.gchar (*) (*C.GstWebRTCICE))(fnptr))(carg0);
+// gchar* _gotk4_gstwebrtc1_WebRTCICE_virtual_get_stun_server(void* fnptr, GstWebRTCICE* carg0) {
+// 	return ((gchar* (*) (GstWebRTCICE*))(fnptr))(carg0);
 // }
-// *C.gchar _gotk4_gstwebrtc1_WebRTCICE_virtual_get_turn_server(void* fnptr, *C.GstWebRTCICE carg0) {
-// 	return ((*C.gchar (*) (*C.GstWebRTCICE))(fnptr))(carg0);
+// gchar* _gotk4_gstwebrtc1_WebRTCICE_virtual_get_turn_server(void* fnptr, GstWebRTCICE* carg0) {
+// 	return ((gchar* (*) (GstWebRTCICE*))(fnptr))(carg0);
 // }
-// C.void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_force_relay(void* fnptr, *C.GstWebRTCICE carg0, C.gboolean carg1) {
-// 	return ((C.void (*) (*C.GstWebRTCICE, C.gboolean))(fnptr))(carg0, carg1);
+// void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_force_relay(void* fnptr, GstWebRTCICE* carg0, gboolean carg1) {
+// 	return ((void (*) (GstWebRTCICE*, gboolean))(fnptr))(carg0, carg1);
 // }
-// C.void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_http_proxy(void* fnptr, *C.GstWebRTCICE carg0, *C.gchar carg1) {
-// 	return ((C.void (*) (*C.GstWebRTCICE, *C.gchar))(fnptr))(carg0, carg1);
+// void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_http_proxy(void* fnptr, GstWebRTCICE* carg0, const gchar* carg1) {
+// 	return ((void (*) (GstWebRTCICE*, const gchar*))(fnptr))(carg0, carg1);
 // }
-// C.void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_is_controller(void* fnptr, *C.GstWebRTCICE carg0, C.gboolean carg1) {
-// 	return ((C.void (*) (*C.GstWebRTCICE, C.gboolean))(fnptr))(carg0, carg1);
+// void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_is_controller(void* fnptr, GstWebRTCICE* carg0, gboolean carg1) {
+// 	return ((void (*) (GstWebRTCICE*, gboolean))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_set_local_credentials(void* fnptr, *C.GstWebRTCICE carg0, *C.GstWebRTCICEStream carg1, *C.gchar carg2, *C.gchar carg3) {
-// 	return ((C.gboolean (*) (*C.GstWebRTCICE, *C.GstWebRTCICEStream, *C.gchar, *C.gchar))(fnptr))(carg0, carg1, carg2, carg3);
+// gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_set_local_credentials(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, const gchar* carg2, const gchar* carg3) {
+// 	return ((gboolean (*) (GstWebRTCICE*, GstWebRTCICEStream*, const gchar*, const gchar*))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// C.gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_set_remote_credentials(void* fnptr, *C.GstWebRTCICE carg0, *C.GstWebRTCICEStream carg1, *C.gchar carg2, *C.gchar carg3) {
-// 	return ((C.gboolean (*) (*C.GstWebRTCICE, *C.GstWebRTCICEStream, *C.gchar, *C.gchar))(fnptr))(carg0, carg1, carg2, carg3);
+// gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_set_remote_credentials(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, const gchar* carg2, const gchar* carg3) {
+// 	return ((gboolean (*) (GstWebRTCICE*, GstWebRTCICEStream*, const gchar*, const gchar*))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// C.void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_stun_server(void* fnptr, *C.GstWebRTCICE carg0, *C.gchar carg1) {
-// 	return ((C.void (*) (*C.GstWebRTCICE, *C.gchar))(fnptr))(carg0, carg1);
+// void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_stun_server(void* fnptr, GstWebRTCICE* carg0, const gchar* carg1) {
+// 	return ((void (*) (GstWebRTCICE*, const gchar*))(fnptr))(carg0, carg1);
 // }
-// C.void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_tos(void* fnptr, *C.GstWebRTCICE carg0, *C.GstWebRTCICEStream carg1, C.guint carg2) {
-// 	return ((C.void (*) (*C.GstWebRTCICE, *C.GstWebRTCICEStream, C.guint))(fnptr))(carg0, carg1, carg2);
+// void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_tos(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, guint carg2) {
+// 	return ((void (*) (GstWebRTCICE*, GstWebRTCICEStream*, guint))(fnptr))(carg0, carg1, carg2);
 // }
-// C.void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_turn_server(void* fnptr, *C.GstWebRTCICE carg0, *C.gchar carg1) {
-// 	return ((C.void (*) (*C.GstWebRTCICE, *C.gchar))(fnptr))(carg0, carg1);
+// void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_turn_server(void* fnptr, GstWebRTCICE* carg0, const gchar* carg1) {
+// 	return ((void (*) (GstWebRTCICE*, const gchar*))(fnptr))(carg0, carg1);
 // }
-// extern *C.GstWebRTCICETransport _gotk4_gstwebrtc1_WebRTCICEStream_find_transport(*C.GstWebRTCICEStream, C.GstWebRTCICEComponent);
-// extern C.gboolean _gotk4_gstwebrtc1_WebRTCICEStream_gather_candidates(*C.GstWebRTCICEStream);
-// *C.GstWebRTCICETransport _gotk4_gstwebrtc1_WebRTCICEStream_virtual_find_transport(void* fnptr, *C.GstWebRTCICEStream carg0, C.GstWebRTCICEComponent carg1) {
-// 	return ((*C.GstWebRTCICETransport (*) (*C.GstWebRTCICEStream, C.GstWebRTCICEComponent))(fnptr))(carg0, carg1);
+// extern GstWebRTCICETransport* _gotk4_gstwebrtc1_WebRTCICEStream_find_transport(GstWebRTCICEStream*, GstWebRTCICEComponent);
+// extern gboolean _gotk4_gstwebrtc1_WebRTCICEStream_gather_candidates(GstWebRTCICEStream*);
+// GstWebRTCICETransport* _gotk4_gstwebrtc1_WebRTCICEStream_virtual_find_transport(void* fnptr, GstWebRTCICEStream* carg0, GstWebRTCICEComponent carg1) {
+// 	return ((GstWebRTCICETransport* (*) (GstWebRTCICEStream*, GstWebRTCICEComponent))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstwebrtc1_WebRTCICEStream_virtual_gather_candidates(void* fnptr, *C.GstWebRTCICEStream carg0) {
-// 	return ((C.gboolean (*) (*C.GstWebRTCICEStream))(fnptr))(carg0);
+// gboolean _gotk4_gstwebrtc1_WebRTCICEStream_virtual_gather_candidates(void* fnptr, GstWebRTCICEStream* carg0) {
+// 	return ((gboolean (*) (GstWebRTCICEStream*))(fnptr))(carg0);
 // }
-// extern C.gboolean _gotk4_gstwebrtc1_WebRTCICETransport_gather_candidates(*C.GstWebRTCICETransport);
-// C.gboolean _gotk4_gstwebrtc1_WebRTCICETransport_virtual_gather_candidates(void* fnptr, *C.GstWebRTCICETransport carg0) {
-// 	return ((C.gboolean (*) (*C.GstWebRTCICETransport))(fnptr))(carg0);
+// extern gboolean _gotk4_gstwebrtc1_WebRTCICETransport_gather_candidates(GstWebRTCICETransport*);
+// gboolean _gotk4_gstwebrtc1_WebRTCICETransport_virtual_gather_candidates(void* fnptr, GstWebRTCICETransport* carg0) {
+// 	return ((gboolean (*) (GstWebRTCICETransport*))(fnptr))(carg0);
 // }
 import "C"
 
@@ -2206,7 +2206,7 @@ func (ice *WebRTCICEInstance) GetLocalCandidates(stream WebRTCICEStream) []*WebR
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []*WebRTCICECandidateStats (**C.GstWebRTCICECandidateStats)")
+	panic("unimplemented conversion of []*WebRTCICECandidateStats (GstWebRTCICECandidateStats**)")
 
 	return goret
 }
@@ -2236,7 +2236,7 @@ func (ice *WebRTCICEInstance) GetRemoteCandidates(stream WebRTCICEStream) []*Web
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []*WebRTCICECandidateStats (**C.GstWebRTCICECandidateStats)")
+	panic("unimplemented conversion of []*WebRTCICECandidateStats (GstWebRTCICECandidateStats**)")
 
 	return goret
 }

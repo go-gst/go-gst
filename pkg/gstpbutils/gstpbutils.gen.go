@@ -19,38 +19,38 @@ import (
 // #cgo pkg-config: gstreamer-pbutils-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/pbutils/pbutils.h>
-// extern C.void _gotk4_gstpbutils1_InstallPluginsResultFunc(C.GstInstallPluginsReturn, C.gpointer);
-// extern C.gboolean _gotk4_gstpbutils1_AudioVisualizer_decide_allocation(*C.GstAudioVisualizer, *C.GstQuery);
-// extern C.gboolean _gotk4_gstpbutils1_AudioVisualizer_render(*C.GstAudioVisualizer, *C.GstBuffer, *C.GstVideoFrame);
-// extern C.gboolean _gotk4_gstpbutils1_AudioVisualizer_setup(*C.GstAudioVisualizer);
-// C.gboolean _gotk4_gstpbutils1_AudioVisualizer_virtual_decide_allocation(void* fnptr, *C.GstAudioVisualizer carg0, *C.GstQuery carg1) {
-// 	return ((C.gboolean (*) (*C.GstAudioVisualizer, *C.GstQuery))(fnptr))(carg0, carg1);
+// extern void _gotk4_gstpbutils1_InstallPluginsResultFunc(GstInstallPluginsReturn, gpointer);
+// extern gboolean _gotk4_gstpbutils1_AudioVisualizer_decide_allocation(GstAudioVisualizer*, GstQuery*);
+// extern gboolean _gotk4_gstpbutils1_AudioVisualizer_render(GstAudioVisualizer*, GstBuffer*, GstVideoFrame*);
+// extern gboolean _gotk4_gstpbutils1_AudioVisualizer_setup(GstAudioVisualizer*);
+// gboolean _gotk4_gstpbutils1_AudioVisualizer_virtual_decide_allocation(void* fnptr, GstAudioVisualizer* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstAudioVisualizer*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstpbutils1_AudioVisualizer_virtual_render(void* fnptr, *C.GstAudioVisualizer carg0, *C.GstBuffer carg1, *C.GstVideoFrame carg2) {
-// 	return ((C.gboolean (*) (*C.GstAudioVisualizer, *C.GstBuffer, *C.GstVideoFrame))(fnptr))(carg0, carg1, carg2);
+// gboolean _gotk4_gstpbutils1_AudioVisualizer_virtual_render(void* fnptr, GstAudioVisualizer* carg0, GstBuffer* carg1, GstVideoFrame* carg2) {
+// 	return ((gboolean (*) (GstAudioVisualizer*, GstBuffer*, GstVideoFrame*))(fnptr))(carg0, carg1, carg2);
 // }
-// C.gboolean _gotk4_gstpbutils1_AudioVisualizer_virtual_setup(void* fnptr, *C.GstAudioVisualizer carg0) {
-// 	return ((C.gboolean (*) (*C.GstAudioVisualizer))(fnptr))(carg0);
+// gboolean _gotk4_gstpbutils1_AudioVisualizer_virtual_setup(void* fnptr, GstAudioVisualizer* carg0) {
+// 	return ((gboolean (*) (GstAudioVisualizer*))(fnptr))(carg0);
 // }
-// extern C.void _gotk4_gstpbutils1_Discoverer_discovered(*C.GstDiscoverer, *C.GstDiscovererInfo, *C.GError);
-// extern C.void _gotk4_gstpbutils1_Discoverer_finished(*C.GstDiscoverer);
-// extern *C.GstDiscovererInfo _gotk4_gstpbutils1_Discoverer_load_serialize_info(*C.GstDiscoverer, *C.gchar);
-// extern C.void _gotk4_gstpbutils1_Discoverer_source_setup(*C.GstDiscoverer, *C.GstElement);
-// extern C.void _gotk4_gstpbutils1_Discoverer_starting(*C.GstDiscoverer);
-// C.void _gotk4_gstpbutils1_Discoverer_virtual_discovered(void* fnptr, *C.GstDiscoverer carg0, *C.GstDiscovererInfo carg1, *C.GError carg2) {
-// 	return ((C.void (*) (*C.GstDiscoverer, *C.GstDiscovererInfo, *C.GError))(fnptr))(carg0, carg1, carg2);
+// extern void _gotk4_gstpbutils1_Discoverer_discovered(GstDiscoverer*, GstDiscovererInfo*, const GError*);
+// extern void _gotk4_gstpbutils1_Discoverer_finished(GstDiscoverer*);
+// extern GstDiscovererInfo* _gotk4_gstpbutils1_Discoverer_load_serialize_info(GstDiscoverer*, gchar*);
+// extern void _gotk4_gstpbutils1_Discoverer_source_setup(GstDiscoverer*, GstElement*);
+// extern void _gotk4_gstpbutils1_Discoverer_starting(GstDiscoverer*);
+// void _gotk4_gstpbutils1_Discoverer_virtual_discovered(void* fnptr, GstDiscoverer* carg0, GstDiscovererInfo* carg1, const GError* carg2) {
+// 	return ((void (*) (GstDiscoverer*, GstDiscovererInfo*, const GError*))(fnptr))(carg0, carg1, carg2);
 // }
-// C.void _gotk4_gstpbutils1_Discoverer_virtual_finished(void* fnptr, *C.GstDiscoverer carg0) {
-// 	return ((C.void (*) (*C.GstDiscoverer))(fnptr))(carg0);
+// void _gotk4_gstpbutils1_Discoverer_virtual_finished(void* fnptr, GstDiscoverer* carg0) {
+// 	return ((void (*) (GstDiscoverer*))(fnptr))(carg0);
 // }
-// *C.GstDiscovererInfo _gotk4_gstpbutils1_Discoverer_virtual_load_serialize_info(void* fnptr, *C.GstDiscoverer carg0, *C.gchar carg1) {
-// 	return ((*C.GstDiscovererInfo (*) (*C.GstDiscoverer, *C.gchar))(fnptr))(carg0, carg1);
+// GstDiscovererInfo* _gotk4_gstpbutils1_Discoverer_virtual_load_serialize_info(void* fnptr, GstDiscoverer* carg0, gchar* carg1) {
+// 	return ((GstDiscovererInfo* (*) (GstDiscoverer*, gchar*))(fnptr))(carg0, carg1);
 // }
-// C.void _gotk4_gstpbutils1_Discoverer_virtual_source_setup(void* fnptr, *C.GstDiscoverer carg0, *C.GstElement carg1) {
-// 	return ((C.void (*) (*C.GstDiscoverer, *C.GstElement))(fnptr))(carg0, carg1);
+// void _gotk4_gstpbutils1_Discoverer_virtual_source_setup(void* fnptr, GstDiscoverer* carg0, GstElement* carg1) {
+// 	return ((void (*) (GstDiscoverer*, GstElement*))(fnptr))(carg0, carg1);
 // }
-// C.void _gotk4_gstpbutils1_Discoverer_virtual_starting(void* fnptr, *C.GstDiscoverer carg0) {
-// 	return ((C.void (*) (*C.GstDiscoverer))(fnptr))(carg0);
+// void _gotk4_gstpbutils1_Discoverer_virtual_starting(void* fnptr, GstDiscoverer* carg0) {
+// 	return ((void (*) (GstDiscoverer*))(fnptr))(carg0);
 // }
 import "C"
 
@@ -595,7 +595,7 @@ func CodecUtilsAacCapsSetLevelAndProfile(caps *gst.Caps, audioConfig []uint8) bo
 	_ = audioConfig
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_codec_utils_aac_caps_set_level_and_profile(carg1, carg2, carg3)
 	runtime.KeepAlive(caps)
@@ -631,7 +631,7 @@ func CodecUtilsAacGetChannels(audioConfig []uint8) uint {
 	_ = audioConfig
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_codec_utils_aac_get_channels(carg1, carg2)
 	runtime.KeepAlive(audioConfig)
@@ -703,7 +703,7 @@ func CodecUtilsAacGetLevel(audioConfig []uint8) string {
 	_ = audioConfig
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_codec_utils_aac_get_level(carg1, carg2)
 	runtime.KeepAlive(audioConfig)
@@ -740,7 +740,7 @@ func CodecUtilsAacGetProfile(audioConfig []uint8) string {
 	_ = audioConfig
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_codec_utils_aac_get_profile(carg1, carg2)
 	runtime.KeepAlive(audioConfig)
@@ -776,7 +776,7 @@ func CodecUtilsAacGetSampleRate(audioConfig []uint8) uint {
 	_ = audioConfig
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_codec_utils_aac_get_sample_rate(carg1, carg2)
 	runtime.KeepAlive(audioConfig)
@@ -1024,7 +1024,7 @@ func CodecUtilsH264CapsSetLevelAndProfile(caps *gst.Caps, sps []uint8) bool {
 	_ = sps
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_codec_utils_h264_caps_set_level_and_profile(carg1, carg2, carg3)
 	runtime.KeepAlive(caps)
@@ -1060,7 +1060,7 @@ func CodecUtilsH264GetLevel(sps []uint8) string {
 	_ = sps
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_codec_utils_h264_get_level(carg1, carg2)
 	runtime.KeepAlive(sps)
@@ -1134,7 +1134,7 @@ func CodecUtilsH264GetProfile(sps []uint8) string {
 	_ = sps
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_codec_utils_h264_get_profile(carg1, carg2)
 	runtime.KeepAlive(sps)
@@ -1179,7 +1179,7 @@ func CodecUtilsH264GetProfileFlagsLevel(codecData []uint8) (uint8, uint8, uint8,
 	_ = codecData
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_codec_utils_h264_get_profile_flags_level(carg1, carg2, &carg3, &carg4, &carg5)
 	runtime.KeepAlive(codecData)
@@ -1225,7 +1225,7 @@ func CodecUtilsH265CapsSetLevelTierAndProfile(caps *gst.Caps, profileTierLevel [
 	_ = profileTierLevel
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_codec_utils_h265_caps_set_level_tier_and_profile(carg1, carg2, carg3)
 	runtime.KeepAlive(caps)
@@ -1262,7 +1262,7 @@ func CodecUtilsH265GetLevel(profileTierLevel []uint8) string {
 	_ = profileTierLevel
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_codec_utils_h265_get_level(carg1, carg2)
 	runtime.KeepAlive(profileTierLevel)
@@ -1339,7 +1339,7 @@ func CodecUtilsH265GetProfile(profileTierLevel []uint8) string {
 	_ = profileTierLevel
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_codec_utils_h265_get_profile(carg1, carg2)
 	runtime.KeepAlive(profileTierLevel)
@@ -1375,7 +1375,7 @@ func CodecUtilsH265GetTier(profileTierLevel []uint8) string {
 	_ = profileTierLevel
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_codec_utils_h265_get_tier(carg1, carg2)
 	runtime.KeepAlive(profileTierLevel)
@@ -1414,7 +1414,7 @@ func CodecUtilsH266CapsSetLevelTierAndProfile(caps *gst.Caps, decoderConfigurati
 	_ = decoderConfiguration
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_codec_utils_h266_caps_set_level_tier_and_profile(carg1, carg2, carg3)
 	runtime.KeepAlive(caps)
@@ -1449,7 +1449,7 @@ func CodecUtilsH266GetLevel(ptlRecord []uint8) string {
 	_ = ptlRecord
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_codec_utils_h266_get_level(carg1, carg2)
 	runtime.KeepAlive(ptlRecord)
@@ -1511,7 +1511,7 @@ func CodecUtilsH266GetProfile(ptlRecord []uint8) string {
 	_ = ptlRecord
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_codec_utils_h266_get_profile(carg1, carg2)
 	runtime.KeepAlive(ptlRecord)
@@ -1545,7 +1545,7 @@ func CodecUtilsH266GetTier(ptlRecord []uint8) string {
 	_ = ptlRecord
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_codec_utils_h266_get_tier(carg1, carg2)
 	runtime.KeepAlive(ptlRecord)
@@ -1585,7 +1585,7 @@ func CodecUtilsMpeg4VideoCapsSetLevelAndProfile(caps *gst.Caps, visObjSeq []uint
 	_ = visObjSeq
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_codec_utils_mpeg4video_caps_set_level_and_profile(carg1, carg2, carg3)
 	runtime.KeepAlive(caps)
@@ -1623,7 +1623,7 @@ func CodecUtilsMpeg4VideoGetLevel(visObjSeq []uint8) string {
 	_ = visObjSeq
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_codec_utils_mpeg4video_get_level(carg1, carg2)
 	runtime.KeepAlive(visObjSeq)
@@ -1660,7 +1660,7 @@ func CodecUtilsMpeg4VideoGetProfile(visObjSeq []uint8) string {
 	_ = visObjSeq
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_codec_utils_mpeg4video_get_profile(carg1, carg2)
 	runtime.KeepAlive(visObjSeq)
@@ -1815,7 +1815,7 @@ func InstallPluginsAsync(details []string, ctx *InstallPluginsContext, fn Instal
 
 	_ = details
 	_ = carg1
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (const gchar* const*)")
 	if ctx != nil {
 		carg2 = (*C.GstInstallPluginsContext)(UnsafeInstallPluginsContextToGlibNone(ctx))
 	}
@@ -1907,7 +1907,7 @@ func InstallPluginsSync(details []string, ctx *InstallPluginsContext) InstallPlu
 
 	_ = details
 	_ = carg1
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (const gchar* const*)")
 	if ctx != nil {
 		carg2 = (*C.GstInstallPluginsContext)(UnsafeInstallPluginsContextToGlibNone(ctx))
 	}
@@ -4107,7 +4107,7 @@ func (info *DiscovererInfoInstance) GetMissingElementsInstallerDetails() []strin
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (const gchar**)")
 
 	return goret
 }

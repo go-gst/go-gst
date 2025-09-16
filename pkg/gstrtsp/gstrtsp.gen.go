@@ -21,43 +21,43 @@ import (
 // #cgo pkg-config: gstreamer-rtsp-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/rtsp/rtsp.h>
-// extern C.gboolean _gotk4_gstrtsp1_RTSPConnectionAcceptCertificateFunc(*C.GTlsConnection, *C.GTlsCertificate, C.GTlsCertificateFlags, C.gpointer);
+// extern gboolean _gotk4_gstrtsp1_RTSPConnectionAcceptCertificateFunc(GTlsConnection*, GTlsCertificate*, GTlsCertificateFlags, gpointer);
 // extern void destroyUserdata(gpointer);
-// extern C.GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_after_send(*C.GstRTSPExtension, *C.GstRTSPMessage, *C.GstRTSPMessage);
-// extern C.GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_before_send(*C.GstRTSPExtension, *C.GstRTSPMessage);
-// extern C.gboolean _gotk4_gstrtsp1_RTSPExtension_configure_stream(*C.GstRTSPExtension, *C.GstCaps);
-// extern C.gboolean _gotk4_gstrtsp1_RTSPExtension_detect_server(*C.GstRTSPExtension, *C.GstRTSPMessage);
-// extern C.GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_parse_sdp(*C.GstRTSPExtension, *C.GstSDPMessage, *C.GstStructure);
-// extern C.GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_receive_request(*C.GstRTSPExtension, *C.GstRTSPMessage);
-// extern C.GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_send(*C.GstRTSPExtension, *C.GstRTSPMessage, *C.GstRTSPMessage);
-// extern C.GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_setup_media(*C.GstRTSPExtension, *C.GstSDPMedia);
-// extern C.GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_stream_select(*C.GstRTSPExtension, *C.GstRTSPUrl);
-// C.GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_after_send(void* fnptr, *C.GstRTSPExtension carg0, *C.GstRTSPMessage carg1, *C.GstRTSPMessage carg2) {
-// 	return ((C.GstRTSPResult (*) (*C.GstRTSPExtension, *C.GstRTSPMessage, *C.GstRTSPMessage))(fnptr))(carg0, carg1, carg2);
+// extern GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_after_send(GstRTSPExtension*, GstRTSPMessage*, GstRTSPMessage*);
+// extern GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_before_send(GstRTSPExtension*, GstRTSPMessage*);
+// extern gboolean _gotk4_gstrtsp1_RTSPExtension_configure_stream(GstRTSPExtension*, GstCaps*);
+// extern gboolean _gotk4_gstrtsp1_RTSPExtension_detect_server(GstRTSPExtension*, GstRTSPMessage*);
+// extern GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_parse_sdp(GstRTSPExtension*, GstSDPMessage*, GstStructure*);
+// extern GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_receive_request(GstRTSPExtension*, GstRTSPMessage*);
+// extern GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_send(GstRTSPExtension*, GstRTSPMessage*, GstRTSPMessage*);
+// extern GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_setup_media(GstRTSPExtension*, GstSDPMedia*);
+// extern GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_stream_select(GstRTSPExtension*, GstRTSPUrl*);
+// GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_after_send(void* fnptr, GstRTSPExtension* carg0, GstRTSPMessage* carg1, GstRTSPMessage* carg2) {
+// 	return ((GstRTSPResult (*) (GstRTSPExtension*, GstRTSPMessage*, GstRTSPMessage*))(fnptr))(carg0, carg1, carg2);
 // }
-// C.GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_before_send(void* fnptr, *C.GstRTSPExtension carg0, *C.GstRTSPMessage carg1) {
-// 	return ((C.GstRTSPResult (*) (*C.GstRTSPExtension, *C.GstRTSPMessage))(fnptr))(carg0, carg1);
+// GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_before_send(void* fnptr, GstRTSPExtension* carg0, GstRTSPMessage* carg1) {
+// 	return ((GstRTSPResult (*) (GstRTSPExtension*, GstRTSPMessage*))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstrtsp1_RTSPExtension_virtual_configure_stream(void* fnptr, *C.GstRTSPExtension carg0, *C.GstCaps carg1) {
-// 	return ((C.gboolean (*) (*C.GstRTSPExtension, *C.GstCaps))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gstrtsp1_RTSPExtension_virtual_configure_stream(void* fnptr, GstRTSPExtension* carg0, GstCaps* carg1) {
+// 	return ((gboolean (*) (GstRTSPExtension*, GstCaps*))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstrtsp1_RTSPExtension_virtual_detect_server(void* fnptr, *C.GstRTSPExtension carg0, *C.GstRTSPMessage carg1) {
-// 	return ((C.gboolean (*) (*C.GstRTSPExtension, *C.GstRTSPMessage))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gstrtsp1_RTSPExtension_virtual_detect_server(void* fnptr, GstRTSPExtension* carg0, GstRTSPMessage* carg1) {
+// 	return ((gboolean (*) (GstRTSPExtension*, GstRTSPMessage*))(fnptr))(carg0, carg1);
 // }
-// C.GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_parse_sdp(void* fnptr, *C.GstRTSPExtension carg0, *C.GstSDPMessage carg1, *C.GstStructure carg2) {
-// 	return ((C.GstRTSPResult (*) (*C.GstRTSPExtension, *C.GstSDPMessage, *C.GstStructure))(fnptr))(carg0, carg1, carg2);
+// GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_parse_sdp(void* fnptr, GstRTSPExtension* carg0, GstSDPMessage* carg1, GstStructure* carg2) {
+// 	return ((GstRTSPResult (*) (GstRTSPExtension*, GstSDPMessage*, GstStructure*))(fnptr))(carg0, carg1, carg2);
 // }
-// C.GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_receive_request(void* fnptr, *C.GstRTSPExtension carg0, *C.GstRTSPMessage carg1) {
-// 	return ((C.GstRTSPResult (*) (*C.GstRTSPExtension, *C.GstRTSPMessage))(fnptr))(carg0, carg1);
+// GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_receive_request(void* fnptr, GstRTSPExtension* carg0, GstRTSPMessage* carg1) {
+// 	return ((GstRTSPResult (*) (GstRTSPExtension*, GstRTSPMessage*))(fnptr))(carg0, carg1);
 // }
-// C.GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_send(void* fnptr, *C.GstRTSPExtension carg0, *C.GstRTSPMessage carg1, *C.GstRTSPMessage carg2) {
-// 	return ((C.GstRTSPResult (*) (*C.GstRTSPExtension, *C.GstRTSPMessage, *C.GstRTSPMessage))(fnptr))(carg0, carg1, carg2);
+// GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_send(void* fnptr, GstRTSPExtension* carg0, GstRTSPMessage* carg1, GstRTSPMessage* carg2) {
+// 	return ((GstRTSPResult (*) (GstRTSPExtension*, GstRTSPMessage*, GstRTSPMessage*))(fnptr))(carg0, carg1, carg2);
 // }
-// C.GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_setup_media(void* fnptr, *C.GstRTSPExtension carg0, *C.GstSDPMedia carg1) {
-// 	return ((C.GstRTSPResult (*) (*C.GstRTSPExtension, *C.GstSDPMedia))(fnptr))(carg0, carg1);
+// GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_setup_media(void* fnptr, GstRTSPExtension* carg0, GstSDPMedia* carg1) {
+// 	return ((GstRTSPResult (*) (GstRTSPExtension*, GstSDPMedia*))(fnptr))(carg0, carg1);
 // }
-// C.GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_stream_select(void* fnptr, *C.GstRTSPExtension carg0, *C.GstRTSPUrl carg1) {
-// 	return ((C.GstRTSPResult (*) (*C.GstRTSPExtension, *C.GstRTSPUrl))(fnptr))(carg0, carg1);
+// GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_stream_select(void* fnptr, GstRTSPExtension* carg0, GstRTSPUrl* carg1) {
+// 	return ((GstRTSPResult (*) (GstRTSPExtension*, GstRTSPUrl*))(fnptr))(carg0, carg1);
 // }
 import "C"
 
@@ -4104,7 +4104,7 @@ func (conn *RTSPConnection) PollUsec(events RTSPEvent, timeout int64) (RTSPEvent
 
 	_ = revents
 	_ = carg2
-	panic("unimplemented conversion of RTSPEvent (C.GstRTSPEvent)")
+	panic("unimplemented conversion of RTSPEvent (GstRTSPEvent)")
 	goret = RTSPResult(cret)
 
 	return revents, goret
@@ -4137,7 +4137,7 @@ func (conn *RTSPConnection) ReadUsec(data []uint8, timeout int64) RTSPResult {
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (guint8*)")
 	carg3 = C.gint64(timeout)
 
 	cret = C.gst_rtsp_connection_read_usec(carg0, carg1, carg2, carg3)
@@ -4240,7 +4240,7 @@ func (conn *RTSPConnection) SendMessagesUsec(messages []RTSPMessage, timeout int
 	_ = messages
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []RTSPMessage (*C.GstRTSPMessage)")
+	panic("unimplemented conversion of []RTSPMessage (GstRTSPMessage*)")
 	carg3 = C.gint64(timeout)
 
 	cret = C.gst_rtsp_connection_send_messages_usec(carg0, carg1, carg2, carg3)
@@ -4704,7 +4704,7 @@ func (conn *RTSPConnection) WriteUsec(data []uint8, timeout int64) RTSPResult {
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 	carg3 = C.gint64(timeout)
 
 	cret = C.gst_rtsp_connection_write_usec(carg0, carg1, carg2, carg3)
@@ -5314,7 +5314,7 @@ func (msg *RTSPMessage) ParseAuthCredentials(field RTSPHeaderField) []*RTSPAuthC
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []*RTSPAuthCredential (**C.GstRTSPAuthCredential)")
+	panic("unimplemented conversion of []*RTSPAuthCredential (GstRTSPAuthCredential**)")
 
 	return goret
 }
@@ -5517,7 +5517,7 @@ func (msg *RTSPMessage) SetBody(data []uint8) RTSPResult {
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_rtsp_message_set_body(carg0, carg1, carg2)
 	runtime.KeepAlive(msg)
@@ -5615,7 +5615,7 @@ func (msg *RTSPMessage) TakeBody(data []uint8) RTSPResult {
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (guint8*)")
 
 	cret = C.gst_rtsp_message_take_body(carg0, carg1, carg2)
 	runtime.KeepAlive(msg)
@@ -6323,7 +6323,7 @@ func RTSPTransportInit() (RTSPTransport, RTSPResult) {
 
 	_ = transport
 	_ = carg1
-	panic("unimplemented conversion of RTSPTransport (C.GstRTSPTransport)")
+	panic("unimplemented conversion of RTSPTransport (GstRTSPTransport)")
 	goret = RTSPResult(cret)
 
 	return transport, goret
@@ -6381,7 +6381,7 @@ func RTSPTransportParse(str string) (RTSPTransport, RTSPResult) {
 
 	_ = transport
 	_ = carg2
-	panic("unimplemented conversion of RTSPTransport (C.GstRTSPTransport)")
+	panic("unimplemented conversion of RTSPTransport (GstRTSPTransport)")
 	goret = RTSPResult(cret)
 
 	return transport, goret
@@ -6608,7 +6608,7 @@ func (url *RTSPUrl) DecodePathComponents() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (gchar**)")
 
 	return goret
 }
@@ -6932,7 +6932,7 @@ func (watch *RTSPWatch) SendMessages(messages []RTSPMessage) (uint, RTSPResult) 
 	_ = messages
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []RTSPMessage (*C.GstRTSPMessage)")
+	panic("unimplemented conversion of []RTSPMessage (GstRTSPMessage*)")
 
 	cret = C.gst_rtsp_watch_send_messages(carg0, carg1, carg2, &carg3)
 	runtime.KeepAlive(watch)
@@ -7070,7 +7070,7 @@ func (watch *RTSPWatch) WriteData(data []uint8) (uint, RTSPResult) {
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_rtsp_watch_write_data(carg0, carg1, carg2, &carg3)
 	runtime.KeepAlive(watch)

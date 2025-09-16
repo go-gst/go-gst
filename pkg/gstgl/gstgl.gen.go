@@ -20,162 +20,162 @@ import (
 // #cgo pkg-config: gstreamer-gl-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/gl/gl.h>
-// extern C.gboolean _gotk4_gstgl1_GLFilterRenderFunc(*C.GstGLFilter, *C.GstGLMemory, C.gpointer);
-// extern C.gboolean _gotk4_gstgl1_GLBaseFilter_gl_set_caps(*C.GstGLBaseFilter, *C.GstCaps, *C.GstCaps);
-// extern C.gboolean _gotk4_gstgl1_GLBaseFilter_gl_start(*C.GstGLBaseFilter);
-// extern C.void _gotk4_gstgl1_GLBaseFilter_gl_stop(*C.GstGLBaseFilter);
-// C.gboolean _gotk4_gstgl1_GLBaseFilter_virtual_gl_set_caps(void* fnptr, *C.GstGLBaseFilter carg0, *C.GstCaps carg1, *C.GstCaps carg2) {
-// 	return ((C.gboolean (*) (*C.GstGLBaseFilter, *C.GstCaps, *C.GstCaps))(fnptr))(carg0, carg1, carg2);
+// extern gboolean _gotk4_gstgl1_GLFilterRenderFunc(GstGLFilter*, GstGLMemory*, gpointer);
+// extern gboolean _gotk4_gstgl1_GLBaseFilter_gl_set_caps(GstGLBaseFilter*, GstCaps*, GstCaps*);
+// extern gboolean _gotk4_gstgl1_GLBaseFilter_gl_start(GstGLBaseFilter*);
+// extern void _gotk4_gstgl1_GLBaseFilter_gl_stop(GstGLBaseFilter*);
+// gboolean _gotk4_gstgl1_GLBaseFilter_virtual_gl_set_caps(void* fnptr, GstGLBaseFilter* carg0, GstCaps* carg1, GstCaps* carg2) {
+// 	return ((gboolean (*) (GstGLBaseFilter*, GstCaps*, GstCaps*))(fnptr))(carg0, carg1, carg2);
 // }
-// C.gboolean _gotk4_gstgl1_GLBaseFilter_virtual_gl_start(void* fnptr, *C.GstGLBaseFilter carg0) {
-// 	return ((C.gboolean (*) (*C.GstGLBaseFilter))(fnptr))(carg0);
+// gboolean _gotk4_gstgl1_GLBaseFilter_virtual_gl_start(void* fnptr, GstGLBaseFilter* carg0) {
+// 	return ((gboolean (*) (GstGLBaseFilter*))(fnptr))(carg0);
 // }
-// C.void _gotk4_gstgl1_GLBaseFilter_virtual_gl_stop(void* fnptr, *C.GstGLBaseFilter carg0) {
-// 	return ((C.void (*) (*C.GstGLBaseFilter))(fnptr))(carg0);
+// void _gotk4_gstgl1_GLBaseFilter_virtual_gl_stop(void* fnptr, GstGLBaseFilter* carg0) {
+// 	return ((void (*) (GstGLBaseFilter*))(fnptr))(carg0);
 // }
-// extern C.gboolean _gotk4_gstgl1_GLBaseMixer_gl_start(*C.GstGLBaseMixer);
-// extern C.void _gotk4_gstgl1_GLBaseMixer_gl_stop(*C.GstGLBaseMixer);
-// C.gboolean _gotk4_gstgl1_GLBaseMixer_virtual_gl_start(void* fnptr, *C.GstGLBaseMixer carg0) {
-// 	return ((C.gboolean (*) (*C.GstGLBaseMixer))(fnptr))(carg0);
+// extern gboolean _gotk4_gstgl1_GLBaseMixer_gl_start(GstGLBaseMixer*);
+// extern void _gotk4_gstgl1_GLBaseMixer_gl_stop(GstGLBaseMixer*);
+// gboolean _gotk4_gstgl1_GLBaseMixer_virtual_gl_start(void* fnptr, GstGLBaseMixer* carg0) {
+// 	return ((gboolean (*) (GstGLBaseMixer*))(fnptr))(carg0);
 // }
-// C.void _gotk4_gstgl1_GLBaseMixer_virtual_gl_stop(void* fnptr, *C.GstGLBaseMixer carg0) {
-// 	return ((C.void (*) (*C.GstGLBaseMixer))(fnptr))(carg0);
+// void _gotk4_gstgl1_GLBaseMixer_virtual_gl_stop(void* fnptr, GstGLBaseMixer* carg0) {
+// 	return ((void (*) (GstGLBaseMixer*))(fnptr))(carg0);
 // }
-// extern C.gboolean _gotk4_gstgl1_GLBaseSrc_fill_gl_memory(*C.GstGLBaseSrc, *C.GstGLMemory);
-// extern C.gboolean _gotk4_gstgl1_GLBaseSrc_gl_start(*C.GstGLBaseSrc);
-// extern C.void _gotk4_gstgl1_GLBaseSrc_gl_stop(*C.GstGLBaseSrc);
-// C.gboolean _gotk4_gstgl1_GLBaseSrc_virtual_fill_gl_memory(void* fnptr, *C.GstGLBaseSrc carg0, *C.GstGLMemory carg1) {
-// 	return ((C.gboolean (*) (*C.GstGLBaseSrc, *C.GstGLMemory))(fnptr))(carg0, carg1);
+// extern gboolean _gotk4_gstgl1_GLBaseSrc_fill_gl_memory(GstGLBaseSrc*, GstGLMemory*);
+// extern gboolean _gotk4_gstgl1_GLBaseSrc_gl_start(GstGLBaseSrc*);
+// extern void _gotk4_gstgl1_GLBaseSrc_gl_stop(GstGLBaseSrc*);
+// gboolean _gotk4_gstgl1_GLBaseSrc_virtual_fill_gl_memory(void* fnptr, GstGLBaseSrc* carg0, GstGLMemory* carg1) {
+// 	return ((gboolean (*) (GstGLBaseSrc*, GstGLMemory*))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstgl1_GLBaseSrc_virtual_gl_start(void* fnptr, *C.GstGLBaseSrc carg0) {
-// 	return ((C.gboolean (*) (*C.GstGLBaseSrc))(fnptr))(carg0);
+// gboolean _gotk4_gstgl1_GLBaseSrc_virtual_gl_start(void* fnptr, GstGLBaseSrc* carg0) {
+// 	return ((gboolean (*) (GstGLBaseSrc*))(fnptr))(carg0);
 // }
-// C.void _gotk4_gstgl1_GLBaseSrc_virtual_gl_stop(void* fnptr, *C.GstGLBaseSrc carg0) {
-// 	return ((C.void (*) (*C.GstGLBaseSrc))(fnptr))(carg0);
+// void _gotk4_gstgl1_GLBaseSrc_virtual_gl_stop(void* fnptr, GstGLBaseSrc* carg0) {
+// 	return ((void (*) (GstGLBaseSrc*))(fnptr))(carg0);
 // }
-// extern C.gboolean _gotk4_gstgl1_GLContext_activate(*C.GstGLContext, C.gboolean);
-// extern C.gboolean _gotk4_gstgl1_GLContext_check_feature(*C.GstGLContext, *C.gchar);
-// extern C.gboolean _gotk4_gstgl1_GLContext_choose_format(*C.GstGLContext, GError*);
-// extern C.gboolean _gotk4_gstgl1_GLContext_create_context(*C.GstGLContext, C.GstGLAPI, *C.GstGLContext, GError*);
-// extern C.void _gotk4_gstgl1_GLContext_destroy_context(*C.GstGLContext);
-// extern *C.GstStructure _gotk4_gstgl1_GLContext_get_config(*C.GstGLContext);
-// extern C.GstGLAPI _gotk4_gstgl1_GLContext_get_gl_api(*C.GstGLContext);
-// extern C.GstGLPlatform _gotk4_gstgl1_GLContext_get_gl_platform(*C.GstGLContext);
-// extern C.void _gotk4_gstgl1_GLContext_get_gl_platform_version(*C.GstGLContext, C.gint, C.gint);
-// extern C.gboolean _gotk4_gstgl1_GLContext_request_config(*C.GstGLContext, *C.GstStructure);
-// extern C.void _gotk4_gstgl1_GLContext_swap_buffers(*C.GstGLContext);
-// C.gboolean _gotk4_gstgl1_GLContext_virtual_activate(void* fnptr, *C.GstGLContext carg0, C.gboolean carg1) {
-// 	return ((C.gboolean (*) (*C.GstGLContext, C.gboolean))(fnptr))(carg0, carg1);
+// extern gboolean _gotk4_gstgl1_GLContext_activate(GstGLContext*, gboolean);
+// extern gboolean _gotk4_gstgl1_GLContext_check_feature(GstGLContext*, const gchar*);
+// extern gboolean _gotk4_gstgl1_GLContext_choose_format(GstGLContext*, GError*);
+// extern gboolean _gotk4_gstgl1_GLContext_create_context(GstGLContext*, GstGLAPI, GstGLContext*, GError*);
+// extern void _gotk4_gstgl1_GLContext_destroy_context(GstGLContext*);
+// extern GstStructure* _gotk4_gstgl1_GLContext_get_config(GstGLContext*);
+// extern GstGLAPI _gotk4_gstgl1_GLContext_get_gl_api(GstGLContext*);
+// extern GstGLPlatform _gotk4_gstgl1_GLContext_get_gl_platform(GstGLContext*);
+// extern void _gotk4_gstgl1_GLContext_get_gl_platform_version(GstGLContext*, gint, gint);
+// extern gboolean _gotk4_gstgl1_GLContext_request_config(GstGLContext*, GstStructure*);
+// extern void _gotk4_gstgl1_GLContext_swap_buffers(GstGLContext*);
+// gboolean _gotk4_gstgl1_GLContext_virtual_activate(void* fnptr, GstGLContext* carg0, gboolean carg1) {
+// 	return ((gboolean (*) (GstGLContext*, gboolean))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstgl1_GLContext_virtual_check_feature(void* fnptr, *C.GstGLContext carg0, *C.gchar carg1) {
-// 	return ((C.gboolean (*) (*C.GstGLContext, *C.gchar))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gstgl1_GLContext_virtual_check_feature(void* fnptr, GstGLContext* carg0, const gchar* carg1) {
+// 	return ((gboolean (*) (GstGLContext*, const gchar*))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstgl1_GLContext_virtual_choose_format(void* fnptr, *C.GstGLContext carg0, GError** _cerr) {
-// 	return ((C.gboolean (*) (*C.GstGLContext, GError**))(fnptr))(carg0, _cerr);
+// gboolean _gotk4_gstgl1_GLContext_virtual_choose_format(void* fnptr, GstGLContext* carg0, GError** _cerr) {
+// 	return ((gboolean (*) (GstGLContext*, GError**))(fnptr))(carg0, _cerr);
 // }
-// C.gboolean _gotk4_gstgl1_GLContext_virtual_create_context(void* fnptr, *C.GstGLContext carg0, C.GstGLAPI carg1, *C.GstGLContext carg2, GError** _cerr) {
-// 	return ((C.gboolean (*) (*C.GstGLContext, C.GstGLAPI, *C.GstGLContext, GError**))(fnptr))(carg0, carg1, carg2, _cerr);
+// gboolean _gotk4_gstgl1_GLContext_virtual_create_context(void* fnptr, GstGLContext* carg0, GstGLAPI carg1, GstGLContext* carg2, GError** _cerr) {
+// 	return ((gboolean (*) (GstGLContext*, GstGLAPI, GstGLContext*, GError**))(fnptr))(carg0, carg1, carg2, _cerr);
 // }
-// C.void _gotk4_gstgl1_GLContext_virtual_destroy_context(void* fnptr, *C.GstGLContext carg0) {
-// 	return ((C.void (*) (*C.GstGLContext))(fnptr))(carg0);
+// void _gotk4_gstgl1_GLContext_virtual_destroy_context(void* fnptr, GstGLContext* carg0) {
+// 	return ((void (*) (GstGLContext*))(fnptr))(carg0);
 // }
-// *C.GstStructure _gotk4_gstgl1_GLContext_virtual_get_config(void* fnptr, *C.GstGLContext carg0) {
-// 	return ((*C.GstStructure (*) (*C.GstGLContext))(fnptr))(carg0);
+// GstStructure* _gotk4_gstgl1_GLContext_virtual_get_config(void* fnptr, GstGLContext* carg0) {
+// 	return ((GstStructure* (*) (GstGLContext*))(fnptr))(carg0);
 // }
-// C.GstGLAPI _gotk4_gstgl1_GLContext_virtual_get_gl_api(void* fnptr, *C.GstGLContext carg0) {
-// 	return ((C.GstGLAPI (*) (*C.GstGLContext))(fnptr))(carg0);
+// GstGLAPI _gotk4_gstgl1_GLContext_virtual_get_gl_api(void* fnptr, GstGLContext* carg0) {
+// 	return ((GstGLAPI (*) (GstGLContext*))(fnptr))(carg0);
 // }
-// C.GstGLPlatform _gotk4_gstgl1_GLContext_virtual_get_gl_platform(void* fnptr, *C.GstGLContext carg0) {
-// 	return ((C.GstGLPlatform (*) (*C.GstGLContext))(fnptr))(carg0);
+// GstGLPlatform _gotk4_gstgl1_GLContext_virtual_get_gl_platform(void* fnptr, GstGLContext* carg0) {
+// 	return ((GstGLPlatform (*) (GstGLContext*))(fnptr))(carg0);
 // }
-// C.void _gotk4_gstgl1_GLContext_virtual_get_gl_platform_version(void* fnptr, *C.GstGLContext carg0, C.gint* carg1, C.gint* carg2) {
-// 	return ((C.void (*) (*C.GstGLContext, C.gint*, C.gint*))(fnptr))(carg0, carg1, carg2);
+// void _gotk4_gstgl1_GLContext_virtual_get_gl_platform_version(void* fnptr, GstGLContext* carg0, gint* carg1, gint* carg2) {
+// 	return ((void (*) (GstGLContext*, gint*, gint*))(fnptr))(carg0, carg1, carg2);
 // }
-// C.gboolean _gotk4_gstgl1_GLContext_virtual_request_config(void* fnptr, *C.GstGLContext carg0, *C.GstStructure carg1) {
-// 	return ((C.gboolean (*) (*C.GstGLContext, *C.GstStructure))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gstgl1_GLContext_virtual_request_config(void* fnptr, GstGLContext* carg0, GstStructure* carg1) {
+// 	return ((gboolean (*) (GstGLContext*, GstStructure*))(fnptr))(carg0, carg1);
 // }
-// C.void _gotk4_gstgl1_GLContext_virtual_swap_buffers(void* fnptr, *C.GstGLContext carg0) {
-// 	return ((C.void (*) (*C.GstGLContext))(fnptr))(carg0);
+// void _gotk4_gstgl1_GLContext_virtual_swap_buffers(void* fnptr, GstGLContext* carg0) {
+// 	return ((void (*) (GstGLContext*))(fnptr))(carg0);
 // }
-// extern *C.GstGLWindow _gotk4_gstgl1_GLDisplay_create_window(*C.GstGLDisplay);
-// *C.GstGLWindow _gotk4_gstgl1_GLDisplay_virtual_create_window(void* fnptr, *C.GstGLDisplay carg0) {
-// 	return ((*C.GstGLWindow (*) (*C.GstGLDisplay))(fnptr))(carg0);
+// extern GstGLWindow* _gotk4_gstgl1_GLDisplay_create_window(GstGLDisplay*);
+// GstGLWindow* _gotk4_gstgl1_GLDisplay_virtual_create_window(void* fnptr, GstGLDisplay* carg0) {
+// 	return ((GstGLWindow* (*) (GstGLDisplay*))(fnptr))(carg0);
 // }
-// extern C.gboolean _gotk4_gstgl1_GLFilter_filter(*C.GstGLFilter, *C.GstBuffer, *C.GstBuffer);
-// extern C.gboolean _gotk4_gstgl1_GLFilter_filter_texture(*C.GstGLFilter, *C.GstGLMemory, *C.GstGLMemory);
-// extern C.gboolean _gotk4_gstgl1_GLFilter_init_fbo(*C.GstGLFilter);
-// extern C.gboolean _gotk4_gstgl1_GLFilter_set_caps(*C.GstGLFilter, *C.GstCaps, *C.GstCaps);
-// extern *C.GstCaps _gotk4_gstgl1_GLFilter_transform_internal_caps(*C.GstGLFilter, C.GstPadDirection, *C.GstCaps, *C.GstCaps);
-// C.gboolean _gotk4_gstgl1_GLFilter_virtual_filter(void* fnptr, *C.GstGLFilter carg0, *C.GstBuffer carg1, *C.GstBuffer carg2) {
-// 	return ((C.gboolean (*) (*C.GstGLFilter, *C.GstBuffer, *C.GstBuffer))(fnptr))(carg0, carg1, carg2);
+// extern gboolean _gotk4_gstgl1_GLFilter_filter(GstGLFilter*, GstBuffer*, GstBuffer*);
+// extern gboolean _gotk4_gstgl1_GLFilter_filter_texture(GstGLFilter*, GstGLMemory*, GstGLMemory*);
+// extern gboolean _gotk4_gstgl1_GLFilter_init_fbo(GstGLFilter*);
+// extern gboolean _gotk4_gstgl1_GLFilter_set_caps(GstGLFilter*, GstCaps*, GstCaps*);
+// extern GstCaps* _gotk4_gstgl1_GLFilter_transform_internal_caps(GstGLFilter*, GstPadDirection, GstCaps*, GstCaps*);
+// gboolean _gotk4_gstgl1_GLFilter_virtual_filter(void* fnptr, GstGLFilter* carg0, GstBuffer* carg1, GstBuffer* carg2) {
+// 	return ((gboolean (*) (GstGLFilter*, GstBuffer*, GstBuffer*))(fnptr))(carg0, carg1, carg2);
 // }
-// C.gboolean _gotk4_gstgl1_GLFilter_virtual_filter_texture(void* fnptr, *C.GstGLFilter carg0, *C.GstGLMemory carg1, *C.GstGLMemory carg2) {
-// 	return ((C.gboolean (*) (*C.GstGLFilter, *C.GstGLMemory, *C.GstGLMemory))(fnptr))(carg0, carg1, carg2);
+// gboolean _gotk4_gstgl1_GLFilter_virtual_filter_texture(void* fnptr, GstGLFilter* carg0, GstGLMemory* carg1, GstGLMemory* carg2) {
+// 	return ((gboolean (*) (GstGLFilter*, GstGLMemory*, GstGLMemory*))(fnptr))(carg0, carg1, carg2);
 // }
-// C.gboolean _gotk4_gstgl1_GLFilter_virtual_init_fbo(void* fnptr, *C.GstGLFilter carg0) {
-// 	return ((C.gboolean (*) (*C.GstGLFilter))(fnptr))(carg0);
+// gboolean _gotk4_gstgl1_GLFilter_virtual_init_fbo(void* fnptr, GstGLFilter* carg0) {
+// 	return ((gboolean (*) (GstGLFilter*))(fnptr))(carg0);
 // }
-// C.gboolean _gotk4_gstgl1_GLFilter_virtual_set_caps(void* fnptr, *C.GstGLFilter carg0, *C.GstCaps carg1, *C.GstCaps carg2) {
-// 	return ((C.gboolean (*) (*C.GstGLFilter, *C.GstCaps, *C.GstCaps))(fnptr))(carg0, carg1, carg2);
+// gboolean _gotk4_gstgl1_GLFilter_virtual_set_caps(void* fnptr, GstGLFilter* carg0, GstCaps* carg1, GstCaps* carg2) {
+// 	return ((gboolean (*) (GstGLFilter*, GstCaps*, GstCaps*))(fnptr))(carg0, carg1, carg2);
 // }
-// *C.GstCaps _gotk4_gstgl1_GLFilter_virtual_transform_internal_caps(void* fnptr, *C.GstGLFilter carg0, C.GstPadDirection carg1, *C.GstCaps carg2, *C.GstCaps carg3) {
-// 	return ((*C.GstCaps (*) (*C.GstGLFilter, C.GstPadDirection, *C.GstCaps, *C.GstCaps))(fnptr))(carg0, carg1, carg2, carg3);
+// GstCaps* _gotk4_gstgl1_GLFilter_virtual_transform_internal_caps(void* fnptr, GstGLFilter* carg0, GstPadDirection carg1, GstCaps* carg2, GstCaps* carg3) {
+// 	return ((GstCaps* (*) (GstGLFilter*, GstPadDirection, GstCaps*, GstCaps*))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// extern C.gboolean _gotk4_gstgl1_GLMixer_process_buffers(*C.GstGLMixer, *C.GstBuffer);
-// extern C.gboolean _gotk4_gstgl1_GLMixer_process_textures(*C.GstGLMixer, *C.GstGLMemory);
-// C.gboolean _gotk4_gstgl1_GLMixer_virtual_process_buffers(void* fnptr, *C.GstGLMixer carg0, *C.GstBuffer carg1) {
-// 	return ((C.gboolean (*) (*C.GstGLMixer, *C.GstBuffer))(fnptr))(carg0, carg1);
+// extern gboolean _gotk4_gstgl1_GLMixer_process_buffers(GstGLMixer*, GstBuffer*);
+// extern gboolean _gotk4_gstgl1_GLMixer_process_textures(GstGLMixer*, GstGLMemory*);
+// gboolean _gotk4_gstgl1_GLMixer_virtual_process_buffers(void* fnptr, GstGLMixer* carg0, GstBuffer* carg1) {
+// 	return ((gboolean (*) (GstGLMixer*, GstBuffer*))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstgl1_GLMixer_virtual_process_textures(void* fnptr, *C.GstGLMixer carg0, *C.GstGLMemory carg1) {
-// 	return ((C.gboolean (*) (*C.GstGLMixer, *C.GstGLMemory))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gstgl1_GLMixer_virtual_process_textures(void* fnptr, GstGLMixer* carg0, GstGLMemory* carg1) {
+// 	return ((gboolean (*) (GstGLMixer*, GstGLMemory*))(fnptr))(carg0, carg1);
 // }
-// extern C.void _gotk4_gstgl1_GLWindow_close(*C.GstGLWindow);
-// extern C.gboolean _gotk4_gstgl1_GLWindow_controls_viewport(*C.GstGLWindow);
-// extern C.void _gotk4_gstgl1_GLWindow_draw(*C.GstGLWindow);
-// extern C.void _gotk4_gstgl1_GLWindow_handle_events(*C.GstGLWindow, C.gboolean);
-// extern C.gboolean _gotk4_gstgl1_GLWindow_has_output_surface(*C.GstGLWindow);
-// extern C.gboolean _gotk4_gstgl1_GLWindow_open(*C.GstGLWindow, GError*);
-// extern C.void _gotk4_gstgl1_GLWindow_queue_resize(*C.GstGLWindow);
-// extern C.void _gotk4_gstgl1_GLWindow_quit(*C.GstGLWindow);
-// extern C.void _gotk4_gstgl1_GLWindow_run(*C.GstGLWindow);
-// extern C.void _gotk4_gstgl1_GLWindow_set_preferred_size(*C.GstGLWindow, C.gint, C.gint);
-// extern C.gboolean _gotk4_gstgl1_GLWindow_set_render_rectangle(*C.GstGLWindow, C.gint, C.gint, C.gint, C.gint);
-// extern C.void _gotk4_gstgl1_GLWindow_show(*C.GstGLWindow);
-// C.void _gotk4_gstgl1_GLWindow_virtual_close(void* fnptr, *C.GstGLWindow carg0) {
-// 	return ((C.void (*) (*C.GstGLWindow))(fnptr))(carg0);
+// extern void _gotk4_gstgl1_GLWindow_close(GstGLWindow*);
+// extern gboolean _gotk4_gstgl1_GLWindow_controls_viewport(GstGLWindow*);
+// extern void _gotk4_gstgl1_GLWindow_draw(GstGLWindow*);
+// extern void _gotk4_gstgl1_GLWindow_handle_events(GstGLWindow*, gboolean);
+// extern gboolean _gotk4_gstgl1_GLWindow_has_output_surface(GstGLWindow*);
+// extern gboolean _gotk4_gstgl1_GLWindow_open(GstGLWindow*, GError*);
+// extern void _gotk4_gstgl1_GLWindow_queue_resize(GstGLWindow*);
+// extern void _gotk4_gstgl1_GLWindow_quit(GstGLWindow*);
+// extern void _gotk4_gstgl1_GLWindow_run(GstGLWindow*);
+// extern void _gotk4_gstgl1_GLWindow_set_preferred_size(GstGLWindow*, gint, gint);
+// extern gboolean _gotk4_gstgl1_GLWindow_set_render_rectangle(GstGLWindow*, gint, gint, gint, gint);
+// extern void _gotk4_gstgl1_GLWindow_show(GstGLWindow*);
+// void _gotk4_gstgl1_GLWindow_virtual_close(void* fnptr, GstGLWindow* carg0) {
+// 	return ((void (*) (GstGLWindow*))(fnptr))(carg0);
 // }
-// C.gboolean _gotk4_gstgl1_GLWindow_virtual_controls_viewport(void* fnptr, *C.GstGLWindow carg0) {
-// 	return ((C.gboolean (*) (*C.GstGLWindow))(fnptr))(carg0);
+// gboolean _gotk4_gstgl1_GLWindow_virtual_controls_viewport(void* fnptr, GstGLWindow* carg0) {
+// 	return ((gboolean (*) (GstGLWindow*))(fnptr))(carg0);
 // }
-// C.void _gotk4_gstgl1_GLWindow_virtual_draw(void* fnptr, *C.GstGLWindow carg0) {
-// 	return ((C.void (*) (*C.GstGLWindow))(fnptr))(carg0);
+// void _gotk4_gstgl1_GLWindow_virtual_draw(void* fnptr, GstGLWindow* carg0) {
+// 	return ((void (*) (GstGLWindow*))(fnptr))(carg0);
 // }
-// C.void _gotk4_gstgl1_GLWindow_virtual_handle_events(void* fnptr, *C.GstGLWindow carg0, C.gboolean carg1) {
-// 	return ((C.void (*) (*C.GstGLWindow, C.gboolean))(fnptr))(carg0, carg1);
+// void _gotk4_gstgl1_GLWindow_virtual_handle_events(void* fnptr, GstGLWindow* carg0, gboolean carg1) {
+// 	return ((void (*) (GstGLWindow*, gboolean))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstgl1_GLWindow_virtual_has_output_surface(void* fnptr, *C.GstGLWindow carg0) {
-// 	return ((C.gboolean (*) (*C.GstGLWindow))(fnptr))(carg0);
+// gboolean _gotk4_gstgl1_GLWindow_virtual_has_output_surface(void* fnptr, GstGLWindow* carg0) {
+// 	return ((gboolean (*) (GstGLWindow*))(fnptr))(carg0);
 // }
-// C.gboolean _gotk4_gstgl1_GLWindow_virtual_open(void* fnptr, *C.GstGLWindow carg0, GError** _cerr) {
-// 	return ((C.gboolean (*) (*C.GstGLWindow, GError**))(fnptr))(carg0, _cerr);
+// gboolean _gotk4_gstgl1_GLWindow_virtual_open(void* fnptr, GstGLWindow* carg0, GError** _cerr) {
+// 	return ((gboolean (*) (GstGLWindow*, GError**))(fnptr))(carg0, _cerr);
 // }
-// C.void _gotk4_gstgl1_GLWindow_virtual_queue_resize(void* fnptr, *C.GstGLWindow carg0) {
-// 	return ((C.void (*) (*C.GstGLWindow))(fnptr))(carg0);
+// void _gotk4_gstgl1_GLWindow_virtual_queue_resize(void* fnptr, GstGLWindow* carg0) {
+// 	return ((void (*) (GstGLWindow*))(fnptr))(carg0);
 // }
-// C.void _gotk4_gstgl1_GLWindow_virtual_quit(void* fnptr, *C.GstGLWindow carg0) {
-// 	return ((C.void (*) (*C.GstGLWindow))(fnptr))(carg0);
+// void _gotk4_gstgl1_GLWindow_virtual_quit(void* fnptr, GstGLWindow* carg0) {
+// 	return ((void (*) (GstGLWindow*))(fnptr))(carg0);
 // }
-// C.void _gotk4_gstgl1_GLWindow_virtual_run(void* fnptr, *C.GstGLWindow carg0) {
-// 	return ((C.void (*) (*C.GstGLWindow))(fnptr))(carg0);
+// void _gotk4_gstgl1_GLWindow_virtual_run(void* fnptr, GstGLWindow* carg0) {
+// 	return ((void (*) (GstGLWindow*))(fnptr))(carg0);
 // }
-// C.void _gotk4_gstgl1_GLWindow_virtual_set_preferred_size(void* fnptr, *C.GstGLWindow carg0, C.gint carg1, C.gint carg2) {
-// 	return ((C.void (*) (*C.GstGLWindow, C.gint, C.gint))(fnptr))(carg0, carg1, carg2);
+// void _gotk4_gstgl1_GLWindow_virtual_set_preferred_size(void* fnptr, GstGLWindow* carg0, gint carg1, gint carg2) {
+// 	return ((void (*) (GstGLWindow*, gint, gint))(fnptr))(carg0, carg1, carg2);
 // }
-// C.gboolean _gotk4_gstgl1_GLWindow_virtual_set_render_rectangle(void* fnptr, *C.GstGLWindow carg0, C.gint carg1, C.gint carg2, C.gint carg3, C.gint carg4) {
-// 	return ((C.gboolean (*) (*C.GstGLWindow, C.gint, C.gint, C.gint, C.gint))(fnptr))(carg0, carg1, carg2, carg3, carg4);
+// gboolean _gotk4_gstgl1_GLWindow_virtual_set_render_rectangle(void* fnptr, GstGLWindow* carg0, gint carg1, gint carg2, gint carg3, gint carg4) {
+// 	return ((gboolean (*) (GstGLWindow*, gint, gint, gint, gint))(fnptr))(carg0, carg1, carg2, carg3, carg4);
 // }
-// C.void _gotk4_gstgl1_GLWindow_virtual_show(void* fnptr, *C.GstGLWindow carg0) {
-// 	return ((C.void (*) (*C.GstGLWindow))(fnptr))(carg0);
+// void _gotk4_gstgl1_GLWindow_virtual_show(void* fnptr, GstGLWindow* carg0) {
+// 	return ((void (*) (GstGLWindow*))(fnptr))(carg0);
 // }
 import "C"
 
@@ -2632,7 +2632,7 @@ func GLSetAffineTransformationMetaFromNdc(meta *gstvideo.VideoAffineTransformati
 	carg1 = (*C.GstVideoAffineTransformationMeta)(gstvideo.UnsafeVideoAffineTransformationMetaToGlibNone(meta))
 	_ = matrix
 	_ = carg2
-	panic("unimplemented conversion of [16]float32 (*C.gfloat)")
+	panic("unimplemented conversion of [16]float32 (const gfloat*)")
 
 	C.gst_gl_set_affine_transformation_meta_from_ndc(carg1, carg2)
 	runtime.KeepAlive(meta)
@@ -9743,7 +9743,7 @@ func NewGLSLStageWithStrings(_context GLContext, typ uint, version GLSLVersion, 
 	_ = str
 	_ = carg6
 	_ = carg5
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (const gchar**)")
 
 	cret = C.gst_glsl_stage_new_with_strings(carg1, carg2, carg3, carg4, carg5, carg6)
 	runtime.KeepAlive(_context)
@@ -9899,7 +9899,7 @@ func (stage *GLSLStageInstance) SetStrings(version GLSLVersion, profile GLSLProf
 	_ = str
 	_ = carg4
 	_ = carg3
-	panic("unimplemented conversion of []string (**C.gchar)")
+	panic("unimplemented conversion of []string (const gchar**)")
 
 	cret = C.gst_glsl_stage_set_strings(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(stage)
@@ -10964,7 +10964,7 @@ func (shader *GLShaderInstance) SetUniform1Fv(name string, value []float32) {
 	_ = value
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []float32 (*C.gfloat)")
+	panic("unimplemented conversion of []float32 (const gfloat*)")
 
 	C.gst_gl_shader_set_uniform_1fv(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(shader)
@@ -11016,7 +11016,7 @@ func (shader *GLShaderInstance) SetUniform1Iv(name string, value []int32) {
 	_ = value
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []int32 (*C.gint)")
+	panic("unimplemented conversion of []int32 (const gint*)")
 
 	C.gst_gl_shader_set_uniform_1iv(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(shader)
@@ -11072,7 +11072,7 @@ func (shader *GLShaderInstance) SetUniform2Fv(name string, value []float32) {
 	_ = value
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []float32 (*C.gfloat)")
+	panic("unimplemented conversion of []float32 (const gfloat*)")
 
 	C.gst_gl_shader_set_uniform_2fv(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(shader)
@@ -11128,7 +11128,7 @@ func (shader *GLShaderInstance) SetUniform2Iv(name string, value []int32) {
 	_ = value
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []int32 (*C.gint)")
+	panic("unimplemented conversion of []int32 (const gint*)")
 
 	C.gst_gl_shader_set_uniform_2iv(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(shader)
@@ -11188,7 +11188,7 @@ func (shader *GLShaderInstance) SetUniform3Fv(name string, value []float32) {
 	_ = value
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []float32 (*C.gfloat)")
+	panic("unimplemented conversion of []float32 (const gfloat*)")
 
 	C.gst_gl_shader_set_uniform_3fv(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(shader)
@@ -11248,7 +11248,7 @@ func (shader *GLShaderInstance) SetUniform3Iv(name string, value []int32) {
 	_ = value
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []int32 (*C.gint)")
+	panic("unimplemented conversion of []int32 (const gint*)")
 
 	C.gst_gl_shader_set_uniform_3iv(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(shader)
@@ -11312,7 +11312,7 @@ func (shader *GLShaderInstance) SetUniform4Fv(name string, value []float32) {
 	_ = value
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []float32 (*C.gfloat)")
+	panic("unimplemented conversion of []float32 (const gfloat*)")
 
 	C.gst_gl_shader_set_uniform_4fv(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(shader)
@@ -11376,7 +11376,7 @@ func (shader *GLShaderInstance) SetUniform4Iv(name string, value []int32) {
 	_ = value
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []int32 (*C.gint)")
+	panic("unimplemented conversion of []int32 (const gint*)")
 
 	C.gst_gl_shader_set_uniform_4iv(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(shader)
@@ -11410,7 +11410,7 @@ func (shader *GLShaderInstance) SetUniformMatrix2Fv(name string, count int32, tr
 	}
 	_ = value
 	_ = carg4
-	panic("unimplemented conversion of *float32 (*C.gfloat)")
+	panic("unimplemented conversion of *float32 (const gfloat*)")
 
 	C.gst_gl_shader_set_uniform_matrix_2fv(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(shader)
@@ -11446,7 +11446,7 @@ func (shader *GLShaderInstance) SetUniformMatrix2X3Fv(name string, count int32, 
 	}
 	_ = value
 	_ = carg4
-	panic("unimplemented conversion of *float32 (*C.gfloat)")
+	panic("unimplemented conversion of *float32 (const gfloat*)")
 
 	C.gst_gl_shader_set_uniform_matrix_2x3fv(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(shader)
@@ -11482,7 +11482,7 @@ func (shader *GLShaderInstance) SetUniformMatrix2X4Fv(name string, count int32, 
 	}
 	_ = value
 	_ = carg4
-	panic("unimplemented conversion of *float32 (*C.gfloat)")
+	panic("unimplemented conversion of *float32 (const gfloat*)")
 
 	C.gst_gl_shader_set_uniform_matrix_2x4fv(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(shader)
@@ -11518,7 +11518,7 @@ func (shader *GLShaderInstance) SetUniformMatrix3Fv(name string, count int32, tr
 	}
 	_ = value
 	_ = carg4
-	panic("unimplemented conversion of *float32 (*C.gfloat)")
+	panic("unimplemented conversion of *float32 (const gfloat*)")
 
 	C.gst_gl_shader_set_uniform_matrix_3fv(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(shader)
@@ -11554,7 +11554,7 @@ func (shader *GLShaderInstance) SetUniformMatrix3X2Fv(name string, count int32, 
 	}
 	_ = value
 	_ = carg4
-	panic("unimplemented conversion of *float32 (*C.gfloat)")
+	panic("unimplemented conversion of *float32 (const gfloat*)")
 
 	C.gst_gl_shader_set_uniform_matrix_3x2fv(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(shader)
@@ -11590,7 +11590,7 @@ func (shader *GLShaderInstance) SetUniformMatrix3X4Fv(name string, count int32, 
 	}
 	_ = value
 	_ = carg4
-	panic("unimplemented conversion of *float32 (*C.gfloat)")
+	panic("unimplemented conversion of *float32 (const gfloat*)")
 
 	C.gst_gl_shader_set_uniform_matrix_3x4fv(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(shader)
@@ -11626,7 +11626,7 @@ func (shader *GLShaderInstance) SetUniformMatrix4Fv(name string, count int32, tr
 	}
 	_ = value
 	_ = carg4
-	panic("unimplemented conversion of *float32 (*C.gfloat)")
+	panic("unimplemented conversion of *float32 (const gfloat*)")
 
 	C.gst_gl_shader_set_uniform_matrix_4fv(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(shader)
@@ -11662,7 +11662,7 @@ func (shader *GLShaderInstance) SetUniformMatrix4X2Fv(name string, count int32, 
 	}
 	_ = value
 	_ = carg4
-	panic("unimplemented conversion of *float32 (*C.gfloat)")
+	panic("unimplemented conversion of *float32 (const gfloat*)")
 
 	C.gst_gl_shader_set_uniform_matrix_4x2fv(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(shader)
@@ -11698,7 +11698,7 @@ func (shader *GLShaderInstance) SetUniformMatrix4X3Fv(name string, count int32, 
 	}
 	_ = value
 	_ = carg4
-	panic("unimplemented conversion of *float32 (*C.gfloat)")
+	panic("unimplemented conversion of *float32 (const gfloat*)")
 
 	C.gst_gl_shader_set_uniform_matrix_4x3fv(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(shader)

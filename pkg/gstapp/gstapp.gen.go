@@ -16,61 +16,61 @@ import (
 // #cgo pkg-config: gstreamer-app-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/app/app.h>
-// extern C.void _gotk4_gstapp1_AppSink_eos(*C.GstAppSink);
-// extern C.GstFlowReturn _gotk4_gstapp1_AppSink_new_preroll(*C.GstAppSink);
-// extern C.GstFlowReturn _gotk4_gstapp1_AppSink_new_sample(*C.GstAppSink);
-// extern *C.GstSample _gotk4_gstapp1_AppSink_pull_preroll(*C.GstAppSink);
-// extern *C.GstSample _gotk4_gstapp1_AppSink_pull_sample(*C.GstAppSink);
-// extern *C.GstSample _gotk4_gstapp1_AppSink_try_pull_preroll(*C.GstAppSink, C.GstClockTime);
-// extern *C.GstSample _gotk4_gstapp1_AppSink_try_pull_sample(*C.GstAppSink, C.GstClockTime);
-// C.void _gotk4_gstapp1_AppSink_virtual_eos(void* fnptr, *C.GstAppSink carg0) {
-// 	return ((C.void (*) (*C.GstAppSink))(fnptr))(carg0);
+// extern void _gotk4_gstapp1_AppSink_eos(GstAppSink*);
+// extern GstFlowReturn _gotk4_gstapp1_AppSink_new_preroll(GstAppSink*);
+// extern GstFlowReturn _gotk4_gstapp1_AppSink_new_sample(GstAppSink*);
+// extern GstSample* _gotk4_gstapp1_AppSink_pull_preroll(GstAppSink*);
+// extern GstSample* _gotk4_gstapp1_AppSink_pull_sample(GstAppSink*);
+// extern GstSample* _gotk4_gstapp1_AppSink_try_pull_preroll(GstAppSink*, GstClockTime);
+// extern GstSample* _gotk4_gstapp1_AppSink_try_pull_sample(GstAppSink*, GstClockTime);
+// void _gotk4_gstapp1_AppSink_virtual_eos(void* fnptr, GstAppSink* carg0) {
+// 	return ((void (*) (GstAppSink*))(fnptr))(carg0);
 // }
-// C.GstFlowReturn _gotk4_gstapp1_AppSink_virtual_new_preroll(void* fnptr, *C.GstAppSink carg0) {
-// 	return ((C.GstFlowReturn (*) (*C.GstAppSink))(fnptr))(carg0);
+// GstFlowReturn _gotk4_gstapp1_AppSink_virtual_new_preroll(void* fnptr, GstAppSink* carg0) {
+// 	return ((GstFlowReturn (*) (GstAppSink*))(fnptr))(carg0);
 // }
-// C.GstFlowReturn _gotk4_gstapp1_AppSink_virtual_new_sample(void* fnptr, *C.GstAppSink carg0) {
-// 	return ((C.GstFlowReturn (*) (*C.GstAppSink))(fnptr))(carg0);
+// GstFlowReturn _gotk4_gstapp1_AppSink_virtual_new_sample(void* fnptr, GstAppSink* carg0) {
+// 	return ((GstFlowReturn (*) (GstAppSink*))(fnptr))(carg0);
 // }
-// *C.GstSample _gotk4_gstapp1_AppSink_virtual_pull_preroll(void* fnptr, *C.GstAppSink carg0) {
-// 	return ((*C.GstSample (*) (*C.GstAppSink))(fnptr))(carg0);
+// GstSample* _gotk4_gstapp1_AppSink_virtual_pull_preroll(void* fnptr, GstAppSink* carg0) {
+// 	return ((GstSample* (*) (GstAppSink*))(fnptr))(carg0);
 // }
-// *C.GstSample _gotk4_gstapp1_AppSink_virtual_pull_sample(void* fnptr, *C.GstAppSink carg0) {
-// 	return ((*C.GstSample (*) (*C.GstAppSink))(fnptr))(carg0);
+// GstSample* _gotk4_gstapp1_AppSink_virtual_pull_sample(void* fnptr, GstAppSink* carg0) {
+// 	return ((GstSample* (*) (GstAppSink*))(fnptr))(carg0);
 // }
-// *C.GstSample _gotk4_gstapp1_AppSink_virtual_try_pull_preroll(void* fnptr, *C.GstAppSink carg0, C.GstClockTime carg1) {
-// 	return ((*C.GstSample (*) (*C.GstAppSink, C.GstClockTime))(fnptr))(carg0, carg1);
+// GstSample* _gotk4_gstapp1_AppSink_virtual_try_pull_preroll(void* fnptr, GstAppSink* carg0, GstClockTime carg1) {
+// 	return ((GstSample* (*) (GstAppSink*, GstClockTime))(fnptr))(carg0, carg1);
 // }
-// *C.GstSample _gotk4_gstapp1_AppSink_virtual_try_pull_sample(void* fnptr, *C.GstAppSink carg0, C.GstClockTime carg1) {
-// 	return ((*C.GstSample (*) (*C.GstAppSink, C.GstClockTime))(fnptr))(carg0, carg1);
+// GstSample* _gotk4_gstapp1_AppSink_virtual_try_pull_sample(void* fnptr, GstAppSink* carg0, GstClockTime carg1) {
+// 	return ((GstSample* (*) (GstAppSink*, GstClockTime))(fnptr))(carg0, carg1);
 // }
-// extern C.GstFlowReturn _gotk4_gstapp1_AppSrc_end_of_stream(*C.GstAppSrc);
-// extern C.void _gotk4_gstapp1_AppSrc_enough_data(*C.GstAppSrc);
-// extern C.void _gotk4_gstapp1_AppSrc_need_data(*C.GstAppSrc, C.guint);
-// extern C.GstFlowReturn _gotk4_gstapp1_AppSrc_push_buffer(*C.GstAppSrc, *C.GstBuffer);
-// extern C.GstFlowReturn _gotk4_gstapp1_AppSrc_push_buffer_list(*C.GstAppSrc, *C.GstBufferList);
-// extern C.GstFlowReturn _gotk4_gstapp1_AppSrc_push_sample(*C.GstAppSrc, *C.GstSample);
-// extern C.gboolean _gotk4_gstapp1_AppSrc_seek_data(*C.GstAppSrc, C.guint64);
-// C.GstFlowReturn _gotk4_gstapp1_AppSrc_virtual_end_of_stream(void* fnptr, *C.GstAppSrc carg0) {
-// 	return ((C.GstFlowReturn (*) (*C.GstAppSrc))(fnptr))(carg0);
+// extern GstFlowReturn _gotk4_gstapp1_AppSrc_end_of_stream(GstAppSrc*);
+// extern void _gotk4_gstapp1_AppSrc_enough_data(GstAppSrc*);
+// extern void _gotk4_gstapp1_AppSrc_need_data(GstAppSrc*, guint);
+// extern GstFlowReturn _gotk4_gstapp1_AppSrc_push_buffer(GstAppSrc*, GstBuffer*);
+// extern GstFlowReturn _gotk4_gstapp1_AppSrc_push_buffer_list(GstAppSrc*, GstBufferList*);
+// extern GstFlowReturn _gotk4_gstapp1_AppSrc_push_sample(GstAppSrc*, GstSample*);
+// extern gboolean _gotk4_gstapp1_AppSrc_seek_data(GstAppSrc*, guint64);
+// GstFlowReturn _gotk4_gstapp1_AppSrc_virtual_end_of_stream(void* fnptr, GstAppSrc* carg0) {
+// 	return ((GstFlowReturn (*) (GstAppSrc*))(fnptr))(carg0);
 // }
-// C.void _gotk4_gstapp1_AppSrc_virtual_enough_data(void* fnptr, *C.GstAppSrc carg0) {
-// 	return ((C.void (*) (*C.GstAppSrc))(fnptr))(carg0);
+// void _gotk4_gstapp1_AppSrc_virtual_enough_data(void* fnptr, GstAppSrc* carg0) {
+// 	return ((void (*) (GstAppSrc*))(fnptr))(carg0);
 // }
-// C.void _gotk4_gstapp1_AppSrc_virtual_need_data(void* fnptr, *C.GstAppSrc carg0, C.guint carg1) {
-// 	return ((C.void (*) (*C.GstAppSrc, C.guint))(fnptr))(carg0, carg1);
+// void _gotk4_gstapp1_AppSrc_virtual_need_data(void* fnptr, GstAppSrc* carg0, guint carg1) {
+// 	return ((void (*) (GstAppSrc*, guint))(fnptr))(carg0, carg1);
 // }
-// C.GstFlowReturn _gotk4_gstapp1_AppSrc_virtual_push_buffer(void* fnptr, *C.GstAppSrc carg0, *C.GstBuffer carg1) {
-// 	return ((C.GstFlowReturn (*) (*C.GstAppSrc, *C.GstBuffer))(fnptr))(carg0, carg1);
+// GstFlowReturn _gotk4_gstapp1_AppSrc_virtual_push_buffer(void* fnptr, GstAppSrc* carg0, GstBuffer* carg1) {
+// 	return ((GstFlowReturn (*) (GstAppSrc*, GstBuffer*))(fnptr))(carg0, carg1);
 // }
-// C.GstFlowReturn _gotk4_gstapp1_AppSrc_virtual_push_buffer_list(void* fnptr, *C.GstAppSrc carg0, *C.GstBufferList carg1) {
-// 	return ((C.GstFlowReturn (*) (*C.GstAppSrc, *C.GstBufferList))(fnptr))(carg0, carg1);
+// GstFlowReturn _gotk4_gstapp1_AppSrc_virtual_push_buffer_list(void* fnptr, GstAppSrc* carg0, GstBufferList* carg1) {
+// 	return ((GstFlowReturn (*) (GstAppSrc*, GstBufferList*))(fnptr))(carg0, carg1);
 // }
-// C.GstFlowReturn _gotk4_gstapp1_AppSrc_virtual_push_sample(void* fnptr, *C.GstAppSrc carg0, *C.GstSample carg1) {
-// 	return ((C.GstFlowReturn (*) (*C.GstAppSrc, *C.GstSample))(fnptr))(carg0, carg1);
+// GstFlowReturn _gotk4_gstapp1_AppSrc_virtual_push_sample(void* fnptr, GstAppSrc* carg0, GstSample* carg1) {
+// 	return ((GstFlowReturn (*) (GstAppSrc*, GstSample*))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstapp1_AppSrc_virtual_seek_data(void* fnptr, *C.GstAppSrc carg0, C.guint64 carg1) {
-// 	return ((C.gboolean (*) (*C.GstAppSrc, C.guint64))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gstapp1_AppSrc_virtual_seek_data(void* fnptr, GstAppSrc* carg0, guint64 carg1) {
+// 	return ((gboolean (*) (GstAppSrc*, guint64))(fnptr))(carg0, carg1);
 // }
 import "C"
 

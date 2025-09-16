@@ -18,289 +18,289 @@ import (
 // #cgo pkg-config: gstreamer-audio-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/audio/audio.h>
-// extern C.GstClockTime _gotk4_gstaudio1_AudioClockGetTimeFunc(*C.GstClock, C.gpointer);
-// extern C.void _gotk4_gstaudio1_AudioBaseSinkCustomSlavingCallback(*C.GstAudioBaseSink, C.GstClockTime, C.GstClockTime, *C.GstClockTimeDiff, C.GstAudioBaseSinkDiscontReason, C.gpointer);
-// extern C.void _gotk4_gstaudio1_AudioRingBufferCallback(*C.GstAudioRingBuffer, *C.guint8, C.guint, C.gpointer);
+// extern GstClockTime _gotk4_gstaudio1_AudioClockGetTimeFunc(GstClock*, gpointer);
+// extern void _gotk4_gstaudio1_AudioBaseSinkCustomSlavingCallback(GstAudioBaseSink*, GstClockTime, GstClockTime, GstClockTimeDiff*, GstAudioBaseSinkDiscontReason, gpointer);
+// extern void _gotk4_gstaudio1_AudioRingBufferCallback(GstAudioRingBuffer*, guint8*, guint, gpointer);
 // extern void destroyUserdata(gpointer);
-// extern C.gboolean _gotk4_gstaudio1_AudioAggregator_aggregate_one_buffer(*C.GstAudioAggregator, *C.GstAudioAggregatorPad, *C.GstBuffer, C.guint, *C.GstBuffer, C.guint, C.guint);
-// extern *C.GstBuffer _gotk4_gstaudio1_AudioAggregator_create_output_buffer(*C.GstAudioAggregator, C.guint);
-// C.gboolean _gotk4_gstaudio1_AudioAggregator_virtual_aggregate_one_buffer(void* fnptr, *C.GstAudioAggregator carg0, *C.GstAudioAggregatorPad carg1, *C.GstBuffer carg2, C.guint carg3, *C.GstBuffer carg4, C.guint carg5, C.guint carg6) {
-// 	return ((C.gboolean (*) (*C.GstAudioAggregator, *C.GstAudioAggregatorPad, *C.GstBuffer, C.guint, *C.GstBuffer, C.guint, C.guint))(fnptr))(carg0, carg1, carg2, carg3, carg4, carg5, carg6);
-// }
-// *C.GstBuffer _gotk4_gstaudio1_AudioAggregator_virtual_create_output_buffer(void* fnptr, *C.GstAudioAggregator carg0, C.guint carg1) {
-// 	return ((*C.GstBuffer (*) (*C.GstAudioAggregator, C.guint))(fnptr))(carg0, carg1);
-// }
-// extern *C.GstBuffer _gotk4_gstaudio1_AudioAggregatorPad_convert_buffer(*C.GstAudioAggregatorPad, *C.GstAudioInfo, *C.GstAudioInfo, *C.GstBuffer);
-// extern C.void _gotk4_gstaudio1_AudioAggregatorPad_update_conversion_info(*C.GstAudioAggregatorPad);
-// *C.GstBuffer _gotk4_gstaudio1_AudioAggregatorPad_virtual_convert_buffer(void* fnptr, *C.GstAudioAggregatorPad carg0, *C.GstAudioInfo carg1, *C.GstAudioInfo carg2, *C.GstBuffer carg3) {
-// 	return ((*C.GstBuffer (*) (*C.GstAudioAggregatorPad, *C.GstAudioInfo, *C.GstAudioInfo, *C.GstBuffer))(fnptr))(carg0, carg1, carg2, carg3);
-// }
-// C.void _gotk4_gstaudio1_AudioAggregatorPad_virtual_update_conversion_info(void* fnptr, *C.GstAudioAggregatorPad carg0) {
-// 	return ((C.void (*) (*C.GstAudioAggregatorPad))(fnptr))(carg0);
-// }
-// extern *C.GstAudioRingBuffer _gotk4_gstaudio1_AudioBaseSink_create_ringbuffer(*C.GstAudioBaseSink);
-// extern *C.GstBuffer _gotk4_gstaudio1_AudioBaseSink_payload(*C.GstAudioBaseSink, *C.GstBuffer);
-// *C.GstAudioRingBuffer _gotk4_gstaudio1_AudioBaseSink_virtual_create_ringbuffer(void* fnptr, *C.GstAudioBaseSink carg0) {
-// 	return ((*C.GstAudioRingBuffer (*) (*C.GstAudioBaseSink))(fnptr))(carg0);
-// }
-// *C.GstBuffer _gotk4_gstaudio1_AudioBaseSink_virtual_payload(void* fnptr, *C.GstAudioBaseSink carg0, *C.GstBuffer carg1) {
-// 	return ((*C.GstBuffer (*) (*C.GstAudioBaseSink, *C.GstBuffer))(fnptr))(carg0, carg1);
-// }
-// extern *C.GstAudioRingBuffer _gotk4_gstaudio1_AudioBaseSrc_create_ringbuffer(*C.GstAudioBaseSrc);
-// *C.GstAudioRingBuffer _gotk4_gstaudio1_AudioBaseSrc_virtual_create_ringbuffer(void* fnptr, *C.GstAudioBaseSrc carg0) {
-// 	return ((*C.GstAudioRingBuffer (*) (*C.GstAudioBaseSrc))(fnptr))(carg0);
-// }
-// extern C.void _gotk4_gstaudio1_AudioCdSrc_close(*C.GstAudioCdSrc);
-// extern C.gboolean _gotk4_gstaudio1_AudioCdSrc_open(*C.GstAudioCdSrc, *C.gchar);
-// extern *C.GstBuffer _gotk4_gstaudio1_AudioCdSrc_read_sector(*C.GstAudioCdSrc, C.gint);
-// C.void _gotk4_gstaudio1_AudioCdSrc_virtual_close(void* fnptr, *C.GstAudioCdSrc carg0) {
-// 	return ((C.void (*) (*C.GstAudioCdSrc))(fnptr))(carg0);
-// }
-// C.gboolean _gotk4_gstaudio1_AudioCdSrc_virtual_open(void* fnptr, *C.GstAudioCdSrc carg0, *C.gchar carg1) {
-// 	return ((C.gboolean (*) (*C.GstAudioCdSrc, *C.gchar))(fnptr))(carg0, carg1);
-// }
-// *C.GstBuffer _gotk4_gstaudio1_AudioCdSrc_virtual_read_sector(void* fnptr, *C.GstAudioCdSrc carg0, C.gint carg1) {
-// 	return ((*C.GstBuffer (*) (*C.GstAudioCdSrc, C.gint))(fnptr))(carg0, carg1);
-// }
-// extern C.gboolean _gotk4_gstaudio1_AudioDecoder_close(*C.GstAudioDecoder);
-// extern C.gboolean _gotk4_gstaudio1_AudioDecoder_decide_allocation(*C.GstAudioDecoder, *C.GstQuery);
-// extern C.void _gotk4_gstaudio1_AudioDecoder_flush(*C.GstAudioDecoder, C.gboolean);
-// extern *C.GstCaps _gotk4_gstaudio1_AudioDecoder_getcaps(*C.GstAudioDecoder, *C.GstCaps);
-// extern C.GstFlowReturn _gotk4_gstaudio1_AudioDecoder_handle_frame(*C.GstAudioDecoder, *C.GstBuffer);
-// extern C.gboolean _gotk4_gstaudio1_AudioDecoder_negotiate(*C.GstAudioDecoder);
-// extern C.gboolean _gotk4_gstaudio1_AudioDecoder_open(*C.GstAudioDecoder);
-// extern C.GstFlowReturn _gotk4_gstaudio1_AudioDecoder_parse(*C.GstAudioDecoder, *C.GstAdapter, C.gint, C.gint);
-// extern C.gboolean _gotk4_gstaudio1_AudioDecoder_propose_allocation(*C.GstAudioDecoder, *C.GstQuery);
-// extern C.gboolean _gotk4_gstaudio1_AudioDecoder_set_format(*C.GstAudioDecoder, *C.GstCaps);
-// extern C.gboolean _gotk4_gstaudio1_AudioDecoder_sink_event(*C.GstAudioDecoder, *C.GstEvent);
-// extern C.gboolean _gotk4_gstaudio1_AudioDecoder_sink_query(*C.GstAudioDecoder, *C.GstQuery);
-// extern C.gboolean _gotk4_gstaudio1_AudioDecoder_src_event(*C.GstAudioDecoder, *C.GstEvent);
-// extern C.gboolean _gotk4_gstaudio1_AudioDecoder_src_query(*C.GstAudioDecoder, *C.GstQuery);
-// extern C.gboolean _gotk4_gstaudio1_AudioDecoder_start(*C.GstAudioDecoder);
-// extern C.gboolean _gotk4_gstaudio1_AudioDecoder_stop(*C.GstAudioDecoder);
-// extern C.gboolean _gotk4_gstaudio1_AudioDecoder_transform_meta(*C.GstAudioDecoder, *C.GstBuffer, *C.GstMeta, *C.GstBuffer);
-// C.gboolean _gotk4_gstaudio1_AudioDecoder_virtual_close(void* fnptr, *C.GstAudioDecoder carg0) {
-// 	return ((C.gboolean (*) (*C.GstAudioDecoder))(fnptr))(carg0);
-// }
-// C.gboolean _gotk4_gstaudio1_AudioDecoder_virtual_decide_allocation(void* fnptr, *C.GstAudioDecoder carg0, *C.GstQuery carg1) {
-// 	return ((C.gboolean (*) (*C.GstAudioDecoder, *C.GstQuery))(fnptr))(carg0, carg1);
-// }
-// C.void _gotk4_gstaudio1_AudioDecoder_virtual_flush(void* fnptr, *C.GstAudioDecoder carg0, C.gboolean carg1) {
-// 	return ((C.void (*) (*C.GstAudioDecoder, C.gboolean))(fnptr))(carg0, carg1);
-// }
-// *C.GstCaps _gotk4_gstaudio1_AudioDecoder_virtual_getcaps(void* fnptr, *C.GstAudioDecoder carg0, *C.GstCaps carg1) {
-// 	return ((*C.GstCaps (*) (*C.GstAudioDecoder, *C.GstCaps))(fnptr))(carg0, carg1);
-// }
-// C.GstFlowReturn _gotk4_gstaudio1_AudioDecoder_virtual_handle_frame(void* fnptr, *C.GstAudioDecoder carg0, *C.GstBuffer carg1) {
-// 	return ((C.GstFlowReturn (*) (*C.GstAudioDecoder, *C.GstBuffer))(fnptr))(carg0, carg1);
-// }
-// C.gboolean _gotk4_gstaudio1_AudioDecoder_virtual_negotiate(void* fnptr, *C.GstAudioDecoder carg0) {
-// 	return ((C.gboolean (*) (*C.GstAudioDecoder))(fnptr))(carg0);
-// }
-// C.gboolean _gotk4_gstaudio1_AudioDecoder_virtual_open(void* fnptr, *C.GstAudioDecoder carg0) {
-// 	return ((C.gboolean (*) (*C.GstAudioDecoder))(fnptr))(carg0);
-// }
-// C.GstFlowReturn _gotk4_gstaudio1_AudioDecoder_virtual_parse(void* fnptr, *C.GstAudioDecoder carg0, *C.GstAdapter carg1, C.gint* carg2, C.gint* carg3) {
-// 	return ((C.GstFlowReturn (*) (*C.GstAudioDecoder, *C.GstAdapter, C.gint*, C.gint*))(fnptr))(carg0, carg1, carg2, carg3);
-// }
-// C.gboolean _gotk4_gstaudio1_AudioDecoder_virtual_propose_allocation(void* fnptr, *C.GstAudioDecoder carg0, *C.GstQuery carg1) {
-// 	return ((C.gboolean (*) (*C.GstAudioDecoder, *C.GstQuery))(fnptr))(carg0, carg1);
-// }
-// C.gboolean _gotk4_gstaudio1_AudioDecoder_virtual_set_format(void* fnptr, *C.GstAudioDecoder carg0, *C.GstCaps carg1) {
-// 	return ((C.gboolean (*) (*C.GstAudioDecoder, *C.GstCaps))(fnptr))(carg0, carg1);
-// }
-// C.gboolean _gotk4_gstaudio1_AudioDecoder_virtual_sink_event(void* fnptr, *C.GstAudioDecoder carg0, *C.GstEvent carg1) {
-// 	return ((C.gboolean (*) (*C.GstAudioDecoder, *C.GstEvent))(fnptr))(carg0, carg1);
-// }
-// C.gboolean _gotk4_gstaudio1_AudioDecoder_virtual_sink_query(void* fnptr, *C.GstAudioDecoder carg0, *C.GstQuery carg1) {
-// 	return ((C.gboolean (*) (*C.GstAudioDecoder, *C.GstQuery))(fnptr))(carg0, carg1);
-// }
-// C.gboolean _gotk4_gstaudio1_AudioDecoder_virtual_src_event(void* fnptr, *C.GstAudioDecoder carg0, *C.GstEvent carg1) {
-// 	return ((C.gboolean (*) (*C.GstAudioDecoder, *C.GstEvent))(fnptr))(carg0, carg1);
-// }
-// C.gboolean _gotk4_gstaudio1_AudioDecoder_virtual_src_query(void* fnptr, *C.GstAudioDecoder carg0, *C.GstQuery carg1) {
-// 	return ((C.gboolean (*) (*C.GstAudioDecoder, *C.GstQuery))(fnptr))(carg0, carg1);
-// }
-// C.gboolean _gotk4_gstaudio1_AudioDecoder_virtual_start(void* fnptr, *C.GstAudioDecoder carg0) {
-// 	return ((C.gboolean (*) (*C.GstAudioDecoder))(fnptr))(carg0);
-// }
-// C.gboolean _gotk4_gstaudio1_AudioDecoder_virtual_stop(void* fnptr, *C.GstAudioDecoder carg0) {
-// 	return ((C.gboolean (*) (*C.GstAudioDecoder))(fnptr))(carg0);
-// }
-// C.gboolean _gotk4_gstaudio1_AudioDecoder_virtual_transform_meta(void* fnptr, *C.GstAudioDecoder carg0, *C.GstBuffer carg1, *C.GstMeta carg2, *C.GstBuffer carg3) {
-// 	return ((C.gboolean (*) (*C.GstAudioDecoder, *C.GstBuffer, *C.GstMeta, *C.GstBuffer))(fnptr))(carg0, carg1, carg2, carg3);
-// }
-// extern C.gboolean _gotk4_gstaudio1_AudioEncoder_close(*C.GstAudioEncoder);
-// extern C.gboolean _gotk4_gstaudio1_AudioEncoder_decide_allocation(*C.GstAudioEncoder, *C.GstQuery);
-// extern C.void _gotk4_gstaudio1_AudioEncoder_flush(*C.GstAudioEncoder);
-// extern *C.GstCaps _gotk4_gstaudio1_AudioEncoder_getcaps(*C.GstAudioEncoder, *C.GstCaps);
-// extern C.GstFlowReturn _gotk4_gstaudio1_AudioEncoder_handle_frame(*C.GstAudioEncoder, *C.GstBuffer);
-// extern C.gboolean _gotk4_gstaudio1_AudioEncoder_negotiate(*C.GstAudioEncoder);
-// extern C.gboolean _gotk4_gstaudio1_AudioEncoder_open(*C.GstAudioEncoder);
-// extern C.gboolean _gotk4_gstaudio1_AudioEncoder_propose_allocation(*C.GstAudioEncoder, *C.GstQuery);
-// extern C.gboolean _gotk4_gstaudio1_AudioEncoder_set_format(*C.GstAudioEncoder, *C.GstAudioInfo);
-// extern C.gboolean _gotk4_gstaudio1_AudioEncoder_sink_event(*C.GstAudioEncoder, *C.GstEvent);
-// extern C.gboolean _gotk4_gstaudio1_AudioEncoder_sink_query(*C.GstAudioEncoder, *C.GstQuery);
-// extern C.gboolean _gotk4_gstaudio1_AudioEncoder_src_event(*C.GstAudioEncoder, *C.GstEvent);
-// extern C.gboolean _gotk4_gstaudio1_AudioEncoder_src_query(*C.GstAudioEncoder, *C.GstQuery);
-// extern C.gboolean _gotk4_gstaudio1_AudioEncoder_start(*C.GstAudioEncoder);
-// extern C.gboolean _gotk4_gstaudio1_AudioEncoder_stop(*C.GstAudioEncoder);
-// extern C.gboolean _gotk4_gstaudio1_AudioEncoder_transform_meta(*C.GstAudioEncoder, *C.GstBuffer, *C.GstMeta, *C.GstBuffer);
-// C.gboolean _gotk4_gstaudio1_AudioEncoder_virtual_close(void* fnptr, *C.GstAudioEncoder carg0) {
-// 	return ((C.gboolean (*) (*C.GstAudioEncoder))(fnptr))(carg0);
-// }
-// C.gboolean _gotk4_gstaudio1_AudioEncoder_virtual_decide_allocation(void* fnptr, *C.GstAudioEncoder carg0, *C.GstQuery carg1) {
-// 	return ((C.gboolean (*) (*C.GstAudioEncoder, *C.GstQuery))(fnptr))(carg0, carg1);
-// }
-// C.void _gotk4_gstaudio1_AudioEncoder_virtual_flush(void* fnptr, *C.GstAudioEncoder carg0) {
-// 	return ((C.void (*) (*C.GstAudioEncoder))(fnptr))(carg0);
-// }
-// *C.GstCaps _gotk4_gstaudio1_AudioEncoder_virtual_getcaps(void* fnptr, *C.GstAudioEncoder carg0, *C.GstCaps carg1) {
-// 	return ((*C.GstCaps (*) (*C.GstAudioEncoder, *C.GstCaps))(fnptr))(carg0, carg1);
-// }
-// C.GstFlowReturn _gotk4_gstaudio1_AudioEncoder_virtual_handle_frame(void* fnptr, *C.GstAudioEncoder carg0, *C.GstBuffer carg1) {
-// 	return ((C.GstFlowReturn (*) (*C.GstAudioEncoder, *C.GstBuffer))(fnptr))(carg0, carg1);
-// }
-// C.gboolean _gotk4_gstaudio1_AudioEncoder_virtual_negotiate(void* fnptr, *C.GstAudioEncoder carg0) {
-// 	return ((C.gboolean (*) (*C.GstAudioEncoder))(fnptr))(carg0);
-// }
-// C.gboolean _gotk4_gstaudio1_AudioEncoder_virtual_open(void* fnptr, *C.GstAudioEncoder carg0) {
-// 	return ((C.gboolean (*) (*C.GstAudioEncoder))(fnptr))(carg0);
+// extern gboolean _gotk4_gstaudio1_AudioAggregator_aggregate_one_buffer(GstAudioAggregator*, GstAudioAggregatorPad*, GstBuffer*, guint, GstBuffer*, guint, guint);
+// extern GstBuffer* _gotk4_gstaudio1_AudioAggregator_create_output_buffer(GstAudioAggregator*, guint);
+// gboolean _gotk4_gstaudio1_AudioAggregator_virtual_aggregate_one_buffer(void* fnptr, GstAudioAggregator* carg0, GstAudioAggregatorPad* carg1, GstBuffer* carg2, guint carg3, GstBuffer* carg4, guint carg5, guint carg6) {
+// 	return ((gboolean (*) (GstAudioAggregator*, GstAudioAggregatorPad*, GstBuffer*, guint, GstBuffer*, guint, guint))(fnptr))(carg0, carg1, carg2, carg3, carg4, carg5, carg6);
+// }
+// GstBuffer* _gotk4_gstaudio1_AudioAggregator_virtual_create_output_buffer(void* fnptr, GstAudioAggregator* carg0, guint carg1) {
+// 	return ((GstBuffer* (*) (GstAudioAggregator*, guint))(fnptr))(carg0, carg1);
+// }
+// extern GstBuffer* _gotk4_gstaudio1_AudioAggregatorPad_convert_buffer(GstAudioAggregatorPad*, GstAudioInfo*, GstAudioInfo*, GstBuffer*);
+// extern void _gotk4_gstaudio1_AudioAggregatorPad_update_conversion_info(GstAudioAggregatorPad*);
+// GstBuffer* _gotk4_gstaudio1_AudioAggregatorPad_virtual_convert_buffer(void* fnptr, GstAudioAggregatorPad* carg0, GstAudioInfo* carg1, GstAudioInfo* carg2, GstBuffer* carg3) {
+// 	return ((GstBuffer* (*) (GstAudioAggregatorPad*, GstAudioInfo*, GstAudioInfo*, GstBuffer*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// void _gotk4_gstaudio1_AudioAggregatorPad_virtual_update_conversion_info(void* fnptr, GstAudioAggregatorPad* carg0) {
+// 	return ((void (*) (GstAudioAggregatorPad*))(fnptr))(carg0);
+// }
+// extern GstAudioRingBuffer* _gotk4_gstaudio1_AudioBaseSink_create_ringbuffer(GstAudioBaseSink*);
+// extern GstBuffer* _gotk4_gstaudio1_AudioBaseSink_payload(GstAudioBaseSink*, GstBuffer*);
+// GstAudioRingBuffer* _gotk4_gstaudio1_AudioBaseSink_virtual_create_ringbuffer(void* fnptr, GstAudioBaseSink* carg0) {
+// 	return ((GstAudioRingBuffer* (*) (GstAudioBaseSink*))(fnptr))(carg0);
+// }
+// GstBuffer* _gotk4_gstaudio1_AudioBaseSink_virtual_payload(void* fnptr, GstAudioBaseSink* carg0, GstBuffer* carg1) {
+// 	return ((GstBuffer* (*) (GstAudioBaseSink*, GstBuffer*))(fnptr))(carg0, carg1);
+// }
+// extern GstAudioRingBuffer* _gotk4_gstaudio1_AudioBaseSrc_create_ringbuffer(GstAudioBaseSrc*);
+// GstAudioRingBuffer* _gotk4_gstaudio1_AudioBaseSrc_virtual_create_ringbuffer(void* fnptr, GstAudioBaseSrc* carg0) {
+// 	return ((GstAudioRingBuffer* (*) (GstAudioBaseSrc*))(fnptr))(carg0);
+// }
+// extern void _gotk4_gstaudio1_AudioCdSrc_close(GstAudioCdSrc*);
+// extern gboolean _gotk4_gstaudio1_AudioCdSrc_open(GstAudioCdSrc*, const gchar*);
+// extern GstBuffer* _gotk4_gstaudio1_AudioCdSrc_read_sector(GstAudioCdSrc*, gint);
+// void _gotk4_gstaudio1_AudioCdSrc_virtual_close(void* fnptr, GstAudioCdSrc* carg0) {
+// 	return ((void (*) (GstAudioCdSrc*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstaudio1_AudioCdSrc_virtual_open(void* fnptr, GstAudioCdSrc* carg0, const gchar* carg1) {
+// 	return ((gboolean (*) (GstAudioCdSrc*, const gchar*))(fnptr))(carg0, carg1);
+// }
+// GstBuffer* _gotk4_gstaudio1_AudioCdSrc_virtual_read_sector(void* fnptr, GstAudioCdSrc* carg0, gint carg1) {
+// 	return ((GstBuffer* (*) (GstAudioCdSrc*, gint))(fnptr))(carg0, carg1);
+// }
+// extern gboolean _gotk4_gstaudio1_AudioDecoder_close(GstAudioDecoder*);
+// extern gboolean _gotk4_gstaudio1_AudioDecoder_decide_allocation(GstAudioDecoder*, GstQuery*);
+// extern void _gotk4_gstaudio1_AudioDecoder_flush(GstAudioDecoder*, gboolean);
+// extern GstCaps* _gotk4_gstaudio1_AudioDecoder_getcaps(GstAudioDecoder*, GstCaps*);
+// extern GstFlowReturn _gotk4_gstaudio1_AudioDecoder_handle_frame(GstAudioDecoder*, GstBuffer*);
+// extern gboolean _gotk4_gstaudio1_AudioDecoder_negotiate(GstAudioDecoder*);
+// extern gboolean _gotk4_gstaudio1_AudioDecoder_open(GstAudioDecoder*);
+// extern GstFlowReturn _gotk4_gstaudio1_AudioDecoder_parse(GstAudioDecoder*, GstAdapter*, gint, gint);
+// extern gboolean _gotk4_gstaudio1_AudioDecoder_propose_allocation(GstAudioDecoder*, GstQuery*);
+// extern gboolean _gotk4_gstaudio1_AudioDecoder_set_format(GstAudioDecoder*, GstCaps*);
+// extern gboolean _gotk4_gstaudio1_AudioDecoder_sink_event(GstAudioDecoder*, GstEvent*);
+// extern gboolean _gotk4_gstaudio1_AudioDecoder_sink_query(GstAudioDecoder*, GstQuery*);
+// extern gboolean _gotk4_gstaudio1_AudioDecoder_src_event(GstAudioDecoder*, GstEvent*);
+// extern gboolean _gotk4_gstaudio1_AudioDecoder_src_query(GstAudioDecoder*, GstQuery*);
+// extern gboolean _gotk4_gstaudio1_AudioDecoder_start(GstAudioDecoder*);
+// extern gboolean _gotk4_gstaudio1_AudioDecoder_stop(GstAudioDecoder*);
+// extern gboolean _gotk4_gstaudio1_AudioDecoder_transform_meta(GstAudioDecoder*, GstBuffer*, GstMeta*, GstBuffer*);
+// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_close(void* fnptr, GstAudioDecoder* carg0) {
+// 	return ((gboolean (*) (GstAudioDecoder*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_decide_allocation(void* fnptr, GstAudioDecoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstAudioDecoder*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gstaudio1_AudioDecoder_virtual_flush(void* fnptr, GstAudioDecoder* carg0, gboolean carg1) {
+// 	return ((void (*) (GstAudioDecoder*, gboolean))(fnptr))(carg0, carg1);
+// }
+// GstCaps* _gotk4_gstaudio1_AudioDecoder_virtual_getcaps(void* fnptr, GstAudioDecoder* carg0, GstCaps* carg1) {
+// 	return ((GstCaps* (*) (GstAudioDecoder*, GstCaps*))(fnptr))(carg0, carg1);
+// }
+// GstFlowReturn _gotk4_gstaudio1_AudioDecoder_virtual_handle_frame(void* fnptr, GstAudioDecoder* carg0, GstBuffer* carg1) {
+// 	return ((GstFlowReturn (*) (GstAudioDecoder*, GstBuffer*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_negotiate(void* fnptr, GstAudioDecoder* carg0) {
+// 	return ((gboolean (*) (GstAudioDecoder*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_open(void* fnptr, GstAudioDecoder* carg0) {
+// 	return ((gboolean (*) (GstAudioDecoder*))(fnptr))(carg0);
+// }
+// GstFlowReturn _gotk4_gstaudio1_AudioDecoder_virtual_parse(void* fnptr, GstAudioDecoder* carg0, GstAdapter* carg1, gint* carg2, gint* carg3) {
+// 	return ((GstFlowReturn (*) (GstAudioDecoder*, GstAdapter*, gint*, gint*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_propose_allocation(void* fnptr, GstAudioDecoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstAudioDecoder*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_set_format(void* fnptr, GstAudioDecoder* carg0, GstCaps* carg1) {
+// 	return ((gboolean (*) (GstAudioDecoder*, GstCaps*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_sink_event(void* fnptr, GstAudioDecoder* carg0, GstEvent* carg1) {
+// 	return ((gboolean (*) (GstAudioDecoder*, GstEvent*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_sink_query(void* fnptr, GstAudioDecoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstAudioDecoder*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_src_event(void* fnptr, GstAudioDecoder* carg0, GstEvent* carg1) {
+// 	return ((gboolean (*) (GstAudioDecoder*, GstEvent*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_src_query(void* fnptr, GstAudioDecoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstAudioDecoder*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_start(void* fnptr, GstAudioDecoder* carg0) {
+// 	return ((gboolean (*) (GstAudioDecoder*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_stop(void* fnptr, GstAudioDecoder* carg0) {
+// 	return ((gboolean (*) (GstAudioDecoder*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_transform_meta(void* fnptr, GstAudioDecoder* carg0, GstBuffer* carg1, GstMeta* carg2, GstBuffer* carg3) {
+// 	return ((gboolean (*) (GstAudioDecoder*, GstBuffer*, GstMeta*, GstBuffer*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// extern gboolean _gotk4_gstaudio1_AudioEncoder_close(GstAudioEncoder*);
+// extern gboolean _gotk4_gstaudio1_AudioEncoder_decide_allocation(GstAudioEncoder*, GstQuery*);
+// extern void _gotk4_gstaudio1_AudioEncoder_flush(GstAudioEncoder*);
+// extern GstCaps* _gotk4_gstaudio1_AudioEncoder_getcaps(GstAudioEncoder*, GstCaps*);
+// extern GstFlowReturn _gotk4_gstaudio1_AudioEncoder_handle_frame(GstAudioEncoder*, GstBuffer*);
+// extern gboolean _gotk4_gstaudio1_AudioEncoder_negotiate(GstAudioEncoder*);
+// extern gboolean _gotk4_gstaudio1_AudioEncoder_open(GstAudioEncoder*);
+// extern gboolean _gotk4_gstaudio1_AudioEncoder_propose_allocation(GstAudioEncoder*, GstQuery*);
+// extern gboolean _gotk4_gstaudio1_AudioEncoder_set_format(GstAudioEncoder*, GstAudioInfo*);
+// extern gboolean _gotk4_gstaudio1_AudioEncoder_sink_event(GstAudioEncoder*, GstEvent*);
+// extern gboolean _gotk4_gstaudio1_AudioEncoder_sink_query(GstAudioEncoder*, GstQuery*);
+// extern gboolean _gotk4_gstaudio1_AudioEncoder_src_event(GstAudioEncoder*, GstEvent*);
+// extern gboolean _gotk4_gstaudio1_AudioEncoder_src_query(GstAudioEncoder*, GstQuery*);
+// extern gboolean _gotk4_gstaudio1_AudioEncoder_start(GstAudioEncoder*);
+// extern gboolean _gotk4_gstaudio1_AudioEncoder_stop(GstAudioEncoder*);
+// extern gboolean _gotk4_gstaudio1_AudioEncoder_transform_meta(GstAudioEncoder*, GstBuffer*, GstMeta*, GstBuffer*);
+// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_close(void* fnptr, GstAudioEncoder* carg0) {
+// 	return ((gboolean (*) (GstAudioEncoder*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_decide_allocation(void* fnptr, GstAudioEncoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstAudioEncoder*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gstaudio1_AudioEncoder_virtual_flush(void* fnptr, GstAudioEncoder* carg0) {
+// 	return ((void (*) (GstAudioEncoder*))(fnptr))(carg0);
+// }
+// GstCaps* _gotk4_gstaudio1_AudioEncoder_virtual_getcaps(void* fnptr, GstAudioEncoder* carg0, GstCaps* carg1) {
+// 	return ((GstCaps* (*) (GstAudioEncoder*, GstCaps*))(fnptr))(carg0, carg1);
+// }
+// GstFlowReturn _gotk4_gstaudio1_AudioEncoder_virtual_handle_frame(void* fnptr, GstAudioEncoder* carg0, GstBuffer* carg1) {
+// 	return ((GstFlowReturn (*) (GstAudioEncoder*, GstBuffer*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_negotiate(void* fnptr, GstAudioEncoder* carg0) {
+// 	return ((gboolean (*) (GstAudioEncoder*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_open(void* fnptr, GstAudioEncoder* carg0) {
+// 	return ((gboolean (*) (GstAudioEncoder*))(fnptr))(carg0);
 // }
-// C.gboolean _gotk4_gstaudio1_AudioEncoder_virtual_propose_allocation(void* fnptr, *C.GstAudioEncoder carg0, *C.GstQuery carg1) {
-// 	return ((C.gboolean (*) (*C.GstAudioEncoder, *C.GstQuery))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_propose_allocation(void* fnptr, GstAudioEncoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstAudioEncoder*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstaudio1_AudioEncoder_virtual_set_format(void* fnptr, *C.GstAudioEncoder carg0, *C.GstAudioInfo carg1) {
-// 	return ((C.gboolean (*) (*C.GstAudioEncoder, *C.GstAudioInfo))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_set_format(void* fnptr, GstAudioEncoder* carg0, GstAudioInfo* carg1) {
+// 	return ((gboolean (*) (GstAudioEncoder*, GstAudioInfo*))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstaudio1_AudioEncoder_virtual_sink_event(void* fnptr, *C.GstAudioEncoder carg0, *C.GstEvent carg1) {
-// 	return ((C.gboolean (*) (*C.GstAudioEncoder, *C.GstEvent))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_sink_event(void* fnptr, GstAudioEncoder* carg0, GstEvent* carg1) {
+// 	return ((gboolean (*) (GstAudioEncoder*, GstEvent*))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstaudio1_AudioEncoder_virtual_sink_query(void* fnptr, *C.GstAudioEncoder carg0, *C.GstQuery carg1) {
-// 	return ((C.gboolean (*) (*C.GstAudioEncoder, *C.GstQuery))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_sink_query(void* fnptr, GstAudioEncoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstAudioEncoder*, GstQuery*))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstaudio1_AudioEncoder_virtual_src_event(void* fnptr, *C.GstAudioEncoder carg0, *C.GstEvent carg1) {
-// 	return ((C.gboolean (*) (*C.GstAudioEncoder, *C.GstEvent))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_src_event(void* fnptr, GstAudioEncoder* carg0, GstEvent* carg1) {
+// 	return ((gboolean (*) (GstAudioEncoder*, GstEvent*))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstaudio1_AudioEncoder_virtual_src_query(void* fnptr, *C.GstAudioEncoder carg0, *C.GstQuery carg1) {
-// 	return ((C.gboolean (*) (*C.GstAudioEncoder, *C.GstQuery))(fnptr))(carg0, carg1);
-// }
-// C.gboolean _gotk4_gstaudio1_AudioEncoder_virtual_start(void* fnptr, *C.GstAudioEncoder carg0) {
-// 	return ((C.gboolean (*) (*C.GstAudioEncoder))(fnptr))(carg0);
-// }
-// C.gboolean _gotk4_gstaudio1_AudioEncoder_virtual_stop(void* fnptr, *C.GstAudioEncoder carg0) {
-// 	return ((C.gboolean (*) (*C.GstAudioEncoder))(fnptr))(carg0);
+// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_src_query(void* fnptr, GstAudioEncoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstAudioEncoder*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_start(void* fnptr, GstAudioEncoder* carg0) {
+// 	return ((gboolean (*) (GstAudioEncoder*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_stop(void* fnptr, GstAudioEncoder* carg0) {
+// 	return ((gboolean (*) (GstAudioEncoder*))(fnptr))(carg0);
 // }
-// C.gboolean _gotk4_gstaudio1_AudioEncoder_virtual_transform_meta(void* fnptr, *C.GstAudioEncoder carg0, *C.GstBuffer carg1, *C.GstMeta carg2, *C.GstBuffer carg3) {
-// 	return ((C.gboolean (*) (*C.GstAudioEncoder, *C.GstBuffer, *C.GstMeta, *C.GstBuffer))(fnptr))(carg0, carg1, carg2, carg3);
+// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_transform_meta(void* fnptr, GstAudioEncoder* carg0, GstBuffer* carg1, GstMeta* carg2, GstBuffer* carg3) {
+// 	return ((gboolean (*) (GstAudioEncoder*, GstBuffer*, GstMeta*, GstBuffer*))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// extern C.gboolean _gotk4_gstaudio1_AudioFilter_setup(*C.GstAudioFilter, *C.GstAudioInfo);
-// C.gboolean _gotk4_gstaudio1_AudioFilter_virtual_setup(void* fnptr, *C.GstAudioFilter carg0, *C.GstAudioInfo carg1) {
-// 	return ((C.gboolean (*) (*C.GstAudioFilter, *C.GstAudioInfo))(fnptr))(carg0, carg1);
+// extern gboolean _gotk4_gstaudio1_AudioFilter_setup(GstAudioFilter*, const GstAudioInfo*);
+// gboolean _gotk4_gstaudio1_AudioFilter_virtual_setup(void* fnptr, GstAudioFilter* carg0, const GstAudioInfo* carg1) {
+// 	return ((gboolean (*) (GstAudioFilter*, const GstAudioInfo*))(fnptr))(carg0, carg1);
 // }
-// extern C.gboolean _gotk4_gstaudio1_AudioRingBuffer_acquire(*C.GstAudioRingBuffer, *C.GstAudioRingBufferSpec);
-// extern C.gboolean _gotk4_gstaudio1_AudioRingBuffer_activate(*C.GstAudioRingBuffer, C.gboolean);
-// extern C.void _gotk4_gstaudio1_AudioRingBuffer_clear_all(*C.GstAudioRingBuffer);
-// extern C.gboolean _gotk4_gstaudio1_AudioRingBuffer_close_device(*C.GstAudioRingBuffer);
-// extern C.guint _gotk4_gstaudio1_AudioRingBuffer_delay(*C.GstAudioRingBuffer);
-// extern C.gboolean _gotk4_gstaudio1_AudioRingBuffer_open_device(*C.GstAudioRingBuffer);
-// extern C.gboolean _gotk4_gstaudio1_AudioRingBuffer_pause(*C.GstAudioRingBuffer);
-// extern C.gboolean _gotk4_gstaudio1_AudioRingBuffer_release(*C.GstAudioRingBuffer);
-// extern C.gboolean _gotk4_gstaudio1_AudioRingBuffer_resume(*C.GstAudioRingBuffer);
-// extern C.gboolean _gotk4_gstaudio1_AudioRingBuffer_start(*C.GstAudioRingBuffer);
-// extern C.gboolean _gotk4_gstaudio1_AudioRingBuffer_stop(*C.GstAudioRingBuffer);
-// C.gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_acquire(void* fnptr, *C.GstAudioRingBuffer carg0, *C.GstAudioRingBufferSpec carg1) {
-// 	return ((C.gboolean (*) (*C.GstAudioRingBuffer, *C.GstAudioRingBufferSpec))(fnptr))(carg0, carg1);
+// extern gboolean _gotk4_gstaudio1_AudioRingBuffer_acquire(GstAudioRingBuffer*, GstAudioRingBufferSpec*);
+// extern gboolean _gotk4_gstaudio1_AudioRingBuffer_activate(GstAudioRingBuffer*, gboolean);
+// extern void _gotk4_gstaudio1_AudioRingBuffer_clear_all(GstAudioRingBuffer*);
+// extern gboolean _gotk4_gstaudio1_AudioRingBuffer_close_device(GstAudioRingBuffer*);
+// extern guint _gotk4_gstaudio1_AudioRingBuffer_delay(GstAudioRingBuffer*);
+// extern gboolean _gotk4_gstaudio1_AudioRingBuffer_open_device(GstAudioRingBuffer*);
+// extern gboolean _gotk4_gstaudio1_AudioRingBuffer_pause(GstAudioRingBuffer*);
+// extern gboolean _gotk4_gstaudio1_AudioRingBuffer_release(GstAudioRingBuffer*);
+// extern gboolean _gotk4_gstaudio1_AudioRingBuffer_resume(GstAudioRingBuffer*);
+// extern gboolean _gotk4_gstaudio1_AudioRingBuffer_start(GstAudioRingBuffer*);
+// extern gboolean _gotk4_gstaudio1_AudioRingBuffer_stop(GstAudioRingBuffer*);
+// gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_acquire(void* fnptr, GstAudioRingBuffer* carg0, GstAudioRingBufferSpec* carg1) {
+// 	return ((gboolean (*) (GstAudioRingBuffer*, GstAudioRingBufferSpec*))(fnptr))(carg0, carg1);
 // }
-// C.gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_activate(void* fnptr, *C.GstAudioRingBuffer carg0, C.gboolean carg1) {
-// 	return ((C.gboolean (*) (*C.GstAudioRingBuffer, C.gboolean))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_activate(void* fnptr, GstAudioRingBuffer* carg0, gboolean carg1) {
+// 	return ((gboolean (*) (GstAudioRingBuffer*, gboolean))(fnptr))(carg0, carg1);
 // }
-// C.void _gotk4_gstaudio1_AudioRingBuffer_virtual_clear_all(void* fnptr, *C.GstAudioRingBuffer carg0) {
-// 	return ((C.void (*) (*C.GstAudioRingBuffer))(fnptr))(carg0);
+// void _gotk4_gstaudio1_AudioRingBuffer_virtual_clear_all(void* fnptr, GstAudioRingBuffer* carg0) {
+// 	return ((void (*) (GstAudioRingBuffer*))(fnptr))(carg0);
 // }
-// C.gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_close_device(void* fnptr, *C.GstAudioRingBuffer carg0) {
-// 	return ((C.gboolean (*) (*C.GstAudioRingBuffer))(fnptr))(carg0);
+// gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_close_device(void* fnptr, GstAudioRingBuffer* carg0) {
+// 	return ((gboolean (*) (GstAudioRingBuffer*))(fnptr))(carg0);
 // }
-// C.guint _gotk4_gstaudio1_AudioRingBuffer_virtual_delay(void* fnptr, *C.GstAudioRingBuffer carg0) {
-// 	return ((C.guint (*) (*C.GstAudioRingBuffer))(fnptr))(carg0);
+// guint _gotk4_gstaudio1_AudioRingBuffer_virtual_delay(void* fnptr, GstAudioRingBuffer* carg0) {
+// 	return ((guint (*) (GstAudioRingBuffer*))(fnptr))(carg0);
 // }
-// C.gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_open_device(void* fnptr, *C.GstAudioRingBuffer carg0) {
-// 	return ((C.gboolean (*) (*C.GstAudioRingBuffer))(fnptr))(carg0);
+// gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_open_device(void* fnptr, GstAudioRingBuffer* carg0) {
+// 	return ((gboolean (*) (GstAudioRingBuffer*))(fnptr))(carg0);
 // }
-// C.gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_pause(void* fnptr, *C.GstAudioRingBuffer carg0) {
-// 	return ((C.gboolean (*) (*C.GstAudioRingBuffer))(fnptr))(carg0);
+// gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_pause(void* fnptr, GstAudioRingBuffer* carg0) {
+// 	return ((gboolean (*) (GstAudioRingBuffer*))(fnptr))(carg0);
 // }
-// C.gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_release(void* fnptr, *C.GstAudioRingBuffer carg0) {
-// 	return ((C.gboolean (*) (*C.GstAudioRingBuffer))(fnptr))(carg0);
+// gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_release(void* fnptr, GstAudioRingBuffer* carg0) {
+// 	return ((gboolean (*) (GstAudioRingBuffer*))(fnptr))(carg0);
 // }
-// C.gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_resume(void* fnptr, *C.GstAudioRingBuffer carg0) {
-// 	return ((C.gboolean (*) (*C.GstAudioRingBuffer))(fnptr))(carg0);
+// gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_resume(void* fnptr, GstAudioRingBuffer* carg0) {
+// 	return ((gboolean (*) (GstAudioRingBuffer*))(fnptr))(carg0);
 // }
-// C.gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_start(void* fnptr, *C.GstAudioRingBuffer carg0) {
-// 	return ((C.gboolean (*) (*C.GstAudioRingBuffer))(fnptr))(carg0);
+// gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_start(void* fnptr, GstAudioRingBuffer* carg0) {
+// 	return ((gboolean (*) (GstAudioRingBuffer*))(fnptr))(carg0);
 // }
-// C.gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_stop(void* fnptr, *C.GstAudioRingBuffer carg0) {
-// 	return ((C.gboolean (*) (*C.GstAudioRingBuffer))(fnptr))(carg0);
+// gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_stop(void* fnptr, GstAudioRingBuffer* carg0) {
+// 	return ((gboolean (*) (GstAudioRingBuffer*))(fnptr))(carg0);
 // }
-// extern C.gboolean _gotk4_gstaudio1_AudioSink_close(*C.GstAudioSink);
-// extern C.guint _gotk4_gstaudio1_AudioSink_delay(*C.GstAudioSink);
-// extern C.gboolean _gotk4_gstaudio1_AudioSink_open(*C.GstAudioSink);
-// extern C.void _gotk4_gstaudio1_AudioSink_pause(*C.GstAudioSink);
-// extern C.gboolean _gotk4_gstaudio1_AudioSink_prepare(*C.GstAudioSink, *C.GstAudioRingBufferSpec);
-// extern C.void _gotk4_gstaudio1_AudioSink_reset(*C.GstAudioSink);
-// extern C.void _gotk4_gstaudio1_AudioSink_resume(*C.GstAudioSink);
-// extern C.void _gotk4_gstaudio1_AudioSink_stop(*C.GstAudioSink);
-// extern C.gboolean _gotk4_gstaudio1_AudioSink_unprepare(*C.GstAudioSink);
-// C.gboolean _gotk4_gstaudio1_AudioSink_virtual_close(void* fnptr, *C.GstAudioSink carg0) {
-// 	return ((C.gboolean (*) (*C.GstAudioSink))(fnptr))(carg0);
+// extern gboolean _gotk4_gstaudio1_AudioSink_close(GstAudioSink*);
+// extern guint _gotk4_gstaudio1_AudioSink_delay(GstAudioSink*);
+// extern gboolean _gotk4_gstaudio1_AudioSink_open(GstAudioSink*);
+// extern void _gotk4_gstaudio1_AudioSink_pause(GstAudioSink*);
+// extern gboolean _gotk4_gstaudio1_AudioSink_prepare(GstAudioSink*, GstAudioRingBufferSpec*);
+// extern void _gotk4_gstaudio1_AudioSink_reset(GstAudioSink*);
+// extern void _gotk4_gstaudio1_AudioSink_resume(GstAudioSink*);
+// extern void _gotk4_gstaudio1_AudioSink_stop(GstAudioSink*);
+// extern gboolean _gotk4_gstaudio1_AudioSink_unprepare(GstAudioSink*);
+// gboolean _gotk4_gstaudio1_AudioSink_virtual_close(void* fnptr, GstAudioSink* carg0) {
+// 	return ((gboolean (*) (GstAudioSink*))(fnptr))(carg0);
 // }
-// C.guint _gotk4_gstaudio1_AudioSink_virtual_delay(void* fnptr, *C.GstAudioSink carg0) {
-// 	return ((C.guint (*) (*C.GstAudioSink))(fnptr))(carg0);
+// guint _gotk4_gstaudio1_AudioSink_virtual_delay(void* fnptr, GstAudioSink* carg0) {
+// 	return ((guint (*) (GstAudioSink*))(fnptr))(carg0);
 // }
-// C.gboolean _gotk4_gstaudio1_AudioSink_virtual_open(void* fnptr, *C.GstAudioSink carg0) {
-// 	return ((C.gboolean (*) (*C.GstAudioSink))(fnptr))(carg0);
+// gboolean _gotk4_gstaudio1_AudioSink_virtual_open(void* fnptr, GstAudioSink* carg0) {
+// 	return ((gboolean (*) (GstAudioSink*))(fnptr))(carg0);
 // }
-// C.void _gotk4_gstaudio1_AudioSink_virtual_pause(void* fnptr, *C.GstAudioSink carg0) {
-// 	return ((C.void (*) (*C.GstAudioSink))(fnptr))(carg0);
+// void _gotk4_gstaudio1_AudioSink_virtual_pause(void* fnptr, GstAudioSink* carg0) {
+// 	return ((void (*) (GstAudioSink*))(fnptr))(carg0);
 // }
-// C.gboolean _gotk4_gstaudio1_AudioSink_virtual_prepare(void* fnptr, *C.GstAudioSink carg0, *C.GstAudioRingBufferSpec carg1) {
-// 	return ((C.gboolean (*) (*C.GstAudioSink, *C.GstAudioRingBufferSpec))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gstaudio1_AudioSink_virtual_prepare(void* fnptr, GstAudioSink* carg0, GstAudioRingBufferSpec* carg1) {
+// 	return ((gboolean (*) (GstAudioSink*, GstAudioRingBufferSpec*))(fnptr))(carg0, carg1);
 // }
-// C.void _gotk4_gstaudio1_AudioSink_virtual_reset(void* fnptr, *C.GstAudioSink carg0) {
-// 	return ((C.void (*) (*C.GstAudioSink))(fnptr))(carg0);
+// void _gotk4_gstaudio1_AudioSink_virtual_reset(void* fnptr, GstAudioSink* carg0) {
+// 	return ((void (*) (GstAudioSink*))(fnptr))(carg0);
 // }
-// C.void _gotk4_gstaudio1_AudioSink_virtual_resume(void* fnptr, *C.GstAudioSink carg0) {
-// 	return ((C.void (*) (*C.GstAudioSink))(fnptr))(carg0);
+// void _gotk4_gstaudio1_AudioSink_virtual_resume(void* fnptr, GstAudioSink* carg0) {
+// 	return ((void (*) (GstAudioSink*))(fnptr))(carg0);
 // }
-// C.void _gotk4_gstaudio1_AudioSink_virtual_stop(void* fnptr, *C.GstAudioSink carg0) {
-// 	return ((C.void (*) (*C.GstAudioSink))(fnptr))(carg0);
+// void _gotk4_gstaudio1_AudioSink_virtual_stop(void* fnptr, GstAudioSink* carg0) {
+// 	return ((void (*) (GstAudioSink*))(fnptr))(carg0);
 // }
-// C.gboolean _gotk4_gstaudio1_AudioSink_virtual_unprepare(void* fnptr, *C.GstAudioSink carg0) {
-// 	return ((C.gboolean (*) (*C.GstAudioSink))(fnptr))(carg0);
+// gboolean _gotk4_gstaudio1_AudioSink_virtual_unprepare(void* fnptr, GstAudioSink* carg0) {
+// 	return ((gboolean (*) (GstAudioSink*))(fnptr))(carg0);
 // }
-// extern C.gboolean _gotk4_gstaudio1_AudioSrc_close(*C.GstAudioSrc);
-// extern C.guint _gotk4_gstaudio1_AudioSrc_delay(*C.GstAudioSrc);
-// extern C.gboolean _gotk4_gstaudio1_AudioSrc_open(*C.GstAudioSrc);
-// extern C.gboolean _gotk4_gstaudio1_AudioSrc_prepare(*C.GstAudioSrc, *C.GstAudioRingBufferSpec);
-// extern C.void _gotk4_gstaudio1_AudioSrc_reset(*C.GstAudioSrc);
-// extern C.gboolean _gotk4_gstaudio1_AudioSrc_unprepare(*C.GstAudioSrc);
-// C.gboolean _gotk4_gstaudio1_AudioSrc_virtual_close(void* fnptr, *C.GstAudioSrc carg0) {
-// 	return ((C.gboolean (*) (*C.GstAudioSrc))(fnptr))(carg0);
+// extern gboolean _gotk4_gstaudio1_AudioSrc_close(GstAudioSrc*);
+// extern guint _gotk4_gstaudio1_AudioSrc_delay(GstAudioSrc*);
+// extern gboolean _gotk4_gstaudio1_AudioSrc_open(GstAudioSrc*);
+// extern gboolean _gotk4_gstaudio1_AudioSrc_prepare(GstAudioSrc*, GstAudioRingBufferSpec*);
+// extern void _gotk4_gstaudio1_AudioSrc_reset(GstAudioSrc*);
+// extern gboolean _gotk4_gstaudio1_AudioSrc_unprepare(GstAudioSrc*);
+// gboolean _gotk4_gstaudio1_AudioSrc_virtual_close(void* fnptr, GstAudioSrc* carg0) {
+// 	return ((gboolean (*) (GstAudioSrc*))(fnptr))(carg0);
 // }
-// C.guint _gotk4_gstaudio1_AudioSrc_virtual_delay(void* fnptr, *C.GstAudioSrc carg0) {
-// 	return ((C.guint (*) (*C.GstAudioSrc))(fnptr))(carg0);
+// guint _gotk4_gstaudio1_AudioSrc_virtual_delay(void* fnptr, GstAudioSrc* carg0) {
+// 	return ((guint (*) (GstAudioSrc*))(fnptr))(carg0);
 // }
-// C.gboolean _gotk4_gstaudio1_AudioSrc_virtual_open(void* fnptr, *C.GstAudioSrc carg0) {
-// 	return ((C.gboolean (*) (*C.GstAudioSrc))(fnptr))(carg0);
+// gboolean _gotk4_gstaudio1_AudioSrc_virtual_open(void* fnptr, GstAudioSrc* carg0) {
+// 	return ((gboolean (*) (GstAudioSrc*))(fnptr))(carg0);
 // }
-// C.gboolean _gotk4_gstaudio1_AudioSrc_virtual_prepare(void* fnptr, *C.GstAudioSrc carg0, *C.GstAudioRingBufferSpec carg1) {
-// 	return ((C.gboolean (*) (*C.GstAudioSrc, *C.GstAudioRingBufferSpec))(fnptr))(carg0, carg1);
+// gboolean _gotk4_gstaudio1_AudioSrc_virtual_prepare(void* fnptr, GstAudioSrc* carg0, GstAudioRingBufferSpec* carg1) {
+// 	return ((gboolean (*) (GstAudioSrc*, GstAudioRingBufferSpec*))(fnptr))(carg0, carg1);
 // }
-// C.void _gotk4_gstaudio1_AudioSrc_virtual_reset(void* fnptr, *C.GstAudioSrc carg0) {
-// 	return ((C.void (*) (*C.GstAudioSrc))(fnptr))(carg0);
+// void _gotk4_gstaudio1_AudioSrc_virtual_reset(void* fnptr, GstAudioSrc* carg0) {
+// 	return ((void (*) (GstAudioSrc*))(fnptr))(carg0);
 // }
-// C.gboolean _gotk4_gstaudio1_AudioSrc_virtual_unprepare(void* fnptr, *C.GstAudioSrc carg0) {
-// 	return ((C.gboolean (*) (*C.GstAudioSrc))(fnptr))(carg0);
+// gboolean _gotk4_gstaudio1_AudioSrc_virtual_unprepare(void* fnptr, GstAudioSrc* carg0) {
+// 	return ((gboolean (*) (GstAudioSrc*))(fnptr))(carg0);
 // }
 import "C"
 
@@ -2383,7 +2383,7 @@ func AudioChannelPositionsFromMask(channelMask uint64, position []AudioChannelPo
 	_ = position
 	_ = carg3
 	_ = carg1
-	panic("unimplemented conversion of []AudioChannelPosition (*C.GstAudioChannelPosition)")
+	panic("unimplemented conversion of []AudioChannelPosition (GstAudioChannelPosition*)")
 
 	cret = C.gst_audio_channel_positions_from_mask(carg1, carg2, carg3)
 	runtime.KeepAlive(channelMask)
@@ -2424,7 +2424,7 @@ func AudioChannelPositionsToMask(position []AudioChannelPosition, forceOrder boo
 	_ = position
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []AudioChannelPosition (*C.GstAudioChannelPosition)")
+	panic("unimplemented conversion of []AudioChannelPosition (const GstAudioChannelPosition*)")
 	if forceOrder {
 		carg3 = C.TRUE
 	}
@@ -2465,7 +2465,7 @@ func AudioChannelPositionsToString(position []AudioChannelPosition) string {
 	_ = position
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []AudioChannelPosition (*C.GstAudioChannelPosition)")
+	panic("unimplemented conversion of []AudioChannelPosition (const GstAudioChannelPosition*)")
 
 	cret = C.gst_audio_channel_positions_to_string(carg1, carg2)
 	runtime.KeepAlive(position)
@@ -2499,7 +2499,7 @@ func AudioChannelPositionsToValidOrder(position []AudioChannelPosition) bool {
 	_ = position
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []AudioChannelPosition (*C.GstAudioChannelPosition)")
+	panic("unimplemented conversion of []AudioChannelPosition (GstAudioChannelPosition*)")
 
 	cret = C.gst_audio_channel_positions_to_valid_order(carg1, carg2)
 	runtime.KeepAlive(position)
@@ -2537,7 +2537,7 @@ func AudioCheckValidChannelPositions(position []AudioChannelPosition, forceOrder
 	_ = position
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []AudioChannelPosition (*C.GstAudioChannelPosition)")
+	panic("unimplemented conversion of []AudioChannelPosition (const GstAudioChannelPosition*)")
 	if forceOrder {
 		carg3 = C.TRUE
 	}
@@ -2609,7 +2609,7 @@ func AudioFormatsRaw() (uint, []AudioFormat) {
 	len = uint(carg1)
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []AudioFormat (*C.GstAudioFormat)")
+	panic("unimplemented conversion of []AudioFormat (const GstAudioFormat*)")
 
 	return len, goret
 }
@@ -2644,15 +2644,15 @@ func AudioGetChannelReorderMap(from []AudioChannelPosition, to []AudioChannelPos
 	_ = from
 	_ = carg2
 	_ = carg1
-	panic("unimplemented conversion of []AudioChannelPosition (*C.GstAudioChannelPosition)")
+	panic("unimplemented conversion of []AudioChannelPosition (const GstAudioChannelPosition*)")
 	_ = to
 	_ = carg3
 	_ = carg1
-	panic("unimplemented conversion of []AudioChannelPosition (*C.GstAudioChannelPosition)")
+	panic("unimplemented conversion of []AudioChannelPosition (const GstAudioChannelPosition*)")
 	_ = reorderMap
 	_ = carg4
 	_ = carg1
-	panic("unimplemented conversion of []int32 (*C.gint)")
+	panic("unimplemented conversion of []int32 (gint*)")
 
 	cret = C.gst_audio_get_channel_reorder_map(carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(from)
@@ -2725,11 +2725,11 @@ func AudioIec61937Payload(src []uint8, dst []uint8, spec *AudioRingBufferSpec, e
 	_ = src
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 	_ = dst
 	_ = carg3
 	_ = carg4
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (guint8*)")
 	carg5 = (*C.GstAudioRingBufferSpec)(UnsafeAudioRingBufferSpecToGlibNone(spec))
 	carg6 = C.gint(endianness)
 
@@ -2790,7 +2790,7 @@ func AudioMakeRawCaps(formats []AudioFormat, layout AudioLayout) *gst.Caps {
 	_ = formats
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []AudioFormat (*C.GstAudioFormat)")
+	panic("unimplemented conversion of []AudioFormat (const GstAudioFormat*)")
 	carg3 = C.GstAudioLayout(layout)
 
 	cret = C.gst_audio_make_raw_caps(carg1, carg2, carg3)
@@ -2894,14 +2894,14 @@ func BufferAddAudioDownmixMeta(buffer *gst.Buffer, fromPosition []AudioChannelPo
 	_ = fromPosition
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []AudioChannelPosition (*C.GstAudioChannelPosition)")
+	panic("unimplemented conversion of []AudioChannelPosition (const GstAudioChannelPosition*)")
 	_ = toPosition
 	_ = carg4
 	_ = carg5
-	panic("unimplemented conversion of []AudioChannelPosition (*C.GstAudioChannelPosition)")
+	panic("unimplemented conversion of []AudioChannelPosition (const GstAudioChannelPosition*)")
 	_ = matrix
 	_ = carg6
-	panic("unimplemented conversion of **float32 (**C.gfloat)")
+	panic("unimplemented conversion of **float32 (const gfloat**)")
 
 	cret = C.gst_buffer_add_audio_downmix_meta(carg1, carg2, carg3, carg4, carg5, carg6)
 	runtime.KeepAlive(buffer)
@@ -3001,7 +3001,7 @@ func BufferAddAudioMeta(buffer *gst.Buffer, info *AudioInfo, samples uint, offse
 	if offsets != nil {
 		_ = offsets
 		_ = carg4
-		panic("unimplemented conversion of *uint (*C.gsize)")
+		panic("unimplemented conversion of *uint (gsize*)")
 	}
 
 	cret = C.gst_buffer_add_audio_meta(carg1, carg2, carg3, carg4)
@@ -3065,7 +3065,7 @@ func BufferAddDsdPlaneOffsetMeta(buffer *gst.Buffer, numChannels int32, numBytes
 	if offsets != nil {
 		_ = offsets
 		_ = carg4
-		panic("unimplemented conversion of *uint (*C.gsize)")
+		panic("unimplemented conversion of *uint (gsize*)")
 	}
 
 	cret = C.gst_buffer_add_dsd_plane_offset_meta(carg1, carg2, carg3, carg4)
@@ -3105,7 +3105,7 @@ func BufferGetAudioDownmixMetaForChannels(buffer *gst.Buffer, toPosition []Audio
 	_ = toPosition
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []AudioChannelPosition (*C.GstAudioChannelPosition)")
+	panic("unimplemented conversion of []AudioChannelPosition (const GstAudioChannelPosition*)")
 
 	cret = C.gst_buffer_get_audio_downmix_meta_for_channels(carg1, carg2, carg3)
 	runtime.KeepAlive(buffer)
@@ -3195,20 +3195,20 @@ func DsdConvert(inputData *uint8, outputData *uint8, inputFormat DsdFormat, outp
 
 	_ = inputData
 	_ = carg1
-	panic("unimplemented conversion of *uint8 (*C.guint8)")
+	panic("unimplemented conversion of *uint8 (const guint8*)")
 	_ = outputData
 	_ = carg2
-	panic("unimplemented conversion of *uint8 (*C.guint8)")
+	panic("unimplemented conversion of *uint8 (guint8*)")
 	carg3 = C.GstDsdFormat(inputFormat)
 	carg4 = C.GstDsdFormat(outputFormat)
 	carg5 = C.GstAudioLayout(inputLayout)
 	carg6 = C.GstAudioLayout(outputLayout)
 	_ = inputPlaneOffsets
 	_ = carg7
-	panic("unimplemented conversion of *uint (*C.gsize)")
+	panic("unimplemented conversion of *uint (const gsize*)")
 	_ = outputPlaneOffsets
 	_ = carg8
-	panic("unimplemented conversion of *uint (*C.gsize)")
+	panic("unimplemented conversion of *uint (const gsize*)")
 	carg9 = C.gsize(numDsdBytes)
 	carg10 = C.gint(numChannels)
 	if reverseByteBits {
@@ -6732,7 +6732,7 @@ func (dec *AudioDecoderInstance) GetAllocator() (gst.Allocator, gst.AllocationPa
 	}
 	_ = params
 	_ = carg2
-	panic("unimplemented conversion of gst.AllocationParams (C.GstAllocationParams)")
+	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams)")
 
 	return allocator, params
 }
@@ -9514,7 +9514,7 @@ func (enc *AudioEncoderInstance) GetAllocator() (gst.Allocator, gst.AllocationPa
 	}
 	_ = params
 	_ = carg2
-	panic("unimplemented conversion of gst.AllocationParams (C.GstAllocationParams)")
+	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams)")
 
 	return allocator, params
 }
@@ -12618,7 +12618,7 @@ func (buf *AudioRingBufferInstance) Read(sample uint64, data []uint8) (gst.Clock
 	_ = data
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (guint8*)")
 
 	cret = C.gst_audio_ring_buffer_read(carg0, carg1, carg2, carg3, &carg4)
 	runtime.KeepAlive(buf)
@@ -15189,7 +15189,7 @@ func AudioBufferMap(info *AudioInfo, gstbuffer *gst.Buffer, flags gst.MapFlags) 
 
 	_ = buffer
 	_ = carg1
-	panic("unimplemented conversion of AudioBuffer (C.GstAudioBuffer)")
+	panic("unimplemented conversion of AudioBuffer (GstAudioBuffer)")
 	if cret != 0 {
 		goret = true
 	}
@@ -15227,11 +15227,11 @@ func AudioBufferReorderChannels(buffer *gst.Buffer, format AudioFormat, from []A
 	_ = from
 	_ = carg4
 	_ = carg3
-	panic("unimplemented conversion of []AudioChannelPosition (*C.GstAudioChannelPosition)")
+	panic("unimplemented conversion of []AudioChannelPosition (const GstAudioChannelPosition*)")
 	_ = to
 	_ = carg5
 	_ = carg3
-	panic("unimplemented conversion of []AudioChannelPosition (*C.GstAudioChannelPosition)")
+	panic("unimplemented conversion of []AudioChannelPosition (const GstAudioChannelPosition*)")
 
 	cret = C.gst_audio_buffer_reorder_channels(carg1, carg2, carg3, carg4, carg5)
 	runtime.KeepAlive(buffer)
@@ -16485,7 +16485,7 @@ func AudioInfoFromCaps(caps *gst.Caps) (AudioInfo, bool) {
 
 	_ = info
 	_ = carg1
-	panic("unimplemented conversion of AudioInfo (C.GstAudioInfo)")
+	panic("unimplemented conversion of AudioInfo (GstAudioInfo)")
 	if cret != 0 {
 		goret = true
 	}
@@ -16509,7 +16509,7 @@ func AudioInfoInit() AudioInfo {
 
 	_ = info
 	_ = carg1
-	panic("unimplemented conversion of AudioInfo (C.GstAudioInfo)")
+	panic("unimplemented conversion of AudioInfo (GstAudioInfo)")
 
 	return info
 }
@@ -16641,7 +16641,7 @@ func (info *AudioInfo) SetFormat(format AudioFormat, rate int32, channels int32,
 	carg3 = C.gint(channels)
 	_ = position
 	_ = carg4
-	panic("unimplemented conversion of [64]AudioChannelPosition (*C.GstAudioChannelPosition)")
+	panic("unimplemented conversion of [64]AudioChannelPosition (const GstAudioChannelPosition*)")
 
 	C.gst_audio_info_set_format(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(info)
@@ -18060,7 +18060,7 @@ func DsdInfoFromCaps(caps *gst.Caps) (DsdInfo, bool) {
 
 	_ = info
 	_ = carg1
-	panic("unimplemented conversion of DsdInfo (C.GstDsdInfo)")
+	panic("unimplemented conversion of DsdInfo (GstDsdInfo)")
 	if cret != 0 {
 		goret = true
 	}
@@ -18084,7 +18084,7 @@ func DsdInfoInit() DsdInfo {
 
 	_ = info
 	_ = carg1
-	panic("unimplemented conversion of DsdInfo (C.GstDsdInfo)")
+	panic("unimplemented conversion of DsdInfo (GstDsdInfo)")
 
 	return info
 }
@@ -18169,7 +18169,7 @@ func (info *DsdInfo) SetFormat(format DsdFormat, rate int32, channels int32, pos
 	carg3 = C.gint(channels)
 	_ = positions
 	_ = carg4
-	panic("unimplemented conversion of [64]AudioChannelPosition (*C.GstAudioChannelPosition)")
+	panic("unimplemented conversion of [64]AudioChannelPosition (const GstAudioChannelPosition*)")
 
 	C.gst_dsd_info_set_format(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(info)

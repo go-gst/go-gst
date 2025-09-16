@@ -15,7 +15,7 @@ import (
 // #cgo pkg-config: gstreamer-check-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/check/check.h>
-// extern C.GstPadProbeReturn _gotk4_gst1_PadProbeCallback(*C.GstPad, *C.GstPadProbeInfo, C.gpointer);
+// extern GstPadProbeReturn _gotk4_gst1_PadProbeCallback(GstPad*, GstPadProbeInfo*, gpointer);
 // extern void destroyUserdata(gpointer);
 import "C"
 
@@ -2472,7 +2472,7 @@ func (h *Harness) GetAllocator() (gst.Allocator, gst.AllocationParams) {
 	}
 	_ = params
 	_ = carg2
-	panic("unimplemented conversion of gst.AllocationParams (C.GstAllocationParams)")
+	panic("unimplemented conversion of gst.AllocationParams (GstAllocationParams)")
 
 	return allocator, params
 }

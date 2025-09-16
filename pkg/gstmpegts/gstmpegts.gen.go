@@ -5542,7 +5542,7 @@ func DescriptorFromCustom(tag uint8, data []uint8) *Descriptor {
 	_ = data
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_mpegts_descriptor_from_custom(carg1, carg2, carg3)
 	runtime.KeepAlive(tag)
@@ -5582,7 +5582,7 @@ func DescriptorFromCustomWithExtension(tag uint8, tagExtension uint8, data []uin
 	_ = data
 	_ = carg3
 	_ = carg4
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (const guint8*)")
 
 	cret = C.gst_mpegts_descriptor_from_custom_with_extension(carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(tag)
@@ -5840,7 +5840,7 @@ func DescriptorFromRegistration(formatIdentifier string, additionalInfo []uint8)
 	_ = additionalInfo
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (guint8*)")
 
 	cret = C.gst_mpegts_descriptor_from_registration(carg1, carg2, carg3)
 	runtime.KeepAlive(formatIdentifier)
@@ -5927,7 +5927,7 @@ func (descriptor *Descriptor) ParseCableDeliverySystem() (CableDeliverySystemDes
 
 	_ = res
 	_ = carg1
-	panic("unimplemented conversion of CableDeliverySystemDescriptor (C.GstMpegtsCableDeliverySystemDescriptor)")
+	panic("unimplemented conversion of CableDeliverySystemDescriptor (GstMpegtsCableDeliverySystemDescriptor)")
 	if cret != 0 {
 		goret = true
 	}
@@ -6275,7 +6275,7 @@ func (descriptor *Descriptor) ParseDvbStuffing() (*uint8, bool) {
 
 	_ = stuffingBytes
 	_ = carg1
-	panic("unimplemented conversion of *uint8 (*C.guint8)")
+	panic("unimplemented conversion of *uint8 (guint8*)")
 	if cret != 0 {
 		goret = true
 	}
@@ -6577,7 +6577,7 @@ func (descriptor *Descriptor) ParseJPEGXS() (JpegXsDescriptor, bool) {
 
 	_ = res
 	_ = carg1
-	panic("unimplemented conversion of JpegXsDescriptor (C.GstMpegtsJpegXsDescriptor)")
+	panic("unimplemented conversion of JpegXsDescriptor (GstMpegtsJpegXsDescriptor)")
 	if cret != 0 {
 		goret = true
 	}
@@ -6608,7 +6608,7 @@ func (descriptor *Descriptor) ParseLogicalChannel() (LogicalChannelDescriptor, b
 
 	_ = res
 	_ = carg1
-	panic("unimplemented conversion of LogicalChannelDescriptor (C.GstMpegtsLogicalChannelDescriptor)")
+	panic("unimplemented conversion of LogicalChannelDescriptor (GstMpegtsLogicalChannelDescriptor)")
 	if cret != 0 {
 		goret = true
 	}
@@ -6674,13 +6674,13 @@ func (descriptor *Descriptor) ParseMetadataStd(metadataInputLeakRate *uint32, me
 	carg0 = (*C.GstMpegtsDescriptor)(UnsafeDescriptorToGlibNone(descriptor))
 	_ = metadataInputLeakRate
 	_ = carg1
-	panic("unimplemented conversion of *uint32 (*C.guint32)")
+	panic("unimplemented conversion of *uint32 (guint32*)")
 	_ = metadataBufferSize
 	_ = carg2
-	panic("unimplemented conversion of *uint32 (*C.guint32)")
+	panic("unimplemented conversion of *uint32 (guint32*)")
 	_ = metadataOutputLeakRate
 	_ = carg3
-	panic("unimplemented conversion of *uint32 (*C.guint32)")
+	panic("unimplemented conversion of *uint32 (guint32*)")
 
 	cret = C.gst_mpegts_descriptor_parse_metadata_std(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(descriptor)
@@ -6720,7 +6720,7 @@ func (descriptor *Descriptor) ParseSatelliteDeliverySystem() (SatelliteDeliveryS
 
 	_ = res
 	_ = carg1
-	panic("unimplemented conversion of SatelliteDeliverySystemDescriptor (C.GstMpegtsSatelliteDeliverySystemDescriptor)")
+	panic("unimplemented conversion of SatelliteDeliverySystemDescriptor (GstMpegtsSatelliteDeliverySystemDescriptor)")
 	if cret != 0 {
 		goret = true
 	}
@@ -6751,7 +6751,7 @@ func (descriptor *Descriptor) ParseTerrestrialDeliverySystem() (TerrestrialDeliv
 
 	_ = res
 	_ = carg1
-	panic("unimplemented conversion of TerrestrialDeliverySystemDescriptor (C.GstMpegtsTerrestrialDeliverySystemDescriptor)")
+	panic("unimplemented conversion of TerrestrialDeliverySystemDescriptor (GstMpegtsTerrestrialDeliverySystemDescriptor)")
 	if cret != 0 {
 		goret = true
 	}
@@ -9310,7 +9310,7 @@ func NewSection(pid uint16, data []uint8) *Section {
 	_ = data
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (*C.guint8)")
+	panic("unimplemented conversion of []uint8 (guint8*)")
 
 	cret = C.gst_mpegts_section_new(carg1, carg2, carg3)
 	runtime.KeepAlive(pid)
@@ -9965,7 +9965,7 @@ func (section *Section) Packetize() (uint, *uint8) {
 	outputSize = uint(carg1)
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of *uint8 (*C.guint8)")
+	panic("unimplemented conversion of *uint8 (guint8*)")
 
 	return outputSize, goret
 }
