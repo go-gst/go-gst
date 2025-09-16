@@ -20,29 +20,32 @@ import (
 	"strings"
 	"time"
 
-	"github.com/go-gst/go-glib/glib"
-	"github.com/go-gst/go-gst/examples"
-	"github.com/go-gst/go-gst/gst"
+	"github.com/diamondburned/gotk4/pkg/glib/v2"
+	"github.com/go-gst/go-gst/pkg/gst"
 )
 
-func queries(mainLoop *glib.MainLoop) error {
+func queries() error {
 
 	if len(os.Args) < 2 {
 		fmt.Println("USAGE: queries <pipeline>")
 		os.Exit(1)
 	}
 
-	gst.Init(nil)
+	gst.Init()
+
+	mainLoop := glib.NewMainLoop(glib.MainContextDefault(), false)
 
 	// Let GStreamer create a pipeline from the parsed launch syntax on the cli.
 	pipelineStr := strings.Join(os.Args[1:], " ")
-	pipeline, err := gst.NewPipelineFromString(pipelineStr)
+	ret, err := gst.ParseLaunch(pipelineStr)
 	if err != nil {
 		return err
 	}
 
+	pipeline := ret.(gst.Binner)
+
 	// Get a reference to the pipeline bus
-	bus := pipeline.GetPipelineBus()
+	bus := pipeline.Bus()
 
 	// Start the pipeline
 	pipeline.SetState(gst.StatePlaying)
@@ -54,14 +57,14 @@ func queries(mainLoop *glib.MainLoop) error {
 			// Create a new position query and send it to the pipeline.
 			// This will traverse all elements in the pipeline, until one feels
 			// capable of answering the query.
-			pos := gst.NewPositionQuery(gst.FormatTime)
+			pos := gst.NewQueryPosition(gst.FormatTime)
 			if ok := pipeline.Query(pos); !ok {
 				fmt.Println("Failed to query position from pipeline")
 			}
 			// Create a new duration query and send it to the pipeline.
 			// This will traverse all elements in the pipeline, until one feels
 			// capable of answering the query.
-			dur := gst.NewDurationQuery(gst.FormatTime)
+			dur := gst.NewQueryDuration(gst.FormatTime)
 			if ok := pipeline.Query(dur); !ok {
 				fmt.Println("Failed to query duration from pipeline")
 			}
@@ -77,14 +80,14 @@ func queries(mainLoop *glib.MainLoop) error {
 		}
 	}()
 
-	bus.AddWatch(func(msg *gst.Message) bool {
+	bus.AddWatch(0, func(bus *gst.Bus, msg *gst.Message) bool {
 		switch msg.Type() {
-		case gst.MessageEOS:
+		case gst.MessageEos:
 			mainLoop.Quit()
 		case gst.MessageError:
-			gstErr := msg.ParseError()
-			fmt.Printf("Error from %s: %s\n", msg.Source(), gstErr.Error())
-			if debug := gstErr.DebugString(); debug != "" {
+			gstErr, debug := msg.ParseError()
+			fmt.Printf("Error from %s: %s\n", msg.Src(), gstErr.Error())
+			if debug != "" {
 				fmt.Println("go-gst-debug:", debug)
 			}
 			mainLoop.Quit()
@@ -100,5 +103,7 @@ func queries(mainLoop *glib.MainLoop) error {
 }
 
 func main() {
-	examples.RunLoop(queries)
+	if err := queries(); err != nil {
+		fmt.Println(err)
+	}
 }

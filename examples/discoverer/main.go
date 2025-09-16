@@ -15,13 +15,13 @@ import (
 	"os"
 	"time"
 
-	"github.com/go-gst/go-gst/gst"
-	"github.com/go-gst/go-gst/gst/pbutils"
+	"github.com/go-gst/go-gst/pkg/gst"
+	"github.com/go-gst/go-gst/pkg/gstpbutils"
 )
 
 func main() {
 
-	gst.Init(nil)
+	gst.Init()
 
 	if len(os.Args) < 2 {
 		fmt.Printf("USAGE: %s <uri>\n", os.Args[0])
@@ -30,7 +30,7 @@ func main() {
 
 	uri := os.Args[1]
 
-	discoverer, err := pbutils.NewDiscoverer(gst.ClockTime(time.Second * 15))
+	discoverer, err := gstpbutils.NewDiscoverer(gst.ClockTime(time.Second * 15))
 	if err != nil {
 		fmt.Println("ERROR:", err)
 		os.Exit(2)
@@ -45,23 +45,23 @@ func main() {
 	printDiscovererInfo(info)
 }
 
-func printDiscovererInfo(info *pbutils.DiscovererInfo) {
-	fmt.Println("URI:", info.GetURI())
-	fmt.Println("Duration:", info.GetDuration())
+func printDiscovererInfo(info *gstpbutils.DiscovererInfo) {
+	fmt.Println("URI:", info.URI())
+	fmt.Println("Duration:", info.Duration())
 
 	printTags(info)
-	printStreamInfo(info.GetStreamInfo())
+	printStreamInfo(info.StreamInfo())
 
-	children := info.GetStreamList()
+	children := info.StreamList()
 	fmt.Println("Children streams:")
 	for _, child := range children {
 		printStreamInfo(child)
 	}
 }
 
-func printTags(info *pbutils.DiscovererInfo) {
+func printTags(info *gstpbutils.DiscovererInfo) {
 	fmt.Println("Tags:")
-	tags := info.GetTags()
+	tags := info.Tags()
 	if tags != nil {
 		fmt.Println("  ", tags)
 		return
@@ -69,13 +69,13 @@ func printTags(info *pbutils.DiscovererInfo) {
 	fmt.Println("  no tags")
 }
 
-func printStreamInfo(info *pbutils.DiscovererStreamInfo) {
+func printStreamInfo(info *gstpbutils.DiscovererStreamInfo) {
 	if info == nil {
 		return
 	}
 	fmt.Println("Stream: ")
-	fmt.Println("  Stream id:", info.GetStreamID())
-	if caps := info.GetCaps(); caps != nil {
+	fmt.Println("  Stream id:", info.StreamID())
+	if caps := info.Caps(); caps != nil {
 		fmt.Println("  Format:", caps)
 	}
 }

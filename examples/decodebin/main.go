@@ -50,13 +50,9 @@ func buildPipeline() (*gst.Pipeline, error) {
 
 	pipeline := gst.NewPipeline("")
 
-	src, ok := gst.ElementFactoryMake("filesrc", "").(*gst.Element)
+	src := gst.ElementFactoryMake("filesrc", "")
 
-	if !ok {
-		return nil, fmt.Errorf("could not create filesource")
-	}
-
-	decodebin, ok := gst.ElementFactoryMake("decodebin", "").(*gst.Bin)
+	decodebin, ok := gst.ElementFactoryMake("decodebin", "").(*gst.Bin) // must cast since we need a weak reference
 	if !ok {
 		return nil, fmt.Errorf("could not create decodebin")
 	}

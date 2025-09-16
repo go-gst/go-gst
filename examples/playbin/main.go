@@ -16,40 +16,46 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/go-gst/go-glib/glib"
-	"github.com/go-gst/go-gst/examples"
-	"github.com/go-gst/go-gst/gst"
+	"github.com/diamondburned/gotk4/pkg/glib/v2"
+	"github.com/go-gst/go-gst/pkg/gst"
 )
 
-func playbin(mainLoop *glib.MainLoop) error {
+func playbin() error {
+	gst.Init()
+
+	mainLoop := glib.NewMainLoop(glib.MainContextDefault(), false)
+
 	if len(os.Args) < 2 {
 		return errors.New("usage: playbin <uri>")
 	}
 
-	gst.Init(nil)
+	gst.Init()
 
 	// Create a new playbin and set the URI on it
-	playbin, err := gst.NewElement("playbin")
-	if err != nil {
-		return err
+	ret := gst.ElementFactoryMake("playbin", "")
+	if ret != nil {
+		return fmt.Errorf("could not create playbin")
 	}
-	playbin.Set("uri", os.Args[1])
+
+	playbin := ret.(*gst.Pipeline)
+
+	playbin.SetObjectProperty("uri", os.Args[1])
 
 	// The playbin element itself is a pipeline, so it can be used as one, despite being
 	// created from an element factory.
-	bus := playbin.GetBus()
+	bus := playbin.Bus()
 
 	playbin.SetState(gst.StatePlaying)
 
-	bus.AddWatch(func(msg *gst.Message) bool {
+	bus.AddWatch(0, func(bus *gst.Bus, msg *gst.Message) bool {
 		switch msg.Type() {
-		case gst.MessageEOS:
+		case gst.MessageEos:
 			mainLoop.Quit()
 			return false
 		case gst.MessageError:
-			err := msg.ParseError()
+			err, debug := msg.ParseError()
 			fmt.Println("ERROR:", err.Error())
-			if debug := err.DebugString(); debug != "" {
+			if debug != "" {
 				fmt.Println("DEBUG")
 				fmt.Println(debug)
 			}
@@ -57,33 +63,36 @@ func playbin(mainLoop *glib.MainLoop) error {
 			return false
 		// Watch state change events
 		case gst.MessageStateChanged:
-			if _, newState := msg.ParseStateChanged(); newState == gst.StatePlaying {
-				bin := gst.ToGstBin(playbin)
+			if _, newState, _ := msg.ParseStateChanged(); newState == gst.StatePlaying {
 				// Generate a dot graph of the pipeline to GST_DEBUG_DUMP_DOT_DIR if defined
-				bin.DebugBinToDotFile(gst.DebugGraphShowAll, "PLAYING")
+				gst.DebugBinToDotFile(&playbin.Bin, gst.DebugGraphShowAll, "PLAYING")
 			}
 
 		// Tag messages contain changes to tags on the stream. This can include metadata about
 		// the stream such as codecs, artists, albums, etc.
 		case gst.MessageTag:
-			tags := msg.ParseTags()
+			tags := msg.ParseTag()
 			fmt.Println("Tags:")
-			if artist, ok := tags.GetString(gst.TagArtist); ok {
+			if artist, ok := tags.String(gst.TAG_ARTIST); ok {
 				fmt.Println("  Artist:", artist)
 			}
-			if album, ok := tags.GetString(gst.TagAlbum); ok {
+			if album, ok := tags.String(gst.TAG_ALBUM); ok {
 				fmt.Println("  Album:", album)
 			}
-			if title, ok := tags.GetString(gst.TagTitle); ok {
+			if title, ok := tags.String(gst.TAG_TITLE); ok {
 				fmt.Println("  Title:", title)
 			}
 		}
 		return true
 	})
 
-	return mainLoop.RunError()
+	mainLoop.Run()
+
+	return nil
 }
 
 func main() {
-	examples.RunLoop(playbin)
+	if err := playbin(); err != nil {
+		fmt.Println(err)
+	}
 }

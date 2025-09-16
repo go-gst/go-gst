@@ -2,11 +2,6 @@
 
 This directory contains examples of some common use cases of gstreamer using the go bindings.
 
-The common package provided to each example exports two methods.
-
- - `Run(f)` - This wraps the given function in a goroutine and wraps a GMainLoop around it.
- - `RunLoop(f(loop))` - This simply creates (but does not start) a GMainLoop and passes it to the example to manage.
-
 Each example can be run in one of two ways:
 
 ```bash
@@ -17,3 +12,5 @@ go run <example>/main.go [..args]
 cd <example> && go build .
 ./<example> [..args]
 ```
+
+See the plugins subdirectory to learn how to write custom elements in `go-gst`
