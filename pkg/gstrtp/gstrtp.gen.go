@@ -9,7 +9,6 @@ import (
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/core/classdata"
-	"github.com/diamondburned/gotk4/pkg/core/profile"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
@@ -5355,12 +5354,10 @@ func UnsafeRTCPBufferFromGlibNone(p unsafe.Pointer) *RTCPBuffer {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTCPBuffer)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTCPBuffer,
 		func (intern *rTCPBuffer) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -5372,12 +5369,10 @@ func UnsafeRTCPBufferFromGlibFull(p unsafe.Pointer) *RTCPBuffer {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTCPBuffer)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTCPBuffer,
 		func (intern *rTCPBuffer) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -5769,12 +5764,10 @@ func UnsafeRTCPPacketFromGlibNone(p unsafe.Pointer) *RTCPPacket {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTCPPacket)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTCPPacket,
 		func (intern *rTCPPacket) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -5786,12 +5779,10 @@ func UnsafeRTCPPacketFromGlibFull(p unsafe.Pointer) *RTCPPacket {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTCPPacket)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTCPPacket,
 		func (intern *rTCPPacket) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -8288,12 +8279,10 @@ func UnsafeRTPBufferFromGlibNone(p unsafe.Pointer) *RTPBuffer {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTPBuffer)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTPBuffer,
 		func (intern *rTPBuffer) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -8305,12 +8294,10 @@ func UnsafeRTPBufferFromGlibFull(p unsafe.Pointer) *RTPBuffer {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTPBuffer)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTPBuffer,
 		func (intern *rTPBuffer) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -9487,12 +9474,10 @@ func UnsafeRTPPayloadInfoFromGlibNone(p unsafe.Pointer) *RTPPayloadInfo {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTPPayloadInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTPPayloadInfo,
 		func (intern *rTPPayloadInfo) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -9504,12 +9489,10 @@ func UnsafeRTPPayloadInfoFromGlibFull(p unsafe.Pointer) *RTPPayloadInfo {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTPPayloadInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTPPayloadInfo,
 		func (intern *rTPPayloadInfo) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -9647,12 +9630,10 @@ func UnsafeRTPSourceMetaFromGlibNone(p unsafe.Pointer) *RTPSourceMeta {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTPSourceMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTPSourceMeta,
 		func (intern *rTPSourceMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -9664,12 +9645,10 @@ func UnsafeRTPSourceMetaFromGlibFull(p unsafe.Pointer) *RTPSourceMeta {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.rTPSourceMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.rTPSourceMeta,
 		func (intern *rTPSourceMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped

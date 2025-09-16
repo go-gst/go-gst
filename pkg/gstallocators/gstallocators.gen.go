@@ -7,7 +7,6 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/diamondburned/gotk4/pkg/core/profile"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
 )
@@ -1366,12 +1365,10 @@ func UnsafePhysMemoryAllocatorInterfaceFromGlibNone(p unsafe.Pointer) *PhysMemor
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.physMemoryAllocatorInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.physMemoryAllocatorInterface,
 		func (intern *physMemoryAllocatorInterface) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -1383,12 +1380,10 @@ func UnsafePhysMemoryAllocatorInterfaceFromGlibFull(p unsafe.Pointer) *PhysMemor
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.physMemoryAllocatorInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.physMemoryAllocatorInterface,
 		func (intern *physMemoryAllocatorInterface) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped

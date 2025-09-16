@@ -6,7 +6,6 @@ import (
 	"runtime"
 	"unsafe"
 
-	"github.com/diamondburned/gotk4/pkg/core/profile"
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
 	"github.com/diamondburned/gotk4/pkg/gio/v2"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
@@ -1164,12 +1163,10 @@ func UnsafeNetAddressMetaFromGlibNone(p unsafe.Pointer) *NetAddressMeta {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.netAddressMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.netAddressMeta,
 		func (intern *netAddressMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -1181,12 +1178,10 @@ func UnsafeNetAddressMetaFromGlibFull(p unsafe.Pointer) *NetAddressMeta {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.netAddressMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.netAddressMeta,
 		func (intern *netAddressMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -1327,12 +1322,10 @@ func UnsafeNetControlMessageMetaFromGlibNone(p unsafe.Pointer) *NetControlMessag
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.netControlMessageMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.netControlMessageMeta,
 		func (intern *netControlMessageMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -1344,12 +1337,10 @@ func UnsafeNetControlMessageMetaFromGlibFull(p unsafe.Pointer) *NetControlMessag
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.netControlMessageMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.netControlMessageMeta,
 		func (intern *netControlMessageMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -1450,12 +1441,10 @@ func UnsafeNetTimePacketFromGlibNone(p unsafe.Pointer) *NetTimePacket {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.netTimePacket)), 1)
 	runtime.SetFinalizer(
 		wrapped.netTimePacket,
 		func (intern *netTimePacket) {
 			C.gst_net_time_packet_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -1467,12 +1456,10 @@ func UnsafeNetTimePacketFromGlibFull(p unsafe.Pointer) *NetTimePacket {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.netTimePacket)), 1)
 	runtime.SetFinalizer(
 		wrapped.netTimePacket,
 		func (intern *netTimePacket) {
 			C.gst_net_time_packet_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped

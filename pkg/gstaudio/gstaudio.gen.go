@@ -9,7 +9,6 @@ import (
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/core/classdata"
-	"github.com/diamondburned/gotk4/pkg/core/profile"
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
@@ -15340,12 +15339,10 @@ func UnsafeAudioBufferFromGlibNone(p unsafe.Pointer) *AudioBuffer {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.audioBuffer)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioBuffer,
 		func (intern *audioBuffer) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15357,12 +15354,10 @@ func UnsafeAudioBufferFromGlibFull(p unsafe.Pointer) *AudioBuffer {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.audioBuffer)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioBuffer,
 		func (intern *audioBuffer) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15719,12 +15714,10 @@ func UnsafeAudioCdSrcTrackFromGlibNone(p unsafe.Pointer) *AudioCdSrcTrack {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.audioCdSrcTrack)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioCdSrcTrack,
 		func (intern *audioCdSrcTrack) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15736,12 +15729,10 @@ func UnsafeAudioCdSrcTrackFromGlibFull(p unsafe.Pointer) *AudioCdSrcTrack {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.audioCdSrcTrack)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioCdSrcTrack,
 		func (intern *audioCdSrcTrack) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15807,12 +15798,10 @@ func UnsafeAudioChannelMixerFromGlibNone(p unsafe.Pointer) *AudioChannelMixer {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.audioChannelMixer)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioChannelMixer,
 		func (intern *audioChannelMixer) {
 			C.gst_audio_channel_mixer_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15824,12 +15813,10 @@ func UnsafeAudioChannelMixerFromGlibFull(p unsafe.Pointer) *AudioChannelMixer {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.audioChannelMixer)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioChannelMixer,
 		func (intern *audioChannelMixer) {
 			C.gst_audio_channel_mixer_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15942,12 +15929,10 @@ func UnsafeAudioClippingMetaFromGlibNone(p unsafe.Pointer) *AudioClippingMeta {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.audioClippingMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioClippingMeta,
 		func (intern *audioClippingMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15959,12 +15944,10 @@ func UnsafeAudioClippingMetaFromGlibFull(p unsafe.Pointer) *AudioClippingMeta {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.audioClippingMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioClippingMeta,
 		func (intern *audioClippingMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -16123,12 +16106,10 @@ func UnsafeAudioConverterFromGlibNone(p unsafe.Pointer) *AudioConverter {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.audioConverter)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioConverter,
 		func (intern *audioConverter) {
 			C.gst_audio_converter_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -16140,12 +16121,10 @@ func UnsafeAudioConverterFromGlibFull(p unsafe.Pointer) *AudioConverter {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.audioConverter)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioConverter,
 		func (intern *audioConverter) {
 			C.gst_audio_converter_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -16560,12 +16539,10 @@ func UnsafeAudioDownmixMetaFromGlibNone(p unsafe.Pointer) *AudioDownmixMeta {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.audioDownmixMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioDownmixMeta,
 		func (intern *audioDownmixMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -16577,12 +16554,10 @@ func UnsafeAudioDownmixMetaFromGlibFull(p unsafe.Pointer) *AudioDownmixMeta {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.audioDownmixMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioDownmixMeta,
 		func (intern *audioDownmixMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -16815,12 +16790,10 @@ func UnsafeAudioFormatInfoFromGlibNone(p unsafe.Pointer) *AudioFormatInfo {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.audioFormatInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioFormatInfo,
 		func (intern *audioFormatInfo) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -16832,12 +16805,10 @@ func UnsafeAudioFormatInfoFromGlibFull(p unsafe.Pointer) *AudioFormatInfo {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.audioFormatInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioFormatInfo,
 		func (intern *audioFormatInfo) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -16923,12 +16894,10 @@ func UnsafeAudioInfoFromGlibNone(p unsafe.Pointer) *AudioInfo {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.audioInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioInfo,
 		func (intern *audioInfo) {
 			C.gst_audio_info_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -16940,12 +16909,10 @@ func UnsafeAudioInfoFromGlibFull(p unsafe.Pointer) *AudioInfo {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.audioInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioInfo,
 		func (intern *audioInfo) {
 			C.gst_audio_info_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -17278,12 +17245,10 @@ func UnsafeAudioLevelMetaFromGlibNone(p unsafe.Pointer) *AudioLevelMeta {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.audioLevelMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioLevelMeta,
 		func (intern *audioLevelMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -17295,12 +17260,10 @@ func UnsafeAudioLevelMetaFromGlibFull(p unsafe.Pointer) *AudioLevelMeta {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.audioLevelMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioLevelMeta,
 		func (intern *audioLevelMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -17389,12 +17352,10 @@ func UnsafeAudioMetaFromGlibNone(p unsafe.Pointer) *AudioMeta {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.audioMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioMeta,
 		func (intern *audioMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -17406,12 +17367,10 @@ func UnsafeAudioMetaFromGlibFull(p unsafe.Pointer) *AudioMeta {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.audioMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioMeta,
 		func (intern *audioMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -17494,12 +17453,10 @@ func UnsafeAudioQuantizeFromGlibNone(p unsafe.Pointer) *AudioQuantize {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.audioQuantize)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioQuantize,
 		func (intern *audioQuantize) {
 			C.gst_audio_quantize_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -17511,12 +17468,10 @@ func UnsafeAudioQuantizeFromGlibFull(p unsafe.Pointer) *AudioQuantize {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.audioQuantize)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioQuantize,
 		func (intern *audioQuantize) {
 			C.gst_audio_quantize_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -17598,12 +17553,10 @@ func UnsafeAudioResamplerFromGlibNone(p unsafe.Pointer) *AudioResampler {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.audioResampler)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioResampler,
 		func (intern *audioResampler) {
 			C.gst_audio_resampler_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -17615,12 +17568,10 @@ func UnsafeAudioResamplerFromGlibFull(p unsafe.Pointer) *AudioResampler {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.audioResampler)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioResampler,
 		func (intern *audioResampler) {
 			C.gst_audio_resampler_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -17974,12 +17925,10 @@ func UnsafeAudioRingBufferSpecFromGlibNone(p unsafe.Pointer) *AudioRingBufferSpe
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.audioRingBufferSpec)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioRingBufferSpec,
 		func (intern *audioRingBufferSpec) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -17991,12 +17940,10 @@ func UnsafeAudioRingBufferSpecFromGlibFull(p unsafe.Pointer) *AudioRingBufferSpe
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.audioRingBufferSpec)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioRingBufferSpec,
 		func (intern *audioRingBufferSpec) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -18114,12 +18061,10 @@ func UnsafeAudioSinkClassExtensionFromGlibNone(p unsafe.Pointer) *AudioSinkClass
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.audioSinkClassExtension)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioSinkClassExtension,
 		func (intern *audioSinkClassExtension) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -18131,12 +18076,10 @@ func UnsafeAudioSinkClassExtensionFromGlibFull(p unsafe.Pointer) *AudioSinkClass
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.audioSinkClassExtension)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioSinkClassExtension,
 		func (intern *audioSinkClassExtension) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -18279,12 +18222,10 @@ func UnsafeAudioStreamAlignFromGlibNone(p unsafe.Pointer) *AudioStreamAlign {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.audioStreamAlign)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioStreamAlign,
 		func (intern *audioStreamAlign) {
 			C.gst_audio_stream_align_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -18296,12 +18237,10 @@ func UnsafeAudioStreamAlignFromGlibFull(p unsafe.Pointer) *AudioStreamAlign {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.audioStreamAlign)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioStreamAlign,
 		func (intern *audioStreamAlign) {
 			C.gst_audio_stream_align_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -18758,12 +18697,10 @@ func UnsafeDsdInfoFromGlibNone(p unsafe.Pointer) *DsdInfo {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.dsdInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.dsdInfo,
 		func (intern *dsdInfo) {
 			C.gst_dsd_info_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -18775,12 +18712,10 @@ func UnsafeDsdInfoFromGlibFull(p unsafe.Pointer) *DsdInfo {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.dsdInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.dsdInfo,
 		func (intern *dsdInfo) {
 			C.gst_dsd_info_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -19082,12 +19017,10 @@ func UnsafeDsdPlaneOffsetMetaFromGlibNone(p unsafe.Pointer) *DsdPlaneOffsetMeta 
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.dsdPlaneOffsetMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.dsdPlaneOffsetMeta,
 		func (intern *dsdPlaneOffsetMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -19099,12 +19032,10 @@ func UnsafeDsdPlaneOffsetMetaFromGlibFull(p unsafe.Pointer) *DsdPlaneOffsetMeta 
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.dsdPlaneOffsetMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.dsdPlaneOffsetMeta,
 		func (intern *dsdPlaneOffsetMeta) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -19187,12 +19118,10 @@ func UnsafeStreamVolumeInterfaceFromGlibNone(p unsafe.Pointer) *StreamVolumeInte
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.streamVolumeInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.streamVolumeInterface,
 		func (intern *streamVolumeInterface) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -19204,12 +19133,10 @@ func UnsafeStreamVolumeInterfaceFromGlibFull(p unsafe.Pointer) *StreamVolumeInte
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.streamVolumeInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.streamVolumeInterface,
 		func (intern *streamVolumeInterface) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped

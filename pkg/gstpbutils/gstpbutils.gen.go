@@ -9,7 +9,6 @@ import (
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/core/classdata"
-	"github.com/diamondburned/gotk4/pkg/core/profile"
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
@@ -8067,12 +8066,10 @@ func UnsafeInstallPluginsContextFromGlibNone(p unsafe.Pointer) *InstallPluginsCo
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.installPluginsContext)), 1)
 	runtime.SetFinalizer(
 		wrapped.installPluginsContext,
 		func (intern *installPluginsContext) {
 			C.gst_install_plugins_context_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -8084,12 +8081,10 @@ func UnsafeInstallPluginsContextFromGlibFull(p unsafe.Pointer) *InstallPluginsCo
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.installPluginsContext)), 1)
 	runtime.SetFinalizer(
 		wrapped.installPluginsContext,
 		func (intern *installPluginsContext) {
 			C.gst_install_plugins_context_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped

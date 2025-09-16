@@ -7,7 +7,6 @@ import (
 	"runtime"
 	"unsafe"
 
-	"github.com/diamondburned/gotk4/pkg/core/profile"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
@@ -5386,12 +5385,10 @@ func UnsafePlayVideoRendererInterfaceFromGlibNone(p unsafe.Pointer) *PlayVideoRe
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.playVideoRendererInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.playVideoRendererInterface,
 		func (intern *playVideoRendererInterface) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -5403,12 +5400,10 @@ func UnsafePlayVideoRendererInterfaceFromGlibFull(p unsafe.Pointer) *PlayVideoRe
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.playVideoRendererInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.playVideoRendererInterface,
 		func (intern *playVideoRendererInterface) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -5491,12 +5486,10 @@ func UnsafePlayVisualizationFromGlibNone(p unsafe.Pointer) *PlayVisualization {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.playVisualization)), 1)
 	runtime.SetFinalizer(
 		wrapped.playVisualization,
 		func (intern *playVisualization) {
 			C.gst_play_visualization_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -5508,12 +5501,10 @@ func UnsafePlayVisualizationFromGlibFull(p unsafe.Pointer) *PlayVisualization {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.playVisualization)), 1)
 	runtime.SetFinalizer(
 		wrapped.playVisualization,
 		func (intern *playVisualization) {
 			C.gst_play_visualization_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped

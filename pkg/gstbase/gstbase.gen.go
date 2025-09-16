@@ -9,7 +9,6 @@ import (
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/core/classdata"
-	"github.com/diamondburned/gotk4/pkg/core/profile"
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
@@ -18541,12 +18540,10 @@ func UnsafeBaseParseFrameFromGlibNone(p unsafe.Pointer) *BaseParseFrame {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.baseParseFrame)), 1)
 	runtime.SetFinalizer(
 		wrapped.baseParseFrame,
 		func (intern *baseParseFrame) {
 			C.gst_base_parse_frame_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -18558,12 +18555,10 @@ func UnsafeBaseParseFrameFromGlibFull(p unsafe.Pointer) *BaseParseFrame {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.baseParseFrame)), 1)
 	runtime.SetFinalizer(
 		wrapped.baseParseFrame,
 		func (intern *baseParseFrame) {
 			C.gst_base_parse_frame_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -18880,12 +18875,10 @@ func UnsafeBitReaderFromGlibNone(p unsafe.Pointer) *BitReader {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.bitReader)), 1)
 	runtime.SetFinalizer(
 		wrapped.bitReader,
 		func (intern *bitReader) {
 			C.gst_bit_reader_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -18897,12 +18890,10 @@ func UnsafeBitReaderFromGlibFull(p unsafe.Pointer) *BitReader {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.bitReader)), 1)
 	runtime.SetFinalizer(
 		wrapped.bitReader,
 		func (intern *bitReader) {
 			C.gst_bit_reader_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -19442,12 +19433,10 @@ func UnsafeBitWriterFromGlibNone(p unsafe.Pointer) *BitWriter {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.bitWriter)), 1)
 	runtime.SetFinalizer(
 		wrapped.bitWriter,
 		func (intern *bitWriter) {
 			C.gst_bit_writer_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -19459,12 +19448,10 @@ func UnsafeBitWriterFromGlibFull(p unsafe.Pointer) *BitWriter {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.bitWriter)), 1)
 	runtime.SetFinalizer(
 		wrapped.bitWriter,
 		func (intern *bitWriter) {
 			C.gst_bit_writer_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -19851,12 +19838,10 @@ func UnsafeByteReaderFromGlibNone(p unsafe.Pointer) *ByteReader {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.byteReader)), 1)
 	runtime.SetFinalizer(
 		wrapped.byteReader,
 		func (intern *byteReader) {
 			C.gst_byte_reader_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -19868,12 +19853,10 @@ func UnsafeByteReaderFromGlibFull(p unsafe.Pointer) *ByteReader {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.byteReader)), 1)
 	runtime.SetFinalizer(
 		wrapped.byteReader,
 		func (intern *byteReader) {
 			C.gst_byte_reader_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21737,12 +21720,10 @@ func UnsafeByteWriterFromGlibNone(p unsafe.Pointer) *ByteWriter {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.byteWriter)), 1)
 	runtime.SetFinalizer(
 		wrapped.byteWriter,
 		func (intern *byteWriter) {
 			C.gst_byte_writer_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21754,12 +21735,10 @@ func UnsafeByteWriterFromGlibFull(p unsafe.Pointer) *ByteWriter {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.byteWriter)), 1)
 	runtime.SetFinalizer(
 		wrapped.byteWriter,
 		func (intern *byteWriter) {
 			C.gst_byte_writer_free(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22961,12 +22940,10 @@ func UnsafeCollectDataFromGlibNone(p unsafe.Pointer) *CollectData {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.collectData)), 1)
 	runtime.SetFinalizer(
 		wrapped.collectData,
 		func (intern *collectData) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22978,12 +22955,10 @@ func UnsafeCollectDataFromGlibFull(p unsafe.Pointer) *CollectData {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.collectData)), 1)
 	runtime.SetFinalizer(
 		wrapped.collectData,
 		func (intern *collectData) {
 			C.free(unsafe.Pointer(intern.native))
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -23200,12 +23175,10 @@ func UnsafeFlowCombinerFromGlibNone(p unsafe.Pointer) *FlowCombiner {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.flowCombiner)), 1)
 	runtime.SetFinalizer(
 		wrapped.flowCombiner,
 		func (intern *flowCombiner) {
 			C.gst_flow_combiner_unref(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -23217,12 +23190,10 @@ func UnsafeFlowCombinerFromGlibFull(p unsafe.Pointer) *FlowCombiner {
 	if wrapped == nil {
 		return nil
 	}
-	profile.Track(uintptr(unsafe.Pointer(wrapped.flowCombiner)), 1)
 	runtime.SetFinalizer(
 		wrapped.flowCombiner,
 		func (intern *flowCombiner) {
 			C.gst_flow_combiner_unref(intern.native)
-			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped

@@ -8,7 +8,6 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/diamondburned/gotk4/pkg/core/profile"
 	"github.com/go-gst/go-gst/examples/plugins/basetransform/internal/customtransform"
 	"github.com/go-gst/go-gst/pkg/gst"
 )
@@ -46,12 +45,6 @@ func main() {
 
 	for range 10 {
 		runtime.GC()
-	}
-
-	if profile.Count() > 0 {
-		fmt.Fprintf(os.Stderr, "Memory leak detected: %d objects still tracked\n", profile.Count())
-	} else {
-		fmt.Fprintln(os.Stderr, "No memory leaks detected")
 	}
 
 	if err != nil {
