@@ -202,12 +202,44 @@ var Data = genmain.Overlay(
 			typesystem.MarkAsManuallyExtended("Gst-1", "Bus"),
 			typesystem.MarkAsManuallyExtended("Gst-1", "ChildProxy"),
 			typesystem.MarkAsManuallyExtended("Gst-1", "TagSetter"),
-			func(r *typesystem.Registry) error {
-				// this is needed to fix gstreamer <= 1.24.10. Remove once upgraded in the flake
-				webrtc := r.FindNamespaceByName("GstWebRTC-1")
+			// func(r *typesystem.Registry) error {
+			// 	// this is needed to fix gstreamer <= 1.24.10. Remove once upgraded in the flake
+			// 	webrtc := r.FindNamespaceByName("GstWebRTC-1")
 
-				webrtc.Packages = append(webrtc.Packages, "gstreamer-sdp-1.0")
-				webrtc.CIncludes = append(webrtc.CIncludes, "gst/webrtc/sctptransport.h")
+			// 	webrtc.Packages = append(webrtc.Packages, "gstreamer-sdp-1.0")
+			// 	webrtc.CIncludes = append(webrtc.CIncludes, "gst/webrtc/sctptransport.h")
+
+			// 	return nil
+			// },
+			// Virtual methods of BaseTransform collide with Element
+			func(r *typesystem.Registry) error {
+				base := r.FindNamespaceByName("GstBase-1")
+
+				bt := base.FindLocalTypeByGIRName("BaseTransform").(*typesystem.Class)
+
+				bt.FindVirtualMethod("query").ParentName = "ParentQueryBaseTransform"
+
+				return nil
+			},
+			// Virtual methods of PushSrc collide with BaseSrc
+			func(r *typesystem.Registry) error {
+				base := r.FindNamespaceByName("GstBase-1")
+
+				pushsrc := base.FindLocalTypeByGIRName("PushSrc").(*typesystem.Class)
+
+				pushsrc.FindVirtualMethod("alloc").ParentName = "ParentAllocPushSrc"
+				pushsrc.FindVirtualMethod("fill").ParentName = "ParentFillPushSrc"
+
+				return nil
+			},
+			// Virtual methods of AudioSink collide with BaseSink
+			func(r *typesystem.Registry) error {
+				audio := r.FindNamespaceByName("GstAudio-1")
+
+				audioSink := audio.FindLocalTypeByGIRName("AudioSink").(*typesystem.Class)
+
+				audioSink.FindVirtualMethod("prepare").ParentName = "ParentPrepareAudioSink"
+				audioSink.FindVirtualMethod("stop").ParentName = "ParentStopAudioSink"
 
 				return nil
 			},
