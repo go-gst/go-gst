@@ -7331,7 +7331,7 @@ func (balance *ColorBalance) BalanceType() ColorBalanceType {
 	var _arg0 *C.GstColorBalance    // out
 	var _cret C.GstColorBalanceType // in
 
-	_arg0 = (*C.GstColorBalance)(unsafe.Pointer(coreglib.InternObject(balance).Native()))
+	_arg0 = (*C.GstColorBalance)(unsafe.Pointer(coreglib.BaseObject(balance).Native()))
 
 	_cret = C.gst_color_balance_get_balance_type(_arg0)
 	runtime.KeepAlive(balance)
@@ -7361,8 +7361,8 @@ func (balance *ColorBalance) Value(channel *ColorBalanceChannel) int {
 	var _arg1 *C.GstColorBalanceChannel // out
 	var _cret C.gint                    // in
 
-	_arg0 = (*C.GstColorBalance)(unsafe.Pointer(coreglib.InternObject(balance).Native()))
-	_arg1 = (*C.GstColorBalanceChannel)(unsafe.Pointer(coreglib.InternObject(channel).Native()))
+	_arg0 = (*C.GstColorBalance)(unsafe.Pointer(coreglib.BaseObject(balance).Native()))
+	_arg1 = (*C.GstColorBalanceChannel)(unsafe.Pointer(coreglib.BaseObject(channel).Native()))
 
 	_cret = C.gst_color_balance_get_value(_arg0, _arg1)
 	runtime.KeepAlive(balance)
@@ -7385,7 +7385,7 @@ func (balance *ColorBalance) ListChannels() []*ColorBalanceChannel {
 	var _arg0 *C.GstColorBalance // out
 	var _cret *C.GList           // in
 
-	_arg0 = (*C.GstColorBalance)(unsafe.Pointer(coreglib.InternObject(balance).Native()))
+	_arg0 = (*C.GstColorBalance)(unsafe.Pointer(coreglib.BaseObject(balance).Native()))
 
 	_cret = C.gst_color_balance_list_channels(_arg0)
 	runtime.KeepAlive(balance)
@@ -7418,8 +7418,8 @@ func (balance *ColorBalance) SetValue(channel *ColorBalanceChannel, value int) {
 	var _arg1 *C.GstColorBalanceChannel // out
 	var _arg2 C.gint                    // out
 
-	_arg0 = (*C.GstColorBalance)(unsafe.Pointer(coreglib.InternObject(balance).Native()))
-	_arg1 = (*C.GstColorBalanceChannel)(unsafe.Pointer(coreglib.InternObject(channel).Native()))
+	_arg0 = (*C.GstColorBalance)(unsafe.Pointer(coreglib.BaseObject(balance).Native()))
+	_arg1 = (*C.GstColorBalanceChannel)(unsafe.Pointer(coreglib.BaseObject(channel).Native()))
 	_arg2 = C.gint(value)
 
 	C.gst_color_balance_set_value(_arg0, _arg1, _arg2)
@@ -7442,8 +7442,8 @@ func (balance *ColorBalance) ValueChanged(channel *ColorBalanceChannel, value in
 	var _arg1 *C.GstColorBalanceChannel // out
 	var _arg2 C.gint                    // out
 
-	_arg0 = (*C.GstColorBalance)(unsafe.Pointer(coreglib.InternObject(balance).Native()))
-	_arg1 = (*C.GstColorBalanceChannel)(unsafe.Pointer(coreglib.InternObject(channel).Native()))
+	_arg0 = (*C.GstColorBalance)(unsafe.Pointer(coreglib.BaseObject(balance).Native()))
+	_arg1 = (*C.GstColorBalanceChannel)(unsafe.Pointer(coreglib.BaseObject(channel).Native()))
 	_arg2 = C.gint(value)
 
 	C.gst_color_balance_value_changed(_arg0, _arg1, _arg2)
@@ -7464,7 +7464,7 @@ func (balance *ColorBalance) balanceType() ColorBalanceType {
 	var _arg0 *C.GstColorBalance    // out
 	var _cret C.GstColorBalanceType // in
 
-	_arg0 = (*C.GstColorBalance)(unsafe.Pointer(coreglib.InternObject(balance).Native()))
+	_arg0 = (*C.GstColorBalance)(unsafe.Pointer(coreglib.BaseObject(balance).Native()))
 
 	_cret = C._gotk4_gstvideo1_ColorBalance_virtual_get_balance_type(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(balance)
@@ -7497,8 +7497,8 @@ func (balance *ColorBalance) value(channel *ColorBalanceChannel) int {
 	var _arg1 *C.GstColorBalanceChannel // out
 	var _cret C.gint                    // in
 
-	_arg0 = (*C.GstColorBalance)(unsafe.Pointer(coreglib.InternObject(balance).Native()))
-	_arg1 = (*C.GstColorBalanceChannel)(unsafe.Pointer(coreglib.InternObject(channel).Native()))
+	_arg0 = (*C.GstColorBalance)(unsafe.Pointer(coreglib.BaseObject(balance).Native()))
+	_arg1 = (*C.GstColorBalanceChannel)(unsafe.Pointer(coreglib.BaseObject(channel).Native()))
 
 	_cret = C._gotk4_gstvideo1_ColorBalance_virtual_get_value(unsafe.Pointer(fnarg), _arg0, _arg1)
 	runtime.KeepAlive(balance)
@@ -7524,7 +7524,7 @@ func (balance *ColorBalance) listChannels() []*ColorBalanceChannel {
 	var _arg0 *C.GstColorBalance // out
 	var _cret *C.GList           // in
 
-	_arg0 = (*C.GstColorBalance)(unsafe.Pointer(coreglib.InternObject(balance).Native()))
+	_arg0 = (*C.GstColorBalance)(unsafe.Pointer(coreglib.BaseObject(balance).Native()))
 
 	_cret = C._gotk4_gstvideo1_ColorBalance_virtual_list_channels(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(balance)
@@ -7560,8 +7560,8 @@ func (balance *ColorBalance) setValue(channel *ColorBalanceChannel, value int) {
 	var _arg1 *C.GstColorBalanceChannel // out
 	var _arg2 C.gint                    // out
 
-	_arg0 = (*C.GstColorBalance)(unsafe.Pointer(coreglib.InternObject(balance).Native()))
-	_arg1 = (*C.GstColorBalanceChannel)(unsafe.Pointer(coreglib.InternObject(channel).Native()))
+	_arg0 = (*C.GstColorBalance)(unsafe.Pointer(coreglib.BaseObject(balance).Native()))
+	_arg1 = (*C.GstColorBalanceChannel)(unsafe.Pointer(coreglib.BaseObject(channel).Native()))
 	_arg2 = C.gint(value)
 
 	C._gotk4_gstvideo1_ColorBalance_virtual_set_value(unsafe.Pointer(fnarg), _arg0, _arg1, _arg2)
@@ -7587,8 +7587,8 @@ func (balance *ColorBalance) valueChanged(channel *ColorBalanceChannel, value in
 	var _arg1 *C.GstColorBalanceChannel // out
 	var _arg2 C.gint                    // out
 
-	_arg0 = (*C.GstColorBalance)(unsafe.Pointer(coreglib.InternObject(balance).Native()))
-	_arg1 = (*C.GstColorBalanceChannel)(unsafe.Pointer(coreglib.InternObject(channel).Native()))
+	_arg0 = (*C.GstColorBalance)(unsafe.Pointer(coreglib.BaseObject(balance).Native()))
+	_arg1 = (*C.GstColorBalanceChannel)(unsafe.Pointer(coreglib.BaseObject(channel).Native()))
 	_arg2 = C.gint(value)
 
 	C._gotk4_gstvideo1_ColorBalance_virtual_value_changed(unsafe.Pointer(fnarg), _arg0, _arg1, _arg2)
@@ -7669,7 +7669,7 @@ func (navigation *Navigation) SendCommand(command NavigationCommand) {
 	var _arg0 *C.GstNavigation       // out
 	var _arg1 C.GstNavigationCommand // out
 
-	_arg0 = (*C.GstNavigation)(unsafe.Pointer(coreglib.InternObject(navigation).Native()))
+	_arg0 = (*C.GstNavigation)(unsafe.Pointer(coreglib.BaseObject(navigation).Native()))
 	_arg1 = C.GstNavigationCommand(command)
 
 	C.gst_navigation_send_command(_arg0, _arg1)
@@ -7681,7 +7681,7 @@ func (navigation *Navigation) SendEvent(structure *gst.Structure) {
 	var _arg0 *C.GstNavigation // out
 	var _arg1 *C.GstStructure  // out
 
-	_arg0 = (*C.GstNavigation)(unsafe.Pointer(coreglib.InternObject(navigation).Native()))
+	_arg0 = (*C.GstNavigation)(unsafe.Pointer(coreglib.BaseObject(navigation).Native()))
 	_arg1 = (*C.GstStructure)(gextras.StructNative(unsafe.Pointer(structure)))
 
 	C.gst_navigation_send_event(_arg0, _arg1)
@@ -7698,7 +7698,7 @@ func (navigation *Navigation) SendEventSimple(event *gst.Event) {
 	var _arg0 *C.GstNavigation // out
 	var _arg1 *C.GstEvent      // out
 
-	_arg0 = (*C.GstNavigation)(unsafe.Pointer(coreglib.InternObject(navigation).Native()))
+	_arg0 = (*C.GstNavigation)(unsafe.Pointer(coreglib.BaseObject(navigation).Native()))
 	_arg1 = (*C.GstEvent)(gextras.StructNative(unsafe.Pointer(event)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(event)), nil)
 
@@ -7718,7 +7718,7 @@ func (navigation *Navigation) SendKeyEvent(event, key string) {
 	var _arg1 *C.char          // out
 	var _arg2 *C.char          // out
 
-	_arg0 = (*C.GstNavigation)(unsafe.Pointer(coreglib.InternObject(navigation).Native()))
+	_arg0 = (*C.GstNavigation)(unsafe.Pointer(coreglib.BaseObject(navigation).Native()))
 	_arg1 = (*C.char)(unsafe.Pointer(C.CString(event)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = (*C.char)(unsafe.Pointer(C.CString(key)))
@@ -7750,7 +7750,7 @@ func (navigation *Navigation) SendMouseEvent(event string, button int, x, y floa
 	var _arg3 C.double         // out
 	var _arg4 C.double         // out
 
-	_arg0 = (*C.GstNavigation)(unsafe.Pointer(coreglib.InternObject(navigation).Native()))
+	_arg0 = (*C.GstNavigation)(unsafe.Pointer(coreglib.BaseObject(navigation).Native()))
 	_arg1 = (*C.char)(unsafe.Pointer(C.CString(event)))
 	defer C.free(unsafe.Pointer(_arg1))
 	_arg2 = C.int(button)
@@ -7783,7 +7783,7 @@ func (navigation *Navigation) SendMouseScrollEvent(x, y, deltaX, deltaY float64)
 	var _arg3 C.double         // out
 	var _arg4 C.double         // out
 
-	_arg0 = (*C.GstNavigation)(unsafe.Pointer(coreglib.InternObject(navigation).Native()))
+	_arg0 = (*C.GstNavigation)(unsafe.Pointer(coreglib.BaseObject(navigation).Native()))
 	_arg1 = C.double(x)
 	_arg2 = C.double(y)
 	_arg3 = C.double(deltaX)
@@ -7807,7 +7807,7 @@ func (navigation *Navigation) sendEvent(structure *gst.Structure) {
 	var _arg0 *C.GstNavigation // out
 	var _arg1 *C.GstStructure  // out
 
-	_arg0 = (*C.GstNavigation)(unsafe.Pointer(coreglib.InternObject(navigation).Native()))
+	_arg0 = (*C.GstNavigation)(unsafe.Pointer(coreglib.BaseObject(navigation).Native()))
 	_arg1 = (*C.GstStructure)(gextras.StructNative(unsafe.Pointer(structure)))
 
 	C._gotk4_gstvideo1_Navigation_virtual_send_event(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -7827,7 +7827,7 @@ func (navigation *Navigation) sendEventSimple(event *gst.Event) {
 	var _arg0 *C.GstNavigation // out
 	var _arg1 *C.GstEvent      // out
 
-	_arg0 = (*C.GstNavigation)(unsafe.Pointer(coreglib.InternObject(navigation).Native()))
+	_arg0 = (*C.GstNavigation)(unsafe.Pointer(coreglib.BaseObject(navigation).Native()))
 	_arg1 = (*C.GstEvent)(gextras.StructNative(unsafe.Pointer(event)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(event)), nil)
 
@@ -8817,7 +8817,7 @@ func NavigationMessageNewAnglesChanged(src gst.GstObjector, curAngle, nAngles ui
 	var _arg3 C.guint       // out
 	var _cret *C.GstMessage // in
 
-	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	_arg2 = C.guint(curAngle)
 	_arg3 = C.guint(nAngles)
 
@@ -8852,7 +8852,7 @@ func NavigationMessageNewCommandsChanged(src gst.GstObjector) *gst.Message {
 	var _arg1 *C.GstObject  // out
 	var _cret *C.GstMessage // in
 
-	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 
 	_cret = C.gst_navigation_message_new_commands_changed(_arg1)
 	runtime.KeepAlive(src)
@@ -8885,7 +8885,7 @@ func NavigationMessageNewEvent(src gst.GstObjector, event *gst.Event) *gst.Messa
 	var _arg2 *C.GstEvent   // out
 	var _cret *C.GstMessage // in
 
-	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	_arg2 = (*C.GstEvent)(gextras.StructNative(unsafe.Pointer(event)))
 
 	_cret = C.gst_navigation_message_new_event(_arg1, _arg2)
@@ -8921,7 +8921,7 @@ func NavigationMessageNewMouseOver(src gst.GstObjector, active bool) *gst.Messag
 	var _arg2 C.gboolean    // out
 	var _cret *C.GstMessage // in
 
-	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.InternObject(src).Native()))
+	_arg1 = (*C.GstObject)(unsafe.Pointer(coreglib.BaseObject(src).Native()))
 	if active {
 		_arg2 = C.TRUE
 	}
@@ -9401,7 +9401,7 @@ func (videoOrientation *VideoOrientation) Hcenter() (int, bool) {
 	var _arg1 C.gint                 // in
 	var _cret C.gboolean             // in
 
-	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.InternObject(videoOrientation).Native()))
+	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.BaseObject(videoOrientation).Native()))
 
 	_cret = C.gst_video_orientation_get_hcenter(_arg0, &_arg1)
 	runtime.KeepAlive(videoOrientation)
@@ -9429,7 +9429,7 @@ func (videoOrientation *VideoOrientation) Hflip() (flip, ok bool) {
 	var _arg1 C.gboolean             // in
 	var _cret C.gboolean             // in
 
-	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.InternObject(videoOrientation).Native()))
+	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.BaseObject(videoOrientation).Native()))
 
 	_cret = C.gst_video_orientation_get_hflip(_arg0, &_arg1)
 	runtime.KeepAlive(videoOrientation)
@@ -9458,7 +9458,7 @@ func (videoOrientation *VideoOrientation) Vcenter() (int, bool) {
 	var _arg1 C.gint                 // in
 	var _cret C.gboolean             // in
 
-	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.InternObject(videoOrientation).Native()))
+	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.BaseObject(videoOrientation).Native()))
 
 	_cret = C.gst_video_orientation_get_vcenter(_arg0, &_arg1)
 	runtime.KeepAlive(videoOrientation)
@@ -9486,7 +9486,7 @@ func (videoOrientation *VideoOrientation) Vflip() (flip, ok bool) {
 	var _arg1 C.gboolean             // in
 	var _cret C.gboolean             // in
 
-	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.InternObject(videoOrientation).Native()))
+	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.BaseObject(videoOrientation).Native()))
 
 	_cret = C.gst_video_orientation_get_vflip(_arg0, &_arg1)
 	runtime.KeepAlive(videoOrientation)
@@ -9518,7 +9518,7 @@ func (videoOrientation *VideoOrientation) SetHcenter(center int) bool {
 	var _arg1 C.gint                 // out
 	var _cret C.gboolean             // in
 
-	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.InternObject(videoOrientation).Native()))
+	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.BaseObject(videoOrientation).Native()))
 	_arg1 = C.gint(center)
 
 	_cret = C.gst_video_orientation_set_hcenter(_arg0, _arg1)
@@ -9549,7 +9549,7 @@ func (videoOrientation *VideoOrientation) SetHflip(flip bool) bool {
 	var _arg1 C.gboolean             // out
 	var _cret C.gboolean             // in
 
-	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.InternObject(videoOrientation).Native()))
+	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.BaseObject(videoOrientation).Native()))
 	if flip {
 		_arg1 = C.TRUE
 	}
@@ -9581,7 +9581,7 @@ func (videoOrientation *VideoOrientation) SetVcenter(center int) bool {
 	var _arg1 C.gint                 // out
 	var _cret C.gboolean             // in
 
-	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.InternObject(videoOrientation).Native()))
+	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.BaseObject(videoOrientation).Native()))
 	_arg1 = C.gint(center)
 
 	_cret = C.gst_video_orientation_set_vcenter(_arg0, _arg1)
@@ -9612,7 +9612,7 @@ func (videoOrientation *VideoOrientation) SetVflip(flip bool) bool {
 	var _arg1 C.gboolean             // out
 	var _cret C.gboolean             // in
 
-	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.InternObject(videoOrientation).Native()))
+	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.BaseObject(videoOrientation).Native()))
 	if flip {
 		_arg1 = C.TRUE
 	}
@@ -9644,7 +9644,7 @@ func (videoOrientation *VideoOrientation) hcenter() (int, bool) {
 	var _arg1 C.gint                 // in
 	var _cret C.gboolean             // in
 
-	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.InternObject(videoOrientation).Native()))
+	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.BaseObject(videoOrientation).Native()))
 
 	_cret = C._gotk4_gstvideo1_VideoOrientation_virtual_get_hcenter(unsafe.Pointer(fnarg), _arg0, &_arg1)
 	runtime.KeepAlive(videoOrientation)
@@ -9675,7 +9675,7 @@ func (videoOrientation *VideoOrientation) hflip() (flip, ok bool) {
 	var _arg1 C.gboolean             // in
 	var _cret C.gboolean             // in
 
-	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.InternObject(videoOrientation).Native()))
+	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.BaseObject(videoOrientation).Native()))
 
 	_cret = C._gotk4_gstvideo1_VideoOrientation_virtual_get_hflip(unsafe.Pointer(fnarg), _arg0, &_arg1)
 	runtime.KeepAlive(videoOrientation)
@@ -9707,7 +9707,7 @@ func (videoOrientation *VideoOrientation) vcenter() (int, bool) {
 	var _arg1 C.gint                 // in
 	var _cret C.gboolean             // in
 
-	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.InternObject(videoOrientation).Native()))
+	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.BaseObject(videoOrientation).Native()))
 
 	_cret = C._gotk4_gstvideo1_VideoOrientation_virtual_get_vcenter(unsafe.Pointer(fnarg), _arg0, &_arg1)
 	runtime.KeepAlive(videoOrientation)
@@ -9738,7 +9738,7 @@ func (videoOrientation *VideoOrientation) vflip() (flip, ok bool) {
 	var _arg1 C.gboolean             // in
 	var _cret C.gboolean             // in
 
-	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.InternObject(videoOrientation).Native()))
+	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.BaseObject(videoOrientation).Native()))
 
 	_cret = C._gotk4_gstvideo1_VideoOrientation_virtual_get_vflip(unsafe.Pointer(fnarg), _arg0, &_arg1)
 	runtime.KeepAlive(videoOrientation)
@@ -9773,7 +9773,7 @@ func (videoOrientation *VideoOrientation) setHcenter(center int) bool {
 	var _arg1 C.gint                 // out
 	var _cret C.gboolean             // in
 
-	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.InternObject(videoOrientation).Native()))
+	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.BaseObject(videoOrientation).Native()))
 	_arg1 = C.gint(center)
 
 	_cret = C._gotk4_gstvideo1_VideoOrientation_virtual_set_hcenter(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -9807,7 +9807,7 @@ func (videoOrientation *VideoOrientation) setHflip(flip bool) bool {
 	var _arg1 C.gboolean             // out
 	var _cret C.gboolean             // in
 
-	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.InternObject(videoOrientation).Native()))
+	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.BaseObject(videoOrientation).Native()))
 	if flip {
 		_arg1 = C.TRUE
 	}
@@ -9842,7 +9842,7 @@ func (videoOrientation *VideoOrientation) setVcenter(center int) bool {
 	var _arg1 C.gint                 // out
 	var _cret C.gboolean             // in
 
-	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.InternObject(videoOrientation).Native()))
+	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.BaseObject(videoOrientation).Native()))
 	_arg1 = C.gint(center)
 
 	_cret = C._gotk4_gstvideo1_VideoOrientation_virtual_set_vcenter(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -9876,7 +9876,7 @@ func (videoOrientation *VideoOrientation) setVflip(flip bool) bool {
 	var _arg1 C.gboolean             // out
 	var _cret C.gboolean             // in
 
-	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.InternObject(videoOrientation).Native()))
+	_arg0 = (*C.GstVideoOrientation)(unsafe.Pointer(coreglib.BaseObject(videoOrientation).Native()))
 	if flip {
 		_arg1 = C.TRUE
 	}
@@ -10232,7 +10232,7 @@ func marshalVideoOverlay(p uintptr) (interface{}, error) {
 func (overlay *VideoOverlay) Expose() {
 	var _arg0 *C.GstVideoOverlay // out
 
-	_arg0 = (*C.GstVideoOverlay)(unsafe.Pointer(coreglib.InternObject(overlay).Native()))
+	_arg0 = (*C.GstVideoOverlay)(unsafe.Pointer(coreglib.BaseObject(overlay).Native()))
 
 	C.gst_video_overlay_expose(_arg0)
 	runtime.KeepAlive(overlay)
@@ -10250,7 +10250,7 @@ func (overlay *VideoOverlay) GotWindowHandle(handle uintptr) {
 	var _arg0 *C.GstVideoOverlay // out
 	var _arg1 C.guintptr         // out
 
-	_arg0 = (*C.GstVideoOverlay)(unsafe.Pointer(coreglib.InternObject(overlay).Native()))
+	_arg0 = (*C.GstVideoOverlay)(unsafe.Pointer(coreglib.BaseObject(overlay).Native()))
 	_arg1 = C.guintptr(handle)
 
 	C.gst_video_overlay_got_window_handle(_arg0, _arg1)
@@ -10271,7 +10271,7 @@ func (overlay *VideoOverlay) HandleEvents(handleEvents bool) {
 	var _arg0 *C.GstVideoOverlay // out
 	var _arg1 C.gboolean         // out
 
-	_arg0 = (*C.GstVideoOverlay)(unsafe.Pointer(coreglib.InternObject(overlay).Native()))
+	_arg0 = (*C.GstVideoOverlay)(unsafe.Pointer(coreglib.BaseObject(overlay).Native()))
 	if handleEvents {
 		_arg1 = C.TRUE
 	}
@@ -10289,7 +10289,7 @@ func (overlay *VideoOverlay) HandleEvents(handleEvents bool) {
 func (overlay *VideoOverlay) PrepareWindowHandle() {
 	var _arg0 *C.GstVideoOverlay // out
 
-	_arg0 = (*C.GstVideoOverlay)(unsafe.Pointer(coreglib.InternObject(overlay).Native()))
+	_arg0 = (*C.GstVideoOverlay)(unsafe.Pointer(coreglib.BaseObject(overlay).Native()))
 
 	C.gst_video_overlay_prepare_window_handle(_arg0)
 	runtime.KeepAlive(overlay)
@@ -10324,7 +10324,7 @@ func (overlay *VideoOverlay) SetRenderRectangle(x, y, width, height int) bool {
 	var _arg4 C.gint             // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoOverlay)(unsafe.Pointer(coreglib.InternObject(overlay).Native()))
+	_arg0 = (*C.GstVideoOverlay)(unsafe.Pointer(coreglib.BaseObject(overlay).Native()))
 	_arg1 = C.gint(x)
 	_arg2 = C.gint(y)
 	_arg3 = C.gint(width)
@@ -10358,7 +10358,7 @@ func (overlay *VideoOverlay) SetWindowHandle(handle uintptr) {
 	var _arg0 *C.GstVideoOverlay // out
 	var _arg1 C.guintptr         // out
 
-	_arg0 = (*C.GstVideoOverlay)(unsafe.Pointer(coreglib.InternObject(overlay).Native()))
+	_arg0 = (*C.GstVideoOverlay)(unsafe.Pointer(coreglib.BaseObject(overlay).Native()))
 	_arg1 = C.guintptr(handle)
 
 	C.gst_video_overlay_set_window_handle(_arg0, _arg1)
@@ -10374,7 +10374,7 @@ func (overlay *VideoOverlay) expose() {
 
 	var _arg0 *C.GstVideoOverlay // out
 
-	_arg0 = (*C.GstVideoOverlay)(unsafe.Pointer(coreglib.InternObject(overlay).Native()))
+	_arg0 = (*C.GstVideoOverlay)(unsafe.Pointer(coreglib.BaseObject(overlay).Native()))
 
 	C._gotk4_gstvideo1_VideoOverlay_virtual_expose(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(overlay)
@@ -10396,7 +10396,7 @@ func (overlay *VideoOverlay) handleEvents(handleEvents bool) {
 	var _arg0 *C.GstVideoOverlay // out
 	var _arg1 C.gboolean         // out
 
-	_arg0 = (*C.GstVideoOverlay)(unsafe.Pointer(coreglib.InternObject(overlay).Native()))
+	_arg0 = (*C.GstVideoOverlay)(unsafe.Pointer(coreglib.BaseObject(overlay).Native()))
 	if handleEvents {
 		_arg1 = C.TRUE
 	}
@@ -10424,7 +10424,7 @@ func (overlay *VideoOverlay) setRenderRectangle(x, y, width, height int) {
 	var _arg3 C.gint             // out
 	var _arg4 C.gint             // out
 
-	_arg0 = (*C.GstVideoOverlay)(unsafe.Pointer(coreglib.InternObject(overlay).Native()))
+	_arg0 = (*C.GstVideoOverlay)(unsafe.Pointer(coreglib.BaseObject(overlay).Native()))
 	_arg1 = C.gint(x)
 	_arg2 = C.gint(y)
 	_arg3 = C.gint(width)
@@ -10453,7 +10453,7 @@ func (overlay *VideoOverlay) setWindowHandle(handle uintptr) {
 	var _arg0 *C.GstVideoOverlay // out
 	var _arg1 C.guintptr         // out
 
-	_arg0 = (*C.GstVideoOverlay)(unsafe.Pointer(coreglib.InternObject(overlay).Native()))
+	_arg0 = (*C.GstVideoOverlay)(unsafe.Pointer(coreglib.BaseObject(overlay).Native()))
 	_arg1 = C.guintptr(handle)
 
 	C._gotk4_gstvideo1_VideoOverlay_virtual_set_window_handle(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -10573,7 +10573,7 @@ func (channel *ColorBalanceChannel) valueChanged(value int) {
 	var _arg0 *C.GstColorBalanceChannel // out
 	var _arg1 C.gint                    // out
 
-	_arg0 = (*C.GstColorBalanceChannel)(unsafe.Pointer(coreglib.InternObject(channel).Native()))
+	_arg0 = (*C.GstColorBalanceChannel)(unsafe.Pointer(coreglib.BaseObject(channel).Native()))
 	_arg1 = C.gint(value)
 
 	C._gotk4_gstvideo1_ColorBalanceChannel_virtual_value_changed(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -10709,7 +10709,7 @@ func (videoaggregator *VideoAggregator) aggregateFrames(outbuffer *gst.Buffer) g
 	var _arg1 *C.GstBuffer          // out
 	var _cret C.GstFlowReturn       // in
 
-	_arg0 = (*C.GstVideoAggregator)(unsafe.Pointer(coreglib.InternObject(videoaggregator).Native()))
+	_arg0 = (*C.GstVideoAggregator)(unsafe.Pointer(coreglib.BaseObject(videoaggregator).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(outbuffer)))
 
 	_cret = C._gotk4_gstvideo1_VideoAggregator_virtual_aggregate_frames(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -10736,7 +10736,7 @@ func (vagg *VideoAggregator) findBestFormat(downstreamCaps *gst.Caps, bestInfo *
 	var _arg2 *C.GstVideoInfo       // out
 	var _arg3 C.gboolean            // in
 
-	_arg0 = (*C.GstVideoAggregator)(unsafe.Pointer(coreglib.InternObject(vagg).Native()))
+	_arg0 = (*C.GstVideoAggregator)(unsafe.Pointer(coreglib.BaseObject(vagg).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(downstreamCaps)))
 	_arg2 = (*C.GstVideoInfo)(gextras.StructNative(unsafe.Pointer(bestInfo)))
 
@@ -10764,7 +10764,7 @@ func (videoaggregator *VideoAggregator) updateCaps(caps *gst.Caps) *gst.Caps {
 	var _arg1 *C.GstCaps            // out
 	var _cret *C.GstCaps            // in
 
-	_arg0 = (*C.GstVideoAggregator)(unsafe.Pointer(coreglib.InternObject(videoaggregator).Native()))
+	_arg0 = (*C.GstVideoAggregator)(unsafe.Pointer(coreglib.BaseObject(videoaggregator).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 
 	_cret = C._gotk4_gstvideo1_VideoAggregator_virtual_update_caps(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -10858,7 +10858,7 @@ func marshalVideoAggregatorConvertPad(p uintptr) (interface{}, error) {
 func (pad *VideoAggregatorConvertPad) UpdateConversionInfo() {
 	var _arg0 *C.GstVideoAggregatorConvertPad // out
 
-	_arg0 = (*C.GstVideoAggregatorConvertPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstVideoAggregatorConvertPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	C.gst_video_aggregator_convert_pad_update_conversion_info(_arg0)
 	runtime.KeepAlive(pad)
@@ -10876,8 +10876,8 @@ func (pad *VideoAggregatorConvertPad) createConversionInfo(agg VideoAggregatorre
 	var _arg1 *C.GstVideoAggregator           // out
 	var _arg2 *C.GstVideoInfo                 // out
 
-	_arg0 = (*C.GstVideoAggregatorConvertPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
-	_arg1 = (*C.GstVideoAggregator)(unsafe.Pointer(coreglib.InternObject(agg).Native()))
+	_arg0 = (*C.GstVideoAggregatorConvertPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
+	_arg1 = (*C.GstVideoAggregator)(unsafe.Pointer(coreglib.BaseObject(agg).Native()))
 	_arg2 = (*C.GstVideoInfo)(gextras.StructNative(unsafe.Pointer(conversionInfo)))
 
 	C._gotk4_gstvideo1_VideoAggregatorConvertPad_virtual_create_conversion_info(unsafe.Pointer(fnarg), _arg0, _arg1, _arg2)
@@ -11022,7 +11022,7 @@ func (pad *VideoAggregatorPad) CurrentBuffer() *gst.Buffer {
 	var _arg0 *C.GstVideoAggregatorPad // out
 	var _cret *C.GstBuffer             // in
 
-	_arg0 = (*C.GstVideoAggregatorPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstVideoAggregatorPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	_cret = C.gst_video_aggregator_pad_get_current_buffer(_arg0)
 	runtime.KeepAlive(pad)
@@ -11057,7 +11057,7 @@ func (pad *VideoAggregatorPad) PreparedFrame() *VideoFrame {
 	var _arg0 *C.GstVideoAggregatorPad // out
 	var _cret *C.GstVideoFrame         // in
 
-	_arg0 = (*C.GstVideoAggregatorPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstVideoAggregatorPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	_cret = C.gst_video_aggregator_pad_get_prepared_frame(_arg0)
 	runtime.KeepAlive(pad)
@@ -11083,7 +11083,7 @@ func (pad *VideoAggregatorPad) HasCurrentBuffer() bool {
 	var _arg0 *C.GstVideoAggregatorPad // out
 	var _cret C.gboolean               // in
 
-	_arg0 = (*C.GstVideoAggregatorPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstVideoAggregatorPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	_cret = C.gst_video_aggregator_pad_has_current_buffer(_arg0)
 	runtime.KeepAlive(pad)
@@ -11107,7 +11107,7 @@ func (pad *VideoAggregatorPad) SetNeedsAlpha(needsAlpha bool) {
 	var _arg0 *C.GstVideoAggregatorPad // out
 	var _arg1 C.gboolean               // out
 
-	_arg0 = (*C.GstVideoAggregatorPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstVideoAggregatorPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 	if needsAlpha {
 		_arg1 = C.TRUE
 	}
@@ -11131,8 +11131,8 @@ func (pad *VideoAggregatorPad) cleanFrame(videoaggregator VideoAggregatorrer, pr
 	var _arg1 *C.GstVideoAggregator    // out
 	var _arg2 *C.GstVideoFrame         // out
 
-	_arg0 = (*C.GstVideoAggregatorPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
-	_arg1 = (*C.GstVideoAggregator)(unsafe.Pointer(coreglib.InternObject(videoaggregator).Native()))
+	_arg0 = (*C.GstVideoAggregatorPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
+	_arg1 = (*C.GstVideoAggregator)(unsafe.Pointer(coreglib.BaseObject(videoaggregator).Native()))
 	_arg2 = (*C.GstVideoFrame)(gextras.StructNative(unsafe.Pointer(preparedFrame)))
 
 	C._gotk4_gstvideo1_VideoAggregatorPad_virtual_clean_frame(unsafe.Pointer(fnarg), _arg0, _arg1, _arg2)
@@ -11160,8 +11160,8 @@ func (pad *VideoAggregatorPad) prepareFrame(videoaggregator VideoAggregatorrer, 
 	var _arg3 *C.GstVideoFrame         // out
 	var _cret C.gboolean               // in
 
-	_arg0 = (*C.GstVideoAggregatorPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
-	_arg1 = (*C.GstVideoAggregator)(unsafe.Pointer(coreglib.InternObject(videoaggregator).Native()))
+	_arg0 = (*C.GstVideoAggregatorPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
+	_arg1 = (*C.GstVideoAggregator)(unsafe.Pointer(coreglib.BaseObject(videoaggregator).Native()))
 	_arg2 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(buffer)))
 	_arg3 = (*C.GstVideoFrame)(gextras.StructNative(unsafe.Pointer(preparedFrame)))
 
@@ -11196,8 +11196,8 @@ func (pad *VideoAggregatorPad) prepareFrameFinish(videoaggregator VideoAggregato
 	var _arg1 *C.GstVideoAggregator    // out
 	var _arg2 *C.GstVideoFrame         // out
 
-	_arg0 = (*C.GstVideoAggregatorPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
-	_arg1 = (*C.GstVideoAggregator)(unsafe.Pointer(coreglib.InternObject(videoaggregator).Native()))
+	_arg0 = (*C.GstVideoAggregatorPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
+	_arg1 = (*C.GstVideoAggregator)(unsafe.Pointer(coreglib.BaseObject(videoaggregator).Native()))
 	_arg2 = (*C.GstVideoFrame)(gextras.StructNative(unsafe.Pointer(preparedFrame)))
 
 	C._gotk4_gstvideo1_VideoAggregatorPad_virtual_prepare_frame_finish(unsafe.Pointer(fnarg), _arg0, _arg1, _arg2)
@@ -11225,8 +11225,8 @@ func (pad *VideoAggregatorPad) prepareFrameStart(videoaggregator VideoAggregator
 	var _arg2 *C.GstBuffer             // out
 	var _arg3 *C.GstVideoFrame         // out
 
-	_arg0 = (*C.GstVideoAggregatorPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
-	_arg1 = (*C.GstVideoAggregator)(unsafe.Pointer(coreglib.InternObject(videoaggregator).Native()))
+	_arg0 = (*C.GstVideoAggregatorPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
+	_arg1 = (*C.GstVideoAggregator)(unsafe.Pointer(coreglib.BaseObject(videoaggregator).Native()))
 	_arg2 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(buffer)))
 	_arg3 = (*C.GstVideoFrame)(gextras.StructNative(unsafe.Pointer(preparedFrame)))
 
@@ -11245,7 +11245,7 @@ func (pad *VideoAggregatorPad) updateConversionInfo() {
 
 	var _arg0 *C.GstVideoAggregatorPad // out
 
-	_arg0 = (*C.GstVideoAggregatorPad)(unsafe.Pointer(coreglib.InternObject(pad).Native()))
+	_arg0 = (*C.GstVideoAggregatorPad)(unsafe.Pointer(coreglib.BaseObject(pad).Native()))
 
 	C._gotk4_gstvideo1_VideoAggregatorPad_virtual_update_conversion_info(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(pad)
@@ -11777,7 +11777,7 @@ func (decoder *VideoDecoder) AddToFrame(nBytes int) {
 	var _arg0 *C.GstVideoDecoder // out
 	var _arg1 C.int              // out
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	_arg1 = C.int(nBytes)
 
 	C.gst_video_decoder_add_to_frame(_arg0, _arg1)
@@ -11799,7 +11799,7 @@ func (decoder *VideoDecoder) AllocateOutputBuffer() *gst.Buffer {
 	var _arg0 *C.GstVideoDecoder // out
 	var _cret *C.GstBuffer       // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 
 	_cret = C.gst_video_decoder_allocate_output_buffer(_arg0)
 	runtime.KeepAlive(decoder)
@@ -11837,7 +11837,7 @@ func (decoder *VideoDecoder) AllocateOutputFrame(frame *VideoCodecFrame) gst.Flo
 	var _arg1 *C.GstVideoCodecFrame // out
 	var _cret C.GstFlowReturn       // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	_arg1 = (*C.GstVideoCodecFrame)(gextras.StructNative(unsafe.Pointer(frame)))
 
 	_cret = C.gst_video_decoder_allocate_output_frame(_arg0, _arg1)
@@ -11869,7 +11869,7 @@ func (decoder *VideoDecoder) AllocateOutputFrameWithParams(frame *VideoCodecFram
 	var _arg2 *C.GstBufferPoolAcquireParams // out
 	var _cret C.GstFlowReturn               // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	_arg1 = (*C.GstVideoCodecFrame)(gextras.StructNative(unsafe.Pointer(frame)))
 	_arg2 = (*C.GstBufferPoolAcquireParams)(gextras.StructNative(unsafe.Pointer(params)))
 
@@ -11901,7 +11901,7 @@ func (dec *VideoDecoder) DropFrame(frame *VideoCodecFrame) gst.FlowReturn {
 	var _arg1 *C.GstVideoCodecFrame // out
 	var _cret C.GstFlowReturn       // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	_arg1 = (*C.GstVideoCodecFrame)(gextras.StructNative(unsafe.Pointer(frame)))
 
 	_cret = C.gst_video_decoder_drop_frame(_arg0, _arg1)
@@ -11930,7 +11930,7 @@ func (dec *VideoDecoder) DropSubframe(frame *VideoCodecFrame) gst.FlowReturn {
 	var _arg1 *C.GstVideoCodecFrame // out
 	var _cret C.GstFlowReturn       // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	_arg1 = (*C.GstVideoCodecFrame)(gextras.StructNative(unsafe.Pointer(frame)))
 
 	_cret = C.gst_video_decoder_drop_subframe(_arg0, _arg1)
@@ -11965,7 +11965,7 @@ func (decoder *VideoDecoder) FinishFrame(frame *VideoCodecFrame) gst.FlowReturn 
 	var _arg1 *C.GstVideoCodecFrame // out
 	var _cret C.GstFlowReturn       // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	_arg1 = (*C.GstVideoCodecFrame)(gextras.StructNative(unsafe.Pointer(frame)))
 
 	_cret = C.gst_video_decoder_finish_frame(_arg0, _arg1)
@@ -11995,7 +11995,7 @@ func (decoder *VideoDecoder) FinishSubframe(frame *VideoCodecFrame) gst.FlowRetu
 	var _arg1 *C.GstVideoCodecFrame // out
 	var _cret C.GstFlowReturn       // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	_arg1 = (*C.GstVideoCodecFrame)(gextras.StructNative(unsafe.Pointer(frame)))
 
 	_cret = C.gst_video_decoder_finish_subframe(_arg0, _arg1)
@@ -12023,7 +12023,7 @@ func (decoder *VideoDecoder) Allocator() (gst.Allocatorrer, *gst.AllocationParam
 	var _arg1 *C.GstAllocator       // in
 	var _arg2 C.GstAllocationParams // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 
 	C.gst_video_decoder_get_allocator(_arg0, &_arg1, &_arg2)
 	runtime.KeepAlive(decoder)
@@ -12066,7 +12066,7 @@ func (decoder *VideoDecoder) BufferPool() *gst.BufferPool {
 	var _arg0 *C.GstVideoDecoder // out
 	var _cret *C.GstBufferPool   // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 
 	_cret = C.gst_video_decoder_get_buffer_pool(_arg0)
 	runtime.KeepAlive(decoder)
@@ -12096,7 +12096,7 @@ func (dec *VideoDecoder) EstimateRate() int {
 	var _arg0 *C.GstVideoDecoder // out
 	var _cret C.gint             // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 
 	_cret = C.gst_video_decoder_get_estimate_rate(_arg0)
 	runtime.KeepAlive(dec)
@@ -12123,7 +12123,7 @@ func (decoder *VideoDecoder) Frame(frameNumber int) *VideoCodecFrame {
 	var _arg1 C.int                 // out
 	var _cret *C.GstVideoCodecFrame // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	_arg1 = C.int(frameNumber)
 
 	_cret = C.gst_video_decoder_get_frame(_arg0, _arg1)
@@ -12154,7 +12154,7 @@ func (decoder *VideoDecoder) Frames() []*VideoCodecFrame {
 	var _arg0 *C.GstVideoDecoder // out
 	var _cret *C.GList           // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 
 	_cret = C.gst_video_decoder_get_frames(_arg0)
 	runtime.KeepAlive(decoder)
@@ -12193,7 +12193,7 @@ func (decoder *VideoDecoder) InputSubframeIndex(frame *VideoCodecFrame) uint {
 	var _arg1 *C.GstVideoCodecFrame // out
 	var _cret C.guint               // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	_arg1 = (*C.GstVideoCodecFrame)(gextras.StructNative(unsafe.Pointer(frame)))
 
 	_cret = C.gst_video_decoder_get_input_subframe_index(_arg0, _arg1)
@@ -12221,7 +12221,7 @@ func (decoder *VideoDecoder) Latency() (minLatency, maxLatency gst.ClockTime) {
 	var _arg1 C.GstClockTime     // in
 	var _arg2 C.GstClockTime     // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 
 	C.gst_video_decoder_get_latency(_arg0, &_arg1, &_arg2)
 	runtime.KeepAlive(decoder)
@@ -12252,7 +12252,7 @@ func (decoder *VideoDecoder) MaxDecodeTime(frame *VideoCodecFrame) gst.ClockTime
 	var _arg1 *C.GstVideoCodecFrame // out
 	var _cret C.GstClockTimeDiff    // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	_arg1 = (*C.GstVideoCodecFrame)(gextras.StructNative(unsafe.Pointer(frame)))
 
 	_cret = C.gst_video_decoder_get_max_decode_time(_arg0, _arg1)
@@ -12273,7 +12273,7 @@ func (dec *VideoDecoder) MaxErrors() int {
 	var _arg0 *C.GstVideoDecoder // out
 	var _cret C.gint             // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 
 	_cret = C.gst_video_decoder_get_max_errors(_arg0)
 	runtime.KeepAlive(dec)
@@ -12294,7 +12294,7 @@ func (dec *VideoDecoder) NeedsFormat() bool {
 	var _arg0 *C.GstVideoDecoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 
 	_cret = C.gst_video_decoder_get_needs_format(_arg0)
 	runtime.KeepAlive(dec)
@@ -12318,7 +12318,7 @@ func (dec *VideoDecoder) NeedsSyncPoint() bool {
 	var _arg0 *C.GstVideoDecoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 
 	_cret = C.gst_video_decoder_get_needs_sync_point(_arg0)
 	runtime.KeepAlive(dec)
@@ -12341,7 +12341,7 @@ func (decoder *VideoDecoder) OldestFrame() *VideoCodecFrame {
 	var _arg0 *C.GstVideoDecoder    // out
 	var _cret *C.GstVideoCodecFrame // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 
 	_cret = C.gst_video_decoder_get_oldest_frame(_arg0)
 	runtime.KeepAlive(decoder)
@@ -12370,7 +12370,7 @@ func (decoder *VideoDecoder) OutputState() *VideoCodecState {
 	var _arg0 *C.GstVideoDecoder    // out
 	var _cret *C.GstVideoCodecState // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 
 	_cret = C.gst_video_decoder_get_output_state(_arg0)
 	runtime.KeepAlive(decoder)
@@ -12400,7 +12400,7 @@ func (decoder *VideoDecoder) Packetized() bool {
 	var _arg0 *C.GstVideoDecoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 
 	_cret = C.gst_video_decoder_get_packetized(_arg0)
 	runtime.KeepAlive(decoder)
@@ -12424,7 +12424,7 @@ func (decoder *VideoDecoder) PendingFrameSize() uint {
 	var _arg0 *C.GstVideoDecoder // out
 	var _cret C.gsize            // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 
 	_cret = C.gst_video_decoder_get_pending_frame_size(_arg0)
 	runtime.KeepAlive(decoder)
@@ -12451,7 +12451,7 @@ func (decoder *VideoDecoder) ProcessedSubframeIndex(frame *VideoCodecFrame) uint
 	var _arg1 *C.GstVideoCodecFrame // out
 	var _cret C.guint               // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	_arg1 = (*C.GstVideoCodecFrame)(gextras.StructNative(unsafe.Pointer(frame)))
 
 	_cret = C.gst_video_decoder_get_processed_subframe_index(_arg0, _arg1)
@@ -12472,7 +12472,7 @@ func (decoder *VideoDecoder) QosProportion() float64 {
 	var _arg0 *C.GstVideoDecoder // out
 	var _cret C.gdouble          // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 
 	_cret = C.gst_video_decoder_get_qos_proportion(_arg0)
 	runtime.KeepAlive(decoder)
@@ -12495,7 +12495,7 @@ func (decoder *VideoDecoder) SubframeMode() bool {
 	var _arg0 *C.GstVideoDecoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 
 	_cret = C.gst_video_decoder_get_subframe_mode(_arg0)
 	runtime.KeepAlive(decoder)
@@ -12520,7 +12520,7 @@ func (decoder *VideoDecoder) HaveFrame() gst.FlowReturn {
 	var _arg0 *C.GstVideoDecoder // out
 	var _cret C.GstFlowReturn    // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 
 	_cret = C.gst_video_decoder_have_frame(_arg0)
 	runtime.KeepAlive(decoder)
@@ -12549,7 +12549,7 @@ func (decoder *VideoDecoder) HaveLastSubframe(frame *VideoCodecFrame) gst.FlowRe
 	var _arg1 *C.GstVideoCodecFrame // out
 	var _cret C.GstFlowReturn       // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	_arg1 = (*C.GstVideoCodecFrame)(gextras.StructNative(unsafe.Pointer(frame)))
 
 	_cret = C.gst_video_decoder_have_last_subframe(_arg0, _arg1)
@@ -12581,7 +12581,7 @@ func (decoder *VideoDecoder) MergeTags(tags *gst.TagList, mode gst.TagMergeMode)
 	var _arg1 *C.GstTagList      // out
 	var _arg2 C.GstTagMergeMode  // out
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	if tags != nil {
 		_arg1 = (*C.GstTagList)(gextras.StructNative(unsafe.Pointer(tags)))
 	}
@@ -12604,7 +12604,7 @@ func (decoder *VideoDecoder) Negotiate() bool {
 	var _arg0 *C.GstVideoDecoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 
 	_cret = C.gst_video_decoder_negotiate(_arg0)
 	runtime.KeepAlive(decoder)
@@ -12636,7 +12636,7 @@ func (decoder *VideoDecoder) ProxyGetcaps(caps, filter *gst.Caps) *gst.Caps {
 	var _arg2 *C.GstCaps         // out
 	var _cret *C.GstCaps         // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	if caps != nil {
 		_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 	}
@@ -12672,7 +12672,7 @@ func (dec *VideoDecoder) ReleaseFrame(frame *VideoCodecFrame) {
 	var _arg0 *C.GstVideoDecoder    // out
 	var _arg1 *C.GstVideoCodecFrame // out
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	_arg1 = (*C.GstVideoCodecFrame)(gextras.StructNative(unsafe.Pointer(frame)))
 
 	C.gst_video_decoder_release_frame(_arg0, _arg1)
@@ -12715,7 +12715,7 @@ func (dec *VideoDecoder) RequestSyncPoint(frame *VideoCodecFrame, flags VideoDec
 	var _arg1 *C.GstVideoCodecFrame                  // out
 	var _arg2 C.GstVideoDecoderRequestSyncPointFlags // out
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	_arg1 = (*C.GstVideoCodecFrame)(gextras.StructNative(unsafe.Pointer(frame)))
 	_arg2 = C.GstVideoDecoderRequestSyncPointFlags(flags)
 
@@ -12735,7 +12735,7 @@ func (dec *VideoDecoder) SetEstimateRate(enabled bool) {
 	var _arg0 *C.GstVideoDecoder // out
 	var _arg1 C.gboolean         // out
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	if enabled {
 		_arg1 = C.TRUE
 	}
@@ -12768,7 +12768,7 @@ func (decoder *VideoDecoder) SetInterlacedOutputState(fmt VideoFormat, interlace
 	var _arg5 *C.GstVideoCodecState   // out
 	var _cret *C.GstVideoCodecState   // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	_arg1 = C.GstVideoFormat(fmt)
 	_arg2 = C.GstVideoInterlaceMode(interlaceMode)
 	_arg3 = C.guint(width)
@@ -12814,7 +12814,7 @@ func (decoder *VideoDecoder) SetLatency(minLatency, maxLatency gst.ClockTime) {
 	var _arg1 C.GstClockTime     // out
 	var _arg2 C.GstClockTime     // out
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	_arg1 = C.GstClockTime(minLatency)
 	_arg2 = C.GstClockTime(maxLatency)
 
@@ -12838,7 +12838,7 @@ func (dec *VideoDecoder) SetMaxErrors(num int) {
 	var _arg0 *C.GstVideoDecoder // out
 	var _arg1 C.gint             // out
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	_arg1 = C.gint(num)
 
 	C.gst_video_decoder_set_max_errors(_arg0, _arg1)
@@ -12859,7 +12859,7 @@ func (dec *VideoDecoder) SetNeedsFormat(enabled bool) {
 	var _arg0 *C.GstVideoDecoder // out
 	var _arg1 C.gboolean         // out
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	if enabled {
 		_arg1 = C.TRUE
 	}
@@ -12884,7 +12884,7 @@ func (dec *VideoDecoder) SetNeedsSyncPoint(enabled bool) {
 	var _arg0 *C.GstVideoDecoder // out
 	var _arg1 C.gboolean         // out
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(dec).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(dec).Native()))
 	if enabled {
 		_arg1 = C.TRUE
 	}
@@ -12927,7 +12927,7 @@ func (decoder *VideoDecoder) SetOutputState(fmt VideoFormat, width, height uint,
 	var _arg4 *C.GstVideoCodecState // out
 	var _cret *C.GstVideoCodecState // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	_arg1 = C.GstVideoFormat(fmt)
 	_arg2 = C.guint(width)
 	_arg3 = C.guint(height)
@@ -12967,7 +12967,7 @@ func (decoder *VideoDecoder) SetPacketized(packetized bool) {
 	var _arg0 *C.GstVideoDecoder // out
 	var _arg1 C.gboolean         // out
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	if packetized {
 		_arg1 = C.TRUE
 	}
@@ -12999,7 +12999,7 @@ func (decoder *VideoDecoder) SetSubframeMode(subframeMode bool) {
 	var _arg0 *C.GstVideoDecoder // out
 	var _arg1 C.gboolean         // out
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	if subframeMode {
 		_arg1 = C.TRUE
 	}
@@ -13023,7 +13023,7 @@ func (decoder *VideoDecoder) SetUseDefaultPadAcceptcaps(use bool) {
 	var _arg0 *C.GstVideoDecoder // out
 	var _arg1 C.gboolean         // out
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	if use {
 		_arg1 = C.TRUE
 	}
@@ -13042,7 +13042,7 @@ func (decoder *VideoDecoder) close() bool {
 	var _arg0 *C.GstVideoDecoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 
 	_cret = C._gotk4_gstvideo1_VideoDecoder_virtual_close(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(decoder)
@@ -13068,7 +13068,7 @@ func (decoder *VideoDecoder) decideAllocation(query *gst.Query) bool {
 	var _arg1 *C.GstQuery        // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	_arg1 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(query)))
 
 	_cret = C._gotk4_gstvideo1_VideoDecoder_virtual_decide_allocation(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -13095,7 +13095,7 @@ func (decoder *VideoDecoder) drain() gst.FlowReturn {
 	var _arg0 *C.GstVideoDecoder // out
 	var _cret C.GstFlowReturn    // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 
 	_cret = C._gotk4_gstvideo1_VideoDecoder_virtual_drain(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(decoder)
@@ -13116,7 +13116,7 @@ func (decoder *VideoDecoder) finish() gst.FlowReturn {
 	var _arg0 *C.GstVideoDecoder // out
 	var _cret C.GstFlowReturn    // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 
 	_cret = C._gotk4_gstvideo1_VideoDecoder_virtual_finish(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(decoder)
@@ -13137,7 +13137,7 @@ func (decoder *VideoDecoder) flush() bool {
 	var _arg0 *C.GstVideoDecoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 
 	_cret = C._gotk4_gstvideo1_VideoDecoder_virtual_flush(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(decoder)
@@ -13162,7 +13162,7 @@ func (decoder *VideoDecoder) caps(filter *gst.Caps) *gst.Caps {
 	var _arg1 *C.GstCaps         // out
 	var _cret *C.GstCaps         // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(filter)))
 
 	_cret = C._gotk4_gstvideo1_VideoDecoder_virtual_getcaps(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -13192,7 +13192,7 @@ func (decoder *VideoDecoder) handleFrame(frame *VideoCodecFrame) gst.FlowReturn 
 	var _arg1 *C.GstVideoCodecFrame // out
 	var _cret C.GstFlowReturn       // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	_arg1 = (*C.GstVideoCodecFrame)(gextras.StructNative(unsafe.Pointer(frame)))
 
 	_cret = C._gotk4_gstvideo1_VideoDecoder_virtual_handle_frame(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -13223,7 +13223,7 @@ func (decoder *VideoDecoder) handleMissingData(timestamp, duration gst.ClockTime
 	var _arg2 C.GstClockTime     // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	_arg1 = C.GstClockTime(timestamp)
 	_arg2 = C.GstClockTime(duration)
 
@@ -13255,7 +13255,7 @@ func (decoder *VideoDecoder) negotiate() bool {
 	var _arg0 *C.GstVideoDecoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 
 	_cret = C._gotk4_gstvideo1_VideoDecoder_virtual_negotiate(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(decoder)
@@ -13278,7 +13278,7 @@ func (decoder *VideoDecoder) open() bool {
 	var _arg0 *C.GstVideoDecoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 
 	_cret = C._gotk4_gstvideo1_VideoDecoder_virtual_open(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(decoder)
@@ -13310,9 +13310,9 @@ func (decoder *VideoDecoder) parse(frame *VideoCodecFrame, adapter *gstbase.Adap
 	var _arg3 C.gboolean            // out
 	var _cret C.GstFlowReturn       // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	_arg1 = (*C.GstVideoCodecFrame)(gextras.StructNative(unsafe.Pointer(frame)))
-	_arg2 = (*C.GstAdapter)(unsafe.Pointer(coreglib.InternObject(adapter).Native()))
+	_arg2 = (*C.GstAdapter)(unsafe.Pointer(coreglib.BaseObject(adapter).Native()))
 	if atEos {
 		_arg3 = C.TRUE
 	}
@@ -13341,7 +13341,7 @@ func (decoder *VideoDecoder) proposeAllocation(query *gst.Query) bool {
 	var _arg1 *C.GstQuery        // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	_arg1 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(query)))
 
 	_cret = C._gotk4_gstvideo1_VideoDecoder_virtual_propose_allocation(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -13367,7 +13367,7 @@ func (decoder *VideoDecoder) reset(hard bool) bool {
 	var _arg1 C.gboolean         // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	if hard {
 		_arg1 = C.TRUE
 	}
@@ -13394,7 +13394,7 @@ func (decoder *VideoDecoder) setFormat(state *VideoCodecState) bool {
 	var _arg1 *C.GstVideoCodecState // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	_arg1 = (*C.GstVideoCodecState)(gextras.StructNative(unsafe.Pointer(state)))
 
 	_cret = C._gotk4_gstvideo1_VideoDecoder_virtual_set_format(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -13422,7 +13422,7 @@ func (decoder *VideoDecoder) sinkEvent(event *gst.Event) bool {
 	var _arg1 *C.GstEvent        // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	_arg1 = (*C.GstEvent)(gextras.StructNative(unsafe.Pointer(event)))
 
 	_cret = C._gotk4_gstvideo1_VideoDecoder_virtual_sink_event(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -13449,7 +13449,7 @@ func (decoder *VideoDecoder) sinkQuery(query *gst.Query) bool {
 	var _arg1 *C.GstQuery        // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	_arg1 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(query)))
 
 	_cret = C._gotk4_gstvideo1_VideoDecoder_virtual_sink_query(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -13477,7 +13477,7 @@ func (decoder *VideoDecoder) srcEvent(event *gst.Event) bool {
 	var _arg1 *C.GstEvent        // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	_arg1 = (*C.GstEvent)(gextras.StructNative(unsafe.Pointer(event)))
 
 	_cret = C._gotk4_gstvideo1_VideoDecoder_virtual_src_event(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -13504,7 +13504,7 @@ func (decoder *VideoDecoder) srcQuery(query *gst.Query) bool {
 	var _arg1 *C.GstQuery        // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	_arg1 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(query)))
 
 	_cret = C._gotk4_gstvideo1_VideoDecoder_virtual_src_query(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -13529,7 +13529,7 @@ func (decoder *VideoDecoder) start() bool {
 	var _arg0 *C.GstVideoDecoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 
 	_cret = C._gotk4_gstvideo1_VideoDecoder_virtual_start(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(decoder)
@@ -13552,7 +13552,7 @@ func (decoder *VideoDecoder) stop() bool {
 	var _arg0 *C.GstVideoDecoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 
 	_cret = C._gotk4_gstvideo1_VideoDecoder_virtual_stop(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(decoder)
@@ -13584,7 +13584,7 @@ func (decoder *VideoDecoder) transformMeta(frame *VideoCodecFrame, meta *gst.Met
 	var _arg2 *C.GstMeta            // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.InternObject(decoder).Native()))
+	_arg0 = (*C.GstVideoDecoder)(unsafe.Pointer(coreglib.BaseObject(decoder).Native()))
 	_arg1 = (*C.GstVideoCodecFrame)(gextras.StructNative(unsafe.Pointer(frame)))
 	_arg2 = (*C.GstMeta)(gextras.StructNative(unsafe.Pointer(meta)))
 
@@ -13926,7 +13926,7 @@ func (encoder *VideoEncoder) AllocateOutputBuffer(size uint) *gst.Buffer {
 	var _arg1 C.gsize            // out
 	var _cret *C.GstBuffer       // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 	_arg1 = C.gsize(size)
 
 	_cret = C.gst_video_encoder_allocate_output_buffer(_arg0, _arg1)
@@ -13966,7 +13966,7 @@ func (encoder *VideoEncoder) AllocateOutputFrame(frame *VideoCodecFrame, size ui
 	var _arg2 C.gsize               // out
 	var _cret C.GstFlowReturn       // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 	_arg1 = (*C.GstVideoCodecFrame)(gextras.StructNative(unsafe.Pointer(frame)))
 	_arg2 = C.gsize(size)
 
@@ -14004,7 +14004,7 @@ func (encoder *VideoEncoder) FinishFrame(frame *VideoCodecFrame) gst.FlowReturn 
 	var _arg1 *C.GstVideoCodecFrame // out
 	var _cret C.GstFlowReturn       // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 	_arg1 = (*C.GstVideoCodecFrame)(gextras.StructNative(unsafe.Pointer(frame)))
 
 	_cret = C.gst_video_encoder_finish_frame(_arg0, _arg1)
@@ -14041,7 +14041,7 @@ func (encoder *VideoEncoder) FinishSubframe(frame *VideoCodecFrame) gst.FlowRetu
 	var _arg1 *C.GstVideoCodecFrame // out
 	var _cret C.GstFlowReturn       // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 	_arg1 = (*C.GstVideoCodecFrame)(gextras.StructNative(unsafe.Pointer(frame)))
 
 	_cret = C.gst_video_encoder_finish_subframe(_arg0, _arg1)
@@ -14069,7 +14069,7 @@ func (encoder *VideoEncoder) Allocator() (gst.Allocatorrer, *gst.AllocationParam
 	var _arg1 *C.GstAllocator       // in
 	var _arg2 C.GstAllocationParams // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 
 	C.gst_video_encoder_get_allocator(_arg0, &_arg1, &_arg2)
 	runtime.KeepAlive(encoder)
@@ -14119,7 +14119,7 @@ func (encoder *VideoEncoder) Frame(frameNumber int) *VideoCodecFrame {
 	var _arg1 C.int                 // out
 	var _cret *C.GstVideoCodecFrame // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 	_arg1 = C.int(frameNumber)
 
 	_cret = C.gst_video_encoder_get_frame(_arg0, _arg1)
@@ -14150,7 +14150,7 @@ func (encoder *VideoEncoder) Frames() []*VideoCodecFrame {
 	var _arg0 *C.GstVideoEncoder // out
 	var _cret *C.GList           // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 
 	_cret = C.gst_video_encoder_get_frames(_arg0)
 	runtime.KeepAlive(encoder)
@@ -14188,7 +14188,7 @@ func (encoder *VideoEncoder) Latency() (minLatency, maxLatency gst.ClockTime) {
 	var _arg1 C.GstClockTime     // in
 	var _arg2 C.GstClockTime     // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 
 	C.gst_video_encoder_get_latency(_arg0, &_arg1, &_arg2)
 	runtime.KeepAlive(encoder)
@@ -14222,7 +14222,7 @@ func (encoder *VideoEncoder) MaxEncodeTime(frame *VideoCodecFrame) gst.ClockTime
 	var _arg1 *C.GstVideoCodecFrame // out
 	var _cret C.GstClockTimeDiff    // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 	_arg1 = (*C.GstVideoCodecFrame)(gextras.StructNative(unsafe.Pointer(frame)))
 
 	_cret = C.gst_video_encoder_get_max_encode_time(_arg0, _arg1)
@@ -14246,7 +14246,7 @@ func (encoder *VideoEncoder) MinForceKeyUnitInterval() gst.ClockTime {
 	var _arg0 *C.GstVideoEncoder // out
 	var _cret C.GstClockTime     // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 
 	_cret = C.gst_video_encoder_get_min_force_key_unit_interval(_arg0)
 	runtime.KeepAlive(encoder)
@@ -14267,7 +14267,7 @@ func (encoder *VideoEncoder) OldestFrame() *VideoCodecFrame {
 	var _arg0 *C.GstVideoEncoder    // out
 	var _cret *C.GstVideoCodecFrame // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 
 	_cret = C.gst_video_encoder_get_oldest_frame(_arg0)
 	runtime.KeepAlive(encoder)
@@ -14296,7 +14296,7 @@ func (encoder *VideoEncoder) OutputState() *VideoCodecState {
 	var _arg0 *C.GstVideoEncoder    // out
 	var _cret *C.GstVideoCodecState // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 
 	_cret = C.gst_video_encoder_get_output_state(_arg0)
 	runtime.KeepAlive(encoder)
@@ -14326,7 +14326,7 @@ func (encoder *VideoEncoder) IsQosEnabled() bool {
 	var _arg0 *C.GstVideoEncoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 
 	_cret = C.gst_video_encoder_is_qos_enabled(_arg0)
 	runtime.KeepAlive(encoder)
@@ -14358,7 +14358,7 @@ func (encoder *VideoEncoder) MergeTags(tags *gst.TagList, mode gst.TagMergeMode)
 	var _arg1 *C.GstTagList      // out
 	var _arg2 C.GstTagMergeMode  // out
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 	if tags != nil {
 		_arg1 = (*C.GstTagList)(gextras.StructNative(unsafe.Pointer(tags)))
 	}
@@ -14381,7 +14381,7 @@ func (encoder *VideoEncoder) Negotiate() bool {
 	var _arg0 *C.GstVideoEncoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 
 	_cret = C.gst_video_encoder_negotiate(_arg0)
 	runtime.KeepAlive(encoder)
@@ -14413,7 +14413,7 @@ func (enc *VideoEncoder) ProxyGetcaps(caps, filter *gst.Caps) *gst.Caps {
 	var _arg2 *C.GstCaps         // out
 	var _cret *C.GstCaps         // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 	if caps != nil {
 		_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 	}
@@ -14447,7 +14447,7 @@ func (encoder *VideoEncoder) SetHeaders(headers []*gst.Buffer) {
 	var _arg0 *C.GstVideoEncoder // out
 	var _arg1 *C.GList           // out
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 	for i := len(headers) - 1; i >= 0; i-- {
 		src := headers[i]
 		var dst *C.GstBuffer // out
@@ -14474,7 +14474,7 @@ func (encoder *VideoEncoder) SetLatency(minLatency, maxLatency gst.ClockTime) {
 	var _arg1 C.GstClockTime     // out
 	var _arg2 C.GstClockTime     // out
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 	_arg1 = C.GstClockTime(minLatency)
 	_arg2 = C.GstClockTime(maxLatency)
 
@@ -14496,7 +14496,7 @@ func (encoder *VideoEncoder) SetMinForceKeyUnitInterval(interval gst.ClockTime) 
 	var _arg0 *C.GstVideoEncoder // out
 	var _arg1 C.GstClockTime     // out
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 	_arg1 = C.GstClockTime(interval)
 
 	C.gst_video_encoder_set_min_force_key_unit_interval(_arg0, _arg1)
@@ -14516,7 +14516,7 @@ func (encoder *VideoEncoder) SetMinPts(minPts gst.ClockTime) {
 	var _arg0 *C.GstVideoEncoder // out
 	var _arg1 C.GstClockTime     // out
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 	_arg1 = C.GstClockTime(minPts)
 
 	C.gst_video_encoder_set_min_pts(_arg0, _arg1)
@@ -14557,7 +14557,7 @@ func (encoder *VideoEncoder) SetOutputState(caps *gst.Caps, reference *VideoCode
 	var _arg2 *C.GstVideoCodecState // out
 	var _cret *C.GstVideoCodecState // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 	runtime.SetFinalizer(gextras.StructIntern(unsafe.Pointer(caps)), nil)
 	if reference != nil {
@@ -14594,7 +14594,7 @@ func (encoder *VideoEncoder) SetQosEnabled(enabled bool) {
 	var _arg0 *C.GstVideoEncoder // out
 	var _arg1 C.gboolean         // out
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 	if enabled {
 		_arg1 = C.TRUE
 	}
@@ -14613,7 +14613,7 @@ func (encoder *VideoEncoder) close() bool {
 	var _arg0 *C.GstVideoEncoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 
 	_cret = C._gotk4_gstvideo1_VideoEncoder_virtual_close(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(encoder)
@@ -14639,7 +14639,7 @@ func (encoder *VideoEncoder) decideAllocation(query *gst.Query) bool {
 	var _arg1 *C.GstQuery        // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 	_arg1 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(query)))
 
 	_cret = C._gotk4_gstvideo1_VideoEncoder_virtual_decide_allocation(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -14664,7 +14664,7 @@ func (encoder *VideoEncoder) finish() gst.FlowReturn {
 	var _arg0 *C.GstVideoEncoder // out
 	var _cret C.GstFlowReturn    // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 
 	_cret = C._gotk4_gstvideo1_VideoEncoder_virtual_finish(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(encoder)
@@ -14685,7 +14685,7 @@ func (encoder *VideoEncoder) flush() bool {
 	var _arg0 *C.GstVideoEncoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 
 	_cret = C._gotk4_gstvideo1_VideoEncoder_virtual_flush(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(encoder)
@@ -14710,7 +14710,7 @@ func (enc *VideoEncoder) caps(filter *gst.Caps) *gst.Caps {
 	var _arg1 *C.GstCaps         // out
 	var _cret *C.GstCaps         // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(enc).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(enc).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(filter)))
 
 	_cret = C._gotk4_gstvideo1_VideoEncoder_virtual_getcaps(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -14738,7 +14738,7 @@ func (encoder *VideoEncoder) handleFrame(frame *VideoCodecFrame) gst.FlowReturn 
 	var _arg1 *C.GstVideoCodecFrame // out
 	var _cret C.GstFlowReturn       // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 	_arg1 = (*C.GstVideoCodecFrame)(gextras.StructNative(unsafe.Pointer(frame)))
 
 	_cret = C._gotk4_gstvideo1_VideoEncoder_virtual_handle_frame(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -14766,7 +14766,7 @@ func (encoder *VideoEncoder) negotiate() bool {
 	var _arg0 *C.GstVideoEncoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 
 	_cret = C._gotk4_gstvideo1_VideoEncoder_virtual_negotiate(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(encoder)
@@ -14789,7 +14789,7 @@ func (encoder *VideoEncoder) open() bool {
 	var _arg0 *C.GstVideoEncoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 
 	_cret = C._gotk4_gstvideo1_VideoEncoder_virtual_open(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(encoder)
@@ -14814,7 +14814,7 @@ func (encoder *VideoEncoder) prePush(frame *VideoCodecFrame) gst.FlowReturn {
 	var _arg1 *C.GstVideoCodecFrame // out
 	var _cret C.GstFlowReturn       // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 	_arg1 = (*C.GstVideoCodecFrame)(gextras.StructNative(unsafe.Pointer(frame)))
 
 	_cret = C._gotk4_gstvideo1_VideoEncoder_virtual_pre_push(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -14839,7 +14839,7 @@ func (encoder *VideoEncoder) proposeAllocation(query *gst.Query) bool {
 	var _arg1 *C.GstQuery        // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 	_arg1 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(query)))
 
 	_cret = C._gotk4_gstvideo1_VideoEncoder_virtual_propose_allocation(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -14865,7 +14865,7 @@ func (encoder *VideoEncoder) reset(hard bool) bool {
 	var _arg1 C.gboolean         // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 	if hard {
 		_arg1 = C.TRUE
 	}
@@ -14893,7 +14893,7 @@ func (encoder *VideoEncoder) setFormat(state *VideoCodecState) bool {
 	var _arg1 *C.GstVideoCodecState // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 	_arg1 = (*C.GstVideoCodecState)(gextras.StructNative(unsafe.Pointer(state)))
 
 	_cret = C._gotk4_gstvideo1_VideoEncoder_virtual_set_format(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -14921,7 +14921,7 @@ func (encoder *VideoEncoder) sinkEvent(event *gst.Event) bool {
 	var _arg1 *C.GstEvent        // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 	_arg1 = (*C.GstEvent)(gextras.StructNative(unsafe.Pointer(event)))
 
 	_cret = C._gotk4_gstvideo1_VideoEncoder_virtual_sink_event(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -14948,7 +14948,7 @@ func (encoder *VideoEncoder) sinkQuery(query *gst.Query) bool {
 	var _arg1 *C.GstQuery        // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 	_arg1 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(query)))
 
 	_cret = C._gotk4_gstvideo1_VideoEncoder_virtual_sink_query(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -14976,7 +14976,7 @@ func (encoder *VideoEncoder) srcEvent(event *gst.Event) bool {
 	var _arg1 *C.GstEvent        // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 	_arg1 = (*C.GstEvent)(gextras.StructNative(unsafe.Pointer(event)))
 
 	_cret = C._gotk4_gstvideo1_VideoEncoder_virtual_src_event(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -15003,7 +15003,7 @@ func (encoder *VideoEncoder) srcQuery(query *gst.Query) bool {
 	var _arg1 *C.GstQuery        // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 	_arg1 = (*C.GstQuery)(gextras.StructNative(unsafe.Pointer(query)))
 
 	_cret = C._gotk4_gstvideo1_VideoEncoder_virtual_src_query(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -15028,7 +15028,7 @@ func (encoder *VideoEncoder) start() bool {
 	var _arg0 *C.GstVideoEncoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 
 	_cret = C._gotk4_gstvideo1_VideoEncoder_virtual_start(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(encoder)
@@ -15051,7 +15051,7 @@ func (encoder *VideoEncoder) stop() bool {
 	var _arg0 *C.GstVideoEncoder // out
 	var _cret C.gboolean         // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 
 	_cret = C._gotk4_gstvideo1_VideoEncoder_virtual_stop(unsafe.Pointer(fnarg), _arg0)
 	runtime.KeepAlive(encoder)
@@ -15083,7 +15083,7 @@ func (encoder *VideoEncoder) transformMeta(frame *VideoCodecFrame, meta *gst.Met
 	var _arg2 *C.GstMeta            // out
 	var _cret C.gboolean            // in
 
-	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.InternObject(encoder).Native()))
+	_arg0 = (*C.GstVideoEncoder)(unsafe.Pointer(coreglib.BaseObject(encoder).Native()))
 	_arg1 = (*C.GstVideoCodecFrame)(gextras.StructNative(unsafe.Pointer(frame)))
 	_arg2 = (*C.GstMeta)(gextras.StructNative(unsafe.Pointer(meta)))
 
@@ -15231,7 +15231,7 @@ func (filter *VideoFilter) setInfo(incaps *gst.Caps, inInfo *VideoInfo, outcaps 
 	var _arg4 *C.GstVideoInfo   // out
 	var _cret C.gboolean        // in
 
-	_arg0 = (*C.GstVideoFilter)(unsafe.Pointer(coreglib.InternObject(filter).Native()))
+	_arg0 = (*C.GstVideoFilter)(unsafe.Pointer(coreglib.BaseObject(filter).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(incaps)))
 	_arg2 = (*C.GstVideoInfo)(gextras.StructNative(unsafe.Pointer(inInfo)))
 	_arg3 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(outcaps)))
@@ -15268,7 +15268,7 @@ func (filter *VideoFilter) transformFrame(inframe, outframe *VideoFrame) gst.Flo
 	var _arg2 *C.GstVideoFrame  // out
 	var _cret C.GstFlowReturn   // in
 
-	_arg0 = (*C.GstVideoFilter)(unsafe.Pointer(coreglib.InternObject(filter).Native()))
+	_arg0 = (*C.GstVideoFilter)(unsafe.Pointer(coreglib.BaseObject(filter).Native()))
 	_arg1 = (*C.GstVideoFrame)(gextras.StructNative(unsafe.Pointer(inframe)))
 	_arg2 = (*C.GstVideoFrame)(gextras.StructNative(unsafe.Pointer(outframe)))
 
@@ -15293,7 +15293,7 @@ func (trans *VideoFilter) transformFrameIP(frame *VideoFrame) gst.FlowReturn {
 	var _arg1 *C.GstVideoFrame  // out
 	var _cret C.GstFlowReturn   // in
 
-	_arg0 = (*C.GstVideoFilter)(unsafe.Pointer(coreglib.InternObject(trans).Native()))
+	_arg0 = (*C.GstVideoFilter)(unsafe.Pointer(coreglib.BaseObject(trans).Native()))
 	_arg1 = (*C.GstVideoFrame)(gextras.StructNative(unsafe.Pointer(frame)))
 
 	_cret = C._gotk4_gstvideo1_VideoFilter_virtual_transform_frame_ip(unsafe.Pointer(fnarg), _arg0, _arg1)
@@ -15424,7 +15424,7 @@ func (videoSink *VideoSink) setInfo(caps *gst.Caps, info *VideoInfo) bool {
 	var _arg2 *C.GstVideoInfo // out
 	var _cret C.gboolean      // in
 
-	_arg0 = (*C.GstVideoSink)(unsafe.Pointer(coreglib.InternObject(videoSink).Native()))
+	_arg0 = (*C.GstVideoSink)(unsafe.Pointer(coreglib.BaseObject(videoSink).Native()))
 	_arg1 = (*C.GstCaps)(gextras.StructNative(unsafe.Pointer(caps)))
 	_arg2 = (*C.GstVideoInfo)(gextras.StructNative(unsafe.Pointer(info)))
 
@@ -15453,7 +15453,7 @@ func (videoSink *VideoSink) showFrame(buf *gst.Buffer) gst.FlowReturn {
 	var _arg1 *C.GstBuffer    // out
 	var _cret C.GstFlowReturn // in
 
-	_arg0 = (*C.GstVideoSink)(unsafe.Pointer(coreglib.InternObject(videoSink).Native()))
+	_arg0 = (*C.GstVideoSink)(unsafe.Pointer(coreglib.BaseObject(videoSink).Native()))
 	_arg1 = (*C.GstBuffer)(gextras.StructNative(unsafe.Pointer(buf)))
 
 	_cret = C._gotk4_gstvideo1_VideoSink_virtual_show_frame(unsafe.Pointer(fnarg), _arg0, _arg1)

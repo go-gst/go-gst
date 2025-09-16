@@ -1897,7 +1897,7 @@ func _gotk4_gst1_DeviceClass_create_element(arg0 *C.GstDevice, arg1 *C.gchar) (c
 	var _ Elementer
 
 	if element != nil {
-		cret = (*C.GstElement)(unsafe.Pointer(coreglib.InternObject(element).Native()))
+		cret = (*C.GstElement)(unsafe.Pointer(coreglib.BaseObject(element).Native()))
 	}
 
 	return cret
@@ -2156,8 +2156,8 @@ func _gotk4_gst1_ElementClass_provide_clock(arg0 *C.GstElement) (cret *C.GstCloc
 	var _ Clocker
 
 	if clock != nil {
-		cret = (*C.GstClock)(unsafe.Pointer(coreglib.InternObject(clock).Native()))
-		C.g_object_ref(C.gpointer(coreglib.InternObject(clock).Native()))
+		cret = (*C.GstClock)(unsafe.Pointer(coreglib.BaseObject(clock).Native()))
+		C.g_object_ref(C.gpointer(coreglib.BaseObject(clock).Native()))
 	}
 
 	return cret
