@@ -5954,7 +5954,7 @@ func RTSPRangeParse(rangestr string) (*RTSPTimeRange, RTSPResult) {
 	return _range, goret
 }
 
-// String wraps gst_rtsp_range_to_string
+// RTSPRangeString wraps gst_rtsp_range_to_string
 // 
 // The function takes the following parameters:
 // 
@@ -5965,7 +5965,7 @@ func RTSPRangeParse(rangestr string) (*RTSPTimeRange, RTSPResult) {
 // 	- goret string 
 //
 // Convert @range into a string representation.
-func String(_range *RTSPTimeRange) string {
+func RTSPRangeString(_range *RTSPTimeRange) string {
 	var carg1 *C.GstRTSPTimeRange // in, none, converted
 	var cret  *C.gchar            // return, full, string
 

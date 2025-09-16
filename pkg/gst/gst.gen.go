@@ -4570,7 +4570,7 @@ const (
 	BufferCopyNone BufferCopyFlags = 0
 	// BufferCopyBufferFlags wraps GST_BUFFER_COPY_BUFFER_FLAGS
 	//
-	// flag indicating that buffer flags should be copied (renamed from GST_BUFFER_COPY_FLAGS to avoid collision with the bitfield type itself)
+	// flag indicating that buffer flags should be copied (go-gst: renamed from BufferCopyFlags)
 	BufferCopyBufferFlags BufferCopyFlags = 1
 	// BufferCopyTimestamps wraps GST_BUFFER_COPY_TIMESTAMPS
 	//

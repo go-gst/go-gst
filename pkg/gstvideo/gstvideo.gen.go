@@ -2077,7 +2077,7 @@ func VideoFieldOrderFromString(order string) VideoFieldOrder {
 	return goret
 }
 
-// String wraps gst_video_field_order_to_string
+// VideoFieldOrderString wraps gst_video_field_order_to_string
 // 
 // The function takes the following parameters:
 // 
@@ -2088,7 +2088,7 @@ func VideoFieldOrderFromString(order string) VideoFieldOrder {
 // 	- goret string 
 //
 // Convert @order to its string representation.
-func String(order VideoFieldOrder) string {
+func VideoFieldOrderString(order VideoFieldOrder) string {
 	var carg1 C.GstVideoFieldOrder // in, none, casted
 	var cret  *C.gchar             // return, none, string
 
@@ -3013,7 +3013,7 @@ func VideoFormatToFourcc(format VideoFormat) uint32 {
 	return goret
 }
 
-// String wraps gst_video_format_to_string
+// VideoFormatString wraps gst_video_format_to_string
 // 
 // The function takes the following parameters:
 // 
@@ -3027,7 +3027,7 @@ func VideoFormatToFourcc(format VideoFormat) uint32 {
 // 
 // Since 1.26 this can also be used with %GST_VIDEO_FORMAT_UNKNOWN, previous
 // versions were printing a critical warning and returned %NULL.
-func String(format VideoFormat) string {
+func VideoFormatString(format VideoFormat) string {
 	var carg1 C.GstVideoFormat // in, none, casted
 	var cret  *C.gchar         // return, none, string
 
@@ -3285,7 +3285,7 @@ func VideoInterlaceModeFromString(mode string) VideoInterlaceMode {
 	return goret
 }
 
-// String wraps gst_video_interlace_mode_to_string
+// VideoInterlaceModeString wraps gst_video_interlace_mode_to_string
 // 
 // The function takes the following parameters:
 // 
@@ -3296,7 +3296,7 @@ func VideoInterlaceModeFromString(mode string) VideoInterlaceMode {
 // 	- goret string 
 //
 // Convert @mode to its string representation.
-func String(mode VideoInterlaceMode) string {
+func VideoInterlaceModeString(mode VideoInterlaceMode) string {
 	var carg1 C.GstVideoInterlaceMode // in, none, casted
 	var cret  *C.gchar                // return, none, string
 
@@ -4715,7 +4715,7 @@ func VideoChromaSiteFromString(s string) VideoChromaSite {
 	return goret
 }
 
-// String wraps gst_video_chroma_site_to_string
+// VideoChromaSiteString wraps gst_video_chroma_site_to_string
 // 
 // The function takes the following parameters:
 // 
@@ -4726,7 +4726,7 @@ func VideoChromaSiteFromString(s string) VideoChromaSite {
 // 	- goret string (nullable) 
 //
 // Converts @site to its string representation.
-func String(site VideoChromaSite) string {
+func VideoChromaSiteString(site VideoChromaSite) string {
 	var carg1 C.GstVideoChromaSite // in, none, casted
 	var cret  *C.gchar             // return, full, string, nullable-string
 

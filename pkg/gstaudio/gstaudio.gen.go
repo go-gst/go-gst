@@ -1232,7 +1232,7 @@ func AudioFormatGetInfo(format AudioFormat) *AudioFormatInfo {
 	return goret
 }
 
-// String wraps gst_audio_format_to_string
+// AudioFormatString wraps gst_audio_format_to_string
 // 
 // The function takes the following parameters:
 // 
@@ -1246,7 +1246,7 @@ func AudioFormatGetInfo(format AudioFormat) *AudioFormatInfo {
 // 
 // Since 1.26 this can also be used with %GST_AUDIO_FORMAT_UNKNOWN, previous
 // versions were printing a critical warning and returned %NULL.
-func String(format AudioFormat) string {
+func AudioFormatString(format AudioFormat) string {
 	var carg1 C.GstAudioFormat // in, none, casted
 	var cret  *C.gchar         // return, none, string
 
@@ -1782,7 +1782,7 @@ func DsdFormatGetWidth(format DsdFormat) uint {
 	return goret
 }
 
-// String wraps gst_dsd_format_to_string
+// DsdFormatString wraps gst_dsd_format_to_string
 // 
 // The function takes the following parameters:
 // 
@@ -1794,7 +1794,7 @@ func DsdFormatGetWidth(format DsdFormat) uint {
 //
 // Returns a string containing a descriptive name for
 // the #GstDsdFormat if there is one, or NULL otherwise.
-func String(format DsdFormat) string {
+func DsdFormatString(format DsdFormat) string {
 	var carg1 C.GstDsdFormat // in, none, casted
 	var cret  *C.gchar       // return, none, string
 
