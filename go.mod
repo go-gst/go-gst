@@ -1,6 +1,6 @@
 module github.com/go-gst/go-gst
 
-go 1.23.2
+go 1.24
 
 require (
 	github.com/diamondburned/gotk4 v0.3.1

@@ -2,13 +2,12 @@
 package main
 
 import (
-	"errors"
 	"fmt"
+	"runtime"
 	"time"
 
-	"github.com/go-gst/go-glib/glib"
-	"github.com/go-gst/go-gst/examples"
-	"github.com/go-gst/go-gst/gst"
+	"github.com/diamondburned/gotk4/pkg/glib/v2"
+	"github.com/go-gst/go-gst/pkg/gst"
 )
 
 // ExampleCustomEvent demonstrates a custom event structue. Currerntly nested structs
@@ -19,10 +18,10 @@ type ExampleCustomEvent struct {
 }
 
 func createPipeline() (*gst.Pipeline, error) {
-	gst.Init(nil)
+	gst.Init()
 
 	// Create a new pipeline from a launch string
-	pipeline, err := gst.NewPipelineFromString(
+	ret, err := gst.ParseLaunch(
 		"audiotestsrc name=src ! queue max-size-time=2000000000 ! fakesink name=sink sync=true",
 	)
 
@@ -30,31 +29,35 @@ func createPipeline() (*gst.Pipeline, error) {
 		return nil, err
 	}
 
-	// Retrieve the sink element
-	sinks, err := pipeline.GetSinkElements()
-	if err != nil {
-		return nil, err
-	} else if len(sinks) != 1 {
-		return nil, errors.New("expected one sink back")
-	}
-	sink := sinks[0]
+	pipeline := ret.(*gst.Pipeline)
 
-	// Get the sink pad
-	sinkpad := sink.GetStaticPad("sink")
+	var sink *gst.Element
+	var sinkpad *gst.Pad
+
+	// Retrieve the sink pad
+	for v := range pipeline.IterateSinks().Values() {
+		sink = v.(*gst.Element)
+		sinkpad = sink.StaticPad("sink")
+		break
+	}
+
+	if sink == nil || sinkpad == nil {
+		return nil, fmt.Errorf("could not find sink")
+	}
 
 	// Add a probe for out custom event
 	sinkpad.AddProbe(gst.PadProbeTypeEventDownstream, func(self *gst.Pad, info *gst.PadProbeInfo) gst.PadProbeReturn {
 		// Retrieve the event from the probe
-		ev := info.GetEvent()
+		ev := info.Event()
 
 		// Extra check to make sure it is the right type.
-		if ev.Type() != gst.EventTypeCustomDownstream {
+		if ev.Type() != gst.EventCustomDownstream {
 			return gst.PadProbeHandled
 		}
 
 		// Unmarshal the event into our custom one
 		var customEvent ExampleCustomEvent
-		if err := ev.GetStructure().UnmarshalInto(&customEvent); err != nil {
+		if err := ev.Structure().UnmarshalInto(&customEvent); err != nil {
 			fmt.Println("Could not parse the custom event!")
 			return gst.PadProbeHandled
 		}
@@ -66,9 +69,9 @@ func createPipeline() (*gst.Pipeline, error) {
 			// This is becaues the SendEvent method blocks and this could cause a dead lock sending the
 			// event directly from the probe. This is the near equivalent of using go func() { ... }(),
 			// however displayed this way for demonstration purposes.
-			sink.CallAsync(func() {
+			sink.CallAsync(func(el gst.Elementer) {
 				fmt.Println("Send EOS is true, sending eos")
-				if !pipeline.SendEvent(gst.NewEOSEvent()) {
+				if !pipeline.SendEvent(gst.NewEventEos()) {
 					fmt.Println("WARNING: Failed to send EOS to pipeline")
 				}
 				fmt.Println("Sent EOS")
@@ -82,11 +85,11 @@ func createPipeline() (*gst.Pipeline, error) {
 	return pipeline, nil
 }
 
-func mainLoop(loop *glib.MainLoop, pipeline *gst.Pipeline) error {
+func runPipeline(loop *glib.MainLoop, pipeline *gst.Pipeline) {
 	// Create a watch on the pipeline to kill the main loop when EOS is received
-	pipeline.GetPipelineBus().AddWatch(func(msg *gst.Message) bool {
+	pipeline.Bus().AddWatch(0, func(bus *gst.Bus, msg *gst.Message) bool {
 		switch msg.Type() {
-		case gst.MessageEOS:
+		case gst.MessageEos:
 			fmt.Println("Got EOS message")
 			loop.Quit()
 		default:
@@ -108,7 +111,8 @@ func mainLoop(loop *glib.MainLoop, pipeline *gst.Pipeline) error {
 				ev.SendEOS = true
 			}
 			st := gst.MarshalStructure(ev)
-			if !pipeline.SendEvent(gst.NewCustomEvent(gst.EventTypeCustomDownstream, st)) {
+
+			if !pipeline.SendEvent(gst.NewEventCustom(gst.EventCustomDownstream, st)) {
 				fmt.Println("Warning: failed to send custom event")
 			}
 			if count == 3 {
@@ -124,18 +128,20 @@ func mainLoop(loop *glib.MainLoop, pipeline *gst.Pipeline) error {
 	// done with the new scope. An alternative is to declare Keep() *after* where you know
 	// you will be done with the object. This instructs the runtime to defer the finalizer
 	// until after this point is passed in the code execution.
-	pipeline.Keep()
 
-	return loop.RunError()
+	loop.Run()
+
+	runtime.KeepAlive(pipeline)
 }
 
 func main() {
-	examples.RunLoop(func(loop *glib.MainLoop) error {
-		var pipeline *gst.Pipeline
-		var err error
-		if pipeline, err = createPipeline(); err != nil {
-			return err
-		}
-		return mainLoop(loop, pipeline)
-	})
+	pipeline, err := createPipeline()
+
+	if err != nil {
+		panic(err)
+	}
+
+	mainloop := glib.NewMainLoop(glib.MainContextDefault(), false)
+
+	runPipeline(mainloop, pipeline)
 }

@@ -4,44 +4,28 @@ package main
 import (
 	"fmt"
 
-	"github.com/go-gst/go-gst/examples"
-	"github.com/go-gst/go-gst/gst"
+	"github.com/go-gst/go-gst/pkg/gst"
 )
 
-func start() error {
-	gst.Init(nil)
-
-	registry := gst.GetRegistry()
-
-	higherThanHighRank := (gst.Rank)(258)
-
-	codec, codecErr := registry.LookupFeature("vtdec_hw")
-
-	if codecErr == nil {
-		codec.SetPluginRank(higherThanHighRank)
-		rank := codec.GetPluginRank()
-		fmt.Println("vtdec_hw rank is:", rank)
-	}
-
-	codec, codecErr = registry.LookupFeature("vtdec_hw")
-
-	if codecErr == nil {
-		codec.SetPluginRank(gst.RankPrimary)
-		rank := codec.GetPluginRank()
-		fmt.Println("vtdec_hw rank is now:", rank)
-	}
-
-	//add a feature you expect to be available to you here and change it's rank
-
-	return codecErr
-}
-
 func main() {
-	examples.Run(func() error {
-		var err error
-		if err = start(); err != nil {
-			return err
-		}
-		return nil
-	})
+	gst.Init()
+
+	registry := gst.RegistryGet()
+
+	higherThanHighRank := uint(258)
+
+	pluginf := registry.LookupFeature("vtdec_hw")
+
+	if pluginf == nil {
+		fmt.Printf("codec vtdec_hw not found")
+
+		return
+	}
+
+	plugin := gst.BasePluginFeature(pluginf)
+
+	plugin.SetRank(higherThanHighRank)
+
+	rank := plugin.Rank()
+	fmt.Println("vtdec_hw rank is:", rank)
 }
