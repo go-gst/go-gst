@@ -41,11 +41,7 @@ import (
 // void _gotk4_gstvideo1_ColorBalance_virtual_value_changed(void* fnptr, GstColorBalance* carg0, GstColorBalanceChannel* carg1, gint carg2) {
 // 	return ((void (*) (GstColorBalance*, GstColorBalanceChannel*, gint))(fnptr))(carg0, carg1, carg2);
 // }
-// extern void _gotk4_gstvideo1_Navigation_send_event(GstNavigation*, GstStructure*);
 // extern void _gotk4_gstvideo1_Navigation_send_event_simple(GstNavigation*, GstEvent*);
-// void _gotk4_gstvideo1_Navigation_virtual_send_event(void* fnptr, GstNavigation* carg0, GstStructure* carg1) {
-// 	return ((void (*) (GstNavigation*, GstStructure*))(fnptr))(carg0, carg1);
-// }
 // void _gotk4_gstvideo1_Navigation_virtual_send_event_simple(void* fnptr, GstNavigation* carg0, GstEvent* carg1) {
 // 	return ((void (*) (GstNavigation*, GstEvent*))(fnptr))(carg0, carg1);
 // }
@@ -499,7 +495,7 @@ const VIDEO_DECODER_MAX_ERRORS = -1
 // VIDEO_FORMAT_LAST wraps GST_VIDEO_FORMAT_LAST
 //
 // Number of video formats in #GstVideoFormat.
-const VIDEO_FORMAT_LAST = 139
+const VIDEO_FORMAT_LAST = 140
 // VIDEO_MAX_COMPONENTS wraps GST_VIDEO_MAX_COMPONENTS
 const VIDEO_MAX_COMPONENTS = 4
 // VIDEO_MAX_PLANES wraps GST_VIDEO_MAX_PLANES
@@ -518,15 +514,15 @@ const VIDEO_TILE_Y_TILES_SHIFT = 16
 type AncillaryMetaField C.int
 
 const (
-	// AncillaryMetaFieldProgressive wraps GST_ANCILLARY_META_FIELD_PROGRESSIVE
+	// AncillaryMetaFieldProgressive wraps ANCILLARY_META_FIELD_PROGRESSIVE
 	//
 	// Progressive or no field specified (default)
 	AncillaryMetaFieldProgressive AncillaryMetaField = 0
-	// AncillaryMetaFieldInterlacedFirst wraps GST_ANCILLARY_META_FIELD_INTERLACED_FIRST
+	// AncillaryMetaFieldInterlacedFirst wraps ANCILLARY_META_FIELD_INTERLACED_FIRST
 	//
 	// Interlaced first field
 	AncillaryMetaFieldInterlacedFirst AncillaryMetaField = 16
-	// AncillaryMetaFieldInterlacedSecond wraps GST_ANCILLARY_META_FIELD_INTERLACED_SECOND
+	// AncillaryMetaFieldInterlacedSecond wraps ANCILLARY_META_FIELD_INTERLACED_SECOND
 	//
 	// Interlaced second field
 	AncillaryMetaFieldInterlacedSecond AncillaryMetaField = 17
@@ -564,12 +560,12 @@ func (e AncillaryMetaField) String() string {
 type ColorBalanceType C.int
 
 const (
-	// ColorBalanceHardware wraps GST_COLOR_BALANCE_HARDWARE
+	// ColorBalanceHardware wraps COLOR_BALANCE_HARDWARE
 	//
 	// Color balance is implemented with dedicated
 	//         hardware.
 	ColorBalanceHardware ColorBalanceType = 0
-	// ColorBalanceSoftware wraps GST_COLOR_BALANCE_SOFTWARE
+	// ColorBalanceSoftware wraps COLOR_BALANCE_SOFTWARE
 	//
 	// Color balance is implemented via software
 	//         processing.
@@ -615,76 +611,76 @@ func (e ColorBalanceType) String() string {
 type NavigationCommand C.int
 
 const (
-	// NavigationCommandInvalid wraps GST_NAVIGATION_COMMAND_INVALID
+	// NavigationCommandInvalid wraps NAVIGATION_COMMAND_INVALID
 	//
 	// An invalid command entry
 	NavigationCommandInvalid NavigationCommand = 0
-	// NavigationCommandMenu1 wraps GST_NAVIGATION_COMMAND_MENU1
+	// NavigationCommandMenu1 wraps NAVIGATION_COMMAND_MENU1
 	//
 	// Execute navigation menu command 1. For DVD,
 	// this enters the DVD root menu, or exits back to the title from the menu.
 	NavigationCommandMenu1 NavigationCommand = 1
-	// NavigationCommandMenu2 wraps GST_NAVIGATION_COMMAND_MENU2
+	// NavigationCommandMenu2 wraps NAVIGATION_COMMAND_MENU2
 	//
 	// Execute navigation menu command 2. For DVD,
 	// this jumps to the DVD title menu.
 	NavigationCommandMenu2 NavigationCommand = 2
-	// NavigationCommandMenu3 wraps GST_NAVIGATION_COMMAND_MENU3
+	// NavigationCommandMenu3 wraps NAVIGATION_COMMAND_MENU3
 	//
 	// Execute navigation menu command 3. For DVD,
 	// this jumps into the DVD root menu.
 	NavigationCommandMenu3 NavigationCommand = 3
-	// NavigationCommandMenu4 wraps GST_NAVIGATION_COMMAND_MENU4
+	// NavigationCommandMenu4 wraps NAVIGATION_COMMAND_MENU4
 	//
 	// Execute navigation menu command 4. For DVD,
 	// this jumps to the Subpicture menu.
 	NavigationCommandMenu4 NavigationCommand = 4
-	// NavigationCommandMenu5 wraps GST_NAVIGATION_COMMAND_MENU5
+	// NavigationCommandMenu5 wraps NAVIGATION_COMMAND_MENU5
 	//
 	// Execute navigation menu command 5. For DVD,
 	// the jumps to the audio menu.
 	NavigationCommandMenu5 NavigationCommand = 5
-	// NavigationCommandMenu6 wraps GST_NAVIGATION_COMMAND_MENU6
+	// NavigationCommandMenu6 wraps NAVIGATION_COMMAND_MENU6
 	//
 	// Execute navigation menu command 6. For DVD,
 	// this jumps to the angles menu.
 	NavigationCommandMenu6 NavigationCommand = 6
-	// NavigationCommandMenu7 wraps GST_NAVIGATION_COMMAND_MENU7
+	// NavigationCommandMenu7 wraps NAVIGATION_COMMAND_MENU7
 	//
 	// Execute navigation menu command 7. For DVD,
 	// this jumps to the chapter menu.
 	NavigationCommandMenu7 NavigationCommand = 7
-	// NavigationCommandLeft wraps GST_NAVIGATION_COMMAND_LEFT
+	// NavigationCommandLeft wraps NAVIGATION_COMMAND_LEFT
 	//
 	// Select the next button to the left in a menu,
 	// if such a button exists.
 	NavigationCommandLeft NavigationCommand = 20
-	// NavigationCommandRight wraps GST_NAVIGATION_COMMAND_RIGHT
+	// NavigationCommandRight wraps NAVIGATION_COMMAND_RIGHT
 	//
 	// Select the next button to the right in a menu,
 	// if such a button exists.
 	NavigationCommandRight NavigationCommand = 21
-	// NavigationCommandUp wraps GST_NAVIGATION_COMMAND_UP
+	// NavigationCommandUp wraps NAVIGATION_COMMAND_UP
 	//
 	// Select the button above the current one in a
 	// menu, if such a button exists.
 	NavigationCommandUp NavigationCommand = 22
-	// NavigationCommandDown wraps GST_NAVIGATION_COMMAND_DOWN
+	// NavigationCommandDown wraps NAVIGATION_COMMAND_DOWN
 	//
 	// Select the button below the current one in a
 	// menu, if such a button exists.
 	NavigationCommandDown NavigationCommand = 23
-	// NavigationCommandActivate wraps GST_NAVIGATION_COMMAND_ACTIVATE
+	// NavigationCommandActivate wraps NAVIGATION_COMMAND_ACTIVATE
 	//
 	// Activate (click) the currently selected
 	// button in a menu, if such a button exists.
 	NavigationCommandActivate NavigationCommand = 24
-	// NavigationCommandPrevAngle wraps GST_NAVIGATION_COMMAND_PREV_ANGLE
+	// NavigationCommandPrevAngle wraps NAVIGATION_COMMAND_PREV_ANGLE
 	//
 	// Switch to the previous angle in a
 	// multiangle feature.
 	NavigationCommandPrevAngle NavigationCommand = 30
-	// NavigationCommandNextAngle wraps GST_NAVIGATION_COMMAND_NEXT_ANGLE
+	// NavigationCommandNextAngle wraps NAVIGATION_COMMAND_NEXT_ANGLE
 	//
 	// Switch to the next angle in a multiangle
 	// feature.
@@ -734,78 +730,78 @@ func (e NavigationCommand) String() string {
 type NavigationEventType C.int
 
 const (
-	// NavigationEventInvalid wraps GST_NAVIGATION_EVENT_INVALID
+	// NavigationEventInvalid wraps NAVIGATION_EVENT_INVALID
 	//
 	// Returned from
 	// gst_navigation_event_get_type() when the passed event is not a navigation event.
 	NavigationEventInvalid NavigationEventType = 0
-	// NavigationEventKeyPress wraps GST_NAVIGATION_EVENT_KEY_PRESS
+	// NavigationEventKeyPress wraps NAVIGATION_EVENT_KEY_PRESS
 	//
 	// A key press event. Use
 	// gst_navigation_event_parse_key_event() to extract the details from the event.
 	NavigationEventKeyPress NavigationEventType = 1
-	// NavigationEventKeyRelease wraps GST_NAVIGATION_EVENT_KEY_RELEASE
+	// NavigationEventKeyRelease wraps NAVIGATION_EVENT_KEY_RELEASE
 	//
 	// A key release event. Use
 	// gst_navigation_event_parse_key_event() to extract the details from the event.
 	NavigationEventKeyRelease NavigationEventType = 2
-	// NavigationEventMouseButtonPress wraps GST_NAVIGATION_EVENT_MOUSE_BUTTON_PRESS
+	// NavigationEventMouseButtonPress wraps NAVIGATION_EVENT_MOUSE_BUTTON_PRESS
 	//
 	// A mouse button press event. Use
 	// gst_navigation_event_parse_mouse_button_event() to extract the details from the
 	// event.
 	NavigationEventMouseButtonPress NavigationEventType = 3
-	// NavigationEventMouseButtonRelease wraps GST_NAVIGATION_EVENT_MOUSE_BUTTON_RELEASE
+	// NavigationEventMouseButtonRelease wraps NAVIGATION_EVENT_MOUSE_BUTTON_RELEASE
 	//
 	// A mouse button release event. Use
 	// gst_navigation_event_parse_mouse_button_event() to extract the details from the
 	// event.
 	NavigationEventMouseButtonRelease NavigationEventType = 4
-	// NavigationEventMouseMove wraps GST_NAVIGATION_EVENT_MOUSE_MOVE
+	// NavigationEventMouseMove wraps NAVIGATION_EVENT_MOUSE_MOVE
 	//
 	// A mouse movement event. Use
 	// gst_navigation_event_parse_mouse_move_event() to extract the details from the
 	// event.
 	NavigationEventMouseMove NavigationEventType = 5
-	// NavigationEventCommand wraps GST_NAVIGATION_EVENT_COMMAND
+	// NavigationEventCommand wraps NAVIGATION_EVENT_COMMAND
 	//
 	// A navigation command event. Use
 	// gst_navigation_event_parse_command() to extract the details from the event.
 	NavigationEventCommand NavigationEventType = 6
-	// NavigationEventMouseScroll wraps GST_NAVIGATION_EVENT_MOUSE_SCROLL
+	// NavigationEventMouseScroll wraps NAVIGATION_EVENT_MOUSE_SCROLL
 	//
 	// A mouse scroll event. Use gst_navigation_event_parse_mouse_scroll_event()
 	// to extract the details from the event.
 	NavigationEventMouseScroll NavigationEventType = 7
-	// NavigationEventTouchDown wraps GST_NAVIGATION_EVENT_TOUCH_DOWN
+	// NavigationEventTouchDown wraps NAVIGATION_EVENT_TOUCH_DOWN
 	//
 	// An event describing a new touch point, which will be assigned an identifier
 	// that is unique to it for the duration of its movement on the screen.
 	// Use gst_navigation_event_parse_touch_event() to extract the details
 	// from the event.
 	NavigationEventTouchDown NavigationEventType = 8
-	// NavigationEventTouchMotion wraps GST_NAVIGATION_EVENT_TOUCH_MOTION
+	// NavigationEventTouchMotion wraps NAVIGATION_EVENT_TOUCH_MOTION
 	//
 	// An event describing the movement of an active touch point across
 	// the screen. Use gst_navigation_event_parse_touch_event() to extract
 	// the details from the event.
 	NavigationEventTouchMotion NavigationEventType = 9
-	// NavigationEventTouchUp wraps GST_NAVIGATION_EVENT_TOUCH_UP
+	// NavigationEventTouchUp wraps NAVIGATION_EVENT_TOUCH_UP
 	//
 	// An event describing a removed touch point. After this event,
 	// its identifier may be reused for any new touch points.
 	// Use gst_navigation_event_parse_touch_up_event() to extract the details
 	// from the event.
 	NavigationEventTouchUp NavigationEventType = 10
-	// NavigationEventTouchFrame wraps GST_NAVIGATION_EVENT_TOUCH_FRAME
+	// NavigationEventTouchFrame wraps NAVIGATION_EVENT_TOUCH_FRAME
 	//
 	// An event signaling the end of a sequence of simultaneous touch events.
 	NavigationEventTouchFrame NavigationEventType = 11
-	// NavigationEventTouchCancel wraps GST_NAVIGATION_EVENT_TOUCH_CANCEL
+	// NavigationEventTouchCancel wraps NAVIGATION_EVENT_TOUCH_CANCEL
 	//
 	// An event cancelling all currently active touch points.
 	NavigationEventTouchCancel NavigationEventType = 12
-	// NavigationEventMouseDoubleClick wraps GST_NAVIGATION_EVENT_MOUSE_DOUBLE_CLICK
+	// NavigationEventMouseDoubleClick wraps NAVIGATION_EVENT_MOUSE_DOUBLE_CLICK
 	//
 	// A mouse button double click event.
 	// Use gst_navigation_event_parse_mouse_button_event() to extract the details
@@ -854,29 +850,29 @@ func (e NavigationEventType) String() string {
 type NavigationMessageType C.int
 
 const (
-	// NavigationMessageInvalid wraps GST_NAVIGATION_MESSAGE_INVALID
+	// NavigationMessageInvalid wraps NAVIGATION_MESSAGE_INVALID
 	//
 	// Returned from
 	// gst_navigation_message_get_type() when the passed message is not a
 	// navigation message.
 	NavigationMessageInvalid NavigationMessageType = 0
-	// NavigationMessageMouseOver wraps GST_NAVIGATION_MESSAGE_MOUSE_OVER
+	// NavigationMessageMouseOver wraps NAVIGATION_MESSAGE_MOUSE_OVER
 	//
 	// Sent when the mouse moves over or leaves a
 	// clickable region of the output, such as a DVD menu button.
 	NavigationMessageMouseOver NavigationMessageType = 1
-	// NavigationMessageCommandsChanged wraps GST_NAVIGATION_MESSAGE_COMMANDS_CHANGED
+	// NavigationMessageCommandsChanged wraps NAVIGATION_MESSAGE_COMMANDS_CHANGED
 	//
 	// Sent when the set of available commands
 	// changes and should re-queried by interested applications.
 	NavigationMessageCommandsChanged NavigationMessageType = 2
-	// NavigationMessageAnglesChanged wraps GST_NAVIGATION_MESSAGE_ANGLES_CHANGED
+	// NavigationMessageAnglesChanged wraps NAVIGATION_MESSAGE_ANGLES_CHANGED
 	//
 	// Sent when display angles in a multi-angle
 	// feature (such as a multiangle DVD) change - either angles have appeared or
 	// disappeared.
 	NavigationMessageAnglesChanged NavigationMessageType = 3
-	// NavigationMessageEvent wraps GST_NAVIGATION_MESSAGE_EVENT
+	// NavigationMessageEvent wraps NAVIGATION_MESSAGE_EVENT
 	//
 	// Sent when a navigation event was not handled
 	// by any element in the pipeline (Since: 1.6)
@@ -914,15 +910,15 @@ func (e NavigationMessageType) String() string {
 type NavigationQueryType C.int
 
 const (
-	// NavigationQueryInvalid wraps GST_NAVIGATION_QUERY_INVALID
+	// NavigationQueryInvalid wraps NAVIGATION_QUERY_INVALID
 	//
 	// invalid query
 	NavigationQueryInvalid NavigationQueryType = 0
-	// NavigationQueryCommands wraps GST_NAVIGATION_QUERY_COMMANDS
+	// NavigationQueryCommands wraps NAVIGATION_QUERY_COMMANDS
 	//
 	// command query
 	NavigationQueryCommands NavigationQueryType = 1
-	// NavigationQueryAngles wraps GST_NAVIGATION_QUERY_ANGLES
+	// NavigationQueryAngles wraps NAVIGATION_QUERY_ANGLES
 	//
 	// viewing angle query
 	NavigationQueryAngles NavigationQueryType = 2
@@ -965,15 +961,15 @@ func (e NavigationQueryType) String() string {
 type VideoAFDSpec C.int
 
 const (
-	// VideoAfdSpecDvbEtsi wraps GST_VIDEO_AFD_SPEC_DVB_ETSI
+	// VideoAfdSpecDvbEtsi wraps VIDEO_AFD_SPEC_DVB_ETSI
 	//
 	// AFD value is from DVB/ETSI standard
 	VideoAfdSpecDvbEtsi VideoAFDSpec = 0
-	// VideoAfdSpecAtscA53 wraps GST_VIDEO_AFD_SPEC_ATSC_A53
+	// VideoAfdSpecAtscA53 wraps VIDEO_AFD_SPEC_ATSC_A53
 	//
 	// AFD value is from ATSC A/53 standard
 	VideoAfdSpecAtscA53 VideoAFDSpec = 1
-	// VideoAfdSpecSmpteSt20161 wraps GST_VIDEO_AFD_SPEC_SMPTE_ST2016_1
+	// VideoAfdSpecSmpteSt20161 wraps VIDEO_AFD_SPEC_SMPTE_ST2016_1
 	VideoAfdSpecSmpteSt20161 VideoAFDSpec = 2
 )
 
@@ -1012,7 +1008,7 @@ func (e VideoAFDSpec) String() string {
 // For details, see Table 6.14 Active Format in:
 // 
 // ATSC Digital Television Standard:
-// Part 4 – MPEG-2 Video System Characteristics
+// Part 4 &#x2013; MPEG-2 Video System Characteristics
 // 
 // https://www.atsc.org/wp-content/uploads/2015/03/a_53-Part-4-2009.pdf
 // 
@@ -1027,9 +1023,9 @@ func (e VideoAFDSpec) String() string {
 // 1) AFD 0 is undefined for ATSC and SMPTE ST2016-1, indicating that AFD data is not available:
 // If Bar Data is not present, AFD '0000' indicates that exact information
 // is not available and the active image should be assumed to be the same as the coded frame. AFD '0000'.
-// AFD '0000' accompanied by Bar Data signals that the active image’s aspect ratio is narrower than 16:9,
+// AFD '0000' accompanied by Bar Data signals that the active image&#x2019;s aspect ratio is narrower than 16:9,
 // but is not 4:3 or 14:9. As the exact aspect ratio cannot be conveyed by AFD alone, wherever possible,
-// AFD ‘0000’ should be accompanied by Bar Data to define the exact vertical or horizontal extent
+// AFD &#x2018;0000&#x2019; should be accompanied by Bar Data to define the exact vertical or horizontal extent
 // of the active image.
 // 2) AFD 0 is reserved for DVB/ETSI
 // 3) values 1, 5, 6, 7, and 12 are reserved for both ATSC and DVB/ETSI
@@ -1037,63 +1033,63 @@ func (e VideoAFDSpec) String() string {
 type VideoAFDValue C.int
 
 const (
-	// VideoAfdUnavailable wraps GST_VIDEO_AFD_UNAVAILABLE
+	// VideoAfdUnavailable wraps VIDEO_AFD_UNAVAILABLE
 	//
 	// Unavailable (see note 0 below).
 	VideoAfdUnavailable VideoAFDValue = 0
-	// VideoAfd169_TopAligned wraps GST_VIDEO_AFD_16_9_TOP_ALIGNED
+	// VideoAfd169_TopAligned wraps VIDEO_AFD_16_9_TOP_ALIGNED
 	//
 	// For 4:3 coded frame, letterbox 16:9 image,
 	//      at top of the coded frame. For 16:9 coded frame, full frame 16:9 image,
 	//      the same as the coded frame.
 	VideoAfd169_TopAligned VideoAFDValue = 2
-	// VideoAfd149_TopAligned wraps GST_VIDEO_AFD_14_9_TOP_ALIGNED
+	// VideoAfd149_TopAligned wraps VIDEO_AFD_14_9_TOP_ALIGNED
 	//
 	// For 4:3 coded frame, letterbox 14:9 image,
 	//      at top of the coded frame. For 16:9 coded frame, pillarbox 14:9 image,
 	//      horizontally centered in the coded frame.
 	VideoAfd149_TopAligned VideoAFDValue = 3
-	// VideoAfdGreaterThan169 wraps GST_VIDEO_AFD_GREATER_THAN_16_9
+	// VideoAfdGreaterThan169 wraps VIDEO_AFD_GREATER_THAN_16_9
 	//
 	// For 4:3 coded frame, letterbox image with an aspect ratio
 	//      greater than 16:9, vertically centered in the coded frame. For 16:9 coded frame,
 	//      letterbox image with an aspect ratio greater than 16:9.
 	VideoAfdGreaterThan169 VideoAFDValue = 4
-	// VideoAfd43_Full169_Full wraps GST_VIDEO_AFD_4_3_FULL_16_9_FULL
+	// VideoAfd43_Full169_Full wraps VIDEO_AFD_4_3_FULL_16_9_FULL
 	//
 	// For 4:3 coded frame, full frame 4:3 image,
 	//      the same as the coded frame. For 16:9 coded frame, full frame 16:9 image, the same as
 	//      the coded frame.
 	VideoAfd43_Full169_Full VideoAFDValue = 8
-	// VideoAfd43_Full43_Pillar wraps GST_VIDEO_AFD_4_3_FULL_4_3_PILLAR
+	// VideoAfd43_Full43_Pillar wraps VIDEO_AFD_4_3_FULL_4_3_PILLAR
 	//
 	// For 4:3 coded frame, full frame 4:3 image, the same as
 	//      the coded frame. For 16:9 coded frame, pillarbox 4:3 image, horizontally centered in the
 	//      coded frame.
 	VideoAfd43_Full43_Pillar VideoAFDValue = 9
-	// VideoAfd169_Letter169_Full wraps GST_VIDEO_AFD_16_9_LETTER_16_9_FULL
+	// VideoAfd169_Letter169_Full wraps VIDEO_AFD_16_9_LETTER_16_9_FULL
 	//
 	// For 4:3 coded frame, letterbox 16:9 image, vertically centered in
 	//      the coded frame with all image areas protected. For 16:9 coded frame, full frame 16:9 image,
 	//      with all image areas protected.
 	VideoAfd169_Letter169_Full VideoAFDValue = 10
-	// VideoAfd149_Letter149_Pillar wraps GST_VIDEO_AFD_14_9_LETTER_14_9_PILLAR
+	// VideoAfd149_Letter149_Pillar wraps VIDEO_AFD_14_9_LETTER_14_9_PILLAR
 	//
 	// For 4:3 coded frame, letterbox 14:9 image, vertically centered in
 	//      the coded frame. For 16:9 coded frame, pillarbox 14:9 image, horizontally centered in the
 	//      coded frame.
 	VideoAfd149_Letter149_Pillar VideoAFDValue = 11
-	// VideoAfd43_Full149_Center wraps GST_VIDEO_AFD_4_3_FULL_14_9_CENTER
+	// VideoAfd43_Full149_Center wraps VIDEO_AFD_4_3_FULL_14_9_CENTER
 	//
 	// For 4:3 coded frame, full frame 4:3 image, with alternative 14:9
 	//      center. For 16:9 coded frame, pillarbox 4:3 image, with alternative 14:9 center.
 	VideoAfd43_Full149_Center VideoAFDValue = 13
-	// VideoAfd169_Letter149_Center wraps GST_VIDEO_AFD_16_9_LETTER_14_9_CENTER
+	// VideoAfd169_Letter149_Center wraps VIDEO_AFD_16_9_LETTER_14_9_CENTER
 	//
 	// For 4:3 coded frame, letterbox 16:9 image, with alternative 14:9
 	//      center. For 16:9 coded frame, full frame 16:9 image, with alternative 14:9 center.
 	VideoAfd169_Letter149_Center VideoAFDValue = 14
-	// VideoAfd169_Letter43_Center wraps GST_VIDEO_AFD_16_9_LETTER_4_3_CENTER
+	// VideoAfd169_Letter43_Center wraps VIDEO_AFD_16_9_LETTER_4_3_CENTER
 	//
 	// For 4:3 coded frame, letterbox 16:9 image, with alternative 4:3
 	//      center. For 16:9 coded frame, full frame 16:9 image, with alternative 4:3 center.
@@ -1137,18 +1133,18 @@ func (e VideoAFDValue) String() string {
 type VideoAlphaMode C.int
 
 const (
-	// VideoAlphaModeCopy wraps GST_VIDEO_ALPHA_MODE_COPY
+	// VideoAlphaModeCopy wraps VIDEO_ALPHA_MODE_COPY
 	//
 	// When input and output have alpha, it will be copied.
 	//         When the input has no alpha, alpha will be set to
 	//         #GST_VIDEO_CONVERTER_OPT_ALPHA_VALUE
 	VideoAlphaModeCopy VideoAlphaMode = 0
-	// VideoAlphaModeSet wraps GST_VIDEO_ALPHA_MODE_SET
+	// VideoAlphaModeSet wraps VIDEO_ALPHA_MODE_SET
 	//
 	// set all alpha to
 	//    #GST_VIDEO_CONVERTER_OPT_ALPHA_VALUE
 	VideoAlphaModeSet VideoAlphaMode = 1
-	// VideoAlphaModeMult wraps GST_VIDEO_ALPHA_MODE_MULT
+	// VideoAlphaModeMult wraps VIDEO_ALPHA_MODE_MULT
 	//
 	// multiply all alpha with
 	//         #GST_VIDEO_CONVERTER_OPT_ALPHA_VALUE.
@@ -1184,29 +1180,29 @@ func (e VideoAlphaMode) String() string {
 type VideoAncillaryDID C.int
 
 const (
-	// VideoAncillaryDidUndefined wraps GST_VIDEO_ANCILLARY_DID_UNDEFINED
+	// VideoAncillaryDidUndefined wraps VIDEO_ANCILLARY_DID_UNDEFINED
 	VideoAncillaryDidUndefined VideoAncillaryDID = 0
-	// VideoAncillaryDidDeletion wraps GST_VIDEO_ANCILLARY_DID_DELETION
+	// VideoAncillaryDidDeletion wraps VIDEO_ANCILLARY_DID_DELETION
 	VideoAncillaryDidDeletion VideoAncillaryDID = 128
-	// VideoAncillaryDidHanc3GAudioDataFirst wraps GST_VIDEO_ANCILLARY_DID_HANC_3G_AUDIO_DATA_FIRST
+	// VideoAncillaryDidHanc3GAudioDataFirst wraps VIDEO_ANCILLARY_DID_HANC_3G_AUDIO_DATA_FIRST
 	VideoAncillaryDidHanc3GAudioDataFirst VideoAncillaryDID = 160
-	// VideoAncillaryDidHanc3GAudioDataLast wraps GST_VIDEO_ANCILLARY_DID_HANC_3G_AUDIO_DATA_LAST
+	// VideoAncillaryDidHanc3GAudioDataLast wraps VIDEO_ANCILLARY_DID_HANC_3G_AUDIO_DATA_LAST
 	VideoAncillaryDidHanc3GAudioDataLast VideoAncillaryDID = 167
-	// VideoAncillaryDidHancHdtvAudioDataFirst wraps GST_VIDEO_ANCILLARY_DID_HANC_HDTV_AUDIO_DATA_FIRST
+	// VideoAncillaryDidHancHdtvAudioDataFirst wraps VIDEO_ANCILLARY_DID_HANC_HDTV_AUDIO_DATA_FIRST
 	VideoAncillaryDidHancHdtvAudioDataFirst VideoAncillaryDID = 224
-	// VideoAncillaryDidHancHdtvAudioDataLast wraps GST_VIDEO_ANCILLARY_DID_HANC_HDTV_AUDIO_DATA_LAST
+	// VideoAncillaryDidHancHdtvAudioDataLast wraps VIDEO_ANCILLARY_DID_HANC_HDTV_AUDIO_DATA_LAST
 	VideoAncillaryDidHancHdtvAudioDataLast VideoAncillaryDID = 231
-	// VideoAncillaryDidHancSdtvAudioData1First wraps GST_VIDEO_ANCILLARY_DID_HANC_SDTV_AUDIO_DATA_1_FIRST
+	// VideoAncillaryDidHancSdtvAudioData1First wraps VIDEO_ANCILLARY_DID_HANC_SDTV_AUDIO_DATA_1_FIRST
 	VideoAncillaryDidHancSdtvAudioData1First VideoAncillaryDID = 236
-	// VideoAncillaryDidHancSdtvAudioData1Last wraps GST_VIDEO_ANCILLARY_DID_HANC_SDTV_AUDIO_DATA_1_LAST
+	// VideoAncillaryDidHancSdtvAudioData1Last wraps VIDEO_ANCILLARY_DID_HANC_SDTV_AUDIO_DATA_1_LAST
 	VideoAncillaryDidHancSdtvAudioData1Last VideoAncillaryDID = 239
-	// VideoAncillaryDidCameraPosition wraps GST_VIDEO_ANCILLARY_DID_CAMERA_POSITION
+	// VideoAncillaryDidCameraPosition wraps VIDEO_ANCILLARY_DID_CAMERA_POSITION
 	VideoAncillaryDidCameraPosition VideoAncillaryDID = 240
-	// VideoAncillaryDidHancErrorDetection wraps GST_VIDEO_ANCILLARY_DID_HANC_ERROR_DETECTION
+	// VideoAncillaryDidHancErrorDetection wraps VIDEO_ANCILLARY_DID_HANC_ERROR_DETECTION
 	VideoAncillaryDidHancErrorDetection VideoAncillaryDID = 244
-	// VideoAncillaryDidHancSdtvAudioData2First wraps GST_VIDEO_ANCILLARY_DID_HANC_SDTV_AUDIO_DATA_2_FIRST
+	// VideoAncillaryDidHancSdtvAudioData2First wraps VIDEO_ANCILLARY_DID_HANC_SDTV_AUDIO_DATA_2_FIRST
 	VideoAncillaryDidHancSdtvAudioData2First VideoAncillaryDID = 248
-	// VideoAncillaryDidHancSdtvAudioData2Last wraps GST_VIDEO_ANCILLARY_DID_HANC_SDTV_AUDIO_DATA_2_LAST
+	// VideoAncillaryDidHancSdtvAudioData2Last wraps VIDEO_ANCILLARY_DID_HANC_SDTV_AUDIO_DATA_2_LAST
 	VideoAncillaryDidHancSdtvAudioData2Last VideoAncillaryDID = 255
 )
 
@@ -1248,15 +1244,15 @@ func (e VideoAncillaryDID) String() string {
 type VideoAncillaryDID16 C.int
 
 const (
-	// VideoAncillaryDid16S334Eia708 wraps GST_VIDEO_ANCILLARY_DID16_S334_EIA_708
+	// VideoAncillaryDid16S334Eia708 wraps VIDEO_ANCILLARY_DID16_S334_EIA_708
 	//
 	// CEA 708 Ancillary data according to SMPTE 334
 	VideoAncillaryDid16S334Eia708 VideoAncillaryDID16 = 24833
-	// VideoAncillaryDid16S334Eia608 wraps GST_VIDEO_ANCILLARY_DID16_S334_EIA_608
+	// VideoAncillaryDid16S334Eia608 wraps VIDEO_ANCILLARY_DID16_S334_EIA_608
 	//
 	// CEA 608 Ancillary data according to SMPTE 334
 	VideoAncillaryDid16S334Eia608 VideoAncillaryDID16 = 24834
-	// VideoAncillaryDid16S20163AfdBar wraps GST_VIDEO_ANCILLARY_DID16_S2016_3_AFD_BAR
+	// VideoAncillaryDid16S20163AfdBar wraps VIDEO_ANCILLARY_DID16_S2016_3_AFD_BAR
 	//
 	// AFD/Bar Ancillary data according to SMPTE 2016-3 (Since: 1.18)
 	VideoAncillaryDid16S20163AfdBar VideoAncillaryDID16 = 16645
@@ -1291,11 +1287,11 @@ func (e VideoAncillaryDID16) String() string {
 type VideoCaptionType C.int
 
 const (
-	// VideoCaptionTypeUnknown wraps GST_VIDEO_CAPTION_TYPE_UNKNOWN
+	// VideoCaptionTypeUnknown wraps VIDEO_CAPTION_TYPE_UNKNOWN
 	//
 	// Unknown type of CC
 	VideoCaptionTypeUnknown VideoCaptionType = 0
-	// VideoCaptionTypeCea608Raw wraps GST_VIDEO_CAPTION_TYPE_CEA608_RAW
+	// VideoCaptionTypeCea608Raw wraps VIDEO_CAPTION_TYPE_CEA608_RAW
 	//
 	// CEA-608 as byte pairs. Note that
 	//      this format is not recommended since is does not specify to
@@ -1305,7 +1301,7 @@ const (
 	//      if you wish to store CEA-608 from two fields and prefix each byte pair
 	//      with 0xFC for the first field and 0xFD for the second field.
 	VideoCaptionTypeCea608Raw VideoCaptionType = 1
-	// VideoCaptionTypeCea608S3341A wraps GST_VIDEO_CAPTION_TYPE_CEA608_S334_1A
+	// VideoCaptionTypeCea608S3341A wraps VIDEO_CAPTION_TYPE_CEA608_S334_1A
 	//
 	// CEA-608 as byte triplets as defined
 	//      in SMPTE S334-1 Annex A. The second and third byte of the byte triplet
@@ -1316,13 +1312,13 @@ const (
 	//      for 525-line field 1, line 272 for 525-line field 2, line 5 for
 	//      625-line field 1 and line 318 for 625-line field 2).
 	VideoCaptionTypeCea608S3341A VideoCaptionType = 2
-	// VideoCaptionTypeCea708Raw wraps GST_VIDEO_CAPTION_TYPE_CEA708_RAW
+	// VideoCaptionTypeCea708Raw wraps VIDEO_CAPTION_TYPE_CEA708_RAW
 	//
 	// CEA-708 as cc_data byte triplets. They
 	//      can also contain 608-in-708 and the first byte of each triplet has to
 	//      be inspected for detecting the type.
 	VideoCaptionTypeCea708Raw VideoCaptionType = 3
-	// VideoCaptionTypeCea708Cdp wraps GST_VIDEO_CAPTION_TYPE_CEA708_CDP
+	// VideoCaptionTypeCea708Cdp wraps VIDEO_CAPTION_TYPE_CEA708_CDP
 	//
 	// CEA-708 (and optionally CEA-608) in
 	//      a CDP (Caption Distribution Packet) defined by SMPTE S-334-2.
@@ -1416,12 +1412,12 @@ func VideoCaptionTypeToCaps(typ VideoCaptionType) *gst.Caps {
 type VideoChromaMethod C.int
 
 const (
-	// VideoChromaMethodNearest wraps GST_VIDEO_CHROMA_METHOD_NEAREST
+	// VideoChromaMethodNearest wraps VIDEO_CHROMA_METHOD_NEAREST
 	//
 	// Duplicates the chroma samples when
 	//    upsampling and drops when subsampling
 	VideoChromaMethodNearest VideoChromaMethod = 0
-	// VideoChromaMethodLinear wraps GST_VIDEO_CHROMA_METHOD_LINEAR
+	// VideoChromaMethodLinear wraps VIDEO_CHROMA_METHOD_LINEAR
 	//
 	// Uses linear interpolation to reconstruct
 	//    missing chroma and averaging to subsample
@@ -1456,19 +1452,19 @@ func (e VideoChromaMethod) String() string {
 type VideoChromaMode C.int
 
 const (
-	// VideoChromaModeFull wraps GST_VIDEO_CHROMA_MODE_FULL
+	// VideoChromaModeFull wraps VIDEO_CHROMA_MODE_FULL
 	//
 	// do full chroma up and down sampling
 	VideoChromaModeFull VideoChromaMode = 0
-	// VideoChromaModeUpsampleOnly wraps GST_VIDEO_CHROMA_MODE_UPSAMPLE_ONLY
+	// VideoChromaModeUpsampleOnly wraps VIDEO_CHROMA_MODE_UPSAMPLE_ONLY
 	//
 	// only perform chroma upsampling
 	VideoChromaModeUpsampleOnly VideoChromaMode = 1
-	// VideoChromaModeDownsampleOnly wraps GST_VIDEO_CHROMA_MODE_DOWNSAMPLE_ONLY
+	// VideoChromaModeDownsampleOnly wraps VIDEO_CHROMA_MODE_DOWNSAMPLE_ONLY
 	//
 	// only perform chroma downsampling
 	VideoChromaModeDownsampleOnly VideoChromaMode = 2
-	// VideoChromaModeNone wraps GST_VIDEO_CHROMA_MODE_NONE
+	// VideoChromaModeNone wraps VIDEO_CHROMA_MODE_NONE
 	//
 	// disable chroma resampling
 	VideoChromaModeNone VideoChromaMode = 3
@@ -1505,33 +1501,33 @@ func (e VideoChromaMode) String() string {
 type VideoColorMatrix C.int
 
 const (
-	// VideoColorMatrixUnknown wraps GST_VIDEO_COLOR_MATRIX_UNKNOWN
+	// VideoColorMatrixUnknown wraps VIDEO_COLOR_MATRIX_UNKNOWN
 	//
 	// unknown matrix
 	VideoColorMatrixUnknown VideoColorMatrix = 0
-	// VideoColorMatrixRGB wraps GST_VIDEO_COLOR_MATRIX_RGB
+	// VideoColorMatrixRGB wraps VIDEO_COLOR_MATRIX_RGB
 	//
 	// identity matrix. Order of coefficients is
 	// actually GBR, also IEC 61966-2-1 (sRGB)
 	VideoColorMatrixRGB VideoColorMatrix = 1
-	// VideoColorMatrixFcc wraps GST_VIDEO_COLOR_MATRIX_FCC
+	// VideoColorMatrixFcc wraps VIDEO_COLOR_MATRIX_FCC
 	//
 	// FCC Title 47 Code of Federal Regulations 73.682 (a)(20)
 	VideoColorMatrixFcc VideoColorMatrix = 2
-	// VideoColorMatrixBt709 wraps GST_VIDEO_COLOR_MATRIX_BT709
+	// VideoColorMatrixBt709 wraps VIDEO_COLOR_MATRIX_BT709
 	//
 	// ITU-R BT.709 color matrix, also ITU-R BT1361
 	// / IEC 61966-2-4 xvYCC709 / SMPTE RP177 Annex B
 	VideoColorMatrixBt709 VideoColorMatrix = 3
-	// VideoColorMatrixBt601 wraps GST_VIDEO_COLOR_MATRIX_BT601
+	// VideoColorMatrixBt601 wraps VIDEO_COLOR_MATRIX_BT601
 	//
 	// ITU-R BT.601 color matrix, also SMPTE170M / ITU-R BT1358 525 / ITU-R BT1700 NTSC
 	VideoColorMatrixBt601 VideoColorMatrix = 4
-	// VideoColorMatrixSmpte240M wraps GST_VIDEO_COLOR_MATRIX_SMPTE240M
+	// VideoColorMatrixSmpte240M wraps VIDEO_COLOR_MATRIX_SMPTE240M
 	//
 	// SMPTE 240M color matrix
 	VideoColorMatrixSmpte240M VideoColorMatrix = 5
-	// VideoColorMatrixBt2020 wraps GST_VIDEO_COLOR_MATRIX_BT2020
+	// VideoColorMatrixBt2020 wraps VIDEO_COLOR_MATRIX_BT2020
 	//
 	// ITU-R BT.2020 color matrix. Since: 1.6
 	VideoColorMatrixBt2020 VideoColorMatrix = 6
@@ -1692,63 +1688,63 @@ func VideoColorMatrixToISO(matrix VideoColorMatrix) uint {
 type VideoColorPrimaries C.int
 
 const (
-	// VideoColorPrimariesUnknown wraps GST_VIDEO_COLOR_PRIMARIES_UNKNOWN
+	// VideoColorPrimariesUnknown wraps VIDEO_COLOR_PRIMARIES_UNKNOWN
 	//
 	// unknown color primaries
 	VideoColorPrimariesUnknown VideoColorPrimaries = 0
-	// VideoColorPrimariesBt709 wraps GST_VIDEO_COLOR_PRIMARIES_BT709
+	// VideoColorPrimariesBt709 wraps VIDEO_COLOR_PRIMARIES_BT709
 	//
 	// BT709 primaries, also ITU-R BT1361 / IEC
 	// 61966-2-4 / SMPTE RP177 Annex B
 	VideoColorPrimariesBt709 VideoColorPrimaries = 1
-	// VideoColorPrimariesBt470M wraps GST_VIDEO_COLOR_PRIMARIES_BT470M
+	// VideoColorPrimariesBt470M wraps VIDEO_COLOR_PRIMARIES_BT470M
 	//
 	// BT470M primaries, also FCC Title 47 Code
 	// of Federal Regulations 73.682 (a)(20)
 	VideoColorPrimariesBt470M VideoColorPrimaries = 2
-	// VideoColorPrimariesBt470Bg wraps GST_VIDEO_COLOR_PRIMARIES_BT470BG
+	// VideoColorPrimariesBt470Bg wraps VIDEO_COLOR_PRIMARIES_BT470BG
 	//
 	// BT470BG primaries, also ITU-R BT601-6
 	// 625 / ITU-R BT1358 625 / ITU-R BT1700 625 PAL &amp; SECAM
 	VideoColorPrimariesBt470Bg VideoColorPrimaries = 3
-	// VideoColorPrimariesSmpte170M wraps GST_VIDEO_COLOR_PRIMARIES_SMPTE170M
+	// VideoColorPrimariesSmpte170M wraps VIDEO_COLOR_PRIMARIES_SMPTE170M
 	//
 	// SMPTE170M primaries, also ITU-R
 	// BT601-6 525 / ITU-R BT1358 525 / ITU-R BT1700 NTSC
 	VideoColorPrimariesSmpte170M VideoColorPrimaries = 4
-	// VideoColorPrimariesSmpte240M wraps GST_VIDEO_COLOR_PRIMARIES_SMPTE240M
+	// VideoColorPrimariesSmpte240M wraps VIDEO_COLOR_PRIMARIES_SMPTE240M
 	//
 	// SMPTE240M primaries
 	VideoColorPrimariesSmpte240M VideoColorPrimaries = 5
-	// VideoColorPrimariesFilm wraps GST_VIDEO_COLOR_PRIMARIES_FILM
+	// VideoColorPrimariesFilm wraps VIDEO_COLOR_PRIMARIES_FILM
 	//
 	// Generic film (colour filters using
 	// Illuminant C)
 	VideoColorPrimariesFilm VideoColorPrimaries = 6
-	// VideoColorPrimariesBt2020 wraps GST_VIDEO_COLOR_PRIMARIES_BT2020
+	// VideoColorPrimariesBt2020 wraps VIDEO_COLOR_PRIMARIES_BT2020
 	//
 	// ITU-R BT2020 primaries. Since: 1.6
 	VideoColorPrimariesBt2020 VideoColorPrimaries = 7
-	// VideoColorPrimariesAdobergb wraps GST_VIDEO_COLOR_PRIMARIES_ADOBERGB
+	// VideoColorPrimariesAdobergb wraps VIDEO_COLOR_PRIMARIES_ADOBERGB
 	//
 	// Adobe RGB primaries. Since: 1.8
 	VideoColorPrimariesAdobergb VideoColorPrimaries = 8
-	// VideoColorPrimariesSmptest428 wraps GST_VIDEO_COLOR_PRIMARIES_SMPTEST428
+	// VideoColorPrimariesSmptest428 wraps VIDEO_COLOR_PRIMARIES_SMPTEST428
 	//
 	// SMPTE ST 428 primaries (CIE 1931
 	// XYZ). Since: 1.16
 	VideoColorPrimariesSmptest428 VideoColorPrimaries = 9
-	// VideoColorPrimariesSmpterp431 wraps GST_VIDEO_COLOR_PRIMARIES_SMPTERP431
+	// VideoColorPrimariesSmpterp431 wraps VIDEO_COLOR_PRIMARIES_SMPTERP431
 	//
 	// SMPTE RP 431 primaries (ST 431-2
 	// (2011) / DCI P3). Since: 1.16
 	VideoColorPrimariesSmpterp431 VideoColorPrimaries = 10
-	// VideoColorPrimariesSmpteeg432 wraps GST_VIDEO_COLOR_PRIMARIES_SMPTEEG432
+	// VideoColorPrimariesSmpteeg432 wraps VIDEO_COLOR_PRIMARIES_SMPTEEG432
 	//
 	// SMPTE EG 432 primaries (ST 432-1
 	// (2010) / P3 D65). Since: 1.16
 	VideoColorPrimariesSmpteeg432 VideoColorPrimaries = 11
-	// VideoColorPrimariesEbu3213 wraps GST_VIDEO_COLOR_PRIMARIES_EBU3213
+	// VideoColorPrimariesEbu3213 wraps VIDEO_COLOR_PRIMARIES_EBU3213
 	//
 	// EBU 3213 primaries (JEDEC P22
 	// phosphors). Since: 1.16
@@ -1915,15 +1911,15 @@ func VideoColorPrimariesToISO(primaries VideoColorPrimaries) uint {
 type VideoColorRange C.int
 
 const (
-	// VideoColorRangeUnknown wraps GST_VIDEO_COLOR_RANGE_UNKNOWN
+	// VideoColorRangeUnknown wraps VIDEO_COLOR_RANGE_UNKNOWN
 	//
 	// unknown range
 	VideoColorRangeUnknown VideoColorRange = 0
-	// VideoColorRange0255 wraps GST_VIDEO_COLOR_RANGE_0_255
+	// VideoColorRange0255 wraps VIDEO_COLOR_RANGE_0_255
 	//
 	// [0..255] for 8 bit components
 	VideoColorRange0255 VideoColorRange = 1
-	// VideoColorRange16235 wraps GST_VIDEO_COLOR_RANGE_16_235
+	// VideoColorRange16235 wraps VIDEO_COLOR_RANGE_16_235
 	//
 	// [16..235] for 8 bit components. Chroma has
 	//                 [16..240] range.
@@ -1959,23 +1955,23 @@ func (e VideoColorRange) String() string {
 type VideoDitherMethod C.int
 
 const (
-	// VideoDitherNone wraps GST_VIDEO_DITHER_NONE
+	// VideoDitherNone wraps VIDEO_DITHER_NONE
 	//
 	// no dithering
 	VideoDitherNone VideoDitherMethod = 0
-	// VideoDitherVerterr wraps GST_VIDEO_DITHER_VERTERR
+	// VideoDitherVerterr wraps VIDEO_DITHER_VERTERR
 	//
 	// propagate rounding errors downwards
 	VideoDitherVerterr VideoDitherMethod = 1
-	// VideoDitherFloydSteinberg wraps GST_VIDEO_DITHER_FLOYD_STEINBERG
+	// VideoDitherFloydSteinberg wraps VIDEO_DITHER_FLOYD_STEINBERG
 	//
 	// Dither with floyd-steinberg error diffusion
 	VideoDitherFloydSteinberg VideoDitherMethod = 2
-	// VideoDitherSierraLite wraps GST_VIDEO_DITHER_SIERRA_LITE
+	// VideoDitherSierraLite wraps VIDEO_DITHER_SIERRA_LITE
 	//
 	// Dither with Sierra Lite error diffusion
 	VideoDitherSierraLite VideoDitherMethod = 3
-	// VideoDitherBayer wraps GST_VIDEO_DITHER_BAYER
+	// VideoDitherBayer wraps VIDEO_DITHER_BAYER
 	//
 	// ordered dither using a bayer pattern
 	VideoDitherBayer VideoDitherMethod = 4
@@ -2015,16 +2011,16 @@ func (e VideoDitherMethod) String() string {
 type VideoFieldOrder C.int
 
 const (
-	// VideoFieldOrderUnknown wraps GST_VIDEO_FIELD_ORDER_UNKNOWN
+	// VideoFieldOrderUnknown wraps VIDEO_FIELD_ORDER_UNKNOWN
 	//
 	// unknown field order for interlaced content.
 	//     The actual field order is signalled via buffer flags.
 	VideoFieldOrderUnknown VideoFieldOrder = 0
-	// VideoFieldOrderTopFieldFirst wraps GST_VIDEO_FIELD_ORDER_TOP_FIELD_FIRST
+	// VideoFieldOrderTopFieldFirst wraps VIDEO_FIELD_ORDER_TOP_FIELD_FIRST
 	//
 	// top field is first
 	VideoFieldOrderTopFieldFirst VideoFieldOrder = 1
-	// VideoFieldOrderBottomFieldFirst wraps GST_VIDEO_FIELD_ORDER_BOTTOM_FIELD_FIRST
+	// VideoFieldOrderBottomFieldFirst wraps VIDEO_FIELD_ORDER_BOTTOM_FIELD_FIRST
 	//
 	// bottom field is first
 	VideoFieldOrderBottomFieldFirst VideoFieldOrder = 2
@@ -2117,577 +2113,577 @@ func VideoFieldOrderToString(order VideoFieldOrder) string {
 type VideoFormat C.int
 
 const (
-	// VideoFormatUnknown wraps GST_VIDEO_FORMAT_UNKNOWN
+	// VideoFormatUnknown wraps VIDEO_FORMAT_UNKNOWN
 	//
 	// Unknown or unset video format id
 	VideoFormatUnknown VideoFormat = 0
-	// VideoFormatEncoded wraps GST_VIDEO_FORMAT_ENCODED
+	// VideoFormatEncoded wraps VIDEO_FORMAT_ENCODED
 	//
 	// Encoded video format. Only ever use that in caps for
 	//                            special video formats in combination with non-system
 	//                            memory GstCapsFeatures where it does not make sense
 	//                            to specify a real video format.
 	VideoFormatEncoded VideoFormat = 1
-	// VideoFormatI420 wraps GST_VIDEO_FORMAT_I420
+	// VideoFormatI420 wraps VIDEO_FORMAT_I420
 	//
 	// planar 4:2:0 YUV
 	VideoFormatI420 VideoFormat = 2
-	// VideoFormatYV12 wraps GST_VIDEO_FORMAT_YV12
+	// VideoFormatYV12 wraps VIDEO_FORMAT_YV12
 	//
 	// planar 4:2:0 YVU (like I420 but UV planes swapped)
 	VideoFormatYV12 VideoFormat = 3
-	// VideoFormatYuy2 wraps GST_VIDEO_FORMAT_YUY2
+	// VideoFormatYuy2 wraps VIDEO_FORMAT_YUY2
 	//
 	// packed 4:2:2 YUV (Y0-U0-Y1-V0 Y2-U2-Y3-V2 Y4 ...)
 	VideoFormatYuy2 VideoFormat = 4
-	// VideoFormatUyvy wraps GST_VIDEO_FORMAT_UYVY
+	// VideoFormatUyvy wraps VIDEO_FORMAT_UYVY
 	//
 	// packed 4:2:2 YUV (U0-Y0-V0-Y1 U2-Y2-V2-Y3 U4 ...)
 	VideoFormatUyvy VideoFormat = 5
-	// VideoFormatAyuv wraps GST_VIDEO_FORMAT_AYUV
+	// VideoFormatAyuv wraps VIDEO_FORMAT_AYUV
 	//
 	// packed 4:4:4 YUV with alpha channel (A0-Y0-U0-V0 ...)
 	VideoFormatAyuv VideoFormat = 6
-	// VideoFormatRgbx wraps GST_VIDEO_FORMAT_RGBx
+	// VideoFormatRgbx wraps VIDEO_FORMAT_RGBx
 	//
 	// sparse rgb packed into 32 bit, space last
 	VideoFormatRgbx VideoFormat = 7
-	// VideoFormatBgrx wraps GST_VIDEO_FORMAT_BGRx
+	// VideoFormatBgrx wraps VIDEO_FORMAT_BGRx
 	//
 	// sparse reverse rgb packed into 32 bit, space last
 	VideoFormatBgrx VideoFormat = 8
-	// VideoFormatXrgb wraps GST_VIDEO_FORMAT_xRGB
+	// VideoFormatXrgb wraps VIDEO_FORMAT_xRGB
 	//
 	// sparse rgb packed into 32 bit, space first
 	VideoFormatXrgb VideoFormat = 9
-	// VideoFormatXbgr wraps GST_VIDEO_FORMAT_xBGR
+	// VideoFormatXbgr wraps VIDEO_FORMAT_xBGR
 	//
 	// sparse reverse rgb packed into 32 bit, space first
 	VideoFormatXbgr VideoFormat = 10
-	// VideoFormatRGBA wraps GST_VIDEO_FORMAT_RGBA
+	// VideoFormatRGBA wraps VIDEO_FORMAT_RGBA
 	//
 	// rgb with alpha channel last
 	VideoFormatRGBA VideoFormat = 11
-	// VideoFormatBgra wraps GST_VIDEO_FORMAT_BGRA
+	// VideoFormatBgra wraps VIDEO_FORMAT_BGRA
 	//
 	// reverse rgb with alpha channel last
 	VideoFormatBgra VideoFormat = 12
-	// VideoFormatARGB wraps GST_VIDEO_FORMAT_ARGB
+	// VideoFormatARGB wraps VIDEO_FORMAT_ARGB
 	//
 	// rgb with alpha channel first
 	VideoFormatARGB VideoFormat = 13
-	// VideoFormatAbgr wraps GST_VIDEO_FORMAT_ABGR
+	// VideoFormatAbgr wraps VIDEO_FORMAT_ABGR
 	//
 	// reverse rgb with alpha channel first
 	VideoFormatAbgr VideoFormat = 14
-	// VideoFormatRGB wraps GST_VIDEO_FORMAT_RGB
+	// VideoFormatRGB wraps VIDEO_FORMAT_RGB
 	//
 	// RGB packed into 24 bits without padding (`R-G-B-R-G-B`)
 	VideoFormatRGB VideoFormat = 15
-	// VideoFormatBGR wraps GST_VIDEO_FORMAT_BGR
+	// VideoFormatBGR wraps VIDEO_FORMAT_BGR
 	//
 	// reverse RGB packed into 24 bits without padding (`B-G-R-B-G-R`)
 	VideoFormatBGR VideoFormat = 16
-	// VideoFormatY41B wraps GST_VIDEO_FORMAT_Y41B
+	// VideoFormatY41B wraps VIDEO_FORMAT_Y41B
 	//
 	// planar 4:1:1 YUV
 	VideoFormatY41B VideoFormat = 17
-	// VideoFormatY42B wraps GST_VIDEO_FORMAT_Y42B
+	// VideoFormatY42B wraps VIDEO_FORMAT_Y42B
 	//
 	// planar 4:2:2 YUV
 	VideoFormatY42B VideoFormat = 18
-	// VideoFormatYvyu wraps GST_VIDEO_FORMAT_YVYU
+	// VideoFormatYvyu wraps VIDEO_FORMAT_YVYU
 	//
 	// packed 4:2:2 YUV (Y0-V0-Y1-U0 Y2-V2-Y3-U2 Y4 ...)
 	VideoFormatYvyu VideoFormat = 19
-	// VideoFormatY444 wraps GST_VIDEO_FORMAT_Y444
+	// VideoFormatY444 wraps VIDEO_FORMAT_Y444
 	//
 	// planar 4:4:4 YUV
 	VideoFormatY444 VideoFormat = 20
-	// VideoFormatV210 wraps GST_VIDEO_FORMAT_v210
+	// VideoFormatV210 wraps VIDEO_FORMAT_v210
 	//
 	// packed 4:2:2 10-bit YUV, complex format
 	VideoFormatV210 VideoFormat = 21
-	// VideoFormatV216 wraps GST_VIDEO_FORMAT_v216
+	// VideoFormatV216 wraps VIDEO_FORMAT_v216
 	//
 	// packed 4:2:2 16-bit YUV, Y0-U0-Y1-V1 order
 	VideoFormatV216 VideoFormat = 22
-	// VideoFormatNv12 wraps GST_VIDEO_FORMAT_NV12
+	// VideoFormatNv12 wraps VIDEO_FORMAT_NV12
 	//
 	// planar 4:2:0 YUV with interleaved UV plane
 	VideoFormatNv12 VideoFormat = 23
-	// VideoFormatNv21 wraps GST_VIDEO_FORMAT_NV21
+	// VideoFormatNv21 wraps VIDEO_FORMAT_NV21
 	//
 	// planar 4:2:0 YUV with interleaved VU plane
 	VideoFormatNv21 VideoFormat = 24
-	// VideoFormatGray8 wraps GST_VIDEO_FORMAT_GRAY8
+	// VideoFormatGray8 wraps VIDEO_FORMAT_GRAY8
 	//
 	// 8-bit grayscale
 	VideoFormatGray8 VideoFormat = 25
-	// VideoFormatGray16Be wraps GST_VIDEO_FORMAT_GRAY16_BE
+	// VideoFormatGray16Be wraps VIDEO_FORMAT_GRAY16_BE
 	//
 	// 16-bit grayscale, most significant byte first
 	VideoFormatGray16Be VideoFormat = 26
-	// VideoFormatGray16LE wraps GST_VIDEO_FORMAT_GRAY16_LE
+	// VideoFormatGray16LE wraps VIDEO_FORMAT_GRAY16_LE
 	//
 	// 16-bit grayscale, least significant byte first
 	VideoFormatGray16LE VideoFormat = 27
-	// VideoFormatV308 wraps GST_VIDEO_FORMAT_v308
+	// VideoFormatV308 wraps VIDEO_FORMAT_v308
 	//
 	// packed 4:4:4 YUV (Y-U-V ...)
 	VideoFormatV308 VideoFormat = 28
-	// VideoFormatRGB16 wraps GST_VIDEO_FORMAT_RGB16
+	// VideoFormatRGB16 wraps VIDEO_FORMAT_RGB16
 	//
 	// rgb 5-6-5 bits per component
 	VideoFormatRGB16 VideoFormat = 29
-	// VideoFormatBGR16 wraps GST_VIDEO_FORMAT_BGR16
+	// VideoFormatBGR16 wraps VIDEO_FORMAT_BGR16
 	//
 	// reverse rgb 5-6-5 bits per component
 	VideoFormatBGR16 VideoFormat = 30
-	// VideoFormatRGB15 wraps GST_VIDEO_FORMAT_RGB15
+	// VideoFormatRGB15 wraps VIDEO_FORMAT_RGB15
 	//
 	// rgb 5-5-5 bits per component
 	VideoFormatRGB15 VideoFormat = 31
-	// VideoFormatBGR15 wraps GST_VIDEO_FORMAT_BGR15
+	// VideoFormatBGR15 wraps VIDEO_FORMAT_BGR15
 	//
 	// reverse rgb 5-5-5 bits per component
 	VideoFormatBGR15 VideoFormat = 32
-	// VideoFormatUyvp wraps GST_VIDEO_FORMAT_UYVP
+	// VideoFormatUyvp wraps VIDEO_FORMAT_UYVP
 	//
 	// packed 10-bit 4:2:2 YUV (U0-Y0-V0-Y1 U2-Y2-V2-Y3 U4 ...)
 	VideoFormatUyvp VideoFormat = 33
-	// VideoFormatA420 wraps GST_VIDEO_FORMAT_A420
+	// VideoFormatA420 wraps VIDEO_FORMAT_A420
 	//
 	// planar 4:4:2:0 AYUV
 	VideoFormatA420 VideoFormat = 34
-	// VideoFormatRGB8P wraps GST_VIDEO_FORMAT_RGB8P
+	// VideoFormatRGB8P wraps VIDEO_FORMAT_RGB8P
 	//
 	// 8-bit paletted RGB
 	VideoFormatRGB8P VideoFormat = 35
-	// VideoFormatYuv9 wraps GST_VIDEO_FORMAT_YUV9
+	// VideoFormatYuv9 wraps VIDEO_FORMAT_YUV9
 	//
 	// planar 4:1:0 YUV
 	VideoFormatYuv9 VideoFormat = 36
-	// VideoFormatYvu9 wraps GST_VIDEO_FORMAT_YVU9
+	// VideoFormatYvu9 wraps VIDEO_FORMAT_YVU9
 	//
 	// planar 4:1:0 YUV (like YUV9 but UV planes swapped)
 	VideoFormatYvu9 VideoFormat = 37
-	// VideoFormatIyu1 wraps GST_VIDEO_FORMAT_IYU1
+	// VideoFormatIyu1 wraps VIDEO_FORMAT_IYU1
 	//
 	// packed 4:1:1 YUV (Cb-Y0-Y1-Cr-Y2-Y3 ...)
 	VideoFormatIyu1 VideoFormat = 38
-	// VideoFormatARGB64 wraps GST_VIDEO_FORMAT_ARGB64
+	// VideoFormatARGB64 wraps VIDEO_FORMAT_ARGB64
 	//
 	// rgb with alpha channel first, 16 bits (native endianness) per channel
 	VideoFormatARGB64 VideoFormat = 39
-	// VideoFormatAyuv64 wraps GST_VIDEO_FORMAT_AYUV64
+	// VideoFormatAyuv64 wraps VIDEO_FORMAT_AYUV64
 	//
 	// packed 4:4:4 YUV with alpha channel, 16 bits (native endianness) per channel (A0-Y0-U0-V0 ...)
 	VideoFormatAyuv64 VideoFormat = 40
-	// VideoFormatR210 wraps GST_VIDEO_FORMAT_r210
+	// VideoFormatR210 wraps VIDEO_FORMAT_r210
 	//
 	// packed 4:4:4 RGB, 10 bits per channel
 	VideoFormatR210 VideoFormat = 41
-	// VideoFormatI42010Be wraps GST_VIDEO_FORMAT_I420_10BE
+	// VideoFormatI42010Be wraps VIDEO_FORMAT_I420_10BE
 	//
 	// planar 4:2:0 YUV, 10 bits per channel
 	VideoFormatI42010Be VideoFormat = 42
-	// VideoFormatI42010LE wraps GST_VIDEO_FORMAT_I420_10LE
+	// VideoFormatI42010LE wraps VIDEO_FORMAT_I420_10LE
 	//
 	// planar 4:2:0 YUV, 10 bits per channel
 	VideoFormatI42010LE VideoFormat = 43
-	// VideoFormatI42210Be wraps GST_VIDEO_FORMAT_I422_10BE
+	// VideoFormatI42210Be wraps VIDEO_FORMAT_I422_10BE
 	//
 	// planar 4:2:2 YUV, 10 bits per channel
 	VideoFormatI42210Be VideoFormat = 44
-	// VideoFormatI42210LE wraps GST_VIDEO_FORMAT_I422_10LE
+	// VideoFormatI42210LE wraps VIDEO_FORMAT_I422_10LE
 	//
 	// planar 4:2:2 YUV, 10 bits per channel
 	VideoFormatI42210LE VideoFormat = 45
-	// VideoFormatY44410Be wraps GST_VIDEO_FORMAT_Y444_10BE
+	// VideoFormatY44410Be wraps VIDEO_FORMAT_Y444_10BE
 	//
 	// planar 4:4:4 YUV, 10 bits per channel (Since: 1.2)
 	VideoFormatY44410Be VideoFormat = 46
-	// VideoFormatY44410LE wraps GST_VIDEO_FORMAT_Y444_10LE
+	// VideoFormatY44410LE wraps VIDEO_FORMAT_Y444_10LE
 	//
 	// planar 4:4:4 YUV, 10 bits per channel (Since: 1.2)
 	VideoFormatY44410LE VideoFormat = 47
-	// VideoFormatGbr wraps GST_VIDEO_FORMAT_GBR
+	// VideoFormatGbr wraps VIDEO_FORMAT_GBR
 	//
 	// planar 4:4:4 RGB, 8 bits per channel (Since: 1.2)
 	VideoFormatGbr VideoFormat = 48
-	// VideoFormatGbr10Be wraps GST_VIDEO_FORMAT_GBR_10BE
+	// VideoFormatGbr10Be wraps VIDEO_FORMAT_GBR_10BE
 	//
 	// planar 4:4:4 RGB, 10 bits per channel (Since: 1.2)
 	VideoFormatGbr10Be VideoFormat = 49
-	// VideoFormatGbr10LE wraps GST_VIDEO_FORMAT_GBR_10LE
+	// VideoFormatGbr10LE wraps VIDEO_FORMAT_GBR_10LE
 	//
 	// planar 4:4:4 RGB, 10 bits per channel (Since: 1.2)
 	VideoFormatGbr10LE VideoFormat = 50
-	// VideoFormatNv16 wraps GST_VIDEO_FORMAT_NV16
+	// VideoFormatNv16 wraps VIDEO_FORMAT_NV16
 	//
 	// planar 4:2:2 YUV with interleaved UV plane (Since: 1.2)
 	VideoFormatNv16 VideoFormat = 51
-	// VideoFormatNv24 wraps GST_VIDEO_FORMAT_NV24
+	// VideoFormatNv24 wraps VIDEO_FORMAT_NV24
 	//
 	// planar 4:4:4 YUV with interleaved UV plane (Since: 1.2)
 	VideoFormatNv24 VideoFormat = 52
-	// VideoFormatNv1264Z32 wraps GST_VIDEO_FORMAT_NV12_64Z32
+	// VideoFormatNv1264Z32 wraps VIDEO_FORMAT_NV12_64Z32
 	//
 	// NV12 with 64x32 tiling in zigzag pattern (Since: 1.4)
 	VideoFormatNv1264Z32 VideoFormat = 53
-	// VideoFormatA42010Be wraps GST_VIDEO_FORMAT_A420_10BE
+	// VideoFormatA42010Be wraps VIDEO_FORMAT_A420_10BE
 	//
 	// planar 4:4:2:0 YUV, 10 bits per channel (Since: 1.6)
 	VideoFormatA42010Be VideoFormat = 54
-	// VideoFormatA42010LE wraps GST_VIDEO_FORMAT_A420_10LE
+	// VideoFormatA42010LE wraps VIDEO_FORMAT_A420_10LE
 	//
 	// planar 4:4:2:0 YUV, 10 bits per channel (Since: 1.6)
 	VideoFormatA42010LE VideoFormat = 55
-	// VideoFormatA42210Be wraps GST_VIDEO_FORMAT_A422_10BE
+	// VideoFormatA42210Be wraps VIDEO_FORMAT_A422_10BE
 	//
 	// planar 4:4:2:2 YUV, 10 bits per channel (Since: 1.6)
 	VideoFormatA42210Be VideoFormat = 56
-	// VideoFormatA42210LE wraps GST_VIDEO_FORMAT_A422_10LE
+	// VideoFormatA42210LE wraps VIDEO_FORMAT_A422_10LE
 	//
 	// planar 4:4:2:2 YUV, 10 bits per channel (Since: 1.6)
 	VideoFormatA42210LE VideoFormat = 57
-	// VideoFormatA44410Be wraps GST_VIDEO_FORMAT_A444_10BE
+	// VideoFormatA44410Be wraps VIDEO_FORMAT_A444_10BE
 	//
 	// planar 4:4:4:4 YUV, 10 bits per channel (Since: 1.6)
 	VideoFormatA44410Be VideoFormat = 58
-	// VideoFormatA44410LE wraps GST_VIDEO_FORMAT_A444_10LE
+	// VideoFormatA44410LE wraps VIDEO_FORMAT_A444_10LE
 	//
 	// planar 4:4:4:4 YUV, 10 bits per channel (Since: 1.6)
 	VideoFormatA44410LE VideoFormat = 59
-	// VideoFormatNv61 wraps GST_VIDEO_FORMAT_NV61
+	// VideoFormatNv61 wraps VIDEO_FORMAT_NV61
 	//
 	// planar 4:2:2 YUV with interleaved VU plane (Since: 1.6)
 	VideoFormatNv61 VideoFormat = 60
-	// VideoFormatP01010Be wraps GST_VIDEO_FORMAT_P010_10BE
+	// VideoFormatP01010Be wraps VIDEO_FORMAT_P010_10BE
 	//
 	// planar 4:2:0 YUV with interleaved UV plane, 10 bits per channel (Since: 1.10)
 	VideoFormatP01010Be VideoFormat = 61
-	// VideoFormatP01010LE wraps GST_VIDEO_FORMAT_P010_10LE
+	// VideoFormatP01010LE wraps VIDEO_FORMAT_P010_10LE
 	//
 	// planar 4:2:0 YUV with interleaved UV plane, 10 bits per channel (Since: 1.10)
 	VideoFormatP01010LE VideoFormat = 62
-	// VideoFormatIyu2 wraps GST_VIDEO_FORMAT_IYU2
+	// VideoFormatIyu2 wraps VIDEO_FORMAT_IYU2
 	//
 	// packed 4:4:4 YUV (U-Y-V ...) (Since: 1.10)
 	VideoFormatIyu2 VideoFormat = 63
-	// VideoFormatVyuy wraps GST_VIDEO_FORMAT_VYUY
+	// VideoFormatVyuy wraps VIDEO_FORMAT_VYUY
 	//
 	// packed 4:2:2 YUV (V0-Y0-U0-Y1 V2-Y2-U2-Y3 V4 ...)
 	VideoFormatVyuy VideoFormat = 64
-	// VideoFormatGbra wraps GST_VIDEO_FORMAT_GBRA
+	// VideoFormatGbra wraps VIDEO_FORMAT_GBRA
 	//
 	// planar 4:4:4:4 ARGB, 8 bits per channel (Since: 1.12)
 	VideoFormatGbra VideoFormat = 65
-	// VideoFormatGbra10Be wraps GST_VIDEO_FORMAT_GBRA_10BE
+	// VideoFormatGbra10Be wraps VIDEO_FORMAT_GBRA_10BE
 	//
 	// planar 4:4:4:4 ARGB, 10 bits per channel (Since: 1.12)
 	VideoFormatGbra10Be VideoFormat = 66
-	// VideoFormatGbra10LE wraps GST_VIDEO_FORMAT_GBRA_10LE
+	// VideoFormatGbra10LE wraps VIDEO_FORMAT_GBRA_10LE
 	//
 	// planar 4:4:4:4 ARGB, 10 bits per channel (Since: 1.12)
 	VideoFormatGbra10LE VideoFormat = 67
-	// VideoFormatGbr12Be wraps GST_VIDEO_FORMAT_GBR_12BE
+	// VideoFormatGbr12Be wraps VIDEO_FORMAT_GBR_12BE
 	//
 	// planar 4:4:4 RGB, 12 bits per channel (Since: 1.12)
 	VideoFormatGbr12Be VideoFormat = 68
-	// VideoFormatGbr12LE wraps GST_VIDEO_FORMAT_GBR_12LE
+	// VideoFormatGbr12LE wraps VIDEO_FORMAT_GBR_12LE
 	//
 	// planar 4:4:4 RGB, 12 bits per channel (Since: 1.12)
 	VideoFormatGbr12LE VideoFormat = 69
-	// VideoFormatGbra12Be wraps GST_VIDEO_FORMAT_GBRA_12BE
+	// VideoFormatGbra12Be wraps VIDEO_FORMAT_GBRA_12BE
 	//
 	// planar 4:4:4:4 ARGB, 12 bits per channel (Since: 1.12)
 	VideoFormatGbra12Be VideoFormat = 70
-	// VideoFormatGbra12LE wraps GST_VIDEO_FORMAT_GBRA_12LE
+	// VideoFormatGbra12LE wraps VIDEO_FORMAT_GBRA_12LE
 	//
 	// planar 4:4:4:4 ARGB, 12 bits per channel (Since: 1.12)
 	VideoFormatGbra12LE VideoFormat = 71
-	// VideoFormatI42012Be wraps GST_VIDEO_FORMAT_I420_12BE
+	// VideoFormatI42012Be wraps VIDEO_FORMAT_I420_12BE
 	//
 	// planar 4:2:0 YUV, 12 bits per channel (Since: 1.12)
 	VideoFormatI42012Be VideoFormat = 72
-	// VideoFormatI42012LE wraps GST_VIDEO_FORMAT_I420_12LE
+	// VideoFormatI42012LE wraps VIDEO_FORMAT_I420_12LE
 	//
 	// planar 4:2:0 YUV, 12 bits per channel (Since: 1.12)
 	VideoFormatI42012LE VideoFormat = 73
-	// VideoFormatI42212Be wraps GST_VIDEO_FORMAT_I422_12BE
+	// VideoFormatI42212Be wraps VIDEO_FORMAT_I422_12BE
 	//
 	// planar 4:2:2 YUV, 12 bits per channel (Since: 1.12)
 	VideoFormatI42212Be VideoFormat = 74
-	// VideoFormatI42212LE wraps GST_VIDEO_FORMAT_I422_12LE
+	// VideoFormatI42212LE wraps VIDEO_FORMAT_I422_12LE
 	//
 	// planar 4:2:2 YUV, 12 bits per channel (Since: 1.12)
 	VideoFormatI42212LE VideoFormat = 75
-	// VideoFormatY44412Be wraps GST_VIDEO_FORMAT_Y444_12BE
+	// VideoFormatY44412Be wraps VIDEO_FORMAT_Y444_12BE
 	//
 	// planar 4:4:4 YUV, 12 bits per channel (Since: 1.12)
 	VideoFormatY44412Be VideoFormat = 76
-	// VideoFormatY44412LE wraps GST_VIDEO_FORMAT_Y444_12LE
+	// VideoFormatY44412LE wraps VIDEO_FORMAT_Y444_12LE
 	//
 	// planar 4:4:4 YUV, 12 bits per channel (Since: 1.12)
 	VideoFormatY44412LE VideoFormat = 77
-	// VideoFormatGray10LE32 wraps GST_VIDEO_FORMAT_GRAY10_LE32
+	// VideoFormatGray10LE32 wraps VIDEO_FORMAT_GRAY10_LE32
 	//
 	// 10-bit grayscale, packed into 32bit words (2 bits padding) (Since: 1.14)
 	VideoFormatGray10LE32 VideoFormat = 78
-	// VideoFormatNv1210LE32 wraps GST_VIDEO_FORMAT_NV12_10LE32
+	// VideoFormatNv1210LE32 wraps VIDEO_FORMAT_NV12_10LE32
 	//
 	// 10-bit variant of @GST_VIDEO_FORMAT_NV12, packed into 32bit words (MSB 2 bits padding) (Since: 1.14)
 	VideoFormatNv1210LE32 VideoFormat = 79
-	// VideoFormatNv1610LE32 wraps GST_VIDEO_FORMAT_NV16_10LE32
+	// VideoFormatNv1610LE32 wraps VIDEO_FORMAT_NV16_10LE32
 	//
 	// 10-bit variant of @GST_VIDEO_FORMAT_NV16, packed into 32bit words (MSB 2 bits padding) (Since: 1.14)
 	VideoFormatNv1610LE32 VideoFormat = 80
-	// VideoFormatNv1210LE40 wraps GST_VIDEO_FORMAT_NV12_10LE40
+	// VideoFormatNv1210LE40 wraps VIDEO_FORMAT_NV12_10LE40
 	//
 	// Fully packed variant of NV12_10LE32 (Since: 1.16)
 	VideoFormatNv1210LE40 VideoFormat = 81
-	// VideoFormatY210 wraps GST_VIDEO_FORMAT_Y210
+	// VideoFormatY210 wraps VIDEO_FORMAT_Y210
 	//
 	// packed 4:2:2 YUV, 10 bits per channel (Since: 1.16)
 	VideoFormatY210 VideoFormat = 82
-	// VideoFormatY410 wraps GST_VIDEO_FORMAT_Y410
+	// VideoFormatY410 wraps VIDEO_FORMAT_Y410
 	//
 	// packed 4:4:4 YUV, 10 bits per channel(A-V-Y-U...) (Since: 1.16)
 	VideoFormatY410 VideoFormat = 83
-	// VideoFormatVuya wraps GST_VIDEO_FORMAT_VUYA
+	// VideoFormatVuya wraps VIDEO_FORMAT_VUYA
 	//
 	// packed 4:4:4 YUV with alpha channel (V0-U0-Y0-A0...) (Since: 1.16)
 	VideoFormatVuya VideoFormat = 84
-	// VideoFormatBGR10A2LE wraps GST_VIDEO_FORMAT_BGR10A2_LE
+	// VideoFormatBGR10A2LE wraps VIDEO_FORMAT_BGR10A2_LE
 	//
 	// packed 4:4:4 RGB with alpha channel(B-G-R-A), 10 bits for R/G/B channel and MSB 2 bits for alpha channel (Since: 1.16)
 	VideoFormatBGR10A2LE VideoFormat = 85
-	// VideoFormatRGB10A2LE wraps GST_VIDEO_FORMAT_RGB10A2_LE
+	// VideoFormatRGB10A2LE wraps VIDEO_FORMAT_RGB10A2_LE
 	//
 	// packed 4:4:4 RGB with alpha channel(R-G-B-A), 10 bits for R/G/B channel and MSB 2 bits for alpha channel (Since: 1.18)
 	VideoFormatRGB10A2LE VideoFormat = 86
-	// VideoFormatY44416Be wraps GST_VIDEO_FORMAT_Y444_16BE
+	// VideoFormatY44416Be wraps VIDEO_FORMAT_Y444_16BE
 	//
 	// planar 4:4:4 YUV, 16 bits per channel (Since: 1.18)
 	VideoFormatY44416Be VideoFormat = 87
-	// VideoFormatY44416LE wraps GST_VIDEO_FORMAT_Y444_16LE
+	// VideoFormatY44416LE wraps VIDEO_FORMAT_Y444_16LE
 	//
 	// planar 4:4:4 YUV, 16 bits per channel (Since: 1.18)
 	VideoFormatY44416LE VideoFormat = 88
-	// VideoFormatP016Be wraps GST_VIDEO_FORMAT_P016_BE
+	// VideoFormatP016Be wraps VIDEO_FORMAT_P016_BE
 	//
 	// planar 4:2:0 YUV with interleaved UV plane, 16 bits per channel (Since: 1.18)
 	VideoFormatP016Be VideoFormat = 89
-	// VideoFormatP016LE wraps GST_VIDEO_FORMAT_P016_LE
+	// VideoFormatP016LE wraps VIDEO_FORMAT_P016_LE
 	//
 	// planar 4:2:0 YUV with interleaved UV plane, 16 bits per channel (Since: 1.18)
 	VideoFormatP016LE VideoFormat = 90
-	// VideoFormatP012Be wraps GST_VIDEO_FORMAT_P012_BE
+	// VideoFormatP012Be wraps VIDEO_FORMAT_P012_BE
 	//
 	// planar 4:2:0 YUV with interleaved UV plane, 12 bits per channel (Since: 1.18)
 	VideoFormatP012Be VideoFormat = 91
-	// VideoFormatP012LE wraps GST_VIDEO_FORMAT_P012_LE
+	// VideoFormatP012LE wraps VIDEO_FORMAT_P012_LE
 	//
 	// planar 4:2:0 YUV with interleaved UV plane, 12 bits per channel (Since: 1.18)
 	VideoFormatP012LE VideoFormat = 92
-	// VideoFormatY212Be wraps GST_VIDEO_FORMAT_Y212_BE
+	// VideoFormatY212Be wraps VIDEO_FORMAT_Y212_BE
 	//
 	// packed 4:2:2 YUV, 12 bits per channel (Y-U-Y-V) (Since: 1.18)
 	VideoFormatY212Be VideoFormat = 93
-	// VideoFormatY212LE wraps GST_VIDEO_FORMAT_Y212_LE
+	// VideoFormatY212LE wraps VIDEO_FORMAT_Y212_LE
 	//
 	// packed 4:2:2 YUV, 12 bits per channel (Y-U-Y-V) (Since: 1.18)
 	VideoFormatY212LE VideoFormat = 94
-	// VideoFormatY412Be wraps GST_VIDEO_FORMAT_Y412_BE
+	// VideoFormatY412Be wraps VIDEO_FORMAT_Y412_BE
 	//
 	// packed 4:4:4:4 YUV, 12 bits per channel(U-Y-V-A...) (Since: 1.18)
 	VideoFormatY412Be VideoFormat = 95
-	// VideoFormatY412LE wraps GST_VIDEO_FORMAT_Y412_LE
+	// VideoFormatY412LE wraps VIDEO_FORMAT_Y412_LE
 	//
 	// packed 4:4:4:4 YUV, 12 bits per channel(U-Y-V-A...) (Since: 1.18)
 	VideoFormatY412LE VideoFormat = 96
-	// VideoFormatNv124L4 wraps GST_VIDEO_FORMAT_NV12_4L4
+	// VideoFormatNv124L4 wraps VIDEO_FORMAT_NV12_4L4
 	//
 	// NV12 with 4x4 tiles in linear order.
 	VideoFormatNv124L4 VideoFormat = 97
-	// VideoFormatNv1232L32 wraps GST_VIDEO_FORMAT_NV12_32L32
+	// VideoFormatNv1232L32 wraps VIDEO_FORMAT_NV12_32L32
 	//
 	// NV12 with 32x32 tiles in linear order.
 	VideoFormatNv1232L32 VideoFormat = 98
-	// VideoFormatRgbp wraps GST_VIDEO_FORMAT_RGBP
+	// VideoFormatRgbp wraps VIDEO_FORMAT_RGBP
 	//
 	// Planar 4:4:4 RGB, R-G-B order
 	VideoFormatRgbp VideoFormat = 99
-	// VideoFormatBgrp wraps GST_VIDEO_FORMAT_BGRP
+	// VideoFormatBgrp wraps VIDEO_FORMAT_BGRP
 	//
 	// Planar 4:4:4 RGB, B-G-R order
 	VideoFormatBgrp VideoFormat = 100
-	// VideoFormatAv12 wraps GST_VIDEO_FORMAT_AV12
+	// VideoFormatAv12 wraps VIDEO_FORMAT_AV12
 	//
 	// Planar 4:2:0 YUV with interleaved UV plane with alpha as
 	// 3rd plane.
 	VideoFormatAv12 VideoFormat = 101
-	// VideoFormatARGB64LE wraps GST_VIDEO_FORMAT_ARGB64_LE
+	// VideoFormatARGB64LE wraps VIDEO_FORMAT_ARGB64_LE
 	//
 	// RGB with alpha channel first, 16 bits (little endian)
 	// per channel.
 	VideoFormatARGB64LE VideoFormat = 102
-	// VideoFormatARGB64Be wraps GST_VIDEO_FORMAT_ARGB64_BE
+	// VideoFormatARGB64Be wraps VIDEO_FORMAT_ARGB64_BE
 	//
 	// RGB with alpha channel first, 16 bits (big endian)
 	// per channel.
 	VideoFormatARGB64Be VideoFormat = 103
-	// VideoFormatRGBA64LE wraps GST_VIDEO_FORMAT_RGBA64_LE
+	// VideoFormatRGBA64LE wraps VIDEO_FORMAT_RGBA64_LE
 	//
 	// RGB with alpha channel last, 16 bits (little endian)
 	// per channel.
 	VideoFormatRGBA64LE VideoFormat = 104
-	// VideoFormatRGBA64Be wraps GST_VIDEO_FORMAT_RGBA64_BE
+	// VideoFormatRGBA64Be wraps VIDEO_FORMAT_RGBA64_BE
 	//
 	// RGB with alpha channel last, 16 bits (big endian)
 	// per channel.
 	VideoFormatRGBA64Be VideoFormat = 105
-	// VideoFormatBgra64LE wraps GST_VIDEO_FORMAT_BGRA64_LE
+	// VideoFormatBgra64LE wraps VIDEO_FORMAT_BGRA64_LE
 	//
 	// Reverse RGB with alpha channel last, 16 bits (little endian)
 	// per channel.
 	VideoFormatBgra64LE VideoFormat = 106
-	// VideoFormatBgra64Be wraps GST_VIDEO_FORMAT_BGRA64_BE
+	// VideoFormatBgra64Be wraps VIDEO_FORMAT_BGRA64_BE
 	//
 	// Reverse RGB with alpha channel last, 16 bits (big endian)
 	// per channel.
 	VideoFormatBgra64Be VideoFormat = 107
-	// VideoFormatAbgr64LE wraps GST_VIDEO_FORMAT_ABGR64_LE
+	// VideoFormatAbgr64LE wraps VIDEO_FORMAT_ABGR64_LE
 	//
 	// Reverse RGB with alpha channel first, 16 bits (little endian)
 	// per channel.
 	VideoFormatAbgr64LE VideoFormat = 108
-	// VideoFormatAbgr64Be wraps GST_VIDEO_FORMAT_ABGR64_BE
+	// VideoFormatAbgr64Be wraps VIDEO_FORMAT_ABGR64_BE
 	//
 	// Reverse RGB with alpha channel first, 16 bits (big endian)
 	// per channel.
 	VideoFormatAbgr64Be VideoFormat = 109
-	// VideoFormatNv1216L32S wraps GST_VIDEO_FORMAT_NV12_16L32S
+	// VideoFormatNv1216L32S wraps VIDEO_FORMAT_NV12_16L32S
 	//
 	// NV12 with 16x32 Y tiles and 16x16 UV tiles.
 	VideoFormatNv1216L32S VideoFormat = 110
-	// VideoFormatNv128L128 wraps GST_VIDEO_FORMAT_NV12_8L128
+	// VideoFormatNv128L128 wraps VIDEO_FORMAT_NV12_8L128
 	//
 	// NV12 with 8x128 tiles in linear order.
 	VideoFormatNv128L128 VideoFormat = 111
-	// VideoFormatNv1210Be8L128 wraps GST_VIDEO_FORMAT_NV12_10BE_8L128
+	// VideoFormatNv1210Be8L128 wraps VIDEO_FORMAT_NV12_10BE_8L128
 	//
 	// NV12 10bit big endian with 8x128 tiles in linear order.
 	VideoFormatNv1210Be8L128 VideoFormat = 112
-	// VideoFormatNv1210LE404L4 wraps GST_VIDEO_FORMAT_NV12_10LE40_4L4
+	// VideoFormatNv1210LE404L4 wraps VIDEO_FORMAT_NV12_10LE40_4L4
 	//
 	// @GST_VIDEO_FORMAT_NV12_10LE40 with 4x4 pixels tiles (5 bytes
 	//  per tile row). This format is produced by Verisilicon/Hantro decoders.
 	VideoFormatNv1210LE404L4 VideoFormat = 113
-	// VideoFormatDmaDRM wraps GST_VIDEO_FORMAT_DMA_DRM
+	// VideoFormatDmaDRM wraps VIDEO_FORMAT_DMA_DRM
 	//
 	// @GST_VIDEO_FORMAT_DMA_DRM represent the DMA DRM special format. It's
 	// only used with memory:DMABuf #GstCapsFeatures, where an extra
 	// parameter (drm-format) is required to define the image format and
 	// its memory layout.
 	VideoFormatDmaDRM VideoFormat = 114
-	// VideoFormatMt2110T wraps GST_VIDEO_FORMAT_MT2110T
+	// VideoFormatMt2110T wraps VIDEO_FORMAT_MT2110T
 	//
 	// Mediatek 10bit NV12 little endian with 16x32 tiles in linear order, tile 2
 	// bits.
 	VideoFormatMt2110T VideoFormat = 115
-	// VideoFormatMt2110R wraps GST_VIDEO_FORMAT_MT2110R
+	// VideoFormatMt2110R wraps VIDEO_FORMAT_MT2110R
 	//
 	// Mediatek 10bit NV12 little endian with 16x32 tiles in linear order, raster
 	// 2 bits.
 	VideoFormatMt2110R VideoFormat = 116
-	// VideoFormatA422 wraps GST_VIDEO_FORMAT_A422
+	// VideoFormatA422 wraps VIDEO_FORMAT_A422
 	//
 	// planar 4:4:2:2 YUV, 8 bits per channel
 	VideoFormatA422 VideoFormat = 117
-	// VideoFormatA444 wraps GST_VIDEO_FORMAT_A444
+	// VideoFormatA444 wraps VIDEO_FORMAT_A444
 	//
 	// planar 4:4:4:4 YUV, 8 bits per channel
 	VideoFormatA444 VideoFormat = 118
-	// VideoFormatA44412LE wraps GST_VIDEO_FORMAT_A444_12LE
+	// VideoFormatA44412LE wraps VIDEO_FORMAT_A444_12LE
 	//
 	// planar 4:4:4:4 YUV, 12 bits per channel
 	VideoFormatA44412LE VideoFormat = 119
-	// VideoFormatA44412Be wraps GST_VIDEO_FORMAT_A444_12BE
+	// VideoFormatA44412Be wraps VIDEO_FORMAT_A444_12BE
 	//
 	// planar 4:4:4:4 YUV, 12 bits per channel
 	VideoFormatA44412Be VideoFormat = 120
-	// VideoFormatA42212LE wraps GST_VIDEO_FORMAT_A422_12LE
+	// VideoFormatA42212LE wraps VIDEO_FORMAT_A422_12LE
 	//
 	// planar 4:4:2:2 YUV, 12 bits per channel
 	VideoFormatA42212LE VideoFormat = 121
-	// VideoFormatA42212Be wraps GST_VIDEO_FORMAT_A422_12BE
+	// VideoFormatA42212Be wraps VIDEO_FORMAT_A422_12BE
 	//
 	// planar 4:4:2:2 YUV, 12 bits per channel
 	VideoFormatA42212Be VideoFormat = 122
-	// VideoFormatA42012LE wraps GST_VIDEO_FORMAT_A420_12LE
+	// VideoFormatA42012LE wraps VIDEO_FORMAT_A420_12LE
 	//
 	// planar 4:4:2:0 YUV, 12 bits per channel
 	VideoFormatA42012LE VideoFormat = 123
-	// VideoFormatA42012Be wraps GST_VIDEO_FORMAT_A420_12BE
+	// VideoFormatA42012Be wraps VIDEO_FORMAT_A420_12BE
 	//
 	// planar 4:4:2:0 YUV, 12 bits per channel
 	VideoFormatA42012Be VideoFormat = 124
-	// VideoFormatA44416LE wraps GST_VIDEO_FORMAT_A444_16LE
+	// VideoFormatA44416LE wraps VIDEO_FORMAT_A444_16LE
 	//
 	// planar 4:4:4:4 YUV, 16 bits per channel
 	VideoFormatA44416LE VideoFormat = 125
-	// VideoFormatA44416Be wraps GST_VIDEO_FORMAT_A444_16BE
+	// VideoFormatA44416Be wraps VIDEO_FORMAT_A444_16BE
 	//
 	// planar 4:4:4:4 YUV, 16 bits per channel
 	VideoFormatA44416Be VideoFormat = 126
-	// VideoFormatA42216LE wraps GST_VIDEO_FORMAT_A422_16LE
+	// VideoFormatA42216LE wraps VIDEO_FORMAT_A422_16LE
 	//
 	// planar 4:4:2:2 YUV, 16 bits per channel
 	VideoFormatA42216LE VideoFormat = 127
-	// VideoFormatA42216Be wraps GST_VIDEO_FORMAT_A422_16BE
+	// VideoFormatA42216Be wraps VIDEO_FORMAT_A422_16BE
 	//
 	// planar 4:4:2:2 YUV, 16 bits per channel
 	VideoFormatA42216Be VideoFormat = 128
-	// VideoFormatA42016LE wraps GST_VIDEO_FORMAT_A420_16LE
+	// VideoFormatA42016LE wraps VIDEO_FORMAT_A420_16LE
 	//
 	// planar 4:4:2:0 YUV, 16 bits per channel
 	VideoFormatA42016LE VideoFormat = 129
-	// VideoFormatA42016Be wraps GST_VIDEO_FORMAT_A420_16BE
+	// VideoFormatA42016Be wraps VIDEO_FORMAT_A420_16BE
 	//
 	// planar 4:4:2:0 YUV, 16 bits per channel
 	VideoFormatA42016Be VideoFormat = 130
-	// VideoFormatGbr16LE wraps GST_VIDEO_FORMAT_GBR_16LE
+	// VideoFormatGbr16LE wraps VIDEO_FORMAT_GBR_16LE
 	//
 	// planar 4:4:4 RGB, 16 bits per channel
 	VideoFormatGbr16LE VideoFormat = 131
-	// VideoFormatGbr16Be wraps GST_VIDEO_FORMAT_GBR_16BE
+	// VideoFormatGbr16Be wraps VIDEO_FORMAT_GBR_16BE
 	//
 	// planar 4:4:4 RGB, 16 bits per channel
 	VideoFormatGbr16Be VideoFormat = 132
-	// VideoFormatRbga wraps GST_VIDEO_FORMAT_RBGA
+	// VideoFormatRbga wraps VIDEO_FORMAT_RBGA
 	//
 	// packed RGB with alpha, 8 bits per channel
 	VideoFormatRbga VideoFormat = 133
-	// VideoFormatY216LE wraps GST_VIDEO_FORMAT_Y216_LE
+	// VideoFormatY216LE wraps VIDEO_FORMAT_Y216_LE
 	//
 	// packed 4:2:2 YUV, 16 bits per channel (Y-U-Y-V)
 	VideoFormatY216LE VideoFormat = 134
-	// VideoFormatY216Be wraps GST_VIDEO_FORMAT_Y216_BE
+	// VideoFormatY216Be wraps VIDEO_FORMAT_Y216_BE
 	//
 	// packed 4:2:2 YUV, 16 bits per channel (Y-U-Y-V)
 	VideoFormatY216Be VideoFormat = 135
-	// VideoFormatY416LE wraps GST_VIDEO_FORMAT_Y416_LE
+	// VideoFormatY416LE wraps VIDEO_FORMAT_Y416_LE
 	//
 	// packed 4:4:4:4 YUV, 16 bits per channel(U-Y-V-A)
 	VideoFormatY416LE VideoFormat = 136
-	// VideoFormatY416Be wraps GST_VIDEO_FORMAT_Y416_BE
+	// VideoFormatY416Be wraps VIDEO_FORMAT_Y416_BE
 	//
 	// packed 4:4:4:4 YUV, 16 bits per channel(U-Y-V-A)
 	VideoFormatY416Be VideoFormat = 137
-	// VideoFormatGray10LE16 wraps GST_VIDEO_FORMAT_GRAY10_LE16
+	// VideoFormatGray10LE16 wraps VIDEO_FORMAT_GRAY10_LE16
 	//
 	// 10-bit grayscale, packed into 16bit words (6 bits left padding)
 	VideoFormatGray10LE16 VideoFormat = 138
@@ -3053,19 +3049,19 @@ func VideoFormatToString(format VideoFormat) string {
 type VideoGLTextureOrientation C.int
 
 const (
-	// VideoGLTextureOrientationXNormalYNormal wraps GST_VIDEO_GL_TEXTURE_ORIENTATION_X_NORMAL_Y_NORMAL
+	// VideoGLTextureOrientationXNormalYNormal wraps VIDEO_GL_TEXTURE_ORIENTATION_X_NORMAL_Y_NORMAL
 	//
 	// Top line first in memory, left row first
 	VideoGLTextureOrientationXNormalYNormal VideoGLTextureOrientation = 0
-	// VideoGLTextureOrientationXNormalYFlip wraps GST_VIDEO_GL_TEXTURE_ORIENTATION_X_NORMAL_Y_FLIP
+	// VideoGLTextureOrientationXNormalYFlip wraps VIDEO_GL_TEXTURE_ORIENTATION_X_NORMAL_Y_FLIP
 	//
 	// Bottom line first in memory, left row first
 	VideoGLTextureOrientationXNormalYFlip VideoGLTextureOrientation = 1
-	// VideoGLTextureOrientationXFlipYNormal wraps GST_VIDEO_GL_TEXTURE_ORIENTATION_X_FLIP_Y_NORMAL
+	// VideoGLTextureOrientationXFlipYNormal wraps VIDEO_GL_TEXTURE_ORIENTATION_X_FLIP_Y_NORMAL
 	//
 	// Top line first in memory, right row first
 	VideoGLTextureOrientationXFlipYNormal VideoGLTextureOrientation = 2
-	// VideoGLTextureOrientationXFlipYFlip wraps GST_VIDEO_GL_TEXTURE_ORIENTATION_X_FLIP_Y_FLIP
+	// VideoGLTextureOrientationXFlipYFlip wraps VIDEO_GL_TEXTURE_ORIENTATION_X_FLIP_Y_FLIP
 	//
 	// Bottom line first in memory, right row first
 	VideoGLTextureOrientationXFlipYFlip VideoGLTextureOrientation = 3
@@ -3101,31 +3097,31 @@ func (e VideoGLTextureOrientation) String() string {
 type VideoGLTextureType C.int
 
 const (
-	// VideoGLTextureTypeLuminance wraps GST_VIDEO_GL_TEXTURE_TYPE_LUMINANCE
+	// VideoGLTextureTypeLuminance wraps VIDEO_GL_TEXTURE_TYPE_LUMINANCE
 	//
 	// Luminance texture, GL_LUMINANCE
 	VideoGLTextureTypeLuminance VideoGLTextureType = 0
-	// VideoGLTextureTypeLuminanceAlpha wraps GST_VIDEO_GL_TEXTURE_TYPE_LUMINANCE_ALPHA
+	// VideoGLTextureTypeLuminanceAlpha wraps VIDEO_GL_TEXTURE_TYPE_LUMINANCE_ALPHA
 	//
 	// Luminance-alpha texture, GL_LUMINANCE_ALPHA
 	VideoGLTextureTypeLuminanceAlpha VideoGLTextureType = 1
-	// VideoGLTextureTypeRGB16 wraps GST_VIDEO_GL_TEXTURE_TYPE_RGB16
+	// VideoGLTextureTypeRGB16 wraps VIDEO_GL_TEXTURE_TYPE_RGB16
 	//
 	// RGB 565 texture, GL_RGB
 	VideoGLTextureTypeRGB16 VideoGLTextureType = 2
-	// VideoGLTextureTypeRGB wraps GST_VIDEO_GL_TEXTURE_TYPE_RGB
+	// VideoGLTextureTypeRGB wraps VIDEO_GL_TEXTURE_TYPE_RGB
 	//
 	// RGB texture, GL_RGB
 	VideoGLTextureTypeRGB VideoGLTextureType = 3
-	// VideoGLTextureTypeRGBA wraps GST_VIDEO_GL_TEXTURE_TYPE_RGBA
+	// VideoGLTextureTypeRGBA wraps VIDEO_GL_TEXTURE_TYPE_RGBA
 	//
 	// RGBA texture, GL_RGBA
 	VideoGLTextureTypeRGBA VideoGLTextureType = 4
-	// VideoGLTextureTypeR wraps GST_VIDEO_GL_TEXTURE_TYPE_R
+	// VideoGLTextureTypeR wraps VIDEO_GL_TEXTURE_TYPE_R
 	//
 	// R texture, GL_RED_EXT
 	VideoGLTextureTypeR VideoGLTextureType = 5
-	// VideoGLTextureTypeRg wraps GST_VIDEO_GL_TEXTURE_TYPE_RG
+	// VideoGLTextureTypeRg wraps VIDEO_GL_TEXTURE_TYPE_RG
 	//
 	// RG texture, GL_RG_EXT
 	VideoGLTextureTypeRg VideoGLTextureType = 6
@@ -3162,11 +3158,11 @@ func (e VideoGLTextureType) String() string {
 type VideoGammaMode C.int
 
 const (
-	// VideoGammaModeNone wraps GST_VIDEO_GAMMA_MODE_NONE
+	// VideoGammaModeNone wraps VIDEO_GAMMA_MODE_NONE
 	//
 	// disable gamma handling
 	VideoGammaModeNone VideoGammaMode = 0
-	// VideoGammaModeRemap wraps GST_VIDEO_GAMMA_MODE_REMAP
+	// VideoGammaModeRemap wraps VIDEO_GAMMA_MODE_REMAP
 	//
 	// convert between input and output gamma
 	// Different gamma conversion modes
@@ -3202,21 +3198,21 @@ func (e VideoGammaMode) String() string {
 type VideoInterlaceMode C.int
 
 const (
-	// VideoInterlaceModeProgressive wraps GST_VIDEO_INTERLACE_MODE_PROGRESSIVE
+	// VideoInterlaceModeProgressive wraps VIDEO_INTERLACE_MODE_PROGRESSIVE
 	//
 	// all frames are progressive
 	VideoInterlaceModeProgressive VideoInterlaceMode = 0
-	// VideoInterlaceModeInterleaved wraps GST_VIDEO_INTERLACE_MODE_INTERLEAVED
+	// VideoInterlaceModeInterleaved wraps VIDEO_INTERLACE_MODE_INTERLEAVED
 	//
 	// 2 fields are interleaved in one video
 	//     frame. Extra buffer flags describe the field order.
 	VideoInterlaceModeInterleaved VideoInterlaceMode = 1
-	// VideoInterlaceModeMixed wraps GST_VIDEO_INTERLACE_MODE_MIXED
+	// VideoInterlaceModeMixed wraps VIDEO_INTERLACE_MODE_MIXED
 	//
 	// frames contains both interlaced and
 	//     progressive video, the buffer flags describe the frame and fields.
 	VideoInterlaceModeMixed VideoInterlaceMode = 2
-	// VideoInterlaceModeFields wraps GST_VIDEO_INTERLACE_MODE_FIELDS
+	// VideoInterlaceModeFields wraps VIDEO_INTERLACE_MODE_FIELDS
 	//
 	// 2 fields are stored in one buffer, use the
 	//     frame ID to get access to the required field. For multiview (the
@@ -3226,7 +3222,7 @@ const (
 	//     height property. This mode requires multiple GstVideoMeta metadata
 	//     to describe the fields.
 	VideoInterlaceModeFields VideoInterlaceMode = 3
-	// VideoInterlaceModeAlternate wraps GST_VIDEO_INTERLACE_MODE_ALTERNATE
+	// VideoInterlaceModeAlternate wraps VIDEO_INTERLACE_MODE_ALTERNATE
 	//
 	// 1 field is stored in one buffer,
 	//     @GST_VIDEO_BUFFER_FLAG_TF or @GST_VIDEO_BUFFER_FLAG_BF indicates if
@@ -3322,21 +3318,21 @@ func VideoInterlaceModeToString(mode VideoInterlaceMode) string {
 type VideoMatrixMode C.int
 
 const (
-	// VideoMatrixModeFull wraps GST_VIDEO_MATRIX_MODE_FULL
+	// VideoMatrixModeFull wraps VIDEO_MATRIX_MODE_FULL
 	//
 	// do conversion between color matrices
 	VideoMatrixModeFull VideoMatrixMode = 0
-	// VideoMatrixModeInputOnly wraps GST_VIDEO_MATRIX_MODE_INPUT_ONLY
+	// VideoMatrixModeInputOnly wraps VIDEO_MATRIX_MODE_INPUT_ONLY
 	//
 	// use the input color matrix to convert
 	//   to and from R'G'B
 	VideoMatrixModeInputOnly VideoMatrixMode = 1
-	// VideoMatrixModeOutputOnly wraps GST_VIDEO_MATRIX_MODE_OUTPUT_ONLY
+	// VideoMatrixModeOutputOnly wraps VIDEO_MATRIX_MODE_OUTPUT_ONLY
 	//
 	// use the output color matrix to convert
 	//   to and from R'G'B
 	VideoMatrixModeOutputOnly VideoMatrixMode = 2
-	// VideoMatrixModeNone wraps GST_VIDEO_MATRIX_MODE_NONE
+	// VideoMatrixModeNone wraps VIDEO_MATRIX_MODE_NONE
 	//
 	// disable color matrix conversion.
 	VideoMatrixModeNone VideoMatrixMode = 3
@@ -3380,51 +3376,51 @@ func (e VideoMatrixMode) String() string {
 type VideoMultiviewFramePacking C.int
 
 const (
-	// VideoMultiviewFramePackingNone wraps GST_VIDEO_MULTIVIEW_FRAME_PACKING_NONE
+	// VideoMultiviewFramePackingNone wraps VIDEO_MULTIVIEW_FRAME_PACKING_NONE
 	//
 	// A special value indicating
 	// no frame packing info.
 	VideoMultiviewFramePackingNone VideoMultiviewFramePacking = -1
-	// VideoMultiviewFramePackingMono wraps GST_VIDEO_MULTIVIEW_FRAME_PACKING_MONO
+	// VideoMultiviewFramePackingMono wraps VIDEO_MULTIVIEW_FRAME_PACKING_MONO
 	//
 	// All frames are monoscopic.
 	VideoMultiviewFramePackingMono VideoMultiviewFramePacking = 0
-	// VideoMultiviewFramePackingLeft wraps GST_VIDEO_MULTIVIEW_FRAME_PACKING_LEFT
+	// VideoMultiviewFramePackingLeft wraps VIDEO_MULTIVIEW_FRAME_PACKING_LEFT
 	//
 	// All frames represent a left-eye view.
 	VideoMultiviewFramePackingLeft VideoMultiviewFramePacking = 1
-	// VideoMultiviewFramePackingRight wraps GST_VIDEO_MULTIVIEW_FRAME_PACKING_RIGHT
+	// VideoMultiviewFramePackingRight wraps VIDEO_MULTIVIEW_FRAME_PACKING_RIGHT
 	//
 	// All frames represent a right-eye view.
 	VideoMultiviewFramePackingRight VideoMultiviewFramePacking = 2
-	// VideoMultiviewFramePackingSideBySide wraps GST_VIDEO_MULTIVIEW_FRAME_PACKING_SIDE_BY_SIDE
+	// VideoMultiviewFramePackingSideBySide wraps VIDEO_MULTIVIEW_FRAME_PACKING_SIDE_BY_SIDE
 	//
 	// Left and right eye views are
 	// provided in the left and right half of the frame respectively.
 	VideoMultiviewFramePackingSideBySide VideoMultiviewFramePacking = 3
-	// VideoMultiviewFramePackingSideBySideQuincunx wraps GST_VIDEO_MULTIVIEW_FRAME_PACKING_SIDE_BY_SIDE_QUINCUNX
+	// VideoMultiviewFramePackingSideBySideQuincunx wraps VIDEO_MULTIVIEW_FRAME_PACKING_SIDE_BY_SIDE_QUINCUNX
 	//
 	// Left and right eye
 	// views are provided in the left and right half of the frame, but
 	// have been sampled using quincunx method, with half-pixel offset
 	// between the 2 views.
 	VideoMultiviewFramePackingSideBySideQuincunx VideoMultiviewFramePacking = 4
-	// VideoMultiviewFramePackingColumnInterleaved wraps GST_VIDEO_MULTIVIEW_FRAME_PACKING_COLUMN_INTERLEAVED
+	// VideoMultiviewFramePackingColumnInterleaved wraps VIDEO_MULTIVIEW_FRAME_PACKING_COLUMN_INTERLEAVED
 	//
 	// Alternating vertical
 	// columns of pixels represent the left and right eye view respectively.
 	VideoMultiviewFramePackingColumnInterleaved VideoMultiviewFramePacking = 5
-	// VideoMultiviewFramePackingRowInterleaved wraps GST_VIDEO_MULTIVIEW_FRAME_PACKING_ROW_INTERLEAVED
+	// VideoMultiviewFramePackingRowInterleaved wraps VIDEO_MULTIVIEW_FRAME_PACKING_ROW_INTERLEAVED
 	//
 	// Alternating horizontal
 	// rows of pixels represent the left and right eye view respectively.
 	VideoMultiviewFramePackingRowInterleaved VideoMultiviewFramePacking = 6
-	// VideoMultiviewFramePackingTopBottom wraps GST_VIDEO_MULTIVIEW_FRAME_PACKING_TOP_BOTTOM
+	// VideoMultiviewFramePackingTopBottom wraps VIDEO_MULTIVIEW_FRAME_PACKING_TOP_BOTTOM
 	//
 	// The top half of the frame
 	// contains the left eye, and the bottom half the right eye.
 	VideoMultiviewFramePackingTopBottom VideoMultiviewFramePacking = 7
-	// VideoMultiviewFramePackingCheckerboard wraps GST_VIDEO_MULTIVIEW_FRAME_PACKING_CHECKERBOARD
+	// VideoMultiviewFramePackingCheckerboard wraps VIDEO_MULTIVIEW_FRAME_PACKING_CHECKERBOARD
 	//
 	// Pixels are arranged with
 	// alternating pixels representing left and right eye views in a
@@ -3470,64 +3466,64 @@ func (e VideoMultiviewFramePacking) String() string {
 type VideoMultiviewMode C.int
 
 const (
-	// VideoMultiviewModeNone wraps GST_VIDEO_MULTIVIEW_MODE_NONE
+	// VideoMultiviewModeNone wraps VIDEO_MULTIVIEW_MODE_NONE
 	//
 	// A special value indicating
 	// no multiview information. Used in GstVideoInfo and other places to
 	// indicate that no specific multiview handling has been requested or
 	// provided. This value is never carried on caps.
 	VideoMultiviewModeNone VideoMultiviewMode = -1
-	// VideoMultiviewModeMono wraps GST_VIDEO_MULTIVIEW_MODE_MONO
+	// VideoMultiviewModeMono wraps VIDEO_MULTIVIEW_MODE_MONO
 	//
 	// All frames are monoscopic.
 	VideoMultiviewModeMono VideoMultiviewMode = 0
-	// VideoMultiviewModeLeft wraps GST_VIDEO_MULTIVIEW_MODE_LEFT
+	// VideoMultiviewModeLeft wraps VIDEO_MULTIVIEW_MODE_LEFT
 	//
 	// All frames represent a left-eye view.
 	VideoMultiviewModeLeft VideoMultiviewMode = 1
-	// VideoMultiviewModeRight wraps GST_VIDEO_MULTIVIEW_MODE_RIGHT
+	// VideoMultiviewModeRight wraps VIDEO_MULTIVIEW_MODE_RIGHT
 	//
 	// All frames represent a right-eye view.
 	VideoMultiviewModeRight VideoMultiviewMode = 2
-	// VideoMultiviewModeSideBySide wraps GST_VIDEO_MULTIVIEW_MODE_SIDE_BY_SIDE
+	// VideoMultiviewModeSideBySide wraps VIDEO_MULTIVIEW_MODE_SIDE_BY_SIDE
 	//
 	// Left and right eye views are
 	// provided in the left and right half of the frame respectively.
 	VideoMultiviewModeSideBySide VideoMultiviewMode = 3
-	// VideoMultiviewModeSideBySideQuincunx wraps GST_VIDEO_MULTIVIEW_MODE_SIDE_BY_SIDE_QUINCUNX
+	// VideoMultiviewModeSideBySideQuincunx wraps VIDEO_MULTIVIEW_MODE_SIDE_BY_SIDE_QUINCUNX
 	//
 	// Left and right eye
 	// views are provided in the left and right half of the frame, but
 	// have been sampled using quincunx method, with half-pixel offset
 	// between the 2 views.
 	VideoMultiviewModeSideBySideQuincunx VideoMultiviewMode = 4
-	// VideoMultiviewModeColumnInterleaved wraps GST_VIDEO_MULTIVIEW_MODE_COLUMN_INTERLEAVED
+	// VideoMultiviewModeColumnInterleaved wraps VIDEO_MULTIVIEW_MODE_COLUMN_INTERLEAVED
 	//
 	// Alternating vertical
 	// columns of pixels represent the left and right eye view respectively.
 	VideoMultiviewModeColumnInterleaved VideoMultiviewMode = 5
-	// VideoMultiviewModeRowInterleaved wraps GST_VIDEO_MULTIVIEW_MODE_ROW_INTERLEAVED
+	// VideoMultiviewModeRowInterleaved wraps VIDEO_MULTIVIEW_MODE_ROW_INTERLEAVED
 	//
 	// Alternating horizontal
 	// rows of pixels represent the left and right eye view respectively.
 	VideoMultiviewModeRowInterleaved VideoMultiviewMode = 6
-	// VideoMultiviewModeTopBottom wraps GST_VIDEO_MULTIVIEW_MODE_TOP_BOTTOM
+	// VideoMultiviewModeTopBottom wraps VIDEO_MULTIVIEW_MODE_TOP_BOTTOM
 	//
 	// The top half of the frame
 	// contains the left eye, and the bottom half the right eye.
 	VideoMultiviewModeTopBottom VideoMultiviewMode = 7
-	// VideoMultiviewModeCheckerboard wraps GST_VIDEO_MULTIVIEW_MODE_CHECKERBOARD
+	// VideoMultiviewModeCheckerboard wraps VIDEO_MULTIVIEW_MODE_CHECKERBOARD
 	//
 	// Pixels are arranged with
 	// alternating pixels representing left and right eye views in a
 	// checkerboard fashion.
 	VideoMultiviewModeCheckerboard VideoMultiviewMode = 8
-	// VideoMultiviewModeFrameByFrame wraps GST_VIDEO_MULTIVIEW_MODE_FRAME_BY_FRAME
+	// VideoMultiviewModeFrameByFrame wraps VIDEO_MULTIVIEW_MODE_FRAME_BY_FRAME
 	//
 	// Left and right eye views
 	// are provided in separate frames alternately.
 	VideoMultiviewModeFrameByFrame VideoMultiviewMode = 32
-	// VideoMultiviewModeMultiviewFrameByFrame wraps GST_VIDEO_MULTIVIEW_MODE_MULTIVIEW_FRAME_BY_FRAME
+	// VideoMultiviewModeMultiviewFrameByFrame wraps VIDEO_MULTIVIEW_MODE_MULTIVIEW_FRAME_BY_FRAME
 	//
 	// Multiple
 	// independent views are provided in separate frames in sequence.
@@ -3535,7 +3531,7 @@ const (
 	// Specific view identification is via the `GstVideoMultiviewMeta`
 	// and #GstVideoMeta(s) on raw video buffers.
 	VideoMultiviewModeMultiviewFrameByFrame VideoMultiviewMode = 33
-	// VideoMultiviewModeSeparated wraps GST_VIDEO_MULTIVIEW_MODE_SEPARATED
+	// VideoMultiviewModeSeparated wraps VIDEO_MULTIVIEW_MODE_SEPARATED
 	//
 	// Multiple views are
 	// provided as separate #GstMemory framebuffers attached to each
@@ -3639,43 +3635,43 @@ func VideoMultiviewModeToCapsString(mviewMode VideoMultiviewMode) string {
 type VideoOrientationMethod C.int
 
 const (
-	// VideoOrientationIdentity wraps GST_VIDEO_ORIENTATION_IDENTITY
+	// VideoOrientationIdentity wraps VIDEO_ORIENTATION_IDENTITY
 	//
 	// Identity (no rotation)
 	VideoOrientationIdentity VideoOrientationMethod = 0
-	// VideoOrientation90R wraps GST_VIDEO_ORIENTATION_90R
+	// VideoOrientation90R wraps VIDEO_ORIENTATION_90R
 	//
 	// Rotate clockwise 90 degrees
 	VideoOrientation90R VideoOrientationMethod = 1
-	// VideoOrientation180 wraps GST_VIDEO_ORIENTATION_180
+	// VideoOrientation180 wraps VIDEO_ORIENTATION_180
 	//
 	// Rotate 180 degrees
 	VideoOrientation180 VideoOrientationMethod = 2
-	// VideoOrientation90L wraps GST_VIDEO_ORIENTATION_90L
+	// VideoOrientation90L wraps VIDEO_ORIENTATION_90L
 	//
 	// Rotate counter-clockwise 90 degrees
 	VideoOrientation90L VideoOrientationMethod = 3
-	// VideoOrientationHoriz wraps GST_VIDEO_ORIENTATION_HORIZ
+	// VideoOrientationHoriz wraps VIDEO_ORIENTATION_HORIZ
 	//
 	// Flip horizontally
 	VideoOrientationHoriz VideoOrientationMethod = 4
-	// VideoOrientationVert wraps GST_VIDEO_ORIENTATION_VERT
+	// VideoOrientationVert wraps VIDEO_ORIENTATION_VERT
 	//
 	// Flip vertically
 	VideoOrientationVert VideoOrientationMethod = 5
-	// VideoOrientationUlLr wraps GST_VIDEO_ORIENTATION_UL_LR
+	// VideoOrientationUlLr wraps VIDEO_ORIENTATION_UL_LR
 	//
 	// Rotate counter-clockwise 90 degrees and flip vertically
 	VideoOrientationUlLr VideoOrientationMethod = 6
-	// VideoOrientationUrLl wraps GST_VIDEO_ORIENTATION_UR_LL
+	// VideoOrientationUrLl wraps VIDEO_ORIENTATION_UR_LL
 	//
 	// Rotate clockwise 90 degrees and flip vertically
 	VideoOrientationUrLl VideoOrientationMethod = 7
-	// VideoOrientationAuto wraps GST_VIDEO_ORIENTATION_AUTO
+	// VideoOrientationAuto wraps VIDEO_ORIENTATION_AUTO
 	//
 	// Select flip method based on image-orientation tag
 	VideoOrientationAuto VideoOrientationMethod = 8
-	// VideoOrientationCustom wraps GST_VIDEO_ORIENTATION_CUSTOM
+	// VideoOrientationCustom wraps VIDEO_ORIENTATION_CUSTOM
 	//
 	// Current status depends on plugin internal setup
 	VideoOrientationCustom VideoOrientationMethod = 9
@@ -3717,16 +3713,16 @@ func (e VideoOrientationMethod) String() string {
 type VideoPrimariesMode C.int
 
 const (
-	// VideoPrimariesModeNone wraps GST_VIDEO_PRIMARIES_MODE_NONE
+	// VideoPrimariesModeNone wraps VIDEO_PRIMARIES_MODE_NONE
 	//
 	// disable conversion between primaries
 	VideoPrimariesModeNone VideoPrimariesMode = 0
-	// VideoPrimariesModeMergeOnly wraps GST_VIDEO_PRIMARIES_MODE_MERGE_ONLY
+	// VideoPrimariesModeMergeOnly wraps VIDEO_PRIMARIES_MODE_MERGE_ONLY
 	//
 	// do conversion between primaries only
 	//   when it can be merged with color matrix conversion.
 	VideoPrimariesModeMergeOnly VideoPrimariesMode = 1
-	// VideoPrimariesModeFast wraps GST_VIDEO_PRIMARIES_MODE_FAST
+	// VideoPrimariesModeFast wraps VIDEO_PRIMARIES_MODE_FAST
 	//
 	// fast conversion between primaries
 	VideoPrimariesModeFast VideoPrimariesMode = 2
@@ -3761,25 +3757,25 @@ func (e VideoPrimariesMode) String() string {
 type VideoResamplerMethod C.int
 
 const (
-	// VideoResamplerMethodNearest wraps GST_VIDEO_RESAMPLER_METHOD_NEAREST
+	// VideoResamplerMethodNearest wraps VIDEO_RESAMPLER_METHOD_NEAREST
 	//
 	// Duplicates the samples when
 	//    upsampling and drops when downsampling
 	VideoResamplerMethodNearest VideoResamplerMethod = 0
-	// VideoResamplerMethodLinear wraps GST_VIDEO_RESAMPLER_METHOD_LINEAR
+	// VideoResamplerMethodLinear wraps VIDEO_RESAMPLER_METHOD_LINEAR
 	//
 	// Uses linear interpolation to reconstruct
 	//    missing samples and averaging to downsample
 	VideoResamplerMethodLinear VideoResamplerMethod = 1
-	// VideoResamplerMethodCubic wraps GST_VIDEO_RESAMPLER_METHOD_CUBIC
+	// VideoResamplerMethodCubic wraps VIDEO_RESAMPLER_METHOD_CUBIC
 	//
 	// Uses cubic interpolation
 	VideoResamplerMethodCubic VideoResamplerMethod = 2
-	// VideoResamplerMethodSinc wraps GST_VIDEO_RESAMPLER_METHOD_SINC
+	// VideoResamplerMethodSinc wraps VIDEO_RESAMPLER_METHOD_SINC
 	//
 	// Uses sinc interpolation
 	VideoResamplerMethodSinc VideoResamplerMethod = 3
-	// VideoResamplerMethodLanczos wraps GST_VIDEO_RESAMPLER_METHOD_LANCZOS
+	// VideoResamplerMethodLanczos wraps VIDEO_RESAMPLER_METHOD_LANCZOS
 	//
 	// Uses lanczos interpolation
 	VideoResamplerMethodLanczos VideoResamplerMethod = 4
@@ -3816,18 +3812,18 @@ func (e VideoResamplerMethod) String() string {
 type VideoTileMode C.int
 
 const (
-	// VideoTileModeUnknown wraps GST_VIDEO_TILE_MODE_UNKNOWN
+	// VideoTileModeUnknown wraps VIDEO_TILE_MODE_UNKNOWN
 	//
 	// Unknown or unset tile mode
 	VideoTileModeUnknown VideoTileMode = 0
-	// VideoTileModeZflipz2X2 wraps GST_VIDEO_TILE_MODE_ZFLIPZ_2X2
+	// VideoTileModeZflipz2X2 wraps VIDEO_TILE_MODE_ZFLIPZ_2X2
 	//
 	// Every four adjacent blocks - two
 	//    horizontally and two vertically are grouped together and are located
 	//    in memory in Z or flipped Z order. In case of odd rows, the last row
 	//    of blocks is arranged in linear order.
 	VideoTileModeZflipz2X2 VideoTileMode = 65536
-	// VideoTileModeLinear wraps GST_VIDEO_TILE_MODE_LINEAR
+	// VideoTileModeLinear wraps VIDEO_TILE_MODE_LINEAR
 	//
 	// Tiles are in row order.
 	VideoTileModeLinear VideoTileMode = 131072
@@ -3862,7 +3858,7 @@ func (e VideoTileMode) String() string {
 type VideoTileType C.int
 
 const (
-	// VideoTileTypeIndexed wraps GST_VIDEO_TILE_TYPE_INDEXED
+	// VideoTileTypeIndexed wraps VIDEO_TILE_TYPE_INDEXED
 	//
 	// Tiles are indexed. Use
 	//   gst_video_tile_get_index () to retrieve the tile at the requested
@@ -3898,86 +3894,86 @@ func (e VideoTileType) String() string {
 type VideoTransferFunction C.int
 
 const (
-	// VideoTransferUnknown wraps GST_VIDEO_TRANSFER_UNKNOWN
+	// VideoTransferUnknown wraps VIDEO_TRANSFER_UNKNOWN
 	//
 	// unknown transfer function
 	VideoTransferUnknown VideoTransferFunction = 0
-	// VideoTransferGamma10 wraps GST_VIDEO_TRANSFER_GAMMA10
+	// VideoTransferGamma10 wraps VIDEO_TRANSFER_GAMMA10
 	//
 	// linear RGB, gamma 1.0 curve
 	VideoTransferGamma10 VideoTransferFunction = 1
-	// VideoTransferGamma18 wraps GST_VIDEO_TRANSFER_GAMMA18
+	// VideoTransferGamma18 wraps VIDEO_TRANSFER_GAMMA18
 	//
 	// Gamma 1.8 curve
 	VideoTransferGamma18 VideoTransferFunction = 2
-	// VideoTransferGamma20 wraps GST_VIDEO_TRANSFER_GAMMA20
+	// VideoTransferGamma20 wraps VIDEO_TRANSFER_GAMMA20
 	//
 	// Gamma 2.0 curve
 	VideoTransferGamma20 VideoTransferFunction = 3
-	// VideoTransferGamma22 wraps GST_VIDEO_TRANSFER_GAMMA22
+	// VideoTransferGamma22 wraps VIDEO_TRANSFER_GAMMA22
 	//
 	// Gamma 2.2 curve
 	VideoTransferGamma22 VideoTransferFunction = 4
-	// VideoTransferBt709 wraps GST_VIDEO_TRANSFER_BT709
+	// VideoTransferBt709 wraps VIDEO_TRANSFER_BT709
 	//
 	// Gamma 2.2 curve with a linear segment in the lower
 	//                           range, also ITU-R BT470M / ITU-R BT1700 625 PAL &amp;
 	//                           SECAM / ITU-R BT1361
 	VideoTransferBt709 VideoTransferFunction = 5
-	// VideoTransferSmpte240M wraps GST_VIDEO_TRANSFER_SMPTE240M
+	// VideoTransferSmpte240M wraps VIDEO_TRANSFER_SMPTE240M
 	//
 	// Gamma 2.2 curve with a linear segment in the
 	//                               lower range
 	VideoTransferSmpte240M VideoTransferFunction = 6
-	// VideoTransferSrgb wraps GST_VIDEO_TRANSFER_SRGB
+	// VideoTransferSrgb wraps VIDEO_TRANSFER_SRGB
 	//
 	// Gamma 2.4 curve with a linear segment in the lower
 	//                          range. IEC 61966-2-1 (sRGB or sYCC)
 	VideoTransferSrgb VideoTransferFunction = 7
-	// VideoTransferGamma28 wraps GST_VIDEO_TRANSFER_GAMMA28
+	// VideoTransferGamma28 wraps VIDEO_TRANSFER_GAMMA28
 	//
 	// Gamma 2.8 curve, also ITU-R BT470BG
 	VideoTransferGamma28 VideoTransferFunction = 8
-	// VideoTransferLog100 wraps GST_VIDEO_TRANSFER_LOG100
+	// VideoTransferLog100 wraps VIDEO_TRANSFER_LOG100
 	//
 	// Logarithmic transfer characteristic
 	//                             100:1 range
 	VideoTransferLog100 VideoTransferFunction = 9
-	// VideoTransferLog316 wraps GST_VIDEO_TRANSFER_LOG316
+	// VideoTransferLog316 wraps VIDEO_TRANSFER_LOG316
 	//
 	// Logarithmic transfer characteristic
 	//                             316.22777:1 range (100 * sqrt(10) : 1)
 	VideoTransferLog316 VideoTransferFunction = 10
-	// VideoTransferBt202012 wraps GST_VIDEO_TRANSFER_BT2020_12
+	// VideoTransferBt202012 wraps VIDEO_TRANSFER_BT2020_12
 	//
 	// Gamma 2.2 curve with a linear segment in the lower
 	//                                range. Used for BT.2020 with 12 bits per
 	//                                component. Since: 1.6
 	VideoTransferBt202012 VideoTransferFunction = 11
-	// VideoTransferAdobergb wraps GST_VIDEO_TRANSFER_ADOBERGB
+	// VideoTransferAdobergb wraps VIDEO_TRANSFER_ADOBERGB
 	//
 	// Gamma 2.19921875. Since: 1.8
 	VideoTransferAdobergb VideoTransferFunction = 12
-	// VideoTransferBt202010 wraps GST_VIDEO_TRANSFER_BT2020_10
+	// VideoTransferBt202010 wraps VIDEO_TRANSFER_BT2020_10
 	//
 	// Rec. ITU-R BT.2020-2 with 10 bits per component.
 	//                                (functionally the same as the values
 	//                                GST_VIDEO_TRANSFER_BT709 and GST_VIDEO_TRANSFER_BT601).
 	//                                Since: 1.18
 	VideoTransferBt202010 VideoTransferFunction = 13
-	// VideoTransferSmpte2084 wraps GST_VIDEO_TRANSFER_SMPTE2084
+	// VideoTransferSmpte2084 wraps VIDEO_TRANSFER_SMPTE2084
 	//
 	// SMPTE ST 2084 for 10, 12, 14, and 16-bit systems.
 	//                                Known as perceptual quantization (PQ)
 	//                                Since: 1.18
 	VideoTransferSmpte2084 VideoTransferFunction = 14
-	// VideoTransferAribStdB67 wraps GST_VIDEO_TRANSFER_ARIB_STD_B67
+	// VideoTransferAribStdB67 wraps VIDEO_TRANSFER_ARIB_STD_B67
 	//
 	// Association of Radio Industries and Businesses (ARIB)
 	//                                   STD-B67 and Rec. ITU-R BT.2100-1 hybrid loggamma (HLG) system
 	//                                   Since: 1.18
 	VideoTransferAribStdB67 VideoTransferFunction = 15
-	// VideoTransferBt601 wraps GST_VIDEO_TRANSFER_BT601
+	// VideoTransferBt601 wraps VIDEO_TRANSFER_BT601
 	//
 	// also known as SMPTE170M / ITU-R BT1358 525 or 625 / ITU-R BT1700 NTSC
 	VideoTransferBt601 VideoTransferFunction = 16
@@ -4215,15 +4211,15 @@ func VideoTransferFunctionToISO(fn VideoTransferFunction) uint {
 type VideoVBIParserResult C.int
 
 const (
-	// VideoVbiParserResultDone wraps GST_VIDEO_VBI_PARSER_RESULT_DONE
+	// VideoVbiParserResultDone wraps VIDEO_VBI_PARSER_RESULT_DONE
 	//
 	// No line were provided, or no more Ancillary data was found.
 	VideoVbiParserResultDone VideoVBIParserResult = 0
-	// VideoVbiParserResultOK wraps GST_VIDEO_VBI_PARSER_RESULT_OK
+	// VideoVbiParserResultOK wraps VIDEO_VBI_PARSER_RESULT_OK
 	//
 	// A #GstVideoAncillary was found.
 	VideoVbiParserResultOK VideoVBIParserResult = 1
-	// VideoVbiParserResultError wraps GST_VIDEO_VBI_PARSER_RESULT_ERROR
+	// VideoVbiParserResultError wraps VIDEO_VBI_PARSER_RESULT_ERROR
 	//
 	// An error occurred
 	VideoVbiParserResultError VideoVBIParserResult = 2
@@ -4262,71 +4258,71 @@ func (e VideoVBIParserResult) String() string {
 type NavigationModifierType C.gint
 
 const (
-	// NavigationModifierNone wraps GST_NAVIGATION_MODIFIER_NONE
+	// NavigationModifierNone wraps NAVIGATION_MODIFIER_NONE
 	NavigationModifierNone NavigationModifierType = 0
-	// NavigationModifierShiftMask wraps GST_NAVIGATION_MODIFIER_SHIFT_MASK
+	// NavigationModifierShiftMask wraps NAVIGATION_MODIFIER_SHIFT_MASK
 	//
 	// the Shift key.
 	NavigationModifierShiftMask NavigationModifierType = 1
-	// NavigationModifierLockMask wraps GST_NAVIGATION_MODIFIER_LOCK_MASK
+	// NavigationModifierLockMask wraps NAVIGATION_MODIFIER_LOCK_MASK
 	NavigationModifierLockMask NavigationModifierType = 2
-	// NavigationModifierControlMask wraps GST_NAVIGATION_MODIFIER_CONTROL_MASK
+	// NavigationModifierControlMask wraps NAVIGATION_MODIFIER_CONTROL_MASK
 	//
 	// the Control key.
 	NavigationModifierControlMask NavigationModifierType = 4
-	// NavigationModifierMod1Mask wraps GST_NAVIGATION_MODIFIER_MOD1_MASK
+	// NavigationModifierMod1Mask wraps NAVIGATION_MODIFIER_MOD1_MASK
 	//
 	// the third modifier key
 	NavigationModifierMod1Mask NavigationModifierType = 8
-	// NavigationModifierMod2Mask wraps GST_NAVIGATION_MODIFIER_MOD2_MASK
+	// NavigationModifierMod2Mask wraps NAVIGATION_MODIFIER_MOD2_MASK
 	//
 	// the fourth modifier key
 	NavigationModifierMod2Mask NavigationModifierType = 16
-	// NavigationModifierMod3Mask wraps GST_NAVIGATION_MODIFIER_MOD3_MASK
+	// NavigationModifierMod3Mask wraps NAVIGATION_MODIFIER_MOD3_MASK
 	//
 	// the fifth modifier key
 	NavigationModifierMod3Mask NavigationModifierType = 32
-	// NavigationModifierMod4Mask wraps GST_NAVIGATION_MODIFIER_MOD4_MASK
+	// NavigationModifierMod4Mask wraps NAVIGATION_MODIFIER_MOD4_MASK
 	//
 	// the sixth modifier key
 	NavigationModifierMod4Mask NavigationModifierType = 64
-	// NavigationModifierMod5Mask wraps GST_NAVIGATION_MODIFIER_MOD5_MASK
+	// NavigationModifierMod5Mask wraps NAVIGATION_MODIFIER_MOD5_MASK
 	//
 	// the seventh modifier key
 	NavigationModifierMod5Mask NavigationModifierType = 128
-	// NavigationModifierButton1Mask wraps GST_NAVIGATION_MODIFIER_BUTTON1_MASK
+	// NavigationModifierButton1Mask wraps NAVIGATION_MODIFIER_BUTTON1_MASK
 	//
 	// the first mouse button (usually the left button).
 	NavigationModifierButton1Mask NavigationModifierType = 256
-	// NavigationModifierButton2Mask wraps GST_NAVIGATION_MODIFIER_BUTTON2_MASK
+	// NavigationModifierButton2Mask wraps NAVIGATION_MODIFIER_BUTTON2_MASK
 	//
 	// the second mouse button (usually the right button).
 	NavigationModifierButton2Mask NavigationModifierType = 512
-	// NavigationModifierButton3Mask wraps GST_NAVIGATION_MODIFIER_BUTTON3_MASK
+	// NavigationModifierButton3Mask wraps NAVIGATION_MODIFIER_BUTTON3_MASK
 	//
 	// the third mouse button (usually the mouse wheel button or middle button).
 	NavigationModifierButton3Mask NavigationModifierType = 1024
-	// NavigationModifierButton4Mask wraps GST_NAVIGATION_MODIFIER_BUTTON4_MASK
+	// NavigationModifierButton4Mask wraps NAVIGATION_MODIFIER_BUTTON4_MASK
 	//
 	// the fourth mouse button (typically the "Back" button).
 	NavigationModifierButton4Mask NavigationModifierType = 2048
-	// NavigationModifierButton5Mask wraps GST_NAVIGATION_MODIFIER_BUTTON5_MASK
+	// NavigationModifierButton5Mask wraps NAVIGATION_MODIFIER_BUTTON5_MASK
 	//
 	// the fifth mouse button (typically the "forward" button).
 	NavigationModifierButton5Mask NavigationModifierType = 4096
-	// NavigationModifierSuperMask wraps GST_NAVIGATION_MODIFIER_SUPER_MASK
+	// NavigationModifierSuperMask wraps NAVIGATION_MODIFIER_SUPER_MASK
 	//
 	// the Super modifier
 	NavigationModifierSuperMask NavigationModifierType = 67108864
-	// NavigationModifierHyperMask wraps GST_NAVIGATION_MODIFIER_HYPER_MASK
+	// NavigationModifierHyperMask wraps NAVIGATION_MODIFIER_HYPER_MASK
 	//
 	// the Hyper modifier
 	NavigationModifierHyperMask NavigationModifierType = 134217728
-	// NavigationModifierMetaMask wraps GST_NAVIGATION_MODIFIER_META_MASK
+	// NavigationModifierMetaMask wraps NAVIGATION_MODIFIER_META_MASK
 	//
 	// the Meta modifier
 	NavigationModifierMetaMask NavigationModifierType = 268435456
-	// NavigationModifierMask wraps GST_NAVIGATION_MODIFIER_MASK
+	// NavigationModifierMask wraps NAVIGATION_MODIFIER_MASK
 	//
 	// A mask covering all entries in #GdkModifierType.
 	NavigationModifierMask NavigationModifierType = 469770239
@@ -4423,31 +4419,31 @@ func (f NavigationModifierType) String() string {
 type VideoBufferFlags C.gint
 
 const (
-	// VideoBufferFlagInterlaced wraps GST_VIDEO_BUFFER_FLAG_INTERLACED
+	// VideoBufferFlagInterlaced wraps VIDEO_BUFFER_FLAG_INTERLACED
 	//
 	// If the #GstBuffer is interlaced. In mixed
 	//                                     interlace-mode, this flags specifies if the frame is
 	//                                     interlaced or progressive.
 	VideoBufferFlagInterlaced VideoBufferFlags = 1048576
-	// VideoBufferFlagTff wraps GST_VIDEO_BUFFER_FLAG_TFF
+	// VideoBufferFlagTff wraps VIDEO_BUFFER_FLAG_TFF
 	//
 	// If the #GstBuffer is interlaced, then the first field
 	//                                     in the video frame is the top field.  If unset, the
 	//                                     bottom field is first.
 	VideoBufferFlagTff VideoBufferFlags = 2097152
-	// VideoBufferFlagRff wraps GST_VIDEO_BUFFER_FLAG_RFF
+	// VideoBufferFlagRff wraps VIDEO_BUFFER_FLAG_RFF
 	//
 	// If the #GstBuffer is interlaced, then the first field
 	//                                     (as defined by the %GST_VIDEO_BUFFER_FLAG_TFF flag setting)
 	//                                     is repeated.
 	VideoBufferFlagRff VideoBufferFlags = 4194304
-	// VideoBufferFlagOnefield wraps GST_VIDEO_BUFFER_FLAG_ONEFIELD
+	// VideoBufferFlagOnefield wraps VIDEO_BUFFER_FLAG_ONEFIELD
 	//
 	// If the #GstBuffer is interlaced, then only the
 	//                                     first field (as defined by the %GST_VIDEO_BUFFER_FLAG_TFF
 	//                                     flag setting) is to be displayed (Since: 1.16).
 	VideoBufferFlagOnefield VideoBufferFlags = 8388608
-	// VideoBufferFlagMultipleView wraps GST_VIDEO_BUFFER_FLAG_MULTIPLE_VIEW
+	// VideoBufferFlagMultipleView wraps VIDEO_BUFFER_FLAG_MULTIPLE_VIEW
 	//
 	// The #GstBuffer contains one or more specific views,
 	//                                     such as left or right eye view. This flags is set on
@@ -4456,32 +4452,32 @@ const (
 	//                                     mono / non-mono streams, the absence of the flag marks
 	//                                     mono buffers.
 	VideoBufferFlagMultipleView VideoBufferFlags = 16777216
-	// VideoBufferFlagFirstInBundle wraps GST_VIDEO_BUFFER_FLAG_FIRST_IN_BUNDLE
+	// VideoBufferFlagFirstInBundle wraps VIDEO_BUFFER_FLAG_FIRST_IN_BUNDLE
 	//
 	// When conveying stereo/multiview content with
 	//                                     frame-by-frame methods, this flag marks the first buffer
 	//                                      in a bundle of frames that belong together.
 	VideoBufferFlagFirstInBundle VideoBufferFlags = 33554432
-	// VideoBufferFlagTopField wraps GST_VIDEO_BUFFER_FLAG_TOP_FIELD
+	// VideoBufferFlagTopField wraps VIDEO_BUFFER_FLAG_TOP_FIELD
 	//
 	// The video frame has the top field only. This is the
 	//                                     same as GST_VIDEO_BUFFER_FLAG_TFF |
 	//                                     GST_VIDEO_BUFFER_FLAG_ONEFIELD (Since: 1.16).
 	//                                     Use GST_VIDEO_BUFFER_IS_TOP_FIELD() to check for this flag.
 	VideoBufferFlagTopField VideoBufferFlags = 10485760
-	// VideoBufferFlagBottomField wraps GST_VIDEO_BUFFER_FLAG_BOTTOM_FIELD
+	// VideoBufferFlagBottomField wraps VIDEO_BUFFER_FLAG_BOTTOM_FIELD
 	//
 	// The video frame has the bottom field only. This is
 	//                                     the same as GST_VIDEO_BUFFER_FLAG_ONEFIELD
 	//                                     (GST_VIDEO_BUFFER_FLAG_TFF flag unset) (Since: 1.16).
 	//                                     Use GST_VIDEO_BUFFER_IS_BOTTOM_FIELD() to check for this flag.
 	VideoBufferFlagBottomField VideoBufferFlags = 8388608
-	// VideoBufferFlagMarker wraps GST_VIDEO_BUFFER_FLAG_MARKER
+	// VideoBufferFlagMarker wraps VIDEO_BUFFER_FLAG_MARKER
 	//
 	// The #GstBuffer contains the end of a video field or frame
 	//                                     boundary such as the last subframe or packet (Since: 1.18).
 	VideoBufferFlagMarker VideoBufferFlags = 512
-	// VideoBufferFlagLast wraps GST_VIDEO_BUFFER_FLAG_LAST
+	// VideoBufferFlagLast wraps VIDEO_BUFFER_FLAG_LAST
 	//
 	// Offset to define more flags
 	VideoBufferFlagLast VideoBufferFlags = 268435456
@@ -4550,11 +4546,11 @@ func (f VideoBufferFlags) String() string {
 type VideoChromaFlags C.gint
 
 const (
-	// VideoChromaFlagNone wraps GST_VIDEO_CHROMA_FLAG_NONE
+	// VideoChromaFlagNone wraps VIDEO_CHROMA_FLAG_NONE
 	//
 	// no flags
 	VideoChromaFlagNone VideoChromaFlags = 0
-	// VideoChromaFlagInterlaced wraps GST_VIDEO_CHROMA_FLAG_INTERLACED
+	// VideoChromaFlagInterlaced wraps VIDEO_CHROMA_FLAG_INTERLACED
 	//
 	// the input is interlaced
 	VideoChromaFlagInterlaced VideoChromaFlags = 1
@@ -4599,39 +4595,39 @@ func (f VideoChromaFlags) String() string {
 type VideoChromaSite C.gint
 
 const (
-	// VideoChromaSiteUnknown wraps GST_VIDEO_CHROMA_SITE_UNKNOWN
+	// VideoChromaSiteUnknown wraps VIDEO_CHROMA_SITE_UNKNOWN
 	//
 	// unknown cositing
 	VideoChromaSiteUnknown VideoChromaSite = 0
-	// VideoChromaSiteNone wraps GST_VIDEO_CHROMA_SITE_NONE
+	// VideoChromaSiteNone wraps VIDEO_CHROMA_SITE_NONE
 	//
 	// no cositing
 	VideoChromaSiteNone VideoChromaSite = 1
-	// VideoChromaSiteHCosited wraps GST_VIDEO_CHROMA_SITE_H_COSITED
+	// VideoChromaSiteHCosited wraps VIDEO_CHROMA_SITE_H_COSITED
 	//
 	// chroma is horizontally cosited
 	VideoChromaSiteHCosited VideoChromaSite = 2
-	// VideoChromaSiteVCosited wraps GST_VIDEO_CHROMA_SITE_V_COSITED
+	// VideoChromaSiteVCosited wraps VIDEO_CHROMA_SITE_V_COSITED
 	//
 	// chroma is vertically cosited
 	VideoChromaSiteVCosited VideoChromaSite = 4
-	// VideoChromaSiteAltLine wraps GST_VIDEO_CHROMA_SITE_ALT_LINE
+	// VideoChromaSiteAltLine wraps VIDEO_CHROMA_SITE_ALT_LINE
 	//
 	// chroma samples are sited on alternate lines
 	VideoChromaSiteAltLine VideoChromaSite = 8
-	// VideoChromaSiteCosited wraps GST_VIDEO_CHROMA_SITE_COSITED
+	// VideoChromaSiteCosited wraps VIDEO_CHROMA_SITE_COSITED
 	//
 	// chroma samples cosited with luma samples
 	VideoChromaSiteCosited VideoChromaSite = 6
-	// VideoChromaSiteJPEG wraps GST_VIDEO_CHROMA_SITE_JPEG
+	// VideoChromaSiteJPEG wraps VIDEO_CHROMA_SITE_JPEG
 	//
 	// jpeg style cositing, also for mpeg1 and mjpeg
 	VideoChromaSiteJPEG VideoChromaSite = 1
-	// VideoChromaSiteMpeg2 wraps GST_VIDEO_CHROMA_SITE_MPEG2
+	// VideoChromaSiteMpeg2 wraps VIDEO_CHROMA_SITE_MPEG2
 	//
 	// mpeg2 style cositing
 	VideoChromaSiteMpeg2 VideoChromaSite = 2
-	// VideoChromaSiteDv wraps GST_VIDEO_CHROMA_SITE_DV
+	// VideoChromaSiteDv wraps VIDEO_CHROMA_SITE_DV
 	//
 	// DV style cositing
 	VideoChromaSiteDv VideoChromaSite = 14
@@ -4755,23 +4751,23 @@ func VideoChromaSiteToString(site VideoChromaSite) string {
 type VideoCodecFrameFlags C.gint
 
 const (
-	// VideoCodecFrameFlagDecodeOnly wraps GST_VIDEO_CODEC_FRAME_FLAG_DECODE_ONLY
+	// VideoCodecFrameFlagDecodeOnly wraps VIDEO_CODEC_FRAME_FLAG_DECODE_ONLY
 	//
 	// is the frame only meant to be decoded
 	VideoCodecFrameFlagDecodeOnly VideoCodecFrameFlags = 1
-	// VideoCodecFrameFlagSyncPoint wraps GST_VIDEO_CODEC_FRAME_FLAG_SYNC_POINT
+	// VideoCodecFrameFlagSyncPoint wraps VIDEO_CODEC_FRAME_FLAG_SYNC_POINT
 	//
 	// is the frame a synchronization point (keyframe)
 	VideoCodecFrameFlagSyncPoint VideoCodecFrameFlags = 2
-	// VideoCodecFrameFlagForceKeyframe wraps GST_VIDEO_CODEC_FRAME_FLAG_FORCE_KEYFRAME
+	// VideoCodecFrameFlagForceKeyframe wraps VIDEO_CODEC_FRAME_FLAG_FORCE_KEYFRAME
 	//
 	// should the output frame be made a keyframe
 	VideoCodecFrameFlagForceKeyframe VideoCodecFrameFlags = 4
-	// VideoCodecFrameFlagForceKeyframeHeaders wraps GST_VIDEO_CODEC_FRAME_FLAG_FORCE_KEYFRAME_HEADERS
+	// VideoCodecFrameFlagForceKeyframeHeaders wraps VIDEO_CODEC_FRAME_FLAG_FORCE_KEYFRAME_HEADERS
 	//
 	// should the encoder output stream headers
 	VideoCodecFrameFlagForceKeyframeHeaders VideoCodecFrameFlags = 8
-	// VideoCodecFrameFlagCorrupted wraps GST_VIDEO_CODEC_FRAME_FLAG_CORRUPTED
+	// VideoCodecFrameFlagCorrupted wraps VIDEO_CODEC_FRAME_FLAG_CORRUPTED
 	//
 	// The buffer data is corrupted.
 	VideoCodecFrameFlagCorrupted VideoCodecFrameFlags = 16
@@ -4826,12 +4822,12 @@ func (f VideoCodecFrameFlags) String() string {
 type VideoDecoderRequestSyncPointFlags C.gint
 
 const (
-	// VideoDecoderRequestSyncPointDiscardInput wraps GST_VIDEO_DECODER_REQUEST_SYNC_POINT_DISCARD_INPUT
+	// VideoDecoderRequestSyncPointDiscardInput wraps VIDEO_DECODER_REQUEST_SYNC_POINT_DISCARD_INPUT
 	//
 	// discard all following
 	//     input until the next sync point.
 	VideoDecoderRequestSyncPointDiscardInput VideoDecoderRequestSyncPointFlags = 1
-	// VideoDecoderRequestSyncPointCorruptOutput wraps GST_VIDEO_DECODER_REQUEST_SYNC_POINT_CORRUPT_OUTPUT
+	// VideoDecoderRequestSyncPointCorruptOutput wraps VIDEO_DECODER_REQUEST_SYNC_POINT_CORRUPT_OUTPUT
 	//
 	// discard all following
 	//     output until the next sync point.
@@ -4877,15 +4873,15 @@ func (f VideoDecoderRequestSyncPointFlags) String() string {
 type VideoDitherFlags C.gint
 
 const (
-	// VideoDitherFlagNone wraps GST_VIDEO_DITHER_FLAG_NONE
+	// VideoDitherFlagNone wraps VIDEO_DITHER_FLAG_NONE
 	//
 	// no flags
 	VideoDitherFlagNone VideoDitherFlags = 0
-	// VideoDitherFlagInterlaced wraps GST_VIDEO_DITHER_FLAG_INTERLACED
+	// VideoDitherFlagInterlaced wraps VIDEO_DITHER_FLAG_INTERLACED
 	//
 	// the input is interlaced
 	VideoDitherFlagInterlaced VideoDitherFlags = 1
-	// VideoDitherFlagQuantize wraps GST_VIDEO_DITHER_FLAG_QUANTIZE
+	// VideoDitherFlagQuantize wraps VIDEO_DITHER_FLAG_QUANTIZE
 	//
 	// quantize values in addition to adding dither.
 	VideoDitherFlagQuantize VideoDitherFlags = 2
@@ -4933,16 +4929,16 @@ func (f VideoDitherFlags) String() string {
 type VideoFlags C.gint
 
 const (
-	// VideoFlagNone wraps GST_VIDEO_FLAG_NONE
+	// VideoFlagNone wraps VIDEO_FLAG_NONE
 	//
 	// no flags
 	VideoFlagNone VideoFlags = 0
-	// VideoFlagVariableFPS wraps GST_VIDEO_FLAG_VARIABLE_FPS
+	// VideoFlagVariableFPS wraps VIDEO_FLAG_VARIABLE_FPS
 	//
 	// a variable fps is selected, fps_n and fps_d
 	//     denote the maximum fps of the video
 	VideoFlagVariableFPS VideoFlags = 1
-	// VideoFlagPremultipliedAlpha wraps GST_VIDEO_FLAG_PREMULTIPLIED_ALPHA
+	// VideoFlagPremultipliedAlpha wraps VIDEO_FLAG_PREMULTIPLIED_ALPHA
 	//
 	// Each color has been scaled by the alpha
 	//     value.
@@ -4991,52 +4987,52 @@ func (f VideoFlags) String() string {
 type VideoFormatFlags C.gint
 
 const (
-	// VideoFormatFlagYuv wraps GST_VIDEO_FORMAT_FLAG_YUV
+	// VideoFormatFlagYuv wraps VIDEO_FORMAT_FLAG_YUV
 	//
 	// The video format is YUV, components are numbered
 	//   0=Y, 1=U, 2=V.
 	VideoFormatFlagYuv VideoFormatFlags = 1
-	// VideoFormatFlagRGB wraps GST_VIDEO_FORMAT_FLAG_RGB
+	// VideoFormatFlagRGB wraps VIDEO_FORMAT_FLAG_RGB
 	//
 	// The video format is RGB, components are numbered
 	//   0=R, 1=G, 2=B.
 	VideoFormatFlagRGB VideoFormatFlags = 2
-	// VideoFormatFlagGray wraps GST_VIDEO_FORMAT_FLAG_GRAY
+	// VideoFormatFlagGray wraps VIDEO_FORMAT_FLAG_GRAY
 	//
 	// The video is gray, there is one gray component
 	//   with index 0.
 	VideoFormatFlagGray VideoFormatFlags = 4
-	// VideoFormatFlagAlpha wraps GST_VIDEO_FORMAT_FLAG_ALPHA
+	// VideoFormatFlagAlpha wraps VIDEO_FORMAT_FLAG_ALPHA
 	//
 	// The video format has an alpha components with
 	//   the number 3.
 	VideoFormatFlagAlpha VideoFormatFlags = 8
-	// VideoFormatFlagLE wraps GST_VIDEO_FORMAT_FLAG_LE
+	// VideoFormatFlagLE wraps VIDEO_FORMAT_FLAG_LE
 	//
 	// The video format has data stored in little
 	//   endianness.
 	VideoFormatFlagLE VideoFormatFlags = 16
-	// VideoFormatFlagPalette wraps GST_VIDEO_FORMAT_FLAG_PALETTE
+	// VideoFormatFlagPalette wraps VIDEO_FORMAT_FLAG_PALETTE
 	//
 	// The video format has a palette. The palette
 	//   is stored in the second plane and indexes are stored in the first plane.
 	VideoFormatFlagPalette VideoFormatFlags = 32
-	// VideoFormatFlagComplex wraps GST_VIDEO_FORMAT_FLAG_COMPLEX
+	// VideoFormatFlagComplex wraps VIDEO_FORMAT_FLAG_COMPLEX
 	//
 	// The video format has a complex layout that
 	//   can't be described with the usual information in the #GstVideoFormatInfo.
 	VideoFormatFlagComplex VideoFormatFlags = 64
-	// VideoFormatFlagUnpack wraps GST_VIDEO_FORMAT_FLAG_UNPACK
+	// VideoFormatFlagUnpack wraps VIDEO_FORMAT_FLAG_UNPACK
 	//
 	// This format can be used in a
 	//   #GstVideoFormatUnpack and #GstVideoFormatPack function.
 	VideoFormatFlagUnpack VideoFormatFlags = 128
-	// VideoFormatFlagTiled wraps GST_VIDEO_FORMAT_FLAG_TILED
+	// VideoFormatFlagTiled wraps VIDEO_FORMAT_FLAG_TILED
 	//
 	// The format is tiled, there is tiling information
 	//   in the last plane.
 	VideoFormatFlagTiled VideoFormatFlags = 256
-	// VideoFormatFlagSubtiles wraps GST_VIDEO_FORMAT_FLAG_SUBTILES
+	// VideoFormatFlagSubtiles wraps VIDEO_FORMAT_FLAG_SUBTILES
 	//
 	// The tile size varies per plane according to the subsampling.
 	VideoFormatFlagSubtiles VideoFormatFlags = 512
@@ -5105,45 +5101,45 @@ func (f VideoFormatFlags) String() string {
 type VideoFrameFlags C.gint
 
 const (
-	// VideoFrameFlagNone wraps GST_VIDEO_FRAME_FLAG_NONE
+	// VideoFrameFlagNone wraps VIDEO_FRAME_FLAG_NONE
 	//
 	// no flags
 	VideoFrameFlagNone VideoFrameFlags = 0
-	// VideoFrameFlagInterlaced wraps GST_VIDEO_FRAME_FLAG_INTERLACED
+	// VideoFrameFlagInterlaced wraps VIDEO_FRAME_FLAG_INTERLACED
 	//
 	// The video frame is interlaced. In mixed
 	//           interlace-mode, this flag specifies if the frame is interlaced or
 	//           progressive.
 	VideoFrameFlagInterlaced VideoFrameFlags = 1
-	// VideoFrameFlagTff wraps GST_VIDEO_FRAME_FLAG_TFF
+	// VideoFrameFlagTff wraps VIDEO_FRAME_FLAG_TFF
 	//
 	// The video frame has the top field first
 	VideoFrameFlagTff VideoFrameFlags = 2
-	// VideoFrameFlagRff wraps GST_VIDEO_FRAME_FLAG_RFF
+	// VideoFrameFlagRff wraps VIDEO_FRAME_FLAG_RFF
 	//
 	// The video frame has the repeat flag
 	VideoFrameFlagRff VideoFrameFlags = 4
-	// VideoFrameFlagOnefield wraps GST_VIDEO_FRAME_FLAG_ONEFIELD
+	// VideoFrameFlagOnefield wraps VIDEO_FRAME_FLAG_ONEFIELD
 	//
 	// The video frame has one field
 	VideoFrameFlagOnefield VideoFrameFlags = 8
-	// VideoFrameFlagMultipleView wraps GST_VIDEO_FRAME_FLAG_MULTIPLE_VIEW
+	// VideoFrameFlagMultipleView wraps VIDEO_FRAME_FLAG_MULTIPLE_VIEW
 	//
 	// The video contains one or
 	//     more non-mono views
 	VideoFrameFlagMultipleView VideoFrameFlags = 16
-	// VideoFrameFlagFirstInBundle wraps GST_VIDEO_FRAME_FLAG_FIRST_IN_BUNDLE
+	// VideoFrameFlagFirstInBundle wraps VIDEO_FRAME_FLAG_FIRST_IN_BUNDLE
 	//
 	// The video frame is the first
 	//     in a set of corresponding views provided as sequential frames.
 	VideoFrameFlagFirstInBundle VideoFrameFlags = 32
-	// VideoFrameFlagTopField wraps GST_VIDEO_FRAME_FLAG_TOP_FIELD
+	// VideoFrameFlagTopField wraps VIDEO_FRAME_FLAG_TOP_FIELD
 	//
 	// The video frame has the top field only. This
 	//     is the same as GST_VIDEO_FRAME_FLAG_TFF | GST_VIDEO_FRAME_FLAG_ONEFIELD
 	//     (Since: 1.16).
 	VideoFrameFlagTopField VideoFrameFlags = 10
-	// VideoFrameFlagBottomField wraps GST_VIDEO_FRAME_FLAG_BOTTOM_FIELD
+	// VideoFrameFlagBottomField wraps VIDEO_FRAME_FLAG_BOTTOM_FIELD
 	//
 	// The video frame has the bottom field
 	//     only. This is the same as GST_VIDEO_FRAME_FLAG_ONEFIELD
@@ -5211,14 +5207,14 @@ func (f VideoFrameFlags) String() string {
 type VideoFrameMapFlags C.gint
 
 const (
-	// VideoFrameMapFlagNoRef wraps GST_VIDEO_FRAME_MAP_FLAG_NO_REF
+	// VideoFrameMapFlagNoRef wraps VIDEO_FRAME_MAP_FLAG_NO_REF
 	//
 	// Don't take another reference of the buffer and store it in
 	//                                    the GstVideoFrame. This makes sure that the buffer stays
 	//                                    writable while the frame is mapped, but requires that the
 	//                                    buffer reference stays valid until the frame is unmapped again.
 	VideoFrameMapFlagNoRef VideoFrameMapFlags = 65536
-	// VideoFrameMapFlagLast wraps GST_VIDEO_FRAME_MAP_FLAG_LAST
+	// VideoFrameMapFlagLast wraps VIDEO_FRAME_MAP_FLAG_LAST
 	//
 	// Offset to define more flags
 	VideoFrameMapFlagLast VideoFrameMapFlags = 16777216
@@ -5265,36 +5261,36 @@ func (f VideoFrameMapFlags) String() string {
 type VideoMultiviewFlags C.gint
 
 const (
-	// VideoMultiviewFlagsNone wraps GST_VIDEO_MULTIVIEW_FLAGS_NONE
+	// VideoMultiviewFlagsNone wraps VIDEO_MULTIVIEW_FLAGS_NONE
 	//
 	// No flags
 	VideoMultiviewFlagsNone VideoMultiviewFlags = 0
-	// VideoMultiviewFlagsRightViewFirst wraps GST_VIDEO_MULTIVIEW_FLAGS_RIGHT_VIEW_FIRST
+	// VideoMultiviewFlagsRightViewFirst wraps VIDEO_MULTIVIEW_FLAGS_RIGHT_VIEW_FIRST
 	//
 	// For stereo streams, the
 	//     normal arrangement of left and right views is reversed.
 	VideoMultiviewFlagsRightViewFirst VideoMultiviewFlags = 1
-	// VideoMultiviewFlagsLeftFlipped wraps GST_VIDEO_MULTIVIEW_FLAGS_LEFT_FLIPPED
+	// VideoMultiviewFlagsLeftFlipped wraps VIDEO_MULTIVIEW_FLAGS_LEFT_FLIPPED
 	//
 	// The left view is vertically
 	//     mirrored.
 	VideoMultiviewFlagsLeftFlipped VideoMultiviewFlags = 2
-	// VideoMultiviewFlagsLeftFlopped wraps GST_VIDEO_MULTIVIEW_FLAGS_LEFT_FLOPPED
+	// VideoMultiviewFlagsLeftFlopped wraps VIDEO_MULTIVIEW_FLAGS_LEFT_FLOPPED
 	//
 	// The left view is horizontally
 	//     mirrored.
 	VideoMultiviewFlagsLeftFlopped VideoMultiviewFlags = 4
-	// VideoMultiviewFlagsRightFlipped wraps GST_VIDEO_MULTIVIEW_FLAGS_RIGHT_FLIPPED
+	// VideoMultiviewFlagsRightFlipped wraps VIDEO_MULTIVIEW_FLAGS_RIGHT_FLIPPED
 	//
 	// The right view is
 	//     vertically mirrored.
 	VideoMultiviewFlagsRightFlipped VideoMultiviewFlags = 8
-	// VideoMultiviewFlagsRightFlopped wraps GST_VIDEO_MULTIVIEW_FLAGS_RIGHT_FLOPPED
+	// VideoMultiviewFlagsRightFlopped wraps VIDEO_MULTIVIEW_FLAGS_RIGHT_FLOPPED
 	//
 	// The right view is
 	//     horizontally mirrored.
 	VideoMultiviewFlagsRightFlopped VideoMultiviewFlags = 16
-	// VideoMultiviewFlagsHalfAspect wraps GST_VIDEO_MULTIVIEW_FLAGS_HALF_ASPECT
+	// VideoMultiviewFlagsHalfAspect wraps VIDEO_MULTIVIEW_FLAGS_HALF_ASPECT
 	//
 	// For frame-packed
 	//     multiview modes, indicates that the individual
@@ -5306,7 +5302,7 @@ const (
 	//     pixel width will be doubled. For row interleaved and top-bottom
 	//     encodings, pixel height will be doubled.
 	VideoMultiviewFlagsHalfAspect VideoMultiviewFlags = 16384
-	// VideoMultiviewFlagsMixedMono wraps GST_VIDEO_MULTIVIEW_FLAGS_MIXED_MONO
+	// VideoMultiviewFlagsMixedMono wraps VIDEO_MULTIVIEW_FLAGS_MIXED_MONO
 	//
 	// The video stream contains both
 	//     mono and multiview portions, signalled on each buffer by the
@@ -5372,15 +5368,15 @@ func (f VideoMultiviewFlags) String() string {
 type VideoOverlayFormatFlags C.gint
 
 const (
-	// VideoOverlayFormatFlagNone wraps GST_VIDEO_OVERLAY_FORMAT_FLAG_NONE
+	// VideoOverlayFormatFlagNone wraps VIDEO_OVERLAY_FORMAT_FLAG_NONE
 	//
 	// no flags
 	VideoOverlayFormatFlagNone VideoOverlayFormatFlags = 0
-	// VideoOverlayFormatFlagPremultipliedAlpha wraps GST_VIDEO_OVERLAY_FORMAT_FLAG_PREMULTIPLIED_ALPHA
+	// VideoOverlayFormatFlagPremultipliedAlpha wraps VIDEO_OVERLAY_FORMAT_FLAG_PREMULTIPLIED_ALPHA
 	//
 	// RGB are premultiplied by A/255.
 	VideoOverlayFormatFlagPremultipliedAlpha VideoOverlayFormatFlags = 1
-	// VideoOverlayFormatFlagGlobalAlpha wraps GST_VIDEO_OVERLAY_FORMAT_FLAG_GLOBAL_ALPHA
+	// VideoOverlayFormatFlagGlobalAlpha wraps VIDEO_OVERLAY_FORMAT_FLAG_GLOBAL_ALPHA
 	//
 	// a global-alpha value != 1 is set.
 	VideoOverlayFormatFlagGlobalAlpha VideoOverlayFormatFlags = 2
@@ -5428,11 +5424,11 @@ func (f VideoOverlayFormatFlags) String() string {
 type VideoPackFlags C.gint
 
 const (
-	// VideoPackFlagNone wraps GST_VIDEO_PACK_FLAG_NONE
+	// VideoPackFlagNone wraps VIDEO_PACK_FLAG_NONE
 	//
 	// No flag
 	VideoPackFlagNone VideoPackFlags = 0
-	// VideoPackFlagTruncateRange wraps GST_VIDEO_PACK_FLAG_TRUNCATE_RANGE
+	// VideoPackFlagTruncateRange wraps VIDEO_PACK_FLAG_TRUNCATE_RANGE
 	//
 	// When the source has a smaller depth
 	//   than the target format, set the least significant bits of the target
@@ -5440,7 +5436,7 @@ const (
 	//   is not specified, the most significant bits of the source are duplicated
 	//   in the least significant bits of the destination.
 	VideoPackFlagTruncateRange VideoPackFlags = 1
-	// VideoPackFlagInterlaced wraps GST_VIDEO_PACK_FLAG_INTERLACED
+	// VideoPackFlagInterlaced wraps VIDEO_PACK_FLAG_INTERLACED
 	//
 	// The source is interlaced. The unpacked
 	//   format will be interlaced as well with each line containing
@@ -5490,11 +5486,11 @@ func (f VideoPackFlags) String() string {
 type VideoResamplerFlags C.gint
 
 const (
-	// VideoResamplerFlagNone wraps GST_VIDEO_RESAMPLER_FLAG_NONE
+	// VideoResamplerFlagNone wraps VIDEO_RESAMPLER_FLAG_NONE
 	//
 	// no flags
 	VideoResamplerFlagNone VideoResamplerFlags = 0
-	// VideoResamplerFlagHalfTaps wraps GST_VIDEO_RESAMPLER_FLAG_HALF_TAPS
+	// VideoResamplerFlagHalfTaps wraps VIDEO_RESAMPLER_FLAG_HALF_TAPS
 	//
 	// when no taps are given, half the
 	//              number of calculated taps. This can be used when making scalers
@@ -5541,11 +5537,11 @@ func (f VideoResamplerFlags) String() string {
 type VideoScalerFlags C.gint
 
 const (
-	// VideoScalerFlagNone wraps GST_VIDEO_SCALER_FLAG_NONE
+	// VideoScalerFlagNone wraps VIDEO_SCALER_FLAG_NONE
 	//
 	// no flags
 	VideoScalerFlagNone VideoScalerFlags = 0
-	// VideoScalerFlagInterlaced wraps GST_VIDEO_SCALER_FLAG_INTERLACED
+	// VideoScalerFlagInterlaced wraps VIDEO_SCALER_FLAG_INTERLACED
 	//
 	// Set up a scaler for interlaced content
 	VideoScalerFlagInterlaced VideoScalerFlags = 1
@@ -5591,15 +5587,15 @@ func (f VideoScalerFlags) String() string {
 type VideoTimeCodeFlags C.gint
 
 const (
-	// VideoTimeCodeFlagsNone wraps GST_VIDEO_TIME_CODE_FLAGS_NONE
+	// VideoTimeCodeFlagsNone wraps VIDEO_TIME_CODE_FLAGS_NONE
 	//
 	// No flags
 	VideoTimeCodeFlagsNone VideoTimeCodeFlags = 0
-	// VideoTimeCodeFlagsDropFrame wraps GST_VIDEO_TIME_CODE_FLAGS_DROP_FRAME
+	// VideoTimeCodeFlagsDropFrame wraps VIDEO_TIME_CODE_FLAGS_DROP_FRAME
 	//
 	// Whether we have drop frame rate
 	VideoTimeCodeFlagsDropFrame VideoTimeCodeFlags = 1
-	// VideoTimeCodeFlagsInterlaced wraps GST_VIDEO_TIME_CODE_FLAGS_INTERLACED
+	// VideoTimeCodeFlagsInterlaced wraps VIDEO_TIME_CODE_FLAGS_INTERLACED
 	//
 	// Whether we have interlaced video
 	VideoTimeCodeFlagsInterlaced VideoTimeCodeFlags = 2
@@ -6204,72 +6200,6 @@ func BufferAddVideoTimeCodeMeta(buffer *gst.Buffer, tc *VideoTimeCode) *VideoTim
 	return goret
 }
 
-// BufferAddVideoTimeCodeMetaFull wraps gst_buffer_add_video_time_code_meta_full
-// 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: a #GstBuffer 
-// 	- fpsN uint: framerate numerator 
-// 	- fpsD uint: framerate denominator 
-// 	- latestDailyJam *glib.DateTime: a #GDateTime for the latest daily jam 
-// 	- flags VideoTimeCodeFlags: a #GstVideoTimeCodeFlags 
-// 	- hours uint: hours since the daily jam 
-// 	- minutes uint: minutes since the daily jam 
-// 	- seconds uint: seconds since the daily jam 
-// 	- frames uint: frames since the daily jam 
-// 	- fieldCount uint: fields since the daily jam 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoTimeCodeMeta (nullable) 
-//
-// Attaches #GstVideoTimeCodeMeta metadata to @buffer with the given
-// parameters.
-func BufferAddVideoTimeCodeMetaFull(buffer *gst.Buffer, fpsN uint, fpsD uint, latestDailyJam *glib.DateTime, flags VideoTimeCodeFlags, hours uint, minutes uint, seconds uint, frames uint, fieldCount uint) *VideoTimeCodeMeta {
-	var carg1  *C.GstBuffer            // in, none, converted
-	var carg2  C.guint                 // in, none, casted
-	var carg3  C.guint                 // in, none, casted
-	var carg4  *C.GDateTime            // in, none, converted
-	var carg5  C.GstVideoTimeCodeFlags // in, none, casted
-	var carg6  C.guint                 // in, none, casted
-	var carg7  C.guint                 // in, none, casted
-	var carg8  C.guint                 // in, none, casted
-	var carg9  C.guint                 // in, none, casted
-	var carg10 C.guint                 // in, none, casted
-	var cret   *C.GstVideoTimeCodeMeta // return, none, converted, nullable
-
-	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
-	carg2 = C.guint(fpsN)
-	carg3 = C.guint(fpsD)
-	carg4 = (*C.GDateTime)(glib.UnsafeDateTimeToGlibNone(latestDailyJam))
-	carg5 = C.GstVideoTimeCodeFlags(flags)
-	carg6 = C.guint(hours)
-	carg7 = C.guint(minutes)
-	carg8 = C.guint(seconds)
-	carg9 = C.guint(frames)
-	carg10 = C.guint(fieldCount)
-
-	cret = C.gst_buffer_add_video_time_code_meta_full(carg1, carg2, carg3, carg4, carg5, carg6, carg7, carg8, carg9, carg10)
-	runtime.KeepAlive(buffer)
-	runtime.KeepAlive(fpsN)
-	runtime.KeepAlive(fpsD)
-	runtime.KeepAlive(latestDailyJam)
-	runtime.KeepAlive(flags)
-	runtime.KeepAlive(hours)
-	runtime.KeepAlive(minutes)
-	runtime.KeepAlive(seconds)
-	runtime.KeepAlive(frames)
-	runtime.KeepAlive(fieldCount)
-
-	var goret *VideoTimeCodeMeta
-
-	if cret != nil {
-		goret = UnsafeVideoTimeCodeMetaFromGlibNone(unsafe.Pointer(cret))
-	}
-
-	return goret
-}
-
 // BufferGetVideoMeta wraps gst_buffer_get_video_meta
 // 
 // The function takes the following parameters:
@@ -6723,65 +6653,6 @@ func VideoCenterRect(src *VideoRectangle, dst *VideoRectangle, scaling bool) Vid
 	return result
 }
 
-// VideoChromaFromString wraps gst_video_chroma_from_string
-// 
-// The function takes the following parameters:
-// 
-// 	- s string: a chromasite string 
-// 
-// The function returns the following values:
-// 
-// 	- goret VideoChromaSite 
-//
-// Convert @s to a #GstVideoChromaSite
-//
-// Deprecated: (since 1.20.0) Use gst_video_chroma_site_from_string() instead.
-func VideoChromaFromString(s string) VideoChromaSite {
-	var carg1 *C.gchar             // in, none, string
-	var cret  C.GstVideoChromaSite // return, none, casted
-
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(s)))
-	defer C.free(unsafe.Pointer(carg1))
-
-	cret = C.gst_video_chroma_from_string(carg1)
-	runtime.KeepAlive(s)
-
-	var goret VideoChromaSite
-
-	goret = VideoChromaSite(cret)
-
-	return goret
-}
-
-// VideoChromaToString wraps gst_video_chroma_to_string
-// 
-// The function takes the following parameters:
-// 
-// 	- site VideoChromaSite: a #GstVideoChromaSite 
-// 
-// The function returns the following values:
-// 
-// 	- goret string 
-//
-// Converts @site to its string representation.
-//
-// Deprecated: (since 1.20.0) Use gst_video_chroma_site_to_string() instead.
-func VideoChromaToString(site VideoChromaSite) string {
-	var carg1 C.GstVideoChromaSite // in, none, casted
-	var cret  *C.gchar             // return, none, string
-
-	carg1 = C.GstVideoChromaSite(site)
-
-	cret = C.gst_video_chroma_to_string(carg1)
-	runtime.KeepAlive(site)
-
-	var goret string
-
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-
-	return goret
-}
-
 // VideoCodecAlphaMetaApiGetType wraps gst_video_codec_alpha_meta_api_get_type
 // 
 // The function returns the following values:
@@ -6795,70 +6666,6 @@ func VideoCodecAlphaMetaApiGetType() gobject.Type {
 	var goret gobject.Type
 
 	goret = gobject.Type(cret)
-
-	return goret
-}
-
-// VideoColorTransferDecode wraps gst_video_color_transfer_decode
-// 
-// The function takes the following parameters:
-// 
-// 	- fn VideoTransferFunction: a #GstVideoTransferFunction 
-// 	- val float64: a value 
-// 
-// The function returns the following values:
-// 
-// 	- goret float64 
-//
-//
-// Deprecated: (since 1.20.0) Use gst_video_transfer_function_decode() instead.
-func VideoColorTransferDecode(fn VideoTransferFunction, val float64) float64 {
-	var carg1 C.GstVideoTransferFunction // in, none, casted
-	var carg2 C.gdouble                  // in, none, casted
-	var cret  C.gdouble                  // return, none, casted
-
-	carg1 = C.GstVideoTransferFunction(fn)
-	carg2 = C.gdouble(val)
-
-	cret = C.gst_video_color_transfer_decode(carg1, carg2)
-	runtime.KeepAlive(fn)
-	runtime.KeepAlive(val)
-
-	var goret float64
-
-	goret = float64(cret)
-
-	return goret
-}
-
-// VideoColorTransferEncode wraps gst_video_color_transfer_encode
-// 
-// The function takes the following parameters:
-// 
-// 	- fn VideoTransferFunction: a #GstVideoTransferFunction 
-// 	- val float64: a value 
-// 
-// The function returns the following values:
-// 
-// 	- goret float64 
-//
-//
-// Deprecated: (since 1.20.0) Use gst_video_transfer_function_encode() instead.
-func VideoColorTransferEncode(fn VideoTransferFunction, val float64) float64 {
-	var carg1 C.GstVideoTransferFunction // in, none, casted
-	var carg2 C.gdouble                  // in, none, casted
-	var cret  C.gdouble                  // return, none, casted
-
-	carg1 = C.GstVideoTransferFunction(fn)
-	carg2 = C.gdouble(val)
-
-	cret = C.gst_video_color_transfer_encode(carg1, carg2)
-	runtime.KeepAlive(fn)
-	runtime.KeepAlive(val)
-
-	var goret float64
-
-	goret = float64(cret)
 
 	return goret
 }
@@ -8827,17 +8634,6 @@ type Navigation interface {
 
 	// chain up virtual methods:
 
-	// ParentSendEvent calls the default implementations of the send_event virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- structure *gst.Structure 
-	//
-	// sending a navigation event.
-	//
-	// Deprecated: (since 1.22.0) Use #GstNavigationInterface.send_event_simple() instead.
-	ParentSendEvent(structure *gst.Structure)
 	// ParentSendEventSimple calls the default implementations of the send_event_simple virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
@@ -10452,16 +10248,6 @@ func (navigation *NavigationInstance) SendMouseScrollEvent(x float64, y float64,
 // NavigationOverrides is the struct used to override the default implementation of virtual methods.
 // it is generic over the extending instance type.
 type NavigationOverrides[Instance Navigation] struct {
-	// // SendEvent allows you to override the implementation of the virtual method send_event.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- structure *gst.Structure 
-	//
-	// sending a navigation event.
-	//
-	// Deprecated: (since 1.22.0) Use #GstNavigationInterface.send_event_simple() instead.
-	SendEvent func(Instance, *gst.Structure)
 	// // SendEventSimple allows you to override the implementation of the virtual method send_event_simple.
 	// 
 	// The function takes the following parameters:
@@ -10476,23 +10262,6 @@ type NavigationOverrides[Instance Navigation] struct {
 // This is used by the bindings internally and only exported for visibility to other bindings code.
 func UnsafeApplyNavigationOverrides[Instance Navigation](gclass unsafe.Pointer, overrides NavigationOverrides[Instance]) {
 	pclass := (*C.GstNavigationInterface)(gclass)
-
-	if overrides.SendEvent != nil {
-		pclass.send_event = (*[0]byte)(C._gotk4_gstvideo1_Navigation_send_event)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gstvideo1_Navigation_send_event",
-			func(carg0 *C.GstNavigation, carg1 *C.GstStructure) {
-				var navigation Instance       // go GstNavigation subclass
-				var structure  *gst.Structure // in, none, converted
-
-				navigation = UnsafeNavigationFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-				structure = gst.UnsafeStructureFromGlibNone(unsafe.Pointer(carg1))
-
-				overrides.SendEvent(navigation, structure)
-			},
-		)
-	}
 
 	if overrides.SendEventSimple != nil {
 		pclass.send_event_simple = (*[0]byte)(C._gotk4_gstvideo1_Navigation_send_event_simple)
@@ -10510,30 +10279,6 @@ func UnsafeApplyNavigationOverrides[Instance Navigation](gclass unsafe.Pointer, 
 			},
 		)
 	}
-}
-
-// ParentSendEvent calls the default implementations of the send_event virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function takes the following parameters:
-// 
-// 	- structure *gst.Structure 
-//
-// sending a navigation event.
-//
-// Deprecated: (since 1.22.0) Use #GstNavigationInterface.send_event_simple() instead.
-func (navigation *NavigationInstance) ParentSendEvent(structure *gst.Structure) {
-	var carg0 *C.GstNavigation
-	var carg1 *C.GstStructure // in, none, converted
-
-	parentclass := (*C.GstNavigationInterface)(classdata.PeekParentInterface(UnsafeNavigationToGlibNone(navigation), uint64(TypeNavigation)))
-
-	carg0 = (*C.GstNavigation)(UnsafeNavigationToGlibNone(navigation))
-	carg1 = (*C.GstStructure)(gst.UnsafeStructureToGlibNone(structure))
-
-	C._gotk4_gstvideo1_Navigation_virtual_send_event(unsafe.Pointer(parentclass.send_event), carg0, carg1)
-	runtime.KeepAlive(navigation)
-	runtime.KeepAlive(structure)
 }
 
 // ParentSendEventSimple calls the default implementations of the send_event_simple virtual method.
@@ -21021,50 +20766,6 @@ func UnsafeVideoSinkToGlibFull(c VideoSink) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
-// VideoSinkCenterRect wraps gst_video_sink_center_rect
-// 
-// The function takes the following parameters:
-// 
-// 	- src VideoRectangle: the #GstVideoRectangle describing the source area 
-// 	- dst VideoRectangle: the #GstVideoRectangle describing the destination area 
-// 	- scaling bool: a #gboolean indicating if scaling should be applied or not 
-// 
-// The function returns the following values:
-// 
-// 	- result VideoRectangle: a pointer to a #GstVideoRectangle which will receive the result area 
-//
-//
-// Deprecated: (since 1.20.0) Use gst_video_center_rect() instead.
-func VideoSinkCenterRect(src VideoRectangle, dst VideoRectangle, scaling bool) VideoRectangle {
-	var carg1 C.GstVideoRectangle // in, transfer: none, C Pointers: 0, Name: VideoRectangle
-	var carg2 C.GstVideoRectangle // in, transfer: none, C Pointers: 0, Name: VideoRectangle
-	var carg4 C.gboolean          // in
-	var carg3 C.GstVideoRectangle // out, transfer: none, C Pointers: 0, Name: VideoRectangle, caller-allocates
-
-	_ = src
-	_ = carg1
-	panic("unimplemented conversion of VideoRectangle (GstVideoRectangle)")
-	_ = dst
-	_ = carg2
-	panic("unimplemented conversion of VideoRectangle (GstVideoRectangle)")
-	if scaling {
-		carg4 = C.TRUE
-	}
-
-	C.gst_video_sink_center_rect(carg1, carg2, &carg3, carg4)
-	runtime.KeepAlive(src)
-	runtime.KeepAlive(dst)
-	runtime.KeepAlive(scaling)
-
-	var result VideoRectangle
-
-	_ = result
-	_ = carg3
-	panic("unimplemented conversion of VideoRectangle (GstVideoRectangle)")
-
-	return result
-}
-
 // VideoSinkOverrides is the struct used to override the default implementation of virtual methods.
 // it is generic over the extending instance type.
 type VideoSinkOverrides[Instance VideoSink] struct {
@@ -21830,7 +21531,7 @@ func UnsafeNavigationInterfaceToGlibFull(n *NavigationInterface) unsafe.Pointer 
 // For details, see Table 6.14 Active Format in:
 // 
 // ATSC Digital Television Standard:
-// Part 4 – MPEG-2 Video System Characteristics
+// Part 4 &#x2013; MPEG-2 Video System Characteristics
 // 
 // https://www.atsc.org/wp-content/uploads/2015/03/a_53-Part-4-2009.pdf
 // 
@@ -27566,66 +27267,6 @@ func UnsafeVideoTimeCodeToGlibFull(v *VideoTimeCode) unsafe.Pointer {
 	return _p
 }
 
-// NewVideoTimeCode wraps gst_video_time_code_new
-// 
-// The function takes the following parameters:
-// 
-// 	- fpsN uint: Numerator of the frame rate 
-// 	- fpsD uint: Denominator of the frame rate 
-// 	- latestDailyJam *glib.DateTime: The latest daily jam of the #GstVideoTimeCode 
-// 	- flags VideoTimeCodeFlags: #GstVideoTimeCodeFlags 
-// 	- hours uint: the hours field of #GstVideoTimeCode 
-// 	- minutes uint: the minutes field of #GstVideoTimeCode 
-// 	- seconds uint: the seconds field of #GstVideoTimeCode 
-// 	- frames uint: the frames field of #GstVideoTimeCode 
-// 	- fieldCount uint: Interlaced video field count 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoTimeCode 
-//
-// @field_count is 0 for progressive, 1 or 2 for interlaced.
-// @latest_daiy_jam reference is stolen from caller.
-func NewVideoTimeCode(fpsN uint, fpsD uint, latestDailyJam *glib.DateTime, flags VideoTimeCodeFlags, hours uint, minutes uint, seconds uint, frames uint, fieldCount uint) *VideoTimeCode {
-	var carg1 C.guint                 // in, none, casted
-	var carg2 C.guint                 // in, none, casted
-	var carg3 *C.GDateTime            // in, none, converted
-	var carg4 C.GstVideoTimeCodeFlags // in, none, casted
-	var carg5 C.guint                 // in, none, casted
-	var carg6 C.guint                 // in, none, casted
-	var carg7 C.guint                 // in, none, casted
-	var carg8 C.guint                 // in, none, casted
-	var carg9 C.guint                 // in, none, casted
-	var cret  *C.GstVideoTimeCode     // return, full, converted
-
-	carg1 = C.guint(fpsN)
-	carg2 = C.guint(fpsD)
-	carg3 = (*C.GDateTime)(glib.UnsafeDateTimeToGlibNone(latestDailyJam))
-	carg4 = C.GstVideoTimeCodeFlags(flags)
-	carg5 = C.guint(hours)
-	carg6 = C.guint(minutes)
-	carg7 = C.guint(seconds)
-	carg8 = C.guint(frames)
-	carg9 = C.guint(fieldCount)
-
-	cret = C.gst_video_time_code_new(carg1, carg2, carg3, carg4, carg5, carg6, carg7, carg8, carg9)
-	runtime.KeepAlive(fpsN)
-	runtime.KeepAlive(fpsD)
-	runtime.KeepAlive(latestDailyJam)
-	runtime.KeepAlive(flags)
-	runtime.KeepAlive(hours)
-	runtime.KeepAlive(minutes)
-	runtime.KeepAlive(seconds)
-	runtime.KeepAlive(frames)
-	runtime.KeepAlive(fieldCount)
-
-	var goret *VideoTimeCode
-
-	goret = UnsafeVideoTimeCodeFromGlibFull(unsafe.Pointer(cret))
-
-	return goret
-}
-
 // NewVideoTimeCodeEmpty wraps gst_video_time_code_new_empty
 // 
 // The function returns the following values:
@@ -27639,100 +27280,6 @@ func NewVideoTimeCodeEmpty() *VideoTimeCode {
 	var goret *VideoTimeCode
 
 	goret = UnsafeVideoTimeCodeFromGlibFull(unsafe.Pointer(cret))
-
-	return goret
-}
-
-// NewVideoTimeCodeFromDateTime wraps gst_video_time_code_new_from_date_time
-// 
-// The function takes the following parameters:
-// 
-// 	- fpsN uint: Numerator of the frame rate 
-// 	- fpsD uint: Denominator of the frame rate 
-// 	- dt *glib.DateTime: #GDateTime to convert 
-// 	- flags VideoTimeCodeFlags: #GstVideoTimeCodeFlags 
-// 	- fieldCount uint: Interlaced video field count 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoTimeCode 
-//
-// The resulting config-&gt;latest_daily_jam is set to
-// midnight, and timecode is set to the given time.
-// 
-// This might return a completely invalid timecode, use
-// gst_video_time_code_new_from_date_time_full() to ensure
-// that you would get %NULL instead in that case.
-func NewVideoTimeCodeFromDateTime(fpsN uint, fpsD uint, dt *glib.DateTime, flags VideoTimeCodeFlags, fieldCount uint) *VideoTimeCode {
-	var carg1 C.guint                 // in, none, casted
-	var carg2 C.guint                 // in, none, casted
-	var carg3 *C.GDateTime            // in, none, converted
-	var carg4 C.GstVideoTimeCodeFlags // in, none, casted
-	var carg5 C.guint                 // in, none, casted
-	var cret  *C.GstVideoTimeCode     // return, full, converted
-
-	carg1 = C.guint(fpsN)
-	carg2 = C.guint(fpsD)
-	carg3 = (*C.GDateTime)(glib.UnsafeDateTimeToGlibNone(dt))
-	carg4 = C.GstVideoTimeCodeFlags(flags)
-	carg5 = C.guint(fieldCount)
-
-	cret = C.gst_video_time_code_new_from_date_time(carg1, carg2, carg3, carg4, carg5)
-	runtime.KeepAlive(fpsN)
-	runtime.KeepAlive(fpsD)
-	runtime.KeepAlive(dt)
-	runtime.KeepAlive(flags)
-	runtime.KeepAlive(fieldCount)
-
-	var goret *VideoTimeCode
-
-	goret = UnsafeVideoTimeCodeFromGlibFull(unsafe.Pointer(cret))
-
-	return goret
-}
-
-// NewVideoTimeCodeFromDateTimeFull wraps gst_video_time_code_new_from_date_time_full
-// 
-// The function takes the following parameters:
-// 
-// 	- fpsN uint: Numerator of the frame rate 
-// 	- fpsD uint: Denominator of the frame rate 
-// 	- dt *glib.DateTime: #GDateTime to convert 
-// 	- flags VideoTimeCodeFlags: #GstVideoTimeCodeFlags 
-// 	- fieldCount uint: Interlaced video field count 
-// 
-// The function returns the following values:
-// 
-// 	- goret *VideoTimeCode (nullable) 
-//
-// The resulting config-&gt;latest_daily_jam is set to
-// midnight, and timecode is set to the given time.
-func NewVideoTimeCodeFromDateTimeFull(fpsN uint, fpsD uint, dt *glib.DateTime, flags VideoTimeCodeFlags, fieldCount uint) *VideoTimeCode {
-	var carg1 C.guint                 // in, none, casted
-	var carg2 C.guint                 // in, none, casted
-	var carg3 *C.GDateTime            // in, none, converted
-	var carg4 C.GstVideoTimeCodeFlags // in, none, casted
-	var carg5 C.guint                 // in, none, casted
-	var cret  *C.GstVideoTimeCode     // return, full, converted, nullable
-
-	carg1 = C.guint(fpsN)
-	carg2 = C.guint(fpsD)
-	carg3 = (*C.GDateTime)(glib.UnsafeDateTimeToGlibNone(dt))
-	carg4 = C.GstVideoTimeCodeFlags(flags)
-	carg5 = C.guint(fieldCount)
-
-	cret = C.gst_video_time_code_new_from_date_time_full(carg1, carg2, carg3, carg4, carg5)
-	runtime.KeepAlive(fpsN)
-	runtime.KeepAlive(fpsD)
-	runtime.KeepAlive(dt)
-	runtime.KeepAlive(flags)
-	runtime.KeepAlive(fieldCount)
-
-	var goret *VideoTimeCode
-
-	if cret != nil {
-		goret = UnsafeVideoTimeCodeFromGlibFull(unsafe.Pointer(cret))
-	}
 
 	return goret
 }
@@ -27925,152 +27472,6 @@ func (tc *VideoTimeCode) IncrementFrame() {
 	runtime.KeepAlive(tc)
 }
 
-// Init wraps gst_video_time_code_init
-// 
-// The function takes the following parameters:
-// 
-// 	- fpsN uint: Numerator of the frame rate 
-// 	- fpsD uint: Denominator of the frame rate 
-// 	- latestDailyJam *glib.DateTime (nullable): The latest daily jam of the #GstVideoTimeCode 
-// 	- flags VideoTimeCodeFlags: #GstVideoTimeCodeFlags 
-// 	- hours uint: the hours field of #GstVideoTimeCode 
-// 	- minutes uint: the minutes field of #GstVideoTimeCode 
-// 	- seconds uint: the seconds field of #GstVideoTimeCode 
-// 	- frames uint: the frames field of #GstVideoTimeCode 
-// 	- fieldCount uint: Interlaced video field count 
-//
-// @field_count is 0 for progressive, 1 or 2 for interlaced.
-// @latest_daiy_jam reference is stolen from caller.
-// 
-// Initializes @tc with the given values.
-// The values are not checked for being in a valid range. To see if your
-// timecode actually has valid content, use gst_video_time_code_is_valid().
-func (tc *VideoTimeCode) Init(fpsN uint, fpsD uint, latestDailyJam *glib.DateTime, flags VideoTimeCodeFlags, hours uint, minutes uint, seconds uint, frames uint, fieldCount uint) {
-	var carg0 *C.GstVideoTimeCode     // in, none, converted
-	var carg1 C.guint                 // in, none, casted
-	var carg2 C.guint                 // in, none, casted
-	var carg3 *C.GDateTime            // in, none, converted, nullable
-	var carg4 C.GstVideoTimeCodeFlags // in, none, casted
-	var carg5 C.guint                 // in, none, casted
-	var carg6 C.guint                 // in, none, casted
-	var carg7 C.guint                 // in, none, casted
-	var carg8 C.guint                 // in, none, casted
-	var carg9 C.guint                 // in, none, casted
-
-	carg0 = (*C.GstVideoTimeCode)(UnsafeVideoTimeCodeToGlibNone(tc))
-	carg1 = C.guint(fpsN)
-	carg2 = C.guint(fpsD)
-	if latestDailyJam != nil {
-		carg3 = (*C.GDateTime)(glib.UnsafeDateTimeToGlibNone(latestDailyJam))
-	}
-	carg4 = C.GstVideoTimeCodeFlags(flags)
-	carg5 = C.guint(hours)
-	carg6 = C.guint(minutes)
-	carg7 = C.guint(seconds)
-	carg8 = C.guint(frames)
-	carg9 = C.guint(fieldCount)
-
-	C.gst_video_time_code_init(carg0, carg1, carg2, carg3, carg4, carg5, carg6, carg7, carg8, carg9)
-	runtime.KeepAlive(tc)
-	runtime.KeepAlive(fpsN)
-	runtime.KeepAlive(fpsD)
-	runtime.KeepAlive(latestDailyJam)
-	runtime.KeepAlive(flags)
-	runtime.KeepAlive(hours)
-	runtime.KeepAlive(minutes)
-	runtime.KeepAlive(seconds)
-	runtime.KeepAlive(frames)
-	runtime.KeepAlive(fieldCount)
-}
-
-// InitFromDateTime wraps gst_video_time_code_init_from_date_time
-// 
-// The function takes the following parameters:
-// 
-// 	- fpsN uint: Numerator of the frame rate 
-// 	- fpsD uint: Denominator of the frame rate 
-// 	- dt *glib.DateTime: #GDateTime to convert 
-// 	- flags VideoTimeCodeFlags: #GstVideoTimeCodeFlags 
-// 	- fieldCount uint: Interlaced video field count 
-//
-// The resulting config-&gt;latest_daily_jam is set to midnight, and timecode is
-// set to the given time.
-// 
-// Will assert on invalid parameters, use gst_video_time_code_init_from_date_time_full()
-// for being able to handle invalid parameters.
-func (tc *VideoTimeCode) InitFromDateTime(fpsN uint, fpsD uint, dt *glib.DateTime, flags VideoTimeCodeFlags, fieldCount uint) {
-	var carg0 *C.GstVideoTimeCode     // in, none, converted
-	var carg1 C.guint                 // in, none, casted
-	var carg2 C.guint                 // in, none, casted
-	var carg3 *C.GDateTime            // in, none, converted
-	var carg4 C.GstVideoTimeCodeFlags // in, none, casted
-	var carg5 C.guint                 // in, none, casted
-
-	carg0 = (*C.GstVideoTimeCode)(UnsafeVideoTimeCodeToGlibNone(tc))
-	carg1 = C.guint(fpsN)
-	carg2 = C.guint(fpsD)
-	carg3 = (*C.GDateTime)(glib.UnsafeDateTimeToGlibNone(dt))
-	carg4 = C.GstVideoTimeCodeFlags(flags)
-	carg5 = C.guint(fieldCount)
-
-	C.gst_video_time_code_init_from_date_time(carg0, carg1, carg2, carg3, carg4, carg5)
-	runtime.KeepAlive(tc)
-	runtime.KeepAlive(fpsN)
-	runtime.KeepAlive(fpsD)
-	runtime.KeepAlive(dt)
-	runtime.KeepAlive(flags)
-	runtime.KeepAlive(fieldCount)
-}
-
-// InitFromDateTimeFull wraps gst_video_time_code_init_from_date_time_full
-// 
-// The function takes the following parameters:
-// 
-// 	- fpsN uint: Numerator of the frame rate 
-// 	- fpsD uint: Denominator of the frame rate 
-// 	- dt *glib.DateTime: #GDateTime to convert 
-// 	- flags VideoTimeCodeFlags: #GstVideoTimeCodeFlags 
-// 	- fieldCount uint: Interlaced video field count 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// The resulting config-&gt;latest_daily_jam is set to
-// midnight, and timecode is set to the given time.
-func (tc *VideoTimeCode) InitFromDateTimeFull(fpsN uint, fpsD uint, dt *glib.DateTime, flags VideoTimeCodeFlags, fieldCount uint) bool {
-	var carg0 *C.GstVideoTimeCode     // in, none, converted
-	var carg1 C.guint                 // in, none, casted
-	var carg2 C.guint                 // in, none, casted
-	var carg3 *C.GDateTime            // in, none, converted
-	var carg4 C.GstVideoTimeCodeFlags // in, none, casted
-	var carg5 C.guint                 // in, none, casted
-	var cret  C.gboolean              // return
-
-	carg0 = (*C.GstVideoTimeCode)(UnsafeVideoTimeCodeToGlibNone(tc))
-	carg1 = C.guint(fpsN)
-	carg2 = C.guint(fpsD)
-	carg3 = (*C.GDateTime)(glib.UnsafeDateTimeToGlibNone(dt))
-	carg4 = C.GstVideoTimeCodeFlags(flags)
-	carg5 = C.guint(fieldCount)
-
-	cret = C.gst_video_time_code_init_from_date_time_full(carg0, carg1, carg2, carg3, carg4, carg5)
-	runtime.KeepAlive(tc)
-	runtime.KeepAlive(fpsN)
-	runtime.KeepAlive(fpsD)
-	runtime.KeepAlive(dt)
-	runtime.KeepAlive(flags)
-	runtime.KeepAlive(fieldCount)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
 // IsValid wraps gst_video_time_code_is_valid
 // 
 // The function returns the following values:
@@ -28111,31 +27512,6 @@ func (tc *VideoTimeCode) NsecSinceDailyJam() uint64 {
 	var goret uint64
 
 	goret = uint64(cret)
-
-	return goret
-}
-
-// ToDateTime wraps gst_video_time_code_to_date_time
-// 
-// The function returns the following values:
-// 
-// 	- goret *glib.DateTime (nullable) 
-//
-// The @tc.config-&gt;latest_daily_jam is required to be non-NULL.
-func (tc *VideoTimeCode) ToDateTime() *glib.DateTime {
-	var carg0 *C.GstVideoTimeCode // in, none, converted
-	var cret  *C.GDateTime        // return, full, converted, nullable
-
-	carg0 = (*C.GstVideoTimeCode)(UnsafeVideoTimeCodeToGlibNone(tc))
-
-	cret = C.gst_video_time_code_to_date_time(carg0)
-	runtime.KeepAlive(tc)
-
-	var goret *glib.DateTime
-
-	if cret != nil {
-		goret = glib.UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
-	}
 
 	return goret
 }

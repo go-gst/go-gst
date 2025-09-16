@@ -67,15 +67,15 @@ const TAG_ID3V2_HEADER_SIZE = 10
 type TagDemuxResult C.int
 
 const (
-	// TagDemuxResultBrokenTag wraps GST_TAG_DEMUX_RESULT_BROKEN_TAG
+	// TagDemuxResultBrokenTag wraps TAG_DEMUX_RESULT_BROKEN_TAG
 	//
 	// cannot parse tag, just skip it
 	TagDemuxResultBrokenTag TagDemuxResult = 0
-	// TagDemuxResultAgain wraps GST_TAG_DEMUX_RESULT_AGAIN
+	// TagDemuxResultAgain wraps TAG_DEMUX_RESULT_AGAIN
 	//
 	// call again with less or more data
 	TagDemuxResultAgain TagDemuxResult = 1
-	// TagDemuxResultOK wraps GST_TAG_DEMUX_RESULT_OK
+	// TagDemuxResultOK wraps TAG_DEMUX_RESULT_OK
 	//
 	// parsed tag successfully
 	TagDemuxResultOK TagDemuxResult = 2
@@ -111,85 +111,85 @@ func (e TagDemuxResult) String() string {
 type TagImageType C.int
 
 const (
-	// TagImageTypeNone wraps GST_TAG_IMAGE_TYPE_NONE
+	// TagImageTypeNone wraps TAG_IMAGE_TYPE_NONE
 	//
 	// No image type. Can be used to
 	//      tell functions such as gst_tag_image_data_to_image_sample() that no
 	//      image type should be set.
 	TagImageTypeNone TagImageType = -1
-	// TagImageTypeUndefined wraps GST_TAG_IMAGE_TYPE_UNDEFINED
+	// TagImageTypeUndefined wraps TAG_IMAGE_TYPE_UNDEFINED
 	//
 	// Undefined/other image type
 	TagImageTypeUndefined TagImageType = 0
-	// TagImageTypeFrontCover wraps GST_TAG_IMAGE_TYPE_FRONT_COVER
+	// TagImageTypeFrontCover wraps TAG_IMAGE_TYPE_FRONT_COVER
 	//
 	// Cover (front)
 	TagImageTypeFrontCover TagImageType = 1
-	// TagImageTypeBackCover wraps GST_TAG_IMAGE_TYPE_BACK_COVER
+	// TagImageTypeBackCover wraps TAG_IMAGE_TYPE_BACK_COVER
 	//
 	// Cover (back)
 	TagImageTypeBackCover TagImageType = 2
-	// TagImageTypeLeafletPage wraps GST_TAG_IMAGE_TYPE_LEAFLET_PAGE
+	// TagImageTypeLeafletPage wraps TAG_IMAGE_TYPE_LEAFLET_PAGE
 	//
 	// Leaflet page
 	TagImageTypeLeafletPage TagImageType = 3
-	// TagImageTypeMedium wraps GST_TAG_IMAGE_TYPE_MEDIUM
+	// TagImageTypeMedium wraps TAG_IMAGE_TYPE_MEDIUM
 	//
 	// Medium (e.g. label side of CD)
 	TagImageTypeMedium TagImageType = 4
-	// TagImageTypeLeadArtist wraps GST_TAG_IMAGE_TYPE_LEAD_ARTIST
+	// TagImageTypeLeadArtist wraps TAG_IMAGE_TYPE_LEAD_ARTIST
 	//
 	// Lead artist/lead performer/soloist
 	TagImageTypeLeadArtist TagImageType = 5
-	// TagImageTypeArtist wraps GST_TAG_IMAGE_TYPE_ARTIST
+	// TagImageTypeArtist wraps TAG_IMAGE_TYPE_ARTIST
 	//
 	// Artist/performer
 	TagImageTypeArtist TagImageType = 6
-	// TagImageTypeConductor wraps GST_TAG_IMAGE_TYPE_CONDUCTOR
+	// TagImageTypeConductor wraps TAG_IMAGE_TYPE_CONDUCTOR
 	//
 	// Conductor
 	TagImageTypeConductor TagImageType = 7
-	// TagImageTypeBandOrchestra wraps GST_TAG_IMAGE_TYPE_BAND_ORCHESTRA
+	// TagImageTypeBandOrchestra wraps TAG_IMAGE_TYPE_BAND_ORCHESTRA
 	//
 	// Band/orchestra
 	TagImageTypeBandOrchestra TagImageType = 8
-	// TagImageTypeComposer wraps GST_TAG_IMAGE_TYPE_COMPOSER
+	// TagImageTypeComposer wraps TAG_IMAGE_TYPE_COMPOSER
 	//
 	// Composer
 	TagImageTypeComposer TagImageType = 9
-	// TagImageTypeLyricist wraps GST_TAG_IMAGE_TYPE_LYRICIST
+	// TagImageTypeLyricist wraps TAG_IMAGE_TYPE_LYRICIST
 	//
 	// Lyricist/text writer
 	TagImageTypeLyricist TagImageType = 10
-	// TagImageTypeRecordingLocation wraps GST_TAG_IMAGE_TYPE_RECORDING_LOCATION
+	// TagImageTypeRecordingLocation wraps TAG_IMAGE_TYPE_RECORDING_LOCATION
 	//
 	// Recording location
 	TagImageTypeRecordingLocation TagImageType = 11
-	// TagImageTypeDuringRecording wraps GST_TAG_IMAGE_TYPE_DURING_RECORDING
+	// TagImageTypeDuringRecording wraps TAG_IMAGE_TYPE_DURING_RECORDING
 	//
 	// During recording
 	TagImageTypeDuringRecording TagImageType = 12
-	// TagImageTypeDuringPerformance wraps GST_TAG_IMAGE_TYPE_DURING_PERFORMANCE
+	// TagImageTypeDuringPerformance wraps TAG_IMAGE_TYPE_DURING_PERFORMANCE
 	//
 	// During performance
 	TagImageTypeDuringPerformance TagImageType = 13
-	// TagImageTypeVideoCapture wraps GST_TAG_IMAGE_TYPE_VIDEO_CAPTURE
+	// TagImageTypeVideoCapture wraps TAG_IMAGE_TYPE_VIDEO_CAPTURE
 	//
 	// Movie/video screen capture
 	TagImageTypeVideoCapture TagImageType = 14
-	// TagImageTypeFish wraps GST_TAG_IMAGE_TYPE_FISH
+	// TagImageTypeFish wraps TAG_IMAGE_TYPE_FISH
 	//
 	// A fish as funny as the ID3v2 spec
 	TagImageTypeFish TagImageType = 15
-	// TagImageTypeIllustration wraps GST_TAG_IMAGE_TYPE_ILLUSTRATION
+	// TagImageTypeIllustration wraps TAG_IMAGE_TYPE_ILLUSTRATION
 	//
 	// Illustration
 	TagImageTypeIllustration TagImageType = 16
-	// TagImageTypeBandArtistLogo wraps GST_TAG_IMAGE_TYPE_BAND_ARTIST_LOGO
+	// TagImageTypeBandArtistLogo wraps TAG_IMAGE_TYPE_BAND_ARTIST_LOGO
 	//
 	// Band/artist logotype
 	TagImageTypeBandArtistLogo TagImageType = 17
-	// TagImageTypePublisherStudioLogo wraps GST_TAG_IMAGE_TYPE_PUBLISHER_STUDIO_LOGO
+	// TagImageTypePublisherStudioLogo wraps TAG_IMAGE_TYPE_PUBLISHER_STUDIO_LOGO
 	//
 	// Publisher/studio logotype
 	TagImageTypePublisherStudioLogo TagImageType = 18
@@ -241,76 +241,76 @@ func (e TagImageType) String() string {
 type TagLicenseFlags C.gint
 
 const (
-	// TagLicensePermitsReproduction wraps GST_TAG_LICENSE_PERMITS_REPRODUCTION
+	// TagLicensePermitsReproduction wraps TAG_LICENSE_PERMITS_REPRODUCTION
 	//
 	// making multiple copies
 	//     is allowed
 	TagLicensePermitsReproduction TagLicenseFlags = 1
-	// TagLicensePermitsDistribution wraps GST_TAG_LICENSE_PERMITS_DISTRIBUTION
+	// TagLicensePermitsDistribution wraps TAG_LICENSE_PERMITS_DISTRIBUTION
 	//
 	// distribution, public display
 	//     and public performance are allowed
 	TagLicensePermitsDistribution TagLicenseFlags = 2
-	// TagLicensePermitsDerivativeWorks wraps GST_TAG_LICENSE_PERMITS_DERIVATIVE_WORKS
+	// TagLicensePermitsDerivativeWorks wraps TAG_LICENSE_PERMITS_DERIVATIVE_WORKS
 	//
 	// distribution of derivative
 	//     works is allowed
 	TagLicensePermitsDerivativeWorks TagLicenseFlags = 4
-	// TagLicensePermitsSharing wraps GST_TAG_LICENSE_PERMITS_SHARING
+	// TagLicensePermitsSharing wraps TAG_LICENSE_PERMITS_SHARING
 	//
 	// commercial derivatives are allowed,
 	//     but only non-commercial distribution is allowed
 	TagLicensePermitsSharing TagLicenseFlags = 8
-	// TagLicenseRequiresNotice wraps GST_TAG_LICENSE_REQUIRES_NOTICE
+	// TagLicenseRequiresNotice wraps TAG_LICENSE_REQUIRES_NOTICE
 	//
 	// copyright and license notices
 	//     must be kept intact
 	TagLicenseRequiresNotice TagLicenseFlags = 256
-	// TagLicenseRequiresAttribution wraps GST_TAG_LICENSE_REQUIRES_ATTRIBUTION
+	// TagLicenseRequiresAttribution wraps TAG_LICENSE_REQUIRES_ATTRIBUTION
 	//
 	// credit must be given to
 	//     copyright holder and/or author
 	TagLicenseRequiresAttribution TagLicenseFlags = 512
-	// TagLicenseRequiresShareAlike wraps GST_TAG_LICENSE_REQUIRES_SHARE_ALIKE
+	// TagLicenseRequiresShareAlike wraps TAG_LICENSE_REQUIRES_SHARE_ALIKE
 	//
 	// derivative works must be
 	//     licensed under the same terms or compatible terms as the original work
 	TagLicenseRequiresShareAlike TagLicenseFlags = 1024
-	// TagLicenseRequiresSourceCode wraps GST_TAG_LICENSE_REQUIRES_SOURCE_CODE
+	// TagLicenseRequiresSourceCode wraps TAG_LICENSE_REQUIRES_SOURCE_CODE
 	//
 	// source code (the preferred
 	//     form for making modifications) must be provided when exercising some
 	//     rights granted by the license
 	TagLicenseRequiresSourceCode TagLicenseFlags = 2048
-	// TagLicenseRequiresCopyleft wraps GST_TAG_LICENSE_REQUIRES_COPYLEFT
+	// TagLicenseRequiresCopyleft wraps TAG_LICENSE_REQUIRES_COPYLEFT
 	//
 	// derivative and combined works
 	//     must be licensed under specified terms, similar to those of the original
 	//     work
 	TagLicenseRequiresCopyleft TagLicenseFlags = 4096
-	// TagLicenseRequiresLesserCopyleft wraps GST_TAG_LICENSE_REQUIRES_LESSER_COPYLEFT
+	// TagLicenseRequiresLesserCopyleft wraps TAG_LICENSE_REQUIRES_LESSER_COPYLEFT
 	//
 	// derivative works must be
 	//     licensed under specified terms, with at least the same conditions as
 	//     the original work; combinations with the work may be licensed under
 	//     different terms
 	TagLicenseRequiresLesserCopyleft TagLicenseFlags = 8192
-	// TagLicenseProhibitsCommercialUse wraps GST_TAG_LICENSE_PROHIBITS_COMMERCIAL_USE
+	// TagLicenseProhibitsCommercialUse wraps TAG_LICENSE_PROHIBITS_COMMERCIAL_USE
 	//
 	// exercising rights for
 	//     commercial purposes is prohibited
 	TagLicenseProhibitsCommercialUse TagLicenseFlags = 65536
-	// TagLicenseProhibitsHighIncomeNationUse wraps GST_TAG_LICENSE_PROHIBITS_HIGH_INCOME_NATION_USE
+	// TagLicenseProhibitsHighIncomeNationUse wraps TAG_LICENSE_PROHIBITS_HIGH_INCOME_NATION_USE
 	//
 	// use in a
 	//     non-developing country is prohibited
 	TagLicenseProhibitsHighIncomeNationUse TagLicenseFlags = 131072
-	// TagLicenseCreativeCommonsLicense wraps GST_TAG_LICENSE_CREATIVE_COMMONS_LICENSE
+	// TagLicenseCreativeCommonsLicense wraps TAG_LICENSE_CREATIVE_COMMONS_LICENSE
 	//
 	// this license was created
 	//     by the Creative Commons project
 	TagLicenseCreativeCommonsLicense TagLicenseFlags = 16777216
-	// TagLicenseFreeSoftwareFoundationLicense wraps GST_TAG_LICENSE_FREE_SOFTWARE_FOUNDATION_LICENSE
+	// TagLicenseFreeSoftwareFoundationLicense wraps TAG_LICENSE_FREE_SOFTWARE_FOUNDATION_LICENSE
 	//
 	// this license was
 	//     created by the Free Software Foundation (FSF)

@@ -7,8 +7,6 @@ import (
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
-	"github.com/diamondburned/gotk4/pkg/gio/v2"
-	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
 )
@@ -87,7 +85,7 @@ const PTP_CLOCK_ID_NONE = 18446744073709551615
 // "estimated-ptp-time"    GST_TYPE_CLOCK_TIME  Estimated PTP time based on previous measurements
 // "discontinuity"         G_TYPE_INT64         Difference between estimated and measured PTP time
 // "synced"                G_TYPE_BOOLEAN       Currently synced to the remote clock
-// "r-squared"             G_TYPE_DOUBLE        R² of clock estimation regression
+// "r-squared"             G_TYPE_DOUBLE        R&#xB2; of clock estimation regression
 // "internal-time"         GST_TYPE_CLOCK_TIME  Internal time clock parameter
 // "external-time"         GST_TYPE_CLOCK_TIME  External time clock parameter
 // "rate-num"              G_TYPE_UINT64        Internal/external rate numerator
@@ -96,68 +94,6 @@ const PTP_CLOCK_ID_NONE = 18446744073709551615
 // 
 // If %FALSE is returned, the callback is removed and never called again.
 type PtpStatisticsCallback func(domain uint8, stats *gst.Structure) (goret bool)
-
-// BufferAddNetAddressMeta wraps gst_buffer_add_net_address_meta
-// 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: a #GstBuffer 
-// 	- addr gio.SocketAddress: a @GSocketAddress to connect to @buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret *NetAddressMeta 
-//
-// Attaches @addr as metadata in a #GstNetAddressMeta to @buffer.
-func BufferAddNetAddressMeta(buffer *gst.Buffer, addr gio.SocketAddress) *NetAddressMeta {
-	var carg1 *C.GstBuffer         // in, none, converted
-	var carg2 *C.GSocketAddress    // in, none, converted
-	var cret  *C.GstNetAddressMeta // return, none, converted
-
-	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
-	carg2 = (*C.GSocketAddress)(gio.UnsafeSocketAddressToGlibNone(addr))
-
-	cret = C.gst_buffer_add_net_address_meta(carg1, carg2)
-	runtime.KeepAlive(buffer)
-	runtime.KeepAlive(addr)
-
-	var goret *NetAddressMeta
-
-	goret = UnsafeNetAddressMetaFromGlibNone(unsafe.Pointer(cret))
-
-	return goret
-}
-
-// BufferAddNetControlMessageMeta wraps gst_buffer_add_net_control_message_meta
-// 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: a #GstBuffer 
-// 	- message gio.SocketControlMessage: a @GSocketControlMessage to attach to @buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret *NetControlMessageMeta 
-//
-// Attaches @message as metadata in a #GstNetControlMessageMeta to @buffer.
-func BufferAddNetControlMessageMeta(buffer *gst.Buffer, message gio.SocketControlMessage) *NetControlMessageMeta {
-	var carg1 *C.GstBuffer                // in, none, converted
-	var carg2 *C.GSocketControlMessage    // in, none, converted
-	var cret  *C.GstNetControlMessageMeta // return, none, converted
-
-	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
-	carg2 = (*C.GSocketControlMessage)(gio.UnsafeSocketControlMessageToGlibNone(message))
-
-	cret = C.gst_buffer_add_net_control_message_meta(carg1, carg2)
-	runtime.KeepAlive(buffer)
-	runtime.KeepAlive(message)
-
-	var goret *NetControlMessageMeta
-
-	goret = UnsafeNetControlMessageMetaFromGlibNone(unsafe.Pointer(cret))
-
-	return goret
-}
 
 // BufferGetNetAddressMeta wraps gst_buffer_get_net_address_meta
 // 
@@ -218,39 +154,6 @@ func NetControlMessageMetaApiGetType() gobject.Type {
 	var goret gobject.Type
 
 	goret = gobject.Type(cret)
-
-	return goret
-}
-
-// NetUtilsSetSocketTos wraps gst_net_utils_set_socket_tos
-// 
-// The function takes the following parameters:
-// 
-// 	- socket gio.Socket: Socket to configure 
-// 	- qosDscp int32: QoS DSCP value 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Configures IP_TOS value of socket, i.e. sets QoS DSCP.
-func NetUtilsSetSocketTos(socket gio.Socket, qosDscp int32) bool {
-	var carg1 *C.GSocket // in, none, converted
-	var carg2 C.gint     // in, none, casted
-	var cret  C.gboolean // return
-
-	carg1 = (*C.GSocket)(gio.UnsafeSocketToGlibNone(socket))
-	carg2 = C.gint(qosDscp)
-
-	cret = C.gst_net_utils_set_socket_tos(carg1, carg2)
-	runtime.KeepAlive(socket)
-	runtime.KeepAlive(qosDscp)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
 
 	return goret
 }
@@ -627,8 +530,6 @@ func RegisterNetClientClockSubClass[InstanceT NetClientClock](
 type NetTimeProviderInstance struct {
 	_ [0]func() // equal guard
 	gst.ObjectInstance
-	// implemented interfaces:
-	gio.InitableInstance
 }
 
 var _ NetTimeProvider = (*NetTimeProviderInstance)(nil)
@@ -646,7 +547,6 @@ var _ NetTimeProvider = (*NetTimeProviderInstance)(nil)
 // The #GstNetTimeProvider typically wraps the clock used by a #GstPipeline.
 type NetTimeProvider interface {
 	gst.Object
-	gio.Initable
 	upcastToGstNetTimeProvider() *NetTimeProviderInstance
 
 	// chain up virtual methods:
@@ -658,9 +558,6 @@ func unsafeWrapNetTimeProvider(base *gobject.ObjectInstance) *NetTimeProviderIns
 			InitiallyUnownedInstance: gobject.InitiallyUnownedInstance{
 				ObjectInstance: *base,
 			},
-		},
-		InitableInstance: gio.InitableInstance{
-			Instance: *base,
 		},
 	}
 }
@@ -1445,44 +1342,6 @@ func NewNetTimePacket(buffer [16]uint8) *NetTimePacket {
 	return goret
 }
 
-// NetTimePacketReceive wraps gst_net_time_packet_receive
-// 
-// The function takes the following parameters:
-// 
-// 	- socket gio.Socket: socket to receive the time packet on 
-// 
-// The function returns the following values:
-// 
-// 	- srcAddress gio.SocketAddress: address of variable to return sender address 
-// 	- goret *NetTimePacket 
-// 	- _goerr error (nullable): an error 
-//
-// Receives a #GstNetTimePacket over a socket. Handles interrupted system
-// calls, but otherwise returns NULL on error.
-func NetTimePacketReceive(socket gio.Socket) (gio.SocketAddress, *NetTimePacket, error) {
-	var carg1 *C.GSocket          // in, none, converted
-	var carg2 *C.GSocketAddress   // out, full, converted
-	var cret  *C.GstNetTimePacket // return, full, converted
-	var _cerr *C.GError           // out, full, converted, nullable
-
-	carg1 = (*C.GSocket)(gio.UnsafeSocketToGlibNone(socket))
-
-	cret = C.gst_net_time_packet_receive(carg1, &carg2, &_cerr)
-	runtime.KeepAlive(socket)
-
-	var srcAddress gio.SocketAddress
-	var goret      *NetTimePacket
-	var _goerr     error
-
-	srcAddress = gio.UnsafeSocketAddressFromGlibFull(unsafe.Pointer(carg2))
-	goret = UnsafeNetTimePacketFromGlibFull(unsafe.Pointer(cret))
-	if _cerr != nil {
-		_goerr = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(_cerr))
-	}
-
-	return srcAddress, goret, _goerr
-}
-
 // Copy wraps gst_net_time_packet_copy
 // 
 // The function returns the following values:
@@ -1504,50 +1363,6 @@ func (packet *NetTimePacket) Copy() *NetTimePacket {
 	goret = UnsafeNetTimePacketFromGlibFull(unsafe.Pointer(cret))
 
 	return goret
-}
-
-// Send wraps gst_net_time_packet_send
-// 
-// The function takes the following parameters:
-// 
-// 	- socket gio.Socket: socket to send the time packet on 
-// 	- destAddress gio.SocketAddress: address to send the time packet to 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-// 	- _goerr error (nullable): an error 
-//
-// Sends a #GstNetTimePacket over a socket.
-// 
-// MT safe.
-func (packet *NetTimePacket) Send(socket gio.Socket, destAddress gio.SocketAddress) (bool, error) {
-	var carg0 *C.GstNetTimePacket // in, none, converted
-	var carg1 *C.GSocket          // in, none, converted
-	var carg2 *C.GSocketAddress   // in, none, converted
-	var cret  C.gboolean          // return
-	var _cerr *C.GError           // out, full, converted, nullable
-
-	carg0 = (*C.GstNetTimePacket)(UnsafeNetTimePacketToGlibNone(packet))
-	carg1 = (*C.GSocket)(gio.UnsafeSocketToGlibNone(socket))
-	carg2 = (*C.GSocketAddress)(gio.UnsafeSocketAddressToGlibNone(destAddress))
-
-	cret = C.gst_net_time_packet_send(carg0, carg1, carg2, &_cerr)
-	runtime.KeepAlive(packet)
-	runtime.KeepAlive(socket)
-	runtime.KeepAlive(destAddress)
-
-	var goret  bool
-	var _goerr error
-
-	if cret != 0 {
-		goret = true
-	}
-	if _cerr != nil {
-		_goerr = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(_cerr))
-	}
-
-	return goret, _goerr
 }
 
 // Serialize wraps gst_net_time_packet_serialize

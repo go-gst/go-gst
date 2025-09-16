@@ -98,15 +98,15 @@ func init() {
 type AppLeakyType C.int
 
 const (
-	// AppLeakyTypeNone wraps GST_APP_LEAKY_TYPE_NONE
+	// AppLeakyTypeNone wraps APP_LEAKY_TYPE_NONE
 	//
 	// Not Leaky
 	AppLeakyTypeNone AppLeakyType = 0
-	// AppLeakyTypeUpstream wraps GST_APP_LEAKY_TYPE_UPSTREAM
+	// AppLeakyTypeUpstream wraps APP_LEAKY_TYPE_UPSTREAM
 	//
 	// Leaky on upstream (new buffers)
 	AppLeakyTypeUpstream AppLeakyType = 1
-	// AppLeakyTypeDownstream wraps GST_APP_LEAKY_TYPE_DOWNSTREAM
+	// AppLeakyTypeDownstream wraps APP_LEAKY_TYPE_DOWNSTREAM
 	//
 	// Leaky on downstream (old buffers)
 	AppLeakyTypeDownstream AppLeakyType = 2
@@ -141,17 +141,17 @@ func (e AppLeakyType) String() string {
 type AppStreamType C.int
 
 const (
-	// AppStreamTypeStream wraps GST_APP_STREAM_TYPE_STREAM
+	// AppStreamTypeStream wraps APP_STREAM_TYPE_STREAM
 	//
 	// No seeking is supported in the stream, such as a
 	// live stream.
 	AppStreamTypeStream AppStreamType = 0
-	// AppStreamTypeSeekable wraps GST_APP_STREAM_TYPE_SEEKABLE
+	// AppStreamTypeSeekable wraps APP_STREAM_TYPE_SEEKABLE
 	//
 	// The stream is seekable but seeking might not
 	// be very fast, such as data from a webserver.
 	AppStreamTypeSeekable AppStreamType = 1
-	// AppStreamTypeRandomAccess wraps GST_APP_STREAM_TYPE_RANDOM_ACCESS
+	// AppStreamTypeRandomAccess wraps APP_STREAM_TYPE_RANDOM_ACCESS
 	//
 	// The stream is seekable and seeking is fast,
 	// such as in a local file.
@@ -210,7 +210,7 @@ var _ AppSink = (*AppSinkInstance)(nil)
 // Appsink will internally use a queue to collect buffers from the streaming
 // thread. If the application is not pulling samples fast enough, this queue
 // will consume a lot of memory over time. The "max-buffers", "max-time" and "max-bytes"
-// properties can be used to limit the queue size. The "drop" property controls whether the
+// properties can be used to limit the queue size. The "leaky-type" property controls whether the
 // streaming thread blocks or if older buffers are dropped when the maximum
 // queue size is reached. Note that blocking the streaming thread can negatively
 // affect real-time performance and should be avoided.
@@ -258,6 +258,8 @@ type AppSink interface {
 	//
 	// Check if @appsink will drop old buffers when the maximum amount of queued
 	// data is reached (meaning max buffers, time or bytes limit, whichever is hit first).
+	//
+	// Deprecated: (since 1.28.0) Use gst_app_src_get_leaky_type() instead.
 	GetDrop() bool
 	// GetEmitSignals wraps gst_app_sink_get_emit_signals
 	// 
@@ -385,6 +387,8 @@ type AppSink interface {
 	//
 	// Instruct @appsink to drop old buffers when the maximum amount of queued
 	// data is reached, that is, when any configured limit is hit (max-buffers, max-time or max-bytes).
+	//
+	// Deprecated: (since 1.28.0) Use gst_app_src_get_leaky_type() instead.
 	SetDrop(bool)
 	// SetEmitSignals wraps gst_app_sink_set_emit_signals
 	// 
@@ -583,7 +587,7 @@ type AppSink interface {
 	// Note that when the application does not pull samples fast enough, the
 	// queued samples could consume a lot of memory, especially when dealing with
 	// raw video frames. It's possible to control the behaviour of the queue with
-	// the "drop" and "max-buffers" / "max-bytes" / "max-time" set of properties.
+	// the "leaky-type" and "max-buffers" / "max-bytes" / "max-time" set of properties.
 	// 
 	// If an EOS event was received before any buffers, this function returns
 	// %NULL. Use gst_app_sink_is_eos () to check for the EOS condition.
@@ -601,7 +605,7 @@ type AppSink interface {
 	// Note that when the application does not pull samples fast enough, the
 	// queued samples could consume a lot of memory, especially when dealing with
 	// raw video frames. It's possible to control the behaviour of the queue with
-	// the "drop" and "max-buffers" / "max-bytes" / "max-time" set of properties.
+	// the "leaky-type" and "max-buffers" / "max-bytes" / "max-time" set of properties.
 	// 
 	// This function will only pull serialized events, excluding
 	// the EOS event for which this functions returns
@@ -647,7 +651,7 @@ type AppSink interface {
 	// Note that when the application does not pull samples fast enough, the
 	// queued samples could consume a lot of memory, especially when dealing with
 	// raw video frames. It's possible to control the behaviour of the queue with
-	// the "drop" and "max-buffers" / "max-bytes" / "max-time" set of properties.
+	// the "leaky-type" and "max-buffers" / "max-bytes" / "max-time" set of properties.
 	// 
 	// If an EOS event was received before any buffers or the timeout expires,
 	// this function returns %NULL. Use gst_app_sink_is_eos () to check
@@ -892,6 +896,8 @@ func (appsink *AppSinkInstance) GetCaps() *gst.Caps {
 //
 // Check if @appsink will drop old buffers when the maximum amount of queued
 // data is reached (meaning max buffers, time or bytes limit, whichever is hit first).
+//
+// Deprecated: (since 1.28.0) Use gst_app_src_get_leaky_type() instead.
 func (appsink *AppSinkInstance) GetDrop() bool {
 	var carg0 *C.GstAppSink // in, none, converted
 	var cret  C.gboolean    // return
@@ -1192,6 +1198,8 @@ func (appsink *AppSinkInstance) SetCaps(caps *gst.Caps) {
 //
 // Instruct @appsink to drop old buffers when the maximum amount of queued
 // data is reached, that is, when any configured limit is hit (max-buffers, max-time or max-bytes).
+//
+// Deprecated: (since 1.28.0) Use gst_app_src_get_leaky_type() instead.
 func (appsink *AppSinkInstance) SetDrop(drop bool) {
 	var carg0 *C.GstAppSink // in, none, converted
 	var carg1 C.gboolean    // in
@@ -1520,7 +1528,7 @@ func (o *AppSinkInstance) EmitPullPreroll() gst.Sample {
 // Note that when the application does not pull samples fast enough, the
 // queued samples could consume a lot of memory, especially when dealing with
 // raw video frames. It's possible to control the behaviour of the queue with
-// the "drop" and "max-buffers" / "max-bytes" / "max-time" set of properties.
+// the "leaky-type" and "max-buffers" / "max-bytes" / "max-time" set of properties.
 // 
 // If an EOS event was received before any buffers, this function returns
 // %NULL. Use gst_app_sink_is_eos () to check for the EOS condition.
@@ -1541,7 +1549,7 @@ func (o *AppSinkInstance) EmitPullSample() gst.Sample {
 // Note that when the application does not pull samples fast enough, the
 // queued samples could consume a lot of memory, especially when dealing with
 // raw video frames. It's possible to control the behaviour of the queue with
-// the "drop" and "max-buffers" / "max-bytes" / "max-time" set of properties.
+// the "leaky-type" and "max-buffers" / "max-bytes" / "max-time" set of properties.
 // 
 // This function will only pull serialized events, excluding
 // the EOS event for which this functions returns
@@ -1593,7 +1601,7 @@ func (o *AppSinkInstance) EmitTryPullPreroll(arg0 uint64) gst.Sample {
 // Note that when the application does not pull samples fast enough, the
 // queued samples could consume a lot of memory, especially when dealing with
 // raw video frames. It's possible to control the behaviour of the queue with
-// the "drop" and "max-buffers" / "max-bytes" / "max-time" set of properties.
+// the "leaky-type" and "max-buffers" / "max-bytes" / "max-time" set of properties.
 // 
 // If an EOS event was received before any buffers or the timeout expires,
 // this function returns %NULL. Use gst_app_sink_is_eos () to check

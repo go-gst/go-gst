@@ -112,55 +112,55 @@ const PLUGINS_BASE_VERSION_MICRO = 0
 // PLUGINS_BASE_VERSION_MINOR wraps GST_PLUGINS_BASE_VERSION_MINOR
 //
 // The minor version of GStreamer's gst-plugins-base libraries at compile time.
-const PLUGINS_BASE_VERSION_MINOR = 26
+const PLUGINS_BASE_VERSION_MINOR = 27
 // PLUGINS_BASE_VERSION_NANO wraps GST_PLUGINS_BASE_VERSION_NANO
 //
 // The nano version of GStreamer's gst-plugins-base libraries at compile time.
 // Actual releases have 0, GIT versions have 1, prerelease versions have 2-...
-const PLUGINS_BASE_VERSION_NANO = 0
+const PLUGINS_BASE_VERSION_NANO = 1
 // AudioVisualizerShader wraps GstAudioVisualizerShader
 //
 // Different types of supported background shading functions.
 type AudioVisualizerShader C.int
 
 const (
-	// AudioVisualizerShaderNone wraps GST_AUDIO_VISUALIZER_SHADER_NONE
+	// AudioVisualizerShaderNone wraps AUDIO_VISUALIZER_SHADER_NONE
 	//
 	// no shading
 	AudioVisualizerShaderNone AudioVisualizerShader = 0
-	// AudioVisualizerShaderFade wraps GST_AUDIO_VISUALIZER_SHADER_FADE
+	// AudioVisualizerShaderFade wraps AUDIO_VISUALIZER_SHADER_FADE
 	//
 	// plain fading
 	AudioVisualizerShaderFade AudioVisualizerShader = 1
-	// AudioVisualizerShaderFadeAndMoveUp wraps GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_UP
+	// AudioVisualizerShaderFadeAndMoveUp wraps AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_UP
 	//
 	// fade and move up
 	AudioVisualizerShaderFadeAndMoveUp AudioVisualizerShader = 2
-	// AudioVisualizerShaderFadeAndMoveDown wraps GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_DOWN
+	// AudioVisualizerShaderFadeAndMoveDown wraps AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_DOWN
 	//
 	// fade and move down
 	AudioVisualizerShaderFadeAndMoveDown AudioVisualizerShader = 3
-	// AudioVisualizerShaderFadeAndMoveLeft wraps GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_LEFT
+	// AudioVisualizerShaderFadeAndMoveLeft wraps AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_LEFT
 	//
 	// fade and move left
 	AudioVisualizerShaderFadeAndMoveLeft AudioVisualizerShader = 4
-	// AudioVisualizerShaderFadeAndMoveRight wraps GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_RIGHT
+	// AudioVisualizerShaderFadeAndMoveRight wraps AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_RIGHT
 	//
 	// fade and move right
 	AudioVisualizerShaderFadeAndMoveRight AudioVisualizerShader = 5
-	// AudioVisualizerShaderFadeAndMoveHorizOut wraps GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_HORIZ_OUT
+	// AudioVisualizerShaderFadeAndMoveHorizOut wraps AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_HORIZ_OUT
 	//
 	// fade and move horizontally out
 	AudioVisualizerShaderFadeAndMoveHorizOut AudioVisualizerShader = 6
-	// AudioVisualizerShaderFadeAndMoveHorizIn wraps GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_HORIZ_IN
+	// AudioVisualizerShaderFadeAndMoveHorizIn wraps AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_HORIZ_IN
 	//
 	// fade and move horizontally in
 	AudioVisualizerShaderFadeAndMoveHorizIn AudioVisualizerShader = 7
-	// AudioVisualizerShaderFadeAndMoveVertOut wraps GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_VERT_OUT
+	// AudioVisualizerShaderFadeAndMoveVertOut wraps AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_VERT_OUT
 	//
 	// fade and move vertically out
 	AudioVisualizerShaderFadeAndMoveVertOut AudioVisualizerShader = 8
-	// AudioVisualizerShaderFadeAndMoveVertIn wraps GST_AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_VERT_IN
+	// AudioVisualizerShaderFadeAndMoveVertIn wraps AUDIO_VISUALIZER_SHADER_FADE_AND_MOVE_VERT_IN
 	//
 	// fade and move vertically in
 	AudioVisualizerShaderFadeAndMoveVertIn AudioVisualizerShader = 9
@@ -202,27 +202,27 @@ func (e AudioVisualizerShader) String() string {
 type DiscovererResult C.int
 
 const (
-	// DiscovererOK wraps GST_DISCOVERER_OK
+	// DiscovererOK wraps DISCOVERER_OK
 	//
 	// The discovery was successful
 	DiscovererOK DiscovererResult = 0
-	// DiscovererURIInvalid wraps GST_DISCOVERER_URI_INVALID
+	// DiscovererURIInvalid wraps DISCOVERER_URI_INVALID
 	//
 	// the URI is invalid
 	DiscovererURIInvalid DiscovererResult = 1
-	// DiscovererError wraps GST_DISCOVERER_ERROR
+	// DiscovererError wraps DISCOVERER_ERROR
 	//
 	// an error happened and the GError is set
 	DiscovererError DiscovererResult = 2
-	// DiscovererTimeout wraps GST_DISCOVERER_TIMEOUT
+	// DiscovererTimeout wraps DISCOVERER_TIMEOUT
 	//
 	// the discovery timed-out
 	DiscovererTimeout DiscovererResult = 3
-	// DiscovererBusy wraps GST_DISCOVERER_BUSY
+	// DiscovererBusy wraps DISCOVERER_BUSY
 	//
 	// the discoverer was already discovering a file
 	DiscovererBusy DiscovererResult = 4
-	// DiscovererMissingPlugins wraps GST_DISCOVERER_MISSING_PLUGINS
+	// DiscovererMissingPlugins wraps DISCOVERER_MISSING_PLUGINS
 	//
 	// Some plugins are missing for full discovery
 	DiscovererMissingPlugins DiscovererResult = 5
@@ -265,59 +265,59 @@ func (e DiscovererResult) String() string {
 type InstallPluginsReturn C.int
 
 const (
-	// InstallPluginsSuccess wraps GST_INSTALL_PLUGINS_SUCCESS
+	// InstallPluginsSuccess wraps INSTALL_PLUGINS_SUCCESS
 	//
 	// all of the requested plugins could be
 	//     installed
 	InstallPluginsSuccess InstallPluginsReturn = 0
-	// InstallPluginsNotFound wraps GST_INSTALL_PLUGINS_NOT_FOUND
+	// InstallPluginsNotFound wraps INSTALL_PLUGINS_NOT_FOUND
 	//
 	// no appropriate installation candidate for
 	//     any of the requested plugins could be found. Only return this if nothing
 	//     has been installed. Return #GST_INSTALL_PLUGINS_PARTIAL_SUCCESS if
 	//     some (but not all) of the requested plugins could be installed.
 	InstallPluginsNotFound InstallPluginsReturn = 1
-	// InstallPluginsError wraps GST_INSTALL_PLUGINS_ERROR
+	// InstallPluginsError wraps INSTALL_PLUGINS_ERROR
 	//
 	// an error occurred during the installation. If
 	//     this happens, the  user has already seen an error message and another
 	//     one should not be displayed
 	InstallPluginsError InstallPluginsReturn = 2
-	// InstallPluginsPartialSuccess wraps GST_INSTALL_PLUGINS_PARTIAL_SUCCESS
+	// InstallPluginsPartialSuccess wraps INSTALL_PLUGINS_PARTIAL_SUCCESS
 	//
 	// some of the requested plugins could
 	//     be installed, but not all
 	InstallPluginsPartialSuccess InstallPluginsReturn = 3
-	// InstallPluginsUserAbort wraps GST_INSTALL_PLUGINS_USER_ABORT
+	// InstallPluginsUserAbort wraps INSTALL_PLUGINS_USER_ABORT
 	//
 	// the user has aborted the installation
 	InstallPluginsUserAbort InstallPluginsReturn = 4
-	// InstallPluginsCrashed wraps GST_INSTALL_PLUGINS_CRASHED
+	// InstallPluginsCrashed wraps INSTALL_PLUGINS_CRASHED
 	//
 	// the installer had an unclean exit code
 	//     (ie. death by signal)
 	InstallPluginsCrashed InstallPluginsReturn = 100
-	// InstallPluginsInvalid wraps GST_INSTALL_PLUGINS_INVALID
+	// InstallPluginsInvalid wraps INSTALL_PLUGINS_INVALID
 	//
 	// the helper returned an invalid status code
 	InstallPluginsInvalid InstallPluginsReturn = 101
-	// InstallPluginsStartedOK wraps GST_INSTALL_PLUGINS_STARTED_OK
+	// InstallPluginsStartedOK wraps INSTALL_PLUGINS_STARTED_OK
 	//
 	// returned by gst_install_plugins_async() to
 	//     indicate that everything went fine so far and the provided callback
 	//     will be called with the result of the installation later
 	InstallPluginsStartedOK InstallPluginsReturn = 200
-	// InstallPluginsInternalFailure wraps GST_INSTALL_PLUGINS_INTERNAL_FAILURE
+	// InstallPluginsInternalFailure wraps INSTALL_PLUGINS_INTERNAL_FAILURE
 	//
 	// some internal failure has
 	//     occurred when trying to start the installer
 	InstallPluginsInternalFailure InstallPluginsReturn = 201
-	// InstallPluginsHelperMissing wraps GST_INSTALL_PLUGINS_HELPER_MISSING
+	// InstallPluginsHelperMissing wraps INSTALL_PLUGINS_HELPER_MISSING
 	//
 	// the helper script to call the
 	//     actual installer is not installed
 	InstallPluginsHelperMissing InstallPluginsReturn = 202
-	// InstallPluginsInstallInProgress wraps GST_INSTALL_PLUGINS_INSTALL_IN_PROGRESS
+	// InstallPluginsInstallInProgress wraps INSTALL_PLUGINS_INSTALL_IN_PROGRESS
 	//
 	// a previously-started plugin
 	//     installation is still in progress, try again later
@@ -392,24 +392,24 @@ func InstallPluginsReturnGetName(ret InstallPluginsReturn) string {
 type DiscovererSerializeFlags C.gint
 
 const (
-	// DiscovererSerializeBasic wraps GST_DISCOVERER_SERIALIZE_BASIC
+	// DiscovererSerializeBasic wraps DISCOVERER_SERIALIZE_BASIC
 	//
 	// Serialize only basic information, excluding
 	// caps, tags and miscellaneous information
 	DiscovererSerializeBasic DiscovererSerializeFlags = 0
-	// DiscovererSerializeCaps wraps GST_DISCOVERER_SERIALIZE_CAPS
+	// DiscovererSerializeCaps wraps DISCOVERER_SERIALIZE_CAPS
 	//
 	// Serialize the caps for each stream
 	DiscovererSerializeCaps DiscovererSerializeFlags = 1
-	// DiscovererSerializeTags wraps GST_DISCOVERER_SERIALIZE_TAGS
+	// DiscovererSerializeTags wraps DISCOVERER_SERIALIZE_TAGS
 	//
 	// Serialize the tags for each stream
 	DiscovererSerializeTags DiscovererSerializeFlags = 2
-	// DiscovererSerializeMisc wraps GST_DISCOVERER_SERIALIZE_MISC
+	// DiscovererSerializeMisc wraps DISCOVERER_SERIALIZE_MISC
 	//
 	// Serialize miscellaneous information for each stream
 	DiscovererSerializeMisc DiscovererSerializeFlags = 4
-	// DiscovererSerializeAll wraps GST_DISCOVERER_SERIALIZE_ALL
+	// DiscovererSerializeAll wraps DISCOVERER_SERIALIZE_ALL
 	//
 	// Serialize all the available info, including
 	// caps, tags and miscellaneous information
@@ -465,40 +465,40 @@ func (f DiscovererSerializeFlags) String() string {
 type PbUtilsCapsDescriptionFlags C.gint
 
 const (
-	// PbutilsCapsDescriptionFlagContainer wraps GST_PBUTILS_CAPS_DESCRIPTION_FLAG_CONTAINER
+	// PbutilsCapsDescriptionFlagContainer wraps PBUTILS_CAPS_DESCRIPTION_FLAG_CONTAINER
 	//
 	// Caps describe a container format.
 	PbutilsCapsDescriptionFlagContainer PbUtilsCapsDescriptionFlags = 1
-	// PbutilsCapsDescriptionFlagAudio wraps GST_PBUTILS_CAPS_DESCRIPTION_FLAG_AUDIO
+	// PbutilsCapsDescriptionFlagAudio wraps PBUTILS_CAPS_DESCRIPTION_FLAG_AUDIO
 	//
 	// Caps describe an audio format, or a
 	//     container format that can store audio.
 	PbutilsCapsDescriptionFlagAudio PbUtilsCapsDescriptionFlags = 2
-	// PbutilsCapsDescriptionFlagVideo wraps GST_PBUTILS_CAPS_DESCRIPTION_FLAG_VIDEO
+	// PbutilsCapsDescriptionFlagVideo wraps PBUTILS_CAPS_DESCRIPTION_FLAG_VIDEO
 	//
 	// Caps describe an video format, or a
 	//     container format that can store video.
 	PbutilsCapsDescriptionFlagVideo PbUtilsCapsDescriptionFlags = 4
-	// PbutilsCapsDescriptionFlagImage wraps GST_PBUTILS_CAPS_DESCRIPTION_FLAG_IMAGE
+	// PbutilsCapsDescriptionFlagImage wraps PBUTILS_CAPS_DESCRIPTION_FLAG_IMAGE
 	//
 	// Caps describe an image format, or a
 	//     container format that can store image.
 	PbutilsCapsDescriptionFlagImage PbUtilsCapsDescriptionFlags = 8
-	// PbutilsCapsDescriptionFlagSubtitle wraps GST_PBUTILS_CAPS_DESCRIPTION_FLAG_SUBTITLE
+	// PbutilsCapsDescriptionFlagSubtitle wraps PBUTILS_CAPS_DESCRIPTION_FLAG_SUBTITLE
 	//
 	// Caps describe an subtitle format, or a
 	//     container format that can store subtitles.
 	PbutilsCapsDescriptionFlagSubtitle PbUtilsCapsDescriptionFlags = 16
-	// PbutilsCapsDescriptionFlagTag wraps GST_PBUTILS_CAPS_DESCRIPTION_FLAG_TAG
+	// PbutilsCapsDescriptionFlagTag wraps PBUTILS_CAPS_DESCRIPTION_FLAG_TAG
 	//
 	// Container format is a tags container.
 	PbutilsCapsDescriptionFlagTag PbUtilsCapsDescriptionFlags = 32
-	// PbutilsCapsDescriptionFlagGeneric wraps GST_PBUTILS_CAPS_DESCRIPTION_FLAG_GENERIC
+	// PbutilsCapsDescriptionFlagGeneric wraps PBUTILS_CAPS_DESCRIPTION_FLAG_GENERIC
 	//
 	// Container format can store any kind of
 	//     stream type.
 	PbutilsCapsDescriptionFlagGeneric PbUtilsCapsDescriptionFlags = 64
-	// PbutilsCapsDescriptionFlagMetadata wraps GST_PBUTILS_CAPS_DESCRIPTION_FLAG_METADATA
+	// PbutilsCapsDescriptionFlagMetadata wraps PBUTILS_CAPS_DESCRIPTION_FLAG_METADATA
 	//
 	// Caps describe a metadata format, or a container format that can store
 	// metadata.
@@ -3831,16 +3831,6 @@ type DiscovererInfo interface {
 	// 
 	// 	- goret bool 
 	GetLive() bool
-	// GetMisc wraps gst_discoverer_info_get_misc
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Structure (nullable) 
-	//
-	//
-	// Deprecated: This functions is deprecated since version 1.4, use
-	// #gst_discoverer_info_get_missing_elements_installer_details
-	GetMisc() *gst.Structure
 	// GetMissingElementsInstallerDetails wraps gst_discoverer_info_get_missing_elements_installer_details
 	// 
 	// The function returns the following values:
@@ -3894,15 +3884,6 @@ type DiscovererInfo interface {
 	//
 	// Finds all the #GstDiscovererSubtitleInfo contained in @info
 	GetSubtitleStreams() []DiscovererSubtitleInfo
-	// GetTags wraps gst_discoverer_info_get_tags
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.TagList (nullable) 
-	//
-	//
-	// Deprecated: (since 1.20.0) Use gst_discoverer_{container,stream}_info_get_tags() instead.
-	GetTags() *gst.TagList
 	// GetToc wraps gst_discoverer_info_get_toc
 	// 
 	// The function returns the following values:
@@ -4098,33 +4079,6 @@ func (info *DiscovererInfoInstance) GetLive() bool {
 	return goret
 }
 
-// GetMisc wraps gst_discoverer_info_get_misc
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Structure (nullable) 
-//
-//
-// Deprecated: This functions is deprecated since version 1.4, use
-// #gst_discoverer_info_get_missing_elements_installer_details
-func (info *DiscovererInfoInstance) GetMisc() *gst.Structure {
-	var carg0 *C.GstDiscovererInfo // in, none, converted
-	var cret  *C.GstStructure      // return, none, converted, nullable
-
-	carg0 = (*C.GstDiscovererInfo)(UnsafeDiscovererInfoToGlibNone(info))
-
-	cret = C.gst_discoverer_info_get_misc(carg0)
-	runtime.KeepAlive(info)
-
-	var goret *gst.Structure
-
-	if cret != nil {
-		goret = gst.UnsafeStructureFromGlibNone(unsafe.Pointer(cret))
-	}
-
-	return goret
-}
-
 // GetMissingElementsInstallerDetails wraps gst_discoverer_info_get_missing_elements_installer_details
 // 
 // The function returns the following values:
@@ -4313,32 +4267,6 @@ func (info *DiscovererInfoInstance) GetSubtitleStreams() []DiscovererSubtitleInf
 	return goret
 }
 
-// GetTags wraps gst_discoverer_info_get_tags
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.TagList (nullable) 
-//
-//
-// Deprecated: (since 1.20.0) Use gst_discoverer_{container,stream}_info_get_tags() instead.
-func (info *DiscovererInfoInstance) GetTags() *gst.TagList {
-	var carg0 *C.GstDiscovererInfo // in, none, converted
-	var cret  *C.GstTagList        // return, none, converted, nullable
-
-	carg0 = (*C.GstDiscovererInfo)(UnsafeDiscovererInfoToGlibNone(info))
-
-	cret = C.gst_discoverer_info_get_tags(carg0)
-	runtime.KeepAlive(info)
-
-	var goret *gst.TagList
-
-	if cret != nil {
-		goret = gst.UnsafeTagListFromGlibNone(unsafe.Pointer(cret))
-	}
-
-	return goret
-}
-
 // GetToc wraps gst_discoverer_info_get_toc
 // 
 // The function returns the following values:
@@ -4448,16 +4376,6 @@ type DiscovererStreamInfo interface {
 	// 
 	// 	- goret *gst.Caps (nullable) 
 	GetCaps() *gst.Caps
-	// GetMisc wraps gst_discoverer_stream_info_get_misc
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *gst.Structure (nullable) 
-	//
-	//
-	// Deprecated: This functions is deprecated since version 1.4, use
-	// #gst_discoverer_info_get_missing_elements_installer_details
-	GetMisc() *gst.Structure
 	// GetNext wraps gst_discoverer_stream_info_get_next
 	// 
 	// The function returns the following values:
@@ -4568,33 +4486,6 @@ func (info *DiscovererStreamInfoInstance) GetCaps() *gst.Caps {
 
 	if cret != nil {
 		goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
-	}
-
-	return goret
-}
-
-// GetMisc wraps gst_discoverer_stream_info_get_misc
-// 
-// The function returns the following values:
-// 
-// 	- goret *gst.Structure (nullable) 
-//
-//
-// Deprecated: This functions is deprecated since version 1.4, use
-// #gst_discoverer_info_get_missing_elements_installer_details
-func (info *DiscovererStreamInfoInstance) GetMisc() *gst.Structure {
-	var carg0 *C.GstDiscovererStreamInfo // in, none, converted
-	var cret  *C.GstStructure            // return, none, converted, nullable
-
-	carg0 = (*C.GstDiscovererStreamInfo)(UnsafeDiscovererStreamInfoToGlibNone(info))
-
-	cret = C.gst_discoverer_stream_info_get_misc(carg0)
-	runtime.KeepAlive(info)
-
-	var goret *gst.Structure
-
-	if cret != nil {
-		goret = gst.UnsafeStructureFromGlibNone(unsafe.Pointer(cret))
 	}
 
 	return goret

@@ -433,27 +433,27 @@ const DSD_SILENCE_PATTERN_BYTE = 105
 type AudioBaseSinkDiscontReason C.int
 
 const (
-	// AudioBaseSinkDiscontReasonNoDiscont wraps GST_AUDIO_BASE_SINK_DISCONT_REASON_NO_DISCONT
+	// AudioBaseSinkDiscontReasonNoDiscont wraps AUDIO_BASE_SINK_DISCONT_REASON_NO_DISCONT
 	//
 	// No discontinuity occurred
 	AudioBaseSinkDiscontReasonNoDiscont AudioBaseSinkDiscontReason = 0
-	// AudioBaseSinkDiscontReasonNewCaps wraps GST_AUDIO_BASE_SINK_DISCONT_REASON_NEW_CAPS
+	// AudioBaseSinkDiscontReasonNewCaps wraps AUDIO_BASE_SINK_DISCONT_REASON_NEW_CAPS
 	//
 	// New caps are set, causing renegotiotion
 	AudioBaseSinkDiscontReasonNewCaps AudioBaseSinkDiscontReason = 1
-	// AudioBaseSinkDiscontReasonFlush wraps GST_AUDIO_BASE_SINK_DISCONT_REASON_FLUSH
+	// AudioBaseSinkDiscontReasonFlush wraps AUDIO_BASE_SINK_DISCONT_REASON_FLUSH
 	//
 	// Samples have been flushed
 	AudioBaseSinkDiscontReasonFlush AudioBaseSinkDiscontReason = 2
-	// AudioBaseSinkDiscontReasonSyncLatency wraps GST_AUDIO_BASE_SINK_DISCONT_REASON_SYNC_LATENCY
+	// AudioBaseSinkDiscontReasonSyncLatency wraps AUDIO_BASE_SINK_DISCONT_REASON_SYNC_LATENCY
 	//
 	// Sink was synchronized to the estimated latency (occurs during initialization)
 	AudioBaseSinkDiscontReasonSyncLatency AudioBaseSinkDiscontReason = 3
-	// AudioBaseSinkDiscontReasonAlignment wraps GST_AUDIO_BASE_SINK_DISCONT_REASON_ALIGNMENT
+	// AudioBaseSinkDiscontReasonAlignment wraps AUDIO_BASE_SINK_DISCONT_REASON_ALIGNMENT
 	//
 	// Aligning buffers failed because the timestamps are too discontinuous
 	AudioBaseSinkDiscontReasonAlignment AudioBaseSinkDiscontReason = 4
-	// AudioBaseSinkDiscontReasonDeviceFailure wraps GST_AUDIO_BASE_SINK_DISCONT_REASON_DEVICE_FAILURE
+	// AudioBaseSinkDiscontReasonDeviceFailure wraps AUDIO_BASE_SINK_DISCONT_REASON_DEVICE_FAILURE
 	//
 	// Audio output device experienced and recovered from an error but introduced latency in the process (see also gst_audio_base_sink_report_device_failure())
 	AudioBaseSinkDiscontReasonDeviceFailure AudioBaseSinkDiscontReason = 5
@@ -492,20 +492,20 @@ func (e AudioBaseSinkDiscontReason) String() string {
 type AudioBaseSinkSlaveMethod C.int
 
 const (
-	// AudioBaseSinkSlaveResample wraps GST_AUDIO_BASE_SINK_SLAVE_RESAMPLE
+	// AudioBaseSinkSlaveResample wraps AUDIO_BASE_SINK_SLAVE_RESAMPLE
 	//
 	// Resample to match the master clock
 	AudioBaseSinkSlaveResample AudioBaseSinkSlaveMethod = 0
-	// AudioBaseSinkSlaveSkew wraps GST_AUDIO_BASE_SINK_SLAVE_SKEW
+	// AudioBaseSinkSlaveSkew wraps AUDIO_BASE_SINK_SLAVE_SKEW
 	//
 	// Adjust playout pointer when master clock
 	// drifts too much.
 	AudioBaseSinkSlaveSkew AudioBaseSinkSlaveMethod = 1
-	// AudioBaseSinkSlaveNone wraps GST_AUDIO_BASE_SINK_SLAVE_NONE
+	// AudioBaseSinkSlaveNone wraps AUDIO_BASE_SINK_SLAVE_NONE
 	//
 	// No adjustment is done.
 	AudioBaseSinkSlaveNone AudioBaseSinkSlaveMethod = 2
-	// AudioBaseSinkSlaveCustom wraps GST_AUDIO_BASE_SINK_SLAVE_CUSTOM
+	// AudioBaseSinkSlaveCustom wraps AUDIO_BASE_SINK_SLAVE_CUSTOM
 	//
 	// Use custom clock slaving algorithm (Since: 1.6)
 	AudioBaseSinkSlaveCustom AudioBaseSinkSlaveMethod = 3
@@ -542,21 +542,21 @@ func (e AudioBaseSinkSlaveMethod) String() string {
 type AudioBaseSrcSlaveMethod C.int
 
 const (
-	// AudioBaseSrcSlaveResample wraps GST_AUDIO_BASE_SRC_SLAVE_RESAMPLE
+	// AudioBaseSrcSlaveResample wraps AUDIO_BASE_SRC_SLAVE_RESAMPLE
 	//
 	// Resample to match the master clock.
 	AudioBaseSrcSlaveResample AudioBaseSrcSlaveMethod = 0
-	// AudioBaseSrcSlaveReTimestamp wraps GST_AUDIO_BASE_SRC_SLAVE_RE_TIMESTAMP
+	// AudioBaseSrcSlaveReTimestamp wraps AUDIO_BASE_SRC_SLAVE_RE_TIMESTAMP
 	//
 	// Retimestamp output buffers with master
 	// clock time.
 	AudioBaseSrcSlaveReTimestamp AudioBaseSrcSlaveMethod = 1
-	// AudioBaseSrcSlaveSkew wraps GST_AUDIO_BASE_SRC_SLAVE_SKEW
+	// AudioBaseSrcSlaveSkew wraps AUDIO_BASE_SRC_SLAVE_SKEW
 	//
 	// Adjust capture pointer when master clock
 	// drifts too much.
 	AudioBaseSrcSlaveSkew AudioBaseSrcSlaveMethod = 2
-	// AudioBaseSrcSlaveNone wraps GST_AUDIO_BASE_SRC_SLAVE_NONE
+	// AudioBaseSrcSlaveNone wraps AUDIO_BASE_SRC_SLAVE_NONE
 	//
 	// No adjustment is done.
 	AudioBaseSrcSlaveNone AudioBaseSrcSlaveMethod = 3
@@ -593,11 +593,11 @@ func (e AudioBaseSrcSlaveMethod) String() string {
 type AudioCdSrcMode C.int
 
 const (
-	// AudioCdSrcModeNormal wraps GST_AUDIO_CD_SRC_MODE_NORMAL
+	// AudioCdSrcModeNormal wraps AUDIO_CD_SRC_MODE_NORMAL
 	//
 	// each single track is a stream
 	AudioCdSrcModeNormal AudioCdSrcMode = 0
-	// AudioCdSrcModeContinuous wraps GST_AUDIO_CD_SRC_MODE_CONTINUOUS
+	// AudioCdSrcModeContinuous wraps AUDIO_CD_SRC_MODE_CONTINUOUS
 	//
 	// the entire disc is a single stream
 	AudioCdSrcModeContinuous AudioCdSrcMode = 1
@@ -654,138 +654,138 @@ func (e AudioCdSrcMode) String() string {
 type AudioChannelPosition C.int
 
 const (
-	// AudioChannelPositionNone wraps GST_AUDIO_CHANNEL_POSITION_NONE
+	// AudioChannelPositionNone wraps AUDIO_CHANNEL_POSITION_NONE
 	//
 	// used for position-less channels, e.g.
 	//     from a sound card that records 1024 channels; mutually exclusive with
 	//     any other channel position
 	AudioChannelPositionNone AudioChannelPosition = -3
-	// AudioChannelPositionMono wraps GST_AUDIO_CHANNEL_POSITION_MONO
+	// AudioChannelPositionMono wraps AUDIO_CHANNEL_POSITION_MONO
 	//
 	// Mono without direction;
 	//     can only be used with 1 channel
 	AudioChannelPositionMono AudioChannelPosition = -2
-	// AudioChannelPositionInvalid wraps GST_AUDIO_CHANNEL_POSITION_INVALID
+	// AudioChannelPositionInvalid wraps AUDIO_CHANNEL_POSITION_INVALID
 	//
 	// invalid position
 	AudioChannelPositionInvalid AudioChannelPosition = -1
-	// AudioChannelPositionFrontLeft wraps GST_AUDIO_CHANNEL_POSITION_FRONT_LEFT
+	// AudioChannelPositionFrontLeft wraps AUDIO_CHANNEL_POSITION_FRONT_LEFT
 	//
 	// Front left
 	AudioChannelPositionFrontLeft AudioChannelPosition = 0
-	// AudioChannelPositionFrontRight wraps GST_AUDIO_CHANNEL_POSITION_FRONT_RIGHT
+	// AudioChannelPositionFrontRight wraps AUDIO_CHANNEL_POSITION_FRONT_RIGHT
 	//
 	// Front right
 	AudioChannelPositionFrontRight AudioChannelPosition = 1
-	// AudioChannelPositionFrontCenter wraps GST_AUDIO_CHANNEL_POSITION_FRONT_CENTER
+	// AudioChannelPositionFrontCenter wraps AUDIO_CHANNEL_POSITION_FRONT_CENTER
 	//
 	// Front center
 	AudioChannelPositionFrontCenter AudioChannelPosition = 2
-	// AudioChannelPositionLfe1 wraps GST_AUDIO_CHANNEL_POSITION_LFE1
+	// AudioChannelPositionLfe1 wraps AUDIO_CHANNEL_POSITION_LFE1
 	//
 	// Low-frequency effects 1 (subwoofer)
 	AudioChannelPositionLfe1 AudioChannelPosition = 3
-	// AudioChannelPositionRearLeft wraps GST_AUDIO_CHANNEL_POSITION_REAR_LEFT
+	// AudioChannelPositionRearLeft wraps AUDIO_CHANNEL_POSITION_REAR_LEFT
 	//
 	// Rear left
 	AudioChannelPositionRearLeft AudioChannelPosition = 4
-	// AudioChannelPositionRearRight wraps GST_AUDIO_CHANNEL_POSITION_REAR_RIGHT
+	// AudioChannelPositionRearRight wraps AUDIO_CHANNEL_POSITION_REAR_RIGHT
 	//
 	// Rear right
 	AudioChannelPositionRearRight AudioChannelPosition = 5
-	// AudioChannelPositionFrontLeftOfCenter wraps GST_AUDIO_CHANNEL_POSITION_FRONT_LEFT_OF_CENTER
+	// AudioChannelPositionFrontLeftOfCenter wraps AUDIO_CHANNEL_POSITION_FRONT_LEFT_OF_CENTER
 	//
 	// Front left of center
 	AudioChannelPositionFrontLeftOfCenter AudioChannelPosition = 6
-	// AudioChannelPositionFrontRightOfCenter wraps GST_AUDIO_CHANNEL_POSITION_FRONT_RIGHT_OF_CENTER
+	// AudioChannelPositionFrontRightOfCenter wraps AUDIO_CHANNEL_POSITION_FRONT_RIGHT_OF_CENTER
 	//
 	// Front right of center
 	AudioChannelPositionFrontRightOfCenter AudioChannelPosition = 7
-	// AudioChannelPositionRearCenter wraps GST_AUDIO_CHANNEL_POSITION_REAR_CENTER
+	// AudioChannelPositionRearCenter wraps AUDIO_CHANNEL_POSITION_REAR_CENTER
 	//
 	// Rear center
 	AudioChannelPositionRearCenter AudioChannelPosition = 8
-	// AudioChannelPositionLfe2 wraps GST_AUDIO_CHANNEL_POSITION_LFE2
+	// AudioChannelPositionLfe2 wraps AUDIO_CHANNEL_POSITION_LFE2
 	//
 	// Low-frequency effects 2 (subwoofer)
 	AudioChannelPositionLfe2 AudioChannelPosition = 9
-	// AudioChannelPositionSideLeft wraps GST_AUDIO_CHANNEL_POSITION_SIDE_LEFT
+	// AudioChannelPositionSideLeft wraps AUDIO_CHANNEL_POSITION_SIDE_LEFT
 	//
 	// Side left
 	AudioChannelPositionSideLeft AudioChannelPosition = 10
-	// AudioChannelPositionSideRight wraps GST_AUDIO_CHANNEL_POSITION_SIDE_RIGHT
+	// AudioChannelPositionSideRight wraps AUDIO_CHANNEL_POSITION_SIDE_RIGHT
 	//
 	// Side right
 	AudioChannelPositionSideRight AudioChannelPosition = 11
-	// AudioChannelPositionTopFrontLeft wraps GST_AUDIO_CHANNEL_POSITION_TOP_FRONT_LEFT
+	// AudioChannelPositionTopFrontLeft wraps AUDIO_CHANNEL_POSITION_TOP_FRONT_LEFT
 	//
 	// Top front left
 	AudioChannelPositionTopFrontLeft AudioChannelPosition = 12
-	// AudioChannelPositionTopFrontRight wraps GST_AUDIO_CHANNEL_POSITION_TOP_FRONT_RIGHT
+	// AudioChannelPositionTopFrontRight wraps AUDIO_CHANNEL_POSITION_TOP_FRONT_RIGHT
 	//
 	// Top front right
 	AudioChannelPositionTopFrontRight AudioChannelPosition = 13
-	// AudioChannelPositionTopFrontCenter wraps GST_AUDIO_CHANNEL_POSITION_TOP_FRONT_CENTER
+	// AudioChannelPositionTopFrontCenter wraps AUDIO_CHANNEL_POSITION_TOP_FRONT_CENTER
 	//
 	// Top front center
 	AudioChannelPositionTopFrontCenter AudioChannelPosition = 14
-	// AudioChannelPositionTopCenter wraps GST_AUDIO_CHANNEL_POSITION_TOP_CENTER
+	// AudioChannelPositionTopCenter wraps AUDIO_CHANNEL_POSITION_TOP_CENTER
 	//
 	// Top center
 	AudioChannelPositionTopCenter AudioChannelPosition = 15
-	// AudioChannelPositionTopRearLeft wraps GST_AUDIO_CHANNEL_POSITION_TOP_REAR_LEFT
+	// AudioChannelPositionTopRearLeft wraps AUDIO_CHANNEL_POSITION_TOP_REAR_LEFT
 	//
 	// Top rear left
 	AudioChannelPositionTopRearLeft AudioChannelPosition = 16
-	// AudioChannelPositionTopRearRight wraps GST_AUDIO_CHANNEL_POSITION_TOP_REAR_RIGHT
+	// AudioChannelPositionTopRearRight wraps AUDIO_CHANNEL_POSITION_TOP_REAR_RIGHT
 	//
 	// Top rear right
 	AudioChannelPositionTopRearRight AudioChannelPosition = 17
-	// AudioChannelPositionTopSideLeft wraps GST_AUDIO_CHANNEL_POSITION_TOP_SIDE_LEFT
+	// AudioChannelPositionTopSideLeft wraps AUDIO_CHANNEL_POSITION_TOP_SIDE_LEFT
 	//
 	// Top side right
 	AudioChannelPositionTopSideLeft AudioChannelPosition = 18
-	// AudioChannelPositionTopSideRight wraps GST_AUDIO_CHANNEL_POSITION_TOP_SIDE_RIGHT
+	// AudioChannelPositionTopSideRight wraps AUDIO_CHANNEL_POSITION_TOP_SIDE_RIGHT
 	//
 	// Top rear right
 	AudioChannelPositionTopSideRight AudioChannelPosition = 19
-	// AudioChannelPositionTopRearCenter wraps GST_AUDIO_CHANNEL_POSITION_TOP_REAR_CENTER
+	// AudioChannelPositionTopRearCenter wraps AUDIO_CHANNEL_POSITION_TOP_REAR_CENTER
 	//
 	// Top rear center
 	AudioChannelPositionTopRearCenter AudioChannelPosition = 20
-	// AudioChannelPositionBottomFrontCenter wraps GST_AUDIO_CHANNEL_POSITION_BOTTOM_FRONT_CENTER
+	// AudioChannelPositionBottomFrontCenter wraps AUDIO_CHANNEL_POSITION_BOTTOM_FRONT_CENTER
 	//
 	// Bottom front center
 	AudioChannelPositionBottomFrontCenter AudioChannelPosition = 21
-	// AudioChannelPositionBottomFrontLeft wraps GST_AUDIO_CHANNEL_POSITION_BOTTOM_FRONT_LEFT
+	// AudioChannelPositionBottomFrontLeft wraps AUDIO_CHANNEL_POSITION_BOTTOM_FRONT_LEFT
 	//
 	// Bottom front left
 	AudioChannelPositionBottomFrontLeft AudioChannelPosition = 22
-	// AudioChannelPositionBottomFrontRight wraps GST_AUDIO_CHANNEL_POSITION_BOTTOM_FRONT_RIGHT
+	// AudioChannelPositionBottomFrontRight wraps AUDIO_CHANNEL_POSITION_BOTTOM_FRONT_RIGHT
 	//
 	// Bottom front right
 	AudioChannelPositionBottomFrontRight AudioChannelPosition = 23
-	// AudioChannelPositionWideLeft wraps GST_AUDIO_CHANNEL_POSITION_WIDE_LEFT
+	// AudioChannelPositionWideLeft wraps AUDIO_CHANNEL_POSITION_WIDE_LEFT
 	//
 	// Wide left (between front left and side left)
 	AudioChannelPositionWideLeft AudioChannelPosition = 24
-	// AudioChannelPositionWideRight wraps GST_AUDIO_CHANNEL_POSITION_WIDE_RIGHT
+	// AudioChannelPositionWideRight wraps AUDIO_CHANNEL_POSITION_WIDE_RIGHT
 	//
 	// Wide right (between front right and side right)
 	AudioChannelPositionWideRight AudioChannelPosition = 25
-	// AudioChannelPositionSurroundLeft wraps GST_AUDIO_CHANNEL_POSITION_SURROUND_LEFT
+	// AudioChannelPositionSurroundLeft wraps AUDIO_CHANNEL_POSITION_SURROUND_LEFT
 	//
 	// Surround left (between rear left and side left)
 	AudioChannelPositionSurroundLeft AudioChannelPosition = 26
-	// AudioChannelPositionSurroundRight wraps GST_AUDIO_CHANNEL_POSITION_SURROUND_RIGHT
+	// AudioChannelPositionSurroundRight wraps AUDIO_CHANNEL_POSITION_SURROUND_RIGHT
 	//
 	// Surround right (between rear right and side right)
 	AudioChannelPositionSurroundRight AudioChannelPosition = 27
-	// AudioChannelPositionTopSurroundLeft wraps GST_AUDIO_CHANNEL_POSITION_TOP_SURROUND_LEFT
+	// AudioChannelPositionTopSurroundLeft wraps AUDIO_CHANNEL_POSITION_TOP_SURROUND_LEFT
 	//
 	// Top surround left (between rear left and side left).
 	AudioChannelPositionTopSurroundLeft AudioChannelPosition = 28
-	// AudioChannelPositionTopSurroundRight wraps GST_AUDIO_CHANNEL_POSITION_TOP_SURROUND_RIGHT
+	// AudioChannelPositionTopSurroundRight wraps AUDIO_CHANNEL_POSITION_TOP_SURROUND_RIGHT
 	//
 	// Top surround right (between rear right and side right).
 	AudioChannelPositionTopSurroundRight AudioChannelPosition = 29
@@ -850,19 +850,19 @@ func (e AudioChannelPosition) String() string {
 type AudioDitherMethod C.int
 
 const (
-	// AudioDitherNone wraps GST_AUDIO_DITHER_NONE
+	// AudioDitherNone wraps AUDIO_DITHER_NONE
 	//
 	// No dithering
 	AudioDitherNone AudioDitherMethod = 0
-	// AudioDitherRpdf wraps GST_AUDIO_DITHER_RPDF
+	// AudioDitherRpdf wraps AUDIO_DITHER_RPDF
 	//
 	// Rectangular dithering
 	AudioDitherRpdf AudioDitherMethod = 1
-	// AudioDitherTpdf wraps GST_AUDIO_DITHER_TPDF
+	// AudioDitherTpdf wraps AUDIO_DITHER_TPDF
 	//
 	// Triangular dithering (default)
 	AudioDitherTpdf AudioDitherMethod = 2
-	// AudioDitherTpdfHf wraps GST_AUDIO_DITHER_TPDF_HF
+	// AudioDitherTpdfHf wraps AUDIO_DITHER_TPDF_HF
 	//
 	// High frequency triangular dithering
 	AudioDitherTpdfHf AudioDitherMethod = 3
@@ -898,187 +898,187 @@ func (e AudioDitherMethod) String() string {
 type AudioFormat C.int
 
 const (
-	// AudioFormatUnknown wraps GST_AUDIO_FORMAT_UNKNOWN
+	// AudioFormatUnknown wraps AUDIO_FORMAT_UNKNOWN
 	//
 	// unknown or unset audio format
 	AudioFormatUnknown AudioFormat = 0
-	// AudioFormatEncoded wraps GST_AUDIO_FORMAT_ENCODED
+	// AudioFormatEncoded wraps AUDIO_FORMAT_ENCODED
 	//
 	// encoded audio format
 	AudioFormatEncoded AudioFormat = 1
-	// AudioFormatS8 wraps GST_AUDIO_FORMAT_S8
+	// AudioFormatS8 wraps AUDIO_FORMAT_S8
 	//
 	// 8 bits in 8 bits, signed
 	AudioFormatS8 AudioFormat = 2
-	// AudioFormatU8 wraps GST_AUDIO_FORMAT_U8
+	// AudioFormatU8 wraps AUDIO_FORMAT_U8
 	//
 	// 8 bits in 8 bits, unsigned
 	AudioFormatU8 AudioFormat = 3
-	// AudioFormatS16LE wraps GST_AUDIO_FORMAT_S16LE
+	// AudioFormatS16LE wraps AUDIO_FORMAT_S16LE
 	//
 	// 16 bits in 16 bits, signed, little endian
 	AudioFormatS16LE AudioFormat = 4
-	// AudioFormatS16Be wraps GST_AUDIO_FORMAT_S16BE
+	// AudioFormatS16Be wraps AUDIO_FORMAT_S16BE
 	//
 	// 16 bits in 16 bits, signed, big endian
 	AudioFormatS16Be AudioFormat = 5
-	// AudioFormatU16LE wraps GST_AUDIO_FORMAT_U16LE
+	// AudioFormatU16LE wraps AUDIO_FORMAT_U16LE
 	//
 	// 16 bits in 16 bits, unsigned, little endian
 	AudioFormatU16LE AudioFormat = 6
-	// AudioFormatU16Be wraps GST_AUDIO_FORMAT_U16BE
+	// AudioFormatU16Be wraps AUDIO_FORMAT_U16BE
 	//
 	// 16 bits in 16 bits, unsigned, big endian
 	AudioFormatU16Be AudioFormat = 7
-	// AudioFormatS2432LE wraps GST_AUDIO_FORMAT_S24_32LE
+	// AudioFormatS2432LE wraps AUDIO_FORMAT_S24_32LE
 	//
 	// 24 bits in 32 bits, signed, little endian
 	AudioFormatS2432LE AudioFormat = 8
-	// AudioFormatS2432Be wraps GST_AUDIO_FORMAT_S24_32BE
+	// AudioFormatS2432Be wraps AUDIO_FORMAT_S24_32BE
 	//
 	// 24 bits in 32 bits, signed, big endian
 	AudioFormatS2432Be AudioFormat = 9
-	// AudioFormatU2432LE wraps GST_AUDIO_FORMAT_U24_32LE
+	// AudioFormatU2432LE wraps AUDIO_FORMAT_U24_32LE
 	//
 	// 24 bits in 32 bits, unsigned, little endian
 	AudioFormatU2432LE AudioFormat = 10
-	// AudioFormatU2432Be wraps GST_AUDIO_FORMAT_U24_32BE
+	// AudioFormatU2432Be wraps AUDIO_FORMAT_U24_32BE
 	//
 	// 24 bits in 32 bits, unsigned, big endian
 	AudioFormatU2432Be AudioFormat = 11
-	// AudioFormatS32LE wraps GST_AUDIO_FORMAT_S32LE
+	// AudioFormatS32LE wraps AUDIO_FORMAT_S32LE
 	//
 	// 32 bits in 32 bits, signed, little endian
 	AudioFormatS32LE AudioFormat = 12
-	// AudioFormatS32Be wraps GST_AUDIO_FORMAT_S32BE
+	// AudioFormatS32Be wraps AUDIO_FORMAT_S32BE
 	//
 	// 32 bits in 32 bits, signed, big endian
 	AudioFormatS32Be AudioFormat = 13
-	// AudioFormatU32LE wraps GST_AUDIO_FORMAT_U32LE
+	// AudioFormatU32LE wraps AUDIO_FORMAT_U32LE
 	//
 	// 32 bits in 32 bits, unsigned, little endian
 	AudioFormatU32LE AudioFormat = 14
-	// AudioFormatU32Be wraps GST_AUDIO_FORMAT_U32BE
+	// AudioFormatU32Be wraps AUDIO_FORMAT_U32BE
 	//
 	// 32 bits in 32 bits, unsigned, big endian
 	AudioFormatU32Be AudioFormat = 15
-	// AudioFormatS24LE wraps GST_AUDIO_FORMAT_S24LE
+	// AudioFormatS24LE wraps AUDIO_FORMAT_S24LE
 	//
 	// 24 bits in 24 bits, signed, little endian
 	AudioFormatS24LE AudioFormat = 16
-	// AudioFormatS24Be wraps GST_AUDIO_FORMAT_S24BE
+	// AudioFormatS24Be wraps AUDIO_FORMAT_S24BE
 	//
 	// 24 bits in 24 bits, signed, big endian
 	AudioFormatS24Be AudioFormat = 17
-	// AudioFormatU24LE wraps GST_AUDIO_FORMAT_U24LE
+	// AudioFormatU24LE wraps AUDIO_FORMAT_U24LE
 	//
 	// 24 bits in 24 bits, unsigned, little endian
 	AudioFormatU24LE AudioFormat = 18
-	// AudioFormatU24Be wraps GST_AUDIO_FORMAT_U24BE
+	// AudioFormatU24Be wraps AUDIO_FORMAT_U24BE
 	//
 	// 24 bits in 24 bits, unsigned, big endian
 	AudioFormatU24Be AudioFormat = 19
-	// AudioFormatS20LE wraps GST_AUDIO_FORMAT_S20LE
+	// AudioFormatS20LE wraps AUDIO_FORMAT_S20LE
 	//
 	// 20 bits in 24 bits, signed, little endian
 	AudioFormatS20LE AudioFormat = 20
-	// AudioFormatS20Be wraps GST_AUDIO_FORMAT_S20BE
+	// AudioFormatS20Be wraps AUDIO_FORMAT_S20BE
 	//
 	// 20 bits in 24 bits, signed, big endian
 	AudioFormatS20Be AudioFormat = 21
-	// AudioFormatU20LE wraps GST_AUDIO_FORMAT_U20LE
+	// AudioFormatU20LE wraps AUDIO_FORMAT_U20LE
 	//
 	// 20 bits in 24 bits, unsigned, little endian
 	AudioFormatU20LE AudioFormat = 22
-	// AudioFormatU20Be wraps GST_AUDIO_FORMAT_U20BE
+	// AudioFormatU20Be wraps AUDIO_FORMAT_U20BE
 	//
 	// 20 bits in 24 bits, unsigned, big endian
 	AudioFormatU20Be AudioFormat = 23
-	// AudioFormatS18LE wraps GST_AUDIO_FORMAT_S18LE
+	// AudioFormatS18LE wraps AUDIO_FORMAT_S18LE
 	//
 	// 18 bits in 24 bits, signed, little endian
 	AudioFormatS18LE AudioFormat = 24
-	// AudioFormatS18Be wraps GST_AUDIO_FORMAT_S18BE
+	// AudioFormatS18Be wraps AUDIO_FORMAT_S18BE
 	//
 	// 18 bits in 24 bits, signed, big endian
 	AudioFormatS18Be AudioFormat = 25
-	// AudioFormatU18LE wraps GST_AUDIO_FORMAT_U18LE
+	// AudioFormatU18LE wraps AUDIO_FORMAT_U18LE
 	//
 	// 18 bits in 24 bits, unsigned, little endian
 	AudioFormatU18LE AudioFormat = 26
-	// AudioFormatU18Be wraps GST_AUDIO_FORMAT_U18BE
+	// AudioFormatU18Be wraps AUDIO_FORMAT_U18BE
 	//
 	// 18 bits in 24 bits, unsigned, big endian
 	AudioFormatU18Be AudioFormat = 27
-	// AudioFormatF32LE wraps GST_AUDIO_FORMAT_F32LE
+	// AudioFormatF32LE wraps AUDIO_FORMAT_F32LE
 	//
 	// 32-bit floating point samples, little endian
 	AudioFormatF32LE AudioFormat = 28
-	// AudioFormatF32Be wraps GST_AUDIO_FORMAT_F32BE
+	// AudioFormatF32Be wraps AUDIO_FORMAT_F32BE
 	//
 	// 32-bit floating point samples, big endian
 	AudioFormatF32Be AudioFormat = 29
-	// AudioFormatF64LE wraps GST_AUDIO_FORMAT_F64LE
+	// AudioFormatF64LE wraps AUDIO_FORMAT_F64LE
 	//
 	// 64-bit floating point samples, little endian
 	AudioFormatF64LE AudioFormat = 30
-	// AudioFormatF64Be wraps GST_AUDIO_FORMAT_F64BE
+	// AudioFormatF64Be wraps AUDIO_FORMAT_F64BE
 	//
 	// 64-bit floating point samples, big endian
 	AudioFormatF64Be AudioFormat = 31
-	// AudioFormatS16 wraps GST_AUDIO_FORMAT_S16
+	// AudioFormatS16 wraps AUDIO_FORMAT_S16
 	//
 	// 16 bits in 16 bits, signed, native endianness
 	AudioFormatS16 AudioFormat = 4
-	// AudioFormatU16 wraps GST_AUDIO_FORMAT_U16
+	// AudioFormatU16 wraps AUDIO_FORMAT_U16
 	//
 	// 16 bits in 16 bits, unsigned, native endianness
 	AudioFormatU16 AudioFormat = 6
-	// AudioFormatS2432 wraps GST_AUDIO_FORMAT_S24_32
+	// AudioFormatS2432 wraps AUDIO_FORMAT_S24_32
 	//
 	// 24 bits in 32 bits, signed, native endianness
 	AudioFormatS2432 AudioFormat = 8
-	// AudioFormatU2432 wraps GST_AUDIO_FORMAT_U24_32
+	// AudioFormatU2432 wraps AUDIO_FORMAT_U24_32
 	//
 	// 24 bits in 32 bits, unsigned, native endianness
 	AudioFormatU2432 AudioFormat = 10
-	// AudioFormatS32 wraps GST_AUDIO_FORMAT_S32
+	// AudioFormatS32 wraps AUDIO_FORMAT_S32
 	//
 	// 32 bits in 32 bits, signed, native endianness
 	AudioFormatS32 AudioFormat = 12
-	// AudioFormatU32 wraps GST_AUDIO_FORMAT_U32
+	// AudioFormatU32 wraps AUDIO_FORMAT_U32
 	//
 	// 32 bits in 32 bits, unsigned, native endianness
 	AudioFormatU32 AudioFormat = 14
-	// AudioFormatS24 wraps GST_AUDIO_FORMAT_S24
+	// AudioFormatS24 wraps AUDIO_FORMAT_S24
 	//
 	// 24 bits in 24 bits, signed, native endianness
 	AudioFormatS24 AudioFormat = 16
-	// AudioFormatU24 wraps GST_AUDIO_FORMAT_U24
+	// AudioFormatU24 wraps AUDIO_FORMAT_U24
 	//
 	// 24 bits in 24 bits, unsigned, native endianness
 	AudioFormatU24 AudioFormat = 18
-	// AudioFormatS20 wraps GST_AUDIO_FORMAT_S20
+	// AudioFormatS20 wraps AUDIO_FORMAT_S20
 	//
 	// 20 bits in 24 bits, signed, native endianness
 	AudioFormatS20 AudioFormat = 20
-	// AudioFormatU20 wraps GST_AUDIO_FORMAT_U20
+	// AudioFormatU20 wraps AUDIO_FORMAT_U20
 	//
 	// 20 bits in 24 bits, unsigned, native endianness
 	AudioFormatU20 AudioFormat = 22
-	// AudioFormatS18 wraps GST_AUDIO_FORMAT_S18
+	// AudioFormatS18 wraps AUDIO_FORMAT_S18
 	//
 	// 18 bits in 24 bits, signed, native endianness
 	AudioFormatS18 AudioFormat = 24
-	// AudioFormatU18 wraps GST_AUDIO_FORMAT_U18
+	// AudioFormatU18 wraps AUDIO_FORMAT_U18
 	//
 	// 18 bits in 24 bits, unsigned, native endianness
 	AudioFormatU18 AudioFormat = 26
-	// AudioFormatF32 wraps GST_AUDIO_FORMAT_F32
+	// AudioFormatF32 wraps AUDIO_FORMAT_F32
 	//
 	// 32-bit floating point samples, native endianness
 	AudioFormatF32 AudioFormat = 28
-	// AudioFormatF64 wraps GST_AUDIO_FORMAT_F64
+	// AudioFormatF64 wraps AUDIO_FORMAT_F64
 	//
 	// 64-bit floating point samples, native endianness
 	AudioFormatF64 AudioFormat = 30
@@ -1268,11 +1268,11 @@ func AudioFormatToString(format AudioFormat) string {
 type AudioLayout C.int
 
 const (
-	// AudioLayoutInterleaved wraps GST_AUDIO_LAYOUT_INTERLEAVED
+	// AudioLayoutInterleaved wraps AUDIO_LAYOUT_INTERLEAVED
 	//
 	// interleaved audio
 	AudioLayoutInterleaved AudioLayout = 0
-	// AudioLayoutNonInterleaved wraps GST_AUDIO_LAYOUT_NON_INTERLEAVED
+	// AudioLayoutNonInterleaved wraps AUDIO_LAYOUT_NON_INTERLEAVED
 	//
 	// non-interleaved audio
 	AudioLayoutNonInterleaved AudioLayout = 1
@@ -1306,23 +1306,23 @@ func (e AudioLayout) String() string {
 type AudioNoiseShapingMethod C.int
 
 const (
-	// AudioNoiseShapingNone wraps GST_AUDIO_NOISE_SHAPING_NONE
+	// AudioNoiseShapingNone wraps AUDIO_NOISE_SHAPING_NONE
 	//
 	// No noise shaping (default)
 	AudioNoiseShapingNone AudioNoiseShapingMethod = 0
-	// AudioNoiseShapingErrorFeedback wraps GST_AUDIO_NOISE_SHAPING_ERROR_FEEDBACK
+	// AudioNoiseShapingErrorFeedback wraps AUDIO_NOISE_SHAPING_ERROR_FEEDBACK
 	//
 	// Error feedback
 	AudioNoiseShapingErrorFeedback AudioNoiseShapingMethod = 1
-	// AudioNoiseShapingSimple wraps GST_AUDIO_NOISE_SHAPING_SIMPLE
+	// AudioNoiseShapingSimple wraps AUDIO_NOISE_SHAPING_SIMPLE
 	//
 	// Simple 2-pole noise shaping
 	AudioNoiseShapingSimple AudioNoiseShapingMethod = 2
-	// AudioNoiseShapingMedium wraps GST_AUDIO_NOISE_SHAPING_MEDIUM
+	// AudioNoiseShapingMedium wraps AUDIO_NOISE_SHAPING_MEDIUM
 	//
 	// Medium 5-pole noise shaping
 	AudioNoiseShapingMedium AudioNoiseShapingMethod = 3
-	// AudioNoiseShapingHigh wraps GST_AUDIO_NOISE_SHAPING_HIGH
+	// AudioNoiseShapingHigh wraps AUDIO_NOISE_SHAPING_HIGH
 	//
 	// High 8-pole noise shaping
 	AudioNoiseShapingHigh AudioNoiseShapingMethod = 4
@@ -1359,16 +1359,16 @@ func (e AudioNoiseShapingMethod) String() string {
 type AudioResamplerFilterInterpolation C.int
 
 const (
-	// AudioResamplerFilterInterpolationNone wraps GST_AUDIO_RESAMPLER_FILTER_INTERPOLATION_NONE
+	// AudioResamplerFilterInterpolationNone wraps AUDIO_RESAMPLER_FILTER_INTERPOLATION_NONE
 	//
 	// no interpolation
 	AudioResamplerFilterInterpolationNone AudioResamplerFilterInterpolation = 0
-	// AudioResamplerFilterInterpolationLinear wraps GST_AUDIO_RESAMPLER_FILTER_INTERPOLATION_LINEAR
+	// AudioResamplerFilterInterpolationLinear wraps AUDIO_RESAMPLER_FILTER_INTERPOLATION_LINEAR
 	//
 	// linear interpolation of the
 	//   filter coefficients.
 	AudioResamplerFilterInterpolationLinear AudioResamplerFilterInterpolation = 1
-	// AudioResamplerFilterInterpolationCubic wraps GST_AUDIO_RESAMPLER_FILTER_INTERPOLATION_CUBIC
+	// AudioResamplerFilterInterpolationCubic wraps AUDIO_RESAMPLER_FILTER_INTERPOLATION_CUBIC
 	//
 	// cubic interpolation of the
 	//   filter coefficients.
@@ -1404,18 +1404,18 @@ func (e AudioResamplerFilterInterpolation) String() string {
 type AudioResamplerFilterMode C.int
 
 const (
-	// AudioResamplerFilterModeInterpolated wraps GST_AUDIO_RESAMPLER_FILTER_MODE_INTERPOLATED
+	// AudioResamplerFilterModeInterpolated wraps AUDIO_RESAMPLER_FILTER_MODE_INTERPOLATED
 	//
 	// Use interpolated filter tables. This
 	//     uses less memory but more CPU and is slightly less accurate but it allows for more
 	//     efficient variable rate resampling with gst_audio_resampler_update().
 	AudioResamplerFilterModeInterpolated AudioResamplerFilterMode = 0
-	// AudioResamplerFilterModeFull wraps GST_AUDIO_RESAMPLER_FILTER_MODE_FULL
+	// AudioResamplerFilterModeFull wraps AUDIO_RESAMPLER_FILTER_MODE_FULL
 	//
 	// Use full filter table. This uses more memory
 	//     but less CPU.
 	AudioResamplerFilterModeFull AudioResamplerFilterMode = 1
-	// AudioResamplerFilterModeAuto wraps GST_AUDIO_RESAMPLER_FILTER_MODE_AUTO
+	// AudioResamplerFilterModeAuto wraps AUDIO_RESAMPLER_FILTER_MODE_AUTO
 	//
 	// Automatically choose between interpolated
 	//     and full filter tables.
@@ -1451,25 +1451,25 @@ func (e AudioResamplerFilterMode) String() string {
 type AudioResamplerMethod C.int
 
 const (
-	// AudioResamplerMethodNearest wraps GST_AUDIO_RESAMPLER_METHOD_NEAREST
+	// AudioResamplerMethodNearest wraps AUDIO_RESAMPLER_METHOD_NEAREST
 	//
 	// Duplicates the samples when
 	//    upsampling and drops when downsampling
 	AudioResamplerMethodNearest AudioResamplerMethod = 0
-	// AudioResamplerMethodLinear wraps GST_AUDIO_RESAMPLER_METHOD_LINEAR
+	// AudioResamplerMethodLinear wraps AUDIO_RESAMPLER_METHOD_LINEAR
 	//
 	// Uses linear interpolation to reconstruct
 	//    missing samples and averaging to downsample
 	AudioResamplerMethodLinear AudioResamplerMethod = 1
-	// AudioResamplerMethodCubic wraps GST_AUDIO_RESAMPLER_METHOD_CUBIC
+	// AudioResamplerMethodCubic wraps AUDIO_RESAMPLER_METHOD_CUBIC
 	//
 	// Uses cubic interpolation
 	AudioResamplerMethodCubic AudioResamplerMethod = 2
-	// AudioResamplerMethodBlackmanNuttall wraps GST_AUDIO_RESAMPLER_METHOD_BLACKMAN_NUTTALL
+	// AudioResamplerMethodBlackmanNuttall wraps AUDIO_RESAMPLER_METHOD_BLACKMAN_NUTTALL
 	//
 	// Uses Blackman-Nuttall windowed sinc interpolation
 	AudioResamplerMethodBlackmanNuttall AudioResamplerMethod = 3
-	// AudioResamplerMethodKaiser wraps GST_AUDIO_RESAMPLER_METHOD_KAISER
+	// AudioResamplerMethodKaiser wraps AUDIO_RESAMPLER_METHOD_KAISER
 	//
 	// Uses Kaiser windowed sinc interpolation
 	AudioResamplerMethodKaiser AudioResamplerMethod = 4
@@ -1506,67 +1506,67 @@ func (e AudioResamplerMethod) String() string {
 type AudioRingBufferFormatType C.int
 
 const (
-	// AudioRingBufferFormatTypeRaw wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_RAW
+	// AudioRingBufferFormatTypeRaw wraps AUDIO_RING_BUFFER_FORMAT_TYPE_RAW
 	//
 	// samples in linear or float
 	AudioRingBufferFormatTypeRaw AudioRingBufferFormatType = 0
-	// AudioRingBufferFormatTypeMuLaw wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MU_LAW
+	// AudioRingBufferFormatTypeMuLaw wraps AUDIO_RING_BUFFER_FORMAT_TYPE_MU_LAW
 	//
 	// samples in mulaw
 	AudioRingBufferFormatTypeMuLaw AudioRingBufferFormatType = 1
-	// AudioRingBufferFormatTypeALaw wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_A_LAW
+	// AudioRingBufferFormatTypeALaw wraps AUDIO_RING_BUFFER_FORMAT_TYPE_A_LAW
 	//
 	// samples in alaw
 	AudioRingBufferFormatTypeALaw AudioRingBufferFormatType = 2
-	// AudioRingBufferFormatTypeImaAdpcm wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_IMA_ADPCM
+	// AudioRingBufferFormatTypeImaAdpcm wraps AUDIO_RING_BUFFER_FORMAT_TYPE_IMA_ADPCM
 	//
 	// samples in ima adpcm
 	AudioRingBufferFormatTypeImaAdpcm AudioRingBufferFormatType = 3
-	// AudioRingBufferFormatTypeMpeg wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG
+	// AudioRingBufferFormatTypeMpeg wraps AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG
 	//
 	// samples in mpeg audio (but not AAC) format
 	AudioRingBufferFormatTypeMpeg AudioRingBufferFormatType = 4
-	// AudioRingBufferFormatTypeGsm wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_GSM
+	// AudioRingBufferFormatTypeGsm wraps AUDIO_RING_BUFFER_FORMAT_TYPE_GSM
 	//
 	// samples in gsm format
 	AudioRingBufferFormatTypeGsm AudioRingBufferFormatType = 5
-	// AudioRingBufferFormatTypeIec958 wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_IEC958
+	// AudioRingBufferFormatTypeIec958 wraps AUDIO_RING_BUFFER_FORMAT_TYPE_IEC958
 	//
 	// samples in IEC958 frames (e.g. AC3)
 	AudioRingBufferFormatTypeIec958 AudioRingBufferFormatType = 6
-	// AudioRingBufferFormatTypeAc3 wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_AC3
+	// AudioRingBufferFormatTypeAc3 wraps AUDIO_RING_BUFFER_FORMAT_TYPE_AC3
 	//
 	// samples in AC3 format
 	AudioRingBufferFormatTypeAc3 AudioRingBufferFormatType = 7
-	// AudioRingBufferFormatTypeEac3 wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_EAC3
+	// AudioRingBufferFormatTypeEac3 wraps AUDIO_RING_BUFFER_FORMAT_TYPE_EAC3
 	//
 	// samples in EAC3 format
 	AudioRingBufferFormatTypeEac3 AudioRingBufferFormatType = 8
-	// AudioRingBufferFormatTypeDts wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_DTS
+	// AudioRingBufferFormatTypeDts wraps AUDIO_RING_BUFFER_FORMAT_TYPE_DTS
 	//
 	// samples in DTS format
 	AudioRingBufferFormatTypeDts AudioRingBufferFormatType = 9
-	// AudioRingBufferFormatTypeMpeg2Aac wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG2_AAC
+	// AudioRingBufferFormatTypeMpeg2Aac wraps AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG2_AAC
 	//
 	// samples in MPEG-2 AAC ADTS format
 	AudioRingBufferFormatTypeMpeg2Aac AudioRingBufferFormatType = 10
-	// AudioRingBufferFormatTypeMpeg4Aac wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG4_AAC
+	// AudioRingBufferFormatTypeMpeg4Aac wraps AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG4_AAC
 	//
 	// samples in MPEG-4 AAC ADTS format
 	AudioRingBufferFormatTypeMpeg4Aac AudioRingBufferFormatType = 11
-	// AudioRingBufferFormatTypeMpeg2AacRaw wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG2_AAC_RAW
+	// AudioRingBufferFormatTypeMpeg2AacRaw wraps AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG2_AAC_RAW
 	//
 	// samples in MPEG-2 AAC raw format (Since: 1.12)
 	AudioRingBufferFormatTypeMpeg2AacRaw AudioRingBufferFormatType = 12
-	// AudioRingBufferFormatTypeMpeg4AacRaw wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG4_AAC_RAW
+	// AudioRingBufferFormatTypeMpeg4AacRaw wraps AUDIO_RING_BUFFER_FORMAT_TYPE_MPEG4_AAC_RAW
 	//
 	// samples in MPEG-4 AAC raw format (Since: 1.12)
 	AudioRingBufferFormatTypeMpeg4AacRaw AudioRingBufferFormatType = 13
-	// AudioRingBufferFormatTypeFlac wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_FLAC
+	// AudioRingBufferFormatTypeFlac wraps AUDIO_RING_BUFFER_FORMAT_TYPE_FLAC
 	//
 	// samples in FLAC format (Since: 1.12)
 	AudioRingBufferFormatTypeFlac AudioRingBufferFormatType = 14
-	// AudioRingBufferFormatTypeDsd wraps GST_AUDIO_RING_BUFFER_FORMAT_TYPE_DSD
+	// AudioRingBufferFormatTypeDsd wraps AUDIO_RING_BUFFER_FORMAT_TYPE_DSD
 	//
 	// samples in DSD format (Since: 1.24)
 	AudioRingBufferFormatTypeDsd AudioRingBufferFormatType = 15
@@ -1614,19 +1614,19 @@ func (e AudioRingBufferFormatType) String() string {
 type AudioRingBufferState C.int
 
 const (
-	// AudioRingBufferStateStopped wraps GST_AUDIO_RING_BUFFER_STATE_STOPPED
+	// AudioRingBufferStateStopped wraps AUDIO_RING_BUFFER_STATE_STOPPED
 	//
 	// The ringbuffer is stopped
 	AudioRingBufferStateStopped AudioRingBufferState = 0
-	// AudioRingBufferStatePaused wraps GST_AUDIO_RING_BUFFER_STATE_PAUSED
+	// AudioRingBufferStatePaused wraps AUDIO_RING_BUFFER_STATE_PAUSED
 	//
 	// The ringbuffer is paused
 	AudioRingBufferStatePaused AudioRingBufferState = 1
-	// AudioRingBufferStateStarted wraps GST_AUDIO_RING_BUFFER_STATE_STARTED
+	// AudioRingBufferStateStarted wraps AUDIO_RING_BUFFER_STATE_STARTED
 	//
 	// The ringbuffer is started
 	AudioRingBufferStateStarted AudioRingBufferState = 2
-	// AudioRingBufferStateError wraps GST_AUDIO_RING_BUFFER_STATE_ERROR
+	// AudioRingBufferStateError wraps AUDIO_RING_BUFFER_STATE_ERROR
 	//
 	// The ringbuffer has encountered an
 	//     error after it has been started, e.g. because the device was
@@ -1664,39 +1664,39 @@ func (e AudioRingBufferState) String() string {
 type DsdFormat C.int
 
 const (
-	// DsdFormatUnknown wraps GST_DSD_FORMAT_UNKNOWN
+	// DsdFormatUnknown wraps DSD_FORMAT_UNKNOWN
 	//
 	// unknown / invalid DSD format
 	DsdFormatUnknown DsdFormat = 0
-	// DsdFormatU8 wraps GST_DSD_FORMAT_U8
+	// DsdFormatU8 wraps DSD_FORMAT_U8
 	//
 	// 8 DSD bits in 1 byte
 	DsdFormatU8 DsdFormat = 1
-	// DsdFormatU16LE wraps GST_DSD_FORMAT_U16LE
+	// DsdFormatU16LE wraps DSD_FORMAT_U16LE
 	//
 	// 16 DSD bits in 2 bytes, little endian order
 	DsdFormatU16LE DsdFormat = 2
-	// DsdFormatU16Be wraps GST_DSD_FORMAT_U16BE
+	// DsdFormatU16Be wraps DSD_FORMAT_U16BE
 	//
 	// 16 DSD bits in 2 bytes, big endian order
 	DsdFormatU16Be DsdFormat = 3
-	// DsdFormatU32LE wraps GST_DSD_FORMAT_U32LE
+	// DsdFormatU32LE wraps DSD_FORMAT_U32LE
 	//
 	// 32 DSD bits in 4 bytes, little endian order
 	DsdFormatU32LE DsdFormat = 4
-	// DsdFormatU32Be wraps GST_DSD_FORMAT_U32BE
+	// DsdFormatU32Be wraps DSD_FORMAT_U32BE
 	//
 	// 32 DSD bits in 4 bytes, big endian order
 	DsdFormatU32Be DsdFormat = 5
-	// NumDsdFormats wraps GST_NUM_DSD_FORMATS
+	// NumDsdFormats wraps NUM_DSD_FORMATS
 	//
 	// number of valid DSD formats
 	NumDsdFormats DsdFormat = 6
-	// DsdFormatU16 wraps GST_DSD_FORMAT_U16
+	// DsdFormatU16 wraps DSD_FORMAT_U16
 	//
 	// 16 DSD bits in 2 bytes, native endianness
 	DsdFormatU16 DsdFormat = 2
-	// DsdFormatU32 wraps GST_DSD_FORMAT_U32
+	// DsdFormatU32 wraps DSD_FORMAT_U32
 	//
 	// 32 DSD bits in 4 bytes, native endianness
 	DsdFormatU32 DsdFormat = 4
@@ -1820,15 +1820,15 @@ func DsdFormatToString(format DsdFormat) string {
 type StreamVolumeFormat C.int
 
 const (
-	// StreamVolumeFormatLinear wraps GST_STREAM_VOLUME_FORMAT_LINEAR
+	// StreamVolumeFormatLinear wraps STREAM_VOLUME_FORMAT_LINEAR
 	//
 	// Linear scale factor, 1.0 = 100%
 	StreamVolumeFormatLinear StreamVolumeFormat = 0
-	// StreamVolumeFormatCubic wraps GST_STREAM_VOLUME_FORMAT_CUBIC
+	// StreamVolumeFormatCubic wraps STREAM_VOLUME_FORMAT_CUBIC
 	//
 	// Cubic volume scale
 	StreamVolumeFormatCubic StreamVolumeFormat = 1
-	// StreamVolumeFormatDb wraps GST_STREAM_VOLUME_FORMAT_DB
+	// StreamVolumeFormatDb wraps STREAM_VOLUME_FORMAT_DB
 	//
 	// Logarithmic volume scale (dB, amplitude not power)
 	StreamVolumeFormatDb StreamVolumeFormat = 2
@@ -1850,23 +1850,23 @@ func (e StreamVolumeFormat) String() string {
 type AudioChannelMixerFlags C.gint
 
 const (
-	// AudioChannelMixerFlagsNone wraps GST_AUDIO_CHANNEL_MIXER_FLAGS_NONE
+	// AudioChannelMixerFlagsNone wraps AUDIO_CHANNEL_MIXER_FLAGS_NONE
 	//
 	// no flag
 	AudioChannelMixerFlagsNone AudioChannelMixerFlags = 0
-	// AudioChannelMixerFlagsNonInterleavedIn wraps GST_AUDIO_CHANNEL_MIXER_FLAGS_NON_INTERLEAVED_IN
+	// AudioChannelMixerFlagsNonInterleavedIn wraps AUDIO_CHANNEL_MIXER_FLAGS_NON_INTERLEAVED_IN
 	//
 	// input channels are not interleaved
 	AudioChannelMixerFlagsNonInterleavedIn AudioChannelMixerFlags = 1
-	// AudioChannelMixerFlagsNonInterleavedOut wraps GST_AUDIO_CHANNEL_MIXER_FLAGS_NON_INTERLEAVED_OUT
+	// AudioChannelMixerFlagsNonInterleavedOut wraps AUDIO_CHANNEL_MIXER_FLAGS_NON_INTERLEAVED_OUT
 	//
 	// output channels are not interleaved
 	AudioChannelMixerFlagsNonInterleavedOut AudioChannelMixerFlags = 2
-	// AudioChannelMixerFlagsUnpositionedIn wraps GST_AUDIO_CHANNEL_MIXER_FLAGS_UNPOSITIONED_IN
+	// AudioChannelMixerFlagsUnpositionedIn wraps AUDIO_CHANNEL_MIXER_FLAGS_UNPOSITIONED_IN
 	//
 	// input channels are explicitly unpositioned
 	AudioChannelMixerFlagsUnpositionedIn AudioChannelMixerFlags = 4
-	// AudioChannelMixerFlagsUnpositionedOut wraps GST_AUDIO_CHANNEL_MIXER_FLAGS_UNPOSITIONED_OUT
+	// AudioChannelMixerFlagsUnpositionedOut wraps AUDIO_CHANNEL_MIXER_FLAGS_UNPOSITIONED_OUT
 	//
 	// output channels are explicitly unpositioned
 	AudioChannelMixerFlagsUnpositionedOut AudioChannelMixerFlags = 8
@@ -1920,16 +1920,16 @@ func (f AudioChannelMixerFlags) String() string {
 type AudioConverterFlags C.gint
 
 const (
-	// AudioConverterFlagNone wraps GST_AUDIO_CONVERTER_FLAG_NONE
+	// AudioConverterFlagNone wraps AUDIO_CONVERTER_FLAG_NONE
 	//
 	// no flag
 	AudioConverterFlagNone AudioConverterFlags = 0
-	// AudioConverterFlagInWritable wraps GST_AUDIO_CONVERTER_FLAG_IN_WRITABLE
+	// AudioConverterFlagInWritable wraps AUDIO_CONVERTER_FLAG_IN_WRITABLE
 	//
 	// the input sample arrays are writable and can be
 	//    used as temporary storage during conversion.
 	AudioConverterFlagInWritable AudioConverterFlags = 1
-	// AudioConverterFlagVariableRate wraps GST_AUDIO_CONVERTER_FLAG_VARIABLE_RATE
+	// AudioConverterFlagVariableRate wraps AUDIO_CONVERTER_FLAG_VARIABLE_RATE
 	//
 	// allow arbitrary rate updates with
 	//    gst_audio_converter_update_config().
@@ -1978,11 +1978,11 @@ func (f AudioConverterFlags) String() string {
 type AudioFlags C.gint
 
 const (
-	// AudioFlagNone wraps GST_AUDIO_FLAG_NONE
+	// AudioFlagNone wraps AUDIO_FLAG_NONE
 	//
 	// no valid flag
 	AudioFlagNone AudioFlags = 0
-	// AudioFlagUnpositioned wraps GST_AUDIO_FLAG_UNPOSITIONED
+	// AudioFlagUnpositioned wraps AUDIO_FLAG_UNPOSITIONED
 	//
 	// the position array explicitly
 	//     contains unpositioned channels.
@@ -2028,23 +2028,23 @@ func (f AudioFlags) String() string {
 type AudioFormatFlags C.gint
 
 const (
-	// AudioFormatFlagInteger wraps GST_AUDIO_FORMAT_FLAG_INTEGER
+	// AudioFormatFlagInteger wraps AUDIO_FORMAT_FLAG_INTEGER
 	//
 	// integer samples
 	AudioFormatFlagInteger AudioFormatFlags = 1
-	// AudioFormatFlagFloat wraps GST_AUDIO_FORMAT_FLAG_FLOAT
+	// AudioFormatFlagFloat wraps AUDIO_FORMAT_FLAG_FLOAT
 	//
 	// float samples
 	AudioFormatFlagFloat AudioFormatFlags = 2
-	// AudioFormatFlagSigned wraps GST_AUDIO_FORMAT_FLAG_SIGNED
+	// AudioFormatFlagSigned wraps AUDIO_FORMAT_FLAG_SIGNED
 	//
 	// signed samples
 	AudioFormatFlagSigned AudioFormatFlags = 4
-	// AudioFormatFlagComplex wraps GST_AUDIO_FORMAT_FLAG_COMPLEX
+	// AudioFormatFlagComplex wraps AUDIO_FORMAT_FLAG_COMPLEX
 	//
 	// complex layout
 	AudioFormatFlagComplex AudioFormatFlags = 16
-	// AudioFormatFlagUnpack wraps GST_AUDIO_FORMAT_FLAG_UNPACK
+	// AudioFormatFlagUnpack wraps AUDIO_FORMAT_FLAG_UNPACK
 	//
 	// the format can be used in
 	// #GstAudioFormatUnpack and #GstAudioFormatPack functions
@@ -2099,11 +2099,11 @@ func (f AudioFormatFlags) String() string {
 type AudioPackFlags C.gint
 
 const (
-	// AudioPackFlagNone wraps GST_AUDIO_PACK_FLAG_NONE
+	// AudioPackFlagNone wraps AUDIO_PACK_FLAG_NONE
 	//
 	// No flag
 	AudioPackFlagNone AudioPackFlags = 0
-	// AudioPackFlagTruncateRange wraps GST_AUDIO_PACK_FLAG_TRUNCATE_RANGE
+	// AudioPackFlagTruncateRange wraps AUDIO_PACK_FLAG_TRUNCATE_RANGE
 	//
 	// When the source has a smaller depth
 	//   than the target format, set the least significant bits of the target
@@ -2152,11 +2152,11 @@ func (f AudioPackFlags) String() string {
 type AudioQuantizeFlags C.gint
 
 const (
-	// AudioQuantizeFlagNone wraps GST_AUDIO_QUANTIZE_FLAG_NONE
+	// AudioQuantizeFlagNone wraps AUDIO_QUANTIZE_FLAG_NONE
 	//
 	// no flags
 	AudioQuantizeFlagNone AudioQuantizeFlags = 0
-	// AudioQuantizeFlagNonInterleaved wraps GST_AUDIO_QUANTIZE_FLAG_NON_INTERLEAVED
+	// AudioQuantizeFlagNonInterleaved wraps AUDIO_QUANTIZE_FLAG_NON_INTERLEAVED
 	//
 	// samples are non-interleaved
 	AudioQuantizeFlagNonInterleaved AudioQuantizeFlags = 1
@@ -2201,23 +2201,23 @@ func (f AudioQuantizeFlags) String() string {
 type AudioResamplerFlags C.gint
 
 const (
-	// AudioResamplerFlagNone wraps GST_AUDIO_RESAMPLER_FLAG_NONE
+	// AudioResamplerFlagNone wraps AUDIO_RESAMPLER_FLAG_NONE
 	//
 	// no flags
 	AudioResamplerFlagNone AudioResamplerFlags = 0
-	// AudioResamplerFlagNonInterleavedIn wraps GST_AUDIO_RESAMPLER_FLAG_NON_INTERLEAVED_IN
+	// AudioResamplerFlagNonInterleavedIn wraps AUDIO_RESAMPLER_FLAG_NON_INTERLEAVED_IN
 	//
 	// input samples are non-interleaved.
 	//    an array of blocks of samples, one for each channel, should be passed to the
 	//    resample function.
 	AudioResamplerFlagNonInterleavedIn AudioResamplerFlags = 1
-	// AudioResamplerFlagNonInterleavedOut wraps GST_AUDIO_RESAMPLER_FLAG_NON_INTERLEAVED_OUT
+	// AudioResamplerFlagNonInterleavedOut wraps AUDIO_RESAMPLER_FLAG_NON_INTERLEAVED_OUT
 	//
 	// output samples are non-interleaved.
 	//    an array of blocks of samples, one for each channel, should be passed to the
 	//    resample function.
 	AudioResamplerFlagNonInterleavedOut AudioResamplerFlags = 2
-	// AudioResamplerFlagVariableRate wraps GST_AUDIO_RESAMPLER_FLAG_VARIABLE_RATE
+	// AudioResamplerFlagVariableRate wraps AUDIO_RESAMPLER_FLAG_VARIABLE_RATE
 	//
 	// optimize for dynamic updates of the sample
 	//    rates with gst_audio_resampler_update(). This will select an interpolating filter

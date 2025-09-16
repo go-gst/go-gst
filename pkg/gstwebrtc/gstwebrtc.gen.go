@@ -4,7 +4,6 @@ package gstwebrtc
 
 import (
 	"fmt"
-	"log"
 	"runtime"
 	"unsafe"
 
@@ -13,12 +12,10 @@ import (
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
-	"github.com/go-gst/go-gst/pkg/gstsdp"
 )
 
 // #cgo pkg-config: gstreamer-webrtc-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
-// #define GST_USE_UNSTABLE_API // APIs in this package are unstable
 // #include <gst/webrtc/webrtc.h>
 // extern void _gotk4_gstwebrtc1_WebRTCICEOnCandidateFunc(GstWebRTCICE*, guint, const gchar*, gpointer);
 // extern void destroyUserdata(gpointer);
@@ -184,19 +181,19 @@ func init() {
 type WebRTCBundlePolicy C.int
 
 const (
-	// WebrtcBundlePolicyNone wraps GST_WEBRTC_BUNDLE_POLICY_NONE
+	// WebrtcBundlePolicyNone wraps WEBRTC_BUNDLE_POLICY_NONE
 	//
 	// none
 	WebrtcBundlePolicyNone WebRTCBundlePolicy = 0
-	// WebrtcBundlePolicyBalanced wraps GST_WEBRTC_BUNDLE_POLICY_BALANCED
+	// WebrtcBundlePolicyBalanced wraps WEBRTC_BUNDLE_POLICY_BALANCED
 	//
 	// balanced
 	WebrtcBundlePolicyBalanced WebRTCBundlePolicy = 1
-	// WebrtcBundlePolicyMaxCompat wraps GST_WEBRTC_BUNDLE_POLICY_MAX_COMPAT
+	// WebrtcBundlePolicyMaxCompat wraps WEBRTC_BUNDLE_POLICY_MAX_COMPAT
 	//
 	// max-compat
 	WebrtcBundlePolicyMaxCompat WebRTCBundlePolicy = 2
-	// WebrtcBundlePolicyMaxBundle wraps GST_WEBRTC_BUNDLE_POLICY_MAX_BUNDLE
+	// WebrtcBundlePolicyMaxBundle wraps WEBRTC_BUNDLE_POLICY_MAX_BUNDLE
 	//
 	// max-bundle
 	WebrtcBundlePolicyMaxBundle WebRTCBundlePolicy = 3
@@ -230,19 +227,19 @@ func (e WebRTCBundlePolicy) String() string {
 type WebRTCDTLSSetup C.int
 
 const (
-	// WebrtcDTLSSetupNone wraps GST_WEBRTC_DTLS_SETUP_NONE
+	// WebrtcDTLSSetupNone wraps WEBRTC_DTLS_SETUP_NONE
 	//
 	// none
 	WebrtcDTLSSetupNone WebRTCDTLSSetup = 0
-	// WebrtcDTLSSetupActpass wraps GST_WEBRTC_DTLS_SETUP_ACTPASS
+	// WebrtcDTLSSetupActpass wraps WEBRTC_DTLS_SETUP_ACTPASS
 	//
 	// actpass
 	WebrtcDTLSSetupActpass WebRTCDTLSSetup = 1
-	// WebrtcDTLSSetupActive wraps GST_WEBRTC_DTLS_SETUP_ACTIVE
+	// WebrtcDTLSSetupActive wraps WEBRTC_DTLS_SETUP_ACTIVE
 	//
 	// sendonly
 	WebrtcDTLSSetupActive WebRTCDTLSSetup = 2
-	// WebrtcDTLSSetupPassive wraps GST_WEBRTC_DTLS_SETUP_PASSIVE
+	// WebrtcDTLSSetupPassive wraps WEBRTC_DTLS_SETUP_PASSIVE
 	//
 	// recvonly
 	WebrtcDTLSSetupPassive WebRTCDTLSSetup = 3
@@ -276,23 +273,23 @@ func (e WebRTCDTLSSetup) String() string {
 type WebRTCDTLSTransportState C.int
 
 const (
-	// NewWebrtcDTLSTransportState wraps GST_WEBRTC_DTLS_TRANSPORT_STATE_NEW
+	// NewWebrtcDTLSTransportState wraps WEBRTC_DTLS_TRANSPORT_STATE_NEW
 	//
 	// new
 	NewWebrtcDTLSTransportState WebRTCDTLSTransportState = 0
-	// WebrtcDTLSTransportStateClosed wraps GST_WEBRTC_DTLS_TRANSPORT_STATE_CLOSED
+	// WebrtcDTLSTransportStateClosed wraps WEBRTC_DTLS_TRANSPORT_STATE_CLOSED
 	//
 	// closed
 	WebrtcDTLSTransportStateClosed WebRTCDTLSTransportState = 1
-	// WebrtcDTLSTransportStateFailed wraps GST_WEBRTC_DTLS_TRANSPORT_STATE_FAILED
+	// WebrtcDTLSTransportStateFailed wraps WEBRTC_DTLS_TRANSPORT_STATE_FAILED
 	//
 	// failed
 	WebrtcDTLSTransportStateFailed WebRTCDTLSTransportState = 2
-	// WebrtcDTLSTransportStateConnecting wraps GST_WEBRTC_DTLS_TRANSPORT_STATE_CONNECTING
+	// WebrtcDTLSTransportStateConnecting wraps WEBRTC_DTLS_TRANSPORT_STATE_CONNECTING
 	//
 	// connecting
 	WebrtcDTLSTransportStateConnecting WebRTCDTLSTransportState = 3
-	// WebrtcDTLSTransportStateConnected wraps GST_WEBRTC_DTLS_TRANSPORT_STATE_CONNECTED
+	// WebrtcDTLSTransportStateConnected wraps WEBRTC_DTLS_TRANSPORT_STATE_CONNECTED
 	//
 	// connected
 	WebrtcDTLSTransportStateConnected WebRTCDTLSTransportState = 4
@@ -329,19 +326,19 @@ func (e WebRTCDTLSTransportState) String() string {
 type WebRTCDataChannelState C.int
 
 const (
-	// WebrtcDataChannelStateConnecting wraps GST_WEBRTC_DATA_CHANNEL_STATE_CONNECTING
+	// WebrtcDataChannelStateConnecting wraps WEBRTC_DATA_CHANNEL_STATE_CONNECTING
 	//
 	// connecting
 	WebrtcDataChannelStateConnecting WebRTCDataChannelState = 1
-	// WebrtcDataChannelStateOpen wraps GST_WEBRTC_DATA_CHANNEL_STATE_OPEN
+	// WebrtcDataChannelStateOpen wraps WEBRTC_DATA_CHANNEL_STATE_OPEN
 	//
 	// open
 	WebrtcDataChannelStateOpen WebRTCDataChannelState = 2
-	// WebrtcDataChannelStateClosing wraps GST_WEBRTC_DATA_CHANNEL_STATE_CLOSING
+	// WebrtcDataChannelStateClosing wraps WEBRTC_DATA_CHANNEL_STATE_CLOSING
 	//
 	// closing
 	WebrtcDataChannelStateClosing WebRTCDataChannelState = 3
-	// WebrtcDataChannelStateClosed wraps GST_WEBRTC_DATA_CHANNEL_STATE_CLOSED
+	// WebrtcDataChannelStateClosed wraps WEBRTC_DATA_CHANNEL_STATE_CLOSED
 	//
 	// closed
 	WebrtcDataChannelStateClosed WebRTCDataChannelState = 4
@@ -377,47 +374,47 @@ func (e WebRTCDataChannelState) String() string {
 type WebRTCError C.int
 
 const (
-	// WebrtcErrorDataChannelFailure wraps GST_WEBRTC_ERROR_DATA_CHANNEL_FAILURE
+	// WebrtcErrorDataChannelFailure wraps WEBRTC_ERROR_DATA_CHANNEL_FAILURE
 	//
 	// data-channel-failure
 	WebrtcErrorDataChannelFailure WebRTCError = 0
-	// WebrtcErrorDTLSFailure wraps GST_WEBRTC_ERROR_DTLS_FAILURE
+	// WebrtcErrorDTLSFailure wraps WEBRTC_ERROR_DTLS_FAILURE
 	//
 	// dtls-failure
 	WebrtcErrorDTLSFailure WebRTCError = 1
-	// WebrtcErrorFingerprintFailure wraps GST_WEBRTC_ERROR_FINGERPRINT_FAILURE
+	// WebrtcErrorFingerprintFailure wraps WEBRTC_ERROR_FINGERPRINT_FAILURE
 	//
 	// fingerprint-failure
 	WebrtcErrorFingerprintFailure WebRTCError = 2
-	// WebrtcErrorSCTPFailure wraps GST_WEBRTC_ERROR_SCTP_FAILURE
+	// WebrtcErrorSCTPFailure wraps WEBRTC_ERROR_SCTP_FAILURE
 	//
 	// sctp-failure
 	WebrtcErrorSCTPFailure WebRTCError = 3
-	// WebrtcErrorSdpSyntaxError wraps GST_WEBRTC_ERROR_SDP_SYNTAX_ERROR
+	// WebrtcErrorSdpSyntaxError wraps WEBRTC_ERROR_SDP_SYNTAX_ERROR
 	//
 	// sdp-syntax-error
 	WebrtcErrorSdpSyntaxError WebRTCError = 4
-	// WebrtcErrorHardwareEncoderNotAvailable wraps GST_WEBRTC_ERROR_HARDWARE_ENCODER_NOT_AVAILABLE
+	// WebrtcErrorHardwareEncoderNotAvailable wraps WEBRTC_ERROR_HARDWARE_ENCODER_NOT_AVAILABLE
 	//
 	// hardware-encoder-not-available
 	WebrtcErrorHardwareEncoderNotAvailable WebRTCError = 5
-	// WebrtcErrorEncoderError wraps GST_WEBRTC_ERROR_ENCODER_ERROR
+	// WebrtcErrorEncoderError wraps WEBRTC_ERROR_ENCODER_ERROR
 	//
 	// encoder-error
 	WebrtcErrorEncoderError WebRTCError = 6
-	// WebrtcErrorInvalidState wraps GST_WEBRTC_ERROR_INVALID_STATE
+	// WebrtcErrorInvalidState wraps WEBRTC_ERROR_INVALID_STATE
 	//
 	// invalid-state (part of WebIDL specification)
 	WebrtcErrorInvalidState WebRTCError = 7
-	// WebrtcErrorInternalFailure wraps GST_WEBRTC_ERROR_INTERNAL_FAILURE
+	// WebrtcErrorInternalFailure wraps WEBRTC_ERROR_INTERNAL_FAILURE
 	//
 	// GStreamer-specific failure, not matching any other value from the specification
 	WebrtcErrorInternalFailure WebRTCError = 8
-	// WebrtcErrorInvalidModification wraps GST_WEBRTC_ERROR_INVALID_MODIFICATION
+	// WebrtcErrorInvalidModification wraps WEBRTC_ERROR_INVALID_MODIFICATION
 	//
 	// invalid-modification (part of WebIDL specification)
 	WebrtcErrorInvalidModification WebRTCError = 9
-	// WebrtcErrorTypeError wraps GST_WEBRTC_ERROR_TYPE_ERROR
+	// WebrtcErrorTypeError wraps WEBRTC_ERROR_TYPE_ERROR
 	//
 	// type-error (maps to JavaScript TypeError)
 	WebrtcErrorTypeError WebRTCError = 10
@@ -475,11 +472,11 @@ func WebRTCErrorQuark() glib.Quark {
 type WebRTCFECType C.int
 
 const (
-	// WebrtcFecTypeNone wraps GST_WEBRTC_FEC_TYPE_NONE
+	// WebrtcFecTypeNone wraps WEBRTC_FEC_TYPE_NONE
 	//
 	// none
 	WebrtcFecTypeNone WebRTCFECType = 0
-	// WebrtcFecTypeUlpRed wraps GST_WEBRTC_FEC_TYPE_ULP_RED
+	// WebrtcFecTypeUlpRed wraps WEBRTC_FEC_TYPE_ULP_RED
 	//
 	// ulpfec + red
 	WebrtcFecTypeUlpRed WebRTCFECType = 1
@@ -511,11 +508,11 @@ func (e WebRTCFECType) String() string {
 type WebRTCICEComponent C.int
 
 const (
-	// WebrtcIceComponentRtp wraps GST_WEBRTC_ICE_COMPONENT_RTP
+	// WebrtcIceComponentRtp wraps WEBRTC_ICE_COMPONENT_RTP
 	//
 	// RTP component
 	WebrtcIceComponentRtp WebRTCICEComponent = 0
-	// WebrtcIceComponentRtcp wraps GST_WEBRTC_ICE_COMPONENT_RTCP
+	// WebrtcIceComponentRtcp wraps WEBRTC_ICE_COMPONENT_RTCP
 	//
 	// RTCP component
 	WebrtcIceComponentRtcp WebRTCICEComponent = 1
@@ -549,31 +546,31 @@ func (e WebRTCICEComponent) String() string {
 type WebRTCICEConnectionState C.int
 
 const (
-	// NewWebrtcIceConnectionState wraps GST_WEBRTC_ICE_CONNECTION_STATE_NEW
+	// NewWebrtcIceConnectionState wraps WEBRTC_ICE_CONNECTION_STATE_NEW
 	//
 	// new
 	NewWebrtcIceConnectionState WebRTCICEConnectionState = 0
-	// WebrtcIceConnectionStateChecking wraps GST_WEBRTC_ICE_CONNECTION_STATE_CHECKING
+	// WebrtcIceConnectionStateChecking wraps WEBRTC_ICE_CONNECTION_STATE_CHECKING
 	//
 	// checking
 	WebrtcIceConnectionStateChecking WebRTCICEConnectionState = 1
-	// WebrtcIceConnectionStateConnected wraps GST_WEBRTC_ICE_CONNECTION_STATE_CONNECTED
+	// WebrtcIceConnectionStateConnected wraps WEBRTC_ICE_CONNECTION_STATE_CONNECTED
 	//
 	// connected
 	WebrtcIceConnectionStateConnected WebRTCICEConnectionState = 2
-	// WebrtcIceConnectionStateCompleted wraps GST_WEBRTC_ICE_CONNECTION_STATE_COMPLETED
+	// WebrtcIceConnectionStateCompleted wraps WEBRTC_ICE_CONNECTION_STATE_COMPLETED
 	//
 	// completed
 	WebrtcIceConnectionStateCompleted WebRTCICEConnectionState = 3
-	// WebrtcIceConnectionStateFailed wraps GST_WEBRTC_ICE_CONNECTION_STATE_FAILED
+	// WebrtcIceConnectionStateFailed wraps WEBRTC_ICE_CONNECTION_STATE_FAILED
 	//
 	// failed
 	WebrtcIceConnectionStateFailed WebRTCICEConnectionState = 4
-	// WebrtcIceConnectionStateDisconnected wraps GST_WEBRTC_ICE_CONNECTION_STATE_DISCONNECTED
+	// WebrtcIceConnectionStateDisconnected wraps WEBRTC_ICE_CONNECTION_STATE_DISCONNECTED
 	//
 	// disconnected
 	WebrtcIceConnectionStateDisconnected WebRTCICEConnectionState = 5
-	// WebrtcIceConnectionStateClosed wraps GST_WEBRTC_ICE_CONNECTION_STATE_CLOSED
+	// WebrtcIceConnectionStateClosed wraps WEBRTC_ICE_CONNECTION_STATE_CLOSED
 	//
 	// closed
 	WebrtcIceConnectionStateClosed WebRTCICEConnectionState = 6
@@ -612,15 +609,15 @@ func (e WebRTCICEConnectionState) String() string {
 type WebRTCICEGatheringState C.int
 
 const (
-	// NewWebrtcIceGatheringState wraps GST_WEBRTC_ICE_GATHERING_STATE_NEW
+	// NewWebrtcIceGatheringState wraps WEBRTC_ICE_GATHERING_STATE_NEW
 	//
 	// new
 	NewWebrtcIceGatheringState WebRTCICEGatheringState = 0
-	// WebrtcIceGatheringStateGathering wraps GST_WEBRTC_ICE_GATHERING_STATE_GATHERING
+	// WebrtcIceGatheringStateGathering wraps WEBRTC_ICE_GATHERING_STATE_GATHERING
 	//
 	// gathering
 	WebrtcIceGatheringStateGathering WebRTCICEGatheringState = 1
-	// WebrtcIceGatheringStateComplete wraps GST_WEBRTC_ICE_GATHERING_STATE_COMPLETE
+	// WebrtcIceGatheringStateComplete wraps WEBRTC_ICE_GATHERING_STATE_COMPLETE
 	//
 	// complete
 	WebrtcIceGatheringStateComplete WebRTCICEGatheringState = 2
@@ -653,11 +650,11 @@ func (e WebRTCICEGatheringState) String() string {
 type WebRTCICERole C.int
 
 const (
-	// WebrtcIceRoleControlled wraps GST_WEBRTC_ICE_ROLE_CONTROLLED
+	// WebrtcIceRoleControlled wraps WEBRTC_ICE_ROLE_CONTROLLED
 	//
 	// controlled
 	WebrtcIceRoleControlled WebRTCICERole = 0
-	// WebrtcIceRoleControlling wraps GST_WEBRTC_ICE_ROLE_CONTROLLING
+	// WebrtcIceRoleControlling wraps WEBRTC_ICE_ROLE_CONTROLLING
 	//
 	// controlling
 	WebrtcIceRoleControlling WebRTCICERole = 1
@@ -692,11 +689,11 @@ func (e WebRTCICERole) String() string {
 type WebRTCICETransportPolicy C.int
 
 const (
-	// WebrtcIceTransportPolicyAll wraps GST_WEBRTC_ICE_TRANSPORT_POLICY_ALL
+	// WebrtcIceTransportPolicyAll wraps WEBRTC_ICE_TRANSPORT_POLICY_ALL
 	//
 	// all
 	WebrtcIceTransportPolicyAll WebRTCICETransportPolicy = 0
-	// WebrtcIceTransportPolicyRelay wraps GST_WEBRTC_ICE_TRANSPORT_POLICY_RELAY
+	// WebrtcIceTransportPolicyRelay wraps WEBRTC_ICE_TRANSPORT_POLICY_RELAY
 	//
 	// relay
 	WebrtcIceTransportPolicyRelay WebRTCICETransportPolicy = 1
@@ -730,15 +727,15 @@ func (e WebRTCICETransportPolicy) String() string {
 type WebRTCKind C.int
 
 const (
-	// WebrtcKindUnknown wraps GST_WEBRTC_KIND_UNKNOWN
+	// WebrtcKindUnknown wraps WEBRTC_KIND_UNKNOWN
 	//
 	// Kind has not yet been set
 	WebrtcKindUnknown WebRTCKind = 0
-	// WebrtcKindAudio wraps GST_WEBRTC_KIND_AUDIO
+	// WebrtcKindAudio wraps WEBRTC_KIND_AUDIO
 	//
 	// Kind is audio
 	WebrtcKindAudio WebRTCKind = 1
-	// WebrtcKindVideo wraps GST_WEBRTC_KIND_VIDEO
+	// WebrtcKindVideo wraps WEBRTC_KIND_VIDEO
 	//
 	// Kind is video
 	WebrtcKindVideo WebRTCKind = 2
@@ -773,27 +770,27 @@ func (e WebRTCKind) String() string {
 type WebRTCPeerConnectionState C.int
 
 const (
-	// NewWebrtcPeerConnectionState wraps GST_WEBRTC_PEER_CONNECTION_STATE_NEW
+	// NewWebrtcPeerConnectionState wraps WEBRTC_PEER_CONNECTION_STATE_NEW
 	//
 	// new
 	NewWebrtcPeerConnectionState WebRTCPeerConnectionState = 0
-	// WebrtcPeerConnectionStateConnecting wraps GST_WEBRTC_PEER_CONNECTION_STATE_CONNECTING
+	// WebrtcPeerConnectionStateConnecting wraps WEBRTC_PEER_CONNECTION_STATE_CONNECTING
 	//
 	// connecting
 	WebrtcPeerConnectionStateConnecting WebRTCPeerConnectionState = 1
-	// WebrtcPeerConnectionStateConnected wraps GST_WEBRTC_PEER_CONNECTION_STATE_CONNECTED
+	// WebrtcPeerConnectionStateConnected wraps WEBRTC_PEER_CONNECTION_STATE_CONNECTED
 	//
 	// connected
 	WebrtcPeerConnectionStateConnected WebRTCPeerConnectionState = 2
-	// WebrtcPeerConnectionStateDisconnected wraps GST_WEBRTC_PEER_CONNECTION_STATE_DISCONNECTED
+	// WebrtcPeerConnectionStateDisconnected wraps WEBRTC_PEER_CONNECTION_STATE_DISCONNECTED
 	//
 	// disconnected
 	WebrtcPeerConnectionStateDisconnected WebRTCPeerConnectionState = 3
-	// WebrtcPeerConnectionStateFailed wraps GST_WEBRTC_PEER_CONNECTION_STATE_FAILED
+	// WebrtcPeerConnectionStateFailed wraps WEBRTC_PEER_CONNECTION_STATE_FAILED
 	//
 	// failed
 	WebrtcPeerConnectionStateFailed WebRTCPeerConnectionState = 4
-	// WebrtcPeerConnectionStateClosed wraps GST_WEBRTC_PEER_CONNECTION_STATE_CLOSED
+	// WebrtcPeerConnectionStateClosed wraps WEBRTC_PEER_CONNECTION_STATE_CLOSED
 	//
 	// closed
 	WebrtcPeerConnectionStateClosed WebRTCPeerConnectionState = 5
@@ -831,19 +828,19 @@ func (e WebRTCPeerConnectionState) String() string {
 type WebRTCPriorityType C.int
 
 const (
-	// WebrtcPriorityTypeVeryLow wraps GST_WEBRTC_PRIORITY_TYPE_VERY_LOW
+	// WebrtcPriorityTypeVeryLow wraps WEBRTC_PRIORITY_TYPE_VERY_LOW
 	//
 	// very-low
 	WebrtcPriorityTypeVeryLow WebRTCPriorityType = 1
-	// WebrtcPriorityTypeLow wraps GST_WEBRTC_PRIORITY_TYPE_LOW
+	// WebrtcPriorityTypeLow wraps WEBRTC_PRIORITY_TYPE_LOW
 	//
 	// low
 	WebrtcPriorityTypeLow WebRTCPriorityType = 2
-	// WebrtcPriorityTypeMedium wraps GST_WEBRTC_PRIORITY_TYPE_MEDIUM
+	// WebrtcPriorityTypeMedium wraps WEBRTC_PRIORITY_TYPE_MEDIUM
 	//
 	// medium
 	WebrtcPriorityTypeMedium WebRTCPriorityType = 3
-	// WebrtcPriorityTypeHigh wraps GST_WEBRTC_PRIORITY_TYPE_HIGH
+	// WebrtcPriorityTypeHigh wraps WEBRTC_PRIORITY_TYPE_HIGH
 	//
 	// high
 	WebrtcPriorityTypeHigh WebRTCPriorityType = 4
@@ -877,23 +874,23 @@ func (e WebRTCPriorityType) String() string {
 type WebRTCRTPTransceiverDirection C.int
 
 const (
-	// WebrtcRtpTransceiverDirectionNone wraps GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_NONE
+	// WebrtcRtpTransceiverDirectionNone wraps WEBRTC_RTP_TRANSCEIVER_DIRECTION_NONE
 	//
 	// none
 	WebrtcRtpTransceiverDirectionNone WebRTCRTPTransceiverDirection = 0
-	// WebrtcRtpTransceiverDirectionInactive wraps GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_INACTIVE
+	// WebrtcRtpTransceiverDirectionInactive wraps WEBRTC_RTP_TRANSCEIVER_DIRECTION_INACTIVE
 	//
 	// inactive
 	WebrtcRtpTransceiverDirectionInactive WebRTCRTPTransceiverDirection = 1
-	// WebrtcRtpTransceiverDirectionSendonly wraps GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_SENDONLY
+	// WebrtcRtpTransceiverDirectionSendonly wraps WEBRTC_RTP_TRANSCEIVER_DIRECTION_SENDONLY
 	//
 	// sendonly
 	WebrtcRtpTransceiverDirectionSendonly WebRTCRTPTransceiverDirection = 2
-	// WebrtcRtpTransceiverDirectionRecvonly wraps GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_RECVONLY
+	// WebrtcRtpTransceiverDirectionRecvonly wraps WEBRTC_RTP_TRANSCEIVER_DIRECTION_RECVONLY
 	//
 	// recvonly
 	WebrtcRtpTransceiverDirectionRecvonly WebRTCRTPTransceiverDirection = 3
-	// WebrtcRtpTransceiverDirectionSendrecv wraps GST_WEBRTC_RTP_TRANSCEIVER_DIRECTION_SENDRECV
+	// WebrtcRtpTransceiverDirectionSendrecv wraps WEBRTC_RTP_TRANSCEIVER_DIRECTION_SENDRECV
 	//
 	// sendrecv
 	WebrtcRtpTransceiverDirectionSendrecv WebRTCRTPTransceiverDirection = 4
@@ -930,19 +927,19 @@ func (e WebRTCRTPTransceiverDirection) String() string {
 type WebRTCSCTPTransportState C.int
 
 const (
-	// NewWebrtcSCTPTransportState wraps GST_WEBRTC_SCTP_TRANSPORT_STATE_NEW
+	// NewWebrtcSCTPTransportState wraps WEBRTC_SCTP_TRANSPORT_STATE_NEW
 	//
 	// new
 	NewWebrtcSCTPTransportState WebRTCSCTPTransportState = 0
-	// WebrtcSCTPTransportStateConnecting wraps GST_WEBRTC_SCTP_TRANSPORT_STATE_CONNECTING
+	// WebrtcSCTPTransportStateConnecting wraps WEBRTC_SCTP_TRANSPORT_STATE_CONNECTING
 	//
 	// connecting
 	WebrtcSCTPTransportStateConnecting WebRTCSCTPTransportState = 1
-	// WebrtcSCTPTransportStateConnected wraps GST_WEBRTC_SCTP_TRANSPORT_STATE_CONNECTED
+	// WebrtcSCTPTransportStateConnected wraps WEBRTC_SCTP_TRANSPORT_STATE_CONNECTED
 	//
 	// connected
 	WebrtcSCTPTransportStateConnected WebRTCSCTPTransportState = 2
-	// WebrtcSCTPTransportStateClosed wraps GST_WEBRTC_SCTP_TRANSPORT_STATE_CLOSED
+	// WebrtcSCTPTransportStateClosed wraps WEBRTC_SCTP_TRANSPORT_STATE_CLOSED
 	//
 	// closed
 	WebrtcSCTPTransportStateClosed WebRTCSCTPTransportState = 3
@@ -978,19 +975,19 @@ func (e WebRTCSCTPTransportState) String() string {
 type WebRTCSDPType C.int
 
 const (
-	// WebrtcSdpTypeOffer wraps GST_WEBRTC_SDP_TYPE_OFFER
+	// WebrtcSdpTypeOffer wraps WEBRTC_SDP_TYPE_OFFER
 	//
 	// offer
 	WebrtcSdpTypeOffer WebRTCSDPType = 1
-	// WebrtcSdpTypePranswer wraps GST_WEBRTC_SDP_TYPE_PRANSWER
+	// WebrtcSdpTypePranswer wraps WEBRTC_SDP_TYPE_PRANSWER
 	//
 	// pranswer
 	WebrtcSdpTypePranswer WebRTCSDPType = 2
-	// WebrtcSdpTypeAnswer wraps GST_WEBRTC_SDP_TYPE_ANSWER
+	// WebrtcSdpTypeAnswer wraps WEBRTC_SDP_TYPE_ANSWER
 	//
 	// answer
 	WebrtcSdpTypeAnswer WebRTCSDPType = 3
-	// WebrtcSdpTypeRollback wraps GST_WEBRTC_SDP_TYPE_ROLLBACK
+	// WebrtcSdpTypeRollback wraps WEBRTC_SDP_TYPE_ROLLBACK
 	//
 	// rollback
 	WebrtcSdpTypeRollback WebRTCSDPType = 4
@@ -1051,27 +1048,27 @@ func WebRTCSDPTypeToString(typ WebRTCSDPType) string {
 type WebRTCSignalingState C.int
 
 const (
-	// WebrtcSignalingStateStable wraps GST_WEBRTC_SIGNALING_STATE_STABLE
+	// WebrtcSignalingStateStable wraps WEBRTC_SIGNALING_STATE_STABLE
 	//
 	// stable
 	WebrtcSignalingStateStable WebRTCSignalingState = 0
-	// WebrtcSignalingStateClosed wraps GST_WEBRTC_SIGNALING_STATE_CLOSED
+	// WebrtcSignalingStateClosed wraps WEBRTC_SIGNALING_STATE_CLOSED
 	//
 	// closed
 	WebrtcSignalingStateClosed WebRTCSignalingState = 1
-	// WebrtcSignalingStateHaveLocalOffer wraps GST_WEBRTC_SIGNALING_STATE_HAVE_LOCAL_OFFER
+	// WebrtcSignalingStateHaveLocalOffer wraps WEBRTC_SIGNALING_STATE_HAVE_LOCAL_OFFER
 	//
 	// have-local-offer
 	WebrtcSignalingStateHaveLocalOffer WebRTCSignalingState = 2
-	// WebrtcSignalingStateHaveRemoteOffer wraps GST_WEBRTC_SIGNALING_STATE_HAVE_REMOTE_OFFER
+	// WebrtcSignalingStateHaveRemoteOffer wraps WEBRTC_SIGNALING_STATE_HAVE_REMOTE_OFFER
 	//
 	// have-remote-offer
 	WebrtcSignalingStateHaveRemoteOffer WebRTCSignalingState = 3
-	// WebrtcSignalingStateHaveLocalPranswer wraps GST_WEBRTC_SIGNALING_STATE_HAVE_LOCAL_PRANSWER
+	// WebrtcSignalingStateHaveLocalPranswer wraps WEBRTC_SIGNALING_STATE_HAVE_LOCAL_PRANSWER
 	//
 	// have-local-pranswer
 	WebrtcSignalingStateHaveLocalPranswer WebRTCSignalingState = 4
-	// WebrtcSignalingStateHaveRemotePranswer wraps GST_WEBRTC_SIGNALING_STATE_HAVE_REMOTE_PRANSWER
+	// WebrtcSignalingStateHaveRemotePranswer wraps WEBRTC_SIGNALING_STATE_HAVE_REMOTE_PRANSWER
 	//
 	// have-remote-pranswer
 	WebrtcSignalingStateHaveRemotePranswer WebRTCSignalingState = 5
@@ -1109,59 +1106,59 @@ func (e WebRTCSignalingState) String() string {
 type WebRTCStatsType C.int
 
 const (
-	// WebrtcStatsCodec wraps GST_WEBRTC_STATS_CODEC
+	// WebrtcStatsCodec wraps WEBRTC_STATS_CODEC
 	//
 	// codec
 	WebrtcStatsCodec WebRTCStatsType = 1
-	// WebrtcStatsInboundRtp wraps GST_WEBRTC_STATS_INBOUND_RTP
+	// WebrtcStatsInboundRtp wraps WEBRTC_STATS_INBOUND_RTP
 	//
 	// inbound-rtp
 	WebrtcStatsInboundRtp WebRTCStatsType = 2
-	// WebrtcStatsOutboundRtp wraps GST_WEBRTC_STATS_OUTBOUND_RTP
+	// WebrtcStatsOutboundRtp wraps WEBRTC_STATS_OUTBOUND_RTP
 	//
 	// outbound-rtp
 	WebrtcStatsOutboundRtp WebRTCStatsType = 3
-	// WebrtcStatsRemoteInboundRtp wraps GST_WEBRTC_STATS_REMOTE_INBOUND_RTP
+	// WebrtcStatsRemoteInboundRtp wraps WEBRTC_STATS_REMOTE_INBOUND_RTP
 	//
 	// remote-inbound-rtp
 	WebrtcStatsRemoteInboundRtp WebRTCStatsType = 4
-	// WebrtcStatsRemoteOutboundRtp wraps GST_WEBRTC_STATS_REMOTE_OUTBOUND_RTP
+	// WebrtcStatsRemoteOutboundRtp wraps WEBRTC_STATS_REMOTE_OUTBOUND_RTP
 	//
 	// remote-outbound-rtp
 	WebrtcStatsRemoteOutboundRtp WebRTCStatsType = 5
-	// WebrtcStatsCsrc wraps GST_WEBRTC_STATS_CSRC
+	// WebrtcStatsCsrc wraps WEBRTC_STATS_CSRC
 	//
 	// csrc
 	WebrtcStatsCsrc WebRTCStatsType = 6
-	// WebrtcStatsPeerConnection wraps GST_WEBRTC_STATS_PEER_CONNECTION
+	// WebrtcStatsPeerConnection wraps WEBRTC_STATS_PEER_CONNECTION
 	//
 	// peer-connection
 	WebrtcStatsPeerConnection WebRTCStatsType = 7
-	// WebrtcStatsDataChannel wraps GST_WEBRTC_STATS_DATA_CHANNEL
+	// WebrtcStatsDataChannel wraps WEBRTC_STATS_DATA_CHANNEL
 	//
 	// data-channel
 	WebrtcStatsDataChannel WebRTCStatsType = 8
-	// WebrtcStatsStream wraps GST_WEBRTC_STATS_STREAM
+	// WebrtcStatsStream wraps WEBRTC_STATS_STREAM
 	//
 	// stream
 	WebrtcStatsStream WebRTCStatsType = 9
-	// WebrtcStatsTransport wraps GST_WEBRTC_STATS_TRANSPORT
+	// WebrtcStatsTransport wraps WEBRTC_STATS_TRANSPORT
 	//
 	// transport
 	WebrtcStatsTransport WebRTCStatsType = 10
-	// WebrtcStatsCandidatePair wraps GST_WEBRTC_STATS_CANDIDATE_PAIR
+	// WebrtcStatsCandidatePair wraps WEBRTC_STATS_CANDIDATE_PAIR
 	//
 	// candidate-pair
 	WebrtcStatsCandidatePair WebRTCStatsType = 11
-	// WebrtcStatsLocalCandidate wraps GST_WEBRTC_STATS_LOCAL_CANDIDATE
+	// WebrtcStatsLocalCandidate wraps WEBRTC_STATS_LOCAL_CANDIDATE
 	//
 	// local-candidate
 	WebrtcStatsLocalCandidate WebRTCStatsType = 12
-	// WebrtcStatsRemoteCandidate wraps GST_WEBRTC_STATS_REMOTE_CANDIDATE
+	// WebrtcStatsRemoteCandidate wraps WEBRTC_STATS_REMOTE_CANDIDATE
 	//
 	// remote-candidate
 	WebrtcStatsRemoteCandidate WebRTCStatsType = 13
-	// WebrtcStatsCertificate wraps GST_WEBRTC_STATS_CERTIFICATE
+	// WebrtcStatsCertificate wraps WEBRTC_STATS_CERTIFICATE
 	//
 	// certificate
 	WebrtcStatsCertificate WebRTCStatsType = 14
@@ -1295,14 +1292,6 @@ type WebRTCDataChannel interface {
 	//
 	// Close the @channel.
 	Close()
-	// SendData wraps gst_webrtc_data_channel_send_data
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- data *glib.Bytes (nullable): a #GBytes or %NULL 
-	//
-	// Send @data as a data message over @channel.
-	SendData(*glib.Bytes)
 	// SendDataFull wraps gst_webrtc_data_channel_send_data_full
 	// 
 	// The function takes the following parameters:
@@ -1316,14 +1305,6 @@ type WebRTCDataChannel interface {
 	//
 	// Send @data as a data message over @channel.
 	SendDataFull(*glib.Bytes) (bool, error)
-	// SendString wraps gst_webrtc_data_channel_send_string
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- str string (nullable): a string or %NULL 
-	//
-	// Send @str as a string message over @channel.
-	SendString(string)
 	// SendStringFull wraps gst_webrtc_data_channel_send_string_full
 	// 
 	// The function takes the following parameters:
@@ -1354,8 +1335,10 @@ type WebRTCDataChannel interface {
 	// ConnectOnOpen connects the provided callback to the "on-open" signal
 	ConnectOnOpen(func(WebRTCDataChannel)) gobject.SignalHandle
 	// EmitSendData emits the "send-data" signal
+	//
 	EmitSendData(glib.Bytes)
 	// EmitSendString emits the "send-string" signal
+	//
 	EmitSendString(string)
 }
 
@@ -1419,27 +1402,6 @@ func (channel *WebRTCDataChannelInstance) Close() {
 	runtime.KeepAlive(channel)
 }
 
-// SendData wraps gst_webrtc_data_channel_send_data
-// 
-// The function takes the following parameters:
-// 
-// 	- data *glib.Bytes (nullable): a #GBytes or %NULL 
-//
-// Send @data as a data message over @channel.
-func (channel *WebRTCDataChannelInstance) SendData(data *glib.Bytes) {
-	var carg0 *C.GstWebRTCDataChannel // in, none, converted
-	var carg1 *C.GBytes               // in, none, converted, nullable
-
-	carg0 = (*C.GstWebRTCDataChannel)(UnsafeWebRTCDataChannelToGlibNone(channel))
-	if data != nil {
-		carg1 = (*C.GBytes)(glib.UnsafeBytesToGlibNone(data))
-	}
-
-	C.gst_webrtc_data_channel_send_data(carg0, carg1)
-	runtime.KeepAlive(channel)
-	runtime.KeepAlive(data)
-}
-
 // SendDataFull wraps gst_webrtc_data_channel_send_data_full
 // 
 // The function takes the following parameters:
@@ -1478,28 +1440,6 @@ func (channel *WebRTCDataChannelInstance) SendDataFull(data *glib.Bytes) (bool, 
 	}
 
 	return goret, _goerr
-}
-
-// SendString wraps gst_webrtc_data_channel_send_string
-// 
-// The function takes the following parameters:
-// 
-// 	- str string (nullable): a string or %NULL 
-//
-// Send @str as a string message over @channel.
-func (channel *WebRTCDataChannelInstance) SendString(str string) {
-	var carg0 *C.GstWebRTCDataChannel // in, none, converted
-	var carg1 *C.gchar                // in, none, string, nullable-string
-
-	carg0 = (*C.GstWebRTCDataChannel)(UnsafeWebRTCDataChannelToGlibNone(channel))
-	if str != "" {
-		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(str)))
-		defer C.free(unsafe.Pointer(carg1))
-	}
-
-	C.gst_webrtc_data_channel_send_string(carg0, carg1)
-	runtime.KeepAlive(channel)
-	runtime.KeepAlive(str)
 }
 
 // SendStringFull wraps gst_webrtc_data_channel_send_string_full
@@ -1581,11 +1521,13 @@ func (o *WebRTCDataChannelInstance) ConnectOnOpen(fn func(WebRTCDataChannel)) go
 }
 
 // EmitSendData emits the "send-data" signal
+//
 func (o *WebRTCDataChannelInstance) EmitSendData(arg0 glib.Bytes) {
 	o.Emit("send-data", arg0)
 }
 
 // EmitSendString emits the "send-string" signal
+//
 func (o *WebRTCDataChannelInstance) EmitSendString(arg0 string) {
 	o.Emit("send-string", arg0)
 }
@@ -5142,35 +5084,6 @@ func UnsafeWebRTCSessionDescriptionToGlibFull(w *WebRTCSessionDescription) unsaf
 	return _p
 }
 
-// NewWebRTCSessionDescription wraps gst_webrtc_session_description_new
-// 
-// The function takes the following parameters:
-// 
-// 	- typ WebRTCSDPType: a #GstWebRTCSDPType 
-// 	- sdp *gstsdp.SDPMessage: a #GstSDPMessage 
-// 
-// The function returns the following values:
-// 
-// 	- goret *WebRTCSessionDescription 
-func NewWebRTCSessionDescription(typ WebRTCSDPType, sdp *gstsdp.SDPMessage) *WebRTCSessionDescription {
-	var carg1 C.GstWebRTCSDPType             // in, none, casted
-	var carg2 *C.GstSDPMessage               // in, full, converted
-	var cret  *C.GstWebRTCSessionDescription // return, full, converted
-
-	carg1 = C.GstWebRTCSDPType(typ)
-	carg2 = (*C.GstSDPMessage)(gstsdp.UnsafeSDPMessageToGlibFull(sdp))
-
-	cret = C.gst_webrtc_session_description_new(carg1, carg2)
-	runtime.KeepAlive(typ)
-	runtime.KeepAlive(sdp)
-
-	var goret *WebRTCSessionDescription
-
-	goret = UnsafeWebRTCSessionDescriptionFromGlibFull(unsafe.Pointer(cret))
-
-	return goret
-}
-
 // Copy wraps gst_webrtc_session_description_copy
 // 
 // The function returns the following values:
@@ -5192,10 +5105,3 @@ func (src *WebRTCSessionDescription) Copy() *WebRTCSessionDescription {
 	return goret
 }
 
-// SuppressUnstableWarning should be overwritten by the user to suppress the warning
-var SuppressUnstableWarning = false
-func init() {
-	if !SuppressUnstableWarning {
-		log.Println("Warning: using unstable API")
-	}
-}

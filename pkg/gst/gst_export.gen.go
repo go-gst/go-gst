@@ -595,6 +595,26 @@ func _gotk4_gst1_TaskPoolFunction(carg1 unsafe.Pointer) {
 	fn()
 }
 
+//export _gotk4_gst1_TaskThreadFunc
+func _gotk4_gst1_TaskThreadFunc(carg1 *C.GstTask, carg2 *C.GThread, carg3 C.gpointer) {
+	var fn TaskThreadFunc
+	{
+		v := userdata.Load(unsafe.Pointer(carg3))
+		if v == nil {
+			panic(`callback not found`)
+		}
+		fn = v.(TaskThreadFunc)
+	}
+
+	var task   Task         // in, none, converted
+	var thread *glib.Thread // in, none, converted
+
+	task = UnsafeTaskFromGlibNone(unsafe.Pointer(carg1))
+	thread = glib.UnsafeThreadFromGlibNone(unsafe.Pointer(carg2))
+
+	fn(task, thread)
+}
+
 //export _gotk4_gst1_TypeFindFunction
 func _gotk4_gst1_TypeFindFunction(carg1 *C.GstTypeFind, carg2 C.gpointer) {
 	var fn TypeFindFunction

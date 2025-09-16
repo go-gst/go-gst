@@ -52,20 +52,20 @@ func init() {
 type InterpolationMode C.int
 
 const (
-	// InterpolationModeNone wraps GST_INTERPOLATION_MODE_NONE
+	// InterpolationModeNone wraps INTERPOLATION_MODE_NONE
 	//
 	// steps-like interpolation, default
 	InterpolationModeNone InterpolationMode = 0
-	// InterpolationModeLinear wraps GST_INTERPOLATION_MODE_LINEAR
+	// InterpolationModeLinear wraps INTERPOLATION_MODE_LINEAR
 	//
 	// linear interpolation
 	InterpolationModeLinear InterpolationMode = 1
-	// InterpolationModeCubic wraps GST_INTERPOLATION_MODE_CUBIC
+	// InterpolationModeCubic wraps INTERPOLATION_MODE_CUBIC
 	//
 	// cubic interpolation (natural), may overshoot
 	//   the min or max values set by the control point, but is more 'curvy'
 	InterpolationModeCubic InterpolationMode = 2
-	// InterpolationModeCubicMonotonic wraps GST_INTERPOLATION_MODE_CUBIC_MONOTONIC
+	// InterpolationModeCubicMonotonic wraps INTERPOLATION_MODE_CUBIC_MONOTONIC
 	//
 	// monotonic cubic interpolation, will not
 	//   produce any values outside of the min-max range set by the control points
@@ -103,23 +103,23 @@ func (e InterpolationMode) String() string {
 type LFOWaveform C.int
 
 const (
-	// LfoWaveformSine wraps GST_LFO_WAVEFORM_SINE
+	// LfoWaveformSine wraps LFO_WAVEFORM_SINE
 	//
 	// sine waveform
 	LfoWaveformSine LFOWaveform = 0
-	// LfoWaveformSquare wraps GST_LFO_WAVEFORM_SQUARE
+	// LfoWaveformSquare wraps LFO_WAVEFORM_SQUARE
 	//
 	// square waveform
 	LfoWaveformSquare LFOWaveform = 1
-	// LfoWaveformSaw wraps GST_LFO_WAVEFORM_SAW
+	// LfoWaveformSaw wraps LFO_WAVEFORM_SAW
 	//
 	// saw waveform
 	LfoWaveformSaw LFOWaveform = 2
-	// LfoWaveformReverseSaw wraps GST_LFO_WAVEFORM_REVERSE_SAW
+	// LfoWaveformReverseSaw wraps LFO_WAVEFORM_REVERSE_SAW
 	//
 	// reverse saw waveform
 	LfoWaveformReverseSaw LFOWaveform = 3
-	// LfoWaveformTriangle wraps GST_LFO_WAVEFORM_TRIANGLE
+	// LfoWaveformTriangle wraps LFO_WAVEFORM_TRIANGLE
 	//
 	// triangle waveform
 	LfoWaveformTriangle LFOWaveform = 4

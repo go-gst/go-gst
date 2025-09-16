@@ -3,15 +3,12 @@
 package gstrtsp
 
 import (
-	"context"
 	"fmt"
 	"runtime"
 	"strings"
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/core/classdata"
-	"github.com/diamondburned/gotk4/pkg/core/userdata"
-	"github.com/diamondburned/gotk4/pkg/gio/v2"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
@@ -21,8 +18,6 @@ import (
 // #cgo pkg-config: gstreamer-rtsp-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/rtsp/rtsp.h>
-// extern gboolean _gotk4_gstrtsp1_RTSPConnectionAcceptCertificateFunc(GTlsConnection*, GTlsCertificate*, GTlsCertificateFlags, gpointer);
-// extern void destroyUserdata(gpointer);
 // extern GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_after_send(GstRTSPExtension*, GstRTSPMessage*, GstRTSPMessage*);
 // extern GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_before_send(GstRTSPExtension*, GstRTSPMessage*);
 // extern gboolean _gotk4_gstrtsp1_RTSPExtension_configure_stream(GstRTSPExtension*, GstCaps*);
@@ -120,15 +115,15 @@ const RTSP_DEFAULT_PORT = 554
 type RTSPAuthMethod C.int
 
 const (
-	// RtspAuthNone wraps GST_RTSP_AUTH_NONE
+	// RtspAuthNone wraps RTSP_AUTH_NONE
 	//
 	// no authentication
 	RtspAuthNone RTSPAuthMethod = 0
-	// RtspAuthBasic wraps GST_RTSP_AUTH_BASIC
+	// RtspAuthBasic wraps RTSP_AUTH_BASIC
 	//
 	// basic authentication
 	RtspAuthBasic RTSPAuthMethod = 1
-	// RtspAuthDigest wraps GST_RTSP_AUTH_DIGEST
+	// RtspAuthDigest wraps RTSP_AUTH_DIGEST
 	//
 	// digest authentication
 	RtspAuthDigest RTSPAuthMethod = 2
@@ -163,15 +158,15 @@ func (e RTSPAuthMethod) String() string {
 type RTSPFamily C.int
 
 const (
-	// RtspFamNone wraps GST_RTSP_FAM_NONE
+	// RtspFamNone wraps RTSP_FAM_NONE
 	//
 	// unknown network family
 	RtspFamNone RTSPFamily = 0
-	// RtspFamInet wraps GST_RTSP_FAM_INET
+	// RtspFamInet wraps RTSP_FAM_INET
 	//
 	// internet
 	RtspFamInet RTSPFamily = 1
-	// RtspFamInet6 wraps GST_RTSP_FAM_INET6
+	// RtspFamInet6 wraps RTSP_FAM_INET6
 	//
 	// internet V6
 	RtspFamInet6 RTSPFamily = 2
@@ -206,185 +201,185 @@ func (e RTSPFamily) String() string {
 type RTSPHeaderField C.int
 
 const (
-	// RtspHdrInvalid wraps GST_RTSP_HDR_INVALID
+	// RtspHdrInvalid wraps RTSP_HDR_INVALID
 	RtspHdrInvalid RTSPHeaderField = 0
-	// RtspHdrAccept wraps GST_RTSP_HDR_ACCEPT
+	// RtspHdrAccept wraps RTSP_HDR_ACCEPT
 	RtspHdrAccept RTSPHeaderField = 1
-	// RtspHdrAcceptEncoding wraps GST_RTSP_HDR_ACCEPT_ENCODING
+	// RtspHdrAcceptEncoding wraps RTSP_HDR_ACCEPT_ENCODING
 	RtspHdrAcceptEncoding RTSPHeaderField = 2
-	// RtspHdrAcceptLanguage wraps GST_RTSP_HDR_ACCEPT_LANGUAGE
+	// RtspHdrAcceptLanguage wraps RTSP_HDR_ACCEPT_LANGUAGE
 	RtspHdrAcceptLanguage RTSPHeaderField = 3
-	// RtspHdrAllow wraps GST_RTSP_HDR_ALLOW
+	// RtspHdrAllow wraps RTSP_HDR_ALLOW
 	RtspHdrAllow RTSPHeaderField = 4
-	// RtspHdrAuthorization wraps GST_RTSP_HDR_AUTHORIZATION
+	// RtspHdrAuthorization wraps RTSP_HDR_AUTHORIZATION
 	RtspHdrAuthorization RTSPHeaderField = 5
-	// RtspHdrBandwidth wraps GST_RTSP_HDR_BANDWIDTH
+	// RtspHdrBandwidth wraps RTSP_HDR_BANDWIDTH
 	RtspHdrBandwidth RTSPHeaderField = 6
-	// RtspHdrBlocksize wraps GST_RTSP_HDR_BLOCKSIZE
+	// RtspHdrBlocksize wraps RTSP_HDR_BLOCKSIZE
 	RtspHdrBlocksize RTSPHeaderField = 7
-	// RtspHdrCacheControl wraps GST_RTSP_HDR_CACHE_CONTROL
+	// RtspHdrCacheControl wraps RTSP_HDR_CACHE_CONTROL
 	RtspHdrCacheControl RTSPHeaderField = 8
-	// RtspHdrConference wraps GST_RTSP_HDR_CONFERENCE
+	// RtspHdrConference wraps RTSP_HDR_CONFERENCE
 	RtspHdrConference RTSPHeaderField = 9
-	// RtspHdrConnection wraps GST_RTSP_HDR_CONNECTION
+	// RtspHdrConnection wraps RTSP_HDR_CONNECTION
 	RtspHdrConnection RTSPHeaderField = 10
-	// RtspHdrContentBase wraps GST_RTSP_HDR_CONTENT_BASE
+	// RtspHdrContentBase wraps RTSP_HDR_CONTENT_BASE
 	RtspHdrContentBase RTSPHeaderField = 11
-	// RtspHdrContentEncoding wraps GST_RTSP_HDR_CONTENT_ENCODING
+	// RtspHdrContentEncoding wraps RTSP_HDR_CONTENT_ENCODING
 	RtspHdrContentEncoding RTSPHeaderField = 12
-	// RtspHdrContentLanguage wraps GST_RTSP_HDR_CONTENT_LANGUAGE
+	// RtspHdrContentLanguage wraps RTSP_HDR_CONTENT_LANGUAGE
 	RtspHdrContentLanguage RTSPHeaderField = 13
-	// RtspHdrContentLength wraps GST_RTSP_HDR_CONTENT_LENGTH
+	// RtspHdrContentLength wraps RTSP_HDR_CONTENT_LENGTH
 	RtspHdrContentLength RTSPHeaderField = 14
-	// RtspHdrContentLocation wraps GST_RTSP_HDR_CONTENT_LOCATION
+	// RtspHdrContentLocation wraps RTSP_HDR_CONTENT_LOCATION
 	RtspHdrContentLocation RTSPHeaderField = 15
-	// RtspHdrContentType wraps GST_RTSP_HDR_CONTENT_TYPE
+	// RtspHdrContentType wraps RTSP_HDR_CONTENT_TYPE
 	RtspHdrContentType RTSPHeaderField = 16
-	// RtspHdrCseq wraps GST_RTSP_HDR_CSEQ
+	// RtspHdrCseq wraps RTSP_HDR_CSEQ
 	RtspHdrCseq RTSPHeaderField = 17
-	// RtspHdrDate wraps GST_RTSP_HDR_DATE
+	// RtspHdrDate wraps RTSP_HDR_DATE
 	RtspHdrDate RTSPHeaderField = 18
-	// RtspHdrExpires wraps GST_RTSP_HDR_EXPIRES
+	// RtspHdrExpires wraps RTSP_HDR_EXPIRES
 	RtspHdrExpires RTSPHeaderField = 19
-	// RtspHdrFrom wraps GST_RTSP_HDR_FROM
+	// RtspHdrFrom wraps RTSP_HDR_FROM
 	RtspHdrFrom RTSPHeaderField = 20
-	// RtspHdrIfModifiedSince wraps GST_RTSP_HDR_IF_MODIFIED_SINCE
+	// RtspHdrIfModifiedSince wraps RTSP_HDR_IF_MODIFIED_SINCE
 	RtspHdrIfModifiedSince RTSPHeaderField = 21
-	// RtspHdrLastModified wraps GST_RTSP_HDR_LAST_MODIFIED
+	// RtspHdrLastModified wraps RTSP_HDR_LAST_MODIFIED
 	RtspHdrLastModified RTSPHeaderField = 22
-	// RtspHdrProxyAuthenticate wraps GST_RTSP_HDR_PROXY_AUTHENTICATE
+	// RtspHdrProxyAuthenticate wraps RTSP_HDR_PROXY_AUTHENTICATE
 	RtspHdrProxyAuthenticate RTSPHeaderField = 23
-	// RtspHdrProxyRequire wraps GST_RTSP_HDR_PROXY_REQUIRE
+	// RtspHdrProxyRequire wraps RTSP_HDR_PROXY_REQUIRE
 	RtspHdrProxyRequire RTSPHeaderField = 24
-	// RtspHdrPublic wraps GST_RTSP_HDR_PUBLIC
+	// RtspHdrPublic wraps RTSP_HDR_PUBLIC
 	RtspHdrPublic RTSPHeaderField = 25
-	// RtspHdrRange wraps GST_RTSP_HDR_RANGE
+	// RtspHdrRange wraps RTSP_HDR_RANGE
 	RtspHdrRange RTSPHeaderField = 26
-	// RtspHdrReferer wraps GST_RTSP_HDR_REFERER
+	// RtspHdrReferer wraps RTSP_HDR_REFERER
 	RtspHdrReferer RTSPHeaderField = 27
-	// RtspHdrRequire wraps GST_RTSP_HDR_REQUIRE
+	// RtspHdrRequire wraps RTSP_HDR_REQUIRE
 	RtspHdrRequire RTSPHeaderField = 28
-	// RtspHdrRetryAfter wraps GST_RTSP_HDR_RETRY_AFTER
+	// RtspHdrRetryAfter wraps RTSP_HDR_RETRY_AFTER
 	RtspHdrRetryAfter RTSPHeaderField = 29
-	// RtspHdrRtpInfo wraps GST_RTSP_HDR_RTP_INFO
+	// RtspHdrRtpInfo wraps RTSP_HDR_RTP_INFO
 	RtspHdrRtpInfo RTSPHeaderField = 30
-	// RtspHdrScale wraps GST_RTSP_HDR_SCALE
+	// RtspHdrScale wraps RTSP_HDR_SCALE
 	RtspHdrScale RTSPHeaderField = 31
-	// RtspHdrSession wraps GST_RTSP_HDR_SESSION
+	// RtspHdrSession wraps RTSP_HDR_SESSION
 	RtspHdrSession RTSPHeaderField = 32
-	// RtspHdrServer wraps GST_RTSP_HDR_SERVER
+	// RtspHdrServer wraps RTSP_HDR_SERVER
 	RtspHdrServer RTSPHeaderField = 33
-	// RtspHdrSpeed wraps GST_RTSP_HDR_SPEED
+	// RtspHdrSpeed wraps RTSP_HDR_SPEED
 	RtspHdrSpeed RTSPHeaderField = 34
-	// RtspHdrTransport wraps GST_RTSP_HDR_TRANSPORT
+	// RtspHdrTransport wraps RTSP_HDR_TRANSPORT
 	RtspHdrTransport RTSPHeaderField = 35
-	// RtspHdrUnsupported wraps GST_RTSP_HDR_UNSUPPORTED
+	// RtspHdrUnsupported wraps RTSP_HDR_UNSUPPORTED
 	RtspHdrUnsupported RTSPHeaderField = 36
-	// RtspHdrUserAgent wraps GST_RTSP_HDR_USER_AGENT
+	// RtspHdrUserAgent wraps RTSP_HDR_USER_AGENT
 	RtspHdrUserAgent RTSPHeaderField = 37
-	// RtspHdrVia wraps GST_RTSP_HDR_VIA
+	// RtspHdrVia wraps RTSP_HDR_VIA
 	RtspHdrVia RTSPHeaderField = 38
-	// RtspHdrWwwAuthenticate wraps GST_RTSP_HDR_WWW_AUTHENTICATE
+	// RtspHdrWwwAuthenticate wraps RTSP_HDR_WWW_AUTHENTICATE
 	RtspHdrWwwAuthenticate RTSPHeaderField = 39
-	// RtspHdrClientChallenge wraps GST_RTSP_HDR_CLIENT_CHALLENGE
+	// RtspHdrClientChallenge wraps RTSP_HDR_CLIENT_CHALLENGE
 	RtspHdrClientChallenge RTSPHeaderField = 40
-	// RtspHdrRealChallenge1 wraps GST_RTSP_HDR_REAL_CHALLENGE1
+	// RtspHdrRealChallenge1 wraps RTSP_HDR_REAL_CHALLENGE1
 	RtspHdrRealChallenge1 RTSPHeaderField = 41
-	// RtspHdrRealChallenge2 wraps GST_RTSP_HDR_REAL_CHALLENGE2
+	// RtspHdrRealChallenge2 wraps RTSP_HDR_REAL_CHALLENGE2
 	RtspHdrRealChallenge2 RTSPHeaderField = 42
-	// RtspHdrRealChallenge3 wraps GST_RTSP_HDR_REAL_CHALLENGE3
+	// RtspHdrRealChallenge3 wraps RTSP_HDR_REAL_CHALLENGE3
 	RtspHdrRealChallenge3 RTSPHeaderField = 43
-	// RtspHdrSubscribe wraps GST_RTSP_HDR_SUBSCRIBE
+	// RtspHdrSubscribe wraps RTSP_HDR_SUBSCRIBE
 	RtspHdrSubscribe RTSPHeaderField = 44
-	// RtspHdrAlert wraps GST_RTSP_HDR_ALERT
+	// RtspHdrAlert wraps RTSP_HDR_ALERT
 	RtspHdrAlert RTSPHeaderField = 45
-	// RtspHdrClientID wraps GST_RTSP_HDR_CLIENT_ID
+	// RtspHdrClientID wraps RTSP_HDR_CLIENT_ID
 	RtspHdrClientID RTSPHeaderField = 46
-	// RtspHdrCompanyID wraps GST_RTSP_HDR_COMPANY_ID
+	// RtspHdrCompanyID wraps RTSP_HDR_COMPANY_ID
 	RtspHdrCompanyID RTSPHeaderField = 47
-	// RtspHdrGUID wraps GST_RTSP_HDR_GUID
+	// RtspHdrGUID wraps RTSP_HDR_GUID
 	RtspHdrGUID RTSPHeaderField = 48
-	// RtspHdrRegionData wraps GST_RTSP_HDR_REGION_DATA
+	// RtspHdrRegionData wraps RTSP_HDR_REGION_DATA
 	RtspHdrRegionData RTSPHeaderField = 49
-	// RtspHdrMaxAsmWidth wraps GST_RTSP_HDR_MAX_ASM_WIDTH
+	// RtspHdrMaxAsmWidth wraps RTSP_HDR_MAX_ASM_WIDTH
 	RtspHdrMaxAsmWidth RTSPHeaderField = 50
-	// RtspHdrLanguage wraps GST_RTSP_HDR_LANGUAGE
+	// RtspHdrLanguage wraps RTSP_HDR_LANGUAGE
 	RtspHdrLanguage RTSPHeaderField = 51
-	// RtspHdrPlayerStartTime wraps GST_RTSP_HDR_PLAYER_START_TIME
+	// RtspHdrPlayerStartTime wraps RTSP_HDR_PLAYER_START_TIME
 	RtspHdrPlayerStartTime RTSPHeaderField = 52
-	// RtspHdrLocation wraps GST_RTSP_HDR_LOCATION
+	// RtspHdrLocation wraps RTSP_HDR_LOCATION
 	RtspHdrLocation RTSPHeaderField = 53
-	// RtspHdrETag wraps GST_RTSP_HDR_ETAG
+	// RtspHdrETag wraps RTSP_HDR_ETAG
 	RtspHdrETag RTSPHeaderField = 54
-	// RtspHdrIfMatch wraps GST_RTSP_HDR_IF_MATCH
+	// RtspHdrIfMatch wraps RTSP_HDR_IF_MATCH
 	RtspHdrIfMatch RTSPHeaderField = 55
-	// RtspHdrAcceptCharset wraps GST_RTSP_HDR_ACCEPT_CHARSET
+	// RtspHdrAcceptCharset wraps RTSP_HDR_ACCEPT_CHARSET
 	RtspHdrAcceptCharset RTSPHeaderField = 56
-	// RtspHdrSupported wraps GST_RTSP_HDR_SUPPORTED
+	// RtspHdrSupported wraps RTSP_HDR_SUPPORTED
 	RtspHdrSupported RTSPHeaderField = 57
-	// RtspHdrVary wraps GST_RTSP_HDR_VARY
+	// RtspHdrVary wraps RTSP_HDR_VARY
 	RtspHdrVary RTSPHeaderField = 58
-	// RtspHdrXAccelerateStreaming wraps GST_RTSP_HDR_X_ACCELERATE_STREAMING
+	// RtspHdrXAccelerateStreaming wraps RTSP_HDR_X_ACCELERATE_STREAMING
 	RtspHdrXAccelerateStreaming RTSPHeaderField = 59
-	// RtspHdrXAcceptAuthent wraps GST_RTSP_HDR_X_ACCEPT_AUTHENT
+	// RtspHdrXAcceptAuthent wraps RTSP_HDR_X_ACCEPT_AUTHENT
 	RtspHdrXAcceptAuthent RTSPHeaderField = 60
-	// RtspHdrXAcceptProxyAuthent wraps GST_RTSP_HDR_X_ACCEPT_PROXY_AUTHENT
+	// RtspHdrXAcceptProxyAuthent wraps RTSP_HDR_X_ACCEPT_PROXY_AUTHENT
 	RtspHdrXAcceptProxyAuthent RTSPHeaderField = 61
-	// RtspHdrXBroadcastID wraps GST_RTSP_HDR_X_BROADCAST_ID
+	// RtspHdrXBroadcastID wraps RTSP_HDR_X_BROADCAST_ID
 	RtspHdrXBroadcastID RTSPHeaderField = 62
-	// RtspHdrXBurstStreaming wraps GST_RTSP_HDR_X_BURST_STREAMING
+	// RtspHdrXBurstStreaming wraps RTSP_HDR_X_BURST_STREAMING
 	RtspHdrXBurstStreaming RTSPHeaderField = 63
-	// RtspHdrXNotice wraps GST_RTSP_HDR_X_NOTICE
+	// RtspHdrXNotice wraps RTSP_HDR_X_NOTICE
 	RtspHdrXNotice RTSPHeaderField = 64
-	// RtspHdrXPlayerLagTime wraps GST_RTSP_HDR_X_PLAYER_LAG_TIME
+	// RtspHdrXPlayerLagTime wraps RTSP_HDR_X_PLAYER_LAG_TIME
 	RtspHdrXPlayerLagTime RTSPHeaderField = 65
-	// RtspHdrXPlaylist wraps GST_RTSP_HDR_X_PLAYLIST
+	// RtspHdrXPlaylist wraps RTSP_HDR_X_PLAYLIST
 	RtspHdrXPlaylist RTSPHeaderField = 66
-	// RtspHdrXPlaylistChangeNotice wraps GST_RTSP_HDR_X_PLAYLIST_CHANGE_NOTICE
+	// RtspHdrXPlaylistChangeNotice wraps RTSP_HDR_X_PLAYLIST_CHANGE_NOTICE
 	RtspHdrXPlaylistChangeNotice RTSPHeaderField = 67
-	// RtspHdrXPlaylistGenID wraps GST_RTSP_HDR_X_PLAYLIST_GEN_ID
+	// RtspHdrXPlaylistGenID wraps RTSP_HDR_X_PLAYLIST_GEN_ID
 	RtspHdrXPlaylistGenID RTSPHeaderField = 68
-	// RtspHdrXPlaylistSeekID wraps GST_RTSP_HDR_X_PLAYLIST_SEEK_ID
+	// RtspHdrXPlaylistSeekID wraps RTSP_HDR_X_PLAYLIST_SEEK_ID
 	RtspHdrXPlaylistSeekID RTSPHeaderField = 69
-	// RtspHdrXProxyClientAgent wraps GST_RTSP_HDR_X_PROXY_CLIENT_AGENT
+	// RtspHdrXProxyClientAgent wraps RTSP_HDR_X_PROXY_CLIENT_AGENT
 	RtspHdrXProxyClientAgent RTSPHeaderField = 70
-	// RtspHdrXProxyClientVerb wraps GST_RTSP_HDR_X_PROXY_CLIENT_VERB
+	// RtspHdrXProxyClientVerb wraps RTSP_HDR_X_PROXY_CLIENT_VERB
 	RtspHdrXProxyClientVerb RTSPHeaderField = 71
-	// RtspHdrXRecedingPlaylistchange wraps GST_RTSP_HDR_X_RECEDING_PLAYLISTCHANGE
+	// RtspHdrXRecedingPlaylistchange wraps RTSP_HDR_X_RECEDING_PLAYLISTCHANGE
 	RtspHdrXRecedingPlaylistchange RTSPHeaderField = 72
-	// RtspHdrXRtpInfo wraps GST_RTSP_HDR_X_RTP_INFO
+	// RtspHdrXRtpInfo wraps RTSP_HDR_X_RTP_INFO
 	RtspHdrXRtpInfo RTSPHeaderField = 73
-	// RtspHdrXStartupprofile wraps GST_RTSP_HDR_X_STARTUPPROFILE
+	// RtspHdrXStartupprofile wraps RTSP_HDR_X_STARTUPPROFILE
 	RtspHdrXStartupprofile RTSPHeaderField = 74
-	// RtspHdrTimestamp wraps GST_RTSP_HDR_TIMESTAMP
+	// RtspHdrTimestamp wraps RTSP_HDR_TIMESTAMP
 	RtspHdrTimestamp RTSPHeaderField = 75
-	// RtspHdrAuthenticationInfo wraps GST_RTSP_HDR_AUTHENTICATION_INFO
+	// RtspHdrAuthenticationInfo wraps RTSP_HDR_AUTHENTICATION_INFO
 	RtspHdrAuthenticationInfo RTSPHeaderField = 76
-	// RtspHdrHost wraps GST_RTSP_HDR_HOST
+	// RtspHdrHost wraps RTSP_HDR_HOST
 	RtspHdrHost RTSPHeaderField = 77
-	// RtspHdrPragma wraps GST_RTSP_HDR_PRAGMA
+	// RtspHdrPragma wraps RTSP_HDR_PRAGMA
 	RtspHdrPragma RTSPHeaderField = 78
-	// RtspHdrXServerIPAddress wraps GST_RTSP_HDR_X_SERVER_IP_ADDRESS
+	// RtspHdrXServerIPAddress wraps RTSP_HDR_X_SERVER_IP_ADDRESS
 	RtspHdrXServerIPAddress RTSPHeaderField = 79
-	// RtspHdrXSessioncookie wraps GST_RTSP_HDR_X_SESSIONCOOKIE
+	// RtspHdrXSessioncookie wraps RTSP_HDR_X_SESSIONCOOKIE
 	RtspHdrXSessioncookie RTSPHeaderField = 80
-	// RtspHdrRtcpInterval wraps GST_RTSP_HDR_RTCP_INTERVAL
+	// RtspHdrRtcpInterval wraps RTSP_HDR_RTCP_INTERVAL
 	RtspHdrRtcpInterval RTSPHeaderField = 81
-	// RtspHdrKeymgmt wraps GST_RTSP_HDR_KEYMGMT
+	// RtspHdrKeymgmt wraps RTSP_HDR_KEYMGMT
 	RtspHdrKeymgmt RTSPHeaderField = 82
-	// RtspHdrPipelinedRequests wraps GST_RTSP_HDR_PIPELINED_REQUESTS
+	// RtspHdrPipelinedRequests wraps RTSP_HDR_PIPELINED_REQUESTS
 	RtspHdrPipelinedRequests RTSPHeaderField = 83
-	// RtspHdrMediaProperties wraps GST_RTSP_HDR_MEDIA_PROPERTIES
+	// RtspHdrMediaProperties wraps RTSP_HDR_MEDIA_PROPERTIES
 	RtspHdrMediaProperties RTSPHeaderField = 84
-	// RtspHdrSeekStyle wraps GST_RTSP_HDR_SEEK_STYLE
+	// RtspHdrSeekStyle wraps RTSP_HDR_SEEK_STYLE
 	RtspHdrSeekStyle RTSPHeaderField = 85
-	// RtspHdrAcceptRanges wraps GST_RTSP_HDR_ACCEPT_RANGES
+	// RtspHdrAcceptRanges wraps RTSP_HDR_ACCEPT_RANGES
 	RtspHdrAcceptRanges RTSPHeaderField = 86
-	// RtspHdrFrames wraps GST_RTSP_HDR_FRAMES
+	// RtspHdrFrames wraps RTSP_HDR_FRAMES
 	RtspHdrFrames RTSPHeaderField = 87
-	// RtspHdrRateControl wraps GST_RTSP_HDR_RATE_CONTROL
+	// RtspHdrRateControl wraps RTSP_HDR_RATE_CONTROL
 	RtspHdrRateControl RTSPHeaderField = 88
-	// RtspHdrLast wraps GST_RTSP_HDR_LAST
+	// RtspHdrLast wraps RTSP_HDR_LAST
 	RtspHdrLast RTSPHeaderField = 89
 )
 
@@ -504,27 +499,27 @@ func (e RTSPHeaderField) String() string {
 type RTSPMsgType C.int
 
 const (
-	// RtspMessageInvalid wraps GST_RTSP_MESSAGE_INVALID
+	// RtspMessageInvalid wraps RTSP_MESSAGE_INVALID
 	//
 	// invalid message type
 	RtspMessageInvalid RTSPMsgType = 0
-	// RtspMessageRequest wraps GST_RTSP_MESSAGE_REQUEST
+	// RtspMessageRequest wraps RTSP_MESSAGE_REQUEST
 	//
 	// RTSP request message
 	RtspMessageRequest RTSPMsgType = 1
-	// RtspMessageResponse wraps GST_RTSP_MESSAGE_RESPONSE
+	// RtspMessageResponse wraps RTSP_MESSAGE_RESPONSE
 	//
 	// RTSP response message
 	RtspMessageResponse RTSPMsgType = 2
-	// RtspMessageHTTPRequest wraps GST_RTSP_MESSAGE_HTTP_REQUEST
+	// RtspMessageHTTPRequest wraps RTSP_MESSAGE_HTTP_REQUEST
 	//
 	// HTTP request message.
 	RtspMessageHTTPRequest RTSPMsgType = 3
-	// RtspMessageHTTPResponse wraps GST_RTSP_MESSAGE_HTTP_RESPONSE
+	// RtspMessageHTTPResponse wraps RTSP_MESSAGE_HTTP_RESPONSE
 	//
 	// HTTP response message.
 	RtspMessageHTTPResponse RTSPMsgType = 4
-	// RtspMessageData wraps GST_RTSP_MESSAGE_DATA
+	// RtspMessageData wraps RTSP_MESSAGE_DATA
 	//
 	// data message
 	RtspMessageData RTSPMsgType = 5
@@ -562,23 +557,23 @@ func (e RTSPMsgType) String() string {
 type RTSPRangeUnit C.int
 
 const (
-	// RtspRangeSmpte wraps GST_RTSP_RANGE_SMPTE
+	// RtspRangeSmpte wraps RTSP_RANGE_SMPTE
 	//
 	// SMPTE timecode
 	RtspRangeSmpte RTSPRangeUnit = 0
-	// RtspRangeSmpte30Drop wraps GST_RTSP_RANGE_SMPTE_30_DROP
+	// RtspRangeSmpte30Drop wraps RTSP_RANGE_SMPTE_30_DROP
 	//
 	// 29.97 frames per second
 	RtspRangeSmpte30Drop RTSPRangeUnit = 1
-	// RtspRangeSmpte25 wraps GST_RTSP_RANGE_SMPTE_25
+	// RtspRangeSmpte25 wraps RTSP_RANGE_SMPTE_25
 	//
 	// 25 frames per second
 	RtspRangeSmpte25 RTSPRangeUnit = 2
-	// RtspRangeNpt wraps GST_RTSP_RANGE_NPT
+	// RtspRangeNpt wraps RTSP_RANGE_NPT
 	//
 	// Normal play time
 	RtspRangeNpt RTSPRangeUnit = 3
-	// RtspRangeClock wraps GST_RTSP_RANGE_CLOCK
+	// RtspRangeClock wraps RTSP_RANGE_CLOCK
 	//
 	// Absolute time expressed as ISO 8601 timestamps
 	RtspRangeClock RTSPRangeUnit = 4
@@ -615,79 +610,79 @@ func (e RTSPRangeUnit) String() string {
 type RTSPResult C.int
 
 const (
-	// RtspOK wraps GST_RTSP_OK
+	// RtspOK wraps RTSP_OK
 	//
 	// no error
 	RtspOK RTSPResult = 0
-	// RtspOKRedirect wraps GST_RTSP_OK_REDIRECT
+	// RtspOKRedirect wraps RTSP_OK_REDIRECT
 	//
 	// RTSP request is successful, but was redirected.
 	RtspOKRedirect RTSPResult = 1
-	// RtspError wraps GST_RTSP_ERROR
+	// RtspError wraps RTSP_ERROR
 	//
 	// some unspecified error occurred
 	RtspError RTSPResult = -1
-	// RtspEinval wraps GST_RTSP_EINVAL
+	// RtspEinval wraps RTSP_EINVAL
 	//
 	// invalid arguments were provided to a function
 	RtspEinval RTSPResult = -2
-	// RtspEintr wraps GST_RTSP_EINTR
+	// RtspEintr wraps RTSP_EINTR
 	//
 	// an operation was canceled
 	RtspEintr RTSPResult = -3
-	// RtspEnomem wraps GST_RTSP_ENOMEM
+	// RtspEnomem wraps RTSP_ENOMEM
 	//
 	// no memory was available for the operation
 	RtspEnomem RTSPResult = -4
-	// RtspEresolv wraps GST_RTSP_ERESOLV
+	// RtspEresolv wraps RTSP_ERESOLV
 	//
 	// a host resolve error occurred
 	RtspEresolv RTSPResult = -5
-	// RtspEnotimpl wraps GST_RTSP_ENOTIMPL
+	// RtspEnotimpl wraps RTSP_ENOTIMPL
 	//
 	// function not implemented
 	RtspEnotimpl RTSPResult = -6
-	// RtspEsys wraps GST_RTSP_ESYS
+	// RtspEsys wraps RTSP_ESYS
 	//
 	// a system error occurred, errno contains more details
 	RtspEsys RTSPResult = -7
-	// RtspEparse wraps GST_RTSP_EPARSE
+	// RtspEparse wraps RTSP_EPARSE
 	//
 	// a parsing error occurred
 	RtspEparse RTSPResult = -8
-	// RtspEwsastart wraps GST_RTSP_EWSASTART
+	// RtspEwsastart wraps RTSP_EWSASTART
 	//
 	// windows networking could not start
 	RtspEwsastart RTSPResult = -9
-	// RtspEwsaversion wraps GST_RTSP_EWSAVERSION
+	// RtspEwsaversion wraps RTSP_EWSAVERSION
 	//
 	// windows networking stack has wrong version
 	RtspEwsaversion RTSPResult = -10
-	// RtspEeof wraps GST_RTSP_EEOF
+	// RtspEeof wraps RTSP_EEOF
 	//
 	// end-of-file was reached
 	RtspEeof RTSPResult = -11
-	// RtspEnet wraps GST_RTSP_ENET
+	// RtspEnet wraps RTSP_ENET
 	//
 	// a network problem occurred, h_errno contains more details
 	RtspEnet RTSPResult = -12
-	// RtspEnotip wraps GST_RTSP_ENOTIP
+	// RtspEnotip wraps RTSP_ENOTIP
 	//
 	// the host is not an IP host
 	RtspEnotip RTSPResult = -13
-	// RtspEtimeout wraps GST_RTSP_ETIMEOUT
+	// RtspEtimeout wraps RTSP_ETIMEOUT
 	//
 	// a timeout occurred
 	RtspEtimeout RTSPResult = -14
-	// RtspEtget wraps GST_RTSP_ETGET
+	// RtspEtget wraps RTSP_ETGET
 	//
 	// the tunnel GET request has been performed
 	RtspEtget RTSPResult = -15
-	// RtspEtpost wraps GST_RTSP_ETPOST
+	// RtspEtpost wraps RTSP_ETPOST
 	//
 	// the tunnel POST request has been performed
 	RtspEtpost RTSPResult = -16
-	// RtspElast wraps GST_RTSP_ELAST
+	// RtspElast wraps RTSP_ELAST
 	//
 	// last error
 	RtspElast RTSPResult = -17
@@ -738,27 +733,27 @@ func (e RTSPResult) String() string {
 type RTSPState C.int
 
 const (
-	// RtspStateInvalid wraps GST_RTSP_STATE_INVALID
+	// RtspStateInvalid wraps RTSP_STATE_INVALID
 	//
 	// invalid state
 	RtspStateInvalid RTSPState = 0
-	// RtspStateInit wraps GST_RTSP_STATE_INIT
+	// RtspStateInit wraps RTSP_STATE_INIT
 	//
 	// initializing
 	RtspStateInit RTSPState = 1
-	// RtspStateReady wraps GST_RTSP_STATE_READY
+	// RtspStateReady wraps RTSP_STATE_READY
 	//
 	// ready for operation
 	RtspStateReady RTSPState = 2
-	// RtspStateSeeking wraps GST_RTSP_STATE_SEEKING
+	// RtspStateSeeking wraps RTSP_STATE_SEEKING
 	//
 	// seeking in progress
 	RtspStateSeeking RTSPState = 3
-	// RtspStatePlaying wraps GST_RTSP_STATE_PLAYING
+	// RtspStatePlaying wraps RTSP_STATE_PLAYING
 	//
 	// playing
 	RtspStatePlaying RTSPState = 4
-	// RtspStateRecording wraps GST_RTSP_STATE_RECORDING
+	// RtspStateRecording wraps RTSP_STATE_RECORDING
 	//
 	// recording
 	RtspStateRecording RTSPState = 5
@@ -796,105 +791,105 @@ func (e RTSPState) String() string {
 type RTSPStatusCode C.int
 
 const (
-	// RtspStsInvalid wraps GST_RTSP_STS_INVALID
+	// RtspStsInvalid wraps RTSP_STS_INVALID
 	RtspStsInvalid RTSPStatusCode = 0
-	// RtspStsContinue wraps GST_RTSP_STS_CONTINUE
+	// RtspStsContinue wraps RTSP_STS_CONTINUE
 	RtspStsContinue RTSPStatusCode = 100
-	// RtspStsOK wraps GST_RTSP_STS_OK
+	// RtspStsOK wraps RTSP_STS_OK
 	RtspStsOK RTSPStatusCode = 200
-	// RtspStsCreated wraps GST_RTSP_STS_CREATED
+	// RtspStsCreated wraps RTSP_STS_CREATED
 	RtspStsCreated RTSPStatusCode = 201
-	// RtspStsLowOnStorage wraps GST_RTSP_STS_LOW_ON_STORAGE
+	// RtspStsLowOnStorage wraps RTSP_STS_LOW_ON_STORAGE
 	RtspStsLowOnStorage RTSPStatusCode = 250
-	// RtspStsMultipleChoices wraps GST_RTSP_STS_MULTIPLE_CHOICES
+	// RtspStsMultipleChoices wraps RTSP_STS_MULTIPLE_CHOICES
 	RtspStsMultipleChoices RTSPStatusCode = 300
-	// RtspStsMovedPermanently wraps GST_RTSP_STS_MOVED_PERMANENTLY
+	// RtspStsMovedPermanently wraps RTSP_STS_MOVED_PERMANENTLY
 	RtspStsMovedPermanently RTSPStatusCode = 301
-	// RtspStsMoveTemporarily wraps GST_RTSP_STS_MOVE_TEMPORARILY
+	// RtspStsMoveTemporarily wraps RTSP_STS_MOVE_TEMPORARILY
 	RtspStsMoveTemporarily RTSPStatusCode = 302
-	// RtspStsSeeOther wraps GST_RTSP_STS_SEE_OTHER
+	// RtspStsSeeOther wraps RTSP_STS_SEE_OTHER
 	RtspStsSeeOther RTSPStatusCode = 303
-	// RtspStsNotModified wraps GST_RTSP_STS_NOT_MODIFIED
+	// RtspStsNotModified wraps RTSP_STS_NOT_MODIFIED
 	RtspStsNotModified RTSPStatusCode = 304
-	// RtspStsUseProxy wraps GST_RTSP_STS_USE_PROXY
+	// RtspStsUseProxy wraps RTSP_STS_USE_PROXY
 	RtspStsUseProxy RTSPStatusCode = 305
-	// RtspStsRedirectTemporarily wraps GST_RTSP_STS_REDIRECT_TEMPORARILY
+	// RtspStsRedirectTemporarily wraps RTSP_STS_REDIRECT_TEMPORARILY
 	//
 	// RTSP request is temporarily redirected
 	RtspStsRedirectTemporarily RTSPStatusCode = 307
-	// RtspStsRedirectPermanently wraps GST_RTSP_STS_REDIRECT_PERMANENTLY
+	// RtspStsRedirectPermanently wraps RTSP_STS_REDIRECT_PERMANENTLY
 	//
 	// RTSP request is permanently redirected
 	RtspStsRedirectPermanently RTSPStatusCode = 308
-	// RtspStsBadRequest wraps GST_RTSP_STS_BAD_REQUEST
+	// RtspStsBadRequest wraps RTSP_STS_BAD_REQUEST
 	RtspStsBadRequest RTSPStatusCode = 400
-	// RtspStsUnauthorized wraps GST_RTSP_STS_UNAUTHORIZED
+	// RtspStsUnauthorized wraps RTSP_STS_UNAUTHORIZED
 	RtspStsUnauthorized RTSPStatusCode = 401
-	// RtspStsPaymentRequired wraps GST_RTSP_STS_PAYMENT_REQUIRED
+	// RtspStsPaymentRequired wraps RTSP_STS_PAYMENT_REQUIRED
 	RtspStsPaymentRequired RTSPStatusCode = 402
-	// RtspStsForbidden wraps GST_RTSP_STS_FORBIDDEN
+	// RtspStsForbidden wraps RTSP_STS_FORBIDDEN
 	RtspStsForbidden RTSPStatusCode = 403
-	// RtspStsNotFound wraps GST_RTSP_STS_NOT_FOUND
+	// RtspStsNotFound wraps RTSP_STS_NOT_FOUND
 	RtspStsNotFound RTSPStatusCode = 404
-	// RtspStsMethodNotAllowed wraps GST_RTSP_STS_METHOD_NOT_ALLOWED
+	// RtspStsMethodNotAllowed wraps RTSP_STS_METHOD_NOT_ALLOWED
 	RtspStsMethodNotAllowed RTSPStatusCode = 405
-	// RtspStsNotAcceptable wraps GST_RTSP_STS_NOT_ACCEPTABLE
+	// RtspStsNotAcceptable wraps RTSP_STS_NOT_ACCEPTABLE
 	RtspStsNotAcceptable RTSPStatusCode = 406
-	// RtspStsProxyAuthRequired wraps GST_RTSP_STS_PROXY_AUTH_REQUIRED
+	// RtspStsProxyAuthRequired wraps RTSP_STS_PROXY_AUTH_REQUIRED
 	RtspStsProxyAuthRequired RTSPStatusCode = 407
-	// RtspStsRequestTimeout wraps GST_RTSP_STS_REQUEST_TIMEOUT
+	// RtspStsRequestTimeout wraps RTSP_STS_REQUEST_TIMEOUT
 	RtspStsRequestTimeout RTSPStatusCode = 408
-	// RtspStsGone wraps GST_RTSP_STS_GONE
+	// RtspStsGone wraps RTSP_STS_GONE
 	RtspStsGone RTSPStatusCode = 410
-	// RtspStsLengthRequired wraps GST_RTSP_STS_LENGTH_REQUIRED
+	// RtspStsLengthRequired wraps RTSP_STS_LENGTH_REQUIRED
 	RtspStsLengthRequired RTSPStatusCode = 411
-	// RtspStsPreconditionFailed wraps GST_RTSP_STS_PRECONDITION_FAILED
+	// RtspStsPreconditionFailed wraps RTSP_STS_PRECONDITION_FAILED
 	RtspStsPreconditionFailed RTSPStatusCode = 412
-	// RtspStsRequestEntityTooLarge wraps GST_RTSP_STS_REQUEST_ENTITY_TOO_LARGE
+	// RtspStsRequestEntityTooLarge wraps RTSP_STS_REQUEST_ENTITY_TOO_LARGE
 	RtspStsRequestEntityTooLarge RTSPStatusCode = 413
-	// RtspStsRequestURITooLarge wraps GST_RTSP_STS_REQUEST_URI_TOO_LARGE
+	// RtspStsRequestURITooLarge wraps RTSP_STS_REQUEST_URI_TOO_LARGE
 	RtspStsRequestURITooLarge RTSPStatusCode = 414
-	// RtspStsUnsupportedMediaType wraps GST_RTSP_STS_UNSUPPORTED_MEDIA_TYPE
+	// RtspStsUnsupportedMediaType wraps RTSP_STS_UNSUPPORTED_MEDIA_TYPE
 	RtspStsUnsupportedMediaType RTSPStatusCode = 415
-	// RtspStsParameterNotUnderstood wraps GST_RTSP_STS_PARAMETER_NOT_UNDERSTOOD
+	// RtspStsParameterNotUnderstood wraps RTSP_STS_PARAMETER_NOT_UNDERSTOOD
 	RtspStsParameterNotUnderstood RTSPStatusCode = 451
-	// RtspStsConferenceNotFound wraps GST_RTSP_STS_CONFERENCE_NOT_FOUND
+	// RtspStsConferenceNotFound wraps RTSP_STS_CONFERENCE_NOT_FOUND
 	RtspStsConferenceNotFound RTSPStatusCode = 452
-	// RtspStsNotEnoughBandwidth wraps GST_RTSP_STS_NOT_ENOUGH_BANDWIDTH
+	// RtspStsNotEnoughBandwidth wraps RTSP_STS_NOT_ENOUGH_BANDWIDTH
 	RtspStsNotEnoughBandwidth RTSPStatusCode = 453
-	// RtspStsSessionNotFound wraps GST_RTSP_STS_SESSION_NOT_FOUND
+	// RtspStsSessionNotFound wraps RTSP_STS_SESSION_NOT_FOUND
 	RtspStsSessionNotFound RTSPStatusCode = 454
-	// RtspStsMethodNotValidInThisState wraps GST_RTSP_STS_METHOD_NOT_VALID_IN_THIS_STATE
+	// RtspStsMethodNotValidInThisState wraps RTSP_STS_METHOD_NOT_VALID_IN_THIS_STATE
 	RtspStsMethodNotValidInThisState RTSPStatusCode = 455
-	// RtspStsHeaderFieldNotValidForResource wraps GST_RTSP_STS_HEADER_FIELD_NOT_VALID_FOR_RESOURCE
+	// RtspStsHeaderFieldNotValidForResource wraps RTSP_STS_HEADER_FIELD_NOT_VALID_FOR_RESOURCE
 	RtspStsHeaderFieldNotValidForResource RTSPStatusCode = 456
-	// RtspStsInvalidRange wraps GST_RTSP_STS_INVALID_RANGE
+	// RtspStsInvalidRange wraps RTSP_STS_INVALID_RANGE
 	RtspStsInvalidRange RTSPStatusCode = 457
-	// RtspStsParameterIsReadonly wraps GST_RTSP_STS_PARAMETER_IS_READONLY
+	// RtspStsParameterIsReadonly wraps RTSP_STS_PARAMETER_IS_READONLY
 	RtspStsParameterIsReadonly RTSPStatusCode = 458
-	// RtspStsAggregateOperationNotAllowed wraps GST_RTSP_STS_AGGREGATE_OPERATION_NOT_ALLOWED
+	// RtspStsAggregateOperationNotAllowed wraps RTSP_STS_AGGREGATE_OPERATION_NOT_ALLOWED
 	RtspStsAggregateOperationNotAllowed RTSPStatusCode = 459
-	// RtspStsOnlyAggregateOperationAllowed wraps GST_RTSP_STS_ONLY_AGGREGATE_OPERATION_ALLOWED
+	// RtspStsOnlyAggregateOperationAllowed wraps RTSP_STS_ONLY_AGGREGATE_OPERATION_ALLOWED
 	RtspStsOnlyAggregateOperationAllowed RTSPStatusCode = 460
-	// RtspStsUnsupportedTransport wraps GST_RTSP_STS_UNSUPPORTED_TRANSPORT
+	// RtspStsUnsupportedTransport wraps RTSP_STS_UNSUPPORTED_TRANSPORT
 	RtspStsUnsupportedTransport RTSPStatusCode = 461
-	// RtspStsDestinationUnreachable wraps GST_RTSP_STS_DESTINATION_UNREACHABLE
+	// RtspStsDestinationUnreachable wraps RTSP_STS_DESTINATION_UNREACHABLE
 	RtspStsDestinationUnreachable RTSPStatusCode = 462
-	// RtspStsKeyManagementFailure wraps GST_RTSP_STS_KEY_MANAGEMENT_FAILURE
+	// RtspStsKeyManagementFailure wraps RTSP_STS_KEY_MANAGEMENT_FAILURE
 	RtspStsKeyManagementFailure RTSPStatusCode = 463
-	// RtspStsInternalServerError wraps GST_RTSP_STS_INTERNAL_SERVER_ERROR
+	// RtspStsInternalServerError wraps RTSP_STS_INTERNAL_SERVER_ERROR
 	RtspStsInternalServerError RTSPStatusCode = 500
-	// RtspStsNotImplemented wraps GST_RTSP_STS_NOT_IMPLEMENTED
+	// RtspStsNotImplemented wraps RTSP_STS_NOT_IMPLEMENTED
 	RtspStsNotImplemented RTSPStatusCode = 501
-	// RtspStsBadGateway wraps GST_RTSP_STS_BAD_GATEWAY
+	// RtspStsBadGateway wraps RTSP_STS_BAD_GATEWAY
 	RtspStsBadGateway RTSPStatusCode = 502
-	// RtspStsServiceUnavailable wraps GST_RTSP_STS_SERVICE_UNAVAILABLE
+	// RtspStsServiceUnavailable wraps RTSP_STS_SERVICE_UNAVAILABLE
 	RtspStsServiceUnavailable RTSPStatusCode = 503
-	// RtspStsGatewayTimeout wraps GST_RTSP_STS_GATEWAY_TIMEOUT
+	// RtspStsGatewayTimeout wraps RTSP_STS_GATEWAY_TIMEOUT
 	RtspStsGatewayTimeout RTSPStatusCode = 504
-	// RtspStsRtspVersionNotSupported wraps GST_RTSP_STS_RTSP_VERSION_NOT_SUPPORTED
+	// RtspStsRtspVersionNotSupported wraps RTSP_STS_RTSP_VERSION_NOT_SUPPORTED
 	RtspStsRtspVersionNotSupported RTSPStatusCode = 505
-	// RtspStsOptionNotSupported wraps GST_RTSP_STS_OPTION_NOT_SUPPORTED
+	// RtspStsOptionNotSupported wraps RTSP_STS_OPTION_NOT_SUPPORTED
 	RtspStsOptionNotSupported RTSPStatusCode = 551
 )
 
@@ -972,23 +967,23 @@ func (e RTSPStatusCode) String() string {
 type RTSPTimeType C.int
 
 const (
-	// RtspTimeSeconds wraps GST_RTSP_TIME_SECONDS
+	// RtspTimeSeconds wraps RTSP_TIME_SECONDS
 	//
 	// seconds
 	RtspTimeSeconds RTSPTimeType = 0
-	// RtspTimeNow wraps GST_RTSP_TIME_NOW
+	// RtspTimeNow wraps RTSP_TIME_NOW
 	//
 	// now
 	RtspTimeNow RTSPTimeType = 1
-	// RtspTimeEnd wraps GST_RTSP_TIME_END
+	// RtspTimeEnd wraps RTSP_TIME_END
 	//
 	// end
 	RtspTimeEnd RTSPTimeType = 2
-	// RtspTimeFrames wraps GST_RTSP_TIME_FRAMES
+	// RtspTimeFrames wraps RTSP_TIME_FRAMES
 	//
 	// frames and subframes
 	RtspTimeFrames RTSPTimeType = 3
-	// RtspTimeUTC wraps GST_RTSP_TIME_UTC
+	// RtspTimeUTC wraps RTSP_TIME_UTC
 	//
 	// UTC time
 	RtspTimeUTC RTSPTimeType = 4
@@ -1025,19 +1020,19 @@ func (e RTSPTimeType) String() string {
 type RTSPVersion C.int
 
 const (
-	// RtspVersionInvalid wraps GST_RTSP_VERSION_INVALID
+	// RtspVersionInvalid wraps RTSP_VERSION_INVALID
 	//
 	// unknown/invalid version
 	RtspVersionInvalid RTSPVersion = 0
-	// RtspVersion10 wraps GST_RTSP_VERSION_1_0
+	// RtspVersion10 wraps RTSP_VERSION_1_0
 	//
 	// version 1.0
 	RtspVersion10 RTSPVersion = 16
-	// RtspVersion11 wraps GST_RTSP_VERSION_1_1
+	// RtspVersion11 wraps RTSP_VERSION_1_1
 	//
 	// version 1.1.
 	RtspVersion11 RTSPVersion = 17
-	// RtspVersion20 wraps GST_RTSP_VERSION_2_0
+	// RtspVersion20 wraps RTSP_VERSION_2_0
 	//
 	// version 2.0.
 	RtspVersion20 RTSPVersion = 32
@@ -1100,11 +1095,11 @@ func RTSPVersionAsText(version RTSPVersion) string {
 type RTSPEvent C.gint
 
 const (
-	// RtspEvRead wraps GST_RTSP_EV_READ
+	// RtspEvRead wraps RTSP_EV_READ
 	//
 	// connection is readable
 	RtspEvRead RTSPEvent = 1
-	// RtspEvWrite wraps GST_RTSP_EV_WRITE
+	// RtspEvWrite wraps RTSP_EV_WRITE
 	//
 	// connection is writable
 	RtspEvWrite RTSPEvent = 2
@@ -1149,27 +1144,27 @@ func (f RTSPEvent) String() string {
 type RTSPLowerTrans C.gint
 
 const (
-	// RtspLowerTransUnknown wraps GST_RTSP_LOWER_TRANS_UNKNOWN
+	// RtspLowerTransUnknown wraps RTSP_LOWER_TRANS_UNKNOWN
 	//
 	// invalid transport flag
 	RtspLowerTransUnknown RTSPLowerTrans = 0
-	// RtspLowerTransUDP wraps GST_RTSP_LOWER_TRANS_UDP
+	// RtspLowerTransUDP wraps RTSP_LOWER_TRANS_UDP
 	//
 	// stream data over UDP
 	RtspLowerTransUDP RTSPLowerTrans = 1
-	// RtspLowerTransUDPMcast wraps GST_RTSP_LOWER_TRANS_UDP_MCAST
+	// RtspLowerTransUDPMcast wraps RTSP_LOWER_TRANS_UDP_MCAST
 	//
 	// stream data over UDP multicast
 	RtspLowerTransUDPMcast RTSPLowerTrans = 2
-	// RtspLowerTransTCP wraps GST_RTSP_LOWER_TRANS_TCP
+	// RtspLowerTransTCP wraps RTSP_LOWER_TRANS_TCP
 	//
 	// stream data over TCP
 	RtspLowerTransTCP RTSPLowerTrans = 4
-	// RtspLowerTransHTTP wraps GST_RTSP_LOWER_TRANS_HTTP
+	// RtspLowerTransHTTP wraps RTSP_LOWER_TRANS_HTTP
 	//
 	// stream data tunneled over HTTP.
 	RtspLowerTransHTTP RTSPLowerTrans = 16
-	// RtspLowerTransTLS wraps GST_RTSP_LOWER_TRANS_TLS
+	// RtspLowerTransTLS wraps RTSP_LOWER_TRANS_TLS
 	//
 	// encrypt TCP and HTTP with TLS
 	RtspLowerTransTLS RTSPLowerTrans = 32
@@ -1226,59 +1221,59 @@ func (f RTSPLowerTrans) String() string {
 type RTSPMethod C.gint
 
 const (
-	// RtspInvalid wraps GST_RTSP_INVALID
+	// RtspInvalid wraps RTSP_INVALID
 	//
 	// invalid method
 	RtspInvalid RTSPMethod = 0
-	// RtspDescribe wraps GST_RTSP_DESCRIBE
+	// RtspDescribe wraps RTSP_DESCRIBE
 	//
 	// the DESCRIBE method
 	RtspDescribe RTSPMethod = 1
-	// RtspAnnounce wraps GST_RTSP_ANNOUNCE
+	// RtspAnnounce wraps RTSP_ANNOUNCE
 	//
 	// the ANNOUNCE method
 	RtspAnnounce RTSPMethod = 2
-	// RtspGetParameter wraps GST_RTSP_GET_PARAMETER
+	// RtspGetParameter wraps RTSP_GET_PARAMETER
 	//
 	// the GET_PARAMETER method
 	RtspGetParameter RTSPMethod = 4
-	// RtspOptions wraps GST_RTSP_OPTIONS
+	// RtspOptions wraps RTSP_OPTIONS
 	//
 	// the OPTIONS method
 	RtspOptions RTSPMethod = 8
-	// RtspPause wraps GST_RTSP_PAUSE
+	// RtspPause wraps RTSP_PAUSE
 	//
 	// the PAUSE method
 	RtspPause RTSPMethod = 16
-	// RtspPlay wraps GST_RTSP_PLAY
+	// RtspPlay wraps RTSP_PLAY
 	//
 	// the PLAY method
 	RtspPlay RTSPMethod = 32
-	// RtspRecord wraps GST_RTSP_RECORD
+	// RtspRecord wraps RTSP_RECORD
 	//
 	// the RECORD method
 	RtspRecord RTSPMethod = 64
-	// RtspRedirect wraps GST_RTSP_REDIRECT
+	// RtspRedirect wraps RTSP_REDIRECT
 	//
 	// the REDIRECT method
 	RtspRedirect RTSPMethod = 128
-	// RtspSetup wraps GST_RTSP_SETUP
+	// RtspSetup wraps RTSP_SETUP
 	//
 	// the SETUP method
 	RtspSetup RTSPMethod = 256
-	// RtspSetParameter wraps GST_RTSP_SET_PARAMETER
+	// RtspSetParameter wraps RTSP_SET_PARAMETER
 	//
 	// the SET_PARAMETER method
 	RtspSetParameter RTSPMethod = 512
-	// RtspTeardown wraps GST_RTSP_TEARDOWN
+	// RtspTeardown wraps RTSP_TEARDOWN
 	//
 	// the TEARDOWN method
 	RtspTeardown RTSPMethod = 1024
-	// RtspGet wraps GST_RTSP_GET
+	// RtspGet wraps RTSP_GET
 	//
 	// the GET method (HTTP).
 	RtspGet RTSPMethod = 2048
-	// RtspPost wraps GST_RTSP_POST
+	// RtspPost wraps RTSP_POST
 	//
 	// the POST method (HTTP).
 	RtspPost RTSPMethod = 4096
@@ -1388,23 +1383,23 @@ func RTSPMethodAsText(method RTSPMethod) string {
 type RTSPProfile C.gint
 
 const (
-	// RtspProfileUnknown wraps GST_RTSP_PROFILE_UNKNOWN
+	// RtspProfileUnknown wraps RTSP_PROFILE_UNKNOWN
 	//
 	// invalid profile
 	RtspProfileUnknown RTSPProfile = 0
-	// RtspProfileAvp wraps GST_RTSP_PROFILE_AVP
+	// RtspProfileAvp wraps RTSP_PROFILE_AVP
 	//
 	// the Audio/Visual profile (RFC 3551)
 	RtspProfileAvp RTSPProfile = 1
-	// RtspProfileSavp wraps GST_RTSP_PROFILE_SAVP
+	// RtspProfileSavp wraps RTSP_PROFILE_SAVP
 	//
 	// the secure Audio/Visual profile (RFC 3711)
 	RtspProfileSavp RTSPProfile = 2
-	// RtspProfileAvpf wraps GST_RTSP_PROFILE_AVPF
+	// RtspProfileAvpf wraps RTSP_PROFILE_AVPF
 	//
 	// the Audio/Visual profile with feedback (RFC 4585)
 	RtspProfileAvpf RTSPProfile = 4
-	// RtspProfileSavpf wraps GST_RTSP_PROFILE_SAVPF
+	// RtspProfileSavpf wraps RTSP_PROFILE_SAVPF
 	//
 	// the secure Audio/Visual profile with feedback (RFC 5124)
 	RtspProfileSavpf RTSPProfile = 8
@@ -1458,15 +1453,15 @@ func (f RTSPProfile) String() string {
 type RTSPTransMode C.gint
 
 const (
-	// RtspTransUnknown wraps GST_RTSP_TRANS_UNKNOWN
+	// RtspTransUnknown wraps RTSP_TRANS_UNKNOWN
 	//
 	// invalid tansport mode
 	RtspTransUnknown RTSPTransMode = 0
-	// RtspTransRtp wraps GST_RTSP_TRANS_RTP
+	// RtspTransRtp wraps RTSP_TRANS_RTP
 	//
 	// transfer RTP data
 	RtspTransRtp RTSPTransMode = 1
-	// RtspTransRdt wraps GST_RTSP_TRANS_RDT
+	// RtspTransRdt wraps RTSP_TRANS_RDT
 	//
 	// transfer RDT (RealMedia) data
 	RtspTransRdt RTSPTransMode = 2
@@ -1507,19 +1502,6 @@ func (f RTSPTransMode) String() string {
 	}
 	return "RTSPTransMode(" + strings.Join(parts, "|") + ")"
 }
-
-// RTSPConnectionAcceptCertificateFunc wraps GstRTSPConnectionAcceptCertificateFunc
-// 
-// The function takes the following parameters:
-// 
-// 	- conn gio.TlsConnection 
-// 	- peerCert gio.TlsCertificate 
-// 	- errors gio.TLSCertificateFlags 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-type RTSPConnectionAcceptCertificateFunc func(conn gio.TlsConnection, peerCert gio.TlsCertificate, errors gio.TLSCertificateFlags) (goret bool)
 
 // RtspFindHeaderField wraps gst_rtsp_find_header_field
 // 
@@ -3395,46 +3377,6 @@ func UnsafeRTSPConnectionToGlibFull(r *RTSPConnection) unsafe.Pointer {
 	return _p
 }
 
-// RTSPConnectionAccept wraps gst_rtsp_connection_accept
-// 
-// The function takes the following parameters:
-// 
-// 	- cancellable context.Context (nullable): a #GCancellable to cancel the operation 
-// 	- socket gio.Socket: a socket 
-// 
-// The function returns the following values:
-// 
-// 	- conn *RTSPConnection (nullable): storage for a #GstRTSPConnection 
-// 	- goret RTSPResult 
-//
-// Accept a new connection on @socket and create a new #GstRTSPConnection for
-// handling communication on new socket.
-func RTSPConnectionAccept(cancellable context.Context, socket gio.Socket) (*RTSPConnection, RTSPResult) {
-	var carg3 *C.GCancellable      // in, none, converted, nullable
-	var carg1 *C.GSocket           // in, none, converted
-	var carg2 *C.GstRTSPConnection // out, full, converted, nullable
-	var cret  C.GstRTSPResult      // return, none, casted
-
-	if cancellable != nil {
-		carg3 = (*C.GCancellable)(gio.UnsafeGCancellableToGlibNone(cancellable))
-	}
-	carg1 = (*C.GSocket)(gio.UnsafeSocketToGlibNone(socket))
-
-	cret = C.gst_rtsp_connection_accept(carg1, &carg2, carg3)
-	runtime.KeepAlive(cancellable)
-	runtime.KeepAlive(socket)
-
-	var conn  *RTSPConnection
-	var goret RTSPResult
-
-	if carg2 != nil {
-		conn = UnsafeRTSPConnectionFromGlibFull(unsafe.Pointer(carg2))
-	}
-	goret = RTSPResult(cret)
-
-	return conn, goret
-}
-
 // RTSPConnectionCreate wraps gst_rtsp_connection_create
 // 
 // The function takes the following parameters:
@@ -3465,55 +3407,6 @@ func RTSPConnectionCreate(url *RTSPUrl) (*RTSPConnection, RTSPResult) {
 	var goret RTSPResult
 
 	conn = UnsafeRTSPConnectionFromGlibFull(unsafe.Pointer(carg2))
-	goret = RTSPResult(cret)
-
-	return conn, goret
-}
-
-// RTSPConnectionCreateFromSocket wraps gst_rtsp_connection_create_from_socket
-// 
-// The function takes the following parameters:
-// 
-// 	- socket gio.Socket: a #GSocket 
-// 	- ip string: the IP address of the other end 
-// 	- port uint16: the port used by the other end 
-// 	- initialBuffer string: data already read from @fd 
-// 
-// The function returns the following values:
-// 
-// 	- conn *RTSPConnection (nullable): storage for a #GstRTSPConnection 
-// 	- goret RTSPResult 
-//
-// Create a new #GstRTSPConnection for handling communication on the existing
-// socket @socket. The @initial_buffer contains zero terminated data already
-// read from @socket which should be used before starting to read new data.
-func RTSPConnectionCreateFromSocket(socket gio.Socket, ip string, port uint16, initialBuffer string) (*RTSPConnection, RTSPResult) {
-	var carg1 *C.GSocket           // in, none, converted
-	var carg2 *C.gchar             // in, none, string
-	var carg3 C.guint16            // in, none, casted
-	var carg4 *C.gchar             // in, none, string
-	var carg5 *C.GstRTSPConnection // out, full, converted, nullable
-	var cret  C.GstRTSPResult      // return, none, casted
-
-	carg1 = (*C.GSocket)(gio.UnsafeSocketToGlibNone(socket))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(ip)))
-	defer C.free(unsafe.Pointer(carg2))
-	carg3 = C.guint16(port)
-	carg4 = (*C.gchar)(unsafe.Pointer(C.CString(initialBuffer)))
-	defer C.free(unsafe.Pointer(carg4))
-
-	cret = C.gst_rtsp_connection_create_from_socket(carg1, carg2, carg3, carg4, &carg5)
-	runtime.KeepAlive(socket)
-	runtime.KeepAlive(ip)
-	runtime.KeepAlive(port)
-	runtime.KeepAlive(initialBuffer)
-
-	var conn  *RTSPConnection
-	var goret RTSPResult
-
-	if carg5 != nil {
-		conn = UnsafeRTSPConnectionFromGlibFull(unsafe.Pointer(carg5))
-	}
 	goret = RTSPResult(cret)
 
 	return conn, goret
@@ -3780,31 +3673,6 @@ func (conn *RTSPConnection) GetIP() string {
 	return goret
 }
 
-// GetReadSocket wraps gst_rtsp_connection_get_read_socket
-// 
-// The function returns the following values:
-// 
-// 	- goret gio.Socket (nullable) 
-//
-// Get the file descriptor for reading.
-func (conn *RTSPConnection) GetReadSocket() gio.Socket {
-	var carg0 *C.GstRTSPConnection // in, none, converted
-	var cret  *C.GSocket           // return, none, converted, nullable
-
-	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
-
-	cret = C.gst_rtsp_connection_get_read_socket(carg0)
-	runtime.KeepAlive(conn)
-
-	var goret gio.Socket
-
-	if cret != nil {
-		goret = gio.UnsafeSocketFromGlibNone(unsafe.Pointer(cret))
-	}
-
-	return goret
-}
-
 // GetRememberSessionID wraps gst_rtsp_connection_get_remember_session_id
 // 
 // The function returns the following values:
@@ -3824,129 +3692,6 @@ func (conn *RTSPConnection) GetRememberSessionID() bool {
 	if cret != 0 {
 		goret = true
 	}
-
-	return goret
-}
-
-// GetTLS wraps gst_rtsp_connection_get_tls
-// 
-// The function returns the following values:
-// 
-// 	- goret gio.TlsConnection 
-// 	- _goerr error (nullable): an error 
-//
-// Get the TLS connection of @conn.
-// 
-// For client side this will return the #GTlsClientConnection when connected
-// over TLS.
-// 
-// For server side connections, this function will create a GTlsServerConnection
-// when called the first time and will return that same connection on subsequent
-// calls. The server is then responsible for configuring the TLS connection.
-func (conn *RTSPConnection) GetTLS() (gio.TlsConnection, error) {
-	var carg0 *C.GstRTSPConnection // in, none, converted
-	var cret  *C.GTlsConnection    // return, none, converted
-	var _cerr *C.GError            // out, full, converted, nullable
-
-	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
-
-	cret = C.gst_rtsp_connection_get_tls(carg0, &_cerr)
-	runtime.KeepAlive(conn)
-
-	var goret  gio.TlsConnection
-	var _goerr error
-
-	goret = gio.UnsafeTlsConnectionFromGlibNone(unsafe.Pointer(cret))
-	if _cerr != nil {
-		_goerr = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(_cerr))
-	}
-
-	return goret, _goerr
-}
-
-// GetTLSDatabase wraps gst_rtsp_connection_get_tls_database
-// 
-// The function returns the following values:
-// 
-// 	- goret gio.TlsDatabase (nullable) 
-//
-// Gets the anchor certificate authorities database that will be used
-// after a server certificate can't be verified with the default
-// certificate database.
-func (conn *RTSPConnection) GetTLSDatabase() gio.TlsDatabase {
-	var carg0 *C.GstRTSPConnection // in, none, converted
-	var cret  *C.GTlsDatabase      // return, full, converted, nullable
-
-	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
-
-	cret = C.gst_rtsp_connection_get_tls_database(carg0)
-	runtime.KeepAlive(conn)
-
-	var goret gio.TlsDatabase
-
-	if cret != nil {
-		goret = gio.UnsafeTlsDatabaseFromGlibFull(unsafe.Pointer(cret))
-	}
-
-	return goret
-}
-
-// GetTLSInteraction wraps gst_rtsp_connection_get_tls_interaction
-// 
-// The function returns the following values:
-// 
-// 	- goret gio.TlsInteraction (nullable) 
-//
-// Gets a #GTlsInteraction object to be used when the connection or certificate
-// database need to interact with the user. This will be used to prompt the
-// user for passwords where necessary.
-func (conn *RTSPConnection) GetTLSInteraction() gio.TlsInteraction {
-	var carg0 *C.GstRTSPConnection // in, none, converted
-	var cret  *C.GTlsInteraction   // return, full, converted, nullable
-
-	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
-
-	cret = C.gst_rtsp_connection_get_tls_interaction(carg0)
-	runtime.KeepAlive(conn)
-
-	var goret gio.TlsInteraction
-
-	if cret != nil {
-		goret = gio.UnsafeTlsInteractionFromGlibFull(unsafe.Pointer(cret))
-	}
-
-	return goret
-}
-
-// GetTLSValidationFlags wraps gst_rtsp_connection_get_tls_validation_flags
-// 
-// The function returns the following values:
-// 
-// 	- goret gio.TLSCertificateFlags 
-//
-// Gets the TLS validation flags used to verify the peer certificate
-// when a TLS connection is established.
-// 
-// GLib guarantees that if certificate verification fails, at least one error
-// will be set, but it does not guarantee that all possible errors will be
-// set. Accordingly, you may not safely decide to ignore any particular type
-// of error.
-// 
-// For example, it would be incorrect to ignore %G_TLS_CERTIFICATE_EXPIRED if
-// you want to allow expired certificates, because this could potentially be
-// the only error flag set even if other problems exist with the certificate.
-func (conn *RTSPConnection) GetTLSValidationFlags() gio.TLSCertificateFlags {
-	var carg0 *C.GstRTSPConnection   // in, none, converted
-	var cret  C.GTlsCertificateFlags // return, none, casted
-
-	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
-
-	cret = C.gst_rtsp_connection_get_tls_validation_flags(carg0)
-	runtime.KeepAlive(conn)
-
-	var goret gio.TLSCertificateFlags
-
-	goret = gio.TLSCertificateFlags(cret)
 
 	return goret
 }
@@ -3995,31 +3740,6 @@ func (conn *RTSPConnection) GetURL() *RTSPUrl {
 	var goret *RTSPUrl
 
 	goret = UnsafeRTSPUrlFromGlibFull(unsafe.Pointer(cret))
-
-	return goret
-}
-
-// GetWriteSocket wraps gst_rtsp_connection_get_write_socket
-// 
-// The function returns the following values:
-// 
-// 	- goret gio.Socket (nullable) 
-//
-// Get the file descriptor for writing.
-func (conn *RTSPConnection) GetWriteSocket() gio.Socket {
-	var carg0 *C.GstRTSPConnection // in, none, converted
-	var cret  *C.GSocket           // return, none, converted, nullable
-
-	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
-
-	cret = C.gst_rtsp_connection_get_write_socket(carg0)
-	runtime.KeepAlive(conn)
-
-	var goret gio.Socket
-
-	if cret != nil {
-		goret = gio.UnsafeSocketFromGlibNone(unsafe.Pointer(cret))
-	}
 
 	return goret
 }
@@ -4302,34 +4022,6 @@ func (conn *RTSPConnection) SendUsec(message *RTSPMessage, timeout int64) RTSPRe
 	return goret
 }
 
-// SetAcceptCertificateFunc wraps gst_rtsp_connection_set_accept_certificate_func
-// 
-// The function takes the following parameters:
-// 
-// 	- fn RTSPConnectionAcceptCertificateFunc: a #GstRTSPConnectionAcceptCertificateFunc to check certificates 
-//
-// Sets a custom accept-certificate function for checking certificates for
-// validity. This will directly map to #GTlsConnection 's "accept-certificate"
-// signal and be performed after the default checks of #GstRTSPConnection
-// (checking against the #GTlsDatabase with the given #GTlsCertificateFlags)
-// have failed. If no #GTlsDatabase is set on this connection, only @func will
-// be called.
-func (conn *RTSPConnection) SetAcceptCertificateFunc(fn RTSPConnectionAcceptCertificateFunc) {
-	var carg0 *C.GstRTSPConnection                     // in, none, converted
-	var carg1 C.GstRTSPConnectionAcceptCertificateFunc // callback, scope: notified, closure: carg2, destroy: carg3
-	var carg2 C.gpointer                               // implicit
-	var carg3 C.GDestroyNotify                         // implicit
-
-	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
-	carg1 = (*[0]byte)(C._gotk4_gstrtsp1_RTSPConnectionAcceptCertificateFunc)
-	carg2 = C.gpointer(userdata.Register(fn))
-	carg3 = (C.GDestroyNotify)((*[0]byte)(C.destroyUserdata))
-
-	C.gst_rtsp_connection_set_accept_certificate_func(carg0, carg1, carg2, carg3)
-	runtime.KeepAlive(conn)
-	runtime.KeepAlive(fn)
-}
-
 // SetAuth wraps gst_rtsp_connection_set_auth
 // 
 // The function takes the following parameters:
@@ -4574,94 +4266,6 @@ func (conn *RTSPConnection) SetRememberSessionID(remember bool) {
 	C.gst_rtsp_connection_set_remember_session_id(carg0, carg1)
 	runtime.KeepAlive(conn)
 	runtime.KeepAlive(remember)
-}
-
-// SetTLSDatabase wraps gst_rtsp_connection_set_tls_database
-// 
-// The function takes the following parameters:
-// 
-// 	- database gio.TlsDatabase (nullable): a #GTlsDatabase 
-//
-// Sets the anchor certificate authorities database. This certificate
-// database will be used to verify the server's certificate in case it
-// can't be verified with the default certificate database first.
-func (conn *RTSPConnection) SetTLSDatabase(database gio.TlsDatabase) {
-	var carg0 *C.GstRTSPConnection // in, none, converted
-	var carg1 *C.GTlsDatabase      // in, none, converted, nullable
-
-	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
-	if database != nil {
-		carg1 = (*C.GTlsDatabase)(gio.UnsafeTlsDatabaseToGlibNone(database))
-	}
-
-	C.gst_rtsp_connection_set_tls_database(carg0, carg1)
-	runtime.KeepAlive(conn)
-	runtime.KeepAlive(database)
-}
-
-// SetTLSInteraction wraps gst_rtsp_connection_set_tls_interaction
-// 
-// The function takes the following parameters:
-// 
-// 	- interaction gio.TlsInteraction (nullable): a #GTlsInteraction 
-//
-// Sets a #GTlsInteraction object to be used when the connection or certificate
-// database need to interact with the user. This will be used to prompt the
-// user for passwords where necessary.
-func (conn *RTSPConnection) SetTLSInteraction(interaction gio.TlsInteraction) {
-	var carg0 *C.GstRTSPConnection // in, none, converted
-	var carg1 *C.GTlsInteraction   // in, none, converted, nullable
-
-	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
-	if interaction != nil {
-		carg1 = (*C.GTlsInteraction)(gio.UnsafeTlsInteractionToGlibNone(interaction))
-	}
-
-	C.gst_rtsp_connection_set_tls_interaction(carg0, carg1)
-	runtime.KeepAlive(conn)
-	runtime.KeepAlive(interaction)
-}
-
-// SetTLSValidationFlags wraps gst_rtsp_connection_set_tls_validation_flags
-// 
-// The function takes the following parameters:
-// 
-// 	- flags gio.TLSCertificateFlags: the validation flags. 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Sets the TLS validation flags to be used to verify the peer
-// certificate when a TLS connection is established.
-// 
-// GLib guarantees that if certificate verification fails, at least one error
-// will be set, but it does not guarantee that all possible errors will be
-// set. Accordingly, you may not safely decide to ignore any particular type
-// of error.
-// 
-// For example, it would be incorrect to mask %G_TLS_CERTIFICATE_EXPIRED if
-// you want to allow expired certificates, because this could potentially be
-// the only error flag set even if other problems exist with the certificate.
-func (conn *RTSPConnection) SetTLSValidationFlags(flags gio.TLSCertificateFlags) bool {
-	var carg0 *C.GstRTSPConnection   // in, none, converted
-	var carg1 C.GTlsCertificateFlags // in, none, casted
-	var cret  C.gboolean             // return
-
-	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
-	carg1 = C.GTlsCertificateFlags(flags)
-
-	cret = C.gst_rtsp_connection_set_tls_validation_flags(carg0, carg1)
-	runtime.KeepAlive(conn)
-	runtime.KeepAlive(flags)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
 }
 
 // SetTunneled wraps gst_rtsp_connection_set_tunneled

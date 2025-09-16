@@ -42,15 +42,15 @@ const MIKEY_VERSION = 1
 type MIKEYCacheType C.int
 
 const (
-	// MikeyCacheNone wraps GST_MIKEY_CACHE_NONE
+	// MikeyCacheNone wraps MIKEY_CACHE_NONE
 	//
 	// The envelope key MUST NOT be cached
 	MikeyCacheNone MIKEYCacheType = 0
-	// MikeyCacheAlways wraps GST_MIKEY_CACHE_ALWAYS
+	// MikeyCacheAlways wraps MIKEY_CACHE_ALWAYS
 	//
 	// The envelope key MUST be cached
 	MikeyCacheAlways MIKEYCacheType = 1
-	// MikeyCacheForCsb wraps GST_MIKEY_CACHE_FOR_CSB
+	// MikeyCacheForCsb wraps MIKEY_CACHE_FOR_CSB
 	//
 	// The envelope key MUST be cached, but only
 	//                           to be used for the specific CSB.
@@ -73,19 +73,19 @@ func (e MIKEYCacheType) String() string {
 type MIKEYEncAlg C.int
 
 const (
-	// MikeyEncNull wraps GST_MIKEY_ENC_NULL
+	// MikeyEncNull wraps MIKEY_ENC_NULL
 	//
 	// no encryption
 	MikeyEncNull MIKEYEncAlg = 0
-	// MikeyEncAesCm128 wraps GST_MIKEY_ENC_AES_CM_128
+	// MikeyEncAesCm128 wraps MIKEY_ENC_AES_CM_128
 	//
 	// AES-CM using a 128-bit key
 	MikeyEncAesCm128 MIKEYEncAlg = 1
-	// MikeyEncAesKw128 wraps GST_MIKEY_ENC_AES_KW_128
+	// MikeyEncAesKw128 wraps MIKEY_ENC_AES_KW_128
 	//
 	// AES Key Wrap using a 128-bit key
 	MikeyEncAesKw128 MIKEYEncAlg = 2
-	// MikeyEncAesGcm128 wraps GST_MIKEY_ENC_AES_GCM_128
+	// MikeyEncAesGcm128 wraps MIKEY_ENC_AES_GCM_128
 	//
 	// AES-GCM using a 128-bit key (Since: 1.16)
 	MikeyEncAesGcm128 MIKEYEncAlg = 6
@@ -108,15 +108,15 @@ func (e MIKEYEncAlg) String() string {
 type MIKEYKVType C.int
 
 const (
-	// MikeyKvNull wraps GST_MIKEY_KV_NULL
+	// MikeyKvNull wraps MIKEY_KV_NULL
 	//
 	// No specific usage rule
 	MikeyKvNull MIKEYKVType = 0
-	// MikeyKvSpi wraps GST_MIKEY_KV_SPI
+	// MikeyKvSpi wraps MIKEY_KV_SPI
 	//
 	// The key is associated with the SPI/MKI
 	MikeyKvSpi MIKEYKVType = 1
-	// MikeyKvInterval wraps GST_MIKEY_KV_INTERVAL
+	// MikeyKvInterval wraps MIKEY_KV_INTERVAL
 	//
 	// The key has a start and expiration time
 	MikeyKvInterval MIKEYKVType = 2
@@ -138,11 +138,11 @@ func (e MIKEYKVType) String() string {
 type MIKEYKeyDataType C.int
 
 const (
-	// MikeyKdTgk wraps GST_MIKEY_KD_TGK
+	// MikeyKdTgk wraps MIKEY_KD_TGK
 	//
 	// a TEK Generation Key
 	MikeyKdTgk MIKEYKeyDataType = 0
-	// MikeyKdTek wraps GST_MIKEY_KD_TEK
+	// MikeyKdTek wraps MIKEY_KD_TEK
 	//
 	// Traffic-Encrypting Key
 	MikeyKdTek MIKEYKeyDataType = 2
@@ -163,11 +163,11 @@ func (e MIKEYKeyDataType) String() string {
 type MIKEYMacAlg C.int
 
 const (
-	// MikeyMacNull wraps GST_MIKEY_MAC_NULL
+	// MikeyMacNull wraps MIKEY_MAC_NULL
 	//
 	// no authentication
 	MikeyMacNull MIKEYMacAlg = 0
-	// MikeyMacHMACSHA1160 wraps GST_MIKEY_MAC_HMAC_SHA_1_160
+	// MikeyMacHMACSHA1160 wraps MIKEY_MAC_HMAC_SHA_1_160
 	//
 	// HMAC-SHA-1-160
 	MikeyMacHMACSHA1160 MIKEYMacAlg = 1
@@ -189,7 +189,7 @@ func (e MIKEYMacAlg) String() string {
 type MIKEYMapType C.int
 
 const (
-	// MikeyMapTypeSrtp wraps GST_MIKEY_MAP_TYPE_SRTP
+	// MikeyMapTypeSrtp wraps MIKEY_MAP_TYPE_SRTP
 	//
 	// SRTP
 	MikeyMapTypeSrtp MIKEYMapType = 0
@@ -209,7 +209,7 @@ func (e MIKEYMapType) String() string {
 type MIKEYPRFFunc C.int
 
 const (
-	// MikeyPrfMikey1 wraps GST_MIKEY_PRF_MIKEY_1
+	// MikeyPrfMikey1 wraps MIKEY_PRF_MIKEY_1
 	//
 	// MIKEY-1 PRF function
 	MikeyPrfMikey1 MIKEYPRFFunc = 0
@@ -229,63 +229,63 @@ func (e MIKEYPRFFunc) String() string {
 type MIKEYPayloadType C.int
 
 const (
-	// MikeyPtLast wraps GST_MIKEY_PT_LAST
+	// MikeyPtLast wraps MIKEY_PT_LAST
 	//
 	// Last payload
 	MikeyPtLast MIKEYPayloadType = 0
-	// MikeyPtKemac wraps GST_MIKEY_PT_KEMAC
+	// MikeyPtKemac wraps MIKEY_PT_KEMAC
 	//
 	// Key data transport payload
 	MikeyPtKemac MIKEYPayloadType = 1
-	// MikeyPtPke wraps GST_MIKEY_PT_PKE
+	// MikeyPtPke wraps MIKEY_PT_PKE
 	//
 	// Envelope data payload
 	MikeyPtPke MIKEYPayloadType = 2
-	// MikeyPtDh wraps GST_MIKEY_PT_DH
+	// MikeyPtDh wraps MIKEY_PT_DH
 	//
 	// DH data payload
 	MikeyPtDh MIKEYPayloadType = 3
-	// MikeyPtSign wraps GST_MIKEY_PT_SIGN
+	// MikeyPtSign wraps MIKEY_PT_SIGN
 	//
 	// Signature payload
 	MikeyPtSign MIKEYPayloadType = 4
-	// MikeyPtT wraps GST_MIKEY_PT_T
+	// MikeyPtT wraps MIKEY_PT_T
 	//
 	// Timestamp payload
 	MikeyPtT MIKEYPayloadType = 5
-	// MikeyPtID wraps GST_MIKEY_PT_ID
+	// MikeyPtID wraps MIKEY_PT_ID
 	//
 	// ID payload
 	MikeyPtID MIKEYPayloadType = 6
-	// MikeyPtCert wraps GST_MIKEY_PT_CERT
+	// MikeyPtCert wraps MIKEY_PT_CERT
 	//
 	// Certificate Payload
 	MikeyPtCert MIKEYPayloadType = 7
-	// MikeyPtChash wraps GST_MIKEY_PT_CHASH
+	// MikeyPtChash wraps MIKEY_PT_CHASH
 	//
 	// Cert hash payload
 	MikeyPtChash MIKEYPayloadType = 8
-	// MikeyPtV wraps GST_MIKEY_PT_V
+	// MikeyPtV wraps MIKEY_PT_V
 	//
 	// Verification message payload
 	MikeyPtV MIKEYPayloadType = 9
-	// MikeyPtSp wraps GST_MIKEY_PT_SP
+	// MikeyPtSp wraps MIKEY_PT_SP
 	//
 	// Security Policy payload
 	MikeyPtSp MIKEYPayloadType = 10
-	// MikeyPtRand wraps GST_MIKEY_PT_RAND
+	// MikeyPtRand wraps MIKEY_PT_RAND
 	//
 	// RAND payload
 	MikeyPtRand MIKEYPayloadType = 11
-	// MikeyPtErr wraps GST_MIKEY_PT_ERR
+	// MikeyPtErr wraps MIKEY_PT_ERR
 	//
 	// Error payload
 	MikeyPtErr MIKEYPayloadType = 12
-	// MikeyPtKeyData wraps GST_MIKEY_PT_KEY_DATA
+	// MikeyPtKeyData wraps MIKEY_PT_KEY_DATA
 	//
 	// Key data sub-payload
 	MikeyPtKeyData MIKEYPayloadType = 20
-	// MikeyPtGenExt wraps GST_MIKEY_PT_GEN_EXT
+	// MikeyPtGenExt wraps MIKEY_PT_GEN_EXT
 	//
 	// General Extension Payload
 	MikeyPtGenExt MIKEYPayloadType = 21
@@ -319,7 +319,7 @@ func (e MIKEYPayloadType) String() string {
 type MIKEYSecProto C.int
 
 const (
-	// MikeySecProtoSrtp wraps GST_MIKEY_SEC_PROTO_SRTP
+	// MikeySecProtoSrtp wraps MIKEY_SEC_PROTO_SRTP
 	//
 	// SRTP
 	MikeySecProtoSrtp MIKEYSecProto = 0
@@ -339,59 +339,59 @@ func (e MIKEYSecProto) String() string {
 type MIKEYSecSRTP C.int
 
 const (
-	// MikeySpSrtpEncAlg wraps GST_MIKEY_SP_SRTP_ENC_ALG
+	// MikeySpSrtpEncAlg wraps MIKEY_SP_SRTP_ENC_ALG
 	//
 	// Encryption algorithm
 	MikeySpSrtpEncAlg MIKEYSecSRTP = 0
-	// MikeySpSrtpEncKeyLen wraps GST_MIKEY_SP_SRTP_ENC_KEY_LEN
+	// MikeySpSrtpEncKeyLen wraps MIKEY_SP_SRTP_ENC_KEY_LEN
 	//
 	// Session Encr. key length
 	MikeySpSrtpEncKeyLen MIKEYSecSRTP = 1
-	// MikeySpSrtpAuthAlg wraps GST_MIKEY_SP_SRTP_AUTH_ALG
+	// MikeySpSrtpAuthAlg wraps MIKEY_SP_SRTP_AUTH_ALG
 	//
 	// Authentication algorithm
 	MikeySpSrtpAuthAlg MIKEYSecSRTP = 2
-	// MikeySpSrtpAuthKeyLen wraps GST_MIKEY_SP_SRTP_AUTH_KEY_LEN
+	// MikeySpSrtpAuthKeyLen wraps MIKEY_SP_SRTP_AUTH_KEY_LEN
 	//
 	// Session Auth. key length
 	MikeySpSrtpAuthKeyLen MIKEYSecSRTP = 3
-	// MikeySpSrtpSaltKeyLen wraps GST_MIKEY_SP_SRTP_SALT_KEY_LEN
+	// MikeySpSrtpSaltKeyLen wraps MIKEY_SP_SRTP_SALT_KEY_LEN
 	//
 	// Session Salt key length
 	MikeySpSrtpSaltKeyLen MIKEYSecSRTP = 4
-	// MikeySpSrtpPrf wraps GST_MIKEY_SP_SRTP_PRF
+	// MikeySpSrtpPrf wraps MIKEY_SP_SRTP_PRF
 	//
 	// SRTP Pseudo Random Function
 	MikeySpSrtpPrf MIKEYSecSRTP = 5
-	// MikeySpSrtpKeyDerivRate wraps GST_MIKEY_SP_SRTP_KEY_DERIV_RATE
+	// MikeySpSrtpKeyDerivRate wraps MIKEY_SP_SRTP_KEY_DERIV_RATE
 	//
 	// Key derivation rate
 	MikeySpSrtpKeyDerivRate MIKEYSecSRTP = 6
-	// MikeySpSrtpSrtpEnc wraps GST_MIKEY_SP_SRTP_SRTP_ENC
+	// MikeySpSrtpSrtpEnc wraps MIKEY_SP_SRTP_SRTP_ENC
 	//
 	// SRTP encryption off/on, 0 if off, 1 if on
 	MikeySpSrtpSrtpEnc MIKEYSecSRTP = 7
-	// MikeySpSrtpSrtcpEnc wraps GST_MIKEY_SP_SRTP_SRTCP_ENC
+	// MikeySpSrtpSrtcpEnc wraps MIKEY_SP_SRTP_SRTCP_ENC
 	//
 	// SRTCP encryption off/on, 0 if off, 1 if on
 	MikeySpSrtpSrtcpEnc MIKEYSecSRTP = 8
-	// MikeySpSrtpFecOrder wraps GST_MIKEY_SP_SRTP_FEC_ORDER
+	// MikeySpSrtpFecOrder wraps MIKEY_SP_SRTP_FEC_ORDER
 	//
 	// sender's FEC order
 	MikeySpSrtpFecOrder MIKEYSecSRTP = 9
-	// MikeySpSrtpSrtpAuth wraps GST_MIKEY_SP_SRTP_SRTP_AUTH
+	// MikeySpSrtpSrtpAuth wraps MIKEY_SP_SRTP_SRTP_AUTH
 	//
 	// SRTP authentication off/on, 0 if off, 1 if on
 	MikeySpSrtpSrtpAuth MIKEYSecSRTP = 10
-	// MikeySpSrtpAuthTagLen wraps GST_MIKEY_SP_SRTP_AUTH_TAG_LEN
+	// MikeySpSrtpAuthTagLen wraps MIKEY_SP_SRTP_AUTH_TAG_LEN
 	//
 	// Authentication tag length
 	MikeySpSrtpAuthTagLen MIKEYSecSRTP = 11
-	// MikeySpSrtpSrtpPrefixLen wraps GST_MIKEY_SP_SRTP_SRTP_PREFIX_LEN
+	// MikeySpSrtpSrtpPrefixLen wraps MIKEY_SP_SRTP_SRTP_PREFIX_LEN
 	//
 	// SRTP prefix length
 	MikeySpSrtpSrtpPrefixLen MIKEYSecSRTP = 12
-	// MikeySpSrtpAeadAuthTagLen wraps GST_MIKEY_SP_SRTP_AEAD_AUTH_TAG_LEN
+	// MikeySpSrtpAeadAuthTagLen wraps MIKEY_SP_SRTP_AEAD_AUTH_TAG_LEN
 	//
 	// AEAD authentication tag length (Since: 1.16)
 	MikeySpSrtpAeadAuthTagLen MIKEYSecSRTP = 20
@@ -424,15 +424,15 @@ func (e MIKEYSecSRTP) String() string {
 type MIKEYTSType C.int
 
 const (
-	// MikeyTsTypeNtpUTC wraps GST_MIKEY_TS_TYPE_NTP_UTC
+	// MikeyTsTypeNtpUTC wraps MIKEY_TS_TYPE_NTP_UTC
 	//
 	// an NTP time in UTC timezone
 	MikeyTsTypeNtpUTC MIKEYTSType = 0
-	// MikeyTsTypeNtp wraps GST_MIKEY_TS_TYPE_NTP
+	// MikeyTsTypeNtp wraps MIKEY_TS_TYPE_NTP
 	//
 	// an NTP time
 	MikeyTsTypeNtp MIKEYTSType = 1
-	// MikeyTsTypeCounter wraps GST_MIKEY_TS_TYPE_COUNTER
+	// MikeyTsTypeCounter wraps MIKEY_TS_TYPE_COUNTER
 	//
 	// a counter
 	MikeyTsTypeCounter MIKEYTSType = 2
@@ -454,35 +454,35 @@ func (e MIKEYTSType) String() string {
 type MIKEYType C.int
 
 const (
-	// MikeyTypeInvalid wraps GST_MIKEY_TYPE_INVALID
+	// MikeyTypeInvalid wraps MIKEY_TYPE_INVALID
 	//
 	// Invalid type
 	MikeyTypeInvalid MIKEYType = -1
-	// MikeyTypePskInit wraps GST_MIKEY_TYPE_PSK_INIT
+	// MikeyTypePskInit wraps MIKEY_TYPE_PSK_INIT
 	//
 	// Initiator's pre-shared key message
 	MikeyTypePskInit MIKEYType = 0
-	// MikeyTypePskVerify wraps GST_MIKEY_TYPE_PSK_VERIFY
+	// MikeyTypePskVerify wraps MIKEY_TYPE_PSK_VERIFY
 	//
 	// Verification message of a Pre-shared key message
 	MikeyTypePskVerify MIKEYType = 1
-	// MikeyTypePkInit wraps GST_MIKEY_TYPE_PK_INIT
+	// MikeyTypePkInit wraps MIKEY_TYPE_PK_INIT
 	//
 	// Initiator's public-key transport message
 	MikeyTypePkInit MIKEYType = 2
-	// MikeyTypePkVerify wraps GST_MIKEY_TYPE_PK_VERIFY
+	// MikeyTypePkVerify wraps MIKEY_TYPE_PK_VERIFY
 	//
 	// Verification message of a public-key message
 	MikeyTypePkVerify MIKEYType = 3
-	// MikeyTypeDhInit wraps GST_MIKEY_TYPE_DH_INIT
+	// MikeyTypeDhInit wraps MIKEY_TYPE_DH_INIT
 	//
 	// Initiator's DH exchange message
 	MikeyTypeDhInit MIKEYType = 4
-	// MikeyTypeDhResp wraps GST_MIKEY_TYPE_DH_RESP
+	// MikeyTypeDhResp wraps MIKEY_TYPE_DH_RESP
 	//
 	// Responder's DH exchange message
 	MikeyTypeDhResp MIKEYType = 5
-	// MikeyTypeError wraps GST_MIKEY_TYPE_ERROR
+	// MikeyTypeError wraps MIKEY_TYPE_ERROR
 	//
 	// Error message
 	MikeyTypeError MIKEYType = 6
@@ -509,11 +509,11 @@ func (e MIKEYType) String() string {
 type SDPResult C.int
 
 const (
-	// SdpOK wraps GST_SDP_OK
+	// SdpOK wraps SDP_OK
 	//
 	// A successful return value
 	SdpOK SDPResult = 0
-	// SdpEinval wraps GST_SDP_EINVAL
+	// SdpEinval wraps SDP_EINVAL
 	//
 	// a function was given invalid parameters
 	SdpEinval SDPResult = -1
