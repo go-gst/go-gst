@@ -24,30 +24,29 @@ package main
 import (
 	"fmt"
 
-	"github.com/go-gst/go-gst/examples"
-	"github.com/go-gst/go-gst/gst"
+	coreglib "github.com/diamondburned/gotk4/pkg/core/glib"
+	"github.com/go-gst/go-gst/pkg/gst"
 )
 
 func tagsetter() error {
-	gst.Init(nil)
+	gst.Init()
 
-	pipeline, err := gst.NewPipelineFromString(
+	ret, err := gst.ParseLaunch(
 		"audiotestsrc wave=white-noise num-buffers=10000 ! flacenc ! filesink location=test.flac",
 	)
 	if err != nil {
 		return err
 	}
 
+	pipeline := ret.(*gst.Pipeline)
+
 	// Query the pipeline for elements implementing the GstTagsetter interface.
 	// In our case, this will return the flacenc element.
-	element, err := pipeline.GetByInterface(gst.InterfaceTagSetter)
-	if err != nil {
-		return err
-	}
+	element := pipeline.ByInterface(gst.GTypeTagSetter)
 
 	// We actually just retrieved a *gst.Element with the above call. We can retrieve
 	// the underying TagSetter interface like this.
-	tagsetter := element.TagSetter()
+	tagsetter := element.(*gst.TagSetter)
 
 	// Tell the element implementing the GstTagsetter interface how to handle already existing
 	// metadata.
@@ -57,14 +56,14 @@ func tagsetter() error {
 	//
 	// The first parameter gst.TagMergeAppend tells the tagsetter to append this title
 	// if there already is one.
-	tagsetter.AddTagValue(gst.TagMergeAppend, gst.TagTitle, "Special randomized white-noise")
+	tagsetter.AddTagValue(gst.TagMergeAppend, gst.TAG_TITLE, coreglib.NewValue("Special randomized white-noise"))
 
 	pipeline.SetState(gst.StatePlaying)
 
 	var cont bool
 	var pipelineErr error
 	for {
-		msg := pipeline.GetPipelineBus().TimedPop(gst.ClockTimeNone)
+		msg := pipeline.Bus().TimedPop(gst.ClockTimeNone)
 		if msg == nil {
 			break
 		}
@@ -78,18 +77,18 @@ func tagsetter() error {
 }
 
 func handleMessage(msg *gst.Message) (bool, error) {
-	defer msg.Unref()
 	switch msg.Type() {
 	case gst.MessageTag:
 		fmt.Println(msg) // Prirnt our tags
-	case gst.MessageEOS:
+	case gst.MessageEos:
 		return false, nil
 	case gst.MessageError:
-		return false, msg.ParseError()
+		err, _ := msg.ParseError()
+		return false, err
 	}
 	return true, nil
 }
 
 func main() {
-	examples.Run(tagsetter)
+
 }
