@@ -4,7 +4,6 @@ package gstmpegts
 
 import (
 	"fmt"
-	"log"
 	"runtime"
 	"strings"
 	"unsafe"
@@ -16,7 +15,6 @@ import (
 
 // #cgo pkg-config: gstreamer-mpegts-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
-// #define GST_USE_UNSTABLE_API // APIs in this package are unstable
 // #include <gst/mpegts/mpegts.h>
 import "C"
 
@@ -156,49 +154,49 @@ func init() {
 type ATSCDescriptorType C.int
 
 const (
-	// MtsDescAtscStuffing wraps GST_MTS_DESC_ATSC_STUFFING
+	// MtsDescAtscStuffing wraps MTS_DESC_ATSC_STUFFING
 	MtsDescAtscStuffing ATSCDescriptorType = 128
-	// MtsDescAtscAc3 wraps GST_MTS_DESC_ATSC_AC3
+	// MtsDescAtscAc3 wraps MTS_DESC_ATSC_AC3
 	MtsDescAtscAc3 ATSCDescriptorType = 129
-	// MtsDescAtscCaptionService wraps GST_MTS_DESC_ATSC_CAPTION_SERVICE
+	// MtsDescAtscCaptionService wraps MTS_DESC_ATSC_CAPTION_SERVICE
 	MtsDescAtscCaptionService ATSCDescriptorType = 134
-	// MtsDescAtscContentAdvisory wraps GST_MTS_DESC_ATSC_CONTENT_ADVISORY
+	// MtsDescAtscContentAdvisory wraps MTS_DESC_ATSC_CONTENT_ADVISORY
 	MtsDescAtscContentAdvisory ATSCDescriptorType = 135
-	// MtsDescAtscExtendedChannelName wraps GST_MTS_DESC_ATSC_EXTENDED_CHANNEL_NAME
+	// MtsDescAtscExtendedChannelName wraps MTS_DESC_ATSC_EXTENDED_CHANNEL_NAME
 	MtsDescAtscExtendedChannelName ATSCDescriptorType = 160
-	// MtsDescAtscServiceLocation wraps GST_MTS_DESC_ATSC_SERVICE_LOCATION
+	// MtsDescAtscServiceLocation wraps MTS_DESC_ATSC_SERVICE_LOCATION
 	MtsDescAtscServiceLocation ATSCDescriptorType = 161
-	// MtsDescAtscTimeShiftedService wraps GST_MTS_DESC_ATSC_TIME_SHIFTED_SERVICE
+	// MtsDescAtscTimeShiftedService wraps MTS_DESC_ATSC_TIME_SHIFTED_SERVICE
 	MtsDescAtscTimeShiftedService ATSCDescriptorType = 162
-	// MtsDescAtscComponentName wraps GST_MTS_DESC_ATSC_COMPONENT_NAME
+	// MtsDescAtscComponentName wraps MTS_DESC_ATSC_COMPONENT_NAME
 	MtsDescAtscComponentName ATSCDescriptorType = 163
-	// MtsDescAtscDccDepartingRequest wraps GST_MTS_DESC_ATSC_DCC_DEPARTING_REQUEST
+	// MtsDescAtscDccDepartingRequest wraps MTS_DESC_ATSC_DCC_DEPARTING_REQUEST
 	MtsDescAtscDccDepartingRequest ATSCDescriptorType = 168
-	// MtsDescAtscDccArrivingRequest wraps GST_MTS_DESC_ATSC_DCC_ARRIVING_REQUEST
+	// MtsDescAtscDccArrivingRequest wraps MTS_DESC_ATSC_DCC_ARRIVING_REQUEST
 	MtsDescAtscDccArrivingRequest ATSCDescriptorType = 169
-	// MtsDescAtscRedistributionControl wraps GST_MTS_DESC_ATSC_REDISTRIBUTION_CONTROL
+	// MtsDescAtscRedistributionControl wraps MTS_DESC_ATSC_REDISTRIBUTION_CONTROL
 	MtsDescAtscRedistributionControl ATSCDescriptorType = 170
-	// MtsDescAtscGenre wraps GST_MTS_DESC_ATSC_GENRE
+	// MtsDescAtscGenre wraps MTS_DESC_ATSC_GENRE
 	MtsDescAtscGenre ATSCDescriptorType = 171
-	// MtsDescAtscPrivateInformation wraps GST_MTS_DESC_ATSC_PRIVATE_INFORMATION
+	// MtsDescAtscPrivateInformation wraps MTS_DESC_ATSC_PRIVATE_INFORMATION
 	MtsDescAtscPrivateInformation ATSCDescriptorType = 173
-	// MtsDescAtscEac3 wraps GST_MTS_DESC_ATSC_EAC3
+	// MtsDescAtscEac3 wraps MTS_DESC_ATSC_EAC3
 	MtsDescAtscEac3 ATSCDescriptorType = 204
-	// MtsDescAtscEnhancedSignaling wraps GST_MTS_DESC_ATSC_ENHANCED_SIGNALING
+	// MtsDescAtscEnhancedSignaling wraps MTS_DESC_ATSC_ENHANCED_SIGNALING
 	MtsDescAtscEnhancedSignaling ATSCDescriptorType = 178
-	// MtsDescAtscDataService wraps GST_MTS_DESC_ATSC_DATA_SERVICE
+	// MtsDescAtscDataService wraps MTS_DESC_ATSC_DATA_SERVICE
 	MtsDescAtscDataService ATSCDescriptorType = 164
-	// MtsDescAtscPidCount wraps GST_MTS_DESC_ATSC_PID_COUNT
+	// MtsDescAtscPidCount wraps MTS_DESC_ATSC_PID_COUNT
 	MtsDescAtscPidCount ATSCDescriptorType = 165
-	// MtsDescAtscDownloadDescriptor wraps GST_MTS_DESC_ATSC_DOWNLOAD_DESCRIPTOR
+	// MtsDescAtscDownloadDescriptor wraps MTS_DESC_ATSC_DOWNLOAD_DESCRIPTOR
 	MtsDescAtscDownloadDescriptor ATSCDescriptorType = 166
-	// MtsDescAtscMultiprotocolEncapsulation wraps GST_MTS_DESC_ATSC_MULTIPROTOCOL_ENCAPSULATION
+	// MtsDescAtscMultiprotocolEncapsulation wraps MTS_DESC_ATSC_MULTIPROTOCOL_ENCAPSULATION
 	MtsDescAtscMultiprotocolEncapsulation ATSCDescriptorType = 167
-	// MtsDescAtscModuleLink wraps GST_MTS_DESC_ATSC_MODULE_LINK
+	// MtsDescAtscModuleLink wraps MTS_DESC_ATSC_MODULE_LINK
 	MtsDescAtscModuleLink ATSCDescriptorType = 180
-	// MtsDescAtscCrc32 wraps GST_MTS_DESC_ATSC_CRC32
+	// MtsDescAtscCrc32 wraps MTS_DESC_ATSC_CRC32
 	MtsDescAtscCrc32 ATSCDescriptorType = 181
-	// MtsDescAtscGroupLink wraps GST_MTS_DESC_ATSC_GROUP_LINK
+	// MtsDescAtscGroupLink wraps MTS_DESC_ATSC_GROUP_LINK
 	MtsDescAtscGroupLink ATSCDescriptorType = 184
 )
 
@@ -239,31 +237,31 @@ func (e ATSCDescriptorType) String() string {
 type ATSCStreamType C.int
 
 const (
-	// MpegtsStreamTypeAtscDciiVideo wraps GST_MPEGTS_STREAM_TYPE_ATSC_DCII_VIDEO
+	// MpegtsStreamTypeAtscDciiVideo wraps MPEGTS_STREAM_TYPE_ATSC_DCII_VIDEO
 	//
 	// DigiCipher II video | Identical to ITU-T Rec. H.262 | ISO/IEC 13818-2 Video
 	MpegtsStreamTypeAtscDciiVideo ATSCStreamType = 128
-	// MpegtsStreamTypeAtscAudioAc3 wraps GST_MPEGTS_STREAM_TYPE_ATSC_AUDIO_AC3
+	// MpegtsStreamTypeAtscAudioAc3 wraps MPEGTS_STREAM_TYPE_ATSC_AUDIO_AC3
 	//
 	// ATSC A/53 Audio | AC-3
 	MpegtsStreamTypeAtscAudioAc3 ATSCStreamType = 129
-	// MpegtsStreamTypeAtscSubtitling wraps GST_MPEGTS_STREAM_TYPE_ATSC_SUBTITLING
+	// MpegtsStreamTypeAtscSubtitling wraps MPEGTS_STREAM_TYPE_ATSC_SUBTITLING
 	//
 	// SCTE-27 Subtitling
 	MpegtsStreamTypeAtscSubtitling ATSCStreamType = 130
-	// MpegtsStreamTypeAtscIsochData wraps GST_MPEGTS_STREAM_TYPE_ATSC_ISOCH_DATA
+	// MpegtsStreamTypeAtscIsochData wraps MPEGTS_STREAM_TYPE_ATSC_ISOCH_DATA
 	//
 	// SCTE-19 Isochronous data | Reserved
 	MpegtsStreamTypeAtscIsochData ATSCStreamType = 131
-	// MpegtsStreamTypeAtscSit wraps GST_MPEGTS_STREAM_TYPE_ATSC_SIT
+	// MpegtsStreamTypeAtscSit wraps MPEGTS_STREAM_TYPE_ATSC_SIT
 	//
 	// SCTE-35 Splice Information Table
 	MpegtsStreamTypeAtscSit ATSCStreamType = 134
-	// MpegtsStreamTypeAtscAudioEac3 wraps GST_MPEGTS_STREAM_TYPE_ATSC_AUDIO_EAC3
+	// MpegtsStreamTypeAtscAudioEac3 wraps MPEGTS_STREAM_TYPE_ATSC_AUDIO_EAC3
 	//
 	// E-AC-3 A/52:2018
 	MpegtsStreamTypeAtscAudioEac3 ATSCStreamType = 135
-	// MpegtsStreamTypeAtscAudioDtsHd wraps GST_MPEGTS_STREAM_TYPE_ATSC_AUDIO_DTS_HD
+	// MpegtsStreamTypeAtscAudioDtsHd wraps MPEGTS_STREAM_TYPE_ATSC_AUDIO_DTS_HD
 	//
 	// E-AC-3 A/107 (ATSC 2.0)
 	MpegtsStreamTypeAtscAudioDtsHd ATSCStreamType = 136
@@ -287,13 +285,13 @@ func (e ATSCStreamType) String() string {
 type AtscMGTTableType C.int
 
 const (
-	// MpegtsAtscMgtTableTypeEit0 wraps GST_MPEGTS_ATSC_MGT_TABLE_TYPE_EIT0
+	// MpegtsAtscMgtTableTypeEit0 wraps MPEGTS_ATSC_MGT_TABLE_TYPE_EIT0
 	MpegtsAtscMgtTableTypeEit0 AtscMGTTableType = 256
-	// MpegtsAtscMgtTableTypeEit127 wraps GST_MPEGTS_ATSC_MGT_TABLE_TYPE_EIT127
+	// MpegtsAtscMgtTableTypeEit127 wraps MPEGTS_ATSC_MGT_TABLE_TYPE_EIT127
 	MpegtsAtscMgtTableTypeEit127 AtscMGTTableType = 383
-	// MpegtsAtscMgtTableTypeEtt0 wraps GST_MPEGTS_ATSC_MGT_TABLE_TYPE_ETT0
+	// MpegtsAtscMgtTableTypeEtt0 wraps MPEGTS_ATSC_MGT_TABLE_TYPE_ETT0
 	MpegtsAtscMgtTableTypeEtt0 AtscMGTTableType = 512
-	// MpegtsAtscMgtTableTypeEtt127 wraps GST_MPEGTS_ATSC_MGT_TABLE_TYPE_ETT127
+	// MpegtsAtscMgtTableTypeEtt127 wraps MPEGTS_ATSC_MGT_TABLE_TYPE_ETT127
 	MpegtsAtscMgtTableTypeEtt127 AtscMGTTableType = 639
 )
 
@@ -312,11 +310,11 @@ func (e AtscMGTTableType) String() string {
 type CableOuterFECScheme C.int
 
 const (
-	// MpegtsCableOuterFecUndefined wraps GST_MPEGTS_CABLE_OUTER_FEC_UNDEFINED
+	// MpegtsCableOuterFecUndefined wraps MPEGTS_CABLE_OUTER_FEC_UNDEFINED
 	MpegtsCableOuterFecUndefined CableOuterFECScheme = 0
-	// MpegtsCableOuterFecNone wraps GST_MPEGTS_CABLE_OUTER_FEC_NONE
+	// MpegtsCableOuterFecNone wraps MPEGTS_CABLE_OUTER_FEC_NONE
 	MpegtsCableOuterFecNone CableOuterFECScheme = 1
-	// MpegtsCableOuterFecRs204188 wraps GST_MPEGTS_CABLE_OUTER_FEC_RS_204_188
+	// MpegtsCableOuterFecRs204188 wraps MPEGTS_CABLE_OUTER_FEC_RS_204_188
 	MpegtsCableOuterFecRs204188 CableOuterFECScheme = 2
 )
 
@@ -334,21 +332,21 @@ func (e CableOuterFECScheme) String() string {
 type ComponentStreamContent C.int
 
 const (
-	// MpegtsStreamContentMpeg2Video wraps GST_MPEGTS_STREAM_CONTENT_MPEG2_VIDEO
+	// MpegtsStreamContentMpeg2Video wraps MPEGTS_STREAM_CONTENT_MPEG2_VIDEO
 	MpegtsStreamContentMpeg2Video ComponentStreamContent = 1
-	// MpegtsStreamContentMpeg1Layer2Audio wraps GST_MPEGTS_STREAM_CONTENT_MPEG1_LAYER2_AUDIO
+	// MpegtsStreamContentMpeg1Layer2Audio wraps MPEGTS_STREAM_CONTENT_MPEG1_LAYER2_AUDIO
 	MpegtsStreamContentMpeg1Layer2Audio ComponentStreamContent = 2
-	// MpegtsStreamContentTeletextOrSubtitle wraps GST_MPEGTS_STREAM_CONTENT_TELETEXT_OR_SUBTITLE
+	// MpegtsStreamContentTeletextOrSubtitle wraps MPEGTS_STREAM_CONTENT_TELETEXT_OR_SUBTITLE
 	MpegtsStreamContentTeletextOrSubtitle ComponentStreamContent = 3
-	// MpegtsStreamContentAc3 wraps GST_MPEGTS_STREAM_CONTENT_AC_3
+	// MpegtsStreamContentAc3 wraps MPEGTS_STREAM_CONTENT_AC_3
 	MpegtsStreamContentAc3 ComponentStreamContent = 4
-	// MpegtsStreamContentAvc wraps GST_MPEGTS_STREAM_CONTENT_AVC
+	// MpegtsStreamContentAvc wraps MPEGTS_STREAM_CONTENT_AVC
 	MpegtsStreamContentAvc ComponentStreamContent = 5
-	// MpegtsStreamContentAac wraps GST_MPEGTS_STREAM_CONTENT_AAC
+	// MpegtsStreamContentAac wraps MPEGTS_STREAM_CONTENT_AAC
 	MpegtsStreamContentAac ComponentStreamContent = 6
-	// MpegtsStreamContentDts wraps GST_MPEGTS_STREAM_CONTENT_DTS
+	// MpegtsStreamContentDts wraps MPEGTS_STREAM_CONTENT_DTS
 	MpegtsStreamContentDts ComponentStreamContent = 7
-	// MpegtsStreamContentSrmCpcm wraps GST_MPEGTS_STREAM_CONTENT_SRM_CPCM
+	// MpegtsStreamContentSrmCpcm wraps MPEGTS_STREAM_CONTENT_SRM_CPCM
 	MpegtsStreamContentSrmCpcm ComponentStreamContent = 8
 )
 
@@ -371,27 +369,27 @@ func (e ComponentStreamContent) String() string {
 type ContentNibbleHi C.int
 
 const (
-	// MpegtsContentMovieDrama wraps GST_MPEGTS_CONTENT_MOVIE_DRAMA
+	// MpegtsContentMovieDrama wraps MPEGTS_CONTENT_MOVIE_DRAMA
 	MpegtsContentMovieDrama ContentNibbleHi = 1
-	// MpegtsContentNewsCurrentAffairs wraps GST_MPEGTS_CONTENT_NEWS_CURRENT_AFFAIRS
+	// MpegtsContentNewsCurrentAffairs wraps MPEGTS_CONTENT_NEWS_CURRENT_AFFAIRS
 	MpegtsContentNewsCurrentAffairs ContentNibbleHi = 2
-	// MpegtsContentShowGameShow wraps GST_MPEGTS_CONTENT_SHOW_GAME_SHOW
+	// MpegtsContentShowGameShow wraps MPEGTS_CONTENT_SHOW_GAME_SHOW
 	MpegtsContentShowGameShow ContentNibbleHi = 3
-	// MpegtsContentSports wraps GST_MPEGTS_CONTENT_SPORTS
+	// MpegtsContentSports wraps MPEGTS_CONTENT_SPORTS
 	MpegtsContentSports ContentNibbleHi = 4
-	// MpegtsContentChildrenYouthProgram wraps GST_MPEGTS_CONTENT_CHILDREN_YOUTH_PROGRAM
+	// MpegtsContentChildrenYouthProgram wraps MPEGTS_CONTENT_CHILDREN_YOUTH_PROGRAM
 	MpegtsContentChildrenYouthProgram ContentNibbleHi = 5
-	// MpegtsContentMusicBalletDance wraps GST_MPEGTS_CONTENT_MUSIC_BALLET_DANCE
+	// MpegtsContentMusicBalletDance wraps MPEGTS_CONTENT_MUSIC_BALLET_DANCE
 	MpegtsContentMusicBalletDance ContentNibbleHi = 6
-	// MpegtsContentArtsCulture wraps GST_MPEGTS_CONTENT_ARTS_CULTURE
+	// MpegtsContentArtsCulture wraps MPEGTS_CONTENT_ARTS_CULTURE
 	MpegtsContentArtsCulture ContentNibbleHi = 7
-	// MpegtsContentSocialPoliticalEconomics wraps GST_MPEGTS_CONTENT_SOCIAL_POLITICAL_ECONOMICS
+	// MpegtsContentSocialPoliticalEconomics wraps MPEGTS_CONTENT_SOCIAL_POLITICAL_ECONOMICS
 	MpegtsContentSocialPoliticalEconomics ContentNibbleHi = 8
-	// MpegtsContentEducationScienceFactual wraps GST_MPEGTS_CONTENT_EDUCATION_SCIENCE_FACTUAL
+	// MpegtsContentEducationScienceFactual wraps MPEGTS_CONTENT_EDUCATION_SCIENCE_FACTUAL
 	MpegtsContentEducationScienceFactual ContentNibbleHi = 9
-	// MpegtsContentLeisureHobbies wraps GST_MPEGTS_CONTENT_LEISURE_HOBBIES
+	// MpegtsContentLeisureHobbies wraps MPEGTS_CONTENT_LEISURE_HOBBIES
 	MpegtsContentLeisureHobbies ContentNibbleHi = 10
-	// MpegtsContentSpecialCharacteristics wraps GST_MPEGTS_CONTENT_SPECIAL_CHARACTERISTICS
+	// MpegtsContentSpecialCharacteristics wraps MPEGTS_CONTENT_SPECIAL_CHARACTERISTICS
 	MpegtsContentSpecialCharacteristics ContentNibbleHi = 11
 )
 
@@ -417,31 +415,31 @@ func (e ContentNibbleHi) String() string {
 type DVBCodeRate C.int
 
 const (
-	// MpegtsFecNone wraps GST_MPEGTS_FEC_NONE
+	// MpegtsFecNone wraps MPEGTS_FEC_NONE
 	MpegtsFecNone DVBCodeRate = 0
-	// MpegtsFec12 wraps GST_MPEGTS_FEC_1_2
+	// MpegtsFec12 wraps MPEGTS_FEC_1_2
 	MpegtsFec12 DVBCodeRate = 1
-	// MpegtsFec23 wraps GST_MPEGTS_FEC_2_3
+	// MpegtsFec23 wraps MPEGTS_FEC_2_3
 	MpegtsFec23 DVBCodeRate = 2
-	// MpegtsFec34 wraps GST_MPEGTS_FEC_3_4
+	// MpegtsFec34 wraps MPEGTS_FEC_3_4
 	MpegtsFec34 DVBCodeRate = 3
-	// MpegtsFec45 wraps GST_MPEGTS_FEC_4_5
+	// MpegtsFec45 wraps MPEGTS_FEC_4_5
 	MpegtsFec45 DVBCodeRate = 4
-	// MpegtsFec56 wraps GST_MPEGTS_FEC_5_6
+	// MpegtsFec56 wraps MPEGTS_FEC_5_6
 	MpegtsFec56 DVBCodeRate = 5
-	// MpegtsFec67 wraps GST_MPEGTS_FEC_6_7
+	// MpegtsFec67 wraps MPEGTS_FEC_6_7
 	MpegtsFec67 DVBCodeRate = 6
-	// MpegtsFec78 wraps GST_MPEGTS_FEC_7_8
+	// MpegtsFec78 wraps MPEGTS_FEC_7_8
 	MpegtsFec78 DVBCodeRate = 7
-	// MpegtsFec89 wraps GST_MPEGTS_FEC_8_9
+	// MpegtsFec89 wraps MPEGTS_FEC_8_9
 	MpegtsFec89 DVBCodeRate = 8
-	// MpegtsFecAuto wraps GST_MPEGTS_FEC_AUTO
+	// MpegtsFecAuto wraps MPEGTS_FEC_AUTO
 	MpegtsFecAuto DVBCodeRate = 9
-	// MpegtsFec35 wraps GST_MPEGTS_FEC_3_5
+	// MpegtsFec35 wraps MPEGTS_FEC_3_5
 	MpegtsFec35 DVBCodeRate = 10
-	// MpegtsFec910 wraps GST_MPEGTS_FEC_9_10
+	// MpegtsFec910 wraps MPEGTS_FEC_9_10
 	MpegtsFec910 DVBCodeRate = 11
-	// MpegtsFec25 wraps GST_MPEGTS_FEC_2_5
+	// MpegtsFec25 wraps MPEGTS_FEC_2_5
 	MpegtsFec25 DVBCodeRate = 12
 )
 
@@ -476,137 +474,137 @@ func (e DVBCodeRate) String() string {
 type DVBDescriptorType C.int
 
 const (
-	// MtsDescDvbNetworkName wraps GST_MTS_DESC_DVB_NETWORK_NAME
+	// MtsDescDvbNetworkName wraps MTS_DESC_DVB_NETWORK_NAME
 	MtsDescDvbNetworkName DVBDescriptorType = 64
-	// MtsDescDvbServiceList wraps GST_MTS_DESC_DVB_SERVICE_LIST
+	// MtsDescDvbServiceList wraps MTS_DESC_DVB_SERVICE_LIST
 	MtsDescDvbServiceList DVBDescriptorType = 65
-	// MtsDescDvbStuffing wraps GST_MTS_DESC_DVB_STUFFING
+	// MtsDescDvbStuffing wraps MTS_DESC_DVB_STUFFING
 	MtsDescDvbStuffing DVBDescriptorType = 66
-	// MtsDescDvbSatelliteDeliverySystem wraps GST_MTS_DESC_DVB_SATELLITE_DELIVERY_SYSTEM
+	// MtsDescDvbSatelliteDeliverySystem wraps MTS_DESC_DVB_SATELLITE_DELIVERY_SYSTEM
 	MtsDescDvbSatelliteDeliverySystem DVBDescriptorType = 67
-	// MtsDescDvbCableDeliverySystem wraps GST_MTS_DESC_DVB_CABLE_DELIVERY_SYSTEM
+	// MtsDescDvbCableDeliverySystem wraps MTS_DESC_DVB_CABLE_DELIVERY_SYSTEM
 	MtsDescDvbCableDeliverySystem DVBDescriptorType = 68
-	// MtsDescDvbVbiData wraps GST_MTS_DESC_DVB_VBI_DATA
+	// MtsDescDvbVbiData wraps MTS_DESC_DVB_VBI_DATA
 	MtsDescDvbVbiData DVBDescriptorType = 69
-	// MtsDescDvbVbiTeletext wraps GST_MTS_DESC_DVB_VBI_TELETEXT
+	// MtsDescDvbVbiTeletext wraps MTS_DESC_DVB_VBI_TELETEXT
 	MtsDescDvbVbiTeletext DVBDescriptorType = 70
-	// MtsDescDvbBouquetName wraps GST_MTS_DESC_DVB_BOUQUET_NAME
+	// MtsDescDvbBouquetName wraps MTS_DESC_DVB_BOUQUET_NAME
 	MtsDescDvbBouquetName DVBDescriptorType = 71
-	// MtsDescDvbService wraps GST_MTS_DESC_DVB_SERVICE
+	// MtsDescDvbService wraps MTS_DESC_DVB_SERVICE
 	MtsDescDvbService DVBDescriptorType = 72
-	// MtsDescDvbCountryAvailability wraps GST_MTS_DESC_DVB_COUNTRY_AVAILABILITY
+	// MtsDescDvbCountryAvailability wraps MTS_DESC_DVB_COUNTRY_AVAILABILITY
 	MtsDescDvbCountryAvailability DVBDescriptorType = 73
-	// MtsDescDvbLinkage wraps GST_MTS_DESC_DVB_LINKAGE
+	// MtsDescDvbLinkage wraps MTS_DESC_DVB_LINKAGE
 	MtsDescDvbLinkage DVBDescriptorType = 74
-	// MtsDescDvbNvodReference wraps GST_MTS_DESC_DVB_NVOD_REFERENCE
+	// MtsDescDvbNvodReference wraps MTS_DESC_DVB_NVOD_REFERENCE
 	MtsDescDvbNvodReference DVBDescriptorType = 75
-	// MtsDescDvbTimeShiftedService wraps GST_MTS_DESC_DVB_TIME_SHIFTED_SERVICE
+	// MtsDescDvbTimeShiftedService wraps MTS_DESC_DVB_TIME_SHIFTED_SERVICE
 	MtsDescDvbTimeShiftedService DVBDescriptorType = 76
-	// MtsDescDvbShortEvent wraps GST_MTS_DESC_DVB_SHORT_EVENT
+	// MtsDescDvbShortEvent wraps MTS_DESC_DVB_SHORT_EVENT
 	MtsDescDvbShortEvent DVBDescriptorType = 77
-	// MtsDescDvbExtendedEvent wraps GST_MTS_DESC_DVB_EXTENDED_EVENT
+	// MtsDescDvbExtendedEvent wraps MTS_DESC_DVB_EXTENDED_EVENT
 	MtsDescDvbExtendedEvent DVBDescriptorType = 78
-	// MtsDescDvbTimeShiftedEvent wraps GST_MTS_DESC_DVB_TIME_SHIFTED_EVENT
+	// MtsDescDvbTimeShiftedEvent wraps MTS_DESC_DVB_TIME_SHIFTED_EVENT
 	MtsDescDvbTimeShiftedEvent DVBDescriptorType = 79
-	// MtsDescDvbComponent wraps GST_MTS_DESC_DVB_COMPONENT
+	// MtsDescDvbComponent wraps MTS_DESC_DVB_COMPONENT
 	MtsDescDvbComponent DVBDescriptorType = 80
-	// MtsDescDvbMosaic wraps GST_MTS_DESC_DVB_MOSAIC
+	// MtsDescDvbMosaic wraps MTS_DESC_DVB_MOSAIC
 	MtsDescDvbMosaic DVBDescriptorType = 81
-	// MtsDescDvbStreamIdentifier wraps GST_MTS_DESC_DVB_STREAM_IDENTIFIER
+	// MtsDescDvbStreamIdentifier wraps MTS_DESC_DVB_STREAM_IDENTIFIER
 	MtsDescDvbStreamIdentifier DVBDescriptorType = 82
-	// MtsDescDvbCaIdentifier wraps GST_MTS_DESC_DVB_CA_IDENTIFIER
+	// MtsDescDvbCaIdentifier wraps MTS_DESC_DVB_CA_IDENTIFIER
 	MtsDescDvbCaIdentifier DVBDescriptorType = 83
-	// MtsDescDvbContent wraps GST_MTS_DESC_DVB_CONTENT
+	// MtsDescDvbContent wraps MTS_DESC_DVB_CONTENT
 	MtsDescDvbContent DVBDescriptorType = 84
-	// MtsDescDvbParentalRating wraps GST_MTS_DESC_DVB_PARENTAL_RATING
+	// MtsDescDvbParentalRating wraps MTS_DESC_DVB_PARENTAL_RATING
 	MtsDescDvbParentalRating DVBDescriptorType = 85
-	// MtsDescDvbTeletext wraps GST_MTS_DESC_DVB_TELETEXT
+	// MtsDescDvbTeletext wraps MTS_DESC_DVB_TELETEXT
 	MtsDescDvbTeletext DVBDescriptorType = 86
-	// MtsDescDvbTelephone wraps GST_MTS_DESC_DVB_TELEPHONE
+	// MtsDescDvbTelephone wraps MTS_DESC_DVB_TELEPHONE
 	MtsDescDvbTelephone DVBDescriptorType = 87
-	// MtsDescDvbLocalTimeOffset wraps GST_MTS_DESC_DVB_LOCAL_TIME_OFFSET
+	// MtsDescDvbLocalTimeOffset wraps MTS_DESC_DVB_LOCAL_TIME_OFFSET
 	MtsDescDvbLocalTimeOffset DVBDescriptorType = 88
-	// MtsDescDvbSubtitling wraps GST_MTS_DESC_DVB_SUBTITLING
+	// MtsDescDvbSubtitling wraps MTS_DESC_DVB_SUBTITLING
 	MtsDescDvbSubtitling DVBDescriptorType = 89
-	// MtsDescDvbTerrestrialDeliverySystem wraps GST_MTS_DESC_DVB_TERRESTRIAL_DELIVERY_SYSTEM
+	// MtsDescDvbTerrestrialDeliverySystem wraps MTS_DESC_DVB_TERRESTRIAL_DELIVERY_SYSTEM
 	MtsDescDvbTerrestrialDeliverySystem DVBDescriptorType = 90
-	// MtsDescDvbMultilingualNetworkName wraps GST_MTS_DESC_DVB_MULTILINGUAL_NETWORK_NAME
+	// MtsDescDvbMultilingualNetworkName wraps MTS_DESC_DVB_MULTILINGUAL_NETWORK_NAME
 	MtsDescDvbMultilingualNetworkName DVBDescriptorType = 91
-	// MtsDescDvbMultilingualBouquetName wraps GST_MTS_DESC_DVB_MULTILINGUAL_BOUQUET_NAME
+	// MtsDescDvbMultilingualBouquetName wraps MTS_DESC_DVB_MULTILINGUAL_BOUQUET_NAME
 	MtsDescDvbMultilingualBouquetName DVBDescriptorType = 92
-	// MtsDescDvbMultilingualServiceName wraps GST_MTS_DESC_DVB_MULTILINGUAL_SERVICE_NAME
+	// MtsDescDvbMultilingualServiceName wraps MTS_DESC_DVB_MULTILINGUAL_SERVICE_NAME
 	MtsDescDvbMultilingualServiceName DVBDescriptorType = 93
-	// MtsDescDvbMultilingualComponent wraps GST_MTS_DESC_DVB_MULTILINGUAL_COMPONENT
+	// MtsDescDvbMultilingualComponent wraps MTS_DESC_DVB_MULTILINGUAL_COMPONENT
 	MtsDescDvbMultilingualComponent DVBDescriptorType = 94
-	// MtsDescDvbPrivateDataSpecifier wraps GST_MTS_DESC_DVB_PRIVATE_DATA_SPECIFIER
+	// MtsDescDvbPrivateDataSpecifier wraps MTS_DESC_DVB_PRIVATE_DATA_SPECIFIER
 	MtsDescDvbPrivateDataSpecifier DVBDescriptorType = 95
-	// MtsDescDvbServiceMove wraps GST_MTS_DESC_DVB_SERVICE_MOVE
+	// MtsDescDvbServiceMove wraps MTS_DESC_DVB_SERVICE_MOVE
 	MtsDescDvbServiceMove DVBDescriptorType = 96
-	// MtsDescDvbShortSmoothingBuffer wraps GST_MTS_DESC_DVB_SHORT_SMOOTHING_BUFFER
+	// MtsDescDvbShortSmoothingBuffer wraps MTS_DESC_DVB_SHORT_SMOOTHING_BUFFER
 	MtsDescDvbShortSmoothingBuffer DVBDescriptorType = 97
-	// MtsDescDvbFrequencyList wraps GST_MTS_DESC_DVB_FREQUENCY_LIST
+	// MtsDescDvbFrequencyList wraps MTS_DESC_DVB_FREQUENCY_LIST
 	MtsDescDvbFrequencyList DVBDescriptorType = 98
-	// MtsDescDvbPartialTransportStream wraps GST_MTS_DESC_DVB_PARTIAL_TRANSPORT_STREAM
+	// MtsDescDvbPartialTransportStream wraps MTS_DESC_DVB_PARTIAL_TRANSPORT_STREAM
 	//
 	// Partial Transport Stream descriptor. Only present in SIT Sections.
 	// 
 	// See also: %GST_MPEGTS_SECTION_SIT, %GstMpegtsSIT
 	MtsDescDvbPartialTransportStream DVBDescriptorType = 99
-	// MtsDescDvbDataBroadcast wraps GST_MTS_DESC_DVB_DATA_BROADCAST
+	// MtsDescDvbDataBroadcast wraps MTS_DESC_DVB_DATA_BROADCAST
 	MtsDescDvbDataBroadcast DVBDescriptorType = 100
-	// MtsDescDvbScrambling wraps GST_MTS_DESC_DVB_SCRAMBLING
+	// MtsDescDvbScrambling wraps MTS_DESC_DVB_SCRAMBLING
 	MtsDescDvbScrambling DVBDescriptorType = 101
-	// MtsDescDvbDataBroadcastID wraps GST_MTS_DESC_DVB_DATA_BROADCAST_ID
+	// MtsDescDvbDataBroadcastID wraps MTS_DESC_DVB_DATA_BROADCAST_ID
 	MtsDescDvbDataBroadcastID DVBDescriptorType = 102
-	// MtsDescDvbTransportStream wraps GST_MTS_DESC_DVB_TRANSPORT_STREAM
+	// MtsDescDvbTransportStream wraps MTS_DESC_DVB_TRANSPORT_STREAM
 	MtsDescDvbTransportStream DVBDescriptorType = 103
-	// MtsDescDvbDsng wraps GST_MTS_DESC_DVB_DSNG
+	// MtsDescDvbDsng wraps MTS_DESC_DVB_DSNG
 	MtsDescDvbDsng DVBDescriptorType = 104
-	// MtsDescDvbPdc wraps GST_MTS_DESC_DVB_PDC
+	// MtsDescDvbPdc wraps MTS_DESC_DVB_PDC
 	MtsDescDvbPdc DVBDescriptorType = 105
-	// MtsDescDvbAc3 wraps GST_MTS_DESC_DVB_AC3
+	// MtsDescDvbAc3 wraps MTS_DESC_DVB_AC3
 	MtsDescDvbAc3 DVBDescriptorType = 106
-	// MtsDescDvbAncillaryData wraps GST_MTS_DESC_DVB_ANCILLARY_DATA
+	// MtsDescDvbAncillaryData wraps MTS_DESC_DVB_ANCILLARY_DATA
 	MtsDescDvbAncillaryData DVBDescriptorType = 107
-	// MtsDescDvbCellList wraps GST_MTS_DESC_DVB_CELL_LIST
+	// MtsDescDvbCellList wraps MTS_DESC_DVB_CELL_LIST
 	MtsDescDvbCellList DVBDescriptorType = 108
-	// MtsDescDvbCellFrequencyLink wraps GST_MTS_DESC_DVB_CELL_FREQUENCY_LINK
+	// MtsDescDvbCellFrequencyLink wraps MTS_DESC_DVB_CELL_FREQUENCY_LINK
 	MtsDescDvbCellFrequencyLink DVBDescriptorType = 109
-	// MtsDescDvbAnnouncementSupport wraps GST_MTS_DESC_DVB_ANNOUNCEMENT_SUPPORT
+	// MtsDescDvbAnnouncementSupport wraps MTS_DESC_DVB_ANNOUNCEMENT_SUPPORT
 	MtsDescDvbAnnouncementSupport DVBDescriptorType = 110
-	// MtsDescDvbApplicationSignalling wraps GST_MTS_DESC_DVB_APPLICATION_SIGNALLING
+	// MtsDescDvbApplicationSignalling wraps MTS_DESC_DVB_APPLICATION_SIGNALLING
 	MtsDescDvbApplicationSignalling DVBDescriptorType = 111
-	// MtsDescDvbAdaptationFieldData wraps GST_MTS_DESC_DVB_ADAPTATION_FIELD_DATA
+	// MtsDescDvbAdaptationFieldData wraps MTS_DESC_DVB_ADAPTATION_FIELD_DATA
 	MtsDescDvbAdaptationFieldData DVBDescriptorType = 112
-	// MtsDescDvbServiceIdentifier wraps GST_MTS_DESC_DVB_SERVICE_IDENTIFIER
+	// MtsDescDvbServiceIdentifier wraps MTS_DESC_DVB_SERVICE_IDENTIFIER
 	MtsDescDvbServiceIdentifier DVBDescriptorType = 113
-	// MtsDescDvbServiceAvailability wraps GST_MTS_DESC_DVB_SERVICE_AVAILABILITY
+	// MtsDescDvbServiceAvailability wraps MTS_DESC_DVB_SERVICE_AVAILABILITY
 	MtsDescDvbServiceAvailability DVBDescriptorType = 114
-	// MtsDescDvbDefaultAuthority wraps GST_MTS_DESC_DVB_DEFAULT_AUTHORITY
+	// MtsDescDvbDefaultAuthority wraps MTS_DESC_DVB_DEFAULT_AUTHORITY
 	MtsDescDvbDefaultAuthority DVBDescriptorType = 115
-	// MtsDescDvbRelatedContent wraps GST_MTS_DESC_DVB_RELATED_CONTENT
+	// MtsDescDvbRelatedContent wraps MTS_DESC_DVB_RELATED_CONTENT
 	MtsDescDvbRelatedContent DVBDescriptorType = 116
-	// MtsDescDvbTvaID wraps GST_MTS_DESC_DVB_TVA_ID
+	// MtsDescDvbTvaID wraps MTS_DESC_DVB_TVA_ID
 	MtsDescDvbTvaID DVBDescriptorType = 117
-	// MtsDescDvbContentIdentifier wraps GST_MTS_DESC_DVB_CONTENT_IDENTIFIER
+	// MtsDescDvbContentIdentifier wraps MTS_DESC_DVB_CONTENT_IDENTIFIER
 	MtsDescDvbContentIdentifier DVBDescriptorType = 118
-	// MtsDescDvbTimesliceFecIdentifier wraps GST_MTS_DESC_DVB_TIMESLICE_FEC_IDENTIFIER
+	// MtsDescDvbTimesliceFecIdentifier wraps MTS_DESC_DVB_TIMESLICE_FEC_IDENTIFIER
 	MtsDescDvbTimesliceFecIdentifier DVBDescriptorType = 119
-	// MtsDescDvbEcmRepetitionRate wraps GST_MTS_DESC_DVB_ECM_REPETITION_RATE
+	// MtsDescDvbEcmRepetitionRate wraps MTS_DESC_DVB_ECM_REPETITION_RATE
 	MtsDescDvbEcmRepetitionRate DVBDescriptorType = 120
-	// MtsDescDvbS2SatelliteDeliverySystem wraps GST_MTS_DESC_DVB_S2_SATELLITE_DELIVERY_SYSTEM
+	// MtsDescDvbS2SatelliteDeliverySystem wraps MTS_DESC_DVB_S2_SATELLITE_DELIVERY_SYSTEM
 	MtsDescDvbS2SatelliteDeliverySystem DVBDescriptorType = 121
-	// MtsDescDvbEnhancedAc3 wraps GST_MTS_DESC_DVB_ENHANCED_AC3
+	// MtsDescDvbEnhancedAc3 wraps MTS_DESC_DVB_ENHANCED_AC3
 	MtsDescDvbEnhancedAc3 DVBDescriptorType = 122
-	// MtsDescDvbDts wraps GST_MTS_DESC_DVB_DTS
+	// MtsDescDvbDts wraps MTS_DESC_DVB_DTS
 	MtsDescDvbDts DVBDescriptorType = 123
-	// MtsDescDvbAac wraps GST_MTS_DESC_DVB_AAC
+	// MtsDescDvbAac wraps MTS_DESC_DVB_AAC
 	MtsDescDvbAac DVBDescriptorType = 124
-	// MtsDescDvbXaitLocation wraps GST_MTS_DESC_DVB_XAIT_LOCATION
+	// MtsDescDvbXaitLocation wraps MTS_DESC_DVB_XAIT_LOCATION
 	MtsDescDvbXaitLocation DVBDescriptorType = 125
-	// MtsDescDvbFtaContentManagement wraps GST_MTS_DESC_DVB_FTA_CONTENT_MANAGEMENT
+	// MtsDescDvbFtaContentManagement wraps MTS_DESC_DVB_FTA_CONTENT_MANAGEMENT
 	MtsDescDvbFtaContentManagement DVBDescriptorType = 126
-	// MtsDescDvbExtension wraps GST_MTS_DESC_DVB_EXTENSION
+	// MtsDescDvbExtension wraps MTS_DESC_DVB_EXTENSION
 	MtsDescDvbExtension DVBDescriptorType = 127
 )
 
@@ -692,47 +690,47 @@ func (e DVBDescriptorType) String() string {
 type DVBExtendedDescriptorType C.int
 
 const (
-	// MtsDescExtDvbImageIcon wraps GST_MTS_DESC_EXT_DVB_IMAGE_ICON
+	// MtsDescExtDvbImageIcon wraps MTS_DESC_EXT_DVB_IMAGE_ICON
 	MtsDescExtDvbImageIcon DVBExtendedDescriptorType = 0
-	// MtsDescExtDvbCpcmDeliverySignalling wraps GST_MTS_DESC_EXT_DVB_CPCM_DELIVERY_SIGNALLING
+	// MtsDescExtDvbCpcmDeliverySignalling wraps MTS_DESC_EXT_DVB_CPCM_DELIVERY_SIGNALLING
 	MtsDescExtDvbCpcmDeliverySignalling DVBExtendedDescriptorType = 1
-	// MtsDescExtDvbCp wraps GST_MTS_DESC_EXT_DVB_CP
+	// MtsDescExtDvbCp wraps MTS_DESC_EXT_DVB_CP
 	MtsDescExtDvbCp DVBExtendedDescriptorType = 2
-	// MtsDescExtDvbCpIdentifier wraps GST_MTS_DESC_EXT_DVB_CP_IDENTIFIER
+	// MtsDescExtDvbCpIdentifier wraps MTS_DESC_EXT_DVB_CP_IDENTIFIER
 	MtsDescExtDvbCpIdentifier DVBExtendedDescriptorType = 3
-	// MtsDescExtDvbT2DeliverySystem wraps GST_MTS_DESC_EXT_DVB_T2_DELIVERY_SYSTEM
+	// MtsDescExtDvbT2DeliverySystem wraps MTS_DESC_EXT_DVB_T2_DELIVERY_SYSTEM
 	MtsDescExtDvbT2DeliverySystem DVBExtendedDescriptorType = 4
-	// MtsDescExtDvbShDeliverySystem wraps GST_MTS_DESC_EXT_DVB_SH_DELIVERY_SYSTEM
+	// MtsDescExtDvbShDeliverySystem wraps MTS_DESC_EXT_DVB_SH_DELIVERY_SYSTEM
 	MtsDescExtDvbShDeliverySystem DVBExtendedDescriptorType = 5
-	// MtsDescExtDvbSupplementaryAudio wraps GST_MTS_DESC_EXT_DVB_SUPPLEMENTARY_AUDIO
+	// MtsDescExtDvbSupplementaryAudio wraps MTS_DESC_EXT_DVB_SUPPLEMENTARY_AUDIO
 	MtsDescExtDvbSupplementaryAudio DVBExtendedDescriptorType = 6
-	// MtsDescExtDvbNetworkChangeNotify wraps GST_MTS_DESC_EXT_DVB_NETWORK_CHANGE_NOTIFY
+	// MtsDescExtDvbNetworkChangeNotify wraps MTS_DESC_EXT_DVB_NETWORK_CHANGE_NOTIFY
 	MtsDescExtDvbNetworkChangeNotify DVBExtendedDescriptorType = 7
-	// MtsDescExtDvbMessage wraps GST_MTS_DESC_EXT_DVB_MESSAGE
+	// MtsDescExtDvbMessage wraps MTS_DESC_EXT_DVB_MESSAGE
 	MtsDescExtDvbMessage DVBExtendedDescriptorType = 8
-	// MtsDescExtDvbTargetRegion wraps GST_MTS_DESC_EXT_DVB_TARGET_REGION
+	// MtsDescExtDvbTargetRegion wraps MTS_DESC_EXT_DVB_TARGET_REGION
 	MtsDescExtDvbTargetRegion DVBExtendedDescriptorType = 9
-	// MtsDescExtDvbTargetRegionName wraps GST_MTS_DESC_EXT_DVB_TARGET_REGION_NAME
+	// MtsDescExtDvbTargetRegionName wraps MTS_DESC_EXT_DVB_TARGET_REGION_NAME
 	MtsDescExtDvbTargetRegionName DVBExtendedDescriptorType = 10
-	// MtsDescExtDvbServiceRelocated wraps GST_MTS_DESC_EXT_DVB_SERVICE_RELOCATED
+	// MtsDescExtDvbServiceRelocated wraps MTS_DESC_EXT_DVB_SERVICE_RELOCATED
 	MtsDescExtDvbServiceRelocated DVBExtendedDescriptorType = 11
-	// MtsDescExtDvbXaitPid wraps GST_MTS_DESC_EXT_DVB_XAIT_PID
+	// MtsDescExtDvbXaitPid wraps MTS_DESC_EXT_DVB_XAIT_PID
 	MtsDescExtDvbXaitPid DVBExtendedDescriptorType = 12
-	// MtsDescExtDvbC2DeliverySystem wraps GST_MTS_DESC_EXT_DVB_C2_DELIVERY_SYSTEM
+	// MtsDescExtDvbC2DeliverySystem wraps MTS_DESC_EXT_DVB_C2_DELIVERY_SYSTEM
 	MtsDescExtDvbC2DeliverySystem DVBExtendedDescriptorType = 13
-	// MtsDescExtDvbDtsHdAudioStream wraps GST_MTS_DESC_EXT_DVB_DTS_HD_AUDIO_STREAM
+	// MtsDescExtDvbDtsHdAudioStream wraps MTS_DESC_EXT_DVB_DTS_HD_AUDIO_STREAM
 	MtsDescExtDvbDtsHdAudioStream DVBExtendedDescriptorType = 14
-	// MtsDescExtDvbDtsNeutral wraps GST_MTS_DESC_EXT_DVB_DTS_NEUTRAL
+	// MtsDescExtDvbDtsNeutral wraps MTS_DESC_EXT_DVB_DTS_NEUTRAL
 	MtsDescExtDvbDtsNeutral DVBExtendedDescriptorType = 15
-	// MtsDescExtDvbVideoDepthRange wraps GST_MTS_DESC_EXT_DVB_VIDEO_DEPTH_RANGE
+	// MtsDescExtDvbVideoDepthRange wraps MTS_DESC_EXT_DVB_VIDEO_DEPTH_RANGE
 	MtsDescExtDvbVideoDepthRange DVBExtendedDescriptorType = 16
-	// MtsDescExtDvbT2Mi wraps GST_MTS_DESC_EXT_DVB_T2MI
+	// MtsDescExtDvbT2Mi wraps MTS_DESC_EXT_DVB_T2MI
 	MtsDescExtDvbT2Mi DVBExtendedDescriptorType = 17
-	// MtsDescExtDvbURILinkage wraps GST_MTS_DESC_EXT_DVB_URI_LINKAGE
+	// MtsDescExtDvbURILinkage wraps MTS_DESC_EXT_DVB_URI_LINKAGE
 	MtsDescExtDvbURILinkage DVBExtendedDescriptorType = 19
-	// MtsDescExtDvbAc4 wraps GST_MTS_DESC_EXT_DVB_AC4
+	// MtsDescExtDvbAc4 wraps MTS_DESC_EXT_DVB_AC4
 	MtsDescExtDvbAc4 DVBExtendedDescriptorType = 21
-	// MtsDescExtDvbAudioPreselection wraps GST_MTS_DESC_EXT_DVB_AUDIO_PRESELECTION
+	// MtsDescExtDvbAudioPreselection wraps MTS_DESC_EXT_DVB_AUDIO_PRESELECTION
 	//
 	// Provide all avaliable audio programme for user selection
 	MtsDescExtDvbAudioPreselection DVBExtendedDescriptorType = 25
@@ -770,13 +768,13 @@ func (e DVBExtendedDescriptorType) String() string {
 type DVBLinkageHandOverType C.int
 
 const (
-	// MpegtsDvbLinkageHandOverReserved wraps GST_MPEGTS_DVB_LINKAGE_HAND_OVER_RESERVED
+	// MpegtsDvbLinkageHandOverReserved wraps MPEGTS_DVB_LINKAGE_HAND_OVER_RESERVED
 	MpegtsDvbLinkageHandOverReserved DVBLinkageHandOverType = 0
-	// MpegtsDvbLinkageHandOverIdentical wraps GST_MPEGTS_DVB_LINKAGE_HAND_OVER_IDENTICAL
+	// MpegtsDvbLinkageHandOverIdentical wraps MPEGTS_DVB_LINKAGE_HAND_OVER_IDENTICAL
 	MpegtsDvbLinkageHandOverIdentical DVBLinkageHandOverType = 1
-	// MpegtsDvbLinkageHandOverLocalVariation wraps GST_MPEGTS_DVB_LINKAGE_HAND_OVER_LOCAL_VARIATION
+	// MpegtsDvbLinkageHandOverLocalVariation wraps MPEGTS_DVB_LINKAGE_HAND_OVER_LOCAL_VARIATION
 	MpegtsDvbLinkageHandOverLocalVariation DVBLinkageHandOverType = 2
-	// MpegtsDvbLinkageHandOverAssociated wraps GST_MPEGTS_DVB_LINKAGE_HAND_OVER_ASSOCIATED
+	// MpegtsDvbLinkageHandOverAssociated wraps MPEGTS_DVB_LINKAGE_HAND_OVER_ASSOCIATED
 	MpegtsDvbLinkageHandOverAssociated DVBLinkageHandOverType = 3
 )
 
@@ -797,35 +795,35 @@ func (e DVBLinkageHandOverType) String() string {
 type DVBLinkageType C.int
 
 const (
-	// MpegtsDvbLinkageReserved00 wraps GST_MPEGTS_DVB_LINKAGE_RESERVED_00
+	// MpegtsDvbLinkageReserved00 wraps MPEGTS_DVB_LINKAGE_RESERVED_00
 	MpegtsDvbLinkageReserved00 DVBLinkageType = 0
-	// MpegtsDvbLinkageInformation wraps GST_MPEGTS_DVB_LINKAGE_INFORMATION
+	// MpegtsDvbLinkageInformation wraps MPEGTS_DVB_LINKAGE_INFORMATION
 	MpegtsDvbLinkageInformation DVBLinkageType = 1
-	// MpegtsDvbLinkageEpg wraps GST_MPEGTS_DVB_LINKAGE_EPG
+	// MpegtsDvbLinkageEpg wraps MPEGTS_DVB_LINKAGE_EPG
 	MpegtsDvbLinkageEpg DVBLinkageType = 2
-	// MpegtsDvbLinkageCaReplacement wraps GST_MPEGTS_DVB_LINKAGE_CA_REPLACEMENT
+	// MpegtsDvbLinkageCaReplacement wraps MPEGTS_DVB_LINKAGE_CA_REPLACEMENT
 	MpegtsDvbLinkageCaReplacement DVBLinkageType = 3
-	// MpegtsDvbLinkageTsContainingCompleteSi wraps GST_MPEGTS_DVB_LINKAGE_TS_CONTAINING_COMPLETE_SI
+	// MpegtsDvbLinkageTsContainingCompleteSi wraps MPEGTS_DVB_LINKAGE_TS_CONTAINING_COMPLETE_SI
 	MpegtsDvbLinkageTsContainingCompleteSi DVBLinkageType = 4
-	// MpegtsDvbLinkageServiceReplacement wraps GST_MPEGTS_DVB_LINKAGE_SERVICE_REPLACEMENT
+	// MpegtsDvbLinkageServiceReplacement wraps MPEGTS_DVB_LINKAGE_SERVICE_REPLACEMENT
 	MpegtsDvbLinkageServiceReplacement DVBLinkageType = 5
-	// MpegtsDvbLinkageDataBroadcast wraps GST_MPEGTS_DVB_LINKAGE_DATA_BROADCAST
+	// MpegtsDvbLinkageDataBroadcast wraps MPEGTS_DVB_LINKAGE_DATA_BROADCAST
 	MpegtsDvbLinkageDataBroadcast DVBLinkageType = 6
-	// MpegtsDvbLinkageRcsMap wraps GST_MPEGTS_DVB_LINKAGE_RCS_MAP
+	// MpegtsDvbLinkageRcsMap wraps MPEGTS_DVB_LINKAGE_RCS_MAP
 	MpegtsDvbLinkageRcsMap DVBLinkageType = 7
-	// MpegtsDvbLinkageMobileHandOver wraps GST_MPEGTS_DVB_LINKAGE_MOBILE_HAND_OVER
+	// MpegtsDvbLinkageMobileHandOver wraps MPEGTS_DVB_LINKAGE_MOBILE_HAND_OVER
 	MpegtsDvbLinkageMobileHandOver DVBLinkageType = 8
-	// MpegtsDvbLinkageSystemSoftwareUpdate wraps GST_MPEGTS_DVB_LINKAGE_SYSTEM_SOFTWARE_UPDATE
+	// MpegtsDvbLinkageSystemSoftwareUpdate wraps MPEGTS_DVB_LINKAGE_SYSTEM_SOFTWARE_UPDATE
 	MpegtsDvbLinkageSystemSoftwareUpdate DVBLinkageType = 9
-	// MpegtsDvbLinkageTsContainingSsu wraps GST_MPEGTS_DVB_LINKAGE_TS_CONTAINING_SSU
+	// MpegtsDvbLinkageTsContainingSsu wraps MPEGTS_DVB_LINKAGE_TS_CONTAINING_SSU
 	MpegtsDvbLinkageTsContainingSsu DVBLinkageType = 10
-	// MpegtsDvbLinkageIPMacNotification wraps GST_MPEGTS_DVB_LINKAGE_IP_MAC_NOTIFICATION
+	// MpegtsDvbLinkageIPMacNotification wraps MPEGTS_DVB_LINKAGE_IP_MAC_NOTIFICATION
 	MpegtsDvbLinkageIPMacNotification DVBLinkageType = 11
-	// MpegtsDvbLinkageTsContainingInt wraps GST_MPEGTS_DVB_LINKAGE_TS_CONTAINING_INT
+	// MpegtsDvbLinkageTsContainingInt wraps MPEGTS_DVB_LINKAGE_TS_CONTAINING_INT
 	MpegtsDvbLinkageTsContainingInt DVBLinkageType = 12
-	// MpegtsDvbLinkageEvent wraps GST_MPEGTS_DVB_LINKAGE_EVENT
+	// MpegtsDvbLinkageEvent wraps MPEGTS_DVB_LINKAGE_EVENT
 	MpegtsDvbLinkageEvent DVBLinkageType = 13
-	// MpegtsDvbLinkageExtendedEvent wraps GST_MPEGTS_DVB_LINKAGE_EXTENDED_EVENT
+	// MpegtsDvbLinkageExtendedEvent wraps MPEGTS_DVB_LINKAGE_EXTENDED_EVENT
 	MpegtsDvbLinkageExtendedEvent DVBLinkageType = 14
 )
 
@@ -855,23 +853,23 @@ func (e DVBLinkageType) String() string {
 type DVBScramblingModeType C.int
 
 const (
-	// MpegtsDvbScramblingModeReserved wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_RESERVED
+	// MpegtsDvbScramblingModeReserved wraps MPEGTS_DVB_SCRAMBLING_MODE_RESERVED
 	MpegtsDvbScramblingModeReserved DVBScramblingModeType = 0
-	// MpegtsDvbScramblingModeCsa1 wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_CSA1
+	// MpegtsDvbScramblingModeCsa1 wraps MPEGTS_DVB_SCRAMBLING_MODE_CSA1
 	MpegtsDvbScramblingModeCsa1 DVBScramblingModeType = 1
-	// MpegtsDvbScramblingModeCsa2 wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_CSA2
+	// MpegtsDvbScramblingModeCsa2 wraps MPEGTS_DVB_SCRAMBLING_MODE_CSA2
 	MpegtsDvbScramblingModeCsa2 DVBScramblingModeType = 2
-	// MpegtsDvbScramblingModeCsa3Standard wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_CSA3_STANDARD
+	// MpegtsDvbScramblingModeCsa3Standard wraps MPEGTS_DVB_SCRAMBLING_MODE_CSA3_STANDARD
 	MpegtsDvbScramblingModeCsa3Standard DVBScramblingModeType = 3
-	// MpegtsDvbScramblingModeCsa3MinimalEnhanced wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_CSA3_MINIMAL_ENHANCED
+	// MpegtsDvbScramblingModeCsa3MinimalEnhanced wraps MPEGTS_DVB_SCRAMBLING_MODE_CSA3_MINIMAL_ENHANCED
 	MpegtsDvbScramblingModeCsa3MinimalEnhanced DVBScramblingModeType = 4
-	// MpegtsDvbScramblingModeCsa3FullEnhanced wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_CSA3_FULL_ENHANCED
+	// MpegtsDvbScramblingModeCsa3FullEnhanced wraps MPEGTS_DVB_SCRAMBLING_MODE_CSA3_FULL_ENHANCED
 	MpegtsDvbScramblingModeCsa3FullEnhanced DVBScramblingModeType = 5
-	// MpegtsDvbScramblingModeCissa wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_CISSA
+	// MpegtsDvbScramblingModeCissa wraps MPEGTS_DVB_SCRAMBLING_MODE_CISSA
 	MpegtsDvbScramblingModeCissa DVBScramblingModeType = 16
-	// MpegtsDvbScramblingModeAtis0 wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_ATIS_0
+	// MpegtsDvbScramblingModeAtis0 wraps MPEGTS_DVB_SCRAMBLING_MODE_ATIS_0
 	MpegtsDvbScramblingModeAtis0 DVBScramblingModeType = 112
-	// MpegtsDvbScramblingModeAtisF wraps GST_MPEGTS_DVB_SCRAMBLING_MODE_ATIS_F
+	// MpegtsDvbScramblingModeAtisF wraps MPEGTS_DVB_SCRAMBLING_MODE_ATIS_F
 	MpegtsDvbScramblingModeAtisF DVBScramblingModeType = 127
 )
 
@@ -899,61 +897,61 @@ func (e DVBScramblingModeType) String() string {
 type DVBServiceType C.int
 
 const (
-	// DvbServiceReserved00 wraps GST_DVB_SERVICE_RESERVED_00
+	// DvbServiceReserved00 wraps DVB_SERVICE_RESERVED_00
 	DvbServiceReserved00 DVBServiceType = 0
-	// DvbServiceDigitalTelevision wraps GST_DVB_SERVICE_DIGITAL_TELEVISION
+	// DvbServiceDigitalTelevision wraps DVB_SERVICE_DIGITAL_TELEVISION
 	DvbServiceDigitalTelevision DVBServiceType = 1
-	// DvbServiceDigitalRadioSound wraps GST_DVB_SERVICE_DIGITAL_RADIO_SOUND
+	// DvbServiceDigitalRadioSound wraps DVB_SERVICE_DIGITAL_RADIO_SOUND
 	DvbServiceDigitalRadioSound DVBServiceType = 2
-	// DvbServiceTeletext wraps GST_DVB_SERVICE_TELETEXT
+	// DvbServiceTeletext wraps DVB_SERVICE_TELETEXT
 	DvbServiceTeletext DVBServiceType = 3
-	// DvbServiceNvodReference wraps GST_DVB_SERVICE_NVOD_REFERENCE
+	// DvbServiceNvodReference wraps DVB_SERVICE_NVOD_REFERENCE
 	DvbServiceNvodReference DVBServiceType = 4
-	// DvbServiceNvodTimeShifted wraps GST_DVB_SERVICE_NVOD_TIME_SHIFTED
+	// DvbServiceNvodTimeShifted wraps DVB_SERVICE_NVOD_TIME_SHIFTED
 	DvbServiceNvodTimeShifted DVBServiceType = 5
-	// DvbServiceMosaic wraps GST_DVB_SERVICE_MOSAIC
+	// DvbServiceMosaic wraps DVB_SERVICE_MOSAIC
 	DvbServiceMosaic DVBServiceType = 6
-	// DvbServiceFmRadio wraps GST_DVB_SERVICE_FM_RADIO
+	// DvbServiceFmRadio wraps DVB_SERVICE_FM_RADIO
 	DvbServiceFmRadio DVBServiceType = 7
-	// DvbServiceDvbSrm wraps GST_DVB_SERVICE_DVB_SRM
+	// DvbServiceDvbSrm wraps DVB_SERVICE_DVB_SRM
 	DvbServiceDvbSrm DVBServiceType = 8
-	// DvbServiceReserved09 wraps GST_DVB_SERVICE_RESERVED_09
+	// DvbServiceReserved09 wraps DVB_SERVICE_RESERVED_09
 	DvbServiceReserved09 DVBServiceType = 9
-	// DvbServiceAdvancedCodecDigitalRadioSound wraps GST_DVB_SERVICE_ADVANCED_CODEC_DIGITAL_RADIO_SOUND
+	// DvbServiceAdvancedCodecDigitalRadioSound wraps DVB_SERVICE_ADVANCED_CODEC_DIGITAL_RADIO_SOUND
 	DvbServiceAdvancedCodecDigitalRadioSound DVBServiceType = 10
-	// DvbServiceAdvancedCodecMosaic wraps GST_DVB_SERVICE_ADVANCED_CODEC_MOSAIC
+	// DvbServiceAdvancedCodecMosaic wraps DVB_SERVICE_ADVANCED_CODEC_MOSAIC
 	DvbServiceAdvancedCodecMosaic DVBServiceType = 11
-	// DvbServiceDataBroadcast wraps GST_DVB_SERVICE_DATA_BROADCAST
+	// DvbServiceDataBroadcast wraps DVB_SERVICE_DATA_BROADCAST
 	DvbServiceDataBroadcast DVBServiceType = 12
-	// DvbServiceReserved0DCommonInterface wraps GST_DVB_SERVICE_RESERVED_0D_COMMON_INTERFACE
+	// DvbServiceReserved0DCommonInterface wraps DVB_SERVICE_RESERVED_0D_COMMON_INTERFACE
 	DvbServiceReserved0DCommonInterface DVBServiceType = 13
-	// DvbServiceRcsMap wraps GST_DVB_SERVICE_RCS_MAP
+	// DvbServiceRcsMap wraps DVB_SERVICE_RCS_MAP
 	DvbServiceRcsMap DVBServiceType = 14
-	// DvbServiceRcsFls wraps GST_DVB_SERVICE_RCS_FLS
+	// DvbServiceRcsFls wraps DVB_SERVICE_RCS_FLS
 	DvbServiceRcsFls DVBServiceType = 15
-	// DvbServiceDvbMhp wraps GST_DVB_SERVICE_DVB_MHP
+	// DvbServiceDvbMhp wraps DVB_SERVICE_DVB_MHP
 	DvbServiceDvbMhp DVBServiceType = 16
-	// DvbServiceMpeg2HdDigitalTelevision wraps GST_DVB_SERVICE_MPEG2_HD_DIGITAL_TELEVISION
+	// DvbServiceMpeg2HdDigitalTelevision wraps DVB_SERVICE_MPEG2_HD_DIGITAL_TELEVISION
 	DvbServiceMpeg2HdDigitalTelevision DVBServiceType = 17
-	// DvbServiceAdvancedCodecSdDigitalTelevision wraps GST_DVB_SERVICE_ADVANCED_CODEC_SD_DIGITAL_TELEVISION
+	// DvbServiceAdvancedCodecSdDigitalTelevision wraps DVB_SERVICE_ADVANCED_CODEC_SD_DIGITAL_TELEVISION
 	DvbServiceAdvancedCodecSdDigitalTelevision DVBServiceType = 22
-	// DvbServiceAdvancedCodecSdNvodTimeShifted wraps GST_DVB_SERVICE_ADVANCED_CODEC_SD_NVOD_TIME_SHIFTED
+	// DvbServiceAdvancedCodecSdNvodTimeShifted wraps DVB_SERVICE_ADVANCED_CODEC_SD_NVOD_TIME_SHIFTED
 	DvbServiceAdvancedCodecSdNvodTimeShifted DVBServiceType = 23
-	// DvbServiceAdvancedCodecSdNvodReference wraps GST_DVB_SERVICE_ADVANCED_CODEC_SD_NVOD_REFERENCE
+	// DvbServiceAdvancedCodecSdNvodReference wraps DVB_SERVICE_ADVANCED_CODEC_SD_NVOD_REFERENCE
 	DvbServiceAdvancedCodecSdNvodReference DVBServiceType = 24
-	// DvbServiceAdvancedCodecHdDigitalTelevision wraps GST_DVB_SERVICE_ADVANCED_CODEC_HD_DIGITAL_TELEVISION
+	// DvbServiceAdvancedCodecHdDigitalTelevision wraps DVB_SERVICE_ADVANCED_CODEC_HD_DIGITAL_TELEVISION
 	DvbServiceAdvancedCodecHdDigitalTelevision DVBServiceType = 25
-	// DvbServiceAdvancedCodecHdNvodTimeShifted wraps GST_DVB_SERVICE_ADVANCED_CODEC_HD_NVOD_TIME_SHIFTED
+	// DvbServiceAdvancedCodecHdNvodTimeShifted wraps DVB_SERVICE_ADVANCED_CODEC_HD_NVOD_TIME_SHIFTED
 	DvbServiceAdvancedCodecHdNvodTimeShifted DVBServiceType = 26
-	// DvbServiceAdvancedCodecHdNvodReference wraps GST_DVB_SERVICE_ADVANCED_CODEC_HD_NVOD_REFERENCE
+	// DvbServiceAdvancedCodecHdNvodReference wraps DVB_SERVICE_ADVANCED_CODEC_HD_NVOD_REFERENCE
 	DvbServiceAdvancedCodecHdNvodReference DVBServiceType = 27
-	// DvbServiceAdvancedCodecStereoHdDigitalTelevision wraps GST_DVB_SERVICE_ADVANCED_CODEC_STEREO_HD_DIGITAL_TELEVISION
+	// DvbServiceAdvancedCodecStereoHdDigitalTelevision wraps DVB_SERVICE_ADVANCED_CODEC_STEREO_HD_DIGITAL_TELEVISION
 	DvbServiceAdvancedCodecStereoHdDigitalTelevision DVBServiceType = 28
-	// DvbServiceAdvancedCodecStereoHdNvodTimeShifted wraps GST_DVB_SERVICE_ADVANCED_CODEC_STEREO_HD_NVOD_TIME_SHIFTED
+	// DvbServiceAdvancedCodecStereoHdNvodTimeShifted wraps DVB_SERVICE_ADVANCED_CODEC_STEREO_HD_NVOD_TIME_SHIFTED
 	DvbServiceAdvancedCodecStereoHdNvodTimeShifted DVBServiceType = 29
-	// DvbServiceAdvancedCodecStereoHdNvodReference wraps GST_DVB_SERVICE_ADVANCED_CODEC_STEREO_HD_NVOD_REFERENCE
+	// DvbServiceAdvancedCodecStereoHdNvodReference wraps DVB_SERVICE_ADVANCED_CODEC_STEREO_HD_NVOD_REFERENCE
 	DvbServiceAdvancedCodecStereoHdNvodReference DVBServiceType = 30
-	// DvbServiceReservedFf wraps GST_DVB_SERVICE_RESERVED_FF
+	// DvbServiceReservedFf wraps DVB_SERVICE_RESERVED_FF
 	DvbServiceReservedFf DVBServiceType = 31
 )
 
@@ -1000,15 +998,15 @@ func (e DVBServiceType) String() string {
 type DVBTeletextType C.int
 
 const (
-	// InitialPage wraps gst_INITIAL_PAGE
+	// InitialPage wraps INITIAL_PAGE
 	InitialPage DVBTeletextType = 1
-	// SubtitlePage wraps gst_SUBTITLE_PAGE
+	// SubtitlePage wraps SUBTITLE_PAGE
 	SubtitlePage DVBTeletextType = 2
-	// AdditionalInfoPage wraps gst_ADDITIONAL_INFO_PAGE
+	// AdditionalInfoPage wraps ADDITIONAL_INFO_PAGE
 	AdditionalInfoPage DVBTeletextType = 3
-	// ProgrammeSchedulePage wraps gst_PROGRAMME_SCHEDULE_PAGE
+	// ProgrammeSchedulePage wraps PROGRAMME_SCHEDULE_PAGE
 	ProgrammeSchedulePage DVBTeletextType = 4
-	// HearingImpairedPage wraps gst_HEARING_IMPAIRED_PAGE
+	// HearingImpairedPage wraps HEARING_IMPAIRED_PAGE
 	HearingImpairedPage DVBTeletextType = 5
 )
 
@@ -1035,115 +1033,115 @@ func (e DVBTeletextType) String() string {
 type DescriptorType C.int
 
 const (
-	// MtsDescReserved00 wraps GST_MTS_DESC_RESERVED_00
+	// MtsDescReserved00 wraps MTS_DESC_RESERVED_00
 	MtsDescReserved00 DescriptorType = 0
-	// MtsDescReserved01 wraps GST_MTS_DESC_RESERVED_01
+	// MtsDescReserved01 wraps MTS_DESC_RESERVED_01
 	MtsDescReserved01 DescriptorType = 1
-	// MtsDescVideoStream wraps GST_MTS_DESC_VIDEO_STREAM
+	// MtsDescVideoStream wraps MTS_DESC_VIDEO_STREAM
 	MtsDescVideoStream DescriptorType = 2
-	// MtsDescAudioStream wraps GST_MTS_DESC_AUDIO_STREAM
+	// MtsDescAudioStream wraps MTS_DESC_AUDIO_STREAM
 	MtsDescAudioStream DescriptorType = 3
-	// MtsDescHierarchy wraps GST_MTS_DESC_HIERARCHY
+	// MtsDescHierarchy wraps MTS_DESC_HIERARCHY
 	MtsDescHierarchy DescriptorType = 4
-	// MtsDescRegistration wraps GST_MTS_DESC_REGISTRATION
+	// MtsDescRegistration wraps MTS_DESC_REGISTRATION
 	MtsDescRegistration DescriptorType = 5
-	// MtsDescDataStreamAlignment wraps GST_MTS_DESC_DATA_STREAM_ALIGNMENT
+	// MtsDescDataStreamAlignment wraps MTS_DESC_DATA_STREAM_ALIGNMENT
 	MtsDescDataStreamAlignment DescriptorType = 6
-	// MtsDescTargetBackgroundGrid wraps GST_MTS_DESC_TARGET_BACKGROUND_GRID
+	// MtsDescTargetBackgroundGrid wraps MTS_DESC_TARGET_BACKGROUND_GRID
 	MtsDescTargetBackgroundGrid DescriptorType = 7
-	// MtsDescVideoWindow wraps GST_MTS_DESC_VIDEO_WINDOW
+	// MtsDescVideoWindow wraps MTS_DESC_VIDEO_WINDOW
 	MtsDescVideoWindow DescriptorType = 8
-	// MtsDescCa wraps GST_MTS_DESC_CA
+	// MtsDescCa wraps MTS_DESC_CA
 	MtsDescCa DescriptorType = 9
-	// MtsDescISO639Language wraps GST_MTS_DESC_ISO_639_LANGUAGE
+	// MtsDescISO639Language wraps MTS_DESC_ISO_639_LANGUAGE
 	MtsDescISO639Language DescriptorType = 10
-	// MtsDescSystemClock wraps GST_MTS_DESC_SYSTEM_CLOCK
+	// MtsDescSystemClock wraps MTS_DESC_SYSTEM_CLOCK
 	MtsDescSystemClock DescriptorType = 11
-	// MtsDescMultiplexBufferUtilisation wraps GST_MTS_DESC_MULTIPLEX_BUFFER_UTILISATION
+	// MtsDescMultiplexBufferUtilisation wraps MTS_DESC_MULTIPLEX_BUFFER_UTILISATION
 	MtsDescMultiplexBufferUtilisation DescriptorType = 12
-	// MtsDescCopyright wraps GST_MTS_DESC_COPYRIGHT
+	// MtsDescCopyright wraps MTS_DESC_COPYRIGHT
 	MtsDescCopyright DescriptorType = 13
-	// MtsDescMaximumBitrate wraps GST_MTS_DESC_MAXIMUM_BITRATE
+	// MtsDescMaximumBitrate wraps MTS_DESC_MAXIMUM_BITRATE
 	MtsDescMaximumBitrate DescriptorType = 14
-	// MtsDescPrivateDataIndicator wraps GST_MTS_DESC_PRIVATE_DATA_INDICATOR
+	// MtsDescPrivateDataIndicator wraps MTS_DESC_PRIVATE_DATA_INDICATOR
 	MtsDescPrivateDataIndicator DescriptorType = 15
-	// MtsDescSmoothingBuffer wraps GST_MTS_DESC_SMOOTHING_BUFFER
+	// MtsDescSmoothingBuffer wraps MTS_DESC_SMOOTHING_BUFFER
 	MtsDescSmoothingBuffer DescriptorType = 16
-	// MtsDescStd wraps GST_MTS_DESC_STD
+	// MtsDescStd wraps MTS_DESC_STD
 	MtsDescStd DescriptorType = 17
-	// MtsDescIbp wraps GST_MTS_DESC_IBP
+	// MtsDescIbp wraps MTS_DESC_IBP
 	MtsDescIbp DescriptorType = 18
-	// MtsDescDsmccCarouselIdentifier wraps GST_MTS_DESC_DSMCC_CAROUSEL_IDENTIFIER
+	// MtsDescDsmccCarouselIdentifier wraps MTS_DESC_DSMCC_CAROUSEL_IDENTIFIER
 	MtsDescDsmccCarouselIdentifier DescriptorType = 19
-	// MtsDescDsmccAssociationTag wraps GST_MTS_DESC_DSMCC_ASSOCIATION_TAG
+	// MtsDescDsmccAssociationTag wraps MTS_DESC_DSMCC_ASSOCIATION_TAG
 	MtsDescDsmccAssociationTag DescriptorType = 20
-	// MtsDescDsmccDeferredAssociationTag wraps GST_MTS_DESC_DSMCC_DEFERRED_ASSOCIATION_TAG
+	// MtsDescDsmccDeferredAssociationTag wraps MTS_DESC_DSMCC_DEFERRED_ASSOCIATION_TAG
 	MtsDescDsmccDeferredAssociationTag DescriptorType = 21
-	// MtsDescDsmccNptReference wraps GST_MTS_DESC_DSMCC_NPT_REFERENCE
+	// MtsDescDsmccNptReference wraps MTS_DESC_DSMCC_NPT_REFERENCE
 	MtsDescDsmccNptReference DescriptorType = 23
-	// MtsDescDsmccNptEndpoint wraps GST_MTS_DESC_DSMCC_NPT_ENDPOINT
+	// MtsDescDsmccNptEndpoint wraps MTS_DESC_DSMCC_NPT_ENDPOINT
 	MtsDescDsmccNptEndpoint DescriptorType = 24
-	// MtsDescDsmccStreamMode wraps GST_MTS_DESC_DSMCC_STREAM_MODE
+	// MtsDescDsmccStreamMode wraps MTS_DESC_DSMCC_STREAM_MODE
 	MtsDescDsmccStreamMode DescriptorType = 25
-	// MtsDescDsmccStreamEvent wraps GST_MTS_DESC_DSMCC_STREAM_EVENT
+	// MtsDescDsmccStreamEvent wraps MTS_DESC_DSMCC_STREAM_EVENT
 	MtsDescDsmccStreamEvent DescriptorType = 26
-	// MtsDescMpeg4Video wraps GST_MTS_DESC_MPEG4_VIDEO
+	// MtsDescMpeg4Video wraps MTS_DESC_MPEG4_VIDEO
 	MtsDescMpeg4Video DescriptorType = 27
-	// MtsDescMpeg4Audio wraps GST_MTS_DESC_MPEG4_AUDIO
+	// MtsDescMpeg4Audio wraps MTS_DESC_MPEG4_AUDIO
 	MtsDescMpeg4Audio DescriptorType = 28
-	// MtsDescIod wraps GST_MTS_DESC_IOD
+	// MtsDescIod wraps MTS_DESC_IOD
 	MtsDescIod DescriptorType = 29
-	// MtsDescSl wraps GST_MTS_DESC_SL
+	// MtsDescSl wraps MTS_DESC_SL
 	MtsDescSl DescriptorType = 30
-	// MtsDescFmc wraps GST_MTS_DESC_FMC
+	// MtsDescFmc wraps MTS_DESC_FMC
 	MtsDescFmc DescriptorType = 31
-	// MtsDescExternalESID wraps GST_MTS_DESC_EXTERNAL_ES_ID
+	// MtsDescExternalESID wraps MTS_DESC_EXTERNAL_ES_ID
 	MtsDescExternalESID DescriptorType = 32
-	// MtsDescMuxCode wraps GST_MTS_DESC_MUX_CODE
+	// MtsDescMuxCode wraps MTS_DESC_MUX_CODE
 	MtsDescMuxCode DescriptorType = 33
-	// MtsDescFmxBufferSize wraps GST_MTS_DESC_FMX_BUFFER_SIZE
+	// MtsDescFmxBufferSize wraps MTS_DESC_FMX_BUFFER_SIZE
 	MtsDescFmxBufferSize DescriptorType = 34
-	// MtsDescMultiplexBuffer wraps GST_MTS_DESC_MULTIPLEX_BUFFER
+	// MtsDescMultiplexBuffer wraps MTS_DESC_MULTIPLEX_BUFFER
 	MtsDescMultiplexBuffer DescriptorType = 35
-	// MtsDescContentLabeling wraps GST_MTS_DESC_CONTENT_LABELING
+	// MtsDescContentLabeling wraps MTS_DESC_CONTENT_LABELING
 	MtsDescContentLabeling DescriptorType = 36
-	// MtsDescMetadataPointer wraps GST_MTS_DESC_METADATA_POINTER
+	// MtsDescMetadataPointer wraps MTS_DESC_METADATA_POINTER
 	MtsDescMetadataPointer DescriptorType = 37
-	// MtsDescMetadata wraps GST_MTS_DESC_METADATA
+	// MtsDescMetadata wraps MTS_DESC_METADATA
 	MtsDescMetadata DescriptorType = 38
-	// MtsDescMetadataStd wraps GST_MTS_DESC_METADATA_STD
+	// MtsDescMetadataStd wraps MTS_DESC_METADATA_STD
 	MtsDescMetadataStd DescriptorType = 39
-	// MtsDescAvcVideo wraps GST_MTS_DESC_AVC_VIDEO
+	// MtsDescAvcVideo wraps MTS_DESC_AVC_VIDEO
 	MtsDescAvcVideo DescriptorType = 40
-	// MtsDescIpmp wraps GST_MTS_DESC_IPMP
+	// MtsDescIpmp wraps MTS_DESC_IPMP
 	MtsDescIpmp DescriptorType = 41
-	// MtsDescAvcTimingAndHrd wraps GST_MTS_DESC_AVC_TIMING_AND_HRD
+	// MtsDescAvcTimingAndHrd wraps MTS_DESC_AVC_TIMING_AND_HRD
 	MtsDescAvcTimingAndHrd DescriptorType = 42
-	// MtsDescMpeg2AacAudio wraps GST_MTS_DESC_MPEG2_AAC_AUDIO
+	// MtsDescMpeg2AacAudio wraps MTS_DESC_MPEG2_AAC_AUDIO
 	MtsDescMpeg2AacAudio DescriptorType = 43
-	// MtsDescFlexMuxTiming wraps GST_MTS_DESC_FLEX_MUX_TIMING
+	// MtsDescFlexMuxTiming wraps MTS_DESC_FLEX_MUX_TIMING
 	MtsDescFlexMuxTiming DescriptorType = 44
-	// MtsDescMpeg4Text wraps GST_MTS_DESC_MPEG4_TEXT
+	// MtsDescMpeg4Text wraps MTS_DESC_MPEG4_TEXT
 	MtsDescMpeg4Text DescriptorType = 45
-	// MtsDescMpeg4AudioExtension wraps GST_MTS_DESC_MPEG4_AUDIO_EXTENSION
+	// MtsDescMpeg4AudioExtension wraps MTS_DESC_MPEG4_AUDIO_EXTENSION
 	MtsDescMpeg4AudioExtension DescriptorType = 46
-	// MtsDescAuxiliaryVideoStream wraps GST_MTS_DESC_AUXILIARY_VIDEO_STREAM
+	// MtsDescAuxiliaryVideoStream wraps MTS_DESC_AUXILIARY_VIDEO_STREAM
 	MtsDescAuxiliaryVideoStream DescriptorType = 47
-	// MtsDescSvcExtension wraps GST_MTS_DESC_SVC_EXTENSION
+	// MtsDescSvcExtension wraps MTS_DESC_SVC_EXTENSION
 	MtsDescSvcExtension DescriptorType = 48
-	// MtsDescMvcExtension wraps GST_MTS_DESC_MVC_EXTENSION
+	// MtsDescMvcExtension wraps MTS_DESC_MVC_EXTENSION
 	MtsDescMvcExtension DescriptorType = 49
-	// MtsDescJ2KVideo wraps GST_MTS_DESC_J2K_VIDEO
+	// MtsDescJ2KVideo wraps MTS_DESC_J2K_VIDEO
 	MtsDescJ2KVideo DescriptorType = 50
-	// MtsDescMvcOperationPoint wraps GST_MTS_DESC_MVC_OPERATION_POINT
+	// MtsDescMvcOperationPoint wraps MTS_DESC_MVC_OPERATION_POINT
 	MtsDescMvcOperationPoint DescriptorType = 51
-	// MtsDescMpeg2StereoscopicVideoFormat wraps GST_MTS_DESC_MPEG2_STEREOSCOPIC_VIDEO_FORMAT
+	// MtsDescMpeg2StereoscopicVideoFormat wraps MTS_DESC_MPEG2_STEREOSCOPIC_VIDEO_FORMAT
 	MtsDescMpeg2StereoscopicVideoFormat DescriptorType = 52
-	// MtsDescStereoscopicProgramInfo wraps GST_MTS_DESC_STEREOSCOPIC_PROGRAM_INFO
+	// MtsDescStereoscopicProgramInfo wraps MTS_DESC_STEREOSCOPIC_PROGRAM_INFO
 	MtsDescStereoscopicProgramInfo DescriptorType = 53
-	// MtsDescStereoscopicVideoInfo wraps GST_MTS_DESC_STEREOSCOPIC_VIDEO_INFO
+	// MtsDescStereoscopicVideoInfo wraps MTS_DESC_STEREOSCOPIC_VIDEO_INFO
 	MtsDescStereoscopicVideoInfo DescriptorType = 54
-	// MtsDescExtension wraps GST_MTS_DESC_EXTENSION
+	// MtsDescExtension wraps MTS_DESC_EXTENSION
 	//
 	// Extension Descriptor.
 	MtsDescExtension DescriptorType = 63
@@ -1222,7 +1220,7 @@ func (e DescriptorType) String() string {
 type ExtendedDescriptorType C.int
 
 const (
-	// MtsDescExtJxsVideo wraps GST_MTS_DESC_EXT_JXS_VIDEO
+	// MtsDescExtJxsVideo wraps MTS_DESC_EXT_JXS_VIDEO
 	MtsDescExtJxsVideo ExtendedDescriptorType = 20
 )
 
@@ -1241,31 +1239,31 @@ func (e ExtendedDescriptorType) String() string {
 type HdmvStreamType C.int
 
 const (
-	// MpegtsStreamTypeHdmvAudioLpcm wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_LPCM
+	// MpegtsStreamTypeHdmvAudioLpcm wraps MPEGTS_STREAM_TYPE_HDMV_AUDIO_LPCM
 	MpegtsStreamTypeHdmvAudioLpcm HdmvStreamType = 128
-	// MpegtsStreamTypeHdmvAudioAc3 wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_AC3
+	// MpegtsStreamTypeHdmvAudioAc3 wraps MPEGTS_STREAM_TYPE_HDMV_AUDIO_AC3
 	MpegtsStreamTypeHdmvAudioAc3 HdmvStreamType = 129
-	// MpegtsStreamTypeHdmvAudioDts wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_DTS
+	// MpegtsStreamTypeHdmvAudioDts wraps MPEGTS_STREAM_TYPE_HDMV_AUDIO_DTS
 	MpegtsStreamTypeHdmvAudioDts HdmvStreamType = 130
-	// MpegtsStreamTypeHdmvAudioAc3TrueHd wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_AC3_TRUE_HD
+	// MpegtsStreamTypeHdmvAudioAc3TrueHd wraps MPEGTS_STREAM_TYPE_HDMV_AUDIO_AC3_TRUE_HD
 	MpegtsStreamTypeHdmvAudioAc3TrueHd HdmvStreamType = 131
-	// MpegtsStreamTypeHdmvAudioAc3Plus wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_AC3_PLUS
+	// MpegtsStreamTypeHdmvAudioAc3Plus wraps MPEGTS_STREAM_TYPE_HDMV_AUDIO_AC3_PLUS
 	MpegtsStreamTypeHdmvAudioAc3Plus HdmvStreamType = 132
-	// MpegtsStreamTypeHdmvAudioDtsHd wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_DTS_HD
+	// MpegtsStreamTypeHdmvAudioDtsHd wraps MPEGTS_STREAM_TYPE_HDMV_AUDIO_DTS_HD
 	MpegtsStreamTypeHdmvAudioDtsHd HdmvStreamType = 133
-	// MpegtsStreamTypeHdmvAudioDtsHdMasterAudio wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_DTS_HD_MASTER_AUDIO
+	// MpegtsStreamTypeHdmvAudioDtsHdMasterAudio wraps MPEGTS_STREAM_TYPE_HDMV_AUDIO_DTS_HD_MASTER_AUDIO
 	MpegtsStreamTypeHdmvAudioDtsHdMasterAudio HdmvStreamType = 134
-	// MpegtsStreamTypeHdmvAudioEac3 wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_EAC3
+	// MpegtsStreamTypeHdmvAudioEac3 wraps MPEGTS_STREAM_TYPE_HDMV_AUDIO_EAC3
 	MpegtsStreamTypeHdmvAudioEac3 HdmvStreamType = 135
-	// MpegtsStreamTypeHdmvSubpicturePgs wraps GST_MPEGTS_STREAM_TYPE_HDMV_SUBPICTURE_PGS
+	// MpegtsStreamTypeHdmvSubpicturePgs wraps MPEGTS_STREAM_TYPE_HDMV_SUBPICTURE_PGS
 	MpegtsStreamTypeHdmvSubpicturePgs HdmvStreamType = 144
-	// MpegtsStreamTypeHdmvIgs wraps GST_MPEGTS_STREAM_TYPE_HDMV_IGS
+	// MpegtsStreamTypeHdmvIgs wraps MPEGTS_STREAM_TYPE_HDMV_IGS
 	MpegtsStreamTypeHdmvIgs HdmvStreamType = 145
-	// MpegtsStreamTypeHdmvSubtitle wraps GST_MPEGTS_STREAM_TYPE_HDMV_SUBTITLE
+	// MpegtsStreamTypeHdmvSubtitle wraps MPEGTS_STREAM_TYPE_HDMV_SUBTITLE
 	MpegtsStreamTypeHdmvSubtitle HdmvStreamType = 146
-	// MpegtsStreamTypeHdmvAudioAc3PlusSecondary wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_AC3_PLUS_SECONDARY
+	// MpegtsStreamTypeHdmvAudioAc3PlusSecondary wraps MPEGTS_STREAM_TYPE_HDMV_AUDIO_AC3_PLUS_SECONDARY
 	MpegtsStreamTypeHdmvAudioAc3PlusSecondary HdmvStreamType = 161
-	// MpegtsStreamTypeHdmvAudioDtsHdSecondary wraps GST_MPEGTS_STREAM_TYPE_HDMV_AUDIO_DTS_HD_SECONDARY
+	// MpegtsStreamTypeHdmvAudioDtsHdSecondary wraps MPEGTS_STREAM_TYPE_HDMV_AUDIO_DTS_HD_SECONDARY
 	MpegtsStreamTypeHdmvAudioDtsHdSecondary HdmvStreamType = 162
 )
 
@@ -1298,69 +1296,69 @@ func (e HdmvStreamType) String() string {
 type ISDBDescriptorType C.int
 
 const (
-	// MtsDescIsdbHierarchicalTransmission wraps GST_MTS_DESC_ISDB_HIERARCHICAL_TRANSMISSION
+	// MtsDescIsdbHierarchicalTransmission wraps MTS_DESC_ISDB_HIERARCHICAL_TRANSMISSION
 	MtsDescIsdbHierarchicalTransmission ISDBDescriptorType = 192
-	// MtsDescIsdbDigitalCopyControl wraps GST_MTS_DESC_ISDB_DIGITAL_COPY_CONTROL
+	// MtsDescIsdbDigitalCopyControl wraps MTS_DESC_ISDB_DIGITAL_COPY_CONTROL
 	MtsDescIsdbDigitalCopyControl ISDBDescriptorType = 193
-	// MtsDescIsdbNetworkIdentification wraps GST_MTS_DESC_ISDB_NETWORK_IDENTIFICATION
+	// MtsDescIsdbNetworkIdentification wraps MTS_DESC_ISDB_NETWORK_IDENTIFICATION
 	MtsDescIsdbNetworkIdentification ISDBDescriptorType = 194
-	// MtsDescIsdbPartialTsTime wraps GST_MTS_DESC_ISDB_PARTIAL_TS_TIME
+	// MtsDescIsdbPartialTsTime wraps MTS_DESC_ISDB_PARTIAL_TS_TIME
 	MtsDescIsdbPartialTsTime ISDBDescriptorType = 195
-	// MtsDescIsdbAudioComponent wraps GST_MTS_DESC_ISDB_AUDIO_COMPONENT
+	// MtsDescIsdbAudioComponent wraps MTS_DESC_ISDB_AUDIO_COMPONENT
 	MtsDescIsdbAudioComponent ISDBDescriptorType = 196
-	// MtsDescIsdbHyperlink wraps GST_MTS_DESC_ISDB_HYPERLINK
+	// MtsDescIsdbHyperlink wraps MTS_DESC_ISDB_HYPERLINK
 	MtsDescIsdbHyperlink ISDBDescriptorType = 197
-	// MtsDescIsdbTargetRegion wraps GST_MTS_DESC_ISDB_TARGET_REGION
+	// MtsDescIsdbTargetRegion wraps MTS_DESC_ISDB_TARGET_REGION
 	MtsDescIsdbTargetRegion ISDBDescriptorType = 198
-	// MtsDescIsdbDataContent wraps GST_MTS_DESC_ISDB_DATA_CONTENT
+	// MtsDescIsdbDataContent wraps MTS_DESC_ISDB_DATA_CONTENT
 	MtsDescIsdbDataContent ISDBDescriptorType = 199
-	// MtsDescIsdbVideoDecodeControl wraps GST_MTS_DESC_ISDB_VIDEO_DECODE_CONTROL
+	// MtsDescIsdbVideoDecodeControl wraps MTS_DESC_ISDB_VIDEO_DECODE_CONTROL
 	MtsDescIsdbVideoDecodeControl ISDBDescriptorType = 200
-	// MtsDescIsdbDownloadContent wraps GST_MTS_DESC_ISDB_DOWNLOAD_CONTENT
+	// MtsDescIsdbDownloadContent wraps MTS_DESC_ISDB_DOWNLOAD_CONTENT
 	MtsDescIsdbDownloadContent ISDBDescriptorType = 201
-	// MtsDescIsdbCaEmmTs wraps GST_MTS_DESC_ISDB_CA_EMM_TS
+	// MtsDescIsdbCaEmmTs wraps MTS_DESC_ISDB_CA_EMM_TS
 	MtsDescIsdbCaEmmTs ISDBDescriptorType = 202
-	// MtsDescIsdbCaContractInformation wraps GST_MTS_DESC_ISDB_CA_CONTRACT_INFORMATION
+	// MtsDescIsdbCaContractInformation wraps MTS_DESC_ISDB_CA_CONTRACT_INFORMATION
 	MtsDescIsdbCaContractInformation ISDBDescriptorType = 203
-	// MtsDescIsdbCaService wraps GST_MTS_DESC_ISDB_CA_SERVICE
+	// MtsDescIsdbCaService wraps MTS_DESC_ISDB_CA_SERVICE
 	MtsDescIsdbCaService ISDBDescriptorType = 204
-	// MtsDescIsdbTsInformation wraps GST_MTS_DESC_ISDB_TS_INFORMATION
+	// MtsDescIsdbTsInformation wraps MTS_DESC_ISDB_TS_INFORMATION
 	MtsDescIsdbTsInformation ISDBDescriptorType = 205
-	// MtsDescIsdbExtendedBroadcaster wraps GST_MTS_DESC_ISDB_EXTENDED_BROADCASTER
+	// MtsDescIsdbExtendedBroadcaster wraps MTS_DESC_ISDB_EXTENDED_BROADCASTER
 	MtsDescIsdbExtendedBroadcaster ISDBDescriptorType = 206
-	// MtsDescIsdbLogoTransmission wraps GST_MTS_DESC_ISDB_LOGO_TRANSMISSION
+	// MtsDescIsdbLogoTransmission wraps MTS_DESC_ISDB_LOGO_TRANSMISSION
 	MtsDescIsdbLogoTransmission ISDBDescriptorType = 207
-	// MtsDescIsdbBasicLocalEvent wraps GST_MTS_DESC_ISDB_BASIC_LOCAL_EVENT
+	// MtsDescIsdbBasicLocalEvent wraps MTS_DESC_ISDB_BASIC_LOCAL_EVENT
 	MtsDescIsdbBasicLocalEvent ISDBDescriptorType = 208
-	// MtsDescIsdbReference wraps GST_MTS_DESC_ISDB_REFERENCE
+	// MtsDescIsdbReference wraps MTS_DESC_ISDB_REFERENCE
 	MtsDescIsdbReference ISDBDescriptorType = 209
-	// MtsDescIsdbNodeRelation wraps GST_MTS_DESC_ISDB_NODE_RELATION
+	// MtsDescIsdbNodeRelation wraps MTS_DESC_ISDB_NODE_RELATION
 	MtsDescIsdbNodeRelation ISDBDescriptorType = 210
-	// MtsDescIsdbShortNodeInformation wraps GST_MTS_DESC_ISDB_SHORT_NODE_INFORMATION
+	// MtsDescIsdbShortNodeInformation wraps MTS_DESC_ISDB_SHORT_NODE_INFORMATION
 	MtsDescIsdbShortNodeInformation ISDBDescriptorType = 211
-	// MtsDescIsdbStcReference wraps GST_MTS_DESC_ISDB_STC_REFERENCE
+	// MtsDescIsdbStcReference wraps MTS_DESC_ISDB_STC_REFERENCE
 	MtsDescIsdbStcReference ISDBDescriptorType = 212
-	// MtsDescIsdbSeries wraps GST_MTS_DESC_ISDB_SERIES
+	// MtsDescIsdbSeries wraps MTS_DESC_ISDB_SERIES
 	MtsDescIsdbSeries ISDBDescriptorType = 213
-	// MtsDescIsdbEventGroup wraps GST_MTS_DESC_ISDB_EVENT_GROUP
+	// MtsDescIsdbEventGroup wraps MTS_DESC_ISDB_EVENT_GROUP
 	MtsDescIsdbEventGroup ISDBDescriptorType = 214
-	// MtsDescIsdbSiParameter wraps GST_MTS_DESC_ISDB_SI_PARAMETER
+	// MtsDescIsdbSiParameter wraps MTS_DESC_ISDB_SI_PARAMETER
 	MtsDescIsdbSiParameter ISDBDescriptorType = 215
-	// MtsDescIsdbBroadcasterName wraps GST_MTS_DESC_ISDB_BROADCASTER_NAME
+	// MtsDescIsdbBroadcasterName wraps MTS_DESC_ISDB_BROADCASTER_NAME
 	MtsDescIsdbBroadcasterName ISDBDescriptorType = 216
-	// MtsDescIsdbComponentGroup wraps GST_MTS_DESC_ISDB_COMPONENT_GROUP
+	// MtsDescIsdbComponentGroup wraps MTS_DESC_ISDB_COMPONENT_GROUP
 	MtsDescIsdbComponentGroup ISDBDescriptorType = 217
-	// MtsDescIsdbSiPrimeTs wraps GST_MTS_DESC_ISDB_SI_PRIME_TS
+	// MtsDescIsdbSiPrimeTs wraps MTS_DESC_ISDB_SI_PRIME_TS
 	MtsDescIsdbSiPrimeTs ISDBDescriptorType = 218
-	// MtsDescIsdbBoardInformation wraps GST_MTS_DESC_ISDB_BOARD_INFORMATION
+	// MtsDescIsdbBoardInformation wraps MTS_DESC_ISDB_BOARD_INFORMATION
 	MtsDescIsdbBoardInformation ISDBDescriptorType = 219
-	// MtsDescIsdbLdtLinkage wraps GST_MTS_DESC_ISDB_LDT_LINKAGE
+	// MtsDescIsdbLdtLinkage wraps MTS_DESC_ISDB_LDT_LINKAGE
 	MtsDescIsdbLdtLinkage ISDBDescriptorType = 220
-	// MtsDescIsdbConnectedTransmission wraps GST_MTS_DESC_ISDB_CONNECTED_TRANSMISSION
+	// MtsDescIsdbConnectedTransmission wraps MTS_DESC_ISDB_CONNECTED_TRANSMISSION
 	MtsDescIsdbConnectedTransmission ISDBDescriptorType = 221
-	// MtsDescIsdbContentAvailability wraps GST_MTS_DESC_ISDB_CONTENT_AVAILABILITY
+	// MtsDescIsdbContentAvailability wraps MTS_DESC_ISDB_CONTENT_AVAILABILITY
 	MtsDescIsdbContentAvailability ISDBDescriptorType = 222
-	// MtsDescIsdbServiceGroup wraps GST_MTS_DESC_ISDB_SERVICE_GROUP
+	// MtsDescIsdbServiceGroup wraps MTS_DESC_ISDB_SERVICE_GROUP
 	MtsDescIsdbServiceGroup ISDBDescriptorType = 224
 )
 
@@ -1407,13 +1405,13 @@ func (e ISDBDescriptorType) String() string {
 type ISO639AudioType C.int
 
 const (
-	// MpegtsAudioTypeUndefined wraps GST_MPEGTS_AUDIO_TYPE_UNDEFINED
+	// MpegtsAudioTypeUndefined wraps MPEGTS_AUDIO_TYPE_UNDEFINED
 	MpegtsAudioTypeUndefined ISO639AudioType = 0
-	// MpegtsAudioTypeCleanEffects wraps GST_MPEGTS_AUDIO_TYPE_CLEAN_EFFECTS
+	// MpegtsAudioTypeCleanEffects wraps MPEGTS_AUDIO_TYPE_CLEAN_EFFECTS
 	MpegtsAudioTypeCleanEffects ISO639AudioType = 1
-	// MpegtsAudioTypeHearingImpaired wraps GST_MPEGTS_AUDIO_TYPE_HEARING_IMPAIRED
+	// MpegtsAudioTypeHearingImpaired wraps MPEGTS_AUDIO_TYPE_HEARING_IMPAIRED
 	MpegtsAudioTypeHearingImpaired ISO639AudioType = 2
-	// MpegtsAudioTypeVisualImpairedCommentary wraps GST_MPEGTS_AUDIO_TYPE_VISUAL_IMPAIRED_COMMENTARY
+	// MpegtsAudioTypeVisualImpairedCommentary wraps MPEGTS_AUDIO_TYPE_VISUAL_IMPAIRED_COMMENTARY
 	MpegtsAudioTypeVisualImpairedCommentary ISO639AudioType = 3
 )
 
@@ -1438,11 +1436,11 @@ func (e ISO639AudioType) String() string {
 type MetadataApplicationFormat C.int
 
 const (
-	// MpegtsMetadataApplicationFormatIsan wraps GST_MPEGTS_METADATA_APPLICATION_FORMAT_ISAN
+	// MpegtsMetadataApplicationFormatIsan wraps MPEGTS_METADATA_APPLICATION_FORMAT_ISAN
 	MpegtsMetadataApplicationFormatIsan MetadataApplicationFormat = 16
-	// MpegtsMetadataApplicationFormatVsan wraps GST_MPEGTS_METADATA_APPLICATION_FORMAT_VSAN
+	// MpegtsMetadataApplicationFormatVsan wraps MPEGTS_METADATA_APPLICATION_FORMAT_VSAN
 	MpegtsMetadataApplicationFormatVsan MetadataApplicationFormat = 17
-	// MpegtsMetadataApplicationFormatIdentifierField wraps GST_MPEGTS_METADATA_APPLICATION_FORMAT_IDENTIFIER_FIELD
+	// MpegtsMetadataApplicationFormatIdentifierField wraps MPEGTS_METADATA_APPLICATION_FORMAT_IDENTIFIER_FIELD
 	MpegtsMetadataApplicationFormatIdentifierField MetadataApplicationFormat = 65535
 )
 
@@ -1462,19 +1460,19 @@ func (e MetadataApplicationFormat) String() string {
 type MetadataFormat C.int
 
 const (
-	// MpegtsMetadataFormatTem wraps GST_MPEGTS_METADATA_FORMAT_TEM
+	// MpegtsMetadataFormatTem wraps MPEGTS_METADATA_FORMAT_TEM
 	//
 	// ISO/IEC 15938-1 TeM.
 	MpegtsMetadataFormatTem MetadataFormat = 16
-	// MpegtsMetadataFormatBim wraps GST_MPEGTS_METADATA_FORMAT_BIM
+	// MpegtsMetadataFormatBim wraps MPEGTS_METADATA_FORMAT_BIM
 	//
 	// ISO/IEC 15938-1 BiM.
 	MpegtsMetadataFormatBim MetadataFormat = 17
-	// MpegtsMetadataFormatApplicationFormat wraps GST_MPEGTS_METADATA_FORMAT_APPLICATION_FORMAT
+	// MpegtsMetadataFormatApplicationFormat wraps MPEGTS_METADATA_FORMAT_APPLICATION_FORMAT
 	//
 	// Defined by metadata application format.
 	MpegtsMetadataFormatApplicationFormat MetadataFormat = 63
-	// MpegtsMetadataFormatIdentifierField wraps GST_MPEGTS_METADATA_FORMAT_IDENTIFIER_FIELD
+	// MpegtsMetadataFormatIdentifierField wraps MPEGTS_METADATA_FORMAT_IDENTIFIER_FIELD
 	//
 	// Defined by metadata_format_identifier field.
 	MpegtsMetadataFormatIdentifierField MetadataFormat = 255
@@ -1500,7 +1498,7 @@ func (e MetadataFormat) String() string {
 type MiscDescriptorType C.int
 
 const (
-	// MtsDescDtgLogicalChannel wraps GST_MTS_DESC_DTG_LOGICAL_CHANNEL
+	// MtsDescDtgLogicalChannel wraps MTS_DESC_DTG_LOGICAL_CHANNEL
 	MtsDescDtgLogicalChannel MiscDescriptorType = 131
 )
 
@@ -1516,35 +1514,35 @@ func (e MiscDescriptorType) String() string {
 type ModulationType C.int
 
 const (
-	// MpegtsModulationQpsk wraps GST_MPEGTS_MODULATION_QPSK
+	// MpegtsModulationQpsk wraps MPEGTS_MODULATION_QPSK
 	MpegtsModulationQpsk ModulationType = 0
-	// MpegtsModulationQam16 wraps GST_MPEGTS_MODULATION_QAM_16
+	// MpegtsModulationQam16 wraps MPEGTS_MODULATION_QAM_16
 	MpegtsModulationQam16 ModulationType = 1
-	// MpegtsModulationQam32 wraps GST_MPEGTS_MODULATION_QAM_32
+	// MpegtsModulationQam32 wraps MPEGTS_MODULATION_QAM_32
 	MpegtsModulationQam32 ModulationType = 2
-	// MpegtsModulationQam64 wraps GST_MPEGTS_MODULATION_QAM_64
+	// MpegtsModulationQam64 wraps MPEGTS_MODULATION_QAM_64
 	MpegtsModulationQam64 ModulationType = 3
-	// MpegtsModulationQam128 wraps GST_MPEGTS_MODULATION_QAM_128
+	// MpegtsModulationQam128 wraps MPEGTS_MODULATION_QAM_128
 	MpegtsModulationQam128 ModulationType = 4
-	// MpegtsModulationQam256 wraps GST_MPEGTS_MODULATION_QAM_256
+	// MpegtsModulationQam256 wraps MPEGTS_MODULATION_QAM_256
 	MpegtsModulationQam256 ModulationType = 5
-	// MpegtsModulationQamAuto wraps GST_MPEGTS_MODULATION_QAM_AUTO
+	// MpegtsModulationQamAuto wraps MPEGTS_MODULATION_QAM_AUTO
 	MpegtsModulationQamAuto ModulationType = 6
-	// MpegtsModulationVsb8 wraps GST_MPEGTS_MODULATION_VSB_8
+	// MpegtsModulationVsb8 wraps MPEGTS_MODULATION_VSB_8
 	MpegtsModulationVsb8 ModulationType = 7
-	// MpegtsModulationVsb16 wraps GST_MPEGTS_MODULATION_VSB_16
+	// MpegtsModulationVsb16 wraps MPEGTS_MODULATION_VSB_16
 	MpegtsModulationVsb16 ModulationType = 8
-	// MpegtsModulationPsk8 wraps GST_MPEGTS_MODULATION_PSK_8
+	// MpegtsModulationPsk8 wraps MPEGTS_MODULATION_PSK_8
 	MpegtsModulationPsk8 ModulationType = 9
-	// MpegtsModulationApsk16 wraps GST_MPEGTS_MODULATION_APSK_16
+	// MpegtsModulationApsk16 wraps MPEGTS_MODULATION_APSK_16
 	MpegtsModulationApsk16 ModulationType = 10
-	// MpegtsModulationApsk32 wraps GST_MPEGTS_MODULATION_APSK_32
+	// MpegtsModulationApsk32 wraps MPEGTS_MODULATION_APSK_32
 	MpegtsModulationApsk32 ModulationType = 11
-	// MpegtsModulationDqpsk wraps GST_MPEGTS_MODULATION_DQPSK
+	// MpegtsModulationDqpsk wraps MPEGTS_MODULATION_DQPSK
 	MpegtsModulationDqpsk ModulationType = 12
-	// MpegtsModulationQam4Nr_ wraps GST_MPEGTS_MODULATION_QAM_4_NR_
+	// MpegtsModulationQam4Nr_ wraps MPEGTS_MODULATION_QAM_4_NR_
 	MpegtsModulationQam4Nr_ ModulationType = 13
-	// MpegtsModulationNone wraps GST_MPEGTS_MODULATION_NONE
+	// MpegtsModulationNone wraps MPEGTS_MODULATION_NONE
 	MpegtsModulationNone ModulationType = 14
 )
 
@@ -1578,17 +1576,17 @@ func (e ModulationType) String() string {
 type RunningStatus C.int
 
 const (
-	// MpegtsRunningStatusUndefined wraps GST_MPEGTS_RUNNING_STATUS_UNDEFINED
+	// MpegtsRunningStatusUndefined wraps MPEGTS_RUNNING_STATUS_UNDEFINED
 	MpegtsRunningStatusUndefined RunningStatus = 0
-	// MpegtsRunningStatusNotRunning wraps GST_MPEGTS_RUNNING_STATUS_NOT_RUNNING
+	// MpegtsRunningStatusNotRunning wraps MPEGTS_RUNNING_STATUS_NOT_RUNNING
 	MpegtsRunningStatusNotRunning RunningStatus = 1
-	// MpegtsRunningStatusStartsInFewSeconds wraps GST_MPEGTS_RUNNING_STATUS_STARTS_IN_FEW_SECONDS
+	// MpegtsRunningStatusStartsInFewSeconds wraps MPEGTS_RUNNING_STATUS_STARTS_IN_FEW_SECONDS
 	MpegtsRunningStatusStartsInFewSeconds RunningStatus = 2
-	// MpegtsRunningStatusPausing wraps GST_MPEGTS_RUNNING_STATUS_PAUSING
+	// MpegtsRunningStatusPausing wraps MPEGTS_RUNNING_STATUS_PAUSING
 	MpegtsRunningStatusPausing RunningStatus = 3
-	// MpegtsRunningStatusRunning wraps GST_MPEGTS_RUNNING_STATUS_RUNNING
+	// MpegtsRunningStatusRunning wraps MPEGTS_RUNNING_STATUS_RUNNING
 	MpegtsRunningStatusRunning RunningStatus = 4
-	// MpegtsRunningStatusOffAir wraps GST_MPEGTS_RUNNING_STATUS_OFF_AIR
+	// MpegtsRunningStatusOffAir wraps MPEGTS_RUNNING_STATUS_OFF_AIR
 	MpegtsRunningStatusOffAir RunningStatus = 5
 )
 
@@ -1611,21 +1609,21 @@ func (e RunningStatus) String() string {
 type SCTEDescriptorType C.int
 
 const (
-	// MtsDescScteStuffing wraps GST_MTS_DESC_SCTE_STUFFING
+	// MtsDescScteStuffing wraps MTS_DESC_SCTE_STUFFING
 	MtsDescScteStuffing SCTEDescriptorType = 128
-	// MtsDescScteAc3 wraps GST_MTS_DESC_SCTE_AC3
+	// MtsDescScteAc3 wraps MTS_DESC_SCTE_AC3
 	MtsDescScteAc3 SCTEDescriptorType = 129
-	// MtsDescScteFrameRate wraps GST_MTS_DESC_SCTE_FRAME_RATE
+	// MtsDescScteFrameRate wraps MTS_DESC_SCTE_FRAME_RATE
 	MtsDescScteFrameRate SCTEDescriptorType = 130
-	// MtsDescScteExtendedVideo wraps GST_MTS_DESC_SCTE_EXTENDED_VIDEO
+	// MtsDescScteExtendedVideo wraps MTS_DESC_SCTE_EXTENDED_VIDEO
 	MtsDescScteExtendedVideo SCTEDescriptorType = 131
-	// MtsDescScteComponentName wraps GST_MTS_DESC_SCTE_COMPONENT_NAME
+	// MtsDescScteComponentName wraps MTS_DESC_SCTE_COMPONENT_NAME
 	MtsDescScteComponentName SCTEDescriptorType = 132
-	// MtsDescScteFrequencySpec wraps GST_MTS_DESC_SCTE_FREQUENCY_SPEC
+	// MtsDescScteFrequencySpec wraps MTS_DESC_SCTE_FREQUENCY_SPEC
 	MtsDescScteFrequencySpec SCTEDescriptorType = 144
-	// MtsDescScteModulationParams wraps GST_MTS_DESC_SCTE_MODULATION_PARAMS
+	// MtsDescScteModulationParams wraps MTS_DESC_SCTE_MODULATION_PARAMS
 	MtsDescScteModulationParams SCTEDescriptorType = 145
-	// MtsDescScteTransportStreamID wraps GST_MTS_DESC_SCTE_TRANSPORT_STREAM_ID
+	// MtsDescScteTransportStreamID wraps MTS_DESC_SCTE_TRANSPORT_STREAM_ID
 	MtsDescScteTransportStreamID SCTEDescriptorType = 146
 )
 
@@ -1648,17 +1646,17 @@ func (e SCTEDescriptorType) String() string {
 type SCTESpliceCommandType C.int
 
 const (
-	// MtsScteSpliceCommandNull wraps GST_MTS_SCTE_SPLICE_COMMAND_NULL
+	// MtsScteSpliceCommandNull wraps MTS_SCTE_SPLICE_COMMAND_NULL
 	MtsScteSpliceCommandNull SCTESpliceCommandType = 0
-	// MtsScteSpliceCommandSchedule wraps GST_MTS_SCTE_SPLICE_COMMAND_SCHEDULE
+	// MtsScteSpliceCommandSchedule wraps MTS_SCTE_SPLICE_COMMAND_SCHEDULE
 	MtsScteSpliceCommandSchedule SCTESpliceCommandType = 4
-	// MtsScteSpliceCommandInsert wraps GST_MTS_SCTE_SPLICE_COMMAND_INSERT
+	// MtsScteSpliceCommandInsert wraps MTS_SCTE_SPLICE_COMMAND_INSERT
 	MtsScteSpliceCommandInsert SCTESpliceCommandType = 5
-	// MtsScteSpliceCommandTime wraps GST_MTS_SCTE_SPLICE_COMMAND_TIME
+	// MtsScteSpliceCommandTime wraps MTS_SCTE_SPLICE_COMMAND_TIME
 	MtsScteSpliceCommandTime SCTESpliceCommandType = 6
-	// MtsScteSpliceCommandBandwidth wraps GST_MTS_SCTE_SPLICE_COMMAND_BANDWIDTH
+	// MtsScteSpliceCommandBandwidth wraps MTS_SCTE_SPLICE_COMMAND_BANDWIDTH
 	MtsScteSpliceCommandBandwidth SCTESpliceCommandType = 7
-	// MtsScteSpliceCommandPrivate wraps GST_MTS_SCTE_SPLICE_COMMAND_PRIVATE
+	// MtsScteSpliceCommandPrivate wraps MTS_SCTE_SPLICE_COMMAND_PRIVATE
 	MtsScteSpliceCommandPrivate SCTESpliceCommandType = 255
 )
 
@@ -1679,15 +1677,15 @@ func (e SCTESpliceCommandType) String() string {
 type SCTESpliceDescriptor C.int
 
 const (
-	// MtsScteDescAvail wraps GST_MTS_SCTE_DESC_AVAIL
+	// MtsScteDescAvail wraps MTS_SCTE_DESC_AVAIL
 	MtsScteDescAvail SCTESpliceDescriptor = 0
-	// MtsScteDescDtmf wraps GST_MTS_SCTE_DESC_DTMF
+	// MtsScteDescDtmf wraps MTS_SCTE_DESC_DTMF
 	MtsScteDescDtmf SCTESpliceDescriptor = 1
-	// MtsScteDescSegmentation wraps GST_MTS_SCTE_DESC_SEGMENTATION
+	// MtsScteDescSegmentation wraps MTS_SCTE_DESC_SEGMENTATION
 	MtsScteDescSegmentation SCTESpliceDescriptor = 2
-	// MtsScteDescTime wraps GST_MTS_SCTE_DESC_TIME
+	// MtsScteDescTime wraps MTS_SCTE_DESC_TIME
 	MtsScteDescTime SCTESpliceDescriptor = 3
-	// MtsScteDescAudio wraps GST_MTS_SCTE_DESC_AUDIO
+	// MtsScteDescAudio wraps MTS_SCTE_DESC_AUDIO
 	MtsScteDescAudio SCTESpliceDescriptor = 4
 )
 
@@ -1707,13 +1705,13 @@ func (e SCTESpliceDescriptor) String() string {
 type SatellitePolarizationType C.int
 
 const (
-	// MpegtsPolarizationLinearHorizontal wraps GST_MPEGTS_POLARIZATION_LINEAR_HORIZONTAL
+	// MpegtsPolarizationLinearHorizontal wraps MPEGTS_POLARIZATION_LINEAR_HORIZONTAL
 	MpegtsPolarizationLinearHorizontal SatellitePolarizationType = 0
-	// MpegtsPolarizationLinearVertical wraps GST_MPEGTS_POLARIZATION_LINEAR_VERTICAL
+	// MpegtsPolarizationLinearVertical wraps MPEGTS_POLARIZATION_LINEAR_VERTICAL
 	MpegtsPolarizationLinearVertical SatellitePolarizationType = 1
-	// MpegtsPolarizationCircularLeft wraps GST_MPEGTS_POLARIZATION_CIRCULAR_LEFT
+	// MpegtsPolarizationCircularLeft wraps MPEGTS_POLARIZATION_CIRCULAR_LEFT
 	MpegtsPolarizationCircularLeft SatellitePolarizationType = 2
-	// MpegtsPolarizationCircularRight wraps GST_MPEGTS_POLARIZATION_CIRCULAR_RIGHT
+	// MpegtsPolarizationCircularRight wraps MPEGTS_POLARIZATION_CIRCULAR_RIGHT
 	MpegtsPolarizationCircularRight SatellitePolarizationType = 3
 )
 
@@ -1732,15 +1730,15 @@ func (e SatellitePolarizationType) String() string {
 type SatelliteRolloff C.int
 
 const (
-	// MpegtsRolloff35 wraps GST_MPEGTS_ROLLOFF_35
+	// MpegtsRolloff35 wraps MPEGTS_ROLLOFF_35
 	MpegtsRolloff35 SatelliteRolloff = 0
-	// MpegtsRolloff20 wraps GST_MPEGTS_ROLLOFF_20
+	// MpegtsRolloff20 wraps MPEGTS_ROLLOFF_20
 	MpegtsRolloff20 SatelliteRolloff = 1
-	// MpegtsRolloff25 wraps GST_MPEGTS_ROLLOFF_25
+	// MpegtsRolloff25 wraps MPEGTS_ROLLOFF_25
 	MpegtsRolloff25 SatelliteRolloff = 2
-	// MpegtsRolloffReserved wraps GST_MPEGTS_ROLLOFF_RESERVED
+	// MpegtsRolloffReserved wraps MPEGTS_ROLLOFF_RESERVED
 	MpegtsRolloffReserved SatelliteRolloff = 3
-	// MpegtsRolloffAuto wraps GST_MPEGTS_ROLLOFF_AUTO
+	// MpegtsRolloffAuto wraps MPEGTS_ROLLOFF_AUTO
 	MpegtsRolloffAuto SatelliteRolloff = 4
 )
 
@@ -1763,38 +1761,38 @@ func (e SatelliteRolloff) String() string {
 type ScteStreamType C.int
 
 const (
-	// MpegtsStreamTypeScteSubtitling wraps GST_MPEGTS_STREAM_TYPE_SCTE_SUBTITLING
+	// MpegtsStreamTypeScteSubtitling wraps MPEGTS_STREAM_TYPE_SCTE_SUBTITLING
 	//
 	// SCTE-27 Subtitling
 	MpegtsStreamTypeScteSubtitling ScteStreamType = 130
-	// MpegtsStreamTypeScteIsochData wraps GST_MPEGTS_STREAM_TYPE_SCTE_ISOCH_DATA
+	// MpegtsStreamTypeScteIsochData wraps MPEGTS_STREAM_TYPE_SCTE_ISOCH_DATA
 	//
 	// SCTE-19 Isochronous data
 	MpegtsStreamTypeScteIsochData ScteStreamType = 131
-	// MpegtsStreamTypeScteSit wraps GST_MPEGTS_STREAM_TYPE_SCTE_SIT
+	// MpegtsStreamTypeScteSit wraps MPEGTS_STREAM_TYPE_SCTE_SIT
 	//
 	// SCTE-35 Splice Information Table
 	MpegtsStreamTypeScteSit ScteStreamType = 134
-	// MpegtsStreamTypeScteDstNrt wraps GST_MPEGTS_STREAM_TYPE_SCTE_DST_NRT
+	// MpegtsStreamTypeScteDstNrt wraps MPEGTS_STREAM_TYPE_SCTE_DST_NRT
 	//
 	// SCTE-07 Data Service or
 	// Network Resource Table
 	MpegtsStreamTypeScteDstNrt ScteStreamType = 149
-	// MpegtsStreamTypeScteDsmccDcb wraps GST_MPEGTS_STREAM_TYPE_SCTE_DSMCC_DCB
+	// MpegtsStreamTypeScteDsmccDcb wraps MPEGTS_STREAM_TYPE_SCTE_DSMCC_DCB
 	//
 	// Type B - DSM-CC Data Carousel
 	// [IEC 13818-6])
 	MpegtsStreamTypeScteDsmccDcb ScteStreamType = 176
-	// MpegtsStreamTypeScteSignaling wraps GST_MPEGTS_STREAM_TYPE_SCTE_SIGNALING
+	// MpegtsStreamTypeScteSignaling wraps MPEGTS_STREAM_TYPE_SCTE_SIGNALING
 	//
 	// Enhanced Television Application
 	// Signaling (OC-SP-ETV-AM1.0.1-120614)
 	MpegtsStreamTypeScteSignaling ScteStreamType = 192
-	// MpegtsStreamTypeScteSyncData wraps GST_MPEGTS_STREAM_TYPE_SCTE_SYNC_DATA
+	// MpegtsStreamTypeScteSyncData wraps MPEGTS_STREAM_TYPE_SCTE_SYNC_DATA
 	//
 	// SCTE-07 Synchronous data
 	MpegtsStreamTypeScteSyncData ScteStreamType = 194
-	// MpegtsStreamTypeScteAsyncData wraps GST_MPEGTS_STREAM_TYPE_SCTE_ASYNC_DATA
+	// MpegtsStreamTypeScteAsyncData wraps MPEGTS_STREAM_TYPE_SCTE_ASYNC_DATA
 	//
 	// SCTE-53 Asynchronous data
 	MpegtsStreamTypeScteAsyncData ScteStreamType = 195
@@ -1826,69 +1824,69 @@ func (e ScteStreamType) String() string {
 type SectionATSCTableID C.int
 
 const (
-	// MtsTableIDAtscMasterGuide wraps GST_MTS_TABLE_ID_ATSC_MASTER_GUIDE
+	// MtsTableIDAtscMasterGuide wraps MTS_TABLE_ID_ATSC_MASTER_GUIDE
 	//
 	// Master Guide Table (MGT)
 	MtsTableIDAtscMasterGuide SectionATSCTableID = 199
-	// MtsTableIDAtscTerrestrialVirtualChannel wraps GST_MTS_TABLE_ID_ATSC_TERRESTRIAL_VIRTUAL_CHANNEL
+	// MtsTableIDAtscTerrestrialVirtualChannel wraps MTS_TABLE_ID_ATSC_TERRESTRIAL_VIRTUAL_CHANNEL
 	//
 	// Terrestrial Virtual Channel Table (TVCT)
 	MtsTableIDAtscTerrestrialVirtualChannel SectionATSCTableID = 200
-	// MtsTableIDAtscCableVirtualChannel wraps GST_MTS_TABLE_ID_ATSC_CABLE_VIRTUAL_CHANNEL
+	// MtsTableIDAtscCableVirtualChannel wraps MTS_TABLE_ID_ATSC_CABLE_VIRTUAL_CHANNEL
 	//
 	// Cable Virtual Channel Table (CVCT)
 	MtsTableIDAtscCableVirtualChannel SectionATSCTableID = 201
-	// MtsTableIDAtscRatingRegion wraps GST_MTS_TABLE_ID_ATSC_RATING_REGION
+	// MtsTableIDAtscRatingRegion wraps MTS_TABLE_ID_ATSC_RATING_REGION
 	//
 	// Rating Region Table (RRT)
 	MtsTableIDAtscRatingRegion SectionATSCTableID = 202
-	// MtsTableIDAtscEventInformation wraps GST_MTS_TABLE_ID_ATSC_EVENT_INFORMATION
+	// MtsTableIDAtscEventInformation wraps MTS_TABLE_ID_ATSC_EVENT_INFORMATION
 	//
 	// Event Information Table (EIT)
 	MtsTableIDAtscEventInformation SectionATSCTableID = 203
-	// MtsTableIDAtscChannelOrEventExtendedText wraps GST_MTS_TABLE_ID_ATSC_CHANNEL_OR_EVENT_EXTENDED_TEXT
+	// MtsTableIDAtscChannelOrEventExtendedText wraps MTS_TABLE_ID_ATSC_CHANNEL_OR_EVENT_EXTENDED_TEXT
 	//
 	// Extended Text Table (ETT)
 	MtsTableIDAtscChannelOrEventExtendedText SectionATSCTableID = 204
-	// MtsTableIDAtscSystemTime wraps GST_MTS_TABLE_ID_ATSC_SYSTEM_TIME
+	// MtsTableIDAtscSystemTime wraps MTS_TABLE_ID_ATSC_SYSTEM_TIME
 	//
 	// System Time Table (STT)
 	MtsTableIDAtscSystemTime SectionATSCTableID = 205
-	// MtsTableIDAtscDataEvent wraps GST_MTS_TABLE_ID_ATSC_DATA_EVENT
+	// MtsTableIDAtscDataEvent wraps MTS_TABLE_ID_ATSC_DATA_EVENT
 	//
 	// A/90: Data Event Table (DET)
 	MtsTableIDAtscDataEvent SectionATSCTableID = 206
-	// MtsTableIDAtscDataService wraps GST_MTS_TABLE_ID_ATSC_DATA_SERVICE
+	// MtsTableIDAtscDataService wraps MTS_TABLE_ID_ATSC_DATA_SERVICE
 	//
 	// A/90: Data Service Table (DST)
 	MtsTableIDAtscDataService SectionATSCTableID = 207
-	// MtsTableIDAtscProgramIdentifier wraps GST_MTS_TABLE_ID_ATSC_PROGRAM_IDENTIFIER
+	// MtsTableIDAtscProgramIdentifier wraps MTS_TABLE_ID_ATSC_PROGRAM_IDENTIFIER
 	//
 	// A/57B: Program Identifier Table.
 	MtsTableIDAtscProgramIdentifier SectionATSCTableID = 208
-	// MtsTableIDAtscNetworkResource wraps GST_MTS_TABLE_ID_ATSC_NETWORK_RESOURCE
+	// MtsTableIDAtscNetworkResource wraps MTS_TABLE_ID_ATSC_NETWORK_RESOURCE
 	//
 	// A/90: Network Resources Table (NRT)
 	MtsTableIDAtscNetworkResource SectionATSCTableID = 209
-	// MtsTableIDAtscLongTermService wraps GST_MTS_TABLE_ID_ATSC_LONG_TERM_SERVICE
+	// MtsTableIDAtscLongTermService wraps MTS_TABLE_ID_ATSC_LONG_TERM_SERVICE
 	//
 	// A/90: Long Term Service Table (LTST)
 	MtsTableIDAtscLongTermService SectionATSCTableID = 210
-	// MtsTableIDAtscDirectedChannelChange wraps GST_MTS_TABLE_ID_ATSC_DIRECTED_CHANNEL_CHANGE
+	// MtsTableIDAtscDirectedChannelChange wraps MTS_TABLE_ID_ATSC_DIRECTED_CHANNEL_CHANGE
 	//
 	// Directed Channel Change Table (DCCT)
 	MtsTableIDAtscDirectedChannelChange SectionATSCTableID = 211
-	// MtsTableIDAtscDirectedChannelChangeSectionCode wraps GST_MTS_TABLE_ID_ATSC_DIRECTED_CHANNEL_CHANGE_SECTION_CODE
+	// MtsTableIDAtscDirectedChannelChangeSectionCode wraps MTS_TABLE_ID_ATSC_DIRECTED_CHANNEL_CHANGE_SECTION_CODE
 	//
 	// Directed Channel Change Selection Code Table (DCCSCT)
 	MtsTableIDAtscDirectedChannelChangeSectionCode SectionATSCTableID = 212
-	// MtsTableIDAtscAggregateEventInformation wraps GST_MTS_TABLE_ID_ATSC_AGGREGATE_EVENT_INFORMATION
+	// MtsTableIDAtscAggregateEventInformation wraps MTS_TABLE_ID_ATSC_AGGREGATE_EVENT_INFORMATION
 	MtsTableIDAtscAggregateEventInformation SectionATSCTableID = 214
-	// MtsTableIDAtscAggregateExtendedText wraps GST_MTS_TABLE_ID_ATSC_AGGREGATE_EXTENDED_TEXT
+	// MtsTableIDAtscAggregateExtendedText wraps MTS_TABLE_ID_ATSC_AGGREGATE_EXTENDED_TEXT
 	MtsTableIDAtscAggregateExtendedText SectionATSCTableID = 215
-	// MtsTableIDAtscAggregateDataEvent wraps GST_MTS_TABLE_ID_ATSC_AGGREGATE_DATA_EVENT
+	// MtsTableIDAtscAggregateDataEvent wraps MTS_TABLE_ID_ATSC_AGGREGATE_DATA_EVENT
 	MtsTableIDAtscAggregateDataEvent SectionATSCTableID = 217
-	// MtsTableIDAtscSatelliteVirtualChannel wraps GST_MTS_TABLE_ID_ATSC_SATELLITE_VIRTUAL_CHANNEL
+	// MtsTableIDAtscSatelliteVirtualChannel wraps MTS_TABLE_ID_ATSC_SATELLITE_VIRTUAL_CHANNEL
 	//
 	// A/81: Satellite Virtual Channel Table
 	MtsTableIDAtscSatelliteVirtualChannel SectionATSCTableID = 218
@@ -1930,149 +1928,149 @@ func (e SectionATSCTableID) String() string {
 type SectionDVBTableID C.int
 
 const (
-	// MtsTableIDNetworkInformationActualNetwork wraps GST_MTS_TABLE_ID_NETWORK_INFORMATION_ACTUAL_NETWORK
+	// MtsTableIDNetworkInformationActualNetwork wraps MTS_TABLE_ID_NETWORK_INFORMATION_ACTUAL_NETWORK
 	//
 	// Network Information Table (NIT), Actual Network
 	MtsTableIDNetworkInformationActualNetwork SectionDVBTableID = 64
-	// MtsTableIDNetworkInformationOtherNetwork wraps GST_MTS_TABLE_ID_NETWORK_INFORMATION_OTHER_NETWORK
+	// MtsTableIDNetworkInformationOtherNetwork wraps MTS_TABLE_ID_NETWORK_INFORMATION_OTHER_NETWORK
 	//
 	// Network Information Table (NIT), Other Network
 	MtsTableIDNetworkInformationOtherNetwork SectionDVBTableID = 65
-	// MtsTableIDServiceDescriptionActualTs wraps GST_MTS_TABLE_ID_SERVICE_DESCRIPTION_ACTUAL_TS
+	// MtsTableIDServiceDescriptionActualTs wraps MTS_TABLE_ID_SERVICE_DESCRIPTION_ACTUAL_TS
 	//
 	// Service Description Table (SDT), Actual Transport Stream
 	MtsTableIDServiceDescriptionActualTs SectionDVBTableID = 66
-	// MtsTableIDServiceDescriptionOtherTs wraps GST_MTS_TABLE_ID_SERVICE_DESCRIPTION_OTHER_TS
+	// MtsTableIDServiceDescriptionOtherTs wraps MTS_TABLE_ID_SERVICE_DESCRIPTION_OTHER_TS
 	//
 	// Service Description Table (SDT), Other Transport Stream
 	MtsTableIDServiceDescriptionOtherTs SectionDVBTableID = 70
-	// MtsTableIDBouquetAssociation wraps GST_MTS_TABLE_ID_BOUQUET_ASSOCIATION
+	// MtsTableIDBouquetAssociation wraps MTS_TABLE_ID_BOUQUET_ASSOCIATION
 	//
 	// Bouquet Association Table (BAT)
 	MtsTableIDBouquetAssociation SectionDVBTableID = 74
-	// MtsTableIDUpdateNotification wraps GST_MTS_TABLE_ID_UPDATE_NOTIFICATION
+	// MtsTableIDUpdateNotification wraps MTS_TABLE_ID_UPDATE_NOTIFICATION
 	//
 	// ETSI TS 102 006: Update Notification Table (UNT)
 	MtsTableIDUpdateNotification SectionDVBTableID = 75
-	// MtsTableIDDownloadableFontInfo wraps GST_MTS_TABLE_ID_DOWNLOADABLE_FONT_INFO
+	// MtsTableIDDownloadableFontInfo wraps MTS_TABLE_ID_DOWNLOADABLE_FONT_INFO
 	//
 	// ETSI EN 303 560: Downloadable Font Info
 	MtsTableIDDownloadableFontInfo SectionDVBTableID = 76
-	// MtsTableIDEventInformationActualTsPresent wraps GST_MTS_TABLE_ID_EVENT_INFORMATION_ACTUAL_TS_PRESENT
+	// MtsTableIDEventInformationActualTsPresent wraps MTS_TABLE_ID_EVENT_INFORMATION_ACTUAL_TS_PRESENT
 	//
 	// Event Information Table (EIT), Actual Transport Stream, present/following
 	MtsTableIDEventInformationActualTsPresent SectionDVBTableID = 78
-	// MtsTableIDEventInformationOtherTsPresent wraps GST_MTS_TABLE_ID_EVENT_INFORMATION_OTHER_TS_PRESENT
+	// MtsTableIDEventInformationOtherTsPresent wraps MTS_TABLE_ID_EVENT_INFORMATION_OTHER_TS_PRESENT
 	//
 	// Event Information Table (EIT), Other Transport Stream, present/following
 	MtsTableIDEventInformationOtherTsPresent SectionDVBTableID = 79
-	// MtsTableIDEventInformationActualTsSchedule1 wraps GST_MTS_TABLE_ID_EVENT_INFORMATION_ACTUAL_TS_SCHEDULE_1
+	// MtsTableIDEventInformationActualTsSchedule1 wraps MTS_TABLE_ID_EVENT_INFORMATION_ACTUAL_TS_SCHEDULE_1
 	//
 	// Event Information Table (EIT), Actual Transport Stream, Schedule (first)
 	MtsTableIDEventInformationActualTsSchedule1 SectionDVBTableID = 80
-	// MtsTableIDEventInformationActualTsScheduleN wraps GST_MTS_TABLE_ID_EVENT_INFORMATION_ACTUAL_TS_SCHEDULE_N
+	// MtsTableIDEventInformationActualTsScheduleN wraps MTS_TABLE_ID_EVENT_INFORMATION_ACTUAL_TS_SCHEDULE_N
 	//
 	// Event Information Table (EIT), Actual Transport Stream, Schedule (last)
 	MtsTableIDEventInformationActualTsScheduleN SectionDVBTableID = 95
-	// MtsTableIDEventInformationOtherTsSchedule1 wraps GST_MTS_TABLE_ID_EVENT_INFORMATION_OTHER_TS_SCHEDULE_1
+	// MtsTableIDEventInformationOtherTsSchedule1 wraps MTS_TABLE_ID_EVENT_INFORMATION_OTHER_TS_SCHEDULE_1
 	//
 	// Event Information Table (EIT), Other Transport Stream, Schedule (first)
 	MtsTableIDEventInformationOtherTsSchedule1 SectionDVBTableID = 96
-	// MtsTableIDEventInformationOtherTsScheduleN wraps GST_MTS_TABLE_ID_EVENT_INFORMATION_OTHER_TS_SCHEDULE_N
+	// MtsTableIDEventInformationOtherTsScheduleN wraps MTS_TABLE_ID_EVENT_INFORMATION_OTHER_TS_SCHEDULE_N
 	//
 	// Event Information Table (EIT), Other Transport Stream, Schedule (last)
 	MtsTableIDEventInformationOtherTsScheduleN SectionDVBTableID = 111
-	// MtsTableIDTimeDate wraps GST_MTS_TABLE_ID_TIME_DATE
+	// MtsTableIDTimeDate wraps MTS_TABLE_ID_TIME_DATE
 	//
 	// Time Date Table (TDT)
 	MtsTableIDTimeDate SectionDVBTableID = 112
-	// MtsTableIDRunningStatus wraps GST_MTS_TABLE_ID_RUNNING_STATUS
+	// MtsTableIDRunningStatus wraps MTS_TABLE_ID_RUNNING_STATUS
 	//
 	// Running Status Table (RST)
 	MtsTableIDRunningStatus SectionDVBTableID = 113
-	// MtsTableIDStuffing wraps GST_MTS_TABLE_ID_STUFFING
+	// MtsTableIDStuffing wraps MTS_TABLE_ID_STUFFING
 	//
 	// Stuffing Table (ST)
 	MtsTableIDStuffing SectionDVBTableID = 114
-	// MtsTableIDTimeOffset wraps GST_MTS_TABLE_ID_TIME_OFFSET
+	// MtsTableIDTimeOffset wraps MTS_TABLE_ID_TIME_OFFSET
 	//
 	// Time Offset Table (TOT)
 	MtsTableIDTimeOffset SectionDVBTableID = 115
-	// MtsTableIDApplicationInformationTable wraps GST_MTS_TABLE_ID_APPLICATION_INFORMATION_TABLE
+	// MtsTableIDApplicationInformationTable wraps MTS_TABLE_ID_APPLICATION_INFORMATION_TABLE
 	//
 	// ETSI TS 102 323: Application Information Table (AIT)
 	MtsTableIDApplicationInformationTable SectionDVBTableID = 116
-	// MtsTableIDContainer wraps GST_MTS_TABLE_ID_CONTAINER
+	// MtsTableIDContainer wraps MTS_TABLE_ID_CONTAINER
 	//
 	// ETSI TS 102 323: Container Section
 	MtsTableIDContainer SectionDVBTableID = 117
-	// MtsTableIDRelatedContent wraps GST_MTS_TABLE_ID_RELATED_CONTENT
+	// MtsTableIDRelatedContent wraps MTS_TABLE_ID_RELATED_CONTENT
 	//
 	// ETSI TS 102 323: Related Content Table (RCT)
 	MtsTableIDRelatedContent SectionDVBTableID = 118
-	// MtsTableIDContentIdentifier wraps GST_MTS_TABLE_ID_CONTENT_IDENTIFIER
+	// MtsTableIDContentIdentifier wraps MTS_TABLE_ID_CONTENT_IDENTIFIER
 	//
 	// ETSI TS 102 323: Content Identifier Table (CIT)
 	MtsTableIDContentIdentifier SectionDVBTableID = 119
-	// MtsTableIDMpeFec wraps GST_MTS_TABLE_ID_MPE_FEC
+	// MtsTableIDMpeFec wraps MTS_TABLE_ID_MPE_FEC
 	//
 	// ETSI TS 301 192: MPE-FEC Section
 	MtsTableIDMpeFec SectionDVBTableID = 120
-	// MtsTableIDResolutionNotification wraps GST_MTS_TABLE_ID_RESOLUTION_NOTIFICATION
+	// MtsTableIDResolutionNotification wraps MTS_TABLE_ID_RESOLUTION_NOTIFICATION
 	//
 	// ETSI 103 323: Resolution Provider Notification Table (RNT)
 	MtsTableIDResolutionNotification SectionDVBTableID = 121
-	// MtsTableIDMpeIfec wraps GST_MTS_TABLE_ID_MPE_IFEC
+	// MtsTableIDMpeIfec wraps MTS_TABLE_ID_MPE_IFEC
 	//
 	// ETSI TS 102 772: MPE-IFEC Section
 	MtsTableIDMpeIfec SectionDVBTableID = 122
-	// MtsTableIDProtectionMessage wraps GST_MTS_TABLE_ID_PROTECTION_MESSAGE
+	// MtsTableIDProtectionMessage wraps MTS_TABLE_ID_PROTECTION_MESSAGE
 	//
 	// ETSI TS 102 809: Protection Message Section
 	MtsTableIDProtectionMessage SectionDVBTableID = 123
-	// MtsTableIDDiscontinuityInformation wraps GST_MTS_TABLE_ID_DISCONTINUITY_INFORMATION
+	// MtsTableIDDiscontinuityInformation wraps MTS_TABLE_ID_DISCONTINUITY_INFORMATION
 	//
 	// Discontinuity Information Table (DIT)
 	MtsTableIDDiscontinuityInformation SectionDVBTableID = 126
-	// MtsTableIDSelectionInformation wraps GST_MTS_TABLE_ID_SELECTION_INFORMATION
+	// MtsTableIDSelectionInformation wraps MTS_TABLE_ID_SELECTION_INFORMATION
 	//
 	// Selection Information Table (SIT)
 	MtsTableIDSelectionInformation SectionDVBTableID = 127
-	// MtsTableIDCaMessageEcm0 wraps GST_MTS_TABLE_ID_CA_MESSAGE_ECM_0
+	// MtsTableIDCaMessageEcm0 wraps MTS_TABLE_ID_CA_MESSAGE_ECM_0
 	//
 	// ETSI TR 289: CA Message Table (CMT): ECM 0
 	MtsTableIDCaMessageEcm0 SectionDVBTableID = 128
-	// MtsTableIDCaMessageEcm1 wraps GST_MTS_TABLE_ID_CA_MESSAGE_ECM_1
+	// MtsTableIDCaMessageEcm1 wraps MTS_TABLE_ID_CA_MESSAGE_ECM_1
 	//
 	// ETSI TR 289: CA Message Table (CMT): ECM 1
 	MtsTableIDCaMessageEcm1 SectionDVBTableID = 129
-	// MtsTableIDCaMessageSystemPrivate1 wraps GST_MTS_TABLE_ID_CA_MESSAGE_SYSTEM_PRIVATE_1
+	// MtsTableIDCaMessageSystemPrivate1 wraps MTS_TABLE_ID_CA_MESSAGE_SYSTEM_PRIVATE_1
 	//
 	// ETSI TR 289: CA Message Table (CMT): CA System Private (First)
 	MtsTableIDCaMessageSystemPrivate1 SectionDVBTableID = 130
-	// MtsTableIDCaMessageSystemPrivateN wraps GST_MTS_TABLE_ID_CA_MESSAGE_SYSTEM_PRIVATE_N
+	// MtsTableIDCaMessageSystemPrivateN wraps MTS_TABLE_ID_CA_MESSAGE_SYSTEM_PRIVATE_N
 	//
 	// ETSI TR 289: CA Message Table (CMT): CA System Private (Last)
 	MtsTableIDCaMessageSystemPrivateN SectionDVBTableID = 143
-	// MtsTableIDSct wraps GST_MTS_TABLE_ID_SCT
+	// MtsTableIDSct wraps MTS_TABLE_ID_SCT
 	MtsTableIDSct SectionDVBTableID = 160
-	// MtsTableIDFct wraps GST_MTS_TABLE_ID_FCT
+	// MtsTableIDFct wraps MTS_TABLE_ID_FCT
 	MtsTableIDFct SectionDVBTableID = 161
-	// MtsTableIDTct wraps GST_MTS_TABLE_ID_TCT
+	// MtsTableIDTct wraps MTS_TABLE_ID_TCT
 	MtsTableIDTct SectionDVBTableID = 162
-	// MtsTableIDSpt wraps GST_MTS_TABLE_ID_SPT
+	// MtsTableIDSpt wraps MTS_TABLE_ID_SPT
 	MtsTableIDSpt SectionDVBTableID = 163
-	// MtsTableIDCmt wraps GST_MTS_TABLE_ID_CMT
+	// MtsTableIDCmt wraps MTS_TABLE_ID_CMT
 	MtsTableIDCmt SectionDVBTableID = 164
-	// MtsTableIDTbtp wraps GST_MTS_TABLE_ID_TBTP
+	// MtsTableIDTbtp wraps MTS_TABLE_ID_TBTP
 	MtsTableIDTbtp SectionDVBTableID = 165
-	// MtsTableIDPcrPacketPayload wraps GST_MTS_TABLE_ID_PCR_PACKET_PAYLOAD
+	// MtsTableIDPcrPacketPayload wraps MTS_TABLE_ID_PCR_PACKET_PAYLOAD
 	MtsTableIDPcrPacketPayload SectionDVBTableID = 166
-	// MtsTableIDTransmissionModeSupportPayload wraps GST_MTS_TABLE_ID_TRANSMISSION_MODE_SUPPORT_PAYLOAD
+	// MtsTableIDTransmissionModeSupportPayload wraps MTS_TABLE_ID_TRANSMISSION_MODE_SUPPORT_PAYLOAD
 	MtsTableIDTransmissionModeSupportPayload SectionDVBTableID = 170
-	// MtsTableIDTim wraps GST_MTS_TABLE_ID_TIM
+	// MtsTableIDTim wraps MTS_TABLE_ID_TIM
 	MtsTableIDTim SectionDVBTableID = 176
-	// MtsTableIDLlFecParityDataTable wraps GST_MTS_TABLE_ID_LL_FEC_PARITY_DATA_TABLE
+	// MtsTableIDLlFecParityDataTable wraps MTS_TABLE_ID_LL_FEC_PARITY_DATA_TABLE
 	MtsTableIDLlFecParityDataTable SectionDVBTableID = 177
 )
 
@@ -2134,32 +2132,32 @@ func (e SectionDVBTableID) String() string {
 type SectionSCTETableID C.int
 
 const (
-	// MtsTableIDScteEas wraps GST_MTS_TABLE_ID_SCTE_EAS
+	// MtsTableIDScteEas wraps MTS_TABLE_ID_SCTE_EAS
 	//
 	// SCTE-18 Emergency Alert System
 	MtsTableIDScteEas SectionSCTETableID = 216
-	// MtsTableIDScteEbif wraps GST_MTS_TABLE_ID_SCTE_EBIF
+	// MtsTableIDScteEbif wraps MTS_TABLE_ID_SCTE_EBIF
 	//
 	// CL-SP-ETV-AM 1.0.1 EBIF message
 	MtsTableIDScteEbif SectionSCTETableID = 224
-	// MtsTableIDScteReserved wraps GST_MTS_TABLE_ID_SCTE_RESERVED
+	// MtsTableIDScteReserved wraps MTS_TABLE_ID_SCTE_RESERVED
 	MtsTableIDScteReserved SectionSCTETableID = 225
-	// MtsTableIDScteEiss wraps GST_MTS_TABLE_ID_SCTE_EISS
+	// MtsTableIDScteEiss wraps MTS_TABLE_ID_SCTE_EISS
 	//
 	// CL-SP-ETV-AM 1.0.1 EBIF Int. Signaling Sect.
 	MtsTableIDScteEiss SectionSCTETableID = 226
-	// MtsTableIDScteDii wraps GST_MTS_TABLE_ID_SCTE_DII
+	// MtsTableIDScteDii wraps MTS_TABLE_ID_SCTE_DII
 	//
 	// CL-SP-ETV-AM 1.0.1 DSMCC DII message
 	MtsTableIDScteDii SectionSCTETableID = 227
-	// MtsTableIDScteDdb wraps GST_MTS_TABLE_ID_SCTE_DDB
+	// MtsTableIDScteDdb wraps MTS_TABLE_ID_SCTE_DDB
 	//
 	// CL-SP-ETV-AM 1.0.1 DSMCC Data Download Block
 	MtsTableIDScteDdb SectionSCTETableID = 228
-	// MtsTableIDScteSplice wraps GST_MTS_TABLE_ID_SCTE_SPLICE
+	// MtsTableIDScteSplice wraps MTS_TABLE_ID_SCTE_SPLICE
 	//
 	// SCTE-35 splice information is carried in a
-	// section stream on a separate PID in the program’s Map Table (PMT) allowing
+	// section stream on a separate PID in the program&#x2019;s Map Table (PMT) allowing
 	// Splice Event notifications to remain associated with the program and pass
 	// through multiplexers.
 	MtsTableIDScteSplice SectionSCTETableID = 252
@@ -2190,75 +2188,75 @@ func (e SectionSCTETableID) String() string {
 type SectionTableID C.int
 
 const (
-	// MtsTableIDProgramAssociation wraps GST_MTS_TABLE_ID_PROGRAM_ASSOCIATION
+	// MtsTableIDProgramAssociation wraps MTS_TABLE_ID_PROGRAM_ASSOCIATION
 	//
 	// Program Association Table (PAT)
 	MtsTableIDProgramAssociation SectionTableID = 0
-	// MtsTableIDConditionalAccess wraps GST_MTS_TABLE_ID_CONDITIONAL_ACCESS
+	// MtsTableIDConditionalAccess wraps MTS_TABLE_ID_CONDITIONAL_ACCESS
 	//
 	// Conditional Access Table (CAT)
 	MtsTableIDConditionalAccess SectionTableID = 1
-	// MtsTableIDTsProgramMap wraps GST_MTS_TABLE_ID_TS_PROGRAM_MAP
+	// MtsTableIDTsProgramMap wraps MTS_TABLE_ID_TS_PROGRAM_MAP
 	//
 	// Program Map Table (PMT)
 	MtsTableIDTsProgramMap SectionTableID = 2
-	// MtsTableIDTsDescription wraps GST_MTS_TABLE_ID_TS_DESCRIPTION
+	// MtsTableIDTsDescription wraps MTS_TABLE_ID_TS_DESCRIPTION
 	//
 	// Transport Stream Description Table
 	MtsTableIDTsDescription SectionTableID = 3
-	// MtsTableID14496SceneDescription wraps GST_MTS_TABLE_ID_14496_SCENE_DESCRIPTION
+	// MtsTableID14496SceneDescription wraps MTS_TABLE_ID_14496_SCENE_DESCRIPTION
 	//
 	// ISO/IEC 14496 Scene Description Table
 	MtsTableID14496SceneDescription SectionTableID = 4
-	// MtsTableID14496ObjetDescriptor wraps GST_MTS_TABLE_ID_14496_OBJET_DESCRIPTOR
+	// MtsTableID14496ObjetDescriptor wraps MTS_TABLE_ID_14496_OBJET_DESCRIPTOR
 	//
 	// ISO/IEC 14496 Object Descriptor Table
 	MtsTableID14496ObjetDescriptor SectionTableID = 5
-	// MtsTableIDMetadata wraps GST_MTS_TABLE_ID_METADATA
+	// MtsTableIDMetadata wraps MTS_TABLE_ID_METADATA
 	//
 	// Metadata Section
 	MtsTableIDMetadata SectionTableID = 6
-	// MtsTableIDIpmpControlInformation wraps GST_MTS_TABLE_ID_IPMP_CONTROL_INFORMATION
+	// MtsTableIDIpmpControlInformation wraps MTS_TABLE_ID_IPMP_CONTROL_INFORMATION
 	//
 	// IPMP Control Information
 	MtsTableIDIpmpControlInformation SectionTableID = 7
-	// MtsTableID14496Section wraps GST_MTS_TABLE_ID_14496_SECTION
+	// MtsTableID14496Section wraps MTS_TABLE_ID_14496_SECTION
 	//
 	// ISO/IEC 14496 Section.
 	MtsTableID14496Section SectionTableID = 8
-	// MtsTableID2300111_Section wraps GST_MTS_TABLE_ID_23001_11_SECTION
+	// MtsTableID2300111_Section wraps MTS_TABLE_ID_23001_11_SECTION
 	//
 	// ISO/IEC 23001-11 (Green Access Unit) Section.
 	MtsTableID2300111_Section SectionTableID = 9
-	// MtsTableID2300110_Section wraps GST_MTS_TABLE_ID_23001_10_SECTION
+	// MtsTableID2300110_Section wraps MTS_TABLE_ID_23001_10_SECTION
 	//
 	// ISO/ISO 23001-10 (Quality Access Unit) Section.
 	MtsTableID2300110_Section SectionTableID = 10
-	// MtsTableIDDsmCcMultiprotoEncapsulatedData wraps GST_MTS_TABLE_ID_DSM_CC_MULTIPROTO_ENCAPSULATED_DATA
+	// MtsTableIDDsmCcMultiprotoEncapsulatedData wraps MTS_TABLE_ID_DSM_CC_MULTIPROTO_ENCAPSULATED_DATA
 	//
 	// DSM-CC Multi-Protocol Encapsulated (MPE) Data
 	MtsTableIDDsmCcMultiprotoEncapsulatedData SectionTableID = 58
-	// MtsTableIDDsmCcUNMessages wraps GST_MTS_TABLE_ID_DSM_CC_U_N_MESSAGES
+	// MtsTableIDDsmCcUNMessages wraps MTS_TABLE_ID_DSM_CC_U_N_MESSAGES
 	//
 	// DSM-CC U-N Messages
 	MtsTableIDDsmCcUNMessages SectionTableID = 59
-	// MtsTableIDDsmCcDownloadDataMessages wraps GST_MTS_TABLE_ID_DSM_CC_DOWNLOAD_DATA_MESSAGES
+	// MtsTableIDDsmCcDownloadDataMessages wraps MTS_TABLE_ID_DSM_CC_DOWNLOAD_DATA_MESSAGES
 	//
 	// DSM-CC Download Data Messages
 	MtsTableIDDsmCcDownloadDataMessages SectionTableID = 60
-	// MtsTableIDDsmCcStreamDescriptors wraps GST_MTS_TABLE_ID_DSM_CC_STREAM_DESCRIPTORS
+	// MtsTableIDDsmCcStreamDescriptors wraps MTS_TABLE_ID_DSM_CC_STREAM_DESCRIPTORS
 	//
 	// DSM-CC Stream Descriptors
 	MtsTableIDDsmCcStreamDescriptors SectionTableID = 61
-	// MtsTableIDDsmCcPrivateData wraps GST_MTS_TABLE_ID_DSM_CC_PRIVATE_DATA
+	// MtsTableIDDsmCcPrivateData wraps MTS_TABLE_ID_DSM_CC_PRIVATE_DATA
 	//
 	// DSM-CC Private Data
 	MtsTableIDDsmCcPrivateData SectionTableID = 62
-	// MtsTableIDDsmCcAddressableSections wraps GST_MTS_TABLE_ID_DSM_CC_ADDRESSABLE_SECTIONS
+	// MtsTableIDDsmCcAddressableSections wraps MTS_TABLE_ID_DSM_CC_ADDRESSABLE_SECTIONS
 	//
 	// DSM-CC Addressable Section
 	MtsTableIDDsmCcAddressableSections SectionTableID = 63
-	// MtsTableIDUnset wraps GST_MTS_TABLE_ID_UNSET
+	// MtsTableIDUnset wraps MTS_TABLE_ID_UNSET
 	//
 	// Unset section table_id (value is forbidden to use in actual sections)
 	MtsTableIDUnset SectionTableID = 255
@@ -2297,83 +2295,83 @@ func (e SectionTableID) String() string {
 type SectionType C.int
 
 const (
-	// MpegtsSectionUnknown wraps GST_MPEGTS_SECTION_UNKNOWN
+	// MpegtsSectionUnknown wraps MPEGTS_SECTION_UNKNOWN
 	//
 	// Unknown section type
 	MpegtsSectionUnknown SectionType = 0
-	// MpegtsSectionPat wraps GST_MPEGTS_SECTION_PAT
+	// MpegtsSectionPat wraps MPEGTS_SECTION_PAT
 	//
 	// Program Association Table (ISO/IEC 13818-1)
 	MpegtsSectionPat SectionType = 1
-	// MpegtsSectionPmt wraps GST_MPEGTS_SECTION_PMT
+	// MpegtsSectionPmt wraps MPEGTS_SECTION_PMT
 	//
 	// Program Map Table (ISO/IEC 13818-1)
 	MpegtsSectionPmt SectionType = 2
-	// MpegtsSectionCat wraps GST_MPEGTS_SECTION_CAT
+	// MpegtsSectionCat wraps MPEGTS_SECTION_CAT
 	//
 	// Conditional Access Table (ISO/IEC 13818-1)
 	MpegtsSectionCat SectionType = 3
-	// MpegtsSectionTsdt wraps GST_MPEGTS_SECTION_TSDT
+	// MpegtsSectionTsdt wraps MPEGTS_SECTION_TSDT
 	//
 	// Transport Stream Description Table (ISO/IEC 13818-1)
 	MpegtsSectionTsdt SectionType = 4
-	// MpegtsSectionEit wraps GST_MPEGTS_SECTION_EIT
+	// MpegtsSectionEit wraps MPEGTS_SECTION_EIT
 	//
 	// Event Information Table (EN 300 468)
 	MpegtsSectionEit SectionType = 5
-	// MpegtsSectionNit wraps GST_MPEGTS_SECTION_NIT
+	// MpegtsSectionNit wraps MPEGTS_SECTION_NIT
 	//
 	// Network Information Table (ISO/IEC 13818-1 / EN 300 468)
 	MpegtsSectionNit SectionType = 6
-	// MpegtsSectionBat wraps GST_MPEGTS_SECTION_BAT
+	// MpegtsSectionBat wraps MPEGTS_SECTION_BAT
 	//
 	// Bouquet Association Table ((EN 300 468)
 	MpegtsSectionBat SectionType = 7
-	// MpegtsSectionSdt wraps GST_MPEGTS_SECTION_SDT
+	// MpegtsSectionSdt wraps MPEGTS_SECTION_SDT
 	//
 	// Service Description Table (EN 300 468)
 	MpegtsSectionSdt SectionType = 8
-	// MpegtsSectionTdt wraps GST_MPEGTS_SECTION_TDT
+	// MpegtsSectionTdt wraps MPEGTS_SECTION_TDT
 	//
 	// Time and Date Table (EN 300 468)
 	MpegtsSectionTdt SectionType = 9
-	// MpegtsSectionTot wraps GST_MPEGTS_SECTION_TOT
+	// MpegtsSectionTot wraps MPEGTS_SECTION_TOT
 	//
 	// Time Offset Table (EN 300 468)
 	MpegtsSectionTot SectionType = 10
-	// MpegtsSectionSit wraps GST_MPEGTS_SECTION_SIT
+	// MpegtsSectionSit wraps MPEGTS_SECTION_SIT
 	//
 	// Selection Information Table (EN 300 468)
 	MpegtsSectionSit SectionType = 11
-	// MpegtsSectionAtscTvct wraps GST_MPEGTS_SECTION_ATSC_TVCT
+	// MpegtsSectionAtscTvct wraps MPEGTS_SECTION_ATSC_TVCT
 	//
 	// ATSC Terrestrial Virtual Channel Table (A65)
 	MpegtsSectionAtscTvct SectionType = 12
-	// MpegtsSectionAtscCvct wraps GST_MPEGTS_SECTION_ATSC_CVCT
+	// MpegtsSectionAtscCvct wraps MPEGTS_SECTION_ATSC_CVCT
 	//
 	// ATSC Cable Virtual Channel Table (A65)
 	MpegtsSectionAtscCvct SectionType = 13
-	// MpegtsSectionAtscMgt wraps GST_MPEGTS_SECTION_ATSC_MGT
+	// MpegtsSectionAtscMgt wraps MPEGTS_SECTION_ATSC_MGT
 	//
 	// ATSC Master Guide Table (A65)
 	MpegtsSectionAtscMgt SectionType = 14
-	// MpegtsSectionAtscEtt wraps GST_MPEGTS_SECTION_ATSC_ETT
+	// MpegtsSectionAtscEtt wraps MPEGTS_SECTION_ATSC_ETT
 	//
 	// ATSC Extended Text Table (A65)
 	MpegtsSectionAtscEtt SectionType = 15
-	// MpegtsSectionAtscEit wraps GST_MPEGTS_SECTION_ATSC_EIT
+	// MpegtsSectionAtscEit wraps MPEGTS_SECTION_ATSC_EIT
 	//
 	// ATSC Event Information Table (A65)
 	MpegtsSectionAtscEit SectionType = 16
-	// MpegtsSectionAtscStt wraps GST_MPEGTS_SECTION_ATSC_STT
+	// MpegtsSectionAtscStt wraps MPEGTS_SECTION_ATSC_STT
 	//
 	// ATSC System Time Table (A65)
 	MpegtsSectionAtscStt SectionType = 17
-	// MpegtsSectionAtscRrt wraps GST_MPEGTS_SECTION_ATSC_RRT
+	// MpegtsSectionAtscRrt wraps MPEGTS_SECTION_ATSC_RRT
 	//
 	// ATSC Rating Region Table (A65)
 	MpegtsSectionAtscRrt SectionType = 18
-	// MpegtsSectionScteSit wraps GST_MPEGTS_SECTION_SCTE_SIT
+	// MpegtsSectionScteSit wraps MPEGTS_SECTION_SCTE_SIT
 	//
 	// SCTE Splice Information Table (SCTE-35)
 	MpegtsSectionScteSit SectionType = 19
@@ -2418,126 +2416,126 @@ func (e SectionType) String() string {
 type StreamType C.int
 
 const (
-	// MpegtsStreamTypeReserved00 wraps GST_MPEGTS_STREAM_TYPE_RESERVED_00
+	// MpegtsStreamTypeReserved00 wraps MPEGTS_STREAM_TYPE_RESERVED_00
 	//
 	// ITU-T | ISO/IEC Reserved
 	MpegtsStreamTypeReserved00 StreamType = 0
-	// MpegtsStreamTypeVideoMpeg1 wraps GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG1
+	// MpegtsStreamTypeVideoMpeg1 wraps MPEGTS_STREAM_TYPE_VIDEO_MPEG1
 	//
 	// ISO/IEC 11172-2 Video (i.e. MPEG-1 Video)
 	MpegtsStreamTypeVideoMpeg1 StreamType = 1
-	// MpegtsStreamTypeVideoMpeg2 wraps GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG2
+	// MpegtsStreamTypeVideoMpeg2 wraps MPEGTS_STREAM_TYPE_VIDEO_MPEG2
 	//
 	// Rec. ITU-T H.262 | ISO/IEC 13818-2
 	//       Video or ISO/IEC 11172-2 constrained parameter video stream (i.e.
 	//       MPEG-2 Video)
 	MpegtsStreamTypeVideoMpeg2 StreamType = 2
-	// MpegtsStreamTypeAudioMpeg1 wraps GST_MPEGTS_STREAM_TYPE_AUDIO_MPEG1
+	// MpegtsStreamTypeAudioMpeg1 wraps MPEGTS_STREAM_TYPE_AUDIO_MPEG1
 	//
 	// ISO/IEC 11172-3 Audio
 	MpegtsStreamTypeAudioMpeg1 StreamType = 3
-	// MpegtsStreamTypeAudioMpeg2 wraps GST_MPEGTS_STREAM_TYPE_AUDIO_MPEG2
+	// MpegtsStreamTypeAudioMpeg2 wraps MPEGTS_STREAM_TYPE_AUDIO_MPEG2
 	//
 	// ISO/IEC 13818-3 Audio
 	MpegtsStreamTypeAudioMpeg2 StreamType = 4
-	// MpegtsStreamTypePrivateSections wraps GST_MPEGTS_STREAM_TYPE_PRIVATE_SECTIONS
+	// MpegtsStreamTypePrivateSections wraps MPEGTS_STREAM_TYPE_PRIVATE_SECTIONS
 	//
 	// private sections
 	MpegtsStreamTypePrivateSections StreamType = 5
-	// MpegtsStreamTypePrivatePesPackets wraps GST_MPEGTS_STREAM_TYPE_PRIVATE_PES_PACKETS
+	// MpegtsStreamTypePrivatePesPackets wraps MPEGTS_STREAM_TYPE_PRIVATE_PES_PACKETS
 	//
 	// PES packets containing private data
 	MpegtsStreamTypePrivatePesPackets StreamType = 6
-	// MpegtsStreamTypeMheg wraps GST_MPEGTS_STREAM_TYPE_MHEG
+	// MpegtsStreamTypeMheg wraps MPEGTS_STREAM_TYPE_MHEG
 	//
 	// ISO/IEC 13522 MHEG
 	MpegtsStreamTypeMheg StreamType = 7
-	// MpegtsStreamTypeDsmCc wraps GST_MPEGTS_STREAM_TYPE_DSM_CC
+	// MpegtsStreamTypeDsmCc wraps MPEGTS_STREAM_TYPE_DSM_CC
 	//
 	// Annex A DSM-CC
 	MpegtsStreamTypeDsmCc StreamType = 8
-	// MpegtsStreamTypeH2221 wraps GST_MPEGTS_STREAM_TYPE_H_222_1
+	// MpegtsStreamTypeH2221 wraps MPEGTS_STREAM_TYPE_H_222_1
 	//
 	// Rec. ITU-T H.222.1
 	MpegtsStreamTypeH2221 StreamType = 9
-	// MpegtsStreamTypeDsmccA wraps GST_MPEGTS_STREAM_TYPE_DSMCC_A
+	// MpegtsStreamTypeDsmccA wraps MPEGTS_STREAM_TYPE_DSMCC_A
 	//
 	// ISO/IEC 13818-6 type A
 	MpegtsStreamTypeDsmccA StreamType = 10
-	// MpegtsStreamTypeDsmccB wraps GST_MPEGTS_STREAM_TYPE_DSMCC_B
+	// MpegtsStreamTypeDsmccB wraps MPEGTS_STREAM_TYPE_DSMCC_B
 	//
 	// ISO/IEC 13818-6 type B
 	MpegtsStreamTypeDsmccB StreamType = 11
-	// MpegtsStreamTypeDsmccC wraps GST_MPEGTS_STREAM_TYPE_DSMCC_C
+	// MpegtsStreamTypeDsmccC wraps MPEGTS_STREAM_TYPE_DSMCC_C
 	//
 	// ISO/IEC 13818-6 type C
 	MpegtsStreamTypeDsmccC StreamType = 12
-	// MpegtsStreamTypeDsmccD wraps GST_MPEGTS_STREAM_TYPE_DSMCC_D
+	// MpegtsStreamTypeDsmccD wraps MPEGTS_STREAM_TYPE_DSMCC_D
 	//
 	// ISO/IEC 13818-6 type D
 	MpegtsStreamTypeDsmccD StreamType = 13
-	// MpegtsStreamTypeAuxiliary wraps GST_MPEGTS_STREAM_TYPE_AUXILIARY
+	// MpegtsStreamTypeAuxiliary wraps MPEGTS_STREAM_TYPE_AUXILIARY
 	//
 	// auxiliary streams
 	MpegtsStreamTypeAuxiliary StreamType = 14
-	// MpegtsStreamTypeAudioAacAdts wraps GST_MPEGTS_STREAM_TYPE_AUDIO_AAC_ADTS
+	// MpegtsStreamTypeAudioAacAdts wraps MPEGTS_STREAM_TYPE_AUDIO_AAC_ADTS
 	//
 	// ISO/IEC 13818-7 Audio (AAC) with ADTS
 	//       transport syntax
 	MpegtsStreamTypeAudioAacAdts StreamType = 15
-	// MpegtsStreamTypeVideoMpeg4 wraps GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG4
+	// MpegtsStreamTypeVideoMpeg4 wraps MPEGTS_STREAM_TYPE_VIDEO_MPEG4
 	//
 	// ISO/IEC 14496-2 Visual (MPEG-4 Video)
 	MpegtsStreamTypeVideoMpeg4 StreamType = 16
-	// MpegtsStreamTypeAudioAacLatm wraps GST_MPEGTS_STREAM_TYPE_AUDIO_AAC_LATM
+	// MpegtsStreamTypeAudioAacLatm wraps MPEGTS_STREAM_TYPE_AUDIO_AAC_LATM
 	//
 	// ISO/IEC 14496-3 Audio (AAC) with the LATM
 	//       transport syntax as defined in ISO/IEC 14496-3
 	MpegtsStreamTypeAudioAacLatm StreamType = 17
-	// MpegtsStreamTypeSlFlexmuxPesPackets wraps GST_MPEGTS_STREAM_TYPE_SL_FLEXMUX_PES_PACKETS
+	// MpegtsStreamTypeSlFlexmuxPesPackets wraps MPEGTS_STREAM_TYPE_SL_FLEXMUX_PES_PACKETS
 	//
 	// ISO/IEC 14496-1
 	//       SL-packetized stream or FlexMux stream carried in PES packets
 	MpegtsStreamTypeSlFlexmuxPesPackets StreamType = 18
-	// MpegtsStreamTypeSlFlexmuxSections wraps GST_MPEGTS_STREAM_TYPE_SL_FLEXMUX_SECTIONS
+	// MpegtsStreamTypeSlFlexmuxSections wraps MPEGTS_STREAM_TYPE_SL_FLEXMUX_SECTIONS
 	//
 	// ISO/IEC 14496-1 SL-packetized
 	//       stream or FlexMux stream carried in ISO/IEC 14496_sections
 	MpegtsStreamTypeSlFlexmuxSections StreamType = 19
-	// MpegtsStreamTypeSynchronizedDownload wraps GST_MPEGTS_STREAM_TYPE_SYNCHRONIZED_DOWNLOAD
+	// MpegtsStreamTypeSynchronizedDownload wraps MPEGTS_STREAM_TYPE_SYNCHRONIZED_DOWNLOAD
 	//
 	// ISO/IEC 13818-6 Synchronized
 	//       Download Protocol
 	MpegtsStreamTypeSynchronizedDownload StreamType = 20
-	// MpegtsStreamTypeMetadataPesPackets wraps GST_MPEGTS_STREAM_TYPE_METADATA_PES_PACKETS
+	// MpegtsStreamTypeMetadataPesPackets wraps MPEGTS_STREAM_TYPE_METADATA_PES_PACKETS
 	//
 	// Metadata carried in PES packets
 	MpegtsStreamTypeMetadataPesPackets StreamType = 21
-	// MpegtsStreamTypeMetadataSections wraps GST_MPEGTS_STREAM_TYPE_METADATA_SECTIONS
+	// MpegtsStreamTypeMetadataSections wraps MPEGTS_STREAM_TYPE_METADATA_SECTIONS
 	//
 	// Metadata carried in metadata_sections
 	MpegtsStreamTypeMetadataSections StreamType = 22
-	// MpegtsStreamTypeMetadataDataCarousel wraps GST_MPEGTS_STREAM_TYPE_METADATA_DATA_CAROUSEL
+	// MpegtsStreamTypeMetadataDataCarousel wraps MPEGTS_STREAM_TYPE_METADATA_DATA_CAROUSEL
 	//
 	// Metadata carried in ISO/IEC
 	//       13818-6 Data Carousel
 	MpegtsStreamTypeMetadataDataCarousel StreamType = 23
-	// MpegtsStreamTypeMetadataObjectCarousel wraps GST_MPEGTS_STREAM_TYPE_METADATA_OBJECT_CAROUSEL
+	// MpegtsStreamTypeMetadataObjectCarousel wraps MPEGTS_STREAM_TYPE_METADATA_OBJECT_CAROUSEL
 	//
 	// Metadata carried in
 	//       ISO/IEC 13818-6 Object Carousel
 	MpegtsStreamTypeMetadataObjectCarousel StreamType = 24
-	// MpegtsStreamTypeMetadataSynchronizedDownload wraps GST_MPEGTS_STREAM_TYPE_METADATA_SYNCHRONIZED_DOWNLOAD
+	// MpegtsStreamTypeMetadataSynchronizedDownload wraps MPEGTS_STREAM_TYPE_METADATA_SYNCHRONIZED_DOWNLOAD
 	//
 	// Metadata carried in
 	//       ISO/IEC 13818-6 Synchronized Download Protocol
 	MpegtsStreamTypeMetadataSynchronizedDownload StreamType = 25
-	// MpegtsStreamTypeMpeg2Ipmp wraps GST_MPEGTS_STREAM_TYPE_MPEG2_IPMP
+	// MpegtsStreamTypeMpeg2Ipmp wraps MPEGTS_STREAM_TYPE_MPEG2_IPMP
 	//
 	// IPMP stream (defined in ISO/IEC 13818-11,
 	//       MPEG-2 IPMP)
 	MpegtsStreamTypeMpeg2Ipmp StreamType = 26
-	// MpegtsStreamTypeVideoH264 wraps GST_MPEGTS_STREAM_TYPE_VIDEO_H264
+	// MpegtsStreamTypeVideoH264 wraps MPEGTS_STREAM_TYPE_VIDEO_H264
 	//
 	// AVC video stream conforming to one or
 	// more profiles defined in Annex A of Rec. ITU-T H.264 | ISO/IEC 14496-10 or
@@ -2545,67 +2543,67 @@ const (
 	// sub-bitstream, as defined in 2.1.85, or AVC video sub-bitstream of MVC, as
 	// defined in 2.1.88
 	MpegtsStreamTypeVideoH264 StreamType = 27
-	// MpegtsStreamTypeAudioAacClean wraps GST_MPEGTS_STREAM_TYPE_AUDIO_AAC_CLEAN
+	// MpegtsStreamTypeAudioAacClean wraps MPEGTS_STREAM_TYPE_AUDIO_AAC_CLEAN
 	//
 	// ISO/IEC 14496-3 (AAC) Audio, without
 	//       using any additional transport syntax, such as DST, ALS and SLS
 	MpegtsStreamTypeAudioAacClean StreamType = 28
-	// MpegtsStreamTypeMpeg4TimedText wraps GST_MPEGTS_STREAM_TYPE_MPEG4_TIMED_TEXT
+	// MpegtsStreamTypeMpeg4TimedText wraps MPEGTS_STREAM_TYPE_MPEG4_TIMED_TEXT
 	//
 	// ISO/IEC 14496-17 Text
 	MpegtsStreamTypeMpeg4TimedText StreamType = 29
-	// MpegtsStreamTypeVideoRvc wraps GST_MPEGTS_STREAM_TYPE_VIDEO_RVC
+	// MpegtsStreamTypeVideoRvc wraps MPEGTS_STREAM_TYPE_VIDEO_RVC
 	//
 	// Auxiliary video stream as defined in
 	// ISO/IEC 23002-3
 	MpegtsStreamTypeVideoRvc StreamType = 30
-	// MpegtsStreamTypeVideoH264SvcSubBitstream wraps GST_MPEGTS_STREAM_TYPE_VIDEO_H264_SVC_SUB_BITSTREAM
+	// MpegtsStreamTypeVideoH264SvcSubBitstream wraps MPEGTS_STREAM_TYPE_VIDEO_H264_SVC_SUB_BITSTREAM
 	//
 	// SVC video sub-bitstream
 	// of an AVC video stream conforming to one or more profiles defined in Annex G
 	// of Rec. ITU-T H.264 | ISO/IEC 14496-10
 	MpegtsStreamTypeVideoH264SvcSubBitstream StreamType = 31
-	// MpegtsStreamTypeVideoH264MvcSubBitstream wraps GST_MPEGTS_STREAM_TYPE_VIDEO_H264_MVC_SUB_BITSTREAM
+	// MpegtsStreamTypeVideoH264MvcSubBitstream wraps MPEGTS_STREAM_TYPE_VIDEO_H264_MVC_SUB_BITSTREAM
 	//
 	// MVC video sub-bitstream
 	// of an AVC video stream conforming to one or more profiles defined in Annex H
 	// of Rec. ITU-T H.264 | ISO/IEC 14496-10
 	MpegtsStreamTypeVideoH264MvcSubBitstream StreamType = 32
-	// MpegtsStreamTypeVideoJp2K wraps GST_MPEGTS_STREAM_TYPE_VIDEO_JP2K
+	// MpegtsStreamTypeVideoJp2K wraps MPEGTS_STREAM_TYPE_VIDEO_JP2K
 	//
 	// Video stream conforming to one or more
 	//       profiles as defined in Rec. ITU-T T.800 | ISO/IEC 15444-1 (i.e. JPEG 2000)
 	MpegtsStreamTypeVideoJp2K StreamType = 33
-	// MpegtsStreamTypeVideoMpeg2StereoAdditionalView wraps GST_MPEGTS_STREAM_TYPE_VIDEO_MPEG2_STEREO_ADDITIONAL_VIEW
+	// MpegtsStreamTypeVideoMpeg2StereoAdditionalView wraps MPEGTS_STREAM_TYPE_VIDEO_MPEG2_STEREO_ADDITIONAL_VIEW
 	//
 	// Additional view
 	// Rec. ITU-T H.262 | ISO/IEC 13818-2 video stream for service-compatible
 	// stereoscopic 3D services
 	MpegtsStreamTypeVideoMpeg2StereoAdditionalView StreamType = 34
-	// MpegtsStreamTypeVideoH264StereoAdditionalView wraps GST_MPEGTS_STREAM_TYPE_VIDEO_H264_STEREO_ADDITIONAL_VIEW
+	// MpegtsStreamTypeVideoH264StereoAdditionalView wraps MPEGTS_STREAM_TYPE_VIDEO_H264_STEREO_ADDITIONAL_VIEW
 	//
 	// Additional view
 	// Rec. ITU-T H.264 | ISO/IEC 14496-10 video stream conforming to one or more
 	// profiles defined in Annex A for service-compatible stereoscopic 3D services
 	MpegtsStreamTypeVideoH264StereoAdditionalView StreamType = 35
-	// MpegtsStreamTypeVideoHevc wraps GST_MPEGTS_STREAM_TYPE_VIDEO_HEVC
+	// MpegtsStreamTypeVideoHevc wraps MPEGTS_STREAM_TYPE_VIDEO_HEVC
 	//
 	// Rec. ITU-T H.265 | ISO/IEC 23008-2 video
 	//      stream or an HEVC temporal video sub-bitstream
 	MpegtsStreamTypeVideoHevc StreamType = 36
-	// MpegtsStreamTypeVideoJPEGXS wraps GST_MPEGTS_STREAM_TYPE_VIDEO_JPEG_XS
+	// MpegtsStreamTypeVideoJPEGXS wraps MPEGTS_STREAM_TYPE_VIDEO_JPEG_XS
 	//
 	// JPEG-XS stream type
 	MpegtsStreamTypeVideoJPEGXS StreamType = 50
-	// MpegtsStreamTypeVideoVvc wraps GST_MPEGTS_STREAM_TYPE_VIDEO_VVC
+	// MpegtsStreamTypeVideoVvc wraps MPEGTS_STREAM_TYPE_VIDEO_VVC
 	//
 	// VVC/H.266 video stream type
 	MpegtsStreamTypeVideoVvc StreamType = 51
-	// MpegtsStreamTypeIpmpStream wraps GST_MPEGTS_STREAM_TYPE_IPMP_STREAM
+	// MpegtsStreamTypeIpmpStream wraps MPEGTS_STREAM_TYPE_IPMP_STREAM
 	//
 	// IPMP stream
 	MpegtsStreamTypeIpmpStream StreamType = 127
-	// MpegtsStreamTypeUserPrivateEa wraps GST_MPEGTS_STREAM_TYPE_USER_PRIVATE_EA
+	// MpegtsStreamTypeUserPrivateEa wraps MPEGTS_STREAM_TYPE_USER_PRIVATE_EA
 	//
 	// User Private stream id (used for VC-1) as defined by SMPTE RP227.
 	MpegtsStreamTypeUserPrivateEa StreamType = 234
@@ -2663,27 +2661,27 @@ func (e StreamType) String() string {
 type TerrestrialGuardInterval C.int
 
 const (
-	// MpegtsGuardInterval132 wraps GST_MPEGTS_GUARD_INTERVAL_1_32
+	// MpegtsGuardInterval132 wraps MPEGTS_GUARD_INTERVAL_1_32
 	MpegtsGuardInterval132 TerrestrialGuardInterval = 0
-	// MpegtsGuardInterval116 wraps GST_MPEGTS_GUARD_INTERVAL_1_16
+	// MpegtsGuardInterval116 wraps MPEGTS_GUARD_INTERVAL_1_16
 	MpegtsGuardInterval116 TerrestrialGuardInterval = 1
-	// MpegtsGuardInterval18 wraps GST_MPEGTS_GUARD_INTERVAL_1_8
+	// MpegtsGuardInterval18 wraps MPEGTS_GUARD_INTERVAL_1_8
 	MpegtsGuardInterval18 TerrestrialGuardInterval = 2
-	// MpegtsGuardInterval14 wraps GST_MPEGTS_GUARD_INTERVAL_1_4
+	// MpegtsGuardInterval14 wraps MPEGTS_GUARD_INTERVAL_1_4
 	MpegtsGuardInterval14 TerrestrialGuardInterval = 3
-	// MpegtsGuardIntervalAuto wraps GST_MPEGTS_GUARD_INTERVAL_AUTO
+	// MpegtsGuardIntervalAuto wraps MPEGTS_GUARD_INTERVAL_AUTO
 	MpegtsGuardIntervalAuto TerrestrialGuardInterval = 4
-	// MpegtsGuardInterval1128 wraps GST_MPEGTS_GUARD_INTERVAL_1_128
+	// MpegtsGuardInterval1128 wraps MPEGTS_GUARD_INTERVAL_1_128
 	MpegtsGuardInterval1128 TerrestrialGuardInterval = 5
-	// MpegtsGuardInterval19128 wraps GST_MPEGTS_GUARD_INTERVAL_19_128
+	// MpegtsGuardInterval19128 wraps MPEGTS_GUARD_INTERVAL_19_128
 	MpegtsGuardInterval19128 TerrestrialGuardInterval = 6
-	// MpegtsGuardInterval19256 wraps GST_MPEGTS_GUARD_INTERVAL_19_256
+	// MpegtsGuardInterval19256 wraps MPEGTS_GUARD_INTERVAL_19_256
 	MpegtsGuardInterval19256 TerrestrialGuardInterval = 7
-	// MpegtsGuardIntervalPn420 wraps GST_MPEGTS_GUARD_INTERVAL_PN420
+	// MpegtsGuardIntervalPn420 wraps MPEGTS_GUARD_INTERVAL_PN420
 	MpegtsGuardIntervalPn420 TerrestrialGuardInterval = 8
-	// MpegtsGuardIntervalPn595 wraps GST_MPEGTS_GUARD_INTERVAL_PN595
+	// MpegtsGuardIntervalPn595 wraps MPEGTS_GUARD_INTERVAL_PN595
 	MpegtsGuardIntervalPn595 TerrestrialGuardInterval = 9
-	// MpegtsGuardIntervalPn945 wraps GST_MPEGTS_GUARD_INTERVAL_PN945
+	// MpegtsGuardIntervalPn945 wraps MPEGTS_GUARD_INTERVAL_PN945
 	MpegtsGuardIntervalPn945 TerrestrialGuardInterval = 10
 )
 
@@ -2709,15 +2707,15 @@ func (e TerrestrialGuardInterval) String() string {
 type TerrestrialHierarchy C.int
 
 const (
-	// MpegtsHierarchyNone wraps GST_MPEGTS_HIERARCHY_NONE
+	// MpegtsHierarchyNone wraps MPEGTS_HIERARCHY_NONE
 	MpegtsHierarchyNone TerrestrialHierarchy = 0
-	// MpegtsHierarchy1 wraps GST_MPEGTS_HIERARCHY_1
+	// MpegtsHierarchy1 wraps MPEGTS_HIERARCHY_1
 	MpegtsHierarchy1 TerrestrialHierarchy = 1
-	// MpegtsHierarchy2 wraps GST_MPEGTS_HIERARCHY_2
+	// MpegtsHierarchy2 wraps MPEGTS_HIERARCHY_2
 	MpegtsHierarchy2 TerrestrialHierarchy = 2
-	// MpegtsHierarchy4 wraps GST_MPEGTS_HIERARCHY_4
+	// MpegtsHierarchy4 wraps MPEGTS_HIERARCHY_4
 	MpegtsHierarchy4 TerrestrialHierarchy = 3
-	// MpegtsHierarchyAuto wraps GST_MPEGTS_HIERARCHY_AUTO
+	// MpegtsHierarchyAuto wraps MPEGTS_HIERARCHY_AUTO
 	MpegtsHierarchyAuto TerrestrialHierarchy = 4
 )
 
@@ -2737,23 +2735,23 @@ func (e TerrestrialHierarchy) String() string {
 type TerrestrialTransmissionMode C.int
 
 const (
-	// MpegtsTransmissionMode2K wraps GST_MPEGTS_TRANSMISSION_MODE_2K
+	// MpegtsTransmissionMode2K wraps MPEGTS_TRANSMISSION_MODE_2K
 	MpegtsTransmissionMode2K TerrestrialTransmissionMode = 0
-	// MpegtsTransmissionMode8K wraps GST_MPEGTS_TRANSMISSION_MODE_8K
+	// MpegtsTransmissionMode8K wraps MPEGTS_TRANSMISSION_MODE_8K
 	MpegtsTransmissionMode8K TerrestrialTransmissionMode = 1
-	// MpegtsTransmissionModeAuto wraps GST_MPEGTS_TRANSMISSION_MODE_AUTO
+	// MpegtsTransmissionModeAuto wraps MPEGTS_TRANSMISSION_MODE_AUTO
 	MpegtsTransmissionModeAuto TerrestrialTransmissionMode = 2
-	// MpegtsTransmissionMode4K wraps GST_MPEGTS_TRANSMISSION_MODE_4K
+	// MpegtsTransmissionMode4K wraps MPEGTS_TRANSMISSION_MODE_4K
 	MpegtsTransmissionMode4K TerrestrialTransmissionMode = 3
-	// MpegtsTransmissionMode1K wraps GST_MPEGTS_TRANSMISSION_MODE_1K
+	// MpegtsTransmissionMode1K wraps MPEGTS_TRANSMISSION_MODE_1K
 	MpegtsTransmissionMode1K TerrestrialTransmissionMode = 4
-	// MpegtsTransmissionMode16K wraps GST_MPEGTS_TRANSMISSION_MODE_16K
+	// MpegtsTransmissionMode16K wraps MPEGTS_TRANSMISSION_MODE_16K
 	MpegtsTransmissionMode16K TerrestrialTransmissionMode = 5
-	// MpegtsTransmissionMode32K wraps GST_MPEGTS_TRANSMISSION_MODE_32K
+	// MpegtsTransmissionMode32K wraps MPEGTS_TRANSMISSION_MODE_32K
 	MpegtsTransmissionMode32K TerrestrialTransmissionMode = 6
-	// MpegtsTransmissionModeC1 wraps GST_MPEGTS_TRANSMISSION_MODE_C1
+	// MpegtsTransmissionModeC1 wraps MPEGTS_TRANSMISSION_MODE_C1
 	MpegtsTransmissionModeC1 TerrestrialTransmissionMode = 7
-	// MpegtsTransmissionModeC3780 wraps GST_MPEGTS_TRANSMISSION_MODE_C3780
+	// MpegtsTransmissionModeC3780 wraps MPEGTS_TRANSMISSION_MODE_C3780
 	MpegtsTransmissionModeC3780 TerrestrialTransmissionMode = 8
 )
 
@@ -2783,77 +2781,77 @@ func (e TerrestrialTransmissionMode) String() string {
 type RegistrationID C.gint
 
 const (
-	// MtsRegistration0 wraps GST_MTS_REGISTRATION_0
+	// MtsRegistration0 wraps MTS_REGISTRATION_0
 	//
 	// Undefined registration id
 	MtsRegistration0 RegistrationID = 0
-	// MtsRegistrationAc3 wraps GST_MTS_REGISTRATION_AC_3
+	// MtsRegistrationAc3 wraps MTS_REGISTRATION_AC_3
 	//
 	// Audio AC-3, ATSC A/52
 	MtsRegistrationAc3 RegistrationID = 1094921523
-	// MtsRegistrationCuei wraps GST_MTS_REGISTRATION_CUEI
+	// MtsRegistrationCuei wraps MTS_REGISTRATION_CUEI
 	//
 	// SCTE 35, "Digital Program Insertion Cueing Message"
 	MtsRegistrationCuei RegistrationID = 1129661769
-	// MtsRegistrationDrac wraps GST_MTS_REGISTRATION_drac
+	// MtsRegistrationDrac wraps MTS_REGISTRATION_drac
 	//
 	// Dirac Video codec
 	MtsRegistrationDrac RegistrationID = 1685217635
-	// MtsRegistrationDts1 wraps GST_MTS_REGISTRATION_DTS1
+	// MtsRegistrationDts1 wraps MTS_REGISTRATION_DTS1
 	//
 	// DTS Audio
 	MtsRegistrationDts1 RegistrationID = 1146377009
-	// MtsRegistrationDts2 wraps GST_MTS_REGISTRATION_DTS2
+	// MtsRegistrationDts2 wraps MTS_REGISTRATION_DTS2
 	//
 	// DTS Audio
 	MtsRegistrationDts2 RegistrationID = 1146377010
-	// MtsRegistrationDts3 wraps GST_MTS_REGISTRATION_DTS3
+	// MtsRegistrationDts3 wraps MTS_REGISTRATION_DTS3
 	//
 	// DTS Audio
 	MtsRegistrationDts3 RegistrationID = 1146377011
-	// MtsRegistrationBssd wraps GST_MTS_REGISTRATION_BSSD
+	// MtsRegistrationBssd wraps MTS_REGISTRATION_BSSD
 	//
 	// SMPTE 302M, Mapping of AES3 Data in mpeg-ts
 	MtsRegistrationBssd RegistrationID = 1112757060
-	// MtsRegistrationEac3 wraps GST_MTS_REGISTRATION_EAC3
+	// MtsRegistrationEac3 wraps MTS_REGISTRATION_EAC3
 	//
 	// Enhanced AC-3 (i.e. EAC3)
 	MtsRegistrationEac3 RegistrationID = 1161904947
-	// MtsRegistrationEtv1 wraps GST_MTS_REGISTRATION_ETV1
+	// MtsRegistrationEtv1 wraps MTS_REGISTRATION_ETV1
 	//
 	// Cablelabs ETV
 	MtsRegistrationEtv1 RegistrationID = 1163154993
-	// MtsRegistrationGa94 wraps GST_MTS_REGISTRATION_GA94
+	// MtsRegistrationGa94 wraps MTS_REGISTRATION_GA94
 	//
 	// ATSC A/53 compliant stream (i.e. ATSC)
 	MtsRegistrationGa94 RegistrationID = 1195456820
-	// MtsRegistrationHdmv wraps GST_MTS_REGISTRATION_HDMV
+	// MtsRegistrationHdmv wraps MTS_REGISTRATION_HDMV
 	//
 	// Blu-ray, "System Description Blu-ray Disc
 	//             Read-Only Format part 3 Audio Visual Basic Specifications"
 	MtsRegistrationHdmv RegistrationID = 1212435798
-	// MtsRegistrationKlva wraps GST_MTS_REGISTRATION_KLVA
+	// MtsRegistrationKlva wraps MTS_REGISTRATION_KLVA
 	//
 	// SMPTE RP217 : Non-synchronized Mapping of KLV
 	//             Packets in mpeg-ts
 	MtsRegistrationKlva RegistrationID = 1263294017
-	// MtsRegistrationOpus wraps GST_MTS_REGISTRATION_OPUS
+	// MtsRegistrationOpus wraps MTS_REGISTRATION_OPUS
 	//
 	// Opus Audio
 	MtsRegistrationOpus RegistrationID = 1330664787
-	// MtsRegistrationTshv wraps GST_MTS_REGISTRATION_TSHV
+	// MtsRegistrationTshv wraps MTS_REGISTRATION_TSHV
 	//
 	// HDV (Sony)
 	MtsRegistrationTshv RegistrationID = 1414744150
-	// MtsRegistrationVc1 wraps GST_MTS_REGISTRATION_VC_1
+	// MtsRegistrationVc1 wraps MTS_REGISTRATION_VC_1
 	//
 	// Video VC-1, SMPTE RP227 "VC-1 Bitstream Transport Encodings"
 	MtsRegistrationVc1 RegistrationID = 1447243057
-	// MtsRegistrationAc4 wraps GST_MTS_REGISTRATION_AC_4
+	// MtsRegistrationAc4 wraps MTS_REGISTRATION_AC_4
 	//
 	// Audio AC-4, ETSI 103 190-2
 	MtsRegistrationAc4 RegistrationID = 1094921524
-	// MtsRegistrationOtherHevc wraps GST_MTS_REGISTRATION_OTHER_HEVC
+	// MtsRegistrationOtherHevc wraps MTS_REGISTRATION_OTHER_HEVC
 	//
 	// HEVC / h265
 	MtsRegistrationOtherHevc RegistrationID = 1212503619
@@ -10389,10 +10387,3 @@ func UnsafeTerrestrialDeliverySystemDescriptorToGlibFull(t *TerrestrialDeliveryS
 	return _p
 }
 
-// SuppressUnstableWarning should be overwritten by the user to suppress the warning
-var SuppressUnstableWarning = false
-func init() {
-	if !SuppressUnstableWarning {
-		log.Println("Warning: using unstable API")
-	}
-}

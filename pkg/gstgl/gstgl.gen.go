@@ -14,7 +14,6 @@ import (
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
 	"github.com/go-gst/go-gst/pkg/gstbase"
-	"github.com/go-gst/go-gst/pkg/gstvideo"
 )
 
 // #cgo pkg-config: gstreamer-gl-1.0
@@ -32,14 +31,6 @@ import (
 // }
 // void _gotk4_gstgl1_GLBaseFilter_virtual_gl_stop(void* fnptr, GstGLBaseFilter* carg0) {
 // 	return ((void (*) (GstGLBaseFilter*))(fnptr))(carg0);
-// }
-// extern gboolean _gotk4_gstgl1_GLBaseMixer_gl_start(GstGLBaseMixer*);
-// extern void _gotk4_gstgl1_GLBaseMixer_gl_stop(GstGLBaseMixer*);
-// gboolean _gotk4_gstgl1_GLBaseMixer_virtual_gl_start(void* fnptr, GstGLBaseMixer* carg0) {
-// 	return ((gboolean (*) (GstGLBaseMixer*))(fnptr))(carg0);
-// }
-// void _gotk4_gstgl1_GLBaseMixer_virtual_gl_stop(void* fnptr, GstGLBaseMixer* carg0) {
-// 	return ((void (*) (GstGLBaseMixer*))(fnptr))(carg0);
 // }
 // extern gboolean _gotk4_gstgl1_GLBaseSrc_fill_gl_memory(GstGLBaseSrc*, GstGLMemory*);
 // extern gboolean _gotk4_gstgl1_GLBaseSrc_gl_start(GstGLBaseSrc*);
@@ -121,14 +112,6 @@ import (
 // GstCaps* _gotk4_gstgl1_GLFilter_virtual_transform_internal_caps(void* fnptr, GstGLFilter* carg0, GstPadDirection carg1, GstCaps* carg2, GstCaps* carg3) {
 // 	return ((GstCaps* (*) (GstGLFilter*, GstPadDirection, GstCaps*, GstCaps*))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// extern gboolean _gotk4_gstgl1_GLMixer_process_buffers(GstGLMixer*, GstBuffer*);
-// extern gboolean _gotk4_gstgl1_GLMixer_process_textures(GstGLMixer*, GstGLMemory*);
-// gboolean _gotk4_gstgl1_GLMixer_virtual_process_buffers(void* fnptr, GstGLMixer* carg0, GstBuffer* carg1) {
-// 	return ((gboolean (*) (GstGLMixer*, GstBuffer*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gstgl1_GLMixer_virtual_process_textures(void* fnptr, GstGLMixer* carg0, GstGLMemory* carg1) {
-// 	return ((gboolean (*) (GstGLMixer*, GstGLMemory*))(fnptr))(carg0, carg1);
-// }
 // extern void _gotk4_gstgl1_GLWindow_close(GstGLWindow*);
 // extern gboolean _gotk4_gstgl1_GLWindow_controls_viewport(GstGLWindow*);
 // extern void _gotk4_gstgl1_GLWindow_draw(GstGLWindow*);
@@ -201,8 +184,6 @@ var (
 	TypeGLSLProfile                    = gobject.Type(C.gst_glsl_profile_get_type())
 	TypeGLBaseFilter                   = gobject.Type(C.gst_gl_base_filter_get_type())
 	TypeGLBaseMemoryAllocator          = gobject.Type(C.gst_gl_base_memory_allocator_get_type())
-	TypeGLBaseMixer                    = gobject.Type(C.gst_gl_base_mixer_get_type())
-	TypeGLBaseMixerPad                 = gobject.Type(C.gst_gl_base_mixer_pad_get_type())
 	TypeGLBaseSrc                      = gobject.Type(C.gst_gl_base_src_get_type())
 	TypeGLBufferAllocator              = gobject.Type(C.gst_gl_buffer_allocator_get_type())
 	TypeGLBufferPool                   = gobject.Type(C.gst_gl_buffer_pool_get_type())
@@ -213,8 +194,6 @@ var (
 	TypeGLFramebuffer                  = gobject.Type(C.gst_gl_framebuffer_get_type())
 	TypeGLMemoryAllocator              = gobject.Type(C.gst_gl_memory_allocator_get_type())
 	TypeGLMemoryPBOAllocator           = gobject.Type(C.gst_gl_memory_pbo_allocator_get_type())
-	TypeGLMixer                        = gobject.Type(C.gst_gl_mixer_get_type())
-	TypeGLMixerPad                     = gobject.Type(C.gst_gl_mixer_pad_get_type())
 	TypeGLOverlayCompositor            = gobject.Type(C.gst_gl_overlay_compositor_get_type())
 	TypeGLRenderbufferAllocator        = gobject.Type(C.gst_gl_renderbuffer_allocator_get_type())
 	TypeGLSLStage                      = gobject.Type(C.gst_glsl_stage_get_type())
@@ -255,8 +234,6 @@ func init() {
 		gobject.TypeMarshaler{T: TypeGLSLProfile, F: marshalGLSLProfile},
 		gobject.TypeMarshaler{T: TypeGLBaseFilter, F: marshalGLBaseFilterInstance},
 		gobject.TypeMarshaler{T: TypeGLBaseMemoryAllocator, F: marshalGLBaseMemoryAllocatorInstance},
-		gobject.TypeMarshaler{T: TypeGLBaseMixer, F: marshalGLBaseMixerInstance},
-		gobject.TypeMarshaler{T: TypeGLBaseMixerPad, F: marshalGLBaseMixerPadInstance},
 		gobject.TypeMarshaler{T: TypeGLBaseSrc, F: marshalGLBaseSrcInstance},
 		gobject.TypeMarshaler{T: TypeGLBufferAllocator, F: marshalGLBufferAllocatorInstance},
 		gobject.TypeMarshaler{T: TypeGLBufferPool, F: marshalGLBufferPoolInstance},
@@ -267,8 +244,6 @@ func init() {
 		gobject.TypeMarshaler{T: TypeGLFramebuffer, F: marshalGLFramebufferInstance},
 		gobject.TypeMarshaler{T: TypeGLMemoryAllocator, F: marshalGLMemoryAllocatorInstance},
 		gobject.TypeMarshaler{T: TypeGLMemoryPBOAllocator, F: marshalGLMemoryPBOAllocatorInstance},
-		gobject.TypeMarshaler{T: TypeGLMixer, F: marshalGLMixerInstance},
-		gobject.TypeMarshaler{T: TypeGLMixerPad, F: marshalGLMixerPadInstance},
 		gobject.TypeMarshaler{T: TypeGLOverlayCompositor, F: marshalGLOverlayCompositorInstance},
 		gobject.TypeMarshaler{T: TypeGLRenderbufferAllocator, F: marshalGLRenderbufferAllocatorInstance},
 		gobject.TypeMarshaler{T: TypeGLSLStage, F: marshalGLSLStageInstance},
@@ -326,16 +301,16 @@ const MAP_GL = 131072
 type GLBaseMemoryError C.int
 
 const (
-	// GLBaseMemoryErrorFailed wraps GST_GL_BASE_MEMORY_ERROR_FAILED
+	// GLBaseMemoryErrorFailed wraps GL_BASE_MEMORY_ERROR_FAILED
 	//
 	// generic failure
 	GLBaseMemoryErrorFailed GLBaseMemoryError = 0
-	// GLBaseMemoryErrorOldLibs wraps GST_GL_BASE_MEMORY_ERROR_OLD_LIBS
+	// GLBaseMemoryErrorOldLibs wraps GL_BASE_MEMORY_ERROR_OLD_LIBS
 	//
 	// the implementation is too old and doesn't
 	//                                     implement enough features
 	GLBaseMemoryErrorOldLibs GLBaseMemoryError = 1
-	// GLBaseMemoryErrorResourceUnavailable wraps GST_GL_BASE_MEMORY_ERROR_RESOURCE_UNAVAILABLE
+	// GLBaseMemoryErrorResourceUnavailable wraps GL_BASE_MEMORY_ERROR_RESOURCE_UNAVAILABLE
 	//
 	// a resource could not be found
 	GLBaseMemoryErrorResourceUnavailable GLBaseMemoryError = 2
@@ -385,15 +360,15 @@ func GLBaseMemoryErrorQuark() glib.Quark {
 type GLConfigCaveat C.int
 
 const (
-	// GLConfigCaveatNone wraps GST_GL_CONFIG_CAVEAT_NONE
+	// GLConfigCaveatNone wraps GL_CONFIG_CAVEAT_NONE
 	//
 	// none
 	GLConfigCaveatNone GLConfigCaveat = 0
-	// GLConfigCaveatSlow wraps GST_GL_CONFIG_CAVEAT_SLOW
+	// GLConfigCaveatSlow wraps GL_CONFIG_CAVEAT_SLOW
 	//
 	// slow
 	GLConfigCaveatSlow GLConfigCaveat = 1
-	// GLConfigCaveatNonConformant wraps GST_GL_CONFIG_CAVEAT_NON_CONFORMANT
+	// GLConfigCaveatNonConformant wraps GL_CONFIG_CAVEAT_NON_CONFORMANT
 	//
 	// non-conformant
 	GLConfigCaveatNonConformant GLConfigCaveat = 2
@@ -455,27 +430,27 @@ func GLConfigCaveatToString(caveat GLConfigCaveat) string {
 type GLContextError C.int
 
 const (
-	// GLContextErrorFailed wraps GST_GL_CONTEXT_ERROR_FAILED
+	// GLContextErrorFailed wraps GL_CONTEXT_ERROR_FAILED
 	//
 	// Failed for an unspecified reason
 	GLContextErrorFailed GLContextError = 0
-	// GLContextErrorWrongConfig wraps GST_GL_CONTEXT_ERROR_WRONG_CONFIG
+	// GLContextErrorWrongConfig wraps GL_CONTEXT_ERROR_WRONG_CONFIG
 	//
 	// The configuration requested is not correct
 	GLContextErrorWrongConfig GLContextError = 1
-	// GLContextErrorWrongApi wraps GST_GL_CONTEXT_ERROR_WRONG_API
+	// GLContextErrorWrongApi wraps GL_CONTEXT_ERROR_WRONG_API
 	//
 	// The OpenGL API requested is not correct
 	GLContextErrorWrongApi GLContextError = 2
-	// GLContextErrorOldLibs wraps GST_GL_CONTEXT_ERROR_OLD_LIBS
+	// GLContextErrorOldLibs wraps GL_CONTEXT_ERROR_OLD_LIBS
 	//
 	// The OpenGL libraries are too old
 	GLContextErrorOldLibs GLContextError = 3
-	// GLContextErrorCreateContext wraps GST_GL_CONTEXT_ERROR_CREATE_CONTEXT
+	// GLContextErrorCreateContext wraps GL_CONTEXT_ERROR_CREATE_CONTEXT
 	//
 	// glXCreateContext (or similar) failed
 	GLContextErrorCreateContext GLContextError = 4
-	// GLContextErrorResourceUnavailable wraps GST_GL_CONTEXT_ERROR_RESOURCE_UNAVAILABLE
+	// GLContextErrorResourceUnavailable wraps GL_CONTEXT_ERROR_RESOURCE_UNAVAILABLE
 	//
 	// A resource is not available
 	GLContextErrorResourceUnavailable GLContextError = 5
@@ -528,85 +503,85 @@ func GLContextErrorQuark() glib.Quark {
 type GLFormat C.int
 
 const (
-	// GLLuminance wraps GST_GL_LUMINANCE
+	// GLLuminance wraps GL_LUMINANCE
 	//
 	// Single component replicated across R, G, and B textures
 	//                    components
 	GLLuminance GLFormat = 6409
-	// GLAlpha wraps GST_GL_ALPHA
+	// GLAlpha wraps GL_ALPHA
 	//
 	// Single component stored in the A texture component
 	GLAlpha GLFormat = 6406
-	// GLLuminanceAlpha wraps GST_GL_LUMINANCE_ALPHA
+	// GLLuminanceAlpha wraps GL_LUMINANCE_ALPHA
 	//
 	// Combination of #GST_GL_LUMINANCE and #GST_GL_ALPHA
 	GLLuminanceAlpha GLFormat = 6410
-	// GLRed wraps GST_GL_RED
+	// GLRed wraps GL_RED
 	//
 	// Single component stored in the R texture component
 	GLRed GLFormat = 6403
-	// GLR8 wraps GST_GL_R8
+	// GLR8 wraps GL_R8
 	//
 	// Single 8-bit component stored in the R texture component
 	GLR8 GLFormat = 33321
-	// GLRg wraps GST_GL_RG
+	// GLRg wraps GL_RG
 	//
 	// Two components stored in the R and G texture components
 	GLRg GLFormat = 33319
-	// GLRg8 wraps GST_GL_RG8
+	// GLRg8 wraps GL_RG8
 	//
 	// Two 8-bit components stored in the R and G texture components
 	GLRg8 GLFormat = 33323
-	// GLRGB wraps GST_GL_RGB
+	// GLRGB wraps GL_RGB
 	//
 	// Three components stored in the R, G, and B texture components
 	GLRGB GLFormat = 6407
-	// GLRGB8 wraps GST_GL_RGB8
+	// GLRGB8 wraps GL_RGB8
 	//
 	// Three 8-bit components stored in the R, G, and B
 	//               texture components
 	GLRGB8 GLFormat = 32849
-	// GLRGB565 wraps GST_GL_RGB565
+	// GLRGB565 wraps GL_RGB565
 	//
 	// Three components of bit depth 5, 6 and 5 stored in the R, G,
 	//                 and B texture components respectively.
 	GLRGB565 GLFormat = 36194
-	// GLRGB16 wraps GST_GL_RGB16
+	// GLRGB16 wraps GL_RGB16
 	//
 	// Three 16-bit components stored in the R, G, and B
 	//               texture components
 	GLRGB16 GLFormat = 32852
-	// GLRGBA wraps GST_GL_RGBA
+	// GLRGBA wraps GL_RGBA
 	//
 	// Four components stored in the R, G, B, and A texture
 	//               components respectively.
 	GLRGBA GLFormat = 6408
-	// GLRGBA8 wraps GST_GL_RGBA8
+	// GLRGBA8 wraps GL_RGBA8
 	//
 	// Four 8-bit components stored in the R, G, B, and A texture
 	//                components respectively.
 	GLRGBA8 GLFormat = 32856
-	// GLRGBA16 wraps GST_GL_RGBA16
+	// GLRGBA16 wraps GL_RGBA16
 	//
 	// Four 16-bit components stored in the R, G, B, and A texture
 	//                components respectively.
 	GLRGBA16 GLFormat = 32859
-	// GLDepthComponent16 wraps GST_GL_DEPTH_COMPONENT16
+	// GLDepthComponent16 wraps GL_DEPTH_COMPONENT16
 	//
 	// A single 16-bit component for depth information.
 	GLDepthComponent16 GLFormat = 33189
-	// GLDepth24Stencil8 wraps GST_GL_DEPTH24_STENCIL8
+	// GLDepth24Stencil8 wraps GL_DEPTH24_STENCIL8
 	//
 	// A 24-bit component for depth information and
 	//                           a 8-bit component for stencil informat.
 	GLDepth24Stencil8 GLFormat = 35056
-	// GLRGB10A2 wraps GST_GL_RGB10_A2
+	// GLRGB10A2 wraps GL_RGB10_A2
 	GLRGB10A2 GLFormat = 32857
-	// GLR16 wraps GST_GL_R16
+	// GLR16 wraps GL_R16
 	//
 	// Single 16-bit component stored in the R texture component
 	GLR16 GLFormat = 33322
-	// GLRg16 wraps GST_GL_RG16
+	// GLRg16 wraps GL_RG16
 	//
 	// Two 16-bit components stored in the R and G texture components
 	GLRg16 GLFormat = 33324
@@ -649,39 +624,6 @@ func (e GLFormat) String() string {
 		case GLRg8: return "GLRg8"
 		default: return fmt.Sprintf("GLFormat(%d)", e)
 	}
-}
-
-// GLFormatFromVideoInfo wraps gst_gl_format_from_video_info
-// 
-// The function takes the following parameters:
-// 
-// 	- _context GLContext: a #GstGLContext 
-// 	- vinfo *gstvideo.VideoInfo: a #GstVideoInfo 
-// 	- plane uint: the plane number in @vinfo 
-// 
-// The function returns the following values:
-// 
-// 	- goret GLFormat 
-func GLFormatFromVideoInfo(_context GLContext, vinfo *gstvideo.VideoInfo, plane uint) GLFormat {
-	var carg1 *C.GstGLContext // in, none, converted
-	var carg2 *C.GstVideoInfo // in, none, converted
-	var carg3 C.guint         // in, none, casted
-	var cret  C.GstGLFormat   // return, none, casted
-
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
-	carg2 = (*C.GstVideoInfo)(gstvideo.UnsafeVideoInfoToGlibNone(vinfo))
-	carg3 = C.guint(plane)
-
-	cret = C.gst_gl_format_from_video_info(carg1, carg2, carg3)
-	runtime.KeepAlive(_context)
-	runtime.KeepAlive(vinfo)
-	runtime.KeepAlive(plane)
-
-	var goret GLFormat
-
-	goret = GLFormat(cret)
-
-	return goret
 }
 
 // GLFormatIsSupported wraps gst_gl_format_is_supported
@@ -805,15 +747,15 @@ func GLFormatTypeNBytes(format uint, typ uint) uint {
 type GLQueryType C.int
 
 const (
-	// GLQueryNone wraps GST_GL_QUERY_NONE
+	// GLQueryNone wraps GL_QUERY_NONE
 	//
 	// no query
 	GLQueryNone GLQueryType = 0
-	// GLQueryTimeElapsed wraps GST_GL_QUERY_TIME_ELAPSED
+	// GLQueryTimeElapsed wraps GL_QUERY_TIME_ELAPSED
 	//
 	// query the time elapsed
 	GLQueryTimeElapsed GLQueryType = 1
-	// GLQueryTimestamp wraps GST_GL_QUERY_TIMESTAMP
+	// GLQueryTimestamp wraps GL_QUERY_TIMESTAMP
 	//
 	// query the current time
 	GLQueryTimestamp GLQueryType = 2
@@ -848,15 +790,15 @@ func (e GLQueryType) String() string {
 type GLSLError C.int
 
 const (
-	// GlslErrorCompile wraps GST_GLSL_ERROR_COMPILE
+	// GlslErrorCompile wraps GLSL_ERROR_COMPILE
 	//
 	// Compilation error occurred
 	GlslErrorCompile GLSLError = 0
-	// GlslErrorLink wraps GST_GLSL_ERROR_LINK
+	// GlslErrorLink wraps GLSL_ERROR_LINK
 	//
 	// Link error occurred
 	GlslErrorLink GLSLError = 1
-	// GlslErrorProgram wraps GST_GLSL_ERROR_PROGRAM
+	// GlslErrorProgram wraps GLSL_ERROR_PROGRAM
 	//
 	// General program error occurred
 	GlslErrorProgram GLSLError = 2
@@ -908,71 +850,71 @@ func GLSLErrorQuark() glib.Quark {
 type GLSLVersion C.int
 
 const (
-	// GlslVersionNone wraps GST_GLSL_VERSION_NONE
+	// GlslVersionNone wraps GLSL_VERSION_NONE
 	//
 	// no version
 	GlslVersionNone GLSLVersion = 0
-	// GlslVersion100 wraps GST_GLSL_VERSION_100
+	// GlslVersion100 wraps GLSL_VERSION_100
 	//
 	// version 100 (only valid for ES)
 	GlslVersion100 GLSLVersion = 100
-	// GlslVersion110 wraps GST_GLSL_VERSION_110
+	// GlslVersion110 wraps GLSL_VERSION_110
 	//
 	// version 110 (only valid for compatibility desktop GL)
 	GlslVersion110 GLSLVersion = 110
-	// GlslVersion120 wraps GST_GLSL_VERSION_120
+	// GlslVersion120 wraps GLSL_VERSION_120
 	//
 	// version 120 (only valid for compatibility desktop GL)
 	GlslVersion120 GLSLVersion = 120
-	// GlslVersion130 wraps GST_GLSL_VERSION_130
+	// GlslVersion130 wraps GLSL_VERSION_130
 	//
 	// version 130 (only valid for compatibility desktop GL)
 	GlslVersion130 GLSLVersion = 130
-	// GlslVersion140 wraps GST_GLSL_VERSION_140
+	// GlslVersion140 wraps GLSL_VERSION_140
 	//
 	// version 140 (only valid for compatibility desktop GL)
 	GlslVersion140 GLSLVersion = 140
-	// GlslVersion150 wraps GST_GLSL_VERSION_150
+	// GlslVersion150 wraps GLSL_VERSION_150
 	//
 	// version 150 (valid for compatibility/core desktop GL)
 	GlslVersion150 GLSLVersion = 150
-	// GlslVersion300 wraps GST_GLSL_VERSION_300
+	// GlslVersion300 wraps GLSL_VERSION_300
 	//
 	// version 300 (only valid for ES)
 	GlslVersion300 GLSLVersion = 300
-	// GlslVersion310 wraps GST_GLSL_VERSION_310
+	// GlslVersion310 wraps GLSL_VERSION_310
 	//
 	// version 310 (only valid for ES)
 	GlslVersion310 GLSLVersion = 310
-	// GlslVersion320 wraps GST_GLSL_VERSION_320
+	// GlslVersion320 wraps GLSL_VERSION_320
 	//
 	// version 320 (only valid for ES)
 	GlslVersion320 GLSLVersion = 320
-	// GlslVersion330 wraps GST_GLSL_VERSION_330
+	// GlslVersion330 wraps GLSL_VERSION_330
 	//
 	// version 330 (valid for compatibility/core desktop GL)
 	GlslVersion330 GLSLVersion = 330
-	// GlslVersion400 wraps GST_GLSL_VERSION_400
+	// GlslVersion400 wraps GLSL_VERSION_400
 	//
 	// version 400 (valid for compatibility/core desktop GL)
 	GlslVersion400 GLSLVersion = 400
-	// GlslVersion410 wraps GST_GLSL_VERSION_410
+	// GlslVersion410 wraps GLSL_VERSION_410
 	//
 	// version 410 (valid for compatibility/core desktop GL)
 	GlslVersion410 GLSLVersion = 410
-	// GlslVersion420 wraps GST_GLSL_VERSION_420
+	// GlslVersion420 wraps GLSL_VERSION_420
 	//
 	// version 420 (valid for compatibility/core desktop GL)
 	GlslVersion420 GLSLVersion = 420
-	// GlslVersion430 wraps GST_GLSL_VERSION_430
+	// GlslVersion430 wraps GLSL_VERSION_430
 	//
 	// version 430 (valid for compatibility/core desktop GL)
 	GlslVersion430 GLSLVersion = 430
-	// GlslVersion440 wraps GST_GLSL_VERSION_440
+	// GlslVersion440 wraps GLSL_VERSION_440
 	//
 	// version 440 (valid for compatibility/core desktop GL)
 	GlslVersion440 GLSLVersion = 440
-	// GlslVersion450 wraps GST_GLSL_VERSION_450
+	// GlslVersion450 wraps GLSL_VERSION_450
 	//
 	// version 450 (valid for compatibility/core desktop GL)
 	GlslVersion450 GLSLVersion = 450
@@ -1145,15 +1087,15 @@ func GLSLVersionToString(version GLSLVersion) string {
 type GLStereoDownmix C.int
 
 const (
-	// GLStereoDownmixAnaglyphGreenMagentaDubois wraps GST_GL_STEREO_DOWNMIX_ANAGLYPH_GREEN_MAGENTA_DUBOIS
+	// GLStereoDownmixAnaglyphGreenMagentaDubois wraps GL_STEREO_DOWNMIX_ANAGLYPH_GREEN_MAGENTA_DUBOIS
 	//
 	// Dubois optimised Green-Magenta anaglyph
 	GLStereoDownmixAnaglyphGreenMagentaDubois GLStereoDownmix = 0
-	// GLStereoDownmixAnaglyphRedCyanDubois wraps GST_GL_STEREO_DOWNMIX_ANAGLYPH_RED_CYAN_DUBOIS
+	// GLStereoDownmixAnaglyphRedCyanDubois wraps GL_STEREO_DOWNMIX_ANAGLYPH_RED_CYAN_DUBOIS
 	//
 	// Dubois optimised Red-Cyan anaglyph
 	GLStereoDownmixAnaglyphRedCyanDubois GLStereoDownmix = 1
-	// GLStereoDownmixAnaglyphAmberBlueDubois wraps GST_GL_STEREO_DOWNMIX_ANAGLYPH_AMBER_BLUE_DUBOIS
+	// GLStereoDownmixAnaglyphAmberBlueDubois wraps GL_STEREO_DOWNMIX_ANAGLYPH_AMBER_BLUE_DUBOIS
 	//
 	// Dubois optimised Amber-Blue anaglyph
 	GLStereoDownmixAnaglyphAmberBlueDubois GLStereoDownmix = 2
@@ -1192,20 +1134,20 @@ func (e GLStereoDownmix) String() string {
 type GLTextureTarget C.int
 
 const (
-	// GLTextureTargetNone wraps GST_GL_TEXTURE_TARGET_NONE
+	// GLTextureTargetNone wraps GL_TEXTURE_TARGET_NONE
 	//
 	// no texture target
 	GLTextureTargetNone GLTextureTarget = 0
-	// GLTextureTarget2D wraps GST_GL_TEXTURE_TARGET_2D
+	// GLTextureTarget2D wraps GL_TEXTURE_TARGET_2D
 	//
 	// 2D texture target (`GL_TEXTURE_2D`)
 	GLTextureTarget2D GLTextureTarget = 1
-	// GLTextureTargetRectangle wraps GST_GL_TEXTURE_TARGET_RECTANGLE
+	// GLTextureTargetRectangle wraps GL_TEXTURE_TARGET_RECTANGLE
 	//
 	// rectangle texture target
 	//     (`GL_TEXTURE_RECTANGLE`)
 	GLTextureTargetRectangle GLTextureTarget = 2
-	// GLTextureTargetExternalOes wraps GST_GL_TEXTURE_TARGET_EXTERNAL_OES
+	// GLTextureTargetExternalOes wraps GL_TEXTURE_TARGET_EXTERNAL_OES
 	//
 	// external oes texture target
 	//     (`GL_TEXTURE_EXTERNAL_OES`)
@@ -1370,23 +1312,23 @@ func GLTextureTargetToString(target GLTextureTarget) string {
 type GLUploadReturn C.int
 
 const (
-	// GLUploadDone wraps GST_GL_UPLOAD_DONE
+	// GLUploadDone wraps GL_UPLOAD_DONE
 	//
 	// No further processing required
 	GLUploadDone GLUploadReturn = 1
-	// GLUploadError wraps GST_GL_UPLOAD_ERROR
+	// GLUploadError wraps GL_UPLOAD_ERROR
 	//
 	// An unspecified error occurred
 	GLUploadError GLUploadReturn = -1
-	// GLUploadUnsupported wraps GST_GL_UPLOAD_UNSUPPORTED
+	// GLUploadUnsupported wraps GL_UPLOAD_UNSUPPORTED
 	//
 	// The configuration is unsupported.
 	GLUploadUnsupported GLUploadReturn = -2
-	// GLUploadReconfigure wraps GST_GL_UPLOAD_RECONFIGURE
+	// GLUploadReconfigure wraps GL_UPLOAD_RECONFIGURE
 	//
 	// This element requires a reconfiguration.
 	GLUploadReconfigure GLUploadReturn = -3
-	// GLUploadUnsharedGLContext wraps GST_GL_UPLOAD_UNSHARED_GL_CONTEXT
+	// GLUploadUnsharedGLContext wraps GL_UPLOAD_UNSHARED_GL_CONTEXT
 	//
 	// private return value.
 	GLUploadUnsharedGLContext GLUploadReturn = -100
@@ -1421,15 +1363,15 @@ func (e GLUploadReturn) String() string {
 type GLWindowError C.int
 
 const (
-	// GLWindowErrorFailed wraps GST_GL_WINDOW_ERROR_FAILED
+	// GLWindowErrorFailed wraps GL_WINDOW_ERROR_FAILED
 	//
 	// failed for a unspecified reason
 	GLWindowErrorFailed GLWindowError = 0
-	// GLWindowErrorOldLibs wraps GST_GL_WINDOW_ERROR_OLD_LIBS
+	// GLWindowErrorOldLibs wraps GL_WINDOW_ERROR_OLD_LIBS
 	//
 	// the implementation is too old
 	GLWindowErrorOldLibs GLWindowError = 1
-	// GLWindowErrorResourceUnavailable wraps GST_GL_WINDOW_ERROR_RESOURCE_UNAVAILABLE
+	// GLWindowErrorResourceUnavailable wraps GL_WINDOW_ERROR_RESOURCE_UNAVAILABLE
 	//
 	// no such resource was found
 	GLWindowErrorResourceUnavailable GLWindowError = 2
@@ -1479,28 +1421,28 @@ func GLWindowErrorQuark() glib.Quark {
 type GLAPI C.gint
 
 const (
-	// GLApiNone wraps GST_GL_API_NONE
+	// GLApiNone wraps GL_API_NONE
 	//
 	// no API
 	GLApiNone GLAPI = 0
-	// GLApiOpengl wraps GST_GL_API_OPENGL
+	// GLApiOpengl wraps GL_API_OPENGL
 	//
 	// Desktop OpenGL up to and including 3.1.  The
 	//                    compatibility profile when the OpenGL version is &gt;= 3.2
 	GLApiOpengl GLAPI = 1
-	// GLApiOpengl3 wraps GST_GL_API_OPENGL3
+	// GLApiOpengl3 wraps GL_API_OPENGL3
 	//
 	// Desktop OpenGL &gt;= 3.2 core profile
 	GLApiOpengl3 GLAPI = 2
-	// GLApiGles1 wraps GST_GL_API_GLES1
+	// GLApiGles1 wraps GL_API_GLES1
 	//
 	// OpenGL ES 1.x
 	GLApiGles1 GLAPI = 32768
-	// GLApiGles2 wraps GST_GL_API_GLES2
+	// GLApiGles2 wraps GL_API_GLES2
 	//
 	// OpenGL ES 2.x and 3.x
 	GLApiGles2 GLAPI = 65536
-	// GLApiAny wraps GST_GL_API_ANY
+	// GLApiAny wraps GL_API_ANY
 	//
 	// Any OpenGL API
 	GLApiAny GLAPI = -1
@@ -1607,12 +1549,12 @@ func GLAPIToString(api GLAPI) string {
 type GLBaseMemoryTransfer C.gint
 
 const (
-	// GLBaseMemoryTransferNeedDownload wraps GST_GL_BASE_MEMORY_TRANSFER_NEED_DOWNLOAD
+	// GLBaseMemoryTransferNeedDownload wraps GL_BASE_MEMORY_TRANSFER_NEED_DOWNLOAD
 	//
 	// the texture needs downloading
 	//                                             to the data pointer
 	GLBaseMemoryTransferNeedDownload GLBaseMemoryTransfer = 1048576
-	// GLBaseMemoryTransferNeedUpload wraps GST_GL_BASE_MEMORY_TRANSFER_NEED_UPLOAD
+	// GLBaseMemoryTransferNeedUpload wraps GL_BASE_MEMORY_TRANSFER_NEED_UPLOAD
 	//
 	// the data pointer needs uploading
 	//                                             to the texture
@@ -1656,19 +1598,19 @@ func (f GLBaseMemoryTransfer) String() string {
 type GLConfigSurfaceType C.gint
 
 const (
-	// GLConfigSurfaceTypeNone wraps GST_GL_CONFIG_SURFACE_TYPE_NONE
+	// GLConfigSurfaceTypeNone wraps GL_CONFIG_SURFACE_TYPE_NONE
 	//
 	// none
 	GLConfigSurfaceTypeNone GLConfigSurfaceType = 0
-	// GLConfigSurfaceTypeWindow wraps GST_GL_CONFIG_SURFACE_TYPE_WINDOW
+	// GLConfigSurfaceTypeWindow wraps GL_CONFIG_SURFACE_TYPE_WINDOW
 	//
 	// window
 	GLConfigSurfaceTypeWindow GLConfigSurfaceType = 1
-	// GLConfigSurfaceTypePbuffer wraps GST_GL_CONFIG_SURFACE_TYPE_PBUFFER
+	// GLConfigSurfaceTypePbuffer wraps GL_CONFIG_SURFACE_TYPE_PBUFFER
 	//
 	// pbuffer
 	GLConfigSurfaceTypePbuffer GLConfigSurfaceType = 2
-	// GLConfigSurfaceTypePixmap wraps GST_GL_CONFIG_SURFACE_TYPE_PIXMAP
+	// GLConfigSurfaceTypePixmap wraps GL_CONFIG_SURFACE_TYPE_PIXMAP
 	//
 	// pixmap
 	GLConfigSurfaceTypePixmap GLConfigSurfaceType = 4
@@ -1744,64 +1686,64 @@ func GLConfigSurfaceTypeToString(surfaceType GLConfigSurfaceType) string {
 type GLDisplayType C.gint
 
 const (
-	// GLDisplayTypeNone wraps GST_GL_DISPLAY_TYPE_NONE
+	// GLDisplayTypeNone wraps GL_DISPLAY_TYPE_NONE
 	//
 	// no display type
 	GLDisplayTypeNone GLDisplayType = 0
-	// GLDisplayTypeX11 wraps GST_GL_DISPLAY_TYPE_X11
+	// GLDisplayTypeX11 wraps GL_DISPLAY_TYPE_X11
 	//
 	// X11 display
 	GLDisplayTypeX11 GLDisplayType = 1
-	// GLDisplayTypeWayland wraps GST_GL_DISPLAY_TYPE_WAYLAND
+	// GLDisplayTypeWayland wraps GL_DISPLAY_TYPE_WAYLAND
 	//
 	// Wayland display
 	GLDisplayTypeWayland GLDisplayType = 2
-	// GLDisplayTypeCocoa wraps GST_GL_DISPLAY_TYPE_COCOA
+	// GLDisplayTypeCocoa wraps GL_DISPLAY_TYPE_COCOA
 	//
 	// Cocoa display
 	GLDisplayTypeCocoa GLDisplayType = 4
-	// GLDisplayTypeWin32 wraps GST_GL_DISPLAY_TYPE_WIN32
+	// GLDisplayTypeWin32 wraps GL_DISPLAY_TYPE_WIN32
 	//
 	// Win32 display
 	GLDisplayTypeWin32 GLDisplayType = 8
-	// GLDisplayTypeDispmanx wraps GST_GL_DISPLAY_TYPE_DISPMANX
+	// GLDisplayTypeDispmanx wraps GL_DISPLAY_TYPE_DISPMANX
 	//
 	// Dispmanx display
 	GLDisplayTypeDispmanx GLDisplayType = 16
-	// GLDisplayTypeEgl wraps GST_GL_DISPLAY_TYPE_EGL
+	// GLDisplayTypeEgl wraps GL_DISPLAY_TYPE_EGL
 	//
 	// EGL display
 	GLDisplayTypeEgl GLDisplayType = 32
-	// GLDisplayTypeVivFb wraps GST_GL_DISPLAY_TYPE_VIV_FB
+	// GLDisplayTypeVivFb wraps GL_DISPLAY_TYPE_VIV_FB
 	//
 	// Vivante Framebuffer display
 	GLDisplayTypeVivFb GLDisplayType = 64
-	// GLDisplayTypeGbm wraps GST_GL_DISPLAY_TYPE_GBM
+	// GLDisplayTypeGbm wraps GL_DISPLAY_TYPE_GBM
 	//
 	// Mesa3D GBM display
 	GLDisplayTypeGbm GLDisplayType = 128
-	// GLDisplayTypeEglDevice wraps GST_GL_DISPLAY_TYPE_EGL_DEVICE
+	// GLDisplayTypeEglDevice wraps GL_DISPLAY_TYPE_EGL_DEVICE
 	//
 	// EGLDevice display.
 	GLDisplayTypeEglDevice GLDisplayType = 256
-	// GLDisplayTypeEagl wraps GST_GL_DISPLAY_TYPE_EAGL
+	// GLDisplayTypeEagl wraps GL_DISPLAY_TYPE_EAGL
 	//
 	// EAGL display.
 	GLDisplayTypeEagl GLDisplayType = 512
-	// GLDisplayTypeWinrt wraps GST_GL_DISPLAY_TYPE_WINRT
+	// GLDisplayTypeWinrt wraps GL_DISPLAY_TYPE_WINRT
 	//
 	// WinRT display.
 	GLDisplayTypeWinrt GLDisplayType = 1024
-	// GLDisplayTypeAndroid wraps GST_GL_DISPLAY_TYPE_ANDROID
+	// GLDisplayTypeAndroid wraps GL_DISPLAY_TYPE_ANDROID
 	//
 	// Android display.
 	GLDisplayTypeAndroid GLDisplayType = 2048
-	// GLDisplayTypeEglSurfaceless wraps GST_GL_DISPLAY_TYPE_EGL_SURFACELESS
+	// GLDisplayTypeEglSurfaceless wraps GL_DISPLAY_TYPE_EGL_SURFACELESS
 	//
 	// Mesa3D surfaceless display using the EGL_PLATFORM_SURFACELESS_MESA
 	// extension.
 	GLDisplayTypeEglSurfaceless GLDisplayType = 4096
-	// GLDisplayTypeAny wraps GST_GL_DISPLAY_TYPE_ANY
+	// GLDisplayTypeAny wraps GL_DISPLAY_TYPE_ANY
 	//
 	// any display type
 	GLDisplayTypeAny GLDisplayType = -1
@@ -1883,15 +1825,15 @@ func (f GLDisplayType) String() string {
 type GLDRMFormatFlags C.gint
 
 const (
-	// GLDRMFormatIncludeExternal wraps GST_GL_DRM_FORMAT_INCLUDE_EXTERNAL
+	// GLDRMFormatIncludeExternal wraps GL_DRM_FORMAT_INCLUDE_EXTERNAL
 	//
 	// include external-only formats
 	GLDRMFormatIncludeExternal GLDRMFormatFlags = 1
-	// GLDRMFormatLinearOnly wraps GST_GL_DRM_FORMAT_LINEAR_ONLY
+	// GLDRMFormatLinearOnly wraps GL_DRM_FORMAT_LINEAR_ONLY
 	//
 	// only include formats with linear modifier
 	GLDRMFormatLinearOnly GLDRMFormatFlags = 2
-	// GLDRMFormatIncludeEmulated wraps GST_GL_DRM_FORMAT_INCLUDE_EMULATED
+	// GLDRMFormatIncludeEmulated wraps GL_DRM_FORMAT_INCLUDE_EMULATED
 	//
 	// include emulated formats
 	GLDRMFormatIncludeEmulated GLDRMFormatFlags = 4
@@ -1937,32 +1879,32 @@ func (f GLDRMFormatFlags) String() string {
 type GLPlatform C.gint
 
 const (
-	// GLPlatformNone wraps GST_GL_PLATFORM_NONE
+	// GLPlatformNone wraps GL_PLATFORM_NONE
 	//
 	// no platform
 	GLPlatformNone GLPlatform = 0
-	// GLPlatformEgl wraps GST_GL_PLATFORM_EGL
+	// GLPlatformEgl wraps GL_PLATFORM_EGL
 	//
 	// the EGL platform used primarily with the X11, wayland
 	//                      and android window systems as well as on embedded Linux
 	GLPlatformEgl GLPlatform = 1
-	// GLPlatformGLX wraps GST_GL_PLATFORM_GLX
+	// GLPlatformGLX wraps GL_PLATFORM_GLX
 	//
 	// the GLX platform used primarily with the X11 window system
 	GLPlatformGLX GLPlatform = 2
-	// GLPlatformWgl wraps GST_GL_PLATFORM_WGL
+	// GLPlatformWgl wraps GL_PLATFORM_WGL
 	//
 	// the WGL platform used primarily on Windows
 	GLPlatformWgl GLPlatform = 4
-	// GLPlatformCgl wraps GST_GL_PLATFORM_CGL
+	// GLPlatformCgl wraps GL_PLATFORM_CGL
 	//
 	// the CGL platform used primarily on OS X
 	GLPlatformCgl GLPlatform = 8
-	// GLPlatformEagl wraps GST_GL_PLATFORM_EAGL
+	// GLPlatformEagl wraps GL_PLATFORM_EAGL
 	//
 	// the EAGL platform used primarily on iOS
 	GLPlatformEagl GLPlatform = 16
-	// GLPlatformAny wraps GST_GL_PLATFORM_ANY
+	// GLPlatformAny wraps GL_PLATFORM_ANY
 	//
 	// any OpenGL platform
 	GLPlatformAny GLPlatform = -1
@@ -2074,23 +2016,23 @@ func GLPlatformToString(platform GLPlatform) string {
 type GLSLProfile C.gint
 
 const (
-	// GlslProfileNone wraps GST_GLSL_PROFILE_NONE
+	// GlslProfileNone wraps GLSL_PROFILE_NONE
 	//
 	// no profile supported/available
 	GlslProfileNone GLSLProfile = 0
-	// GlslProfileES wraps GST_GLSL_PROFILE_ES
+	// GlslProfileES wraps GLSL_PROFILE_ES
 	//
 	// OpenGL|ES profile
 	GlslProfileES GLSLProfile = 1
-	// GlslProfileCore wraps GST_GLSL_PROFILE_CORE
+	// GlslProfileCore wraps GLSL_PROFILE_CORE
 	//
 	// OpenGL core profile
 	GlslProfileCore GLSLProfile = 2
-	// GlslProfileCompatibility wraps GST_GLSL_PROFILE_COMPATIBILITY
+	// GlslProfileCompatibility wraps GLSL_PROFILE_COMPATIBILITY
 	//
 	// OpenGL compatibility profile
 	GlslProfileCompatibility GLSLProfile = 4
-	// GlslProfileAny wraps GST_GLSL_PROFILE_ANY
+	// GlslProfileAny wraps GLSL_PROFILE_ANY
 	//
 	// any OpenGL/OpenGL|ES profile
 	GlslProfileAny GLSLProfile = -1
@@ -2454,74 +2396,6 @@ func GLElementPropagateDisplayContext(element gst.Element, display GLDisplay) {
 	runtime.KeepAlive(display)
 }
 
-// GLGetPlaneDataSize wraps gst_gl_get_plane_data_size
-// 
-// The function takes the following parameters:
-// 
-// 	- info *gstvideo.VideoInfo: a #GstVideoInfo 
-// 	- align *gstvideo.VideoAlignment: a #GstVideoAlignment or %NULL 
-// 	- plane uint: plane number in @info to retrieve the data size of 
-// 
-// The function returns the following values:
-// 
-// 	- goret uint 
-//
-// Retrieve the size in bytes of a video plane of data with a certain alignment
-func GLGetPlaneDataSize(info *gstvideo.VideoInfo, align *gstvideo.VideoAlignment, plane uint) uint {
-	var carg1 *C.GstVideoInfo      // in, none, converted
-	var carg2 *C.GstVideoAlignment // in, none, converted
-	var carg3 C.guint              // in, none, casted
-	var cret  C.gsize              // return, none, casted
-
-	carg1 = (*C.GstVideoInfo)(gstvideo.UnsafeVideoInfoToGlibNone(info))
-	carg2 = (*C.GstVideoAlignment)(gstvideo.UnsafeVideoAlignmentToGlibNone(align))
-	carg3 = C.guint(plane)
-
-	cret = C.gst_gl_get_plane_data_size(carg1, carg2, carg3)
-	runtime.KeepAlive(info)
-	runtime.KeepAlive(align)
-	runtime.KeepAlive(plane)
-
-	var goret uint
-
-	goret = uint(cret)
-
-	return goret
-}
-
-// GLGetPlaneStart wraps gst_gl_get_plane_start
-// 
-// The function takes the following parameters:
-// 
-// 	- info *gstvideo.VideoInfo: a #GstVideoInfo 
-// 	- valign *gstvideo.VideoAlignment: a #GstVideoAlignment or %NULL 
-// 	- plane uint: plane number in @info to retrieve the data size of 
-// 
-// The function returns the following values:
-// 
-// 	- goret uint 
-func GLGetPlaneStart(info *gstvideo.VideoInfo, valign *gstvideo.VideoAlignment, plane uint) uint {
-	var carg1 *C.GstVideoInfo      // in, none, converted
-	var carg2 *C.GstVideoAlignment // in, none, converted
-	var carg3 C.guint              // in, none, casted
-	var cret  C.gsize              // return, none, casted
-
-	carg1 = (*C.GstVideoInfo)(gstvideo.UnsafeVideoInfoToGlibNone(info))
-	carg2 = (*C.GstVideoAlignment)(gstvideo.UnsafeVideoAlignmentToGlibNone(valign))
-	carg3 = C.guint(plane)
-
-	cret = C.gst_gl_get_plane_start(carg1, carg2, carg3)
-	runtime.KeepAlive(info)
-	runtime.KeepAlive(valign)
-	runtime.KeepAlive(plane)
-
-	var goret uint
-
-	goret = uint(cret)
-
-	return goret
-}
-
 // GLHandleContextQuery wraps gst_gl_handle_context_query
 // 
 // The function takes the following parameters:
@@ -2614,29 +2488,6 @@ func GLHandleSetContext(element gst.Element, _context *gst.Context) (GLDisplay, 
 	}
 
 	return display, otherContext, goret
-}
-
-// GLSetAffineTransformationMetaFromNdc wraps gst_gl_set_affine_transformation_meta_from_ndc
-// 
-// The function takes the following parameters:
-// 
-// 	- meta *gstvideo.VideoAffineTransformationMeta: a #GstVideoAffineTransformationMeta 
-// 	- matrix [16]float32: a 4x4 matrix 
-//
-// Set the 4x4 affine transformation matrix stored in @meta from the
-// NDC coordinates in @matrix.
-func GLSetAffineTransformationMetaFromNdc(meta *gstvideo.VideoAffineTransformationMeta, matrix [16]float32) {
-	var carg1 *C.GstVideoAffineTransformationMeta // in, none, converted
-	var carg2 *C.gfloat                           // in, transfer: none, C Pointers: 1, Name: array[gfloat], array (inner: *typesystem.CastablePrimitive, fixed-size: 16)
-
-	carg1 = (*C.GstVideoAffineTransformationMeta)(gstvideo.UnsafeVideoAffineTransformationMetaToGlibNone(meta))
-	_ = matrix
-	_ = carg2
-	panic("unimplemented conversion of [16]float32 (const gfloat*)")
-
-	C.gst_gl_set_affine_transformation_meta_from_ndc(carg1, carg2)
-	runtime.KeepAlive(meta)
-	runtime.KeepAlive(matrix)
 }
 
 // GLSizedGLFormatFromGLFormatType wraps gst_gl_sized_gl_format_from_gl_format_type
@@ -3495,377 +3346,6 @@ func RegisterGLBaseMemoryAllocatorSubClass[InstanceT GLBaseMemoryAllocator](
 		UnsafeApplyGLBaseMemoryAllocatorOverrides,
 		func (obj *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapGLBaseMemoryAllocator(obj)
-		},
-		interfaceInits...,
-	)
-}
-
-// GLBaseMixerInstance is the instance type used by all types extending GstGLBaseMixer. It is used internally by the bindings. Users should use the interface [GLBaseMixer] instead.
-type GLBaseMixerInstance struct {
-	_ [0]func() // equal guard
-	gstvideo.VideoAggregatorInstance
-}
-
-var _ GLBaseMixer = (*GLBaseMixerInstance)(nil)
-
-// GLBaseMixer wraps GstGLBaseMixer
-//
-// #GstGLBaseMixer handles the nitty gritty details of retrieving an OpenGL
-// context.  It provides some virtual methods to know when the OpenGL context
-// is available and is not available within this element.
-type GLBaseMixer interface {
-	gstvideo.VideoAggregator
-	upcastToGstGLBaseMixer() *GLBaseMixerInstance
-
-	// GetGLContext wraps gst_gl_base_mixer_get_gl_context
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret GLContext (nullable) 
-	GetGLContext() GLContext
-
-	// chain up virtual methods:
-
-	// ParentGLStart calls the default implementations of the gl_start virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// called in the GL thread to setup the element GL state.
-	ParentGLStart() bool
-	// ParentGLStop calls the default implementations of the gl_stop virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	//
-	// called in the GL thread to setup the element GL state.
-	ParentGLStop()
-}
-
-func unsafeWrapGLBaseMixer(base *gobject.ObjectInstance) *GLBaseMixerInstance {
-	return &GLBaseMixerInstance{
-		VideoAggregatorInstance: gstvideo.VideoAggregatorInstance{
-			AggregatorInstance: gstbase.AggregatorInstance{
-				ElementInstance: gst.ElementInstance{
-					ObjectInstance: gst.ObjectInstance{
-						InitiallyUnownedInstance: gobject.InitiallyUnownedInstance{
-							ObjectInstance: *base,
-						},
-					},
-				},
-			},
-		},
-	}
-}
-
-func init() {
-	gobject.RegisterObjectCasting(
-		TypeGLBaseMixer,
-		func (inst *gobject.ObjectInstance) gobject.Object {
-			return unsafeWrapGLBaseMixer(inst)
-		},
-	)
-}
-
-func marshalGLBaseMixerInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapGLBaseMixer(gobject.ValueFromNative(p).Object()), nil
-}
-
-// UnsafeGLBaseMixerFromGlibNone is used to convert raw GstGLBaseMixer pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
-func UnsafeGLBaseMixerFromGlibNone(c unsafe.Pointer) GLBaseMixer {
-	return gobject.UnsafeObjectFromGlibNone(c).(GLBaseMixer)
-}
-
-// UnsafeGLBaseMixerFromGlibFull is used to convert raw GstGLBaseMixer pointers to go while attaching a finalizer. This is used by the bindings internally.
-func UnsafeGLBaseMixerFromGlibFull(c unsafe.Pointer) GLBaseMixer {
-	return gobject.UnsafeObjectFromGlibFull(c).(GLBaseMixer)
-}
-
-// UnsafeGLBaseMixerFromGlibBorrow is used to convert raw GstGLBaseMixer pointers to go without touching any references. This is used by the bindings internally.
-func UnsafeGLBaseMixerFromGlibBorrow(c unsafe.Pointer) GLBaseMixer {
-	return gobject.UnsafeObjectFromGlibBorrow(c).(GLBaseMixer)
-}
-
-func (g *GLBaseMixerInstance) upcastToGstGLBaseMixer() *GLBaseMixerInstance {
-	return g
-}
-
-// UnsafeGLBaseMixerToGlibNone is used to convert the instance to it's C value GstGLBaseMixer. This is used by the bindings internally.
-func UnsafeGLBaseMixerToGlibNone(c GLBaseMixer) unsafe.Pointer {
-	return gobject.UnsafeObjectToGlibNone(c)
-}
-
-// UnsafeGLBaseMixerToGlibFull is used to convert the instance to it's C value GstGLBaseMixer, while removeing the finalizer. This is used by the bindings internally.
-func UnsafeGLBaseMixerToGlibFull(c GLBaseMixer) unsafe.Pointer {
-	return gobject.UnsafeObjectToGlibFull(c)
-}
-
-// GetGLContext wraps gst_gl_base_mixer_get_gl_context
-// 
-// The function returns the following values:
-// 
-// 	- goret GLContext (nullable) 
-func (mix *GLBaseMixerInstance) GetGLContext() GLContext {
-	var carg0 *C.GstGLBaseMixer // in, none, converted
-	var cret  *C.GstGLContext   // return, full, converted, nullable
-
-	carg0 = (*C.GstGLBaseMixer)(UnsafeGLBaseMixerToGlibNone(mix))
-
-	cret = C.gst_gl_base_mixer_get_gl_context(carg0)
-	runtime.KeepAlive(mix)
-
-	var goret GLContext
-
-	if cret != nil {
-		goret = UnsafeGLContextFromGlibFull(unsafe.Pointer(cret))
-	}
-
-	return goret
-}
-
-// GLBaseMixerOverrides is the struct used to override the default implementation of virtual methods.
-// it is generic over the extending instance type.
-type GLBaseMixerOverrides[Instance GLBaseMixer] struct {
-	// gstvideo.VideoAggregatorOverrides allows you to override virtual methods from the parent class gstvideo.VideoAggregator
-	gstvideo.VideoAggregatorOverrides[Instance]
-
-	// // GLStart allows you to override the implementation of the virtual method gl_start.
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// called in the GL thread to setup the element GL state.
-	GLStart func(Instance) bool
-	// // GLStop allows you to override the implementation of the virtual method gl_stop.
-	//
-	// called in the GL thread to setup the element GL state.
-	GLStop func(Instance)
-}
-
-// UnsafeApplyGLBaseMixerOverrides applies the overrides to init the gclass by setting the trampoline functions.
-// This is used by the bindings internally and only exported for visibility to other bindings code.
-func UnsafeApplyGLBaseMixerOverrides[Instance GLBaseMixer](gclass unsafe.Pointer, overrides GLBaseMixerOverrides[Instance]) {
-	gstvideo.UnsafeApplyVideoAggregatorOverrides(gclass, overrides.VideoAggregatorOverrides)
-
-	pclass := (*C.GstGLBaseMixerClass)(gclass)
-
-	if overrides.GLStart != nil {
-		pclass.gl_start = (*[0]byte)(C._gotk4_gstgl1_GLBaseMixer_gl_start)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLBaseMixer_gl_start",
-			func(carg0 *C.GstGLBaseMixer) (cret C.gboolean) {
-				var mix   Instance // go GstGLBaseMixer subclass
-				var goret bool     // return
-
-				mix = UnsafeGLBaseMixerFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-
-				goret = overrides.GLStart(mix)
-
-				if goret {
-					cret = C.TRUE
-				}
-
-				return cret
-			},
-		)
-	}
-
-	if overrides.GLStop != nil {
-		pclass.gl_stop = (*[0]byte)(C._gotk4_gstgl1_GLBaseMixer_gl_stop)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLBaseMixer_gl_stop",
-			func(carg0 *C.GstGLBaseMixer) {
-				var mix Instance // go GstGLBaseMixer subclass
-
-				mix = UnsafeGLBaseMixerFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-
-				overrides.GLStop(mix)
-			},
-		)
-	}
-}
-
-// ParentGLStart calls the default implementations of the gl_start virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// called in the GL thread to setup the element GL state.
-func (mix *GLBaseMixerInstance) ParentGLStart() bool {
-	var carg0 *C.GstGLBaseMixer
-	var cret  C.gboolean // return
-
-	parentclass := (*C.GstGLBaseMixerClass)(classdata.PeekParentClass(UnsafeGLBaseMixerToGlibNone(mix)))
-
-	carg0 = (*C.GstGLBaseMixer)(UnsafeGLBaseMixerToGlibNone(mix))
-
-	cret = C._gotk4_gstgl1_GLBaseMixer_virtual_gl_start(unsafe.Pointer(parentclass.gl_start), carg0)
-	runtime.KeepAlive(mix)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
-// ParentGLStop calls the default implementations of the gl_stop virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-//
-// called in the GL thread to setup the element GL state.
-func (mix *GLBaseMixerInstance) ParentGLStop() {
-	var carg0 *C.GstGLBaseMixer
-
-	parentclass := (*C.GstGLBaseMixerClass)(classdata.PeekParentClass(UnsafeGLBaseMixerToGlibNone(mix)))
-
-	carg0 = (*C.GstGLBaseMixer)(UnsafeGLBaseMixerToGlibNone(mix))
-
-	C._gotk4_gstgl1_GLBaseMixer_virtual_gl_stop(unsafe.Pointer(parentclass.gl_stop), carg0)
-	runtime.KeepAlive(mix)
-}
-
-// RegisterGLBaseMixerSubClass is used to register a go subclass of GstGLBaseMixer. For this to work safely please implement the
-// virtual methods required by the implementation.
-func RegisterGLBaseMixerSubClass[InstanceT GLBaseMixer](
-		name string,
-		classInit func(class *GLBaseMixerClass),
-		constructor func() InstanceT,
-		overrides GLBaseMixerOverrides[InstanceT],
-		signals map[string]gobject.SignalDefinition,
-		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
-) gobject.Type {
-	return gobject.UnsafeRegisterSubClass(
-		name,
-		classInit,
-		constructor,
-		overrides,
-		signals,
-		TypeGLBaseMixer,
-		UnsafeGLBaseMixerClassFromGlibBorrow,
-		UnsafeApplyGLBaseMixerOverrides,
-		func (obj *gobject.ObjectInstance) gobject.Object {
-			return unsafeWrapGLBaseMixer(obj)
-		},
-		interfaceInits...,
-	)
-}
-
-// GLBaseMixerPadInstance is the instance type used by all types extending GstGLBaseMixerPad. It is used internally by the bindings. Users should use the interface [GLBaseMixerPad] instead.
-type GLBaseMixerPadInstance struct {
-	_ [0]func() // equal guard
-	gstvideo.VideoAggregatorPadInstance
-}
-
-var _ GLBaseMixerPad = (*GLBaseMixerPadInstance)(nil)
-
-// GLBaseMixerPad wraps GstGLBaseMixerPad
-type GLBaseMixerPad interface {
-	gstvideo.VideoAggregatorPad
-	upcastToGstGLBaseMixerPad() *GLBaseMixerPadInstance
-
-	// chain up virtual methods:
-}
-
-func unsafeWrapGLBaseMixerPad(base *gobject.ObjectInstance) *GLBaseMixerPadInstance {
-	return &GLBaseMixerPadInstance{
-		VideoAggregatorPadInstance: gstvideo.VideoAggregatorPadInstance{
-			AggregatorPadInstance: gstbase.AggregatorPadInstance{
-				PadInstance: gst.PadInstance{
-					ObjectInstance: gst.ObjectInstance{
-						InitiallyUnownedInstance: gobject.InitiallyUnownedInstance{
-							ObjectInstance: *base,
-						},
-					},
-				},
-			},
-		},
-	}
-}
-
-func init() {
-	gobject.RegisterObjectCasting(
-		TypeGLBaseMixerPad,
-		func (inst *gobject.ObjectInstance) gobject.Object {
-			return unsafeWrapGLBaseMixerPad(inst)
-		},
-	)
-}
-
-func marshalGLBaseMixerPadInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapGLBaseMixerPad(gobject.ValueFromNative(p).Object()), nil
-}
-
-// UnsafeGLBaseMixerPadFromGlibNone is used to convert raw GstGLBaseMixerPad pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
-func UnsafeGLBaseMixerPadFromGlibNone(c unsafe.Pointer) GLBaseMixerPad {
-	return gobject.UnsafeObjectFromGlibNone(c).(GLBaseMixerPad)
-}
-
-// UnsafeGLBaseMixerPadFromGlibFull is used to convert raw GstGLBaseMixerPad pointers to go while attaching a finalizer. This is used by the bindings internally.
-func UnsafeGLBaseMixerPadFromGlibFull(c unsafe.Pointer) GLBaseMixerPad {
-	return gobject.UnsafeObjectFromGlibFull(c).(GLBaseMixerPad)
-}
-
-// UnsafeGLBaseMixerPadFromGlibBorrow is used to convert raw GstGLBaseMixerPad pointers to go without touching any references. This is used by the bindings internally.
-func UnsafeGLBaseMixerPadFromGlibBorrow(c unsafe.Pointer) GLBaseMixerPad {
-	return gobject.UnsafeObjectFromGlibBorrow(c).(GLBaseMixerPad)
-}
-
-func (g *GLBaseMixerPadInstance) upcastToGstGLBaseMixerPad() *GLBaseMixerPadInstance {
-	return g
-}
-
-// UnsafeGLBaseMixerPadToGlibNone is used to convert the instance to it's C value GstGLBaseMixerPad. This is used by the bindings internally.
-func UnsafeGLBaseMixerPadToGlibNone(c GLBaseMixerPad) unsafe.Pointer {
-	return gobject.UnsafeObjectToGlibNone(c)
-}
-
-// UnsafeGLBaseMixerPadToGlibFull is used to convert the instance to it's C value GstGLBaseMixerPad, while removeing the finalizer. This is used by the bindings internally.
-func UnsafeGLBaseMixerPadToGlibFull(c GLBaseMixerPad) unsafe.Pointer {
-	return gobject.UnsafeObjectToGlibFull(c)
-}
-
-// GLBaseMixerPadOverrides is the struct used to override the default implementation of virtual methods.
-// it is generic over the extending instance type.
-type GLBaseMixerPadOverrides[Instance GLBaseMixerPad] struct {
-	// gstvideo.VideoAggregatorPadOverrides allows you to override virtual methods from the parent class gstvideo.VideoAggregatorPad
-	gstvideo.VideoAggregatorPadOverrides[Instance]
-
-}
-
-// UnsafeApplyGLBaseMixerPadOverrides applies the overrides to init the gclass by setting the trampoline functions.
-// This is used by the bindings internally and only exported for visibility to other bindings code.
-func UnsafeApplyGLBaseMixerPadOverrides[Instance GLBaseMixerPad](gclass unsafe.Pointer, overrides GLBaseMixerPadOverrides[Instance]) {
-	gstvideo.UnsafeApplyVideoAggregatorPadOverrides(gclass, overrides.VideoAggregatorPadOverrides)
-}
-
-// RegisterGLBaseMixerPadSubClass is used to register a go subclass of GstGLBaseMixerPad. For this to work safely please implement the
-// virtual methods required by the implementation.
-func RegisterGLBaseMixerPadSubClass[InstanceT GLBaseMixerPad](
-		name string,
-		classInit func(class *GLBaseMixerPadClass),
-		constructor func() InstanceT,
-		overrides GLBaseMixerPadOverrides[InstanceT],
-		signals map[string]gobject.SignalDefinition,
-		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
-) gobject.Type {
-	return gobject.UnsafeRegisterSubClass(
-		name,
-		classInit,
-		constructor,
-		overrides,
-		signals,
-		TypeGLBaseMixerPad,
-		UnsafeGLBaseMixerPadClassFromGlibBorrow,
-		UnsafeApplyGLBaseMixerPadOverrides,
-		func (obj *gobject.ObjectInstance) gobject.Object {
-			return unsafeWrapGLBaseMixerPad(obj)
 		},
 		interfaceInits...,
 	)
@@ -5120,6 +4600,12 @@ type GLContext interface {
 	// gst_gl_context_get_gl_api() for retrieving the OpenGL api implemented by
 	// @context.
 	GetGLVersion() (int32, int32)
+	// GetThread wraps gst_gl_context_get_thread
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *glib.Thread (nullable) 
+	GetThread() *glib.Thread
 	// GetWindow wraps gst_gl_context_get_window
 	// 
 	// The function returns the following values:
@@ -5959,6 +5445,29 @@ func (_context *GLContextInstance) GetGLVersion() (int32, int32) {
 	min = int32(carg2)
 
 	return maj, min
+}
+
+// GetThread wraps gst_gl_context_get_thread
+// 
+// The function returns the following values:
+// 
+// 	- goret *glib.Thread (nullable) 
+func (_context *GLContextInstance) GetThread() *glib.Thread {
+	var carg0 *C.GstGLContext // in, none, converted
+	var cret  *C.GThread      // return, full, converted, nullable
+
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
+
+	cret = C.gst_gl_context_get_thread(carg0)
+	runtime.KeepAlive(_context)
+
+	var goret *glib.Thread
+
+	if cret != nil {
+		goret = glib.UnsafeThreadFromGlibFull(unsafe.Pointer(cret))
+	}
+
+	return goret
 }
 
 // GetWindow wraps gst_gl_context_get_window
@@ -7077,6 +6586,16 @@ type GLDisplay interface {
 	// 
 	// 	- goret GLAPI 
 	GetGLApiUnlocked() GLAPI
+	// GetGLContextForThread wraps gst_gl_display_get_gl_context_for_thread
+	// 
+	// The function takes the following parameters:
+	// 
+	// 	- thread *glib.Thread: a #GThread 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret GLContext (nullable) 
+	GetGLContextForThread(*glib.Thread) GLContext
 	// GetHandleType wraps gst_gl_display_get_handle_type
 	// 
 	// The function returns the following values:
@@ -7379,6 +6898,36 @@ func (display *GLDisplayInstance) GetGLApiUnlocked() GLAPI {
 	var goret GLAPI
 
 	goret = GLAPI(cret)
+
+	return goret
+}
+
+// GetGLContextForThread wraps gst_gl_display_get_gl_context_for_thread
+// 
+// The function takes the following parameters:
+// 
+// 	- thread *glib.Thread: a #GThread 
+// 
+// The function returns the following values:
+// 
+// 	- goret GLContext (nullable) 
+func (display *GLDisplayInstance) GetGLContextForThread(thread *glib.Thread) GLContext {
+	var carg0 *C.GstGLDisplay // in, none, converted
+	var carg1 *C.GThread      // in, none, converted
+	var cret  *C.GstGLContext // return, full, converted, nullable
+
+	carg0 = (*C.GstGLDisplay)(UnsafeGLDisplayToGlibNone(display))
+	carg1 = (*C.GThread)(glib.UnsafeThreadToGlibNone(thread))
+
+	cret = C.gst_gl_display_get_gl_context_for_thread(carg0, carg1)
+	runtime.KeepAlive(display)
+	runtime.KeepAlive(thread)
+
+	var goret GLContext
+
+	if cret != nil {
+		goret = UnsafeGLContextFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -8872,496 +8421,6 @@ func RegisterGLMemoryPBOAllocatorSubClass[InstanceT GLMemoryPBOAllocator](
 		UnsafeApplyGLMemoryPBOAllocatorOverrides,
 		func (obj *gobject.ObjectInstance) gobject.Object {
 			return unsafeWrapGLMemoryPBOAllocator(obj)
-		},
-		interfaceInits...,
-	)
-}
-
-// GLMixerInstance is the instance type used by all types extending GstGLMixer. It is used internally by the bindings. Users should use the interface [GLMixer] instead.
-type GLMixerInstance struct {
-	_ [0]func() // equal guard
-	GLBaseMixerInstance
-}
-
-var _ GLMixer = (*GLMixerInstance)(nil)
-
-// GLMixer wraps GstGLMixer
-//
-// #GstGLMixer helps implement an element that operates on RGBA textures.
-type GLMixer interface {
-	GLBaseMixer
-	upcastToGstGLMixer() *GLMixerInstance
-
-	// GetFramebuffer wraps gst_gl_mixer_get_framebuffer
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret GLFramebuffer 
-	GetFramebuffer() GLFramebuffer
-	// ProcessTextures wraps gst_gl_mixer_process_textures
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- outbuf *gst.Buffer: output @GstBuffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Perform processing required and call #GstGLMixerClass::process_textures().
-	// Intended for use within implementations of
-	// #GstGLMixerClass::process_buffers().
-	ProcessTextures(*gst.Buffer) bool
-
-	// chain up virtual methods:
-
-	// ParentProcessBuffers calls the default implementations of the process_buffers virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- outbuf *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Perform operations on the input buffers to produce an
-	// output buffer.
-	ParentProcessBuffers(outbuf *gst.Buffer) bool
-	// ParentProcessTextures calls the default implementations of the process_textures virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- outTex *GLMemory 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Perform processing required and call #GstGLMixerClass::process_textures().
-	// Intended for use within implementations of
-	// #GstGLMixerClass::process_buffers().
-	ParentProcessTextures(outTex *GLMemory) bool
-}
-
-func unsafeWrapGLMixer(base *gobject.ObjectInstance) *GLMixerInstance {
-	return &GLMixerInstance{
-		GLBaseMixerInstance: GLBaseMixerInstance{
-			VideoAggregatorInstance: gstvideo.VideoAggregatorInstance{
-				AggregatorInstance: gstbase.AggregatorInstance{
-					ElementInstance: gst.ElementInstance{
-						ObjectInstance: gst.ObjectInstance{
-							InitiallyUnownedInstance: gobject.InitiallyUnownedInstance{
-								ObjectInstance: *base,
-							},
-						},
-					},
-				},
-			},
-		},
-	}
-}
-
-func init() {
-	gobject.RegisterObjectCasting(
-		TypeGLMixer,
-		func (inst *gobject.ObjectInstance) gobject.Object {
-			return unsafeWrapGLMixer(inst)
-		},
-	)
-}
-
-func marshalGLMixerInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapGLMixer(gobject.ValueFromNative(p).Object()), nil
-}
-
-// UnsafeGLMixerFromGlibNone is used to convert raw GstGLMixer pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
-func UnsafeGLMixerFromGlibNone(c unsafe.Pointer) GLMixer {
-	return gobject.UnsafeObjectFromGlibNone(c).(GLMixer)
-}
-
-// UnsafeGLMixerFromGlibFull is used to convert raw GstGLMixer pointers to go while attaching a finalizer. This is used by the bindings internally.
-func UnsafeGLMixerFromGlibFull(c unsafe.Pointer) GLMixer {
-	return gobject.UnsafeObjectFromGlibFull(c).(GLMixer)
-}
-
-// UnsafeGLMixerFromGlibBorrow is used to convert raw GstGLMixer pointers to go without touching any references. This is used by the bindings internally.
-func UnsafeGLMixerFromGlibBorrow(c unsafe.Pointer) GLMixer {
-	return gobject.UnsafeObjectFromGlibBorrow(c).(GLMixer)
-}
-
-func (g *GLMixerInstance) upcastToGstGLMixer() *GLMixerInstance {
-	return g
-}
-
-// UnsafeGLMixerToGlibNone is used to convert the instance to it's C value GstGLMixer. This is used by the bindings internally.
-func UnsafeGLMixerToGlibNone(c GLMixer) unsafe.Pointer {
-	return gobject.UnsafeObjectToGlibNone(c)
-}
-
-// UnsafeGLMixerToGlibFull is used to convert the instance to it's C value GstGLMixer, while removeing the finalizer. This is used by the bindings internally.
-func UnsafeGLMixerToGlibFull(c GLMixer) unsafe.Pointer {
-	return gobject.UnsafeObjectToGlibFull(c)
-}
-
-// GetFramebuffer wraps gst_gl_mixer_get_framebuffer
-// 
-// The function returns the following values:
-// 
-// 	- goret GLFramebuffer 
-func (mix *GLMixerInstance) GetFramebuffer() GLFramebuffer {
-	var carg0 *C.GstGLMixer       // in, none, converted
-	var cret  *C.GstGLFramebuffer // return, full, converted
-
-	carg0 = (*C.GstGLMixer)(UnsafeGLMixerToGlibNone(mix))
-
-	cret = C.gst_gl_mixer_get_framebuffer(carg0)
-	runtime.KeepAlive(mix)
-
-	var goret GLFramebuffer
-
-	goret = UnsafeGLFramebufferFromGlibFull(unsafe.Pointer(cret))
-
-	return goret
-}
-
-// ProcessTextures wraps gst_gl_mixer_process_textures
-// 
-// The function takes the following parameters:
-// 
-// 	- outbuf *gst.Buffer: output @GstBuffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Perform processing required and call #GstGLMixerClass::process_textures().
-// Intended for use within implementations of
-// #GstGLMixerClass::process_buffers().
-func (mix *GLMixerInstance) ProcessTextures(outbuf *gst.Buffer) bool {
-	var carg0 *C.GstGLMixer // in, none, converted
-	var carg1 *C.GstBuffer  // in, none, converted
-	var cret  C.gboolean    // return
-
-	carg0 = (*C.GstGLMixer)(UnsafeGLMixerToGlibNone(mix))
-	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(outbuf))
-
-	cret = C.gst_gl_mixer_process_textures(carg0, carg1)
-	runtime.KeepAlive(mix)
-	runtime.KeepAlive(outbuf)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
-// GLMixerOverrides is the struct used to override the default implementation of virtual methods.
-// it is generic over the extending instance type.
-type GLMixerOverrides[Instance GLMixer] struct {
-	// GLBaseMixerOverrides allows you to override virtual methods from the parent class GLBaseMixer
-	GLBaseMixerOverrides[Instance]
-
-	// // ProcessBuffers allows you to override the implementation of the virtual method process_buffers.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- outbuf *gst.Buffer 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Perform operations on the input buffers to produce an
-	// output buffer.
-	ProcessBuffers func(Instance, *gst.Buffer) bool
-	// // ProcessTextures allows you to override the implementation of the virtual method process_textures.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- outTex *GLMemory 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Perform processing required and call #GstGLMixerClass::process_textures().
-	// Intended for use within implementations of
-	// #GstGLMixerClass::process_buffers().
-	ProcessTextures func(Instance, *GLMemory) bool
-}
-
-// UnsafeApplyGLMixerOverrides applies the overrides to init the gclass by setting the trampoline functions.
-// This is used by the bindings internally and only exported for visibility to other bindings code.
-func UnsafeApplyGLMixerOverrides[Instance GLMixer](gclass unsafe.Pointer, overrides GLMixerOverrides[Instance]) {
-	UnsafeApplyGLBaseMixerOverrides(gclass, overrides.GLBaseMixerOverrides)
-
-	pclass := (*C.GstGLMixerClass)(gclass)
-
-	if overrides.ProcessBuffers != nil {
-		pclass.process_buffers = (*[0]byte)(C._gotk4_gstgl1_GLMixer_process_buffers)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLMixer_process_buffers",
-			func(carg0 *C.GstGLMixer, carg1 *C.GstBuffer) (cret C.gboolean) {
-				var mix    Instance    // go GstGLMixer subclass
-				var outbuf *gst.Buffer // in, none, converted
-				var goret  bool        // return
-
-				mix = UnsafeGLMixerFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-				outbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
-
-				goret = overrides.ProcessBuffers(mix, outbuf)
-
-				if goret {
-					cret = C.TRUE
-				}
-
-				return cret
-			},
-		)
-	}
-
-	if overrides.ProcessTextures != nil {
-		pclass.process_textures = (*[0]byte)(C._gotk4_gstgl1_GLMixer_process_textures)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gstgl1_GLMixer_process_textures",
-			func(carg0 *C.GstGLMixer, carg1 *C.GstGLMemory) (cret C.gboolean) {
-				var mix    Instance  // go GstGLMixer subclass
-				var outTex *GLMemory // in, none, converted
-				var goret  bool      // return
-
-				mix = UnsafeGLMixerFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-				outTex = UnsafeGLMemoryFromGlibNone(unsafe.Pointer(carg1))
-
-				goret = overrides.ProcessTextures(mix, outTex)
-
-				if goret {
-					cret = C.TRUE
-				}
-
-				return cret
-			},
-		)
-	}
-}
-
-// ParentProcessBuffers calls the default implementations of the process_buffers virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function takes the following parameters:
-// 
-// 	- outbuf *gst.Buffer 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Perform operations on the input buffers to produce an
-// output buffer.
-func (mix *GLMixerInstance) ParentProcessBuffers(outbuf *gst.Buffer) bool {
-	var carg0 *C.GstGLMixer
-	var carg1 *C.GstBuffer // in, none, converted
-	var cret  C.gboolean   // return
-
-	parentclass := (*C.GstGLMixerClass)(classdata.PeekParentClass(UnsafeGLMixerToGlibNone(mix)))
-
-	carg0 = (*C.GstGLMixer)(UnsafeGLMixerToGlibNone(mix))
-	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(outbuf))
-
-	cret = C._gotk4_gstgl1_GLMixer_virtual_process_buffers(unsafe.Pointer(parentclass.process_buffers), carg0, carg1)
-	runtime.KeepAlive(mix)
-	runtime.KeepAlive(outbuf)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
-// ParentProcessTextures calls the default implementations of the process_textures virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function takes the following parameters:
-// 
-// 	- outTex *GLMemory 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Perform processing required and call #GstGLMixerClass::process_textures().
-// Intended for use within implementations of
-// #GstGLMixerClass::process_buffers().
-func (mix *GLMixerInstance) ParentProcessTextures(outTex *GLMemory) bool {
-	var carg0 *C.GstGLMixer
-	var carg1 *C.GstGLMemory // in, none, converted
-	var cret  C.gboolean     // return
-
-	parentclass := (*C.GstGLMixerClass)(classdata.PeekParentClass(UnsafeGLMixerToGlibNone(mix)))
-
-	carg0 = (*C.GstGLMixer)(UnsafeGLMixerToGlibNone(mix))
-	carg1 = (*C.GstGLMemory)(UnsafeGLMemoryToGlibNone(outTex))
-
-	cret = C._gotk4_gstgl1_GLMixer_virtual_process_textures(unsafe.Pointer(parentclass.process_textures), carg0, carg1)
-	runtime.KeepAlive(mix)
-	runtime.KeepAlive(outTex)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
-// RegisterGLMixerSubClass is used to register a go subclass of GstGLMixer. For this to work safely please implement the
-// virtual methods required by the implementation.
-func RegisterGLMixerSubClass[InstanceT GLMixer](
-		name string,
-		classInit func(class *GLMixerClass),
-		constructor func() InstanceT,
-		overrides GLMixerOverrides[InstanceT],
-		signals map[string]gobject.SignalDefinition,
-		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
-) gobject.Type {
-	return gobject.UnsafeRegisterSubClass(
-		name,
-		classInit,
-		constructor,
-		overrides,
-		signals,
-		TypeGLMixer,
-		UnsafeGLMixerClassFromGlibBorrow,
-		UnsafeApplyGLMixerOverrides,
-		func (obj *gobject.ObjectInstance) gobject.Object {
-			return unsafeWrapGLMixer(obj)
-		},
-		interfaceInits...,
-	)
-}
-
-// GLMixerPadInstance is the instance type used by all types extending GstGLMixerPad. It is used internally by the bindings. Users should use the interface [GLMixerPad] instead.
-type GLMixerPadInstance struct {
-	_ [0]func() // equal guard
-	GLBaseMixerPadInstance
-}
-
-var _ GLMixerPad = (*GLMixerPadInstance)(nil)
-
-// GLMixerPad wraps GstGLMixerPad
-type GLMixerPad interface {
-	GLBaseMixerPad
-	upcastToGstGLMixerPad() *GLMixerPadInstance
-
-	// chain up virtual methods:
-}
-
-func unsafeWrapGLMixerPad(base *gobject.ObjectInstance) *GLMixerPadInstance {
-	return &GLMixerPadInstance{
-		GLBaseMixerPadInstance: GLBaseMixerPadInstance{
-			VideoAggregatorPadInstance: gstvideo.VideoAggregatorPadInstance{
-				AggregatorPadInstance: gstbase.AggregatorPadInstance{
-					PadInstance: gst.PadInstance{
-						ObjectInstance: gst.ObjectInstance{
-							InitiallyUnownedInstance: gobject.InitiallyUnownedInstance{
-								ObjectInstance: *base,
-							},
-						},
-					},
-				},
-			},
-		},
-	}
-}
-
-func init() {
-	gobject.RegisterObjectCasting(
-		TypeGLMixerPad,
-		func (inst *gobject.ObjectInstance) gobject.Object {
-			return unsafeWrapGLMixerPad(inst)
-		},
-	)
-}
-
-func marshalGLMixerPadInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapGLMixerPad(gobject.ValueFromNative(p).Object()), nil
-}
-
-// UnsafeGLMixerPadFromGlibNone is used to convert raw GstGLMixerPad pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
-func UnsafeGLMixerPadFromGlibNone(c unsafe.Pointer) GLMixerPad {
-	return gobject.UnsafeObjectFromGlibNone(c).(GLMixerPad)
-}
-
-// UnsafeGLMixerPadFromGlibFull is used to convert raw GstGLMixerPad pointers to go while attaching a finalizer. This is used by the bindings internally.
-func UnsafeGLMixerPadFromGlibFull(c unsafe.Pointer) GLMixerPad {
-	return gobject.UnsafeObjectFromGlibFull(c).(GLMixerPad)
-}
-
-// UnsafeGLMixerPadFromGlibBorrow is used to convert raw GstGLMixerPad pointers to go without touching any references. This is used by the bindings internally.
-func UnsafeGLMixerPadFromGlibBorrow(c unsafe.Pointer) GLMixerPad {
-	return gobject.UnsafeObjectFromGlibBorrow(c).(GLMixerPad)
-}
-
-func (g *GLMixerPadInstance) upcastToGstGLMixerPad() *GLMixerPadInstance {
-	return g
-}
-
-// UnsafeGLMixerPadToGlibNone is used to convert the instance to it's C value GstGLMixerPad. This is used by the bindings internally.
-func UnsafeGLMixerPadToGlibNone(c GLMixerPad) unsafe.Pointer {
-	return gobject.UnsafeObjectToGlibNone(c)
-}
-
-// UnsafeGLMixerPadToGlibFull is used to convert the instance to it's C value GstGLMixerPad, while removeing the finalizer. This is used by the bindings internally.
-func UnsafeGLMixerPadToGlibFull(c GLMixerPad) unsafe.Pointer {
-	return gobject.UnsafeObjectToGlibFull(c)
-}
-
-// GLMixerPadOverrides is the struct used to override the default implementation of virtual methods.
-// it is generic over the extending instance type.
-type GLMixerPadOverrides[Instance GLMixerPad] struct {
-	// GLBaseMixerPadOverrides allows you to override virtual methods from the parent class GLBaseMixerPad
-	GLBaseMixerPadOverrides[Instance]
-
-}
-
-// UnsafeApplyGLMixerPadOverrides applies the overrides to init the gclass by setting the trampoline functions.
-// This is used by the bindings internally and only exported for visibility to other bindings code.
-func UnsafeApplyGLMixerPadOverrides[Instance GLMixerPad](gclass unsafe.Pointer, overrides GLMixerPadOverrides[Instance]) {
-	UnsafeApplyGLBaseMixerPadOverrides(gclass, overrides.GLBaseMixerPadOverrides)
-}
-
-// RegisterGLMixerPadSubClass is used to register a go subclass of GstGLMixerPad. For this to work safely please implement the
-// virtual methods required by the implementation.
-func RegisterGLMixerPadSubClass[InstanceT GLMixerPad](
-		name string,
-		classInit func(class *GLMixerPadClass),
-		constructor func() InstanceT,
-		overrides GLMixerPadOverrides[InstanceT],
-		signals map[string]gobject.SignalDefinition,
-		interfaceInits ...gobject.SubClassInterfaceInit[InstanceT],
-) gobject.Type {
-	return gobject.UnsafeRegisterSubClass(
-		name,
-		classInit,
-		constructor,
-		overrides,
-		signals,
-		TypeGLMixerPad,
-		UnsafeGLMixerPadClassFromGlibBorrow,
-		UnsafeApplyGLMixerPadOverrides,
-		func (obj *gobject.ObjectInstance) gobject.Object {
-			return unsafeWrapGLMixerPad(obj)
 		},
 		interfaceInits...,
 	)
@@ -14807,15 +13866,6 @@ func UnsafeGLBaseMixerClassToGlibNone(g *GLBaseMixerClass) unsafe.Pointer {
 	return unsafe.Pointer(g.native)
 }
 
-// ParentClass returns the type struct of the parent class of this type struct.
-// This essentially casts the underlying c pointer.
-func (g *GLBaseMixerClass) ParentClass() *gstvideo.VideoAggregatorClass {
-	parent := gstvideo.UnsafeVideoAggregatorClassFromGlibBorrow(UnsafeGLBaseMixerClassToGlibNone(g))
-	// attach a cleanup to keep the instance alive as long as the parent is referenced
-	runtime.AddCleanup(parent, func(_ *GLBaseMixerClass) {}, g)
-	return parent
-}
-
 // GLBaseMixerPadClass wraps GstGLBaseMixerPadClass
 // 
 // GLBaseMixerPadClass is the type struct for [GLBaseMixerPad]
@@ -14843,15 +13893,6 @@ func UnsafeGLBaseMixerPadClassFree(g *GLBaseMixerPadClass) {
 // UnsafeGLBaseMixerPadClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLBaseMixerPadClassToGlibNone(g *GLBaseMixerPadClass) unsafe.Pointer {
 	return unsafe.Pointer(g.native)
-}
-
-// ParentClass returns the type struct of the parent class of this type struct.
-// This essentially casts the underlying c pointer.
-func (g *GLBaseMixerPadClass) ParentClass() *gstvideo.VideoAggregatorPadClass {
-	parent := gstvideo.UnsafeVideoAggregatorPadClassFromGlibBorrow(UnsafeGLBaseMixerPadClassToGlibNone(g))
-	// attach a cleanup to keep the instance alive as long as the parent is referenced
-	runtime.AddCleanup(parent, func(_ *GLBaseMixerPadClass) {}, g)
-	return parent
 }
 
 // GLBaseSrcClass wraps GstGLBaseSrcClass
@@ -16033,15 +15074,6 @@ func UnsafeGLMixerClassToGlibNone(g *GLMixerClass) unsafe.Pointer {
 	return unsafe.Pointer(g.native)
 }
 
-// ParentClass returns the type struct of the parent class of this type struct.
-// This essentially casts the underlying c pointer.
-func (g *GLMixerClass) ParentClass() *GLBaseMixerClass {
-	parent := UnsafeGLBaseMixerClassFromGlibBorrow(UnsafeGLMixerClassToGlibNone(g))
-	// attach a cleanup to keep the instance alive as long as the parent is referenced
-	runtime.AddCleanup(parent, func(_ *GLMixerClass) {}, g)
-	return parent
-}
-
 // AddRGBAPadTemplates wraps gst_gl_mixer_class_add_rgba_pad_templates
 //
 // Adds the default RGBA pad templates to this class.  If you have any special
@@ -16084,15 +15116,6 @@ func UnsafeGLMixerPadClassFree(g *GLMixerPadClass) {
 // UnsafeGLMixerPadClassToGlibNone returns the underlying C pointer. This is used by the bindings internally.
 func UnsafeGLMixerPadClassToGlibNone(g *GLMixerPadClass) unsafe.Pointer {
 	return unsafe.Pointer(g.native)
-}
-
-// ParentClass returns the type struct of the parent class of this type struct.
-// This essentially casts the underlying c pointer.
-func (g *GLMixerPadClass) ParentClass() *GLBaseMixerPadClass {
-	parent := UnsafeGLBaseMixerPadClassFromGlibBorrow(UnsafeGLMixerPadClassToGlibNone(g))
-	// attach a cleanup to keep the instance alive as long as the parent is referenced
-	runtime.AddCleanup(parent, func(_ *GLMixerPadClass) {}, g)
-	return parent
 }
 
 // GLOverlayCompositorClass wraps GstGLOverlayCompositorClass
@@ -16956,59 +15979,6 @@ func UnsafeGLVideoAllocationParamsToGlibFull(g *GLVideoAllocationParams) unsafe.
 	_p := unsafe.Pointer(g.native)
 	g.native = nil // GLVideoAllocationParams is invalid from here on
 	return _p
-}
-
-// NewGLVideoAllocationParams wraps gst_gl_video_allocation_params_new
-// 
-// The function takes the following parameters:
-// 
-// 	- _context GLContext: a #GstGLContext 
-// 	- allocParams *gst.AllocationParams (nullable): the #GstAllocationParams for sysmem mappings of the texture 
-// 	- vInfo *gstvideo.VideoInfo: the #GstVideoInfo for the texture 
-// 	- plane uint: the video plane of @v_info to allocate 
-// 	- valign *gstvideo.VideoAlignment (nullable): any #GstVideoAlignment applied to symem mappings of the texture 
-// 	- target GLTextureTarget: the #GstGLTextureTarget for the created textures 
-// 	- texFormat GLFormat: the #GstGLFormat for the created textures 
-// 
-// The function returns the following values:
-// 
-// 	- goret *GLVideoAllocationParams 
-func NewGLVideoAllocationParams(_context GLContext, allocParams *gst.AllocationParams, vInfo *gstvideo.VideoInfo, plane uint, valign *gstvideo.VideoAlignment, target GLTextureTarget, texFormat GLFormat) *GLVideoAllocationParams {
-	var carg1 *C.GstGLContext               // in, none, converted
-	var carg2 *C.GstAllocationParams        // in, none, converted, nullable
-	var carg3 *C.GstVideoInfo               // in, none, converted
-	var carg4 C.guint                       // in, none, casted
-	var carg5 *C.GstVideoAlignment          // in, none, converted, nullable
-	var carg6 C.GstGLTextureTarget          // in, none, casted
-	var carg7 C.GstGLFormat                 // in, none, casted
-	var cret  *C.GstGLVideoAllocationParams // return, full, converted
-
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
-	if allocParams != nil {
-		carg2 = (*C.GstAllocationParams)(gst.UnsafeAllocationParamsToGlibNone(allocParams))
-	}
-	carg3 = (*C.GstVideoInfo)(gstvideo.UnsafeVideoInfoToGlibNone(vInfo))
-	carg4 = C.guint(plane)
-	if valign != nil {
-		carg5 = (*C.GstVideoAlignment)(gstvideo.UnsafeVideoAlignmentToGlibNone(valign))
-	}
-	carg6 = C.GstGLTextureTarget(target)
-	carg7 = C.GstGLFormat(texFormat)
-
-	cret = C.gst_gl_video_allocation_params_new(carg1, carg2, carg3, carg4, carg5, carg6, carg7)
-	runtime.KeepAlive(_context)
-	runtime.KeepAlive(allocParams)
-	runtime.KeepAlive(vInfo)
-	runtime.KeepAlive(plane)
-	runtime.KeepAlive(valign)
-	runtime.KeepAlive(target)
-	runtime.KeepAlive(texFormat)
-
-	var goret *GLVideoAllocationParams
-
-	goret = UnsafeGLVideoAllocationParamsFromGlibFull(unsafe.Pointer(cret))
-
-	return goret
 }
 
 // CopyData wraps gst_gl_video_allocation_params_copy_data

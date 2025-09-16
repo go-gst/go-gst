@@ -38,9 +38,9 @@ import (
 // extern void _gotk4_gst1_ElementCallAsyncFunc(GstElement*, gpointer);
 // extern void _gotk4_gst1_IteratorForEachFunction(const GValue*, gpointer);
 // extern void _gotk4_gst1_LogFunction(GstDebugCategory*, GstDebugLevel, const gchar*, const gchar*, gint, GObject*, GstDebugMessage*, gpointer);
-// extern void _gotk4_gst1_PromiseChangeFunc(GstPromise*, gpointer);
 // extern void _gotk4_gst1_TagForEachFunc(const GstTagList*, const gchar*, gpointer);
 // extern void _gotk4_gst1_TaskFunction(gpointer);
+// extern void _gotk4_gst1_TaskThreadFunc(GstTask*, GThread*, gpointer);
 // extern void _gotk4_gst1_TypeFindFunction(GstTypeFind*, gpointer);
 // extern void destroyUserdata(gpointer);
 // extern void _gotk4_gst1_ChildProxy_child_added(GstChildProxy*, GObject*, const gchar*);
@@ -473,7 +473,6 @@ var (
 	TypeMessage                = gobject.Type(C.gst_message_get_type())
 	TypeMiniObject             = gobject.Type(C.gst_mini_object_get_type())
 	TypeParseContext           = gobject.Type(C.gst_parse_context_get_type())
-	TypePromise                = gobject.Type(C.gst_promise_get_type())
 	TypeQuery                  = gobject.Type(C.gst_query_get_type())
 	TypeSample                 = gobject.Type(C.gst_sample_get_type())
 	TypeSegment                = gobject.Type(C.gst_segment_get_type())
@@ -627,7 +626,6 @@ func init() {
 		gobject.TypeMarshaler{T: TypeMessage, F: marshalMessage},
 		gobject.TypeMarshaler{T: TypeMiniObject, F: marshalMiniObject},
 		gobject.TypeMarshaler{T: TypeParseContext, F: marshalParseContext},
-		gobject.TypeMarshaler{T: TypePromise, F: marshalPromise},
 		gobject.TypeMarshaler{T: TypeQuery, F: marshalQuery},
 		gobject.TypeMarshaler{T: TypeSample, F: marshalSample},
 		gobject.TypeMarshaler{T: TypeSegment, F: marshalSegment},
@@ -768,12 +766,12 @@ const VERSION_MICRO = 0
 // VERSION_MINOR wraps GST_VERSION_MINOR
 //
 // The minor version of GStreamer at compile time:
-const VERSION_MINOR = 26
+const VERSION_MINOR = 27
 // VERSION_NANO wraps GST_VERSION_NANO
 //
 // The nano version of GStreamer at compile time:
 // Actual releases have 0, GIT versions have 1, prerelease versions have 2-...
-const VERSION_NANO = 0
+const VERSION_NANO = 1
 // ClockID wraps GstClockID
 //
 // A datatype to hold the handle to an outstanding sync or async clock callback.
@@ -792,19 +790,19 @@ type ElementFactoryListType = uint64
 type BufferingMode C.int
 
 const (
-	// BufferingStream wraps GST_BUFFERING_STREAM
+	// BufferingStream wraps BUFFERING_STREAM
 	//
 	// a small amount of data is buffered
 	BufferingStream BufferingMode = 0
-	// BufferingDownload wraps GST_BUFFERING_DOWNLOAD
+	// BufferingDownload wraps BUFFERING_DOWNLOAD
 	//
 	// the stream is being downloaded
 	BufferingDownload BufferingMode = 1
-	// BufferingTimeshift wraps GST_BUFFERING_TIMESHIFT
+	// BufferingTimeshift wraps BUFFERING_TIMESHIFT
 	//
 	// the stream is being downloaded in a ringbuffer
 	BufferingTimeshift BufferingMode = 2
-	// BufferingLive wraps GST_BUFFERING_LIVE
+	// BufferingLive wraps BUFFERING_LIVE
 	//
 	// the stream is a live stream
 	BufferingLive BufferingMode = 3
@@ -840,15 +838,15 @@ func (e BufferingMode) String() string {
 type BusSyncReply C.int
 
 const (
-	// BusDrop wraps GST_BUS_DROP
+	// BusDrop wraps BUS_DROP
 	//
 	// drop the message
 	BusDrop BusSyncReply = 0
-	// BusPass wraps GST_BUS_PASS
+	// BusPass wraps BUS_PASS
 	//
 	// pass the message to the async queue
 	BusPass BusSyncReply = 1
-	// BusAsync wraps GST_BUS_ASYNC
+	// BusAsync wraps BUS_ASYNC
 	//
 	// pass message to async queue, continue if message is handled
 	BusAsync BusSyncReply = 2
@@ -903,11 +901,11 @@ func (e BusSyncReply) String() string {
 type CapsIntersectMode C.int
 
 const (
-	// CapsIntersectZigZag wraps GST_CAPS_INTERSECT_ZIG_ZAG
+	// CapsIntersectZigZag wraps CAPS_INTERSECT_ZIG_ZAG
 	//
 	// Zig-zags over both caps.
 	CapsIntersectZigZag CapsIntersectMode = 0
-	// CapsIntersectFirst wraps GST_CAPS_INTERSECT_FIRST
+	// CapsIntersectFirst wraps CAPS_INTERSECT_FIRST
 	//
 	// Keeps the first caps order.
 	CapsIntersectFirst CapsIntersectMode = 1
@@ -941,11 +939,11 @@ func (e CapsIntersectMode) String() string {
 type ClockEntryType C.int
 
 const (
-	// ClockEntrySingle wraps GST_CLOCK_ENTRY_SINGLE
+	// ClockEntrySingle wraps CLOCK_ENTRY_SINGLE
 	//
 	// a single shot timeout
 	ClockEntrySingle ClockEntryType = 0
-	// ClockEntryPeriodic wraps GST_CLOCK_ENTRY_PERIODIC
+	// ClockEntryPeriodic wraps CLOCK_ENTRY_PERIODIC
 	//
 	// a periodic timeout request
 	ClockEntryPeriodic ClockEntryType = 1
@@ -979,35 +977,35 @@ func (e ClockEntryType) String() string {
 type ClockReturn C.int
 
 const (
-	// ClockOK wraps GST_CLOCK_OK
+	// ClockOK wraps CLOCK_OK
 	//
 	// The operation succeeded.
 	ClockOK ClockReturn = 0
-	// ClockEarly wraps GST_CLOCK_EARLY
+	// ClockEarly wraps CLOCK_EARLY
 	//
 	// The operation was scheduled too late.
 	ClockEarly ClockReturn = 1
-	// ClockUnscheduled wraps GST_CLOCK_UNSCHEDULED
+	// ClockUnscheduled wraps CLOCK_UNSCHEDULED
 	//
 	// The clockID was unscheduled
 	ClockUnscheduled ClockReturn = 2
-	// ClockBusy wraps GST_CLOCK_BUSY
+	// ClockBusy wraps CLOCK_BUSY
 	//
 	// The ClockID is busy
 	ClockBusy ClockReturn = 3
-	// ClockBadtime wraps GST_CLOCK_BADTIME
+	// ClockBadtime wraps CLOCK_BADTIME
 	//
 	// A bad time was provided to a function.
 	ClockBadtime ClockReturn = 4
-	// ClockError wraps GST_CLOCK_ERROR
+	// ClockError wraps CLOCK_ERROR
 	//
 	// An error occurred
 	ClockError ClockReturn = 5
-	// ClockUnsupported wraps GST_CLOCK_UNSUPPORTED
+	// ClockUnsupported wraps CLOCK_UNSUPPORTED
 	//
 	// Operation is not supported
 	ClockUnsupported ClockReturn = 6
-	// ClockDone wraps GST_CLOCK_DONE
+	// ClockDone wraps CLOCK_DONE
 	//
 	// The ClockID is done waiting
 	ClockDone ClockReturn = 7
@@ -1047,20 +1045,20 @@ func (e ClockReturn) String() string {
 type ClockType C.int
 
 const (
-	// ClockTypeRealtime wraps GST_CLOCK_TYPE_REALTIME
+	// ClockTypeRealtime wraps CLOCK_TYPE_REALTIME
 	//
 	// time since Epoch
 	ClockTypeRealtime ClockType = 0
-	// ClockTypeMonotonic wraps GST_CLOCK_TYPE_MONOTONIC
+	// ClockTypeMonotonic wraps CLOCK_TYPE_MONOTONIC
 	//
 	// monotonic time since some unspecified starting
 	//                            point
 	ClockTypeMonotonic ClockType = 1
-	// ClockTypeOther wraps GST_CLOCK_TYPE_OTHER
+	// ClockTypeOther wraps CLOCK_TYPE_OTHER
 	//
 	// some other time source is used (Since: 1.0.5)
 	ClockTypeOther ClockType = 2
-	// ClockTypeTai wraps GST_CLOCK_TYPE_TAI
+	// ClockTypeTai wraps CLOCK_TYPE_TAI
 	//
 	// time since Epoch, but using International Atomic Time
 	//                      as reference (Since: 1.18)
@@ -1097,67 +1095,67 @@ func (e ClockType) String() string {
 type CoreError C.int
 
 const (
-	// CoreErrorFailed wraps GST_CORE_ERROR_FAILED
+	// CoreErrorFailed wraps CORE_ERROR_FAILED
 	//
 	// a general error which doesn't fit in any other
 	// category.  Make sure you add a custom message to the error call.
 	CoreErrorFailed CoreError = 1
-	// CoreErrorTooLaZY wraps GST_CORE_ERROR_TOO_LAZY
+	// CoreErrorTooLaZY wraps CORE_ERROR_TOO_LAZY
 	//
 	// do not use this except as a placeholder for
 	// deciding where to go while developing code.
 	CoreErrorTooLaZY CoreError = 2
-	// CoreErrorNotImplemented wraps GST_CORE_ERROR_NOT_IMPLEMENTED
+	// CoreErrorNotImplemented wraps CORE_ERROR_NOT_IMPLEMENTED
 	//
 	// use this when you do not want to implement
 	// this functionality yet.
 	CoreErrorNotImplemented CoreError = 3
-	// CoreErrorStateChange wraps GST_CORE_ERROR_STATE_CHANGE
+	// CoreErrorStateChange wraps CORE_ERROR_STATE_CHANGE
 	//
 	// used for state change errors.
 	CoreErrorStateChange CoreError = 4
-	// CoreErrorPad wraps GST_CORE_ERROR_PAD
+	// CoreErrorPad wraps CORE_ERROR_PAD
 	//
 	// used for pad-related errors.
 	CoreErrorPad CoreError = 5
-	// CoreErrorThread wraps GST_CORE_ERROR_THREAD
+	// CoreErrorThread wraps CORE_ERROR_THREAD
 	//
 	// used for thread-related errors.
 	CoreErrorThread CoreError = 6
-	// CoreErrorNegotiation wraps GST_CORE_ERROR_NEGOTIATION
+	// CoreErrorNegotiation wraps CORE_ERROR_NEGOTIATION
 	//
 	// used for negotiation-related errors.
 	CoreErrorNegotiation CoreError = 7
-	// CoreErrorEvent wraps GST_CORE_ERROR_EVENT
+	// CoreErrorEvent wraps CORE_ERROR_EVENT
 	//
 	// used for event-related errors.
 	CoreErrorEvent CoreError = 8
-	// CoreErrorSeek wraps GST_CORE_ERROR_SEEK
+	// CoreErrorSeek wraps CORE_ERROR_SEEK
 	//
 	// used for seek-related errors.
 	CoreErrorSeek CoreError = 9
-	// CoreErrorCaps wraps GST_CORE_ERROR_CAPS
+	// CoreErrorCaps wraps CORE_ERROR_CAPS
 	//
 	// used for caps-related errors.
 	CoreErrorCaps CoreError = 10
-	// CoreErrorTag wraps GST_CORE_ERROR_TAG
+	// CoreErrorTag wraps CORE_ERROR_TAG
 	//
 	// used for negotiation-related errors.
 	CoreErrorTag CoreError = 11
-	// CoreErrorMissingPlugin wraps GST_CORE_ERROR_MISSING_PLUGIN
+	// CoreErrorMissingPlugin wraps CORE_ERROR_MISSING_PLUGIN
 	//
 	// used if a plugin is missing.
 	CoreErrorMissingPlugin CoreError = 12
-	// CoreErrorClock wraps GST_CORE_ERROR_CLOCK
+	// CoreErrorClock wraps CORE_ERROR_CLOCK
 	//
 	// used for clock related errors.
 	CoreErrorClock CoreError = 13
-	// CoreErrorDisabled wraps GST_CORE_ERROR_DISABLED
+	// CoreErrorDisabled wraps CORE_ERROR_DISABLED
 	//
 	// used if functionality has been disabled at
 	//                           compile time.
 	CoreErrorDisabled CoreError = 14
-	// CoreErrorNumErrors wraps GST_CORE_ERROR_NUM_ERRORS
+	// CoreErrorNumErrors wraps CORE_ERROR_NUM_ERRORS
 	//
 	// the number of core error types.
 	CoreErrorNumErrors CoreError = 15
@@ -1219,15 +1217,15 @@ func CoreErrorQuark() glib.Quark {
 type DebugColorMode C.int
 
 const (
-	// DebugColorModeOff wraps GST_DEBUG_COLOR_MODE_OFF
+	// DebugColorModeOff wraps DEBUG_COLOR_MODE_OFF
 	//
 	// Do not use colors in logs.
 	DebugColorModeOff DebugColorMode = 0
-	// DebugColorModeOn wraps GST_DEBUG_COLOR_MODE_ON
+	// DebugColorModeOn wraps DEBUG_COLOR_MODE_ON
 	//
 	// Paint logs in a platform-specific way.
 	DebugColorModeOn DebugColorMode = 1
-	// DebugColorModeUnix wraps GST_DEBUG_COLOR_MODE_UNIX
+	// DebugColorModeUnix wraps DEBUG_COLOR_MODE_UNIX
 	//
 	// Paint logs with UNIX terminal color codes
 	//                             no matter what platform GStreamer is running on.
@@ -1264,26 +1262,26 @@ func (e DebugColorMode) String() string {
 type DebugLevel C.int
 
 const (
-	// LevelNone wraps GST_LEVEL_NONE
+	// LevelNone wraps LEVEL_NONE
 	//
 	// No debugging level specified or desired. Used to deactivate
 	//  debugging output.
 	LevelNone DebugLevel = 0
-	// LevelError wraps GST_LEVEL_ERROR
+	// LevelError wraps LEVEL_ERROR
 	//
 	// Error messages are to be used only when an error occurred
 	//  that stops the application from keeping working correctly.
 	//  An examples is gst_element_error, which outputs a message with this priority.
 	//  It does not mean that the application is terminating as with g_error.
 	LevelError DebugLevel = 1
-	// LevelWarning wraps GST_LEVEL_WARNING
+	// LevelWarning wraps LEVEL_WARNING
 	//
 	// Warning messages are to inform about abnormal behaviour
 	//  that could lead to problems or weird behaviour later on. An example of this
 	//  would be clocking issues ("your computer is pretty slow") or broken input
 	//  data ("Can't synchronize to stream.")
 	LevelWarning DebugLevel = 2
-	// LevelFixme wraps GST_LEVEL_FIXME
+	// LevelFixme wraps LEVEL_FIXME
 	//
 	// Fixme messages are messages that indicate that something
 	//  in the executed code path is not fully implemented or handled yet. Note
@@ -1291,7 +1289,7 @@ const (
 	//  of this message is to make it easier to spot incomplete/unfinished pieces
 	//  of code when reading the debug log.
 	LevelFixme DebugLevel = 3
-	// LevelInfo wraps GST_LEVEL_INFO
+	// LevelInfo wraps LEVEL_INFO
 	//
 	// Informational messages should be used to keep the developer
 	//  updated about what is happening.
@@ -1299,7 +1297,7 @@ const (
 	//  successfully determined the type of the stream or when an mp3 plugin detects
 	//  the format to be used. ("This file has mono sound.")
 	LevelInfo DebugLevel = 4
-	// LevelDebug wraps GST_LEVEL_DEBUG
+	// LevelDebug wraps LEVEL_DEBUG
 	//
 	// Debugging messages should be used when something common
 	//  happens that is not the expected default behavior, or something that's
@@ -1308,7 +1306,7 @@ const (
 	//  An example would be notifications about state changes or receiving/sending
 	//  of events.
 	LevelDebug DebugLevel = 5
-	// LevelLog wraps GST_LEVEL_LOG
+	// LevelLog wraps LEVEL_LOG
 	//
 	// Log messages are messages that are very common but might be
 	//  useful to know. As a rule of thumb a pipeline that is running as expected
@@ -1316,18 +1314,18 @@ const (
 	//  Use this log level to log recurring information in chain functions and
 	//  loop functions, for example.
 	LevelLog DebugLevel = 6
-	// LevelTrace wraps GST_LEVEL_TRACE
+	// LevelTrace wraps LEVEL_TRACE
 	//
 	// Tracing-related messages.
 	//  Examples for this are referencing/dereferencing of objects.
 	LevelTrace DebugLevel = 7
-	// LevelMemdump wraps GST_LEVEL_MEMDUMP
+	// LevelMemdump wraps LEVEL_MEMDUMP
 	//
 	// memory dump messages are used to log (small) chunks of
 	//  data as memory dumps in the log. They will be displayed as hexdump with
 	//  ASCII characters.
 	LevelMemdump DebugLevel = 9
-	// LevelCount wraps GST_LEVEL_COUNT
+	// LevelCount wraps LEVEL_COUNT
 	//
 	// The number of defined debugging levels.
 	LevelCount DebugLevel = 10
@@ -1402,159 +1400,159 @@ func DebugLevelGetName(level DebugLevel) string {
 type EventType C.int
 
 const (
-	// EventUnknown wraps GST_EVENT_UNKNOWN
+	// EventUnknown wraps EVENT_UNKNOWN
 	//
 	// unknown event.
 	EventUnknown EventType = 0
-	// EventFlushStart wraps GST_EVENT_FLUSH_START
+	// EventFlushStart wraps EVENT_FLUSH_START
 	//
 	// Start a flush operation. This event clears all data
 	//                 from the pipeline and unblock all streaming threads.
 	EventFlushStart EventType = 2563
-	// EventFlushStop wraps GST_EVENT_FLUSH_STOP
+	// EventFlushStop wraps EVENT_FLUSH_STOP
 	//
 	// Stop a flush operation. This event resets the
 	//                 running-time of the pipeline.
 	EventFlushStop EventType = 5127
-	// EventStreamStart wraps GST_EVENT_STREAM_START
+	// EventStreamStart wraps EVENT_STREAM_START
 	//
 	// Event to mark the start of a new stream. Sent before any
 	//                 other serialized event and only sent at the start of a new stream,
 	//                 not after flushing seeks.
 	EventStreamStart EventType = 10254
-	// EventCaps wraps GST_EVENT_CAPS
+	// EventCaps wraps EVENT_CAPS
 	//
 	// #GstCaps event. Notify the pad of a new media type.
 	EventCaps EventType = 12814
-	// EventSegment wraps GST_EVENT_SEGMENT
+	// EventSegment wraps EVENT_SEGMENT
 	//
 	// A new media segment follows in the dataflow. The
 	//                 segment events contains information for clipping buffers and
 	//                 converting buffer timestamps to running-time and
 	//                 stream-time.
 	EventSegment EventType = 17934
-	// EventStreamCollection wraps GST_EVENT_STREAM_COLLECTION
+	// EventStreamCollection wraps EVENT_STREAM_COLLECTION
 	//
 	// A new #GstStreamCollection is available (Since: 1.10)
 	EventStreamCollection EventType = 19230
-	// EventTag wraps GST_EVENT_TAG
+	// EventTag wraps EVENT_TAG
 	//
 	// A new set of metadata tags has been found in the stream.
 	EventTag EventType = 20510
-	// EventBuffersize wraps GST_EVENT_BUFFERSIZE
+	// EventBuffersize wraps EVENT_BUFFERSIZE
 	//
 	// Notification of buffering requirements. Currently not
 	//                 used yet.
 	EventBuffersize EventType = 23054
-	// EventSinkMessage wraps GST_EVENT_SINK_MESSAGE
+	// EventSinkMessage wraps EVENT_SINK_MESSAGE
 	//
 	// An event that sinks turn into a message. Used to
 	//                          send messages that should be emitted in sync with
 	//                          rendering.
 	EventSinkMessage EventType = 25630
-	// EventStreamGroupDone wraps GST_EVENT_STREAM_GROUP_DONE
+	// EventStreamGroupDone wraps EVENT_STREAM_GROUP_DONE
 	//
 	// Indicates that there is no more data for
 	//                 the stream group ID in the message. Sent before EOS
 	//                 in some instances and should be handled mostly the same. (Since: 1.10)
 	EventStreamGroupDone EventType = 26894
-	// EventEos wraps GST_EVENT_EOS
+	// EventEos wraps EVENT_EOS
 	//
 	// End-Of-Stream. No more data is to be expected to follow
 	//                 without either a STREAM_START event, or a FLUSH_STOP and a SEGMENT
 	//                 event.
 	EventEos EventType = 28174
-	// EventToc wraps GST_EVENT_TOC
+	// EventToc wraps EVENT_TOC
 	//
 	// An event which indicates that a new table of contents (TOC)
 	//                 was found or updated.
 	EventToc EventType = 30750
-	// EventProtection wraps GST_EVENT_PROTECTION
+	// EventProtection wraps EVENT_PROTECTION
 	//
 	// An event which indicates that new or updated
 	//                 encryption information has been found in the stream.
 	EventProtection EventType = 33310
-	// EventSegmentDone wraps GST_EVENT_SEGMENT_DONE
+	// EventSegmentDone wraps EVENT_SEGMENT_DONE
 	//
 	// Marks the end of a segment playback.
 	EventSegmentDone EventType = 38406
-	// EventGap wraps GST_EVENT_GAP
+	// EventGap wraps EVENT_GAP
 	//
 	// Marks a gap in the datastream.
 	EventGap EventType = 40966
-	// EventInstantRateChange wraps GST_EVENT_INSTANT_RATE_CHANGE
+	// EventInstantRateChange wraps EVENT_INSTANT_RATE_CHANGE
 	//
 	// Notify downstream that a playback rate override
 	//                                 should be applied as soon as possible. (Since: 1.18)
 	EventInstantRateChange EventType = 46090
-	// EventQos wraps GST_EVENT_QOS
+	// EventQos wraps EVENT_QOS
 	//
 	// A quality message. Used to indicate to upstream elements
 	//                 that the downstream elements should adjust their processing
 	//                 rate.
 	EventQos EventType = 48641
-	// EventSeek wraps GST_EVENT_SEEK
+	// EventSeek wraps EVENT_SEEK
 	//
 	// A request for a new playback position and rate.
 	EventSeek EventType = 51201
-	// EventNavigation wraps GST_EVENT_NAVIGATION
+	// EventNavigation wraps EVENT_NAVIGATION
 	//
 	// Navigation events are usually used for communicating
 	//                        user requests, such as mouse or keyboard movements,
 	//                        to upstream elements.
 	EventNavigation EventType = 53761
-	// EventLatency wraps GST_EVENT_LATENCY
+	// EventLatency wraps EVENT_LATENCY
 	//
 	// Notification of new latency adjustment. Sinks will use
 	//                     the latency information to adjust their synchronisation.
 	EventLatency EventType = 56321
-	// EventStep wraps GST_EVENT_STEP
+	// EventStep wraps EVENT_STEP
 	//
 	// A request for stepping through the media. Sinks will usually
 	//                  execute the step operation.
 	EventStep EventType = 58881
-	// EventReconfigure wraps GST_EVENT_RECONFIGURE
+	// EventReconfigure wraps EVENT_RECONFIGURE
 	//
 	// A request for upstream renegotiating caps and reconfiguring.
 	EventReconfigure EventType = 61441
-	// EventTocSelect wraps GST_EVENT_TOC_SELECT
+	// EventTocSelect wraps EVENT_TOC_SELECT
 	//
 	// A request for a new playback position based on TOC
 	//                        entry's UID.
 	EventTocSelect EventType = 64001
-	// EventSelectStreams wraps GST_EVENT_SELECT_STREAMS
+	// EventSelectStreams wraps EVENT_SELECT_STREAMS
 	//
 	// A request to select one or more streams (Since: 1.10)
 	EventSelectStreams EventType = 66561
-	// EventInstantRateSyncTime wraps GST_EVENT_INSTANT_RATE_SYNC_TIME
+	// EventInstantRateSyncTime wraps EVENT_INSTANT_RATE_SYNC_TIME
 	//
 	// Sent by the pipeline to notify elements that handle the
 	//                                    instant-rate-change event about the running-time when
 	//                                    the rate multiplier should be applied (or was applied). (Since: 1.18)
 	EventInstantRateSyncTime EventType = 66817
-	// EventCustomUpstream wraps GST_EVENT_CUSTOM_UPSTREAM
+	// EventCustomUpstream wraps EVENT_CUSTOM_UPSTREAM
 	//
 	// Upstream custom event
 	EventCustomUpstream EventType = 69121
-	// EventCustomDownstream wraps GST_EVENT_CUSTOM_DOWNSTREAM
+	// EventCustomDownstream wraps EVENT_CUSTOM_DOWNSTREAM
 	//
 	// Downstream custom event that travels in the
 	//                        data flow.
 	EventCustomDownstream EventType = 71686
-	// EventCustomDownstreamOob wraps GST_EVENT_CUSTOM_DOWNSTREAM_OOB
+	// EventCustomDownstreamOob wraps EVENT_CUSTOM_DOWNSTREAM_OOB
 	//
 	// Custom out-of-band downstream event.
 	EventCustomDownstreamOob EventType = 74242
-	// EventCustomDownstreamSticky wraps GST_EVENT_CUSTOM_DOWNSTREAM_STICKY
+	// EventCustomDownstreamSticky wraps EVENT_CUSTOM_DOWNSTREAM_STICKY
 	//
 	// Custom sticky downstream event.
 	EventCustomDownstreamSticky EventType = 76830
-	// EventCustomBoth wraps GST_EVENT_CUSTOM_BOTH
+	// EventCustomBoth wraps EVENT_CUSTOM_BOTH
 	//
 	// Custom upstream or downstream event.
 	//                         In-band when travelling downstream.
 	EventCustomBoth EventType = 79367
-	// EventCustomBothOob wraps GST_EVENT_CUSTOM_BOTH_OOB
+	// EventCustomBothOob wraps EVENT_CUSTOM_BOTH_OOB
 	//
 	// Custom upstream or downstream out-of-band event.
 	EventCustomBothOob EventType = 81923
@@ -1731,64 +1729,64 @@ func EventTypeToStickyOrdering(typ EventType) uint {
 type FlowReturn C.int
 
 const (
-	// FlowCustomSuccess2 wraps GST_FLOW_CUSTOM_SUCCESS_2
+	// FlowCustomSuccess2 wraps FLOW_CUSTOM_SUCCESS_2
 	//
 	// Pre-defined custom success code.
 	FlowCustomSuccess2 FlowReturn = 102
-	// FlowCustomSuccess1 wraps GST_FLOW_CUSTOM_SUCCESS_1
+	// FlowCustomSuccess1 wraps FLOW_CUSTOM_SUCCESS_1
 	//
 	// Pre-defined custom success code (define your
 	//                               custom success code to this to avoid compiler
 	//                               warnings).
 	FlowCustomSuccess1 FlowReturn = 101
-	// FlowCustomSuccess wraps GST_FLOW_CUSTOM_SUCCESS
+	// FlowCustomSuccess wraps FLOW_CUSTOM_SUCCESS
 	//
 	// Elements can use values starting from
 	//                               this (and higher) to define custom success
 	//                               codes.
 	FlowCustomSuccess FlowReturn = 100
-	// FlowOK wraps GST_FLOW_OK
+	// FlowOK wraps FLOW_OK
 	//
 	// Data passing was ok.
 	FlowOK FlowReturn = 0
-	// FlowNotLinked wraps GST_FLOW_NOT_LINKED
+	// FlowNotLinked wraps FLOW_NOT_LINKED
 	//
 	// Pad is not linked.
 	FlowNotLinked FlowReturn = -1
-	// FlowFlushing wraps GST_FLOW_FLUSHING
+	// FlowFlushing wraps FLOW_FLUSHING
 	//
 	// Pad is flushing.
 	FlowFlushing FlowReturn = -2
-	// FlowEos wraps GST_FLOW_EOS
+	// FlowEos wraps FLOW_EOS
 	//
 	// Pad is EOS.
 	FlowEos FlowReturn = -3
-	// FlowNotNegotiated wraps GST_FLOW_NOT_NEGOTIATED
+	// FlowNotNegotiated wraps FLOW_NOT_NEGOTIATED
 	//
 	// Pad is not negotiated.
 	FlowNotNegotiated FlowReturn = -4
-	// FlowError wraps GST_FLOW_ERROR
+	// FlowError wraps FLOW_ERROR
 	//
 	// Some (fatal) error occurred. Element generating
 	//                               this error should post an error message using
 	//                               GST_ELEMENT_ERROR() with more details.
 	FlowError FlowReturn = -5
-	// FlowNotSupported wraps GST_FLOW_NOT_SUPPORTED
+	// FlowNotSupported wraps FLOW_NOT_SUPPORTED
 	//
 	// This operation is not supported.
 	FlowNotSupported FlowReturn = -6
-	// FlowCustomError wraps GST_FLOW_CUSTOM_ERROR
+	// FlowCustomError wraps FLOW_CUSTOM_ERROR
 	//
 	// Elements can use values starting from
 	//                               this (and lower) to define custom error codes.
 	FlowCustomError FlowReturn = -100
-	// FlowCustomError1 wraps GST_FLOW_CUSTOM_ERROR_1
+	// FlowCustomError1 wraps FLOW_CUSTOM_ERROR_1
 	//
 	// Pre-defined custom error code (define your
 	//                               custom error code to this to avoid compiler
 	//                               warnings).
 	FlowCustomError1 FlowReturn = -101
-	// FlowCustomError2 wraps GST_FLOW_CUSTOM_ERROR_2
+	// FlowCustomError2 wraps FLOW_CUSTOM_ERROR_2
 	//
 	// Pre-defined custom error code.
 	FlowCustomError2 FlowReturn = -102
@@ -1833,31 +1831,31 @@ func (e FlowReturn) String() string {
 type Format C.int
 
 const (
-	// FormatUndefined wraps GST_FORMAT_UNDEFINED
+	// FormatUndefined wraps FORMAT_UNDEFINED
 	//
 	// undefined format
 	FormatUndefined Format = 0
-	// FormatDefault wraps GST_FORMAT_DEFAULT
+	// FormatDefault wraps FORMAT_DEFAULT
 	//
 	// the default format of the pad/element. This can be
 	//    samples for raw audio, frames/fields for raw video (some, but not all,
 	//    elements support this; use @GST_FORMAT_TIME if you don't have a good
 	//    reason to query for samples/frames)
 	FormatDefault Format = 1
-	// FormatBytes wraps GST_FORMAT_BYTES
+	// FormatBytes wraps FORMAT_BYTES
 	//
 	// bytes
 	FormatBytes Format = 2
-	// FormatTime wraps GST_FORMAT_TIME
+	// FormatTime wraps FORMAT_TIME
 	//
 	// time in nanoseconds
 	FormatTime Format = 3
-	// FormatBuffers wraps GST_FORMAT_BUFFERS
+	// FormatBuffers wraps FORMAT_BUFFERS
 	//
 	// buffers (few, if any, elements implement this as of
 	//     May 2009)
 	FormatBuffers Format = 4
-	// FormatPercent wraps GST_FORMAT_PERCENT
+	// FormatPercent wraps FORMAT_PERCENT
 	//
 	// percentage of stream (few, if any, elements implement
 	//     this as of May 2009)
@@ -2063,15 +2061,15 @@ func FormatToQuark(format Format) glib.Quark {
 type IteratorItem C.int
 
 const (
-	// IteratorItemSkip wraps GST_ITERATOR_ITEM_SKIP
+	// IteratorItemSkip wraps ITERATOR_ITEM_SKIP
 	//
 	// Skip this item
 	IteratorItemSkip IteratorItem = 0
-	// IteratorItemPass wraps GST_ITERATOR_ITEM_PASS
+	// IteratorItemPass wraps ITERATOR_ITEM_PASS
 	//
 	// Return item
 	IteratorItemPass IteratorItem = 1
-	// IteratorItemEnd wraps GST_ITERATOR_ITEM_END
+	// IteratorItemEnd wraps ITERATOR_ITEM_END
 	//
 	// Stop after this item.
 	IteratorItemEnd IteratorItem = 2
@@ -2106,19 +2104,19 @@ func (e IteratorItem) String() string {
 type IteratorResult C.int
 
 const (
-	// IteratorDone wraps GST_ITERATOR_DONE
+	// IteratorDone wraps ITERATOR_DONE
 	//
 	// No more items in the iterator
 	IteratorDone IteratorResult = 0
-	// IteratorOK wraps GST_ITERATOR_OK
+	// IteratorOK wraps ITERATOR_OK
 	//
 	// An item was retrieved
 	IteratorOK IteratorResult = 1
-	// IteratorResync wraps GST_ITERATOR_RESYNC
+	// IteratorResync wraps ITERATOR_RESYNC
 	//
 	// Datastructure changed while iterating
 	IteratorResync IteratorResult = 2
-	// IteratorError wraps GST_ITERATOR_ERROR
+	// IteratorError wraps ITERATOR_ERROR
 	//
 	// An error happened
 	IteratorError IteratorResult = 3
@@ -2155,33 +2153,33 @@ func (e IteratorResult) String() string {
 type LibraryError C.int
 
 const (
-	// LibraryErrorFailed wraps GST_LIBRARY_ERROR_FAILED
+	// LibraryErrorFailed wraps LIBRARY_ERROR_FAILED
 	//
 	// a general error which doesn't fit in any other
 	// category.  Make sure you add a custom message to the error call.
 	LibraryErrorFailed LibraryError = 1
-	// LibraryErrorTooLaZY wraps GST_LIBRARY_ERROR_TOO_LAZY
+	// LibraryErrorTooLaZY wraps LIBRARY_ERROR_TOO_LAZY
 	//
 	// do not use this except as a placeholder for
 	// deciding where to go while developing code.
 	LibraryErrorTooLaZY LibraryError = 2
-	// LibraryErrorInit wraps GST_LIBRARY_ERROR_INIT
+	// LibraryErrorInit wraps LIBRARY_ERROR_INIT
 	//
 	// used when the library could not be opened.
 	LibraryErrorInit LibraryError = 3
-	// LibraryErrorShutdown wraps GST_LIBRARY_ERROR_SHUTDOWN
+	// LibraryErrorShutdown wraps LIBRARY_ERROR_SHUTDOWN
 	//
 	// used when the library could not be closed.
 	LibraryErrorShutdown LibraryError = 4
-	// LibraryErrorSettings wraps GST_LIBRARY_ERROR_SETTINGS
+	// LibraryErrorSettings wraps LIBRARY_ERROR_SETTINGS
 	//
 	// used when the library doesn't accept settings.
 	LibraryErrorSettings LibraryError = 5
-	// LibraryErrorEncode wraps GST_LIBRARY_ERROR_ENCODE
+	// LibraryErrorEncode wraps LIBRARY_ERROR_ENCODE
 	//
 	// used when the library generated an encoding error.
 	LibraryErrorEncode LibraryError = 6
-	// LibraryErrorNumErrors wraps GST_LIBRARY_ERROR_NUM_ERRORS
+	// LibraryErrorNumErrors wraps LIBRARY_ERROR_NUM_ERRORS
 	//
 	// the number of library error types.
 	LibraryErrorNumErrors LibraryError = 7
@@ -2237,15 +2235,15 @@ func LibraryErrorQuark() glib.Quark {
 type PadDirection C.int
 
 const (
-	// PadUnknown wraps GST_PAD_UNKNOWN
+	// PadUnknown wraps PAD_UNKNOWN
 	//
 	// direction is unknown.
 	PadUnknown PadDirection = 0
-	// PadSrc wraps GST_PAD_SRC
+	// PadSrc wraps PAD_SRC
 	//
 	// the pad is a source pad.
 	PadSrc PadDirection = 1
-	// PadSink wraps GST_PAD_SINK
+	// PadSink wraps PAD_SINK
 	//
 	// the pad is a sink pad.
 	PadSink PadDirection = 2
@@ -2280,31 +2278,31 @@ func (e PadDirection) String() string {
 type PadLinkReturn C.int
 
 const (
-	// PadLinkOK wraps GST_PAD_LINK_OK
+	// PadLinkOK wraps PAD_LINK_OK
 	//
 	// link succeeded
 	PadLinkOK PadLinkReturn = 0
-	// PadLinkWrongHierarchy wraps GST_PAD_LINK_WRONG_HIERARCHY
+	// PadLinkWrongHierarchy wraps PAD_LINK_WRONG_HIERARCHY
 	//
 	// pads have no common grandparent
 	PadLinkWrongHierarchy PadLinkReturn = -1
-	// PadLinkWasLinked wraps GST_PAD_LINK_WAS_LINKED
+	// PadLinkWasLinked wraps PAD_LINK_WAS_LINKED
 	//
 	// pad was already linked
 	PadLinkWasLinked PadLinkReturn = -2
-	// PadLinkWrongDirection wraps GST_PAD_LINK_WRONG_DIRECTION
+	// PadLinkWrongDirection wraps PAD_LINK_WRONG_DIRECTION
 	//
 	// pads have wrong direction
 	PadLinkWrongDirection PadLinkReturn = -3
-	// PadLinkNoformat wraps GST_PAD_LINK_NOFORMAT
+	// PadLinkNoformat wraps PAD_LINK_NOFORMAT
 	//
 	// pads do not have common format
 	PadLinkNoformat PadLinkReturn = -4
-	// PadLinkNosched wraps GST_PAD_LINK_NOSCHED
+	// PadLinkNosched wraps PAD_LINK_NOSCHED
 	//
 	// pads cannot cooperate in scheduling
 	PadLinkNosched PadLinkReturn = -5
-	// PadLinkRefused wraps GST_PAD_LINK_REFUSED
+	// PadLinkRefused wraps PAD_LINK_REFUSED
 	//
 	// refused for some reason
 	PadLinkRefused PadLinkReturn = -6
@@ -2345,15 +2343,15 @@ func (e PadLinkReturn) String() string {
 type PadMode C.int
 
 const (
-	// PadModeNone wraps GST_PAD_MODE_NONE
+	// PadModeNone wraps PAD_MODE_NONE
 	//
 	// Pad will not handle dataflow
 	PadModeNone PadMode = 0
-	// PadModePush wraps GST_PAD_MODE_PUSH
+	// PadModePush wraps PAD_MODE_PUSH
 	//
 	// Pad handles dataflow in downstream push mode
 	PadModePush PadMode = 1
-	// PadModePull wraps GST_PAD_MODE_PULL
+	// PadModePull wraps PAD_MODE_PULL
 	//
 	// Pad handles dataflow in upstream pull mode
 	PadModePull PadMode = 2
@@ -2415,15 +2413,15 @@ func PadModeGetName(mode PadMode) string {
 type PadPresence C.int
 
 const (
-	// PadAlways wraps GST_PAD_ALWAYS
+	// PadAlways wraps PAD_ALWAYS
 	//
 	// the pad is always available
 	PadAlways PadPresence = 0
-	// PadSometimes wraps GST_PAD_SOMETIMES
+	// PadSometimes wraps PAD_SOMETIMES
 	//
 	// the pad will become available depending on the media stream
 	PadSometimes PadPresence = 1
-	// PadRequest wraps GST_PAD_REQUEST
+	// PadRequest wraps PAD_REQUEST
 	//
 	// the pad is only available on request with
 	//  gst_element_request_pad().
@@ -2459,7 +2457,7 @@ func (e PadPresence) String() string {
 type PadProbeReturn C.int
 
 const (
-	// PadProbeDrop wraps GST_PAD_PROBE_DROP
+	// PadProbeDrop wraps PAD_PROBE_DROP
 	//
 	// drop data in data probes. For push mode this means that
 	//        the data item is not sent downstream. For pull mode, it means that
@@ -2467,7 +2465,7 @@ const (
 	//        are called for this item and %GST_FLOW_OK or %TRUE is returned to the
 	//        caller.
 	PadProbeDrop PadProbeReturn = 0
-	// PadProbeOK wraps GST_PAD_PROBE_OK
+	// PadProbeOK wraps PAD_PROBE_OK
 	//
 	// normal probe return value. This leaves the probe in
 	//        place, and defers decisions about dropping or passing data to other
@@ -2475,19 +2473,19 @@ const (
 	//        for the probe type applies ('block' for blocking probes,
 	//        and 'pass' for non-blocking probes).
 	PadProbeOK PadProbeReturn = 1
-	// PadProbeRemove wraps GST_PAD_PROBE_REMOVE
+	// PadProbeRemove wraps PAD_PROBE_REMOVE
 	//
 	// remove this probe, passing the data. For blocking probes
 	//        this will cause data flow to unblock, unless there are also other
 	//        blocking probes installed.
 	PadProbeRemove PadProbeReturn = 2
-	// PadProbePass wraps GST_PAD_PROBE_PASS
+	// PadProbePass wraps PAD_PROBE_PASS
 	//
 	// pass the data item in the block probe and block on the
 	//        next item. Note, that if there are multiple pad probes installed and
 	//        any probe returns PASS, the data will be passed.
 	PadProbePass PadProbeReturn = 3
-	// PadProbeHandled wraps GST_PAD_PROBE_HANDLED
+	// PadProbeHandled wraps PAD_PROBE_HANDLED
 	//
 	// Data has been handled in the probe and will not be
 	//        forwarded further. For events and buffers this is the same behaviour as
@@ -2531,35 +2529,35 @@ func (e PadProbeReturn) String() string {
 type ParseError C.int
 
 const (
-	// ParseErrorSyntax wraps GST_PARSE_ERROR_SYNTAX
+	// ParseErrorSyntax wraps PARSE_ERROR_SYNTAX
 	//
 	// A syntax error occurred.
 	ParseErrorSyntax ParseError = 0
-	// ParseErrorNoSuchElement wraps GST_PARSE_ERROR_NO_SUCH_ELEMENT
+	// ParseErrorNoSuchElement wraps PARSE_ERROR_NO_SUCH_ELEMENT
 	//
 	// The description contained an unknown element
 	ParseErrorNoSuchElement ParseError = 1
-	// ParseErrorNoSuchProperty wraps GST_PARSE_ERROR_NO_SUCH_PROPERTY
+	// ParseErrorNoSuchProperty wraps PARSE_ERROR_NO_SUCH_PROPERTY
 	//
 	// An element did not have a specified property
 	ParseErrorNoSuchProperty ParseError = 2
-	// ParseErrorLink wraps GST_PARSE_ERROR_LINK
+	// ParseErrorLink wraps PARSE_ERROR_LINK
 	//
 	// There was an error linking two pads.
 	ParseErrorLink ParseError = 3
-	// ParseErrorCouldNotSetProperty wraps GST_PARSE_ERROR_COULD_NOT_SET_PROPERTY
+	// ParseErrorCouldNotSetProperty wraps PARSE_ERROR_COULD_NOT_SET_PROPERTY
 	//
 	// There was an error setting a property
 	ParseErrorCouldNotSetProperty ParseError = 4
-	// ParseErrorEmptyBin wraps GST_PARSE_ERROR_EMPTY_BIN
+	// ParseErrorEmptyBin wraps PARSE_ERROR_EMPTY_BIN
 	//
 	// An empty bin was specified.
 	ParseErrorEmptyBin ParseError = 5
-	// ParseErrorEmpty wraps GST_PARSE_ERROR_EMPTY
+	// ParseErrorEmpty wraps PARSE_ERROR_EMPTY
 	//
 	// An empty description was specified
 	ParseErrorEmpty ParseError = 6
-	// ParseErrorDelayedLink wraps GST_PARSE_ERROR_DELAYED_LINK
+	// ParseErrorDelayedLink wraps PARSE_ERROR_DELAYED_LINK
 	//
 	// A delayed link did not get resolved.
 	ParseErrorDelayedLink ParseError = 7
@@ -2618,15 +2616,15 @@ func ParseErrorQuark() glib.Quark {
 type PluginError C.int
 
 const (
-	// PluginErrorModule wraps GST_PLUGIN_ERROR_MODULE
+	// PluginErrorModule wraps PLUGIN_ERROR_MODULE
 	//
 	// The plugin could not be loaded
 	PluginErrorModule PluginError = 0
-	// PluginErrorDependencies wraps GST_PLUGIN_ERROR_DEPENDENCIES
+	// PluginErrorDependencies wraps PLUGIN_ERROR_DEPENDENCIES
 	//
 	// The plugin has unresolved dependencies
 	PluginErrorDependencies PluginError = 1
-	// PluginErrorNameMismatch wraps GST_PLUGIN_ERROR_NAME_MISMATCH
+	// PluginErrorNameMismatch wraps PLUGIN_ERROR_NAME_MISMATCH
 	//
 	// The plugin has already be loaded from a different file
 	PluginErrorNameMismatch PluginError = 2
@@ -2681,23 +2679,23 @@ func PluginErrorQuark() glib.Quark {
 type ProgressType C.int
 
 const (
-	// ProgressTypeStart wraps GST_PROGRESS_TYPE_START
+	// ProgressTypeStart wraps PROGRESS_TYPE_START
 	//
 	// A new task started.
 	ProgressTypeStart ProgressType = 0
-	// ProgressTypeContinue wraps GST_PROGRESS_TYPE_CONTINUE
+	// ProgressTypeContinue wraps PROGRESS_TYPE_CONTINUE
 	//
 	// A task completed and a new one continues.
 	ProgressTypeContinue ProgressType = 1
-	// ProgressTypeComplete wraps GST_PROGRESS_TYPE_COMPLETE
+	// ProgressTypeComplete wraps PROGRESS_TYPE_COMPLETE
 	//
 	// A task completed.
 	ProgressTypeComplete ProgressType = 2
-	// ProgressTypeCanceled wraps GST_PROGRESS_TYPE_CANCELED
+	// ProgressTypeCanceled wraps PROGRESS_TYPE_CANCELED
 	//
 	// A task was canceled.
 	ProgressTypeCanceled ProgressType = 3
-	// ProgressTypeError wraps GST_PROGRESS_TYPE_ERROR
+	// ProgressTypeError wraps PROGRESS_TYPE_ERROR
 	//
 	// A task caused an error. An error message is also
 	//          posted on the bus.
@@ -2735,21 +2733,21 @@ func (e ProgressType) String() string {
 type PromiseResult C.int
 
 const (
-	// PromiseResultPending wraps GST_PROMISE_RESULT_PENDING
+	// PromiseResultPending wraps PROMISE_RESULT_PENDING
 	//
 	// Initial state. Waiting for transition to any
 	// 	other state.
 	PromiseResultPending PromiseResult = 0
-	// PromiseResultInterrupted wraps GST_PROMISE_RESULT_INTERRUPTED
+	// PromiseResultInterrupted wraps PROMISE_RESULT_INTERRUPTED
 	//
 	// Interrupted by the consumer as it doesn't
 	// 	want the value anymore.
 	PromiseResultInterrupted PromiseResult = 1
-	// PromiseResultReplied wraps GST_PROMISE_RESULT_REPLIED
+	// PromiseResultReplied wraps PROMISE_RESULT_REPLIED
 	//
 	// A producer marked a reply
 	PromiseResultReplied PromiseResult = 2
-	// PromiseResultExpired wraps GST_PROMISE_RESULT_EXPIRED
+	// PromiseResultExpired wraps PROMISE_RESULT_EXPIRED
 	//
 	// The promise expired (the carrying object
 	// 	lost all refs) and the promise will never be fulfilled.
@@ -2787,20 +2785,20 @@ func (e PromiseResult) String() string {
 type QOSType C.int
 
 const (
-	// QosTypeOverflow wraps GST_QOS_TYPE_OVERFLOW
+	// QosTypeOverflow wraps QOS_TYPE_OVERFLOW
 	//
 	// The QoS event type that is produced when upstream
 	//    elements are producing data too quickly and the element can't keep up
 	//    processing the data. Upstream should reduce their production rate. This
 	//    type is also used when buffers arrive early or in time.
 	QosTypeOverflow QOSType = 0
-	// QosTypeUnderflow wraps GST_QOS_TYPE_UNDERFLOW
+	// QosTypeUnderflow wraps QOS_TYPE_UNDERFLOW
 	//
 	// The QoS event type that is produced when upstream
 	//    elements are producing data too slowly and need to speed up their
 	//    production rate.
 	QosTypeUnderflow QOSType = 1
-	// QosTypeThrottle wraps GST_QOS_TYPE_THROTTLE
+	// QosTypeThrottle wraps QOS_TYPE_THROTTLE
 	//
 	// The QoS event type that is produced when the
 	//    application enabled throttling to limit the data rate.
@@ -2836,88 +2834,88 @@ func (e QOSType) String() string {
 type QueryType C.int
 
 const (
-	// QueryUnknown wraps GST_QUERY_UNKNOWN
+	// QueryUnknown wraps QUERY_UNKNOWN
 	//
 	// unknown query type
 	QueryUnknown QueryType = 0
-	// QueryPosition wraps GST_QUERY_POSITION
+	// QueryPosition wraps QUERY_POSITION
 	//
 	// current position in stream
 	QueryPosition QueryType = 2563
-	// QueryDuration wraps GST_QUERY_DURATION
+	// QueryDuration wraps QUERY_DURATION
 	//
 	// total duration of the stream
 	QueryDuration QueryType = 5123
-	// QueryLatency wraps GST_QUERY_LATENCY
+	// QueryLatency wraps QUERY_LATENCY
 	//
 	// latency of stream
 	QueryLatency QueryType = 7683
-	// QueryJitter wraps GST_QUERY_JITTER
+	// QueryJitter wraps QUERY_JITTER
 	//
 	// current jitter of stream
 	QueryJitter QueryType = 10243
-	// QueryRate wraps GST_QUERY_RATE
+	// QueryRate wraps QUERY_RATE
 	//
 	// current rate of the stream
 	QueryRate QueryType = 12803
-	// QuerySeeking wraps GST_QUERY_SEEKING
+	// QuerySeeking wraps QUERY_SEEKING
 	//
 	// seeking capabilities
 	QuerySeeking QueryType = 15363
-	// QuerySegment wraps GST_QUERY_SEGMENT
+	// QuerySegment wraps QUERY_SEGMENT
 	//
 	// segment start/stop positions
 	QuerySegment QueryType = 17923
-	// QueryConvert wraps GST_QUERY_CONVERT
+	// QueryConvert wraps QUERY_CONVERT
 	//
 	// convert values between formats
 	QueryConvert QueryType = 20483
-	// QueryFormats wraps GST_QUERY_FORMATS
+	// QueryFormats wraps QUERY_FORMATS
 	//
 	// query supported formats for convert
 	QueryFormats QueryType = 23043
-	// QueryBuffering wraps GST_QUERY_BUFFERING
+	// QueryBuffering wraps QUERY_BUFFERING
 	//
 	// query available media for efficient seeking.
 	QueryBuffering QueryType = 28163
-	// QueryCustom wraps GST_QUERY_CUSTOM
+	// QueryCustom wraps QUERY_CUSTOM
 	//
 	// a custom application or element defined query.
 	QueryCustom QueryType = 30723
-	// QueryURI wraps GST_QUERY_URI
+	// QueryURI wraps QUERY_URI
 	//
 	// query the URI of the source or sink.
 	QueryURI QueryType = 33283
-	// QueryAllocation wraps GST_QUERY_ALLOCATION
+	// QueryAllocation wraps QUERY_ALLOCATION
 	//
 	// the buffer allocation properties
 	QueryAllocation QueryType = 35846
-	// QueryScheduling wraps GST_QUERY_SCHEDULING
+	// QueryScheduling wraps QUERY_SCHEDULING
 	//
 	// the scheduling properties
 	QueryScheduling QueryType = 38401
-	// QueryAcceptCaps wraps GST_QUERY_ACCEPT_CAPS
+	// QueryAcceptCaps wraps QUERY_ACCEPT_CAPS
 	//
 	// the accept caps query
 	QueryAcceptCaps QueryType = 40963
-	// QueryCaps wraps GST_QUERY_CAPS
+	// QueryCaps wraps QUERY_CAPS
 	//
 	// the caps query
 	QueryCaps QueryType = 43523
-	// QueryDrain wraps GST_QUERY_DRAIN
+	// QueryDrain wraps QUERY_DRAIN
 	//
 	// wait till all serialized data is consumed downstream
 	QueryDrain QueryType = 46086
-	// QueryContext wraps GST_QUERY_CONTEXT
+	// QueryContext wraps QUERY_CONTEXT
 	//
 	// query the pipeline-local context from
 	//     downstream or upstream (since 1.2)
 	QueryContext QueryType = 48643
-	// QueryBitrate wraps GST_QUERY_BITRATE
+	// QueryBitrate wraps QUERY_BITRATE
 	//
 	// the bitrate query (since 1.16)
 	QueryBitrate QueryType = 51202
-	// QuerySelectable wraps GST_QUERY_SELECTABLE
+	// QuerySelectable wraps QUERY_SELECTABLE
 	//
 	// Query stream selection capability.
 	QuerySelectable QueryType = 53763
@@ -3057,19 +3055,19 @@ func QueryTypeToQuark(typ QueryType) glib.Quark {
 type Rank C.int
 
 const (
-	// RankNone wraps GST_RANK_NONE
+	// RankNone wraps RANK_NONE
 	//
 	// will be chosen last or not at all
 	RankNone Rank = 0
-	// RankMarginal wraps GST_RANK_MARGINAL
+	// RankMarginal wraps RANK_MARGINAL
 	//
 	// unlikely to be chosen
 	RankMarginal Rank = 64
-	// RankSecondary wraps GST_RANK_SECONDARY
+	// RankSecondary wraps RANK_SECONDARY
 	//
 	// likely to be chosen
 	RankSecondary Rank = 128
-	// RankPrimary wraps GST_RANK_PRIMARY
+	// RankPrimary wraps RANK_PRIMARY
 	//
 	// will be chosen first
 	RankPrimary Rank = 256
@@ -3107,72 +3105,72 @@ func (e Rank) String() string {
 type ResourceError C.int
 
 const (
-	// ResourceErrorFailed wraps GST_RESOURCE_ERROR_FAILED
+	// ResourceErrorFailed wraps RESOURCE_ERROR_FAILED
 	//
 	// a general error which doesn't fit in any other
 	// category.  Make sure you add a custom message to the error call.
 	ResourceErrorFailed ResourceError = 1
-	// ResourceErrorTooLaZY wraps GST_RESOURCE_ERROR_TOO_LAZY
+	// ResourceErrorTooLaZY wraps RESOURCE_ERROR_TOO_LAZY
 	//
 	// do not use this except as a placeholder for
 	// deciding where to go while developing code.
 	ResourceErrorTooLaZY ResourceError = 2
-	// ResourceErrorNotFound wraps GST_RESOURCE_ERROR_NOT_FOUND
+	// ResourceErrorNotFound wraps RESOURCE_ERROR_NOT_FOUND
 	//
 	// used when the resource could not be found.
 	ResourceErrorNotFound ResourceError = 3
-	// ResourceErrorBusy wraps GST_RESOURCE_ERROR_BUSY
+	// ResourceErrorBusy wraps RESOURCE_ERROR_BUSY
 	//
 	// used when resource is busy.
 	ResourceErrorBusy ResourceError = 4
-	// ResourceErrorOpenRead wraps GST_RESOURCE_ERROR_OPEN_READ
+	// ResourceErrorOpenRead wraps RESOURCE_ERROR_OPEN_READ
 	//
 	// used when resource fails to open for reading.
 	ResourceErrorOpenRead ResourceError = 5
-	// ResourceErrorOpenWrite wraps GST_RESOURCE_ERROR_OPEN_WRITE
+	// ResourceErrorOpenWrite wraps RESOURCE_ERROR_OPEN_WRITE
 	//
 	// used when resource fails to open for writing.
 	ResourceErrorOpenWrite ResourceError = 6
-	// ResourceErrorOpenReadWrite wraps GST_RESOURCE_ERROR_OPEN_READ_WRITE
+	// ResourceErrorOpenReadWrite wraps RESOURCE_ERROR_OPEN_READ_WRITE
 	//
 	// used when resource cannot be opened for
 	// both reading and writing, or either (but unspecified which).
 	ResourceErrorOpenReadWrite ResourceError = 7
-	// ResourceErrorClose wraps GST_RESOURCE_ERROR_CLOSE
+	// ResourceErrorClose wraps RESOURCE_ERROR_CLOSE
 	//
 	// used when the resource can't be closed.
 	ResourceErrorClose ResourceError = 8
-	// ResourceErrorRead wraps GST_RESOURCE_ERROR_READ
+	// ResourceErrorRead wraps RESOURCE_ERROR_READ
 	//
 	// used when the resource can't be read from.
 	ResourceErrorRead ResourceError = 9
-	// ResourceErrorWrite wraps GST_RESOURCE_ERROR_WRITE
+	// ResourceErrorWrite wraps RESOURCE_ERROR_WRITE
 	//
 	// used when the resource can't be written to.
 	ResourceErrorWrite ResourceError = 10
-	// ResourceErrorSeek wraps GST_RESOURCE_ERROR_SEEK
+	// ResourceErrorSeek wraps RESOURCE_ERROR_SEEK
 	//
 	// used when a seek on the resource fails.
 	ResourceErrorSeek ResourceError = 11
-	// ResourceErrorSync wraps GST_RESOURCE_ERROR_SYNC
+	// ResourceErrorSync wraps RESOURCE_ERROR_SYNC
 	//
 	// used when a synchronize on the resource fails.
 	ResourceErrorSync ResourceError = 12
-	// ResourceErrorSettings wraps GST_RESOURCE_ERROR_SETTINGS
+	// ResourceErrorSettings wraps RESOURCE_ERROR_SETTINGS
 	//
 	// used when settings can't be manipulated on.
 	ResourceErrorSettings ResourceError = 13
-	// ResourceErrorNoSpaceLeft wraps GST_RESOURCE_ERROR_NO_SPACE_LEFT
+	// ResourceErrorNoSpaceLeft wraps RESOURCE_ERROR_NO_SPACE_LEFT
 	//
 	// used when the resource has no space left.
 	ResourceErrorNoSpaceLeft ResourceError = 14
-	// ResourceErrorNotAuthorized wraps GST_RESOURCE_ERROR_NOT_AUTHORIZED
+	// ResourceErrorNotAuthorized wraps RESOURCE_ERROR_NOT_AUTHORIZED
 	//
 	// used when the resource can't be opened
 	//                                     due to missing authorization.
 	//                                     (Since: 1.2.4)
 	ResourceErrorNotAuthorized ResourceError = 15
-	// ResourceErrorNumErrors wraps GST_RESOURCE_ERROR_NUM_ERRORS
+	// ResourceErrorNumErrors wraps RESOURCE_ERROR_NUM_ERRORS
 	//
 	// the number of resource error types.
 	ResourceErrorNumErrors ResourceError = 16
@@ -3237,15 +3235,15 @@ func ResourceErrorQuark() glib.Quark {
 type SearchMode C.int
 
 const (
-	// SearchModeExact wraps GST_SEARCH_MODE_EXACT
+	// SearchModeExact wraps SEARCH_MODE_EXACT
 	//
 	// Only search for exact matches.
 	SearchModeExact SearchMode = 0
-	// SearchModeBefore wraps GST_SEARCH_MODE_BEFORE
+	// SearchModeBefore wraps SEARCH_MODE_BEFORE
 	//
 	// Search for an exact match or the element just before.
 	SearchModeBefore SearchMode = 1
-	// SearchModeAfter wraps GST_SEARCH_MODE_AFTER
+	// SearchModeAfter wraps SEARCH_MODE_AFTER
 	//
 	// Search for an exact match or the element just after.
 	SearchModeAfter SearchMode = 2
@@ -3281,15 +3279,15 @@ func (e SearchMode) String() string {
 type SeekType C.int
 
 const (
-	// SeekTypeNone wraps GST_SEEK_TYPE_NONE
+	// SeekTypeNone wraps SEEK_TYPE_NONE
 	//
 	// no change in position is required
 	SeekTypeNone SeekType = 0
-	// SeekTypeSet wraps GST_SEEK_TYPE_SET
+	// SeekTypeSet wraps SEEK_TYPE_SET
 	//
 	// absolute position is requested
 	SeekTypeSet SeekType = 1
-	// SeekTypeEnd wraps GST_SEEK_TYPE_END
+	// SeekTypeEnd wraps SEEK_TYPE_END
 	//
 	// relative position to duration is requested
 	SeekTypeEnd SeekType = 2
@@ -3325,25 +3323,25 @@ func (e SeekType) String() string {
 type State C.int
 
 const (
-	// StateVoidPending wraps GST_STATE_VOID_PENDING
+	// StateVoidPending wraps STATE_VOID_PENDING
 	//
 	// no pending state.
 	StateVoidPending State = 0
-	// StateNull wraps GST_STATE_NULL
+	// StateNull wraps STATE_NULL
 	//
 	// the NULL state or initial state of an element.
 	StateNull State = 1
-	// StateReady wraps GST_STATE_READY
+	// StateReady wraps STATE_READY
 	//
 	// the element is ready to go to PAUSED.
 	StateReady State = 2
-	// StatePaused wraps GST_STATE_PAUSED
+	// StatePaused wraps STATE_PAUSED
 	//
 	// the element is PAUSED, it is ready to accept and
 	//                          process data. Sink elements however only accept one
 	//                          buffer and then block.
 	StatePaused State = 3
-	// StatePlaying wraps GST_STATE_PLAYING
+	// StatePlaying wraps STATE_PLAYING
 	//
 	// the element is PLAYING, the #GstClock is running and
 	//                          the data is flowing.
@@ -3383,7 +3381,7 @@ func (e State) String() string {
 type StateChange C.int
 
 const (
-	// StateChangeNullToReady wraps GST_STATE_CHANGE_NULL_TO_READY
+	// StateChangeNullToReady wraps STATE_CHANGE_NULL_TO_READY
 	//
 	// state change from NULL to READY.
 	//   * The element must check if the resources it needs are available. Device
@@ -3391,7 +3389,7 @@ const (
 	//     caps.
 	//   * The element opens the device (in case feature need to be probed).
 	StateChangeNullToReady StateChange = 10
-	// StateChangeReadyToPaused wraps GST_STATE_CHANGE_READY_TO_PAUSED
+	// StateChangeReadyToPaused wraps STATE_CHANGE_READY_TO_PAUSED
 	//
 	// state change from READY to PAUSED.
 	//   * The element pads are activated in order to receive data in PAUSED.
@@ -3404,7 +3402,7 @@ const (
 	//   * A pipeline resets the running_time to 0.
 	//   * Live sources return %GST_STATE_CHANGE_NO_PREROLL and don't generate data.
 	StateChangeReadyToPaused StateChange = 19
-	// StateChangePausedToPlaying wraps GST_STATE_CHANGE_PAUSED_TO_PLAYING
+	// StateChangePausedToPlaying wraps STATE_CHANGE_PAUSED_TO_PLAYING
 	//
 	// state change from PAUSED to PLAYING.
 	//   * Most elements ignore this state change.
@@ -3422,7 +3420,7 @@ const (
 	//     sometimes pads.
 	//   * Live sources start generating data and return %GST_STATE_CHANGE_SUCCESS.
 	StateChangePausedToPlaying StateChange = 28
-	// StateChangePlayingToPaused wraps GST_STATE_CHANGE_PLAYING_TO_PAUSED
+	// StateChangePlayingToPaused wraps STATE_CHANGE_PLAYING_TO_PAUSED
 	//
 	// state change from PLAYING to PAUSED.
 	//   * Most elements ignore this state change.
@@ -3438,7 +3436,7 @@ const (
 	//     #GstBin containers.
 	//   * Live sources stop generating data and return %GST_STATE_CHANGE_NO_PREROLL.
 	StateChangePlayingToPaused StateChange = 35
-	// StateChangePausedToReady wraps GST_STATE_CHANGE_PAUSED_TO_READY
+	// StateChangePausedToReady wraps STATE_CHANGE_PAUSED_TO_READY
 	//
 	// state change from PAUSED to READY.
 	//   * Sinks unblock any waits in the preroll.
@@ -3449,29 +3447,29 @@ const (
 	//   * The sink forgets all negotiated formats
 	//   * Elements remove all sometimes pads
 	StateChangePausedToReady StateChange = 26
-	// StateChangeReadyToNull wraps GST_STATE_CHANGE_READY_TO_NULL
+	// StateChangeReadyToNull wraps STATE_CHANGE_READY_TO_NULL
 	//
 	// state change from READY to NULL.
 	//   * Elements close devices
 	//   * Elements reset any internal state.
 	StateChangeReadyToNull StateChange = 17
-	// StateChangeNullToNull wraps GST_STATE_CHANGE_NULL_TO_NULL
+	// StateChangeNullToNull wraps STATE_CHANGE_NULL_TO_NULL
 	//
 	// state change from NULL to NULL. (Since: 1.14)
 	StateChangeNullToNull StateChange = 9
-	// StateChangeReadyToReady wraps GST_STATE_CHANGE_READY_TO_READY
+	// StateChangeReadyToReady wraps STATE_CHANGE_READY_TO_READY
 	//
 	// state change from READY to READY,
 	// This might happen when going to PAUSED asynchronously failed, in that case
 	// elements should make sure they are in a proper, coherent READY state. (Since: 1.14)
 	StateChangeReadyToReady StateChange = 18
-	// StateChangePausedToPaused wraps GST_STATE_CHANGE_PAUSED_TO_PAUSED
+	// StateChangePausedToPaused wraps STATE_CHANGE_PAUSED_TO_PAUSED
 	//
 	// state change from PAUSED to PAUSED.
 	// This might happen when elements were in PLAYING state and 'lost state',
 	// they should make sure to go back to real 'PAUSED' state (prerolling for example). (Since: 1.14)
 	StateChangePausedToPaused StateChange = 27
-	// StateChangePlayingToPlaying wraps GST_STATE_CHANGE_PLAYING_TO_PLAYING
+	// StateChangePlayingToPlaying wraps STATE_CHANGE_PLAYING_TO_PLAYING
 	//
 	// state change from PLAYING to PLAYING. (Since: 1.14)
 	StateChangePlayingToPlaying StateChange = 36
@@ -3541,19 +3539,19 @@ func StateChangeGetName(transition StateChange) string {
 type StateChangeReturn C.int
 
 const (
-	// StateChangeFailure wraps GST_STATE_CHANGE_FAILURE
+	// StateChangeFailure wraps STATE_CHANGE_FAILURE
 	//
 	// the state change failed
 	StateChangeFailure StateChangeReturn = 0
-	// StateChangeSuccess wraps GST_STATE_CHANGE_SUCCESS
+	// StateChangeSuccess wraps STATE_CHANGE_SUCCESS
 	//
 	// the state change succeeded
 	StateChangeSuccess StateChangeReturn = 1
-	// StateChangeAsync wraps GST_STATE_CHANGE_ASYNC
+	// StateChangeAsync wraps STATE_CHANGE_ASYNC
 	//
 	// the state change will happen asynchronously
 	StateChangeAsync StateChangeReturn = 2
-	// StateChangeNoPreroll wraps GST_STATE_CHANGE_NO_PREROLL
+	// StateChangeNoPreroll wraps STATE_CHANGE_NO_PREROLL
 	//
 	// the state change succeeded but the element
 	//                               cannot produce data in %GST_STATE_PAUSED.
@@ -3593,68 +3591,68 @@ func (e StateChangeReturn) String() string {
 type StreamError C.int
 
 const (
-	// StreamErrorFailed wraps GST_STREAM_ERROR_FAILED
+	// StreamErrorFailed wraps STREAM_ERROR_FAILED
 	//
 	// a general error which doesn't fit in any other
 	// category.  Make sure you add a custom message to the error call.
 	StreamErrorFailed StreamError = 1
-	// StreamErrorTooLaZY wraps GST_STREAM_ERROR_TOO_LAZY
+	// StreamErrorTooLaZY wraps STREAM_ERROR_TOO_LAZY
 	//
 	// do not use this except as a placeholder for
 	// deciding where to go while developing code.
 	StreamErrorTooLaZY StreamError = 2
-	// StreamErrorNotImplemented wraps GST_STREAM_ERROR_NOT_IMPLEMENTED
+	// StreamErrorNotImplemented wraps STREAM_ERROR_NOT_IMPLEMENTED
 	//
 	// use this when you do not want to implement
 	// this functionality yet.
 	StreamErrorNotImplemented StreamError = 3
-	// StreamErrorTypeNotFound wraps GST_STREAM_ERROR_TYPE_NOT_FOUND
+	// StreamErrorTypeNotFound wraps STREAM_ERROR_TYPE_NOT_FOUND
 	//
 	// used when the element doesn't know the
 	// stream's type.
 	StreamErrorTypeNotFound StreamError = 4
-	// StreamErrorWrongType wraps GST_STREAM_ERROR_WRONG_TYPE
+	// StreamErrorWrongType wraps STREAM_ERROR_WRONG_TYPE
 	//
 	// used when the element doesn't handle this type
 	// of stream.
 	StreamErrorWrongType StreamError = 5
-	// StreamErrorCodecNotFound wraps GST_STREAM_ERROR_CODEC_NOT_FOUND
+	// StreamErrorCodecNotFound wraps STREAM_ERROR_CODEC_NOT_FOUND
 	//
 	// used when there's no codec to handle the
 	// stream's type.
 	StreamErrorCodecNotFound StreamError = 6
-	// StreamErrorDecode wraps GST_STREAM_ERROR_DECODE
+	// StreamErrorDecode wraps STREAM_ERROR_DECODE
 	//
 	// used when decoding fails.
 	StreamErrorDecode StreamError = 7
-	// StreamErrorEncode wraps GST_STREAM_ERROR_ENCODE
+	// StreamErrorEncode wraps STREAM_ERROR_ENCODE
 	//
 	// used when encoding fails.
 	StreamErrorEncode StreamError = 8
-	// StreamErrorDemux wraps GST_STREAM_ERROR_DEMUX
+	// StreamErrorDemux wraps STREAM_ERROR_DEMUX
 	//
 	// used when demuxing fails.
 	StreamErrorDemux StreamError = 9
-	// StreamErrorMux wraps GST_STREAM_ERROR_MUX
+	// StreamErrorMux wraps STREAM_ERROR_MUX
 	//
 	// used when muxing fails.
 	StreamErrorMux StreamError = 10
-	// StreamErrorFormat wraps GST_STREAM_ERROR_FORMAT
+	// StreamErrorFormat wraps STREAM_ERROR_FORMAT
 	//
 	// used when the stream is of the wrong format
 	// (for example, wrong caps).
 	StreamErrorFormat StreamError = 11
-	// StreamErrorDecrypt wraps GST_STREAM_ERROR_DECRYPT
+	// StreamErrorDecrypt wraps STREAM_ERROR_DECRYPT
 	//
 	// used when the stream is encrypted and can't be
 	// decrypted because this is not supported by the element.
 	StreamErrorDecrypt StreamError = 12
-	// StreamErrorDecryptNokey wraps GST_STREAM_ERROR_DECRYPT_NOKEY
+	// StreamErrorDecryptNokey wraps STREAM_ERROR_DECRYPT_NOKEY
 	//
 	// used when the stream is encrypted and
 	// can't be decrypted because no suitable key is available.
 	StreamErrorDecryptNokey StreamError = 13
-	// StreamErrorNumErrors wraps GST_STREAM_ERROR_NUM_ERRORS
+	// StreamErrorNumErrors wraps STREAM_ERROR_NUM_ERRORS
 	//
 	// the number of stream error types.
 	StreamErrorNumErrors StreamError = 14
@@ -3718,31 +3716,31 @@ func StreamErrorQuark() glib.Quark {
 type StreamStatusType C.int
 
 const (
-	// StreamStatusTypeCreate wraps GST_STREAM_STATUS_TYPE_CREATE
+	// StreamStatusTypeCreate wraps STREAM_STATUS_TYPE_CREATE
 	//
 	// A new thread need to be created.
 	StreamStatusTypeCreate StreamStatusType = 0
-	// StreamStatusTypeEnter wraps GST_STREAM_STATUS_TYPE_ENTER
+	// StreamStatusTypeEnter wraps STREAM_STATUS_TYPE_ENTER
 	//
 	// a thread entered its loop function
 	StreamStatusTypeEnter StreamStatusType = 1
-	// StreamStatusTypeLeave wraps GST_STREAM_STATUS_TYPE_LEAVE
+	// StreamStatusTypeLeave wraps STREAM_STATUS_TYPE_LEAVE
 	//
 	// a thread left its loop function
 	StreamStatusTypeLeave StreamStatusType = 2
-	// StreamStatusTypeDestroy wraps GST_STREAM_STATUS_TYPE_DESTROY
+	// StreamStatusTypeDestroy wraps STREAM_STATUS_TYPE_DESTROY
 	//
 	// a thread is destroyed
 	StreamStatusTypeDestroy StreamStatusType = 3
-	// StreamStatusTypeStart wraps GST_STREAM_STATUS_TYPE_START
+	// StreamStatusTypeStart wraps STREAM_STATUS_TYPE_START
 	//
 	// a thread is started
 	StreamStatusTypeStart StreamStatusType = 8
-	// StreamStatusTypePause wraps GST_STREAM_STATUS_TYPE_PAUSE
+	// StreamStatusTypePause wraps STREAM_STATUS_TYPE_PAUSE
 	//
 	// a thread is paused
 	StreamStatusTypePause StreamStatusType = 9
-	// StreamStatusTypeStop wraps GST_STREAM_STATUS_TYPE_STOP
+	// StreamStatusTypeStop wraps STREAM_STATUS_TYPE_STOP
 	//
 	// a thread is stopped
 	StreamStatusTypeStop StreamStatusType = 10
@@ -3781,11 +3779,11 @@ func (e StreamStatusType) String() string {
 type StructureChangeType C.int
 
 const (
-	// StructureChangeTypePadLink wraps GST_STRUCTURE_CHANGE_TYPE_PAD_LINK
+	// StructureChangeTypePadLink wraps STRUCTURE_CHANGE_TYPE_PAD_LINK
 	//
 	// Pad linking is starting or done.
 	StructureChangeTypePadLink StructureChangeType = 0
-	// StructureChangeTypePadUnlink wraps GST_STRUCTURE_CHANGE_TYPE_PAD_UNLINK
+	// StructureChangeTypePadUnlink wraps STRUCTURE_CHANGE_TYPE_PAD_UNLINK
 	//
 	// Pad unlinking is starting or done.
 	StructureChangeTypePadUnlink StructureChangeType = 1
@@ -3819,23 +3817,23 @@ func (e StructureChangeType) String() string {
 type TagFlag C.int
 
 const (
-	// TagFlagUndefined wraps GST_TAG_FLAG_UNDEFINED
+	// TagFlagUndefined wraps TAG_FLAG_UNDEFINED
 	//
 	// undefined flag
 	TagFlagUndefined TagFlag = 0
-	// TagFlagMeta wraps GST_TAG_FLAG_META
+	// TagFlagMeta wraps TAG_FLAG_META
 	//
 	// tag is meta data
 	TagFlagMeta TagFlag = 1
-	// TagFlagEncoded wraps GST_TAG_FLAG_ENCODED
+	// TagFlagEncoded wraps TAG_FLAG_ENCODED
 	//
 	// tag is encoded
 	TagFlagEncoded TagFlag = 2
-	// TagFlagDecoded wraps GST_TAG_FLAG_DECODED
+	// TagFlagDecoded wraps TAG_FLAG_DECODED
 	//
 	// tag is decoded
 	TagFlagDecoded TagFlag = 3
-	// TagFlagCount wraps GST_TAG_FLAG_COUNT
+	// TagFlagCount wraps TAG_FLAG_COUNT
 	//
 	// number of tag flags
 	TagFlagCount TagFlag = 4
@@ -3878,44 +3876,44 @@ func (e TagFlag) String() string {
 // 
 // | merge mode  | A + B | A + !B | !A + B | !A + !B |
 // | ----------- | ----- | ------ | ------ | ------- |
-// | REPLACE_ALL | B     | ø      | B      | ø       |
-// | REPLACE     | B     | A      | B      | ø       |
-// | APPEND      | A, B  | A      | B      | ø       |
-// | PREPEND     | B, A  | A      | B      | ø       |
-// | KEEP        | A     | A      | B      | ø       |
-// | KEEP_ALL    | A     | A      | ø      | ø       |
+// | REPLACE_ALL | B     | &#xF8;      | B      | &#xF8;       |
+// | REPLACE     | B     | A      | B      | &#xF8;       |
+// | APPEND      | A, B  | A      | B      | &#xF8;       |
+// | PREPEND     | B, A  | A      | B      | &#xF8;       |
+// | KEEP        | A     | A      | B      | &#xF8;       |
+// | KEEP_ALL    | A     | A      | &#xF8;      | &#xF8;       |
 type TagMergeMode C.int
 
 const (
-	// TagMergeUndefined wraps GST_TAG_MERGE_UNDEFINED
+	// TagMergeUndefined wraps TAG_MERGE_UNDEFINED
 	//
 	// undefined merge mode
 	TagMergeUndefined TagMergeMode = 0
-	// TagMergeReplaceAll wraps GST_TAG_MERGE_REPLACE_ALL
+	// TagMergeReplaceAll wraps TAG_MERGE_REPLACE_ALL
 	//
 	// replace all tags (clear list and append)
 	TagMergeReplaceAll TagMergeMode = 1
-	// TagMergeReplace wraps GST_TAG_MERGE_REPLACE
+	// TagMergeReplace wraps TAG_MERGE_REPLACE
 	//
 	// replace tags
 	TagMergeReplace TagMergeMode = 2
-	// TagMergeAppend wraps GST_TAG_MERGE_APPEND
+	// TagMergeAppend wraps TAG_MERGE_APPEND
 	//
 	// append tags
 	TagMergeAppend TagMergeMode = 3
-	// TagMergePrepend wraps GST_TAG_MERGE_PREPEND
+	// TagMergePrepend wraps TAG_MERGE_PREPEND
 	//
 	// prepend tags
 	TagMergePrepend TagMergeMode = 4
-	// TagMergeKeep wraps GST_TAG_MERGE_KEEP
+	// TagMergeKeep wraps TAG_MERGE_KEEP
 	//
 	// keep existing tags
 	TagMergeKeep TagMergeMode = 5
-	// TagMergeKeepAll wraps GST_TAG_MERGE_KEEP_ALL
+	// TagMergeKeepAll wraps TAG_MERGE_KEEP_ALL
 	//
 	// keep all existing tags
 	TagMergeKeepAll TagMergeMode = 6
-	// TagMergeCount wraps GST_TAG_MERGE_COUNT
+	// TagMergeCount wraps TAG_MERGE_COUNT
 	//
 	// the number of merge modes
 	TagMergeCount TagMergeMode = 7
@@ -3956,11 +3954,11 @@ func (e TagMergeMode) String() string {
 type TagScope C.int
 
 const (
-	// TagScopeStream wraps GST_TAG_SCOPE_STREAM
+	// TagScopeStream wraps TAG_SCOPE_STREAM
 	//
 	// tags specific to this single stream
 	TagScopeStream TagScope = 0
-	// TagScopeGlobal wraps GST_TAG_SCOPE_GLOBAL
+	// TagScopeGlobal wraps TAG_SCOPE_GLOBAL
 	//
 	// global tags for the complete medium
 	TagScopeGlobal TagScope = 1
@@ -3994,15 +3992,15 @@ func (e TagScope) String() string {
 type TaskState C.int
 
 const (
-	// TaskStarted wraps GST_TASK_STARTED
+	// TaskStarted wraps TASK_STARTED
 	//
 	// the task is started and running
 	TaskStarted TaskState = 0
-	// TaskStopped wraps GST_TASK_STOPPED
+	// TaskStopped wraps TASK_STOPPED
 	//
 	// the task is stopped
 	TaskStopped TaskState = 1
-	// TaskPaused wraps GST_TASK_PAUSED
+	// TaskPaused wraps TASK_PAUSED
 	//
 	// the task is paused
 	TaskPaused TaskState = 2
@@ -4039,31 +4037,31 @@ func (e TaskState) String() string {
 type TocEntryType C.int
 
 const (
-	// TocEntryTypeAngle wraps GST_TOC_ENTRY_TYPE_ANGLE
+	// TocEntryTypeAngle wraps TOC_ENTRY_TYPE_ANGLE
 	//
 	// entry is an angle (i.e. an alternative)
 	TocEntryTypeAngle TocEntryType = -3
-	// TocEntryTypeVersion wraps GST_TOC_ENTRY_TYPE_VERSION
+	// TocEntryTypeVersion wraps TOC_ENTRY_TYPE_VERSION
 	//
 	// entry is a version (i.e. alternative)
 	TocEntryTypeVersion TocEntryType = -2
-	// TocEntryTypeEdition wraps GST_TOC_ENTRY_TYPE_EDITION
+	// TocEntryTypeEdition wraps TOC_ENTRY_TYPE_EDITION
 	//
 	// entry is an edition (i.e. alternative)
 	TocEntryTypeEdition TocEntryType = -1
-	// TocEntryTypeInvalid wraps GST_TOC_ENTRY_TYPE_INVALID
+	// TocEntryTypeInvalid wraps TOC_ENTRY_TYPE_INVALID
 	//
 	// invalid entry type value
 	TocEntryTypeInvalid TocEntryType = 0
-	// TocEntryTypeTitle wraps GST_TOC_ENTRY_TYPE_TITLE
+	// TocEntryTypeTitle wraps TOC_ENTRY_TYPE_TITLE
 	//
 	// entry is a title (i.e. a part of a sequence)
 	TocEntryTypeTitle TocEntryType = 1
-	// TocEntryTypeTrack wraps GST_TOC_ENTRY_TYPE_TRACK
+	// TocEntryTypeTrack wraps TOC_ENTRY_TYPE_TRACK
 	//
 	// entry is a track (i.e. a part of a sequence)
 	TocEntryTypeTrack TocEntryType = 2
-	// TocEntryTypeChapter wraps GST_TOC_ENTRY_TYPE_CHAPTER
+	// TocEntryTypeChapter wraps TOC_ENTRY_TYPE_CHAPTER
 	//
 	// entry is a chapter (i.e. a part of a sequence)
 	TocEntryTypeChapter TocEntryType = 3
@@ -4130,19 +4128,19 @@ func TocEntryTypeGetNick(typ TocEntryType) string {
 type TocLoopType C.int
 
 const (
-	// TocLoopNone wraps GST_TOC_LOOP_NONE
+	// TocLoopNone wraps TOC_LOOP_NONE
 	//
 	// single forward playback
 	TocLoopNone TocLoopType = 0
-	// TocLoopForward wraps GST_TOC_LOOP_FORWARD
+	// TocLoopForward wraps TOC_LOOP_FORWARD
 	//
 	// repeat forward
 	TocLoopForward TocLoopType = 1
-	// TocLoopReverse wraps GST_TOC_LOOP_REVERSE
+	// TocLoopReverse wraps TOC_LOOP_REVERSE
 	//
 	// repeat backward
 	TocLoopReverse TocLoopType = 2
-	// TocLoopPingPong wraps GST_TOC_LOOP_PING_PONG
+	// TocLoopPingPong wraps TOC_LOOP_PING_PONG
 	//
 	// repeat forward and backward
 	TocLoopPingPong TocLoopType = 3
@@ -4178,12 +4176,12 @@ func (e TocLoopType) String() string {
 type TocScope C.int
 
 const (
-	// TocScopeGlobal wraps GST_TOC_SCOPE_GLOBAL
+	// TocScopeGlobal wraps TOC_SCOPE_GLOBAL
 	//
 	// global TOC representing all selectable options
 	//     (this is what applications are usually interested in)
 	TocScopeGlobal TocScope = 1
-	// TocScopeCurrent wraps GST_TOC_SCOPE_CURRENT
+	// TocScopeCurrent wraps TOC_SCOPE_CURRENT
 	//
 	// TOC for the currently active/selected stream
 	//     (this is a TOC representing the current stream from start to EOS,
@@ -4226,19 +4224,19 @@ func (e TocScope) String() string {
 type TracerValueScope C.int
 
 const (
-	// TracerValueScopeProcess wraps GST_TRACER_VALUE_SCOPE_PROCESS
+	// TracerValueScopeProcess wraps TRACER_VALUE_SCOPE_PROCESS
 	//
 	// the value is related to the process
 	TracerValueScopeProcess TracerValueScope = 0
-	// TracerValueScopeThread wraps GST_TRACER_VALUE_SCOPE_THREAD
+	// TracerValueScopeThread wraps TRACER_VALUE_SCOPE_THREAD
 	//
 	// the value is related to a thread
 	TracerValueScopeThread TracerValueScope = 1
-	// TracerValueScopeElement wraps GST_TRACER_VALUE_SCOPE_ELEMENT
+	// TracerValueScopeElement wraps TRACER_VALUE_SCOPE_ELEMENT
 	//
 	// the value is related to an #GstElement
 	TracerValueScopeElement TracerValueScope = 2
-	// TracerValueScopePad wraps GST_TRACER_VALUE_SCOPE_PAD
+	// TracerValueScopePad wraps TRACER_VALUE_SCOPE_PAD
 	//
 	// the value is related to a #GstPad
 	TracerValueScopePad TracerValueScope = 3
@@ -4275,27 +4273,27 @@ func (e TracerValueScope) String() string {
 type TypeFindProbability C.int
 
 const (
-	// TypeFindNone wraps GST_TYPE_FIND_NONE
+	// TypeFindNone wraps TYPE_FIND_NONE
 	//
 	// type undetected.
 	TypeFindNone TypeFindProbability = 0
-	// TypeFindMinimum wraps GST_TYPE_FIND_MINIMUM
+	// TypeFindMinimum wraps TYPE_FIND_MINIMUM
 	//
 	// unlikely typefind.
 	TypeFindMinimum TypeFindProbability = 1
-	// TypeFindPossible wraps GST_TYPE_FIND_POSSIBLE
+	// TypeFindPossible wraps TYPE_FIND_POSSIBLE
 	//
 	// possible type detected.
 	TypeFindPossible TypeFindProbability = 50
-	// TypeFindLikely wraps GST_TYPE_FIND_LIKELY
+	// TypeFindLikely wraps TYPE_FIND_LIKELY
 	//
 	// likely a type was detected.
 	TypeFindLikely TypeFindProbability = 80
-	// TypeFindNearlyCertain wraps GST_TYPE_FIND_NEARLY_CERTAIN
+	// TypeFindNearlyCertain wraps TYPE_FIND_NEARLY_CERTAIN
 	//
 	// nearly certain that a type was detected.
 	TypeFindNearlyCertain TypeFindProbability = 99
-	// TypeFindMaximum wraps GST_TYPE_FIND_MAXIMUM
+	// TypeFindMaximum wraps TYPE_FIND_MAXIMUM
 	//
 	// very certain a type was detected.
 	TypeFindMaximum TypeFindProbability = 100
@@ -4333,20 +4331,20 @@ func (e TypeFindProbability) String() string {
 type URIError C.int
 
 const (
-	// URIErrorUnsupportedProtocol wraps GST_URI_ERROR_UNSUPPORTED_PROTOCOL
+	// URIErrorUnsupportedProtocol wraps URI_ERROR_UNSUPPORTED_PROTOCOL
 	//
 	// The protocol is not supported
 	URIErrorUnsupportedProtocol URIError = 0
-	// URIErrorBadURI wraps GST_URI_ERROR_BAD_URI
+	// URIErrorBadURI wraps URI_ERROR_BAD_URI
 	//
 	// There was a problem with the URI
 	URIErrorBadURI URIError = 1
-	// URIErrorBadState wraps GST_URI_ERROR_BAD_STATE
+	// URIErrorBadState wraps URI_ERROR_BAD_STATE
 	//
 	// Could not set or change the URI because the
 	//     URI handler was in a state where that is not possible or not permitted
 	URIErrorBadState URIError = 2
-	// URIErrorBadReference wraps GST_URI_ERROR_BAD_REFERENCE
+	// URIErrorBadReference wraps URI_ERROR_BAD_REFERENCE
 	//
 	// There was a problem with the entity that
 	//     the URI references
@@ -4400,15 +4398,15 @@ func URIErrorQuark() glib.Quark {
 type URIType C.int
 
 const (
-	// URIUnknown wraps GST_URI_UNKNOWN
+	// URIUnknown wraps URI_UNKNOWN
 	//
 	// The URI direction is unknown
 	URIUnknown URIType = 0
-	// URISink wraps GST_URI_SINK
+	// URISink wraps URI_SINK
 	//
 	// The URI is a consumer.
 	URISink URIType = 1
-	// URISrc wraps GST_URI_SRC
+	// URISrc wraps URI_SRC
 	//
 	// The URI is a producer.
 	URISrc URIType = 2
@@ -4443,21 +4441,21 @@ func (e URIType) String() string {
 type AllocatorFlags C.gint
 
 const (
-	// AllocatorFlagCustomAlloc wraps GST_ALLOCATOR_FLAG_CUSTOM_ALLOC
+	// AllocatorFlagCustomAlloc wraps ALLOCATOR_FLAG_CUSTOM_ALLOC
 	//
 	// The allocator has a custom alloc function.
 	//    Only elements designed to work with this allocator should be using it,
 	//    other elements should ignore it from allocation propositions.
 	//    This implies %GST_ALLOCATOR_FLAG_NO_COPY.
 	AllocatorFlagCustomAlloc AllocatorFlags = 16
-	// AllocatorFlagNoCopy wraps GST_ALLOCATOR_FLAG_NO_COPY
+	// AllocatorFlagNoCopy wraps ALLOCATOR_FLAG_NO_COPY
 	//
 	// When copying a #GstMemory allocated with this allocator, the copy will
 	// instead be allocated using the default allocator. Use this when allocating a
 	// new memory is an heavy opperation that should only be done with a
 	// #GstBufferPool for example.
 	AllocatorFlagNoCopy AllocatorFlags = 32
-	// AllocatorFlagLast wraps GST_ALLOCATOR_FLAG_LAST
+	// AllocatorFlagLast wraps ALLOCATOR_FLAG_LAST
 	//
 	// first flag that can be used for custom purposes
 	AllocatorFlagLast AllocatorFlags = 1048576
@@ -4507,16 +4505,16 @@ func (f AllocatorFlags) String() string {
 type BinFlags C.gint
 
 const (
-	// BinFlagNoResync wraps GST_BIN_FLAG_NO_RESYNC
+	// BinFlagNoResync wraps BIN_FLAG_NO_RESYNC
 	//
 	// Don't resync a state change when elements are added or linked in the bin
 	BinFlagNoResync BinFlags = 16384
-	// BinFlagStreamsAware wraps GST_BIN_FLAG_STREAMS_AWARE
+	// BinFlagStreamsAware wraps BIN_FLAG_STREAMS_AWARE
 	//
 	// Indicates whether the bin can handle elements that add/remove source pads
 	// at any point in time without first posting a no-more-pads signal.
 	BinFlagStreamsAware BinFlags = 32768
-	// BinFlagLast wraps GST_BIN_FLAG_LAST
+	// BinFlagLast wraps BIN_FLAG_LAST
 	//
 	// The last enum in the series of flags for bins. Derived classes can use this
 	// as first value in a list of flags.
@@ -4563,42 +4561,40 @@ func (f BinFlags) String() string {
 //
 // A set of flags that can be provided to the gst_buffer_copy_into()
 // function to specify which items should be copied.
-// 
-// This type has been renamed from BufferCopyFlags.
 type BufferCopyFlagsType C.gint
 
 const (
-	// BufferCopyNone wraps GST_BUFFER_COPY_NONE
+	// BufferCopyNone wraps BUFFER_COPY_NONE
 	//
 	// copy nothing
 	BufferCopyNone BufferCopyFlagsType = 0
-	// BufferCopyFlags wraps GST_BUFFER_COPY_FLAGS
+	// BufferCopyFlags wraps BUFFER_COPY_FLAGS
 	//
 	// flag indicating that buffer flags should be copied
 	BufferCopyFlags BufferCopyFlagsType = 1
-	// BufferCopyTimestamps wraps GST_BUFFER_COPY_TIMESTAMPS
+	// BufferCopyTimestamps wraps BUFFER_COPY_TIMESTAMPS
 	//
 	// flag indicating that buffer pts, dts,
 	//   duration, offset and offset_end should be copied
 	BufferCopyTimestamps BufferCopyFlagsType = 2
-	// BufferCopyMeta wraps GST_BUFFER_COPY_META
+	// BufferCopyMeta wraps BUFFER_COPY_META
 	//
 	// flag indicating that buffer meta should be
 	//   copied
 	BufferCopyMeta BufferCopyFlagsType = 4
-	// BufferCopyMemory wraps GST_BUFFER_COPY_MEMORY
+	// BufferCopyMemory wraps BUFFER_COPY_MEMORY
 	//
 	// flag indicating that buffer memory should be reffed
 	//   and appended to already existing memory. Unless the memory is marked as
 	//   NO_SHARE, no actual copy of the memory is made but it is simply reffed.
 	//   Add @GST_BUFFER_COPY_DEEP to force a real copy.
 	BufferCopyMemory BufferCopyFlagsType = 8
-	// BufferCopyMerge wraps GST_BUFFER_COPY_MERGE
+	// BufferCopyMerge wraps BUFFER_COPY_MERGE
 	//
 	// flag indicating that buffer memory should be
 	//   merged
 	BufferCopyMerge BufferCopyFlagsType = 16
-	// BufferCopyDeep wraps GST_BUFFER_COPY_DEEP
+	// BufferCopyDeep wraps BUFFER_COPY_DEEP
 	//
 	// flag indicating that memory should always be copied instead of reffed
 	BufferCopyDeep BufferCopyFlagsType = 32
@@ -4658,34 +4654,34 @@ func (f BufferCopyFlagsType) String() string {
 type BufferFlags C.gint
 
 const (
-	// BufferFlagLive wraps GST_BUFFER_FLAG_LIVE
+	// BufferFlagLive wraps BUFFER_FLAG_LIVE
 	//
 	// the buffer is live data and should be discarded in
 	//                                 the PAUSED state.
 	BufferFlagLive BufferFlags = 16
-	// BufferFlagDecodeOnly wraps GST_BUFFER_FLAG_DECODE_ONLY
+	// BufferFlagDecodeOnly wraps BUFFER_FLAG_DECODE_ONLY
 	//
 	// the buffer contains data that should be dropped
 	//                                 because it will be clipped against the segment
 	//                                 boundaries or because it does not contain data
 	//                                 that should be shown to the user.
 	BufferFlagDecodeOnly BufferFlags = 32
-	// BufferFlagDiscont wraps GST_BUFFER_FLAG_DISCONT
+	// BufferFlagDiscont wraps BUFFER_FLAG_DISCONT
 	//
 	// the buffer marks a data discontinuity in the stream.
 	//                                 This typically occurs after a seek or a dropped buffer
 	//                                 from a live or network source.
 	BufferFlagDiscont BufferFlags = 64
-	// BufferFlagResync wraps GST_BUFFER_FLAG_RESYNC
+	// BufferFlagResync wraps BUFFER_FLAG_RESYNC
 	//
 	// the buffer timestamps might have a discontinuity
 	//                                 and this buffer is a good point to resynchronize.
 	BufferFlagResync BufferFlags = 128
-	// BufferFlagCorrupted wraps GST_BUFFER_FLAG_CORRUPTED
+	// BufferFlagCorrupted wraps BUFFER_FLAG_CORRUPTED
 	//
 	// the buffer data is corrupted.
 	BufferFlagCorrupted BufferFlags = 256
-	// BufferFlagMarker wraps GST_BUFFER_FLAG_MARKER
+	// BufferFlagMarker wraps BUFFER_FLAG_MARKER
 	//
 	// the buffer contains a media specific marker. for
 	//                                 video this is the end of a frame boundary, for audio
@@ -4693,38 +4689,38 @@ const (
 	//                                 packets this matches the marker flag in the
 	//                                 RTP packet header.
 	BufferFlagMarker BufferFlags = 512
-	// BufferFlagHeader wraps GST_BUFFER_FLAG_HEADER
+	// BufferFlagHeader wraps BUFFER_FLAG_HEADER
 	//
 	// the buffer contains header information that is
 	//                                 needed to decode the following data.
 	BufferFlagHeader BufferFlags = 1024
-	// BufferFlagGap wraps GST_BUFFER_FLAG_GAP
+	// BufferFlagGap wraps BUFFER_FLAG_GAP
 	//
 	// the buffer has been created to fill a gap in the
 	//                                 stream and contains media neutral data (elements can
 	//                                 switch to optimized code path that ignores the buffer
 	//                                 content).
 	BufferFlagGap BufferFlags = 2048
-	// BufferFlagDroppable wraps GST_BUFFER_FLAG_DROPPABLE
+	// BufferFlagDroppable wraps BUFFER_FLAG_DROPPABLE
 	//
 	// the buffer can be dropped without breaking the
 	//                                 stream, for example to reduce bandwidth.
 	BufferFlagDroppable BufferFlags = 4096
-	// BufferFlagDeltaUnit wraps GST_BUFFER_FLAG_DELTA_UNIT
+	// BufferFlagDeltaUnit wraps BUFFER_FLAG_DELTA_UNIT
 	//
 	// this unit cannot be decoded independently.
 	BufferFlagDeltaUnit BufferFlags = 8192
-	// BufferFlagTagMemory wraps GST_BUFFER_FLAG_TAG_MEMORY
+	// BufferFlagTagMemory wraps BUFFER_FLAG_TAG_MEMORY
 	//
 	// this flag is set when memory of the buffer
 	//                                 is added/removed
 	BufferFlagTagMemory BufferFlags = 16384
-	// BufferFlagSyncAfter wraps GST_BUFFER_FLAG_SYNC_AFTER
+	// BufferFlagSyncAfter wraps BUFFER_FLAG_SYNC_AFTER
 	//
 	// Elements which write to disk or permanent storage should ensure the data
 	// is synced after writing the contents of this buffer.
 	BufferFlagSyncAfter BufferFlags = 32768
-	// BufferFlagNonDroppable wraps GST_BUFFER_FLAG_NON_DROPPABLE
+	// BufferFlagNonDroppable wraps BUFFER_FLAG_NON_DROPPABLE
 	//
 	// This buffer is important and should not be dropped.
 	// 
@@ -4733,7 +4729,7 @@ const (
 	// purposes, or to prevent still video frames from being dropped by elements
 	// due to QoS.
 	BufferFlagNonDroppable BufferFlags = 65536
-	// BufferFlagLast wraps GST_BUFFER_FLAG_LAST
+	// BufferFlagLast wraps BUFFER_FLAG_LAST
 	//
 	// additional media specific flags can be added starting from
 	//                                 this flag.
@@ -4815,25 +4811,25 @@ func (f BufferFlags) String() string {
 type BufferPoolAcquireFlags C.gint
 
 const (
-	// BufferPoolAcquireFlagNone wraps GST_BUFFER_POOL_ACQUIRE_FLAG_NONE
+	// BufferPoolAcquireFlagNone wraps BUFFER_POOL_ACQUIRE_FLAG_NONE
 	//
 	// no flags
 	BufferPoolAcquireFlagNone BufferPoolAcquireFlags = 0
-	// BufferPoolAcquireFlagKeyUnit wraps GST_BUFFER_POOL_ACQUIRE_FLAG_KEY_UNIT
+	// BufferPoolAcquireFlagKeyUnit wraps BUFFER_POOL_ACQUIRE_FLAG_KEY_UNIT
 	//
 	// buffer is keyframe
 	BufferPoolAcquireFlagKeyUnit BufferPoolAcquireFlags = 1
-	// BufferPoolAcquireFlagDontwait wraps GST_BUFFER_POOL_ACQUIRE_FLAG_DONTWAIT
+	// BufferPoolAcquireFlagDontwait wraps BUFFER_POOL_ACQUIRE_FLAG_DONTWAIT
 	//
 	// when the bufferpool is empty, acquire_buffer
 	// will by default block until a buffer is released into the pool again. Setting
 	// this flag makes acquire_buffer return #GST_FLOW_EOS instead of blocking.
 	BufferPoolAcquireFlagDontwait BufferPoolAcquireFlags = 2
-	// BufferPoolAcquireFlagDiscont wraps GST_BUFFER_POOL_ACQUIRE_FLAG_DISCONT
+	// BufferPoolAcquireFlagDiscont wraps BUFFER_POOL_ACQUIRE_FLAG_DISCONT
 	//
 	// buffer is discont
 	BufferPoolAcquireFlagDiscont BufferPoolAcquireFlags = 4
-	// BufferPoolAcquireFlagLast wraps GST_BUFFER_POOL_ACQUIRE_FLAG_LAST
+	// BufferPoolAcquireFlagLast wraps BUFFER_POOL_ACQUIRE_FLAG_LAST
 	//
 	// last flag, subclasses can use private flags
 	//    starting from this value.
@@ -4888,11 +4884,11 @@ func (f BufferPoolAcquireFlags) String() string {
 type BusFlags C.gint
 
 const (
-	// BusFlushing wraps GST_BUS_FLUSHING
+	// BusFlushing wraps BUS_FLUSHING
 	//
 	// The bus is currently dropping all messages
 	BusFlushing BusFlags = 16
-	// BusFlagLast wraps GST_BUS_FLAG_LAST
+	// BusFlagLast wraps BUS_FLAG_LAST
 	//
 	// offset to define more flags
 	BusFlagLast BusFlags = 32
@@ -4937,7 +4933,7 @@ func (f BusFlags) String() string {
 type CapsFlags C.gint
 
 const (
-	// CapsFlagAny wraps GST_CAPS_FLAG_ANY
+	// CapsFlagAny wraps CAPS_FLAG_ANY
 	//
 	// Caps has no specific content, but can contain
 	//    anything.
@@ -4980,35 +4976,35 @@ func (f CapsFlags) String() string {
 type ClockFlags C.gint
 
 const (
-	// ClockFlagCanDoSingleSync wraps GST_CLOCK_FLAG_CAN_DO_SINGLE_SYNC
+	// ClockFlagCanDoSingleSync wraps CLOCK_FLAG_CAN_DO_SINGLE_SYNC
 	//
 	// clock can do a single sync timeout request
 	ClockFlagCanDoSingleSync ClockFlags = 16
-	// ClockFlagCanDoSingleAsync wraps GST_CLOCK_FLAG_CAN_DO_SINGLE_ASYNC
+	// ClockFlagCanDoSingleAsync wraps CLOCK_FLAG_CAN_DO_SINGLE_ASYNC
 	//
 	// clock can do a single async timeout request
 	ClockFlagCanDoSingleAsync ClockFlags = 32
-	// ClockFlagCanDoPeriodicSync wraps GST_CLOCK_FLAG_CAN_DO_PERIODIC_SYNC
+	// ClockFlagCanDoPeriodicSync wraps CLOCK_FLAG_CAN_DO_PERIODIC_SYNC
 	//
 	// clock can do sync periodic timeout requests
 	ClockFlagCanDoPeriodicSync ClockFlags = 64
-	// ClockFlagCanDoPeriodicAsync wraps GST_CLOCK_FLAG_CAN_DO_PERIODIC_ASYNC
+	// ClockFlagCanDoPeriodicAsync wraps CLOCK_FLAG_CAN_DO_PERIODIC_ASYNC
 	//
 	// clock can do async periodic timeout callbacks
 	ClockFlagCanDoPeriodicAsync ClockFlags = 128
-	// ClockFlagCanSetResolution wraps GST_CLOCK_FLAG_CAN_SET_RESOLUTION
+	// ClockFlagCanSetResolution wraps CLOCK_FLAG_CAN_SET_RESOLUTION
 	//
 	// clock's resolution can be changed
 	ClockFlagCanSetResolution ClockFlags = 256
-	// ClockFlagCanSetMaster wraps GST_CLOCK_FLAG_CAN_SET_MASTER
+	// ClockFlagCanSetMaster wraps CLOCK_FLAG_CAN_SET_MASTER
 	//
 	// clock can be slaved to a master clock
 	ClockFlagCanSetMaster ClockFlags = 512
-	// ClockFlagNeedsStartupSync wraps GST_CLOCK_FLAG_NEEDS_STARTUP_SYNC
+	// ClockFlagNeedsStartupSync wraps CLOCK_FLAG_NEEDS_STARTUP_SYNC
 	//
 	// clock needs to be synced before it can be used
 	ClockFlagNeedsStartupSync ClockFlags = 1024
-	// ClockFlagLast wraps GST_CLOCK_FLAG_LAST
+	// ClockFlagLast wraps CLOCK_FLAG_LAST
 	//
 	// subclasses can add additional flags starting from this flag
 	ClockFlagLast ClockFlags = 4096
@@ -5072,75 +5068,75 @@ func (f ClockFlags) String() string {
 type DebugColorFlags C.gint
 
 const (
-	// DebugFgBlack wraps GST_DEBUG_FG_BLACK
+	// DebugFgBlack wraps DEBUG_FG_BLACK
 	//
 	// Use black as foreground color.
 	DebugFgBlack DebugColorFlags = 0
-	// DebugFgRed wraps GST_DEBUG_FG_RED
+	// DebugFgRed wraps DEBUG_FG_RED
 	//
 	// Use red as foreground color.
 	DebugFgRed DebugColorFlags = 1
-	// DebugFgGreen wraps GST_DEBUG_FG_GREEN
+	// DebugFgGreen wraps DEBUG_FG_GREEN
 	//
 	// Use green as foreground color.
 	DebugFgGreen DebugColorFlags = 2
-	// DebugFgYellow wraps GST_DEBUG_FG_YELLOW
+	// DebugFgYellow wraps DEBUG_FG_YELLOW
 	//
 	// Use yellow as foreground color.
 	DebugFgYellow DebugColorFlags = 3
-	// DebugFgBlue wraps GST_DEBUG_FG_BLUE
+	// DebugFgBlue wraps DEBUG_FG_BLUE
 	//
 	// Use blue as foreground color.
 	DebugFgBlue DebugColorFlags = 4
-	// DebugFgMagenta wraps GST_DEBUG_FG_MAGENTA
+	// DebugFgMagenta wraps DEBUG_FG_MAGENTA
 	//
 	// Use magenta as foreground color.
 	DebugFgMagenta DebugColorFlags = 5
-	// DebugFgCyan wraps GST_DEBUG_FG_CYAN
+	// DebugFgCyan wraps DEBUG_FG_CYAN
 	//
 	// Use cyan as foreground color.
 	DebugFgCyan DebugColorFlags = 6
-	// DebugFgWhite wraps GST_DEBUG_FG_WHITE
+	// DebugFgWhite wraps DEBUG_FG_WHITE
 	//
 	// Use white as foreground color.
 	DebugFgWhite DebugColorFlags = 7
-	// DebugBgBlack wraps GST_DEBUG_BG_BLACK
+	// DebugBgBlack wraps DEBUG_BG_BLACK
 	//
 	// Use black as background color.
 	DebugBgBlack DebugColorFlags = 0
-	// DebugBgRed wraps GST_DEBUG_BG_RED
+	// DebugBgRed wraps DEBUG_BG_RED
 	//
 	// Use red as background color.
 	DebugBgRed DebugColorFlags = 16
-	// DebugBgGreen wraps GST_DEBUG_BG_GREEN
+	// DebugBgGreen wraps DEBUG_BG_GREEN
 	//
 	// Use green as background color.
 	DebugBgGreen DebugColorFlags = 32
-	// DebugBgYellow wraps GST_DEBUG_BG_YELLOW
+	// DebugBgYellow wraps DEBUG_BG_YELLOW
 	//
 	// Use yellow as background color.
 	DebugBgYellow DebugColorFlags = 48
-	// DebugBgBlue wraps GST_DEBUG_BG_BLUE
+	// DebugBgBlue wraps DEBUG_BG_BLUE
 	//
 	// Use blue as background color.
 	DebugBgBlue DebugColorFlags = 64
-	// DebugBgMagenta wraps GST_DEBUG_BG_MAGENTA
+	// DebugBgMagenta wraps DEBUG_BG_MAGENTA
 	//
 	// Use magenta as background color.
 	DebugBgMagenta DebugColorFlags = 80
-	// DebugBgCyan wraps GST_DEBUG_BG_CYAN
+	// DebugBgCyan wraps DEBUG_BG_CYAN
 	//
 	// Use cyan as background color.
 	DebugBgCyan DebugColorFlags = 96
-	// DebugBgWhite wraps GST_DEBUG_BG_WHITE
+	// DebugBgWhite wraps DEBUG_BG_WHITE
 	//
 	// Use white as background color.
 	DebugBgWhite DebugColorFlags = 112
-	// DebugBold wraps GST_DEBUG_BOLD
+	// DebugBold wraps DEBUG_BOLD
 	//
 	// Make the output bold.
 	DebugBold DebugColorFlags = 256
-	// DebugUnderline wraps GST_DEBUG_UNDERLINE
+	// DebugUnderline wraps DEBUG_UNDERLINE
 	//
 	// Underline the output.
 	DebugUnderline DebugColorFlags = 512
@@ -5234,33 +5230,33 @@ func (f DebugColorFlags) String() string {
 type DebugGraphDetails C.gint
 
 const (
-	// DebugGraphShowMediaType wraps GST_DEBUG_GRAPH_SHOW_MEDIA_TYPE
+	// DebugGraphShowMediaType wraps DEBUG_GRAPH_SHOW_MEDIA_TYPE
 	//
 	// show caps-name on edges
 	DebugGraphShowMediaType DebugGraphDetails = 1
-	// DebugGraphShowCapsDetails wraps GST_DEBUG_GRAPH_SHOW_CAPS_DETAILS
+	// DebugGraphShowCapsDetails wraps DEBUG_GRAPH_SHOW_CAPS_DETAILS
 	//
 	// show caps-details on edges
 	DebugGraphShowCapsDetails DebugGraphDetails = 2
-	// DebugGraphShowNonDefaultParams wraps GST_DEBUG_GRAPH_SHOW_NON_DEFAULT_PARAMS
+	// DebugGraphShowNonDefaultParams wraps DEBUG_GRAPH_SHOW_NON_DEFAULT_PARAMS
 	//
 	// show modified parameters on
 	//                                           elements
 	DebugGraphShowNonDefaultParams DebugGraphDetails = 4
-	// DebugGraphShowStates wraps GST_DEBUG_GRAPH_SHOW_STATES
+	// DebugGraphShowStates wraps DEBUG_GRAPH_SHOW_STATES
 	//
 	// show element states
 	DebugGraphShowStates DebugGraphDetails = 8
-	// DebugGraphShowFullParams wraps GST_DEBUG_GRAPH_SHOW_FULL_PARAMS
+	// DebugGraphShowFullParams wraps DEBUG_GRAPH_SHOW_FULL_PARAMS
 	//
 	// show full element parameter values even
 	//                                    if they are very long
 	DebugGraphShowFullParams DebugGraphDetails = 16
-	// DebugGraphShowAll wraps GST_DEBUG_GRAPH_SHOW_ALL
+	// DebugGraphShowAll wraps DEBUG_GRAPH_SHOW_ALL
 	//
 	// show all the typical details that one might want
 	DebugGraphShowAll DebugGraphDetails = 15
-	// DebugGraphShowVerbose wraps GST_DEBUG_GRAPH_SHOW_VERBOSE
+	// DebugGraphShowVerbose wraps DEBUG_GRAPH_SHOW_VERBOSE
 	//
 	// show all details regardless of how large or
 	//                                verbose they make the resulting output
@@ -5321,31 +5317,31 @@ func (f DebugGraphDetails) String() string {
 type ElementFlags C.gint
 
 const (
-	// ElementFlagLockedState wraps GST_ELEMENT_FLAG_LOCKED_STATE
+	// ElementFlagLockedState wraps ELEMENT_FLAG_LOCKED_STATE
 	//
 	// ignore state changes from parent
 	ElementFlagLockedState ElementFlags = 16
-	// ElementFlagSink wraps GST_ELEMENT_FLAG_SINK
+	// ElementFlagSink wraps ELEMENT_FLAG_SINK
 	//
 	// the element is a sink
 	ElementFlagSink ElementFlags = 32
-	// ElementFlagSource wraps GST_ELEMENT_FLAG_SOURCE
+	// ElementFlagSource wraps ELEMENT_FLAG_SOURCE
 	//
 	// the element is a source.
 	ElementFlagSource ElementFlags = 64
-	// ElementFlagProvideClock wraps GST_ELEMENT_FLAG_PROVIDE_CLOCK
+	// ElementFlagProvideClock wraps ELEMENT_FLAG_PROVIDE_CLOCK
 	//
 	// the element can provide a clock
 	ElementFlagProvideClock ElementFlags = 128
-	// ElementFlagRequireClock wraps GST_ELEMENT_FLAG_REQUIRE_CLOCK
+	// ElementFlagRequireClock wraps ELEMENT_FLAG_REQUIRE_CLOCK
 	//
 	// the element requires a clock
 	ElementFlagRequireClock ElementFlags = 256
-	// ElementFlagIndexable wraps GST_ELEMENT_FLAG_INDEXABLE
+	// ElementFlagIndexable wraps ELEMENT_FLAG_INDEXABLE
 	//
 	// the element can use an index
 	ElementFlagIndexable ElementFlags = 512
-	// ElementFlagLast wraps GST_ELEMENT_FLAG_LAST
+	// ElementFlagLast wraps ELEMENT_FLAG_LAST
 	//
 	// offset to define more flags
 	ElementFlagLast ElementFlags = 16384
@@ -5407,24 +5403,24 @@ func (f ElementFlags) String() string {
 type EventTypeFlags C.gint
 
 const (
-	// EventTypeUpstream wraps GST_EVENT_TYPE_UPSTREAM
+	// EventTypeUpstream wraps EVENT_TYPE_UPSTREAM
 	//
 	// Set if the event can travel upstream.
 	EventTypeUpstream EventTypeFlags = 1
-	// EventTypeDownstream wraps GST_EVENT_TYPE_DOWNSTREAM
+	// EventTypeDownstream wraps EVENT_TYPE_DOWNSTREAM
 	//
 	// Set if the event can travel downstream.
 	EventTypeDownstream EventTypeFlags = 2
-	// EventTypeSerialized wraps GST_EVENT_TYPE_SERIALIZED
+	// EventTypeSerialized wraps EVENT_TYPE_SERIALIZED
 	//
 	// Set if the event should be serialized with data
 	//                               flow.
 	EventTypeSerialized EventTypeFlags = 4
-	// EventTypeSticky wraps GST_EVENT_TYPE_STICKY
+	// EventTypeSticky wraps EVENT_TYPE_STICKY
 	//
 	// Set if the event is sticky on the pads.
 	EventTypeSticky EventTypeFlags = 8
-	// EventTypeStickyMulti wraps GST_EVENT_TYPE_STICKY_MULTI
+	// EventTypeStickyMulti wraps EVENT_TYPE_STICKY_MULTI
 	//
 	// Multiple sticky events can be on a pad, each
 	//                               identified by the event name.
@@ -5480,7 +5476,7 @@ func (f EventTypeFlags) String() string {
 type GapFlags C.gint
 
 const (
-	// GapFlagMissingData wraps GST_GAP_FLAG_MISSING_DATA
+	// GapFlagMissingData wraps GAP_FLAG_MISSING_DATA
 	//
 	// The #GST_EVENT_GAP signals missing data,
 	//    for example because of packet loss.
@@ -5523,19 +5519,19 @@ func (f GapFlags) String() string {
 type LockFlags C.gint
 
 const (
-	// LockFlagRead wraps GST_LOCK_FLAG_READ
+	// LockFlagRead wraps LOCK_FLAG_READ
 	//
 	// lock for read access
 	LockFlagRead LockFlags = 1
-	// LockFlagWrite wraps GST_LOCK_FLAG_WRITE
+	// LockFlagWrite wraps LOCK_FLAG_WRITE
 	//
 	// lock for write access
 	LockFlagWrite LockFlags = 2
-	// LockFlagExclusive wraps GST_LOCK_FLAG_EXCLUSIVE
+	// LockFlagExclusive wraps LOCK_FLAG_EXCLUSIVE
 	//
 	// lock for exclusive access
 	LockFlagExclusive LockFlags = 4
-	// LockFlagLast wraps GST_LOCK_FLAG_LAST
+	// LockFlagLast wraps LOCK_FLAG_LAST
 	//
 	// first flag that can be used for custom purposes
 	LockFlagLast LockFlags = 256
@@ -5586,15 +5582,15 @@ func (f LockFlags) String() string {
 type MapFlags C.gint
 
 const (
-	// MapRead wraps GST_MAP_READ
+	// MapRead wraps MAP_READ
 	//
 	// map for read access
 	MapRead MapFlags = 1
-	// MapWrite wraps GST_MAP_WRITE
+	// MapWrite wraps MAP_WRITE
 	//
 	// map for write access
 	MapWrite MapFlags = 2
-	// MapFlagLast wraps GST_MAP_FLAG_LAST
+	// MapFlagLast wraps MAP_FLAG_LAST
 	//
 	// first flag that can be used for custom purposes
 	MapFlagLast MapFlags = 65536
@@ -5642,12 +5638,12 @@ func (f MapFlags) String() string {
 type MemoryFlags C.gint
 
 const (
-	// MemoryFlagReadonly wraps GST_MEMORY_FLAG_READONLY
+	// MemoryFlagReadonly wraps MEMORY_FLAG_READONLY
 	//
 	// memory is readonly. It is not allowed to map the
 	// memory with #GST_MAP_WRITE.
 	MemoryFlagReadonly MemoryFlags = 2
-	// MemoryFlagNoShare wraps GST_MEMORY_FLAG_NO_SHARE
+	// MemoryFlagNoShare wraps MEMORY_FLAG_NO_SHARE
 	//
 	// memory must not be shared. Copies will have to be
 	// made when this memory needs to be shared between buffers. (DEPRECATED:
@@ -5655,25 +5651,25 @@ const (
 	// memory pooling instead of relying on the GstBuffer they were originally
 	// attached to.)
 	MemoryFlagNoShare MemoryFlags = 16
-	// MemoryFlagZeroPrefixed wraps GST_MEMORY_FLAG_ZERO_PREFIXED
+	// MemoryFlagZeroPrefixed wraps MEMORY_FLAG_ZERO_PREFIXED
 	//
 	// the memory prefix is filled with 0 bytes
 	MemoryFlagZeroPrefixed MemoryFlags = 32
-	// MemoryFlagZeroPadded wraps GST_MEMORY_FLAG_ZERO_PADDED
+	// MemoryFlagZeroPadded wraps MEMORY_FLAG_ZERO_PADDED
 	//
 	// the memory padding is filled with 0 bytes
 	MemoryFlagZeroPadded MemoryFlags = 64
-	// MemoryFlagPhysicallyContiguous wraps GST_MEMORY_FLAG_PHYSICALLY_CONTIGUOUS
+	// MemoryFlagPhysicallyContiguous wraps MEMORY_FLAG_PHYSICALLY_CONTIGUOUS
 	//
 	// the memory is physically
 	// contiguous. (Since: 1.2)
 	MemoryFlagPhysicallyContiguous MemoryFlags = 128
-	// MemoryFlagNotMappable wraps GST_MEMORY_FLAG_NOT_MAPPABLE
+	// MemoryFlagNotMappable wraps MEMORY_FLAG_NOT_MAPPABLE
 	//
 	// the memory can't be mapped via
 	// gst_memory_map() without any preconditions. (Since: 1.2)
 	MemoryFlagNotMappable MemoryFlags = 256
-	// MemoryFlagLast wraps GST_MEMORY_FLAG_LAST
+	// MemoryFlagLast wraps MEMORY_FLAG_LAST
 	//
 	// first flag that can be used for custom purposes
 	MemoryFlagLast MemoryFlags = 1048576
@@ -5733,18 +5729,18 @@ func (f MemoryFlags) String() string {
 type MessageType C.gint
 
 const (
-	// MessageUnknown wraps GST_MESSAGE_UNKNOWN
+	// MessageUnknown wraps MESSAGE_UNKNOWN
 	//
 	// an undefined message
 	MessageUnknown MessageType = 0
-	// MessageEos wraps GST_MESSAGE_EOS
+	// MessageEos wraps MESSAGE_EOS
 	//
 	// end-of-stream reached in a pipeline. The application will
 	// only receive this message in the PLAYING state and every time it sets a
 	// pipeline to PLAYING that is in the EOS state. The application can perform a
 	// flushing seek in the pipeline, which will undo the EOS state again.
 	MessageEos MessageType = 1
-	// MessageError wraps GST_MESSAGE_ERROR
+	// MessageError wraps MESSAGE_ERROR
 	//
 	// an error occurred. When the application receives an error
 	// message it should stop playback of the pipeline and not assume that more
@@ -5752,19 +5748,19 @@ const (
 	// messages by setting a `redirect-location` field into the error message, application
 	// or high level bins might use the information as required.
 	MessageError MessageType = 2
-	// MessageWarning wraps GST_MESSAGE_WARNING
+	// MessageWarning wraps MESSAGE_WARNING
 	//
 	// a warning occurred.
 	MessageWarning MessageType = 4
-	// MessageInfo wraps GST_MESSAGE_INFO
+	// MessageInfo wraps MESSAGE_INFO
 	//
 	// an info message occurred
 	MessageInfo MessageType = 8
-	// MessageTag wraps GST_MESSAGE_TAG
+	// MessageTag wraps MESSAGE_TAG
 	//
 	// a tag was found.
 	MessageTag MessageType = 16
-	// MessageBuffering wraps GST_MESSAGE_BUFFERING
+	// MessageBuffering wraps MESSAGE_BUFFERING
 	//
 	// the pipeline is buffering. When the application
 	// receives a buffering message in the PLAYING state for a non-live pipeline it
@@ -5773,26 +5769,26 @@ const (
 	// performed and the buffering percentage can be used to inform the user about
 	// the progress.
 	MessageBuffering MessageType = 32
-	// MessageStateChanged wraps GST_MESSAGE_STATE_CHANGED
+	// MessageStateChanged wraps MESSAGE_STATE_CHANGED
 	//
 	// a state change happened
 	MessageStateChanged MessageType = 64
-	// MessageStateDirty wraps GST_MESSAGE_STATE_DIRTY
+	// MessageStateDirty wraps MESSAGE_STATE_DIRTY
 	//
 	// an element changed state in a streaming thread.
 	// This message is deprecated.
 	MessageStateDirty MessageType = 128
-	// MessageStepDone wraps GST_MESSAGE_STEP_DONE
+	// MessageStepDone wraps MESSAGE_STEP_DONE
 	//
 	// a stepping operation finished.
 	MessageStepDone MessageType = 256
-	// MessageClockProvide wraps GST_MESSAGE_CLOCK_PROVIDE
+	// MessageClockProvide wraps MESSAGE_CLOCK_PROVIDE
 	//
 	// an element notifies its capability of providing
 	//                             a clock. This message is used internally and
 	//                             never forwarded to the application.
 	MessageClockProvide MessageType = 512
-	// MessageClockLost wraps GST_MESSAGE_CLOCK_LOST
+	// MessageClockLost wraps MESSAGE_CLOCK_LOST
 	//
 	// The current clock as selected by the pipeline became
 	//                          unusable. The pipeline will select a new clock on
@@ -5800,109 +5796,109 @@ const (
 	//                          should set the pipeline to PAUSED and back to
 	//                          PLAYING when this message is received.
 	MessageClockLost MessageType = 1024
-	// MessageNewClock wraps GST_MESSAGE_NEW_CLOCK
+	// MessageNewClock wraps MESSAGE_NEW_CLOCK
 	//
 	// a new clock was selected in the pipeline.
 	MessageNewClock MessageType = 2048
-	// MessageStructureChange wraps GST_MESSAGE_STRUCTURE_CHANGE
+	// MessageStructureChange wraps MESSAGE_STRUCTURE_CHANGE
 	//
 	// the structure of the pipeline changed. This
 	// message is used internally and never forwarded to the application.
 	MessageStructureChange MessageType = 4096
-	// MessageStreamStatus wraps GST_MESSAGE_STREAM_STATUS
+	// MessageStreamStatus wraps MESSAGE_STREAM_STATUS
 	//
 	// status about a stream, emitted when it starts,
 	//                             stops, errors, etc..
 	MessageStreamStatus MessageType = 8192
-	// MessageApplication wraps GST_MESSAGE_APPLICATION
+	// MessageApplication wraps MESSAGE_APPLICATION
 	//
 	// message posted by the application, possibly
 	//                           via an application-specific element.
 	MessageApplication MessageType = 16384
-	// MessageElement wraps GST_MESSAGE_ELEMENT
+	// MessageElement wraps MESSAGE_ELEMENT
 	//
 	// element-specific message, see the specific element's
 	//                       documentation
 	MessageElement MessageType = 32768
-	// MessageSegmentStart wraps GST_MESSAGE_SEGMENT_START
+	// MessageSegmentStart wraps MESSAGE_SEGMENT_START
 	//
 	// pipeline started playback of a segment. This
 	// message is used internally and never forwarded to the application.
 	MessageSegmentStart MessageType = 65536
-	// MessageSegmentDone wraps GST_MESSAGE_SEGMENT_DONE
+	// MessageSegmentDone wraps MESSAGE_SEGMENT_DONE
 	//
 	// pipeline completed playback of a segment. This
 	// message is forwarded to the application after all elements that posted
 	// @GST_MESSAGE_SEGMENT_START posted a GST_MESSAGE_SEGMENT_DONE message.
 	MessageSegmentDone MessageType = 131072
-	// MessageDurationChanged wraps GST_MESSAGE_DURATION_CHANGED
+	// MessageDurationChanged wraps MESSAGE_DURATION_CHANGED
 	//
 	// The duration of a pipeline changed. The
 	// application can get the new duration with a duration query.
 	MessageDurationChanged MessageType = 262144
-	// MessageLatency wraps GST_MESSAGE_LATENCY
+	// MessageLatency wraps MESSAGE_LATENCY
 	//
 	// Posted by elements when their latency changes. The
 	// application should recalculate and distribute a new latency.
 	MessageLatency MessageType = 524288
-	// MessageAsyncStart wraps GST_MESSAGE_ASYNC_START
+	// MessageAsyncStart wraps MESSAGE_ASYNC_START
 	//
 	// Posted by elements when they start an ASYNC
 	// #GstStateChange. This message is not forwarded to the application but is used
 	// internally.
 	MessageAsyncStart MessageType = 1048576
-	// MessageAsyncDone wraps GST_MESSAGE_ASYNC_DONE
+	// MessageAsyncDone wraps MESSAGE_ASYNC_DONE
 	//
 	// Posted by elements when they complete an ASYNC
 	// #GstStateChange. The application will only receive this message from the toplevel
 	// pipeline.
 	MessageAsyncDone MessageType = 2097152
-	// MessageRequestState wraps GST_MESSAGE_REQUEST_STATE
+	// MessageRequestState wraps MESSAGE_REQUEST_STATE
 	//
 	// Posted by elements when they want the pipeline to
 	// change state. This message is a suggestion to the application which can
 	// decide to perform the state change on (part of) the pipeline.
 	MessageRequestState MessageType = 4194304
-	// MessageStepStart wraps GST_MESSAGE_STEP_START
+	// MessageStepStart wraps MESSAGE_STEP_START
 	//
 	// A stepping operation was started.
 	MessageStepStart MessageType = 8388608
-	// MessageQos wraps GST_MESSAGE_QOS
+	// MessageQos wraps MESSAGE_QOS
 	//
 	// A buffer was dropped or an element changed its processing
 	// strategy for Quality of Service reasons.
 	MessageQos MessageType = 16777216
-	// MessageProgress wraps GST_MESSAGE_PROGRESS
+	// MessageProgress wraps MESSAGE_PROGRESS
 	//
 	// A progress message.
 	MessageProgress MessageType = 33554432
-	// MessageToc wraps GST_MESSAGE_TOC
+	// MessageToc wraps MESSAGE_TOC
 	//
 	// A new table of contents (TOC) was found or previously found TOC
 	// was updated.
 	MessageToc MessageType = 67108864
-	// MessageResetTime wraps GST_MESSAGE_RESET_TIME
+	// MessageResetTime wraps MESSAGE_RESET_TIME
 	//
 	// Message to request resetting the pipeline's
 	//     running time from the pipeline. This is an internal message which
 	//     applications will likely never receive.
 	MessageResetTime MessageType = 134217728
-	// MessageStreamStart wraps GST_MESSAGE_STREAM_START
+	// MessageStreamStart wraps MESSAGE_STREAM_START
 	//
 	// Message indicating start of a new stream. Useful
 	//     e.g. when using playbin in gapless playback mode, to get notified when
 	//     the next title actually starts playing (which will be some time after
 	//     the URI for the next title has been set).
 	MessageStreamStart MessageType = 268435456
-	// MessageNeedContext wraps GST_MESSAGE_NEED_CONTEXT
+	// MessageNeedContext wraps MESSAGE_NEED_CONTEXT
 	//
 	// Message indicating that an element wants a specific context (Since: 1.2)
 	MessageNeedContext MessageType = 536870912
-	// MessageHaveContext wraps GST_MESSAGE_HAVE_CONTEXT
+	// MessageHaveContext wraps MESSAGE_HAVE_CONTEXT
 	//
 	// Message indicating that an element created a context (Since: 1.2)
 	MessageHaveContext MessageType = 1073741824
-	// MessageExtended wraps GST_MESSAGE_EXTENDED
+	// MessageExtended wraps MESSAGE_EXTENDED
 	//
 	// Message is an extended message type (see below).
 	//     These extended message IDs can't be used directly with mask-based API
@@ -5910,49 +5906,49 @@ const (
 	//     filter for GST_MESSAGE_EXTENDED and then check the result for the
 	//     specific type. (Since: 1.4)
 	MessageExtended MessageType = -2147483648
-	// MessageDeviceAdded wraps GST_MESSAGE_DEVICE_ADDED
+	// MessageDeviceAdded wraps MESSAGE_DEVICE_ADDED
 	//
 	// Message indicating a #GstDevice was added to
 	//     a #GstDeviceProvider (Since: 1.4)
 	MessageDeviceAdded MessageType = -2147483647
-	// MessageDeviceRemoved wraps GST_MESSAGE_DEVICE_REMOVED
+	// MessageDeviceRemoved wraps MESSAGE_DEVICE_REMOVED
 	//
 	// Message indicating a #GstDevice was removed
 	//     from a #GstDeviceProvider (Since: 1.4)
 	MessageDeviceRemoved MessageType = -2147483646
-	// MessagePropertyNotify wraps GST_MESSAGE_PROPERTY_NOTIFY
+	// MessagePropertyNotify wraps MESSAGE_PROPERTY_NOTIFY
 	//
 	// Message indicating a #GObject property has
 	//     changed (Since: 1.10)
 	MessagePropertyNotify MessageType = -2147483645
-	// MessageStreamCollection wraps GST_MESSAGE_STREAM_COLLECTION
+	// MessageStreamCollection wraps MESSAGE_STREAM_COLLECTION
 	//
 	// Message indicating a new #GstStreamCollection
 	//     is available (Since: 1.10)
 	MessageStreamCollection MessageType = -2147483644
-	// MessageStreamsSelected wraps GST_MESSAGE_STREAMS_SELECTED
+	// MessageStreamsSelected wraps MESSAGE_STREAMS_SELECTED
 	//
 	// Message indicating the active selection of
 	//     #GstStreams has changed (Since: 1.10)
 	MessageStreamsSelected MessageType = -2147483643
-	// MessageRedirect wraps GST_MESSAGE_REDIRECT
+	// MessageRedirect wraps MESSAGE_REDIRECT
 	//
 	// Message indicating to request the application to
 	//     try to play the given URL(s). Useful if for example a HTTP 302/303
 	//     response is received with a non-HTTP URL inside. (Since: 1.10)
 	MessageRedirect MessageType = -2147483642
-	// MessageDeviceChanged wraps GST_MESSAGE_DEVICE_CHANGED
+	// MessageDeviceChanged wraps MESSAGE_DEVICE_CHANGED
 	//
 	// Message indicating a #GstDevice was changed
 	//     a #GstDeviceProvider (Since: 1.16)
 	MessageDeviceChanged MessageType = -2147483641
-	// MessageInstantRateRequest wraps GST_MESSAGE_INSTANT_RATE_REQUEST
+	// MessageInstantRateRequest wraps MESSAGE_INSTANT_RATE_REQUEST
 	//
 	// Message sent by elements to request the
 	//     running time from the pipeline when an instant rate change should
 	//     be applied (which may be in the past when the answer arrives). (Since: 1.18)
 	MessageInstantRateRequest MessageType = -2147483640
-	// MessageAny wraps GST_MESSAGE_ANY
+	// MessageAny wraps MESSAGE_ANY
 	//
 	// mask for all of the above messages.
 	MessageAny MessageType = -1
@@ -6171,23 +6167,23 @@ func MessageTypeToQuark(typ MessageType) glib.Quark {
 type MetaFlags C.gint
 
 const (
-	// MetaFlagNone wraps GST_META_FLAG_NONE
+	// MetaFlagNone wraps META_FLAG_NONE
 	//
 	// no flags
 	MetaFlagNone MetaFlags = 0
-	// MetaFlagReadonly wraps GST_META_FLAG_READONLY
+	// MetaFlagReadonly wraps META_FLAG_READONLY
 	//
 	// metadata should not be modified
 	MetaFlagReadonly MetaFlags = 1
-	// MetaFlagPooled wraps GST_META_FLAG_POOLED
+	// MetaFlagPooled wraps META_FLAG_POOLED
 	//
 	// metadata is managed by a bufferpool
 	MetaFlagPooled MetaFlags = 2
-	// MetaFlagLocked wraps GST_META_FLAG_LOCKED
+	// MetaFlagLocked wraps META_FLAG_LOCKED
 	//
 	// metadata should not be removed
 	MetaFlagLocked MetaFlags = 4
-	// MetaFlagLast wraps GST_META_FLAG_LAST
+	// MetaFlagLast wraps META_FLAG_LAST
 	//
 	// additional flags can be added starting from this flag.
 	MetaFlagLast MetaFlags = 65536
@@ -6241,23 +6237,23 @@ func (f MetaFlags) String() string {
 type MiniObjectFlags C.gint
 
 const (
-	// MiniObjectFlagLockable wraps GST_MINI_OBJECT_FLAG_LOCKABLE
+	// MiniObjectFlagLockable wraps MINI_OBJECT_FLAG_LOCKABLE
 	//
 	// the object can be locked and unlocked with
 	// gst_mini_object_lock() and gst_mini_object_unlock().
 	MiniObjectFlagLockable MiniObjectFlags = 1
-	// MiniObjectFlagLockReadonly wraps GST_MINI_OBJECT_FLAG_LOCK_READONLY
+	// MiniObjectFlagLockReadonly wraps MINI_OBJECT_FLAG_LOCK_READONLY
 	//
 	// the object is permanently locked in
 	// READONLY mode. Only read locks can be performed on the object.
 	MiniObjectFlagLockReadonly MiniObjectFlags = 2
-	// MiniObjectFlagMayBeLeaked wraps GST_MINI_OBJECT_FLAG_MAY_BE_LEAKED
+	// MiniObjectFlagMayBeLeaked wraps MINI_OBJECT_FLAG_MAY_BE_LEAKED
 	//
 	// the object is expected to stay alive
 	// even after gst_deinit() has been called and so should be ignored by leak
 	// detection tools. (Since: 1.10)
 	MiniObjectFlagMayBeLeaked MiniObjectFlags = 4
-	// MiniObjectFlagLast wraps GST_MINI_OBJECT_FLAG_LAST
+	// MiniObjectFlagLast wraps MINI_OBJECT_FLAG_LAST
 	//
 	// first flag that can be used by subclasses.
 	MiniObjectFlagLast MiniObjectFlags = 16
@@ -6308,13 +6304,13 @@ func (f MiniObjectFlags) String() string {
 type ObjectFlags C.gint
 
 const (
-	// ObjectFlagMayBeLeaked wraps GST_OBJECT_FLAG_MAY_BE_LEAKED
+	// ObjectFlagMayBeLeaked wraps OBJECT_FLAG_MAY_BE_LEAKED
 	//
 	// the object is expected to stay alive even
 	// after gst_deinit() has been called and so should be ignored by leak
 	// detection tools. (Since: 1.10)
 	ObjectFlagMayBeLeaked ObjectFlags = 1
-	// ObjectFlagConstructed wraps GST_OBJECT_FLAG_CONSTRUCTED
+	// ObjectFlagConstructed wraps OBJECT_FLAG_CONSTRUCTED
 	//
 	// Flag that's set when the object has been constructed. This can be used by
 	// API such as base class setters to differentiate between the case where
@@ -6323,7 +6319,7 @@ const (
 	// set values in the instance structure), and the case where the object is
 	// constructed.
 	ObjectFlagConstructed ObjectFlags = 2
-	// ObjectFlagLast wraps GST_OBJECT_FLAG_LAST
+	// ObjectFlagLast wraps OBJECT_FLAG_LAST
 	//
 	// subclasses can add additional flags starting from this flag
 	ObjectFlagLast ObjectFlags = 16
@@ -6371,76 +6367,76 @@ func (f ObjectFlags) String() string {
 type PadFlags C.gint
 
 const (
-	// PadFlagBlocked wraps GST_PAD_FLAG_BLOCKED
+	// PadFlagBlocked wraps PAD_FLAG_BLOCKED
 	//
 	// is dataflow on a pad blocked
 	PadFlagBlocked PadFlags = 16
-	// PadFlagFlushing wraps GST_PAD_FLAG_FLUSHING
+	// PadFlagFlushing wraps PAD_FLAG_FLUSHING
 	//
 	// is pad flushing
 	PadFlagFlushing PadFlags = 32
-	// PadFlagEos wraps GST_PAD_FLAG_EOS
+	// PadFlagEos wraps PAD_FLAG_EOS
 	//
 	// is pad in EOS state
 	PadFlagEos PadFlags = 64
-	// PadFlagBlocking wraps GST_PAD_FLAG_BLOCKING
+	// PadFlagBlocking wraps PAD_FLAG_BLOCKING
 	//
 	// is pad currently blocking on a buffer or event
 	PadFlagBlocking PadFlags = 128
-	// PadFlagNeedParent wraps GST_PAD_FLAG_NEED_PARENT
+	// PadFlagNeedParent wraps PAD_FLAG_NEED_PARENT
 	//
 	// ensure that there is a parent object before calling
 	//                       into the pad callbacks.
 	PadFlagNeedParent PadFlags = 256
-	// PadFlagNeedReconfigure wraps GST_PAD_FLAG_NEED_RECONFIGURE
+	// PadFlagNeedReconfigure wraps PAD_FLAG_NEED_RECONFIGURE
 	//
 	// the pad should be reconfigured/renegotiated.
 	//                            The flag has to be unset manually after
 	//                            reconfiguration happened.
 	PadFlagNeedReconfigure PadFlags = 512
-	// PadFlagPendingEvents wraps GST_PAD_FLAG_PENDING_EVENTS
+	// PadFlagPendingEvents wraps PAD_FLAG_PENDING_EVENTS
 	//
 	// the pad has pending events
 	PadFlagPendingEvents PadFlags = 1024
-	// PadFlagFixedCaps wraps GST_PAD_FLAG_FIXED_CAPS
+	// PadFlagFixedCaps wraps PAD_FLAG_FIXED_CAPS
 	//
 	// the pad is using fixed caps. This means that
 	//     once the caps are set on the pad, the default caps query function
 	//     will only return those caps.
 	PadFlagFixedCaps PadFlags = 2048
-	// PadFlagProxyCaps wraps GST_PAD_FLAG_PROXY_CAPS
+	// PadFlagProxyCaps wraps PAD_FLAG_PROXY_CAPS
 	//
 	// the default event and query handler will forward
 	//                      all events and queries to the internally linked pads
 	//                      instead of discarding them.
 	PadFlagProxyCaps PadFlags = 4096
-	// PadFlagProxyAllocation wraps GST_PAD_FLAG_PROXY_ALLOCATION
+	// PadFlagProxyAllocation wraps PAD_FLAG_PROXY_ALLOCATION
 	//
 	// the default query handler will forward
 	//                      allocation queries to the internally linked pads
 	//                      instead of discarding them.
 	PadFlagProxyAllocation PadFlags = 8192
-	// PadFlagProxyScheduling wraps GST_PAD_FLAG_PROXY_SCHEDULING
+	// PadFlagProxyScheduling wraps PAD_FLAG_PROXY_SCHEDULING
 	//
 	// the default query handler will forward
 	//                      scheduling queries to the internally linked pads
 	//                      instead of discarding them.
 	PadFlagProxyScheduling PadFlags = 16384
-	// PadFlagAcceptIntersect wraps GST_PAD_FLAG_ACCEPT_INTERSECT
+	// PadFlagAcceptIntersect wraps PAD_FLAG_ACCEPT_INTERSECT
 	//
 	// the default accept-caps handler will check
 	//                      it the caps intersect the query-caps result instead
 	//                      of checking for a subset. This is interesting for
 	//                      parsers that can accept incompletely specified caps.
 	PadFlagAcceptIntersect PadFlags = 32768
-	// PadFlagAcceptTemplate wraps GST_PAD_FLAG_ACCEPT_TEMPLATE
+	// PadFlagAcceptTemplate wraps PAD_FLAG_ACCEPT_TEMPLATE
 	//
 	// the default accept-caps handler will use
 	//                      the template pad caps instead of query caps to
 	//                      compare with the accept caps. Use this in combination
 	//                      with %GST_PAD_FLAG_ACCEPT_INTERSECT. (Since: 1.6)
 	PadFlagAcceptTemplate PadFlags = 65536
-	// PadFlagLast wraps GST_PAD_FLAG_LAST
+	// PadFlagLast wraps PAD_FLAG_LAST
 	//
 	// offset to define more flags
 	PadFlagLast PadFlags = 1048576
@@ -6528,33 +6524,33 @@ func (f PadFlags) String() string {
 type PadLinkCheck C.gint
 
 const (
-	// PadLinkCheckNothing wraps GST_PAD_LINK_CHECK_NOTHING
+	// PadLinkCheckNothing wraps PAD_LINK_CHECK_NOTHING
 	//
 	// Don't check hierarchy or caps compatibility.
 	PadLinkCheckNothing PadLinkCheck = 0
-	// PadLinkCheckHierarchy wraps GST_PAD_LINK_CHECK_HIERARCHY
+	// PadLinkCheckHierarchy wraps PAD_LINK_CHECK_HIERARCHY
 	//
 	// Check the pads have same parents/grandparents.
 	//   Could be omitted if it is already known that the two elements that own the
 	//   pads are in the same bin.
 	PadLinkCheckHierarchy PadLinkCheck = 1
-	// PadLinkCheckTemplateCaps wraps GST_PAD_LINK_CHECK_TEMPLATE_CAPS
+	// PadLinkCheckTemplateCaps wraps PAD_LINK_CHECK_TEMPLATE_CAPS
 	//
 	// Check if the pads are compatible by using
 	//   their template caps. This is much faster than @GST_PAD_LINK_CHECK_CAPS, but
 	//   would be unsafe e.g. if one pad has %GST_CAPS_ANY.
 	PadLinkCheckTemplateCaps PadLinkCheck = 2
-	// PadLinkCheckCaps wraps GST_PAD_LINK_CHECK_CAPS
+	// PadLinkCheckCaps wraps PAD_LINK_CHECK_CAPS
 	//
 	// Check if the pads are compatible by comparing the
 	//   caps returned by gst_pad_query_caps().
 	PadLinkCheckCaps PadLinkCheck = 4
-	// PadLinkCheckNoReconfigure wraps GST_PAD_LINK_CHECK_NO_RECONFIGURE
+	// PadLinkCheckNoReconfigure wraps PAD_LINK_CHECK_NO_RECONFIGURE
 	//
 	// Disables pushing a reconfigure event when pads are
 	//   linked.
 	PadLinkCheckNoReconfigure PadLinkCheck = 8
-	// PadLinkCheckDefault wraps GST_PAD_LINK_CHECK_DEFAULT
+	// PadLinkCheckDefault wraps PAD_LINK_CHECK_DEFAULT
 	//
 	// The default checks done when linking
 	//   pads (i.e. the ones used by gst_pad_link()).
@@ -6614,94 +6610,94 @@ func (f PadLinkCheck) String() string {
 type PadProbeType C.gint
 
 const (
-	// PadProbeTypeInvalid wraps GST_PAD_PROBE_TYPE_INVALID
+	// PadProbeTypeInvalid wraps PAD_PROBE_TYPE_INVALID
 	//
 	// invalid probe type
 	PadProbeTypeInvalid PadProbeType = 0
-	// PadProbeTypeIdle wraps GST_PAD_PROBE_TYPE_IDLE
+	// PadProbeTypeIdle wraps PAD_PROBE_TYPE_IDLE
 	//
 	// probe idle pads and block while the callback is called
 	PadProbeTypeIdle PadProbeType = 1
-	// PadProbeTypeBlock wraps GST_PAD_PROBE_TYPE_BLOCK
+	// PadProbeTypeBlock wraps PAD_PROBE_TYPE_BLOCK
 	//
 	// probe and block pads
 	PadProbeTypeBlock PadProbeType = 2
-	// PadProbeTypeBuffer wraps GST_PAD_PROBE_TYPE_BUFFER
+	// PadProbeTypeBuffer wraps PAD_PROBE_TYPE_BUFFER
 	//
 	// probe buffers
 	PadProbeTypeBuffer PadProbeType = 16
-	// PadProbeTypeBufferList wraps GST_PAD_PROBE_TYPE_BUFFER_LIST
+	// PadProbeTypeBufferList wraps PAD_PROBE_TYPE_BUFFER_LIST
 	//
 	// probe buffer lists
 	PadProbeTypeBufferList PadProbeType = 32
-	// PadProbeTypeEventDownstream wraps GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM
+	// PadProbeTypeEventDownstream wraps PAD_PROBE_TYPE_EVENT_DOWNSTREAM
 	//
 	// probe downstream events
 	PadProbeTypeEventDownstream PadProbeType = 64
-	// PadProbeTypeEventUpstream wraps GST_PAD_PROBE_TYPE_EVENT_UPSTREAM
+	// PadProbeTypeEventUpstream wraps PAD_PROBE_TYPE_EVENT_UPSTREAM
 	//
 	// probe upstream events
 	PadProbeTypeEventUpstream PadProbeType = 128
-	// PadProbeTypeEventFlush wraps GST_PAD_PROBE_TYPE_EVENT_FLUSH
+	// PadProbeTypeEventFlush wraps PAD_PROBE_TYPE_EVENT_FLUSH
 	//
 	// probe flush events. This probe has to be
 	//     explicitly enabled and is not included in the
 	//     @@GST_PAD_PROBE_TYPE_EVENT_DOWNSTREAM or
 	//     @@GST_PAD_PROBE_TYPE_EVENT_UPSTREAM probe types.
 	PadProbeTypeEventFlush PadProbeType = 256
-	// PadProbeTypeQueryDownstream wraps GST_PAD_PROBE_TYPE_QUERY_DOWNSTREAM
+	// PadProbeTypeQueryDownstream wraps PAD_PROBE_TYPE_QUERY_DOWNSTREAM
 	//
 	// probe downstream queries
 	PadProbeTypeQueryDownstream PadProbeType = 512
-	// PadProbeTypeQueryUpstream wraps GST_PAD_PROBE_TYPE_QUERY_UPSTREAM
+	// PadProbeTypeQueryUpstream wraps PAD_PROBE_TYPE_QUERY_UPSTREAM
 	//
 	// probe upstream queries
 	PadProbeTypeQueryUpstream PadProbeType = 1024
-	// PadProbeTypePush wraps GST_PAD_PROBE_TYPE_PUSH
+	// PadProbeTypePush wraps PAD_PROBE_TYPE_PUSH
 	//
 	// probe push
 	PadProbeTypePush PadProbeType = 4096
-	// PadProbeTypePull wraps GST_PAD_PROBE_TYPE_PULL
+	// PadProbeTypePull wraps PAD_PROBE_TYPE_PULL
 	//
 	// probe pull
 	PadProbeTypePull PadProbeType = 8192
-	// PadProbeTypeBlocking wraps GST_PAD_PROBE_TYPE_BLOCKING
+	// PadProbeTypeBlocking wraps PAD_PROBE_TYPE_BLOCKING
 	//
 	// probe and block at the next opportunity, at data flow or when idle
 	PadProbeTypeBlocking PadProbeType = 3
-	// PadProbeTypeDataDownstream wraps GST_PAD_PROBE_TYPE_DATA_DOWNSTREAM
+	// PadProbeTypeDataDownstream wraps PAD_PROBE_TYPE_DATA_DOWNSTREAM
 	//
 	// probe downstream data (buffers, buffer lists, and events)
 	PadProbeTypeDataDownstream PadProbeType = 112
-	// PadProbeTypeDataUpstream wraps GST_PAD_PROBE_TYPE_DATA_UPSTREAM
+	// PadProbeTypeDataUpstream wraps PAD_PROBE_TYPE_DATA_UPSTREAM
 	//
 	// probe upstream data (events)
 	PadProbeTypeDataUpstream PadProbeType = 128
-	// PadProbeTypeDataBoth wraps GST_PAD_PROBE_TYPE_DATA_BOTH
+	// PadProbeTypeDataBoth wraps PAD_PROBE_TYPE_DATA_BOTH
 	//
 	// probe upstream and downstream data (buffers, buffer lists, and events)
 	PadProbeTypeDataBoth PadProbeType = 240
-	// PadProbeTypeBlockDownstream wraps GST_PAD_PROBE_TYPE_BLOCK_DOWNSTREAM
+	// PadProbeTypeBlockDownstream wraps PAD_PROBE_TYPE_BLOCK_DOWNSTREAM
 	//
 	// probe and block downstream data (buffers, buffer lists, and events)
 	PadProbeTypeBlockDownstream PadProbeType = 114
-	// PadProbeTypeBlockUpstream wraps GST_PAD_PROBE_TYPE_BLOCK_UPSTREAM
+	// PadProbeTypeBlockUpstream wraps PAD_PROBE_TYPE_BLOCK_UPSTREAM
 	//
 	// probe and block upstream data (events)
 	PadProbeTypeBlockUpstream PadProbeType = 130
-	// PadProbeTypeEventBoth wraps GST_PAD_PROBE_TYPE_EVENT_BOTH
+	// PadProbeTypeEventBoth wraps PAD_PROBE_TYPE_EVENT_BOTH
 	//
 	// probe upstream and downstream events
 	PadProbeTypeEventBoth PadProbeType = 192
-	// PadProbeTypeQueryBoth wraps GST_PAD_PROBE_TYPE_QUERY_BOTH
+	// PadProbeTypeQueryBoth wraps PAD_PROBE_TYPE_QUERY_BOTH
 	//
 	// probe upstream and downstream queries
 	PadProbeTypeQueryBoth PadProbeType = 1536
-	// PadProbeTypeAllBoth wraps GST_PAD_PROBE_TYPE_ALL_BOTH
+	// PadProbeTypeAllBoth wraps PAD_PROBE_TYPE_ALL_BOTH
 	//
 	// probe upstream events and queries and downstream buffers, buffer lists, events and queries
 	PadProbeTypeAllBoth PadProbeType = 1776
-	// PadProbeTypeScheduling wraps GST_PAD_PROBE_TYPE_SCHEDULING
+	// PadProbeTypeScheduling wraps PAD_PROBE_TYPE_SCHEDULING
 	//
 	// probe push and pull
 	PadProbeTypeScheduling PadProbeType = 12288
@@ -6806,7 +6802,7 @@ func (f PadProbeType) String() string {
 type PadTemplateFlags C.gint
 
 const (
-	// PadTemplateFlagLast wraps GST_PAD_TEMPLATE_FLAG_LAST
+	// PadTemplateFlagLast wraps PAD_TEMPLATE_FLAG_LAST
 	//
 	// first flag that can be used by subclasses.
 	PadTemplateFlagLast PadTemplateFlags = 256
@@ -6848,22 +6844,22 @@ func (f PadTemplateFlags) String() string {
 type ParseFlags C.gint
 
 const (
-	// ParseFlagNone wraps GST_PARSE_FLAG_NONE
+	// ParseFlagNone wraps PARSE_FLAG_NONE
 	//
 	// Do not use any special parsing options.
 	ParseFlagNone ParseFlags = 0
-	// ParseFlagFatalErrors wraps GST_PARSE_FLAG_FATAL_ERRORS
+	// ParseFlagFatalErrors wraps PARSE_FLAG_FATAL_ERRORS
 	//
 	// Always return %NULL when an error occurs
 	//     (default behaviour is to return partially constructed bins or elements
 	//      in some cases)
 	ParseFlagFatalErrors ParseFlags = 1
-	// ParseFlagNoSingleElementBins wraps GST_PARSE_FLAG_NO_SINGLE_ELEMENT_BINS
+	// ParseFlagNoSingleElementBins wraps PARSE_FLAG_NO_SINGLE_ELEMENT_BINS
 	//
 	// If a bin only has a single element,
 	//     just return the element.
 	ParseFlagNoSingleElementBins ParseFlags = 2
-	// ParseFlagPlaceInBin wraps GST_PARSE_FLAG_PLACE_IN_BIN
+	// ParseFlagPlaceInBin wraps PARSE_FLAG_PLACE_IN_BIN
 	//
 	// If more than one toplevel element is described
 	//     by the pipeline description string, put them in a #GstBin instead of a
@@ -6916,11 +6912,11 @@ func (f ParseFlags) String() string {
 type PipelineFlags C.gint
 
 const (
-	// PipelineFlagFixedClock wraps GST_PIPELINE_FLAG_FIXED_CLOCK
+	// PipelineFlagFixedClock wraps PIPELINE_FLAG_FIXED_CLOCK
 	//
 	// this pipeline works with a fixed clock
 	PipelineFlagFixedClock PipelineFlags = 524288
-	// PipelineFlagLast wraps GST_PIPELINE_FLAG_LAST
+	// PipelineFlagLast wraps PIPELINE_FLAG_LAST
 	//
 	// offset to define more flags
 	PipelineFlagLast PipelineFlags = 8388608
@@ -6963,7 +6959,7 @@ func (f PipelineFlags) String() string {
 type PluginAPIFlags C.gint
 
 const (
-	// PluginApiFlagIgnoreEnumMembers wraps GST_PLUGIN_API_FLAG_IGNORE_ENUM_MEMBERS
+	// PluginApiFlagIgnoreEnumMembers wraps PLUGIN_API_FLAG_IGNORE_ENUM_MEMBERS
 	//
 	// Ignore enum members when generating
 	//   the plugins cache. This is useful if the members of the enum are generated
@@ -7007,32 +7003,32 @@ func (f PluginAPIFlags) String() string {
 type PluginDependencyFlags C.gint
 
 const (
-	// PluginDependencyFlagNone wraps GST_PLUGIN_DEPENDENCY_FLAG_NONE
+	// PluginDependencyFlagNone wraps PLUGIN_DEPENDENCY_FLAG_NONE
 	//
 	// no special flags
 	PluginDependencyFlagNone PluginDependencyFlags = 0
-	// PluginDependencyFlagRecurse wraps GST_PLUGIN_DEPENDENCY_FLAG_RECURSE
+	// PluginDependencyFlagRecurse wraps PLUGIN_DEPENDENCY_FLAG_RECURSE
 	//
 	// recurse into subdirectories
 	PluginDependencyFlagRecurse PluginDependencyFlags = 1
-	// PluginDependencyFlagPathsAreDefaultOnly wraps GST_PLUGIN_DEPENDENCY_FLAG_PATHS_ARE_DEFAULT_ONLY
+	// PluginDependencyFlagPathsAreDefaultOnly wraps PLUGIN_DEPENDENCY_FLAG_PATHS_ARE_DEFAULT_ONLY
 	//
 	// use paths
 	//         argument only if none of the environment variables is set
 	PluginDependencyFlagPathsAreDefaultOnly PluginDependencyFlags = 2
-	// PluginDependencyFlagFileNameIsSuffix wraps GST_PLUGIN_DEPENDENCY_FLAG_FILE_NAME_IS_SUFFIX
+	// PluginDependencyFlagFileNameIsSuffix wraps PLUGIN_DEPENDENCY_FLAG_FILE_NAME_IS_SUFFIX
 	//
 	// interpret
 	//         filename argument as filter suffix and check all matching files in
 	//         the directory
 	PluginDependencyFlagFileNameIsSuffix PluginDependencyFlags = 4
-	// PluginDependencyFlagFileNameIsPrefix wraps GST_PLUGIN_DEPENDENCY_FLAG_FILE_NAME_IS_PREFIX
+	// PluginDependencyFlagFileNameIsPrefix wraps PLUGIN_DEPENDENCY_FLAG_FILE_NAME_IS_PREFIX
 	//
 	// interpret
 	//         filename argument as filter prefix and check all matching files in
 	//         the directory. Since: 1.8.
 	PluginDependencyFlagFileNameIsPrefix PluginDependencyFlags = 8
-	// PluginDependencyFlagPathsAreRelativeToExe wraps GST_PLUGIN_DEPENDENCY_FLAG_PATHS_ARE_RELATIVE_TO_EXE
+	// PluginDependencyFlagPathsAreRelativeToExe wraps PLUGIN_DEPENDENCY_FLAG_PATHS_ARE_RELATIVE_TO_EXE
 	//
 	// interpret
 	//   non-absolute paths as relative to the main executable directory. Since
@@ -7091,11 +7087,11 @@ func (f PluginDependencyFlags) String() string {
 type PluginFlags C.gint
 
 const (
-	// PluginFlagCached wraps GST_PLUGIN_FLAG_CACHED
+	// PluginFlagCached wraps PLUGIN_FLAG_CACHED
 	//
 	// Temporarily loaded plugins
 	PluginFlagCached PluginFlags = 16
-	// PluginFlagBlacklisted wraps GST_PLUGIN_FLAG_BLACKLISTED
+	// PluginFlagBlacklisted wraps PLUGIN_FLAG_BLACKLISTED
 	//
 	// The plugin won't be scanned (again)
 	PluginFlagBlacklisted PluginFlags = 32
@@ -7142,15 +7138,15 @@ func (f PluginFlags) String() string {
 type QueryTypeFlags C.gint
 
 const (
-	// QueryTypeUpstream wraps GST_QUERY_TYPE_UPSTREAM
+	// QueryTypeUpstream wraps QUERY_TYPE_UPSTREAM
 	//
 	// Set if the query can travel upstream.
 	QueryTypeUpstream QueryTypeFlags = 1
-	// QueryTypeDownstream wraps GST_QUERY_TYPE_DOWNSTREAM
+	// QueryTypeDownstream wraps QUERY_TYPE_DOWNSTREAM
 	//
 	// Set if the query can travel downstream.
 	QueryTypeDownstream QueryTypeFlags = 2
-	// QueryTypeSerialized wraps GST_QUERY_TYPE_SERIALIZED
+	// QueryTypeSerialized wraps QUERY_TYPE_SERIALIZED
 	//
 	// Set if the query should be serialized with data
 	//                               flow.
@@ -7199,15 +7195,15 @@ func (f QueryTypeFlags) String() string {
 type SchedulingFlags C.gint
 
 const (
-	// SchedulingFlagSeekable wraps GST_SCHEDULING_FLAG_SEEKABLE
+	// SchedulingFlagSeekable wraps SCHEDULING_FLAG_SEEKABLE
 	//
 	// if seeking is possible
 	SchedulingFlagSeekable SchedulingFlags = 1
-	// SchedulingFlagSequential wraps GST_SCHEDULING_FLAG_SEQUENTIAL
+	// SchedulingFlagSequential wraps SCHEDULING_FLAG_SEQUENTIAL
 	//
 	// if sequential access is recommended
 	SchedulingFlagSequential SchedulingFlags = 2
-	// SchedulingFlagBandwidthLimited wraps GST_SCHEDULING_FLAG_BANDWIDTH_LIMITED
+	// SchedulingFlagBandwidthLimited wraps SCHEDULING_FLAG_BANDWIDTH_LIMITED
 	//
 	// if bandwidth is limited and buffering possible (since 1.2)
 	SchedulingFlagBandwidthLimited SchedulingFlags = 4
@@ -7305,72 +7301,72 @@ func (f SchedulingFlags) String() string {
 type SeekFlags C.gint
 
 const (
-	// SeekFlagNone wraps GST_SEEK_FLAG_NONE
+	// SeekFlagNone wraps SEEK_FLAG_NONE
 	//
 	// no flag
 	SeekFlagNone SeekFlags = 0
-	// SeekFlagFlush wraps GST_SEEK_FLAG_FLUSH
+	// SeekFlagFlush wraps SEEK_FLAG_FLUSH
 	//
 	// flush pipeline
 	SeekFlagFlush SeekFlags = 1
-	// SeekFlagAccurate wraps GST_SEEK_FLAG_ACCURATE
+	// SeekFlagAccurate wraps SEEK_FLAG_ACCURATE
 	//
 	// accurate position is requested, this might
 	//                     be considerably slower for some formats.
 	SeekFlagAccurate SeekFlags = 2
-	// SeekFlagKeyUnit wraps GST_SEEK_FLAG_KEY_UNIT
+	// SeekFlagKeyUnit wraps SEEK_FLAG_KEY_UNIT
 	//
 	// seek to the nearest keyframe. This might be
 	//                     faster but less accurate.
 	SeekFlagKeyUnit SeekFlags = 4
-	// SeekFlagSegment wraps GST_SEEK_FLAG_SEGMENT
+	// SeekFlagSegment wraps SEEK_FLAG_SEGMENT
 	//
 	// perform a segment seek.
 	SeekFlagSegment SeekFlags = 8
-	// SeekFlagTrickmode wraps GST_SEEK_FLAG_TRICKMODE
+	// SeekFlagTrickmode wraps SEEK_FLAG_TRICKMODE
 	//
 	// when doing fast forward or fast reverse playback, allow
 	//                     elements to skip frames instead of generating all
 	//                     frames. (Since: 1.6)
 	SeekFlagTrickmode SeekFlags = 16
-	// SeekFlagSkip wraps GST_SEEK_FLAG_SKIP
+	// SeekFlagSkip wraps SEEK_FLAG_SKIP
 	//
 	// Deprecated backward compatibility flag, replaced
 	//                     by %GST_SEEK_FLAG_TRICKMODE
 	SeekFlagSkip SeekFlags = 16
-	// SeekFlagSnapBefore wraps GST_SEEK_FLAG_SNAP_BEFORE
+	// SeekFlagSnapBefore wraps SEEK_FLAG_SNAP_BEFORE
 	//
 	// go to a location before the requested position,
 	//                     if %GST_SEEK_FLAG_KEY_UNIT this means the keyframe at or before
 	//                     the requested position the one at or before the seek target.
 	SeekFlagSnapBefore SeekFlags = 32
-	// SeekFlagSnapAfter wraps GST_SEEK_FLAG_SNAP_AFTER
+	// SeekFlagSnapAfter wraps SEEK_FLAG_SNAP_AFTER
 	//
 	// go to a location after the requested position,
 	//                     if %GST_SEEK_FLAG_KEY_UNIT this means the keyframe at of after the
 	//                     requested position.
 	SeekFlagSnapAfter SeekFlags = 64
-	// SeekFlagSnapNearest wraps GST_SEEK_FLAG_SNAP_NEAREST
+	// SeekFlagSnapNearest wraps SEEK_FLAG_SNAP_NEAREST
 	//
 	// go to a position near the requested position,
 	//                     if %GST_SEEK_FLAG_KEY_UNIT this means the keyframe closest
 	//                     to the requested position, if both keyframes are at an equal
 	//                     distance, behaves like %GST_SEEK_FLAG_SNAP_BEFORE.
 	SeekFlagSnapNearest SeekFlags = 96
-	// SeekFlagTrickmodeKeyUnits wraps GST_SEEK_FLAG_TRICKMODE_KEY_UNITS
+	// SeekFlagTrickmodeKeyUnits wraps SEEK_FLAG_TRICKMODE_KEY_UNITS
 	//
 	// when doing fast forward or fast reverse
 	//                     playback, request that elements only decode keyframes
 	//                     and skip all other content, for formats that have
 	//                     keyframes. (Since: 1.6)
 	SeekFlagTrickmodeKeyUnits SeekFlags = 128
-	// SeekFlagTrickmodeNoAudio wraps GST_SEEK_FLAG_TRICKMODE_NO_AUDIO
+	// SeekFlagTrickmodeNoAudio wraps SEEK_FLAG_TRICKMODE_NO_AUDIO
 	//
 	// when doing fast forward or fast reverse
 	//                     playback, request that audio decoder elements skip
 	//                     decoding and output only gap events or silence. (Since: 1.6)
 	SeekFlagTrickmodeNoAudio SeekFlags = 256
-	// SeekFlagTrickmodeForwardPredicted wraps GST_SEEK_FLAG_TRICKMODE_FORWARD_PREDICTED
+	// SeekFlagTrickmodeForwardPredicted wraps SEEK_FLAG_TRICKMODE_FORWARD_PREDICTED
 	//
 	// When doing fast forward or fast reverse
 	//                     playback, request that elements only decode keyframes and
@@ -7378,7 +7374,7 @@ const (
 	//                     B-Frames), for formats that have keyframes and forward predicted
 	//                     frames. (Since: 1.18)
 	SeekFlagTrickmodeForwardPredicted SeekFlags = 512
-	// SeekFlagInstantRateChange wraps GST_SEEK_FLAG_INSTANT_RATE_CHANGE
+	// SeekFlagInstantRateChange wraps SEEK_FLAG_INSTANT_RATE_CHANGE
 	//
 	// Signals that a rate change should be
 	//                     applied immediately. Only valid if start/stop position
@@ -7463,39 +7459,39 @@ func (f SeekFlags) String() string {
 type SegmentFlags C.gint
 
 const (
-	// SegmentFlagNone wraps GST_SEGMENT_FLAG_NONE
+	// SegmentFlagNone wraps SEGMENT_FLAG_NONE
 	//
 	// no flags
 	SegmentFlagNone SegmentFlags = 0
-	// SegmentFlagReset wraps GST_SEGMENT_FLAG_RESET
+	// SegmentFlagReset wraps SEGMENT_FLAG_RESET
 	//
 	// reset the pipeline running_time to the segment
 	//                          running_time
 	SegmentFlagReset SegmentFlags = 1
-	// SegmentFlagTrickmode wraps GST_SEGMENT_FLAG_TRICKMODE
+	// SegmentFlagTrickmode wraps SEGMENT_FLAG_TRICKMODE
 	//
 	// perform skip playback (Since: 1.6)
 	SegmentFlagTrickmode SegmentFlags = 16
-	// SegmentFlagSkip wraps GST_SEGMENT_FLAG_SKIP
+	// SegmentFlagSkip wraps SEGMENT_FLAG_SKIP
 	//
 	// Deprecated backward compatibility flag, replaced
 	//                         by @GST_SEGMENT_FLAG_TRICKMODE
 	SegmentFlagSkip SegmentFlags = 16
-	// SegmentFlagSegment wraps GST_SEGMENT_FLAG_SEGMENT
+	// SegmentFlagSegment wraps SEGMENT_FLAG_SEGMENT
 	//
 	// send SEGMENT_DONE instead of EOS
 	SegmentFlagSegment SegmentFlags = 8
-	// SegmentFlagTrickmodeKeyUnits wraps GST_SEGMENT_FLAG_TRICKMODE_KEY_UNITS
+	// SegmentFlagTrickmodeKeyUnits wraps SEGMENT_FLAG_TRICKMODE_KEY_UNITS
 	//
 	// Decode only keyframes, where
 	//                                        possible (Since: 1.6)
 	SegmentFlagTrickmodeKeyUnits SegmentFlags = 128
-	// SegmentFlagTrickmodeForwardPredicted wraps GST_SEGMENT_FLAG_TRICKMODE_FORWARD_PREDICTED
+	// SegmentFlagTrickmodeForwardPredicted wraps SEGMENT_FLAG_TRICKMODE_FORWARD_PREDICTED
 	//
 	// Decode only keyframes or forward
 	//                                        predicted frames, where possible (Since: 1.18)
 	SegmentFlagTrickmodeForwardPredicted SegmentFlags = 512
-	// SegmentFlagTrickmodeNoAudio wraps GST_SEGMENT_FLAG_TRICKMODE_NO_AUDIO
+	// SegmentFlagTrickmodeNoAudio wraps SEGMENT_FLAG_TRICKMODE_NO_AUDIO
 	//
 	// Do not decode any audio, where
 	//                                        possible (Since: 1.6)
@@ -7557,16 +7553,16 @@ func (f SegmentFlags) String() string {
 type SerializeFlags C.gint
 
 const (
-	// SerializeFlagNone wraps GST_SERIALIZE_FLAG_NONE
+	// SerializeFlagNone wraps SERIALIZE_FLAG_NONE
 	//
 	// No special flags specified.
 	SerializeFlagNone SerializeFlags = 0
-	// SerializeFlagBackwardCompat wraps GST_SERIALIZE_FLAG_BACKWARD_COMPAT
+	// SerializeFlagBackwardCompat wraps SERIALIZE_FLAG_BACKWARD_COMPAT
 	//
 	// Serialize using the old format for
 	//                                      nested structures.
 	SerializeFlagBackwardCompat SerializeFlags = 1
-	// SerializeFlagStrict wraps GST_SERIALIZE_FLAG_STRICT
+	// SerializeFlagStrict wraps SERIALIZE_FLAG_STRICT
 	//
 	// Serialization fails if a value cannot be serialized instead of using
 	// placeholder "NULL" value (e.g. pointers, objects).
@@ -7613,13 +7609,13 @@ func (f SerializeFlags) String() string {
 type StackTraceFlags C.gint
 
 const (
-	// StackTraceShowNone wraps GST_STACK_TRACE_SHOW_NONE
+	// StackTraceShowNone wraps STACK_TRACE_SHOW_NONE
 	//
 	// Try to retrieve the minimum information
 	//                             available, which may be none on some platforms
 	//                             (Since: 1.18)
 	StackTraceShowNone StackTraceFlags = 0
-	// StackTraceShowFull wraps GST_STACK_TRACE_SHOW_FULL
+	// StackTraceShowFull wraps STACK_TRACE_SHOW_FULL
 	//
 	// Try to retrieve as much information as possible,
 	//                             including source information when getting the
@@ -7664,23 +7660,23 @@ func (f StackTraceFlags) String() string {
 type StreamFlags C.gint
 
 const (
-	// StreamFlagNone wraps GST_STREAM_FLAG_NONE
+	// StreamFlagNone wraps STREAM_FLAG_NONE
 	//
 	// This stream has no special attributes
 	StreamFlagNone StreamFlags = 0
-	// StreamFlagSparse wraps GST_STREAM_FLAG_SPARSE
+	// StreamFlagSparse wraps STREAM_FLAG_SPARSE
 	//
 	// This stream is a sparse stream (e.g. a subtitle
 	//    stream), data may flow only in irregular intervals with large gaps in
 	//    between.
 	StreamFlagSparse StreamFlags = 1
-	// StreamFlagSelect wraps GST_STREAM_FLAG_SELECT
+	// StreamFlagSelect wraps STREAM_FLAG_SELECT
 	//
 	// This stream should be selected by default. This
 	//    flag may be used by demuxers to signal that a stream should be selected
 	//    by default in a playback scenario.
 	StreamFlagSelect StreamFlags = 2
-	// StreamFlagUnselect wraps GST_STREAM_FLAG_UNSELECT
+	// StreamFlagUnselect wraps STREAM_FLAG_UNSELECT
 	//
 	// This stream should not be selected by default.
 	//    This flag may be used by demuxers to signal that a stream should not
@@ -7740,23 +7736,23 @@ func (f StreamFlags) String() string {
 type StreamType C.gint
 
 const (
-	// StreamTypeUnknown wraps GST_STREAM_TYPE_UNKNOWN
+	// StreamTypeUnknown wraps STREAM_TYPE_UNKNOWN
 	//
 	// The stream is of unknown (unclassified) type.
 	StreamTypeUnknown StreamType = 1
-	// StreamTypeAudio wraps GST_STREAM_TYPE_AUDIO
+	// StreamTypeAudio wraps STREAM_TYPE_AUDIO
 	//
 	// The stream is of audio data
 	StreamTypeAudio StreamType = 2
-	// StreamTypeVideo wraps GST_STREAM_TYPE_VIDEO
+	// StreamTypeVideo wraps STREAM_TYPE_VIDEO
 	//
 	// The stream carries video data
 	StreamTypeVideo StreamType = 4
-	// StreamTypeContainer wraps GST_STREAM_TYPE_CONTAINER
+	// StreamTypeContainer wraps STREAM_TYPE_CONTAINER
 	//
 	// The stream is a muxed container type
 	StreamTypeContainer StreamType = 8
-	// StreamTypeText wraps GST_STREAM_TYPE_TEXT
+	// StreamTypeText wraps STREAM_TYPE_TEXT
 	//
 	// The stream contains subtitle / subpicture data.
 	StreamTypeText StreamType = 16
@@ -7838,17 +7834,17 @@ func StreamTypeGetName(stype StreamType) string {
 type TracerValueFlags C.gint
 
 const (
-	// TracerValueFlagsNone wraps GST_TRACER_VALUE_FLAGS_NONE
+	// TracerValueFlagsNone wraps TRACER_VALUE_FLAGS_NONE
 	//
 	// no flags
 	TracerValueFlagsNone TracerValueFlags = 0
-	// TracerValueFlagsOptional wraps GST_TRACER_VALUE_FLAGS_OPTIONAL
+	// TracerValueFlagsOptional wraps TRACER_VALUE_FLAGS_OPTIONAL
 	//
 	// the value is optional. When using this flag
 	//   one need to have an additional boolean arg before this value in the
 	//   var-args list passed to  gst_tracer_record_log().
 	TracerValueFlagsOptional TracerValueFlags = 1
-	// TracerValueFlagsAggregated wraps GST_TRACER_VALUE_FLAGS_AGGREGATED
+	// TracerValueFlagsAggregated wraps TRACER_VALUE_FLAGS_AGGREGATED
 	//
 	// the value is a combined figure, since the
 	//   start of tracing. Examples are averages or timestamps.
@@ -8235,6 +8231,16 @@ type TaskFunction func()
 //
 // Task function, see gst_task_pool_push().
 type TaskPoolFunction func()
+
+// TaskThreadFunc wraps GstTaskThreadFunc
+// 
+// The function takes the following parameters:
+// 
+// 	- task Task: The #GstTask 
+// 	- thread *glib.Thread: The #GThread 
+//
+// Custom GstTask thread callback functions that can be installed.
+type TaskThreadFunc func(task Task, thread *glib.Thread)
 
 // TypeFindFunction wraps GstTypeFindFunction
 // 
@@ -24344,6 +24350,40 @@ type Task interface {
 	// Resume @task in case it was paused. If the task was stopped, it will
 	// remain in that state and this function will return %FALSE.
 	Resume() bool
+	// SetEnterCallback wraps gst_task_set_enter_callback
+	// 
+	// The function takes the following parameters:
+	// 
+	// 	- enterFunc TaskThreadFunc: a #GstTaskThreadFunc 
+	//
+	// Call @enter_func when the task function of @task is entered. @user_data will
+	// be passed to @enter_func and @notify will be called when @user_data is no
+	// longer referenced.
+	SetEnterCallback(TaskThreadFunc)
+	// SetLeaveCallback wraps gst_task_set_leave_callback
+	// 
+	// The function takes the following parameters:
+	// 
+	// 	- leaveFunc TaskThreadFunc: a #GstTaskThreadFunc 
+	//
+	// Call @leave_func when the task function of @task is left. @user_data will
+	// be passed to @leave_func and @notify will be called when @user_data is no
+	// longer referenced.
+	SetLeaveCallback(TaskThreadFunc)
+	// SetLock wraps gst_task_set_lock
+	// 
+	// The function takes the following parameters:
+	// 
+	// 	- mutex *glib.RecMutex: The #GRecMutex to use 
+	//
+	// Set the mutex used by the task. The mutex will be acquired before
+	// calling the #GstTaskFunction.
+	// 
+	// This function has to be called before calling gst_task_pause() or
+	// gst_task_start().
+	// 
+	// MT safe.
+	SetLock(*glib.RecMutex)
 	// SetPool wraps gst_task_set_pool
 	// 
 	// The function takes the following parameters:
@@ -24635,6 +24675,81 @@ func (task *TaskInstance) Resume() bool {
 	}
 
 	return goret
+}
+
+// SetEnterCallback wraps gst_task_set_enter_callback
+// 
+// The function takes the following parameters:
+// 
+// 	- enterFunc TaskThreadFunc: a #GstTaskThreadFunc 
+//
+// Call @enter_func when the task function of @task is entered. @user_data will
+// be passed to @enter_func and @notify will be called when @user_data is no
+// longer referenced.
+func (task *TaskInstance) SetEnterCallback(enterFunc TaskThreadFunc) {
+	var carg0 *C.GstTask          // in, none, converted
+	var carg1 C.GstTaskThreadFunc // callback, scope: notified, closure: carg2, destroy: carg3
+	var carg2 C.gpointer          // implicit
+	var carg3 C.GDestroyNotify    // implicit
+
+	carg0 = (*C.GstTask)(UnsafeTaskToGlibNone(task))
+	carg1 = (*[0]byte)(C._gotk4_gst1_TaskThreadFunc)
+	carg2 = C.gpointer(userdata.Register(enterFunc))
+	carg3 = (C.GDestroyNotify)((*[0]byte)(C.destroyUserdata))
+
+	C.gst_task_set_enter_callback(carg0, carg1, carg2, carg3)
+	runtime.KeepAlive(task)
+	runtime.KeepAlive(enterFunc)
+}
+
+// SetLeaveCallback wraps gst_task_set_leave_callback
+// 
+// The function takes the following parameters:
+// 
+// 	- leaveFunc TaskThreadFunc: a #GstTaskThreadFunc 
+//
+// Call @leave_func when the task function of @task is left. @user_data will
+// be passed to @leave_func and @notify will be called when @user_data is no
+// longer referenced.
+func (task *TaskInstance) SetLeaveCallback(leaveFunc TaskThreadFunc) {
+	var carg0 *C.GstTask          // in, none, converted
+	var carg1 C.GstTaskThreadFunc // callback, scope: notified, closure: carg2, destroy: carg3
+	var carg2 C.gpointer          // implicit
+	var carg3 C.GDestroyNotify    // implicit
+
+	carg0 = (*C.GstTask)(UnsafeTaskToGlibNone(task))
+	carg1 = (*[0]byte)(C._gotk4_gst1_TaskThreadFunc)
+	carg2 = C.gpointer(userdata.Register(leaveFunc))
+	carg3 = (C.GDestroyNotify)((*[0]byte)(C.destroyUserdata))
+
+	C.gst_task_set_leave_callback(carg0, carg1, carg2, carg3)
+	runtime.KeepAlive(task)
+	runtime.KeepAlive(leaveFunc)
+}
+
+// SetLock wraps gst_task_set_lock
+// 
+// The function takes the following parameters:
+// 
+// 	- mutex *glib.RecMutex: The #GRecMutex to use 
+//
+// Set the mutex used by the task. The mutex will be acquired before
+// calling the #GstTaskFunction.
+// 
+// This function has to be called before calling gst_task_pause() or
+// gst_task_start().
+// 
+// MT safe.
+func (task *TaskInstance) SetLock(mutex *glib.RecMutex) {
+	var carg0 *C.GstTask   // in, none, converted
+	var carg1 *C.GRecMutex // in, none, converted
+
+	carg0 = (*C.GstTask)(UnsafeTaskToGlibNone(task))
+	carg1 = (*C.GRecMutex)(glib.UnsafeRecMutexToGlibNone(mutex))
+
+	C.gst_task_set_lock(carg0, carg1)
+	runtime.KeepAlive(task)
+	runtime.KeepAlive(mutex)
 }
 
 // SetPool wraps gst_task_set_pool
@@ -28130,19 +28245,6 @@ type Bus interface {
 	// The bus watch will take its own reference to the @bus, so it is safe to unref
 	// @bus using gst_object_unref() after setting the bus watch.
 	AddWatchFull(int32, BusFunc) uint
-	// CreateWatch wraps gst_bus_create_watch
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret *glib.Source (nullable) 
-	//
-	// Create watch for this bus. The #GSource will be dispatched whenever
-	// a message is on the bus. After the GSource is dispatched, the
-	// message is popped off the bus and unreffed.
-	// 
-	// As with other watches, there can only be one watch on the bus, including
-	// any signal watch added with #gst_bus_add_signal_watch.
-	CreateWatch() *glib.Source
 	// DisableSyncMessageEmission wraps gst_bus_disable_sync_message_emission
 	//
 	// Instructs GStreamer to stop emitting the "sync-message" signal for this bus.
@@ -28581,36 +28683,6 @@ func (bus *BusInstance) AddWatchFull(priority int32, fn BusFunc) uint {
 	var goret uint
 
 	goret = uint(cret)
-
-	return goret
-}
-
-// CreateWatch wraps gst_bus_create_watch
-// 
-// The function returns the following values:
-// 
-// 	- goret *glib.Source (nullable) 
-//
-// Create watch for this bus. The #GSource will be dispatched whenever
-// a message is on the bus. After the GSource is dispatched, the
-// message is popped off the bus and unreffed.
-// 
-// As with other watches, there can only be one watch on the bus, including
-// any signal watch added with #gst_bus_add_signal_watch.
-func (bus *BusInstance) CreateWatch() *glib.Source {
-	var carg0 *C.GstBus  // in, none, converted
-	var cret  *C.GSource // return, full, converted, nullable
-
-	carg0 = (*C.GstBus)(UnsafeBusToGlibNone(bus))
-
-	cret = C.gst_bus_create_watch(carg0)
-	runtime.KeepAlive(bus)
-
-	var goret *glib.Source
-
-	if cret != nil {
-		goret = glib.UnsafeSourceFromGlibFull(unsafe.Pointer(cret))
-	}
 
 	return goret
 }
@@ -44091,12 +44163,12 @@ func UnsafeBufferFromGlibBorrow(p unsafe.Pointer) *Buffer {
 
 // UnsafeBufferFromGlibNone is used to convert raw C.GstBuffer pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeBufferFromGlibNone(p unsafe.Pointer) *Buffer {
-	// FIXME: this has no ref function, what should we do here?
+	C.gst_buffer_ref((*C.GstBuffer)(p))
 	wrapped := UnsafeBufferFromGlibBorrow(p)
 	runtime.SetFinalizer(
 		wrapped.buffer,
 		func (intern *buffer) {
-			C.free(unsafe.Pointer(intern.native))
+			C.gst_buffer_unref(intern.native)
 		},
 	)
 	return wrapped
@@ -44108,17 +44180,24 @@ func UnsafeBufferFromGlibFull(p unsafe.Pointer) *Buffer {
 	runtime.SetFinalizer(
 		wrapped.buffer,
 		func (intern *buffer) {
-			C.free(unsafe.Pointer(intern.native))
+			C.gst_buffer_unref(intern.native)
 		},
 	)
 	return wrapped
 }
 
-// UnsafeBufferFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeBufferRef increases the refcount on the underlying resource. This is used by the bindings internally.
+// 
+// When this is called without an associated call to [Buffer.UnsafeBufferUnref], then [Buffer] will leak memory.
+func UnsafeBufferRef(b *Buffer) {
+	C.gst_buffer_ref(b.native)
+}
+
+// UnsafeBufferUnref unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [Buffer] is expected to work anymore.
-func UnsafeBufferFree(b *Buffer) {
-	C.free(unsafe.Pointer(b.native))
+func UnsafeBufferUnref(b *Buffer) {
+	C.gst_buffer_unref(b.native)
 }
 
 // UnsafeBufferToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -45675,12 +45754,12 @@ func UnsafeBufferListFromGlibBorrow(p unsafe.Pointer) *BufferList {
 
 // UnsafeBufferListFromGlibNone is used to convert raw C.GstBufferList pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeBufferListFromGlibNone(p unsafe.Pointer) *BufferList {
-	// FIXME: this has no ref function, what should we do here?
+	C.gst_buffer_list_ref((*C.GstBufferList)(p))
 	wrapped := UnsafeBufferListFromGlibBorrow(p)
 	runtime.SetFinalizer(
 		wrapped.bufferList,
 		func (intern *bufferList) {
-			C.free(unsafe.Pointer(intern.native))
+			C.gst_buffer_list_unref(intern.native)
 		},
 	)
 	return wrapped
@@ -45692,17 +45771,24 @@ func UnsafeBufferListFromGlibFull(p unsafe.Pointer) *BufferList {
 	runtime.SetFinalizer(
 		wrapped.bufferList,
 		func (intern *bufferList) {
-			C.free(unsafe.Pointer(intern.native))
+			C.gst_buffer_list_unref(intern.native)
 		},
 	)
 	return wrapped
 }
 
-// UnsafeBufferListFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeBufferListRef increases the refcount on the underlying resource. This is used by the bindings internally.
+// 
+// When this is called without an associated call to [BufferList.UnsafeBufferListUnref], then [BufferList] will leak memory.
+func UnsafeBufferListRef(b *BufferList) {
+	C.gst_buffer_list_ref(b.native)
+}
+
+// UnsafeBufferListUnref unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [BufferList] is expected to work anymore.
-func UnsafeBufferListFree(b *BufferList) {
-	C.free(unsafe.Pointer(b.native))
+func UnsafeBufferListUnref(b *BufferList) {
+	C.gst_buffer_list_unref(b.native)
 }
 
 // UnsafeBufferListToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -46279,12 +46365,12 @@ func UnsafeCapsFromGlibBorrow(p unsafe.Pointer) *Caps {
 
 // UnsafeCapsFromGlibNone is used to convert raw C.GstCaps pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeCapsFromGlibNone(p unsafe.Pointer) *Caps {
-	// FIXME: this has no ref function, what should we do here?
+	C.gst_caps_ref((*C.GstCaps)(p))
 	wrapped := UnsafeCapsFromGlibBorrow(p)
 	runtime.SetFinalizer(
 		wrapped.caps,
 		func (intern *caps) {
-			C.free(unsafe.Pointer(intern.native))
+			C.gst_caps_unref(intern.native)
 		},
 	)
 	return wrapped
@@ -46296,17 +46382,24 @@ func UnsafeCapsFromGlibFull(p unsafe.Pointer) *Caps {
 	runtime.SetFinalizer(
 		wrapped.caps,
 		func (intern *caps) {
-			C.free(unsafe.Pointer(intern.native))
+			C.gst_caps_unref(intern.native)
 		},
 	)
 	return wrapped
 }
 
-// UnsafeCapsFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeCapsRef increases the refcount on the underlying resource. This is used by the bindings internally.
+// 
+// When this is called without an associated call to [Caps.UnsafeCapsUnref], then [Caps] will leak memory.
+func UnsafeCapsRef(c *Caps) {
+	C.gst_caps_ref(c.native)
+}
+
+// UnsafeCapsUnref unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [Caps] is expected to work anymore.
-func UnsafeCapsFree(c *Caps) {
-	C.free(unsafe.Pointer(c.native))
+func UnsafeCapsUnref(c *Caps) {
+	C.gst_caps_unref(c.native)
 }
 
 // UnsafeCapsToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -48597,12 +48690,12 @@ func UnsafeContextFromGlibBorrow(p unsafe.Pointer) *Context {
 
 // UnsafeContextFromGlibNone is used to convert raw C.GstContext pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeContextFromGlibNone(p unsafe.Pointer) *Context {
-	// FIXME: this has no ref function, what should we do here?
+	C.gst_context_ref((*C.GstContext)(p))
 	wrapped := UnsafeContextFromGlibBorrow(p)
 	runtime.SetFinalizer(
 		wrapped._context,
 		func (intern *_context) {
-			C.free(unsafe.Pointer(intern.native))
+			C.gst_context_unref(intern.native)
 		},
 	)
 	return wrapped
@@ -48614,17 +48707,24 @@ func UnsafeContextFromGlibFull(p unsafe.Pointer) *Context {
 	runtime.SetFinalizer(
 		wrapped._context,
 		func (intern *_context) {
-			C.free(unsafe.Pointer(intern.native))
+			C.gst_context_unref(intern.native)
 		},
 	)
 	return wrapped
 }
 
-// UnsafeContextFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeContextRef increases the refcount on the underlying resource. This is used by the bindings internally.
+// 
+// When this is called without an associated call to [Context.UnsafeContextUnref], then [Context] will leak memory.
+func UnsafeContextRef(c *Context) {
+	C.gst_context_ref(c.native)
+}
+
+// UnsafeContextUnref unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [Context] is expected to work anymore.
-func UnsafeContextFree(c *Context) {
-	C.free(unsafe.Pointer(c.native))
+func UnsafeContextUnref(c *Context) {
+	C.gst_context_unref(c.native)
 }
 
 // UnsafeContextToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -48667,6 +48767,29 @@ func NewContext(contextType string, persistent bool) *Context {
 	cret = C.gst_context_new(carg1, carg2)
 	runtime.KeepAlive(contextType)
 	runtime.KeepAlive(persistent)
+
+	var goret *Context
+
+	goret = UnsafeContextFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// Copy wraps gst_context_copy
+// 
+// The function returns the following values:
+// 
+// 	- goret *Context 
+//
+// Creates a copy of the context. Returns a copy of the context.
+func (_context *Context) Copy() *Context {
+	var carg0 *C.GstContext // in, none, converted
+	var cret  *C.GstContext // return, full, converted
+
+	carg0 = (*C.GstContext)(UnsafeContextToGlibNone(_context))
+
+	cret = C.gst_context_copy(carg0)
+	runtime.KeepAlive(_context)
 
 	var goret *Context
 
@@ -49155,37 +49278,6 @@ func NewDateTime(tzoffset float32, year int32, month int32, day int32, hour int3
 	runtime.KeepAlive(hour)
 	runtime.KeepAlive(minute)
 	runtime.KeepAlive(seconds)
-
-	var goret *DateTime
-
-	if cret != nil {
-		goret = UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
-	}
-
-	return goret
-}
-
-// NewDateTimeFromGDateTime wraps gst_date_time_new_from_g_date_time
-// 
-// The function takes the following parameters:
-// 
-// 	- dt *glib.DateTime (nullable): the #GDateTime. 
-// 
-// The function returns the following values:
-// 
-// 	- goret *DateTime (nullable) 
-//
-// Creates a new #GstDateTime from a #GDateTime object.
-func NewDateTimeFromGDateTime(dt *glib.DateTime) *DateTime {
-	var carg1 *C.GDateTime   // in, full, converted, nullable
-	var cret  *C.GstDateTime // return, full, converted, nullable
-
-	if dt != nil {
-		carg1 = (*C.GDateTime)(glib.UnsafeDateTimeToGlibFull(dt))
-	}
-
-	cret = C.gst_date_time_new_from_g_date_time(carg1)
-	runtime.KeepAlive(dt)
 
 	var goret *DateTime
 
@@ -49878,31 +49970,6 @@ func (datetime *DateTime) HasYear() bool {
 
 	if cret != 0 {
 		goret = true
-	}
-
-	return goret
-}
-
-// ToGDateTime wraps gst_date_time_to_g_date_time
-// 
-// The function returns the following values:
-// 
-// 	- goret *glib.DateTime (nullable) 
-//
-// Creates a new #GDateTime from a fully defined #GstDateTime object.
-func (datetime *DateTime) ToGDateTime() *glib.DateTime {
-	var carg0 *C.GstDateTime // in, none, converted
-	var cret  *C.GDateTime   // return, full, converted, nullable
-
-	carg0 = (*C.GstDateTime)(UnsafeDateTimeToGlibNone(datetime))
-
-	cret = C.gst_date_time_to_g_date_time(carg0)
-	runtime.KeepAlive(datetime)
-
-	var goret *glib.DateTime
-
-	if cret != nil {
-		goret = glib.UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
 	}
 
 	return goret
@@ -51083,12 +51150,12 @@ func UnsafeEventFromGlibBorrow(p unsafe.Pointer) *Event {
 
 // UnsafeEventFromGlibNone is used to convert raw C.GstEvent pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeEventFromGlibNone(p unsafe.Pointer) *Event {
-	// FIXME: this has no ref function, what should we do here?
+	C.gst_event_ref((*C.GstEvent)(p))
 	wrapped := UnsafeEventFromGlibBorrow(p)
 	runtime.SetFinalizer(
 		wrapped.event,
 		func (intern *event) {
-			C.free(unsafe.Pointer(intern.native))
+			C.gst_event_unref(intern.native)
 		},
 	)
 	return wrapped
@@ -51100,17 +51167,24 @@ func UnsafeEventFromGlibFull(p unsafe.Pointer) *Event {
 	runtime.SetFinalizer(
 		wrapped.event,
 		func (intern *event) {
-			C.free(unsafe.Pointer(intern.native))
+			C.gst_event_unref(intern.native)
 		},
 	)
 	return wrapped
 }
 
-// UnsafeEventFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeEventRef increases the refcount on the underlying resource. This is used by the bindings internally.
+// 
+// When this is called without an associated call to [Event.UnsafeEventUnref], then [Event] will leak memory.
+func UnsafeEventRef(e *Event) {
+	C.gst_event_ref(e.native)
+}
+
+// UnsafeEventUnref unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [Event] is expected to work anymore.
-func UnsafeEventFree(e *Event) {
-	C.free(unsafe.Pointer(e.native))
+func UnsafeEventUnref(e *Event) {
+	C.gst_event_unref(e.native)
 }
 
 // UnsafeEventToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -54119,12 +54193,12 @@ func UnsafeMemoryFromGlibBorrow(p unsafe.Pointer) *Memory {
 
 // UnsafeMemoryFromGlibNone is used to convert raw C.GstMemory pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeMemoryFromGlibNone(p unsafe.Pointer) *Memory {
-	// FIXME: this has no ref function, what should we do here?
+	C.gst_memory_ref((*C.GstMemory)(p))
 	wrapped := UnsafeMemoryFromGlibBorrow(p)
 	runtime.SetFinalizer(
 		wrapped.memory,
 		func (intern *memory) {
-			C.free(unsafe.Pointer(intern.native))
+			C.gst_memory_unref(intern.native)
 		},
 	)
 	return wrapped
@@ -54136,17 +54210,24 @@ func UnsafeMemoryFromGlibFull(p unsafe.Pointer) *Memory {
 	runtime.SetFinalizer(
 		wrapped.memory,
 		func (intern *memory) {
-			C.free(unsafe.Pointer(intern.native))
+			C.gst_memory_unref(intern.native)
 		},
 	)
 	return wrapped
 }
 
-// UnsafeMemoryFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeMemoryRef increases the refcount on the underlying resource. This is used by the bindings internally.
+// 
+// When this is called without an associated call to [Memory.UnsafeMemoryUnref], then [Memory] will leak memory.
+func UnsafeMemoryRef(m *Memory) {
+	C.gst_memory_ref(m.native)
+}
+
+// UnsafeMemoryUnref unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [Memory] is expected to work anymore.
-func UnsafeMemoryFree(m *Memory) {
-	C.free(unsafe.Pointer(m.native))
+func UnsafeMemoryUnref(m *Memory) {
+	C.gst_memory_unref(m.native)
 }
 
 // UnsafeMemoryToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -54418,12 +54499,12 @@ func UnsafeMessageFromGlibBorrow(p unsafe.Pointer) *Message {
 
 // UnsafeMessageFromGlibNone is used to convert raw C.GstMessage pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeMessageFromGlibNone(p unsafe.Pointer) *Message {
-	// FIXME: this has no ref function, what should we do here?
+	C.gst_message_ref((*C.GstMessage)(p))
 	wrapped := UnsafeMessageFromGlibBorrow(p)
 	runtime.SetFinalizer(
 		wrapped.message,
 		func (intern *message) {
-			C.free(unsafe.Pointer(intern.native))
+			C.gst_message_unref(intern.native)
 		},
 	)
 	return wrapped
@@ -54435,17 +54516,24 @@ func UnsafeMessageFromGlibFull(p unsafe.Pointer) *Message {
 	runtime.SetFinalizer(
 		wrapped.message,
 		func (intern *message) {
-			C.free(unsafe.Pointer(intern.native))
+			C.gst_message_unref(intern.native)
 		},
 	)
 	return wrapped
 }
 
-// UnsafeMessageFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeMessageRef increases the refcount on the underlying resource. This is used by the bindings internally.
+// 
+// When this is called without an associated call to [Message.UnsafeMessageUnref], then [Message] will leak memory.
+func UnsafeMessageRef(m *Message) {
+	C.gst_message_ref(m.native)
+}
+
+// UnsafeMessageUnref unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [Message] is expected to work anymore.
-func UnsafeMessageFree(m *Message) {
-	C.free(unsafe.Pointer(m.native))
+func UnsafeMessageUnref(m *Message) {
+	C.gst_message_unref(m.native)
 }
 
 // UnsafeMessageToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -54946,7 +55034,7 @@ func NewMessageEos(src Object) *Message {
 // The function takes the following parameters:
 // 
 // 	- src Object (nullable): The object originating the message. 
-// 	- debug string: A debugging string. 
+// 	- debug string (nullable): A debugging string. 
 // 	- err error: The GError for this message. 
 // 
 // The function returns the following values:
@@ -54959,15 +55047,17 @@ func NewMessageEos(src Object) *Message {
 // receiving this message should stop the pipeline.
 func NewMessageError(src Object, debug string, err error) *Message {
 	var carg1 *C.GstObject  // in, none, converted, nullable
-	var carg3 *C.gchar      // in, none, string
+	var carg3 *C.gchar      // in, none, string, nullable-string
 	var carg2 *C.GError     // in, none, converted
 	var cret  *C.GstMessage // return, full, converted
 
 	if src != nil {
 		carg1 = (*C.GstObject)(UnsafeObjectToGlibNone(src))
 	}
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(debug)))
-	defer C.free(unsafe.Pointer(carg3))
+	if debug != "" {
+		carg3 = (*C.gchar)(unsafe.Pointer(C.CString(debug)))
+		defer C.free(unsafe.Pointer(carg3))
+	}
 	carg2 = (*C.GError)(glib.UnsafeErrorToGlibNone(err))
 
 	cret = C.gst_message_new_error(carg1, carg2, carg3)
@@ -54987,7 +55077,7 @@ func NewMessageError(src Object, debug string, err error) *Message {
 // The function takes the following parameters:
 // 
 // 	- src Object (nullable): The object originating the message. 
-// 	- debug string: A debugging string. 
+// 	- debug string (nullable): A debugging string. 
 // 	- details *Structure (nullable): A GstStructure with details 
 // 	- err error: The GError for this message. 
 // 
@@ -55001,7 +55091,7 @@ func NewMessageError(src Object, debug string, err error) *Message {
 // receiving this message should stop the pipeline.
 func NewMessageErrorWithDetails(src Object, debug string, details *Structure, err error) *Message {
 	var carg1 *C.GstObject    // in, none, converted, nullable
-	var carg3 *C.gchar        // in, none, string
+	var carg3 *C.gchar        // in, none, string, nullable-string
 	var carg4 *C.GstStructure // in, full, converted, nullable
 	var carg2 *C.GError       // in, none, converted
 	var cret  *C.GstMessage   // return, full, converted
@@ -55009,8 +55099,10 @@ func NewMessageErrorWithDetails(src Object, debug string, details *Structure, er
 	if src != nil {
 		carg1 = (*C.GstObject)(UnsafeObjectToGlibNone(src))
 	}
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(debug)))
-	defer C.free(unsafe.Pointer(carg3))
+	if debug != "" {
+		carg3 = (*C.gchar)(unsafe.Pointer(C.CString(debug)))
+		defer C.free(unsafe.Pointer(carg3))
+	}
 	if details != nil {
 		carg4 = (*C.GstStructure)(UnsafeStructureToGlibFull(details))
 	}
@@ -55067,7 +55159,7 @@ func NewMessageHaveContext(src Object, _context *Context) *Message {
 // The function takes the following parameters:
 // 
 // 	- src Object (nullable): The object originating the message. 
-// 	- debug string: A debugging string. 
+// 	- debug string (nullable): A debugging string. 
 // 	- err error: The GError for this message. 
 // 
 // The function returns the following values:
@@ -55078,15 +55170,17 @@ func NewMessageHaveContext(src Object, _context *Context) *Message {
 // @debug.
 func NewMessageInfo(src Object, debug string, err error) *Message {
 	var carg1 *C.GstObject  // in, none, converted, nullable
-	var carg3 *C.gchar      // in, none, string
+	var carg3 *C.gchar      // in, none, string, nullable-string
 	var carg2 *C.GError     // in, none, converted
 	var cret  *C.GstMessage // return, full, converted
 
 	if src != nil {
 		carg1 = (*C.GstObject)(UnsafeObjectToGlibNone(src))
 	}
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(debug)))
-	defer C.free(unsafe.Pointer(carg3))
+	if debug != "" {
+		carg3 = (*C.gchar)(unsafe.Pointer(C.CString(debug)))
+		defer C.free(unsafe.Pointer(carg3))
+	}
 	carg2 = (*C.GError)(glib.UnsafeErrorToGlibNone(err))
 
 	cret = C.gst_message_new_info(carg1, carg2, carg3)
@@ -55106,7 +55200,7 @@ func NewMessageInfo(src Object, debug string, err error) *Message {
 // The function takes the following parameters:
 // 
 // 	- src Object (nullable): The object originating the message. 
-// 	- debug string: A debugging string. 
+// 	- debug string (nullable): A debugging string. 
 // 	- details *Structure (nullable): A GstStructure with details 
 // 	- err error: The GError for this message. 
 // 
@@ -55118,7 +55212,7 @@ func NewMessageInfo(src Object, debug string, err error) *Message {
 // @debug.
 func NewMessageInfoWithDetails(src Object, debug string, details *Structure, err error) *Message {
 	var carg1 *C.GstObject    // in, none, converted, nullable
-	var carg3 *C.gchar        // in, none, string
+	var carg3 *C.gchar        // in, none, string, nullable-string
 	var carg4 *C.GstStructure // in, full, converted, nullable
 	var carg2 *C.GError       // in, none, converted
 	var cret  *C.GstMessage   // return, full, converted
@@ -55126,8 +55220,10 @@ func NewMessageInfoWithDetails(src Object, debug string, details *Structure, err
 	if src != nil {
 		carg1 = (*C.GstObject)(UnsafeObjectToGlibNone(src))
 	}
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(debug)))
-	defer C.free(unsafe.Pointer(carg3))
+	if debug != "" {
+		carg3 = (*C.gchar)(unsafe.Pointer(C.CString(debug)))
+		defer C.free(unsafe.Pointer(carg3))
+	}
 	if details != nil {
 		carg4 = (*C.GstStructure)(UnsafeStructureToGlibFull(details))
 	}
@@ -56090,7 +56186,7 @@ func NewMessageToc(src Object, toc *Toc, updated bool) *Message {
 // The function takes the following parameters:
 // 
 // 	- src Object (nullable): The object originating the message. 
-// 	- debug string: A debugging string. 
+// 	- debug string (nullable): A debugging string. 
 // 	- err error: The GError for this message. 
 // 
 // The function returns the following values:
@@ -56101,15 +56197,17 @@ func NewMessageToc(src Object, toc *Toc, updated bool) *Message {
 // @debug.
 func NewMessageWarning(src Object, debug string, err error) *Message {
 	var carg1 *C.GstObject  // in, none, converted, nullable
-	var carg3 *C.gchar      // in, none, string
+	var carg3 *C.gchar      // in, none, string, nullable-string
 	var carg2 *C.GError     // in, none, converted
 	var cret  *C.GstMessage // return, full, converted
 
 	if src != nil {
 		carg1 = (*C.GstObject)(UnsafeObjectToGlibNone(src))
 	}
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(debug)))
-	defer C.free(unsafe.Pointer(carg3))
+	if debug != "" {
+		carg3 = (*C.gchar)(unsafe.Pointer(C.CString(debug)))
+		defer C.free(unsafe.Pointer(carg3))
+	}
 	carg2 = (*C.GError)(glib.UnsafeErrorToGlibNone(err))
 
 	cret = C.gst_message_new_warning(carg1, carg2, carg3)
@@ -56129,7 +56227,7 @@ func NewMessageWarning(src Object, debug string, err error) *Message {
 // The function takes the following parameters:
 // 
 // 	- src Object (nullable): The object originating the message. 
-// 	- debug string: A debugging string. 
+// 	- debug string (nullable): A debugging string. 
 // 	- details *Structure (nullable): A GstStructure with details 
 // 	- err error: The GError for this message. 
 // 
@@ -56141,7 +56239,7 @@ func NewMessageWarning(src Object, debug string, err error) *Message {
 // @debug.
 func NewMessageWarningWithDetails(src Object, debug string, details *Structure, err error) *Message {
 	var carg1 *C.GstObject    // in, none, converted, nullable
-	var carg3 *C.gchar        // in, none, string
+	var carg3 *C.gchar        // in, none, string, nullable-string
 	var carg4 *C.GstStructure // in, full, converted, nullable
 	var carg2 *C.GError       // in, none, converted
 	var cret  *C.GstMessage   // return, full, converted
@@ -56149,8 +56247,10 @@ func NewMessageWarningWithDetails(src Object, debug string, details *Structure, 
 	if src != nil {
 		carg1 = (*C.GstObject)(UnsafeObjectToGlibNone(src))
 	}
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(debug)))
-	defer C.free(unsafe.Pointer(carg3))
+	if debug != "" {
+		carg3 = (*C.gchar)(unsafe.Pointer(C.CString(debug)))
+		defer C.free(unsafe.Pointer(carg3))
+	}
 	if details != nil {
 		carg4 = (*C.GstStructure)(UnsafeStructureToGlibFull(details))
 	}
@@ -60301,291 +60401,6 @@ func UnsafePresetInterfaceToGlibFull(p *PresetInterface) unsafe.Pointer {
 	return _p
 }
 
-// Promise wraps GstPromise
-//
-// The #GstPromise object implements the container for values that may
-// be available later. i.e. a Future or a Promise in
-// &lt;https://en.wikipedia.org/wiki/Futures_and_promises&gt;.
-// As with all Future/Promise-like functionality, there is the concept of the
-// producer of the value and the consumer of the value.
-// 
-// A #GstPromise is created with gst_promise_new() by the consumer and passed
-// to the producer to avoid thread safety issues with the change callback.
-// A #GstPromise can be replied to with a value (or an error) by the producer
-// with gst_promise_reply(). The exact value returned is defined by the API
-// contract of the producer and %NULL may be a valid reply.
-// gst_promise_interrupt() is for the consumer to
-// indicate to the producer that the value is not needed anymore and producing
-// that value can stop.  The @GST_PROMISE_RESULT_EXPIRED state set by a call
-// to gst_promise_expire() indicates to the consumer that a value will never
-// be produced and is intended to be called by a third party that implements
-// some notion of message handling such as #GstBus.
-// A callback can also be installed at #GstPromise creation for
-// result changes with gst_promise_new_with_change_func().
-// The change callback can be used to chain #GstPromises's together as in the
-// following example.
-// |[&lt;!-- language="C" --&gt;
-// const GstStructure *reply;
-// GstPromise *p;
-// if (gst_promise_wait (promise) != GST_PROMISE_RESULT_REPLIED)
-//   return; // interrupted or expired value
-// reply = gst_promise_get_reply (promise);
-// if (error in reply)
-//   return; // propagate error
-// p = gst_promise_new_with_change_func (another_promise_change_func, user_data, notify);
-// pass p to promise-using API
-// ]|
-// 
-// Each #GstPromise starts out with a #GstPromiseResult of
-// %GST_PROMISE_RESULT_PENDING and only ever transitions once
-// into one of the other #GstPromiseResult's.
-// 
-// In order to support multi-threaded code, gst_promise_reply(),
-// gst_promise_interrupt() and gst_promise_expire() may all be from
-// different threads with some restrictions and the final result of the promise
-// is whichever call is made first.  There are two restrictions on ordering:
-// 
-// 1. That gst_promise_reply() and gst_promise_interrupt() cannot be called
-// after gst_promise_expire()
-// 2. That gst_promise_reply() and gst_promise_interrupt()
-// cannot be called twice.
-// 
-// The change function set with gst_promise_new_with_change_func() is
-// called directly from either the gst_promise_reply(),
-// gst_promise_interrupt() or gst_promise_expire() and can be called
-// from an arbitrary thread.  #GstPromise using APIs can restrict this to
-// a single thread or a subset of threads but that is entirely up to the API
-// that uses #GstPromise.
-type Promise struct {
-	*promise
-}
-
-// promise is the struct that's finalized
-type promise struct {
-	native *C.GstPromise
-}
-
-var _ gobject.GoValueInitializer = (*Promise)(nil)
-
-func marshalPromise(p unsafe.Pointer) (interface{}, error) {
-	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafePromiseFromGlibBorrow(b), nil
-}
-
-func (r *Promise) GoValueType() gobject.Type {
-	return TypePromise
-}
-
-func (r *Promise) SetGoValue(v *gobject.Value) {
-	v.SetBoxed(unsafe.Pointer(r.native))
-}
-
-// UnsafePromiseFromGlibBorrow is used to convert raw C.GstPromise pointers to go. This is used by the bindings internally.
-func UnsafePromiseFromGlibBorrow(p unsafe.Pointer) *Promise {
-	return &Promise{&promise{(*C.GstPromise)(p)}}
-}
-
-// UnsafePromiseFromGlibNone is used to convert raw C.GstPromise pointers to go without transferring ownership. This is used by the bindings internally.
-func UnsafePromiseFromGlibNone(p unsafe.Pointer) *Promise {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafePromiseFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.promise,
-		func (intern *promise) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafePromiseFromGlibFull is used to convert raw C.GstPromise pointers to go while taking ownership. This is used by the bindings internally.
-func UnsafePromiseFromGlibFull(p unsafe.Pointer) *Promise {
-	wrapped := UnsafePromiseFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.promise,
-		func (intern *promise) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafePromiseFree unrefs/frees the underlying resource. This is used by the bindings internally.
-// 
-// After this is called, no other method on [Promise] is expected to work anymore.
-func UnsafePromiseFree(p *Promise) {
-	C.free(unsafe.Pointer(p.native))
-}
-
-// UnsafePromiseToGlibNone returns the underlying C pointer. This is used by the bindings internally.
-func UnsafePromiseToGlibNone(p *Promise) unsafe.Pointer {
-	return unsafe.Pointer(p.native)
-}
-
-// UnsafePromiseToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafePromiseToGlibFull(p *Promise) unsafe.Pointer {
-	runtime.SetFinalizer(p.promise, nil)
-	_p := unsafe.Pointer(p.native)
-	p.native = nil // Promise is invalid from here on
-	return _p
-}
-
-// NewPromise wraps gst_promise_new
-// 
-// The function returns the following values:
-// 
-// 	- goret *Promise 
-func NewPromise() *Promise {
-	var cret *C.GstPromise // return, full, converted
-
-	cret = C.gst_promise_new()
-
-	var goret *Promise
-
-	goret = UnsafePromiseFromGlibFull(unsafe.Pointer(cret))
-
-	return goret
-}
-
-// NewPromiseWithChangeFunc wraps gst_promise_new_with_change_func
-// 
-// The function takes the following parameters:
-// 
-// 	- fn PromiseChangeFunc: a #GstPromiseChangeFunc to call 
-// 
-// The function returns the following values:
-// 
-// 	- goret *Promise 
-//
-// @func will be called exactly once when transitioning out of
-// %GST_PROMISE_RESULT_PENDING into any of the other #GstPromiseResult
-// states.
-func NewPromiseWithChangeFunc(fn PromiseChangeFunc) *Promise {
-	var carg1 C.GstPromiseChangeFunc // callback, scope: notified, closure: carg2, destroy: carg3
-	var carg2 C.gpointer             // implicit
-	var carg3 C.GDestroyNotify       // implicit
-	var cret  *C.GstPromise          // return, full, converted
-
-	carg1 = (*[0]byte)(C._gotk4_gst1_PromiseChangeFunc)
-	carg2 = C.gpointer(userdata.Register(fn))
-	carg3 = (C.GDestroyNotify)((*[0]byte)(C.destroyUserdata))
-
-	cret = C.gst_promise_new_with_change_func(carg1, carg2, carg3)
-	runtime.KeepAlive(fn)
-
-	var goret *Promise
-
-	goret = UnsafePromiseFromGlibFull(unsafe.Pointer(cret))
-
-	return goret
-}
-
-// Expire wraps gst_promise_expire
-//
-// Expire a @promise.  This will wake up any waiters with
-// %GST_PROMISE_RESULT_EXPIRED.  Called by a message loop when the parent
-// message is handled and/or destroyed (possibly unanswered).
-func (promise *Promise) Expire() {
-	var carg0 *C.GstPromise // in, none, converted
-
-	carg0 = (*C.GstPromise)(UnsafePromiseToGlibNone(promise))
-
-	C.gst_promise_expire(carg0)
-	runtime.KeepAlive(promise)
-}
-
-// GetReply wraps gst_promise_get_reply
-// 
-// The function returns the following values:
-// 
-// 	- goret *Structure (nullable) 
-//
-// Retrieve the reply set on @promise.  @promise must be in
-// %GST_PROMISE_RESULT_REPLIED and the returned structure is owned by @promise
-func (promise *Promise) GetReply() *Structure {
-	var carg0 *C.GstPromise   // in, none, converted
-	var cret  *C.GstStructure // return, none, converted, nullable
-
-	carg0 = (*C.GstPromise)(UnsafePromiseToGlibNone(promise))
-
-	cret = C.gst_promise_get_reply(carg0)
-	runtime.KeepAlive(promise)
-
-	var goret *Structure
-
-	if cret != nil {
-		goret = UnsafeStructureFromGlibNone(unsafe.Pointer(cret))
-	}
-
-	return goret
-}
-
-// Interrupt wraps gst_promise_interrupt
-//
-// Interrupt waiting for a @promise.  This will wake up any waiters with
-// %GST_PROMISE_RESULT_INTERRUPTED.  Called when the consumer does not want
-// the value produced anymore.
-func (promise *Promise) Interrupt() {
-	var carg0 *C.GstPromise // in, none, converted
-
-	carg0 = (*C.GstPromise)(UnsafePromiseToGlibNone(promise))
-
-	C.gst_promise_interrupt(carg0)
-	runtime.KeepAlive(promise)
-}
-
-// Reply wraps gst_promise_reply
-// 
-// The function takes the following parameters:
-// 
-// 	- s *Structure (nullable): a #GstStructure with the the reply contents 
-//
-// Set a reply on @promise.  This will wake up any waiters with
-// %GST_PROMISE_RESULT_REPLIED.  Called by the producer of the value to
-// indicate success (or failure).
-// 
-// If @promise has already been interrupted by the consumer, then this reply
-// is not visible to the consumer.
-func (promise *Promise) Reply(s *Structure) {
-	var carg0 *C.GstPromise   // in, none, converted
-	var carg1 *C.GstStructure // in, full, converted, nullable
-
-	carg0 = (*C.GstPromise)(UnsafePromiseToGlibNone(promise))
-	if s != nil {
-		carg1 = (*C.GstStructure)(UnsafeStructureToGlibFull(s))
-	}
-
-	C.gst_promise_reply(carg0, carg1)
-	runtime.KeepAlive(promise)
-	runtime.KeepAlive(s)
-}
-
-// Wait wraps gst_promise_wait
-// 
-// The function returns the following values:
-// 
-// 	- goret PromiseResult 
-//
-// Wait for @promise to move out of the %GST_PROMISE_RESULT_PENDING state.
-// If @promise is not in %GST_PROMISE_RESULT_PENDING then it will return
-// immediately with the current result.
-func (promise *Promise) Wait() PromiseResult {
-	var carg0 *C.GstPromise      // in, none, converted
-	var cret  C.GstPromiseResult // return, none, casted
-
-	carg0 = (*C.GstPromise)(UnsafePromiseToGlibNone(promise))
-
-	cret = C.gst_promise_wait(carg0)
-	runtime.KeepAlive(promise)
-
-	var goret PromiseResult
-
-	goret = PromiseResult(cret)
-
-	return goret
-}
-
 // ProtectionMeta wraps GstProtectionMeta
 //
 // Metadata type that holds information about a sample from a protection-protected
@@ -60761,12 +60576,12 @@ func UnsafeQueryFromGlibBorrow(p unsafe.Pointer) *Query {
 
 // UnsafeQueryFromGlibNone is used to convert raw C.GstQuery pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeQueryFromGlibNone(p unsafe.Pointer) *Query {
-	// FIXME: this has no ref function, what should we do here?
+	C.gst_query_ref((*C.GstQuery)(p))
 	wrapped := UnsafeQueryFromGlibBorrow(p)
 	runtime.SetFinalizer(
 		wrapped.query,
 		func (intern *query) {
-			C.free(unsafe.Pointer(intern.native))
+			C.gst_query_unref(intern.native)
 		},
 	)
 	return wrapped
@@ -60778,17 +60593,24 @@ func UnsafeQueryFromGlibFull(p unsafe.Pointer) *Query {
 	runtime.SetFinalizer(
 		wrapped.query,
 		func (intern *query) {
-			C.free(unsafe.Pointer(intern.native))
+			C.gst_query_unref(intern.native)
 		},
 	)
 	return wrapped
 }
 
-// UnsafeQueryFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeQueryRef increases the refcount on the underlying resource. This is used by the bindings internally.
+// 
+// When this is called without an associated call to [Query.UnsafeQueryUnref], then [Query] will leak memory.
+func UnsafeQueryRef(q *Query) {
+	C.gst_query_ref(q.native)
+}
+
+// UnsafeQueryUnref unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [Query] is expected to work anymore.
-func UnsafeQueryFree(q *Query) {
-	C.free(unsafe.Pointer(q.native))
+func UnsafeQueryUnref(q *Query) {
+	C.gst_query_unref(q.native)
 }
 
 // UnsafeQueryToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -63477,12 +63299,12 @@ func UnsafeSampleFromGlibBorrow(p unsafe.Pointer) *Sample {
 
 // UnsafeSampleFromGlibNone is used to convert raw C.GstSample pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeSampleFromGlibNone(p unsafe.Pointer) *Sample {
-	// FIXME: this has no ref function, what should we do here?
+	C.gst_sample_ref((*C.GstSample)(p))
 	wrapped := UnsafeSampleFromGlibBorrow(p)
 	runtime.SetFinalizer(
 		wrapped.sample,
 		func (intern *sample) {
-			C.free(unsafe.Pointer(intern.native))
+			C.gst_sample_unref(intern.native)
 		},
 	)
 	return wrapped
@@ -63494,17 +63316,24 @@ func UnsafeSampleFromGlibFull(p unsafe.Pointer) *Sample {
 	runtime.SetFinalizer(
 		wrapped.sample,
 		func (intern *sample) {
-			C.free(unsafe.Pointer(intern.native))
+			C.gst_sample_unref(intern.native)
 		},
 	)
 	return wrapped
 }
 
-// UnsafeSampleFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeSampleRef increases the refcount on the underlying resource. This is used by the bindings internally.
+// 
+// When this is called without an associated call to [Sample.UnsafeSampleUnref], then [Sample] will leak memory.
+func UnsafeSampleRef(s *Sample) {
+	C.gst_sample_ref(s.native)
+}
+
+// UnsafeSampleUnref unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [Sample] is expected to work anymore.
-func UnsafeSampleFree(s *Sample) {
-	C.free(unsafe.Pointer(s.native))
+func UnsafeSampleUnref(s *Sample) {
+	C.gst_sample_unref(s.native)
 }
 
 // UnsafeSampleToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -67190,12 +67019,12 @@ func UnsafeTagListFromGlibBorrow(p unsafe.Pointer) *TagList {
 
 // UnsafeTagListFromGlibNone is used to convert raw C.GstTagList pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeTagListFromGlibNone(p unsafe.Pointer) *TagList {
-	// FIXME: this has no ref function, what should we do here?
+	C.gst_tag_list_ref((*C.GstTagList)(p))
 	wrapped := UnsafeTagListFromGlibBorrow(p)
 	runtime.SetFinalizer(
 		wrapped.tagList,
 		func (intern *tagList) {
-			C.free(unsafe.Pointer(intern.native))
+			C.gst_tag_list_unref(intern.native)
 		},
 	)
 	return wrapped
@@ -67207,17 +67036,24 @@ func UnsafeTagListFromGlibFull(p unsafe.Pointer) *TagList {
 	runtime.SetFinalizer(
 		wrapped.tagList,
 		func (intern *tagList) {
-			C.free(unsafe.Pointer(intern.native))
+			C.gst_tag_list_unref(intern.native)
 		},
 	)
 	return wrapped
 }
 
-// UnsafeTagListFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeTagListRef increases the refcount on the underlying resource. This is used by the bindings internally.
+// 
+// When this is called without an associated call to [TagList.UnsafeTagListUnref], then [TagList] will leak memory.
+func UnsafeTagListRef(t *TagList) {
+	C.gst_tag_list_ref(t.native)
+}
+
+// UnsafeTagListUnref unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [TagList] is expected to work anymore.
-func UnsafeTagListFree(t *TagList) {
-	C.free(unsafe.Pointer(t.native))
+func UnsafeTagListUnref(t *TagList) {
+	C.gst_tag_list_unref(t.native)
 }
 
 // UnsafeTagListToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -70243,12 +70079,12 @@ func UnsafeUriFromGlibBorrow(p unsafe.Pointer) *Uri {
 
 // UnsafeUriFromGlibNone is used to convert raw C.GstUri pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeUriFromGlibNone(p unsafe.Pointer) *Uri {
-	// FIXME: this has no ref function, what should we do here?
+	C.gst_uri_ref((*C.GstUri)(p))
 	wrapped := UnsafeUriFromGlibBorrow(p)
 	runtime.SetFinalizer(
 		wrapped.uri,
 		func (intern *uri) {
-			C.free(unsafe.Pointer(intern.native))
+			C.gst_uri_unref(intern.native)
 		},
 	)
 	return wrapped
@@ -70260,17 +70096,24 @@ func UnsafeUriFromGlibFull(p unsafe.Pointer) *Uri {
 	runtime.SetFinalizer(
 		wrapped.uri,
 		func (intern *uri) {
-			C.free(unsafe.Pointer(intern.native))
+			C.gst_uri_unref(intern.native)
 		},
 	)
 	return wrapped
 }
 
-// UnsafeUriFree unrefs/frees the underlying resource. This is used by the bindings internally.
+// UnsafeUriRef increases the refcount on the underlying resource. This is used by the bindings internally.
+// 
+// When this is called without an associated call to [Uri.UnsafeUriUnref], then [Uri] will leak memory.
+func UnsafeUriRef(u *Uri) {
+	C.gst_uri_ref(u.native)
+}
+
+// UnsafeUriUnref unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [Uri] is expected to work anymore.
-func UnsafeUriFree(u *Uri) {
-	C.free(unsafe.Pointer(u.native))
+func UnsafeUriUnref(u *Uri) {
+	C.gst_uri_unref(u.native)
 }
 
 // UnsafeUriToGlibNone returns the underlying C pointer. This is used by the bindings internally.
@@ -70740,6 +70583,30 @@ func (uri *Uri) AppendPathSegment(pathSegment string) bool {
 	if cret != 0 {
 		goret = true
 	}
+
+	return goret
+}
+
+// Copy wraps gst_uri_copy
+// 
+// The function returns the following values:
+// 
+// 	- goret *Uri 
+//
+// Create a new #GstUri object with the same data as this #GstUri object.
+// If @uri is %NULL then returns %NULL.
+func (uri *Uri) Copy() *Uri {
+	var carg0 *C.GstUri // in, none, converted
+	var cret  *C.GstUri // return, full, converted
+
+	carg0 = (*C.GstUri)(UnsafeUriToGlibNone(uri))
+
+	cret = C.gst_uri_copy(carg0)
+	runtime.KeepAlive(uri)
+
+	var goret *Uri
+
+	goret = UnsafeUriFromGlibFull(unsafe.Pointer(cret))
 
 	return goret
 }

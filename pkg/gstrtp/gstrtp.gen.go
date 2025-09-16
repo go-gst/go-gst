@@ -191,59 +191,59 @@ const RTP_VERSION = 2
 type RTCPFBType C.int
 
 const (
-	// RtcpFbTypeInvalid wraps GST_RTCP_FB_TYPE_INVALID
+	// RtcpFbTypeInvalid wraps RTCP_FB_TYPE_INVALID
 	//
 	// Invalid type
 	RtcpFbTypeInvalid RTCPFBType = 0
-	// RtcpRtpfbTypeNack wraps GST_RTCP_RTPFB_TYPE_NACK
+	// RtcpRtpfbTypeNack wraps RTCP_RTPFB_TYPE_NACK
 	//
 	// Generic NACK
 	RtcpRtpfbTypeNack RTCPFBType = 1
-	// RtcpRtpfbTypeTmmbr wraps GST_RTCP_RTPFB_TYPE_TMMBR
+	// RtcpRtpfbTypeTmmbr wraps RTCP_RTPFB_TYPE_TMMBR
 	//
 	// Temporary Maximum Media Stream Bit Rate Request
 	RtcpRtpfbTypeTmmbr RTCPFBType = 3
-	// RtcpRtpfbTypeTmmbn wraps GST_RTCP_RTPFB_TYPE_TMMBN
+	// RtcpRtpfbTypeTmmbn wraps RTCP_RTPFB_TYPE_TMMBN
 	//
 	// Temporary Maximum Media Stream Bit Rate
 	//    Notification
 	RtcpRtpfbTypeTmmbn RTCPFBType = 4
-	// RtcpRtpfbTypeRtcpSrReq wraps GST_RTCP_RTPFB_TYPE_RTCP_SR_REQ
+	// RtcpRtpfbTypeRtcpSrReq wraps RTCP_RTPFB_TYPE_RTCP_SR_REQ
 	//
 	// Request an SR packet for early
 	//    synchronization
 	RtcpRtpfbTypeRtcpSrReq RTCPFBType = 5
-	// RtcpRtpfbTypeTwcc wraps GST_RTCP_RTPFB_TYPE_TWCC
+	// RtcpRtpfbTypeTwcc wraps RTCP_RTPFB_TYPE_TWCC
 	RtcpRtpfbTypeTwcc RTCPFBType = 15
-	// RtcpPsfbTypePli wraps GST_RTCP_PSFB_TYPE_PLI
+	// RtcpPsfbTypePli wraps RTCP_PSFB_TYPE_PLI
 	//
 	// Picture Loss Indication
 	RtcpPsfbTypePli RTCPFBType = 1
-	// RtcpPsfbTypeSli wraps GST_RTCP_PSFB_TYPE_SLI
+	// RtcpPsfbTypeSli wraps RTCP_PSFB_TYPE_SLI
 	//
 	// Slice Loss Indication
 	RtcpPsfbTypeSli RTCPFBType = 2
-	// RtcpPsfbTypeRpsi wraps GST_RTCP_PSFB_TYPE_RPSI
+	// RtcpPsfbTypeRpsi wraps RTCP_PSFB_TYPE_RPSI
 	//
 	// Reference Picture Selection Indication
 	RtcpPsfbTypeRpsi RTCPFBType = 3
-	// RtcpPsfbTypeAfb wraps GST_RTCP_PSFB_TYPE_AFB
+	// RtcpPsfbTypeAfb wraps RTCP_PSFB_TYPE_AFB
 	//
 	// Application layer Feedback
 	RtcpPsfbTypeAfb RTCPFBType = 15
-	// RtcpPsfbTypeFir wraps GST_RTCP_PSFB_TYPE_FIR
+	// RtcpPsfbTypeFir wraps RTCP_PSFB_TYPE_FIR
 	//
 	// Full Intra Request Command
 	RtcpPsfbTypeFir RTCPFBType = 4
-	// RtcpPsfbTypeTstr wraps GST_RTCP_PSFB_TYPE_TSTR
+	// RtcpPsfbTypeTstr wraps RTCP_PSFB_TYPE_TSTR
 	//
 	// Temporal-Spatial Trade-off Request
 	RtcpPsfbTypeTstr RTCPFBType = 5
-	// RtcpPsfbTypeTstn wraps GST_RTCP_PSFB_TYPE_TSTN
+	// RtcpPsfbTypeTstn wraps RTCP_PSFB_TYPE_TSTN
 	//
 	// Temporal-Spatial Trade-off Notification
 	RtcpPsfbTypeTstn RTCPFBType = 6
-	// RtcpPsfbTypeVbcn wraps GST_RTCP_PSFB_TYPE_VBCN
+	// RtcpPsfbTypeVbcn wraps RTCP_PSFB_TYPE_VBCN
 	//
 	// Video Back Channel Message
 	RtcpPsfbTypeVbcn RTCPFBType = 7
@@ -284,71 +284,71 @@ func (e RTCPFBType) String() string {
 type RTCPSDESType C.int
 
 const (
-	// RtcpSdesInvalid wraps GST_RTCP_SDES_INVALID
+	// RtcpSdesInvalid wraps RTCP_SDES_INVALID
 	//
 	// Invalid SDES entry
 	RtcpSdesInvalid RTCPSDESType = -1
-	// RtcpSdesEnd wraps GST_RTCP_SDES_END
+	// RtcpSdesEnd wraps RTCP_SDES_END
 	//
 	// End of SDES list
 	RtcpSdesEnd RTCPSDESType = 0
-	// RtcpSdesCname wraps GST_RTCP_SDES_CNAME
+	// RtcpSdesCname wraps RTCP_SDES_CNAME
 	//
 	// Canonical name
 	RtcpSdesCname RTCPSDESType = 1
-	// RtcpSdesName wraps GST_RTCP_SDES_NAME
+	// RtcpSdesName wraps RTCP_SDES_NAME
 	//
 	// User name
 	RtcpSdesName RTCPSDESType = 2
-	// RtcpSdesEmail wraps GST_RTCP_SDES_EMAIL
+	// RtcpSdesEmail wraps RTCP_SDES_EMAIL
 	//
 	// User's electronic mail address
 	RtcpSdesEmail RTCPSDESType = 3
-	// RtcpSdesPhone wraps GST_RTCP_SDES_PHONE
+	// RtcpSdesPhone wraps RTCP_SDES_PHONE
 	//
 	// User's phone number
 	RtcpSdesPhone RTCPSDESType = 4
-	// RtcpSdesLoc wraps GST_RTCP_SDES_LOC
+	// RtcpSdesLoc wraps RTCP_SDES_LOC
 	//
 	// Geographic user location
 	RtcpSdesLoc RTCPSDESType = 5
-	// RtcpSdesTool wraps GST_RTCP_SDES_TOOL
+	// RtcpSdesTool wraps RTCP_SDES_TOOL
 	//
 	// Name of application or tool
 	RtcpSdesTool RTCPSDESType = 6
-	// RtcpSdesNote wraps GST_RTCP_SDES_NOTE
+	// RtcpSdesNote wraps RTCP_SDES_NOTE
 	//
 	// Notice about the source
 	RtcpSdesNote RTCPSDESType = 7
-	// RtcpSdesPriv wraps GST_RTCP_SDES_PRIV
+	// RtcpSdesPriv wraps RTCP_SDES_PRIV
 	//
 	// Private extensions
 	RtcpSdesPriv RTCPSDESType = 8
-	// RtcpSdesH323Caddr wraps GST_RTCP_SDES_H323_CADDR
+	// RtcpSdesH323Caddr wraps RTCP_SDES_H323_CADDR
 	//
 	// H.323 callable address
 	RtcpSdesH323Caddr RTCPSDESType = 9
-	// RtcpSdesApsi wraps GST_RTCP_SDES_APSI
+	// RtcpSdesApsi wraps RTCP_SDES_APSI
 	//
 	// Application Specific Identifier (RFC6776)
 	RtcpSdesApsi RTCPSDESType = 10
-	// RtcpSdesRgrp wraps GST_RTCP_SDES_RGRP
+	// RtcpSdesRgrp wraps RTCP_SDES_RGRP
 	//
 	// Reporting Group Identifier (RFC8861)
 	RtcpSdesRgrp RTCPSDESType = 11
-	// RtcpSdesRtpStreamID wraps GST_RTCP_SDES_RTP_STREAM_ID
+	// RtcpSdesRtpStreamID wraps RTCP_SDES_RTP_STREAM_ID
 	//
 	// RtpStreamId SDES item (RFC8852).
 	RtcpSdesRtpStreamID RTCPSDESType = 12
-	// RtcpSdesRepairedRtpStreamID wraps GST_RTCP_SDES_REPAIRED_RTP_STREAM_ID
+	// RtcpSdesRepairedRtpStreamID wraps RTCP_SDES_REPAIRED_RTP_STREAM_ID
 	//
 	// RepairedRtpStreamId SDES item (RFC8852).
 	RtcpSdesRepairedRtpStreamID RTCPSDESType = 13
-	// RtcpSdesCcid wraps GST_RTCP_SDES_CCID
+	// RtcpSdesCcid wraps RTCP_SDES_CCID
 	//
 	// CLUE CaptId (RFC8849)
 	RtcpSdesCcid RTCPSDESType = 14
-	// RtcpSdesMid wraps GST_RTCP_SDES_MID
+	// RtcpSdesMid wraps RTCP_SDES_MID
 	//
 	// MID SDES item (RFC8843).
 	RtcpSdesMid RTCPSDESType = 15
@@ -397,39 +397,39 @@ func (e RTCPSDESType) String() string {
 type RTCPType C.int
 
 const (
-	// RtcpTypeInvalid wraps GST_RTCP_TYPE_INVALID
+	// RtcpTypeInvalid wraps RTCP_TYPE_INVALID
 	//
 	// Invalid type
 	RtcpTypeInvalid RTCPType = 0
-	// RtcpTypeSr wraps GST_RTCP_TYPE_SR
+	// RtcpTypeSr wraps RTCP_TYPE_SR
 	//
 	// Sender report
 	RtcpTypeSr RTCPType = 200
-	// RtcpTypeRr wraps GST_RTCP_TYPE_RR
+	// RtcpTypeRr wraps RTCP_TYPE_RR
 	//
 	// Receiver report
 	RtcpTypeRr RTCPType = 201
-	// RtcpTypeSdes wraps GST_RTCP_TYPE_SDES
+	// RtcpTypeSdes wraps RTCP_TYPE_SDES
 	//
 	// Source description
 	RtcpTypeSdes RTCPType = 202
-	// RtcpTypeBye wraps GST_RTCP_TYPE_BYE
+	// RtcpTypeBye wraps RTCP_TYPE_BYE
 	//
 	// Goodbye
 	RtcpTypeBye RTCPType = 203
-	// RtcpTypeApp wraps GST_RTCP_TYPE_APP
+	// RtcpTypeApp wraps RTCP_TYPE_APP
 	//
 	// Application defined
 	RtcpTypeApp RTCPType = 204
-	// RtcpTypeRtpfb wraps GST_RTCP_TYPE_RTPFB
+	// RtcpTypeRtpfb wraps RTCP_TYPE_RTPFB
 	//
 	// Transport layer feedback.
 	RtcpTypeRtpfb RTCPType = 205
-	// RtcpTypePsfb wraps GST_RTCP_TYPE_PSFB
+	// RtcpTypePsfb wraps RTCP_TYPE_PSFB
 	//
 	// Payload-specific feedback.
 	RtcpTypePsfb RTCPType = 206
-	// RtcpTypeXR wraps GST_RTCP_TYPE_XR
+	// RtcpTypeXR wraps RTCP_TYPE_XR
 	//
 	// Extended report.
 	RtcpTypeXR RTCPType = 207
@@ -471,35 +471,35 @@ func (e RTCPType) String() string {
 type RTCPXRType C.int
 
 const (
-	// RtcpXRTypeInvalid wraps GST_RTCP_XR_TYPE_INVALID
+	// RtcpXRTypeInvalid wraps RTCP_XR_TYPE_INVALID
 	//
 	// Invalid XR Report Block
 	RtcpXRTypeInvalid RTCPXRType = -1
-	// RtcpXRTypeLrle wraps GST_RTCP_XR_TYPE_LRLE
+	// RtcpXRTypeLrle wraps RTCP_XR_TYPE_LRLE
 	//
 	// Loss RLE Report Block
 	RtcpXRTypeLrle RTCPXRType = 1
-	// RtcpXRTypeDrle wraps GST_RTCP_XR_TYPE_DRLE
+	// RtcpXRTypeDrle wraps RTCP_XR_TYPE_DRLE
 	//
 	// Duplicate RLE Report Block
 	RtcpXRTypeDrle RTCPXRType = 2
-	// RtcpXRTypePrt wraps GST_RTCP_XR_TYPE_PRT
+	// RtcpXRTypePrt wraps RTCP_XR_TYPE_PRT
 	//
 	// Packet Receipt Times Report Block
 	RtcpXRTypePrt RTCPXRType = 3
-	// RtcpXRTypeRrt wraps GST_RTCP_XR_TYPE_RRT
+	// RtcpXRTypeRrt wraps RTCP_XR_TYPE_RRT
 	//
 	// Receiver Reference Time Report Block
 	RtcpXRTypeRrt RTCPXRType = 4
-	// RtcpXRTypeDlrr wraps GST_RTCP_XR_TYPE_DLRR
+	// RtcpXRTypeDlrr wraps RTCP_XR_TYPE_DLRR
 	//
 	// Delay since the last Receiver Report
 	RtcpXRTypeDlrr RTCPXRType = 5
-	// RtcpXRTypeSsumm wraps GST_RTCP_XR_TYPE_SSUMM
+	// RtcpXRTypeSsumm wraps RTCP_XR_TYPE_SSUMM
 	//
 	// Statistics Summary Report Block
 	RtcpXRTypeSsumm RTCPXRType = 6
-	// RtcpXRTypeVoipMetrics wraps GST_RTCP_XR_TYPE_VOIP_METRICS
+	// RtcpXRTypeVoipMetrics wraps RTCP_XR_TYPE_VOIP_METRICS
 	//
 	// VoIP Metrics Report Block
 	RtcpXRTypeVoipMetrics RTCPXRType = 7
@@ -550,107 +550,107 @@ func (e RTCPXRType) String() string {
 type RTPPayload C.int
 
 const (
-	// RtpPayloadPcmu wraps GST_RTP_PAYLOAD_PCMU
+	// RtpPayloadPcmu wraps RTP_PAYLOAD_PCMU
 	//
 	// ITU-T G.711. mu-law audio (RFC 3551)
 	RtpPayloadPcmu RTPPayload = 0
-	// RtpPayload1016 wraps GST_RTP_PAYLOAD_1016
+	// RtpPayload1016 wraps RTP_PAYLOAD_1016
 	//
 	// RFC 3551 says reserved
 	RtpPayload1016 RTPPayload = 1
-	// RtpPayloadG721 wraps GST_RTP_PAYLOAD_G721
+	// RtpPayloadG721 wraps RTP_PAYLOAD_G721
 	//
 	// RFC 3551 says reserved
 	RtpPayloadG721 RTPPayload = 2
-	// RtpPayloadGsm wraps GST_RTP_PAYLOAD_GSM
+	// RtpPayloadGsm wraps RTP_PAYLOAD_GSM
 	//
 	// GSM audio
 	RtpPayloadGsm RTPPayload = 3
-	// RtpPayloadG723 wraps GST_RTP_PAYLOAD_G723
+	// RtpPayloadG723 wraps RTP_PAYLOAD_G723
 	//
 	// ITU G.723.1 audio
 	RtpPayloadG723 RTPPayload = 4
-	// RtpPayloadDvi48000 wraps GST_RTP_PAYLOAD_DVI4_8000
+	// RtpPayloadDvi48000 wraps RTP_PAYLOAD_DVI4_8000
 	//
 	// IMA ADPCM wave type (RFC 3551)
 	RtpPayloadDvi48000 RTPPayload = 5
-	// RtpPayloadDvi416000 wraps GST_RTP_PAYLOAD_DVI4_16000
+	// RtpPayloadDvi416000 wraps RTP_PAYLOAD_DVI4_16000
 	//
 	// IMA ADPCM wave type (RFC 3551)
 	RtpPayloadDvi416000 RTPPayload = 6
-	// RtpPayloadLpc wraps GST_RTP_PAYLOAD_LPC
+	// RtpPayloadLpc wraps RTP_PAYLOAD_LPC
 	//
 	// experimental linear predictive encoding
 	RtpPayloadLpc RTPPayload = 7
-	// RtpPayloadPcma wraps GST_RTP_PAYLOAD_PCMA
+	// RtpPayloadPcma wraps RTP_PAYLOAD_PCMA
 	//
 	// ITU-T G.711 A-law audio (RFC 3551)
 	RtpPayloadPcma RTPPayload = 8
-	// RtpPayloadG722 wraps GST_RTP_PAYLOAD_G722
+	// RtpPayloadG722 wraps RTP_PAYLOAD_G722
 	//
 	// ITU-T G.722 (RFC 3551)
 	RtpPayloadG722 RTPPayload = 9
-	// RtpPayloadL16Stereo wraps GST_RTP_PAYLOAD_L16_STEREO
+	// RtpPayloadL16Stereo wraps RTP_PAYLOAD_L16_STEREO
 	//
 	// stereo PCM
 	RtpPayloadL16Stereo RTPPayload = 10
-	// RtpPayloadL16Mono wraps GST_RTP_PAYLOAD_L16_MONO
+	// RtpPayloadL16Mono wraps RTP_PAYLOAD_L16_MONO
 	//
 	// mono PCM
 	RtpPayloadL16Mono RTPPayload = 11
-	// RtpPayloadQcelp wraps GST_RTP_PAYLOAD_QCELP
+	// RtpPayloadQcelp wraps RTP_PAYLOAD_QCELP
 	//
 	// EIA &amp; TIA standard IS-733
 	RtpPayloadQcelp RTPPayload = 12
-	// RtpPayloadCn wraps GST_RTP_PAYLOAD_CN
+	// RtpPayloadCn wraps RTP_PAYLOAD_CN
 	//
 	// Comfort Noise (RFC 3389)
 	RtpPayloadCn RTPPayload = 13
-	// RtpPayloadMpa wraps GST_RTP_PAYLOAD_MPA
+	// RtpPayloadMpa wraps RTP_PAYLOAD_MPA
 	//
 	// Audio MPEG 1-3.
 	RtpPayloadMpa RTPPayload = 14
-	// RtpPayloadG728 wraps GST_RTP_PAYLOAD_G728
+	// RtpPayloadG728 wraps RTP_PAYLOAD_G728
 	//
 	// ITU-T G.728 Speech coder (RFC 3551)
 	RtpPayloadG728 RTPPayload = 15
-	// RtpPayloadDvi411025 wraps GST_RTP_PAYLOAD_DVI4_11025
+	// RtpPayloadDvi411025 wraps RTP_PAYLOAD_DVI4_11025
 	//
 	// IMA ADPCM wave type (RFC 3551)
 	RtpPayloadDvi411025 RTPPayload = 16
-	// RtpPayloadDvi422050 wraps GST_RTP_PAYLOAD_DVI4_22050
+	// RtpPayloadDvi422050 wraps RTP_PAYLOAD_DVI4_22050
 	//
 	// IMA ADPCM wave type (RFC 3551)
 	RtpPayloadDvi422050 RTPPayload = 17
-	// RtpPayloadG729 wraps GST_RTP_PAYLOAD_G729
+	// RtpPayloadG729 wraps RTP_PAYLOAD_G729
 	//
 	// ITU-T G.729 Speech coder (RFC 3551)
 	RtpPayloadG729 RTPPayload = 18
-	// RtpPayloadCellb wraps GST_RTP_PAYLOAD_CELLB
+	// RtpPayloadCellb wraps RTP_PAYLOAD_CELLB
 	//
 	// See RFC 2029
 	RtpPayloadCellb RTPPayload = 25
-	// RtpPayloadJPEG wraps GST_RTP_PAYLOAD_JPEG
+	// RtpPayloadJPEG wraps RTP_PAYLOAD_JPEG
 	//
 	// ISO Standards 10918-1 and 10918-2 (RFC 2435)
 	RtpPayloadJPEG RTPPayload = 26
-	// RtpPayloadNv wraps GST_RTP_PAYLOAD_NV
+	// RtpPayloadNv wraps RTP_PAYLOAD_NV
 	//
 	// nv encoding by Ron Frederick
 	RtpPayloadNv RTPPayload = 28
-	// RtpPayloadH261 wraps GST_RTP_PAYLOAD_H261
+	// RtpPayloadH261 wraps RTP_PAYLOAD_H261
 	//
 	// ITU-T Recommendation H.261 (RFC 2032)
 	RtpPayloadH261 RTPPayload = 31
-	// RtpPayloadMpv wraps GST_RTP_PAYLOAD_MPV
+	// RtpPayloadMpv wraps RTP_PAYLOAD_MPV
 	//
 	// Video MPEG 1 &amp; 2 (RFC 2250)
 	RtpPayloadMpv RTPPayload = 32
-	// RtpPayloadMp2T wraps GST_RTP_PAYLOAD_MP2T
+	// RtpPayloadMp2T wraps RTP_PAYLOAD_MP2T
 	//
 	// MPEG-2 transport stream (RFC 2250)
 	RtpPayloadMp2T RTPPayload = 33
-	// RtpPayloadH263 wraps GST_RTP_PAYLOAD_H263
+	// RtpPayloadH263 wraps RTP_PAYLOAD_H263
 	//
 	// Video H263 (RFC 2190)
 	RtpPayloadH263 RTPPayload = 34
@@ -708,23 +708,23 @@ func (e RTPPayload) String() string {
 type RTPProfile C.int
 
 const (
-	// RtpProfileUnknown wraps GST_RTP_PROFILE_UNKNOWN
+	// RtpProfileUnknown wraps RTP_PROFILE_UNKNOWN
 	//
 	// invalid profile
 	RtpProfileUnknown RTPProfile = 0
-	// RtpProfileAvp wraps GST_RTP_PROFILE_AVP
+	// RtpProfileAvp wraps RTP_PROFILE_AVP
 	//
 	// the Audio/Visual profile (RFC 3551)
 	RtpProfileAvp RTPProfile = 1
-	// RtpProfileSavp wraps GST_RTP_PROFILE_SAVP
+	// RtpProfileSavp wraps RTP_PROFILE_SAVP
 	//
 	// the secure Audio/Visual profile (RFC 3711)
 	RtpProfileSavp RTPProfile = 2
-	// RtpProfileAvpf wraps GST_RTP_PROFILE_AVPF
+	// RtpProfileAvpf wraps RTP_PROFILE_AVPF
 	//
 	// the Audio/Visual profile with feedback (RFC 4585)
 	RtpProfileAvpf RTPProfile = 3
-	// RtpProfileSavpf wraps GST_RTP_PROFILE_SAVPF
+	// RtpProfileSavpf wraps RTP_PROFILE_SAVPF
 	//
 	// the secure Audio/Visual profile with feedback (RFC 5124)
 	RtpProfileSavpf RTPProfile = 4
@@ -765,19 +765,19 @@ func (e RTPProfile) String() string {
 type RTPBufferFlags C.gint
 
 const (
-	// RtpBufferFlagRetransmission wraps GST_RTP_BUFFER_FLAG_RETRANSMISSION
+	// RtpBufferFlagRetransmission wraps RTP_BUFFER_FLAG_RETRANSMISSION
 	//
 	// The #GstBuffer was once wrapped
 	//           in a retransmitted packet as specified by RFC 4588.
 	RtpBufferFlagRetransmission RTPBufferFlags = 1048576
-	// RtpBufferFlagRedundant wraps GST_RTP_BUFFER_FLAG_REDUNDANT
+	// RtpBufferFlagRedundant wraps RTP_BUFFER_FLAG_REDUNDANT
 	//
 	// The packet represents redundant RTP packet.
 	//           The flag is used in gstrtpstorage to be able to hold the packetback
 	//           and use it only for recovery from packet loss.
 	//           Since: 1.14
 	RtpBufferFlagRedundant RTPBufferFlags = 2097152
-	// RtpBufferFlagLast wraps GST_RTP_BUFFER_FLAG_LAST
+	// RtpBufferFlagLast wraps RTP_BUFFER_FLAG_LAST
 	//
 	// Offset to define more flags.
 	RtpBufferFlagLast RTPBufferFlags = 268435456
@@ -825,13 +825,13 @@ func (f RTPBufferFlags) String() string {
 type RTPBufferMapFlags C.gint
 
 const (
-	// RtpBufferMapFlagSkipPadding wraps GST_RTP_BUFFER_MAP_FLAG_SKIP_PADDING
+	// RtpBufferMapFlagSkipPadding wraps RTP_BUFFER_MAP_FLAG_SKIP_PADDING
 	//
 	// Skip mapping and validation of RTP
 	//           padding and RTP pad count when present. Useful for buffers where
 	//           the padding may be encrypted.
 	RtpBufferMapFlagSkipPadding RTPBufferMapFlags = 65536
-	// RtpBufferMapFlagLast wraps GST_RTP_BUFFER_MAP_FLAG_LAST
+	// RtpBufferMapFlagLast wraps RTP_BUFFER_MAP_FLAG_LAST
 	//
 	// Offset to define more flags
 	RtpBufferMapFlagLast RTPBufferMapFlags = 16777216
@@ -876,25 +876,25 @@ func (f RTPBufferMapFlags) String() string {
 type RTPHeaderExtensionDirection C.gint
 
 const (
-	// RtpHeaderExtensionDirectionInactive wraps GST_RTP_HEADER_EXTENSION_DIRECTION_INACTIVE
+	// RtpHeaderExtensionDirectionInactive wraps RTP_HEADER_EXTENSION_DIRECTION_INACTIVE
 	//
 	// Neither send nor
 	// receive RTP Header Extensions
 	RtpHeaderExtensionDirectionInactive RTPHeaderExtensionDirection = 0
-	// RtpHeaderExtensionDirectionSendonly wraps GST_RTP_HEADER_EXTENSION_DIRECTION_SENDONLY
+	// RtpHeaderExtensionDirectionSendonly wraps RTP_HEADER_EXTENSION_DIRECTION_SENDONLY
 	//
 	// Only send RTP Header
 	// Extensions @GST_RTP_HEADER_EXTENSION_DIRECTION_RECVONLY: Only
 	// receive RTP Header Extensions
 	RtpHeaderExtensionDirectionSendonly RTPHeaderExtensionDirection = 1
-	// RtpHeaderExtensionDirectionRecvonly wraps GST_RTP_HEADER_EXTENSION_DIRECTION_RECVONLY
+	// RtpHeaderExtensionDirectionRecvonly wraps RTP_HEADER_EXTENSION_DIRECTION_RECVONLY
 	RtpHeaderExtensionDirectionRecvonly RTPHeaderExtensionDirection = 2
-	// RtpHeaderExtensionDirectionSendrecv wraps GST_RTP_HEADER_EXTENSION_DIRECTION_SENDRECV
+	// RtpHeaderExtensionDirectionSendrecv wraps RTP_HEADER_EXTENSION_DIRECTION_SENDRECV
 	//
 	// Send and receive RTP
 	// Header Extensions ext
 	RtpHeaderExtensionDirectionSendrecv RTPHeaderExtensionDirection = 3
-	// RtpHeaderExtensionDirectionInherited wraps GST_RTP_HEADER_EXTENSION_DIRECTION_INHERITED
+	// RtpHeaderExtensionDirectionInherited wraps RTP_HEADER_EXTENSION_DIRECTION_INHERITED
 	//
 	// RTP header extension
 	// direction is inherited from the stream
@@ -949,13 +949,13 @@ func (f RTPHeaderExtensionDirection) String() string {
 type RTPHeaderExtensionFlags C.gint
 
 const (
-	// RtpHeaderExtensionOneByte wraps GST_RTP_HEADER_EXTENSION_ONE_BYTE
+	// RtpHeaderExtensionOneByte wraps RTP_HEADER_EXTENSION_ONE_BYTE
 	//
 	// The one byte rtp extension header.
 	//              1-16 data bytes per extension with a maximum of
 	//              14 extension ids in total.
 	RtpHeaderExtensionOneByte RTPHeaderExtensionFlags = 1
-	// RtpHeaderExtensionTwoByte wraps GST_RTP_HEADER_EXTENSION_TWO_BYTE
+	// RtpHeaderExtensionTwoByte wraps RTP_HEADER_EXTENSION_TWO_BYTE
 	//
 	// The two byte rtp extension header.
 	//              256 data bytes per extension with a maximum of 255 (or 256

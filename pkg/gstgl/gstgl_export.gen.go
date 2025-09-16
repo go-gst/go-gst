@@ -95,30 +95,6 @@ func _gotk4_gstgl1_GLBaseFilter_gl_stop(carg0 *C.GstGLBaseFilter) {
 	fn(carg0)
 }
 
-//export _gotk4_gstgl1_GLBaseMixer_gl_start
-func _gotk4_gstgl1_GLBaseMixer_gl_start(carg0 *C.GstGLBaseMixer) (cret C.gboolean) {
-	var fn func(carg0 *C.GstGLBaseMixer) (cret C.gboolean)
-	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstgl1_GLBaseMixer_gl_start").(func(carg0 *C.GstGLBaseMixer) (cret C.gboolean))
-		if fn == nil {
-			panic("_gotk4_gstgl1_GLBaseMixer_gl_start: no function pointer found")
-		}
-	}
-	return fn(carg0)
-}
-
-//export _gotk4_gstgl1_GLBaseMixer_gl_stop
-func _gotk4_gstgl1_GLBaseMixer_gl_stop(carg0 *C.GstGLBaseMixer) {
-	var fn func(carg0 *C.GstGLBaseMixer)
-	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstgl1_GLBaseMixer_gl_stop").(func(carg0 *C.GstGLBaseMixer))
-		if fn == nil {
-			panic("_gotk4_gstgl1_GLBaseMixer_gl_stop: no function pointer found")
-		}
-	}
-	fn(carg0)
-}
-
 //export _gotk4_gstgl1_GLBaseSrc_fill_gl_memory
 func _gotk4_gstgl1_GLBaseSrc_fill_gl_memory(carg0 *C.GstGLBaseSrc, carg1 *C.GstGLMemory) (cret C.gboolean) {
 	var fn func(carg0 *C.GstGLBaseSrc, carg1 *C.GstGLMemory) (cret C.gboolean)
@@ -357,30 +333,6 @@ func _gotk4_gstgl1_GLFilter_transform_internal_caps(carg0 *C.GstGLFilter, carg1 
 		}
 	}
 	return fn(carg0, carg1, carg2, carg3)
-}
-
-//export _gotk4_gstgl1_GLMixer_process_buffers
-func _gotk4_gstgl1_GLMixer_process_buffers(carg0 *C.GstGLMixer, carg1 *C.GstBuffer) (cret C.gboolean) {
-	var fn func(carg0 *C.GstGLMixer, carg1 *C.GstBuffer) (cret C.gboolean)
-	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstgl1_GLMixer_process_buffers").(func(carg0 *C.GstGLMixer, carg1 *C.GstBuffer) (cret C.gboolean))
-		if fn == nil {
-			panic("_gotk4_gstgl1_GLMixer_process_buffers: no function pointer found")
-		}
-	}
-	return fn(carg0, carg1)
-}
-
-//export _gotk4_gstgl1_GLMixer_process_textures
-func _gotk4_gstgl1_GLMixer_process_textures(carg0 *C.GstGLMixer, carg1 *C.GstGLMemory) (cret C.gboolean) {
-	var fn func(carg0 *C.GstGLMixer, carg1 *C.GstGLMemory) (cret C.gboolean)
-	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstgl1_GLMixer_process_textures").(func(carg0 *C.GstGLMixer, carg1 *C.GstGLMemory) (cret C.gboolean))
-		if fn == nil {
-			panic("_gotk4_gstgl1_GLMixer_process_textures: no function pointer found")
-		}
-	}
-	return fn(carg0, carg1)
 }
 
 //export _gotk4_gstgl1_GLWindow_close

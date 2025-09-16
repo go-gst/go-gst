@@ -41,21 +41,21 @@ func init() {
 type FdMemoryFlags C.gint
 
 const (
-	// FdMemoryFlagNone wraps GST_FD_MEMORY_FLAG_NONE
+	// FdMemoryFlagNone wraps FD_MEMORY_FLAG_NONE
 	//
 	// no flag
 	FdMemoryFlagNone FdMemoryFlags = 0
-	// FdMemoryFlagKeepMapped wraps GST_FD_MEMORY_FLAG_KEEP_MAPPED
+	// FdMemoryFlagKeepMapped wraps FD_MEMORY_FLAG_KEEP_MAPPED
 	//
 	// once the memory is mapped,
 	//        keep it mapped until the memory is destroyed.
 	FdMemoryFlagKeepMapped FdMemoryFlags = 1
-	// FdMemoryFlagMapPrivate wraps GST_FD_MEMORY_FLAG_MAP_PRIVATE
+	// FdMemoryFlagMapPrivate wraps FD_MEMORY_FLAG_MAP_PRIVATE
 	//
 	// do a private mapping instead of
 	//        the default shared mapping.
 	FdMemoryFlagMapPrivate FdMemoryFlags = 2
-	// FdMemoryFlagDontClose wraps GST_FD_MEMORY_FLAG_DONT_CLOSE
+	// FdMemoryFlagDontClose wraps FD_MEMORY_FLAG_DONT_CLOSE
 	//
 	// don't close the file descriptor when
 	//        the memory is freed. Since: 1.10

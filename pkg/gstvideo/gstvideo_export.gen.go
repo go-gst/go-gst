@@ -94,18 +94,6 @@ func _gotk4_gstvideo1_ColorBalance_value_changed(carg0 *C.GstColorBalance, carg1
 	fn(carg0, carg1, carg2)
 }
 
-//export _gotk4_gstvideo1_Navigation_send_event
-func _gotk4_gstvideo1_Navigation_send_event(carg0 *C.GstNavigation, carg1 *C.GstStructure) {
-	var fn func(carg0 *C.GstNavigation, carg1 *C.GstStructure)
-	{
-		fn = classdata.LoadVirtualMethodFromInstance(unsafe.Pointer(carg0), "_gotk4_gstvideo1_Navigation_send_event").(func(carg0 *C.GstNavigation, carg1 *C.GstStructure))
-		if fn == nil {
-			panic("_gotk4_gstvideo1_Navigation_send_event: no function pointer found")
-		}
-	}
-	fn(carg0, carg1)
-}
-
 //export _gotk4_gstvideo1_Navigation_send_event_simple
 func _gotk4_gstvideo1_Navigation_send_event_simple(carg0 *C.GstNavigation, carg1 *C.GstEvent) {
 	var fn func(carg0 *C.GstNavigation, carg1 *C.GstEvent)

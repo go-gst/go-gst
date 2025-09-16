@@ -59,20 +59,20 @@ func init() {
 type PlayColorBalanceType C.int
 
 const (
-	// PlayColorBalanceHue wraps GST_PLAY_COLOR_BALANCE_HUE
+	// PlayColorBalanceHue wraps PLAY_COLOR_BALANCE_HUE
 	//
 	// hue or color balance.
 	PlayColorBalanceHue PlayColorBalanceType = 3
-	// PlayColorBalanceBrightness wraps GST_PLAY_COLOR_BALANCE_BRIGHTNESS
+	// PlayColorBalanceBrightness wraps PLAY_COLOR_BALANCE_BRIGHTNESS
 	//
 	// brightness or black level.
 	PlayColorBalanceBrightness PlayColorBalanceType = 0
-	// PlayColorBalanceSaturation wraps GST_PLAY_COLOR_BALANCE_SATURATION
+	// PlayColorBalanceSaturation wraps PLAY_COLOR_BALANCE_SATURATION
 	//
 	// color saturation or chroma
 	// gain.
 	PlayColorBalanceSaturation PlayColorBalanceType = 2
-	// PlayColorBalanceContrast wraps GST_PLAY_COLOR_BALANCE_CONTRAST
+	// PlayColorBalanceContrast wraps PLAY_COLOR_BALANCE_CONTRAST
 	//
 	// contrast or luma gain.
 	PlayColorBalanceContrast PlayColorBalanceType = 1
@@ -133,7 +133,7 @@ func PlayColorBalanceTypeGetName(typ PlayColorBalanceType) string {
 type PlayError C.int
 
 const (
-	// PlayErrorFailed wraps GST_PLAY_ERROR_FAILED
+	// PlayErrorFailed wraps PLAY_ERROR_FAILED
 	//
 	// generic error.
 	PlayErrorFailed PlayError = 0
@@ -208,55 +208,55 @@ func PlayErrorQuark() glib.Quark {
 type PlayMessage C.int
 
 const (
-	// PlayMessageURILoaded wraps GST_PLAY_MESSAGE_URI_LOADED
+	// PlayMessageURILoaded wraps PLAY_MESSAGE_URI_LOADED
 	//
 	// Source element was initalized for set URI
 	PlayMessageURILoaded PlayMessage = 0
-	// PlayMessagePositionUpdated wraps GST_PLAY_MESSAGE_POSITION_UPDATED
+	// PlayMessagePositionUpdated wraps PLAY_MESSAGE_POSITION_UPDATED
 	//
 	// Sink position changed
 	PlayMessagePositionUpdated PlayMessage = 1
-	// PlayMessageDurationChanged wraps GST_PLAY_MESSAGE_DURATION_CHANGED
+	// PlayMessageDurationChanged wraps PLAY_MESSAGE_DURATION_CHANGED
 	//
 	// Duration of stream changed
 	PlayMessageDurationChanged PlayMessage = 2
-	// PlayMessageStateChanged wraps GST_PLAY_MESSAGE_STATE_CHANGED
+	// PlayMessageStateChanged wraps PLAY_MESSAGE_STATE_CHANGED
 	//
 	// State changed, see #GstPlayState
 	PlayMessageStateChanged PlayMessage = 3
-	// PlayMessageBuffering wraps GST_PLAY_MESSAGE_BUFFERING
+	// PlayMessageBuffering wraps PLAY_MESSAGE_BUFFERING
 	//
 	// Pipeline is in buffering state, message contains the percentage value of the decoding buffer
 	PlayMessageBuffering PlayMessage = 4
-	// PlayMessageEndOfStream wraps GST_PLAY_MESSAGE_END_OF_STREAM
+	// PlayMessageEndOfStream wraps PLAY_MESSAGE_END_OF_STREAM
 	//
 	// Sink has received EOS
 	PlayMessageEndOfStream PlayMessage = 5
-	// PlayMessageError wraps GST_PLAY_MESSAGE_ERROR
+	// PlayMessageError wraps PLAY_MESSAGE_ERROR
 	//
 	// Message contains an error
 	PlayMessageError PlayMessage = 6
-	// PlayMessageWarning wraps GST_PLAY_MESSAGE_WARNING
+	// PlayMessageWarning wraps PLAY_MESSAGE_WARNING
 	//
 	// Message contains an error
 	PlayMessageWarning PlayMessage = 7
-	// PlayMessageVideoDimensionsChanged wraps GST_PLAY_MESSAGE_VIDEO_DIMENSIONS_CHANGED
+	// PlayMessageVideoDimensionsChanged wraps PLAY_MESSAGE_VIDEO_DIMENSIONS_CHANGED
 	//
 	// Video sink received format in different dimensions than before
 	PlayMessageVideoDimensionsChanged PlayMessage = 8
-	// PlayMessageMediaInfoUpdated wraps GST_PLAY_MESSAGE_MEDIA_INFO_UPDATED
+	// PlayMessageMediaInfoUpdated wraps PLAY_MESSAGE_MEDIA_INFO_UPDATED
 	//
 	// A media-info property has changed, message contains current #GstPlayMediaInfo
 	PlayMessageMediaInfoUpdated PlayMessage = 9
-	// PlayMessageVolumeChanged wraps GST_PLAY_MESSAGE_VOLUME_CHANGED
+	// PlayMessageVolumeChanged wraps PLAY_MESSAGE_VOLUME_CHANGED
 	//
 	// The volume of the audio ouput has changed
 	PlayMessageVolumeChanged PlayMessage = 10
-	// PlayMessageMuteChanged wraps GST_PLAY_MESSAGE_MUTE_CHANGED
+	// PlayMessageMuteChanged wraps PLAY_MESSAGE_MUTE_CHANGED
 	//
 	// Audio muting flag has been toggled
 	PlayMessageMuteChanged PlayMessage = 11
-	// PlayMessageSeekDone wraps GST_PLAY_MESSAGE_SEEK_DONE
+	// PlayMessageSeekDone wraps PLAY_MESSAGE_SEEK_DONE
 	//
 	// Any pending seeking operation has been completed
 	PlayMessageSeekDone PlayMessage = 12
@@ -816,23 +816,23 @@ func PlayMessageParseWarning(msg *gst.Message) (*gst.Structure, error) {
 type PlaySnapshotFormat C.int
 
 const (
-	// PlayThumbnailRawNative wraps GST_PLAY_THUMBNAIL_RAW_NATIVE
+	// PlayThumbnailRawNative wraps PLAY_THUMBNAIL_RAW_NATIVE
 	//
 	// raw native format.
 	PlayThumbnailRawNative PlaySnapshotFormat = 0
-	// PlayThumbnailRawXrgb wraps GST_PLAY_THUMBNAIL_RAW_xRGB
+	// PlayThumbnailRawXrgb wraps PLAY_THUMBNAIL_RAW_xRGB
 	//
 	// raw xRGB format.
 	PlayThumbnailRawXrgb PlaySnapshotFormat = 1
-	// PlayThumbnailRawBgrx wraps GST_PLAY_THUMBNAIL_RAW_BGRx
+	// PlayThumbnailRawBgrx wraps PLAY_THUMBNAIL_RAW_BGRx
 	//
 	// raw BGRx format.
 	PlayThumbnailRawBgrx PlaySnapshotFormat = 2
-	// PlayThumbnailJPG wraps GST_PLAY_THUMBNAIL_JPG
+	// PlayThumbnailJPG wraps PLAY_THUMBNAIL_JPG
 	//
 	// jpeg format.
 	PlayThumbnailJPG PlaySnapshotFormat = 3
-	// PlayThumbnailPNG wraps GST_PLAY_THUMBNAIL_PNG
+	// PlayThumbnailPNG wraps PLAY_THUMBNAIL_PNG
 	//
 	// png format.
 	PlayThumbnailPNG PlaySnapshotFormat = 4
@@ -854,19 +854,19 @@ func (e PlaySnapshotFormat) String() string {
 type PlayState C.int
 
 const (
-	// PlayStateStopped wraps GST_PLAY_STATE_STOPPED
+	// PlayStateStopped wraps PLAY_STATE_STOPPED
 	//
 	// the play is stopped.
 	PlayStateStopped PlayState = 0
-	// PlayStateBuffering wraps GST_PLAY_STATE_BUFFERING
+	// PlayStateBuffering wraps PLAY_STATE_BUFFERING
 	//
 	// the play is buffering.
 	PlayStateBuffering PlayState = 1
-	// PlayStatePaused wraps GST_PLAY_STATE_PAUSED
+	// PlayStatePaused wraps PLAY_STATE_PAUSED
 	//
 	// the play is paused.
 	PlayStatePaused PlayState = 2
-	// PlayStatePlaying wraps GST_PLAY_STATE_PLAYING
+	// PlayStatePlaying wraps PLAY_STATE_PLAYING
 	//
 	// the play is currently playing a
 	// stream.

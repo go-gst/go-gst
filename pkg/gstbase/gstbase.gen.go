@@ -462,16 +462,16 @@ const BASE_PARSE_FLAG_LOST_SYNC = 1
 type AggregatorStartTimeSelection C.int
 
 const (
-	// AggregatorStartTimeSelectionZero wraps GST_AGGREGATOR_START_TIME_SELECTION_ZERO
+	// AggregatorStartTimeSelectionZero wraps AGGREGATOR_START_TIME_SELECTION_ZERO
 	//
 	// Start at running time 0.
 	AggregatorStartTimeSelectionZero AggregatorStartTimeSelection = 0
-	// AggregatorStartTimeSelectionFirst wraps GST_AGGREGATOR_START_TIME_SELECTION_FIRST
+	// AggregatorStartTimeSelectionFirst wraps AGGREGATOR_START_TIME_SELECTION_FIRST
 	//
 	// Start at the running time of
 	// the first buffer that is received.
 	AggregatorStartTimeSelectionFirst AggregatorStartTimeSelection = 1
-	// AggregatorStartTimeSelectionSet wraps GST_AGGREGATOR_START_TIME_SELECTION_SET
+	// AggregatorStartTimeSelectionSet wraps AGGREGATOR_START_TIME_SELECTION_SET
 	//
 	// Start at the running time
 	// selected by the `start-time` property.
@@ -507,35 +507,35 @@ func (e AggregatorStartTimeSelection) String() string {
 type BaseParseFrameFlags C.gint
 
 const (
-	// BaseParseFrameFlagNone wraps GST_BASE_PARSE_FRAME_FLAG_NONE
+	// BaseParseFrameFlagNone wraps BASE_PARSE_FRAME_FLAG_NONE
 	//
 	// no flag
 	BaseParseFrameFlagNone BaseParseFrameFlags = 0
-	// BaseParseFrameFlagNewFrame wraps GST_BASE_PARSE_FRAME_FLAG_NEW_FRAME
+	// BaseParseFrameFlagNewFrame wraps BASE_PARSE_FRAME_FLAG_NEW_FRAME
 	//
 	// set by baseclass if current frame
 	//   is passed for processing to the subclass for the first time
 	//   (and not set on subsequent calls with same data).
 	BaseParseFrameFlagNewFrame BaseParseFrameFlags = 1
-	// BaseParseFrameFlagNoFrame wraps GST_BASE_PARSE_FRAME_FLAG_NO_FRAME
+	// BaseParseFrameFlagNoFrame wraps BASE_PARSE_FRAME_FLAG_NO_FRAME
 	//
 	// set to indicate this buffer should not be
 	//   counted as frame, e.g. if this frame is dependent on a previous one.
 	//   As it is not counted as a frame, bitrate increases but frame to time
 	//   conversions are maintained.
 	BaseParseFrameFlagNoFrame BaseParseFrameFlags = 2
-	// BaseParseFrameFlagClip wraps GST_BASE_PARSE_FRAME_FLAG_CLIP
+	// BaseParseFrameFlagClip wraps BASE_PARSE_FRAME_FLAG_CLIP
 	//
 	// @pre_push_frame can set this to indicate
 	//    that regular segment clipping can still be performed (as opposed to
 	//    any custom one having been done).
 	BaseParseFrameFlagClip BaseParseFrameFlags = 4
-	// BaseParseFrameFlagDrop wraps GST_BASE_PARSE_FRAME_FLAG_DROP
+	// BaseParseFrameFlagDrop wraps BASE_PARSE_FRAME_FLAG_DROP
 	//
 	// indicates to @finish_frame that the
 	//    the frame should be dropped (and might be handled internally by subclass)
 	BaseParseFrameFlagDrop BaseParseFrameFlags = 8
-	// BaseParseFrameFlagQueue wraps GST_BASE_PARSE_FRAME_FLAG_QUEUE
+	// BaseParseFrameFlagQueue wraps BASE_PARSE_FRAME_FLAG_QUEUE
 	//
 	// indicates to @finish_frame that the
 	//    the frame should be queued for now and processed fully later
@@ -581,15 +581,15 @@ func (f BaseParseFrameFlags) String() string {
 type BaseSrcFlags C.gint
 
 const (
-	// BaseSrcFlagStarting wraps GST_BASE_SRC_FLAG_STARTING
+	// BaseSrcFlagStarting wraps BASE_SRC_FLAG_STARTING
 	//
 	// has source is starting
 	BaseSrcFlagStarting BaseSrcFlags = 16384
-	// BaseSrcFlagStarted wraps GST_BASE_SRC_FLAG_STARTED
+	// BaseSrcFlagStarted wraps BASE_SRC_FLAG_STARTED
 	//
 	// has source been started
 	BaseSrcFlagStarted BaseSrcFlags = 32768
-	// BaseSrcFlagLast wraps GST_BASE_SRC_FLAG_LAST
+	// BaseSrcFlagLast wraps BASE_SRC_FLAG_LAST
 	//
 	// offset to define more flags
 	BaseSrcFlagLast BaseSrcFlags = 1048576
@@ -622,25 +622,25 @@ func (f BaseSrcFlags) String() string {
 type CollectPadsStateFlags C.gint
 
 const (
-	// CollectPadsStateEos wraps GST_COLLECT_PADS_STATE_EOS
+	// CollectPadsStateEos wraps COLLECT_PADS_STATE_EOS
 	//
 	// Set if collectdata's pad is EOS.
 	CollectPadsStateEos CollectPadsStateFlags = 1
-	// CollectPadsStateFlushing wraps GST_COLLECT_PADS_STATE_FLUSHING
+	// CollectPadsStateFlushing wraps COLLECT_PADS_STATE_FLUSHING
 	//
 	// Set if collectdata's pad is flushing.
 	CollectPadsStateFlushing CollectPadsStateFlags = 2
-	// CollectPadsStateNewSegment wraps GST_COLLECT_PADS_STATE_NEW_SEGMENT
+	// CollectPadsStateNewSegment wraps COLLECT_PADS_STATE_NEW_SEGMENT
 	//
 	// Set if collectdata's pad received a
 	//                                      new_segment event.
 	CollectPadsStateNewSegment CollectPadsStateFlags = 4
-	// CollectPadsStateWaiting wraps GST_COLLECT_PADS_STATE_WAITING
+	// CollectPadsStateWaiting wraps COLLECT_PADS_STATE_WAITING
 	//
 	// Set if collectdata's pad must be waited
 	//                                      for when collecting.
 	CollectPadsStateWaiting CollectPadsStateFlags = 8
-	// CollectPadsStateLocked wraps GST_COLLECT_PADS_STATE_LOCKED
+	// CollectPadsStateLocked wraps COLLECT_PADS_STATE_LOCKED
 	//
 	// Set collectdata's pad WAITING state must
 	//                                      not be changed.
@@ -11351,27 +11351,6 @@ type BaseSrc interface {
 	// #GstBaseSrcClass::create or in #GstBaseSrcClass::alloc, _before_ any
 	// buffer is allocated.
 	Negotiate() bool
-	// NewSeamlessSegment wraps gst_base_src_new_seamless_segment
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- start int64: The new start value for the segment 
-	// 	- stop int64: Stop value for the new segment 
-	// 	- time int64: The new time value for the start of the new segment 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Prepare a new seamless segment for emission downstream. This function must
-	// only be called by derived sub-classes, and only from the #GstBaseSrcClass::create function,
-	// as the stream-lock needs to be held.
-	// 
-	// The format for the new segment will be the current format of the source, as
-	// configured with gst_base_src_set_format()
-	//
-	// Deprecated: (since 1.18.0) Use gst_base_src_new_segment()
-	NewSeamlessSegment(int64, int64, int64) bool
 	// NewSegment wraps gst_base_src_new_segment
 	// 
 	// The function takes the following parameters:
@@ -12062,53 +12041,6 @@ func (src *BaseSrcInstance) Negotiate() bool {
 
 	cret = C.gst_base_src_negotiate(carg0)
 	runtime.KeepAlive(src)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
-// NewSeamlessSegment wraps gst_base_src_new_seamless_segment
-// 
-// The function takes the following parameters:
-// 
-// 	- start int64: The new start value for the segment 
-// 	- stop int64: Stop value for the new segment 
-// 	- time int64: The new time value for the start of the new segment 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Prepare a new seamless segment for emission downstream. This function must
-// only be called by derived sub-classes, and only from the #GstBaseSrcClass::create function,
-// as the stream-lock needs to be held.
-// 
-// The format for the new segment will be the current format of the source, as
-// configured with gst_base_src_set_format()
-//
-// Deprecated: (since 1.18.0) Use gst_base_src_new_segment()
-func (src *BaseSrcInstance) NewSeamlessSegment(start int64, stop int64, time int64) bool {
-	var carg0 *C.GstBaseSrc // in, none, converted
-	var carg1 C.gint64      // in, none, casted
-	var carg2 C.gint64      // in, none, casted
-	var carg3 C.gint64      // in, none, casted
-	var cret  C.gboolean    // return
-
-	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
-	carg1 = C.gint64(start)
-	carg2 = C.gint64(stop)
-	carg3 = C.gint64(time)
-
-	cret = C.gst_base_src_new_seamless_segment(carg0, carg1, carg2, carg3)
-	runtime.KeepAlive(src)
-	runtime.KeepAlive(start)
-	runtime.KeepAlive(stop)
-	runtime.KeepAlive(time)
 
 	var goret bool
 
