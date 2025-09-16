@@ -12,6 +12,7 @@ import (
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
+	"github.com/go-gst/go-gst/pkg/gstsdp"
 )
 
 // #cgo pkg-config: gstreamer-webrtc-1.0
@@ -5082,6 +5083,35 @@ func UnsafeWebRTCSessionDescriptionToGlibFull(w *WebRTCSessionDescription) unsaf
 	_p := unsafe.Pointer(w.native)
 	w.native = nil // WebRTCSessionDescription is invalid from here on
 	return _p
+}
+
+// NewWebRTCSessionDescription wraps gst_webrtc_session_description_new
+// 
+// The function takes the following parameters:
+// 
+// 	- typ WebRTCSDPType: a #GstWebRTCSDPType 
+// 	- sdp *gstsdp.SDPMessage: a #GstSDPMessage 
+// 
+// The function returns the following values:
+// 
+// 	- goret *WebRTCSessionDescription 
+func NewWebRTCSessionDescription(typ WebRTCSDPType, sdp *gstsdp.SDPMessage) *WebRTCSessionDescription {
+	var carg1 C.GstWebRTCSDPType             // in, none, casted
+	var carg2 *C.GstSDPMessage               // in, full, converted
+	var cret  *C.GstWebRTCSessionDescription // return, full, converted
+
+	carg1 = C.GstWebRTCSDPType(typ)
+	carg2 = (*C.GstSDPMessage)(gstsdp.UnsafeSDPMessageToGlibFull(sdp))
+
+	cret = C.gst_webrtc_session_description_new(carg1, carg2)
+	runtime.KeepAlive(typ)
+	runtime.KeepAlive(sdp)
+
+	var goret *WebRTCSessionDescription
+
+	goret = UnsafeWebRTCSessionDescriptionFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
 }
 
 // Copy wraps gst_webrtc_session_description_copy

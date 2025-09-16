@@ -3,12 +3,15 @@
 package gstrtsp
 
 import (
+	"context"
 	"fmt"
 	"runtime"
 	"strings"
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/core/classdata"
+	"github.com/diamondburned/gotk4/pkg/core/userdata"
+	"github.com/diamondburned/gotk4/pkg/gio/v2"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
@@ -18,6 +21,8 @@ import (
 // #cgo pkg-config: gstreamer-rtsp-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/rtsp/rtsp.h>
+// extern gboolean _gotk4_gstrtsp1_RTSPConnectionAcceptCertificateFunc(GTlsConnection*, GTlsCertificate*, GTlsCertificateFlags, gpointer);
+// extern void destroyUserdata(gpointer);
 // extern GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_after_send(GstRTSPExtension*, GstRTSPMessage*, GstRTSPMessage*);
 // extern GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_before_send(GstRTSPExtension*, GstRTSPMessage*);
 // extern gboolean _gotk4_gstrtsp1_RTSPExtension_configure_stream(GstRTSPExtension*, GstCaps*);
@@ -1502,6 +1507,19 @@ func (f RTSPTransMode) String() string {
 	}
 	return "RTSPTransMode(" + strings.Join(parts, "|") + ")"
 }
+
+// RTSPConnectionAcceptCertificateFunc wraps GstRTSPConnectionAcceptCertificateFunc
+// 
+// The function takes the following parameters:
+// 
+// 	- conn gio.TlsConnection 
+// 	- peerCert gio.TlsCertificate 
+// 	- errors gio.TLSCertificateFlags 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+type RTSPConnectionAcceptCertificateFunc func(conn gio.TlsConnection, peerCert gio.TlsCertificate, errors gio.TLSCertificateFlags) (goret bool)
 
 // RtspFindHeaderField wraps gst_rtsp_find_header_field
 // 
@@ -3377,6 +3395,46 @@ func UnsafeRTSPConnectionToGlibFull(r *RTSPConnection) unsafe.Pointer {
 	return _p
 }
 
+// RTSPConnectionAccept wraps gst_rtsp_connection_accept
+// 
+// The function takes the following parameters:
+// 
+// 	- cancellable context.Context (nullable): a #GCancellable to cancel the operation 
+// 	- socket gio.Socket: a socket 
+// 
+// The function returns the following values:
+// 
+// 	- conn *RTSPConnection (nullable): storage for a #GstRTSPConnection 
+// 	- goret RTSPResult 
+//
+// Accept a new connection on @socket and create a new #GstRTSPConnection for
+// handling communication on new socket.
+func RTSPConnectionAccept(cancellable context.Context, socket gio.Socket) (*RTSPConnection, RTSPResult) {
+	var carg3 *C.GCancellable      // in, none, converted, nullable
+	var carg1 *C.GSocket           // in, none, converted
+	var carg2 *C.GstRTSPConnection // out, full, converted, nullable
+	var cret  C.GstRTSPResult      // return, none, casted
+
+	if cancellable != nil {
+		carg3 = (*C.GCancellable)(gio.UnsafeGCancellableToGlibNone(cancellable))
+	}
+	carg1 = (*C.GSocket)(gio.UnsafeSocketToGlibNone(socket))
+
+	cret = C.gst_rtsp_connection_accept(carg1, &carg2, carg3)
+	runtime.KeepAlive(cancellable)
+	runtime.KeepAlive(socket)
+
+	var conn  *RTSPConnection
+	var goret RTSPResult
+
+	if carg2 != nil {
+		conn = UnsafeRTSPConnectionFromGlibFull(unsafe.Pointer(carg2))
+	}
+	goret = RTSPResult(cret)
+
+	return conn, goret
+}
+
 // RTSPConnectionCreate wraps gst_rtsp_connection_create
 // 
 // The function takes the following parameters:
@@ -3407,6 +3465,55 @@ func RTSPConnectionCreate(url *RTSPUrl) (*RTSPConnection, RTSPResult) {
 	var goret RTSPResult
 
 	conn = UnsafeRTSPConnectionFromGlibFull(unsafe.Pointer(carg2))
+	goret = RTSPResult(cret)
+
+	return conn, goret
+}
+
+// RTSPConnectionCreateFromSocket wraps gst_rtsp_connection_create_from_socket
+// 
+// The function takes the following parameters:
+// 
+// 	- socket gio.Socket: a #GSocket 
+// 	- ip string: the IP address of the other end 
+// 	- port uint16: the port used by the other end 
+// 	- initialBuffer string: data already read from @fd 
+// 
+// The function returns the following values:
+// 
+// 	- conn *RTSPConnection (nullable): storage for a #GstRTSPConnection 
+// 	- goret RTSPResult 
+//
+// Create a new #GstRTSPConnection for handling communication on the existing
+// socket @socket. The @initial_buffer contains zero terminated data already
+// read from @socket which should be used before starting to read new data.
+func RTSPConnectionCreateFromSocket(socket gio.Socket, ip string, port uint16, initialBuffer string) (*RTSPConnection, RTSPResult) {
+	var carg1 *C.GSocket           // in, none, converted
+	var carg2 *C.gchar             // in, none, string
+	var carg3 C.guint16            // in, none, casted
+	var carg4 *C.gchar             // in, none, string
+	var carg5 *C.GstRTSPConnection // out, full, converted, nullable
+	var cret  C.GstRTSPResult      // return, none, casted
+
+	carg1 = (*C.GSocket)(gio.UnsafeSocketToGlibNone(socket))
+	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(ip)))
+	defer C.free(unsafe.Pointer(carg2))
+	carg3 = C.guint16(port)
+	carg4 = (*C.gchar)(unsafe.Pointer(C.CString(initialBuffer)))
+	defer C.free(unsafe.Pointer(carg4))
+
+	cret = C.gst_rtsp_connection_create_from_socket(carg1, carg2, carg3, carg4, &carg5)
+	runtime.KeepAlive(socket)
+	runtime.KeepAlive(ip)
+	runtime.KeepAlive(port)
+	runtime.KeepAlive(initialBuffer)
+
+	var conn  *RTSPConnection
+	var goret RTSPResult
+
+	if carg5 != nil {
+		conn = UnsafeRTSPConnectionFromGlibFull(unsafe.Pointer(carg5))
+	}
 	goret = RTSPResult(cret)
 
 	return conn, goret
@@ -3673,6 +3780,31 @@ func (conn *RTSPConnection) GetIP() string {
 	return goret
 }
 
+// GetReadSocket wraps gst_rtsp_connection_get_read_socket
+// 
+// The function returns the following values:
+// 
+// 	- goret gio.Socket (nullable) 
+//
+// Get the file descriptor for reading.
+func (conn *RTSPConnection) GetReadSocket() gio.Socket {
+	var carg0 *C.GstRTSPConnection // in, none, converted
+	var cret  *C.GSocket           // return, none, converted, nullable
+
+	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
+
+	cret = C.gst_rtsp_connection_get_read_socket(carg0)
+	runtime.KeepAlive(conn)
+
+	var goret gio.Socket
+
+	if cret != nil {
+		goret = gio.UnsafeSocketFromGlibNone(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
 // GetRememberSessionID wraps gst_rtsp_connection_get_remember_session_id
 // 
 // The function returns the following values:
@@ -3692,6 +3824,129 @@ func (conn *RTSPConnection) GetRememberSessionID() bool {
 	if cret != 0 {
 		goret = true
 	}
+
+	return goret
+}
+
+// GetTLS wraps gst_rtsp_connection_get_tls
+// 
+// The function returns the following values:
+// 
+// 	- goret gio.TlsConnection 
+// 	- _goerr error (nullable): an error 
+//
+// Get the TLS connection of @conn.
+// 
+// For client side this will return the #GTlsClientConnection when connected
+// over TLS.
+// 
+// For server side connections, this function will create a GTlsServerConnection
+// when called the first time and will return that same connection on subsequent
+// calls. The server is then responsible for configuring the TLS connection.
+func (conn *RTSPConnection) GetTLS() (gio.TlsConnection, error) {
+	var carg0 *C.GstRTSPConnection // in, none, converted
+	var cret  *C.GTlsConnection    // return, none, converted
+	var _cerr *C.GError            // out, full, converted, nullable
+
+	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
+
+	cret = C.gst_rtsp_connection_get_tls(carg0, &_cerr)
+	runtime.KeepAlive(conn)
+
+	var goret  gio.TlsConnection
+	var _goerr error
+
+	goret = gio.UnsafeTlsConnectionFromGlibNone(unsafe.Pointer(cret))
+	if _cerr != nil {
+		_goerr = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(_cerr))
+	}
+
+	return goret, _goerr
+}
+
+// GetTLSDatabase wraps gst_rtsp_connection_get_tls_database
+// 
+// The function returns the following values:
+// 
+// 	- goret gio.TlsDatabase (nullable) 
+//
+// Gets the anchor certificate authorities database that will be used
+// after a server certificate can't be verified with the default
+// certificate database.
+func (conn *RTSPConnection) GetTLSDatabase() gio.TlsDatabase {
+	var carg0 *C.GstRTSPConnection // in, none, converted
+	var cret  *C.GTlsDatabase      // return, full, converted, nullable
+
+	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
+
+	cret = C.gst_rtsp_connection_get_tls_database(carg0)
+	runtime.KeepAlive(conn)
+
+	var goret gio.TlsDatabase
+
+	if cret != nil {
+		goret = gio.UnsafeTlsDatabaseFromGlibFull(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
+// GetTLSInteraction wraps gst_rtsp_connection_get_tls_interaction
+// 
+// The function returns the following values:
+// 
+// 	- goret gio.TlsInteraction (nullable) 
+//
+// Gets a #GTlsInteraction object to be used when the connection or certificate
+// database need to interact with the user. This will be used to prompt the
+// user for passwords where necessary.
+func (conn *RTSPConnection) GetTLSInteraction() gio.TlsInteraction {
+	var carg0 *C.GstRTSPConnection // in, none, converted
+	var cret  *C.GTlsInteraction   // return, full, converted, nullable
+
+	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
+
+	cret = C.gst_rtsp_connection_get_tls_interaction(carg0)
+	runtime.KeepAlive(conn)
+
+	var goret gio.TlsInteraction
+
+	if cret != nil {
+		goret = gio.UnsafeTlsInteractionFromGlibFull(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
+// GetTLSValidationFlags wraps gst_rtsp_connection_get_tls_validation_flags
+// 
+// The function returns the following values:
+// 
+// 	- goret gio.TLSCertificateFlags 
+//
+// Gets the TLS validation flags used to verify the peer certificate
+// when a TLS connection is established.
+// 
+// GLib guarantees that if certificate verification fails, at least one error
+// will be set, but it does not guarantee that all possible errors will be
+// set. Accordingly, you may not safely decide to ignore any particular type
+// of error.
+// 
+// For example, it would be incorrect to ignore %G_TLS_CERTIFICATE_EXPIRED if
+// you want to allow expired certificates, because this could potentially be
+// the only error flag set even if other problems exist with the certificate.
+func (conn *RTSPConnection) GetTLSValidationFlags() gio.TLSCertificateFlags {
+	var carg0 *C.GstRTSPConnection   // in, none, converted
+	var cret  C.GTlsCertificateFlags // return, none, casted
+
+	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
+
+	cret = C.gst_rtsp_connection_get_tls_validation_flags(carg0)
+	runtime.KeepAlive(conn)
+
+	var goret gio.TLSCertificateFlags
+
+	goret = gio.TLSCertificateFlags(cret)
 
 	return goret
 }
@@ -3740,6 +3995,31 @@ func (conn *RTSPConnection) GetURL() *RTSPUrl {
 	var goret *RTSPUrl
 
 	goret = UnsafeRTSPUrlFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// GetWriteSocket wraps gst_rtsp_connection_get_write_socket
+// 
+// The function returns the following values:
+// 
+// 	- goret gio.Socket (nullable) 
+//
+// Get the file descriptor for writing.
+func (conn *RTSPConnection) GetWriteSocket() gio.Socket {
+	var carg0 *C.GstRTSPConnection // in, none, converted
+	var cret  *C.GSocket           // return, none, converted, nullable
+
+	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
+
+	cret = C.gst_rtsp_connection_get_write_socket(carg0)
+	runtime.KeepAlive(conn)
+
+	var goret gio.Socket
+
+	if cret != nil {
+		goret = gio.UnsafeSocketFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -4022,6 +4302,34 @@ func (conn *RTSPConnection) SendUsec(message *RTSPMessage, timeout int64) RTSPRe
 	return goret
 }
 
+// SetAcceptCertificateFunc wraps gst_rtsp_connection_set_accept_certificate_func
+// 
+// The function takes the following parameters:
+// 
+// 	- fn RTSPConnectionAcceptCertificateFunc: a #GstRTSPConnectionAcceptCertificateFunc to check certificates 
+//
+// Sets a custom accept-certificate function for checking certificates for
+// validity. This will directly map to #GTlsConnection 's "accept-certificate"
+// signal and be performed after the default checks of #GstRTSPConnection
+// (checking against the #GTlsDatabase with the given #GTlsCertificateFlags)
+// have failed. If no #GTlsDatabase is set on this connection, only @func will
+// be called.
+func (conn *RTSPConnection) SetAcceptCertificateFunc(fn RTSPConnectionAcceptCertificateFunc) {
+	var carg0 *C.GstRTSPConnection                     // in, none, converted
+	var carg1 C.GstRTSPConnectionAcceptCertificateFunc // callback, scope: notified, closure: carg2, destroy: carg3
+	var carg2 C.gpointer                               // implicit
+	var carg3 C.GDestroyNotify                         // implicit
+
+	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
+	carg1 = (*[0]byte)(C._gotk4_gstrtsp1_RTSPConnectionAcceptCertificateFunc)
+	carg2 = C.gpointer(userdata.Register(fn))
+	carg3 = (C.GDestroyNotify)((*[0]byte)(C.destroyUserdata))
+
+	C.gst_rtsp_connection_set_accept_certificate_func(carg0, carg1, carg2, carg3)
+	runtime.KeepAlive(conn)
+	runtime.KeepAlive(fn)
+}
+
 // SetAuth wraps gst_rtsp_connection_set_auth
 // 
 // The function takes the following parameters:
@@ -4266,6 +4574,94 @@ func (conn *RTSPConnection) SetRememberSessionID(remember bool) {
 	C.gst_rtsp_connection_set_remember_session_id(carg0, carg1)
 	runtime.KeepAlive(conn)
 	runtime.KeepAlive(remember)
+}
+
+// SetTLSDatabase wraps gst_rtsp_connection_set_tls_database
+// 
+// The function takes the following parameters:
+// 
+// 	- database gio.TlsDatabase (nullable): a #GTlsDatabase 
+//
+// Sets the anchor certificate authorities database. This certificate
+// database will be used to verify the server's certificate in case it
+// can't be verified with the default certificate database first.
+func (conn *RTSPConnection) SetTLSDatabase(database gio.TlsDatabase) {
+	var carg0 *C.GstRTSPConnection // in, none, converted
+	var carg1 *C.GTlsDatabase      // in, none, converted, nullable
+
+	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
+	if database != nil {
+		carg1 = (*C.GTlsDatabase)(gio.UnsafeTlsDatabaseToGlibNone(database))
+	}
+
+	C.gst_rtsp_connection_set_tls_database(carg0, carg1)
+	runtime.KeepAlive(conn)
+	runtime.KeepAlive(database)
+}
+
+// SetTLSInteraction wraps gst_rtsp_connection_set_tls_interaction
+// 
+// The function takes the following parameters:
+// 
+// 	- interaction gio.TlsInteraction (nullable): a #GTlsInteraction 
+//
+// Sets a #GTlsInteraction object to be used when the connection or certificate
+// database need to interact with the user. This will be used to prompt the
+// user for passwords where necessary.
+func (conn *RTSPConnection) SetTLSInteraction(interaction gio.TlsInteraction) {
+	var carg0 *C.GstRTSPConnection // in, none, converted
+	var carg1 *C.GTlsInteraction   // in, none, converted, nullable
+
+	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
+	if interaction != nil {
+		carg1 = (*C.GTlsInteraction)(gio.UnsafeTlsInteractionToGlibNone(interaction))
+	}
+
+	C.gst_rtsp_connection_set_tls_interaction(carg0, carg1)
+	runtime.KeepAlive(conn)
+	runtime.KeepAlive(interaction)
+}
+
+// SetTLSValidationFlags wraps gst_rtsp_connection_set_tls_validation_flags
+// 
+// The function takes the following parameters:
+// 
+// 	- flags gio.TLSCertificateFlags: the validation flags. 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Sets the TLS validation flags to be used to verify the peer
+// certificate when a TLS connection is established.
+// 
+// GLib guarantees that if certificate verification fails, at least one error
+// will be set, but it does not guarantee that all possible errors will be
+// set. Accordingly, you may not safely decide to ignore any particular type
+// of error.
+// 
+// For example, it would be incorrect to mask %G_TLS_CERTIFICATE_EXPIRED if
+// you want to allow expired certificates, because this could potentially be
+// the only error flag set even if other problems exist with the certificate.
+func (conn *RTSPConnection) SetTLSValidationFlags(flags gio.TLSCertificateFlags) bool {
+	var carg0 *C.GstRTSPConnection   // in, none, converted
+	var carg1 C.GTlsCertificateFlags // in, none, casted
+	var cret  C.gboolean             // return
+
+	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
+	carg1 = C.GTlsCertificateFlags(flags)
+
+	cret = C.gst_rtsp_connection_set_tls_validation_flags(carg0, carg1)
+	runtime.KeepAlive(conn)
+	runtime.KeepAlive(flags)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
 }
 
 // SetTunneled wraps gst_rtsp_connection_set_tunneled
