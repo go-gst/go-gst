@@ -3026,6 +3026,7 @@ func (scope *AudioVisualizerInstance) ParentDecideAllocation(query *gst.Query) b
 
 	parentclass := (*C.GstAudioVisualizerClass)(classdata.PeekParentClass(UnsafeAudioVisualizerToGlibNone(scope)))
 
+	carg0 = (*C.GstAudioVisualizer)(UnsafeAudioVisualizerToGlibNone(scope))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
 	cret = C._gotk4_gstpbutils1_AudioVisualizer_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
@@ -3060,6 +3061,7 @@ func (scope *AudioVisualizerInstance) ParentRender(audio *gst.Buffer, video *gst
 
 	parentclass := (*C.GstAudioVisualizerClass)(classdata.PeekParentClass(UnsafeAudioVisualizerToGlibNone(scope)))
 
+	carg0 = (*C.GstAudioVisualizer)(UnsafeAudioVisualizerToGlibNone(scope))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(audio))
 	carg2 = (*C.GstVideoFrame)(gstvideo.UnsafeVideoFrameToGlibNone(video))
 
@@ -3088,6 +3090,8 @@ func (scope *AudioVisualizerInstance) ParentSetup() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstAudioVisualizerClass)(classdata.PeekParentClass(UnsafeAudioVisualizerToGlibNone(scope)))
+
+	carg0 = (*C.GstAudioVisualizer)(UnsafeAudioVisualizerToGlibNone(scope))
 
 	cret = C._gotk4_gstpbutils1_AudioVisualizer_virtual_setup(unsafe.Pointer(parentclass.setup), carg0)
 	runtime.KeepAlive(scope)
@@ -3644,6 +3648,7 @@ func (discoverer *DiscovererInstance) ParentDiscovered(info DiscovererInfo, err 
 
 	parentclass := (*C.GstDiscovererClass)(classdata.PeekParentClass(UnsafeDiscovererToGlibNone(discoverer)))
 
+	carg0 = (*C.GstDiscoverer)(UnsafeDiscovererToGlibNone(discoverer))
 	carg1 = (*C.GstDiscovererInfo)(UnsafeDiscovererInfoToGlibNone(info))
 	carg2 = (*C.GError)(glib.UnsafeErrorToGlibNone(err))
 
@@ -3659,6 +3664,8 @@ func (discoverer *DiscovererInstance) ParentFinished() {
 	var carg0 *C.GstDiscoverer
 
 	parentclass := (*C.GstDiscovererClass)(classdata.PeekParentClass(UnsafeDiscovererToGlibNone(discoverer)))
+
+	carg0 = (*C.GstDiscoverer)(UnsafeDiscovererToGlibNone(discoverer))
 
 	C._gotk4_gstpbutils1_Discoverer_virtual_finished(unsafe.Pointer(parentclass.finished), carg0)
 	runtime.KeepAlive(discoverer)
@@ -3678,11 +3685,12 @@ func (discoverer *DiscovererInstance) ParentFinished() {
 // Loads the serialized info from the given uri.
 func (dc *DiscovererInstance) ParentLoadSerializeInfo(uri string) DiscovererInfo {
 	var carg0 *C.GstDiscoverer
-	var carg1 *C.gchar             // in, none, string
+	var carg1 *C.gchar             // in, none, converted
 	var cret  *C.GstDiscovererInfo // return, full, converted
 
 	parentclass := (*C.GstDiscovererClass)(classdata.PeekParentClass(UnsafeDiscovererToGlibNone(dc)))
 
+	carg0 = (*C.GstDiscoverer)(UnsafeDiscovererToGlibNone(dc))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
 	defer C.free(unsafe.Pointer(carg1))
 
@@ -3709,6 +3717,7 @@ func (discoverer *DiscovererInstance) ParentSourceSetup(source gst.Element) {
 
 	parentclass := (*C.GstDiscovererClass)(classdata.PeekParentClass(UnsafeDiscovererToGlibNone(discoverer)))
 
+	carg0 = (*C.GstDiscoverer)(UnsafeDiscovererToGlibNone(discoverer))
 	carg1 = (*C.GstElement)(gst.UnsafeElementToGlibNone(source))
 
 	C._gotk4_gstpbutils1_Discoverer_virtual_source_setup(unsafe.Pointer(parentclass.source_setup), carg0, carg1)
@@ -3722,6 +3731,8 @@ func (discoverer *DiscovererInstance) ParentStarting() {
 	var carg0 *C.GstDiscoverer
 
 	parentclass := (*C.GstDiscovererClass)(classdata.PeekParentClass(UnsafeDiscovererToGlibNone(discoverer)))
+
+	carg0 = (*C.GstDiscoverer)(UnsafeDiscovererToGlibNone(discoverer))
 
 	C._gotk4_gstpbutils1_Discoverer_virtual_starting(unsafe.Pointer(parentclass.starting), carg0)
 	runtime.KeepAlive(discoverer)

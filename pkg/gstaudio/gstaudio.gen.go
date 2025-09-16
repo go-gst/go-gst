@@ -3785,14 +3785,15 @@ func (aagg *AudioAggregatorInstance) ParentAggregateOneBuffer(pad AudioAggregato
 	var carg0 *C.GstAudioAggregator
 	var carg1 *C.GstAudioAggregatorPad // in, none, converted
 	var carg2 *C.GstBuffer             // in, none, converted
-	var carg3 C.guint                  // in, none, casted
-	var carg4 *C.GstBuffer             // in, none, converted
-	var carg5 C.guint                  // in, none, casted
+	var carg3 C.guint                  // in, none, converted
+	var carg4 *C.GstBuffer             // in, none, casted
+	var carg5 C.guint                  // in, none, converted
 	var carg6 C.guint                  // in, none, casted
 	var cret  C.gboolean               // return
 
 	parentclass := (*C.GstAudioAggregatorClass)(classdata.PeekParentClass(UnsafeAudioAggregatorToGlibNone(aagg)))
 
+	carg0 = (*C.GstAudioAggregator)(UnsafeAudioAggregatorToGlibNone(aagg))
 	carg1 = (*C.GstAudioAggregatorPad)(UnsafeAudioAggregatorPadToGlibNone(pad))
 	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(inbuf))
 	carg3 = C.guint(inOffset)
@@ -3832,11 +3833,12 @@ func (aagg *AudioAggregatorInstance) ParentAggregateOneBuffer(pad AudioAggregato
 // Create a new output buffer contains num_frames frames.
 func (aagg *AudioAggregatorInstance) ParentCreateOutputBuffer(numFrames uint) *gst.Buffer {
 	var carg0 *C.GstAudioAggregator
-	var carg1 C.guint      // in, none, casted
+	var carg1 C.guint      // in, none, converted
 	var cret  *C.GstBuffer // return, full, converted
 
 	parentclass := (*C.GstAudioAggregatorClass)(classdata.PeekParentClass(UnsafeAudioAggregatorToGlibNone(aagg)))
 
+	carg0 = (*C.GstAudioAggregator)(UnsafeAudioAggregatorToGlibNone(aagg))
 	carg1 = C.guint(numFrames)
 
 	cret = C._gotk4_gstaudio1_AudioAggregator_virtual_create_output_buffer(unsafe.Pointer(parentclass.create_output_buffer), carg0, carg1)
@@ -4062,6 +4064,7 @@ func (pad *AudioAggregatorPadInstance) ParentConvertBuffer(inInfo *AudioInfo, ou
 
 	parentclass := (*C.GstAudioAggregatorPadClass)(classdata.PeekParentClass(UnsafeAudioAggregatorPadToGlibNone(pad)))
 
+	carg0 = (*C.GstAudioAggregatorPad)(UnsafeAudioAggregatorPadToGlibNone(pad))
 	carg1 = (*C.GstAudioInfo)(UnsafeAudioInfoToGlibNone(inInfo))
 	carg2 = (*C.GstAudioInfo)(UnsafeAudioInfoToGlibNone(outInfo))
 	carg3 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
@@ -4088,6 +4091,8 @@ func (pad *AudioAggregatorPadInstance) ParentUpdateConversionInfo() {
 	var carg0 *C.GstAudioAggregatorPad
 
 	parentclass := (*C.GstAudioAggregatorPadClass)(classdata.PeekParentClass(UnsafeAudioAggregatorPadToGlibNone(pad)))
+
+	carg0 = (*C.GstAudioAggregatorPad)(UnsafeAudioAggregatorPadToGlibNone(pad))
 
 	C._gotk4_gstaudio1_AudioAggregatorPad_virtual_update_conversion_info(unsafe.Pointer(parentclass.update_conversion_info), carg0)
 	runtime.KeepAlive(pad)
@@ -4724,6 +4729,8 @@ func (sink *AudioBaseSinkInstance) ParentCreateRingbuffer() AudioRingBuffer {
 
 	parentclass := (*C.GstAudioBaseSinkClass)(classdata.PeekParentClass(UnsafeAudioBaseSinkToGlibNone(sink)))
 
+	carg0 = (*C.GstAudioBaseSink)(UnsafeAudioBaseSinkToGlibNone(sink))
+
 	cret = C._gotk4_gstaudio1_AudioBaseSink_virtual_create_ringbuffer(unsafe.Pointer(parentclass.create_ringbuffer), carg0)
 	runtime.KeepAlive(sink)
 
@@ -4758,6 +4765,7 @@ func (sink *AudioBaseSinkInstance) ParentPayload(buffer *gst.Buffer) *gst.Buffer
 
 	parentclass := (*C.GstAudioBaseSinkClass)(classdata.PeekParentClass(UnsafeAudioBaseSinkToGlibNone(sink)))
 
+	carg0 = (*C.GstAudioBaseSink)(UnsafeAudioBaseSinkToGlibNone(sink))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
 	cret = C._gotk4_gstaudio1_AudioBaseSink_virtual_payload(unsafe.Pointer(parentclass.payload), carg0, carg1)
@@ -5105,6 +5113,8 @@ func (src *AudioBaseSrcInstance) ParentCreateRingbuffer() AudioRingBuffer {
 	var cret  *C.GstAudioRingBuffer // return, none, converted, nullable
 
 	parentclass := (*C.GstAudioBaseSrcClass)(classdata.PeekParentClass(UnsafeAudioBaseSrcToGlibNone(src)))
+
+	carg0 = (*C.GstAudioBaseSrc)(UnsafeAudioBaseSrcToGlibNone(src))
 
 	cret = C._gotk4_gstaudio1_AudioBaseSrc_virtual_create_ringbuffer(unsafe.Pointer(parentclass.create_ringbuffer), carg0)
 	runtime.KeepAlive(src)
@@ -5456,6 +5466,8 @@ func (src *AudioCdSrcInstance) ParentClose() {
 
 	parentclass := (*C.GstAudioCdSrcClass)(classdata.PeekParentClass(UnsafeAudioCdSrcToGlibNone(src)))
 
+	carg0 = (*C.GstAudioCdSrc)(UnsafeAudioCdSrcToGlibNone(src))
+
 	C._gotk4_gstaudio1_AudioCdSrc_virtual_close(unsafe.Pointer(parentclass.close), carg0)
 	runtime.KeepAlive(src)
 }
@@ -5474,11 +5486,12 @@ func (src *AudioCdSrcInstance) ParentClose() {
 // opening the device
 func (src *AudioCdSrcInstance) ParentOpen(device string) bool {
 	var carg0 *C.GstAudioCdSrc
-	var carg1 *C.gchar   // in, none, string
+	var carg1 *C.gchar   // in, none, converted
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstAudioCdSrcClass)(classdata.PeekParentClass(UnsafeAudioCdSrcToGlibNone(src)))
 
+	carg0 = (*C.GstAudioCdSrc)(UnsafeAudioCdSrcToGlibNone(src))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(device)))
 	defer C.free(unsafe.Pointer(carg1))
 
@@ -5509,11 +5522,12 @@ func (src *AudioCdSrcInstance) ParentOpen(device string) bool {
 // reading a sector
 func (src *AudioCdSrcInstance) ParentReadSector(sector int32) *gst.Buffer {
 	var carg0 *C.GstAudioCdSrc
-	var carg1 C.gint       // in, none, casted
+	var carg1 C.gint       // in, none, converted
 	var cret  *C.GstBuffer // return, full, converted
 
 	parentclass := (*C.GstAudioCdSrcClass)(classdata.PeekParentClass(UnsafeAudioCdSrcToGlibNone(src)))
 
+	carg0 = (*C.GstAudioCdSrc)(UnsafeAudioCdSrcToGlibNone(src))
 	carg1 = C.gint(sector)
 
 	cret = C._gotk4_gstaudio1_AudioCdSrc_virtual_read_sector(unsafe.Pointer(parentclass.read_sector), carg0, carg1)
@@ -8100,6 +8114,8 @@ func (dec *AudioDecoderInstance) ParentClose() bool {
 
 	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
 
+	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
+
 	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_close(unsafe.Pointer(parentclass.close), carg0)
 	runtime.KeepAlive(dec)
 
@@ -8136,6 +8152,7 @@ func (dec *AudioDecoderInstance) ParentDecideAllocation(query *gst.Query) bool {
 
 	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
 
+	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
 	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
@@ -8165,10 +8182,11 @@ func (dec *AudioDecoderInstance) ParentDecideAllocation(query *gst.Query) bool {
 //                  or otherwise a DISCONT (or conceptually similar).
 func (dec *AudioDecoderInstance) ParentFlush(hard bool) {
 	var carg0 *C.GstAudioDecoder
-	var carg1 C.gboolean // in
+	var carg1 C.gboolean // in, none, converted
 
 	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
 
+	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
 	if hard {
 		carg1 = C.TRUE
 	}
@@ -8201,6 +8219,7 @@ func (dec *AudioDecoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
 
 	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
 
+	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filter))
 
 	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_getcaps(unsafe.Pointer(parentclass.getcaps), carg0, carg1)
@@ -8237,6 +8256,7 @@ func (dec *AudioDecoderInstance) ParentHandleFrame(buffer *gst.Buffer) gst.FlowR
 
 	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
 
+	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
 	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_handle_frame(unsafe.Pointer(parentclass.handle_frame), carg0, carg1)
@@ -8266,6 +8286,8 @@ func (dec *AudioDecoderInstance) ParentNegotiate() bool {
 
 	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
 
+	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
+
 	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_negotiate(unsafe.Pointer(parentclass.negotiate), carg0)
 	runtime.KeepAlive(dec)
 
@@ -8293,6 +8315,8 @@ func (dec *AudioDecoderInstance) ParentOpen() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
+
+	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
 
 	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_open(unsafe.Pointer(parentclass.open), carg0)
 	runtime.KeepAlive(dec)
@@ -8327,6 +8351,7 @@ func (dec *AudioDecoderInstance) ParentParse(adapter gstbase.Adapter) (int32, in
 
 	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
 
+	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
 	carg1 = (*C.GstAdapter)(gstbase.UnsafeAdapterToGlibNone(adapter))
 
 	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_parse(unsafe.Pointer(parentclass.parse), carg0, carg1, &carg2, &carg3)
@@ -8366,6 +8391,7 @@ func (dec *AudioDecoderInstance) ParentProposeAllocation(query *gst.Query) bool 
 
 	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
 
+	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
 	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_propose_allocation(unsafe.Pointer(parentclass.propose_allocation), carg0, carg1)
@@ -8400,6 +8426,7 @@ func (dec *AudioDecoderInstance) ParentSetFormat(caps *gst.Caps) bool {
 
 	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
 
+	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
 	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_set_format(unsafe.Pointer(parentclass.set_format), carg0, carg1)
@@ -8436,6 +8463,7 @@ func (dec *AudioDecoderInstance) ParentSinkEvent(event *gst.Event) bool {
 
 	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
 
+	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
 	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_sink_event(unsafe.Pointer(parentclass.sink_event), carg0, carg1)
@@ -8474,6 +8502,7 @@ func (dec *AudioDecoderInstance) ParentSinkQuery(query *gst.Query) bool {
 
 	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
 
+	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
 	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_sink_query(unsafe.Pointer(parentclass.sink_query), carg0, carg1)
@@ -8510,6 +8539,7 @@ func (dec *AudioDecoderInstance) ParentSrcEvent(event *gst.Event) bool {
 
 	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
 
+	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
 	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
@@ -8548,6 +8578,7 @@ func (dec *AudioDecoderInstance) ParentSrcQuery(query *gst.Query) bool {
 
 	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
 
+	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
 	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_src_query(unsafe.Pointer(parentclass.src_query), carg0, carg1)
@@ -8579,6 +8610,8 @@ func (dec *AudioDecoderInstance) ParentStart() bool {
 
 	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
 
+	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
+
 	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_start(unsafe.Pointer(parentclass.start), carg0)
 	runtime.KeepAlive(dec)
 
@@ -8606,6 +8639,8 @@ func (dec *AudioDecoderInstance) ParentStop() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
+
+	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(dec))
 
 	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
 	runtime.KeepAlive(dec)
@@ -8646,6 +8681,7 @@ func (enc *AudioDecoderInstance) ParentTransformMeta(outbuf *gst.Buffer, meta *g
 
 	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(enc)))
 
+	carg0 = (*C.GstAudioDecoder)(UnsafeAudioDecoderToGlibNone(enc))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(outbuf))
 	carg2 = (*C.GstMeta)(gst.UnsafeMetaToGlibNone(meta))
 	carg3 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(inbuf))
@@ -10823,6 +10859,8 @@ func (enc *AudioEncoderInstance) ParentClose() bool {
 
 	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(enc)))
 
+	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(enc))
+
 	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_close(unsafe.Pointer(parentclass.close), carg0)
 	runtime.KeepAlive(enc)
 
@@ -10859,6 +10897,7 @@ func (enc *AudioEncoderInstance) ParentDecideAllocation(query *gst.Query) bool {
 
 	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(enc)))
 
+	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(enc))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
 	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
@@ -10884,6 +10923,8 @@ func (enc *AudioEncoderInstance) ParentFlush() {
 	var carg0 *C.GstAudioEncoder
 
 	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(enc)))
+
+	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(enc))
 
 	C._gotk4_gstaudio1_AudioEncoder_virtual_flush(unsafe.Pointer(parentclass.flush), carg0)
 	runtime.KeepAlive(enc)
@@ -10912,6 +10953,7 @@ func (enc *AudioEncoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
 
 	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(enc)))
 
+	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(enc))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filter))
 
 	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_getcaps(unsafe.Pointer(parentclass.getcaps), carg0, carg1)
@@ -10949,6 +10991,7 @@ func (enc *AudioEncoderInstance) ParentHandleFrame(buffer *gst.Buffer) gst.FlowR
 
 	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(enc)))
 
+	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(enc))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
 	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_handle_frame(unsafe.Pointer(parentclass.handle_frame), carg0, carg1)
@@ -10978,6 +11021,8 @@ func (enc *AudioEncoderInstance) ParentNegotiate() bool {
 
 	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(enc)))
 
+	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(enc))
+
 	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_negotiate(unsafe.Pointer(parentclass.negotiate), carg0)
 	runtime.KeepAlive(enc)
 
@@ -11005,6 +11050,8 @@ func (enc *AudioEncoderInstance) ParentOpen() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(enc)))
+
+	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(enc))
 
 	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_open(unsafe.Pointer(parentclass.open), carg0)
 	runtime.KeepAlive(enc)
@@ -11040,6 +11087,7 @@ func (enc *AudioEncoderInstance) ParentProposeAllocation(query *gst.Query) bool 
 
 	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(enc)))
 
+	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(enc))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
 	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_propose_allocation(unsafe.Pointer(parentclass.propose_allocation), carg0, carg1)
@@ -11075,6 +11123,7 @@ func (enc *AudioEncoderInstance) ParentSetFormat(info *AudioInfo) bool {
 
 	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(enc)))
 
+	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(enc))
 	carg1 = (*C.GstAudioInfo)(UnsafeAudioInfoToGlibNone(info))
 
 	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_set_format(unsafe.Pointer(parentclass.set_format), carg0, carg1)
@@ -11111,6 +11160,7 @@ func (enc *AudioEncoderInstance) ParentSinkEvent(event *gst.Event) bool {
 
 	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(enc)))
 
+	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(enc))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
 	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_sink_event(unsafe.Pointer(parentclass.sink_event), carg0, carg1)
@@ -11149,6 +11199,7 @@ func (encoder *AudioEncoderInstance) ParentSinkQuery(query *gst.Query) bool {
 
 	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(encoder)))
 
+	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(encoder))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
 	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_sink_query(unsafe.Pointer(parentclass.sink_query), carg0, carg1)
@@ -11185,6 +11236,7 @@ func (enc *AudioEncoderInstance) ParentSrcEvent(event *gst.Event) bool {
 
 	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(enc)))
 
+	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(enc))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
 	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
@@ -11223,6 +11275,7 @@ func (encoder *AudioEncoderInstance) ParentSrcQuery(query *gst.Query) bool {
 
 	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(encoder)))
 
+	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(encoder))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
 	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_src_query(unsafe.Pointer(parentclass.src_query), carg0, carg1)
@@ -11254,6 +11307,8 @@ func (enc *AudioEncoderInstance) ParentStart() bool {
 
 	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(enc)))
 
+	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(enc))
+
 	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_start(unsafe.Pointer(parentclass.start), carg0)
 	runtime.KeepAlive(enc)
 
@@ -11281,6 +11336,8 @@ func (enc *AudioEncoderInstance) ParentStop() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(enc)))
+
+	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(enc))
 
 	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
 	runtime.KeepAlive(enc)
@@ -11321,6 +11378,7 @@ func (enc *AudioEncoderInstance) ParentTransformMeta(outbuf *gst.Buffer, meta *g
 
 	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(enc)))
 
+	carg0 = (*C.GstAudioEncoder)(UnsafeAudioEncoderToGlibNone(enc))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(outbuf))
 	carg2 = (*C.GstMeta)(gst.UnsafeMetaToGlibNone(meta))
 	carg3 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(inbuf))
@@ -11528,6 +11586,7 @@ func (filter *AudioFilterInstance) ParentSetup(info *AudioInfo) bool {
 
 	parentclass := (*C.GstAudioFilterClass)(classdata.PeekParentClass(UnsafeAudioFilterToGlibNone(filter)))
 
+	carg0 = (*C.GstAudioFilter)(UnsafeAudioFilterToGlibNone(filter))
 	carg1 = (*C.GstAudioInfo)(UnsafeAudioInfoToGlibNone(info))
 
 	cret = C._gotk4_gstaudio1_AudioFilter_virtual_setup(unsafe.Pointer(parentclass.setup), carg0, carg1)
@@ -13253,6 +13312,7 @@ func (buf *AudioRingBufferInstance) ParentAcquire(spec *AudioRingBufferSpec) boo
 
 	parentclass := (*C.GstAudioRingBufferClass)(classdata.PeekParentClass(UnsafeAudioRingBufferToGlibNone(buf)))
 
+	carg0 = (*C.GstAudioRingBuffer)(UnsafeAudioRingBufferToGlibNone(buf))
 	carg1 = (*C.GstAudioRingBufferSpec)(UnsafeAudioRingBufferSpecToGlibNone(spec))
 
 	cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_acquire(unsafe.Pointer(parentclass.acquire), carg0, carg1)
@@ -13284,11 +13344,12 @@ func (buf *AudioRingBufferInstance) ParentAcquire(spec *AudioRingBufferSpec) boo
 // MT safe.
 func (buf *AudioRingBufferInstance) ParentActivate(active bool) bool {
 	var carg0 *C.GstAudioRingBuffer
-	var carg1 C.gboolean // in
+	var carg1 C.gboolean // in, none, converted
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstAudioRingBufferClass)(classdata.PeekParentClass(UnsafeAudioRingBufferToGlibNone(buf)))
 
+	carg0 = (*C.GstAudioRingBuffer)(UnsafeAudioRingBufferToGlibNone(buf))
 	if active {
 		carg1 = C.TRUE
 	}
@@ -13317,6 +13378,8 @@ func (buf *AudioRingBufferInstance) ParentClearAll() {
 
 	parentclass := (*C.GstAudioRingBufferClass)(classdata.PeekParentClass(UnsafeAudioRingBufferToGlibNone(buf)))
 
+	carg0 = (*C.GstAudioRingBuffer)(UnsafeAudioRingBufferToGlibNone(buf))
+
 	C._gotk4_gstaudio1_AudioRingBuffer_virtual_clear_all(unsafe.Pointer(parentclass.clear_all), carg0)
 	runtime.KeepAlive(buf)
 }
@@ -13335,6 +13398,8 @@ func (buf *AudioRingBufferInstance) ParentCloseDevice() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstAudioRingBufferClass)(classdata.PeekParentClass(UnsafeAudioRingBufferToGlibNone(buf)))
+
+	carg0 = (*C.GstAudioRingBuffer)(UnsafeAudioRingBufferToGlibNone(buf))
 
 	cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_close_device(unsafe.Pointer(parentclass.close_device), carg0)
 	runtime.KeepAlive(buf)
@@ -13371,6 +13436,8 @@ func (buf *AudioRingBufferInstance) ParentDelay() uint {
 
 	parentclass := (*C.GstAudioRingBufferClass)(classdata.PeekParentClass(UnsafeAudioRingBufferToGlibNone(buf)))
 
+	carg0 = (*C.GstAudioRingBuffer)(UnsafeAudioRingBufferToGlibNone(buf))
+
 	cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_delay(unsafe.Pointer(parentclass.delay), carg0)
 	runtime.KeepAlive(buf)
 
@@ -13396,6 +13463,8 @@ func (buf *AudioRingBufferInstance) ParentOpenDevice() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstAudioRingBufferClass)(classdata.PeekParentClass(UnsafeAudioRingBufferToGlibNone(buf)))
+
+	carg0 = (*C.GstAudioRingBuffer)(UnsafeAudioRingBufferToGlibNone(buf))
 
 	cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_open_device(unsafe.Pointer(parentclass.open_device), carg0)
 	runtime.KeepAlive(buf)
@@ -13423,6 +13492,8 @@ func (buf *AudioRingBufferInstance) ParentPause() bool {
 
 	parentclass := (*C.GstAudioRingBufferClass)(classdata.PeekParentClass(UnsafeAudioRingBufferToGlibNone(buf)))
 
+	carg0 = (*C.GstAudioRingBuffer)(UnsafeAudioRingBufferToGlibNone(buf))
+
 	cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_pause(unsafe.Pointer(parentclass.pause), carg0)
 	runtime.KeepAlive(buf)
 
@@ -13448,6 +13519,8 @@ func (buf *AudioRingBufferInstance) ParentRelease() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstAudioRingBufferClass)(classdata.PeekParentClass(UnsafeAudioRingBufferToGlibNone(buf)))
+
+	carg0 = (*C.GstAudioRingBuffer)(UnsafeAudioRingBufferToGlibNone(buf))
 
 	cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_release(unsafe.Pointer(parentclass.release), carg0)
 	runtime.KeepAlive(buf)
@@ -13475,6 +13548,8 @@ func (buf *AudioRingBufferInstance) ParentResume() bool {
 
 	parentclass := (*C.GstAudioRingBufferClass)(classdata.PeekParentClass(UnsafeAudioRingBufferToGlibNone(buf)))
 
+	carg0 = (*C.GstAudioRingBuffer)(UnsafeAudioRingBufferToGlibNone(buf))
+
 	cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_resume(unsafe.Pointer(parentclass.resume), carg0)
 	runtime.KeepAlive(buf)
 
@@ -13501,6 +13576,8 @@ func (buf *AudioRingBufferInstance) ParentStart() bool {
 
 	parentclass := (*C.GstAudioRingBufferClass)(classdata.PeekParentClass(UnsafeAudioRingBufferToGlibNone(buf)))
 
+	carg0 = (*C.GstAudioRingBuffer)(UnsafeAudioRingBufferToGlibNone(buf))
+
 	cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_start(unsafe.Pointer(parentclass.start), carg0)
 	runtime.KeepAlive(buf)
 
@@ -13526,6 +13603,8 @@ func (buf *AudioRingBufferInstance) ParentStop() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstAudioRingBufferClass)(classdata.PeekParentClass(UnsafeAudioRingBufferToGlibNone(buf)))
+
+	carg0 = (*C.GstAudioRingBuffer)(UnsafeAudioRingBufferToGlibNone(buf))
 
 	cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
 	runtime.KeepAlive(buf)
@@ -14000,6 +14079,8 @@ func (sink *AudioSinkInstance) ParentClose() bool {
 
 	parentclass := (*C.GstAudioSinkClass)(classdata.PeekParentClass(UnsafeAudioSinkToGlibNone(sink)))
 
+	carg0 = (*C.GstAudioSink)(UnsafeAudioSinkToGlibNone(sink))
+
 	cret = C._gotk4_gstaudio1_AudioSink_virtual_close(unsafe.Pointer(parentclass.close), carg0)
 	runtime.KeepAlive(sink)
 
@@ -14027,6 +14108,8 @@ func (sink *AudioSinkInstance) ParentDelay() uint {
 
 	parentclass := (*C.GstAudioSinkClass)(classdata.PeekParentClass(UnsafeAudioSinkToGlibNone(sink)))
 
+	carg0 = (*C.GstAudioSink)(UnsafeAudioSinkToGlibNone(sink))
+
 	cret = C._gotk4_gstaudio1_AudioSink_virtual_delay(unsafe.Pointer(parentclass.delay), carg0)
 	runtime.KeepAlive(sink)
 
@@ -14052,6 +14135,8 @@ func (sink *AudioSinkInstance) ParentOpen() bool {
 
 	parentclass := (*C.GstAudioSinkClass)(classdata.PeekParentClass(UnsafeAudioSinkToGlibNone(sink)))
 
+	carg0 = (*C.GstAudioSink)(UnsafeAudioSinkToGlibNone(sink))
+
 	cret = C._gotk4_gstaudio1_AudioSink_virtual_open(unsafe.Pointer(parentclass.open), carg0)
 	runtime.KeepAlive(sink)
 
@@ -14074,6 +14159,8 @@ func (sink *AudioSinkInstance) ParentPause() {
 	var carg0 *C.GstAudioSink
 
 	parentclass := (*C.GstAudioSinkClass)(classdata.PeekParentClass(UnsafeAudioSinkToGlibNone(sink)))
+
+	carg0 = (*C.GstAudioSink)(UnsafeAudioSinkToGlibNone(sink))
 
 	C._gotk4_gstaudio1_AudioSink_virtual_pause(unsafe.Pointer(parentclass.pause), carg0)
 	runtime.KeepAlive(sink)
@@ -14098,6 +14185,7 @@ func (sink *AudioSinkInstance) ParentPrepareAudioSink(spec *AudioRingBufferSpec)
 
 	parentclass := (*C.GstAudioSinkClass)(classdata.PeekParentClass(UnsafeAudioSinkToGlibNone(sink)))
 
+	carg0 = (*C.GstAudioSink)(UnsafeAudioSinkToGlibNone(sink))
 	carg1 = (*C.GstAudioRingBufferSpec)(UnsafeAudioRingBufferSpecToGlibNone(spec))
 
 	cret = C._gotk4_gstaudio1_AudioSink_virtual_prepare(unsafe.Pointer(parentclass.prepare), carg0, carg1)
@@ -14124,6 +14212,8 @@ func (sink *AudioSinkInstance) ParentReset() {
 
 	parentclass := (*C.GstAudioSinkClass)(classdata.PeekParentClass(UnsafeAudioSinkToGlibNone(sink)))
 
+	carg0 = (*C.GstAudioSink)(UnsafeAudioSinkToGlibNone(sink))
+
 	C._gotk4_gstaudio1_AudioSink_virtual_reset(unsafe.Pointer(parentclass.reset), carg0)
 	runtime.KeepAlive(sink)
 }
@@ -14136,6 +14226,8 @@ func (sink *AudioSinkInstance) ParentResume() {
 	var carg0 *C.GstAudioSink
 
 	parentclass := (*C.GstAudioSinkClass)(classdata.PeekParentClass(UnsafeAudioSinkToGlibNone(sink)))
+
+	carg0 = (*C.GstAudioSink)(UnsafeAudioSinkToGlibNone(sink))
 
 	C._gotk4_gstaudio1_AudioSink_virtual_resume(unsafe.Pointer(parentclass.resume), carg0)
 	runtime.KeepAlive(sink)
@@ -14152,6 +14244,8 @@ func (sink *AudioSinkInstance) ParentStopAudioSink() {
 	var carg0 *C.GstAudioSink
 
 	parentclass := (*C.GstAudioSinkClass)(classdata.PeekParentClass(UnsafeAudioSinkToGlibNone(sink)))
+
+	carg0 = (*C.GstAudioSink)(UnsafeAudioSinkToGlibNone(sink))
 
 	C._gotk4_gstaudio1_AudioSink_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
 	runtime.KeepAlive(sink)
@@ -14170,6 +14264,8 @@ func (sink *AudioSinkInstance) ParentUnprepare() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstAudioSinkClass)(classdata.PeekParentClass(UnsafeAudioSinkToGlibNone(sink)))
+
+	carg0 = (*C.GstAudioSink)(UnsafeAudioSinkToGlibNone(sink))
 
 	cret = C._gotk4_gstaudio1_AudioSink_virtual_unprepare(unsafe.Pointer(parentclass.unprepare), carg0)
 	runtime.KeepAlive(sink)
@@ -14549,6 +14645,8 @@ func (src *AudioSrcInstance) ParentClose() bool {
 
 	parentclass := (*C.GstAudioSrcClass)(classdata.PeekParentClass(UnsafeAudioSrcToGlibNone(src)))
 
+	carg0 = (*C.GstAudioSrc)(UnsafeAudioSrcToGlibNone(src))
+
 	cret = C._gotk4_gstaudio1_AudioSrc_virtual_close(unsafe.Pointer(parentclass.close), carg0)
 	runtime.KeepAlive(src)
 
@@ -14575,6 +14673,8 @@ func (src *AudioSrcInstance) ParentDelay() uint {
 
 	parentclass := (*C.GstAudioSrcClass)(classdata.PeekParentClass(UnsafeAudioSrcToGlibNone(src)))
 
+	carg0 = (*C.GstAudioSrc)(UnsafeAudioSrcToGlibNone(src))
+
 	cret = C._gotk4_gstaudio1_AudioSrc_virtual_delay(unsafe.Pointer(parentclass.delay), carg0)
 	runtime.KeepAlive(src)
 
@@ -14598,6 +14698,8 @@ func (src *AudioSrcInstance) ParentOpen() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstAudioSrcClass)(classdata.PeekParentClass(UnsafeAudioSrcToGlibNone(src)))
+
+	carg0 = (*C.GstAudioSrc)(UnsafeAudioSrcToGlibNone(src))
 
 	cret = C._gotk4_gstaudio1_AudioSrc_virtual_open(unsafe.Pointer(parentclass.open), carg0)
 	runtime.KeepAlive(src)
@@ -14630,6 +14732,7 @@ func (src *AudioSrcInstance) ParentPrepare(spec *AudioRingBufferSpec) bool {
 
 	parentclass := (*C.GstAudioSrcClass)(classdata.PeekParentClass(UnsafeAudioSrcToGlibNone(src)))
 
+	carg0 = (*C.GstAudioSrc)(UnsafeAudioSrcToGlibNone(src))
 	carg1 = (*C.GstAudioRingBufferSpec)(UnsafeAudioRingBufferSpecToGlibNone(spec))
 
 	cret = C._gotk4_gstaudio1_AudioSrc_virtual_prepare(unsafe.Pointer(parentclass.prepare), carg0, carg1)
@@ -14654,6 +14757,8 @@ func (src *AudioSrcInstance) ParentReset() {
 
 	parentclass := (*C.GstAudioSrcClass)(classdata.PeekParentClass(UnsafeAudioSrcToGlibNone(src)))
 
+	carg0 = (*C.GstAudioSrc)(UnsafeAudioSrcToGlibNone(src))
+
 	C._gotk4_gstaudio1_AudioSrc_virtual_reset(unsafe.Pointer(parentclass.reset), carg0)
 	runtime.KeepAlive(src)
 }
@@ -14671,6 +14776,8 @@ func (src *AudioSrcInstance) ParentUnprepare() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstAudioSrcClass)(classdata.PeekParentClass(UnsafeAudioSrcToGlibNone(src)))
+
+	carg0 = (*C.GstAudioSrc)(UnsafeAudioSrcToGlibNone(src))
 
 	cret = C._gotk4_gstaudio1_AudioSrc_virtual_unprepare(unsafe.Pointer(parentclass.unprepare), carg0)
 	runtime.KeepAlive(src)

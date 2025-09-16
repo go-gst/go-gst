@@ -13213,10 +13213,11 @@ func UnsafeApplyChildProxyOverrides[Instance ChildProxy](gclass unsafe.Pointer, 
 func (parent *ChildProxyInstance) ParentChildAdded(child gobject.Object, name string) {
 	var carg0 *C.GstChildProxy
 	var carg1 *C.GObject // in, none, converted
-	var carg2 *C.gchar   // in, none, string
+	var carg2 *C.gchar   // in, none, converted
 
 	parentclass := (*C.GstChildProxyInterface)(classdata.PeekParentInterface(UnsafeChildProxyToGlibNone(parent), uint64(TypeChildProxy)))
 
+	carg0 = (*C.GstChildProxy)(UnsafeChildProxyToGlibNone(parent))
 	carg1 = (*C.GObject)(gobject.UnsafeObjectToGlibNone(child))
 	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(carg2))
@@ -13239,10 +13240,11 @@ func (parent *ChildProxyInstance) ParentChildAdded(child gobject.Object, name st
 func (parent *ChildProxyInstance) ParentChildRemoved(child gobject.Object, name string) {
 	var carg0 *C.GstChildProxy
 	var carg1 *C.GObject // in, none, converted
-	var carg2 *C.gchar   // in, none, string
+	var carg2 *C.gchar   // in, none, converted
 
 	parentclass := (*C.GstChildProxyInterface)(classdata.PeekParentInterface(UnsafeChildProxyToGlibNone(parent), uint64(TypeChildProxy)))
 
+	carg0 = (*C.GstChildProxy)(UnsafeChildProxyToGlibNone(parent))
 	carg1 = (*C.GObject)(gobject.UnsafeObjectToGlibNone(child))
 	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(carg2))
@@ -13267,11 +13269,12 @@ func (parent *ChildProxyInstance) ParentChildRemoved(child gobject.Object, name 
 // Fetches a child by its number.
 func (parent *ChildProxyInstance) ParentGetChildByIndex(index uint) gobject.Object {
 	var carg0 *C.GstChildProxy
-	var carg1 C.guint    // in, none, casted
+	var carg1 C.guint    // in, none, converted
 	var cret  *C.GObject // return, full, converted, nullable
 
 	parentclass := (*C.GstChildProxyInterface)(classdata.PeekParentInterface(UnsafeChildProxyToGlibNone(parent), uint64(TypeChildProxy)))
 
+	carg0 = (*C.GstChildProxy)(UnsafeChildProxyToGlibNone(parent))
 	carg1 = C.guint(index)
 
 	cret = C._gotk4_gst1_ChildProxy_virtual_get_child_by_index(unsafe.Pointer(parentclass.get_child_by_index), carg0, carg1)
@@ -13305,11 +13308,12 @@ func (parent *ChildProxyInstance) ParentGetChildByIndex(index uint) gobject.Obje
 // #GObjects, this methods needs to be overridden.
 func (parent *ChildProxyInstance) ParentGetChildByName(name string) gobject.Object {
 	var carg0 *C.GstChildProxy
-	var carg1 *C.gchar   // in, none, string
+	var carg1 *C.gchar   // in, none, converted
 	var cret  *C.GObject // return, full, converted, nullable
 
 	parentclass := (*C.GstChildProxyInterface)(classdata.PeekParentInterface(UnsafeChildProxyToGlibNone(parent), uint64(TypeChildProxy)))
 
+	carg0 = (*C.GstChildProxy)(UnsafeChildProxyToGlibNone(parent))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(carg1))
 
@@ -13339,6 +13343,8 @@ func (parent *ChildProxyInstance) ParentGetChildrenCount() uint {
 	var cret  C.guint // return, none, casted
 
 	parentclass := (*C.GstChildProxyInterface)(classdata.PeekParentInterface(UnsafeChildProxyToGlibNone(parent), uint64(TypeChildProxy)))
+
+	carg0 = (*C.GstChildProxy)(UnsafeChildProxyToGlibNone(parent))
 
 	cret = C._gotk4_gst1_ChildProxy_virtual_get_children_count(unsafe.Pointer(parentclass.get_children_count), carg0)
 	runtime.KeepAlive(parent)
@@ -14328,11 +14334,12 @@ func UnsafeApplyPresetOverrides[Instance Preset](gclass unsafe.Pointer, override
 // Delete the given preset.
 func (preset *PresetInstance) ParentDeletePreset(name string) bool {
 	var carg0 *C.GstPreset
-	var carg1 *C.gchar   // in, none, string
+	var carg1 *C.gchar   // in, none, converted
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstPresetInterface)(classdata.PeekParentInterface(UnsafePresetToGlibNone(preset), uint64(TypePreset)))
 
+	carg0 = (*C.GstPreset)(UnsafePresetToGlibNone(preset))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(carg1))
 
@@ -14366,13 +14373,14 @@ func (preset *PresetInstance) ParentDeletePreset(name string) bool {
 // something like e.g. "comment". Returned values need to be released when done.
 func (preset *PresetInstance) ParentGetMeta(name string, tag string) (string, bool) {
 	var carg0 *C.GstPreset
-	var carg1 *C.gchar   // in, none, string
+	var carg1 *C.gchar   // in, none, converted
 	var carg2 *C.gchar   // in, none, string
 	var carg3 *C.gchar   // out, full, string
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstPresetInterface)(classdata.PeekParentInterface(UnsafePresetToGlibNone(preset), uint64(TypePreset)))
 
+	carg0 = (*C.GstPreset)(UnsafePresetToGlibNone(preset))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(carg1))
 	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
@@ -14409,6 +14417,8 @@ func (preset *PresetInstance) ParentGetPresetNames() []string {
 
 	parentclass := (*C.GstPresetInterface)(classdata.PeekParentInterface(UnsafePresetToGlibNone(preset), uint64(TypePreset)))
 
+	carg0 = (*C.GstPreset)(UnsafePresetToGlibNone(preset))
+
 	cret = C._gotk4_gst1_Preset_virtual_get_preset_names(unsafe.Pointer(parentclass.get_preset_names), carg0)
 	runtime.KeepAlive(preset)
 
@@ -14434,6 +14444,8 @@ func (preset *PresetInstance) ParentGetPropertyNames() []string {
 	var cret  **C.gchar // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , array (inner: *typesystem.StringPrimitive, zero-terminated)
 
 	parentclass := (*C.GstPresetInterface)(classdata.PeekParentInterface(UnsafePresetToGlibNone(preset), uint64(TypePreset)))
+
+	carg0 = (*C.GstPreset)(UnsafePresetToGlibNone(preset))
 
 	cret = C._gotk4_gst1_Preset_virtual_get_property_names(unsafe.Pointer(parentclass.get_property_names), carg0)
 	runtime.KeepAlive(preset)
@@ -14461,11 +14473,12 @@ func (preset *PresetInstance) ParentGetPropertyNames() []string {
 // Load the given preset.
 func (preset *PresetInstance) ParentLoadPreset(name string) bool {
 	var carg0 *C.GstPreset
-	var carg1 *C.gchar   // in, none, string
+	var carg1 *C.gchar   // in, none, converted
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstPresetInterface)(classdata.PeekParentInterface(UnsafePresetToGlibNone(preset), uint64(TypePreset)))
 
+	carg0 = (*C.GstPreset)(UnsafePresetToGlibNone(preset))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(carg1))
 
@@ -14498,12 +14511,13 @@ func (preset *PresetInstance) ParentLoadPreset(name string) bool {
 // overwritten.
 func (preset *PresetInstance) ParentRenamePreset(oldName string, newName string) bool {
 	var carg0 *C.GstPreset
-	var carg1 *C.gchar   // in, none, string
+	var carg1 *C.gchar   // in, none, converted
 	var carg2 *C.gchar   // in, none, string
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstPresetInterface)(classdata.PeekParentInterface(UnsafePresetToGlibNone(preset), uint64(TypePreset)))
 
+	carg0 = (*C.GstPreset)(UnsafePresetToGlibNone(preset))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(oldName)))
 	defer C.free(unsafe.Pointer(carg1))
 	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(newName)))
@@ -14538,11 +14552,12 @@ func (preset *PresetInstance) ParentRenamePreset(oldName string, newName string)
 // is already a preset by this @name it will be overwritten.
 func (preset *PresetInstance) ParentSavePreset(name string) bool {
 	var carg0 *C.GstPreset
-	var carg1 *C.gchar   // in, none, string
+	var carg1 *C.gchar   // in, none, converted
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstPresetInterface)(classdata.PeekParentInterface(UnsafePresetToGlibNone(preset), uint64(TypePreset)))
 
+	carg0 = (*C.GstPreset)(UnsafePresetToGlibNone(preset))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(carg1))
 
@@ -14577,13 +14592,14 @@ func (preset *PresetInstance) ParentSavePreset(name string) bool {
 // @value will unset an existing value.
 func (preset *PresetInstance) ParentSetMeta(name string, tag string, value string) bool {
 	var carg0 *C.GstPreset
-	var carg1 *C.gchar   // in, none, string
+	var carg1 *C.gchar   // in, none, converted
 	var carg2 *C.gchar   // in, none, string
-	var carg3 *C.gchar   // in, none, string, nullable-string
+	var carg3 *C.gchar   // in, none, string
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstPresetInterface)(classdata.PeekParentInterface(UnsafePresetToGlibNone(preset), uint64(TypePreset)))
 
+	carg0 = (*C.GstPreset)(UnsafePresetToGlibNone(preset))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(carg1))
 	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
@@ -14946,6 +14962,8 @@ func (handler *URIHandlerInstance) ParentGetURI() string {
 
 	parentclass := (*C.GstURIHandlerInterface)(classdata.PeekParentInterface(UnsafeURIHandlerToGlibNone(handler), uint64(TypeURIHandler)))
 
+	carg0 = (*C.GstURIHandler)(UnsafeURIHandlerToGlibNone(handler))
+
 	cret = C._gotk4_gst1_URIHandler_virtual_get_uri(unsafe.Pointer(parentclass.get_uri), carg0)
 	runtime.KeepAlive(handler)
 
@@ -14974,12 +14992,13 @@ func (handler *URIHandlerInstance) ParentGetURI() string {
 // Tries to set the URI of the given handler.
 func (handler *URIHandlerInstance) ParentSetURI(uri string) (bool, error) {
 	var carg0 *C.GstURIHandler
-	var carg1 *C.gchar   // in, none, string
+	var carg1 *C.gchar   // in, none, converted
 	var cret  C.gboolean // return
 	var _cerr *C.GError  // out, full, converted, nullable
 
 	parentclass := (*C.GstURIHandlerInterface)(classdata.PeekParentInterface(UnsafeURIHandlerToGlibNone(handler), uint64(TypeURIHandler)))
 
+	carg0 = (*C.GstURIHandler)(UnsafeURIHandlerToGlibNone(handler))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
 	defer C.free(unsafe.Pointer(carg1))
 
@@ -16515,6 +16534,7 @@ func (object *ObjectInstance) ParentDeepNotify(orig Object, pspec *gobject.Param
 
 	parentclass := (*C.GstObjectClass)(classdata.PeekParentClass(UnsafeObjectToGlibNone(object)))
 
+	carg0 = (*C.GstObject)(UnsafeObjectToGlibNone(object))
 	carg1 = (*C.GstObject)(UnsafeObjectToGlibNone(orig))
 	carg2 = (*C.GParamSpec)(gobject.UnsafeParamSpecToGlibNone(pspec))
 
@@ -20222,6 +20242,7 @@ func (pad *PadInstance) ParentLinked(peer Pad) {
 
 	parentclass := (*C.GstPadClass)(classdata.PeekParentClass(UnsafePadToGlibNone(pad)))
 
+	carg0 = (*C.GstPad)(UnsafePadToGlibNone(pad))
 	carg1 = (*C.GstPad)(UnsafePadToGlibNone(peer))
 
 	C._gotk4_gst1_Pad_virtual_linked(unsafe.Pointer(parentclass.linked), carg0, carg1)
@@ -20241,6 +20262,7 @@ func (pad *PadInstance) ParentUnlinked(peer Pad) {
 
 	parentclass := (*C.GstPadClass)(classdata.PeekParentClass(UnsafePadToGlibNone(pad)))
 
+	carg0 = (*C.GstPad)(UnsafePadToGlibNone(pad))
 	carg1 = (*C.GstPad)(UnsafePadToGlibNone(peer))
 
 	C._gotk4_gst1_Pad_virtual_unlinked(unsafe.Pointer(parentclass.unlinked), carg0, carg1)
@@ -20716,6 +20738,7 @@ func (templ *PadTemplateInstance) ParentPadCreated(pad Pad) {
 
 	parentclass := (*C.GstPadTemplateClass)(classdata.PeekParentClass(UnsafePadTemplateToGlibNone(templ)))
 
+	carg0 = (*C.GstPadTemplate)(UnsafePadTemplateToGlibNone(templ))
 	carg1 = (*C.GstPad)(UnsafePadToGlibNone(pad))
 
 	C._gotk4_gst1_PadTemplate_virtual_pad_created(unsafe.Pointer(parentclass.pad_created), carg0, carg1)
@@ -24154,6 +24177,7 @@ func (collection *StreamCollectionInstance) ParentStreamNotify(stream Stream, ps
 
 	parentclass := (*C.GstStreamCollectionClass)(classdata.PeekParentClass(UnsafeStreamCollectionToGlibNone(collection)))
 
+	carg0 = (*C.GstStreamCollection)(UnsafeStreamCollectionToGlibNone(collection))
 	carg1 = (*C.GstStream)(UnsafeStreamToGlibNone(stream))
 	carg2 = (*C.GParamSpec)(gobject.UnsafeParamSpecToGlibNone(pspec))
 
@@ -24975,6 +24999,8 @@ func (pool *TaskPoolInstance) ParentCleanup() {
 
 	parentclass := (*C.GstTaskPoolClass)(classdata.PeekParentClass(UnsafeTaskPoolToGlibNone(pool)))
 
+	carg0 = (*C.GstTaskPool)(UnsafeTaskPoolToGlibNone(pool))
+
 	C._gotk4_gst1_TaskPool_virtual_cleanup(unsafe.Pointer(parentclass.cleanup), carg0)
 	runtime.KeepAlive(pool)
 }
@@ -24994,6 +25020,8 @@ func (pool *TaskPoolInstance) ParentPrepare() error {
 	var _cerr *C.GError // out, full, converted, nullable
 
 	parentclass := (*C.GstTaskPoolClass)(classdata.PeekParentClass(UnsafeTaskPoolToGlibNone(pool)))
+
+	carg0 = (*C.GstTaskPool)(UnsafeTaskPoolToGlibNone(pool))
 
 	C._gotk4_gst1_TaskPool_virtual_prepare(unsafe.Pointer(parentclass.prepare), carg0, &_cerr)
 	runtime.KeepAlive(pool)
@@ -26058,12 +26086,13 @@ func UnsafeApplyAllocatorOverrides[Instance Allocator](gclass unsafe.Pointer, ov
 // use an alignment of 7.
 func (allocator *AllocatorInstance) ParentAlloc(size uint, params *AllocationParams) *Memory {
 	var carg0 *C.GstAllocator
-	var carg1 C.gsize                // in, none, casted
-	var carg2 *C.GstAllocationParams // in, none, converted, nullable
+	var carg1 C.gsize                // in, none, converted
+	var carg2 *C.GstAllocationParams // in, none, casted
 	var cret  *C.GstMemory           // return, full, converted, nullable
 
 	parentclass := (*C.GstAllocatorClass)(classdata.PeekParentClass(UnsafeAllocatorToGlibNone(allocator)))
 
+	carg0 = (*C.GstAllocator)(UnsafeAllocatorToGlibNone(allocator))
 	carg1 = C.gsize(size)
 	if params != nil {
 		carg2 = (*C.GstAllocationParams)(UnsafeAllocationParamsToGlibNone(params))
@@ -26093,10 +26122,11 @@ func (allocator *AllocatorInstance) ParentAlloc(size uint, params *AllocationPar
 // Free @memory that was previously allocated with gst_allocator_alloc().
 func (allocator *AllocatorInstance) ParentFree(memory *Memory) {
 	var carg0 *C.GstAllocator
-	var carg1 *C.GstMemory // in, full, converted
+	var carg1 *C.GstMemory // in, none, converted
 
 	parentclass := (*C.GstAllocatorClass)(classdata.PeekParentClass(UnsafeAllocatorToGlibNone(allocator)))
 
+	carg0 = (*C.GstAllocator)(UnsafeAllocatorToGlibNone(allocator))
 	carg1 = (*C.GstMemory)(UnsafeMemoryToGlibFull(memory))
 
 	C._gotk4_gst1_Allocator_virtual_free(unsafe.Pointer(parentclass.free), carg0, carg1)
@@ -27535,12 +27565,13 @@ func UnsafeApplyBufferPoolOverrides[Instance BufferPool](gclass unsafe.Pointer, 
 // @params can contain optional parameters to influence the allocation.
 func (pool *BufferPoolInstance) ParentAcquireBuffer(params *BufferPoolAcquireParams) (*Buffer, FlowReturn) {
 	var carg0 *C.GstBufferPool
-	var carg2 *C.GstBufferPoolAcquireParams // in, none, converted, nullable
+	var carg2 *C.GstBufferPoolAcquireParams // in, none, converted
 	var carg1 *C.GstBuffer                  // out, full, converted, nullable
 	var cret  C.GstFlowReturn               // return, none, casted
 
 	parentclass := (*C.GstBufferPoolClass)(classdata.PeekParentClass(UnsafeBufferPoolToGlibNone(pool)))
 
+	carg0 = (*C.GstBufferPool)(UnsafeBufferPoolToGlibNone(pool))
 	if params != nil {
 		carg2 = (*C.GstBufferPoolAcquireParams)(UnsafeBufferPoolAcquireParamsToGlibNone(params))
 	}
@@ -27580,12 +27611,13 @@ func (pool *BufferPoolInstance) ParentAcquireBuffer(params *BufferPoolAcquirePar
 // The buffer should have the #GST_BUFFER_FLAG_TAG_MEMORY cleared.
 func (pool *BufferPoolInstance) ParentAllocBuffer(params *BufferPoolAcquireParams) (*Buffer, FlowReturn) {
 	var carg0 *C.GstBufferPool
-	var carg2 *C.GstBufferPoolAcquireParams // in, none, converted, nullable
+	var carg2 *C.GstBufferPoolAcquireParams // in, none, converted
 	var carg1 *C.GstBuffer                  // out, full, converted, nullable
 	var cret  C.GstFlowReturn               // return, none, casted
 
 	parentclass := (*C.GstBufferPoolClass)(classdata.PeekParentClass(UnsafeBufferPoolToGlibNone(pool)))
 
+	carg0 = (*C.GstBufferPool)(UnsafeBufferPoolToGlibNone(pool))
 	if params != nil {
 		carg2 = (*C.GstBufferPoolAcquireParams)(UnsafeBufferPoolAcquireParamsToGlibNone(params))
 	}
@@ -27614,6 +27646,8 @@ func (pool *BufferPoolInstance) ParentFlushStart() {
 
 	parentclass := (*C.GstBufferPoolClass)(classdata.PeekParentClass(UnsafeBufferPoolToGlibNone(pool)))
 
+	carg0 = (*C.GstBufferPool)(UnsafeBufferPoolToGlibNone(pool))
+
 	C._gotk4_gst1_BufferPool_virtual_flush_start(unsafe.Pointer(parentclass.flush_start), carg0)
 	runtime.KeepAlive(pool)
 }
@@ -27626,6 +27660,8 @@ func (pool *BufferPoolInstance) ParentFlushStop() {
 	var carg0 *C.GstBufferPool
 
 	parentclass := (*C.GstBufferPoolClass)(classdata.PeekParentClass(UnsafeBufferPoolToGlibNone(pool)))
+
+	carg0 = (*C.GstBufferPool)(UnsafeBufferPoolToGlibNone(pool))
 
 	C._gotk4_gst1_BufferPool_virtual_flush_stop(unsafe.Pointer(parentclass.flush_stop), carg0)
 	runtime.KeepAlive(pool)
@@ -27645,6 +27681,7 @@ func (pool *BufferPoolInstance) ParentFreeBuffer(buffer *Buffer) {
 
 	parentclass := (*C.GstBufferPoolClass)(classdata.PeekParentClass(UnsafeBufferPoolToGlibNone(pool)))
 
+	carg0 = (*C.GstBufferPool)(UnsafeBufferPoolToGlibNone(pool))
 	carg1 = (*C.GstBuffer)(UnsafeBufferToGlibNone(buffer))
 
 	C._gotk4_gst1_BufferPool_virtual_free_buffer(unsafe.Pointer(parentclass.free_buffer), carg0, carg1)
@@ -27667,6 +27704,8 @@ func (pool *BufferPoolInstance) ParentGetOptions() []string {
 	var cret  **C.gchar // return, transfer: none, C Pointers: 2, Name: array[utf8], scope: , array (inner: *typesystem.StringPrimitive, zero-terminated)
 
 	parentclass := (*C.GstBufferPoolClass)(classdata.PeekParentClass(UnsafeBufferPoolToGlibNone(pool)))
+
+	carg0 = (*C.GstBufferPool)(UnsafeBufferPoolToGlibNone(pool))
 
 	cret = C._gotk4_gst1_BufferPool_virtual_get_options(unsafe.Pointer(parentclass.get_options), carg0)
 	runtime.KeepAlive(pool)
@@ -27694,10 +27733,11 @@ func (pool *BufferPoolInstance) ParentGetOptions() []string {
 // disappears.
 func (pool *BufferPoolInstance) ParentReleaseBuffer(buffer *Buffer) {
 	var carg0 *C.GstBufferPool
-	var carg1 *C.GstBuffer // in, full, converted
+	var carg1 *C.GstBuffer // in, none, converted
 
 	parentclass := (*C.GstBufferPoolClass)(classdata.PeekParentClass(UnsafeBufferPoolToGlibNone(pool)))
 
+	carg0 = (*C.GstBufferPool)(UnsafeBufferPoolToGlibNone(pool))
 	carg1 = (*C.GstBuffer)(UnsafeBufferToGlibFull(buffer))
 
 	C._gotk4_gst1_BufferPool_virtual_release_buffer(unsafe.Pointer(parentclass.release_buffer), carg0, carg1)
@@ -27724,6 +27764,7 @@ func (pool *BufferPoolInstance) ParentResetBuffer(buffer *Buffer) {
 
 	parentclass := (*C.GstBufferPoolClass)(classdata.PeekParentClass(UnsafeBufferPoolToGlibNone(pool)))
 
+	carg0 = (*C.GstBufferPool)(UnsafeBufferPoolToGlibNone(pool))
 	carg1 = (*C.GstBuffer)(UnsafeBufferToGlibNone(buffer))
 
 	C._gotk4_gst1_BufferPool_virtual_reset_buffer(unsafe.Pointer(parentclass.reset_buffer), carg0, carg1)
@@ -27760,11 +27801,12 @@ func (pool *BufferPoolInstance) ParentResetBuffer(buffer *Buffer) {
 // This function takes ownership of @config.
 func (pool *BufferPoolInstance) ParentSetConfig(config *Structure) bool {
 	var carg0 *C.GstBufferPool
-	var carg1 *C.GstStructure // in, full, converted
+	var carg1 *C.GstStructure // in, none, converted
 	var cret  C.gboolean      // return
 
 	parentclass := (*C.GstBufferPoolClass)(classdata.PeekParentClass(UnsafeBufferPoolToGlibNone(pool)))
 
+	carg0 = (*C.GstBufferPool)(UnsafeBufferPoolToGlibNone(pool))
 	carg1 = (*C.GstStructure)(UnsafeStructureToGlibFull(config))
 
 	cret = C._gotk4_gst1_BufferPool_virtual_set_config(unsafe.Pointer(parentclass.set_config), carg0, carg1)
@@ -27798,6 +27840,8 @@ func (pool *BufferPoolInstance) ParentStart() bool {
 
 	parentclass := (*C.GstBufferPoolClass)(classdata.PeekParentClass(UnsafeBufferPoolToGlibNone(pool)))
 
+	carg0 = (*C.GstBufferPool)(UnsafeBufferPoolToGlibNone(pool))
+
 	cret = C._gotk4_gst1_BufferPool_virtual_start(unsafe.Pointer(parentclass.start), carg0)
 	runtime.KeepAlive(pool)
 
@@ -27825,6 +27869,8 @@ func (pool *BufferPoolInstance) ParentStop() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstBufferPoolClass)(classdata.PeekParentClass(UnsafeBufferPoolToGlibNone(pool)))
+
+	carg0 = (*C.GstBufferPool)(UnsafeBufferPoolToGlibNone(pool))
 
 	cret = C._gotk4_gst1_BufferPool_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
 	runtime.KeepAlive(pool)
@@ -29029,6 +29075,7 @@ func (bus *BusInstance) ParentMessage(message *Message) {
 
 	parentclass := (*C.GstBusClass)(classdata.PeekParentClass(UnsafeBusToGlibNone(bus)))
 
+	carg0 = (*C.GstBus)(UnsafeBusToGlibNone(bus))
 	carg1 = (*C.GstMessage)(UnsafeMessageToGlibNone(message))
 
 	C._gotk4_gst1_Bus_virtual_message(unsafe.Pointer(parentclass.message), carg0, carg1)
@@ -29050,6 +29097,7 @@ func (bus *BusInstance) ParentSyncMessage(message *Message) {
 
 	parentclass := (*C.GstBusClass)(classdata.PeekParentClass(UnsafeBusToGlibNone(bus)))
 
+	carg0 = (*C.GstBus)(UnsafeBusToGlibNone(bus))
 	carg1 = (*C.GstMessage)(UnsafeMessageToGlibNone(message))
 
 	C._gotk4_gst1_Bus_virtual_sync_message(unsafe.Pointer(parentclass.sync_message), carg0, carg1)
@@ -30966,12 +31014,13 @@ func UnsafeApplyClockOverrides[Instance Clock](gclass unsafe.Pointer, overrides 
 // be acceptable.
 func (clock *ClockInstance) ParentChangeResolution(oldResolution ClockTime, newResolution ClockTime) ClockTime {
 	var carg0 *C.GstClock
-	var carg1 C.GstClockTime // in, none, casted, alias
+	var carg1 C.GstClockTime // in, none, converted
 	var carg2 C.GstClockTime // in, none, casted, alias
 	var cret  C.GstClockTime // return, none, casted, alias
 
 	parentclass := (*C.GstClockClass)(classdata.PeekParentClass(UnsafeClockToGlibNone(clock)))
 
+	carg0 = (*C.GstClock)(UnsafeClockToGlibNone(clock))
 	carg1 = C.GstClockTime(oldResolution)
 	carg2 = C.GstClockTime(newResolution)
 
@@ -31002,6 +31051,8 @@ func (clock *ClockInstance) ParentGetInternalTime() ClockTime {
 
 	parentclass := (*C.GstClockClass)(classdata.PeekParentClass(UnsafeClockToGlibNone(clock)))
 
+	carg0 = (*C.GstClock)(UnsafeClockToGlibNone(clock))
+
 	cret = C._gotk4_gst1_Clock_virtual_get_internal_time(unsafe.Pointer(parentclass.get_internal_time), carg0)
 	runtime.KeepAlive(clock)
 
@@ -31027,6 +31078,8 @@ func (clock *ClockInstance) ParentGetResolution() ClockTime {
 
 	parentclass := (*C.GstClockClass)(classdata.PeekParentClass(UnsafeClockToGlibNone(clock)))
 
+	carg0 = (*C.GstClock)(UnsafeClockToGlibNone(clock))
+
 	cret = C._gotk4_gst1_Clock_virtual_get_resolution(unsafe.Pointer(parentclass.get_resolution), carg0)
 	runtime.KeepAlive(clock)
 
@@ -31051,6 +31104,7 @@ func (clock *ClockInstance) ParentUnschedule(entry *ClockEntry) {
 
 	parentclass := (*C.GstClockClass)(classdata.PeekParentClass(UnsafeClockToGlibNone(clock)))
 
+	carg0 = (*C.GstClock)(UnsafeClockToGlibNone(clock))
 	carg1 = (*C.GstClockEntry)(UnsafeClockEntryToGlibNone(entry))
 
 	C._gotk4_gst1_Clock_virtual_unschedule(unsafe.Pointer(parentclass.unschedule), carg0, carg1)
@@ -31080,6 +31134,7 @@ func (clock *ClockInstance) ParentWait(entry *ClockEntry) (ClockTimeDiff, ClockR
 
 	parentclass := (*C.GstClockClass)(classdata.PeekParentClass(UnsafeClockToGlibNone(clock)))
 
+	carg0 = (*C.GstClock)(UnsafeClockToGlibNone(clock))
 	carg1 = (*C.GstClockEntry)(UnsafeClockEntryToGlibNone(entry))
 
 	cret = C._gotk4_gst1_Clock_virtual_wait(unsafe.Pointer(parentclass.wait), carg0, carg1, &carg2)
@@ -31114,6 +31169,7 @@ func (clock *ClockInstance) ParentWaitAsync(entry *ClockEntry) ClockReturn {
 
 	parentclass := (*C.GstClockClass)(classdata.PeekParentClass(UnsafeClockToGlibNone(clock)))
 
+	carg0 = (*C.GstClock)(UnsafeClockToGlibNone(clock))
 	carg1 = (*C.GstClockEntry)(UnsafeClockEntryToGlibNone(entry))
 
 	cret = C._gotk4_gst1_Clock_virtual_wait_async(unsafe.Pointer(parentclass.wait_async), carg0, carg1)
@@ -31449,12 +31505,13 @@ func UnsafeApplyControlBindingOverrides[Instance ControlBinding](gclass unsafe.P
 func (binding *ControlBindingInstance) ParentSyncValues(object Object, timestamp ClockTime, lastSync ClockTime) bool {
 	var carg0 *C.GstControlBinding
 	var carg1 *C.GstObject   // in, none, converted
-	var carg2 C.GstClockTime // in, none, casted, alias
+	var carg2 C.GstClockTime // in, none, converted
 	var carg3 C.GstClockTime // in, none, casted, alias
 	var cret  C.gboolean     // return
 
 	parentclass := (*C.GstControlBindingClass)(classdata.PeekParentClass(UnsafeControlBindingToGlibNone(binding)))
 
+	carg0 = (*C.GstControlBinding)(UnsafeControlBindingToGlibNone(binding))
 	carg1 = (*C.GstObject)(UnsafeObjectToGlibNone(object))
 	carg2 = C.GstClockTime(timestamp)
 	carg3 = C.GstClockTime(lastSync)
@@ -32278,11 +32335,12 @@ func UnsafeApplyDeviceOverrides[Instance Device](gclass unsafe.Pointer, override
 // this device.
 func (device *DeviceInstance) ParentCreateElement(name string) Element {
 	var carg0 *C.GstDevice
-	var carg1 *C.gchar      // in, none, string, nullable-string
+	var carg1 *C.gchar      // in, none, converted
 	var cret  *C.GstElement // return, none, converted, nullable
 
 	parentclass := (*C.GstDeviceClass)(classdata.PeekParentClass(UnsafeDeviceToGlibNone(device)))
 
+	carg0 = (*C.GstDevice)(UnsafeDeviceToGlibNone(device))
 	if name != "" {
 		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 		defer C.free(unsafe.Pointer(carg1))
@@ -32325,6 +32383,7 @@ func (device *DeviceInstance) ParentReconfigureElement(element Element) bool {
 
 	parentclass := (*C.GstDeviceClass)(classdata.PeekParentClass(UnsafeDeviceToGlibNone(device)))
 
+	carg0 = (*C.GstDevice)(UnsafeDeviceToGlibNone(device))
 	carg1 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 
 	cret = C._gotk4_gst1_Device_virtual_reconfigure_element(unsafe.Pointer(parentclass.reconfigure_element), carg0, carg1)
@@ -33664,6 +33723,8 @@ func (provider *DeviceProviderInstance) ParentStart() bool {
 
 	parentclass := (*C.GstDeviceProviderClass)(classdata.PeekParentClass(UnsafeDeviceProviderToGlibNone(provider)))
 
+	carg0 = (*C.GstDeviceProvider)(UnsafeDeviceProviderToGlibNone(provider))
+
 	cret = C._gotk4_gst1_DeviceProvider_virtual_start(unsafe.Pointer(parentclass.start), carg0)
 	runtime.KeepAlive(provider)
 
@@ -33686,6 +33747,8 @@ func (provider *DeviceProviderInstance) ParentStop() {
 	var carg0 *C.GstDeviceProvider
 
 	parentclass := (*C.GstDeviceProviderClass)(classdata.PeekParentClass(UnsafeDeviceProviderToGlibNone(provider)))
+
+	carg0 = (*C.GstDeviceProvider)(UnsafeDeviceProviderToGlibNone(provider))
 
 	C._gotk4_gst1_DeviceProvider_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
 	runtime.KeepAlive(provider)
@@ -38908,11 +38971,12 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 // internally.
 func (element *ElementInstance) ParentChangeState(transition StateChange) StateChangeReturn {
 	var carg0 *C.GstElement
-	var carg1 C.GstStateChange       // in, none, casted
+	var carg1 C.GstStateChange       // in, none, converted
 	var cret  C.GstStateChangeReturn // return, none, casted
 
 	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
 
+	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 	carg1 = C.GstStateChange(transition)
 
 	cret = C._gotk4_gst1_Element_virtual_change_state(unsafe.Pointer(parentclass.change_state), carg0, carg1)
@@ -38964,13 +39028,14 @@ func (element *ElementInstance) ParentChangeState(transition StateChange) StateC
 // element to playing, the preroll will complete and playback will start.
 func (element *ElementInstance) ParentGetState(timeout ClockTime) (State, State, StateChangeReturn) {
 	var carg0 *C.GstElement
-	var carg3 C.GstClockTime         // in, none, casted, alias
+	var carg3 C.GstClockTime         // in, none, converted
 	var carg1 C.GstState             // out, full, casted
 	var carg2 C.GstState             // out, full, casted
 	var cret  C.GstStateChangeReturn // return, none, casted
 
 	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
 
+	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 	carg3 = C.GstClockTime(timeout)
 
 	cret = C._gotk4_gst1_Element_virtual_get_state(unsafe.Pointer(parentclass.get_state), carg0, &carg1, &carg2, carg3)
@@ -39005,6 +39070,8 @@ func (element *ElementInstance) ParentNoMorePads() {
 
 	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
 
+	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
+
 	C._gotk4_gst1_Element_virtual_no_more_pads(unsafe.Pointer(parentclass.no_more_pads), carg0)
 	runtime.KeepAlive(element)
 }
@@ -39021,6 +39088,7 @@ func (element *ElementInstance) ParentPadAdded(pad Pad) {
 
 	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
 
+	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 	carg1 = (*C.GstPad)(UnsafePadToGlibNone(pad))
 
 	C._gotk4_gst1_Element_virtual_pad_added(unsafe.Pointer(parentclass.pad_added), carg0, carg1)
@@ -39040,6 +39108,7 @@ func (element *ElementInstance) ParentPadRemoved(pad Pad) {
 
 	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
 
+	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 	carg1 = (*C.GstPad)(UnsafePadToGlibNone(pad))
 
 	C._gotk4_gst1_Element_virtual_pad_removed(unsafe.Pointer(parentclass.pad_removed), carg0, carg1)
@@ -39063,11 +39132,12 @@ func (element *ElementInstance) ParentPadRemoved(pad Pad) {
 // additional reference before calling.
 func (element *ElementInstance) ParentPostMessage(message *Message) bool {
 	var carg0 *C.GstElement
-	var carg1 *C.GstMessage // in, full, converted
+	var carg1 *C.GstMessage // in, none, converted
 	var cret  C.gboolean    // return
 
 	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
 
+	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 	carg1 = (*C.GstMessage)(UnsafeMessageToGlibFull(message))
 
 	cret = C._gotk4_gst1_Element_virtual_post_message(unsafe.Pointer(parentclass.post_message), carg0, carg1)
@@ -39098,6 +39168,8 @@ func (element *ElementInstance) ParentProvideClock() Clock {
 	var cret  *C.GstClock // return, full, converted, nullable
 
 	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
+
+	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 
 	cret = C._gotk4_gst1_Element_virtual_provide_clock(unsafe.Pointer(parentclass.provide_clock), carg0)
 	runtime.KeepAlive(element)
@@ -39136,6 +39208,7 @@ func (element *ElementInstance) ParentQuery(query *Query) bool {
 
 	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
 
+	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 	carg1 = (*C.GstQuery)(UnsafeQueryToGlibNone(query))
 
 	cret = C._gotk4_gst1_Element_virtual_query(unsafe.Pointer(parentclass.query), carg0, carg1)
@@ -39165,6 +39238,7 @@ func (element *ElementInstance) ParentReleasePad(pad Pad) {
 
 	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
 
+	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 	carg1 = (*C.GstPad)(UnsafePadToGlibNone(pad))
 
 	C._gotk4_gst1_Element_virtual_release_pad(unsafe.Pointer(parentclass.release_pad), carg0, carg1)
@@ -39195,12 +39269,13 @@ func (element *ElementInstance) ParentReleasePad(pad Pad) {
 func (element *ElementInstance) ParentRequestNewPad(templ PadTemplate, name string, caps *Caps) Pad {
 	var carg0 *C.GstElement
 	var carg1 *C.GstPadTemplate // in, none, converted
-	var carg2 *C.gchar          // in, none, string, nullable-string
-	var carg3 *C.GstCaps        // in, none, converted, nullable
+	var carg2 *C.gchar          // in, none, converted
+	var carg3 *C.GstCaps        // in, none, string, nullable-string
 	var cret  *C.GstPad         // return, full, converted, nullable
 
 	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
 
+	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 	carg1 = (*C.GstPadTemplate)(UnsafePadTemplateToGlibNone(templ))
 	if name != "" {
 		carg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
@@ -39246,11 +39321,12 @@ func (element *ElementInstance) ParentRequestNewPad(templ PadTemplate, name stri
 // MT safe.
 func (element *ElementInstance) ParentSendEvent(event *Event) bool {
 	var carg0 *C.GstElement
-	var carg1 *C.GstEvent // in, full, converted
+	var carg1 *C.GstEvent // in, none, converted
 	var cret  C.gboolean  // return
 
 	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
 
+	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 	carg1 = (*C.GstEvent)(UnsafeEventToGlibFull(event))
 
 	cret = C._gotk4_gst1_Element_virtual_send_event(unsafe.Pointer(parentclass.send_event), carg0, carg1)
@@ -39279,10 +39355,11 @@ func (element *ElementInstance) ParentSendEvent(event *Event) bool {
 // MT safe.
 func (element *ElementInstance) ParentSetBus(bus Bus) {
 	var carg0 *C.GstElement
-	var carg1 *C.GstBus // in, none, converted, nullable
+	var carg1 *C.GstBus // in, none, converted
 
 	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
 
+	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 	if bus != nil {
 		carg1 = (*C.GstBus)(UnsafeBusToGlibNone(bus))
 	}
@@ -39308,11 +39385,12 @@ func (element *ElementInstance) ParentSetBus(bus Bus) {
 // is unreffed.
 func (element *ElementInstance) ParentSetClock(clock Clock) bool {
 	var carg0 *C.GstElement
-	var carg1 *C.GstClock // in, none, converted, nullable
+	var carg1 *C.GstClock // in, none, converted
 	var cret  C.gboolean  // return
 
 	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
 
+	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 	if clock != nil {
 		carg1 = (*C.GstClock)(UnsafeClockToGlibNone(clock))
 	}
@@ -39346,6 +39424,7 @@ func (element *ElementInstance) ParentSetContext(_context *Context) {
 
 	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
 
+	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 	carg1 = (*C.GstContext)(UnsafeContextToGlibNone(_context))
 
 	C._gotk4_gst1_Element_virtual_set_context(unsafe.Pointer(parentclass.set_context), carg0, carg1)
@@ -39379,11 +39458,12 @@ func (element *ElementInstance) ParentSetContext(_context *Context) {
 // #GST_STATE_CHANGE_ASYNC.
 func (element *ElementInstance) ParentSetState(state State) StateChangeReturn {
 	var carg0 *C.GstElement
-	var carg1 C.GstState             // in, none, casted
+	var carg1 C.GstState             // in, none, converted
 	var cret  C.GstStateChangeReturn // return, none, casted
 
 	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
 
+	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 	carg1 = C.GstState(state)
 
 	cret = C._gotk4_gst1_Element_virtual_set_state(unsafe.Pointer(parentclass.set_state), carg0, carg1)
@@ -39409,12 +39489,13 @@ func (element *ElementInstance) ParentSetState(state State) StateChangeReturn {
 // called immediately after a new state was set.
 func (element *ElementInstance) ParentStateChanged(oldstate State, newstate State, pending State) {
 	var carg0 *C.GstElement
-	var carg1 C.GstState // in, none, casted
+	var carg1 C.GstState // in, none, converted
 	var carg2 C.GstState // in, none, casted
 	var carg3 C.GstState // in, none, casted
 
 	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
 
+	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 	carg1 = C.GstState(oldstate)
 	carg2 = C.GstState(newstate)
 	carg3 = C.GstState(pending)
@@ -42530,6 +42611,7 @@ func (bin *BinInstance) ParentAddElement(element Element) bool {
 
 	parentclass := (*C.GstBinClass)(classdata.PeekParentClass(UnsafeBinToGlibNone(bin)))
 
+	carg0 = (*C.GstBin)(UnsafeBinToGlibNone(bin))
 	carg1 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 
 	cret = C._gotk4_gst1_Bin_virtual_add_element(unsafe.Pointer(parentclass.add_element), carg0, carg1)
@@ -42561,6 +42643,7 @@ func (bin *BinInstance) ParentDeepElementAdded(subBin Bin, child Element) {
 
 	parentclass := (*C.GstBinClass)(classdata.PeekParentClass(UnsafeBinToGlibNone(bin)))
 
+	carg0 = (*C.GstBin)(UnsafeBinToGlibNone(bin))
 	carg1 = (*C.GstBin)(UnsafeBinToGlibNone(subBin))
 	carg2 = (*C.GstElement)(UnsafeElementToGlibNone(child))
 
@@ -42586,6 +42669,7 @@ func (bin *BinInstance) ParentDeepElementRemoved(subBin Bin, child Element) {
 
 	parentclass := (*C.GstBinClass)(classdata.PeekParentClass(UnsafeBinToGlibNone(bin)))
 
+	carg0 = (*C.GstBin)(UnsafeBinToGlibNone(bin))
 	carg1 = (*C.GstBin)(UnsafeBinToGlibNone(subBin))
 	carg2 = (*C.GstElement)(UnsafeElementToGlibNone(child))
 
@@ -42606,6 +42690,8 @@ func (bin *BinInstance) ParentDoLatency() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstBinClass)(classdata.PeekParentClass(UnsafeBinToGlibNone(bin)))
+
+	carg0 = (*C.GstBin)(UnsafeBinToGlibNone(bin))
 
 	cret = C._gotk4_gst1_Bin_virtual_do_latency(unsafe.Pointer(parentclass.do_latency), carg0)
 	runtime.KeepAlive(bin)
@@ -42633,6 +42719,7 @@ func (bin *BinInstance) ParentElementAdded(child Element) {
 
 	parentclass := (*C.GstBinClass)(classdata.PeekParentClass(UnsafeBinToGlibNone(bin)))
 
+	carg0 = (*C.GstBin)(UnsafeBinToGlibNone(bin))
 	carg1 = (*C.GstElement)(UnsafeElementToGlibNone(child))
 
 	C._gotk4_gst1_Bin_virtual_element_added(unsafe.Pointer(parentclass.element_added), carg0, carg1)
@@ -42654,6 +42741,7 @@ func (bin *BinInstance) ParentElementRemoved(child Element) {
 
 	parentclass := (*C.GstBinClass)(classdata.PeekParentClass(UnsafeBinToGlibNone(bin)))
 
+	carg0 = (*C.GstBin)(UnsafeBinToGlibNone(bin))
 	carg1 = (*C.GstElement)(UnsafeElementToGlibNone(child))
 
 	C._gotk4_gst1_Bin_virtual_element_removed(unsafe.Pointer(parentclass.element_removed), carg0, carg1)
@@ -42671,10 +42759,11 @@ func (bin *BinInstance) ParentElementRemoved(child Element) {
 // Method to handle a message from the children.
 func (bin *BinInstance) ParentHandleMessage(message *Message) {
 	var carg0 *C.GstBin
-	var carg1 *C.GstMessage // in, full, converted
+	var carg1 *C.GstMessage // in, none, converted
 
 	parentclass := (*C.GstBinClass)(classdata.PeekParentClass(UnsafeBinToGlibNone(bin)))
 
+	carg0 = (*C.GstBin)(UnsafeBinToGlibNone(bin))
 	carg1 = (*C.GstMessage)(UnsafeMessageToGlibFull(message))
 
 	C._gotk4_gst1_Bin_virtual_handle_message(unsafe.Pointer(parentclass.handle_message), carg0, carg1)
@@ -42701,6 +42790,7 @@ func (bin *BinInstance) ParentRemoveElement(element Element) bool {
 
 	parentclass := (*C.GstBinClass)(classdata.PeekParentClass(UnsafeBinToGlibNone(bin)))
 
+	carg0 = (*C.GstBin)(UnsafeBinToGlibNone(bin))
 	carg1 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 
 	cret = C._gotk4_gst1_Bin_virtual_remove_element(unsafe.Pointer(parentclass.remove_element), carg0, carg1)

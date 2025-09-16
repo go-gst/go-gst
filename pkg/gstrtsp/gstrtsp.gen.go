@@ -2878,6 +2878,7 @@ func (ext *RTSPExtensionInstance) ParentAfterSend(req *RTSPMessage, resp *RTSPMe
 
 	parentclass := (*C.GstRTSPExtensionInterface)(classdata.PeekParentInterface(UnsafeRTSPExtensionToGlibNone(ext), uint64(TypeRTSPExtension)))
 
+	carg0 = (*C.GstRTSPExtension)(UnsafeRTSPExtensionToGlibNone(ext))
 	carg1 = (*C.GstRTSPMessage)(UnsafeRTSPMessageToGlibNone(req))
 	carg2 = (*C.GstRTSPMessage)(UnsafeRTSPMessageToGlibNone(resp))
 
@@ -2910,6 +2911,7 @@ func (ext *RTSPExtensionInstance) ParentBeforeSend(req *RTSPMessage) RTSPResult 
 
 	parentclass := (*C.GstRTSPExtensionInterface)(classdata.PeekParentInterface(UnsafeRTSPExtensionToGlibNone(ext), uint64(TypeRTSPExtension)))
 
+	carg0 = (*C.GstRTSPExtension)(UnsafeRTSPExtensionToGlibNone(ext))
 	carg1 = (*C.GstRTSPMessage)(UnsafeRTSPMessageToGlibNone(req))
 
 	cret = C._gotk4_gstrtsp1_RTSPExtension_virtual_before_send(unsafe.Pointer(parentclass.before_send), carg0, carg1)
@@ -2940,6 +2942,7 @@ func (ext *RTSPExtensionInstance) ParentConfigureStream(caps *gst.Caps) bool {
 
 	parentclass := (*C.GstRTSPExtensionInterface)(classdata.PeekParentInterface(UnsafeRTSPExtensionToGlibNone(ext), uint64(TypeRTSPExtension)))
 
+	carg0 = (*C.GstRTSPExtension)(UnsafeRTSPExtensionToGlibNone(ext))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
 	cret = C._gotk4_gstrtsp1_RTSPExtension_virtual_configure_stream(unsafe.Pointer(parentclass.configure_stream), carg0, carg1)
@@ -2972,6 +2975,7 @@ func (ext *RTSPExtensionInstance) ParentDetectServer(resp *RTSPMessage) bool {
 
 	parentclass := (*C.GstRTSPExtensionInterface)(classdata.PeekParentInterface(UnsafeRTSPExtensionToGlibNone(ext), uint64(TypeRTSPExtension)))
 
+	carg0 = (*C.GstRTSPExtension)(UnsafeRTSPExtensionToGlibNone(ext))
 	carg1 = (*C.GstRTSPMessage)(UnsafeRTSPMessageToGlibNone(resp))
 
 	cret = C._gotk4_gstrtsp1_RTSPExtension_virtual_detect_server(unsafe.Pointer(parentclass.detect_server), carg0, carg1)
@@ -3006,6 +3010,7 @@ func (ext *RTSPExtensionInstance) ParentParseSdp(sdp *gstsdp.SDPMessage, s *gst.
 
 	parentclass := (*C.GstRTSPExtensionInterface)(classdata.PeekParentInterface(UnsafeRTSPExtensionToGlibNone(ext), uint64(TypeRTSPExtension)))
 
+	carg0 = (*C.GstRTSPExtension)(UnsafeRTSPExtensionToGlibNone(ext))
 	carg1 = (*C.GstSDPMessage)(gstsdp.UnsafeSDPMessageToGlibNone(sdp))
 	carg2 = (*C.GstStructure)(gst.UnsafeStructureToGlibNone(s))
 
@@ -3038,6 +3043,7 @@ func (ext *RTSPExtensionInstance) ParentReceiveRequest(req *RTSPMessage) RTSPRes
 
 	parentclass := (*C.GstRTSPExtensionInterface)(classdata.PeekParentInterface(UnsafeRTSPExtensionToGlibNone(ext), uint64(TypeRTSPExtension)))
 
+	carg0 = (*C.GstRTSPExtension)(UnsafeRTSPExtensionToGlibNone(ext))
 	carg1 = (*C.GstRTSPMessage)(UnsafeRTSPMessageToGlibNone(req))
 
 	cret = C._gotk4_gstrtsp1_RTSPExtension_virtual_receive_request(unsafe.Pointer(parentclass.receive_request), carg0, carg1)
@@ -3070,6 +3076,7 @@ func (ext *RTSPExtensionInstance) ParentSend(req *RTSPMessage, resp *RTSPMessage
 
 	parentclass := (*C.GstRTSPExtensionInterface)(classdata.PeekParentInterface(UnsafeRTSPExtensionToGlibNone(ext), uint64(TypeRTSPExtension)))
 
+	carg0 = (*C.GstRTSPExtension)(UnsafeRTSPExtensionToGlibNone(ext))
 	carg1 = (*C.GstRTSPMessage)(UnsafeRTSPMessageToGlibNone(req))
 	carg2 = (*C.GstRTSPMessage)(UnsafeRTSPMessageToGlibNone(resp))
 
@@ -3102,6 +3109,7 @@ func (ext *RTSPExtensionInstance) ParentSetupMedia(media *gstsdp.SDPMedia) RTSPR
 
 	parentclass := (*C.GstRTSPExtensionInterface)(classdata.PeekParentInterface(UnsafeRTSPExtensionToGlibNone(ext), uint64(TypeRTSPExtension)))
 
+	carg0 = (*C.GstRTSPExtension)(UnsafeRTSPExtensionToGlibNone(ext))
 	carg1 = (*C.GstSDPMedia)(gstsdp.UnsafeSDPMediaToGlibNone(media))
 
 	cret = C._gotk4_gstrtsp1_RTSPExtension_virtual_setup_media(unsafe.Pointer(parentclass.setup_media), carg0, carg1)
@@ -3132,6 +3140,7 @@ func (ext *RTSPExtensionInstance) ParentStreamSelect(url *RTSPUrl) RTSPResult {
 
 	parentclass := (*C.GstRTSPExtensionInterface)(classdata.PeekParentInterface(UnsafeRTSPExtensionToGlibNone(ext), uint64(TypeRTSPExtension)))
 
+	carg0 = (*C.GstRTSPExtension)(UnsafeRTSPExtensionToGlibNone(ext))
 	carg1 = (*C.GstRTSPUrl)(UnsafeRTSPUrlToGlibNone(url))
 
 	cret = C._gotk4_gstrtsp1_RTSPExtension_virtual_stream_select(unsafe.Pointer(parentclass.stream_select), carg0, carg1)

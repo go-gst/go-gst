@@ -8584,6 +8584,8 @@ func (balance *ColorBalanceInstance) ParentGetBalanceType() ColorBalanceType {
 
 	parentclass := (*C.GstColorBalanceInterface)(classdata.PeekParentInterface(UnsafeColorBalanceToGlibNone(balance), uint64(TypeColorBalance)))
 
+	carg0 = (*C.GstColorBalance)(UnsafeColorBalanceToGlibNone(balance))
+
 	cret = C._gotk4_gstvideo1_ColorBalance_virtual_get_balance_type(unsafe.Pointer(parentclass.get_balance_type), carg0)
 	runtime.KeepAlive(balance)
 
@@ -8618,6 +8620,7 @@ func (balance *ColorBalanceInstance) ParentGetValue(channel ColorBalanceChannel)
 
 	parentclass := (*C.GstColorBalanceInterface)(classdata.PeekParentInterface(UnsafeColorBalanceToGlibNone(balance), uint64(TypeColorBalance)))
 
+	carg0 = (*C.GstColorBalance)(UnsafeColorBalanceToGlibNone(balance))
 	carg1 = (*C.GstColorBalanceChannel)(UnsafeColorBalanceChannelToGlibNone(channel))
 
 	cret = C._gotk4_gstvideo1_ColorBalance_virtual_get_value(unsafe.Pointer(parentclass.get_value), carg0, carg1)
@@ -8644,6 +8647,8 @@ func (balance *ColorBalanceInstance) ParentListChannels() []ColorBalanceChannel 
 	var cret  *C.GList // container, transfer: none
 
 	parentclass := (*C.GstColorBalanceInterface)(classdata.PeekParentInterface(UnsafeColorBalanceToGlibNone(balance), uint64(TypeColorBalance)))
+
+	carg0 = (*C.GstColorBalance)(UnsafeColorBalanceToGlibNone(balance))
 
 	cret = C._gotk4_gstvideo1_ColorBalance_virtual_list_channels(unsafe.Pointer(parentclass.list_channels), carg0)
 	runtime.KeepAlive(balance)
@@ -8679,10 +8684,11 @@ func (balance *ColorBalanceInstance) ParentListChannels() []ColorBalanceChannel 
 func (balance *ColorBalanceInstance) ParentSetValue(channel ColorBalanceChannel, value int32) {
 	var carg0 *C.GstColorBalance
 	var carg1 *C.GstColorBalanceChannel // in, none, converted
-	var carg2 C.gint                    // in, none, casted
+	var carg2 C.gint                    // in, none, converted
 
 	parentclass := (*C.GstColorBalanceInterface)(classdata.PeekParentInterface(UnsafeColorBalanceToGlibNone(balance), uint64(TypeColorBalance)))
 
+	carg0 = (*C.GstColorBalance)(UnsafeColorBalanceToGlibNone(balance))
 	carg1 = (*C.GstColorBalanceChannel)(UnsafeColorBalanceChannelToGlibNone(channel))
 	carg2 = C.gint(value)
 
@@ -8707,10 +8713,11 @@ func (balance *ColorBalanceInstance) ParentSetValue(channel ColorBalanceChannel,
 func (balance *ColorBalanceInstance) ParentValueChanged(channel ColorBalanceChannel, value int32) {
 	var carg0 *C.GstColorBalance
 	var carg1 *C.GstColorBalanceChannel // in, none, converted
-	var carg2 C.gint                    // in, none, casted
+	var carg2 C.gint                    // in, none, converted
 
 	parentclass := (*C.GstColorBalanceInterface)(classdata.PeekParentInterface(UnsafeColorBalanceToGlibNone(balance), uint64(TypeColorBalance)))
 
+	carg0 = (*C.GstColorBalance)(UnsafeColorBalanceToGlibNone(balance))
 	carg1 = (*C.GstColorBalanceChannel)(UnsafeColorBalanceChannelToGlibNone(channel))
 	carg2 = C.gint(value)
 
@@ -10521,6 +10528,7 @@ func (navigation *NavigationInstance) ParentSendEvent(structure *gst.Structure) 
 
 	parentclass := (*C.GstNavigationInterface)(classdata.PeekParentInterface(UnsafeNavigationToGlibNone(navigation), uint64(TypeNavigation)))
 
+	carg0 = (*C.GstNavigation)(UnsafeNavigationToGlibNone(navigation))
 	carg1 = (*C.GstStructure)(gst.UnsafeStructureToGlibNone(structure))
 
 	C._gotk4_gstvideo1_Navigation_virtual_send_event(unsafe.Pointer(parentclass.send_event), carg0, carg1)
@@ -10538,10 +10546,11 @@ func (navigation *NavigationInstance) ParentSendEvent(structure *gst.Structure) 
 // Sends an event to the navigation interface.
 func (navigation *NavigationInstance) ParentSendEventSimple(event *gst.Event) {
 	var carg0 *C.GstNavigation
-	var carg1 *C.GstEvent // in, full, converted
+	var carg1 *C.GstEvent // in, none, converted
 
 	parentclass := (*C.GstNavigationInterface)(classdata.PeekParentInterface(UnsafeNavigationToGlibNone(navigation), uint64(TypeNavigation)))
 
+	carg0 = (*C.GstNavigation)(UnsafeNavigationToGlibNone(navigation))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibFull(event))
 
 	C._gotk4_gstvideo1_Navigation_virtual_send_event_simple(unsafe.Pointer(parentclass.send_event_simple), carg0, carg1)
@@ -11456,6 +11465,8 @@ func (videoOrientation *VideoOrientationInstance) ParentGetHcenter() (int32, boo
 
 	parentclass := (*C.GstVideoOrientationInterface)(classdata.PeekParentInterface(UnsafeVideoOrientationToGlibNone(videoOrientation), uint64(TypeVideoOrientation)))
 
+	carg0 = (*C.GstVideoOrientation)(UnsafeVideoOrientationToGlibNone(videoOrientation))
+
 	cret = C._gotk4_gstvideo1_VideoOrientation_virtual_get_hcenter(unsafe.Pointer(parentclass.get_hcenter), carg0, &carg1)
 	runtime.KeepAlive(videoOrientation)
 
@@ -11485,6 +11496,8 @@ func (videoOrientation *VideoOrientationInstance) ParentGetHflip() (bool, bool) 
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstVideoOrientationInterface)(classdata.PeekParentInterface(UnsafeVideoOrientationToGlibNone(videoOrientation), uint64(TypeVideoOrientation)))
+
+	carg0 = (*C.GstVideoOrientation)(UnsafeVideoOrientationToGlibNone(videoOrientation))
 
 	cret = C._gotk4_gstvideo1_VideoOrientation_virtual_get_hflip(unsafe.Pointer(parentclass.get_hflip), carg0, &carg1)
 	runtime.KeepAlive(videoOrientation)
@@ -11518,6 +11531,8 @@ func (videoOrientation *VideoOrientationInstance) ParentGetVcenter() (int32, boo
 
 	parentclass := (*C.GstVideoOrientationInterface)(classdata.PeekParentInterface(UnsafeVideoOrientationToGlibNone(videoOrientation), uint64(TypeVideoOrientation)))
 
+	carg0 = (*C.GstVideoOrientation)(UnsafeVideoOrientationToGlibNone(videoOrientation))
+
 	cret = C._gotk4_gstvideo1_VideoOrientation_virtual_get_vcenter(unsafe.Pointer(parentclass.get_vcenter), carg0, &carg1)
 	runtime.KeepAlive(videoOrientation)
 
@@ -11547,6 +11562,8 @@ func (videoOrientation *VideoOrientationInstance) ParentGetVflip() (bool, bool) 
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstVideoOrientationInterface)(classdata.PeekParentInterface(UnsafeVideoOrientationToGlibNone(videoOrientation), uint64(TypeVideoOrientation)))
+
+	carg0 = (*C.GstVideoOrientation)(UnsafeVideoOrientationToGlibNone(videoOrientation))
 
 	cret = C._gotk4_gstvideo1_VideoOrientation_virtual_get_vflip(unsafe.Pointer(parentclass.get_vflip), carg0, &carg1)
 	runtime.KeepAlive(videoOrientation)
@@ -11578,11 +11595,12 @@ func (videoOrientation *VideoOrientationInstance) ParentGetVflip() (bool, bool) 
 // Set the horizontal centering offset for the given object.
 func (videoOrientation *VideoOrientationInstance) ParentSetHcenter(center int32) bool {
 	var carg0 *C.GstVideoOrientation
-	var carg1 C.gint     // in, none, casted
+	var carg1 C.gint     // in, none, converted
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstVideoOrientationInterface)(classdata.PeekParentInterface(UnsafeVideoOrientationToGlibNone(videoOrientation), uint64(TypeVideoOrientation)))
 
+	carg0 = (*C.GstVideoOrientation)(UnsafeVideoOrientationToGlibNone(videoOrientation))
 	carg1 = C.gint(center)
 
 	cret = C._gotk4_gstvideo1_VideoOrientation_virtual_set_hcenter(unsafe.Pointer(parentclass.set_hcenter), carg0, carg1)
@@ -11612,11 +11630,12 @@ func (videoOrientation *VideoOrientationInstance) ParentSetHcenter(center int32)
 // Set the horizontal flipping state (%TRUE for flipped) for the given object.
 func (videoOrientation *VideoOrientationInstance) ParentSetHflip(flip bool) bool {
 	var carg0 *C.GstVideoOrientation
-	var carg1 C.gboolean // in
+	var carg1 C.gboolean // in, none, converted
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstVideoOrientationInterface)(classdata.PeekParentInterface(UnsafeVideoOrientationToGlibNone(videoOrientation), uint64(TypeVideoOrientation)))
 
+	carg0 = (*C.GstVideoOrientation)(UnsafeVideoOrientationToGlibNone(videoOrientation))
 	if flip {
 		carg1 = C.TRUE
 	}
@@ -11648,11 +11667,12 @@ func (videoOrientation *VideoOrientationInstance) ParentSetHflip(flip bool) bool
 // Set the vertical centering offset for the given object.
 func (videoOrientation *VideoOrientationInstance) ParentSetVcenter(center int32) bool {
 	var carg0 *C.GstVideoOrientation
-	var carg1 C.gint     // in, none, casted
+	var carg1 C.gint     // in, none, converted
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstVideoOrientationInterface)(classdata.PeekParentInterface(UnsafeVideoOrientationToGlibNone(videoOrientation), uint64(TypeVideoOrientation)))
 
+	carg0 = (*C.GstVideoOrientation)(UnsafeVideoOrientationToGlibNone(videoOrientation))
 	carg1 = C.gint(center)
 
 	cret = C._gotk4_gstvideo1_VideoOrientation_virtual_set_vcenter(unsafe.Pointer(parentclass.set_vcenter), carg0, carg1)
@@ -11682,11 +11702,12 @@ func (videoOrientation *VideoOrientationInstance) ParentSetVcenter(center int32)
 // Set the vertical flipping state (%TRUE for flipped) for the given object.
 func (videoOrientation *VideoOrientationInstance) ParentSetVflip(flip bool) bool {
 	var carg0 *C.GstVideoOrientation
-	var carg1 C.gboolean // in
+	var carg1 C.gboolean // in, none, converted
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstVideoOrientationInterface)(classdata.PeekParentInterface(UnsafeVideoOrientationToGlibNone(videoOrientation), uint64(TypeVideoOrientation)))
 
+	carg0 = (*C.GstVideoOrientation)(UnsafeVideoOrientationToGlibNone(videoOrientation))
 	if flip {
 		carg1 = C.TRUE
 	}
@@ -12362,6 +12383,8 @@ func (overlay *VideoOverlayInstance) ParentExpose() {
 
 	parentclass := (*C.GstVideoOverlayInterface)(classdata.PeekParentInterface(UnsafeVideoOverlayToGlibNone(overlay), uint64(TypeVideoOverlay)))
 
+	carg0 = (*C.GstVideoOverlay)(UnsafeVideoOverlayToGlibNone(overlay))
+
 	C._gotk4_gstvideo1_VideoOverlay_virtual_expose(unsafe.Pointer(parentclass.expose), carg0)
 	runtime.KeepAlive(overlay)
 }
@@ -12380,10 +12403,11 @@ func (overlay *VideoOverlayInstance) ParentExpose() {
 // from the #GstVideoOverlay.
 func (overlay *VideoOverlayInstance) ParentHandleEvents(handleEvents bool) {
 	var carg0 *C.GstVideoOverlay
-	var carg1 C.gboolean // in
+	var carg1 C.gboolean // in, none, converted
 
 	parentclass := (*C.GstVideoOverlayInterface)(classdata.PeekParentInterface(UnsafeVideoOverlayToGlibNone(overlay), uint64(TypeVideoOverlay)))
 
+	carg0 = (*C.GstVideoOverlay)(UnsafeVideoOverlayToGlibNone(overlay))
 	if handleEvents {
 		carg1 = C.TRUE
 	}
@@ -12406,13 +12430,14 @@ func (overlay *VideoOverlayInstance) ParentHandleEvents(handleEvents bool) {
 // virtual method to set the render rectangle
 func (overlay *VideoOverlayInstance) ParentSetRenderRectangle(x int32, y int32, width int32, height int32) {
 	var carg0 *C.GstVideoOverlay
-	var carg1 C.gint // in, none, casted
+	var carg1 C.gint // in, none, converted
 	var carg2 C.gint // in, none, casted
 	var carg3 C.gint // in, none, casted
 	var carg4 C.gint // in, none, casted
 
 	parentclass := (*C.GstVideoOverlayInterface)(classdata.PeekParentInterface(UnsafeVideoOverlayToGlibNone(overlay), uint64(TypeVideoOverlay)))
 
+	carg0 = (*C.GstVideoOverlay)(UnsafeVideoOverlayToGlibNone(overlay))
 	carg1 = C.gint(x)
 	carg2 = C.gint(y)
 	carg3 = C.gint(width)
@@ -12558,10 +12583,11 @@ func UnsafeApplyColorBalanceChannelOverrides[Instance ColorBalanceChannel](gclas
 // default handler for value changed notification
 func (channel *ColorBalanceChannelInstance) ParentValueChanged(value int32) {
 	var carg0 *C.GstColorBalanceChannel
-	var carg1 C.gint // in, none, casted
+	var carg1 C.gint // in, none, converted
 
 	parentclass := (*C.GstColorBalanceChannelClass)(classdata.PeekParentClass(UnsafeColorBalanceChannelToGlibNone(channel)))
 
+	carg0 = (*C.GstColorBalanceChannel)(UnsafeColorBalanceChannelToGlibNone(channel))
 	carg1 = C.gint(value)
 
 	C._gotk4_gstvideo1_ColorBalanceChannel_virtual_value_changed(unsafe.Pointer(parentclass.value_changed), carg0, carg1)
@@ -12904,6 +12930,7 @@ func (videoaggregator *VideoAggregatorInstance) ParentAggregateFrames(outbuffer 
 
 	parentclass := (*C.GstVideoAggregatorClass)(classdata.PeekParentClass(UnsafeVideoAggregatorToGlibNone(videoaggregator)))
 
+	carg0 = (*C.GstVideoAggregator)(UnsafeVideoAggregatorToGlibNone(videoaggregator))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(outbuffer))
 
 	cret = C._gotk4_gstvideo1_VideoAggregator_virtual_aggregate_frames(unsafe.Pointer(parentclass.aggregate_frames), carg0, carg1)
@@ -12936,6 +12963,7 @@ func (vagg *VideoAggregatorInstance) ParentFindBestFormat(downstreamCaps *gst.Ca
 
 	parentclass := (*C.GstVideoAggregatorClass)(classdata.PeekParentClass(UnsafeVideoAggregatorToGlibNone(vagg)))
 
+	carg0 = (*C.GstVideoAggregator)(UnsafeVideoAggregatorToGlibNone(vagg))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(downstreamCaps))
 	carg2 = (*C.GstVideoInfo)(UnsafeVideoInfoToGlibNone(bestInfo))
 
@@ -12974,6 +13002,7 @@ func (videoaggregator *VideoAggregatorInstance) ParentUpdateCaps(caps *gst.Caps)
 
 	parentclass := (*C.GstVideoAggregatorClass)(classdata.PeekParentClass(UnsafeVideoAggregatorToGlibNone(videoaggregator)))
 
+	carg0 = (*C.GstVideoAggregator)(UnsafeVideoAggregatorToGlibNone(videoaggregator))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
 	cret = C._gotk4_gstvideo1_VideoAggregator_virtual_update_caps(unsafe.Pointer(parentclass.update_caps), carg0, carg1)
@@ -13483,6 +13512,7 @@ func (pad *VideoAggregatorPadInstance) ParentCleanFrame(videoaggregator VideoAgg
 
 	parentclass := (*C.GstVideoAggregatorPadClass)(classdata.PeekParentClass(UnsafeVideoAggregatorPadToGlibNone(pad)))
 
+	carg0 = (*C.GstVideoAggregatorPad)(UnsafeVideoAggregatorPadToGlibNone(pad))
 	carg1 = (*C.GstVideoAggregator)(UnsafeVideoAggregatorToGlibNone(videoaggregator))
 	carg2 = (*C.GstVideoFrame)(UnsafeVideoFrameToGlibNone(preparedFrame))
 
@@ -13517,6 +13547,7 @@ func (pad *VideoAggregatorPadInstance) ParentPrepareFrame(videoaggregator VideoA
 
 	parentclass := (*C.GstVideoAggregatorPadClass)(classdata.PeekParentClass(UnsafeVideoAggregatorPadToGlibNone(pad)))
 
+	carg0 = (*C.GstVideoAggregatorPad)(UnsafeVideoAggregatorPadToGlibNone(pad))
 	carg1 = (*C.GstVideoAggregator)(UnsafeVideoAggregatorToGlibNone(videoaggregator))
 	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 	carg3 = (*C.GstVideoFrame)(UnsafeVideoFrameToGlibNone(preparedFrame))
@@ -13554,6 +13585,7 @@ func (pad *VideoAggregatorPadInstance) ParentPrepareFrameFinish(videoaggregator 
 
 	parentclass := (*C.GstVideoAggregatorPadClass)(classdata.PeekParentClass(UnsafeVideoAggregatorPadToGlibNone(pad)))
 
+	carg0 = (*C.GstVideoAggregatorPad)(UnsafeVideoAggregatorPadToGlibNone(pad))
 	carg1 = (*C.GstVideoAggregator)(UnsafeVideoAggregatorToGlibNone(videoaggregator))
 	carg2 = (*C.GstVideoFrame)(UnsafeVideoFrameToGlibNone(preparedFrame))
 
@@ -13583,6 +13615,7 @@ func (pad *VideoAggregatorPadInstance) ParentPrepareFrameStart(videoaggregator V
 
 	parentclass := (*C.GstVideoAggregatorPadClass)(classdata.PeekParentClass(UnsafeVideoAggregatorPadToGlibNone(pad)))
 
+	carg0 = (*C.GstVideoAggregatorPad)(UnsafeVideoAggregatorPadToGlibNone(pad))
 	carg1 = (*C.GstVideoAggregator)(UnsafeVideoAggregatorToGlibNone(videoaggregator))
 	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 	carg3 = (*C.GstVideoFrame)(UnsafeVideoFrameToGlibNone(preparedFrame))
@@ -13603,6 +13636,8 @@ func (pad *VideoAggregatorPadInstance) ParentUpdateConversionInfo() {
 	var carg0 *C.GstVideoAggregatorPad
 
 	parentclass := (*C.GstVideoAggregatorPadClass)(classdata.PeekParentClass(UnsafeVideoAggregatorPadToGlibNone(pad)))
+
+	carg0 = (*C.GstVideoAggregatorPad)(UnsafeVideoAggregatorPadToGlibNone(pad))
 
 	C._gotk4_gstvideo1_VideoAggregatorPad_virtual_update_conversion_info(unsafe.Pointer(parentclass.update_conversion_info), carg0)
 	runtime.KeepAlive(pad)
@@ -16852,6 +16887,8 @@ func (decoder *VideoDecoderInstance) ParentClose() bool {
 
 	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
 
+	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
+
 	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_close(unsafe.Pointer(parentclass.close), carg0)
 	runtime.KeepAlive(decoder)
 
@@ -16888,6 +16925,7 @@ func (decoder *VideoDecoderInstance) ParentDecideAllocation(query *gst.Query) bo
 
 	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
 
+	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
 	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
@@ -16921,6 +16959,8 @@ func (decoder *VideoDecoderInstance) ParentDrain() gst.FlowReturn {
 
 	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
 
+	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
+
 	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_drain(unsafe.Pointer(parentclass.drain), carg0)
 	runtime.KeepAlive(decoder)
 
@@ -16947,6 +16987,8 @@ func (decoder *VideoDecoderInstance) ParentFinish() gst.FlowReturn {
 
 	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
 
+	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
+
 	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_finish(unsafe.Pointer(parentclass.finish), carg0)
 	runtime.KeepAlive(decoder)
 
@@ -16972,6 +17014,8 @@ func (decoder *VideoDecoderInstance) ParentFlush() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
+
+	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 
 	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_flush(unsafe.Pointer(parentclass.flush), carg0)
 	runtime.KeepAlive(decoder)
@@ -17008,6 +17052,7 @@ func (decoder *VideoDecoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
 
 	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
 
+	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filter))
 
 	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_getcaps(unsafe.Pointer(parentclass.getcaps), carg0, carg1)
@@ -17033,11 +17078,12 @@ func (decoder *VideoDecoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
 // 	- goret gst.FlowReturn 
 func (decoder *VideoDecoderInstance) ParentHandleFrame(frame *VideoCodecFrame) gst.FlowReturn {
 	var carg0 *C.GstVideoDecoder
-	var carg1 *C.GstVideoCodecFrame // in, full, converted
+	var carg1 *C.GstVideoCodecFrame // in, none, converted
 	var cret  C.GstFlowReturn       // return, none, casted
 
 	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
 
+	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 	carg1 = (*C.GstVideoCodecFrame)(UnsafeVideoCodecFrameToGlibFull(frame))
 
 	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_handle_frame(unsafe.Pointer(parentclass.handle_frame), carg0, carg1)
@@ -17064,12 +17110,13 @@ func (decoder *VideoDecoderInstance) ParentHandleFrame(frame *VideoCodecFrame) g
 // 	- goret bool 
 func (decoder *VideoDecoderInstance) ParentHandleMissingData(timestamp gst.ClockTime, duration gst.ClockTime) bool {
 	var carg0 *C.GstVideoDecoder
-	var carg1 C.GstClockTime // in, none, casted, alias
+	var carg1 C.GstClockTime // in, none, converted
 	var carg2 C.GstClockTime // in, none, casted, alias
 	var cret  C.gboolean     // return
 
 	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
 
+	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 	carg1 = C.GstClockTime(timestamp)
 	carg2 = C.GstClockTime(duration)
 
@@ -17103,6 +17150,8 @@ func (decoder *VideoDecoderInstance) ParentNegotiate() bool {
 
 	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
 
+	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
+
 	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_negotiate(unsafe.Pointer(parentclass.negotiate), carg0)
 	runtime.KeepAlive(decoder)
 
@@ -17130,6 +17179,8 @@ func (decoder *VideoDecoderInstance) ParentOpen() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
+
+	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 
 	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_open(unsafe.Pointer(parentclass.open), carg0)
 	runtime.KeepAlive(decoder)
@@ -17163,11 +17214,12 @@ func (decoder *VideoDecoderInstance) ParentParse(frame *VideoCodecFrame, adapter
 	var carg0 *C.GstVideoDecoder
 	var carg1 *C.GstVideoCodecFrame // in, none, converted
 	var carg2 *C.GstAdapter         // in, none, converted
-	var carg3 C.gboolean            // in
+	var carg3 C.gboolean            // in, none, converted
 	var cret  C.GstFlowReturn       // return, none, casted
 
 	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
 
+	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 	carg1 = (*C.GstVideoCodecFrame)(UnsafeVideoCodecFrameToGlibNone(frame))
 	carg2 = (*C.GstAdapter)(gstbase.UnsafeAdapterToGlibNone(adapter))
 	if atEos {
@@ -17209,6 +17261,7 @@ func (decoder *VideoDecoderInstance) ParentProposeAllocation(query *gst.Query) b
 
 	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
 
+	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
 	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_propose_allocation(unsafe.Pointer(parentclass.propose_allocation), carg0, carg1)
@@ -17240,11 +17293,12 @@ func (decoder *VideoDecoderInstance) ParentProposeAllocation(query *gst.Query) b
 //                  Deprecated.
 func (decoder *VideoDecoderInstance) ParentReset(hard bool) bool {
 	var carg0 *C.GstVideoDecoder
-	var carg1 C.gboolean // in
+	var carg1 C.gboolean // in, none, converted
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
 
+	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 	if hard {
 		carg1 = C.TRUE
 	}
@@ -17281,6 +17335,7 @@ func (decoder *VideoDecoderInstance) ParentSetFormat(state *VideoCodecState) boo
 
 	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
 
+	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 	carg1 = (*C.GstVideoCodecState)(UnsafeVideoCodecStateToGlibNone(state))
 
 	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_set_format(unsafe.Pointer(parentclass.set_format), carg0, carg1)
@@ -17320,6 +17375,7 @@ func (decoder *VideoDecoderInstance) ParentSinkEvent(event *gst.Event) bool {
 
 	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
 
+	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
 	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_sink_event(unsafe.Pointer(parentclass.sink_event), carg0, carg1)
@@ -17358,6 +17414,7 @@ func (decoder *VideoDecoderInstance) ParentSinkQuery(query *gst.Query) bool {
 
 	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
 
+	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
 	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_sink_query(unsafe.Pointer(parentclass.sink_query), carg0, carg1)
@@ -17397,6 +17454,7 @@ func (decoder *VideoDecoderInstance) ParentSrcEvent(event *gst.Event) bool {
 
 	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
 
+	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
 	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
@@ -17435,6 +17493,7 @@ func (decoder *VideoDecoderInstance) ParentSrcQuery(query *gst.Query) bool {
 
 	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
 
+	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
 	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_src_query(unsafe.Pointer(parentclass.src_query), carg0, carg1)
@@ -17466,6 +17525,8 @@ func (decoder *VideoDecoderInstance) ParentStart() bool {
 
 	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
 
+	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
+
 	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_start(unsafe.Pointer(parentclass.start), carg0)
 	runtime.KeepAlive(decoder)
 
@@ -17493,6 +17554,8 @@ func (decoder *VideoDecoderInstance) ParentStop() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
+
+	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 
 	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
 	runtime.KeepAlive(decoder)
@@ -17531,6 +17594,7 @@ func (decoder *VideoDecoderInstance) ParentTransformMeta(frame *VideoCodecFrame,
 
 	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
 
+	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 	carg1 = (*C.GstVideoCodecFrame)(UnsafeVideoCodecFrameToGlibNone(frame))
 	carg2 = (*C.GstMeta)(gst.UnsafeMetaToGlibNone(meta))
 
@@ -19718,6 +19782,8 @@ func (encoder *VideoEncoderInstance) ParentClose() bool {
 
 	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
 
+	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
+
 	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_close(unsafe.Pointer(parentclass.close), carg0)
 	runtime.KeepAlive(encoder)
 
@@ -19754,6 +19820,7 @@ func (encoder *VideoEncoderInstance) ParentDecideAllocation(query *gst.Query) bo
 
 	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
 
+	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
 	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
@@ -19785,6 +19852,8 @@ func (encoder *VideoEncoderInstance) ParentFinish() gst.FlowReturn {
 
 	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
 
+	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
+
 	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_finish(unsafe.Pointer(parentclass.finish), carg0)
 	runtime.KeepAlive(encoder)
 
@@ -19810,6 +19879,8 @@ func (encoder *VideoEncoderInstance) ParentFlush() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
+
+	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 
 	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_flush(unsafe.Pointer(parentclass.flush), carg0)
 	runtime.KeepAlive(encoder)
@@ -19846,6 +19917,7 @@ func (enc *VideoEncoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
 
 	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(enc)))
 
+	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(enc))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filter))
 
 	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_getcaps(unsafe.Pointer(parentclass.getcaps), carg0, carg1)
@@ -19878,6 +19950,7 @@ func (encoder *VideoEncoderInstance) ParentHandleFrame(frame *VideoCodecFrame) g
 
 	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
 
+	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 	carg1 = (*C.GstVideoCodecFrame)(UnsafeVideoCodecFrameToGlibNone(frame))
 
 	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_handle_frame(unsafe.Pointer(parentclass.handle_frame), carg0, carg1)
@@ -19907,6 +19980,8 @@ func (encoder *VideoEncoderInstance) ParentNegotiate() bool {
 
 	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
 
+	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
+
 	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_negotiate(unsafe.Pointer(parentclass.negotiate), carg0)
 	runtime.KeepAlive(encoder)
 
@@ -19934,6 +20009,8 @@ func (encoder *VideoEncoderInstance) ParentOpen() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
+
+	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 
 	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_open(unsafe.Pointer(parentclass.open), carg0)
 	runtime.KeepAlive(encoder)
@@ -19969,6 +20046,7 @@ func (encoder *VideoEncoderInstance) ParentPrePush(frame *VideoCodecFrame) gst.F
 
 	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
 
+	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 	carg1 = (*C.GstVideoCodecFrame)(UnsafeVideoCodecFrameToGlibNone(frame))
 
 	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_pre_push(unsafe.Pointer(parentclass.pre_push), carg0, carg1)
@@ -20004,6 +20082,7 @@ func (encoder *VideoEncoderInstance) ParentProposeAllocation(query *gst.Query) b
 
 	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
 
+	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
 	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_propose_allocation(unsafe.Pointer(parentclass.propose_allocation), carg0, carg1)
@@ -20035,11 +20114,12 @@ func (encoder *VideoEncoderInstance) ParentProposeAllocation(query *gst.Query) b
 //                  Deprecated.
 func (encoder *VideoEncoderInstance) ParentReset(hard bool) bool {
 	var carg0 *C.GstVideoEncoder
-	var carg1 C.gboolean // in
+	var carg1 C.gboolean // in, none, converted
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
 
+	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 	if hard {
 		carg1 = C.TRUE
 	}
@@ -20079,6 +20159,7 @@ func (encoder *VideoEncoderInstance) ParentSetFormat(state *VideoCodecState) boo
 
 	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
 
+	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 	carg1 = (*C.GstVideoCodecState)(UnsafeVideoCodecStateToGlibNone(state))
 
 	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_set_format(unsafe.Pointer(parentclass.set_format), carg0, carg1)
@@ -20118,6 +20199,7 @@ func (encoder *VideoEncoderInstance) ParentSinkEvent(event *gst.Event) bool {
 
 	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
 
+	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
 	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_sink_event(unsafe.Pointer(parentclass.sink_event), carg0, carg1)
@@ -20156,6 +20238,7 @@ func (encoder *VideoEncoderInstance) ParentSinkQuery(query *gst.Query) bool {
 
 	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
 
+	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
 	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_sink_query(unsafe.Pointer(parentclass.sink_query), carg0, carg1)
@@ -20195,6 +20278,7 @@ func (encoder *VideoEncoderInstance) ParentSrcEvent(event *gst.Event) bool {
 
 	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
 
+	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
 	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
@@ -20233,6 +20317,7 @@ func (encoder *VideoEncoderInstance) ParentSrcQuery(query *gst.Query) bool {
 
 	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
 
+	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
 	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_src_query(unsafe.Pointer(parentclass.src_query), carg0, carg1)
@@ -20264,6 +20349,8 @@ func (encoder *VideoEncoderInstance) ParentStart() bool {
 
 	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
 
+	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
+
 	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_start(unsafe.Pointer(parentclass.start), carg0)
 	runtime.KeepAlive(encoder)
 
@@ -20291,6 +20378,8 @@ func (encoder *VideoEncoderInstance) ParentStop() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
+
+	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 
 	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
 	runtime.KeepAlive(encoder)
@@ -20329,6 +20418,7 @@ func (encoder *VideoEncoderInstance) ParentTransformMeta(frame *VideoCodecFrame,
 
 	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
 
+	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 	carg1 = (*C.GstVideoCodecFrame)(UnsafeVideoCodecFrameToGlibNone(frame))
 	carg2 = (*C.GstMeta)(gst.UnsafeMetaToGlibNone(meta))
 
@@ -20641,6 +20731,7 @@ func (filter *VideoFilterInstance) ParentSetInfo(incaps *gst.Caps, inInfo *Video
 
 	parentclass := (*C.GstVideoFilterClass)(classdata.PeekParentClass(UnsafeVideoFilterToGlibNone(filter)))
 
+	carg0 = (*C.GstVideoFilter)(UnsafeVideoFilterToGlibNone(filter))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(incaps))
 	carg2 = (*C.GstVideoInfo)(UnsafeVideoInfoToGlibNone(inInfo))
 	carg3 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(outcaps))
@@ -20683,6 +20774,7 @@ func (filter *VideoFilterInstance) ParentTransformFrame(inframe *VideoFrame, out
 
 	parentclass := (*C.GstVideoFilterClass)(classdata.PeekParentClass(UnsafeVideoFilterToGlibNone(filter)))
 
+	carg0 = (*C.GstVideoFilter)(UnsafeVideoFilterToGlibNone(filter))
 	carg1 = (*C.GstVideoFrame)(UnsafeVideoFrameToGlibNone(inframe))
 	carg2 = (*C.GstVideoFrame)(UnsafeVideoFrameToGlibNone(outframe))
 
@@ -20717,6 +20809,7 @@ func (trans *VideoFilterInstance) ParentTransformFrameIP(frame *VideoFrame) gst.
 
 	parentclass := (*C.GstVideoFilterClass)(classdata.PeekParentClass(UnsafeVideoFilterToGlibNone(trans)))
 
+	carg0 = (*C.GstVideoFilter)(UnsafeVideoFilterToGlibNone(trans))
 	carg1 = (*C.GstVideoFrame)(UnsafeVideoFrameToGlibNone(frame))
 
 	cret = C._gotk4_gstvideo1_VideoFilter_virtual_transform_frame_ip(unsafe.Pointer(parentclass.transform_frame_ip), carg0, carg1)
@@ -21013,6 +21106,7 @@ func (videoSink *VideoSinkInstance) ParentSetInfo(caps *gst.Caps, info *VideoInf
 
 	parentclass := (*C.GstVideoSinkClass)(classdata.PeekParentClass(UnsafeVideoSinkToGlibNone(videoSink)))
 
+	carg0 = (*C.GstVideoSink)(UnsafeVideoSinkToGlibNone(videoSink))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 	carg2 = (*C.GstVideoInfo)(UnsafeVideoInfoToGlibNone(info))
 
@@ -21052,6 +21146,7 @@ func (videoSink *VideoSinkInstance) ParentShowFrame(buf *gst.Buffer) gst.FlowRet
 
 	parentclass := (*C.GstVideoSinkClass)(classdata.PeekParentClass(UnsafeVideoSinkToGlibNone(videoSink)))
 
+	carg0 = (*C.GstVideoSink)(UnsafeVideoSinkToGlibNone(videoSink))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buf))
 
 	cret = C._gotk4_gstvideo1_VideoSink_virtual_show_frame(unsafe.Pointer(parentclass.show_frame), carg0, carg1)
@@ -21244,6 +21339,7 @@ func (pad *VideoAggregatorConvertPadInstance) ParentCreateConversionInfo(agg Vid
 
 	parentclass := (*C.GstVideoAggregatorConvertPadClass)(classdata.PeekParentClass(UnsafeVideoAggregatorConvertPadToGlibNone(pad)))
 
+	carg0 = (*C.GstVideoAggregatorConvertPad)(UnsafeVideoAggregatorConvertPadToGlibNone(pad))
 	carg1 = (*C.GstVideoAggregator)(UnsafeVideoAggregatorToGlibNone(agg))
 	carg2 = (*C.GstVideoInfo)(UnsafeVideoInfoToGlibNone(conversionInfo))
 

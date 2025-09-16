@@ -2266,12 +2266,13 @@ func UnsafeApplyTagDemuxOverrides[Instance TagDemux](gclass unsafe.Pointer, over
 func (demux *TagDemuxInstance) ParentIdentifyTag(buffer *gst.Buffer, startTag bool, tagSize *uint) bool {
 	var carg0 *C.GstTagDemux
 	var carg1 *C.GstBuffer // in, none, converted
-	var carg2 C.gboolean   // in
-	var carg3 *C.guint     // in, transfer: none, C Pointers: 1, Name: guint
+	var carg2 C.gboolean   // in, none, converted
+	var carg3 *C.guint     // in
 	var cret  C.gboolean   // return
 
 	parentclass := (*C.GstTagDemuxClass)(classdata.PeekParentClass(UnsafeTagDemuxToGlibNone(demux)))
 
+	carg0 = (*C.GstTagDemux)(UnsafeTagDemuxToGlibNone(demux))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 	if startTag {
 		carg2 = C.TRUE
@@ -2319,6 +2320,7 @@ func (demux *TagDemuxInstance) ParentMergeTags(startTags *gst.TagList, endTags *
 
 	parentclass := (*C.GstTagDemuxClass)(classdata.PeekParentClass(UnsafeTagDemuxToGlibNone(demux)))
 
+	carg0 = (*C.GstTagDemux)(UnsafeTagDemuxToGlibNone(demux))
 	carg1 = (*C.GstTagList)(gst.UnsafeTagListToGlibNone(startTags))
 	carg2 = (*C.GstTagList)(gst.UnsafeTagListToGlibNone(endTags))
 
@@ -2577,6 +2579,7 @@ func (mux *TagMuxInstance) ParentRenderEndTag(tagList *gst.TagList) *gst.Buffer 
 
 	parentclass := (*C.GstTagMuxClass)(classdata.PeekParentClass(UnsafeTagMuxToGlibNone(mux)))
 
+	carg0 = (*C.GstTagMux)(UnsafeTagMuxToGlibNone(mux))
 	carg1 = (*C.GstTagList)(gst.UnsafeTagListToGlibNone(tagList))
 
 	cret = C._gotk4_gsttag1_TagMux_virtual_render_end_tag(unsafe.Pointer(parentclass.render_end_tag), carg0, carg1)
@@ -2610,6 +2613,7 @@ func (mux *TagMuxInstance) ParentRenderStartTag(tagList *gst.TagList) *gst.Buffe
 
 	parentclass := (*C.GstTagMuxClass)(classdata.PeekParentClass(UnsafeTagMuxToGlibNone(mux)))
 
+	carg0 = (*C.GstTagMux)(UnsafeTagMuxToGlibNone(mux))
 	carg1 = (*C.GstTagList)(gst.UnsafeTagListToGlibNone(tagList))
 
 	cret = C._gotk4_gsttag1_TagMux_virtual_render_start_tag(unsafe.Pointer(parentclass.render_start_tag), carg0, carg1)

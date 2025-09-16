@@ -4784,11 +4784,12 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 //                  aggregated buffers, the subclass should call _finish_buffer.
 func (aggregator *AggregatorInstance) ParentAggregate(timeout bool) gst.FlowReturn {
 	var carg0 *C.GstAggregator
-	var carg1 C.gboolean      // in
+	var carg1 C.gboolean      // in, none, converted
 	var cret  C.GstFlowReturn // return, none, casted
 
 	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
 
+	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
 	if timeout {
 		carg1 = C.TRUE
 	}
@@ -4832,6 +4833,7 @@ func (aggregator *AggregatorInstance) ParentClip(aggregatorPad AggregatorPad, bu
 
 	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
 
+	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
 	carg1 = (*C.GstAggregatorPad)(UnsafeAggregatorPadToGlibNone(aggregatorPad))
 	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buf))
 
@@ -4870,6 +4872,7 @@ func (self *AggregatorInstance) ParentDecideAllocation(query *gst.Query) bool {
 
 	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(self)))
 
+	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(self))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
 	cret = C._gotk4_gstbase1_Aggregator_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
@@ -4901,11 +4904,12 @@ func (self *AggregatorInstance) ParentDecideAllocation(query *gst.Query) bool {
 // sent before pushing the buffer.
 func (aggregator *AggregatorInstance) ParentFinishBuffer(buffer *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstAggregator
-	var carg1 *C.GstBuffer    // in, full, converted
+	var carg1 *C.GstBuffer    // in, none, converted
 	var cret  C.GstFlowReturn // return, none, casted
 
 	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
 
+	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibFull(buffer))
 
 	cret = C._gotk4_gstbase1_Aggregator_virtual_finish_buffer(unsafe.Pointer(parentclass.finish_buffer), carg0, carg1)
@@ -4935,11 +4939,12 @@ func (aggregator *AggregatorInstance) ParentFinishBuffer(buffer *gst.Buffer) gst
 // sent before pushing the buffer.
 func (aggregator *AggregatorInstance) ParentFinishBufferList(bufferlist *gst.BufferList) gst.FlowReturn {
 	var carg0 *C.GstAggregator
-	var carg1 *C.GstBufferList // in, full, converted
+	var carg1 *C.GstBufferList // in, none, converted
 	var cret  C.GstFlowReturn  // return, none, casted
 
 	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
 
+	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
 	carg1 = (*C.GstBufferList)(gst.UnsafeBufferListToGlibFull(bufferlist))
 
 	cret = C._gotk4_gstbase1_Aggregator_virtual_finish_buffer_list(unsafe.Pointer(parentclass.finish_buffer_list), carg0, carg1)
@@ -4975,6 +4980,7 @@ func (self *AggregatorInstance) ParentFixateSrcCaps(caps *gst.Caps) *gst.Caps {
 
 	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(self)))
 
+	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(self))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
 	cret = C._gotk4_gstbase1_Aggregator_virtual_fixate_src_caps(unsafe.Pointer(parentclass.fixate_src_caps), carg0, carg1)
@@ -5005,6 +5011,8 @@ func (aggregator *AggregatorInstance) ParentFlush() gst.FlowReturn {
 
 	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
 
+	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
+
 	cret = C._gotk4_gstbase1_Aggregator_virtual_flush(unsafe.Pointer(parentclass.flush), carg0)
 	runtime.KeepAlive(aggregator)
 
@@ -5034,6 +5042,8 @@ func (aggregator *AggregatorInstance) ParentGetNextTime() gst.ClockTime {
 
 	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
 
+	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
+
 	cret = C._gotk4_gstbase1_Aggregator_virtual_get_next_time(unsafe.Pointer(parentclass.get_next_time), carg0)
 	runtime.KeepAlive(aggregator)
 
@@ -5059,6 +5069,8 @@ func (self *AggregatorInstance) ParentNegotiate() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(self)))
+
+	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(self))
 
 	cret = C._gotk4_gstbase1_Aggregator_virtual_negotiate(unsafe.Pointer(parentclass.negotiate), carg0)
 	runtime.KeepAlive(self)
@@ -5092,6 +5104,7 @@ func (self *AggregatorInstance) ParentNegotiatedSrcCaps(caps *gst.Caps) bool {
 
 	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(self)))
 
+	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(self))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
 	cret = C._gotk4_gstbase1_Aggregator_virtual_negotiated_src_caps(unsafe.Pointer(parentclass.negotiated_src_caps), carg0, carg1)
@@ -5129,6 +5142,7 @@ func (aggregator *AggregatorInstance) ParentPeekNextSample(aggregatorPad Aggrega
 
 	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
 
+	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
 	carg1 = (*C.GstAggregatorPad)(UnsafeAggregatorPadToGlibNone(aggregatorPad))
 
 	cret = C._gotk4_gstbase1_Aggregator_virtual_peek_next_sample(unsafe.Pointer(parentclass.peek_next_sample), carg0, carg1)
@@ -5168,6 +5182,7 @@ func (self *AggregatorInstance) ParentProposeAllocation(pad AggregatorPad, decid
 
 	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(self)))
 
+	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(self))
 	carg1 = (*C.GstAggregatorPad)(UnsafeAggregatorPadToGlibNone(pad))
 	carg2 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(decideQuery))
 	carg3 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
@@ -5210,6 +5225,7 @@ func (aggregator *AggregatorInstance) ParentSinkEvent(aggregatorPad AggregatorPa
 
 	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
 
+	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
 	carg1 = (*C.GstAggregatorPad)(UnsafeAggregatorPadToGlibNone(aggregatorPad))
 	carg2 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
@@ -5250,6 +5266,7 @@ func (aggregator *AggregatorInstance) ParentSinkEventPreQueue(aggregatorPad Aggr
 
 	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
 
+	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
 	carg1 = (*C.GstAggregatorPad)(UnsafeAggregatorPadToGlibNone(aggregatorPad))
 	carg2 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
@@ -5288,6 +5305,7 @@ func (aggregator *AggregatorInstance) ParentSinkQuery(aggregatorPad AggregatorPa
 
 	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
 
+	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
 	carg1 = (*C.GstAggregatorPad)(UnsafeAggregatorPadToGlibNone(aggregatorPad))
 	carg2 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
@@ -5328,6 +5346,7 @@ func (aggregator *AggregatorInstance) ParentSinkQueryPreQueue(aggregatorPad Aggr
 
 	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
 
+	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
 	carg1 = (*C.GstAggregatorPad)(UnsafeAggregatorPadToGlibNone(aggregatorPad))
 	carg2 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
@@ -5362,12 +5381,13 @@ func (aggregator *AggregatorInstance) ParentSinkQueryPreQueue(aggregatorPad Aggr
 //                  pad task right after that call.
 func (aggregator *AggregatorInstance) ParentSrcActivate(mode gst.PadMode, active bool) bool {
 	var carg0 *C.GstAggregator
-	var carg1 C.GstPadMode // in, none, casted
-	var carg2 C.gboolean   // in
+	var carg1 C.GstPadMode // in, none, converted
+	var carg2 C.gboolean   // in, none, casted
 	var cret  C.gboolean   // return
 
 	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
 
+	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
 	carg1 = C.GstPadMode(mode)
 	if active {
 		carg2 = C.TRUE
@@ -5408,6 +5428,7 @@ func (aggregator *AggregatorInstance) ParentSrcEvent(event *gst.Event) bool {
 
 	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
 
+	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
 	cret = C._gotk4_gstbase1_Aggregator_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
@@ -5444,6 +5465,7 @@ func (aggregator *AggregatorInstance) ParentSrcQuery(query *gst.Query) bool {
 
 	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
 
+	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
 	cret = C._gotk4_gstbase1_Aggregator_virtual_src_query(unsafe.Pointer(parentclass.src_query), carg0, carg1)
@@ -5476,6 +5498,8 @@ func (aggregator *AggregatorInstance) ParentStart() bool {
 
 	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
 
+	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
+
 	cret = C._gotk4_gstbase1_Aggregator_virtual_start(unsafe.Pointer(parentclass.start), carg0)
 	runtime.KeepAlive(aggregator)
 
@@ -5503,6 +5527,8 @@ func (aggregator *AggregatorInstance) ParentStop() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
+
+	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
 
 	cret = C._gotk4_gstbase1_Aggregator_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
 	runtime.KeepAlive(aggregator)
@@ -5535,6 +5561,7 @@ func (self *AggregatorInstance) ParentUpdateSrcCaps(caps *gst.Caps) (*gst.Caps, 
 
 	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(self)))
 
+	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(self))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
 	cret = C._gotk4_gstbase1_Aggregator_virtual_update_src_caps(unsafe.Pointer(parentclass.update_src_caps), carg0, carg1, &carg2)
@@ -5992,6 +6019,7 @@ func (aggpad *AggregatorPadInstance) ParentFlush(aggregator Aggregator) gst.Flow
 
 	parentclass := (*C.GstAggregatorPadClass)(classdata.PeekParentClass(UnsafeAggregatorPadToGlibNone(aggpad)))
 
+	carg0 = (*C.GstAggregatorPad)(UnsafeAggregatorPadToGlibNone(aggpad))
 	carg1 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
 
 	cret = C._gotk4_gstbase1_AggregatorPad_virtual_flush(unsafe.Pointer(parentclass.flush), carg0, carg1)
@@ -6028,6 +6056,7 @@ func (aggpad *AggregatorPadInstance) ParentSkipBuffer(aggregator Aggregator, buf
 
 	parentclass := (*C.GstAggregatorPadClass)(classdata.PeekParentClass(UnsafeAggregatorPadToGlibNone(aggpad)))
 
+	carg0 = (*C.GstAggregatorPad)(UnsafeAggregatorPadToGlibNone(aggpad))
 	carg1 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
 	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
@@ -7694,14 +7723,15 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 //                  Convert between formats.
 func (parse *BaseParseInstance) ParentConvert(srcFormat gst.Format, srcValue int64, destFormat gst.Format, destValue *int64) bool {
 	var carg0 *C.GstBaseParse
-	var carg1 C.GstFormat // in, none, casted
+	var carg1 C.GstFormat // in, none, converted
 	var carg2 C.gint64    // in, none, casted
 	var carg3 C.GstFormat // in, none, casted
-	var carg4 *C.gint64   // in, transfer: none, C Pointers: 1, Name: gint64
+	var carg4 *C.gint64   // in, none, casted
 	var cret  C.gboolean  // return
 
 	parentclass := (*C.GstBaseParseClass)(classdata.PeekParentClass(UnsafeBaseParseToGlibNone(parse)))
 
+	carg0 = (*C.GstBaseParse)(UnsafeBaseParseToGlibNone(parse))
 	carg1 = C.GstFormat(srcFormat)
 	carg2 = C.gint64(srcValue)
 	carg3 = C.GstFormat(destFormat)
@@ -7747,6 +7777,7 @@ func (parse *BaseParseInstance) ParentDetect(buffer *gst.Buffer) gst.FlowReturn 
 
 	parentclass := (*C.GstBaseParseClass)(classdata.PeekParentClass(UnsafeBaseParseToGlibNone(parse)))
 
+	carg0 = (*C.GstBaseParse)(UnsafeBaseParseToGlibNone(parse))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
 	cret = C._gotk4_gstbase1_BaseParse_virtual_detect(unsafe.Pointer(parentclass.detect), carg0, carg1)
@@ -7780,6 +7811,7 @@ func (parse *BaseParseInstance) ParentGetSinkCaps(filter *gst.Caps) *gst.Caps {
 
 	parentclass := (*C.GstBaseParseClass)(classdata.PeekParentClass(UnsafeBaseParseToGlibNone(parse)))
 
+	carg0 = (*C.GstBaseParse)(UnsafeBaseParseToGlibNone(parse))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filter))
 
 	cret = C._gotk4_gstbase1_BaseParse_virtual_get_sink_caps(unsafe.Pointer(parentclass.get_sink_caps), carg0, carg1)
@@ -7823,6 +7855,7 @@ func (parse *BaseParseInstance) ParentHandleFrame(frame *BaseParseFrame) (int32,
 
 	parentclass := (*C.GstBaseParseClass)(classdata.PeekParentClass(UnsafeBaseParseToGlibNone(parse)))
 
+	carg0 = (*C.GstBaseParse)(UnsafeBaseParseToGlibNone(parse))
 	carg1 = (*C.GstBaseParseFrame)(UnsafeBaseParseFrameToGlibNone(frame))
 
 	cret = C._gotk4_gstbase1_BaseParse_virtual_handle_frame(unsafe.Pointer(parentclass.handle_frame), carg0, carg1, &carg2)
@@ -7862,6 +7895,7 @@ func (parse *BaseParseInstance) ParentPrePushFrame(frame *BaseParseFrame) gst.Fl
 
 	parentclass := (*C.GstBaseParseClass)(classdata.PeekParentClass(UnsafeBaseParseToGlibNone(parse)))
 
+	carg0 = (*C.GstBaseParse)(UnsafeBaseParseToGlibNone(parse))
 	carg1 = (*C.GstBaseParseFrame)(UnsafeBaseParseFrameToGlibNone(frame))
 
 	cret = C._gotk4_gstbase1_BaseParse_virtual_pre_push_frame(unsafe.Pointer(parentclass.pre_push_frame), carg0, carg1)
@@ -7895,6 +7929,7 @@ func (parse *BaseParseInstance) ParentSetSinkCaps(caps *gst.Caps) bool {
 
 	parentclass := (*C.GstBaseParseClass)(classdata.PeekParentClass(UnsafeBaseParseToGlibNone(parse)))
 
+	carg0 = (*C.GstBaseParse)(UnsafeBaseParseToGlibNone(parse))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
 	cret = C._gotk4_gstbase1_BaseParse_virtual_set_sink_caps(unsafe.Pointer(parentclass.set_sink_caps), carg0, carg1)
@@ -7932,6 +7967,7 @@ func (parse *BaseParseInstance) ParentSinkEvent(event *gst.Event) bool {
 
 	parentclass := (*C.GstBaseParseClass)(classdata.PeekParentClass(UnsafeBaseParseToGlibNone(parse)))
 
+	carg0 = (*C.GstBaseParse)(UnsafeBaseParseToGlibNone(parse))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
 	cret = C._gotk4_gstbase1_BaseParse_virtual_sink_event(unsafe.Pointer(parentclass.sink_event), carg0, carg1)
@@ -7969,6 +8005,7 @@ func (parse *BaseParseInstance) ParentSinkQuery(query *gst.Query) bool {
 
 	parentclass := (*C.GstBaseParseClass)(classdata.PeekParentClass(UnsafeBaseParseToGlibNone(parse)))
 
+	carg0 = (*C.GstBaseParse)(UnsafeBaseParseToGlibNone(parse))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
 	cret = C._gotk4_gstbase1_BaseParse_virtual_sink_query(unsafe.Pointer(parentclass.sink_query), carg0, carg1)
@@ -8005,6 +8042,7 @@ func (parse *BaseParseInstance) ParentSrcEvent(event *gst.Event) bool {
 
 	parentclass := (*C.GstBaseParseClass)(classdata.PeekParentClass(UnsafeBaseParseToGlibNone(parse)))
 
+	carg0 = (*C.GstBaseParse)(UnsafeBaseParseToGlibNone(parse))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
 	cret = C._gotk4_gstbase1_BaseParse_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
@@ -8041,6 +8079,7 @@ func (parse *BaseParseInstance) ParentSrcQuery(query *gst.Query) bool {
 
 	parentclass := (*C.GstBaseParseClass)(classdata.PeekParentClass(UnsafeBaseParseToGlibNone(parse)))
 
+	carg0 = (*C.GstBaseParse)(UnsafeBaseParseToGlibNone(parse))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
 	cret = C._gotk4_gstbase1_BaseParse_virtual_src_query(unsafe.Pointer(parentclass.src_query), carg0, carg1)
@@ -8072,6 +8111,8 @@ func (parse *BaseParseInstance) ParentStart() bool {
 
 	parentclass := (*C.GstBaseParseClass)(classdata.PeekParentClass(UnsafeBaseParseToGlibNone(parse)))
 
+	carg0 = (*C.GstBaseParse)(UnsafeBaseParseToGlibNone(parse))
+
 	cret = C._gotk4_gstbase1_BaseParse_virtual_start(unsafe.Pointer(parentclass.start), carg0)
 	runtime.KeepAlive(parse)
 
@@ -8099,6 +8140,8 @@ func (parse *BaseParseInstance) ParentStop() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstBaseParseClass)(classdata.PeekParentClass(UnsafeBaseParseToGlibNone(parse)))
+
+	carg0 = (*C.GstBaseParse)(UnsafeBaseParseToGlibNone(parse))
 
 	cret = C._gotk4_gstbase1_BaseParse_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
 	runtime.KeepAlive(parse)
@@ -10456,11 +10499,12 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 //     mode. The default implementation starts a task on the sink pad.
 func (sink *BaseSinkInstance) ParentActivatePull(active bool) bool {
 	var carg0 *C.GstBaseSink
-	var carg1 C.gboolean // in
+	var carg1 C.gboolean // in, none, converted
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
 
+	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 	if active {
 		carg1 = C.TRUE
 	}
@@ -10497,6 +10541,7 @@ func (sink *BaseSinkInstance) ParentEvent(event *gst.Event) bool {
 
 	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
 
+	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
 	cret = C._gotk4_gstbase1_BaseSink_virtual_event(unsafe.Pointer(parentclass.event), carg0, carg1)
@@ -10532,6 +10577,7 @@ func (sink *BaseSinkInstance) ParentFixate(caps *gst.Caps) *gst.Caps {
 
 	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
 
+	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
 	cret = C._gotk4_gstbase1_BaseSink_virtual_fixate(unsafe.Pointer(parentclass.fixate), carg0, carg1)
@@ -10559,11 +10605,12 @@ func (sink *BaseSinkInstance) ParentFixate(caps *gst.Caps) *gst.Caps {
 // Called to get sink pad caps from the subclass.
 func (sink *BaseSinkInstance) ParentGetCaps(filter *gst.Caps) *gst.Caps {
 	var carg0 *C.GstBaseSink
-	var carg1 *C.GstCaps // in, none, converted, nullable
+	var carg1 *C.GstCaps // in, none, converted
 	var cret  *C.GstCaps // return, full, converted
 
 	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
 
+	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 	if filter != nil {
 		carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filter))
 	}
@@ -10600,6 +10647,7 @@ func (sink *BaseSinkInstance) ParentGetTimes(buffer *gst.Buffer) (gst.ClockTime,
 
 	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
 
+	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
 	C._gotk4_gstbase1_BaseSink_virtual_get_times(unsafe.Pointer(parentclass.get_times), carg0, carg1, &carg2, &carg3)
@@ -10635,6 +10683,7 @@ func (sink *BaseSinkInstance) ParentPrepare(buffer *gst.Buffer) gst.FlowReturn {
 
 	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
 
+	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
 	cret = C._gotk4_gstbase1_BaseSink_virtual_prepare(unsafe.Pointer(parentclass.prepare), carg0, carg1)
@@ -10668,6 +10717,7 @@ func (sink *BaseSinkInstance) ParentPrepareList(bufferList *gst.BufferList) gst.
 
 	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
 
+	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 	carg1 = (*C.GstBufferList)(gst.UnsafeBufferListToGlibNone(bufferList))
 
 	cret = C._gotk4_gstbase1_BaseSink_virtual_prepare_list(unsafe.Pointer(parentclass.prepare_list), carg0, carg1)
@@ -10700,6 +10750,7 @@ func (sink *BaseSinkInstance) ParentPreroll(buffer *gst.Buffer) gst.FlowReturn {
 
 	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
 
+	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
 	cret = C._gotk4_gstbase1_BaseSink_virtual_preroll(unsafe.Pointer(parentclass.preroll), carg0, carg1)
@@ -10732,6 +10783,7 @@ func (sink *BaseSinkInstance) ParentProposeAllocation(query *gst.Query) bool {
 
 	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
 
+	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
 	cret = C._gotk4_gstbase1_BaseSink_virtual_propose_allocation(unsafe.Pointer(parentclass.propose_allocation), carg0, carg1)
@@ -10766,6 +10818,7 @@ func (sink *BaseSinkInstance) ParentQuery(query *gst.Query) bool {
 
 	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
 
+	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
 	cret = C._gotk4_gstbase1_BaseSink_virtual_query(unsafe.Pointer(parentclass.query), carg0, carg1)
@@ -10801,6 +10854,7 @@ func (sink *BaseSinkInstance) ParentRender(buffer *gst.Buffer) gst.FlowReturn {
 
 	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
 
+	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
 	cret = C._gotk4_gstbase1_BaseSink_virtual_render(unsafe.Pointer(parentclass.render), carg0, carg1)
@@ -10834,6 +10888,7 @@ func (sink *BaseSinkInstance) ParentRenderList(bufferList *gst.BufferList) gst.F
 
 	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
 
+	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 	carg1 = (*C.GstBufferList)(gst.UnsafeBufferListToGlibNone(bufferList))
 
 	cret = C._gotk4_gstbase1_BaseSink_virtual_render_list(unsafe.Pointer(parentclass.render_list), carg0, carg1)
@@ -10866,6 +10921,7 @@ func (sink *BaseSinkInstance) ParentSetCaps(caps *gst.Caps) bool {
 
 	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
 
+	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
 	cret = C._gotk4_gstbase1_BaseSink_virtual_set_caps(unsafe.Pointer(parentclass.set_caps), carg0, carg1)
@@ -10895,6 +10951,8 @@ func (sink *BaseSinkInstance) ParentStart() bool {
 
 	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
 
+	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
+
 	cret = C._gotk4_gstbase1_BaseSink_virtual_start(unsafe.Pointer(parentclass.start), carg0)
 	runtime.KeepAlive(sink)
 
@@ -10920,6 +10978,8 @@ func (sink *BaseSinkInstance) ParentStop() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
+
+	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 
 	cret = C._gotk4_gstbase1_BaseSink_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
 	runtime.KeepAlive(sink)
@@ -10947,6 +11007,8 @@ func (sink *BaseSinkInstance) ParentUnlock() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
+
+	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 
 	cret = C._gotk4_gstbase1_BaseSink_virtual_unlock(unsafe.Pointer(parentclass.unlock), carg0)
 	runtime.KeepAlive(sink)
@@ -10977,6 +11039,8 @@ func (sink *BaseSinkInstance) ParentUnlockStop() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
+
+	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 
 	cret = C._gotk4_gstbase1_BaseSink_virtual_unlock_stop(unsafe.Pointer(parentclass.unlock_stop), carg0)
 	runtime.KeepAlive(sink)
@@ -11011,6 +11075,7 @@ func (sink *BaseSinkInstance) ParentWaitEvent(event *gst.Event) gst.FlowReturn {
 
 	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
 
+	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
 	cret = C._gotk4_gstbase1_BaseSink_virtual_wait_event(unsafe.Pointer(parentclass.wait_event), carg0, carg1)
@@ -13118,13 +13183,14 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 // implementation will use the negotiated allocator.
 func (src *BaseSrcInstance) ParentAlloc(offset uint64, size uint) (*gst.Buffer, gst.FlowReturn) {
 	var carg0 *C.GstBaseSrc
-	var carg1 C.guint64       // in, none, casted
+	var carg1 C.guint64       // in, none, converted
 	var carg2 C.guint         // in, none, casted
 	var carg3 *C.GstBuffer    // out, full, converted, nullable
 	var cret  C.GstFlowReturn // return, none, casted
 
 	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
 
+	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
 	carg1 = C.guint64(offset)
 	carg2 = C.guint(size)
 
@@ -13163,6 +13229,7 @@ func (src *BaseSrcInstance) ParentDecideAllocation(query *gst.Query) bool {
 
 	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
 
+	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
 	cret = C._gotk4_gstbase1_BaseSrc_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
@@ -13197,6 +13264,7 @@ func (src *BaseSrcInstance) ParentDoSeek(segment *gst.Segment) bool {
 
 	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
 
+	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
 	carg1 = (*C.GstSegment)(gst.UnsafeSegmentToGlibNone(segment))
 
 	cret = C._gotk4_gstbase1_BaseSrc_virtual_do_seek(unsafe.Pointer(parentclass.do_seek), carg0, carg1)
@@ -13231,6 +13299,7 @@ func (src *BaseSrcInstance) ParentEvent(event *gst.Event) bool {
 
 	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
 
+	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
 	cret = C._gotk4_gstbase1_BaseSrc_virtual_event(unsafe.Pointer(parentclass.event), carg0, carg1)
@@ -13263,13 +13332,14 @@ func (src *BaseSrcInstance) ParentEvent(event *gst.Event) bool {
 //   passed buffer is guaranteed to hold the requested amount of bytes.
 func (src *BaseSrcInstance) ParentFill(offset uint64, size uint, buf *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstBaseSrc
-	var carg1 C.guint64       // in, none, casted
+	var carg1 C.guint64       // in, none, converted
 	var carg2 C.guint         // in, none, casted
-	var carg3 *C.GstBuffer    // in, none, converted
+	var carg3 *C.GstBuffer    // in, none, casted
 	var cret  C.GstFlowReturn // return, none, casted
 
 	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
 
+	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
 	carg1 = C.guint64(offset)
 	carg2 = C.guint(size)
 	carg3 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buf))
@@ -13301,11 +13371,12 @@ func (src *BaseSrcInstance) ParentFill(offset uint64, size uint, buf *gst.Buffer
 // Called if, in negotiation, caps need fixating.
 func (src *BaseSrcInstance) ParentFixate(caps *gst.Caps) *gst.Caps {
 	var carg0 *C.GstBaseSrc
-	var carg1 *C.GstCaps // in, full, converted
+	var carg1 *C.GstCaps // in, none, converted
 	var cret  *C.GstCaps // return, full, converted
 
 	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
 
+	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibFull(caps))
 
 	cret = C._gotk4_gstbase1_BaseSrc_virtual_fixate(unsafe.Pointer(parentclass.fixate), carg0, carg1)
@@ -13333,11 +13404,12 @@ func (src *BaseSrcInstance) ParentFixate(caps *gst.Caps) *gst.Caps {
 // Called to get the caps to report.
 func (src *BaseSrcInstance) ParentGetCaps(filter *gst.Caps) *gst.Caps {
 	var carg0 *C.GstBaseSrc
-	var carg1 *C.GstCaps // in, none, converted, nullable
+	var carg1 *C.GstCaps // in, none, converted
 	var cret  *C.GstCaps // return, full, converted
 
 	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
 
+	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
 	if filter != nil {
 		carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filter))
 	}
@@ -13369,6 +13441,8 @@ func (src *BaseSrcInstance) ParentGetSize() (uint64, bool) {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
+
+	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
 
 	cret = C._gotk4_gstbase1_BaseSrc_virtual_get_size(unsafe.Pointer(parentclass.get_size), carg0, &carg1)
 	runtime.KeepAlive(src)
@@ -13406,6 +13480,7 @@ func (src *BaseSrcInstance) ParentGetTimes(buffer *gst.Buffer) (gst.ClockTime, g
 
 	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
 
+	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
 	C._gotk4_gstbase1_BaseSrc_virtual_get_times(unsafe.Pointer(parentclass.get_times), carg0, carg1, &carg2, &carg3)
@@ -13434,6 +13509,8 @@ func (src *BaseSrcInstance) ParentIsSeekable() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
+
+	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
 
 	cret = C._gotk4_gstbase1_BaseSrc_virtual_is_seekable(unsafe.Pointer(parentclass.is_seekable), carg0)
 	runtime.KeepAlive(src)
@@ -13466,6 +13543,8 @@ func (src *BaseSrcInstance) ParentNegotiate() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
+
+	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
 
 	cret = C._gotk4_gstbase1_BaseSrc_virtual_negotiate(unsafe.Pointer(parentclass.negotiate), carg0)
 	runtime.KeepAlive(src)
@@ -13505,6 +13584,7 @@ func (src *BaseSrcInstance) ParentPrepareSeekSegment(seek *gst.Event, segment *g
 
 	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
 
+	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(seek))
 	carg2 = (*C.GstSegment)(gst.UnsafeSegmentToGlibNone(segment))
 
@@ -13541,6 +13621,7 @@ func (src *BaseSrcInstance) ParentQuery(query *gst.Query) bool {
 
 	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
 
+	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
 	cret = C._gotk4_gstbase1_BaseSrc_virtual_query(unsafe.Pointer(parentclass.query), carg0, carg1)
@@ -13575,6 +13656,7 @@ func (src *BaseSrcInstance) ParentSetCaps(caps *gst.Caps) bool {
 
 	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
 
+	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
 	cret = C._gotk4_gstbase1_BaseSrc_virtual_set_caps(unsafe.Pointer(parentclass.set_caps), carg0, carg1)
@@ -13607,6 +13689,8 @@ func (src *BaseSrcInstance) ParentStart() bool {
 
 	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
 
+	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
+
 	cret = C._gotk4_gstbase1_BaseSrc_virtual_start(unsafe.Pointer(parentclass.start), carg0)
 	runtime.KeepAlive(src)
 
@@ -13632,6 +13716,8 @@ func (src *BaseSrcInstance) ParentStop() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
+
+	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
 
 	cret = C._gotk4_gstbase1_BaseSrc_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
 	runtime.KeepAlive(src)
@@ -13664,6 +13750,8 @@ func (src *BaseSrcInstance) ParentUnlock() bool {
 
 	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
 
+	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
+
 	cret = C._gotk4_gstbase1_BaseSrc_virtual_unlock(unsafe.Pointer(parentclass.unlock), carg0)
 	runtime.KeepAlive(src)
 
@@ -13691,6 +13779,8 @@ func (src *BaseSrcInstance) ParentUnlockStop() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
+
+	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
 
 	cret = C._gotk4_gstbase1_BaseSrc_virtual_unlock_stop(unsafe.Pointer(parentclass.unlock_stop), carg0)
 	runtime.KeepAlive(src)
@@ -15692,12 +15782,13 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 //                  the most optimal way to check this in all cases.
 func (trans *BaseTransformInstance) ParentAcceptCaps(direction gst.PadDirection, caps *gst.Caps) bool {
 	var carg0 *C.GstBaseTransform
-	var carg1 C.GstPadDirection // in, none, casted
-	var carg2 *C.GstCaps        // in, none, converted
+	var carg1 C.GstPadDirection // in, none, converted
+	var carg2 *C.GstCaps        // in, none, casted
 	var cret  C.gboolean        // return
 
 	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
 
+	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 	carg1 = C.GstPadDirection(direction)
 	carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
@@ -15732,6 +15823,7 @@ func (trans *BaseTransformInstance) ParentBeforeTransform(buffer *gst.Buffer) {
 
 	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
 
+	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
 	C._gotk4_gstbase1_BaseTransform_virtual_before_transform(unsafe.Pointer(parentclass.before_transform), carg0, carg1)
@@ -15763,6 +15855,7 @@ func (trans *BaseTransformInstance) ParentCopyMetadata(input *gst.Buffer, outbuf
 
 	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
 
+	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(input))
 	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(outbuf))
 
@@ -15806,6 +15899,7 @@ func (trans *BaseTransformInstance) ParentDecideAllocation(query *gst.Query) boo
 
 	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
 
+	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
 	cret = C._gotk4_gstbase1_BaseTransform_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
@@ -15840,12 +15934,13 @@ func (trans *BaseTransformInstance) ParentDecideAllocation(query *gst.Query) boo
 func (trans *BaseTransformInstance) ParentFilterMeta(query *gst.Query, api gobject.Type, params *gst.Structure) bool {
 	var carg0 *C.GstBaseTransform
 	var carg1 *C.GstQuery     // in, none, converted
-	var carg2 C.GType         // in, none, casted, alias
-	var carg3 *C.GstStructure // in, none, converted
+	var carg2 C.GType         // in, none, converted
+	var carg3 *C.GstStructure // in, none, casted, alias
 	var cret  C.gboolean      // return
 
 	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
 
+	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 	carg2 = C.GType(api)
 	carg3 = (*C.GstStructure)(gst.UnsafeStructureToGlibNone(params))
@@ -15879,13 +15974,14 @@ func (trans *BaseTransformInstance) ParentFilterMeta(query *gst.Query, api gobje
 // 	- goret *gst.Caps 
 func (trans *BaseTransformInstance) ParentFixateCaps(direction gst.PadDirection, caps *gst.Caps, othercaps *gst.Caps) *gst.Caps {
 	var carg0 *C.GstBaseTransform
-	var carg1 C.GstPadDirection // in, none, casted
-	var carg2 *C.GstCaps        // in, none, converted
-	var carg3 *C.GstCaps        // in, full, converted
+	var carg1 C.GstPadDirection // in, none, converted
+	var carg2 *C.GstCaps        // in, none, casted
+	var carg3 *C.GstCaps        // in, none, converted
 	var cret  *C.GstCaps        // return, full, converted
 
 	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
 
+	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 	carg1 = C.GstPadDirection(direction)
 	carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 	carg3 = (*C.GstCaps)(gst.UnsafeCapsToGlibFull(othercaps))
@@ -15916,6 +16012,8 @@ func (trans *BaseTransformInstance) ParentGenerateOutput() (*gst.Buffer, gst.Flo
 	var cret  C.GstFlowReturn // return, none, casted
 
 	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
+
+	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 
 	cret = C._gotk4_gstbase1_BaseTransform_virtual_generate_output(unsafe.Pointer(parentclass.generate_output), carg0, &carg1)
 	runtime.KeepAlive(trans)
@@ -15948,6 +16046,7 @@ func (trans *BaseTransformInstance) ParentGetUnitSize(caps *gst.Caps) (uint, boo
 
 	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
 
+	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
 	cret = C._gotk4_gstbase1_BaseTransform_virtual_get_unit_size(unsafe.Pointer(parentclass.get_unit_size), carg0, carg1, &carg2)
@@ -15984,6 +16083,7 @@ func (trans *BaseTransformInstance) ParentPrepareOutputBuffer(input *gst.Buffer)
 
 	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
 
+	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(input))
 
 	cret = C._gotk4_gstbase1_BaseTransform_virtual_prepare_output_buffer(unsafe.Pointer(parentclass.prepare_output_buffer), carg0, carg1, &carg2)
@@ -16027,6 +16127,7 @@ func (trans *BaseTransformInstance) ParentProposeAllocation(decideQuery *gst.Que
 
 	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
 
+	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(decideQuery))
 	carg2 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
@@ -16062,12 +16163,13 @@ func (trans *BaseTransformInstance) ParentProposeAllocation(decideQuery *gst.Que
 //                  query
 func (trans *BaseTransformInstance) ParentQueryBaseTransform(direction gst.PadDirection, query *gst.Query) bool {
 	var carg0 *C.GstBaseTransform
-	var carg1 C.GstPadDirection // in, none, casted
-	var carg2 *C.GstQuery       // in, none, converted
+	var carg1 C.GstPadDirection // in, none, converted
+	var carg2 *C.GstQuery       // in, none, casted
 	var cret  C.gboolean        // return
 
 	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
 
+	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 	carg1 = C.GstPadDirection(direction)
 	carg2 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
@@ -16106,6 +16208,7 @@ func (trans *BaseTransformInstance) ParentSetCaps(incaps *gst.Caps, outcaps *gst
 
 	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
 
+	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(incaps))
 	carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(outcaps))
 
@@ -16135,11 +16238,12 @@ func (trans *BaseTransformInstance) ParentSetCaps(incaps *gst.Caps, outcaps *gst
 // 	- goret bool 
 func (trans *BaseTransformInstance) ParentSinkEvent(event *gst.Event) bool {
 	var carg0 *C.GstBaseTransform
-	var carg1 *C.GstEvent // in, full, converted
+	var carg1 *C.GstEvent // in, none, converted
 	var cret  C.gboolean  // return
 
 	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
 
+	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibFull(event))
 
 	cret = C._gotk4_gstbase1_BaseTransform_virtual_sink_event(unsafe.Pointer(parentclass.sink_event), carg0, carg1)
@@ -16167,11 +16271,12 @@ func (trans *BaseTransformInstance) ParentSinkEvent(event *gst.Event) bool {
 // 	- goret bool 
 func (trans *BaseTransformInstance) ParentSrcEvent(event *gst.Event) bool {
 	var carg0 *C.GstBaseTransform
-	var carg1 *C.GstEvent // in, full, converted
+	var carg1 *C.GstEvent // in, none, converted
 	var cret  C.gboolean  // return
 
 	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
 
+	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibFull(event))
 
 	cret = C._gotk4_gstbase1_BaseTransform_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
@@ -16203,6 +16308,8 @@ func (trans *BaseTransformInstance) ParentStart() bool {
 
 	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
 
+	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
+
 	cret = C._gotk4_gstbase1_BaseTransform_virtual_start(unsafe.Pointer(parentclass.start), carg0)
 	runtime.KeepAlive(trans)
 
@@ -16230,6 +16337,8 @@ func (trans *BaseTransformInstance) ParentStop() bool {
 	var cret  C.gboolean // return
 
 	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
+
+	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 
 	cret = C._gotk4_gstbase1_BaseTransform_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
 	runtime.KeepAlive(trans)
@@ -16264,12 +16373,13 @@ func (trans *BaseTransformInstance) ParentStop() bool {
 //                  is set to %TRUE. (Since: 1.6)
 func (trans *BaseTransformInstance) ParentSubmitInputBuffer(isDiscont bool, input *gst.Buffer) gst.FlowReturn {
 	var carg0 *C.GstBaseTransform
-	var carg1 C.gboolean      // in
-	var carg2 *C.GstBuffer    // in, none, converted
+	var carg1 C.gboolean      // in, none, converted
+	var carg2 *C.GstBuffer    // in
 	var cret  C.GstFlowReturn // return, none, casted
 
 	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
 
+	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 	if isDiscont {
 		carg1 = C.TRUE
 	}
@@ -16311,6 +16421,7 @@ func (trans *BaseTransformInstance) ParentTransform(inbuf *gst.Buffer, outbuf *g
 
 	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
 
+	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(inbuf))
 	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(outbuf))
 
@@ -16344,13 +16455,14 @@ func (trans *BaseTransformInstance) ParentTransform(inbuf *gst.Buffer, outbuf *g
 //                  element ?
 func (trans *BaseTransformInstance) ParentTransformCaps(direction gst.PadDirection, caps *gst.Caps, filter *gst.Caps) *gst.Caps {
 	var carg0 *C.GstBaseTransform
-	var carg1 C.GstPadDirection // in, none, casted
-	var carg2 *C.GstCaps        // in, none, converted
+	var carg1 C.GstPadDirection // in, none, converted
+	var carg2 *C.GstCaps        // in, none, casted
 	var carg3 *C.GstCaps        // in, none, converted
 	var cret  *C.GstCaps        // return, full, converted
 
 	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
 
+	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 	carg1 = C.GstPadDirection(direction)
 	carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 	carg3 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filter))
@@ -16388,6 +16500,7 @@ func (trans *BaseTransformInstance) ParentTransformIP(buf *gst.Buffer) gst.FlowR
 
 	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
 
+	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buf))
 
 	cret = C._gotk4_gstbase1_BaseTransform_virtual_transform_ip(unsafe.Pointer(parentclass.transform_ip), carg0, carg1)
@@ -16427,6 +16540,7 @@ func (trans *BaseTransformInstance) ParentTransformMeta(outbuf *gst.Buffer, meta
 
 	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
 
+	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(outbuf))
 	carg2 = (*C.GstMeta)(gst.UnsafeMetaToGlibNone(meta))
 	carg3 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(inbuf))
@@ -16462,15 +16576,16 @@ func (trans *BaseTransformInstance) ParentTransformMeta(outbuf *gst.Buffer, meta
 // 	- goret bool 
 func (trans *BaseTransformInstance) ParentTransformSize(direction gst.PadDirection, caps *gst.Caps, size uint, othercaps *gst.Caps) (uint, bool) {
 	var carg0 *C.GstBaseTransform
-	var carg1 C.GstPadDirection // in, none, casted
-	var carg2 *C.GstCaps        // in, none, converted
-	var carg3 C.gsize           // in, none, casted
-	var carg4 *C.GstCaps        // in, none, converted
+	var carg1 C.GstPadDirection // in, none, converted
+	var carg2 *C.GstCaps        // in, none, casted
+	var carg3 C.gsize           // in, none, converted
+	var carg4 *C.GstCaps        // in, none, casted
 	var carg5 C.gsize           // out, full, casted
 	var cret  C.gboolean        // return
 
 	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
 
+	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 	carg1 = C.GstPadDirection(direction)
 	carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 	carg3 = C.gsize(size)
@@ -17802,6 +17917,8 @@ func (queue *DataQueueInstance) ParentEmpty() {
 
 	parentclass := (*C.GstDataQueueClass)(classdata.PeekParentClass(UnsafeDataQueueToGlibNone(queue)))
 
+	carg0 = (*C.GstDataQueue)(UnsafeDataQueueToGlibNone(queue))
+
 	C._gotk4_gstbase1_DataQueue_virtual_empty(unsafe.Pointer(parentclass.empty), carg0)
 	runtime.KeepAlive(queue)
 }
@@ -17812,6 +17929,8 @@ func (queue *DataQueueInstance) ParentFull() {
 	var carg0 *C.GstDataQueue
 
 	parentclass := (*C.GstDataQueueClass)(classdata.PeekParentClass(UnsafeDataQueueToGlibNone(queue)))
+
+	carg0 = (*C.GstDataQueue)(UnsafeDataQueueToGlibNone(queue))
 
 	C._gotk4_gstbase1_DataQueue_virtual_full(unsafe.Pointer(parentclass.full), carg0)
 	runtime.KeepAlive(queue)
@@ -18047,6 +18166,8 @@ func (src *PushSrcInstance) ParentAllocPushSrc() (*gst.Buffer, gst.FlowReturn) {
 
 	parentclass := (*C.GstPushSrcClass)(classdata.PeekParentClass(UnsafePushSrcToGlibNone(src)))
 
+	carg0 = (*C.GstPushSrc)(UnsafePushSrcToGlibNone(src))
+
 	cret = C._gotk4_gstbase1_PushSrc_virtual_alloc(unsafe.Pointer(parentclass.alloc), carg0, &carg1)
 	runtime.KeepAlive(src)
 
@@ -18080,6 +18201,7 @@ func (src *PushSrcInstance) ParentFillPushSrc(buf *gst.Buffer) gst.FlowReturn {
 
 	parentclass := (*C.GstPushSrcClass)(classdata.PeekParentClass(UnsafePushSrcToGlibNone(src)))
 
+	carg0 = (*C.GstPushSrc)(UnsafePushSrcToGlibNone(src))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buf))
 
 	cret = C._gotk4_gstbase1_PushSrc_virtual_fill(unsafe.Pointer(parentclass.fill), carg0, carg1)

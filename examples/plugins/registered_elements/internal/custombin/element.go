@@ -29,7 +29,7 @@ type customBin struct {
 	mixer           gst.Element
 }
 
-// constructed is the method we use to override the GOBject.constructed method.
+// constructed is the method we use to override the GObject.constructed method.
 func (bin *customBin) constructed() {
 	bin.source1 = gst.ElementFactoryMakeWithProperties("gocustomsrc", map[string]any{
 		"duration": int64(5 * time.Second),

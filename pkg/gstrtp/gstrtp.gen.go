@@ -2016,6 +2016,7 @@ func (filter *RTPBaseDepayloadInstance) ParentHandleEvent(event *gst.Event) bool
 
 	parentclass := (*C.GstRTPBaseDepayloadClass)(classdata.PeekParentClass(UnsafeRTPBaseDepayloadToGlibNone(filter)))
 
+	carg0 = (*C.GstRTPBaseDepayload)(UnsafeRTPBaseDepayloadToGlibNone(filter))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
 	cret = C._gotk4_gstrtp1_RTPBaseDepayload_virtual_handle_event(unsafe.Pointer(parentclass.handle_event), carg0, carg1)
@@ -2050,6 +2051,7 @@ func (filter *RTPBaseDepayloadInstance) ParentPacketLost(event *gst.Event) bool 
 
 	parentclass := (*C.GstRTPBaseDepayloadClass)(classdata.PeekParentClass(UnsafeRTPBaseDepayloadToGlibNone(filter)))
 
+	carg0 = (*C.GstRTPBaseDepayload)(UnsafeRTPBaseDepayloadToGlibNone(filter))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
 	cret = C._gotk4_gstrtp1_RTPBaseDepayload_virtual_packet_lost(unsafe.Pointer(parentclass.packet_lost), carg0, carg1)
@@ -2088,6 +2090,7 @@ func (base *RTPBaseDepayloadInstance) ParentProcess(in *gst.Buffer) *gst.Buffer 
 
 	parentclass := (*C.GstRTPBaseDepayloadClass)(classdata.PeekParentClass(UnsafeRTPBaseDepayloadToGlibNone(base)))
 
+	carg0 = (*C.GstRTPBaseDepayload)(UnsafeRTPBaseDepayloadToGlibNone(base))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(in))
 
 	cret = C._gotk4_gstrtp1_RTPBaseDepayload_virtual_process(unsafe.Pointer(parentclass.process), carg0, carg1)
@@ -2127,6 +2130,7 @@ func (base *RTPBaseDepayloadInstance) ParentProcessRtpPacket(rtpBuffer *RTPBuffe
 
 	parentclass := (*C.GstRTPBaseDepayloadClass)(classdata.PeekParentClass(UnsafeRTPBaseDepayloadToGlibNone(base)))
 
+	carg0 = (*C.GstRTPBaseDepayload)(UnsafeRTPBaseDepayloadToGlibNone(base))
 	carg1 = (*C.GstRTPBuffer)(UnsafeRTPBufferToGlibNone(rtpBuffer))
 
 	cret = C._gotk4_gstrtp1_RTPBaseDepayload_virtual_process_rtp_packet(unsafe.Pointer(parentclass.process_rtp_packet), carg0, carg1)
@@ -2159,6 +2163,7 @@ func (filter *RTPBaseDepayloadInstance) ParentSetCaps(caps *gst.Caps) bool {
 
 	parentclass := (*C.GstRTPBaseDepayloadClass)(classdata.PeekParentClass(UnsafeRTPBaseDepayloadToGlibNone(filter)))
 
+	carg0 = (*C.GstRTPBaseDepayload)(UnsafeRTPBaseDepayloadToGlibNone(filter))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
 	cret = C._gotk4_gstrtp1_RTPBaseDepayload_virtual_set_caps(unsafe.Pointer(parentclass.set_caps), carg0, carg1)
@@ -3050,6 +3055,7 @@ func (payload *RTPBasePayloadInstance) ParentGetCaps(pad gst.Pad, filter *gst.Ca
 
 	parentclass := (*C.GstRTPBasePayloadClass)(classdata.PeekParentClass(UnsafeRTPBasePayloadToGlibNone(payload)))
 
+	carg0 = (*C.GstRTPBasePayload)(UnsafeRTPBasePayloadToGlibNone(payload))
 	carg1 = (*C.GstPad)(gst.UnsafePadToGlibNone(pad))
 	carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filter))
 
@@ -3084,6 +3090,7 @@ func (payload *RTPBasePayloadInstance) ParentHandleBuffer(buffer *gst.Buffer) gs
 
 	parentclass := (*C.GstRTPBasePayloadClass)(classdata.PeekParentClass(UnsafeRTPBasePayloadToGlibNone(payload)))
 
+	carg0 = (*C.GstRTPBasePayload)(UnsafeRTPBasePayloadToGlibNone(payload))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
 	cret = C._gotk4_gstrtp1_RTPBasePayload_virtual_handle_buffer(unsafe.Pointer(parentclass.handle_buffer), carg0, carg1)
@@ -3118,6 +3125,7 @@ func (payload *RTPBasePayloadInstance) ParentQueryRTPBasePayload(pad gst.Pad, qu
 
 	parentclass := (*C.GstRTPBasePayloadClass)(classdata.PeekParentClass(UnsafeRTPBasePayloadToGlibNone(payload)))
 
+	carg0 = (*C.GstRTPBasePayload)(UnsafeRTPBasePayloadToGlibNone(payload))
 	carg1 = (*C.GstPad)(gst.UnsafePadToGlibNone(pad))
 	carg2 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
 
@@ -3154,6 +3162,7 @@ func (payload *RTPBasePayloadInstance) ParentSetCaps(caps *gst.Caps) bool {
 
 	parentclass := (*C.GstRTPBasePayloadClass)(classdata.PeekParentClass(UnsafeRTPBasePayloadToGlibNone(payload)))
 
+	carg0 = (*C.GstRTPBasePayload)(UnsafeRTPBasePayloadToGlibNone(payload))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
 	cret = C._gotk4_gstrtp1_RTPBasePayload_virtual_set_caps(unsafe.Pointer(parentclass.set_caps), carg0, carg1)
@@ -3188,6 +3197,7 @@ func (payload *RTPBasePayloadInstance) ParentSinkEvent(event *gst.Event) bool {
 
 	parentclass := (*C.GstRTPBasePayloadClass)(classdata.PeekParentClass(UnsafeRTPBasePayloadToGlibNone(payload)))
 
+	carg0 = (*C.GstRTPBasePayload)(UnsafeRTPBasePayloadToGlibNone(payload))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
 	cret = C._gotk4_gstrtp1_RTPBasePayload_virtual_sink_event(unsafe.Pointer(parentclass.sink_event), carg0, carg1)
@@ -3222,6 +3232,7 @@ func (payload *RTPBasePayloadInstance) ParentSrcEvent(event *gst.Event) bool {
 
 	parentclass := (*C.GstRTPBasePayloadClass)(classdata.PeekParentClass(UnsafeRTPBasePayloadToGlibNone(payload)))
 
+	carg0 = (*C.GstRTPBasePayload)(UnsafeRTPBasePayloadToGlibNone(payload))
 	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
 
 	cret = C._gotk4_gstrtp1_RTPBasePayload_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
@@ -4547,6 +4558,7 @@ func (ext *RTPHeaderExtensionInstance) ParentGetMaxSize(inputMeta *gst.Buffer) u
 
 	parentclass := (*C.GstRTPHeaderExtensionClass)(classdata.PeekParentClass(UnsafeRTPHeaderExtensionToGlibNone(ext)))
 
+	carg0 = (*C.GstRTPHeaderExtension)(UnsafeRTPHeaderExtensionToGlibNone(ext))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(inputMeta))
 
 	cret = C._gotk4_gstrtp1_RTPHeaderExtension_virtual_get_max_size(unsafe.Pointer(parentclass.get_max_size), carg0, carg1)
@@ -4573,6 +4585,8 @@ func (ext *RTPHeaderExtensionInstance) ParentGetSupportedFlags() RTPHeaderExtens
 	var cret  C.GstRTPHeaderExtensionFlags // return, none, casted
 
 	parentclass := (*C.GstRTPHeaderExtensionClass)(classdata.PeekParentClass(UnsafeRTPHeaderExtensionToGlibNone(ext)))
+
+	carg0 = (*C.GstRTPHeaderExtension)(UnsafeRTPHeaderExtensionToGlibNone(ext))
 
 	cret = C._gotk4_gstrtp1_RTPHeaderExtension_virtual_get_supported_flags(unsafe.Pointer(parentclass.get_supported_flags), carg0)
 	runtime.KeepAlive(ext)
@@ -4601,14 +4615,15 @@ func (ext *RTPHeaderExtensionInstance) ParentGetSupportedFlags() RTPHeaderExtens
 // Read the RTP header extension from @data.
 func (ext *RTPHeaderExtensionInstance) ParentRead(readFlags RTPHeaderExtensionFlags, data []uint8, buffer *gst.Buffer) bool {
 	var carg0 *C.GstRTPHeaderExtension
-	var carg1 C.GstRTPHeaderExtensionFlags // in, none, casted
-	var carg2 *C.guint8                    // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg3)
-	var carg3 C.gsize                      // implicit
-	var carg4 *C.GstBuffer                 // in, none, converted
+	var carg1 C.GstRTPHeaderExtensionFlags // in, none, converted
+	var carg2 *C.guint8                    // in, none, casted
+	var carg3 C.gsize                      // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg3)
+	var carg4 *C.GstBuffer                 // implicit
 	var cret  C.gboolean                   // return
 
 	parentclass := (*C.GstRTPHeaderExtensionClass)(classdata.PeekParentClass(UnsafeRTPHeaderExtensionToGlibNone(ext)))
 
+	carg0 = (*C.GstRTPHeaderExtension)(UnsafeRTPHeaderExtensionToGlibNone(ext))
 	carg1 = C.GstRTPHeaderExtensionFlags(readFlags)
 	_ = data
 	_ = carg2
@@ -4647,12 +4662,13 @@ func (ext *RTPHeaderExtensionInstance) ParentRead(readFlags RTPHeaderExtensionFl
 //     an SDP.
 func (ext *RTPHeaderExtensionInstance) ParentSetAttributes(direction RTPHeaderExtensionDirection, attributes string) bool {
 	var carg0 *C.GstRTPHeaderExtension
-	var carg1 C.GstRTPHeaderExtensionDirection // in, none, casted
-	var carg2 *C.gchar                         // in, none, string
+	var carg1 C.GstRTPHeaderExtensionDirection // in, none, converted
+	var carg2 *C.gchar                         // in, none, casted
 	var cret  C.gboolean                       // return
 
 	parentclass := (*C.GstRTPHeaderExtensionClass)(classdata.PeekParentClass(UnsafeRTPHeaderExtensionToGlibNone(ext)))
 
+	carg0 = (*C.GstRTPHeaderExtension)(UnsafeRTPHeaderExtensionToGlibNone(ext))
 	carg1 = C.GstRTPHeaderExtensionDirection(direction)
 	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(attributes)))
 	defer C.free(unsafe.Pointer(carg2))
@@ -4694,6 +4710,7 @@ func (ext *RTPHeaderExtensionInstance) ParentSetCapsFromAttributes(caps *gst.Cap
 
 	parentclass := (*C.GstRTPHeaderExtensionClass)(classdata.PeekParentClass(UnsafeRTPHeaderExtensionToGlibNone(ext)))
 
+	carg0 = (*C.GstRTPHeaderExtension)(UnsafeRTPHeaderExtensionToGlibNone(ext))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
 	cret = C._gotk4_gstrtp1_RTPHeaderExtension_virtual_set_caps_from_attributes(unsafe.Pointer(parentclass.set_caps_from_attributes), carg0, carg1)
@@ -4729,6 +4746,7 @@ func (ext *RTPHeaderExtensionInstance) ParentSetNonRtpSinkCaps(caps *gst.Caps) b
 
 	parentclass := (*C.GstRTPHeaderExtensionClass)(classdata.PeekParentClass(UnsafeRTPHeaderExtensionToGlibNone(ext)))
 
+	carg0 = (*C.GstRTPHeaderExtension)(UnsafeRTPHeaderExtensionToGlibNone(ext))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
 	cret = C._gotk4_gstrtp1_RTPHeaderExtension_virtual_set_non_rtp_sink_caps(unsafe.Pointer(parentclass.set_non_rtp_sink_caps), carg0, carg1)
@@ -4764,6 +4782,7 @@ func (ext *RTPHeaderExtensionInstance) ParentUpdateNonRtpSrcCaps(caps *gst.Caps)
 
 	parentclass := (*C.GstRTPHeaderExtensionClass)(classdata.PeekParentClass(UnsafeRTPHeaderExtensionToGlibNone(ext)))
 
+	carg0 = (*C.GstRTPHeaderExtension)(UnsafeRTPHeaderExtensionToGlibNone(ext))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
 	cret = C._gotk4_gstrtp1_RTPHeaderExtension_virtual_update_non_rtp_src_caps(unsafe.Pointer(parentclass.update_non_rtp_src_caps), carg0, carg1)
@@ -4800,14 +4819,15 @@ func (ext *RTPHeaderExtensionInstance) ParentUpdateNonRtpSrcCaps(caps *gst.Caps)
 func (ext *RTPHeaderExtensionInstance) ParentWrite(inputMeta *gst.Buffer, writeFlags RTPHeaderExtensionFlags, output *gst.Buffer, data []uint8) int {
 	var carg0 *C.GstRTPHeaderExtension
 	var carg1 *C.GstBuffer                 // in, none, converted
-	var carg2 C.GstRTPHeaderExtensionFlags // in, none, casted
-	var carg3 *C.GstBuffer                 // in, none, converted
-	var carg4 *C.guint8                    // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg5)
-	var carg5 C.gsize                      // implicit
+	var carg2 C.GstRTPHeaderExtensionFlags // in, none, converted
+	var carg3 *C.GstBuffer                 // in, none, casted
+	var carg4 *C.guint8                    // in, none, converted
+	var carg5 C.gsize                      // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg5)
 	var cret  C.gssize                     // return, none, casted
 
 	parentclass := (*C.GstRTPHeaderExtensionClass)(classdata.PeekParentClass(UnsafeRTPHeaderExtensionToGlibNone(ext)))
 
+	carg0 = (*C.GstRTPHeaderExtension)(UnsafeRTPHeaderExtensionToGlibNone(ext))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(inputMeta))
 	carg2 = C.GstRTPHeaderExtensionFlags(writeFlags)
 	carg3 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(output))
