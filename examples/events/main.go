@@ -83,6 +83,4 @@ func main() {
 			cancel()
 		}
 	}
-
-	return
 }

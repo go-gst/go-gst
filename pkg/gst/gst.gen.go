@@ -32,11 +32,8 @@ import (
 // extern gboolean _gotk4_gst1_PluginFeatureFilter(GstPluginFeature*, gpointer);
 // extern gboolean _gotk4_gst1_PluginFilter(GstPlugin*, gpointer);
 // extern gboolean _gotk4_gst1_PluginInitFullFunc(GstPlugin*, gpointer);
-// extern gboolean _gotk4_gst1_StructureFilterMapFunc(GQuark, GValue*, gpointer);
 // extern gboolean _gotk4_gst1_StructureFilterMapIDStrFunc(const GstIdStr*, GValue*, gpointer);
-// extern gboolean _gotk4_gst1_StructureForEachFunc(GQuark, const GValue*, gpointer);
 // extern gboolean _gotk4_gst1_StructureForEachIDStrFunc(const GstIdStr*, const GValue*, gpointer);
-// extern gboolean _gotk4_gst1_StructureMapFunc(GQuark, GValue*, gpointer);
 // extern gboolean _gotk4_gst1_StructureMapIDStrFunc(const GstIdStr*, GValue*, gpointer);
 // extern void _gotk4_gst1_ElementCallAsyncFunc(GstElement*, gpointer);
 // extern void _gotk4_gst1_IteratorForEachFunction(const GValue*, gpointer);
@@ -15614,23 +15611,6 @@ type Object interface {
 	//
 	// Check if the @object has active controlled properties.
 	HasActiveControlBindings() bool
-	// HasAncestor wraps gst_object_has_ancestor
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- ancestor Object: a #GstObject to check as ancestor 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Check if @object has an ancestor @ancestor somewhere up in
-	// the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
-	//
-	// Deprecated: Use gst_object_has_as_ancestor() instead.
-	// 
-	// MT safe. Grabs and releases @object's locks.
-	HasAncestor(Object) bool
 	// HasAsAncestor wraps gst_object_has_as_ancestor
 	// 
 	// The function takes the following parameters:
@@ -16096,43 +16076,6 @@ func (object *ObjectInstance) HasActiveControlBindings() bool {
 
 	cret = C.gst_object_has_active_control_bindings(carg0)
 	runtime.KeepAlive(object)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
-// HasAncestor wraps gst_object_has_ancestor
-// 
-// The function takes the following parameters:
-// 
-// 	- ancestor Object: a #GstObject to check as ancestor 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Check if @object has an ancestor @ancestor somewhere up in
-// the hierarchy. One can e.g. check if a #GstElement is inside a #GstPipeline.
-//
-// Deprecated: Use gst_object_has_as_ancestor() instead.
-// 
-// MT safe. Grabs and releases @object's locks.
-func (object *ObjectInstance) HasAncestor(ancestor Object) bool {
-	var carg0 *C.GstObject // in, none, converted
-	var carg1 *C.GstObject // in, none, converted
-	var cret  C.gboolean   // return
-
-	carg0 = (*C.GstObject)(UnsafeObjectToGlibNone(object))
-	carg1 = (*C.GstObject)(UnsafeObjectToGlibNone(ancestor))
-
-	cret = C.gst_object_has_ancestor(carg0, carg1)
-	runtime.KeepAlive(object)
-	runtime.KeepAlive(ancestor)
 
 	var goret bool
 
@@ -34712,23 +34655,6 @@ type Element interface {
 	// Retrieves a list of the pad templates associated with @element. The
 	// list must not be modified by the calling code.
 	GetPadTemplateList() []PadTemplate
-	// GetRequestPad wraps gst_element_get_request_pad
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- name string: the name of the request #GstPad to retrieve. 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret Pad (nullable) 
-	//
-	// The name of this function is confusing to people learning GStreamer.
-	// gst_element_request_pad_simple() aims at making it more explicit it is
-	// a simplified gst_element_request_pad().
-	//
-	// Deprecated: (since 1.20.0) Prefer using gst_element_request_pad_simple() which
-	// provides the exact same functionality.
-	GetRequestPad(string) Pad
 	// GetStartTime wraps gst_element_get_start_time
 	// 
 	// The function returns the following values:
@@ -36762,44 +36688,6 @@ func (element *ElementInstance) GetPadTemplateList() []PadTemplate {
 			return dst
 		},
 	)
-
-	return goret
-}
-
-// GetRequestPad wraps gst_element_get_request_pad
-// 
-// The function takes the following parameters:
-// 
-// 	- name string: the name of the request #GstPad to retrieve. 
-// 
-// The function returns the following values:
-// 
-// 	- goret Pad (nullable) 
-//
-// The name of this function is confusing to people learning GStreamer.
-// gst_element_request_pad_simple() aims at making it more explicit it is
-// a simplified gst_element_request_pad().
-//
-// Deprecated: (since 1.20.0) Prefer using gst_element_request_pad_simple() which
-// provides the exact same functionality.
-func (element *ElementInstance) GetRequestPad(name string) Pad {
-	var carg0 *C.GstElement // in, none, converted
-	var carg1 *C.gchar      // in, none, string
-	var cret  *C.GstPad     // return, full, converted, nullable
-
-	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
-
-	cret = C.gst_element_get_request_pad(carg0, carg1)
-	runtime.KeepAlive(element)
-	runtime.KeepAlive(name)
-
-	var goret Pad
-
-	if cret != nil {
-		goret = UnsafePadFromGlibFull(unsafe.Pointer(cret))
-	}
 
 	return goret
 }
@@ -40421,22 +40309,6 @@ type GhostPad interface {
 	ProxyPad
 	upcastToGstGhostPad() *GhostPadInstance
 
-	// Construct wraps gst_ghost_pad_construct
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Finish initialization of a newly allocated ghost pad.
-	// 
-	// This function is most useful in language bindings and when subclassing
-	// #GstGhostPad; plugin and application developers normally will not call this
-	// function. Call this function directly after a call to g_object_new
-	// (GST_TYPE_GHOST_PAD, "direction", @dir, ..., NULL).
-	//
-	// Deprecated: This function is deprecated since 1.18 and does nothing
-	// anymore.
-	Construct() bool
 	// GetTarget wraps gst_ghost_pad_get_target
 	// 
 	// The function returns the following values:
@@ -40750,39 +40622,6 @@ func GhostPadInternalActivateModeDefault(pad Pad, parent Object, mode PadMode, a
 	runtime.KeepAlive(parent)
 	runtime.KeepAlive(mode)
 	runtime.KeepAlive(active)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
-// Construct wraps gst_ghost_pad_construct
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Finish initialization of a newly allocated ghost pad.
-// 
-// This function is most useful in language bindings and when subclassing
-// #GstGhostPad; plugin and application developers normally will not call this
-// function. Call this function directly after a call to g_object_new
-// (GST_TYPE_GHOST_PAD, "direction", @dir, ..., NULL).
-//
-// Deprecated: This function is deprecated since 1.18 and does nothing
-// anymore.
-func (gpad *GhostPadInstance) Construct() bool {
-	var carg0 *C.GstGhostPad // in, none, converted
-	var cret  C.gboolean     // return
-
-	carg0 = (*C.GstGhostPad)(UnsafeGhostPadToGlibNone(gpad))
-
-	cret = C.gst_ghost_pad_construct(carg0)
-	runtime.KeepAlive(gpad)
 
 	var goret bool
 
@@ -47849,27 +47688,6 @@ func (features *CapsFeatures) Add(feature string) {
 	runtime.KeepAlive(feature)
 }
 
-// AddID wraps gst_caps_features_add_id
-// 
-// The function takes the following parameters:
-// 
-// 	- feature glib.Quark: a feature. 
-//
-// Adds @feature to @features.
-//
-// Deprecated: (since 1.26.0) Use gst_caps_features_add_id_str().
-func (features *CapsFeatures) AddID(feature glib.Quark) {
-	var carg0 *C.GstCapsFeatures // in, none, converted
-	var carg1 C.GQuark           // in, none, casted, alias
-
-	carg0 = (*C.GstCapsFeatures)(UnsafeCapsFeaturesToGlibNone(features))
-	carg1 = C.GQuark(feature)
-
-	C.gst_caps_features_add_id(carg0, carg1)
-	runtime.KeepAlive(features)
-	runtime.KeepAlive(feature)
-}
-
 // AddIDStr wraps gst_caps_features_add_id_str
 // 
 // The function takes the following parameters:
@@ -47933,40 +47751,6 @@ func (features *CapsFeatures) Contains(feature string) bool {
 	defer C.free(unsafe.Pointer(carg1))
 
 	cret = C.gst_caps_features_contains(carg0, carg1)
-	runtime.KeepAlive(features)
-	runtime.KeepAlive(feature)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
-// ContainsID wraps gst_caps_features_contains_id
-// 
-// The function takes the following parameters:
-// 
-// 	- feature glib.Quark: a feature 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Checks if @features contains @feature.
-//
-// Deprecated: (since 1.26.0) Use gst_caps_features_contains_id_str().
-func (features *CapsFeatures) ContainsID(feature glib.Quark) bool {
-	var carg0 *C.GstCapsFeatures // in, none, converted
-	var carg1 C.GQuark           // in, none, casted, alias
-	var cret  C.gboolean         // return
-
-	carg0 = (*C.GstCapsFeatures)(UnsafeCapsFeaturesToGlibNone(features))
-	carg1 = C.GQuark(feature)
-
-	cret = C.gst_caps_features_contains_id(carg0, carg1)
 	runtime.KeepAlive(features)
 	runtime.KeepAlive(feature)
 
@@ -48062,38 +47846,6 @@ func (features *CapsFeatures) GetNth(i uint) string {
 	if cret != nil {
 		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
 	}
-
-	return goret
-}
-
-// GetNthID wraps gst_caps_features_get_nth_id
-// 
-// The function takes the following parameters:
-// 
-// 	- i uint: index of the feature 
-// 
-// The function returns the following values:
-// 
-// 	- goret glib.Quark 
-//
-// Returns the @i-th feature of @features.
-//
-// Deprecated: (since 1.26.0) Use gst_caps_features_get_nth_id_str().
-func (features *CapsFeatures) GetNthID(i uint) glib.Quark {
-	var carg0 *C.GstCapsFeatures // in, none, converted
-	var carg1 C.guint            // in, none, casted
-	var cret  C.GQuark           // return, none, casted, alias
-
-	carg0 = (*C.GstCapsFeatures)(UnsafeCapsFeaturesToGlibNone(features))
-	carg1 = C.guint(i)
-
-	cret = C.gst_caps_features_get_nth_id(carg0, carg1)
-	runtime.KeepAlive(features)
-	runtime.KeepAlive(i)
-
-	var goret glib.Quark
-
-	goret = glib.Quark(cret)
 
 	return goret
 }
@@ -48224,27 +47976,6 @@ func (features *CapsFeatures) Remove(feature string) {
 	defer C.free(unsafe.Pointer(carg1))
 
 	C.gst_caps_features_remove(carg0, carg1)
-	runtime.KeepAlive(features)
-	runtime.KeepAlive(feature)
-}
-
-// RemoveID wraps gst_caps_features_remove_id
-// 
-// The function takes the following parameters:
-// 
-// 	- feature glib.Quark: a feature. 
-//
-// Removes @feature from @features.
-//
-// Deprecated: (since 1.26.0) Use gst_caps_features_remove_id_str().
-func (features *CapsFeatures) RemoveID(feature glib.Quark) {
-	var carg0 *C.GstCapsFeatures // in, none, converted
-	var carg1 C.GQuark           // in, none, casted, alias
-
-	carg0 = (*C.GstCapsFeatures)(UnsafeCapsFeaturesToGlibNone(features))
-	carg1 = C.GQuark(feature)
-
-	C.gst_caps_features_remove_id(carg0, carg1)
 	runtime.KeepAlive(features)
 	runtime.KeepAlive(feature)
 }
@@ -52279,41 +52010,6 @@ func (event *Event) HasName(name string) bool {
 	defer C.free(unsafe.Pointer(carg1))
 
 	cret = C.gst_event_has_name(carg0, carg1)
-	runtime.KeepAlive(event)
-	runtime.KeepAlive(name)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
-// HasNameID wraps gst_event_has_name_id
-// 
-// The function takes the following parameters:
-// 
-// 	- name glib.Quark: name to check as a GQuark 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Checks if @event has the given @name. This function is usually used to
-// check the name of a custom event.
-//
-// Deprecated: (since 1.26.0) Use gst_event_has_name().
-func (event *Event) HasNameID(name glib.Quark) bool {
-	var carg0 *C.GstEvent // in, none, converted
-	var carg1 C.GQuark    // in, none, casted, alias
-	var cret  C.gboolean  // return
-
-	carg0 = (*C.GstEvent)(UnsafeEventToGlibNone(event))
-	carg1 = C.GQuark(name)
-
-	cret = C.gst_event_has_name_id(carg0, carg1)
 	runtime.KeepAlive(event)
 	runtime.KeepAlive(name)
 
@@ -64455,43 +64151,6 @@ func (segment *Segment) SetRunningTime(format Format, runningTime uint64) bool {
 	return goret
 }
 
-// ToPosition wraps gst_segment_to_position
-// 
-// The function takes the following parameters:
-// 
-// 	- format Format: the format of the segment. 
-// 	- runningTime uint64: the running_time in the segment 
-// 
-// The function returns the following values:
-// 
-// 	- goret uint64 
-//
-// Convert @running_time into a position in the segment so that
-// gst_segment_to_running_time() with that position returns @running_time.
-//
-// Deprecated: Use gst_segment_position_from_running_time() instead.
-func (segment *Segment) ToPosition(format Format, runningTime uint64) uint64 {
-	var carg0 *C.GstSegment // in, none, converted
-	var carg1 C.GstFormat   // in, none, casted
-	var carg2 C.guint64     // in, none, casted
-	var cret  C.guint64     // return, none, casted
-
-	carg0 = (*C.GstSegment)(UnsafeSegmentToGlibNone(segment))
-	carg1 = C.GstFormat(format)
-	carg2 = C.guint64(runningTime)
-
-	cret = C.gst_segment_to_position(carg0, carg1, carg2)
-	runtime.KeepAlive(segment)
-	runtime.KeepAlive(format)
-	runtime.KeepAlive(runningTime)
-
-	var goret uint64
-
-	goret = uint64(cret)
-
-	return goret
-}
-
 // ToRunningTime wraps gst_segment_to_running_time
 // 
 // The function takes the following parameters:
@@ -65334,37 +64993,6 @@ func NewStructureFromString(str string) *Structure {
 	return goret
 }
 
-// NewStructureIDEmpty wraps gst_structure_new_id_empty
-// 
-// The function takes the following parameters:
-// 
-// 	- quark glib.Quark: name of new structure 
-// 
-// The function returns the following values:
-// 
-// 	- goret *Structure 
-//
-// Creates a new, empty #GstStructure with the given name as a GQuark.
-// 
-// Free-function: gst_structure_free
-//
-// Deprecated: (since 1.26.0) Use gst_structure_new_id_str_empty().
-func NewStructureIDEmpty(quark glib.Quark) *Structure {
-	var carg1 C.GQuark        // in, none, casted, alias
-	var cret  *C.GstStructure // return, full, converted
-
-	carg1 = C.GQuark(quark)
-
-	cret = C.gst_structure_new_id_empty(carg1)
-	runtime.KeepAlive(quark)
-
-	var goret *Structure
-
-	goret = UnsafeStructureFromGlibFull(unsafe.Pointer(cret))
-
-	return goret
-}
-
 // NewStructureIDStrEmpty wraps gst_structure_new_id_str_empty
 // 
 // The function takes the following parameters:
@@ -65485,34 +65113,6 @@ func (structure *Structure) Copy() *Structure {
 	goret = UnsafeStructureFromGlibFull(unsafe.Pointer(cret))
 
 	return goret
-}
-
-// FilterAndMapInPlace wraps gst_structure_filter_and_map_in_place
-// 
-// The function takes the following parameters:
-// 
-// 	- fn StructureFilterMapFunc: a function to call for each field 
-//
-// Calls the provided function once for each field in the #GstStructure. In
-// contrast to gst_structure_foreach(), the function may modify the fields.
-// In contrast to gst_structure_map_in_place(), the field is removed from
-// the structure if %FALSE is returned from the function.
-// The structure must be mutable.
-//
-// Deprecated: (since 1.26.0) Use gst_structure_filter_and_map_in_place_id_str().
-func (structure *Structure) FilterAndMapInPlace(fn StructureFilterMapFunc) {
-	var carg0 *C.GstStructure             // in, none, converted
-	var carg1 C.GstStructureFilterMapFunc // callback, scope: call, closure: carg2
-	var carg2 C.gpointer                  // implicit
-
-	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*[0]byte)(C._gotk4_gst1_StructureFilterMapFunc)
-	carg2 = C.gpointer(userdata.Register(fn))
-	defer userdata.Delete(unsafe.Pointer(carg2))
-
-	C.gst_structure_filter_and_map_in_place(carg0, carg1, carg2)
-	runtime.KeepAlive(structure)
-	runtime.KeepAlive(fn)
 }
 
 // FilterAndMapInPlaceIDStr wraps gst_structure_filter_and_map_in_place_id_str
@@ -65775,45 +65375,6 @@ func (structure *Structure) FixateFieldString(fieldName string, target string) b
 	runtime.KeepAlive(structure)
 	runtime.KeepAlive(fieldName)
 	runtime.KeepAlive(target)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
-// ForEach wraps gst_structure_foreach
-// 
-// The function takes the following parameters:
-// 
-// 	- fn StructureForEachFunc: a function to call for each field 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Calls the provided function once for each field in the #GstStructure. The
-// function must not modify the fields. Also see gst_structure_map_in_place()
-// and gst_structure_filter_and_map_in_place().
-//
-// Deprecated: (since 1.26.0) Use gst_structure_foreach_id_str().
-func (structure *Structure) ForEach(fn StructureForEachFunc) bool {
-	var carg0 *C.GstStructure           // in, none, converted
-	var carg1 C.GstStructureForeachFunc // callback, scope: call, closure: carg2
-	var carg2 C.gpointer                // implicit
-	var cret  C.gboolean                // return
-
-	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*[0]byte)(C._gotk4_gst1_StructureForEachFunc)
-	carg2 = C.gpointer(userdata.Register(fn))
-	defer userdata.Delete(unsafe.Pointer(carg2))
-
-	cret = C.gst_structure_foreach(carg0, carg1, carg2)
-	runtime.KeepAlive(structure)
-	runtime.KeepAlive(fn)
 
 	var goret bool
 
@@ -66329,31 +65890,6 @@ func (structure *Structure) GetName() string {
 	return goret
 }
 
-// GetNameID wraps gst_structure_get_name_id
-// 
-// The function returns the following values:
-// 
-// 	- goret glib.Quark 
-//
-// Get the name of @structure as a GQuark.
-//
-// Deprecated: (since 1.26.0) Use gst_structure_get_name_id_str().
-func (structure *Structure) GetNameID() glib.Quark {
-	var carg0 *C.GstStructure // in, none, converted
-	var cret  C.GQuark        // return, none, casted, alias
-
-	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-
-	cret = C.gst_structure_get_name_id(carg0)
-	runtime.KeepAlive(structure)
-
-	var goret glib.Quark
-
-	goret = glib.Quark(cret)
-
-	return goret
-}
-
 // GetNameIDStr wraps gst_structure_get_name_id_str
 // 
 // The function returns the following values:
@@ -66594,105 +66130,6 @@ func (structure *Structure) HasName(name string) bool {
 	}
 
 	return goret
-}
-
-// IDHasField wraps gst_structure_id_has_field
-// 
-// The function takes the following parameters:
-// 
-// 	- field glib.Quark: #GQuark of the field name 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Check if @structure contains a field named @field.
-//
-// Deprecated: (since 1.26.0) Use gst_structure_id_str_has_field().
-func (structure *Structure) IDHasField(field glib.Quark) bool {
-	var carg0 *C.GstStructure // in, none, converted
-	var carg1 C.GQuark        // in, none, casted, alias
-	var cret  C.gboolean      // return
-
-	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = C.GQuark(field)
-
-	cret = C.gst_structure_id_has_field(carg0, carg1)
-	runtime.KeepAlive(structure)
-	runtime.KeepAlive(field)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
-// IDHasFieldTyped wraps gst_structure_id_has_field_typed
-// 
-// The function takes the following parameters:
-// 
-// 	- field glib.Quark: #GQuark of the field name 
-// 	- typ gobject.Type: the type of a value 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Check if @structure contains a field named @field and with GType @type.
-//
-// Deprecated: (since 1.26.0) Use gst_structure_id_str_has_field_typed().
-func (structure *Structure) IDHasFieldTyped(field glib.Quark, typ gobject.Type) bool {
-	var carg0 *C.GstStructure // in, none, converted
-	var carg1 C.GQuark        // in, none, casted, alias
-	var carg2 C.GType         // in, none, casted, alias
-	var cret  C.gboolean      // return
-
-	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = C.GQuark(field)
-	carg2 = C.GType(typ)
-
-	cret = C.gst_structure_id_has_field_typed(carg0, carg1, carg2)
-	runtime.KeepAlive(structure)
-	runtime.KeepAlive(field)
-	runtime.KeepAlive(typ)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
-// IDSetValue wraps gst_structure_id_set_value
-// 
-// The function takes the following parameters:
-// 
-// 	- field glib.Quark: a #GQuark representing a field 
-// 	- value *gobject.Value: the new value of the field 
-//
-// Sets the field with the given GQuark @field to @value.  If the field
-// does not exist, it is created.  If the field exists, the previous
-// value is replaced and freed.
-//
-// Deprecated: (since 1.26.0) Use gst_structure_id_str_set_value().
-func (structure *Structure) IDSetValue(field glib.Quark, value *gobject.Value) {
-	var carg0 *C.GstStructure // in, none, converted
-	var carg1 C.GQuark        // in, none, casted, alias
-	var carg2 *C.GValue       // in, none, converted
-
-	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = C.GQuark(field)
-	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
-
-	C.gst_structure_id_set_value(carg0, carg1, carg2)
-	runtime.KeepAlive(structure)
-	runtime.KeepAlive(field)
-	runtime.KeepAlive(value)
 }
 
 // IDStrGetFieldType wraps gst_structure_id_str_get_field_type
@@ -67026,45 +66463,6 @@ func (subset *Structure) IsSubset(superset *Structure) bool {
 	return goret
 }
 
-// MapInPlace wraps gst_structure_map_in_place
-// 
-// The function takes the following parameters:
-// 
-// 	- fn StructureMapFunc: a function to call for each field 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Calls the provided function once for each field in the #GstStructure. In
-// contrast to gst_structure_foreach(), the function may modify but not delete the
-// fields. The structure must be mutable.
-//
-// Deprecated: (since 1.26.0) Use gst_structure_map_in_place_id_str().
-func (structure *Structure) MapInPlace(fn StructureMapFunc) bool {
-	var carg0 *C.GstStructure       // in, none, converted
-	var carg1 C.GstStructureMapFunc // callback, scope: call, closure: carg2
-	var carg2 C.gpointer            // implicit
-	var cret  C.gboolean            // return
-
-	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*[0]byte)(C._gotk4_gst1_StructureMapFunc)
-	carg2 = C.gpointer(userdata.Register(fn))
-	defer userdata.Delete(unsafe.Pointer(carg2))
-
-	cret = C.gst_structure_map_in_place(carg0, carg1, carg2)
-	runtime.KeepAlive(structure)
-	runtime.KeepAlive(fn)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
 // MapInPlaceIDStr wraps gst_structure_map_in_place_id_str
 // 
 // The function takes the following parameters:
@@ -67186,50 +66584,6 @@ func (structure *Structure) RemoveField(fieldname string) {
 	C.gst_structure_remove_field(carg0, carg1)
 	runtime.KeepAlive(structure)
 	runtime.KeepAlive(fieldname)
-}
-
-// Serialize wraps gst_structure_serialize
-// 
-// The function takes the following parameters:
-// 
-// 	- flags SerializeFlags: The flags to use to serialize structure 
-// 
-// The function returns the following values:
-// 
-// 	- goret string 
-//
-// Converts @structure to a human-readable string representation.
-// 
-// This version of the caps serialization function introduces support for nested
-// structures and caps but the resulting strings won't be parsable with
-// GStreamer prior to 1.20 unless #GST_SERIALIZE_FLAG_BACKWARD_COMPAT is passed
-// as @flag.
-// 
-// %GST_SERIALIZE_FLAG_STRICT flags is not allowed because it would make this
-// function nullable which is an API break for bindings.
-// Use gst_structure_serialize_full() instead.
-// 
-// Free-function: g_free
-//
-// Deprecated: Use gst_structure_serialize_full() instead.
-func (structure *Structure) Serialize(flags SerializeFlags) string {
-	var carg0 *C.GstStructure     // in, none, converted
-	var carg1 C.GstSerializeFlags // in, none, casted
-	var cret  *C.gchar            // return, full, string
-
-	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = C.GstSerializeFlags(flags)
-
-	cret = C.gst_structure_serialize(carg0, carg1)
-	runtime.KeepAlive(structure)
-	runtime.KeepAlive(flags)
-
-	var goret string
-
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
-
-	return goret
 }
 
 // SerializeFull wraps gst_structure_serialize_full
@@ -68913,14 +68267,14 @@ func (list *TagList) SetScope(scope TagScope) {
 	runtime.KeepAlive(scope)
 }
 
-// ToString wraps gst_tag_list_to_string
+// String wraps gst_tag_list_to_string
 // 
 // The function returns the following values:
 // 
 // 	- goret string 
 //
 // Serializes a tag list to a string.
-func (list *TagList) ToString() string {
+func (list *TagList) String() string {
 	var carg0 *C.GstTagList // in, none, converted
 	var cret  *C.gchar      // return, full, string
 
@@ -70706,44 +70060,6 @@ func NewUri(scheme string, userinfo string, host string, port uint, path string,
 	var goret *Uri
 
 	goret = UnsafeUriFromGlibFull(unsafe.Pointer(cret))
-
-	return goret
-}
-
-// UriConstruct wraps gst_uri_construct
-// 
-// The function takes the following parameters:
-// 
-// 	- protocol string: Protocol for URI 
-// 	- location string: Location for URI 
-// 
-// The function returns the following values:
-// 
-// 	- goret string 
-//
-// Constructs a URI for a given valid protocol and location.
-// 
-// Free-function: g_free
-//
-// Deprecated: Use GstURI instead.
-func UriConstruct(protocol string, location string) string {
-	var carg1 *C.gchar // in, none, string
-	var carg2 *C.gchar // in, none, string
-	var cret  *C.gchar // return, full, string
-
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(protocol)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(location)))
-	defer C.free(unsafe.Pointer(carg2))
-
-	cret = C.gst_uri_construct(carg1, carg2)
-	runtime.KeepAlive(protocol)
-	runtime.KeepAlive(location)
-
-	var goret string
-
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
 
 	return goret
 }

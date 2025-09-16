@@ -61,12 +61,19 @@ func printDiscovererInfo(info gstpbutils.DiscovererInfo) {
 
 func printTags(info gstpbutils.DiscovererInfo) {
 	fmt.Println("Tags:")
-	tags := info.GetTags()
-	if tags != nil {
-		fmt.Println("  ", tags)
-		return
+
+	for _, stream := range info.GetStreamList() {
+		tags := stream.GetTags()
+		if tags != nil {
+			fmt.Println("  ", tags)
+		}
 	}
-	fmt.Println("  no tags")
+	for _, stream := range info.GetContainerStreams() {
+		tags := stream.GetTags()
+		if tags != nil {
+			fmt.Println("  ", tags)
+		}
+	}
 }
 
 func printStreamInfo(info gstpbutils.DiscovererStreamInfo) {

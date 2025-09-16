@@ -105,10 +105,12 @@ var Data = genmain.Overlay(
 
 			// String() is more go like than ToString()
 			types.RenameCallable("Gst-1.Caps.to_string", "string"),
+			types.RenameCallable("Gst-1.TagList.to_string", "string"),
 		},
 		Config: typesystem.Config{
 			Namespaces: map[string]typesystem.NamespaceConfig{
 				"Gst-1": {
+					MinVersion: "1.26",
 					ManualTypes: []typesystem.Type{
 						&typesystem.Alias{
 							BaseType: typesystem.BaseType{

@@ -89,5 +89,5 @@ func handleMessage(msg *gst.Message) (bool, error) {
 }
 
 func main() {
-
+	tagsetter()
 }
