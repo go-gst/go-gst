@@ -22,6 +22,7 @@ import (
 // #define GST_USE_UNSTABLE_API // APIs in this package are unstable
 // #include <stdlib.h>
 // #include <glib-object.h>
+// #include <gst/webrtc/sctptransport.h>
 // #include <gst/webrtc/webrtc.h>
 // extern void callbackDelete(gpointer);
 // extern void _gotk4_gstwebrtc1_WebRTCICETransport_ConnectOnSelectedCandidatePairChange(gpointer, guintptr);
