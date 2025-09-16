@@ -322,8 +322,6 @@ var _ PhysMemoryAllocator = (*PhysMemoryAllocatorInstance)(nil)
 // PhysMemoryAllocator wraps GstPhysMemoryAllocator
 type PhysMemoryAllocator interface {
 	upcastToGstPhysMemoryAllocator() *PhysMemoryAllocatorInstance
-
-	// chain up virtual methods:
 }
 
 var _ PhysMemoryAllocator = (*PhysMemoryAllocatorInstance)(nil)
@@ -367,16 +365,6 @@ func UnsafePhysMemoryAllocatorToGlibNone(c PhysMemoryAllocator) unsafe.Pointer {
 func UnsafePhysMemoryAllocatorToGlibFull(c PhysMemoryAllocator) unsafe.Pointer {
 	i := c.upcastToGstPhysMemoryAllocator()
 	return gobject.UnsafeObjectToGlibFull(&i.Instance)
-}
-
-// PhysMemoryAllocatorOverrides is the struct used to override the default implementation of virtual methods.
-// it is generic over the extending instance type.
-type PhysMemoryAllocatorOverrides[Instance PhysMemoryAllocator] struct {
-}
-
-// UnsafeApplyPhysMemoryAllocatorOverrides applies the overrides to init the gclass by setting the trampoline functions.
-// This is used by the bindings internally and only exported for visibility to other bindings code.
-func UnsafeApplyPhysMemoryAllocatorOverrides[Instance PhysMemoryAllocator](gclass unsafe.Pointer, overrides PhysMemoryAllocatorOverrides[Instance]) {
 }
 
 // DRMDumbAllocatorInstance is the instance type used by all types extending GstDRMDumbAllocator. It is used internally by the bindings. Users should use the interface [DRMDumbAllocator] instead.

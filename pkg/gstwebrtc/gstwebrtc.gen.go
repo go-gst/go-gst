@@ -2705,7 +2705,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var candidate string          // in, none, string
 				var promise   *gst.Promise    // in, none, converted, nullable
 
-				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				stream = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg1))
 				candidate = C.GoString((*C.char)(unsafe.Pointer(carg2)))
 				if carg3 != nil {
@@ -2727,7 +2727,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var sessionId uint            // in, none, casted
 				var goret     WebRTCICEStream // return, full, converted, nullable
 
-				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				sessionId = uint(carg1)
 
 				goret = overrides.AddStream(ice, sessionId)
@@ -2751,7 +2751,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var uri   string   // in, none, string
 				var goret bool     // return
 
-				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				uri = C.GoString((*C.char)(unsafe.Pointer(carg1)))
 
 				goret = overrides.AddTurnServer(ice, uri)
@@ -2776,7 +2776,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var component WebRTCICEComponent // in, none, casted
 				var goret     WebRTCICETransport // return, full, converted, nullable
 
-				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				stream = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg1))
 				component = WebRTCICEComponent(carg2)
 
@@ -2801,7 +2801,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var stream WebRTCICEStream // in, none, converted
 				var goret  bool            // return
 
-				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				stream = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.GatherCandidates(ice, stream)
@@ -2824,7 +2824,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var ice   Instance // go GstWebRTCICE subclass
 				var goret string   // return, full, string
 
-				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.GetHttpProxy(ice)
 
@@ -2844,7 +2844,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var ice   Instance // go GstWebRTCICE subclass
 				var goret bool     // return
 
-				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.GetIsController(ice)
 
@@ -2869,7 +2869,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var remoteStats *WebRTCICECandidateStats // out, full, converted
 				var goret       bool                     // return
 
-				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				stream = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg1))
 
 				localStats, remoteStats, goret = overrides.GetSelectedPair(ice, stream)
@@ -2894,7 +2894,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var ice   Instance // go GstWebRTCICE subclass
 				var goret string   // return, full, string, nullable-string
 
-				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.GetStunServer(ice)
 
@@ -2916,7 +2916,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var ice   Instance // go GstWebRTCICE subclass
 				var goret string   // return, full, string, nullable-string
 
-				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.GetTurnServer(ice)
 
@@ -2938,7 +2938,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var ice        Instance // go GstWebRTCICE subclass
 				var forceRelay bool     // in
 
-				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				if carg1 != 0 {
 					forceRelay = true
 				}
@@ -2957,7 +2957,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var ice Instance // go GstWebRTCICE subclass
 				var uri string   // in, none, string
 
-				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				uri = C.GoString((*C.char)(unsafe.Pointer(carg1)))
 
 				overrides.SetHttpProxy(ice, uri)
@@ -2974,7 +2974,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var ice        Instance // go GstWebRTCICE subclass
 				var controller bool     // in
 
-				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				if carg1 != 0 {
 					controller = true
 				}
@@ -2996,7 +2996,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var pwd    string          // in, none, string
 				var goret  bool            // return
 
-				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				stream = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg1))
 				ufrag = C.GoString((*C.char)(unsafe.Pointer(carg2)))
 				pwd = C.GoString((*C.char)(unsafe.Pointer(carg3)))
@@ -3024,7 +3024,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var pwd    string          // in, none, string
 				var goret  bool            // return
 
-				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				stream = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg1))
 				ufrag = C.GoString((*C.char)(unsafe.Pointer(carg2)))
 				pwd = C.GoString((*C.char)(unsafe.Pointer(carg3)))
@@ -3049,7 +3049,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var ice Instance // go GstWebRTCICE subclass
 				var uri string   // in, none, string, nullable-string
 
-				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				if carg1 != nil {
 					uri = C.GoString((*C.char)(unsafe.Pointer(carg1)))
 				}
@@ -3069,7 +3069,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var stream WebRTCICEStream // in, none, converted
 				var tos    uint            // in, none, casted
 
-				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				stream = UnsafeWebRTCICEStreamFromGlibNone(unsafe.Pointer(carg1))
 				tos = uint(carg2)
 
@@ -3087,7 +3087,7 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 				var ice Instance // go GstWebRTCICE subclass
 				var uri string   // in, none, string, nullable-string
 
-				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				if carg1 != nil {
 					uri = C.GoString((*C.char)(unsafe.Pointer(carg1)))
 				}
@@ -3862,7 +3862,7 @@ func UnsafeApplyWebRTCICEStreamOverrides[Instance WebRTCICEStream](gclass unsafe
 				var component WebRTCICEComponent // in, none, casted
 				var goret     WebRTCICETransport // return, full, converted, nullable
 
-				stream = UnsafeWebRTCICEStreamFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				stream = UnsafeWebRTCICEStreamFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				component = WebRTCICEComponent(carg1)
 
 				goret = overrides.FindTransport(stream, component)
@@ -3885,7 +3885,7 @@ func UnsafeApplyWebRTCICEStreamOverrides[Instance WebRTCICEStream](gclass unsafe
 				var ice   Instance // go GstWebRTCICEStream subclass
 				var goret bool     // return
 
-				ice = UnsafeWebRTCICEStreamFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				ice = UnsafeWebRTCICEStreamFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.GatherCandidates(ice)
 
@@ -4197,7 +4197,7 @@ func UnsafeApplyWebRTCICETransportOverrides[Instance WebRTCICETransport](gclass 
 				var transport Instance // go GstWebRTCICETransport subclass
 				var goret     bool     // return
 
-				transport = UnsafeWebRTCICETransportFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				transport = UnsafeWebRTCICETransportFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.GatherCandidates(transport)
 

@@ -2956,7 +2956,7 @@ func UnsafeApplyAudioVisualizerOverrides[Instance AudioVisualizer](gclass unsafe
 				var query *gst.Query // in, none, converted
 				var goret bool       // return
 
-				scope = UnsafeAudioVisualizerFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				scope = UnsafeAudioVisualizerFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.DecideAllocation(scope, query)
@@ -2981,7 +2981,7 @@ func UnsafeApplyAudioVisualizerOverrides[Instance AudioVisualizer](gclass unsafe
 				var video *gstvideo.VideoFrame // in, none, converted
 				var goret bool                 // return
 
-				scope = UnsafeAudioVisualizerFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				scope = UnsafeAudioVisualizerFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				audio = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 				video = gstvideo.UnsafeVideoFrameFromGlibNone(unsafe.Pointer(carg2))
 
@@ -3005,7 +3005,7 @@ func UnsafeApplyAudioVisualizerOverrides[Instance AudioVisualizer](gclass unsafe
 				var scope Instance // go GstAudioVisualizer subclass
 				var goret bool     // return
 
-				scope = UnsafeAudioVisualizerFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				scope = UnsafeAudioVisualizerFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Setup(scope)
 
@@ -3574,7 +3574,7 @@ func UnsafeApplyDiscovererOverrides[Instance Discoverer](gclass unsafe.Pointer, 
 				var info       DiscovererInfo // in, none, converted
 				var err        error          // in, none, converted
 
-				discoverer = UnsafeDiscovererFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				discoverer = UnsafeDiscovererFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				info = UnsafeDiscovererInfoFromGlibNone(unsafe.Pointer(carg1))
 				err = glib.UnsafeErrorFromGlibNone(unsafe.Pointer(carg2))
 
@@ -3591,7 +3591,7 @@ func UnsafeApplyDiscovererOverrides[Instance Discoverer](gclass unsafe.Pointer, 
 			func(carg0 *C.GstDiscoverer) {
 				var discoverer Instance // go GstDiscoverer subclass
 
-				discoverer = UnsafeDiscovererFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				discoverer = UnsafeDiscovererFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				overrides.Finished(discoverer)
 			},
@@ -3608,7 +3608,7 @@ func UnsafeApplyDiscovererOverrides[Instance Discoverer](gclass unsafe.Pointer, 
 				var uri   string         // in, none, string
 				var goret DiscovererInfo // return, full, converted
 
-				dc = UnsafeDiscovererFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				dc = UnsafeDiscovererFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				uri = C.GoString((*C.char)(unsafe.Pointer(carg1)))
 
 				goret = overrides.LoadSerializeInfo(dc, uri)
@@ -3629,7 +3629,7 @@ func UnsafeApplyDiscovererOverrides[Instance Discoverer](gclass unsafe.Pointer, 
 				var discoverer Instance    // go GstDiscoverer subclass
 				var source     gst.Element // in, none, converted
 
-				discoverer = UnsafeDiscovererFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				discoverer = UnsafeDiscovererFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				source = gst.UnsafeElementFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.SourceSetup(discoverer, source)
@@ -3645,7 +3645,7 @@ func UnsafeApplyDiscovererOverrides[Instance Discoverer](gclass unsafe.Pointer, 
 			func(carg0 *C.GstDiscoverer) {
 				var discoverer Instance // go GstDiscoverer subclass
 
-				discoverer = UnsafeDiscovererFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				discoverer = UnsafeDiscovererFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				overrides.Starting(discoverer)
 			},

@@ -5,8 +5,10 @@ import (
 	"fmt"
 	"os"
 	"os/signal"
+	"runtime"
 	"time"
 
+	"github.com/diamondburned/gotk4/pkg/core/profile"
 	"github.com/go-gst/go-gst/examples/plugins/basetransform/internal/customtransform"
 	"github.com/go-gst/go-gst/pkg/gst"
 )
@@ -37,9 +39,20 @@ func run(ctx context.Context) error {
 }
 
 func main() {
-	ctx := context.Background()
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
 
 	err := run(ctx)
+
+	for range 10 {
+		runtime.GC()
+	}
+
+	if profile.Count() > 0 {
+		fmt.Fprintf(os.Stderr, "Memory leak detected: %d objects still tracked\n", profile.Count())
+	} else {
+		fmt.Fprintln(os.Stderr, "No memory leaks detected")
+	}
 
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)

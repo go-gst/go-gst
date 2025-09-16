@@ -18,7 +18,6 @@ import (
 // #cgo pkg-config: gstreamer-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/gst.h>
-// extern GstBusSyncReply _gotk4_gst1_BusSyncHandler(GstBus*, GstMessage*, gpointer);
 // extern GstPadProbeReturn _gotk4_gst1_PadProbeCallback(GstPad*, GstPadProbeInfo*, gpointer);
 // extern gboolean _gotk4_gst1_BufferForeachMetaFunc(GstBuffer*, GstMeta*, gpointer);
 // extern gboolean _gotk4_gst1_BufferListFunc(GstBuffer*, guint, gpointer);
@@ -44,66 +43,6 @@ import (
 // extern void _gotk4_gst1_TaskThreadFunc(GstTask*, GThread*, gpointer);
 // extern void _gotk4_gst1_TypeFindFunction(GstTypeFind*, gpointer);
 // extern void destroyUserdata(gpointer);
-// extern void _gotk4_gst1_ChildProxy_child_added(GstChildProxy*, GObject*, const gchar*);
-// extern void _gotk4_gst1_ChildProxy_child_removed(GstChildProxy*, GObject*, const gchar*);
-// extern GObject* _gotk4_gst1_ChildProxy_get_child_by_index(GstChildProxy*, guint);
-// extern GObject* _gotk4_gst1_ChildProxy_get_child_by_name(GstChildProxy*, const gchar*);
-// extern guint _gotk4_gst1_ChildProxy_get_children_count(GstChildProxy*);
-// void _gotk4_gst1_ChildProxy_virtual_child_added(void* fnptr, GstChildProxy* carg0, GObject* carg1, const gchar* carg2) {
-// 	return ((void (*) (GstChildProxy*, GObject*, const gchar*))(fnptr))(carg0, carg1, carg2);
-// }
-// void _gotk4_gst1_ChildProxy_virtual_child_removed(void* fnptr, GstChildProxy* carg0, GObject* carg1, const gchar* carg2) {
-// 	return ((void (*) (GstChildProxy*, GObject*, const gchar*))(fnptr))(carg0, carg1, carg2);
-// }
-// GObject* _gotk4_gst1_ChildProxy_virtual_get_child_by_index(void* fnptr, GstChildProxy* carg0, guint carg1) {
-// 	return ((GObject* (*) (GstChildProxy*, guint))(fnptr))(carg0, carg1);
-// }
-// GObject* _gotk4_gst1_ChildProxy_virtual_get_child_by_name(void* fnptr, GstChildProxy* carg0, const gchar* carg1) {
-// 	return ((GObject* (*) (GstChildProxy*, const gchar*))(fnptr))(carg0, carg1);
-// }
-// guint _gotk4_gst1_ChildProxy_virtual_get_children_count(void* fnptr, GstChildProxy* carg0) {
-// 	return ((guint (*) (GstChildProxy*))(fnptr))(carg0);
-// }
-// extern gboolean _gotk4_gst1_Preset_delete_preset(GstPreset*, const gchar*);
-// extern gboolean _gotk4_gst1_Preset_get_meta(GstPreset*, const gchar*, const gchar*, gchar*);
-// extern gchar** _gotk4_gst1_Preset_get_preset_names(GstPreset*);
-// extern gchar** _gotk4_gst1_Preset_get_property_names(GstPreset*);
-// extern gboolean _gotk4_gst1_Preset_load_preset(GstPreset*, const gchar*);
-// extern gboolean _gotk4_gst1_Preset_rename_preset(GstPreset*, const gchar*, const gchar*);
-// extern gboolean _gotk4_gst1_Preset_save_preset(GstPreset*, const gchar*);
-// extern gboolean _gotk4_gst1_Preset_set_meta(GstPreset*, const gchar*, const gchar*, const gchar*);
-// gboolean _gotk4_gst1_Preset_virtual_delete_preset(void* fnptr, GstPreset* carg0, const gchar* carg1) {
-// 	return ((gboolean (*) (GstPreset*, const gchar*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gst1_Preset_virtual_get_meta(void* fnptr, GstPreset* carg0, const gchar* carg1, const gchar* carg2, gchar** carg3) {
-// 	return ((gboolean (*) (GstPreset*, const gchar*, const gchar*, gchar**))(fnptr))(carg0, carg1, carg2, carg3);
-// }
-// gchar** _gotk4_gst1_Preset_virtual_get_preset_names(void* fnptr, GstPreset* carg0) {
-// 	return ((gchar** (*) (GstPreset*))(fnptr))(carg0);
-// }
-// gchar** _gotk4_gst1_Preset_virtual_get_property_names(void* fnptr, GstPreset* carg0) {
-// 	return ((gchar** (*) (GstPreset*))(fnptr))(carg0);
-// }
-// gboolean _gotk4_gst1_Preset_virtual_load_preset(void* fnptr, GstPreset* carg0, const gchar* carg1) {
-// 	return ((gboolean (*) (GstPreset*, const gchar*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gst1_Preset_virtual_rename_preset(void* fnptr, GstPreset* carg0, const gchar* carg1, const gchar* carg2) {
-// 	return ((gboolean (*) (GstPreset*, const gchar*, const gchar*))(fnptr))(carg0, carg1, carg2);
-// }
-// gboolean _gotk4_gst1_Preset_virtual_save_preset(void* fnptr, GstPreset* carg0, const gchar* carg1) {
-// 	return ((gboolean (*) (GstPreset*, const gchar*))(fnptr))(carg0, carg1);
-// }
-// gboolean _gotk4_gst1_Preset_virtual_set_meta(void* fnptr, GstPreset* carg0, const gchar* carg1, const gchar* carg2, const gchar* carg3) {
-// 	return ((gboolean (*) (GstPreset*, const gchar*, const gchar*, const gchar*))(fnptr))(carg0, carg1, carg2, carg3);
-// }
-// extern gchar* _gotk4_gst1_URIHandler_get_uri(GstURIHandler*);
-// extern gboolean _gotk4_gst1_URIHandler_set_uri(GstURIHandler*, const gchar*, GError*);
-// gchar* _gotk4_gst1_URIHandler_virtual_get_uri(void* fnptr, GstURIHandler* carg0) {
-// 	return ((gchar* (*) (GstURIHandler*))(fnptr))(carg0);
-// }
-// gboolean _gotk4_gst1_URIHandler_virtual_set_uri(void* fnptr, GstURIHandler* carg0, const gchar* carg1, GError** _cerr) {
-// 	return ((gboolean (*) (GstURIHandler*, const gchar*, GError**))(fnptr))(carg0, carg1, _cerr);
-// }
 // extern void _gotk4_gst1_Object_deep_notify(GstObject*, GstObject*, GParamSpec*);
 // void _gotk4_gst1_Object_virtual_deep_notify(void* fnptr, GstObject* carg0, GstObject* carg1, GParamSpec* carg2) {
 // 	return ((void (*) (GstObject*, GstObject*, GParamSpec*))(fnptr))(carg0, carg1, carg2);
@@ -8274,25 +8213,6 @@ type TypeFindFunction func(find *TypeFind)
 // %FALSE will remove the #GSource from the mainloop.
 type BusFunc func(bus Bus, message *Message) (goret bool)
 
-// BusSyncHandler wraps GstBusSyncHandler
-// 
-// The function takes the following parameters:
-// 
-// 	- bus Bus: the #GstBus that sent the message 
-// 	- message *Message: the #GstMessage 
-// 
-// The function returns the following values:
-// 
-// 	- goret BusSyncReply 
-//
-// Handler will be invoked synchronously, when a new message has been injected
-// into the bus. This function is mostly used internally. Only one sync handler
-// can be attached to a given bus.
-// 
-// If the handler returns %GST_BUS_DROP, it should unref the message, else the
-// message should not be unreffed by the sync handler.
-type BusSyncHandler func(bus Bus, message *Message) (goret BusSyncReply)
-
 // ClockCallback wraps GstClockCallback
 // 
 // The function takes the following parameters:
@@ -12690,68 +12610,6 @@ type ChildProxy interface {
 	//
 	// Will be emitted after the @object was removed from the @child_proxy.
 	ConnectChildRemoved(func(ChildProxy, gobject.Object, string)) gobject.SignalHandle
-
-	// chain up virtual methods:
-
-	// ParentChildAdded calls the default implementations of the `GstChildProxy.child_added` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- child gobject.Object: the newly added child 
-	// 	- name string: the name of the new child 
-	//
-	// Emits the #GstChildProxy::child-added signal.
-	ParentChildAdded(child gobject.Object, name string)
-	// ParentChildRemoved calls the default implementations of the `GstChildProxy.child_removed` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- child gobject.Object: the removed child 
-	// 	- name string: the name of the old child 
-	//
-	// Emits the #GstChildProxy::child-removed signal.
-	ParentChildRemoved(child gobject.Object, name string)
-	// ParentGetChildByIndex calls the default implementations of the `GstChildProxy.get_child_by_index` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- index uint: the child's position in the child list 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gobject.Object (nullable) 
-	//
-	// Fetches a child by its number.
-	ParentGetChildByIndex(index uint) gobject.Object
-	// ParentGetChildByName calls the default implementations of the `GstChildProxy.get_child_by_name` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- name string: the child's name 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gobject.Object (nullable) 
-	//
-	// Looks up a child element by the given name.
-	// 
-	// This virtual method has a default implementation that uses #GstObject
-	// together with gst_object_get_name(). If the interface is to be used with
-	// #GObjects, this methods needs to be overridden.
-	ParentGetChildByName(name string) gobject.Object
-	// ParentGetChildrenCount calls the default implementations of the `GstChildProxy.get_children_count` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret uint 
-	//
-	// Gets the number of child objects this parent contains.
-	ParentGetChildrenCount() uint
 }
 
 var _ ChildProxy = (*ChildProxyInstance)(nil)
@@ -13034,332 +12892,6 @@ func (o *ChildProxyInstance) ConnectChildRemoved(fn func(ChildProxy, gobject.Obj
 	return o.Instance.Connect("child-removed", fn)
 }
 
-// ChildProxyOverrides is the struct used to override the default implementation of virtual methods.
-// it is generic over the extending instance type.
-type ChildProxyOverrides[Instance ChildProxy] struct {
-	// // ChildAdded allows you to override the implementation of the virtual method child_added.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- child gobject.Object: the newly added child 
-	// 	- name string: the name of the new child 
-	//
-	// Emits the #GstChildProxy::child-added signal.
-	ChildAdded func(Instance, gobject.Object, string)
-	// // ChildRemoved allows you to override the implementation of the virtual method child_removed.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- child gobject.Object: the removed child 
-	// 	- name string: the name of the old child 
-	//
-	// Emits the #GstChildProxy::child-removed signal.
-	ChildRemoved func(Instance, gobject.Object, string)
-	// // GetChildByIndex allows you to override the implementation of the virtual method get_child_by_index.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- index uint: the child's position in the child list 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gobject.Object (nullable) 
-	//
-	// Fetches a child by its number.
-	GetChildByIndex func(Instance, uint) gobject.Object
-	// // GetChildByName allows you to override the implementation of the virtual method get_child_by_name.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- name string: the child's name 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret gobject.Object (nullable) 
-	//
-	// Looks up a child element by the given name.
-	// 
-	// This virtual method has a default implementation that uses #GstObject
-	// together with gst_object_get_name(). If the interface is to be used with
-	// #GObjects, this methods needs to be overridden.
-	GetChildByName func(Instance, string) gobject.Object
-	// // GetChildrenCount allows you to override the implementation of the virtual method get_children_count.
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret uint 
-	//
-	// Gets the number of child objects this parent contains.
-	GetChildrenCount func(Instance) uint
-}
-
-// UnsafeApplyChildProxyOverrides applies the overrides to init the gclass by setting the trampoline functions.
-// This is used by the bindings internally and only exported for visibility to other bindings code.
-func UnsafeApplyChildProxyOverrides[Instance ChildProxy](gclass unsafe.Pointer, overrides ChildProxyOverrides[Instance]) {
-	pclass := (*C.GstChildProxyInterface)(gclass)
-
-	if overrides.ChildAdded != nil {
-		pclass.child_added = (*[0]byte)(C._gotk4_gst1_ChildProxy_child_added)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gst1_ChildProxy_child_added",
-			func(carg0 *C.GstChildProxy, carg1 *C.GObject, carg2 *C.gchar) {
-				var parent Instance       // go GstChildProxy subclass
-				var child  gobject.Object // in, none, converted
-				var name   string         // in, none, string
-
-				parent = UnsafeChildProxyFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-				child = gobject.UnsafeObjectFromGlibNone(unsafe.Pointer(carg1))
-				name = C.GoString((*C.char)(unsafe.Pointer(carg2)))
-
-				overrides.ChildAdded(parent, child, name)
-			},
-		)
-	}
-
-	if overrides.ChildRemoved != nil {
-		pclass.child_removed = (*[0]byte)(C._gotk4_gst1_ChildProxy_child_removed)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gst1_ChildProxy_child_removed",
-			func(carg0 *C.GstChildProxy, carg1 *C.GObject, carg2 *C.gchar) {
-				var parent Instance       // go GstChildProxy subclass
-				var child  gobject.Object // in, none, converted
-				var name   string         // in, none, string
-
-				parent = UnsafeChildProxyFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-				child = gobject.UnsafeObjectFromGlibNone(unsafe.Pointer(carg1))
-				name = C.GoString((*C.char)(unsafe.Pointer(carg2)))
-
-				overrides.ChildRemoved(parent, child, name)
-			},
-		)
-	}
-
-	if overrides.GetChildByIndex != nil {
-		pclass.get_child_by_index = (*[0]byte)(C._gotk4_gst1_ChildProxy_get_child_by_index)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gst1_ChildProxy_get_child_by_index",
-			func(carg0 *C.GstChildProxy, carg1 C.guint) (cret *C.GObject) {
-				var parent Instance       // go GstChildProxy subclass
-				var index  uint           // in, none, casted
-				var goret  gobject.Object // return, full, converted, nullable
-
-				parent = UnsafeChildProxyFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-				index = uint(carg1)
-
-				goret = overrides.GetChildByIndex(parent, index)
-
-				if goret != nil {
-					cret = (*C.GObject)(gobject.UnsafeObjectToGlibFull(goret))
-				}
-
-				return cret
-			},
-		)
-	}
-
-	if overrides.GetChildByName != nil {
-		pclass.get_child_by_name = (*[0]byte)(C._gotk4_gst1_ChildProxy_get_child_by_name)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gst1_ChildProxy_get_child_by_name",
-			func(carg0 *C.GstChildProxy, carg1 *C.gchar) (cret *C.GObject) {
-				var parent Instance       // go GstChildProxy subclass
-				var name   string         // in, none, string
-				var goret  gobject.Object // return, full, converted, nullable
-
-				parent = UnsafeChildProxyFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-				name = C.GoString((*C.char)(unsafe.Pointer(carg1)))
-
-				goret = overrides.GetChildByName(parent, name)
-
-				if goret != nil {
-					cret = (*C.GObject)(gobject.UnsafeObjectToGlibFull(goret))
-				}
-
-				return cret
-			},
-		)
-	}
-
-	if overrides.GetChildrenCount != nil {
-		pclass.get_children_count = (*[0]byte)(C._gotk4_gst1_ChildProxy_get_children_count)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gst1_ChildProxy_get_children_count",
-			func(carg0 *C.GstChildProxy) (cret C.guint) {
-				var parent Instance // go GstChildProxy subclass
-				var goret  uint     // return, none, casted
-
-				parent = UnsafeChildProxyFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-
-				goret = overrides.GetChildrenCount(parent)
-
-				cret = C.guint(goret)
-
-				return cret
-			},
-		)
-	}
-}
-
-// ParentChildAdded calls the default implementations of the `GstChildProxy.child_added` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function takes the following parameters:
-// 
-// 	- child gobject.Object: the newly added child 
-// 	- name string: the name of the new child 
-//
-// Emits the #GstChildProxy::child-added signal.
-func (parent *ChildProxyInstance) ParentChildAdded(child gobject.Object, name string) {
-	var carg0 *C.GstChildProxy
-	var carg1 *C.GObject // in, none, converted
-	var carg2 *C.gchar   // in, none, converted
-
-	parentclass := (*C.GstChildProxyInterface)(classdata.PeekParentInterface(UnsafeChildProxyToGlibNone(parent), uint64(TypeChildProxy)))
-
-	carg0 = (*C.GstChildProxy)(UnsafeChildProxyToGlibNone(parent))
-	carg1 = (*C.GObject)(gobject.UnsafeObjectToGlibNone(child))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg2))
-
-	C._gotk4_gst1_ChildProxy_virtual_child_added(unsafe.Pointer(parentclass.child_added), carg0, carg1, carg2)
-	runtime.KeepAlive(parent)
-	runtime.KeepAlive(child)
-	runtime.KeepAlive(name)
-}
-
-// ParentChildRemoved calls the default implementations of the `GstChildProxy.child_removed` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function takes the following parameters:
-// 
-// 	- child gobject.Object: the removed child 
-// 	- name string: the name of the old child 
-//
-// Emits the #GstChildProxy::child-removed signal.
-func (parent *ChildProxyInstance) ParentChildRemoved(child gobject.Object, name string) {
-	var carg0 *C.GstChildProxy
-	var carg1 *C.GObject // in, none, converted
-	var carg2 *C.gchar   // in, none, converted
-
-	parentclass := (*C.GstChildProxyInterface)(classdata.PeekParentInterface(UnsafeChildProxyToGlibNone(parent), uint64(TypeChildProxy)))
-
-	carg0 = (*C.GstChildProxy)(UnsafeChildProxyToGlibNone(parent))
-	carg1 = (*C.GObject)(gobject.UnsafeObjectToGlibNone(child))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg2))
-
-	C._gotk4_gst1_ChildProxy_virtual_child_removed(unsafe.Pointer(parentclass.child_removed), carg0, carg1, carg2)
-	runtime.KeepAlive(parent)
-	runtime.KeepAlive(child)
-	runtime.KeepAlive(name)
-}
-
-// ParentGetChildByIndex calls the default implementations of the `GstChildProxy.get_child_by_index` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function takes the following parameters:
-// 
-// 	- index uint: the child's position in the child list 
-// 
-// The function returns the following values:
-// 
-// 	- goret gobject.Object (nullable) 
-//
-// Fetches a child by its number.
-func (parent *ChildProxyInstance) ParentGetChildByIndex(index uint) gobject.Object {
-	var carg0 *C.GstChildProxy
-	var carg1 C.guint    // in, none, converted
-	var cret  *C.GObject // return, full, converted, nullable
-
-	parentclass := (*C.GstChildProxyInterface)(classdata.PeekParentInterface(UnsafeChildProxyToGlibNone(parent), uint64(TypeChildProxy)))
-
-	carg0 = (*C.GstChildProxy)(UnsafeChildProxyToGlibNone(parent))
-	carg1 = C.guint(index)
-
-	cret = C._gotk4_gst1_ChildProxy_virtual_get_child_by_index(unsafe.Pointer(parentclass.get_child_by_index), carg0, carg1)
-	runtime.KeepAlive(parent)
-	runtime.KeepAlive(index)
-
-	var goret gobject.Object
-
-	if cret != nil {
-		goret = gobject.UnsafeObjectFromGlibFull(unsafe.Pointer(cret))
-	}
-
-	return goret
-}
-
-// ParentGetChildByName calls the default implementations of the `GstChildProxy.get_child_by_name` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function takes the following parameters:
-// 
-// 	- name string: the child's name 
-// 
-// The function returns the following values:
-// 
-// 	- goret gobject.Object (nullable) 
-//
-// Looks up a child element by the given name.
-// 
-// This virtual method has a default implementation that uses #GstObject
-// together with gst_object_get_name(). If the interface is to be used with
-// #GObjects, this methods needs to be overridden.
-func (parent *ChildProxyInstance) ParentGetChildByName(name string) gobject.Object {
-	var carg0 *C.GstChildProxy
-	var carg1 *C.gchar   // in, none, converted
-	var cret  *C.GObject // return, full, converted, nullable
-
-	parentclass := (*C.GstChildProxyInterface)(classdata.PeekParentInterface(UnsafeChildProxyToGlibNone(parent), uint64(TypeChildProxy)))
-
-	carg0 = (*C.GstChildProxy)(UnsafeChildProxyToGlibNone(parent))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
-
-	cret = C._gotk4_gst1_ChildProxy_virtual_get_child_by_name(unsafe.Pointer(parentclass.get_child_by_name), carg0, carg1)
-	runtime.KeepAlive(parent)
-	runtime.KeepAlive(name)
-
-	var goret gobject.Object
-
-	if cret != nil {
-		goret = gobject.UnsafeObjectFromGlibFull(unsafe.Pointer(cret))
-	}
-
-	return goret
-}
-
-// ParentGetChildrenCount calls the default implementations of the `GstChildProxy.get_children_count` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function returns the following values:
-// 
-// 	- goret uint 
-//
-// Gets the number of child objects this parent contains.
-func (parent *ChildProxyInstance) ParentGetChildrenCount() uint {
-	var carg0 *C.GstChildProxy
-	var cret  C.guint // return, none, casted
-
-	parentclass := (*C.GstChildProxyInterface)(classdata.PeekParentInterface(UnsafeChildProxyToGlibNone(parent), uint64(TypeChildProxy)))
-
-	carg0 = (*C.GstChildProxy)(UnsafeChildProxyToGlibNone(parent))
-
-	cret = C._gotk4_gst1_ChildProxy_virtual_get_children_count(unsafe.Pointer(parentclass.get_children_count), carg0)
-	runtime.KeepAlive(parent)
-
-	var goret uint
-
-	goret = uint(cret)
-
-	return goret
-}
-
 // PresetInstance is the instance type used by all types implementing GstPreset. It is used internally by the bindings. Users should use the interface [Preset] instead.
 type PresetInstance struct {
 	_ [0]func() // equal guard
@@ -13502,115 +13034,6 @@ type Preset interface {
 	// data @tag names can be something like e.g. "comment". Supplying %NULL for the
 	// @value will unset an existing value.
 	SetMeta(string, string, string) bool
-
-	// chain up virtual methods:
-
-	// ParentDeletePreset calls the default implementations of the `GstPreset.delete_preset` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- name string: preset name to remove 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Delete the given preset.
-	ParentDeletePreset(name string) bool
-	// ParentGetMeta calls the default implementations of the `GstPreset.get_meta` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- name string: preset name 
-	// 	- tag string: meta data item name 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- value string: value 
-	// 	- goret bool 
-	//
-	// Gets the @value for an existing meta data @tag. Meta data @tag names can be
-	// something like e.g. "comment". Returned values need to be released when done.
-	ParentGetMeta(name string, tag string) (string, bool)
-	// ParentGetPresetNames calls the default implementations of the `GstPreset.get_preset_names` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret []string 
-	//
-	// Get a copy of preset names as a %NULL terminated string array.
-	ParentGetPresetNames() []string
-	// ParentGetPropertyNames calls the default implementations of the `GstPreset.get_property_names` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret []string 
-	//
-	// Get a the names of the GObject properties that can be used for presets.
-	ParentGetPropertyNames() []string
-	// ParentLoadPreset calls the default implementations of the `GstPreset.load_preset` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- name string: preset name to load 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Load the given preset.
-	ParentLoadPreset(name string) bool
-	// ParentRenamePreset calls the default implementations of the `GstPreset.rename_preset` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- oldName string: current preset name 
-	// 	- newName string: new preset name 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Renames a preset. If there is already a preset by the @new_name it will be
-	// overwritten.
-	ParentRenamePreset(oldName string, newName string) bool
-	// ParentSavePreset calls the default implementations of the `GstPreset.save_preset` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- name string: preset name to save 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Save the current object settings as a preset under the given name. If there
-	// is already a preset by this @name it will be overwritten.
-	ParentSavePreset(name string) bool
-	// ParentSetMeta calls the default implementations of the `GstPreset.set_meta` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- name string: preset name 
-	// 	- tag string: meta data item name 
-	// 	- value string (nullable): new value 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Sets a new @value for an existing meta data item or adds a new item. Meta
-	// data @tag names can be something like e.g. "comment". Supplying %NULL for the
-	// @value will unset an existing value.
-	ParentSetMeta(name string, tag string, value string) bool
 }
 
 var _ Preset = (*PresetInstance)(nil)
@@ -14015,619 +13438,6 @@ func (preset *PresetInstance) SetMeta(name string, tag string, value string) boo
 	return goret
 }
 
-// PresetOverrides is the struct used to override the default implementation of virtual methods.
-// it is generic over the extending instance type.
-type PresetOverrides[Instance Preset] struct {
-	// // DeletePreset allows you to override the implementation of the virtual method delete_preset.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- name string: preset name to remove 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Delete the given preset.
-	DeletePreset func(Instance, string) bool
-	// // GetMeta allows you to override the implementation of the virtual method get_meta.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- name string: preset name 
-	// 	- tag string: meta data item name 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- value string: value 
-	// 	- goret bool 
-	//
-	// Gets the @value for an existing meta data @tag. Meta data @tag names can be
-	// something like e.g. "comment". Returned values need to be released when done.
-	GetMeta func(Instance, string, string) (string, bool)
-	// // GetPresetNames allows you to override the implementation of the virtual method get_preset_names.
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret []string 
-	//
-	// Get a copy of preset names as a %NULL terminated string array.
-	GetPresetNames func(Instance) []string
-	// // GetPropertyNames allows you to override the implementation of the virtual method get_property_names.
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret []string 
-	//
-	// Get a the names of the GObject properties that can be used for presets.
-	GetPropertyNames func(Instance) []string
-	// // LoadPreset allows you to override the implementation of the virtual method load_preset.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- name string: preset name to load 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Load the given preset.
-	LoadPreset func(Instance, string) bool
-	// // RenamePreset allows you to override the implementation of the virtual method rename_preset.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- oldName string: current preset name 
-	// 	- newName string: new preset name 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Renames a preset. If there is already a preset by the @new_name it will be
-	// overwritten.
-	RenamePreset func(Instance, string, string) bool
-	// // SavePreset allows you to override the implementation of the virtual method save_preset.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- name string: preset name to save 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Save the current object settings as a preset under the given name. If there
-	// is already a preset by this @name it will be overwritten.
-	SavePreset func(Instance, string) bool
-	// // SetMeta allows you to override the implementation of the virtual method set_meta.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- name string: preset name 
-	// 	- tag string: meta data item name 
-	// 	- value string (nullable): new value 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// Sets a new @value for an existing meta data item or adds a new item. Meta
-	// data @tag names can be something like e.g. "comment". Supplying %NULL for the
-	// @value will unset an existing value.
-	SetMeta func(Instance, string, string, string) bool
-}
-
-// UnsafeApplyPresetOverrides applies the overrides to init the gclass by setting the trampoline functions.
-// This is used by the bindings internally and only exported for visibility to other bindings code.
-func UnsafeApplyPresetOverrides[Instance Preset](gclass unsafe.Pointer, overrides PresetOverrides[Instance]) {
-	pclass := (*C.GstPresetInterface)(gclass)
-
-	if overrides.DeletePreset != nil {
-		pclass.delete_preset = (*[0]byte)(C._gotk4_gst1_Preset_delete_preset)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gst1_Preset_delete_preset",
-			func(carg0 *C.GstPreset, carg1 *C.gchar) (cret C.gboolean) {
-				var preset Instance // go GstPreset subclass
-				var name   string   // in, none, string
-				var goret  bool     // return
-
-				preset = UnsafePresetFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-				name = C.GoString((*C.char)(unsafe.Pointer(carg1)))
-
-				goret = overrides.DeletePreset(preset, name)
-
-				if goret {
-					cret = C.TRUE
-				}
-
-				return cret
-			},
-		)
-	}
-
-	if overrides.GetMeta != nil {
-		pclass.get_meta = (*[0]byte)(C._gotk4_gst1_Preset_get_meta)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gst1_Preset_get_meta",
-			func(carg0 *C.GstPreset, carg1 *C.gchar, carg2 *C.gchar, carg3 **C.gchar) (cret C.gboolean) {
-				var preset Instance // go GstPreset subclass
-				var name   string   // in, none, string
-				var tag    string   // in, none, string
-				var value  string   // out, full, string
-				var goret  bool     // return
-
-				preset = UnsafePresetFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-				name = C.GoString((*C.char)(unsafe.Pointer(carg1)))
-				tag = C.GoString((*C.char)(unsafe.Pointer(carg2)))
-
-				value, goret = overrides.GetMeta(preset, name, tag)
-
-				*carg3 = (*C.gchar)(unsafe.Pointer(C.CString(value)))
-				if goret {
-					cret = C.TRUE
-				}
-
-				return cret
-			},
-		)
-	}
-
-	if overrides.GetPresetNames != nil {
-		pclass.get_preset_names = (*[0]byte)(C._gotk4_gst1_Preset_get_preset_names)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gst1_Preset_get_preset_names",
-			func(carg0 *C.GstPreset) (cret **C.gchar) {
-				var preset Instance // go GstPreset subclass
-				var goret  []string // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , array (inner: *typesystem.StringPrimitive, zero-terminated)
-
-				preset = UnsafePresetFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-
-				goret = overrides.GetPresetNames(preset)
-
-				_ = goret
-				_ = cret
-				panic("unimplemented conversion of []string (gchar**)")
-
-				return cret
-			},
-		)
-	}
-
-	if overrides.GetPropertyNames != nil {
-		pclass.get_property_names = (*[0]byte)(C._gotk4_gst1_Preset_get_property_names)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gst1_Preset_get_property_names",
-			func(carg0 *C.GstPreset) (cret **C.gchar) {
-				var preset Instance // go GstPreset subclass
-				var goret  []string // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , array (inner: *typesystem.StringPrimitive, zero-terminated)
-
-				preset = UnsafePresetFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-
-				goret = overrides.GetPropertyNames(preset)
-
-				_ = goret
-				_ = cret
-				panic("unimplemented conversion of []string (gchar**)")
-
-				return cret
-			},
-		)
-	}
-
-	if overrides.LoadPreset != nil {
-		pclass.load_preset = (*[0]byte)(C._gotk4_gst1_Preset_load_preset)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gst1_Preset_load_preset",
-			func(carg0 *C.GstPreset, carg1 *C.gchar) (cret C.gboolean) {
-				var preset Instance // go GstPreset subclass
-				var name   string   // in, none, string
-				var goret  bool     // return
-
-				preset = UnsafePresetFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-				name = C.GoString((*C.char)(unsafe.Pointer(carg1)))
-
-				goret = overrides.LoadPreset(preset, name)
-
-				if goret {
-					cret = C.TRUE
-				}
-
-				return cret
-			},
-		)
-	}
-
-	if overrides.RenamePreset != nil {
-		pclass.rename_preset = (*[0]byte)(C._gotk4_gst1_Preset_rename_preset)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gst1_Preset_rename_preset",
-			func(carg0 *C.GstPreset, carg1 *C.gchar, carg2 *C.gchar) (cret C.gboolean) {
-				var preset  Instance // go GstPreset subclass
-				var oldName string   // in, none, string
-				var newName string   // in, none, string
-				var goret   bool     // return
-
-				preset = UnsafePresetFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-				oldName = C.GoString((*C.char)(unsafe.Pointer(carg1)))
-				newName = C.GoString((*C.char)(unsafe.Pointer(carg2)))
-
-				goret = overrides.RenamePreset(preset, oldName, newName)
-
-				if goret {
-					cret = C.TRUE
-				}
-
-				return cret
-			},
-		)
-	}
-
-	if overrides.SavePreset != nil {
-		pclass.save_preset = (*[0]byte)(C._gotk4_gst1_Preset_save_preset)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gst1_Preset_save_preset",
-			func(carg0 *C.GstPreset, carg1 *C.gchar) (cret C.gboolean) {
-				var preset Instance // go GstPreset subclass
-				var name   string   // in, none, string
-				var goret  bool     // return
-
-				preset = UnsafePresetFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-				name = C.GoString((*C.char)(unsafe.Pointer(carg1)))
-
-				goret = overrides.SavePreset(preset, name)
-
-				if goret {
-					cret = C.TRUE
-				}
-
-				return cret
-			},
-		)
-	}
-
-	if overrides.SetMeta != nil {
-		pclass.set_meta = (*[0]byte)(C._gotk4_gst1_Preset_set_meta)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gst1_Preset_set_meta",
-			func(carg0 *C.GstPreset, carg1 *C.gchar, carg2 *C.gchar, carg3 *C.gchar) (cret C.gboolean) {
-				var preset Instance // go GstPreset subclass
-				var name   string   // in, none, string
-				var tag    string   // in, none, string
-				var value  string   // in, none, string, nullable-string
-				var goret  bool     // return
-
-				preset = UnsafePresetFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-				name = C.GoString((*C.char)(unsafe.Pointer(carg1)))
-				tag = C.GoString((*C.char)(unsafe.Pointer(carg2)))
-				if carg3 != nil {
-					value = C.GoString((*C.char)(unsafe.Pointer(carg3)))
-				}
-
-				goret = overrides.SetMeta(preset, name, tag, value)
-
-				if goret {
-					cret = C.TRUE
-				}
-
-				return cret
-			},
-		)
-	}
-}
-
-// ParentDeletePreset calls the default implementations of the `GstPreset.delete_preset` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function takes the following parameters:
-// 
-// 	- name string: preset name to remove 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Delete the given preset.
-func (preset *PresetInstance) ParentDeletePreset(name string) bool {
-	var carg0 *C.GstPreset
-	var carg1 *C.gchar   // in, none, converted
-	var cret  C.gboolean // return
-
-	parentclass := (*C.GstPresetInterface)(classdata.PeekParentInterface(UnsafePresetToGlibNone(preset), uint64(TypePreset)))
-
-	carg0 = (*C.GstPreset)(UnsafePresetToGlibNone(preset))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
-
-	cret = C._gotk4_gst1_Preset_virtual_delete_preset(unsafe.Pointer(parentclass.delete_preset), carg0, carg1)
-	runtime.KeepAlive(preset)
-	runtime.KeepAlive(name)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
-// ParentGetMeta calls the default implementations of the `GstPreset.get_meta` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function takes the following parameters:
-// 
-// 	- name string: preset name 
-// 	- tag string: meta data item name 
-// 
-// The function returns the following values:
-// 
-// 	- value string: value 
-// 	- goret bool 
-//
-// Gets the @value for an existing meta data @tag. Meta data @tag names can be
-// something like e.g. "comment". Returned values need to be released when done.
-func (preset *PresetInstance) ParentGetMeta(name string, tag string) (string, bool) {
-	var carg0 *C.GstPreset
-	var carg1 *C.gchar   // in, none, converted
-	var carg2 *C.gchar   // in, none, string
-	var carg3 *C.gchar   // out, full, string
-	var cret  C.gboolean // return
-
-	parentclass := (*C.GstPresetInterface)(classdata.PeekParentInterface(UnsafePresetToGlibNone(preset), uint64(TypePreset)))
-
-	carg0 = (*C.GstPreset)(UnsafePresetToGlibNone(preset))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg2))
-
-	cret = C._gotk4_gst1_Preset_virtual_get_meta(unsafe.Pointer(parentclass.get_meta), carg0, carg1, carg2, &carg3)
-	runtime.KeepAlive(preset)
-	runtime.KeepAlive(name)
-	runtime.KeepAlive(tag)
-
-	var value string
-	var goret bool
-
-	value = C.GoString((*C.char)(unsafe.Pointer(carg3)))
-	defer C.free(unsafe.Pointer(carg3))
-	if cret != 0 {
-		goret = true
-	}
-
-	return value, goret
-}
-
-// ParentGetPresetNames calls the default implementations of the `GstPreset.get_preset_names` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function returns the following values:
-// 
-// 	- goret []string 
-//
-// Get a copy of preset names as a %NULL terminated string array.
-func (preset *PresetInstance) ParentGetPresetNames() []string {
-	var carg0 *C.GstPreset
-	var cret  **C.gchar // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , array (inner: *typesystem.StringPrimitive, zero-terminated)
-
-	parentclass := (*C.GstPresetInterface)(classdata.PeekParentInterface(UnsafePresetToGlibNone(preset), uint64(TypePreset)))
-
-	carg0 = (*C.GstPreset)(UnsafePresetToGlibNone(preset))
-
-	cret = C._gotk4_gst1_Preset_virtual_get_preset_names(unsafe.Pointer(parentclass.get_preset_names), carg0)
-	runtime.KeepAlive(preset)
-
-	var goret []string
-
-	_ = goret
-	_ = cret
-	panic("unimplemented conversion of []string (gchar**)")
-
-	return goret
-}
-
-// ParentGetPropertyNames calls the default implementations of the `GstPreset.get_property_names` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function returns the following values:
-// 
-// 	- goret []string 
-//
-// Get a the names of the GObject properties that can be used for presets.
-func (preset *PresetInstance) ParentGetPropertyNames() []string {
-	var carg0 *C.GstPreset
-	var cret  **C.gchar // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , array (inner: *typesystem.StringPrimitive, zero-terminated)
-
-	parentclass := (*C.GstPresetInterface)(classdata.PeekParentInterface(UnsafePresetToGlibNone(preset), uint64(TypePreset)))
-
-	carg0 = (*C.GstPreset)(UnsafePresetToGlibNone(preset))
-
-	cret = C._gotk4_gst1_Preset_virtual_get_property_names(unsafe.Pointer(parentclass.get_property_names), carg0)
-	runtime.KeepAlive(preset)
-
-	var goret []string
-
-	_ = goret
-	_ = cret
-	panic("unimplemented conversion of []string (gchar**)")
-
-	return goret
-}
-
-// ParentLoadPreset calls the default implementations of the `GstPreset.load_preset` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function takes the following parameters:
-// 
-// 	- name string: preset name to load 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Load the given preset.
-func (preset *PresetInstance) ParentLoadPreset(name string) bool {
-	var carg0 *C.GstPreset
-	var carg1 *C.gchar   // in, none, converted
-	var cret  C.gboolean // return
-
-	parentclass := (*C.GstPresetInterface)(classdata.PeekParentInterface(UnsafePresetToGlibNone(preset), uint64(TypePreset)))
-
-	carg0 = (*C.GstPreset)(UnsafePresetToGlibNone(preset))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
-
-	cret = C._gotk4_gst1_Preset_virtual_load_preset(unsafe.Pointer(parentclass.load_preset), carg0, carg1)
-	runtime.KeepAlive(preset)
-	runtime.KeepAlive(name)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
-// ParentRenamePreset calls the default implementations of the `GstPreset.rename_preset` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function takes the following parameters:
-// 
-// 	- oldName string: current preset name 
-// 	- newName string: new preset name 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Renames a preset. If there is already a preset by the @new_name it will be
-// overwritten.
-func (preset *PresetInstance) ParentRenamePreset(oldName string, newName string) bool {
-	var carg0 *C.GstPreset
-	var carg1 *C.gchar   // in, none, converted
-	var carg2 *C.gchar   // in, none, string
-	var cret  C.gboolean // return
-
-	parentclass := (*C.GstPresetInterface)(classdata.PeekParentInterface(UnsafePresetToGlibNone(preset), uint64(TypePreset)))
-
-	carg0 = (*C.GstPreset)(UnsafePresetToGlibNone(preset))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(oldName)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(newName)))
-	defer C.free(unsafe.Pointer(carg2))
-
-	cret = C._gotk4_gst1_Preset_virtual_rename_preset(unsafe.Pointer(parentclass.rename_preset), carg0, carg1, carg2)
-	runtime.KeepAlive(preset)
-	runtime.KeepAlive(oldName)
-	runtime.KeepAlive(newName)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
-// ParentSavePreset calls the default implementations of the `GstPreset.save_preset` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function takes the following parameters:
-// 
-// 	- name string: preset name to save 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Save the current object settings as a preset under the given name. If there
-// is already a preset by this @name it will be overwritten.
-func (preset *PresetInstance) ParentSavePreset(name string) bool {
-	var carg0 *C.GstPreset
-	var carg1 *C.gchar   // in, none, converted
-	var cret  C.gboolean // return
-
-	parentclass := (*C.GstPresetInterface)(classdata.PeekParentInterface(UnsafePresetToGlibNone(preset), uint64(TypePreset)))
-
-	carg0 = (*C.GstPreset)(UnsafePresetToGlibNone(preset))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
-
-	cret = C._gotk4_gst1_Preset_virtual_save_preset(unsafe.Pointer(parentclass.save_preset), carg0, carg1)
-	runtime.KeepAlive(preset)
-	runtime.KeepAlive(name)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
-// ParentSetMeta calls the default implementations of the `GstPreset.set_meta` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function takes the following parameters:
-// 
-// 	- name string: preset name 
-// 	- tag string: meta data item name 
-// 	- value string (nullable): new value 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Sets a new @value for an existing meta data item or adds a new item. Meta
-// data @tag names can be something like e.g. "comment". Supplying %NULL for the
-// @value will unset an existing value.
-func (preset *PresetInstance) ParentSetMeta(name string, tag string, value string) bool {
-	var carg0 *C.GstPreset
-	var carg1 *C.gchar   // in, none, converted
-	var carg2 *C.gchar   // in, none, string
-	var carg3 *C.gchar   // in, none, string
-	var cret  C.gboolean // return
-
-	parentclass := (*C.GstPresetInterface)(classdata.PeekParentInterface(UnsafePresetToGlibNone(preset), uint64(TypePreset)))
-
-	carg0 = (*C.GstPreset)(UnsafePresetToGlibNone(preset))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg2))
-	if value != "" {
-		carg3 = (*C.gchar)(unsafe.Pointer(C.CString(value)))
-		defer C.free(unsafe.Pointer(carg3))
-	}
-
-	cret = C._gotk4_gst1_Preset_virtual_set_meta(unsafe.Pointer(parentclass.set_meta), carg0, carg1, carg2, carg3)
-	runtime.KeepAlive(preset)
-	runtime.KeepAlive(name)
-	runtime.KeepAlive(tag)
-	runtime.KeepAlive(value)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
-}
-
 // URIHandlerInstance is the instance type used by all types implementing GstURIHandler. It is used internally by the bindings. Users should use the interface [URIHandler] instead.
 type URIHandlerInstance struct {
 	_ [0]func() // equal guard
@@ -14687,32 +13497,6 @@ type URIHandler interface {
 	//
 	// Tries to set the URI of the given handler.
 	SetURI(string) (bool, error)
-
-	// chain up virtual methods:
-
-	// ParentGetURI calls the default implementations of the `GstURIHandler.get_uri` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret string (nullable) 
-	//
-	// Gets the currently handled URI.
-	ParentGetURI() string
-	// ParentSetURI calls the default implementations of the `GstURIHandler.set_uri` virtual method.
-	// This function's behavior is not defined when the parent does not implement the virtual method.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- uri string: URI to set 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	// 	- _goerr error (nullable): an error 
-	//
-	// Tries to set the URI of the given handler.
-	ParentSetURI(uri string) (bool, error)
 }
 
 var _ URIHandler = (*URIHandlerInstance)(nil)
@@ -14872,157 +13656,6 @@ func (handler *URIHandlerInstance) SetURI(uri string) (bool, error) {
 	return goret, _goerr
 }
 
-// URIHandlerOverrides is the struct used to override the default implementation of virtual methods.
-// it is generic over the extending instance type.
-type URIHandlerOverrides[Instance URIHandler] struct {
-	// // GetURI allows you to override the implementation of the virtual method get_uri.
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret string (nullable) 
-	//
-	// Gets the currently handled URI.
-	GetURI func(Instance) string
-	// // SetURI allows you to override the implementation of the virtual method set_uri.
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- uri string: URI to set 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	// 	- _goerr error (nullable): an error 
-	//
-	// Tries to set the URI of the given handler.
-	SetURI func(Instance, string) (bool, error)
-}
-
-// UnsafeApplyURIHandlerOverrides applies the overrides to init the gclass by setting the trampoline functions.
-// This is used by the bindings internally and only exported for visibility to other bindings code.
-func UnsafeApplyURIHandlerOverrides[Instance URIHandler](gclass unsafe.Pointer, overrides URIHandlerOverrides[Instance]) {
-	pclass := (*C.GstURIHandlerInterface)(gclass)
-
-	if overrides.GetURI != nil {
-		pclass.get_uri = (*[0]byte)(C._gotk4_gst1_URIHandler_get_uri)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gst1_URIHandler_get_uri",
-			func(carg0 *C.GstURIHandler) (cret *C.gchar) {
-				var handler Instance // go GstURIHandler subclass
-				var goret   string   // return, full, string, nullable-string
-
-				handler = UnsafeURIHandlerFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-
-				goret = overrides.GetURI(handler)
-
-				if goret != "" {
-					cret = (*C.gchar)(unsafe.Pointer(C.CString(goret)))
-				}
-
-				return cret
-			},
-		)
-	}
-
-	if overrides.SetURI != nil {
-		pclass.set_uri = (*[0]byte)(C._gotk4_gst1_URIHandler_set_uri)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gst1_URIHandler_set_uri",
-			func(carg0 *C.GstURIHandler, carg1 *C.gchar, _cerr **C.GError) (cret C.gboolean) {
-				var handler Instance // go GstURIHandler subclass
-				var uri     string   // in, none, string
-				var goret   bool     // return
-				var _goerr  error    // out, full, converted
-
-				handler = UnsafeURIHandlerFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-				uri = C.GoString((*C.char)(unsafe.Pointer(carg1)))
-
-				goret, _goerr = overrides.SetURI(handler, uri)
-
-				if goret {
-					cret = C.TRUE
-				}
-				*_cerr = (*C.GError)(glib.UnsafeErrorToGlibFull(_goerr))
-
-				return cret
-			},
-		)
-	}
-}
-
-// ParentGetURI calls the default implementations of the `GstURIHandler.get_uri` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function returns the following values:
-// 
-// 	- goret string (nullable) 
-//
-// Gets the currently handled URI.
-func (handler *URIHandlerInstance) ParentGetURI() string {
-	var carg0 *C.GstURIHandler
-	var cret  *C.gchar // return, full, string, nullable-string
-
-	parentclass := (*C.GstURIHandlerInterface)(classdata.PeekParentInterface(UnsafeURIHandlerToGlibNone(handler), uint64(TypeURIHandler)))
-
-	carg0 = (*C.GstURIHandler)(UnsafeURIHandlerToGlibNone(handler))
-
-	cret = C._gotk4_gst1_URIHandler_virtual_get_uri(unsafe.Pointer(parentclass.get_uri), carg0)
-	runtime.KeepAlive(handler)
-
-	var goret string
-
-	if cret != nil {
-		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-		defer C.free(unsafe.Pointer(cret))
-	}
-
-	return goret
-}
-
-// ParentSetURI calls the default implementations of the `GstURIHandler.set_uri` virtual method.
-// This function's behavior is not defined when the parent does not implement the virtual method.
-// 
-// The function takes the following parameters:
-// 
-// 	- uri string: URI to set 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-// 	- _goerr error (nullable): an error 
-//
-// Tries to set the URI of the given handler.
-func (handler *URIHandlerInstance) ParentSetURI(uri string) (bool, error) {
-	var carg0 *C.GstURIHandler
-	var carg1 *C.gchar   // in, none, converted
-	var cret  C.gboolean // return
-	var _cerr *C.GError  // out, full, converted, nullable
-
-	parentclass := (*C.GstURIHandlerInterface)(classdata.PeekParentInterface(UnsafeURIHandlerToGlibNone(handler), uint64(TypeURIHandler)))
-
-	carg0 = (*C.GstURIHandler)(UnsafeURIHandlerToGlibNone(handler))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
-	defer C.free(unsafe.Pointer(carg1))
-
-	cret = C._gotk4_gst1_URIHandler_virtual_set_uri(unsafe.Pointer(parentclass.set_uri), carg0, carg1, &_cerr)
-	runtime.KeepAlive(handler)
-	runtime.KeepAlive(uri)
-
-	var goret  bool
-	var _goerr error
-
-	if cret != 0 {
-		goret = true
-	}
-	if _cerr != nil {
-		_goerr = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(_cerr))
-	}
-
-	return goret, _goerr
-}
-
 // TagSetterInstance is the instance type used by all types implementing GstTagSetter. It is used internally by the bindings. Users should use the interface [TagSetter] instead.
 type TagSetterInstance struct {
 	_ [0]func() // equal guard
@@ -15121,8 +13754,6 @@ type TagSetter interface {
 	// specified by this interface. The default is #GST_TAG_MERGE_KEEP, which keeps
 	// the tags set with this interface and discards tags from events.
 	SetTagMergeMode(TagMergeMode)
-
-	// chain up virtual methods:
 }
 
 var _ TagSetter = (*TagSetterInstance)(nil)
@@ -15277,16 +13908,6 @@ func (setter *TagSetterInstance) SetTagMergeMode(mode TagMergeMode) {
 	runtime.KeepAlive(mode)
 }
 
-// TagSetterOverrides is the struct used to override the default implementation of virtual methods.
-// it is generic over the extending instance type.
-type TagSetterOverrides[Instance TagSetter] struct {
-}
-
-// UnsafeApplyTagSetterOverrides applies the overrides to init the gclass by setting the trampoline functions.
-// This is used by the bindings internally and only exported for visibility to other bindings code.
-func UnsafeApplyTagSetterOverrides[Instance TagSetter](gclass unsafe.Pointer, overrides TagSetterOverrides[Instance]) {
-}
-
 // TocSetterInstance is the instance type used by all types implementing GstTocSetter. It is used internally by the bindings. Users should use the interface [TocSetter] instead.
 type TocSetterInstance struct {
 	_ [0]func() // equal guard
@@ -15337,8 +13958,6 @@ type TocSetter interface {
 	// Set the given TOC on the setter. Previously set TOC will be
 	// unreffed before setting a new one.
 	SetToc(*Toc)
-
-	// chain up virtual methods:
 }
 
 var _ TocSetter = (*TocSetterInstance)(nil)
@@ -15443,16 +14062,6 @@ func (setter *TocSetterInstance) SetToc(toc *Toc) {
 	C.gst_toc_setter_set_toc(carg0, carg1)
 	runtime.KeepAlive(setter)
 	runtime.KeepAlive(toc)
-}
-
-// TocSetterOverrides is the struct used to override the default implementation of virtual methods.
-// it is generic over the extending instance type.
-type TocSetterOverrides[Instance TocSetter] struct {
-}
-
-// UnsafeApplyTocSetterOverrides applies the overrides to init the gclass by setting the trampoline functions.
-// This is used by the bindings internally and only exported for visibility to other bindings code.
-func UnsafeApplyTocSetterOverrides[Instance TocSetter](gclass unsafe.Pointer, overrides TocSetterOverrides[Instance]) {
 }
 
 // ObjectInstance is the instance type used by all types extending GstObject. It is used internally by the bindings. Users should use the interface [Object] instead.
@@ -16467,7 +15076,7 @@ func UnsafeApplyObjectOverrides[Instance Object](gclass unsafe.Pointer, override
 				var orig   Object             // in, none, converted
 				var pspec  *gobject.ParamSpec // in, none, converted
 
-				object = UnsafeObjectFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				object = UnsafeObjectFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				orig = UnsafeObjectFromGlibNone(unsafe.Pointer(carg1))
 				pspec = gobject.UnsafeParamSpecFromGlibNone(unsafe.Pointer(carg2))
 
@@ -20172,7 +18781,7 @@ func UnsafeApplyPadOverrides[Instance Pad](gclass unsafe.Pointer, overrides PadO
 				var pad  Instance // go GstPad subclass
 				var peer Pad      // in, none, converted
 
-				pad = UnsafePadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				pad = UnsafePadFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				peer = UnsafePadFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.Linked(pad, peer)
@@ -20189,7 +18798,7 @@ func UnsafeApplyPadOverrides[Instance Pad](gclass unsafe.Pointer, overrides PadO
 				var pad  Instance // go GstPad subclass
 				var peer Pad      // in, none, converted
 
-				pad = UnsafePadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				pad = UnsafePadFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				peer = UnsafePadFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.Unlinked(pad, peer)
@@ -20692,7 +19301,7 @@ func UnsafeApplyPadTemplateOverrides[Instance PadTemplate](gclass unsafe.Pointer
 				var templ Instance // go GstPadTemplate subclass
 				var pad   Pad      // in, none, converted
 
-				templ = UnsafePadTemplateFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				templ = UnsafePadTemplateFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				pad = UnsafePadFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.PadCreated(templ, pad)
@@ -24182,7 +22791,7 @@ func UnsafeApplyStreamCollectionOverrides[Instance StreamCollection](gclass unsa
 				var stream     Stream             // in, none, converted
 				var pspec      *gobject.ParamSpec // in, none, converted
 
-				collection = UnsafeStreamCollectionFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				collection = UnsafeStreamCollectionFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				stream = UnsafeStreamFromGlibNone(unsafe.Pointer(carg1))
 				pspec = gobject.UnsafeParamSpecFromGlibNone(unsafe.Pointer(carg2))
 
@@ -25119,7 +23728,7 @@ func UnsafeApplyTaskPoolOverrides[Instance TaskPool](gclass unsafe.Pointer, over
 			func(carg0 *C.GstTaskPool) {
 				var pool Instance // go GstTaskPool subclass
 
-				pool = UnsafeTaskPoolFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				pool = UnsafeTaskPoolFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				overrides.Cleanup(pool)
 			},
@@ -25135,7 +23744,7 @@ func UnsafeApplyTaskPoolOverrides[Instance TaskPool](gclass unsafe.Pointer, over
 				var pool   Instance // go GstTaskPool subclass
 				var _goerr error    // out, full, converted
 
-				pool = UnsafeTaskPoolFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				pool = UnsafeTaskPoolFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				_goerr = overrides.Prepare(pool)
 
@@ -26225,7 +24834,7 @@ func UnsafeApplyAllocatorOverrides[Instance Allocator](gclass unsafe.Pointer, ov
 				var params    *AllocationParams // in, none, converted, nullable
 				var goret     *Memory           // return, full, converted, nullable
 
-				allocator = UnsafeAllocatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				allocator = UnsafeAllocatorFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				size = uint(carg1)
 				if carg2 != nil {
 					params = UnsafeAllocationParamsFromGlibNone(unsafe.Pointer(carg2))
@@ -26251,7 +24860,7 @@ func UnsafeApplyAllocatorOverrides[Instance Allocator](gclass unsafe.Pointer, ov
 				var allocator Instance // go GstAllocator subclass
 				var memory    *Memory  // in, full, converted
 
-				allocator = UnsafeAllocatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				allocator = UnsafeAllocatorFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				memory = UnsafeMemoryFromGlibFull(unsafe.Pointer(carg1))
 
 				overrides.Free(allocator, memory)
@@ -27544,7 +26153,7 @@ func UnsafeApplyBufferPoolOverrides[Instance BufferPool](gclass unsafe.Pointer, 
 				var buffer *Buffer                  // out, full, converted
 				var goret  FlowReturn               // return, none, casted
 
-				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				if carg2 != nil {
 					params = UnsafeBufferPoolAcquireParamsFromGlibNone(unsafe.Pointer(carg2))
 				}
@@ -27570,7 +26179,7 @@ func UnsafeApplyBufferPoolOverrides[Instance BufferPool](gclass unsafe.Pointer, 
 				var buffer *Buffer                  // out, full, converted
 				var goret  FlowReturn               // return, none, casted
 
-				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				if carg2 != nil {
 					params = UnsafeBufferPoolAcquireParamsFromGlibNone(unsafe.Pointer(carg2))
 				}
@@ -27593,7 +26202,7 @@ func UnsafeApplyBufferPoolOverrides[Instance BufferPool](gclass unsafe.Pointer, 
 			func(carg0 *C.GstBufferPool) {
 				var pool Instance // go GstBufferPool subclass
 
-				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				overrides.FlushStart(pool)
 			},
@@ -27608,7 +26217,7 @@ func UnsafeApplyBufferPoolOverrides[Instance BufferPool](gclass unsafe.Pointer, 
 			func(carg0 *C.GstBufferPool) {
 				var pool Instance // go GstBufferPool subclass
 
-				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				overrides.FlushStop(pool)
 			},
@@ -27624,7 +26233,7 @@ func UnsafeApplyBufferPoolOverrides[Instance BufferPool](gclass unsafe.Pointer, 
 				var pool   Instance // go GstBufferPool subclass
 				var buffer *Buffer  // in, none, converted
 
-				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				buffer = UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.FreeBuffer(pool, buffer)
@@ -27641,7 +26250,7 @@ func UnsafeApplyBufferPoolOverrides[Instance BufferPool](gclass unsafe.Pointer, 
 				var pool  Instance // go GstBufferPool subclass
 				var goret []string // return, transfer: none, C Pointers: 2, Name: array[utf8], scope: , array (inner: *typesystem.StringPrimitive, zero-terminated)
 
-				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.GetOptions(pool)
 
@@ -27663,7 +26272,7 @@ func UnsafeApplyBufferPoolOverrides[Instance BufferPool](gclass unsafe.Pointer, 
 				var pool   Instance // go GstBufferPool subclass
 				var buffer *Buffer  // in, full, converted
 
-				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				buffer = UnsafeBufferFromGlibFull(unsafe.Pointer(carg1))
 
 				overrides.ReleaseBuffer(pool, buffer)
@@ -27680,7 +26289,7 @@ func UnsafeApplyBufferPoolOverrides[Instance BufferPool](gclass unsafe.Pointer, 
 				var pool   Instance // go GstBufferPool subclass
 				var buffer *Buffer  // in, none, converted
 
-				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				buffer = UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.ResetBuffer(pool, buffer)
@@ -27698,7 +26307,7 @@ func UnsafeApplyBufferPoolOverrides[Instance BufferPool](gclass unsafe.Pointer, 
 				var config *Structure // in, full, converted
 				var goret  bool       // return
 
-				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				config = UnsafeStructureFromGlibFull(unsafe.Pointer(carg1))
 
 				goret = overrides.SetConfig(pool, config)
@@ -27721,7 +26330,7 @@ func UnsafeApplyBufferPoolOverrides[Instance BufferPool](gclass unsafe.Pointer, 
 				var pool  Instance // go GstBufferPool subclass
 				var goret bool     // return
 
-				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Start(pool)
 
@@ -27743,7 +26352,7 @@ func UnsafeApplyBufferPoolOverrides[Instance BufferPool](gclass unsafe.Pointer, 
 				var pool  Instance // go GstBufferPool subclass
 				var goret bool     // return
 
-				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				pool = UnsafeBufferPoolFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Stop(pool)
 
@@ -28415,22 +27024,6 @@ type Bus interface {
 	// references to the message origin objects. Will flush future messages until
 	// gst_bus_set_flushing() sets @flushing to %FALSE.
 	SetFlushing(bool)
-	// SetSyncHandler wraps gst_bus_set_sync_handler
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- fn BusSyncHandler (nullable): The handler function to install 
-	//
-	// Sets the synchronous handler on the bus. The function will be called
-	// every time a new message is posted on the bus. Note that the function
-	// will be called in the same thread context as the posting object. This
-	// function is usually only called by the creator of the bus. Applications
-	// should handle messages asynchronously using the gst_bus watch and poll
-	// functions.
-	// 
-	// Before 1.16.3 it was not possible to replace an existing handler and
-	// clearing an existing handler with %NULL was not thread-safe.
-	SetSyncHandler(BusSyncHandler)
 	// TimedPop wraps gst_bus_timed_pop
 	// 
 	// The function takes the following parameters:
@@ -29042,39 +27635,6 @@ func (bus *BusInstance) SetFlushing(flushing bool) {
 	runtime.KeepAlive(flushing)
 }
 
-// SetSyncHandler wraps gst_bus_set_sync_handler
-// 
-// The function takes the following parameters:
-// 
-// 	- fn BusSyncHandler (nullable): The handler function to install 
-//
-// Sets the synchronous handler on the bus. The function will be called
-// every time a new message is posted on the bus. Note that the function
-// will be called in the same thread context as the posting object. This
-// function is usually only called by the creator of the bus. Applications
-// should handle messages asynchronously using the gst_bus watch and poll
-// functions.
-// 
-// Before 1.16.3 it was not possible to replace an existing handler and
-// clearing an existing handler with %NULL was not thread-safe.
-func (bus *BusInstance) SetSyncHandler(fn BusSyncHandler) {
-	var carg0 *C.GstBus           // in, none, converted
-	var carg1 C.GstBusSyncHandler // callback, scope: notified, closure: carg2, destroy: carg3, nullable
-	var carg2 C.gpointer          // implicit
-	var carg3 C.GDestroyNotify    // implicit
-
-	carg0 = (*C.GstBus)(UnsafeBusToGlibNone(bus))
-	if fn != nil {
-		carg1 = (*[0]byte)(C._gotk4_gst1_BusSyncHandler)
-		carg2 = C.gpointer(userdata.Register(fn))
-		carg3 = (C.GDestroyNotify)((*[0]byte)(C.destroyUserdata))
-	}
-
-	C.gst_bus_set_sync_handler(carg0, carg1, carg2, carg3)
-	runtime.KeepAlive(bus)
-	runtime.KeepAlive(fn)
-}
-
 // TimedPop wraps gst_bus_timed_pop
 // 
 // The function takes the following parameters:
@@ -29213,7 +27773,7 @@ func UnsafeApplyBusOverrides[Instance Bus](gclass unsafe.Pointer, overrides BusO
 				var bus     Instance // go GstBus subclass
 				var message *Message // in, none, converted
 
-				bus = UnsafeBusFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				bus = UnsafeBusFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				message = UnsafeMessageFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.Message(bus, message)
@@ -29230,7 +27790,7 @@ func UnsafeApplyBusOverrides[Instance Bus](gclass unsafe.Pointer, overrides BusO
 				var bus     Instance // go GstBus subclass
 				var message *Message // in, none, converted
 
-				bus = UnsafeBusFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				bus = UnsafeBusFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				message = UnsafeMessageFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.SyncMessage(bus, message)
@@ -31068,7 +29628,7 @@ func UnsafeApplyClockOverrides[Instance Clock](gclass unsafe.Pointer, overrides 
 				var newResolution ClockTime // in, none, casted, alias
 				var goret         ClockTime // return, none, casted, alias
 
-				clock = UnsafeClockFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				clock = UnsafeClockFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				oldResolution = ClockTime(carg1)
 				newResolution = ClockTime(carg2)
 
@@ -31090,7 +29650,7 @@ func UnsafeApplyClockOverrides[Instance Clock](gclass unsafe.Pointer, overrides 
 				var clock Instance  // go GstClock subclass
 				var goret ClockTime // return, none, casted, alias
 
-				clock = UnsafeClockFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				clock = UnsafeClockFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.GetInternalTime(clock)
 
@@ -31110,7 +29670,7 @@ func UnsafeApplyClockOverrides[Instance Clock](gclass unsafe.Pointer, overrides 
 				var clock Instance  // go GstClock subclass
 				var goret ClockTime // return, none, casted, alias
 
-				clock = UnsafeClockFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				clock = UnsafeClockFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.GetResolution(clock)
 
@@ -31130,7 +29690,7 @@ func UnsafeApplyClockOverrides[Instance Clock](gclass unsafe.Pointer, overrides 
 				var clock Instance    // go GstClock subclass
 				var entry *ClockEntry // in, none, converted
 
-				clock = UnsafeClockFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				clock = UnsafeClockFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				entry = UnsafeClockEntryFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.Unschedule(clock, entry)
@@ -31149,7 +29709,7 @@ func UnsafeApplyClockOverrides[Instance Clock](gclass unsafe.Pointer, overrides 
 				var jitter ClockTimeDiff // out, full, casted, alias
 				var goret  ClockReturn   // return, none, casted
 
-				clock = UnsafeClockFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				clock = UnsafeClockFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				entry = UnsafeClockEntryFromGlibNone(unsafe.Pointer(carg1))
 
 				jitter, goret = overrides.Wait(clock, entry)
@@ -31172,7 +29732,7 @@ func UnsafeApplyClockOverrides[Instance Clock](gclass unsafe.Pointer, overrides 
 				var entry *ClockEntry // in, none, converted
 				var goret ClockReturn // return, none, casted
 
-				clock = UnsafeClockFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				clock = UnsafeClockFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				entry = UnsafeClockEntryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.WaitAsync(clock, entry)
@@ -31663,7 +30223,7 @@ func UnsafeApplyControlBindingOverrides[Instance ControlBinding](gclass unsafe.P
 				var lastSync  ClockTime // in, none, casted, alias
 				var goret     bool      // return
 
-				binding = UnsafeControlBindingFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				binding = UnsafeControlBindingFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				object = UnsafeObjectFromGlibNone(unsafe.Pointer(carg1))
 				timestamp = ClockTime(carg2)
 				lastSync = ClockTime(carg3)
@@ -32492,7 +31052,7 @@ func UnsafeApplyDeviceOverrides[Instance Device](gclass unsafe.Pointer, override
 				var name   string   // in, none, string, nullable-string
 				var goret  Element  // return, none, converted, nullable
 
-				device = UnsafeDeviceFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				device = UnsafeDeviceFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				if carg1 != nil {
 					name = C.GoString((*C.char)(unsafe.Pointer(carg1)))
 				}
@@ -32518,7 +31078,7 @@ func UnsafeApplyDeviceOverrides[Instance Device](gclass unsafe.Pointer, override
 				var element Element  // in, none, converted
 				var goret   bool     // return
 
-				device = UnsafeDeviceFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				device = UnsafeDeviceFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.ReconfigureElement(device, element)
@@ -33901,7 +32461,7 @@ func UnsafeApplyDeviceProviderOverrides[Instance DeviceProvider](gclass unsafe.P
 				var provider Instance // go GstDeviceProvider subclass
 				var goret    bool     // return
 
-				provider = UnsafeDeviceProviderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				provider = UnsafeDeviceProviderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.Start(provider)
 
@@ -33922,7 +32482,7 @@ func UnsafeApplyDeviceProviderOverrides[Instance DeviceProvider](gclass unsafe.P
 			func(carg0 *C.GstDeviceProvider) {
 				var provider Instance // go GstDeviceProvider subclass
 
-				provider = UnsafeDeviceProviderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				provider = UnsafeDeviceProviderFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				overrides.Stop(provider)
 			},
@@ -38822,7 +37382,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 				var transition StateChange       // in, none, casted
 				var goret      StateChangeReturn // return, none, casted
 
-				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				transition = StateChange(carg1)
 
 				goret = overrides.ChangeState(element, transition)
@@ -38846,7 +37406,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 				var pending State             // out, full, casted
 				var goret   StateChangeReturn // return, none, casted
 
-				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				timeout = ClockTime(carg3)
 
 				state, pending, goret = overrides.GetState(element, timeout)
@@ -38868,7 +37428,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 			func(carg0 *C.GstElement) {
 				var element Instance // go GstElement subclass
 
-				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				overrides.NoMorePads(element)
 			},
@@ -38884,7 +37444,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 				var element Instance // go GstElement subclass
 				var pad     Pad      // in, none, converted
 
-				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				pad = UnsafePadFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.PadAdded(element, pad)
@@ -38901,7 +37461,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 				var element Instance // go GstElement subclass
 				var pad     Pad      // in, none, converted
 
-				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				pad = UnsafePadFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.PadRemoved(element, pad)
@@ -38919,7 +37479,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 				var message *Message // in, full, converted
 				var goret   bool     // return
 
-				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				message = UnsafeMessageFromGlibFull(unsafe.Pointer(carg1))
 
 				goret = overrides.PostMessage(element, message)
@@ -38942,7 +37502,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 				var element Instance // go GstElement subclass
 				var goret   Clock    // return, full, converted, nullable
 
-				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.ProvideClock(element)
 
@@ -38965,7 +37525,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 				var query   *Query   // in, none, converted
 				var goret   bool     // return
 
-				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				query = UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Query(element, query)
@@ -38988,7 +37548,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 				var element Instance // go GstElement subclass
 				var pad     Pad      // in, none, converted
 
-				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				pad = UnsafePadFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.ReleasePad(element, pad)
@@ -39008,7 +37568,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 				var caps    *Caps       // in, none, converted, nullable
 				var goret   Pad         // return, full, converted, nullable
 
-				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				templ = UnsafePadTemplateFromGlibNone(unsafe.Pointer(carg1))
 				if carg2 != nil {
 					name = C.GoString((*C.char)(unsafe.Pointer(carg2)))
@@ -39038,7 +37598,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 				var event   *Event   // in, full, converted
 				var goret   bool     // return
 
-				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				event = UnsafeEventFromGlibFull(unsafe.Pointer(carg1))
 
 				goret = overrides.SendEvent(element, event)
@@ -39061,7 +37621,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 				var element Instance // go GstElement subclass
 				var bus     Bus      // in, none, converted, nullable
 
-				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				if carg1 != nil {
 					bus = UnsafeBusFromGlibNone(unsafe.Pointer(carg1))
 				}
@@ -39081,7 +37641,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 				var clock   Clock    // in, none, converted, nullable
 				var goret   bool     // return
 
-				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				if carg1 != nil {
 					clock = UnsafeClockFromGlibNone(unsafe.Pointer(carg1))
 				}
@@ -39106,7 +37666,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 				var element  Instance // go GstElement subclass
 				var _context *Context // in, none, converted
 
-				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				_context = UnsafeContextFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.SetContext(element, _context)
@@ -39124,7 +37684,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 				var state   State             // in, none, casted
 				var goret   StateChangeReturn // return, none, casted
 
-				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				state = State(carg1)
 
 				goret = overrides.SetState(element, state)
@@ -39147,7 +37707,7 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 				var newstate State    // in, none, casted
 				var pending  State    // in, none, casted
 
-				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				element = UnsafeElementFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				oldstate = State(carg1)
 				newstate = State(carg2)
 				pending = State(carg3)
@@ -42642,7 +41202,7 @@ func UnsafeApplyBinOverrides[Instance Bin](gclass unsafe.Pointer, overrides BinO
 				var element Element  // in, none, converted
 				var goret   bool     // return
 
-				bin = UnsafeBinFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				bin = UnsafeBinFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.AddElement(bin, element)
@@ -42666,7 +41226,7 @@ func UnsafeApplyBinOverrides[Instance Bin](gclass unsafe.Pointer, overrides BinO
 				var subBin Bin      // in, none, converted
 				var child  Element  // in, none, converted
 
-				bin = UnsafeBinFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				bin = UnsafeBinFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				subBin = UnsafeBinFromGlibNone(unsafe.Pointer(carg1))
 				child = UnsafeElementFromGlibNone(unsafe.Pointer(carg2))
 
@@ -42685,7 +41245,7 @@ func UnsafeApplyBinOverrides[Instance Bin](gclass unsafe.Pointer, overrides BinO
 				var subBin Bin      // in, none, converted
 				var child  Element  // in, none, converted
 
-				bin = UnsafeBinFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				bin = UnsafeBinFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				subBin = UnsafeBinFromGlibNone(unsafe.Pointer(carg1))
 				child = UnsafeElementFromGlibNone(unsafe.Pointer(carg2))
 
@@ -42703,7 +41263,7 @@ func UnsafeApplyBinOverrides[Instance Bin](gclass unsafe.Pointer, overrides BinO
 				var bin   Instance // go GstBin subclass
 				var goret bool     // return
 
-				bin = UnsafeBinFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				bin = UnsafeBinFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.DoLatency(bin)
 
@@ -42725,7 +41285,7 @@ func UnsafeApplyBinOverrides[Instance Bin](gclass unsafe.Pointer, overrides BinO
 				var bin   Instance // go GstBin subclass
 				var child Element  // in, none, converted
 
-				bin = UnsafeBinFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				bin = UnsafeBinFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				child = UnsafeElementFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.ElementAdded(bin, child)
@@ -42742,7 +41302,7 @@ func UnsafeApplyBinOverrides[Instance Bin](gclass unsafe.Pointer, overrides BinO
 				var bin   Instance // go GstBin subclass
 				var child Element  // in, none, converted
 
-				bin = UnsafeBinFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				bin = UnsafeBinFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				child = UnsafeElementFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.ElementRemoved(bin, child)
@@ -42759,7 +41319,7 @@ func UnsafeApplyBinOverrides[Instance Bin](gclass unsafe.Pointer, overrides BinO
 				var bin     Instance // go GstBin subclass
 				var message *Message // in, full, converted
 
-				bin = UnsafeBinFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				bin = UnsafeBinFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				message = UnsafeMessageFromGlibFull(unsafe.Pointer(carg1))
 
 				overrides.HandleMessage(bin, message)
@@ -42777,7 +41337,7 @@ func UnsafeApplyBinOverrides[Instance Bin](gclass unsafe.Pointer, overrides BinO
 				var element Element  // in, none, converted
 				var goret   bool     // return
 
-				bin = UnsafeBinFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				bin = UnsafeBinFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				element = UnsafeElementFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.RemoveElement(bin, element)

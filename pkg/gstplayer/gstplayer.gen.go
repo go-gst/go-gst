@@ -318,8 +318,6 @@ var _ PlayerSignalDispatcher = (*PlayerSignalDispatcherInstance)(nil)
 // PlayerSignalDispatcher wraps GstPlayerSignalDispatcher
 type PlayerSignalDispatcher interface {
 	upcastToGstPlayerSignalDispatcher() *PlayerSignalDispatcherInstance
-
-	// chain up virtual methods:
 }
 
 var _ PlayerSignalDispatcher = (*PlayerSignalDispatcherInstance)(nil)
@@ -365,16 +363,6 @@ func UnsafePlayerSignalDispatcherToGlibFull(c PlayerSignalDispatcher) unsafe.Poi
 	return gobject.UnsafeObjectToGlibFull(&i.Instance)
 }
 
-// PlayerSignalDispatcherOverrides is the struct used to override the default implementation of virtual methods.
-// it is generic over the extending instance type.
-type PlayerSignalDispatcherOverrides[Instance PlayerSignalDispatcher] struct {
-}
-
-// UnsafeApplyPlayerSignalDispatcherOverrides applies the overrides to init the gclass by setting the trampoline functions.
-// This is used by the bindings internally and only exported for visibility to other bindings code.
-func UnsafeApplyPlayerSignalDispatcherOverrides[Instance PlayerSignalDispatcher](gclass unsafe.Pointer, overrides PlayerSignalDispatcherOverrides[Instance]) {
-}
-
 // PlayerVideoRendererInstance is the instance type used by all types implementing GstPlayerVideoRenderer. It is used internally by the bindings. Users should use the interface [PlayerVideoRenderer] instead.
 type PlayerVideoRendererInstance struct {
 	_ [0]func() // equal guard
@@ -386,8 +374,6 @@ var _ PlayerVideoRenderer = (*PlayerVideoRendererInstance)(nil)
 // PlayerVideoRenderer wraps GstPlayerVideoRenderer
 type PlayerVideoRenderer interface {
 	upcastToGstPlayerVideoRenderer() *PlayerVideoRendererInstance
-
-	// chain up virtual methods:
 }
 
 var _ PlayerVideoRenderer = (*PlayerVideoRendererInstance)(nil)
@@ -431,16 +417,6 @@ func UnsafePlayerVideoRendererToGlibNone(c PlayerVideoRenderer) unsafe.Pointer {
 func UnsafePlayerVideoRendererToGlibFull(c PlayerVideoRenderer) unsafe.Pointer {
 	i := c.upcastToGstPlayerVideoRenderer()
 	return gobject.UnsafeObjectToGlibFull(&i.Instance)
-}
-
-// PlayerVideoRendererOverrides is the struct used to override the default implementation of virtual methods.
-// it is generic over the extending instance type.
-type PlayerVideoRendererOverrides[Instance PlayerVideoRenderer] struct {
-}
-
-// UnsafeApplyPlayerVideoRendererOverrides applies the overrides to init the gclass by setting the trampoline functions.
-// This is used by the bindings internally and only exported for visibility to other bindings code.
-func UnsafeApplyPlayerVideoRendererOverrides[Instance PlayerVideoRenderer](gclass unsafe.Pointer, overrides PlayerVideoRendererOverrides[Instance]) {
 }
 
 // PlayerInstance is the instance type used by all types extending GstPlayer. It is used internally by the bindings. Users should use the interface [Player] instead.

@@ -3230,7 +3230,7 @@ func UnsafeApplyGLBaseFilterOverrides[Instance GLBaseFilter](gclass unsafe.Point
 				var outcaps *gst.Caps // in, none, converted
 				var goret   bool      // return
 
-				filter = UnsafeGLBaseFilterFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				filter = UnsafeGLBaseFilterFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				incaps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 				outcaps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg2))
 
@@ -3254,7 +3254,7 @@ func UnsafeApplyGLBaseFilterOverrides[Instance GLBaseFilter](gclass unsafe.Point
 				var filter Instance // go GstGLBaseFilter subclass
 				var goret  bool     // return
 
-				filter = UnsafeGLBaseFilterFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				filter = UnsafeGLBaseFilterFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.GlStart(filter)
 
@@ -3275,7 +3275,7 @@ func UnsafeApplyGLBaseFilterOverrides[Instance GLBaseFilter](gclass unsafe.Point
 			func(carg0 *C.GstGLBaseFilter) {
 				var filter Instance // go GstGLBaseFilter subclass
 
-				filter = UnsafeGLBaseFilterFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				filter = UnsafeGLBaseFilterFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				overrides.GlStop(filter)
 			},
@@ -3516,7 +3516,7 @@ func UnsafeApplyGLBaseMemoryAllocatorOverrides[Instance GLBaseMemoryAllocator](g
 				var params    *GLAllocationParams // in, none, converted
 				var goret     *GLBaseMemory       // return, full, converted, nullable
 
-				allocator = UnsafeGLBaseMemoryAllocatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				allocator = UnsafeGLBaseMemoryAllocatorFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				params = UnsafeGLAllocationParamsFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Alloc(allocator, params)
@@ -3751,7 +3751,7 @@ func UnsafeApplyGLBaseMixerOverrides[Instance GLBaseMixer](gclass unsafe.Pointer
 				var mix   Instance // go GstGLBaseMixer subclass
 				var goret bool     // return
 
-				mix = UnsafeGLBaseMixerFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				mix = UnsafeGLBaseMixerFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.GlStart(mix)
 
@@ -3772,7 +3772,7 @@ func UnsafeApplyGLBaseMixerOverrides[Instance GLBaseMixer](gclass unsafe.Pointer
 			func(carg0 *C.GstGLBaseMixer) {
 				var mix Instance // go GstGLBaseMixer subclass
 
-				mix = UnsafeGLBaseMixerFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				mix = UnsafeGLBaseMixerFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				overrides.GlStop(mix)
 			},
@@ -4119,7 +4119,7 @@ func UnsafeApplyGLBaseSrcOverrides[Instance GLBaseSrc](gclass unsafe.Pointer, ov
 				var mem   *GLMemory // in, none, converted
 				var goret bool      // return
 
-				src = UnsafeGLBaseSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeGLBaseSrcFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				mem = UnsafeGLMemoryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.FillGlMemory(src, mem)
@@ -4142,7 +4142,7 @@ func UnsafeApplyGLBaseSrcOverrides[Instance GLBaseSrc](gclass unsafe.Pointer, ov
 				var src   Instance // go GstGLBaseSrc subclass
 				var goret bool     // return
 
-				src = UnsafeGLBaseSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeGLBaseSrcFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.GlStart(src)
 
@@ -4163,7 +4163,7 @@ func UnsafeApplyGLBaseSrcOverrides[Instance GLBaseSrc](gclass unsafe.Pointer, ov
 			func(carg0 *C.GstGLBaseSrc) {
 				var src Instance // go GstGLBaseSrc subclass
 
-				src = UnsafeGLBaseSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeGLBaseSrcFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				overrides.GlStop(src)
 			},
@@ -6495,7 +6495,7 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 				var activate bool     // in
 				var goret    bool     // return
 
-				_context = UnsafeGLContextFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				_context = UnsafeGLContextFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				if carg1 != 0 {
 					activate = true
 				}
@@ -6521,7 +6521,7 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 				var feature  string   // in, none, string
 				var goret    bool     // return
 
-				_context = UnsafeGLContextFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				_context = UnsafeGLContextFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				feature = C.GoString((*C.char)(unsafe.Pointer(carg1)))
 
 				goret = overrides.CheckFeature(_context, feature)
@@ -6545,7 +6545,7 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 				var goret    bool     // return
 				var _goerr   error    // out, full, converted
 
-				_context = UnsafeGLContextFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				_context = UnsafeGLContextFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret, _goerr = overrides.ChooseFormat(_context)
 
@@ -6571,7 +6571,7 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 				var goret        bool      // return
 				var _goerr       error     // out, full, converted
 
-				_context = UnsafeGLContextFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				_context = UnsafeGLContextFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				glApi = GLAPI(carg1)
 				otherContext = UnsafeGLContextFromGlibNone(unsafe.Pointer(carg2))
 
@@ -6595,7 +6595,7 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 			func(carg0 *C.GstGLContext) {
 				var _context Instance // go GstGLContext subclass
 
-				_context = UnsafeGLContextFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				_context = UnsafeGLContextFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				overrides.DestroyContext(_context)
 			},
@@ -6611,7 +6611,7 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 				var _context Instance       // go GstGLContext subclass
 				var goret    *gst.Structure // return, full, converted, nullable
 
-				_context = UnsafeGLContextFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				_context = UnsafeGLContextFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.GetConfig(_context)
 
@@ -6633,7 +6633,7 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 				var _context Instance // go GstGLContext subclass
 				var goret    GLAPI    // return, none, casted
 
-				_context = UnsafeGLContextFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				_context = UnsafeGLContextFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.GetGlAPI(_context)
 
@@ -6653,7 +6653,7 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 				var _context Instance   // go GstGLContext subclass
 				var goret    GLPlatform // return, none, casted
 
-				_context = UnsafeGLContextFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				_context = UnsafeGLContextFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.GetGlPlatform(_context)
 
@@ -6674,7 +6674,7 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 				var major    int32    // out, full, casted
 				var minor    int32    // out, full, casted
 
-				_context = UnsafeGLContextFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				_context = UnsafeGLContextFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				major, minor = overrides.GetGlPlatformVersion(_context)
 
@@ -6694,7 +6694,7 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 				var glConfig *gst.Structure // in, full, converted, nullable
 				var goret    bool           // return
 
-				_context = UnsafeGLContextFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				_context = UnsafeGLContextFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				if carg1 != nil {
 					glConfig = gst.UnsafeStructureFromGlibFull(unsafe.Pointer(carg1))
 				}
@@ -6718,7 +6718,7 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 			func(carg0 *C.GstGLContext) {
 				var _context Instance // go GstGLContext subclass
 
-				_context = UnsafeGLContextFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				_context = UnsafeGLContextFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				overrides.SwapBuffers(_context)
 			},
@@ -7653,7 +7653,7 @@ func UnsafeApplyGLDisplayOverrides[Instance GLDisplay](gclass unsafe.Pointer, ov
 				var display Instance // go GstGLDisplay subclass
 				var goret   GLWindow // return, full, converted, nullable
 
-				display = UnsafeGLDisplayFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				display = UnsafeGLDisplayFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.CreateWindow(display)
 
@@ -8142,7 +8142,7 @@ func UnsafeApplyGLFilterOverrides[Instance GLFilter](gclass unsafe.Pointer, over
 				var outbuf *gst.Buffer // in, none, converted
 				var goret  bool        // return
 
-				filter = UnsafeGLFilterFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				filter = UnsafeGLFilterFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				inbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 				outbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg2))
 
@@ -8168,7 +8168,7 @@ func UnsafeApplyGLFilterOverrides[Instance GLFilter](gclass unsafe.Pointer, over
 				var output *GLMemory // in, none, converted
 				var goret  bool      // return
 
-				filter = UnsafeGLFilterFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				filter = UnsafeGLFilterFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				input = UnsafeGLMemoryFromGlibNone(unsafe.Pointer(carg1))
 				output = UnsafeGLMemoryFromGlibNone(unsafe.Pointer(carg2))
 
@@ -8192,7 +8192,7 @@ func UnsafeApplyGLFilterOverrides[Instance GLFilter](gclass unsafe.Pointer, over
 				var filter Instance // go GstGLFilter subclass
 				var goret  bool     // return
 
-				filter = UnsafeGLFilterFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				filter = UnsafeGLFilterFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.InitFbo(filter)
 
@@ -8216,7 +8216,7 @@ func UnsafeApplyGLFilterOverrides[Instance GLFilter](gclass unsafe.Pointer, over
 				var outcaps *gst.Caps // in, none, converted
 				var goret   bool      // return
 
-				filter = UnsafeGLFilterFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				filter = UnsafeGLFilterFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				incaps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 				outcaps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg2))
 
@@ -8243,7 +8243,7 @@ func UnsafeApplyGLFilterOverrides[Instance GLFilter](gclass unsafe.Pointer, over
 				var filterCaps *gst.Caps        // in, none, converted
 				var goret      *gst.Caps        // return, full, converted
 
-				filter = UnsafeGLFilterFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				filter = UnsafeGLFilterFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				direction = gst.PadDirection(carg1)
 				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg2))
 				filterCaps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg3))
@@ -9274,7 +9274,7 @@ func UnsafeApplyGLMixerOverrides[Instance GLMixer](gclass unsafe.Pointer, overri
 				var outbuf *gst.Buffer // in, none, converted
 				var goret  bool        // return
 
-				mix = UnsafeGLMixerFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				mix = UnsafeGLMixerFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				outbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.ProcessBuffers(mix, outbuf)
@@ -9298,7 +9298,7 @@ func UnsafeApplyGLMixerOverrides[Instance GLMixer](gclass unsafe.Pointer, overri
 				var outTex *GLMemory // in, none, converted
 				var goret  bool      // return
 
-				mix = UnsafeGLMixerFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				mix = UnsafeGLMixerFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				outTex = UnsafeGLMemoryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.ProcessTextures(mix, outTex)
@@ -13888,7 +13888,7 @@ func UnsafeApplyGLWindowOverrides[Instance GLWindow](gclass unsafe.Pointer, over
 			func(carg0 *C.GstGLWindow) {
 				var window Instance // go GstGLWindow subclass
 
-				window = UnsafeGLWindowFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				window = UnsafeGLWindowFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				overrides.Close(window)
 			},
@@ -13904,7 +13904,7 @@ func UnsafeApplyGLWindowOverrides[Instance GLWindow](gclass unsafe.Pointer, over
 				var window Instance // go GstGLWindow subclass
 				var goret  bool     // return
 
-				window = UnsafeGLWindowFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				window = UnsafeGLWindowFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.ControlsViewport(window)
 
@@ -13925,7 +13925,7 @@ func UnsafeApplyGLWindowOverrides[Instance GLWindow](gclass unsafe.Pointer, over
 			func(carg0 *C.GstGLWindow) {
 				var window Instance // go GstGLWindow subclass
 
-				window = UnsafeGLWindowFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				window = UnsafeGLWindowFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				overrides.Draw(window)
 			},
@@ -13941,7 +13941,7 @@ func UnsafeApplyGLWindowOverrides[Instance GLWindow](gclass unsafe.Pointer, over
 				var window       Instance // go GstGLWindow subclass
 				var handleEvents bool     // in
 
-				window = UnsafeGLWindowFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				window = UnsafeGLWindowFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				if carg1 != 0 {
 					handleEvents = true
 				}
@@ -13960,7 +13960,7 @@ func UnsafeApplyGLWindowOverrides[Instance GLWindow](gclass unsafe.Pointer, over
 				var window Instance // go GstGLWindow subclass
 				var goret  bool     // return
 
-				window = UnsafeGLWindowFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				window = UnsafeGLWindowFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.HasOutputSurface(window)
 
@@ -13983,7 +13983,7 @@ func UnsafeApplyGLWindowOverrides[Instance GLWindow](gclass unsafe.Pointer, over
 				var goret  bool     // return
 				var _goerr error    // out, full, converted
 
-				window = UnsafeGLWindowFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				window = UnsafeGLWindowFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret, _goerr = overrides.Open(window)
 
@@ -14005,7 +14005,7 @@ func UnsafeApplyGLWindowOverrides[Instance GLWindow](gclass unsafe.Pointer, over
 			func(carg0 *C.GstGLWindow) {
 				var window Instance // go GstGLWindow subclass
 
-				window = UnsafeGLWindowFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				window = UnsafeGLWindowFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				overrides.QueueResize(window)
 			},
@@ -14020,7 +14020,7 @@ func UnsafeApplyGLWindowOverrides[Instance GLWindow](gclass unsafe.Pointer, over
 			func(carg0 *C.GstGLWindow) {
 				var window Instance // go GstGLWindow subclass
 
-				window = UnsafeGLWindowFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				window = UnsafeGLWindowFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				overrides.Quit(window)
 			},
@@ -14035,7 +14035,7 @@ func UnsafeApplyGLWindowOverrides[Instance GLWindow](gclass unsafe.Pointer, over
 			func(carg0 *C.GstGLWindow) {
 				var window Instance // go GstGLWindow subclass
 
-				window = UnsafeGLWindowFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				window = UnsafeGLWindowFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				overrides.Run(window)
 			},
@@ -14052,7 +14052,7 @@ func UnsafeApplyGLWindowOverrides[Instance GLWindow](gclass unsafe.Pointer, over
 				var width  int32    // in, none, casted
 				var height int32    // in, none, casted
 
-				window = UnsafeGLWindowFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				window = UnsafeGLWindowFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				width = int32(carg1)
 				height = int32(carg2)
 
@@ -14074,7 +14074,7 @@ func UnsafeApplyGLWindowOverrides[Instance GLWindow](gclass unsafe.Pointer, over
 				var height int32    // in, none, casted
 				var goret  bool     // return
 
-				window = UnsafeGLWindowFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				window = UnsafeGLWindowFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				x = int32(carg1)
 				y = int32(carg2)
 				width = int32(carg3)
@@ -14099,7 +14099,7 @@ func UnsafeApplyGLWindowOverrides[Instance GLWindow](gclass unsafe.Pointer, over
 			func(carg0 *C.GstGLWindow) {
 				var window Instance // go GstGLWindow subclass
 
-				window = UnsafeGLWindowFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				window = UnsafeGLWindowFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				overrides.Show(window)
 			},

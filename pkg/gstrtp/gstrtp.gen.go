@@ -1900,7 +1900,7 @@ func UnsafeApplyRTPBaseDepayloadOverrides[Instance RTPBaseDepayload](gclass unsa
 				var event  *gst.Event // in, none, converted
 				var goret  bool       // return
 
-				filter = UnsafeRTPBaseDepayloadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				filter = UnsafeRTPBaseDepayloadFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.HandleEvent(filter, event)
@@ -1924,7 +1924,7 @@ func UnsafeApplyRTPBaseDepayloadOverrides[Instance RTPBaseDepayload](gclass unsa
 				var event  *gst.Event // in, none, converted
 				var goret  bool       // return
 
-				filter = UnsafeRTPBaseDepayloadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				filter = UnsafeRTPBaseDepayloadFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.PacketLost(filter, event)
@@ -1948,7 +1948,7 @@ func UnsafeApplyRTPBaseDepayloadOverrides[Instance RTPBaseDepayload](gclass unsa
 				var in    *gst.Buffer // in, none, converted
 				var goret *gst.Buffer // return, full, converted
 
-				base = UnsafeRTPBaseDepayloadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				base = UnsafeRTPBaseDepayloadFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				in = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Process(base, in)
@@ -1970,7 +1970,7 @@ func UnsafeApplyRTPBaseDepayloadOverrides[Instance RTPBaseDepayload](gclass unsa
 				var rtpBuffer *RTPBuffer  // in, none, converted
 				var goret     *gst.Buffer // return, full, converted
 
-				base = UnsafeRTPBaseDepayloadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				base = UnsafeRTPBaseDepayloadFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				rtpBuffer = UnsafeRTPBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.ProcessRtpPacket(base, rtpBuffer)
@@ -1992,7 +1992,7 @@ func UnsafeApplyRTPBaseDepayloadOverrides[Instance RTPBaseDepayload](gclass unsa
 				var caps   *gst.Caps // in, none, converted
 				var goret  bool      // return
 
-				filter = UnsafeRTPBaseDepayloadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				filter = UnsafeRTPBaseDepayloadFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SetCaps(filter, caps)
@@ -2919,7 +2919,7 @@ func UnsafeApplyRTPBasePayloadOverrides[Instance RTPBasePayload](gclass unsafe.P
 				var filter  *gst.Caps // in, none, converted
 				var goret   *gst.Caps // return, full, converted
 
-				payload = UnsafeRTPBasePayloadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				payload = UnsafeRTPBasePayloadFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				pad = gst.UnsafePadFromGlibNone(unsafe.Pointer(carg1))
 				filter = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg2))
 
@@ -2942,7 +2942,7 @@ func UnsafeApplyRTPBasePayloadOverrides[Instance RTPBasePayload](gclass unsafe.P
 				var buffer  *gst.Buffer    // in, none, converted
 				var goret   gst.FlowReturn // return, none, casted
 
-				payload = UnsafeRTPBasePayloadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				payload = UnsafeRTPBasePayloadFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.HandleBuffer(payload, buffer)
@@ -2965,7 +2965,7 @@ func UnsafeApplyRTPBasePayloadOverrides[Instance RTPBasePayload](gclass unsafe.P
 				var query   *gst.Query // in, none, converted
 				var goret   bool       // return
 
-				payload = UnsafeRTPBasePayloadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				payload = UnsafeRTPBasePayloadFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				pad = gst.UnsafePadFromGlibNone(unsafe.Pointer(carg1))
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg2))
 
@@ -2990,7 +2990,7 @@ func UnsafeApplyRTPBasePayloadOverrides[Instance RTPBasePayload](gclass unsafe.P
 				var caps    *gst.Caps // in, none, converted
 				var goret   bool      // return
 
-				payload = UnsafeRTPBasePayloadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				payload = UnsafeRTPBasePayloadFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SetCaps(payload, caps)
@@ -3014,7 +3014,7 @@ func UnsafeApplyRTPBasePayloadOverrides[Instance RTPBasePayload](gclass unsafe.P
 				var event   *gst.Event // in, none, converted
 				var goret   bool       // return
 
-				payload = UnsafeRTPBasePayloadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				payload = UnsafeRTPBasePayloadFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SinkEvent(payload, event)
@@ -3038,7 +3038,7 @@ func UnsafeApplyRTPBasePayloadOverrides[Instance RTPBasePayload](gclass unsafe.P
 				var event   *gst.Event // in, none, converted
 				var goret   bool       // return
 
-				payload = UnsafeRTPBasePayloadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				payload = UnsafeRTPBasePayloadFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SrcEvent(payload, event)
@@ -4369,7 +4369,7 @@ func UnsafeApplyRTPHeaderExtensionOverrides[Instance RTPHeaderExtension](gclass 
 				var inputMeta *gst.Buffer // in, none, converted
 				var goret     uint        // return, none, casted
 
-				ext = UnsafeRTPHeaderExtensionFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				ext = UnsafeRTPHeaderExtensionFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				inputMeta = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.GetMaxSize(ext, inputMeta)
@@ -4390,7 +4390,7 @@ func UnsafeApplyRTPHeaderExtensionOverrides[Instance RTPHeaderExtension](gclass 
 				var ext   Instance                // go GstRTPHeaderExtension subclass
 				var goret RTPHeaderExtensionFlags // return, none, casted
 
-				ext = UnsafeRTPHeaderExtensionFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				ext = UnsafeRTPHeaderExtensionFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 
 				goret = overrides.GetSupportedFlags(ext)
 
@@ -4413,7 +4413,7 @@ func UnsafeApplyRTPHeaderExtensionOverrides[Instance RTPHeaderExtension](gclass 
 				var buffer    *gst.Buffer             // in, none, converted
 				var goret     bool                    // return
 
-				ext = UnsafeRTPHeaderExtensionFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				ext = UnsafeRTPHeaderExtensionFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				readFlags = RTPHeaderExtensionFlags(carg1)
 				_ = data
 				_ = carg2
@@ -4443,7 +4443,7 @@ func UnsafeApplyRTPHeaderExtensionOverrides[Instance RTPHeaderExtension](gclass 
 				var attributes string                      // in, none, string
 				var goret      bool                        // return
 
-				ext = UnsafeRTPHeaderExtensionFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				ext = UnsafeRTPHeaderExtensionFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				direction = RTPHeaderExtensionDirection(carg1)
 				attributes = C.GoString((*C.char)(unsafe.Pointer(carg2)))
 
@@ -4468,7 +4468,7 @@ func UnsafeApplyRTPHeaderExtensionOverrides[Instance RTPHeaderExtension](gclass 
 				var caps  *gst.Caps // in, none, converted
 				var goret bool      // return
 
-				ext = UnsafeRTPHeaderExtensionFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				ext = UnsafeRTPHeaderExtensionFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SetCapsFromAttributes(ext, caps)
@@ -4492,7 +4492,7 @@ func UnsafeApplyRTPHeaderExtensionOverrides[Instance RTPHeaderExtension](gclass 
 				var caps  *gst.Caps // in, none, converted
 				var goret bool      // return
 
-				ext = UnsafeRTPHeaderExtensionFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				ext = UnsafeRTPHeaderExtensionFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SetNonRtpSinkCaps(ext, caps)
@@ -4516,7 +4516,7 @@ func UnsafeApplyRTPHeaderExtensionOverrides[Instance RTPHeaderExtension](gclass 
 				var caps  *gst.Caps // in, none, converted
 				var goret bool      // return
 
-				ext = UnsafeRTPHeaderExtensionFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				ext = UnsafeRTPHeaderExtensionFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.UpdateNonRtpSrcCaps(ext, caps)
@@ -4543,7 +4543,7 @@ func UnsafeApplyRTPHeaderExtensionOverrides[Instance RTPHeaderExtension](gclass 
 				var data       []uint8                 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg5)
 				var goret      int                     // return, none, casted
 
-				ext = UnsafeRTPHeaderExtensionFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				ext = UnsafeRTPHeaderExtensionFromGlibBorrow(unsafe.Pointer(carg0)).UnsafeLoadInstanceFromPrivateData().(Instance)
 				inputMeta = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 				writeFlags = RTPHeaderExtensionFlags(carg2)
 				output = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg3))
