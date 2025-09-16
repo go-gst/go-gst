@@ -254,8 +254,9 @@ func (m *Message) String() string {
 		msg += fmt.Sprintf("%s - %s - %s", strings.ToUpper(progressType.String()), code, text)
 
 	case MessageToc:
-		// TODO
-		msg += fmt.Sprintf("Message toc TODO")
+		toc, updated := m.ParseToc()
+		_ = toc // TODO: also show some info about the toc
+		msg += fmt.Sprintf("Message toc updated: %t", updated)
 
 	case MessageResetTime:
 		msg += fmt.Sprintf("Running time: %s", m.ParseResetTime())
@@ -275,25 +276,21 @@ func (m *Message) String() string {
 		msg += "Extended message type"
 
 	case MessageDeviceAdded:
-		if device := m.ParseDeviceAdded(); device != nil {
-			msg += fmt.Sprintf("Device %s added", device.GetDisplayName())
-		}
+		device := m.ParseDeviceAdded()
+		msg += fmt.Sprintf("Device %s added", device.GetDisplayName())
 
 	case MessageDeviceRemoved:
-		if device := m.ParseDeviceRemoved(); device != nil {
-			msg += fmt.Sprintf("Device %s removed", device.GetDisplayName())
-		}
+		device := m.ParseDeviceRemoved()
+		msg += fmt.Sprintf("Device %s removed", device.GetDisplayName())
 
 	case MessageDeviceChanged:
-		if device, _ := m.ParseDeviceChanged(); device != nil {
-			msg += fmt.Sprintf("Device %s had its properties updated", device.GetDisplayName())
-		}
+		device, _ := m.ParseDeviceChanged()
+		msg += fmt.Sprintf("Device %s had its properties updated", device.GetDisplayName())
 
 	case MessagePropertyNotify:
 		obj, propName, propVal := m.ParsePropertyNotify()
-		if obj != nil && propVal != nil {
-			msg += fmt.Sprintf("Object %s had property '%s' changed to %+v", obj.GetName(), propName, propVal)
-		}
+
+		msg += fmt.Sprintf("Object %s had property '%s' changed to %+v", obj.GetName(), propName, propVal)
 
 	case MessageStreamCollection:
 		collection := m.ParseStreamCollection()

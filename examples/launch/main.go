@@ -96,6 +96,4 @@ func main() {
 
 	<-ctx.Done()
 	pipeline.BlockSetState(gst.StateNull, gst.ClockTime(time.Second))
-
-	return
 }

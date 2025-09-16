@@ -30,7 +30,7 @@ func (w *workflow) newSrc() {
 	// Get a sink pad on compositor
 	mixer := w.GetByName("mixer")
 
-	pad := mixer.GetRequestPad("sink_%u")
+	pad := mixer.RequestPadSimple("sink_%u")
 	pad.SetObjectProperty("xpos", 640)
 	pad.SetObjectProperty("ypos", 0)
 
