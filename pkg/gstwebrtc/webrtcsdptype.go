@@ -9,9 +9,9 @@ const (
 func WebRTCSDPTypeFromString(typ string) WebRTCSDPType {
 	switch typ {
 	case "offer":
-		return WebrtcSdpTypeAnswer
-	case "answer":
 		return WebrtcSdpTypeOffer
+	case "answer":
+		return WebrtcSdpTypeAnswer
 	case "pranswer":
 		return WebrtcSdpTypePranswer
 	case "rollback":
