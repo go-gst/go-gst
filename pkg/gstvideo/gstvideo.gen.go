@@ -250,9 +250,9 @@ func (e AncillaryMetaField) InitGoValue(v *gobject.Value) {
 
 func (e AncillaryMetaField) String() string {
 	switch e {
-		case AncillaryMetaFieldProgressive: return "AncillaryMetaFieldProgressive"
 		case AncillaryMetaFieldInterlacedFirst: return "AncillaryMetaFieldInterlacedFirst"
 		case AncillaryMetaFieldInterlacedSecond: return "AncillaryMetaFieldInterlacedSecond"
+		case AncillaryMetaFieldProgressive: return "AncillaryMetaFieldProgressive"
 		default: return fmt.Sprintf("AncillaryMetaField(%d)", e)
 	}
 }
@@ -403,21 +403,21 @@ func (e NavigationCommand) InitGoValue(v *gobject.Value) {
 
 func (e NavigationCommand) String() string {
 	switch e {
-		case NavigationCommandMenu5: return "NavigationCommandMenu5"
-		case NavigationCommandUp: return "NavigationCommandUp"
+		case NavigationCommandActivate: return "NavigationCommandActivate"
 		case NavigationCommandDown: return "NavigationCommandDown"
-		case NavigationCommandPrevAngle: return "NavigationCommandPrevAngle"
 		case NavigationCommandInvalid: return "NavigationCommandInvalid"
+		case NavigationCommandLeft: return "NavigationCommandLeft"
+		case NavigationCommandMenu1: return "NavigationCommandMenu1"
 		case NavigationCommandMenu2: return "NavigationCommandMenu2"
+		case NavigationCommandMenu3: return "NavigationCommandMenu3"
 		case NavigationCommandMenu4: return "NavigationCommandMenu4"
+		case NavigationCommandMenu5: return "NavigationCommandMenu5"
 		case NavigationCommandMenu6: return "NavigationCommandMenu6"
 		case NavigationCommandMenu7: return "NavigationCommandMenu7"
-		case NavigationCommandRight: return "NavigationCommandRight"
-		case NavigationCommandActivate: return "NavigationCommandActivate"
 		case NavigationCommandNextAngle: return "NavigationCommandNextAngle"
-		case NavigationCommandMenu1: return "NavigationCommandMenu1"
-		case NavigationCommandMenu3: return "NavigationCommandMenu3"
-		case NavigationCommandLeft: return "NavigationCommandLeft"
+		case NavigationCommandPrevAngle: return "NavigationCommandPrevAngle"
+		case NavigationCommandRight: return "NavigationCommandRight"
+		case NavigationCommandUp: return "NavigationCommandUp"
 		default: return fmt.Sprintf("NavigationCommand(%d)", e)
 	}
 }
@@ -516,19 +516,19 @@ func (e NavigationEventType) InitGoValue(v *gobject.Value) {
 
 func (e NavigationEventType) String() string {
 	switch e {
-		case NavigationEventInvalid: return "NavigationEventInvalid"
-		case NavigationEventMouseButtonPress: return "NavigationEventMouseButtonPress"
-		case NavigationEventMouseButtonRelease: return "NavigationEventMouseButtonRelease"
 		case NavigationEventCommand: return "NavigationEventCommand"
-		case NavigationEventMouseScroll: return "NavigationEventMouseScroll"
-		case NavigationEventTouchDown: return "NavigationEventTouchDown"
-		case NavigationEventTouchMotion: return "NavigationEventTouchMotion"
-		case NavigationEventTouchFrame: return "NavigationEventTouchFrame"
+		case NavigationEventInvalid: return "NavigationEventInvalid"
 		case NavigationEventKeyPress: return "NavigationEventKeyPress"
 		case NavigationEventKeyRelease: return "NavigationEventKeyRelease"
+		case NavigationEventMouseButtonPress: return "NavigationEventMouseButtonPress"
+		case NavigationEventMouseButtonRelease: return "NavigationEventMouseButtonRelease"
 		case NavigationEventMouseMove: return "NavigationEventMouseMove"
-		case NavigationEventTouchUp: return "NavigationEventTouchUp"
+		case NavigationEventMouseScroll: return "NavigationEventMouseScroll"
 		case NavigationEventTouchCancel: return "NavigationEventTouchCancel"
+		case NavigationEventTouchDown: return "NavigationEventTouchDown"
+		case NavigationEventTouchFrame: return "NavigationEventTouchFrame"
+		case NavigationEventTouchMotion: return "NavigationEventTouchMotion"
+		case NavigationEventTouchUp: return "NavigationEventTouchUp"
 		default: return fmt.Sprintf("NavigationEventType(%d)", e)
 	}
 }
@@ -582,11 +582,11 @@ func (e NavigationMessageType) InitGoValue(v *gobject.Value) {
 
 func (e NavigationMessageType) String() string {
 	switch e {
+		case NavigationMessageAnglesChanged: return "NavigationMessageAnglesChanged"
+		case NavigationMessageCommandsChanged: return "NavigationMessageCommandsChanged"
+		case NavigationMessageEvent: return "NavigationMessageEvent"
 		case NavigationMessageInvalid: return "NavigationMessageInvalid"
 		case NavigationMessageMouseOver: return "NavigationMessageMouseOver"
-		case NavigationMessageCommandsChanged: return "NavigationMessageCommandsChanged"
-		case NavigationMessageAnglesChanged: return "NavigationMessageAnglesChanged"
-		case NavigationMessageEvent: return "NavigationMessageEvent"
 		default: return fmt.Sprintf("NavigationMessageType(%d)", e)
 	}
 }
@@ -625,8 +625,8 @@ func (e NavigationQueryType) InitGoValue(v *gobject.Value) {
 func (e NavigationQueryType) String() string {
 	switch e {
 		case NavigationQueryAngles: return "NavigationQueryAngles"
-		case NavigationQueryInvalid: return "NavigationQueryInvalid"
 		case NavigationQueryCommands: return "NavigationQueryCommands"
+		case NavigationQueryInvalid: return "NavigationQueryInvalid"
 		default: return fmt.Sprintf("NavigationQueryType(%d)", e)
 	}
 }
@@ -670,8 +670,8 @@ func (e VideoAFDSpec) InitGoValue(v *gobject.Value) {
 
 func (e VideoAFDSpec) String() string {
 	switch e {
-		case VideoAfdSpecDvbEtsi: return "VideoAfdSpecDvbEtsi"
 		case VideoAfdSpecAtscA53: return "VideoAfdSpecAtscA53"
+		case VideoAfdSpecDvbEtsi: return "VideoAfdSpecDvbEtsi"
 		case VideoAfdSpecSmpteSt20161: return "VideoAfdSpecSmpteSt20161"
 		default: return fmt.Sprintf("VideoAFDSpec(%d)", e)
 	}
@@ -790,17 +790,17 @@ func (e VideoAFDValue) InitGoValue(v *gobject.Value) {
 
 func (e VideoAFDValue) String() string {
 	switch e {
-		case VideoAfd43_Full149_Center: return "VideoAfd43Full149Center"
+		case VideoAfd149_Letter149_Pillar: return "VideoAfd149Letter149Pillar"
+		case VideoAfd149_TopAligned: return "VideoAfd149TopAligned"
 		case VideoAfd169_Letter149_Center: return "VideoAfd169Letter149Center"
+		case VideoAfd169_Letter169_Full: return "VideoAfd169Letter169Full"
 		case VideoAfd169_Letter43_Center: return "VideoAfd169Letter43Center"
 		case VideoAfd169_TopAligned: return "VideoAfd169TopAligned"
-		case VideoAfd149_TopAligned: return "VideoAfd149TopAligned"
-		case VideoAfdGreaterThan169: return "VideoAfdGreaterThan169"
-		case VideoAfd43_Full43_Pillar: return "VideoAfd43Full43Pillar"
-		case VideoAfd169_Letter169_Full: return "VideoAfd169Letter169Full"
-		case VideoAfd149_Letter149_Pillar: return "VideoAfd149Letter149Pillar"
-		case VideoAfdUnavailable: return "VideoAfdUnavailable"
+		case VideoAfd43_Full149_Center: return "VideoAfd43Full149Center"
 		case VideoAfd43_Full169_Full: return "VideoAfd43Full169Full"
+		case VideoAfd43_Full43_Pillar: return "VideoAfd43Full43Pillar"
+		case VideoAfdGreaterThan169: return "VideoAfdGreaterThan169"
+		case VideoAfdUnavailable: return "VideoAfdUnavailable"
 		default: return fmt.Sprintf("VideoAFDValue(%d)", e)
 	}
 }
@@ -845,8 +845,8 @@ func (e VideoAlphaMode) InitGoValue(v *gobject.Value) {
 func (e VideoAlphaMode) String() string {
 	switch e {
 		case VideoAlphaModeCopy: return "VideoAlphaModeCopy"
-		case VideoAlphaModeSet: return "VideoAlphaModeSet"
 		case VideoAlphaModeMult: return "VideoAlphaModeMult"
+		case VideoAlphaModeSet: return "VideoAlphaModeSet"
 		default: return fmt.Sprintf("VideoAlphaMode(%d)", e)
 	}
 }
@@ -894,18 +894,18 @@ func (e VideoAncillaryDID) InitGoValue(v *gobject.Value) {
 
 func (e VideoAncillaryDID) String() string {
 	switch e {
+		case VideoAncillaryDidCameraPosition: return "VideoAncillaryDidCameraPosition"
+		case VideoAncillaryDidDeletion: return "VideoAncillaryDidDeletion"
+		case VideoAncillaryDidHanc3GAudioDataFirst: return "VideoAncillaryDidHanc3GAudioDataFirst"
+		case VideoAncillaryDidHanc3GAudioDataLast: return "VideoAncillaryDidHanc3GAudioDataLast"
+		case VideoAncillaryDidHancErrorDetection: return "VideoAncillaryDidHancErrorDetection"
+		case VideoAncillaryDidHancHdtvAudioDataFirst: return "VideoAncillaryDidHancHdtvAudioDataFirst"
+		case VideoAncillaryDidHancHdtvAudioDataLast: return "VideoAncillaryDidHancHdtvAudioDataLast"
+		case VideoAncillaryDidHancSdtvAudioData1First: return "VideoAncillaryDidHancSdtvAudioData1First"
 		case VideoAncillaryDidHancSdtvAudioData1Last: return "VideoAncillaryDidHancSdtvAudioData1Last"
 		case VideoAncillaryDidHancSdtvAudioData2First: return "VideoAncillaryDidHancSdtvAudioData2First"
 		case VideoAncillaryDidHancSdtvAudioData2Last: return "VideoAncillaryDidHancSdtvAudioData2Last"
 		case VideoAncillaryDidUndefined: return "VideoAncillaryDidUndefined"
-		case VideoAncillaryDidDeletion: return "VideoAncillaryDidDeletion"
-		case VideoAncillaryDidHancHdtvAudioDataFirst: return "VideoAncillaryDidHancHdtvAudioDataFirst"
-		case VideoAncillaryDidHancHdtvAudioDataLast: return "VideoAncillaryDidHancHdtvAudioDataLast"
-		case VideoAncillaryDidCameraPosition: return "VideoAncillaryDidCameraPosition"
-		case VideoAncillaryDidHancErrorDetection: return "VideoAncillaryDidHancErrorDetection"
-		case VideoAncillaryDidHanc3GAudioDataFirst: return "VideoAncillaryDidHanc3GAudioDataFirst"
-		case VideoAncillaryDidHanc3GAudioDataLast: return "VideoAncillaryDidHanc3GAudioDataLast"
-		case VideoAncillaryDidHancSdtvAudioData1First: return "VideoAncillaryDidHancSdtvAudioData1First"
 		default: return fmt.Sprintf("VideoAncillaryDID(%d)", e)
 	}
 }
@@ -943,9 +943,9 @@ func (e VideoAncillaryDID16) InitGoValue(v *gobject.Value) {
 
 func (e VideoAncillaryDID16) String() string {
 	switch e {
-		case VideoAncillaryDid16S334Eia708: return "VideoAncillaryDid16S334Eia708"
-		case VideoAncillaryDid16S334Eia608: return "VideoAncillaryDid16S334Eia608"
 		case VideoAncillaryDid16S20163AfdBar: return "VideoAncillaryDid16S20163AfdBar"
+		case VideoAncillaryDid16S334Eia608: return "VideoAncillaryDid16S334Eia608"
+		case VideoAncillaryDid16S334Eia708: return "VideoAncillaryDid16S334Eia708"
 		default: return fmt.Sprintf("VideoAncillaryDID16(%d)", e)
 	}
 }
@@ -1008,11 +1008,11 @@ func (e VideoCaptionType) InitGoValue(v *gobject.Value) {
 
 func (e VideoCaptionType) String() string {
 	switch e {
-		case VideoCaptionTypeCea708Raw: return "VideoCaptionTypeCea708Raw"
-		case VideoCaptionTypeCea708Cdp: return "VideoCaptionTypeCea708Cdp"
-		case VideoCaptionTypeUnknown: return "VideoCaptionTypeUnknown"
 		case VideoCaptionTypeCea608Raw: return "VideoCaptionTypeCea608Raw"
 		case VideoCaptionTypeCea608S3341A: return "VideoCaptionTypeCea608S3341A"
+		case VideoCaptionTypeCea708Cdp: return "VideoCaptionTypeCea708Cdp"
+		case VideoCaptionTypeCea708Raw: return "VideoCaptionTypeCea708Raw"
+		case VideoCaptionTypeUnknown: return "VideoCaptionTypeUnknown"
 		default: return fmt.Sprintf("VideoCaptionType(%d)", e)
 	}
 }
@@ -1048,8 +1048,8 @@ func (e VideoChromaMethod) InitGoValue(v *gobject.Value) {
 
 func (e VideoChromaMethod) String() string {
 	switch e {
-		case VideoChromaMethodNearest: return "VideoChromaMethodNearest"
 		case VideoChromaMethodLinear: return "VideoChromaMethodLinear"
+		case VideoChromaMethodNearest: return "VideoChromaMethodNearest"
 		default: return fmt.Sprintf("VideoChromaMethod(%d)", e)
 	}
 }
@@ -1091,10 +1091,10 @@ func (e VideoChromaMode) InitGoValue(v *gobject.Value) {
 
 func (e VideoChromaMode) String() string {
 	switch e {
-		case VideoChromaModeFull: return "VideoChromaModeFull"
-		case VideoChromaModeUpsampleOnly: return "VideoChromaModeUpsampleOnly"
 		case VideoChromaModeDownsampleOnly: return "VideoChromaModeDownsampleOnly"
+		case VideoChromaModeFull: return "VideoChromaModeFull"
 		case VideoChromaModeNone: return "VideoChromaModeNone"
+		case VideoChromaModeUpsampleOnly: return "VideoChromaModeUpsampleOnly"
 		default: return fmt.Sprintf("VideoChromaMode(%d)", e)
 	}
 }
@@ -1152,12 +1152,12 @@ func (e VideoColorMatrix) InitGoValue(v *gobject.Value) {
 func (e VideoColorMatrix) String() string {
 	switch e {
 		case VideoColorMatrixBt2020: return "VideoColorMatrixBt2020"
-		case VideoColorMatrixUnknown: return "VideoColorMatrixUnknown"
-		case VideoColorMatrixRGB: return "VideoColorMatrixRGB"
-		case VideoColorMatrixFcc: return "VideoColorMatrixFcc"
-		case VideoColorMatrixBt709: return "VideoColorMatrixBt709"
 		case VideoColorMatrixBt601: return "VideoColorMatrixBt601"
+		case VideoColorMatrixBt709: return "VideoColorMatrixBt709"
+		case VideoColorMatrixFcc: return "VideoColorMatrixFcc"
+		case VideoColorMatrixRGB: return "VideoColorMatrixRGB"
 		case VideoColorMatrixSmpte240M: return "VideoColorMatrixSmpte240M"
+		case VideoColorMatrixUnknown: return "VideoColorMatrixUnknown"
 		default: return fmt.Sprintf("VideoColorMatrix(%d)", e)
 	}
 }
@@ -1245,19 +1245,19 @@ func (e VideoColorPrimaries) InitGoValue(v *gobject.Value) {
 
 func (e VideoColorPrimaries) String() string {
 	switch e {
-		case VideoColorPrimariesUnknown: return "VideoColorPrimariesUnknown"
-		case VideoColorPrimariesBt709: return "VideoColorPrimariesBt709"
+		case VideoColorPrimariesAdobergb: return "VideoColorPrimariesAdobergb"
+		case VideoColorPrimariesBt2020: return "VideoColorPrimariesBt2020"
 		case VideoColorPrimariesBt470Bg: return "VideoColorPrimariesBt470Bg"
+		case VideoColorPrimariesBt470M: return "VideoColorPrimariesBt470M"
+		case VideoColorPrimariesBt709: return "VideoColorPrimariesBt709"
+		case VideoColorPrimariesEbu3213: return "VideoColorPrimariesEbu3213"
+		case VideoColorPrimariesFilm: return "VideoColorPrimariesFilm"
 		case VideoColorPrimariesSmpte170M: return "VideoColorPrimariesSmpte170M"
 		case VideoColorPrimariesSmpte240M: return "VideoColorPrimariesSmpte240M"
-		case VideoColorPrimariesBt2020: return "VideoColorPrimariesBt2020"
-		case VideoColorPrimariesSmptest428: return "VideoColorPrimariesSmptest428"
 		case VideoColorPrimariesSmpteeg432: return "VideoColorPrimariesSmpteeg432"
-		case VideoColorPrimariesBt470M: return "VideoColorPrimariesBt470M"
-		case VideoColorPrimariesFilm: return "VideoColorPrimariesFilm"
-		case VideoColorPrimariesAdobergb: return "VideoColorPrimariesAdobergb"
 		case VideoColorPrimariesSmpterp431: return "VideoColorPrimariesSmpterp431"
-		case VideoColorPrimariesEbu3213: return "VideoColorPrimariesEbu3213"
+		case VideoColorPrimariesSmptest428: return "VideoColorPrimariesSmptest428"
+		case VideoColorPrimariesUnknown: return "VideoColorPrimariesUnknown"
 		default: return fmt.Sprintf("VideoColorPrimaries(%d)", e)
 	}
 }
@@ -1297,9 +1297,9 @@ func (e VideoColorRange) InitGoValue(v *gobject.Value) {
 
 func (e VideoColorRange) String() string {
 	switch e {
-		case VideoColorRangeUnknown: return "VideoColorRangeUnknown"
 		case VideoColorRange0255: return "VideoColorRange0255"
 		case VideoColorRange16235: return "VideoColorRange16235"
+		case VideoColorRangeUnknown: return "VideoColorRangeUnknown"
 		default: return fmt.Sprintf("VideoColorRange(%d)", e)
 	}
 }
@@ -1345,11 +1345,11 @@ func (e VideoDitherMethod) InitGoValue(v *gobject.Value) {
 
 func (e VideoDitherMethod) String() string {
 	switch e {
-		case VideoDitherVerterr: return "VideoDitherVerterr"
-		case VideoDitherFloydSteinberg: return "VideoDitherFloydSteinberg"
-		case VideoDitherSierraLite: return "VideoDitherSierraLite"
 		case VideoDitherBayer: return "VideoDitherBayer"
+		case VideoDitherFloydSteinberg: return "VideoDitherFloydSteinberg"
 		case VideoDitherNone: return "VideoDitherNone"
+		case VideoDitherSierraLite: return "VideoDitherSierraLite"
+		case VideoDitherVerterr: return "VideoDitherVerterr"
 		default: return fmt.Sprintf("VideoDitherMethod(%d)", e)
 	}
 }
@@ -1391,9 +1391,9 @@ func (e VideoFieldOrder) InitGoValue(v *gobject.Value) {
 
 func (e VideoFieldOrder) String() string {
 	switch e {
-		case VideoFieldOrderUnknown: return "VideoFieldOrderUnknown"
-		case VideoFieldOrderTopFieldFirst: return "VideoFieldOrderTopFieldFirst"
 		case VideoFieldOrderBottomFieldFirst: return "VideoFieldOrderBottomFieldFirst"
+		case VideoFieldOrderTopFieldFirst: return "VideoFieldOrderTopFieldFirst"
+		case VideoFieldOrderUnknown: return "VideoFieldOrderUnknown"
 		default: return fmt.Sprintf("VideoFieldOrder(%d)", e)
 	}
 }
@@ -1976,140 +1976,140 @@ func (e VideoFormat) InitGoValue(v *gobject.Value) {
 
 func (e VideoFormat) String() string {
 	switch e {
-		case VideoFormatXrgb: return "VideoFormatXrgb"
-		case VideoFormatXbgr: return "VideoFormatXbgr"
-		case VideoFormatAbgr64LE: return "VideoFormatAbgr64LE"
-		case VideoFormatEncoded: return "VideoFormatEncoded"
-		case VideoFormatI42210Be: return "VideoFormatI42210Be"
-		case VideoFormatGray16LE: return "VideoFormatGray16LE"
-		case VideoFormatBgra64Be: return "VideoFormatBgra64Be"
-		case VideoFormatYuv9: return "VideoFormatYuv9"
-		case VideoFormatARGB64: return "VideoFormatARGB64"
-		case VideoFormatY44410LE: return "VideoFormatY44410LE"
-		case VideoFormatNv1216L32S: return "VideoFormatNv1216L32S"
-		case VideoFormatA44412LE: return "VideoFormatA44412LE"
-		case VideoFormatRGBA: return "VideoFormatRGBA"
-		case VideoFormatGbr10LE: return "VideoFormatGbr10LE"
-		case VideoFormatA42210LE: return "VideoFormatA42210LE"
-		case VideoFormatVuya: return "VideoFormatVuya"
-		case VideoFormatP012Be: return "VideoFormatP012Be"
-		case VideoFormatA44412Be: return "VideoFormatA44412Be"
-		case VideoFormatA42012LE: return "VideoFormatA42012LE"
-		case VideoFormatA44410Be: return "VideoFormatA44410Be"
-		case VideoFormatGbra10LE: return "VideoFormatGbra10LE"
-		case VideoFormatGbra12Be: return "VideoFormatGbra12Be"
-		case VideoFormatARGB64Be: return "VideoFormatARGB64Be"
-		case VideoFormatAbgr64Be: return "VideoFormatAbgr64Be"
-		case VideoFormatNv1210Be8L128: return "VideoFormatNv1210Be8L128"
-		case VideoFormatA44416LE: return "VideoFormatA44416LE"
-		case VideoFormatGbr10Be: return "VideoFormatGbr10Be"
-		case VideoFormatGbra: return "VideoFormatGbra"
-		case VideoFormatY212Be: return "VideoFormatY212Be"
-		case VideoFormatRgbp: return "VideoFormatRgbp"
-		case VideoFormatAv12: return "VideoFormatAv12"
-		case VideoFormatRGBA64LE: return "VideoFormatRGBA64LE"
-		case VideoFormatA42216Be: return "VideoFormatA42216Be"
-		case VideoFormatUnknown: return "VideoFormatUnknown"
-		case VideoFormatNv24: return "VideoFormatNv24"
-		case VideoFormatNv61: return "VideoFormatNv61"
-		case VideoFormatP01010LE: return "VideoFormatP01010LE"
-		case VideoFormatIyu2: return "VideoFormatIyu2"
-		case VideoFormatI42012LE: return "VideoFormatI42012LE"
-		case VideoFormatY412LE: return "VideoFormatY412LE"
-		case VideoFormatNv1210LE404L4: return "VideoFormatNv1210LE404L4"
-		case VideoFormatY42B: return "VideoFormatY42B"
-		case VideoFormatI42010Be: return "VideoFormatI42010Be"
-		case VideoFormatMt2110T: return "VideoFormatMt2110T"
-		case VideoFormatYV12: return "VideoFormatYV12"
-		case VideoFormatYuy2: return "VideoFormatYuy2"
-		case VideoFormatGbra10Be: return "VideoFormatGbra10Be"
-		case VideoFormatNv1210LE40: return "VideoFormatNv1210LE40"
-		case VideoFormatA44416Be: return "VideoFormatA44416Be"
-		case VideoFormatGbr16Be: return "VideoFormatGbr16Be"
-		case VideoFormatYvu9: return "VideoFormatYvu9"
-		case VideoFormatA42010LE: return "VideoFormatA42010LE"
-		case VideoFormatGbr12Be: return "VideoFormatGbr12Be"
-		case VideoFormatY44412Be: return "VideoFormatY44412Be"
-		case VideoFormatRGB10A2LE: return "VideoFormatRGB10A2LE"
-		case VideoFormatARGB64LE: return "VideoFormatARGB64LE"
-		case VideoFormatBGR16: return "VideoFormatBGR16"
-		case VideoFormatGbra12LE: return "VideoFormatGbra12LE"
-		case VideoFormatDmaDRM: return "VideoFormatDmaDRM"
-		case VideoFormatBgrx: return "VideoFormatBgrx"
-		case VideoFormatV210: return "VideoFormatV210"
 		case VideoFormatA420: return "VideoFormatA420"
-		case VideoFormatGbr: return "VideoFormatGbr"
-		case VideoFormatA42016LE: return "VideoFormatA42016LE"
-		case VideoFormatGbr16LE: return "VideoFormatGbr16LE"
-		case VideoFormatAyuv: return "VideoFormatAyuv"
-		case VideoFormatRGB8P: return "VideoFormatRGB8P"
-		case VideoFormatA44410LE: return "VideoFormatA44410LE"
-		case VideoFormatRGB: return "VideoFormatRGB"
-		case VideoFormatBGR15: return "VideoFormatBGR15"
-		case VideoFormatAyuv64: return "VideoFormatAyuv64"
-		case VideoFormatY44412LE: return "VideoFormatY44412LE"
-		case VideoFormatUyvp: return "VideoFormatUyvp"
-		case VideoFormatP01010Be: return "VideoFormatP01010Be"
-		case VideoFormatP016LE: return "VideoFormatP016LE"
-		case VideoFormatY412Be: return "VideoFormatY412Be"
-		case VideoFormatRGBA64Be: return "VideoFormatRGBA64Be"
-		case VideoFormatV216: return "VideoFormatV216"
-		case VideoFormatR210: return "VideoFormatR210"
-		case VideoFormatI42210LE: return "VideoFormatI42210LE"
-		case VideoFormatVyuy: return "VideoFormatVyuy"
-		case VideoFormatNv1210LE32: return "VideoFormatNv1210LE32"
-		case VideoFormatP012LE: return "VideoFormatP012LE"
-		case VideoFormatI420: return "VideoFormatI420"
-		case VideoFormatA444: return "VideoFormatA444"
-		case VideoFormatA42216LE: return "VideoFormatA42216LE"
-		case VideoFormatGray16Be: return "VideoFormatGray16Be"
-		case VideoFormatBgra: return "VideoFormatBgra"
-		case VideoFormatRGB15: return "VideoFormatRGB15"
-		case VideoFormatIyu1: return "VideoFormatIyu1"
-		case VideoFormatY410: return "VideoFormatY410"
-		case VideoFormatA42212LE: return "VideoFormatA42212LE"
+		case VideoFormatA42010Be: return "VideoFormatA42010Be"
+		case VideoFormatA42010LE: return "VideoFormatA42010LE"
 		case VideoFormatA42012Be: return "VideoFormatA42012Be"
-		case VideoFormatY444: return "VideoFormatY444"
-		case VideoFormatI42212Be: return "VideoFormatI42212Be"
-		case VideoFormatGray10LE32: return "VideoFormatGray10LE32"
-		case VideoFormatY210: return "VideoFormatY210"
-		case VideoFormatP016Be: return "VideoFormatP016Be"
-		case VideoFormatNv12: return "VideoFormatNv12"
-		case VideoFormatGbr12LE: return "VideoFormatGbr12LE"
-		case VideoFormatBgrp: return "VideoFormatBgrp"
+		case VideoFormatA42012LE: return "VideoFormatA42012LE"
+		case VideoFormatA42016Be: return "VideoFormatA42016Be"
+		case VideoFormatA42016LE: return "VideoFormatA42016LE"
 		case VideoFormatA422: return "VideoFormatA422"
-		case VideoFormatNv21: return "VideoFormatNv21"
+		case VideoFormatA42210Be: return "VideoFormatA42210Be"
+		case VideoFormatA42210LE: return "VideoFormatA42210LE"
+		case VideoFormatA42212Be: return "VideoFormatA42212Be"
+		case VideoFormatA42212LE: return "VideoFormatA42212LE"
+		case VideoFormatA42216Be: return "VideoFormatA42216Be"
+		case VideoFormatA42216LE: return "VideoFormatA42216LE"
+		case VideoFormatA444: return "VideoFormatA444"
+		case VideoFormatA44410Be: return "VideoFormatA44410Be"
+		case VideoFormatA44410LE: return "VideoFormatA44410LE"
+		case VideoFormatA44412Be: return "VideoFormatA44412Be"
+		case VideoFormatA44412LE: return "VideoFormatA44412LE"
+		case VideoFormatA44416Be: return "VideoFormatA44416Be"
+		case VideoFormatA44416LE: return "VideoFormatA44416LE"
+		case VideoFormatARGB: return "VideoFormatARGB"
+		case VideoFormatARGB64: return "VideoFormatARGB64"
+		case VideoFormatARGB64Be: return "VideoFormatARGB64Be"
+		case VideoFormatARGB64LE: return "VideoFormatARGB64LE"
+		case VideoFormatAbgr: return "VideoFormatAbgr"
+		case VideoFormatAbgr64Be: return "VideoFormatAbgr64Be"
+		case VideoFormatAbgr64LE: return "VideoFormatAbgr64LE"
+		case VideoFormatAv12: return "VideoFormatAv12"
+		case VideoFormatAyuv: return "VideoFormatAyuv"
+		case VideoFormatAyuv64: return "VideoFormatAyuv64"
 		case VideoFormatBGR: return "VideoFormatBGR"
 		case VideoFormatBGR10A2LE: return "VideoFormatBGR10A2LE"
-		case VideoFormatY44416Be: return "VideoFormatY44416Be"
-		case VideoFormatA42016Be: return "VideoFormatA42016Be"
-		case VideoFormatGray8: return "VideoFormatGray8"
-		case VideoFormatY44410Be: return "VideoFormatY44410Be"
-		case VideoFormatNv1232L32: return "VideoFormatNv1232L32"
+		case VideoFormatBGR15: return "VideoFormatBGR15"
+		case VideoFormatBGR16: return "VideoFormatBGR16"
+		case VideoFormatBgra: return "VideoFormatBgra"
+		case VideoFormatBgra64Be: return "VideoFormatBgra64Be"
 		case VideoFormatBgra64LE: return "VideoFormatBgra64LE"
-		case VideoFormatY44416LE: return "VideoFormatY44416LE"
-		case VideoFormatNv124L4: return "VideoFormatNv124L4"
-		case VideoFormatA42212Be: return "VideoFormatA42212Be"
-		case VideoFormatRbga: return "VideoFormatRbga"
-		case VideoFormatRgbx: return "VideoFormatRgbx"
-		case VideoFormatA42010Be: return "VideoFormatA42010Be"
-		case VideoFormatNv1610LE32: return "VideoFormatNv1610LE32"
-		case VideoFormatYvyu: return "VideoFormatYvyu"
-		case VideoFormatAbgr: return "VideoFormatAbgr"
-		case VideoFormatY41B: return "VideoFormatY41B"
-		case VideoFormatV308: return "VideoFormatV308"
-		case VideoFormatNv1264Z32: return "VideoFormatNv1264Z32"
-		case VideoFormatUyvy: return "VideoFormatUyvy"
-		case VideoFormatARGB: return "VideoFormatARGB"
-		case VideoFormatRGB16: return "VideoFormatRGB16"
+		case VideoFormatBgrp: return "VideoFormatBgrp"
+		case VideoFormatBgrx: return "VideoFormatBgrx"
+		case VideoFormatDmaDRM: return "VideoFormatDmaDRM"
+		case VideoFormatEncoded: return "VideoFormatEncoded"
+		case VideoFormatGbr: return "VideoFormatGbr"
+		case VideoFormatGbr10Be: return "VideoFormatGbr10Be"
+		case VideoFormatGbr10LE: return "VideoFormatGbr10LE"
+		case VideoFormatGbr12Be: return "VideoFormatGbr12Be"
+		case VideoFormatGbr12LE: return "VideoFormatGbr12LE"
+		case VideoFormatGbr16Be: return "VideoFormatGbr16Be"
+		case VideoFormatGbr16LE: return "VideoFormatGbr16LE"
+		case VideoFormatGbra: return "VideoFormatGbra"
+		case VideoFormatGbra10Be: return "VideoFormatGbra10Be"
+		case VideoFormatGbra10LE: return "VideoFormatGbra10LE"
+		case VideoFormatGbra12Be: return "VideoFormatGbra12Be"
+		case VideoFormatGbra12LE: return "VideoFormatGbra12LE"
+		case VideoFormatGray10LE32: return "VideoFormatGray10LE32"
+		case VideoFormatGray16Be: return "VideoFormatGray16Be"
+		case VideoFormatGray16LE: return "VideoFormatGray16LE"
+		case VideoFormatGray8: return "VideoFormatGray8"
+		case VideoFormatI420: return "VideoFormatI420"
+		case VideoFormatI42010Be: return "VideoFormatI42010Be"
 		case VideoFormatI42010LE: return "VideoFormatI42010LE"
 		case VideoFormatI42012Be: return "VideoFormatI42012Be"
+		case VideoFormatI42012LE: return "VideoFormatI42012LE"
+		case VideoFormatI42210Be: return "VideoFormatI42210Be"
+		case VideoFormatI42210LE: return "VideoFormatI42210LE"
+		case VideoFormatI42212Be: return "VideoFormatI42212Be"
 		case VideoFormatI42212LE: return "VideoFormatI42212LE"
+		case VideoFormatIyu1: return "VideoFormatIyu1"
+		case VideoFormatIyu2: return "VideoFormatIyu2"
+		case VideoFormatMt2110R: return "VideoFormatMt2110R"
+		case VideoFormatMt2110T: return "VideoFormatMt2110T"
+		case VideoFormatNv12: return "VideoFormatNv12"
+		case VideoFormatNv1210Be8L128: return "VideoFormatNv1210Be8L128"
+		case VideoFormatNv1210LE32: return "VideoFormatNv1210LE32"
+		case VideoFormatNv1210LE40: return "VideoFormatNv1210LE40"
+		case VideoFormatNv1210LE404L4: return "VideoFormatNv1210LE404L4"
+		case VideoFormatNv1216L32S: return "VideoFormatNv1216L32S"
+		case VideoFormatNv1232L32: return "VideoFormatNv1232L32"
+		case VideoFormatNv124L4: return "VideoFormatNv124L4"
+		case VideoFormatNv1264Z32: return "VideoFormatNv1264Z32"
 		case VideoFormatNv128L128: return "VideoFormatNv128L128"
 		case VideoFormatNv16: return "VideoFormatNv16"
-		case VideoFormatMt2110R: return "VideoFormatMt2110R"
-		case VideoFormatA42210Be: return "VideoFormatA42210Be"
+		case VideoFormatNv1610LE32: return "VideoFormatNv1610LE32"
+		case VideoFormatNv21: return "VideoFormatNv21"
+		case VideoFormatNv24: return "VideoFormatNv24"
+		case VideoFormatNv61: return "VideoFormatNv61"
+		case VideoFormatP01010Be: return "VideoFormatP01010Be"
+		case VideoFormatP01010LE: return "VideoFormatP01010LE"
+		case VideoFormatP012Be: return "VideoFormatP012Be"
+		case VideoFormatP012LE: return "VideoFormatP012LE"
+		case VideoFormatP016Be: return "VideoFormatP016Be"
+		case VideoFormatP016LE: return "VideoFormatP016LE"
+		case VideoFormatR210: return "VideoFormatR210"
+		case VideoFormatRGB: return "VideoFormatRGB"
+		case VideoFormatRGB10A2LE: return "VideoFormatRGB10A2LE"
+		case VideoFormatRGB15: return "VideoFormatRGB15"
+		case VideoFormatRGB16: return "VideoFormatRGB16"
+		case VideoFormatRGB8P: return "VideoFormatRGB8P"
+		case VideoFormatRGBA: return "VideoFormatRGBA"
+		case VideoFormatRGBA64Be: return "VideoFormatRGBA64Be"
+		case VideoFormatRGBA64LE: return "VideoFormatRGBA64LE"
+		case VideoFormatRbga: return "VideoFormatRbga"
+		case VideoFormatRgbp: return "VideoFormatRgbp"
+		case VideoFormatRgbx: return "VideoFormatRgbx"
+		case VideoFormatUnknown: return "VideoFormatUnknown"
+		case VideoFormatUyvp: return "VideoFormatUyvp"
+		case VideoFormatUyvy: return "VideoFormatUyvy"
+		case VideoFormatV210: return "VideoFormatV210"
+		case VideoFormatV216: return "VideoFormatV216"
+		case VideoFormatV308: return "VideoFormatV308"
+		case VideoFormatVuya: return "VideoFormatVuya"
+		case VideoFormatVyuy: return "VideoFormatVyuy"
+		case VideoFormatXbgr: return "VideoFormatXbgr"
+		case VideoFormatXrgb: return "VideoFormatXrgb"
+		case VideoFormatY210: return "VideoFormatY210"
+		case VideoFormatY212Be: return "VideoFormatY212Be"
 		case VideoFormatY212LE: return "VideoFormatY212LE"
+		case VideoFormatY410: return "VideoFormatY410"
+		case VideoFormatY412Be: return "VideoFormatY412Be"
+		case VideoFormatY412LE: return "VideoFormatY412LE"
+		case VideoFormatY41B: return "VideoFormatY41B"
+		case VideoFormatY42B: return "VideoFormatY42B"
+		case VideoFormatY444: return "VideoFormatY444"
+		case VideoFormatY44410Be: return "VideoFormatY44410Be"
+		case VideoFormatY44410LE: return "VideoFormatY44410LE"
+		case VideoFormatY44412Be: return "VideoFormatY44412Be"
+		case VideoFormatY44412LE: return "VideoFormatY44412LE"
+		case VideoFormatY44416Be: return "VideoFormatY44416Be"
+		case VideoFormatY44416LE: return "VideoFormatY44416LE"
+		case VideoFormatYV12: return "VideoFormatYV12"
+		case VideoFormatYuv9: return "VideoFormatYuv9"
+		case VideoFormatYuy2: return "VideoFormatYuy2"
+		case VideoFormatYvu9: return "VideoFormatYvu9"
+		case VideoFormatYvyu: return "VideoFormatYvyu"
 		default: return fmt.Sprintf("VideoFormat(%d)", e)
 	}
 }
@@ -2151,10 +2151,10 @@ func (e VideoGLTextureOrientation) InitGoValue(v *gobject.Value) {
 
 func (e VideoGLTextureOrientation) String() string {
 	switch e {
-		case VideoGLTextureOrientationXNormalYNormal: return "VideoGLTextureOrientationXNormalYNormal"
-		case VideoGLTextureOrientationXNormalYFlip: return "VideoGLTextureOrientationXNormalYFlip"
-		case VideoGLTextureOrientationXFlipYNormal: return "VideoGLTextureOrientationXFlipYNormal"
 		case VideoGLTextureOrientationXFlipYFlip: return "VideoGLTextureOrientationXFlipYFlip"
+		case VideoGLTextureOrientationXFlipYNormal: return "VideoGLTextureOrientationXFlipYNormal"
+		case VideoGLTextureOrientationXNormalYFlip: return "VideoGLTextureOrientationXNormalYFlip"
+		case VideoGLTextureOrientationXNormalYNormal: return "VideoGLTextureOrientationXNormalYNormal"
 		default: return fmt.Sprintf("VideoGLTextureOrientation(%d)", e)
 	}
 }
@@ -2208,13 +2208,13 @@ func (e VideoGLTextureType) InitGoValue(v *gobject.Value) {
 
 func (e VideoGLTextureType) String() string {
 	switch e {
-		case VideoGLTextureTypeRGB: return "VideoGLTextureTypeRGB"
-		case VideoGLTextureTypeRGBA: return "VideoGLTextureTypeRGBA"
-		case VideoGLTextureTypeR: return "VideoGLTextureTypeR"
-		case VideoGLTextureTypeRg: return "VideoGLTextureTypeRg"
 		case VideoGLTextureTypeLuminance: return "VideoGLTextureTypeLuminance"
 		case VideoGLTextureTypeLuminanceAlpha: return "VideoGLTextureTypeLuminanceAlpha"
+		case VideoGLTextureTypeR: return "VideoGLTextureTypeR"
+		case VideoGLTextureTypeRGB: return "VideoGLTextureTypeRGB"
 		case VideoGLTextureTypeRGB16: return "VideoGLTextureTypeRGB16"
+		case VideoGLTextureTypeRGBA: return "VideoGLTextureTypeRGBA"
+		case VideoGLTextureTypeRg: return "VideoGLTextureTypeRg"
 		default: return fmt.Sprintf("VideoGLTextureType(%d)", e)
 	}
 }
@@ -2307,11 +2307,11 @@ func (e VideoInterlaceMode) InitGoValue(v *gobject.Value) {
 
 func (e VideoInterlaceMode) String() string {
 	switch e {
-		case VideoInterlaceModeFields: return "VideoInterlaceModeFields"
 		case VideoInterlaceModeAlternate: return "VideoInterlaceModeAlternate"
-		case VideoInterlaceModeProgressive: return "VideoInterlaceModeProgressive"
+		case VideoInterlaceModeFields: return "VideoInterlaceModeFields"
 		case VideoInterlaceModeInterleaved: return "VideoInterlaceModeInterleaved"
 		case VideoInterlaceModeMixed: return "VideoInterlaceModeMixed"
+		case VideoInterlaceModeProgressive: return "VideoInterlaceModeProgressive"
 		default: return fmt.Sprintf("VideoInterlaceMode(%d)", e)
 	}
 }
@@ -2355,10 +2355,10 @@ func (e VideoMatrixMode) InitGoValue(v *gobject.Value) {
 
 func (e VideoMatrixMode) String() string {
 	switch e {
-		case VideoMatrixModeInputOnly: return "VideoMatrixModeInputOnly"
-		case VideoMatrixModeOutputOnly: return "VideoMatrixModeOutputOnly"
-		case VideoMatrixModeNone: return "VideoMatrixModeNone"
 		case VideoMatrixModeFull: return "VideoMatrixModeFull"
+		case VideoMatrixModeInputOnly: return "VideoMatrixModeInputOnly"
+		case VideoMatrixModeNone: return "VideoMatrixModeNone"
+		case VideoMatrixModeOutputOnly: return "VideoMatrixModeOutputOnly"
 		default: return fmt.Sprintf("VideoMatrixMode(%d)", e)
 	}
 }
@@ -2442,16 +2442,16 @@ func (e VideoMultiviewFramePacking) InitGoValue(v *gobject.Value) {
 
 func (e VideoMultiviewFramePacking) String() string {
 	switch e {
+		case VideoMultiviewFramePackingCheckerboard: return "VideoMultiviewFramePackingCheckerboard"
+		case VideoMultiviewFramePackingColumnInterleaved: return "VideoMultiviewFramePackingColumnInterleaved"
+		case VideoMultiviewFramePackingLeft: return "VideoMultiviewFramePackingLeft"
+		case VideoMultiviewFramePackingMono: return "VideoMultiviewFramePackingMono"
+		case VideoMultiviewFramePackingNone: return "VideoMultiviewFramePackingNone"
 		case VideoMultiviewFramePackingRight: return "VideoMultiviewFramePackingRight"
+		case VideoMultiviewFramePackingRowInterleaved: return "VideoMultiviewFramePackingRowInterleaved"
 		case VideoMultiviewFramePackingSideBySide: return "VideoMultiviewFramePackingSideBySide"
 		case VideoMultiviewFramePackingSideBySideQuincunx: return "VideoMultiviewFramePackingSideBySideQuincunx"
-		case VideoMultiviewFramePackingRowInterleaved: return "VideoMultiviewFramePackingRowInterleaved"
 		case VideoMultiviewFramePackingTopBottom: return "VideoMultiviewFramePackingTopBottom"
-		case VideoMultiviewFramePackingMono: return "VideoMultiviewFramePackingMono"
-		case VideoMultiviewFramePackingColumnInterleaved: return "VideoMultiviewFramePackingColumnInterleaved"
-		case VideoMultiviewFramePackingCheckerboard: return "VideoMultiviewFramePackingCheckerboard"
-		case VideoMultiviewFramePackingNone: return "VideoMultiviewFramePackingNone"
-		case VideoMultiviewFramePackingLeft: return "VideoMultiviewFramePackingLeft"
 		default: return fmt.Sprintf("VideoMultiviewFramePacking(%d)", e)
 	}
 }
@@ -2551,19 +2551,19 @@ func (e VideoMultiviewMode) InitGoValue(v *gobject.Value) {
 
 func (e VideoMultiviewMode) String() string {
 	switch e {
-		case VideoMultiviewModeSideBySideQuincunx: return "VideoMultiviewModeSideBySideQuincunx"
 		case VideoMultiviewModeCheckerboard: return "VideoMultiviewModeCheckerboard"
-		case VideoMultiviewModeMultiviewFrameByFrame: return "VideoMultiviewModeMultiviewFrameByFrame"
-		case VideoMultiviewModeSideBySide: return "VideoMultiviewModeSideBySide"
 		case VideoMultiviewModeColumnInterleaved: return "VideoMultiviewModeColumnInterleaved"
-		case VideoMultiviewModeRowInterleaved: return "VideoMultiviewModeRowInterleaved"
-		case VideoMultiviewModeTopBottom: return "VideoMultiviewModeTopBottom"
 		case VideoMultiviewModeFrameByFrame: return "VideoMultiviewModeFrameByFrame"
-		case VideoMultiviewModeSeparated: return "VideoMultiviewModeSeparated"
-		case VideoMultiviewModeNone: return "VideoMultiviewModeNone"
-		case VideoMultiviewModeMono: return "VideoMultiviewModeMono"
 		case VideoMultiviewModeLeft: return "VideoMultiviewModeLeft"
+		case VideoMultiviewModeMono: return "VideoMultiviewModeMono"
+		case VideoMultiviewModeMultiviewFrameByFrame: return "VideoMultiviewModeMultiviewFrameByFrame"
+		case VideoMultiviewModeNone: return "VideoMultiviewModeNone"
 		case VideoMultiviewModeRight: return "VideoMultiviewModeRight"
+		case VideoMultiviewModeRowInterleaved: return "VideoMultiviewModeRowInterleaved"
+		case VideoMultiviewModeSeparated: return "VideoMultiviewModeSeparated"
+		case VideoMultiviewModeSideBySide: return "VideoMultiviewModeSideBySide"
+		case VideoMultiviewModeSideBySideQuincunx: return "VideoMultiviewModeSideBySideQuincunx"
+		case VideoMultiviewModeTopBottom: return "VideoMultiviewModeTopBottom"
 		default: return fmt.Sprintf("VideoMultiviewMode(%d)", e)
 	}
 }
@@ -2629,16 +2629,16 @@ func (e VideoOrientationMethod) InitGoValue(v *gobject.Value) {
 
 func (e VideoOrientationMethod) String() string {
 	switch e {
-		case VideoOrientation90R: return "VideoOrientation90R"
 		case VideoOrientation180: return "VideoOrientation180"
+		case VideoOrientation90L: return "VideoOrientation90L"
+		case VideoOrientation90R: return "VideoOrientation90R"
+		case VideoOrientationAuto: return "VideoOrientationAuto"
+		case VideoOrientationCustom: return "VideoOrientationCustom"
 		case VideoOrientationHoriz: return "VideoOrientationHoriz"
+		case VideoOrientationIdentity: return "VideoOrientationIdentity"
 		case VideoOrientationUlLr: return "VideoOrientationUlLr"
 		case VideoOrientationUrLl: return "VideoOrientationUrLl"
-		case VideoOrientationCustom: return "VideoOrientationCustom"
-		case VideoOrientationIdentity: return "VideoOrientationIdentity"
-		case VideoOrientation90L: return "VideoOrientation90L"
 		case VideoOrientationVert: return "VideoOrientationVert"
-		case VideoOrientationAuto: return "VideoOrientationAuto"
 		default: return fmt.Sprintf("VideoOrientationMethod(%d)", e)
 	}
 }
@@ -2677,9 +2677,9 @@ func (e VideoPrimariesMode) InitGoValue(v *gobject.Value) {
 
 func (e VideoPrimariesMode) String() string {
 	switch e {
-		case VideoPrimariesModeNone: return "VideoPrimariesModeNone"
-		case VideoPrimariesModeMergeOnly: return "VideoPrimariesModeMergeOnly"
 		case VideoPrimariesModeFast: return "VideoPrimariesModeFast"
+		case VideoPrimariesModeMergeOnly: return "VideoPrimariesModeMergeOnly"
+		case VideoPrimariesModeNone: return "VideoPrimariesModeNone"
 		default: return fmt.Sprintf("VideoPrimariesMode(%d)", e)
 	}
 }
@@ -2727,11 +2727,11 @@ func (e VideoResamplerMethod) InitGoValue(v *gobject.Value) {
 
 func (e VideoResamplerMethod) String() string {
 	switch e {
-		case VideoResamplerMethodNearest: return "VideoResamplerMethodNearest"
-		case VideoResamplerMethodLinear: return "VideoResamplerMethodLinear"
 		case VideoResamplerMethodCubic: return "VideoResamplerMethodCubic"
-		case VideoResamplerMethodSinc: return "VideoResamplerMethodSinc"
 		case VideoResamplerMethodLanczos: return "VideoResamplerMethodLanczos"
+		case VideoResamplerMethodLinear: return "VideoResamplerMethodLinear"
+		case VideoResamplerMethodNearest: return "VideoResamplerMethodNearest"
+		case VideoResamplerMethodSinc: return "VideoResamplerMethodSinc"
 		default: return fmt.Sprintf("VideoResamplerMethod(%d)", e)
 	}
 }
@@ -2772,9 +2772,9 @@ func (e VideoTileMode) InitGoValue(v *gobject.Value) {
 
 func (e VideoTileMode) String() string {
 	switch e {
+		case VideoTileModeLinear: return "VideoTileModeLinear"
 		case VideoTileModeUnknown: return "VideoTileModeUnknown"
 		case VideoTileModeZflipz2X2: return "VideoTileModeZflipz2X2"
-		case VideoTileModeLinear: return "VideoTileModeLinear"
 		default: return fmt.Sprintf("VideoTileMode(%d)", e)
 	}
 }
@@ -2916,23 +2916,23 @@ func (e VideoTransferFunction) InitGoValue(v *gobject.Value) {
 
 func (e VideoTransferFunction) String() string {
 	switch e {
-		case VideoTransferGamma20: return "VideoTransferGamma20"
-		case VideoTransferSmpte240M: return "VideoTransferSmpte240M"
-		case VideoTransferSrgb: return "VideoTransferSrgb"
+		case VideoTransferAdobergb: return "VideoTransferAdobergb"
+		case VideoTransferAribStdB67: return "VideoTransferAribStdB67"
+		case VideoTransferBt202010: return "VideoTransferBt202010"
 		case VideoTransferBt202012: return "VideoTransferBt202012"
 		case VideoTransferBt601: return "VideoTransferBt601"
-		case VideoTransferUnknown: return "VideoTransferUnknown"
-		case VideoTransferGamma28: return "VideoTransferGamma28"
-		case VideoTransferBt202010: return "VideoTransferBt202010"
 		case VideoTransferBt709: return "VideoTransferBt709"
-		case VideoTransferLog316: return "VideoTransferLog316"
-		case VideoTransferAdobergb: return "VideoTransferAdobergb"
-		case VideoTransferSmpte2084: return "VideoTransferSmpte2084"
-		case VideoTransferGamma18: return "VideoTransferGamma18"
-		case VideoTransferGamma22: return "VideoTransferGamma22"
-		case VideoTransferLog100: return "VideoTransferLog100"
-		case VideoTransferAribStdB67: return "VideoTransferAribStdB67"
 		case VideoTransferGamma10: return "VideoTransferGamma10"
+		case VideoTransferGamma18: return "VideoTransferGamma18"
+		case VideoTransferGamma20: return "VideoTransferGamma20"
+		case VideoTransferGamma22: return "VideoTransferGamma22"
+		case VideoTransferGamma28: return "VideoTransferGamma28"
+		case VideoTransferLog100: return "VideoTransferLog100"
+		case VideoTransferLog316: return "VideoTransferLog316"
+		case VideoTransferSmpte2084: return "VideoTransferSmpte2084"
+		case VideoTransferSmpte240M: return "VideoTransferSmpte240M"
+		case VideoTransferSrgb: return "VideoTransferSrgb"
+		case VideoTransferUnknown: return "VideoTransferUnknown"
 		default: return fmt.Sprintf("VideoTransferFunction(%d)", e)
 	}
 }
@@ -2970,8 +2970,8 @@ func (e VideoVBIParserResult) InitGoValue(v *gobject.Value) {
 
 func (e VideoVBIParserResult) String() string {
 	switch e {
-		case VideoVbiParserResultError: return "VideoVbiParserResultError"
 		case VideoVbiParserResultDone: return "VideoVbiParserResultDone"
+		case VideoVbiParserResultError: return "VideoVbiParserResultError"
 		case VideoVbiParserResultOK: return "VideoVbiParserResultOK"
 		default: return fmt.Sprintf("VideoVBIParserResult(%d)", e)
 	}

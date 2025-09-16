@@ -185,15 +185,15 @@ func (e RTCPFBType) InitGoValue(v *gobject.Value) {
 
 func (e RTCPFBType) String() string {
 	switch e {
-		case RtcpPsfbTypeVbcn: return "RtcpPsfbTypeVbcn"
 		case RtcpFbTypeInvalid: return "RtcpFbTypeInvalid"
-		case RtcpRtpfbTypeNack: return "RtcpRtpfbTypeNack"
-		case RtcpRtpfbTypeTmmbr: return "RtcpRtpfbTypeTmmbr"
-		case RtcpRtpfbTypeTmmbn: return "RtcpRtpfbTypeTmmbn"
-		case RtcpRtpfbTypeRtcpSrReq: return "RtcpRtpfbTypeRtcpSrReq"
-		case RtcpRtpfbTypeTwcc: return "RtcpRtpfbTypeTwcc"
 		case RtcpPsfbTypeSli: return "RtcpPsfbTypeSli"
 		case RtcpPsfbTypeTstn: return "RtcpPsfbTypeTstn"
+		case RtcpPsfbTypeVbcn: return "RtcpPsfbTypeVbcn"
+		case RtcpRtpfbTypeNack: return "RtcpRtpfbTypeNack"
+		case RtcpRtpfbTypeRtcpSrReq: return "RtcpRtpfbTypeRtcpSrReq"
+		case RtcpRtpfbTypeTmmbn: return "RtcpRtpfbTypeTmmbn"
+		case RtcpRtpfbTypeTmmbr: return "RtcpRtpfbTypeTmmbr"
+		case RtcpRtpfbTypeTwcc: return "RtcpRtpfbTypeTwcc"
 		default: return fmt.Sprintf("RTCPFBType(%d)", e)
 	}
 }
@@ -287,23 +287,23 @@ func (e RTCPSDESType) InitGoValue(v *gobject.Value) {
 
 func (e RTCPSDESType) String() string {
 	switch e {
-		case RtcpSdesName: return "RtcpSdesName"
-		case RtcpSdesLoc: return "RtcpSdesLoc"
-		case RtcpSdesH323Caddr: return "RtcpSdesH323Caddr"
 		case RtcpSdesApsi: return "RtcpSdesApsi"
-		case RtcpSdesInvalid: return "RtcpSdesInvalid"
-		case RtcpSdesEnd: return "RtcpSdesEnd"
+		case RtcpSdesCcid: return "RtcpSdesCcid"
 		case RtcpSdesCname: return "RtcpSdesCname"
+		case RtcpSdesEmail: return "RtcpSdesEmail"
+		case RtcpSdesEnd: return "RtcpSdesEnd"
+		case RtcpSdesH323Caddr: return "RtcpSdesH323Caddr"
+		case RtcpSdesInvalid: return "RtcpSdesInvalid"
+		case RtcpSdesLoc: return "RtcpSdesLoc"
+		case RtcpSdesMid: return "RtcpSdesMid"
+		case RtcpSdesName: return "RtcpSdesName"
+		case RtcpSdesNote: return "RtcpSdesNote"
+		case RtcpSdesPhone: return "RtcpSdesPhone"
 		case RtcpSdesPriv: return "RtcpSdesPriv"
+		case RtcpSdesRepairedRtpStreamID: return "RtcpSdesRepairedRtpStreamID"
 		case RtcpSdesRgrp: return "RtcpSdesRgrp"
 		case RtcpSdesRtpStreamID: return "RtcpSdesRtpStreamID"
-		case RtcpSdesRepairedRtpStreamID: return "RtcpSdesRepairedRtpStreamID"
-		case RtcpSdesCcid: return "RtcpSdesCcid"
-		case RtcpSdesEmail: return "RtcpSdesEmail"
-		case RtcpSdesPhone: return "RtcpSdesPhone"
 		case RtcpSdesTool: return "RtcpSdesTool"
-		case RtcpSdesNote: return "RtcpSdesNote"
-		case RtcpSdesMid: return "RtcpSdesMid"
 		default: return fmt.Sprintf("RTCPSDESType(%d)", e)
 	}
 }
@@ -365,15 +365,15 @@ func (e RTCPType) InitGoValue(v *gobject.Value) {
 
 func (e RTCPType) String() string {
 	switch e {
-		case RtcpTypeSr: return "RtcpTypeSr"
+		case RtcpTypeApp: return "RtcpTypeApp"
+		case RtcpTypeBye: return "RtcpTypeBye"
+		case RtcpTypeInvalid: return "RtcpTypeInvalid"
+		case RtcpTypePsfb: return "RtcpTypePsfb"
 		case RtcpTypeRr: return "RtcpTypeRr"
 		case RtcpTypeRtpfb: return "RtcpTypeRtpfb"
-		case RtcpTypeXR: return "RtcpTypeXR"
-		case RtcpTypeInvalid: return "RtcpTypeInvalid"
 		case RtcpTypeSdes: return "RtcpTypeSdes"
-		case RtcpTypeBye: return "RtcpTypeBye"
-		case RtcpTypeApp: return "RtcpTypeApp"
-		case RtcpTypePsfb: return "RtcpTypePsfb"
+		case RtcpTypeSr: return "RtcpTypeSr"
+		case RtcpTypeXR: return "RtcpTypeXR"
 		default: return fmt.Sprintf("RTCPType(%d)", e)
 	}
 }
@@ -433,13 +433,13 @@ func (e RTCPXRType) InitGoValue(v *gobject.Value) {
 func (e RTCPXRType) String() string {
 	switch e {
 		case RtcpXRTypeDlrr: return "RtcpXRTypeDlrr"
-		case RtcpXRTypeSsumm: return "RtcpXRTypeSsumm"
-		case RtcpXRTypeVoipMetrics: return "RtcpXRTypeVoipMetrics"
+		case RtcpXRTypeDrle: return "RtcpXRTypeDrle"
 		case RtcpXRTypeInvalid: return "RtcpXRTypeInvalid"
 		case RtcpXRTypeLrle: return "RtcpXRTypeLrle"
-		case RtcpXRTypeDrle: return "RtcpXRTypeDrle"
 		case RtcpXRTypePrt: return "RtcpXRTypePrt"
 		case RtcpXRTypeRrt: return "RtcpXRTypeRrt"
+		case RtcpXRTypeSsumm: return "RtcpXRTypeSsumm"
+		case RtcpXRTypeVoipMetrics: return "RtcpXRTypeVoipMetrics"
 		default: return fmt.Sprintf("RTCPXRType(%d)", e)
 	}
 }
@@ -580,32 +580,32 @@ func (e RTPPayload) InitGoValue(v *gobject.Value) {
 
 func (e RTPPayload) String() string {
 	switch e {
-		case RtpPayloadMpa: return "RtpPayloadMpa"
-		case RtpPayloadG728: return "RtpPayloadG728"
-		case RtpPayloadG729: return "RtpPayloadG729"
-		case RtpPayloadH261: return "RtpPayloadH261"
-		case RtpPayloadMp2T: return "RtpPayloadMp2T"
-		case RtpPayloadG721: return "RtpPayloadG721"
-		case RtpPayloadGsm: return "RtpPayloadGsm"
-		case RtpPayloadG723: return "RtpPayloadG723"
-		case RtpPayloadH263: return "RtpPayloadH263"
-		case RtpPayloadG722: return "RtpPayloadG722"
+		case RtpPayload1016: return "RtpPayload1016"
+		case RtpPayloadCellb: return "RtpPayloadCellb"
 		case RtpPayloadCn: return "RtpPayloadCn"
 		case RtpPayloadDvi411025: return "RtpPayloadDvi411025"
-		case RtpPayloadCellb: return "RtpPayloadCellb"
-		case RtpPayloadJPEG: return "RtpPayloadJPEG"
-		case RtpPayloadMpv: return "RtpPayloadMpv"
-		case RtpPayloadPcmu: return "RtpPayloadPcmu"
-		case RtpPayload1016: return "RtpPayload1016"
-		case RtpPayloadDvi48000: return "RtpPayloadDvi48000"
-		case RtpPayloadPcma: return "RtpPayloadPcma"
-		case RtpPayloadL16Mono: return "RtpPayloadL16Mono"
-		case RtpPayloadQcelp: return "RtpPayloadQcelp"
-		case RtpPayloadDvi422050: return "RtpPayloadDvi422050"
-		case RtpPayloadNv: return "RtpPayloadNv"
 		case RtpPayloadDvi416000: return "RtpPayloadDvi416000"
-		case RtpPayloadLpc: return "RtpPayloadLpc"
+		case RtpPayloadDvi422050: return "RtpPayloadDvi422050"
+		case RtpPayloadDvi48000: return "RtpPayloadDvi48000"
+		case RtpPayloadG721: return "RtpPayloadG721"
+		case RtpPayloadG722: return "RtpPayloadG722"
+		case RtpPayloadG723: return "RtpPayloadG723"
+		case RtpPayloadG728: return "RtpPayloadG728"
+		case RtpPayloadG729: return "RtpPayloadG729"
+		case RtpPayloadGsm: return "RtpPayloadGsm"
+		case RtpPayloadH261: return "RtpPayloadH261"
+		case RtpPayloadH263: return "RtpPayloadH263"
+		case RtpPayloadJPEG: return "RtpPayloadJPEG"
+		case RtpPayloadL16Mono: return "RtpPayloadL16Mono"
 		case RtpPayloadL16Stereo: return "RtpPayloadL16Stereo"
+		case RtpPayloadLpc: return "RtpPayloadLpc"
+		case RtpPayloadMp2T: return "RtpPayloadMp2T"
+		case RtpPayloadMpa: return "RtpPayloadMpa"
+		case RtpPayloadMpv: return "RtpPayloadMpv"
+		case RtpPayloadNv: return "RtpPayloadNv"
+		case RtpPayloadPcma: return "RtpPayloadPcma"
+		case RtpPayloadPcmu: return "RtpPayloadPcmu"
+		case RtpPayloadQcelp: return "RtpPayloadQcelp"
 		default: return fmt.Sprintf("RTPPayload(%d)", e)
 	}
 }
@@ -652,8 +652,8 @@ func (e RTPProfile) InitGoValue(v *gobject.Value) {
 func (e RTPProfile) String() string {
 	switch e {
 		case RtpProfileAvp: return "RtpProfileAvp"
-		case RtpProfileSavp: return "RtpProfileSavp"
 		case RtpProfileAvpf: return "RtpProfileAvpf"
+		case RtpProfileSavp: return "RtpProfileSavp"
 		case RtpProfileSavpf: return "RtpProfileSavpf"
 		case RtpProfileUnknown: return "RtpProfileUnknown"
 		default: return fmt.Sprintf("RTPProfile(%d)", e)

@@ -146,15 +146,15 @@ func (e AudioVisualizerShader) InitGoValue(v *gobject.Value) {
 func (e AudioVisualizerShader) String() string {
 	switch e {
 		case AudioVisualizerShaderFade: return "AudioVisualizerShaderFade"
-		case AudioVisualizerShaderFadeAndMoveUp: return "AudioVisualizerShaderFadeAndMoveUp"
 		case AudioVisualizerShaderFadeAndMoveDown: return "AudioVisualizerShaderFadeAndMoveDown"
-		case AudioVisualizerShaderFadeAndMoveLeft: return "AudioVisualizerShaderFadeAndMoveLeft"
 		case AudioVisualizerShaderFadeAndMoveHorizIn: return "AudioVisualizerShaderFadeAndMoveHorizIn"
-		case AudioVisualizerShaderFadeAndMoveVertIn: return "AudioVisualizerShaderFadeAndMoveVertIn"
-		case AudioVisualizerShaderNone: return "AudioVisualizerShaderNone"
-		case AudioVisualizerShaderFadeAndMoveRight: return "AudioVisualizerShaderFadeAndMoveRight"
 		case AudioVisualizerShaderFadeAndMoveHorizOut: return "AudioVisualizerShaderFadeAndMoveHorizOut"
+		case AudioVisualizerShaderFadeAndMoveLeft: return "AudioVisualizerShaderFadeAndMoveLeft"
+		case AudioVisualizerShaderFadeAndMoveRight: return "AudioVisualizerShaderFadeAndMoveRight"
+		case AudioVisualizerShaderFadeAndMoveUp: return "AudioVisualizerShaderFadeAndMoveUp"
+		case AudioVisualizerShaderFadeAndMoveVertIn: return "AudioVisualizerShaderFadeAndMoveVertIn"
 		case AudioVisualizerShaderFadeAndMoveVertOut: return "AudioVisualizerShaderFadeAndMoveVertOut"
+		case AudioVisualizerShaderNone: return "AudioVisualizerShaderNone"
 		default: return fmt.Sprintf("AudioVisualizerShader(%d)", e)
 	}
 }
@@ -204,12 +204,12 @@ func (e DiscovererResult) InitGoValue(v *gobject.Value) {
 
 func (e DiscovererResult) String() string {
 	switch e {
-		case DiscovererOK: return "DiscovererOK"
-		case DiscovererURIInvalid: return "DiscovererURIInvalid"
-		case DiscovererError: return "DiscovererError"
-		case DiscovererTimeout: return "DiscovererTimeout"
 		case DiscovererBusy: return "DiscovererBusy"
+		case DiscovererError: return "DiscovererError"
 		case DiscovererMissingPlugins: return "DiscovererMissingPlugins"
+		case DiscovererOK: return "DiscovererOK"
+		case DiscovererTimeout: return "DiscovererTimeout"
+		case DiscovererURIInvalid: return "DiscovererURIInvalid"
 		default: return fmt.Sprintf("DiscovererResult(%d)", e)
 	}
 }
@@ -297,16 +297,16 @@ func (e InstallPluginsReturn) InitGoValue(v *gobject.Value) {
 
 func (e InstallPluginsReturn) String() string {
 	switch e {
-		case InstallPluginsInvalid: return "InstallPluginsInvalid"
-		case InstallPluginsSuccess: return "InstallPluginsSuccess"
 		case InstallPluginsCrashed: return "InstallPluginsCrashed"
-		case InstallPluginsStartedOK: return "InstallPluginsStartedOK"
-		case InstallPluginsInternalFailure: return "InstallPluginsInternalFailure"
+		case InstallPluginsError: return "InstallPluginsError"
 		case InstallPluginsHelperMissing: return "InstallPluginsHelperMissing"
 		case InstallPluginsInstallInProgress: return "InstallPluginsInstallInProgress"
+		case InstallPluginsInternalFailure: return "InstallPluginsInternalFailure"
+		case InstallPluginsInvalid: return "InstallPluginsInvalid"
 		case InstallPluginsNotFound: return "InstallPluginsNotFound"
-		case InstallPluginsError: return "InstallPluginsError"
 		case InstallPluginsPartialSuccess: return "InstallPluginsPartialSuccess"
+		case InstallPluginsStartedOK: return "InstallPluginsStartedOK"
+		case InstallPluginsSuccess: return "InstallPluginsSuccess"
 		case InstallPluginsUserAbort: return "InstallPluginsUserAbort"
 		default: return fmt.Sprintf("InstallPluginsReturn(%d)", e)
 	}

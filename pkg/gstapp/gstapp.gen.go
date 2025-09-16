@@ -111,8 +111,8 @@ func (e AppStreamType) InitGoValue(v *gobject.Value) {
 
 func (e AppStreamType) String() string {
 	switch e {
-		case AppStreamTypeSeekable: return "AppStreamTypeSeekable"
 		case AppStreamTypeRandomAccess: return "AppStreamTypeRandomAccess"
+		case AppStreamTypeSeekable: return "AppStreamTypeSeekable"
 		case AppStreamTypeStream: return "AppStreamTypeStream"
 		default: return fmt.Sprintf("AppStreamType(%d)", e)
 	}

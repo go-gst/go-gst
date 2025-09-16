@@ -9,6 +9,7 @@ import (
 )
 
 // #include <gst/webrtc/webrtc.h>
+// #include <gst/webrtc/sctptransport.h>
 import "C"
 
 //export _gotk4_gstwebrtc1_WebRTCICEOnCandidateFunc

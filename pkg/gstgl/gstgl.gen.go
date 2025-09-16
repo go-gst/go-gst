@@ -233,9 +233,9 @@ func (e GLConfigCaveat) InitGoValue(v *gobject.Value) {
 
 func (e GLConfigCaveat) String() string {
 	switch e {
+		case GLConfigCaveatNonConformant: return "GLConfigCaveatNonConformant"
 		case GLConfigCaveatNone: return "GLConfigCaveatNone"
 		case GLConfigCaveatSlow: return "GLConfigCaveatSlow"
-		case GLConfigCaveatNonConformant: return "GLConfigCaveatNonConformant"
 		default: return fmt.Sprintf("GLConfigCaveat(%d)", e)
 	}
 }
@@ -286,11 +286,11 @@ func (e GLContextError) InitGoValue(v *gobject.Value) {
 func (e GLContextError) String() string {
 	switch e {
 		case GLContextErrorCreateContext: return "GLContextErrorCreateContext"
-		case GLContextErrorResourceUnavailable: return "GLContextErrorResourceUnavailable"
 		case GLContextErrorFailed: return "GLContextErrorFailed"
-		case GLContextErrorWrongConfig: return "GLContextErrorWrongConfig"
-		case GLContextErrorWrongApi: return "GLContextErrorWrongApi"
 		case GLContextErrorOldLibs: return "GLContextErrorOldLibs"
+		case GLContextErrorResourceUnavailable: return "GLContextErrorResourceUnavailable"
+		case GLContextErrorWrongApi: return "GLContextErrorWrongApi"
+		case GLContextErrorWrongConfig: return "GLContextErrorWrongConfig"
 		default: return fmt.Sprintf("GLContextError(%d)", e)
 	}
 }
@@ -397,24 +397,24 @@ func (e GLFormat) InitGoValue(v *gobject.Value) {
 func (e GLFormat) String() string {
 	switch e {
 		case GLAlpha: return "GLAlpha"
-		case GLRed: return "GLRed"
-		case GLRGB: return "GLRGB"
-		case GLRGBA: return "GLRGBA"
 		case GLDepth24Stencil8: return "GLDepth24Stencil8"
+		case GLDepthComponent16: return "GLDepthComponent16"
 		case GLLuminance: return "GLLuminance"
 		case GLLuminanceAlpha: return "GLLuminanceAlpha"
-		case GLRg: return "GLRg"
-		case GLRGB8: return "GLRGB8"
-		case GLRGBA8: return "GLRGBA8"
-		case GLRGB10A2: return "GLRGB10A2"
-		case GLR8: return "GLR8"
-		case GLRg8: return "GLRg8"
-		case GLRGB565: return "GLRGB565"
-		case GLDepthComponent16: return "GLDepthComponent16"
 		case GLR16: return "GLR16"
-		case GLRg16: return "GLRg16"
+		case GLR8: return "GLR8"
+		case GLRGB: return "GLRGB"
+		case GLRGB10A2: return "GLRGB10A2"
 		case GLRGB16: return "GLRGB16"
+		case GLRGB565: return "GLRGB565"
+		case GLRGB8: return "GLRGB8"
+		case GLRGBA: return "GLRGBA"
 		case GLRGBA16: return "GLRGBA16"
+		case GLRGBA8: return "GLRGBA8"
+		case GLRed: return "GLRed"
+		case GLRg: return "GLRg"
+		case GLRg16: return "GLRg16"
+		case GLRg8: return "GLRg8"
 		default: return fmt.Sprintf("GLFormat(%d)", e)
 	}
 }
@@ -586,23 +586,23 @@ func (e GLSLVersion) InitGoValue(v *gobject.Value) {
 
 func (e GLSLVersion) String() string {
 	switch e {
-		case GlslVersion440: return "GlslVersion440"
+		case GlslVersion100: return "GlslVersion100"
 		case GlslVersion110: return "GlslVersion110"
-		case GlslVersionNone: return "GlslVersionNone"
+		case GlslVersion120: return "GlslVersion120"
 		case GlslVersion130: return "GlslVersion130"
-		case GlslVersion410: return "GlslVersion410"
 		case GlslVersion140: return "GlslVersion140"
 		case GlslVersion150: return "GlslVersion150"
+		case GlslVersion300: return "GlslVersion300"
 		case GlslVersion310: return "GlslVersion310"
 		case GlslVersion320: return "GlslVersion320"
 		case GlslVersion330: return "GlslVersion330"
 		case GlslVersion400: return "GlslVersion400"
-		case GlslVersion430: return "GlslVersion430"
-		case GlslVersion450: return "GlslVersion450"
-		case GlslVersion100: return "GlslVersion100"
-		case GlslVersion120: return "GlslVersion120"
-		case GlslVersion300: return "GlslVersion300"
+		case GlslVersion410: return "GlslVersion410"
 		case GlslVersion420: return "GlslVersion420"
+		case GlslVersion430: return "GlslVersion430"
+		case GlslVersion440: return "GlslVersion440"
+		case GlslVersion450: return "GlslVersion450"
+		case GlslVersionNone: return "GlslVersionNone"
 		default: return fmt.Sprintf("GLSLVersion(%d)", e)
 	}
 }
@@ -640,9 +640,9 @@ func (e GLStereoDownmix) InitGoValue(v *gobject.Value) {
 
 func (e GLStereoDownmix) String() string {
 	switch e {
+		case GLStereoDownmixAnaglyphAmberBlueDubois: return "GLStereoDownmixAnaglyphAmberBlueDubois"
 		case GLStereoDownmixAnaglyphGreenMagentaDubois: return "GLStereoDownmixAnaglyphGreenMagentaDubois"
 		case GLStereoDownmixAnaglyphRedCyanDubois: return "GLStereoDownmixAnaglyphRedCyanDubois"
-		case GLStereoDownmixAnaglyphAmberBlueDubois: return "GLStereoDownmixAnaglyphAmberBlueDubois"
 		default: return fmt.Sprintf("GLStereoDownmix(%d)", e)
 	}
 }
@@ -690,10 +690,10 @@ func (e GLTextureTarget) InitGoValue(v *gobject.Value) {
 
 func (e GLTextureTarget) String() string {
 	switch e {
-		case GLTextureTargetNone: return "GLTextureTargetNone"
 		case GLTextureTarget2D: return "GLTextureTarget2D"
-		case GLTextureTargetRectangle: return "GLTextureTargetRectangle"
 		case GLTextureTargetExternalOes: return "GLTextureTargetExternalOes"
+		case GLTextureTargetNone: return "GLTextureTargetNone"
+		case GLTextureTargetRectangle: return "GLTextureTargetRectangle"
 		default: return fmt.Sprintf("GLTextureTarget(%d)", e)
 	}
 }
@@ -737,10 +737,10 @@ func (e GLUploadReturn) InitGoValue(v *gobject.Value) {
 
 func (e GLUploadReturn) String() string {
 	switch e {
-		case GLUploadReconfigure: return "GLUploadReconfigure"
-		case GLUploadUnsharedGLContext: return "GLUploadUnsharedGLContext"
 		case GLUploadDone: return "GLUploadDone"
 		case GLUploadError: return "GLUploadError"
+		case GLUploadReconfigure: return "GLUploadReconfigure"
+		case GLUploadUnsharedGLContext: return "GLUploadUnsharedGLContext"
 		case GLUploadUnsupported: return "GLUploadUnsupported"
 		default: return fmt.Sprintf("GLUploadReturn(%d)", e)
 	}

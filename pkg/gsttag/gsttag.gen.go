@@ -76,8 +76,8 @@ func (e TagDemuxResult) InitGoValue(v *gobject.Value) {
 
 func (e TagDemuxResult) String() string {
 	switch e {
-		case TagDemuxResultBrokenTag: return "TagDemuxResultBrokenTag"
 		case TagDemuxResultAgain: return "TagDemuxResultAgain"
+		case TagDemuxResultBrokenTag: return "TagDemuxResultBrokenTag"
 		case TagDemuxResultOK: return "TagDemuxResultOK"
 		default: return fmt.Sprintf("TagDemuxResult(%d)", e)
 	}
@@ -187,26 +187,26 @@ func (e TagImageType) InitGoValue(v *gobject.Value) {
 
 func (e TagImageType) String() string {
 	switch e {
+		case TagImageTypeArtist: return "TagImageTypeArtist"
+		case TagImageTypeBackCover: return "TagImageTypeBackCover"
+		case TagImageTypeBandArtistLogo: return "TagImageTypeBandArtistLogo"
 		case TagImageTypeBandOrchestra: return "TagImageTypeBandOrchestra"
 		case TagImageTypeComposer: return "TagImageTypeComposer"
-		case TagImageTypeDuringPerformance: return "TagImageTypeDuringPerformance"
-		case TagImageTypeVideoCapture: return "TagImageTypeVideoCapture"
-		case TagImageTypeFrontCover: return "TagImageTypeFrontCover"
-		case TagImageTypeMedium: return "TagImageTypeMedium"
-		case TagImageTypeLyricist: return "TagImageTypeLyricist"
-		case TagImageTypeFish: return "TagImageTypeFish"
-		case TagImageTypePublisherStudioLogo: return "TagImageTypePublisherStudioLogo"
-		case TagImageTypeDuringRecording: return "TagImageTypeDuringRecording"
-		case TagImageTypeUndefined: return "TagImageTypeUndefined"
-		case TagImageTypeLeafletPage: return "TagImageTypeLeafletPage"
-		case TagImageTypeLeadArtist: return "TagImageTypeLeadArtist"
-		case TagImageTypeArtist: return "TagImageTypeArtist"
-		case TagImageTypeRecordingLocation: return "TagImageTypeRecordingLocation"
-		case TagImageTypeIllustration: return "TagImageTypeIllustration"
-		case TagImageTypeBandArtistLogo: return "TagImageTypeBandArtistLogo"
-		case TagImageTypeNone: return "TagImageTypeNone"
 		case TagImageTypeConductor: return "TagImageTypeConductor"
-		case TagImageTypeBackCover: return "TagImageTypeBackCover"
+		case TagImageTypeDuringPerformance: return "TagImageTypeDuringPerformance"
+		case TagImageTypeDuringRecording: return "TagImageTypeDuringRecording"
+		case TagImageTypeFish: return "TagImageTypeFish"
+		case TagImageTypeFrontCover: return "TagImageTypeFrontCover"
+		case TagImageTypeIllustration: return "TagImageTypeIllustration"
+		case TagImageTypeLeadArtist: return "TagImageTypeLeadArtist"
+		case TagImageTypeLeafletPage: return "TagImageTypeLeafletPage"
+		case TagImageTypeLyricist: return "TagImageTypeLyricist"
+		case TagImageTypeMedium: return "TagImageTypeMedium"
+		case TagImageTypeNone: return "TagImageTypeNone"
+		case TagImageTypePublisherStudioLogo: return "TagImageTypePublisherStudioLogo"
+		case TagImageTypeRecordingLocation: return "TagImageTypeRecordingLocation"
+		case TagImageTypeUndefined: return "TagImageTypeUndefined"
+		case TagImageTypeVideoCapture: return "TagImageTypeVideoCapture"
 		default: return fmt.Sprintf("TagImageType(%d)", e)
 	}
 }
