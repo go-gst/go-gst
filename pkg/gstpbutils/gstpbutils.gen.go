@@ -9,6 +9,7 @@ import (
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/core/classdata"
+	"github.com/diamondburned/gotk4/pkg/core/profile"
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
@@ -2871,7 +2872,7 @@ func init() {
 }
 
 func marshalAudioVisualizerInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapAudioVisualizer(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeAudioVisualizerFromGlibNone is used to convert raw GstAudioVisualizer pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -3301,7 +3302,7 @@ func init() {
 }
 
 func marshalDiscovererInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapDiscoverer(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeDiscovererFromGlibNone is used to convert raw GstDiscoverer pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -3922,7 +3923,7 @@ func init() {
 }
 
 func marshalDiscovererInfoInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapDiscovererInfo(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeDiscovererInfoFromGlibNone is used to convert raw GstDiscovererInfo pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -4436,7 +4437,7 @@ func init() {
 }
 
 func marshalDiscovererStreamInfoInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapDiscovererStreamInfo(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeDiscovererStreamInfoFromGlibNone is used to convert raw GstDiscovererStreamInfo pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -4690,7 +4691,7 @@ func init() {
 }
 
 func marshalDiscovererSubtitleInfoInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapDiscovererSubtitleInfo(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeDiscovererSubtitleInfoFromGlibNone is used to convert raw GstDiscovererSubtitleInfo pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -4846,7 +4847,7 @@ func init() {
 }
 
 func marshalDiscovererVideoInfoInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapDiscovererVideoInfo(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeDiscovererVideoInfoFromGlibNone is used to convert raw GstDiscovererVideoInfo pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -5402,7 +5403,7 @@ func init() {
 }
 
 func marshalEncodingProfileInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapEncodingProfile(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeEncodingProfileFromGlibNone is used to convert raw GstEncodingProfile pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -6334,7 +6335,7 @@ func init() {
 }
 
 func marshalEncodingTargetInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapEncodingTarget(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeEncodingTargetFromGlibNone is used to convert raw GstEncodingTarget pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -6773,7 +6774,7 @@ func init() {
 }
 
 func marshalEncodingVideoProfileInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapEncodingVideoProfile(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeEncodingVideoProfileFromGlibNone is used to convert raw GstEncodingVideoProfile pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -7031,7 +7032,7 @@ func init() {
 }
 
 func marshalDiscovererAudioInfoInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapDiscovererAudioInfo(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeDiscovererAudioInfoFromGlibNone is used to convert raw GstDiscovererAudioInfo pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -7259,7 +7260,7 @@ func init() {
 }
 
 func marshalDiscovererContainerInfoInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapDiscovererContainerInfo(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeDiscovererContainerInfoFromGlibNone is used to convert raw GstDiscovererContainerInfo pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -7376,7 +7377,7 @@ func init() {
 }
 
 func marshalEncodingAudioProfileInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapEncodingAudioProfile(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeEncodingAudioProfileFromGlibNone is used to convert raw GstEncodingAudioProfile pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -7526,7 +7527,7 @@ func init() {
 }
 
 func marshalEncodingContainerProfileInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapEncodingContainerProfile(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeEncodingContainerProfileFromGlibNone is used to convert raw GstEncodingContainerProfile pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -7968,10 +7969,12 @@ func UnsafeInstallPluginsContextFromGlibBorrow(p unsafe.Pointer) *InstallPlugins
 func UnsafeInstallPluginsContextFromGlibNone(p unsafe.Pointer) *InstallPluginsContext {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeInstallPluginsContextFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.installPluginsContext)), 1)
 	runtime.SetFinalizer(
 		wrapped.installPluginsContext,
 		func (intern *installPluginsContext) {
 			C.gst_install_plugins_context_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -7980,10 +7983,12 @@ func UnsafeInstallPluginsContextFromGlibNone(p unsafe.Pointer) *InstallPluginsCo
 // UnsafeInstallPluginsContextFromGlibFull is used to convert raw C.GstInstallPluginsContext pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeInstallPluginsContextFromGlibFull(p unsafe.Pointer) *InstallPluginsContext {
 	wrapped := UnsafeInstallPluginsContextFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.installPluginsContext)), 1)
 	runtime.SetFinalizer(
 		wrapped.installPluginsContext,
 		func (intern *installPluginsContext) {
 			C.gst_install_plugins_context_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped

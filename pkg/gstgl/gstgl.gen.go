@@ -9,6 +9,7 @@ import (
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/core/classdata"
+	"github.com/diamondburned/gotk4/pkg/core/profile"
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
@@ -3098,7 +3099,7 @@ func init() {
 }
 
 func marshalGLBaseFilterInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapGLBaseFilter(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeGLBaseFilterFromGlibNone is used to convert raw GstGLBaseFilter pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -3446,7 +3447,7 @@ func init() {
 }
 
 func marshalGLBaseMemoryAllocatorInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapGLBaseMemoryAllocator(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeGLBaseMemoryAllocatorFromGlibNone is used to convert raw GstGLBaseMemoryAllocator pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -3659,7 +3660,7 @@ func init() {
 }
 
 func marshalGLBaseMixerInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapGLBaseMixer(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeGLBaseMixerFromGlibNone is used to convert raw GstGLBaseMixer pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -3890,7 +3891,7 @@ func init() {
 }
 
 func marshalGLBaseMixerPadInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapGLBaseMixerPad(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeGLBaseMixerPadFromGlibNone is used to convert raw GstGLBaseMixerPad pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -4037,7 +4038,7 @@ func init() {
 }
 
 func marshalGLBaseSrcInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapGLBaseSrc(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeGLBaseSrcFromGlibNone is used to convert raw GstGLBaseSrc pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -4316,7 +4317,7 @@ func init() {
 }
 
 func marshalGLBufferAllocatorInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapGLBufferAllocator(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeGLBufferAllocatorFromGlibNone is used to convert raw GstGLBufferAllocator pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -4447,7 +4448,7 @@ func init() {
 }
 
 func marshalGLBufferPoolInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapGLBufferPool(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeGLBufferPoolFromGlibNone is used to convert raw GstGLBufferPool pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -4657,7 +4658,7 @@ func init() {
 }
 
 func marshalGLColorConvertInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapGLColorConvert(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeGLColorConvertFromGlibNone is used to convert raw GstGLColorConvert pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -5477,7 +5478,7 @@ func init() {
 }
 
 func marshalGLContextInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapGLContext(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeGLContextFromGlibNone is used to convert raw GstGLContext pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -7269,7 +7270,7 @@ func init() {
 }
 
 func marshalGLDisplayInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapGLDisplay(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeGLDisplayFromGlibNone is used to convert raw GstGLDisplay pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -7881,7 +7882,7 @@ func init() {
 }
 
 func marshalGLFilterInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapGLFilter(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeGLFilterFromGlibNone is used to convert raw GstGLFilter pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -8556,7 +8557,7 @@ func init() {
 }
 
 func marshalGLFramebufferInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapGLFramebuffer(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeGLFramebufferFromGlibNone is used to convert raw GstGLFramebuffer pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -8824,7 +8825,7 @@ func init() {
 }
 
 func marshalGLMemoryAllocatorInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapGLMemoryAllocator(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeGLMemoryAllocatorFromGlibNone is used to convert raw GstGLMemoryAllocator pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -8965,7 +8966,7 @@ func init() {
 }
 
 func marshalGLMemoryPBOAllocatorInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapGLMemoryPBOAllocator(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeGLMemoryPBOAllocatorFromGlibNone is used to convert raw GstGLMemoryPBOAllocator pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -9134,7 +9135,7 @@ func init() {
 }
 
 func marshalGLMixerInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapGLMixer(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeGLMixerFromGlibNone is used to convert raw GstGLMixer pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -9455,7 +9456,7 @@ func init() {
 }
 
 func marshalGLMixerPadInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapGLMixerPad(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeGLMixerPadFromGlibNone is used to convert raw GstGLMixerPad pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -9576,7 +9577,7 @@ func init() {
 }
 
 func marshalGLOverlayCompositorInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapGLOverlayCompositor(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeGLOverlayCompositorFromGlibNone is used to convert raw GstGLOverlayCompositor pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -9777,7 +9778,7 @@ func init() {
 }
 
 func marshalGLRenderbufferAllocatorInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapGLRenderbufferAllocator(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeGLRenderbufferAllocatorFromGlibNone is used to convert raw GstGLRenderbufferAllocator pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -9933,7 +9934,7 @@ func init() {
 }
 
 func marshalGLSLStageInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapGLSLStage(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeGLSLStageFromGlibNone is used to convert raw GstGLSLStage pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -10761,7 +10762,7 @@ func init() {
 }
 
 func marshalGLShaderInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapGLShader(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeGLShaderFromGlibNone is used to convert raw GstGLShader pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -12261,7 +12262,7 @@ func init() {
 }
 
 func marshalGLUploadInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapGLUpload(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeGLUploadFromGlibNone is used to convert raw GstGLUpload pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -12719,7 +12720,7 @@ func init() {
 }
 
 func marshalGLViewConvertInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapGLViewConvert(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeGLViewConvertFromGlibNone is used to convert raw GstGLViewConvert pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -13331,7 +13332,7 @@ func init() {
 }
 
 func marshalGLWindowInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapGLWindow(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeGLWindowFromGlibNone is used to convert raw GstGLWindow pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -14449,10 +14450,12 @@ func UnsafeGLAllocationParamsFromGlibBorrow(p unsafe.Pointer) *GLAllocationParam
 func UnsafeGLAllocationParamsFromGlibNone(p unsafe.Pointer) *GLAllocationParams {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLAllocationParamsFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.gLAllocationParams)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLAllocationParams,
 		func (intern *gLAllocationParams) {
 			C.gst_gl_allocation_params_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -14461,10 +14464,12 @@ func UnsafeGLAllocationParamsFromGlibNone(p unsafe.Pointer) *GLAllocationParams 
 // UnsafeGLAllocationParamsFromGlibFull is used to convert raw C.GstGLAllocationParams pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLAllocationParamsFromGlibFull(p unsafe.Pointer) *GLAllocationParams {
 	wrapped := UnsafeGLAllocationParamsFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.gLAllocationParams)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLAllocationParams,
 		func (intern *gLAllocationParams) {
 			C.gst_gl_allocation_params_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -14567,10 +14572,12 @@ func UnsafeGLAsyncDebugFromGlibBorrow(p unsafe.Pointer) *GLAsyncDebug {
 func UnsafeGLAsyncDebugFromGlibNone(p unsafe.Pointer) *GLAsyncDebug {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLAsyncDebugFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.gLAsyncDebug)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLAsyncDebug,
 		func (intern *gLAsyncDebug) {
 			C.gst_gl_async_debug_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -14579,10 +14586,12 @@ func UnsafeGLAsyncDebugFromGlibNone(p unsafe.Pointer) *GLAsyncDebug {
 // UnsafeGLAsyncDebugFromGlibFull is used to convert raw C.GstGLAsyncDebug pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLAsyncDebugFromGlibFull(p unsafe.Pointer) *GLAsyncDebug {
 	wrapped := UnsafeGLAsyncDebugFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.gLAsyncDebug)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLAsyncDebug,
 		func (intern *gLAsyncDebug) {
 			C.gst_gl_async_debug_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -14753,10 +14762,12 @@ func UnsafeGLBaseMemoryFromGlibBorrow(p unsafe.Pointer) *GLBaseMemory {
 func UnsafeGLBaseMemoryFromGlibNone(p unsafe.Pointer) *GLBaseMemory {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLBaseMemoryFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.gLBaseMemory)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLBaseMemory,
 		func (intern *gLBaseMemory) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -14765,10 +14776,12 @@ func UnsafeGLBaseMemoryFromGlibNone(p unsafe.Pointer) *GLBaseMemory {
 // UnsafeGLBaseMemoryFromGlibFull is used to convert raw C.GstGLBaseMemory pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLBaseMemoryFromGlibFull(p unsafe.Pointer) *GLBaseMemory {
 	wrapped := UnsafeGLBaseMemoryFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.gLBaseMemory)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLBaseMemory,
 		func (intern *gLBaseMemory) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15093,10 +15106,12 @@ func UnsafeGLBufferFromGlibBorrow(p unsafe.Pointer) *GLBuffer {
 func UnsafeGLBufferFromGlibNone(p unsafe.Pointer) *GLBuffer {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLBufferFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.gLBuffer)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLBuffer,
 		func (intern *gLBuffer) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15105,10 +15120,12 @@ func UnsafeGLBufferFromGlibNone(p unsafe.Pointer) *GLBuffer {
 // UnsafeGLBufferFromGlibFull is used to convert raw C.GstGLBuffer pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLBufferFromGlibFull(p unsafe.Pointer) *GLBuffer {
 	wrapped := UnsafeGLBufferFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.gLBuffer)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLBuffer,
 		func (intern *gLBuffer) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15178,10 +15195,12 @@ func UnsafeGLBufferAllocationParamsFromGlibBorrow(p unsafe.Pointer) *GLBufferAll
 func UnsafeGLBufferAllocationParamsFromGlibNone(p unsafe.Pointer) *GLBufferAllocationParams {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLBufferAllocationParamsFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.gLBufferAllocationParams)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLBufferAllocationParams,
 		func (intern *gLBufferAllocationParams) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15190,10 +15209,12 @@ func UnsafeGLBufferAllocationParamsFromGlibNone(p unsafe.Pointer) *GLBufferAlloc
 // UnsafeGLBufferAllocationParamsFromGlibFull is used to convert raw C.GstGLBufferAllocationParams pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLBufferAllocationParamsFromGlibFull(p unsafe.Pointer) *GLBufferAllocationParams {
 	wrapped := UnsafeGLBufferAllocationParamsFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.gLBufferAllocationParams)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLBufferAllocationParams,
 		func (intern *gLBufferAllocationParams) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15561,10 +15582,12 @@ func UnsafeGLFuncsFromGlibBorrow(p unsafe.Pointer) *GLFuncs {
 func UnsafeGLFuncsFromGlibNone(p unsafe.Pointer) *GLFuncs {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLFuncsFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.gLFuncs)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLFuncs,
 		func (intern *gLFuncs) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15573,10 +15596,12 @@ func UnsafeGLFuncsFromGlibNone(p unsafe.Pointer) *GLFuncs {
 // UnsafeGLFuncsFromGlibFull is used to convert raw C.GstGLFuncs pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLFuncsFromGlibFull(p unsafe.Pointer) *GLFuncs {
 	wrapped := UnsafeGLFuncsFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.gLFuncs)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLFuncs,
 		func (intern *gLFuncs) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15651,10 +15676,12 @@ func UnsafeGLMemoryFromGlibBorrow(p unsafe.Pointer) *GLMemory {
 func UnsafeGLMemoryFromGlibNone(p unsafe.Pointer) *GLMemory {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLMemoryFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.gLMemory)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLMemory,
 		func (intern *gLMemory) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15663,10 +15690,12 @@ func UnsafeGLMemoryFromGlibNone(p unsafe.Pointer) *GLMemory {
 // UnsafeGLMemoryFromGlibFull is used to convert raw C.GstGLMemory pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLMemoryFromGlibFull(p unsafe.Pointer) *GLMemory {
 	wrapped := UnsafeGLMemoryFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.gLMemory)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLMemory,
 		func (intern *gLMemory) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15982,10 +16011,12 @@ func UnsafeGLMemoryPBOFromGlibBorrow(p unsafe.Pointer) *GLMemoryPBO {
 func UnsafeGLMemoryPBOFromGlibNone(p unsafe.Pointer) *GLMemoryPBO {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLMemoryPBOFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.gLMemoryPBO)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLMemoryPBO,
 		func (intern *gLMemoryPBO) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15994,10 +16025,12 @@ func UnsafeGLMemoryPBOFromGlibNone(p unsafe.Pointer) *GLMemoryPBO {
 // UnsafeGLMemoryPBOFromGlibFull is used to convert raw C.GstGLMemoryPBO pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLMemoryPBOFromGlibFull(p unsafe.Pointer) *GLMemoryPBO {
 	wrapped := UnsafeGLMemoryPBOFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.gLMemoryPBO)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLMemoryPBO,
 		func (intern *gLMemoryPBO) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -16315,10 +16348,12 @@ func UnsafeGLQueryFromGlibBorrow(p unsafe.Pointer) *GLQuery {
 func UnsafeGLQueryFromGlibNone(p unsafe.Pointer) *GLQuery {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLQueryFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.gLQuery)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLQuery,
 		func (intern *gLQuery) {
 			C.gst_gl_query_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -16327,10 +16362,12 @@ func UnsafeGLQueryFromGlibNone(p unsafe.Pointer) *GLQuery {
 // UnsafeGLQueryFromGlibFull is used to convert raw C.GstGLQuery pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLQueryFromGlibFull(p unsafe.Pointer) *GLQuery {
 	wrapped := UnsafeGLQueryFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.gLQuery)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLQuery,
 		func (intern *gLQuery) {
 			C.gst_gl_query_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -16487,10 +16524,12 @@ func UnsafeGLRenderbufferFromGlibBorrow(p unsafe.Pointer) *GLRenderbuffer {
 func UnsafeGLRenderbufferFromGlibNone(p unsafe.Pointer) *GLRenderbuffer {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLRenderbufferFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.gLRenderbuffer)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLRenderbuffer,
 		func (intern *gLRenderbuffer) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -16499,10 +16538,12 @@ func UnsafeGLRenderbufferFromGlibNone(p unsafe.Pointer) *GLRenderbuffer {
 // UnsafeGLRenderbufferFromGlibFull is used to convert raw C.GstGLRenderbuffer pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLRenderbufferFromGlibFull(p unsafe.Pointer) *GLRenderbuffer {
 	wrapped := UnsafeGLRenderbufferFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.gLRenderbuffer)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLRenderbuffer,
 		func (intern *gLRenderbuffer) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -16658,10 +16699,12 @@ func UnsafeGLRenderbufferAllocationParamsFromGlibBorrow(p unsafe.Pointer) *GLRen
 func UnsafeGLRenderbufferAllocationParamsFromGlibNone(p unsafe.Pointer) *GLRenderbufferAllocationParams {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLRenderbufferAllocationParamsFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.gLRenderbufferAllocationParams)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLRenderbufferAllocationParams,
 		func (intern *gLRenderbufferAllocationParams) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -16670,10 +16713,12 @@ func UnsafeGLRenderbufferAllocationParamsFromGlibNone(p unsafe.Pointer) *GLRende
 // UnsafeGLRenderbufferAllocationParamsFromGlibFull is used to convert raw C.GstGLRenderbufferAllocationParams pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLRenderbufferAllocationParamsFromGlibFull(p unsafe.Pointer) *GLRenderbufferAllocationParams {
 	wrapped := UnsafeGLRenderbufferAllocationParamsFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.gLRenderbufferAllocationParams)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLRenderbufferAllocationParams,
 		func (intern *gLRenderbufferAllocationParams) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -16883,10 +16928,12 @@ func UnsafeGLSyncMetaFromGlibBorrow(p unsafe.Pointer) *GLSyncMeta {
 func UnsafeGLSyncMetaFromGlibNone(p unsafe.Pointer) *GLSyncMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLSyncMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.gLSyncMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLSyncMeta,
 		func (intern *gLSyncMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -16895,10 +16942,12 @@ func UnsafeGLSyncMetaFromGlibNone(p unsafe.Pointer) *GLSyncMeta {
 // UnsafeGLSyncMetaFromGlibFull is used to convert raw C.GstGLSyncMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLSyncMetaFromGlibFull(p unsafe.Pointer) *GLSyncMeta {
 	wrapped := UnsafeGLSyncMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.gLSyncMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLSyncMeta,
 		func (intern *gLSyncMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -17076,10 +17125,12 @@ func UnsafeGLVideoAllocationParamsFromGlibBorrow(p unsafe.Pointer) *GLVideoAlloc
 func UnsafeGLVideoAllocationParamsFromGlibNone(p unsafe.Pointer) *GLVideoAllocationParams {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeGLVideoAllocationParamsFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.gLVideoAllocationParams)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLVideoAllocationParams,
 		func (intern *gLVideoAllocationParams) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -17088,10 +17139,12 @@ func UnsafeGLVideoAllocationParamsFromGlibNone(p unsafe.Pointer) *GLVideoAllocat
 // UnsafeGLVideoAllocationParamsFromGlibFull is used to convert raw C.GstGLVideoAllocationParams pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeGLVideoAllocationParamsFromGlibFull(p unsafe.Pointer) *GLVideoAllocationParams {
 	wrapped := UnsafeGLVideoAllocationParamsFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.gLVideoAllocationParams)), 1)
 	runtime.SetFinalizer(
 		wrapped.gLVideoAllocationParams,
 		func (intern *gLVideoAllocationParams) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped

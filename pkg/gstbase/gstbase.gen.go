@@ -9,6 +9,7 @@ import (
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/core/classdata"
+	"github.com/diamondburned/gotk4/pkg/core/profile"
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
@@ -1818,7 +1819,7 @@ func init() {
 }
 
 func marshalAdapterInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapAdapter(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeAdapterFromGlibNone is used to convert raw GstAdapter pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -3409,7 +3410,7 @@ func init() {
 }
 
 func marshalAggregatorInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapAggregator(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeAggregatorFromGlibNone is used to convert raw GstAggregator pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -5745,7 +5746,7 @@ func init() {
 }
 
 func marshalAggregatorPadInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapAggregatorPad(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeAggregatorPadFromGlibNone is used to convert raw GstAggregatorPad pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -6724,7 +6725,7 @@ func init() {
 }
 
 func marshalBaseParseInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapBaseParse(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeBaseParseFromGlibNone is used to convert raw GstBaseParse pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -8985,7 +8986,7 @@ func init() {
 }
 
 func marshalBaseSinkInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapBaseSink(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeBaseSinkFromGlibNone is used to convert raw GstBaseSink pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -11832,7 +11833,7 @@ func init() {
 }
 
 func marshalBaseSrcInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapBaseSrc(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeBaseSrcFromGlibNone is used to convert raw GstBaseSrc pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -14456,7 +14457,7 @@ func init() {
 }
 
 func marshalBaseTransformInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapBaseTransform(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeBaseTransformFromGlibNone is used to convert raw GstBaseTransform pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -17005,7 +17006,7 @@ func init() {
 }
 
 func marshalCollectPadsInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapCollectPads(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeCollectPadsFromGlibNone is used to convert raw GstCollectPads pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -17821,7 +17822,7 @@ func init() {
 }
 
 func marshalDataQueueInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapDataQueue(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeDataQueueFromGlibNone is used to convert raw GstDataQueue pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -18059,7 +18060,7 @@ func init() {
 }
 
 func marshalPushSrcInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapPushSrc(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafePushSrcFromGlibNone is used to convert raw GstPushSrc pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -18470,10 +18471,12 @@ func UnsafeBaseParseFrameFromGlibBorrow(p unsafe.Pointer) *BaseParseFrame {
 func UnsafeBaseParseFrameFromGlibNone(p unsafe.Pointer) *BaseParseFrame {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeBaseParseFrameFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.baseParseFrame)), 1)
 	runtime.SetFinalizer(
 		wrapped.baseParseFrame,
 		func (intern *baseParseFrame) {
 			C.gst_base_parse_frame_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -18482,10 +18485,12 @@ func UnsafeBaseParseFrameFromGlibNone(p unsafe.Pointer) *BaseParseFrame {
 // UnsafeBaseParseFrameFromGlibFull is used to convert raw C.GstBaseParseFrame pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeBaseParseFrameFromGlibFull(p unsafe.Pointer) *BaseParseFrame {
 	wrapped := UnsafeBaseParseFrameFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.baseParseFrame)), 1)
 	runtime.SetFinalizer(
 		wrapped.baseParseFrame,
 		func (intern *baseParseFrame) {
 			C.gst_base_parse_frame_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -18740,10 +18745,12 @@ func UnsafeBitReaderFromGlibBorrow(p unsafe.Pointer) *BitReader {
 func UnsafeBitReaderFromGlibNone(p unsafe.Pointer) *BitReader {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeBitReaderFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.bitReader)), 1)
 	runtime.SetFinalizer(
 		wrapped.bitReader,
 		func (intern *bitReader) {
 			C.gst_bit_reader_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -18752,10 +18759,12 @@ func UnsafeBitReaderFromGlibNone(p unsafe.Pointer) *BitReader {
 // UnsafeBitReaderFromGlibFull is used to convert raw C.GstBitReader pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeBitReaderFromGlibFull(p unsafe.Pointer) *BitReader {
 	wrapped := UnsafeBitReaderFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.bitReader)), 1)
 	runtime.SetFinalizer(
 		wrapped.bitReader,
 		func (intern *bitReader) {
 			C.gst_bit_reader_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -19275,10 +19284,12 @@ func UnsafeBitWriterFromGlibBorrow(p unsafe.Pointer) *BitWriter {
 func UnsafeBitWriterFromGlibNone(p unsafe.Pointer) *BitWriter {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeBitWriterFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.bitWriter)), 1)
 	runtime.SetFinalizer(
 		wrapped.bitWriter,
 		func (intern *bitWriter) {
 			C.gst_bit_writer_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -19287,10 +19298,12 @@ func UnsafeBitWriterFromGlibNone(p unsafe.Pointer) *BitWriter {
 // UnsafeBitWriterFromGlibFull is used to convert raw C.GstBitWriter pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeBitWriterFromGlibFull(p unsafe.Pointer) *BitWriter {
 	wrapped := UnsafeBitWriterFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.bitWriter)), 1)
 	runtime.SetFinalizer(
 		wrapped.bitWriter,
 		func (intern *bitWriter) {
 			C.gst_bit_writer_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -19657,10 +19670,12 @@ func UnsafeByteReaderFromGlibBorrow(p unsafe.Pointer) *ByteReader {
 func UnsafeByteReaderFromGlibNone(p unsafe.Pointer) *ByteReader {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeByteReaderFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.byteReader)), 1)
 	runtime.SetFinalizer(
 		wrapped.byteReader,
 		func (intern *byteReader) {
 			C.gst_byte_reader_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -19669,10 +19684,12 @@ func UnsafeByteReaderFromGlibNone(p unsafe.Pointer) *ByteReader {
 // UnsafeByteReaderFromGlibFull is used to convert raw C.GstByteReader pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeByteReaderFromGlibFull(p unsafe.Pointer) *ByteReader {
 	wrapped := UnsafeByteReaderFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.byteReader)), 1)
 	runtime.SetFinalizer(
 		wrapped.byteReader,
 		func (intern *byteReader) {
 			C.gst_byte_reader_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21516,10 +21533,12 @@ func UnsafeByteWriterFromGlibBorrow(p unsafe.Pointer) *ByteWriter {
 func UnsafeByteWriterFromGlibNone(p unsafe.Pointer) *ByteWriter {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeByteWriterFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.byteWriter)), 1)
 	runtime.SetFinalizer(
 		wrapped.byteWriter,
 		func (intern *byteWriter) {
 			C.gst_byte_writer_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -21528,10 +21547,12 @@ func UnsafeByteWriterFromGlibNone(p unsafe.Pointer) *ByteWriter {
 // UnsafeByteWriterFromGlibFull is used to convert raw C.GstByteWriter pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeByteWriterFromGlibFull(p unsafe.Pointer) *ByteWriter {
 	wrapped := UnsafeByteWriterFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.byteWriter)), 1)
 	runtime.SetFinalizer(
 		wrapped.byteWriter,
 		func (intern *byteWriter) {
 			C.gst_byte_writer_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22713,10 +22734,12 @@ func UnsafeCollectDataFromGlibBorrow(p unsafe.Pointer) *CollectData {
 func UnsafeCollectDataFromGlibNone(p unsafe.Pointer) *CollectData {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeCollectDataFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.collectData)), 1)
 	runtime.SetFinalizer(
 		wrapped.collectData,
 		func (intern *collectData) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22725,10 +22748,12 @@ func UnsafeCollectDataFromGlibNone(p unsafe.Pointer) *CollectData {
 // UnsafeCollectDataFromGlibFull is used to convert raw C.GstCollectData pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeCollectDataFromGlibFull(p unsafe.Pointer) *CollectData {
 	wrapped := UnsafeCollectDataFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.collectData)), 1)
 	runtime.SetFinalizer(
 		wrapped.collectData,
 		func (intern *collectData) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22897,10 +22922,12 @@ func UnsafeFlowCombinerFromGlibBorrow(p unsafe.Pointer) *FlowCombiner {
 func UnsafeFlowCombinerFromGlibNone(p unsafe.Pointer) *FlowCombiner {
 	C.gst_flow_combiner_ref((*C.GstFlowCombiner)(p))
 	wrapped := UnsafeFlowCombinerFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.flowCombiner)), 1)
 	runtime.SetFinalizer(
 		wrapped.flowCombiner,
 		func (intern *flowCombiner) {
 			C.gst_flow_combiner_unref(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -22909,10 +22936,12 @@ func UnsafeFlowCombinerFromGlibNone(p unsafe.Pointer) *FlowCombiner {
 // UnsafeFlowCombinerFromGlibFull is used to convert raw C.GstFlowCombiner pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeFlowCombinerFromGlibFull(p unsafe.Pointer) *FlowCombiner {
 	wrapped := UnsafeFlowCombinerFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.flowCombiner)), 1)
 	runtime.SetFinalizer(
 		wrapped.flowCombiner,
 		func (intern *flowCombiner) {
 			C.gst_flow_combiner_unref(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped

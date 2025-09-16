@@ -9,6 +9,7 @@ import (
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/core/classdata"
+	"github.com/diamondburned/gotk4/pkg/core/profile"
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
@@ -3317,7 +3318,7 @@ func unsafeWrapStreamVolume(base *gobject.ObjectInstance) *StreamVolumeInstance 
 }
 
 func marshalStreamVolumeInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapStreamVolume(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 func (s *StreamVolumeInstance) upcastToGstStreamVolume() *StreamVolumeInstance {
@@ -3613,7 +3614,7 @@ func init() {
 }
 
 func marshalAudioAggregatorInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapAudioAggregator(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeAudioAggregatorFromGlibNone is used to convert raw GstAudioAggregator pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -3951,7 +3952,7 @@ func init() {
 }
 
 func marshalAudioAggregatorPadInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapAudioAggregatorPad(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeAudioAggregatorPadFromGlibNone is used to convert raw GstAudioAggregatorPad pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -4332,7 +4333,7 @@ func init() {
 }
 
 func marshalAudioBaseSinkInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapAudioBaseSink(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeAudioBaseSinkFromGlibNone is used to convert raw GstAudioBaseSink pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -4936,7 +4937,7 @@ func init() {
 }
 
 func marshalAudioBaseSrcInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapAudioBaseSrc(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeAudioBaseSrcFromGlibNone is used to convert raw GstAudioBaseSrc pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -5330,7 +5331,7 @@ func init() {
 }
 
 func marshalAudioCdSrcInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapAudioCdSrc(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeAudioCdSrcFromGlibNone is used to convert raw GstAudioCdSrc pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -5699,7 +5700,7 @@ func init() {
 }
 
 func marshalAudioClockInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapAudioClock(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeAudioClockFromGlibNone is used to convert raw GstAudioClock pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -6626,7 +6627,7 @@ func init() {
 }
 
 func marshalAudioDecoderInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapAudioDecoder(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeAudioDecoderFromGlibNone is used to convert raw GstAudioDecoder pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -9483,7 +9484,7 @@ func init() {
 }
 
 func marshalAudioEncoderInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapAudioEncoder(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeAudioEncoderFromGlibNone is used to convert raw GstAudioEncoder pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -11564,7 +11565,7 @@ func init() {
 }
 
 func marshalAudioFilterInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapAudioFilter(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeAudioFilterFromGlibNone is used to convert raw GstAudioFilter pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -12175,7 +12176,7 @@ func init() {
 }
 
 func marshalAudioRingBufferInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapAudioRingBuffer(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeAudioRingBufferFromGlibNone is used to convert raw GstAudioRingBuffer pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -13877,7 +13878,7 @@ func init() {
 }
 
 func marshalAudioSinkInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapAudioSink(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeAudioSinkFromGlibNone is used to convert raw GstAudioSink pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -14518,7 +14519,7 @@ func init() {
 }
 
 func marshalAudioSrcInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapAudioSrc(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeAudioSrcFromGlibNone is used to convert raw GstAudioSrc pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -14971,7 +14972,7 @@ func init() {
 }
 
 func marshalAudioAggregatorConvertPadInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapAudioAggregatorConvertPad(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeAudioAggregatorConvertPadFromGlibNone is used to convert raw GstAudioAggregatorConvertPad pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -15267,10 +15268,12 @@ func UnsafeAudioBufferFromGlibBorrow(p unsafe.Pointer) *AudioBuffer {
 func UnsafeAudioBufferFromGlibNone(p unsafe.Pointer) *AudioBuffer {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioBufferFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.audioBuffer)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioBuffer,
 		func (intern *audioBuffer) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15279,10 +15282,12 @@ func UnsafeAudioBufferFromGlibNone(p unsafe.Pointer) *AudioBuffer {
 // UnsafeAudioBufferFromGlibFull is used to convert raw C.GstAudioBuffer pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioBufferFromGlibFull(p unsafe.Pointer) *AudioBuffer {
 	wrapped := UnsafeAudioBufferFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.audioBuffer)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioBuffer,
 		func (intern *audioBuffer) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15605,10 +15610,12 @@ func UnsafeAudioCdSrcTrackFromGlibBorrow(p unsafe.Pointer) *AudioCdSrcTrack {
 func UnsafeAudioCdSrcTrackFromGlibNone(p unsafe.Pointer) *AudioCdSrcTrack {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioCdSrcTrackFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.audioCdSrcTrack)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioCdSrcTrack,
 		func (intern *audioCdSrcTrack) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15617,10 +15624,12 @@ func UnsafeAudioCdSrcTrackFromGlibNone(p unsafe.Pointer) *AudioCdSrcTrack {
 // UnsafeAudioCdSrcTrackFromGlibFull is used to convert raw C.GstAudioCdSrcTrack pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioCdSrcTrackFromGlibFull(p unsafe.Pointer) *AudioCdSrcTrack {
 	wrapped := UnsafeAudioCdSrcTrackFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.audioCdSrcTrack)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioCdSrcTrack,
 		func (intern *audioCdSrcTrack) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15666,10 +15675,12 @@ func UnsafeAudioChannelMixerFromGlibBorrow(p unsafe.Pointer) *AudioChannelMixer 
 func UnsafeAudioChannelMixerFromGlibNone(p unsafe.Pointer) *AudioChannelMixer {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioChannelMixerFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.audioChannelMixer)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioChannelMixer,
 		func (intern *audioChannelMixer) {
 			C.gst_audio_channel_mixer_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15678,10 +15689,12 @@ func UnsafeAudioChannelMixerFromGlibNone(p unsafe.Pointer) *AudioChannelMixer {
 // UnsafeAudioChannelMixerFromGlibFull is used to convert raw C.GstAudioChannelMixer pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioChannelMixerFromGlibFull(p unsafe.Pointer) *AudioChannelMixer {
 	wrapped := UnsafeAudioChannelMixerFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.audioChannelMixer)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioChannelMixer,
 		func (intern *audioChannelMixer) {
 			C.gst_audio_channel_mixer_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15774,10 +15787,12 @@ func UnsafeAudioClippingMetaFromGlibBorrow(p unsafe.Pointer) *AudioClippingMeta 
 func UnsafeAudioClippingMetaFromGlibNone(p unsafe.Pointer) *AudioClippingMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioClippingMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.audioClippingMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioClippingMeta,
 		func (intern *audioClippingMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15786,10 +15801,12 @@ func UnsafeAudioClippingMetaFromGlibNone(p unsafe.Pointer) *AudioClippingMeta {
 // UnsafeAudioClippingMetaFromGlibFull is used to convert raw C.GstAudioClippingMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioClippingMetaFromGlibFull(p unsafe.Pointer) *AudioClippingMeta {
 	wrapped := UnsafeAudioClippingMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.audioClippingMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioClippingMeta,
 		func (intern *audioClippingMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15914,10 +15931,12 @@ func UnsafeAudioConverterFromGlibBorrow(p unsafe.Pointer) *AudioConverter {
 func UnsafeAudioConverterFromGlibNone(p unsafe.Pointer) *AudioConverter {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioConverterFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.audioConverter)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioConverter,
 		func (intern *audioConverter) {
 			C.gst_audio_converter_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -15926,10 +15945,12 @@ func UnsafeAudioConverterFromGlibNone(p unsafe.Pointer) *AudioConverter {
 // UnsafeAudioConverterFromGlibFull is used to convert raw C.GstAudioConverter pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioConverterFromGlibFull(p unsafe.Pointer) *AudioConverter {
 	wrapped := UnsafeAudioConverterFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.audioConverter)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioConverter,
 		func (intern *audioConverter) {
 			C.gst_audio_converter_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -16310,10 +16331,12 @@ func UnsafeAudioDownmixMetaFromGlibBorrow(p unsafe.Pointer) *AudioDownmixMeta {
 func UnsafeAudioDownmixMetaFromGlibNone(p unsafe.Pointer) *AudioDownmixMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioDownmixMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.audioDownmixMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioDownmixMeta,
 		func (intern *audioDownmixMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -16322,10 +16345,12 @@ func UnsafeAudioDownmixMetaFromGlibNone(p unsafe.Pointer) *AudioDownmixMeta {
 // UnsafeAudioDownmixMetaFromGlibFull is used to convert raw C.GstAudioDownmixMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioDownmixMetaFromGlibFull(p unsafe.Pointer) *AudioDownmixMeta {
 	wrapped := UnsafeAudioDownmixMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.audioDownmixMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioDownmixMeta,
 		func (intern *audioDownmixMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -16510,10 +16535,12 @@ func UnsafeAudioFormatInfoFromGlibBorrow(p unsafe.Pointer) *AudioFormatInfo {
 func UnsafeAudioFormatInfoFromGlibNone(p unsafe.Pointer) *AudioFormatInfo {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioFormatInfoFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.audioFormatInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioFormatInfo,
 		func (intern *audioFormatInfo) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -16522,10 +16549,12 @@ func UnsafeAudioFormatInfoFromGlibNone(p unsafe.Pointer) *AudioFormatInfo {
 // UnsafeAudioFormatInfoFromGlibFull is used to convert raw C.GstAudioFormatInfo pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioFormatInfoFromGlibFull(p unsafe.Pointer) *AudioFormatInfo {
 	wrapped := UnsafeAudioFormatInfoFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.audioFormatInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioFormatInfo,
 		func (intern *audioFormatInfo) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -16591,10 +16620,12 @@ func UnsafeAudioInfoFromGlibBorrow(p unsafe.Pointer) *AudioInfo {
 func UnsafeAudioInfoFromGlibNone(p unsafe.Pointer) *AudioInfo {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioInfoFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.audioInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioInfo,
 		func (intern *audioInfo) {
 			C.gst_audio_info_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -16603,10 +16634,12 @@ func UnsafeAudioInfoFromGlibNone(p unsafe.Pointer) *AudioInfo {
 // UnsafeAudioInfoFromGlibFull is used to convert raw C.GstAudioInfo pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioInfoFromGlibFull(p unsafe.Pointer) *AudioInfo {
 	wrapped := UnsafeAudioInfoFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.audioInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioInfo,
 		func (intern *audioInfo) {
 			C.gst_audio_info_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -16919,10 +16952,12 @@ func UnsafeAudioLevelMetaFromGlibBorrow(p unsafe.Pointer) *AudioLevelMeta {
 func UnsafeAudioLevelMetaFromGlibNone(p unsafe.Pointer) *AudioLevelMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioLevelMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.audioLevelMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioLevelMeta,
 		func (intern *audioLevelMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -16931,10 +16966,12 @@ func UnsafeAudioLevelMetaFromGlibNone(p unsafe.Pointer) *AudioLevelMeta {
 // UnsafeAudioLevelMetaFromGlibFull is used to convert raw C.GstAudioLevelMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioLevelMetaFromGlibFull(p unsafe.Pointer) *AudioLevelMeta {
 	wrapped := UnsafeAudioLevelMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.audioLevelMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioLevelMeta,
 		func (intern *audioLevelMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -17003,10 +17040,12 @@ func UnsafeAudioMetaFromGlibBorrow(p unsafe.Pointer) *AudioMeta {
 func UnsafeAudioMetaFromGlibNone(p unsafe.Pointer) *AudioMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.audioMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioMeta,
 		func (intern *audioMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -17015,10 +17054,12 @@ func UnsafeAudioMetaFromGlibNone(p unsafe.Pointer) *AudioMeta {
 // UnsafeAudioMetaFromGlibFull is used to convert raw C.GstAudioMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioMetaFromGlibFull(p unsafe.Pointer) *AudioMeta {
 	wrapped := UnsafeAudioMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.audioMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioMeta,
 		func (intern *audioMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -17081,10 +17122,12 @@ func UnsafeAudioQuantizeFromGlibBorrow(p unsafe.Pointer) *AudioQuantize {
 func UnsafeAudioQuantizeFromGlibNone(p unsafe.Pointer) *AudioQuantize {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioQuantizeFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.audioQuantize)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioQuantize,
 		func (intern *audioQuantize) {
 			C.gst_audio_quantize_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -17093,10 +17136,12 @@ func UnsafeAudioQuantizeFromGlibNone(p unsafe.Pointer) *AudioQuantize {
 // UnsafeAudioQuantizeFromGlibFull is used to convert raw C.GstAudioQuantize pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioQuantizeFromGlibFull(p unsafe.Pointer) *AudioQuantize {
 	wrapped := UnsafeAudioQuantizeFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.audioQuantize)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioQuantize,
 		func (intern *audioQuantize) {
 			C.gst_audio_quantize_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -17158,10 +17203,12 @@ func UnsafeAudioResamplerFromGlibBorrow(p unsafe.Pointer) *AudioResampler {
 func UnsafeAudioResamplerFromGlibNone(p unsafe.Pointer) *AudioResampler {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioResamplerFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.audioResampler)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioResampler,
 		func (intern *audioResampler) {
 			C.gst_audio_resampler_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -17170,10 +17217,12 @@ func UnsafeAudioResamplerFromGlibNone(p unsafe.Pointer) *AudioResampler {
 // UnsafeAudioResamplerFromGlibFull is used to convert raw C.GstAudioResampler pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioResamplerFromGlibFull(p unsafe.Pointer) *AudioResampler {
 	wrapped := UnsafeAudioResamplerFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.audioResampler)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioResampler,
 		func (intern *audioResampler) {
 			C.gst_audio_resampler_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -17493,10 +17542,12 @@ func UnsafeAudioRingBufferSpecFromGlibBorrow(p unsafe.Pointer) *AudioRingBufferS
 func UnsafeAudioRingBufferSpecFromGlibNone(p unsafe.Pointer) *AudioRingBufferSpec {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioRingBufferSpecFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.audioRingBufferSpec)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioRingBufferSpec,
 		func (intern *audioRingBufferSpec) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -17505,10 +17556,12 @@ func UnsafeAudioRingBufferSpecFromGlibNone(p unsafe.Pointer) *AudioRingBufferSpe
 // UnsafeAudioRingBufferSpecFromGlibFull is used to convert raw C.GstAudioRingBufferSpec pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioRingBufferSpecFromGlibFull(p unsafe.Pointer) *AudioRingBufferSpec {
 	wrapped := UnsafeAudioRingBufferSpecFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.audioRingBufferSpec)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioRingBufferSpec,
 		func (intern *audioRingBufferSpec) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -17592,10 +17645,12 @@ func UnsafeAudioSinkClassExtensionFromGlibBorrow(p unsafe.Pointer) *AudioSinkCla
 func UnsafeAudioSinkClassExtensionFromGlibNone(p unsafe.Pointer) *AudioSinkClassExtension {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioSinkClassExtensionFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.audioSinkClassExtension)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioSinkClassExtension,
 		func (intern *audioSinkClassExtension) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -17604,10 +17659,12 @@ func UnsafeAudioSinkClassExtensionFromGlibNone(p unsafe.Pointer) *AudioSinkClass
 // UnsafeAudioSinkClassExtensionFromGlibFull is used to convert raw C.GstAudioSinkClassExtension pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioSinkClassExtensionFromGlibFull(p unsafe.Pointer) *AudioSinkClassExtension {
 	wrapped := UnsafeAudioSinkClassExtensionFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.audioSinkClassExtension)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioSinkClassExtension,
 		func (intern *audioSinkClassExtension) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -17716,10 +17773,12 @@ func UnsafeAudioStreamAlignFromGlibBorrow(p unsafe.Pointer) *AudioStreamAlign {
 func UnsafeAudioStreamAlignFromGlibNone(p unsafe.Pointer) *AudioStreamAlign {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioStreamAlignFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.audioStreamAlign)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioStreamAlign,
 		func (intern *audioStreamAlign) {
 			C.gst_audio_stream_align_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -17728,10 +17787,12 @@ func UnsafeAudioStreamAlignFromGlibNone(p unsafe.Pointer) *AudioStreamAlign {
 // UnsafeAudioStreamAlignFromGlibFull is used to convert raw C.GstAudioStreamAlign pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioStreamAlignFromGlibFull(p unsafe.Pointer) *AudioStreamAlign {
 	wrapped := UnsafeAudioStreamAlignFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.audioStreamAlign)), 1)
 	runtime.SetFinalizer(
 		wrapped.audioStreamAlign,
 		func (intern *audioStreamAlign) {
 			C.gst_audio_stream_align_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -18168,10 +18229,12 @@ func UnsafeDsdInfoFromGlibBorrow(p unsafe.Pointer) *DsdInfo {
 func UnsafeDsdInfoFromGlibNone(p unsafe.Pointer) *DsdInfo {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeDsdInfoFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.dsdInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.dsdInfo,
 		func (intern *dsdInfo) {
 			C.gst_dsd_info_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -18180,10 +18243,12 @@ func UnsafeDsdInfoFromGlibNone(p unsafe.Pointer) *DsdInfo {
 // UnsafeDsdInfoFromGlibFull is used to convert raw C.GstDsdInfo pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeDsdInfoFromGlibFull(p unsafe.Pointer) *DsdInfo {
 	wrapped := UnsafeDsdInfoFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.dsdInfo)), 1)
 	runtime.SetFinalizer(
 		wrapped.dsdInfo,
 		func (intern *dsdInfo) {
 			C.gst_dsd_info_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -18465,10 +18530,12 @@ func UnsafeDsdPlaneOffsetMetaFromGlibBorrow(p unsafe.Pointer) *DsdPlaneOffsetMet
 func UnsafeDsdPlaneOffsetMetaFromGlibNone(p unsafe.Pointer) *DsdPlaneOffsetMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeDsdPlaneOffsetMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.dsdPlaneOffsetMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.dsdPlaneOffsetMeta,
 		func (intern *dsdPlaneOffsetMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -18477,10 +18544,12 @@ func UnsafeDsdPlaneOffsetMetaFromGlibNone(p unsafe.Pointer) *DsdPlaneOffsetMeta 
 // UnsafeDsdPlaneOffsetMetaFromGlibFull is used to convert raw C.GstDsdPlaneOffsetMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeDsdPlaneOffsetMetaFromGlibFull(p unsafe.Pointer) *DsdPlaneOffsetMeta {
 	wrapped := UnsafeDsdPlaneOffsetMetaFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.dsdPlaneOffsetMeta)), 1)
 	runtime.SetFinalizer(
 		wrapped.dsdPlaneOffsetMeta,
 		func (intern *dsdPlaneOffsetMeta) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -18543,10 +18612,12 @@ func UnsafeStreamVolumeInterfaceFromGlibBorrow(p unsafe.Pointer) *StreamVolumeIn
 func UnsafeStreamVolumeInterfaceFromGlibNone(p unsafe.Pointer) *StreamVolumeInterface {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeStreamVolumeInterfaceFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.streamVolumeInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.streamVolumeInterface,
 		func (intern *streamVolumeInterface) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -18555,10 +18626,12 @@ func UnsafeStreamVolumeInterfaceFromGlibNone(p unsafe.Pointer) *StreamVolumeInte
 // UnsafeStreamVolumeInterfaceFromGlibFull is used to convert raw C.GstStreamVolumeInterface pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeStreamVolumeInterfaceFromGlibFull(p unsafe.Pointer) *StreamVolumeInterface {
 	wrapped := UnsafeStreamVolumeInterfaceFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.streamVolumeInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.streamVolumeInterface,
 		func (intern *streamVolumeInterface) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped

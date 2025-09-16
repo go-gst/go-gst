@@ -7,6 +7,7 @@ import (
 	"runtime"
 	"unsafe"
 
+	"github.com/diamondburned/gotk4/pkg/core/profile"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
@@ -208,7 +209,7 @@ func init() {
 }
 
 func marshalARGBControlBindingInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapARGBControlBinding(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeARGBControlBindingFromGlibNone is used to convert raw GstARGBControlBinding pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -374,7 +375,7 @@ func init() {
 }
 
 func marshalDirectControlBindingInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapDirectControlBinding(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeDirectControlBindingFromGlibNone is used to convert raw GstDirectControlBinding pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -569,7 +570,7 @@ func init() {
 }
 
 func marshalLFOControlSourceInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapLFOControlSource(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeLFOControlSourceFromGlibNone is used to convert raw GstLFOControlSource pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -700,7 +701,7 @@ func init() {
 }
 
 func marshalProxyControlBindingInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapProxyControlBinding(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeProxyControlBindingFromGlibNone is used to convert raw GstProxyControlBinding pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -937,7 +938,7 @@ func init() {
 }
 
 func marshalTimedValueControlSourceInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapTimedValueControlSource(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeTimedValueControlSourceFromGlibNone is used to convert raw GstTimedValueControlSource pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -1250,7 +1251,7 @@ func init() {
 }
 
 func marshalTriggerControlSourceInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapTriggerControlSource(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeTriggerControlSourceFromGlibNone is used to convert raw GstTriggerControlSource pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -1390,7 +1391,7 @@ func init() {
 }
 
 func marshalInterpolationControlSourceInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapInterpolationControlSource(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeInterpolationControlSourceFromGlibNone is used to convert raw GstInterpolationControlSource pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -1559,10 +1560,12 @@ func UnsafeControlPointFromGlibBorrow(p unsafe.Pointer) *ControlPoint {
 func UnsafeControlPointFromGlibNone(p unsafe.Pointer) *ControlPoint {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeControlPointFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.controlPoint)), 1)
 	runtime.SetFinalizer(
 		wrapped.controlPoint,
 		func (intern *controlPoint) {
 			C.gst_control_point_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -1571,10 +1574,12 @@ func UnsafeControlPointFromGlibNone(p unsafe.Pointer) *ControlPoint {
 // UnsafeControlPointFromGlibFull is used to convert raw C.GstControlPoint pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeControlPointFromGlibFull(p unsafe.Pointer) *ControlPoint {
 	wrapped := UnsafeControlPointFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.controlPoint)), 1)
 	runtime.SetFinalizer(
 		wrapped.controlPoint,
 		func (intern *controlPoint) {
 			C.gst_control_point_free(intern.native)
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped

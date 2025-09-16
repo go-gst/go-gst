@@ -7,6 +7,7 @@ import (
 	"strings"
 	"unsafe"
 
+	"github.com/diamondburned/gotk4/pkg/core/profile"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
 )
@@ -334,7 +335,7 @@ func unsafeWrapPhysMemoryAllocator(base *gobject.ObjectInstance) *PhysMemoryAllo
 }
 
 func marshalPhysMemoryAllocatorInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapPhysMemoryAllocator(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 func (p *PhysMemoryAllocatorInstance) upcastToGstPhysMemoryAllocator() *PhysMemoryAllocatorInstance {
@@ -445,7 +446,7 @@ func init() {
 }
 
 func marshalDRMDumbAllocatorInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapDRMDumbAllocator(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeDRMDumbAllocatorFromGlibNone is used to convert raw GstDRMDumbAllocator pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -690,7 +691,7 @@ func init() {
 }
 
 func marshalFdAllocatorInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapFdAllocator(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeFdAllocatorFromGlibNone is used to convert raw GstFdAllocator pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -872,7 +873,7 @@ func init() {
 }
 
 func marshalShmAllocatorInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapShmAllocator(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeShmAllocatorFromGlibNone is used to convert raw GstShmAllocator pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -1017,7 +1018,7 @@ func init() {
 }
 
 func marshalDmaBufAllocatorInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapDmaBufAllocator(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeDmaBufAllocatorFromGlibNone is used to convert raw GstDmaBufAllocator pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -1321,10 +1322,12 @@ func UnsafePhysMemoryAllocatorInterfaceFromGlibBorrow(p unsafe.Pointer) *PhysMem
 func UnsafePhysMemoryAllocatorInterfaceFromGlibNone(p unsafe.Pointer) *PhysMemoryAllocatorInterface {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafePhysMemoryAllocatorInterfaceFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.physMemoryAllocatorInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.physMemoryAllocatorInterface,
 		func (intern *physMemoryAllocatorInterface) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -1333,10 +1336,12 @@ func UnsafePhysMemoryAllocatorInterfaceFromGlibNone(p unsafe.Pointer) *PhysMemor
 // UnsafePhysMemoryAllocatorInterfaceFromGlibFull is used to convert raw C.GstPhysMemoryAllocatorInterface pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafePhysMemoryAllocatorInterfaceFromGlibFull(p unsafe.Pointer) *PhysMemoryAllocatorInterface {
 	wrapped := UnsafePhysMemoryAllocatorInterfaceFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.physMemoryAllocatorInterface)), 1)
 	runtime.SetFinalizer(
 		wrapped.physMemoryAllocatorInterface,
 		func (intern *physMemoryAllocatorInterface) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped

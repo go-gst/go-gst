@@ -806,7 +806,7 @@ func init() {
 }
 
 func marshalAppSinkInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapAppSink(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeAppSinkFromGlibNone is used to convert raw GstAppSink pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -2696,7 +2696,7 @@ func init() {
 }
 
 func marshalAppSrcInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapAppSrc(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeAppSrcFromGlibNone is used to convert raw GstAppSrc pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.

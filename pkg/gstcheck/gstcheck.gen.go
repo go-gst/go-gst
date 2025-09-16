@@ -6,6 +6,7 @@ import (
 	"runtime"
 	"unsafe"
 
+	"github.com/diamondburned/gotk4/pkg/core/profile"
 	"github.com/diamondburned/gotk4/pkg/core/userdata"
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
@@ -415,7 +416,7 @@ func init() {
 }
 
 func marshalTestClockInstance(p unsafe.Pointer) (any, error) {
-	return unsafeWrapTestClock(gobject.ValueFromNative(p).Object()), nil
+	return gobject.ValueFromNative(p).Object(), nil
 }
 
 // UnsafeTestClockFromGlibNone is used to convert raw GstTestClock pointers to go while taking a reference and attaching a finalizer. This is used by the bindings internally.
@@ -954,10 +955,12 @@ func UnsafeHarnessFromGlibBorrow(p unsafe.Pointer) *Harness {
 func UnsafeHarnessFromGlibNone(p unsafe.Pointer) *Harness {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeHarnessFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.harness)), 1)
 	runtime.SetFinalizer(
 		wrapped.harness,
 		func (intern *harness) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -966,10 +969,12 @@ func UnsafeHarnessFromGlibNone(p unsafe.Pointer) *Harness {
 // UnsafeHarnessFromGlibFull is used to convert raw C.GstHarness pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeHarnessFromGlibFull(p unsafe.Pointer) *Harness {
 	wrapped := UnsafeHarnessFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.harness)), 1)
 	runtime.SetFinalizer(
 		wrapped.harness,
 		func (intern *harness) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2741,10 +2746,12 @@ func UnsafeHarnessThreadFromGlibBorrow(p unsafe.Pointer) *HarnessThread {
 func UnsafeHarnessThreadFromGlibNone(p unsafe.Pointer) *HarnessThread {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeHarnessThreadFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.harnessThread)), 1)
 	runtime.SetFinalizer(
 		wrapped.harnessThread,
 		func (intern *harnessThread) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2753,10 +2760,12 @@ func UnsafeHarnessThreadFromGlibNone(p unsafe.Pointer) *HarnessThread {
 // UnsafeHarnessThreadFromGlibFull is used to convert raw C.GstHarnessThread pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeHarnessThreadFromGlibFull(p unsafe.Pointer) *HarnessThread {
 	wrapped := UnsafeHarnessThreadFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.harnessThread)), 1)
 	runtime.SetFinalizer(
 		wrapped.harnessThread,
 		func (intern *harnessThread) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2804,10 +2813,12 @@ func UnsafeStreamConsistencyFromGlibBorrow(p unsafe.Pointer) *StreamConsistency 
 func UnsafeStreamConsistencyFromGlibNone(p unsafe.Pointer) *StreamConsistency {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeStreamConsistencyFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.streamConsistency)), 1)
 	runtime.SetFinalizer(
 		wrapped.streamConsistency,
 		func (intern *streamConsistency) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
@@ -2816,10 +2827,12 @@ func UnsafeStreamConsistencyFromGlibNone(p unsafe.Pointer) *StreamConsistency {
 // UnsafeStreamConsistencyFromGlibFull is used to convert raw C.GstStreamConsistency pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeStreamConsistencyFromGlibFull(p unsafe.Pointer) *StreamConsistency {
 	wrapped := UnsafeStreamConsistencyFromGlibBorrow(p)
+	profile.Track(uintptr(unsafe.Pointer(wrapped.streamConsistency)), 1)
 	runtime.SetFinalizer(
 		wrapped.streamConsistency,
 		func (intern *streamConsistency) {
 			C.free(unsafe.Pointer(intern.native))
+			profile.Untrack(uintptr(unsafe.Pointer(intern)))
 		},
 	)
 	return wrapped
