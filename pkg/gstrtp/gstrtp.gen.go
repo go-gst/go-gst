@@ -2377,7 +2377,7 @@ type RTPBasePayload interface {
 	//
 	// process data
 	ParentHandleBuffer(buffer *gst.Buffer) gst.FlowReturn
-	// ParentQuery calls the default implementations of the query virtual method.
+	// ParentQueryRTPBasePayload calls the default implementations of the query virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
 	// The function takes the following parameters:
@@ -2390,7 +2390,7 @@ type RTPBasePayload interface {
 	// 	- goret bool 
 	//
 	// custom query handling
-	ParentQuery(pad gst.Pad, query *gst.Query) bool
+	ParentQueryRTPBasePayload(pad gst.Pad, query *gst.Query) bool
 	// ParentSetCaps calls the default implementations of the set_caps virtual method.
 	// This function's behavior is not defined when the parent does not implement the virtual method.
 	// 
@@ -3097,7 +3097,7 @@ func (payload *RTPBasePayloadInstance) ParentHandleBuffer(buffer *gst.Buffer) gs
 	return goret
 }
 
-// ParentQuery calls the default implementations of the query virtual method.
+// ParentQueryRTPBasePayload calls the default implementations of the query virtual method.
 // This function's behavior is not defined when the parent does not implement the virtual method.
 // 
 // The function takes the following parameters:
@@ -3110,7 +3110,7 @@ func (payload *RTPBasePayloadInstance) ParentHandleBuffer(buffer *gst.Buffer) gs
 // 	- goret bool 
 //
 // custom query handling
-func (payload *RTPBasePayloadInstance) ParentQuery(pad gst.Pad, query *gst.Query) bool {
+func (payload *RTPBasePayloadInstance) ParentQueryRTPBasePayload(pad gst.Pad, query *gst.Query) bool {
 	var carg0 *C.GstRTPBasePayload
 	var carg1 *C.GstPad   // in, none, converted
 	var carg2 *C.GstQuery // in, none, converted

@@ -96,7 +96,7 @@ func encodeGif() error {
 		// use this value to calculate the total number of frames we expect to produce.
 		query := gst.NewQueryDuration(gst.FormatTime)
 		if ok := self.Query(query); !ok {
-			self.MessageError(0, int(gst.LibraryErrorFailed), "Failed to query video duration from decodebin", "")
+			self.MessageError(0, int32(gst.LibraryErrorFailed), "Failed to query video duration from decodebin", "")
 			return
 		}
 
@@ -159,7 +159,7 @@ func encodeGif() error {
 			// mapped buffers implement io.Reader
 			img, err := jpeg.Decode(mapped)
 			if err != nil {
-				self.MessageError(gst.LibraryErrorQuark(), int(gst.LibraryErrorFailed), "Error decoding jpeg frame", err.Error())
+				self.MessageError(gst.LibraryErrorQuark(), int32(gst.LibraryErrorFailed), "Error decoding jpeg frame", err.Error())
 				return gst.FlowError
 			}
 

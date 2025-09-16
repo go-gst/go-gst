@@ -582,7 +582,7 @@ func _gotk4_gst1_TaskFunction(carg1 C.gpointer) {
 }
 
 //export _gotk4_gst1_TaskPoolFunction
-func _gotk4_gst1_TaskPoolFunction(carg1 *C.void) {
+func _gotk4_gst1_TaskPoolFunction(carg1 unsafe.Pointer) {
 	var fn TaskPoolFunction
 	{
 		v := userdata.Load(unsafe.Pointer(carg1))
