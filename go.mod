@@ -3,7 +3,7 @@ module github.com/go-gst/go-gst
 go 1.23.2
 
 require (
-	github.com/diamondburned/gotk4 v0.3.2-0.20250130222623-fe981aaadf4e
+	github.com/diamondburned/gotk4 v0.3.1
 	github.com/diamondburned/gotk4/pkg v0.3.1
 )
 
@@ -17,3 +17,5 @@ require (
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect
 	golang.org/x/sys v0.0.0-20200223170610-d5e6a3e2c0ae // indirect
 )
+
+replace github.com/diamondburned/gotk4 => github.com/rswilli/gotk4 v0.0.0-20250131170216-6c838beedcca
