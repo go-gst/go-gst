@@ -464,22 +464,27 @@ func init() {
 const BASE_PARSE_FLAG_DRAINING = 2
 const BASE_PARSE_FLAG_LOST_SYNC = 1
 
-// BASE_TRANSFORM_SINK_NAME: name of the templates for the sink pad.
+// BASE_TRANSFORM_SINK_NAME (GST_BASE_TRANSFORM_SINK_NAME): name of the
+// templates for the sink pad.
 const BASE_TRANSFORM_SINK_NAME = "sink"
 
-// BASE_TRANSFORM_SRC_NAME: name of the templates for the source pad.
+// BASE_TRANSFORM_SRC_NAME (GST_BASE_TRANSFORM_SRC_NAME): name of the templates
+// for the source pad.
 const BASE_TRANSFORM_SRC_NAME = "src"
 
 type AggregatorStartTimeSelection C.gint
 
 const (
-	// AggregatorStartTimeSelectionZero: start at running time 0.
+	// AggregatorStartTimeSelectionZero
+	// (GST_AGGREGATOR_START_TIME_SELECTION_ZERO): start at running time 0.
 	AggregatorStartTimeSelectionZero AggregatorStartTimeSelection = iota
-	// AggregatorStartTimeSelectionFirst: start at the running time of the first
-	// buffer that is received.
+	// AggregatorStartTimeSelectionFirst
+	// (GST_AGGREGATOR_START_TIME_SELECTION_FIRST): start at the running time of
+	// the first buffer that is received.
 	AggregatorStartTimeSelectionFirst
-	// AggregatorStartTimeSelectionSet: start at the running time selected by
-	// the start-time property.
+	// AggregatorStartTimeSelectionSet
+	// (GST_AGGREGATOR_START_TIME_SELECTION_SET): start at the running time
+	// selected by the start-time property.
 	AggregatorStartTimeSelectionSet
 )
 
@@ -501,31 +506,33 @@ func (a AggregatorStartTimeSelection) String() string {
 	}
 }
 
-// BaseParseFrameFlags flags to be used in a BaseParseFrame.
+// BaseParseFrameFlags (GstBaseParseFrameFlags) flags to be used in a
+// BaseParseFrame.
 type BaseParseFrameFlags C.guint
 
 const (
-	// BaseParseFrameFlagNone: no flag.
+	// BaseParseFrameFlagNone (GST_BASE_PARSE_FRAME_FLAG_NONE): no flag.
 	BaseParseFrameFlagNone BaseParseFrameFlags = 0b0
-	// BaseParseFrameFlagNewFrame: set by baseclass if current frame is passed
-	// for processing to the subclass for the first time (and not set on
-	// subsequent calls with same data).
+	// BaseParseFrameFlagNewFrame (GST_BASE_PARSE_FRAME_FLAG_NEW_FRAME): set by
+	// baseclass if current frame is passed for processing to the subclass for
+	// the first time (and not set on subsequent calls with same data).
 	BaseParseFrameFlagNewFrame BaseParseFrameFlags = 0b1
-	// BaseParseFrameFlagNoFrame: set to indicate this buffer should not be
-	// counted as frame, e.g. if this frame is dependent on a previous one.
-	// As it is not counted as a frame, bitrate increases but frame to time
-	// conversions are maintained.
+	// BaseParseFrameFlagNoFrame (GST_BASE_PARSE_FRAME_FLAG_NO_FRAME):
+	// set to indicate this buffer should not be counted as frame, e.g. if this
+	// frame is dependent on a previous one. As it is not counted as a frame,
+	// bitrate increases but frame to time conversions are maintained.
 	BaseParseFrameFlagNoFrame BaseParseFrameFlags = 0b10
-	// BaseParseFrameFlagClip: pre_push_frame can set this to indicate that
-	// regular segment clipping can still be performed (as opposed to any custom
-	// one having been done).
+	// BaseParseFrameFlagClip (GST_BASE_PARSE_FRAME_FLAG_CLIP): pre_push_frame
+	// can set this to indicate that regular segment clipping can still be
+	// performed (as opposed to any custom one having been done).
 	BaseParseFrameFlagClip BaseParseFrameFlags = 0b100
-	// BaseParseFrameFlagDrop indicates to finish_frame that the the frame
-	// should be dropped (and might be handled internally by subclass).
+	// BaseParseFrameFlagDrop (GST_BASE_PARSE_FRAME_FLAG_DROP) indicates to
+	// finish_frame that the the frame should be dropped (and might be handled
+	// internally by subclass).
 	BaseParseFrameFlagDrop BaseParseFrameFlags = 0b1000
-	// BaseParseFrameFlagQueue indicates to finish_frame that the the frame
-	// should be queued for now and processed fully later when the first
-	// non-queued frame is finished.
+	// BaseParseFrameFlagQueue (GST_BASE_PARSE_FRAME_FLAG_QUEUE) indicates to
+	// finish_frame that the the frame should be queued for now and processed
+	// fully later when the first non-queued frame is finished.
 	BaseParseFrameFlagQueue BaseParseFrameFlags = 0b10000
 )
 
@@ -570,15 +577,15 @@ func (b BaseParseFrameFlags) Has(other BaseParseFrameFlags) bool {
 	return (b & other) == other
 }
 
-// BaseSrcFlags flags that a basesrc element may have.
+// BaseSrcFlags (GstBaseSrcFlags) flags that a basesrc element may have.
 type BaseSrcFlags C.guint
 
 const (
-	// BaseSrcFlagStarting has source is starting.
+	// BaseSrcFlagStarting (GST_BASE_SRC_FLAG_STARTING) has source is starting.
 	BaseSrcFlagStarting BaseSrcFlags = 0b100000000000000
-	// BaseSrcFlagStarted has source been started.
+	// BaseSrcFlagStarted (GST_BASE_SRC_FLAG_STARTED) has source been started.
 	BaseSrcFlagStarted BaseSrcFlags = 0b1000000000000000
-	// BaseSrcFlagLast: offset to define more flags.
+	// BaseSrcFlagLast (GST_BASE_SRC_FLAG_LAST): offset to define more flags.
 	BaseSrcFlagLast BaseSrcFlags = 0b100000000000000000000
 )
 
@@ -620,19 +627,21 @@ func (b BaseSrcFlags) Has(other BaseSrcFlags) bool {
 type CollectPadsStateFlags C.guint
 
 const (
-	// CollectPadsStateEos: set if collectdata's pad is EOS.
+	// CollectPadsStateEos (GST_COLLECT_PADS_STATE_EOS): set if collectdata's
+	// pad is EOS.
 	CollectPadsStateEos CollectPadsStateFlags = 0b1
-	// CollectPadsStateFlushing: set if collectdata's pad is flushing.
+	// CollectPadsStateFlushing (GST_COLLECT_PADS_STATE_FLUSHING): set if
+	// collectdata's pad is flushing.
 	CollectPadsStateFlushing CollectPadsStateFlags = 0b10
-	// CollectPadsStateNewSegment: set if collectdata's pad received a
-	// new_segment event.
+	// CollectPadsStateNewSegment (GST_COLLECT_PADS_STATE_NEW_SEGMENT): set if
+	// collectdata's pad received a new_segment event.
 	CollectPadsStateNewSegment CollectPadsStateFlags = 0b100
-	// CollectPadsStateWaiting: set if collectdata's pad must be waited for when
-	// collecting.
+	// CollectPadsStateWaiting (GST_COLLECT_PADS_STATE_WAITING): set if
+	// collectdata's pad must be waited for when collecting.
 	CollectPadsStateWaiting CollectPadsStateFlags = 0b1000
-	// CollectPadsStateLocked: set collectdata's pad WAITING state must not be
-	// changed. CollectPadsStateFlags indicate private state of a collectdata('s
-	// pad).
+	// CollectPadsStateLocked (GST_COLLECT_PADS_STATE_LOCKED): set collectdata's
+	// pad WAITING state must not be changed. CollectPadsStateFlags indicate
+	// private state of a collectdata('s pad).
 	CollectPadsStateLocked CollectPadsStateFlags = 0b10000
 )
 
@@ -718,8 +727,8 @@ type CollectPadsFunction func(pads *CollectPads) (flowReturn gst.FlowReturn)
 // events downstream (with gst_pad_event_default()).
 type CollectPadsQueryFunction func(pads *CollectPads, pad *CollectData, query *gst.Query) (ok bool)
 
-// TypeFindHelper tries to find what type of data is flowing from the given
-// source Pad.
+// TypeFindHelper (gst_type_find_helper) tries to find what type of data is
+// flowing from the given source Pad.
 //
 // Free-function: gst_caps_unref.
 //
@@ -758,9 +767,9 @@ func TypeFindHelper(src *gst.Pad, size uint64) *gst.Caps {
 	return _caps
 }
 
-// TypeFindHelperForBuffer tries to find what type of data is contained in the
-// given Buffer, the assumption being that the buffer represents the beginning
-// of the stream or file.
+// TypeFindHelperForBuffer (gst_type_find_helper_for_buffer) tries to find what
+// type of data is contained in the given Buffer, the assumption being that the
+// buffer represents the beginning of the stream or file.
 //
 // All available typefinders will be called on the data in order of rank.
 // If a typefinding function returns a probability of GST_TYPE_FIND_MAXIMUM,
@@ -813,9 +822,10 @@ func TypeFindHelperForBuffer(obj gst.GstObjector, buf *gst.Buffer) (gst.TypeFind
 	return _prob, _caps
 }
 
-// TypeFindHelperForBufferWithCaps tries to find if type of media contained in
-// the given Buffer, matches caps specified, assumption being that the buffer
-// represents the beginning of the stream or file.
+// TypeFindHelperForBufferWithCaps (gst_type_find_helper_for_buffer_with_caps)
+// tries to find if type of media contained in the given Buffer, matches caps
+// specified, assumption being that the buffer represents the beginning of the
+// stream or file.
 //
 // Tries to find what type of data is contained in the given data, the
 // assumption being that the data represents the beginning of the stream or
@@ -873,8 +883,9 @@ func TypeFindHelperForBufferWithCaps(obj gst.GstObjector, buf *gst.Buffer, caps 
 	return _prob, _ret
 }
 
-// TypeFindHelperForBufferWithExtension tries to find what type of data
-// is contained in the given Buffer, the assumption being that the buffer
+// TypeFindHelperForBufferWithExtension
+// (gst_type_find_helper_for_buffer_with_extension) tries to find what type of
+// data is contained in the given Buffer, the assumption being that the buffer
 // represents the beginning of the stream or file.
 //
 // All available typefinders will be called on the data in order of rank.
@@ -939,9 +950,9 @@ func TypeFindHelperForBufferWithExtension(obj gst.GstObjector, buf *gst.Buffer, 
 	return _prob, _caps
 }
 
-// TypeFindHelperForData tries to find what type of data is contained in the
-// given data, the assumption being that the data represents the beginning of
-// the stream or file.
+// TypeFindHelperForData (gst_type_find_helper_for_data) tries to find what type
+// of data is contained in the given data, the assumption being that the data
+// represents the beginning of the stream or file.
 //
 // All available typefinders will be called on the data in order of rank.
 // If a typefinding function returns a probability of GST_TYPE_FIND_MAXIMUM,
@@ -998,9 +1009,10 @@ func TypeFindHelperForData(obj gst.GstObjector, data []byte) (gst.TypeFindProbab
 	return _prob, _caps
 }
 
-// TypeFindHelperForDataWithCaps tries to find if type of media contained in
-// the given data, matches the caps specified, assumption being that the data
-// represents the beginning of the stream or file.
+// TypeFindHelperForDataWithCaps (gst_type_find_helper_for_data_with_caps)
+// tries to find if type of media contained in the given data, matches the caps
+// specified, assumption being that the data represents the beginning of the
+// stream or file.
 //
 // Only the typefinder matching the given caps will be called, if found. The
 // caps with the highest probability will be returned, or NULL if the content of
@@ -1058,9 +1070,10 @@ func TypeFindHelperForDataWithCaps(obj gst.GstObjector, data []byte, caps *gst.C
 	return _prob, _ret
 }
 
-// TypeFindHelperForDataWithExtension tries to find what type of data is
-// contained in the given data, the assumption being that the data represents
-// the beginning of the stream or file.
+// TypeFindHelperForDataWithExtension
+// (gst_type_find_helper_for_data_with_extension) tries to find what type of
+// data is contained in the given data, the assumption being that the data
+// represents the beginning of the stream or file.
 //
 // All available typefinders will be called on the data in order of rank.
 // If a typefinding function returns a probability of GST_TYPE_FIND_MAXIMUM,
@@ -1128,8 +1141,8 @@ func TypeFindHelperForDataWithExtension(obj gst.GstObjector, data []byte, extens
 	return _prob, _caps
 }
 
-// TypeFindHelperForExtension tries to find the best Caps associated with
-// extension.
+// TypeFindHelperForExtension (gst_type_find_helper_for_extension) tries to find
+// the best Caps associated with extension.
 //
 // All available typefinders will be checked against the extension in order
 // of rank. The caps of the first typefinder that can handle extension will be
@@ -1175,8 +1188,8 @@ func TypeFindHelperForExtension(obj gst.GstObjector, extension string) *gst.Caps
 	return _caps
 }
 
-// TypeFindListFactoriesForCaps tries to find the best TypeFindFactory
-// associated with caps.
+// TypeFindListFactoriesForCaps (gst_type_find_list_factories_for_caps) tries to
+// find the best TypeFindFactory associated with caps.
 //
 // The typefinder that can handle caps will be returned.
 //
@@ -1232,11 +1245,11 @@ func TypeFindListFactoriesForCaps(obj gst.GstObjector, caps *gst.Caps) []*gst.Ty
 	return _list
 }
 
-// Adapter: this class is for elements that receive buffers in an undesired
-// size. While for example raw video contains one image per buffer, the same is
-// not true for a lot of other formats, especially those that come directly from
-// a file. So if you have undefined buffer sizes and require a specific size,
-// this object is for you.
+// Adapter (GstAdapter): this class is for elements that receive buffers in an
+// undesired size. While for example raw video contains one image per buffer,
+// the same is not true for a lot of other formats, especially those that come
+// directly from a file. So if you have undefined buffer sizes and require a
+// specific size, this object is for you.
 //
 // An adapter is created with gst_adapter_new(). It can be freed again with
 // g_object_unref().
@@ -1339,6 +1352,104 @@ var (
 	_ coreglib.Objector = (*Adapter)(nil)
 )
 
+// Adapterer describes types inherited from Adapter.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type Adapterer interface {
+	coreglib.Objector
+
+	// Available (gst_adapter_available) gets the maximum amount of bytes
+	// available, that is it returns the maximum value that can be supplied to
+	// gst_adapter_map() without that function returning NULL.
+	Available() uint
+	// AvailableFast (gst_adapter_available_fast) gets the maximum number of
+	// bytes that are immediately available without requiring any expensive
+	// operations (like copying the data into a temporary buffer).
+	AvailableFast() uint
+	// Clear (gst_adapter_clear) removes all buffers from adapter.
+	Clear()
+	// Copy (gst_adapter_copy_bytes): similar to gst_adapter_copy, but more
+	// suitable for language bindings.
+	Copy(offset, size uint) *glib.Bytes
+	// DistanceFromDiscont (gst_adapter_distance_from_discont): get the distance
+	// in bytes since the last buffer with the GST_BUFFER_FLAG_DISCONT flag.
+	DistanceFromDiscont() uint64
+	// DtsAtDiscont (gst_adapter_dts_at_discont): get the DTS that was
+	// on the last buffer with the GST_BUFFER_FLAG_DISCONT flag, or
+	// GST_CLOCK_TIME_NONE.
+	DtsAtDiscont() gst.ClockTime
+	// Flush (gst_adapter_flush) flushes the first flush bytes in the adapter.
+	Flush(flush uint)
+	// Buffer (gst_adapter_get_buffer) returns a Buffer containing the first
+	// nbytes of the adapter, but does not flush them from the adapter.
+	Buffer(nbytes uint) *gst.Buffer
+	// BufferFast (gst_adapter_get_buffer_fast) returns a Buffer containing the
+	// first nbytes of the adapter, but does not flush them from the adapter.
+	BufferFast(nbytes uint) *gst.Buffer
+	// BufferList (gst_adapter_get_buffer_list) returns a BufferList of buffers
+	// containing the first nbytes bytes of the adapter but does not flush them
+	// from the adapter.
+	BufferList(nbytes uint) *gst.BufferList
+	// List (gst_adapter_get_list) returns a #GList of buffers containing the
+	// first nbytes bytes of the adapter, but does not flush them from the
+	// adapter.
+	List(nbytes uint) []*gst.Buffer
+	// MaskedScanUint32 (gst_adapter_masked_scan_uint32): scan for pattern
+	// pattern with applied mask mask in the adapter data, starting from offset
+	// offset.
+	MaskedScanUint32(mask, pattern uint32, offset, size uint) int
+	// MaskedScanUint32Peek (gst_adapter_masked_scan_uint32_peek): scan for
+	// pattern pattern with applied mask mask in the adapter data, starting from
+	// offset offset.
+	MaskedScanUint32Peek(mask, pattern uint32, offset, size uint) (uint32, int)
+	// OffsetAtDiscont (gst_adapter_offset_at_discont): get the offset
+	// that was on the last buffer with the GST_BUFFER_FLAG_DISCONT flag,
+	// or GST_BUFFER_OFFSET_NONE.
+	OffsetAtDiscont() uint64
+	// PrevDts (gst_adapter_prev_dts): get the dts that was before the current
+	// byte in the adapter.
+	PrevDts() (uint64, gst.ClockTime)
+	// PrevDtsAtOffset (gst_adapter_prev_dts_at_offset): get the dts that was
+	// before the byte at offset offset in the adapter.
+	PrevDtsAtOffset(offset uint) (uint64, gst.ClockTime)
+	// PrevOffset (gst_adapter_prev_offset): get the offset that was before the
+	// current byte in the adapter.
+	PrevOffset() (distance, guint64 uint64)
+	// PrevPts (gst_adapter_prev_pts): get the pts that was before the current
+	// byte in the adapter.
+	PrevPts() (uint64, gst.ClockTime)
+	// PrevPtsAtOffset (gst_adapter_prev_pts_at_offset): get the pts that was
+	// before the byte at offset offset in the adapter.
+	PrevPtsAtOffset(offset uint) (uint64, gst.ClockTime)
+	// PtsAtDiscont (gst_adapter_pts_at_discont): get the PTS that was
+	// on the last buffer with the GST_BUFFER_FLAG_DISCONT flag, or
+	// GST_CLOCK_TIME_NONE.
+	PtsAtDiscont() gst.ClockTime
+	// Push (gst_adapter_push) adds the data from buf to the data stored inside
+	// adapter and takes ownership of the buffer.
+	Push(buf *gst.Buffer)
+	// TakeBuffer (gst_adapter_take_buffer) returns a Buffer containing the
+	// first nbytes bytes of the adapter.
+	TakeBuffer(nbytes uint) *gst.Buffer
+	// TakeBufferFast (gst_adapter_take_buffer_fast) returns a Buffer containing
+	// the first nbytes of the adapter.
+	TakeBufferFast(nbytes uint) *gst.Buffer
+	// TakeBufferList (gst_adapter_take_buffer_list) returns a BufferList of
+	// buffers containing the first nbytes bytes of the adapter.
+	TakeBufferList(nbytes uint) *gst.BufferList
+	// TakeList (gst_adapter_take_list) returns a #GList of buffers containing
+	// the first nbytes bytes of the adapter.
+	TakeList(nbytes uint) []*gst.Buffer
+	// Unmap (gst_adapter_unmap) releases the memory obtained with the last
+	// gst_adapter_map().
+	Unmap()
+
+	baseAdapter() *Adapter
+}
+
+var _ Adapterer = (*Adapter)(nil)
+
 func wrapAdapter(obj *coreglib.Object) *Adapter {
 	return &Adapter{
 		Object: obj,
@@ -1349,7 +1460,17 @@ func marshalAdapter(p uintptr) (interface{}, error) {
 	return wrapAdapter(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// NewAdapter creates a new Adapter. Free with g_object_unref().
+func (adapter *Adapter) baseAdapter() *Adapter {
+	return adapter
+}
+
+// BaseAdapter returns the underlying base object.
+func BaseAdapter(obj Adapterer) *Adapter {
+	return obj.baseAdapter()
+}
+
+// NewAdapter (gst_adapter_new) creates a new Adapter. Free with
+// g_object_unref().
 //
 // The function returns the following values:
 //
@@ -1366,9 +1487,9 @@ func NewAdapter() *Adapter {
 	return _adapter
 }
 
-// Available gets the maximum amount of bytes available, that is it returns the
-// maximum value that can be supplied to gst_adapter_map() without that function
-// returning NULL.
+// Available (gst_adapter_available) gets the maximum amount of bytes
+// available, that is it returns the maximum value that can be supplied to
+// gst_adapter_map() without that function returning NULL.
 //
 // The function returns the following values:
 //
@@ -1389,9 +1510,9 @@ func (adapter *Adapter) Available() uint {
 	return _gsize
 }
 
-// AvailableFast gets the maximum number of bytes that are immediately available
-// without requiring any expensive operations (like copying the data into a
-// temporary buffer).
+// AvailableFast (gst_adapter_available_fast) gets the maximum number of bytes
+// that are immediately available without requiring any expensive operations
+// (like copying the data into a temporary buffer).
 //
 // The function returns the following values:
 //
@@ -1413,7 +1534,7 @@ func (adapter *Adapter) AvailableFast() uint {
 	return _gsize
 }
 
-// Clear removes all buffers from adapter.
+// Clear (gst_adapter_clear) removes all buffers from adapter.
 func (adapter *Adapter) Clear() {
 	var _arg0 *C.GstAdapter // out
 
@@ -1423,11 +1544,11 @@ func (adapter *Adapter) Clear() {
 	runtime.KeepAlive(adapter)
 }
 
-// Copy: similar to gst_adapter_copy, but more suitable for language bindings.
-// size bytes of data starting at offset will be copied out of the buffers
-// contained in adapter and into a new #GBytes structure which is returned.
-// Depending on the value of the size argument an empty #GBytes structure may be
-// returned.
+// Copy (gst_adapter_copy_bytes): similar to gst_adapter_copy, but more suitable
+// for language bindings. size bytes of data starting at offset will be copied
+// out of the buffers contained in adapter and into a new #GBytes structure
+// which is returned. Depending on the value of the size argument an empty
+// #GBytes structure may be returned.
 //
 // The function takes the following parameters:
 //
@@ -1465,8 +1586,8 @@ func (adapter *Adapter) Copy(offset, size uint) *glib.Bytes {
 	return _bytes
 }
 
-// DistanceFromDiscont: get the distance in bytes since the last buffer with the
-// GST_BUFFER_FLAG_DISCONT flag.
+// DistanceFromDiscont (gst_adapter_distance_from_discont): get the distance in
+// bytes since the last buffer with the GST_BUFFER_FLAG_DISCONT flag.
 //
 // The distance will be reset to 0 for all buffers with GST_BUFFER_FLAG_DISCONT
 // on them, and then calculated for all other following buffers based on their
@@ -1491,8 +1612,8 @@ func (adapter *Adapter) DistanceFromDiscont() uint64 {
 	return _guint64
 }
 
-// DtsAtDiscont: get the DTS that was on the last buffer with the
-// GST_BUFFER_FLAG_DISCONT flag, or GST_CLOCK_TIME_NONE.
+// DtsAtDiscont (gst_adapter_dts_at_discont): get the DTS that was on the last
+// buffer with the GST_BUFFER_FLAG_DISCONT flag, or GST_CLOCK_TIME_NONE.
 //
 // The function returns the following values:
 //
@@ -1513,8 +1634,8 @@ func (adapter *Adapter) DtsAtDiscont() gst.ClockTime {
 	return _clockTime
 }
 
-// Flush flushes the first flush bytes in the adapter. The caller must ensure
-// that at least this many bytes are available.
+// Flush (gst_adapter_flush) flushes the first flush bytes in the adapter.
+// The caller must ensure that at least this many bytes are available.
 //
 // See also: gst_adapter_map(), gst_adapter_unmap().
 //
@@ -1533,8 +1654,9 @@ func (adapter *Adapter) Flush(flush uint) {
 	runtime.KeepAlive(flush)
 }
 
-// Buffer returns a Buffer containing the first nbytes of the adapter, but does
-// not flush them from the adapter. See gst_adapter_take_buffer() for details.
+// Buffer (gst_adapter_get_buffer) returns a Buffer containing the first
+// nbytes of the adapter, but does not flush them from the adapter. See
+// gst_adapter_take_buffer() for details.
 //
 // Caller owns a reference to the returned buffer. gst_buffer_unref() after
 // usage.
@@ -1575,9 +1697,9 @@ func (adapter *Adapter) Buffer(nbytes uint) *gst.Buffer {
 	return _buffer
 }
 
-// BufferFast returns a Buffer containing the first nbytes of the adapter,
-// but does not flush them from the adapter. See gst_adapter_take_buffer_fast()
-// for details.
+// BufferFast (gst_adapter_get_buffer_fast) returns a Buffer containing the
+// first nbytes of the adapter, but does not flush them from the adapter.
+// See gst_adapter_take_buffer_fast() for details.
 //
 // Caller owns a reference to the returned buffer. gst_buffer_unref() after
 // usage.
@@ -1618,9 +1740,9 @@ func (adapter *Adapter) BufferFast(nbytes uint) *gst.Buffer {
 	return _buffer
 }
 
-// BufferList returns a BufferList of buffers containing the first nbytes
-// bytes of the adapter but does not flush them from the adapter. See
-// gst_adapter_take_buffer_list() for details.
+// BufferList (gst_adapter_get_buffer_list) returns a BufferList of buffers
+// containing the first nbytes bytes of the adapter but does not flush them from
+// the adapter. See gst_adapter_take_buffer_list() for details.
 //
 // Caller owns the returned list. Call gst_buffer_list_unref() to free the list
 // after usage.
@@ -1659,9 +1781,9 @@ func (adapter *Adapter) BufferList(nbytes uint) *gst.BufferList {
 	return _bufferList
 }
 
-// List returns a #GList of buffers containing the first nbytes bytes
-// of the adapter, but does not flush them from the adapter. See
-// gst_adapter_take_list() for details.
+// List (gst_adapter_get_list) returns a #GList of buffers containing the first
+// nbytes bytes of the adapter, but does not flush them from the adapter.
+// See gst_adapter_take_list() for details.
 //
 // Caller owns returned list and contained buffers. gst_buffer_unref() each
 // buffer in the list before freeing the list after usage.
@@ -1706,8 +1828,8 @@ func (adapter *Adapter) List(nbytes uint) []*gst.Buffer {
 	return _list
 }
 
-// MaskedScanUint32: scan for pattern pattern with applied mask mask in the
-// adapter data, starting from offset offset.
+// MaskedScanUint32 (gst_adapter_masked_scan_uint32): scan for pattern pattern
+// with applied mask mask in the adapter data, starting from offset offset.
 //
 // The bytes in pattern and mask are interpreted left-to-right, regardless of
 // endianness. All four bytes of the pattern must be present in the adapter for
@@ -1773,9 +1895,10 @@ func (adapter *Adapter) MaskedScanUint32(mask, pattern uint32, offset, size uint
 	return _gssize
 }
 
-// MaskedScanUint32Peek: scan for pattern pattern with applied mask mask in the
-// adapter data, starting from offset offset. If a match is found, the value
-// that matched is returned through value, otherwise value is left untouched.
+// MaskedScanUint32Peek (gst_adapter_masked_scan_uint32_peek): scan for pattern
+// pattern with applied mask mask in the adapter data, starting from offset
+// offset. If a match is found, the value that matched is returned through
+// value, otherwise value is left untouched.
 //
 // The bytes in pattern and mask are interpreted left-to-right, regardless of
 // endianness. All four bytes of the pattern must be present in the adapter for
@@ -1827,8 +1950,9 @@ func (adapter *Adapter) MaskedScanUint32Peek(mask, pattern uint32, offset, size 
 	return _value, _gssize
 }
 
-// OffsetAtDiscont: get the offset that was on the last buffer with the
-// GST_BUFFER_FLAG_DISCONT flag, or GST_BUFFER_OFFSET_NONE.
+// OffsetAtDiscont (gst_adapter_offset_at_discont): get the offset that
+// was on the last buffer with the GST_BUFFER_FLAG_DISCONT flag, or
+// GST_BUFFER_OFFSET_NONE.
 //
 // The function returns the following values:
 //
@@ -1849,9 +1973,9 @@ func (adapter *Adapter) OffsetAtDiscont() uint64 {
 	return _guint64
 }
 
-// PrevDts: get the dts that was before the current byte in the adapter.
-// When distance is given, the amount of bytes between the dts and the current
-// position is returned.
+// PrevDts (gst_adapter_prev_dts): get the dts that was before the current byte
+// in the adapter. When distance is given, the amount of bytes between the dts
+// and the current position is returned.
 //
 // The dts is reset to GST_CLOCK_TIME_NONE and the distance is set to 0 when the
 // adapter is first created or when it is cleared. This also means that before
@@ -1881,9 +2005,9 @@ func (adapter *Adapter) PrevDts() (uint64, gst.ClockTime) {
 	return _distance, _clockTime
 }
 
-// PrevDtsAtOffset: get the dts that was before the byte at offset offset in the
-// adapter. When distance is given, the amount of bytes between the dts and the
-// current position is returned.
+// PrevDtsAtOffset (gst_adapter_prev_dts_at_offset): get the dts that was before
+// the byte at offset offset in the adapter. When distance is given, the amount
+// of bytes between the dts and the current position is returned.
 //
 // The dts is reset to GST_CLOCK_TIME_NONE and the distance is set to 0 when the
 // adapter is first created or when it is cleared. This also means that before
@@ -1920,9 +2044,9 @@ func (adapter *Adapter) PrevDtsAtOffset(offset uint) (uint64, gst.ClockTime) {
 	return _distance, _clockTime
 }
 
-// PrevOffset: get the offset that was before the current byte in the adapter.
-// When distance is given, the amount of bytes between the offset and the
-// current position is returned.
+// PrevOffset (gst_adapter_prev_offset): get the offset that was before the
+// current byte in the adapter. When distance is given, the amount of bytes
+// between the offset and the current position is returned.
 //
 // The offset is reset to GST_BUFFER_OFFSET_NONE and the distance is set to 0
 // when the adapter is first created or when it is cleared. This also means that
@@ -1952,9 +2076,9 @@ func (adapter *Adapter) PrevOffset() (distance, guint64 uint64) {
 	return _distance, _guint64
 }
 
-// PrevPts: get the pts that was before the current byte in the adapter.
-// When distance is given, the amount of bytes between the pts and the current
-// position is returned.
+// PrevPts (gst_adapter_prev_pts): get the pts that was before the current byte
+// in the adapter. When distance is given, the amount of bytes between the pts
+// and the current position is returned.
 //
 // The pts is reset to GST_CLOCK_TIME_NONE and the distance is set to 0 when the
 // adapter is first created or when it is cleared. This also means that before
@@ -1984,9 +2108,9 @@ func (adapter *Adapter) PrevPts() (uint64, gst.ClockTime) {
 	return _distance, _clockTime
 }
 
-// PrevPtsAtOffset: get the pts that was before the byte at offset offset in the
-// adapter. When distance is given, the amount of bytes between the pts and the
-// current position is returned.
+// PrevPtsAtOffset (gst_adapter_prev_pts_at_offset): get the pts that was before
+// the byte at offset offset in the adapter. When distance is given, the amount
+// of bytes between the pts and the current position is returned.
 //
 // The pts is reset to GST_CLOCK_TIME_NONE and the distance is set to 0 when the
 // adapter is first created or when it is cleared. This also means that before
@@ -2023,8 +2147,8 @@ func (adapter *Adapter) PrevPtsAtOffset(offset uint) (uint64, gst.ClockTime) {
 	return _distance, _clockTime
 }
 
-// PtsAtDiscont: get the PTS that was on the last buffer with the
-// GST_BUFFER_FLAG_DISCONT flag, or GST_CLOCK_TIME_NONE.
+// PtsAtDiscont (gst_adapter_pts_at_discont): get the PTS that was on the last
+// buffer with the GST_BUFFER_FLAG_DISCONT flag, or GST_CLOCK_TIME_NONE.
 //
 // The function returns the following values:
 //
@@ -2045,8 +2169,8 @@ func (adapter *Adapter) PtsAtDiscont() gst.ClockTime {
 	return _clockTime
 }
 
-// Push adds the data from buf to the data stored inside adapter and takes
-// ownership of the buffer.
+// Push (gst_adapter_push) adds the data from buf to the data stored inside
+// adapter and takes ownership of the buffer.
 //
 // The function takes the following parameters:
 //
@@ -2064,11 +2188,11 @@ func (adapter *Adapter) Push(buf *gst.Buffer) {
 	runtime.KeepAlive(buf)
 }
 
-// TakeBuffer returns a Buffer containing the first nbytes bytes of the adapter.
-// The returned bytes will be flushed from the adapter. This function is
-// potentially more performant than gst_adapter_take() since it can reuse the
-// memory in pushed buffers by subbuffering or merging. This function will
-// always return a buffer with a single memory region.
+// TakeBuffer (gst_adapter_take_buffer) returns a Buffer containing the first
+// nbytes bytes of the adapter. The returned bytes will be flushed from the
+// adapter. This function is potentially more performant than gst_adapter_take()
+// since it can reuse the memory in pushed buffers by subbuffering or merging.
+// This function will always return a buffer with a single memory region.
 //
 // Note that no assumptions should be made as to whether certain buffer flags
 // such as the DISCONT flag are set on the returned buffer, or not. The caller
@@ -2116,12 +2240,13 @@ func (adapter *Adapter) TakeBuffer(nbytes uint) *gst.Buffer {
 	return _buffer
 }
 
-// TakeBufferFast returns a Buffer containing the first nbytes of the adapter.
-// The returned bytes will be flushed from the adapter. This function is
-// potentially more performant than gst_adapter_take_buffer() since it can
-// reuse the memory in pushed buffers by subbuffering or merging. Unlike
-// gst_adapter_take_buffer(), the returned buffer may be composed of multiple
-// non-contiguous Memory objects, no copies are made.
+// TakeBufferFast (gst_adapter_take_buffer_fast) returns a Buffer containing
+// the first nbytes of the adapter. The returned bytes will be flushed
+// from the adapter. This function is potentially more performant than
+// gst_adapter_take_buffer() since it can reuse the memory in pushed buffers
+// by subbuffering or merging. Unlike gst_adapter_take_buffer(), the returned
+// buffer may be composed of multiple non-contiguous Memory objects, no copies
+// are made.
 //
 // Note that no assumptions should be made as to whether certain buffer flags
 // such as the DISCONT flag are set on the returned buffer, or not. The caller
@@ -2172,10 +2297,10 @@ func (adapter *Adapter) TakeBufferFast(nbytes uint) *gst.Buffer {
 	return _buffer
 }
 
-// TakeBufferList returns a BufferList of buffers containing the first nbytes
-// bytes of the adapter. The returned bytes will be flushed from the adapter.
-// When the caller can deal with individual buffers, this function is more
-// performant because no memory should be copied.
+// TakeBufferList (gst_adapter_take_buffer_list) returns a BufferList of buffers
+// containing the first nbytes bytes of the adapter. The returned bytes will be
+// flushed from the adapter. When the caller can deal with individual buffers,
+// this function is more performant because no memory should be copied.
 //
 // Caller owns the returned list. Call gst_buffer_list_unref() to free the list
 // after usage.
@@ -2214,10 +2339,10 @@ func (adapter *Adapter) TakeBufferList(nbytes uint) *gst.BufferList {
 	return _bufferList
 }
 
-// TakeList returns a #GList of buffers containing the first nbytes bytes of the
-// adapter. The returned bytes will be flushed from the adapter. When the caller
-// can deal with individual buffers, this function is more performant because no
-// memory should be copied.
+// TakeList (gst_adapter_take_list) returns a #GList of buffers containing the
+// first nbytes bytes of the adapter. The returned bytes will be flushed from
+// the adapter. When the caller can deal with individual buffers, this function
+// is more performant because no memory should be copied.
 //
 // Caller owns returned list and contained buffers. gst_buffer_unref() each
 // buffer in the list before freeing the list after usage.
@@ -2262,7 +2387,8 @@ func (adapter *Adapter) TakeList(nbytes uint) []*gst.Buffer {
 	return _list
 }
 
-// Unmap releases the memory obtained with the last gst_adapter_map().
+// Unmap (gst_adapter_unmap) releases the memory obtained with the last
+// gst_adapter_map().
 func (adapter *Adapter) Unmap() {
 	var _arg0 *C.GstAdapter // out
 
@@ -2448,8 +2574,9 @@ func defaultAggregatorOverrides(v *Aggregator) AggregatorOverrides {
 	}
 }
 
-// Aggregator manages a set of pads with the purpose of aggregating their
-// buffers. Control is given to the subclass when all pads have data.
+// Aggregator (GstAggregator) manages a set of pads with the purpose of
+// aggregating their buffers. Control is given to the subclass when all pads
+// have data.
 //
 //   - Base class for mixers and muxers. Subclasses should at least implement
 //     the AggregatorClass::aggregate virtual method.
@@ -2516,12 +2643,74 @@ var (
 	_ gst.Elementer = (*Aggregator)(nil)
 )
 
-// Aggregatorrer describes types inherited from class Aggregator.
+// Aggregatorrer describes types inherited from Aggregator.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type Aggregatorrer interface {
-	coreglib.Objector
+	gst.Elementer
+
+	// FinishBuffer (gst_aggregator_finish_buffer): this method will push the
+	// provided output buffer downstream.
+	FinishBuffer(buffer *gst.Buffer) gst.FlowReturn
+	// FinishBufferList (gst_aggregator_finish_buffer_list): this method will
+	// push the provided output buffer list downstream.
+	FinishBufferList(bufferlist *gst.BufferList) gst.FlowReturn
+	// Allocator (gst_aggregator_get_allocator) lets Aggregator sub-classes get
+	// the memory allocator acquired by the base class and its params.
+	Allocator() (gst.Allocatorrer, *gst.AllocationParams)
+	BufferPool() *gst.BufferPool
+	// ForceLive (gst_aggregator_get_force_live) subclasses may use the return
+	// value to inform whether they should return GST_FLOW_EOS from their
+	// aggregate implementation.
+	ForceLive() bool
+	IgnoreInactivePads() bool
+	// Latency (gst_aggregator_get_latency) retrieves the latency values
+	// reported by self in response to the latency query, or GST_CLOCK_TIME_NONE
+	// if there is not live source connected and the element will not wait for
+	// the clock.
+	Latency() gst.ClockTime
+	// Negotiate (gst_aggregator_negotiate) negotiates src pad caps with
+	// downstream elements.
+	Negotiate() bool
+	// PeekNextSample (gst_aggregator_peek_next_sample): use this function
+	// to determine what input buffers will be aggregated to produce the next
+	// output buffer.
+	PeekNextSample(pad *AggregatorPad) *gst.Sample
+	// SelectedSamples (gst_aggregator_selected_samples) subclasses should call
+	// this when they have prepared the buffers they will aggregate for each of
+	// their sink pads, but before using any of the properties of the pads that
+	// govern *how* aggregation should be performed, for example z-index for
+	// video aggregators.
+	SelectedSamples(pts, dts, duration gst.ClockTime, info *gst.Structure)
+	// SetForceLive (gst_aggregator_set_force_live) subclasses should call this
+	// at construction time in order for self to aggregate on a timeout even
+	// when no live source is connected.
+	SetForceLive(forceLive bool)
+	// SetIgnoreInactivePads (gst_aggregator_set_ignore_inactive_pads)
+	// subclasses should call this when they don't want to time out waiting for
+	// a pad that hasn't yet received any buffers in live mode.
+	SetIgnoreInactivePads(ignore bool)
+	// SetLatency (gst_aggregator_set_latency) lets Aggregator sub-classes tell
+	// the baseclass what their internal latency is.
+	SetLatency(minLatency, maxLatency gst.ClockTime)
+	// SetSrcCaps (gst_aggregator_set_src_caps) sets the caps to be used on the
+	// src pad.
+	SetSrcCaps(caps *gst.Caps)
+	// SimpleGetNextTime (gst_aggregator_simple_get_next_time): this is a simple
+	// AggregatorClass::get_next_time implementation that just looks at the
+	// Segment on the srcpad of the aggregator and bases the next time on the
+	// running time there.
+	SimpleGetNextTime() gst.ClockTime
+	// UpdateSegment (gst_aggregator_update_segment) subclasses should use this
+	// to update the segment on their source pad, instead of directly pushing
+	// new segment events downstream.
+	UpdateSegment(segment *gst.Segment)
+
+	// Samples-selected signals that the Aggregator subclass has selected the
+	// next set of input samples it will aggregate.
+	ConnectSamplesSelected(func(segment *gst.Segment, pts, dts, duration uint64, info *gst.Structure)) coreglib.SignalHandle
+
 	baseAggregator() *Aggregator
 }
 
@@ -2665,9 +2854,10 @@ func (aggregator *Aggregator) ConnectSamplesSelected(f func(segment *gst.Segment
 	return coreglib.ConnectGeneratedClosure(aggregator, "samples-selected", false, unsafe.Pointer(C._gotk4_gstbase1_Aggregator_ConnectSamplesSelected), f)
 }
 
-// FinishBuffer: this method will push the provided output buffer downstream.
-// If needed, mandatory events such as stream-start, caps, and segment events
-// will be sent before pushing the buffer.
+// FinishBuffer (gst_aggregator_finish_buffer): this method will push the
+// provided output buffer downstream. If needed, mandatory events such as
+// stream-start, caps, and segment events will be sent before pushing the
+// buffer.
 //
 // The function takes the following parameters:
 //
@@ -2692,9 +2882,10 @@ func (aggregator *Aggregator) FinishBuffer(buffer *gst.Buffer) gst.FlowReturn {
 	return _flowReturn
 }
 
-// FinishBufferList: this method will push the provided output buffer list
-// downstream. If needed, mandatory events such as stream-start, caps, and
-// segment events will be sent before pushing the buffer.
+// FinishBufferList (gst_aggregator_finish_buffer_list): this method will push
+// the provided output buffer list downstream. If needed, mandatory events such
+// as stream-start, caps, and segment events will be sent before pushing the
+// buffer.
 //
 // The function takes the following parameters:
 //
@@ -2719,8 +2910,8 @@ func (aggregator *Aggregator) FinishBufferList(bufferlist *gst.BufferList) gst.F
 	return _flowReturn
 }
 
-// Allocator lets Aggregator sub-classes get the memory allocator acquired by
-// the base class and its params.
+// Allocator (gst_aggregator_get_allocator) lets Aggregator sub-classes get the
+// memory allocator acquired by the base class and its params.
 //
 // Unref the allocator after use it.
 //
@@ -2793,8 +2984,9 @@ func (self *Aggregator) BufferPool() *gst.BufferPool {
 	return _bufferPool
 }
 
-// ForceLive subclasses may use the return value to inform whether they should
-// return GST_FLOW_EOS from their aggregate implementation.
+// ForceLive (gst_aggregator_get_force_live) subclasses may use the return
+// value to inform whether they should return GST_FLOW_EOS from their aggregate
+// implementation.
 //
 // The function returns the following values:
 //
@@ -2838,9 +3030,9 @@ func (self *Aggregator) IgnoreInactivePads() bool {
 	return _ok
 }
 
-// Latency retrieves the latency values reported by self in response to the
-// latency query, or GST_CLOCK_TIME_NONE if there is not live source connected
-// and the element will not wait for the clock.
+// Latency (gst_aggregator_get_latency) retrieves the latency values reported by
+// self in response to the latency query, or GST_CLOCK_TIME_NONE if there is not
+// live source connected and the element will not wait for the clock.
 //
 // Typically only called by subclasses.
 //
@@ -2863,9 +3055,9 @@ func (self *Aggregator) Latency() gst.ClockTime {
 	return _clockTime
 }
 
-// Negotiate negotiates src pad caps with downstream elements. Unmarks
-// GST_PAD_FLAG_NEED_RECONFIGURE in any case. But marks it again if
-// AggregatorClass::negotiate fails.
+// Negotiate (gst_aggregator_negotiate) negotiates src pad caps with downstream
+// elements. Unmarks GST_PAD_FLAG_NEED_RECONFIGURE in any case. But marks it
+// again if AggregatorClass::negotiate fails.
 //
 // The function returns the following values:
 //
@@ -2888,10 +3080,11 @@ func (self *Aggregator) Negotiate() bool {
 	return _ok
 }
 
-// PeekNextSample: use this function to determine what input buffers will be
-// aggregated to produce the next output buffer. This should only be called from
-// a Aggregator::samples-selected handler, and can be used to precisely control
-// aggregating parameters for a given set of input samples.
+// PeekNextSample (gst_aggregator_peek_next_sample): use this function to
+// determine what input buffers will be aggregated to produce the next output
+// buffer. This should only be called from a Aggregator::samples-selected
+// handler, and can be used to precisely control aggregating parameters for a
+// given set of input samples.
 //
 // The function returns the following values:
 //
@@ -2925,10 +3118,11 @@ func (self *Aggregator) PeekNextSample(pad *AggregatorPad) *gst.Sample {
 	return _sample
 }
 
-// SelectedSamples subclasses should call this when they have prepared the
-// buffers they will aggregate for each of their sink pads, but before using
-// any of the properties of the pads that govern *how* aggregation should be
-// performed, for example z-index for video aggregators.
+// SelectedSamples (gst_aggregator_selected_samples) subclasses should call
+// this when they have prepared the buffers they will aggregate for each of
+// their sink pads, but before using any of the properties of the pads that
+// govern *how* aggregation should be performed, for example z-index for video
+// aggregators.
 //
 // If gst_aggregator_update_segment() is used by the subclass, it MUST be called
 // before gst_aggregator_selected_samples().
@@ -2965,8 +3159,9 @@ func (self *Aggregator) SelectedSamples(pts, dts, duration gst.ClockTime, info *
 	runtime.KeepAlive(info)
 }
 
-// SetForceLive subclasses should call this at construction time in order for
-// self to aggregate on a timeout even when no live source is connected.
+// SetForceLive (gst_aggregator_set_force_live) subclasses should call this at
+// construction time in order for self to aggregate on a timeout even when no
+// live source is connected.
 func (self *Aggregator) SetForceLive(forceLive bool) {
 	var _arg0 *C.GstAggregator // out
 	var _arg1 C.gboolean       // out
@@ -2981,8 +3176,9 @@ func (self *Aggregator) SetForceLive(forceLive bool) {
 	runtime.KeepAlive(forceLive)
 }
 
-// SetIgnoreInactivePads subclasses should call this when they don't want to
-// time out waiting for a pad that hasn't yet received any buffers in live mode.
+// SetIgnoreInactivePads (gst_aggregator_set_ignore_inactive_pads) subclasses
+// should call this when they don't want to time out waiting for a pad that
+// hasn't yet received any buffers in live mode.
 //
 // Aggregator will still wait once on each newly-added pad, making sure upstream
 // has had a fair chance to start up.
@@ -3004,9 +3200,10 @@ func (self *Aggregator) SetIgnoreInactivePads(ignore bool) {
 	runtime.KeepAlive(ignore)
 }
 
-// SetLatency lets Aggregator sub-classes tell the baseclass what their internal
-// latency is. Will also post a LATENCY message on the bus so the pipeline can
-// reconfigure its global latency if the values changed.
+// SetLatency (gst_aggregator_set_latency) lets Aggregator sub-classes tell the
+// baseclass what their internal latency is. Will also post a LATENCY message
+// on the bus so the pipeline can reconfigure its global latency if the values
+// changed.
 //
 // The function takes the following parameters:
 //
@@ -3027,7 +3224,8 @@ func (self *Aggregator) SetLatency(minLatency, maxLatency gst.ClockTime) {
 	runtime.KeepAlive(maxLatency)
 }
 
-// SetSrcCaps sets the caps to be used on the src pad.
+// SetSrcCaps (gst_aggregator_set_src_caps) sets the caps to be used on the src
+// pad.
 //
 // The function takes the following parameters:
 //
@@ -3044,9 +3242,10 @@ func (self *Aggregator) SetSrcCaps(caps *gst.Caps) {
 	runtime.KeepAlive(caps)
 }
 
-// SimpleGetNextTime: this is a simple AggregatorClass::get_next_time
-// implementation that just looks at the Segment on the srcpad of the aggregator
-// and bases the next time on the running time there.
+// SimpleGetNextTime (gst_aggregator_simple_get_next_time): this is a simple
+// AggregatorClass::get_next_time implementation that just looks at the Segment
+// on the srcpad of the aggregator and bases the next time on the running time
+// there.
 //
 // This is the desired behaviour in most cases where you have a live source and
 // you have a dead line based aggregator subclass.
@@ -3070,8 +3269,9 @@ func (self *Aggregator) SimpleGetNextTime() gst.ClockTime {
 	return _clockTime
 }
 
-// UpdateSegment subclasses should use this to update the segment on their
-// source pad, instead of directly pushing new segment events downstream.
+// UpdateSegment (gst_aggregator_update_segment) subclasses should use this
+// to update the segment on their source pad, instead of directly pushing new
+// segment events downstream.
 //
 // Subclasses MUST call this before gst_aggregator_selected_samples(), if it is
 // used at all.
@@ -3779,7 +3979,7 @@ func defaultAggregatorPadOverrides(v *AggregatorPad) AggregatorPadOverrides {
 	}
 }
 
-// AggregatorPad pads managed by a Aggregator subclass.
+// AggregatorPad (GstAggregatorPad) pads managed by a Aggregator subclass.
 //
 // This class used to live in gst-plugins-bad and was moved to core.
 type AggregatorPad struct {
@@ -3790,6 +3990,36 @@ type AggregatorPad struct {
 var (
 	_ gst.GstObjector = (*AggregatorPad)(nil)
 )
+
+// AggregatorPadder describes types inherited from AggregatorPad.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type AggregatorPadder interface {
+	gst.Padder
+
+	// DropBuffer (gst_aggregator_pad_drop_buffer): drop the buffer currently
+	// queued in pad.
+	DropBuffer() bool
+	// HasBuffer (gst_aggregator_pad_has_buffer): this checks if a
+	// pad has a buffer available that will be returned by a call to
+	// gst_aggregator_pad_peek_buffer() or gst_aggregator_pad_pop_buffer().
+	HasBuffer() bool
+	IsEos() bool
+	// IsInactive (gst_aggregator_pad_is_inactive): it is only valid to call
+	// this method from AggregatorClass::aggregate().
+	IsInactive() bool
+	PeekBuffer() *gst.Buffer
+	// PopBuffer (gst_aggregator_pad_pop_buffer): steal the ref to the buffer
+	// currently queued in pad.
+	PopBuffer() *gst.Buffer
+
+	ConnectBufferConsumed(func(object *gst.Buffer)) coreglib.SignalHandle
+
+	baseAggregatorPad() *AggregatorPad
+}
+
+var _ AggregatorPadder = (*AggregatorPad)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*AggregatorPad, *AggregatorPadClass, AggregatorPadOverrides](
@@ -3833,11 +4063,21 @@ func marshalAggregatorPad(p uintptr) (interface{}, error) {
 	return wrapAggregatorPad(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
+func (pad *AggregatorPad) baseAggregatorPad() *AggregatorPad {
+	return pad
+}
+
+// BaseAggregatorPad returns the underlying base object.
+func BaseAggregatorPad(obj AggregatorPadder) *AggregatorPad {
+	return obj.baseAggregatorPad()
+}
+
 func (pad *AggregatorPad) ConnectBufferConsumed(f func(object *gst.Buffer)) coreglib.SignalHandle {
 	return coreglib.ConnectGeneratedClosure(pad, "buffer-consumed", false, unsafe.Pointer(C._gotk4_gstbase1_AggregatorPad_ConnectBufferConsumed), f)
 }
 
-// DropBuffer: drop the buffer currently queued in pad.
+// DropBuffer (gst_aggregator_pad_drop_buffer): drop the buffer currently queued
+// in pad.
 //
 // The function returns the following values:
 //
@@ -3860,9 +4100,9 @@ func (pad *AggregatorPad) DropBuffer() bool {
 	return _ok
 }
 
-// HasBuffer: this checks if a pad has a buffer available that will
-// be returned by a call to gst_aggregator_pad_peek_buffer() or
-// gst_aggregator_pad_pop_buffer().
+// HasBuffer (gst_aggregator_pad_has_buffer): this checks if a pad has a buffer
+// available that will be returned by a call to gst_aggregator_pad_peek_buffer()
+// or gst_aggregator_pad_pop_buffer().
 //
 // The function returns the following values:
 //
@@ -3906,8 +4146,8 @@ func (pad *AggregatorPad) IsEos() bool {
 	return _ok
 }
 
-// IsInactive: it is only valid to call this method from
-// AggregatorClass::aggregate().
+// IsInactive (gst_aggregator_pad_is_inactive): it is only valid to call this
+// method from AggregatorClass::aggregate().
 //
 // The function returns the following values:
 //
@@ -3958,7 +4198,8 @@ func (pad *AggregatorPad) PeekBuffer() *gst.Buffer {
 	return _buffer
 }
 
-// PopBuffer: steal the ref to the buffer currently queued in pad.
+// PopBuffer (gst_aggregator_pad_pop_buffer): steal the ref to the buffer
+// currently queued in pad.
 //
 // The function returns the following values:
 //
@@ -4124,8 +4365,8 @@ func defaultBaseParseOverrides(v *BaseParse) BaseParseOverrides {
 	}
 }
 
-// BaseParse: this base class is for parser elements that process data and
-// splits it into separate audio/video/whatever frames.
+// BaseParse (GstBaseParse): this base class is for parser elements that process
+// data and splits it into separate audio/video/whatever frames.
 //
 // It provides for:
 //
@@ -4258,12 +4499,71 @@ var (
 	_ gst.Elementer = (*BaseParse)(nil)
 )
 
-// BaseParser describes types inherited from class BaseParse.
+// BaseParser describes types inherited from BaseParse.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type BaseParser interface {
-	coreglib.Objector
+	gst.Elementer
+
+	// AddIndexEntry (gst_base_parse_add_index_entry) adds an entry to the index
+	// associating offset to ts.
+	AddIndexEntry(offset uint64, ts gst.ClockTime, key, force bool) bool
+	// ConvertDefault (gst_base_parse_convert_default): default implementation
+	// of BaseParseClass::convert.
+	ConvertDefault(srcFormat gst.Format, srcValue int64, destFormat gst.Format) (int64, bool)
+	// Drain (gst_base_parse_drain) drains the adapter until it is empty.
+	Drain()
+	// FinishFrame (gst_base_parse_finish_frame) collects parsed data and pushes
+	// it downstream.
+	FinishFrame(frame *BaseParseFrame, size int) gst.FlowReturn
+	// MergeTags (gst_base_parse_merge_tags) sets the parser subclass's tags and
+	// how they should be merged with any upstream stream tags.
+	MergeTags(tags *gst.TagList, mode gst.TagMergeMode)
+	// PushFrame (gst_base_parse_push_frame) pushes the frame's buffer
+	// downstream, sends any pending events and does some timestamp and segment
+	// handling.
+	PushFrame(frame *BaseParseFrame) gst.FlowReturn
+	// SetAverageBitrate (gst_base_parse_set_average_bitrate): optionally sets
+	// the average bitrate detected in media (if non-zero), e.g.
+	SetAverageBitrate(bitrate uint)
+	// SetDuration (gst_base_parse_set_duration) sets the duration of the
+	// currently playing media.
+	SetDuration(fmt gst.Format, duration int64, interval int)
+	// SetFrameRate (gst_base_parse_set_frame_rate): if frames per second is
+	// configured, parser can take care of buffer duration and timestamping.
+	SetFrameRate(fpsNum, fpsDen, leadIn, leadOut uint)
+	// SetHasTimingInfo (gst_base_parse_set_has_timing_info): set if frames
+	// carry timing information which the subclass can (generally) parse and
+	// provide.
+	SetHasTimingInfo(hasTiming bool)
+	// SetInferTs (gst_base_parse_set_infer_ts): by default, the base class
+	// might try to infer PTS from DTS and vice versa.
+	SetInferTs(inferTs bool)
+	// SetLatency (gst_base_parse_set_latency) sets the minimum and maximum
+	// (which may likely be equal) latency introduced by the parsing process.
+	SetLatency(minLatency, maxLatency gst.ClockTime)
+	// SetMinFrameSize (gst_base_parse_set_min_frame_size) subclass can use this
+	// function to tell the base class that it needs to be given buffers of at
+	// least min_size bytes.
+	SetMinFrameSize(minSize uint)
+	// SetPassthrough (gst_base_parse_set_passthrough): set if the nature of the
+	// format or configuration does not allow (much) parsing, and the parser
+	// should operate in passthrough mode (which only applies when operating in
+	// push mode).
+	SetPassthrough(passthrough bool)
+	// SetPtsInterpolation (gst_base_parse_set_pts_interpolation): by default,
+	// the base class will guess PTS timestamps using a simple interpolation
+	// (previous timestamp + duration), which is incorrect for data streams with
+	// reordering, where PTS can go backward.
+	SetPtsInterpolation(ptsInterpolate bool)
+	// SetSyncable (gst_base_parse_set_syncable): set if frame starts can be
+	// identified.
+	SetSyncable(syncable bool)
+	// SetTsAtOffset (gst_base_parse_set_ts_at_offset): this function should
+	// only be called from a handle_frame implementation.
+	SetTsAtOffset(offset uint)
+
 	baseBaseParse() *BaseParse
 }
 
@@ -4360,10 +4660,10 @@ func BaseBaseParse(obj BaseParser) *BaseParse {
 	return obj.baseBaseParse()
 }
 
-// AddIndexEntry adds an entry to the index associating offset to ts. It is
-// recommended to only add keyframe entries. force allows to bypass checks,
-// such as whether the stream is (upstream) seekable, another entry is already
-// "close" to the new entry, etc.
+// AddIndexEntry (gst_base_parse_add_index_entry) adds an entry to the index
+// associating offset to ts. It is recommended to only add keyframe entries.
+// force allows to bypass checks, such as whether the stream is (upstream)
+// seekable, another entry is already "close" to the new entry, etc.
 //
 // The function takes the following parameters:
 //
@@ -4409,7 +4709,8 @@ func (parse *BaseParse) AddIndexEntry(offset uint64, ts gst.ClockTime, key, forc
 	return _ok
 }
 
-// ConvertDefault: default implementation of BaseParseClass::convert.
+// ConvertDefault (gst_base_parse_convert_default): default implementation of
+// BaseParseClass::convert.
 //
 // The function takes the following parameters:
 //
@@ -4451,9 +4752,9 @@ func (parse *BaseParse) ConvertDefault(srcFormat gst.Format, srcValue int64, des
 	return _destValue, _ok
 }
 
-// Drain drains the adapter until it is empty. It decreases the min_frame_size
-// to match the current adapter size and calls chain method until the adapter is
-// emptied or chain returns with error.
+// Drain (gst_base_parse_drain) drains the adapter until it is empty.
+// It decreases the min_frame_size to match the current adapter size and calls
+// chain method until the adapter is emptied or chain returns with error.
 func (parse *BaseParse) Drain() {
 	var _arg0 *C.GstBaseParse // out
 
@@ -4463,8 +4764,8 @@ func (parse *BaseParse) Drain() {
 	runtime.KeepAlive(parse)
 }
 
-// FinishFrame collects parsed data and pushes it downstream. Source pad caps
-// must be set when this is called.
+// FinishFrame (gst_base_parse_finish_frame) collects parsed data and pushes it
+// downstream. Source pad caps must be set when this is called.
 //
 // If frame's out_buffer is set, that will be used as subsequent frame data,
 // and size amount will be flushed from the input data. The output_buffer size
@@ -4508,9 +4809,9 @@ func (parse *BaseParse) FinishFrame(frame *BaseParseFrame, size int) gst.FlowRet
 	return _flowReturn
 }
 
-// MergeTags sets the parser subclass's tags and how they should be merged with
-// any upstream stream tags. This will override any tags previously-set with
-// gst_base_parse_merge_tags().
+// MergeTags (gst_base_parse_merge_tags) sets the parser subclass's tags and how
+// they should be merged with any upstream stream tags. This will override any
+// tags previously-set with gst_base_parse_merge_tags().
 //
 // Note that this is provided for convenience, and the subclass is not required
 // to use this and can still do tag handling on its own.
@@ -4536,9 +4837,9 @@ func (parse *BaseParse) MergeTags(tags *gst.TagList, mode gst.TagMergeMode) {
 	runtime.KeepAlive(mode)
 }
 
-// PushFrame pushes the frame's buffer downstream, sends any pending events and
-// does some timestamp and segment handling. Takes ownership of frame's buffer,
-// though caller retains ownership of frame.
+// PushFrame (gst_base_parse_push_frame) pushes the frame's buffer downstream,
+// sends any pending events and does some timestamp and segment handling.
+// Takes ownership of frame's buffer, though caller retains ownership of frame.
 //
 // This must be called with sinkpad STREAM_LOCK held.
 //
@@ -4568,8 +4869,9 @@ func (parse *BaseParse) PushFrame(frame *BaseParseFrame) gst.FlowReturn {
 	return _flowReturn
 }
 
-// SetAverageBitrate: optionally sets the average bitrate detected in media (if
-// non-zero), e.g. based on metadata, as it will be posted to the application.
+// SetAverageBitrate (gst_base_parse_set_average_bitrate): optionally sets the
+// average bitrate detected in media (if non-zero), e.g. based on metadata,
+// as it will be posted to the application.
 //
 // By default, announced average bitrate is estimated. The average bitrate
 // is used to estimate the total duration of the stream and to estimate
@@ -4591,11 +4893,11 @@ func (parse *BaseParse) SetAverageBitrate(bitrate uint) {
 	runtime.KeepAlive(bitrate)
 }
 
-// SetDuration sets the duration of the currently playing media. Subclass can
-// use this when it is able to determine duration and/or notices a change in the
-// media duration. Alternatively, if interval is non-zero (default), then stream
-// duration is determined based on estimated bitrate, and updated every interval
-// frames.
+// SetDuration (gst_base_parse_set_duration) sets the duration of the currently
+// playing media. Subclass can use this when it is able to determine duration
+// and/or notices a change in the media duration. Alternatively, if interval is
+// non-zero (default), then stream duration is determined based on estimated
+// bitrate, and updated every interval frames.
 //
 // The function takes the following parameters:
 //
@@ -4621,11 +4923,12 @@ func (parse *BaseParse) SetDuration(fmt gst.Format, duration int64, interval int
 	runtime.KeepAlive(interval)
 }
 
-// SetFrameRate: if frames per second is configured, parser can take care
-// of buffer duration and timestamping. When performing segment clipping,
-// or seeking to a specific location, a corresponding decoder might need an
-// initial lead_in and a following lead_out number of frames to ensure the
-// desired segment is entirely filled upon decoding.
+// SetFrameRate (gst_base_parse_set_frame_rate): if frames per second is
+// configured, parser can take care of buffer duration and timestamping.
+// When performing segment clipping, or seeking to a specific location,
+// a corresponding decoder might need an initial lead_in and a following
+// lead_out number of frames to ensure the desired segment is entirely filled
+// upon decoding.
 //
 // The function takes the following parameters:
 //
@@ -4654,9 +4957,10 @@ func (parse *BaseParse) SetFrameRate(fpsNum, fpsDen, leadIn, leadOut uint) {
 	runtime.KeepAlive(leadOut)
 }
 
-// SetHasTimingInfo: set if frames carry timing information which the subclass
-// can (generally) parse and provide. In particular, intrinsic (rather than
-// estimated) time can be obtained following a seek.
+// SetHasTimingInfo (gst_base_parse_set_has_timing_info): set if frames carry
+// timing information which the subclass can (generally) parse and provide. In
+// particular, intrinsic (rather than estimated) time can be obtained following
+// a seek.
 //
 // The function takes the following parameters:
 //
@@ -4675,10 +4979,10 @@ func (parse *BaseParse) SetHasTimingInfo(hasTiming bool) {
 	runtime.KeepAlive(hasTiming)
 }
 
-// SetInferTs: by default, the base class might try to infer PTS from DTS and
-// vice versa. While this is generally correct for audio data, it may not be
-// otherwise. Sub-classes implementing such formats should disable timestamp
-// inferring.
+// SetInferTs (gst_base_parse_set_infer_ts): by default, the base class might
+// try to infer PTS from DTS and vice versa. While this is generally correct for
+// audio data, it may not be otherwise. Sub-classes implementing such formats
+// should disable timestamp inferring.
 //
 // The function takes the following parameters:
 //
@@ -4697,10 +5001,10 @@ func (parse *BaseParse) SetInferTs(inferTs bool) {
 	runtime.KeepAlive(inferTs)
 }
 
-// SetLatency sets the minimum and maximum (which may likely be equal) latency
-// introduced by the parsing process. If there is such a latency, which depends
-// on the particular parsing of the format, it typically corresponds to 1 frame
-// duration.
+// SetLatency (gst_base_parse_set_latency) sets the minimum and maximum (which
+// may likely be equal) latency introduced by the parsing process. If there
+// is such a latency, which depends on the particular parsing of the format,
+// it typically corresponds to 1 frame duration.
 //
 // If the provided values changed from previously provided ones, this will also
 // post a LATENCY message on the bus so the pipeline can reconfigure its global
@@ -4725,8 +5029,9 @@ func (parse *BaseParse) SetLatency(minLatency, maxLatency gst.ClockTime) {
 	runtime.KeepAlive(maxLatency)
 }
 
-// SetMinFrameSize subclass can use this function to tell the base class that it
-// needs to be given buffers of at least min_size bytes.
+// SetMinFrameSize (gst_base_parse_set_min_frame_size) subclass can use this
+// function to tell the base class that it needs to be given buffers of at least
+// min_size bytes.
 //
 // The function takes the following parameters:
 //
@@ -4744,13 +5049,14 @@ func (parse *BaseParse) SetMinFrameSize(minSize uint) {
 	runtime.KeepAlive(minSize)
 }
 
-// SetPassthrough: set if the nature of the format or configuration does not
-// allow (much) parsing, and the parser should operate in passthrough mode
-// (which only applies when operating in push mode). That is, incoming buffers
-// are pushed through unmodified, i.e. no BaseParseClass::handle_frame will
-// be invoked, but BaseParseClass::pre_push_frame will still be invoked,
-// so subclass can perform as much or as little is appropriate for passthrough
-// semantics in BaseParseClass::pre_push_frame.
+// SetPassthrough (gst_base_parse_set_passthrough): set if the nature
+// of the format or configuration does not allow (much) parsing, and the
+// parser should operate in passthrough mode (which only applies when
+// operating in push mode). That is, incoming buffers are pushed through
+// unmodified, i.e. no BaseParseClass::handle_frame will be invoked,
+// but BaseParseClass::pre_push_frame will still be invoked, so subclass can
+// perform as much or as little is appropriate for passthrough semantics in
+// BaseParseClass::pre_push_frame.
 //
 // The function takes the following parameters:
 //
@@ -4769,10 +5075,11 @@ func (parse *BaseParse) SetPassthrough(passthrough bool) {
 	runtime.KeepAlive(passthrough)
 }
 
-// SetPtsInterpolation: by default, the base class will guess PTS timestamps
-// using a simple interpolation (previous timestamp + duration), which is
-// incorrect for data streams with reordering, where PTS can go backward.
-// Sub-classes implementing such formats should disable PTS interpolation.
+// SetPtsInterpolation (gst_base_parse_set_pts_interpolation): by default, the
+// base class will guess PTS timestamps using a simple interpolation (previous
+// timestamp + duration), which is incorrect for data streams with reordering,
+// where PTS can go backward. Sub-classes implementing such formats should
+// disable PTS interpolation.
 //
 // The function takes the following parameters:
 //
@@ -4791,9 +5098,9 @@ func (parse *BaseParse) SetPtsInterpolation(ptsInterpolate bool) {
 	runtime.KeepAlive(ptsInterpolate)
 }
 
-// SetSyncable: set if frame starts can be identified. This is set by default
-// and determines whether seeking based on bitrate averages is possible for a
-// format/stream.
+// SetSyncable (gst_base_parse_set_syncable): set if frame starts can be
+// identified. This is set by default and determines whether seeking based on
+// bitrate averages is possible for a format/stream.
 //
 // The function takes the following parameters:
 //
@@ -4812,8 +5119,8 @@ func (parse *BaseParse) SetSyncable(syncable bool) {
 	runtime.KeepAlive(syncable)
 }
 
-// SetTsAtOffset: this function should only be called from a handle_frame
-// implementation.
+// SetTsAtOffset (gst_base_parse_set_ts_at_offset): this function should only be
+// called from a handle_frame implementation.
 //
 // BaseParse creates initial timestamps for frames by using the last timestamp
 // seen in the stream before the frame starts. In certain cases, the correct
@@ -5253,11 +5560,11 @@ func defaultBaseSinkOverrides(v *BaseSink) BaseSinkOverrides {
 	}
 }
 
-// BaseSink is the base class for sink elements in GStreamer, such as
-// xvimagesink or filesink. It is a layer on top of Element that provides a
-// simplified interface to plugin writers. BaseSink handles many details for
-// you, for example: preroll, clock synchronization, state changes, activation
-// in push or pull mode, and queries.
+// BaseSink (GstBaseSink) is the base class for sink elements in GStreamer,
+// such as xvimagesink or filesink. It is a layer on top of Element that
+// provides a simplified interface to plugin writers. BaseSink handles many
+// details for you, for example: preroll, clock synchronization, state changes,
+// activation in push or pull mode, and queries.
 //
 // In most cases, when writing sink elements, there is no need to implement
 // class methods from Element or to set functions on pads, because the BaseSink
@@ -5367,12 +5674,114 @@ var (
 	_ gst.Elementer = (*BaseSink)(nil)
 )
 
-// BaseSinker describes types inherited from class BaseSink.
+// BaseSinker describes types inherited from BaseSink.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type BaseSinker interface {
-	coreglib.Objector
+	gst.Elementer
+
+	// DoPreroll (gst_base_sink_do_preroll): if the sink spawns its own thread
+	// for pulling buffers from upstream it should call this method after it has
+	// pulled a buffer.
+	DoPreroll(obj *gst.MiniObject) gst.FlowReturn
+	// Blocksize (gst_base_sink_get_blocksize): get the number of bytes that the
+	// sink will pull when it is operating in pull mode.
+	Blocksize() uint
+	// DropOutOfSegment (gst_base_sink_get_drop_out_of_segment) checks if sink
+	// is currently configured to drop buffers which are outside the current
+	// segment.
+	DropOutOfSegment() bool
+	// LastSample (gst_base_sink_get_last_sample): get the last sample that
+	// arrived in the sink and was used for preroll or for rendering.
+	LastSample() *gst.Sample
+	// Latency (gst_base_sink_get_latency): get the currently configured
+	// latency.
+	Latency() gst.ClockTime
+	// MaxBitrate (gst_base_sink_get_max_bitrate): get the maximum amount of
+	// bits per second that the sink will render.
+	MaxBitrate() uint64
+	// MaxLateness (gst_base_sink_get_max_lateness) gets the max lateness value.
+	MaxLateness() int64
+	// ProcessingDeadline (gst_base_sink_get_processing_deadline): get the
+	// processing deadline of sink.
+	ProcessingDeadline() gst.ClockTime
+	// RenderDelay (gst_base_sink_get_render_delay): get the render delay of
+	// sink.
+	RenderDelay() gst.ClockTime
+	// Stats (gst_base_sink_get_stats): return various BaseSink statistics.
+	Stats() *gst.Structure
+	// Sync (gst_base_sink_get_sync) checks if sink is currently configured to
+	// synchronize against the clock.
+	Sync() bool
+	// ThrottleTime (gst_base_sink_get_throttle_time): get the time that will be
+	// inserted between frames to control the maximum buffers per second.
+	ThrottleTime() uint64
+	// TsOffset (gst_base_sink_get_ts_offset): get the synchronisation offset of
+	// sink.
+	TsOffset() gst.ClockTimeDiff
+	// IsAsyncEnabled (gst_base_sink_is_async_enabled) checks if sink is
+	// currently configured to perform asynchronous state changes to PAUSED.
+	IsAsyncEnabled() bool
+	// IsLastSampleEnabled (gst_base_sink_is_last_sample_enabled) checks if
+	// sink is currently configured to store the last received sample in the
+	// last-sample property.
+	IsLastSampleEnabled() bool
+	// IsQosEnabled (gst_base_sink_is_qos_enabled) checks if sink is currently
+	// configured to send Quality-of-Service events upstream.
+	IsQosEnabled() bool
+	// QueryLatency (gst_base_sink_query_latency): query the sink for the
+	// latency parameters.
+	QueryLatency() (live, upstreamLive bool, minLatency, maxLatency gst.ClockTime, ok bool)
+	// SetAsyncEnabled (gst_base_sink_set_async_enabled) configures sink to
+	// perform all state changes asynchronously.
+	SetAsyncEnabled(enabled bool)
+	// SetBlocksize (gst_base_sink_set_blocksize): set the number of bytes that
+	// the sink will pull when it is operating in pull mode.
+	SetBlocksize(blocksize uint)
+	// SetDropOutOfSegment (gst_base_sink_set_drop_out_of_segment): configure
+	// sink to drop buffers which are outside the current segment.
+	SetDropOutOfSegment(dropOutOfSegment bool)
+	// SetLastSampleEnabled (gst_base_sink_set_last_sample_enabled) configures
+	// sink to store the last received sample in the last-sample property.
+	SetLastSampleEnabled(enabled bool)
+	// SetMaxBitrate (gst_base_sink_set_max_bitrate): set the maximum amount of
+	// bits per second that the sink will render.
+	SetMaxBitrate(maxBitrate uint64)
+	// SetMaxLateness (gst_base_sink_set_max_lateness) sets the new max lateness
+	// value to max_lateness.
+	SetMaxLateness(maxLateness int64)
+	// SetProcessingDeadline (gst_base_sink_set_processing_deadline): maximum
+	// amount of time (in nanoseconds) that the pipeline can take for processing
+	// the buffer.
+	SetProcessingDeadline(processingDeadline gst.ClockTime)
+	// SetQosEnabled (gst_base_sink_set_qos_enabled) configures sink to send
+	// Quality-of-Service events upstream.
+	SetQosEnabled(enabled bool)
+	// SetRenderDelay (gst_base_sink_set_render_delay): set the render delay in
+	// sink to delay.
+	SetRenderDelay(delay gst.ClockTime)
+	// SetSync (gst_base_sink_set_sync) configures sink to synchronize on the
+	// clock or not.
+	SetSync(sync bool)
+	// SetThrottleTime (gst_base_sink_set_throttle_time): set the time that will
+	// be inserted between rendered buffers.
+	SetThrottleTime(throttle uint64)
+	// SetTsOffset (gst_base_sink_set_ts_offset): adjust the synchronisation of
+	// sink with offset.
+	SetTsOffset(offset gst.ClockTimeDiff)
+	// Wait (gst_base_sink_wait): this function will wait for preroll to
+	// complete and will then block until time is reached.
+	Wait(time gst.ClockTime) (gst.ClockTimeDiff, gst.FlowReturn)
+	// WaitClock (gst_base_sink_wait_clock): this function will block until time
+	// is reached.
+	WaitClock(time gst.ClockTime) (gst.ClockTimeDiff, gst.ClockReturn)
+	// WaitPreroll (gst_base_sink_wait_preroll): if the BaseSinkClass::render
+	// method performs its own synchronisation against the clock it must unblock
+	// when going from PLAYING to the PAUSED state and call this method before
+	// continuing to render the remaining data.
+	WaitPreroll() gst.FlowReturn
+
 	baseBaseSink() *BaseSink
 }
 
@@ -5493,10 +5902,10 @@ func BaseBaseSink(obj BaseSinker) *BaseSink {
 	return obj.baseBaseSink()
 }
 
-// DoPreroll: if the sink spawns its own thread for pulling buffers from
-// upstream it should call this method after it has pulled a buffer. If the
-// element needed to preroll, this function will perform the preroll and will
-// then block until the element state is changed.
+// DoPreroll (gst_base_sink_do_preroll): if the sink spawns its own thread for
+// pulling buffers from upstream it should call this method after it has pulled
+// a buffer. If the element needed to preroll, this function will perform the
+// preroll and will then block until the element state is changed.
 //
 // This function should be called with the PREROLL_LOCK held.
 //
@@ -5528,8 +5937,8 @@ func (sink *BaseSink) DoPreroll(obj *gst.MiniObject) gst.FlowReturn {
 	return _flowReturn
 }
 
-// Blocksize: get the number of bytes that the sink will pull when it is
-// operating in pull mode.
+// Blocksize (gst_base_sink_get_blocksize): get the number of bytes that the
+// sink will pull when it is operating in pull mode.
 //
 // The function returns the following values:
 //
@@ -5550,8 +5959,8 @@ func (sink *BaseSink) Blocksize() uint {
 	return _guint
 }
 
-// DropOutOfSegment checks if sink is currently configured to drop buffers which
-// are outside the current segment.
+// DropOutOfSegment (gst_base_sink_get_drop_out_of_segment) checks if sink is
+// currently configured to drop buffers which are outside the current segment.
 //
 // The function returns the following values:
 //
@@ -5575,8 +5984,9 @@ func (sink *BaseSink) DropOutOfSegment() bool {
 	return _ok
 }
 
-// LastSample: get the last sample that arrived in the sink and was used for
-// preroll or for rendering. This property can be used to generate thumbnails.
+// LastSample (gst_base_sink_get_last_sample): get the last sample that arrived
+// in the sink and was used for preroll or for rendering. This property can be
+// used to generate thumbnails.
 //
 // The Caps on the sample can be used to determine the type of the buffer.
 //
@@ -5610,7 +6020,7 @@ func (sink *BaseSink) LastSample() *gst.Sample {
 	return _sample
 }
 
-// Latency: get the currently configured latency.
+// Latency (gst_base_sink_get_latency): get the currently configured latency.
 //
 // The function returns the following values:
 //
@@ -5631,8 +6041,8 @@ func (sink *BaseSink) Latency() gst.ClockTime {
 	return _clockTime
 }
 
-// MaxBitrate: get the maximum amount of bits per second that the sink will
-// render.
+// MaxBitrate (gst_base_sink_get_max_bitrate): get the maximum amount of bits
+// per second that the sink will render.
 //
 // The function returns the following values:
 //
@@ -5653,8 +6063,8 @@ func (sink *BaseSink) MaxBitrate() uint64 {
 	return _guint64
 }
 
-// MaxLateness gets the max lateness value. See gst_base_sink_set_max_lateness()
-// for more details.
+// MaxLateness (gst_base_sink_get_max_lateness) gets the max lateness value.
+// See gst_base_sink_set_max_lateness() for more details.
 //
 // The function returns the following values:
 //
@@ -5676,9 +6086,9 @@ func (sink *BaseSink) MaxLateness() int64 {
 	return _gint64
 }
 
-// ProcessingDeadline: get the processing deadline of sink. see
-// gst_base_sink_set_processing_deadline() for more information about the
-// processing deadline.
+// ProcessingDeadline (gst_base_sink_get_processing_deadline): get the
+// processing deadline of sink. see gst_base_sink_set_processing_deadline() for
+// more information about the processing deadline.
 //
 // The function returns the following values:
 //
@@ -5699,8 +6109,9 @@ func (sink *BaseSink) ProcessingDeadline() gst.ClockTime {
 	return _clockTime
 }
 
-// RenderDelay: get the render delay of sink. see
-// gst_base_sink_set_render_delay() for more information about the render delay.
+// RenderDelay (gst_base_sink_get_render_delay): get the render delay of sink.
+// see gst_base_sink_set_render_delay() for more information about the render
+// delay.
 //
 // The function returns the following values:
 //
@@ -5721,8 +6132,9 @@ func (sink *BaseSink) RenderDelay() gst.ClockTime {
 	return _clockTime
 }
 
-// Stats: return various BaseSink statistics. This function returns a Structure
-// with name application/x-gst-base-sink-stats with the following fields:
+// Stats (gst_base_sink_get_stats): return various BaseSink statistics. This
+// function returns a Structure with name application/x-gst-base-sink-stats with
+// the following fields:
 //
 // - "average-rate" G_TYPE_DOUBLE average frame rate
 //
@@ -5754,7 +6166,8 @@ func (sink *BaseSink) Stats() *gst.Structure {
 	return _structure
 }
 
-// Sync checks if sink is currently configured to synchronize against the clock.
+// Sync (gst_base_sink_get_sync) checks if sink is currently configured to
+// synchronize against the clock.
 //
 // The function returns the following values:
 //
@@ -5777,8 +6190,8 @@ func (sink *BaseSink) Sync() bool {
 	return _ok
 }
 
-// ThrottleTime: get the time that will be inserted between frames to control
-// the maximum buffers per second.
+// ThrottleTime (gst_base_sink_get_throttle_time): get the time that will be
+// inserted between frames to control the maximum buffers per second.
 //
 // The function returns the following values:
 //
@@ -5799,7 +6212,8 @@ func (sink *BaseSink) ThrottleTime() uint64 {
 	return _guint64
 }
 
-// TsOffset: get the synchronisation offset of sink.
+// TsOffset (gst_base_sink_get_ts_offset): get the synchronisation offset of
+// sink.
 //
 // The function returns the following values:
 //
@@ -5820,8 +6234,8 @@ func (sink *BaseSink) TsOffset() gst.ClockTimeDiff {
 	return _clockTimeDiff
 }
 
-// IsAsyncEnabled checks if sink is currently configured to perform asynchronous
-// state changes to PAUSED.
+// IsAsyncEnabled (gst_base_sink_is_async_enabled) checks if sink is currently
+// configured to perform asynchronous state changes to PAUSED.
 //
 // The function returns the following values:
 //
@@ -5844,8 +6258,9 @@ func (sink *BaseSink) IsAsyncEnabled() bool {
 	return _ok
 }
 
-// IsLastSampleEnabled checks if sink is currently configured to store the last
-// received sample in the last-sample property.
+// IsLastSampleEnabled (gst_base_sink_is_last_sample_enabled) checks if sink is
+// currently configured to store the last received sample in the last-sample
+// property.
 //
 // The function returns the following values:
 //
@@ -5868,8 +6283,8 @@ func (sink *BaseSink) IsLastSampleEnabled() bool {
 	return _ok
 }
 
-// IsQosEnabled checks if sink is currently configured to send
-// Quality-of-Service events upstream.
+// IsQosEnabled (gst_base_sink_is_qos_enabled) checks if sink is currently
+// configured to send Quality-of-Service events upstream.
 //
 // The function returns the following values:
 //
@@ -5892,10 +6307,10 @@ func (sink *BaseSink) IsQosEnabled() bool {
 	return _ok
 }
 
-// QueryLatency: query the sink for the latency parameters. The latency will be
-// queried from the upstream elements. live will be TRUE if sink is configured
-// to synchronize against the clock. upstream_live will be TRUE if an upstream
-// element is live.
+// QueryLatency (gst_base_sink_query_latency): query the sink for the latency
+// parameters. The latency will be queried from the upstream elements.
+// live will be TRUE if sink is configured to synchronize against the clock.
+// upstream_live will be TRUE if an upstream element is live.
 //
 // If both live and upstream_live are TRUE, the sink will want to compensate for
 // the latency introduced by the upstream elements by setting the min_latency to
@@ -5944,10 +6359,11 @@ func (sink *BaseSink) QueryLatency() (live, upstreamLive bool, minLatency, maxLa
 	return _live, _upstreamLive, _minLatency, _maxLatency, _ok
 }
 
-// SetAsyncEnabled configures sink to perform all state changes asynchronously.
-// When async is disabled, the sink will immediately go to PAUSED instead of
-// waiting for a preroll buffer. This feature is useful if the sink does not
-// synchronize against the clock or when it is dealing with sparse streams.
+// SetAsyncEnabled (gst_base_sink_set_async_enabled) configures sink to
+// perform all state changes asynchronously. When async is disabled, the sink
+// will immediately go to PAUSED instead of waiting for a preroll buffer.
+// This feature is useful if the sink does not synchronize against the clock or
+// when it is dealing with sparse streams.
 //
 // The function takes the following parameters:
 //
@@ -5966,8 +6382,8 @@ func (sink *BaseSink) SetAsyncEnabled(enabled bool) {
 	runtime.KeepAlive(enabled)
 }
 
-// SetBlocksize: set the number of bytes that the sink will pull when it is
-// operating in pull mode.
+// SetBlocksize (gst_base_sink_set_blocksize): set the number of bytes that the
+// sink will pull when it is operating in pull mode.
 //
 // The function takes the following parameters:
 //
@@ -5984,8 +6400,8 @@ func (sink *BaseSink) SetBlocksize(blocksize uint) {
 	runtime.KeepAlive(blocksize)
 }
 
-// SetDropOutOfSegment: configure sink to drop buffers which are outside the
-// current segment.
+// SetDropOutOfSegment (gst_base_sink_set_drop_out_of_segment): configure sink
+// to drop buffers which are outside the current segment.
 //
 // The function takes the following parameters:
 //
@@ -6004,8 +6420,8 @@ func (sink *BaseSink) SetDropOutOfSegment(dropOutOfSegment bool) {
 	runtime.KeepAlive(dropOutOfSegment)
 }
 
-// SetLastSampleEnabled configures sink to store the last received sample in the
-// last-sample property.
+// SetLastSampleEnabled (gst_base_sink_set_last_sample_enabled) configures sink
+// to store the last received sample in the last-sample property.
 //
 // The function takes the following parameters:
 //
@@ -6024,8 +6440,8 @@ func (sink *BaseSink) SetLastSampleEnabled(enabled bool) {
 	runtime.KeepAlive(enabled)
 }
 
-// SetMaxBitrate: set the maximum amount of bits per second that the sink will
-// render.
+// SetMaxBitrate (gst_base_sink_set_max_bitrate): set the maximum amount of bits
+// per second that the sink will render.
 //
 // The function takes the following parameters:
 //
@@ -6042,9 +6458,10 @@ func (sink *BaseSink) SetMaxBitrate(maxBitrate uint64) {
 	runtime.KeepAlive(maxBitrate)
 }
 
-// SetMaxLateness sets the new max lateness value to max_lateness. This value
-// is used to decide if a buffer should be dropped or not based on the buffer
-// timestamp and the current clock time. A value of -1 means an unlimited time.
+// SetMaxLateness (gst_base_sink_set_max_lateness) sets the new max lateness
+// value to max_lateness. This value is used to decide if a buffer should be
+// dropped or not based on the buffer timestamp and the current clock time.
+// A value of -1 means an unlimited time.
 //
 // The function takes the following parameters:
 //
@@ -6061,9 +6478,9 @@ func (sink *BaseSink) SetMaxLateness(maxLateness int64) {
 	runtime.KeepAlive(maxLateness)
 }
 
-// SetProcessingDeadline: maximum amount of time (in nanoseconds) that the
-// pipeline can take for processing the buffer. This is added to the latency of
-// live pipelines.
+// SetProcessingDeadline (gst_base_sink_set_processing_deadline): maximum
+// amount of time (in nanoseconds) that the pipeline can take for processing the
+// buffer. This is added to the latency of live pipelines.
 //
 // This function is usually called by subclasses.
 //
@@ -6082,7 +6499,8 @@ func (sink *BaseSink) SetProcessingDeadline(processingDeadline gst.ClockTime) {
 	runtime.KeepAlive(processingDeadline)
 }
 
-// SetQosEnabled configures sink to send Quality-of-Service events upstream.
+// SetQosEnabled (gst_base_sink_set_qos_enabled) configures sink to send
+// Quality-of-Service events upstream.
 //
 // The function takes the following parameters:
 //
@@ -6101,10 +6519,10 @@ func (sink *BaseSink) SetQosEnabled(enabled bool) {
 	runtime.KeepAlive(enabled)
 }
 
-// SetRenderDelay: set the render delay in sink to delay. The render delay is
-// the time between actual rendering of a buffer and its synchronisation time.
-// Some devices might delay media rendering which can be compensated for with
-// this function.
+// SetRenderDelay (gst_base_sink_set_render_delay): set the render delay in sink
+// to delay. The render delay is the time between actual rendering of a buffer
+// and its synchronisation time. Some devices might delay media rendering which
+// can be compensated for with this function.
 //
 // After calling this function, this sink will report additional latency and
 // other sinks will adjust their latency to delay the rendering of their media.
@@ -6126,10 +6544,10 @@ func (sink *BaseSink) SetRenderDelay(delay gst.ClockTime) {
 	runtime.KeepAlive(delay)
 }
 
-// SetSync configures sink to synchronize on the clock or not. When sync is
-// FALSE, incoming samples will be played as fast as possible. If sync is TRUE,
-// the timestamps of the incoming buffers will be used to schedule the exact
-// render time of its contents.
+// SetSync (gst_base_sink_set_sync) configures sink to synchronize on the
+// clock or not. When sync is FALSE, incoming samples will be played as fast
+// as possible. If sync is TRUE, the timestamps of the incoming buffers will be
+// used to schedule the exact render time of its contents.
 //
 // The function takes the following parameters:
 //
@@ -6148,9 +6566,9 @@ func (sink *BaseSink) SetSync(sync bool) {
 	runtime.KeepAlive(sync)
 }
 
-// SetThrottleTime: set the time that will be inserted between rendered buffers.
-// This can be used to control the maximum buffers per second that the sink will
-// render.
+// SetThrottleTime (gst_base_sink_set_throttle_time): set the time that will be
+// inserted between rendered buffers. This can be used to control the maximum
+// buffers per second that the sink will render.
 //
 // The function takes the following parameters:
 //
@@ -6167,10 +6585,10 @@ func (sink *BaseSink) SetThrottleTime(throttle uint64) {
 	runtime.KeepAlive(throttle)
 }
 
-// SetTsOffset: adjust the synchronisation of sink with offset. A negative value
-// will render buffers earlier than their timestamp. A positive value will delay
-// rendering. This function can be used to fix playback of badly timestamped
-// buffers.
+// SetTsOffset (gst_base_sink_set_ts_offset): adjust the synchronisation of
+// sink with offset. A negative value will render buffers earlier than their
+// timestamp. A positive value will delay rendering. This function can be used
+// to fix playback of badly timestamped buffers.
 //
 // The function takes the following parameters:
 //
@@ -6187,10 +6605,10 @@ func (sink *BaseSink) SetTsOffset(offset gst.ClockTimeDiff) {
 	runtime.KeepAlive(offset)
 }
 
-// Wait: this function will wait for preroll to complete and will then block
-// until time is reached. It is usually called by subclasses that use their own
-// internal synchronisation but want to let some synchronization (like EOS) be
-// handled by the base class.
+// Wait (gst_base_sink_wait): this function will wait for preroll to complete
+// and will then block until time is reached. It is usually called by
+// subclasses that use their own internal synchronisation but want to let some
+// synchronization (like EOS) be handled by the base class.
 //
 // This function should only be called with the PREROLL_LOCK held (like when
 // receiving an EOS event in the ::event vmethod or when handling buffers in
@@ -6230,8 +6648,9 @@ func (sink *BaseSink) Wait(time gst.ClockTime) (gst.ClockTimeDiff, gst.FlowRetur
 	return _jitter, _flowReturn
 }
 
-// WaitClock: this function will block until time is reached. It is usually
-// called by subclasses that use their own internal synchronisation.
+// WaitClock (gst_base_sink_wait_clock): this function will block until time
+// is reached. It is usually called by subclasses that use their own internal
+// synchronisation.
 //
 // If time is not valid, no synchronisation is done and GST_CLOCK_BADTIME is
 // returned. Likewise, if synchronisation is disabled in the element or there is
@@ -6274,10 +6693,10 @@ func (sink *BaseSink) WaitClock(time gst.ClockTime) (gst.ClockTimeDiff, gst.Cloc
 	return _jitter, _clockReturn
 }
 
-// WaitPreroll: if the BaseSinkClass::render method performs its own
-// synchronisation against the clock it must unblock when going from PLAYING
-// to the PAUSED state and call this method before continuing to render the
-// remaining data.
+// WaitPreroll (gst_base_sink_wait_preroll): if the BaseSinkClass::render method
+// performs its own synchronisation against the clock it must unblock when going
+// from PLAYING to the PAUSED state and call this method before continuing to
+// render the remaining data.
 //
 // If the BaseSinkClass::render method can block on something else
 // than the clock, it must also be ready to unblock immediately on the
@@ -6904,8 +7323,8 @@ func defaultBaseSrcOverrides(v *BaseSrc) BaseSrcOverrides {
 	}
 }
 
-// BaseSrc: this is a generic base class for source elements. The following
-// types of sources are supported:
+// BaseSrc (GstBaseSrc): this is a generic base class for source elements.
+// The following types of sources are supported:
 //
 //   - random access sources like files
 //   - seekable sources
@@ -7020,12 +7439,83 @@ var (
 	_ gst.Elementer = (*BaseSrc)(nil)
 )
 
-// BaseSrcer describes types inherited from class BaseSrc.
+// BaseSrcer describes types inherited from BaseSrc.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type BaseSrcer interface {
-	coreglib.Objector
+	gst.Elementer
+
+	// Allocator (gst_base_src_get_allocator) lets BaseSrc sub-classes to know
+	// the memory allocator used by the base class and its params.
+	Allocator() (gst.Allocatorrer, *gst.AllocationParams)
+	// Blocksize (gst_base_src_get_blocksize): get the number of bytes that src
+	// will push out with each buffer.
+	Blocksize() uint
+	BufferPool() *gst.BufferPool
+	// DoTimestamp (gst_base_src_get_do_timestamp): query if src timestamps
+	// outgoing buffers based on the current running_time.
+	DoTimestamp() bool
+	// IsAsync (gst_base_src_is_async): get the current async behaviour of src.
+	IsAsync() bool
+	// IsLive (gst_base_src_is_live): check if an element is in live mode.
+	IsLive() bool
+	// Negotiate (gst_base_src_negotiate) negotiates src pad caps with
+	// downstream elements.
+	Negotiate() bool
+	// NewSeamlessSegment (gst_base_src_new_seamless_segment): prepare a new
+	// seamless segment for emission downstream.
+	NewSeamlessSegment(start, stop, time int64) bool
+	// NewSegment (gst_base_src_new_segment): prepare a new segment for emission
+	// downstream.
+	NewSegment(segment *gst.Segment) bool
+	// PushSegment (gst_base_src_push_segment): send a new segment downstream.
+	PushSegment(segment *gst.Segment) bool
+	// QueryLatency (gst_base_src_query_latency): query the source for the
+	// latency parameters.
+	QueryLatency() (live bool, minLatency, maxLatency gst.ClockTime, ok bool)
+	// SetAsync (gst_base_src_set_async): configure async behaviour in src,
+	// no state change will block.
+	SetAsync(async bool)
+	// SetAutomaticEos (gst_base_src_set_automatic_eos): if automatic_eos is
+	// TRUE, src will automatically go EOS if a buffer after the total size is
+	// returned.
+	SetAutomaticEos(automaticEos bool)
+	// SetBlocksize (gst_base_src_set_blocksize): set the number of bytes that
+	// src will push out with each buffer.
+	SetBlocksize(blocksize uint)
+	// SetCaps (gst_base_src_set_caps): set new caps on the basesrc source pad.
+	SetCaps(caps *gst.Caps) bool
+	// SetDoTimestamp (gst_base_src_set_do_timestamp): configure src to
+	// automatically timestamp outgoing buffers based on the current
+	// running_time of the pipeline.
+	SetDoTimestamp(timestamp bool)
+	// SetDynamicSize (gst_base_src_set_dynamic_size): if not dynamic, size
+	// is only updated when needed, such as when trying to read past current
+	// tracked size.
+	SetDynamicSize(dynamic bool)
+	// SetFormat (gst_base_src_set_format) sets the default format of the
+	// source.
+	SetFormat(format gst.Format)
+	// SetLive (gst_base_src_set_live): if the element listens to a live source,
+	// live should be set to TRUE.
+	SetLive(live bool)
+	// StartComplete (gst_base_src_start_complete): complete an asynchronous
+	// start operation.
+	StartComplete(ret gst.FlowReturn)
+	// StartWait (gst_base_src_start_wait): wait until the start operation
+	// completes.
+	StartWait() gst.FlowReturn
+	// SubmitBufferList (gst_base_src_submit_buffer_list) subclasses can call
+	// this from their create virtual method implementation to submit a buffer
+	// list to be pushed out later.
+	SubmitBufferList(bufferList *gst.BufferList)
+	// WaitPlaying (gst_base_src_wait_playing): if the BaseSrcClass::create
+	// method performs its own synchronisation against the clock it must unblock
+	// when going from PLAYING to the PAUSED state and call this method before
+	// continuing to produce the remaining data.
+	WaitPlaying() gst.FlowReturn
+
 	baseBaseSrc() *BaseSrc
 }
 
@@ -7146,8 +7636,8 @@ func BaseBaseSrc(obj BaseSrcer) *BaseSrc {
 	return obj.baseBaseSrc()
 }
 
-// Allocator lets BaseSrc sub-classes to know the memory allocator used by the
-// base class and its params.
+// Allocator (gst_base_src_get_allocator) lets BaseSrc sub-classes to know the
+// memory allocator used by the base class and its params.
 //
 // Unref the allocator after usage.
 //
@@ -7189,7 +7679,8 @@ func (src *BaseSrc) Allocator() (gst.Allocatorrer, *gst.AllocationParams) {
 	return _allocator, _params
 }
 
-// Blocksize: get the number of bytes that src will push out with each buffer.
+// Blocksize (gst_base_src_get_blocksize): get the number of bytes that src will
+// push out with each buffer.
 //
 // The function returns the following values:
 //
@@ -7241,8 +7732,8 @@ func (src *BaseSrc) BufferPool() *gst.BufferPool {
 	return _bufferPool
 }
 
-// DoTimestamp: query if src timestamps outgoing buffers based on the current
-// running_time.
+// DoTimestamp (gst_base_src_get_do_timestamp): query if src timestamps outgoing
+// buffers based on the current running_time.
 //
 // The function returns the following values:
 //
@@ -7265,8 +7756,8 @@ func (src *BaseSrc) DoTimestamp() bool {
 	return _ok
 }
 
-// IsAsync: get the current async behaviour of src. See also
-// gst_base_src_set_async().
+// IsAsync (gst_base_src_is_async): get the current async behaviour of src.
+// See also gst_base_src_set_async().
 //
 // The function returns the following values:
 //
@@ -7289,7 +7780,7 @@ func (src *BaseSrc) IsAsync() bool {
 	return _ok
 }
 
-// IsLive: check if an element is in live mode.
+// IsLive (gst_base_src_is_live): check if an element is in live mode.
 //
 // The function returns the following values:
 //
@@ -7312,9 +7803,9 @@ func (src *BaseSrc) IsLive() bool {
 	return _ok
 }
 
-// Negotiate negotiates src pad caps with downstream elements. Unmarks
-// GST_PAD_FLAG_NEED_RECONFIGURE in any case. But marks it again if
-// BaseSrcClass::negotiate fails.
+// Negotiate (gst_base_src_negotiate) negotiates src pad caps with downstream
+// elements. Unmarks GST_PAD_FLAG_NEED_RECONFIGURE in any case. But marks it
+// again if BaseSrcClass::negotiate fails.
 //
 // Do not call this in the BaseSrcClass::fill vmethod. Call this in
 // BaseSrcClass::create or in BaseSrcClass::alloc, _before_ any buffer is
@@ -7341,9 +7832,10 @@ func (src *BaseSrc) Negotiate() bool {
 	return _ok
 }
 
-// NewSeamlessSegment: prepare a new seamless segment for emission downstream.
-// This function must only be called by derived sub-classes, and only from the
-// BaseSrcClass::create function, as the stream-lock needs to be held.
+// NewSeamlessSegment (gst_base_src_new_seamless_segment): prepare a new
+// seamless segment for emission downstream. This function must only be called
+// by derived sub-classes, and only from the BaseSrcClass::create function,
+// as the stream-lock needs to be held.
 //
 // The format for the new segment will be the current format of the source,
 // as configured with gst_base_src_set_format()
@@ -7386,9 +7878,10 @@ func (src *BaseSrc) NewSeamlessSegment(start, stop, time int64) bool {
 	return _ok
 }
 
-// NewSegment: prepare a new segment for emission downstream. This function must
-// only be called by derived sub-classes, and only from the BaseSrcClass::create
-// function, as the stream-lock needs to be held.
+// NewSegment (gst_base_src_new_segment): prepare a new segment for emission
+// downstream. This function must only be called by derived sub-classes,
+// and only from the BaseSrcClass::create function, as the stream-lock needs to
+// be held.
 //
 // The format for the segment must be identical with the current format of the
 // source, as configured with gst_base_src_set_format().
@@ -7424,11 +7917,11 @@ func (src *BaseSrc) NewSegment(segment *gst.Segment) bool {
 	return _ok
 }
 
-// PushSegment: send a new segment downstream. This function must only be called
-// by derived sub-classes, and only from the BaseSrcClass::create function,
-// as the stream-lock needs to be held. This method also requires that an out
-// caps has been configured, so gst_base_src_set_caps() needs to have been
-// called before.
+// PushSegment (gst_base_src_push_segment): send a new segment downstream.
+// This function must only be called by derived sub-classes, and only from
+// the BaseSrcClass::create function, as the stream-lock needs to be held.
+// This method also requires that an out caps has been configured, so
+// gst_base_src_set_caps() needs to have been called before.
 //
 // The format for the segment must be identical with the current format of the
 // source, as configured with gst_base_src_set_format().
@@ -7467,10 +7960,10 @@ func (src *BaseSrc) PushSegment(segment *gst.Segment) bool {
 	return _ok
 }
 
-// QueryLatency: query the source for the latency parameters. live will be TRUE
-// when src is configured as a live source. min_latency and max_latency will be
-// set to the difference between the running time and the timestamp of the first
-// buffer.
+// QueryLatency (gst_base_src_query_latency): query the source for the latency
+// parameters. live will be TRUE when src is configured as a live source.
+// min_latency and max_latency will be set to the difference between the running
+// time and the timestamp of the first buffer.
 //
 // This function is mostly used by subclasses.
 //
@@ -7509,10 +8002,11 @@ func (src *BaseSrc) QueryLatency() (live bool, minLatency, maxLatency gst.ClockT
 	return _live, _minLatency, _maxLatency, _ok
 }
 
-// SetAsync: configure async behaviour in src, no state change will block.
-// The open, close, start, stop, play and pause virtual methods will be executed
-// in a different thread and are thus allowed to perform blocking operations.
-// Any blocking operation should be unblocked with the unlock vmethod.
+// SetAsync (gst_base_src_set_async): configure async behaviour in src,
+// no state change will block. The open, close, start, stop, play and pause
+// virtual methods will be executed in a different thread and are thus allowed
+// to perform blocking operations. Any blocking operation should be unblocked
+// with the unlock vmethod.
 //
 // The function takes the following parameters:
 //
@@ -7531,10 +8025,11 @@ func (src *BaseSrc) SetAsync(async bool) {
 	runtime.KeepAlive(async)
 }
 
-// SetAutomaticEos: if automatic_eos is TRUE, src will automatically go EOS if a
-// buffer after the total size is returned. By default this is TRUE but sources
-// that can't return an authoritative size and only know that they're EOS when
-// trying to read more should set this to FALSE.
+// SetAutomaticEos (gst_base_src_set_automatic_eos): if automatic_eos is TRUE,
+// src will automatically go EOS if a buffer after the total size is returned.
+// By default this is TRUE but sources that can't return an authoritative size
+// and only know that they're EOS when trying to read more should set this to
+// FALSE.
 //
 // When src operates in GST_FORMAT_TIME, BaseSrc will send an EOS when a buffer
 // outside of the currently configured segment is pushed if automatic_eos is
@@ -7558,8 +8053,9 @@ func (src *BaseSrc) SetAutomaticEos(automaticEos bool) {
 	runtime.KeepAlive(automaticEos)
 }
 
-// SetBlocksize: set the number of bytes that src will push out with each
-// buffer. When blocksize is set to -1, a default length will be used.
+// SetBlocksize (gst_base_src_set_blocksize): set the number of bytes that src
+// will push out with each buffer. When blocksize is set to -1, a default length
+// will be used.
 //
 // The function takes the following parameters:
 //
@@ -7576,7 +8072,7 @@ func (src *BaseSrc) SetBlocksize(blocksize uint) {
 	runtime.KeepAlive(blocksize)
 }
 
-// SetCaps: set new caps on the basesrc source pad.
+// SetCaps (gst_base_src_set_caps): set new caps on the basesrc source pad.
 //
 // The function takes the following parameters:
 //
@@ -7606,9 +8102,9 @@ func (src *BaseSrc) SetCaps(caps *gst.Caps) bool {
 	return _ok
 }
 
-// SetDoTimestamp: configure src to automatically timestamp outgoing buffers
-// based on the current running_time of the pipeline. This property is mostly
-// useful for live sources.
+// SetDoTimestamp (gst_base_src_set_do_timestamp): configure src to
+// automatically timestamp outgoing buffers based on the current running_time of
+// the pipeline. This property is mostly useful for live sources.
 //
 // The function takes the following parameters:
 //
@@ -7627,9 +8123,9 @@ func (src *BaseSrc) SetDoTimestamp(timestamp bool) {
 	runtime.KeepAlive(timestamp)
 }
 
-// SetDynamicSize: if not dynamic, size is only updated when needed, such as
-// when trying to read past current tracked size. Otherwise, size is checked for
-// upon each read.
+// SetDynamicSize (gst_base_src_set_dynamic_size): if not dynamic, size is only
+// updated when needed, such as when trying to read past current tracked size.
+// Otherwise, size is checked for upon each read.
 //
 // The function takes the following parameters:
 //
@@ -7648,8 +8144,9 @@ func (src *BaseSrc) SetDynamicSize(dynamic bool) {
 	runtime.KeepAlive(dynamic)
 }
 
-// SetFormat sets the default format of the source. This will be the format used
-// for sending SEGMENT events and for performing seeks.
+// SetFormat (gst_base_src_set_format) sets the default format of the source.
+// This will be the format used for sending SEGMENT events and for performing
+// seeks.
 //
 // If a format of GST_FORMAT_BYTES is set, the element will be able to operate
 // in pull mode if the BaseSrcClass::is_seekable returns TRUE.
@@ -7671,7 +8168,8 @@ func (src *BaseSrc) SetFormat(format gst.Format) {
 	runtime.KeepAlive(format)
 }
 
-// SetLive: if the element listens to a live source, live should be set to TRUE.
+// SetLive (gst_base_src_set_live): if the element listens to a live source,
+// live should be set to TRUE.
 //
 // A live source will not produce data in the PAUSED state and will therefore
 // not be able to participate in the PREROLL phase of a pipeline. To signal this
@@ -7695,10 +8193,10 @@ func (src *BaseSrc) SetLive(live bool) {
 	runtime.KeepAlive(live)
 }
 
-// StartComplete: complete an asynchronous start operation. When the subclass
-// overrides the start method, it should call gst_base_src_start_complete()
-// when the start operation completes either from the same thread or from an
-// asynchronous helper thread.
+// StartComplete (gst_base_src_start_complete): complete an asynchronous start
+// operation. When the subclass overrides the start method, it should call
+// gst_base_src_start_complete() when the start operation completes either from
+// the same thread or from an asynchronous helper thread.
 //
 // The function takes the following parameters:
 //
@@ -7715,7 +8213,8 @@ func (basesrc *BaseSrc) StartComplete(ret gst.FlowReturn) {
 	runtime.KeepAlive(ret)
 }
 
-// StartWait: wait until the start operation completes.
+// StartWait (gst_base_src_start_wait): wait until the start operation
+// completes.
 //
 // The function returns the following values:
 //
@@ -7736,13 +8235,13 @@ func (basesrc *BaseSrc) StartWait() gst.FlowReturn {
 	return _flowReturn
 }
 
-// SubmitBufferList subclasses can call this from their create virtual method
-// implementation to submit a buffer list to be pushed out later. This is useful
-// in cases where the create function wants to produce multiple buffers to be
-// pushed out in one go in form of a BufferList, which can reduce overhead
-// drastically, especially for packetised inputs (for data streams where the
-// packetisation/chunking is not important it is usually more efficient to
-// return larger buffers instead).
+// SubmitBufferList (gst_base_src_submit_buffer_list) subclasses can call this
+// from their create virtual method implementation to submit a buffer list to be
+// pushed out later. This is useful in cases where the create function wants to
+// produce multiple buffers to be pushed out in one go in form of a BufferList,
+// which can reduce overhead drastically, especially for packetised inputs (for
+// data streams where the packetisation/chunking is not important it is usually
+// more efficient to return larger buffers instead).
 //
 // Subclasses that use this function from their create function must return
 // GST_FLOW_OK and no buffer from their create virtual method implementation.
@@ -7769,10 +8268,10 @@ func (src *BaseSrc) SubmitBufferList(bufferList *gst.BufferList) {
 	runtime.KeepAlive(bufferList)
 }
 
-// WaitPlaying: if the BaseSrcClass::create method performs its own
-// synchronisation against the clock it must unblock when going from PLAYING
-// to the PAUSED state and call this method before continuing to produce the
-// remaining data.
+// WaitPlaying (gst_base_src_wait_playing): if the BaseSrcClass::create method
+// performs its own synchronisation against the clock it must unblock when going
+// from PLAYING to the PAUSED state and call this method before continuing to
+// produce the remaining data.
 //
 // This function will block until a state change to PLAYING happens (in which
 // case this function returns GST_FLOW_OK) or the processing must be stopped
@@ -8513,14 +9012,14 @@ func defaultBaseTransformOverrides(v *BaseTransform) BaseTransformOverrides {
 	}
 }
 
-// BaseTransform: this base class is for filter elements that process data.
-// Elements that are suitable for implementation using BaseTransform are ones
-// where the size and caps of the output is known entirely from the input caps
-// and buffer sizes. These include elements that directly transform one buffer
-// into another, modify the contents of a buffer in-place, as well as elements
-// that collate multiple input buffers into one output buffer, or that expand
-// one input buffer into multiple output buffers. See below for more concrete
-// use cases.
+// BaseTransform (GstBaseTransform): this base class is for filter elements
+// that process data. Elements that are suitable for implementation using
+// BaseTransform are ones where the size and caps of the output is known
+// entirely from the input caps and buffer sizes. These include elements that
+// directly transform one buffer into another, modify the contents of a buffer
+// in-place, as well as elements that collate multiple input buffers into one
+// output buffer, or that expand one input buffer into multiple output buffers.
+// See below for more concrete use cases.
 //
 // It provides for:
 //
@@ -8624,12 +9123,62 @@ var (
 	_ gst.Elementer = (*BaseTransform)(nil)
 )
 
-// BaseTransformer describes types inherited from class BaseTransform.
+// BaseTransformer describes types inherited from BaseTransform.
 //
 // To get the original type, the caller must assert this to an interface or
 // another type.
 type BaseTransformer interface {
-	coreglib.Objector
+	gst.Elementer
+
+	// Allocator (gst_base_transform_get_allocator) lets BaseTransform
+	// sub-classes know the memory allocator used by the base class and its
+	// params.
+	Allocator() (gst.Allocatorrer, *gst.AllocationParams)
+	BufferPool() *gst.BufferPool
+	// IsInPlace (gst_base_transform_is_in_place): see if trans is configured as
+	// a in_place transform.
+	IsInPlace() bool
+	// IsPassthrough (gst_base_transform_is_passthrough): see if trans is
+	// configured as a passthrough transform.
+	IsPassthrough() bool
+	// IsQosEnabled (gst_base_transform_is_qos_enabled) queries if the transform
+	// will handle QoS.
+	IsQosEnabled() bool
+	// Reconfigure (gst_base_transform_reconfigure) negotiates src pad caps with
+	// downstream elements if the source pad is marked as needing reconfiguring.
+	Reconfigure() bool
+	// ReconfigureSink (gst_base_transform_reconfigure_sink) instructs trans to
+	// request renegotiation upstream.
+	ReconfigureSink()
+	// ReconfigureSrc (gst_base_transform_reconfigure_src) instructs trans to
+	// renegotiate a new downstream transform on the next buffer.
+	ReconfigureSrc()
+	// SetGapAware (gst_base_transform_set_gap_aware): if gap_aware is FALSE
+	// (the default), output buffers will have the GST_BUFFER_FLAG_GAP flag
+	// unset.
+	SetGapAware(gapAware bool)
+	// SetInPlace (gst_base_transform_set_in_place) determines whether a
+	// non-writable buffer will be copied before passing to the transform_ip
+	// function.
+	SetInPlace(inPlace bool)
+	// SetPassthrough (gst_base_transform_set_passthrough): set passthrough mode
+	// for this filter by default.
+	SetPassthrough(passthrough bool)
+	// SetPreferPassthrough (gst_base_transform_set_prefer_passthrough):
+	// if prefer_passthrough is TRUE (the default), trans will check and prefer
+	// passthrough caps from the list of caps returned by the transform_caps
+	// vmethod.
+	SetPreferPassthrough(preferPassthrough bool)
+	// SetQosEnabled (gst_base_transform_set_qos_enabled): enable or disable QoS
+	// handling in the transform.
+	SetQosEnabled(enabled bool)
+	// UpdateQos (gst_base_transform_update_qos): set the QoS parameters in the
+	// transform.
+	UpdateQos(proportion float64, diff gst.ClockTimeDiff, timestamp gst.ClockTime)
+	// UpdateSrcCaps (gst_base_transform_update_src_caps) updates the srcpad
+	// caps and sends the caps downstream.
+	UpdateSrcCaps(updatedCaps *gst.Caps) bool
+
 	baseBaseTransform() *BaseTransform
 }
 
@@ -8766,8 +9315,8 @@ func BaseBaseTransform(obj BaseTransformer) *BaseTransform {
 	return obj.baseBaseTransform()
 }
 
-// Allocator lets BaseTransform sub-classes know the memory allocator used by
-// the base class and its params.
+// Allocator (gst_base_transform_get_allocator) lets BaseTransform sub-classes
+// know the memory allocator used by the base class and its params.
 //
 // Unref the allocator after use.
 //
@@ -8840,7 +9389,8 @@ func (trans *BaseTransform) BufferPool() *gst.BufferPool {
 	return _bufferPool
 }
 
-// IsInPlace: see if trans is configured as a in_place transform.
+// IsInPlace (gst_base_transform_is_in_place): see if trans is configured as a
+// in_place transform.
 //
 // The function returns the following values:
 //
@@ -8865,7 +9415,8 @@ func (trans *BaseTransform) IsInPlace() bool {
 	return _ok
 }
 
-// IsPassthrough: see if trans is configured as a passthrough transform.
+// IsPassthrough (gst_base_transform_is_passthrough): see if trans is configured
+// as a passthrough transform.
 //
 // The function returns the following values:
 //
@@ -8890,7 +9441,8 @@ func (trans *BaseTransform) IsPassthrough() bool {
 	return _ok
 }
 
-// IsQosEnabled queries if the transform will handle QoS.
+// IsQosEnabled (gst_base_transform_is_qos_enabled) queries if the transform
+// will handle QoS.
 //
 // The function returns the following values:
 //
@@ -8915,9 +9467,10 @@ func (trans *BaseTransform) IsQosEnabled() bool {
 	return _ok
 }
 
-// Reconfigure negotiates src pad caps with downstream elements if the source
-// pad is marked as needing reconfiguring. Unmarks GST_PAD_FLAG_NEED_RECONFIGURE
-// in any case. But marks it again if negotiation fails.
+// Reconfigure (gst_base_transform_reconfigure) negotiates src pad caps with
+// downstream elements if the source pad is marked as needing reconfiguring.
+// Unmarks GST_PAD_FLAG_NEED_RECONFIGURE in any case. But marks it again if
+// negotiation fails.
 //
 // Do not call this in the BaseTransformClass::transform
 // or BaseTransformClass::transform_ip vmethod.
@@ -8950,9 +9503,9 @@ func (trans *BaseTransform) Reconfigure() bool {
 	return _ok
 }
 
-// ReconfigureSink instructs trans to request renegotiation upstream. This
-// function is typically called after properties on the transform were set that
-// influence the input format.
+// ReconfigureSink (gst_base_transform_reconfigure_sink) instructs trans to
+// request renegotiation upstream. This function is typically called after
+// properties on the transform were set that influence the input format.
 func (trans *BaseTransform) ReconfigureSink() {
 	var _arg0 *C.GstBaseTransform // out
 
@@ -8962,9 +9515,10 @@ func (trans *BaseTransform) ReconfigureSink() {
 	runtime.KeepAlive(trans)
 }
 
-// ReconfigureSrc instructs trans to renegotiate a new downstream transform on
-// the next buffer. This function is typically called after properties on the
-// transform were set that influence the output format.
+// ReconfigureSrc (gst_base_transform_reconfigure_src) instructs trans to
+// renegotiate a new downstream transform on the next buffer. This function is
+// typically called after properties on the transform were set that influence
+// the output format.
 func (trans *BaseTransform) ReconfigureSrc() {
 	var _arg0 *C.GstBaseTransform // out
 
@@ -8974,8 +9528,8 @@ func (trans *BaseTransform) ReconfigureSrc() {
 	runtime.KeepAlive(trans)
 }
 
-// SetGapAware: if gap_aware is FALSE (the default), output buffers will have
-// the GST_BUFFER_FLAG_GAP flag unset.
+// SetGapAware (gst_base_transform_set_gap_aware): if gap_aware is FALSE (the
+// default), output buffers will have the GST_BUFFER_FLAG_GAP flag unset.
 //
 // If set to TRUE, the element must handle output buffers with this flag set
 // correctly, i.e. it can assume that the buffer contains neutral data but must
@@ -9000,8 +9554,9 @@ func (trans *BaseTransform) SetGapAware(gapAware bool) {
 	runtime.KeepAlive(gapAware)
 }
 
-// SetInPlace determines whether a non-writable buffer will be copied before
-// passing to the transform_ip function.
+// SetInPlace (gst_base_transform_set_in_place) determines whether a
+// non-writable buffer will be copied before passing to the transform_ip
+// function.
 //
 //   - Always TRUE if no transform function is implemented.
 //   - Always FALSE if ONLY transform function is implemented.
@@ -9026,8 +9581,9 @@ func (trans *BaseTransform) SetInPlace(inPlace bool) {
 	runtime.KeepAlive(inPlace)
 }
 
-// SetPassthrough: set passthrough mode for this filter by default. This is
-// mostly useful for filters that do not care about negotiation.
+// SetPassthrough (gst_base_transform_set_passthrough): set passthrough mode for
+// this filter by default. This is mostly useful for filters that do not care
+// about negotiation.
 //
 // Always TRUE for filters which don't implement either a transform or
 // transform_ip or generate_output method.
@@ -9051,9 +9607,10 @@ func (trans *BaseTransform) SetPassthrough(passthrough bool) {
 	runtime.KeepAlive(passthrough)
 }
 
-// SetPreferPassthrough: if prefer_passthrough is TRUE (the default), trans
-// will check and prefer passthrough caps from the list of caps returned by the
-// transform_caps vmethod.
+// SetPreferPassthrough (gst_base_transform_set_prefer_passthrough):
+// if prefer_passthrough is TRUE (the default), trans will check and prefer
+// passthrough caps from the list of caps returned by the transform_caps
+// vmethod.
 //
 // If set to FALSE, the element must order the caps returned from the
 // transform_caps function in such a way that the preferred format is first in
@@ -9079,7 +9636,8 @@ func (trans *BaseTransform) SetPreferPassthrough(preferPassthrough bool) {
 	runtime.KeepAlive(preferPassthrough)
 }
 
-// SetQosEnabled: enable or disable QoS handling in the transform.
+// SetQosEnabled (gst_base_transform_set_qos_enabled): enable or disable QoS
+// handling in the transform.
 //
 // MT safe.
 //
@@ -9100,9 +9658,9 @@ func (trans *BaseTransform) SetQosEnabled(enabled bool) {
 	runtime.KeepAlive(enabled)
 }
 
-// UpdateQos: set the QoS parameters in the transform. This function is called
-// internally when a QOS event is received but subclasses can provide custom
-// information when needed.
+// UpdateQos (gst_base_transform_update_qos): set the QoS parameters in the
+// transform. This function is called internally when a QOS event is received
+// but subclasses can provide custom information when needed.
 //
 // MT safe.
 //
@@ -9129,10 +9687,11 @@ func (trans *BaseTransform) UpdateQos(proportion float64, diff gst.ClockTimeDiff
 	runtime.KeepAlive(timestamp)
 }
 
-// UpdateSrcCaps updates the srcpad caps and sends the caps downstream. This
-// function can be used by subclasses when they have already negotiated their
-// caps but found a change in them (or computed new information). This way,
-// they can notify downstream about that change without losing any buffer.
+// UpdateSrcCaps (gst_base_transform_update_src_caps) updates the srcpad caps
+// and sends the caps downstream. This function can be used by subclasses
+// when they have already negotiated their caps but found a change in them (or
+// computed new information). This way, they can notify downstream about that
+// change without losing any buffer.
 //
 // The function takes the following parameters:
 //
@@ -9886,8 +10445,9 @@ func defaultCollectPadsOverrides(v *CollectPads) CollectPadsOverrides {
 	return CollectPadsOverrides{}
 }
 
-// CollectPads manages a set of pads that operate in collect mode. This means
-// that control is given to the manager of this object when all pads have data.
+// CollectPads (GstCollectPads) manages a set of pads that operate in collect
+// mode. This means that control is given to the manager of this object when all
+// pads have data.
 //
 //   - Collectpads are created with gst_collect_pads_new(). A callback should
 //     then be installed with gst_collect_pads_set_function ().
@@ -9934,6 +10494,92 @@ var (
 	_ gst.GstObjector = (*CollectPads)(nil)
 )
 
+// CollectPadser describes types inherited from CollectPads.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type CollectPadser interface {
+	gst.GstObjector
+
+	// Available (gst_collect_pads_available): query how much bytes can be read
+	// from each queued buffer.
+	Available() uint
+	// ClipRunningTime (gst_collect_pads_clip_running_time): convenience
+	// clipping function that converts incoming buffer's timestamp to running
+	// time, or clips the buffer if outside configured segment.
+	ClipRunningTime(cdata *CollectData, buf *gst.Buffer, userData unsafe.Pointer) (*gst.Buffer, gst.FlowReturn)
+	// EventDefault (gst_collect_pads_event_default): default CollectPads
+	// event handling that elements should always chain up to to ensure proper
+	// operation.
+	EventDefault(data *CollectData, event *gst.Event, discard bool) bool
+	// Flush (gst_collect_pads_flush) size bytes from the pad data.
+	Flush(data *CollectData, size uint) uint
+	// Peek (gst_collect_pads_peek) at the buffer currently queued in data.
+	Peek(data *CollectData) *gst.Buffer
+	// Pop (gst_collect_pads_pop) the buffer currently queued in data.
+	Pop(data *CollectData) *gst.Buffer
+	// QueryDefault (gst_collect_pads_query_default): default CollectPads
+	// query handling that elements should always chain up to to ensure proper
+	// operation.
+	QueryDefault(data *CollectData, query *gst.Query, discard bool) bool
+	// ReadBuffer (gst_collect_pads_read_buffer): get a subbuffer of size bytes
+	// from the given pad data.
+	ReadBuffer(data *CollectData, size uint) *gst.Buffer
+	// RemovePad (gst_collect_pads_remove_pad): remove a pad from the collection
+	// of collect pads.
+	RemovePad(pad *gst.Pad) bool
+	// SetBufferFunction (gst_collect_pads_set_buffer_function): set the
+	// callback function and user data that will be called with the oldest
+	// buffer when all pads have been collected, or NULL on EOS.
+	SetBufferFunction(fn CollectPadsBufferFunction)
+	// SetClipFunction (gst_collect_pads_set_clip_function): install a clipping
+	// function that is called right after a buffer is received on a pad managed
+	// by pads.
+	SetClipFunction(clipfunc CollectPadsClipFunction)
+	// SetCompareFunction (gst_collect_pads_set_compare_function): set the
+	// timestamp comparison function.
+	SetCompareFunction(fn CollectPadsCompareFunction)
+	// SetEventFunction (gst_collect_pads_set_event_function): set the event
+	// callback function and user data that will be called when collectpads has
+	// received an event originating from one of the collected pads.
+	SetEventFunction(fn CollectPadsEventFunction)
+	// SetFlushFunction (gst_collect_pads_set_flush_function): install a flush
+	// function that is called when the internal state of all pads should be
+	// flushed as part of flushing seek handling.
+	SetFlushFunction(fn CollectPadsFlushFunction)
+	// SetFlushing (gst_collect_pads_set_flushing): change the flushing state of
+	// all the pads in the collection.
+	SetFlushing(flushing bool)
+	// SetFunction (gst_collect_pads_set_function) collectPads provides a
+	// default collection algorithm that will determine the oldest buffer
+	// available on all of its pads, and then delegate to a configured callback.
+	SetFunction(fn CollectPadsFunction)
+	// SetQueryFunction (gst_collect_pads_set_query_function): set the query
+	// callback function and user data that will be called after collectpads has
+	// received a query originating from one of the collected pads.
+	SetQueryFunction(fn CollectPadsQueryFunction)
+	// SetWaiting (gst_collect_pads_set_waiting) sets a pad to waiting or
+	// non-waiting mode, if at least this pad has not been created with locked
+	// waiting state, in which case nothing happens.
+	SetWaiting(data *CollectData, waiting bool)
+	// SrcEventDefault (gst_collect_pads_src_event_default): default CollectPads
+	// event handling for the src pad of elements.
+	SrcEventDefault(pad *gst.Pad, event *gst.Event) bool
+	// Start (gst_collect_pads_start) starts the processing of data in the
+	// collect_pads.
+	Start()
+	// Stop (gst_collect_pads_stop) stops the processing of data in the
+	// collect_pads.
+	Stop()
+	// TakeBuffer (gst_collect_pads_take_buffer): get a subbuffer of size bytes
+	// from the given pad data.
+	TakeBuffer(data *CollectData, size uint) *gst.Buffer
+
+	baseCollectPads() *CollectPads
+}
+
+var _ CollectPadser = (*CollectPads)(nil)
+
 func init() {
 	coreglib.RegisterClassInfo[*CollectPads, *CollectPadsClass, CollectPadsOverrides](
 		GTypeCollectPads,
@@ -9964,7 +10610,16 @@ func marshalCollectPads(p uintptr) (interface{}, error) {
 	return wrapCollectPads(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// NewCollectPads: create a new instance of CollectPads.
+func (pads *CollectPads) baseCollectPads() *CollectPads {
+	return pads
+}
+
+// BaseCollectPads returns the underlying base object.
+func BaseCollectPads(obj CollectPadser) *CollectPads {
+	return obj.baseCollectPads()
+}
+
+// NewCollectPads (gst_collect_pads_new): create a new instance of CollectPads.
 //
 // MT safe.
 //
@@ -9983,9 +10638,9 @@ func NewCollectPads() *CollectPads {
 	return _collectPads
 }
 
-// Available: query how much bytes can be read from each queued buffer. This
-// means that the result of this call is the maximum number of bytes that can be
-// read from each of the pads.
+// Available (gst_collect_pads_available): query how much bytes can be read from
+// each queued buffer. This means that the result of this call is the maximum
+// number of bytes that can be read from each of the pads.
 //
 // This function should be called with pads STREAM_LOCK held, such as in the
 // callback.
@@ -10012,9 +10667,9 @@ func (pads *CollectPads) Available() uint {
 	return _guint
 }
 
-// ClipRunningTime: convenience clipping function that converts incoming
-// buffer's timestamp to running time, or clips the buffer if outside configured
-// segment.
+// ClipRunningTime (gst_collect_pads_clip_running_time): convenience clipping
+// function that converts incoming buffer's timestamp to running time, or clips
+// the buffer if outside configured segment.
 //
 // Since 1.6, this clipping function also sets the DTS parameter of the
 // GstCollectData structure. This version of the running time DTS can be
@@ -10065,9 +10720,9 @@ func (pads *CollectPads) ClipRunningTime(cdata *CollectData, buf *gst.Buffer, us
 	return _outbuf, _flowReturn
 }
 
-// EventDefault: default CollectPads event handling that elements should always
-// chain up to to ensure proper operation. Element might however indicate event
-// should not be forwarded downstream.
+// EventDefault (gst_collect_pads_event_default): default CollectPads event
+// handling that elements should always chain up to to ensure proper operation.
+// Element might however indicate event should not be forwarded downstream.
 //
 // The function takes the following parameters:
 //
@@ -10103,7 +10758,7 @@ func (pads *CollectPads) EventDefault(data *CollectData, event *gst.Event, disca
 	return _ok
 }
 
-// Flush size bytes from the pad data.
+// Flush (gst_collect_pads_flush) size bytes from the pad data.
 //
 // This function should be called with pads STREAM_LOCK held, such as in the
 // callback.
@@ -10141,8 +10796,9 @@ func (pads *CollectPads) Flush(data *CollectData, size uint) uint {
 	return _guint
 }
 
-// Peek at the buffer currently queued in data. This function should be called
-// with the pads STREAM_LOCK held, such as in the callback handler.
+// Peek (gst_collect_pads_peek) at the buffer currently queued in data.
+// This function should be called with the pads STREAM_LOCK held, such as in the
+// callback handler.
 //
 // MT safe.
 //
@@ -10180,8 +10836,9 @@ func (pads *CollectPads) Peek(data *CollectData) *gst.Buffer {
 	return _buffer
 }
 
-// Pop the buffer currently queued in data. This function should be called with
-// the pads STREAM_LOCK held, such as in the callback handler.
+// Pop (gst_collect_pads_pop) the buffer currently queued in data. This function
+// should be called with the pads STREAM_LOCK held, such as in the callback
+// handler.
 //
 // MT safe.
 //
@@ -10219,9 +10876,9 @@ func (pads *CollectPads) Pop(data *CollectData) *gst.Buffer {
 	return _buffer
 }
 
-// QueryDefault: default CollectPads query handling that elements should always
-// chain up to to ensure proper operation. Element might however indicate query
-// should not be forwarded downstream.
+// QueryDefault (gst_collect_pads_query_default): default CollectPads query
+// handling that elements should always chain up to to ensure proper operation.
+// Element might however indicate query should not be forwarded downstream.
 //
 // The function takes the following parameters:
 //
@@ -10257,7 +10914,8 @@ func (pads *CollectPads) QueryDefault(data *CollectData, query *gst.Query, disca
 	return _ok
 }
 
-// ReadBuffer: get a subbuffer of size bytes from the given pad data.
+// ReadBuffer (gst_collect_pads_read_buffer): get a subbuffer of size bytes from
+// the given pad data.
 //
 // This function should be called with pads STREAM_LOCK held, such as in the
 // callback.
@@ -10303,9 +10961,9 @@ func (pads *CollectPads) ReadBuffer(data *CollectData, size uint) *gst.Buffer {
 	return _buffer
 }
 
-// RemovePad: remove a pad from the collection of collect pads. This function
-// will also free the CollectData and all the resources that were allocated with
-// gst_collect_pads_add_pad().
+// RemovePad (gst_collect_pads_remove_pad): remove a pad from the collection
+// of collect pads. This function will also free the CollectData and all the
+// resources that were allocated with gst_collect_pads_add_pad().
 //
 // The pad will be deactivated automatically when pads is stopped.
 //
@@ -10339,9 +10997,10 @@ func (pads *CollectPads) RemovePad(pad *gst.Pad) bool {
 	return _ok
 }
 
-// SetBufferFunction: set the callback function and user data that will be
-// called with the oldest buffer when all pads have been collected, or NULL on
-// EOS. If a buffer is passed, the callback owns a reference and must unref it.
+// SetBufferFunction (gst_collect_pads_set_buffer_function): set the callback
+// function and user data that will be called with the oldest buffer when all
+// pads have been collected, or NULL on EOS. If a buffer is passed, the callback
+// owns a reference and must unref it.
 //
 // MT safe.
 //
@@ -10363,9 +11022,9 @@ func (pads *CollectPads) SetBufferFunction(fn CollectPadsBufferFunction) {
 	runtime.KeepAlive(fn)
 }
 
-// SetClipFunction: install a clipping function that is called right after a
-// buffer is received on a pad managed by pads. See CollectPadsClipFunction for
-// more info.
+// SetClipFunction (gst_collect_pads_set_clip_function): install a clipping
+// function that is called right after a buffer is received on a pad managed by
+// pads. See CollectPadsClipFunction for more info.
 //
 // The function takes the following parameters:
 //
@@ -10385,7 +11044,8 @@ func (pads *CollectPads) SetClipFunction(clipfunc CollectPadsClipFunction) {
 	runtime.KeepAlive(clipfunc)
 }
 
-// SetCompareFunction: set the timestamp comparison function.
+// SetCompareFunction (gst_collect_pads_set_compare_function): set the timestamp
+// comparison function.
 //
 // MT safe.
 //
@@ -10407,12 +11067,13 @@ func (pads *CollectPads) SetCompareFunction(fn CollectPadsCompareFunction) {
 	runtime.KeepAlive(fn)
 }
 
-// SetEventFunction: set the event callback function and user data that will
-// be called when collectpads has received an event originating from one of
-// the collected pads. If the event being processed is a serialized one,
-// this callback is called with pads STREAM_LOCK held, otherwise not.
-// As this lock should be held when calling a number of CollectPads functions,
-// it should be acquired if so (unusually) needed.
+// SetEventFunction (gst_collect_pads_set_event_function): set the event
+// callback function and user data that will be called when collectpads has
+// received an event originating from one of the collected pads. If the event
+// being processed is a serialized one, this callback is called with pads
+// STREAM_LOCK held, otherwise not. As this lock should be held when calling
+// a number of CollectPads functions, it should be acquired if so (unusually)
+// needed.
 //
 // MT safe.
 //
@@ -10434,9 +11095,10 @@ func (pads *CollectPads) SetEventFunction(fn CollectPadsEventFunction) {
 	runtime.KeepAlive(fn)
 }
 
-// SetFlushFunction: install a flush function that is called when the internal
-// state of all pads should be flushed as part of flushing seek handling.
-// See CollectPadsFlushFunction for more info.
+// SetFlushFunction (gst_collect_pads_set_flush_function): install a flush
+// function that is called when the internal state of all pads should be flushed
+// as part of flushing seek handling. See CollectPadsFlushFunction for more
+// info.
 //
 // The function takes the following parameters:
 //
@@ -10456,11 +11118,11 @@ func (pads *CollectPads) SetFlushFunction(fn CollectPadsFlushFunction) {
 	runtime.KeepAlive(fn)
 }
 
-// SetFlushing: change the flushing state of all the pads in the collection.
-// No pad is able to accept anymore data when flushing is TRUE. Calling this
-// function with flushing FALSE makes pads accept data again. Caller must
-// ensure that downstream streaming (thread) is not blocked, e.g. by sending a
-// FLUSH_START downstream.
+// SetFlushing (gst_collect_pads_set_flushing): change the flushing state of
+// all the pads in the collection. No pad is able to accept anymore data when
+// flushing is TRUE. Calling this function with flushing FALSE makes pads accept
+// data again. Caller must ensure that downstream streaming (thread) is not
+// blocked, e.g. by sending a FLUSH_START downstream.
 //
 // MT safe.
 //
@@ -10481,14 +11143,14 @@ func (pads *CollectPads) SetFlushing(flushing bool) {
 	runtime.KeepAlive(flushing)
 }
 
-// SetFunction collectPads provides a default collection algorithm
-// that will determine the oldest buffer available on all of its pads,
-// and then delegate to a configured callback. However, if circumstances
-// are more complicated and/or more control is desired, this sets a callback
-// that will be invoked instead when all the pads added to the collection
-// have buffers queued. Evidently, this callback is not compatible with
-// gst_collect_pads_set_buffer_function() callback. If this callback is set,
-// the former will be unset.
+// SetFunction (gst_collect_pads_set_function) collectPads provides a default
+// collection algorithm that will determine the oldest buffer available on
+// all of its pads, and then delegate to a configured callback. However,
+// if circumstances are more complicated and/or more control is desired, this
+// sets a callback that will be invoked instead when all the pads added to the
+// collection have buffers queued. Evidently, this callback is not compatible
+// with gst_collect_pads_set_buffer_function() callback. If this callback is
+// set, the former will be unset.
 //
 // MT safe.
 //
@@ -10510,12 +11172,13 @@ func (pads *CollectPads) SetFunction(fn CollectPadsFunction) {
 	runtime.KeepAlive(fn)
 }
 
-// SetQueryFunction: set the query callback function and user data that will
-// be called after collectpads has received a query originating from one of
-// the collected pads. If the query being processed is a serialized one,
-// this callback is called with pads STREAM_LOCK held, otherwise not.
-// As this lock should be held when calling a number of CollectPads functions,
-// it should be acquired if so (unusually) needed.
+// SetQueryFunction (gst_collect_pads_set_query_function): set the query
+// callback function and user data that will be called after collectpads has
+// received a query originating from one of the collected pads. If the query
+// being processed is a serialized one, this callback is called with pads
+// STREAM_LOCK held, otherwise not. As this lock should be held when calling
+// a number of CollectPads functions, it should be acquired if so (unusually)
+// needed.
 //
 // MT safe.
 //
@@ -10537,9 +11200,9 @@ func (pads *CollectPads) SetQueryFunction(fn CollectPadsQueryFunction) {
 	runtime.KeepAlive(fn)
 }
 
-// SetWaiting sets a pad to waiting or non-waiting mode, if at least this
-// pad has not been created with locked waiting state, in which case nothing
-// happens.
+// SetWaiting (gst_collect_pads_set_waiting) sets a pad to waiting or
+// non-waiting mode, if at least this pad has not been created with locked
+// waiting state, in which case nothing happens.
 //
 // This function should be called with pads STREAM_LOCK held, such as in the
 // callback.
@@ -10568,9 +11231,9 @@ func (pads *CollectPads) SetWaiting(data *CollectData, waiting bool) {
 	runtime.KeepAlive(waiting)
 }
 
-// SrcEventDefault: default CollectPads event handling for the src pad of
-// elements. Elements can chain up to this to let flushing seek event handling
-// be done by CollectPads.
+// SrcEventDefault (gst_collect_pads_src_event_default): default CollectPads
+// event handling for the src pad of elements. Elements can chain up to this to
+// let flushing seek event handling be done by CollectPads.
 //
 // The function takes the following parameters:
 //
@@ -10600,7 +11263,8 @@ func (pads *CollectPads) SrcEventDefault(pad *gst.Pad, event *gst.Event) bool {
 	return _ok
 }
 
-// Start starts the processing of data in the collect_pads.
+// Start (gst_collect_pads_start) starts the processing of data in the
+// collect_pads.
 //
 // MT safe.
 func (pads *CollectPads) Start() {
@@ -10612,8 +11276,8 @@ func (pads *CollectPads) Start() {
 	runtime.KeepAlive(pads)
 }
 
-// Stop stops the processing of data in the collect_pads. this function will
-// also unblock any blocking operations.
+// Stop (gst_collect_pads_stop) stops the processing of data in the
+// collect_pads. this function will also unblock any blocking operations.
 //
 // MT safe.
 func (pads *CollectPads) Stop() {
@@ -10625,8 +11289,8 @@ func (pads *CollectPads) Stop() {
 	runtime.KeepAlive(pads)
 }
 
-// TakeBuffer: get a subbuffer of size bytes from the given pad data. Flushes
-// the amount of read bytes.
+// TakeBuffer (gst_collect_pads_take_buffer): get a subbuffer of size bytes from
+// the given pad data. Flushes the amount of read bytes.
 //
 // This function should be called with pads STREAM_LOCK held, such as in the
 // callback.
@@ -10685,9 +11349,10 @@ func defaultDataQueueOverrides(v *DataQueue) DataQueueOverrides {
 	}
 }
 
-// DataQueue is an object that handles threadsafe queueing of objects. It also
-// provides size-related functionality. This object should be used for any
-// Element that wishes to provide some sort of queueing functionality.
+// DataQueue (GstDataQueue) is an object that handles threadsafe queueing of
+// objects. It also provides size-related functionality. This object should
+// be used for any Element that wishes to provide some sort of queueing
+// functionality.
 type DataQueue struct {
 	_ [0]func() // equal guard
 	*coreglib.Object
@@ -10696,6 +11361,18 @@ type DataQueue struct {
 var (
 	_ coreglib.Objector = (*DataQueue)(nil)
 )
+
+// DataQueueer describes types inherited from DataQueue.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type DataQueueer interface {
+	coreglib.Objector
+
+	baseDataQueue() *DataQueue
+}
+
+var _ DataQueueer = (*DataQueue)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*DataQueue, *DataQueueClass, DataQueueOverrides](
@@ -10731,6 +11408,15 @@ func wrapDataQueue(obj *coreglib.Object) *DataQueue {
 
 func marshalDataQueue(p uintptr) (interface{}, error) {
 	return wrapDataQueue(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
+}
+
+func (v *DataQueue) baseDataQueue() *DataQueue {
+	return v
+}
+
+// BaseDataQueue returns the underlying base object.
+func BaseDataQueue(obj DataQueueer) *DataQueue {
+	return obj.baseDataQueue()
 }
 
 // ConnectEmpty reports that the queue became empty (empty). A queue is
@@ -10792,9 +11478,9 @@ func defaultPushSrcOverrides(v *PushSrc) PushSrcOverrides {
 	}
 }
 
-// PushSrc: this class is mostly useful for elements that cannot do random
-// access, or at least very slowly. The source usually prefers to push out a
-// fixed size buffer.
+// PushSrc (GstPushSrc): this class is mostly useful for elements that cannot
+// do random access, or at least very slowly. The source usually prefers to push
+// out a fixed size buffer.
 //
 // Subclasses usually operate in a format that is different from the default
 // GST_FORMAT_BYTES format of BaseSrc.
@@ -10817,6 +11503,18 @@ type PushSrc struct {
 var (
 	_ BaseSrcer = (*PushSrc)(nil)
 )
+
+// PushSrcer describes types inherited from PushSrc.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type PushSrcer interface {
+	BaseSrcer
+
+	basePushSrc() *PushSrc
+}
+
+var _ PushSrcer = (*PushSrc)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*PushSrc, *PushSrcClass, PushSrcOverrides](
@@ -10860,6 +11558,15 @@ func wrapPushSrc(obj *coreglib.Object) *PushSrc {
 
 func marshalPushSrc(p uintptr) (interface{}, error) {
 	return wrapPushSrc(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
+}
+
+func (v *PushSrc) basePushSrc() *PushSrc {
+	return v
+}
+
+// BasePushSrc returns the underlying base object.
+func BasePushSrc(obj PushSrcer) *PushSrc {
+	return obj.basePushSrc()
 }
 
 // Alloc: allocate memory for a buffer.
@@ -10920,10 +11627,10 @@ func (src *PushSrc) fill(buf *gst.Buffer) gst.FlowReturn {
 	return _flowReturn
 }
 
-// AggregatorClass: aggregator base class will handle in a thread-safe way all
-// manners of concurrent flushes, seeks, pad additions and removals, leaving to
-// the subclass the responsibility of clipping buffers, and aggregating buffers
-// in the way the implementor sees fit.
+// AggregatorClass (GstAggregatorClass): aggregator base class will handle in a
+// thread-safe way all manners of concurrent flushes, seeks, pad additions and
+// removals, leaving to the subclass the responsibility of clipping buffers,
+// and aggregating buffers in the way the implementor sees fit.
 //
 // It will also take care of event ordering (stream-start, segment, eos).
 //
@@ -10947,7 +11654,8 @@ func (a *AggregatorClass) ParentClass() *gst.ElementClass {
 	return _v
 }
 
-// AggregatorPadClass: instance of this type is always passed by reference.
+// AggregatorPadClass (GstAggregatorPadClass): instance of this type is always
+// passed by reference.
 type AggregatorPadClass struct {
 	*aggregatorPadClass
 }
@@ -10964,8 +11672,9 @@ func (a *AggregatorPadClass) ParentClass() *gst.PadClass {
 	return _v
 }
 
-// BaseParseClass subclasses can override any of the available virtual methods
-// or not, as needed. At minimum handle_frame needs to be overridden.
+// BaseParseClass (GstBaseParseClass) subclasses can override any of the
+// available virtual methods or not, as needed. At minimum handle_frame needs to
+// be overridden.
 //
 // An instance of this type is always passed by reference.
 type BaseParseClass struct {
@@ -10985,14 +11694,14 @@ func (b *BaseParseClass) ParentClass() *gst.ElementClass {
 	return _v
 }
 
-// BaseParseFrame: frame (context) data passed to each frame parsing virtual
-// methods. In addition to providing the data to be checked for a valid frame
-// or an already identified frame, it conveys additional metadata or control
-// information from and to the subclass w.r.t. the particular frame in question
-// (rather than global parameters). Some of these may apply to each parsing
-// stage, others only to some a particular one. These parameters are effectively
-// zeroed at start of each frame's processing, i.e. parsing virtual method
-// invocation sequence.
+// BaseParseFrame (GstBaseParseFrame): frame (context) data passed to each
+// frame parsing virtual methods. In addition to providing the data to be
+// checked for a valid frame or an already identified frame, it conveys
+// additional metadata or control information from and to the subclass w.r.t.
+// the particular frame in question (rather than global parameters). Some of
+// these may apply to each parsing stage, others only to some a particular one.
+// These parameters are effectively zeroed at start of each frame's processing,
+// i.e. parsing virtual method invocation sequence.
 //
 // An instance of this type is always passed by reference.
 type BaseParseFrame struct {
@@ -11118,7 +11827,7 @@ func (b *BaseParseFrame) SetOverhead(overhead int) {
 	*valptr = C.gint(overhead)
 }
 
-// Copy copies a BaseParseFrame.
+// Copy (gst_base_parse_frame_copy) copies a BaseParseFrame.
 //
 // The function returns the following values:
 //
@@ -11145,10 +11854,11 @@ func (frame *BaseParseFrame) Copy() *BaseParseFrame {
 	return _baseParseFrame
 }
 
-// Init sets a BaseParseFrame to initial state. Currently this means
-// all public fields are zero-ed and a private flag is set to make sure
-// gst_base_parse_frame_free() only frees the contents but not the actual frame.
-// Use this function to initialise a BaseParseFrame allocated on the stack.
+// Init (gst_base_parse_frame_init) sets a BaseParseFrame to initial state.
+// Currently this means all public fields are zero-ed and a private flag is set
+// to make sure gst_base_parse_frame_free() only frees the contents but not the
+// actual frame. Use this function to initialise a BaseParseFrame allocated on
+// the stack.
 func (frame *BaseParseFrame) Init() {
 	var _arg0 *C.GstBaseParseFrame // out
 
@@ -11158,9 +11868,9 @@ func (frame *BaseParseFrame) Init() {
 	runtime.KeepAlive(frame)
 }
 
-// BaseSinkClass subclasses can override any of the available virtual methods
-// or not, as needed. At the minimum, the render method should be overridden to
-// output/present buffers.
+// BaseSinkClass (GstBaseSinkClass) subclasses can override any of the available
+// virtual methods or not, as needed. At the minimum, the render method should
+// be overridden to output/present buffers.
 //
 // An instance of this type is always passed by reference.
 type BaseSinkClass struct {
@@ -11180,9 +11890,9 @@ func (b *BaseSinkClass) ParentClass() *gst.ElementClass {
 	return _v
 }
 
-// BaseSrcClass subclasses can override any of the available virtual methods
-// or not, as needed. At the minimum, the create method should be overridden to
-// produce buffers.
+// BaseSrcClass (GstBaseSrcClass) subclasses can override any of the available
+// virtual methods or not, as needed. At the minimum, the create method should
+// be overridden to produce buffers.
 //
 // An instance of this type is always passed by reference.
 type BaseSrcClass struct {
@@ -11202,11 +11912,11 @@ func (b *BaseSrcClass) ParentClass() *gst.ElementClass {
 	return _v
 }
 
-// BaseTransformClass subclasses can override any of the available virtual
-// methods or not, as needed. At minimum either transform or transform_ip
-// need to be overridden. If the element can overwrite the input data with
-// the results (data is of the same type and quantity) it should provide
-// transform_ip.
+// BaseTransformClass (GstBaseTransformClass) subclasses can override any of the
+// available virtual methods or not, as needed. At minimum either transform or
+// transform_ip need to be overridden. If the element can overwrite the input
+// data with the results (data is of the same type and quantity) it should
+// provide transform_ip.
 //
 // An instance of this type is always passed by reference.
 type BaseTransformClass struct {
@@ -11250,9 +11960,9 @@ func (b *BaseTransformClass) TransformIPOnPassthrough() bool {
 	return _v
 }
 
-// BitReader provides a bit reader that can read any number of bits from a
-// memory buffer. It provides functions for reading any number of bits into 8,
-// 16, 32 and 64 bit variables.
+// BitReader (GstBitReader) provides a bit reader that can read any number of
+// bits from a memory buffer. It provides functions for reading any number of
+// bits into 8, 16, 32 and 64 bit variables.
 //
 // An instance of this type is always passed by reference.
 type BitReader struct {
@@ -11264,7 +11974,8 @@ type bitReader struct {
 	native *C.GstBitReader
 }
 
-// BitsUint16: read nbits bits into val and update the current position.
+// BitsUint16 (gst_bit_reader_get_bits_uint16): read nbits bits into val and
+// update the current position.
 //
 // The function takes the following parameters:
 //
@@ -11298,7 +12009,8 @@ func (reader *BitReader) BitsUint16(nbits uint) (uint16, bool) {
 	return _val, _ok
 }
 
-// BitsUint32: read nbits bits into val and update the current position.
+// BitsUint32 (gst_bit_reader_get_bits_uint32): read nbits bits into val and
+// update the current position.
 //
 // The function takes the following parameters:
 //
@@ -11332,7 +12044,8 @@ func (reader *BitReader) BitsUint32(nbits uint) (uint32, bool) {
 	return _val, _ok
 }
 
-// BitsUint64: read nbits bits into val and update the current position.
+// BitsUint64 (gst_bit_reader_get_bits_uint64): read nbits bits into val and
+// update the current position.
 //
 // The function takes the following parameters:
 //
@@ -11366,7 +12079,8 @@ func (reader *BitReader) BitsUint64(nbits uint) (uint64, bool) {
 	return _val, _ok
 }
 
-// BitsUint8: read nbits bits into val and update the current position.
+// BitsUint8 (gst_bit_reader_get_bits_uint8): read nbits bits into val and
+// update the current position.
 //
 // The function takes the following parameters:
 //
@@ -11400,7 +12114,8 @@ func (reader *BitReader) BitsUint8(nbits uint) (byte, bool) {
 	return _val, _ok
 }
 
-// Pos returns the current position of a BitReader instance in bits.
+// Pos (gst_bit_reader_get_pos) returns the current position of a BitReader
+// instance in bits.
 //
 // The function returns the following values:
 //
@@ -11421,7 +12136,8 @@ func (reader *BitReader) Pos() uint {
 	return _guint
 }
 
-// Remaining returns the remaining number of bits of a BitReader instance.
+// Remaining (gst_bit_reader_get_remaining) returns the remaining number of bits
+// of a BitReader instance.
 //
 // The function returns the following values:
 //
@@ -11442,7 +12158,8 @@ func (reader *BitReader) Remaining() uint {
 	return _guint
 }
 
-// Size returns the total number of bits of a BitReader instance.
+// Size (gst_bit_reader_get_size) returns the total number of bits of a
+// BitReader instance.
 //
 // The function returns the following values:
 //
@@ -11463,8 +12180,8 @@ func (reader *BitReader) Size() uint {
 	return _guint
 }
 
-// Init initializes a BitReader instance to read from data. This function can be
-// called on already initialized instances.
+// Init (gst_bit_reader_init) initializes a BitReader instance to read from
+// data. This function can be called on already initialized instances.
 //
 // The function takes the following parameters:
 //
@@ -11485,7 +12202,8 @@ func (reader *BitReader) Init(data []byte) {
 	runtime.KeepAlive(data)
 }
 
-// PeekBitsUint16: read nbits bits into val but keep the current position.
+// PeekBitsUint16 (gst_bit_reader_peek_bits_uint16): read nbits bits into val
+// but keep the current position.
 //
 // The function takes the following parameters:
 //
@@ -11519,7 +12237,8 @@ func (reader *BitReader) PeekBitsUint16(nbits uint) (uint16, bool) {
 	return _val, _ok
 }
 
-// PeekBitsUint32: read nbits bits into val but keep the current position.
+// PeekBitsUint32 (gst_bit_reader_peek_bits_uint32): read nbits bits into val
+// but keep the current position.
 //
 // The function takes the following parameters:
 //
@@ -11553,7 +12272,8 @@ func (reader *BitReader) PeekBitsUint32(nbits uint) (uint32, bool) {
 	return _val, _ok
 }
 
-// PeekBitsUint64: read nbits bits into val but keep the current position.
+// PeekBitsUint64 (gst_bit_reader_peek_bits_uint64): read nbits bits into val
+// but keep the current position.
 //
 // The function takes the following parameters:
 //
@@ -11587,7 +12307,8 @@ func (reader *BitReader) PeekBitsUint64(nbits uint) (uint64, bool) {
 	return _val, _ok
 }
 
-// PeekBitsUint8: read nbits bits into val but keep the current position.
+// PeekBitsUint8 (gst_bit_reader_peek_bits_uint8): read nbits bits into val but
+// keep the current position.
 //
 // The function takes the following parameters:
 //
@@ -11621,7 +12342,8 @@ func (reader *BitReader) PeekBitsUint8(nbits uint) (byte, bool) {
 	return _val, _ok
 }
 
-// SetPos sets the new position of a BitReader instance to pos in bits.
+// SetPos (gst_bit_reader_set_pos) sets the new position of a BitReader instance
+// to pos in bits.
 //
 // The function takes the following parameters:
 //
@@ -11651,7 +12373,7 @@ func (reader *BitReader) SetPos(pos uint) bool {
 	return _ok
 }
 
-// Skip skips nbits bits of the BitReader instance.
+// Skip (gst_bit_reader_skip) skips nbits bits of the BitReader instance.
 //
 // The function takes the following parameters:
 //
@@ -11681,7 +12403,7 @@ func (reader *BitReader) Skip(nbits uint) bool {
 	return _ok
 }
 
-// SkipToByte skips until the next byte.
+// SkipToByte (gst_bit_reader_skip_to_byte) skips until the next byte.
 //
 // The function returns the following values:
 //
@@ -11704,9 +12426,9 @@ func (reader *BitReader) SkipToByte() bool {
 	return _ok
 }
 
-// BitWriter provides a bit writer that can write any number of bits into a
-// memory buffer. It provides functions for writing any number of bits into 8,
-// 16, 32 and 64 bit variables.
+// BitWriter (GstBitWriter) provides a bit writer that can write any number of
+// bits into a memory buffer. It provides functions for writing any number of
+// bits into 8, 16, 32 and 64 bit variables.
 //
 // An instance of this type is always passed by reference.
 type BitWriter struct {
@@ -11740,8 +12462,8 @@ func (b *BitWriter) SetBitSize(bitSize uint) {
 	*valptr = C.guint(bitSize)
 }
 
-// AlignBytes: write trailing bit to align last byte of data. trailing_bit can
-// only be 1 or 0.
+// AlignBytes (gst_bit_writer_align_bytes): write trailing bit to align last
+// byte of data. trailing_bit can only be 1 or 0.
 //
 // The function takes the following parameters:
 //
@@ -11771,8 +12493,8 @@ func (bitwriter *BitWriter) AlignBytes(trailingBit byte) bool {
 	return _ok
 }
 
-// FreeAndGetBuffer frees bitwriter without destroying the internal data,
-// which is returned as Buffer.
+// FreeAndGetBuffer (gst_bit_writer_free_and_get_buffer) frees bitwriter without
+// destroying the internal data, which is returned as Buffer.
 //
 // Free-function: gst_buffer_unref.
 //
@@ -11818,7 +12540,7 @@ func (bitwriter *BitWriter) Remaining() uint {
 	return _guint
 }
 
-// Size: get size of written data.
+// Size (gst_bit_writer_get_size): get size of written data.
 //
 // The function returns the following values:
 //
@@ -11839,7 +12561,8 @@ func (bitwriter *BitWriter) Size() uint {
 	return _guint
 }
 
-// PutBitsUint16: write nbits bits of value to BitWriter.
+// PutBitsUint16 (gst_bit_writer_put_bits_uint16): write nbits bits of value to
+// BitWriter.
 //
 // The function takes the following parameters:
 //
@@ -11873,7 +12596,8 @@ func (bitwriter *BitWriter) PutBitsUint16(value uint16, nbits uint) bool {
 	return _ok
 }
 
-// PutBitsUint32: write nbits bits of value to BitWriter.
+// PutBitsUint32 (gst_bit_writer_put_bits_uint32): write nbits bits of value to
+// BitWriter.
 //
 // The function takes the following parameters:
 //
@@ -11907,7 +12631,8 @@ func (bitwriter *BitWriter) PutBitsUint32(value uint32, nbits uint) bool {
 	return _ok
 }
 
-// PutBitsUint64: write nbits bits of value to BitWriter.
+// PutBitsUint64 (gst_bit_writer_put_bits_uint64): write nbits bits of value to
+// BitWriter.
 //
 // The function takes the following parameters:
 //
@@ -11941,7 +12666,8 @@ func (bitwriter *BitWriter) PutBitsUint64(value uint64, nbits uint) bool {
 	return _ok
 }
 
-// PutBitsUint8: write nbits bits of value to BitWriter.
+// PutBitsUint8 (gst_bit_writer_put_bits_uint8): write nbits bits of value to
+// BitWriter.
 //
 // The function takes the following parameters:
 //
@@ -11975,7 +12701,8 @@ func (bitwriter *BitWriter) PutBitsUint8(value byte, nbits uint) bool {
 	return _ok
 }
 
-// Reset resets bitwriter and frees the data if it's owned by bitwriter.
+// Reset (gst_bit_writer_reset) resets bitwriter and frees the data if it's
+// owned by bitwriter.
 func (bitwriter *BitWriter) Reset() {
 	var _arg0 *C.GstBitWriter // out
 
@@ -11985,7 +12712,8 @@ func (bitwriter *BitWriter) Reset() {
 	runtime.KeepAlive(bitwriter)
 }
 
-// ResetAndGetBuffer resets bitwriter and returns the current data as Buffer.
+// ResetAndGetBuffer (gst_bit_writer_reset_and_get_buffer) resets bitwriter and
+// returns the current data as Buffer.
 //
 // Free-function: gst_buffer_unref.
 //
@@ -12035,12 +12763,12 @@ func (bitwriter *BitWriter) SetPos(pos uint) bool {
 	return _ok
 }
 
-// ByteReader provides a byte reader that can read different integer and
-// floating point types from a memory buffer. It provides functions for reading
-// signed/unsigned, little/big endian integers of 8, 16, 24, 32 and 64 bits and
-// functions for reading little/big endian floating points numbers of 32 and 64
-// bits. It also provides functions to read NUL-terminated strings in various
-// character encodings.
+// ByteReader (GstByteReader) provides a byte reader that can read different
+// integer and floating point types from a memory buffer. It provides functions
+// for reading signed/unsigned, little/big endian integers of 8, 16, 24, 32 and
+// 64 bits and functions for reading little/big endian floating points numbers
+// of 32 and 64 bits. It also provides functions to read NUL-terminated strings
+// in various character encodings.
 //
 // An instance of this type is always passed by reference.
 type ByteReader struct {
@@ -12052,7 +12780,7 @@ type byteReader struct {
 	native *C.GstByteReader
 }
 
-// DupStringUTF16: free-function: g_free
+// DupStringUTF16 (gst_byte_reader_dup_string_utf16): free-function: g_free
 //
 // Returns a newly-allocated copy of the current data position if there is a
 // NUL-terminated UTF-16 string in the data (this could be an empty string as
@@ -12106,7 +12834,7 @@ func (reader *ByteReader) DupStringUTF16() ([]uint16, bool) {
 	return _str, _ok
 }
 
-// DupStringUTF32: free-function: g_free
+// DupStringUTF32 (gst_byte_reader_dup_string_utf32): free-function: g_free
 //
 // Returns a newly-allocated copy of the current data position if there is a
 // NUL-terminated UTF-32 string in the data (this could be an empty string as
@@ -12160,8 +12888,8 @@ func (reader *ByteReader) DupStringUTF32() ([]uint32, bool) {
 	return _str, _ok
 }
 
-// Float32Be: read a 32 bit big endian floating point value into val and update
-// the current position.
+// Float32Be (gst_byte_reader_get_float32_be): read a 32 bit big endian floating
+// point value into val and update the current position.
 //
 // The function returns the following values:
 //
@@ -12188,8 +12916,8 @@ func (reader *ByteReader) Float32Be() (float32, bool) {
 	return _val, _ok
 }
 
-// Float32LE: read a 32 bit little endian floating point value into val and
-// update the current position.
+// Float32LE (gst_byte_reader_get_float32_le): read a 32 bit little endian
+// floating point value into val and update the current position.
 //
 // The function returns the following values:
 //
@@ -12216,8 +12944,8 @@ func (reader *ByteReader) Float32LE() (float32, bool) {
 	return _val, _ok
 }
 
-// Float64Be: read a 64 bit big endian floating point value into val and update
-// the current position.
+// Float64Be (gst_byte_reader_get_float64_be): read a 64 bit big endian floating
+// point value into val and update the current position.
 //
 // The function returns the following values:
 //
@@ -12244,8 +12972,8 @@ func (reader *ByteReader) Float64Be() (float64, bool) {
 	return _val, _ok
 }
 
-// Float64LE: read a 64 bit little endian floating point value into val and
-// update the current position.
+// Float64LE (gst_byte_reader_get_float64_le): read a 64 bit little endian
+// floating point value into val and update the current position.
 //
 // The function returns the following values:
 //
@@ -12272,8 +13000,8 @@ func (reader *ByteReader) Float64LE() (float64, bool) {
 	return _val, _ok
 }
 
-// Int16Be: read a signed 16 bit big endian integer into val and update the
-// current position.
+// Int16Be (gst_byte_reader_get_int16_be): read a signed 16 bit big endian
+// integer into val and update the current position.
 //
 // The function returns the following values:
 //
@@ -12300,8 +13028,8 @@ func (reader *ByteReader) Int16Be() (int16, bool) {
 	return _val, _ok
 }
 
-// Int16LE: read a signed 16 bit little endian integer into val and update the
-// current position.
+// Int16LE (gst_byte_reader_get_int16_le): read a signed 16 bit little endian
+// integer into val and update the current position.
 //
 // The function returns the following values:
 //
@@ -12328,8 +13056,8 @@ func (reader *ByteReader) Int16LE() (int16, bool) {
 	return _val, _ok
 }
 
-// Int24Be: read a signed 24 bit big endian integer into val and update the
-// current position.
+// Int24Be (gst_byte_reader_get_int24_be): read a signed 24 bit big endian
+// integer into val and update the current position.
 //
 // The function returns the following values:
 //
@@ -12356,8 +13084,8 @@ func (reader *ByteReader) Int24Be() (int32, bool) {
 	return _val, _ok
 }
 
-// Int24LE: read a signed 24 bit little endian integer into val and update the
-// current position.
+// Int24LE (gst_byte_reader_get_int24_le): read a signed 24 bit little endian
+// integer into val and update the current position.
 //
 // The function returns the following values:
 //
@@ -12384,8 +13112,8 @@ func (reader *ByteReader) Int24LE() (int32, bool) {
 	return _val, _ok
 }
 
-// Int32Be: read a signed 32 bit big endian integer into val and update the
-// current position.
+// Int32Be (gst_byte_reader_get_int32_be): read a signed 32 bit big endian
+// integer into val and update the current position.
 //
 // The function returns the following values:
 //
@@ -12412,8 +13140,8 @@ func (reader *ByteReader) Int32Be() (int32, bool) {
 	return _val, _ok
 }
 
-// Int32LE: read a signed 32 bit little endian integer into val and update the
-// current position.
+// Int32LE (gst_byte_reader_get_int32_le): read a signed 32 bit little endian
+// integer into val and update the current position.
 //
 // The function returns the following values:
 //
@@ -12440,8 +13168,8 @@ func (reader *ByteReader) Int32LE() (int32, bool) {
 	return _val, _ok
 }
 
-// Int64Be: read a signed 64 bit big endian integer into val and update the
-// current position.
+// Int64Be (gst_byte_reader_get_int64_be): read a signed 64 bit big endian
+// integer into val and update the current position.
 //
 // The function returns the following values:
 //
@@ -12468,8 +13196,8 @@ func (reader *ByteReader) Int64Be() (int64, bool) {
 	return _val, _ok
 }
 
-// Int64LE: read a signed 64 bit little endian integer into val and update the
-// current position.
+// Int64LE (gst_byte_reader_get_int64_le): read a signed 64 bit little endian
+// integer into val and update the current position.
 //
 // The function returns the following values:
 //
@@ -12496,7 +13224,8 @@ func (reader *ByteReader) Int64LE() (int64, bool) {
 	return _val, _ok
 }
 
-// Int8: read a signed 8 bit integer into val and update the current position.
+// Int8 (gst_byte_reader_get_int8): read a signed 8 bit integer into val and
+// update the current position.
 //
 // The function returns the following values:
 //
@@ -12523,7 +13252,8 @@ func (reader *ByteReader) Int8() (int8, bool) {
 	return _val, _ok
 }
 
-// Pos returns the current position of a ByteReader instance in bytes.
+// Pos (gst_byte_reader_get_pos) returns the current position of a ByteReader
+// instance in bytes.
 //
 // The function returns the following values:
 //
@@ -12544,7 +13274,8 @@ func (reader *ByteReader) Pos() uint {
 	return _guint
 }
 
-// Remaining returns the remaining number of bytes of a ByteReader instance.
+// Remaining (gst_byte_reader_get_remaining) returns the remaining number of
+// bytes of a ByteReader instance.
 //
 // The function returns the following values:
 //
@@ -12565,7 +13296,8 @@ func (reader *ByteReader) Remaining() uint {
 	return _guint
 }
 
-// Size returns the total number of bytes of a ByteReader instance.
+// Size (gst_byte_reader_get_size) returns the total number of bytes of a
+// ByteReader instance.
 //
 // The function returns the following values:
 //
@@ -12586,8 +13318,8 @@ func (reader *ByteReader) Size() uint {
 	return _guint
 }
 
-// Uint16Be: read an unsigned 16 bit big endian integer into val and update the
-// current position.
+// Uint16Be (gst_byte_reader_get_uint16_be): read an unsigned 16 bit big endian
+// integer into val and update the current position.
 //
 // The function returns the following values:
 //
@@ -12614,8 +13346,8 @@ func (reader *ByteReader) Uint16Be() (uint16, bool) {
 	return _val, _ok
 }
 
-// Uint16LE: read an unsigned 16 bit little endian integer into val and update
-// the current position.
+// Uint16LE (gst_byte_reader_get_uint16_le): read an unsigned 16 bit little
+// endian integer into val and update the current position.
 //
 // The function returns the following values:
 //
@@ -12642,8 +13374,8 @@ func (reader *ByteReader) Uint16LE() (uint16, bool) {
 	return _val, _ok
 }
 
-// Uint24Be: read an unsigned 24 bit big endian integer into val and update the
-// current position.
+// Uint24Be (gst_byte_reader_get_uint24_be): read an unsigned 24 bit big endian
+// integer into val and update the current position.
 //
 // The function returns the following values:
 //
@@ -12670,8 +13402,8 @@ func (reader *ByteReader) Uint24Be() (uint32, bool) {
 	return _val, _ok
 }
 
-// Uint24LE: read an unsigned 24 bit little endian integer into val and update
-// the current position.
+// Uint24LE (gst_byte_reader_get_uint24_le): read an unsigned 24 bit little
+// endian integer into val and update the current position.
 //
 // The function returns the following values:
 //
@@ -12698,8 +13430,8 @@ func (reader *ByteReader) Uint24LE() (uint32, bool) {
 	return _val, _ok
 }
 
-// Uint32Be: read an unsigned 32 bit big endian integer into val and update the
-// current position.
+// Uint32Be (gst_byte_reader_get_uint32_be): read an unsigned 32 bit big endian
+// integer into val and update the current position.
 //
 // The function returns the following values:
 //
@@ -12726,8 +13458,8 @@ func (reader *ByteReader) Uint32Be() (uint32, bool) {
 	return _val, _ok
 }
 
-// Uint32LE: read an unsigned 32 bit little endian integer into val and update
-// the current position.
+// Uint32LE (gst_byte_reader_get_uint32_le): read an unsigned 32 bit little
+// endian integer into val and update the current position.
 //
 // The function returns the following values:
 //
@@ -12754,8 +13486,8 @@ func (reader *ByteReader) Uint32LE() (uint32, bool) {
 	return _val, _ok
 }
 
-// Uint64Be: read an unsigned 64 bit big endian integer into val and update the
-// current position.
+// Uint64Be (gst_byte_reader_get_uint64_be): read an unsigned 64 bit big endian
+// integer into val and update the current position.
 //
 // The function returns the following values:
 //
@@ -12782,8 +13514,8 @@ func (reader *ByteReader) Uint64Be() (uint64, bool) {
 	return _val, _ok
 }
 
-// Uint64LE: read an unsigned 64 bit little endian integer into val and update
-// the current position.
+// Uint64LE (gst_byte_reader_get_uint64_le): read an unsigned 64 bit little
+// endian integer into val and update the current position.
 //
 // The function returns the following values:
 //
@@ -12810,8 +13542,8 @@ func (reader *ByteReader) Uint64LE() (uint64, bool) {
 	return _val, _ok
 }
 
-// Uint8: read an unsigned 8 bit integer into val and update the current
-// position.
+// Uint8 (gst_byte_reader_get_uint8): read an unsigned 8 bit integer into val
+// and update the current position.
 //
 // The function returns the following values:
 //
@@ -12838,8 +13570,8 @@ func (reader *ByteReader) Uint8() (byte, bool) {
 	return _val, _ok
 }
 
-// Init initializes a ByteReader instance to read from data. This function can
-// be called on already initialized instances.
+// Init (gst_byte_reader_init) initializes a ByteReader instance to read from
+// data. This function can be called on already initialized instances.
 //
 // The function takes the following parameters:
 //
@@ -12860,8 +13592,9 @@ func (reader *ByteReader) Init(data []byte) {
 	runtime.KeepAlive(data)
 }
 
-// MaskedScanUint32: scan for pattern pattern with applied mask mask in the byte
-// reader data, starting from offset offset relative to the current position.
+// MaskedScanUint32 (gst_byte_reader_masked_scan_uint32): scan for pattern
+// pattern with applied mask mask in the byte reader data, starting from offset
+// offset relative to the current position.
 //
 // The bytes in pattern and mask are interpreted left-to-right, regardless of
 // endianness. All four bytes of the pattern must be present in the byte reader
@@ -12923,9 +13656,9 @@ func (reader *ByteReader) MaskedScanUint32(mask uint32, pattern uint32, offset u
 	return _guint
 }
 
-// MaskedScanUint32Peek: scan for pattern pattern with applied mask mask in
-// the byte reader data, starting from offset offset relative to the current
-// position.
+// MaskedScanUint32Peek (gst_byte_reader_masked_scan_uint32_peek): scan for
+// pattern pattern with applied mask mask in the byte reader data, starting from
+// offset offset relative to the current position.
 //
 // The bytes in pattern and mask are interpreted left-to-right, regardless of
 // endianness. All four bytes of the pattern must be present in the byte reader
@@ -12976,8 +13709,8 @@ func (reader *ByteReader) MaskedScanUint32Peek(mask uint32, pattern uint32, offs
 	return _value, _guint
 }
 
-// PeekFloat32Be: read a 32 bit big endian floating point value into val but
-// keep the current position.
+// PeekFloat32Be (gst_byte_reader_peek_float32_be): read a 32 bit big endian
+// floating point value into val but keep the current position.
 //
 // The function returns the following values:
 //
@@ -13004,8 +13737,8 @@ func (reader *ByteReader) PeekFloat32Be() (float32, bool) {
 	return _val, _ok
 }
 
-// PeekFloat32LE: read a 32 bit little endian floating point value into val but
-// keep the current position.
+// PeekFloat32LE (gst_byte_reader_peek_float32_le): read a 32 bit little endian
+// floating point value into val but keep the current position.
 //
 // The function returns the following values:
 //
@@ -13032,8 +13765,8 @@ func (reader *ByteReader) PeekFloat32LE() (float32, bool) {
 	return _val, _ok
 }
 
-// PeekFloat64Be: read a 64 bit big endian floating point value into val but
-// keep the current position.
+// PeekFloat64Be (gst_byte_reader_peek_float64_be): read a 64 bit big endian
+// floating point value into val but keep the current position.
 //
 // The function returns the following values:
 //
@@ -13060,8 +13793,8 @@ func (reader *ByteReader) PeekFloat64Be() (float64, bool) {
 	return _val, _ok
 }
 
-// PeekFloat64LE: read a 64 bit little endian floating point value into val but
-// keep the current position.
+// PeekFloat64LE (gst_byte_reader_peek_float64_le): read a 64 bit little endian
+// floating point value into val but keep the current position.
 //
 // The function returns the following values:
 //
@@ -13088,8 +13821,8 @@ func (reader *ByteReader) PeekFloat64LE() (float64, bool) {
 	return _val, _ok
 }
 
-// PeekInt16Be: read a signed 16 bit big endian integer into val but keep the
-// current position.
+// PeekInt16Be (gst_byte_reader_peek_int16_be): read a signed 16 bit big endian
+// integer into val but keep the current position.
 //
 // The function returns the following values:
 //
@@ -13116,8 +13849,8 @@ func (reader *ByteReader) PeekInt16Be() (int16, bool) {
 	return _val, _ok
 }
 
-// PeekInt16LE: read a signed 16 bit little endian integer into val but keep the
-// current position.
+// PeekInt16LE (gst_byte_reader_peek_int16_le): read a signed 16 bit little
+// endian integer into val but keep the current position.
 //
 // The function returns the following values:
 //
@@ -13144,8 +13877,8 @@ func (reader *ByteReader) PeekInt16LE() (int16, bool) {
 	return _val, _ok
 }
 
-// PeekInt24Be: read a signed 24 bit big endian integer into val but keep the
-// current position.
+// PeekInt24Be (gst_byte_reader_peek_int24_be): read a signed 24 bit big endian
+// integer into val but keep the current position.
 //
 // The function returns the following values:
 //
@@ -13172,8 +13905,8 @@ func (reader *ByteReader) PeekInt24Be() (int32, bool) {
 	return _val, _ok
 }
 
-// PeekInt24LE: read a signed 24 bit little endian integer into val but keep the
-// current position.
+// PeekInt24LE (gst_byte_reader_peek_int24_le): read a signed 24 bit little
+// endian integer into val but keep the current position.
 //
 // The function returns the following values:
 //
@@ -13200,8 +13933,8 @@ func (reader *ByteReader) PeekInt24LE() (int32, bool) {
 	return _val, _ok
 }
 
-// PeekInt32Be: read a signed 32 bit big endian integer into val but keep the
-// current position.
+// PeekInt32Be (gst_byte_reader_peek_int32_be): read a signed 32 bit big endian
+// integer into val but keep the current position.
 //
 // The function returns the following values:
 //
@@ -13228,8 +13961,8 @@ func (reader *ByteReader) PeekInt32Be() (int32, bool) {
 	return _val, _ok
 }
 
-// PeekInt32LE: read a signed 32 bit little endian integer into val but keep the
-// current position.
+// PeekInt32LE (gst_byte_reader_peek_int32_le): read a signed 32 bit little
+// endian integer into val but keep the current position.
 //
 // The function returns the following values:
 //
@@ -13256,8 +13989,8 @@ func (reader *ByteReader) PeekInt32LE() (int32, bool) {
 	return _val, _ok
 }
 
-// PeekInt64Be: read a signed 64 bit big endian integer into val but keep the
-// current position.
+// PeekInt64Be (gst_byte_reader_peek_int64_be): read a signed 64 bit big endian
+// integer into val but keep the current position.
 //
 // The function returns the following values:
 //
@@ -13284,8 +14017,8 @@ func (reader *ByteReader) PeekInt64Be() (int64, bool) {
 	return _val, _ok
 }
 
-// PeekInt64LE: read a signed 64 bit little endian integer into val but keep the
-// current position.
+// PeekInt64LE (gst_byte_reader_peek_int64_le): read a signed 64 bit little
+// endian integer into val but keep the current position.
 //
 // The function returns the following values:
 //
@@ -13312,7 +14045,8 @@ func (reader *ByteReader) PeekInt64LE() (int64, bool) {
 	return _val, _ok
 }
 
-// PeekInt8: read a signed 8 bit integer into val but keep the current position.
+// PeekInt8 (gst_byte_reader_peek_int8): read a signed 8 bit integer into val
+// but keep the current position.
 //
 // The function returns the following values:
 //
@@ -13339,8 +14073,8 @@ func (reader *ByteReader) PeekInt8() (int8, bool) {
 	return _val, _ok
 }
 
-// PeekUint16Be: read an unsigned 16 bit big endian integer into val but keep
-// the current position.
+// PeekUint16Be (gst_byte_reader_peek_uint16_be): read an unsigned 16 bit big
+// endian integer into val but keep the current position.
 //
 // The function returns the following values:
 //
@@ -13367,8 +14101,8 @@ func (reader *ByteReader) PeekUint16Be() (uint16, bool) {
 	return _val, _ok
 }
 
-// PeekUint16LE: read an unsigned 16 bit little endian integer into val but keep
-// the current position.
+// PeekUint16LE (gst_byte_reader_peek_uint16_le): read an unsigned 16 bit little
+// endian integer into val but keep the current position.
 //
 // The function returns the following values:
 //
@@ -13395,8 +14129,8 @@ func (reader *ByteReader) PeekUint16LE() (uint16, bool) {
 	return _val, _ok
 }
 
-// PeekUint24Be: read an unsigned 24 bit big endian integer into val but keep
-// the current position.
+// PeekUint24Be (gst_byte_reader_peek_uint24_be): read an unsigned 24 bit big
+// endian integer into val but keep the current position.
 //
 // The function returns the following values:
 //
@@ -13423,8 +14157,8 @@ func (reader *ByteReader) PeekUint24Be() (uint32, bool) {
 	return _val, _ok
 }
 
-// PeekUint24LE: read an unsigned 24 bit little endian integer into val but keep
-// the current position.
+// PeekUint24LE (gst_byte_reader_peek_uint24_le): read an unsigned 24 bit little
+// endian integer into val but keep the current position.
 //
 // The function returns the following values:
 //
@@ -13451,8 +14185,8 @@ func (reader *ByteReader) PeekUint24LE() (uint32, bool) {
 	return _val, _ok
 }
 
-// PeekUint32Be: read an unsigned 32 bit big endian integer into val but keep
-// the current position.
+// PeekUint32Be (gst_byte_reader_peek_uint32_be): read an unsigned 32 bit big
+// endian integer into val but keep the current position.
 //
 // The function returns the following values:
 //
@@ -13479,8 +14213,8 @@ func (reader *ByteReader) PeekUint32Be() (uint32, bool) {
 	return _val, _ok
 }
 
-// PeekUint32LE: read an unsigned 32 bit little endian integer into val but keep
-// the current position.
+// PeekUint32LE (gst_byte_reader_peek_uint32_le): read an unsigned 32 bit little
+// endian integer into val but keep the current position.
 //
 // The function returns the following values:
 //
@@ -13507,8 +14241,8 @@ func (reader *ByteReader) PeekUint32LE() (uint32, bool) {
 	return _val, _ok
 }
 
-// PeekUint64Be: read an unsigned 64 bit big endian integer into val but keep
-// the current position.
+// PeekUint64Be (gst_byte_reader_peek_uint64_be): read an unsigned 64 bit big
+// endian integer into val but keep the current position.
 //
 // The function returns the following values:
 //
@@ -13535,8 +14269,8 @@ func (reader *ByteReader) PeekUint64Be() (uint64, bool) {
 	return _val, _ok
 }
 
-// PeekUint64LE: read an unsigned 64 bit little endian integer into val but keep
-// the current position.
+// PeekUint64LE (gst_byte_reader_peek_uint64_le): read an unsigned 64 bit little
+// endian integer into val but keep the current position.
 //
 // The function returns the following values:
 //
@@ -13563,8 +14297,8 @@ func (reader *ByteReader) PeekUint64LE() (uint64, bool) {
 	return _val, _ok
 }
 
-// PeekUint8: read an unsigned 8 bit integer into val but keep the current
-// position.
+// PeekUint8 (gst_byte_reader_peek_uint8): read an unsigned 8 bit integer into
+// val but keep the current position.
 //
 // The function returns the following values:
 //
@@ -13591,7 +14325,8 @@ func (reader *ByteReader) PeekUint8() (byte, bool) {
 	return _val, _ok
 }
 
-// SetPos sets the new position of a ByteReader instance to pos in bytes.
+// SetPos (gst_byte_reader_set_pos) sets the new position of a ByteReader
+// instance to pos in bytes.
 //
 // The function takes the following parameters:
 //
@@ -13621,7 +14356,7 @@ func (reader *ByteReader) SetPos(pos uint) bool {
 	return _ok
 }
 
-// Skip skips nbytes bytes of the ByteReader instance.
+// Skip (gst_byte_reader_skip) skips nbytes bytes of the ByteReader instance.
 //
 // The function takes the following parameters:
 //
@@ -13651,8 +14386,9 @@ func (reader *ByteReader) Skip(nbytes uint) bool {
 	return _ok
 }
 
-// SkipStringUTF16 skips a NUL-terminated UTF-16 string in the ByteReader
-// instance, advancing the current position to the byte after the string.
+// SkipStringUTF16 (gst_byte_reader_skip_string_utf16) skips a NUL-terminated
+// UTF-16 string in the ByteReader instance, advancing the current position to
+// the byte after the string.
 //
 // No input checking for valid UTF-16 is done.
 //
@@ -13679,8 +14415,9 @@ func (reader *ByteReader) SkipStringUTF16() bool {
 	return _ok
 }
 
-// SkipStringUTF32 skips a NUL-terminated UTF-32 string in the ByteReader
-// instance, advancing the current position to the byte after the string.
+// SkipStringUTF32 (gst_byte_reader_skip_string_utf32) skips a NUL-terminated
+// UTF-32 string in the ByteReader instance, advancing the current position to
+// the byte after the string.
 //
 // No input checking for valid UTF-32 is done.
 //
@@ -13707,10 +14444,11 @@ func (reader *ByteReader) SkipStringUTF32() bool {
 	return _ok
 }
 
-// SkipStringUTF8 skips a NUL-terminated string in the ByteReader instance,
-// advancing the current position to the byte after the string. This will work
-// for any NUL-terminated string with a character width of 8 bits, so ASCII,
-// UTF-8, ISO-8859-N etc. No input checking for valid UTF-8 is done.
+// SkipStringUTF8 (gst_byte_reader_skip_string_utf8) skips a NUL-terminated
+// string in the ByteReader instance, advancing the current position to the
+// byte after the string. This will work for any NUL-terminated string with a
+// character width of 8 bits, so ASCII, UTF-8, ISO-8859-N etc. No input checking
+// for valid UTF-8 is done.
 //
 // This function will fail if no NUL-terminator was found in in the data.
 //
@@ -13735,12 +14473,13 @@ func (reader *ByteReader) SkipStringUTF8() bool {
 	return _ok
 }
 
-// ByteWriter provides a byte writer and reader that can write/read different
-// integer and floating point types to/from a memory buffer. It provides
-// functions for writing/reading signed/unsigned, little/big endian integers
-// of 8, 16, 24, 32 and 64 bits and functions for reading little/big endian
-// floating points numbers of 32 and 64 bits. It also provides functions to
-// write/read NUL-terminated strings in various character encodings.
+// ByteWriter (GstByteWriter) provides a byte writer and reader that can
+// write/read different integer and floating point types to/from a memory
+// buffer. It provides functions for writing/reading signed/unsigned,
+// little/big endian integers of 8, 16, 24, 32 and 64 bits and functions for
+// reading little/big endian floating points numbers of 32 and 64 bits. It also
+// provides functions to write/read NUL-terminated strings in various character
+// encodings.
 //
 // An instance of this type is always passed by reference.
 type ByteWriter struct {
@@ -13810,8 +14549,9 @@ func (b *ByteWriter) SetOwned(owned bool) {
 	}
 }
 
-// EnsureFreeSpace checks if enough free space from the current write cursor is
-// available and reallocates if necessary.
+// EnsureFreeSpace (gst_byte_writer_ensure_free_space) checks if enough
+// free space from the current write cursor is available and reallocates if
+// necessary.
 //
 // The function takes the following parameters:
 //
@@ -13841,7 +14581,7 @@ func (writer *ByteWriter) EnsureFreeSpace(size uint) bool {
 	return _ok
 }
 
-// Fill writes size bytes containing value to writer.
+// Fill (gst_byte_writer_fill) writes size bytes containing value to writer.
 //
 // The function takes the following parameters:
 //
@@ -13875,8 +14615,8 @@ func (writer *ByteWriter) Fill(value byte, size uint) bool {
 	return _ok
 }
 
-// FreeAndGetBuffer frees writer and all memory allocated by it except the
-// current data, which is returned as Buffer.
+// FreeAndGetBuffer (gst_byte_writer_free_and_get_buffer) frees writer and all
+// memory allocated by it except the current data, which is returned as Buffer.
 //
 // Free-function: gst_buffer_unref.
 //
@@ -13905,8 +14645,8 @@ func (writer *ByteWriter) FreeAndGetBuffer() *gst.Buffer {
 	return _buffer
 }
 
-// FreeAndGetData frees writer and all memory allocated by it except the current
-// data, which is returned.
+// FreeAndGetData (gst_byte_writer_free_and_get_data) frees writer and all
+// memory allocated by it except the current data, which is returned.
 //
 // Free-function: g_free.
 //
@@ -13930,8 +14670,9 @@ func (writer *ByteWriter) FreeAndGetData() *byte {
 	return _guint8
 }
 
-// Remaining returns the remaining size of data that can still be written.
-// If -1 is returned the remaining size is only limited by system resources.
+// Remaining (gst_byte_writer_get_remaining) returns the remaining size of
+// data that can still be written. If -1 is returned the remaining size is only
+// limited by system resources.
 //
 // The function returns the following values:
 //
@@ -13952,7 +14693,7 @@ func (writer *ByteWriter) Remaining() uint {
 	return _guint
 }
 
-// Init initializes writer to an empty instance.
+// Init (gst_byte_writer_init) initializes writer to an empty instance.
 func (writer *ByteWriter) Init() {
 	var _arg0 *C.GstByteWriter // out
 
@@ -13962,9 +14703,9 @@ func (writer *ByteWriter) Init() {
 	runtime.KeepAlive(writer)
 }
 
-// InitWithData initializes writer with the given memory area. If initialized
-// is TRUE it is possible to read size bytes from the ByteWriter from the
-// beginning.
+// InitWithData (gst_byte_writer_init_with_data) initializes writer with the
+// given memory area. If initialized is TRUE it is possible to read size bytes
+// from the ByteWriter from the beginning.
 //
 // The function takes the following parameters:
 //
@@ -13991,7 +14732,8 @@ func (writer *ByteWriter) InitWithData(data []byte, initialized bool) {
 	runtime.KeepAlive(initialized)
 }
 
-// InitWithSize initializes writer with the given initial data size.
+// InitWithSize (gst_byte_writer_init_with_size) initializes writer with the
+// given initial data size.
 //
 // The function takes the following parameters:
 //
@@ -14014,7 +14756,7 @@ func (writer *ByteWriter) InitWithSize(size uint, fixed bool) {
 	runtime.KeepAlive(fixed)
 }
 
-// PutBuffer writes size bytes of data to writer.
+// PutBuffer (gst_byte_writer_put_buffer) writes size bytes of data to writer.
 //
 // The function takes the following parameters:
 //
@@ -14052,7 +14794,7 @@ func (writer *ByteWriter) PutBuffer(buffer *gst.Buffer, offset uint, size int) b
 	return _ok
 }
 
-// PutData writes size bytes of data to writer.
+// PutData (gst_byte_writer_put_data) writes size bytes of data to writer.
 //
 // The function takes the following parameters:
 //
@@ -14086,7 +14828,8 @@ func (writer *ByteWriter) PutData(data []byte) bool {
 	return _ok
 }
 
-// PutFloat32Be writes a big endian 32 bit float to writer.
+// PutFloat32Be (gst_byte_writer_put_float32_be) writes a big endian 32 bit
+// float to writer.
 //
 // The function takes the following parameters:
 //
@@ -14116,7 +14859,8 @@ func (writer *ByteWriter) PutFloat32Be(val float32) bool {
 	return _ok
 }
 
-// PutFloat32LE writes a little endian 32 bit float to writer.
+// PutFloat32LE (gst_byte_writer_put_float32_le) writes a little endian 32 bit
+// float to writer.
 //
 // The function takes the following parameters:
 //
@@ -14146,7 +14890,8 @@ func (writer *ByteWriter) PutFloat32LE(val float32) bool {
 	return _ok
 }
 
-// PutFloat64Be writes a big endian 64 bit float to writer.
+// PutFloat64Be (gst_byte_writer_put_float64_be) writes a big endian 64 bit
+// float to writer.
 //
 // The function takes the following parameters:
 //
@@ -14176,7 +14921,8 @@ func (writer *ByteWriter) PutFloat64Be(val float64) bool {
 	return _ok
 }
 
-// PutFloat64LE writes a little endian 64 bit float to writer.
+// PutFloat64LE (gst_byte_writer_put_float64_le) writes a little endian 64 bit
+// float to writer.
 //
 // The function takes the following parameters:
 //
@@ -14206,7 +14952,8 @@ func (writer *ByteWriter) PutFloat64LE(val float64) bool {
 	return _ok
 }
 
-// PutInt16Be writes a signed big endian 16 bit integer to writer.
+// PutInt16Be (gst_byte_writer_put_int16_be) writes a signed big endian 16 bit
+// integer to writer.
 //
 // The function takes the following parameters:
 //
@@ -14236,7 +14983,8 @@ func (writer *ByteWriter) PutInt16Be(val int16) bool {
 	return _ok
 }
 
-// PutInt16LE writes a signed little endian 16 bit integer to writer.
+// PutInt16LE (gst_byte_writer_put_int16_le) writes a signed little endian 16
+// bit integer to writer.
 //
 // The function takes the following parameters:
 //
@@ -14266,7 +15014,8 @@ func (writer *ByteWriter) PutInt16LE(val int16) bool {
 	return _ok
 }
 
-// PutInt24Be writes a signed big endian 24 bit integer to writer.
+// PutInt24Be (gst_byte_writer_put_int24_be) writes a signed big endian 24 bit
+// integer to writer.
 //
 // The function takes the following parameters:
 //
@@ -14296,7 +15045,8 @@ func (writer *ByteWriter) PutInt24Be(val int32) bool {
 	return _ok
 }
 
-// PutInt24LE writes a signed little endian 24 bit integer to writer.
+// PutInt24LE (gst_byte_writer_put_int24_le) writes a signed little endian 24
+// bit integer to writer.
 //
 // The function takes the following parameters:
 //
@@ -14326,7 +15076,8 @@ func (writer *ByteWriter) PutInt24LE(val int32) bool {
 	return _ok
 }
 
-// PutInt32Be writes a signed big endian 32 bit integer to writer.
+// PutInt32Be (gst_byte_writer_put_int32_be) writes a signed big endian 32 bit
+// integer to writer.
 //
 // The function takes the following parameters:
 //
@@ -14356,7 +15107,8 @@ func (writer *ByteWriter) PutInt32Be(val int32) bool {
 	return _ok
 }
 
-// PutInt32LE writes a signed little endian 32 bit integer to writer.
+// PutInt32LE (gst_byte_writer_put_int32_le) writes a signed little endian 32
+// bit integer to writer.
 //
 // The function takes the following parameters:
 //
@@ -14386,7 +15138,8 @@ func (writer *ByteWriter) PutInt32LE(val int32) bool {
 	return _ok
 }
 
-// PutInt64Be writes a signed big endian 64 bit integer to writer.
+// PutInt64Be (gst_byte_writer_put_int64_be) writes a signed big endian 64 bit
+// integer to writer.
 //
 // The function takes the following parameters:
 //
@@ -14416,7 +15169,8 @@ func (writer *ByteWriter) PutInt64Be(val int64) bool {
 	return _ok
 }
 
-// PutInt64LE writes a signed little endian 64 bit integer to writer.
+// PutInt64LE (gst_byte_writer_put_int64_le) writes a signed little endian 64
+// bit integer to writer.
 //
 // The function takes the following parameters:
 //
@@ -14446,7 +15200,7 @@ func (writer *ByteWriter) PutInt64LE(val int64) bool {
 	return _ok
 }
 
-// PutInt8 writes a signed 8 bit integer to writer.
+// PutInt8 (gst_byte_writer_put_int8) writes a signed 8 bit integer to writer.
 //
 // The function takes the following parameters:
 //
@@ -14476,8 +15230,8 @@ func (writer *ByteWriter) PutInt8(val int8) bool {
 	return _ok
 }
 
-// PutStringUTF16 writes a NUL-terminated UTF16 string to writer (including the
-// terminator).
+// PutStringUTF16 (gst_byte_writer_put_string_utf16) writes a NUL-terminated
+// UTF16 string to writer (including the terminator).
 //
 // The function takes the following parameters:
 //
@@ -14511,8 +15265,8 @@ func (writer *ByteWriter) PutStringUTF16(data []uint16) bool {
 	return _ok
 }
 
-// PutStringUTF32 writes a NUL-terminated UTF32 string to writer (including the
-// terminator).
+// PutStringUTF32 (gst_byte_writer_put_string_utf32) writes a NUL-terminated
+// UTF32 string to writer (including the terminator).
 //
 // The function takes the following parameters:
 //
@@ -14546,8 +15300,8 @@ func (writer *ByteWriter) PutStringUTF32(data []uint32) bool {
 	return _ok
 }
 
-// PutStringUTF8 writes a NUL-terminated UTF8 string to writer (including the
-// terminator).
+// PutStringUTF8 (gst_byte_writer_put_string_utf8) writes a NUL-terminated UTF8
+// string to writer (including the terminator).
 //
 // The function takes the following parameters:
 //
@@ -14578,7 +15332,8 @@ func (writer *ByteWriter) PutStringUTF8(data string) bool {
 	return _ok
 }
 
-// PutUint16Be writes a unsigned big endian 16 bit integer to writer.
+// PutUint16Be (gst_byte_writer_put_uint16_be) writes a unsigned big endian 16
+// bit integer to writer.
 //
 // The function takes the following parameters:
 //
@@ -14608,7 +15363,8 @@ func (writer *ByteWriter) PutUint16Be(val uint16) bool {
 	return _ok
 }
 
-// PutUint16LE writes a unsigned little endian 16 bit integer to writer.
+// PutUint16LE (gst_byte_writer_put_uint16_le) writes a unsigned little endian
+// 16 bit integer to writer.
 //
 // The function takes the following parameters:
 //
@@ -14638,7 +15394,8 @@ func (writer *ByteWriter) PutUint16LE(val uint16) bool {
 	return _ok
 }
 
-// PutUint24Be writes a unsigned big endian 24 bit integer to writer.
+// PutUint24Be (gst_byte_writer_put_uint24_be) writes a unsigned big endian 24
+// bit integer to writer.
 //
 // The function takes the following parameters:
 //
@@ -14668,7 +15425,8 @@ func (writer *ByteWriter) PutUint24Be(val uint32) bool {
 	return _ok
 }
 
-// PutUint24LE writes a unsigned little endian 24 bit integer to writer.
+// PutUint24LE (gst_byte_writer_put_uint24_le) writes a unsigned little endian
+// 24 bit integer to writer.
 //
 // The function takes the following parameters:
 //
@@ -14698,7 +15456,8 @@ func (writer *ByteWriter) PutUint24LE(val uint32) bool {
 	return _ok
 }
 
-// PutUint32Be writes a unsigned big endian 32 bit integer to writer.
+// PutUint32Be (gst_byte_writer_put_uint32_be) writes a unsigned big endian 32
+// bit integer to writer.
 //
 // The function takes the following parameters:
 //
@@ -14728,7 +15487,8 @@ func (writer *ByteWriter) PutUint32Be(val uint32) bool {
 	return _ok
 }
 
-// PutUint32LE writes a unsigned little endian 32 bit integer to writer.
+// PutUint32LE (gst_byte_writer_put_uint32_le) writes a unsigned little endian
+// 32 bit integer to writer.
 //
 // The function takes the following parameters:
 //
@@ -14758,7 +15518,8 @@ func (writer *ByteWriter) PutUint32LE(val uint32) bool {
 	return _ok
 }
 
-// PutUint64Be writes a unsigned big endian 64 bit integer to writer.
+// PutUint64Be (gst_byte_writer_put_uint64_be) writes a unsigned big endian 64
+// bit integer to writer.
 //
 // The function takes the following parameters:
 //
@@ -14788,7 +15549,8 @@ func (writer *ByteWriter) PutUint64Be(val uint64) bool {
 	return _ok
 }
 
-// PutUint64LE writes a unsigned little endian 64 bit integer to writer.
+// PutUint64LE (gst_byte_writer_put_uint64_le) writes a unsigned little endian
+// 64 bit integer to writer.
 //
 // The function takes the following parameters:
 //
@@ -14818,7 +15580,8 @@ func (writer *ByteWriter) PutUint64LE(val uint64) bool {
 	return _ok
 }
 
-// PutUint8 writes a unsigned 8 bit integer to writer.
+// PutUint8 (gst_byte_writer_put_uint8) writes a unsigned 8 bit integer to
+// writer.
 //
 // The function takes the following parameters:
 //
@@ -14848,7 +15611,8 @@ func (writer *ByteWriter) PutUint8(val byte) bool {
 	return _ok
 }
 
-// Reset resets writer and frees the data if it's owned by writer.
+// Reset (gst_byte_writer_reset) resets writer and frees the data if it's owned
+// by writer.
 func (writer *ByteWriter) Reset() {
 	var _arg0 *C.GstByteWriter // out
 
@@ -14858,7 +15622,8 @@ func (writer *ByteWriter) Reset() {
 	runtime.KeepAlive(writer)
 }
 
-// ResetAndGetBuffer resets writer and returns the current data as buffer.
+// ResetAndGetBuffer (gst_byte_writer_reset_and_get_buffer) resets writer and
+// returns the current data as buffer.
 //
 // Free-function: gst_buffer_unref.
 //
@@ -14886,7 +15651,7 @@ func (writer *ByteWriter) ResetAndGetBuffer() *gst.Buffer {
 	return _buffer
 }
 
-// CollectData: structure used by the collect_pads.
+// CollectData (GstCollectData): structure used by the collect_pads.
 //
 // An instance of this type is always passed by reference.
 type CollectData struct {
@@ -14958,7 +15723,8 @@ func (c *CollectData) SetPos(pos uint) {
 	*valptr = C.guint(pos)
 }
 
-// CollectPadsClass: instance of this type is always passed by reference.
+// CollectPadsClass (GstCollectPadsClass): instance of this type is always
+// passed by reference.
 type CollectPadsClass struct {
 	*collectPadsClass
 }
@@ -14975,7 +15741,8 @@ func (c *CollectPadsClass) ParentClass() *gst.ObjectClass {
 	return _v
 }
 
-// DataQueueClass: instance of this type is always passed by reference.
+// DataQueueClass (GstDataQueueClass): instance of this type is always passed by
+// reference.
 type DataQueueClass struct {
 	*dataQueueClass
 }
@@ -14997,9 +15764,9 @@ func (d *DataQueueClass) GstReserved() [4]unsafe.Pointer {
 	return _v
 }
 
-// FlowCombiner: utility struct to help handling FlowReturn combination. Useful
-// for Element<!-- -->s that have multiple source pads and need to combine the
-// different FlowReturn for those pads.
+// FlowCombiner (GstFlowCombiner): utility struct to help handling FlowReturn
+// combination. Useful for Element<!-- -->s that have multiple source pads and
+// need to combine the different FlowReturn for those pads.
 //
 // FlowCombiner works by using the last FlowReturn for all Pad it has in its
 // list and computes the combined return value and provides it to the caller.
@@ -15061,7 +15828,7 @@ func NewFlowCombiner() *FlowCombiner {
 	return _flowCombiner
 }
 
-// AddPad adds a new Pad to the FlowCombiner.
+// AddPad (gst_flow_combiner_add_pad) adds a new Pad to the FlowCombiner.
 //
 // The function takes the following parameters:
 //
@@ -15078,8 +15845,8 @@ func (combiner *FlowCombiner) AddPad(pad *gst.Pad) {
 	runtime.KeepAlive(pad)
 }
 
-// Clear removes all pads from a FlowCombiner and resets it to its initial
-// state.
+// Clear (gst_flow_combiner_clear) removes all pads from a FlowCombiner and
+// resets it to its initial state.
 func (combiner *FlowCombiner) Clear() {
 	var _arg0 *C.GstFlowCombiner // out
 
@@ -15089,7 +15856,7 @@ func (combiner *FlowCombiner) Clear() {
 	runtime.KeepAlive(combiner)
 }
 
-// RemovePad removes a Pad from the FlowCombiner.
+// RemovePad (gst_flow_combiner_remove_pad) removes a Pad from the FlowCombiner.
 //
 // The function takes the following parameters:
 //
@@ -15106,8 +15873,8 @@ func (combiner *FlowCombiner) RemovePad(pad *gst.Pad) {
 	runtime.KeepAlive(pad)
 }
 
-// Reset flow combiner and all pads to their initial state without removing
-// pads.
+// Reset (gst_flow_combiner_reset) flow combiner and all pads to their initial
+// state without removing pads.
 func (combiner *FlowCombiner) Reset() {
 	var _arg0 *C.GstFlowCombiner // out
 
@@ -15117,7 +15884,8 @@ func (combiner *FlowCombiner) Reset() {
 	runtime.KeepAlive(combiner)
 }
 
-// UpdateFlow computes the combined flow return for the pads in it.
+// UpdateFlow (gst_flow_combiner_update_flow) computes the combined flow return
+// for the pads in it.
 //
 // The FlowReturn parameter should be the last flow return update for a pad
 // in this FlowCombiner. It will use this value to be able to shortcut some
@@ -15150,8 +15918,9 @@ func (combiner *FlowCombiner) UpdateFlow(fret gst.FlowReturn) gst.FlowReturn {
 	return _flowReturn
 }
 
-// UpdatePadFlow sets the provided pad's last flow return to provided value and
-// computes the combined flow return for the pads in it.
+// UpdatePadFlow (gst_flow_combiner_update_pad_flow) sets the provided pad's
+// last flow return to provided value and computes the combined flow return for
+// the pads in it.
 //
 // The FlowReturn parameter should be the last flow return update for a pad
 // in this FlowCombiner. It will use this value to be able to shortcut some
@@ -15188,9 +15957,9 @@ func (combiner *FlowCombiner) UpdatePadFlow(pad *gst.Pad, fret gst.FlowReturn) g
 	return _flowReturn
 }
 
-// PushSrcClass subclasses can override any of the available virtual methods
-// or not, as needed. At the minimum, the fill method should be overridden to
-// produce buffers.
+// PushSrcClass (GstPushSrcClass) subclasses can override any of the available
+// virtual methods or not, as needed. At the minimum, the fill method should be
+// overridden to produce buffers.
 //
 // An instance of this type is always passed by reference.
 type PushSrcClass struct {

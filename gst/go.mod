@@ -7,7 +7,4 @@ require (
 	github.com/go-gst/go-pointer v0.0.0-20241127163939-ba766f075b4c
 )
 
-require (
-	github.com/mattn/go-pointer v0.0.1 // indirect
-	golang.org/x/exp v0.0.0-20240909161429-701f63a606c0 // indirect
-)
+require golang.org/x/exp v0.0.0-20240909161429-701f63a606c0 // indirect

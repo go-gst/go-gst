@@ -43,12 +43,13 @@ func init() {
 	})
 }
 
-// NET_TIME_PACKET_SIZE: size of the packets sent between network clocks.
+// NET_TIME_PACKET_SIZE (GST_NET_TIME_PACKET_SIZE): size of the packets sent
+// between network clocks.
 const NET_TIME_PACKET_SIZE = 16
 
-// PTP_CLOCK_ID_NONE: PTP clock identification that can be passed to
-// gst_ptp_init() to automatically select one based on the MAC address of
-// interfaces.
+// PTP_CLOCK_ID_NONE (GST_PTP_CLOCK_ID_NONE): PTP clock identification that
+// can be passed to gst_ptp_init() to automatically select one based on the MAC
+// address of interfaces.
 const PTP_CLOCK_ID_NONE = 18446744073709551615
 const PTP_STATISTICS_BEST_MASTER_CLOCK_SELECTED = "GstPtpStatisticsBestMasterClockSelected"
 const PTP_STATISTICS_NEW_DOMAIN_FOUND = "GstPtpStatisticsNewDomainFound"
@@ -90,8 +91,8 @@ const PTP_STATISTICS_TIME_UPDATED = "GstPtpStatisticsTimeUpdated"
 // If FALSE is returned, the callback is removed and never called again.
 type PtpStatisticsCallback func(domain byte, stats *gst.Structure) (ok bool)
 
-// BufferAddNetAddressMeta attaches addr as metadata in a NetAddressMeta to
-// buffer.
+// BufferAddNetAddressMeta (gst_buffer_add_net_address_meta) attaches addr as
+// metadata in a NetAddressMeta to buffer.
 //
 // The function takes the following parameters:
 //
@@ -120,8 +121,8 @@ func BufferAddNetAddressMeta(buffer *gst.Buffer, addr gio.SocketAddresser) *NetA
 	return _netAddressMeta
 }
 
-// BufferAddNetControlMessageMeta attaches message as metadata in a
-// NetControlMessageMeta to buffer.
+// BufferAddNetControlMessageMeta (gst_buffer_add_net_control_message_meta)
+// attaches message as metadata in a NetControlMessageMeta to buffer.
 //
 // The function takes the following parameters:
 //
@@ -150,7 +151,8 @@ func BufferAddNetControlMessageMeta(buffer *gst.Buffer, message gio.SocketContro
 	return _netControlMessageMeta
 }
 
-// BufferGetNetAddressMeta: find the NetAddressMeta on buffer.
+// BufferGetNetAddressMeta (gst_buffer_get_net_address_meta): find the
+// NetAddressMeta on buffer.
 //
 // The function takes the following parameters:
 //
@@ -202,7 +204,8 @@ func NetControlMessageMetaApiGetType() coreglib.Type {
 	return _gType
 }
 
-// NetUtilsSetSocketTos configures IP_TOS value of socket, i.e. sets QoS DSCP.
+// NetUtilsSetSocketTos (gst_net_utils_set_socket_tos) configures IP_TOS value
+// of socket, i.e. sets QoS DSCP.
 //
 // The function takes the following parameters:
 //
@@ -233,16 +236,16 @@ func NetUtilsSetSocketTos(socket *gio.Socket, qosDscp int) bool {
 	return _ok
 }
 
-// PtpDeinit: deinitialize the GStreamer PTP subsystem and stop the PTP clock.
-// If there are any remaining GstPtpClock instances, they won't be further
-// synchronized to the PTP network clock.
+// PtpDeinit (gst_ptp_deinit): deinitialize the GStreamer PTP subsystem and stop
+// the PTP clock. If there are any remaining GstPtpClock instances, they won't
+// be further synchronized to the PTP network clock.
 func PtpDeinit() {
 	C.gst_ptp_deinit()
 }
 
-// PtpInit: initialize the GStreamer PTP subsystem and create a PTP ordinary
-// clock in slave-only mode for all domains on the given interfaces with the
-// given clock_id.
+// PtpInit (gst_ptp_init): initialize the GStreamer PTP subsystem and create a
+// PTP ordinary clock in slave-only mode for all domains on the given interfaces
+// with the given clock_id.
 //
 // If clock_id is GST_PTP_CLOCK_ID_NONE, a clock id is automatically generated
 // from the MAC address of the first network interface.
@@ -291,8 +294,8 @@ func PtpInit(clockId uint64, interfaces []string) bool {
 	return _ok
 }
 
-// PtpInitFull: initialize the GStreamer PTP subsystem and create a PTP ordinary
-// clock in slave-only mode according to the config.
+// PtpInitFull (gst_ptp_init_full): initialize the GStreamer PTP subsystem and
+// create a PTP ordinary clock in slave-only mode according to the config.
 //
 // config is a Structure with the following optional fields: * #guint64
 // clock-id: The clock ID to use for the local clock. If the clock-id is not
@@ -331,7 +334,8 @@ func PtpInitFull(config *gst.Structure) bool {
 	return _ok
 }
 
-// PtpIsInitialized: check if the GStreamer PTP clock subsystem is initialized.
+// PtpIsInitialized (gst_ptp_is_initialized): check if the GStreamer PTP clock
+// subsystem is initialized.
 //
 // The function returns the following values:
 //
@@ -350,8 +354,8 @@ func PtpIsInitialized() bool {
 	return _ok
 }
 
-// PtpIsSupported: check if PTP clocks are generally supported on this system,
-// and if previous initializations did not fail.
+// PtpIsSupported (gst_ptp_is_supported): check if PTP clocks are generally
+// supported on this system, and if previous initializations did not fail.
 //
 // The function returns the following values:
 //
@@ -371,9 +375,9 @@ func PtpIsSupported() bool {
 	return _ok
 }
 
-// PtpStatisticsCallbackAdd installs a new statistics callback for gathering PTP
-// statistics. See GstPtpStatisticsCallback for a list of statistics that are
-// provided.
+// PtpStatisticsCallbackAdd (gst_ptp_statistics_callback_add) installs
+// a new statistics callback for gathering PTP statistics. See
+// GstPtpStatisticsCallback for a list of statistics that are provided.
 //
 // The function takes the following parameters:
 //
@@ -403,8 +407,9 @@ func PtpStatisticsCallbackAdd(callback PtpStatisticsCallback) uint32 {
 	return _gulong
 }
 
-// PtpStatisticsCallbackRemove removes a PTP statistics callback that was
-// previously added with gst_ptp_statistics_callback_add().
+// PtpStatisticsCallbackRemove (gst_ptp_statistics_callback_remove)
+// removes a PTP statistics callback that was previously added with
+// gst_ptp_statistics_callback_add().
 //
 // The function takes the following parameters:
 //
@@ -426,9 +431,10 @@ func defaultNetClientClockOverrides(v *NetClientClock) NetClientClockOverrides {
 	return NetClientClockOverrides{}
 }
 
-// NetClientClock implements a custom Clock that synchronizes its time to a
-// remote time provider such as NetTimeProvider. NtpClock implements a Clock
-// that synchronizes its time to a remote NTPv4 server.
+// NetClientClock (GstNetClientClock) implements a custom Clock that
+// synchronizes its time to a remote time provider such as NetTimeProvider.
+// NtpClock implements a Clock that synchronizes its time to a remote NTPv4
+// server.
 //
 // A new clock is created with gst_net_client_clock_new() or
 // gst_ntp_clock_new(), which takes the address and port of the remote time
@@ -456,6 +462,18 @@ type NetClientClock struct {
 var (
 	_ gst.Clocker = (*NetClientClock)(nil)
 )
+
+// NetClientClocker describes types inherited from NetClientClock.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type NetClientClocker interface {
+	gst.SystemClocker
+
+	baseNetClientClock() *NetClientClock
+}
+
+var _ NetClientClocker = (*NetClientClock)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*NetClientClock, *NetClientClockClass, NetClientClockOverrides](
@@ -491,8 +509,18 @@ func marshalNetClientClock(p uintptr) (interface{}, error) {
 	return wrapNetClientClock(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// NewNetClientClock: create a new NetClientClock that will report the time
-// provided by the NetTimeProvider on remote_address and remote_port.
+func (v *NetClientClock) baseNetClientClock() *NetClientClock {
+	return v
+}
+
+// BaseNetClientClock returns the underlying base object.
+func BaseNetClientClock(obj NetClientClocker) *NetClientClock {
+	return obj.baseNetClientClock()
+}
+
+// NewNetClientClock (gst_net_client_clock_new): create a new NetClientClock
+// that will report the time provided by the NetTimeProvider on remote_address
+// and remote_port.
 //
 // The function takes the following parameters:
 //
@@ -541,7 +569,8 @@ func defaultNetTimeProviderOverrides(v *NetTimeProvider) NetTimeProviderOverride
 	return NetTimeProviderOverrides{}
 }
 
-// NetTimeProvider: this object exposes the time of a Clock on the network.
+// NetTimeProvider (GstNetTimeProvider): this object exposes the time of a Clock
+// on the network.
 //
 // A NetTimeProvider is created with gst_net_time_provider_new() which takes a
 // Clock, an address and a port number as arguments.
@@ -560,6 +589,19 @@ type NetTimeProvider struct {
 var (
 	_ gst.GstObjector = (*NetTimeProvider)(nil)
 )
+
+// NetTimeProviderer describes types inherited from NetTimeProvider.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type NetTimeProviderer interface {
+	gst.GstObjector
+	gio.Initabler
+
+	baseNetTimeProvider() *NetTimeProvider
+}
+
+var _ NetTimeProviderer = (*NetTimeProvider)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*NetTimeProvider, *NetTimeProviderClass, NetTimeProviderOverrides](
@@ -594,7 +636,17 @@ func marshalNetTimeProvider(p uintptr) (interface{}, error) {
 	return wrapNetTimeProvider(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// NewNetTimeProvider allows network clients to get the current time of clock.
+func (v *NetTimeProvider) baseNetTimeProvider() *NetTimeProvider {
+	return v
+}
+
+// BaseNetTimeProvider returns the underlying base object.
+func BaseNetTimeProvider(obj NetTimeProviderer) *NetTimeProvider {
+	return obj.baseNetTimeProvider()
+}
+
+// NewNetTimeProvider (gst_net_time_provider_new) allows network clients to get
+// the current time of clock.
 //
 // The function takes the following parameters:
 //
@@ -650,6 +702,18 @@ var (
 	_ gst.Clocker = (*NtpClock)(nil)
 )
 
+// NtpClocker describes types inherited from NtpClock.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type NtpClocker interface {
+	NetClientClocker
+
+	baseNtpClock() *NtpClock
+}
+
+var _ NtpClocker = (*NtpClock)(nil)
+
 func init() {
 	coreglib.RegisterClassInfo[*NtpClock, *NtpClockClass, NtpClockOverrides](
 		GTypeNtpClock,
@@ -686,8 +750,17 @@ func marshalNtpClock(p uintptr) (interface{}, error) {
 	return wrapNtpClock(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// NewNtpClock: create a new NtpClock that will report the time provided by the
-// NTPv4 server on remote_address and remote_port.
+func (v *NtpClock) baseNtpClock() *NtpClock {
+	return v
+}
+
+// BaseNtpClock returns the underlying base object.
+func BaseNtpClock(obj NtpClocker) *NtpClock {
+	return obj.baseNtpClock()
+}
+
+// NewNtpClock (gst_ntp_clock_new): create a new NtpClock that will report the
+// time provided by the NTPv4 server on remote_address and remote_port.
 //
 // The function takes the following parameters:
 //
@@ -736,9 +809,9 @@ func defaultPtpClockOverrides(v *PtpClock) PtpClockOverrides {
 	return PtpClockOverrides{}
 }
 
-// PtpClock implements a PTP (IEEE1588:2008) ordinary clock in slave-only mode,
-// that allows a GStreamer pipeline to synchronize to a PTP network clock in
-// some specific domain.
+// PtpClock (GstPtpClock) implements a PTP (IEEE1588:2008) ordinary clock in
+// slave-only mode, that allows a GStreamer pipeline to synchronize to a PTP
+// network clock in some specific domain.
 //
 // The PTP subsystem can be initialized with gst_ptp_init(), which then starts
 // a helper process to do the actual communication via the PTP ports. This is
@@ -764,6 +837,18 @@ type PtpClock struct {
 var (
 	_ gst.Clocker = (*PtpClock)(nil)
 )
+
+// PtpClocker describes types inherited from PtpClock.
+//
+// To get the original type, the caller must assert this to an interface or
+// another type.
+type PtpClocker interface {
+	gst.SystemClocker
+
+	basePtpClock() *PtpClock
+}
+
+var _ PtpClocker = (*PtpClock)(nil)
 
 func init() {
 	coreglib.RegisterClassInfo[*PtpClock, *PtpClockClass, PtpClockOverrides](
@@ -799,8 +884,18 @@ func marshalPtpClock(p uintptr) (interface{}, error) {
 	return wrapPtpClock(coreglib.ValueFromNative(unsafe.Pointer(p)).Object()), nil
 }
 
-// NewPtpClock creates a new PTP clock instance that exports the PTP time of the
-// master clock in domain. This clock can be slaved to other clocks as needed.
+func (v *PtpClock) basePtpClock() *PtpClock {
+	return v
+}
+
+// BasePtpClock returns the underlying base object.
+func BasePtpClock(obj PtpClocker) *PtpClock {
+	return obj.basePtpClock()
+}
+
+// NewPtpClock (gst_ptp_clock_new) creates a new PTP clock instance that exports
+// the PTP time of the master clock in domain. This clock can be slaved to other
+// clocks as needed.
 //
 // If gst_ptp_init() was not called before, this will call gst_ptp_init() with
 // default parameters.
@@ -839,8 +934,9 @@ func NewPtpClock(name string, domain uint) *PtpClock {
 	return _ptpClock
 }
 
-// NetAddressMeta can be used to store a network address (a Address) in a Buffer
-// so that it network elements can track the to and from address of the buffer.
+// NetAddressMeta (GstNetAddressMeta) can be used to store a network address (a
+// Address) in a Buffer so that it network elements can track the to and from
+// address of the buffer.
 //
 // An instance of this type is always passed by reference.
 type NetAddressMeta struct {
@@ -896,7 +992,8 @@ func NetAddressMetaGetInfo() *gst.MetaInfo {
 	return _metaInfo
 }
 
-// NetClientClockClass: instance of this type is always passed by reference.
+// NetClientClockClass (GstNetClientClockClass): instance of this type is always
+// passed by reference.
 type NetClientClockClass struct {
 	*netClientClockClass
 }
@@ -913,11 +1010,12 @@ func (n *NetClientClockClass) ParentClass() *gst.SystemClockClass {
 	return _v
 }
 
-// NetControlMessageMeta can be used to store control messages (ancillary
-// data) which was received with or is to be sent alongside the buffer data.
-// When used with socket sinks and sources which understand this meta it
-// allows sending and receiving ancillary data such as unix credentials (See
-// CredentialsMessage) and Unix file descriptions (See FDMessage).
+// NetControlMessageMeta (GstNetControlMessageMeta) can be used to store
+// control messages (ancillary data) which was received with or is to be sent
+// alongside the buffer data. When used with socket sinks and sources which
+// understand this meta it allows sending and receiving ancillary data such as
+// unix credentials (See CredentialsMessage) and Unix file descriptions (See
+// FDMessage).
 //
 // An instance of this type is always passed by reference.
 type NetControlMessageMeta struct {
@@ -973,8 +1071,8 @@ func NetControlMessageMetaGetInfo() *gst.MetaInfo {
 	return _metaInfo
 }
 
-// NetTimePacket various functions for receiving, sending an serializing
-// NetTimePacket structures.
+// NetTimePacket (GstNetTimePacket) various functions for receiving, sending an
+// serializing NetTimePacket structures.
 //
 // An instance of this type is always passed by reference.
 type NetTimePacket struct {
@@ -1030,7 +1128,7 @@ func (n *NetTimePacket) RemoteTime() gst.ClockTime {
 	return _v
 }
 
-// Copy: make a copy of packet.
+// Copy (gst_net_time_packet_copy): make a copy of packet.
 //
 // The function returns the following values:
 //
@@ -1057,7 +1155,7 @@ func (packet *NetTimePacket) Copy() *NetTimePacket {
 	return _netTimePacket
 }
 
-// Send sends a NetTimePacket over a socket.
+// Send (gst_net_time_packet_send) sends a NetTimePacket over a socket.
 //
 // MT safe.
 //
@@ -1089,10 +1187,10 @@ func (packet *NetTimePacket) Send(socket *gio.Socket, destAddress gio.SocketAddr
 	return _goerr
 }
 
-// Serialize: serialized a NetTimePacket into a newly-allocated sequence of
-// T_NET_TIME_PACKET_SIZE bytes, in network byte order. The value returned is
-// suitable for passing to write(2) or sendto(2) for communication over the
-// network.
+// Serialize (gst_net_time_packet_serialize): serialized a NetTimePacket into
+// a newly-allocated sequence of T_NET_TIME_PACKET_SIZE bytes, in network byte
+// order. The value returned is suitable for passing to write(2) or sendto(2)
+// for communication over the network.
 //
 // MT safe. Caller owns return value (g_free to free).
 //
@@ -1115,8 +1213,9 @@ func (packet *NetTimePacket) Serialize() [16]byte {
 	return _guint8s
 }
 
-// NetTimePacketReceive receives a NetTimePacket over a socket. Handles
-// interrupted system calls, but otherwise returns NULL on error.
+// NetTimePacketReceive (gst_net_time_packet_receive) receives a NetTimePacket
+// over a socket. Handles interrupted system calls, but otherwise returns NULL
+// on error.
 //
 // The function takes the following parameters:
 //
@@ -1172,7 +1271,8 @@ func NetTimePacketReceive(socket *gio.Socket) (gio.SocketAddresser, *NetTimePack
 	return _srcAddress, _netTimePacket, _goerr
 }
 
-// NetTimeProviderClass: instance of this type is always passed by reference.
+// NetTimeProviderClass (GstNetTimeProviderClass): instance of this type is
+// always passed by reference.
 type NetTimeProviderClass struct {
 	*netTimeProviderClass
 }
@@ -1201,7 +1301,8 @@ func (n *NetTimeProviderClass) GstReserved() [4]unsafe.Pointer {
 	return _v
 }
 
-// NtpClockClass: instance of this type is always passed by reference.
+// NtpClockClass (GstNtpClockClass): instance of this type is always passed by
+// reference.
 type NtpClockClass struct {
 	*ntpClockClass
 }
@@ -1218,7 +1319,7 @@ func (n *NtpClockClass) ParentClass() *gst.SystemClockClass {
 	return _v
 }
 
-// PtpClockClass: opaque PtpClockClass structure.
+// PtpClockClass (GstPtpClockClass): opaque PtpClockClass structure.
 //
 // An instance of this type is always passed by reference.
 type PtpClockClass struct {
