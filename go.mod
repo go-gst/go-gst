@@ -19,4 +19,4 @@ require (
 	golang.org/x/sys v0.0.0-20200223170610-d5e6a3e2c0ae // indirect
 )
 
-replace github.com/diamondburned/gotk4 => github.com/rswilli/gotk4 v0.0.0-20250516153530-fbe94845d377
+replace github.com/diamondburned/gotk4 => github.com/rswilli/gotk4 v0.0.0-20250519074043-31f51c6f5601
