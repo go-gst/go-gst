@@ -15,7 +15,13 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/magic-nix-cache-action@main
       - name: Check formatting
-        run: test -z "$(gofmt -l .)"
+        run: |
+          files=$(gofmt -l .)
+          if [[ -z "$files" ]]; then
+            echo "Unformatted files:"
+            echo "$files"
+            exit 1
+          fi
         shell: nix develop -c bash -e {0}
       - name: staticcheck
         shell: nix develop -c bash -e {0}
