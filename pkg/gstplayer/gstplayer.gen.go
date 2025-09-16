@@ -10,6 +10,7 @@ import (
 	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/diamondburned/gotk4/pkg/gobject/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
+	"github.com/go-gst/go-gst/pkg/gstvideo"
 )
 
 // #cgo pkg-config: gstreamer-player-1.0
@@ -533,6 +534,22 @@ type Player interface {
 	//
 	// A Function to get the current media info #GstPlayerMediaInfo instance.
 	GetMediaInfo() PlayerMediaInfo
+	// GetMultiviewFlags wraps gst_player_get_multiview_flags
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gstvideo.VideoMultiviewFlags 
+	//
+	// Retrieve the current value of the indicated @type.
+	GetMultiviewFlags() gstvideo.VideoMultiviewFlags
+	// GetMultiviewMode wraps gst_player_get_multiview_mode
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gstvideo.VideoMultiviewFramePacking 
+	//
+	// Retrieve the current value of the indicated @type.
+	GetMultiviewMode() gstvideo.VideoMultiviewFramePacking
 	// GetMute wraps gst_player_get_mute
 	// 
 	// The function returns the following values:
@@ -688,6 +705,24 @@ type Player interface {
 	// 
 	// This function takes ownership of @config.
 	SetConfig(*gst.Structure) bool
+	// SetMultiviewFlags wraps gst_player_set_multiview_flags
+	// 
+	// The function takes the following parameters:
+	// 
+	// 	- flags gstvideo.VideoMultiviewFlags: The new value for the @type 
+	//
+	// Sets the current value of the indicated mode @type to the passed
+	// value.
+	SetMultiviewFlags(gstvideo.VideoMultiviewFlags)
+	// SetMultiviewMode wraps gst_player_set_multiview_mode
+	// 
+	// The function takes the following parameters:
+	// 
+	// 	- mode gstvideo.VideoMultiviewFramePacking: The new value for the @type 
+	//
+	// Sets the current value of the indicated mode @type to the passed
+	// value.
+	SetMultiviewMode(gstvideo.VideoMultiviewFramePacking)
 	// SetMute wraps gst_player_set_mute
 	// 
 	// The function takes the following parameters:
@@ -1406,6 +1441,52 @@ func (player *PlayerInstance) GetMediaInfo() PlayerMediaInfo {
 	return goret
 }
 
+// GetMultiviewFlags wraps gst_player_get_multiview_flags
+// 
+// The function returns the following values:
+// 
+// 	- goret gstvideo.VideoMultiviewFlags 
+//
+// Retrieve the current value of the indicated @type.
+func (player *PlayerInstance) GetMultiviewFlags() gstvideo.VideoMultiviewFlags {
+	var carg0 *C.GstPlayer             // in, none, converted
+	var cret  C.GstVideoMultiviewFlags // return, none, casted
+
+	carg0 = (*C.GstPlayer)(UnsafePlayerToGlibNone(player))
+
+	cret = C.gst_player_get_multiview_flags(carg0)
+	runtime.KeepAlive(player)
+
+	var goret gstvideo.VideoMultiviewFlags
+
+	goret = gstvideo.VideoMultiviewFlags(cret)
+
+	return goret
+}
+
+// GetMultiviewMode wraps gst_player_get_multiview_mode
+// 
+// The function returns the following values:
+// 
+// 	- goret gstvideo.VideoMultiviewFramePacking 
+//
+// Retrieve the current value of the indicated @type.
+func (player *PlayerInstance) GetMultiviewMode() gstvideo.VideoMultiviewFramePacking {
+	var carg0 *C.GstPlayer                    // in, none, converted
+	var cret  C.GstVideoMultiviewFramePacking // return, none, casted
+
+	carg0 = (*C.GstPlayer)(UnsafePlayerToGlibNone(player))
+
+	cret = C.gst_player_get_multiview_mode(carg0)
+	runtime.KeepAlive(player)
+
+	var goret gstvideo.VideoMultiviewFramePacking
+
+	goret = gstvideo.VideoMultiviewFramePacking(cret)
+
+	return goret
+}
+
 // GetMute wraps gst_player_get_mute
 // 
 // The function returns the following values:
@@ -1834,6 +1915,46 @@ func (player *PlayerInstance) SetConfig(config *gst.Structure) bool {
 	}
 
 	return goret
+}
+
+// SetMultiviewFlags wraps gst_player_set_multiview_flags
+// 
+// The function takes the following parameters:
+// 
+// 	- flags gstvideo.VideoMultiviewFlags: The new value for the @type 
+//
+// Sets the current value of the indicated mode @type to the passed
+// value.
+func (player *PlayerInstance) SetMultiviewFlags(flags gstvideo.VideoMultiviewFlags) {
+	var carg0 *C.GstPlayer             // in, none, converted
+	var carg1 C.GstVideoMultiviewFlags // in, none, casted
+
+	carg0 = (*C.GstPlayer)(UnsafePlayerToGlibNone(player))
+	carg1 = C.GstVideoMultiviewFlags(flags)
+
+	C.gst_player_set_multiview_flags(carg0, carg1)
+	runtime.KeepAlive(player)
+	runtime.KeepAlive(flags)
+}
+
+// SetMultiviewMode wraps gst_player_set_multiview_mode
+// 
+// The function takes the following parameters:
+// 
+// 	- mode gstvideo.VideoMultiviewFramePacking: The new value for the @type 
+//
+// Sets the current value of the indicated mode @type to the passed
+// value.
+func (player *PlayerInstance) SetMultiviewMode(mode gstvideo.VideoMultiviewFramePacking) {
+	var carg0 *C.GstPlayer                    // in, none, converted
+	var carg1 C.GstVideoMultiviewFramePacking // in, none, casted
+
+	carg0 = (*C.GstPlayer)(UnsafePlayerToGlibNone(player))
+	carg1 = C.GstVideoMultiviewFramePacking(mode)
+
+	C.gst_player_set_multiview_mode(carg0, carg1)
+	runtime.KeepAlive(player)
+	runtime.KeepAlive(mode)
 }
 
 // SetMute wraps gst_player_set_mute

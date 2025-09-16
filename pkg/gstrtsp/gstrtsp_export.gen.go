@@ -6,10 +6,41 @@ import (
 	"unsafe"
 
 	"github.com/diamondburned/gotk4/pkg/core/classdata"
+	"github.com/diamondburned/gotk4/pkg/core/userdata"
+	"github.com/diamondburned/gotk4/pkg/gio/v2"
 )
 
 // #include <gst/rtsp/rtsp.h>
 import "C"
+
+//export _gotk4_gstrtsp1_RTSPConnectionAcceptCertificateFunc
+func _gotk4_gstrtsp1_RTSPConnectionAcceptCertificateFunc(carg1 *C.GTlsConnection, carg2 *C.GTlsCertificate, carg3 C.GTlsCertificateFlags, carg4 C.gpointer) (cret C.gboolean) {
+	var fn RTSPConnectionAcceptCertificateFunc
+	{
+		v := userdata.Load(unsafe.Pointer(carg4))
+		if v == nil {
+			panic(`callback not found`)
+		}
+		fn = v.(RTSPConnectionAcceptCertificateFunc)
+	}
+
+	var conn     gio.TlsConnection       // in, none, converted
+	var peerCert gio.TlsCertificate      // in, none, converted
+	var errors   gio.TLSCertificateFlags // in, none, casted
+	var goret    bool                    // return
+
+	conn = gio.UnsafeTlsConnectionFromGlibNone(unsafe.Pointer(carg1))
+	peerCert = gio.UnsafeTlsCertificateFromGlibNone(unsafe.Pointer(carg2))
+	errors = gio.TLSCertificateFlags(carg3)
+
+	goret = fn(conn, peerCert, errors)
+
+	if goret {
+		cret = C.TRUE
+	}
+
+	return cret
+}
 
 //export _gotk4_gstrtsp1_RTSPExtension_after_send
 func _gotk4_gstrtsp1_RTSPExtension_after_send(carg0 *C.GstRTSPExtension, carg1 *C.GstRTSPMessage, carg2 *C.GstRTSPMessage) (cret C.GstRTSPResult) {
