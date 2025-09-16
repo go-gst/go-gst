@@ -1,12 +1,13 @@
 package gstsdp
 
+import (
+	"iter"
+)
+
 // #cgo pkg-config: gstreamer-sdp-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/sdp/sdp.h>
 import "C"
-import (
-	"iter"
-)
 
 // getters for the fields of GstSDPMessage:
 // All simple fields already have getters generated, we need to create iterators for the GArrays.
