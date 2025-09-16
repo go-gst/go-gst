@@ -148,41 +148,6 @@ func _gotk4_gst1_CapsMapFunc(carg1 *C.GstCapsFeatures, carg2 *C.GstStructure, ca
 	return cret
 }
 
-//export _gotk4_gst1_CustomMetaTransformFunction
-func _gotk4_gst1_CustomMetaTransformFunction(carg1 *C.GstBuffer, carg2 *C.GstCustomMeta, carg3 *C.GstBuffer, carg4 C.GQuark, carg5 C.gpointer, carg6 C.gpointer) (cret C.gboolean) {
-	var fn CustomMetaTransformFunction
-	{
-		v := userdata.Load(unsafe.Pointer(carg6))
-		if v == nil {
-			panic(`callback not found`)
-		}
-		fn = v.(CustomMetaTransformFunction)
-	}
-
-	var transbuf *Buffer        // in, none, converted
-	var meta     *CustomMeta    // in, none, converted
-	var buffer   *Buffer        // in, none, converted
-	var typ      glib.Quark     // in, none, casted, alias
-	var data     unsafe.Pointer // in, none, casted, nullable
-	var goret    bool           // return
-
-	transbuf = UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
-	meta = UnsafeCustomMetaFromGlibNone(unsafe.Pointer(carg2))
-	buffer = UnsafeBufferFromGlibNone(unsafe.Pointer(carg3))
-	typ = glib.Quark(carg4)
-	if carg5 != nil {
-		data = unsafe.Pointer(carg5)
-	}
-
-	goret = fn(transbuf, meta, buffer, typ, data)
-
-	if goret {
-		cret = C.TRUE
-	}
-
-	return cret
-}
-
 //export _gotk4_gst1_IteratorFoldFunction
 func _gotk4_gst1_IteratorFoldFunction(carg1 *C.GValue, carg2 *C.GValue, carg3 C.gpointer) (cret C.gboolean) {
 	var fn IteratorFoldFunction

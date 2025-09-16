@@ -2,11 +2,11 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"runtime"
 	"time"
 
-	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
 )
 
@@ -17,7 +17,7 @@ type ExampleCustomEvent struct {
 	SendEOS bool
 }
 
-func createPipeline() (*gst.Pipeline, error) {
+func createPipeline() (gst.Pipeline, error) {
 	gst.Init()
 
 	// Create a new pipeline from a launch string
@@ -29,15 +29,16 @@ func createPipeline() (*gst.Pipeline, error) {
 		return nil, err
 	}
 
-	pipeline := ret.(*gst.Pipeline)
+	pipeline := ret.(gst.Pipeline)
 
-	var sink *gst.Element
-	var sinkpad *gst.Pad
+	var sink gst.Element
+	var sinkpad gst.Pad
 
 	// Retrieve the sink pad
 	for v := range pipeline.IterateSinks().Values() {
-		sink = v.(*gst.Element)
-		sinkpad = sink.StaticPad("sink")
+		sink = v.(gst.Element)
+
+		sinkpad = sink.GetStaticPad("sink")
 		break
 	}
 
@@ -46,18 +47,18 @@ func createPipeline() (*gst.Pipeline, error) {
 	}
 
 	// Add a probe for out custom event
-	sinkpad.AddProbe(gst.PadProbeTypeEventDownstream, func(self *gst.Pad, info *gst.PadProbeInfo) gst.PadProbeReturn {
+	sinkpad.AddProbe(gst.PadProbeTypeEventDownstream, func(self gst.Pad, info *gst.PadProbeInfo) gst.PadProbeReturn {
 		// Retrieve the event from the probe
-		ev := info.Event()
+		ev := info.GetEvent()
 
 		// Extra check to make sure it is the right type.
-		if ev.Type() != gst.EventCustomDownstream {
+		if ev.GetType() != gst.EventCustomDownstream {
 			return gst.PadProbeHandled
 		}
 
 		// Unmarshal the event into our custom one
 		var customEvent ExampleCustomEvent
-		if err := ev.Structure().UnmarshalInto(&customEvent); err != nil {
+		if err := ev.GetStructure().UnmarshalInto(&customEvent); err != nil {
 			fmt.Println("Could not parse the custom event!")
 			return gst.PadProbeHandled
 		}
@@ -69,7 +70,7 @@ func createPipeline() (*gst.Pipeline, error) {
 			// This is becaues the SendEvent method blocks and this could cause a dead lock sending the
 			// event directly from the probe. This is the near equivalent of using go func() { ... }(),
 			// however displayed this way for demonstration purposes.
-			sink.CallAsync(func(el gst.Elementer) {
+			sink.CallAsync(func(el gst.Element) {
 				fmt.Println("Send EOS is true, sending eos")
 				if !pipeline.SendEvent(gst.NewEventEos()) {
 					fmt.Println("WARNING: Failed to send EOS to pipeline")
@@ -85,18 +86,19 @@ func createPipeline() (*gst.Pipeline, error) {
 	return pipeline, nil
 }
 
-func runPipeline(loop *glib.MainLoop, pipeline *gst.Pipeline) {
-	// Create a watch on the pipeline to kill the main loop when EOS is received
-	pipeline.Bus().AddWatch(0, func(bus *gst.Bus, msg *gst.Message) bool {
-		switch msg.Type() {
-		case gst.MessageEos:
-			fmt.Println("Got EOS message")
-			loop.Quit()
-		default:
-			fmt.Println(msg)
+func runPipeline(pipeline gst.Pipeline) {
+
+	go func() {
+		for msg := range pipeline.GetBus().Messages(context.Background()) {
+			switch msg.Type() {
+			case gst.MessageEos:
+				fmt.Println("Got EOS message")
+				return
+			default:
+				fmt.Println(msg)
+			}
 		}
-		return true
-	})
+	}()
 
 	// Start the pipeline
 	pipeline.SetState(gst.StatePlaying)
@@ -104,6 +106,8 @@ func runPipeline(loop *glib.MainLoop, pipeline *gst.Pipeline) {
 	go func() {
 		// Loop and on the third iteration send the custom event.
 		ticker := time.NewTicker(time.Second * 2)
+		defer ticker.Stop()
+
 		count := 0
 		for range ticker.C {
 			ev := ExampleCustomEvent{Count: count}
@@ -129,8 +133,6 @@ func runPipeline(loop *glib.MainLoop, pipeline *gst.Pipeline) {
 	// you will be done with the object. This instructs the runtime to defer the finalizer
 	// until after this point is passed in the code execution.
 
-	loop.Run()
-
 	runtime.KeepAlive(pipeline)
 }
 
@@ -141,7 +143,5 @@ func main() {
 		panic(err)
 	}
 
-	mainloop := glib.NewMainLoop(glib.MainContextDefault(), false)
-
-	runPipeline(mainloop, pipeline)
+	runPipeline(pipeline)
 }

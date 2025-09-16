@@ -32,27 +32,26 @@
 package main
 
 import (
+	"context"
 	"errors"
 	"flag"
 	"fmt"
 	"os"
 	"strings"
-	"weak"
 
-	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
 )
 
 var srcFile string
 
-func buildPipeline() (*gst.Pipeline, error) {
+func buildPipeline() (gst.Pipeline, error) {
 	gst.Init()
 
-	pipeline := gst.NewPipeline("")
+	pipeline := gst.NewPipeline("").(gst.Pipeline)
 
 	src := gst.ElementFactoryMake("filesrc", "")
 
-	decodebin, ok := gst.ElementFactoryMake("decodebin", "").(*gst.Bin) // must cast since we need a weak reference
+	decodebin, ok := gst.ElementFactoryMake("decodebin", "").(gst.Bin)
 	if !ok {
 		return nil, fmt.Errorf("could not create decodebin")
 	}
@@ -62,23 +61,20 @@ func buildPipeline() (*gst.Pipeline, error) {
 	pipeline.AddMany(src, decodebin)
 	src.Link(decodebin)
 
-	// prevent reference cycles with the connect handler:
-	weakDecodeBin := weak.Make(decodebin)
-
 	// Connect to decodebin's pad-added signal, that is emitted whenever
 	// it found another stream from the input file and found a way to decode it to its raw format.
 	// decodebin automatically adds a src-pad for this raw stream, which
 	// we can use to build the follow-up pipeline.
-	decodebin.ConnectPadAdded(func(srcPad *gst.Pad) {
+	decodebin.ConnectPadAdded(func(decodebin gst.Element, srcPad gst.Pad) {
 		// Try to detect whether this is video or audio
 		var isAudio, isVideo bool
-		caps := srcPad.CurrentCaps()
-		for i := 0; i < int(caps.Size()); i++ {
-			st := caps.Structure(uint(i))
-			if strings.HasPrefix(st.Name(), "audio/") {
+		caps := srcPad.GetCurrentCaps()
+		for i := 0; i < int(caps.GetSize()); i++ {
+			st := caps.GetStructure(uint(i))
+			if strings.HasPrefix(st.GetName(), "audio/") {
 				isAudio = true
 			}
-			if strings.HasPrefix(st.Name(), "video/") {
+			if strings.HasPrefix(st.GetName(), "video/") {
 				isVideo = true
 			}
 		}
@@ -89,8 +85,8 @@ func buildPipeline() (*gst.Pipeline, error) {
 			err := errors.New("could not detect media stream type")
 			// We can send errors directly to the pipeline bus if they occur.
 			// These will be handled downstream.
-			msg := gst.NewMessageError(weakDecodeBin.Value(), err, fmt.Sprintf("Received caps: %s", caps.String()))
-			pipeline.Bus().Post(msg)
+			msg := gst.NewMessageError(decodebin, fmt.Sprintf("Received caps: %s", caps.String()), err)
+			pipeline.GetBus().Post(msg)
 			return
 		}
 
@@ -99,8 +95,8 @@ func buildPipeline() (*gst.Pipeline, error) {
 			// play it on the default audio playback device (using autoaudiosink).
 			audiosink, err := gst.ParseBinFromDescription("queue ! audioconvert ! audioresample ! autoaudiosink", true)
 			if err != nil {
-				msg := gst.NewMessageError(weakDecodeBin.Value(), err, "Could not create elements for audio pipeline")
-				pipeline.Bus().Post(msg)
+				msg := gst.NewMessageError(decodebin, "Could not create elements for audio pipeline", err)
+				pipeline.GetBus().Post(msg)
 				return
 			}
 			pipeline.Add(audiosink)
@@ -114,7 +110,7 @@ func buildPipeline() (*gst.Pipeline, error) {
 
 			// Get the queue element's sink pad and link the decodebin's newly created
 			// src pad for the audio stream to it.
-			sinkPad := audiosink.StaticPad("sink")
+			sinkPad := audiosink.GetStaticPad("sink")
 			srcPad.Link(sinkPad)
 
 		} else if isVideo {
@@ -122,8 +118,8 @@ func buildPipeline() (*gst.Pipeline, error) {
 			// display it using the autovideosink.
 			videosink, err := gst.ParseBinFromDescription("queue ! videoconvert ! videoscale ! autovideosink", true)
 			if err != nil {
-				msg := gst.NewMessageError(weakDecodeBin.Value(), err, "Could not create elements for video pipeline")
-				pipeline.Bus().Post(msg)
+				msg := gst.NewMessageError(decodebin, "Could not create elements for video pipeline", err)
+				pipeline.GetBus().Post(msg)
 				return
 			}
 			pipeline.Add(videosink)
@@ -132,19 +128,18 @@ func buildPipeline() (*gst.Pipeline, error) {
 
 			// Get the queue element's sink pad and link the decodebin's newly created
 			// src pad for the video stream to it.
-			sinkPad := videosink.StaticPad("sink")
+			sinkPad := videosink.GetStaticPad("sink")
 			srcPad.Link(sinkPad)
 		}
 	})
 	return pipeline, nil
 }
 
-func runPipeline(loop *glib.MainLoop, pipeline *gst.Pipeline) {
+func runPipeline(pipeline gst.Pipeline) {
 	// Start the pipeline
 	pipeline.SetState(gst.StatePlaying)
 
-	// Add a message watch to the bus to quit on any error
-	pipeline.Bus().AddWatch(0, func(bus *gst.Bus, msg *gst.Message) bool {
+	for msg := range pipeline.GetBus().Messages(context.Background()) {
 		var err error
 
 		// If the stream has ended or any element posts an error to the
@@ -155,7 +150,7 @@ func runPipeline(loop *glib.MainLoop, pipeline *gst.Pipeline) {
 		case gst.MessageError:
 			// The parsed error implements the error interface, but also
 			// contains additional debug information.
-			gerr, debug := msg.ParseError()
+			debug, gerr := msg.ParseError()
 			fmt.Println("go-gst-debug:", debug)
 			err = gerr
 		}
@@ -163,15 +158,9 @@ func runPipeline(loop *glib.MainLoop, pipeline *gst.Pipeline) {
 		// If either condition triggered an error, log and quit
 		if err != nil {
 			fmt.Println("ERROR:", err.Error())
-			loop.Quit()
-			return false
+			return
 		}
-
-		return true
-	})
-
-	// Block on the main loop
-	loop.Run()
+	}
 }
 
 func main() {
@@ -188,7 +177,5 @@ func main() {
 		panic(err)
 	}
 
-	mainloop := glib.NewMainLoop(glib.MainContextDefault(), false)
-
-	runPipeline(mainloop, pipeline)
+	runPipeline(pipeline)
 }

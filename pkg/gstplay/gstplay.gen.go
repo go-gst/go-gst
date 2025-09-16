@@ -305,7 +305,7 @@ type PlayVideoRendererInstance struct {
 
 var _ PlayVideoRenderer = (*PlayVideoRendererInstance)(nil)
 
-// PlayVideoRendererInstance wraps GstPlayVideoRenderer
+// PlayVideoRenderer wraps GstPlayVideoRenderer
 type PlayVideoRenderer interface {
 	upcastToGstPlayVideoRenderer() *PlayVideoRendererInstance
 }
@@ -2494,6 +2494,36 @@ type PlaySignalAdapter interface {
 	// 
 	// 	- goret Play 
 	GetPlay() Play
+	// ConnectBuffering connects the provided callback to the "buffering" signal
+	ConnectBuffering(func(PlaySignalAdapter, int)) gobject.SignalHandle
+	// ConnectDurationChanged connects the provided callback to the "duration-changed" signal
+	ConnectDurationChanged(func(PlaySignalAdapter, uint64)) gobject.SignalHandle
+	// ConnectEndOfStream connects the provided callback to the "end-of-stream" signal
+	ConnectEndOfStream(func(PlaySignalAdapter)) gobject.SignalHandle
+	// ConnectError connects the provided callback to the "error" signal
+	//
+	// Emitted on errors.
+	ConnectError(func(PlaySignalAdapter, error, gst.Structure)) gobject.SignalHandle
+	// ConnectMediaInfoUpdated connects the provided callback to the "media-info-updated" signal
+	ConnectMediaInfoUpdated(func(PlaySignalAdapter, PlayMediaInfo)) gobject.SignalHandle
+	// ConnectMuteChanged connects the provided callback to the "mute-changed" signal
+	ConnectMuteChanged(func(PlaySignalAdapter, bool)) gobject.SignalHandle
+	// ConnectPositionUpdated connects the provided callback to the "position-updated" signal
+	ConnectPositionUpdated(func(PlaySignalAdapter, uint64)) gobject.SignalHandle
+	// ConnectSeekDone connects the provided callback to the "seek-done" signal
+	ConnectSeekDone(func(PlaySignalAdapter, uint64)) gobject.SignalHandle
+	// ConnectStateChanged connects the provided callback to the "state-changed" signal
+	ConnectStateChanged(func(PlaySignalAdapter, PlayState)) gobject.SignalHandle
+	// ConnectURILoaded connects the provided callback to the "uri-loaded" signal
+	ConnectURILoaded(func(PlaySignalAdapter, string)) gobject.SignalHandle
+	// ConnectVideoDimensionsChanged connects the provided callback to the "video-dimensions-changed" signal
+	ConnectVideoDimensionsChanged(func(PlaySignalAdapter, uint, uint)) gobject.SignalHandle
+	// ConnectVolumeChanged connects the provided callback to the "volume-changed" signal
+	ConnectVolumeChanged(func(PlaySignalAdapter, float64)) gobject.SignalHandle
+	// ConnectWarning connects the provided callback to the "warning" signal
+	//
+	// Emitted on warnings.
+	ConnectWarning(func(PlaySignalAdapter, error, gst.Structure)) gobject.SignalHandle
 }
 
 func unsafeWrapPlaySignalAdapter(base *gobject.ObjectInstance) *PlaySignalAdapterInstance {
@@ -2642,6 +2672,62 @@ func (adapter *PlaySignalAdapterInstance) GetPlay() Play {
 	return goret
 }
 
+// ConnectBuffering connects the provided callback to the "buffering" signal
+func (o *PlaySignalAdapterInstance) ConnectBuffering(fn func(PlaySignalAdapter, int)) gobject.SignalHandle {
+	return o.Connect("buffering", fn)
+}
+// ConnectDurationChanged connects the provided callback to the "duration-changed" signal
+func (o *PlaySignalAdapterInstance) ConnectDurationChanged(fn func(PlaySignalAdapter, uint64)) gobject.SignalHandle {
+	return o.Connect("duration-changed", fn)
+}
+// ConnectEndOfStream connects the provided callback to the "end-of-stream" signal
+func (o *PlaySignalAdapterInstance) ConnectEndOfStream(fn func(PlaySignalAdapter)) gobject.SignalHandle {
+	return o.Connect("end-of-stream", fn)
+}
+// ConnectError connects the provided callback to the "error" signal
+//
+// Emitted on errors.
+func (o *PlaySignalAdapterInstance) ConnectError(fn func(PlaySignalAdapter, error, gst.Structure)) gobject.SignalHandle {
+	return o.Connect("error", fn)
+}
+// ConnectMediaInfoUpdated connects the provided callback to the "media-info-updated" signal
+func (o *PlaySignalAdapterInstance) ConnectMediaInfoUpdated(fn func(PlaySignalAdapter, PlayMediaInfo)) gobject.SignalHandle {
+	return o.Connect("media-info-updated", fn)
+}
+// ConnectMuteChanged connects the provided callback to the "mute-changed" signal
+func (o *PlaySignalAdapterInstance) ConnectMuteChanged(fn func(PlaySignalAdapter, bool)) gobject.SignalHandle {
+	return o.Connect("mute-changed", fn)
+}
+// ConnectPositionUpdated connects the provided callback to the "position-updated" signal
+func (o *PlaySignalAdapterInstance) ConnectPositionUpdated(fn func(PlaySignalAdapter, uint64)) gobject.SignalHandle {
+	return o.Connect("position-updated", fn)
+}
+// ConnectSeekDone connects the provided callback to the "seek-done" signal
+func (o *PlaySignalAdapterInstance) ConnectSeekDone(fn func(PlaySignalAdapter, uint64)) gobject.SignalHandle {
+	return o.Connect("seek-done", fn)
+}
+// ConnectStateChanged connects the provided callback to the "state-changed" signal
+func (o *PlaySignalAdapterInstance) ConnectStateChanged(fn func(PlaySignalAdapter, PlayState)) gobject.SignalHandle {
+	return o.Connect("state-changed", fn)
+}
+// ConnectURILoaded connects the provided callback to the "uri-loaded" signal
+func (o *PlaySignalAdapterInstance) ConnectURILoaded(fn func(PlaySignalAdapter, string)) gobject.SignalHandle {
+	return o.Connect("uri-loaded", fn)
+}
+// ConnectVideoDimensionsChanged connects the provided callback to the "video-dimensions-changed" signal
+func (o *PlaySignalAdapterInstance) ConnectVideoDimensionsChanged(fn func(PlaySignalAdapter, uint, uint)) gobject.SignalHandle {
+	return o.Connect("video-dimensions-changed", fn)
+}
+// ConnectVolumeChanged connects the provided callback to the "volume-changed" signal
+func (o *PlaySignalAdapterInstance) ConnectVolumeChanged(fn func(PlaySignalAdapter, float64)) gobject.SignalHandle {
+	return o.Connect("volume-changed", fn)
+}
+// ConnectWarning connects the provided callback to the "warning" signal
+//
+// Emitted on warnings.
+func (o *PlaySignalAdapterInstance) ConnectWarning(fn func(PlaySignalAdapter, error, gst.Structure)) gobject.SignalHandle {
+	return o.Connect("warning", fn)
+}
 // PlayStreamInfoInstance is the instance type used by all types extending GstPlayStreamInfo. It is used internally by the bindings. Users should use the interface [PlayStreamInfo] instead.
 type PlayStreamInfoInstance struct {
 	_ [0]func() // equal guard
@@ -3160,11 +3246,6 @@ type PlayVideoOverlayVideoRenderer interface {
 	// Return the currently configured render rectangle. See gst_play_video_overlay_video_renderer_set_render_rectangle()
 	// for details.
 	GetRenderRectangle() (int, int, int, int)
-	// GetWindowHandle wraps gst_play_video_overlay_video_renderer_get_window_handle
-	// The function returns the following values:
-	// 
-	// 	- goret unsafe.Pointer 
-	GetWindowHandle() unsafe.Pointer
 	// SetRenderRectangle wraps gst_play_video_overlay_video_renderer_set_render_rectangle
 	// 
 	// The function takes the following parameters:
@@ -3185,15 +3266,6 @@ type PlayVideoOverlayVideoRenderer interface {
 	// This method is needed for non fullscreen video overlay in UI toolkits that
 	// do not support subwindows.
 	SetRenderRectangle(int, int, int, int)
-	// SetWindowHandle wraps gst_play_video_overlay_video_renderer_set_window_handle
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- windowHandle unsafe.Pointer (nullable): handle referencing to the platform specific window 
-	//
-	// Sets the platform specific window handle into which the video
-	// should be rendered
-	SetWindowHandle(unsafe.Pointer)
 }
 
 func unsafeWrapPlayVideoOverlayVideoRenderer(base *gobject.ObjectInstance) *PlayVideoOverlayVideoRendererInstance {
@@ -3228,64 +3300,6 @@ func UnsafePlayVideoOverlayVideoRendererToGlibNone(c PlayVideoOverlayVideoRender
 // UnsafePlayVideoOverlayVideoRendererToGlibFull is used to convert the instance to it's C value GstPlayVideoOverlayVideoRenderer, while removeing the finalizer. This is used by the bindings internally.
 func UnsafePlayVideoOverlayVideoRendererToGlibFull(c PlayVideoOverlayVideoRenderer) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
-}
-
-// NewPlayVideoOverlayVideoRenderer wraps gst_play_video_overlay_video_renderer_new
-// 
-// The function takes the following parameters:
-// 
-// 	- windowHandle unsafe.Pointer (nullable): Window handle to use or %NULL 
-// 
-// The function returns the following values:
-// 
-// 	- goret PlayVideoRenderer 
-func NewPlayVideoOverlayVideoRenderer(windowHandle unsafe.Pointer) PlayVideoRenderer {
-	var carg1 C.gpointer              // in, none, casted, nullable
-	var cret  *C.GstPlayVideoRenderer // return, full, converted
-
-	if windowHandle != nil {
-		carg1 = C.gpointer(windowHandle)
-	}
-
-	cret = C.gst_play_video_overlay_video_renderer_new(carg1)
-	runtime.KeepAlive(windowHandle)
-
-	var goret PlayVideoRenderer
-
-	goret = UnsafePlayVideoRendererFromGlibFull(unsafe.Pointer(cret))
-
-	return goret
-}
-
-// NewPlayVideoOverlayVideoRendererWithSink wraps gst_play_video_overlay_video_renderer_new_with_sink
-// 
-// The function takes the following parameters:
-// 
-// 	- windowHandle unsafe.Pointer (nullable): Window handle to use or %NULL 
-// 	- videoSink gst.Element: the custom video_sink element to be set for the video renderer 
-// 
-// The function returns the following values:
-// 
-// 	- goret PlayVideoRenderer 
-func NewPlayVideoOverlayVideoRendererWithSink(windowHandle unsafe.Pointer, videoSink gst.Element) PlayVideoRenderer {
-	var carg1 C.gpointer              // in, none, casted, nullable
-	var carg2 *C.GstElement           // in, none, converted
-	var cret  *C.GstPlayVideoRenderer // return, full, converted
-
-	if windowHandle != nil {
-		carg1 = C.gpointer(windowHandle)
-	}
-	carg2 = (*C.GstElement)(gst.UnsafeElementToGlibNone(videoSink))
-
-	cret = C.gst_play_video_overlay_video_renderer_new_with_sink(carg1, carg2)
-	runtime.KeepAlive(windowHandle)
-	runtime.KeepAlive(videoSink)
-
-	var goret PlayVideoRenderer
-
-	goret = UnsafePlayVideoRendererFromGlibFull(unsafe.Pointer(cret))
-
-	return goret
 }
 
 // Expose wraps gst_play_video_overlay_video_renderer_expose
@@ -3336,26 +3350,6 @@ func (self *PlayVideoOverlayVideoRendererInstance) GetRenderRectangle() (int, in
 	return x, y, width, height
 }
 
-// GetWindowHandle wraps gst_play_video_overlay_video_renderer_get_window_handle
-// The function returns the following values:
-// 
-// 	- goret unsafe.Pointer 
-func (self *PlayVideoOverlayVideoRendererInstance) GetWindowHandle() unsafe.Pointer {
-	var carg0 *C.GstPlayVideoOverlayVideoRenderer // in, none, converted
-	var cret  C.gpointer                          // return, none, casted
-
-	carg0 = (*C.GstPlayVideoOverlayVideoRenderer)(UnsafePlayVideoOverlayVideoRendererToGlibNone(self))
-
-	cret = C.gst_play_video_overlay_video_renderer_get_window_handle(carg0)
-	runtime.KeepAlive(self)
-
-	var goret unsafe.Pointer
-
-	goret = unsafe.Pointer(cret)
-
-	return goret
-}
-
 // SetRenderRectangle wraps gst_play_video_overlay_video_renderer_set_render_rectangle
 // 
 // The function takes the following parameters:
@@ -3394,28 +3388,6 @@ func (self *PlayVideoOverlayVideoRendererInstance) SetRenderRectangle(x int, y i
 	runtime.KeepAlive(y)
 	runtime.KeepAlive(width)
 	runtime.KeepAlive(height)
-}
-
-// SetWindowHandle wraps gst_play_video_overlay_video_renderer_set_window_handle
-// 
-// The function takes the following parameters:
-// 
-// 	- windowHandle unsafe.Pointer (nullable): handle referencing to the platform specific window 
-//
-// Sets the platform specific window handle into which the video
-// should be rendered
-func (self *PlayVideoOverlayVideoRendererInstance) SetWindowHandle(windowHandle unsafe.Pointer) {
-	var carg0 *C.GstPlayVideoOverlayVideoRenderer // in, none, converted
-	var carg1 C.gpointer                          // in, none, casted, nullable
-
-	carg0 = (*C.GstPlayVideoOverlayVideoRenderer)(UnsafePlayVideoOverlayVideoRendererToGlibNone(self))
-	if windowHandle != nil {
-		carg1 = C.gpointer(windowHandle)
-	}
-
-	C.gst_play_video_overlay_video_renderer_set_window_handle(carg0, carg1)
-	runtime.KeepAlive(self)
-	runtime.KeepAlive(windowHandle)
 }
 
 // PlayAudioInfoInstance is the instance type used by all types extending GstPlayAudioInfo. It is used internally by the bindings. Users should use the interface [PlayAudioInfo] instead.

@@ -658,6 +658,18 @@ type TimedValueControlSource interface {
 	//
 	// Used to remove all time-stamped values of given controller-handled property
 	UnsetAll()
+	// ConnectValueAdded connects the provided callback to the "value-added" signal
+	//
+	// Emitted right after the new value has been added to @self
+	ConnectValueAdded(func(TimedValueControlSource, ControlPoint)) gobject.SignalHandle
+	// ConnectValueChanged connects the provided callback to the "value-changed" signal
+	//
+	// Emitted right after the new value has been set on @timed_signals
+	ConnectValueChanged(func(TimedValueControlSource, ControlPoint)) gobject.SignalHandle
+	// ConnectValueRemoved connects the provided callback to the "value-removed" signal
+	//
+	// Emitted when @timed_value is removed from @self
+	ConnectValueRemoved(func(TimedValueControlSource, ControlPoint)) gobject.SignalHandle
 }
 
 func unsafeWrapTimedValueControlSource(base *gobject.ObjectInstance) *TimedValueControlSourceInstance {
@@ -837,6 +849,24 @@ func (self *TimedValueControlSourceInstance) UnsetAll() {
 	runtime.KeepAlive(self)
 }
 
+// ConnectValueAdded connects the provided callback to the "value-added" signal
+//
+// Emitted right after the new value has been added to @self
+func (o *TimedValueControlSourceInstance) ConnectValueAdded(fn func(TimedValueControlSource, ControlPoint)) gobject.SignalHandle {
+	return o.Connect("value-added", fn)
+}
+// ConnectValueChanged connects the provided callback to the "value-changed" signal
+//
+// Emitted right after the new value has been set on @timed_signals
+func (o *TimedValueControlSourceInstance) ConnectValueChanged(fn func(TimedValueControlSource, ControlPoint)) gobject.SignalHandle {
+	return o.Connect("value-changed", fn)
+}
+// ConnectValueRemoved connects the provided callback to the "value-removed" signal
+//
+// Emitted when @timed_value is removed from @self
+func (o *TimedValueControlSourceInstance) ConnectValueRemoved(fn func(TimedValueControlSource, ControlPoint)) gobject.SignalHandle {
+	return o.Connect("value-removed", fn)
+}
 // TriggerControlSourceInstance is the instance type used by all types extending GstTriggerControlSource. It is used internally by the bindings. Users should use the interface [TriggerControlSource] instead.
 type TriggerControlSourceInstance struct {
 	_ [0]func() // equal guard

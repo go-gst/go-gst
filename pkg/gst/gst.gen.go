@@ -32,14 +32,12 @@ import (
 // extern gboolean _gotk4_gst1_StructureFilterMapFunc(GQuark, GValue*, gpointer);
 // extern gboolean _gotk4_gst1_StructureForEachFunc(GQuark, GValue*, gpointer);
 // extern gboolean _gotk4_gst1_StructureMapFunc(GQuark, GValue*, gpointer);
-// extern gint _gotk4_glib2_CompareDataFunc(gconstpointer, gconstpointer, gpointer);
 // extern void _gotk4_gst1_ElementCallAsyncFunc(GstElement*, gpointer);
 // extern void _gotk4_gst1_IteratorForEachFunction(GValue*, gpointer);
 // extern void _gotk4_gst1_LogFunction(GstDebugCategory*, GstDebugLevel, gchar*, gchar*, gint, GObject*, GstDebugMessage*, gpointer);
 // extern void _gotk4_gst1_PromiseChangeFunc(GstPromise*, gpointer);
 // extern void _gotk4_gst1_TagForEachFunc(GstTagList*, gchar*, gpointer);
 // extern void _gotk4_gst1_TaskFunction(gpointer);
-// extern void _gotk4_gst1_TaskPoolFunction(void*);
 // extern void destroyUserdata(gpointer);
 import "C"
 
@@ -6720,17 +6718,6 @@ type CapsForEachFunc func(features *CapsFeatures, structure *Structure) (goret b
 // may modify @features and @structure.
 type CapsMapFunc func(features *CapsFeatures, structure *Structure) (goret bool)
 
-// CustomMetaTransformFunction wraps GstCustomMetaTransformFunction
-//
-// Function called for each @meta in @buffer as a result of performing a
-// transformation that yields @transbuf. Additional @type specific transform
-// data is passed to the function as @data.
-// 
-// Implementations should check the @type of the transform and parse
-// additional type specific fields in @data that should be used to update
-// the metadata on @transbuf.
-type CustomMetaTransformFunction func(transbuf *Buffer, meta *CustomMeta, buffer *Buffer, typ glib.Quark, data unsafe.Pointer) (goret bool)
-
 // IteratorFoldFunction wraps GstIteratorFoldFunction
 //
 // A function to be passed to gst_iterator_fold().
@@ -7175,65 +7162,6 @@ func DebugIsColored() bool {
 	return goret
 }
 
-// DebugLogDefault wraps gst_debug_log_default
-// 
-// The function takes the following parameters:
-// 
-// 	- category *DebugCategory: category to log 
-// 	- level DebugLevel: level of the message 
-// 	- file string: the file that emitted the message, usually the __FILE__ identifier 
-// 	- function string: the function that emitted the message 
-// 	- line int: the line from that the message was emitted, usually __LINE__ 
-// 	- object gobject.Object (nullable): the object this message relates to,
-//     or %NULL if none 
-// 	- message *DebugMessage: the actual message 
-// 	- userData unsafe.Pointer (nullable): the FILE* to log to 
-//
-// The default logging handler used by GStreamer. Logging functions get called
-// whenever a macro like GST_DEBUG or similar is used. By default this function
-// is setup to output the message and additional info to stderr (or the log file
-// specified via the GST_DEBUG_FILE environment variable) as received via
-// @user_data.
-// 
-// You can add other handlers by using gst_debug_add_log_function().
-// And you can remove this handler by calling
-// gst_debug_remove_log_function(gst_debug_log_default);
-func DebugLogDefault(category *DebugCategory, level DebugLevel, file string, function string, line int, object gobject.Object, message *DebugMessage, userData unsafe.Pointer) {
-	var carg1 *C.GstDebugCategory // in, none, converted
-	var carg2 C.GstDebugLevel     // in, none, casted
-	var carg3 *C.gchar            // in, none, string, casted *C.gchar
-	var carg4 *C.gchar            // in, none, string, casted *C.gchar
-	var carg5 C.gint              // in, none, casted
-	var carg6 *C.GObject          // in, none, converted, nullable
-	var carg7 *C.GstDebugMessage  // in, none, converted
-	var carg8 C.gpointer          // in, none, casted, nullable
-
-	carg1 = (*C.GstDebugCategory)(UnsafeDebugCategoryToGlibNone(category))
-	carg2 = C.GstDebugLevel(level)
-	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(file)))
-	defer C.free(unsafe.Pointer(carg3))
-	carg4 = (*C.gchar)(unsafe.Pointer(C.CString(function)))
-	defer C.free(unsafe.Pointer(carg4))
-	carg5 = C.gint(line)
-	if object != nil {
-		carg6 = (*C.GObject)(gobject.UnsafeObjectToGlibNone(object))
-	}
-	carg7 = (*C.GstDebugMessage)(UnsafeDebugMessageToGlibNone(message))
-	if userData != nil {
-		carg8 = C.gpointer(userData)
-	}
-
-	C.gst_debug_log_default(carg1, carg2, carg3, carg4, carg5, carg6, carg7, carg8)
-	runtime.KeepAlive(category)
-	runtime.KeepAlive(level)
-	runtime.KeepAlive(file)
-	runtime.KeepAlive(function)
-	runtime.KeepAlive(line)
-	runtime.KeepAlive(object)
-	runtime.KeepAlive(message)
-	runtime.KeepAlive(userData)
-}
-
 // DebugLogGetLine wraps gst_debug_log_get_line
 // 
 // The function takes the following parameters:
@@ -7395,35 +7323,6 @@ func DebugLogLiteral(category *DebugCategory, level DebugLevel, file string, fun
 func DebugPrintStackTrace() {
 
 	C.gst_debug_print_stack_trace()
-}
-
-// DebugRemoveLogFunctionByData wraps gst_debug_remove_log_function_by_data
-// 
-// The function takes the following parameters:
-// 
-// 	- data unsafe.Pointer (nullable): user data of the log function to remove 
-// 
-// The function returns the following values:
-// 
-// 	- goret uint 
-//
-// Removes all registered instances of log functions with the given user data.
-func DebugRemoveLogFunctionByData(data unsafe.Pointer) uint {
-	var carg1 C.gpointer // in, none, casted, nullable
-	var cret  C.guint    // return, none, casted
-
-	if data != nil {
-		carg1 = C.gpointer(data)
-	}
-
-	cret = C.gst_debug_remove_log_function_by_data(carg1)
-	runtime.KeepAlive(data)
-
-	var goret uint
-
-	goret = uint(cret)
-
-	return goret
 }
 
 // DebugRemoveRingBufferLogger wraps gst_debug_remove_ring_buffer_logger
@@ -8600,66 +8499,6 @@ func UpdateRegistry() bool {
 	if cret != 0 {
 		goret = true
 	}
-
-	return goret
-}
-
-// UtilArrayBinarySearch wraps gst_util_array_binary_search
-// 
-// The function takes the following parameters:
-// 
-// 	- array unsafe.Pointer (nullable): the sorted input array 
-// 	- numElements uint: number of elements in the array 
-// 	- elementSize uint: size of every element in bytes 
-// 	- searchFunc glib.CompareDataFunc: function to compare two elements, @search_data will always be passed as second argument 
-// 	- mode SearchMode: search mode that should be used 
-// 	- searchData unsafe.Pointer (nullable): element that should be found 
-// 
-// The function returns the following values:
-// 
-// 	- goret unsafe.Pointer 
-//
-// Searches inside @array for @search_data by using the comparison function
-// @search_func. @array must be sorted ascending.
-// 
-// As @search_data is always passed as second argument to @search_func it's
-// not required that @search_data has the same type as the array elements.
-// 
-// The complexity of this search function is O(log (num_elements)).
-func UtilArrayBinarySearch(array unsafe.Pointer, numElements uint, elementSize uint, searchFunc glib.CompareDataFunc, mode SearchMode, searchData unsafe.Pointer) unsafe.Pointer {
-	var carg1 C.gpointer         // in, none, casted, nullable
-	var carg2 C.guint            // in, none, casted
-	var carg3 C.gsize            // in, none, casted
-	var carg4 C.GCompareDataFunc // callback, scope: call, closure: carg7
-	var carg5 C.GstSearchMode    // in, none, casted
-	var carg6 C.gconstpointer    // in, none, casted, nullable
-	var carg7 C.gpointer         // implicit
-	var cret  C.gpointer         // return, none, casted
-
-	if array != nil {
-		carg1 = C.gpointer(array)
-	}
-	carg2 = C.guint(numElements)
-	carg3 = C.gsize(elementSize)
-	carg4 = (*[0]byte)(C._gotk4_glib2_CompareDataFunc)
-	carg7 = C.gpointer(userdata.Register(searchFunc))
-	defer userdata.Delete(unsafe.Pointer(carg7))
-	carg5 = C.GstSearchMode(mode)
-	if searchData != nil {
-		carg6 = C.gconstpointer(searchData)
-	}
-
-	cret = C.gst_util_array_binary_search(carg1, carg2, carg3, carg4, carg5, carg6, carg7)
-	runtime.KeepAlive(array)
-	runtime.KeepAlive(numElements)
-	runtime.KeepAlive(elementSize)
-	runtime.KeepAlive(searchFunc)
-	runtime.KeepAlive(mode)
-	runtime.KeepAlive(searchData)
-
-	var goret unsafe.Pointer
-
-	goret = unsafe.Pointer(cret)
 
 	return goret
 }
@@ -10933,7 +10772,7 @@ type ChildProxyInstance struct {
 
 var _ ChildProxy = (*ChildProxyInstance)(nil)
 
-// ChildProxyInstance wraps GstChildProxy
+// ChildProxy wraps GstChildProxy
 //
 // This interface abstracts handling of property sets for elements with
 // children. Imagine elements such as mixers or polyphonic generators. They all
@@ -11024,6 +10863,14 @@ type ChildProxy interface {
 	//
 	// Gets the number of child objects this parent contains.
 	GetChildrenCount() uint
+	// ConnectChildAdded connects the provided callback to the "child-added" signal
+	//
+	// Will be emitted after the @object was added to the @child_proxy.
+	ConnectChildAdded(func(ChildProxy, gobject.Object, string)) gobject.SignalHandle
+	// ConnectChildRemoved connects the provided callback to the "child-removed" signal
+	//
+	// Will be emitted after the @object was removed from the @child_proxy.
+	ConnectChildRemoved(func(ChildProxy, gobject.Object, string)) gobject.SignalHandle
 }
 
 var _ ChildProxy = (*ChildProxyInstance)(nil)
@@ -11237,6 +11084,18 @@ func (parent *ChildProxyInstance) GetChildrenCount() uint {
 	return goret
 }
 
+// ConnectChildAdded connects the provided callback to the "child-added" signal
+//
+// Will be emitted after the @object was added to the @child_proxy.
+func (o *ChildProxyInstance) ConnectChildAdded(fn func(ChildProxy, gobject.Object, string)) gobject.SignalHandle {
+	return o.Instance.Connect("child-added", fn)
+}
+// ConnectChildRemoved connects the provided callback to the "child-removed" signal
+//
+// Will be emitted after the @object was removed from the @child_proxy.
+func (o *ChildProxyInstance) ConnectChildRemoved(fn func(ChildProxy, gobject.Object, string)) gobject.SignalHandle {
+	return o.Instance.Connect("child-removed", fn)
+}
 // PresetInstance is the instance type used by all types implementing GstPreset. It is used internally by the bindings. Users should use the interface [Preset] instead.
 type PresetInstance struct {
 	_ [0]func() // equal guard
@@ -11245,7 +11104,7 @@ type PresetInstance struct {
 
 var _ Preset = (*PresetInstance)(nil)
 
-// PresetInstance wraps GstPreset
+// Preset wraps GstPreset
 //
 // This interface offers methods to query and manipulate parameter preset sets.
 // A preset is a bunch of property settings, together with meta data and a name.
@@ -11777,7 +11636,7 @@ type URIHandlerInstance struct {
 
 var _ URIHandler = (*URIHandlerInstance)(nil)
 
-// URIHandlerInstance wraps GstURIHandler
+// URIHandler wraps GstURIHandler
 //
 // The #GstURIHandler is an interface that is implemented by Source and Sink
 // #GstElement to unify handling of URI.
@@ -11982,7 +11841,7 @@ type TagSetterInstance struct {
 
 var _ TagSetter = (*TagSetterInstance)(nil)
 
-// TagSetterInstance wraps GstTagSetter
+// TagSetter wraps GstTagSetter
 //
 // Element interface that allows setting of media metadata.
 // 
@@ -12260,7 +12119,7 @@ type TocSetterInstance struct {
 
 var _ TocSetter = (*TocSetterInstance)(nil)
 
-// TocSetterInstance wraps GstTocSetter
+// TocSetter wraps GstTocSetter
 //
 // Element interface that allows setting of the TOC.
 // 
@@ -13613,14 +13472,6 @@ type Pad interface {
 	// decided at construction time so this function does not take
 	// the LOCK.
 	GetDirection() PadDirection
-	// GetElementPrivate wraps gst_pad_get_element_private
-	// The function returns the following values:
-	// 
-	// 	- goret unsafe.Pointer 
-	//
-	// Gets the private data of a pad.
-	// No locking is performed in this function.
-	GetElementPrivate() unsafe.Pointer
 	// GetLastFlowReturn wraps gst_pad_get_last_flow_return
 	// The function returns the following values:
 	// 
@@ -14333,16 +14184,6 @@ type Pad interface {
 	// If not @active, calls gst_pad_activate_mode() with the pad's current mode
 	// and a %FALSE argument.
 	SetActive(bool) bool
-	// SetElementPrivate wraps gst_pad_set_element_private
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- priv unsafe.Pointer (nullable): The private data to attach to the pad. 
-	//
-	// Set the given private data gpointer on the pad.
-	// This function can only be used by the element that owns the pad.
-	// No locking is performed in this function.
-	SetElementPrivate(unsafe.Pointer)
 	// SetOffset wraps gst_pad_set_offset
 	// 
 	// The function takes the following parameters:
@@ -14416,6 +14257,14 @@ type Pad interface {
 	// pad. Use this function on a pad that, once it negotiated to a CAPS, cannot
 	// be renegotiated to something else.
 	UseFixedCaps()
+	// ConnectLinked connects the provided callback to the "linked" signal
+	//
+	// Signals that a pad has been linked to the peer pad.
+	ConnectLinked(func(Pad, Pad)) gobject.SignalHandle
+	// ConnectUnlinked connects the provided callback to the "unlinked" signal
+	//
+	// Signals that a pad has been unlinked from the peer pad.
+	ConnectUnlinked(func(Pad, Pad)) gobject.SignalHandle
 }
 
 func unsafeWrapPad(base *gobject.ObjectInstance) *PadInstance {
@@ -15036,29 +14885,6 @@ func (pad *PadInstance) GetDirection() PadDirection {
 	var goret PadDirection
 
 	goret = PadDirection(cret)
-
-	return goret
-}
-
-// GetElementPrivate wraps gst_pad_get_element_private
-// The function returns the following values:
-// 
-// 	- goret unsafe.Pointer 
-//
-// Gets the private data of a pad.
-// No locking is performed in this function.
-func (pad *PadInstance) GetElementPrivate() unsafe.Pointer {
-	var carg0 *C.GstPad  // in, none, converted
-	var cret  C.gpointer // return, none, casted
-
-	carg0 = (*C.GstPad)(UnsafePadToGlibNone(pad))
-
-	cret = C.gst_pad_get_element_private(carg0)
-	runtime.KeepAlive(pad)
-
-	var goret unsafe.Pointer
-
-	goret = unsafe.Pointer(cret)
 
 	return goret
 }
@@ -16683,29 +16509,6 @@ func (pad *PadInstance) SetActive(active bool) bool {
 	return goret
 }
 
-// SetElementPrivate wraps gst_pad_set_element_private
-// 
-// The function takes the following parameters:
-// 
-// 	- priv unsafe.Pointer (nullable): The private data to attach to the pad. 
-//
-// Set the given private data gpointer on the pad.
-// This function can only be used by the element that owns the pad.
-// No locking is performed in this function.
-func (pad *PadInstance) SetElementPrivate(priv unsafe.Pointer) {
-	var carg0 *C.GstPad  // in, none, converted
-	var carg1 C.gpointer // in, none, casted, nullable
-
-	carg0 = (*C.GstPad)(UnsafePadToGlibNone(pad))
-	if priv != nil {
-		carg1 = C.gpointer(priv)
-	}
-
-	C.gst_pad_set_element_private(carg0, carg1)
-	runtime.KeepAlive(pad)
-	runtime.KeepAlive(priv)
-}
-
 // SetOffset wraps gst_pad_set_offset
 // 
 // The function takes the following parameters:
@@ -16877,6 +16680,18 @@ func (pad *PadInstance) UseFixedCaps() {
 	runtime.KeepAlive(pad)
 }
 
+// ConnectLinked connects the provided callback to the "linked" signal
+//
+// Signals that a pad has been linked to the peer pad.
+func (o *PadInstance) ConnectLinked(fn func(Pad, Pad)) gobject.SignalHandle {
+	return o.Connect("linked", fn)
+}
+// ConnectUnlinked connects the provided callback to the "unlinked" signal
+//
+// Signals that a pad has been unlinked from the peer pad.
+func (o *PadInstance) ConnectUnlinked(fn func(Pad, Pad)) gobject.SignalHandle {
+	return o.Connect("unlinked", fn)
+}
 // PadTemplateInstance is the instance type used by all types extending GstPadTemplate. It is used internally by the bindings. Users should use the interface [PadTemplate] instead.
 type PadTemplateInstance struct {
 	_ [0]func() // equal guard
@@ -16984,6 +16799,10 @@ type PadTemplate interface {
 	// into the documentation, element authors should use this method to
 	// expose "stable" caps to the reader.
 	SetDocumentationCaps(*Caps)
+	// ConnectPadCreated connects the provided callback to the "pad-created" signal
+	//
+	// This signal is fired when an element creates a pad from this template.
+	ConnectPadCreated(func(PadTemplate, Pad)) gobject.SignalHandle
 }
 
 func unsafeWrapPadTemplate(base *gobject.ObjectInstance) *PadTemplateInstance {
@@ -17226,6 +17045,12 @@ func (templ *PadTemplateInstance) SetDocumentationCaps(caps *Caps) {
 	runtime.KeepAlive(caps)
 }
 
+// ConnectPadCreated connects the provided callback to the "pad-created" signal
+//
+// This signal is fired when an element creates a pad from this template.
+func (o *PadTemplateInstance) ConnectPadCreated(fn func(PadTemplate, Pad)) gobject.SignalHandle {
+	return o.Connect("pad-created", fn)
+}
 // PluginInstance is the instance type used by all types extending GstPlugin. It is used internally by the bindings. Users should use the interface [Plugin] instead.
 type PluginInstance struct {
 	_ [0]func() // equal guard
@@ -18964,6 +18789,16 @@ type Registry interface {
 	// Scan the given path for plugins to add to the registry. The syntax of the
 	// path is specific to the registry.
 	ScanPath(string) bool
+	// ConnectFeatureAdded connects the provided callback to the "feature-added" signal
+	//
+	// Signals that a feature has been added to the registry (possibly
+	// replacing a previously-added one by the same name)
+	ConnectFeatureAdded(func(Registry, PluginFeature)) gobject.SignalHandle
+	// ConnectPluginAdded connects the provided callback to the "plugin-added" signal
+	//
+	// Signals that a plugin has been added to the registry (possibly
+	// replacing a previously-added one by the same name)
+	ConnectPluginAdded(func(Registry, Plugin)) gobject.SignalHandle
 }
 
 func unsafeWrapRegistry(base *gobject.ObjectInstance) *RegistryInstance {
@@ -19415,6 +19250,20 @@ func (registry *RegistryInstance) ScanPath(path string) bool {
 	return goret
 }
 
+// ConnectFeatureAdded connects the provided callback to the "feature-added" signal
+//
+// Signals that a feature has been added to the registry (possibly
+// replacing a previously-added one by the same name)
+func (o *RegistryInstance) ConnectFeatureAdded(fn func(Registry, PluginFeature)) gobject.SignalHandle {
+	return o.Connect("feature-added", fn)
+}
+// ConnectPluginAdded connects the provided callback to the "plugin-added" signal
+//
+// Signals that a plugin has been added to the registry (possibly
+// replacing a previously-added one by the same name)
+func (o *RegistryInstance) ConnectPluginAdded(fn func(Registry, Plugin)) gobject.SignalHandle {
+	return o.Connect("plugin-added", fn)
+}
 // StreamInstance is the instance type used by all types extending GstStream. It is used internally by the bindings. Users should use the interface [Stream] instead.
 type StreamInstance struct {
 	_ [0]func() // equal guard
@@ -20540,35 +20389,6 @@ type TaskPool interface {
 	// 
 	// MT safe.
 	Cleanup()
-	// DisposeHandle wraps gst_task_pool_dispose_handle
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- id unsafe.Pointer (nullable): the id 
-	//
-	// Dispose of the handle returned by gst_task_pool_push(). This does
-	// not need to be called with the default implementation as the default
-	// #GstTaskPoolClass::push implementation always returns %NULL. This does not need to be
-	// called either when calling gst_task_pool_join(), but should be called
-	// when joining is not necessary, but gst_task_pool_push() returned a
-	// non-%NULL value.
-	// 
-	// This method should only be called with the same @pool instance that provided
-	// @id.
-	DisposeHandle(unsafe.Pointer)
-	// Join wraps gst_task_pool_join
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- id unsafe.Pointer (nullable): the id 
-	//
-	// Join a task and/or return it to the pool. @id is the id obtained from
-	// gst_task_pool_push(). The default implementation does nothing, as the
-	// default #GstTaskPoolClass::push implementation always returns %NULL.
-	// 
-	// This method should only be called with the same @pool instance that provided
-	// @id.
-	Join(unsafe.Pointer)
 	// Prepare wraps gst_task_pool_prepare
 	// The function returns the following values:
 	// 
@@ -20578,19 +20398,6 @@ type TaskPool interface {
 	// 
 	// MT safe.
 	Prepare() error
-	// Push wraps gst_task_pool_push
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- fn TaskPoolFunction: the function to call 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret unsafe.Pointer 
-	// 	- _goerr error (nullable): an error 
-	//
-	// Start the execution of a new thread from @pool.
-	Push(TaskPoolFunction) (unsafe.Pointer, error)
 }
 
 func unsafeWrapTaskPool(base *gobject.ObjectInstance) *TaskPoolInstance {
@@ -20665,61 +20472,6 @@ func (pool *TaskPoolInstance) Cleanup() {
 	runtime.KeepAlive(pool)
 }
 
-// DisposeHandle wraps gst_task_pool_dispose_handle
-// 
-// The function takes the following parameters:
-// 
-// 	- id unsafe.Pointer (nullable): the id 
-//
-// Dispose of the handle returned by gst_task_pool_push(). This does
-// not need to be called with the default implementation as the default
-// #GstTaskPoolClass::push implementation always returns %NULL. This does not need to be
-// called either when calling gst_task_pool_join(), but should be called
-// when joining is not necessary, but gst_task_pool_push() returned a
-// non-%NULL value.
-// 
-// This method should only be called with the same @pool instance that provided
-// @id.
-func (pool *TaskPoolInstance) DisposeHandle(id unsafe.Pointer) {
-	var carg0 *C.GstTaskPool // in, none, converted
-	var carg1 C.gpointer     // in, full, casted, nullable
-
-	carg0 = (*C.GstTaskPool)(UnsafeTaskPoolToGlibNone(pool))
-	if id != nil {
-		carg1 = C.gpointer(id)
-	}
-
-	C.gst_task_pool_dispose_handle(carg0, carg1)
-	runtime.KeepAlive(pool)
-	runtime.KeepAlive(id)
-}
-
-// Join wraps gst_task_pool_join
-// 
-// The function takes the following parameters:
-// 
-// 	- id unsafe.Pointer (nullable): the id 
-//
-// Join a task and/or return it to the pool. @id is the id obtained from
-// gst_task_pool_push(). The default implementation does nothing, as the
-// default #GstTaskPoolClass::push implementation always returns %NULL.
-// 
-// This method should only be called with the same @pool instance that provided
-// @id.
-func (pool *TaskPoolInstance) Join(id unsafe.Pointer) {
-	var carg0 *C.GstTaskPool // in, none, converted
-	var carg1 C.gpointer     // in, full, casted, nullable
-
-	carg0 = (*C.GstTaskPool)(UnsafeTaskPoolToGlibNone(pool))
-	if id != nil {
-		carg1 = C.gpointer(id)
-	}
-
-	C.gst_task_pool_join(carg0, carg1)
-	runtime.KeepAlive(pool)
-	runtime.KeepAlive(id)
-}
-
 // Prepare wraps gst_task_pool_prepare
 // The function returns the following values:
 // 
@@ -20744,44 +20496,6 @@ func (pool *TaskPoolInstance) Prepare() error {
 	}
 
 	return _goerr
-}
-
-// Push wraps gst_task_pool_push
-// 
-// The function takes the following parameters:
-// 
-// 	- fn TaskPoolFunction: the function to call 
-// 
-// The function returns the following values:
-// 
-// 	- goret unsafe.Pointer 
-// 	- _goerr error (nullable): an error 
-//
-// Start the execution of a new thread from @pool.
-func (pool *TaskPoolInstance) Push(fn TaskPoolFunction) (unsafe.Pointer, error) {
-	var carg0 *C.GstTaskPool        // in, none, converted
-	var carg1 C.GstTaskPoolFunction // callback, scope: async, closure: carg2
-	var carg2 C.gpointer            // implicit
-	var cret  C.gpointer            // return, full, casted
-	var _cerr *C.GError             // out, full, converted, nullable
-
-	carg0 = (*C.GstTaskPool)(UnsafeTaskPoolToGlibNone(pool))
-	carg1 = (*[0]byte)(C._gotk4_gst1_TaskPoolFunction)
-	carg2 = C.gpointer(userdata.RegisterOnce(fn))
-
-	cret = C.gst_task_pool_push(carg0, carg1, carg2, &_cerr)
-	runtime.KeepAlive(pool)
-	runtime.KeepAlive(fn)
-
-	var goret  unsafe.Pointer
-	var _goerr error
-
-	goret = unsafe.Pointer(cret)
-	if _cerr != nil {
-		_goerr = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(_cerr))
-	}
-
-	return goret, _goerr
 }
 
 // TracerInstance is the instance type used by all types extending GstTracer. It is used internally by the bindings. Users should use the interface [Tracer] instead.
@@ -22470,20 +22184,6 @@ type Bus interface {
 	// The bus watch will take its own reference to the @bus, so it is safe to unref
 	// @bus using gst_object_unref() after setting the bus watch.
 	AddWatchFull(int, BusFunc) uint
-	// AsyncSignalFunc wraps gst_bus_async_signal_func
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- message *Message: the #GstMessage received 
-	// 	- data unsafe.Pointer (nullable): user data 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret bool 
-	//
-	// A helper #GstBusFunc that can be used to convert all asynchronous messages
-	// into signals.
-	AsyncSignalFunc(*Message, unsafe.Pointer) bool
 	// CreateWatch wraps gst_bus_create_watch
 	// The function returns the following values:
 	// 
@@ -22676,20 +22376,6 @@ type Bus interface {
 	// Before 1.16.3 it was not possible to replace an existing handler and
 	// clearing an existing handler with %NULL was not thread-safe.
 	SetSyncHandler(BusSyncHandler)
-	// SyncSignalHandler wraps gst_bus_sync_signal_handler
-	// 
-	// The function takes the following parameters:
-	// 
-	// 	- message *Message: the #GstMessage received 
-	// 	- data unsafe.Pointer (nullable): user data 
-	// 
-	// The function returns the following values:
-	// 
-	// 	- goret BusSyncReply 
-	//
-	// A helper #GstBusSyncHandler that can be used to convert all synchronous
-	// messages into signals.
-	SyncSignalHandler(*Message, unsafe.Pointer) BusSyncReply
 	// TimedPop wraps gst_bus_timed_pop
 	// 
 	// The function takes the following parameters:
@@ -22725,6 +22411,20 @@ type Bus interface {
 	// @timeout is #GST_CLOCK_TIME_NONE, this function will block forever until a
 	// matching message was posted on the bus.
 	TimedPopFiltered(ClockTime, MessageType) *Message
+	// ConnectMessage connects the provided callback to the "message" signal
+	//
+	// A message has been posted on the bus. This signal is emitted from a
+	// #GSource added to the mainloop. this signal will only be emitted when
+	// there is a #GMainLoop running.
+	ConnectMessage(func(Bus, Message)) gobject.SignalHandle
+	// ConnectSyncMessage connects the provided callback to the "sync-message" signal
+	//
+	// A message has been posted on the bus. This signal is emitted from the
+	// thread that posted the message so one has to be careful with locking.
+	// 
+	// This signal will not be emitted by default, you have to call
+	// gst_bus_enable_sync_message_emission() before.
+	ConnectSyncMessage(func(Bus, Message)) gobject.SignalHandle
 }
 
 func unsafeWrapBus(base *gobject.ObjectInstance) *BusInstance {
@@ -22893,45 +22593,6 @@ func (bus *BusInstance) AddWatchFull(priority int, fn BusFunc) uint {
 	var goret uint
 
 	goret = uint(cret)
-
-	return goret
-}
-
-// AsyncSignalFunc wraps gst_bus_async_signal_func
-// 
-// The function takes the following parameters:
-// 
-// 	- message *Message: the #GstMessage received 
-// 	- data unsafe.Pointer (nullable): user data 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// A helper #GstBusFunc that can be used to convert all asynchronous messages
-// into signals.
-func (bus *BusInstance) AsyncSignalFunc(message *Message, data unsafe.Pointer) bool {
-	var carg0 *C.GstBus     // in, none, converted
-	var carg1 *C.GstMessage // in, none, converted
-	var carg2 C.gpointer    // in, none, casted, nullable
-	var cret  C.gboolean    // return
-
-	carg0 = (*C.GstBus)(UnsafeBusToGlibNone(bus))
-	carg1 = (*C.GstMessage)(UnsafeMessageToGlibNone(message))
-	if data != nil {
-		carg2 = C.gpointer(data)
-	}
-
-	cret = C.gst_bus_async_signal_func(carg0, carg1, carg2)
-	runtime.KeepAlive(bus)
-	runtime.KeepAlive(message)
-	runtime.KeepAlive(data)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
 
 	return goret
 }
@@ -23337,43 +22998,6 @@ func (bus *BusInstance) SetSyncHandler(fn BusSyncHandler) {
 	runtime.KeepAlive(fn)
 }
 
-// SyncSignalHandler wraps gst_bus_sync_signal_handler
-// 
-// The function takes the following parameters:
-// 
-// 	- message *Message: the #GstMessage received 
-// 	- data unsafe.Pointer (nullable): user data 
-// 
-// The function returns the following values:
-// 
-// 	- goret BusSyncReply 
-//
-// A helper #GstBusSyncHandler that can be used to convert all synchronous
-// messages into signals.
-func (bus *BusInstance) SyncSignalHandler(message *Message, data unsafe.Pointer) BusSyncReply {
-	var carg0 *C.GstBus         // in, none, converted
-	var carg1 *C.GstMessage     // in, none, converted
-	var carg2 C.gpointer        // in, none, casted, nullable
-	var cret  C.GstBusSyncReply // return, none, casted
-
-	carg0 = (*C.GstBus)(UnsafeBusToGlibNone(bus))
-	carg1 = (*C.GstMessage)(UnsafeMessageToGlibNone(message))
-	if data != nil {
-		carg2 = C.gpointer(data)
-	}
-
-	cret = C.gst_bus_sync_signal_handler(carg0, carg1, carg2)
-	runtime.KeepAlive(bus)
-	runtime.KeepAlive(message)
-	runtime.KeepAlive(data)
-
-	var goret BusSyncReply
-
-	goret = BusSyncReply(cret)
-
-	return goret
-}
-
 // TimedPop wraps gst_bus_timed_pop
 // 
 // The function takes the following parameters:
@@ -23448,6 +23072,24 @@ func (bus *BusInstance) TimedPopFiltered(timeout ClockTime, types MessageType) *
 	return goret
 }
 
+// ConnectMessage connects the provided callback to the "message" signal
+//
+// A message has been posted on the bus. This signal is emitted from a
+// #GSource added to the mainloop. this signal will only be emitted when
+// there is a #GMainLoop running.
+func (o *BusInstance) ConnectMessage(fn func(Bus, Message)) gobject.SignalHandle {
+	return o.Connect("message", fn)
+}
+// ConnectSyncMessage connects the provided callback to the "sync-message" signal
+//
+// A message has been posted on the bus. This signal is emitted from the
+// thread that posted the message so one has to be careful with locking.
+// 
+// This signal will not be emitted by default, you have to call
+// gst_bus_enable_sync_message_emission() before.
+func (o *BusInstance) ConnectSyncMessage(fn func(Bus, Message)) gobject.SignalHandle {
+	return o.Connect("sync-message", fn)
+}
 // ClockInstance is the instance type used by all types extending GstClock. It is used internally by the bindings. Users should use the interface [Clock] instead.
 type ClockInstance struct {
 	_ [0]func() // equal guard
@@ -23887,6 +23529,15 @@ type Clock interface {
 	// This returns immediately with %TRUE if %GST_CLOCK_FLAG_NEEDS_STARTUP_SYNC
 	// is not set on the clock, or if the clock is already synced.
 	WaitForSync(ClockTime) bool
+	// ConnectSynced connects the provided callback to the "synced" signal
+	//
+	// Signaled on clocks with %GST_CLOCK_FLAG_NEEDS_STARTUP_SYNC set once
+	// the clock is synchronized, or when it completely lost synchronization.
+	// This signal will not be emitted on clocks without the flag.
+	// 
+	// This signal will be emitted from an arbitrary thread, most likely not
+	// the application's main thread.
+	ConnectSynced(func(Clock, bool)) gobject.SignalHandle
 }
 
 func unsafeWrapClock(base *gobject.ObjectInstance) *ClockInstance {
@@ -25023,6 +24674,17 @@ func (clock *ClockInstance) WaitForSync(timeout ClockTime) bool {
 	return goret
 }
 
+// ConnectSynced connects the provided callback to the "synced" signal
+//
+// Signaled on clocks with %GST_CLOCK_FLAG_NEEDS_STARTUP_SYNC set once
+// the clock is synchronized, or when it completely lost synchronization.
+// This signal will not be emitted on clocks without the flag.
+// 
+// This signal will be emitted from an arbitrary thread, most likely not
+// the application's main thread.
+func (o *ClockInstance) ConnectSynced(fn func(Clock, bool)) gobject.SignalHandle {
+	return o.Connect("synced", fn)
+}
 // ControlBindingInstance is the instance type used by all types extending GstControlBinding. It is used internally by the bindings. Users should use the interface [ControlBinding] instead.
 type ControlBindingInstance struct {
 	_ [0]func() // equal guard
@@ -25490,6 +25152,8 @@ type Device interface {
 	// Note: This should only be implemented for elements can change their
 	// device in the PLAYING state.
 	ReconfigureElement(Element) bool
+	// ConnectRemoved connects the provided callback to the "removed" signal
+	ConnectRemoved(func(Device)) gobject.SignalHandle
 }
 
 func unsafeWrapDevice(base *gobject.ObjectInstance) *DeviceInstance {
@@ -25763,6 +25427,10 @@ func (device *DeviceInstance) ReconfigureElement(element Element) bool {
 	return goret
 }
 
+// ConnectRemoved connects the provided callback to the "removed" signal
+func (o *DeviceInstance) ConnectRemoved(fn func(Device)) gobject.SignalHandle {
+	return o.Connect("removed", fn)
+}
 // DeviceMonitorInstance is the instance type used by all types extending GstDeviceMonitor. It is used internally by the bindings. Users should use the interface [DeviceMonitor] instead.
 type DeviceMonitorInstance struct {
 	_ [0]func() // equal guard
@@ -26349,6 +26017,10 @@ type DeviceProvider interface {
 	// monitoring the devices from provider factory @name in order to see
 	// all devices again.
 	UnhideProvider(string)
+	// ConnectProviderHidden connects the provided callback to the "provider-hidden" signal
+	ConnectProviderHidden(func(DeviceProvider, string)) gobject.SignalHandle
+	// ConnectProviderUnhidden connects the provided callback to the "provider-unhidden" signal
+	ConnectProviderUnhidden(func(DeviceProvider, string)) gobject.SignalHandle
 }
 
 func unsafeWrapDeviceProvider(base *gobject.ObjectInstance) *DeviceProviderInstance {
@@ -26753,6 +26425,14 @@ func (provider *DeviceProviderInstance) UnhideProvider(name string) {
 	runtime.KeepAlive(name)
 }
 
+// ConnectProviderHidden connects the provided callback to the "provider-hidden" signal
+func (o *DeviceProviderInstance) ConnectProviderHidden(fn func(DeviceProvider, string)) gobject.SignalHandle {
+	return o.Connect("provider-hidden", fn)
+}
+// ConnectProviderUnhidden connects the provided callback to the "provider-unhidden" signal
+func (o *DeviceProviderInstance) ConnectProviderUnhidden(fn func(DeviceProvider, string)) gobject.SignalHandle {
+	return o.Connect("provider-unhidden", fn)
+}
 // DeviceProviderFactoryInstance is the instance type used by all types extending GstDeviceProviderFactory. It is used internally by the bindings. Users should use the interface [DeviceProviderFactory] instead.
 type DeviceProviderFactoryInstance struct {
 	_ [0]func() // equal guard
@@ -28309,6 +27989,24 @@ type Element interface {
 	// 
 	// This is a convenience function for gst_pad_unlink().
 	UnlinkPads(string, Element, string)
+	// ConnectNoMorePads connects the provided callback to the "no-more-pads" signal
+	//
+	// This signals that the element will not generate more dynamic pads.
+	// Note that this signal will usually be emitted from the context of
+	// the streaming thread.
+	ConnectNoMorePads(func(Element)) gobject.SignalHandle
+	// ConnectPadAdded connects the provided callback to the "pad-added" signal
+	//
+	// a new #GstPad has been added to the element. Note that this signal will
+	// usually be emitted from the context of the streaming thread. Also keep in
+	// mind that if you add new elements to the pipeline in the signal handler
+	// you will need to set them to the desired target state with
+	// gst_element_set_state() or gst_element_sync_state_with_parent().
+	ConnectPadAdded(func(Element, Pad)) gobject.SignalHandle
+	// ConnectPadRemoved connects the provided callback to the "pad-removed" signal
+	//
+	// a #GstPad has been removed from the element
+	ConnectPadRemoved(func(Element, Pad)) gobject.SignalHandle
 }
 
 func unsafeWrapElement(base *gobject.ObjectInstance) *ElementInstance {
@@ -30838,6 +30536,30 @@ func (src *ElementInstance) UnlinkPads(srcpadname string, dest Element, destpadn
 	runtime.KeepAlive(destpadname)
 }
 
+// ConnectNoMorePads connects the provided callback to the "no-more-pads" signal
+//
+// This signals that the element will not generate more dynamic pads.
+// Note that this signal will usually be emitted from the context of
+// the streaming thread.
+func (o *ElementInstance) ConnectNoMorePads(fn func(Element)) gobject.SignalHandle {
+	return o.Connect("no-more-pads", fn)
+}
+// ConnectPadAdded connects the provided callback to the "pad-added" signal
+//
+// a new #GstPad has been added to the element. Note that this signal will
+// usually be emitted from the context of the streaming thread. Also keep in
+// mind that if you add new elements to the pipeline in the signal handler
+// you will need to set them to the desired target state with
+// gst_element_set_state() or gst_element_sync_state_with_parent().
+func (o *ElementInstance) ConnectPadAdded(fn func(Element, Pad)) gobject.SignalHandle {
+	return o.Connect("pad-added", fn)
+}
+// ConnectPadRemoved connects the provided callback to the "pad-removed" signal
+//
+// a #GstPad has been removed from the element
+func (o *ElementInstance) ConnectPadRemoved(fn func(Element, Pad)) gobject.SignalHandle {
+	return o.Connect("pad-removed", fn)
+}
 // ElementFactoryInstance is the instance type used by all types extending GstElementFactory. It is used internally by the bindings. Users should use the interface [ElementFactory] instead.
 type ElementFactoryInstance struct {
 	_ [0]func() // equal guard
@@ -32614,6 +32336,36 @@ type Bin interface {
 	// Synchronizes the state of every child of @bin with the state
 	// of @bin. See also gst_element_sync_state_with_parent().
 	SyncChildrenStates() bool
+	// ConnectDeepElementAdded connects the provided callback to the "deep-element-added" signal
+	//
+	// Will be emitted after the element was added to @sub_bin.
+	ConnectDeepElementAdded(func(Bin, Bin, Element)) gobject.SignalHandle
+	// ConnectDeepElementRemoved connects the provided callback to the "deep-element-removed" signal
+	//
+	// Will be emitted after the element was removed from @sub_bin.
+	ConnectDeepElementRemoved(func(Bin, Bin, Element)) gobject.SignalHandle
+	// ConnectDoLatency connects the provided callback to the "do-latency" signal
+	//
+	// Will be emitted when the bin needs to perform latency calculations. This
+	// signal is only emitted for toplevel bins or when #GstBin:async-handling is
+	// enabled.
+	// 
+	// Only one signal handler is invoked. If no signals are connected, the
+	// default handler is invoked, which will query and distribute the lowest
+	// possible latency to all sinks.
+	// 
+	// Connect to this signal if the default latency calculations are not
+	// sufficient, like when you need different latencies for different sinks in
+	// the same pipeline.
+	ConnectDoLatency(func(Bin) bool) gobject.SignalHandle
+	// ConnectElementAdded connects the provided callback to the "element-added" signal
+	//
+	// Will be emitted after the element was added to the bin.
+	ConnectElementAdded(func(Bin, Element)) gobject.SignalHandle
+	// ConnectElementRemoved connects the provided callback to the "element-removed" signal
+	//
+	// Will be emitted after the element was removed from the bin.
+	ConnectElementRemoved(func(Bin, Element)) gobject.SignalHandle
 }
 
 func unsafeWrapBin(base *gobject.ObjectInstance) *BinInstance {
@@ -33185,6 +32937,46 @@ func (bin *BinInstance) SyncChildrenStates() bool {
 	return goret
 }
 
+// ConnectDeepElementAdded connects the provided callback to the "deep-element-added" signal
+//
+// Will be emitted after the element was added to @sub_bin.
+func (o *BinInstance) ConnectDeepElementAdded(fn func(Bin, Bin, Element)) gobject.SignalHandle {
+	return o.Connect("deep-element-added", fn)
+}
+// ConnectDeepElementRemoved connects the provided callback to the "deep-element-removed" signal
+//
+// Will be emitted after the element was removed from @sub_bin.
+func (o *BinInstance) ConnectDeepElementRemoved(fn func(Bin, Bin, Element)) gobject.SignalHandle {
+	return o.Connect("deep-element-removed", fn)
+}
+// ConnectDoLatency connects the provided callback to the "do-latency" signal
+//
+// Will be emitted when the bin needs to perform latency calculations. This
+// signal is only emitted for toplevel bins or when #GstBin:async-handling is
+// enabled.
+// 
+// Only one signal handler is invoked. If no signals are connected, the
+// default handler is invoked, which will query and distribute the lowest
+// possible latency to all sinks.
+// 
+// Connect to this signal if the default latency calculations are not
+// sufficient, like when you need different latencies for different sinks in
+// the same pipeline.
+func (o *BinInstance) ConnectDoLatency(fn func(Bin) bool) gobject.SignalHandle {
+	return o.Connect("do-latency", fn)
+}
+// ConnectElementAdded connects the provided callback to the "element-added" signal
+//
+// Will be emitted after the element was added to the bin.
+func (o *BinInstance) ConnectElementAdded(fn func(Bin, Element)) gobject.SignalHandle {
+	return o.Connect("element-added", fn)
+}
+// ConnectElementRemoved connects the provided callback to the "element-removed" signal
+//
+// Will be emitted after the element was removed from the bin.
+func (o *BinInstance) ConnectElementRemoved(fn func(Bin, Element)) gobject.SignalHandle {
+	return o.Connect("element-removed", fn)
+}
 // PipelineInstance is the instance type used by all types extending GstPipeline. It is used internally by the bindings. Users should use the interface [Pipeline] instead.
 type PipelineInstance struct {
 	_ [0]func() // equal guard
@@ -34084,71 +33876,6 @@ func (queue *AtomicQueue) Length() uint {
 	return goret
 }
 
-// Peek wraps gst_atomic_queue_peek
-// The function returns the following values:
-// 
-// 	- goret unsafe.Pointer 
-//
-// Peek the head element of the queue without removing it from the queue.
-func (queue *AtomicQueue) Peek() unsafe.Pointer {
-	var carg0 *C.GstAtomicQueue // in, none, converted
-	var cret  C.gpointer        // return, none, casted
-
-	carg0 = (*C.GstAtomicQueue)(UnsafeAtomicQueueToGlibNone(queue))
-
-	cret = C.gst_atomic_queue_peek(carg0)
-	runtime.KeepAlive(queue)
-
-	var goret unsafe.Pointer
-
-	goret = unsafe.Pointer(cret)
-
-	return goret
-}
-
-// Pop wraps gst_atomic_queue_pop
-// The function returns the following values:
-// 
-// 	- goret unsafe.Pointer 
-//
-// Get the head element of the queue.
-func (queue *AtomicQueue) Pop() unsafe.Pointer {
-	var carg0 *C.GstAtomicQueue // in, none, converted
-	var cret  C.gpointer        // return, full, casted
-
-	carg0 = (*C.GstAtomicQueue)(UnsafeAtomicQueueToGlibNone(queue))
-
-	cret = C.gst_atomic_queue_pop(carg0)
-	runtime.KeepAlive(queue)
-
-	var goret unsafe.Pointer
-
-	goret = unsafe.Pointer(cret)
-
-	return goret
-}
-
-// Push wraps gst_atomic_queue_push
-// 
-// The function takes the following parameters:
-// 
-// 	- data unsafe.Pointer (nullable): the data 
-//
-// Append @data to the tail of the queue.
-func (queue *AtomicQueue) Push(data unsafe.Pointer) {
-	var carg0 *C.GstAtomicQueue // in, none, converted
-	var carg1 C.gpointer        // in, none, casted, nullable
-
-	carg0 = (*C.GstAtomicQueue)(UnsafeAtomicQueueToGlibNone(queue))
-	if data != nil {
-		carg1 = C.gpointer(data)
-	}
-
-	C.gst_atomic_queue_push(carg0, carg1)
-	runtime.KeepAlive(queue)
-	runtime.KeepAlive(data)
-}
-
 // BinClass wraps GstBinClass
 //
 // Subclasses can override #GstBinClass::add_element and #GstBinClass::remove_element
@@ -34503,42 +34230,6 @@ func (buffer *Buffer) AddCustomMeta(name string) *CustomMeta {
 	var goret *CustomMeta
 
 	goret = UnsafeCustomMetaFromGlibNone(unsafe.Pointer(cret))
-
-	return goret
-}
-
-// AddMeta wraps gst_buffer_add_meta
-// 
-// The function takes the following parameters:
-// 
-// 	- info *MetaInfo: a #GstMetaInfo 
-// 	- params unsafe.Pointer (nullable): params for @info 
-// 
-// The function returns the following values:
-// 
-// 	- goret *Meta 
-//
-// Adds metadata for @info to @buffer using the parameters in @params.
-func (buffer *Buffer) AddMeta(info *MetaInfo, params unsafe.Pointer) *Meta {
-	var carg0 *C.GstBuffer   // in, none, converted
-	var carg1 *C.GstMetaInfo // in, none, converted
-	var carg2 C.gpointer     // in, none, casted, nullable
-	var cret  *C.GstMeta     // return, none, converted
-
-	carg0 = (*C.GstBuffer)(UnsafeBufferToGlibNone(buffer))
-	carg1 = (*C.GstMetaInfo)(UnsafeMetaInfoToGlibNone(info))
-	if params != nil {
-		carg2 = C.gpointer(params)
-	}
-
-	cret = C.gst_buffer_add_meta(carg0, carg1, carg2)
-	runtime.KeepAlive(buffer)
-	runtime.KeepAlive(info)
-	runtime.KeepAlive(params)
-
-	var goret *Meta
-
-	goret = UnsafeMetaFromGlibNone(unsafe.Pointer(cret))
 
 	return goret
 }
@@ -48248,37 +47939,6 @@ func (object *MiniObject) AddParent(parent *MiniObject) {
 	runtime.KeepAlive(parent)
 }
 
-// GetQdata wraps gst_mini_object_get_qdata
-// 
-// The function takes the following parameters:
-// 
-// 	- quark glib.Quark: A #GQuark, naming the user data pointer 
-// 
-// The function returns the following values:
-// 
-// 	- goret unsafe.Pointer 
-//
-// This function gets back user data pointers stored via
-// gst_mini_object_set_qdata().
-func (object *MiniObject) GetQdata(quark glib.Quark) unsafe.Pointer {
-	var carg0 *C.GstMiniObject // in, none, converted
-	var carg1 C.GQuark         // in, none, casted, alias
-	var cret  C.gpointer       // return, none, casted
-
-	carg0 = (*C.GstMiniObject)(UnsafeMiniObjectToGlibNone(object))
-	carg1 = C.GQuark(quark)
-
-	cret = C.gst_mini_object_get_qdata(carg0, carg1)
-	runtime.KeepAlive(object)
-	runtime.KeepAlive(quark)
-
-	var goret unsafe.Pointer
-
-	goret = unsafe.Pointer(cret)
-
-	return goret
-}
-
 // IsWritable wraps gst_mini_object_is_writable
 // The function returns the following values:
 // 
@@ -48362,38 +48022,6 @@ func (object *MiniObject) RemoveParent(parent *MiniObject) {
 	C.gst_mini_object_remove_parent(carg0, carg1)
 	runtime.KeepAlive(object)
 	runtime.KeepAlive(parent)
-}
-
-// StealQdata wraps gst_mini_object_steal_qdata
-// 
-// The function takes the following parameters:
-// 
-// 	- quark glib.Quark: A #GQuark, naming the user data pointer 
-// 
-// The function returns the following values:
-// 
-// 	- goret unsafe.Pointer 
-//
-// This function gets back user data pointers stored via gst_mini_object_set_qdata()
-// and removes the data from @object without invoking its `destroy()` function (if
-// any was set).
-func (object *MiniObject) StealQdata(quark glib.Quark) unsafe.Pointer {
-	var carg0 *C.GstMiniObject // in, none, converted
-	var carg1 C.GQuark         // in, none, casted, alias
-	var cret  C.gpointer       // return, full, casted
-
-	carg0 = (*C.GstMiniObject)(UnsafeMiniObjectToGlibNone(object))
-	carg1 = C.GQuark(quark)
-
-	cret = C.gst_mini_object_steal_qdata(carg0, carg1)
-	runtime.KeepAlive(object)
-	runtime.KeepAlive(quark)
-
-	var goret unsafe.Pointer
-
-	goret = unsafe.Pointer(cret)
-
-	return goret
 }
 
 // Unlock wraps gst_mini_object_unlock
@@ -56660,32 +56288,6 @@ func (structure *Structure) SetParentRefcount(refcount *int) bool {
 	return goret
 }
 
-// SetValue wraps gst_structure_set_value
-// 
-// The function takes the following parameters:
-// 
-// 	- fieldname string: the name of the field to set 
-// 	- value *gobject.Value: the new value of the field 
-//
-// Sets the field with the given name @field to @value.  If the field
-// does not exist, it is created.  If the field exists, the previous
-// value is replaced and freed.
-func (structure *Structure) SetValue(fieldname string, value *gobject.Value) {
-	var carg0 *C.GstStructure // in, none, converted
-	var carg1 *C.gchar        // in, none, string, casted *C.gchar
-	var carg2 *C.GValue       // in, none, converted
-
-	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(fieldname)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
-
-	C.gst_structure_set_value(carg0, carg1, carg2)
-	runtime.KeepAlive(structure)
-	runtime.KeepAlive(fieldname)
-	runtime.KeepAlive(value)
-}
-
 // ToString wraps gst_structure_to_string
 // The function returns the following values:
 // 
@@ -57470,90 +57072,6 @@ func (list *TagList) GetIntIndex(tag string, index uint) (int, bool) {
 	var goret bool
 
 	value = int(carg3)
-	if cret != 0 {
-		goret = true
-	}
-
-	return value, goret
-}
-
-// GetPointer wraps gst_tag_list_get_pointer
-// 
-// The function takes the following parameters:
-// 
-// 	- tag string: tag to read out 
-// 
-// The function returns the following values:
-// 
-// 	- value unsafe.Pointer (nullable): location for the result 
-// 	- goret bool 
-//
-// Copies the contents for the given tag into the value, merging multiple values
-// into one if multiple values are associated with the tag.
-func (list *TagList) GetPointer(tag string) (unsafe.Pointer, bool) {
-	var carg0 *C.GstTagList // in, none, converted
-	var carg1 *C.gchar      // in, none, string, casted *C.gchar
-	var carg2 C.gpointer    // out, none, casted, nullable
-	var cret  C.gboolean    // return
-
-	carg0 = (*C.GstTagList)(UnsafeTagListToGlibNone(list))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg1))
-
-	cret = C.gst_tag_list_get_pointer(carg0, carg1, &carg2)
-	runtime.KeepAlive(list)
-	runtime.KeepAlive(tag)
-
-	var value unsafe.Pointer
-	var goret bool
-
-	if carg2 != nil {
-		value = unsafe.Pointer(carg2)
-	}
-	if cret != 0 {
-		goret = true
-	}
-
-	return value, goret
-}
-
-// GetPointerIndex wraps gst_tag_list_get_pointer_index
-// 
-// The function takes the following parameters:
-// 
-// 	- tag string: tag to read out 
-// 	- index uint: number of entry to read out 
-// 
-// The function returns the following values:
-// 
-// 	- value unsafe.Pointer (nullable): location for the result 
-// 	- goret bool 
-//
-// Gets the value that is at the given index for the given tag in the given
-// list.
-func (list *TagList) GetPointerIndex(tag string, index uint) (unsafe.Pointer, bool) {
-	var carg0 *C.GstTagList // in, none, converted
-	var carg1 *C.gchar      // in, none, string, casted *C.gchar
-	var carg2 C.guint       // in, none, casted
-	var carg3 C.gpointer    // out, none, casted, nullable
-	var cret  C.gboolean    // return
-
-	carg0 = (*C.GstTagList)(UnsafeTagListToGlibNone(list))
-	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
-	defer C.free(unsafe.Pointer(carg1))
-	carg2 = C.guint(index)
-
-	cret = C.gst_tag_list_get_pointer_index(carg0, carg1, carg2, &carg3)
-	runtime.KeepAlive(list)
-	runtime.KeepAlive(tag)
-	runtime.KeepAlive(index)
-
-	var value unsafe.Pointer
-	var goret bool
-
-	if carg3 != nil {
-		value = unsafe.Pointer(carg3)
-	}
 	if cret != 0 {
 		goret = true
 	}

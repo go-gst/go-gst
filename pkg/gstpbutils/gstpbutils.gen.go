@@ -2411,6 +2411,38 @@ type Discoverer interface {
 	// Stop the discovery of any pending URIs and clears the list of
 	// pending URIS (if any).
 	Stop()
+	// ConnectDiscovered connects the provided callback to the "discovered" signal
+	//
+	// Will be emitted in async mode when all information on a URI could be
+	// discovered, or an error occurred.
+	// 
+	// When an error occurs, @info might still contain some partial information,
+	// depending on the circumstances of the error.
+	ConnectDiscovered(func(Discoverer, DiscovererInfo, error)) gobject.SignalHandle
+	// ConnectFinished connects the provided callback to the "finished" signal
+	//
+	// Will be emitted in async mode when all pending URIs have been processed.
+	ConnectFinished(func(Discoverer)) gobject.SignalHandle
+	// ConnectLoadSerializedInfo connects the provided callback to the "load-serialized-info" signal
+	//
+	// Retrieves information about a URI from and external source of information,
+	// like a cache file. This is used by the discoverer to speed up the
+	// discovery.
+	ConnectLoadSerializedInfo(func(Discoverer, string) DiscovererInfoInstance) gobject.SignalHandle
+	// ConnectSourceSetup connects the provided callback to the "source-setup" signal
+	//
+	// This signal is emitted after the source element has been created for, so
+	// the URI being discovered, so it can be configured by setting additional
+	// properties (e.g. set a proxy server for an http source, or set the device
+	// and read speed for an audio cd source).
+	// 
+	// This signal is usually emitted from the context of a GStreamer streaming
+	// thread.
+	ConnectSourceSetup(func(Discoverer, gst.Element)) gobject.SignalHandle
+	// ConnectStarting connects the provided callback to the "starting" signal
+	//
+	// Will be emitted when the discover starts analyzing the pending URIs
+	ConnectStarting(func(Discoverer)) gobject.SignalHandle
 }
 
 func unsafeWrapDiscoverer(base *gobject.ObjectInstance) *DiscovererInstance {
@@ -2586,6 +2618,48 @@ func (discoverer *DiscovererInstance) Stop() {
 	runtime.KeepAlive(discoverer)
 }
 
+// ConnectDiscovered connects the provided callback to the "discovered" signal
+//
+// Will be emitted in async mode when all information on a URI could be
+// discovered, or an error occurred.
+// 
+// When an error occurs, @info might still contain some partial information,
+// depending on the circumstances of the error.
+func (o *DiscovererInstance) ConnectDiscovered(fn func(Discoverer, DiscovererInfo, error)) gobject.SignalHandle {
+	return o.Connect("discovered", fn)
+}
+// ConnectFinished connects the provided callback to the "finished" signal
+//
+// Will be emitted in async mode when all pending URIs have been processed.
+func (o *DiscovererInstance) ConnectFinished(fn func(Discoverer)) gobject.SignalHandle {
+	return o.Connect("finished", fn)
+}
+// ConnectLoadSerializedInfo connects the provided callback to the "load-serialized-info" signal
+//
+// Retrieves information about a URI from and external source of information,
+// like a cache file. This is used by the discoverer to speed up the
+// discovery.
+func (o *DiscovererInstance) ConnectLoadSerializedInfo(fn func(Discoverer, string) DiscovererInfoInstance) gobject.SignalHandle {
+	return o.Connect("load-serialized-info", fn)
+}
+// ConnectSourceSetup connects the provided callback to the "source-setup" signal
+//
+// This signal is emitted after the source element has been created for, so
+// the URI being discovered, so it can be configured by setting additional
+// properties (e.g. set a proxy server for an http source, or set the device
+// and read speed for an audio cd source).
+// 
+// This signal is usually emitted from the context of a GStreamer streaming
+// thread.
+func (o *DiscovererInstance) ConnectSourceSetup(fn func(Discoverer, gst.Element)) gobject.SignalHandle {
+	return o.Connect("source-setup", fn)
+}
+// ConnectStarting connects the provided callback to the "starting" signal
+//
+// Will be emitted when the discover starts analyzing the pending URIs
+func (o *DiscovererInstance) ConnectStarting(fn func(Discoverer)) gobject.SignalHandle {
+	return o.Connect("starting", fn)
+}
 // DiscovererInfoInstance is the instance type used by all types extending GstDiscovererInfo. It is used internally by the bindings. Users should use the interface [DiscovererInfo] instead.
 type DiscovererInfoInstance struct {
 	_ [0]func() // equal guard

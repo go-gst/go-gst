@@ -2655,7 +2655,7 @@ type StreamVolumeInstance struct {
 
 var _ StreamVolume = (*StreamVolumeInstance)(nil)
 
-// StreamVolumeInstance wraps GstStreamVolume
+// StreamVolume wraps GstStreamVolume
 //
 // This interface is implemented by elements that provide a stream volume. Examples for
 // such elements are #volume and #playbin.
@@ -8651,48 +8651,6 @@ func (mix *AudioChannelMixer) IsPassthrough() bool {
 	return goret
 }
 
-// Samples wraps gst_audio_channel_mixer_samples
-// 
-// The function takes the following parameters:
-// 
-// 	- in *unsafe.Pointer (nullable): input samples 
-// 	- out *unsafe.Pointer (nullable): output samples 
-// 	- samples int: number of samples 
-//
-// In case the samples are interleaved, @in and @out must point to an
-// array with a single element pointing to a block of interleaved samples.
-// 
-// If non-interleaved samples are used, @in and @out must point to an
-// array with pointers to memory blocks, one for each channel.
-// 
-// Perform channel mixing on @in_data and write the result to @out_data.
-// @in_data and @out_data need to be in @format and @layout.
-func (mix *AudioChannelMixer) Samples(in *unsafe.Pointer, out *unsafe.Pointer, samples int) {
-	var carg0 *C.GstAudioChannelMixer // in, none, converted
-	var carg1 *C.gpointer             // in, transfer: none, C Pointers: 1, Name: gpointer, nullable, nullable
-	var carg2 *C.gpointer             // in, transfer: none, C Pointers: 1, Name: gpointer, nullable, nullable
-	var carg3 C.gint                  // in, none, casted
-
-	carg0 = (*C.GstAudioChannelMixer)(UnsafeAudioChannelMixerToGlibNone(mix))
-	if in != nil {
-		_ = in
-		_ = carg1
-		panic("unimplemented conversion of *unsafe.Pointer (gpointer*)")
-	}
-	if out != nil {
-		_ = out
-		_ = carg2
-		panic("unimplemented conversion of *unsafe.Pointer (gpointer*)")
-	}
-	carg3 = C.gint(samples)
-
-	C.gst_audio_channel_mixer_samples(carg0, carg1, carg2, carg3)
-	runtime.KeepAlive(mix)
-	runtime.KeepAlive(in)
-	runtime.KeepAlive(out)
-	runtime.KeepAlive(samples)
-}
-
 // AudioClippingMeta wraps GstAudioClippingMeta
 //
 // Extra buffer metadata describing how much audio has to be clipped from
@@ -9102,77 +9060,6 @@ func (convert *AudioConverter) Reset() {
 
 	C.gst_audio_converter_reset(carg0)
 	runtime.KeepAlive(convert)
-}
-
-// Samples wraps gst_audio_converter_samples
-// 
-// The function takes the following parameters:
-// 
-// 	- flags AudioConverterFlags: extra #GstAudioConverterFlags 
-// 	- in *unsafe.Pointer (nullable): input frames 
-// 	- inFrames uint: number of input frames 
-// 	- out *unsafe.Pointer (nullable): output frames 
-// 	- outFrames uint: number of output frames 
-// 
-// The function returns the following values:
-// 
-// 	- goret bool 
-//
-// Perform the conversion with @in_frames in @in to @out_frames in @out
-// using @convert.
-// 
-// In case the samples are interleaved, @in and @out must point to an
-// array with a single element pointing to a block of interleaved samples.
-// 
-// If non-interleaved samples are used, @in and @out must point to an
-// array with pointers to memory blocks, one for each channel.
-// 
-// @in may be %NULL, in which case @in_frames of silence samples are processed
-// by the converter.
-// 
-// This function always produces @out_frames of output and consumes @in_frames of
-// input. Use gst_audio_converter_get_out_frames() and
-// gst_audio_converter_get_in_frames() to make sure @in_frames and @out_frames
-// are matching and @in and @out point to enough memory.
-func (convert *AudioConverter) Samples(flags AudioConverterFlags, in *unsafe.Pointer, inFrames uint, out *unsafe.Pointer, outFrames uint) bool {
-	var carg0 *C.GstAudioConverter     // in, none, converted
-	var carg1 C.GstAudioConverterFlags // in, none, casted
-	var carg2 *C.gpointer              // in, transfer: none, C Pointers: 1, Name: gpointer, nullable, nullable
-	var carg3 C.gsize                  // in, none, casted
-	var carg4 *C.gpointer              // in, transfer: none, C Pointers: 1, Name: gpointer, nullable, nullable
-	var carg5 C.gsize                  // in, none, casted
-	var cret  C.gboolean               // return
-
-	carg0 = (*C.GstAudioConverter)(UnsafeAudioConverterToGlibNone(convert))
-	carg1 = C.GstAudioConverterFlags(flags)
-	if in != nil {
-		_ = in
-		_ = carg2
-		panic("unimplemented conversion of *unsafe.Pointer (gpointer*)")
-	}
-	carg3 = C.gsize(inFrames)
-	if out != nil {
-		_ = out
-		_ = carg4
-		panic("unimplemented conversion of *unsafe.Pointer (gpointer*)")
-	}
-	carg5 = C.gsize(outFrames)
-
-	cret = C.gst_audio_converter_samples(carg0, carg1, carg2, carg3, carg4, carg5)
-	runtime.KeepAlive(convert)
-	runtime.KeepAlive(flags)
-	runtime.KeepAlive(in)
-	runtime.KeepAlive(inFrames)
-	runtime.KeepAlive(out)
-	runtime.KeepAlive(outFrames)
-
-	var goret bool
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return goret
 }
 
 // SupportsInplace wraps gst_audio_converter_supports_inplace
@@ -10091,50 +9978,6 @@ func (quant *AudioQuantize) Reset() {
 	runtime.KeepAlive(quant)
 }
 
-// Samples wraps gst_audio_quantize_samples
-// 
-// The function takes the following parameters:
-// 
-// 	- in *unsafe.Pointer (nullable): input samples 
-// 	- out *unsafe.Pointer (nullable): output samples 
-// 	- samples uint: number of samples 
-//
-// Perform quantization on @samples in @in and write the result to @out.
-// 
-// In case the samples are interleaved, @in and @out must point to an
-// array with a single element pointing to a block of interleaved samples.
-// 
-// If non-interleaved samples are used, @in and @out must point to an
-// array with pointers to memory blocks, one for each channel.
-// 
-// @in and @out may point to the same memory location, in which case samples will be
-// modified in-place.
-func (quant *AudioQuantize) Samples(in *unsafe.Pointer, out *unsafe.Pointer, samples uint) {
-	var carg0 *C.GstAudioQuantize // in, none, converted
-	var carg1 *C.gpointer         // in, transfer: none, C Pointers: 1, Name: gpointer, nullable, nullable
-	var carg2 *C.gpointer         // in, transfer: none, C Pointers: 1, Name: gpointer, nullable, nullable
-	var carg3 C.guint             // in, none, casted
-
-	carg0 = (*C.GstAudioQuantize)(UnsafeAudioQuantizeToGlibNone(quant))
-	if in != nil {
-		_ = in
-		_ = carg1
-		panic("unimplemented conversion of *unsafe.Pointer (gpointer*)")
-	}
-	if out != nil {
-		_ = out
-		_ = carg2
-		panic("unimplemented conversion of *unsafe.Pointer (gpointer*)")
-	}
-	carg3 = C.guint(samples)
-
-	C.gst_audio_quantize_samples(carg0, carg1, carg2, carg3)
-	runtime.KeepAlive(quant)
-	runtime.KeepAlive(in)
-	runtime.KeepAlive(out)
-	runtime.KeepAlive(samples)
-}
-
 // AudioResampler wraps GstAudioResampler
 //
 // #GstAudioResampler is a structure which holds the information
@@ -10281,59 +10124,6 @@ func (resampler *AudioResampler) GetOutFrames(inFrames uint) uint {
 	goret = uint(cret)
 
 	return goret
-}
-
-// Resample wraps gst_audio_resampler_resample
-// 
-// The function takes the following parameters:
-// 
-// 	- in *unsafe.Pointer (nullable): input samples 
-// 	- inFrames uint: number of input frames 
-// 	- out *unsafe.Pointer (nullable): output samples 
-// 	- outFrames uint: number of output frames 
-//
-// Perform resampling on @in_frames frames in @in and write @out_frames to @out.
-// 
-// In case the samples are interleaved, @in and @out must point to an
-// array with a single element pointing to a block of interleaved samples.
-// 
-// If non-interleaved samples are used, @in and @out must point to an
-// array with pointers to memory blocks, one for each channel.
-// 
-// @in may be %NULL, in which case @in_frames of silence samples are pushed
-// into the resampler.
-// 
-// This function always produces @out_frames of output and consumes @in_frames of
-// input. Use gst_audio_resampler_get_out_frames() and
-// gst_audio_resampler_get_in_frames() to make sure @in_frames and @out_frames
-// are matching and @in and @out point to enough memory.
-func (resampler *AudioResampler) Resample(in *unsafe.Pointer, inFrames uint, out *unsafe.Pointer, outFrames uint) {
-	var carg0 *C.GstAudioResampler // in, none, converted
-	var carg1 *C.gpointer          // in, transfer: none, C Pointers: 1, Name: gpointer, nullable, nullable
-	var carg2 C.gsize              // in, none, casted
-	var carg3 *C.gpointer          // in, transfer: none, C Pointers: 1, Name: gpointer, nullable, nullable
-	var carg4 C.gsize              // in, none, casted
-
-	carg0 = (*C.GstAudioResampler)(UnsafeAudioResamplerToGlibNone(resampler))
-	if in != nil {
-		_ = in
-		_ = carg1
-		panic("unimplemented conversion of *unsafe.Pointer (gpointer*)")
-	}
-	carg2 = C.gsize(inFrames)
-	if out != nil {
-		_ = out
-		_ = carg3
-		panic("unimplemented conversion of *unsafe.Pointer (gpointer*)")
-	}
-	carg4 = C.gsize(outFrames)
-
-	C.gst_audio_resampler_resample(carg0, carg1, carg2, carg3, carg4)
-	runtime.KeepAlive(resampler)
-	runtime.KeepAlive(in)
-	runtime.KeepAlive(inFrames)
-	runtime.KeepAlive(out)
-	runtime.KeepAlive(outFrames)
 }
 
 // Reset wraps gst_audio_resampler_reset

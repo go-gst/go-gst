@@ -1647,7 +1647,7 @@ type TagXmpWriterInstance struct {
 
 var _ TagXmpWriter = (*TagXmpWriterInstance)(nil)
 
-// TagXmpWriterInstance wraps GstTagXmpWriter
+// TagXmpWriter wraps GstTagXmpWriter
 //
 // This interface is implemented by elements that are able to do XMP serialization. Examples for
 // such elements are #jifmux and #qtmux.

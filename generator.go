@@ -126,6 +126,7 @@ var Data = genmain.Overlay(
 						typesystem.IgnoreMatching("Message.new_property_notify"),
 						typesystem.IgnoreMatching("Message.get_stream_status_object"),
 						typesystem.IgnoreMatching("Structure.get_value"),
+						typesystem.IgnoreMatching("Structure.set_value"),
 						typesystem.IgnoreMatching("Structure.id_get_value"),
 						typesystem.IgnoreMatching("Structure.id_take_value"),
 						typesystem.IgnoreMatching("Structure.take_value"),

@@ -52,6 +52,12 @@ type BinExtManual interface {
 	// This works like gst_debug_bin_to_dot_file(), but adds the current timestamp
 	// to the filename, so that it can be used to take multiple snapshots.
 	DebugBinToDotFileWithTs(details DebugGraphDetails, fileName string)
+
+	// AddMany adds many elements at once to the bin
+	AddMany(els ...Element) bool
+
+	// RemoveMany removes many elements at once from the bin
+	RemoveMany(els ...Element) bool
 }
 
 // DebugBinToDotData wraps gst_debug_bin_to_dot_data
@@ -105,4 +111,26 @@ func (bin *BinInstance) DebugBinToDotFile(details DebugGraphDetails, fileName st
 // to the filename, so that it can be used to take multiple snapshots.
 func (bin *BinInstance) DebugBinToDotFileWithTs(details DebugGraphDetails, fileName string) {
 	DebugBinToDotFileWithTs(bin, details, fileName)
+}
+
+func (bin *BinInstance) AddMany(els ...Element) bool {
+
+	for _, el := range els {
+		if !bin.Add(el) {
+
+			return false
+		}
+	}
+
+	return true
+}
+
+func (bin *BinInstance) RemoveMany(els ...Element) bool {
+	for _, el := range els {
+		if !bin.Remove(el) {
+			return false
+		}
+	}
+
+	return true
 }
