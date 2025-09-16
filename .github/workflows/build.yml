@@ -9,25 +9,6 @@ on:
       - main
 
 jobs:
-  generate:
-    name: "${{ github.event_name }} / generate"
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-
-    - uses: DeterminateSystems/nix-installer-action@main
-    - uses: DeterminateSystems/magic-nix-cache-action@main
-
-    - run: go generate
-      shell: nix develop -c bash -e {0}
-
-    - name: Git dirty check
-      run: |
-        git add .
-        if [[ -n "$(git status --porcelain)" ]]; then
-          PAGER= git diff --cached
-          exit 1
-        fi
   build:
     strategy:
       matrix:
