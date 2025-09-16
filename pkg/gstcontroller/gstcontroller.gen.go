@@ -182,6 +182,8 @@ var _ ARGBControlBinding = (*ARGBControlBindingInstance)(nil)
 type ARGBControlBinding interface {
 	gst.ControlBinding
 	upcastToGstARGBControlBinding() *ARGBControlBindingInstance
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapARGBControlBinding(base *gobject.ObjectInstance) *ARGBControlBindingInstance {
@@ -337,6 +339,8 @@ var _ DirectControlBinding = (*DirectControlBindingInstance)(nil)
 type DirectControlBinding interface {
 	gst.ControlBinding
 	upcastToGstDirectControlBinding() *DirectControlBindingInstance
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapDirectControlBinding(base *gobject.ObjectInstance) *DirectControlBindingInstance {
@@ -521,6 +525,8 @@ var _ LFOControlSource = (*LFOControlSourceInstance)(nil)
 type LFOControlSource interface {
 	gst.ControlSource
 	upcastToGstLFOControlSource() *LFOControlSourceInstance
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapLFOControlSource(base *gobject.ObjectInstance) *LFOControlSourceInstance {
@@ -641,6 +647,8 @@ var _ ProxyControlBinding = (*ProxyControlBindingInstance)(nil)
 type ProxyControlBinding interface {
 	gst.ControlBinding
 	upcastToGstProxyControlBinding() *ProxyControlBindingInstance
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapProxyControlBinding(base *gobject.ObjectInstance) *ProxyControlBindingInstance {
@@ -867,6 +875,8 @@ type TimedValueControlSource interface {
 	//
 	// Emitted when @timed_value is removed from @self
 	ConnectValueRemoved(func(TimedValueControlSource, ControlPoint)) gobject.SignalHandle
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapTimedValueControlSource(base *gobject.ObjectInstance) *TimedValueControlSourceInstance {
@@ -1167,6 +1177,8 @@ var _ TriggerControlSource = (*TriggerControlSourceInstance)(nil)
 type TriggerControlSource interface {
 	TimedValueControlSource
 	upcastToGstTriggerControlSource() *TriggerControlSourceInstance
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapTriggerControlSource(base *gobject.ObjectInstance) *TriggerControlSourceInstance {
@@ -1296,6 +1308,8 @@ var _ InterpolationControlSource = (*InterpolationControlSourceInstance)(nil)
 type InterpolationControlSource interface {
 	TimedValueControlSource
 	upcastToGstInterpolationControlSource() *InterpolationControlSourceInstance
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapInterpolationControlSource(base *gobject.ObjectInstance) *InterpolationControlSourceInstance {

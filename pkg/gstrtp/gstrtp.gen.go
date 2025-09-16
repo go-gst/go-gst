@@ -1406,6 +1406,80 @@ type RTPBaseDepayload interface {
 	// The returned @ext must be configured with the correct @ext_id and with the
 	// necessary attributes as required by the extension implementation.
 	ConnectRequestExtension(func(RTPBaseDepayload, uint, string) RTPHeaderExtensionInstance) gobject.SignalHandle
+
+	// chain up virtual methods:
+
+	// ParentHandleEvent calls the default implementations of the handle_event virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// custom event handling
+	ParentHandleEvent(event *gst.Event) bool
+	// ParentPacketLost calls the default implementations of the packet_lost virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// signal the depayloader about packet loss
+	ParentPacketLost(event *gst.Event) bool
+	// ParentProcess calls the default implementations of the process virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- in *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Buffer 
+	//
+	// process incoming rtp packets. Subclass must implement either
+	//   this method or @process_rtp_packet to process incoming rtp packets.
+	//   If the child returns a buffer without a valid timestamp, the timestamp
+	//   of the provided buffer will be applied to the result buffer and the
+	//   buffer will be pushed. If this function returns %NULL, nothing is pushed.
+	ParentProcess(in *gst.Buffer) *gst.Buffer
+	// ParentProcessRtpPacket calls the default implementations of the process_rtp_packet virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- rtpBuffer *RTPBuffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Buffer 
+	//
+	// Same as the process virtual function, but slightly more
+	// efficient, since it is passed the rtp buffer structure that has already
+	// been mapped (with GST_MAP_READ) by the base class and thus does not have
+	// to be mapped again by the subclass. Can be used by the subclass to process
+	// incoming rtp packets. If the subclass returns a buffer without a valid
+	// timestamp, the timestamp of the input buffer will be applied to the result
+	// buffer and the output buffer will be pushed out. If this function returns
+	// %NULL, nothing is pushed out. Since: 1.6.
+	ParentProcessRtpPacket(rtpBuffer *RTPBuffer) *gst.Buffer
+	// ParentSetCaps calls the default implementations of the set_caps virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// configure the depayloader
+	ParentSetCaps(caps *gst.Caps) bool
 }
 
 func unsafeWrapRTPBaseDepayload(base *gobject.ObjectInstance) *RTPBaseDepayloadInstance {
@@ -1729,6 +1803,8 @@ type RTPBaseDepayloadOverrides[Instance RTPBaseDepayload] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// custom event handling
 	HandleEvent func(Instance, *gst.Event) bool
 	// PacketLost allows you to override the implementation of the virtual method packet_lost.
 	// The function takes the following parameters:
@@ -1738,6 +1814,8 @@ type RTPBaseDepayloadOverrides[Instance RTPBaseDepayload] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// signal the depayloader about packet loss
 	PacketLost func(Instance, *gst.Event) bool
 	// Process allows you to override the implementation of the virtual method process.
 	// The function takes the following parameters:
@@ -1747,6 +1825,12 @@ type RTPBaseDepayloadOverrides[Instance RTPBaseDepayload] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Buffer 
+	//
+	// process incoming rtp packets. Subclass must implement either
+	//   this method or @process_rtp_packet to process incoming rtp packets.
+	//   If the child returns a buffer without a valid timestamp, the timestamp
+	//   of the provided buffer will be applied to the result buffer and the
+	//   buffer will be pushed. If this function returns %NULL, nothing is pushed.
 	Process func(Instance, *gst.Buffer) *gst.Buffer
 	// ProcessRtpPacket allows you to override the implementation of the virtual method process_rtp_packet.
 	// The function takes the following parameters:
@@ -1756,6 +1840,15 @@ type RTPBaseDepayloadOverrides[Instance RTPBaseDepayload] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Buffer 
+	//
+	// Same as the process virtual function, but slightly more
+	// efficient, since it is passed the rtp buffer structure that has already
+	// been mapped (with GST_MAP_READ) by the base class and thus does not have
+	// to be mapped again by the subclass. Can be used by the subclass to process
+	// incoming rtp packets. If the subclass returns a buffer without a valid
+	// timestamp, the timestamp of the input buffer will be applied to the result
+	// buffer and the output buffer will be pushed out. If this function returns
+	// %NULL, nothing is pushed out. Since: 1.6.
 	ProcessRtpPacket func(Instance, *RTPBuffer) *gst.Buffer
 	// SetCaps allows you to override the implementation of the virtual method set_caps.
 	// The function takes the following parameters:
@@ -1765,6 +1858,8 @@ type RTPBaseDepayloadOverrides[Instance RTPBaseDepayload] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// configure the depayloader
 	SetCaps func(Instance, *gst.Caps) bool
 }
 
@@ -1890,6 +1985,178 @@ func UnsafeApplyRTPBaseDepayloadOverrides[Instance RTPBaseDepayload](gclass unsa
 			},
 		)
 	}
+}
+
+// ParentHandleEvent calls the default implementations of the handle_event virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- event *gst.Event 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// custom event handling
+func (filter *RTPBaseDepayloadInstance) ParentHandleEvent(event *gst.Event) bool {
+	var carg0 *C.GstRTPBaseDepayload
+	var carg1 *C.GstEvent // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstRTPBaseDepayloadClass)(classdata.PeekParentClass(UnsafeRTPBaseDepayloadToGlibNone(filter)))
+
+	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
+
+	cret = C._gotk4_gstrtp1_RTPBaseDepayload_virtual_handle_event(unsafe.Pointer(parentclass.handle_event), carg0, carg1)
+	runtime.KeepAlive(filter)
+	runtime.KeepAlive(event)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentPacketLost calls the default implementations of the packet_lost virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- event *gst.Event 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// signal the depayloader about packet loss
+func (filter *RTPBaseDepayloadInstance) ParentPacketLost(event *gst.Event) bool {
+	var carg0 *C.GstRTPBaseDepayload
+	var carg1 *C.GstEvent // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstRTPBaseDepayloadClass)(classdata.PeekParentClass(UnsafeRTPBaseDepayloadToGlibNone(filter)))
+
+	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
+
+	cret = C._gotk4_gstrtp1_RTPBaseDepayload_virtual_packet_lost(unsafe.Pointer(parentclass.packet_lost), carg0, carg1)
+	runtime.KeepAlive(filter)
+	runtime.KeepAlive(event)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentProcess calls the default implementations of the process virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- in *gst.Buffer 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.Buffer 
+//
+// process incoming rtp packets. Subclass must implement either
+//   this method or @process_rtp_packet to process incoming rtp packets.
+//   If the child returns a buffer without a valid timestamp, the timestamp
+//   of the provided buffer will be applied to the result buffer and the
+//   buffer will be pushed. If this function returns %NULL, nothing is pushed.
+func (base *RTPBaseDepayloadInstance) ParentProcess(in *gst.Buffer) *gst.Buffer {
+	var carg0 *C.GstRTPBaseDepayload
+	var carg1 *C.GstBuffer // in, none, converted
+	var cret  *C.GstBuffer // return, full, converted
+
+	parentclass := (*C.GstRTPBaseDepayloadClass)(classdata.PeekParentClass(UnsafeRTPBaseDepayloadToGlibNone(base)))
+
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(in))
+
+	cret = C._gotk4_gstrtp1_RTPBaseDepayload_virtual_process(unsafe.Pointer(parentclass.process), carg0, carg1)
+	runtime.KeepAlive(base)
+	runtime.KeepAlive(in)
+
+	var goret *gst.Buffer
+
+	goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// ParentProcessRtpPacket calls the default implementations of the process_rtp_packet virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- rtpBuffer *RTPBuffer 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.Buffer 
+//
+// Same as the process virtual function, but slightly more
+// efficient, since it is passed the rtp buffer structure that has already
+// been mapped (with GST_MAP_READ) by the base class and thus does not have
+// to be mapped again by the subclass. Can be used by the subclass to process
+// incoming rtp packets. If the subclass returns a buffer without a valid
+// timestamp, the timestamp of the input buffer will be applied to the result
+// buffer and the output buffer will be pushed out. If this function returns
+// %NULL, nothing is pushed out. Since: 1.6.
+func (base *RTPBaseDepayloadInstance) ParentProcessRtpPacket(rtpBuffer *RTPBuffer) *gst.Buffer {
+	var carg0 *C.GstRTPBaseDepayload
+	var carg1 *C.GstRTPBuffer // in, none, converted
+	var cret  *C.GstBuffer    // return, full, converted
+
+	parentclass := (*C.GstRTPBaseDepayloadClass)(classdata.PeekParentClass(UnsafeRTPBaseDepayloadToGlibNone(base)))
+
+	carg1 = (*C.GstRTPBuffer)(UnsafeRTPBufferToGlibNone(rtpBuffer))
+
+	cret = C._gotk4_gstrtp1_RTPBaseDepayload_virtual_process_rtp_packet(unsafe.Pointer(parentclass.process_rtp_packet), carg0, carg1)
+	runtime.KeepAlive(base)
+	runtime.KeepAlive(rtpBuffer)
+
+	var goret *gst.Buffer
+
+	goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// ParentSetCaps calls the default implementations of the set_caps virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- caps *gst.Caps 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// configure the depayloader
+func (filter *RTPBaseDepayloadInstance) ParentSetCaps(caps *gst.Caps) bool {
+	var carg0 *C.GstRTPBaseDepayload
+	var carg1 *C.GstCaps // in, none, converted
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstRTPBaseDepayloadClass)(classdata.PeekParentClass(UnsafeRTPBaseDepayloadToGlibNone(filter)))
+
+	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
+
+	cret = C._gotk4_gstrtp1_RTPBaseDepayload_virtual_set_caps(unsafe.Pointer(parentclass.set_caps), carg0, carg1)
+	runtime.KeepAlive(filter)
+	runtime.KeepAlive(caps)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
 }
 
 // RegisterRTPBaseDepayloadSubClass is used to register a go subclass of GstRTPBaseDepayload. For this to work safely please implement the
@@ -2065,6 +2332,83 @@ type RTPBasePayload interface {
 	// The returned @ext must be configured with the correct @ext_id and with the
 	// necessary attributes as required by the extension implementation.
 	ConnectRequestExtension(func(RTPBasePayload, uint, string) RTPHeaderExtensionInstance) gobject.SignalHandle
+
+	// chain up virtual methods:
+
+	// ParentGetCaps calls the default implementations of the get_caps virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- pad gst.Pad 
+	// 	- filter *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Caps 
+	//
+	// get desired caps
+	ParentGetCaps(pad gst.Pad, filter *gst.Caps) *gst.Caps
+	// ParentHandleBuffer calls the default implementations of the handle_buffer virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// process data
+	ParentHandleBuffer(buffer *gst.Buffer) gst.FlowReturn
+	// ParentQuery calls the default implementations of the query virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- pad gst.Pad 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// custom query handling
+	ParentQuery(pad gst.Pad, query *gst.Query) bool
+	// ParentSetCaps calls the default implementations of the set_caps virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// configure the payloader
+	ParentSetCaps(caps *gst.Caps) bool
+	// ParentSinkEvent calls the default implementations of the sink_event virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// custom event handling on the sinkpad
+	ParentSinkEvent(event *gst.Event) bool
+	// ParentSrcEvent calls the default implementations of the src_event virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// custom event handling on the srcpad
+	ParentSrcEvent(event *gst.Event) bool
 }
 
 func unsafeWrapRTPBasePayload(base *gobject.ObjectInstance) *RTPBasePayloadInstance {
@@ -2445,6 +2789,8 @@ type RTPBasePayloadOverrides[Instance RTPBasePayload] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Caps 
+	//
+	// get desired caps
 	GetCaps func(Instance, gst.Pad, *gst.Caps) *gst.Caps
 	// HandleBuffer allows you to override the implementation of the virtual method handle_buffer.
 	// The function takes the following parameters:
@@ -2454,6 +2800,8 @@ type RTPBasePayloadOverrides[Instance RTPBasePayload] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// process data
 	HandleBuffer func(Instance, *gst.Buffer) gst.FlowReturn
 	// Query allows you to override the implementation of the virtual method query.
 	// The function takes the following parameters:
@@ -2464,6 +2812,8 @@ type RTPBasePayloadOverrides[Instance RTPBasePayload] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// custom query handling
 	Query func(Instance, gst.Pad, *gst.Query) bool
 	// SetCaps allows you to override the implementation of the virtual method set_caps.
 	// The function takes the following parameters:
@@ -2473,6 +2823,8 @@ type RTPBasePayloadOverrides[Instance RTPBasePayload] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// configure the payloader
 	SetCaps func(Instance, *gst.Caps) bool
 	// SinkEvent allows you to override the implementation of the virtual method sink_event.
 	// The function takes the following parameters:
@@ -2482,6 +2834,8 @@ type RTPBasePayloadOverrides[Instance RTPBasePayload] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// custom event handling on the sinkpad
 	SinkEvent func(Instance, *gst.Event) bool
 	// SrcEvent allows you to override the implementation of the virtual method src_event.
 	// The function takes the following parameters:
@@ -2491,6 +2845,8 @@ type RTPBasePayloadOverrides[Instance RTPBasePayload] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// custom event handling on the srcpad
 	SrcEvent func(Instance, *gst.Event) bool
 }
 
@@ -2644,6 +3000,208 @@ func UnsafeApplyRTPBasePayloadOverrides[Instance RTPBasePayload](gclass unsafe.P
 			},
 		)
 	}
+}
+
+// ParentGetCaps calls the default implementations of the get_caps virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- pad gst.Pad 
+// 	- filter *gst.Caps 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.Caps 
+//
+// get desired caps
+func (payload *RTPBasePayloadInstance) ParentGetCaps(pad gst.Pad, filter *gst.Caps) *gst.Caps {
+	var carg0 *C.GstRTPBasePayload
+	var carg1 *C.GstPad  // in, none, converted
+	var carg2 *C.GstCaps // in, none, converted
+	var cret  *C.GstCaps // return, full, converted
+
+	parentclass := (*C.GstRTPBasePayloadClass)(classdata.PeekParentClass(UnsafeRTPBasePayloadToGlibNone(payload)))
+
+	carg1 = (*C.GstPad)(gst.UnsafePadToGlibNone(pad))
+	carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filter))
+
+	cret = C._gotk4_gstrtp1_RTPBasePayload_virtual_get_caps(unsafe.Pointer(parentclass.get_caps), carg0, carg1, carg2)
+	runtime.KeepAlive(payload)
+	runtime.KeepAlive(pad)
+	runtime.KeepAlive(filter)
+
+	var goret *gst.Caps
+
+	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// ParentHandleBuffer calls the default implementations of the handle_buffer virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- buffer *gst.Buffer 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// process data
+func (payload *RTPBasePayloadInstance) ParentHandleBuffer(buffer *gst.Buffer) gst.FlowReturn {
+	var carg0 *C.GstRTPBasePayload
+	var carg1 *C.GstBuffer    // in, none, converted
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstRTPBasePayloadClass)(classdata.PeekParentClass(UnsafeRTPBasePayloadToGlibNone(payload)))
+
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
+
+	cret = C._gotk4_gstrtp1_RTPBasePayload_virtual_handle_buffer(unsafe.Pointer(parentclass.handle_buffer), carg0, carg1)
+	runtime.KeepAlive(payload)
+	runtime.KeepAlive(buffer)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentQuery calls the default implementations of the query virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- pad gst.Pad 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// custom query handling
+func (payload *RTPBasePayloadInstance) ParentQuery(pad gst.Pad, query *gst.Query) bool {
+	var carg0 *C.GstRTPBasePayload
+	var carg1 *C.GstPad   // in, none, converted
+	var carg2 *C.GstQuery // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstRTPBasePayloadClass)(classdata.PeekParentClass(UnsafeRTPBasePayloadToGlibNone(payload)))
+
+	carg1 = (*C.GstPad)(gst.UnsafePadToGlibNone(pad))
+	carg2 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstrtp1_RTPBasePayload_virtual_query(unsafe.Pointer(parentclass.query), carg0, carg1, carg2)
+	runtime.KeepAlive(payload)
+	runtime.KeepAlive(pad)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSetCaps calls the default implementations of the set_caps virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- caps *gst.Caps 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// configure the payloader
+func (payload *RTPBasePayloadInstance) ParentSetCaps(caps *gst.Caps) bool {
+	var carg0 *C.GstRTPBasePayload
+	var carg1 *C.GstCaps // in, none, converted
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstRTPBasePayloadClass)(classdata.PeekParentClass(UnsafeRTPBasePayloadToGlibNone(payload)))
+
+	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
+
+	cret = C._gotk4_gstrtp1_RTPBasePayload_virtual_set_caps(unsafe.Pointer(parentclass.set_caps), carg0, carg1)
+	runtime.KeepAlive(payload)
+	runtime.KeepAlive(caps)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSinkEvent calls the default implementations of the sink_event virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- event *gst.Event 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// custom event handling on the sinkpad
+func (payload *RTPBasePayloadInstance) ParentSinkEvent(event *gst.Event) bool {
+	var carg0 *C.GstRTPBasePayload
+	var carg1 *C.GstEvent // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstRTPBasePayloadClass)(classdata.PeekParentClass(UnsafeRTPBasePayloadToGlibNone(payload)))
+
+	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
+
+	cret = C._gotk4_gstrtp1_RTPBasePayload_virtual_sink_event(unsafe.Pointer(parentclass.sink_event), carg0, carg1)
+	runtime.KeepAlive(payload)
+	runtime.KeepAlive(event)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSrcEvent calls the default implementations of the src_event virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- event *gst.Event 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// custom event handling on the srcpad
+func (payload *RTPBasePayloadInstance) ParentSrcEvent(event *gst.Event) bool {
+	var carg0 *C.GstRTPBasePayload
+	var carg1 *C.GstEvent // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstRTPBasePayloadClass)(classdata.PeekParentClass(UnsafeRTPBasePayloadToGlibNone(payload)))
+
+	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
+
+	cret = C._gotk4_gstrtp1_RTPBasePayload_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
+	runtime.KeepAlive(payload)
+	runtime.KeepAlive(event)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
 }
 
 // RegisterRTPBasePayloadSubClass is used to register a go subclass of GstRTPBasePayload. For this to work safely please implement the
@@ -2887,6 +3445,123 @@ type RTPHeaderExtension interface {
 	// the @input_meta.  @data will be sized to be at least the value returned
 	// from gst_rtp_header_extension_get_max_size().
 	Write(*gst.Buffer, RTPHeaderExtensionFlags, *gst.Buffer, []uint8) int
+
+	// chain up virtual methods:
+
+	// ParentGetMaxSize calls the default implementations of the get_max_size virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- inputMeta *gst.Buffer: a #GstBuffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret uint 
+	//
+	// This is used to know how much data a certain header extension will need for
+	// both allocating the resulting data, and deciding how much payload data can
+	// be generated.
+	// 
+	// Implementations should return as accurate a value as is possible using the
+	// information given in the input @buffer.
+	ParentGetMaxSize(inputMeta *gst.Buffer) uint
+	// ParentGetSupportedFlags calls the default implementations of the get_supported_flags virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret RTPHeaderExtensionFlags 
+	//
+	// retrieve the supported flags
+	ParentGetSupportedFlags() RTPHeaderExtensionFlags
+	// ParentRead calls the default implementations of the read virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- readFlags RTPHeaderExtensionFlags: #GstRTPHeaderExtensionFlags for how the extension should
+	//               be written 
+	// 	- data []uint8: location to read the rtp header extension from 
+	// 	- buffer *gst.Buffer: a #GstBuffer to modify if necessary 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Read the RTP header extension from @data.
+	ParentRead(readFlags RTPHeaderExtensionFlags, data []uint8, buffer *gst.Buffer) bool
+	// ParentSetAttributes calls the default implementations of the set_attributes virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- direction RTPHeaderExtensionDirection 
+	// 	- attributes string 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// set the necessary attributes that may be signaled e.g. with
+	//     an SDP.
+	ParentSetAttributes(direction RTPHeaderExtensionDirection, attributes string) bool
+	// ParentSetCapsFromAttributes calls the default implementations of the set_caps_from_attributes virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps: writable #GstCaps to modify 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// gst_rtp_header_extension_set_id() must have been called with a valid
+	// extension id that is contained in these caps.
+	// 
+	// The only current known caps format is based on the SDP standard as produced
+	// by gst_sdp_media_attributes_to_caps().
+	ParentSetCapsFromAttributes(caps *gst.Caps) bool
+	// ParentSetNonRtpSinkCaps calls the default implementations of the set_non_rtp_sink_caps virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps: sink #GstCaps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Passes RTP payloader's sink (i.e. not payloaded) @caps to the header
+	// extension.
+	ParentSetNonRtpSinkCaps(caps *gst.Caps) bool
+	// ParentUpdateNonRtpSrcCaps calls the default implementations of the update_non_rtp_src_caps virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps: src #GstCaps to modify 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Updates depayloader src caps based on the information received in RTP header.
+	// @caps must be writable as this function may modify them.
+	ParentUpdateNonRtpSrcCaps(caps *gst.Caps) bool
+	// ParentWrite calls the default implementations of the write virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- inputMeta *gst.Buffer: the input #GstBuffer to read information from if necessary 
+	// 	- writeFlags RTPHeaderExtensionFlags: #GstRTPHeaderExtensionFlags for how the extension should
+	//               be written 
+	// 	- output *gst.Buffer: output RTP #GstBuffer 
+	// 	- data []uint8: location to write the rtp header extension into 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret int 
+	//
+	// Writes the RTP header extension to @data using information available from
+	// the @input_meta.  @data will be sized to be at least the value returned
+	// from gst_rtp_header_extension_get_max_size().
+	ParentWrite(inputMeta *gst.Buffer, writeFlags RTPHeaderExtensionFlags, output *gst.Buffer, data []uint8) int
 }
 
 func unsafeWrapRTPHeaderExtension(base *gobject.ObjectInstance) *RTPHeaderExtensionInstance {
@@ -3489,11 +4164,20 @@ type RTPHeaderExtensionOverrides[Instance RTPHeaderExtension] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
+	//
+	// This is used to know how much data a certain header extension will need for
+	// both allocating the resulting data, and deciding how much payload data can
+	// be generated.
+	// 
+	// Implementations should return as accurate a value as is possible using the
+	// information given in the input @buffer.
 	GetMaxSize func(Instance, *gst.Buffer) uint
 	// GetSupportedFlags allows you to override the implementation of the virtual method get_supported_flags.
 	// The function returns the following values:
 	// 
 	// 	- goret RTPHeaderExtensionFlags 
+	//
+	// retrieve the supported flags
 	GetSupportedFlags func(Instance) RTPHeaderExtensionFlags
 	// Read allows you to override the implementation of the virtual method read.
 	// The function takes the following parameters:
@@ -3506,6 +4190,8 @@ type RTPHeaderExtensionOverrides[Instance RTPHeaderExtension] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Read the RTP header extension from @data.
 	Read func(Instance, RTPHeaderExtensionFlags, []uint8, *gst.Buffer) bool
 	// SetAttributes allows you to override the implementation of the virtual method set_attributes.
 	// The function takes the following parameters:
@@ -3516,6 +4202,9 @@ type RTPHeaderExtensionOverrides[Instance RTPHeaderExtension] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// set the necessary attributes that may be signaled e.g. with
+	//     an SDP.
 	SetAttributes func(Instance, RTPHeaderExtensionDirection, string) bool
 	// SetCapsFromAttributes allows you to override the implementation of the virtual method set_caps_from_attributes.
 	// The function takes the following parameters:
@@ -3525,6 +4214,12 @@ type RTPHeaderExtensionOverrides[Instance RTPHeaderExtension] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// gst_rtp_header_extension_set_id() must have been called with a valid
+	// extension id that is contained in these caps.
+	// 
+	// The only current known caps format is based on the SDP standard as produced
+	// by gst_sdp_media_attributes_to_caps().
 	SetCapsFromAttributes func(Instance, *gst.Caps) bool
 	// SetNonRtpSinkCaps allows you to override the implementation of the virtual method set_non_rtp_sink_caps.
 	// The function takes the following parameters:
@@ -3534,6 +4229,9 @@ type RTPHeaderExtensionOverrides[Instance RTPHeaderExtension] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Passes RTP payloader's sink (i.e. not payloaded) @caps to the header
+	// extension.
 	SetNonRtpSinkCaps func(Instance, *gst.Caps) bool
 	// UpdateNonRtpSrcCaps allows you to override the implementation of the virtual method update_non_rtp_src_caps.
 	// The function takes the following parameters:
@@ -3543,6 +4241,9 @@ type RTPHeaderExtensionOverrides[Instance RTPHeaderExtension] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Updates depayloader src caps based on the information received in RTP header.
+	// @caps must be writable as this function may modify them.
 	UpdateNonRtpSrcCaps func(Instance, *gst.Caps) bool
 	// Write allows you to override the implementation of the virtual method write.
 	// The function takes the following parameters:
@@ -3556,6 +4257,10 @@ type RTPHeaderExtensionOverrides[Instance RTPHeaderExtension] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret int 
+	//
+	// Writes the RTP header extension to @data using information available from
+	// the @input_meta.  @data will be sized to be at least the value returned
+	// from gst_rtp_header_extension_get_max_size().
 	Write func(Instance, *gst.Buffer, RTPHeaderExtensionFlags, *gst.Buffer, []uint8) int
 }
 
@@ -3769,6 +4474,305 @@ func UnsafeApplyRTPHeaderExtensionOverrides[Instance RTPHeaderExtension](gclass 
 	}
 }
 
+// ParentGetMaxSize calls the default implementations of the get_max_size virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- inputMeta *gst.Buffer: a #GstBuffer 
+// 
+// The function returns the following values:
+// 
+// 	- goret uint 
+//
+// This is used to know how much data a certain header extension will need for
+// both allocating the resulting data, and deciding how much payload data can
+// be generated.
+// 
+// Implementations should return as accurate a value as is possible using the
+// information given in the input @buffer.
+func (ext *RTPHeaderExtensionInstance) ParentGetMaxSize(inputMeta *gst.Buffer) uint {
+	var carg0 *C.GstRTPHeaderExtension
+	var carg1 *C.GstBuffer // in, none, converted
+	var cret  C.gsize      // return, none, casted
+
+	parentclass := (*C.GstRTPHeaderExtensionClass)(classdata.PeekParentClass(UnsafeRTPHeaderExtensionToGlibNone(ext)))
+
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(inputMeta))
+
+	cret = C._gotk4_gstrtp1_RTPHeaderExtension_virtual_get_max_size(unsafe.Pointer(parentclass.get_max_size), carg0, carg1)
+	runtime.KeepAlive(ext)
+	runtime.KeepAlive(inputMeta)
+
+	var goret uint
+
+	goret = uint(cret)
+
+	return goret
+}
+
+// ParentGetSupportedFlags calls the default implementations of the get_supported_flags virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret RTPHeaderExtensionFlags 
+//
+// retrieve the supported flags
+func (ext *RTPHeaderExtensionInstance) ParentGetSupportedFlags() RTPHeaderExtensionFlags {
+	var carg0 *C.GstRTPHeaderExtension
+	var cret  C.GstRTPHeaderExtensionFlags // return, none, casted
+
+	parentclass := (*C.GstRTPHeaderExtensionClass)(classdata.PeekParentClass(UnsafeRTPHeaderExtensionToGlibNone(ext)))
+
+	cret = C._gotk4_gstrtp1_RTPHeaderExtension_virtual_get_supported_flags(unsafe.Pointer(parentclass.get_supported_flags), carg0)
+	runtime.KeepAlive(ext)
+
+	var goret RTPHeaderExtensionFlags
+
+	goret = RTPHeaderExtensionFlags(cret)
+
+	return goret
+}
+
+// ParentRead calls the default implementations of the read virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- readFlags RTPHeaderExtensionFlags: #GstRTPHeaderExtensionFlags for how the extension should
+//               be written 
+// 	- data []uint8: location to read the rtp header extension from 
+// 	- buffer *gst.Buffer: a #GstBuffer to modify if necessary 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Read the RTP header extension from @data.
+func (ext *RTPHeaderExtensionInstance) ParentRead(readFlags RTPHeaderExtensionFlags, data []uint8, buffer *gst.Buffer) bool {
+	var carg0 *C.GstRTPHeaderExtension
+	var carg1 C.GstRTPHeaderExtensionFlags // in, none, casted
+	var carg2 *C.guint8                    // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg3)
+	var carg3 C.gsize                      // implicit
+	var carg4 *C.GstBuffer                 // in, none, converted
+	var cret  C.gboolean                   // return
+
+	parentclass := (*C.GstRTPHeaderExtensionClass)(classdata.PeekParentClass(UnsafeRTPHeaderExtensionToGlibNone(ext)))
+
+	carg1 = C.GstRTPHeaderExtensionFlags(readFlags)
+	_ = data
+	_ = carg2
+	_ = carg3
+	panic("unimplemented conversion of []uint8 (const guint8*)")
+	carg4 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
+
+	cret = C._gotk4_gstrtp1_RTPHeaderExtension_virtual_read(unsafe.Pointer(parentclass.read), carg0, carg1, carg2, carg3, carg4)
+	runtime.KeepAlive(ext)
+	runtime.KeepAlive(readFlags)
+	runtime.KeepAlive(data)
+	runtime.KeepAlive(buffer)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSetAttributes calls the default implementations of the set_attributes virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- direction RTPHeaderExtensionDirection 
+// 	- attributes string 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// set the necessary attributes that may be signaled e.g. with
+//     an SDP.
+func (ext *RTPHeaderExtensionInstance) ParentSetAttributes(direction RTPHeaderExtensionDirection, attributes string) bool {
+	var carg0 *C.GstRTPHeaderExtension
+	var carg1 C.GstRTPHeaderExtensionDirection // in, none, casted
+	var carg2 *C.gchar                         // in, none, string
+	var cret  C.gboolean                       // return
+
+	parentclass := (*C.GstRTPHeaderExtensionClass)(classdata.PeekParentClass(UnsafeRTPHeaderExtensionToGlibNone(ext)))
+
+	carg1 = C.GstRTPHeaderExtensionDirection(direction)
+	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(attributes)))
+	defer C.free(unsafe.Pointer(carg2))
+
+	cret = C._gotk4_gstrtp1_RTPHeaderExtension_virtual_set_attributes(unsafe.Pointer(parentclass.set_attributes), carg0, carg1, carg2)
+	runtime.KeepAlive(ext)
+	runtime.KeepAlive(direction)
+	runtime.KeepAlive(attributes)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSetCapsFromAttributes calls the default implementations of the set_caps_from_attributes virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- caps *gst.Caps: writable #GstCaps to modify 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// gst_rtp_header_extension_set_id() must have been called with a valid
+// extension id that is contained in these caps.
+// 
+// The only current known caps format is based on the SDP standard as produced
+// by gst_sdp_media_attributes_to_caps().
+func (ext *RTPHeaderExtensionInstance) ParentSetCapsFromAttributes(caps *gst.Caps) bool {
+	var carg0 *C.GstRTPHeaderExtension
+	var carg1 *C.GstCaps // in, none, converted
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstRTPHeaderExtensionClass)(classdata.PeekParentClass(UnsafeRTPHeaderExtensionToGlibNone(ext)))
+
+	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
+
+	cret = C._gotk4_gstrtp1_RTPHeaderExtension_virtual_set_caps_from_attributes(unsafe.Pointer(parentclass.set_caps_from_attributes), carg0, carg1)
+	runtime.KeepAlive(ext)
+	runtime.KeepAlive(caps)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSetNonRtpSinkCaps calls the default implementations of the set_non_rtp_sink_caps virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- caps *gst.Caps: sink #GstCaps 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Passes RTP payloader's sink (i.e. not payloaded) @caps to the header
+// extension.
+func (ext *RTPHeaderExtensionInstance) ParentSetNonRtpSinkCaps(caps *gst.Caps) bool {
+	var carg0 *C.GstRTPHeaderExtension
+	var carg1 *C.GstCaps // in, none, converted
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstRTPHeaderExtensionClass)(classdata.PeekParentClass(UnsafeRTPHeaderExtensionToGlibNone(ext)))
+
+	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
+
+	cret = C._gotk4_gstrtp1_RTPHeaderExtension_virtual_set_non_rtp_sink_caps(unsafe.Pointer(parentclass.set_non_rtp_sink_caps), carg0, carg1)
+	runtime.KeepAlive(ext)
+	runtime.KeepAlive(caps)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentUpdateNonRtpSrcCaps calls the default implementations of the update_non_rtp_src_caps virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- caps *gst.Caps: src #GstCaps to modify 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Updates depayloader src caps based on the information received in RTP header.
+// @caps must be writable as this function may modify them.
+func (ext *RTPHeaderExtensionInstance) ParentUpdateNonRtpSrcCaps(caps *gst.Caps) bool {
+	var carg0 *C.GstRTPHeaderExtension
+	var carg1 *C.GstCaps // in, none, converted
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstRTPHeaderExtensionClass)(classdata.PeekParentClass(UnsafeRTPHeaderExtensionToGlibNone(ext)))
+
+	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
+
+	cret = C._gotk4_gstrtp1_RTPHeaderExtension_virtual_update_non_rtp_src_caps(unsafe.Pointer(parentclass.update_non_rtp_src_caps), carg0, carg1)
+	runtime.KeepAlive(ext)
+	runtime.KeepAlive(caps)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentWrite calls the default implementations of the write virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- inputMeta *gst.Buffer: the input #GstBuffer to read information from if necessary 
+// 	- writeFlags RTPHeaderExtensionFlags: #GstRTPHeaderExtensionFlags for how the extension should
+//               be written 
+// 	- output *gst.Buffer: output RTP #GstBuffer 
+// 	- data []uint8: location to write the rtp header extension into 
+// 
+// The function returns the following values:
+// 
+// 	- goret int 
+//
+// Writes the RTP header extension to @data using information available from
+// the @input_meta.  @data will be sized to be at least the value returned
+// from gst_rtp_header_extension_get_max_size().
+func (ext *RTPHeaderExtensionInstance) ParentWrite(inputMeta *gst.Buffer, writeFlags RTPHeaderExtensionFlags, output *gst.Buffer, data []uint8) int {
+	var carg0 *C.GstRTPHeaderExtension
+	var carg1 *C.GstBuffer                 // in, none, converted
+	var carg2 C.GstRTPHeaderExtensionFlags // in, none, casted
+	var carg3 *C.GstBuffer                 // in, none, converted
+	var carg4 *C.guint8                    // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg5)
+	var carg5 C.gsize                      // implicit
+	var cret  C.gssize                     // return, none, casted
+
+	parentclass := (*C.GstRTPHeaderExtensionClass)(classdata.PeekParentClass(UnsafeRTPHeaderExtensionToGlibNone(ext)))
+
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(inputMeta))
+	carg2 = C.GstRTPHeaderExtensionFlags(writeFlags)
+	carg3 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(output))
+	_ = data
+	_ = carg4
+	_ = carg5
+	panic("unimplemented conversion of []uint8 (guint8*)")
+
+	cret = C._gotk4_gstrtp1_RTPHeaderExtension_virtual_write(unsafe.Pointer(parentclass.write), carg0, carg1, carg2, carg3, carg4, carg5)
+	runtime.KeepAlive(ext)
+	runtime.KeepAlive(inputMeta)
+	runtime.KeepAlive(writeFlags)
+	runtime.KeepAlive(output)
+	runtime.KeepAlive(data)
+
+	var goret int
+
+	goret = int(cret)
+
+	return goret
+}
+
 // RegisterRTPHeaderExtensionSubClass is used to register a go subclass of GstRTPHeaderExtension. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterRTPHeaderExtensionSubClass[InstanceT RTPHeaderExtension](
@@ -3913,6 +4917,8 @@ type RTPBaseAudioPayload interface {
 	//
 	// Sets the options for sample based audio codecs.
 	SetSamplebitsOptions(int32)
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapRTPBaseAudioPayload(base *gobject.ObjectInstance) *RTPBaseAudioPayloadInstance {

@@ -7895,6 +7895,15 @@ func (f TracerValueFlags) String() string {
 }
 
 // BufferForEachMetaFunc wraps GstBufferForeachMetaFunc
+// 
+// The function takes the following parameters:
+// 
+// 	- buffer *Buffer: a #GstBuffer 
+// 
+// The function returns the following values:
+// 
+// 	- meta *Meta (nullable): a pointer to a #GstMeta 
+// 	- goret bool 
 //
 // A function that will be called from gst_buffer_foreach_meta(). The @meta
 // field will point to a the reference of the meta.
@@ -7908,6 +7917,15 @@ func (f TracerValueFlags) String() string {
 type BufferForEachMetaFunc func(buffer *Buffer) (meta *Meta, goret bool)
 
 // BufferListFunc wraps GstBufferListFunc
+// 
+// The function takes the following parameters:
+// 
+// 	- idx uint: the index of @buffer 
+// 
+// The function returns the following values:
+// 
+// 	- buffer *Buffer (nullable): pointer to the buffer 
+// 	- goret bool 
 //
 // A function that will be called from gst_buffer_list_foreach(). The @buffer
 // field will point to a the reference of the buffer at @idx.
@@ -7922,6 +7940,15 @@ type BufferForEachMetaFunc func(buffer *Buffer) (meta *Meta, goret bool)
 type BufferListFunc func(idx uint) (buffer *Buffer, goret bool)
 
 // CapsFilterMapFunc wraps GstCapsFilterMapFunc
+// 
+// The function takes the following parameters:
+// 
+// 	- features *CapsFeatures: the #GstCapsFeatures 
+// 	- structure *Structure: the #GstStructure 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
 //
 // A function that will be called in gst_caps_filter_and_map_in_place().
 // The function may modify @features and @structure, and both will be
@@ -7929,28 +7956,69 @@ type BufferListFunc func(idx uint) (buffer *Buffer, goret bool)
 type CapsFilterMapFunc func(features *CapsFeatures, structure *Structure) (goret bool)
 
 // CapsForEachFunc wraps GstCapsForeachFunc
+// 
+// The function takes the following parameters:
+// 
+// 	- features *CapsFeatures: the #GstCapsFeatures 
+// 	- structure *Structure: the #GstStructure 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
 //
 // A function that will be called in gst_caps_foreach(). The function may
 // not modify @features or @structure.
 type CapsForEachFunc func(features *CapsFeatures, structure *Structure) (goret bool)
 
 // CapsMapFunc wraps GstCapsMapFunc
+// 
+// The function takes the following parameters:
+// 
+// 	- features *CapsFeatures: the #GstCapsFeatures 
+// 	- structure *Structure: the #GstStructure 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
 //
 // A function that will be called in gst_caps_map_in_place(). The function
 // may modify @features and @structure.
 type CapsMapFunc func(features *CapsFeatures, structure *Structure) (goret bool)
 
 // IteratorFoldFunction wraps GstIteratorFoldFunction
+// 
+// The function takes the following parameters:
+// 
+// 	- item *gobject.Value: the item to fold 
+// 	- ret *gobject.Value: a #GValue collecting the result 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
 //
 // A function to be passed to gst_iterator_fold().
 type IteratorFoldFunction func(item *gobject.Value, ret *gobject.Value) (goret bool)
 
 // IteratorForEachFunction wraps GstIteratorForeachFunction
+// 
+// The function takes the following parameters:
+// 
+// 	- item *gobject.Value: The item 
 //
 // A function that is called by gst_iterator_foreach() for every element.
 type IteratorForEachFunction func(item *gobject.Value)
 
 // LogFunction wraps GstLogFunction
+// 
+// The function takes the following parameters:
+// 
+// 	- category *DebugCategory: a #GstDebugCategory 
+// 	- level DebugLevel: a #GstDebugLevel 
+// 	- file string: file name 
+// 	- function string: function name 
+// 	- line int32: line number 
+// 	- object gobject.Object: a #GObject 
+// 	- message *DebugMessage: the message 
 //
 // Function prototype for a logging function that can be registered with
 // gst_debug_add_log_function().
@@ -7958,6 +8026,10 @@ type IteratorForEachFunction func(item *gobject.Value)
 type LogFunction func(category *DebugCategory, level DebugLevel, file string, function string, line int32, object gobject.Object, message *DebugMessage)
 
 // MiniObjectNotify wraps GstMiniObjectNotify
+// 
+// The function takes the following parameters:
+// 
+// 	- obj *MiniObject: the mini object 
 //
 // A #GstMiniObjectNotify function can be added to a mini object as a
 // callback that gets triggered when gst_mini_object_unref() drops the
@@ -7965,12 +8037,29 @@ type LogFunction func(category *DebugCategory, level DebugLevel, file string, fu
 type MiniObjectNotify func(obj *MiniObject)
 
 // PadForwardFunction wraps GstPadForwardFunction
+// 
+// The function takes the following parameters:
+// 
+// 	- pad Pad: the #GstPad that is forwarded. 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
 //
 // A forward function is called for all internally linked pads, see
 // gst_pad_forward().
 type PadForwardFunction func(pad Pad) (goret bool)
 
 // PadProbeCallback wraps GstPadProbeCallback
+// 
+// The function takes the following parameters:
+// 
+// 	- pad Pad: the #GstPad that is blocked 
+// 	- info *PadProbeInfo: #GstPadProbeInfo 
+// 
+// The function returns the following values:
+// 
+// 	- goret PadProbeReturn 
 //
 // Callback used by gst_pad_add_probe(). Gets called to notify about the current
 // blocking type.
@@ -7979,18 +8068,42 @@ type PadForwardFunction func(pad Pad) (goret bool)
 type PadProbeCallback func(pad Pad, info *PadProbeInfo) (goret PadProbeReturn)
 
 // PluginFeatureFilter wraps GstPluginFeatureFilter
+// 
+// The function takes the following parameters:
+// 
+// 	- feature PluginFeature: the pluginfeature to check 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
 //
 // A function that can be used with e.g. gst_registry_feature_filter()
 // to get a list of pluginfeature that match certain criteria.
 type PluginFeatureFilter func(feature PluginFeature) (goret bool)
 
 // PluginFilter wraps GstPluginFilter
+// 
+// The function takes the following parameters:
+// 
+// 	- plugin Plugin: the plugin to check 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
 //
 // A function that can be used with e.g. gst_registry_plugin_filter()
 // to get a list of plugins that match certain criteria.
 type PluginFilter func(plugin Plugin) (goret bool)
 
 // PluginInitFullFunc wraps GstPluginInitFullFunc
+// 
+// The function takes the following parameters:
+// 
+// 	- plugin Plugin: The plugin object 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
 //
 // A plugin should provide a pointer to a function of either #GstPluginInitFunc
 // or this type in the plugin_desc struct.
@@ -8000,9 +8113,22 @@ type PluginFilter func(plugin Plugin) (goret bool)
 type PluginInitFullFunc func(plugin Plugin) (goret bool)
 
 // PromiseChangeFunc wraps GstPromiseChangeFunc
+// 
+// The function takes the following parameters:
+// 
+// 	- promise *Promise: a #GstPromise 
 type PromiseChangeFunc func(promise *Promise)
 
 // StructureFilterMapFunc wraps GstStructureFilterMapFunc
+// 
+// The function takes the following parameters:
+// 
+// 	- fieldId glib.Quark: the #GQuark of the field name 
+// 	- value *gobject.Value: the #GValue of the field 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
 //
 // A function that will be called in gst_structure_filter_and_map_in_place().
 // The function may modify @value, and the value will be removed from
@@ -8010,6 +8136,15 @@ type PromiseChangeFunc func(promise *Promise)
 type StructureFilterMapFunc func(fieldId glib.Quark, value *gobject.Value) (goret bool)
 
 // StructureFilterMapIDStrFunc wraps GstStructureFilterMapIdStrFunc
+// 
+// The function takes the following parameters:
+// 
+// 	- fieldname *IdStr: the #GstIdStr field name 
+// 	- value *gobject.Value: the #GValue of the field 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
 //
 // A function that will be called in gst_structure_filter_and_map_in_place_id_str().
 // The function may modify @value, and the value will be removed from the
@@ -8017,52 +8152,112 @@ type StructureFilterMapFunc func(fieldId glib.Quark, value *gobject.Value) (gore
 type StructureFilterMapIDStrFunc func(fieldname *IdStr, value *gobject.Value) (goret bool)
 
 // StructureForEachFunc wraps GstStructureForeachFunc
+// 
+// The function takes the following parameters:
+// 
+// 	- fieldId glib.Quark: the #GQuark of the field name 
+// 	- value *gobject.Value: the #GValue of the field 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
 //
 // A function that will be called in gst_structure_foreach(). The function may
 // not modify @value.
 type StructureForEachFunc func(fieldId glib.Quark, value *gobject.Value) (goret bool)
 
 // StructureForEachIDStrFunc wraps GstStructureForeachIdStrFunc
+// 
+// The function takes the following parameters:
+// 
+// 	- fieldname *IdStr: the #GstIdStr field name 
+// 	- value *gobject.Value: the #GValue of the field 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
 //
 // A function that will be called in gst_structure_foreach_id_str(). The
 // function may not modify @value.
 type StructureForEachIDStrFunc func(fieldname *IdStr, value *gobject.Value) (goret bool)
 
 // StructureMapFunc wraps GstStructureMapFunc
+// 
+// The function takes the following parameters:
+// 
+// 	- fieldId glib.Quark: the #GQuark of the field name 
+// 	- value *gobject.Value: the #GValue of the field 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
 //
 // A function that will be called in gst_structure_map_in_place(). The function
 // may modify @value.
 type StructureMapFunc func(fieldId glib.Quark, value *gobject.Value) (goret bool)
 
 // StructureMapIDStrFunc wraps GstStructureMapIdStrFunc
+// 
+// The function takes the following parameters:
+// 
+// 	- fieldname *IdStr: the #GstIdStr field name 
+// 	- value *gobject.Value: the #GValue of the field 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
 //
 // A function that will be called in gst_structure_map_in_place_id_str(). The
 // function may modify @value.
 type StructureMapIDStrFunc func(fieldname *IdStr, value *gobject.Value) (goret bool)
 
 // TagForEachFunc wraps GstTagForeachFunc
+// 
+// The function takes the following parameters:
+// 
+// 	- list *TagList: the #GstTagList 
+// 	- tag string: a name of a tag in @list 
 //
 // A function that will be called in gst_tag_list_foreach(). The function may
 // not modify the tag list.
 type TagForEachFunc func(list *TagList, tag string)
 
 // TaskFunction wraps GstTaskFunction
+// 
+// The function takes the following parameters:
+// 
 //
 // A function that will repeatedly be called in the thread created by
 // a #GstTask.
 type TaskFunction func()
 
 // TaskPoolFunction wraps GstTaskPoolFunction
+// 
+// The function takes the following parameters:
+// 
 //
 // Task function, see gst_task_pool_push().
 type TaskPoolFunction func()
 
 // TypeFindFunction wraps GstTypeFindFunction
+// 
+// The function takes the following parameters:
+// 
+// 	- find *TypeFind: A #GstTypeFind structure 
 //
 // A function that will be called by typefinding.
 type TypeFindFunction func(find *TypeFind)
 
 // BusFunc wraps GstBusFunc
+// 
+// The function takes the following parameters:
+// 
+// 	- bus Bus: the #GstBus that sent the message 
+// 	- message *Message: the #GstMessage 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
 //
 // Specifies the type of function passed to gst_bus_add_watch() or
 // gst_bus_add_watch_full(), which is called from the mainloop when a message
@@ -8076,6 +8271,15 @@ type TypeFindFunction func(find *TypeFind)
 type BusFunc func(bus Bus, message *Message) (goret bool)
 
 // BusSyncHandler wraps GstBusSyncHandler
+// 
+// The function takes the following parameters:
+// 
+// 	- bus Bus: the #GstBus that sent the message 
+// 	- message *Message: the #GstMessage 
+// 
+// The function returns the following values:
+// 
+// 	- goret BusSyncReply 
 //
 // Handler will be invoked synchronously, when a new message has been injected
 // into the bus. This function is mostly used internally. Only one sync handler
@@ -8086,16 +8290,39 @@ type BusFunc func(bus Bus, message *Message) (goret bool)
 type BusSyncHandler func(bus Bus, message *Message) (goret BusSyncReply)
 
 // ClockCallback wraps GstClockCallback
+// 
+// The function takes the following parameters:
+// 
+// 	- clock Clock: The clock that triggered the callback 
+// 	- time ClockTime: The time it was triggered 
+// 	- id ClockID: The #GstClockID that expired 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
 //
 // The function prototype of the callback.
 type ClockCallback func(clock Clock, time ClockTime, id ClockID) (goret bool)
 
 // ElementCallAsyncFunc wraps GstElementCallAsyncFunc
+// 
+// The function takes the following parameters:
+// 
+// 	- element Element: The #GstElement this function has been called against 
 //
 // Callback prototype used in #gst_element_call_async
 type ElementCallAsyncFunc func(element Element)
 
 // ElementForEachPadFunc wraps GstElementForeachPadFunc
+// 
+// The function takes the following parameters:
+// 
+// 	- element Element: the #GstElement 
+// 	- pad Pad: a #GstPad 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
 //
 // Function called for each pad when using gst_element_foreach_sink_pad(),
 // gst_element_foreach_src_pad(), or gst_element_foreach_pad().
@@ -12338,7 +12565,7 @@ func VersionString() string {
 // ChildProxyInstance is the instance type used by all types implementing GstChildProxy. It is used internally by the bindings. Users should use the interface [ChildProxy] instead.
 type ChildProxyInstance struct {
 	_ [0]func() // equal guard
-	Instance gobject.ObjectInstance
+	gobject.ObjectInstance
 }
 
 var _ ChildProxy = (*ChildProxyInstance)(nil)
@@ -12360,6 +12587,7 @@ var _ ChildProxy = (*ChildProxyInstance)(nil)
 // `child1` and `child2` implement the #GstChildProxy interface.
 type ChildProxy interface {
 	ChildProxyExtManual // handwritten functions
+	gobject.Object
 	upcastToGstChildProxy() *ChildProxyInstance
 
 	// ChildAdded wraps gst_child_proxy_child_added
@@ -12459,13 +12687,70 @@ type ChildProxy interface {
 	//
 	// Will be emitted after the @object was removed from the @child_proxy.
 	ConnectChildRemoved(func(ChildProxy, gobject.Object, string)) gobject.SignalHandle
+
+	// chain up virtual methods:
+
+	// ParentChildAdded calls the default implementations of the child_added virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- child gobject.Object: the newly added child 
+	// 	- name string: the name of the new child 
+	//
+	// Emits the #GstChildProxy::child-added signal.
+	ParentChildAdded(child gobject.Object, name string)
+	// ParentChildRemoved calls the default implementations of the child_removed virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- child gobject.Object: the removed child 
+	// 	- name string: the name of the old child 
+	//
+	// Emits the #GstChildProxy::child-removed signal.
+	ParentChildRemoved(child gobject.Object, name string)
+	// ParentGetChildByIndex calls the default implementations of the get_child_by_index virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- index uint: the child's position in the child list 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gobject.Object (nullable) 
+	//
+	// Fetches a child by its number.
+	ParentGetChildByIndex(index uint) gobject.Object
+	// ParentGetChildByName calls the default implementations of the get_child_by_name virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- name string: the child's name 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gobject.Object (nullable) 
+	//
+	// Looks up a child element by the given name.
+	// 
+	// This virtual method has a default implementation that uses #GstObject
+	// together with gst_object_get_name(). If the interface is to be used with
+	// #GObjects, this methods needs to be overridden.
+	ParentGetChildByName(name string) gobject.Object
+	// ParentGetChildrenCount calls the default implementations of the get_children_count virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret uint 
+	//
+	// Gets the number of child objects this parent contains.
+	ParentGetChildrenCount() uint
 }
 
 var _ ChildProxy = (*ChildProxyInstance)(nil)
 
 func unsafeWrapChildProxy(base *gobject.ObjectInstance) *ChildProxyInstance {
 	return &ChildProxyInstance{
-		Instance: *base,
+		ObjectInstance: *base,
 	}
 }
 
@@ -12495,13 +12780,13 @@ func UnsafeChildProxyFromGlibBorrow(c unsafe.Pointer) ChildProxy {
 // UnsafeChildProxyToGlibNone is used to convert the instance to it's C value GstChildProxy. This is used by the bindings internally.
 func UnsafeChildProxyToGlibNone(c ChildProxy) unsafe.Pointer {
 	i := c.upcastToGstChildProxy()
-	return gobject.UnsafeObjectToGlibNone(&i.Instance)
+	return gobject.UnsafeObjectToGlibNone(i)
 }
 
 // UnsafeChildProxyToGlibFull is used to convert the instance to it's C value GstChildProxy, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeChildProxyToGlibFull(c ChildProxy) unsafe.Pointer {
 	i := c.upcastToGstChildProxy()
-	return gobject.UnsafeObjectToGlibFull(&i.Instance)
+	return gobject.UnsafeObjectToGlibFull(i)
 }
 
 // ChildAdded wraps gst_child_proxy_child_added
@@ -12731,14 +13016,14 @@ func (object *ChildProxyInstance) Lookup(name string) (gobject.Object, *gobject.
 //
 // Will be emitted after the @object was added to the @child_proxy.
 func (o *ChildProxyInstance) ConnectChildAdded(fn func(ChildProxy, gobject.Object, string)) gobject.SignalHandle {
-	return o.Instance.Connect("child-added", fn)
+	return o.Connect("child-added", fn)
 }
 
 // ConnectChildRemoved connects the provided callback to the "child-removed" signal
 //
 // Will be emitted after the @object was removed from the @child_proxy.
 func (o *ChildProxyInstance) ConnectChildRemoved(fn func(ChildProxy, gobject.Object, string)) gobject.SignalHandle {
-	return o.Instance.Connect("child-removed", fn)
+	return o.Connect("child-removed", fn)
 }
 
 // ChildProxyOverrides is the struct used to override the default implementation of virtual methods.
@@ -12749,12 +13034,16 @@ type ChildProxyOverrides[Instance ChildProxy] struct {
 	// 
 	// 	- child gobject.Object: the newly added child 
 	// 	- name string: the name of the new child 
+	//
+	// Emits the #GstChildProxy::child-added signal.
 	ChildAdded func(Instance, gobject.Object, string)
 	// ChildRemoved allows you to override the implementation of the virtual method child_removed.
 	// The function takes the following parameters:
 	// 
 	// 	- child gobject.Object: the removed child 
 	// 	- name string: the name of the old child 
+	//
+	// Emits the #GstChildProxy::child-removed signal.
 	ChildRemoved func(Instance, gobject.Object, string)
 	// GetChildByIndex allows you to override the implementation of the virtual method get_child_by_index.
 	// The function takes the following parameters:
@@ -12764,6 +13053,8 @@ type ChildProxyOverrides[Instance ChildProxy] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gobject.Object (nullable) 
+	//
+	// Fetches a child by its number.
 	GetChildByIndex func(Instance, uint) gobject.Object
 	// GetChildByName allows you to override the implementation of the virtual method get_child_by_name.
 	// The function takes the following parameters:
@@ -12773,11 +13064,19 @@ type ChildProxyOverrides[Instance ChildProxy] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gobject.Object (nullable) 
+	//
+	// Looks up a child element by the given name.
+	// 
+	// This virtual method has a default implementation that uses #GstObject
+	// together with gst_object_get_name(). If the interface is to be used with
+	// #GObjects, this methods needs to be overridden.
 	GetChildByName func(Instance, string) gobject.Object
 	// GetChildrenCount allows you to override the implementation of the virtual method get_children_count.
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
+	//
+	// Gets the number of child objects this parent contains.
 	GetChildrenCount func(Instance) uint
 }
 
@@ -12893,10 +13192,154 @@ func UnsafeApplyChildProxyOverrides[Instance ChildProxy](gclass unsafe.Pointer, 
 	}
 }
 
+// ParentChildAdded calls the default implementations of the child_added virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- child gobject.Object: the newly added child 
+// 	- name string: the name of the new child 
+//
+// Emits the #GstChildProxy::child-added signal.
+func (parent *ChildProxyInstance) ParentChildAdded(child gobject.Object, name string) {
+	var carg0 *C.GstChildProxy
+	var carg1 *C.GObject // in, none, converted
+	var carg2 *C.gchar   // in, none, string
+
+	parentclass := (*C.GstChildProxyInterface)(classdata.PeekParentInterface(UnsafeChildProxyToGlibNone(parent), uint64(TypeChildProxy)))
+
+	carg1 = (*C.GObject)(gobject.UnsafeObjectToGlibNone(child))
+	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
+	defer C.free(unsafe.Pointer(carg2))
+
+	C._gotk4_gst1_ChildProxy_virtual_child_added(unsafe.Pointer(parentclass.child_added), carg0, carg1, carg2)
+	runtime.KeepAlive(parent)
+	runtime.KeepAlive(child)
+	runtime.KeepAlive(name)
+}
+
+// ParentChildRemoved calls the default implementations of the child_removed virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- child gobject.Object: the removed child 
+// 	- name string: the name of the old child 
+//
+// Emits the #GstChildProxy::child-removed signal.
+func (parent *ChildProxyInstance) ParentChildRemoved(child gobject.Object, name string) {
+	var carg0 *C.GstChildProxy
+	var carg1 *C.GObject // in, none, converted
+	var carg2 *C.gchar   // in, none, string
+
+	parentclass := (*C.GstChildProxyInterface)(classdata.PeekParentInterface(UnsafeChildProxyToGlibNone(parent), uint64(TypeChildProxy)))
+
+	carg1 = (*C.GObject)(gobject.UnsafeObjectToGlibNone(child))
+	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
+	defer C.free(unsafe.Pointer(carg2))
+
+	C._gotk4_gst1_ChildProxy_virtual_child_removed(unsafe.Pointer(parentclass.child_removed), carg0, carg1, carg2)
+	runtime.KeepAlive(parent)
+	runtime.KeepAlive(child)
+	runtime.KeepAlive(name)
+}
+
+// ParentGetChildByIndex calls the default implementations of the get_child_by_index virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- index uint: the child's position in the child list 
+// 
+// The function returns the following values:
+// 
+// 	- goret gobject.Object (nullable) 
+//
+// Fetches a child by its number.
+func (parent *ChildProxyInstance) ParentGetChildByIndex(index uint) gobject.Object {
+	var carg0 *C.GstChildProxy
+	var carg1 C.guint    // in, none, casted
+	var cret  *C.GObject // return, full, converted, nullable
+
+	parentclass := (*C.GstChildProxyInterface)(classdata.PeekParentInterface(UnsafeChildProxyToGlibNone(parent), uint64(TypeChildProxy)))
+
+	carg1 = C.guint(index)
+
+	cret = C._gotk4_gst1_ChildProxy_virtual_get_child_by_index(unsafe.Pointer(parentclass.get_child_by_index), carg0, carg1)
+	runtime.KeepAlive(parent)
+	runtime.KeepAlive(index)
+
+	var goret gobject.Object
+
+	if cret != nil {
+		goret = gobject.UnsafeObjectFromGlibFull(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
+// ParentGetChildByName calls the default implementations of the get_child_by_name virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- name string: the child's name 
+// 
+// The function returns the following values:
+// 
+// 	- goret gobject.Object (nullable) 
+//
+// Looks up a child element by the given name.
+// 
+// This virtual method has a default implementation that uses #GstObject
+// together with gst_object_get_name(). If the interface is to be used with
+// #GObjects, this methods needs to be overridden.
+func (parent *ChildProxyInstance) ParentGetChildByName(name string) gobject.Object {
+	var carg0 *C.GstChildProxy
+	var carg1 *C.gchar   // in, none, string
+	var cret  *C.GObject // return, full, converted, nullable
+
+	parentclass := (*C.GstChildProxyInterface)(classdata.PeekParentInterface(UnsafeChildProxyToGlibNone(parent), uint64(TypeChildProxy)))
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	cret = C._gotk4_gst1_ChildProxy_virtual_get_child_by_name(unsafe.Pointer(parentclass.get_child_by_name), carg0, carg1)
+	runtime.KeepAlive(parent)
+	runtime.KeepAlive(name)
+
+	var goret gobject.Object
+
+	if cret != nil {
+		goret = gobject.UnsafeObjectFromGlibFull(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
+// ParentGetChildrenCount calls the default implementations of the get_children_count virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret uint 
+//
+// Gets the number of child objects this parent contains.
+func (parent *ChildProxyInstance) ParentGetChildrenCount() uint {
+	var carg0 *C.GstChildProxy
+	var cret  C.guint // return, none, casted
+
+	parentclass := (*C.GstChildProxyInterface)(classdata.PeekParentInterface(UnsafeChildProxyToGlibNone(parent), uint64(TypeChildProxy)))
+
+	cret = C._gotk4_gst1_ChildProxy_virtual_get_children_count(unsafe.Pointer(parentclass.get_children_count), carg0)
+	runtime.KeepAlive(parent)
+
+	var goret uint
+
+	goret = uint(cret)
+
+	return goret
+}
+
 // PresetInstance is the instance type used by all types implementing GstPreset. It is used internally by the bindings. Users should use the interface [Preset] instead.
 type PresetInstance struct {
 	_ [0]func() // equal guard
-	Instance gobject.ObjectInstance
+	gobject.ObjectInstance
 }
 
 var _ Preset = (*PresetInstance)(nil)
@@ -12927,6 +13370,7 @@ var _ Preset = (*PresetInstance)(nil)
 // where to find presets through the GST_PRESET_PATH environment variable.
 // Presets found in those paths will be considered as "app presets".
 type Preset interface {
+	gobject.Object
 	upcastToGstPreset() *PresetInstance
 
 	// DeletePreset wraps gst_preset_delete_preset
@@ -13035,13 +13479,114 @@ type Preset interface {
 	// data @tag names can be something like e.g. "comment". Supplying %NULL for the
 	// @value will unset an existing value.
 	SetMeta(string, string, string) bool
+
+	// chain up virtual methods:
+
+	// ParentDeletePreset calls the default implementations of the delete_preset virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- name string: preset name to remove 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Delete the given preset.
+	ParentDeletePreset(name string) bool
+	// ParentGetMeta calls the default implementations of the get_meta virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- name string: preset name 
+	// 	- tag string: meta data item name 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- value string: value 
+	// 	- goret bool 
+	//
+	// Gets the @value for an existing meta data @tag. Meta data @tag names can be
+	// something like e.g. "comment". Returned values need to be released when done.
+	ParentGetMeta(name string, tag string) (string, bool)
+	// ParentGetPresetNames calls the default implementations of the get_preset_names virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret []string 
+	//
+	// Get a copy of preset names as a %NULL terminated string array.
+	ParentGetPresetNames() []string
+	// ParentGetPropertyNames calls the default implementations of the get_property_names virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret []string 
+	//
+	// Get a the names of the GObject properties that can be used for presets.
+	ParentGetPropertyNames() []string
+	// ParentLoadPreset calls the default implementations of the load_preset virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- name string: preset name to load 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Load the given preset.
+	ParentLoadPreset(name string) bool
+	// ParentRenamePreset calls the default implementations of the rename_preset virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- oldName string: current preset name 
+	// 	- newName string: new preset name 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Renames a preset. If there is already a preset by the @new_name it will be
+	// overwritten.
+	ParentRenamePreset(oldName string, newName string) bool
+	// ParentSavePreset calls the default implementations of the save_preset virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- name string: preset name to save 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Save the current object settings as a preset under the given name. If there
+	// is already a preset by this @name it will be overwritten.
+	ParentSavePreset(name string) bool
+	// ParentSetMeta calls the default implementations of the set_meta virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- name string: preset name 
+	// 	- tag string: meta data item name 
+	// 	- value string (nullable): new value 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Sets a new @value for an existing meta data item or adds a new item. Meta
+	// data @tag names can be something like e.g. "comment". Supplying %NULL for the
+	// @value will unset an existing value.
+	ParentSetMeta(name string, tag string, value string) bool
 }
 
 var _ Preset = (*PresetInstance)(nil)
 
 func unsafeWrapPreset(base *gobject.ObjectInstance) *PresetInstance {
 	return &PresetInstance{
-		Instance: *base,
+		ObjectInstance: *base,
 	}
 }
 
@@ -13071,13 +13616,13 @@ func UnsafePresetFromGlibBorrow(c unsafe.Pointer) Preset {
 // UnsafePresetToGlibNone is used to convert the instance to it's C value GstPreset. This is used by the bindings internally.
 func UnsafePresetToGlibNone(c Preset) unsafe.Pointer {
 	i := c.upcastToGstPreset()
-	return gobject.UnsafeObjectToGlibNone(&i.Instance)
+	return gobject.UnsafeObjectToGlibNone(i)
 }
 
 // UnsafePresetToGlibFull is used to convert the instance to it's C value GstPreset, while removeing the finalizer. This is used by the bindings internally.
 func UnsafePresetToGlibFull(c Preset) unsafe.Pointer {
 	i := c.upcastToGstPreset()
-	return gobject.UnsafeObjectToGlibFull(&i.Instance)
+	return gobject.UnsafeObjectToGlibFull(i)
 }
 
 // PresetGetAppDir wraps gst_preset_get_app_dir
@@ -13450,6 +13995,8 @@ type PresetOverrides[Instance Preset] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Delete the given preset.
 	DeletePreset func(Instance, string) bool
 	// GetMeta allows you to override the implementation of the virtual method get_meta.
 	// The function takes the following parameters:
@@ -13461,16 +14008,23 @@ type PresetOverrides[Instance Preset] struct {
 	// 
 	// 	- value string: value 
 	// 	- goret bool 
+	//
+	// Gets the @value for an existing meta data @tag. Meta data @tag names can be
+	// something like e.g. "comment". Returned values need to be released when done.
 	GetMeta func(Instance, string, string) (string, bool)
 	// GetPresetNames allows you to override the implementation of the virtual method get_preset_names.
 	// The function returns the following values:
 	// 
 	// 	- goret []string 
+	//
+	// Get a copy of preset names as a %NULL terminated string array.
 	GetPresetNames func(Instance) []string
 	// GetPropertyNames allows you to override the implementation of the virtual method get_property_names.
 	// The function returns the following values:
 	// 
 	// 	- goret []string 
+	//
+	// Get a the names of the GObject properties that can be used for presets.
 	GetPropertyNames func(Instance) []string
 	// LoadPreset allows you to override the implementation of the virtual method load_preset.
 	// The function takes the following parameters:
@@ -13480,6 +14034,8 @@ type PresetOverrides[Instance Preset] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Load the given preset.
 	LoadPreset func(Instance, string) bool
 	// RenamePreset allows you to override the implementation of the virtual method rename_preset.
 	// The function takes the following parameters:
@@ -13490,6 +14046,9 @@ type PresetOverrides[Instance Preset] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Renames a preset. If there is already a preset by the @new_name it will be
+	// overwritten.
 	RenamePreset func(Instance, string, string) bool
 	// SavePreset allows you to override the implementation of the virtual method save_preset.
 	// The function takes the following parameters:
@@ -13499,6 +14058,9 @@ type PresetOverrides[Instance Preset] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Save the current object settings as a preset under the given name. If there
+	// is already a preset by this @name it will be overwritten.
 	SavePreset func(Instance, string) bool
 	// SetMeta allows you to override the implementation of the virtual method set_meta.
 	// The function takes the following parameters:
@@ -13510,6 +14072,10 @@ type PresetOverrides[Instance Preset] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Sets a new @value for an existing meta data item or adds a new item. Meta
+	// data @tag names can be something like e.g. "comment". Supplying %NULL for the
+	// @value will unset an existing value.
 	SetMeta func(Instance, string, string, string) bool
 }
 
@@ -13719,10 +14285,296 @@ func UnsafeApplyPresetOverrides[Instance Preset](gclass unsafe.Pointer, override
 	}
 }
 
+// ParentDeletePreset calls the default implementations of the delete_preset virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- name string: preset name to remove 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Delete the given preset.
+func (preset *PresetInstance) ParentDeletePreset(name string) bool {
+	var carg0 *C.GstPreset
+	var carg1 *C.gchar   // in, none, string
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstPresetInterface)(classdata.PeekParentInterface(UnsafePresetToGlibNone(preset), uint64(TypePreset)))
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	cret = C._gotk4_gst1_Preset_virtual_delete_preset(unsafe.Pointer(parentclass.delete_preset), carg0, carg1)
+	runtime.KeepAlive(preset)
+	runtime.KeepAlive(name)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentGetMeta calls the default implementations of the get_meta virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- name string: preset name 
+// 	- tag string: meta data item name 
+// 
+// The function returns the following values:
+// 
+// 	- value string: value 
+// 	- goret bool 
+//
+// Gets the @value for an existing meta data @tag. Meta data @tag names can be
+// something like e.g. "comment". Returned values need to be released when done.
+func (preset *PresetInstance) ParentGetMeta(name string, tag string) (string, bool) {
+	var carg0 *C.GstPreset
+	var carg1 *C.gchar   // in, none, string
+	var carg2 *C.gchar   // in, none, string
+	var carg3 *C.gchar   // out, full, string
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstPresetInterface)(classdata.PeekParentInterface(UnsafePresetToGlibNone(preset), uint64(TypePreset)))
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
+	defer C.free(unsafe.Pointer(carg1))
+	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
+	defer C.free(unsafe.Pointer(carg2))
+
+	cret = C._gotk4_gst1_Preset_virtual_get_meta(unsafe.Pointer(parentclass.get_meta), carg0, carg1, carg2, &carg3)
+	runtime.KeepAlive(preset)
+	runtime.KeepAlive(name)
+	runtime.KeepAlive(tag)
+
+	var value string
+	var goret bool
+
+	value = C.GoString((*C.char)(unsafe.Pointer(carg3)))
+	defer C.free(unsafe.Pointer(carg3))
+	if cret != 0 {
+		goret = true
+	}
+
+	return value, goret
+}
+
+// ParentGetPresetNames calls the default implementations of the get_preset_names virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret []string 
+//
+// Get a copy of preset names as a %NULL terminated string array.
+func (preset *PresetInstance) ParentGetPresetNames() []string {
+	var carg0 *C.GstPreset
+	var cret  **C.gchar // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , array (inner: *typesystem.StringPrimitive, zero-terminated)
+
+	parentclass := (*C.GstPresetInterface)(classdata.PeekParentInterface(UnsafePresetToGlibNone(preset), uint64(TypePreset)))
+
+	cret = C._gotk4_gst1_Preset_virtual_get_preset_names(unsafe.Pointer(parentclass.get_preset_names), carg0)
+	runtime.KeepAlive(preset)
+
+	var goret []string
+
+	_ = goret
+	_ = cret
+	panic("unimplemented conversion of []string (gchar**)")
+
+	return goret
+}
+
+// ParentGetPropertyNames calls the default implementations of the get_property_names virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret []string 
+//
+// Get a the names of the GObject properties that can be used for presets.
+func (preset *PresetInstance) ParentGetPropertyNames() []string {
+	var carg0 *C.GstPreset
+	var cret  **C.gchar // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , array (inner: *typesystem.StringPrimitive, zero-terminated)
+
+	parentclass := (*C.GstPresetInterface)(classdata.PeekParentInterface(UnsafePresetToGlibNone(preset), uint64(TypePreset)))
+
+	cret = C._gotk4_gst1_Preset_virtual_get_property_names(unsafe.Pointer(parentclass.get_property_names), carg0)
+	runtime.KeepAlive(preset)
+
+	var goret []string
+
+	_ = goret
+	_ = cret
+	panic("unimplemented conversion of []string (gchar**)")
+
+	return goret
+}
+
+// ParentLoadPreset calls the default implementations of the load_preset virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- name string: preset name to load 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Load the given preset.
+func (preset *PresetInstance) ParentLoadPreset(name string) bool {
+	var carg0 *C.GstPreset
+	var carg1 *C.gchar   // in, none, string
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstPresetInterface)(classdata.PeekParentInterface(UnsafePresetToGlibNone(preset), uint64(TypePreset)))
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	cret = C._gotk4_gst1_Preset_virtual_load_preset(unsafe.Pointer(parentclass.load_preset), carg0, carg1)
+	runtime.KeepAlive(preset)
+	runtime.KeepAlive(name)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentRenamePreset calls the default implementations of the rename_preset virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- oldName string: current preset name 
+// 	- newName string: new preset name 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Renames a preset. If there is already a preset by the @new_name it will be
+// overwritten.
+func (preset *PresetInstance) ParentRenamePreset(oldName string, newName string) bool {
+	var carg0 *C.GstPreset
+	var carg1 *C.gchar   // in, none, string
+	var carg2 *C.gchar   // in, none, string
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstPresetInterface)(classdata.PeekParentInterface(UnsafePresetToGlibNone(preset), uint64(TypePreset)))
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(oldName)))
+	defer C.free(unsafe.Pointer(carg1))
+	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(newName)))
+	defer C.free(unsafe.Pointer(carg2))
+
+	cret = C._gotk4_gst1_Preset_virtual_rename_preset(unsafe.Pointer(parentclass.rename_preset), carg0, carg1, carg2)
+	runtime.KeepAlive(preset)
+	runtime.KeepAlive(oldName)
+	runtime.KeepAlive(newName)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSavePreset calls the default implementations of the save_preset virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- name string: preset name to save 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Save the current object settings as a preset under the given name. If there
+// is already a preset by this @name it will be overwritten.
+func (preset *PresetInstance) ParentSavePreset(name string) bool {
+	var carg0 *C.GstPreset
+	var carg1 *C.gchar   // in, none, string
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstPresetInterface)(classdata.PeekParentInterface(UnsafePresetToGlibNone(preset), uint64(TypePreset)))
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	cret = C._gotk4_gst1_Preset_virtual_save_preset(unsafe.Pointer(parentclass.save_preset), carg0, carg1)
+	runtime.KeepAlive(preset)
+	runtime.KeepAlive(name)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSetMeta calls the default implementations of the set_meta virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- name string: preset name 
+// 	- tag string: meta data item name 
+// 	- value string (nullable): new value 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Sets a new @value for an existing meta data item or adds a new item. Meta
+// data @tag names can be something like e.g. "comment". Supplying %NULL for the
+// @value will unset an existing value.
+func (preset *PresetInstance) ParentSetMeta(name string, tag string, value string) bool {
+	var carg0 *C.GstPreset
+	var carg1 *C.gchar   // in, none, string
+	var carg2 *C.gchar   // in, none, string
+	var carg3 *C.gchar   // in, none, string, nullable-string
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstPresetInterface)(classdata.PeekParentInterface(UnsafePresetToGlibNone(preset), uint64(TypePreset)))
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
+	defer C.free(unsafe.Pointer(carg1))
+	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(tag)))
+	defer C.free(unsafe.Pointer(carg2))
+	if value != "" {
+		carg3 = (*C.gchar)(unsafe.Pointer(C.CString(value)))
+		defer C.free(unsafe.Pointer(carg3))
+	}
+
+	cret = C._gotk4_gst1_Preset_virtual_set_meta(unsafe.Pointer(parentclass.set_meta), carg0, carg1, carg2, carg3)
+	runtime.KeepAlive(preset)
+	runtime.KeepAlive(name)
+	runtime.KeepAlive(tag)
+	runtime.KeepAlive(value)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
 // URIHandlerInstance is the instance type used by all types implementing GstURIHandler. It is used internally by the bindings. Users should use the interface [URIHandler] instead.
 type URIHandlerInstance struct {
 	_ [0]func() // equal guard
-	Instance gobject.ObjectInstance
+	gobject.ObjectInstance
 }
 
 var _ URIHandler = (*URIHandlerInstance)(nil)
@@ -13738,6 +14590,7 @@ var _ URIHandler = (*URIHandlerInstance)(nil)
 // 
 // Source and Sink plugins should implement this interface when possible.
 type URIHandler interface {
+	gobject.Object
 	upcastToGstURIHandler() *URIHandlerInstance
 
 	// GetProtocols wraps gst_uri_handler_get_protocols
@@ -13778,13 +14631,37 @@ type URIHandler interface {
 	//
 	// Tries to set the URI of the given handler.
 	SetURI(string) (bool, error)
+
+	// chain up virtual methods:
+
+	// ParentGetURI calls the default implementations of the get_uri virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret string (nullable) 
+	//
+	// Gets the currently handled URI.
+	ParentGetURI() string
+	// ParentSetURI calls the default implementations of the set_uri virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- uri string: URI to set 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	// 	- _goerr error (nullable): an error 
+	//
+	// Tries to set the URI of the given handler.
+	ParentSetURI(uri string) (bool, error)
 }
 
 var _ URIHandler = (*URIHandlerInstance)(nil)
 
 func unsafeWrapURIHandler(base *gobject.ObjectInstance) *URIHandlerInstance {
 	return &URIHandlerInstance{
-		Instance: *base,
+		ObjectInstance: *base,
 	}
 }
 
@@ -13814,13 +14691,13 @@ func UnsafeURIHandlerFromGlibBorrow(c unsafe.Pointer) URIHandler {
 // UnsafeURIHandlerToGlibNone is used to convert the instance to it's C value GstURIHandler. This is used by the bindings internally.
 func UnsafeURIHandlerToGlibNone(c URIHandler) unsafe.Pointer {
 	i := c.upcastToGstURIHandler()
-	return gobject.UnsafeObjectToGlibNone(&i.Instance)
+	return gobject.UnsafeObjectToGlibNone(i)
 }
 
 // UnsafeURIHandlerToGlibFull is used to convert the instance to it's C value GstURIHandler, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeURIHandlerToGlibFull(c URIHandler) unsafe.Pointer {
 	i := c.upcastToGstURIHandler()
-	return gobject.UnsafeObjectToGlibFull(&i.Instance)
+	return gobject.UnsafeObjectToGlibFull(i)
 }
 
 // GetProtocols wraps gst_uri_handler_get_protocols
@@ -13944,6 +14821,8 @@ type URIHandlerOverrides[Instance URIHandler] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
+	//
+	// Gets the currently handled URI.
 	GetURI func(Instance) string
 	// SetURI allows you to override the implementation of the virtual method set_uri.
 	// The function takes the following parameters:
@@ -13954,6 +14833,8 @@ type URIHandlerOverrides[Instance URIHandler] struct {
 	// 
 	// 	- goret bool 
 	// 	- _goerr error (nullable): an error 
+	//
+	// Tries to set the URI of the given handler.
 	SetURI func(Instance, string) (bool, error)
 }
 
@@ -14011,10 +14892,76 @@ func UnsafeApplyURIHandlerOverrides[Instance URIHandler](gclass unsafe.Pointer, 
 	}
 }
 
+// ParentGetURI calls the default implementations of the get_uri virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret string (nullable) 
+//
+// Gets the currently handled URI.
+func (handler *URIHandlerInstance) ParentGetURI() string {
+	var carg0 *C.GstURIHandler
+	var cret  *C.gchar // return, full, string, nullable-string
+
+	parentclass := (*C.GstURIHandlerInterface)(classdata.PeekParentInterface(UnsafeURIHandlerToGlibNone(handler), uint64(TypeURIHandler)))
+
+	cret = C._gotk4_gst1_URIHandler_virtual_get_uri(unsafe.Pointer(parentclass.get_uri), carg0)
+	runtime.KeepAlive(handler)
+
+	var goret string
+
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
+// ParentSetURI calls the default implementations of the set_uri virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- uri string: URI to set 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+// 	- _goerr error (nullable): an error 
+//
+// Tries to set the URI of the given handler.
+func (handler *URIHandlerInstance) ParentSetURI(uri string) (bool, error) {
+	var carg0 *C.GstURIHandler
+	var carg1 *C.gchar   // in, none, string
+	var cret  C.gboolean // return
+	var _cerr *C.GError  // out, full, converted, nullable
+
+	parentclass := (*C.GstURIHandlerInterface)(classdata.PeekParentInterface(UnsafeURIHandlerToGlibNone(handler), uint64(TypeURIHandler)))
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	cret = C._gotk4_gst1_URIHandler_virtual_set_uri(unsafe.Pointer(parentclass.set_uri), carg0, carg1, &_cerr)
+	runtime.KeepAlive(handler)
+	runtime.KeepAlive(uri)
+
+	var goret  bool
+	var _goerr error
+
+	if cret != 0 {
+		goret = true
+	}
+	if _cerr != nil {
+		_goerr = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(_cerr))
+	}
+
+	return goret, _goerr
+}
+
 // TagSetterInstance is the instance type used by all types implementing GstTagSetter. It is used internally by the bindings. Users should use the interface [TagSetter] instead.
 type TagSetterInstance struct {
 	_ [0]func() // equal guard
-	Instance gobject.ObjectInstance
+	gobject.ObjectInstance
 }
 
 var _ TagSetter = (*TagSetterInstance)(nil)
@@ -14063,6 +15010,7 @@ var _ TagSetter = (*TagSetterInstance)(nil)
 // ]|
 type TagSetter interface {
 	TagSetterExtManual // handwritten functions
+	gobject.Object
 	upcastToGstTagSetter() *TagSetterInstance
 
 	// GetTagList wraps gst_tag_setter_get_tag_list
@@ -14109,13 +15057,15 @@ type TagSetter interface {
 	// specified by this interface. The default is #GST_TAG_MERGE_KEEP, which keeps
 	// the tags set with this interface and discards tags from events.
 	SetTagMergeMode(TagMergeMode)
+
+	// chain up virtual methods:
 }
 
 var _ TagSetter = (*TagSetterInstance)(nil)
 
 func unsafeWrapTagSetter(base *gobject.ObjectInstance) *TagSetterInstance {
 	return &TagSetterInstance{
-		Instance: *base,
+		ObjectInstance: *base,
 	}
 }
 
@@ -14145,13 +15095,13 @@ func UnsafeTagSetterFromGlibBorrow(c unsafe.Pointer) TagSetter {
 // UnsafeTagSetterToGlibNone is used to convert the instance to it's C value GstTagSetter. This is used by the bindings internally.
 func UnsafeTagSetterToGlibNone(c TagSetter) unsafe.Pointer {
 	i := c.upcastToGstTagSetter()
-	return gobject.UnsafeObjectToGlibNone(&i.Instance)
+	return gobject.UnsafeObjectToGlibNone(i)
 }
 
 // UnsafeTagSetterToGlibFull is used to convert the instance to it's C value GstTagSetter, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeTagSetterToGlibFull(c TagSetter) unsafe.Pointer {
 	i := c.upcastToGstTagSetter()
-	return gobject.UnsafeObjectToGlibFull(&i.Instance)
+	return gobject.UnsafeObjectToGlibFull(i)
 }
 
 // GetTagList wraps gst_tag_setter_get_tag_list
@@ -14276,7 +15226,7 @@ func UnsafeApplyTagSetterOverrides[Instance TagSetter](gclass unsafe.Pointer, ov
 // TocSetterInstance is the instance type used by all types implementing GstTocSetter. It is used internally by the bindings. Users should use the interface [TocSetter] instead.
 type TocSetterInstance struct {
 	_ [0]func() // equal guard
-	Instance gobject.ObjectInstance
+	gobject.ObjectInstance
 }
 
 var _ TocSetter = (*TocSetterInstance)(nil)
@@ -14298,6 +15248,7 @@ var _ TocSetter = (*TocSetterInstance)(nil)
 // by getting extend UID for that (you can use gst_toc_find_entry() to retrieve it)
 // with any TOC entries received from downstream.
 type TocSetter interface {
+	gobject.Object
 	upcastToGstTocSetter() *TocSetterInstance
 
 	// GetToc wraps gst_toc_setter_get_toc
@@ -14323,13 +15274,15 @@ type TocSetter interface {
 	// Set the given TOC on the setter. Previously set TOC will be
 	// unreffed before setting a new one.
 	SetToc(*Toc)
+
+	// chain up virtual methods:
 }
 
 var _ TocSetter = (*TocSetterInstance)(nil)
 
 func unsafeWrapTocSetter(base *gobject.ObjectInstance) *TocSetterInstance {
 	return &TocSetterInstance{
-		Instance: *base,
+		ObjectInstance: *base,
 	}
 }
 
@@ -14359,13 +15312,13 @@ func UnsafeTocSetterFromGlibBorrow(c unsafe.Pointer) TocSetter {
 // UnsafeTocSetterToGlibNone is used to convert the instance to it's C value GstTocSetter. This is used by the bindings internally.
 func UnsafeTocSetterToGlibNone(c TocSetter) unsafe.Pointer {
 	i := c.upcastToGstTocSetter()
-	return gobject.UnsafeObjectToGlibNone(&i.Instance)
+	return gobject.UnsafeObjectToGlibNone(i)
 }
 
 // UnsafeTocSetterToGlibFull is used to convert the instance to it's C value GstTocSetter, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeTocSetterToGlibFull(c TocSetter) unsafe.Pointer {
 	i := c.upcastToGstTocSetter()
-	return gobject.UnsafeObjectToGlibFull(&i.Instance)
+	return gobject.UnsafeObjectToGlibFull(i)
 }
 
 // GetToc wraps gst_toc_setter_get_toc
@@ -14760,6 +15713,18 @@ type Object interface {
 	// typically attached to the toplevel bin to receive notifications from all
 	// the elements contained in that bin.
 	ConnectDeepNotify(func(Object, Object, gobject.ParamSpec)) gobject.SignalHandle
+
+	// chain up virtual methods:
+
+	// ParentDeepNotify calls the default implementations of the deep_notify virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- orig Object 
+	// 	- pspec *gobject.ParamSpec 
+	//
+	// default signal handler
+	ParentDeepNotify(orig Object, pspec *gobject.ParamSpec)
 }
 
 func unsafeWrapObject(base *gobject.ObjectInstance) *ObjectInstance {
@@ -15460,6 +16425,8 @@ type ObjectOverrides[Instance Object] struct {
 	// 
 	// 	- orig Object 
 	// 	- pspec *gobject.ParamSpec 
+	//
+	// default signal handler
 	DeepNotify func(Instance, Object, *gobject.ParamSpec)
 }
 
@@ -15488,6 +16455,30 @@ func UnsafeApplyObjectOverrides[Instance Object](gclass unsafe.Pointer, override
 			},
 		)
 	}
+}
+
+// ParentDeepNotify calls the default implementations of the deep_notify virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- orig Object 
+// 	- pspec *gobject.ParamSpec 
+//
+// default signal handler
+func (object *ObjectInstance) ParentDeepNotify(orig Object, pspec *gobject.ParamSpec) {
+	var carg0 *C.GstObject
+	var carg1 *C.GstObject  // in, none, converted
+	var carg2 *C.GParamSpec // in, none, converted
+
+	parentclass := (*C.GstObjectClass)(classdata.PeekParentClass(UnsafeObjectToGlibNone(object)))
+
+	carg1 = (*C.GstObject)(UnsafeObjectToGlibNone(orig))
+	carg2 = (*C.GParamSpec)(gobject.UnsafeParamSpecToGlibNone(pspec))
+
+	C._gotk4_gst1_Object_virtual_deep_notify(unsafe.Pointer(parentclass.deep_notify), carg0, carg1, carg2)
+	runtime.KeepAlive(object)
+	runtime.KeepAlive(orig)
+	runtime.KeepAlive(pspec)
 }
 
 // RegisterObjectSubClass is used to register a go subclass of GstObject. For this to work safely please implement the
@@ -16615,6 +17606,21 @@ type Pad interface {
 	//
 	// Signals that a pad has been unlinked from the peer pad.
 	ConnectUnlinked(func(Pad, Pad)) gobject.SignalHandle
+
+	// chain up virtual methods:
+
+	// ParentLinked calls the default implementations of the linked virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- peer Pad 
+	ParentLinked(peer Pad)
+	// ParentUnlinked calls the default implementations of the unlinked virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- peer Pad 
+	ParentUnlinked(peer Pad)
 }
 
 func unsafeWrapPad(base *gobject.ObjectInstance) *PadInstance {
@@ -19157,6 +20163,42 @@ func UnsafeApplyPadOverrides[Instance Pad](gclass unsafe.Pointer, overrides PadO
 	}
 }
 
+// ParentLinked calls the default implementations of the linked virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- peer Pad 
+func (pad *PadInstance) ParentLinked(peer Pad) {
+	var carg0 *C.GstPad
+	var carg1 *C.GstPad // in, none, converted
+
+	parentclass := (*C.GstPadClass)(classdata.PeekParentClass(UnsafePadToGlibNone(pad)))
+
+	carg1 = (*C.GstPad)(UnsafePadToGlibNone(peer))
+
+	C._gotk4_gst1_Pad_virtual_linked(unsafe.Pointer(parentclass.linked), carg0, carg1)
+	runtime.KeepAlive(pad)
+	runtime.KeepAlive(peer)
+}
+
+// ParentUnlinked calls the default implementations of the unlinked virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- peer Pad 
+func (pad *PadInstance) ParentUnlinked(peer Pad) {
+	var carg0 *C.GstPad
+	var carg1 *C.GstPad // in, none, converted
+
+	parentclass := (*C.GstPadClass)(classdata.PeekParentClass(UnsafePadToGlibNone(pad)))
+
+	carg1 = (*C.GstPad)(UnsafePadToGlibNone(peer))
+
+	C._gotk4_gst1_Pad_virtual_unlinked(unsafe.Pointer(parentclass.unlinked), carg0, carg1)
+	runtime.KeepAlive(pad)
+	runtime.KeepAlive(peer)
+}
+
 // RegisterPadSubClass is used to register a go subclass of GstPad. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterPadSubClass[InstanceT Pad](
@@ -19296,6 +20338,17 @@ type PadTemplate interface {
 	//
 	// This signal is fired when an element creates a pad from this template.
 	ConnectPadCreated(func(PadTemplate, Pad)) gobject.SignalHandle
+
+	// chain up virtual methods:
+
+	// ParentPadCreated calls the default implementations of the pad_created virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- pad Pad: the #GstPad that created it 
+	//
+	// Emit the pad-created signal for this template when created by this pad.
+	ParentPadCreated(pad Pad)
 }
 
 func unsafeWrapPadTemplate(base *gobject.ObjectInstance) *PadTemplateInstance {
@@ -19568,6 +20621,8 @@ type PadTemplateOverrides[Instance PadTemplate] struct {
 	// The function takes the following parameters:
 	// 
 	// 	- pad Pad: the #GstPad that created it 
+	//
+	// Emit the pad-created signal for this template when created by this pad.
 	PadCreated func(Instance, Pad)
 }
 
@@ -19594,6 +20649,26 @@ func UnsafeApplyPadTemplateOverrides[Instance PadTemplate](gclass unsafe.Pointer
 			},
 		)
 	}
+}
+
+// ParentPadCreated calls the default implementations of the pad_created virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- pad Pad: the #GstPad that created it 
+//
+// Emit the pad-created signal for this template when created by this pad.
+func (templ *PadTemplateInstance) ParentPadCreated(pad Pad) {
+	var carg0 *C.GstPadTemplate
+	var carg1 *C.GstPad // in, none, converted
+
+	parentclass := (*C.GstPadTemplateClass)(classdata.PeekParentClass(UnsafePadTemplateToGlibNone(templ)))
+
+	carg1 = (*C.GstPad)(UnsafePadToGlibNone(pad))
+
+	C._gotk4_gst1_PadTemplate_virtual_pad_created(unsafe.Pointer(parentclass.pad_created), carg0, carg1)
+	runtime.KeepAlive(templ)
+	runtime.KeepAlive(pad)
 }
 
 // RegisterPadTemplateSubClass is used to register a go subclass of GstPadTemplate. For this to work safely please implement the
@@ -20958,6 +22033,8 @@ type ProxyPad interface {
 	// The internal pad of a #GstGhostPad is the internally used
 	// pad of opposite direction, which is used to link to the target.
 	GetInternal() ProxyPad
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapProxyPad(base *gobject.ObjectInstance) *ProxyPadInstance {
@@ -21516,6 +22593,8 @@ type Registry interface {
 	// Signals that a plugin has been added to the registry (possibly
 	// replacing a previously-added one by the same name)
 	ConnectPluginAdded(func(Registry, Plugin)) gobject.SignalHandle
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapRegistry(base *gobject.ObjectInstance) *RegistryInstance {
@@ -22342,6 +23421,8 @@ type Stream interface {
 	//
 	// Set the tags for the #GstStream
 	SetTags(*TagList)
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapStream(base *gobject.ObjectInstance) *StreamInstance {
@@ -22751,6 +23832,18 @@ type StreamCollection interface {
 	// The stream notify signal is used to be notified of property changes to
 	// streams within the collection.
 	ConnectStreamNotify(func(StreamCollection, Stream, gobject.ParamSpec)) gobject.SignalHandle
+
+	// chain up virtual methods:
+
+	// ParentStreamNotify calls the default implementations of the stream_notify virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- stream Stream 
+	// 	- pspec *gobject.ParamSpec 
+	//
+	// default signal handler for the stream-notify signal
+	ParentStreamNotify(stream Stream, pspec *gobject.ParamSpec)
 }
 
 func unsafeWrapStreamCollection(base *gobject.ObjectInstance) *StreamCollectionInstance {
@@ -22959,6 +24052,8 @@ type StreamCollectionOverrides[Instance StreamCollection] struct {
 	// 
 	// 	- stream Stream 
 	// 	- pspec *gobject.ParamSpec 
+	//
+	// default signal handler for the stream-notify signal
 	StreamNotify func(Instance, Stream, *gobject.ParamSpec)
 }
 
@@ -22987,6 +24082,30 @@ func UnsafeApplyStreamCollectionOverrides[Instance StreamCollection](gclass unsa
 			},
 		)
 	}
+}
+
+// ParentStreamNotify calls the default implementations of the stream_notify virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- stream Stream 
+// 	- pspec *gobject.ParamSpec 
+//
+// default signal handler for the stream-notify signal
+func (collection *StreamCollectionInstance) ParentStreamNotify(stream Stream, pspec *gobject.ParamSpec) {
+	var carg0 *C.GstStreamCollection
+	var carg1 *C.GstStream  // in, none, converted
+	var carg2 *C.GParamSpec // in, none, converted
+
+	parentclass := (*C.GstStreamCollectionClass)(classdata.PeekParentClass(UnsafeStreamCollectionToGlibNone(collection)))
+
+	carg1 = (*C.GstStream)(UnsafeStreamToGlibNone(stream))
+	carg2 = (*C.GParamSpec)(gobject.UnsafeParamSpecToGlibNone(pspec))
+
+	C._gotk4_gst1_StreamCollection_virtual_stream_notify(unsafe.Pointer(parentclass.stream_notify), carg0, carg1, carg2)
+	runtime.KeepAlive(collection)
+	runtime.KeepAlive(stream)
+	runtime.KeepAlive(pspec)
 }
 
 // RegisterStreamCollectionSubClass is used to register a go subclass of GstStreamCollection. For this to work safely please implement the
@@ -23170,6 +24289,8 @@ type Task interface {
 	// will not wait for the task to have completely stopped. Use
 	// gst_task_join() to stop and wait for completion.
 	Stop() bool
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapTask(base *gobject.ObjectInstance) *TaskInstance {
@@ -23592,6 +24713,27 @@ type TaskPool interface {
 	// 
 	// MT safe.
 	Prepare() error
+
+	// chain up virtual methods:
+
+	// ParentCleanup calls the default implementations of the cleanup virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	//
+	// Wait for all tasks to be stopped. This is mainly used internally
+	// to ensure proper cleanup of internal data structures in test suites.
+	// 
+	// MT safe.
+	ParentCleanup()
+	// ParentPrepare calls the default implementations of the prepare virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- _goerr error (nullable): an error 
+	//
+	// Prepare the taskpool for accepting gst_task_pool_push() operations.
+	// 
+	// MT safe.
+	ParentPrepare() error
 }
 
 func unsafeWrapTaskPool(base *gobject.ObjectInstance) *TaskPoolInstance {
@@ -23706,11 +24848,20 @@ type TaskPoolOverrides[Instance TaskPool] struct {
 	ObjectOverrides[Instance]
 
 	// Cleanup allows you to override the implementation of the virtual method cleanup.
+	//
+	// Wait for all tasks to be stopped. This is mainly used internally
+	// to ensure proper cleanup of internal data structures in test suites.
+	// 
+	// MT safe.
 	Cleanup func(Instance)
 	// Prepare allows you to override the implementation of the virtual method prepare.
 	// The function returns the following values:
 	// 
 	// 	- _goerr error (nullable): an error 
+	//
+	// Prepare the taskpool for accepting gst_task_pool_push() operations.
+	// 
+	// MT safe.
 	Prepare func(Instance) error
 }
 
@@ -23753,6 +24904,49 @@ func UnsafeApplyTaskPoolOverrides[Instance TaskPool](gclass unsafe.Pointer, over
 			},
 		)
 	}
+}
+
+// ParentCleanup calls the default implementations of the cleanup virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+//
+// Wait for all tasks to be stopped. This is mainly used internally
+// to ensure proper cleanup of internal data structures in test suites.
+// 
+// MT safe.
+func (pool *TaskPoolInstance) ParentCleanup() {
+	var carg0 *C.GstTaskPool
+
+	parentclass := (*C.GstTaskPoolClass)(classdata.PeekParentClass(UnsafeTaskPoolToGlibNone(pool)))
+
+	C._gotk4_gst1_TaskPool_virtual_cleanup(unsafe.Pointer(parentclass.cleanup), carg0)
+	runtime.KeepAlive(pool)
+}
+
+// ParentPrepare calls the default implementations of the prepare virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- _goerr error (nullable): an error 
+//
+// Prepare the taskpool for accepting gst_task_pool_push() operations.
+// 
+// MT safe.
+func (pool *TaskPoolInstance) ParentPrepare() error {
+	var carg0 *C.GstTaskPool
+	var _cerr *C.GError // out, full, converted, nullable
+
+	parentclass := (*C.GstTaskPoolClass)(classdata.PeekParentClass(UnsafeTaskPoolToGlibNone(pool)))
+
+	C._gotk4_gst1_TaskPool_virtual_prepare(unsafe.Pointer(parentclass.prepare), carg0, &_cerr)
+	runtime.KeepAlive(pool)
+
+	var _goerr error
+
+	if _cerr != nil {
+		_goerr = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(_cerr))
+	}
+
+	return _goerr
 }
 
 // RegisterTaskPoolSubClass is used to register a go subclass of GstTaskPool. For this to work safely please implement the
@@ -23798,6 +24992,8 @@ var _ Tracer = (*TracerInstance)(nil)
 type Tracer interface {
 	Object
 	upcastToGstTracer() *TracerInstance
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapTracer(base *gobject.ObjectInstance) *TracerInstance {
@@ -24457,6 +25653,44 @@ type Allocator interface {
 	//
 	// Set the default allocator.
 	SetDefault()
+
+	// chain up virtual methods:
+
+	// ParentAlloc calls the default implementations of the alloc virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- size uint: size of the visible memory area 
+	// 	- params *AllocationParams (nullable): optional parameters 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *Memory (nullable) 
+	//
+	// Use @allocator to allocate a new memory block with memory that is at least
+	// @size big.
+	// 
+	// The optional @params can specify the prefix and padding for the memory. If
+	// %NULL is passed, no flags, no extra prefix/padding and a default alignment is
+	// used.
+	// 
+	// The prefix/padding will be filled with 0 if flags contains
+	// #GST_MEMORY_FLAG_ZERO_PREFIXED and #GST_MEMORY_FLAG_ZERO_PADDED respectively.
+	// 
+	// When @allocator is %NULL, the default allocator will be used.
+	// 
+	// The alignment in @params is given as a bitmask so that @align + 1 equals
+	// the amount of bytes to align to. For example, to align to 8 bytes,
+	// use an alignment of 7.
+	ParentAlloc(size uint, params *AllocationParams) *Memory
+	// ParentFree calls the default implementations of the free virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- memory *Memory: the memory to free 
+	//
+	// Free @memory that was previously allocated with gst_allocator_alloc().
+	ParentFree(memory *Memory)
 }
 
 func unsafeWrapAllocator(base *gobject.ObjectInstance) *AllocatorInstance {
@@ -24654,11 +25888,29 @@ type AllocatorOverrides[Instance Allocator] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret *Memory (nullable) 
+	//
+	// Use @allocator to allocate a new memory block with memory that is at least
+	// @size big.
+	// 
+	// The optional @params can specify the prefix and padding for the memory. If
+	// %NULL is passed, no flags, no extra prefix/padding and a default alignment is
+	// used.
+	// 
+	// The prefix/padding will be filled with 0 if flags contains
+	// #GST_MEMORY_FLAG_ZERO_PREFIXED and #GST_MEMORY_FLAG_ZERO_PADDED respectively.
+	// 
+	// When @allocator is %NULL, the default allocator will be used.
+	// 
+	// The alignment in @params is given as a bitmask so that @align + 1 equals
+	// the amount of bytes to align to. For example, to align to 8 bytes,
+	// use an alignment of 7.
 	Alloc func(Instance, uint, *AllocationParams) *Memory
 	// Free allows you to override the implementation of the virtual method free.
 	// The function takes the following parameters:
 	// 
 	// 	- memory *Memory: the memory to free 
+	//
+	// Free @memory that was previously allocated with gst_allocator_alloc().
 	Free func(Instance, *Memory)
 }
 
@@ -24713,6 +25965,79 @@ func UnsafeApplyAllocatorOverrides[Instance Allocator](gclass unsafe.Pointer, ov
 			},
 		)
 	}
+}
+
+// ParentAlloc calls the default implementations of the alloc virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- size uint: size of the visible memory area 
+// 	- params *AllocationParams (nullable): optional parameters 
+// 
+// The function returns the following values:
+// 
+// 	- goret *Memory (nullable) 
+//
+// Use @allocator to allocate a new memory block with memory that is at least
+// @size big.
+// 
+// The optional @params can specify the prefix and padding for the memory. If
+// %NULL is passed, no flags, no extra prefix/padding and a default alignment is
+// used.
+// 
+// The prefix/padding will be filled with 0 if flags contains
+// #GST_MEMORY_FLAG_ZERO_PREFIXED and #GST_MEMORY_FLAG_ZERO_PADDED respectively.
+// 
+// When @allocator is %NULL, the default allocator will be used.
+// 
+// The alignment in @params is given as a bitmask so that @align + 1 equals
+// the amount of bytes to align to. For example, to align to 8 bytes,
+// use an alignment of 7.
+func (allocator *AllocatorInstance) ParentAlloc(size uint, params *AllocationParams) *Memory {
+	var carg0 *C.GstAllocator
+	var carg1 C.gsize                // in, none, casted
+	var carg2 *C.GstAllocationParams // in, none, converted, nullable
+	var cret  *C.GstMemory           // return, full, converted, nullable
+
+	parentclass := (*C.GstAllocatorClass)(classdata.PeekParentClass(UnsafeAllocatorToGlibNone(allocator)))
+
+	carg1 = C.gsize(size)
+	if params != nil {
+		carg2 = (*C.GstAllocationParams)(UnsafeAllocationParamsToGlibNone(params))
+	}
+
+	cret = C._gotk4_gst1_Allocator_virtual_alloc(unsafe.Pointer(parentclass.alloc), carg0, carg1, carg2)
+	runtime.KeepAlive(allocator)
+	runtime.KeepAlive(size)
+	runtime.KeepAlive(params)
+
+	var goret *Memory
+
+	if cret != nil {
+		goret = UnsafeMemoryFromGlibFull(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
+// ParentFree calls the default implementations of the free virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- memory *Memory: the memory to free 
+//
+// Free @memory that was previously allocated with gst_allocator_alloc().
+func (allocator *AllocatorInstance) ParentFree(memory *Memory) {
+	var carg0 *C.GstAllocator
+	var carg1 *C.GstMemory // in, full, converted
+
+	parentclass := (*C.GstAllocatorClass)(classdata.PeekParentClass(UnsafeAllocatorToGlibNone(allocator)))
+
+	carg1 = (*C.GstMemory)(UnsafeMemoryToGlibFull(memory))
+
+	C._gotk4_gst1_Allocator_virtual_free(unsafe.Pointer(parentclass.free), carg0, carg1)
+	runtime.KeepAlive(allocator)
+	runtime.KeepAlive(memory)
 }
 
 // RegisterAllocatorSubClass is used to register a go subclass of GstAllocator. For this to work safely please implement the
@@ -24915,6 +26240,147 @@ type BufferPool interface {
 	// Enables or disables the flushing state of a @pool without freeing or
 	// allocating buffers.
 	SetFlushing(bool)
+
+	// chain up virtual methods:
+
+	// ParentAcquireBuffer calls the default implementations of the acquire_buffer virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- params *BufferPoolAcquireParams (nullable): parameters. 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- buffer *Buffer (nullable): a location for a #GstBuffer 
+	// 	- goret FlowReturn 
+	//
+	// Acquires a buffer from @pool. @buffer should point to a memory location that
+	// can hold a pointer to the new buffer. When the pool is empty, this function
+	// will by default block until a buffer is released into the pool again or when
+	// the pool is set to flushing or deactivated.
+	// 
+	// @params can contain optional parameters to influence the allocation.
+	ParentAcquireBuffer(params *BufferPoolAcquireParams) (*Buffer, FlowReturn)
+	// ParentAllocBuffer calls the default implementations of the alloc_buffer virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- params *BufferPoolAcquireParams (nullable): parameters. 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- buffer *Buffer (nullable): a location for a #GstBuffer 
+	// 	- goret FlowReturn 
+	//
+	// Allocate a buffer. the default implementation allocates
+	// buffers from the configured memory allocator and with the configured
+	// parameters. All metadata that is present on the allocated buffer will
+	// be marked as #GST_META_FLAG_POOLED and #GST_META_FLAG_LOCKED and will
+	// not be removed from the buffer in #GstBufferPoolClass::reset_buffer.
+	// The buffer should have the #GST_BUFFER_FLAG_TAG_MEMORY cleared.
+	ParentAllocBuffer(params *BufferPoolAcquireParams) (*Buffer, FlowReturn)
+	// ParentFlushStart calls the default implementations of the flush_start virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	//
+	// Enter the flushing state.
+	ParentFlushStart()
+	// ParentFlushStop calls the default implementations of the flush_stop virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	//
+	// Leave the flushing state.
+	ParentFlushStop()
+	// ParentFreeBuffer calls the default implementations of the free_buffer virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *Buffer: the #GstBuffer to free 
+	//
+	// Free a buffer. The default implementation unrefs the buffer.
+	ParentFreeBuffer(buffer *Buffer)
+	// ParentGetOptions calls the default implementations of the get_options virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret []string 
+	//
+	// Gets a %NULL terminated array of string with supported bufferpool options for
+	// @pool. An option would typically be enabled with
+	// gst_buffer_pool_config_add_option().
+	ParentGetOptions() []string
+	// ParentReleaseBuffer calls the default implementations of the release_buffer virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *Buffer: a #GstBuffer 
+	//
+	// Releases @buffer to @pool. @buffer should have previously been allocated from
+	// @pool with gst_buffer_pool_acquire_buffer().
+	// 
+	// This function is usually called automatically when the last ref on @buffer
+	// disappears.
+	ParentReleaseBuffer(buffer *Buffer)
+	// ParentResetBuffer calls the default implementations of the reset_buffer virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *Buffer: the #GstBuffer to reset 
+	//
+	// Reset the buffer to its state when it was freshly allocated.
+	// The default implementation will clear the flags, timestamps and
+	// will remove the metadata without the #GST_META_FLAG_POOLED flag (even
+	// the metadata with #GST_META_FLAG_LOCKED). If the
+	// #GST_BUFFER_FLAG_TAG_MEMORY was set, this function can also try to
+	// restore the memory and clear the #GST_BUFFER_FLAG_TAG_MEMORY again.
+	ParentResetBuffer(buffer *Buffer)
+	// ParentSetConfig calls the default implementations of the set_config virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- config *Structure: a #GstStructure 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Sets the configuration of the pool. If the pool is already configured, and
+	// the configuration hasn't changed, this function will return %TRUE. If the
+	// pool is active, this method will return %FALSE and active configuration
+	// will remain. Buffers allocated from this pool must be returned or else this
+	// function will do nothing and return %FALSE.
+	// 
+	// @config is a #GstStructure that contains the configuration parameters for
+	// the pool. A default and mandatory set of parameters can be configured with
+	// gst_buffer_pool_config_set_params(), gst_buffer_pool_config_set_allocator()
+	// and gst_buffer_pool_config_add_option().
+	// 
+	// If the parameters in @config can not be set exactly, this function returns
+	// %FALSE and will try to update as much state as possible. The new state can
+	// then be retrieved and refined with gst_buffer_pool_get_config().
+	// 
+	// This function takes ownership of @config.
+	ParentSetConfig(config *Structure) bool
+	// ParentStart calls the default implementations of the start virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Start the bufferpool. The default implementation will preallocate
+	// min-buffers buffers and put them in the queue.
+	// 
+	// Subclasses do not need to chain up to the parent's default implementation
+	// if they don't want min-buffers based preallocation.
+	ParentStart() bool
+	// ParentStop calls the default implementations of the stop virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Stop the bufferpool. the default implementation will free the
+	// preallocated buffers. This function is called when all the buffers are
+	// returned to the pool.
+	ParentStop() bool
 }
 
 func unsafeWrapBufferPool(base *gobject.ObjectInstance) *BufferPoolInstance {
@@ -25616,6 +27082,13 @@ type BufferPoolOverrides[Instance BufferPool] struct {
 	// 
 	// 	- buffer *Buffer (nullable): a location for a #GstBuffer 
 	// 	- goret FlowReturn 
+	//
+	// Acquires a buffer from @pool. @buffer should point to a memory location that
+	// can hold a pointer to the new buffer. When the pool is empty, this function
+	// will by default block until a buffer is released into the pool again or when
+	// the pool is set to flushing or deactivated.
+	// 
+	// @params can contain optional parameters to influence the allocation.
 	AcquireBuffer func(Instance, *BufferPoolAcquireParams) (*Buffer, FlowReturn)
 	// AllocBuffer allows you to override the implementation of the virtual method alloc_buffer.
 	// The function takes the following parameters:
@@ -25626,30 +27099,60 @@ type BufferPoolOverrides[Instance BufferPool] struct {
 	// 
 	// 	- buffer *Buffer (nullable): a location for a #GstBuffer 
 	// 	- goret FlowReturn 
+	//
+	// Allocate a buffer. the default implementation allocates
+	// buffers from the configured memory allocator and with the configured
+	// parameters. All metadata that is present on the allocated buffer will
+	// be marked as #GST_META_FLAG_POOLED and #GST_META_FLAG_LOCKED and will
+	// not be removed from the buffer in #GstBufferPoolClass::reset_buffer.
+	// The buffer should have the #GST_BUFFER_FLAG_TAG_MEMORY cleared.
 	AllocBuffer func(Instance, *BufferPoolAcquireParams) (*Buffer, FlowReturn)
 	// FlushStart allows you to override the implementation of the virtual method flush_start.
+	//
+	// Enter the flushing state.
 	FlushStart func(Instance)
 	// FlushStop allows you to override the implementation of the virtual method flush_stop.
+	//
+	// Leave the flushing state.
 	FlushStop func(Instance)
 	// FreeBuffer allows you to override the implementation of the virtual method free_buffer.
 	// The function takes the following parameters:
 	// 
 	// 	- buffer *Buffer: the #GstBuffer to free 
+	//
+	// Free a buffer. The default implementation unrefs the buffer.
 	FreeBuffer func(Instance, *Buffer)
 	// GetOptions allows you to override the implementation of the virtual method get_options.
 	// The function returns the following values:
 	// 
 	// 	- goret []string 
+	//
+	// Gets a %NULL terminated array of string with supported bufferpool options for
+	// @pool. An option would typically be enabled with
+	// gst_buffer_pool_config_add_option().
 	GetOptions func(Instance) []string
 	// ReleaseBuffer allows you to override the implementation of the virtual method release_buffer.
 	// The function takes the following parameters:
 	// 
 	// 	- buffer *Buffer: a #GstBuffer 
+	//
+	// Releases @buffer to @pool. @buffer should have previously been allocated from
+	// @pool with gst_buffer_pool_acquire_buffer().
+	// 
+	// This function is usually called automatically when the last ref on @buffer
+	// disappears.
 	ReleaseBuffer func(Instance, *Buffer)
 	// ResetBuffer allows you to override the implementation of the virtual method reset_buffer.
 	// The function takes the following parameters:
 	// 
 	// 	- buffer *Buffer: the #GstBuffer to reset 
+	//
+	// Reset the buffer to its state when it was freshly allocated.
+	// The default implementation will clear the flags, timestamps and
+	// will remove the metadata without the #GST_META_FLAG_POOLED flag (even
+	// the metadata with #GST_META_FLAG_LOCKED). If the
+	// #GST_BUFFER_FLAG_TAG_MEMORY was set, this function can also try to
+	// restore the memory and clear the #GST_BUFFER_FLAG_TAG_MEMORY again.
 	ResetBuffer func(Instance, *Buffer)
 	// SetConfig allows you to override the implementation of the virtual method set_config.
 	// The function takes the following parameters:
@@ -25659,16 +27162,43 @@ type BufferPoolOverrides[Instance BufferPool] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Sets the configuration of the pool. If the pool is already configured, and
+	// the configuration hasn't changed, this function will return %TRUE. If the
+	// pool is active, this method will return %FALSE and active configuration
+	// will remain. Buffers allocated from this pool must be returned or else this
+	// function will do nothing and return %FALSE.
+	// 
+	// @config is a #GstStructure that contains the configuration parameters for
+	// the pool. A default and mandatory set of parameters can be configured with
+	// gst_buffer_pool_config_set_params(), gst_buffer_pool_config_set_allocator()
+	// and gst_buffer_pool_config_add_option().
+	// 
+	// If the parameters in @config can not be set exactly, this function returns
+	// %FALSE and will try to update as much state as possible. The new state can
+	// then be retrieved and refined with gst_buffer_pool_get_config().
+	// 
+	// This function takes ownership of @config.
 	SetConfig func(Instance, *Structure) bool
 	// Start allows you to override the implementation of the virtual method start.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Start the bufferpool. The default implementation will preallocate
+	// min-buffers buffers and put them in the queue.
+	// 
+	// Subclasses do not need to chain up to the parent's default implementation
+	// if they don't want min-buffers based preallocation.
 	Start func(Instance) bool
 	// Stop allows you to override the implementation of the virtual method stop.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Stop the bufferpool. the default implementation will free the
+	// preallocated buffers. This function is called when all the buffers are
+	// returned to the pool.
 	Stop func(Instance) bool
 }
 
@@ -25901,6 +27431,320 @@ func UnsafeApplyBufferPoolOverrides[Instance BufferPool](gclass unsafe.Pointer, 
 			},
 		)
 	}
+}
+
+// ParentAcquireBuffer calls the default implementations of the acquire_buffer virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- params *BufferPoolAcquireParams (nullable): parameters. 
+// 
+// The function returns the following values:
+// 
+// 	- buffer *Buffer (nullable): a location for a #GstBuffer 
+// 	- goret FlowReturn 
+//
+// Acquires a buffer from @pool. @buffer should point to a memory location that
+// can hold a pointer to the new buffer. When the pool is empty, this function
+// will by default block until a buffer is released into the pool again or when
+// the pool is set to flushing or deactivated.
+// 
+// @params can contain optional parameters to influence the allocation.
+func (pool *BufferPoolInstance) ParentAcquireBuffer(params *BufferPoolAcquireParams) (*Buffer, FlowReturn) {
+	var carg0 *C.GstBufferPool
+	var carg2 *C.GstBufferPoolAcquireParams // in, none, converted, nullable
+	var carg1 *C.GstBuffer                  // out, full, converted, nullable
+	var cret  C.GstFlowReturn               // return, none, casted
+
+	parentclass := (*C.GstBufferPoolClass)(classdata.PeekParentClass(UnsafeBufferPoolToGlibNone(pool)))
+
+	if params != nil {
+		carg2 = (*C.GstBufferPoolAcquireParams)(UnsafeBufferPoolAcquireParamsToGlibNone(params))
+	}
+
+	cret = C._gotk4_gst1_BufferPool_virtual_acquire_buffer(unsafe.Pointer(parentclass.acquire_buffer), carg0, &carg1, carg2)
+	runtime.KeepAlive(pool)
+	runtime.KeepAlive(params)
+
+	var buffer *Buffer
+	var goret  FlowReturn
+
+	if carg1 != nil {
+		buffer = UnsafeBufferFromGlibFull(unsafe.Pointer(carg1))
+	}
+	goret = FlowReturn(cret)
+
+	return buffer, goret
+}
+
+// ParentAllocBuffer calls the default implementations of the alloc_buffer virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- params *BufferPoolAcquireParams (nullable): parameters. 
+// 
+// The function returns the following values:
+// 
+// 	- buffer *Buffer (nullable): a location for a #GstBuffer 
+// 	- goret FlowReturn 
+//
+// Allocate a buffer. the default implementation allocates
+// buffers from the configured memory allocator and with the configured
+// parameters. All metadata that is present on the allocated buffer will
+// be marked as #GST_META_FLAG_POOLED and #GST_META_FLAG_LOCKED and will
+// not be removed from the buffer in #GstBufferPoolClass::reset_buffer.
+// The buffer should have the #GST_BUFFER_FLAG_TAG_MEMORY cleared.
+func (pool *BufferPoolInstance) ParentAllocBuffer(params *BufferPoolAcquireParams) (*Buffer, FlowReturn) {
+	var carg0 *C.GstBufferPool
+	var carg2 *C.GstBufferPoolAcquireParams // in, none, converted, nullable
+	var carg1 *C.GstBuffer                  // out, full, converted, nullable
+	var cret  C.GstFlowReturn               // return, none, casted
+
+	parentclass := (*C.GstBufferPoolClass)(classdata.PeekParentClass(UnsafeBufferPoolToGlibNone(pool)))
+
+	if params != nil {
+		carg2 = (*C.GstBufferPoolAcquireParams)(UnsafeBufferPoolAcquireParamsToGlibNone(params))
+	}
+
+	cret = C._gotk4_gst1_BufferPool_virtual_alloc_buffer(unsafe.Pointer(parentclass.alloc_buffer), carg0, &carg1, carg2)
+	runtime.KeepAlive(pool)
+	runtime.KeepAlive(params)
+
+	var buffer *Buffer
+	var goret  FlowReturn
+
+	if carg1 != nil {
+		buffer = UnsafeBufferFromGlibFull(unsafe.Pointer(carg1))
+	}
+	goret = FlowReturn(cret)
+
+	return buffer, goret
+}
+
+// ParentFlushStart calls the default implementations of the flush_start virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+//
+// Enter the flushing state.
+func (pool *BufferPoolInstance) ParentFlushStart() {
+	var carg0 *C.GstBufferPool
+
+	parentclass := (*C.GstBufferPoolClass)(classdata.PeekParentClass(UnsafeBufferPoolToGlibNone(pool)))
+
+	C._gotk4_gst1_BufferPool_virtual_flush_start(unsafe.Pointer(parentclass.flush_start), carg0)
+	runtime.KeepAlive(pool)
+}
+
+// ParentFlushStop calls the default implementations of the flush_stop virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+//
+// Leave the flushing state.
+func (pool *BufferPoolInstance) ParentFlushStop() {
+	var carg0 *C.GstBufferPool
+
+	parentclass := (*C.GstBufferPoolClass)(classdata.PeekParentClass(UnsafeBufferPoolToGlibNone(pool)))
+
+	C._gotk4_gst1_BufferPool_virtual_flush_stop(unsafe.Pointer(parentclass.flush_stop), carg0)
+	runtime.KeepAlive(pool)
+}
+
+// ParentFreeBuffer calls the default implementations of the free_buffer virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- buffer *Buffer: the #GstBuffer to free 
+//
+// Free a buffer. The default implementation unrefs the buffer.
+func (pool *BufferPoolInstance) ParentFreeBuffer(buffer *Buffer) {
+	var carg0 *C.GstBufferPool
+	var carg1 *C.GstBuffer // in, none, converted
+
+	parentclass := (*C.GstBufferPoolClass)(classdata.PeekParentClass(UnsafeBufferPoolToGlibNone(pool)))
+
+	carg1 = (*C.GstBuffer)(UnsafeBufferToGlibNone(buffer))
+
+	C._gotk4_gst1_BufferPool_virtual_free_buffer(unsafe.Pointer(parentclass.free_buffer), carg0, carg1)
+	runtime.KeepAlive(pool)
+	runtime.KeepAlive(buffer)
+}
+
+// ParentGetOptions calls the default implementations of the get_options virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret []string 
+//
+// Gets a %NULL terminated array of string with supported bufferpool options for
+// @pool. An option would typically be enabled with
+// gst_buffer_pool_config_add_option().
+func (pool *BufferPoolInstance) ParentGetOptions() []string {
+	var carg0 *C.GstBufferPool
+	var cret  **C.gchar // return, transfer: none, C Pointers: 2, Name: array[utf8], scope: , array (inner: *typesystem.StringPrimitive, zero-terminated)
+
+	parentclass := (*C.GstBufferPoolClass)(classdata.PeekParentClass(UnsafeBufferPoolToGlibNone(pool)))
+
+	cret = C._gotk4_gst1_BufferPool_virtual_get_options(unsafe.Pointer(parentclass.get_options), carg0)
+	runtime.KeepAlive(pool)
+
+	var goret []string
+
+	_ = goret
+	_ = cret
+	panic("unimplemented conversion of []string (const gchar**)")
+
+	return goret
+}
+
+// ParentReleaseBuffer calls the default implementations of the release_buffer virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- buffer *Buffer: a #GstBuffer 
+//
+// Releases @buffer to @pool. @buffer should have previously been allocated from
+// @pool with gst_buffer_pool_acquire_buffer().
+// 
+// This function is usually called automatically when the last ref on @buffer
+// disappears.
+func (pool *BufferPoolInstance) ParentReleaseBuffer(buffer *Buffer) {
+	var carg0 *C.GstBufferPool
+	var carg1 *C.GstBuffer // in, full, converted
+
+	parentclass := (*C.GstBufferPoolClass)(classdata.PeekParentClass(UnsafeBufferPoolToGlibNone(pool)))
+
+	carg1 = (*C.GstBuffer)(UnsafeBufferToGlibFull(buffer))
+
+	C._gotk4_gst1_BufferPool_virtual_release_buffer(unsafe.Pointer(parentclass.release_buffer), carg0, carg1)
+	runtime.KeepAlive(pool)
+	runtime.KeepAlive(buffer)
+}
+
+// ParentResetBuffer calls the default implementations of the reset_buffer virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- buffer *Buffer: the #GstBuffer to reset 
+//
+// Reset the buffer to its state when it was freshly allocated.
+// The default implementation will clear the flags, timestamps and
+// will remove the metadata without the #GST_META_FLAG_POOLED flag (even
+// the metadata with #GST_META_FLAG_LOCKED). If the
+// #GST_BUFFER_FLAG_TAG_MEMORY was set, this function can also try to
+// restore the memory and clear the #GST_BUFFER_FLAG_TAG_MEMORY again.
+func (pool *BufferPoolInstance) ParentResetBuffer(buffer *Buffer) {
+	var carg0 *C.GstBufferPool
+	var carg1 *C.GstBuffer // in, none, converted
+
+	parentclass := (*C.GstBufferPoolClass)(classdata.PeekParentClass(UnsafeBufferPoolToGlibNone(pool)))
+
+	carg1 = (*C.GstBuffer)(UnsafeBufferToGlibNone(buffer))
+
+	C._gotk4_gst1_BufferPool_virtual_reset_buffer(unsafe.Pointer(parentclass.reset_buffer), carg0, carg1)
+	runtime.KeepAlive(pool)
+	runtime.KeepAlive(buffer)
+}
+
+// ParentSetConfig calls the default implementations of the set_config virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- config *Structure: a #GstStructure 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Sets the configuration of the pool. If the pool is already configured, and
+// the configuration hasn't changed, this function will return %TRUE. If the
+// pool is active, this method will return %FALSE and active configuration
+// will remain. Buffers allocated from this pool must be returned or else this
+// function will do nothing and return %FALSE.
+// 
+// @config is a #GstStructure that contains the configuration parameters for
+// the pool. A default and mandatory set of parameters can be configured with
+// gst_buffer_pool_config_set_params(), gst_buffer_pool_config_set_allocator()
+// and gst_buffer_pool_config_add_option().
+// 
+// If the parameters in @config can not be set exactly, this function returns
+// %FALSE and will try to update as much state as possible. The new state can
+// then be retrieved and refined with gst_buffer_pool_get_config().
+// 
+// This function takes ownership of @config.
+func (pool *BufferPoolInstance) ParentSetConfig(config *Structure) bool {
+	var carg0 *C.GstBufferPool
+	var carg1 *C.GstStructure // in, full, converted
+	var cret  C.gboolean      // return
+
+	parentclass := (*C.GstBufferPoolClass)(classdata.PeekParentClass(UnsafeBufferPoolToGlibNone(pool)))
+
+	carg1 = (*C.GstStructure)(UnsafeStructureToGlibFull(config))
+
+	cret = C._gotk4_gst1_BufferPool_virtual_set_config(unsafe.Pointer(parentclass.set_config), carg0, carg1)
+	runtime.KeepAlive(pool)
+	runtime.KeepAlive(config)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentStart calls the default implementations of the start virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Start the bufferpool. The default implementation will preallocate
+// min-buffers buffers and put them in the queue.
+// 
+// Subclasses do not need to chain up to the parent's default implementation
+// if they don't want min-buffers based preallocation.
+func (pool *BufferPoolInstance) ParentStart() bool {
+	var carg0 *C.GstBufferPool
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstBufferPoolClass)(classdata.PeekParentClass(UnsafeBufferPoolToGlibNone(pool)))
+
+	cret = C._gotk4_gst1_BufferPool_virtual_start(unsafe.Pointer(parentclass.start), carg0)
+	runtime.KeepAlive(pool)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentStop calls the default implementations of the stop virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Stop the bufferpool. the default implementation will free the
+// preallocated buffers. This function is called when all the buffers are
+// returned to the pool.
+func (pool *BufferPoolInstance) ParentStop() bool {
+	var carg0 *C.GstBufferPool
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstBufferPoolClass)(classdata.PeekParentClass(UnsafeBufferPoolToGlibNone(pool)))
+
+	cret = C._gotk4_gst1_BufferPool_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
+	runtime.KeepAlive(pool)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
 }
 
 // RegisterBufferPoolSubClass is used to register a go subclass of GstBufferPool. For this to work safely please implement the
@@ -26300,6 +28144,25 @@ type Bus interface {
 	// This signal will not be emitted by default, you have to call
 	// gst_bus_enable_sync_message_emission() before.
 	ConnectSyncMessage(func(Bus, Message)) gobject.SignalHandle
+
+	// chain up virtual methods:
+
+	// ParentMessage calls the default implementations of the message virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- message *Message: the message that has been posted asynchronously 
+	//
+	// A message has been posted on the bus.
+	ParentMessage(message *Message)
+	// ParentSyncMessage calls the default implementations of the sync_message virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- message *Message: the message that has been posted synchronously 
+	//
+	// A message has been posted on the bus.
+	ParentSyncMessage(message *Message)
 }
 
 func unsafeWrapBus(base *gobject.ObjectInstance) *BusInstance {
@@ -27003,11 +28866,15 @@ type BusOverrides[Instance Bus] struct {
 	// The function takes the following parameters:
 	// 
 	// 	- message *Message: the message that has been posted asynchronously 
+	//
+	// A message has been posted on the bus.
 	Message func(Instance, *Message)
 	// SyncMessage allows you to override the implementation of the virtual method sync_message.
 	// The function takes the following parameters:
 	// 
 	// 	- message *Message: the message that has been posted synchronously 
+	//
+	// A message has been posted on the bus.
 	SyncMessage func(Instance, *Message)
 }
 
@@ -27051,6 +28918,46 @@ func UnsafeApplyBusOverrides[Instance Bus](gclass unsafe.Pointer, overrides BusO
 			},
 		)
 	}
+}
+
+// ParentMessage calls the default implementations of the message virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- message *Message: the message that has been posted asynchronously 
+//
+// A message has been posted on the bus.
+func (bus *BusInstance) ParentMessage(message *Message) {
+	var carg0 *C.GstBus
+	var carg1 *C.GstMessage // in, none, converted
+
+	parentclass := (*C.GstBusClass)(classdata.PeekParentClass(UnsafeBusToGlibNone(bus)))
+
+	carg1 = (*C.GstMessage)(UnsafeMessageToGlibNone(message))
+
+	C._gotk4_gst1_Bus_virtual_message(unsafe.Pointer(parentclass.message), carg0, carg1)
+	runtime.KeepAlive(bus)
+	runtime.KeepAlive(message)
+}
+
+// ParentSyncMessage calls the default implementations of the sync_message virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- message *Message: the message that has been posted synchronously 
+//
+// A message has been posted on the bus.
+func (bus *BusInstance) ParentSyncMessage(message *Message) {
+	var carg0 *C.GstBus
+	var carg1 *C.GstMessage // in, none, converted
+
+	parentclass := (*C.GstBusClass)(classdata.PeekParentClass(UnsafeBusToGlibNone(bus)))
+
+	carg1 = (*C.GstMessage)(UnsafeMessageToGlibNone(message))
+
+	C._gotk4_gst1_Bus_virtual_sync_message(unsafe.Pointer(parentclass.sync_message), carg0, carg1)
+	runtime.KeepAlive(bus)
+	runtime.KeepAlive(message)
 }
 
 // RegisterBusSubClass is used to register a go subclass of GstBus. For this to work safely please implement the
@@ -27534,6 +29441,75 @@ type Clock interface {
 	// This signal will be emitted from an arbitrary thread, most likely not
 	// the application's main thread.
 	ConnectSynced(func(Clock, bool)) gobject.SignalHandle
+
+	// chain up virtual methods:
+
+	// ParentChangeResolution calls the default implementations of the change_resolution virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- oldResolution ClockTime: the previous resolution 
+	// 	- newResolution ClockTime: the new resolution 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret ClockTime 
+	//
+	// Change the resolution of the clock. Not all values might
+	// be acceptable.
+	ParentChangeResolution(oldResolution ClockTime, newResolution ClockTime) ClockTime
+	// ParentGetInternalTime calls the default implementations of the get_internal_time virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret ClockTime 
+	//
+	// Gets the current internal time of the given clock. The time is returned
+	// unadjusted for the offset and the rate.
+	ParentGetInternalTime() ClockTime
+	// ParentGetResolution calls the default implementations of the get_resolution virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret ClockTime 
+	//
+	// Gets the accuracy of the clock. The accuracy of the clock is the granularity
+	// of the values returned by gst_clock_get_time().
+	ParentGetResolution() ClockTime
+	// ParentUnschedule calls the default implementations of the unschedule virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- entry *ClockEntry: the entry to unschedule 
+	//
+	// Unblock a blocking or async wait operation.
+	ParentUnschedule(entry *ClockEntry)
+	// ParentWait calls the default implementations of the wait virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- entry *ClockEntry: the entry to wait on 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- jitter ClockTimeDiff: a pointer that will contain the jitter 
+	// 	- goret ClockReturn 
+	//
+	// Perform a blocking wait on the given #GstClockEntry and return
+	// the jitter.
+	ParentWait(entry *ClockEntry) (ClockTimeDiff, ClockReturn)
+	// ParentWaitAsync calls the default implementations of the wait_async virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- entry *ClockEntry: the entry to wait on 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret ClockReturn 
+	//
+	// Perform an asynchronous wait on the given #GstClockEntry.
+	ParentWaitAsync(entry *ClockEntry) ClockReturn
 }
 
 func unsafeWrapClock(base *gobject.ObjectInstance) *ClockInstance {
@@ -28677,21 +30653,32 @@ type ClockOverrides[Instance Clock] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret ClockTime 
+	//
+	// Change the resolution of the clock. Not all values might
+	// be acceptable.
 	ChangeResolution func(Instance, ClockTime, ClockTime) ClockTime
 	// GetInternalTime allows you to override the implementation of the virtual method get_internal_time.
 	// The function returns the following values:
 	// 
 	// 	- goret ClockTime 
+	//
+	// Gets the current internal time of the given clock. The time is returned
+	// unadjusted for the offset and the rate.
 	GetInternalTime func(Instance) ClockTime
 	// GetResolution allows you to override the implementation of the virtual method get_resolution.
 	// The function returns the following values:
 	// 
 	// 	- goret ClockTime 
+	//
+	// Gets the accuracy of the clock. The accuracy of the clock is the granularity
+	// of the values returned by gst_clock_get_time().
 	GetResolution func(Instance) ClockTime
 	// Unschedule allows you to override the implementation of the virtual method unschedule.
 	// The function takes the following parameters:
 	// 
 	// 	- entry *ClockEntry: the entry to unschedule 
+	//
+	// Unblock a blocking or async wait operation.
 	Unschedule func(Instance, *ClockEntry)
 	// Wait allows you to override the implementation of the virtual method wait.
 	// The function takes the following parameters:
@@ -28702,6 +30689,9 @@ type ClockOverrides[Instance Clock] struct {
 	// 
 	// 	- jitter ClockTimeDiff: a pointer that will contain the jitter 
 	// 	- goret ClockReturn 
+	//
+	// Perform a blocking wait on the given #GstClockEntry and return
+	// the jitter.
 	Wait func(Instance, *ClockEntry) (ClockTimeDiff, ClockReturn)
 	// WaitAsync allows you to override the implementation of the virtual method wait_async.
 	// The function takes the following parameters:
@@ -28711,6 +30701,8 @@ type ClockOverrides[Instance Clock] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret ClockReturn 
+	//
+	// Perform an asynchronous wait on the given #GstClockEntry.
 	WaitAsync func(Instance, *ClockEntry) ClockReturn
 }
 
@@ -28849,6 +30841,177 @@ func UnsafeApplyClockOverrides[Instance Clock](gclass unsafe.Pointer, overrides 
 	}
 }
 
+// ParentChangeResolution calls the default implementations of the change_resolution virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- oldResolution ClockTime: the previous resolution 
+// 	- newResolution ClockTime: the new resolution 
+// 
+// The function returns the following values:
+// 
+// 	- goret ClockTime 
+//
+// Change the resolution of the clock. Not all values might
+// be acceptable.
+func (clock *ClockInstance) ParentChangeResolution(oldResolution ClockTime, newResolution ClockTime) ClockTime {
+	var carg0 *C.GstClock
+	var carg1 C.GstClockTime // in, none, casted, alias
+	var carg2 C.GstClockTime // in, none, casted, alias
+	var cret  C.GstClockTime // return, none, casted, alias
+
+	parentclass := (*C.GstClockClass)(classdata.PeekParentClass(UnsafeClockToGlibNone(clock)))
+
+	carg1 = C.GstClockTime(oldResolution)
+	carg2 = C.GstClockTime(newResolution)
+
+	cret = C._gotk4_gst1_Clock_virtual_change_resolution(unsafe.Pointer(parentclass.change_resolution), carg0, carg1, carg2)
+	runtime.KeepAlive(clock)
+	runtime.KeepAlive(oldResolution)
+	runtime.KeepAlive(newResolution)
+
+	var goret ClockTime
+
+	goret = ClockTime(cret)
+
+	return goret
+}
+
+// ParentGetInternalTime calls the default implementations of the get_internal_time virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret ClockTime 
+//
+// Gets the current internal time of the given clock. The time is returned
+// unadjusted for the offset and the rate.
+func (clock *ClockInstance) ParentGetInternalTime() ClockTime {
+	var carg0 *C.GstClock
+	var cret  C.GstClockTime // return, none, casted, alias
+
+	parentclass := (*C.GstClockClass)(classdata.PeekParentClass(UnsafeClockToGlibNone(clock)))
+
+	cret = C._gotk4_gst1_Clock_virtual_get_internal_time(unsafe.Pointer(parentclass.get_internal_time), carg0)
+	runtime.KeepAlive(clock)
+
+	var goret ClockTime
+
+	goret = ClockTime(cret)
+
+	return goret
+}
+
+// ParentGetResolution calls the default implementations of the get_resolution virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret ClockTime 
+//
+// Gets the accuracy of the clock. The accuracy of the clock is the granularity
+// of the values returned by gst_clock_get_time().
+func (clock *ClockInstance) ParentGetResolution() ClockTime {
+	var carg0 *C.GstClock
+	var cret  C.GstClockTime // return, none, casted, alias
+
+	parentclass := (*C.GstClockClass)(classdata.PeekParentClass(UnsafeClockToGlibNone(clock)))
+
+	cret = C._gotk4_gst1_Clock_virtual_get_resolution(unsafe.Pointer(parentclass.get_resolution), carg0)
+	runtime.KeepAlive(clock)
+
+	var goret ClockTime
+
+	goret = ClockTime(cret)
+
+	return goret
+}
+
+// ParentUnschedule calls the default implementations of the unschedule virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- entry *ClockEntry: the entry to unschedule 
+//
+// Unblock a blocking or async wait operation.
+func (clock *ClockInstance) ParentUnschedule(entry *ClockEntry) {
+	var carg0 *C.GstClock
+	var carg1 *C.GstClockEntry // in, none, converted
+
+	parentclass := (*C.GstClockClass)(classdata.PeekParentClass(UnsafeClockToGlibNone(clock)))
+
+	carg1 = (*C.GstClockEntry)(UnsafeClockEntryToGlibNone(entry))
+
+	C._gotk4_gst1_Clock_virtual_unschedule(unsafe.Pointer(parentclass.unschedule), carg0, carg1)
+	runtime.KeepAlive(clock)
+	runtime.KeepAlive(entry)
+}
+
+// ParentWait calls the default implementations of the wait virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- entry *ClockEntry: the entry to wait on 
+// 
+// The function returns the following values:
+// 
+// 	- jitter ClockTimeDiff: a pointer that will contain the jitter 
+// 	- goret ClockReturn 
+//
+// Perform a blocking wait on the given #GstClockEntry and return
+// the jitter.
+func (clock *ClockInstance) ParentWait(entry *ClockEntry) (ClockTimeDiff, ClockReturn) {
+	var carg0 *C.GstClock
+	var carg1 *C.GstClockEntry   // in, none, converted
+	var carg2 C.GstClockTimeDiff // out, full, casted, alias
+	var cret  C.GstClockReturn   // return, none, casted
+
+	parentclass := (*C.GstClockClass)(classdata.PeekParentClass(UnsafeClockToGlibNone(clock)))
+
+	carg1 = (*C.GstClockEntry)(UnsafeClockEntryToGlibNone(entry))
+
+	cret = C._gotk4_gst1_Clock_virtual_wait(unsafe.Pointer(parentclass.wait), carg0, carg1, &carg2)
+	runtime.KeepAlive(clock)
+	runtime.KeepAlive(entry)
+
+	var jitter ClockTimeDiff
+	var goret  ClockReturn
+
+	jitter = ClockTimeDiff(carg2)
+	goret = ClockReturn(cret)
+
+	return jitter, goret
+}
+
+// ParentWaitAsync calls the default implementations of the wait_async virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- entry *ClockEntry: the entry to wait on 
+// 
+// The function returns the following values:
+// 
+// 	- goret ClockReturn 
+//
+// Perform an asynchronous wait on the given #GstClockEntry.
+func (clock *ClockInstance) ParentWaitAsync(entry *ClockEntry) ClockReturn {
+	var carg0 *C.GstClock
+	var carg1 *C.GstClockEntry // in, none, converted
+	var cret  C.GstClockReturn // return, none, casted
+
+	parentclass := (*C.GstClockClass)(classdata.PeekParentClass(UnsafeClockToGlibNone(clock)))
+
+	carg1 = (*C.GstClockEntry)(UnsafeClockEntryToGlibNone(entry))
+
+	cret = C._gotk4_gst1_Clock_virtual_wait_async(unsafe.Pointer(parentclass.wait_async), carg0, carg1)
+	runtime.KeepAlive(clock)
+	runtime.KeepAlive(entry)
+
+	var goret ClockReturn
+
+	goret = ClockReturn(cret)
+
+	return goret
+}
+
 // RegisterClockSubClass is used to register a go subclass of GstClock. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterClockSubClass[InstanceT Clock](
@@ -28929,6 +31092,27 @@ type ControlBinding interface {
 	// If this function fails, it is most likely the application developers fault.
 	// Most probably the control sources are not setup correctly.
 	SyncControlBindingValues(Object, ClockTime, ClockTime) bool
+
+	// chain up virtual methods:
+
+	// ParentSyncValues calls the default implementations of the sync_values virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- object Object: the object that has controlled properties 
+	// 	- timestamp ClockTime: the time that should be processed 
+	// 	- lastSync ClockTime: the last time this was called 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Sets the property of the @object, according to the #GstControlSources that
+	// handles it and for the given timestamp.
+	// 
+	// If this function fails, it is most likely the application developers fault.
+	// Most probably the control sources are not setup correctly.
+	ParentSyncValues(object Object, timestamp ClockTime, lastSync ClockTime) bool
 }
 
 func unsafeWrapControlBinding(base *gobject.ObjectInstance) *ControlBindingInstance {
@@ -29082,6 +31266,12 @@ type ControlBindingOverrides[Instance ControlBinding] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Sets the property of the @object, according to the #GstControlSources that
+	// handles it and for the given timestamp.
+	// 
+	// If this function fails, it is most likely the application developers fault.
+	// Most probably the control sources are not setup correctly.
 	SyncValues func(Instance, Object, ClockTime, ClockTime) bool
 }
 
@@ -29119,6 +31309,51 @@ func UnsafeApplyControlBindingOverrides[Instance ControlBinding](gclass unsafe.P
 			},
 		)
 	}
+}
+
+// ParentSyncValues calls the default implementations of the sync_values virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- object Object: the object that has controlled properties 
+// 	- timestamp ClockTime: the time that should be processed 
+// 	- lastSync ClockTime: the last time this was called 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Sets the property of the @object, according to the #GstControlSources that
+// handles it and for the given timestamp.
+// 
+// If this function fails, it is most likely the application developers fault.
+// Most probably the control sources are not setup correctly.
+func (binding *ControlBindingInstance) ParentSyncValues(object Object, timestamp ClockTime, lastSync ClockTime) bool {
+	var carg0 *C.GstControlBinding
+	var carg1 *C.GstObject   // in, none, converted
+	var carg2 C.GstClockTime // in, none, casted, alias
+	var carg3 C.GstClockTime // in, none, casted, alias
+	var cret  C.gboolean     // return
+
+	parentclass := (*C.GstControlBindingClass)(classdata.PeekParentClass(UnsafeControlBindingToGlibNone(binding)))
+
+	carg1 = (*C.GstObject)(UnsafeObjectToGlibNone(object))
+	carg2 = C.GstClockTime(timestamp)
+	carg3 = C.GstClockTime(lastSync)
+
+	cret = C._gotk4_gst1_ControlBinding_virtual_sync_values(unsafe.Pointer(parentclass.sync_values), carg0, carg1, carg2, carg3)
+	runtime.KeepAlive(binding)
+	runtime.KeepAlive(object)
+	runtime.KeepAlive(timestamp)
+	runtime.KeepAlive(lastSync)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
 }
 
 // RegisterControlBindingSubClass is used to register a go subclass of GstControlBinding. For this to work safely please implement the
@@ -29202,6 +31437,8 @@ type ControlSource interface {
 	// Gets an array of values for for this #GstControlSource. Values that are
 	// undefined contain NANs.
 	ControlSourceGetValueArray(ClockTime, ClockTime, []float64) bool
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapControlSource(base *gobject.ObjectInstance) *ControlSourceInstance {
@@ -29481,6 +31718,40 @@ type Device interface {
 	ReconfigureElement(Element) bool
 	// ConnectRemoved connects the provided callback to the "removed" signal
 	ConnectRemoved(func(Device)) gobject.SignalHandle
+
+	// chain up virtual methods:
+
+	// ParentCreateElement calls the default implementations of the create_element virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- name string (nullable): name of new element, or %NULL to automatically
+	// create a unique name. 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret Element (nullable) 
+	//
+	// Creates the element with all of the required parameters set to use
+	// this device.
+	ParentCreateElement(name string) Element
+	// ParentReconfigureElement calls the default implementations of the reconfigure_element virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- element Element: a #GstElement 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Tries to reconfigure an existing element to use the device. If this
+	// function fails, then one must destroy the element and create a new one
+	// using gst_device_create_element().
+	// 
+	// Note: This should only be implemented for elements can change their
+	// device in the PLAYING state.
+	ParentReconfigureElement(element Element) bool
 }
 
 func unsafeWrapDevice(base *gobject.ObjectInstance) *DeviceInstance {
@@ -29789,6 +32060,9 @@ type DeviceOverrides[Instance Device] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret Element (nullable) 
+	//
+	// Creates the element with all of the required parameters set to use
+	// this device.
 	CreateElement func(Instance, string) Element
 	// ReconfigureElement allows you to override the implementation of the virtual method reconfigure_element.
 	// The function takes the following parameters:
@@ -29798,6 +32072,13 @@ type DeviceOverrides[Instance Device] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Tries to reconfigure an existing element to use the device. If this
+	// function fails, then one must destroy the element and create a new one
+	// using gst_device_create_element().
+	// 
+	// Note: This should only be implemented for elements can change their
+	// device in the PLAYING state.
 	ReconfigureElement func(Instance, Element) bool
 }
 
@@ -29857,6 +32138,82 @@ func UnsafeApplyDeviceOverrides[Instance Device](gclass unsafe.Pointer, override
 			},
 		)
 	}
+}
+
+// ParentCreateElement calls the default implementations of the create_element virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- name string (nullable): name of new element, or %NULL to automatically
+// create a unique name. 
+// 
+// The function returns the following values:
+// 
+// 	- goret Element (nullable) 
+//
+// Creates the element with all of the required parameters set to use
+// this device.
+func (device *DeviceInstance) ParentCreateElement(name string) Element {
+	var carg0 *C.GstDevice
+	var carg1 *C.gchar      // in, none, string, nullable-string
+	var cret  *C.GstElement // return, none, converted, nullable
+
+	parentclass := (*C.GstDeviceClass)(classdata.PeekParentClass(UnsafeDeviceToGlibNone(device)))
+
+	if name != "" {
+		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
+		defer C.free(unsafe.Pointer(carg1))
+	}
+
+	cret = C._gotk4_gst1_Device_virtual_create_element(unsafe.Pointer(parentclass.create_element), carg0, carg1)
+	runtime.KeepAlive(device)
+	runtime.KeepAlive(name)
+
+	var goret Element
+
+	if cret != nil {
+		goret = UnsafeElementFromGlibNone(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
+// ParentReconfigureElement calls the default implementations of the reconfigure_element virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- element Element: a #GstElement 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Tries to reconfigure an existing element to use the device. If this
+// function fails, then one must destroy the element and create a new one
+// using gst_device_create_element().
+// 
+// Note: This should only be implemented for elements can change their
+// device in the PLAYING state.
+func (device *DeviceInstance) ParentReconfigureElement(element Element) bool {
+	var carg0 *C.GstDevice
+	var carg1 *C.GstElement // in, none, converted
+	var cret  C.gboolean    // return
+
+	parentclass := (*C.GstDeviceClass)(classdata.PeekParentClass(UnsafeDeviceToGlibNone(device)))
+
+	carg1 = (*C.GstElement)(UnsafeElementToGlibNone(element))
+
+	cret = C._gotk4_gst1_Device_virtual_reconfigure_element(unsafe.Pointer(parentclass.reconfigure_element), carg0, carg1)
+	runtime.KeepAlive(device)
+	runtime.KeepAlive(element)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
 }
 
 // RegisterDeviceSubClass is used to register a go subclass of GstDevice. For this to work safely please implement the
@@ -30055,6 +32412,8 @@ type DeviceMonitor interface {
 	//
 	// Stops monitoring the devices.
 	Stop()
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapDeviceMonitor(base *gobject.ObjectInstance) *DeviceMonitorInstance {
@@ -30587,6 +32946,35 @@ type DeviceProvider interface {
 	ConnectProviderHidden(func(DeviceProvider, string)) gobject.SignalHandle
 	// ConnectProviderUnhidden connects the provided callback to the "provider-unhidden" signal
 	ConnectProviderUnhidden(func(DeviceProvider, string)) gobject.SignalHandle
+
+	// chain up virtual methods:
+
+	// ParentStart calls the default implementations of the start virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Starts providering the devices. This will cause #GST_MESSAGE_DEVICE_ADDED
+	// and #GST_MESSAGE_DEVICE_REMOVED messages to be posted on the provider's bus
+	// when devices are added or removed from the system.
+	// 
+	// Since the #GstDeviceProvider is a singleton,
+	// gst_device_provider_start() may already have been called by another
+	// user of the object, gst_device_provider_stop() needs to be called the same
+	// number of times.
+	// 
+	// After this function has been called, gst_device_provider_get_devices() will
+	// return the same objects that have been received from the
+	// #GST_MESSAGE_DEVICE_ADDED messages and will no longer probe.
+	ParentStart() bool
+	// ParentStop calls the default implementations of the stop virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	//
+	// Decreases the use-count by one. If the use count reaches zero, this
+	// #GstDeviceProvider will stop providering the devices. This needs to be
+	// called the same number of times that gst_device_provider_start() was called.
+	ParentStop()
 }
 
 func unsafeWrapDeviceProvider(base *gobject.ObjectInstance) *DeviceProviderInstance {
@@ -31058,8 +33446,25 @@ type DeviceProviderOverrides[Instance DeviceProvider] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Starts providering the devices. This will cause #GST_MESSAGE_DEVICE_ADDED
+	// and #GST_MESSAGE_DEVICE_REMOVED messages to be posted on the provider's bus
+	// when devices are added or removed from the system.
+	// 
+	// Since the #GstDeviceProvider is a singleton,
+	// gst_device_provider_start() may already have been called by another
+	// user of the object, gst_device_provider_stop() needs to be called the same
+	// number of times.
+	// 
+	// After this function has been called, gst_device_provider_get_devices() will
+	// return the same objects that have been received from the
+	// #GST_MESSAGE_DEVICE_ADDED messages and will no longer probe.
 	Start func(Instance) bool
 	// Stop allows you to override the implementation of the virtual method stop.
+	//
+	// Decreases the use-count by one. If the use count reaches zero, this
+	// #GstDeviceProvider will stop providering the devices. This needs to be
+	// called the same number of times that gst_device_provider_start() was called.
 	Stop func(Instance)
 }
 
@@ -31106,6 +33511,57 @@ func UnsafeApplyDeviceProviderOverrides[Instance DeviceProvider](gclass unsafe.P
 			},
 		)
 	}
+}
+
+// ParentStart calls the default implementations of the start virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Starts providering the devices. This will cause #GST_MESSAGE_DEVICE_ADDED
+// and #GST_MESSAGE_DEVICE_REMOVED messages to be posted on the provider's bus
+// when devices are added or removed from the system.
+// 
+// Since the #GstDeviceProvider is a singleton,
+// gst_device_provider_start() may already have been called by another
+// user of the object, gst_device_provider_stop() needs to be called the same
+// number of times.
+// 
+// After this function has been called, gst_device_provider_get_devices() will
+// return the same objects that have been received from the
+// #GST_MESSAGE_DEVICE_ADDED messages and will no longer probe.
+func (provider *DeviceProviderInstance) ParentStart() bool {
+	var carg0 *C.GstDeviceProvider
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstDeviceProviderClass)(classdata.PeekParentClass(UnsafeDeviceProviderToGlibNone(provider)))
+
+	cret = C._gotk4_gst1_DeviceProvider_virtual_start(unsafe.Pointer(parentclass.start), carg0)
+	runtime.KeepAlive(provider)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentStop calls the default implementations of the stop virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+//
+// Decreases the use-count by one. If the use count reaches zero, this
+// #GstDeviceProvider will stop providering the devices. This needs to be
+// called the same number of times that gst_device_provider_start() was called.
+func (provider *DeviceProviderInstance) ParentStop() {
+	var carg0 *C.GstDeviceProvider
+
+	parentclass := (*C.GstDeviceProviderClass)(classdata.PeekParentClass(UnsafeDeviceProviderToGlibNone(provider)))
+
+	C._gotk4_gst1_DeviceProvider_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
+	runtime.KeepAlive(provider)
 }
 
 // RegisterDeviceProviderSubClass is used to register a go subclass of GstDeviceProvider. For this to work safely please implement the
@@ -32799,6 +35255,243 @@ type Element interface {
 	//
 	// a #GstPad has been removed from the element
 	ConnectPadRemoved(func(Element, Pad)) gobject.SignalHandle
+
+	// chain up virtual methods:
+
+	// ParentChangeState calls the default implementations of the change_state virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- transition StateChange: the requested transition 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret StateChangeReturn 
+	//
+	// Perform @transition on @element.
+	// 
+	// This function must be called with STATE_LOCK held and is mainly used
+	// internally.
+	ParentChangeState(transition StateChange) StateChangeReturn
+	// ParentGetState calls the default implementations of the get_state virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- timeout ClockTime: a #GstClockTime to specify the timeout for an async
+	//           state change or %GST_CLOCK_TIME_NONE for infinite timeout. 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- state State: a pointer to #GstState to hold the state.
+	//     Can be %NULL. 
+	// 	- pending State: a pointer to #GstState to hold the pending
+	//     state. Can be %NULL. 
+	// 	- goret StateChangeReturn 
+	//
+	// Gets the state of the element.
+	// 
+	// For elements that performed an ASYNC state change, as reported by
+	// gst_element_set_state(), this function will block up to the
+	// specified timeout value for the state change to complete.
+	// If the element completes the state change or goes into
+	// an error, this function returns immediately with a return value of
+	// %GST_STATE_CHANGE_SUCCESS or %GST_STATE_CHANGE_FAILURE respectively.
+	// 
+	// For elements that did not return %GST_STATE_CHANGE_ASYNC, this function
+	// returns the current and pending state immediately.
+	// 
+	// This function returns %GST_STATE_CHANGE_NO_PREROLL if the element
+	// successfully changed its state but is not able to provide data yet.
+	// This mostly happens for live sources that only produce data in
+	// %GST_STATE_PLAYING. While the state change return is equivalent to
+	// %GST_STATE_CHANGE_SUCCESS, it is returned to the application to signal that
+	// some sink elements might not be able to complete their state change because
+	// an element is not producing data to complete the preroll. When setting the
+	// element to playing, the preroll will complete and playback will start.
+	ParentGetState(timeout ClockTime) (State, State, StateChangeReturn)
+	// ParentNoMorePads calls the default implementations of the no_more_pads virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	//
+	// Use this function to signal that the element does not expect any more pads
+	// to show up in the current pipeline. This function should be called whenever
+	// pads have been added by the element itself. Elements with #GST_PAD_SOMETIMES
+	// pad templates use this in combination with autopluggers to figure out that
+	// the element is done initializing its pads.
+	// 
+	// This function emits the #GstElement::no-more-pads signal.
+	// 
+	// MT safe.
+	ParentNoMorePads()
+	// ParentPadAdded calls the default implementations of the pad_added virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- pad Pad 
+	ParentPadAdded(pad Pad)
+	// ParentPadRemoved calls the default implementations of the pad_removed virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- pad Pad 
+	ParentPadRemoved(pad Pad)
+	// ParentPostMessage calls the default implementations of the post_message virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- message *Message: a #GstMessage to post 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Post a message on the element's #GstBus. This function takes ownership of the
+	// message; if you want to access the message after this call, you should add an
+	// additional reference before calling.
+	ParentPostMessage(message *Message) bool
+	// ParentProvideClock calls the default implementations of the provide_clock virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret Clock (nullable) 
+	//
+	// Get the clock provided by the given element.
+	// &gt; An element is only required to provide a clock in the PAUSED
+	// &gt; state. Some elements can provide a clock in other states.
+	ParentProvideClock() Clock
+	// ParentQuery calls the default implementations of the query virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- query *Query: the #GstQuery. 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Performs a query on the given element.
+	// 
+	// For elements that don't implement a query handler, this function
+	// forwards the query to a random srcpad or to the peer of a
+	// random linked sinkpad of this element.
+	// 
+	// Please note that some queries might need a running pipeline to work.
+	ParentQuery(query *Query) bool
+	// ParentReleasePad calls the default implementations of the release_pad virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- pad Pad 
+	//
+	// called when a request pad is to be released
+	ParentReleasePad(pad Pad)
+	// ParentRequestNewPad calls the default implementations of the request_new_pad virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- templ PadTemplate: a #GstPadTemplate of which we want a pad of. 
+	// 	- name string (nullable): the name of the request #GstPad
+	// to retrieve. Can be %NULL. 
+	// 	- caps *Caps (nullable): the caps of the pad we want to
+	// request. Can be %NULL. 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret Pad (nullable) 
+	//
+	// Retrieves a request pad from the element according to the provided template.
+	// Pad templates can be looked up using
+	// gst_element_factory_get_static_pad_templates().
+	// 
+	// The pad should be released with gst_element_release_request_pad().
+	ParentRequestNewPad(templ PadTemplate, name string, caps *Caps) Pad
+	// ParentSendEvent calls the default implementations of the send_event virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- event *Event: the #GstEvent to send to the element. 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Sends an event to an element. If the element doesn't implement an
+	// event handler, the event will be pushed on a random linked sink pad for
+	// downstream events or a random linked source pad for upstream events.
+	// 
+	// This function takes ownership of the provided event so you should
+	// gst_event_ref() it if you want to reuse the event after this call.
+	// 
+	// MT safe.
+	ParentSendEvent(event *Event) bool
+	// ParentSetBus calls the default implementations of the set_bus virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- bus Bus (nullable): the #GstBus to set. 
+	//
+	// Sets the bus of the element. Increases the refcount on the bus.
+	// For internal use only, unless you're testing elements.
+	// 
+	// MT safe.
+	ParentSetBus(bus Bus)
+	// ParentSetClock calls the default implementations of the set_clock virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- clock Clock (nullable): the #GstClock to set for the element. 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Sets the clock for the element. This function increases the
+	// refcount on the clock. Any previously set clock on the object
+	// is unreffed.
+	ParentSetClock(clock Clock) bool
+	// ParentSetContext calls the default implementations of the set_context virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- _context *Context: the #GstContext to set. 
+	//
+	// Sets the context of the element. Increases the refcount of the context.
+	// 
+	// MT safe.
+	ParentSetContext(_context *Context)
+	// ParentSetState calls the default implementations of the set_state virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- state State: the element's new #GstState. 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret StateChangeReturn 
+	//
+	// Sets the state of the element. This function will try to set the
+	// requested state by going through all the intermediary states and calling
+	// the class's state change function for each.
+	// 
+	// This function can return #GST_STATE_CHANGE_ASYNC, in which case the
+	// element will perform the remainder of the state change asynchronously in
+	// another thread.
+	// An application can use gst_element_get_state() to wait for the completion
+	// of the state change or it can wait for a %GST_MESSAGE_ASYNC_DONE or
+	// %GST_MESSAGE_STATE_CHANGED on the bus.
+	// 
+	// State changes to %GST_STATE_READY or %GST_STATE_NULL never return
+	// #GST_STATE_CHANGE_ASYNC.
+	ParentSetState(state State) StateChangeReturn
+	// ParentStateChanged calls the default implementations of the state_changed virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- oldstate State 
+	// 	- newstate State 
+	// 	- pending State 
+	//
+	// called immediately after a new state was set.
+	ParentStateChanged(oldstate State, newstate State, pending State)
 }
 
 func unsafeWrapElement(base *gobject.ObjectInstance) *ElementInstance {
@@ -35476,6 +38169,11 @@ type ElementOverrides[Instance Element] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret StateChangeReturn 
+	//
+	// Perform @transition on @element.
+	// 
+	// This function must be called with STATE_LOCK held and is mainly used
+	// internally.
 	ChangeState func(Instance, StateChange) StateChangeReturn
 	// GetState allows you to override the implementation of the virtual method get_state.
 	// The function takes the following parameters:
@@ -35490,8 +38188,39 @@ type ElementOverrides[Instance Element] struct {
 	// 	- pending State: a pointer to #GstState to hold the pending
 	//     state. Can be %NULL. 
 	// 	- goret StateChangeReturn 
+	//
+	// Gets the state of the element.
+	// 
+	// For elements that performed an ASYNC state change, as reported by
+	// gst_element_set_state(), this function will block up to the
+	// specified timeout value for the state change to complete.
+	// If the element completes the state change or goes into
+	// an error, this function returns immediately with a return value of
+	// %GST_STATE_CHANGE_SUCCESS or %GST_STATE_CHANGE_FAILURE respectively.
+	// 
+	// For elements that did not return %GST_STATE_CHANGE_ASYNC, this function
+	// returns the current and pending state immediately.
+	// 
+	// This function returns %GST_STATE_CHANGE_NO_PREROLL if the element
+	// successfully changed its state but is not able to provide data yet.
+	// This mostly happens for live sources that only produce data in
+	// %GST_STATE_PLAYING. While the state change return is equivalent to
+	// %GST_STATE_CHANGE_SUCCESS, it is returned to the application to signal that
+	// some sink elements might not be able to complete their state change because
+	// an element is not producing data to complete the preroll. When setting the
+	// element to playing, the preroll will complete and playback will start.
 	GetState func(Instance, ClockTime) (State, State, StateChangeReturn)
 	// NoMorePads allows you to override the implementation of the virtual method no_more_pads.
+	//
+	// Use this function to signal that the element does not expect any more pads
+	// to show up in the current pipeline. This function should be called whenever
+	// pads have been added by the element itself. Elements with #GST_PAD_SOMETIMES
+	// pad templates use this in combination with autopluggers to figure out that
+	// the element is done initializing its pads.
+	// 
+	// This function emits the #GstElement::no-more-pads signal.
+	// 
+	// MT safe.
 	NoMorePads func(Instance)
 	// PadAdded allows you to override the implementation of the virtual method pad_added.
 	// The function takes the following parameters:
@@ -35511,11 +38240,19 @@ type ElementOverrides[Instance Element] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Post a message on the element's #GstBus. This function takes ownership of the
+	// message; if you want to access the message after this call, you should add an
+	// additional reference before calling.
 	PostMessage func(Instance, *Message) bool
 	// ProvideClock allows you to override the implementation of the virtual method provide_clock.
 	// The function returns the following values:
 	// 
 	// 	- goret Clock (nullable) 
+	//
+	// Get the clock provided by the given element.
+	// &gt; An element is only required to provide a clock in the PAUSED
+	// &gt; state. Some elements can provide a clock in other states.
 	ProvideClock func(Instance) Clock
 	// Query allows you to override the implementation of the virtual method query.
 	// The function takes the following parameters:
@@ -35525,11 +38262,21 @@ type ElementOverrides[Instance Element] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Performs a query on the given element.
+	// 
+	// For elements that don't implement a query handler, this function
+	// forwards the query to a random srcpad or to the peer of a
+	// random linked sinkpad of this element.
+	// 
+	// Please note that some queries might need a running pipeline to work.
 	Query func(Instance, *Query) bool
 	// ReleasePad allows you to override the implementation of the virtual method release_pad.
 	// The function takes the following parameters:
 	// 
 	// 	- pad Pad 
+	//
+	// called when a request pad is to be released
 	ReleasePad func(Instance, Pad)
 	// RequestNewPad allows you to override the implementation of the virtual method request_new_pad.
 	// The function takes the following parameters:
@@ -35543,6 +38290,12 @@ type ElementOverrides[Instance Element] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret Pad (nullable) 
+	//
+	// Retrieves a request pad from the element according to the provided template.
+	// Pad templates can be looked up using
+	// gst_element_factory_get_static_pad_templates().
+	// 
+	// The pad should be released with gst_element_release_request_pad().
 	RequestNewPad func(Instance, PadTemplate, string, *Caps) Pad
 	// SendEvent allows you to override the implementation of the virtual method send_event.
 	// The function takes the following parameters:
@@ -35552,11 +38305,25 @@ type ElementOverrides[Instance Element] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Sends an event to an element. If the element doesn't implement an
+	// event handler, the event will be pushed on a random linked sink pad for
+	// downstream events or a random linked source pad for upstream events.
+	// 
+	// This function takes ownership of the provided event so you should
+	// gst_event_ref() it if you want to reuse the event after this call.
+	// 
+	// MT safe.
 	SendEvent func(Instance, *Event) bool
 	// SetBus allows you to override the implementation of the virtual method set_bus.
 	// The function takes the following parameters:
 	// 
 	// 	- bus Bus (nullable): the #GstBus to set. 
+	//
+	// Sets the bus of the element. Increases the refcount on the bus.
+	// For internal use only, unless you're testing elements.
+	// 
+	// MT safe.
 	SetBus func(Instance, Bus)
 	// SetClock allows you to override the implementation of the virtual method set_clock.
 	// The function takes the following parameters:
@@ -35566,11 +38333,19 @@ type ElementOverrides[Instance Element] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Sets the clock for the element. This function increases the
+	// refcount on the clock. Any previously set clock on the object
+	// is unreffed.
 	SetClock func(Instance, Clock) bool
 	// SetContext allows you to override the implementation of the virtual method set_context.
 	// The function takes the following parameters:
 	// 
 	// 	- _context *Context: the #GstContext to set. 
+	//
+	// Sets the context of the element. Increases the refcount of the context.
+	// 
+	// MT safe.
 	SetContext func(Instance, *Context)
 	// SetState allows you to override the implementation of the virtual method set_state.
 	// The function takes the following parameters:
@@ -35580,6 +38355,20 @@ type ElementOverrides[Instance Element] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret StateChangeReturn 
+	//
+	// Sets the state of the element. This function will try to set the
+	// requested state by going through all the intermediary states and calling
+	// the class's state change function for each.
+	// 
+	// This function can return #GST_STATE_CHANGE_ASYNC, in which case the
+	// element will perform the remainder of the state change asynchronously in
+	// another thread.
+	// An application can use gst_element_get_state() to wait for the completion
+	// of the state change or it can wait for a %GST_MESSAGE_ASYNC_DONE or
+	// %GST_MESSAGE_STATE_CHANGED on the bus.
+	// 
+	// State changes to %GST_STATE_READY or %GST_STATE_NULL never return
+	// #GST_STATE_CHANGE_ASYNC.
 	SetState func(Instance, State) StateChangeReturn
 	// StateChanged allows you to override the implementation of the virtual method state_changed.
 	// The function takes the following parameters:
@@ -35587,6 +38376,8 @@ type ElementOverrides[Instance Element] struct {
 	// 	- oldstate State 
 	// 	- newstate State 
 	// 	- pending State 
+	//
+	// called immediately after a new state was set.
 	StateChanged func(Instance, State, State, State)
 }
 
@@ -35941,6 +38732,526 @@ func UnsafeApplyElementOverrides[Instance Element](gclass unsafe.Pointer, overri
 			},
 		)
 	}
+}
+
+// ParentChangeState calls the default implementations of the change_state virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- transition StateChange: the requested transition 
+// 
+// The function returns the following values:
+// 
+// 	- goret StateChangeReturn 
+//
+// Perform @transition on @element.
+// 
+// This function must be called with STATE_LOCK held and is mainly used
+// internally.
+func (element *ElementInstance) ParentChangeState(transition StateChange) StateChangeReturn {
+	var carg0 *C.GstElement
+	var carg1 C.GstStateChange       // in, none, casted
+	var cret  C.GstStateChangeReturn // return, none, casted
+
+	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
+
+	carg1 = C.GstStateChange(transition)
+
+	cret = C._gotk4_gst1_Element_virtual_change_state(unsafe.Pointer(parentclass.change_state), carg0, carg1)
+	runtime.KeepAlive(element)
+	runtime.KeepAlive(transition)
+
+	var goret StateChangeReturn
+
+	goret = StateChangeReturn(cret)
+
+	return goret
+}
+
+// ParentGetState calls the default implementations of the get_state virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- timeout ClockTime: a #GstClockTime to specify the timeout for an async
+//           state change or %GST_CLOCK_TIME_NONE for infinite timeout. 
+// 
+// The function returns the following values:
+// 
+// 	- state State: a pointer to #GstState to hold the state.
+//     Can be %NULL. 
+// 	- pending State: a pointer to #GstState to hold the pending
+//     state. Can be %NULL. 
+// 	- goret StateChangeReturn 
+//
+// Gets the state of the element.
+// 
+// For elements that performed an ASYNC state change, as reported by
+// gst_element_set_state(), this function will block up to the
+// specified timeout value for the state change to complete.
+// If the element completes the state change or goes into
+// an error, this function returns immediately with a return value of
+// %GST_STATE_CHANGE_SUCCESS or %GST_STATE_CHANGE_FAILURE respectively.
+// 
+// For elements that did not return %GST_STATE_CHANGE_ASYNC, this function
+// returns the current and pending state immediately.
+// 
+// This function returns %GST_STATE_CHANGE_NO_PREROLL if the element
+// successfully changed its state but is not able to provide data yet.
+// This mostly happens for live sources that only produce data in
+// %GST_STATE_PLAYING. While the state change return is equivalent to
+// %GST_STATE_CHANGE_SUCCESS, it is returned to the application to signal that
+// some sink elements might not be able to complete their state change because
+// an element is not producing data to complete the preroll. When setting the
+// element to playing, the preroll will complete and playback will start.
+func (element *ElementInstance) ParentGetState(timeout ClockTime) (State, State, StateChangeReturn) {
+	var carg0 *C.GstElement
+	var carg3 C.GstClockTime         // in, none, casted, alias
+	var carg1 C.GstState             // out, full, casted
+	var carg2 C.GstState             // out, full, casted
+	var cret  C.GstStateChangeReturn // return, none, casted
+
+	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
+
+	carg3 = C.GstClockTime(timeout)
+
+	cret = C._gotk4_gst1_Element_virtual_get_state(unsafe.Pointer(parentclass.get_state), carg0, &carg1, &carg2, carg3)
+	runtime.KeepAlive(element)
+	runtime.KeepAlive(timeout)
+
+	var state   State
+	var pending State
+	var goret   StateChangeReturn
+
+	state = State(carg1)
+	pending = State(carg2)
+	goret = StateChangeReturn(cret)
+
+	return state, pending, goret
+}
+
+// ParentNoMorePads calls the default implementations of the no_more_pads virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+//
+// Use this function to signal that the element does not expect any more pads
+// to show up in the current pipeline. This function should be called whenever
+// pads have been added by the element itself. Elements with #GST_PAD_SOMETIMES
+// pad templates use this in combination with autopluggers to figure out that
+// the element is done initializing its pads.
+// 
+// This function emits the #GstElement::no-more-pads signal.
+// 
+// MT safe.
+func (element *ElementInstance) ParentNoMorePads() {
+	var carg0 *C.GstElement
+
+	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
+
+	C._gotk4_gst1_Element_virtual_no_more_pads(unsafe.Pointer(parentclass.no_more_pads), carg0)
+	runtime.KeepAlive(element)
+}
+
+// ParentPadAdded calls the default implementations of the pad_added virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- pad Pad 
+func (element *ElementInstance) ParentPadAdded(pad Pad) {
+	var carg0 *C.GstElement
+	var carg1 *C.GstPad // in, none, converted
+
+	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
+
+	carg1 = (*C.GstPad)(UnsafePadToGlibNone(pad))
+
+	C._gotk4_gst1_Element_virtual_pad_added(unsafe.Pointer(parentclass.pad_added), carg0, carg1)
+	runtime.KeepAlive(element)
+	runtime.KeepAlive(pad)
+}
+
+// ParentPadRemoved calls the default implementations of the pad_removed virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- pad Pad 
+func (element *ElementInstance) ParentPadRemoved(pad Pad) {
+	var carg0 *C.GstElement
+	var carg1 *C.GstPad // in, none, converted
+
+	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
+
+	carg1 = (*C.GstPad)(UnsafePadToGlibNone(pad))
+
+	C._gotk4_gst1_Element_virtual_pad_removed(unsafe.Pointer(parentclass.pad_removed), carg0, carg1)
+	runtime.KeepAlive(element)
+	runtime.KeepAlive(pad)
+}
+
+// ParentPostMessage calls the default implementations of the post_message virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- message *Message: a #GstMessage to post 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Post a message on the element's #GstBus. This function takes ownership of the
+// message; if you want to access the message after this call, you should add an
+// additional reference before calling.
+func (element *ElementInstance) ParentPostMessage(message *Message) bool {
+	var carg0 *C.GstElement
+	var carg1 *C.GstMessage // in, full, converted
+	var cret  C.gboolean    // return
+
+	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
+
+	carg1 = (*C.GstMessage)(UnsafeMessageToGlibFull(message))
+
+	cret = C._gotk4_gst1_Element_virtual_post_message(unsafe.Pointer(parentclass.post_message), carg0, carg1)
+	runtime.KeepAlive(element)
+	runtime.KeepAlive(message)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentProvideClock calls the default implementations of the provide_clock virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret Clock (nullable) 
+//
+// Get the clock provided by the given element.
+// &gt; An element is only required to provide a clock in the PAUSED
+// &gt; state. Some elements can provide a clock in other states.
+func (element *ElementInstance) ParentProvideClock() Clock {
+	var carg0 *C.GstElement
+	var cret  *C.GstClock // return, full, converted, nullable
+
+	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
+
+	cret = C._gotk4_gst1_Element_virtual_provide_clock(unsafe.Pointer(parentclass.provide_clock), carg0)
+	runtime.KeepAlive(element)
+
+	var goret Clock
+
+	if cret != nil {
+		goret = UnsafeClockFromGlibFull(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
+// ParentQuery calls the default implementations of the query virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- query *Query: the #GstQuery. 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Performs a query on the given element.
+// 
+// For elements that don't implement a query handler, this function
+// forwards the query to a random srcpad or to the peer of a
+// random linked sinkpad of this element.
+// 
+// Please note that some queries might need a running pipeline to work.
+func (element *ElementInstance) ParentQuery(query *Query) bool {
+	var carg0 *C.GstElement
+	var carg1 *C.GstQuery // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
+
+	carg1 = (*C.GstQuery)(UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gst1_Element_virtual_query(unsafe.Pointer(parentclass.query), carg0, carg1)
+	runtime.KeepAlive(element)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentReleasePad calls the default implementations of the release_pad virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- pad Pad 
+//
+// called when a request pad is to be released
+func (element *ElementInstance) ParentReleasePad(pad Pad) {
+	var carg0 *C.GstElement
+	var carg1 *C.GstPad // in, none, converted
+
+	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
+
+	carg1 = (*C.GstPad)(UnsafePadToGlibNone(pad))
+
+	C._gotk4_gst1_Element_virtual_release_pad(unsafe.Pointer(parentclass.release_pad), carg0, carg1)
+	runtime.KeepAlive(element)
+	runtime.KeepAlive(pad)
+}
+
+// ParentRequestNewPad calls the default implementations of the request_new_pad virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- templ PadTemplate: a #GstPadTemplate of which we want a pad of. 
+// 	- name string (nullable): the name of the request #GstPad
+// to retrieve. Can be %NULL. 
+// 	- caps *Caps (nullable): the caps of the pad we want to
+// request. Can be %NULL. 
+// 
+// The function returns the following values:
+// 
+// 	- goret Pad (nullable) 
+//
+// Retrieves a request pad from the element according to the provided template.
+// Pad templates can be looked up using
+// gst_element_factory_get_static_pad_templates().
+// 
+// The pad should be released with gst_element_release_request_pad().
+func (element *ElementInstance) ParentRequestNewPad(templ PadTemplate, name string, caps *Caps) Pad {
+	var carg0 *C.GstElement
+	var carg1 *C.GstPadTemplate // in, none, converted
+	var carg2 *C.gchar          // in, none, string, nullable-string
+	var carg3 *C.GstCaps        // in, none, converted, nullable
+	var cret  *C.GstPad         // return, full, converted, nullable
+
+	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
+
+	carg1 = (*C.GstPadTemplate)(UnsafePadTemplateToGlibNone(templ))
+	if name != "" {
+		carg2 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
+		defer C.free(unsafe.Pointer(carg2))
+	}
+	if caps != nil {
+		carg3 = (*C.GstCaps)(UnsafeCapsToGlibNone(caps))
+	}
+
+	cret = C._gotk4_gst1_Element_virtual_request_new_pad(unsafe.Pointer(parentclass.request_new_pad), carg0, carg1, carg2, carg3)
+	runtime.KeepAlive(element)
+	runtime.KeepAlive(templ)
+	runtime.KeepAlive(name)
+	runtime.KeepAlive(caps)
+
+	var goret Pad
+
+	if cret != nil {
+		goret = UnsafePadFromGlibFull(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
+// ParentSendEvent calls the default implementations of the send_event virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- event *Event: the #GstEvent to send to the element. 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Sends an event to an element. If the element doesn't implement an
+// event handler, the event will be pushed on a random linked sink pad for
+// downstream events or a random linked source pad for upstream events.
+// 
+// This function takes ownership of the provided event so you should
+// gst_event_ref() it if you want to reuse the event after this call.
+// 
+// MT safe.
+func (element *ElementInstance) ParentSendEvent(event *Event) bool {
+	var carg0 *C.GstElement
+	var carg1 *C.GstEvent // in, full, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
+
+	carg1 = (*C.GstEvent)(UnsafeEventToGlibFull(event))
+
+	cret = C._gotk4_gst1_Element_virtual_send_event(unsafe.Pointer(parentclass.send_event), carg0, carg1)
+	runtime.KeepAlive(element)
+	runtime.KeepAlive(event)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSetBus calls the default implementations of the set_bus virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- bus Bus (nullable): the #GstBus to set. 
+//
+// Sets the bus of the element. Increases the refcount on the bus.
+// For internal use only, unless you're testing elements.
+// 
+// MT safe.
+func (element *ElementInstance) ParentSetBus(bus Bus) {
+	var carg0 *C.GstElement
+	var carg1 *C.GstBus // in, none, converted, nullable
+
+	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
+
+	if bus != nil {
+		carg1 = (*C.GstBus)(UnsafeBusToGlibNone(bus))
+	}
+
+	C._gotk4_gst1_Element_virtual_set_bus(unsafe.Pointer(parentclass.set_bus), carg0, carg1)
+	runtime.KeepAlive(element)
+	runtime.KeepAlive(bus)
+}
+
+// ParentSetClock calls the default implementations of the set_clock virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- clock Clock (nullable): the #GstClock to set for the element. 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Sets the clock for the element. This function increases the
+// refcount on the clock. Any previously set clock on the object
+// is unreffed.
+func (element *ElementInstance) ParentSetClock(clock Clock) bool {
+	var carg0 *C.GstElement
+	var carg1 *C.GstClock // in, none, converted, nullable
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
+
+	if clock != nil {
+		carg1 = (*C.GstClock)(UnsafeClockToGlibNone(clock))
+	}
+
+	cret = C._gotk4_gst1_Element_virtual_set_clock(unsafe.Pointer(parentclass.set_clock), carg0, carg1)
+	runtime.KeepAlive(element)
+	runtime.KeepAlive(clock)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSetContext calls the default implementations of the set_context virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- _context *Context: the #GstContext to set. 
+//
+// Sets the context of the element. Increases the refcount of the context.
+// 
+// MT safe.
+func (element *ElementInstance) ParentSetContext(_context *Context) {
+	var carg0 *C.GstElement
+	var carg1 *C.GstContext // in, none, converted
+
+	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
+
+	carg1 = (*C.GstContext)(UnsafeContextToGlibNone(_context))
+
+	C._gotk4_gst1_Element_virtual_set_context(unsafe.Pointer(parentclass.set_context), carg0, carg1)
+	runtime.KeepAlive(element)
+	runtime.KeepAlive(_context)
+}
+
+// ParentSetState calls the default implementations of the set_state virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- state State: the element's new #GstState. 
+// 
+// The function returns the following values:
+// 
+// 	- goret StateChangeReturn 
+//
+// Sets the state of the element. This function will try to set the
+// requested state by going through all the intermediary states and calling
+// the class's state change function for each.
+// 
+// This function can return #GST_STATE_CHANGE_ASYNC, in which case the
+// element will perform the remainder of the state change asynchronously in
+// another thread.
+// An application can use gst_element_get_state() to wait for the completion
+// of the state change or it can wait for a %GST_MESSAGE_ASYNC_DONE or
+// %GST_MESSAGE_STATE_CHANGED on the bus.
+// 
+// State changes to %GST_STATE_READY or %GST_STATE_NULL never return
+// #GST_STATE_CHANGE_ASYNC.
+func (element *ElementInstance) ParentSetState(state State) StateChangeReturn {
+	var carg0 *C.GstElement
+	var carg1 C.GstState             // in, none, casted
+	var cret  C.GstStateChangeReturn // return, none, casted
+
+	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
+
+	carg1 = C.GstState(state)
+
+	cret = C._gotk4_gst1_Element_virtual_set_state(unsafe.Pointer(parentclass.set_state), carg0, carg1)
+	runtime.KeepAlive(element)
+	runtime.KeepAlive(state)
+
+	var goret StateChangeReturn
+
+	goret = StateChangeReturn(cret)
+
+	return goret
+}
+
+// ParentStateChanged calls the default implementations of the state_changed virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- oldstate State 
+// 	- newstate State 
+// 	- pending State 
+//
+// called immediately after a new state was set.
+func (element *ElementInstance) ParentStateChanged(oldstate State, newstate State, pending State) {
+	var carg0 *C.GstElement
+	var carg1 C.GstState // in, none, casted
+	var carg2 C.GstState // in, none, casted
+	var carg3 C.GstState // in, none, casted
+
+	parentclass := (*C.GstElementClass)(classdata.PeekParentClass(UnsafeElementToGlibNone(element)))
+
+	carg1 = C.GstState(oldstate)
+	carg2 = C.GstState(newstate)
+	carg3 = C.GstState(pending)
+
+	C._gotk4_gst1_Element_virtual_state_changed(unsafe.Pointer(parentclass.state_changed), carg0, carg1, carg2, carg3)
+	runtime.KeepAlive(element)
+	runtime.KeepAlive(oldstate)
+	runtime.KeepAlive(newstate)
+	runtime.KeepAlive(pending)
 }
 
 // RegisterElementSubClass is used to register a go subclass of GstElement. For this to work safely please implement the
@@ -36895,6 +40206,8 @@ type GhostPad interface {
 	// is unlinked and links to the new target are established. if @newtarget is
 	// %NULL the target will be cleared.
 	SetTarget(Pad) bool
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapGhostPad(base *gobject.ObjectInstance) *GhostPadInstance {
@@ -37361,6 +40674,8 @@ type SharedTaskPool interface {
 	// 
 	// Setting @max_threads to 0 effectively freezes the pool.
 	SetMaxThreads(uint)
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapSharedTaskPool(base *gobject.ObjectInstance) *SharedTaskPoolInstance {
@@ -37538,6 +40853,8 @@ var _ SystemClock = (*SystemClockInstance)(nil)
 type SystemClock interface {
 	Clock
 	upcastToGstSystemClock() *SystemClockInstance
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapSystemClock(base *gobject.ObjectInstance) *SystemClockInstance {
@@ -38041,6 +41358,81 @@ type Bin interface {
 	//
 	// Will be emitted after the element was removed from the bin.
 	ConnectElementRemoved(func(Bin, Element)) gobject.SignalHandle
+
+	// chain up virtual methods:
+
+	// ParentAddElement calls the default implementations of the add_element virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- element Element: the element to be added 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Method to add an element to the bin.
+	ParentAddElement(element Element) bool
+	// ParentDeepElementAdded calls the default implementations of the deep_element_added virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- subBin Bin: the #GstBin to which the element was added 
+	// 	- child Element: the element that was added 
+	//
+	// Method called when an element was added somewhere in the bin hierarchy.
+	ParentDeepElementAdded(subBin Bin, child Element)
+	// ParentDeepElementRemoved calls the default implementations of the deep_element_removed virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- subBin Bin: the #GstBin from which the element was removed 
+	// 	- child Element: the element that was removed 
+	//
+	// Method called when an element was removed somewhere in the bin hierarchy.
+	ParentDeepElementRemoved(subBin Bin, child Element)
+	// ParentDoLatency calls the default implementations of the do_latency virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	ParentDoLatency() bool
+	// ParentElementAdded calls the default implementations of the element_added virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- child Element: the element that was added 
+	//
+	// Method called when an element was added to the bin.
+	ParentElementAdded(child Element)
+	// ParentElementRemoved calls the default implementations of the element_removed virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- child Element: the element that was removed 
+	//
+	// Method called when an element was removed from the bin.
+	ParentElementRemoved(child Element)
+	// ParentHandleMessage calls the default implementations of the handle_message virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- message *Message: the message to be handled 
+	//
+	// Method to handle a message from the children.
+	ParentHandleMessage(message *Message)
+	// ParentRemoveElement calls the default implementations of the remove_element virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- element Element: the element to be removed 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Method to remove an element from the bin.
+	ParentRemoveElement(element Element) bool
 }
 
 func unsafeWrapBin(base *gobject.ObjectInstance) *BinInstance {
@@ -38053,7 +41445,7 @@ func unsafeWrapBin(base *gobject.ObjectInstance) *BinInstance {
 			},
 		},
 		ChildProxyInstance: ChildProxyInstance{
-			Instance: *base,
+			ObjectInstance: *base,
 		},
 	}
 }
@@ -38706,18 +42098,24 @@ type BinOverrides[Instance Bin] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Method to add an element to the bin.
 	AddElement func(Instance, Element) bool
 	// DeepElementAdded allows you to override the implementation of the virtual method deep_element_added.
 	// The function takes the following parameters:
 	// 
 	// 	- subBin Bin: the #GstBin to which the element was added 
 	// 	- child Element: the element that was added 
+	//
+	// Method called when an element was added somewhere in the bin hierarchy.
 	DeepElementAdded func(Instance, Bin, Element)
 	// DeepElementRemoved allows you to override the implementation of the virtual method deep_element_removed.
 	// The function takes the following parameters:
 	// 
 	// 	- subBin Bin: the #GstBin from which the element was removed 
 	// 	- child Element: the element that was removed 
+	//
+	// Method called when an element was removed somewhere in the bin hierarchy.
 	DeepElementRemoved func(Instance, Bin, Element)
 	// DoLatency allows you to override the implementation of the virtual method do_latency.
 	// The function returns the following values:
@@ -38728,16 +42126,22 @@ type BinOverrides[Instance Bin] struct {
 	// The function takes the following parameters:
 	// 
 	// 	- child Element: the element that was added 
+	//
+	// Method called when an element was added to the bin.
 	ElementAdded func(Instance, Element)
 	// ElementRemoved allows you to override the implementation of the virtual method element_removed.
 	// The function takes the following parameters:
 	// 
 	// 	- child Element: the element that was removed 
+	//
+	// Method called when an element was removed from the bin.
 	ElementRemoved func(Instance, Element)
 	// HandleMessage allows you to override the implementation of the virtual method handle_message.
 	// The function takes the following parameters:
 	// 
 	// 	- message *Message: the message to be handled 
+	//
+	// Method to handle a message from the children.
 	HandleMessage func(Instance, *Message)
 	// RemoveElement allows you to override the implementation of the virtual method remove_element.
 	// The function takes the following parameters:
@@ -38747,6 +42151,8 @@ type BinOverrides[Instance Bin] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Method to remove an element from the bin.
 	RemoveElement func(Instance, Element) bool
 }
 
@@ -38915,6 +42321,203 @@ func UnsafeApplyBinOverrides[Instance Bin](gclass unsafe.Pointer, overrides BinO
 			},
 		)
 	}
+}
+
+// ParentAddElement calls the default implementations of the add_element virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- element Element: the element to be added 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Method to add an element to the bin.
+func (bin *BinInstance) ParentAddElement(element Element) bool {
+	var carg0 *C.GstBin
+	var carg1 *C.GstElement // in, none, converted
+	var cret  C.gboolean    // return
+
+	parentclass := (*C.GstBinClass)(classdata.PeekParentClass(UnsafeBinToGlibNone(bin)))
+
+	carg1 = (*C.GstElement)(UnsafeElementToGlibNone(element))
+
+	cret = C._gotk4_gst1_Bin_virtual_add_element(unsafe.Pointer(parentclass.add_element), carg0, carg1)
+	runtime.KeepAlive(bin)
+	runtime.KeepAlive(element)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentDeepElementAdded calls the default implementations of the deep_element_added virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- subBin Bin: the #GstBin to which the element was added 
+// 	- child Element: the element that was added 
+//
+// Method called when an element was added somewhere in the bin hierarchy.
+func (bin *BinInstance) ParentDeepElementAdded(subBin Bin, child Element) {
+	var carg0 *C.GstBin
+	var carg1 *C.GstBin     // in, none, converted
+	var carg2 *C.GstElement // in, none, converted
+
+	parentclass := (*C.GstBinClass)(classdata.PeekParentClass(UnsafeBinToGlibNone(bin)))
+
+	carg1 = (*C.GstBin)(UnsafeBinToGlibNone(subBin))
+	carg2 = (*C.GstElement)(UnsafeElementToGlibNone(child))
+
+	C._gotk4_gst1_Bin_virtual_deep_element_added(unsafe.Pointer(parentclass.deep_element_added), carg0, carg1, carg2)
+	runtime.KeepAlive(bin)
+	runtime.KeepAlive(subBin)
+	runtime.KeepAlive(child)
+}
+
+// ParentDeepElementRemoved calls the default implementations of the deep_element_removed virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- subBin Bin: the #GstBin from which the element was removed 
+// 	- child Element: the element that was removed 
+//
+// Method called when an element was removed somewhere in the bin hierarchy.
+func (bin *BinInstance) ParentDeepElementRemoved(subBin Bin, child Element) {
+	var carg0 *C.GstBin
+	var carg1 *C.GstBin     // in, none, converted
+	var carg2 *C.GstElement // in, none, converted
+
+	parentclass := (*C.GstBinClass)(classdata.PeekParentClass(UnsafeBinToGlibNone(bin)))
+
+	carg1 = (*C.GstBin)(UnsafeBinToGlibNone(subBin))
+	carg2 = (*C.GstElement)(UnsafeElementToGlibNone(child))
+
+	C._gotk4_gst1_Bin_virtual_deep_element_removed(unsafe.Pointer(parentclass.deep_element_removed), carg0, carg1, carg2)
+	runtime.KeepAlive(bin)
+	runtime.KeepAlive(subBin)
+	runtime.KeepAlive(child)
+}
+
+// ParentDoLatency calls the default implementations of the do_latency virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+func (bin *BinInstance) ParentDoLatency() bool {
+	var carg0 *C.GstBin
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstBinClass)(classdata.PeekParentClass(UnsafeBinToGlibNone(bin)))
+
+	cret = C._gotk4_gst1_Bin_virtual_do_latency(unsafe.Pointer(parentclass.do_latency), carg0)
+	runtime.KeepAlive(bin)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentElementAdded calls the default implementations of the element_added virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- child Element: the element that was added 
+//
+// Method called when an element was added to the bin.
+func (bin *BinInstance) ParentElementAdded(child Element) {
+	var carg0 *C.GstBin
+	var carg1 *C.GstElement // in, none, converted
+
+	parentclass := (*C.GstBinClass)(classdata.PeekParentClass(UnsafeBinToGlibNone(bin)))
+
+	carg1 = (*C.GstElement)(UnsafeElementToGlibNone(child))
+
+	C._gotk4_gst1_Bin_virtual_element_added(unsafe.Pointer(parentclass.element_added), carg0, carg1)
+	runtime.KeepAlive(bin)
+	runtime.KeepAlive(child)
+}
+
+// ParentElementRemoved calls the default implementations of the element_removed virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- child Element: the element that was removed 
+//
+// Method called when an element was removed from the bin.
+func (bin *BinInstance) ParentElementRemoved(child Element) {
+	var carg0 *C.GstBin
+	var carg1 *C.GstElement // in, none, converted
+
+	parentclass := (*C.GstBinClass)(classdata.PeekParentClass(UnsafeBinToGlibNone(bin)))
+
+	carg1 = (*C.GstElement)(UnsafeElementToGlibNone(child))
+
+	C._gotk4_gst1_Bin_virtual_element_removed(unsafe.Pointer(parentclass.element_removed), carg0, carg1)
+	runtime.KeepAlive(bin)
+	runtime.KeepAlive(child)
+}
+
+// ParentHandleMessage calls the default implementations of the handle_message virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- message *Message: the message to be handled 
+//
+// Method to handle a message from the children.
+func (bin *BinInstance) ParentHandleMessage(message *Message) {
+	var carg0 *C.GstBin
+	var carg1 *C.GstMessage // in, full, converted
+
+	parentclass := (*C.GstBinClass)(classdata.PeekParentClass(UnsafeBinToGlibNone(bin)))
+
+	carg1 = (*C.GstMessage)(UnsafeMessageToGlibFull(message))
+
+	C._gotk4_gst1_Bin_virtual_handle_message(unsafe.Pointer(parentclass.handle_message), carg0, carg1)
+	runtime.KeepAlive(bin)
+	runtime.KeepAlive(message)
+}
+
+// ParentRemoveElement calls the default implementations of the remove_element virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- element Element: the element to be removed 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Method to remove an element from the bin.
+func (bin *BinInstance) ParentRemoveElement(element Element) bool {
+	var carg0 *C.GstBin
+	var carg1 *C.GstElement // in, none, converted
+	var cret  C.gboolean    // return
+
+	parentclass := (*C.GstBinClass)(classdata.PeekParentClass(UnsafeBinToGlibNone(bin)))
+
+	carg1 = (*C.GstElement)(UnsafeElementToGlibNone(element))
+
+	cret = C._gotk4_gst1_Bin_virtual_remove_element(unsafe.Pointer(parentclass.remove_element), carg0, carg1)
+	runtime.KeepAlive(bin)
+	runtime.KeepAlive(element)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
 }
 
 // RegisterBinSubClass is used to register a go subclass of GstBin. For this to work safely please implement the
@@ -39147,6 +42750,8 @@ type Pipeline interface {
 	// 
 	// MT safe.
 	UseClock(Clock)
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapPipeline(base *gobject.ObjectInstance) *PipelineInstance {
@@ -39160,7 +42765,7 @@ func unsafeWrapPipeline(base *gobject.ObjectInstance) *PipelineInstance {
 				},
 			},
 			ChildProxyInstance: ChildProxyInstance{
-				Instance: *base,
+				ObjectInstance: *base,
 			},
 		},
 	}

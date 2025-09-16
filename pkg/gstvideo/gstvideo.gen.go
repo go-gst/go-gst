@@ -5642,6 +5642,11 @@ func (f VideoTimeCodeFlags) String() string {
 }
 
 // VideoConvertSampleCallback wraps GstVideoConvertSampleCallback
+// 
+// The function takes the following parameters:
+// 
+// 	- sample *gst.Sample 
+// 	- err error 
 type VideoConvertSampleCallback func(sample *gst.Sample, err error)
 
 // AncillaryMetaApiGetType wraps gst_ancillary_meta_api_get_type
@@ -8054,7 +8059,7 @@ func VideoTimeCodeMetaApiGetType() gobject.Type {
 // ColorBalanceInstance is the instance type used by all types implementing GstColorBalance. It is used internally by the bindings. Users should use the interface [ColorBalance] instead.
 type ColorBalanceInstance struct {
 	_ [0]func() // equal guard
-	Instance gobject.ObjectInstance
+	gobject.ObjectInstance
 }
 
 var _ ColorBalance = (*ColorBalanceInstance)(nil)
@@ -8067,6 +8072,7 @@ var _ ColorBalance = (*ColorBalanceInstance)(nil)
 // 
 // Example elements are 'xvimagesink' and 'colorbalance'
 type ColorBalance interface {
+	gobject.Object
 	upcastToGstColorBalance() *ColorBalanceInstance
 
 	// GetBalanceType wraps gst_color_balance_get_balance_type
@@ -8132,13 +8138,75 @@ type ColorBalance interface {
 	//
 	// Fired when the value of the indicated channel has changed.
 	ConnectValueChanged(func(ColorBalance, ColorBalanceChannel, int32)) gobject.SignalHandle
+
+	// chain up virtual methods:
+
+	// ParentGetBalanceType calls the default implementations of the get_balance_type virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret ColorBalanceType 
+	//
+	// Get the #GstColorBalanceType of this implementation.
+	ParentGetBalanceType() ColorBalanceType
+	// ParentGetValue calls the default implementations of the get_value virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel instance 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret int32 
+	//
+	// Retrieve the current value of the indicated channel, between min_value
+	// and max_value.
+	// 
+	// See Also: The #GstColorBalanceChannel.min_value and
+	//         #GstColorBalanceChannel.max_value members of the
+	//         #GstColorBalanceChannel object.
+	ParentGetValue(channel ColorBalanceChannel) int32
+	// ParentListChannels calls the default implementations of the list_channels virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret []ColorBalanceChannel 
+	//
+	// Retrieve a list of the available channels.
+	ParentListChannels() []ColorBalanceChannel
+	// ParentSetValue calls the default implementations of the set_value virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel instance 
+	// 	- value int32: The new value for the channel. 
+	//
+	// Sets the current value of the channel to the passed value, which must
+	// be between min_value and max_value.
+	// 
+	// See Also: The #GstColorBalanceChannel.min_value and
+	//         #GstColorBalanceChannel.max_value members of the
+	//         #GstColorBalanceChannel object.
+	ParentSetValue(channel ColorBalanceChannel, value int32)
+	// ParentValueChanged calls the default implementations of the value_changed virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel whose value has changed 
+	// 	- value int32: The new value of the channel 
+	//
+	// A helper function called by implementations of the GstColorBalance
+	// interface. It fires the #GstColorBalance::value-changed signal on the
+	// instance, and the #GstColorBalanceChannel::value-changed signal on the
+	// channel object.
+	ParentValueChanged(channel ColorBalanceChannel, value int32)
 }
 
 var _ ColorBalance = (*ColorBalanceInstance)(nil)
 
 func unsafeWrapColorBalance(base *gobject.ObjectInstance) *ColorBalanceInstance {
 	return &ColorBalanceInstance{
-		Instance: *base,
+		ObjectInstance: *base,
 	}
 }
 
@@ -8168,13 +8236,13 @@ func UnsafeColorBalanceFromGlibBorrow(c unsafe.Pointer) ColorBalance {
 // UnsafeColorBalanceToGlibNone is used to convert the instance to it's C value GstColorBalance. This is used by the bindings internally.
 func UnsafeColorBalanceToGlibNone(c ColorBalance) unsafe.Pointer {
 	i := c.upcastToGstColorBalance()
-	return gobject.UnsafeObjectToGlibNone(&i.Instance)
+	return gobject.UnsafeObjectToGlibNone(i)
 }
 
 // UnsafeColorBalanceToGlibFull is used to convert the instance to it's C value GstColorBalance, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeColorBalanceToGlibFull(c ColorBalance) unsafe.Pointer {
 	i := c.upcastToGstColorBalance()
-	return gobject.UnsafeObjectToGlibFull(&i.Instance)
+	return gobject.UnsafeObjectToGlibFull(i)
 }
 
 // GetBalanceType wraps gst_color_balance_get_balance_type
@@ -8323,7 +8391,7 @@ func (balance *ColorBalanceInstance) ValueChanged(channel ColorBalanceChannel, v
 //
 // Fired when the value of the indicated channel has changed.
 func (o *ColorBalanceInstance) ConnectValueChanged(fn func(ColorBalance, ColorBalanceChannel, int32)) gobject.SignalHandle {
-	return o.Instance.Connect("value-changed", fn)
+	return o.Connect("value-changed", fn)
 }
 
 // ColorBalanceOverrides is the struct used to override the default implementation of virtual methods.
@@ -8333,6 +8401,8 @@ type ColorBalanceOverrides[Instance ColorBalance] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret ColorBalanceType 
+	//
+	// Get the #GstColorBalanceType of this implementation.
 	GetBalanceType func(Instance) ColorBalanceType
 	// GetValue allows you to override the implementation of the virtual method get_value.
 	// The function takes the following parameters:
@@ -8342,23 +8412,44 @@ type ColorBalanceOverrides[Instance ColorBalance] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret int32 
+	//
+	// Retrieve the current value of the indicated channel, between min_value
+	// and max_value.
+	// 
+	// See Also: The #GstColorBalanceChannel.min_value and
+	//         #GstColorBalanceChannel.max_value members of the
+	//         #GstColorBalanceChannel object.
 	GetValue func(Instance, ColorBalanceChannel) int32
 	// ListChannels allows you to override the implementation of the virtual method list_channels.
 	// The function returns the following values:
 	// 
 	// 	- goret []ColorBalanceChannel 
+	//
+	// Retrieve a list of the available channels.
 	ListChannels func(Instance) []ColorBalanceChannel
 	// SetValue allows you to override the implementation of the virtual method set_value.
 	// The function takes the following parameters:
 	// 
 	// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel instance 
 	// 	- value int32: The new value for the channel. 
+	//
+	// Sets the current value of the channel to the passed value, which must
+	// be between min_value and max_value.
+	// 
+	// See Also: The #GstColorBalanceChannel.min_value and
+	//         #GstColorBalanceChannel.max_value members of the
+	//         #GstColorBalanceChannel object.
 	SetValue func(Instance, ColorBalanceChannel, int32)
 	// ValueChanged allows you to override the implementation of the virtual method value_changed.
 	// The function takes the following parameters:
 	// 
 	// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel whose value has changed 
 	// 	- value int32: The new value of the channel 
+	//
+	// A helper function called by implementations of the GstColorBalance
+	// interface. It fires the #GstColorBalance::value-changed signal on the
+	// instance, and the #GstColorBalanceChannel::value-changed signal on the
+	// channel object.
 	ValueChanged func(Instance, ColorBalanceChannel, int32)
 }
 
@@ -8470,10 +8561,155 @@ func UnsafeApplyColorBalanceOverrides[Instance ColorBalance](gclass unsafe.Point
 	}
 }
 
+// ParentGetBalanceType calls the default implementations of the get_balance_type virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret ColorBalanceType 
+//
+// Get the #GstColorBalanceType of this implementation.
+func (balance *ColorBalanceInstance) ParentGetBalanceType() ColorBalanceType {
+	var carg0 *C.GstColorBalance
+	var cret  C.GstColorBalanceType // return, none, casted
+
+	parentclass := (*C.GstColorBalanceInterface)(classdata.PeekParentInterface(UnsafeColorBalanceToGlibNone(balance), uint64(TypeColorBalance)))
+
+	cret = C._gotk4_gstvideo1_ColorBalance_virtual_get_balance_type(unsafe.Pointer(parentclass.get_balance_type), carg0)
+	runtime.KeepAlive(balance)
+
+	var goret ColorBalanceType
+
+	goret = ColorBalanceType(cret)
+
+	return goret
+}
+
+// ParentGetValue calls the default implementations of the get_value virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel instance 
+// 
+// The function returns the following values:
+// 
+// 	- goret int32 
+//
+// Retrieve the current value of the indicated channel, between min_value
+// and max_value.
+// 
+// See Also: The #GstColorBalanceChannel.min_value and
+//         #GstColorBalanceChannel.max_value members of the
+//         #GstColorBalanceChannel object.
+func (balance *ColorBalanceInstance) ParentGetValue(channel ColorBalanceChannel) int32 {
+	var carg0 *C.GstColorBalance
+	var carg1 *C.GstColorBalanceChannel // in, none, converted
+	var cret  C.gint                    // return, none, casted
+
+	parentclass := (*C.GstColorBalanceInterface)(classdata.PeekParentInterface(UnsafeColorBalanceToGlibNone(balance), uint64(TypeColorBalance)))
+
+	carg1 = (*C.GstColorBalanceChannel)(UnsafeColorBalanceChannelToGlibNone(channel))
+
+	cret = C._gotk4_gstvideo1_ColorBalance_virtual_get_value(unsafe.Pointer(parentclass.get_value), carg0, carg1)
+	runtime.KeepAlive(balance)
+	runtime.KeepAlive(channel)
+
+	var goret int32
+
+	goret = int32(cret)
+
+	return goret
+}
+
+// ParentListChannels calls the default implementations of the list_channels virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret []ColorBalanceChannel 
+//
+// Retrieve a list of the available channels.
+func (balance *ColorBalanceInstance) ParentListChannels() []ColorBalanceChannel {
+	var carg0 *C.GstColorBalance
+	var cret  *C.GList // container, transfer: none
+
+	parentclass := (*C.GstColorBalanceInterface)(classdata.PeekParentInterface(UnsafeColorBalanceToGlibNone(balance), uint64(TypeColorBalance)))
+
+	cret = C._gotk4_gstvideo1_ColorBalance_virtual_list_channels(unsafe.Pointer(parentclass.list_channels), carg0)
+	runtime.KeepAlive(balance)
+
+	var goret []ColorBalanceChannel
+
+	goret = glib.UnsafeListFromGlibNone(
+		unsafe.Pointer(cret),
+		func(v unsafe.Pointer) ColorBalanceChannel {
+			var dst ColorBalanceChannel // converted
+			dst = UnsafeColorBalanceChannelFromGlibNone(v)
+			return dst
+		},
+	)
+
+	return goret
+}
+
+// ParentSetValue calls the default implementations of the set_value virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel instance 
+// 	- value int32: The new value for the channel. 
+//
+// Sets the current value of the channel to the passed value, which must
+// be between min_value and max_value.
+// 
+// See Also: The #GstColorBalanceChannel.min_value and
+//         #GstColorBalanceChannel.max_value members of the
+//         #GstColorBalanceChannel object.
+func (balance *ColorBalanceInstance) ParentSetValue(channel ColorBalanceChannel, value int32) {
+	var carg0 *C.GstColorBalance
+	var carg1 *C.GstColorBalanceChannel // in, none, converted
+	var carg2 C.gint                    // in, none, casted
+
+	parentclass := (*C.GstColorBalanceInterface)(classdata.PeekParentInterface(UnsafeColorBalanceToGlibNone(balance), uint64(TypeColorBalance)))
+
+	carg1 = (*C.GstColorBalanceChannel)(UnsafeColorBalanceChannelToGlibNone(channel))
+	carg2 = C.gint(value)
+
+	C._gotk4_gstvideo1_ColorBalance_virtual_set_value(unsafe.Pointer(parentclass.set_value), carg0, carg1, carg2)
+	runtime.KeepAlive(balance)
+	runtime.KeepAlive(channel)
+	runtime.KeepAlive(value)
+}
+
+// ParentValueChanged calls the default implementations of the value_changed virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel whose value has changed 
+// 	- value int32: The new value of the channel 
+//
+// A helper function called by implementations of the GstColorBalance
+// interface. It fires the #GstColorBalance::value-changed signal on the
+// instance, and the #GstColorBalanceChannel::value-changed signal on the
+// channel object.
+func (balance *ColorBalanceInstance) ParentValueChanged(channel ColorBalanceChannel, value int32) {
+	var carg0 *C.GstColorBalance
+	var carg1 *C.GstColorBalanceChannel // in, none, converted
+	var carg2 C.gint                    // in, none, casted
+
+	parentclass := (*C.GstColorBalanceInterface)(classdata.PeekParentInterface(UnsafeColorBalanceToGlibNone(balance), uint64(TypeColorBalance)))
+
+	carg1 = (*C.GstColorBalanceChannel)(UnsafeColorBalanceChannelToGlibNone(channel))
+	carg2 = C.gint(value)
+
+	C._gotk4_gstvideo1_ColorBalance_virtual_value_changed(unsafe.Pointer(parentclass.value_changed), carg0, carg1, carg2)
+	runtime.KeepAlive(balance)
+	runtime.KeepAlive(channel)
+	runtime.KeepAlive(value)
+}
+
 // NavigationInstance is the instance type used by all types implementing GstNavigation. It is used internally by the bindings. Users should use the interface [Navigation] instead.
 type NavigationInstance struct {
 	_ [0]func() // equal guard
-	Instance gobject.ObjectInstance
+	gobject.ObjectInstance
 }
 
 var _ Navigation = (*NavigationInstance)(nil)
@@ -8504,6 +8740,7 @@ var _ Navigation = (*NavigationInstance)(nil)
 // The GstNavigation message functions provide functions for creating and
 // parsing custom bus messages for signaling GstNavigation changes.
 type Navigation interface {
+	gobject.Object
 	upcastToGstNavigation() *NavigationInstance
 
 	// SendCommand wraps gst_navigation_send_command
@@ -8567,13 +8804,34 @@ type Navigation interface {
 	// usually the size in pixels of the window associated with the element
 	// implementing the #GstNavigation interface.
 	SendMouseScrollEvent(float64, float64, float64, float64)
+
+	// chain up virtual methods:
+
+	// ParentSendEvent calls the default implementations of the send_event virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- structure *gst.Structure 
+	//
+	// sending a navigation event.
+	//
+	// Deprecated: (since 1.22.0) Use #GstNavigationInterface.send_event_simple() instead.
+	ParentSendEvent(structure *gst.Structure)
+	// ParentSendEventSimple calls the default implementations of the send_event_simple virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event: The event to send 
+	//
+	// Sends an event to the navigation interface.
+	ParentSendEventSimple(event *gst.Event)
 }
 
 var _ Navigation = (*NavigationInstance)(nil)
 
 func unsafeWrapNavigation(base *gobject.ObjectInstance) *NavigationInstance {
 	return &NavigationInstance{
-		Instance: *base,
+		ObjectInstance: *base,
 	}
 }
 
@@ -8603,13 +8861,13 @@ func UnsafeNavigationFromGlibBorrow(c unsafe.Pointer) Navigation {
 // UnsafeNavigationToGlibNone is used to convert the instance to it's C value GstNavigation. This is used by the bindings internally.
 func UnsafeNavigationToGlibNone(c Navigation) unsafe.Pointer {
 	i := c.upcastToGstNavigation()
-	return gobject.UnsafeObjectToGlibNone(&i.Instance)
+	return gobject.UnsafeObjectToGlibNone(i)
 }
 
 // UnsafeNavigationToGlibFull is used to convert the instance to it's C value GstNavigation, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeNavigationToGlibFull(c Navigation) unsafe.Pointer {
 	i := c.upcastToGstNavigation()
-	return gobject.UnsafeObjectToGlibFull(&i.Instance)
+	return gobject.UnsafeObjectToGlibFull(i)
 }
 
 // NavigationEventGetCoordinates wraps gst_navigation_event_get_coordinates
@@ -10176,11 +10434,17 @@ type NavigationOverrides[Instance Navigation] struct {
 	// The function takes the following parameters:
 	// 
 	// 	- structure *gst.Structure 
+	//
+	// sending a navigation event.
+	//
+	// Deprecated: (since 1.22.0) Use #GstNavigationInterface.send_event_simple() instead.
 	SendEvent func(Instance, *gst.Structure)
 	// SendEventSimple allows you to override the implementation of the virtual method send_event_simple.
 	// The function takes the following parameters:
 	// 
 	// 	- event *gst.Event: The event to send 
+	//
+	// Sends an event to the navigation interface.
 	SendEventSimple func(Instance, *gst.Event)
 }
 
@@ -10224,10 +10488,52 @@ func UnsafeApplyNavigationOverrides[Instance Navigation](gclass unsafe.Pointer, 
 	}
 }
 
+// ParentSendEvent calls the default implementations of the send_event virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- structure *gst.Structure 
+//
+// sending a navigation event.
+//
+// Deprecated: (since 1.22.0) Use #GstNavigationInterface.send_event_simple() instead.
+func (navigation *NavigationInstance) ParentSendEvent(structure *gst.Structure) {
+	var carg0 *C.GstNavigation
+	var carg1 *C.GstStructure // in, none, converted
+
+	parentclass := (*C.GstNavigationInterface)(classdata.PeekParentInterface(UnsafeNavigationToGlibNone(navigation), uint64(TypeNavigation)))
+
+	carg1 = (*C.GstStructure)(gst.UnsafeStructureToGlibNone(structure))
+
+	C._gotk4_gstvideo1_Navigation_virtual_send_event(unsafe.Pointer(parentclass.send_event), carg0, carg1)
+	runtime.KeepAlive(navigation)
+	runtime.KeepAlive(structure)
+}
+
+// ParentSendEventSimple calls the default implementations of the send_event_simple virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- event *gst.Event: The event to send 
+//
+// Sends an event to the navigation interface.
+func (navigation *NavigationInstance) ParentSendEventSimple(event *gst.Event) {
+	var carg0 *C.GstNavigation
+	var carg1 *C.GstEvent // in, full, converted
+
+	parentclass := (*C.GstNavigationInterface)(classdata.PeekParentInterface(UnsafeNavigationToGlibNone(navigation), uint64(TypeNavigation)))
+
+	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibFull(event))
+
+	C._gotk4_gstvideo1_Navigation_virtual_send_event_simple(unsafe.Pointer(parentclass.send_event_simple), carg0, carg1)
+	runtime.KeepAlive(navigation)
+	runtime.KeepAlive(event)
+}
+
 // VideoDirectionInstance is the instance type used by all types implementing GstVideoDirection. It is used internally by the bindings. Users should use the interface [VideoDirection] instead.
 type VideoDirectionInstance struct {
 	_ [0]func() // equal guard
-	Instance gobject.ObjectInstance
+	gobject.ObjectInstance
 }
 
 var _ VideoDirection = (*VideoDirectionInstance)(nil)
@@ -10237,14 +10543,17 @@ var _ VideoDirection = (*VideoDirectionInstance)(nil)
 // The interface allows unified access to control flipping and rotation
 // operations of video-sources or operators.
 type VideoDirection interface {
+	gobject.Object
 	upcastToGstVideoDirection() *VideoDirectionInstance
+
+	// chain up virtual methods:
 }
 
 var _ VideoDirection = (*VideoDirectionInstance)(nil)
 
 func unsafeWrapVideoDirection(base *gobject.ObjectInstance) *VideoDirectionInstance {
 	return &VideoDirectionInstance{
-		Instance: *base,
+		ObjectInstance: *base,
 	}
 }
 
@@ -10274,13 +10583,13 @@ func UnsafeVideoDirectionFromGlibBorrow(c unsafe.Pointer) VideoDirection {
 // UnsafeVideoDirectionToGlibNone is used to convert the instance to it's C value GstVideoDirection. This is used by the bindings internally.
 func UnsafeVideoDirectionToGlibNone(c VideoDirection) unsafe.Pointer {
 	i := c.upcastToGstVideoDirection()
-	return gobject.UnsafeObjectToGlibNone(&i.Instance)
+	return gobject.UnsafeObjectToGlibNone(i)
 }
 
 // UnsafeVideoDirectionToGlibFull is used to convert the instance to it's C value GstVideoDirection, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeVideoDirectionToGlibFull(c VideoDirection) unsafe.Pointer {
 	i := c.upcastToGstVideoDirection()
-	return gobject.UnsafeObjectToGlibFull(&i.Instance)
+	return gobject.UnsafeObjectToGlibFull(i)
 }
 
 // VideoDirectionOverrides is the struct used to override the default implementation of virtual methods.
@@ -10296,7 +10605,7 @@ func UnsafeApplyVideoDirectionOverrides[Instance VideoDirection](gclass unsafe.P
 // VideoOrientationInstance is the instance type used by all types implementing GstVideoOrientation. It is used internally by the bindings. Users should use the interface [VideoOrientation] instead.
 type VideoOrientationInstance struct {
 	_ [0]func() // equal guard
-	Instance gobject.ObjectInstance
+	gobject.ObjectInstance
 }
 
 var _ VideoOrientation = (*VideoOrientationInstance)(nil)
@@ -10306,6 +10615,7 @@ var _ VideoOrientation = (*VideoOrientationInstance)(nil)
 // The interface allows unified access to control flipping and autocenter
 // operation of video-sources or operators.
 type VideoOrientation interface {
+	gobject.Object
 	upcastToGstVideoOrientation() *VideoOrientationInstance
 
 	// GetHcenter wraps gst_video_orientation_get_hcenter
@@ -10392,13 +10702,100 @@ type VideoOrientation interface {
 	//
 	// Set the vertical flipping state (%TRUE for flipped) for the given object.
 	SetVflip(bool) bool
+
+	// chain up virtual methods:
+
+	// ParentGetHcenter calls the default implementations of the get_hcenter virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- center int32: return location for the result 
+	// 	- goret bool 
+	//
+	// Get the horizontal centering offset from the given object.
+	ParentGetHcenter() (int32, bool)
+	// ParentGetHflip calls the default implementations of the get_hflip virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- flip bool: return location for the result 
+	// 	- goret bool 
+	//
+	// Get the horizontal flipping state (%TRUE for flipped) from the given object.
+	ParentGetHflip() (bool, bool)
+	// ParentGetVcenter calls the default implementations of the get_vcenter virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- center int32: return location for the result 
+	// 	- goret bool 
+	//
+	// Get the vertical centering offset from the given object.
+	ParentGetVcenter() (int32, bool)
+	// ParentGetVflip calls the default implementations of the get_vflip virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- flip bool: return location for the result 
+	// 	- goret bool 
+	//
+	// Get the vertical flipping state (%TRUE for flipped) from the given object.
+	ParentGetVflip() (bool, bool)
+	// ParentSetHcenter calls the default implementations of the set_hcenter virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- center int32: centering offset 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Set the horizontal centering offset for the given object.
+	ParentSetHcenter(center int32) bool
+	// ParentSetHflip calls the default implementations of the set_hflip virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- flip bool: use flipping 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Set the horizontal flipping state (%TRUE for flipped) for the given object.
+	ParentSetHflip(flip bool) bool
+	// ParentSetVcenter calls the default implementations of the set_vcenter virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- center int32: centering offset 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Set the vertical centering offset for the given object.
+	ParentSetVcenter(center int32) bool
+	// ParentSetVflip calls the default implementations of the set_vflip virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- flip bool: use flipping 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Set the vertical flipping state (%TRUE for flipped) for the given object.
+	ParentSetVflip(flip bool) bool
 }
 
 var _ VideoOrientation = (*VideoOrientationInstance)(nil)
 
 func unsafeWrapVideoOrientation(base *gobject.ObjectInstance) *VideoOrientationInstance {
 	return &VideoOrientationInstance{
-		Instance: *base,
+		ObjectInstance: *base,
 	}
 }
 
@@ -10428,13 +10825,13 @@ func UnsafeVideoOrientationFromGlibBorrow(c unsafe.Pointer) VideoOrientation {
 // UnsafeVideoOrientationToGlibNone is used to convert the instance to it's C value GstVideoOrientation. This is used by the bindings internally.
 func UnsafeVideoOrientationToGlibNone(c VideoOrientation) unsafe.Pointer {
 	i := c.upcastToGstVideoOrientation()
-	return gobject.UnsafeObjectToGlibNone(&i.Instance)
+	return gobject.UnsafeObjectToGlibNone(i)
 }
 
 // UnsafeVideoOrientationToGlibFull is used to convert the instance to it's C value GstVideoOrientation, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeVideoOrientationToGlibFull(c VideoOrientation) unsafe.Pointer {
 	i := c.upcastToGstVideoOrientation()
-	return gobject.UnsafeObjectToGlibFull(&i.Instance)
+	return gobject.UnsafeObjectToGlibFull(i)
 }
 
 // VideoOrientationFromTag wraps gst_video_orientation_from_tag
@@ -10731,24 +11128,32 @@ type VideoOrientationOverrides[Instance VideoOrientation] struct {
 	// 
 	// 	- center int32: return location for the result 
 	// 	- goret bool 
+	//
+	// Get the horizontal centering offset from the given object.
 	GetHcenter func(Instance) (int32, bool)
 	// GetHflip allows you to override the implementation of the virtual method get_hflip.
 	// The function returns the following values:
 	// 
 	// 	- flip bool: return location for the result 
 	// 	- goret bool 
+	//
+	// Get the horizontal flipping state (%TRUE for flipped) from the given object.
 	GetHflip func(Instance) (bool, bool)
 	// GetVcenter allows you to override the implementation of the virtual method get_vcenter.
 	// The function returns the following values:
 	// 
 	// 	- center int32: return location for the result 
 	// 	- goret bool 
+	//
+	// Get the vertical centering offset from the given object.
 	GetVcenter func(Instance) (int32, bool)
 	// GetVflip allows you to override the implementation of the virtual method get_vflip.
 	// The function returns the following values:
 	// 
 	// 	- flip bool: return location for the result 
 	// 	- goret bool 
+	//
+	// Get the vertical flipping state (%TRUE for flipped) from the given object.
 	GetVflip func(Instance) (bool, bool)
 	// SetHcenter allows you to override the implementation of the virtual method set_hcenter.
 	// The function takes the following parameters:
@@ -10758,6 +11163,8 @@ type VideoOrientationOverrides[Instance VideoOrientation] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Set the horizontal centering offset for the given object.
 	SetHcenter func(Instance, int32) bool
 	// SetHflip allows you to override the implementation of the virtual method set_hflip.
 	// The function takes the following parameters:
@@ -10767,6 +11174,8 @@ type VideoOrientationOverrides[Instance VideoOrientation] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Set the horizontal flipping state (%TRUE for flipped) for the given object.
 	SetHflip func(Instance, bool) bool
 	// SetVcenter allows you to override the implementation of the virtual method set_vcenter.
 	// The function takes the following parameters:
@@ -10776,6 +11185,8 @@ type VideoOrientationOverrides[Instance VideoOrientation] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Set the vertical centering offset for the given object.
 	SetVcenter func(Instance, int32) bool
 	// SetVflip allows you to override the implementation of the virtual method set_vflip.
 	// The function takes the following parameters:
@@ -10785,6 +11196,8 @@ type VideoOrientationOverrides[Instance VideoOrientation] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Set the vertical flipping state (%TRUE for flipped) for the given object.
 	SetVflip func(Instance, bool) bool
 }
 
@@ -10994,10 +11407,266 @@ func UnsafeApplyVideoOrientationOverrides[Instance VideoOrientation](gclass unsa
 	}
 }
 
+// ParentGetHcenter calls the default implementations of the get_hcenter virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- center int32: return location for the result 
+// 	- goret bool 
+//
+// Get the horizontal centering offset from the given object.
+func (videoOrientation *VideoOrientationInstance) ParentGetHcenter() (int32, bool) {
+	var carg0 *C.GstVideoOrientation
+	var carg1 C.gint     // out, full, casted
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstVideoOrientationInterface)(classdata.PeekParentInterface(UnsafeVideoOrientationToGlibNone(videoOrientation), uint64(TypeVideoOrientation)))
+
+	cret = C._gotk4_gstvideo1_VideoOrientation_virtual_get_hcenter(unsafe.Pointer(parentclass.get_hcenter), carg0, &carg1)
+	runtime.KeepAlive(videoOrientation)
+
+	var center int32
+	var goret  bool
+
+	center = int32(carg1)
+	if cret != 0 {
+		goret = true
+	}
+
+	return center, goret
+}
+
+// ParentGetHflip calls the default implementations of the get_hflip virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- flip bool: return location for the result 
+// 	- goret bool 
+//
+// Get the horizontal flipping state (%TRUE for flipped) from the given object.
+func (videoOrientation *VideoOrientationInstance) ParentGetHflip() (bool, bool) {
+	var carg0 *C.GstVideoOrientation
+	var carg1 C.gboolean // out
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstVideoOrientationInterface)(classdata.PeekParentInterface(UnsafeVideoOrientationToGlibNone(videoOrientation), uint64(TypeVideoOrientation)))
+
+	cret = C._gotk4_gstvideo1_VideoOrientation_virtual_get_hflip(unsafe.Pointer(parentclass.get_hflip), carg0, &carg1)
+	runtime.KeepAlive(videoOrientation)
+
+	var flip  bool
+	var goret bool
+
+	if carg1 != 0 {
+		flip = true
+	}
+	if cret != 0 {
+		goret = true
+	}
+
+	return flip, goret
+}
+
+// ParentGetVcenter calls the default implementations of the get_vcenter virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- center int32: return location for the result 
+// 	- goret bool 
+//
+// Get the vertical centering offset from the given object.
+func (videoOrientation *VideoOrientationInstance) ParentGetVcenter() (int32, bool) {
+	var carg0 *C.GstVideoOrientation
+	var carg1 C.gint     // out, full, casted
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstVideoOrientationInterface)(classdata.PeekParentInterface(UnsafeVideoOrientationToGlibNone(videoOrientation), uint64(TypeVideoOrientation)))
+
+	cret = C._gotk4_gstvideo1_VideoOrientation_virtual_get_vcenter(unsafe.Pointer(parentclass.get_vcenter), carg0, &carg1)
+	runtime.KeepAlive(videoOrientation)
+
+	var center int32
+	var goret  bool
+
+	center = int32(carg1)
+	if cret != 0 {
+		goret = true
+	}
+
+	return center, goret
+}
+
+// ParentGetVflip calls the default implementations of the get_vflip virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- flip bool: return location for the result 
+// 	- goret bool 
+//
+// Get the vertical flipping state (%TRUE for flipped) from the given object.
+func (videoOrientation *VideoOrientationInstance) ParentGetVflip() (bool, bool) {
+	var carg0 *C.GstVideoOrientation
+	var carg1 C.gboolean // out
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstVideoOrientationInterface)(classdata.PeekParentInterface(UnsafeVideoOrientationToGlibNone(videoOrientation), uint64(TypeVideoOrientation)))
+
+	cret = C._gotk4_gstvideo1_VideoOrientation_virtual_get_vflip(unsafe.Pointer(parentclass.get_vflip), carg0, &carg1)
+	runtime.KeepAlive(videoOrientation)
+
+	var flip  bool
+	var goret bool
+
+	if carg1 != 0 {
+		flip = true
+	}
+	if cret != 0 {
+		goret = true
+	}
+
+	return flip, goret
+}
+
+// ParentSetHcenter calls the default implementations of the set_hcenter virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- center int32: centering offset 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Set the horizontal centering offset for the given object.
+func (videoOrientation *VideoOrientationInstance) ParentSetHcenter(center int32) bool {
+	var carg0 *C.GstVideoOrientation
+	var carg1 C.gint     // in, none, casted
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstVideoOrientationInterface)(classdata.PeekParentInterface(UnsafeVideoOrientationToGlibNone(videoOrientation), uint64(TypeVideoOrientation)))
+
+	carg1 = C.gint(center)
+
+	cret = C._gotk4_gstvideo1_VideoOrientation_virtual_set_hcenter(unsafe.Pointer(parentclass.set_hcenter), carg0, carg1)
+	runtime.KeepAlive(videoOrientation)
+	runtime.KeepAlive(center)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSetHflip calls the default implementations of the set_hflip virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- flip bool: use flipping 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Set the horizontal flipping state (%TRUE for flipped) for the given object.
+func (videoOrientation *VideoOrientationInstance) ParentSetHflip(flip bool) bool {
+	var carg0 *C.GstVideoOrientation
+	var carg1 C.gboolean // in
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstVideoOrientationInterface)(classdata.PeekParentInterface(UnsafeVideoOrientationToGlibNone(videoOrientation), uint64(TypeVideoOrientation)))
+
+	if flip {
+		carg1 = C.TRUE
+	}
+
+	cret = C._gotk4_gstvideo1_VideoOrientation_virtual_set_hflip(unsafe.Pointer(parentclass.set_hflip), carg0, carg1)
+	runtime.KeepAlive(videoOrientation)
+	runtime.KeepAlive(flip)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSetVcenter calls the default implementations of the set_vcenter virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- center int32: centering offset 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Set the vertical centering offset for the given object.
+func (videoOrientation *VideoOrientationInstance) ParentSetVcenter(center int32) bool {
+	var carg0 *C.GstVideoOrientation
+	var carg1 C.gint     // in, none, casted
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstVideoOrientationInterface)(classdata.PeekParentInterface(UnsafeVideoOrientationToGlibNone(videoOrientation), uint64(TypeVideoOrientation)))
+
+	carg1 = C.gint(center)
+
+	cret = C._gotk4_gstvideo1_VideoOrientation_virtual_set_vcenter(unsafe.Pointer(parentclass.set_vcenter), carg0, carg1)
+	runtime.KeepAlive(videoOrientation)
+	runtime.KeepAlive(center)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSetVflip calls the default implementations of the set_vflip virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- flip bool: use flipping 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Set the vertical flipping state (%TRUE for flipped) for the given object.
+func (videoOrientation *VideoOrientationInstance) ParentSetVflip(flip bool) bool {
+	var carg0 *C.GstVideoOrientation
+	var carg1 C.gboolean // in
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstVideoOrientationInterface)(classdata.PeekParentInterface(UnsafeVideoOrientationToGlibNone(videoOrientation), uint64(TypeVideoOrientation)))
+
+	if flip {
+		carg1 = C.TRUE
+	}
+
+	cret = C._gotk4_gstvideo1_VideoOrientation_virtual_set_vflip(unsafe.Pointer(parentclass.set_vflip), carg0, carg1)
+	runtime.KeepAlive(videoOrientation)
+	runtime.KeepAlive(flip)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
 // VideoOverlayInstance is the instance type used by all types implementing GstVideoOverlay. It is used internally by the bindings. Users should use the interface [VideoOverlay] instead.
 type VideoOverlayInstance struct {
 	_ [0]func() // equal guard
-	Instance gobject.ObjectInstance
+	gobject.ObjectInstance
 }
 
 var _ VideoOverlay = (*VideoOverlayInstance)(nil)
@@ -11263,6 +11932,7 @@ var _ VideoOverlay = (*VideoOverlayInstance)(nil)
 // }
 // ]|
 type VideoOverlay interface {
+	gobject.Object
 	upcastToGstVideoOverlay() *VideoOverlayInstance
 
 	// Expose wraps gst_video_overlay_expose
@@ -11315,13 +11985,45 @@ type VideoOverlay interface {
 	// This method is needed for non fullscreen video overlay in UI toolkits that
 	// do not support subwindows.
 	SetRenderRectangle(int32, int32, int32, int32) bool
+
+	// chain up virtual methods:
+
+	// ParentExpose calls the default implementations of the expose virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	//
+	// Tell an overlay that it has been exposed. This will redraw the current frame
+	// in the drawable even if the pipeline is PAUSED.
+	ParentExpose()
+	// ParentHandleEvents calls the default implementations of the handle_events virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- handleEvents bool: a #gboolean indicating if events should be handled or not. 
+	//
+	// Tell an overlay that it should handle events from the window system. These
+	// events are forwarded upstream as navigation events. In some window system,
+	// events are not propagated in the window hierarchy if a client is listening
+	// for them. This method allows you to disable events handling completely
+	// from the #GstVideoOverlay.
+	ParentHandleEvents(handleEvents bool)
+	// ParentSetRenderRectangle calls the default implementations of the set_render_rectangle virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- x int32 
+	// 	- y int32 
+	// 	- width int32 
+	// 	- height int32 
+	//
+	// virtual method to set the render rectangle
+	ParentSetRenderRectangle(x int32, y int32, width int32, height int32)
 }
 
 var _ VideoOverlay = (*VideoOverlayInstance)(nil)
 
 func unsafeWrapVideoOverlay(base *gobject.ObjectInstance) *VideoOverlayInstance {
 	return &VideoOverlayInstance{
-		Instance: *base,
+		ObjectInstance: *base,
 	}
 }
 
@@ -11351,13 +12053,13 @@ func UnsafeVideoOverlayFromGlibBorrow(c unsafe.Pointer) VideoOverlay {
 // UnsafeVideoOverlayToGlibNone is used to convert the instance to it's C value GstVideoOverlay. This is used by the bindings internally.
 func UnsafeVideoOverlayToGlibNone(c VideoOverlay) unsafe.Pointer {
 	i := c.upcastToGstVideoOverlay()
-	return gobject.UnsafeObjectToGlibNone(&i.Instance)
+	return gobject.UnsafeObjectToGlibNone(i)
 }
 
 // UnsafeVideoOverlayToGlibFull is used to convert the instance to it's C value GstVideoOverlay, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeVideoOverlayToGlibFull(c VideoOverlay) unsafe.Pointer {
 	i := c.upcastToGstVideoOverlay()
-	return gobject.UnsafeObjectToGlibFull(&i.Instance)
+	return gobject.UnsafeObjectToGlibFull(i)
 }
 
 // VideoOverlaySetProperty wraps gst_video_overlay_set_property
@@ -11516,11 +12218,20 @@ func (overlay *VideoOverlayInstance) SetRenderRectangle(x int32, y int32, width 
 // it is generic over the extending instance type.
 type VideoOverlayOverrides[Instance VideoOverlay] struct {
 	// Expose allows you to override the implementation of the virtual method expose.
+	//
+	// Tell an overlay that it has been exposed. This will redraw the current frame
+	// in the drawable even if the pipeline is PAUSED.
 	Expose func(Instance)
 	// HandleEvents allows you to override the implementation of the virtual method handle_events.
 	// The function takes the following parameters:
 	// 
 	// 	- handleEvents bool: a #gboolean indicating if events should be handled or not. 
+	//
+	// Tell an overlay that it should handle events from the window system. These
+	// events are forwarded upstream as navigation events. In some window system,
+	// events are not propagated in the window hierarchy if a client is listening
+	// for them. This method allows you to disable events handling completely
+	// from the #GstVideoOverlay.
 	HandleEvents func(Instance, bool)
 	// SetRenderRectangle allows you to override the implementation of the virtual method set_render_rectangle.
 	// The function takes the following parameters:
@@ -11529,6 +12240,8 @@ type VideoOverlayOverrides[Instance VideoOverlay] struct {
 	// 	- y int32 
 	// 	- width int32 
 	// 	- height int32 
+	//
+	// virtual method to set the render rectangle
 	SetRenderRectangle func(Instance, int32, int32, int32, int32)
 }
 
@@ -11595,6 +12308,78 @@ func UnsafeApplyVideoOverlayOverrides[Instance VideoOverlay](gclass unsafe.Point
 	}
 }
 
+// ParentExpose calls the default implementations of the expose virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+//
+// Tell an overlay that it has been exposed. This will redraw the current frame
+// in the drawable even if the pipeline is PAUSED.
+func (overlay *VideoOverlayInstance) ParentExpose() {
+	var carg0 *C.GstVideoOverlay
+
+	parentclass := (*C.GstVideoOverlayInterface)(classdata.PeekParentInterface(UnsafeVideoOverlayToGlibNone(overlay), uint64(TypeVideoOverlay)))
+
+	C._gotk4_gstvideo1_VideoOverlay_virtual_expose(unsafe.Pointer(parentclass.expose), carg0)
+	runtime.KeepAlive(overlay)
+}
+
+// ParentHandleEvents calls the default implementations of the handle_events virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- handleEvents bool: a #gboolean indicating if events should be handled or not. 
+//
+// Tell an overlay that it should handle events from the window system. These
+// events are forwarded upstream as navigation events. In some window system,
+// events are not propagated in the window hierarchy if a client is listening
+// for them. This method allows you to disable events handling completely
+// from the #GstVideoOverlay.
+func (overlay *VideoOverlayInstance) ParentHandleEvents(handleEvents bool) {
+	var carg0 *C.GstVideoOverlay
+	var carg1 C.gboolean // in
+
+	parentclass := (*C.GstVideoOverlayInterface)(classdata.PeekParentInterface(UnsafeVideoOverlayToGlibNone(overlay), uint64(TypeVideoOverlay)))
+
+	if handleEvents {
+		carg1 = C.TRUE
+	}
+
+	C._gotk4_gstvideo1_VideoOverlay_virtual_handle_events(unsafe.Pointer(parentclass.handle_events), carg0, carg1)
+	runtime.KeepAlive(overlay)
+	runtime.KeepAlive(handleEvents)
+}
+
+// ParentSetRenderRectangle calls the default implementations of the set_render_rectangle virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- x int32 
+// 	- y int32 
+// 	- width int32 
+// 	- height int32 
+//
+// virtual method to set the render rectangle
+func (overlay *VideoOverlayInstance) ParentSetRenderRectangle(x int32, y int32, width int32, height int32) {
+	var carg0 *C.GstVideoOverlay
+	var carg1 C.gint // in, none, casted
+	var carg2 C.gint // in, none, casted
+	var carg3 C.gint // in, none, casted
+	var carg4 C.gint // in, none, casted
+
+	parentclass := (*C.GstVideoOverlayInterface)(classdata.PeekParentInterface(UnsafeVideoOverlayToGlibNone(overlay), uint64(TypeVideoOverlay)))
+
+	carg1 = C.gint(x)
+	carg2 = C.gint(y)
+	carg3 = C.gint(width)
+	carg4 = C.gint(height)
+
+	C._gotk4_gstvideo1_VideoOverlay_virtual_set_render_rectangle(unsafe.Pointer(parentclass.set_render_rectangle), carg0, carg1, carg2, carg3, carg4)
+	runtime.KeepAlive(overlay)
+	runtime.KeepAlive(x)
+	runtime.KeepAlive(y)
+	runtime.KeepAlive(width)
+	runtime.KeepAlive(height)
+}
+
 // ColorBalanceChannelInstance is the instance type used by all types extending GstColorBalanceChannel. It is used internally by the bindings. Users should use the interface [ColorBalanceChannel] instead.
 type ColorBalanceChannelInstance struct {
 	_ [0]func() // equal guard
@@ -11616,6 +12401,17 @@ type ColorBalanceChannel interface {
 	//
 	// Fired when the value of the indicated channel has changed.
 	ConnectValueChanged(func(ColorBalanceChannel, int32)) gobject.SignalHandle
+
+	// chain up virtual methods:
+
+	// ParentValueChanged calls the default implementations of the value_changed virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- value int32 
+	//
+	// default handler for value changed notification
+	ParentValueChanged(value int32)
 }
 
 func unsafeWrapColorBalanceChannel(base *gobject.ObjectInstance) *ColorBalanceChannelInstance {
@@ -11674,6 +12470,8 @@ type ColorBalanceChannelOverrides[Instance ColorBalanceChannel] struct {
 	// The function takes the following parameters:
 	// 
 	// 	- value int32 
+	//
+	// default handler for value changed notification
 	ValueChanged func(Instance, int32)
 }
 
@@ -11700,6 +12498,26 @@ func UnsafeApplyColorBalanceChannelOverrides[Instance ColorBalanceChannel](gclas
 			},
 		)
 	}
+}
+
+// ParentValueChanged calls the default implementations of the value_changed virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- value int32 
+//
+// default handler for value changed notification
+func (channel *ColorBalanceChannelInstance) ParentValueChanged(value int32) {
+	var carg0 *C.GstColorBalanceChannel
+	var carg1 C.gint // in, none, casted
+
+	parentclass := (*C.GstColorBalanceChannelClass)(classdata.PeekParentClass(UnsafeColorBalanceChannelToGlibNone(channel)))
+
+	carg1 = C.gint(value)
+
+	C._gotk4_gstvideo1_ColorBalanceChannel_virtual_value_changed(unsafe.Pointer(parentclass.value_changed), carg0, carg1)
+	runtime.KeepAlive(channel)
+	runtime.KeepAlive(value)
 }
 
 // RegisterColorBalanceChannelSubClass is used to register a go subclass of GstColorBalanceChannel. For this to work safely please implement the
@@ -11763,6 +12581,51 @@ type VideoAggregator interface {
 	// Subclasses can add their own operation to perform using the returned
 	// #GstTaskPool during #GstVideoAggregatorClass::aggregate_frames().
 	GetExecutionTaskPool() gst.TaskPool
+
+	// chain up virtual methods:
+
+	// ParentAggregateFrames calls the default implementations of the aggregate_frames virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- outbuffer *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// Lets subclasses aggregate frames that are ready. Subclasses
+	//                            should iterate the GstElement.sinkpads and use the already
+	//                            mapped #GstVideoFrame from gst_video_aggregator_pad_get_prepared_frame()
+	//                            or directly use the #GstBuffer from gst_video_aggregator_pad_get_current_buffer()
+	//                            if it needs to map the buffer in a special way. The result of the
+	//                            aggregation should land in @outbuffer.
+	ParentAggregateFrames(outbuffer *gst.Buffer) gst.FlowReturn
+	// ParentFindBestFormat calls the default implementations of the find_best_format virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- downstreamCaps *gst.Caps 
+	// 	- bestInfo *VideoInfo 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- atLeastOneAlpha bool 
+	ParentFindBestFormat(downstreamCaps *gst.Caps, bestInfo *VideoInfo) bool
+	// ParentUpdateCaps calls the default implementations of the update_caps virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Caps 
+	//
+	// Optional.
+	//                            Lets subclasses update the #GstCaps representing
+	//                            the src pad caps before usage.  Return %NULL to indicate failure.
+	ParentUpdateCaps(caps *gst.Caps) *gst.Caps
 }
 
 func unsafeWrapVideoAggregator(base *gobject.ObjectInstance) *VideoAggregatorInstance {
@@ -11853,6 +12716,13 @@ type VideoAggregatorOverrides[Instance VideoAggregator] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// Lets subclasses aggregate frames that are ready. Subclasses
+	//                            should iterate the GstElement.sinkpads and use the already
+	//                            mapped #GstVideoFrame from gst_video_aggregator_pad_get_prepared_frame()
+	//                            or directly use the #GstBuffer from gst_video_aggregator_pad_get_current_buffer()
+	//                            if it needs to map the buffer in a special way. The result of the
+	//                            aggregation should land in @outbuffer.
 	AggregateFrames func(Instance, *gst.Buffer) gst.FlowReturn
 	// FindBestFormat allows you to override the implementation of the virtual method find_best_format.
 	// The function takes the following parameters:
@@ -11872,6 +12742,10 @@ type VideoAggregatorOverrides[Instance VideoAggregator] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Caps 
+	//
+	// Optional.
+	//                            Lets subclasses update the #GstCaps representing
+	//                            the src pad caps before usage.  Return %NULL to indicate failure.
 	UpdateCaps func(Instance, *gst.Caps) *gst.Caps
 }
 
@@ -11949,6 +12823,110 @@ func UnsafeApplyVideoAggregatorOverrides[Instance VideoAggregator](gclass unsafe
 			},
 		)
 	}
+}
+
+// ParentAggregateFrames calls the default implementations of the aggregate_frames virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- outbuffer *gst.Buffer 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// Lets subclasses aggregate frames that are ready. Subclasses
+//                            should iterate the GstElement.sinkpads and use the already
+//                            mapped #GstVideoFrame from gst_video_aggregator_pad_get_prepared_frame()
+//                            or directly use the #GstBuffer from gst_video_aggregator_pad_get_current_buffer()
+//                            if it needs to map the buffer in a special way. The result of the
+//                            aggregation should land in @outbuffer.
+func (videoaggregator *VideoAggregatorInstance) ParentAggregateFrames(outbuffer *gst.Buffer) gst.FlowReturn {
+	var carg0 *C.GstVideoAggregator
+	var carg1 *C.GstBuffer    // in, none, converted
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstVideoAggregatorClass)(classdata.PeekParentClass(UnsafeVideoAggregatorToGlibNone(videoaggregator)))
+
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(outbuffer))
+
+	cret = C._gotk4_gstvideo1_VideoAggregator_virtual_aggregate_frames(unsafe.Pointer(parentclass.aggregate_frames), carg0, carg1)
+	runtime.KeepAlive(videoaggregator)
+	runtime.KeepAlive(outbuffer)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentFindBestFormat calls the default implementations of the find_best_format virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- downstreamCaps *gst.Caps 
+// 	- bestInfo *VideoInfo 
+// 
+// The function returns the following values:
+// 
+// 	- atLeastOneAlpha bool 
+func (vagg *VideoAggregatorInstance) ParentFindBestFormat(downstreamCaps *gst.Caps, bestInfo *VideoInfo) bool {
+	var carg0 *C.GstVideoAggregator
+	var carg1 *C.GstCaps      // in, none, converted
+	var carg2 *C.GstVideoInfo // in, none, converted
+	var carg3 C.gboolean      // out
+
+	parentclass := (*C.GstVideoAggregatorClass)(classdata.PeekParentClass(UnsafeVideoAggregatorToGlibNone(vagg)))
+
+	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(downstreamCaps))
+	carg2 = (*C.GstVideoInfo)(UnsafeVideoInfoToGlibNone(bestInfo))
+
+	C._gotk4_gstvideo1_VideoAggregator_virtual_find_best_format(unsafe.Pointer(parentclass.find_best_format), carg0, carg1, carg2, &carg3)
+	runtime.KeepAlive(vagg)
+	runtime.KeepAlive(downstreamCaps)
+	runtime.KeepAlive(bestInfo)
+
+	var atLeastOneAlpha bool
+
+	if carg3 != 0 {
+		atLeastOneAlpha = true
+	}
+
+	return atLeastOneAlpha
+}
+
+// ParentUpdateCaps calls the default implementations of the update_caps virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- caps *gst.Caps 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.Caps 
+//
+// Optional.
+//                            Lets subclasses update the #GstCaps representing
+//                            the src pad caps before usage.  Return %NULL to indicate failure.
+func (videoaggregator *VideoAggregatorInstance) ParentUpdateCaps(caps *gst.Caps) *gst.Caps {
+	var carg0 *C.GstVideoAggregator
+	var carg1 *C.GstCaps // in, none, converted
+	var cret  *C.GstCaps // return, full, converted
+
+	parentclass := (*C.GstVideoAggregatorClass)(classdata.PeekParentClass(UnsafeVideoAggregatorToGlibNone(videoaggregator)))
+
+	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
+
+	cret = C._gotk4_gstvideo1_VideoAggregator_virtual_update_caps(unsafe.Pointer(parentclass.update_caps), carg0, carg1)
+	runtime.KeepAlive(videoaggregator)
+	runtime.KeepAlive(caps)
+
+	var goret *gst.Caps
+
+	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
 }
 
 // RegisterVideoAggregatorSubClass is used to register a go subclass of GstVideoAggregator. For this to work safely please implement the
@@ -12040,6 +13018,63 @@ type VideoAggregatorPad interface {
 	//
 	// Allows selecting that this pad requires an output format with alpha
 	SetNeedsAlpha(bool)
+
+	// chain up virtual methods:
+
+	// ParentCleanFrame calls the default implementations of the clean_frame virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- videoaggregator VideoAggregator 
+	// 	- preparedFrame *VideoFrame 
+	//
+	// clean the frame previously prepared in prepare_frame
+	ParentCleanFrame(videoaggregator VideoAggregator, preparedFrame *VideoFrame)
+	// ParentPrepareFrame calls the default implementations of the prepare_frame virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- videoaggregator VideoAggregator 
+	// 	- buffer *gst.Buffer 
+	// 	- preparedFrame *VideoFrame 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Prepare the frame from the pad buffer and sets it to prepared_frame.
+	//      Implementations should always return TRUE.  Returning FALSE will cease
+	//      iteration over subsequent pads.
+	ParentPrepareFrame(videoaggregator VideoAggregator, buffer *gst.Buffer, preparedFrame *VideoFrame) bool
+	// ParentPrepareFrameFinish calls the default implementations of the prepare_frame_finish virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- videoaggregator VideoAggregator: the parent #GstVideoAggregator 
+	// 	- preparedFrame *VideoFrame: the #GstVideoFrame to prepare into 
+	//
+	// Finish preparing @prepared_frame.
+	// 
+	// If overriden, `prepare_frame_start` must also be overriden.
+	ParentPrepareFrameFinish(videoaggregator VideoAggregator, preparedFrame *VideoFrame)
+	// ParentPrepareFrameStart calls the default implementations of the prepare_frame_start virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- videoaggregator VideoAggregator: the parent #GstVideoAggregator 
+	// 	- buffer *gst.Buffer: the input #GstBuffer to prepare 
+	// 	- preparedFrame *VideoFrame: the #GstVideoFrame to prepare into 
+	//
+	// Begin preparing the frame from the pad buffer and sets it to prepared_frame.
+	// 
+	// If overriden, `prepare_frame_finish` must also be overriden.
+	ParentPrepareFrameStart(videoaggregator VideoAggregator, buffer *gst.Buffer, preparedFrame *VideoFrame)
+	// ParentUpdateConversionInfo calls the default implementations of the update_conversion_info virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	//
+	// Called when either the input or output formats
+	//                          have changed.
+	ParentUpdateConversionInfo()
 }
 
 func unsafeWrapVideoAggregatorPad(base *gobject.ObjectInstance) *VideoAggregatorPadInstance {
@@ -12210,6 +13245,8 @@ type VideoAggregatorPadOverrides[Instance VideoAggregatorPad] struct {
 	// 
 	// 	- videoaggregator VideoAggregator 
 	// 	- preparedFrame *VideoFrame 
+	//
+	// clean the frame previously prepared in prepare_frame
 	CleanFrame func(Instance, VideoAggregator, *VideoFrame)
 	// PrepareFrame allows you to override the implementation of the virtual method prepare_frame.
 	// The function takes the following parameters:
@@ -12221,12 +13258,20 @@ type VideoAggregatorPadOverrides[Instance VideoAggregatorPad] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Prepare the frame from the pad buffer and sets it to prepared_frame.
+	//      Implementations should always return TRUE.  Returning FALSE will cease
+	//      iteration over subsequent pads.
 	PrepareFrame func(Instance, VideoAggregator, *gst.Buffer, *VideoFrame) bool
 	// PrepareFrameFinish allows you to override the implementation of the virtual method prepare_frame_finish.
 	// The function takes the following parameters:
 	// 
 	// 	- videoaggregator VideoAggregator: the parent #GstVideoAggregator 
 	// 	- preparedFrame *VideoFrame: the #GstVideoFrame to prepare into 
+	//
+	// Finish preparing @prepared_frame.
+	// 
+	// If overriden, `prepare_frame_start` must also be overriden.
 	PrepareFrameFinish func(Instance, VideoAggregator, *VideoFrame)
 	// PrepareFrameStart allows you to override the implementation of the virtual method prepare_frame_start.
 	// The function takes the following parameters:
@@ -12234,8 +13279,15 @@ type VideoAggregatorPadOverrides[Instance VideoAggregatorPad] struct {
 	// 	- videoaggregator VideoAggregator: the parent #GstVideoAggregator 
 	// 	- buffer *gst.Buffer: the input #GstBuffer to prepare 
 	// 	- preparedFrame *VideoFrame: the #GstVideoFrame to prepare into 
+	//
+	// Begin preparing the frame from the pad buffer and sets it to prepared_frame.
+	// 
+	// If overriden, `prepare_frame_finish` must also be overriden.
 	PrepareFrameStart func(Instance, VideoAggregator, *gst.Buffer, *VideoFrame)
 	// UpdateConversionInfo allows you to override the implementation of the virtual method update_conversion_info.
+	//
+	// Called when either the input or output formats
+	//                          have changed.
 	UpdateConversionInfo func(Instance)
 }
 
@@ -12349,6 +13401,143 @@ func UnsafeApplyVideoAggregatorPadOverrides[Instance VideoAggregatorPad](gclass 
 	}
 }
 
+// ParentCleanFrame calls the default implementations of the clean_frame virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- videoaggregator VideoAggregator 
+// 	- preparedFrame *VideoFrame 
+//
+// clean the frame previously prepared in prepare_frame
+func (pad *VideoAggregatorPadInstance) ParentCleanFrame(videoaggregator VideoAggregator, preparedFrame *VideoFrame) {
+	var carg0 *C.GstVideoAggregatorPad
+	var carg1 *C.GstVideoAggregator // in, none, converted
+	var carg2 *C.GstVideoFrame      // in, none, converted
+
+	parentclass := (*C.GstVideoAggregatorPadClass)(classdata.PeekParentClass(UnsafeVideoAggregatorPadToGlibNone(pad)))
+
+	carg1 = (*C.GstVideoAggregator)(UnsafeVideoAggregatorToGlibNone(videoaggregator))
+	carg2 = (*C.GstVideoFrame)(UnsafeVideoFrameToGlibNone(preparedFrame))
+
+	C._gotk4_gstvideo1_VideoAggregatorPad_virtual_clean_frame(unsafe.Pointer(parentclass.clean_frame), carg0, carg1, carg2)
+	runtime.KeepAlive(pad)
+	runtime.KeepAlive(videoaggregator)
+	runtime.KeepAlive(preparedFrame)
+}
+
+// ParentPrepareFrame calls the default implementations of the prepare_frame virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- videoaggregator VideoAggregator 
+// 	- buffer *gst.Buffer 
+// 	- preparedFrame *VideoFrame 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Prepare the frame from the pad buffer and sets it to prepared_frame.
+//      Implementations should always return TRUE.  Returning FALSE will cease
+//      iteration over subsequent pads.
+func (pad *VideoAggregatorPadInstance) ParentPrepareFrame(videoaggregator VideoAggregator, buffer *gst.Buffer, preparedFrame *VideoFrame) bool {
+	var carg0 *C.GstVideoAggregatorPad
+	var carg1 *C.GstVideoAggregator // in, none, converted
+	var carg2 *C.GstBuffer          // in, none, converted
+	var carg3 *C.GstVideoFrame      // in, none, converted
+	var cret  C.gboolean            // return
+
+	parentclass := (*C.GstVideoAggregatorPadClass)(classdata.PeekParentClass(UnsafeVideoAggregatorPadToGlibNone(pad)))
+
+	carg1 = (*C.GstVideoAggregator)(UnsafeVideoAggregatorToGlibNone(videoaggregator))
+	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
+	carg3 = (*C.GstVideoFrame)(UnsafeVideoFrameToGlibNone(preparedFrame))
+
+	cret = C._gotk4_gstvideo1_VideoAggregatorPad_virtual_prepare_frame(unsafe.Pointer(parentclass.prepare_frame), carg0, carg1, carg2, carg3)
+	runtime.KeepAlive(pad)
+	runtime.KeepAlive(videoaggregator)
+	runtime.KeepAlive(buffer)
+	runtime.KeepAlive(preparedFrame)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentPrepareFrameFinish calls the default implementations of the prepare_frame_finish virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- videoaggregator VideoAggregator: the parent #GstVideoAggregator 
+// 	- preparedFrame *VideoFrame: the #GstVideoFrame to prepare into 
+//
+// Finish preparing @prepared_frame.
+// 
+// If overriden, `prepare_frame_start` must also be overriden.
+func (pad *VideoAggregatorPadInstance) ParentPrepareFrameFinish(videoaggregator VideoAggregator, preparedFrame *VideoFrame) {
+	var carg0 *C.GstVideoAggregatorPad
+	var carg1 *C.GstVideoAggregator // in, none, converted
+	var carg2 *C.GstVideoFrame      // in, none, converted
+
+	parentclass := (*C.GstVideoAggregatorPadClass)(classdata.PeekParentClass(UnsafeVideoAggregatorPadToGlibNone(pad)))
+
+	carg1 = (*C.GstVideoAggregator)(UnsafeVideoAggregatorToGlibNone(videoaggregator))
+	carg2 = (*C.GstVideoFrame)(UnsafeVideoFrameToGlibNone(preparedFrame))
+
+	C._gotk4_gstvideo1_VideoAggregatorPad_virtual_prepare_frame_finish(unsafe.Pointer(parentclass.prepare_frame_finish), carg0, carg1, carg2)
+	runtime.KeepAlive(pad)
+	runtime.KeepAlive(videoaggregator)
+	runtime.KeepAlive(preparedFrame)
+}
+
+// ParentPrepareFrameStart calls the default implementations of the prepare_frame_start virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- videoaggregator VideoAggregator: the parent #GstVideoAggregator 
+// 	- buffer *gst.Buffer: the input #GstBuffer to prepare 
+// 	- preparedFrame *VideoFrame: the #GstVideoFrame to prepare into 
+//
+// Begin preparing the frame from the pad buffer and sets it to prepared_frame.
+// 
+// If overriden, `prepare_frame_finish` must also be overriden.
+func (pad *VideoAggregatorPadInstance) ParentPrepareFrameStart(videoaggregator VideoAggregator, buffer *gst.Buffer, preparedFrame *VideoFrame) {
+	var carg0 *C.GstVideoAggregatorPad
+	var carg1 *C.GstVideoAggregator // in, none, converted
+	var carg2 *C.GstBuffer          // in, none, converted
+	var carg3 *C.GstVideoFrame      // in, none, converted
+
+	parentclass := (*C.GstVideoAggregatorPadClass)(classdata.PeekParentClass(UnsafeVideoAggregatorPadToGlibNone(pad)))
+
+	carg1 = (*C.GstVideoAggregator)(UnsafeVideoAggregatorToGlibNone(videoaggregator))
+	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
+	carg3 = (*C.GstVideoFrame)(UnsafeVideoFrameToGlibNone(preparedFrame))
+
+	C._gotk4_gstvideo1_VideoAggregatorPad_virtual_prepare_frame_start(unsafe.Pointer(parentclass.prepare_frame_start), carg0, carg1, carg2, carg3)
+	runtime.KeepAlive(pad)
+	runtime.KeepAlive(videoaggregator)
+	runtime.KeepAlive(buffer)
+	runtime.KeepAlive(preparedFrame)
+}
+
+// ParentUpdateConversionInfo calls the default implementations of the update_conversion_info virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+//
+// Called when either the input or output formats
+//                          have changed.
+func (pad *VideoAggregatorPadInstance) ParentUpdateConversionInfo() {
+	var carg0 *C.GstVideoAggregatorPad
+
+	parentclass := (*C.GstVideoAggregatorPadClass)(classdata.PeekParentClass(UnsafeVideoAggregatorPadToGlibNone(pad)))
+
+	C._gotk4_gstvideo1_VideoAggregatorPad_virtual_update_conversion_info(unsafe.Pointer(parentclass.update_conversion_info), carg0)
+	runtime.KeepAlive(pad)
+}
+
 // RegisterVideoAggregatorPadSubClass is used to register a go subclass of GstVideoAggregatorPad. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterVideoAggregatorPadSubClass[InstanceT VideoAggregatorPad](
@@ -12387,6 +13576,8 @@ var _ VideoBufferPool = (*VideoBufferPoolInstance)(nil)
 type VideoBufferPool interface {
 	gst.BufferPool
 	upcastToGstVideoBufferPool() *VideoBufferPoolInstance
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapVideoBufferPool(base *gobject.ObjectInstance) *VideoBufferPoolInstance {
@@ -13167,6 +14358,285 @@ type VideoDecoder interface {
 	// handler with %GST_PAD_SET_ACCEPT_INTERSECT and
 	// %GST_PAD_SET_ACCEPT_TEMPLATE
 	SetUseDefaultPadAcceptcaps(bool)
+
+	// chain up virtual methods:
+
+	// ParentClose calls the default implementations of the close virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element changes to GST_STATE_NULL.
+	//                  Allows closing external resources.
+	ParentClose() bool
+	// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                     Setup the allocation parameters for allocating output
+	//                     buffers. The passed in query contains the result of the
+	//                     downstream allocation query.
+	//                     Subclasses should chain up to the parent implementation to
+	//                     invoke the default handler.
+	ParentDecideAllocation(query *gst.Query) bool
+	// ParentDrain calls the default implementations of the drain virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// Optional.
+	//                  Called to request subclass to decode any data it can at this
+	//                  point, but that more data may arrive after. (e.g. at segment end).
+	//                  Sub-classes should be prepared to handle new data afterward,
+	//                  or seamless segment processing will break. Since: 1.6
+	ParentDrain() gst.FlowReturn
+	// ParentFinish calls the default implementations of the finish virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// Optional.
+	//                  Called to request subclass to dispatch any pending remaining
+	//                  data at EOS. Sub-classes can refuse to decode new data after.
+	ParentFinish() gst.FlowReturn
+	// ParentFlush calls the default implementations of the flush virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                      Flush all remaining data from the decoder without
+	//                      pushing it downstream. Since: 1.2
+	ParentFlush() bool
+	// ParentGetcaps calls the default implementations of the getcaps virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- filter *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Caps 
+	//
+	// Optional.
+	//                  Allows for a custom sink getcaps implementation.
+	//                  If not implemented, default returns
+	//                  gst_video_decoder_proxy_getcaps
+	//                  applied to sink template caps.
+	ParentGetcaps(filter *gst.Caps) *gst.Caps
+	// ParentHandleFrame calls the default implementations of the handle_frame virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- frame *VideoCodecFrame: The frame to handle 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	ParentHandleFrame(frame *VideoCodecFrame) gst.FlowReturn
+	// ParentHandleMissingData calls the default implementations of the handle_missing_data virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- timestamp gst.ClockTime: Timestamp of the missing data 
+	// 	- duration gst.ClockTime: Duration of the missing data 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	ParentHandleMissingData(timestamp gst.ClockTime, duration gst.ClockTime) bool
+	// ParentNegotiate calls the default implementations of the negotiate virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Negotiate with downstream elements to currently configured #GstVideoCodecState.
+	// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
+	// negotiate fails.
+	ParentNegotiate() bool
+	// ParentOpen calls the default implementations of the open virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element changes to GST_STATE_READY.
+	//                  Allows opening external resources.
+	ParentOpen() bool
+	// ParentParse calls the default implementations of the parse virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- frame *VideoCodecFrame 
+	// 	- adapter gstbase.Adapter 
+	// 	- atEos bool 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// Required for non-packetized input.
+	//                  Allows chopping incoming data into manageable units (frames)
+	//                  for subsequent decoding.
+	ParentParse(frame *VideoCodecFrame, adapter gstbase.Adapter, atEos bool) gst.FlowReturn
+	// ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                      Propose buffer allocation parameters for upstream elements.
+	//                      Subclasses should chain up to the parent implementation to
+	//                      invoke the default handler.
+	ParentProposeAllocation(query *gst.Query) bool
+	// ParentReset calls the default implementations of the reset virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- hard bool 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Allows subclass (decoder) to perform post-seek semantics reset.
+	//                  Deprecated.
+	ParentReset(hard bool) bool
+	// ParentSetFormat calls the default implementations of the set_format virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- state *VideoCodecState 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Notifies subclass of incoming data format (caps).
+	ParentSetFormat(state *VideoCodecState) bool
+	// ParentSinkEvent calls the default implementations of the sink_event virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Event handler on the sink pad. This function should return
+	//                  TRUE if the event was handled and should be discarded
+	//                  (i.e. not unref'ed).
+	//                  Subclasses should chain up to the parent implementation to
+	//                  invoke the default handler.
+	ParentSinkEvent(event *gst.Event) bool
+	// ParentSinkQuery calls the default implementations of the sink_query virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Query handler on the sink pad. This function should
+	//                  return TRUE if the query could be performed. Subclasses
+	//                  should chain up to the parent implementation to invoke the
+	//                  default handler. Since: 1.4
+	ParentSinkQuery(query *gst.Query) bool
+	// ParentSrcEvent calls the default implementations of the src_event virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Event handler on the source pad. This function should return
+	//                  TRUE if the event was handled and should be discarded
+	//                  (i.e. not unref'ed).
+	//                  Subclasses should chain up to the parent implementation to
+	//                  invoke the default handler.
+	ParentSrcEvent(event *gst.Event) bool
+	// ParentSrcQuery calls the default implementations of the src_query virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Query handler on the source pad. This function should
+	//                  return TRUE if the query could be performed. Subclasses
+	//                  should chain up to the parent implementation to invoke the
+	//                  default handler. Since: 1.4
+	ParentSrcQuery(query *gst.Query) bool
+	// ParentStart calls the default implementations of the start virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element starts processing.
+	//                  Allows opening external resources.
+	ParentStart() bool
+	// ParentStop calls the default implementations of the stop virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element stops processing.
+	//                  Allows closing external resources.
+	ParentStop() bool
+	// ParentTransformMeta calls the default implementations of the transform_meta virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- frame *VideoCodecFrame 
+	// 	- meta *gst.Meta 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional. Transform the metadata on the input buffer to the
+	//                  output buffer. By default this method is copies all meta without
+	//                  tags and meta with only the "video" tag. subclasses can
+	//                  implement this method and return %TRUE if the metadata is to be
+	//                  copied. Since: 1.6
+	ParentTransformMeta(frame *VideoCodecFrame, meta *gst.Meta) bool
 }
 
 func unsafeWrapVideoDecoder(base *gobject.ObjectInstance) *VideoDecoderInstance {
@@ -14503,6 +15973,10 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element changes to GST_STATE_NULL.
+	//                  Allows closing external resources.
 	Close func(Instance) bool
 	// DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
 	// The function takes the following parameters:
@@ -14512,21 +15986,42 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                     Setup the allocation parameters for allocating output
+	//                     buffers. The passed in query contains the result of the
+	//                     downstream allocation query.
+	//                     Subclasses should chain up to the parent implementation to
+	//                     invoke the default handler.
 	DecideAllocation func(Instance, *gst.Query) bool
 	// Drain allows you to override the implementation of the virtual method drain.
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// Optional.
+	//                  Called to request subclass to decode any data it can at this
+	//                  point, but that more data may arrive after. (e.g. at segment end).
+	//                  Sub-classes should be prepared to handle new data afterward,
+	//                  or seamless segment processing will break. Since: 1.6
 	Drain func(Instance) gst.FlowReturn
 	// Finish allows you to override the implementation of the virtual method finish.
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// Optional.
+	//                  Called to request subclass to dispatch any pending remaining
+	//                  data at EOS. Sub-classes can refuse to decode new data after.
 	Finish func(Instance) gst.FlowReturn
 	// Flush allows you to override the implementation of the virtual method flush.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                      Flush all remaining data from the decoder without
+	//                      pushing it downstream. Since: 1.2
 	Flush func(Instance) bool
 	// Getcaps allows you to override the implementation of the virtual method getcaps.
 	// The function takes the following parameters:
@@ -14536,6 +16031,12 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Caps 
+	//
+	// Optional.
+	//                  Allows for a custom sink getcaps implementation.
+	//                  If not implemented, default returns
+	//                  gst_video_decoder_proxy_getcaps
+	//                  applied to sink template caps.
 	Getcaps func(Instance, *gst.Caps) *gst.Caps
 	// HandleFrame allows you to override the implementation of the virtual method handle_frame.
 	// The function takes the following parameters:
@@ -14560,11 +16061,19 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Negotiate with downstream elements to currently configured #GstVideoCodecState.
+	// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
+	// negotiate fails.
 	Negotiate func(Instance) bool
 	// Open allows you to override the implementation of the virtual method open.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element changes to GST_STATE_READY.
+	//                  Allows opening external resources.
 	Open func(Instance) bool
 	// Parse allows you to override the implementation of the virtual method parse.
 	// The function takes the following parameters:
@@ -14576,6 +16085,10 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// Required for non-packetized input.
+	//                  Allows chopping incoming data into manageable units (frames)
+	//                  for subsequent decoding.
 	Parse func(Instance, *VideoCodecFrame, gstbase.Adapter, bool) gst.FlowReturn
 	// ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
 	// The function takes the following parameters:
@@ -14585,6 +16098,11 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                      Propose buffer allocation parameters for upstream elements.
+	//                      Subclasses should chain up to the parent implementation to
+	//                      invoke the default handler.
 	ProposeAllocation func(Instance, *gst.Query) bool
 	// Reset allows you to override the implementation of the virtual method reset.
 	// The function takes the following parameters:
@@ -14594,6 +16112,10 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Allows subclass (decoder) to perform post-seek semantics reset.
+	//                  Deprecated.
 	Reset func(Instance, bool) bool
 	// SetFormat allows you to override the implementation of the virtual method set_format.
 	// The function takes the following parameters:
@@ -14603,6 +16125,8 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Notifies subclass of incoming data format (caps).
 	SetFormat func(Instance, *VideoCodecState) bool
 	// SinkEvent allows you to override the implementation of the virtual method sink_event.
 	// The function takes the following parameters:
@@ -14612,6 +16136,13 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Event handler on the sink pad. This function should return
+	//                  TRUE if the event was handled and should be discarded
+	//                  (i.e. not unref'ed).
+	//                  Subclasses should chain up to the parent implementation to
+	//                  invoke the default handler.
 	SinkEvent func(Instance, *gst.Event) bool
 	// SinkQuery allows you to override the implementation of the virtual method sink_query.
 	// The function takes the following parameters:
@@ -14621,6 +16152,12 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Query handler on the sink pad. This function should
+	//                  return TRUE if the query could be performed. Subclasses
+	//                  should chain up to the parent implementation to invoke the
+	//                  default handler. Since: 1.4
 	SinkQuery func(Instance, *gst.Query) bool
 	// SrcEvent allows you to override the implementation of the virtual method src_event.
 	// The function takes the following parameters:
@@ -14630,6 +16167,13 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Event handler on the source pad. This function should return
+	//                  TRUE if the event was handled and should be discarded
+	//                  (i.e. not unref'ed).
+	//                  Subclasses should chain up to the parent implementation to
+	//                  invoke the default handler.
 	SrcEvent func(Instance, *gst.Event) bool
 	// SrcQuery allows you to override the implementation of the virtual method src_query.
 	// The function takes the following parameters:
@@ -14639,16 +16183,30 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Query handler on the source pad. This function should
+	//                  return TRUE if the query could be performed. Subclasses
+	//                  should chain up to the parent implementation to invoke the
+	//                  default handler. Since: 1.4
 	SrcQuery func(Instance, *gst.Query) bool
 	// Start allows you to override the implementation of the virtual method start.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element starts processing.
+	//                  Allows opening external resources.
 	Start func(Instance) bool
 	// Stop allows you to override the implementation of the virtual method stop.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element stops processing.
+	//                  Allows closing external resources.
 	Stop func(Instance) bool
 	// TransformMeta allows you to override the implementation of the virtual method transform_meta.
 	// The function takes the following parameters:
@@ -14659,6 +16217,12 @@ type VideoDecoderOverrides[Instance VideoDecoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional. Transform the metadata on the input buffer to the
+	//                  output buffer. By default this method is copies all meta without
+	//                  tags and meta with only the "video" tag. subclasses can
+	//                  implement this method and return %TRUE if the metadata is to be
+	//                  copied. Since: 1.6
 	TransformMeta func(Instance, *VideoCodecFrame, *gst.Meta) bool
 }
 
@@ -15160,6 +16724,697 @@ func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Point
 	}
 }
 
+// ParentClose calls the default implementations of the close virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Called when the element changes to GST_STATE_NULL.
+//                  Allows closing external resources.
+func (decoder *VideoDecoderInstance) ParentClose() bool {
+	var carg0 *C.GstVideoDecoder
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
+
+	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_close(unsafe.Pointer(parentclass.close), carg0)
+	runtime.KeepAlive(decoder)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                     Setup the allocation parameters for allocating output
+//                     buffers. The passed in query contains the result of the
+//                     downstream allocation query.
+//                     Subclasses should chain up to the parent implementation to
+//                     invoke the default handler.
+func (decoder *VideoDecoderInstance) ParentDecideAllocation(query *gst.Query) bool {
+	var carg0 *C.GstVideoDecoder
+	var carg1 *C.GstQuery // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
+
+	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
+	runtime.KeepAlive(decoder)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentDrain calls the default implementations of the drain virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// Optional.
+//                  Called to request subclass to decode any data it can at this
+//                  point, but that more data may arrive after. (e.g. at segment end).
+//                  Sub-classes should be prepared to handle new data afterward,
+//                  or seamless segment processing will break. Since: 1.6
+func (decoder *VideoDecoderInstance) ParentDrain() gst.FlowReturn {
+	var carg0 *C.GstVideoDecoder
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
+
+	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_drain(unsafe.Pointer(parentclass.drain), carg0)
+	runtime.KeepAlive(decoder)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentFinish calls the default implementations of the finish virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// Optional.
+//                  Called to request subclass to dispatch any pending remaining
+//                  data at EOS. Sub-classes can refuse to decode new data after.
+func (decoder *VideoDecoderInstance) ParentFinish() gst.FlowReturn {
+	var carg0 *C.GstVideoDecoder
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
+
+	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_finish(unsafe.Pointer(parentclass.finish), carg0)
+	runtime.KeepAlive(decoder)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentFlush calls the default implementations of the flush virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                      Flush all remaining data from the decoder without
+//                      pushing it downstream. Since: 1.2
+func (decoder *VideoDecoderInstance) ParentFlush() bool {
+	var carg0 *C.GstVideoDecoder
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
+
+	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_flush(unsafe.Pointer(parentclass.flush), carg0)
+	runtime.KeepAlive(decoder)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentGetcaps calls the default implementations of the getcaps virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- filter *gst.Caps 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.Caps 
+//
+// Optional.
+//                  Allows for a custom sink getcaps implementation.
+//                  If not implemented, default returns
+//                  gst_video_decoder_proxy_getcaps
+//                  applied to sink template caps.
+func (decoder *VideoDecoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
+	var carg0 *C.GstVideoDecoder
+	var carg1 *C.GstCaps // in, none, converted
+	var cret  *C.GstCaps // return, full, converted
+
+	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
+
+	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filter))
+
+	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_getcaps(unsafe.Pointer(parentclass.getcaps), carg0, carg1)
+	runtime.KeepAlive(decoder)
+	runtime.KeepAlive(filter)
+
+	var goret *gst.Caps
+
+	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// ParentHandleFrame calls the default implementations of the handle_frame virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- frame *VideoCodecFrame: The frame to handle 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+func (decoder *VideoDecoderInstance) ParentHandleFrame(frame *VideoCodecFrame) gst.FlowReturn {
+	var carg0 *C.GstVideoDecoder
+	var carg1 *C.GstVideoCodecFrame // in, full, converted
+	var cret  C.GstFlowReturn       // return, none, casted
+
+	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
+
+	carg1 = (*C.GstVideoCodecFrame)(UnsafeVideoCodecFrameToGlibFull(frame))
+
+	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_handle_frame(unsafe.Pointer(parentclass.handle_frame), carg0, carg1)
+	runtime.KeepAlive(decoder)
+	runtime.KeepAlive(frame)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentHandleMissingData calls the default implementations of the handle_missing_data virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- timestamp gst.ClockTime: Timestamp of the missing data 
+// 	- duration gst.ClockTime: Duration of the missing data 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+func (decoder *VideoDecoderInstance) ParentHandleMissingData(timestamp gst.ClockTime, duration gst.ClockTime) bool {
+	var carg0 *C.GstVideoDecoder
+	var carg1 C.GstClockTime // in, none, casted, alias
+	var carg2 C.GstClockTime // in, none, casted, alias
+	var cret  C.gboolean     // return
+
+	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
+
+	carg1 = C.GstClockTime(timestamp)
+	carg2 = C.GstClockTime(duration)
+
+	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_handle_missing_data(unsafe.Pointer(parentclass.handle_missing_data), carg0, carg1, carg2)
+	runtime.KeepAlive(decoder)
+	runtime.KeepAlive(timestamp)
+	runtime.KeepAlive(duration)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentNegotiate calls the default implementations of the negotiate virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Negotiate with downstream elements to currently configured #GstVideoCodecState.
+// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
+// negotiate fails.
+func (decoder *VideoDecoderInstance) ParentNegotiate() bool {
+	var carg0 *C.GstVideoDecoder
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
+
+	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_negotiate(unsafe.Pointer(parentclass.negotiate), carg0)
+	runtime.KeepAlive(decoder)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentOpen calls the default implementations of the open virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Called when the element changes to GST_STATE_READY.
+//                  Allows opening external resources.
+func (decoder *VideoDecoderInstance) ParentOpen() bool {
+	var carg0 *C.GstVideoDecoder
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
+
+	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_open(unsafe.Pointer(parentclass.open), carg0)
+	runtime.KeepAlive(decoder)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentParse calls the default implementations of the parse virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- frame *VideoCodecFrame 
+// 	- adapter gstbase.Adapter 
+// 	- atEos bool 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// Required for non-packetized input.
+//                  Allows chopping incoming data into manageable units (frames)
+//                  for subsequent decoding.
+func (decoder *VideoDecoderInstance) ParentParse(frame *VideoCodecFrame, adapter gstbase.Adapter, atEos bool) gst.FlowReturn {
+	var carg0 *C.GstVideoDecoder
+	var carg1 *C.GstVideoCodecFrame // in, none, converted
+	var carg2 *C.GstAdapter         // in, none, converted
+	var carg3 C.gboolean            // in
+	var cret  C.GstFlowReturn       // return, none, casted
+
+	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
+
+	carg1 = (*C.GstVideoCodecFrame)(UnsafeVideoCodecFrameToGlibNone(frame))
+	carg2 = (*C.GstAdapter)(gstbase.UnsafeAdapterToGlibNone(adapter))
+	if atEos {
+		carg3 = C.TRUE
+	}
+
+	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_parse(unsafe.Pointer(parentclass.parse), carg0, carg1, carg2, carg3)
+	runtime.KeepAlive(decoder)
+	runtime.KeepAlive(frame)
+	runtime.KeepAlive(adapter)
+	runtime.KeepAlive(atEos)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                      Propose buffer allocation parameters for upstream elements.
+//                      Subclasses should chain up to the parent implementation to
+//                      invoke the default handler.
+func (decoder *VideoDecoderInstance) ParentProposeAllocation(query *gst.Query) bool {
+	var carg0 *C.GstVideoDecoder
+	var carg1 *C.GstQuery // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
+
+	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_propose_allocation(unsafe.Pointer(parentclass.propose_allocation), carg0, carg1)
+	runtime.KeepAlive(decoder)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentReset calls the default implementations of the reset virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- hard bool 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Allows subclass (decoder) to perform post-seek semantics reset.
+//                  Deprecated.
+func (decoder *VideoDecoderInstance) ParentReset(hard bool) bool {
+	var carg0 *C.GstVideoDecoder
+	var carg1 C.gboolean // in
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
+
+	if hard {
+		carg1 = C.TRUE
+	}
+
+	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_reset(unsafe.Pointer(parentclass.reset), carg0, carg1)
+	runtime.KeepAlive(decoder)
+	runtime.KeepAlive(hard)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSetFormat calls the default implementations of the set_format virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- state *VideoCodecState 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Notifies subclass of incoming data format (caps).
+func (decoder *VideoDecoderInstance) ParentSetFormat(state *VideoCodecState) bool {
+	var carg0 *C.GstVideoDecoder
+	var carg1 *C.GstVideoCodecState // in, none, converted
+	var cret  C.gboolean            // return
+
+	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
+
+	carg1 = (*C.GstVideoCodecState)(UnsafeVideoCodecStateToGlibNone(state))
+
+	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_set_format(unsafe.Pointer(parentclass.set_format), carg0, carg1)
+	runtime.KeepAlive(decoder)
+	runtime.KeepAlive(state)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSinkEvent calls the default implementations of the sink_event virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- event *gst.Event 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Event handler on the sink pad. This function should return
+//                  TRUE if the event was handled and should be discarded
+//                  (i.e. not unref'ed).
+//                  Subclasses should chain up to the parent implementation to
+//                  invoke the default handler.
+func (decoder *VideoDecoderInstance) ParentSinkEvent(event *gst.Event) bool {
+	var carg0 *C.GstVideoDecoder
+	var carg1 *C.GstEvent // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
+
+	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
+
+	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_sink_event(unsafe.Pointer(parentclass.sink_event), carg0, carg1)
+	runtime.KeepAlive(decoder)
+	runtime.KeepAlive(event)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSinkQuery calls the default implementations of the sink_query virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Query handler on the sink pad. This function should
+//                  return TRUE if the query could be performed. Subclasses
+//                  should chain up to the parent implementation to invoke the
+//                  default handler. Since: 1.4
+func (decoder *VideoDecoderInstance) ParentSinkQuery(query *gst.Query) bool {
+	var carg0 *C.GstVideoDecoder
+	var carg1 *C.GstQuery // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
+
+	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_sink_query(unsafe.Pointer(parentclass.sink_query), carg0, carg1)
+	runtime.KeepAlive(decoder)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSrcEvent calls the default implementations of the src_event virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- event *gst.Event 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Event handler on the source pad. This function should return
+//                  TRUE if the event was handled and should be discarded
+//                  (i.e. not unref'ed).
+//                  Subclasses should chain up to the parent implementation to
+//                  invoke the default handler.
+func (decoder *VideoDecoderInstance) ParentSrcEvent(event *gst.Event) bool {
+	var carg0 *C.GstVideoDecoder
+	var carg1 *C.GstEvent // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
+
+	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
+
+	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
+	runtime.KeepAlive(decoder)
+	runtime.KeepAlive(event)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSrcQuery calls the default implementations of the src_query virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Query handler on the source pad. This function should
+//                  return TRUE if the query could be performed. Subclasses
+//                  should chain up to the parent implementation to invoke the
+//                  default handler. Since: 1.4
+func (decoder *VideoDecoderInstance) ParentSrcQuery(query *gst.Query) bool {
+	var carg0 *C.GstVideoDecoder
+	var carg1 *C.GstQuery // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
+
+	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_src_query(unsafe.Pointer(parentclass.src_query), carg0, carg1)
+	runtime.KeepAlive(decoder)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentStart calls the default implementations of the start virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Called when the element starts processing.
+//                  Allows opening external resources.
+func (decoder *VideoDecoderInstance) ParentStart() bool {
+	var carg0 *C.GstVideoDecoder
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
+
+	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_start(unsafe.Pointer(parentclass.start), carg0)
+	runtime.KeepAlive(decoder)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentStop calls the default implementations of the stop virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Called when the element stops processing.
+//                  Allows closing external resources.
+func (decoder *VideoDecoderInstance) ParentStop() bool {
+	var carg0 *C.GstVideoDecoder
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
+
+	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
+	runtime.KeepAlive(decoder)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentTransformMeta calls the default implementations of the transform_meta virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- frame *VideoCodecFrame 
+// 	- meta *gst.Meta 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional. Transform the metadata on the input buffer to the
+//                  output buffer. By default this method is copies all meta without
+//                  tags and meta with only the "video" tag. subclasses can
+//                  implement this method and return %TRUE if the metadata is to be
+//                  copied. Since: 1.6
+func (decoder *VideoDecoderInstance) ParentTransformMeta(frame *VideoCodecFrame, meta *gst.Meta) bool {
+	var carg0 *C.GstVideoDecoder
+	var carg1 *C.GstVideoCodecFrame // in, none, converted
+	var carg2 *C.GstMeta            // in, none, converted
+	var cret  C.gboolean            // return
+
+	parentclass := (*C.GstVideoDecoderClass)(classdata.PeekParentClass(UnsafeVideoDecoderToGlibNone(decoder)))
+
+	carg1 = (*C.GstVideoCodecFrame)(UnsafeVideoCodecFrameToGlibNone(frame))
+	carg2 = (*C.GstMeta)(gst.UnsafeMetaToGlibNone(meta))
+
+	cret = C._gotk4_gstvideo1_VideoDecoder_virtual_transform_meta(unsafe.Pointer(parentclass.transform_meta), carg0, carg1, carg2)
+	runtime.KeepAlive(decoder)
+	runtime.KeepAlive(frame)
+	runtime.KeepAlive(meta)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
 // RegisterVideoDecoderSubClass is used to register a go subclass of GstVideoDecoder. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterVideoDecoderSubClass[InstanceT VideoDecoder](
@@ -15570,6 +17825,266 @@ type VideoEncoder interface {
 	//
 	// Configures @encoder to handle Quality-of-Service events from downstream.
 	SetQosEnabled(bool)
+
+	// chain up virtual methods:
+
+	// ParentClose calls the default implementations of the close virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element changes to GST_STATE_NULL.
+	//                  Allows closing external resources.
+	ParentClose() bool
+	// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                     Setup the allocation parameters for allocating output
+	//                     buffers. The passed in query contains the result of the
+	//                     downstream allocation query.
+	//                     Subclasses should chain up to the parent implementation to
+	//                     invoke the default handler.
+	ParentDecideAllocation(query *gst.Query) bool
+	// ParentFinish calls the default implementations of the finish virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// Optional.
+	//                  Called to request subclass to dispatch any pending remaining
+	//                  data (e.g. at EOS).
+	ParentFinish() gst.FlowReturn
+	// ParentFlush calls the default implementations of the flush virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                      Flush all remaining data from the encoder without
+	//                      pushing it downstream. Since: 1.2
+	ParentFlush() bool
+	// ParentGetcaps calls the default implementations of the getcaps virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- filter *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Caps 
+	//
+	// Optional.
+	//                  Allows for a custom sink getcaps implementation (e.g.
+	//                  for multichannel input specification).  If not implemented,
+	//                  default returns gst_video_encoder_proxy_getcaps
+	//                  applied to sink template caps.
+	ParentGetcaps(filter *gst.Caps) *gst.Caps
+	// ParentHandleFrame calls the default implementations of the handle_frame virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- frame *VideoCodecFrame 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// Provides input frame to subclass.
+	ParentHandleFrame(frame *VideoCodecFrame) gst.FlowReturn
+	// ParentNegotiate calls the default implementations of the negotiate virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Negotiate with downstream elements to currently configured #GstVideoCodecState.
+	// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
+	// negotiate fails.
+	ParentNegotiate() bool
+	// ParentOpen calls the default implementations of the open virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element changes to GST_STATE_READY.
+	//                  Allows opening external resources.
+	ParentOpen() bool
+	// ParentPrePush calls the default implementations of the pre_push virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- frame *VideoCodecFrame 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// Optional.
+	//                  Allows subclass to push frame downstream in whatever
+	//                  shape or form it deems appropriate.  If not provided,
+	//                  provided encoded frame data is simply pushed downstream.
+	ParentPrePush(frame *VideoCodecFrame) gst.FlowReturn
+	// ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                      Propose buffer allocation parameters for upstream elements.
+	//                      Subclasses should chain up to the parent implementation to
+	//                      invoke the default handler.
+	ParentProposeAllocation(query *gst.Query) bool
+	// ParentReset calls the default implementations of the reset virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- hard bool 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Allows subclass (encoder) to perform post-seek semantics reset.
+	//                  Deprecated.
+	ParentReset(hard bool) bool
+	// ParentSetFormat calls the default implementations of the set_format virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- state *VideoCodecState 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Notifies subclass of incoming data format.
+	//                  GstVideoCodecState fields have already been
+	//                  set according to provided caps.
+	ParentSetFormat(state *VideoCodecState) bool
+	// ParentSinkEvent calls the default implementations of the sink_event virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Event handler on the sink pad. This function should return
+	//                  TRUE if the event was handled and should be discarded
+	//                  (i.e. not unref'ed).
+	//                  Subclasses should chain up to the parent implementation to
+	//                  invoke the default handler.
+	ParentSinkEvent(event *gst.Event) bool
+	// ParentSinkQuery calls the default implementations of the sink_query virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Query handler on the sink pad. This function should
+	//                  return TRUE if the query could be performed. Subclasses
+	//                  should chain up to the parent implementation to invoke the
+	//                  default handler. Since: 1.4
+	ParentSinkQuery(query *gst.Query) bool
+	// ParentSrcEvent calls the default implementations of the src_event virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Event handler on the source pad. This function should return
+	//                  TRUE if the event was handled and should be discarded
+	//                  (i.e. not unref'ed).
+	//                  Subclasses should chain up to the parent implementation to
+	//                  invoke the default handler.
+	ParentSrcEvent(event *gst.Event) bool
+	// ParentSrcQuery calls the default implementations of the src_query virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Query handler on the source pad. This function should
+	//                  return TRUE if the query could be performed. Subclasses
+	//                  should chain up to the parent implementation to invoke the
+	//                  default handler. Since: 1.4
+	ParentSrcQuery(query *gst.Query) bool
+	// ParentStart calls the default implementations of the start virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element starts processing.
+	//                  Allows opening external resources.
+	ParentStart() bool
+	// ParentStop calls the default implementations of the stop virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element stops processing.
+	//                  Allows closing external resources.
+	ParentStop() bool
+	// ParentTransformMeta calls the default implementations of the transform_meta virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- frame *VideoCodecFrame 
+	// 	- meta *gst.Meta 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional. Transform the metadata on the input buffer to the
+	//                  output buffer. By default this method is copies all meta without
+	//                  tags and meta with only the "video" tag. subclasses can
+	//                  implement this method and return %TRUE if the metadata is to be
+	//                  copied. Since: 1.6
+	ParentTransformMeta(frame *VideoCodecFrame, meta *gst.Meta) bool
 }
 
 func unsafeWrapVideoEncoder(base *gobject.ObjectInstance) *VideoEncoderInstance {
@@ -15582,7 +18097,7 @@ func unsafeWrapVideoEncoder(base *gobject.ObjectInstance) *VideoEncoderInstance 
 			},
 		},
 		PresetInstance: gst.PresetInstance{
-			Instance: *base,
+			ObjectInstance: *base,
 		},
 	}
 }
@@ -16334,6 +18849,10 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element changes to GST_STATE_NULL.
+	//                  Allows closing external resources.
 	Close func(Instance) bool
 	// DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
 	// The function takes the following parameters:
@@ -16343,16 +18862,31 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                     Setup the allocation parameters for allocating output
+	//                     buffers. The passed in query contains the result of the
+	//                     downstream allocation query.
+	//                     Subclasses should chain up to the parent implementation to
+	//                     invoke the default handler.
 	DecideAllocation func(Instance, *gst.Query) bool
 	// Finish allows you to override the implementation of the virtual method finish.
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// Optional.
+	//                  Called to request subclass to dispatch any pending remaining
+	//                  data (e.g. at EOS).
 	Finish func(Instance) gst.FlowReturn
 	// Flush allows you to override the implementation of the virtual method flush.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                      Flush all remaining data from the encoder without
+	//                      pushing it downstream. Since: 1.2
 	Flush func(Instance) bool
 	// Getcaps allows you to override the implementation of the virtual method getcaps.
 	// The function takes the following parameters:
@@ -16362,6 +18896,12 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Caps 
+	//
+	// Optional.
+	//                  Allows for a custom sink getcaps implementation (e.g.
+	//                  for multichannel input specification).  If not implemented,
+	//                  default returns gst_video_encoder_proxy_getcaps
+	//                  applied to sink template caps.
 	Getcaps func(Instance, *gst.Caps) *gst.Caps
 	// HandleFrame allows you to override the implementation of the virtual method handle_frame.
 	// The function takes the following parameters:
@@ -16371,16 +18911,26 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// Provides input frame to subclass.
 	HandleFrame func(Instance, *VideoCodecFrame) gst.FlowReturn
 	// Negotiate allows you to override the implementation of the virtual method negotiate.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Negotiate with downstream elements to currently configured #GstVideoCodecState.
+	// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
+	// negotiate fails.
 	Negotiate func(Instance) bool
 	// Open allows you to override the implementation of the virtual method open.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element changes to GST_STATE_READY.
+	//                  Allows opening external resources.
 	Open func(Instance) bool
 	// PrePush allows you to override the implementation of the virtual method pre_push.
 	// The function takes the following parameters:
@@ -16390,6 +18940,11 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// Optional.
+	//                  Allows subclass to push frame downstream in whatever
+	//                  shape or form it deems appropriate.  If not provided,
+	//                  provided encoded frame data is simply pushed downstream.
 	PrePush func(Instance, *VideoCodecFrame) gst.FlowReturn
 	// ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
 	// The function takes the following parameters:
@@ -16399,6 +18954,11 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                      Propose buffer allocation parameters for upstream elements.
+	//                      Subclasses should chain up to the parent implementation to
+	//                      invoke the default handler.
 	ProposeAllocation func(Instance, *gst.Query) bool
 	// Reset allows you to override the implementation of the virtual method reset.
 	// The function takes the following parameters:
@@ -16408,6 +18968,10 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Allows subclass (encoder) to perform post-seek semantics reset.
+	//                  Deprecated.
 	Reset func(Instance, bool) bool
 	// SetFormat allows you to override the implementation of the virtual method set_format.
 	// The function takes the following parameters:
@@ -16417,6 +18981,11 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Notifies subclass of incoming data format.
+	//                  GstVideoCodecState fields have already been
+	//                  set according to provided caps.
 	SetFormat func(Instance, *VideoCodecState) bool
 	// SinkEvent allows you to override the implementation of the virtual method sink_event.
 	// The function takes the following parameters:
@@ -16426,6 +18995,13 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Event handler on the sink pad. This function should return
+	//                  TRUE if the event was handled and should be discarded
+	//                  (i.e. not unref'ed).
+	//                  Subclasses should chain up to the parent implementation to
+	//                  invoke the default handler.
 	SinkEvent func(Instance, *gst.Event) bool
 	// SinkQuery allows you to override the implementation of the virtual method sink_query.
 	// The function takes the following parameters:
@@ -16435,6 +19011,12 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Query handler on the sink pad. This function should
+	//                  return TRUE if the query could be performed. Subclasses
+	//                  should chain up to the parent implementation to invoke the
+	//                  default handler. Since: 1.4
 	SinkQuery func(Instance, *gst.Query) bool
 	// SrcEvent allows you to override the implementation of the virtual method src_event.
 	// The function takes the following parameters:
@@ -16444,6 +19026,13 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Event handler on the source pad. This function should return
+	//                  TRUE if the event was handled and should be discarded
+	//                  (i.e. not unref'ed).
+	//                  Subclasses should chain up to the parent implementation to
+	//                  invoke the default handler.
 	SrcEvent func(Instance, *gst.Event) bool
 	// SrcQuery allows you to override the implementation of the virtual method src_query.
 	// The function takes the following parameters:
@@ -16453,16 +19042,30 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Query handler on the source pad. This function should
+	//                  return TRUE if the query could be performed. Subclasses
+	//                  should chain up to the parent implementation to invoke the
+	//                  default handler. Since: 1.4
 	SrcQuery func(Instance, *gst.Query) bool
 	// Start allows you to override the implementation of the virtual method start.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element starts processing.
+	//                  Allows opening external resources.
 	Start func(Instance) bool
 	// Stop allows you to override the implementation of the virtual method stop.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element stops processing.
+	//                  Allows closing external resources.
 	Stop func(Instance) bool
 	// TransformMeta allows you to override the implementation of the virtual method transform_meta.
 	// The function takes the following parameters:
@@ -16473,6 +19076,12 @@ type VideoEncoderOverrides[Instance VideoEncoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional. Transform the metadata on the input buffer to the
+	//                  output buffer. By default this method is copies all meta without
+	//                  tags and meta with only the "video" tag. subclasses can
+	//                  implement this method and return %TRUE if the metadata is to be
+	//                  copied. Since: 1.6
 	TransformMeta func(Instance, *VideoCodecFrame, *gst.Meta) bool
 }
 
@@ -16922,6 +19531,631 @@ func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Point
 	}
 }
 
+// ParentClose calls the default implementations of the close virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Called when the element changes to GST_STATE_NULL.
+//                  Allows closing external resources.
+func (encoder *VideoEncoderInstance) ParentClose() bool {
+	var carg0 *C.GstVideoEncoder
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
+
+	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_close(unsafe.Pointer(parentclass.close), carg0)
+	runtime.KeepAlive(encoder)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                     Setup the allocation parameters for allocating output
+//                     buffers. The passed in query contains the result of the
+//                     downstream allocation query.
+//                     Subclasses should chain up to the parent implementation to
+//                     invoke the default handler.
+func (encoder *VideoEncoderInstance) ParentDecideAllocation(query *gst.Query) bool {
+	var carg0 *C.GstVideoEncoder
+	var carg1 *C.GstQuery // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
+
+	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
+	runtime.KeepAlive(encoder)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentFinish calls the default implementations of the finish virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// Optional.
+//                  Called to request subclass to dispatch any pending remaining
+//                  data (e.g. at EOS).
+func (encoder *VideoEncoderInstance) ParentFinish() gst.FlowReturn {
+	var carg0 *C.GstVideoEncoder
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
+
+	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_finish(unsafe.Pointer(parentclass.finish), carg0)
+	runtime.KeepAlive(encoder)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentFlush calls the default implementations of the flush virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                      Flush all remaining data from the encoder without
+//                      pushing it downstream. Since: 1.2
+func (encoder *VideoEncoderInstance) ParentFlush() bool {
+	var carg0 *C.GstVideoEncoder
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
+
+	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_flush(unsafe.Pointer(parentclass.flush), carg0)
+	runtime.KeepAlive(encoder)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentGetcaps calls the default implementations of the getcaps virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- filter *gst.Caps 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.Caps 
+//
+// Optional.
+//                  Allows for a custom sink getcaps implementation (e.g.
+//                  for multichannel input specification).  If not implemented,
+//                  default returns gst_video_encoder_proxy_getcaps
+//                  applied to sink template caps.
+func (enc *VideoEncoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
+	var carg0 *C.GstVideoEncoder
+	var carg1 *C.GstCaps // in, none, converted
+	var cret  *C.GstCaps // return, full, converted
+
+	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(enc)))
+
+	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filter))
+
+	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_getcaps(unsafe.Pointer(parentclass.getcaps), carg0, carg1)
+	runtime.KeepAlive(enc)
+	runtime.KeepAlive(filter)
+
+	var goret *gst.Caps
+
+	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// ParentHandleFrame calls the default implementations of the handle_frame virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- frame *VideoCodecFrame 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// Provides input frame to subclass.
+func (encoder *VideoEncoderInstance) ParentHandleFrame(frame *VideoCodecFrame) gst.FlowReturn {
+	var carg0 *C.GstVideoEncoder
+	var carg1 *C.GstVideoCodecFrame // in, none, converted
+	var cret  C.GstFlowReturn       // return, none, casted
+
+	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
+
+	carg1 = (*C.GstVideoCodecFrame)(UnsafeVideoCodecFrameToGlibNone(frame))
+
+	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_handle_frame(unsafe.Pointer(parentclass.handle_frame), carg0, carg1)
+	runtime.KeepAlive(encoder)
+	runtime.KeepAlive(frame)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentNegotiate calls the default implementations of the negotiate virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Negotiate with downstream elements to currently configured #GstVideoCodecState.
+// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
+// negotiate fails.
+func (encoder *VideoEncoderInstance) ParentNegotiate() bool {
+	var carg0 *C.GstVideoEncoder
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
+
+	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_negotiate(unsafe.Pointer(parentclass.negotiate), carg0)
+	runtime.KeepAlive(encoder)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentOpen calls the default implementations of the open virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Called when the element changes to GST_STATE_READY.
+//                  Allows opening external resources.
+func (encoder *VideoEncoderInstance) ParentOpen() bool {
+	var carg0 *C.GstVideoEncoder
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
+
+	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_open(unsafe.Pointer(parentclass.open), carg0)
+	runtime.KeepAlive(encoder)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentPrePush calls the default implementations of the pre_push virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- frame *VideoCodecFrame 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// Optional.
+//                  Allows subclass to push frame downstream in whatever
+//                  shape or form it deems appropriate.  If not provided,
+//                  provided encoded frame data is simply pushed downstream.
+func (encoder *VideoEncoderInstance) ParentPrePush(frame *VideoCodecFrame) gst.FlowReturn {
+	var carg0 *C.GstVideoEncoder
+	var carg1 *C.GstVideoCodecFrame // in, none, converted
+	var cret  C.GstFlowReturn       // return, none, casted
+
+	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
+
+	carg1 = (*C.GstVideoCodecFrame)(UnsafeVideoCodecFrameToGlibNone(frame))
+
+	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_pre_push(unsafe.Pointer(parentclass.pre_push), carg0, carg1)
+	runtime.KeepAlive(encoder)
+	runtime.KeepAlive(frame)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                      Propose buffer allocation parameters for upstream elements.
+//                      Subclasses should chain up to the parent implementation to
+//                      invoke the default handler.
+func (encoder *VideoEncoderInstance) ParentProposeAllocation(query *gst.Query) bool {
+	var carg0 *C.GstVideoEncoder
+	var carg1 *C.GstQuery // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
+
+	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_propose_allocation(unsafe.Pointer(parentclass.propose_allocation), carg0, carg1)
+	runtime.KeepAlive(encoder)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentReset calls the default implementations of the reset virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- hard bool 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Allows subclass (encoder) to perform post-seek semantics reset.
+//                  Deprecated.
+func (encoder *VideoEncoderInstance) ParentReset(hard bool) bool {
+	var carg0 *C.GstVideoEncoder
+	var carg1 C.gboolean // in
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
+
+	if hard {
+		carg1 = C.TRUE
+	}
+
+	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_reset(unsafe.Pointer(parentclass.reset), carg0, carg1)
+	runtime.KeepAlive(encoder)
+	runtime.KeepAlive(hard)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSetFormat calls the default implementations of the set_format virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- state *VideoCodecState 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Notifies subclass of incoming data format.
+//                  GstVideoCodecState fields have already been
+//                  set according to provided caps.
+func (encoder *VideoEncoderInstance) ParentSetFormat(state *VideoCodecState) bool {
+	var carg0 *C.GstVideoEncoder
+	var carg1 *C.GstVideoCodecState // in, none, converted
+	var cret  C.gboolean            // return
+
+	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
+
+	carg1 = (*C.GstVideoCodecState)(UnsafeVideoCodecStateToGlibNone(state))
+
+	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_set_format(unsafe.Pointer(parentclass.set_format), carg0, carg1)
+	runtime.KeepAlive(encoder)
+	runtime.KeepAlive(state)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSinkEvent calls the default implementations of the sink_event virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- event *gst.Event 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Event handler on the sink pad. This function should return
+//                  TRUE if the event was handled and should be discarded
+//                  (i.e. not unref'ed).
+//                  Subclasses should chain up to the parent implementation to
+//                  invoke the default handler.
+func (encoder *VideoEncoderInstance) ParentSinkEvent(event *gst.Event) bool {
+	var carg0 *C.GstVideoEncoder
+	var carg1 *C.GstEvent // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
+
+	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
+
+	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_sink_event(unsafe.Pointer(parentclass.sink_event), carg0, carg1)
+	runtime.KeepAlive(encoder)
+	runtime.KeepAlive(event)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSinkQuery calls the default implementations of the sink_query virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Query handler on the sink pad. This function should
+//                  return TRUE if the query could be performed. Subclasses
+//                  should chain up to the parent implementation to invoke the
+//                  default handler. Since: 1.4
+func (encoder *VideoEncoderInstance) ParentSinkQuery(query *gst.Query) bool {
+	var carg0 *C.GstVideoEncoder
+	var carg1 *C.GstQuery // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
+
+	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_sink_query(unsafe.Pointer(parentclass.sink_query), carg0, carg1)
+	runtime.KeepAlive(encoder)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSrcEvent calls the default implementations of the src_event virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- event *gst.Event 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Event handler on the source pad. This function should return
+//                  TRUE if the event was handled and should be discarded
+//                  (i.e. not unref'ed).
+//                  Subclasses should chain up to the parent implementation to
+//                  invoke the default handler.
+func (encoder *VideoEncoderInstance) ParentSrcEvent(event *gst.Event) bool {
+	var carg0 *C.GstVideoEncoder
+	var carg1 *C.GstEvent // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
+
+	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
+
+	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
+	runtime.KeepAlive(encoder)
+	runtime.KeepAlive(event)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSrcQuery calls the default implementations of the src_query virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Query handler on the source pad. This function should
+//                  return TRUE if the query could be performed. Subclasses
+//                  should chain up to the parent implementation to invoke the
+//                  default handler. Since: 1.4
+func (encoder *VideoEncoderInstance) ParentSrcQuery(query *gst.Query) bool {
+	var carg0 *C.GstVideoEncoder
+	var carg1 *C.GstQuery // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
+
+	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_src_query(unsafe.Pointer(parentclass.src_query), carg0, carg1)
+	runtime.KeepAlive(encoder)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentStart calls the default implementations of the start virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Called when the element starts processing.
+//                  Allows opening external resources.
+func (encoder *VideoEncoderInstance) ParentStart() bool {
+	var carg0 *C.GstVideoEncoder
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
+
+	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_start(unsafe.Pointer(parentclass.start), carg0)
+	runtime.KeepAlive(encoder)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentStop calls the default implementations of the stop virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Called when the element stops processing.
+//                  Allows closing external resources.
+func (encoder *VideoEncoderInstance) ParentStop() bool {
+	var carg0 *C.GstVideoEncoder
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
+
+	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
+	runtime.KeepAlive(encoder)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentTransformMeta calls the default implementations of the transform_meta virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- frame *VideoCodecFrame 
+// 	- meta *gst.Meta 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional. Transform the metadata on the input buffer to the
+//                  output buffer. By default this method is copies all meta without
+//                  tags and meta with only the "video" tag. subclasses can
+//                  implement this method and return %TRUE if the metadata is to be
+//                  copied. Since: 1.6
+func (encoder *VideoEncoderInstance) ParentTransformMeta(frame *VideoCodecFrame, meta *gst.Meta) bool {
+	var carg0 *C.GstVideoEncoder
+	var carg1 *C.GstVideoCodecFrame // in, none, converted
+	var carg2 *C.GstMeta            // in, none, converted
+	var cret  C.gboolean            // return
+
+	parentclass := (*C.GstVideoEncoderClass)(classdata.PeekParentClass(UnsafeVideoEncoderToGlibNone(encoder)))
+
+	carg1 = (*C.GstVideoCodecFrame)(UnsafeVideoCodecFrameToGlibNone(frame))
+	carg2 = (*C.GstMeta)(gst.UnsafeMetaToGlibNone(meta))
+
+	cret = C._gotk4_gstvideo1_VideoEncoder_virtual_transform_meta(unsafe.Pointer(parentclass.transform_meta), carg0, carg1, carg2)
+	runtime.KeepAlive(encoder)
+	runtime.KeepAlive(frame)
+	runtime.KeepAlive(meta)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
 // RegisterVideoEncoderSubClass is used to register a go subclass of GstVideoEncoder. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterVideoEncoderSubClass[InstanceT VideoEncoder](
@@ -16965,6 +20199,49 @@ var _ VideoFilter = (*VideoFilterInstance)(nil)
 type VideoFilter interface {
 	gstbase.BaseTransform
 	upcastToGstVideoFilter() *VideoFilterInstance
+
+	// chain up virtual methods:
+
+	// ParentSetInfo calls the default implementations of the set_info virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- incaps *gst.Caps 
+	// 	- inInfo *VideoInfo 
+	// 	- outcaps *gst.Caps 
+	// 	- outInfo *VideoInfo 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// function to be called with the negotiated caps and video infos
+	ParentSetInfo(incaps *gst.Caps, inInfo *VideoInfo, outcaps *gst.Caps, outInfo *VideoInfo) bool
+	// ParentTransformFrame calls the default implementations of the transform_frame virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- inframe *VideoFrame 
+	// 	- outframe *VideoFrame 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// transform a video frame
+	ParentTransformFrame(inframe *VideoFrame, outframe *VideoFrame) gst.FlowReturn
+	// ParentTransformFrameIP calls the default implementations of the transform_frame_ip virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- frame *VideoFrame 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// transform a video frame in place
+	ParentTransformFrameIP(frame *VideoFrame) gst.FlowReturn
 }
 
 func unsafeWrapVideoFilter(base *gobject.ObjectInstance) *VideoFilterInstance {
@@ -17031,6 +20308,8 @@ type VideoFilterOverrides[Instance VideoFilter] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// function to be called with the negotiated caps and video infos
 	SetInfo func(Instance, *gst.Caps, *VideoInfo, *gst.Caps, *VideoInfo) bool
 	// TransformFrame allows you to override the implementation of the virtual method transform_frame.
 	// The function takes the following parameters:
@@ -17041,6 +20320,8 @@ type VideoFilterOverrides[Instance VideoFilter] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// transform a video frame
 	TransformFrame func(Instance, *VideoFrame, *VideoFrame) gst.FlowReturn
 	// TransformFrameIP allows you to override the implementation of the virtual method transform_frame_ip.
 	// The function takes the following parameters:
@@ -17050,6 +20331,8 @@ type VideoFilterOverrides[Instance VideoFilter] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// transform a video frame in place
 	TransformFrameIP func(Instance, *VideoFrame) gst.FlowReturn
 }
 
@@ -17137,6 +20420,117 @@ func UnsafeApplyVideoFilterOverrides[Instance VideoFilter](gclass unsafe.Pointer
 	}
 }
 
+// ParentSetInfo calls the default implementations of the set_info virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- incaps *gst.Caps 
+// 	- inInfo *VideoInfo 
+// 	- outcaps *gst.Caps 
+// 	- outInfo *VideoInfo 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// function to be called with the negotiated caps and video infos
+func (filter *VideoFilterInstance) ParentSetInfo(incaps *gst.Caps, inInfo *VideoInfo, outcaps *gst.Caps, outInfo *VideoInfo) bool {
+	var carg0 *C.GstVideoFilter
+	var carg1 *C.GstCaps      // in, none, converted
+	var carg2 *C.GstVideoInfo // in, none, converted
+	var carg3 *C.GstCaps      // in, none, converted
+	var carg4 *C.GstVideoInfo // in, none, converted
+	var cret  C.gboolean      // return
+
+	parentclass := (*C.GstVideoFilterClass)(classdata.PeekParentClass(UnsafeVideoFilterToGlibNone(filter)))
+
+	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(incaps))
+	carg2 = (*C.GstVideoInfo)(UnsafeVideoInfoToGlibNone(inInfo))
+	carg3 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(outcaps))
+	carg4 = (*C.GstVideoInfo)(UnsafeVideoInfoToGlibNone(outInfo))
+
+	cret = C._gotk4_gstvideo1_VideoFilter_virtual_set_info(unsafe.Pointer(parentclass.set_info), carg0, carg1, carg2, carg3, carg4)
+	runtime.KeepAlive(filter)
+	runtime.KeepAlive(incaps)
+	runtime.KeepAlive(inInfo)
+	runtime.KeepAlive(outcaps)
+	runtime.KeepAlive(outInfo)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentTransformFrame calls the default implementations of the transform_frame virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- inframe *VideoFrame 
+// 	- outframe *VideoFrame 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// transform a video frame
+func (filter *VideoFilterInstance) ParentTransformFrame(inframe *VideoFrame, outframe *VideoFrame) gst.FlowReturn {
+	var carg0 *C.GstVideoFilter
+	var carg1 *C.GstVideoFrame // in, none, converted
+	var carg2 *C.GstVideoFrame // in, none, converted
+	var cret  C.GstFlowReturn  // return, none, casted
+
+	parentclass := (*C.GstVideoFilterClass)(classdata.PeekParentClass(UnsafeVideoFilterToGlibNone(filter)))
+
+	carg1 = (*C.GstVideoFrame)(UnsafeVideoFrameToGlibNone(inframe))
+	carg2 = (*C.GstVideoFrame)(UnsafeVideoFrameToGlibNone(outframe))
+
+	cret = C._gotk4_gstvideo1_VideoFilter_virtual_transform_frame(unsafe.Pointer(parentclass.transform_frame), carg0, carg1, carg2)
+	runtime.KeepAlive(filter)
+	runtime.KeepAlive(inframe)
+	runtime.KeepAlive(outframe)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentTransformFrameIP calls the default implementations of the transform_frame_ip virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- frame *VideoFrame 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// transform a video frame in place
+func (trans *VideoFilterInstance) ParentTransformFrameIP(frame *VideoFrame) gst.FlowReturn {
+	var carg0 *C.GstVideoFilter
+	var carg1 *C.GstVideoFrame // in, none, converted
+	var cret  C.GstFlowReturn  // return, none, casted
+
+	parentclass := (*C.GstVideoFilterClass)(classdata.PeekParentClass(UnsafeVideoFilterToGlibNone(trans)))
+
+	carg1 = (*C.GstVideoFrame)(UnsafeVideoFrameToGlibNone(frame))
+
+	cret = C._gotk4_gstvideo1_VideoFilter_virtual_transform_frame_ip(unsafe.Pointer(parentclass.transform_frame_ip), carg0, carg1)
+	runtime.KeepAlive(trans)
+	runtime.KeepAlive(frame)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
 // RegisterVideoFilterSubClass is used to register a go subclass of GstVideoFilter. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterVideoFilterSubClass[InstanceT VideoFilter](
@@ -17181,6 +20575,37 @@ var _ VideoSink = (*VideoSinkInstance)(nil)
 type VideoSink interface {
 	gstbase.BaseSink
 	upcastToGstVideoSink() *VideoSinkInstance
+
+	// chain up virtual methods:
+
+	// ParentSetInfo calls the default implementations of the set_info virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps: A #GstCaps. 
+	// 	- info *VideoInfo: A #GstVideoInfo corresponding to @caps. 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Notifies the subclass of changed #GstVideoInfo.
+	ParentSetInfo(caps *gst.Caps, info *VideoInfo) bool
+	// ParentShowFrame calls the default implementations of the show_frame virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- buf *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// render a video frame. Maps to #GstBaseSinkClass.render() and
+	//     #GstBaseSinkClass.preroll() vfuncs. Rendering during preroll will be
+	//     suppressed if the #GstVideoSink:show-preroll-frame property is set to
+	//     %FALSE.
+	ParentShowFrame(buf *gst.Buffer) gst.FlowReturn
 }
 
 func unsafeWrapVideoSink(base *gobject.ObjectInstance) *VideoSinkInstance {
@@ -17289,6 +20714,8 @@ type VideoSinkOverrides[Instance VideoSink] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Notifies the subclass of changed #GstVideoInfo.
 	SetInfo func(Instance, *gst.Caps, *VideoInfo) bool
 	// ShowFrame allows you to override the implementation of the virtual method show_frame.
 	// The function takes the following parameters:
@@ -17298,6 +20725,11 @@ type VideoSinkOverrides[Instance VideoSink] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// render a video frame. Maps to #GstBaseSinkClass.render() and
+	//     #GstBaseSinkClass.preroll() vfuncs. Rendering during preroll will be
+	//     suppressed if the #GstVideoSink:show-preroll-frame property is set to
+	//     %FALSE.
 	ShowFrame func(Instance, *gst.Buffer) gst.FlowReturn
 }
 
@@ -17357,6 +20789,77 @@ func UnsafeApplyVideoSinkOverrides[Instance VideoSink](gclass unsafe.Pointer, ov
 	}
 }
 
+// ParentSetInfo calls the default implementations of the set_info virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- caps *gst.Caps: A #GstCaps. 
+// 	- info *VideoInfo: A #GstVideoInfo corresponding to @caps. 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Notifies the subclass of changed #GstVideoInfo.
+func (videoSink *VideoSinkInstance) ParentSetInfo(caps *gst.Caps, info *VideoInfo) bool {
+	var carg0 *C.GstVideoSink
+	var carg1 *C.GstCaps      // in, none, converted
+	var carg2 *C.GstVideoInfo // in, none, converted
+	var cret  C.gboolean      // return
+
+	parentclass := (*C.GstVideoSinkClass)(classdata.PeekParentClass(UnsafeVideoSinkToGlibNone(videoSink)))
+
+	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
+	carg2 = (*C.GstVideoInfo)(UnsafeVideoInfoToGlibNone(info))
+
+	cret = C._gotk4_gstvideo1_VideoSink_virtual_set_info(unsafe.Pointer(parentclass.set_info), carg0, carg1, carg2)
+	runtime.KeepAlive(videoSink)
+	runtime.KeepAlive(caps)
+	runtime.KeepAlive(info)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentShowFrame calls the default implementations of the show_frame virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- buf *gst.Buffer 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// render a video frame. Maps to #GstBaseSinkClass.render() and
+//     #GstBaseSinkClass.preroll() vfuncs. Rendering during preroll will be
+//     suppressed if the #GstVideoSink:show-preroll-frame property is set to
+//     %FALSE.
+func (videoSink *VideoSinkInstance) ParentShowFrame(buf *gst.Buffer) gst.FlowReturn {
+	var carg0 *C.GstVideoSink
+	var carg1 *C.GstBuffer    // in, none, converted
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstVideoSinkClass)(classdata.PeekParentClass(UnsafeVideoSinkToGlibNone(videoSink)))
+
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buf))
+
+	cret = C._gotk4_gstvideo1_VideoSink_virtual_show_frame(unsafe.Pointer(parentclass.show_frame), carg0, carg1)
+	runtime.KeepAlive(videoSink)
+	runtime.KeepAlive(buf)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
 // RegisterVideoSinkSubClass is used to register a go subclass of GstVideoSink. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterVideoSinkSubClass[InstanceT VideoSink](
@@ -17405,6 +20908,16 @@ type VideoAggregatorConvertPad interface {
 	// Requests the pad to check and update the converter before the next usage to
 	// update for any changes that have happened.
 	UpdateConversionInfo()
+
+	// chain up virtual methods:
+
+	// ParentCreateConversionInfo calls the default implementations of the create_conversion_info virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- agg VideoAggregator 
+	// 	- conversionInfo *VideoInfo 
+	ParentCreateConversionInfo(agg VideoAggregator, conversionInfo *VideoInfo)
 }
 
 func unsafeWrapVideoAggregatorConvertPad(base *gobject.ObjectInstance) *VideoAggregatorConvertPadInstance {
@@ -17510,6 +21023,28 @@ func UnsafeApplyVideoAggregatorConvertPadOverrides[Instance VideoAggregatorConve
 	}
 }
 
+// ParentCreateConversionInfo calls the default implementations of the create_conversion_info virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- agg VideoAggregator 
+// 	- conversionInfo *VideoInfo 
+func (pad *VideoAggregatorConvertPadInstance) ParentCreateConversionInfo(agg VideoAggregator, conversionInfo *VideoInfo) {
+	var carg0 *C.GstVideoAggregatorConvertPad
+	var carg1 *C.GstVideoAggregator // in, none, converted
+	var carg2 *C.GstVideoInfo       // in, none, converted
+
+	parentclass := (*C.GstVideoAggregatorConvertPadClass)(classdata.PeekParentClass(UnsafeVideoAggregatorConvertPadToGlibNone(pad)))
+
+	carg1 = (*C.GstVideoAggregator)(UnsafeVideoAggregatorToGlibNone(agg))
+	carg2 = (*C.GstVideoInfo)(UnsafeVideoInfoToGlibNone(conversionInfo))
+
+	C._gotk4_gstvideo1_VideoAggregatorConvertPad_virtual_create_conversion_info(unsafe.Pointer(parentclass.create_conversion_info), carg0, carg1, carg2)
+	runtime.KeepAlive(pad)
+	runtime.KeepAlive(agg)
+	runtime.KeepAlive(conversionInfo)
+}
+
 // RegisterVideoAggregatorConvertPadSubClass is used to register a go subclass of GstVideoAggregatorConvertPad. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterVideoAggregatorConvertPadSubClass[InstanceT VideoAggregatorConvertPad](
@@ -17552,6 +21087,8 @@ var _ VideoAggregatorParallelConvertPad = (*VideoAggregatorParallelConvertPadIns
 type VideoAggregatorParallelConvertPad interface {
 	VideoAggregatorConvertPad
 	upcastToGstVideoAggregatorParallelConvertPad() *VideoAggregatorParallelConvertPadInstance
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapVideoAggregatorParallelConvertPad(base *gobject.ObjectInstance) *VideoAggregatorParallelConvertPadInstance {

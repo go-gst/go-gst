@@ -2265,6 +2265,14 @@ func (f AudioResamplerFlags) String() string {
 }
 
 // AudioBaseSinkCustomSlavingCallback wraps GstAudioBaseSinkCustomSlavingCallback
+// 
+// The function takes the following parameters:
+// 
+// 	- sink AudioBaseSink: a #GstAudioBaseSink 
+// 	- etime gst.ClockTime: external clock time 
+// 	- itime gst.ClockTime: internal clock time 
+// 	- requestedSkew *gst.ClockTimeDiff: skew amount requested by the callback 
+// 	- discontReason AudioBaseSinkDiscontReason: reason for discontinuity (if any) 
 //
 // This function is set with gst_audio_base_sink_set_custom_slaving_callback()
 // and is called during playback. It receives the current time of external and
@@ -2292,6 +2300,14 @@ func (f AudioResamplerFlags) String() string {
 type AudioBaseSinkCustomSlavingCallback func(sink AudioBaseSink, etime gst.ClockTime, itime gst.ClockTime, requestedSkew *gst.ClockTimeDiff, discontReason AudioBaseSinkDiscontReason)
 
 // AudioClockGetTimeFunc wraps GstAudioClockGetTimeFunc
+// 
+// The function takes the following parameters:
+// 
+// 	- clock gst.Clock: the #GstAudioClock 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.ClockTime 
 //
 // This function will be called whenever the current clock time needs to be
 // calculated. If this function returns #GST_CLOCK_TIME_NONE, the last reported
@@ -2299,6 +2315,11 @@ type AudioBaseSinkCustomSlavingCallback func(sink AudioBaseSink, etime gst.Clock
 type AudioClockGetTimeFunc func(clock gst.Clock) (goret gst.ClockTime)
 
 // AudioRingBufferCallback wraps GstAudioRingBufferCallback
+// 
+// The function takes the following parameters:
+// 
+// 	- rbuf AudioRingBuffer: a #GstAudioRingBuffer 
+// 	- data []uint8: target to fill 
 //
 // This function is set with gst_audio_ring_buffer_set_callback() and is
 // called to fill the memory at @data with @len bytes of samples.
@@ -3228,7 +3249,7 @@ func DsdPlaneOffsetMetaApiGetType() gobject.Type {
 // StreamVolumeInstance is the instance type used by all types implementing GstStreamVolume. It is used internally by the bindings. Users should use the interface [StreamVolume] instead.
 type StreamVolumeInstance struct {
 	_ [0]func() // equal guard
-	Instance gobject.ObjectInstance
+	gobject.ObjectInstance
 }
 
 var _ StreamVolume = (*StreamVolumeInstance)(nil)
@@ -3252,6 +3273,7 @@ var _ StreamVolume = (*StreamVolumeInstance)(nil)
 // "mute" #GObject properties and handle setting and getting of them properly.
 // The volume property is defined to be a linear volume factor.
 type StreamVolume interface {
+	gobject.Object
 	upcastToGstStreamVolume() *StreamVolumeInstance
 
 	// GetMute wraps gst_stream_volume_get_mute
@@ -3283,13 +3305,15 @@ type StreamVolume interface {
 	// 	- format StreamVolumeFormat: #GstStreamVolumeFormat of @val 
 	// 	- val float64: Linear volume factor that should be set 
 	SetVolume(StreamVolumeFormat, float64)
+
+	// chain up virtual methods:
 }
 
 var _ StreamVolume = (*StreamVolumeInstance)(nil)
 
 func unsafeWrapStreamVolume(base *gobject.ObjectInstance) *StreamVolumeInstance {
 	return &StreamVolumeInstance{
-		Instance: *base,
+		ObjectInstance: *base,
 	}
 }
 
@@ -3319,13 +3343,13 @@ func UnsafeStreamVolumeFromGlibBorrow(c unsafe.Pointer) StreamVolume {
 // UnsafeStreamVolumeToGlibNone is used to convert the instance to it's C value GstStreamVolume. This is used by the bindings internally.
 func UnsafeStreamVolumeToGlibNone(c StreamVolume) unsafe.Pointer {
 	i := c.upcastToGstStreamVolume()
-	return gobject.UnsafeObjectToGlibNone(&i.Instance)
+	return gobject.UnsafeObjectToGlibNone(i)
 }
 
 // UnsafeStreamVolumeToGlibFull is used to convert the instance to it's C value GstStreamVolume, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeStreamVolumeToGlibFull(c StreamVolume) unsafe.Pointer {
 	i := c.upcastToGstStreamVolume()
-	return gobject.UnsafeObjectToGlibFull(&i.Instance)
+	return gobject.UnsafeObjectToGlibFull(i)
 }
 
 // StreamVolumeConvertVolume wraps gst_stream_volume_convert_volume
@@ -3527,6 +3551,41 @@ type AudioAggregator interface {
 	// 	- pad AudioAggregatorPad 
 	// 	- caps *gst.Caps 
 	SetSinkCaps(AudioAggregatorPad, *gst.Caps)
+
+	// chain up virtual methods:
+
+	// ParentAggregateOneBuffer calls the default implementations of the aggregate_one_buffer virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- pad AudioAggregatorPad 
+	// 	- inbuf *gst.Buffer 
+	// 	- inOffset uint 
+	// 	- outbuf *gst.Buffer 
+	// 	- outOffset uint 
+	// 	- numFrames uint 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Aggregates one input buffer to the output
+	//  buffer.  The in_offset and out_offset are in "frames", which is
+	//  the size of a sample times the number of channels. Returns TRUE if
+	//  any non-silence was added to the buffer
+	ParentAggregateOneBuffer(pad AudioAggregatorPad, inbuf *gst.Buffer, inOffset uint, outbuf *gst.Buffer, outOffset uint, numFrames uint) bool
+	// ParentCreateOutputBuffer calls the default implementations of the create_output_buffer virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- numFrames uint 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Buffer 
+	//
+	// Create a new output buffer contains num_frames frames.
+	ParentCreateOutputBuffer(numFrames uint) *gst.Buffer
 }
 
 func unsafeWrapAudioAggregator(base *gobject.ObjectInstance) *AudioAggregatorInstance {
@@ -3616,6 +3675,11 @@ type AudioAggregatorOverrides[Instance AudioAggregator] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Aggregates one input buffer to the output
+	//  buffer.  The in_offset and out_offset are in "frames", which is
+	//  the size of a sample times the number of channels. Returns TRUE if
+	//  any non-silence was added to the buffer
 	AggregateOneBuffer func(Instance, AudioAggregatorPad, *gst.Buffer, uint, *gst.Buffer, uint, uint) bool
 	// CreateOutputBuffer allows you to override the implementation of the virtual method create_output_buffer.
 	// The function takes the following parameters:
@@ -3625,6 +3689,8 @@ type AudioAggregatorOverrides[Instance AudioAggregator] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Buffer 
+	//
+	// Create a new output buffer contains num_frames frames.
 	CreateOutputBuffer func(Instance, uint) *gst.Buffer
 }
 
@@ -3692,6 +3758,93 @@ func UnsafeApplyAudioAggregatorOverrides[Instance AudioAggregator](gclass unsafe
 	}
 }
 
+// ParentAggregateOneBuffer calls the default implementations of the aggregate_one_buffer virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- pad AudioAggregatorPad 
+// 	- inbuf *gst.Buffer 
+// 	- inOffset uint 
+// 	- outbuf *gst.Buffer 
+// 	- outOffset uint 
+// 	- numFrames uint 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Aggregates one input buffer to the output
+//  buffer.  The in_offset and out_offset are in "frames", which is
+//  the size of a sample times the number of channels. Returns TRUE if
+//  any non-silence was added to the buffer
+func (aagg *AudioAggregatorInstance) ParentAggregateOneBuffer(pad AudioAggregatorPad, inbuf *gst.Buffer, inOffset uint, outbuf *gst.Buffer, outOffset uint, numFrames uint) bool {
+	var carg0 *C.GstAudioAggregator
+	var carg1 *C.GstAudioAggregatorPad // in, none, converted
+	var carg2 *C.GstBuffer             // in, none, converted
+	var carg3 C.guint                  // in, none, casted
+	var carg4 *C.GstBuffer             // in, none, converted
+	var carg5 C.guint                  // in, none, casted
+	var carg6 C.guint                  // in, none, casted
+	var cret  C.gboolean               // return
+
+	parentclass := (*C.GstAudioAggregatorClass)(classdata.PeekParentClass(UnsafeAudioAggregatorToGlibNone(aagg)))
+
+	carg1 = (*C.GstAudioAggregatorPad)(UnsafeAudioAggregatorPadToGlibNone(pad))
+	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(inbuf))
+	carg3 = C.guint(inOffset)
+	carg4 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(outbuf))
+	carg5 = C.guint(outOffset)
+	carg6 = C.guint(numFrames)
+
+	cret = C._gotk4_gstaudio1_AudioAggregator_virtual_aggregate_one_buffer(unsafe.Pointer(parentclass.aggregate_one_buffer), carg0, carg1, carg2, carg3, carg4, carg5, carg6)
+	runtime.KeepAlive(aagg)
+	runtime.KeepAlive(pad)
+	runtime.KeepAlive(inbuf)
+	runtime.KeepAlive(inOffset)
+	runtime.KeepAlive(outbuf)
+	runtime.KeepAlive(outOffset)
+	runtime.KeepAlive(numFrames)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentCreateOutputBuffer calls the default implementations of the create_output_buffer virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- numFrames uint 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.Buffer 
+//
+// Create a new output buffer contains num_frames frames.
+func (aagg *AudioAggregatorInstance) ParentCreateOutputBuffer(numFrames uint) *gst.Buffer {
+	var carg0 *C.GstAudioAggregator
+	var carg1 C.guint      // in, none, casted
+	var cret  *C.GstBuffer // return, full, converted
+
+	parentclass := (*C.GstAudioAggregatorClass)(classdata.PeekParentClass(UnsafeAudioAggregatorToGlibNone(aagg)))
+
+	carg1 = C.guint(numFrames)
+
+	cret = C._gotk4_gstaudio1_AudioAggregator_virtual_create_output_buffer(unsafe.Pointer(parentclass.create_output_buffer), carg0, carg1)
+	runtime.KeepAlive(aagg)
+	runtime.KeepAlive(numFrames)
+
+	var goret *gst.Buffer
+
+	goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
 // RegisterAudioAggregatorSubClass is used to register a go subclass of GstAudioAggregator. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterAudioAggregatorSubClass[InstanceT AudioAggregator](
@@ -3732,6 +3885,29 @@ var _ AudioAggregatorPad = (*AudioAggregatorPadInstance)(nil)
 type AudioAggregatorPad interface {
 	gstbase.AggregatorPad
 	upcastToGstAudioAggregatorPad() *AudioAggregatorPadInstance
+
+	// chain up virtual methods:
+
+	// ParentConvertBuffer calls the default implementations of the convert_buffer virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- inInfo *AudioInfo 
+	// 	- outInfo *AudioInfo 
+	// 	- buffer *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Buffer 
+	//
+	// Convert a buffer from one format to another.
+	ParentConvertBuffer(inInfo *AudioInfo, outInfo *AudioInfo, buffer *gst.Buffer) *gst.Buffer
+	// ParentUpdateConversionInfo calls the default implementations of the update_conversion_info virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	//
+	// Called when either the input or output
+	//  formats have changed.
+	ParentUpdateConversionInfo()
 }
 
 func unsafeWrapAudioAggregatorPad(base *gobject.ObjectInstance) *AudioAggregatorPadInstance {
@@ -3797,8 +3973,13 @@ type AudioAggregatorPadOverrides[Instance AudioAggregatorPad] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Buffer 
+	//
+	// Convert a buffer from one format to another.
 	ConvertBuffer func(Instance, *AudioInfo, *AudioInfo, *gst.Buffer) *gst.Buffer
 	// UpdateConversionInfo allows you to override the implementation of the virtual method update_conversion_info.
+	//
+	// Called when either the input or output
+	//  formats have changed.
 	UpdateConversionInfo func(Instance)
 }
 
@@ -3849,6 +4030,59 @@ func UnsafeApplyAudioAggregatorPadOverrides[Instance AudioAggregatorPad](gclass 
 			},
 		)
 	}
+}
+
+// ParentConvertBuffer calls the default implementations of the convert_buffer virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- inInfo *AudioInfo 
+// 	- outInfo *AudioInfo 
+// 	- buffer *gst.Buffer 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.Buffer 
+//
+// Convert a buffer from one format to another.
+func (pad *AudioAggregatorPadInstance) ParentConvertBuffer(inInfo *AudioInfo, outInfo *AudioInfo, buffer *gst.Buffer) *gst.Buffer {
+	var carg0 *C.GstAudioAggregatorPad
+	var carg1 *C.GstAudioInfo // in, none, converted
+	var carg2 *C.GstAudioInfo // in, none, converted
+	var carg3 *C.GstBuffer    // in, none, converted
+	var cret  *C.GstBuffer    // return, full, converted
+
+	parentclass := (*C.GstAudioAggregatorPadClass)(classdata.PeekParentClass(UnsafeAudioAggregatorPadToGlibNone(pad)))
+
+	carg1 = (*C.GstAudioInfo)(UnsafeAudioInfoToGlibNone(inInfo))
+	carg2 = (*C.GstAudioInfo)(UnsafeAudioInfoToGlibNone(outInfo))
+	carg3 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
+
+	cret = C._gotk4_gstaudio1_AudioAggregatorPad_virtual_convert_buffer(unsafe.Pointer(parentclass.convert_buffer), carg0, carg1, carg2, carg3)
+	runtime.KeepAlive(pad)
+	runtime.KeepAlive(inInfo)
+	runtime.KeepAlive(outInfo)
+	runtime.KeepAlive(buffer)
+
+	var goret *gst.Buffer
+
+	goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// ParentUpdateConversionInfo calls the default implementations of the update_conversion_info virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+//
+// Called when either the input or output
+//  formats have changed.
+func (pad *AudioAggregatorPadInstance) ParentUpdateConversionInfo() {
+	var carg0 *C.GstAudioAggregatorPad
+
+	parentclass := (*C.GstAudioAggregatorPadClass)(classdata.PeekParentClass(UnsafeAudioAggregatorPadToGlibNone(pad)))
+
+	C._gotk4_gstaudio1_AudioAggregatorPad_virtual_update_conversion_info(unsafe.Pointer(parentclass.update_conversion_info), carg0)
+	runtime.KeepAlive(pad)
 }
 
 // RegisterAudioAggregatorPadSubClass is used to register a go subclass of GstAudioAggregatorPad. For this to work safely please implement the
@@ -4011,6 +4245,34 @@ type AudioBaseSink interface {
 	//
 	// Controls how clock slaving will be performed in @sink.
 	SetSlaveMethod(AudioBaseSinkSlaveMethod)
+
+	// chain up virtual methods:
+
+	// ParentCreateRingbuffer calls the default implementations of the create_ringbuffer virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret AudioRingBuffer (nullable) 
+	//
+	// Create and return the #GstAudioRingBuffer for @sink. This function will
+	// call the ::create_ringbuffer vmethod and will set @sink as the parent of
+	// the returned buffer (see gst_object_set_parent()).
+	ParentCreateRingbuffer() AudioRingBuffer
+	// ParentPayload calls the default implementations of the payload virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Buffer 
+	//
+	// payload data in a format suitable to write to the sink. If no
+	//           payloading is required, returns a reffed copy of the original
+	//           buffer, else returns the payloaded buffer with all other metadata
+	//           copied.
+	ParentPayload(buffer *gst.Buffer) *gst.Buffer
 }
 
 func unsafeWrapAudioBaseSink(base *gobject.ObjectInstance) *AudioBaseSinkInstance {
@@ -4361,6 +4623,10 @@ type AudioBaseSinkOverrides[Instance AudioBaseSink] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret AudioRingBuffer (nullable) 
+	//
+	// Create and return the #GstAudioRingBuffer for @sink. This function will
+	// call the ::create_ringbuffer vmethod and will set @sink as the parent of
+	// the returned buffer (see gst_object_set_parent()).
 	CreateRingbuffer func(Instance) AudioRingBuffer
 	// Payload allows you to override the implementation of the virtual method payload.
 	// The function takes the following parameters:
@@ -4370,6 +4636,11 @@ type AudioBaseSinkOverrides[Instance AudioBaseSink] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Buffer 
+	//
+	// payload data in a format suitable to write to the sink. If no
+	//           payloading is required, returns a reffed copy of the original
+	//           buffer, else returns the payloaded buffer with all other metadata
+	//           copied.
 	Payload func(Instance, *gst.Buffer) *gst.Buffer
 }
 
@@ -4423,6 +4694,67 @@ func UnsafeApplyAudioBaseSinkOverrides[Instance AudioBaseSink](gclass unsafe.Poi
 			},
 		)
 	}
+}
+
+// ParentCreateRingbuffer calls the default implementations of the create_ringbuffer virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret AudioRingBuffer (nullable) 
+//
+// Create and return the #GstAudioRingBuffer for @sink. This function will
+// call the ::create_ringbuffer vmethod and will set @sink as the parent of
+// the returned buffer (see gst_object_set_parent()).
+func (sink *AudioBaseSinkInstance) ParentCreateRingbuffer() AudioRingBuffer {
+	var carg0 *C.GstAudioBaseSink
+	var cret  *C.GstAudioRingBuffer // return, none, converted, nullable
+
+	parentclass := (*C.GstAudioBaseSinkClass)(classdata.PeekParentClass(UnsafeAudioBaseSinkToGlibNone(sink)))
+
+	cret = C._gotk4_gstaudio1_AudioBaseSink_virtual_create_ringbuffer(unsafe.Pointer(parentclass.create_ringbuffer), carg0)
+	runtime.KeepAlive(sink)
+
+	var goret AudioRingBuffer
+
+	if cret != nil {
+		goret = UnsafeAudioRingBufferFromGlibNone(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
+// ParentPayload calls the default implementations of the payload virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- buffer *gst.Buffer 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.Buffer 
+//
+// payload data in a format suitable to write to the sink. If no
+//           payloading is required, returns a reffed copy of the original
+//           buffer, else returns the payloaded buffer with all other metadata
+//           copied.
+func (sink *AudioBaseSinkInstance) ParentPayload(buffer *gst.Buffer) *gst.Buffer {
+	var carg0 *C.GstAudioBaseSink
+	var carg1 *C.GstBuffer // in, none, converted
+	var cret  *C.GstBuffer // return, full, converted
+
+	parentclass := (*C.GstAudioBaseSinkClass)(classdata.PeekParentClass(UnsafeAudioBaseSinkToGlibNone(sink)))
+
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
+
+	cret = C._gotk4_gstaudio1_AudioBaseSink_virtual_payload(unsafe.Pointer(parentclass.payload), carg0, carg1)
+	runtime.KeepAlive(sink)
+	runtime.KeepAlive(buffer)
+
+	var goret *gst.Buffer
+
+	goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
 }
 
 // RegisterAudioBaseSinkSubClass is used to register a go subclass of GstAudioBaseSink. For this to work safely please implement the
@@ -4513,6 +4845,19 @@ type AudioBaseSrc interface {
 	//
 	// Controls how clock slaving will be performed in @src.
 	SetSlaveMethod(AudioBaseSrcSlaveMethod)
+
+	// chain up virtual methods:
+
+	// ParentCreateRingbuffer calls the default implementations of the create_ringbuffer virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret AudioRingBuffer (nullable) 
+	//
+	// Create and return the #GstAudioRingBuffer for @src. This function will call
+	// the ::create_ringbuffer vmethod and will set @src as the parent of the
+	// returned buffer (see gst_object_set_parent()).
+	ParentCreateRingbuffer() AudioRingBuffer
 }
 
 func unsafeWrapAudioBaseSrc(base *gobject.ObjectInstance) *AudioBaseSrcInstance {
@@ -4692,6 +5037,10 @@ type AudioBaseSrcOverrides[Instance AudioBaseSrc] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret AudioRingBuffer (nullable) 
+	//
+	// Create and return the #GstAudioRingBuffer for @src. This function will call
+	// the ::create_ringbuffer vmethod and will set @src as the parent of the
+	// returned buffer (see gst_object_set_parent()).
 	CreateRingbuffer func(Instance) AudioRingBuffer
 }
 
@@ -4723,6 +5072,33 @@ func UnsafeApplyAudioBaseSrcOverrides[Instance AudioBaseSrc](gclass unsafe.Point
 			},
 		)
 	}
+}
+
+// ParentCreateRingbuffer calls the default implementations of the create_ringbuffer virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret AudioRingBuffer (nullable) 
+//
+// Create and return the #GstAudioRingBuffer for @src. This function will call
+// the ::create_ringbuffer vmethod and will set @src as the parent of the
+// returned buffer (see gst_object_set_parent()).
+func (src *AudioBaseSrcInstance) ParentCreateRingbuffer() AudioRingBuffer {
+	var carg0 *C.GstAudioBaseSrc
+	var cret  *C.GstAudioRingBuffer // return, none, converted, nullable
+
+	parentclass := (*C.GstAudioBaseSrcClass)(classdata.PeekParentClass(UnsafeAudioBaseSrcToGlibNone(src)))
+
+	cret = C._gotk4_gstaudio1_AudioBaseSrc_virtual_create_ringbuffer(unsafe.Pointer(parentclass.create_ringbuffer), carg0)
+	runtime.KeepAlive(src)
+
+	var goret AudioRingBuffer
+
+	if cret != nil {
+		goret = UnsafeAudioRingBufferFromGlibNone(unsafe.Pointer(cret))
+	}
+
+	return goret
 }
 
 // RegisterAudioBaseSrcSubClass is used to register a go subclass of GstAudioBaseSrc. For this to work safely please implement the
@@ -4826,6 +5202,38 @@ type AudioCdSrc interface {
 	// should allocate @track on the stack, the base source will do a shallow
 	// copy of the structure (and take ownership of the taglist if there is one).
 	AddTrack(*AudioCdSrcTrack) bool
+
+	// chain up virtual methods:
+
+	// ParentClose calls the default implementations of the close virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	//
+	// closing the device
+	ParentClose()
+	// ParentOpen calls the default implementations of the open virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- device string 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// opening the device
+	ParentOpen(device string) bool
+	// ParentReadSector calls the default implementations of the read_sector virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- sector int32 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Buffer 
+	//
+	// reading a sector
+	ParentReadSector(sector int32) *gst.Buffer
 }
 
 func unsafeWrapAudioCdSrc(base *gobject.ObjectInstance) *AudioCdSrcInstance {
@@ -4842,7 +5250,7 @@ func unsafeWrapAudioCdSrc(base *gobject.ObjectInstance) *AudioCdSrcInstance {
 			},
 		},
 		URIHandlerInstance: gst.URIHandlerInstance{
-			Instance: *base,
+			ObjectInstance: *base,
 		},
 	}
 }
@@ -4922,6 +5330,8 @@ type AudioCdSrcOverrides[Instance AudioCdSrc] struct {
 	gstbase.PushSrcOverrides[Instance]
 
 	// Close allows you to override the implementation of the virtual method close.
+	//
+	// closing the device
 	Close func(Instance)
 	// Open allows you to override the implementation of the virtual method open.
 	// The function takes the following parameters:
@@ -4931,6 +5341,8 @@ type AudioCdSrcOverrides[Instance AudioCdSrc] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// opening the device
 	Open func(Instance, string) bool
 	// ReadSector allows you to override the implementation of the virtual method read_sector.
 	// The function takes the following parameters:
@@ -4940,6 +5352,8 @@ type AudioCdSrcOverrides[Instance AudioCdSrc] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Buffer 
+	//
+	// reading a sector
 	ReadSector func(Instance, int32) *gst.Buffer
 }
 
@@ -5010,6 +5424,84 @@ func UnsafeApplyAudioCdSrcOverrides[Instance AudioCdSrc](gclass unsafe.Pointer, 
 			},
 		)
 	}
+}
+
+// ParentClose calls the default implementations of the close virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+//
+// closing the device
+func (src *AudioCdSrcInstance) ParentClose() {
+	var carg0 *C.GstAudioCdSrc
+
+	parentclass := (*C.GstAudioCdSrcClass)(classdata.PeekParentClass(UnsafeAudioCdSrcToGlibNone(src)))
+
+	C._gotk4_gstaudio1_AudioCdSrc_virtual_close(unsafe.Pointer(parentclass.close), carg0)
+	runtime.KeepAlive(src)
+}
+
+// ParentOpen calls the default implementations of the open virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- device string 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// opening the device
+func (src *AudioCdSrcInstance) ParentOpen(device string) bool {
+	var carg0 *C.GstAudioCdSrc
+	var carg1 *C.gchar   // in, none, string
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAudioCdSrcClass)(classdata.PeekParentClass(UnsafeAudioCdSrcToGlibNone(src)))
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(device)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	cret = C._gotk4_gstaudio1_AudioCdSrc_virtual_open(unsafe.Pointer(parentclass.open), carg0, carg1)
+	runtime.KeepAlive(src)
+	runtime.KeepAlive(device)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentReadSector calls the default implementations of the read_sector virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- sector int32 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.Buffer 
+//
+// reading a sector
+func (src *AudioCdSrcInstance) ParentReadSector(sector int32) *gst.Buffer {
+	var carg0 *C.GstAudioCdSrc
+	var carg1 C.gint       // in, none, casted
+	var cret  *C.GstBuffer // return, full, converted
+
+	parentclass := (*C.GstAudioCdSrcClass)(classdata.PeekParentClass(UnsafeAudioCdSrcToGlibNone(src)))
+
+	carg1 = C.gint(sector)
+
+	cret = C._gotk4_gstaudio1_AudioCdSrc_virtual_read_sector(unsafe.Pointer(parentclass.read_sector), carg0, carg1)
+	runtime.KeepAlive(src)
+	runtime.KeepAlive(sector)
+
+	var goret *gst.Buffer
+
+	goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
 }
 
 // RegisterAudioCdSrcSubClass is used to register a go subclass of GstAudioCdSrc. For this to work safely please implement the
@@ -5097,6 +5589,8 @@ type AudioClock interface {
 	// future calls to internal_time will return an increasing result as required by
 	// the #GstClock object.
 	Reset(gst.ClockTime)
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapAudioClock(base *gobject.ObjectInstance) *AudioClockInstance {
@@ -5769,6 +6263,237 @@ type AudioDecoder interface {
 	// handler with %GST_PAD_SET_ACCEPT_INTERSECT and
 	// %GST_PAD_SET_ACCEPT_TEMPLATE
 	SetUseDefaultPadAcceptcaps(bool)
+
+	// chain up virtual methods:
+
+	// ParentClose calls the default implementations of the close virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element changes to GST_STATE_NULL.
+	//                  Allows closing external resources.
+	ParentClose() bool
+	// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                     Setup the allocation parameters for allocating output
+	//                     buffers. The passed in query contains the result of the
+	//                     downstream allocation query.
+	//                     Subclasses should chain up to the parent implementation to
+	//                     invoke the default handler.
+	ParentDecideAllocation(query *gst.Query) bool
+	// ParentFlush calls the default implementations of the flush virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- hard bool 
+	//
+	// Optional.
+	//                  Instructs subclass to clear any codec caches and discard
+	//                  any pending samples and not yet returned decoded data.
+	//                  @hard indicates whether a FLUSH is being processed,
+	//                  or otherwise a DISCONT (or conceptually similar).
+	ParentFlush(hard bool)
+	// ParentGetcaps calls the default implementations of the getcaps virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- filter *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Caps 
+	//
+	// Optional.
+	//                  Allows for a custom sink getcaps implementation.
+	//                  If not implemented,
+	//                  default returns gst_audio_decoder_proxy_getcaps
+	//                  applied to sink template caps.
+	ParentGetcaps(filter *gst.Caps) *gst.Caps
+	// ParentHandleFrame calls the default implementations of the handle_frame virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// Provides input data (or NULL to clear any remaining data)
+	//                  to subclass.  Input data ref management is performed by
+	//                  base class, subclass should not care or intervene,
+	//                  and input data is only valid until next call to base class,
+	//                  most notably a call to gst_audio_decoder_finish_frame().
+	ParentHandleFrame(buffer *gst.Buffer) gst.FlowReturn
+	// ParentNegotiate calls the default implementations of the negotiate virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Negotiate with downstream elements to currently configured #GstAudioInfo.
+	// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
+	// negotiate fails.
+	ParentNegotiate() bool
+	// ParentOpen calls the default implementations of the open virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element changes to GST_STATE_READY.
+	//                  Allows opening external resources.
+	ParentOpen() bool
+	// ParentParse calls the default implementations of the parse virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- adapter gstbase.Adapter 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- offset int32 
+	// 	- length int32 
+	// 	- goret gst.FlowReturn 
+	ParentParse(adapter gstbase.Adapter) (int32, int32, gst.FlowReturn)
+	// ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                      Propose buffer allocation parameters for upstream elements.
+	//                      Subclasses should chain up to the parent implementation to
+	//                      invoke the default handler.
+	ParentProposeAllocation(query *gst.Query) bool
+	// ParentSetFormat calls the default implementations of the set_format virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Notifies subclass of incoming data format (caps).
+	ParentSetFormat(caps *gst.Caps) bool
+	// ParentSinkEvent calls the default implementations of the sink_event virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Event handler on the sink pad. Subclasses should chain up to
+	//                  the parent implementation to invoke the default handler.
+	ParentSinkEvent(event *gst.Event) bool
+	// ParentSinkQuery calls the default implementations of the sink_query virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Query handler on the sink pad. This function should
+	//                  return TRUE if the query could be performed. Subclasses
+	//                  should chain up to the parent implementation to invoke the
+	//                  default handler. Since: 1.6
+	ParentSinkQuery(query *gst.Query) bool
+	// ParentSrcEvent calls the default implementations of the src_event virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Event handler on the src pad. Subclasses should chain up to
+	//                  the parent implementation to invoke the default handler.
+	ParentSrcEvent(event *gst.Event) bool
+	// ParentSrcQuery calls the default implementations of the src_query virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Query handler on the source pad. This function should
+	//                  return TRUE if the query could be performed. Subclasses
+	//                  should chain up to the parent implementation to invoke the
+	//                  default handler. Since: 1.6
+	ParentSrcQuery(query *gst.Query) bool
+	// ParentStart calls the default implementations of the start virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element starts processing.
+	//                  Allows opening external resources.
+	ParentStart() bool
+	// ParentStop calls the default implementations of the stop virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element stops processing.
+	//                  Allows closing external resources.
+	ParentStop() bool
+	// ParentTransformMeta calls the default implementations of the transform_meta virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- outbuf *gst.Buffer 
+	// 	- meta *gst.Meta 
+	// 	- inbuf *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional. Transform the metadata on the input buffer to the
+	//                  output buffer. By default this method copies all meta without
+	//                  tags and meta with only the "audio" tag. subclasses can
+	//                  implement this method and return %TRUE if the metadata is to be
+	//                  copied. Since: 1.6
+	ParentTransformMeta(outbuf *gst.Buffer, meta *gst.Meta, inbuf *gst.Buffer) bool
 }
 
 func unsafeWrapAudioDecoder(base *gobject.ObjectInstance) *AudioDecoderInstance {
@@ -6690,6 +7415,10 @@ type AudioDecoderOverrides[Instance AudioDecoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element changes to GST_STATE_NULL.
+	//                  Allows closing external resources.
 	Close func(Instance) bool
 	// DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
 	// The function takes the following parameters:
@@ -6699,11 +7428,24 @@ type AudioDecoderOverrides[Instance AudioDecoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                     Setup the allocation parameters for allocating output
+	//                     buffers. The passed in query contains the result of the
+	//                     downstream allocation query.
+	//                     Subclasses should chain up to the parent implementation to
+	//                     invoke the default handler.
 	DecideAllocation func(Instance, *gst.Query) bool
 	// Flush allows you to override the implementation of the virtual method flush.
 	// The function takes the following parameters:
 	// 
 	// 	- hard bool 
+	//
+	// Optional.
+	//                  Instructs subclass to clear any codec caches and discard
+	//                  any pending samples and not yet returned decoded data.
+	//                  @hard indicates whether a FLUSH is being processed,
+	//                  or otherwise a DISCONT (or conceptually similar).
 	Flush func(Instance, bool)
 	// Getcaps allows you to override the implementation of the virtual method getcaps.
 	// The function takes the following parameters:
@@ -6713,6 +7455,12 @@ type AudioDecoderOverrides[Instance AudioDecoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Caps 
+	//
+	// Optional.
+	//                  Allows for a custom sink getcaps implementation.
+	//                  If not implemented,
+	//                  default returns gst_audio_decoder_proxy_getcaps
+	//                  applied to sink template caps.
 	Getcaps func(Instance, *gst.Caps) *gst.Caps
 	// HandleFrame allows you to override the implementation of the virtual method handle_frame.
 	// The function takes the following parameters:
@@ -6722,16 +7470,30 @@ type AudioDecoderOverrides[Instance AudioDecoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// Provides input data (or NULL to clear any remaining data)
+	//                  to subclass.  Input data ref management is performed by
+	//                  base class, subclass should not care or intervene,
+	//                  and input data is only valid until next call to base class,
+	//                  most notably a call to gst_audio_decoder_finish_frame().
 	HandleFrame func(Instance, *gst.Buffer) gst.FlowReturn
 	// Negotiate allows you to override the implementation of the virtual method negotiate.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Negotiate with downstream elements to currently configured #GstAudioInfo.
+	// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
+	// negotiate fails.
 	Negotiate func(Instance) bool
 	// Open allows you to override the implementation of the virtual method open.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element changes to GST_STATE_READY.
+	//                  Allows opening external resources.
 	Open func(Instance) bool
 	// Parse allows you to override the implementation of the virtual method parse.
 	// The function takes the following parameters:
@@ -6752,6 +7514,11 @@ type AudioDecoderOverrides[Instance AudioDecoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                      Propose buffer allocation parameters for upstream elements.
+	//                      Subclasses should chain up to the parent implementation to
+	//                      invoke the default handler.
 	ProposeAllocation func(Instance, *gst.Query) bool
 	// SetFormat allows you to override the implementation of the virtual method set_format.
 	// The function takes the following parameters:
@@ -6761,6 +7528,8 @@ type AudioDecoderOverrides[Instance AudioDecoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Notifies subclass of incoming data format (caps).
 	SetFormat func(Instance, *gst.Caps) bool
 	// SinkEvent allows you to override the implementation of the virtual method sink_event.
 	// The function takes the following parameters:
@@ -6770,6 +7539,10 @@ type AudioDecoderOverrides[Instance AudioDecoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Event handler on the sink pad. Subclasses should chain up to
+	//                  the parent implementation to invoke the default handler.
 	SinkEvent func(Instance, *gst.Event) bool
 	// SinkQuery allows you to override the implementation of the virtual method sink_query.
 	// The function takes the following parameters:
@@ -6779,6 +7552,12 @@ type AudioDecoderOverrides[Instance AudioDecoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Query handler on the sink pad. This function should
+	//                  return TRUE if the query could be performed. Subclasses
+	//                  should chain up to the parent implementation to invoke the
+	//                  default handler. Since: 1.6
 	SinkQuery func(Instance, *gst.Query) bool
 	// SrcEvent allows you to override the implementation of the virtual method src_event.
 	// The function takes the following parameters:
@@ -6788,6 +7567,10 @@ type AudioDecoderOverrides[Instance AudioDecoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Event handler on the src pad. Subclasses should chain up to
+	//                  the parent implementation to invoke the default handler.
 	SrcEvent func(Instance, *gst.Event) bool
 	// SrcQuery allows you to override the implementation of the virtual method src_query.
 	// The function takes the following parameters:
@@ -6797,16 +7580,30 @@ type AudioDecoderOverrides[Instance AudioDecoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Query handler on the source pad. This function should
+	//                  return TRUE if the query could be performed. Subclasses
+	//                  should chain up to the parent implementation to invoke the
+	//                  default handler. Since: 1.6
 	SrcQuery func(Instance, *gst.Query) bool
 	// Start allows you to override the implementation of the virtual method start.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element starts processing.
+	//                  Allows opening external resources.
 	Start func(Instance) bool
 	// Stop allows you to override the implementation of the virtual method stop.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element stops processing.
+	//                  Allows closing external resources.
 	Stop func(Instance) bool
 	// TransformMeta allows you to override the implementation of the virtual method transform_meta.
 	// The function takes the following parameters:
@@ -6818,6 +7615,12 @@ type AudioDecoderOverrides[Instance AudioDecoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional. Transform the metadata on the input buffer to the
+	//                  output buffer. By default this method copies all meta without
+	//                  tags and meta with only the "audio" tag. subclasses can
+	//                  implement this method and return %TRUE if the metadata is to be
+	//                  copied. Since: 1.6
 	TransformMeta func(Instance, *gst.Buffer, *gst.Meta, *gst.Buffer) bool
 }
 
@@ -7222,6 +8025,570 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 			},
 		)
 	}
+}
+
+// ParentClose calls the default implementations of the close virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Called when the element changes to GST_STATE_NULL.
+//                  Allows closing external resources.
+func (dec *AudioDecoderInstance) ParentClose() bool {
+	var carg0 *C.GstAudioDecoder
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
+
+	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_close(unsafe.Pointer(parentclass.close), carg0)
+	runtime.KeepAlive(dec)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                     Setup the allocation parameters for allocating output
+//                     buffers. The passed in query contains the result of the
+//                     downstream allocation query.
+//                     Subclasses should chain up to the parent implementation to
+//                     invoke the default handler.
+func (dec *AudioDecoderInstance) ParentDecideAllocation(query *gst.Query) bool {
+	var carg0 *C.GstAudioDecoder
+	var carg1 *C.GstQuery // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
+
+	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
+	runtime.KeepAlive(dec)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentFlush calls the default implementations of the flush virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- hard bool 
+//
+// Optional.
+//                  Instructs subclass to clear any codec caches and discard
+//                  any pending samples and not yet returned decoded data.
+//                  @hard indicates whether a FLUSH is being processed,
+//                  or otherwise a DISCONT (or conceptually similar).
+func (dec *AudioDecoderInstance) ParentFlush(hard bool) {
+	var carg0 *C.GstAudioDecoder
+	var carg1 C.gboolean // in
+
+	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
+
+	if hard {
+		carg1 = C.TRUE
+	}
+
+	C._gotk4_gstaudio1_AudioDecoder_virtual_flush(unsafe.Pointer(parentclass.flush), carg0, carg1)
+	runtime.KeepAlive(dec)
+	runtime.KeepAlive(hard)
+}
+
+// ParentGetcaps calls the default implementations of the getcaps virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- filter *gst.Caps 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.Caps 
+//
+// Optional.
+//                  Allows for a custom sink getcaps implementation.
+//                  If not implemented,
+//                  default returns gst_audio_decoder_proxy_getcaps
+//                  applied to sink template caps.
+func (dec *AudioDecoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
+	var carg0 *C.GstAudioDecoder
+	var carg1 *C.GstCaps // in, none, converted
+	var cret  *C.GstCaps // return, full, converted
+
+	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
+
+	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filter))
+
+	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_getcaps(unsafe.Pointer(parentclass.getcaps), carg0, carg1)
+	runtime.KeepAlive(dec)
+	runtime.KeepAlive(filter)
+
+	var goret *gst.Caps
+
+	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// ParentHandleFrame calls the default implementations of the handle_frame virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- buffer *gst.Buffer 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// Provides input data (or NULL to clear any remaining data)
+//                  to subclass.  Input data ref management is performed by
+//                  base class, subclass should not care or intervene,
+//                  and input data is only valid until next call to base class,
+//                  most notably a call to gst_audio_decoder_finish_frame().
+func (dec *AudioDecoderInstance) ParentHandleFrame(buffer *gst.Buffer) gst.FlowReturn {
+	var carg0 *C.GstAudioDecoder
+	var carg1 *C.GstBuffer    // in, none, converted
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
+
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
+
+	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_handle_frame(unsafe.Pointer(parentclass.handle_frame), carg0, carg1)
+	runtime.KeepAlive(dec)
+	runtime.KeepAlive(buffer)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentNegotiate calls the default implementations of the negotiate virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Negotiate with downstream elements to currently configured #GstAudioInfo.
+// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
+// negotiate fails.
+func (dec *AudioDecoderInstance) ParentNegotiate() bool {
+	var carg0 *C.GstAudioDecoder
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
+
+	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_negotiate(unsafe.Pointer(parentclass.negotiate), carg0)
+	runtime.KeepAlive(dec)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentOpen calls the default implementations of the open virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Called when the element changes to GST_STATE_READY.
+//                  Allows opening external resources.
+func (dec *AudioDecoderInstance) ParentOpen() bool {
+	var carg0 *C.GstAudioDecoder
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
+
+	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_open(unsafe.Pointer(parentclass.open), carg0)
+	runtime.KeepAlive(dec)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentParse calls the default implementations of the parse virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- adapter gstbase.Adapter 
+// 
+// The function returns the following values:
+// 
+// 	- offset int32 
+// 	- length int32 
+// 	- goret gst.FlowReturn 
+func (dec *AudioDecoderInstance) ParentParse(adapter gstbase.Adapter) (int32, int32, gst.FlowReturn) {
+	var carg0 *C.GstAudioDecoder
+	var carg1 *C.GstAdapter   // in, none, converted
+	var carg2 C.gint          // out, full, casted
+	var carg3 C.gint          // out, full, casted
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
+
+	carg1 = (*C.GstAdapter)(gstbase.UnsafeAdapterToGlibNone(adapter))
+
+	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_parse(unsafe.Pointer(parentclass.parse), carg0, carg1, &carg2, &carg3)
+	runtime.KeepAlive(dec)
+	runtime.KeepAlive(adapter)
+
+	var offset int32
+	var length int32
+	var goret  gst.FlowReturn
+
+	offset = int32(carg2)
+	length = int32(carg3)
+	goret = gst.FlowReturn(cret)
+
+	return offset, length, goret
+}
+
+// ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                      Propose buffer allocation parameters for upstream elements.
+//                      Subclasses should chain up to the parent implementation to
+//                      invoke the default handler.
+func (dec *AudioDecoderInstance) ParentProposeAllocation(query *gst.Query) bool {
+	var carg0 *C.GstAudioDecoder
+	var carg1 *C.GstQuery // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
+
+	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_propose_allocation(unsafe.Pointer(parentclass.propose_allocation), carg0, carg1)
+	runtime.KeepAlive(dec)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSetFormat calls the default implementations of the set_format virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- caps *gst.Caps 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Notifies subclass of incoming data format (caps).
+func (dec *AudioDecoderInstance) ParentSetFormat(caps *gst.Caps) bool {
+	var carg0 *C.GstAudioDecoder
+	var carg1 *C.GstCaps // in, none, converted
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
+
+	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
+
+	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_set_format(unsafe.Pointer(parentclass.set_format), carg0, carg1)
+	runtime.KeepAlive(dec)
+	runtime.KeepAlive(caps)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSinkEvent calls the default implementations of the sink_event virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- event *gst.Event 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Event handler on the sink pad. Subclasses should chain up to
+//                  the parent implementation to invoke the default handler.
+func (dec *AudioDecoderInstance) ParentSinkEvent(event *gst.Event) bool {
+	var carg0 *C.GstAudioDecoder
+	var carg1 *C.GstEvent // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
+
+	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
+
+	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_sink_event(unsafe.Pointer(parentclass.sink_event), carg0, carg1)
+	runtime.KeepAlive(dec)
+	runtime.KeepAlive(event)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSinkQuery calls the default implementations of the sink_query virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Query handler on the sink pad. This function should
+//                  return TRUE if the query could be performed. Subclasses
+//                  should chain up to the parent implementation to invoke the
+//                  default handler. Since: 1.6
+func (dec *AudioDecoderInstance) ParentSinkQuery(query *gst.Query) bool {
+	var carg0 *C.GstAudioDecoder
+	var carg1 *C.GstQuery // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
+
+	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_sink_query(unsafe.Pointer(parentclass.sink_query), carg0, carg1)
+	runtime.KeepAlive(dec)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSrcEvent calls the default implementations of the src_event virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- event *gst.Event 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Event handler on the src pad. Subclasses should chain up to
+//                  the parent implementation to invoke the default handler.
+func (dec *AudioDecoderInstance) ParentSrcEvent(event *gst.Event) bool {
+	var carg0 *C.GstAudioDecoder
+	var carg1 *C.GstEvent // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
+
+	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
+
+	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
+	runtime.KeepAlive(dec)
+	runtime.KeepAlive(event)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSrcQuery calls the default implementations of the src_query virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Query handler on the source pad. This function should
+//                  return TRUE if the query could be performed. Subclasses
+//                  should chain up to the parent implementation to invoke the
+//                  default handler. Since: 1.6
+func (dec *AudioDecoderInstance) ParentSrcQuery(query *gst.Query) bool {
+	var carg0 *C.GstAudioDecoder
+	var carg1 *C.GstQuery // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
+
+	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_src_query(unsafe.Pointer(parentclass.src_query), carg0, carg1)
+	runtime.KeepAlive(dec)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentStart calls the default implementations of the start virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Called when the element starts processing.
+//                  Allows opening external resources.
+func (dec *AudioDecoderInstance) ParentStart() bool {
+	var carg0 *C.GstAudioDecoder
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
+
+	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_start(unsafe.Pointer(parentclass.start), carg0)
+	runtime.KeepAlive(dec)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentStop calls the default implementations of the stop virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Called when the element stops processing.
+//                  Allows closing external resources.
+func (dec *AudioDecoderInstance) ParentStop() bool {
+	var carg0 *C.GstAudioDecoder
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(dec)))
+
+	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
+	runtime.KeepAlive(dec)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentTransformMeta calls the default implementations of the transform_meta virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- outbuf *gst.Buffer 
+// 	- meta *gst.Meta 
+// 	- inbuf *gst.Buffer 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional. Transform the metadata on the input buffer to the
+//                  output buffer. By default this method copies all meta without
+//                  tags and meta with only the "audio" tag. subclasses can
+//                  implement this method and return %TRUE if the metadata is to be
+//                  copied. Since: 1.6
+func (enc *AudioDecoderInstance) ParentTransformMeta(outbuf *gst.Buffer, meta *gst.Meta, inbuf *gst.Buffer) bool {
+	var carg0 *C.GstAudioDecoder
+	var carg1 *C.GstBuffer // in, none, converted
+	var carg2 *C.GstMeta   // in, none, converted
+	var carg3 *C.GstBuffer // in, none, converted
+	var cret  C.gboolean   // return
+
+	parentclass := (*C.GstAudioDecoderClass)(classdata.PeekParentClass(UnsafeAudioDecoderToGlibNone(enc)))
+
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(outbuf))
+	carg2 = (*C.GstMeta)(gst.UnsafeMetaToGlibNone(meta))
+	carg3 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(inbuf))
+
+	cret = C._gotk4_gstaudio1_AudioDecoder_virtual_transform_meta(unsafe.Pointer(parentclass.transform_meta), carg0, carg1, carg2, carg3)
+	runtime.KeepAlive(enc)
+	runtime.KeepAlive(outbuf)
+	runtime.KeepAlive(meta)
+	runtime.KeepAlive(inbuf)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
 }
 
 // RegisterAudioDecoderSubClass is used to register a go subclass of GstAudioDecoder. For this to work safely please implement the
@@ -7685,6 +9052,222 @@ type AudioEncoder interface {
 	// 
 	// MT safe.
 	SetTolerance(gst.ClockTime)
+
+	// chain up virtual methods:
+
+	// ParentClose calls the default implementations of the close virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element changes to GST_STATE_NULL.
+	//                  Allows closing external resources.
+	ParentClose() bool
+	// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                     Setup the allocation parameters for allocating output
+	//                     buffers. The passed in query contains the result of the
+	//                     downstream allocation query.
+	//                     Subclasses should chain up to the parent implementation to
+	//                     invoke the default handler.
+	ParentDecideAllocation(query *gst.Query) bool
+	// ParentFlush calls the default implementations of the flush virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	//
+	// Optional.
+	//                  Instructs subclass to clear any codec caches and discard
+	//                  any pending samples and not yet returned encoded data.
+	ParentFlush()
+	// ParentGetcaps calls the default implementations of the getcaps virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- filter *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Caps 
+	//
+	// Optional.
+	//                  Allows for a custom sink getcaps implementation (e.g.
+	//                  for multichannel input specification).  If not implemented,
+	//                  default returns gst_audio_encoder_proxy_getcaps
+	//                  applied to sink template caps.
+	ParentGetcaps(filter *gst.Caps) *gst.Caps
+	// ParentHandleFrame calls the default implementations of the handle_frame virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// Provides input samples (or NULL to clear any remaining data)
+	//                  according to directions as configured by the subclass
+	//                  using the API.  Input data ref management is performed
+	//                  by base class, subclass should not care or intervene,
+	//                  and input data is only valid until next call to base class,
+	//                  most notably a call to gst_audio_encoder_finish_frame().
+	ParentHandleFrame(buffer *gst.Buffer) gst.FlowReturn
+	// ParentNegotiate calls the default implementations of the negotiate virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Negotiate with downstream elements to currently configured #GstCaps.
+	// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
+	// negotiate fails.
+	ParentNegotiate() bool
+	// ParentOpen calls the default implementations of the open virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element changes to GST_STATE_READY.
+	//                  Allows opening external resources.
+	ParentOpen() bool
+	// ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                      Propose buffer allocation parameters for upstream elements.
+	//                      Subclasses should chain up to the parent implementation to
+	//                      invoke the default handler.
+	ParentProposeAllocation(query *gst.Query) bool
+	// ParentSetFormat calls the default implementations of the set_format virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- info *AudioInfo 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Notifies subclass of incoming data format.
+	//                  GstAudioInfo contains the format according to provided caps.
+	ParentSetFormat(info *AudioInfo) bool
+	// ParentSinkEvent calls the default implementations of the sink_event virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Event handler on the sink pad. Subclasses should chain up to
+	//                  the parent implementation to invoke the default handler.
+	ParentSinkEvent(event *gst.Event) bool
+	// ParentSinkQuery calls the default implementations of the sink_query virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Query handler on the sink pad. This function should
+	//                  return TRUE if the query could be performed. Subclasses
+	//                  should chain up to the parent implementation to invoke the
+	//                  default handler. Since: 1.6
+	ParentSinkQuery(query *gst.Query) bool
+	// ParentSrcEvent calls the default implementations of the src_event virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Event handler on the src pad. Subclasses should chain up to
+	//                  the parent implementation to invoke the default handler.
+	ParentSrcEvent(event *gst.Event) bool
+	// ParentSrcQuery calls the default implementations of the src_query virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Query handler on the source pad. This function should
+	//                  return TRUE if the query could be performed. Subclasses
+	//                  should chain up to the parent implementation to invoke the
+	//                  default handler. Since: 1.6
+	ParentSrcQuery(query *gst.Query) bool
+	// ParentStart calls the default implementations of the start virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element starts processing.
+	//                  Allows opening external resources.
+	ParentStart() bool
+	// ParentStop calls the default implementations of the stop virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element stops processing.
+	//                  Allows closing external resources.
+	ParentStop() bool
+	// ParentTransformMeta calls the default implementations of the transform_meta virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- outbuf *gst.Buffer 
+	// 	- meta *gst.Meta 
+	// 	- inbuf *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional. Transform the metadata on the input buffer to the
+	//                  output buffer. By default this method copies all meta without
+	//                  tags and meta with only the "audio" tag. subclasses can
+	//                  implement this method and return %TRUE if the metadata is to be
+	//                  copied. Since: 1.6
+	ParentTransformMeta(outbuf *gst.Buffer, meta *gst.Meta, inbuf *gst.Buffer) bool
 }
 
 func unsafeWrapAudioEncoder(base *gobject.ObjectInstance) *AudioEncoderInstance {
@@ -7697,7 +9280,7 @@ func unsafeWrapAudioEncoder(base *gobject.ObjectInstance) *AudioEncoderInstance 
 			},
 		},
 		PresetInstance: gst.PresetInstance{
-			Instance: *base,
+			ObjectInstance: *base,
 		},
 	}
 }
@@ -8552,6 +10135,10 @@ type AudioEncoderOverrides[Instance AudioEncoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element changes to GST_STATE_NULL.
+	//                  Allows closing external resources.
 	Close func(Instance) bool
 	// DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
 	// The function takes the following parameters:
@@ -8561,8 +10148,19 @@ type AudioEncoderOverrides[Instance AudioEncoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                     Setup the allocation parameters for allocating output
+	//                     buffers. The passed in query contains the result of the
+	//                     downstream allocation query.
+	//                     Subclasses should chain up to the parent implementation to
+	//                     invoke the default handler.
 	DecideAllocation func(Instance, *gst.Query) bool
 	// Flush allows you to override the implementation of the virtual method flush.
+	//
+	// Optional.
+	//                  Instructs subclass to clear any codec caches and discard
+	//                  any pending samples and not yet returned encoded data.
 	Flush func(Instance)
 	// Getcaps allows you to override the implementation of the virtual method getcaps.
 	// The function takes the following parameters:
@@ -8572,6 +10170,12 @@ type AudioEncoderOverrides[Instance AudioEncoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Caps 
+	//
+	// Optional.
+	//                  Allows for a custom sink getcaps implementation (e.g.
+	//                  for multichannel input specification).  If not implemented,
+	//                  default returns gst_audio_encoder_proxy_getcaps
+	//                  applied to sink template caps.
 	Getcaps func(Instance, *gst.Caps) *gst.Caps
 	// HandleFrame allows you to override the implementation of the virtual method handle_frame.
 	// The function takes the following parameters:
@@ -8581,16 +10185,31 @@ type AudioEncoderOverrides[Instance AudioEncoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// Provides input samples (or NULL to clear any remaining data)
+	//                  according to directions as configured by the subclass
+	//                  using the API.  Input data ref management is performed
+	//                  by base class, subclass should not care or intervene,
+	//                  and input data is only valid until next call to base class,
+	//                  most notably a call to gst_audio_encoder_finish_frame().
 	HandleFrame func(Instance, *gst.Buffer) gst.FlowReturn
 	// Negotiate allows you to override the implementation of the virtual method negotiate.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Negotiate with downstream elements to currently configured #GstCaps.
+	// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
+	// negotiate fails.
 	Negotiate func(Instance) bool
 	// Open allows you to override the implementation of the virtual method open.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element changes to GST_STATE_READY.
+	//                  Allows opening external resources.
 	Open func(Instance) bool
 	// ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
 	// The function takes the following parameters:
@@ -8600,6 +10219,11 @@ type AudioEncoderOverrides[Instance AudioEncoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                      Propose buffer allocation parameters for upstream elements.
+	//                      Subclasses should chain up to the parent implementation to
+	//                      invoke the default handler.
 	ProposeAllocation func(Instance, *gst.Query) bool
 	// SetFormat allows you to override the implementation of the virtual method set_format.
 	// The function takes the following parameters:
@@ -8609,6 +10233,9 @@ type AudioEncoderOverrides[Instance AudioEncoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Notifies subclass of incoming data format.
+	//                  GstAudioInfo contains the format according to provided caps.
 	SetFormat func(Instance, *AudioInfo) bool
 	// SinkEvent allows you to override the implementation of the virtual method sink_event.
 	// The function takes the following parameters:
@@ -8618,6 +10245,10 @@ type AudioEncoderOverrides[Instance AudioEncoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Event handler on the sink pad. Subclasses should chain up to
+	//                  the parent implementation to invoke the default handler.
 	SinkEvent func(Instance, *gst.Event) bool
 	// SinkQuery allows you to override the implementation of the virtual method sink_query.
 	// The function takes the following parameters:
@@ -8627,6 +10258,12 @@ type AudioEncoderOverrides[Instance AudioEncoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Query handler on the sink pad. This function should
+	//                  return TRUE if the query could be performed. Subclasses
+	//                  should chain up to the parent implementation to invoke the
+	//                  default handler. Since: 1.6
 	SinkQuery func(Instance, *gst.Query) bool
 	// SrcEvent allows you to override the implementation of the virtual method src_event.
 	// The function takes the following parameters:
@@ -8636,6 +10273,10 @@ type AudioEncoderOverrides[Instance AudioEncoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Event handler on the src pad. Subclasses should chain up to
+	//                  the parent implementation to invoke the default handler.
 	SrcEvent func(Instance, *gst.Event) bool
 	// SrcQuery allows you to override the implementation of the virtual method src_query.
 	// The function takes the following parameters:
@@ -8645,16 +10286,30 @@ type AudioEncoderOverrides[Instance AudioEncoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Query handler on the source pad. This function should
+	//                  return TRUE if the query could be performed. Subclasses
+	//                  should chain up to the parent implementation to invoke the
+	//                  default handler. Since: 1.6
 	SrcQuery func(Instance, *gst.Query) bool
 	// Start allows you to override the implementation of the virtual method start.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element starts processing.
+	//                  Allows opening external resources.
 	Start func(Instance) bool
 	// Stop allows you to override the implementation of the virtual method stop.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element stops processing.
+	//                  Allows closing external resources.
 	Stop func(Instance) bool
 	// TransformMeta allows you to override the implementation of the virtual method transform_meta.
 	// The function takes the following parameters:
@@ -8666,6 +10321,12 @@ type AudioEncoderOverrides[Instance AudioEncoder] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional. Transform the metadata on the input buffer to the
+	//                  output buffer. By default this method copies all meta without
+	//                  tags and meta with only the "audio" tag. subclasses can
+	//                  implement this method and return %TRUE if the metadata is to be
+	//                  copied. Since: 1.6
 	TransformMeta func(Instance, *gst.Buffer, *gst.Meta, *gst.Buffer) bool
 }
 
@@ -9042,6 +10703,524 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 	}
 }
 
+// ParentClose calls the default implementations of the close virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Called when the element changes to GST_STATE_NULL.
+//                  Allows closing external resources.
+func (enc *AudioEncoderInstance) ParentClose() bool {
+	var carg0 *C.GstAudioEncoder
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(enc)))
+
+	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_close(unsafe.Pointer(parentclass.close), carg0)
+	runtime.KeepAlive(enc)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                     Setup the allocation parameters for allocating output
+//                     buffers. The passed in query contains the result of the
+//                     downstream allocation query.
+//                     Subclasses should chain up to the parent implementation to
+//                     invoke the default handler.
+func (enc *AudioEncoderInstance) ParentDecideAllocation(query *gst.Query) bool {
+	var carg0 *C.GstAudioEncoder
+	var carg1 *C.GstQuery // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(enc)))
+
+	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
+	runtime.KeepAlive(enc)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentFlush calls the default implementations of the flush virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+//
+// Optional.
+//                  Instructs subclass to clear any codec caches and discard
+//                  any pending samples and not yet returned encoded data.
+func (enc *AudioEncoderInstance) ParentFlush() {
+	var carg0 *C.GstAudioEncoder
+
+	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(enc)))
+
+	C._gotk4_gstaudio1_AudioEncoder_virtual_flush(unsafe.Pointer(parentclass.flush), carg0)
+	runtime.KeepAlive(enc)
+}
+
+// ParentGetcaps calls the default implementations of the getcaps virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- filter *gst.Caps 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.Caps 
+//
+// Optional.
+//                  Allows for a custom sink getcaps implementation (e.g.
+//                  for multichannel input specification).  If not implemented,
+//                  default returns gst_audio_encoder_proxy_getcaps
+//                  applied to sink template caps.
+func (enc *AudioEncoderInstance) ParentGetcaps(filter *gst.Caps) *gst.Caps {
+	var carg0 *C.GstAudioEncoder
+	var carg1 *C.GstCaps // in, none, converted
+	var cret  *C.GstCaps // return, full, converted
+
+	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(enc)))
+
+	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filter))
+
+	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_getcaps(unsafe.Pointer(parentclass.getcaps), carg0, carg1)
+	runtime.KeepAlive(enc)
+	runtime.KeepAlive(filter)
+
+	var goret *gst.Caps
+
+	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// ParentHandleFrame calls the default implementations of the handle_frame virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- buffer *gst.Buffer 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// Provides input samples (or NULL to clear any remaining data)
+//                  according to directions as configured by the subclass
+//                  using the API.  Input data ref management is performed
+//                  by base class, subclass should not care or intervene,
+//                  and input data is only valid until next call to base class,
+//                  most notably a call to gst_audio_encoder_finish_frame().
+func (enc *AudioEncoderInstance) ParentHandleFrame(buffer *gst.Buffer) gst.FlowReturn {
+	var carg0 *C.GstAudioEncoder
+	var carg1 *C.GstBuffer    // in, none, converted
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(enc)))
+
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
+
+	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_handle_frame(unsafe.Pointer(parentclass.handle_frame), carg0, carg1)
+	runtime.KeepAlive(enc)
+	runtime.KeepAlive(buffer)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentNegotiate calls the default implementations of the negotiate virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Negotiate with downstream elements to currently configured #GstCaps.
+// Unmark GST_PAD_FLAG_NEED_RECONFIGURE in any case. But mark it again if
+// negotiate fails.
+func (enc *AudioEncoderInstance) ParentNegotiate() bool {
+	var carg0 *C.GstAudioEncoder
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(enc)))
+
+	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_negotiate(unsafe.Pointer(parentclass.negotiate), carg0)
+	runtime.KeepAlive(enc)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentOpen calls the default implementations of the open virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Called when the element changes to GST_STATE_READY.
+//                  Allows opening external resources.
+func (enc *AudioEncoderInstance) ParentOpen() bool {
+	var carg0 *C.GstAudioEncoder
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(enc)))
+
+	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_open(unsafe.Pointer(parentclass.open), carg0)
+	runtime.KeepAlive(enc)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                      Propose buffer allocation parameters for upstream elements.
+//                      Subclasses should chain up to the parent implementation to
+//                      invoke the default handler.
+func (enc *AudioEncoderInstance) ParentProposeAllocation(query *gst.Query) bool {
+	var carg0 *C.GstAudioEncoder
+	var carg1 *C.GstQuery // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(enc)))
+
+	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_propose_allocation(unsafe.Pointer(parentclass.propose_allocation), carg0, carg1)
+	runtime.KeepAlive(enc)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSetFormat calls the default implementations of the set_format virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- info *AudioInfo 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Notifies subclass of incoming data format.
+//                  GstAudioInfo contains the format according to provided caps.
+func (enc *AudioEncoderInstance) ParentSetFormat(info *AudioInfo) bool {
+	var carg0 *C.GstAudioEncoder
+	var carg1 *C.GstAudioInfo // in, none, converted
+	var cret  C.gboolean      // return
+
+	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(enc)))
+
+	carg1 = (*C.GstAudioInfo)(UnsafeAudioInfoToGlibNone(info))
+
+	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_set_format(unsafe.Pointer(parentclass.set_format), carg0, carg1)
+	runtime.KeepAlive(enc)
+	runtime.KeepAlive(info)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSinkEvent calls the default implementations of the sink_event virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- event *gst.Event 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Event handler on the sink pad. Subclasses should chain up to
+//                  the parent implementation to invoke the default handler.
+func (enc *AudioEncoderInstance) ParentSinkEvent(event *gst.Event) bool {
+	var carg0 *C.GstAudioEncoder
+	var carg1 *C.GstEvent // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(enc)))
+
+	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
+
+	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_sink_event(unsafe.Pointer(parentclass.sink_event), carg0, carg1)
+	runtime.KeepAlive(enc)
+	runtime.KeepAlive(event)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSinkQuery calls the default implementations of the sink_query virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Query handler on the sink pad. This function should
+//                  return TRUE if the query could be performed. Subclasses
+//                  should chain up to the parent implementation to invoke the
+//                  default handler. Since: 1.6
+func (encoder *AudioEncoderInstance) ParentSinkQuery(query *gst.Query) bool {
+	var carg0 *C.GstAudioEncoder
+	var carg1 *C.GstQuery // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(encoder)))
+
+	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_sink_query(unsafe.Pointer(parentclass.sink_query), carg0, carg1)
+	runtime.KeepAlive(encoder)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSrcEvent calls the default implementations of the src_event virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- event *gst.Event 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Event handler on the src pad. Subclasses should chain up to
+//                  the parent implementation to invoke the default handler.
+func (enc *AudioEncoderInstance) ParentSrcEvent(event *gst.Event) bool {
+	var carg0 *C.GstAudioEncoder
+	var carg1 *C.GstEvent // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(enc)))
+
+	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
+
+	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
+	runtime.KeepAlive(enc)
+	runtime.KeepAlive(event)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSrcQuery calls the default implementations of the src_query virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Query handler on the source pad. This function should
+//                  return TRUE if the query could be performed. Subclasses
+//                  should chain up to the parent implementation to invoke the
+//                  default handler. Since: 1.6
+func (encoder *AudioEncoderInstance) ParentSrcQuery(query *gst.Query) bool {
+	var carg0 *C.GstAudioEncoder
+	var carg1 *C.GstQuery // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(encoder)))
+
+	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_src_query(unsafe.Pointer(parentclass.src_query), carg0, carg1)
+	runtime.KeepAlive(encoder)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentStart calls the default implementations of the start virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Called when the element starts processing.
+//                  Allows opening external resources.
+func (enc *AudioEncoderInstance) ParentStart() bool {
+	var carg0 *C.GstAudioEncoder
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(enc)))
+
+	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_start(unsafe.Pointer(parentclass.start), carg0)
+	runtime.KeepAlive(enc)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentStop calls the default implementations of the stop virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Called when the element stops processing.
+//                  Allows closing external resources.
+func (enc *AudioEncoderInstance) ParentStop() bool {
+	var carg0 *C.GstAudioEncoder
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(enc)))
+
+	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
+	runtime.KeepAlive(enc)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentTransformMeta calls the default implementations of the transform_meta virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- outbuf *gst.Buffer 
+// 	- meta *gst.Meta 
+// 	- inbuf *gst.Buffer 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional. Transform the metadata on the input buffer to the
+//                  output buffer. By default this method copies all meta without
+//                  tags and meta with only the "audio" tag. subclasses can
+//                  implement this method and return %TRUE if the metadata is to be
+//                  copied. Since: 1.6
+func (enc *AudioEncoderInstance) ParentTransformMeta(outbuf *gst.Buffer, meta *gst.Meta, inbuf *gst.Buffer) bool {
+	var carg0 *C.GstAudioEncoder
+	var carg1 *C.GstBuffer // in, none, converted
+	var carg2 *C.GstMeta   // in, none, converted
+	var carg3 *C.GstBuffer // in, none, converted
+	var cret  C.gboolean   // return
+
+	parentclass := (*C.GstAudioEncoderClass)(classdata.PeekParentClass(UnsafeAudioEncoderToGlibNone(enc)))
+
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(outbuf))
+	carg2 = (*C.GstMeta)(gst.UnsafeMetaToGlibNone(meta))
+	carg3 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(inbuf))
+
+	cret = C._gotk4_gstaudio1_AudioEncoder_virtual_transform_meta(unsafe.Pointer(parentclass.transform_meta), carg0, carg1, carg2, carg3)
+	runtime.KeepAlive(enc)
+	runtime.KeepAlive(outbuf)
+	runtime.KeepAlive(meta)
+	runtime.KeepAlive(inbuf)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
 // RegisterAudioEncoderSubClass is used to register a go subclass of GstAudioEncoder. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterAudioEncoderSubClass[InstanceT AudioEncoder](
@@ -9094,6 +11273,21 @@ var _ AudioFilter = (*AudioFilterInstance)(nil)
 type AudioFilter interface {
 	gstbase.BaseTransform
 	upcastToGstAudioFilter() *AudioFilterInstance
+
+	// chain up virtual methods:
+
+	// ParentSetup calls the default implementations of the setup virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- info *AudioInfo 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// virtual function called whenever the format changes
+	ParentSetup(info *AudioInfo) bool
 }
 
 func unsafeWrapAudioFilter(base *gobject.ObjectInstance) *AudioFilterInstance {
@@ -9157,6 +11351,8 @@ type AudioFilterOverrides[Instance AudioFilter] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// virtual function called whenever the format changes
 	Setup func(Instance, *AudioInfo) bool
 }
 
@@ -9190,6 +11386,39 @@ func UnsafeApplyAudioFilterOverrides[Instance AudioFilter](gclass unsafe.Pointer
 			},
 		)
 	}
+}
+
+// ParentSetup calls the default implementations of the setup virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- info *AudioInfo 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// virtual function called whenever the format changes
+func (filter *AudioFilterInstance) ParentSetup(info *AudioInfo) bool {
+	var carg0 *C.GstAudioFilter
+	var carg1 *C.GstAudioInfo // in, none, converted
+	var cret  C.gboolean      // return
+
+	parentclass := (*C.GstAudioFilterClass)(classdata.PeekParentClass(UnsafeAudioFilterToGlibNone(filter)))
+
+	carg1 = (*C.GstAudioInfo)(UnsafeAudioInfoToGlibNone(info))
+
+	cret = C._gotk4_gstaudio1_AudioFilter_virtual_setup(unsafe.Pointer(parentclass.setup), carg0, carg1)
+	runtime.KeepAlive(filter)
+	runtime.KeepAlive(info)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
 }
 
 // RegisterAudioFilterSubClass is used to register a go subclass of GstAudioFilter. For this to work safely please implement the
@@ -9538,6 +11767,120 @@ type AudioRingBuffer interface {
 	//
 	// Stop processing samples from the ringbuffer.
 	Stop() bool
+
+	// chain up virtual methods:
+
+	// ParentAcquire calls the default implementations of the acquire virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- spec *AudioRingBufferSpec: the specs of the buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Allocate the resources for the ringbuffer. This function fills
+	// in the data pointer of the ring buffer with a valid #GstBuffer
+	// to which samples can be written.
+	ParentAcquire(spec *AudioRingBufferSpec) bool
+	// ParentActivate calls the default implementations of the activate virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- active bool: the new mode 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Activate @buf to start or stop pulling data.
+	// 
+	// MT safe.
+	ParentActivate(active bool) bool
+	// ParentClearAll calls the default implementations of the clear_all virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	//
+	// Clear all samples from the ringbuffer.
+	// 
+	// MT safe.
+	ParentClearAll()
+	// ParentCloseDevice calls the default implementations of the close_device virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Close the audio device associated with the ring buffer. The ring buffer
+	// should already have been released via gst_audio_ring_buffer_release().
+	ParentCloseDevice() bool
+	// ParentDelay calls the default implementations of the delay virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret uint 
+	//
+	// Get the number of samples queued in the audio device. This is
+	// usually less than the segment size but can be bigger when the
+	// implementation uses another internal buffer between the audio
+	// device.
+	// 
+	// For playback ringbuffers this is the amount of samples transferred from the
+	// ringbuffer to the device but still not played.
+	// 
+	// For capture ringbuffers this is the amount of samples in the device that are
+	// not yet transferred to the ringbuffer.
+	ParentDelay() uint
+	// ParentOpenDevice calls the default implementations of the open_device virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Open the audio device associated with the ring buffer. Does not perform any
+	// setup on the device. You must open the device before acquiring the ring
+	// buffer.
+	ParentOpenDevice() bool
+	// ParentPause calls the default implementations of the pause virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Pause processing samples from the ringbuffer.
+	ParentPause() bool
+	// ParentRelease calls the default implementations of the release virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Free the resources of the ringbuffer.
+	ParentRelease() bool
+	// ParentResume calls the default implementations of the resume virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// resume processing of samples after pause
+	ParentResume() bool
+	// ParentStart calls the default implementations of the start virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Start processing samples from the ringbuffer.
+	ParentStart() bool
+	// ParentStop calls the default implementations of the stop virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Stop processing samples from the ringbuffer.
+	ParentStop() bool
 }
 
 func unsafeWrapAudioRingBuffer(base *gobject.ObjectInstance) *AudioRingBufferInstance {
@@ -10406,6 +12749,10 @@ type AudioRingBufferOverrides[Instance AudioRingBuffer] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Allocate the resources for the ringbuffer. This function fills
+	// in the data pointer of the ring buffer with a valid #GstBuffer
+	// to which samples can be written.
 	Acquire func(Instance, *AudioRingBufferSpec) bool
 	// Activate allows you to override the implementation of the virtual method activate.
 	// The function takes the following parameters:
@@ -10415,48 +12762,84 @@ type AudioRingBufferOverrides[Instance AudioRingBuffer] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Activate @buf to start or stop pulling data.
+	// 
+	// MT safe.
 	Activate func(Instance, bool) bool
 	// ClearAll allows you to override the implementation of the virtual method clear_all.
+	//
+	// Clear all samples from the ringbuffer.
+	// 
+	// MT safe.
 	ClearAll func(Instance)
 	// CloseDevice allows you to override the implementation of the virtual method close_device.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Close the audio device associated with the ring buffer. The ring buffer
+	// should already have been released via gst_audio_ring_buffer_release().
 	CloseDevice func(Instance) bool
 	// Delay allows you to override the implementation of the virtual method delay.
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
+	//
+	// Get the number of samples queued in the audio device. This is
+	// usually less than the segment size but can be bigger when the
+	// implementation uses another internal buffer between the audio
+	// device.
+	// 
+	// For playback ringbuffers this is the amount of samples transferred from the
+	// ringbuffer to the device but still not played.
+	// 
+	// For capture ringbuffers this is the amount of samples in the device that are
+	// not yet transferred to the ringbuffer.
 	Delay func(Instance) uint
 	// OpenDevice allows you to override the implementation of the virtual method open_device.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Open the audio device associated with the ring buffer. Does not perform any
+	// setup on the device. You must open the device before acquiring the ring
+	// buffer.
 	OpenDevice func(Instance) bool
 	// Pause allows you to override the implementation of the virtual method pause.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Pause processing samples from the ringbuffer.
 	Pause func(Instance) bool
 	// Release allows you to override the implementation of the virtual method release.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Free the resources of the ringbuffer.
 	Release func(Instance) bool
 	// Resume allows you to override the implementation of the virtual method resume.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// resume processing of samples after pause
 	Resume func(Instance) bool
 	// Start allows you to override the implementation of the virtual method start.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Start processing samples from the ringbuffer.
 	Start func(Instance) bool
 	// Stop allows you to override the implementation of the virtual method stop.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Stop processing samples from the ringbuffer.
 	Stop func(Instance) bool
 }
 
@@ -10707,6 +13090,303 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 	}
 }
 
+// ParentAcquire calls the default implementations of the acquire virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- spec *AudioRingBufferSpec: the specs of the buffer 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Allocate the resources for the ringbuffer. This function fills
+// in the data pointer of the ring buffer with a valid #GstBuffer
+// to which samples can be written.
+func (buf *AudioRingBufferInstance) ParentAcquire(spec *AudioRingBufferSpec) bool {
+	var carg0 *C.GstAudioRingBuffer
+	var carg1 *C.GstAudioRingBufferSpec // in, none, converted
+	var cret  C.gboolean                // return
+
+	parentclass := (*C.GstAudioRingBufferClass)(classdata.PeekParentClass(UnsafeAudioRingBufferToGlibNone(buf)))
+
+	carg1 = (*C.GstAudioRingBufferSpec)(UnsafeAudioRingBufferSpecToGlibNone(spec))
+
+	cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_acquire(unsafe.Pointer(parentclass.acquire), carg0, carg1)
+	runtime.KeepAlive(buf)
+	runtime.KeepAlive(spec)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentActivate calls the default implementations of the activate virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- active bool: the new mode 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Activate @buf to start or stop pulling data.
+// 
+// MT safe.
+func (buf *AudioRingBufferInstance) ParentActivate(active bool) bool {
+	var carg0 *C.GstAudioRingBuffer
+	var carg1 C.gboolean // in
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAudioRingBufferClass)(classdata.PeekParentClass(UnsafeAudioRingBufferToGlibNone(buf)))
+
+	if active {
+		carg1 = C.TRUE
+	}
+
+	cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_activate(unsafe.Pointer(parentclass.activate), carg0, carg1)
+	runtime.KeepAlive(buf)
+	runtime.KeepAlive(active)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentClearAll calls the default implementations of the clear_all virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+//
+// Clear all samples from the ringbuffer.
+// 
+// MT safe.
+func (buf *AudioRingBufferInstance) ParentClearAll() {
+	var carg0 *C.GstAudioRingBuffer
+
+	parentclass := (*C.GstAudioRingBufferClass)(classdata.PeekParentClass(UnsafeAudioRingBufferToGlibNone(buf)))
+
+	C._gotk4_gstaudio1_AudioRingBuffer_virtual_clear_all(unsafe.Pointer(parentclass.clear_all), carg0)
+	runtime.KeepAlive(buf)
+}
+
+// ParentCloseDevice calls the default implementations of the close_device virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Close the audio device associated with the ring buffer. The ring buffer
+// should already have been released via gst_audio_ring_buffer_release().
+func (buf *AudioRingBufferInstance) ParentCloseDevice() bool {
+	var carg0 *C.GstAudioRingBuffer
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAudioRingBufferClass)(classdata.PeekParentClass(UnsafeAudioRingBufferToGlibNone(buf)))
+
+	cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_close_device(unsafe.Pointer(parentclass.close_device), carg0)
+	runtime.KeepAlive(buf)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentDelay calls the default implementations of the delay virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret uint 
+//
+// Get the number of samples queued in the audio device. This is
+// usually less than the segment size but can be bigger when the
+// implementation uses another internal buffer between the audio
+// device.
+// 
+// For playback ringbuffers this is the amount of samples transferred from the
+// ringbuffer to the device but still not played.
+// 
+// For capture ringbuffers this is the amount of samples in the device that are
+// not yet transferred to the ringbuffer.
+func (buf *AudioRingBufferInstance) ParentDelay() uint {
+	var carg0 *C.GstAudioRingBuffer
+	var cret  C.guint // return, none, casted
+
+	parentclass := (*C.GstAudioRingBufferClass)(classdata.PeekParentClass(UnsafeAudioRingBufferToGlibNone(buf)))
+
+	cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_delay(unsafe.Pointer(parentclass.delay), carg0)
+	runtime.KeepAlive(buf)
+
+	var goret uint
+
+	goret = uint(cret)
+
+	return goret
+}
+
+// ParentOpenDevice calls the default implementations of the open_device virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Open the audio device associated with the ring buffer. Does not perform any
+// setup on the device. You must open the device before acquiring the ring
+// buffer.
+func (buf *AudioRingBufferInstance) ParentOpenDevice() bool {
+	var carg0 *C.GstAudioRingBuffer
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAudioRingBufferClass)(classdata.PeekParentClass(UnsafeAudioRingBufferToGlibNone(buf)))
+
+	cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_open_device(unsafe.Pointer(parentclass.open_device), carg0)
+	runtime.KeepAlive(buf)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentPause calls the default implementations of the pause virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Pause processing samples from the ringbuffer.
+func (buf *AudioRingBufferInstance) ParentPause() bool {
+	var carg0 *C.GstAudioRingBuffer
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAudioRingBufferClass)(classdata.PeekParentClass(UnsafeAudioRingBufferToGlibNone(buf)))
+
+	cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_pause(unsafe.Pointer(parentclass.pause), carg0)
+	runtime.KeepAlive(buf)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentRelease calls the default implementations of the release virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Free the resources of the ringbuffer.
+func (buf *AudioRingBufferInstance) ParentRelease() bool {
+	var carg0 *C.GstAudioRingBuffer
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAudioRingBufferClass)(classdata.PeekParentClass(UnsafeAudioRingBufferToGlibNone(buf)))
+
+	cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_release(unsafe.Pointer(parentclass.release), carg0)
+	runtime.KeepAlive(buf)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentResume calls the default implementations of the resume virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// resume processing of samples after pause
+func (buf *AudioRingBufferInstance) ParentResume() bool {
+	var carg0 *C.GstAudioRingBuffer
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAudioRingBufferClass)(classdata.PeekParentClass(UnsafeAudioRingBufferToGlibNone(buf)))
+
+	cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_resume(unsafe.Pointer(parentclass.resume), carg0)
+	runtime.KeepAlive(buf)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentStart calls the default implementations of the start virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Start processing samples from the ringbuffer.
+func (buf *AudioRingBufferInstance) ParentStart() bool {
+	var carg0 *C.GstAudioRingBuffer
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAudioRingBufferClass)(classdata.PeekParentClass(UnsafeAudioRingBufferToGlibNone(buf)))
+
+	cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_start(unsafe.Pointer(parentclass.start), carg0)
+	runtime.KeepAlive(buf)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentStop calls the default implementations of the stop virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Stop processing samples from the ringbuffer.
+func (buf *AudioRingBufferInstance) ParentStop() bool {
+	var carg0 *C.GstAudioRingBuffer
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAudioRingBufferClass)(classdata.PeekParentClass(UnsafeAudioRingBufferToGlibNone(buf)))
+
+	cret = C._gotk4_gstaudio1_AudioRingBuffer_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
+	runtime.KeepAlive(buf)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
 // RegisterAudioRingBufferSubClass is used to register a go subclass of GstAudioRingBuffer. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterAudioRingBufferSubClass[InstanceT AudioRingBuffer](
@@ -10767,6 +13447,82 @@ var _ AudioSink = (*AudioSinkInstance)(nil)
 type AudioSink interface {
 	AudioBaseSink
 	upcastToGstAudioSink() *AudioSinkInstance
+
+	// chain up virtual methods:
+
+	// ParentClose calls the default implementations of the close virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Close the device.
+	ParentClose() bool
+	// ParentDelay calls the default implementations of the delay virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret uint 
+	//
+	// Return how many frames are still in the device. Participates in
+	//         computing the time for audio clocks and drives the synchronisation.
+	ParentDelay() uint
+	// ParentOpen calls the default implementations of the open virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Open the device. No configuration needs to be done at this point.
+	//        This function is also used to check if the device is available.
+	ParentOpen() bool
+	// ParentPause calls the default implementations of the pause virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	//
+	// Pause the device and unblock write as fast as possible.
+	//         For retro compatibility, the audio sink will fallback
+	//         to calling reset if this vmethod is not provided. Since: 1.18
+	ParentPause()
+	// ParentPrepare calls the default implementations of the prepare virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- spec *AudioRingBufferSpec 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Prepare the device to operate with the specified parameters.
+	ParentPrepare(spec *AudioRingBufferSpec) bool
+	// ParentReset calls the default implementations of the reset virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	//
+	// Returns as quickly as possible from a write and flush any pending
+	//         samples from the device.
+	//         This vmethod is deprecated. Please provide pause and stop instead.
+	ParentReset()
+	// ParentResume calls the default implementations of the resume virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	//
+	// Resume the device. Since: 1.18
+	ParentResume()
+	// ParentStop calls the default implementations of the stop virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	//
+	// Stop the device and unblock write as fast as possible.
+	//        Pending samples are flushed from the device.
+	//        For retro compatibility, the audio sink will fallback
+	//        to calling reset if this vmethod is not provided. Since: 1.18
+	ParentStop()
+	// ParentUnprepare calls the default implementations of the unprepare virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Undo operations done in prepare.
+	ParentUnprepare() bool
 }
 
 func unsafeWrapAudioSink(base *gobject.ObjectInstance) *AudioSinkInstance {
@@ -10828,18 +13584,30 @@ type AudioSinkOverrides[Instance AudioSink] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Close the device.
 	Close func(Instance) bool
 	// Delay allows you to override the implementation of the virtual method delay.
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
+	//
+	// Return how many frames are still in the device. Participates in
+	//         computing the time for audio clocks and drives the synchronisation.
 	Delay func(Instance) uint
 	// Open allows you to override the implementation of the virtual method open.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Open the device. No configuration needs to be done at this point.
+	//        This function is also used to check if the device is available.
 	Open func(Instance) bool
 	// Pause allows you to override the implementation of the virtual method pause.
+	//
+	// Pause the device and unblock write as fast as possible.
+	//         For retro compatibility, the audio sink will fallback
+	//         to calling reset if this vmethod is not provided. Since: 1.18
 	Pause func(Instance)
 	// Prepare allows you to override the implementation of the virtual method prepare.
 	// The function takes the following parameters:
@@ -10849,17 +13617,32 @@ type AudioSinkOverrides[Instance AudioSink] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Prepare the device to operate with the specified parameters.
 	Prepare func(Instance, *AudioRingBufferSpec) bool
 	// Reset allows you to override the implementation of the virtual method reset.
+	//
+	// Returns as quickly as possible from a write and flush any pending
+	//         samples from the device.
+	//         This vmethod is deprecated. Please provide pause and stop instead.
 	Reset func(Instance)
 	// Resume allows you to override the implementation of the virtual method resume.
+	//
+	// Resume the device. Since: 1.18
 	Resume func(Instance)
 	// Stop allows you to override the implementation of the virtual method stop.
+	//
+	// Stop the device and unblock write as fast as possible.
+	//        Pending samples are flushed from the device.
+	//        For retro compatibility, the audio sink will fallback
+	//        to calling reset if this vmethod is not provided. Since: 1.18
 	Stop func(Instance)
 	// Unprepare allows you to override the implementation of the virtual method unprepare.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Undo operations done in prepare.
 	Unprepare func(Instance) bool
 }
 
@@ -11041,6 +13824,198 @@ func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, ov
 	}
 }
 
+// ParentClose calls the default implementations of the close virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Close the device.
+func (sink *AudioSinkInstance) ParentClose() bool {
+	var carg0 *C.GstAudioSink
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAudioSinkClass)(classdata.PeekParentClass(UnsafeAudioSinkToGlibNone(sink)))
+
+	cret = C._gotk4_gstaudio1_AudioSink_virtual_close(unsafe.Pointer(parentclass.close), carg0)
+	runtime.KeepAlive(sink)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentDelay calls the default implementations of the delay virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret uint 
+//
+// Return how many frames are still in the device. Participates in
+//         computing the time for audio clocks and drives the synchronisation.
+func (sink *AudioSinkInstance) ParentDelay() uint {
+	var carg0 *C.GstAudioSink
+	var cret  C.guint // return, none, casted
+
+	parentclass := (*C.GstAudioSinkClass)(classdata.PeekParentClass(UnsafeAudioSinkToGlibNone(sink)))
+
+	cret = C._gotk4_gstaudio1_AudioSink_virtual_delay(unsafe.Pointer(parentclass.delay), carg0)
+	runtime.KeepAlive(sink)
+
+	var goret uint
+
+	goret = uint(cret)
+
+	return goret
+}
+
+// ParentOpen calls the default implementations of the open virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Open the device. No configuration needs to be done at this point.
+//        This function is also used to check if the device is available.
+func (sink *AudioSinkInstance) ParentOpen() bool {
+	var carg0 *C.GstAudioSink
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAudioSinkClass)(classdata.PeekParentClass(UnsafeAudioSinkToGlibNone(sink)))
+
+	cret = C._gotk4_gstaudio1_AudioSink_virtual_open(unsafe.Pointer(parentclass.open), carg0)
+	runtime.KeepAlive(sink)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentPause calls the default implementations of the pause virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+//
+// Pause the device and unblock write as fast as possible.
+//         For retro compatibility, the audio sink will fallback
+//         to calling reset if this vmethod is not provided. Since: 1.18
+func (sink *AudioSinkInstance) ParentPause() {
+	var carg0 *C.GstAudioSink
+
+	parentclass := (*C.GstAudioSinkClass)(classdata.PeekParentClass(UnsafeAudioSinkToGlibNone(sink)))
+
+	C._gotk4_gstaudio1_AudioSink_virtual_pause(unsafe.Pointer(parentclass.pause), carg0)
+	runtime.KeepAlive(sink)
+}
+
+// ParentPrepare calls the default implementations of the prepare virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- spec *AudioRingBufferSpec 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Prepare the device to operate with the specified parameters.
+func (sink *AudioSinkInstance) ParentPrepare(spec *AudioRingBufferSpec) bool {
+	var carg0 *C.GstAudioSink
+	var carg1 *C.GstAudioRingBufferSpec // in, none, converted
+	var cret  C.gboolean                // return
+
+	parentclass := (*C.GstAudioSinkClass)(classdata.PeekParentClass(UnsafeAudioSinkToGlibNone(sink)))
+
+	carg1 = (*C.GstAudioRingBufferSpec)(UnsafeAudioRingBufferSpecToGlibNone(spec))
+
+	cret = C._gotk4_gstaudio1_AudioSink_virtual_prepare(unsafe.Pointer(parentclass.prepare), carg0, carg1)
+	runtime.KeepAlive(sink)
+	runtime.KeepAlive(spec)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentReset calls the default implementations of the reset virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+//
+// Returns as quickly as possible from a write and flush any pending
+//         samples from the device.
+//         This vmethod is deprecated. Please provide pause and stop instead.
+func (sink *AudioSinkInstance) ParentReset() {
+	var carg0 *C.GstAudioSink
+
+	parentclass := (*C.GstAudioSinkClass)(classdata.PeekParentClass(UnsafeAudioSinkToGlibNone(sink)))
+
+	C._gotk4_gstaudio1_AudioSink_virtual_reset(unsafe.Pointer(parentclass.reset), carg0)
+	runtime.KeepAlive(sink)
+}
+
+// ParentResume calls the default implementations of the resume virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+//
+// Resume the device. Since: 1.18
+func (sink *AudioSinkInstance) ParentResume() {
+	var carg0 *C.GstAudioSink
+
+	parentclass := (*C.GstAudioSinkClass)(classdata.PeekParentClass(UnsafeAudioSinkToGlibNone(sink)))
+
+	C._gotk4_gstaudio1_AudioSink_virtual_resume(unsafe.Pointer(parentclass.resume), carg0)
+	runtime.KeepAlive(sink)
+}
+
+// ParentStop calls the default implementations of the stop virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+//
+// Stop the device and unblock write as fast as possible.
+//        Pending samples are flushed from the device.
+//        For retro compatibility, the audio sink will fallback
+//        to calling reset if this vmethod is not provided. Since: 1.18
+func (sink *AudioSinkInstance) ParentStop() {
+	var carg0 *C.GstAudioSink
+
+	parentclass := (*C.GstAudioSinkClass)(classdata.PeekParentClass(UnsafeAudioSinkToGlibNone(sink)))
+
+	C._gotk4_gstaudio1_AudioSink_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
+	runtime.KeepAlive(sink)
+}
+
+// ParentUnprepare calls the default implementations of the unprepare virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Undo operations done in prepare.
+func (sink *AudioSinkInstance) ParentUnprepare() bool {
+	var carg0 *C.GstAudioSink
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAudioSinkClass)(classdata.PeekParentClass(UnsafeAudioSinkToGlibNone(sink)))
+
+	cret = C._gotk4_gstaudio1_AudioSink_virtual_unprepare(unsafe.Pointer(parentclass.unprepare), carg0)
+	runtime.KeepAlive(sink)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
 // RegisterAudioSinkSubClass is used to register a go subclass of GstAudioSink. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterAudioSinkSubClass[InstanceT AudioSink](
@@ -11094,6 +14069,58 @@ var _ AudioSrc = (*AudioSrcInstance)(nil)
 type AudioSrc interface {
 	AudioBaseSrc
 	upcastToGstAudioSrc() *AudioSrcInstance
+
+	// chain up virtual methods:
+
+	// ParentClose calls the default implementations of the close virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// close the device
+	ParentClose() bool
+	// ParentDelay calls the default implementations of the delay virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret uint 
+	//
+	// the number of frames queued in the device
+	ParentDelay() uint
+	// ParentOpen calls the default implementations of the open virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// open the device with the specified caps
+	ParentOpen() bool
+	// ParentPrepare calls the default implementations of the prepare virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- spec *AudioRingBufferSpec 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// configure device with format
+	ParentPrepare(spec *AudioRingBufferSpec) bool
+	// ParentReset calls the default implementations of the reset virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	//
+	// unblock a read to the device and reset.
+	ParentReset()
+	// ParentUnprepare calls the default implementations of the unprepare virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// undo the configuration
+	ParentUnprepare() bool
 }
 
 func unsafeWrapAudioSrc(base *gobject.ObjectInstance) *AudioSrcInstance {
@@ -11157,16 +14184,22 @@ type AudioSrcOverrides[Instance AudioSrc] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// close the device
 	Close func(Instance) bool
 	// Delay allows you to override the implementation of the virtual method delay.
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
+	//
+	// the number of frames queued in the device
 	Delay func(Instance) uint
 	// Open allows you to override the implementation of the virtual method open.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// open the device with the specified caps
 	Open func(Instance) bool
 	// Prepare allows you to override the implementation of the virtual method prepare.
 	// The function takes the following parameters:
@@ -11176,13 +14209,19 @@ type AudioSrcOverrides[Instance AudioSrc] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// configure device with format
 	Prepare func(Instance, *AudioRingBufferSpec) bool
 	// Reset allows you to override the implementation of the virtual method reset.
+	//
+	// unblock a read to the device and reset.
 	Reset func(Instance)
 	// Unprepare allows you to override the implementation of the virtual method unprepare.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// undo the configuration
 	Unprepare func(Instance) bool
 }
 
@@ -11319,6 +14358,150 @@ func UnsafeApplyAudioSrcOverrides[Instance AudioSrc](gclass unsafe.Pointer, over
 	}
 }
 
+// ParentClose calls the default implementations of the close virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// close the device
+func (src *AudioSrcInstance) ParentClose() bool {
+	var carg0 *C.GstAudioSrc
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAudioSrcClass)(classdata.PeekParentClass(UnsafeAudioSrcToGlibNone(src)))
+
+	cret = C._gotk4_gstaudio1_AudioSrc_virtual_close(unsafe.Pointer(parentclass.close), carg0)
+	runtime.KeepAlive(src)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentDelay calls the default implementations of the delay virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret uint 
+//
+// the number of frames queued in the device
+func (src *AudioSrcInstance) ParentDelay() uint {
+	var carg0 *C.GstAudioSrc
+	var cret  C.guint // return, none, casted
+
+	parentclass := (*C.GstAudioSrcClass)(classdata.PeekParentClass(UnsafeAudioSrcToGlibNone(src)))
+
+	cret = C._gotk4_gstaudio1_AudioSrc_virtual_delay(unsafe.Pointer(parentclass.delay), carg0)
+	runtime.KeepAlive(src)
+
+	var goret uint
+
+	goret = uint(cret)
+
+	return goret
+}
+
+// ParentOpen calls the default implementations of the open virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// open the device with the specified caps
+func (src *AudioSrcInstance) ParentOpen() bool {
+	var carg0 *C.GstAudioSrc
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAudioSrcClass)(classdata.PeekParentClass(UnsafeAudioSrcToGlibNone(src)))
+
+	cret = C._gotk4_gstaudio1_AudioSrc_virtual_open(unsafe.Pointer(parentclass.open), carg0)
+	runtime.KeepAlive(src)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentPrepare calls the default implementations of the prepare virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- spec *AudioRingBufferSpec 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// configure device with format
+func (src *AudioSrcInstance) ParentPrepare(spec *AudioRingBufferSpec) bool {
+	var carg0 *C.GstAudioSrc
+	var carg1 *C.GstAudioRingBufferSpec // in, none, converted
+	var cret  C.gboolean                // return
+
+	parentclass := (*C.GstAudioSrcClass)(classdata.PeekParentClass(UnsafeAudioSrcToGlibNone(src)))
+
+	carg1 = (*C.GstAudioRingBufferSpec)(UnsafeAudioRingBufferSpecToGlibNone(spec))
+
+	cret = C._gotk4_gstaudio1_AudioSrc_virtual_prepare(unsafe.Pointer(parentclass.prepare), carg0, carg1)
+	runtime.KeepAlive(src)
+	runtime.KeepAlive(spec)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentReset calls the default implementations of the reset virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+//
+// unblock a read to the device and reset.
+func (src *AudioSrcInstance) ParentReset() {
+	var carg0 *C.GstAudioSrc
+
+	parentclass := (*C.GstAudioSrcClass)(classdata.PeekParentClass(UnsafeAudioSrcToGlibNone(src)))
+
+	C._gotk4_gstaudio1_AudioSrc_virtual_reset(unsafe.Pointer(parentclass.reset), carg0)
+	runtime.KeepAlive(src)
+}
+
+// ParentUnprepare calls the default implementations of the unprepare virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// undo the configuration
+func (src *AudioSrcInstance) ParentUnprepare() bool {
+	var carg0 *C.GstAudioSrc
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAudioSrcClass)(classdata.PeekParentClass(UnsafeAudioSrcToGlibNone(src)))
+
+	cret = C._gotk4_gstaudio1_AudioSrc_virtual_unprepare(unsafe.Pointer(parentclass.unprepare), carg0)
+	runtime.KeepAlive(src)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
 // RegisterAudioSrcSubClass is used to register a go subclass of GstAudioSrc. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterAudioSrcSubClass[InstanceT AudioSrc](
@@ -11361,6 +14544,8 @@ var _ AudioAggregatorConvertPad = (*AudioAggregatorConvertPadInstance)(nil)
 type AudioAggregatorConvertPad interface {
 	AudioAggregatorPad
 	upcastToGstAudioAggregatorConvertPad() *AudioAggregatorConvertPadInstance
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapAudioAggregatorConvertPad(base *gobject.ObjectInstance) *AudioAggregatorConvertPadInstance {

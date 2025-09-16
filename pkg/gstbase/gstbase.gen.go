@@ -678,6 +678,16 @@ func (f CollectPadsStateFlags) String() string {
 }
 
 // CollectPadsBufferFunction wraps GstCollectPadsBufferFunction
+// 
+// The function takes the following parameters:
+// 
+// 	- pads CollectPads: the #GstCollectPads that triggered the callback 
+// 	- data *CollectData: the #GstCollectData of pad that has received the buffer 
+// 	- buffer *gst.Buffer: the #GstBuffer 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
 //
 // A function that will be called when a (considered oldest) buffer can be muxed.
 // If all pads have reached EOS, this function is called with %NULL @buffer
@@ -685,6 +695,17 @@ func (f CollectPadsStateFlags) String() string {
 type CollectPadsBufferFunction func(pads CollectPads, data *CollectData, buffer *gst.Buffer) (goret gst.FlowReturn)
 
 // CollectPadsClipFunction wraps GstCollectPadsClipFunction
+// 
+// The function takes the following parameters:
+// 
+// 	- pads CollectPads: a #GstCollectPads 
+// 	- data *CollectData: a #GstCollectData 
+// 	- inbuffer *gst.Buffer: the input #GstBuffer 
+// 
+// The function returns the following values:
+// 
+// 	- outbuffer *gst.Buffer: the output #GstBuffer 
+// 	- goret gst.FlowReturn 
 //
 // A function that will be called when @inbuffer is received on the pad managed
 // by @data in the collectpad object @pads.
@@ -697,11 +718,33 @@ type CollectPadsBufferFunction func(pads CollectPads, data *CollectData, buffer 
 type CollectPadsClipFunction func(pads CollectPads, data *CollectData, inbuffer *gst.Buffer) (outbuffer *gst.Buffer, goret gst.FlowReturn)
 
 // CollectPadsCompareFunction wraps GstCollectPadsCompareFunction
+// 
+// The function takes the following parameters:
+// 
+// 	- pads CollectPads: the #GstCollectPads that is comparing the timestamps 
+// 	- data1 *CollectData: the first #GstCollectData 
+// 	- timestamp1 gst.ClockTime: the first timestamp 
+// 	- data2 *CollectData: the second #GstCollectData 
+// 	- timestamp2 gst.ClockTime: the second timestamp 
+// 
+// The function returns the following values:
+// 
+// 	- goret int32 
 //
 // A function for comparing two timestamps of buffers or newsegments collected on one pad.
 type CollectPadsCompareFunction func(pads CollectPads, data1 *CollectData, timestamp1 gst.ClockTime, data2 *CollectData, timestamp2 gst.ClockTime) (goret int32)
 
 // CollectPadsEventFunction wraps GstCollectPadsEventFunction
+// 
+// The function takes the following parameters:
+// 
+// 	- pads CollectPads: the #GstCollectPads that triggered the callback 
+// 	- pad *CollectData: the #GstPad that received an event 
+// 	- event *gst.Event: the #GstEvent received 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
 //
 // A function that will be called while processing an event. It takes
 // ownership of the event and is responsible for chaining up (to
@@ -710,6 +753,10 @@ type CollectPadsCompareFunction func(pads CollectPads, data1 *CollectData, times
 type CollectPadsEventFunction func(pads CollectPads, pad *CollectData, event *gst.Event) (goret bool)
 
 // CollectPadsFlushFunction wraps GstCollectPadsFlushFunction
+// 
+// The function takes the following parameters:
+// 
+// 	- pads CollectPads: a #GstCollectPads 
 //
 // A function that will be called while processing a flushing seek event.
 // 
@@ -720,11 +767,29 @@ type CollectPadsEventFunction func(pads CollectPads, pad *CollectData, event *gs
 type CollectPadsFlushFunction func(pads CollectPads)
 
 // CollectPadsFunction wraps GstCollectPadsFunction
+// 
+// The function takes the following parameters:
+// 
+// 	- pads CollectPads: the #GstCollectPads that triggered the callback 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
 //
 // A function that will be called when all pads have received data.
 type CollectPadsFunction func(pads CollectPads) (goret gst.FlowReturn)
 
 // CollectPadsQueryFunction wraps GstCollectPadsQueryFunction
+// 
+// The function takes the following parameters:
+// 
+// 	- pads CollectPads: the #GstCollectPads that triggered the callback 
+// 	- pad *CollectData: the #GstPad that received an event 
+// 	- query *gst.Query: the #GstEvent received 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
 //
 // A function that will be called while processing a query. It takes
 // ownership of the query and is responsible for chaining up (to
@@ -2977,6 +3042,318 @@ type Aggregator interface {
 	// of input samples it will aggregate. Handlers may call
 	// gst_aggregator_peek_next_sample() at that point.
 	ConnectSamplesSelected(func(Aggregator, gst.Segment, uint64, uint64, uint64, gst.Structure)) gobject.SignalHandle
+
+	// chain up virtual methods:
+
+	// ParentAggregate calls the default implementations of the aggregate virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- timeout bool 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// Mandatory.
+	//                  Called when buffers are queued on all sinkpads. Classes
+	//                  should iterate the GstElement-&gt;sinkpads and peek or steal
+	//                  buffers from the #GstAggregatorPads. If the subclass returns
+	//                  GST_FLOW_EOS, sending of the eos event will be taken care
+	//                  of. Once / if a buffer has been constructed from the
+	//                  aggregated buffers, the subclass should call _finish_buffer.
+	ParentAggregate(timeout bool) gst.FlowReturn
+	// ParentClip calls the default implementations of the clip virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- aggregatorPad AggregatorPad 
+	// 	- buf *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Buffer 
+	//
+	// Optional.
+	//                  Called when a buffer is received on a sink pad, the task of
+	//                  clipping it and translating it to the current segment falls
+	//                  on the subclass. The function should use the segment of data
+	//                  and the negotiated media type on the pad to perform
+	//                  clipping of input buffer. This function takes ownership of
+	//                  buf and should output a buffer or return NULL in
+	//                  if the buffer should be dropped.
+	ParentClip(aggregatorPad AggregatorPad, buf *gst.Buffer) *gst.Buffer
+	// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                     Allows the subclass to influence the allocation choices.
+	//                     Setup the allocation parameters for allocating output
+	//                     buffers. The passed in query contains the result of the
+	//                     downstream allocation query.
+	ParentDecideAllocation(query *gst.Query) bool
+	// ParentFinishBuffer calls the default implementations of the finish_buffer virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *gst.Buffer: the #GstBuffer to push. 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// This method will push the provided output buffer downstream. If needed,
+	// mandatory events such as stream-start, caps, and segment events will be
+	// sent before pushing the buffer.
+	ParentFinishBuffer(buffer *gst.Buffer) gst.FlowReturn
+	// ParentFinishBufferList calls the default implementations of the finish_buffer_list virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- bufferlist *gst.BufferList: the #GstBufferList to push. 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// This method will push the provided output buffer list downstream. If needed,
+	// mandatory events such as stream-start, caps, and segment events will be
+	// sent before pushing the buffer.
+	ParentFinishBufferList(bufferlist *gst.BufferList) gst.FlowReturn
+	// ParentFixateSrcCaps calls the default implementations of the fixate_src_caps virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Caps 
+	//
+	// Optional.
+	//                   Fixate and return the src pad caps provided.  The function takes
+	//                   ownership of @caps and returns a fixated version of
+	//                   @caps. @caps is not guaranteed to be writable.
+	ParentFixateSrcCaps(caps *gst.Caps) *gst.Caps
+	// ParentFlush calls the default implementations of the flush virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// Optional.
+	//                  Called after a successful flushing seek, once all the flush
+	//                  stops have been received. Flush pad-specific data in
+	//                  #GstAggregatorPad-&gt;flush.
+	ParentFlush() gst.FlowReturn
+	// ParentGetNextTime calls the default implementations of the get_next_time virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret gst.ClockTime 
+	//
+	// Optional.
+	//                  Called when the element needs to know the running time of the next
+	//                  rendered buffer for live pipelines. This causes deadline
+	//                  based aggregation to occur. Defaults to returning
+	//                  GST_CLOCK_TIME_NONE causing the element to wait for buffers
+	//                  on all sink pads before aggregating.
+	ParentGetNextTime() gst.ClockTime
+	// ParentNegotiate calls the default implementations of the negotiate virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Negotiates src pad caps with downstream elements.
+	// Unmarks GST_PAD_FLAG_NEED_RECONFIGURE in any case. But marks it again
+	// if #GstAggregatorClass::negotiate fails.
+	ParentNegotiate() bool
+	// ParentNegotiatedSrcCaps calls the default implementations of the negotiated_src_caps virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                       Notifies subclasses what caps format has been negotiated
+	ParentNegotiatedSrcCaps(caps *gst.Caps) bool
+	// ParentPeekNextSample calls the default implementations of the peek_next_sample virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- aggregatorPad AggregatorPad 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Sample (nullable) 
+	//
+	// Use this function to determine what input buffers will be aggregated
+	// to produce the next output buffer. This should only be called from
+	// a #GstAggregator::samples-selected handler, and can be used to precisely
+	// control aggregating parameters for a given set of input samples.
+	ParentPeekNextSample(aggregatorPad AggregatorPad) *gst.Sample
+	// ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- pad AggregatorPad 
+	// 	- decideQuery *gst.Query 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                     Allows the subclass to handle the allocation query from upstream.
+	ParentProposeAllocation(pad AggregatorPad, decideQuery *gst.Query, query *gst.Query) bool
+	// ParentSinkEvent calls the default implementations of the sink_event virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- aggregatorPad AggregatorPad 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when an event is received on a sink pad, the subclass
+	//                  should always chain up.
+	ParentSinkEvent(aggregatorPad AggregatorPad, event *gst.Event) bool
+	// ParentSinkEventPreQueue calls the default implementations of the sink_event_pre_queue virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- aggregatorPad AggregatorPad 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// Optional.
+	//                        Called when an event is received on a sink pad before queueing up
+	//                        serialized events. The subclass should always chain up (Since: 1.18).
+	ParentSinkEventPreQueue(aggregatorPad AggregatorPad, event *gst.Event) gst.FlowReturn
+	// ParentSinkQuery calls the default implementations of the sink_query virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- aggregatorPad AggregatorPad 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when a query is received on a sink pad, the subclass
+	//                  should always chain up.
+	ParentSinkQuery(aggregatorPad AggregatorPad, query *gst.Query) bool
+	// ParentSinkQueryPreQueue calls the default implementations of the sink_query_pre_queue virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- aggregatorPad AggregatorPad 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                        Called when a query is received on a sink pad before queueing up
+	//                        serialized queries. The subclass should always chain up (Since: 1.18).
+	ParentSinkQueryPreQueue(aggregatorPad AggregatorPad, query *gst.Query) bool
+	// ParentSrcActivate calls the default implementations of the src_activate virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- mode gst.PadMode 
+	// 	- active bool 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the src pad is activated, it will start/stop its
+	//                  pad task right after that call.
+	ParentSrcActivate(mode gst.PadMode, active bool) bool
+	// ParentSrcEvent calls the default implementations of the src_event virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when an event is received on the src pad, the subclass
+	//                  should always chain up.
+	ParentSrcEvent(event *gst.Event) bool
+	// ParentSrcQuery calls the default implementations of the src_query virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when a query is received on the src pad, the subclass
+	//                  should always chain up.
+	ParentSrcQuery(query *gst.Query) bool
+	// ParentStart calls the default implementations of the start virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element goes from READY to PAUSED.
+	//                  The subclass should get ready to process
+	//                  aggregated buffers.
+	ParentStart() bool
+	// ParentStop calls the default implementations of the stop virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element goes from PAUSED to READY.
+	//                  The subclass should free all resources and reset its state.
+	ParentStop() bool
+	// ParentUpdateSrcCaps calls the default implementations of the update_src_caps virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- ret *gst.Caps 
+	// 	- goret gst.FlowReturn 
+	ParentUpdateSrcCaps(caps *gst.Caps) (*gst.Caps, gst.FlowReturn)
 }
 
 func unsafeWrapAggregator(base *gobject.ObjectInstance) *AggregatorInstance {
@@ -3532,6 +3909,14 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// Mandatory.
+	//                  Called when buffers are queued on all sinkpads. Classes
+	//                  should iterate the GstElement-&gt;sinkpads and peek or steal
+	//                  buffers from the #GstAggregatorPads. If the subclass returns
+	//                  GST_FLOW_EOS, sending of the eos event will be taken care
+	//                  of. Once / if a buffer has been constructed from the
+	//                  aggregated buffers, the subclass should call _finish_buffer.
 	Aggregate func(Instance, bool) gst.FlowReturn
 	// Clip allows you to override the implementation of the virtual method clip.
 	// The function takes the following parameters:
@@ -3542,6 +3927,15 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Buffer 
+	//
+	// Optional.
+	//                  Called when a buffer is received on a sink pad, the task of
+	//                  clipping it and translating it to the current segment falls
+	//                  on the subclass. The function should use the segment of data
+	//                  and the negotiated media type on the pad to perform
+	//                  clipping of input buffer. This function takes ownership of
+	//                  buf and should output a buffer or return NULL in
+	//                  if the buffer should be dropped.
 	Clip func(Instance, AggregatorPad, *gst.Buffer) *gst.Buffer
 	// DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
 	// The function takes the following parameters:
@@ -3551,6 +3945,12 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                     Allows the subclass to influence the allocation choices.
+	//                     Setup the allocation parameters for allocating output
+	//                     buffers. The passed in query contains the result of the
+	//                     downstream allocation query.
 	DecideAllocation func(Instance, *gst.Query) bool
 	// FinishBuffer allows you to override the implementation of the virtual method finish_buffer.
 	// The function takes the following parameters:
@@ -3560,6 +3960,10 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// This method will push the provided output buffer downstream. If needed,
+	// mandatory events such as stream-start, caps, and segment events will be
+	// sent before pushing the buffer.
 	FinishBuffer func(Instance, *gst.Buffer) gst.FlowReturn
 	// FinishBufferList allows you to override the implementation of the virtual method finish_buffer_list.
 	// The function takes the following parameters:
@@ -3569,6 +3973,10 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// This method will push the provided output buffer list downstream. If needed,
+	// mandatory events such as stream-start, caps, and segment events will be
+	// sent before pushing the buffer.
 	FinishBufferList func(Instance, *gst.BufferList) gst.FlowReturn
 	// FixateSrcCaps allows you to override the implementation of the virtual method fixate_src_caps.
 	// The function takes the following parameters:
@@ -3578,21 +3986,42 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Caps 
+	//
+	// Optional.
+	//                   Fixate and return the src pad caps provided.  The function takes
+	//                   ownership of @caps and returns a fixated version of
+	//                   @caps. @caps is not guaranteed to be writable.
 	FixateSrcCaps func(Instance, *gst.Caps) *gst.Caps
 	// Flush allows you to override the implementation of the virtual method flush.
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// Optional.
+	//                  Called after a successful flushing seek, once all the flush
+	//                  stops have been received. Flush pad-specific data in
+	//                  #GstAggregatorPad-&gt;flush.
 	Flush func(Instance) gst.FlowReturn
 	// GetNextTime allows you to override the implementation of the virtual method get_next_time.
 	// The function returns the following values:
 	// 
 	// 	- goret gst.ClockTime 
+	//
+	// Optional.
+	//                  Called when the element needs to know the running time of the next
+	//                  rendered buffer for live pipelines. This causes deadline
+	//                  based aggregation to occur. Defaults to returning
+	//                  GST_CLOCK_TIME_NONE causing the element to wait for buffers
+	//                  on all sink pads before aggregating.
 	GetNextTime func(Instance) gst.ClockTime
 	// Negotiate allows you to override the implementation of the virtual method negotiate.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Negotiates src pad caps with downstream elements.
+	// Unmarks GST_PAD_FLAG_NEED_RECONFIGURE in any case. But marks it again
+	// if #GstAggregatorClass::negotiate fails.
 	Negotiate func(Instance) bool
 	// NegotiatedSrcCaps allows you to override the implementation of the virtual method negotiated_src_caps.
 	// The function takes the following parameters:
@@ -3602,6 +4031,9 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                       Notifies subclasses what caps format has been negotiated
 	NegotiatedSrcCaps func(Instance, *gst.Caps) bool
 	// PeekNextSample allows you to override the implementation of the virtual method peek_next_sample.
 	// The function takes the following parameters:
@@ -3611,6 +4043,11 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Sample (nullable) 
+	//
+	// Use this function to determine what input buffers will be aggregated
+	// to produce the next output buffer. This should only be called from
+	// a #GstAggregator::samples-selected handler, and can be used to precisely
+	// control aggregating parameters for a given set of input samples.
 	PeekNextSample func(Instance, AggregatorPad) *gst.Sample
 	// ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
 	// The function takes the following parameters:
@@ -3622,6 +4059,9 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                     Allows the subclass to handle the allocation query from upstream.
 	ProposeAllocation func(Instance, AggregatorPad, *gst.Query, *gst.Query) bool
 	// SinkEvent allows you to override the implementation of the virtual method sink_event.
 	// The function takes the following parameters:
@@ -3632,6 +4072,10 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when an event is received on a sink pad, the subclass
+	//                  should always chain up.
 	SinkEvent func(Instance, AggregatorPad, *gst.Event) bool
 	// SinkEventPreQueue allows you to override the implementation of the virtual method sink_event_pre_queue.
 	// The function takes the following parameters:
@@ -3642,6 +4086,10 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// Optional.
+	//                        Called when an event is received on a sink pad before queueing up
+	//                        serialized events. The subclass should always chain up (Since: 1.18).
 	SinkEventPreQueue func(Instance, AggregatorPad, *gst.Event) gst.FlowReturn
 	// SinkQuery allows you to override the implementation of the virtual method sink_query.
 	// The function takes the following parameters:
@@ -3652,6 +4100,10 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when a query is received on a sink pad, the subclass
+	//                  should always chain up.
 	SinkQuery func(Instance, AggregatorPad, *gst.Query) bool
 	// SinkQueryPreQueue allows you to override the implementation of the virtual method sink_query_pre_queue.
 	// The function takes the following parameters:
@@ -3662,6 +4114,10 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                        Called when a query is received on a sink pad before queueing up
+	//                        serialized queries. The subclass should always chain up (Since: 1.18).
 	SinkQueryPreQueue func(Instance, AggregatorPad, *gst.Query) bool
 	// SrcActivate allows you to override the implementation of the virtual method src_activate.
 	// The function takes the following parameters:
@@ -3672,6 +4128,10 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the src pad is activated, it will start/stop its
+	//                  pad task right after that call.
 	SrcActivate func(Instance, gst.PadMode, bool) bool
 	// SrcEvent allows you to override the implementation of the virtual method src_event.
 	// The function takes the following parameters:
@@ -3681,6 +4141,10 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when an event is received on the src pad, the subclass
+	//                  should always chain up.
 	SrcEvent func(Instance, *gst.Event) bool
 	// SrcQuery allows you to override the implementation of the virtual method src_query.
 	// The function takes the following parameters:
@@ -3690,16 +4154,29 @@ type AggregatorOverrides[Instance Aggregator] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when a query is received on the src pad, the subclass
+	//                  should always chain up.
 	SrcQuery func(Instance, *gst.Query) bool
 	// Start allows you to override the implementation of the virtual method start.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element goes from READY to PAUSED.
+	//                  The subclass should get ready to process
+	//                  aggregated buffers.
 	Start func(Instance) bool
 	// Stop allows you to override the implementation of the virtual method stop.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element goes from PAUSED to READY.
+	//                  The subclass should free all resources and reset its state.
 	Stop func(Instance) bool
 	// UpdateSrcCaps allows you to override the implementation of the virtual method update_src_caps.
 	// The function takes the following parameters:
@@ -4243,6 +4720,770 @@ func UnsafeApplyAggregatorOverrides[Instance Aggregator](gclass unsafe.Pointer, 
 	}
 }
 
+// ParentAggregate calls the default implementations of the aggregate virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- timeout bool 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// Mandatory.
+//                  Called when buffers are queued on all sinkpads. Classes
+//                  should iterate the GstElement-&gt;sinkpads and peek or steal
+//                  buffers from the #GstAggregatorPads. If the subclass returns
+//                  GST_FLOW_EOS, sending of the eos event will be taken care
+//                  of. Once / if a buffer has been constructed from the
+//                  aggregated buffers, the subclass should call _finish_buffer.
+func (aggregator *AggregatorInstance) ParentAggregate(timeout bool) gst.FlowReturn {
+	var carg0 *C.GstAggregator
+	var carg1 C.gboolean      // in
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
+
+	if timeout {
+		carg1 = C.TRUE
+	}
+
+	cret = C._gotk4_gstbase1_Aggregator_virtual_aggregate(unsafe.Pointer(parentclass.aggregate), carg0, carg1)
+	runtime.KeepAlive(aggregator)
+	runtime.KeepAlive(timeout)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentClip calls the default implementations of the clip virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- aggregatorPad AggregatorPad 
+// 	- buf *gst.Buffer 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.Buffer 
+//
+// Optional.
+//                  Called when a buffer is received on a sink pad, the task of
+//                  clipping it and translating it to the current segment falls
+//                  on the subclass. The function should use the segment of data
+//                  and the negotiated media type on the pad to perform
+//                  clipping of input buffer. This function takes ownership of
+//                  buf and should output a buffer or return NULL in
+//                  if the buffer should be dropped.
+func (aggregator *AggregatorInstance) ParentClip(aggregatorPad AggregatorPad, buf *gst.Buffer) *gst.Buffer {
+	var carg0 *C.GstAggregator
+	var carg1 *C.GstAggregatorPad // in, none, converted
+	var carg2 *C.GstBuffer        // in, none, converted
+	var cret  *C.GstBuffer        // return, full, converted
+
+	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
+
+	carg1 = (*C.GstAggregatorPad)(UnsafeAggregatorPadToGlibNone(aggregatorPad))
+	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buf))
+
+	cret = C._gotk4_gstbase1_Aggregator_virtual_clip(unsafe.Pointer(parentclass.clip), carg0, carg1, carg2)
+	runtime.KeepAlive(aggregator)
+	runtime.KeepAlive(aggregatorPad)
+	runtime.KeepAlive(buf)
+
+	var goret *gst.Buffer
+
+	goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                     Allows the subclass to influence the allocation choices.
+//                     Setup the allocation parameters for allocating output
+//                     buffers. The passed in query contains the result of the
+//                     downstream allocation query.
+func (self *AggregatorInstance) ParentDecideAllocation(query *gst.Query) bool {
+	var carg0 *C.GstAggregator
+	var carg1 *C.GstQuery // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(self)))
+
+	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstbase1_Aggregator_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
+	runtime.KeepAlive(self)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentFinishBuffer calls the default implementations of the finish_buffer virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- buffer *gst.Buffer: the #GstBuffer to push. 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// This method will push the provided output buffer downstream. If needed,
+// mandatory events such as stream-start, caps, and segment events will be
+// sent before pushing the buffer.
+func (aggregator *AggregatorInstance) ParentFinishBuffer(buffer *gst.Buffer) gst.FlowReturn {
+	var carg0 *C.GstAggregator
+	var carg1 *C.GstBuffer    // in, full, converted
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
+
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibFull(buffer))
+
+	cret = C._gotk4_gstbase1_Aggregator_virtual_finish_buffer(unsafe.Pointer(parentclass.finish_buffer), carg0, carg1)
+	runtime.KeepAlive(aggregator)
+	runtime.KeepAlive(buffer)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentFinishBufferList calls the default implementations of the finish_buffer_list virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- bufferlist *gst.BufferList: the #GstBufferList to push. 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// This method will push the provided output buffer list downstream. If needed,
+// mandatory events such as stream-start, caps, and segment events will be
+// sent before pushing the buffer.
+func (aggregator *AggregatorInstance) ParentFinishBufferList(bufferlist *gst.BufferList) gst.FlowReturn {
+	var carg0 *C.GstAggregator
+	var carg1 *C.GstBufferList // in, full, converted
+	var cret  C.GstFlowReturn  // return, none, casted
+
+	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
+
+	carg1 = (*C.GstBufferList)(gst.UnsafeBufferListToGlibFull(bufferlist))
+
+	cret = C._gotk4_gstbase1_Aggregator_virtual_finish_buffer_list(unsafe.Pointer(parentclass.finish_buffer_list), carg0, carg1)
+	runtime.KeepAlive(aggregator)
+	runtime.KeepAlive(bufferlist)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentFixateSrcCaps calls the default implementations of the fixate_src_caps virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- caps *gst.Caps 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.Caps 
+//
+// Optional.
+//                   Fixate and return the src pad caps provided.  The function takes
+//                   ownership of @caps and returns a fixated version of
+//                   @caps. @caps is not guaranteed to be writable.
+func (self *AggregatorInstance) ParentFixateSrcCaps(caps *gst.Caps) *gst.Caps {
+	var carg0 *C.GstAggregator
+	var carg1 *C.GstCaps // in, none, converted
+	var cret  *C.GstCaps // return, full, converted
+
+	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(self)))
+
+	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
+
+	cret = C._gotk4_gstbase1_Aggregator_virtual_fixate_src_caps(unsafe.Pointer(parentclass.fixate_src_caps), carg0, carg1)
+	runtime.KeepAlive(self)
+	runtime.KeepAlive(caps)
+
+	var goret *gst.Caps
+
+	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// ParentFlush calls the default implementations of the flush virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// Optional.
+//                  Called after a successful flushing seek, once all the flush
+//                  stops have been received. Flush pad-specific data in
+//                  #GstAggregatorPad-&gt;flush.
+func (aggregator *AggregatorInstance) ParentFlush() gst.FlowReturn {
+	var carg0 *C.GstAggregator
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
+
+	cret = C._gotk4_gstbase1_Aggregator_virtual_flush(unsafe.Pointer(parentclass.flush), carg0)
+	runtime.KeepAlive(aggregator)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentGetNextTime calls the default implementations of the get_next_time virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret gst.ClockTime 
+//
+// Optional.
+//                  Called when the element needs to know the running time of the next
+//                  rendered buffer for live pipelines. This causes deadline
+//                  based aggregation to occur. Defaults to returning
+//                  GST_CLOCK_TIME_NONE causing the element to wait for buffers
+//                  on all sink pads before aggregating.
+func (aggregator *AggregatorInstance) ParentGetNextTime() gst.ClockTime {
+	var carg0 *C.GstAggregator
+	var cret  C.GstClockTime // return, none, casted, alias
+
+	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
+
+	cret = C._gotk4_gstbase1_Aggregator_virtual_get_next_time(unsafe.Pointer(parentclass.get_next_time), carg0)
+	runtime.KeepAlive(aggregator)
+
+	var goret gst.ClockTime
+
+	goret = gst.ClockTime(cret)
+
+	return goret
+}
+
+// ParentNegotiate calls the default implementations of the negotiate virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Negotiates src pad caps with downstream elements.
+// Unmarks GST_PAD_FLAG_NEED_RECONFIGURE in any case. But marks it again
+// if #GstAggregatorClass::negotiate fails.
+func (self *AggregatorInstance) ParentNegotiate() bool {
+	var carg0 *C.GstAggregator
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(self)))
+
+	cret = C._gotk4_gstbase1_Aggregator_virtual_negotiate(unsafe.Pointer(parentclass.negotiate), carg0)
+	runtime.KeepAlive(self)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentNegotiatedSrcCaps calls the default implementations of the negotiated_src_caps virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- caps *gst.Caps 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                       Notifies subclasses what caps format has been negotiated
+func (self *AggregatorInstance) ParentNegotiatedSrcCaps(caps *gst.Caps) bool {
+	var carg0 *C.GstAggregator
+	var carg1 *C.GstCaps // in, none, converted
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(self)))
+
+	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
+
+	cret = C._gotk4_gstbase1_Aggregator_virtual_negotiated_src_caps(unsafe.Pointer(parentclass.negotiated_src_caps), carg0, carg1)
+	runtime.KeepAlive(self)
+	runtime.KeepAlive(caps)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentPeekNextSample calls the default implementations of the peek_next_sample virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- aggregatorPad AggregatorPad 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.Sample (nullable) 
+//
+// Use this function to determine what input buffers will be aggregated
+// to produce the next output buffer. This should only be called from
+// a #GstAggregator::samples-selected handler, and can be used to precisely
+// control aggregating parameters for a given set of input samples.
+func (aggregator *AggregatorInstance) ParentPeekNextSample(aggregatorPad AggregatorPad) *gst.Sample {
+	var carg0 *C.GstAggregator
+	var carg1 *C.GstAggregatorPad // in, none, converted
+	var cret  *C.GstSample        // return, full, converted, nullable
+
+	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
+
+	carg1 = (*C.GstAggregatorPad)(UnsafeAggregatorPadToGlibNone(aggregatorPad))
+
+	cret = C._gotk4_gstbase1_Aggregator_virtual_peek_next_sample(unsafe.Pointer(parentclass.peek_next_sample), carg0, carg1)
+	runtime.KeepAlive(aggregator)
+	runtime.KeepAlive(aggregatorPad)
+
+	var goret *gst.Sample
+
+	if cret != nil {
+		goret = gst.UnsafeSampleFromGlibFull(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
+// ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- pad AggregatorPad 
+// 	- decideQuery *gst.Query 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                     Allows the subclass to handle the allocation query from upstream.
+func (self *AggregatorInstance) ParentProposeAllocation(pad AggregatorPad, decideQuery *gst.Query, query *gst.Query) bool {
+	var carg0 *C.GstAggregator
+	var carg1 *C.GstAggregatorPad // in, none, converted
+	var carg2 *C.GstQuery         // in, none, converted
+	var carg3 *C.GstQuery         // in, none, converted
+	var cret  C.gboolean          // return
+
+	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(self)))
+
+	carg1 = (*C.GstAggregatorPad)(UnsafeAggregatorPadToGlibNone(pad))
+	carg2 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(decideQuery))
+	carg3 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstbase1_Aggregator_virtual_propose_allocation(unsafe.Pointer(parentclass.propose_allocation), carg0, carg1, carg2, carg3)
+	runtime.KeepAlive(self)
+	runtime.KeepAlive(pad)
+	runtime.KeepAlive(decideQuery)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSinkEvent calls the default implementations of the sink_event virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- aggregatorPad AggregatorPad 
+// 	- event *gst.Event 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Called when an event is received on a sink pad, the subclass
+//                  should always chain up.
+func (aggregator *AggregatorInstance) ParentSinkEvent(aggregatorPad AggregatorPad, event *gst.Event) bool {
+	var carg0 *C.GstAggregator
+	var carg1 *C.GstAggregatorPad // in, none, converted
+	var carg2 *C.GstEvent         // in, none, converted
+	var cret  C.gboolean          // return
+
+	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
+
+	carg1 = (*C.GstAggregatorPad)(UnsafeAggregatorPadToGlibNone(aggregatorPad))
+	carg2 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
+
+	cret = C._gotk4_gstbase1_Aggregator_virtual_sink_event(unsafe.Pointer(parentclass.sink_event), carg0, carg1, carg2)
+	runtime.KeepAlive(aggregator)
+	runtime.KeepAlive(aggregatorPad)
+	runtime.KeepAlive(event)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSinkEventPreQueue calls the default implementations of the sink_event_pre_queue virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- aggregatorPad AggregatorPad 
+// 	- event *gst.Event 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// Optional.
+//                        Called when an event is received on a sink pad before queueing up
+//                        serialized events. The subclass should always chain up (Since: 1.18).
+func (aggregator *AggregatorInstance) ParentSinkEventPreQueue(aggregatorPad AggregatorPad, event *gst.Event) gst.FlowReturn {
+	var carg0 *C.GstAggregator
+	var carg1 *C.GstAggregatorPad // in, none, converted
+	var carg2 *C.GstEvent         // in, none, converted
+	var cret  C.GstFlowReturn     // return, none, casted
+
+	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
+
+	carg1 = (*C.GstAggregatorPad)(UnsafeAggregatorPadToGlibNone(aggregatorPad))
+	carg2 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
+
+	cret = C._gotk4_gstbase1_Aggregator_virtual_sink_event_pre_queue(unsafe.Pointer(parentclass.sink_event_pre_queue), carg0, carg1, carg2)
+	runtime.KeepAlive(aggregator)
+	runtime.KeepAlive(aggregatorPad)
+	runtime.KeepAlive(event)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentSinkQuery calls the default implementations of the sink_query virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- aggregatorPad AggregatorPad 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Called when a query is received on a sink pad, the subclass
+//                  should always chain up.
+func (aggregator *AggregatorInstance) ParentSinkQuery(aggregatorPad AggregatorPad, query *gst.Query) bool {
+	var carg0 *C.GstAggregator
+	var carg1 *C.GstAggregatorPad // in, none, converted
+	var carg2 *C.GstQuery         // in, none, converted
+	var cret  C.gboolean          // return
+
+	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
+
+	carg1 = (*C.GstAggregatorPad)(UnsafeAggregatorPadToGlibNone(aggregatorPad))
+	carg2 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstbase1_Aggregator_virtual_sink_query(unsafe.Pointer(parentclass.sink_query), carg0, carg1, carg2)
+	runtime.KeepAlive(aggregator)
+	runtime.KeepAlive(aggregatorPad)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSinkQueryPreQueue calls the default implementations of the sink_query_pre_queue virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- aggregatorPad AggregatorPad 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                        Called when a query is received on a sink pad before queueing up
+//                        serialized queries. The subclass should always chain up (Since: 1.18).
+func (aggregator *AggregatorInstance) ParentSinkQueryPreQueue(aggregatorPad AggregatorPad, query *gst.Query) bool {
+	var carg0 *C.GstAggregator
+	var carg1 *C.GstAggregatorPad // in, none, converted
+	var carg2 *C.GstQuery         // in, none, converted
+	var cret  C.gboolean          // return
+
+	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
+
+	carg1 = (*C.GstAggregatorPad)(UnsafeAggregatorPadToGlibNone(aggregatorPad))
+	carg2 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstbase1_Aggregator_virtual_sink_query_pre_queue(unsafe.Pointer(parentclass.sink_query_pre_queue), carg0, carg1, carg2)
+	runtime.KeepAlive(aggregator)
+	runtime.KeepAlive(aggregatorPad)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSrcActivate calls the default implementations of the src_activate virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- mode gst.PadMode 
+// 	- active bool 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Called when the src pad is activated, it will start/stop its
+//                  pad task right after that call.
+func (aggregator *AggregatorInstance) ParentSrcActivate(mode gst.PadMode, active bool) bool {
+	var carg0 *C.GstAggregator
+	var carg1 C.GstPadMode // in, none, casted
+	var carg2 C.gboolean   // in
+	var cret  C.gboolean   // return
+
+	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
+
+	carg1 = C.GstPadMode(mode)
+	if active {
+		carg2 = C.TRUE
+	}
+
+	cret = C._gotk4_gstbase1_Aggregator_virtual_src_activate(unsafe.Pointer(parentclass.src_activate), carg0, carg1, carg2)
+	runtime.KeepAlive(aggregator)
+	runtime.KeepAlive(mode)
+	runtime.KeepAlive(active)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSrcEvent calls the default implementations of the src_event virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- event *gst.Event 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Called when an event is received on the src pad, the subclass
+//                  should always chain up.
+func (aggregator *AggregatorInstance) ParentSrcEvent(event *gst.Event) bool {
+	var carg0 *C.GstAggregator
+	var carg1 *C.GstEvent // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
+
+	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
+
+	cret = C._gotk4_gstbase1_Aggregator_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
+	runtime.KeepAlive(aggregator)
+	runtime.KeepAlive(event)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSrcQuery calls the default implementations of the src_query virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Called when a query is received on the src pad, the subclass
+//                  should always chain up.
+func (aggregator *AggregatorInstance) ParentSrcQuery(query *gst.Query) bool {
+	var carg0 *C.GstAggregator
+	var carg1 *C.GstQuery // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
+
+	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstbase1_Aggregator_virtual_src_query(unsafe.Pointer(parentclass.src_query), carg0, carg1)
+	runtime.KeepAlive(aggregator)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentStart calls the default implementations of the start virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Called when the element goes from READY to PAUSED.
+//                  The subclass should get ready to process
+//                  aggregated buffers.
+func (aggregator *AggregatorInstance) ParentStart() bool {
+	var carg0 *C.GstAggregator
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
+
+	cret = C._gotk4_gstbase1_Aggregator_virtual_start(unsafe.Pointer(parentclass.start), carg0)
+	runtime.KeepAlive(aggregator)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentStop calls the default implementations of the stop virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Called when the element goes from PAUSED to READY.
+//                  The subclass should free all resources and reset its state.
+func (aggregator *AggregatorInstance) ParentStop() bool {
+	var carg0 *C.GstAggregator
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(aggregator)))
+
+	cret = C._gotk4_gstbase1_Aggregator_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
+	runtime.KeepAlive(aggregator)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentUpdateSrcCaps calls the default implementations of the update_src_caps virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- caps *gst.Caps 
+// 
+// The function returns the following values:
+// 
+// 	- ret *gst.Caps 
+// 	- goret gst.FlowReturn 
+func (self *AggregatorInstance) ParentUpdateSrcCaps(caps *gst.Caps) (*gst.Caps, gst.FlowReturn) {
+	var carg0 *C.GstAggregator
+	var carg1 *C.GstCaps      // in, none, converted
+	var carg2 *C.GstCaps      // out, full, converted
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstAggregatorClass)(classdata.PeekParentClass(UnsafeAggregatorToGlibNone(self)))
+
+	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
+
+	cret = C._gotk4_gstbase1_Aggregator_virtual_update_src_caps(unsafe.Pointer(parentclass.update_src_caps), carg0, carg1, &carg2)
+	runtime.KeepAlive(self)
+	runtime.KeepAlive(caps)
+
+	var ret   *gst.Caps
+	var goret gst.FlowReturn
+
+	ret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(carg2))
+	goret = gst.FlowReturn(cret)
+
+	return ret, goret
+}
+
 // RegisterAggregatorSubClass is used to register a go subclass of GstAggregator. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterAggregatorSubClass[InstanceT Aggregator](
@@ -4334,6 +5575,39 @@ type AggregatorPad interface {
 	PopBuffer() *gst.Buffer
 	// ConnectBufferConsumed connects the provided callback to the "buffer-consumed" signal
 	ConnectBufferConsumed(func(AggregatorPad, gst.Buffer)) gobject.SignalHandle
+
+	// chain up virtual methods:
+
+	// ParentFlush calls the default implementations of the flush virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- aggregator Aggregator 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// Optional
+	//               Called when the pad has received a flush stop, this is the place
+	//               to flush any information specific to the pad, it allows for individual
+	//               pads to be flushed while others might not be.
+	ParentFlush(aggregator Aggregator) gst.FlowReturn
+	// ParentSkipBuffer calls the default implementations of the skip_buffer virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- aggregator Aggregator 
+	// 	- buffer *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional
+	//               Called before input buffers are queued in the pad, return %TRUE
+	//               if the buffer should be skipped.
+	ParentSkipBuffer(aggregator Aggregator, buffer *gst.Buffer) bool
 }
 
 func unsafeWrapAggregatorPad(base *gobject.ObjectInstance) *AggregatorPadInstance {
@@ -4548,6 +5822,11 @@ type AggregatorPadOverrides[Instance AggregatorPad] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// Optional
+	//               Called when the pad has received a flush stop, this is the place
+	//               to flush any information specific to the pad, it allows for individual
+	//               pads to be flushed while others might not be.
 	Flush func(Instance, Aggregator) gst.FlowReturn
 	// SkipBuffer allows you to override the implementation of the virtual method skip_buffer.
 	// The function takes the following parameters:
@@ -4558,6 +5837,10 @@ type AggregatorPadOverrides[Instance AggregatorPad] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional
+	//               Called before input buffers are queued in the pad, return %TRUE
+	//               if the buffer should be skipped.
 	SkipBuffer func(Instance, Aggregator, *gst.Buffer) bool
 }
 
@@ -4615,6 +5898,79 @@ func UnsafeApplyAggregatorPadOverrides[Instance AggregatorPad](gclass unsafe.Poi
 			},
 		)
 	}
+}
+
+// ParentFlush calls the default implementations of the flush virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- aggregator Aggregator 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// Optional
+//               Called when the pad has received a flush stop, this is the place
+//               to flush any information specific to the pad, it allows for individual
+//               pads to be flushed while others might not be.
+func (aggpad *AggregatorPadInstance) ParentFlush(aggregator Aggregator) gst.FlowReturn {
+	var carg0 *C.GstAggregatorPad
+	var carg1 *C.GstAggregator // in, none, converted
+	var cret  C.GstFlowReturn  // return, none, casted
+
+	parentclass := (*C.GstAggregatorPadClass)(classdata.PeekParentClass(UnsafeAggregatorPadToGlibNone(aggpad)))
+
+	carg1 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
+
+	cret = C._gotk4_gstbase1_AggregatorPad_virtual_flush(unsafe.Pointer(parentclass.flush), carg0, carg1)
+	runtime.KeepAlive(aggpad)
+	runtime.KeepAlive(aggregator)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentSkipBuffer calls the default implementations of the skip_buffer virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- aggregator Aggregator 
+// 	- buffer *gst.Buffer 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional
+//               Called before input buffers are queued in the pad, return %TRUE
+//               if the buffer should be skipped.
+func (aggpad *AggregatorPadInstance) ParentSkipBuffer(aggregator Aggregator, buffer *gst.Buffer) bool {
+	var carg0 *C.GstAggregatorPad
+	var carg1 *C.GstAggregator // in, none, converted
+	var carg2 *C.GstBuffer     // in, none, converted
+	var cret  C.gboolean       // return
+
+	parentclass := (*C.GstAggregatorPadClass)(classdata.PeekParentClass(UnsafeAggregatorPadToGlibNone(aggpad)))
+
+	carg1 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(aggregator))
+	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
+
+	cret = C._gotk4_gstbase1_AggregatorPad_virtual_skip_buffer(unsafe.Pointer(parentclass.skip_buffer), carg0, carg1, carg2)
+	runtime.KeepAlive(aggpad)
+	runtime.KeepAlive(aggregator)
+	runtime.KeepAlive(buffer)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
 }
 
 // RegisterAggregatorPadSubClass is used to register a go subclass of GstAggregatorPad. For this to work safely please implement the
@@ -5027,6 +6383,183 @@ type BaseParse interface {
 	// This function can be used to set the timestamps based on the offset
 	// into the frame data that the picture starts.
 	SetTsAtOffset(uint)
+
+	// chain up virtual methods:
+
+	// ParentConvert calls the default implementations of the convert virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- srcFormat gst.Format 
+	// 	- srcValue int64 
+	// 	- destFormat gst.Format 
+	// 	- destValue *int64 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Convert between formats.
+	ParentConvert(srcFormat gst.Format, srcValue int64, destFormat gst.Format, destValue *int64) bool
+	// ParentDetect calls the default implementations of the detect virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// Optional.
+	//                   Called until it doesn't return GST_FLOW_OK anymore for
+	//                   the first buffers. Can be used by the subclass to detect
+	//                   the stream format.
+	ParentDetect(buffer *gst.Buffer) gst.FlowReturn
+	// ParentGetSinkCaps calls the default implementations of the get_sink_caps virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- filter *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Caps 
+	//
+	// Optional.
+	//                  Allows the subclass to do its own sink get caps if needed.
+	ParentGetSinkCaps(filter *gst.Caps) *gst.Caps
+	// ParentHandleFrame calls the default implementations of the handle_frame virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- frame *BaseParseFrame 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- skipsize int32 
+	// 	- goret gst.FlowReturn 
+	//
+	// Parses the input data into valid frames as defined by subclass
+	// which should be passed to gst_base_parse_finish_frame().
+	// The frame's input buffer is guaranteed writable,
+	// whereas the input frame ownership is held by caller
+	// (so subclass should make a copy if it needs to hang on).
+	// Input buffer (data) is provided by baseclass with as much
+	// metadata set as possible by baseclass according to upstream
+	// information and/or subclass settings,
+	// though subclass may still set buffer timestamp and duration
+	// if desired.
+	ParentHandleFrame(frame *BaseParseFrame) (int32, gst.FlowReturn)
+	// ParentPrePushFrame calls the default implementations of the pre_push_frame virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- frame *BaseParseFrame 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// Optional.
+	//                   Called just prior to pushing a frame (after any pending
+	//                   events have been sent) to give subclass a chance to perform
+	//                   additional actions at this time (e.g. tag sending) or to
+	//                   decide whether this buffer should be dropped or not
+	//                   (e.g. custom segment clipping).
+	ParentPrePushFrame(frame *BaseParseFrame) gst.FlowReturn
+	// ParentSetSinkCaps calls the default implementations of the set_sink_caps virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Allows the subclass to be notified of the actual caps set.
+	ParentSetSinkCaps(caps *gst.Caps) bool
+	// ParentSinkEvent calls the default implementations of the sink_event virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Event handler on the sink pad. This function should chain
+	//                  up to the parent implementation to let the default handler
+	//                  run.
+	ParentSinkEvent(event *gst.Event) bool
+	// ParentSinkQuery calls the default implementations of the sink_query virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                   Query handler on the sink pad. This function should chain
+	//                   up to the parent implementation to let the default handler
+	//                   run (Since: 1.2)
+	ParentSinkQuery(query *gst.Query) bool
+	// ParentSrcEvent calls the default implementations of the src_event virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Event handler on the source pad. Should chain up to the
+	//                  parent to let the default handler run.
+	ParentSrcEvent(event *gst.Event) bool
+	// ParentSrcQuery calls the default implementations of the src_query virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                   Query handler on the source pad. Should chain up to the
+	//                   parent to let the default handler run (Since: 1.2)
+	ParentSrcQuery(query *gst.Query) bool
+	// ParentStart calls the default implementations of the start virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element starts processing.
+	//                  Allows opening external resources.
+	ParentStart() bool
+	// ParentStop calls the default implementations of the stop virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element stops processing.
+	//                  Allows closing external resources.
+	ParentStop() bool
 }
 
 func unsafeWrapBaseParse(base *gobject.ObjectInstance) *BaseParseInstance {
@@ -5600,6 +7133,9 @@ type BaseParseOverrides[Instance BaseParse] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Convert between formats.
 	Convert func(Instance, gst.Format, int64, gst.Format, *int64) bool
 	// Detect allows you to override the implementation of the virtual method detect.
 	// The function takes the following parameters:
@@ -5609,6 +7145,11 @@ type BaseParseOverrides[Instance BaseParse] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// Optional.
+	//                   Called until it doesn't return GST_FLOW_OK anymore for
+	//                   the first buffers. Can be used by the subclass to detect
+	//                   the stream format.
 	Detect func(Instance, *gst.Buffer) gst.FlowReturn
 	// GetSinkCaps allows you to override the implementation of the virtual method get_sink_caps.
 	// The function takes the following parameters:
@@ -5618,6 +7159,9 @@ type BaseParseOverrides[Instance BaseParse] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Caps 
+	//
+	// Optional.
+	//                  Allows the subclass to do its own sink get caps if needed.
 	GetSinkCaps func(Instance, *gst.Caps) *gst.Caps
 	// HandleFrame allows you to override the implementation of the virtual method handle_frame.
 	// The function takes the following parameters:
@@ -5628,6 +7172,17 @@ type BaseParseOverrides[Instance BaseParse] struct {
 	// 
 	// 	- skipsize int32 
 	// 	- goret gst.FlowReturn 
+	//
+	// Parses the input data into valid frames as defined by subclass
+	// which should be passed to gst_base_parse_finish_frame().
+	// The frame's input buffer is guaranteed writable,
+	// whereas the input frame ownership is held by caller
+	// (so subclass should make a copy if it needs to hang on).
+	// Input buffer (data) is provided by baseclass with as much
+	// metadata set as possible by baseclass according to upstream
+	// information and/or subclass settings,
+	// though subclass may still set buffer timestamp and duration
+	// if desired.
 	HandleFrame func(Instance, *BaseParseFrame) (int32, gst.FlowReturn)
 	// PrePushFrame allows you to override the implementation of the virtual method pre_push_frame.
 	// The function takes the following parameters:
@@ -5637,6 +7192,13 @@ type BaseParseOverrides[Instance BaseParse] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// Optional.
+	//                   Called just prior to pushing a frame (after any pending
+	//                   events have been sent) to give subclass a chance to perform
+	//                   additional actions at this time (e.g. tag sending) or to
+	//                   decide whether this buffer should be dropped or not
+	//                   (e.g. custom segment clipping).
 	PrePushFrame func(Instance, *BaseParseFrame) gst.FlowReturn
 	// SetSinkCaps allows you to override the implementation of the virtual method set_sink_caps.
 	// The function takes the following parameters:
@@ -5646,6 +7208,9 @@ type BaseParseOverrides[Instance BaseParse] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Allows the subclass to be notified of the actual caps set.
 	SetSinkCaps func(Instance, *gst.Caps) bool
 	// SinkEvent allows you to override the implementation of the virtual method sink_event.
 	// The function takes the following parameters:
@@ -5655,6 +7220,11 @@ type BaseParseOverrides[Instance BaseParse] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Event handler on the sink pad. This function should chain
+	//                  up to the parent implementation to let the default handler
+	//                  run.
 	SinkEvent func(Instance, *gst.Event) bool
 	// SinkQuery allows you to override the implementation of the virtual method sink_query.
 	// The function takes the following parameters:
@@ -5664,6 +7234,11 @@ type BaseParseOverrides[Instance BaseParse] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                   Query handler on the sink pad. This function should chain
+	//                   up to the parent implementation to let the default handler
+	//                   run (Since: 1.2)
 	SinkQuery func(Instance, *gst.Query) bool
 	// SrcEvent allows you to override the implementation of the virtual method src_event.
 	// The function takes the following parameters:
@@ -5673,6 +7248,10 @@ type BaseParseOverrides[Instance BaseParse] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Event handler on the source pad. Should chain up to the
+	//                  parent to let the default handler run.
 	SrcEvent func(Instance, *gst.Event) bool
 	// SrcQuery allows you to override the implementation of the virtual method src_query.
 	// The function takes the following parameters:
@@ -5682,16 +7261,28 @@ type BaseParseOverrides[Instance BaseParse] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                   Query handler on the source pad. Should chain up to the
+	//                   parent to let the default handler run (Since: 1.2)
 	SrcQuery func(Instance, *gst.Query) bool
 	// Start allows you to override the implementation of the virtual method start.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element starts processing.
+	//                  Allows opening external resources.
 	Start func(Instance) bool
 	// Stop allows you to override the implementation of the virtual method stop.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element stops processing.
+	//                  Allows closing external resources.
 	Stop func(Instance) bool
 }
 
@@ -5987,6 +7578,430 @@ func UnsafeApplyBaseParseOverrides[Instance BaseParse](gclass unsafe.Pointer, ov
 			},
 		)
 	}
+}
+
+// ParentConvert calls the default implementations of the convert virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- srcFormat gst.Format 
+// 	- srcValue int64 
+// 	- destFormat gst.Format 
+// 	- destValue *int64 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Convert between formats.
+func (parse *BaseParseInstance) ParentConvert(srcFormat gst.Format, srcValue int64, destFormat gst.Format, destValue *int64) bool {
+	var carg0 *C.GstBaseParse
+	var carg1 C.GstFormat // in, none, casted
+	var carg2 C.gint64    // in, none, casted
+	var carg3 C.GstFormat // in, none, casted
+	var carg4 *C.gint64   // in, transfer: none, C Pointers: 1, Name: gint64
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstBaseParseClass)(classdata.PeekParentClass(UnsafeBaseParseToGlibNone(parse)))
+
+	carg1 = C.GstFormat(srcFormat)
+	carg2 = C.gint64(srcValue)
+	carg3 = C.GstFormat(destFormat)
+	_ = destValue
+	_ = carg4
+	panic("unimplemented conversion of *int64 (gint64*)")
+
+	cret = C._gotk4_gstbase1_BaseParse_virtual_convert(unsafe.Pointer(parentclass.convert), carg0, carg1, carg2, carg3, carg4)
+	runtime.KeepAlive(parse)
+	runtime.KeepAlive(srcFormat)
+	runtime.KeepAlive(srcValue)
+	runtime.KeepAlive(destFormat)
+	runtime.KeepAlive(destValue)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentDetect calls the default implementations of the detect virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- buffer *gst.Buffer 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// Optional.
+//                   Called until it doesn't return GST_FLOW_OK anymore for
+//                   the first buffers. Can be used by the subclass to detect
+//                   the stream format.
+func (parse *BaseParseInstance) ParentDetect(buffer *gst.Buffer) gst.FlowReturn {
+	var carg0 *C.GstBaseParse
+	var carg1 *C.GstBuffer    // in, none, converted
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstBaseParseClass)(classdata.PeekParentClass(UnsafeBaseParseToGlibNone(parse)))
+
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
+
+	cret = C._gotk4_gstbase1_BaseParse_virtual_detect(unsafe.Pointer(parentclass.detect), carg0, carg1)
+	runtime.KeepAlive(parse)
+	runtime.KeepAlive(buffer)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentGetSinkCaps calls the default implementations of the get_sink_caps virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- filter *gst.Caps 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.Caps 
+//
+// Optional.
+//                  Allows the subclass to do its own sink get caps if needed.
+func (parse *BaseParseInstance) ParentGetSinkCaps(filter *gst.Caps) *gst.Caps {
+	var carg0 *C.GstBaseParse
+	var carg1 *C.GstCaps // in, none, converted
+	var cret  *C.GstCaps // return, full, converted
+
+	parentclass := (*C.GstBaseParseClass)(classdata.PeekParentClass(UnsafeBaseParseToGlibNone(parse)))
+
+	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filter))
+
+	cret = C._gotk4_gstbase1_BaseParse_virtual_get_sink_caps(unsafe.Pointer(parentclass.get_sink_caps), carg0, carg1)
+	runtime.KeepAlive(parse)
+	runtime.KeepAlive(filter)
+
+	var goret *gst.Caps
+
+	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// ParentHandleFrame calls the default implementations of the handle_frame virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- frame *BaseParseFrame 
+// 
+// The function returns the following values:
+// 
+// 	- skipsize int32 
+// 	- goret gst.FlowReturn 
+//
+// Parses the input data into valid frames as defined by subclass
+// which should be passed to gst_base_parse_finish_frame().
+// The frame's input buffer is guaranteed writable,
+// whereas the input frame ownership is held by caller
+// (so subclass should make a copy if it needs to hang on).
+// Input buffer (data) is provided by baseclass with as much
+// metadata set as possible by baseclass according to upstream
+// information and/or subclass settings,
+// though subclass may still set buffer timestamp and duration
+// if desired.
+func (parse *BaseParseInstance) ParentHandleFrame(frame *BaseParseFrame) (int32, gst.FlowReturn) {
+	var carg0 *C.GstBaseParse
+	var carg1 *C.GstBaseParseFrame // in, none, converted
+	var carg2 C.gint               // out, full, casted
+	var cret  C.GstFlowReturn      // return, none, casted
+
+	parentclass := (*C.GstBaseParseClass)(classdata.PeekParentClass(UnsafeBaseParseToGlibNone(parse)))
+
+	carg1 = (*C.GstBaseParseFrame)(UnsafeBaseParseFrameToGlibNone(frame))
+
+	cret = C._gotk4_gstbase1_BaseParse_virtual_handle_frame(unsafe.Pointer(parentclass.handle_frame), carg0, carg1, &carg2)
+	runtime.KeepAlive(parse)
+	runtime.KeepAlive(frame)
+
+	var skipsize int32
+	var goret    gst.FlowReturn
+
+	skipsize = int32(carg2)
+	goret = gst.FlowReturn(cret)
+
+	return skipsize, goret
+}
+
+// ParentPrePushFrame calls the default implementations of the pre_push_frame virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- frame *BaseParseFrame 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// Optional.
+//                   Called just prior to pushing a frame (after any pending
+//                   events have been sent) to give subclass a chance to perform
+//                   additional actions at this time (e.g. tag sending) or to
+//                   decide whether this buffer should be dropped or not
+//                   (e.g. custom segment clipping).
+func (parse *BaseParseInstance) ParentPrePushFrame(frame *BaseParseFrame) gst.FlowReturn {
+	var carg0 *C.GstBaseParse
+	var carg1 *C.GstBaseParseFrame // in, none, converted
+	var cret  C.GstFlowReturn      // return, none, casted
+
+	parentclass := (*C.GstBaseParseClass)(classdata.PeekParentClass(UnsafeBaseParseToGlibNone(parse)))
+
+	carg1 = (*C.GstBaseParseFrame)(UnsafeBaseParseFrameToGlibNone(frame))
+
+	cret = C._gotk4_gstbase1_BaseParse_virtual_pre_push_frame(unsafe.Pointer(parentclass.pre_push_frame), carg0, carg1)
+	runtime.KeepAlive(parse)
+	runtime.KeepAlive(frame)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentSetSinkCaps calls the default implementations of the set_sink_caps virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- caps *gst.Caps 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Allows the subclass to be notified of the actual caps set.
+func (parse *BaseParseInstance) ParentSetSinkCaps(caps *gst.Caps) bool {
+	var carg0 *C.GstBaseParse
+	var carg1 *C.GstCaps // in, none, converted
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstBaseParseClass)(classdata.PeekParentClass(UnsafeBaseParseToGlibNone(parse)))
+
+	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
+
+	cret = C._gotk4_gstbase1_BaseParse_virtual_set_sink_caps(unsafe.Pointer(parentclass.set_sink_caps), carg0, carg1)
+	runtime.KeepAlive(parse)
+	runtime.KeepAlive(caps)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSinkEvent calls the default implementations of the sink_event virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- event *gst.Event 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Event handler on the sink pad. This function should chain
+//                  up to the parent implementation to let the default handler
+//                  run.
+func (parse *BaseParseInstance) ParentSinkEvent(event *gst.Event) bool {
+	var carg0 *C.GstBaseParse
+	var carg1 *C.GstEvent // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstBaseParseClass)(classdata.PeekParentClass(UnsafeBaseParseToGlibNone(parse)))
+
+	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
+
+	cret = C._gotk4_gstbase1_BaseParse_virtual_sink_event(unsafe.Pointer(parentclass.sink_event), carg0, carg1)
+	runtime.KeepAlive(parse)
+	runtime.KeepAlive(event)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSinkQuery calls the default implementations of the sink_query virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                   Query handler on the sink pad. This function should chain
+//                   up to the parent implementation to let the default handler
+//                   run (Since: 1.2)
+func (parse *BaseParseInstance) ParentSinkQuery(query *gst.Query) bool {
+	var carg0 *C.GstBaseParse
+	var carg1 *C.GstQuery // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstBaseParseClass)(classdata.PeekParentClass(UnsafeBaseParseToGlibNone(parse)))
+
+	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstbase1_BaseParse_virtual_sink_query(unsafe.Pointer(parentclass.sink_query), carg0, carg1)
+	runtime.KeepAlive(parse)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSrcEvent calls the default implementations of the src_event virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- event *gst.Event 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Event handler on the source pad. Should chain up to the
+//                  parent to let the default handler run.
+func (parse *BaseParseInstance) ParentSrcEvent(event *gst.Event) bool {
+	var carg0 *C.GstBaseParse
+	var carg1 *C.GstEvent // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstBaseParseClass)(classdata.PeekParentClass(UnsafeBaseParseToGlibNone(parse)))
+
+	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
+
+	cret = C._gotk4_gstbase1_BaseParse_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
+	runtime.KeepAlive(parse)
+	runtime.KeepAlive(event)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSrcQuery calls the default implementations of the src_query virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                   Query handler on the source pad. Should chain up to the
+//                   parent to let the default handler run (Since: 1.2)
+func (parse *BaseParseInstance) ParentSrcQuery(query *gst.Query) bool {
+	var carg0 *C.GstBaseParse
+	var carg1 *C.GstQuery // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstBaseParseClass)(classdata.PeekParentClass(UnsafeBaseParseToGlibNone(parse)))
+
+	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstbase1_BaseParse_virtual_src_query(unsafe.Pointer(parentclass.src_query), carg0, carg1)
+	runtime.KeepAlive(parse)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentStart calls the default implementations of the start virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Called when the element starts processing.
+//                  Allows opening external resources.
+func (parse *BaseParseInstance) ParentStart() bool {
+	var carg0 *C.GstBaseParse
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstBaseParseClass)(classdata.PeekParentClass(UnsafeBaseParseToGlibNone(parse)))
+
+	cret = C._gotk4_gstbase1_BaseParse_virtual_start(unsafe.Pointer(parentclass.start), carg0)
+	runtime.KeepAlive(parse)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentStop calls the default implementations of the stop virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Called when the element stops processing.
+//                  Allows closing external resources.
+func (parse *BaseParseInstance) ParentStop() bool {
+	var carg0 *C.GstBaseParse
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstBaseParseClass)(classdata.PeekParentClass(UnsafeBaseParseToGlibNone(parse)))
+
+	cret = C._gotk4_gstbase1_BaseParse_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
+	runtime.KeepAlive(parse)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
 }
 
 // RegisterBaseParseSubClass is used to register a go subclass of GstBaseParse. For this to work safely please implement the
@@ -6521,6 +8536,226 @@ type BaseSink interface {
 	// This function should only be called with the PREROLL_LOCK held, like in the
 	// render function.
 	WaitPreroll() gst.FlowReturn
+
+	// chain up virtual methods:
+
+	// ParentActivatePull calls the default implementations of the activate_pull virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- active bool 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Subclasses should override this when they can provide an
+	//     alternate method of spawning a thread to drive the pipeline in pull mode.
+	//     Should start or stop the pulling thread, depending on the value of the
+	//     "active" argument. Called after actually activating the sink pad in pull
+	//     mode. The default implementation starts a task on the sink pad.
+	ParentActivatePull(active bool) bool
+	// ParentEvent calls the default implementations of the event virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Override this to handle events arriving on the sink pad
+	ParentEvent(event *gst.Event) bool
+	// ParentFixate calls the default implementations of the fixate virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Caps 
+	//
+	// Only useful in pull mode. Implement if you have
+	//     ideas about what should be the default values for the caps you support.
+	ParentFixate(caps *gst.Caps) *gst.Caps
+	// ParentGetCaps calls the default implementations of the get_caps virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- filter *gst.Caps (nullable) 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Caps 
+	//
+	// Called to get sink pad caps from the subclass.
+	ParentGetCaps(filter *gst.Caps) *gst.Caps
+	// ParentGetTimes calls the default implementations of the get_times virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- start gst.ClockTime: the start #GstClockTime 
+	// 	- end gst.ClockTime: the end #GstClockTime 
+	//
+	// Get the start and end times for syncing on this buffer.
+	ParentGetTimes(buffer *gst.Buffer) (gst.ClockTime, gst.ClockTime)
+	// ParentPrepare calls the default implementations of the prepare virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// Called to prepare the buffer for @render and @preroll. This
+	//     function is called before synchronisation is performed.
+	ParentPrepare(buffer *gst.Buffer) gst.FlowReturn
+	// ParentPrepareList calls the default implementations of the prepare_list virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- bufferList *gst.BufferList 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// Called to prepare the buffer list for @render_list. This
+	//     function is called before synchronisation is performed.
+	ParentPrepareList(bufferList *gst.BufferList) gst.FlowReturn
+	// ParentPreroll calls the default implementations of the preroll virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// Called to present the preroll buffer if desired.
+	ParentPreroll(buffer *gst.Buffer) gst.FlowReturn
+	// ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// configure the allocation query
+	ParentProposeAllocation(query *gst.Query) bool
+	// ParentQuery calls the default implementations of the query virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// perform a #GstQuery on the element.
+	ParentQuery(query *gst.Query) bool
+	// ParentRender calls the default implementations of the render virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// Called when a buffer should be presented or output, at the
+	//     correct moment if the #GstBaseSink has been set to sync to the clock.
+	ParentRender(buffer *gst.Buffer) gst.FlowReturn
+	// ParentRenderList calls the default implementations of the render_list virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- bufferList *gst.BufferList 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// Same as @render but used with buffer lists instead of
+	//     buffers.
+	ParentRenderList(bufferList *gst.BufferList) gst.FlowReturn
+	// ParentSetCaps calls the default implementations of the set_caps virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Notify subclass of changed caps
+	ParentSetCaps(caps *gst.Caps) bool
+	// ParentStart calls the default implementations of the start virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Start processing. Ideal for opening resources in the subclass
+	ParentStart() bool
+	// ParentStop calls the default implementations of the stop virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Stop processing. Subclasses should use this to close resources.
+	ParentStop() bool
+	// ParentUnlock calls the default implementations of the unlock virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Unlock any pending access to the resource. Subclasses should
+	//     unblock any blocked function ASAP and call gst_base_sink_wait_preroll()
+	ParentUnlock() bool
+	// ParentUnlockStop calls the default implementations of the unlock_stop virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Clear the previous unlock request. Subclasses should clear
+	//     any state they set during #GstBaseSinkClass::unlock, and be ready to
+	//     continue where they left off after gst_base_sink_wait_preroll(),
+	//     gst_base_sink_wait() or gst_wait_sink_wait_clock() return or
+	//     #GstBaseSinkClass::render is called again.
+	ParentUnlockStop() bool
+	// ParentWaitEvent calls the default implementations of the wait_event virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// Override this to implement custom logic to wait for the event
+	//     time (for events like EOS and GAP). Subclasses should always first
+	//     chain up to the default implementation.
+	ParentWaitEvent(event *gst.Event) gst.FlowReturn
 }
 
 func unsafeWrapBaseSink(base *gobject.ObjectInstance) *BaseSinkInstance {
@@ -7448,6 +9683,12 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Subclasses should override this when they can provide an
+	//     alternate method of spawning a thread to drive the pipeline in pull mode.
+	//     Should start or stop the pulling thread, depending on the value of the
+	//     "active" argument. Called after actually activating the sink pad in pull
+	//     mode. The default implementation starts a task on the sink pad.
 	ActivatePull func(Instance, bool) bool
 	// Event allows you to override the implementation of the virtual method event.
 	// The function takes the following parameters:
@@ -7457,6 +9698,8 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Override this to handle events arriving on the sink pad
 	Event func(Instance, *gst.Event) bool
 	// Fixate allows you to override the implementation of the virtual method fixate.
 	// The function takes the following parameters:
@@ -7466,6 +9709,9 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Caps 
+	//
+	// Only useful in pull mode. Implement if you have
+	//     ideas about what should be the default values for the caps you support.
 	Fixate func(Instance, *gst.Caps) *gst.Caps
 	// GetCaps allows you to override the implementation of the virtual method get_caps.
 	// The function takes the following parameters:
@@ -7475,6 +9721,8 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Caps 
+	//
+	// Called to get sink pad caps from the subclass.
 	GetCaps func(Instance, *gst.Caps) *gst.Caps
 	// GetTimes allows you to override the implementation of the virtual method get_times.
 	// The function takes the following parameters:
@@ -7485,6 +9733,8 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 	// 
 	// 	- start gst.ClockTime: the start #GstClockTime 
 	// 	- end gst.ClockTime: the end #GstClockTime 
+	//
+	// Get the start and end times for syncing on this buffer.
 	GetTimes func(Instance, *gst.Buffer) (gst.ClockTime, gst.ClockTime)
 	// Prepare allows you to override the implementation of the virtual method prepare.
 	// The function takes the following parameters:
@@ -7494,6 +9744,9 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// Called to prepare the buffer for @render and @preroll. This
+	//     function is called before synchronisation is performed.
 	Prepare func(Instance, *gst.Buffer) gst.FlowReturn
 	// PrepareList allows you to override the implementation of the virtual method prepare_list.
 	// The function takes the following parameters:
@@ -7503,6 +9756,9 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// Called to prepare the buffer list for @render_list. This
+	//     function is called before synchronisation is performed.
 	PrepareList func(Instance, *gst.BufferList) gst.FlowReturn
 	// Preroll allows you to override the implementation of the virtual method preroll.
 	// The function takes the following parameters:
@@ -7512,6 +9768,8 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// Called to present the preroll buffer if desired.
 	Preroll func(Instance, *gst.Buffer) gst.FlowReturn
 	// ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
 	// The function takes the following parameters:
@@ -7521,6 +9779,8 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// configure the allocation query
 	ProposeAllocation func(Instance, *gst.Query) bool
 	// Query allows you to override the implementation of the virtual method query.
 	// The function takes the following parameters:
@@ -7530,6 +9790,8 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// perform a #GstQuery on the element.
 	Query func(Instance, *gst.Query) bool
 	// Render allows you to override the implementation of the virtual method render.
 	// The function takes the following parameters:
@@ -7539,6 +9801,9 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// Called when a buffer should be presented or output, at the
+	//     correct moment if the #GstBaseSink has been set to sync to the clock.
 	Render func(Instance, *gst.Buffer) gst.FlowReturn
 	// RenderList allows you to override the implementation of the virtual method render_list.
 	// The function takes the following parameters:
@@ -7548,6 +9813,9 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// Same as @render but used with buffer lists instead of
+	//     buffers.
 	RenderList func(Instance, *gst.BufferList) gst.FlowReturn
 	// SetCaps allows you to override the implementation of the virtual method set_caps.
 	// The function takes the following parameters:
@@ -7557,26 +9825,41 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Notify subclass of changed caps
 	SetCaps func(Instance, *gst.Caps) bool
 	// Start allows you to override the implementation of the virtual method start.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Start processing. Ideal for opening resources in the subclass
 	Start func(Instance) bool
 	// Stop allows you to override the implementation of the virtual method stop.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Stop processing. Subclasses should use this to close resources.
 	Stop func(Instance) bool
 	// Unlock allows you to override the implementation of the virtual method unlock.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Unlock any pending access to the resource. Subclasses should
+	//     unblock any blocked function ASAP and call gst_base_sink_wait_preroll()
 	Unlock func(Instance) bool
 	// UnlockStop allows you to override the implementation of the virtual method unlock_stop.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Clear the previous unlock request. Subclasses should clear
+	//     any state they set during #GstBaseSinkClass::unlock, and be ready to
+	//     continue where they left off after gst_base_sink_wait_preroll(),
+	//     gst_base_sink_wait() or gst_wait_sink_wait_clock() return or
+	//     #GstBaseSinkClass::render is called again.
 	UnlockStop func(Instance) bool
 	// WaitEvent allows you to override the implementation of the virtual method wait_event.
 	// The function takes the following parameters:
@@ -7586,6 +9869,10 @@ type BaseSinkOverrides[Instance BaseSink] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// Override this to implement custom logic to wait for the event
+	//     time (for events like EOS and GAP). Subclasses should always first
+	//     chain up to the default implementation.
 	WaitEvent func(Instance, *gst.Event) gst.FlowReturn
 }
 
@@ -8005,6 +10292,574 @@ func UnsafeApplyBaseSinkOverrides[Instance BaseSink](gclass unsafe.Pointer, over
 			},
 		)
 	}
+}
+
+// ParentActivatePull calls the default implementations of the activate_pull virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- active bool 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Subclasses should override this when they can provide an
+//     alternate method of spawning a thread to drive the pipeline in pull mode.
+//     Should start or stop the pulling thread, depending on the value of the
+//     "active" argument. Called after actually activating the sink pad in pull
+//     mode. The default implementation starts a task on the sink pad.
+func (sink *BaseSinkInstance) ParentActivatePull(active bool) bool {
+	var carg0 *C.GstBaseSink
+	var carg1 C.gboolean // in
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
+
+	if active {
+		carg1 = C.TRUE
+	}
+
+	cret = C._gotk4_gstbase1_BaseSink_virtual_activate_pull(unsafe.Pointer(parentclass.activate_pull), carg0, carg1)
+	runtime.KeepAlive(sink)
+	runtime.KeepAlive(active)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentEvent calls the default implementations of the event virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- event *gst.Event 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Override this to handle events arriving on the sink pad
+func (sink *BaseSinkInstance) ParentEvent(event *gst.Event) bool {
+	var carg0 *C.GstBaseSink
+	var carg1 *C.GstEvent // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
+
+	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
+
+	cret = C._gotk4_gstbase1_BaseSink_virtual_event(unsafe.Pointer(parentclass.event), carg0, carg1)
+	runtime.KeepAlive(sink)
+	runtime.KeepAlive(event)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentFixate calls the default implementations of the fixate virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- caps *gst.Caps 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.Caps 
+//
+// Only useful in pull mode. Implement if you have
+//     ideas about what should be the default values for the caps you support.
+func (sink *BaseSinkInstance) ParentFixate(caps *gst.Caps) *gst.Caps {
+	var carg0 *C.GstBaseSink
+	var carg1 *C.GstCaps // in, none, converted
+	var cret  *C.GstCaps // return, full, converted
+
+	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
+
+	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
+
+	cret = C._gotk4_gstbase1_BaseSink_virtual_fixate(unsafe.Pointer(parentclass.fixate), carg0, carg1)
+	runtime.KeepAlive(sink)
+	runtime.KeepAlive(caps)
+
+	var goret *gst.Caps
+
+	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// ParentGetCaps calls the default implementations of the get_caps virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- filter *gst.Caps (nullable) 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.Caps 
+//
+// Called to get sink pad caps from the subclass.
+func (sink *BaseSinkInstance) ParentGetCaps(filter *gst.Caps) *gst.Caps {
+	var carg0 *C.GstBaseSink
+	var carg1 *C.GstCaps // in, none, converted, nullable
+	var cret  *C.GstCaps // return, full, converted
+
+	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
+
+	if filter != nil {
+		carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filter))
+	}
+
+	cret = C._gotk4_gstbase1_BaseSink_virtual_get_caps(unsafe.Pointer(parentclass.get_caps), carg0, carg1)
+	runtime.KeepAlive(sink)
+	runtime.KeepAlive(filter)
+
+	var goret *gst.Caps
+
+	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// ParentGetTimes calls the default implementations of the get_times virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- buffer *gst.Buffer 
+// 
+// The function returns the following values:
+// 
+// 	- start gst.ClockTime: the start #GstClockTime 
+// 	- end gst.ClockTime: the end #GstClockTime 
+//
+// Get the start and end times for syncing on this buffer.
+func (sink *BaseSinkInstance) ParentGetTimes(buffer *gst.Buffer) (gst.ClockTime, gst.ClockTime) {
+	var carg0 *C.GstBaseSink
+	var carg1 *C.GstBuffer   // in, none, converted
+	var carg2 C.GstClockTime // out, full, casted, alias
+	var carg3 C.GstClockTime // out, full, casted, alias
+
+	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
+
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
+
+	C._gotk4_gstbase1_BaseSink_virtual_get_times(unsafe.Pointer(parentclass.get_times), carg0, carg1, &carg2, &carg3)
+	runtime.KeepAlive(sink)
+	runtime.KeepAlive(buffer)
+
+	var start gst.ClockTime
+	var end   gst.ClockTime
+
+	start = gst.ClockTime(carg2)
+	end = gst.ClockTime(carg3)
+
+	return start, end
+}
+
+// ParentPrepare calls the default implementations of the prepare virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- buffer *gst.Buffer 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// Called to prepare the buffer for @render and @preroll. This
+//     function is called before synchronisation is performed.
+func (sink *BaseSinkInstance) ParentPrepare(buffer *gst.Buffer) gst.FlowReturn {
+	var carg0 *C.GstBaseSink
+	var carg1 *C.GstBuffer    // in, none, converted
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
+
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
+
+	cret = C._gotk4_gstbase1_BaseSink_virtual_prepare(unsafe.Pointer(parentclass.prepare), carg0, carg1)
+	runtime.KeepAlive(sink)
+	runtime.KeepAlive(buffer)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentPrepareList calls the default implementations of the prepare_list virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- bufferList *gst.BufferList 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// Called to prepare the buffer list for @render_list. This
+//     function is called before synchronisation is performed.
+func (sink *BaseSinkInstance) ParentPrepareList(bufferList *gst.BufferList) gst.FlowReturn {
+	var carg0 *C.GstBaseSink
+	var carg1 *C.GstBufferList // in, none, converted
+	var cret  C.GstFlowReturn  // return, none, casted
+
+	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
+
+	carg1 = (*C.GstBufferList)(gst.UnsafeBufferListToGlibNone(bufferList))
+
+	cret = C._gotk4_gstbase1_BaseSink_virtual_prepare_list(unsafe.Pointer(parentclass.prepare_list), carg0, carg1)
+	runtime.KeepAlive(sink)
+	runtime.KeepAlive(bufferList)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentPreroll calls the default implementations of the preroll virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- buffer *gst.Buffer 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// Called to present the preroll buffer if desired.
+func (sink *BaseSinkInstance) ParentPreroll(buffer *gst.Buffer) gst.FlowReturn {
+	var carg0 *C.GstBaseSink
+	var carg1 *C.GstBuffer    // in, none, converted
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
+
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
+
+	cret = C._gotk4_gstbase1_BaseSink_virtual_preroll(unsafe.Pointer(parentclass.preroll), carg0, carg1)
+	runtime.KeepAlive(sink)
+	runtime.KeepAlive(buffer)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// configure the allocation query
+func (sink *BaseSinkInstance) ParentProposeAllocation(query *gst.Query) bool {
+	var carg0 *C.GstBaseSink
+	var carg1 *C.GstQuery // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
+
+	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstbase1_BaseSink_virtual_propose_allocation(unsafe.Pointer(parentclass.propose_allocation), carg0, carg1)
+	runtime.KeepAlive(sink)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentQuery calls the default implementations of the query virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// perform a #GstQuery on the element.
+func (sink *BaseSinkInstance) ParentQuery(query *gst.Query) bool {
+	var carg0 *C.GstBaseSink
+	var carg1 *C.GstQuery // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
+
+	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstbase1_BaseSink_virtual_query(unsafe.Pointer(parentclass.query), carg0, carg1)
+	runtime.KeepAlive(sink)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentRender calls the default implementations of the render virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- buffer *gst.Buffer 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// Called when a buffer should be presented or output, at the
+//     correct moment if the #GstBaseSink has been set to sync to the clock.
+func (sink *BaseSinkInstance) ParentRender(buffer *gst.Buffer) gst.FlowReturn {
+	var carg0 *C.GstBaseSink
+	var carg1 *C.GstBuffer    // in, none, converted
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
+
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
+
+	cret = C._gotk4_gstbase1_BaseSink_virtual_render(unsafe.Pointer(parentclass.render), carg0, carg1)
+	runtime.KeepAlive(sink)
+	runtime.KeepAlive(buffer)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentRenderList calls the default implementations of the render_list virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- bufferList *gst.BufferList 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// Same as @render but used with buffer lists instead of
+//     buffers.
+func (sink *BaseSinkInstance) ParentRenderList(bufferList *gst.BufferList) gst.FlowReturn {
+	var carg0 *C.GstBaseSink
+	var carg1 *C.GstBufferList // in, none, converted
+	var cret  C.GstFlowReturn  // return, none, casted
+
+	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
+
+	carg1 = (*C.GstBufferList)(gst.UnsafeBufferListToGlibNone(bufferList))
+
+	cret = C._gotk4_gstbase1_BaseSink_virtual_render_list(unsafe.Pointer(parentclass.render_list), carg0, carg1)
+	runtime.KeepAlive(sink)
+	runtime.KeepAlive(bufferList)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentSetCaps calls the default implementations of the set_caps virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- caps *gst.Caps 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Notify subclass of changed caps
+func (sink *BaseSinkInstance) ParentSetCaps(caps *gst.Caps) bool {
+	var carg0 *C.GstBaseSink
+	var carg1 *C.GstCaps // in, none, converted
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
+
+	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
+
+	cret = C._gotk4_gstbase1_BaseSink_virtual_set_caps(unsafe.Pointer(parentclass.set_caps), carg0, carg1)
+	runtime.KeepAlive(sink)
+	runtime.KeepAlive(caps)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentStart calls the default implementations of the start virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Start processing. Ideal for opening resources in the subclass
+func (sink *BaseSinkInstance) ParentStart() bool {
+	var carg0 *C.GstBaseSink
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
+
+	cret = C._gotk4_gstbase1_BaseSink_virtual_start(unsafe.Pointer(parentclass.start), carg0)
+	runtime.KeepAlive(sink)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentStop calls the default implementations of the stop virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Stop processing. Subclasses should use this to close resources.
+func (sink *BaseSinkInstance) ParentStop() bool {
+	var carg0 *C.GstBaseSink
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
+
+	cret = C._gotk4_gstbase1_BaseSink_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
+	runtime.KeepAlive(sink)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentUnlock calls the default implementations of the unlock virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Unlock any pending access to the resource. Subclasses should
+//     unblock any blocked function ASAP and call gst_base_sink_wait_preroll()
+func (sink *BaseSinkInstance) ParentUnlock() bool {
+	var carg0 *C.GstBaseSink
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
+
+	cret = C._gotk4_gstbase1_BaseSink_virtual_unlock(unsafe.Pointer(parentclass.unlock), carg0)
+	runtime.KeepAlive(sink)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentUnlockStop calls the default implementations of the unlock_stop virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Clear the previous unlock request. Subclasses should clear
+//     any state they set during #GstBaseSinkClass::unlock, and be ready to
+//     continue where they left off after gst_base_sink_wait_preroll(),
+//     gst_base_sink_wait() or gst_wait_sink_wait_clock() return or
+//     #GstBaseSinkClass::render is called again.
+func (sink *BaseSinkInstance) ParentUnlockStop() bool {
+	var carg0 *C.GstBaseSink
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
+
+	cret = C._gotk4_gstbase1_BaseSink_virtual_unlock_stop(unsafe.Pointer(parentclass.unlock_stop), carg0)
+	runtime.KeepAlive(sink)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentWaitEvent calls the default implementations of the wait_event virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- event *gst.Event 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// Override this to implement custom logic to wait for the event
+//     time (for events like EOS and GAP). Subclasses should always first
+//     chain up to the default implementation.
+func (sink *BaseSinkInstance) ParentWaitEvent(event *gst.Event) gst.FlowReturn {
+	var carg0 *C.GstBaseSink
+	var carg1 *C.GstEvent     // in, none, converted
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstBaseSinkClass)(classdata.PeekParentClass(UnsafeBaseSinkToGlibNone(sink)))
+
+	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
+
+	cret = C._gotk4_gstbase1_BaseSink_virtual_wait_event(unsafe.Pointer(parentclass.wait_event), carg0, carg1)
+	runtime.KeepAlive(sink)
+	runtime.KeepAlive(event)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
 }
 
 // RegisterBaseSinkSubClass is used to register a go subclass of GstBaseSink. For this to work safely please implement the
@@ -8461,6 +11316,229 @@ type BaseSrc interface {
 	// to a state change to READY or a FLUSH event (in which case this function
 	// returns %GST_FLOW_FLUSHING).
 	WaitPlaying() gst.FlowReturn
+
+	// chain up virtual methods:
+
+	// ParentAlloc calls the default implementations of the alloc virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- offset uint64 
+	// 	- size uint 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- buf *gst.Buffer (nullable) 
+	// 	- goret gst.FlowReturn 
+	//
+	// Ask the subclass to allocate an output buffer with @offset and @size, the default
+	// implementation will use the negotiated allocator.
+	ParentAlloc(offset uint64, size uint) (*gst.Buffer, gst.FlowReturn)
+	// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// configure the allocation query
+	ParentDecideAllocation(query *gst.Query) bool
+	// ParentDoSeek calls the default implementations of the do_seek virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- segment *gst.Segment 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Perform seeking on the resource to the indicated segment.
+	ParentDoSeek(segment *gst.Segment) bool
+	// ParentEvent calls the default implementations of the event virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Override this to implement custom event handling.
+	ParentEvent(event *gst.Event) bool
+	// ParentFill calls the default implementations of the fill virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- offset uint64 
+	// 	- size uint 
+	// 	- buf *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// Ask the subclass to fill the buffer with data for offset and size. The
+	//   passed buffer is guaranteed to hold the requested amount of bytes.
+	ParentFill(offset uint64, size uint, buf *gst.Buffer) gst.FlowReturn
+	// ParentFixate calls the default implementations of the fixate virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Caps 
+	//
+	// Called if, in negotiation, caps need fixating.
+	ParentFixate(caps *gst.Caps) *gst.Caps
+	// ParentGetCaps calls the default implementations of the get_caps virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- filter *gst.Caps (nullable) 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Caps 
+	//
+	// Called to get the caps to report.
+	ParentGetCaps(filter *gst.Caps) *gst.Caps
+	// ParentGetSize calls the default implementations of the get_size virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- size uint64 
+	// 	- goret bool 
+	//
+	// Get the total size of the resource in the format set by
+	// gst_base_src_set_format().
+	ParentGetSize() (uint64, bool)
+	// ParentGetTimes calls the default implementations of the get_times virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- start gst.ClockTime 
+	// 	- end gst.ClockTime 
+	//
+	// Given @buffer, return @start and @end time when it should be pushed
+	// out. The base class will sync on the clock using these times.
+	ParentGetTimes(buffer *gst.Buffer) (gst.ClockTime, gst.ClockTime)
+	// ParentIsSeekable calls the default implementations of the is_seekable virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Check if the source can seek
+	ParentIsSeekable() bool
+	// ParentNegotiate calls the default implementations of the negotiate virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Negotiates src pad caps with downstream elements.
+	// Unmarks GST_PAD_FLAG_NEED_RECONFIGURE in any case. But marks it again
+	// if #GstBaseSrcClass::negotiate fails.
+	// 
+	// Do not call this in the #GstBaseSrcClass::fill vmethod. Call this in
+	// #GstBaseSrcClass::create or in #GstBaseSrcClass::alloc, _before_ any
+	// buffer is allocated.
+	ParentNegotiate() bool
+	// ParentPrepareSeekSegment calls the default implementations of the prepare_seek_segment virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- seek *gst.Event 
+	// 	- segment *gst.Segment 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Prepare the #GstSegment that will be passed to the
+	//   #GstBaseSrcClass::do_seek vmethod for executing a seek
+	//   request. Sub-classes should override this if they support seeking in
+	//   formats other than the configured native format. By default, it tries to
+	//   convert the seek arguments to the configured native format and prepare a
+	//   segment in that format.
+	ParentPrepareSeekSegment(seek *gst.Event, segment *gst.Segment) bool
+	// ParentQuery calls the default implementations of the query virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Handle a requested query.
+	ParentQuery(query *gst.Query) bool
+	// ParentSetCaps calls the default implementations of the set_caps virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps: a #GstCaps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Set new caps on the basesrc source pad.
+	ParentSetCaps(caps *gst.Caps) bool
+	// ParentStart calls the default implementations of the start virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Start processing. Subclasses should open resources and prepare
+	//    to produce data. Implementation should call gst_base_src_start_complete()
+	//    when the operation completes, either from the current thread or any other
+	//    thread that finishes the start operation asynchronously.
+	ParentStart() bool
+	// ParentStop calls the default implementations of the stop virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Stop processing. Subclasses should use this to close resources.
+	ParentStop() bool
+	// ParentUnlock calls the default implementations of the unlock virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Unlock any pending access to the resource. Subclasses should unblock
+	//    any blocked function ASAP. In particular, any `create()` function in
+	//    progress should be unblocked and should return GST_FLOW_FLUSHING. Any
+	//    future #GstBaseSrcClass::create function call should also return
+	//    GST_FLOW_FLUSHING until the #GstBaseSrcClass::unlock_stop function has
+	//    been called.
+	ParentUnlock() bool
+	// ParentUnlockStop calls the default implementations of the unlock_stop virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Clear the previous unlock request. Subclasses should clear any
+	//    state they set during #GstBaseSrcClass::unlock, such as clearing command
+	//    queues.
+	ParentUnlockStop() bool
 }
 
 func unsafeWrapBaseSrc(base *gobject.ObjectInstance) *BaseSrcInstance {
@@ -9201,6 +12279,9 @@ type BaseSrcOverrides[Instance BaseSrc] struct {
 	// 
 	// 	- buf *gst.Buffer (nullable) 
 	// 	- goret gst.FlowReturn 
+	//
+	// Ask the subclass to allocate an output buffer with @offset and @size, the default
+	// implementation will use the negotiated allocator.
 	Alloc func(Instance, uint64, uint) (*gst.Buffer, gst.FlowReturn)
 	// DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
 	// The function takes the following parameters:
@@ -9210,6 +12291,8 @@ type BaseSrcOverrides[Instance BaseSrc] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// configure the allocation query
 	DecideAllocation func(Instance, *gst.Query) bool
 	// DoSeek allows you to override the implementation of the virtual method do_seek.
 	// The function takes the following parameters:
@@ -9219,6 +12302,8 @@ type BaseSrcOverrides[Instance BaseSrc] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Perform seeking on the resource to the indicated segment.
 	DoSeek func(Instance, *gst.Segment) bool
 	// Event allows you to override the implementation of the virtual method event.
 	// The function takes the following parameters:
@@ -9228,6 +12313,8 @@ type BaseSrcOverrides[Instance BaseSrc] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Override this to implement custom event handling.
 	Event func(Instance, *gst.Event) bool
 	// Fill allows you to override the implementation of the virtual method fill.
 	// The function takes the following parameters:
@@ -9239,6 +12326,9 @@ type BaseSrcOverrides[Instance BaseSrc] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// Ask the subclass to fill the buffer with data for offset and size. The
+	//   passed buffer is guaranteed to hold the requested amount of bytes.
 	Fill func(Instance, uint64, uint, *gst.Buffer) gst.FlowReturn
 	// Fixate allows you to override the implementation of the virtual method fixate.
 	// The function takes the following parameters:
@@ -9248,6 +12338,8 @@ type BaseSrcOverrides[Instance BaseSrc] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Caps 
+	//
+	// Called if, in negotiation, caps need fixating.
 	Fixate func(Instance, *gst.Caps) *gst.Caps
 	// GetCaps allows you to override the implementation of the virtual method get_caps.
 	// The function takes the following parameters:
@@ -9257,12 +12349,17 @@ type BaseSrcOverrides[Instance BaseSrc] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Caps 
+	//
+	// Called to get the caps to report.
 	GetCaps func(Instance, *gst.Caps) *gst.Caps
 	// GetSize allows you to override the implementation of the virtual method get_size.
 	// The function returns the following values:
 	// 
 	// 	- size uint64 
 	// 	- goret bool 
+	//
+	// Get the total size of the resource in the format set by
+	// gst_base_src_set_format().
 	GetSize func(Instance) (uint64, bool)
 	// GetTimes allows you to override the implementation of the virtual method get_times.
 	// The function takes the following parameters:
@@ -9273,16 +12370,29 @@ type BaseSrcOverrides[Instance BaseSrc] struct {
 	// 
 	// 	- start gst.ClockTime 
 	// 	- end gst.ClockTime 
+	//
+	// Given @buffer, return @start and @end time when it should be pushed
+	// out. The base class will sync on the clock using these times.
 	GetTimes func(Instance, *gst.Buffer) (gst.ClockTime, gst.ClockTime)
 	// IsSeekable allows you to override the implementation of the virtual method is_seekable.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Check if the source can seek
 	IsSeekable func(Instance) bool
 	// Negotiate allows you to override the implementation of the virtual method negotiate.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Negotiates src pad caps with downstream elements.
+	// Unmarks GST_PAD_FLAG_NEED_RECONFIGURE in any case. But marks it again
+	// if #GstBaseSrcClass::negotiate fails.
+	// 
+	// Do not call this in the #GstBaseSrcClass::fill vmethod. Call this in
+	// #GstBaseSrcClass::create or in #GstBaseSrcClass::alloc, _before_ any
+	// buffer is allocated.
 	Negotiate func(Instance) bool
 	// PrepareSeekSegment allows you to override the implementation of the virtual method prepare_seek_segment.
 	// The function takes the following parameters:
@@ -9293,6 +12403,13 @@ type BaseSrcOverrides[Instance BaseSrc] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Prepare the #GstSegment that will be passed to the
+	//   #GstBaseSrcClass::do_seek vmethod for executing a seek
+	//   request. Sub-classes should override this if they support seeking in
+	//   formats other than the configured native format. By default, it tries to
+	//   convert the seek arguments to the configured native format and prepare a
+	//   segment in that format.
 	PrepareSeekSegment func(Instance, *gst.Event, *gst.Segment) bool
 	// Query allows you to override the implementation of the virtual method query.
 	// The function takes the following parameters:
@@ -9302,6 +12419,8 @@ type BaseSrcOverrides[Instance BaseSrc] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Handle a requested query.
 	Query func(Instance, *gst.Query) bool
 	// SetCaps allows you to override the implementation of the virtual method set_caps.
 	// The function takes the following parameters:
@@ -9311,26 +12430,46 @@ type BaseSrcOverrides[Instance BaseSrc] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Set new caps on the basesrc source pad.
 	SetCaps func(Instance, *gst.Caps) bool
 	// Start allows you to override the implementation of the virtual method start.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Start processing. Subclasses should open resources and prepare
+	//    to produce data. Implementation should call gst_base_src_start_complete()
+	//    when the operation completes, either from the current thread or any other
+	//    thread that finishes the start operation asynchronously.
 	Start func(Instance) bool
 	// Stop allows you to override the implementation of the virtual method stop.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Stop processing. Subclasses should use this to close resources.
 	Stop func(Instance) bool
 	// Unlock allows you to override the implementation of the virtual method unlock.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Unlock any pending access to the resource. Subclasses should unblock
+	//    any blocked function ASAP. In particular, any `create()` function in
+	//    progress should be unblocked and should return GST_FLOW_FLUSHING. Any
+	//    future #GstBaseSrcClass::create function call should also return
+	//    GST_FLOW_FLUSHING until the #GstBaseSrcClass::unlock_stop function has
+	//    been called.
 	Unlock func(Instance) bool
 	// UnlockStop allows you to override the implementation of the virtual method unlock_stop.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Clear the previous unlock request. Subclasses should clear any
+	//    state they set during #GstBaseSrcClass::unlock, such as clearing command
+	//    queues.
 	UnlockStop func(Instance) bool
 }
 
@@ -9764,6 +12903,591 @@ func UnsafeApplyBaseSrcOverrides[Instance BaseSrc](gclass unsafe.Pointer, overri
 	}
 }
 
+// ParentAlloc calls the default implementations of the alloc virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- offset uint64 
+// 	- size uint 
+// 
+// The function returns the following values:
+// 
+// 	- buf *gst.Buffer (nullable) 
+// 	- goret gst.FlowReturn 
+//
+// Ask the subclass to allocate an output buffer with @offset and @size, the default
+// implementation will use the negotiated allocator.
+func (src *BaseSrcInstance) ParentAlloc(offset uint64, size uint) (*gst.Buffer, gst.FlowReturn) {
+	var carg0 *C.GstBaseSrc
+	var carg1 C.guint64       // in, none, casted
+	var carg2 C.guint         // in, none, casted
+	var carg3 *C.GstBuffer    // out, full, converted, nullable
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
+
+	carg1 = C.guint64(offset)
+	carg2 = C.guint(size)
+
+	cret = C._gotk4_gstbase1_BaseSrc_virtual_alloc(unsafe.Pointer(parentclass.alloc), carg0, carg1, carg2, &carg3)
+	runtime.KeepAlive(src)
+	runtime.KeepAlive(offset)
+	runtime.KeepAlive(size)
+
+	var buf   *gst.Buffer
+	var goret gst.FlowReturn
+
+	if carg3 != nil {
+		buf = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(carg3))
+	}
+	goret = gst.FlowReturn(cret)
+
+	return buf, goret
+}
+
+// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// configure the allocation query
+func (src *BaseSrcInstance) ParentDecideAllocation(query *gst.Query) bool {
+	var carg0 *C.GstBaseSrc
+	var carg1 *C.GstQuery // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
+
+	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstbase1_BaseSrc_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
+	runtime.KeepAlive(src)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentDoSeek calls the default implementations of the do_seek virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- segment *gst.Segment 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Perform seeking on the resource to the indicated segment.
+func (src *BaseSrcInstance) ParentDoSeek(segment *gst.Segment) bool {
+	var carg0 *C.GstBaseSrc
+	var carg1 *C.GstSegment // in, none, converted
+	var cret  C.gboolean    // return
+
+	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
+
+	carg1 = (*C.GstSegment)(gst.UnsafeSegmentToGlibNone(segment))
+
+	cret = C._gotk4_gstbase1_BaseSrc_virtual_do_seek(unsafe.Pointer(parentclass.do_seek), carg0, carg1)
+	runtime.KeepAlive(src)
+	runtime.KeepAlive(segment)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentEvent calls the default implementations of the event virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- event *gst.Event 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Override this to implement custom event handling.
+func (src *BaseSrcInstance) ParentEvent(event *gst.Event) bool {
+	var carg0 *C.GstBaseSrc
+	var carg1 *C.GstEvent // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
+
+	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(event))
+
+	cret = C._gotk4_gstbase1_BaseSrc_virtual_event(unsafe.Pointer(parentclass.event), carg0, carg1)
+	runtime.KeepAlive(src)
+	runtime.KeepAlive(event)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentFill calls the default implementations of the fill virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- offset uint64 
+// 	- size uint 
+// 	- buf *gst.Buffer 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// Ask the subclass to fill the buffer with data for offset and size. The
+//   passed buffer is guaranteed to hold the requested amount of bytes.
+func (src *BaseSrcInstance) ParentFill(offset uint64, size uint, buf *gst.Buffer) gst.FlowReturn {
+	var carg0 *C.GstBaseSrc
+	var carg1 C.guint64       // in, none, casted
+	var carg2 C.guint         // in, none, casted
+	var carg3 *C.GstBuffer    // in, none, converted
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
+
+	carg1 = C.guint64(offset)
+	carg2 = C.guint(size)
+	carg3 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buf))
+
+	cret = C._gotk4_gstbase1_BaseSrc_virtual_fill(unsafe.Pointer(parentclass.fill), carg0, carg1, carg2, carg3)
+	runtime.KeepAlive(src)
+	runtime.KeepAlive(offset)
+	runtime.KeepAlive(size)
+	runtime.KeepAlive(buf)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentFixate calls the default implementations of the fixate virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- caps *gst.Caps 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.Caps 
+//
+// Called if, in negotiation, caps need fixating.
+func (src *BaseSrcInstance) ParentFixate(caps *gst.Caps) *gst.Caps {
+	var carg0 *C.GstBaseSrc
+	var carg1 *C.GstCaps // in, full, converted
+	var cret  *C.GstCaps // return, full, converted
+
+	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
+
+	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibFull(caps))
+
+	cret = C._gotk4_gstbase1_BaseSrc_virtual_fixate(unsafe.Pointer(parentclass.fixate), carg0, carg1)
+	runtime.KeepAlive(src)
+	runtime.KeepAlive(caps)
+
+	var goret *gst.Caps
+
+	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// ParentGetCaps calls the default implementations of the get_caps virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- filter *gst.Caps (nullable) 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.Caps 
+//
+// Called to get the caps to report.
+func (src *BaseSrcInstance) ParentGetCaps(filter *gst.Caps) *gst.Caps {
+	var carg0 *C.GstBaseSrc
+	var carg1 *C.GstCaps // in, none, converted, nullable
+	var cret  *C.GstCaps // return, full, converted
+
+	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
+
+	if filter != nil {
+		carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filter))
+	}
+
+	cret = C._gotk4_gstbase1_BaseSrc_virtual_get_caps(unsafe.Pointer(parentclass.get_caps), carg0, carg1)
+	runtime.KeepAlive(src)
+	runtime.KeepAlive(filter)
+
+	var goret *gst.Caps
+
+	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// ParentGetSize calls the default implementations of the get_size virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- size uint64 
+// 	- goret bool 
+//
+// Get the total size of the resource in the format set by
+// gst_base_src_set_format().
+func (src *BaseSrcInstance) ParentGetSize() (uint64, bool) {
+	var carg0 *C.GstBaseSrc
+	var carg1 C.guint64  // out, full, casted
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
+
+	cret = C._gotk4_gstbase1_BaseSrc_virtual_get_size(unsafe.Pointer(parentclass.get_size), carg0, &carg1)
+	runtime.KeepAlive(src)
+
+	var size  uint64
+	var goret bool
+
+	size = uint64(carg1)
+	if cret != 0 {
+		goret = true
+	}
+
+	return size, goret
+}
+
+// ParentGetTimes calls the default implementations of the get_times virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- buffer *gst.Buffer 
+// 
+// The function returns the following values:
+// 
+// 	- start gst.ClockTime 
+// 	- end gst.ClockTime 
+//
+// Given @buffer, return @start and @end time when it should be pushed
+// out. The base class will sync on the clock using these times.
+func (src *BaseSrcInstance) ParentGetTimes(buffer *gst.Buffer) (gst.ClockTime, gst.ClockTime) {
+	var carg0 *C.GstBaseSrc
+	var carg1 *C.GstBuffer   // in, none, converted
+	var carg2 C.GstClockTime // out, full, casted, alias
+	var carg3 C.GstClockTime // out, full, casted, alias
+
+	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
+
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
+
+	C._gotk4_gstbase1_BaseSrc_virtual_get_times(unsafe.Pointer(parentclass.get_times), carg0, carg1, &carg2, &carg3)
+	runtime.KeepAlive(src)
+	runtime.KeepAlive(buffer)
+
+	var start gst.ClockTime
+	var end   gst.ClockTime
+
+	start = gst.ClockTime(carg2)
+	end = gst.ClockTime(carg3)
+
+	return start, end
+}
+
+// ParentIsSeekable calls the default implementations of the is_seekable virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Check if the source can seek
+func (src *BaseSrcInstance) ParentIsSeekable() bool {
+	var carg0 *C.GstBaseSrc
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
+
+	cret = C._gotk4_gstbase1_BaseSrc_virtual_is_seekable(unsafe.Pointer(parentclass.is_seekable), carg0)
+	runtime.KeepAlive(src)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentNegotiate calls the default implementations of the negotiate virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Negotiates src pad caps with downstream elements.
+// Unmarks GST_PAD_FLAG_NEED_RECONFIGURE in any case. But marks it again
+// if #GstBaseSrcClass::negotiate fails.
+// 
+// Do not call this in the #GstBaseSrcClass::fill vmethod. Call this in
+// #GstBaseSrcClass::create or in #GstBaseSrcClass::alloc, _before_ any
+// buffer is allocated.
+func (src *BaseSrcInstance) ParentNegotiate() bool {
+	var carg0 *C.GstBaseSrc
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
+
+	cret = C._gotk4_gstbase1_BaseSrc_virtual_negotiate(unsafe.Pointer(parentclass.negotiate), carg0)
+	runtime.KeepAlive(src)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentPrepareSeekSegment calls the default implementations of the prepare_seek_segment virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- seek *gst.Event 
+// 	- segment *gst.Segment 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Prepare the #GstSegment that will be passed to the
+//   #GstBaseSrcClass::do_seek vmethod for executing a seek
+//   request. Sub-classes should override this if they support seeking in
+//   formats other than the configured native format. By default, it tries to
+//   convert the seek arguments to the configured native format and prepare a
+//   segment in that format.
+func (src *BaseSrcInstance) ParentPrepareSeekSegment(seek *gst.Event, segment *gst.Segment) bool {
+	var carg0 *C.GstBaseSrc
+	var carg1 *C.GstEvent   // in, none, converted
+	var carg2 *C.GstSegment // in, none, converted
+	var cret  C.gboolean    // return
+
+	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
+
+	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibNone(seek))
+	carg2 = (*C.GstSegment)(gst.UnsafeSegmentToGlibNone(segment))
+
+	cret = C._gotk4_gstbase1_BaseSrc_virtual_prepare_seek_segment(unsafe.Pointer(parentclass.prepare_seek_segment), carg0, carg1, carg2)
+	runtime.KeepAlive(src)
+	runtime.KeepAlive(seek)
+	runtime.KeepAlive(segment)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentQuery calls the default implementations of the query virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Handle a requested query.
+func (src *BaseSrcInstance) ParentQuery(query *gst.Query) bool {
+	var carg0 *C.GstBaseSrc
+	var carg1 *C.GstQuery // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
+
+	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstbase1_BaseSrc_virtual_query(unsafe.Pointer(parentclass.query), carg0, carg1)
+	runtime.KeepAlive(src)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSetCaps calls the default implementations of the set_caps virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- caps *gst.Caps: a #GstCaps 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Set new caps on the basesrc source pad.
+func (src *BaseSrcInstance) ParentSetCaps(caps *gst.Caps) bool {
+	var carg0 *C.GstBaseSrc
+	var carg1 *C.GstCaps // in, none, converted
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
+
+	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
+
+	cret = C._gotk4_gstbase1_BaseSrc_virtual_set_caps(unsafe.Pointer(parentclass.set_caps), carg0, carg1)
+	runtime.KeepAlive(src)
+	runtime.KeepAlive(caps)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentStart calls the default implementations of the start virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Start processing. Subclasses should open resources and prepare
+//    to produce data. Implementation should call gst_base_src_start_complete()
+//    when the operation completes, either from the current thread or any other
+//    thread that finishes the start operation asynchronously.
+func (src *BaseSrcInstance) ParentStart() bool {
+	var carg0 *C.GstBaseSrc
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
+
+	cret = C._gotk4_gstbase1_BaseSrc_virtual_start(unsafe.Pointer(parentclass.start), carg0)
+	runtime.KeepAlive(src)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentStop calls the default implementations of the stop virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Stop processing. Subclasses should use this to close resources.
+func (src *BaseSrcInstance) ParentStop() bool {
+	var carg0 *C.GstBaseSrc
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
+
+	cret = C._gotk4_gstbase1_BaseSrc_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
+	runtime.KeepAlive(src)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentUnlock calls the default implementations of the unlock virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Unlock any pending access to the resource. Subclasses should unblock
+//    any blocked function ASAP. In particular, any `create()` function in
+//    progress should be unblocked and should return GST_FLOW_FLUSHING. Any
+//    future #GstBaseSrcClass::create function call should also return
+//    GST_FLOW_FLUSHING until the #GstBaseSrcClass::unlock_stop function has
+//    been called.
+func (src *BaseSrcInstance) ParentUnlock() bool {
+	var carg0 *C.GstBaseSrc
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
+
+	cret = C._gotk4_gstbase1_BaseSrc_virtual_unlock(unsafe.Pointer(parentclass.unlock), carg0)
+	runtime.KeepAlive(src)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentUnlockStop calls the default implementations of the unlock_stop virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Clear the previous unlock request. Subclasses should clear any
+//    state they set during #GstBaseSrcClass::unlock, such as clearing command
+//    queues.
+func (src *BaseSrcInstance) ParentUnlockStop() bool {
+	var carg0 *C.GstBaseSrc
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstBaseSrcClass)(classdata.PeekParentClass(UnsafeBaseSrcToGlibNone(src)))
+
+	cret = C._gotk4_gstbase1_BaseSrc_virtual_unlock_stop(unsafe.Pointer(parentclass.unlock_stop), carg0)
+	runtime.KeepAlive(src)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
 // RegisterBaseSrcSubClass is used to register a go subclass of GstBaseSrc. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterBaseSrcSubClass[InstanceT BaseSrc](
@@ -10088,6 +13812,312 @@ type BaseTransform interface {
 	// they can notify downstream about that change without losing any
 	// buffer.
 	UpdateSrcCaps(*gst.Caps) bool
+
+	// chain up virtual methods:
+
+	// ParentAcceptCaps calls the default implementations of the accept_caps virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- direction gst.PadDirection 
+	// 	- caps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Subclasses can override this method to check if @caps can be
+	//                  handled by the element. The default implementation might not be
+	//                  the most optimal way to check this in all cases.
+	ParentAcceptCaps(direction gst.PadDirection, caps *gst.Caps) bool
+	// ParentBeforeTransform calls the default implementations of the before_transform virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *gst.Buffer 
+	//
+	// Optional.
+	//                    This method is called right before the base class will
+	//                    start processing. Dynamic properties or other delayed
+	//                    configuration could be performed in this method.
+	ParentBeforeTransform(buffer *gst.Buffer)
+	// ParentCopyMetadata calls the default implementations of the copy_metadata virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- input *gst.Buffer 
+	// 	- outbuf *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                 Copy the metadata from the input buffer to the output buffer.
+	//                 The default implementation will copy the flags, timestamps and
+	//                 offsets of the buffer.
+	ParentCopyMetadata(input *gst.Buffer, outbuf *gst.Buffer) bool
+	// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Setup the allocation parameters for allocating output
+	//                    buffers. The passed in query contains the result of the
+	//                    downstream allocation query. This function is only called
+	//                    when not operating in passthrough mode. The default
+	//                    implementation will remove all memory dependent metadata.
+	//                    If there is a @filter_meta method implementation, it will
+	//                    be called for all metadata API in the downstream query,
+	//                    otherwise the metadata API is removed.
+	ParentDecideAllocation(query *gst.Query) bool
+	// ParentFilterMeta calls the default implementations of the filter_meta virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 	- api gobject.Type 
+	// 	- params *gst.Structure 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Return %TRUE if the metadata API should be proposed in the
+	//               upstream allocation query. The default implementation is %NULL
+	//               and will cause all metadata to be removed.
+	ParentFilterMeta(query *gst.Query, api gobject.Type, params *gst.Structure) bool
+	// ParentFixateCaps calls the default implementations of the fixate_caps virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- direction gst.PadDirection 
+	// 	- caps *gst.Caps 
+	// 	- othercaps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Caps 
+	ParentFixateCaps(direction gst.PadDirection, caps *gst.Caps, othercaps *gst.Caps) *gst.Caps
+	// ParentGenerateOutput calls the default implementations of the generate_output virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- outbuf *gst.Buffer 
+	// 	- goret gst.FlowReturn 
+	ParentGenerateOutput() (*gst.Buffer, gst.FlowReturn)
+	// ParentGetUnitSize calls the default implementations of the get_unit_size virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- size uint 
+	// 	- goret bool 
+	ParentGetUnitSize(caps *gst.Caps) (uint, bool)
+	// ParentPrepareOutputBuffer calls the default implementations of the prepare_output_buffer virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- input *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- outbuf *gst.Buffer 
+	// 	- goret gst.FlowReturn 
+	ParentPrepareOutputBuffer(input *gst.Buffer) (*gst.Buffer, gst.FlowReturn)
+	// ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- decideQuery *gst.Query 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Propose buffer allocation parameters for upstream elements.
+	//                      This function must be implemented if the element reads or
+	//                      writes the buffer content. The query that was passed to
+	//                      the decide_allocation is passed in this method (or %NULL
+	//                      when the element is in passthrough mode). The default
+	//                      implementation will pass the query downstream when in
+	//                      passthrough mode and will copy all the filtered metadata
+	//                      API in non-passthrough mode.
+	ParentProposeAllocation(decideQuery *gst.Query, query *gst.Query) bool
+	// ParentQuery calls the default implementations of the query virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- direction gst.PadDirection 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Handle a requested query. Subclasses that implement this
+	//                  must chain up to the parent if they didn't handle the
+	//                  query
+	ParentQuery(direction gst.PadDirection, query *gst.Query) bool
+	// ParentSetCaps calls the default implementations of the set_caps virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- incaps *gst.Caps 
+	// 	- outcaps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Allows the subclass to be notified of the actual caps set.
+	ParentSetCaps(incaps *gst.Caps, outcaps *gst.Caps) bool
+	// ParentSinkEvent calls the default implementations of the sink_event virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	ParentSinkEvent(event *gst.Event) bool
+	// ParentSrcEvent calls the default implementations of the src_event virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	ParentSrcEvent(event *gst.Event) bool
+	// ParentStart calls the default implementations of the start virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element starts processing.
+	//                  Allows opening external resources.
+	ParentStart() bool
+	// ParentStop calls the default implementations of the stop virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element stops processing.
+	//                  Allows closing external resources.
+	ParentStop() bool
+	// ParentSubmitInputBuffer calls the default implementations of the submit_input_buffer virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- isDiscont bool 
+	// 	- input *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// Function which accepts a new input buffer and pre-processes it.
+	//                  The default implementation performs caps (re)negotiation, then
+	//                  QoS if needed, and places the input buffer into the @queued_buf
+	//                  member variable. If the buffer is dropped due to QoS, it returns
+	//                  GST_BASE_TRANSFORM_FLOW_DROPPED. If this input buffer is not
+	//                  contiguous with any previous input buffer, then @is_discont
+	//                  is set to %TRUE. (Since: 1.6)
+	ParentSubmitInputBuffer(isDiscont bool, input *gst.Buffer) gst.FlowReturn
+	// ParentTransform calls the default implementations of the transform virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- inbuf *gst.Buffer 
+	// 	- outbuf *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// Required if the element does not operate in-place.
+	//                  Transforms one incoming buffer to one outgoing buffer.
+	//                  The function is allowed to change size/timestamp/duration
+	//                  of the outgoing buffer.
+	ParentTransform(inbuf *gst.Buffer, outbuf *gst.Buffer) gst.FlowReturn
+	// ParentTransformCaps calls the default implementations of the transform_caps virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- direction gst.PadDirection 
+	// 	- caps *gst.Caps 
+	// 	- filter *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Caps 
+	//
+	// Optional.  Given the pad in this direction and the given
+	//                  caps, what caps are allowed on the other pad in this
+	//                  element ?
+	ParentTransformCaps(direction gst.PadDirection, caps *gst.Caps, filter *gst.Caps) *gst.Caps
+	// ParentTransformIP calls the default implementations of the transform_ip virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- buf *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// Required if the element operates in-place.
+	//                  Transform the incoming buffer in-place.
+	ParentTransformIP(buf *gst.Buffer) gst.FlowReturn
+	// ParentTransformMeta calls the default implementations of the transform_meta virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- outbuf *gst.Buffer 
+	// 	- meta *gst.Meta 
+	// 	- inbuf *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	//
+	// Optional. Transform the metadata on the input buffer to the
+	//                  output buffer. By default this method copies all meta without
+	//                  tags. Subclasses can implement this method and return %TRUE if
+	//                  the metadata is to be copied.
+	ParentTransformMeta(outbuf *gst.Buffer, meta *gst.Meta, inbuf *gst.Buffer) bool
+	// ParentTransformSize calls the default implementations of the transform_size virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- direction gst.PadDirection 
+	// 	- caps *gst.Caps 
+	// 	- size uint 
+	// 	- othercaps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- othersize uint 
+	// 	- goret bool 
+	ParentTransformSize(direction gst.PadDirection, caps *gst.Caps, size uint, othercaps *gst.Caps) (uint, bool)
 }
 
 func unsafeWrapBaseTransform(base *gobject.ObjectInstance) *BaseTransformInstance {
@@ -10555,11 +14585,21 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Subclasses can override this method to check if @caps can be
+	//                  handled by the element. The default implementation might not be
+	//                  the most optimal way to check this in all cases.
 	AcceptCaps func(Instance, gst.PadDirection, *gst.Caps) bool
 	// BeforeTransform allows you to override the implementation of the virtual method before_transform.
 	// The function takes the following parameters:
 	// 
 	// 	- buffer *gst.Buffer 
+	//
+	// Optional.
+	//                    This method is called right before the base class will
+	//                    start processing. Dynamic properties or other delayed
+	//                    configuration could be performed in this method.
 	BeforeTransform func(Instance, *gst.Buffer)
 	// CopyMetadata allows you to override the implementation of the virtual method copy_metadata.
 	// The function takes the following parameters:
@@ -10570,6 +14610,11 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                 Copy the metadata from the input buffer to the output buffer.
+	//                 The default implementation will copy the flags, timestamps and
+	//                 offsets of the buffer.
 	CopyMetadata func(Instance, *gst.Buffer, *gst.Buffer) bool
 	// DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
 	// The function takes the following parameters:
@@ -10579,6 +14624,15 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Setup the allocation parameters for allocating output
+	//                    buffers. The passed in query contains the result of the
+	//                    downstream allocation query. This function is only called
+	//                    when not operating in passthrough mode. The default
+	//                    implementation will remove all memory dependent metadata.
+	//                    If there is a @filter_meta method implementation, it will
+	//                    be called for all metadata API in the downstream query,
+	//                    otherwise the metadata API is removed.
 	DecideAllocation func(Instance, *gst.Query) bool
 	// FilterMeta allows you to override the implementation of the virtual method filter_meta.
 	// The function takes the following parameters:
@@ -10590,6 +14644,10 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Return %TRUE if the metadata API should be proposed in the
+	//               upstream allocation query. The default implementation is %NULL
+	//               and will cause all metadata to be removed.
 	FilterMeta func(Instance, *gst.Query, gobject.Type, *gst.Structure) bool
 	// FixateCaps allows you to override the implementation of the virtual method fixate_caps.
 	// The function takes the following parameters:
@@ -10637,6 +14695,15 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Propose buffer allocation parameters for upstream elements.
+	//                      This function must be implemented if the element reads or
+	//                      writes the buffer content. The query that was passed to
+	//                      the decide_allocation is passed in this method (or %NULL
+	//                      when the element is in passthrough mode). The default
+	//                      implementation will pass the query downstream when in
+	//                      passthrough mode and will copy all the filtered metadata
+	//                      API in non-passthrough mode.
 	ProposeAllocation func(Instance, *gst.Query, *gst.Query) bool
 	// Query allows you to override the implementation of the virtual method query.
 	// The function takes the following parameters:
@@ -10647,6 +14714,11 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Handle a requested query. Subclasses that implement this
+	//                  must chain up to the parent if they didn't handle the
+	//                  query
 	Query func(Instance, gst.PadDirection, *gst.Query) bool
 	// SetCaps allows you to override the implementation of the virtual method set_caps.
 	// The function takes the following parameters:
@@ -10657,6 +14729,8 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Allows the subclass to be notified of the actual caps set.
 	SetCaps func(Instance, *gst.Caps, *gst.Caps) bool
 	// SinkEvent allows you to override the implementation of the virtual method sink_event.
 	// The function takes the following parameters:
@@ -10680,11 +14754,19 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element starts processing.
+	//                  Allows opening external resources.
 	Start func(Instance) bool
 	// Stop allows you to override the implementation of the virtual method stop.
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional.
+	//                  Called when the element stops processing.
+	//                  Allows closing external resources.
 	Stop func(Instance) bool
 	// SubmitInputBuffer allows you to override the implementation of the virtual method submit_input_buffer.
 	// The function takes the following parameters:
@@ -10695,6 +14777,14 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// Function which accepts a new input buffer and pre-processes it.
+	//                  The default implementation performs caps (re)negotiation, then
+	//                  QoS if needed, and places the input buffer into the @queued_buf
+	//                  member variable. If the buffer is dropped due to QoS, it returns
+	//                  GST_BASE_TRANSFORM_FLOW_DROPPED. If this input buffer is not
+	//                  contiguous with any previous input buffer, then @is_discont
+	//                  is set to %TRUE. (Since: 1.6)
 	SubmitInputBuffer func(Instance, bool, *gst.Buffer) gst.FlowReturn
 	// Transform allows you to override the implementation of the virtual method transform.
 	// The function takes the following parameters:
@@ -10705,6 +14795,11 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// Required if the element does not operate in-place.
+	//                  Transforms one incoming buffer to one outgoing buffer.
+	//                  The function is allowed to change size/timestamp/duration
+	//                  of the outgoing buffer.
 	Transform func(Instance, *gst.Buffer, *gst.Buffer) gst.FlowReturn
 	// TransformCaps allows you to override the implementation of the virtual method transform_caps.
 	// The function takes the following parameters:
@@ -10716,6 +14811,10 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Caps 
+	//
+	// Optional.  Given the pad in this direction and the given
+	//                  caps, what caps are allowed on the other pad in this
+	//                  element ?
 	TransformCaps func(Instance, gst.PadDirection, *gst.Caps, *gst.Caps) *gst.Caps
 	// TransformIP allows you to override the implementation of the virtual method transform_ip.
 	// The function takes the following parameters:
@@ -10725,6 +14824,9 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// Required if the element operates in-place.
+	//                  Transform the incoming buffer in-place.
 	TransformIP func(Instance, *gst.Buffer) gst.FlowReturn
 	// TransformMeta allows you to override the implementation of the virtual method transform_meta.
 	// The function takes the following parameters:
@@ -10736,6 +14838,11 @@ type BaseTransformOverrides[Instance BaseTransform] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
+	//
+	// Optional. Transform the metadata on the input buffer to the
+	//                  output buffer. By default this method copies all meta without
+	//                  tags. Subclasses can implement this method and return %TRUE if
+	//                  the metadata is to be copied.
 	TransformMeta func(Instance, *gst.Buffer, *gst.Meta, *gst.Buffer) bool
 	// TransformSize allows you to override the implementation of the virtual method transform_size.
 	// The function takes the following parameters:
@@ -11307,6 +15414,804 @@ func UnsafeApplyBaseTransformOverrides[Instance BaseTransform](gclass unsafe.Poi
 	}
 }
 
+// ParentAcceptCaps calls the default implementations of the accept_caps virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- direction gst.PadDirection 
+// 	- caps *gst.Caps 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Subclasses can override this method to check if @caps can be
+//                  handled by the element. The default implementation might not be
+//                  the most optimal way to check this in all cases.
+func (trans *BaseTransformInstance) ParentAcceptCaps(direction gst.PadDirection, caps *gst.Caps) bool {
+	var carg0 *C.GstBaseTransform
+	var carg1 C.GstPadDirection // in, none, casted
+	var carg2 *C.GstCaps        // in, none, converted
+	var cret  C.gboolean        // return
+
+	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
+
+	carg1 = C.GstPadDirection(direction)
+	carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
+
+	cret = C._gotk4_gstbase1_BaseTransform_virtual_accept_caps(unsafe.Pointer(parentclass.accept_caps), carg0, carg1, carg2)
+	runtime.KeepAlive(trans)
+	runtime.KeepAlive(direction)
+	runtime.KeepAlive(caps)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentBeforeTransform calls the default implementations of the before_transform virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- buffer *gst.Buffer 
+//
+// Optional.
+//                    This method is called right before the base class will
+//                    start processing. Dynamic properties or other delayed
+//                    configuration could be performed in this method.
+func (trans *BaseTransformInstance) ParentBeforeTransform(buffer *gst.Buffer) {
+	var carg0 *C.GstBaseTransform
+	var carg1 *C.GstBuffer // in, none, converted
+
+	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
+
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
+
+	C._gotk4_gstbase1_BaseTransform_virtual_before_transform(unsafe.Pointer(parentclass.before_transform), carg0, carg1)
+	runtime.KeepAlive(trans)
+	runtime.KeepAlive(buffer)
+}
+
+// ParentCopyMetadata calls the default implementations of the copy_metadata virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- input *gst.Buffer 
+// 	- outbuf *gst.Buffer 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                 Copy the metadata from the input buffer to the output buffer.
+//                 The default implementation will copy the flags, timestamps and
+//                 offsets of the buffer.
+func (trans *BaseTransformInstance) ParentCopyMetadata(input *gst.Buffer, outbuf *gst.Buffer) bool {
+	var carg0 *C.GstBaseTransform
+	var carg1 *C.GstBuffer // in, none, converted
+	var carg2 *C.GstBuffer // in, none, converted
+	var cret  C.gboolean   // return
+
+	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
+
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(input))
+	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(outbuf))
+
+	cret = C._gotk4_gstbase1_BaseTransform_virtual_copy_metadata(unsafe.Pointer(parentclass.copy_metadata), carg0, carg1, carg2)
+	runtime.KeepAlive(trans)
+	runtime.KeepAlive(input)
+	runtime.KeepAlive(outbuf)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentDecideAllocation calls the default implementations of the decide_allocation virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Setup the allocation parameters for allocating output
+//                    buffers. The passed in query contains the result of the
+//                    downstream allocation query. This function is only called
+//                    when not operating in passthrough mode. The default
+//                    implementation will remove all memory dependent metadata.
+//                    If there is a @filter_meta method implementation, it will
+//                    be called for all metadata API in the downstream query,
+//                    otherwise the metadata API is removed.
+func (trans *BaseTransformInstance) ParentDecideAllocation(query *gst.Query) bool {
+	var carg0 *C.GstBaseTransform
+	var carg1 *C.GstQuery // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
+
+	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstbase1_BaseTransform_virtual_decide_allocation(unsafe.Pointer(parentclass.decide_allocation), carg0, carg1)
+	runtime.KeepAlive(trans)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentFilterMeta calls the default implementations of the filter_meta virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- query *gst.Query 
+// 	- api gobject.Type 
+// 	- params *gst.Structure 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Return %TRUE if the metadata API should be proposed in the
+//               upstream allocation query. The default implementation is %NULL
+//               and will cause all metadata to be removed.
+func (trans *BaseTransformInstance) ParentFilterMeta(query *gst.Query, api gobject.Type, params *gst.Structure) bool {
+	var carg0 *C.GstBaseTransform
+	var carg1 *C.GstQuery     // in, none, converted
+	var carg2 C.GType         // in, none, casted, alias
+	var carg3 *C.GstStructure // in, none, converted
+	var cret  C.gboolean      // return
+
+	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
+
+	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+	carg2 = C.GType(api)
+	carg3 = (*C.GstStructure)(gst.UnsafeStructureToGlibNone(params))
+
+	cret = C._gotk4_gstbase1_BaseTransform_virtual_filter_meta(unsafe.Pointer(parentclass.filter_meta), carg0, carg1, carg2, carg3)
+	runtime.KeepAlive(trans)
+	runtime.KeepAlive(query)
+	runtime.KeepAlive(api)
+	runtime.KeepAlive(params)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentFixateCaps calls the default implementations of the fixate_caps virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- direction gst.PadDirection 
+// 	- caps *gst.Caps 
+// 	- othercaps *gst.Caps 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.Caps 
+func (trans *BaseTransformInstance) ParentFixateCaps(direction gst.PadDirection, caps *gst.Caps, othercaps *gst.Caps) *gst.Caps {
+	var carg0 *C.GstBaseTransform
+	var carg1 C.GstPadDirection // in, none, casted
+	var carg2 *C.GstCaps        // in, none, converted
+	var carg3 *C.GstCaps        // in, full, converted
+	var cret  *C.GstCaps        // return, full, converted
+
+	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
+
+	carg1 = C.GstPadDirection(direction)
+	carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
+	carg3 = (*C.GstCaps)(gst.UnsafeCapsToGlibFull(othercaps))
+
+	cret = C._gotk4_gstbase1_BaseTransform_virtual_fixate_caps(unsafe.Pointer(parentclass.fixate_caps), carg0, carg1, carg2, carg3)
+	runtime.KeepAlive(trans)
+	runtime.KeepAlive(direction)
+	runtime.KeepAlive(caps)
+	runtime.KeepAlive(othercaps)
+
+	var goret *gst.Caps
+
+	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// ParentGenerateOutput calls the default implementations of the generate_output virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- outbuf *gst.Buffer 
+// 	- goret gst.FlowReturn 
+func (trans *BaseTransformInstance) ParentGenerateOutput() (*gst.Buffer, gst.FlowReturn) {
+	var carg0 *C.GstBaseTransform
+	var carg1 *C.GstBuffer    // out, full, converted
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
+
+	cret = C._gotk4_gstbase1_BaseTransform_virtual_generate_output(unsafe.Pointer(parentclass.generate_output), carg0, &carg1)
+	runtime.KeepAlive(trans)
+
+	var outbuf *gst.Buffer
+	var goret  gst.FlowReturn
+
+	outbuf = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(carg1))
+	goret = gst.FlowReturn(cret)
+
+	return outbuf, goret
+}
+
+// ParentGetUnitSize calls the default implementations of the get_unit_size virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- caps *gst.Caps 
+// 
+// The function returns the following values:
+// 
+// 	- size uint 
+// 	- goret bool 
+func (trans *BaseTransformInstance) ParentGetUnitSize(caps *gst.Caps) (uint, bool) {
+	var carg0 *C.GstBaseTransform
+	var carg1 *C.GstCaps // in, none, converted
+	var carg2 C.gsize    // out, full, casted
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
+
+	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
+
+	cret = C._gotk4_gstbase1_BaseTransform_virtual_get_unit_size(unsafe.Pointer(parentclass.get_unit_size), carg0, carg1, &carg2)
+	runtime.KeepAlive(trans)
+	runtime.KeepAlive(caps)
+
+	var size  uint
+	var goret bool
+
+	size = uint(carg2)
+	if cret != 0 {
+		goret = true
+	}
+
+	return size, goret
+}
+
+// ParentPrepareOutputBuffer calls the default implementations of the prepare_output_buffer virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- input *gst.Buffer 
+// 
+// The function returns the following values:
+// 
+// 	- outbuf *gst.Buffer 
+// 	- goret gst.FlowReturn 
+func (trans *BaseTransformInstance) ParentPrepareOutputBuffer(input *gst.Buffer) (*gst.Buffer, gst.FlowReturn) {
+	var carg0 *C.GstBaseTransform
+	var carg1 *C.GstBuffer    // in, none, converted
+	var carg2 *C.GstBuffer    // out, full, converted
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
+
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(input))
+
+	cret = C._gotk4_gstbase1_BaseTransform_virtual_prepare_output_buffer(unsafe.Pointer(parentclass.prepare_output_buffer), carg0, carg1, &carg2)
+	runtime.KeepAlive(trans)
+	runtime.KeepAlive(input)
+
+	var outbuf *gst.Buffer
+	var goret  gst.FlowReturn
+
+	outbuf = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(carg2))
+	goret = gst.FlowReturn(cret)
+
+	return outbuf, goret
+}
+
+// ParentProposeAllocation calls the default implementations of the propose_allocation virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- decideQuery *gst.Query 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Propose buffer allocation parameters for upstream elements.
+//                      This function must be implemented if the element reads or
+//                      writes the buffer content. The query that was passed to
+//                      the decide_allocation is passed in this method (or %NULL
+//                      when the element is in passthrough mode). The default
+//                      implementation will pass the query downstream when in
+//                      passthrough mode and will copy all the filtered metadata
+//                      API in non-passthrough mode.
+func (trans *BaseTransformInstance) ParentProposeAllocation(decideQuery *gst.Query, query *gst.Query) bool {
+	var carg0 *C.GstBaseTransform
+	var carg1 *C.GstQuery // in, none, converted
+	var carg2 *C.GstQuery // in, none, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
+
+	carg1 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(decideQuery))
+	carg2 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstbase1_BaseTransform_virtual_propose_allocation(unsafe.Pointer(parentclass.propose_allocation), carg0, carg1, carg2)
+	runtime.KeepAlive(trans)
+	runtime.KeepAlive(decideQuery)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentQuery calls the default implementations of the query virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- direction gst.PadDirection 
+// 	- query *gst.Query 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Handle a requested query. Subclasses that implement this
+//                  must chain up to the parent if they didn't handle the
+//                  query
+func (trans *BaseTransformInstance) ParentQuery(direction gst.PadDirection, query *gst.Query) bool {
+	var carg0 *C.GstBaseTransform
+	var carg1 C.GstPadDirection // in, none, casted
+	var carg2 *C.GstQuery       // in, none, converted
+	var cret  C.gboolean        // return
+
+	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
+
+	carg1 = C.GstPadDirection(direction)
+	carg2 = (*C.GstQuery)(gst.UnsafeQueryToGlibNone(query))
+
+	cret = C._gotk4_gstbase1_BaseTransform_virtual_query(unsafe.Pointer(parentclass.query), carg0, carg1, carg2)
+	runtime.KeepAlive(trans)
+	runtime.KeepAlive(direction)
+	runtime.KeepAlive(query)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSetCaps calls the default implementations of the set_caps virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- incaps *gst.Caps 
+// 	- outcaps *gst.Caps 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Allows the subclass to be notified of the actual caps set.
+func (trans *BaseTransformInstance) ParentSetCaps(incaps *gst.Caps, outcaps *gst.Caps) bool {
+	var carg0 *C.GstBaseTransform
+	var carg1 *C.GstCaps // in, none, converted
+	var carg2 *C.GstCaps // in, none, converted
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
+
+	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(incaps))
+	carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(outcaps))
+
+	cret = C._gotk4_gstbase1_BaseTransform_virtual_set_caps(unsafe.Pointer(parentclass.set_caps), carg0, carg1, carg2)
+	runtime.KeepAlive(trans)
+	runtime.KeepAlive(incaps)
+	runtime.KeepAlive(outcaps)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSinkEvent calls the default implementations of the sink_event virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- event *gst.Event 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+func (trans *BaseTransformInstance) ParentSinkEvent(event *gst.Event) bool {
+	var carg0 *C.GstBaseTransform
+	var carg1 *C.GstEvent // in, full, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
+
+	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibFull(event))
+
+	cret = C._gotk4_gstbase1_BaseTransform_virtual_sink_event(unsafe.Pointer(parentclass.sink_event), carg0, carg1)
+	runtime.KeepAlive(trans)
+	runtime.KeepAlive(event)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSrcEvent calls the default implementations of the src_event virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- event *gst.Event 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+func (trans *BaseTransformInstance) ParentSrcEvent(event *gst.Event) bool {
+	var carg0 *C.GstBaseTransform
+	var carg1 *C.GstEvent // in, full, converted
+	var cret  C.gboolean  // return
+
+	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
+
+	carg1 = (*C.GstEvent)(gst.UnsafeEventToGlibFull(event))
+
+	cret = C._gotk4_gstbase1_BaseTransform_virtual_src_event(unsafe.Pointer(parentclass.src_event), carg0, carg1)
+	runtime.KeepAlive(trans)
+	runtime.KeepAlive(event)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentStart calls the default implementations of the start virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Called when the element starts processing.
+//                  Allows opening external resources.
+func (trans *BaseTransformInstance) ParentStart() bool {
+	var carg0 *C.GstBaseTransform
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
+
+	cret = C._gotk4_gstbase1_BaseTransform_virtual_start(unsafe.Pointer(parentclass.start), carg0)
+	runtime.KeepAlive(trans)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentStop calls the default implementations of the stop virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional.
+//                  Called when the element stops processing.
+//                  Allows closing external resources.
+func (trans *BaseTransformInstance) ParentStop() bool {
+	var carg0 *C.GstBaseTransform
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
+
+	cret = C._gotk4_gstbase1_BaseTransform_virtual_stop(unsafe.Pointer(parentclass.stop), carg0)
+	runtime.KeepAlive(trans)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSubmitInputBuffer calls the default implementations of the submit_input_buffer virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- isDiscont bool 
+// 	- input *gst.Buffer 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// Function which accepts a new input buffer and pre-processes it.
+//                  The default implementation performs caps (re)negotiation, then
+//                  QoS if needed, and places the input buffer into the @queued_buf
+//                  member variable. If the buffer is dropped due to QoS, it returns
+//                  GST_BASE_TRANSFORM_FLOW_DROPPED. If this input buffer is not
+//                  contiguous with any previous input buffer, then @is_discont
+//                  is set to %TRUE. (Since: 1.6)
+func (trans *BaseTransformInstance) ParentSubmitInputBuffer(isDiscont bool, input *gst.Buffer) gst.FlowReturn {
+	var carg0 *C.GstBaseTransform
+	var carg1 C.gboolean      // in
+	var carg2 *C.GstBuffer    // in, none, converted
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
+
+	if isDiscont {
+		carg1 = C.TRUE
+	}
+	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(input))
+
+	cret = C._gotk4_gstbase1_BaseTransform_virtual_submit_input_buffer(unsafe.Pointer(parentclass.submit_input_buffer), carg0, carg1, carg2)
+	runtime.KeepAlive(trans)
+	runtime.KeepAlive(isDiscont)
+	runtime.KeepAlive(input)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentTransform calls the default implementations of the transform virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- inbuf *gst.Buffer 
+// 	- outbuf *gst.Buffer 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// Required if the element does not operate in-place.
+//                  Transforms one incoming buffer to one outgoing buffer.
+//                  The function is allowed to change size/timestamp/duration
+//                  of the outgoing buffer.
+func (trans *BaseTransformInstance) ParentTransform(inbuf *gst.Buffer, outbuf *gst.Buffer) gst.FlowReturn {
+	var carg0 *C.GstBaseTransform
+	var carg1 *C.GstBuffer    // in, none, converted
+	var carg2 *C.GstBuffer    // in, none, converted
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
+
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(inbuf))
+	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(outbuf))
+
+	cret = C._gotk4_gstbase1_BaseTransform_virtual_transform(unsafe.Pointer(parentclass.transform), carg0, carg1, carg2)
+	runtime.KeepAlive(trans)
+	runtime.KeepAlive(inbuf)
+	runtime.KeepAlive(outbuf)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentTransformCaps calls the default implementations of the transform_caps virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- direction gst.PadDirection 
+// 	- caps *gst.Caps 
+// 	- filter *gst.Caps 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.Caps 
+//
+// Optional.  Given the pad in this direction and the given
+//                  caps, what caps are allowed on the other pad in this
+//                  element ?
+func (trans *BaseTransformInstance) ParentTransformCaps(direction gst.PadDirection, caps *gst.Caps, filter *gst.Caps) *gst.Caps {
+	var carg0 *C.GstBaseTransform
+	var carg1 C.GstPadDirection // in, none, casted
+	var carg2 *C.GstCaps        // in, none, converted
+	var carg3 *C.GstCaps        // in, none, converted
+	var cret  *C.GstCaps        // return, full, converted
+
+	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
+
+	carg1 = C.GstPadDirection(direction)
+	carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
+	carg3 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filter))
+
+	cret = C._gotk4_gstbase1_BaseTransform_virtual_transform_caps(unsafe.Pointer(parentclass.transform_caps), carg0, carg1, carg2, carg3)
+	runtime.KeepAlive(trans)
+	runtime.KeepAlive(direction)
+	runtime.KeepAlive(caps)
+	runtime.KeepAlive(filter)
+
+	var goret *gst.Caps
+
+	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// ParentTransformIP calls the default implementations of the transform_ip virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- buf *gst.Buffer 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// Required if the element operates in-place.
+//                  Transform the incoming buffer in-place.
+func (trans *BaseTransformInstance) ParentTransformIP(buf *gst.Buffer) gst.FlowReturn {
+	var carg0 *C.GstBaseTransform
+	var carg1 *C.GstBuffer    // in, none, converted
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
+
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buf))
+
+	cret = C._gotk4_gstbase1_BaseTransform_virtual_transform_ip(unsafe.Pointer(parentclass.transform_ip), carg0, carg1)
+	runtime.KeepAlive(trans)
+	runtime.KeepAlive(buf)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
+}
+
+// ParentTransformMeta calls the default implementations of the transform_meta virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- outbuf *gst.Buffer 
+// 	- meta *gst.Meta 
+// 	- inbuf *gst.Buffer 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Optional. Transform the metadata on the input buffer to the
+//                  output buffer. By default this method copies all meta without
+//                  tags. Subclasses can implement this method and return %TRUE if
+//                  the metadata is to be copied.
+func (trans *BaseTransformInstance) ParentTransformMeta(outbuf *gst.Buffer, meta *gst.Meta, inbuf *gst.Buffer) bool {
+	var carg0 *C.GstBaseTransform
+	var carg1 *C.GstBuffer // in, none, converted
+	var carg2 *C.GstMeta   // in, none, converted
+	var carg3 *C.GstBuffer // in, none, converted
+	var cret  C.gboolean   // return
+
+	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
+
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(outbuf))
+	carg2 = (*C.GstMeta)(gst.UnsafeMetaToGlibNone(meta))
+	carg3 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(inbuf))
+
+	cret = C._gotk4_gstbase1_BaseTransform_virtual_transform_meta(unsafe.Pointer(parentclass.transform_meta), carg0, carg1, carg2, carg3)
+	runtime.KeepAlive(trans)
+	runtime.KeepAlive(outbuf)
+	runtime.KeepAlive(meta)
+	runtime.KeepAlive(inbuf)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentTransformSize calls the default implementations of the transform_size virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- direction gst.PadDirection 
+// 	- caps *gst.Caps 
+// 	- size uint 
+// 	- othercaps *gst.Caps 
+// 
+// The function returns the following values:
+// 
+// 	- othersize uint 
+// 	- goret bool 
+func (trans *BaseTransformInstance) ParentTransformSize(direction gst.PadDirection, caps *gst.Caps, size uint, othercaps *gst.Caps) (uint, bool) {
+	var carg0 *C.GstBaseTransform
+	var carg1 C.GstPadDirection // in, none, casted
+	var carg2 *C.GstCaps        // in, none, converted
+	var carg3 C.gsize           // in, none, casted
+	var carg4 *C.GstCaps        // in, none, converted
+	var carg5 C.gsize           // out, full, casted
+	var cret  C.gboolean        // return
+
+	parentclass := (*C.GstBaseTransformClass)(classdata.PeekParentClass(UnsafeBaseTransformToGlibNone(trans)))
+
+	carg1 = C.GstPadDirection(direction)
+	carg2 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
+	carg3 = C.gsize(size)
+	carg4 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(othercaps))
+
+	cret = C._gotk4_gstbase1_BaseTransform_virtual_transform_size(unsafe.Pointer(parentclass.transform_size), carg0, carg1, carg2, carg3, carg4, &carg5)
+	runtime.KeepAlive(trans)
+	runtime.KeepAlive(direction)
+	runtime.KeepAlive(caps)
+	runtime.KeepAlive(size)
+	runtime.KeepAlive(othercaps)
+
+	var othersize uint
+	var goret     bool
+
+	othersize = uint(carg5)
+	if cret != 0 {
+		goret = true
+	}
+
+	return othersize, goret
+}
+
 // RegisterBaseTransformSubClass is used to register a go subclass of GstBaseTransform. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterBaseTransformSubClass[InstanceT BaseTransform](
@@ -11684,6 +16589,8 @@ type CollectPads interface {
 	// 
 	// MT safe.
 	TakeBuffer(*CollectData, uint) *gst.Buffer
+
+	// chain up virtual methods:
 }
 
 func unsafeWrapCollectPads(base *gobject.ObjectInstance) *CollectPadsInstance {
@@ -12486,6 +17393,15 @@ type DataQueue interface {
 	// size) is higher than the boundary values which can be set through the GObject
 	// properties.
 	ConnectFull(func(DataQueue)) gobject.SignalHandle
+
+	// chain up virtual methods:
+
+	// ParentEmpty calls the default implementations of the empty virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	ParentEmpty()
+	// ParentFull calls the default implementations of the full virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	ParentFull()
 }
 
 func unsafeWrapDataQueue(base *gobject.ObjectInstance) *DataQueueInstance {
@@ -12597,6 +17513,28 @@ func UnsafeApplyDataQueueOverrides[Instance DataQueue](gclass unsafe.Pointer, ov
 	}
 }
 
+// ParentEmpty calls the default implementations of the empty virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+func (queue *DataQueueInstance) ParentEmpty() {
+	var carg0 *C.GstDataQueue
+
+	parentclass := (*C.GstDataQueueClass)(classdata.PeekParentClass(UnsafeDataQueueToGlibNone(queue)))
+
+	C._gotk4_gstbase1_DataQueue_virtual_empty(unsafe.Pointer(parentclass.empty), carg0)
+	runtime.KeepAlive(queue)
+}
+
+// ParentFull calls the default implementations of the full virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+func (queue *DataQueueInstance) ParentFull() {
+	var carg0 *C.GstDataQueue
+
+	parentclass := (*C.GstDataQueueClass)(classdata.PeekParentClass(UnsafeDataQueueToGlibNone(queue)))
+
+	C._gotk4_gstbase1_DataQueue_virtual_full(unsafe.Pointer(parentclass.full), carg0)
+	runtime.KeepAlive(queue)
+}
+
 // RegisterDataQueueSubClass is used to register a go subclass of GstDataQueue. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterDataQueueSubClass[InstanceT DataQueue](
@@ -12655,6 +17593,30 @@ var _ PushSrc = (*PushSrcInstance)(nil)
 type PushSrc interface {
 	BaseSrc
 	upcastToGstPushSrc() *PushSrcInstance
+
+	// chain up virtual methods:
+
+	// ParentAlloc calls the default implementations of the alloc virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- buf *gst.Buffer (nullable) 
+	// 	- goret gst.FlowReturn 
+	//
+	// Allocate memory for a buffer.
+	ParentAlloc() (*gst.Buffer, gst.FlowReturn)
+	// ParentFill calls the default implementations of the fill virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- buf *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	//
+	// Ask the subclass to fill the buffer with data.
+	ParentFill(buf *gst.Buffer) gst.FlowReturn
 }
 
 func unsafeWrapPushSrc(base *gobject.ObjectInstance) *PushSrcInstance {
@@ -12715,6 +17677,8 @@ type PushSrcOverrides[Instance PushSrc] struct {
 	// 
 	// 	- buf *gst.Buffer (nullable) 
 	// 	- goret gst.FlowReturn 
+	//
+	// Allocate memory for a buffer.
 	Alloc func(Instance) (*gst.Buffer, gst.FlowReturn)
 	// Fill allows you to override the implementation of the virtual method fill.
 	// The function takes the following parameters:
@@ -12724,6 +17688,8 @@ type PushSrcOverrides[Instance PushSrc] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
+	//
+	// Ask the subclass to fill the buffer with data.
 	Fill func(Instance, *gst.Buffer) gst.FlowReturn
 }
 
@@ -12777,6 +17743,66 @@ func UnsafeApplyPushSrcOverrides[Instance PushSrc](gclass unsafe.Pointer, overri
 			},
 		)
 	}
+}
+
+// ParentAlloc calls the default implementations of the alloc virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- buf *gst.Buffer (nullable) 
+// 	- goret gst.FlowReturn 
+//
+// Allocate memory for a buffer.
+func (src *PushSrcInstance) ParentAlloc() (*gst.Buffer, gst.FlowReturn) {
+	var carg0 *C.GstPushSrc
+	var carg1 *C.GstBuffer    // out, full, converted, nullable
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstPushSrcClass)(classdata.PeekParentClass(UnsafePushSrcToGlibNone(src)))
+
+	cret = C._gotk4_gstbase1_PushSrc_virtual_alloc(unsafe.Pointer(parentclass.alloc), carg0, &carg1)
+	runtime.KeepAlive(src)
+
+	var buf   *gst.Buffer
+	var goret gst.FlowReturn
+
+	if carg1 != nil {
+		buf = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(carg1))
+	}
+	goret = gst.FlowReturn(cret)
+
+	return buf, goret
+}
+
+// ParentFill calls the default implementations of the fill virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- buf *gst.Buffer 
+// 
+// The function returns the following values:
+// 
+// 	- goret gst.FlowReturn 
+//
+// Ask the subclass to fill the buffer with data.
+func (src *PushSrcInstance) ParentFill(buf *gst.Buffer) gst.FlowReturn {
+	var carg0 *C.GstPushSrc
+	var carg1 *C.GstBuffer    // in, none, converted
+	var cret  C.GstFlowReturn // return, none, casted
+
+	parentclass := (*C.GstPushSrcClass)(classdata.PeekParentClass(UnsafePushSrcToGlibNone(src)))
+
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buf))
+
+	cret = C._gotk4_gstbase1_PushSrc_virtual_fill(unsafe.Pointer(parentclass.fill), carg0, carg1)
+	runtime.KeepAlive(src)
+	runtime.KeepAlive(buf)
+
+	var goret gst.FlowReturn
+
+	goret = gst.FlowReturn(cret)
+
+	return goret
 }
 
 // RegisterPushSrcSubClass is used to register a go subclass of GstPushSrc. For this to work safely please implement the

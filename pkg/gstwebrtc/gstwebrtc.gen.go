@@ -1207,6 +1207,12 @@ func (e WebRTCStatsType) String() string {
 }
 
 // WebRTCICEOnCandidateFunc wraps GstWebRTCICEOnCandidateFunc
+// 
+// The function takes the following parameters:
+// 
+// 	- ice WebRTCICE: The #GstWebRTCICE 
+// 	- streamId uint: The stream id 
+// 	- candidate string: The discovered candidate 
 //
 // Callback function to be triggered on discovery of a new candidate
 type WebRTCICEOnCandidateFunc func(ice WebRTCICE, streamId uint, candidate string)
@@ -1765,6 +1771,166 @@ type WebRTCICE interface {
 	// are supplied, they will be discovered automatically. Calling this signal
 	// stops automatic ICE gathering.
 	EmitAddLocalIPAddress(string) bool
+
+	// chain up virtual methods:
+
+	// ParentAddCandidate calls the default implementations of the add_candidate virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
+	// 	- candidate string: The ICE candidate 
+	// 	- promise *gst.Promise (nullable): A #GstPromise for task notifications (Since: 1.24) 
+	ParentAddCandidate(stream WebRTCICEStream, candidate string, promise *gst.Promise)
+	// ParentAddStream calls the default implementations of the add_stream virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- sessionId uint: The session id 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret WebRTCICEStream (nullable) 
+	ParentAddStream(sessionId uint) WebRTCICEStream
+	// ParentAddTurnServer calls the default implementations of the add_turn_server virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- uri string: URI of the TURN server 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	ParentAddTurnServer(uri string) bool
+	// ParentFindTransport calls the default implementations of the find_transport virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
+	// 	- component WebRTCICEComponent: The #GstWebRTCICEComponent 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret WebRTCICETransport (nullable) 
+	ParentFindTransport(stream WebRTCICEStream, component WebRTCICEComponent) WebRTCICETransport
+	// ParentGatherCandidates calls the default implementations of the gather_candidates virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	ParentGatherCandidates(stream WebRTCICEStream) bool
+	// ParentGetHTTPProxy calls the default implementations of the get_http_proxy virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret string 
+	//
+	// Get HTTP Proxy to be used when connecting to TURN server.
+	ParentGetHTTPProxy() string
+	// ParentGetIsController calls the default implementations of the get_is_controller virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	ParentGetIsController() bool
+	// ParentGetSelectedPair calls the default implementations of the get_selected_pair virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- localStats *WebRTCICECandidateStats: A pointer to #GstWebRTCICECandidateStats for local candidate 
+	// 	- remoteStats *WebRTCICECandidateStats: pointer to #GstWebRTCICECandidateStats for remote candidate 
+	// 	- goret bool 
+	ParentGetSelectedPair(stream WebRTCICEStream) (*WebRTCICECandidateStats, *WebRTCICECandidateStats, bool)
+	// ParentGetStunServer calls the default implementations of the get_stun_server virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret string (nullable) 
+	ParentGetStunServer() string
+	// ParentGetTurnServer calls the default implementations of the get_turn_server virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret string (nullable) 
+	ParentGetTurnServer() string
+	// ParentSetForceRelay calls the default implementations of the set_force_relay virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- forceRelay bool: TRUE to enable force relay 
+	ParentSetForceRelay(forceRelay bool)
+	// ParentSetHTTPProxy calls the default implementations of the set_http_proxy virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- uri string: URI of the HTTP proxy of the form
+	//   http://[username:password@]hostname[:port][?alpn=&lt;alpn&gt;] 
+	//
+	// Set HTTP Proxy to be used when connecting to TURN server.
+	ParentSetHTTPProxy(uri string)
+	// ParentSetIsController calls the default implementations of the set_is_controller virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- controller bool: TRUE to set as controller 
+	ParentSetIsController(controller bool)
+	// ParentSetLocalCredentials calls the default implementations of the set_local_credentials virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
+	// 	- ufrag string: ICE username 
+	// 	- pwd string: ICE password 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	ParentSetLocalCredentials(stream WebRTCICEStream, ufrag string, pwd string) bool
+	// ParentSetOnIceCandidate calls the default implementations of the set_on_ice_candidate virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- fn WebRTCICEOnCandidateFunc: The #GstWebRTCICEOnCandidateFunc callback function 
+	ParentSetOnIceCandidate(fn WebRTCICEOnCandidateFunc)
+	// ParentSetRemoteCredentials calls the default implementations of the set_remote_credentials virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
+	// 	- ufrag string: ICE username 
+	// 	- pwd string: ICE password 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	ParentSetRemoteCredentials(stream WebRTCICEStream, ufrag string, pwd string) bool
+	// ParentSetStunServer calls the default implementations of the set_stun_server virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- uri string (nullable): URI of the STUN server 
+	ParentSetStunServer(uri string)
+	// ParentSetTos calls the default implementations of the set_tos virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
+	// 	- tos uint: ToS to be set 
+	ParentSetTos(stream WebRTCICEStream, tos uint)
+	// ParentSetTurnServer calls the default implementations of the set_turn_server virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- uri string (nullable): URI of the TURN sever 
+	ParentSetTurnServer(uri string)
 }
 
 func unsafeWrapWebRTCICE(base *gobject.ObjectInstance) *WebRTCICEInstance {
@@ -2438,6 +2604,8 @@ type WebRTCICEOverrides[Instance WebRTCICE] struct {
 	// The function returns the following values:
 	// 
 	// 	- goret string 
+	//
+	// Get HTTP Proxy to be used when connecting to TURN server.
 	GetHTTPProxy func(Instance) string
 	// GetIsController allows you to override the implementation of the virtual method get_is_controller.
 	// The function returns the following values:
@@ -2475,6 +2643,8 @@ type WebRTCICEOverrides[Instance WebRTCICE] struct {
 	// 
 	// 	- uri string: URI of the HTTP proxy of the form
 	//   http://[username:password@]hostname[:port][?alpn=&lt;alpn&gt;] 
+	//
+	// Set HTTP Proxy to be used when connecting to TURN server.
 	SetHTTPProxy func(Instance, string)
 	// SetIsController allows you to override the implementation of the virtual method set_is_controller.
 	// The function takes the following parameters:
@@ -2958,6 +3128,528 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 	}
 }
 
+// ParentAddCandidate calls the default implementations of the add_candidate virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
+// 	- candidate string: The ICE candidate 
+// 	- promise *gst.Promise (nullable): A #GstPromise for task notifications (Since: 1.24) 
+func (ice *WebRTCICEInstance) ParentAddCandidate(stream WebRTCICEStream, candidate string, promise *gst.Promise) {
+	var carg0 *C.GstWebRTCICE
+	var carg1 *C.GstWebRTCICEStream // in, none, converted
+	var carg2 *C.gchar              // in, none, string
+	var carg3 *C.GstPromise         // in, none, converted, nullable
+
+	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
+
+	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
+	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(candidate)))
+	defer C.free(unsafe.Pointer(carg2))
+	if promise != nil {
+		carg3 = (*C.GstPromise)(gst.UnsafePromiseToGlibNone(promise))
+	}
+
+	C._gotk4_gstwebrtc1_WebRTCICE_virtual_add_candidate(unsafe.Pointer(parentclass.add_candidate), carg0, carg1, carg2, carg3)
+	runtime.KeepAlive(ice)
+	runtime.KeepAlive(stream)
+	runtime.KeepAlive(candidate)
+	runtime.KeepAlive(promise)
+}
+
+// ParentAddStream calls the default implementations of the add_stream virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- sessionId uint: The session id 
+// 
+// The function returns the following values:
+// 
+// 	- goret WebRTCICEStream (nullable) 
+func (ice *WebRTCICEInstance) ParentAddStream(sessionId uint) WebRTCICEStream {
+	var carg0 *C.GstWebRTCICE
+	var carg1 C.guint               // in, none, casted
+	var cret  *C.GstWebRTCICEStream // return, full, converted, nullable
+
+	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
+
+	carg1 = C.guint(sessionId)
+
+	cret = C._gotk4_gstwebrtc1_WebRTCICE_virtual_add_stream(unsafe.Pointer(parentclass.add_stream), carg0, carg1)
+	runtime.KeepAlive(ice)
+	runtime.KeepAlive(sessionId)
+
+	var goret WebRTCICEStream
+
+	if cret != nil {
+		goret = UnsafeWebRTCICEStreamFromGlibFull(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
+// ParentAddTurnServer calls the default implementations of the add_turn_server virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- uri string: URI of the TURN server 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+func (ice *WebRTCICEInstance) ParentAddTurnServer(uri string) bool {
+	var carg0 *C.GstWebRTCICE
+	var carg1 *C.gchar   // in, none, string
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	cret = C._gotk4_gstwebrtc1_WebRTCICE_virtual_add_turn_server(unsafe.Pointer(parentclass.add_turn_server), carg0, carg1)
+	runtime.KeepAlive(ice)
+	runtime.KeepAlive(uri)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentFindTransport calls the default implementations of the find_transport virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
+// 	- component WebRTCICEComponent: The #GstWebRTCICEComponent 
+// 
+// The function returns the following values:
+// 
+// 	- goret WebRTCICETransport (nullable) 
+func (ice *WebRTCICEInstance) ParentFindTransport(stream WebRTCICEStream, component WebRTCICEComponent) WebRTCICETransport {
+	var carg0 *C.GstWebRTCICE
+	var carg1 *C.GstWebRTCICEStream    // in, none, converted
+	var carg2 C.GstWebRTCICEComponent  // in, none, casted
+	var cret  *C.GstWebRTCICETransport // return, full, converted, nullable
+
+	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
+
+	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
+	carg2 = C.GstWebRTCICEComponent(component)
+
+	cret = C._gotk4_gstwebrtc1_WebRTCICE_virtual_find_transport(unsafe.Pointer(parentclass.find_transport), carg0, carg1, carg2)
+	runtime.KeepAlive(ice)
+	runtime.KeepAlive(stream)
+	runtime.KeepAlive(component)
+
+	var goret WebRTCICETransport
+
+	if cret != nil {
+		goret = UnsafeWebRTCICETransportFromGlibFull(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
+// ParentGatherCandidates calls the default implementations of the gather_candidates virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+func (ice *WebRTCICEInstance) ParentGatherCandidates(stream WebRTCICEStream) bool {
+	var carg0 *C.GstWebRTCICE
+	var carg1 *C.GstWebRTCICEStream // in, none, converted
+	var cret  C.gboolean            // return
+
+	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
+
+	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
+
+	cret = C._gotk4_gstwebrtc1_WebRTCICE_virtual_gather_candidates(unsafe.Pointer(parentclass.gather_candidates), carg0, carg1)
+	runtime.KeepAlive(ice)
+	runtime.KeepAlive(stream)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentGetHTTPProxy calls the default implementations of the get_http_proxy virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret string 
+//
+// Get HTTP Proxy to be used when connecting to TURN server.
+func (ice *WebRTCICEInstance) ParentGetHTTPProxy() string {
+	var carg0 *C.GstWebRTCICE
+	var cret  *C.gchar // return, full, string
+
+	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
+
+	cret = C._gotk4_gstwebrtc1_WebRTCICE_virtual_get_http_proxy(unsafe.Pointer(parentclass.get_http_proxy), carg0)
+	runtime.KeepAlive(ice)
+
+	var goret string
+
+	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	defer C.free(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// ParentGetIsController calls the default implementations of the get_is_controller virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+func (ice *WebRTCICEInstance) ParentGetIsController() bool {
+	var carg0 *C.GstWebRTCICE
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
+
+	cret = C._gotk4_gstwebrtc1_WebRTCICE_virtual_get_is_controller(unsafe.Pointer(parentclass.get_is_controller), carg0)
+	runtime.KeepAlive(ice)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentGetSelectedPair calls the default implementations of the get_selected_pair virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
+// 
+// The function returns the following values:
+// 
+// 	- localStats *WebRTCICECandidateStats: A pointer to #GstWebRTCICECandidateStats for local candidate 
+// 	- remoteStats *WebRTCICECandidateStats: pointer to #GstWebRTCICECandidateStats for remote candidate 
+// 	- goret bool 
+func (ice *WebRTCICEInstance) ParentGetSelectedPair(stream WebRTCICEStream) (*WebRTCICECandidateStats, *WebRTCICECandidateStats, bool) {
+	var carg0 *C.GstWebRTCICE
+	var carg1 *C.GstWebRTCICEStream         // in, none, converted
+	var carg2 *C.GstWebRTCICECandidateStats // out, full, converted
+	var carg3 *C.GstWebRTCICECandidateStats // out, full, converted
+	var cret  C.gboolean                    // return
+
+	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
+
+	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
+
+	cret = C._gotk4_gstwebrtc1_WebRTCICE_virtual_get_selected_pair(unsafe.Pointer(parentclass.get_selected_pair), carg0, carg1, &carg2, &carg3)
+	runtime.KeepAlive(ice)
+	runtime.KeepAlive(stream)
+
+	var localStats  *WebRTCICECandidateStats
+	var remoteStats *WebRTCICECandidateStats
+	var goret       bool
+
+	localStats = UnsafeWebRTCICECandidateStatsFromGlibFull(unsafe.Pointer(carg2))
+	remoteStats = UnsafeWebRTCICECandidateStatsFromGlibFull(unsafe.Pointer(carg3))
+	if cret != 0 {
+		goret = true
+	}
+
+	return localStats, remoteStats, goret
+}
+
+// ParentGetStunServer calls the default implementations of the get_stun_server virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret string (nullable) 
+func (ice *WebRTCICEInstance) ParentGetStunServer() string {
+	var carg0 *C.GstWebRTCICE
+	var cret  *C.gchar // return, full, string, nullable-string
+
+	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
+
+	cret = C._gotk4_gstwebrtc1_WebRTCICE_virtual_get_stun_server(unsafe.Pointer(parentclass.get_stun_server), carg0)
+	runtime.KeepAlive(ice)
+
+	var goret string
+
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
+// ParentGetTurnServer calls the default implementations of the get_turn_server virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret string (nullable) 
+func (ice *WebRTCICEInstance) ParentGetTurnServer() string {
+	var carg0 *C.GstWebRTCICE
+	var cret  *C.gchar // return, full, string, nullable-string
+
+	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
+
+	cret = C._gotk4_gstwebrtc1_WebRTCICE_virtual_get_turn_server(unsafe.Pointer(parentclass.get_turn_server), carg0)
+	runtime.KeepAlive(ice)
+
+	var goret string
+
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
+// ParentSetForceRelay calls the default implementations of the set_force_relay virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- forceRelay bool: TRUE to enable force relay 
+func (ice *WebRTCICEInstance) ParentSetForceRelay(forceRelay bool) {
+	var carg0 *C.GstWebRTCICE
+	var carg1 C.gboolean // in
+
+	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
+
+	if forceRelay {
+		carg1 = C.TRUE
+	}
+
+	C._gotk4_gstwebrtc1_WebRTCICE_virtual_set_force_relay(unsafe.Pointer(parentclass.set_force_relay), carg0, carg1)
+	runtime.KeepAlive(ice)
+	runtime.KeepAlive(forceRelay)
+}
+
+// ParentSetHTTPProxy calls the default implementations of the set_http_proxy virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- uri string: URI of the HTTP proxy of the form
+//   http://[username:password@]hostname[:port][?alpn=&lt;alpn&gt;] 
+//
+// Set HTTP Proxy to be used when connecting to TURN server.
+func (ice *WebRTCICEInstance) ParentSetHTTPProxy(uri string) {
+	var carg0 *C.GstWebRTCICE
+	var carg1 *C.gchar // in, none, string
+
+	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	C._gotk4_gstwebrtc1_WebRTCICE_virtual_set_http_proxy(unsafe.Pointer(parentclass.set_http_proxy), carg0, carg1)
+	runtime.KeepAlive(ice)
+	runtime.KeepAlive(uri)
+}
+
+// ParentSetIsController calls the default implementations of the set_is_controller virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- controller bool: TRUE to set as controller 
+func (ice *WebRTCICEInstance) ParentSetIsController(controller bool) {
+	var carg0 *C.GstWebRTCICE
+	var carg1 C.gboolean // in
+
+	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
+
+	if controller {
+		carg1 = C.TRUE
+	}
+
+	C._gotk4_gstwebrtc1_WebRTCICE_virtual_set_is_controller(unsafe.Pointer(parentclass.set_is_controller), carg0, carg1)
+	runtime.KeepAlive(ice)
+	runtime.KeepAlive(controller)
+}
+
+// ParentSetLocalCredentials calls the default implementations of the set_local_credentials virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
+// 	- ufrag string: ICE username 
+// 	- pwd string: ICE password 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+func (ice *WebRTCICEInstance) ParentSetLocalCredentials(stream WebRTCICEStream, ufrag string, pwd string) bool {
+	var carg0 *C.GstWebRTCICE
+	var carg1 *C.GstWebRTCICEStream // in, none, converted
+	var carg2 *C.gchar              // in, none, string
+	var carg3 *C.gchar              // in, none, string
+	var cret  C.gboolean            // return
+
+	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
+
+	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
+	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(ufrag)))
+	defer C.free(unsafe.Pointer(carg2))
+	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(pwd)))
+	defer C.free(unsafe.Pointer(carg3))
+
+	cret = C._gotk4_gstwebrtc1_WebRTCICE_virtual_set_local_credentials(unsafe.Pointer(parentclass.set_local_credentials), carg0, carg1, carg2, carg3)
+	runtime.KeepAlive(ice)
+	runtime.KeepAlive(stream)
+	runtime.KeepAlive(ufrag)
+	runtime.KeepAlive(pwd)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSetOnIceCandidate calls the default implementations of the set_on_ice_candidate virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- fn WebRTCICEOnCandidateFunc: The #GstWebRTCICEOnCandidateFunc callback function 
+func (ice *WebRTCICEInstance) ParentSetOnIceCandidate(fn WebRTCICEOnCandidateFunc) {
+	var carg0 *C.GstWebRTCICE
+	var carg1 C.GstWebRTCICEOnCandidateFunc // callback, scope: notified, closure: carg2, destroy: carg3
+	var carg2 C.gpointer                    // implicit
+	var carg3 C.GDestroyNotify              // implicit
+
+	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
+
+	carg1 = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICEOnCandidateFunc)
+	carg2 = C.gpointer(userdata.Register(fn))
+	carg3 = (C.GDestroyNotify)((*[0]byte)(C.destroyUserdata))
+
+	C._gotk4_gstwebrtc1_WebRTCICE_virtual_set_on_ice_candidate(unsafe.Pointer(parentclass.set_on_ice_candidate), carg0, carg1, carg2, carg3)
+	runtime.KeepAlive(ice)
+	runtime.KeepAlive(fn)
+}
+
+// ParentSetRemoteCredentials calls the default implementations of the set_remote_credentials virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
+// 	- ufrag string: ICE username 
+// 	- pwd string: ICE password 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+func (ice *WebRTCICEInstance) ParentSetRemoteCredentials(stream WebRTCICEStream, ufrag string, pwd string) bool {
+	var carg0 *C.GstWebRTCICE
+	var carg1 *C.GstWebRTCICEStream // in, none, converted
+	var carg2 *C.gchar              // in, none, string
+	var carg3 *C.gchar              // in, none, string
+	var cret  C.gboolean            // return
+
+	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
+
+	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
+	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(ufrag)))
+	defer C.free(unsafe.Pointer(carg2))
+	carg3 = (*C.gchar)(unsafe.Pointer(C.CString(pwd)))
+	defer C.free(unsafe.Pointer(carg3))
+
+	cret = C._gotk4_gstwebrtc1_WebRTCICE_virtual_set_remote_credentials(unsafe.Pointer(parentclass.set_remote_credentials), carg0, carg1, carg2, carg3)
+	runtime.KeepAlive(ice)
+	runtime.KeepAlive(stream)
+	runtime.KeepAlive(ufrag)
+	runtime.KeepAlive(pwd)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// ParentSetStunServer calls the default implementations of the set_stun_server virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- uri string (nullable): URI of the STUN server 
+func (ice *WebRTCICEInstance) ParentSetStunServer(uri string) {
+	var carg0 *C.GstWebRTCICE
+	var carg1 *C.gchar // in, none, string, nullable-string
+
+	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
+
+	if uri != "" {
+		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
+		defer C.free(unsafe.Pointer(carg1))
+	}
+
+	C._gotk4_gstwebrtc1_WebRTCICE_virtual_set_stun_server(unsafe.Pointer(parentclass.set_stun_server), carg0, carg1)
+	runtime.KeepAlive(ice)
+	runtime.KeepAlive(uri)
+}
+
+// ParentSetTos calls the default implementations of the set_tos virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
+// 	- tos uint: ToS to be set 
+func (ice *WebRTCICEInstance) ParentSetTos(stream WebRTCICEStream, tos uint) {
+	var carg0 *C.GstWebRTCICE
+	var carg1 *C.GstWebRTCICEStream // in, none, converted
+	var carg2 C.guint               // in, none, casted
+
+	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
+
+	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
+	carg2 = C.guint(tos)
+
+	C._gotk4_gstwebrtc1_WebRTCICE_virtual_set_tos(unsafe.Pointer(parentclass.set_tos), carg0, carg1, carg2)
+	runtime.KeepAlive(ice)
+	runtime.KeepAlive(stream)
+	runtime.KeepAlive(tos)
+}
+
+// ParentSetTurnServer calls the default implementations of the set_turn_server virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- uri string (nullable): URI of the TURN sever 
+func (ice *WebRTCICEInstance) ParentSetTurnServer(uri string) {
+	var carg0 *C.GstWebRTCICE
+	var carg1 *C.gchar // in, none, string, nullable-string
+
+	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
+
+	if uri != "" {
+		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
+		defer C.free(unsafe.Pointer(carg1))
+	}
+
+	C._gotk4_gstwebrtc1_WebRTCICE_virtual_set_turn_server(unsafe.Pointer(parentclass.set_turn_server), carg0, carg1)
+	runtime.KeepAlive(ice)
+	runtime.KeepAlive(uri)
+}
+
 // RegisterWebRTCICESubClass is used to register a go subclass of GstWebRTCICE. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterWebRTCICESubClass[InstanceT WebRTCICE](
@@ -3013,6 +3705,25 @@ type WebRTCICEStream interface {
 	// 
 	// 	- goret bool 
 	GatherCandidates() bool
+
+	// chain up virtual methods:
+
+	// ParentFindTransport calls the default implementations of the find_transport virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function takes the following parameters:
+	// 
+	// 	- component WebRTCICEComponent: The #GstWebRTCICEComponent 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret WebRTCICETransport (nullable) 
+	ParentFindTransport(component WebRTCICEComponent) WebRTCICETransport
+	// ParentGatherCandidates calls the default implementations of the gather_candidates virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	ParentGatherCandidates() bool
 }
 
 func unsafeWrapWebRTCICEStream(base *gobject.ObjectInstance) *WebRTCICEStreamInstance {
@@ -3187,6 +3898,60 @@ func UnsafeApplyWebRTCICEStreamOverrides[Instance WebRTCICEStream](gclass unsafe
 	}
 }
 
+// ParentFindTransport calls the default implementations of the find_transport virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function takes the following parameters:
+// 
+// 	- component WebRTCICEComponent: The #GstWebRTCICEComponent 
+// 
+// The function returns the following values:
+// 
+// 	- goret WebRTCICETransport (nullable) 
+func (stream *WebRTCICEStreamInstance) ParentFindTransport(component WebRTCICEComponent) WebRTCICETransport {
+	var carg0 *C.GstWebRTCICEStream
+	var carg1 C.GstWebRTCICEComponent  // in, none, casted
+	var cret  *C.GstWebRTCICETransport // return, full, converted, nullable
+
+	parentclass := (*C.GstWebRTCICEStreamClass)(classdata.PeekParentClass(UnsafeWebRTCICEStreamToGlibNone(stream)))
+
+	carg1 = C.GstWebRTCICEComponent(component)
+
+	cret = C._gotk4_gstwebrtc1_WebRTCICEStream_virtual_find_transport(unsafe.Pointer(parentclass.find_transport), carg0, carg1)
+	runtime.KeepAlive(stream)
+	runtime.KeepAlive(component)
+
+	var goret WebRTCICETransport
+
+	if cret != nil {
+		goret = UnsafeWebRTCICETransportFromGlibFull(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
+// ParentGatherCandidates calls the default implementations of the gather_candidates virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+func (ice *WebRTCICEStreamInstance) ParentGatherCandidates() bool {
+	var carg0 *C.GstWebRTCICEStream
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstWebRTCICEStreamClass)(classdata.PeekParentClass(UnsafeWebRTCICEStreamToGlibNone(ice)))
+
+	cret = C._gotk4_gstwebrtc1_WebRTCICEStream_virtual_gather_candidates(unsafe.Pointer(parentclass.gather_candidates), carg0)
+	runtime.KeepAlive(ice)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
 // RegisterWebRTCICEStreamSubClass is used to register a go subclass of GstWebRTCICEStream. For this to work safely please implement the
 // virtual methods required by the implementation.
 func RegisterWebRTCICEStreamSubClass[InstanceT WebRTCICEStream](
@@ -3252,6 +4017,15 @@ type WebRTCICETransport interface {
 	ConnectOnNewCandidate(func(WebRTCICETransport, string)) gobject.SignalHandle
 	// ConnectOnSelectedCandidatePairChange connects the provided callback to the "on-selected-candidate-pair-change" signal
 	ConnectOnSelectedCandidatePairChange(func(WebRTCICETransport)) gobject.SignalHandle
+
+	// chain up virtual methods:
+
+	// ParentGatherCandidates calls the default implementations of the gather_candidates virtual method.
+	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	ParentGatherCandidates() bool
 }
 
 func unsafeWrapWebRTCICETransport(base *gobject.ObjectInstance) *WebRTCICETransportInstance {
@@ -3418,6 +4192,29 @@ func UnsafeApplyWebRTCICETransportOverrides[Instance WebRTCICETransport](gclass 
 			},
 		)
 	}
+}
+
+// ParentGatherCandidates calls the default implementations of the gather_candidates virtual method.
+// This functions behavior is not defined when the parent does not implement the virtual method.
+// The function returns the following values:
+// 
+// 	- goret bool 
+func (transport *WebRTCICETransportInstance) ParentGatherCandidates() bool {
+	var carg0 *C.GstWebRTCICETransport
+	var cret  C.gboolean // return
+
+	parentclass := (*C.GstWebRTCICETransportClass)(classdata.PeekParentClass(UnsafeWebRTCICETransportToGlibNone(transport)))
+
+	cret = C._gotk4_gstwebrtc1_WebRTCICETransport_virtual_gather_candidates(unsafe.Pointer(parentclass.gather_candidates), carg0)
+	runtime.KeepAlive(transport)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
 }
 
 // RegisterWebRTCICETransportSubClass is used to register a go subclass of GstWebRTCICETransport. For this to work safely please implement the
