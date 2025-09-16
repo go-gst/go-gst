@@ -116,8 +116,13 @@ func (message *Message) Type() MessageType {
 	return MessageType(message.message.native._type)
 }
 
-// Source returns the source object of the message.
+// Source returns the source object of the message. Returned value can be nil if the
+// message does not have a source object, or if the source object has been destroyed.
 func (message *Message) Source() Object {
+	if message.message.native.src == nil {
+		return nil
+	}
+
 	obj := UnsafeObjectFromGlibNone(unsafe.Pointer(message.message.native.src))
 	runtime.KeepAlive(message)
 	return obj
@@ -125,14 +130,17 @@ func (message *Message) Source() Object {
 
 // String implements a stringer on the message. It iterates over the type of the message
 // and applies the correct parser, then dumps a string of the basic contents of the
-// message. This function can be expensive and should only be used for debugging purposes
-// or in routines where latency is not a concern.
-//
-// This stringer really just helps in keeping track of making sure all message types are
-// accounted for in some way. It's the devil, writing it was the devil, and I hope you
-// enjoy being able to `fmt.Println(msg)`.
+// message.
 func (m *Message) String() string {
-	msg := fmt.Sprintf("[%s] %s - ", m.Source().GetName(), m.Type().String())
+	src := m.Source()
+
+	msg := ""
+
+	if src != nil {
+		msg += fmt.Sprintf("[%s] ", src.GetName())
+	}
+	msg += fmt.Sprintf("%s - ", m.Type().String())
+
 	switch m.Type() {
 
 	case MessageEOS:
