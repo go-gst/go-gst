@@ -8066,15 +8066,8 @@ func UnsafeInstallPluginsContextFromGlibNone(p unsafe.Pointer) *InstallPluginsCo
 		return nil
 	}
 
-	wrapped = wrapped.Copy() // create an owned copy
+	return wrapped.Copy() // create an owned copy
 
-	runtime.SetFinalizer(
-		wrapped.installPluginsContext,
-		func (intern *installPluginsContext) {
-			C.gst_install_plugins_context_free(intern.native)
-		},
-	)
-	return wrapped
 }
 
 // UnsafeInstallPluginsContextFromGlibFull is used to convert raw C.GstInstallPluginsContext pointers to go while taking ownership. This is used by the bindings internally.

@@ -4,6 +4,7 @@ package gsttag
 
 import (
 	"fmt"
+	"log"
 	"runtime"
 	"strings"
 	"unsafe"
@@ -2797,18 +2798,12 @@ func UnsafeTagXmpWriterInterfaceFromGlibBorrow(p unsafe.Pointer) *TagXmpWriterIn
 
 // UnsafeTagXmpWriterInterfaceFromGlibNone is used to convert raw C.GstTagXmpWriterInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeTagXmpWriterInterfaceFromGlibNone(p unsafe.Pointer) *TagXmpWriterInterface {
-	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafeTagXmpWriterInterfaceFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
 
-	runtime.SetFinalizer(
-		wrapped.tagXmpWriterInterface,
-		func (intern *tagXmpWriterInterface) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
+	log.Println("WARNING: not attaching a finalizer to TagXmpWriterInterface because no cgo ref function or copy method is available. This may leak memory. Please file an issue")
 	return wrapped
 }
 

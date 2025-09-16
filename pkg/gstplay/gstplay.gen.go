@@ -4,6 +4,7 @@ package gstplay
 
 import (
 	"fmt"
+	"log"
 	"runtime"
 	"unsafe"
 
@@ -5380,18 +5381,12 @@ func UnsafePlayVideoRendererInterfaceFromGlibBorrow(p unsafe.Pointer) *PlayVideo
 
 // UnsafePlayVideoRendererInterfaceFromGlibNone is used to convert raw C.GstPlayVideoRendererInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafePlayVideoRendererInterfaceFromGlibNone(p unsafe.Pointer) *PlayVideoRendererInterface {
-	// FIXME: this has no ref or copy function, what should we do here?
 	wrapped := UnsafePlayVideoRendererInterfaceFromGlibBorrow(p)
 	if wrapped == nil {
 		return nil
 	}
 
-	runtime.SetFinalizer(
-		wrapped.playVideoRendererInterface,
-		func (intern *playVideoRendererInterface) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
+	log.Println("WARNING: not attaching a finalizer to PlayVideoRendererInterface because no cgo ref function or copy method is available. This may leak memory. Please file an issue")
 	return wrapped
 }
 
@@ -5487,15 +5482,8 @@ func UnsafePlayVisualizationFromGlibNone(p unsafe.Pointer) *PlayVisualization {
 		return nil
 	}
 
-	wrapped = wrapped.Copy() // create an owned copy
+	return wrapped.Copy() // create an owned copy
 
-	runtime.SetFinalizer(
-		wrapped.playVisualization,
-		func (intern *playVisualization) {
-			C.gst_play_visualization_free(intern.native)
-		},
-	)
-	return wrapped
 }
 
 // UnsafePlayVisualizationFromGlibFull is used to convert raw C.GstPlayVisualization pointers to go while taking ownership. This is used by the bindings internally.

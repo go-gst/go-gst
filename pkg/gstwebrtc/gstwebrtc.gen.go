@@ -4720,15 +4720,8 @@ func UnsafeWebRTCICECandidateStatsFromGlibNone(p unsafe.Pointer) *WebRTCICECandi
 		return nil
 	}
 
-	wrapped = wrapped.Copy() // create an owned copy
+	return wrapped.Copy() // create an owned copy
 
-	runtime.SetFinalizer(
-		wrapped.webRTCICECandidateStats,
-		func (intern *webRTCICECandidateStats) {
-			C.gst_webrtc_ice_candidate_stats_free(intern.native)
-		},
-	)
-	return wrapped
 }
 
 // UnsafeWebRTCICECandidateStatsFromGlibFull is used to convert raw C.GstWebRTCICECandidateStats pointers to go while taking ownership. This is used by the bindings internally.
@@ -5208,15 +5201,8 @@ func UnsafeWebRTCSessionDescriptionFromGlibNone(p unsafe.Pointer) *WebRTCSession
 		return nil
 	}
 
-	wrapped = wrapped.Copy() // create an owned copy
+	return wrapped.Copy() // create an owned copy
 
-	runtime.SetFinalizer(
-		wrapped.webRTCSessionDescription,
-		func (intern *webRTCSessionDescription) {
-			C.gst_webrtc_session_description_free(intern.native)
-		},
-	)
-	return wrapped
 }
 
 // UnsafeWebRTCSessionDescriptionFromGlibFull is used to convert raw C.GstWebRTCSessionDescription pointers to go while taking ownership. This is used by the bindings internally.
