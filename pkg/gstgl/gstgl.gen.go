@@ -20,162 +20,162 @@ import (
 // #cgo pkg-config: gstreamer-gl-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/gl/gl.h>
-// extern gboolean _gotk4_gstgl1_GLFilterRenderFunc(GstGLFilter*, GstGLMemory*, gpointer);
-// extern gboolean _gotk4_gstgl1_GLBaseFilter_gl_set_caps(GstGLBaseFilter*, GstCaps*, GstCaps*);
-// extern gboolean _gotk4_gstgl1_GLBaseFilter_gl_start(GstGLBaseFilter*);
-// extern void _gotk4_gstgl1_GLBaseFilter_gl_stop(GstGLBaseFilter*);
-// gboolean _gotk4_gstgl1_GLBaseFilter_virtual_gl_set_caps(void* fnptr, GstGLBaseFilter* carg0, GstCaps* carg1, GstCaps* carg2) {
-// 	return ((gboolean (*) (GstGLBaseFilter*, GstCaps*, GstCaps*))(fnptr))(carg0, carg1, carg2);
+// extern C.gboolean _gotk4_gstgl1_GLFilterRenderFunc(*C.GstGLFilter, *C.GstGLMemory, C.gpointer);
+// extern C.gboolean _gotk4_gstgl1_GLBaseFilter_gl_set_caps(*C.GstGLBaseFilter, *C.GstCaps, *C.GstCaps);
+// extern C.gboolean _gotk4_gstgl1_GLBaseFilter_gl_start(*C.GstGLBaseFilter);
+// extern C.void _gotk4_gstgl1_GLBaseFilter_gl_stop(*C.GstGLBaseFilter);
+// C.gboolean _gotk4_gstgl1_GLBaseFilter_virtual_gl_set_caps(void* fnptr, *C.GstGLBaseFilter carg0, *C.GstCaps carg1, *C.GstCaps carg2) {
+// 	return ((C.gboolean (*) (*C.GstGLBaseFilter, *C.GstCaps, *C.GstCaps))(fnptr))(carg0, carg1, carg2);
 // }
-// gboolean _gotk4_gstgl1_GLBaseFilter_virtual_gl_start(void* fnptr, GstGLBaseFilter* carg0) {
-// 	return ((gboolean (*) (GstGLBaseFilter*))(fnptr))(carg0);
+// C.gboolean _gotk4_gstgl1_GLBaseFilter_virtual_gl_start(void* fnptr, *C.GstGLBaseFilter carg0) {
+// 	return ((C.gboolean (*) (*C.GstGLBaseFilter))(fnptr))(carg0);
 // }
-// void _gotk4_gstgl1_GLBaseFilter_virtual_gl_stop(void* fnptr, GstGLBaseFilter* carg0) {
-// 	return ((void (*) (GstGLBaseFilter*))(fnptr))(carg0);
+// C.void _gotk4_gstgl1_GLBaseFilter_virtual_gl_stop(void* fnptr, *C.GstGLBaseFilter carg0) {
+// 	return ((C.void (*) (*C.GstGLBaseFilter))(fnptr))(carg0);
 // }
-// extern gboolean _gotk4_gstgl1_GLBaseMixer_gl_start(GstGLBaseMixer*);
-// extern void _gotk4_gstgl1_GLBaseMixer_gl_stop(GstGLBaseMixer*);
-// gboolean _gotk4_gstgl1_GLBaseMixer_virtual_gl_start(void* fnptr, GstGLBaseMixer* carg0) {
-// 	return ((gboolean (*) (GstGLBaseMixer*))(fnptr))(carg0);
+// extern C.gboolean _gotk4_gstgl1_GLBaseMixer_gl_start(*C.GstGLBaseMixer);
+// extern C.void _gotk4_gstgl1_GLBaseMixer_gl_stop(*C.GstGLBaseMixer);
+// C.gboolean _gotk4_gstgl1_GLBaseMixer_virtual_gl_start(void* fnptr, *C.GstGLBaseMixer carg0) {
+// 	return ((C.gboolean (*) (*C.GstGLBaseMixer))(fnptr))(carg0);
 // }
-// void _gotk4_gstgl1_GLBaseMixer_virtual_gl_stop(void* fnptr, GstGLBaseMixer* carg0) {
-// 	return ((void (*) (GstGLBaseMixer*))(fnptr))(carg0);
+// C.void _gotk4_gstgl1_GLBaseMixer_virtual_gl_stop(void* fnptr, *C.GstGLBaseMixer carg0) {
+// 	return ((C.void (*) (*C.GstGLBaseMixer))(fnptr))(carg0);
 // }
-// extern gboolean _gotk4_gstgl1_GLBaseSrc_fill_gl_memory(GstGLBaseSrc*, GstGLMemory*);
-// extern gboolean _gotk4_gstgl1_GLBaseSrc_gl_start(GstGLBaseSrc*);
-// extern void _gotk4_gstgl1_GLBaseSrc_gl_stop(GstGLBaseSrc*);
-// gboolean _gotk4_gstgl1_GLBaseSrc_virtual_fill_gl_memory(void* fnptr, GstGLBaseSrc* carg0, GstGLMemory* carg1) {
-// 	return ((gboolean (*) (GstGLBaseSrc*, GstGLMemory*))(fnptr))(carg0, carg1);
+// extern C.gboolean _gotk4_gstgl1_GLBaseSrc_fill_gl_memory(*C.GstGLBaseSrc, *C.GstGLMemory);
+// extern C.gboolean _gotk4_gstgl1_GLBaseSrc_gl_start(*C.GstGLBaseSrc);
+// extern C.void _gotk4_gstgl1_GLBaseSrc_gl_stop(*C.GstGLBaseSrc);
+// C.gboolean _gotk4_gstgl1_GLBaseSrc_virtual_fill_gl_memory(void* fnptr, *C.GstGLBaseSrc carg0, *C.GstGLMemory carg1) {
+// 	return ((C.gboolean (*) (*C.GstGLBaseSrc, *C.GstGLMemory))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstgl1_GLBaseSrc_virtual_gl_start(void* fnptr, GstGLBaseSrc* carg0) {
-// 	return ((gboolean (*) (GstGLBaseSrc*))(fnptr))(carg0);
+// C.gboolean _gotk4_gstgl1_GLBaseSrc_virtual_gl_start(void* fnptr, *C.GstGLBaseSrc carg0) {
+// 	return ((C.gboolean (*) (*C.GstGLBaseSrc))(fnptr))(carg0);
 // }
-// void _gotk4_gstgl1_GLBaseSrc_virtual_gl_stop(void* fnptr, GstGLBaseSrc* carg0) {
-// 	return ((void (*) (GstGLBaseSrc*))(fnptr))(carg0);
+// C.void _gotk4_gstgl1_GLBaseSrc_virtual_gl_stop(void* fnptr, *C.GstGLBaseSrc carg0) {
+// 	return ((C.void (*) (*C.GstGLBaseSrc))(fnptr))(carg0);
 // }
-// extern gboolean _gotk4_gstgl1_GLContext_activate(GstGLContext*, gboolean);
-// extern gboolean _gotk4_gstgl1_GLContext_check_feature(GstGLContext*, gchar*);
-// extern gboolean _gotk4_gstgl1_GLContext_choose_format(GstGLContext*, GError*);
-// extern gboolean _gotk4_gstgl1_GLContext_create_context(GstGLContext*, GstGLAPI, GstGLContext*, GError*);
-// extern void _gotk4_gstgl1_GLContext_destroy_context(GstGLContext*);
-// extern GstStructure* _gotk4_gstgl1_GLContext_get_config(GstGLContext*);
-// extern GstGLAPI _gotk4_gstgl1_GLContext_get_gl_api(GstGLContext*);
-// extern GstGLPlatform _gotk4_gstgl1_GLContext_get_gl_platform(GstGLContext*);
-// extern void _gotk4_gstgl1_GLContext_get_gl_platform_version(GstGLContext*, gint, gint);
-// extern gboolean _gotk4_gstgl1_GLContext_request_config(GstGLContext*, GstStructure*);
-// extern void _gotk4_gstgl1_GLContext_swap_buffers(GstGLContext*);
-// gboolean _gotk4_gstgl1_GLContext_virtual_activate(void* fnptr, GstGLContext* carg0, gboolean carg1) {
-// 	return ((gboolean (*) (GstGLContext*, gboolean))(fnptr))(carg0, carg1);
+// extern C.gboolean _gotk4_gstgl1_GLContext_activate(*C.GstGLContext, C.gboolean);
+// extern C.gboolean _gotk4_gstgl1_GLContext_check_feature(*C.GstGLContext, *C.gchar);
+// extern C.gboolean _gotk4_gstgl1_GLContext_choose_format(*C.GstGLContext, GError*);
+// extern C.gboolean _gotk4_gstgl1_GLContext_create_context(*C.GstGLContext, C.GstGLAPI, *C.GstGLContext, GError*);
+// extern C.void _gotk4_gstgl1_GLContext_destroy_context(*C.GstGLContext);
+// extern *C.GstStructure _gotk4_gstgl1_GLContext_get_config(*C.GstGLContext);
+// extern C.GstGLAPI _gotk4_gstgl1_GLContext_get_gl_api(*C.GstGLContext);
+// extern C.GstGLPlatform _gotk4_gstgl1_GLContext_get_gl_platform(*C.GstGLContext);
+// extern C.void _gotk4_gstgl1_GLContext_get_gl_platform_version(*C.GstGLContext, C.gint, C.gint);
+// extern C.gboolean _gotk4_gstgl1_GLContext_request_config(*C.GstGLContext, *C.GstStructure);
+// extern C.void _gotk4_gstgl1_GLContext_swap_buffers(*C.GstGLContext);
+// C.gboolean _gotk4_gstgl1_GLContext_virtual_activate(void* fnptr, *C.GstGLContext carg0, C.gboolean carg1) {
+// 	return ((C.gboolean (*) (*C.GstGLContext, C.gboolean))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstgl1_GLContext_virtual_check_feature(void* fnptr, GstGLContext* carg0, gchar* carg1) {
-// 	return ((gboolean (*) (GstGLContext*, gchar*))(fnptr))(carg0, carg1);
+// C.gboolean _gotk4_gstgl1_GLContext_virtual_check_feature(void* fnptr, *C.GstGLContext carg0, *C.gchar carg1) {
+// 	return ((C.gboolean (*) (*C.GstGLContext, *C.gchar))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstgl1_GLContext_virtual_choose_format(void* fnptr, GstGLContext* carg0, GError** _cerr) {
-// 	return ((gboolean (*) (GstGLContext*, GError**))(fnptr))(carg0, _cerr);
+// C.gboolean _gotk4_gstgl1_GLContext_virtual_choose_format(void* fnptr, *C.GstGLContext carg0, GError** _cerr) {
+// 	return ((C.gboolean (*) (*C.GstGLContext, GError**))(fnptr))(carg0, _cerr);
 // }
-// gboolean _gotk4_gstgl1_GLContext_virtual_create_context(void* fnptr, GstGLContext* carg0, GstGLAPI carg1, GstGLContext* carg2, GError** _cerr) {
-// 	return ((gboolean (*) (GstGLContext*, GstGLAPI, GstGLContext*, GError**))(fnptr))(carg0, carg1, carg2, _cerr);
+// C.gboolean _gotk4_gstgl1_GLContext_virtual_create_context(void* fnptr, *C.GstGLContext carg0, C.GstGLAPI carg1, *C.GstGLContext carg2, GError** _cerr) {
+// 	return ((C.gboolean (*) (*C.GstGLContext, C.GstGLAPI, *C.GstGLContext, GError**))(fnptr))(carg0, carg1, carg2, _cerr);
 // }
-// void _gotk4_gstgl1_GLContext_virtual_destroy_context(void* fnptr, GstGLContext* carg0) {
-// 	return ((void (*) (GstGLContext*))(fnptr))(carg0);
+// C.void _gotk4_gstgl1_GLContext_virtual_destroy_context(void* fnptr, *C.GstGLContext carg0) {
+// 	return ((C.void (*) (*C.GstGLContext))(fnptr))(carg0);
 // }
-// GstStructure* _gotk4_gstgl1_GLContext_virtual_get_config(void* fnptr, GstGLContext* carg0) {
-// 	return ((GstStructure* (*) (GstGLContext*))(fnptr))(carg0);
+// *C.GstStructure _gotk4_gstgl1_GLContext_virtual_get_config(void* fnptr, *C.GstGLContext carg0) {
+// 	return ((*C.GstStructure (*) (*C.GstGLContext))(fnptr))(carg0);
 // }
-// GstGLAPI _gotk4_gstgl1_GLContext_virtual_get_gl_api(void* fnptr, GstGLContext* carg0) {
-// 	return ((GstGLAPI (*) (GstGLContext*))(fnptr))(carg0);
+// C.GstGLAPI _gotk4_gstgl1_GLContext_virtual_get_gl_api(void* fnptr, *C.GstGLContext carg0) {
+// 	return ((C.GstGLAPI (*) (*C.GstGLContext))(fnptr))(carg0);
 // }
-// GstGLPlatform _gotk4_gstgl1_GLContext_virtual_get_gl_platform(void* fnptr, GstGLContext* carg0) {
-// 	return ((GstGLPlatform (*) (GstGLContext*))(fnptr))(carg0);
+// C.GstGLPlatform _gotk4_gstgl1_GLContext_virtual_get_gl_platform(void* fnptr, *C.GstGLContext carg0) {
+// 	return ((C.GstGLPlatform (*) (*C.GstGLContext))(fnptr))(carg0);
 // }
-// void _gotk4_gstgl1_GLContext_virtual_get_gl_platform_version(void* fnptr, GstGLContext* carg0, gint* carg1, gint* carg2) {
-// 	return ((void (*) (GstGLContext*, gint*, gint*))(fnptr))(carg0, carg1, carg2);
+// C.void _gotk4_gstgl1_GLContext_virtual_get_gl_platform_version(void* fnptr, *C.GstGLContext carg0, C.gint* carg1, C.gint* carg2) {
+// 	return ((C.void (*) (*C.GstGLContext, C.gint*, C.gint*))(fnptr))(carg0, carg1, carg2);
 // }
-// gboolean _gotk4_gstgl1_GLContext_virtual_request_config(void* fnptr, GstGLContext* carg0, GstStructure* carg1) {
-// 	return ((gboolean (*) (GstGLContext*, GstStructure*))(fnptr))(carg0, carg1);
+// C.gboolean _gotk4_gstgl1_GLContext_virtual_request_config(void* fnptr, *C.GstGLContext carg0, *C.GstStructure carg1) {
+// 	return ((C.gboolean (*) (*C.GstGLContext, *C.GstStructure))(fnptr))(carg0, carg1);
 // }
-// void _gotk4_gstgl1_GLContext_virtual_swap_buffers(void* fnptr, GstGLContext* carg0) {
-// 	return ((void (*) (GstGLContext*))(fnptr))(carg0);
+// C.void _gotk4_gstgl1_GLContext_virtual_swap_buffers(void* fnptr, *C.GstGLContext carg0) {
+// 	return ((C.void (*) (*C.GstGLContext))(fnptr))(carg0);
 // }
-// extern GstGLWindow* _gotk4_gstgl1_GLDisplay_create_window(GstGLDisplay*);
-// GstGLWindow* _gotk4_gstgl1_GLDisplay_virtual_create_window(void* fnptr, GstGLDisplay* carg0) {
-// 	return ((GstGLWindow* (*) (GstGLDisplay*))(fnptr))(carg0);
+// extern *C.GstGLWindow _gotk4_gstgl1_GLDisplay_create_window(*C.GstGLDisplay);
+// *C.GstGLWindow _gotk4_gstgl1_GLDisplay_virtual_create_window(void* fnptr, *C.GstGLDisplay carg0) {
+// 	return ((*C.GstGLWindow (*) (*C.GstGLDisplay))(fnptr))(carg0);
 // }
-// extern gboolean _gotk4_gstgl1_GLFilter_filter(GstGLFilter*, GstBuffer*, GstBuffer*);
-// extern gboolean _gotk4_gstgl1_GLFilter_filter_texture(GstGLFilter*, GstGLMemory*, GstGLMemory*);
-// extern gboolean _gotk4_gstgl1_GLFilter_init_fbo(GstGLFilter*);
-// extern gboolean _gotk4_gstgl1_GLFilter_set_caps(GstGLFilter*, GstCaps*, GstCaps*);
-// extern GstCaps* _gotk4_gstgl1_GLFilter_transform_internal_caps(GstGLFilter*, GstPadDirection, GstCaps*, GstCaps*);
-// gboolean _gotk4_gstgl1_GLFilter_virtual_filter(void* fnptr, GstGLFilter* carg0, GstBuffer* carg1, GstBuffer* carg2) {
-// 	return ((gboolean (*) (GstGLFilter*, GstBuffer*, GstBuffer*))(fnptr))(carg0, carg1, carg2);
+// extern C.gboolean _gotk4_gstgl1_GLFilter_filter(*C.GstGLFilter, *C.GstBuffer, *C.GstBuffer);
+// extern C.gboolean _gotk4_gstgl1_GLFilter_filter_texture(*C.GstGLFilter, *C.GstGLMemory, *C.GstGLMemory);
+// extern C.gboolean _gotk4_gstgl1_GLFilter_init_fbo(*C.GstGLFilter);
+// extern C.gboolean _gotk4_gstgl1_GLFilter_set_caps(*C.GstGLFilter, *C.GstCaps, *C.GstCaps);
+// extern *C.GstCaps _gotk4_gstgl1_GLFilter_transform_internal_caps(*C.GstGLFilter, C.GstPadDirection, *C.GstCaps, *C.GstCaps);
+// C.gboolean _gotk4_gstgl1_GLFilter_virtual_filter(void* fnptr, *C.GstGLFilter carg0, *C.GstBuffer carg1, *C.GstBuffer carg2) {
+// 	return ((C.gboolean (*) (*C.GstGLFilter, *C.GstBuffer, *C.GstBuffer))(fnptr))(carg0, carg1, carg2);
 // }
-// gboolean _gotk4_gstgl1_GLFilter_virtual_filter_texture(void* fnptr, GstGLFilter* carg0, GstGLMemory* carg1, GstGLMemory* carg2) {
-// 	return ((gboolean (*) (GstGLFilter*, GstGLMemory*, GstGLMemory*))(fnptr))(carg0, carg1, carg2);
+// C.gboolean _gotk4_gstgl1_GLFilter_virtual_filter_texture(void* fnptr, *C.GstGLFilter carg0, *C.GstGLMemory carg1, *C.GstGLMemory carg2) {
+// 	return ((C.gboolean (*) (*C.GstGLFilter, *C.GstGLMemory, *C.GstGLMemory))(fnptr))(carg0, carg1, carg2);
 // }
-// gboolean _gotk4_gstgl1_GLFilter_virtual_init_fbo(void* fnptr, GstGLFilter* carg0) {
-// 	return ((gboolean (*) (GstGLFilter*))(fnptr))(carg0);
+// C.gboolean _gotk4_gstgl1_GLFilter_virtual_init_fbo(void* fnptr, *C.GstGLFilter carg0) {
+// 	return ((C.gboolean (*) (*C.GstGLFilter))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstgl1_GLFilter_virtual_set_caps(void* fnptr, GstGLFilter* carg0, GstCaps* carg1, GstCaps* carg2) {
-// 	return ((gboolean (*) (GstGLFilter*, GstCaps*, GstCaps*))(fnptr))(carg0, carg1, carg2);
+// C.gboolean _gotk4_gstgl1_GLFilter_virtual_set_caps(void* fnptr, *C.GstGLFilter carg0, *C.GstCaps carg1, *C.GstCaps carg2) {
+// 	return ((C.gboolean (*) (*C.GstGLFilter, *C.GstCaps, *C.GstCaps))(fnptr))(carg0, carg1, carg2);
 // }
-// GstCaps* _gotk4_gstgl1_GLFilter_virtual_transform_internal_caps(void* fnptr, GstGLFilter* carg0, GstPadDirection carg1, GstCaps* carg2, GstCaps* carg3) {
-// 	return ((GstCaps* (*) (GstGLFilter*, GstPadDirection, GstCaps*, GstCaps*))(fnptr))(carg0, carg1, carg2, carg3);
+// *C.GstCaps _gotk4_gstgl1_GLFilter_virtual_transform_internal_caps(void* fnptr, *C.GstGLFilter carg0, C.GstPadDirection carg1, *C.GstCaps carg2, *C.GstCaps carg3) {
+// 	return ((*C.GstCaps (*) (*C.GstGLFilter, C.GstPadDirection, *C.GstCaps, *C.GstCaps))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// extern gboolean _gotk4_gstgl1_GLMixer_process_buffers(GstGLMixer*, GstBuffer*);
-// extern gboolean _gotk4_gstgl1_GLMixer_process_textures(GstGLMixer*, GstGLMemory*);
-// gboolean _gotk4_gstgl1_GLMixer_virtual_process_buffers(void* fnptr, GstGLMixer* carg0, GstBuffer* carg1) {
-// 	return ((gboolean (*) (GstGLMixer*, GstBuffer*))(fnptr))(carg0, carg1);
+// extern C.gboolean _gotk4_gstgl1_GLMixer_process_buffers(*C.GstGLMixer, *C.GstBuffer);
+// extern C.gboolean _gotk4_gstgl1_GLMixer_process_textures(*C.GstGLMixer, *C.GstGLMemory);
+// C.gboolean _gotk4_gstgl1_GLMixer_virtual_process_buffers(void* fnptr, *C.GstGLMixer carg0, *C.GstBuffer carg1) {
+// 	return ((C.gboolean (*) (*C.GstGLMixer, *C.GstBuffer))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstgl1_GLMixer_virtual_process_textures(void* fnptr, GstGLMixer* carg0, GstGLMemory* carg1) {
-// 	return ((gboolean (*) (GstGLMixer*, GstGLMemory*))(fnptr))(carg0, carg1);
+// C.gboolean _gotk4_gstgl1_GLMixer_virtual_process_textures(void* fnptr, *C.GstGLMixer carg0, *C.GstGLMemory carg1) {
+// 	return ((C.gboolean (*) (*C.GstGLMixer, *C.GstGLMemory))(fnptr))(carg0, carg1);
 // }
-// extern void _gotk4_gstgl1_GLWindow_close(GstGLWindow*);
-// extern gboolean _gotk4_gstgl1_GLWindow_controls_viewport(GstGLWindow*);
-// extern void _gotk4_gstgl1_GLWindow_draw(GstGLWindow*);
-// extern void _gotk4_gstgl1_GLWindow_handle_events(GstGLWindow*, gboolean);
-// extern gboolean _gotk4_gstgl1_GLWindow_has_output_surface(GstGLWindow*);
-// extern gboolean _gotk4_gstgl1_GLWindow_open(GstGLWindow*, GError*);
-// extern void _gotk4_gstgl1_GLWindow_queue_resize(GstGLWindow*);
-// extern void _gotk4_gstgl1_GLWindow_quit(GstGLWindow*);
-// extern void _gotk4_gstgl1_GLWindow_run(GstGLWindow*);
-// extern void _gotk4_gstgl1_GLWindow_set_preferred_size(GstGLWindow*, gint, gint);
-// extern gboolean _gotk4_gstgl1_GLWindow_set_render_rectangle(GstGLWindow*, gint, gint, gint, gint);
-// extern void _gotk4_gstgl1_GLWindow_show(GstGLWindow*);
-// void _gotk4_gstgl1_GLWindow_virtual_close(void* fnptr, GstGLWindow* carg0) {
-// 	return ((void (*) (GstGLWindow*))(fnptr))(carg0);
+// extern C.void _gotk4_gstgl1_GLWindow_close(*C.GstGLWindow);
+// extern C.gboolean _gotk4_gstgl1_GLWindow_controls_viewport(*C.GstGLWindow);
+// extern C.void _gotk4_gstgl1_GLWindow_draw(*C.GstGLWindow);
+// extern C.void _gotk4_gstgl1_GLWindow_handle_events(*C.GstGLWindow, C.gboolean);
+// extern C.gboolean _gotk4_gstgl1_GLWindow_has_output_surface(*C.GstGLWindow);
+// extern C.gboolean _gotk4_gstgl1_GLWindow_open(*C.GstGLWindow, GError*);
+// extern C.void _gotk4_gstgl1_GLWindow_queue_resize(*C.GstGLWindow);
+// extern C.void _gotk4_gstgl1_GLWindow_quit(*C.GstGLWindow);
+// extern C.void _gotk4_gstgl1_GLWindow_run(*C.GstGLWindow);
+// extern C.void _gotk4_gstgl1_GLWindow_set_preferred_size(*C.GstGLWindow, C.gint, C.gint);
+// extern C.gboolean _gotk4_gstgl1_GLWindow_set_render_rectangle(*C.GstGLWindow, C.gint, C.gint, C.gint, C.gint);
+// extern C.void _gotk4_gstgl1_GLWindow_show(*C.GstGLWindow);
+// C.void _gotk4_gstgl1_GLWindow_virtual_close(void* fnptr, *C.GstGLWindow carg0) {
+// 	return ((C.void (*) (*C.GstGLWindow))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstgl1_GLWindow_virtual_controls_viewport(void* fnptr, GstGLWindow* carg0) {
-// 	return ((gboolean (*) (GstGLWindow*))(fnptr))(carg0);
+// C.gboolean _gotk4_gstgl1_GLWindow_virtual_controls_viewport(void* fnptr, *C.GstGLWindow carg0) {
+// 	return ((C.gboolean (*) (*C.GstGLWindow))(fnptr))(carg0);
 // }
-// void _gotk4_gstgl1_GLWindow_virtual_draw(void* fnptr, GstGLWindow* carg0) {
-// 	return ((void (*) (GstGLWindow*))(fnptr))(carg0);
+// C.void _gotk4_gstgl1_GLWindow_virtual_draw(void* fnptr, *C.GstGLWindow carg0) {
+// 	return ((C.void (*) (*C.GstGLWindow))(fnptr))(carg0);
 // }
-// void _gotk4_gstgl1_GLWindow_virtual_handle_events(void* fnptr, GstGLWindow* carg0, gboolean carg1) {
-// 	return ((void (*) (GstGLWindow*, gboolean))(fnptr))(carg0, carg1);
+// C.void _gotk4_gstgl1_GLWindow_virtual_handle_events(void* fnptr, *C.GstGLWindow carg0, C.gboolean carg1) {
+// 	return ((C.void (*) (*C.GstGLWindow, C.gboolean))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstgl1_GLWindow_virtual_has_output_surface(void* fnptr, GstGLWindow* carg0) {
-// 	return ((gboolean (*) (GstGLWindow*))(fnptr))(carg0);
+// C.gboolean _gotk4_gstgl1_GLWindow_virtual_has_output_surface(void* fnptr, *C.GstGLWindow carg0) {
+// 	return ((C.gboolean (*) (*C.GstGLWindow))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstgl1_GLWindow_virtual_open(void* fnptr, GstGLWindow* carg0, GError** _cerr) {
-// 	return ((gboolean (*) (GstGLWindow*, GError**))(fnptr))(carg0, _cerr);
+// C.gboolean _gotk4_gstgl1_GLWindow_virtual_open(void* fnptr, *C.GstGLWindow carg0, GError** _cerr) {
+// 	return ((C.gboolean (*) (*C.GstGLWindow, GError**))(fnptr))(carg0, _cerr);
 // }
-// void _gotk4_gstgl1_GLWindow_virtual_queue_resize(void* fnptr, GstGLWindow* carg0) {
-// 	return ((void (*) (GstGLWindow*))(fnptr))(carg0);
+// C.void _gotk4_gstgl1_GLWindow_virtual_queue_resize(void* fnptr, *C.GstGLWindow carg0) {
+// 	return ((C.void (*) (*C.GstGLWindow))(fnptr))(carg0);
 // }
-// void _gotk4_gstgl1_GLWindow_virtual_quit(void* fnptr, GstGLWindow* carg0) {
-// 	return ((void (*) (GstGLWindow*))(fnptr))(carg0);
+// C.void _gotk4_gstgl1_GLWindow_virtual_quit(void* fnptr, *C.GstGLWindow carg0) {
+// 	return ((C.void (*) (*C.GstGLWindow))(fnptr))(carg0);
 // }
-// void _gotk4_gstgl1_GLWindow_virtual_run(void* fnptr, GstGLWindow* carg0) {
-// 	return ((void (*) (GstGLWindow*))(fnptr))(carg0);
+// C.void _gotk4_gstgl1_GLWindow_virtual_run(void* fnptr, *C.GstGLWindow carg0) {
+// 	return ((C.void (*) (*C.GstGLWindow))(fnptr))(carg0);
 // }
-// void _gotk4_gstgl1_GLWindow_virtual_set_preferred_size(void* fnptr, GstGLWindow* carg0, gint carg1, gint carg2) {
-// 	return ((void (*) (GstGLWindow*, gint, gint))(fnptr))(carg0, carg1, carg2);
+// C.void _gotk4_gstgl1_GLWindow_virtual_set_preferred_size(void* fnptr, *C.GstGLWindow carg0, C.gint carg1, C.gint carg2) {
+// 	return ((C.void (*) (*C.GstGLWindow, C.gint, C.gint))(fnptr))(carg0, carg1, carg2);
 // }
-// gboolean _gotk4_gstgl1_GLWindow_virtual_set_render_rectangle(void* fnptr, GstGLWindow* carg0, gint carg1, gint carg2, gint carg3, gint carg4) {
-// 	return ((gboolean (*) (GstGLWindow*, gint, gint, gint, gint))(fnptr))(carg0, carg1, carg2, carg3, carg4);
+// C.gboolean _gotk4_gstgl1_GLWindow_virtual_set_render_rectangle(void* fnptr, *C.GstGLWindow carg0, C.gint carg1, C.gint carg2, C.gint carg3, C.gint carg4) {
+// 	return ((C.gboolean (*) (*C.GstGLWindow, C.gint, C.gint, C.gint, C.gint))(fnptr))(carg0, carg1, carg2, carg3, carg4);
 // }
-// void _gotk4_gstgl1_GLWindow_virtual_show(void* fnptr, GstGLWindow* carg0) {
-// 	return ((void (*) (GstGLWindow*))(fnptr))(carg0);
+// C.void _gotk4_gstgl1_GLWindow_virtual_show(void* fnptr, *C.GstGLWindow carg0) {
+// 	return ((C.void (*) (*C.GstGLWindow))(fnptr))(carg0);
 // }
 import "C"
 
@@ -2414,7 +2414,7 @@ func ContextSetGLDisplay(_context *gst.Context, display GLDisplay) {
 // 
 // 	- goret bool 
 func GLCheckExtension(name string, ext string) bool {
-	var carg1 *C.char    // in, none, string, casted *C.gchar
+	var carg1 *C.char    // in, none, string
 	var carg2 *C.gchar   // in, none, string
 	var cret  C.gboolean // return
 
@@ -2632,7 +2632,7 @@ func GLSetAffineTransformationMetaFromNdc(meta *gstvideo.VideoAffineTransformati
 	carg1 = (*C.GstVideoAffineTransformationMeta)(gstvideo.UnsafeVideoAffineTransformationMetaToGlibNone(meta))
 	_ = matrix
 	_ = carg2
-	panic("unimplemented conversion of [16]float32 (const gfloat*)")
+	panic("unimplemented conversion of [16]float32 (*C.gfloat)")
 
 	C.gst_gl_set_affine_transformation_meta_from_ndc(carg1, carg2)
 	runtime.KeepAlive(meta)
@@ -3039,7 +3039,8 @@ type GLBaseFilter interface {
 	// chain up virtual methods:
 
 	// ParentGLSetCaps calls the default implementations of the gl_set_caps virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- incaps *gst.Caps 
@@ -3054,7 +3055,8 @@ type GLBaseFilter interface {
 	//               where #GstBaseTransform::set_caps may not.
 	ParentGLSetCaps(incaps *gst.Caps, outcaps *gst.Caps) bool
 	// ParentGLStart calls the default implementations of the gl_start virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -3062,7 +3064,7 @@ type GLBaseFilter interface {
 	// called in the GL thread to setup the element GL state.
 	ParentGLStart() bool
 	// ParentGLStop calls the default implementations of the gl_stop virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
 	//
 	// called in the GL thread to setup the element GL state.
 	ParentGLStop()
@@ -3167,7 +3169,8 @@ type GLBaseFilterOverrides[Instance GLBaseFilter] struct {
 	// gstbase.BaseTransformOverrides allows you to override virtual methods from the parent class gstbase.BaseTransform
 	gstbase.BaseTransformOverrides[Instance]
 
-	// GLSetCaps allows you to override the implementation of the virtual method gl_set_caps.
+	// // GLSetCaps allows you to override the implementation of the virtual method gl_set_caps.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- incaps *gst.Caps 
@@ -3181,14 +3184,15 @@ type GLBaseFilterOverrides[Instance GLBaseFilter] struct {
 	//               Note: this will also be called when changing OpenGL contexts
 	//               where #GstBaseTransform::set_caps may not.
 	GLSetCaps func(Instance, *gst.Caps, *gst.Caps) bool
-	// GLStart allows you to override the implementation of the virtual method gl_start.
+	// // GLStart allows you to override the implementation of the virtual method gl_start.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	//
 	// called in the GL thread to setup the element GL state.
 	GLStart func(Instance) bool
-	// GLStop allows you to override the implementation of the virtual method gl_stop.
+	// // GLStop allows you to override the implementation of the virtual method gl_stop.
 	//
 	// called in the GL thread to setup the element GL state.
 	GLStop func(Instance)
@@ -3266,7 +3270,8 @@ func UnsafeApplyGLBaseFilterOverrides[Instance GLBaseFilter](gclass unsafe.Point
 }
 
 // ParentGLSetCaps calls the default implementations of the gl_set_caps virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- incaps *gst.Caps 
@@ -3305,7 +3310,8 @@ func (filter *GLBaseFilterInstance) ParentGLSetCaps(incaps *gst.Caps, outcaps *g
 }
 
 // ParentGLStart calls the default implementations of the gl_start virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -3330,7 +3336,7 @@ func (filter *GLBaseFilterInstance) ParentGLStart() bool {
 }
 
 // ParentGLStop calls the default implementations of the gl_stop virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
 //
 // called in the GL thread to setup the element GL state.
 func (filter *GLBaseFilterInstance) ParentGLStop() {
@@ -3498,7 +3504,8 @@ type GLBaseMixer interface {
 	// chain up virtual methods:
 
 	// ParentGLStart calls the default implementations of the gl_start virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -3506,7 +3513,7 @@ type GLBaseMixer interface {
 	// called in the GL thread to setup the element GL state.
 	ParentGLStart() bool
 	// ParentGLStop calls the default implementations of the gl_stop virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
 	//
 	// called in the GL thread to setup the element GL state.
 	ParentGLStop()
@@ -3590,14 +3597,15 @@ type GLBaseMixerOverrides[Instance GLBaseMixer] struct {
 	// gstvideo.VideoAggregatorOverrides allows you to override virtual methods from the parent class gstvideo.VideoAggregator
 	gstvideo.VideoAggregatorOverrides[Instance]
 
-	// GLStart allows you to override the implementation of the virtual method gl_start.
+	// // GLStart allows you to override the implementation of the virtual method gl_start.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	//
 	// called in the GL thread to setup the element GL state.
 	GLStart func(Instance) bool
-	// GLStop allows you to override the implementation of the virtual method gl_stop.
+	// // GLStop allows you to override the implementation of the virtual method gl_stop.
 	//
 	// called in the GL thread to setup the element GL state.
 	GLStop func(Instance)
@@ -3649,7 +3657,8 @@ func UnsafeApplyGLBaseMixerOverrides[Instance GLBaseMixer](gclass unsafe.Pointer
 }
 
 // ParentGLStart calls the default implementations of the gl_start virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -3674,7 +3683,7 @@ func (mix *GLBaseMixerInstance) ParentGLStart() bool {
 }
 
 // ParentGLStop calls the default implementations of the gl_stop virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
 //
 // called in the GL thread to setup the element GL state.
 func (mix *GLBaseMixerInstance) ParentGLStop() {
@@ -3838,7 +3847,8 @@ type GLBaseSrc interface {
 	// chain up virtual methods:
 
 	// ParentFillGLMemory calls the default implementations of the fill_gl_memory virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- mem *GLMemory 
@@ -3850,7 +3860,8 @@ type GLBaseSrc interface {
 	// called in the GL thread to fill the current video texture.
 	ParentFillGLMemory(mem *GLMemory) bool
 	// ParentGLStart calls the default implementations of the gl_start virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -3858,7 +3869,7 @@ type GLBaseSrc interface {
 	// called in the GL thread to setup the element GL state.
 	ParentGLStart() bool
 	// ParentGLStop calls the default implementations of the gl_stop virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
 	//
 	// called in the GL thread to setup the element GL state.
 	ParentGLStop()
@@ -3919,7 +3930,8 @@ type GLBaseSrcOverrides[Instance GLBaseSrc] struct {
 	// gstbase.PushSrcOverrides allows you to override virtual methods from the parent class gstbase.PushSrc
 	gstbase.PushSrcOverrides[Instance]
 
-	// FillGLMemory allows you to override the implementation of the virtual method fill_gl_memory.
+	// // FillGLMemory allows you to override the implementation of the virtual method fill_gl_memory.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- mem *GLMemory 
@@ -3930,14 +3942,15 @@ type GLBaseSrcOverrides[Instance GLBaseSrc] struct {
 	//
 	// called in the GL thread to fill the current video texture.
 	FillGLMemory func(Instance, *GLMemory) bool
-	// GLStart allows you to override the implementation of the virtual method gl_start.
+	// // GLStart allows you to override the implementation of the virtual method gl_start.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	//
 	// called in the GL thread to setup the element GL state.
 	GLStart func(Instance) bool
-	// GLStop allows you to override the implementation of the virtual method gl_stop.
+	// // GLStop allows you to override the implementation of the virtual method gl_stop.
 	//
 	// called in the GL thread to setup the element GL state.
 	GLStop func(Instance)
@@ -4013,7 +4026,8 @@ func UnsafeApplyGLBaseSrcOverrides[Instance GLBaseSrc](gclass unsafe.Pointer, ov
 }
 
 // ParentFillGLMemory calls the default implementations of the fill_gl_memory virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- mem *GLMemory 
@@ -4046,7 +4060,8 @@ func (src *GLBaseSrcInstance) ParentFillGLMemory(mem *GLMemory) bool {
 }
 
 // ParentGLStart calls the default implementations of the gl_start virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -4071,7 +4086,7 @@ func (src *GLBaseSrcInstance) ParentGLStart() bool {
 }
 
 // ParentGLStop calls the default implementations of the gl_stop virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
 //
 // called in the GL thread to setup the element GL state.
 func (src *GLBaseSrcInstance) ParentGLStop() {
@@ -5119,7 +5134,8 @@ type GLContext interface {
 	// chain up virtual methods:
 
 	// ParentActivate calls the default implementations of the activate virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- activate bool: %TRUE to activate, %FALSE to deactivate 
@@ -5134,7 +5150,8 @@ type GLContext interface {
 	// currently set window.  See gst_gl_context_set_window() for details.
 	ParentActivate(activate bool) bool
 	// ParentCheckFeature calls the default implementations of the check_feature virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- feature string: a platform specific feature 
@@ -5150,7 +5167,8 @@ type GLContext interface {
 	// case.
 	ParentCheckFeature(feature string) bool
 	// ParentChooseFormat calls the default implementations of the choose_format virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -5159,7 +5177,8 @@ type GLContext interface {
 	// choose a format for the framebuffer
 	ParentChooseFormat() (bool, error)
 	// ParentCreateContext calls the default implementations of the create_context virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- glApi GLAPI 
@@ -5173,12 +5192,13 @@ type GLContext interface {
 	// create the OpenGL context
 	ParentCreateContext(glApi GLAPI, otherContext GLContext) (bool, error)
 	// ParentDestroyContext calls the default implementations of the destroy_context virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
 	//
 	// destroy the OpenGL context
 	ParentDestroyContext()
 	// ParentGetConfig calls the default implementations of the get_config virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Structure (nullable) 
@@ -5190,7 +5210,8 @@ type GLContext interface {
 	// return %NULL when not supported.
 	ParentGetConfig() *gst.Structure
 	// ParentGetGLApi calls the default implementations of the get_gl_api virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret GLAPI 
@@ -5201,7 +5222,8 @@ type GLContext interface {
 	// the #GstGLWindow chosen.
 	ParentGetGLApi() GLAPI
 	// ParentGetGLPlatform calls the default implementations of the get_gl_platform virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret GLPlatform 
@@ -5209,7 +5231,8 @@ type GLContext interface {
 	// Gets the OpenGL platform that used by @context.
 	ParentGetGLPlatform() GLPlatform
 	// ParentGetGLPlatformVersion calls the default implementations of the get_gl_platform_version virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- major int32: return for the major version 
@@ -5219,7 +5242,8 @@ type GLContext interface {
 	// after a call to gst_gl_context_create().
 	ParentGetGLPlatformVersion() (int32, int32)
 	// ParentRequestConfig calls the default implementations of the request_config virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- glConfig *gst.Structure (nullable): a configuration structure for
@@ -5243,7 +5267,7 @@ type GLContext interface {
 	// Note that the actual config used may be differ from the requested values.
 	ParentRequestConfig(glConfig *gst.Structure) bool
 	// ParentSwapBuffers calls the default implementations of the swap_buffers virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
 	//
 	// Swap the front and back buffers on the window attached to @context.
 	// This will display the frame on the next refresh cycle.
@@ -6108,7 +6132,8 @@ type GLContextOverrides[Instance GLContext] struct {
 	// gst.ObjectOverrides allows you to override virtual methods from the parent class gst.Object
 	gst.ObjectOverrides[Instance]
 
-	// Activate allows you to override the implementation of the virtual method activate.
+	// // Activate allows you to override the implementation of the virtual method activate.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- activate bool: %TRUE to activate, %FALSE to deactivate 
@@ -6122,7 +6147,8 @@ type GLContextOverrides[Instance GLContext] struct {
 	// In OpenGL terms, calls eglMakeCurrent or similar with this context and the
 	// currently set window.  See gst_gl_context_set_window() for details.
 	Activate func(Instance, bool) bool
-	// CheckFeature allows you to override the implementation of the virtual method check_feature.
+	// // CheckFeature allows you to override the implementation of the virtual method check_feature.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- feature string: a platform specific feature 
@@ -6137,7 +6163,8 @@ type GLContextOverrides[Instance GLContext] struct {
 	// possible to determine their existence and so will fail if that is not the
 	// case.
 	CheckFeature func(Instance, string) bool
-	// ChooseFormat allows you to override the implementation of the virtual method choose_format.
+	// // ChooseFormat allows you to override the implementation of the virtual method choose_format.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -6145,7 +6172,8 @@ type GLContextOverrides[Instance GLContext] struct {
 	//
 	// choose a format for the framebuffer
 	ChooseFormat func(Instance) (bool, error)
-	// CreateContext allows you to override the implementation of the virtual method create_context.
+	// // CreateContext allows you to override the implementation of the virtual method create_context.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- glApi GLAPI 
@@ -6158,11 +6186,12 @@ type GLContextOverrides[Instance GLContext] struct {
 	//
 	// create the OpenGL context
 	CreateContext func(Instance, GLAPI, GLContext) (bool, error)
-	// DestroyContext allows you to override the implementation of the virtual method destroy_context.
+	// // DestroyContext allows you to override the implementation of the virtual method destroy_context.
 	//
 	// destroy the OpenGL context
 	DestroyContext func(Instance)
-	// GetConfig allows you to override the implementation of the virtual method get_config.
+	// // GetConfig allows you to override the implementation of the virtual method get_config.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Structure (nullable) 
@@ -6173,7 +6202,8 @@ type GLContextOverrides[Instance GLContext] struct {
 	// Not all implementations currently support retrieving the config and will
 	// return %NULL when not supported.
 	GetConfig func(Instance) *gst.Structure
-	// GetGLApi allows you to override the implementation of the virtual method get_gl_api.
+	// // GetGLApi allows you to override the implementation of the virtual method get_gl_api.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret GLAPI 
@@ -6183,14 +6213,16 @@ type GLContextOverrides[Instance GLContext] struct {
 	// The currently available API may be limited by the #GstGLDisplay in use and/or
 	// the #GstGLWindow chosen.
 	GetGLApi func(Instance) GLAPI
-	// GetGLPlatform allows you to override the implementation of the virtual method get_gl_platform.
+	// // GetGLPlatform allows you to override the implementation of the virtual method get_gl_platform.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret GLPlatform 
 	//
 	// Gets the OpenGL platform that used by @context.
 	GetGLPlatform func(Instance) GLPlatform
-	// GetGLPlatformVersion allows you to override the implementation of the virtual method get_gl_platform_version.
+	// // GetGLPlatformVersion allows you to override the implementation of the virtual method get_gl_platform_version.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- major int32: return for the major version 
@@ -6199,7 +6231,8 @@ type GLContextOverrides[Instance GLContext] struct {
 	// Get the version of the OpenGL platform (GLX, EGL, etc) used.  Only valid
 	// after a call to gst_gl_context_create().
 	GetGLPlatformVersion func(Instance) (int32, int32)
-	// RequestConfig allows you to override the implementation of the virtual method request_config.
+	// // RequestConfig allows you to override the implementation of the virtual method request_config.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- glConfig *gst.Structure (nullable): a configuration structure for
@@ -6222,7 +6255,7 @@ type GLContextOverrides[Instance GLContext] struct {
 	// 
 	// Note that the actual config used may be differ from the requested values.
 	RequestConfig func(Instance, *gst.Structure) bool
-	// SwapBuffers allows you to override the implementation of the virtual method swap_buffers.
+	// // SwapBuffers allows you to override the implementation of the virtual method swap_buffers.
 	//
 	// Swap the front and back buffers on the window attached to @context.
 	// This will display the frame on the next refresh cycle.
@@ -6478,7 +6511,8 @@ func UnsafeApplyGLContextOverrides[Instance GLContext](gclass unsafe.Pointer, ov
 }
 
 // ParentActivate calls the default implementations of the activate virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- activate bool: %TRUE to activate, %FALSE to deactivate 
@@ -6516,7 +6550,8 @@ func (_context *GLContextInstance) ParentActivate(activate bool) bool {
 }
 
 // ParentCheckFeature calls the default implementations of the check_feature virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- feature string: a platform specific feature 
@@ -6554,7 +6589,8 @@ func (_context *GLContextInstance) ParentCheckFeature(feature string) bool {
 }
 
 // ParentChooseFormat calls the default implementations of the choose_format virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -6585,7 +6621,8 @@ func (_context *GLContextInstance) ParentChooseFormat() (bool, error) {
 }
 
 // ParentCreateContext calls the default implementations of the create_context virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- glApi GLAPI 
@@ -6628,7 +6665,7 @@ func (_context *GLContextInstance) ParentCreateContext(glApi GLAPI, otherContext
 }
 
 // ParentDestroyContext calls the default implementations of the destroy_context virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
 //
 // destroy the OpenGL context
 func (_context *GLContextInstance) ParentDestroyContext() {
@@ -6641,7 +6678,8 @@ func (_context *GLContextInstance) ParentDestroyContext() {
 }
 
 // ParentGetConfig calls the default implementations of the get_config virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Structure (nullable) 
@@ -6670,7 +6708,8 @@ func (_context *GLContextInstance) ParentGetConfig() *gst.Structure {
 }
 
 // ParentGetGLApi calls the default implementations of the get_gl_api virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret GLAPI 
@@ -6696,7 +6735,8 @@ func (_context *GLContextInstance) ParentGetGLApi() GLAPI {
 }
 
 // ParentGetGLPlatform calls the default implementations of the get_gl_platform virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret GLPlatform 
@@ -6719,7 +6759,8 @@ func (_context *GLContextInstance) ParentGetGLPlatform() GLPlatform {
 }
 
 // ParentGetGLPlatformVersion calls the default implementations of the get_gl_platform_version virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- major int32: return for the major version 
@@ -6747,7 +6788,8 @@ func (_context *GLContextInstance) ParentGetGLPlatformVersion() (int32, int32) {
 }
 
 // ParentRequestConfig calls the default implementations of the request_config virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- glConfig *gst.Structure (nullable): a configuration structure for
@@ -6794,7 +6836,7 @@ func (_context *GLContextInstance) ParentRequestConfig(glConfig *gst.Structure) 
 }
 
 // ParentSwapBuffers calls the default implementations of the swap_buffers virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
 //
 // Swap the front and back buffers on the window attached to @context.
 // This will display the frame on the next refresh cycle.
@@ -6956,7 +6998,8 @@ type GLDisplay interface {
 	// chain up virtual methods:
 
 	// ParentCreateWindow calls the default implementations of the create_window virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret GLWindow (nullable) 
@@ -7303,7 +7346,8 @@ type GLDisplayOverrides[Instance GLDisplay] struct {
 	// gst.ObjectOverrides allows you to override virtual methods from the parent class gst.Object
 	gst.ObjectOverrides[Instance]
 
-	// CreateWindow allows you to override the implementation of the virtual method create_window.
+	// // CreateWindow allows you to override the implementation of the virtual method create_window.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret GLWindow (nullable) 
@@ -7341,7 +7385,8 @@ func UnsafeApplyGLDisplayOverrides[Instance GLDisplay](gclass unsafe.Pointer, ov
 }
 
 // ParentCreateWindow calls the default implementations of the create_window virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret GLWindow (nullable) 
@@ -7455,7 +7500,8 @@ type GLFilter interface {
 	// chain up virtual methods:
 
 	// ParentFilter calls the default implementations of the filter virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- inbuf *gst.Buffer 
@@ -7471,7 +7517,8 @@ type GLFilter interface {
 	//          Note: If @filter exists, then @filter_texture is not run
 	ParentFilter(inbuf *gst.Buffer, outbuf *gst.Buffer) bool
 	// ParentFilterTexture calls the default implementations of the filter_texture virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- input *GLMemory: an input buffer 
@@ -7484,7 +7531,8 @@ type GLFilter interface {
 	// Calls filter_texture vfunc with correctly mapped #GstGLMemorys
 	ParentFilterTexture(input *GLMemory, output *GLMemory) bool
 	// ParentInitFbo calls the default implementations of the init_fbo virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -7492,7 +7540,8 @@ type GLFilter interface {
 	// perform initialization when the Framebuffer object is created
 	ParentInitFbo() bool
 	// ParentSetCaps calls the default implementations of the set_caps virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- incaps *gst.Caps 
@@ -7505,7 +7554,8 @@ type GLFilter interface {
 	// mirror from #GstBaseTransform
 	ParentSetCaps(incaps *gst.Caps, outcaps *gst.Caps) bool
 	// ParentTransformInternalCaps calls the default implementations of the transform_internal_caps virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- direction gst.PadDirection 
@@ -7713,7 +7763,8 @@ type GLFilterOverrides[Instance GLFilter] struct {
 	// GLBaseFilterOverrides allows you to override virtual methods from the parent class GLBaseFilter
 	GLBaseFilterOverrides[Instance]
 
-	// Filter allows you to override the implementation of the virtual method filter.
+	// // Filter allows you to override the implementation of the virtual method filter.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- inbuf *gst.Buffer 
@@ -7728,7 +7779,8 @@ type GLFilterOverrides[Instance GLFilter] struct {
 	//          use-case for using this is keeping previous buffers for future calculations.
 	//          Note: If @filter exists, then @filter_texture is not run
 	Filter func(Instance, *gst.Buffer, *gst.Buffer) bool
-	// FilterTexture allows you to override the implementation of the virtual method filter_texture.
+	// // FilterTexture allows you to override the implementation of the virtual method filter_texture.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- input *GLMemory: an input buffer 
@@ -7740,14 +7792,16 @@ type GLFilterOverrides[Instance GLFilter] struct {
 	//
 	// Calls filter_texture vfunc with correctly mapped #GstGLMemorys
 	FilterTexture func(Instance, *GLMemory, *GLMemory) bool
-	// InitFbo allows you to override the implementation of the virtual method init_fbo.
+	// // InitFbo allows you to override the implementation of the virtual method init_fbo.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	//
 	// perform initialization when the Framebuffer object is created
 	InitFbo func(Instance) bool
-	// SetCaps allows you to override the implementation of the virtual method set_caps.
+	// // SetCaps allows you to override the implementation of the virtual method set_caps.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- incaps *gst.Caps 
@@ -7759,7 +7813,8 @@ type GLFilterOverrides[Instance GLFilter] struct {
 	//
 	// mirror from #GstBaseTransform
 	SetCaps func(Instance, *gst.Caps, *gst.Caps) bool
-	// TransformInternalCaps allows you to override the implementation of the virtual method transform_internal_caps.
+	// // TransformInternalCaps allows you to override the implementation of the virtual method transform_internal_caps.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- direction gst.PadDirection 
@@ -7910,7 +7965,8 @@ func UnsafeApplyGLFilterOverrides[Instance GLFilter](gclass unsafe.Pointer, over
 }
 
 // ParentFilter calls the default implementations of the filter virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- inbuf *gst.Buffer 
@@ -7950,7 +8006,8 @@ func (filter *GLFilterInstance) ParentFilter(inbuf *gst.Buffer, outbuf *gst.Buff
 }
 
 // ParentFilterTexture calls the default implementations of the filter_texture virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- input *GLMemory: an input buffer 
@@ -7987,7 +8044,8 @@ func (filter *GLFilterInstance) ParentFilterTexture(input *GLMemory, output *GLM
 }
 
 // ParentInitFbo calls the default implementations of the init_fbo virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -8012,7 +8070,8 @@ func (filter *GLFilterInstance) ParentInitFbo() bool {
 }
 
 // ParentSetCaps calls the default implementations of the set_caps virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- incaps *gst.Caps 
@@ -8049,7 +8108,8 @@ func (filter *GLFilterInstance) ParentSetCaps(incaps *gst.Caps, outcaps *gst.Cap
 }
 
 // ParentTransformInternalCaps calls the default implementations of the transform_internal_caps virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- direction gst.PadDirection 
@@ -8690,7 +8750,8 @@ type GLMixer interface {
 	// chain up virtual methods:
 
 	// ParentProcessBuffers calls the default implementations of the process_buffers virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- outbuf *gst.Buffer 
@@ -8703,7 +8764,8 @@ type GLMixer interface {
 	// output buffer.
 	ParentProcessBuffers(outbuf *gst.Buffer) bool
 	// ParentProcessTextures calls the default implementations of the process_textures virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- outTex *GLMemory 
@@ -8830,7 +8892,8 @@ type GLMixerOverrides[Instance GLMixer] struct {
 	// GLBaseMixerOverrides allows you to override virtual methods from the parent class GLBaseMixer
 	GLBaseMixerOverrides[Instance]
 
-	// ProcessBuffers allows you to override the implementation of the virtual method process_buffers.
+	// // ProcessBuffers allows you to override the implementation of the virtual method process_buffers.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- outbuf *gst.Buffer 
@@ -8842,7 +8905,8 @@ type GLMixerOverrides[Instance GLMixer] struct {
 	// Perform operations on the input buffers to produce an
 	// output buffer.
 	ProcessBuffers func(Instance, *gst.Buffer) bool
-	// ProcessTextures allows you to override the implementation of the virtual method process_textures.
+	// // ProcessTextures allows you to override the implementation of the virtual method process_textures.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- outTex *GLMemory 
@@ -8914,7 +8978,8 @@ func UnsafeApplyGLMixerOverrides[Instance GLMixer](gclass unsafe.Pointer, overri
 }
 
 // ParentProcessBuffers calls the default implementations of the process_buffers virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- outbuf *gst.Buffer 
@@ -8948,7 +9013,8 @@ func (mix *GLMixerInstance) ParentProcessBuffers(outbuf *gst.Buffer) bool {
 }
 
 // ParentProcessTextures calls the default implementations of the process_textures virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- outTex *GLMemory 
@@ -9677,7 +9743,7 @@ func NewGLSLStageWithStrings(_context GLContext, typ uint, version GLSLVersion, 
 	_ = str
 	_ = carg6
 	_ = carg5
-	panic("unimplemented conversion of []string (const gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	cret = C.gst_glsl_stage_new_with_strings(carg1, carg2, carg3, carg4, carg5, carg6)
 	runtime.KeepAlive(_context)
@@ -9833,7 +9899,7 @@ func (stage *GLSLStageInstance) SetStrings(version GLSLVersion, profile GLSLProf
 	_ = str
 	_ = carg4
 	_ = carg3
-	panic("unimplemented conversion of []string (const gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	cret = C.gst_glsl_stage_set_strings(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(stage)
@@ -10754,7 +10820,7 @@ func (shader *GLShaderInstance) GetAttributeLocation(name string) int32 {
 // 	- goret int32 
 func (shader *GLShaderInstance) GetProgramHandle() int32 {
 	var carg0 *C.GstGLShader // in, none, converted
-	var cret  C.int          // return, none, casted, casted C.gint
+	var cret  C.int          // return, none, casted
 
 	carg0 = (*C.GstGLShader)(UnsafeGLShaderToGlibNone(shader))
 
@@ -10898,7 +10964,7 @@ func (shader *GLShaderInstance) SetUniform1Fv(name string, value []float32) {
 	_ = value
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []float32 (const gfloat*)")
+	panic("unimplemented conversion of []float32 (*C.gfloat)")
 
 	C.gst_gl_shader_set_uniform_1fv(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(shader)
@@ -10950,7 +11016,7 @@ func (shader *GLShaderInstance) SetUniform1Iv(name string, value []int32) {
 	_ = value
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []int32 (const gint*)")
+	panic("unimplemented conversion of []int32 (*C.gint)")
 
 	C.gst_gl_shader_set_uniform_1iv(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(shader)
@@ -11006,7 +11072,7 @@ func (shader *GLShaderInstance) SetUniform2Fv(name string, value []float32) {
 	_ = value
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []float32 (const gfloat*)")
+	panic("unimplemented conversion of []float32 (*C.gfloat)")
 
 	C.gst_gl_shader_set_uniform_2fv(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(shader)
@@ -11062,7 +11128,7 @@ func (shader *GLShaderInstance) SetUniform2Iv(name string, value []int32) {
 	_ = value
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []int32 (const gint*)")
+	panic("unimplemented conversion of []int32 (*C.gint)")
 
 	C.gst_gl_shader_set_uniform_2iv(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(shader)
@@ -11122,7 +11188,7 @@ func (shader *GLShaderInstance) SetUniform3Fv(name string, value []float32) {
 	_ = value
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []float32 (const gfloat*)")
+	panic("unimplemented conversion of []float32 (*C.gfloat)")
 
 	C.gst_gl_shader_set_uniform_3fv(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(shader)
@@ -11182,7 +11248,7 @@ func (shader *GLShaderInstance) SetUniform3Iv(name string, value []int32) {
 	_ = value
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []int32 (const gint*)")
+	panic("unimplemented conversion of []int32 (*C.gint)")
 
 	C.gst_gl_shader_set_uniform_3iv(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(shader)
@@ -11246,7 +11312,7 @@ func (shader *GLShaderInstance) SetUniform4Fv(name string, value []float32) {
 	_ = value
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []float32 (const gfloat*)")
+	panic("unimplemented conversion of []float32 (*C.gfloat)")
 
 	C.gst_gl_shader_set_uniform_4fv(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(shader)
@@ -11310,7 +11376,7 @@ func (shader *GLShaderInstance) SetUniform4Iv(name string, value []int32) {
 	_ = value
 	_ = carg3
 	_ = carg2
-	panic("unimplemented conversion of []int32 (const gint*)")
+	panic("unimplemented conversion of []int32 (*C.gint)")
 
 	C.gst_gl_shader_set_uniform_4iv(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(shader)
@@ -11344,7 +11410,7 @@ func (shader *GLShaderInstance) SetUniformMatrix2Fv(name string, count int32, tr
 	}
 	_ = value
 	_ = carg4
-	panic("unimplemented conversion of *float32 (gfloat*)")
+	panic("unimplemented conversion of *float32 (*C.gfloat)")
 
 	C.gst_gl_shader_set_uniform_matrix_2fv(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(shader)
@@ -11380,7 +11446,7 @@ func (shader *GLShaderInstance) SetUniformMatrix2X3Fv(name string, count int32, 
 	}
 	_ = value
 	_ = carg4
-	panic("unimplemented conversion of *float32 (gfloat*)")
+	panic("unimplemented conversion of *float32 (*C.gfloat)")
 
 	C.gst_gl_shader_set_uniform_matrix_2x3fv(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(shader)
@@ -11416,7 +11482,7 @@ func (shader *GLShaderInstance) SetUniformMatrix2X4Fv(name string, count int32, 
 	}
 	_ = value
 	_ = carg4
-	panic("unimplemented conversion of *float32 (gfloat*)")
+	panic("unimplemented conversion of *float32 (*C.gfloat)")
 
 	C.gst_gl_shader_set_uniform_matrix_2x4fv(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(shader)
@@ -11452,7 +11518,7 @@ func (shader *GLShaderInstance) SetUniformMatrix3Fv(name string, count int32, tr
 	}
 	_ = value
 	_ = carg4
-	panic("unimplemented conversion of *float32 (gfloat*)")
+	panic("unimplemented conversion of *float32 (*C.gfloat)")
 
 	C.gst_gl_shader_set_uniform_matrix_3fv(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(shader)
@@ -11488,7 +11554,7 @@ func (shader *GLShaderInstance) SetUniformMatrix3X2Fv(name string, count int32, 
 	}
 	_ = value
 	_ = carg4
-	panic("unimplemented conversion of *float32 (gfloat*)")
+	panic("unimplemented conversion of *float32 (*C.gfloat)")
 
 	C.gst_gl_shader_set_uniform_matrix_3x2fv(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(shader)
@@ -11524,7 +11590,7 @@ func (shader *GLShaderInstance) SetUniformMatrix3X4Fv(name string, count int32, 
 	}
 	_ = value
 	_ = carg4
-	panic("unimplemented conversion of *float32 (gfloat*)")
+	panic("unimplemented conversion of *float32 (*C.gfloat)")
 
 	C.gst_gl_shader_set_uniform_matrix_3x4fv(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(shader)
@@ -11560,7 +11626,7 @@ func (shader *GLShaderInstance) SetUniformMatrix4Fv(name string, count int32, tr
 	}
 	_ = value
 	_ = carg4
-	panic("unimplemented conversion of *float32 (gfloat*)")
+	panic("unimplemented conversion of *float32 (*C.gfloat)")
 
 	C.gst_gl_shader_set_uniform_matrix_4fv(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(shader)
@@ -11596,7 +11662,7 @@ func (shader *GLShaderInstance) SetUniformMatrix4X2Fv(name string, count int32, 
 	}
 	_ = value
 	_ = carg4
-	panic("unimplemented conversion of *float32 (gfloat*)")
+	panic("unimplemented conversion of *float32 (*C.gfloat)")
 
 	C.gst_gl_shader_set_uniform_matrix_4x2fv(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(shader)
@@ -11632,7 +11698,7 @@ func (shader *GLShaderInstance) SetUniformMatrix4X3Fv(name string, count int32, 
 	}
 	_ = value
 	_ = carg4
-	panic("unimplemented conversion of *float32 (gfloat*)")
+	panic("unimplemented conversion of *float32 (*C.gfloat)")
 
 	C.gst_gl_shader_set_uniform_matrix_4x3fv(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(shader)
@@ -12745,12 +12811,13 @@ type GLWindow interface {
 	// chain up virtual methods:
 
 	// ParentClose calls the default implementations of the close virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
 	//
 	// close the connection to the display
 	ParentClose()
 	// ParentControlsViewport calls the default implementations of the controls_viewport virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -12758,12 +12825,13 @@ type GLWindow interface {
 	// Checks if @window controls the GL viewport.
 	ParentControlsViewport() bool
 	// ParentDraw calls the default implementations of the draw virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
 	//
 	// Redraw the window contents.  Implementations should invoke the draw callback.
 	ParentDraw()
 	// ParentHandleEvents calls the default implementations of the handle_events virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- handleEvents bool: a #gboolean indicating if events should be handled or not. 
@@ -12775,7 +12843,8 @@ type GLWindow interface {
 	// from the @window.
 	ParentHandleEvents(handleEvents bool)
 	// ParentHasOutputSurface calls the default implementations of the has_output_surface virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -12783,7 +12852,8 @@ type GLWindow interface {
 	// Query whether @window has output surface or not
 	ParentHasOutputSurface() bool
 	// ParentOpen calls the default implementations of the open virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -12792,22 +12862,23 @@ type GLWindow interface {
 	// open the connection to the display
 	ParentOpen() (bool, error)
 	// ParentQueueResize calls the default implementations of the queue_resize virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
 	//
 	// Queue resizing of @window.
 	ParentQueueResize()
 	// ParentQuit calls the default implementations of the quit virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
 	//
 	// Quit the runloop's execution.
 	ParentQuit()
 	// ParentRun calls the default implementations of the run virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
 	//
 	// Start the execution of the runloop.
 	ParentRun()
 	// ParentSetPreferredSize calls the default implementations of the set_preferred_size virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- width int32: new preferred width 
@@ -12817,7 +12888,8 @@ type GLWindow interface {
 	// to ignore this information.
 	ParentSetPreferredSize(width int32, height int32)
 	// ParentSetRenderRectangle calls the default implementations of the set_render_rectangle virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- x int32: x position 
@@ -12833,7 +12905,7 @@ type GLWindow interface {
 	// according to the #GstVideoOverlay interface.
 	ParentSetRenderRectangle(x int32, y int32, width int32, height int32) bool
 	// ParentShow calls the default implementations of the show virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
 	//
 	// Present the window to the screen.
 	ParentShow()
@@ -13107,8 +13179,8 @@ func (window *GLWindowInstance) Run() {
 // 	- keyStr string 
 func (window *GLWindowInstance) SendKeyEvent(eventType string, keyStr string) {
 	var carg0 *C.GstGLWindow // in, none, converted
-	var carg1 *C.char        // in, none, string, casted *C.gchar
-	var carg2 *C.char        // in, none, string, casted *C.gchar
+	var carg1 *C.char        // in, none, string
+	var carg2 *C.char        // in, none, string
 
 	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
 	carg1 = (*C.char)(unsafe.Pointer(C.CString(eventType)))
@@ -13132,10 +13204,10 @@ func (window *GLWindowInstance) SendKeyEvent(eventType string, keyStr string) {
 // 	- posy float64 
 func (window *GLWindowInstance) SendMouseEvent(eventType string, button int32, posx float64, posy float64) {
 	var carg0 *C.GstGLWindow // in, none, converted
-	var carg1 *C.char        // in, none, string, casted *C.gchar
-	var carg2 C.int          // in, none, casted, casted C.gint
-	var carg3 C.double       // in, none, casted, casted C.gdouble
-	var carg4 C.double       // in, none, casted, casted C.gdouble
+	var carg1 *C.char        // in, none, string
+	var carg2 C.int          // in, none, casted
+	var carg3 C.double       // in, none, casted
+	var carg4 C.double       // in, none, casted
 
 	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
 	carg1 = (*C.char)(unsafe.Pointer(C.CString(eventType)))
@@ -13165,10 +13237,10 @@ func (window *GLWindowInstance) SendMouseEvent(eventType string, button int32, p
 // coordinates will be emitted.
 func (window *GLWindowInstance) SendScrollEvent(posx float64, posy float64, deltaX float64, deltaY float64) {
 	var carg0 *C.GstGLWindow // in, none, converted
-	var carg1 C.double       // in, none, casted, casted C.gdouble
-	var carg2 C.double       // in, none, casted, casted C.gdouble
-	var carg3 C.double       // in, none, casted, casted C.gdouble
-	var carg4 C.double       // in, none, casted, casted C.gdouble
+	var carg1 C.double       // in, none, casted
+	var carg2 C.double       // in, none, casted
+	var carg3 C.double       // in, none, casted
+	var carg4 C.double       // in, none, casted
 
 	carg0 = (*C.GstGLWindow)(UnsafeGLWindowToGlibNone(window))
 	carg1 = C.double(posx)
@@ -13302,22 +13374,24 @@ type GLWindowOverrides[Instance GLWindow] struct {
 	// gst.ObjectOverrides allows you to override virtual methods from the parent class gst.Object
 	gst.ObjectOverrides[Instance]
 
-	// Close allows you to override the implementation of the virtual method close.
+	// // Close allows you to override the implementation of the virtual method close.
 	//
 	// close the connection to the display
 	Close func(Instance)
-	// ControlsViewport allows you to override the implementation of the virtual method controls_viewport.
+	// // ControlsViewport allows you to override the implementation of the virtual method controls_viewport.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	//
 	// Checks if @window controls the GL viewport.
 	ControlsViewport func(Instance) bool
-	// Draw allows you to override the implementation of the virtual method draw.
+	// // Draw allows you to override the implementation of the virtual method draw.
 	//
 	// Redraw the window contents.  Implementations should invoke the draw callback.
 	Draw func(Instance)
-	// HandleEvents allows you to override the implementation of the virtual method handle_events.
+	// // HandleEvents allows you to override the implementation of the virtual method handle_events.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- handleEvents bool: a #gboolean indicating if events should be handled or not. 
@@ -13328,14 +13402,16 @@ type GLWindowOverrides[Instance GLWindow] struct {
 	// for them. This method allows you to disable events handling completely
 	// from the @window.
 	HandleEvents func(Instance, bool)
-	// HasOutputSurface allows you to override the implementation of the virtual method has_output_surface.
+	// // HasOutputSurface allows you to override the implementation of the virtual method has_output_surface.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	//
 	// Query whether @window has output surface or not
 	HasOutputSurface func(Instance) bool
-	// Open allows you to override the implementation of the virtual method open.
+	// // Open allows you to override the implementation of the virtual method open.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -13343,19 +13419,20 @@ type GLWindowOverrides[Instance GLWindow] struct {
 	//
 	// open the connection to the display
 	Open func(Instance) (bool, error)
-	// QueueResize allows you to override the implementation of the virtual method queue_resize.
+	// // QueueResize allows you to override the implementation of the virtual method queue_resize.
 	//
 	// Queue resizing of @window.
 	QueueResize func(Instance)
-	// Quit allows you to override the implementation of the virtual method quit.
+	// // Quit allows you to override the implementation of the virtual method quit.
 	//
 	// Quit the runloop's execution.
 	Quit func(Instance)
-	// Run allows you to override the implementation of the virtual method run.
+	// // Run allows you to override the implementation of the virtual method run.
 	//
 	// Start the execution of the runloop.
 	Run func(Instance)
-	// SetPreferredSize allows you to override the implementation of the virtual method set_preferred_size.
+	// // SetPreferredSize allows you to override the implementation of the virtual method set_preferred_size.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- width int32: new preferred width 
@@ -13364,7 +13441,8 @@ type GLWindowOverrides[Instance GLWindow] struct {
 	// Set the preferred width and height of the window.  Implementations are free
 	// to ignore this information.
 	SetPreferredSize func(Instance, int32, int32)
-	// SetRenderRectangle allows you to override the implementation of the virtual method set_render_rectangle.
+	// // SetRenderRectangle allows you to override the implementation of the virtual method set_render_rectangle.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- x int32: x position 
@@ -13379,7 +13457,7 @@ type GLWindowOverrides[Instance GLWindow] struct {
 	// Tell a @window that it should render into a specific region of the window
 	// according to the #GstVideoOverlay interface.
 	SetRenderRectangle func(Instance, int32, int32, int32, int32) bool
-	// Show allows you to override the implementation of the virtual method show.
+	// // Show allows you to override the implementation of the virtual method show.
 	//
 	// Present the window to the screen.
 	Show func(Instance)
@@ -13620,7 +13698,7 @@ func UnsafeApplyGLWindowOverrides[Instance GLWindow](gclass unsafe.Pointer, over
 }
 
 // ParentClose calls the default implementations of the close virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
 //
 // close the connection to the display
 func (window *GLWindowInstance) ParentClose() {
@@ -13633,7 +13711,8 @@ func (window *GLWindowInstance) ParentClose() {
 }
 
 // ParentControlsViewport calls the default implementations of the controls_viewport virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -13658,7 +13737,7 @@ func (window *GLWindowInstance) ParentControlsViewport() bool {
 }
 
 // ParentDraw calls the default implementations of the draw virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
 //
 // Redraw the window contents.  Implementations should invoke the draw callback.
 func (window *GLWindowInstance) ParentDraw() {
@@ -13671,7 +13750,8 @@ func (window *GLWindowInstance) ParentDraw() {
 }
 
 // ParentHandleEvents calls the default implementations of the handle_events virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- handleEvents bool: a #gboolean indicating if events should be handled or not. 
@@ -13697,7 +13777,8 @@ func (window *GLWindowInstance) ParentHandleEvents(handleEvents bool) {
 }
 
 // ParentHasOutputSurface calls the default implementations of the has_output_surface virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -13722,7 +13803,8 @@ func (window *GLWindowInstance) ParentHasOutputSurface() bool {
 }
 
 // ParentOpen calls the default implementations of the open virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -13753,7 +13835,7 @@ func (window *GLWindowInstance) ParentOpen() (bool, error) {
 }
 
 // ParentQueueResize calls the default implementations of the queue_resize virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
 //
 // Queue resizing of @window.
 func (window *GLWindowInstance) ParentQueueResize() {
@@ -13766,7 +13848,7 @@ func (window *GLWindowInstance) ParentQueueResize() {
 }
 
 // ParentQuit calls the default implementations of the quit virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
 //
 // Quit the runloop's execution.
 func (window *GLWindowInstance) ParentQuit() {
@@ -13779,7 +13861,7 @@ func (window *GLWindowInstance) ParentQuit() {
 }
 
 // ParentRun calls the default implementations of the run virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
 //
 // Start the execution of the runloop.
 func (window *GLWindowInstance) ParentRun() {
@@ -13792,7 +13874,8 @@ func (window *GLWindowInstance) ParentRun() {
 }
 
 // ParentSetPreferredSize calls the default implementations of the set_preferred_size virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- width int32: new preferred width 
@@ -13817,7 +13900,8 @@ func (window *GLWindowInstance) ParentSetPreferredSize(width int32, height int32
 }
 
 // ParentSetRenderRectangle calls the default implementations of the set_render_rectangle virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- x int32: x position 
@@ -13863,7 +13947,7 @@ func (window *GLWindowInstance) ParentSetRenderRectangle(x int32, y int32, width
 }
 
 // ParentShow calls the default implementations of the show virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
 //
 // Present the window to the screen.
 func (window *GLWindowInstance) ParentShow() {

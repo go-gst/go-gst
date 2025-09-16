@@ -313,14 +313,13 @@ func IsPhysMemory(mem *gst.Memory) bool {
 // PhysMemoryAllocatorInstance is the instance type used by all types implementing GstPhysMemoryAllocator. It is used internally by the bindings. Users should use the interface [PhysMemoryAllocator] instead.
 type PhysMemoryAllocatorInstance struct {
 	_ [0]func() // equal guard
-	gobject.ObjectInstance
+	Instance gobject.ObjectInstance
 }
 
 var _ PhysMemoryAllocator = (*PhysMemoryAllocatorInstance)(nil)
 
 // PhysMemoryAllocator wraps GstPhysMemoryAllocator
 type PhysMemoryAllocator interface {
-	gobject.Object
 	upcastToGstPhysMemoryAllocator() *PhysMemoryAllocatorInstance
 
 	// chain up virtual methods:
@@ -330,7 +329,7 @@ var _ PhysMemoryAllocator = (*PhysMemoryAllocatorInstance)(nil)
 
 func unsafeWrapPhysMemoryAllocator(base *gobject.ObjectInstance) *PhysMemoryAllocatorInstance {
 	return &PhysMemoryAllocatorInstance{
-		ObjectInstance: *base,
+		Instance: *base,
 	}
 }
 
@@ -360,13 +359,13 @@ func UnsafePhysMemoryAllocatorFromGlibBorrow(c unsafe.Pointer) PhysMemoryAllocat
 // UnsafePhysMemoryAllocatorToGlibNone is used to convert the instance to it's C value GstPhysMemoryAllocator. This is used by the bindings internally.
 func UnsafePhysMemoryAllocatorToGlibNone(c PhysMemoryAllocator) unsafe.Pointer {
 	i := c.upcastToGstPhysMemoryAllocator()
-	return gobject.UnsafeObjectToGlibNone(i)
+	return gobject.UnsafeObjectToGlibNone(&i.Instance)
 }
 
 // UnsafePhysMemoryAllocatorToGlibFull is used to convert the instance to it's C value GstPhysMemoryAllocator, while removeing the finalizer. This is used by the bindings internally.
 func UnsafePhysMemoryAllocatorToGlibFull(c PhysMemoryAllocator) unsafe.Pointer {
 	i := c.upcastToGstPhysMemoryAllocator()
-	return gobject.UnsafeObjectToGlibFull(i)
+	return gobject.UnsafeObjectToGlibFull(&i.Instance)
 }
 
 // PhysMemoryAllocatorOverrides is the struct used to override the default implementation of virtual methods.
@@ -550,7 +549,7 @@ func NewDRMDumbAllocatorWithFd(drmFd int32) gst.Allocator {
 // pixel format. This @drm_fourcc is converted into a bpp (bit-per-pixel)
 // number and the height is scaled according to the sub-sampling.
 func (allocator *DRMDumbAllocatorInstance) DRMAlloc(drmFourcc uint32, width uint32, height uint32) (uint32, *gst.Memory) {
-	var carg0 *C.GstAllocator // in, none, converted, casted *C.GstDRMDumbAllocator
+	var carg0 *C.GstAllocator // in, none, converted
 	var carg1 C.guint32       // in, none, casted
 	var carg2 C.guint32       // in, none, casted
 	var carg3 C.guint32       // in, none, casted
@@ -585,7 +584,7 @@ func (allocator *DRMDumbAllocatorInstance) DRMAlloc(drmFourcc uint32, width uint
 //
 // This function allow verifying if the driver support dma-buf exportation.
 func (allocator *DRMDumbAllocatorInstance) HasPrimeExport() bool {
-	var carg0 *C.GstAllocator // in, none, converted, casted *C.GstDRMDumbAllocator
+	var carg0 *C.GstAllocator // in, none, converted
 	var cret  C.gboolean      // return
 
 	carg0 = (*C.GstAllocator)(UnsafeDRMDumbAllocatorToGlibNone(allocator))

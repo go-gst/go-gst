@@ -309,14 +309,13 @@ func PlayerStateGetName(state PlayerState) string {
 // PlayerSignalDispatcherInstance is the instance type used by all types implementing GstPlayerSignalDispatcher. It is used internally by the bindings. Users should use the interface [PlayerSignalDispatcher] instead.
 type PlayerSignalDispatcherInstance struct {
 	_ [0]func() // equal guard
-	gobject.ObjectInstance
+	Instance gobject.ObjectInstance
 }
 
 var _ PlayerSignalDispatcher = (*PlayerSignalDispatcherInstance)(nil)
 
 // PlayerSignalDispatcher wraps GstPlayerSignalDispatcher
 type PlayerSignalDispatcher interface {
-	gobject.Object
 	upcastToGstPlayerSignalDispatcher() *PlayerSignalDispatcherInstance
 
 	// chain up virtual methods:
@@ -326,7 +325,7 @@ var _ PlayerSignalDispatcher = (*PlayerSignalDispatcherInstance)(nil)
 
 func unsafeWrapPlayerSignalDispatcher(base *gobject.ObjectInstance) *PlayerSignalDispatcherInstance {
 	return &PlayerSignalDispatcherInstance{
-		ObjectInstance: *base,
+		Instance: *base,
 	}
 }
 
@@ -356,13 +355,13 @@ func UnsafePlayerSignalDispatcherFromGlibBorrow(c unsafe.Pointer) PlayerSignalDi
 // UnsafePlayerSignalDispatcherToGlibNone is used to convert the instance to it's C value GstPlayerSignalDispatcher. This is used by the bindings internally.
 func UnsafePlayerSignalDispatcherToGlibNone(c PlayerSignalDispatcher) unsafe.Pointer {
 	i := c.upcastToGstPlayerSignalDispatcher()
-	return gobject.UnsafeObjectToGlibNone(i)
+	return gobject.UnsafeObjectToGlibNone(&i.Instance)
 }
 
 // UnsafePlayerSignalDispatcherToGlibFull is used to convert the instance to it's C value GstPlayerSignalDispatcher, while removeing the finalizer. This is used by the bindings internally.
 func UnsafePlayerSignalDispatcherToGlibFull(c PlayerSignalDispatcher) unsafe.Pointer {
 	i := c.upcastToGstPlayerSignalDispatcher()
-	return gobject.UnsafeObjectToGlibFull(i)
+	return gobject.UnsafeObjectToGlibFull(&i.Instance)
 }
 
 // PlayerSignalDispatcherOverrides is the struct used to override the default implementation of virtual methods.
@@ -378,14 +377,13 @@ func UnsafeApplyPlayerSignalDispatcherOverrides[Instance PlayerSignalDispatcher]
 // PlayerVideoRendererInstance is the instance type used by all types implementing GstPlayerVideoRenderer. It is used internally by the bindings. Users should use the interface [PlayerVideoRenderer] instead.
 type PlayerVideoRendererInstance struct {
 	_ [0]func() // equal guard
-	gobject.ObjectInstance
+	Instance gobject.ObjectInstance
 }
 
 var _ PlayerVideoRenderer = (*PlayerVideoRendererInstance)(nil)
 
 // PlayerVideoRenderer wraps GstPlayerVideoRenderer
 type PlayerVideoRenderer interface {
-	gobject.Object
 	upcastToGstPlayerVideoRenderer() *PlayerVideoRendererInstance
 
 	// chain up virtual methods:
@@ -395,7 +393,7 @@ var _ PlayerVideoRenderer = (*PlayerVideoRendererInstance)(nil)
 
 func unsafeWrapPlayerVideoRenderer(base *gobject.ObjectInstance) *PlayerVideoRendererInstance {
 	return &PlayerVideoRendererInstance{
-		ObjectInstance: *base,
+		Instance: *base,
 	}
 }
 
@@ -425,13 +423,13 @@ func UnsafePlayerVideoRendererFromGlibBorrow(c unsafe.Pointer) PlayerVideoRender
 // UnsafePlayerVideoRendererToGlibNone is used to convert the instance to it's C value GstPlayerVideoRenderer. This is used by the bindings internally.
 func UnsafePlayerVideoRendererToGlibNone(c PlayerVideoRenderer) unsafe.Pointer {
 	i := c.upcastToGstPlayerVideoRenderer()
-	return gobject.UnsafeObjectToGlibNone(i)
+	return gobject.UnsafeObjectToGlibNone(&i.Instance)
 }
 
 // UnsafePlayerVideoRendererToGlibFull is used to convert the instance to it's C value GstPlayerVideoRenderer, while removeing the finalizer. This is used by the bindings internally.
 func UnsafePlayerVideoRendererToGlibFull(c PlayerVideoRenderer) unsafe.Pointer {
 	i := c.upcastToGstPlayerVideoRenderer()
-	return gobject.UnsafeObjectToGlibFull(i)
+	return gobject.UnsafeObjectToGlibFull(&i.Instance)
 }
 
 // PlayerVideoRendererOverrides is the struct used to override the default implementation of virtual methods.

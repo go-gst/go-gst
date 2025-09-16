@@ -16,7 +16,7 @@ import (
 // #cgo pkg-config: gstreamer-net-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/net/net.h>
-// extern gboolean _gotk4_gstnet1_PtpStatisticsCallback(guint8, GstStructure*, gpointer);
+// extern C.gboolean _gotk4_gstnet1_PtpStatisticsCallback(C.guint8, *C.GstStructure, C.gpointer);
 // extern void destroyUserdata(gpointer);
 import "C"
 
@@ -293,7 +293,7 @@ func PtpInit(clockId uint64, interfaces []string) bool {
 	carg1 = C.guint64(clockId)
 	_ = interfaces
 	_ = carg2
-	panic("unimplemented conversion of []string (gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	cret = C.gst_ptp_init(carg1, carg2)
 	runtime.KeepAlive(clockId)
@@ -651,7 +651,7 @@ func unsafeWrapNetTimeProvider(base *gobject.ObjectInstance) *NetTimeProviderIns
 			},
 		},
 		InitableInstance: gio.InitableInstance{
-			ObjectInstance: *base,
+			Instance: *base,
 		},
 	}
 }
@@ -1397,7 +1397,7 @@ func NewNetTimePacket(buffer [16]uint8) *NetTimePacket {
 
 	_ = buffer
 	_ = carg1
-	panic("unimplemented conversion of [16]uint8 (const guint8*)")
+	panic("unimplemented conversion of [16]uint8 (*C.guint8)")
 
 	cret = C.gst_net_time_packet_new(carg1)
 	runtime.KeepAlive(buffer)
@@ -1539,7 +1539,7 @@ func (packet *NetTimePacket) Serialize() [16]uint8 {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of [16]uint8 (guint8*)")
+	panic("unimplemented conversion of [16]uint8 (*C.guint8)")
 
 	return goret
 }

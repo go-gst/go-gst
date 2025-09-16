@@ -17,21 +17,21 @@ import (
 // #cgo pkg-config: gstreamer-tag-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/tag/tag.h>
-// extern gboolean _gotk4_gsttag1_TagDemux_identify_tag(GstTagDemux*, GstBuffer*, gboolean, guint*);
-// extern GstTagList* _gotk4_gsttag1_TagDemux_merge_tags(GstTagDemux*, GstTagList*, GstTagList*);
-// gboolean _gotk4_gsttag1_TagDemux_virtual_identify_tag(void* fnptr, GstTagDemux* carg0, GstBuffer* carg1, gboolean carg2, guint* carg3) {
-// 	return ((gboolean (*) (GstTagDemux*, GstBuffer*, gboolean, guint*))(fnptr))(carg0, carg1, carg2, carg3);
+// extern C.gboolean _gotk4_gsttag1_TagDemux_identify_tag(*C.GstTagDemux, *C.GstBuffer, C.gboolean, *C.guint);
+// extern *C.GstTagList _gotk4_gsttag1_TagDemux_merge_tags(*C.GstTagDemux, *C.GstTagList, *C.GstTagList);
+// C.gboolean _gotk4_gsttag1_TagDemux_virtual_identify_tag(void* fnptr, *C.GstTagDemux carg0, *C.GstBuffer carg1, C.gboolean carg2, *C.guint carg3) {
+// 	return ((C.gboolean (*) (*C.GstTagDemux, *C.GstBuffer, C.gboolean, *C.guint))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// GstTagList* _gotk4_gsttag1_TagDemux_virtual_merge_tags(void* fnptr, GstTagDemux* carg0, GstTagList* carg1, GstTagList* carg2) {
-// 	return ((GstTagList* (*) (GstTagDemux*, GstTagList*, GstTagList*))(fnptr))(carg0, carg1, carg2);
+// *C.GstTagList _gotk4_gsttag1_TagDemux_virtual_merge_tags(void* fnptr, *C.GstTagDemux carg0, *C.GstTagList carg1, *C.GstTagList carg2) {
+// 	return ((*C.GstTagList (*) (*C.GstTagDemux, *C.GstTagList, *C.GstTagList))(fnptr))(carg0, carg1, carg2);
 // }
-// extern GstBuffer* _gotk4_gsttag1_TagMux_render_end_tag(GstTagMux*, GstTagList*);
-// extern GstBuffer* _gotk4_gsttag1_TagMux_render_start_tag(GstTagMux*, GstTagList*);
-// GstBuffer* _gotk4_gsttag1_TagMux_virtual_render_end_tag(void* fnptr, GstTagMux* carg0, GstTagList* carg1) {
-// 	return ((GstBuffer* (*) (GstTagMux*, GstTagList*))(fnptr))(carg0, carg1);
+// extern *C.GstBuffer _gotk4_gsttag1_TagMux_render_end_tag(*C.GstTagMux, *C.GstTagList);
+// extern *C.GstBuffer _gotk4_gsttag1_TagMux_render_start_tag(*C.GstTagMux, *C.GstTagList);
+// *C.GstBuffer _gotk4_gsttag1_TagMux_virtual_render_end_tag(void* fnptr, *C.GstTagMux carg0, *C.GstTagList carg1) {
+// 	return ((*C.GstBuffer (*) (*C.GstTagMux, *C.GstTagList))(fnptr))(carg0, carg1);
 // }
-// GstBuffer* _gotk4_gsttag1_TagMux_virtual_render_start_tag(void* fnptr, GstTagMux* carg0, GstTagList* carg1) {
-// 	return ((GstBuffer* (*) (GstTagMux*, GstTagList*))(fnptr))(carg0, carg1);
+// *C.GstBuffer _gotk4_gsttag1_TagMux_virtual_render_start_tag(void* fnptr, *C.GstTagMux carg0, *C.GstTagList carg1) {
+// 	return ((*C.GstBuffer (*) (*C.GstTagMux, *C.GstTagList))(fnptr))(carg0, carg1);
 // }
 import "C"
 
@@ -450,10 +450,10 @@ func TagFreeformStringToUTF8(data string, envVars []string) string {
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of string (const gchar*)")
+	panic("unimplemented conversion of string (*C.gchar)")
 	_ = envVars
 	_ = carg3
-	panic("unimplemented conversion of []string (const gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	cret = C.gst_tag_freeform_string_to_utf8(carg1, carg2, carg3)
 	runtime.KeepAlive(data)
@@ -722,7 +722,7 @@ func TagGetLanguageCodes() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	return goret
 }
@@ -975,7 +975,7 @@ func TagGetLicenses() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	return goret
 }
@@ -1073,7 +1073,7 @@ func TagImageDataToImageSample(imageData []uint8, imageType TagImageType) *gst.S
 	_ = imageData
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 	carg3 = C.GstTagImageType(imageType)
 
 	cret = C.gst_tag_image_data_to_image_sample(carg1, carg2, carg3)
@@ -1116,7 +1116,7 @@ func TagListAddID3Image(tagList *gst.TagList, imageData []uint8, id3PictureType 
 	_ = imageData
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 	carg4 = C.guint(id3PictureType)
 
 	cret = C.gst_tag_list_add_id3_image(carg1, carg2, carg3, carg4)
@@ -1254,11 +1254,11 @@ func TagListFromVorbiscomment(data []uint8, idData []uint8) (string, *gst.TagLis
 	_ = data
 	_ = carg1
 	_ = carg2
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 	_ = idData
 	_ = carg3
 	_ = carg4
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 
 	cret = C.gst_tag_list_from_vorbiscomment(carg1, carg2, carg3, carg4, &carg5)
 	runtime.KeepAlive(data)
@@ -1302,7 +1302,7 @@ func TagListFromVorbiscommentBuffer(buffer *gst.Buffer, idData []uint8) (string,
 	_ = idData
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 
 	cret = C.gst_tag_list_from_vorbiscomment_buffer(carg1, carg2, carg3, &carg4)
 	runtime.KeepAlive(buffer)
@@ -1367,7 +1367,7 @@ func TagListNewFromID3V1(data [128]uint8) *gst.TagList {
 
 	_ = data
 	_ = carg1
-	panic("unimplemented conversion of [128]uint8 (const guint8*)")
+	panic("unimplemented conversion of [128]uint8 (*C.guint8)")
 
 	cret = C.gst_tag_list_new_from_id3v1(carg1)
 	runtime.KeepAlive(data)
@@ -1469,7 +1469,7 @@ func TagListToVorbiscommentBuffer(list *gst.TagList, idData []uint8, vendorStrin
 	_ = idData
 	_ = carg2
 	_ = carg3
-	panic("unimplemented conversion of []uint8 (const guint8*)")
+	panic("unimplemented conversion of []uint8 (*C.guint8)")
 	if vendorString != "" {
 		carg4 = (*C.gchar)(unsafe.Pointer(C.CString(vendorString)))
 		defer C.free(unsafe.Pointer(carg4))
@@ -1515,7 +1515,7 @@ func TagListToXmpBuffer(list *gst.TagList, readOnly bool, schemas []string) *gst
 	}
 	_ = schemas
 	_ = carg3
-	panic("unimplemented conversion of []string (const gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	cret = C.gst_tag_list_to_xmp_buffer(carg1, carg2, carg3)
 	runtime.KeepAlive(list)
@@ -1721,7 +1721,7 @@ func TagXmpListSchemas() []string {
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []string (const gchar**)")
+	panic("unimplemented conversion of []string (**C.gchar)")
 
 	return goret
 }
@@ -1760,7 +1760,7 @@ func VorbisTagAdd(list *gst.TagList, tag string, value string) {
 // TagXmpWriterInstance is the instance type used by all types implementing GstTagXmpWriter. It is used internally by the bindings. Users should use the interface [TagXmpWriter] instead.
 type TagXmpWriterInstance struct {
 	_ [0]func() // equal guard
-	gobject.ObjectInstance
+	Instance gobject.ObjectInstance
 }
 
 var _ TagXmpWriter = (*TagXmpWriterInstance)(nil)
@@ -1774,7 +1774,6 @@ var _ TagXmpWriter = (*TagXmpWriterInstance)(nil)
 // tags into XMP. Schemas are represented by their names, a full list of the supported schemas can be
 // obtained from gst_tag_xmp_list_schemas(). By default, all schemas are used.
 type TagXmpWriter interface {
-	gobject.Object
 	upcastToGstTagXmpWriter() *TagXmpWriterInstance
 
 	// AddAllSchemas wraps gst_tag_xmp_writer_add_all_schemas
@@ -1835,7 +1834,7 @@ var _ TagXmpWriter = (*TagXmpWriterInstance)(nil)
 
 func unsafeWrapTagXmpWriter(base *gobject.ObjectInstance) *TagXmpWriterInstance {
 	return &TagXmpWriterInstance{
-		ObjectInstance: *base,
+		Instance: *base,
 	}
 }
 
@@ -1865,13 +1864,13 @@ func UnsafeTagXmpWriterFromGlibBorrow(c unsafe.Pointer) TagXmpWriter {
 // UnsafeTagXmpWriterToGlibNone is used to convert the instance to it's C value GstTagXmpWriter. This is used by the bindings internally.
 func UnsafeTagXmpWriterToGlibNone(c TagXmpWriter) unsafe.Pointer {
 	i := c.upcastToGstTagXmpWriter()
-	return gobject.UnsafeObjectToGlibNone(i)
+	return gobject.UnsafeObjectToGlibNone(&i.Instance)
 }
 
 // UnsafeTagXmpWriterToGlibFull is used to convert the instance to it's C value GstTagXmpWriter, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeTagXmpWriterToGlibFull(c TagXmpWriter) unsafe.Pointer {
 	i := c.upcastToGstTagXmpWriter()
-	return gobject.UnsafeObjectToGlibFull(i)
+	return gobject.UnsafeObjectToGlibFull(&i.Instance)
 }
 
 // AddAllSchemas wraps gst_tag_xmp_writer_add_all_schemas
@@ -2064,7 +2063,8 @@ type TagDemux interface {
 	// chain up virtual methods:
 
 	// ParentIdentifyTag calls the default implementations of the identify_tag virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buffer *gst.Buffer 
@@ -2080,7 +2080,8 @@ type TagDemux interface {
 	// Subclassed MUST override this vfunc in their class_init function.
 	ParentIdentifyTag(buffer *gst.Buffer, startTag bool, tagSize *uint) bool
 	// ParentMergeTags calls the default implementations of the merge_tags virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- startTags *gst.TagList 
@@ -2148,7 +2149,8 @@ type TagDemuxOverrides[Instance TagDemux] struct {
 	// gst.ElementOverrides allows you to override virtual methods from the parent class gst.Element
 	gst.ElementOverrides[Instance]
 
-	// IdentifyTag allows you to override the implementation of the virtual method identify_tag.
+	// // IdentifyTag allows you to override the implementation of the virtual method identify_tag.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- buffer *gst.Buffer 
@@ -2163,7 +2165,8 @@ type TagDemuxOverrides[Instance TagDemux] struct {
 	// tag. Buffer may be larger than the specified minimum size.
 	// Subclassed MUST override this vfunc in their class_init function.
 	IdentifyTag func(Instance, *gst.Buffer, bool, *uint) bool
-	// MergeTags allows you to override the implementation of the virtual method merge_tags.
+	// // MergeTags allows you to override the implementation of the virtual method merge_tags.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- startTags *gst.TagList 
@@ -2206,7 +2209,7 @@ func UnsafeApplyTagDemuxOverrides[Instance TagDemux](gclass unsafe.Pointer, over
 				}
 				_ = tagSize
 				_ = carg3
-				panic("unimplemented conversion of *uint (guint*)")
+				panic("unimplemented conversion of *uint (*C.guint)")
 
 				goret = overrides.IdentifyTag(demux, buffer, startTag, tagSize)
 
@@ -2245,7 +2248,8 @@ func UnsafeApplyTagDemuxOverrides[Instance TagDemux](gclass unsafe.Pointer, over
 }
 
 // ParentIdentifyTag calls the default implementations of the identify_tag virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- buffer *gst.Buffer 
@@ -2274,7 +2278,7 @@ func (demux *TagDemuxInstance) ParentIdentifyTag(buffer *gst.Buffer, startTag bo
 	}
 	_ = tagSize
 	_ = carg3
-	panic("unimplemented conversion of *uint (guint*)")
+	panic("unimplemented conversion of *uint (*C.guint)")
 
 	cret = C._gotk4_gsttag1_TagDemux_virtual_identify_tag(unsafe.Pointer(parentclass.identify_tag), carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(demux)
@@ -2292,7 +2296,8 @@ func (demux *TagDemuxInstance) ParentIdentifyTag(buffer *gst.Buffer, startTag bo
 }
 
 // ParentMergeTags calls the default implementations of the merge_tags virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- startTags *gst.TagList 
@@ -2389,7 +2394,8 @@ type TagMux interface {
 	// chain up virtual methods:
 
 	// ParentRenderEndTag calls the default implementations of the render_end_tag virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- tagList *gst.TagList 
@@ -2402,7 +2408,8 @@ type TagMux interface {
 	//     input stream given a tag list, or NULL
 	ParentRenderEndTag(tagList *gst.TagList) *gst.Buffer
 	// ParentRenderStartTag calls the default implementations of the render_start_tag virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- tagList *gst.TagList 
@@ -2426,7 +2433,7 @@ func unsafeWrapTagMux(base *gobject.ObjectInstance) *TagMuxInstance {
 			},
 		},
 		TagSetterInstance: gst.TagSetterInstance{
-			ObjectInstance: *base,
+			Instance: *base,
 		},
 	}
 }
@@ -2470,7 +2477,8 @@ type TagMuxOverrides[Instance TagMux] struct {
 	// gst.ElementOverrides allows you to override virtual methods from the parent class gst.Element
 	gst.ElementOverrides[Instance]
 
-	// RenderEndTag allows you to override the implementation of the virtual method render_end_tag.
+	// // RenderEndTag allows you to override the implementation of the virtual method render_end_tag.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- tagList *gst.TagList 
@@ -2482,7 +2490,8 @@ type TagMuxOverrides[Instance TagMux] struct {
 	// create a tag buffer to add to the end of the
 	//     input stream given a tag list, or NULL
 	RenderEndTag func(Instance, *gst.TagList) *gst.Buffer
-	// RenderStartTag allows you to override the implementation of the virtual method render_start_tag.
+	// // RenderStartTag allows you to override the implementation of the virtual method render_start_tag.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- tagList *gst.TagList 
@@ -2549,7 +2558,8 @@ func UnsafeApplyTagMuxOverrides[Instance TagMux](gclass unsafe.Pointer, override
 }
 
 // ParentRenderEndTag calls the default implementations of the render_end_tag virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- tagList *gst.TagList 
@@ -2581,7 +2591,8 @@ func (mux *TagMuxInstance) ParentRenderEndTag(tagList *gst.TagList) *gst.Buffer 
 }
 
 // ParentRenderStartTag calls the default implementations of the render_start_tag virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- tagList *gst.TagList 

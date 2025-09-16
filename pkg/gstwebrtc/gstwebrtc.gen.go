@@ -16,100 +16,95 @@ import (
 	"github.com/go-gst/go-gst/pkg/gstsdp"
 )
 
-// #cgo pkg-config: gstreamer-webrtc-1.0 gstreamer-sdp-1.0
+// #cgo pkg-config: gstreamer-webrtc-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #define GST_USE_UNSTABLE_API // APIs in this package are unstable
 // #include <gst/webrtc/webrtc.h>
-// #include <gst/webrtc/sctptransport.h>
-// extern void _gotk4_gstwebrtc1_WebRTCICEOnCandidateFunc(GstWebRTCICE*, guint, gchar*, gpointer);
+// extern C.void _gotk4_gstwebrtc1_WebRTCICEOnCandidateFunc(*C.GstWebRTCICE, C.guint, *C.gchar, C.gpointer);
 // extern void destroyUserdata(gpointer);
-// extern void _gotk4_gstwebrtc1_WebRTCICE_add_candidate(GstWebRTCICE*, GstWebRTCICEStream*, gchar*, GstPromise*);
-// extern GstWebRTCICEStream* _gotk4_gstwebrtc1_WebRTCICE_add_stream(GstWebRTCICE*, guint);
-// extern gboolean _gotk4_gstwebrtc1_WebRTCICE_add_turn_server(GstWebRTCICE*, gchar*);
-// extern GstWebRTCICETransport* _gotk4_gstwebrtc1_WebRTCICE_find_transport(GstWebRTCICE*, GstWebRTCICEStream*, GstWebRTCICEComponent);
-// extern gboolean _gotk4_gstwebrtc1_WebRTCICE_gather_candidates(GstWebRTCICE*, GstWebRTCICEStream*);
-// extern gchar* _gotk4_gstwebrtc1_WebRTCICE_get_http_proxy(GstWebRTCICE*);
-// extern gboolean _gotk4_gstwebrtc1_WebRTCICE_get_is_controller(GstWebRTCICE*);
-// extern gboolean _gotk4_gstwebrtc1_WebRTCICE_get_selected_pair(GstWebRTCICE*, GstWebRTCICEStream*, GstWebRTCICECandidateStats*, GstWebRTCICECandidateStats*);
-// extern gchar* _gotk4_gstwebrtc1_WebRTCICE_get_stun_server(GstWebRTCICE*);
-// extern gchar* _gotk4_gstwebrtc1_WebRTCICE_get_turn_server(GstWebRTCICE*);
-// extern void _gotk4_gstwebrtc1_WebRTCICE_set_force_relay(GstWebRTCICE*, gboolean);
-// extern void _gotk4_gstwebrtc1_WebRTCICE_set_http_proxy(GstWebRTCICE*, gchar*);
-// extern void _gotk4_gstwebrtc1_WebRTCICE_set_is_controller(GstWebRTCICE*, gboolean);
-// extern gboolean _gotk4_gstwebrtc1_WebRTCICE_set_local_credentials(GstWebRTCICE*, GstWebRTCICEStream*, gchar*, gchar*);
-// extern void _gotk4_gstwebrtc1_WebRTCICE_set_on_ice_candidate(GstWebRTCICE*, GstWebRTCICEOnCandidateFunc, gpointer, GDestroyNotify);
-// extern gboolean _gotk4_gstwebrtc1_WebRTCICE_set_remote_credentials(GstWebRTCICE*, GstWebRTCICEStream*, gchar*, gchar*);
-// extern void _gotk4_gstwebrtc1_WebRTCICE_set_stun_server(GstWebRTCICE*, gchar*);
-// extern void _gotk4_gstwebrtc1_WebRTCICE_set_tos(GstWebRTCICE*, GstWebRTCICEStream*, guint);
-// extern void _gotk4_gstwebrtc1_WebRTCICE_set_turn_server(GstWebRTCICE*, gchar*);
-// void _gotk4_gstwebrtc1_WebRTCICE_virtual_add_candidate(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, gchar* carg2, GstPromise* carg3) {
-// 	return ((void (*) (GstWebRTCICE*, GstWebRTCICEStream*, gchar*, GstPromise*))(fnptr))(carg0, carg1, carg2, carg3);
+// extern C.void _gotk4_gstwebrtc1_WebRTCICE_add_candidate(*C.GstWebRTCICE, *C.GstWebRTCICEStream, *C.gchar, *C.GstPromise);
+// extern *C.GstWebRTCICEStream _gotk4_gstwebrtc1_WebRTCICE_add_stream(*C.GstWebRTCICE, C.guint);
+// extern C.gboolean _gotk4_gstwebrtc1_WebRTCICE_add_turn_server(*C.GstWebRTCICE, *C.gchar);
+// extern *C.GstWebRTCICETransport _gotk4_gstwebrtc1_WebRTCICE_find_transport(*C.GstWebRTCICE, *C.GstWebRTCICEStream, C.GstWebRTCICEComponent);
+// extern C.gboolean _gotk4_gstwebrtc1_WebRTCICE_gather_candidates(*C.GstWebRTCICE, *C.GstWebRTCICEStream);
+// extern *C.gchar _gotk4_gstwebrtc1_WebRTCICE_get_http_proxy(*C.GstWebRTCICE);
+// extern C.gboolean _gotk4_gstwebrtc1_WebRTCICE_get_is_controller(*C.GstWebRTCICE);
+// extern C.gboolean _gotk4_gstwebrtc1_WebRTCICE_get_selected_pair(*C.GstWebRTCICE, *C.GstWebRTCICEStream, *C.GstWebRTCICECandidateStats, *C.GstWebRTCICECandidateStats);
+// extern *C.gchar _gotk4_gstwebrtc1_WebRTCICE_get_stun_server(*C.GstWebRTCICE);
+// extern *C.gchar _gotk4_gstwebrtc1_WebRTCICE_get_turn_server(*C.GstWebRTCICE);
+// extern C.void _gotk4_gstwebrtc1_WebRTCICE_set_force_relay(*C.GstWebRTCICE, C.gboolean);
+// extern C.void _gotk4_gstwebrtc1_WebRTCICE_set_http_proxy(*C.GstWebRTCICE, *C.gchar);
+// extern C.void _gotk4_gstwebrtc1_WebRTCICE_set_is_controller(*C.GstWebRTCICE, C.gboolean);
+// extern C.gboolean _gotk4_gstwebrtc1_WebRTCICE_set_local_credentials(*C.GstWebRTCICE, *C.GstWebRTCICEStream, *C.gchar, *C.gchar);
+// extern C.gboolean _gotk4_gstwebrtc1_WebRTCICE_set_remote_credentials(*C.GstWebRTCICE, *C.GstWebRTCICEStream, *C.gchar, *C.gchar);
+// extern C.void _gotk4_gstwebrtc1_WebRTCICE_set_stun_server(*C.GstWebRTCICE, *C.gchar);
+// extern C.void _gotk4_gstwebrtc1_WebRTCICE_set_tos(*C.GstWebRTCICE, *C.GstWebRTCICEStream, C.guint);
+// extern C.void _gotk4_gstwebrtc1_WebRTCICE_set_turn_server(*C.GstWebRTCICE, *C.gchar);
+// C.void _gotk4_gstwebrtc1_WebRTCICE_virtual_add_candidate(void* fnptr, *C.GstWebRTCICE carg0, *C.GstWebRTCICEStream carg1, *C.gchar carg2, *C.GstPromise carg3) {
+// 	return ((C.void (*) (*C.GstWebRTCICE, *C.GstWebRTCICEStream, *C.gchar, *C.GstPromise))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// GstWebRTCICEStream* _gotk4_gstwebrtc1_WebRTCICE_virtual_add_stream(void* fnptr, GstWebRTCICE* carg0, guint carg1) {
-// 	return ((GstWebRTCICEStream* (*) (GstWebRTCICE*, guint))(fnptr))(carg0, carg1);
+// *C.GstWebRTCICEStream _gotk4_gstwebrtc1_WebRTCICE_virtual_add_stream(void* fnptr, *C.GstWebRTCICE carg0, C.guint carg1) {
+// 	return ((*C.GstWebRTCICEStream (*) (*C.GstWebRTCICE, C.guint))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_add_turn_server(void* fnptr, GstWebRTCICE* carg0, gchar* carg1) {
-// 	return ((gboolean (*) (GstWebRTCICE*, gchar*))(fnptr))(carg0, carg1);
+// C.gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_add_turn_server(void* fnptr, *C.GstWebRTCICE carg0, *C.gchar carg1) {
+// 	return ((C.gboolean (*) (*C.GstWebRTCICE, *C.gchar))(fnptr))(carg0, carg1);
 // }
-// GstWebRTCICETransport* _gotk4_gstwebrtc1_WebRTCICE_virtual_find_transport(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, GstWebRTCICEComponent carg2) {
-// 	return ((GstWebRTCICETransport* (*) (GstWebRTCICE*, GstWebRTCICEStream*, GstWebRTCICEComponent))(fnptr))(carg0, carg1, carg2);
+// *C.GstWebRTCICETransport _gotk4_gstwebrtc1_WebRTCICE_virtual_find_transport(void* fnptr, *C.GstWebRTCICE carg0, *C.GstWebRTCICEStream carg1, C.GstWebRTCICEComponent carg2) {
+// 	return ((*C.GstWebRTCICETransport (*) (*C.GstWebRTCICE, *C.GstWebRTCICEStream, C.GstWebRTCICEComponent))(fnptr))(carg0, carg1, carg2);
 // }
-// gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_gather_candidates(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1) {
-// 	return ((gboolean (*) (GstWebRTCICE*, GstWebRTCICEStream*))(fnptr))(carg0, carg1);
+// C.gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_gather_candidates(void* fnptr, *C.GstWebRTCICE carg0, *C.GstWebRTCICEStream carg1) {
+// 	return ((C.gboolean (*) (*C.GstWebRTCICE, *C.GstWebRTCICEStream))(fnptr))(carg0, carg1);
 // }
-// gchar* _gotk4_gstwebrtc1_WebRTCICE_virtual_get_http_proxy(void* fnptr, GstWebRTCICE* carg0) {
-// 	return ((gchar* (*) (GstWebRTCICE*))(fnptr))(carg0);
+// *C.gchar _gotk4_gstwebrtc1_WebRTCICE_virtual_get_http_proxy(void* fnptr, *C.GstWebRTCICE carg0) {
+// 	return ((*C.gchar (*) (*C.GstWebRTCICE))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_get_is_controller(void* fnptr, GstWebRTCICE* carg0) {
-// 	return ((gboolean (*) (GstWebRTCICE*))(fnptr))(carg0);
+// C.gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_get_is_controller(void* fnptr, *C.GstWebRTCICE carg0) {
+// 	return ((C.gboolean (*) (*C.GstWebRTCICE))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_get_selected_pair(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, GstWebRTCICECandidateStats** carg2, GstWebRTCICECandidateStats** carg3) {
-// 	return ((gboolean (*) (GstWebRTCICE*, GstWebRTCICEStream*, GstWebRTCICECandidateStats**, GstWebRTCICECandidateStats**))(fnptr))(carg0, carg1, carg2, carg3);
+// C.gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_get_selected_pair(void* fnptr, *C.GstWebRTCICE carg0, *C.GstWebRTCICEStream carg1, *C.GstWebRTCICECandidateStats* carg2, *C.GstWebRTCICECandidateStats* carg3) {
+// 	return ((C.gboolean (*) (*C.GstWebRTCICE, *C.GstWebRTCICEStream, *C.GstWebRTCICECandidateStats*, *C.GstWebRTCICECandidateStats*))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// gchar* _gotk4_gstwebrtc1_WebRTCICE_virtual_get_stun_server(void* fnptr, GstWebRTCICE* carg0) {
-// 	return ((gchar* (*) (GstWebRTCICE*))(fnptr))(carg0);
+// *C.gchar _gotk4_gstwebrtc1_WebRTCICE_virtual_get_stun_server(void* fnptr, *C.GstWebRTCICE carg0) {
+// 	return ((*C.gchar (*) (*C.GstWebRTCICE))(fnptr))(carg0);
 // }
-// gchar* _gotk4_gstwebrtc1_WebRTCICE_virtual_get_turn_server(void* fnptr, GstWebRTCICE* carg0) {
-// 	return ((gchar* (*) (GstWebRTCICE*))(fnptr))(carg0);
+// *C.gchar _gotk4_gstwebrtc1_WebRTCICE_virtual_get_turn_server(void* fnptr, *C.GstWebRTCICE carg0) {
+// 	return ((*C.gchar (*) (*C.GstWebRTCICE))(fnptr))(carg0);
 // }
-// void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_force_relay(void* fnptr, GstWebRTCICE* carg0, gboolean carg1) {
-// 	return ((void (*) (GstWebRTCICE*, gboolean))(fnptr))(carg0, carg1);
+// C.void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_force_relay(void* fnptr, *C.GstWebRTCICE carg0, C.gboolean carg1) {
+// 	return ((C.void (*) (*C.GstWebRTCICE, C.gboolean))(fnptr))(carg0, carg1);
 // }
-// void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_http_proxy(void* fnptr, GstWebRTCICE* carg0, gchar* carg1) {
-// 	return ((void (*) (GstWebRTCICE*, gchar*))(fnptr))(carg0, carg1);
+// C.void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_http_proxy(void* fnptr, *C.GstWebRTCICE carg0, *C.gchar carg1) {
+// 	return ((C.void (*) (*C.GstWebRTCICE, *C.gchar))(fnptr))(carg0, carg1);
 // }
-// void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_is_controller(void* fnptr, GstWebRTCICE* carg0, gboolean carg1) {
-// 	return ((void (*) (GstWebRTCICE*, gboolean))(fnptr))(carg0, carg1);
+// C.void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_is_controller(void* fnptr, *C.GstWebRTCICE carg0, C.gboolean carg1) {
+// 	return ((C.void (*) (*C.GstWebRTCICE, C.gboolean))(fnptr))(carg0, carg1);
 // }
-// gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_set_local_credentials(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, gchar* carg2, gchar* carg3) {
-// 	return ((gboolean (*) (GstWebRTCICE*, GstWebRTCICEStream*, gchar*, gchar*))(fnptr))(carg0, carg1, carg2, carg3);
+// C.gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_set_local_credentials(void* fnptr, *C.GstWebRTCICE carg0, *C.GstWebRTCICEStream carg1, *C.gchar carg2, *C.gchar carg3) {
+// 	return ((C.gboolean (*) (*C.GstWebRTCICE, *C.GstWebRTCICEStream, *C.gchar, *C.gchar))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_on_ice_candidate(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEOnCandidateFunc carg1, gpointer carg2, GDestroyNotify carg3) {
-// 	return ((void (*) (GstWebRTCICE*, GstWebRTCICEOnCandidateFunc, gpointer, GDestroyNotify))(fnptr))(carg0, carg1, carg2, carg3);
+// C.gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_set_remote_credentials(void* fnptr, *C.GstWebRTCICE carg0, *C.GstWebRTCICEStream carg1, *C.gchar carg2, *C.gchar carg3) {
+// 	return ((C.gboolean (*) (*C.GstWebRTCICE, *C.GstWebRTCICEStream, *C.gchar, *C.gchar))(fnptr))(carg0, carg1, carg2, carg3);
 // }
-// gboolean _gotk4_gstwebrtc1_WebRTCICE_virtual_set_remote_credentials(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, gchar* carg2, gchar* carg3) {
-// 	return ((gboolean (*) (GstWebRTCICE*, GstWebRTCICEStream*, gchar*, gchar*))(fnptr))(carg0, carg1, carg2, carg3);
+// C.void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_stun_server(void* fnptr, *C.GstWebRTCICE carg0, *C.gchar carg1) {
+// 	return ((C.void (*) (*C.GstWebRTCICE, *C.gchar))(fnptr))(carg0, carg1);
 // }
-// void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_stun_server(void* fnptr, GstWebRTCICE* carg0, gchar* carg1) {
-// 	return ((void (*) (GstWebRTCICE*, gchar*))(fnptr))(carg0, carg1);
+// C.void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_tos(void* fnptr, *C.GstWebRTCICE carg0, *C.GstWebRTCICEStream carg1, C.guint carg2) {
+// 	return ((C.void (*) (*C.GstWebRTCICE, *C.GstWebRTCICEStream, C.guint))(fnptr))(carg0, carg1, carg2);
 // }
-// void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_tos(void* fnptr, GstWebRTCICE* carg0, GstWebRTCICEStream* carg1, guint carg2) {
-// 	return ((void (*) (GstWebRTCICE*, GstWebRTCICEStream*, guint))(fnptr))(carg0, carg1, carg2);
+// C.void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_turn_server(void* fnptr, *C.GstWebRTCICE carg0, *C.gchar carg1) {
+// 	return ((C.void (*) (*C.GstWebRTCICE, *C.gchar))(fnptr))(carg0, carg1);
 // }
-// void _gotk4_gstwebrtc1_WebRTCICE_virtual_set_turn_server(void* fnptr, GstWebRTCICE* carg0, gchar* carg1) {
-// 	return ((void (*) (GstWebRTCICE*, gchar*))(fnptr))(carg0, carg1);
+// extern *C.GstWebRTCICETransport _gotk4_gstwebrtc1_WebRTCICEStream_find_transport(*C.GstWebRTCICEStream, C.GstWebRTCICEComponent);
+// extern C.gboolean _gotk4_gstwebrtc1_WebRTCICEStream_gather_candidates(*C.GstWebRTCICEStream);
+// *C.GstWebRTCICETransport _gotk4_gstwebrtc1_WebRTCICEStream_virtual_find_transport(void* fnptr, *C.GstWebRTCICEStream carg0, C.GstWebRTCICEComponent carg1) {
+// 	return ((*C.GstWebRTCICETransport (*) (*C.GstWebRTCICEStream, C.GstWebRTCICEComponent))(fnptr))(carg0, carg1);
 // }
-// extern GstWebRTCICETransport* _gotk4_gstwebrtc1_WebRTCICEStream_find_transport(GstWebRTCICEStream*, GstWebRTCICEComponent);
-// extern gboolean _gotk4_gstwebrtc1_WebRTCICEStream_gather_candidates(GstWebRTCICEStream*);
-// GstWebRTCICETransport* _gotk4_gstwebrtc1_WebRTCICEStream_virtual_find_transport(void* fnptr, GstWebRTCICEStream* carg0, GstWebRTCICEComponent carg1) {
-// 	return ((GstWebRTCICETransport* (*) (GstWebRTCICEStream*, GstWebRTCICEComponent))(fnptr))(carg0, carg1);
+// C.gboolean _gotk4_gstwebrtc1_WebRTCICEStream_virtual_gather_candidates(void* fnptr, *C.GstWebRTCICEStream carg0) {
+// 	return ((C.gboolean (*) (*C.GstWebRTCICEStream))(fnptr))(carg0);
 // }
-// gboolean _gotk4_gstwebrtc1_WebRTCICEStream_virtual_gather_candidates(void* fnptr, GstWebRTCICEStream* carg0) {
-// 	return ((gboolean (*) (GstWebRTCICEStream*))(fnptr))(carg0);
-// }
-// extern gboolean _gotk4_gstwebrtc1_WebRTCICETransport_gather_candidates(GstWebRTCICETransport*);
-// gboolean _gotk4_gstwebrtc1_WebRTCICETransport_virtual_gather_candidates(void* fnptr, GstWebRTCICETransport* carg0) {
-// 	return ((gboolean (*) (GstWebRTCICETransport*))(fnptr))(carg0);
+// extern C.gboolean _gotk4_gstwebrtc1_WebRTCICETransport_gather_candidates(*C.GstWebRTCICETransport);
+// C.gboolean _gotk4_gstwebrtc1_WebRTCICETransport_virtual_gather_candidates(void* fnptr, *C.GstWebRTCICETransport carg0) {
+// 	return ((C.gboolean (*) (*C.GstWebRTCICETransport))(fnptr))(carg0);
 // }
 import "C"
 
@@ -1775,7 +1770,8 @@ type WebRTCICE interface {
 	// chain up virtual methods:
 
 	// ParentAddCandidate calls the default implementations of the add_candidate virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
@@ -1783,7 +1779,8 @@ type WebRTCICE interface {
 	// 	- promise *gst.Promise (nullable): A #GstPromise for task notifications (Since: 1.24) 
 	ParentAddCandidate(stream WebRTCICEStream, candidate string, promise *gst.Promise)
 	// ParentAddStream calls the default implementations of the add_stream virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- sessionId uint: The session id 
@@ -1793,7 +1790,8 @@ type WebRTCICE interface {
 	// 	- goret WebRTCICEStream (nullable) 
 	ParentAddStream(sessionId uint) WebRTCICEStream
 	// ParentAddTurnServer calls the default implementations of the add_turn_server virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- uri string: URI of the TURN server 
@@ -1803,7 +1801,8 @@ type WebRTCICE interface {
 	// 	- goret bool 
 	ParentAddTurnServer(uri string) bool
 	// ParentFindTransport calls the default implementations of the find_transport virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
@@ -1814,7 +1813,8 @@ type WebRTCICE interface {
 	// 	- goret WebRTCICETransport (nullable) 
 	ParentFindTransport(stream WebRTCICEStream, component WebRTCICEComponent) WebRTCICETransport
 	// ParentGatherCandidates calls the default implementations of the gather_candidates virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
@@ -1824,7 +1824,8 @@ type WebRTCICE interface {
 	// 	- goret bool 
 	ParentGatherCandidates(stream WebRTCICEStream) bool
 	// ParentGetHTTPProxy calls the default implementations of the get_http_proxy virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string 
@@ -1832,13 +1833,15 @@ type WebRTCICE interface {
 	// Get HTTP Proxy to be used when connecting to TURN server.
 	ParentGetHTTPProxy() string
 	// ParentGetIsController calls the default implementations of the get_is_controller virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	ParentGetIsController() bool
 	// ParentGetSelectedPair calls the default implementations of the get_selected_pair virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
@@ -1850,25 +1853,29 @@ type WebRTCICE interface {
 	// 	- goret bool 
 	ParentGetSelectedPair(stream WebRTCICEStream) (*WebRTCICECandidateStats, *WebRTCICECandidateStats, bool)
 	// ParentGetStunServer calls the default implementations of the get_stun_server virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
 	ParentGetStunServer() string
 	// ParentGetTurnServer calls the default implementations of the get_turn_server virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
 	ParentGetTurnServer() string
 	// ParentSetForceRelay calls the default implementations of the set_force_relay virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- forceRelay bool: TRUE to enable force relay 
 	ParentSetForceRelay(forceRelay bool)
 	// ParentSetHTTPProxy calls the default implementations of the set_http_proxy virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- uri string: URI of the HTTP proxy of the form
@@ -1877,13 +1884,15 @@ type WebRTCICE interface {
 	// Set HTTP Proxy to be used when connecting to TURN server.
 	ParentSetHTTPProxy(uri string)
 	// ParentSetIsController calls the default implementations of the set_is_controller virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- controller bool: TRUE to set as controller 
 	ParentSetIsController(controller bool)
 	// ParentSetLocalCredentials calls the default implementations of the set_local_credentials virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
@@ -1894,14 +1903,9 @@ type WebRTCICE interface {
 	// 
 	// 	- goret bool 
 	ParentSetLocalCredentials(stream WebRTCICEStream, ufrag string, pwd string) bool
-	// ParentSetOnIceCandidate calls the default implementations of the set_on_ice_candidate virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
-	// The function takes the following parameters:
-	// 
-	// 	- fn WebRTCICEOnCandidateFunc: The #GstWebRTCICEOnCandidateFunc callback function 
-	ParentSetOnIceCandidate(fn WebRTCICEOnCandidateFunc)
 	// ParentSetRemoteCredentials calls the default implementations of the set_remote_credentials virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
@@ -1913,20 +1917,23 @@ type WebRTCICE interface {
 	// 	- goret bool 
 	ParentSetRemoteCredentials(stream WebRTCICEStream, ufrag string, pwd string) bool
 	// ParentSetStunServer calls the default implementations of the set_stun_server virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- uri string (nullable): URI of the STUN server 
 	ParentSetStunServer(uri string)
 	// ParentSetTos calls the default implementations of the set_tos virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
 	// 	- tos uint: ToS to be set 
 	ParentSetTos(stream WebRTCICEStream, tos uint)
 	// ParentSetTurnServer calls the default implementations of the set_turn_server virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- uri string (nullable): URI of the TURN sever 
@@ -2199,7 +2206,7 @@ func (ice *WebRTCICEInstance) GetLocalCandidates(stream WebRTCICEStream) []*WebR
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []*WebRTCICECandidateStats (GstWebRTCICECandidateStats**)")
+	panic("unimplemented conversion of []*WebRTCICECandidateStats (**C.GstWebRTCICECandidateStats)")
 
 	return goret
 }
@@ -2229,7 +2236,7 @@ func (ice *WebRTCICEInstance) GetRemoteCandidates(stream WebRTCICEStream) []*Web
 
 	_ = goret
 	_ = cret
-	panic("unimplemented conversion of []*WebRTCICECandidateStats (GstWebRTCICECandidateStats**)")
+	panic("unimplemented conversion of []*WebRTCICECandidateStats (**C.GstWebRTCICECandidateStats)")
 
 	return goret
 }
@@ -2556,14 +2563,16 @@ type WebRTCICEOverrides[Instance WebRTCICE] struct {
 	// gst.ObjectOverrides allows you to override virtual methods from the parent class gst.Object
 	gst.ObjectOverrides[Instance]
 
-	// AddCandidate allows you to override the implementation of the virtual method add_candidate.
+	// // AddCandidate allows you to override the implementation of the virtual method add_candidate.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
 	// 	- candidate string: The ICE candidate 
 	// 	- promise *gst.Promise (nullable): A #GstPromise for task notifications (Since: 1.24) 
 	AddCandidate func(Instance, WebRTCICEStream, string, *gst.Promise)
-	// AddStream allows you to override the implementation of the virtual method add_stream.
+	// // AddStream allows you to override the implementation of the virtual method add_stream.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- sessionId uint: The session id 
@@ -2572,7 +2581,8 @@ type WebRTCICEOverrides[Instance WebRTCICE] struct {
 	// 
 	// 	- goret WebRTCICEStream (nullable) 
 	AddStream func(Instance, uint) WebRTCICEStream
-	// AddTurnServer allows you to override the implementation of the virtual method add_turn_server.
+	// // AddTurnServer allows you to override the implementation of the virtual method add_turn_server.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- uri string: URI of the TURN server 
@@ -2581,7 +2591,8 @@ type WebRTCICEOverrides[Instance WebRTCICE] struct {
 	// 
 	// 	- goret bool 
 	AddTurnServer func(Instance, string) bool
-	// FindTransport allows you to override the implementation of the virtual method find_transport.
+	// // FindTransport allows you to override the implementation of the virtual method find_transport.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
@@ -2591,7 +2602,8 @@ type WebRTCICEOverrides[Instance WebRTCICE] struct {
 	// 
 	// 	- goret WebRTCICETransport (nullable) 
 	FindTransport func(Instance, WebRTCICEStream, WebRTCICEComponent) WebRTCICETransport
-	// GatherCandidates allows you to override the implementation of the virtual method gather_candidates.
+	// // GatherCandidates allows you to override the implementation of the virtual method gather_candidates.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
@@ -2600,19 +2612,22 @@ type WebRTCICEOverrides[Instance WebRTCICE] struct {
 	// 
 	// 	- goret bool 
 	GatherCandidates func(Instance, WebRTCICEStream) bool
-	// GetHTTPProxy allows you to override the implementation of the virtual method get_http_proxy.
+	// // GetHTTPProxy allows you to override the implementation of the virtual method get_http_proxy.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string 
 	//
 	// Get HTTP Proxy to be used when connecting to TURN server.
 	GetHTTPProxy func(Instance) string
-	// GetIsController allows you to override the implementation of the virtual method get_is_controller.
+	// // GetIsController allows you to override the implementation of the virtual method get_is_controller.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	GetIsController func(Instance) bool
-	// GetSelectedPair allows you to override the implementation of the virtual method get_selected_pair.
+	// // GetSelectedPair allows you to override the implementation of the virtual method get_selected_pair.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
@@ -2623,22 +2638,26 @@ type WebRTCICEOverrides[Instance WebRTCICE] struct {
 	// 	- remoteStats *WebRTCICECandidateStats: pointer to #GstWebRTCICECandidateStats for remote candidate 
 	// 	- goret bool 
 	GetSelectedPair func(Instance, WebRTCICEStream) (*WebRTCICECandidateStats, *WebRTCICECandidateStats, bool)
-	// GetStunServer allows you to override the implementation of the virtual method get_stun_server.
+	// // GetStunServer allows you to override the implementation of the virtual method get_stun_server.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
 	GetStunServer func(Instance) string
-	// GetTurnServer allows you to override the implementation of the virtual method get_turn_server.
+	// // GetTurnServer allows you to override the implementation of the virtual method get_turn_server.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
 	GetTurnServer func(Instance) string
-	// SetForceRelay allows you to override the implementation of the virtual method set_force_relay.
+	// // SetForceRelay allows you to override the implementation of the virtual method set_force_relay.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- forceRelay bool: TRUE to enable force relay 
 	SetForceRelay func(Instance, bool)
-	// SetHTTPProxy allows you to override the implementation of the virtual method set_http_proxy.
+	// // SetHTTPProxy allows you to override the implementation of the virtual method set_http_proxy.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- uri string: URI of the HTTP proxy of the form
@@ -2646,12 +2665,14 @@ type WebRTCICEOverrides[Instance WebRTCICE] struct {
 	//
 	// Set HTTP Proxy to be used when connecting to TURN server.
 	SetHTTPProxy func(Instance, string)
-	// SetIsController allows you to override the implementation of the virtual method set_is_controller.
+	// // SetIsController allows you to override the implementation of the virtual method set_is_controller.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- controller bool: TRUE to set as controller 
 	SetIsController func(Instance, bool)
-	// SetLocalCredentials allows you to override the implementation of the virtual method set_local_credentials.
+	// // SetLocalCredentials allows you to override the implementation of the virtual method set_local_credentials.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
@@ -2662,12 +2683,8 @@ type WebRTCICEOverrides[Instance WebRTCICE] struct {
 	// 
 	// 	- goret bool 
 	SetLocalCredentials func(Instance, WebRTCICEStream, string, string) bool
-	// SetOnIceCandidate allows you to override the implementation of the virtual method set_on_ice_candidate.
-	// The function takes the following parameters:
+	// // SetRemoteCredentials allows you to override the implementation of the virtual method set_remote_credentials.
 	// 
-	// 	- fn WebRTCICEOnCandidateFunc: The #GstWebRTCICEOnCandidateFunc callback function 
-	SetOnIceCandidate func(Instance, WebRTCICEOnCandidateFunc)
-	// SetRemoteCredentials allows you to override the implementation of the virtual method set_remote_credentials.
 	// The function takes the following parameters:
 	// 
 	// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
@@ -2678,18 +2695,21 @@ type WebRTCICEOverrides[Instance WebRTCICE] struct {
 	// 
 	// 	- goret bool 
 	SetRemoteCredentials func(Instance, WebRTCICEStream, string, string) bool
-	// SetStunServer allows you to override the implementation of the virtual method set_stun_server.
+	// // SetStunServer allows you to override the implementation of the virtual method set_stun_server.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- uri string (nullable): URI of the STUN server 
 	SetStunServer func(Instance, string)
-	// SetTos allows you to override the implementation of the virtual method set_tos.
+	// // SetTos allows you to override the implementation of the virtual method set_tos.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
 	// 	- tos uint: ToS to be set 
 	SetTos func(Instance, WebRTCICEStream, uint)
-	// SetTurnServer allows you to override the implementation of the virtual method set_turn_server.
+	// // SetTurnServer allows you to override the implementation of the virtual method set_turn_server.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- uri string (nullable): URI of the TURN sever 
@@ -3021,27 +3041,6 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 		)
 	}
 
-	if overrides.SetOnIceCandidate != nil {
-		pclass.set_on_ice_candidate = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_set_on_ice_candidate)
-		classdata.StoreVirtualMethod(
-			unsafe.Pointer(pclass),
-			"_gotk4_gstwebrtc1_WebRTCICE_set_on_ice_candidate",
-			func(carg0 *C.GstWebRTCICE, carg1 C.GstWebRTCICEOnCandidateFunc, carg2 C.gpointer, carg3 C.GDestroyNotify) {
-				var ice Instance                 // go GstWebRTCICE subclass
-				var fn  WebRTCICEOnCandidateFunc // in, transfer: none, C Pointers: 0, Name: WebRTCICEOnCandidateFunc, scope: notified, closure: carg2, destroy: carg3
-
-				ice = UnsafeWebRTCICEFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
-				_ = fn
-				_ = carg1
-				_ = carg2
-				_ = carg3
-				panic("unimplemented conversion of WebRTCICEOnCandidateFunc (GstWebRTCICEOnCandidateFunc)")
-
-				overrides.SetOnIceCandidate(ice, fn)
-			},
-		)
-	}
-
 	if overrides.SetRemoteCredentials != nil {
 		pclass.set_remote_credentials = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICE_set_remote_credentials)
 		classdata.StoreVirtualMethod(
@@ -3129,7 +3128,8 @@ func UnsafeApplyWebRTCICEOverrides[Instance WebRTCICE](gclass unsafe.Pointer, ov
 }
 
 // ParentAddCandidate calls the default implementations of the add_candidate virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
@@ -3158,7 +3158,8 @@ func (ice *WebRTCICEInstance) ParentAddCandidate(stream WebRTCICEStream, candida
 }
 
 // ParentAddStream calls the default implementations of the add_stream virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- sessionId uint: The session id 
@@ -3189,7 +3190,8 @@ func (ice *WebRTCICEInstance) ParentAddStream(sessionId uint) WebRTCICEStream {
 }
 
 // ParentAddTurnServer calls the default implementations of the add_turn_server virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- uri string: URI of the TURN server 
@@ -3221,7 +3223,8 @@ func (ice *WebRTCICEInstance) ParentAddTurnServer(uri string) bool {
 }
 
 // ParentFindTransport calls the default implementations of the find_transport virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
@@ -3256,7 +3259,8 @@ func (ice *WebRTCICEInstance) ParentFindTransport(stream WebRTCICEStream, compon
 }
 
 // ParentGatherCandidates calls the default implementations of the gather_candidates virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
@@ -3287,7 +3291,8 @@ func (ice *WebRTCICEInstance) ParentGatherCandidates(stream WebRTCICEStream) boo
 }
 
 // ParentGetHTTPProxy calls the default implementations of the get_http_proxy virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -3311,7 +3316,8 @@ func (ice *WebRTCICEInstance) ParentGetHTTPProxy() string {
 }
 
 // ParentGetIsController calls the default implementations of the get_is_controller virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -3334,7 +3340,8 @@ func (ice *WebRTCICEInstance) ParentGetIsController() bool {
 }
 
 // ParentGetSelectedPair calls the default implementations of the get_selected_pair virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
@@ -3373,7 +3380,8 @@ func (ice *WebRTCICEInstance) ParentGetSelectedPair(stream WebRTCICEStream) (*We
 }
 
 // ParentGetStunServer calls the default implementations of the get_stun_server virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -3397,7 +3405,8 @@ func (ice *WebRTCICEInstance) ParentGetStunServer() string {
 }
 
 // ParentGetTurnServer calls the default implementations of the get_turn_server virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -3421,7 +3430,8 @@ func (ice *WebRTCICEInstance) ParentGetTurnServer() string {
 }
 
 // ParentSetForceRelay calls the default implementations of the set_force_relay virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- forceRelay bool: TRUE to enable force relay 
@@ -3441,7 +3451,8 @@ func (ice *WebRTCICEInstance) ParentSetForceRelay(forceRelay bool) {
 }
 
 // ParentSetHTTPProxy calls the default implementations of the set_http_proxy virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- uri string: URI of the HTTP proxy of the form
@@ -3463,7 +3474,8 @@ func (ice *WebRTCICEInstance) ParentSetHTTPProxy(uri string) {
 }
 
 // ParentSetIsController calls the default implementations of the set_is_controller virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- controller bool: TRUE to set as controller 
@@ -3483,7 +3495,8 @@ func (ice *WebRTCICEInstance) ParentSetIsController(controller bool) {
 }
 
 // ParentSetLocalCredentials calls the default implementations of the set_local_credentials virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
@@ -3523,30 +3536,9 @@ func (ice *WebRTCICEInstance) ParentSetLocalCredentials(stream WebRTCICEStream, 
 	return goret
 }
 
-// ParentSetOnIceCandidate calls the default implementations of the set_on_ice_candidate virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
-// The function takes the following parameters:
-// 
-// 	- fn WebRTCICEOnCandidateFunc: The #GstWebRTCICEOnCandidateFunc callback function 
-func (ice *WebRTCICEInstance) ParentSetOnIceCandidate(fn WebRTCICEOnCandidateFunc) {
-	var carg0 *C.GstWebRTCICE
-	var carg1 C.GstWebRTCICEOnCandidateFunc // callback, scope: notified, closure: carg2, destroy: carg3
-	var carg2 C.gpointer                    // implicit
-	var carg3 C.GDestroyNotify              // implicit
-
-	parentclass := (*C.GstWebRTCICEClass)(classdata.PeekParentClass(UnsafeWebRTCICEToGlibNone(ice)))
-
-	carg1 = (*[0]byte)(C._gotk4_gstwebrtc1_WebRTCICEOnCandidateFunc)
-	carg2 = C.gpointer(userdata.Register(fn))
-	carg3 = (C.GDestroyNotify)((*[0]byte)(C.destroyUserdata))
-
-	C._gotk4_gstwebrtc1_WebRTCICE_virtual_set_on_ice_candidate(unsafe.Pointer(parentclass.set_on_ice_candidate), carg0, carg1, carg2, carg3)
-	runtime.KeepAlive(ice)
-	runtime.KeepAlive(fn)
-}
-
 // ParentSetRemoteCredentials calls the default implementations of the set_remote_credentials virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
@@ -3587,7 +3579,8 @@ func (ice *WebRTCICEInstance) ParentSetRemoteCredentials(stream WebRTCICEStream,
 }
 
 // ParentSetStunServer calls the default implementations of the set_stun_server virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- uri string (nullable): URI of the STUN server 
@@ -3608,7 +3601,8 @@ func (ice *WebRTCICEInstance) ParentSetStunServer(uri string) {
 }
 
 // ParentSetTos calls the default implementations of the set_tos virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- stream WebRTCICEStream: The #GstWebRTCICEStream 
@@ -3630,7 +3624,8 @@ func (ice *WebRTCICEInstance) ParentSetTos(stream WebRTCICEStream, tos uint) {
 }
 
 // ParentSetTurnServer calls the default implementations of the set_turn_server virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- uri string (nullable): URI of the TURN sever 
@@ -3709,7 +3704,8 @@ type WebRTCICEStream interface {
 	// chain up virtual methods:
 
 	// ParentFindTransport calls the default implementations of the find_transport virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- component WebRTCICEComponent: The #GstWebRTCICEComponent 
@@ -3719,7 +3715,8 @@ type WebRTCICEStream interface {
 	// 	- goret WebRTCICETransport (nullable) 
 	ParentFindTransport(component WebRTCICEComponent) WebRTCICETransport
 	// ParentGatherCandidates calls the default implementations of the gather_candidates virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -3828,7 +3825,8 @@ type WebRTCICEStreamOverrides[Instance WebRTCICEStream] struct {
 	// gst.ObjectOverrides allows you to override virtual methods from the parent class gst.Object
 	gst.ObjectOverrides[Instance]
 
-	// FindTransport allows you to override the implementation of the virtual method find_transport.
+	// // FindTransport allows you to override the implementation of the virtual method find_transport.
+	// 
 	// The function takes the following parameters:
 	// 
 	// 	- component WebRTCICEComponent: The #GstWebRTCICEComponent 
@@ -3837,7 +3835,8 @@ type WebRTCICEStreamOverrides[Instance WebRTCICEStream] struct {
 	// 
 	// 	- goret WebRTCICETransport (nullable) 
 	FindTransport func(Instance, WebRTCICEComponent) WebRTCICETransport
-	// GatherCandidates allows you to override the implementation of the virtual method gather_candidates.
+	// // GatherCandidates allows you to override the implementation of the virtual method gather_candidates.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -3899,7 +3898,8 @@ func UnsafeApplyWebRTCICEStreamOverrides[Instance WebRTCICEStream](gclass unsafe
 }
 
 // ParentFindTransport calls the default implementations of the find_transport virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function takes the following parameters:
 // 
 // 	- component WebRTCICEComponent: The #GstWebRTCICEComponent 
@@ -3930,7 +3930,8 @@ func (stream *WebRTCICEStreamInstance) ParentFindTransport(component WebRTCICECo
 }
 
 // ParentGatherCandidates calls the default implementations of the gather_candidates virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -4021,7 +4022,8 @@ type WebRTCICETransport interface {
 	// chain up virtual methods:
 
 	// ParentGatherCandidates calls the default implementations of the gather_candidates virtual method.
-	// This functions behavior is not defined when the parent does not implement the virtual method.
+	// This function's behavior is not defined when the parent does not implement the virtual method.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -4157,7 +4159,8 @@ type WebRTCICETransportOverrides[Instance WebRTCICETransport] struct {
 	// gst.ObjectOverrides allows you to override virtual methods from the parent class gst.Object
 	gst.ObjectOverrides[Instance]
 
-	// GatherCandidates allows you to override the implementation of the virtual method gather_candidates.
+	// // GatherCandidates allows you to override the implementation of the virtual method gather_candidates.
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -4195,7 +4198,8 @@ func UnsafeApplyWebRTCICETransportOverrides[Instance WebRTCICETransport](gclass 
 }
 
 // ParentGatherCandidates calls the default implementations of the gather_candidates virtual method.
-// This functions behavior is not defined when the parent does not implement the virtual method.
+// This function's behavior is not defined when the parent does not implement the virtual method.
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
