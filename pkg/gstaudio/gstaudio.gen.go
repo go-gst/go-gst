@@ -21,6 +21,286 @@ import (
 // extern void _gotk4_gstaudio1_AudioBaseSinkCustomSlavingCallback(GstAudioBaseSink*, GstClockTime, GstClockTime, GstClockTimeDiff*, GstAudioBaseSinkDiscontReason, gpointer);
 // extern void _gotk4_gstaudio1_AudioRingBufferCallback(GstAudioRingBuffer*, guint8*, guint, gpointer);
 // extern void destroyUserdata(gpointer);
+// extern gboolean _gotk4_gstaudio1_AudioAggregator_aggregate_one_buffer(GstAudioAggregator*, GstAudioAggregatorPad*, GstBuffer*, guint, GstBuffer*, guint, guint);
+// extern GstBuffer* _gotk4_gstaudio1_AudioAggregator_create_output_buffer(GstAudioAggregator*, guint);
+// gboolean _gotk4_gstaudio1_AudioAggregator_virtual_aggregate_one_buffer(void* fnptr, GstAudioAggregator* carg0, GstAudioAggregatorPad* carg1, GstBuffer* carg2, guint carg3, GstBuffer* carg4, guint carg5, guint carg6) {
+// 	return ((gboolean (*) (GstAudioAggregator*, GstAudioAggregatorPad*, GstBuffer*, guint, GstBuffer*, guint, guint))(fnptr))(carg0, carg1, carg2, carg3, carg4, carg5, carg6);
+// }
+// GstBuffer* _gotk4_gstaudio1_AudioAggregator_virtual_create_output_buffer(void* fnptr, GstAudioAggregator* carg0, guint carg1) {
+// 	return ((GstBuffer* (*) (GstAudioAggregator*, guint))(fnptr))(carg0, carg1);
+// }
+// extern GstBuffer* _gotk4_gstaudio1_AudioAggregatorPad_convert_buffer(GstAudioAggregatorPad*, GstAudioInfo*, GstAudioInfo*, GstBuffer*);
+// extern void _gotk4_gstaudio1_AudioAggregatorPad_update_conversion_info(GstAudioAggregatorPad*);
+// GstBuffer* _gotk4_gstaudio1_AudioAggregatorPad_virtual_convert_buffer(void* fnptr, GstAudioAggregatorPad* carg0, GstAudioInfo* carg1, GstAudioInfo* carg2, GstBuffer* carg3) {
+// 	return ((GstBuffer* (*) (GstAudioAggregatorPad*, GstAudioInfo*, GstAudioInfo*, GstBuffer*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// void _gotk4_gstaudio1_AudioAggregatorPad_virtual_update_conversion_info(void* fnptr, GstAudioAggregatorPad* carg0) {
+// 	return ((void (*) (GstAudioAggregatorPad*))(fnptr))(carg0);
+// }
+// extern GstAudioRingBuffer* _gotk4_gstaudio1_AudioBaseSink_create_ringbuffer(GstAudioBaseSink*);
+// extern GstBuffer* _gotk4_gstaudio1_AudioBaseSink_payload(GstAudioBaseSink*, GstBuffer*);
+// GstAudioRingBuffer* _gotk4_gstaudio1_AudioBaseSink_virtual_create_ringbuffer(void* fnptr, GstAudioBaseSink* carg0) {
+// 	return ((GstAudioRingBuffer* (*) (GstAudioBaseSink*))(fnptr))(carg0);
+// }
+// GstBuffer* _gotk4_gstaudio1_AudioBaseSink_virtual_payload(void* fnptr, GstAudioBaseSink* carg0, GstBuffer* carg1) {
+// 	return ((GstBuffer* (*) (GstAudioBaseSink*, GstBuffer*))(fnptr))(carg0, carg1);
+// }
+// extern GstAudioRingBuffer* _gotk4_gstaudio1_AudioBaseSrc_create_ringbuffer(GstAudioBaseSrc*);
+// GstAudioRingBuffer* _gotk4_gstaudio1_AudioBaseSrc_virtual_create_ringbuffer(void* fnptr, GstAudioBaseSrc* carg0) {
+// 	return ((GstAudioRingBuffer* (*) (GstAudioBaseSrc*))(fnptr))(carg0);
+// }
+// extern void _gotk4_gstaudio1_AudioCdSrc_close(GstAudioCdSrc*);
+// extern gboolean _gotk4_gstaudio1_AudioCdSrc_open(GstAudioCdSrc*, gchar*);
+// extern GstBuffer* _gotk4_gstaudio1_AudioCdSrc_read_sector(GstAudioCdSrc*, gint);
+// void _gotk4_gstaudio1_AudioCdSrc_virtual_close(void* fnptr, GstAudioCdSrc* carg0) {
+// 	return ((void (*) (GstAudioCdSrc*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstaudio1_AudioCdSrc_virtual_open(void* fnptr, GstAudioCdSrc* carg0, gchar* carg1) {
+// 	return ((gboolean (*) (GstAudioCdSrc*, gchar*))(fnptr))(carg0, carg1);
+// }
+// GstBuffer* _gotk4_gstaudio1_AudioCdSrc_virtual_read_sector(void* fnptr, GstAudioCdSrc* carg0, gint carg1) {
+// 	return ((GstBuffer* (*) (GstAudioCdSrc*, gint))(fnptr))(carg0, carg1);
+// }
+// extern gboolean _gotk4_gstaudio1_AudioDecoder_close(GstAudioDecoder*);
+// extern gboolean _gotk4_gstaudio1_AudioDecoder_decide_allocation(GstAudioDecoder*, GstQuery*);
+// extern void _gotk4_gstaudio1_AudioDecoder_flush(GstAudioDecoder*, gboolean);
+// extern GstCaps* _gotk4_gstaudio1_AudioDecoder_getcaps(GstAudioDecoder*, GstCaps*);
+// extern GstFlowReturn _gotk4_gstaudio1_AudioDecoder_handle_frame(GstAudioDecoder*, GstBuffer*);
+// extern gboolean _gotk4_gstaudio1_AudioDecoder_negotiate(GstAudioDecoder*);
+// extern gboolean _gotk4_gstaudio1_AudioDecoder_open(GstAudioDecoder*);
+// extern GstFlowReturn _gotk4_gstaudio1_AudioDecoder_parse(GstAudioDecoder*, GstAdapter*, gint, gint);
+// extern gboolean _gotk4_gstaudio1_AudioDecoder_propose_allocation(GstAudioDecoder*, GstQuery*);
+// extern gboolean _gotk4_gstaudio1_AudioDecoder_set_format(GstAudioDecoder*, GstCaps*);
+// extern gboolean _gotk4_gstaudio1_AudioDecoder_sink_event(GstAudioDecoder*, GstEvent*);
+// extern gboolean _gotk4_gstaudio1_AudioDecoder_sink_query(GstAudioDecoder*, GstQuery*);
+// extern gboolean _gotk4_gstaudio1_AudioDecoder_src_event(GstAudioDecoder*, GstEvent*);
+// extern gboolean _gotk4_gstaudio1_AudioDecoder_src_query(GstAudioDecoder*, GstQuery*);
+// extern gboolean _gotk4_gstaudio1_AudioDecoder_start(GstAudioDecoder*);
+// extern gboolean _gotk4_gstaudio1_AudioDecoder_stop(GstAudioDecoder*);
+// extern gboolean _gotk4_gstaudio1_AudioDecoder_transform_meta(GstAudioDecoder*, GstBuffer*, GstMeta*, GstBuffer*);
+// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_close(void* fnptr, GstAudioDecoder* carg0) {
+// 	return ((gboolean (*) (GstAudioDecoder*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_decide_allocation(void* fnptr, GstAudioDecoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstAudioDecoder*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gstaudio1_AudioDecoder_virtual_flush(void* fnptr, GstAudioDecoder* carg0, gboolean carg1) {
+// 	return ((void (*) (GstAudioDecoder*, gboolean))(fnptr))(carg0, carg1);
+// }
+// GstCaps* _gotk4_gstaudio1_AudioDecoder_virtual_getcaps(void* fnptr, GstAudioDecoder* carg0, GstCaps* carg1) {
+// 	return ((GstCaps* (*) (GstAudioDecoder*, GstCaps*))(fnptr))(carg0, carg1);
+// }
+// GstFlowReturn _gotk4_gstaudio1_AudioDecoder_virtual_handle_frame(void* fnptr, GstAudioDecoder* carg0, GstBuffer* carg1) {
+// 	return ((GstFlowReturn (*) (GstAudioDecoder*, GstBuffer*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_negotiate(void* fnptr, GstAudioDecoder* carg0) {
+// 	return ((gboolean (*) (GstAudioDecoder*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_open(void* fnptr, GstAudioDecoder* carg0) {
+// 	return ((gboolean (*) (GstAudioDecoder*))(fnptr))(carg0);
+// }
+// GstFlowReturn _gotk4_gstaudio1_AudioDecoder_virtual_parse(void* fnptr, GstAudioDecoder* carg0, GstAdapter* carg1, gint* carg2, gint* carg3) {
+// 	return ((GstFlowReturn (*) (GstAudioDecoder*, GstAdapter*, gint*, gint*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_propose_allocation(void* fnptr, GstAudioDecoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstAudioDecoder*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_set_format(void* fnptr, GstAudioDecoder* carg0, GstCaps* carg1) {
+// 	return ((gboolean (*) (GstAudioDecoder*, GstCaps*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_sink_event(void* fnptr, GstAudioDecoder* carg0, GstEvent* carg1) {
+// 	return ((gboolean (*) (GstAudioDecoder*, GstEvent*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_sink_query(void* fnptr, GstAudioDecoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstAudioDecoder*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_src_event(void* fnptr, GstAudioDecoder* carg0, GstEvent* carg1) {
+// 	return ((gboolean (*) (GstAudioDecoder*, GstEvent*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_src_query(void* fnptr, GstAudioDecoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstAudioDecoder*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_start(void* fnptr, GstAudioDecoder* carg0) {
+// 	return ((gboolean (*) (GstAudioDecoder*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_stop(void* fnptr, GstAudioDecoder* carg0) {
+// 	return ((gboolean (*) (GstAudioDecoder*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstaudio1_AudioDecoder_virtual_transform_meta(void* fnptr, GstAudioDecoder* carg0, GstBuffer* carg1, GstMeta* carg2, GstBuffer* carg3) {
+// 	return ((gboolean (*) (GstAudioDecoder*, GstBuffer*, GstMeta*, GstBuffer*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// extern gboolean _gotk4_gstaudio1_AudioEncoder_close(GstAudioEncoder*);
+// extern gboolean _gotk4_gstaudio1_AudioEncoder_decide_allocation(GstAudioEncoder*, GstQuery*);
+// extern void _gotk4_gstaudio1_AudioEncoder_flush(GstAudioEncoder*);
+// extern GstCaps* _gotk4_gstaudio1_AudioEncoder_getcaps(GstAudioEncoder*, GstCaps*);
+// extern GstFlowReturn _gotk4_gstaudio1_AudioEncoder_handle_frame(GstAudioEncoder*, GstBuffer*);
+// extern gboolean _gotk4_gstaudio1_AudioEncoder_negotiate(GstAudioEncoder*);
+// extern gboolean _gotk4_gstaudio1_AudioEncoder_open(GstAudioEncoder*);
+// extern gboolean _gotk4_gstaudio1_AudioEncoder_propose_allocation(GstAudioEncoder*, GstQuery*);
+// extern gboolean _gotk4_gstaudio1_AudioEncoder_set_format(GstAudioEncoder*, GstAudioInfo*);
+// extern gboolean _gotk4_gstaudio1_AudioEncoder_sink_event(GstAudioEncoder*, GstEvent*);
+// extern gboolean _gotk4_gstaudio1_AudioEncoder_sink_query(GstAudioEncoder*, GstQuery*);
+// extern gboolean _gotk4_gstaudio1_AudioEncoder_src_event(GstAudioEncoder*, GstEvent*);
+// extern gboolean _gotk4_gstaudio1_AudioEncoder_src_query(GstAudioEncoder*, GstQuery*);
+// extern gboolean _gotk4_gstaudio1_AudioEncoder_start(GstAudioEncoder*);
+// extern gboolean _gotk4_gstaudio1_AudioEncoder_stop(GstAudioEncoder*);
+// extern gboolean _gotk4_gstaudio1_AudioEncoder_transform_meta(GstAudioEncoder*, GstBuffer*, GstMeta*, GstBuffer*);
+// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_close(void* fnptr, GstAudioEncoder* carg0) {
+// 	return ((gboolean (*) (GstAudioEncoder*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_decide_allocation(void* fnptr, GstAudioEncoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstAudioEncoder*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gstaudio1_AudioEncoder_virtual_flush(void* fnptr, GstAudioEncoder* carg0) {
+// 	return ((void (*) (GstAudioEncoder*))(fnptr))(carg0);
+// }
+// GstCaps* _gotk4_gstaudio1_AudioEncoder_virtual_getcaps(void* fnptr, GstAudioEncoder* carg0, GstCaps* carg1) {
+// 	return ((GstCaps* (*) (GstAudioEncoder*, GstCaps*))(fnptr))(carg0, carg1);
+// }
+// GstFlowReturn _gotk4_gstaudio1_AudioEncoder_virtual_handle_frame(void* fnptr, GstAudioEncoder* carg0, GstBuffer* carg1) {
+// 	return ((GstFlowReturn (*) (GstAudioEncoder*, GstBuffer*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_negotiate(void* fnptr, GstAudioEncoder* carg0) {
+// 	return ((gboolean (*) (GstAudioEncoder*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_open(void* fnptr, GstAudioEncoder* carg0) {
+// 	return ((gboolean (*) (GstAudioEncoder*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_propose_allocation(void* fnptr, GstAudioEncoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstAudioEncoder*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_set_format(void* fnptr, GstAudioEncoder* carg0, GstAudioInfo* carg1) {
+// 	return ((gboolean (*) (GstAudioEncoder*, GstAudioInfo*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_sink_event(void* fnptr, GstAudioEncoder* carg0, GstEvent* carg1) {
+// 	return ((gboolean (*) (GstAudioEncoder*, GstEvent*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_sink_query(void* fnptr, GstAudioEncoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstAudioEncoder*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_src_event(void* fnptr, GstAudioEncoder* carg0, GstEvent* carg1) {
+// 	return ((gboolean (*) (GstAudioEncoder*, GstEvent*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_src_query(void* fnptr, GstAudioEncoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstAudioEncoder*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_start(void* fnptr, GstAudioEncoder* carg0) {
+// 	return ((gboolean (*) (GstAudioEncoder*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_stop(void* fnptr, GstAudioEncoder* carg0) {
+// 	return ((gboolean (*) (GstAudioEncoder*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstaudio1_AudioEncoder_virtual_transform_meta(void* fnptr, GstAudioEncoder* carg0, GstBuffer* carg1, GstMeta* carg2, GstBuffer* carg3) {
+// 	return ((gboolean (*) (GstAudioEncoder*, GstBuffer*, GstMeta*, GstBuffer*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// extern gboolean _gotk4_gstaudio1_AudioFilter_setup(GstAudioFilter*, GstAudioInfo*);
+// gboolean _gotk4_gstaudio1_AudioFilter_virtual_setup(void* fnptr, GstAudioFilter* carg0, GstAudioInfo* carg1) {
+// 	return ((gboolean (*) (GstAudioFilter*, GstAudioInfo*))(fnptr))(carg0, carg1);
+// }
+// extern gboolean _gotk4_gstaudio1_AudioRingBuffer_acquire(GstAudioRingBuffer*, GstAudioRingBufferSpec*);
+// extern gboolean _gotk4_gstaudio1_AudioRingBuffer_activate(GstAudioRingBuffer*, gboolean);
+// extern void _gotk4_gstaudio1_AudioRingBuffer_clear_all(GstAudioRingBuffer*);
+// extern gboolean _gotk4_gstaudio1_AudioRingBuffer_close_device(GstAudioRingBuffer*);
+// extern guint _gotk4_gstaudio1_AudioRingBuffer_delay(GstAudioRingBuffer*);
+// extern gboolean _gotk4_gstaudio1_AudioRingBuffer_open_device(GstAudioRingBuffer*);
+// extern gboolean _gotk4_gstaudio1_AudioRingBuffer_pause(GstAudioRingBuffer*);
+// extern gboolean _gotk4_gstaudio1_AudioRingBuffer_release(GstAudioRingBuffer*);
+// extern gboolean _gotk4_gstaudio1_AudioRingBuffer_resume(GstAudioRingBuffer*);
+// extern gboolean _gotk4_gstaudio1_AudioRingBuffer_start(GstAudioRingBuffer*);
+// extern gboolean _gotk4_gstaudio1_AudioRingBuffer_stop(GstAudioRingBuffer*);
+// gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_acquire(void* fnptr, GstAudioRingBuffer* carg0, GstAudioRingBufferSpec* carg1) {
+// 	return ((gboolean (*) (GstAudioRingBuffer*, GstAudioRingBufferSpec*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_activate(void* fnptr, GstAudioRingBuffer* carg0, gboolean carg1) {
+// 	return ((gboolean (*) (GstAudioRingBuffer*, gboolean))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gstaudio1_AudioRingBuffer_virtual_clear_all(void* fnptr, GstAudioRingBuffer* carg0) {
+// 	return ((void (*) (GstAudioRingBuffer*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_close_device(void* fnptr, GstAudioRingBuffer* carg0) {
+// 	return ((gboolean (*) (GstAudioRingBuffer*))(fnptr))(carg0);
+// }
+// guint _gotk4_gstaudio1_AudioRingBuffer_virtual_delay(void* fnptr, GstAudioRingBuffer* carg0) {
+// 	return ((guint (*) (GstAudioRingBuffer*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_open_device(void* fnptr, GstAudioRingBuffer* carg0) {
+// 	return ((gboolean (*) (GstAudioRingBuffer*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_pause(void* fnptr, GstAudioRingBuffer* carg0) {
+// 	return ((gboolean (*) (GstAudioRingBuffer*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_release(void* fnptr, GstAudioRingBuffer* carg0) {
+// 	return ((gboolean (*) (GstAudioRingBuffer*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_resume(void* fnptr, GstAudioRingBuffer* carg0) {
+// 	return ((gboolean (*) (GstAudioRingBuffer*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_start(void* fnptr, GstAudioRingBuffer* carg0) {
+// 	return ((gboolean (*) (GstAudioRingBuffer*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstaudio1_AudioRingBuffer_virtual_stop(void* fnptr, GstAudioRingBuffer* carg0) {
+// 	return ((gboolean (*) (GstAudioRingBuffer*))(fnptr))(carg0);
+// }
+// extern gboolean _gotk4_gstaudio1_AudioSink_close(GstAudioSink*);
+// extern guint _gotk4_gstaudio1_AudioSink_delay(GstAudioSink*);
+// extern gboolean _gotk4_gstaudio1_AudioSink_open(GstAudioSink*);
+// extern void _gotk4_gstaudio1_AudioSink_pause(GstAudioSink*);
+// extern gboolean _gotk4_gstaudio1_AudioSink_prepare(GstAudioSink*, GstAudioRingBufferSpec*);
+// extern void _gotk4_gstaudio1_AudioSink_reset(GstAudioSink*);
+// extern void _gotk4_gstaudio1_AudioSink_resume(GstAudioSink*);
+// extern void _gotk4_gstaudio1_AudioSink_stop(GstAudioSink*);
+// extern gboolean _gotk4_gstaudio1_AudioSink_unprepare(GstAudioSink*);
+// gboolean _gotk4_gstaudio1_AudioSink_virtual_close(void* fnptr, GstAudioSink* carg0) {
+// 	return ((gboolean (*) (GstAudioSink*))(fnptr))(carg0);
+// }
+// guint _gotk4_gstaudio1_AudioSink_virtual_delay(void* fnptr, GstAudioSink* carg0) {
+// 	return ((guint (*) (GstAudioSink*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstaudio1_AudioSink_virtual_open(void* fnptr, GstAudioSink* carg0) {
+// 	return ((gboolean (*) (GstAudioSink*))(fnptr))(carg0);
+// }
+// void _gotk4_gstaudio1_AudioSink_virtual_pause(void* fnptr, GstAudioSink* carg0) {
+// 	return ((void (*) (GstAudioSink*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstaudio1_AudioSink_virtual_prepare(void* fnptr, GstAudioSink* carg0, GstAudioRingBufferSpec* carg1) {
+// 	return ((gboolean (*) (GstAudioSink*, GstAudioRingBufferSpec*))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gstaudio1_AudioSink_virtual_reset(void* fnptr, GstAudioSink* carg0) {
+// 	return ((void (*) (GstAudioSink*))(fnptr))(carg0);
+// }
+// void _gotk4_gstaudio1_AudioSink_virtual_resume(void* fnptr, GstAudioSink* carg0) {
+// 	return ((void (*) (GstAudioSink*))(fnptr))(carg0);
+// }
+// void _gotk4_gstaudio1_AudioSink_virtual_stop(void* fnptr, GstAudioSink* carg0) {
+// 	return ((void (*) (GstAudioSink*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstaudio1_AudioSink_virtual_unprepare(void* fnptr, GstAudioSink* carg0) {
+// 	return ((gboolean (*) (GstAudioSink*))(fnptr))(carg0);
+// }
+// extern gboolean _gotk4_gstaudio1_AudioSrc_close(GstAudioSrc*);
+// extern guint _gotk4_gstaudio1_AudioSrc_delay(GstAudioSrc*);
+// extern gboolean _gotk4_gstaudio1_AudioSrc_open(GstAudioSrc*);
+// extern gboolean _gotk4_gstaudio1_AudioSrc_prepare(GstAudioSrc*, GstAudioRingBufferSpec*);
+// extern void _gotk4_gstaudio1_AudioSrc_reset(GstAudioSrc*);
+// extern gboolean _gotk4_gstaudio1_AudioSrc_unprepare(GstAudioSrc*);
+// gboolean _gotk4_gstaudio1_AudioSrc_virtual_close(void* fnptr, GstAudioSrc* carg0) {
+// 	return ((gboolean (*) (GstAudioSrc*))(fnptr))(carg0);
+// }
+// guint _gotk4_gstaudio1_AudioSrc_virtual_delay(void* fnptr, GstAudioSrc* carg0) {
+// 	return ((guint (*) (GstAudioSrc*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstaudio1_AudioSrc_virtual_open(void* fnptr, GstAudioSrc* carg0) {
+// 	return ((gboolean (*) (GstAudioSrc*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstaudio1_AudioSrc_virtual_prepare(void* fnptr, GstAudioSrc* carg0, GstAudioRingBufferSpec* carg1) {
+// 	return ((gboolean (*) (GstAudioSrc*, GstAudioRingBufferSpec*))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gstaudio1_AudioSrc_virtual_reset(void* fnptr, GstAudioSrc* carg0) {
+// 	return ((void (*) (GstAudioSrc*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstaudio1_AudioSrc_virtual_unprepare(void* fnptr, GstAudioSrc* carg0) {
+// 	return ((gboolean (*) (GstAudioSrc*))(fnptr))(carg0);
+// }
 import "C"
 
 // GType values.
@@ -2169,6 +2449,7 @@ func AudioCheckValidChannelPositions(position []AudioChannelPosition, forceOrder
 }
 
 // AudioClippingMetaApiGetType wraps gst_audio_clipping_meta_api_get_type
+// 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
@@ -2185,6 +2466,7 @@ func AudioClippingMetaApiGetType() gobject.Type {
 }
 
 // AudioDownmixMetaApiGetType wraps gst_audio_downmix_meta_api_get_type
+// 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
@@ -2201,6 +2483,7 @@ func AudioDownmixMetaApiGetType() gobject.Type {
 }
 
 // AudioFormatsRaw wraps gst_audio_formats_raw
+// 
 // The function returns the following values:
 // 
 // 	- len uint: the number of elements in the returned array 
@@ -2359,6 +2642,7 @@ func AudioIec61937Payload(src []uint8, dst []uint8, spec *AudioRingBufferSpec, e
 }
 
 // AudioLevelMetaApiGetType wraps gst_audio_level_meta_api_get_type
+// 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
@@ -2414,6 +2698,7 @@ func AudioMakeRawCaps(formats []AudioFormat, layout AudioLayout) *gst.Caps {
 }
 
 // AudioMetaApiGetType wraps gst_audio_meta_api_get_type
+// 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
@@ -2838,6 +3123,7 @@ func DsdConvert(inputData *uint8, outputData *uint8, inputFormat DsdFormat, outp
 }
 
 // DsdPlaneOffsetMetaApiGetType wraps gst_dsd_plane_offset_meta_api_get_type
+// 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
@@ -2883,6 +3169,7 @@ type StreamVolume interface {
 	upcastToGstStreamVolume() *StreamVolumeInstance
 
 	// GetMute wraps gst_stream_volume_get_mute
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -2984,6 +3271,7 @@ func StreamVolumeConvertVolume(from StreamVolumeFormat, to StreamVolumeFormat, v
 }
 
 // GetMute wraps gst_stream_volume_get_mute
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -3071,6 +3359,16 @@ func (volume *StreamVolumeInstance) SetVolume(format StreamVolumeFormat, val flo
 	runtime.KeepAlive(volume)
 	runtime.KeepAlive(format)
 	runtime.KeepAlive(val)
+}
+
+// StreamVolumeOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type StreamVolumeOverrides[Instance StreamVolume] struct {
+}
+
+// UnsafeApplyStreamVolumeOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyStreamVolumeOverrides[Instance StreamVolume](gclass unsafe.Pointer, overrides StreamVolumeOverrides[Instance]) {
 }
 
 // AudioAggregatorInstance is the instance type used by all types extending GstAudioAggregator. It is used internally by the bindings. Users should use the interface [AudioAggregator] instead.
@@ -3203,6 +3501,53 @@ func (aagg *AudioAggregatorInstance) SetSinkCaps(pad AudioAggregatorPad, caps *g
 	runtime.KeepAlive(caps)
 }
 
+// AudioAggregatorOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type AudioAggregatorOverrides[Instance AudioAggregator] struct {
+	// gstbase.AggregatorOverrides allows you to override virtual methods from the parent class gstbase.Aggregator
+	gstbase.AggregatorOverrides[Instance]
+
+	// AggregateOneBuffer allows you to override the implementation of the virtual method aggregate_one_buffer.
+	// The function takes the following parameters:
+	// 
+	// 	- pad AudioAggregatorPad 
+	// 	- inbuf *gst.Buffer 
+	// 	- inOffset uint 
+	// 	- outbuf *gst.Buffer 
+	// 	- outOffset uint 
+	// 	- numFrames uint 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	AggregateOneBuffer func(Instance, AudioAggregatorPad, *gst.Buffer, uint, *gst.Buffer, uint, uint) bool
+	// CreateOutputBuffer allows you to override the implementation of the virtual method create_output_buffer.
+	// The function takes the following parameters:
+	// 
+	// 	- numFrames uint 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Buffer 
+	CreateOutputBuffer func(Instance, uint) *gst.Buffer
+}
+
+// UnsafeApplyAudioAggregatorOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyAudioAggregatorOverrides[Instance AudioAggregator](gclass unsafe.Pointer, overrides AudioAggregatorOverrides[Instance]) {
+	gstbase.UnsafeApplyAggregatorOverrides(gclass, overrides.AggregatorOverrides)
+
+	pclass := (*C.GstAudioAggregatorClass)(gclass)
+
+	if overrides.AggregateOneBuffer != nil {
+		pclass.aggregate_one_buffer = (*[0]byte)(C._gotk4_gstaudio1_AudioAggregator_aggregate_one_buffer)
+	}
+
+	if overrides.CreateOutputBuffer != nil {
+		pclass.create_output_buffer = (*[0]byte)(C._gotk4_gstaudio1_AudioAggregator_create_output_buffer)
+	}
+}
+
 // AudioAggregatorPadInstance is the instance type used by all types extending GstAudioAggregatorPad. It is used internally by the bindings. Users should use the interface [AudioAggregatorPad] instead.
 type AudioAggregatorPadInstance struct {
 	_ [0]func() // equal guard
@@ -3261,6 +3606,43 @@ func UnsafeAudioAggregatorPadToGlibFull(c AudioAggregatorPad) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
+// AudioAggregatorPadOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type AudioAggregatorPadOverrides[Instance AudioAggregatorPad] struct {
+	// gstbase.AggregatorPadOverrides allows you to override virtual methods from the parent class gstbase.AggregatorPad
+	gstbase.AggregatorPadOverrides[Instance]
+
+	// ConvertBuffer allows you to override the implementation of the virtual method convert_buffer.
+	// The function takes the following parameters:
+	// 
+	// 	- inInfo *AudioInfo 
+	// 	- outInfo *AudioInfo 
+	// 	- buffer *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Buffer 
+	ConvertBuffer func(Instance, *AudioInfo, *AudioInfo, *gst.Buffer) *gst.Buffer
+	// UpdateConversionInfo allows you to override the implementation of the virtual method update_conversion_info.
+	UpdateConversionInfo func(Instance)
+}
+
+// UnsafeApplyAudioAggregatorPadOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyAudioAggregatorPadOverrides[Instance AudioAggregatorPad](gclass unsafe.Pointer, overrides AudioAggregatorPadOverrides[Instance]) {
+	gstbase.UnsafeApplyAggregatorPadOverrides(gclass, overrides.AggregatorPadOverrides)
+
+	pclass := (*C.GstAudioAggregatorPadClass)(gclass)
+
+	if overrides.ConvertBuffer != nil {
+		pclass.convert_buffer = (*[0]byte)(C._gotk4_gstaudio1_AudioAggregatorPad_convert_buffer)
+	}
+
+	if overrides.UpdateConversionInfo != nil {
+		pclass.update_conversion_info = (*[0]byte)(C._gotk4_gstaudio1_AudioAggregatorPad_update_conversion_info)
+	}
+}
+
 // AudioBaseSinkInstance is the instance type used by all types extending GstAudioBaseSink. It is used internally by the bindings. Users should use the interface [AudioBaseSink] instead.
 type AudioBaseSinkInstance struct {
 	_ [0]func() // equal guard
@@ -3279,6 +3661,7 @@ type AudioBaseSink interface {
 	upcastToGstAudioBaseSink() *AudioBaseSinkInstance
 
 	// CreateRingbuffer wraps gst_audio_base_sink_create_ringbuffer
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret AudioRingBuffer (nullable) 
@@ -3288,6 +3671,7 @@ type AudioBaseSink interface {
 	// the returned buffer (see gst_object_set_parent()).
 	CreateRingbuffer() AudioRingBuffer
 	// GetAlignmentThreshold wraps gst_audio_base_sink_get_alignment_threshold
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.ClockTime 
@@ -3295,6 +3679,7 @@ type AudioBaseSink interface {
 	// Get the current alignment threshold, in nanoseconds, used by @sink.
 	GetAlignmentThreshold() gst.ClockTime
 	// GetDiscontWait wraps gst_audio_base_sink_get_discont_wait
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.ClockTime 
@@ -3302,6 +3687,7 @@ type AudioBaseSink interface {
 	// Get the current discont wait, in nanoseconds, used by @sink.
 	GetDiscontWait() gst.ClockTime
 	// GetDriftTolerance wraps gst_audio_base_sink_get_drift_tolerance
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret int64 
@@ -3309,6 +3695,7 @@ type AudioBaseSink interface {
 	// Get the current drift tolerance, in microseconds, used by @sink.
 	GetDriftTolerance() int64
 	// GetProvideClock wraps gst_audio_base_sink_get_provide_clock
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -3317,6 +3704,7 @@ type AudioBaseSink interface {
 	// gst_audio_base_sink_set_provide_clock.
 	GetProvideClock() bool
 	// GetSlaveMethod wraps gst_audio_base_sink_get_slave_method
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret AudioBaseSinkSlaveMethod 
@@ -3434,6 +3822,7 @@ func UnsafeAudioBaseSinkToGlibFull(c AudioBaseSink) unsafe.Pointer {
 }
 
 // CreateRingbuffer wraps gst_audio_base_sink_create_ringbuffer
+// 
 // The function returns the following values:
 // 
 // 	- goret AudioRingBuffer (nullable) 
@@ -3460,6 +3849,7 @@ func (sink *AudioBaseSinkInstance) CreateRingbuffer() AudioRingBuffer {
 }
 
 // GetAlignmentThreshold wraps gst_audio_base_sink_get_alignment_threshold
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ClockTime 
@@ -3482,6 +3872,7 @@ func (sink *AudioBaseSinkInstance) GetAlignmentThreshold() gst.ClockTime {
 }
 
 // GetDiscontWait wraps gst_audio_base_sink_get_discont_wait
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ClockTime 
@@ -3504,6 +3895,7 @@ func (sink *AudioBaseSinkInstance) GetDiscontWait() gst.ClockTime {
 }
 
 // GetDriftTolerance wraps gst_audio_base_sink_get_drift_tolerance
+// 
 // The function returns the following values:
 // 
 // 	- goret int64 
@@ -3526,6 +3918,7 @@ func (sink *AudioBaseSinkInstance) GetDriftTolerance() int64 {
 }
 
 // GetProvideClock wraps gst_audio_base_sink_get_provide_clock
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -3551,6 +3944,7 @@ func (sink *AudioBaseSinkInstance) GetProvideClock() bool {
 }
 
 // GetSlaveMethod wraps gst_audio_base_sink_get_slave_method
+// 
 // The function returns the following values:
 // 
 // 	- goret AudioBaseSinkSlaveMethod 
@@ -3718,6 +4112,44 @@ func (sink *AudioBaseSinkInstance) SetSlaveMethod(method AudioBaseSinkSlaveMetho
 	runtime.KeepAlive(method)
 }
 
+// AudioBaseSinkOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type AudioBaseSinkOverrides[Instance AudioBaseSink] struct {
+	// gstbase.BaseSinkOverrides allows you to override virtual methods from the parent class gstbase.BaseSink
+	gstbase.BaseSinkOverrides[Instance]
+
+	// CreateRingbuffer allows you to override the implementation of the virtual method create_ringbuffer.
+	// The function returns the following values:
+	// 
+	// 	- goret AudioRingBuffer (nullable) 
+	CreateRingbuffer func(Instance) AudioRingBuffer
+	// Payload allows you to override the implementation of the virtual method payload.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Buffer 
+	Payload func(Instance, *gst.Buffer) *gst.Buffer
+}
+
+// UnsafeApplyAudioBaseSinkOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyAudioBaseSinkOverrides[Instance AudioBaseSink](gclass unsafe.Pointer, overrides AudioBaseSinkOverrides[Instance]) {
+	gstbase.UnsafeApplyBaseSinkOverrides(gclass, overrides.BaseSinkOverrides)
+
+	pclass := (*C.GstAudioBaseSinkClass)(gclass)
+
+	if overrides.CreateRingbuffer != nil {
+		pclass.create_ringbuffer = (*[0]byte)(C._gotk4_gstaudio1_AudioBaseSink_create_ringbuffer)
+	}
+
+	if overrides.Payload != nil {
+		pclass.payload = (*[0]byte)(C._gotk4_gstaudio1_AudioBaseSink_payload)
+	}
+}
+
 // AudioBaseSrcInstance is the instance type used by all types extending GstAudioBaseSrc. It is used internally by the bindings. Users should use the interface [AudioBaseSrc] instead.
 type AudioBaseSrcInstance struct {
 	_ [0]func() // equal guard
@@ -3736,6 +4168,7 @@ type AudioBaseSrc interface {
 	upcastToGstAudioBaseSrc() *AudioBaseSrcInstance
 
 	// CreateRingbuffer wraps gst_audio_base_src_create_ringbuffer
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret AudioRingBuffer (nullable) 
@@ -3745,6 +4178,7 @@ type AudioBaseSrc interface {
 	// returned buffer (see gst_object_set_parent()).
 	CreateRingbuffer() AudioRingBuffer
 	// GetProvideClock wraps gst_audio_base_src_get_provide_clock
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -3753,6 +4187,7 @@ type AudioBaseSrc interface {
 	// gst_audio_base_src_set_provide_clock.
 	GetProvideClock() bool
 	// GetSlaveMethod wraps gst_audio_base_src_get_slave_method
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret AudioBaseSrcSlaveMethod 
@@ -3824,6 +4259,7 @@ func UnsafeAudioBaseSrcToGlibFull(c AudioBaseSrc) unsafe.Pointer {
 }
 
 // CreateRingbuffer wraps gst_audio_base_src_create_ringbuffer
+// 
 // The function returns the following values:
 // 
 // 	- goret AudioRingBuffer (nullable) 
@@ -3850,6 +4286,7 @@ func (src *AudioBaseSrcInstance) CreateRingbuffer() AudioRingBuffer {
 }
 
 // GetProvideClock wraps gst_audio_base_src_get_provide_clock
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -3875,6 +4312,7 @@ func (src *AudioBaseSrcInstance) GetProvideClock() bool {
 }
 
 // GetSlaveMethod wraps gst_audio_base_src_get_slave_method
+// 
 // The function returns the following values:
 // 
 // 	- goret AudioBaseSrcSlaveMethod 
@@ -3936,6 +4374,31 @@ func (src *AudioBaseSrcInstance) SetSlaveMethod(method AudioBaseSrcSlaveMethod) 
 	C.gst_audio_base_src_set_slave_method(carg0, carg1)
 	runtime.KeepAlive(src)
 	runtime.KeepAlive(method)
+}
+
+// AudioBaseSrcOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type AudioBaseSrcOverrides[Instance AudioBaseSrc] struct {
+	// gstbase.PushSrcOverrides allows you to override virtual methods from the parent class gstbase.PushSrc
+	gstbase.PushSrcOverrides[Instance]
+
+	// CreateRingbuffer allows you to override the implementation of the virtual method create_ringbuffer.
+	// The function returns the following values:
+	// 
+	// 	- goret AudioRingBuffer (nullable) 
+	CreateRingbuffer func(Instance) AudioRingBuffer
+}
+
+// UnsafeApplyAudioBaseSrcOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyAudioBaseSrcOverrides[Instance AudioBaseSrc](gclass unsafe.Pointer, overrides AudioBaseSrcOverrides[Instance]) {
+	gstbase.UnsafeApplyPushSrcOverrides(gclass, overrides.PushSrcOverrides)
+
+	pclass := (*C.GstAudioBaseSrcClass)(gclass)
+
+	if overrides.CreateRingbuffer != nil {
+		pclass.create_ringbuffer = (*[0]byte)(C._gotk4_gstaudio1_AudioBaseSrc_create_ringbuffer)
+	}
 }
 
 // AudioCdSrcInstance is the instance type used by all types extending GstAudioCdSrc. It is used internally by the bindings. Users should use the interface [AudioCdSrc] instead.
@@ -4097,6 +4560,54 @@ func (src *AudioCdSrcInstance) AddTrack(track *AudioCdSrcTrack) bool {
 	return goret
 }
 
+// AudioCdSrcOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type AudioCdSrcOverrides[Instance AudioCdSrc] struct {
+	// gstbase.PushSrcOverrides allows you to override virtual methods from the parent class gstbase.PushSrc
+	gstbase.PushSrcOverrides[Instance]
+
+	// Close allows you to override the implementation of the virtual method close.
+	Close func(Instance)
+	// Open allows you to override the implementation of the virtual method open.
+	// The function takes the following parameters:
+	// 
+	// 	- device string 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Open func(Instance, string) bool
+	// ReadSector allows you to override the implementation of the virtual method read_sector.
+	// The function takes the following parameters:
+	// 
+	// 	- sector int 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Buffer 
+	ReadSector func(Instance, int) *gst.Buffer
+}
+
+// UnsafeApplyAudioCdSrcOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyAudioCdSrcOverrides[Instance AudioCdSrc](gclass unsafe.Pointer, overrides AudioCdSrcOverrides[Instance]) {
+	gstbase.UnsafeApplyPushSrcOverrides(gclass, overrides.PushSrcOverrides)
+
+	pclass := (*C.GstAudioCdSrcClass)(gclass)
+
+	if overrides.Close != nil {
+		pclass.close = (*[0]byte)(C._gotk4_gstaudio1_AudioCdSrc_close)
+	}
+
+	if overrides.Open != nil {
+		pclass.open = (*[0]byte)(C._gotk4_gstaudio1_AudioCdSrc_open)
+	}
+
+	if overrides.ReadSector != nil {
+		pclass.read_sector = (*[0]byte)(C._gotk4_gstaudio1_AudioCdSrc_read_sector)
+	}
+}
+
 // AudioClockInstance is the instance type used by all types extending GstAudioClock. It is used internally by the bindings. Users should use the interface [AudioClock] instead.
 type AudioClockInstance struct {
 	_ [0]func() // equal guard
@@ -4128,6 +4639,7 @@ type AudioClock interface {
 	// Adjust @time with the internal offset of the audio clock.
 	Adjust(gst.ClockTime) gst.ClockTime
 	// GetTime wraps gst_audio_clock_get_time
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.ClockTime 
@@ -4268,6 +4780,7 @@ func (clock *AudioClockInstance) Adjust(time gst.ClockTime) gst.ClockTime {
 }
 
 // GetTime wraps gst_audio_clock_get_time
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ClockTime 
@@ -4327,6 +4840,20 @@ func (clock *AudioClockInstance) Reset(time gst.ClockTime) {
 	C.gst_audio_clock_reset(carg0, carg1)
 	runtime.KeepAlive(clock)
 	runtime.KeepAlive(time)
+}
+
+// AudioClockOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type AudioClockOverrides[Instance AudioClock] struct {
+	// gst.SystemClockOverrides allows you to override virtual methods from the parent class gst.SystemClock
+	gst.SystemClockOverrides[Instance]
+
+}
+
+// UnsafeApplyAudioClockOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyAudioClockOverrides[Instance AudioClock](gclass unsafe.Pointer, overrides AudioClockOverrides[Instance]) {
+	gst.UnsafeApplySystemClockOverrides(gclass, overrides.SystemClockOverrides)
 }
 
 // AudioDecoderInstance is the instance type used by all types extending GstAudioDecoder. It is used internally by the bindings. Users should use the interface [AudioDecoder] instead.
@@ -4492,6 +5019,7 @@ type AudioDecoder interface {
 	// invalidated by a call to this function.
 	FinishSubframe(*gst.Buffer) gst.FlowReturn
 	// GetAllocator wraps gst_audio_decoder_get_allocator
+	// 
 	// The function returns the following values:
 	// 
 	// 	- allocator gst.Allocator (nullable): the #GstAllocator
@@ -4505,16 +5033,19 @@ type AudioDecoder interface {
 	// Unref the @allocator after use it.
 	GetAllocator() (gst.Allocator, gst.AllocationParams)
 	// GetAudioInfo wraps gst_audio_decoder_get_audio_info
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *AudioInfo 
 	GetAudioInfo() *AudioInfo
 	// GetDelay wraps gst_audio_decoder_get_delay
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret int 
 	GetDelay() int
 	// GetDrainable wraps gst_audio_decoder_get_drainable
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -4522,11 +5053,13 @@ type AudioDecoder interface {
 	// Queries decoder drain handling.
 	GetDrainable() bool
 	// GetEstimateRate wraps gst_audio_decoder_get_estimate_rate
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret int 
 	GetEstimateRate() int
 	// GetLatency wraps gst_audio_decoder_get_latency
+	// 
 	// The function returns the following values:
 	// 
 	// 	- min gst.ClockTime: a pointer to storage to hold minimum latency 
@@ -4536,11 +5069,13 @@ type AudioDecoder interface {
 	// latency.
 	GetLatency() (gst.ClockTime, gst.ClockTime)
 	// GetMaxErrors wraps gst_audio_decoder_get_max_errors
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret int 
 	GetMaxErrors() int
 	// GetMinLatency wraps gst_audio_decoder_get_min_latency
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.ClockTime 
@@ -4548,6 +5083,7 @@ type AudioDecoder interface {
 	// Queries decoder's latency aggregation.
 	GetMinLatency() gst.ClockTime
 	// GetNeedsFormat wraps gst_audio_decoder_get_needs_format
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -4555,6 +5091,7 @@ type AudioDecoder interface {
 	// Queries decoder required format handling.
 	GetNeedsFormat() bool
 	// GetParseState wraps gst_audio_decoder_get_parse_state
+	// 
 	// The function returns the following values:
 	// 
 	// 	- sync bool: a pointer to a variable to hold the current sync state 
@@ -4563,6 +5100,7 @@ type AudioDecoder interface {
 	// Return current parsing (sync and eos) state.
 	GetParseState() (bool, bool)
 	// GetPlc wraps gst_audio_decoder_get_plc
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -4570,11 +5108,13 @@ type AudioDecoder interface {
 	// Queries decoder packet loss concealment handling.
 	GetPlc() bool
 	// GetPlcAware wraps gst_audio_decoder_get_plc_aware
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret int 
 	GetPlcAware() int
 	// GetTolerance wraps gst_audio_decoder_get_tolerance
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.ClockTime 
@@ -4596,6 +5136,7 @@ type AudioDecoder interface {
 	// not required to use this and can still do tag handling on its own.
 	MergeTags(*gst.TagList, gst.TagMergeMode)
 	// Negotiate wraps gst_audio_decoder_negotiate
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -4930,6 +5471,7 @@ func (dec *AudioDecoderInstance) FinishSubframe(buf *gst.Buffer) gst.FlowReturn 
 }
 
 // GetAllocator wraps gst_audio_decoder_get_allocator
+// 
 // The function returns the following values:
 // 
 // 	- allocator gst.Allocator (nullable): the #GstAllocator
@@ -4965,6 +5507,7 @@ func (dec *AudioDecoderInstance) GetAllocator() (gst.Allocator, gst.AllocationPa
 }
 
 // GetAudioInfo wraps gst_audio_decoder_get_audio_info
+// 
 // The function returns the following values:
 // 
 // 	- goret *AudioInfo 
@@ -4985,6 +5528,7 @@ func (dec *AudioDecoderInstance) GetAudioInfo() *AudioInfo {
 }
 
 // GetDelay wraps gst_audio_decoder_get_delay
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -5005,6 +5549,7 @@ func (dec *AudioDecoderInstance) GetDelay() int {
 }
 
 // GetDrainable wraps gst_audio_decoder_get_drainable
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -5029,6 +5574,7 @@ func (dec *AudioDecoderInstance) GetDrainable() bool {
 }
 
 // GetEstimateRate wraps gst_audio_decoder_get_estimate_rate
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -5049,6 +5595,7 @@ func (dec *AudioDecoderInstance) GetEstimateRate() int {
 }
 
 // GetLatency wraps gst_audio_decoder_get_latency
+// 
 // The function returns the following values:
 // 
 // 	- min gst.ClockTime: a pointer to storage to hold minimum latency 
@@ -5076,6 +5623,7 @@ func (dec *AudioDecoderInstance) GetLatency() (gst.ClockTime, gst.ClockTime) {
 }
 
 // GetMaxErrors wraps gst_audio_decoder_get_max_errors
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -5096,6 +5644,7 @@ func (dec *AudioDecoderInstance) GetMaxErrors() int {
 }
 
 // GetMinLatency wraps gst_audio_decoder_get_min_latency
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ClockTime 
@@ -5118,6 +5667,7 @@ func (dec *AudioDecoderInstance) GetMinLatency() gst.ClockTime {
 }
 
 // GetNeedsFormat wraps gst_audio_decoder_get_needs_format
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -5142,6 +5692,7 @@ func (dec *AudioDecoderInstance) GetNeedsFormat() bool {
 }
 
 // GetParseState wraps gst_audio_decoder_get_parse_state
+// 
 // The function returns the following values:
 // 
 // 	- sync bool: a pointer to a variable to hold the current sync state 
@@ -5172,6 +5723,7 @@ func (dec *AudioDecoderInstance) GetParseState() (bool, bool) {
 }
 
 // GetPlc wraps gst_audio_decoder_get_plc
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -5196,6 +5748,7 @@ func (dec *AudioDecoderInstance) GetPlc() bool {
 }
 
 // GetPlcAware wraps gst_audio_decoder_get_plc_aware
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -5216,6 +5769,7 @@ func (dec *AudioDecoderInstance) GetPlcAware() int {
 }
 
 // GetTolerance wraps gst_audio_decoder_get_tolerance
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ClockTime 
@@ -5268,6 +5822,7 @@ func (dec *AudioDecoderInstance) MergeTags(tags *gst.TagList, mode gst.TagMergeM
 }
 
 // Negotiate wraps gst_audio_decoder_negotiate
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -5659,6 +6214,223 @@ func (decoder *AudioDecoderInstance) SetUseDefaultPadAcceptcaps(use bool) {
 	runtime.KeepAlive(use)
 }
 
+// AudioDecoderOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type AudioDecoderOverrides[Instance AudioDecoder] struct {
+	// gst.ElementOverrides allows you to override virtual methods from the parent class gst.Element
+	gst.ElementOverrides[Instance]
+
+	// Close allows you to override the implementation of the virtual method close.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Close func(Instance) bool
+	// DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	DecideAllocation func(Instance, *gst.Query) bool
+	// Flush allows you to override the implementation of the virtual method flush.
+	// The function takes the following parameters:
+	// 
+	// 	- hard bool 
+	Flush func(Instance, bool)
+	// Getcaps allows you to override the implementation of the virtual method getcaps.
+	// The function takes the following parameters:
+	// 
+	// 	- filter *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Caps 
+	Getcaps func(Instance, *gst.Caps) *gst.Caps
+	// HandleFrame allows you to override the implementation of the virtual method handle_frame.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	HandleFrame func(Instance, *gst.Buffer) gst.FlowReturn
+	// Negotiate allows you to override the implementation of the virtual method negotiate.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Negotiate func(Instance) bool
+	// Open allows you to override the implementation of the virtual method open.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Open func(Instance) bool
+	// Parse allows you to override the implementation of the virtual method parse.
+	// The function takes the following parameters:
+	// 
+	// 	- adapter gstbase.Adapter 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- offset int 
+	// 	- length int 
+	// 	- goret gst.FlowReturn 
+	Parse func(Instance, gstbase.Adapter) (int, int, gst.FlowReturn)
+	// ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	ProposeAllocation func(Instance, *gst.Query) bool
+	// SetFormat allows you to override the implementation of the virtual method set_format.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SetFormat func(Instance, *gst.Caps) bool
+	// SinkEvent allows you to override the implementation of the virtual method sink_event.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SinkEvent func(Instance, *gst.Event) bool
+	// SinkQuery allows you to override the implementation of the virtual method sink_query.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SinkQuery func(Instance, *gst.Query) bool
+	// SrcEvent allows you to override the implementation of the virtual method src_event.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SrcEvent func(Instance, *gst.Event) bool
+	// SrcQuery allows you to override the implementation of the virtual method src_query.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SrcQuery func(Instance, *gst.Query) bool
+	// Start allows you to override the implementation of the virtual method start.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Start func(Instance) bool
+	// Stop allows you to override the implementation of the virtual method stop.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Stop func(Instance) bool
+	// TransformMeta allows you to override the implementation of the virtual method transform_meta.
+	// The function takes the following parameters:
+	// 
+	// 	- outbuf *gst.Buffer 
+	// 	- meta *gst.Meta 
+	// 	- inbuf *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	TransformMeta func(Instance, *gst.Buffer, *gst.Meta, *gst.Buffer) bool
+}
+
+// UnsafeApplyAudioDecoderOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Pointer, overrides AudioDecoderOverrides[Instance]) {
+	gst.UnsafeApplyElementOverrides(gclass, overrides.ElementOverrides)
+
+	pclass := (*C.GstAudioDecoderClass)(gclass)
+
+	if overrides.Close != nil {
+		pclass.close = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_close)
+	}
+
+	if overrides.DecideAllocation != nil {
+		pclass.decide_allocation = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_decide_allocation)
+	}
+
+	if overrides.Flush != nil {
+		pclass.flush = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_flush)
+	}
+
+	if overrides.Getcaps != nil {
+		pclass.getcaps = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_getcaps)
+	}
+
+	if overrides.HandleFrame != nil {
+		pclass.handle_frame = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_handle_frame)
+	}
+
+	if overrides.Negotiate != nil {
+		pclass.negotiate = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_negotiate)
+	}
+
+	if overrides.Open != nil {
+		pclass.open = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_open)
+	}
+
+	if overrides.Parse != nil {
+		pclass.parse = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_parse)
+	}
+
+	if overrides.ProposeAllocation != nil {
+		pclass.propose_allocation = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_propose_allocation)
+	}
+
+	if overrides.SetFormat != nil {
+		pclass.set_format = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_set_format)
+	}
+
+	if overrides.SinkEvent != nil {
+		pclass.sink_event = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_sink_event)
+	}
+
+	if overrides.SinkQuery != nil {
+		pclass.sink_query = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_sink_query)
+	}
+
+	if overrides.SrcEvent != nil {
+		pclass.src_event = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_src_event)
+	}
+
+	if overrides.SrcQuery != nil {
+		pclass.src_query = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_src_query)
+	}
+
+	if overrides.Start != nil {
+		pclass.start = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_start)
+	}
+
+	if overrides.Stop != nil {
+		pclass.stop = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_stop)
+	}
+
+	if overrides.TransformMeta != nil {
+		pclass.transform_meta = (*[0]byte)(C._gotk4_gstaudio1_AudioDecoder_transform_meta)
+	}
+}
+
 // AudioEncoderInstance is the instance type used by all types extending GstAudioEncoder. It is used internally by the bindings. Users should use the interface [AudioEncoder] instead.
 type AudioEncoderInstance struct {
 	_ [0]func() // equal guard
@@ -5804,6 +6576,7 @@ type AudioEncoder interface {
 	// may be invalidated by a call to this function.
 	FinishFrame(*gst.Buffer, int) gst.FlowReturn
 	// GetAllocator wraps gst_audio_encoder_get_allocator
+	// 
 	// The function returns the following values:
 	// 
 	// 	- allocator gst.Allocator (nullable): the #GstAllocator
@@ -5817,11 +6590,13 @@ type AudioEncoder interface {
 	// Unref the @allocator after use it.
 	GetAllocator() (gst.Allocator, gst.AllocationParams)
 	// GetAudioInfo wraps gst_audio_encoder_get_audio_info
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *AudioInfo 
 	GetAudioInfo() *AudioInfo
 	// GetDrainable wraps gst_audio_encoder_get_drainable
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -5829,21 +6604,25 @@ type AudioEncoder interface {
 	// Queries encoder drain handling.
 	GetDrainable() bool
 	// GetFrameMax wraps gst_audio_encoder_get_frame_max
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret int 
 	GetFrameMax() int
 	// GetFrameSamplesMax wraps gst_audio_encoder_get_frame_samples_max
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret int 
 	GetFrameSamplesMax() int
 	// GetFrameSamplesMin wraps gst_audio_encoder_get_frame_samples_min
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret int 
 	GetFrameSamplesMin() int
 	// GetHardMin wraps gst_audio_encoder_get_hard_min
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -5851,11 +6630,13 @@ type AudioEncoder interface {
 	// Queries encoder hard minimum handling.
 	GetHardMin() bool
 	// GetHardResync wraps gst_audio_encoder_get_hard_resync
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	GetHardResync() bool
 	// GetLatency wraps gst_audio_encoder_get_latency
+	// 
 	// The function returns the following values:
 	// 
 	// 	- min gst.ClockTime: a pointer to storage to hold minimum latency 
@@ -5865,11 +6646,13 @@ type AudioEncoder interface {
 	// latency.
 	GetLatency() (gst.ClockTime, gst.ClockTime)
 	// GetLookahead wraps gst_audio_encoder_get_lookahead
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret int 
 	GetLookahead() int
 	// GetMarkGranule wraps gst_audio_encoder_get_mark_granule
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -5877,6 +6660,7 @@ type AudioEncoder interface {
 	// Queries if the encoder will handle granule marking.
 	GetMarkGranule() bool
 	// GetPerfectTimestamp wraps gst_audio_encoder_get_perfect_timestamp
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -5884,6 +6668,7 @@ type AudioEncoder interface {
 	// Queries encoder perfect timestamp behaviour.
 	GetPerfectTimestamp() bool
 	// GetTolerance wraps gst_audio_encoder_get_tolerance
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.ClockTime 
@@ -5908,6 +6693,7 @@ type AudioEncoder interface {
 	// MT safe.
 	MergeTags(*gst.TagList, gst.TagMergeMode)
 	// Negotiate wraps gst_audio_encoder_negotiate
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -6202,6 +6988,7 @@ func (enc *AudioEncoderInstance) FinishFrame(buffer *gst.Buffer, samples int) gs
 }
 
 // GetAllocator wraps gst_audio_encoder_get_allocator
+// 
 // The function returns the following values:
 // 
 // 	- allocator gst.Allocator (nullable): the #GstAllocator
@@ -6237,6 +7024,7 @@ func (enc *AudioEncoderInstance) GetAllocator() (gst.Allocator, gst.AllocationPa
 }
 
 // GetAudioInfo wraps gst_audio_encoder_get_audio_info
+// 
 // The function returns the following values:
 // 
 // 	- goret *AudioInfo 
@@ -6257,6 +7045,7 @@ func (enc *AudioEncoderInstance) GetAudioInfo() *AudioInfo {
 }
 
 // GetDrainable wraps gst_audio_encoder_get_drainable
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -6281,6 +7070,7 @@ func (enc *AudioEncoderInstance) GetDrainable() bool {
 }
 
 // GetFrameMax wraps gst_audio_encoder_get_frame_max
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -6301,6 +7091,7 @@ func (enc *AudioEncoderInstance) GetFrameMax() int {
 }
 
 // GetFrameSamplesMax wraps gst_audio_encoder_get_frame_samples_max
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -6321,6 +7112,7 @@ func (enc *AudioEncoderInstance) GetFrameSamplesMax() int {
 }
 
 // GetFrameSamplesMin wraps gst_audio_encoder_get_frame_samples_min
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -6341,6 +7133,7 @@ func (enc *AudioEncoderInstance) GetFrameSamplesMin() int {
 }
 
 // GetHardMin wraps gst_audio_encoder_get_hard_min
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -6365,6 +7158,7 @@ func (enc *AudioEncoderInstance) GetHardMin() bool {
 }
 
 // GetHardResync wraps gst_audio_encoder_get_hard_resync
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -6387,6 +7181,7 @@ func (enc *AudioEncoderInstance) GetHardResync() bool {
 }
 
 // GetLatency wraps gst_audio_encoder_get_latency
+// 
 // The function returns the following values:
 // 
 // 	- min gst.ClockTime: a pointer to storage to hold minimum latency 
@@ -6414,6 +7209,7 @@ func (enc *AudioEncoderInstance) GetLatency() (gst.ClockTime, gst.ClockTime) {
 }
 
 // GetLookahead wraps gst_audio_encoder_get_lookahead
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -6434,6 +7230,7 @@ func (enc *AudioEncoderInstance) GetLookahead() int {
 }
 
 // GetMarkGranule wraps gst_audio_encoder_get_mark_granule
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -6458,6 +7255,7 @@ func (enc *AudioEncoderInstance) GetMarkGranule() bool {
 }
 
 // GetPerfectTimestamp wraps gst_audio_encoder_get_perfect_timestamp
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -6482,6 +7280,7 @@ func (enc *AudioEncoderInstance) GetPerfectTimestamp() bool {
 }
 
 // GetTolerance wraps gst_audio_encoder_get_tolerance
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ClockTime 
@@ -6537,6 +7336,7 @@ func (enc *AudioEncoderInstance) MergeTags(tags *gst.TagList, mode gst.TagMergeM
 }
 
 // Negotiate wraps gst_audio_encoder_negotiate
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -6918,6 +7718,205 @@ func (enc *AudioEncoderInstance) SetTolerance(tolerance gst.ClockTime) {
 	runtime.KeepAlive(tolerance)
 }
 
+// AudioEncoderOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type AudioEncoderOverrides[Instance AudioEncoder] struct {
+	// gst.ElementOverrides allows you to override virtual methods from the parent class gst.Element
+	gst.ElementOverrides[Instance]
+
+	// Close allows you to override the implementation of the virtual method close.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Close func(Instance) bool
+	// DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	DecideAllocation func(Instance, *gst.Query) bool
+	// Flush allows you to override the implementation of the virtual method flush.
+	Flush func(Instance)
+	// Getcaps allows you to override the implementation of the virtual method getcaps.
+	// The function takes the following parameters:
+	// 
+	// 	- filter *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Caps 
+	Getcaps func(Instance, *gst.Caps) *gst.Caps
+	// HandleFrame allows you to override the implementation of the virtual method handle_frame.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	HandleFrame func(Instance, *gst.Buffer) gst.FlowReturn
+	// Negotiate allows you to override the implementation of the virtual method negotiate.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Negotiate func(Instance) bool
+	// Open allows you to override the implementation of the virtual method open.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Open func(Instance) bool
+	// ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	ProposeAllocation func(Instance, *gst.Query) bool
+	// SetFormat allows you to override the implementation of the virtual method set_format.
+	// The function takes the following parameters:
+	// 
+	// 	- info *AudioInfo 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SetFormat func(Instance, *AudioInfo) bool
+	// SinkEvent allows you to override the implementation of the virtual method sink_event.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SinkEvent func(Instance, *gst.Event) bool
+	// SinkQuery allows you to override the implementation of the virtual method sink_query.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SinkQuery func(Instance, *gst.Query) bool
+	// SrcEvent allows you to override the implementation of the virtual method src_event.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SrcEvent func(Instance, *gst.Event) bool
+	// SrcQuery allows you to override the implementation of the virtual method src_query.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SrcQuery func(Instance, *gst.Query) bool
+	// Start allows you to override the implementation of the virtual method start.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Start func(Instance) bool
+	// Stop allows you to override the implementation of the virtual method stop.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Stop func(Instance) bool
+	// TransformMeta allows you to override the implementation of the virtual method transform_meta.
+	// The function takes the following parameters:
+	// 
+	// 	- outbuf *gst.Buffer 
+	// 	- meta *gst.Meta 
+	// 	- inbuf *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	TransformMeta func(Instance, *gst.Buffer, *gst.Meta, *gst.Buffer) bool
+}
+
+// UnsafeApplyAudioEncoderOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Pointer, overrides AudioEncoderOverrides[Instance]) {
+	gst.UnsafeApplyElementOverrides(gclass, overrides.ElementOverrides)
+
+	pclass := (*C.GstAudioEncoderClass)(gclass)
+
+	if overrides.Close != nil {
+		pclass.close = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_close)
+	}
+
+	if overrides.DecideAllocation != nil {
+		pclass.decide_allocation = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_decide_allocation)
+	}
+
+	if overrides.Flush != nil {
+		pclass.flush = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_flush)
+	}
+
+	if overrides.Getcaps != nil {
+		pclass.getcaps = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_getcaps)
+	}
+
+	if overrides.HandleFrame != nil {
+		pclass.handle_frame = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_handle_frame)
+	}
+
+	if overrides.Negotiate != nil {
+		pclass.negotiate = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_negotiate)
+	}
+
+	if overrides.Open != nil {
+		pclass.open = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_open)
+	}
+
+	if overrides.ProposeAllocation != nil {
+		pclass.propose_allocation = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_propose_allocation)
+	}
+
+	if overrides.SetFormat != nil {
+		pclass.set_format = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_set_format)
+	}
+
+	if overrides.SinkEvent != nil {
+		pclass.sink_event = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_sink_event)
+	}
+
+	if overrides.SinkQuery != nil {
+		pclass.sink_query = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_sink_query)
+	}
+
+	if overrides.SrcEvent != nil {
+		pclass.src_event = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_src_event)
+	}
+
+	if overrides.SrcQuery != nil {
+		pclass.src_query = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_src_query)
+	}
+
+	if overrides.Start != nil {
+		pclass.start = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_start)
+	}
+
+	if overrides.Stop != nil {
+		pclass.stop = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_stop)
+	}
+
+	if overrides.TransformMeta != nil {
+		pclass.transform_meta = (*[0]byte)(C._gotk4_gstaudio1_AudioEncoder_transform_meta)
+	}
+}
+
 // AudioFilterInstance is the instance type used by all types extending GstAudioFilter. It is used internally by the bindings. Users should use the interface [AudioFilter] instead.
 type AudioFilterInstance struct {
 	_ [0]func() // equal guard
@@ -6986,6 +7985,35 @@ func UnsafeAudioFilterToGlibNone(c AudioFilter) unsafe.Pointer {
 // UnsafeAudioFilterToGlibFull is used to convert the instance to it's C value GstAudioFilter, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeAudioFilterToGlibFull(c AudioFilter) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
+}
+
+// AudioFilterOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type AudioFilterOverrides[Instance AudioFilter] struct {
+	// gstbase.BaseTransformOverrides allows you to override virtual methods from the parent class gstbase.BaseTransform
+	gstbase.BaseTransformOverrides[Instance]
+
+	// Setup allows you to override the implementation of the virtual method setup.
+	// The function takes the following parameters:
+	// 
+	// 	- info *AudioInfo 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Setup func(Instance, *AudioInfo) bool
+}
+
+// UnsafeApplyAudioFilterOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyAudioFilterOverrides[Instance AudioFilter](gclass unsafe.Pointer, overrides AudioFilterOverrides[Instance]) {
+	gstbase.UnsafeApplyBaseTransformOverrides(gclass, overrides.BaseTransformOverrides)
+
+	pclass := (*C.GstAudioFilterClass)(gclass)
+
+	if overrides.Setup != nil {
+		pclass.setup = (*[0]byte)(C._gotk4_gstaudio1_AudioFilter_setup)
+	}
 }
 
 // AudioRingBufferInstance is the instance type used by all types extending GstAudioRingBuffer. It is used internally by the bindings. Users should use the interface [AudioRingBuffer] instead.
@@ -7067,6 +8095,7 @@ type AudioRingBuffer interface {
 	// MT safe.
 	ClearAll()
 	// CloseDevice wraps gst_audio_ring_buffer_close_device
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -7091,6 +8120,7 @@ type AudioRingBuffer interface {
 	// will be put in @dest_val.
 	Convert(gst.Format, int64, gst.Format) (int64, bool)
 	// Delay wraps gst_audio_ring_buffer_delay
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
@@ -7107,6 +8137,7 @@ type AudioRingBuffer interface {
 	// not yet transferred to the ringbuffer.
 	Delay() uint
 	// DeviceIsOpen wraps gst_audio_ring_buffer_device_is_open
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -7114,6 +8145,7 @@ type AudioRingBuffer interface {
 	// Checks the status of the device associated with the ring buffer.
 	DeviceIsOpen() bool
 	// IsAcquired wraps gst_audio_ring_buffer_is_acquired
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -7121,6 +8153,7 @@ type AudioRingBuffer interface {
 	// Check if the ringbuffer is acquired and ready to use.
 	IsAcquired() bool
 	// IsActive wraps gst_audio_ring_buffer_is_active
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -7130,6 +8163,7 @@ type AudioRingBuffer interface {
 	// MT safe.
 	IsActive() bool
 	// IsFlushing wraps gst_audio_ring_buffer_is_flushing
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -7150,6 +8184,7 @@ type AudioRingBuffer interface {
 	// MT safe.
 	MayStart(bool)
 	// OpenDevice wraps gst_audio_ring_buffer_open_device
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -7159,6 +8194,7 @@ type AudioRingBuffer interface {
 	// buffer.
 	OpenDevice() bool
 	// Pause wraps gst_audio_ring_buffer_pause
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -7188,6 +8224,7 @@ type AudioRingBuffer interface {
 	// @timestamp will return the timestamp associated with the data returned.
 	Read(uint64, []uint8) (gst.ClockTime, uint)
 	// Release wraps gst_audio_ring_buffer_release
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -7195,6 +8232,7 @@ type AudioRingBuffer interface {
 	// Free the resources of the ringbuffer.
 	Release() bool
 	// SamplesDone wraps gst_audio_ring_buffer_samples_done
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint64 
@@ -7253,6 +8291,7 @@ type AudioRingBuffer interface {
 	// 	- timestamp gst.ClockTime 
 	SetTimestamp(int, gst.ClockTime)
 	// Start wraps gst_audio_ring_buffer_start
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -7260,6 +8299,7 @@ type AudioRingBuffer interface {
 	// Start processing samples from the ringbuffer.
 	Start() bool
 	// Stop wraps gst_audio_ring_buffer_stop
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -7500,6 +8540,7 @@ func (buf *AudioRingBufferInstance) ClearAll() {
 }
 
 // CloseDevice wraps gst_audio_ring_buffer_close_device
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -7570,6 +8611,7 @@ func (buf *AudioRingBufferInstance) Convert(srcFmt gst.Format, srcVal int64, des
 }
 
 // Delay wraps gst_audio_ring_buffer_delay
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -7601,6 +8643,7 @@ func (buf *AudioRingBufferInstance) Delay() uint {
 }
 
 // DeviceIsOpen wraps gst_audio_ring_buffer_device_is_open
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -7625,6 +8668,7 @@ func (buf *AudioRingBufferInstance) DeviceIsOpen() bool {
 }
 
 // IsAcquired wraps gst_audio_ring_buffer_is_acquired
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -7649,6 +8693,7 @@ func (buf *AudioRingBufferInstance) IsAcquired() bool {
 }
 
 // IsActive wraps gst_audio_ring_buffer_is_active
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -7675,6 +8720,7 @@ func (buf *AudioRingBufferInstance) IsActive() bool {
 }
 
 // IsFlushing wraps gst_audio_ring_buffer_is_flushing
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -7725,6 +8771,7 @@ func (buf *AudioRingBufferInstance) MayStart(allowed bool) {
 }
 
 // OpenDevice wraps gst_audio_ring_buffer_open_device
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -7751,6 +8798,7 @@ func (buf *AudioRingBufferInstance) OpenDevice() bool {
 }
 
 // Pause wraps gst_audio_ring_buffer_pause
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -7825,6 +8873,7 @@ func (buf *AudioRingBufferInstance) Read(sample uint64, data []uint8) (gst.Clock
 }
 
 // Release wraps gst_audio_ring_buffer_release
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -7849,6 +8898,7 @@ func (buf *AudioRingBufferInstance) Release() bool {
 }
 
 // SamplesDone wraps gst_audio_ring_buffer_samples_done
+// 
 // The function returns the following values:
 // 
 // 	- goret uint64 
@@ -7985,6 +9035,7 @@ func (buf *AudioRingBufferInstance) SetTimestamp(readseg int, timestamp gst.Cloc
 }
 
 // Start wraps gst_audio_ring_buffer_start
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -8009,6 +9060,7 @@ func (buf *AudioRingBufferInstance) Start() bool {
 }
 
 // Stop wraps gst_audio_ring_buffer_stop
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -8030,6 +9082,126 @@ func (buf *AudioRingBufferInstance) Stop() bool {
 	}
 
 	return goret
+}
+
+// AudioRingBufferOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type AudioRingBufferOverrides[Instance AudioRingBuffer] struct {
+	// gst.ObjectOverrides allows you to override virtual methods from the parent class gst.Object
+	gst.ObjectOverrides[Instance]
+
+	// Acquire allows you to override the implementation of the virtual method acquire.
+	// The function takes the following parameters:
+	// 
+	// 	- spec *AudioRingBufferSpec: the specs of the buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Acquire func(Instance, *AudioRingBufferSpec) bool
+	// Activate allows you to override the implementation of the virtual method activate.
+	// The function takes the following parameters:
+	// 
+	// 	- active bool: the new mode 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Activate func(Instance, bool) bool
+	// ClearAll allows you to override the implementation of the virtual method clear_all.
+	ClearAll func(Instance)
+	// CloseDevice allows you to override the implementation of the virtual method close_device.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	CloseDevice func(Instance) bool
+	// Delay allows you to override the implementation of the virtual method delay.
+	// The function returns the following values:
+	// 
+	// 	- goret uint 
+	Delay func(Instance) uint
+	// OpenDevice allows you to override the implementation of the virtual method open_device.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	OpenDevice func(Instance) bool
+	// Pause allows you to override the implementation of the virtual method pause.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Pause func(Instance) bool
+	// Release allows you to override the implementation of the virtual method release.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Release func(Instance) bool
+	// Resume allows you to override the implementation of the virtual method resume.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Resume func(Instance) bool
+	// Start allows you to override the implementation of the virtual method start.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Start func(Instance) bool
+	// Stop allows you to override the implementation of the virtual method stop.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Stop func(Instance) bool
+}
+
+// UnsafeApplyAudioRingBufferOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe.Pointer, overrides AudioRingBufferOverrides[Instance]) {
+	gst.UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+
+	pclass := (*C.GstAudioRingBufferClass)(gclass)
+
+	if overrides.Acquire != nil {
+		pclass.acquire = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_acquire)
+	}
+
+	if overrides.Activate != nil {
+		pclass.activate = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_activate)
+	}
+
+	if overrides.ClearAll != nil {
+		pclass.clear_all = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_clear_all)
+	}
+
+	if overrides.CloseDevice != nil {
+		pclass.close_device = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_close_device)
+	}
+
+	if overrides.Delay != nil {
+		pclass.delay = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_delay)
+	}
+
+	if overrides.OpenDevice != nil {
+		pclass.open_device = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_open_device)
+	}
+
+	if overrides.Pause != nil {
+		pclass.pause = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_pause)
+	}
+
+	if overrides.Release != nil {
+		pclass.release = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_release)
+	}
+
+	if overrides.Resume != nil {
+		pclass.resume = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_resume)
+	}
+
+	if overrides.Start != nil {
+		pclass.start = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_start)
+	}
+
+	if overrides.Stop != nil {
+		pclass.stop = (*[0]byte)(C._gotk4_gstaudio1_AudioRingBuffer_stop)
+	}
 }
 
 // AudioSinkInstance is the instance type used by all types extending GstAudioSink. It is used internally by the bindings. Users should use the interface [AudioSink] instead.
@@ -8112,6 +9284,95 @@ func UnsafeAudioSinkToGlibFull(c AudioSink) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
+// AudioSinkOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type AudioSinkOverrides[Instance AudioSink] struct {
+	// AudioBaseSinkOverrides allows you to override virtual methods from the parent class AudioBaseSink
+	AudioBaseSinkOverrides[Instance]
+
+	// Close allows you to override the implementation of the virtual method close.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Close func(Instance) bool
+	// Delay allows you to override the implementation of the virtual method delay.
+	// The function returns the following values:
+	// 
+	// 	- goret uint 
+	Delay func(Instance) uint
+	// Open allows you to override the implementation of the virtual method open.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Open func(Instance) bool
+	// Pause allows you to override the implementation of the virtual method pause.
+	Pause func(Instance)
+	// Prepare allows you to override the implementation of the virtual method prepare.
+	// The function takes the following parameters:
+	// 
+	// 	- spec *AudioRingBufferSpec 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Prepare func(Instance, *AudioRingBufferSpec) bool
+	// Reset allows you to override the implementation of the virtual method reset.
+	Reset func(Instance)
+	// Resume allows you to override the implementation of the virtual method resume.
+	Resume func(Instance)
+	// Stop allows you to override the implementation of the virtual method stop.
+	Stop func(Instance)
+	// Unprepare allows you to override the implementation of the virtual method unprepare.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Unprepare func(Instance) bool
+}
+
+// UnsafeApplyAudioSinkOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, overrides AudioSinkOverrides[Instance]) {
+	UnsafeApplyAudioBaseSinkOverrides(gclass, overrides.AudioBaseSinkOverrides)
+
+	pclass := (*C.GstAudioSinkClass)(gclass)
+
+	if overrides.Close != nil {
+		pclass.close = (*[0]byte)(C._gotk4_gstaudio1_AudioSink_close)
+	}
+
+	if overrides.Delay != nil {
+		pclass.delay = (*[0]byte)(C._gotk4_gstaudio1_AudioSink_delay)
+	}
+
+	if overrides.Open != nil {
+		pclass.open = (*[0]byte)(C._gotk4_gstaudio1_AudioSink_open)
+	}
+
+	if overrides.Pause != nil {
+		pclass.pause = (*[0]byte)(C._gotk4_gstaudio1_AudioSink_pause)
+	}
+
+	if overrides.Prepare != nil {
+		pclass.prepare = (*[0]byte)(C._gotk4_gstaudio1_AudioSink_prepare)
+	}
+
+	if overrides.Reset != nil {
+		pclass.reset = (*[0]byte)(C._gotk4_gstaudio1_AudioSink_reset)
+	}
+
+	if overrides.Resume != nil {
+		pclass.resume = (*[0]byte)(C._gotk4_gstaudio1_AudioSink_resume)
+	}
+
+	if overrides.Stop != nil {
+		pclass.stop = (*[0]byte)(C._gotk4_gstaudio1_AudioSink_stop)
+	}
+
+	if overrides.Unprepare != nil {
+		pclass.unprepare = (*[0]byte)(C._gotk4_gstaudio1_AudioSink_unprepare)
+	}
+}
+
 // AudioSrcInstance is the instance type used by all types extending GstAudioSrc. It is used internally by the bindings. Users should use the interface [AudioSrc] instead.
 type AudioSrcInstance struct {
 	_ [0]func() // equal guard
@@ -8187,6 +9448,77 @@ func UnsafeAudioSrcToGlibFull(c AudioSrc) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
+// AudioSrcOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type AudioSrcOverrides[Instance AudioSrc] struct {
+	// AudioBaseSrcOverrides allows you to override virtual methods from the parent class AudioBaseSrc
+	AudioBaseSrcOverrides[Instance]
+
+	// Close allows you to override the implementation of the virtual method close.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Close func(Instance) bool
+	// Delay allows you to override the implementation of the virtual method delay.
+	// The function returns the following values:
+	// 
+	// 	- goret uint 
+	Delay func(Instance) uint
+	// Open allows you to override the implementation of the virtual method open.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Open func(Instance) bool
+	// Prepare allows you to override the implementation of the virtual method prepare.
+	// The function takes the following parameters:
+	// 
+	// 	- spec *AudioRingBufferSpec 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Prepare func(Instance, *AudioRingBufferSpec) bool
+	// Reset allows you to override the implementation of the virtual method reset.
+	Reset func(Instance)
+	// Unprepare allows you to override the implementation of the virtual method unprepare.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Unprepare func(Instance) bool
+}
+
+// UnsafeApplyAudioSrcOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyAudioSrcOverrides[Instance AudioSrc](gclass unsafe.Pointer, overrides AudioSrcOverrides[Instance]) {
+	UnsafeApplyAudioBaseSrcOverrides(gclass, overrides.AudioBaseSrcOverrides)
+
+	pclass := (*C.GstAudioSrcClass)(gclass)
+
+	if overrides.Close != nil {
+		pclass.close = (*[0]byte)(C._gotk4_gstaudio1_AudioSrc_close)
+	}
+
+	if overrides.Delay != nil {
+		pclass.delay = (*[0]byte)(C._gotk4_gstaudio1_AudioSrc_delay)
+	}
+
+	if overrides.Open != nil {
+		pclass.open = (*[0]byte)(C._gotk4_gstaudio1_AudioSrc_open)
+	}
+
+	if overrides.Prepare != nil {
+		pclass.prepare = (*[0]byte)(C._gotk4_gstaudio1_AudioSrc_prepare)
+	}
+
+	if overrides.Reset != nil {
+		pclass.reset = (*[0]byte)(C._gotk4_gstaudio1_AudioSrc_reset)
+	}
+
+	if overrides.Unprepare != nil {
+		pclass.unprepare = (*[0]byte)(C._gotk4_gstaudio1_AudioSrc_unprepare)
+	}
+}
+
 // AudioAggregatorConvertPadInstance is the instance type used by all types extending GstAudioAggregatorConvertPad. It is used internally by the bindings. Users should use the interface [AudioAggregatorConvertPad] instead.
 type AudioAggregatorConvertPadInstance struct {
 	_ [0]func() // equal guard
@@ -8249,7 +9581,23 @@ func UnsafeAudioAggregatorConvertPadToGlibFull(c AudioAggregatorConvertPad) unsa
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
+// AudioAggregatorConvertPadOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type AudioAggregatorConvertPadOverrides[Instance AudioAggregatorConvertPad] struct {
+	// AudioAggregatorPadOverrides allows you to override virtual methods from the parent class AudioAggregatorPad
+	AudioAggregatorPadOverrides[Instance]
+
+}
+
+// UnsafeApplyAudioAggregatorConvertPadOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyAudioAggregatorConvertPadOverrides[Instance AudioAggregatorConvertPad](gclass unsafe.Pointer, overrides AudioAggregatorConvertPadOverrides[Instance]) {
+	UnsafeApplyAudioAggregatorPadOverrides(gclass, overrides.AudioAggregatorPadOverrides)
+}
+
 // AudioAggregatorClass wraps GstAudioAggregatorClass
+// 
+// AudioAggregatorClass is the type struct for [AudioAggregator]
 type AudioAggregatorClass struct {
 	*audioAggregatorClass
 }
@@ -8264,31 +9612,6 @@ func UnsafeAudioAggregatorClassFromGlibBorrow(p unsafe.Pointer) *AudioAggregator
 	return &AudioAggregatorClass{&audioAggregatorClass{(*C.GstAudioAggregatorClass)(p)}}
 }
 
-// UnsafeAudioAggregatorClassFromGlibNone is used to convert raw C.GstAudioAggregatorClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAudioAggregatorClassFromGlibNone(p unsafe.Pointer) *AudioAggregatorClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeAudioAggregatorClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.audioAggregatorClass,
-		func (intern *audioAggregatorClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeAudioAggregatorClassFromGlibFull is used to convert raw C.GstAudioAggregatorClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAudioAggregatorClassFromGlibFull(p unsafe.Pointer) *AudioAggregatorClass {
-	wrapped := UnsafeAudioAggregatorClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.audioAggregatorClass,
-		func (intern *audioAggregatorClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeAudioAggregatorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [AudioAggregatorClass] is expected to work anymore.
@@ -8301,15 +9624,18 @@ func UnsafeAudioAggregatorClassToGlibNone(a *AudioAggregatorClass) unsafe.Pointe
 	return unsafe.Pointer(a.native)
 }
 
-// UnsafeAudioAggregatorClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeAudioAggregatorClassToGlibFull(a *AudioAggregatorClass) unsafe.Pointer {
-	runtime.SetFinalizer(a.audioAggregatorClass, nil)
-	_p := unsafe.Pointer(a.native)
-	a.native = nil // AudioAggregatorClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (a *AudioAggregatorClass) ParentClass() *gstbase.AggregatorClass {
+	parent := gstbase.UnsafeAggregatorClassFromGlibBorrow(UnsafeAudioAggregatorClassToGlibNone(a))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *AudioAggregatorClass) {}, a)
+	return parent
 }
+
 // AudioAggregatorConvertPadClass wraps GstAudioAggregatorConvertPadClass
+// 
+// AudioAggregatorConvertPadClass is the type struct for [AudioAggregatorConvertPad]
 type AudioAggregatorConvertPadClass struct {
 	*audioAggregatorConvertPadClass
 }
@@ -8324,31 +9650,6 @@ func UnsafeAudioAggregatorConvertPadClassFromGlibBorrow(p unsafe.Pointer) *Audio
 	return &AudioAggregatorConvertPadClass{&audioAggregatorConvertPadClass{(*C.GstAudioAggregatorConvertPadClass)(p)}}
 }
 
-// UnsafeAudioAggregatorConvertPadClassFromGlibNone is used to convert raw C.GstAudioAggregatorConvertPadClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAudioAggregatorConvertPadClassFromGlibNone(p unsafe.Pointer) *AudioAggregatorConvertPadClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeAudioAggregatorConvertPadClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.audioAggregatorConvertPadClass,
-		func (intern *audioAggregatorConvertPadClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeAudioAggregatorConvertPadClassFromGlibFull is used to convert raw C.GstAudioAggregatorConvertPadClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAudioAggregatorConvertPadClassFromGlibFull(p unsafe.Pointer) *AudioAggregatorConvertPadClass {
-	wrapped := UnsafeAudioAggregatorConvertPadClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.audioAggregatorConvertPadClass,
-		func (intern *audioAggregatorConvertPadClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeAudioAggregatorConvertPadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [AudioAggregatorConvertPadClass] is expected to work anymore.
@@ -8361,15 +9662,18 @@ func UnsafeAudioAggregatorConvertPadClassToGlibNone(a *AudioAggregatorConvertPad
 	return unsafe.Pointer(a.native)
 }
 
-// UnsafeAudioAggregatorConvertPadClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeAudioAggregatorConvertPadClassToGlibFull(a *AudioAggregatorConvertPadClass) unsafe.Pointer {
-	runtime.SetFinalizer(a.audioAggregatorConvertPadClass, nil)
-	_p := unsafe.Pointer(a.native)
-	a.native = nil // AudioAggregatorConvertPadClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (a *AudioAggregatorConvertPadClass) ParentClass() *AudioAggregatorPadClass {
+	parent := UnsafeAudioAggregatorPadClassFromGlibBorrow(UnsafeAudioAggregatorConvertPadClassToGlibNone(a))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *AudioAggregatorConvertPadClass) {}, a)
+	return parent
 }
+
 // AudioAggregatorPadClass wraps GstAudioAggregatorPadClass
+// 
+// AudioAggregatorPadClass is the type struct for [AudioAggregatorPad]
 type AudioAggregatorPadClass struct {
 	*audioAggregatorPadClass
 }
@@ -8384,31 +9688,6 @@ func UnsafeAudioAggregatorPadClassFromGlibBorrow(p unsafe.Pointer) *AudioAggrega
 	return &AudioAggregatorPadClass{&audioAggregatorPadClass{(*C.GstAudioAggregatorPadClass)(p)}}
 }
 
-// UnsafeAudioAggregatorPadClassFromGlibNone is used to convert raw C.GstAudioAggregatorPadClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAudioAggregatorPadClassFromGlibNone(p unsafe.Pointer) *AudioAggregatorPadClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeAudioAggregatorPadClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.audioAggregatorPadClass,
-		func (intern *audioAggregatorPadClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeAudioAggregatorPadClassFromGlibFull is used to convert raw C.GstAudioAggregatorPadClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAudioAggregatorPadClassFromGlibFull(p unsafe.Pointer) *AudioAggregatorPadClass {
-	wrapped := UnsafeAudioAggregatorPadClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.audioAggregatorPadClass,
-		func (intern *audioAggregatorPadClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeAudioAggregatorPadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [AudioAggregatorPadClass] is expected to work anymore.
@@ -8421,18 +9700,21 @@ func UnsafeAudioAggregatorPadClassToGlibNone(a *AudioAggregatorPadClass) unsafe.
 	return unsafe.Pointer(a.native)
 }
 
-// UnsafeAudioAggregatorPadClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeAudioAggregatorPadClassToGlibFull(a *AudioAggregatorPadClass) unsafe.Pointer {
-	runtime.SetFinalizer(a.audioAggregatorPadClass, nil)
-	_p := unsafe.Pointer(a.native)
-	a.native = nil // AudioAggregatorPadClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (a *AudioAggregatorPadClass) ParentClass() *gstbase.AggregatorPadClass {
+	parent := gstbase.UnsafeAggregatorPadClassFromGlibBorrow(UnsafeAudioAggregatorPadClassToGlibNone(a))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *AudioAggregatorPadClass) {}, a)
+	return parent
 }
+
 // AudioBaseSinkClass wraps GstAudioBaseSinkClass
 //
 // #GstAudioBaseSink class. Override the vmethod to implement
 // functionality.
+// 
+// AudioBaseSinkClass is the type struct for [AudioBaseSink]
 type AudioBaseSinkClass struct {
 	*audioBaseSinkClass
 }
@@ -8447,31 +9729,6 @@ func UnsafeAudioBaseSinkClassFromGlibBorrow(p unsafe.Pointer) *AudioBaseSinkClas
 	return &AudioBaseSinkClass{&audioBaseSinkClass{(*C.GstAudioBaseSinkClass)(p)}}
 }
 
-// UnsafeAudioBaseSinkClassFromGlibNone is used to convert raw C.GstAudioBaseSinkClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAudioBaseSinkClassFromGlibNone(p unsafe.Pointer) *AudioBaseSinkClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeAudioBaseSinkClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.audioBaseSinkClass,
-		func (intern *audioBaseSinkClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeAudioBaseSinkClassFromGlibFull is used to convert raw C.GstAudioBaseSinkClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAudioBaseSinkClassFromGlibFull(p unsafe.Pointer) *AudioBaseSinkClass {
-	wrapped := UnsafeAudioBaseSinkClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.audioBaseSinkClass,
-		func (intern *audioBaseSinkClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeAudioBaseSinkClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [AudioBaseSinkClass] is expected to work anymore.
@@ -8484,18 +9741,21 @@ func UnsafeAudioBaseSinkClassToGlibNone(a *AudioBaseSinkClass) unsafe.Pointer {
 	return unsafe.Pointer(a.native)
 }
 
-// UnsafeAudioBaseSinkClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeAudioBaseSinkClassToGlibFull(a *AudioBaseSinkClass) unsafe.Pointer {
-	runtime.SetFinalizer(a.audioBaseSinkClass, nil)
-	_p := unsafe.Pointer(a.native)
-	a.native = nil // AudioBaseSinkClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (a *AudioBaseSinkClass) ParentClass() *gstbase.BaseSinkClass {
+	parent := gstbase.UnsafeBaseSinkClassFromGlibBorrow(UnsafeAudioBaseSinkClassToGlibNone(a))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *AudioBaseSinkClass) {}, a)
+	return parent
 }
+
 // AudioBaseSrcClass wraps GstAudioBaseSrcClass
 //
 // #GstAudioBaseSrc class. Override the vmethod to implement
 // functionality.
+// 
+// AudioBaseSrcClass is the type struct for [AudioBaseSrc]
 type AudioBaseSrcClass struct {
 	*audioBaseSrcClass
 }
@@ -8510,31 +9770,6 @@ func UnsafeAudioBaseSrcClassFromGlibBorrow(p unsafe.Pointer) *AudioBaseSrcClass 
 	return &AudioBaseSrcClass{&audioBaseSrcClass{(*C.GstAudioBaseSrcClass)(p)}}
 }
 
-// UnsafeAudioBaseSrcClassFromGlibNone is used to convert raw C.GstAudioBaseSrcClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAudioBaseSrcClassFromGlibNone(p unsafe.Pointer) *AudioBaseSrcClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeAudioBaseSrcClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.audioBaseSrcClass,
-		func (intern *audioBaseSrcClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeAudioBaseSrcClassFromGlibFull is used to convert raw C.GstAudioBaseSrcClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAudioBaseSrcClassFromGlibFull(p unsafe.Pointer) *AudioBaseSrcClass {
-	wrapped := UnsafeAudioBaseSrcClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.audioBaseSrcClass,
-		func (intern *audioBaseSrcClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeAudioBaseSrcClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [AudioBaseSrcClass] is expected to work anymore.
@@ -8547,14 +9782,15 @@ func UnsafeAudioBaseSrcClassToGlibNone(a *AudioBaseSrcClass) unsafe.Pointer {
 	return unsafe.Pointer(a.native)
 }
 
-// UnsafeAudioBaseSrcClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeAudioBaseSrcClassToGlibFull(a *AudioBaseSrcClass) unsafe.Pointer {
-	runtime.SetFinalizer(a.audioBaseSrcClass, nil)
-	_p := unsafe.Pointer(a.native)
-	a.native = nil // AudioBaseSrcClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (a *AudioBaseSrcClass) ParentClass() *gstbase.PushSrcClass {
+	parent := gstbase.UnsafePushSrcClassFromGlibBorrow(UnsafeAudioBaseSrcClassToGlibNone(a))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *AudioBaseSrcClass) {}, a)
+	return parent
 }
+
 // AudioBuffer wraps GstAudioBuffer
 //
 // A structure containing the result of an audio buffer map operation,
@@ -8579,7 +9815,7 @@ func UnsafeAudioBufferFromGlibBorrow(p unsafe.Pointer) *AudioBuffer {
 	return &AudioBuffer{&audioBuffer{(*C.GstAudioBuffer)(p)}}
 }
 
-// UnsafeAudioBufferFromGlibNone is used to convert raw C.GstAudioBuffer pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAudioBufferFromGlibNone is used to convert raw C.GstAudioBuffer pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAudioBufferFromGlibNone(p unsafe.Pointer) *AudioBuffer {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioBufferFromGlibBorrow(p)
@@ -8592,7 +9828,7 @@ func UnsafeAudioBufferFromGlibNone(p unsafe.Pointer) *AudioBuffer {
 	return wrapped
 }
 
-// UnsafeAudioBufferFromGlibFull is used to convert raw C.GstAudioBuffer pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAudioBufferFromGlibFull is used to convert raw C.GstAudioBuffer pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioBufferFromGlibFull(p unsafe.Pointer) *AudioBuffer {
 	wrapped := UnsafeAudioBufferFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -8624,6 +9860,7 @@ func UnsafeAudioBufferToGlibFull(a *AudioBuffer) unsafe.Pointer {
 	a.native = nil // AudioBuffer is invalid from here on
 	return _p
 }
+
 // AudioBufferClip wraps gst_audio_buffer_clip
 // 
 // The function takes the following parameters:
@@ -8856,6 +10093,8 @@ func (buffer *AudioBuffer) Unmap() {
 // AudioCdSrcClass wraps GstAudioCdSrcClass
 //
 // Audio CD source base class.
+// 
+// AudioCdSrcClass is the type struct for [AudioCdSrc]
 type AudioCdSrcClass struct {
 	*audioCdSrcClass
 }
@@ -8870,31 +10109,6 @@ func UnsafeAudioCdSrcClassFromGlibBorrow(p unsafe.Pointer) *AudioCdSrcClass {
 	return &AudioCdSrcClass{&audioCdSrcClass{(*C.GstAudioCdSrcClass)(p)}}
 }
 
-// UnsafeAudioCdSrcClassFromGlibNone is used to convert raw C.GstAudioCdSrcClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAudioCdSrcClassFromGlibNone(p unsafe.Pointer) *AudioCdSrcClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeAudioCdSrcClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.audioCdSrcClass,
-		func (intern *audioCdSrcClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeAudioCdSrcClassFromGlibFull is used to convert raw C.GstAudioCdSrcClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAudioCdSrcClassFromGlibFull(p unsafe.Pointer) *AudioCdSrcClass {
-	wrapped := UnsafeAudioCdSrcClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.audioCdSrcClass,
-		func (intern *audioCdSrcClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeAudioCdSrcClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [AudioCdSrcClass] is expected to work anymore.
@@ -8907,14 +10121,15 @@ func UnsafeAudioCdSrcClassToGlibNone(a *AudioCdSrcClass) unsafe.Pointer {
 	return unsafe.Pointer(a.native)
 }
 
-// UnsafeAudioCdSrcClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeAudioCdSrcClassToGlibFull(a *AudioCdSrcClass) unsafe.Pointer {
-	runtime.SetFinalizer(a.audioCdSrcClass, nil)
-	_p := unsafe.Pointer(a.native)
-	a.native = nil // AudioCdSrcClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (a *AudioCdSrcClass) ParentClass() *gstbase.PushSrcClass {
+	parent := gstbase.UnsafePushSrcClassFromGlibBorrow(UnsafeAudioCdSrcClassToGlibNone(a))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *AudioCdSrcClass) {}, a)
+	return parent
 }
+
 // AudioCdSrcTrack wraps GstAudioCdSrcTrack
 //
 // CD track abstraction to communicate TOC entries to the base class.
@@ -8938,7 +10153,7 @@ func UnsafeAudioCdSrcTrackFromGlibBorrow(p unsafe.Pointer) *AudioCdSrcTrack {
 	return &AudioCdSrcTrack{&audioCdSrcTrack{(*C.GstAudioCdSrcTrack)(p)}}
 }
 
-// UnsafeAudioCdSrcTrackFromGlibNone is used to convert raw C.GstAudioCdSrcTrack pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAudioCdSrcTrackFromGlibNone is used to convert raw C.GstAudioCdSrcTrack pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAudioCdSrcTrackFromGlibNone(p unsafe.Pointer) *AudioCdSrcTrack {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioCdSrcTrackFromGlibBorrow(p)
@@ -8951,7 +10166,7 @@ func UnsafeAudioCdSrcTrackFromGlibNone(p unsafe.Pointer) *AudioCdSrcTrack {
 	return wrapped
 }
 
-// UnsafeAudioCdSrcTrackFromGlibFull is used to convert raw C.GstAudioCdSrcTrack pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAudioCdSrcTrackFromGlibFull is used to convert raw C.GstAudioCdSrcTrack pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioCdSrcTrackFromGlibFull(p unsafe.Pointer) *AudioCdSrcTrack {
 	wrapped := UnsafeAudioCdSrcTrackFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -8983,6 +10198,7 @@ func UnsafeAudioCdSrcTrackToGlibFull(a *AudioCdSrcTrack) unsafe.Pointer {
 	a.native = nil // AudioCdSrcTrack is invalid from here on
 	return _p
 }
+
 // AudioChannelMixer wraps GstAudioChannelMixer
 type AudioChannelMixer struct {
 	*audioChannelMixer
@@ -8998,7 +10214,7 @@ func UnsafeAudioChannelMixerFromGlibBorrow(p unsafe.Pointer) *AudioChannelMixer 
 	return &AudioChannelMixer{&audioChannelMixer{(*C.GstAudioChannelMixer)(p)}}
 }
 
-// UnsafeAudioChannelMixerFromGlibNone is used to convert raw C.GstAudioChannelMixer pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAudioChannelMixerFromGlibNone is used to convert raw C.GstAudioChannelMixer pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAudioChannelMixerFromGlibNone(p unsafe.Pointer) *AudioChannelMixer {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioChannelMixerFromGlibBorrow(p)
@@ -9011,7 +10227,7 @@ func UnsafeAudioChannelMixerFromGlibNone(p unsafe.Pointer) *AudioChannelMixer {
 	return wrapped
 }
 
-// UnsafeAudioChannelMixerFromGlibFull is used to convert raw C.GstAudioChannelMixer pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAudioChannelMixerFromGlibFull is used to convert raw C.GstAudioChannelMixer pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioChannelMixerFromGlibFull(p unsafe.Pointer) *AudioChannelMixer {
 	wrapped := UnsafeAudioChannelMixerFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -9043,7 +10259,9 @@ func UnsafeAudioChannelMixerToGlibFull(a *AudioChannelMixer) unsafe.Pointer {
 	a.native = nil // AudioChannelMixer is invalid from here on
 	return _p
 }
+
 // IsPassthrough wraps gst_audio_channel_mixer_is_passthrough
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -9104,7 +10322,7 @@ func UnsafeAudioClippingMetaFromGlibBorrow(p unsafe.Pointer) *AudioClippingMeta 
 	return &AudioClippingMeta{&audioClippingMeta{(*C.GstAudioClippingMeta)(p)}}
 }
 
-// UnsafeAudioClippingMetaFromGlibNone is used to convert raw C.GstAudioClippingMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAudioClippingMetaFromGlibNone is used to convert raw C.GstAudioClippingMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAudioClippingMetaFromGlibNone(p unsafe.Pointer) *AudioClippingMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioClippingMetaFromGlibBorrow(p)
@@ -9117,7 +10335,7 @@ func UnsafeAudioClippingMetaFromGlibNone(p unsafe.Pointer) *AudioClippingMeta {
 	return wrapped
 }
 
-// UnsafeAudioClippingMetaFromGlibFull is used to convert raw C.GstAudioClippingMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAudioClippingMetaFromGlibFull is used to convert raw C.GstAudioClippingMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioClippingMetaFromGlibFull(p unsafe.Pointer) *AudioClippingMeta {
 	wrapped := UnsafeAudioClippingMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -9149,7 +10367,9 @@ func UnsafeAudioClippingMetaToGlibFull(a *AudioClippingMeta) unsafe.Pointer {
 	a.native = nil // AudioClippingMeta is invalid from here on
 	return _p
 }
+
 // AudioClippingMetaGetInfo wraps gst_audio_clipping_meta_get_info
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.MetaInfo 
@@ -9166,6 +10386,8 @@ func AudioClippingMetaGetInfo() *gst.MetaInfo {
 }
 
 // AudioClockClass wraps GstAudioClockClass
+// 
+// AudioClockClass is the type struct for [AudioClock]
 type AudioClockClass struct {
 	*audioClockClass
 }
@@ -9180,31 +10402,6 @@ func UnsafeAudioClockClassFromGlibBorrow(p unsafe.Pointer) *AudioClockClass {
 	return &AudioClockClass{&audioClockClass{(*C.GstAudioClockClass)(p)}}
 }
 
-// UnsafeAudioClockClassFromGlibNone is used to convert raw C.GstAudioClockClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAudioClockClassFromGlibNone(p unsafe.Pointer) *AudioClockClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeAudioClockClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.audioClockClass,
-		func (intern *audioClockClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeAudioClockClassFromGlibFull is used to convert raw C.GstAudioClockClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAudioClockClassFromGlibFull(p unsafe.Pointer) *AudioClockClass {
-	wrapped := UnsafeAudioClockClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.audioClockClass,
-		func (intern *audioClockClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeAudioClockClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [AudioClockClass] is expected to work anymore.
@@ -9217,14 +10414,15 @@ func UnsafeAudioClockClassToGlibNone(a *AudioClockClass) unsafe.Pointer {
 	return unsafe.Pointer(a.native)
 }
 
-// UnsafeAudioClockClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeAudioClockClassToGlibFull(a *AudioClockClass) unsafe.Pointer {
-	runtime.SetFinalizer(a.audioClockClass, nil)
-	_p := unsafe.Pointer(a.native)
-	a.native = nil // AudioClockClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (a *AudioClockClass) ParentClass() *gst.SystemClockClass {
+	parent := gst.UnsafeSystemClockClassFromGlibBorrow(UnsafeAudioClockClassToGlibNone(a))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *AudioClockClass) {}, a)
+	return parent
 }
+
 // AudioConverter wraps GstAudioConverter
 //
 // This object is used to convert audio samples from one format to another.
@@ -9261,7 +10459,7 @@ func UnsafeAudioConverterFromGlibBorrow(p unsafe.Pointer) *AudioConverter {
 	return &AudioConverter{&audioConverter{(*C.GstAudioConverter)(p)}}
 }
 
-// UnsafeAudioConverterFromGlibNone is used to convert raw C.GstAudioConverter pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAudioConverterFromGlibNone is used to convert raw C.GstAudioConverter pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAudioConverterFromGlibNone(p unsafe.Pointer) *AudioConverter {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioConverterFromGlibBorrow(p)
@@ -9274,7 +10472,7 @@ func UnsafeAudioConverterFromGlibNone(p unsafe.Pointer) *AudioConverter {
 	return wrapped
 }
 
-// UnsafeAudioConverterFromGlibFull is used to convert raw C.GstAudioConverter pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAudioConverterFromGlibFull is used to convert raw C.GstAudioConverter pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioConverterFromGlibFull(p unsafe.Pointer) *AudioConverter {
 	wrapped := UnsafeAudioConverterFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -9306,6 +10504,7 @@ func UnsafeAudioConverterToGlibFull(a *AudioConverter) unsafe.Pointer {
 	a.native = nil // AudioConverter is invalid from here on
 	return _p
 }
+
 // NewAudioConverter wraps gst_audio_converter_new
 // 
 // The function takes the following parameters:
@@ -9354,6 +10553,7 @@ func NewAudioConverter(flags AudioConverterFlags, inInfo *AudioInfo, outInfo *Au
 }
 
 // GetConfig wraps gst_audio_converter_get_config
+// 
 // The function returns the following values:
 // 
 // 	- inRate int: result input rate 
@@ -9415,6 +10615,7 @@ func (convert *AudioConverter) GetInFrames(outFrames uint) uint {
 }
 
 // GetMaxLatency wraps gst_audio_converter_get_max_latency
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -9469,6 +10670,7 @@ func (convert *AudioConverter) GetOutFrames(inFrames uint) uint {
 }
 
 // IsPassthrough wraps gst_audio_converter_is_passthrough
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -9507,6 +10709,7 @@ func (convert *AudioConverter) Reset() {
 }
 
 // SupportsInplace wraps gst_audio_converter_supports_inplace
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -9591,6 +10794,8 @@ func (convert *AudioConverter) UpdateConfig(inRate int, outRate int, config *gst
 // Subclasses can override any of the available virtual methods or not, as
 // needed. At minimum @handle_frame (and likely @set_format) needs to be
 // overridden.
+// 
+// AudioDecoderClass is the type struct for [AudioDecoder]
 type AudioDecoderClass struct {
 	*audioDecoderClass
 }
@@ -9605,31 +10810,6 @@ func UnsafeAudioDecoderClassFromGlibBorrow(p unsafe.Pointer) *AudioDecoderClass 
 	return &AudioDecoderClass{&audioDecoderClass{(*C.GstAudioDecoderClass)(p)}}
 }
 
-// UnsafeAudioDecoderClassFromGlibNone is used to convert raw C.GstAudioDecoderClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAudioDecoderClassFromGlibNone(p unsafe.Pointer) *AudioDecoderClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeAudioDecoderClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.audioDecoderClass,
-		func (intern *audioDecoderClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeAudioDecoderClassFromGlibFull is used to convert raw C.GstAudioDecoderClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAudioDecoderClassFromGlibFull(p unsafe.Pointer) *AudioDecoderClass {
-	wrapped := UnsafeAudioDecoderClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.audioDecoderClass,
-		func (intern *audioDecoderClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeAudioDecoderClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [AudioDecoderClass] is expected to work anymore.
@@ -9642,14 +10822,15 @@ func UnsafeAudioDecoderClassToGlibNone(a *AudioDecoderClass) unsafe.Pointer {
 	return unsafe.Pointer(a.native)
 }
 
-// UnsafeAudioDecoderClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeAudioDecoderClassToGlibFull(a *AudioDecoderClass) unsafe.Pointer {
-	runtime.SetFinalizer(a.audioDecoderClass, nil)
-	_p := unsafe.Pointer(a.native)
-	a.native = nil // AudioDecoderClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (a *AudioDecoderClass) ParentClass() *gst.ElementClass {
+	parent := gst.UnsafeElementClassFromGlibBorrow(UnsafeAudioDecoderClassToGlibNone(a))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *AudioDecoderClass) {}, a)
+	return parent
 }
+
 // AudioDownmixMeta wraps GstAudioDownmixMeta
 //
 // Extra buffer metadata describing audio downmixing matrix. This metadata is
@@ -9674,7 +10855,7 @@ func UnsafeAudioDownmixMetaFromGlibBorrow(p unsafe.Pointer) *AudioDownmixMeta {
 	return &AudioDownmixMeta{&audioDownmixMeta{(*C.GstAudioDownmixMeta)(p)}}
 }
 
-// UnsafeAudioDownmixMetaFromGlibNone is used to convert raw C.GstAudioDownmixMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAudioDownmixMetaFromGlibNone is used to convert raw C.GstAudioDownmixMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAudioDownmixMetaFromGlibNone(p unsafe.Pointer) *AudioDownmixMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioDownmixMetaFromGlibBorrow(p)
@@ -9687,7 +10868,7 @@ func UnsafeAudioDownmixMetaFromGlibNone(p unsafe.Pointer) *AudioDownmixMeta {
 	return wrapped
 }
 
-// UnsafeAudioDownmixMetaFromGlibFull is used to convert raw C.GstAudioDownmixMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAudioDownmixMetaFromGlibFull is used to convert raw C.GstAudioDownmixMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioDownmixMetaFromGlibFull(p unsafe.Pointer) *AudioDownmixMeta {
 	wrapped := UnsafeAudioDownmixMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -9719,7 +10900,9 @@ func UnsafeAudioDownmixMetaToGlibFull(a *AudioDownmixMeta) unsafe.Pointer {
 	a.native = nil // AudioDownmixMeta is invalid from here on
 	return _p
 }
+
 // AudioDownmixMetaGetInfo wraps gst_audio_downmix_meta_get_info
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.MetaInfo 
@@ -9739,6 +10922,8 @@ func AudioDownmixMetaGetInfo() *gst.MetaInfo {
 //
 // Subclasses can override any of the available virtual methods or not, as
 // needed. At minimum @set_format and @handle_frame needs to be overridden.
+// 
+// AudioEncoderClass is the type struct for [AudioEncoder]
 type AudioEncoderClass struct {
 	*audioEncoderClass
 }
@@ -9753,31 +10938,6 @@ func UnsafeAudioEncoderClassFromGlibBorrow(p unsafe.Pointer) *AudioEncoderClass 
 	return &AudioEncoderClass{&audioEncoderClass{(*C.GstAudioEncoderClass)(p)}}
 }
 
-// UnsafeAudioEncoderClassFromGlibNone is used to convert raw C.GstAudioEncoderClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAudioEncoderClassFromGlibNone(p unsafe.Pointer) *AudioEncoderClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeAudioEncoderClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.audioEncoderClass,
-		func (intern *audioEncoderClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeAudioEncoderClassFromGlibFull is used to convert raw C.GstAudioEncoderClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAudioEncoderClassFromGlibFull(p unsafe.Pointer) *AudioEncoderClass {
-	wrapped := UnsafeAudioEncoderClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.audioEncoderClass,
-		func (intern *audioEncoderClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeAudioEncoderClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [AudioEncoderClass] is expected to work anymore.
@@ -9790,19 +10950,22 @@ func UnsafeAudioEncoderClassToGlibNone(a *AudioEncoderClass) unsafe.Pointer {
 	return unsafe.Pointer(a.native)
 }
 
-// UnsafeAudioEncoderClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeAudioEncoderClassToGlibFull(a *AudioEncoderClass) unsafe.Pointer {
-	runtime.SetFinalizer(a.audioEncoderClass, nil)
-	_p := unsafe.Pointer(a.native)
-	a.native = nil // AudioEncoderClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (a *AudioEncoderClass) ParentClass() *gst.ElementClass {
+	parent := gst.UnsafeElementClassFromGlibBorrow(UnsafeAudioEncoderClassToGlibNone(a))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *AudioEncoderClass) {}, a)
+	return parent
 }
+
 // AudioFilterClass wraps GstAudioFilterClass
 //
 // In addition to the @setup virtual function, you should also override the
 // GstBaseTransform::transform and/or GstBaseTransform::transform_ip virtual
 // function.
+// 
+// AudioFilterClass is the type struct for [AudioFilter]
 type AudioFilterClass struct {
 	*audioFilterClass
 }
@@ -9817,31 +10980,6 @@ func UnsafeAudioFilterClassFromGlibBorrow(p unsafe.Pointer) *AudioFilterClass {
 	return &AudioFilterClass{&audioFilterClass{(*C.GstAudioFilterClass)(p)}}
 }
 
-// UnsafeAudioFilterClassFromGlibNone is used to convert raw C.GstAudioFilterClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAudioFilterClassFromGlibNone(p unsafe.Pointer) *AudioFilterClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeAudioFilterClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.audioFilterClass,
-		func (intern *audioFilterClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeAudioFilterClassFromGlibFull is used to convert raw C.GstAudioFilterClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAudioFilterClassFromGlibFull(p unsafe.Pointer) *AudioFilterClass {
-	wrapped := UnsafeAudioFilterClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.audioFilterClass,
-		func (intern *audioFilterClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeAudioFilterClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [AudioFilterClass] is expected to work anymore.
@@ -9854,14 +10992,15 @@ func UnsafeAudioFilterClassToGlibNone(a *AudioFilterClass) unsafe.Pointer {
 	return unsafe.Pointer(a.native)
 }
 
-// UnsafeAudioFilterClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeAudioFilterClassToGlibFull(a *AudioFilterClass) unsafe.Pointer {
-	runtime.SetFinalizer(a.audioFilterClass, nil)
-	_p := unsafe.Pointer(a.native)
-	a.native = nil // AudioFilterClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (a *AudioFilterClass) ParentClass() *gstbase.BaseTransformClass {
+	parent := gstbase.UnsafeBaseTransformClassFromGlibBorrow(UnsafeAudioFilterClassToGlibNone(a))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *AudioFilterClass) {}, a)
+	return parent
 }
+
 // AddPadTemplates wraps gst_audio_filter_class_add_pad_templates
 // 
 // The function takes the following parameters:
@@ -9913,7 +11052,7 @@ func UnsafeAudioFormatInfoFromGlibBorrow(p unsafe.Pointer) *AudioFormatInfo {
 	return &AudioFormatInfo{&audioFormatInfo{(*C.GstAudioFormatInfo)(p)}}
 }
 
-// UnsafeAudioFormatInfoFromGlibNone is used to convert raw C.GstAudioFormatInfo pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAudioFormatInfoFromGlibNone is used to convert raw C.GstAudioFormatInfo pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAudioFormatInfoFromGlibNone(p unsafe.Pointer) *AudioFormatInfo {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioFormatInfoFromGlibBorrow(p)
@@ -9926,7 +11065,7 @@ func UnsafeAudioFormatInfoFromGlibNone(p unsafe.Pointer) *AudioFormatInfo {
 	return wrapped
 }
 
-// UnsafeAudioFormatInfoFromGlibFull is used to convert raw C.GstAudioFormatInfo pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAudioFormatInfoFromGlibFull is used to convert raw C.GstAudioFormatInfo pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioFormatInfoFromGlibFull(p unsafe.Pointer) *AudioFormatInfo {
 	wrapped := UnsafeAudioFormatInfoFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -9958,6 +11097,7 @@ func UnsafeAudioFormatInfoToGlibFull(a *AudioFormatInfo) unsafe.Pointer {
 	a.native = nil // AudioFormatInfo is invalid from here on
 	return _p
 }
+
 // AudioInfo wraps GstAudioInfo
 //
 // Information describing audio properties. This information can be filled
@@ -9990,7 +11130,7 @@ func UnsafeAudioInfoFromGlibBorrow(p unsafe.Pointer) *AudioInfo {
 	return &AudioInfo{&audioInfo{(*C.GstAudioInfo)(p)}}
 }
 
-// UnsafeAudioInfoFromGlibNone is used to convert raw C.GstAudioInfo pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAudioInfoFromGlibNone is used to convert raw C.GstAudioInfo pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAudioInfoFromGlibNone(p unsafe.Pointer) *AudioInfo {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioInfoFromGlibBorrow(p)
@@ -10003,7 +11143,7 @@ func UnsafeAudioInfoFromGlibNone(p unsafe.Pointer) *AudioInfo {
 	return wrapped
 }
 
-// UnsafeAudioInfoFromGlibFull is used to convert raw C.GstAudioInfo pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAudioInfoFromGlibFull is used to convert raw C.GstAudioInfo pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioInfoFromGlibFull(p unsafe.Pointer) *AudioInfo {
 	wrapped := UnsafeAudioInfoFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -10035,7 +11175,9 @@ func UnsafeAudioInfoToGlibFull(a *AudioInfo) unsafe.Pointer {
 	a.native = nil // AudioInfo is invalid from here on
 	return _p
 }
+
 // NewAudioInfo wraps gst_audio_info_new
+// 
 // The function returns the following values:
 // 
 // 	- goret *AudioInfo 
@@ -10119,6 +11261,7 @@ func AudioInfoFromCaps(caps *gst.Caps) (AudioInfo, bool) {
 }
 
 // AudioInfoInit wraps gst_audio_info_init
+// 
 // The function returns the following values:
 // 
 // 	- info AudioInfo: a #GstAudioInfo 
@@ -10186,6 +11329,7 @@ func (info *AudioInfo) Convert(srcFmt gst.Format, srcVal int64, destFmt gst.Form
 }
 
 // Copy wraps gst_audio_info_copy
+// 
 // The function returns the following values:
 // 
 // 	- goret *AudioInfo 
@@ -10275,6 +11419,7 @@ func (info *AudioInfo) SetFormat(format AudioFormat, rate int, channels int, pos
 }
 
 // ToCaps wraps gst_audio_info_to_caps
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Caps 
@@ -10313,7 +11458,7 @@ func UnsafeAudioLevelMetaFromGlibBorrow(p unsafe.Pointer) *AudioLevelMeta {
 	return &AudioLevelMeta{&audioLevelMeta{(*C.GstAudioLevelMeta)(p)}}
 }
 
-// UnsafeAudioLevelMetaFromGlibNone is used to convert raw C.GstAudioLevelMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAudioLevelMetaFromGlibNone is used to convert raw C.GstAudioLevelMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAudioLevelMetaFromGlibNone(p unsafe.Pointer) *AudioLevelMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioLevelMetaFromGlibBorrow(p)
@@ -10326,7 +11471,7 @@ func UnsafeAudioLevelMetaFromGlibNone(p unsafe.Pointer) *AudioLevelMeta {
 	return wrapped
 }
 
-// UnsafeAudioLevelMetaFromGlibFull is used to convert raw C.GstAudioLevelMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAudioLevelMetaFromGlibFull is used to convert raw C.GstAudioLevelMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioLevelMetaFromGlibFull(p unsafe.Pointer) *AudioLevelMeta {
 	wrapped := UnsafeAudioLevelMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -10358,7 +11503,9 @@ func UnsafeAudioLevelMetaToGlibFull(a *AudioLevelMeta) unsafe.Pointer {
 	a.native = nil // AudioLevelMeta is invalid from here on
 	return _p
 }
+
 // AudioLevelMetaGetInfo wraps gst_audio_level_meta_get_info
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.MetaInfo 
@@ -10395,7 +11542,7 @@ func UnsafeAudioMetaFromGlibBorrow(p unsafe.Pointer) *AudioMeta {
 	return &AudioMeta{&audioMeta{(*C.GstAudioMeta)(p)}}
 }
 
-// UnsafeAudioMetaFromGlibNone is used to convert raw C.GstAudioMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAudioMetaFromGlibNone is used to convert raw C.GstAudioMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAudioMetaFromGlibNone(p unsafe.Pointer) *AudioMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioMetaFromGlibBorrow(p)
@@ -10408,7 +11555,7 @@ func UnsafeAudioMetaFromGlibNone(p unsafe.Pointer) *AudioMeta {
 	return wrapped
 }
 
-// UnsafeAudioMetaFromGlibFull is used to convert raw C.GstAudioMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAudioMetaFromGlibFull is used to convert raw C.GstAudioMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioMetaFromGlibFull(p unsafe.Pointer) *AudioMeta {
 	wrapped := UnsafeAudioMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -10440,7 +11587,9 @@ func UnsafeAudioMetaToGlibFull(a *AudioMeta) unsafe.Pointer {
 	a.native = nil // AudioMeta is invalid from here on
 	return _p
 }
+
 // AudioMetaGetInfo wraps gst_audio_meta_get_info
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.MetaInfo 
@@ -10471,7 +11620,7 @@ func UnsafeAudioQuantizeFromGlibBorrow(p unsafe.Pointer) *AudioQuantize {
 	return &AudioQuantize{&audioQuantize{(*C.GstAudioQuantize)(p)}}
 }
 
-// UnsafeAudioQuantizeFromGlibNone is used to convert raw C.GstAudioQuantize pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAudioQuantizeFromGlibNone is used to convert raw C.GstAudioQuantize pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAudioQuantizeFromGlibNone(p unsafe.Pointer) *AudioQuantize {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioQuantizeFromGlibBorrow(p)
@@ -10484,7 +11633,7 @@ func UnsafeAudioQuantizeFromGlibNone(p unsafe.Pointer) *AudioQuantize {
 	return wrapped
 }
 
-// UnsafeAudioQuantizeFromGlibFull is used to convert raw C.GstAudioQuantize pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAudioQuantizeFromGlibFull is used to convert raw C.GstAudioQuantize pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioQuantizeFromGlibFull(p unsafe.Pointer) *AudioQuantize {
 	wrapped := UnsafeAudioQuantizeFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -10516,6 +11665,7 @@ func UnsafeAudioQuantizeToGlibFull(a *AudioQuantize) unsafe.Pointer {
 	a.native = nil // AudioQuantize is invalid from here on
 	return _p
 }
+
 // Reset wraps gst_audio_quantize_reset
 //
 // Reset @quant to the state is was when created, clearing any
@@ -10547,7 +11697,7 @@ func UnsafeAudioResamplerFromGlibBorrow(p unsafe.Pointer) *AudioResampler {
 	return &AudioResampler{&audioResampler{(*C.GstAudioResampler)(p)}}
 }
 
-// UnsafeAudioResamplerFromGlibNone is used to convert raw C.GstAudioResampler pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAudioResamplerFromGlibNone is used to convert raw C.GstAudioResampler pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAudioResamplerFromGlibNone(p unsafe.Pointer) *AudioResampler {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioResamplerFromGlibBorrow(p)
@@ -10560,7 +11710,7 @@ func UnsafeAudioResamplerFromGlibNone(p unsafe.Pointer) *AudioResampler {
 	return wrapped
 }
 
-// UnsafeAudioResamplerFromGlibFull is used to convert raw C.GstAudioResampler pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAudioResamplerFromGlibFull is used to convert raw C.GstAudioResampler pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioResamplerFromGlibFull(p unsafe.Pointer) *AudioResampler {
 	wrapped := UnsafeAudioResamplerFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -10592,6 +11742,7 @@ func UnsafeAudioResamplerToGlibFull(a *AudioResampler) unsafe.Pointer {
 	a.native = nil // AudioResampler is invalid from here on
 	return _p
 }
+
 // NewAudioResampler wraps gst_audio_resampler_new
 // 
 // The function takes the following parameters:
@@ -10708,6 +11859,7 @@ func (resampler *AudioResampler) GetInFrames(outFrames uint) uint {
 }
 
 // GetMaxLatency wraps gst_audio_resampler_get_max_latency
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -10822,6 +11974,8 @@ func (resampler *AudioResampler) Update(inRate int, outRate int, options *gst.St
 // AudioRingBufferClass wraps GstAudioRingBufferClass
 //
 // The vmethods that subclasses can override to implement the ringbuffer.
+// 
+// AudioRingBufferClass is the type struct for [AudioRingBuffer]
 type AudioRingBufferClass struct {
 	*audioRingBufferClass
 }
@@ -10836,31 +11990,6 @@ func UnsafeAudioRingBufferClassFromGlibBorrow(p unsafe.Pointer) *AudioRingBuffer
 	return &AudioRingBufferClass{&audioRingBufferClass{(*C.GstAudioRingBufferClass)(p)}}
 }
 
-// UnsafeAudioRingBufferClassFromGlibNone is used to convert raw C.GstAudioRingBufferClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAudioRingBufferClassFromGlibNone(p unsafe.Pointer) *AudioRingBufferClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeAudioRingBufferClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.audioRingBufferClass,
-		func (intern *audioRingBufferClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeAudioRingBufferClassFromGlibFull is used to convert raw C.GstAudioRingBufferClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAudioRingBufferClassFromGlibFull(p unsafe.Pointer) *AudioRingBufferClass {
-	wrapped := UnsafeAudioRingBufferClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.audioRingBufferClass,
-		func (intern *audioRingBufferClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeAudioRingBufferClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [AudioRingBufferClass] is expected to work anymore.
@@ -10873,14 +12002,15 @@ func UnsafeAudioRingBufferClassToGlibNone(a *AudioRingBufferClass) unsafe.Pointe
 	return unsafe.Pointer(a.native)
 }
 
-// UnsafeAudioRingBufferClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeAudioRingBufferClassToGlibFull(a *AudioRingBufferClass) unsafe.Pointer {
-	runtime.SetFinalizer(a.audioRingBufferClass, nil)
-	_p := unsafe.Pointer(a.native)
-	a.native = nil // AudioRingBufferClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (a *AudioRingBufferClass) ParentClass() *gst.ObjectClass {
+	parent := gst.UnsafeObjectClassFromGlibBorrow(UnsafeAudioRingBufferClassToGlibNone(a))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *AudioRingBufferClass) {}, a)
+	return parent
 }
+
 // AudioRingBufferSpec wraps GstAudioRingBufferSpec
 //
 // The structure containing the format specification of the ringbuffer.
@@ -10902,7 +12032,7 @@ func UnsafeAudioRingBufferSpecFromGlibBorrow(p unsafe.Pointer) *AudioRingBufferS
 	return &AudioRingBufferSpec{&audioRingBufferSpec{(*C.GstAudioRingBufferSpec)(p)}}
 }
 
-// UnsafeAudioRingBufferSpecFromGlibNone is used to convert raw C.GstAudioRingBufferSpec pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAudioRingBufferSpecFromGlibNone is used to convert raw C.GstAudioRingBufferSpec pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAudioRingBufferSpecFromGlibNone(p unsafe.Pointer) *AudioRingBufferSpec {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioRingBufferSpecFromGlibBorrow(p)
@@ -10915,7 +12045,7 @@ func UnsafeAudioRingBufferSpecFromGlibNone(p unsafe.Pointer) *AudioRingBufferSpe
 	return wrapped
 }
 
-// UnsafeAudioRingBufferSpecFromGlibFull is used to convert raw C.GstAudioRingBufferSpec pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAudioRingBufferSpecFromGlibFull is used to convert raw C.GstAudioRingBufferSpec pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioRingBufferSpecFromGlibFull(p unsafe.Pointer) *AudioRingBufferSpec {
 	wrapped := UnsafeAudioRingBufferSpecFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -10947,7 +12077,10 @@ func UnsafeAudioRingBufferSpecToGlibFull(a *AudioRingBufferSpec) unsafe.Pointer 
 	a.native = nil // AudioRingBufferSpec is invalid from here on
 	return _p
 }
+
 // AudioSinkClass wraps GstAudioSinkClass
+// 
+// AudioSinkClass is the type struct for [AudioSink]
 type AudioSinkClass struct {
 	*audioSinkClass
 }
@@ -10962,31 +12095,6 @@ func UnsafeAudioSinkClassFromGlibBorrow(p unsafe.Pointer) *AudioSinkClass {
 	return &AudioSinkClass{&audioSinkClass{(*C.GstAudioSinkClass)(p)}}
 }
 
-// UnsafeAudioSinkClassFromGlibNone is used to convert raw C.GstAudioSinkClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAudioSinkClassFromGlibNone(p unsafe.Pointer) *AudioSinkClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeAudioSinkClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.audioSinkClass,
-		func (intern *audioSinkClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeAudioSinkClassFromGlibFull is used to convert raw C.GstAudioSinkClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAudioSinkClassFromGlibFull(p unsafe.Pointer) *AudioSinkClass {
-	wrapped := UnsafeAudioSinkClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.audioSinkClass,
-		func (intern *audioSinkClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeAudioSinkClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [AudioSinkClass] is expected to work anymore.
@@ -10999,14 +12107,15 @@ func UnsafeAudioSinkClassToGlibNone(a *AudioSinkClass) unsafe.Pointer {
 	return unsafe.Pointer(a.native)
 }
 
-// UnsafeAudioSinkClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeAudioSinkClassToGlibFull(a *AudioSinkClass) unsafe.Pointer {
-	runtime.SetFinalizer(a.audioSinkClass, nil)
-	_p := unsafe.Pointer(a.native)
-	a.native = nil // AudioSinkClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (a *AudioSinkClass) ParentClass() *AudioBaseSinkClass {
+	parent := UnsafeAudioBaseSinkClassFromGlibBorrow(UnsafeAudioSinkClassToGlibNone(a))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *AudioSinkClass) {}, a)
+	return parent
 }
+
 // AudioSinkClassExtension wraps GstAudioSinkClassExtension
 type AudioSinkClassExtension struct {
 	*audioSinkClassExtension
@@ -11022,7 +12131,7 @@ func UnsafeAudioSinkClassExtensionFromGlibBorrow(p unsafe.Pointer) *AudioSinkCla
 	return &AudioSinkClassExtension{&audioSinkClassExtension{(*C.GstAudioSinkClassExtension)(p)}}
 }
 
-// UnsafeAudioSinkClassExtensionFromGlibNone is used to convert raw C.GstAudioSinkClassExtension pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAudioSinkClassExtensionFromGlibNone is used to convert raw C.GstAudioSinkClassExtension pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAudioSinkClassExtensionFromGlibNone(p unsafe.Pointer) *AudioSinkClassExtension {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioSinkClassExtensionFromGlibBorrow(p)
@@ -11035,7 +12144,7 @@ func UnsafeAudioSinkClassExtensionFromGlibNone(p unsafe.Pointer) *AudioSinkClass
 	return wrapped
 }
 
-// UnsafeAudioSinkClassExtensionFromGlibFull is used to convert raw C.GstAudioSinkClassExtension pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAudioSinkClassExtensionFromGlibFull is used to convert raw C.GstAudioSinkClassExtension pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioSinkClassExtensionFromGlibFull(p unsafe.Pointer) *AudioSinkClassExtension {
 	wrapped := UnsafeAudioSinkClassExtensionFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -11067,10 +12176,13 @@ func UnsafeAudioSinkClassExtensionToGlibFull(a *AudioSinkClassExtension) unsafe.
 	a.native = nil // AudioSinkClassExtension is invalid from here on
 	return _p
 }
+
 // AudioSrcClass wraps GstAudioSrcClass
 //
 // #GstAudioSrc class. Override the vmethod to implement
 // functionality.
+// 
+// AudioSrcClass is the type struct for [AudioSrc]
 type AudioSrcClass struct {
 	*audioSrcClass
 }
@@ -11085,31 +12197,6 @@ func UnsafeAudioSrcClassFromGlibBorrow(p unsafe.Pointer) *AudioSrcClass {
 	return &AudioSrcClass{&audioSrcClass{(*C.GstAudioSrcClass)(p)}}
 }
 
-// UnsafeAudioSrcClassFromGlibNone is used to convert raw C.GstAudioSrcClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAudioSrcClassFromGlibNone(p unsafe.Pointer) *AudioSrcClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeAudioSrcClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.audioSrcClass,
-		func (intern *audioSrcClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeAudioSrcClassFromGlibFull is used to convert raw C.GstAudioSrcClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAudioSrcClassFromGlibFull(p unsafe.Pointer) *AudioSrcClass {
-	wrapped := UnsafeAudioSrcClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.audioSrcClass,
-		func (intern *audioSrcClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeAudioSrcClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [AudioSrcClass] is expected to work anymore.
@@ -11122,14 +12209,15 @@ func UnsafeAudioSrcClassToGlibNone(a *AudioSrcClass) unsafe.Pointer {
 	return unsafe.Pointer(a.native)
 }
 
-// UnsafeAudioSrcClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeAudioSrcClassToGlibFull(a *AudioSrcClass) unsafe.Pointer {
-	runtime.SetFinalizer(a.audioSrcClass, nil)
-	_p := unsafe.Pointer(a.native)
-	a.native = nil // AudioSrcClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (a *AudioSrcClass) ParentClass() *AudioBaseSrcClass {
+	parent := UnsafeAudioBaseSrcClassFromGlibBorrow(UnsafeAudioSrcClassToGlibNone(a))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *AudioSrcClass) {}, a)
+	return parent
 }
+
 // AudioStreamAlign wraps GstAudioStreamAlign
 //
 // #GstAudioStreamAlign provides a helper object that helps tracking audio
@@ -11164,7 +12252,7 @@ func UnsafeAudioStreamAlignFromGlibBorrow(p unsafe.Pointer) *AudioStreamAlign {
 	return &AudioStreamAlign{&audioStreamAlign{(*C.GstAudioStreamAlign)(p)}}
 }
 
-// UnsafeAudioStreamAlignFromGlibNone is used to convert raw C.GstAudioStreamAlign pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAudioStreamAlignFromGlibNone is used to convert raw C.GstAudioStreamAlign pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAudioStreamAlignFromGlibNone(p unsafe.Pointer) *AudioStreamAlign {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAudioStreamAlignFromGlibBorrow(p)
@@ -11177,7 +12265,7 @@ func UnsafeAudioStreamAlignFromGlibNone(p unsafe.Pointer) *AudioStreamAlign {
 	return wrapped
 }
 
-// UnsafeAudioStreamAlignFromGlibFull is used to convert raw C.GstAudioStreamAlign pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAudioStreamAlignFromGlibFull is used to convert raw C.GstAudioStreamAlign pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAudioStreamAlignFromGlibFull(p unsafe.Pointer) *AudioStreamAlign {
 	wrapped := UnsafeAudioStreamAlignFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -11209,6 +12297,7 @@ func UnsafeAudioStreamAlignToGlibFull(a *AudioStreamAlign) unsafe.Pointer {
 	a.native = nil // AudioStreamAlign is invalid from here on
 	return _p
 }
+
 // NewAudioStreamAlign wraps gst_audio_stream_align_new
 // 
 // The function takes the following parameters:
@@ -11255,6 +12344,7 @@ func NewAudioStreamAlign(rate int, alignmentThreshold gst.ClockTime, discontWait
 }
 
 // Copy wraps gst_audio_stream_align_copy
+// 
 // The function returns the following values:
 // 
 // 	- goret *AudioStreamAlign 
@@ -11277,6 +12367,7 @@ func (align *AudioStreamAlign) Copy() *AudioStreamAlign {
 }
 
 // GetAlignmentThreshold wraps gst_audio_stream_align_get_alignment_threshold
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ClockTime 
@@ -11299,6 +12390,7 @@ func (align *AudioStreamAlign) GetAlignmentThreshold() gst.ClockTime {
 }
 
 // GetDiscontWait wraps gst_audio_stream_align_get_discont_wait
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ClockTime 
@@ -11321,6 +12413,7 @@ func (align *AudioStreamAlign) GetDiscontWait() gst.ClockTime {
 }
 
 // GetRate wraps gst_audio_stream_align_get_rate
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -11343,6 +12436,7 @@ func (align *AudioStreamAlign) GetRate() int {
 }
 
 // GetSamplesSinceDiscont wraps gst_audio_stream_align_get_samples_since_discont
+// 
 // The function returns the following values:
 // 
 // 	- goret uint64 
@@ -11366,6 +12460,7 @@ func (align *AudioStreamAlign) GetSamplesSinceDiscont() uint64 {
 }
 
 // GetTimestampAtDiscont wraps gst_audio_stream_align_get_timestamp_at_discont
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ClockTime 
@@ -11606,7 +12701,7 @@ func UnsafeDsdInfoFromGlibBorrow(p unsafe.Pointer) *DsdInfo {
 	return &DsdInfo{&dsdInfo{(*C.GstDsdInfo)(p)}}
 }
 
-// UnsafeDsdInfoFromGlibNone is used to convert raw C.GstDsdInfo pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeDsdInfoFromGlibNone is used to convert raw C.GstDsdInfo pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeDsdInfoFromGlibNone(p unsafe.Pointer) *DsdInfo {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeDsdInfoFromGlibBorrow(p)
@@ -11619,7 +12714,7 @@ func UnsafeDsdInfoFromGlibNone(p unsafe.Pointer) *DsdInfo {
 	return wrapped
 }
 
-// UnsafeDsdInfoFromGlibFull is used to convert raw C.GstDsdInfo pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeDsdInfoFromGlibFull is used to convert raw C.GstDsdInfo pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeDsdInfoFromGlibFull(p unsafe.Pointer) *DsdInfo {
 	wrapped := UnsafeDsdInfoFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -11651,7 +12746,9 @@ func UnsafeDsdInfoToGlibFull(d *DsdInfo) unsafe.Pointer {
 	d.native = nil // DsdInfo is invalid from here on
 	return _p
 }
+
 // NewDsdInfo wraps gst_dsd_info_new
+// 
 // The function returns the following values:
 // 
 // 	- goret *DsdInfo 
@@ -11733,6 +12830,7 @@ func DsdInfoFromCaps(caps *gst.Caps) (DsdInfo, bool) {
 }
 
 // DsdInfoInit wraps gst_dsd_info_init
+// 
 // The function returns the following values:
 // 
 // 	- info DsdInfo: a #GstDsdInfo 
@@ -11753,6 +12851,7 @@ func DsdInfoInit() DsdInfo {
 }
 
 // Copy wraps gst_dsd_info_copy
+// 
 // The function returns the following values:
 // 
 // 	- goret *DsdInfo 
@@ -11842,6 +12941,7 @@ func (info *DsdInfo) SetFormat(format DsdFormat, rate int, channels int, positio
 }
 
 // ToCaps wraps gst_dsd_info_to_caps
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Caps 
@@ -11898,7 +12998,7 @@ func UnsafeDsdPlaneOffsetMetaFromGlibBorrow(p unsafe.Pointer) *DsdPlaneOffsetMet
 	return &DsdPlaneOffsetMeta{&dsdPlaneOffsetMeta{(*C.GstDsdPlaneOffsetMeta)(p)}}
 }
 
-// UnsafeDsdPlaneOffsetMetaFromGlibNone is used to convert raw C.GstDsdPlaneOffsetMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeDsdPlaneOffsetMetaFromGlibNone is used to convert raw C.GstDsdPlaneOffsetMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeDsdPlaneOffsetMetaFromGlibNone(p unsafe.Pointer) *DsdPlaneOffsetMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeDsdPlaneOffsetMetaFromGlibBorrow(p)
@@ -11911,7 +13011,7 @@ func UnsafeDsdPlaneOffsetMetaFromGlibNone(p unsafe.Pointer) *DsdPlaneOffsetMeta 
 	return wrapped
 }
 
-// UnsafeDsdPlaneOffsetMetaFromGlibFull is used to convert raw C.GstDsdPlaneOffsetMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeDsdPlaneOffsetMetaFromGlibFull is used to convert raw C.GstDsdPlaneOffsetMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeDsdPlaneOffsetMetaFromGlibFull(p unsafe.Pointer) *DsdPlaneOffsetMeta {
 	wrapped := UnsafeDsdPlaneOffsetMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -11943,7 +13043,9 @@ func UnsafeDsdPlaneOffsetMetaToGlibFull(d *DsdPlaneOffsetMeta) unsafe.Pointer {
 	d.native = nil // DsdPlaneOffsetMeta is invalid from here on
 	return _p
 }
+
 // DsdPlaneOffsetMetaGetInfo wraps gst_dsd_plane_offset_meta_get_info
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.MetaInfo 
@@ -11974,7 +13076,7 @@ func UnsafeStreamVolumeInterfaceFromGlibBorrow(p unsafe.Pointer) *StreamVolumeIn
 	return &StreamVolumeInterface{&streamVolumeInterface{(*C.GstStreamVolumeInterface)(p)}}
 }
 
-// UnsafeStreamVolumeInterfaceFromGlibNone is used to convert raw C.GstStreamVolumeInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeStreamVolumeInterfaceFromGlibNone is used to convert raw C.GstStreamVolumeInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeStreamVolumeInterfaceFromGlibNone(p unsafe.Pointer) *StreamVolumeInterface {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeStreamVolumeInterfaceFromGlibBorrow(p)
@@ -11987,7 +13089,7 @@ func UnsafeStreamVolumeInterfaceFromGlibNone(p unsafe.Pointer) *StreamVolumeInte
 	return wrapped
 }
 
-// UnsafeStreamVolumeInterfaceFromGlibFull is used to convert raw C.GstStreamVolumeInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeStreamVolumeInterfaceFromGlibFull is used to convert raw C.GstStreamVolumeInterface pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeStreamVolumeInterfaceFromGlibFull(p unsafe.Pointer) *StreamVolumeInterface {
 	wrapped := UnsafeStreamVolumeInterfaceFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -12019,3 +13121,4 @@ func UnsafeStreamVolumeInterfaceToGlibFull(s *StreamVolumeInterface) unsafe.Poin
 	s.native = nil // StreamVolumeInterface is invalid from here on
 	return _p
 }
+

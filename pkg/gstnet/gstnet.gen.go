@@ -180,6 +180,7 @@ func BufferGetNetAddressMeta(buffer *gst.Buffer) *NetAddressMeta {
 }
 
 // NetAddressMetaApiGetType wraps gst_net_address_meta_api_get_type
+// 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
@@ -196,6 +197,7 @@ func NetAddressMetaApiGetType() gobject.Type {
 }
 
 // NetControlMessageMetaApiGetType wraps gst_net_control_message_meta_api_get_type
+// 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
@@ -341,6 +343,7 @@ func PtpInitFull(config *gst.Structure) bool {
 }
 
 // PtpIsInitialized wraps gst_ptp_is_initialized
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -361,6 +364,7 @@ func PtpIsInitialized() bool {
 }
 
 // PtpIsSupported wraps gst_ptp_is_supported
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -554,6 +558,20 @@ func NewNetClientClock(name string, remoteAddress string, remotePort int, baseTi
 	return goret
 }
 
+// NetClientClockOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type NetClientClockOverrides[Instance NetClientClock] struct {
+	// gst.SystemClockOverrides allows you to override virtual methods from the parent class gst.SystemClock
+	gst.SystemClockOverrides[Instance]
+
+}
+
+// UnsafeApplyNetClientClockOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyNetClientClockOverrides[Instance NetClientClock](gclass unsafe.Pointer, overrides NetClientClockOverrides[Instance]) {
+	gst.UnsafeApplySystemClockOverrides(gclass, overrides.SystemClockOverrides)
+}
+
 // NetTimeProviderInstance is the instance type used by all types extending GstNetTimeProvider. It is used internally by the bindings. Users should use the interface [NetTimeProvider] instead.
 type NetTimeProviderInstance struct {
 	_ [0]func() // equal guard
@@ -663,6 +681,20 @@ func NewNetTimeProvider(clock gst.Clock, address string, port int) NetTimeProvid
 	return goret
 }
 
+// NetTimeProviderOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type NetTimeProviderOverrides[Instance NetTimeProvider] struct {
+	// gst.ObjectOverrides allows you to override virtual methods from the parent class gst.Object
+	gst.ObjectOverrides[Instance]
+
+}
+
+// UnsafeApplyNetTimeProviderOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyNetTimeProviderOverrides[Instance NetTimeProvider](gclass unsafe.Pointer, overrides NetTimeProviderOverrides[Instance]) {
+	gst.UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+}
+
 // NtpClockInstance is the instance type used by all types extending GstNtpClock. It is used internally by the bindings. Users should use the interface [NtpClock] instead.
 type NtpClockInstance struct {
 	_ [0]func() // equal guard
@@ -763,6 +795,20 @@ func NewNtpClock(name string, remoteAddress string, remotePort int, baseTime gst
 	goret = gst.UnsafeClockFromGlibFull(unsafe.Pointer(cret))
 
 	return goret
+}
+
+// NtpClockOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type NtpClockOverrides[Instance NtpClock] struct {
+	// NetClientClockOverrides allows you to override virtual methods from the parent class NetClientClock
+	NetClientClockOverrides[Instance]
+
+}
+
+// UnsafeApplyNtpClockOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyNtpClockOverrides[Instance NtpClock](gclass unsafe.Pointer, overrides NtpClockOverrides[Instance]) {
+	UnsafeApplyNetClientClockOverrides(gclass, overrides.NetClientClockOverrides)
 }
 
 // PtpClockInstance is the instance type used by all types extending GstPtpClock. It is used internally by the bindings. Users should use the interface [PtpClock] instead.
@@ -885,6 +931,20 @@ func NewPtpClock(name string, domain uint) gst.Clock {
 	return goret
 }
 
+// PtpClockOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type PtpClockOverrides[Instance PtpClock] struct {
+	// gst.SystemClockOverrides allows you to override virtual methods from the parent class gst.SystemClock
+	gst.SystemClockOverrides[Instance]
+
+}
+
+// UnsafeApplyPtpClockOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyPtpClockOverrides[Instance PtpClock](gclass unsafe.Pointer, overrides PtpClockOverrides[Instance]) {
+	gst.UnsafeApplySystemClockOverrides(gclass, overrides.SystemClockOverrides)
+}
+
 // NetAddressMeta wraps GstNetAddressMeta
 //
 // #GstNetAddressMeta can be used to store a network address (a #GSocketAddress)
@@ -904,7 +964,7 @@ func UnsafeNetAddressMetaFromGlibBorrow(p unsafe.Pointer) *NetAddressMeta {
 	return &NetAddressMeta{&netAddressMeta{(*C.GstNetAddressMeta)(p)}}
 }
 
-// UnsafeNetAddressMetaFromGlibNone is used to convert raw C.GstNetAddressMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeNetAddressMetaFromGlibNone is used to convert raw C.GstNetAddressMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeNetAddressMetaFromGlibNone(p unsafe.Pointer) *NetAddressMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeNetAddressMetaFromGlibBorrow(p)
@@ -917,7 +977,7 @@ func UnsafeNetAddressMetaFromGlibNone(p unsafe.Pointer) *NetAddressMeta {
 	return wrapped
 }
 
-// UnsafeNetAddressMetaFromGlibFull is used to convert raw C.GstNetAddressMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeNetAddressMetaFromGlibFull is used to convert raw C.GstNetAddressMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeNetAddressMetaFromGlibFull(p unsafe.Pointer) *NetAddressMeta {
 	wrapped := UnsafeNetAddressMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -949,7 +1009,9 @@ func UnsafeNetAddressMetaToGlibFull(n *NetAddressMeta) unsafe.Pointer {
 	n.native = nil // NetAddressMeta is invalid from here on
 	return _p
 }
+
 // NetAddressMetaGetInfo wraps gst_net_address_meta_get_info
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.MetaInfo 
@@ -966,6 +1028,8 @@ func NetAddressMetaGetInfo() *gst.MetaInfo {
 }
 
 // NetClientClockClass wraps GstNetClientClockClass
+// 
+// NetClientClockClass is the type struct for [NetClientClock]
 type NetClientClockClass struct {
 	*netClientClockClass
 }
@@ -980,31 +1044,6 @@ func UnsafeNetClientClockClassFromGlibBorrow(p unsafe.Pointer) *NetClientClockCl
 	return &NetClientClockClass{&netClientClockClass{(*C.GstNetClientClockClass)(p)}}
 }
 
-// UnsafeNetClientClockClassFromGlibNone is used to convert raw C.GstNetClientClockClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeNetClientClockClassFromGlibNone(p unsafe.Pointer) *NetClientClockClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeNetClientClockClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.netClientClockClass,
-		func (intern *netClientClockClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeNetClientClockClassFromGlibFull is used to convert raw C.GstNetClientClockClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeNetClientClockClassFromGlibFull(p unsafe.Pointer) *NetClientClockClass {
-	wrapped := UnsafeNetClientClockClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.netClientClockClass,
-		func (intern *netClientClockClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeNetClientClockClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [NetClientClockClass] is expected to work anymore.
@@ -1017,14 +1056,15 @@ func UnsafeNetClientClockClassToGlibNone(n *NetClientClockClass) unsafe.Pointer 
 	return unsafe.Pointer(n.native)
 }
 
-// UnsafeNetClientClockClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeNetClientClockClassToGlibFull(n *NetClientClockClass) unsafe.Pointer {
-	runtime.SetFinalizer(n.netClientClockClass, nil)
-	_p := unsafe.Pointer(n.native)
-	n.native = nil // NetClientClockClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (n *NetClientClockClass) ParentClass() *gst.SystemClockClass {
+	parent := gst.UnsafeSystemClockClassFromGlibBorrow(UnsafeNetClientClockClassToGlibNone(n))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *NetClientClockClass) {}, n)
+	return parent
 }
+
 // NetControlMessageMeta wraps GstNetControlMessageMeta
 //
 // #GstNetControlMessageMeta can be used to store control messages (ancillary
@@ -1046,7 +1086,7 @@ func UnsafeNetControlMessageMetaFromGlibBorrow(p unsafe.Pointer) *NetControlMess
 	return &NetControlMessageMeta{&netControlMessageMeta{(*C.GstNetControlMessageMeta)(p)}}
 }
 
-// UnsafeNetControlMessageMetaFromGlibNone is used to convert raw C.GstNetControlMessageMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeNetControlMessageMetaFromGlibNone is used to convert raw C.GstNetControlMessageMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeNetControlMessageMetaFromGlibNone(p unsafe.Pointer) *NetControlMessageMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeNetControlMessageMetaFromGlibBorrow(p)
@@ -1059,7 +1099,7 @@ func UnsafeNetControlMessageMetaFromGlibNone(p unsafe.Pointer) *NetControlMessag
 	return wrapped
 }
 
-// UnsafeNetControlMessageMetaFromGlibFull is used to convert raw C.GstNetControlMessageMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeNetControlMessageMetaFromGlibFull is used to convert raw C.GstNetControlMessageMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeNetControlMessageMetaFromGlibFull(p unsafe.Pointer) *NetControlMessageMeta {
 	wrapped := UnsafeNetControlMessageMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -1091,7 +1131,9 @@ func UnsafeNetControlMessageMetaToGlibFull(n *NetControlMessageMeta) unsafe.Poin
 	n.native = nil // NetControlMessageMeta is invalid from here on
 	return _p
 }
+
 // NetControlMessageMetaGetInfo wraps gst_net_control_message_meta_get_info
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.MetaInfo 
@@ -1137,7 +1179,7 @@ func UnsafeNetTimePacketFromGlibBorrow(p unsafe.Pointer) *NetTimePacket {
 	return &NetTimePacket{&netTimePacket{(*C.GstNetTimePacket)(p)}}
 }
 
-// UnsafeNetTimePacketFromGlibNone is used to convert raw C.GstNetTimePacket pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeNetTimePacketFromGlibNone is used to convert raw C.GstNetTimePacket pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeNetTimePacketFromGlibNone(p unsafe.Pointer) *NetTimePacket {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeNetTimePacketFromGlibBorrow(p)
@@ -1150,7 +1192,7 @@ func UnsafeNetTimePacketFromGlibNone(p unsafe.Pointer) *NetTimePacket {
 	return wrapped
 }
 
-// UnsafeNetTimePacketFromGlibFull is used to convert raw C.GstNetTimePacket pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeNetTimePacketFromGlibFull is used to convert raw C.GstNetTimePacket pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeNetTimePacketFromGlibFull(p unsafe.Pointer) *NetTimePacket {
 	wrapped := UnsafeNetTimePacketFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -1182,6 +1224,7 @@ func UnsafeNetTimePacketToGlibFull(n *NetTimePacket) unsafe.Pointer {
 	n.native = nil // NetTimePacket is invalid from here on
 	return _p
 }
+
 // NewNetTimePacket wraps gst_net_time_packet_new
 // 
 // The function takes the following parameters:
@@ -1257,6 +1300,7 @@ func NetTimePacketReceive(socket gio.Socket) (gio.SocketAddress, *NetTimePacket,
 }
 
 // Copy wraps gst_net_time_packet_copy
+// 
 // The function returns the following values:
 // 
 // 	- goret *NetTimePacket 
@@ -1323,6 +1367,7 @@ func (packet *NetTimePacket) Send(socket gio.Socket, destAddress gio.SocketAddre
 }
 
 // Serialize wraps gst_net_time_packet_serialize
+// 
 // The function returns the following values:
 // 
 // 	- goret [16]uint8 
@@ -1352,6 +1397,8 @@ func (packet *NetTimePacket) Serialize() [16]uint8 {
 }
 
 // NetTimeProviderClass wraps GstNetTimeProviderClass
+// 
+// NetTimeProviderClass is the type struct for [NetTimeProvider]
 type NetTimeProviderClass struct {
 	*netTimeProviderClass
 }
@@ -1366,31 +1413,6 @@ func UnsafeNetTimeProviderClassFromGlibBorrow(p unsafe.Pointer) *NetTimeProvider
 	return &NetTimeProviderClass{&netTimeProviderClass{(*C.GstNetTimeProviderClass)(p)}}
 }
 
-// UnsafeNetTimeProviderClassFromGlibNone is used to convert raw C.GstNetTimeProviderClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeNetTimeProviderClassFromGlibNone(p unsafe.Pointer) *NetTimeProviderClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeNetTimeProviderClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.netTimeProviderClass,
-		func (intern *netTimeProviderClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeNetTimeProviderClassFromGlibFull is used to convert raw C.GstNetTimeProviderClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeNetTimeProviderClassFromGlibFull(p unsafe.Pointer) *NetTimeProviderClass {
-	wrapped := UnsafeNetTimeProviderClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.netTimeProviderClass,
-		func (intern *netTimeProviderClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeNetTimeProviderClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [NetTimeProviderClass] is expected to work anymore.
@@ -1403,15 +1425,18 @@ func UnsafeNetTimeProviderClassToGlibNone(n *NetTimeProviderClass) unsafe.Pointe
 	return unsafe.Pointer(n.native)
 }
 
-// UnsafeNetTimeProviderClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeNetTimeProviderClassToGlibFull(n *NetTimeProviderClass) unsafe.Pointer {
-	runtime.SetFinalizer(n.netTimeProviderClass, nil)
-	_p := unsafe.Pointer(n.native)
-	n.native = nil // NetTimeProviderClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (n *NetTimeProviderClass) ParentClass() *gst.ObjectClass {
+	parent := gst.UnsafeObjectClassFromGlibBorrow(UnsafeNetTimeProviderClassToGlibNone(n))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *NetTimeProviderClass) {}, n)
+	return parent
 }
+
 // NtpClockClass wraps GstNtpClockClass
+// 
+// NtpClockClass is the type struct for [NtpClock]
 type NtpClockClass struct {
 	*ntpClockClass
 }
@@ -1426,31 +1451,6 @@ func UnsafeNtpClockClassFromGlibBorrow(p unsafe.Pointer) *NtpClockClass {
 	return &NtpClockClass{&ntpClockClass{(*C.GstNtpClockClass)(p)}}
 }
 
-// UnsafeNtpClockClassFromGlibNone is used to convert raw C.GstNtpClockClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeNtpClockClassFromGlibNone(p unsafe.Pointer) *NtpClockClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeNtpClockClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.ntpClockClass,
-		func (intern *ntpClockClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeNtpClockClassFromGlibFull is used to convert raw C.GstNtpClockClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeNtpClockClassFromGlibFull(p unsafe.Pointer) *NtpClockClass {
-	wrapped := UnsafeNtpClockClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.ntpClockClass,
-		func (intern *ntpClockClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeNtpClockClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [NtpClockClass] is expected to work anymore.
@@ -1463,17 +1463,20 @@ func UnsafeNtpClockClassToGlibNone(n *NtpClockClass) unsafe.Pointer {
 	return unsafe.Pointer(n.native)
 }
 
-// UnsafeNtpClockClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeNtpClockClassToGlibFull(n *NtpClockClass) unsafe.Pointer {
-	runtime.SetFinalizer(n.ntpClockClass, nil)
-	_p := unsafe.Pointer(n.native)
-	n.native = nil // NtpClockClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (n *NtpClockClass) ParentClass() *NetClientClockClass {
+	parent := UnsafeNetClientClockClassFromGlibBorrow(UnsafeNtpClockClassToGlibNone(n))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *NtpClockClass) {}, n)
+	return parent
 }
+
 // PtpClockClass wraps GstPtpClockClass
 //
 // Opaque #GstPtpClockClass structure.
+// 
+// PtpClockClass is the type struct for [PtpClock]
 type PtpClockClass struct {
 	*ptpClockClass
 }
@@ -1488,31 +1491,6 @@ func UnsafePtpClockClassFromGlibBorrow(p unsafe.Pointer) *PtpClockClass {
 	return &PtpClockClass{&ptpClockClass{(*C.GstPtpClockClass)(p)}}
 }
 
-// UnsafePtpClockClassFromGlibNone is used to convert raw C.GstPtpClockClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafePtpClockClassFromGlibNone(p unsafe.Pointer) *PtpClockClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafePtpClockClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.ptpClockClass,
-		func (intern *ptpClockClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafePtpClockClassFromGlibFull is used to convert raw C.GstPtpClockClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafePtpClockClassFromGlibFull(p unsafe.Pointer) *PtpClockClass {
-	wrapped := UnsafePtpClockClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.ptpClockClass,
-		func (intern *ptpClockClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafePtpClockClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [PtpClockClass] is expected to work anymore.
@@ -1525,11 +1503,12 @@ func UnsafePtpClockClassToGlibNone(p *PtpClockClass) unsafe.Pointer {
 	return unsafe.Pointer(p.native)
 }
 
-// UnsafePtpClockClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafePtpClockClassToGlibFull(p *PtpClockClass) unsafe.Pointer {
-	runtime.SetFinalizer(p.ptpClockClass, nil)
-	_p := unsafe.Pointer(p.native)
-	p.native = nil // PtpClockClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (p *PtpClockClass) ParentClass() *gst.SystemClockClass {
+	parent := gst.UnsafeSystemClockClassFromGlibBorrow(UnsafePtpClockClassToGlibNone(p))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *PtpClockClass) {}, p)
+	return parent
 }
+

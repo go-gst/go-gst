@@ -22,6 +22,42 @@ import (
 // #include <gst/rtsp/rtsp.h>
 // extern gboolean _gotk4_gstrtsp1_RTSPConnectionAcceptCertificateFunc(GTlsConnection*, GTlsCertificate*, GTlsCertificateFlags, gpointer);
 // extern void destroyUserdata(gpointer);
+// extern GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_after_send(GstRTSPExtension*, GstRTSPMessage*, GstRTSPMessage*);
+// extern GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_before_send(GstRTSPExtension*, GstRTSPMessage*);
+// extern gboolean _gotk4_gstrtsp1_RTSPExtension_configure_stream(GstRTSPExtension*, GstCaps*);
+// extern gboolean _gotk4_gstrtsp1_RTSPExtension_detect_server(GstRTSPExtension*, GstRTSPMessage*);
+// extern GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_parse_sdp(GstRTSPExtension*, GstSDPMessage*, GstStructure*);
+// extern GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_receive_request(GstRTSPExtension*, GstRTSPMessage*);
+// extern GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_send(GstRTSPExtension*, GstRTSPMessage*, GstRTSPMessage*);
+// extern GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_setup_media(GstRTSPExtension*, GstSDPMedia*);
+// extern GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_stream_select(GstRTSPExtension*, GstRTSPUrl*);
+// GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_after_send(void* fnptr, GstRTSPExtension* carg0, GstRTSPMessage* carg1, GstRTSPMessage* carg2) {
+// 	return ((GstRTSPResult (*) (GstRTSPExtension*, GstRTSPMessage*, GstRTSPMessage*))(fnptr))(carg0, carg1, carg2);
+// }
+// GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_before_send(void* fnptr, GstRTSPExtension* carg0, GstRTSPMessage* carg1) {
+// 	return ((GstRTSPResult (*) (GstRTSPExtension*, GstRTSPMessage*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstrtsp1_RTSPExtension_virtual_configure_stream(void* fnptr, GstRTSPExtension* carg0, GstCaps* carg1) {
+// 	return ((gboolean (*) (GstRTSPExtension*, GstCaps*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstrtsp1_RTSPExtension_virtual_detect_server(void* fnptr, GstRTSPExtension* carg0, GstRTSPMessage* carg1) {
+// 	return ((gboolean (*) (GstRTSPExtension*, GstRTSPMessage*))(fnptr))(carg0, carg1);
+// }
+// GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_parse_sdp(void* fnptr, GstRTSPExtension* carg0, GstSDPMessage* carg1, GstStructure* carg2) {
+// 	return ((GstRTSPResult (*) (GstRTSPExtension*, GstSDPMessage*, GstStructure*))(fnptr))(carg0, carg1, carg2);
+// }
+// GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_receive_request(void* fnptr, GstRTSPExtension* carg0, GstRTSPMessage* carg1) {
+// 	return ((GstRTSPResult (*) (GstRTSPExtension*, GstRTSPMessage*))(fnptr))(carg0, carg1);
+// }
+// GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_send(void* fnptr, GstRTSPExtension* carg0, GstRTSPMessage* carg1, GstRTSPMessage* carg2) {
+// 	return ((GstRTSPResult (*) (GstRTSPExtension*, GstRTSPMessage*, GstRTSPMessage*))(fnptr))(carg0, carg1, carg2);
+// }
+// GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_setup_media(void* fnptr, GstRTSPExtension* carg0, GstSDPMedia* carg1) {
+// 	return ((GstRTSPResult (*) (GstRTSPExtension*, GstSDPMedia*))(fnptr))(carg0, carg1);
+// }
+// GstRTSPResult _gotk4_gstrtsp1_RTSPExtension_virtual_stream_select(void* fnptr, GstRTSPExtension* carg0, GstRTSPUrl* carg1) {
+// 	return ((GstRTSPResult (*) (GstRTSPExtension*, GstRTSPUrl*))(fnptr))(carg0, carg1);
+// }
 import "C"
 
 // GType values.
@@ -1669,6 +1705,7 @@ func RtspHeaderAsText(field RTSPHeaderField) string {
 }
 
 // NewRtspMessage wraps gst_rtsp_message_new
+// 
 // The function returns the following values:
 // 
 // 	- msg *RTSPMessage: a location for the new #GstRTSPMessage 
@@ -2343,6 +2380,138 @@ func (ext *RTSPExtensionInstance) StreamSelect(url *RTSPUrl) RTSPResult {
 func (o *RTSPExtensionInstance) ConnectSend(fn func(RTSPExtension, unsafe.Pointer, unsafe.Pointer) RTSPResult) gobject.SignalHandle {
 	return o.Instance.Connect("send", fn)
 }
+
+// RTSPExtensionOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type RTSPExtensionOverrides[Instance RTSPExtension] struct {
+	// AfterSend allows you to override the implementation of the virtual method after_send.
+	// The function takes the following parameters:
+	// 
+	// 	- req *RTSPMessage 
+	// 	- resp *RTSPMessage 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret RTSPResult 
+	AfterSend func(Instance, *RTSPMessage, *RTSPMessage) RTSPResult
+	// BeforeSend allows you to override the implementation of the virtual method before_send.
+	// The function takes the following parameters:
+	// 
+	// 	- req *RTSPMessage 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret RTSPResult 
+	BeforeSend func(Instance, *RTSPMessage) RTSPResult
+	// ConfigureStream allows you to override the implementation of the virtual method configure_stream.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	ConfigureStream func(Instance, *gst.Caps) bool
+	// DetectServer allows you to override the implementation of the virtual method detect_server.
+	// The function takes the following parameters:
+	// 
+	// 	- resp *RTSPMessage 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	DetectServer func(Instance, *RTSPMessage) bool
+	// ParseSdp allows you to override the implementation of the virtual method parse_sdp.
+	// The function takes the following parameters:
+	// 
+	// 	- sdp *gstsdp.SDPMessage 
+	// 	- s *gst.Structure 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret RTSPResult 
+	ParseSdp func(Instance, *gstsdp.SDPMessage, *gst.Structure) RTSPResult
+	// ReceiveRequest allows you to override the implementation of the virtual method receive_request.
+	// The function takes the following parameters:
+	// 
+	// 	- req *RTSPMessage 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret RTSPResult 
+	ReceiveRequest func(Instance, *RTSPMessage) RTSPResult
+	// Send allows you to override the implementation of the virtual method send.
+	// The function takes the following parameters:
+	// 
+	// 	- req *RTSPMessage 
+	// 	- resp *RTSPMessage 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret RTSPResult 
+	Send func(Instance, *RTSPMessage, *RTSPMessage) RTSPResult
+	// SetupMedia allows you to override the implementation of the virtual method setup_media.
+	// The function takes the following parameters:
+	// 
+	// 	- media *gstsdp.SDPMedia 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret RTSPResult 
+	SetupMedia func(Instance, *gstsdp.SDPMedia) RTSPResult
+	// StreamSelect allows you to override the implementation of the virtual method stream_select.
+	// The function takes the following parameters:
+	// 
+	// 	- url *RTSPUrl 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret RTSPResult 
+	StreamSelect func(Instance, *RTSPUrl) RTSPResult
+}
+
+// UnsafeApplyRTSPExtensionOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyRTSPExtensionOverrides[Instance RTSPExtension](gclass unsafe.Pointer, overrides RTSPExtensionOverrides[Instance]) {
+	pclass := (*C.GstRTSPExtensionInterface)(gclass)
+
+	if overrides.AfterSend != nil {
+		pclass.after_send = (*[0]byte)(C._gotk4_gstrtsp1_RTSPExtension_after_send)
+	}
+
+	if overrides.BeforeSend != nil {
+		pclass.before_send = (*[0]byte)(C._gotk4_gstrtsp1_RTSPExtension_before_send)
+	}
+
+	if overrides.ConfigureStream != nil {
+		pclass.configure_stream = (*[0]byte)(C._gotk4_gstrtsp1_RTSPExtension_configure_stream)
+	}
+
+	if overrides.DetectServer != nil {
+		pclass.detect_server = (*[0]byte)(C._gotk4_gstrtsp1_RTSPExtension_detect_server)
+	}
+
+	if overrides.ParseSdp != nil {
+		pclass.parse_sdp = (*[0]byte)(C._gotk4_gstrtsp1_RTSPExtension_parse_sdp)
+	}
+
+	if overrides.ReceiveRequest != nil {
+		pclass.receive_request = (*[0]byte)(C._gotk4_gstrtsp1_RTSPExtension_receive_request)
+	}
+
+	if overrides.Send != nil {
+		pclass.send = (*[0]byte)(C._gotk4_gstrtsp1_RTSPExtension_send)
+	}
+
+	if overrides.SetupMedia != nil {
+		pclass.setup_media = (*[0]byte)(C._gotk4_gstrtsp1_RTSPExtension_setup_media)
+	}
+
+	if overrides.StreamSelect != nil {
+		pclass.stream_select = (*[0]byte)(C._gotk4_gstrtsp1_RTSPExtension_stream_select)
+	}
+}
+
 // RTSPAuthCredential wraps GstRTSPAuthCredential
 //
 // RTSP Authentication credentials
@@ -2372,7 +2541,7 @@ func UnsafeRTSPAuthCredentialFromGlibBorrow(p unsafe.Pointer) *RTSPAuthCredentia
 	return &RTSPAuthCredential{&rtspAuthCredential{(*C.GstRTSPAuthCredential)(p)}}
 }
 
-// UnsafeRTSPAuthCredentialFromGlibNone is used to convert raw C.GstRTSPAuthCredential pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTSPAuthCredentialFromGlibNone is used to convert raw C.GstRTSPAuthCredential pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPAuthCredentialFromGlibNone(p unsafe.Pointer) *RTSPAuthCredential {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPAuthCredentialFromGlibBorrow(p)
@@ -2385,7 +2554,7 @@ func UnsafeRTSPAuthCredentialFromGlibNone(p unsafe.Pointer) *RTSPAuthCredential 
 	return wrapped
 }
 
-// UnsafeRTSPAuthCredentialFromGlibFull is used to convert raw C.GstRTSPAuthCredential pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTSPAuthCredentialFromGlibFull is used to convert raw C.GstRTSPAuthCredential pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTSPAuthCredentialFromGlibFull(p unsafe.Pointer) *RTSPAuthCredential {
 	wrapped := UnsafeRTSPAuthCredentialFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -2417,6 +2586,7 @@ func UnsafeRTSPAuthCredentialToGlibFull(r *RTSPAuthCredential) unsafe.Pointer {
 	r.native = nil // RTSPAuthCredential is invalid from here on
 	return _p
 }
+
 // RTSPAuthParam wraps GstRTSPAuthParam
 //
 // RTSP Authentication parameter
@@ -2446,7 +2616,7 @@ func UnsafeRTSPAuthParamFromGlibBorrow(p unsafe.Pointer) *RTSPAuthParam {
 	return &RTSPAuthParam{&rtspAuthParam{(*C.GstRTSPAuthParam)(p)}}
 }
 
-// UnsafeRTSPAuthParamFromGlibNone is used to convert raw C.GstRTSPAuthParam pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTSPAuthParamFromGlibNone is used to convert raw C.GstRTSPAuthParam pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPAuthParamFromGlibNone(p unsafe.Pointer) *RTSPAuthParam {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPAuthParamFromGlibBorrow(p)
@@ -2459,7 +2629,7 @@ func UnsafeRTSPAuthParamFromGlibNone(p unsafe.Pointer) *RTSPAuthParam {
 	return wrapped
 }
 
-// UnsafeRTSPAuthParamFromGlibFull is used to convert raw C.GstRTSPAuthParam pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTSPAuthParamFromGlibFull is used to convert raw C.GstRTSPAuthParam pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTSPAuthParamFromGlibFull(p unsafe.Pointer) *RTSPAuthParam {
 	wrapped := UnsafeRTSPAuthParamFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -2491,7 +2661,9 @@ func UnsafeRTSPAuthParamToGlibFull(r *RTSPAuthParam) unsafe.Pointer {
 	r.native = nil // RTSPAuthParam is invalid from here on
 	return _p
 }
+
 // Copy wraps gst_rtsp_auth_param_copy
+// 
 // The function returns the following values:
 // 
 // 	- goret *RTSPAuthParam 
@@ -2529,7 +2701,7 @@ func UnsafeRTSPConnectionFromGlibBorrow(p unsafe.Pointer) *RTSPConnection {
 	return &RTSPConnection{&rtspConnection{(*C.GstRTSPConnection)(p)}}
 }
 
-// UnsafeRTSPConnectionFromGlibNone is used to convert raw C.GstRTSPConnection pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTSPConnectionFromGlibNone is used to convert raw C.GstRTSPConnection pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPConnectionFromGlibNone(p unsafe.Pointer) *RTSPConnection {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPConnectionFromGlibBorrow(p)
@@ -2542,7 +2714,7 @@ func UnsafeRTSPConnectionFromGlibNone(p unsafe.Pointer) *RTSPConnection {
 	return wrapped
 }
 
-// UnsafeRTSPConnectionFromGlibFull is used to convert raw C.GstRTSPConnection pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTSPConnectionFromGlibFull is used to convert raw C.GstRTSPConnection pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTSPConnectionFromGlibFull(p unsafe.Pointer) *RTSPConnection {
 	wrapped := UnsafeRTSPConnectionFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -2574,6 +2746,7 @@ func UnsafeRTSPConnectionToGlibFull(r *RTSPConnection) unsafe.Pointer {
 	r.native = nil // RTSPConnection is invalid from here on
 	return _p
 }
+
 // RTSPConnectionAccept wraps gst_rtsp_connection_accept
 // 
 // The function takes the following parameters:
@@ -2739,6 +2912,7 @@ func (conn *RTSPConnection) ClearAuthParams() {
 }
 
 // Close wraps gst_rtsp_connection_close
+// 
 // The function returns the following values:
 // 
 // 	- goret RTSPResult 
@@ -2911,6 +3085,7 @@ func (conn *RTSPConnection) Flush(flush bool) RTSPResult {
 }
 
 // GetIgnoreXServerReply wraps gst_rtsp_connection_get_ignore_x_server_reply
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -2935,6 +3110,7 @@ func (conn *RTSPConnection) GetIgnoreXServerReply() bool {
 }
 
 // GetIP wraps gst_rtsp_connection_get_ip
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -2957,6 +3133,7 @@ func (conn *RTSPConnection) GetIP() string {
 }
 
 // GetReadSocket wraps gst_rtsp_connection_get_read_socket
+// 
 // The function returns the following values:
 // 
 // 	- goret gio.Socket (nullable) 
@@ -2981,6 +3158,7 @@ func (conn *RTSPConnection) GetReadSocket() gio.Socket {
 }
 
 // GetRememberSessionID wraps gst_rtsp_connection_get_remember_session_id
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -3003,6 +3181,7 @@ func (conn *RTSPConnection) GetRememberSessionID() bool {
 }
 
 // GetTLS wraps gst_rtsp_connection_get_tls
+// 
 // The function returns the following values:
 // 
 // 	- goret gio.TlsConnection 
@@ -3038,6 +3217,7 @@ func (conn *RTSPConnection) GetTLS() (gio.TlsConnection, error) {
 }
 
 // GetTLSDatabase wraps gst_rtsp_connection_get_tls_database
+// 
 // The function returns the following values:
 // 
 // 	- goret gio.TlsDatabase (nullable) 
@@ -3064,6 +3244,7 @@ func (conn *RTSPConnection) GetTLSDatabase() gio.TlsDatabase {
 }
 
 // GetTLSInteraction wraps gst_rtsp_connection_get_tls_interaction
+// 
 // The function returns the following values:
 // 
 // 	- goret gio.TlsInteraction (nullable) 
@@ -3090,6 +3271,7 @@ func (conn *RTSPConnection) GetTLSInteraction() gio.TlsInteraction {
 }
 
 // GetTLSValidationFlags wraps gst_rtsp_connection_get_tls_validation_flags
+// 
 // The function returns the following values:
 // 
 // 	- goret gio.TLSCertificateFlags 
@@ -3122,6 +3304,7 @@ func (conn *RTSPConnection) GetTLSValidationFlags() gio.TLSCertificateFlags {
 }
 
 // GetTunnelid wraps gst_rtsp_connection_get_tunnelid
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -3146,6 +3329,7 @@ func (conn *RTSPConnection) GetTunnelid() string {
 }
 
 // GetURL wraps gst_rtsp_connection_get_url
+// 
 // The function returns the following values:
 // 
 // 	- goret *RTSPUrl 
@@ -3168,6 +3352,7 @@ func (conn *RTSPConnection) GetURL() *RTSPUrl {
 }
 
 // GetWriteSocket wraps gst_rtsp_connection_get_write_socket
+// 
 // The function returns the following values:
 // 
 // 	- goret gio.Socket (nullable) 
@@ -3192,6 +3377,7 @@ func (conn *RTSPConnection) GetWriteSocket() gio.Socket {
 }
 
 // IsTunneled wraps gst_rtsp_connection_is_tunneled
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -3216,6 +3402,7 @@ func (conn *RTSPConnection) IsTunneled() bool {
 }
 
 // NextTimeoutUsec wraps gst_rtsp_connection_next_timeout_usec
+// 
 // The function returns the following values:
 // 
 // 	- goret int64 
@@ -3365,6 +3552,7 @@ func (conn *RTSPConnection) ReceiveUsec(message *RTSPMessage, timeout int64) RTS
 }
 
 // ResetTimeout wraps gst_rtsp_connection_reset_timeout
+// 
 // The function returns the following values:
 // 
 // 	- goret RTSPResult 
@@ -3909,7 +4097,7 @@ func UnsafeRTSPExtensionInterfaceFromGlibBorrow(p unsafe.Pointer) *RTSPExtension
 	return &RTSPExtensionInterface{&rtspExtensionInterface{(*C.GstRTSPExtensionInterface)(p)}}
 }
 
-// UnsafeRTSPExtensionInterfaceFromGlibNone is used to convert raw C.GstRTSPExtensionInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTSPExtensionInterfaceFromGlibNone is used to convert raw C.GstRTSPExtensionInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPExtensionInterfaceFromGlibNone(p unsafe.Pointer) *RTSPExtensionInterface {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPExtensionInterfaceFromGlibBorrow(p)
@@ -3922,7 +4110,7 @@ func UnsafeRTSPExtensionInterfaceFromGlibNone(p unsafe.Pointer) *RTSPExtensionIn
 	return wrapped
 }
 
-// UnsafeRTSPExtensionInterfaceFromGlibFull is used to convert raw C.GstRTSPExtensionInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTSPExtensionInterfaceFromGlibFull is used to convert raw C.GstRTSPExtensionInterface pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTSPExtensionInterfaceFromGlibFull(p unsafe.Pointer) *RTSPExtensionInterface {
 	wrapped := UnsafeRTSPExtensionInterfaceFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -3954,6 +4142,7 @@ func UnsafeRTSPExtensionInterfaceToGlibFull(r *RTSPExtensionInterface) unsafe.Po
 	r.native = nil // RTSPExtensionInterface is invalid from here on
 	return _p
 }
+
 // RTSPMessage wraps GstRTSPMessage
 //
 // Provides methods for creating and parsing request, response and data messages.
@@ -3983,7 +4172,7 @@ func UnsafeRTSPMessageFromGlibBorrow(p unsafe.Pointer) *RTSPMessage {
 	return &RTSPMessage{&rtspMessage{(*C.GstRTSPMessage)(p)}}
 }
 
-// UnsafeRTSPMessageFromGlibNone is used to convert raw C.GstRTSPMessage pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTSPMessageFromGlibNone is used to convert raw C.GstRTSPMessage pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPMessageFromGlibNone(p unsafe.Pointer) *RTSPMessage {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPMessageFromGlibBorrow(p)
@@ -3996,7 +4185,7 @@ func UnsafeRTSPMessageFromGlibNone(p unsafe.Pointer) *RTSPMessage {
 	return wrapped
 }
 
-// UnsafeRTSPMessageFromGlibFull is used to convert raw C.GstRTSPMessage pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTSPMessageFromGlibFull is used to convert raw C.GstRTSPMessage pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTSPMessageFromGlibFull(p unsafe.Pointer) *RTSPMessage {
 	wrapped := UnsafeRTSPMessageFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -4028,6 +4217,7 @@ func UnsafeRTSPMessageToGlibFull(r *RTSPMessage) unsafe.Pointer {
 	r.native = nil // RTSPMessage is invalid from here on
 	return _p
 }
+
 // AddHeader wraps gst_rtsp_message_add_header
 // 
 // The function takes the following parameters:
@@ -4102,6 +4292,7 @@ func (msg *RTSPMessage) AddHeaderByName(header string, value string) RTSPResult 
 }
 
 // Copy wraps gst_rtsp_message_copy
+// 
 // The function returns the following values:
 // 
 // 	- copy *RTSPMessage (nullable): pointer to new #GstRTSPMessage 
@@ -4131,6 +4322,7 @@ func (msg *RTSPMessage) Copy() (*RTSPMessage, RTSPResult) {
 }
 
 // Dump wraps gst_rtsp_message_dump
+// 
 // The function returns the following values:
 // 
 // 	- goret RTSPResult 
@@ -4153,6 +4345,7 @@ func (msg *RTSPMessage) Dump() RTSPResult {
 }
 
 // GetBodyBuffer wraps gst_rtsp_message_get_body_buffer
+// 
 // The function returns the following values:
 // 
 // 	- buffer *gst.Buffer: location for the buffer 
@@ -4267,6 +4460,7 @@ func (msg *RTSPMessage) GetHeaderByName(header string, index int) (string, RTSPR
 }
 
 // GetType wraps gst_rtsp_message_get_type
+// 
 // The function returns the following values:
 // 
 // 	- goret RTSPMsgType 
@@ -4289,6 +4483,7 @@ func (msg *RTSPMessage) GetType() RTSPMsgType {
 }
 
 // HasBodyBuffer wraps gst_rtsp_message_has_body_buffer
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -4313,6 +4508,7 @@ func (msg *RTSPMessage) HasBodyBuffer() bool {
 }
 
 // Init wraps gst_rtsp_message_init
+// 
 // The function returns the following values:
 // 
 // 	- goret RTSPResult 
@@ -4482,6 +4678,7 @@ func (msg *RTSPMessage) ParseAuthCredentials(field RTSPHeaderField) []*RTSPAuthC
 }
 
 // ParseData wraps gst_rtsp_message_parse_data
+// 
 // The function returns the following values:
 // 
 // 	- channel uint8: location to hold the channel 
@@ -4508,6 +4705,7 @@ func (msg *RTSPMessage) ParseData() (uint8, RTSPResult) {
 }
 
 // ParseRequest wraps gst_rtsp_message_parse_request
+// 
 // The function returns the following values:
 // 
 // 	- method RTSPMethod: location to hold the method 
@@ -4546,6 +4744,7 @@ func (msg *RTSPMessage) ParseRequest() (RTSPMethod, string, RTSPVersion, RTSPRes
 }
 
 // ParseResponse wraps gst_rtsp_message_parse_response
+// 
 // The function returns the following values:
 // 
 // 	- code RTSPStatusCode: location to hold the status code 
@@ -4721,6 +4920,7 @@ func (msg *RTSPMessage) SetBodyBuffer(buffer *gst.Buffer) RTSPResult {
 }
 
 // StealBodyBuffer wraps gst_rtsp_message_steal_body_buffer
+// 
 // The function returns the following values:
 // 
 // 	- buffer *gst.Buffer: location for the buffer 
@@ -4889,6 +5089,7 @@ func (msg *RTSPMessage) TakeHeaderByName(header string, value string) RTSPResult
 }
 
 // Unset wraps gst_rtsp_message_unset
+// 
 // The function returns the following values:
 // 
 // 	- goret RTSPResult 
@@ -4930,7 +5131,7 @@ func UnsafeRTSPRangeFromGlibBorrow(p unsafe.Pointer) *RTSPRange {
 	return &RTSPRange{&rtspRange{(*C.GstRTSPRange)(p)}}
 }
 
-// UnsafeRTSPRangeFromGlibNone is used to convert raw C.GstRTSPRange pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTSPRangeFromGlibNone is used to convert raw C.GstRTSPRange pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPRangeFromGlibNone(p unsafe.Pointer) *RTSPRange {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPRangeFromGlibBorrow(p)
@@ -4943,7 +5144,7 @@ func UnsafeRTSPRangeFromGlibNone(p unsafe.Pointer) *RTSPRange {
 	return wrapped
 }
 
-// UnsafeRTSPRangeFromGlibFull is used to convert raw C.GstRTSPRange pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTSPRangeFromGlibFull is used to convert raw C.GstRTSPRange pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTSPRangeFromGlibFull(p unsafe.Pointer) *RTSPRange {
 	wrapped := UnsafeRTSPRangeFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -4975,6 +5176,7 @@ func UnsafeRTSPRangeToGlibFull(r *RTSPRange) unsafe.Pointer {
 	r.native = nil // RTSPRange is invalid from here on
 	return _p
 }
+
 // RTSPRangeConvertUnits wraps gst_rtsp_range_convert_units
 // 
 // The function takes the following parameters:
@@ -5146,7 +5348,7 @@ func UnsafeRTSPTimeFromGlibBorrow(p unsafe.Pointer) *RTSPTime {
 	return &RTSPTime{&rtspTime{(*C.GstRTSPTime)(p)}}
 }
 
-// UnsafeRTSPTimeFromGlibNone is used to convert raw C.GstRTSPTime pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTSPTimeFromGlibNone is used to convert raw C.GstRTSPTime pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPTimeFromGlibNone(p unsafe.Pointer) *RTSPTime {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPTimeFromGlibBorrow(p)
@@ -5159,7 +5361,7 @@ func UnsafeRTSPTimeFromGlibNone(p unsafe.Pointer) *RTSPTime {
 	return wrapped
 }
 
-// UnsafeRTSPTimeFromGlibFull is used to convert raw C.GstRTSPTime pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTSPTimeFromGlibFull is used to convert raw C.GstRTSPTime pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTSPTimeFromGlibFull(p unsafe.Pointer) *RTSPTime {
 	wrapped := UnsafeRTSPTimeFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -5191,6 +5393,7 @@ func UnsafeRTSPTimeToGlibFull(r *RTSPTime) unsafe.Pointer {
 	r.native = nil // RTSPTime is invalid from here on
 	return _p
 }
+
 // RTSPTime2 wraps GstRTSPTime2
 //
 // Extra fields for a time indication.
@@ -5208,7 +5411,7 @@ func UnsafeRTSPTime2FromGlibBorrow(p unsafe.Pointer) *RTSPTime2 {
 	return &RTSPTime2{&rtspTime2{(*C.GstRTSPTime2)(p)}}
 }
 
-// UnsafeRTSPTime2FromGlibNone is used to convert raw C.GstRTSPTime2 pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTSPTime2FromGlibNone is used to convert raw C.GstRTSPTime2 pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPTime2FromGlibNone(p unsafe.Pointer) *RTSPTime2 {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPTime2FromGlibBorrow(p)
@@ -5221,7 +5424,7 @@ func UnsafeRTSPTime2FromGlibNone(p unsafe.Pointer) *RTSPTime2 {
 	return wrapped
 }
 
-// UnsafeRTSPTime2FromGlibFull is used to convert raw C.GstRTSPTime2 pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTSPTime2FromGlibFull is used to convert raw C.GstRTSPTime2 pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTSPTime2FromGlibFull(p unsafe.Pointer) *RTSPTime2 {
 	wrapped := UnsafeRTSPTime2FromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -5253,6 +5456,7 @@ func UnsafeRTSPTime2ToGlibFull(r *RTSPTime2) unsafe.Pointer {
 	r.native = nil // RTSPTime2 is invalid from here on
 	return _p
 }
+
 // RTSPTimeRange wraps GstRTSPTimeRange
 //
 // A time range.
@@ -5270,7 +5474,7 @@ func UnsafeRTSPTimeRangeFromGlibBorrow(p unsafe.Pointer) *RTSPTimeRange {
 	return &RTSPTimeRange{&rtspTimeRange{(*C.GstRTSPTimeRange)(p)}}
 }
 
-// UnsafeRTSPTimeRangeFromGlibNone is used to convert raw C.GstRTSPTimeRange pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTSPTimeRangeFromGlibNone is used to convert raw C.GstRTSPTimeRange pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPTimeRangeFromGlibNone(p unsafe.Pointer) *RTSPTimeRange {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPTimeRangeFromGlibBorrow(p)
@@ -5283,7 +5487,7 @@ func UnsafeRTSPTimeRangeFromGlibNone(p unsafe.Pointer) *RTSPTimeRange {
 	return wrapped
 }
 
-// UnsafeRTSPTimeRangeFromGlibFull is used to convert raw C.GstRTSPTimeRange pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTSPTimeRangeFromGlibFull is used to convert raw C.GstRTSPTimeRange pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTSPTimeRangeFromGlibFull(p unsafe.Pointer) *RTSPTimeRange {
 	wrapped := UnsafeRTSPTimeRangeFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -5315,6 +5519,7 @@ func UnsafeRTSPTimeRangeToGlibFull(r *RTSPTimeRange) unsafe.Pointer {
 	r.native = nil // RTSPTimeRange is invalid from here on
 	return _p
 }
+
 // RTSPTransport wraps GstRTSPTransport
 //
 // Provides helper functions to deal with RTSP transport strings.
@@ -5332,7 +5537,7 @@ func UnsafeRTSPTransportFromGlibBorrow(p unsafe.Pointer) *RTSPTransport {
 	return &RTSPTransport{&rtspTransport{(*C.GstRTSPTransport)(p)}}
 }
 
-// UnsafeRTSPTransportFromGlibNone is used to convert raw C.GstRTSPTransport pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTSPTransportFromGlibNone is used to convert raw C.GstRTSPTransport pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPTransportFromGlibNone(p unsafe.Pointer) *RTSPTransport {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPTransportFromGlibBorrow(p)
@@ -5345,7 +5550,7 @@ func UnsafeRTSPTransportFromGlibNone(p unsafe.Pointer) *RTSPTransport {
 	return wrapped
 }
 
-// UnsafeRTSPTransportFromGlibFull is used to convert raw C.GstRTSPTransport pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTSPTransportFromGlibFull is used to convert raw C.GstRTSPTransport pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTSPTransportFromGlibFull(p unsafe.Pointer) *RTSPTransport {
 	wrapped := UnsafeRTSPTransportFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -5377,6 +5582,7 @@ func UnsafeRTSPTransportToGlibFull(r *RTSPTransport) unsafe.Pointer {
 	r.native = nil // RTSPTransport is invalid from here on
 	return _p
 }
+
 // RTSPTransportGetManager wraps gst_rtsp_transport_get_manager
 // 
 // The function takes the following parameters:
@@ -5457,6 +5663,7 @@ func RTSPTransportGetMIME(trans RTSPTransMode) (string, RTSPResult) {
 }
 
 // RTSPTransportInit wraps gst_rtsp_transport_init
+// 
 // The function returns the following values:
 // 
 // 	- transport RTSPTransport: a #GstRTSPTransport 
@@ -5481,6 +5688,7 @@ func RTSPTransportInit() (RTSPTransport, RTSPResult) {
 }
 
 // NewRTSPTransport wraps gst_rtsp_transport_new
+// 
 // The function returns the following values:
 // 
 // 	- transport *RTSPTransport: location to hold the new #GstRTSPTransport 
@@ -5538,6 +5746,7 @@ func RTSPTransportParse(str string) (RTSPTransport, RTSPResult) {
 }
 
 // AsText wraps gst_rtsp_transport_as_text
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -5564,6 +5773,7 @@ func (transport *RTSPTransport) AsText() string {
 }
 
 // GetMediaType wraps gst_rtsp_transport_get_media_type
+// 
 // The function returns the following values:
 // 
 // 	- mediaType string: media type of @transport 
@@ -5619,7 +5829,7 @@ func UnsafeRTSPUrlFromGlibBorrow(p unsafe.Pointer) *RTSPUrl {
 	return &RTSPUrl{&rtspUrl{(*C.GstRTSPUrl)(p)}}
 }
 
-// UnsafeRTSPUrlFromGlibNone is used to convert raw C.GstRTSPUrl pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTSPUrlFromGlibNone is used to convert raw C.GstRTSPUrl pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPUrlFromGlibNone(p unsafe.Pointer) *RTSPUrl {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPUrlFromGlibBorrow(p)
@@ -5632,7 +5842,7 @@ func UnsafeRTSPUrlFromGlibNone(p unsafe.Pointer) *RTSPUrl {
 	return wrapped
 }
 
-// UnsafeRTSPUrlFromGlibFull is used to convert raw C.GstRTSPUrl pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTSPUrlFromGlibFull is used to convert raw C.GstRTSPUrl pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTSPUrlFromGlibFull(p unsafe.Pointer) *RTSPUrl {
 	wrapped := UnsafeRTSPUrlFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -5664,6 +5874,7 @@ func UnsafeRTSPUrlToGlibFull(r *RTSPUrl) unsafe.Pointer {
 	r.native = nil // RTSPUrl is invalid from here on
 	return _p
 }
+
 // RTSPUrlParse wraps gst_rtsp_url_parse
 // 
 // The function takes the following parameters:
@@ -5700,6 +5911,7 @@ func RTSPUrlParse(urlstr string) (*RTSPUrl, RTSPResult) {
 }
 
 // Copy wraps gst_rtsp_url_copy
+// 
 // The function returns the following values:
 // 
 // 	- goret *RTSPUrl 
@@ -5722,6 +5934,7 @@ func (url *RTSPUrl) Copy() *RTSPUrl {
 }
 
 // DecodePathComponents wraps gst_rtsp_url_decode_path_components
+// 
 // The function returns the following values:
 // 
 // 	- goret []string 
@@ -5756,6 +5969,7 @@ func (url *RTSPUrl) DecodePathComponents() []string {
 }
 
 // GetPort wraps gst_rtsp_url_get_port
+// 
 // The function returns the following values:
 // 
 // 	- port uint16: location to hold the port 
@@ -5782,6 +5996,7 @@ func (url *RTSPUrl) GetPort() (uint16, RTSPResult) {
 }
 
 // GetRequestURI wraps gst_rtsp_url_get_request_uri
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -5885,7 +6100,7 @@ func UnsafeRTSPWatchFromGlibBorrow(p unsafe.Pointer) *RTSPWatch {
 	return &RTSPWatch{&rtspWatch{(*C.GstRTSPWatch)(p)}}
 }
 
-// UnsafeRTSPWatchFromGlibNone is used to convert raw C.GstRTSPWatch pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTSPWatchFromGlibNone is used to convert raw C.GstRTSPWatch pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPWatchFromGlibNone(p unsafe.Pointer) *RTSPWatch {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPWatchFromGlibBorrow(p)
@@ -5898,7 +6113,7 @@ func UnsafeRTSPWatchFromGlibNone(p unsafe.Pointer) *RTSPWatch {
 	return wrapped
 }
 
-// UnsafeRTSPWatchFromGlibFull is used to convert raw C.GstRTSPWatch pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTSPWatchFromGlibFull is used to convert raw C.GstRTSPWatch pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTSPWatchFromGlibFull(p unsafe.Pointer) *RTSPWatch {
 	wrapped := UnsafeRTSPWatchFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -5930,6 +6145,7 @@ func UnsafeRTSPWatchToGlibFull(r *RTSPWatch) unsafe.Pointer {
 	r.native = nil // RTSPWatch is invalid from here on
 	return _p
 }
+
 // Attach wraps gst_rtsp_watch_attach
 // 
 // The function takes the following parameters:
@@ -5963,6 +6179,7 @@ func (watch *RTSPWatch) Attach(_context *glib.MainContext) uint {
 }
 
 // GetSendBacklog wraps gst_rtsp_watch_get_send_backlog
+// 
 // The function returns the following values:
 // 
 // 	- bytes uint: maximum bytes 
@@ -6240,7 +6457,7 @@ func UnsafeRTSPWatchFuncsFromGlibBorrow(p unsafe.Pointer) *RTSPWatchFuncs {
 	return &RTSPWatchFuncs{&rtspWatchFuncs{(*C.GstRTSPWatchFuncs)(p)}}
 }
 
-// UnsafeRTSPWatchFuncsFromGlibNone is used to convert raw C.GstRTSPWatchFuncs pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTSPWatchFuncsFromGlibNone is used to convert raw C.GstRTSPWatchFuncs pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeRTSPWatchFuncsFromGlibNone(p unsafe.Pointer) *RTSPWatchFuncs {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeRTSPWatchFuncsFromGlibBorrow(p)
@@ -6253,7 +6470,7 @@ func UnsafeRTSPWatchFuncsFromGlibNone(p unsafe.Pointer) *RTSPWatchFuncs {
 	return wrapped
 }
 
-// UnsafeRTSPWatchFuncsFromGlibFull is used to convert raw C.GstRTSPWatchFuncs pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeRTSPWatchFuncsFromGlibFull is used to convert raw C.GstRTSPWatchFuncs pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeRTSPWatchFuncsFromGlibFull(p unsafe.Pointer) *RTSPWatchFuncs {
 	wrapped := UnsafeRTSPWatchFuncsFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -6285,3 +6502,4 @@ func UnsafeRTSPWatchFuncsToGlibFull(r *RTSPWatchFuncs) unsafe.Pointer {
 	r.native = nil // RTSPWatchFuncs is invalid from here on
 	return _p
 }
+

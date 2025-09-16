@@ -34,3 +34,113 @@ func _gotk4_gstwebrtc1_WebRTCICEOnCandidateFunc(carg1 *C.GstWebRTCICE, carg2 C.g
 	fn(ice, streamId, candidate)
 }
 
+//export _gotk4_gstwebrtc1_WebRTCICE_add_candidate
+func _gotk4_gstwebrtc1_WebRTCICE_add_candidate(carg0 *C.GstWebRTCICE, carg1 *C.GstWebRTCICEStream, carg2 *C.gchar, carg3 *C.GstPromise) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstwebrtc1_WebRTCICE_add_stream
+func _gotk4_gstwebrtc1_WebRTCICE_add_stream(carg0 *C.GstWebRTCICE, carg1 C.guint) (cret *C.GstWebRTCICEStream) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstwebrtc1_WebRTCICE_add_turn_server
+func _gotk4_gstwebrtc1_WebRTCICE_add_turn_server(carg0 *C.GstWebRTCICE, carg1 *C.gchar) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstwebrtc1_WebRTCICE_find_transport
+func _gotk4_gstwebrtc1_WebRTCICE_find_transport(carg0 *C.GstWebRTCICE, carg1 *C.GstWebRTCICEStream, carg2 C.GstWebRTCICEComponent) (cret *C.GstWebRTCICETransport) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstwebrtc1_WebRTCICE_gather_candidates
+func _gotk4_gstwebrtc1_WebRTCICE_gather_candidates(carg0 *C.GstWebRTCICE, carg1 *C.GstWebRTCICEStream) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstwebrtc1_WebRTCICE_get_http_proxy
+func _gotk4_gstwebrtc1_WebRTCICE_get_http_proxy(carg0 *C.GstWebRTCICE) (cret *C.gchar) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstwebrtc1_WebRTCICE_get_is_controller
+func _gotk4_gstwebrtc1_WebRTCICE_get_is_controller(carg0 *C.GstWebRTCICE) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstwebrtc1_WebRTCICE_get_selected_pair
+func _gotk4_gstwebrtc1_WebRTCICE_get_selected_pair(carg0 *C.GstWebRTCICE, carg1 *C.GstWebRTCICEStream, carg2 **C.GstWebRTCICECandidateStats, carg3 **C.GstWebRTCICECandidateStats) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstwebrtc1_WebRTCICE_get_stun_server
+func _gotk4_gstwebrtc1_WebRTCICE_get_stun_server(carg0 *C.GstWebRTCICE) (cret *C.gchar) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstwebrtc1_WebRTCICE_get_turn_server
+func _gotk4_gstwebrtc1_WebRTCICE_get_turn_server(carg0 *C.GstWebRTCICE) (cret *C.gchar) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstwebrtc1_WebRTCICE_set_force_relay
+func _gotk4_gstwebrtc1_WebRTCICE_set_force_relay(carg0 *C.GstWebRTCICE, carg1 C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstwebrtc1_WebRTCICE_set_http_proxy
+func _gotk4_gstwebrtc1_WebRTCICE_set_http_proxy(carg0 *C.GstWebRTCICE, carg1 *C.gchar) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstwebrtc1_WebRTCICE_set_is_controller
+func _gotk4_gstwebrtc1_WebRTCICE_set_is_controller(carg0 *C.GstWebRTCICE, carg1 C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstwebrtc1_WebRTCICE_set_local_credentials
+func _gotk4_gstwebrtc1_WebRTCICE_set_local_credentials(carg0 *C.GstWebRTCICE, carg1 *C.GstWebRTCICEStream, carg2 *C.gchar, carg3 *C.gchar) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstwebrtc1_WebRTCICE_set_on_ice_candidate
+func _gotk4_gstwebrtc1_WebRTCICE_set_on_ice_candidate(carg0 *C.GstWebRTCICE, carg1 C.GstWebRTCICEOnCandidateFunc, carg2 C.gpointer, carg3 C.GDestroyNotify) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstwebrtc1_WebRTCICE_set_remote_credentials
+func _gotk4_gstwebrtc1_WebRTCICE_set_remote_credentials(carg0 *C.GstWebRTCICE, carg1 *C.GstWebRTCICEStream, carg2 *C.gchar, carg3 *C.gchar) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstwebrtc1_WebRTCICE_set_stun_server
+func _gotk4_gstwebrtc1_WebRTCICE_set_stun_server(carg0 *C.GstWebRTCICE, carg1 *C.gchar) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstwebrtc1_WebRTCICE_set_tos
+func _gotk4_gstwebrtc1_WebRTCICE_set_tos(carg0 *C.GstWebRTCICE, carg1 *C.GstWebRTCICEStream, carg2 C.guint) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstwebrtc1_WebRTCICE_set_turn_server
+func _gotk4_gstwebrtc1_WebRTCICE_set_turn_server(carg0 *C.GstWebRTCICE, carg1 *C.gchar) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstwebrtc1_WebRTCICEStream_find_transport
+func _gotk4_gstwebrtc1_WebRTCICEStream_find_transport(carg0 *C.GstWebRTCICEStream, carg1 C.GstWebRTCICEComponent) (cret *C.GstWebRTCICETransport) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstwebrtc1_WebRTCICEStream_gather_candidates
+func _gotk4_gstwebrtc1_WebRTCICEStream_gather_candidates(carg0 *C.GstWebRTCICEStream) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstwebrtc1_WebRTCICETransport_gather_candidates
+func _gotk4_gstwebrtc1_WebRTCICETransport_gather_candidates(carg0 *C.GstWebRTCICETransport) (cret C.gboolean) {
+	panic("unimplemented")
+}
+

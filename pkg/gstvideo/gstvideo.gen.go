@@ -20,6 +20,298 @@ import (
 // #include <gst/video/video.h>
 // extern void _gotk4_gstvideo1_VideoConvertSampleCallback(GstSample*, GError*, gpointer);
 // extern void destroyUserdata(gpointer);
+// extern GstColorBalanceType _gotk4_gstvideo1_ColorBalance_get_balance_type(GstColorBalance*);
+// extern gint _gotk4_gstvideo1_ColorBalance_get_value(GstColorBalance*, GstColorBalanceChannel*);
+// extern GList* _gotk4_gstvideo1_ColorBalance_list_channels(GstColorBalance*);
+// extern void _gotk4_gstvideo1_ColorBalance_set_value(GstColorBalance*, GstColorBalanceChannel*, gint);
+// extern void _gotk4_gstvideo1_ColorBalance_value_changed(GstColorBalance*, GstColorBalanceChannel*, gint);
+// GstColorBalanceType _gotk4_gstvideo1_ColorBalance_virtual_get_balance_type(void* fnptr, GstColorBalance* carg0) {
+// 	return ((GstColorBalanceType (*) (GstColorBalance*))(fnptr))(carg0);
+// }
+// gint _gotk4_gstvideo1_ColorBalance_virtual_get_value(void* fnptr, GstColorBalance* carg0, GstColorBalanceChannel* carg1) {
+// 	return ((gint (*) (GstColorBalance*, GstColorBalanceChannel*))(fnptr))(carg0, carg1);
+// }
+// GList* _gotk4_gstvideo1_ColorBalance_virtual_list_channels(void* fnptr, GstColorBalance* carg0) {
+// 	return ((GList* (*) (GstColorBalance*))(fnptr))(carg0);
+// }
+// void _gotk4_gstvideo1_ColorBalance_virtual_set_value(void* fnptr, GstColorBalance* carg0, GstColorBalanceChannel* carg1, gint carg2) {
+// 	return ((void (*) (GstColorBalance*, GstColorBalanceChannel*, gint))(fnptr))(carg0, carg1, carg2);
+// }
+// void _gotk4_gstvideo1_ColorBalance_virtual_value_changed(void* fnptr, GstColorBalance* carg0, GstColorBalanceChannel* carg1, gint carg2) {
+// 	return ((void (*) (GstColorBalance*, GstColorBalanceChannel*, gint))(fnptr))(carg0, carg1, carg2);
+// }
+// extern void _gotk4_gstvideo1_Navigation_send_event(GstNavigation*, GstStructure*);
+// extern void _gotk4_gstvideo1_Navigation_send_event_simple(GstNavigation*, GstEvent*);
+// void _gotk4_gstvideo1_Navigation_virtual_send_event(void* fnptr, GstNavigation* carg0, GstStructure* carg1) {
+// 	return ((void (*) (GstNavigation*, GstStructure*))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gstvideo1_Navigation_virtual_send_event_simple(void* fnptr, GstNavigation* carg0, GstEvent* carg1) {
+// 	return ((void (*) (GstNavigation*, GstEvent*))(fnptr))(carg0, carg1);
+// }
+// extern gboolean _gotk4_gstvideo1_VideoOrientation_get_hcenter(GstVideoOrientation*, gint);
+// extern gboolean _gotk4_gstvideo1_VideoOrientation_get_hflip(GstVideoOrientation*, gboolean);
+// extern gboolean _gotk4_gstvideo1_VideoOrientation_get_vcenter(GstVideoOrientation*, gint);
+// extern gboolean _gotk4_gstvideo1_VideoOrientation_get_vflip(GstVideoOrientation*, gboolean);
+// extern gboolean _gotk4_gstvideo1_VideoOrientation_set_hcenter(GstVideoOrientation*, gint);
+// extern gboolean _gotk4_gstvideo1_VideoOrientation_set_hflip(GstVideoOrientation*, gboolean);
+// extern gboolean _gotk4_gstvideo1_VideoOrientation_set_vcenter(GstVideoOrientation*, gint);
+// extern gboolean _gotk4_gstvideo1_VideoOrientation_set_vflip(GstVideoOrientation*, gboolean);
+// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_get_hcenter(void* fnptr, GstVideoOrientation* carg0, gint* carg1) {
+// 	return ((gboolean (*) (GstVideoOrientation*, gint*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_get_hflip(void* fnptr, GstVideoOrientation* carg0, gboolean* carg1) {
+// 	return ((gboolean (*) (GstVideoOrientation*, gboolean*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_get_vcenter(void* fnptr, GstVideoOrientation* carg0, gint* carg1) {
+// 	return ((gboolean (*) (GstVideoOrientation*, gint*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_get_vflip(void* fnptr, GstVideoOrientation* carg0, gboolean* carg1) {
+// 	return ((gboolean (*) (GstVideoOrientation*, gboolean*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_set_hcenter(void* fnptr, GstVideoOrientation* carg0, gint carg1) {
+// 	return ((gboolean (*) (GstVideoOrientation*, gint))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_set_hflip(void* fnptr, GstVideoOrientation* carg0, gboolean carg1) {
+// 	return ((gboolean (*) (GstVideoOrientation*, gboolean))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_set_vcenter(void* fnptr, GstVideoOrientation* carg0, gint carg1) {
+// 	return ((gboolean (*) (GstVideoOrientation*, gint))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoOrientation_virtual_set_vflip(void* fnptr, GstVideoOrientation* carg0, gboolean carg1) {
+// 	return ((gboolean (*) (GstVideoOrientation*, gboolean))(fnptr))(carg0, carg1);
+// }
+// extern void _gotk4_gstvideo1_VideoOverlay_expose(GstVideoOverlay*);
+// extern void _gotk4_gstvideo1_VideoOverlay_handle_events(GstVideoOverlay*, gboolean);
+// extern void _gotk4_gstvideo1_VideoOverlay_set_render_rectangle(GstVideoOverlay*, gint, gint, gint, gint);
+// void _gotk4_gstvideo1_VideoOverlay_virtual_expose(void* fnptr, GstVideoOverlay* carg0) {
+// 	return ((void (*) (GstVideoOverlay*))(fnptr))(carg0);
+// }
+// void _gotk4_gstvideo1_VideoOverlay_virtual_handle_events(void* fnptr, GstVideoOverlay* carg0, gboolean carg1) {
+// 	return ((void (*) (GstVideoOverlay*, gboolean))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gstvideo1_VideoOverlay_virtual_set_render_rectangle(void* fnptr, GstVideoOverlay* carg0, gint carg1, gint carg2, gint carg3, gint carg4) {
+// 	return ((void (*) (GstVideoOverlay*, gint, gint, gint, gint))(fnptr))(carg0, carg1, carg2, carg3, carg4);
+// }
+// extern void _gotk4_gstvideo1_ColorBalanceChannel_value_changed(GstColorBalanceChannel*, gint);
+// void _gotk4_gstvideo1_ColorBalanceChannel_virtual_value_changed(void* fnptr, GstColorBalanceChannel* carg0, gint carg1) {
+// 	return ((void (*) (GstColorBalanceChannel*, gint))(fnptr))(carg0, carg1);
+// }
+// extern GstFlowReturn _gotk4_gstvideo1_VideoAggregator_aggregate_frames(GstVideoAggregator*, GstBuffer*);
+// extern void _gotk4_gstvideo1_VideoAggregator_find_best_format(GstVideoAggregator*, GstCaps*, GstVideoInfo*, gboolean);
+// extern GstCaps* _gotk4_gstvideo1_VideoAggregator_update_caps(GstVideoAggregator*, GstCaps*);
+// GstFlowReturn _gotk4_gstvideo1_VideoAggregator_virtual_aggregate_frames(void* fnptr, GstVideoAggregator* carg0, GstBuffer* carg1) {
+// 	return ((GstFlowReturn (*) (GstVideoAggregator*, GstBuffer*))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gstvideo1_VideoAggregator_virtual_find_best_format(void* fnptr, GstVideoAggregator* carg0, GstCaps* carg1, GstVideoInfo* carg2, gboolean* carg3) {
+// 	return ((void (*) (GstVideoAggregator*, GstCaps*, GstVideoInfo*, gboolean*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// GstCaps* _gotk4_gstvideo1_VideoAggregator_virtual_update_caps(void* fnptr, GstVideoAggregator* carg0, GstCaps* carg1) {
+// 	return ((GstCaps* (*) (GstVideoAggregator*, GstCaps*))(fnptr))(carg0, carg1);
+// }
+// extern void _gotk4_gstvideo1_VideoAggregatorPad_clean_frame(GstVideoAggregatorPad*, GstVideoAggregator*, GstVideoFrame*);
+// extern gboolean _gotk4_gstvideo1_VideoAggregatorPad_prepare_frame(GstVideoAggregatorPad*, GstVideoAggregator*, GstBuffer*, GstVideoFrame*);
+// extern void _gotk4_gstvideo1_VideoAggregatorPad_prepare_frame_finish(GstVideoAggregatorPad*, GstVideoAggregator*, GstVideoFrame*);
+// extern void _gotk4_gstvideo1_VideoAggregatorPad_prepare_frame_start(GstVideoAggregatorPad*, GstVideoAggregator*, GstBuffer*, GstVideoFrame*);
+// extern void _gotk4_gstvideo1_VideoAggregatorPad_update_conversion_info(GstVideoAggregatorPad*);
+// void _gotk4_gstvideo1_VideoAggregatorPad_virtual_clean_frame(void* fnptr, GstVideoAggregatorPad* carg0, GstVideoAggregator* carg1, GstVideoFrame* carg2) {
+// 	return ((void (*) (GstVideoAggregatorPad*, GstVideoAggregator*, GstVideoFrame*))(fnptr))(carg0, carg1, carg2);
+// }
+// gboolean _gotk4_gstvideo1_VideoAggregatorPad_virtual_prepare_frame(void* fnptr, GstVideoAggregatorPad* carg0, GstVideoAggregator* carg1, GstBuffer* carg2, GstVideoFrame* carg3) {
+// 	return ((gboolean (*) (GstVideoAggregatorPad*, GstVideoAggregator*, GstBuffer*, GstVideoFrame*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// void _gotk4_gstvideo1_VideoAggregatorPad_virtual_prepare_frame_finish(void* fnptr, GstVideoAggregatorPad* carg0, GstVideoAggregator* carg1, GstVideoFrame* carg2) {
+// 	return ((void (*) (GstVideoAggregatorPad*, GstVideoAggregator*, GstVideoFrame*))(fnptr))(carg0, carg1, carg2);
+// }
+// void _gotk4_gstvideo1_VideoAggregatorPad_virtual_prepare_frame_start(void* fnptr, GstVideoAggregatorPad* carg0, GstVideoAggregator* carg1, GstBuffer* carg2, GstVideoFrame* carg3) {
+// 	return ((void (*) (GstVideoAggregatorPad*, GstVideoAggregator*, GstBuffer*, GstVideoFrame*))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// void _gotk4_gstvideo1_VideoAggregatorPad_virtual_update_conversion_info(void* fnptr, GstVideoAggregatorPad* carg0) {
+// 	return ((void (*) (GstVideoAggregatorPad*))(fnptr))(carg0);
+// }
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_close(GstVideoDecoder*);
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_decide_allocation(GstVideoDecoder*, GstQuery*);
+// extern GstFlowReturn _gotk4_gstvideo1_VideoDecoder_drain(GstVideoDecoder*);
+// extern GstFlowReturn _gotk4_gstvideo1_VideoDecoder_finish(GstVideoDecoder*);
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_flush(GstVideoDecoder*);
+// extern GstCaps* _gotk4_gstvideo1_VideoDecoder_getcaps(GstVideoDecoder*, GstCaps*);
+// extern GstFlowReturn _gotk4_gstvideo1_VideoDecoder_handle_frame(GstVideoDecoder*, GstVideoCodecFrame*);
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_handle_missing_data(GstVideoDecoder*, GstClockTime, GstClockTime);
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_negotiate(GstVideoDecoder*);
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_open(GstVideoDecoder*);
+// extern GstFlowReturn _gotk4_gstvideo1_VideoDecoder_parse(GstVideoDecoder*, GstVideoCodecFrame*, GstAdapter*, gboolean);
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_propose_allocation(GstVideoDecoder*, GstQuery*);
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_reset(GstVideoDecoder*, gboolean);
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_set_format(GstVideoDecoder*, GstVideoCodecState*);
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_sink_event(GstVideoDecoder*, GstEvent*);
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_sink_query(GstVideoDecoder*, GstQuery*);
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_src_event(GstVideoDecoder*, GstEvent*);
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_src_query(GstVideoDecoder*, GstQuery*);
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_start(GstVideoDecoder*);
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_stop(GstVideoDecoder*);
+// extern gboolean _gotk4_gstvideo1_VideoDecoder_transform_meta(GstVideoDecoder*, GstVideoCodecFrame*, GstMeta*);
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_close(void* fnptr, GstVideoDecoder* carg0) {
+// 	return ((gboolean (*) (GstVideoDecoder*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_decide_allocation(void* fnptr, GstVideoDecoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstVideoDecoder*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// GstFlowReturn _gotk4_gstvideo1_VideoDecoder_virtual_drain(void* fnptr, GstVideoDecoder* carg0) {
+// 	return ((GstFlowReturn (*) (GstVideoDecoder*))(fnptr))(carg0);
+// }
+// GstFlowReturn _gotk4_gstvideo1_VideoDecoder_virtual_finish(void* fnptr, GstVideoDecoder* carg0) {
+// 	return ((GstFlowReturn (*) (GstVideoDecoder*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_flush(void* fnptr, GstVideoDecoder* carg0) {
+// 	return ((gboolean (*) (GstVideoDecoder*))(fnptr))(carg0);
+// }
+// GstCaps* _gotk4_gstvideo1_VideoDecoder_virtual_getcaps(void* fnptr, GstVideoDecoder* carg0, GstCaps* carg1) {
+// 	return ((GstCaps* (*) (GstVideoDecoder*, GstCaps*))(fnptr))(carg0, carg1);
+// }
+// GstFlowReturn _gotk4_gstvideo1_VideoDecoder_virtual_handle_frame(void* fnptr, GstVideoDecoder* carg0, GstVideoCodecFrame* carg1) {
+// 	return ((GstFlowReturn (*) (GstVideoDecoder*, GstVideoCodecFrame*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_handle_missing_data(void* fnptr, GstVideoDecoder* carg0, GstClockTime carg1, GstClockTime carg2) {
+// 	return ((gboolean (*) (GstVideoDecoder*, GstClockTime, GstClockTime))(fnptr))(carg0, carg1, carg2);
+// }
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_negotiate(void* fnptr, GstVideoDecoder* carg0) {
+// 	return ((gboolean (*) (GstVideoDecoder*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_open(void* fnptr, GstVideoDecoder* carg0) {
+// 	return ((gboolean (*) (GstVideoDecoder*))(fnptr))(carg0);
+// }
+// GstFlowReturn _gotk4_gstvideo1_VideoDecoder_virtual_parse(void* fnptr, GstVideoDecoder* carg0, GstVideoCodecFrame* carg1, GstAdapter* carg2, gboolean carg3) {
+// 	return ((GstFlowReturn (*) (GstVideoDecoder*, GstVideoCodecFrame*, GstAdapter*, gboolean))(fnptr))(carg0, carg1, carg2, carg3);
+// }
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_propose_allocation(void* fnptr, GstVideoDecoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstVideoDecoder*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_reset(void* fnptr, GstVideoDecoder* carg0, gboolean carg1) {
+// 	return ((gboolean (*) (GstVideoDecoder*, gboolean))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_set_format(void* fnptr, GstVideoDecoder* carg0, GstVideoCodecState* carg1) {
+// 	return ((gboolean (*) (GstVideoDecoder*, GstVideoCodecState*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_sink_event(void* fnptr, GstVideoDecoder* carg0, GstEvent* carg1) {
+// 	return ((gboolean (*) (GstVideoDecoder*, GstEvent*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_sink_query(void* fnptr, GstVideoDecoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstVideoDecoder*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_src_event(void* fnptr, GstVideoDecoder* carg0, GstEvent* carg1) {
+// 	return ((gboolean (*) (GstVideoDecoder*, GstEvent*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_src_query(void* fnptr, GstVideoDecoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstVideoDecoder*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_start(void* fnptr, GstVideoDecoder* carg0) {
+// 	return ((gboolean (*) (GstVideoDecoder*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_stop(void* fnptr, GstVideoDecoder* carg0) {
+// 	return ((gboolean (*) (GstVideoDecoder*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstvideo1_VideoDecoder_virtual_transform_meta(void* fnptr, GstVideoDecoder* carg0, GstVideoCodecFrame* carg1, GstMeta* carg2) {
+// 	return ((gboolean (*) (GstVideoDecoder*, GstVideoCodecFrame*, GstMeta*))(fnptr))(carg0, carg1, carg2);
+// }
+// extern gboolean _gotk4_gstvideo1_VideoEncoder_close(GstVideoEncoder*);
+// extern gboolean _gotk4_gstvideo1_VideoEncoder_decide_allocation(GstVideoEncoder*, GstQuery*);
+// extern GstFlowReturn _gotk4_gstvideo1_VideoEncoder_finish(GstVideoEncoder*);
+// extern gboolean _gotk4_gstvideo1_VideoEncoder_flush(GstVideoEncoder*);
+// extern GstCaps* _gotk4_gstvideo1_VideoEncoder_getcaps(GstVideoEncoder*, GstCaps*);
+// extern GstFlowReturn _gotk4_gstvideo1_VideoEncoder_handle_frame(GstVideoEncoder*, GstVideoCodecFrame*);
+// extern gboolean _gotk4_gstvideo1_VideoEncoder_negotiate(GstVideoEncoder*);
+// extern gboolean _gotk4_gstvideo1_VideoEncoder_open(GstVideoEncoder*);
+// extern GstFlowReturn _gotk4_gstvideo1_VideoEncoder_pre_push(GstVideoEncoder*, GstVideoCodecFrame*);
+// extern gboolean _gotk4_gstvideo1_VideoEncoder_propose_allocation(GstVideoEncoder*, GstQuery*);
+// extern gboolean _gotk4_gstvideo1_VideoEncoder_reset(GstVideoEncoder*, gboolean);
+// extern gboolean _gotk4_gstvideo1_VideoEncoder_set_format(GstVideoEncoder*, GstVideoCodecState*);
+// extern gboolean _gotk4_gstvideo1_VideoEncoder_sink_event(GstVideoEncoder*, GstEvent*);
+// extern gboolean _gotk4_gstvideo1_VideoEncoder_sink_query(GstVideoEncoder*, GstQuery*);
+// extern gboolean _gotk4_gstvideo1_VideoEncoder_src_event(GstVideoEncoder*, GstEvent*);
+// extern gboolean _gotk4_gstvideo1_VideoEncoder_src_query(GstVideoEncoder*, GstQuery*);
+// extern gboolean _gotk4_gstvideo1_VideoEncoder_start(GstVideoEncoder*);
+// extern gboolean _gotk4_gstvideo1_VideoEncoder_stop(GstVideoEncoder*);
+// extern gboolean _gotk4_gstvideo1_VideoEncoder_transform_meta(GstVideoEncoder*, GstVideoCodecFrame*, GstMeta*);
+// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_close(void* fnptr, GstVideoEncoder* carg0) {
+// 	return ((gboolean (*) (GstVideoEncoder*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_decide_allocation(void* fnptr, GstVideoEncoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstVideoEncoder*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// GstFlowReturn _gotk4_gstvideo1_VideoEncoder_virtual_finish(void* fnptr, GstVideoEncoder* carg0) {
+// 	return ((GstFlowReturn (*) (GstVideoEncoder*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_flush(void* fnptr, GstVideoEncoder* carg0) {
+// 	return ((gboolean (*) (GstVideoEncoder*))(fnptr))(carg0);
+// }
+// GstCaps* _gotk4_gstvideo1_VideoEncoder_virtual_getcaps(void* fnptr, GstVideoEncoder* carg0, GstCaps* carg1) {
+// 	return ((GstCaps* (*) (GstVideoEncoder*, GstCaps*))(fnptr))(carg0, carg1);
+// }
+// GstFlowReturn _gotk4_gstvideo1_VideoEncoder_virtual_handle_frame(void* fnptr, GstVideoEncoder* carg0, GstVideoCodecFrame* carg1) {
+// 	return ((GstFlowReturn (*) (GstVideoEncoder*, GstVideoCodecFrame*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_negotiate(void* fnptr, GstVideoEncoder* carg0) {
+// 	return ((gboolean (*) (GstVideoEncoder*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_open(void* fnptr, GstVideoEncoder* carg0) {
+// 	return ((gboolean (*) (GstVideoEncoder*))(fnptr))(carg0);
+// }
+// GstFlowReturn _gotk4_gstvideo1_VideoEncoder_virtual_pre_push(void* fnptr, GstVideoEncoder* carg0, GstVideoCodecFrame* carg1) {
+// 	return ((GstFlowReturn (*) (GstVideoEncoder*, GstVideoCodecFrame*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_propose_allocation(void* fnptr, GstVideoEncoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstVideoEncoder*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_reset(void* fnptr, GstVideoEncoder* carg0, gboolean carg1) {
+// 	return ((gboolean (*) (GstVideoEncoder*, gboolean))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_set_format(void* fnptr, GstVideoEncoder* carg0, GstVideoCodecState* carg1) {
+// 	return ((gboolean (*) (GstVideoEncoder*, GstVideoCodecState*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_sink_event(void* fnptr, GstVideoEncoder* carg0, GstEvent* carg1) {
+// 	return ((gboolean (*) (GstVideoEncoder*, GstEvent*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_sink_query(void* fnptr, GstVideoEncoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstVideoEncoder*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_src_event(void* fnptr, GstVideoEncoder* carg0, GstEvent* carg1) {
+// 	return ((gboolean (*) (GstVideoEncoder*, GstEvent*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_src_query(void* fnptr, GstVideoEncoder* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstVideoEncoder*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_start(void* fnptr, GstVideoEncoder* carg0) {
+// 	return ((gboolean (*) (GstVideoEncoder*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_stop(void* fnptr, GstVideoEncoder* carg0) {
+// 	return ((gboolean (*) (GstVideoEncoder*))(fnptr))(carg0);
+// }
+// gboolean _gotk4_gstvideo1_VideoEncoder_virtual_transform_meta(void* fnptr, GstVideoEncoder* carg0, GstVideoCodecFrame* carg1, GstMeta* carg2) {
+// 	return ((gboolean (*) (GstVideoEncoder*, GstVideoCodecFrame*, GstMeta*))(fnptr))(carg0, carg1, carg2);
+// }
+// extern gboolean _gotk4_gstvideo1_VideoFilter_set_info(GstVideoFilter*, GstCaps*, GstVideoInfo*, GstCaps*, GstVideoInfo*);
+// extern GstFlowReturn _gotk4_gstvideo1_VideoFilter_transform_frame(GstVideoFilter*, GstVideoFrame*, GstVideoFrame*);
+// extern GstFlowReturn _gotk4_gstvideo1_VideoFilter_transform_frame_ip(GstVideoFilter*, GstVideoFrame*);
+// gboolean _gotk4_gstvideo1_VideoFilter_virtual_set_info(void* fnptr, GstVideoFilter* carg0, GstCaps* carg1, GstVideoInfo* carg2, GstCaps* carg3, GstVideoInfo* carg4) {
+// 	return ((gboolean (*) (GstVideoFilter*, GstCaps*, GstVideoInfo*, GstCaps*, GstVideoInfo*))(fnptr))(carg0, carg1, carg2, carg3, carg4);
+// }
+// GstFlowReturn _gotk4_gstvideo1_VideoFilter_virtual_transform_frame(void* fnptr, GstVideoFilter* carg0, GstVideoFrame* carg1, GstVideoFrame* carg2) {
+// 	return ((GstFlowReturn (*) (GstVideoFilter*, GstVideoFrame*, GstVideoFrame*))(fnptr))(carg0, carg1, carg2);
+// }
+// GstFlowReturn _gotk4_gstvideo1_VideoFilter_virtual_transform_frame_ip(void* fnptr, GstVideoFilter* carg0, GstVideoFrame* carg1) {
+// 	return ((GstFlowReturn (*) (GstVideoFilter*, GstVideoFrame*))(fnptr))(carg0, carg1);
+// }
+// extern gboolean _gotk4_gstvideo1_VideoSink_set_info(GstVideoSink*, GstCaps*, GstVideoInfo*);
+// extern GstFlowReturn _gotk4_gstvideo1_VideoSink_show_frame(GstVideoSink*, GstBuffer*);
+// gboolean _gotk4_gstvideo1_VideoSink_virtual_set_info(void* fnptr, GstVideoSink* carg0, GstCaps* carg1, GstVideoInfo* carg2) {
+// 	return ((gboolean (*) (GstVideoSink*, GstCaps*, GstVideoInfo*))(fnptr))(carg0, carg1, carg2);
+// }
+// GstFlowReturn _gotk4_gstvideo1_VideoSink_virtual_show_frame(void* fnptr, GstVideoSink* carg0, GstBuffer* carg1) {
+// 	return ((GstFlowReturn (*) (GstVideoSink*, GstBuffer*))(fnptr))(carg0, carg1);
+// }
+// extern void _gotk4_gstvideo1_VideoAggregatorConvertPad_create_conversion_info(GstVideoAggregatorConvertPad*, GstVideoAggregator*, GstVideoInfo*);
+// void _gotk4_gstvideo1_VideoAggregatorConvertPad_virtual_create_conversion_info(void* fnptr, GstVideoAggregatorConvertPad* carg0, GstVideoAggregator* carg1, GstVideoInfo* carg2) {
+// 	return ((void (*) (GstVideoAggregatorConvertPad*, GstVideoAggregator*, GstVideoInfo*))(fnptr))(carg0, carg1, carg2);
+// }
 import "C"
 
 // GType values.
@@ -5161,6 +5453,7 @@ func (f VideoTimeCodeFlags) String() string {
 type VideoConvertSampleCallback func(sample *gst.Sample, err error)
 
 // AncillaryMetaApiGetType wraps gst_ancillary_meta_api_get_type
+// 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
@@ -5968,6 +6261,7 @@ func IsVideoOverlayPrepareWindowHandleMessage(msg *gst.Message) bool {
 }
 
 // VideoAfdMetaApiGetType wraps gst_video_afd_meta_api_get_type
+// 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
@@ -5984,6 +6278,7 @@ func VideoAfdMetaApiGetType() gobject.Type {
 }
 
 // VideoAffineTransformationMetaApiGetType wraps gst_video_affine_transformation_meta_api_get_type
+// 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
@@ -6000,6 +6295,7 @@ func VideoAffineTransformationMetaApiGetType() gobject.Type {
 }
 
 // VideoBarMetaApiGetType wraps gst_video_bar_meta_api_get_type
+// 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
@@ -6171,6 +6467,7 @@ func VideoCalculateDisplayRatio(videoWidth uint, videoHeight uint, videoParN uin
 }
 
 // VideoCaptionMetaApiGetType wraps gst_video_caption_meta_api_get_type
+// 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
@@ -6287,6 +6584,7 @@ func VideoChromaToString(site VideoChromaSite) string {
 }
 
 // VideoCodecAlphaMetaApiGetType wraps gst_video_codec_alpha_meta_api_get_type
+// 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
@@ -6458,6 +6756,7 @@ func VideoConvertSampleAsync(sample *gst.Sample, toCaps *gst.Caps, timeout gst.C
 }
 
 // VideoCropMetaApiGetType wraps gst_video_crop_meta_api_get_type
+// 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
@@ -6908,6 +7207,7 @@ func VideoEventParseUpstreamForceKeyUnit(event *gst.Event) (gst.ClockTime, bool,
 }
 
 // VideoFormatsAny wraps gst_video_formats_any
+// 
 // The function returns the following values:
 // 
 // 	- len uint: the number of elements in the returned array 
@@ -6935,6 +7235,7 @@ func VideoFormatsAny() (uint, []VideoFormat) {
 }
 
 // VideoFormatsRaw wraps gst_video_formats_raw
+// 
 // The function returns the following values:
 // 
 // 	- len uint: the number of elements in the returned array 
@@ -6959,6 +7260,7 @@ func VideoFormatsRaw() (uint, []VideoFormat) {
 }
 
 // VideoGLTextureUploadMetaApiGetType wraps gst_video_gl_texture_upload_meta_api_get_type
+// 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
@@ -7165,6 +7467,7 @@ func VideoMakeRawCapsWithFeatures(formats []VideoFormat, features *gst.CapsFeatu
 }
 
 // VideoMetaApiGetType wraps gst_video_meta_api_get_type
+// 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
@@ -7181,6 +7484,7 @@ func VideoMetaApiGetType() gobject.Type {
 }
 
 // VideoMultiviewGetDoubledHeightModes wraps gst_video_multiview_get_doubled_height_modes
+// 
 // The function returns the following values:
 // 
 // 	- goret *gobject.Value 
@@ -7197,6 +7501,7 @@ func VideoMultiviewGetDoubledHeightModes() *gobject.Value {
 }
 
 // VideoMultiviewGetDoubledSizeModes wraps gst_video_multiview_get_doubled_size_modes
+// 
 // The function returns the following values:
 // 
 // 	- goret *gobject.Value 
@@ -7213,6 +7518,7 @@ func VideoMultiviewGetDoubledSizeModes() *gobject.Value {
 }
 
 // VideoMultiviewGetDoubledWidthModes wraps gst_video_multiview_get_doubled_width_modes
+// 
 // The function returns the following values:
 // 
 // 	- goret *gobject.Value 
@@ -7229,6 +7535,7 @@ func VideoMultiviewGetDoubledWidthModes() *gobject.Value {
 }
 
 // VideoMultiviewGetMonoModes wraps gst_video_multiview_get_mono_modes
+// 
 // The function returns the following values:
 // 
 // 	- goret *gobject.Value 
@@ -7245,6 +7552,7 @@ func VideoMultiviewGetMonoModes() *gobject.Value {
 }
 
 // VideoMultiviewGetUnpackedModes wraps gst_video_multiview_get_unpacked_modes
+// 
 // The function returns the following values:
 // 
 // 	- goret *gobject.Value 
@@ -7330,6 +7638,7 @@ func VideoMultiviewVideoInfoChangeMode(info *VideoInfo, outMviewMode VideoMultiv
 }
 
 // VideoOverlayCompositionMetaApiGetType wraps gst_video_overlay_composition_meta_api_get_type
+// 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
@@ -7346,6 +7655,7 @@ func VideoOverlayCompositionMetaApiGetType() gobject.Type {
 }
 
 // VideoRegionOfInterestMetaApiGetType wraps gst_video_region_of_interest_meta_api_get_type
+// 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
@@ -7362,6 +7672,7 @@ func VideoRegionOfInterestMetaApiGetType() gobject.Type {
 }
 
 // VideoSeiUserDataUnregisteredMetaApiGetType wraps gst_video_sei_user_data_unregistered_meta_api_get_type
+// 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
@@ -7461,6 +7772,7 @@ func VideoTileGetIndex(mode VideoTileMode, x int, y int, xTiles int, yTiles int)
 }
 
 // VideoTimeCodeMetaApiGetType wraps gst_video_time_code_meta_api_get_type
+// 
 // The function returns the following values:
 // 
 // 	- goret gobject.Type 
@@ -7495,6 +7807,7 @@ type ColorBalance interface {
 	upcastToGstColorBalance() *ColorBalanceInstance
 
 	// GetBalanceType wraps gst_color_balance_get_balance_type
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret ColorBalanceType 
@@ -7519,6 +7832,7 @@ type ColorBalance interface {
 	//         #GstColorBalanceChannel object.
 	GetValue(ColorBalanceChannel) int
 	// ListChannels wraps gst_color_balance_list_channels
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []ColorBalanceChannel 
@@ -7596,6 +7910,7 @@ func UnsafeColorBalanceToGlibFull(c ColorBalance) unsafe.Pointer {
 }
 
 // GetBalanceType wraps gst_color_balance_get_balance_type
+// 
 // The function returns the following values:
 // 
 // 	- goret ColorBalanceType 
@@ -7653,6 +7968,7 @@ func (balance *ColorBalanceInstance) GetValue(channel ColorBalanceChannel) int {
 }
 
 // ListChannels wraps gst_color_balance_list_channels
+// 
 // The function returns the following values:
 // 
 // 	- goret []ColorBalanceChannel 
@@ -7741,6 +8057,69 @@ func (balance *ColorBalanceInstance) ValueChanged(channel ColorBalanceChannel, v
 func (o *ColorBalanceInstance) ConnectValueChanged(fn func(ColorBalance, ColorBalanceChannel, int)) gobject.SignalHandle {
 	return o.Instance.Connect("value-changed", fn)
 }
+
+// ColorBalanceOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type ColorBalanceOverrides[Instance ColorBalance] struct {
+	// GetBalanceType allows you to override the implementation of the virtual method get_balance_type.
+	// The function returns the following values:
+	// 
+	// 	- goret ColorBalanceType 
+	GetBalanceType func(Instance) ColorBalanceType
+	// GetValue allows you to override the implementation of the virtual method get_value.
+	// The function takes the following parameters:
+	// 
+	// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel instance 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret int 
+	GetValue func(Instance, ColorBalanceChannel) int
+	// ListChannels allows you to override the implementation of the virtual method list_channels.
+	// The function returns the following values:
+	// 
+	// 	- goret []ColorBalanceChannel 
+	ListChannels func(Instance) []ColorBalanceChannel
+	// SetValue allows you to override the implementation of the virtual method set_value.
+	// The function takes the following parameters:
+	// 
+	// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel instance 
+	// 	- value int: The new value for the channel. 
+	SetValue func(Instance, ColorBalanceChannel, int)
+	// ValueChanged allows you to override the implementation of the virtual method value_changed.
+	// The function takes the following parameters:
+	// 
+	// 	- channel ColorBalanceChannel: A #GstColorBalanceChannel whose value has changed 
+	// 	- value int: The new value of the channel 
+	ValueChanged func(Instance, ColorBalanceChannel, int)
+}
+
+// UnsafeApplyColorBalanceOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyColorBalanceOverrides[Instance ColorBalance](gclass unsafe.Pointer, overrides ColorBalanceOverrides[Instance]) {
+	pclass := (*C.GstColorBalanceInterface)(gclass)
+
+	if overrides.GetBalanceType != nil {
+		pclass.get_balance_type = (*[0]byte)(C._gotk4_gstvideo1_ColorBalance_get_balance_type)
+	}
+
+	if overrides.GetValue != nil {
+		pclass.get_value = (*[0]byte)(C._gotk4_gstvideo1_ColorBalance_get_value)
+	}
+
+	if overrides.ListChannels != nil {
+		pclass.list_channels = (*[0]byte)(C._gotk4_gstvideo1_ColorBalance_list_channels)
+	}
+
+	if overrides.SetValue != nil {
+		pclass.set_value = (*[0]byte)(C._gotk4_gstvideo1_ColorBalance_set_value)
+	}
+
+	if overrides.ValueChanged != nil {
+		pclass.value_changed = (*[0]byte)(C._gotk4_gstvideo1_ColorBalance_value_changed)
+	}
+}
+
 // NavigationInstance is the instance type used by all types implementing GstNavigation. It is used internally by the bindings. Users should use the interface [Navigation] instead.
 type NavigationInstance struct {
 	_ [0]func() // equal guard
@@ -9041,6 +9420,7 @@ func NavigationQueryGetType(query *gst.Query) NavigationQueryType {
 }
 
 // NavigationQueryNewAngles wraps gst_navigation_query_new_angles
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Query 
@@ -9061,6 +9441,7 @@ func NavigationQueryNewAngles() *gst.Query {
 }
 
 // NavigationQueryNewCommands wraps gst_navigation_query_new_commands
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Query 
@@ -9393,6 +9774,35 @@ func (navigation *NavigationInstance) SendMouseScrollEvent(x float64, y float64,
 	runtime.KeepAlive(deltaY)
 }
 
+// NavigationOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type NavigationOverrides[Instance Navigation] struct {
+	// SendEvent allows you to override the implementation of the virtual method send_event.
+	// The function takes the following parameters:
+	// 
+	// 	- structure *gst.Structure 
+	SendEvent func(Instance, *gst.Structure)
+	// SendEventSimple allows you to override the implementation of the virtual method send_event_simple.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event: The event to send 
+	SendEventSimple func(Instance, *gst.Event)
+}
+
+// UnsafeApplyNavigationOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyNavigationOverrides[Instance Navigation](gclass unsafe.Pointer, overrides NavigationOverrides[Instance]) {
+	pclass := (*C.GstNavigationInterface)(gclass)
+
+	if overrides.SendEvent != nil {
+		pclass.send_event = (*[0]byte)(C._gotk4_gstvideo1_Navigation_send_event)
+	}
+
+	if overrides.SendEventSimple != nil {
+		pclass.send_event_simple = (*[0]byte)(C._gotk4_gstvideo1_Navigation_send_event_simple)
+	}
+}
+
 // VideoDirectionInstance is the instance type used by all types implementing GstVideoDirection. It is used internally by the bindings. Users should use the interface [VideoDirection] instead.
 type VideoDirectionInstance struct {
 	_ [0]func() // equal guard
@@ -9447,6 +9857,16 @@ func UnsafeVideoDirectionToGlibFull(c VideoDirection) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(&i.Instance)
 }
 
+// VideoDirectionOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type VideoDirectionOverrides[Instance VideoDirection] struct {
+}
+
+// UnsafeApplyVideoDirectionOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyVideoDirectionOverrides[Instance VideoDirection](gclass unsafe.Pointer, overrides VideoDirectionOverrides[Instance]) {
+}
+
 // VideoOrientationInstance is the instance type used by all types implementing GstVideoOrientation. It is used internally by the bindings. Users should use the interface [VideoOrientation] instead.
 type VideoOrientationInstance struct {
 	_ [0]func() // equal guard
@@ -9463,6 +9883,7 @@ type VideoOrientation interface {
 	upcastToGstVideoOrientation() *VideoOrientationInstance
 
 	// GetHcenter wraps gst_video_orientation_get_hcenter
+	// 
 	// The function returns the following values:
 	// 
 	// 	- center int: return location for the result 
@@ -9471,6 +9892,7 @@ type VideoOrientation interface {
 	// Get the horizontal centering offset from the given object.
 	GetHcenter() (int, bool)
 	// GetHflip wraps gst_video_orientation_get_hflip
+	// 
 	// The function returns the following values:
 	// 
 	// 	- flip bool: return location for the result 
@@ -9479,6 +9901,7 @@ type VideoOrientation interface {
 	// Get the horizontal flipping state (%TRUE for flipped) from the given object.
 	GetHflip() (bool, bool)
 	// GetVcenter wraps gst_video_orientation_get_vcenter
+	// 
 	// The function returns the following values:
 	// 
 	// 	- center int: return location for the result 
@@ -9487,6 +9910,7 @@ type VideoOrientation interface {
 	// Get the vertical centering offset from the given object.
 	GetVcenter() (int, bool)
 	// GetVflip wraps gst_video_orientation_get_vflip
+	// 
 	// The function returns the following values:
 	// 
 	// 	- flip bool: return location for the result 
@@ -9617,6 +10041,7 @@ func VideoOrientationFromTag(taglist *gst.TagList) (VideoOrientationMethod, bool
 }
 
 // GetHcenter wraps gst_video_orientation_get_hcenter
+// 
 // The function returns the following values:
 // 
 // 	- center int: return location for the result 
@@ -9645,6 +10070,7 @@ func (videoOrientation *VideoOrientationInstance) GetHcenter() (int, bool) {
 }
 
 // GetHflip wraps gst_video_orientation_get_hflip
+// 
 // The function returns the following values:
 // 
 // 	- flip bool: return location for the result 
@@ -9675,6 +10101,7 @@ func (videoOrientation *VideoOrientationInstance) GetHflip() (bool, bool) {
 }
 
 // GetVcenter wraps gst_video_orientation_get_vcenter
+// 
 // The function returns the following values:
 // 
 // 	- center int: return location for the result 
@@ -9703,6 +10130,7 @@ func (videoOrientation *VideoOrientationInstance) GetVcenter() (int, bool) {
 }
 
 // GetVflip wraps gst_video_orientation_get_vflip
+// 
 // The function returns the following values:
 // 
 // 	- flip bool: return location for the result 
@@ -9862,6 +10290,109 @@ func (videoOrientation *VideoOrientationInstance) SetVflip(flip bool) bool {
 	}
 
 	return goret
+}
+
+// VideoOrientationOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type VideoOrientationOverrides[Instance VideoOrientation] struct {
+	// GetHcenter allows you to override the implementation of the virtual method get_hcenter.
+	// The function returns the following values:
+	// 
+	// 	- center int: return location for the result 
+	// 	- goret bool 
+	GetHcenter func(Instance) (int, bool)
+	// GetHflip allows you to override the implementation of the virtual method get_hflip.
+	// The function returns the following values:
+	// 
+	// 	- flip bool: return location for the result 
+	// 	- goret bool 
+	GetHflip func(Instance) (bool, bool)
+	// GetVcenter allows you to override the implementation of the virtual method get_vcenter.
+	// The function returns the following values:
+	// 
+	// 	- center int: return location for the result 
+	// 	- goret bool 
+	GetVcenter func(Instance) (int, bool)
+	// GetVflip allows you to override the implementation of the virtual method get_vflip.
+	// The function returns the following values:
+	// 
+	// 	- flip bool: return location for the result 
+	// 	- goret bool 
+	GetVflip func(Instance) (bool, bool)
+	// SetHcenter allows you to override the implementation of the virtual method set_hcenter.
+	// The function takes the following parameters:
+	// 
+	// 	- center int: centering offset 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SetHcenter func(Instance, int) bool
+	// SetHflip allows you to override the implementation of the virtual method set_hflip.
+	// The function takes the following parameters:
+	// 
+	// 	- flip bool: use flipping 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SetHflip func(Instance, bool) bool
+	// SetVcenter allows you to override the implementation of the virtual method set_vcenter.
+	// The function takes the following parameters:
+	// 
+	// 	- center int: centering offset 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SetVcenter func(Instance, int) bool
+	// SetVflip allows you to override the implementation of the virtual method set_vflip.
+	// The function takes the following parameters:
+	// 
+	// 	- flip bool: use flipping 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SetVflip func(Instance, bool) bool
+}
+
+// UnsafeApplyVideoOrientationOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyVideoOrientationOverrides[Instance VideoOrientation](gclass unsafe.Pointer, overrides VideoOrientationOverrides[Instance]) {
+	pclass := (*C.GstVideoOrientationInterface)(gclass)
+
+	if overrides.GetHcenter != nil {
+		pclass.get_hcenter = (*[0]byte)(C._gotk4_gstvideo1_VideoOrientation_get_hcenter)
+	}
+
+	if overrides.GetHflip != nil {
+		pclass.get_hflip = (*[0]byte)(C._gotk4_gstvideo1_VideoOrientation_get_hflip)
+	}
+
+	if overrides.GetVcenter != nil {
+		pclass.get_vcenter = (*[0]byte)(C._gotk4_gstvideo1_VideoOrientation_get_vcenter)
+	}
+
+	if overrides.GetVflip != nil {
+		pclass.get_vflip = (*[0]byte)(C._gotk4_gstvideo1_VideoOrientation_get_vflip)
+	}
+
+	if overrides.SetHcenter != nil {
+		pclass.set_hcenter = (*[0]byte)(C._gotk4_gstvideo1_VideoOrientation_set_hcenter)
+	}
+
+	if overrides.SetHflip != nil {
+		pclass.set_hflip = (*[0]byte)(C._gotk4_gstvideo1_VideoOrientation_set_hflip)
+	}
+
+	if overrides.SetVcenter != nil {
+		pclass.set_vcenter = (*[0]byte)(C._gotk4_gstvideo1_VideoOrientation_set_vcenter)
+	}
+
+	if overrides.SetVflip != nil {
+		pclass.set_vflip = (*[0]byte)(C._gotk4_gstvideo1_VideoOrientation_set_vflip)
+	}
 }
 
 // VideoOverlayInstance is the instance type used by all types implementing GstVideoOverlay. It is used internally by the bindings. Users should use the interface [VideoOverlay] instead.
@@ -10377,6 +10908,44 @@ func (overlay *VideoOverlayInstance) SetRenderRectangle(x int, y int, width int,
 	return goret
 }
 
+// VideoOverlayOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type VideoOverlayOverrides[Instance VideoOverlay] struct {
+	// Expose allows you to override the implementation of the virtual method expose.
+	Expose func(Instance)
+	// HandleEvents allows you to override the implementation of the virtual method handle_events.
+	// The function takes the following parameters:
+	// 
+	// 	- handleEvents bool: a #gboolean indicating if events should be handled or not. 
+	HandleEvents func(Instance, bool)
+	// SetRenderRectangle allows you to override the implementation of the virtual method set_render_rectangle.
+	// The function takes the following parameters:
+	// 
+	// 	- x int 
+	// 	- y int 
+	// 	- width int 
+	// 	- height int 
+	SetRenderRectangle func(Instance, int, int, int, int)
+}
+
+// UnsafeApplyVideoOverlayOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyVideoOverlayOverrides[Instance VideoOverlay](gclass unsafe.Pointer, overrides VideoOverlayOverrides[Instance]) {
+	pclass := (*C.GstVideoOverlayInterface)(gclass)
+
+	if overrides.Expose != nil {
+		pclass.expose = (*[0]byte)(C._gotk4_gstvideo1_VideoOverlay_expose)
+	}
+
+	if overrides.HandleEvents != nil {
+		pclass.handle_events = (*[0]byte)(C._gotk4_gstvideo1_VideoOverlay_handle_events)
+	}
+
+	if overrides.SetRenderRectangle != nil {
+		pclass.set_render_rectangle = (*[0]byte)(C._gotk4_gstvideo1_VideoOverlay_set_render_rectangle)
+	}
+}
+
 // ColorBalanceChannelInstance is the instance type used by all types extending GstColorBalanceChannel. It is used internally by the bindings. Users should use the interface [ColorBalanceChannel] instead.
 type ColorBalanceChannelInstance struct {
 	_ [0]func() // equal guard
@@ -10440,6 +11009,32 @@ func UnsafeColorBalanceChannelToGlibFull(c ColorBalanceChannel) unsafe.Pointer {
 func (o *ColorBalanceChannelInstance) ConnectValueChanged(fn func(ColorBalanceChannel, int)) gobject.SignalHandle {
 	return o.Connect("value-changed", fn)
 }
+
+// ColorBalanceChannelOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type ColorBalanceChannelOverrides[Instance ColorBalanceChannel] struct {
+	// gobject.ObjectOverrides allows you to override virtual methods from the parent class gobject.Object
+	gobject.ObjectOverrides[Instance]
+
+	// ValueChanged allows you to override the implementation of the virtual method value_changed.
+	// The function takes the following parameters:
+	// 
+	// 	- value int 
+	ValueChanged func(Instance, int)
+}
+
+// UnsafeApplyColorBalanceChannelOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyColorBalanceChannelOverrides[Instance ColorBalanceChannel](gclass unsafe.Pointer, overrides ColorBalanceChannelOverrides[Instance]) {
+	gobject.UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+
+	pclass := (*C.GstColorBalanceChannelClass)(gclass)
+
+	if overrides.ValueChanged != nil {
+		pclass.value_changed = (*[0]byte)(C._gotk4_gstvideo1_ColorBalanceChannel_value_changed)
+	}
+}
+
 // VideoAggregatorInstance is the instance type used by all types extending GstVideoAggregator. It is used internally by the bindings. Users should use the interface [VideoAggregator] instead.
 type VideoAggregatorInstance struct {
 	_ [0]func() // equal guard
@@ -10464,6 +11059,7 @@ type VideoAggregator interface {
 	upcastToGstVideoAggregator() *VideoAggregatorInstance
 
 	// GetExecutionTaskPool wraps gst_video_aggregator_get_execution_task_pool
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.TaskPool 
@@ -10519,6 +11115,7 @@ func UnsafeVideoAggregatorToGlibFull(c VideoAggregator) unsafe.Pointer {
 }
 
 // GetExecutionTaskPool wraps gst_video_aggregator_get_execution_task_pool
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.TaskPool 
@@ -10544,6 +11141,62 @@ func (vagg *VideoAggregatorInstance) GetExecutionTaskPool() gst.TaskPool {
 	return goret
 }
 
+// VideoAggregatorOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type VideoAggregatorOverrides[Instance VideoAggregator] struct {
+	// gstbase.AggregatorOverrides allows you to override virtual methods from the parent class gstbase.Aggregator
+	gstbase.AggregatorOverrides[Instance]
+
+	// AggregateFrames allows you to override the implementation of the virtual method aggregate_frames.
+	// The function takes the following parameters:
+	// 
+	// 	- outbuffer *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	AggregateFrames func(Instance, *gst.Buffer) gst.FlowReturn
+	// FindBestFormat allows you to override the implementation of the virtual method find_best_format.
+	// The function takes the following parameters:
+	// 
+	// 	- downstreamCaps *gst.Caps 
+	// 	- bestInfo *VideoInfo 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- atLeastOneAlpha bool 
+	FindBestFormat func(Instance, *gst.Caps, *VideoInfo) bool
+	// UpdateCaps allows you to override the implementation of the virtual method update_caps.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Caps 
+	UpdateCaps func(Instance, *gst.Caps) *gst.Caps
+}
+
+// UnsafeApplyVideoAggregatorOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyVideoAggregatorOverrides[Instance VideoAggregator](gclass unsafe.Pointer, overrides VideoAggregatorOverrides[Instance]) {
+	gstbase.UnsafeApplyAggregatorOverrides(gclass, overrides.AggregatorOverrides)
+
+	pclass := (*C.GstVideoAggregatorClass)(gclass)
+
+	if overrides.AggregateFrames != nil {
+		pclass.aggregate_frames = (*[0]byte)(C._gotk4_gstvideo1_VideoAggregator_aggregate_frames)
+	}
+
+	if overrides.FindBestFormat != nil {
+		pclass.find_best_format = (*[0]byte)(C._gotk4_gstvideo1_VideoAggregator_find_best_format)
+	}
+
+	if overrides.UpdateCaps != nil {
+		pclass.update_caps = (*[0]byte)(C._gotk4_gstvideo1_VideoAggregator_update_caps)
+	}
+}
+
 // VideoAggregatorPadInstance is the instance type used by all types extending GstVideoAggregatorPad. It is used internally by the bindings. Users should use the interface [VideoAggregatorPad] instead.
 type VideoAggregatorPadInstance struct {
 	_ [0]func() // equal guard
@@ -10558,6 +11211,7 @@ type VideoAggregatorPad interface {
 	upcastToGstVideoAggregatorPad() *VideoAggregatorPadInstance
 
 	// GetCurrentBuffer wraps gst_video_aggregator_pad_get_current_buffer
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Buffer 
@@ -10572,6 +11226,7 @@ type VideoAggregatorPad interface {
 	// returns.
 	GetCurrentBuffer() *gst.Buffer
 	// GetPreparedFrame wraps gst_video_aggregator_pad_get_prepared_frame
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *VideoFrame 
@@ -10586,6 +11241,7 @@ type VideoAggregatorPad interface {
 	// returns.
 	GetPreparedFrame() *VideoFrame
 	// HasCurrentBuffer wraps gst_video_aggregator_pad_has_current_buffer
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -10649,6 +11305,7 @@ func UnsafeVideoAggregatorPadToGlibFull(c VideoAggregatorPad) unsafe.Pointer {
 }
 
 // GetCurrentBuffer wraps gst_video_aggregator_pad_get_current_buffer
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Buffer 
@@ -10678,6 +11335,7 @@ func (pad *VideoAggregatorPadInstance) GetCurrentBuffer() *gst.Buffer {
 }
 
 // GetPreparedFrame wraps gst_video_aggregator_pad_get_prepared_frame
+// 
 // The function returns the following values:
 // 
 // 	- goret *VideoFrame 
@@ -10707,6 +11365,7 @@ func (pad *VideoAggregatorPadInstance) GetPreparedFrame() *VideoFrame {
 }
 
 // HasCurrentBuffer wraps gst_video_aggregator_pad_has_current_buffer
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -10753,6 +11412,74 @@ func (pad *VideoAggregatorPadInstance) SetNeedsAlpha(needsAlpha bool) {
 	C.gst_video_aggregator_pad_set_needs_alpha(carg0, carg1)
 	runtime.KeepAlive(pad)
 	runtime.KeepAlive(needsAlpha)
+}
+
+// VideoAggregatorPadOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type VideoAggregatorPadOverrides[Instance VideoAggregatorPad] struct {
+	// gstbase.AggregatorPadOverrides allows you to override virtual methods from the parent class gstbase.AggregatorPad
+	gstbase.AggregatorPadOverrides[Instance]
+
+	// CleanFrame allows you to override the implementation of the virtual method clean_frame.
+	// The function takes the following parameters:
+	// 
+	// 	- videoaggregator VideoAggregator 
+	// 	- preparedFrame *VideoFrame 
+	CleanFrame func(Instance, VideoAggregator, *VideoFrame)
+	// PrepareFrame allows you to override the implementation of the virtual method prepare_frame.
+	// The function takes the following parameters:
+	// 
+	// 	- videoaggregator VideoAggregator 
+	// 	- buffer *gst.Buffer 
+	// 	- preparedFrame *VideoFrame 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	PrepareFrame func(Instance, VideoAggregator, *gst.Buffer, *VideoFrame) bool
+	// PrepareFrameFinish allows you to override the implementation of the virtual method prepare_frame_finish.
+	// The function takes the following parameters:
+	// 
+	// 	- videoaggregator VideoAggregator: the parent #GstVideoAggregator 
+	// 	- preparedFrame *VideoFrame: the #GstVideoFrame to prepare into 
+	PrepareFrameFinish func(Instance, VideoAggregator, *VideoFrame)
+	// PrepareFrameStart allows you to override the implementation of the virtual method prepare_frame_start.
+	// The function takes the following parameters:
+	// 
+	// 	- videoaggregator VideoAggregator: the parent #GstVideoAggregator 
+	// 	- buffer *gst.Buffer: the input #GstBuffer to prepare 
+	// 	- preparedFrame *VideoFrame: the #GstVideoFrame to prepare into 
+	PrepareFrameStart func(Instance, VideoAggregator, *gst.Buffer, *VideoFrame)
+	// UpdateConversionInfo allows you to override the implementation of the virtual method update_conversion_info.
+	UpdateConversionInfo func(Instance)
+}
+
+// UnsafeApplyVideoAggregatorPadOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyVideoAggregatorPadOverrides[Instance VideoAggregatorPad](gclass unsafe.Pointer, overrides VideoAggregatorPadOverrides[Instance]) {
+	gstbase.UnsafeApplyAggregatorPadOverrides(gclass, overrides.AggregatorPadOverrides)
+
+	pclass := (*C.GstVideoAggregatorPadClass)(gclass)
+
+	if overrides.CleanFrame != nil {
+		pclass.clean_frame = (*[0]byte)(C._gotk4_gstvideo1_VideoAggregatorPad_clean_frame)
+	}
+
+	if overrides.PrepareFrame != nil {
+		pclass.prepare_frame = (*[0]byte)(C._gotk4_gstvideo1_VideoAggregatorPad_prepare_frame)
+	}
+
+	if overrides.PrepareFrameFinish != nil {
+		pclass.prepare_frame_finish = (*[0]byte)(C._gotk4_gstvideo1_VideoAggregatorPad_prepare_frame_finish)
+	}
+
+	if overrides.PrepareFrameStart != nil {
+		pclass.prepare_frame_start = (*[0]byte)(C._gotk4_gstvideo1_VideoAggregatorPad_prepare_frame_start)
+	}
+
+	if overrides.UpdateConversionInfo != nil {
+		pclass.update_conversion_info = (*[0]byte)(C._gotk4_gstvideo1_VideoAggregatorPad_update_conversion_info)
+	}
 }
 
 // VideoBufferPoolInstance is the instance type used by all types extending GstVideoBufferPool. It is used internally by the bindings. Users should use the interface [VideoBufferPool] instead.
@@ -10810,6 +11537,7 @@ func UnsafeVideoBufferPoolToGlibFull(c VideoBufferPool) unsafe.Pointer {
 }
 
 // NewVideoBufferPool wraps gst_video_buffer_pool_new
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.BufferPool 
@@ -10826,6 +11554,20 @@ func NewVideoBufferPool() gst.BufferPool {
 	goret = gst.UnsafeBufferPoolFromGlibFull(unsafe.Pointer(cret))
 
 	return goret
+}
+
+// VideoBufferPoolOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type VideoBufferPoolOverrides[Instance VideoBufferPool] struct {
+	// gst.BufferPoolOverrides allows you to override virtual methods from the parent class gst.BufferPool
+	gst.BufferPoolOverrides[Instance]
+
+}
+
+// UnsafeApplyVideoBufferPoolOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyVideoBufferPoolOverrides[Instance VideoBufferPool](gclass unsafe.Pointer, overrides VideoBufferPoolOverrides[Instance]) {
+	gst.UnsafeApplyBufferPoolOverrides(gclass, overrides.BufferPoolOverrides)
 }
 
 // VideoDecoderInstance is the instance type used by all types extending GstVideoDecoder. It is used internally by the bindings. Users should use the interface [VideoDecoder] instead.
@@ -10969,6 +11711,7 @@ type VideoDecoder interface {
 	// Removes next @n_bytes of input data and adds it to currently parsed frame.
 	AddToFrame(int)
 	// AllocateOutputBuffer wraps gst_video_decoder_allocate_output_buffer
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Buffer (nullable) 
@@ -11073,6 +11816,7 @@ type VideoDecoder interface {
 	// should be called instead.
 	FinishSubframe(*VideoCodecFrame) gst.FlowReturn
 	// GetAllocator wraps gst_video_decoder_get_allocator
+	// 
 	// The function returns the following values:
 	// 
 	// 	- allocator gst.Allocator (nullable): the #GstAllocator
@@ -11086,11 +11830,13 @@ type VideoDecoder interface {
 	// Unref the @allocator after use it.
 	GetAllocator() (gst.Allocator, gst.AllocationParams)
 	// GetBufferPool wraps gst_video_decoder_get_buffer_pool
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.BufferPool (nullable) 
 	GetBufferPool() gst.BufferPool
 	// GetEstimateRate wraps gst_video_decoder_get_estimate_rate
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret int 
@@ -11108,6 +11854,7 @@ type VideoDecoder interface {
 	// Get a pending unfinished #GstVideoCodecFrame
 	GetFrame(int) *VideoCodecFrame
 	// GetFrames wraps gst_video_decoder_get_frames
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []*VideoCodecFrame 
@@ -11128,6 +11875,7 @@ type VideoDecoder interface {
 	// the decoder baseclass in the @frame.
 	GetInputSubframeIndex(*VideoCodecFrame) uint
 	// GetLatency wraps gst_video_decoder_get_latency
+	// 
 	// The function returns the following values:
 	// 
 	// 	- minLatency gst.ClockTime: address of variable in which to store the
@@ -11154,11 +11902,13 @@ type VideoDecoder interface {
 	// and should therefore occur as soon/skippy as possible.
 	GetMaxDecodeTime(*VideoCodecFrame) gst.ClockTimeDiff
 	// GetMaxErrors wraps gst_video_decoder_get_max_errors
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret int 
 	GetMaxErrors() int
 	// GetNeedsFormat wraps gst_video_decoder_get_needs_format
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -11166,6 +11916,7 @@ type VideoDecoder interface {
 	// Queries decoder required format handling.
 	GetNeedsFormat() bool
 	// GetNeedsSyncPoint wraps gst_video_decoder_get_needs_sync_point
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -11174,6 +11925,7 @@ type VideoDecoder interface {
 	// data in the beginning.
 	GetNeedsSyncPoint() bool
 	// GetOldestFrame wraps gst_video_decoder_get_oldest_frame
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *VideoCodecFrame (nullable) 
@@ -11181,6 +11933,7 @@ type VideoDecoder interface {
 	// Get the oldest pending unfinished #GstVideoCodecFrame
 	GetOldestFrame() *VideoCodecFrame
 	// GetOutputState wraps gst_video_decoder_get_output_state
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *VideoCodecState (nullable) 
@@ -11188,6 +11941,7 @@ type VideoDecoder interface {
 	// Get the #GstVideoCodecState currently describing the output stream.
 	GetOutputState() *VideoCodecState
 	// GetPacketized wraps gst_video_decoder_get_packetized
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -11196,6 +11950,7 @@ type VideoDecoder interface {
 	// base class.
 	GetPacketized() bool
 	// GetPendingFrameSize wraps gst_video_decoder_get_pending_frame_size
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
@@ -11217,11 +11972,13 @@ type VideoDecoder interface {
 	// the decoder baseclass.
 	GetProcessedSubframeIndex(*VideoCodecFrame) uint
 	// GetQosProportion wraps gst_video_decoder_get_qos_proportion
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret float64 
 	GetQosProportion() float64
 	// GetSubframeMode wraps gst_video_decoder_get_subframe_mode
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -11231,6 +11988,7 @@ type VideoDecoder interface {
 	// frame.
 	GetSubframeMode() bool
 	// HaveFrame wraps gst_video_decoder_have_frame
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
@@ -11271,6 +12029,7 @@ type VideoDecoder interface {
 	// MT safe.
 	MergeTags(*gst.TagList, gst.TagMergeMode)
 	// Negotiate wraps gst_video_decoder_negotiate
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -11546,6 +12305,7 @@ func (decoder *VideoDecoderInstance) AddToFrame(nBytes int) {
 }
 
 // AllocateOutputBuffer wraps gst_video_decoder_allocate_output_buffer
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Buffer (nullable) 
@@ -11778,6 +12538,7 @@ func (decoder *VideoDecoderInstance) FinishSubframe(frame *VideoCodecFrame) gst.
 }
 
 // GetAllocator wraps gst_video_decoder_get_allocator
+// 
 // The function returns the following values:
 // 
 // 	- allocator gst.Allocator (nullable): the #GstAllocator
@@ -11813,6 +12574,7 @@ func (decoder *VideoDecoderInstance) GetAllocator() (gst.Allocator, gst.Allocati
 }
 
 // GetBufferPool wraps gst_video_decoder_get_buffer_pool
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.BufferPool (nullable) 
@@ -11835,6 +12597,7 @@ func (decoder *VideoDecoderInstance) GetBufferPool() gst.BufferPool {
 }
 
 // GetEstimateRate wraps gst_video_decoder_get_estimate_rate
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -11887,6 +12650,7 @@ func (decoder *VideoDecoderInstance) GetFrame(frameNumber int) *VideoCodecFrame 
 }
 
 // GetFrames wraps gst_video_decoder_get_frames
+// 
 // The function returns the following values:
 // 
 // 	- goret []*VideoCodecFrame 
@@ -11947,6 +12711,7 @@ func (decoder *VideoDecoderInstance) GetInputSubframeIndex(frame *VideoCodecFram
 }
 
 // GetLatency wraps gst_video_decoder_get_latency
+// 
 // The function returns the following values:
 // 
 // 	- minLatency gst.ClockTime: address of variable in which to store the
@@ -12009,6 +12774,7 @@ func (decoder *VideoDecoderInstance) GetMaxDecodeTime(frame *VideoCodecFrame) gs
 }
 
 // GetMaxErrors wraps gst_video_decoder_get_max_errors
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -12029,6 +12795,7 @@ func (dec *VideoDecoderInstance) GetMaxErrors() int {
 }
 
 // GetNeedsFormat wraps gst_video_decoder_get_needs_format
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -12053,6 +12820,7 @@ func (dec *VideoDecoderInstance) GetNeedsFormat() bool {
 }
 
 // GetNeedsSyncPoint wraps gst_video_decoder_get_needs_sync_point
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -12078,6 +12846,7 @@ func (dec *VideoDecoderInstance) GetNeedsSyncPoint() bool {
 }
 
 // GetOldestFrame wraps gst_video_decoder_get_oldest_frame
+// 
 // The function returns the following values:
 // 
 // 	- goret *VideoCodecFrame (nullable) 
@@ -12102,6 +12871,7 @@ func (decoder *VideoDecoderInstance) GetOldestFrame() *VideoCodecFrame {
 }
 
 // GetOutputState wraps gst_video_decoder_get_output_state
+// 
 // The function returns the following values:
 // 
 // 	- goret *VideoCodecState (nullable) 
@@ -12126,6 +12896,7 @@ func (decoder *VideoDecoderInstance) GetOutputState() *VideoCodecState {
 }
 
 // GetPacketized wraps gst_video_decoder_get_packetized
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -12151,6 +12922,7 @@ func (decoder *VideoDecoderInstance) GetPacketized() bool {
 }
 
 // GetPendingFrameSize wraps gst_video_decoder_get_pending_frame_size
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -12205,6 +12977,7 @@ func (decoder *VideoDecoderInstance) GetProcessedSubframeIndex(frame *VideoCodec
 }
 
 // GetQosProportion wraps gst_video_decoder_get_qos_proportion
+// 
 // The function returns the following values:
 // 
 // 	- goret float64 
@@ -12225,6 +12998,7 @@ func (decoder *VideoDecoderInstance) GetQosProportion() float64 {
 }
 
 // GetSubframeMode wraps gst_video_decoder_get_subframe_mode
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -12251,6 +13025,7 @@ func (decoder *VideoDecoderInstance) GetSubframeMode() bool {
 }
 
 // HaveFrame wraps gst_video_decoder_have_frame
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.FlowReturn 
@@ -12340,6 +13115,7 @@ func (decoder *VideoDecoderInstance) MergeTags(tags *gst.TagList, mode gst.TagMe
 }
 
 // Negotiate wraps gst_video_decoder_negotiate
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -12788,6 +13564,267 @@ func (decoder *VideoDecoderInstance) SetUseDefaultPadAcceptcaps(use bool) {
 	runtime.KeepAlive(use)
 }
 
+// VideoDecoderOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type VideoDecoderOverrides[Instance VideoDecoder] struct {
+	// gst.ElementOverrides allows you to override virtual methods from the parent class gst.Element
+	gst.ElementOverrides[Instance]
+
+	// Close allows you to override the implementation of the virtual method close.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Close func(Instance) bool
+	// DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	DecideAllocation func(Instance, *gst.Query) bool
+	// Drain allows you to override the implementation of the virtual method drain.
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	Drain func(Instance) gst.FlowReturn
+	// Finish allows you to override the implementation of the virtual method finish.
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	Finish func(Instance) gst.FlowReturn
+	// Flush allows you to override the implementation of the virtual method flush.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Flush func(Instance) bool
+	// Getcaps allows you to override the implementation of the virtual method getcaps.
+	// The function takes the following parameters:
+	// 
+	// 	- filter *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Caps 
+	Getcaps func(Instance, *gst.Caps) *gst.Caps
+	// HandleFrame allows you to override the implementation of the virtual method handle_frame.
+	// The function takes the following parameters:
+	// 
+	// 	- frame *VideoCodecFrame: The frame to handle 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	HandleFrame func(Instance, *VideoCodecFrame) gst.FlowReturn
+	// HandleMissingData allows you to override the implementation of the virtual method handle_missing_data.
+	// The function takes the following parameters:
+	// 
+	// 	- timestamp gst.ClockTime: Timestamp of the missing data 
+	// 	- duration gst.ClockTime: Duration of the missing data 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	HandleMissingData func(Instance, gst.ClockTime, gst.ClockTime) bool
+	// Negotiate allows you to override the implementation of the virtual method negotiate.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Negotiate func(Instance) bool
+	// Open allows you to override the implementation of the virtual method open.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Open func(Instance) bool
+	// Parse allows you to override the implementation of the virtual method parse.
+	// The function takes the following parameters:
+	// 
+	// 	- frame *VideoCodecFrame 
+	// 	- adapter gstbase.Adapter 
+	// 	- atEos bool 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	Parse func(Instance, *VideoCodecFrame, gstbase.Adapter, bool) gst.FlowReturn
+	// ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	ProposeAllocation func(Instance, *gst.Query) bool
+	// Reset allows you to override the implementation of the virtual method reset.
+	// The function takes the following parameters:
+	// 
+	// 	- hard bool 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Reset func(Instance, bool) bool
+	// SetFormat allows you to override the implementation of the virtual method set_format.
+	// The function takes the following parameters:
+	// 
+	// 	- state *VideoCodecState 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SetFormat func(Instance, *VideoCodecState) bool
+	// SinkEvent allows you to override the implementation of the virtual method sink_event.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SinkEvent func(Instance, *gst.Event) bool
+	// SinkQuery allows you to override the implementation of the virtual method sink_query.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SinkQuery func(Instance, *gst.Query) bool
+	// SrcEvent allows you to override the implementation of the virtual method src_event.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SrcEvent func(Instance, *gst.Event) bool
+	// SrcQuery allows you to override the implementation of the virtual method src_query.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SrcQuery func(Instance, *gst.Query) bool
+	// Start allows you to override the implementation of the virtual method start.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Start func(Instance) bool
+	// Stop allows you to override the implementation of the virtual method stop.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Stop func(Instance) bool
+	// TransformMeta allows you to override the implementation of the virtual method transform_meta.
+	// The function takes the following parameters:
+	// 
+	// 	- frame *VideoCodecFrame 
+	// 	- meta *gst.Meta 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	TransformMeta func(Instance, *VideoCodecFrame, *gst.Meta) bool
+}
+
+// UnsafeApplyVideoDecoderOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyVideoDecoderOverrides[Instance VideoDecoder](gclass unsafe.Pointer, overrides VideoDecoderOverrides[Instance]) {
+	gst.UnsafeApplyElementOverrides(gclass, overrides.ElementOverrides)
+
+	pclass := (*C.GstVideoDecoderClass)(gclass)
+
+	if overrides.Close != nil {
+		pclass.close = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_close)
+	}
+
+	if overrides.DecideAllocation != nil {
+		pclass.decide_allocation = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_decide_allocation)
+	}
+
+	if overrides.Drain != nil {
+		pclass.drain = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_drain)
+	}
+
+	if overrides.Finish != nil {
+		pclass.finish = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_finish)
+	}
+
+	if overrides.Flush != nil {
+		pclass.flush = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_flush)
+	}
+
+	if overrides.Getcaps != nil {
+		pclass.getcaps = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_getcaps)
+	}
+
+	if overrides.HandleFrame != nil {
+		pclass.handle_frame = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_handle_frame)
+	}
+
+	if overrides.HandleMissingData != nil {
+		pclass.handle_missing_data = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_handle_missing_data)
+	}
+
+	if overrides.Negotiate != nil {
+		pclass.negotiate = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_negotiate)
+	}
+
+	if overrides.Open != nil {
+		pclass.open = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_open)
+	}
+
+	if overrides.Parse != nil {
+		pclass.parse = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_parse)
+	}
+
+	if overrides.ProposeAllocation != nil {
+		pclass.propose_allocation = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_propose_allocation)
+	}
+
+	if overrides.Reset != nil {
+		pclass.reset = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_reset)
+	}
+
+	if overrides.SetFormat != nil {
+		pclass.set_format = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_set_format)
+	}
+
+	if overrides.SinkEvent != nil {
+		pclass.sink_event = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_sink_event)
+	}
+
+	if overrides.SinkQuery != nil {
+		pclass.sink_query = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_sink_query)
+	}
+
+	if overrides.SrcEvent != nil {
+		pclass.src_event = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_src_event)
+	}
+
+	if overrides.SrcQuery != nil {
+		pclass.src_query = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_src_query)
+	}
+
+	if overrides.Start != nil {
+		pclass.start = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_start)
+	}
+
+	if overrides.Stop != nil {
+		pclass.stop = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_stop)
+	}
+
+	if overrides.TransformMeta != nil {
+		pclass.transform_meta = (*[0]byte)(C._gotk4_gstvideo1_VideoDecoder_transform_meta)
+	}
+}
+
 // VideoEncoderInstance is the instance type used by all types extending GstVideoEncoder. It is used internally by the bindings. Users should use the interface [VideoEncoder] instead.
 type VideoEncoderInstance struct {
 	_ [0]func() // equal guard
@@ -12935,6 +13972,7 @@ type VideoEncoder interface {
 	// will be pushed downstream.
 	FinishSubframe(*VideoCodecFrame) gst.FlowReturn
 	// GetAllocator wraps gst_video_encoder_get_allocator
+	// 
 	// The function returns the following values:
 	// 
 	// 	- allocator gst.Allocator (nullable): the #GstAllocator
@@ -12960,6 +13998,7 @@ type VideoEncoder interface {
 	// Get a pending unfinished #GstVideoCodecFrame
 	GetFrame(int) *VideoCodecFrame
 	// GetFrames wraps gst_video_encoder_get_frames
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []*VideoCodecFrame 
@@ -12967,6 +14006,7 @@ type VideoEncoder interface {
 	// Get all pending unfinished #GstVideoCodecFrame
 	GetFrames() []*VideoCodecFrame
 	// GetLatency wraps gst_video_encoder_get_latency
+	// 
 	// The function returns the following values:
 	// 
 	// 	- minLatency gst.ClockTime: address of variable in which to store the
@@ -12996,6 +14036,7 @@ type VideoEncoder interface {
 	// #GstVideoEncoder:qos is disabled this function returns #G_MAXINT64.
 	GetMaxEncodeTime(*VideoCodecFrame) gst.ClockTimeDiff
 	// GetMinForceKeyUnitInterval wraps gst_video_encoder_get_min_force_key_unit_interval
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.ClockTime 
@@ -13004,6 +14045,7 @@ type VideoEncoder interface {
 	// for more details.
 	GetMinForceKeyUnitInterval() gst.ClockTime
 	// GetOldestFrame wraps gst_video_encoder_get_oldest_frame
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *VideoCodecFrame (nullable) 
@@ -13011,6 +14053,7 @@ type VideoEncoder interface {
 	// Get the oldest unfinished pending #GstVideoCodecFrame
 	GetOldestFrame() *VideoCodecFrame
 	// GetOutputState wraps gst_video_encoder_get_output_state
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *VideoCodecState (nullable) 
@@ -13018,6 +14061,7 @@ type VideoEncoder interface {
 	// Get the current #GstVideoCodecState
 	GetOutputState() *VideoCodecState
 	// IsQosEnabled wraps gst_video_encoder_is_qos_enabled
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -13043,6 +14087,7 @@ type VideoEncoder interface {
 	// MT safe.
 	MergeTags(*gst.TagList, gst.TagMergeMode)
 	// Negotiate wraps gst_video_encoder_negotiate
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -13328,6 +14373,7 @@ func (encoder *VideoEncoderInstance) FinishSubframe(frame *VideoCodecFrame) gst.
 }
 
 // GetAllocator wraps gst_video_encoder_get_allocator
+// 
 // The function returns the following values:
 // 
 // 	- allocator gst.Allocator (nullable): the #GstAllocator
@@ -13395,6 +14441,7 @@ func (encoder *VideoEncoderInstance) GetFrame(frameNumber int) *VideoCodecFrame 
 }
 
 // GetFrames wraps gst_video_encoder_get_frames
+// 
 // The function returns the following values:
 // 
 // 	- goret []*VideoCodecFrame 
@@ -13424,6 +14471,7 @@ func (encoder *VideoEncoderInstance) GetFrames() []*VideoCodecFrame {
 }
 
 // GetLatency wraps gst_video_encoder_get_latency
+// 
 // The function returns the following values:
 // 
 // 	- minLatency gst.ClockTime: address of variable in which to store the
@@ -13489,6 +14537,7 @@ func (encoder *VideoEncoderInstance) GetMaxEncodeTime(frame *VideoCodecFrame) gs
 }
 
 // GetMinForceKeyUnitInterval wraps gst_video_encoder_get_min_force_key_unit_interval
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ClockTime 
@@ -13512,6 +14561,7 @@ func (encoder *VideoEncoderInstance) GetMinForceKeyUnitInterval() gst.ClockTime 
 }
 
 // GetOldestFrame wraps gst_video_encoder_get_oldest_frame
+// 
 // The function returns the following values:
 // 
 // 	- goret *VideoCodecFrame (nullable) 
@@ -13536,6 +14586,7 @@ func (encoder *VideoEncoderInstance) GetOldestFrame() *VideoCodecFrame {
 }
 
 // GetOutputState wraps gst_video_encoder_get_output_state
+// 
 // The function returns the following values:
 // 
 // 	- goret *VideoCodecState (nullable) 
@@ -13560,6 +14611,7 @@ func (encoder *VideoEncoderInstance) GetOutputState() *VideoCodecState {
 }
 
 // IsQosEnabled wraps gst_video_encoder_is_qos_enabled
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -13618,6 +14670,7 @@ func (encoder *VideoEncoderInstance) MergeTags(tags *gst.TagList, mode gst.TagMe
 }
 
 // Negotiate wraps gst_video_encoder_negotiate
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -13827,6 +14880,242 @@ func (encoder *VideoEncoderInstance) SetQosEnabled(enabled bool) {
 	runtime.KeepAlive(enabled)
 }
 
+// VideoEncoderOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type VideoEncoderOverrides[Instance VideoEncoder] struct {
+	// gst.ElementOverrides allows you to override virtual methods from the parent class gst.Element
+	gst.ElementOverrides[Instance]
+
+	// Close allows you to override the implementation of the virtual method close.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Close func(Instance) bool
+	// DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	DecideAllocation func(Instance, *gst.Query) bool
+	// Finish allows you to override the implementation of the virtual method finish.
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	Finish func(Instance) gst.FlowReturn
+	// Flush allows you to override the implementation of the virtual method flush.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Flush func(Instance) bool
+	// Getcaps allows you to override the implementation of the virtual method getcaps.
+	// The function takes the following parameters:
+	// 
+	// 	- filter *gst.Caps 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Caps 
+	Getcaps func(Instance, *gst.Caps) *gst.Caps
+	// HandleFrame allows you to override the implementation of the virtual method handle_frame.
+	// The function takes the following parameters:
+	// 
+	// 	- frame *VideoCodecFrame 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	HandleFrame func(Instance, *VideoCodecFrame) gst.FlowReturn
+	// Negotiate allows you to override the implementation of the virtual method negotiate.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Negotiate func(Instance) bool
+	// Open allows you to override the implementation of the virtual method open.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Open func(Instance) bool
+	// PrePush allows you to override the implementation of the virtual method pre_push.
+	// The function takes the following parameters:
+	// 
+	// 	- frame *VideoCodecFrame 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	PrePush func(Instance, *VideoCodecFrame) gst.FlowReturn
+	// ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	ProposeAllocation func(Instance, *gst.Query) bool
+	// Reset allows you to override the implementation of the virtual method reset.
+	// The function takes the following parameters:
+	// 
+	// 	- hard bool 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Reset func(Instance, bool) bool
+	// SetFormat allows you to override the implementation of the virtual method set_format.
+	// The function takes the following parameters:
+	// 
+	// 	- state *VideoCodecState 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SetFormat func(Instance, *VideoCodecState) bool
+	// SinkEvent allows you to override the implementation of the virtual method sink_event.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SinkEvent func(Instance, *gst.Event) bool
+	// SinkQuery allows you to override the implementation of the virtual method sink_query.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SinkQuery func(Instance, *gst.Query) bool
+	// SrcEvent allows you to override the implementation of the virtual method src_event.
+	// The function takes the following parameters:
+	// 
+	// 	- event *gst.Event 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SrcEvent func(Instance, *gst.Event) bool
+	// SrcQuery allows you to override the implementation of the virtual method src_query.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SrcQuery func(Instance, *gst.Query) bool
+	// Start allows you to override the implementation of the virtual method start.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Start func(Instance) bool
+	// Stop allows you to override the implementation of the virtual method stop.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Stop func(Instance) bool
+	// TransformMeta allows you to override the implementation of the virtual method transform_meta.
+	// The function takes the following parameters:
+	// 
+	// 	- frame *VideoCodecFrame 
+	// 	- meta *gst.Meta 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	TransformMeta func(Instance, *VideoCodecFrame, *gst.Meta) bool
+}
+
+// UnsafeApplyVideoEncoderOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyVideoEncoderOverrides[Instance VideoEncoder](gclass unsafe.Pointer, overrides VideoEncoderOverrides[Instance]) {
+	gst.UnsafeApplyElementOverrides(gclass, overrides.ElementOverrides)
+
+	pclass := (*C.GstVideoEncoderClass)(gclass)
+
+	if overrides.Close != nil {
+		pclass.close = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_close)
+	}
+
+	if overrides.DecideAllocation != nil {
+		pclass.decide_allocation = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_decide_allocation)
+	}
+
+	if overrides.Finish != nil {
+		pclass.finish = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_finish)
+	}
+
+	if overrides.Flush != nil {
+		pclass.flush = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_flush)
+	}
+
+	if overrides.Getcaps != nil {
+		pclass.getcaps = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_getcaps)
+	}
+
+	if overrides.HandleFrame != nil {
+		pclass.handle_frame = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_handle_frame)
+	}
+
+	if overrides.Negotiate != nil {
+		pclass.negotiate = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_negotiate)
+	}
+
+	if overrides.Open != nil {
+		pclass.open = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_open)
+	}
+
+	if overrides.PrePush != nil {
+		pclass.pre_push = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_pre_push)
+	}
+
+	if overrides.ProposeAllocation != nil {
+		pclass.propose_allocation = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_propose_allocation)
+	}
+
+	if overrides.Reset != nil {
+		pclass.reset = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_reset)
+	}
+
+	if overrides.SetFormat != nil {
+		pclass.set_format = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_set_format)
+	}
+
+	if overrides.SinkEvent != nil {
+		pclass.sink_event = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_sink_event)
+	}
+
+	if overrides.SinkQuery != nil {
+		pclass.sink_query = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_sink_query)
+	}
+
+	if overrides.SrcEvent != nil {
+		pclass.src_event = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_src_event)
+	}
+
+	if overrides.SrcQuery != nil {
+		pclass.src_query = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_src_query)
+	}
+
+	if overrides.Start != nil {
+		pclass.start = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_start)
+	}
+
+	if overrides.Stop != nil {
+		pclass.stop = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_stop)
+	}
+
+	if overrides.TransformMeta != nil {
+		pclass.transform_meta = (*[0]byte)(C._gotk4_gstvideo1_VideoEncoder_transform_meta)
+	}
+}
+
 // VideoFilterInstance is the instance type used by all types extending GstVideoFilter. It is used internally by the bindings. Users should use the interface [VideoFilter] instead.
 type VideoFilterInstance struct {
 	_ [0]func() // equal guard
@@ -13886,6 +15175,65 @@ func UnsafeVideoFilterToGlibNone(c VideoFilter) unsafe.Pointer {
 // UnsafeVideoFilterToGlibFull is used to convert the instance to it's C value GstVideoFilter, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeVideoFilterToGlibFull(c VideoFilter) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
+}
+
+// VideoFilterOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type VideoFilterOverrides[Instance VideoFilter] struct {
+	// gstbase.BaseTransformOverrides allows you to override virtual methods from the parent class gstbase.BaseTransform
+	gstbase.BaseTransformOverrides[Instance]
+
+	// SetInfo allows you to override the implementation of the virtual method set_info.
+	// The function takes the following parameters:
+	// 
+	// 	- incaps *gst.Caps 
+	// 	- inInfo *VideoInfo 
+	// 	- outcaps *gst.Caps 
+	// 	- outInfo *VideoInfo 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SetInfo func(Instance, *gst.Caps, *VideoInfo, *gst.Caps, *VideoInfo) bool
+	// TransformFrame allows you to override the implementation of the virtual method transform_frame.
+	// The function takes the following parameters:
+	// 
+	// 	- inframe *VideoFrame 
+	// 	- outframe *VideoFrame 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	TransformFrame func(Instance, *VideoFrame, *VideoFrame) gst.FlowReturn
+	// TransformFrameIP allows you to override the implementation of the virtual method transform_frame_ip.
+	// The function takes the following parameters:
+	// 
+	// 	- frame *VideoFrame 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	TransformFrameIP func(Instance, *VideoFrame) gst.FlowReturn
+}
+
+// UnsafeApplyVideoFilterOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyVideoFilterOverrides[Instance VideoFilter](gclass unsafe.Pointer, overrides VideoFilterOverrides[Instance]) {
+	gstbase.UnsafeApplyBaseTransformOverrides(gclass, overrides.BaseTransformOverrides)
+
+	pclass := (*C.GstVideoFilterClass)(gclass)
+
+	if overrides.SetInfo != nil {
+		pclass.set_info = (*[0]byte)(C._gotk4_gstvideo1_VideoFilter_set_info)
+	}
+
+	if overrides.TransformFrame != nil {
+		pclass.transform_frame = (*[0]byte)(C._gotk4_gstvideo1_VideoFilter_transform_frame)
+	}
+
+	if overrides.TransformFrameIP != nil {
+		pclass.transform_frame_ip = (*[0]byte)(C._gotk4_gstvideo1_VideoFilter_transform_frame_ip)
+	}
 }
 
 // VideoSinkInstance is the instance type used by all types extending GstVideoSink. It is used internally by the bindings. Users should use the interface [VideoSink] instead.
@@ -13994,6 +15342,49 @@ func VideoSinkCenterRect(src VideoRectangle, dst VideoRectangle, scaling bool) V
 	return result
 }
 
+// VideoSinkOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type VideoSinkOverrides[Instance VideoSink] struct {
+	// gstbase.BaseSinkOverrides allows you to override virtual methods from the parent class gstbase.BaseSink
+	gstbase.BaseSinkOverrides[Instance]
+
+	// SetInfo allows you to override the implementation of the virtual method set_info.
+	// The function takes the following parameters:
+	// 
+	// 	- caps *gst.Caps: A #GstCaps. 
+	// 	- info *VideoInfo: A #GstVideoInfo corresponding to @caps. 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SetInfo func(Instance, *gst.Caps, *VideoInfo) bool
+	// ShowFrame allows you to override the implementation of the virtual method show_frame.
+	// The function takes the following parameters:
+	// 
+	// 	- buf *gst.Buffer 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	ShowFrame func(Instance, *gst.Buffer) gst.FlowReturn
+}
+
+// UnsafeApplyVideoSinkOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyVideoSinkOverrides[Instance VideoSink](gclass unsafe.Pointer, overrides VideoSinkOverrides[Instance]) {
+	gstbase.UnsafeApplyBaseSinkOverrides(gclass, overrides.BaseSinkOverrides)
+
+	pclass := (*C.GstVideoSinkClass)(gclass)
+
+	if overrides.SetInfo != nil {
+		pclass.set_info = (*[0]byte)(C._gotk4_gstvideo1_VideoSink_set_info)
+	}
+
+	if overrides.ShowFrame != nil {
+		pclass.show_frame = (*[0]byte)(C._gotk4_gstvideo1_VideoSink_show_frame)
+	}
+}
+
 // VideoAggregatorConvertPadInstance is the instance type used by all types extending GstVideoAggregatorConvertPad. It is used internally by the bindings. Users should use the interface [VideoAggregatorConvertPad] instead.
 type VideoAggregatorConvertPadInstance struct {
 	_ [0]func() // equal guard
@@ -14075,6 +15466,32 @@ func (pad *VideoAggregatorConvertPadInstance) UpdateConversionInfo() {
 	runtime.KeepAlive(pad)
 }
 
+// VideoAggregatorConvertPadOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type VideoAggregatorConvertPadOverrides[Instance VideoAggregatorConvertPad] struct {
+	// VideoAggregatorPadOverrides allows you to override virtual methods from the parent class VideoAggregatorPad
+	VideoAggregatorPadOverrides[Instance]
+
+	// CreateConversionInfo allows you to override the implementation of the virtual method create_conversion_info.
+	// The function takes the following parameters:
+	// 
+	// 	- agg VideoAggregator 
+	// 	- conversionInfo *VideoInfo 
+	CreateConversionInfo func(Instance, VideoAggregator, *VideoInfo)
+}
+
+// UnsafeApplyVideoAggregatorConvertPadOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyVideoAggregatorConvertPadOverrides[Instance VideoAggregatorConvertPad](gclass unsafe.Pointer, overrides VideoAggregatorConvertPadOverrides[Instance]) {
+	UnsafeApplyVideoAggregatorPadOverrides(gclass, overrides.VideoAggregatorPadOverrides)
+
+	pclass := (*C.GstVideoAggregatorConvertPadClass)(gclass)
+
+	if overrides.CreateConversionInfo != nil {
+		pclass.create_conversion_info = (*[0]byte)(C._gotk4_gstvideo1_VideoAggregatorConvertPad_create_conversion_info)
+	}
+}
+
 // VideoAggregatorParallelConvertPadInstance is the instance type used by all types extending GstVideoAggregatorParallelConvertPad. It is used internally by the bindings. Users should use the interface [VideoAggregatorParallelConvertPad] instead.
 type VideoAggregatorParallelConvertPadInstance struct {
 	_ [0]func() // equal guard
@@ -14139,6 +15556,20 @@ func UnsafeVideoAggregatorParallelConvertPadToGlibFull(c VideoAggregatorParallel
 	return gobject.UnsafeObjectToGlibFull(c)
 }
 
+// VideoAggregatorParallelConvertPadOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type VideoAggregatorParallelConvertPadOverrides[Instance VideoAggregatorParallelConvertPad] struct {
+	// VideoAggregatorConvertPadOverrides allows you to override virtual methods from the parent class VideoAggregatorConvertPad
+	VideoAggregatorConvertPadOverrides[Instance]
+
+}
+
+// UnsafeApplyVideoAggregatorParallelConvertPadOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyVideoAggregatorParallelConvertPadOverrides[Instance VideoAggregatorParallelConvertPad](gclass unsafe.Pointer, overrides VideoAggregatorParallelConvertPadOverrides[Instance]) {
+	UnsafeApplyVideoAggregatorConvertPadOverrides(gclass, overrides.VideoAggregatorConvertPadOverrides)
+}
+
 // AncillaryMeta wraps GstAncillaryMeta
 //
 // #GstMeta for carrying SMPTE-291M Ancillary data. Note that all the ADF fields
@@ -14157,7 +15588,7 @@ func UnsafeAncillaryMetaFromGlibBorrow(p unsafe.Pointer) *AncillaryMeta {
 	return &AncillaryMeta{&ancillaryMeta{(*C.GstAncillaryMeta)(p)}}
 }
 
-// UnsafeAncillaryMetaFromGlibNone is used to convert raw C.GstAncillaryMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAncillaryMetaFromGlibNone is used to convert raw C.GstAncillaryMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeAncillaryMetaFromGlibNone(p unsafe.Pointer) *AncillaryMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeAncillaryMetaFromGlibBorrow(p)
@@ -14170,7 +15601,7 @@ func UnsafeAncillaryMetaFromGlibNone(p unsafe.Pointer) *AncillaryMeta {
 	return wrapped
 }
 
-// UnsafeAncillaryMetaFromGlibFull is used to convert raw C.GstAncillaryMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeAncillaryMetaFromGlibFull is used to convert raw C.GstAncillaryMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeAncillaryMetaFromGlibFull(p unsafe.Pointer) *AncillaryMeta {
 	wrapped := UnsafeAncillaryMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -14202,7 +15633,9 @@ func UnsafeAncillaryMetaToGlibFull(a *AncillaryMeta) unsafe.Pointer {
 	a.native = nil // AncillaryMeta is invalid from here on
 	return _p
 }
+
 // AncillaryMetaGetInfo wraps gst_ancillary_meta_get_info
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.MetaInfo 
@@ -14221,6 +15654,8 @@ func AncillaryMetaGetInfo() *gst.MetaInfo {
 // ColorBalanceChannelClass wraps GstColorBalanceChannelClass
 //
 // Color-balance channel class.
+// 
+// ColorBalanceChannelClass is the type struct for [ColorBalanceChannel]
 type ColorBalanceChannelClass struct {
 	*colorBalanceChannelClass
 }
@@ -14235,31 +15670,6 @@ func UnsafeColorBalanceChannelClassFromGlibBorrow(p unsafe.Pointer) *ColorBalanc
 	return &ColorBalanceChannelClass{&colorBalanceChannelClass{(*C.GstColorBalanceChannelClass)(p)}}
 }
 
-// UnsafeColorBalanceChannelClassFromGlibNone is used to convert raw C.GstColorBalanceChannelClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeColorBalanceChannelClassFromGlibNone(p unsafe.Pointer) *ColorBalanceChannelClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeColorBalanceChannelClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.colorBalanceChannelClass,
-		func (intern *colorBalanceChannelClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeColorBalanceChannelClassFromGlibFull is used to convert raw C.GstColorBalanceChannelClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeColorBalanceChannelClassFromGlibFull(p unsafe.Pointer) *ColorBalanceChannelClass {
-	wrapped := UnsafeColorBalanceChannelClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.colorBalanceChannelClass,
-		func (intern *colorBalanceChannelClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeColorBalanceChannelClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [ColorBalanceChannelClass] is expected to work anymore.
@@ -14272,14 +15682,15 @@ func UnsafeColorBalanceChannelClassToGlibNone(c *ColorBalanceChannelClass) unsaf
 	return unsafe.Pointer(c.native)
 }
 
-// UnsafeColorBalanceChannelClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeColorBalanceChannelClassToGlibFull(c *ColorBalanceChannelClass) unsafe.Pointer {
-	runtime.SetFinalizer(c.colorBalanceChannelClass, nil)
-	_p := unsafe.Pointer(c.native)
-	c.native = nil // ColorBalanceChannelClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (c *ColorBalanceChannelClass) ParentClass() *gobject.ObjectClass {
+	parent := gobject.UnsafeObjectClassFromGlibBorrow(UnsafeColorBalanceChannelClassToGlibNone(c))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *ColorBalanceChannelClass) {}, c)
+	return parent
 }
+
 // ColorBalanceInterface wraps GstColorBalanceInterface
 //
 // Color-balance interface.
@@ -14297,7 +15708,7 @@ func UnsafeColorBalanceInterfaceFromGlibBorrow(p unsafe.Pointer) *ColorBalanceIn
 	return &ColorBalanceInterface{&colorBalanceInterface{(*C.GstColorBalanceInterface)(p)}}
 }
 
-// UnsafeColorBalanceInterfaceFromGlibNone is used to convert raw C.GstColorBalanceInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeColorBalanceInterfaceFromGlibNone is used to convert raw C.GstColorBalanceInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeColorBalanceInterfaceFromGlibNone(p unsafe.Pointer) *ColorBalanceInterface {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeColorBalanceInterfaceFromGlibBorrow(p)
@@ -14310,7 +15721,7 @@ func UnsafeColorBalanceInterfaceFromGlibNone(p unsafe.Pointer) *ColorBalanceInte
 	return wrapped
 }
 
-// UnsafeColorBalanceInterfaceFromGlibFull is used to convert raw C.GstColorBalanceInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeColorBalanceInterfaceFromGlibFull is used to convert raw C.GstColorBalanceInterface pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeColorBalanceInterfaceFromGlibFull(p unsafe.Pointer) *ColorBalanceInterface {
 	wrapped := UnsafeColorBalanceInterfaceFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -14342,6 +15753,7 @@ func UnsafeColorBalanceInterfaceToGlibFull(c *ColorBalanceInterface) unsafe.Poin
 	c.native = nil // ColorBalanceInterface is invalid from here on
 	return _p
 }
+
 // NavigationInterface wraps GstNavigationInterface
 //
 // Navigation interface.
@@ -14359,7 +15771,7 @@ func UnsafeNavigationInterfaceFromGlibBorrow(p unsafe.Pointer) *NavigationInterf
 	return &NavigationInterface{&navigationInterface{(*C.GstNavigationInterface)(p)}}
 }
 
-// UnsafeNavigationInterfaceFromGlibNone is used to convert raw C.GstNavigationInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeNavigationInterfaceFromGlibNone is used to convert raw C.GstNavigationInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeNavigationInterfaceFromGlibNone(p unsafe.Pointer) *NavigationInterface {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeNavigationInterfaceFromGlibBorrow(p)
@@ -14372,7 +15784,7 @@ func UnsafeNavigationInterfaceFromGlibNone(p unsafe.Pointer) *NavigationInterfac
 	return wrapped
 }
 
-// UnsafeNavigationInterfaceFromGlibFull is used to convert raw C.GstNavigationInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeNavigationInterfaceFromGlibFull is used to convert raw C.GstNavigationInterface pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeNavigationInterfaceFromGlibFull(p unsafe.Pointer) *NavigationInterface {
 	wrapped := UnsafeNavigationInterfaceFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -14404,6 +15816,7 @@ func UnsafeNavigationInterfaceToGlibFull(n *NavigationInterface) unsafe.Pointer 
 	n.native = nil // NavigationInterface is invalid from here on
 	return _p
 }
+
 // VideoAFDMeta wraps GstVideoAFDMeta
 //
 // Active Format Description (AFD)
@@ -14434,7 +15847,7 @@ func UnsafeVideoAFDMetaFromGlibBorrow(p unsafe.Pointer) *VideoAFDMeta {
 	return &VideoAFDMeta{&videoAFDMeta{(*C.GstVideoAFDMeta)(p)}}
 }
 
-// UnsafeVideoAFDMetaFromGlibNone is used to convert raw C.GstVideoAFDMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoAFDMetaFromGlibNone is used to convert raw C.GstVideoAFDMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoAFDMetaFromGlibNone(p unsafe.Pointer) *VideoAFDMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoAFDMetaFromGlibBorrow(p)
@@ -14447,7 +15860,7 @@ func UnsafeVideoAFDMetaFromGlibNone(p unsafe.Pointer) *VideoAFDMeta {
 	return wrapped
 }
 
-// UnsafeVideoAFDMetaFromGlibFull is used to convert raw C.GstVideoAFDMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoAFDMetaFromGlibFull is used to convert raw C.GstVideoAFDMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoAFDMetaFromGlibFull(p unsafe.Pointer) *VideoAFDMeta {
 	wrapped := UnsafeVideoAFDMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -14479,7 +15892,9 @@ func UnsafeVideoAFDMetaToGlibFull(v *VideoAFDMeta) unsafe.Pointer {
 	v.native = nil // VideoAFDMeta is invalid from here on
 	return _p
 }
+
 // VideoAFDMetaGetInfo wraps gst_video_afd_meta_get_info
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.MetaInfo 
@@ -14521,7 +15936,7 @@ func UnsafeVideoAffineTransformationMetaFromGlibBorrow(p unsafe.Pointer) *VideoA
 	return &VideoAffineTransformationMeta{&videoAffineTransformationMeta{(*C.GstVideoAffineTransformationMeta)(p)}}
 }
 
-// UnsafeVideoAffineTransformationMetaFromGlibNone is used to convert raw C.GstVideoAffineTransformationMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoAffineTransformationMetaFromGlibNone is used to convert raw C.GstVideoAffineTransformationMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoAffineTransformationMetaFromGlibNone(p unsafe.Pointer) *VideoAffineTransformationMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoAffineTransformationMetaFromGlibBorrow(p)
@@ -14534,7 +15949,7 @@ func UnsafeVideoAffineTransformationMetaFromGlibNone(p unsafe.Pointer) *VideoAff
 	return wrapped
 }
 
-// UnsafeVideoAffineTransformationMetaFromGlibFull is used to convert raw C.GstVideoAffineTransformationMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoAffineTransformationMetaFromGlibFull is used to convert raw C.GstVideoAffineTransformationMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoAffineTransformationMetaFromGlibFull(p unsafe.Pointer) *VideoAffineTransformationMeta {
 	wrapped := UnsafeVideoAffineTransformationMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -14566,7 +15981,9 @@ func UnsafeVideoAffineTransformationMetaToGlibFull(v *VideoAffineTransformationM
 	v.native = nil // VideoAffineTransformationMeta is invalid from here on
 	return _p
 }
+
 // VideoAffineTransformationMetaGetInfo wraps gst_video_affine_transformation_meta_get_info
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.MetaInfo 
@@ -14605,6 +16022,8 @@ func (meta *VideoAffineTransformationMeta) ApplyMatrix(matrix [16]float32) {
 }
 
 // VideoAggregatorClass wraps GstVideoAggregatorClass
+// 
+// VideoAggregatorClass is the type struct for [VideoAggregator]
 type VideoAggregatorClass struct {
 	*videoAggregatorClass
 }
@@ -14619,31 +16038,6 @@ func UnsafeVideoAggregatorClassFromGlibBorrow(p unsafe.Pointer) *VideoAggregator
 	return &VideoAggregatorClass{&videoAggregatorClass{(*C.GstVideoAggregatorClass)(p)}}
 }
 
-// UnsafeVideoAggregatorClassFromGlibNone is used to convert raw C.GstVideoAggregatorClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeVideoAggregatorClassFromGlibNone(p unsafe.Pointer) *VideoAggregatorClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeVideoAggregatorClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.videoAggregatorClass,
-		func (intern *videoAggregatorClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeVideoAggregatorClassFromGlibFull is used to convert raw C.GstVideoAggregatorClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeVideoAggregatorClassFromGlibFull(p unsafe.Pointer) *VideoAggregatorClass {
-	wrapped := UnsafeVideoAggregatorClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.videoAggregatorClass,
-		func (intern *videoAggregatorClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeVideoAggregatorClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [VideoAggregatorClass] is expected to work anymore.
@@ -14656,15 +16050,18 @@ func UnsafeVideoAggregatorClassToGlibNone(v *VideoAggregatorClass) unsafe.Pointe
 	return unsafe.Pointer(v.native)
 }
 
-// UnsafeVideoAggregatorClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeVideoAggregatorClassToGlibFull(v *VideoAggregatorClass) unsafe.Pointer {
-	runtime.SetFinalizer(v.videoAggregatorClass, nil)
-	_p := unsafe.Pointer(v.native)
-	v.native = nil // VideoAggregatorClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (v *VideoAggregatorClass) ParentClass() *gstbase.AggregatorClass {
+	parent := gstbase.UnsafeAggregatorClassFromGlibBorrow(UnsafeVideoAggregatorClassToGlibNone(v))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *VideoAggregatorClass) {}, v)
+	return parent
 }
+
 // VideoAggregatorConvertPadClass wraps GstVideoAggregatorConvertPadClass
+// 
+// VideoAggregatorConvertPadClass is the type struct for [VideoAggregatorConvertPad]
 type VideoAggregatorConvertPadClass struct {
 	*videoAggregatorConvertPadClass
 }
@@ -14679,31 +16076,6 @@ func UnsafeVideoAggregatorConvertPadClassFromGlibBorrow(p unsafe.Pointer) *Video
 	return &VideoAggregatorConvertPadClass{&videoAggregatorConvertPadClass{(*C.GstVideoAggregatorConvertPadClass)(p)}}
 }
 
-// UnsafeVideoAggregatorConvertPadClassFromGlibNone is used to convert raw C.GstVideoAggregatorConvertPadClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeVideoAggregatorConvertPadClassFromGlibNone(p unsafe.Pointer) *VideoAggregatorConvertPadClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeVideoAggregatorConvertPadClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.videoAggregatorConvertPadClass,
-		func (intern *videoAggregatorConvertPadClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeVideoAggregatorConvertPadClassFromGlibFull is used to convert raw C.GstVideoAggregatorConvertPadClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeVideoAggregatorConvertPadClassFromGlibFull(p unsafe.Pointer) *VideoAggregatorConvertPadClass {
-	wrapped := UnsafeVideoAggregatorConvertPadClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.videoAggregatorConvertPadClass,
-		func (intern *videoAggregatorConvertPadClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeVideoAggregatorConvertPadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [VideoAggregatorConvertPadClass] is expected to work anymore.
@@ -14716,15 +16088,18 @@ func UnsafeVideoAggregatorConvertPadClassToGlibNone(v *VideoAggregatorConvertPad
 	return unsafe.Pointer(v.native)
 }
 
-// UnsafeVideoAggregatorConvertPadClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeVideoAggregatorConvertPadClassToGlibFull(v *VideoAggregatorConvertPadClass) unsafe.Pointer {
-	runtime.SetFinalizer(v.videoAggregatorConvertPadClass, nil)
-	_p := unsafe.Pointer(v.native)
-	v.native = nil // VideoAggregatorConvertPadClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (v *VideoAggregatorConvertPadClass) ParentClass() *VideoAggregatorPadClass {
+	parent := UnsafeVideoAggregatorPadClassFromGlibBorrow(UnsafeVideoAggregatorConvertPadClassToGlibNone(v))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *VideoAggregatorConvertPadClass) {}, v)
+	return parent
 }
+
 // VideoAggregatorPadClass wraps GstVideoAggregatorPadClass
+// 
+// VideoAggregatorPadClass is the type struct for [VideoAggregatorPad]
 type VideoAggregatorPadClass struct {
 	*videoAggregatorPadClass
 }
@@ -14739,31 +16114,6 @@ func UnsafeVideoAggregatorPadClassFromGlibBorrow(p unsafe.Pointer) *VideoAggrega
 	return &VideoAggregatorPadClass{&videoAggregatorPadClass{(*C.GstVideoAggregatorPadClass)(p)}}
 }
 
-// UnsafeVideoAggregatorPadClassFromGlibNone is used to convert raw C.GstVideoAggregatorPadClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeVideoAggregatorPadClassFromGlibNone(p unsafe.Pointer) *VideoAggregatorPadClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeVideoAggregatorPadClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.videoAggregatorPadClass,
-		func (intern *videoAggregatorPadClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeVideoAggregatorPadClassFromGlibFull is used to convert raw C.GstVideoAggregatorPadClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeVideoAggregatorPadClassFromGlibFull(p unsafe.Pointer) *VideoAggregatorPadClass {
-	wrapped := UnsafeVideoAggregatorPadClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.videoAggregatorPadClass,
-		func (intern *videoAggregatorPadClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeVideoAggregatorPadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [VideoAggregatorPadClass] is expected to work anymore.
@@ -14776,15 +16126,18 @@ func UnsafeVideoAggregatorPadClassToGlibNone(v *VideoAggregatorPadClass) unsafe.
 	return unsafe.Pointer(v.native)
 }
 
-// UnsafeVideoAggregatorPadClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeVideoAggregatorPadClassToGlibFull(v *VideoAggregatorPadClass) unsafe.Pointer {
-	runtime.SetFinalizer(v.videoAggregatorPadClass, nil)
-	_p := unsafe.Pointer(v.native)
-	v.native = nil // VideoAggregatorPadClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (v *VideoAggregatorPadClass) ParentClass() *gstbase.AggregatorPadClass {
+	parent := gstbase.UnsafeAggregatorPadClassFromGlibBorrow(UnsafeVideoAggregatorPadClassToGlibNone(v))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *VideoAggregatorPadClass) {}, v)
+	return parent
 }
+
 // VideoAggregatorParallelConvertPadClass wraps GstVideoAggregatorParallelConvertPadClass
+// 
+// VideoAggregatorParallelConvertPadClass is the type struct for [VideoAggregatorParallelConvertPad]
 type VideoAggregatorParallelConvertPadClass struct {
 	*videoAggregatorParallelConvertPadClass
 }
@@ -14799,31 +16152,6 @@ func UnsafeVideoAggregatorParallelConvertPadClassFromGlibBorrow(p unsafe.Pointer
 	return &VideoAggregatorParallelConvertPadClass{&videoAggregatorParallelConvertPadClass{(*C.GstVideoAggregatorParallelConvertPadClass)(p)}}
 }
 
-// UnsafeVideoAggregatorParallelConvertPadClassFromGlibNone is used to convert raw C.GstVideoAggregatorParallelConvertPadClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeVideoAggregatorParallelConvertPadClassFromGlibNone(p unsafe.Pointer) *VideoAggregatorParallelConvertPadClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeVideoAggregatorParallelConvertPadClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.videoAggregatorParallelConvertPadClass,
-		func (intern *videoAggregatorParallelConvertPadClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeVideoAggregatorParallelConvertPadClassFromGlibFull is used to convert raw C.GstVideoAggregatorParallelConvertPadClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeVideoAggregatorParallelConvertPadClassFromGlibFull(p unsafe.Pointer) *VideoAggregatorParallelConvertPadClass {
-	wrapped := UnsafeVideoAggregatorParallelConvertPadClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.videoAggregatorParallelConvertPadClass,
-		func (intern *videoAggregatorParallelConvertPadClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeVideoAggregatorParallelConvertPadClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [VideoAggregatorParallelConvertPadClass] is expected to work anymore.
@@ -14836,14 +16164,15 @@ func UnsafeVideoAggregatorParallelConvertPadClassToGlibNone(v *VideoAggregatorPa
 	return unsafe.Pointer(v.native)
 }
 
-// UnsafeVideoAggregatorParallelConvertPadClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeVideoAggregatorParallelConvertPadClassToGlibFull(v *VideoAggregatorParallelConvertPadClass) unsafe.Pointer {
-	runtime.SetFinalizer(v.videoAggregatorParallelConvertPadClass, nil)
-	_p := unsafe.Pointer(v.native)
-	v.native = nil // VideoAggregatorParallelConvertPadClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (v *VideoAggregatorParallelConvertPadClass) ParentClass() *VideoAggregatorConvertPadClass {
+	parent := UnsafeVideoAggregatorConvertPadClassFromGlibBorrow(UnsafeVideoAggregatorParallelConvertPadClassToGlibNone(v))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *VideoAggregatorParallelConvertPadClass) {}, v)
+	return parent
 }
+
 // VideoAlignment wraps GstVideoAlignment
 //
 // Extra alignment parameters for the memory of video buffers. This
@@ -14863,7 +16192,7 @@ func UnsafeVideoAlignmentFromGlibBorrow(p unsafe.Pointer) *VideoAlignment {
 	return &VideoAlignment{&videoAlignment{(*C.GstVideoAlignment)(p)}}
 }
 
-// UnsafeVideoAlignmentFromGlibNone is used to convert raw C.GstVideoAlignment pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoAlignmentFromGlibNone is used to convert raw C.GstVideoAlignment pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoAlignmentFromGlibNone(p unsafe.Pointer) *VideoAlignment {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoAlignmentFromGlibBorrow(p)
@@ -14876,7 +16205,7 @@ func UnsafeVideoAlignmentFromGlibNone(p unsafe.Pointer) *VideoAlignment {
 	return wrapped
 }
 
-// UnsafeVideoAlignmentFromGlibFull is used to convert raw C.GstVideoAlignment pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoAlignmentFromGlibFull is used to convert raw C.GstVideoAlignment pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoAlignmentFromGlibFull(p unsafe.Pointer) *VideoAlignment {
 	wrapped := UnsafeVideoAlignmentFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -14908,6 +16237,7 @@ func UnsafeVideoAlignmentToGlibFull(v *VideoAlignment) unsafe.Pointer {
 	v.native = nil // VideoAlignment is invalid from here on
 	return _p
 }
+
 // Reset wraps gst_video_alignment_reset
 //
 // Set @align to its default values with no padding and no alignment.
@@ -14940,7 +16270,7 @@ func UnsafeVideoAncillaryFromGlibBorrow(p unsafe.Pointer) *VideoAncillary {
 	return &VideoAncillary{&videoAncillary{(*C.GstVideoAncillary)(p)}}
 }
 
-// UnsafeVideoAncillaryFromGlibNone is used to convert raw C.GstVideoAncillary pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoAncillaryFromGlibNone is used to convert raw C.GstVideoAncillary pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoAncillaryFromGlibNone(p unsafe.Pointer) *VideoAncillary {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoAncillaryFromGlibBorrow(p)
@@ -14953,7 +16283,7 @@ func UnsafeVideoAncillaryFromGlibNone(p unsafe.Pointer) *VideoAncillary {
 	return wrapped
 }
 
-// UnsafeVideoAncillaryFromGlibFull is used to convert raw C.GstVideoAncillary pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoAncillaryFromGlibFull is used to convert raw C.GstVideoAncillary pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoAncillaryFromGlibFull(p unsafe.Pointer) *VideoAncillary {
 	wrapped := UnsafeVideoAncillaryFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -14985,6 +16315,7 @@ func UnsafeVideoAncillaryToGlibFull(v *VideoAncillary) unsafe.Pointer {
 	v.native = nil // VideoAncillary is invalid from here on
 	return _p
 }
+
 // VideoBarMeta wraps GstVideoBarMeta
 //
 // Bar data should be included in video user data
@@ -15013,7 +16344,7 @@ func UnsafeVideoBarMetaFromGlibBorrow(p unsafe.Pointer) *VideoBarMeta {
 	return &VideoBarMeta{&videoBarMeta{(*C.GstVideoBarMeta)(p)}}
 }
 
-// UnsafeVideoBarMetaFromGlibNone is used to convert raw C.GstVideoBarMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoBarMetaFromGlibNone is used to convert raw C.GstVideoBarMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoBarMetaFromGlibNone(p unsafe.Pointer) *VideoBarMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoBarMetaFromGlibBorrow(p)
@@ -15026,7 +16357,7 @@ func UnsafeVideoBarMetaFromGlibNone(p unsafe.Pointer) *VideoBarMeta {
 	return wrapped
 }
 
-// UnsafeVideoBarMetaFromGlibFull is used to convert raw C.GstVideoBarMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoBarMetaFromGlibFull is used to convert raw C.GstVideoBarMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoBarMetaFromGlibFull(p unsafe.Pointer) *VideoBarMeta {
 	wrapped := UnsafeVideoBarMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -15058,7 +16389,9 @@ func UnsafeVideoBarMetaToGlibFull(v *VideoBarMeta) unsafe.Pointer {
 	v.native = nil // VideoBarMeta is invalid from here on
 	return _p
 }
+
 // VideoBarMetaGetInfo wraps gst_video_bar_meta_get_info
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.MetaInfo 
@@ -15075,6 +16408,8 @@ func VideoBarMetaGetInfo() *gst.MetaInfo {
 }
 
 // VideoBufferPoolClass wraps GstVideoBufferPoolClass
+// 
+// VideoBufferPoolClass is the type struct for [VideoBufferPool]
 type VideoBufferPoolClass struct {
 	*videoBufferPoolClass
 }
@@ -15089,31 +16424,6 @@ func UnsafeVideoBufferPoolClassFromGlibBorrow(p unsafe.Pointer) *VideoBufferPool
 	return &VideoBufferPoolClass{&videoBufferPoolClass{(*C.GstVideoBufferPoolClass)(p)}}
 }
 
-// UnsafeVideoBufferPoolClassFromGlibNone is used to convert raw C.GstVideoBufferPoolClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeVideoBufferPoolClassFromGlibNone(p unsafe.Pointer) *VideoBufferPoolClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeVideoBufferPoolClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.videoBufferPoolClass,
-		func (intern *videoBufferPoolClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeVideoBufferPoolClassFromGlibFull is used to convert raw C.GstVideoBufferPoolClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeVideoBufferPoolClassFromGlibFull(p unsafe.Pointer) *VideoBufferPoolClass {
-	wrapped := UnsafeVideoBufferPoolClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.videoBufferPoolClass,
-		func (intern *videoBufferPoolClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeVideoBufferPoolClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [VideoBufferPoolClass] is expected to work anymore.
@@ -15126,14 +16436,15 @@ func UnsafeVideoBufferPoolClassToGlibNone(v *VideoBufferPoolClass) unsafe.Pointe
 	return unsafe.Pointer(v.native)
 }
 
-// UnsafeVideoBufferPoolClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeVideoBufferPoolClassToGlibFull(v *VideoBufferPoolClass) unsafe.Pointer {
-	runtime.SetFinalizer(v.videoBufferPoolClass, nil)
-	_p := unsafe.Pointer(v.native)
-	v.native = nil // VideoBufferPoolClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (v *VideoBufferPoolClass) ParentClass() *gst.BufferPoolClass {
+	parent := gst.UnsafeBufferPoolClassFromGlibBorrow(UnsafeVideoBufferPoolClassToGlibNone(v))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *VideoBufferPoolClass) {}, v)
+	return parent
 }
+
 // VideoCaptionMeta wraps GstVideoCaptionMeta
 //
 // Extra buffer metadata providing Closed Caption.
@@ -15151,7 +16462,7 @@ func UnsafeVideoCaptionMetaFromGlibBorrow(p unsafe.Pointer) *VideoCaptionMeta {
 	return &VideoCaptionMeta{&videoCaptionMeta{(*C.GstVideoCaptionMeta)(p)}}
 }
 
-// UnsafeVideoCaptionMetaFromGlibNone is used to convert raw C.GstVideoCaptionMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoCaptionMetaFromGlibNone is used to convert raw C.GstVideoCaptionMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoCaptionMetaFromGlibNone(p unsafe.Pointer) *VideoCaptionMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoCaptionMetaFromGlibBorrow(p)
@@ -15164,7 +16475,7 @@ func UnsafeVideoCaptionMetaFromGlibNone(p unsafe.Pointer) *VideoCaptionMeta {
 	return wrapped
 }
 
-// UnsafeVideoCaptionMetaFromGlibFull is used to convert raw C.GstVideoCaptionMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoCaptionMetaFromGlibFull is used to convert raw C.GstVideoCaptionMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoCaptionMetaFromGlibFull(p unsafe.Pointer) *VideoCaptionMeta {
 	wrapped := UnsafeVideoCaptionMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -15196,7 +16507,9 @@ func UnsafeVideoCaptionMetaToGlibFull(v *VideoCaptionMeta) unsafe.Pointer {
 	v.native = nil // VideoCaptionMeta is invalid from here on
 	return _p
 }
+
 // VideoCaptionMetaGetInfo wraps gst_video_caption_meta_get_info
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.MetaInfo 
@@ -15227,7 +16540,7 @@ func UnsafeVideoChromaResamplerFromGlibBorrow(p unsafe.Pointer) *VideoChromaResa
 	return &VideoChromaResampler{&videoChromaResampler{(*C.GstVideoChromaResample)(p)}}
 }
 
-// UnsafeVideoChromaResamplerFromGlibNone is used to convert raw C.GstVideoChromaResample pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoChromaResamplerFromGlibNone is used to convert raw C.GstVideoChromaResample pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoChromaResamplerFromGlibNone(p unsafe.Pointer) *VideoChromaResampler {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoChromaResamplerFromGlibBorrow(p)
@@ -15240,7 +16553,7 @@ func UnsafeVideoChromaResamplerFromGlibNone(p unsafe.Pointer) *VideoChromaResamp
 	return wrapped
 }
 
-// UnsafeVideoChromaResamplerFromGlibFull is used to convert raw C.GstVideoChromaResample pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoChromaResamplerFromGlibFull is used to convert raw C.GstVideoChromaResample pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoChromaResamplerFromGlibFull(p unsafe.Pointer) *VideoChromaResampler {
 	wrapped := UnsafeVideoChromaResamplerFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -15272,6 +16585,7 @@ func UnsafeVideoChromaResamplerToGlibFull(v *VideoChromaResampler) unsafe.Pointe
 	v.native = nil // VideoChromaResampler is invalid from here on
 	return _p
 }
+
 // VideoCodecAlphaMeta wraps GstVideoCodecAlphaMeta
 //
 // This meta is primarily for internal use in GStreamer elements to support
@@ -15294,7 +16608,7 @@ func UnsafeVideoCodecAlphaMetaFromGlibBorrow(p unsafe.Pointer) *VideoCodecAlphaM
 	return &VideoCodecAlphaMeta{&videoCodecAlphaMeta{(*C.GstVideoCodecAlphaMeta)(p)}}
 }
 
-// UnsafeVideoCodecAlphaMetaFromGlibNone is used to convert raw C.GstVideoCodecAlphaMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoCodecAlphaMetaFromGlibNone is used to convert raw C.GstVideoCodecAlphaMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoCodecAlphaMetaFromGlibNone(p unsafe.Pointer) *VideoCodecAlphaMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoCodecAlphaMetaFromGlibBorrow(p)
@@ -15307,7 +16621,7 @@ func UnsafeVideoCodecAlphaMetaFromGlibNone(p unsafe.Pointer) *VideoCodecAlphaMet
 	return wrapped
 }
 
-// UnsafeVideoCodecAlphaMetaFromGlibFull is used to convert raw C.GstVideoCodecAlphaMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoCodecAlphaMetaFromGlibFull is used to convert raw C.GstVideoCodecAlphaMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoCodecAlphaMetaFromGlibFull(p unsafe.Pointer) *VideoCodecAlphaMeta {
 	wrapped := UnsafeVideoCodecAlphaMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -15339,7 +16653,9 @@ func UnsafeVideoCodecAlphaMetaToGlibFull(v *VideoCodecAlphaMeta) unsafe.Pointer 
 	v.native = nil // VideoCodecAlphaMeta is invalid from here on
 	return _p
 }
+
 // VideoCodecAlphaMetaGetInfo wraps gst_video_codec_alpha_meta_get_info
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.MetaInfo 
@@ -15385,7 +16701,7 @@ func UnsafeVideoCodecFrameFromGlibBorrow(p unsafe.Pointer) *VideoCodecFrame {
 	return &VideoCodecFrame{&videoCodecFrame{(*C.GstVideoCodecFrame)(p)}}
 }
 
-// UnsafeVideoCodecFrameFromGlibNone is used to convert raw C.GstVideoCodecFrame pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoCodecFrameFromGlibNone is used to convert raw C.GstVideoCodecFrame pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoCodecFrameFromGlibNone(p unsafe.Pointer) *VideoCodecFrame {
 	C.gst_video_codec_frame_ref((*C.GstVideoCodecFrame)(p))
 	wrapped := UnsafeVideoCodecFrameFromGlibBorrow(p)
@@ -15398,7 +16714,7 @@ func UnsafeVideoCodecFrameFromGlibNone(p unsafe.Pointer) *VideoCodecFrame {
 	return wrapped
 }
 
-// UnsafeVideoCodecFrameFromGlibFull is used to convert raw C.GstVideoCodecFrame pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoCodecFrameFromGlibFull is used to convert raw C.GstVideoCodecFrame pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoCodecFrameFromGlibFull(p unsafe.Pointer) *VideoCodecFrame {
 	wrapped := UnsafeVideoCodecFrameFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -15437,6 +16753,7 @@ func UnsafeVideoCodecFrameToGlibFull(v *VideoCodecFrame) unsafe.Pointer {
 	v.native = nil // VideoCodecFrame is invalid from here on
 	return _p
 }
+
 // VideoCodecState wraps GstVideoCodecState
 //
 // Structure representing the state of an incoming or outgoing video
@@ -15474,7 +16791,7 @@ func UnsafeVideoCodecStateFromGlibBorrow(p unsafe.Pointer) *VideoCodecState {
 	return &VideoCodecState{&videoCodecState{(*C.GstVideoCodecState)(p)}}
 }
 
-// UnsafeVideoCodecStateFromGlibNone is used to convert raw C.GstVideoCodecState pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoCodecStateFromGlibNone is used to convert raw C.GstVideoCodecState pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoCodecStateFromGlibNone(p unsafe.Pointer) *VideoCodecState {
 	C.gst_video_codec_state_ref((*C.GstVideoCodecState)(p))
 	wrapped := UnsafeVideoCodecStateFromGlibBorrow(p)
@@ -15487,7 +16804,7 @@ func UnsafeVideoCodecStateFromGlibNone(p unsafe.Pointer) *VideoCodecState {
 	return wrapped
 }
 
-// UnsafeVideoCodecStateFromGlibFull is used to convert raw C.GstVideoCodecState pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoCodecStateFromGlibFull is used to convert raw C.GstVideoCodecState pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoCodecStateFromGlibFull(p unsafe.Pointer) *VideoCodecState {
 	wrapped := UnsafeVideoCodecStateFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -15526,6 +16843,7 @@ func UnsafeVideoCodecStateToGlibFull(v *VideoCodecState) unsafe.Pointer {
 	v.native = nil // VideoCodecState is invalid from here on
 	return _p
 }
+
 // VideoColorPrimariesInfo wraps GstVideoColorPrimariesInfo
 //
 // Structure describing the chromaticity coordinates of an RGB system. These
@@ -15545,7 +16863,7 @@ func UnsafeVideoColorPrimariesInfoFromGlibBorrow(p unsafe.Pointer) *VideoColorPr
 	return &VideoColorPrimariesInfo{&videoColorPrimariesInfo{(*C.GstVideoColorPrimariesInfo)(p)}}
 }
 
-// UnsafeVideoColorPrimariesInfoFromGlibNone is used to convert raw C.GstVideoColorPrimariesInfo pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoColorPrimariesInfoFromGlibNone is used to convert raw C.GstVideoColorPrimariesInfo pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoColorPrimariesInfoFromGlibNone(p unsafe.Pointer) *VideoColorPrimariesInfo {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoColorPrimariesInfoFromGlibBorrow(p)
@@ -15558,7 +16876,7 @@ func UnsafeVideoColorPrimariesInfoFromGlibNone(p unsafe.Pointer) *VideoColorPrim
 	return wrapped
 }
 
-// UnsafeVideoColorPrimariesInfoFromGlibFull is used to convert raw C.GstVideoColorPrimariesInfo pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoColorPrimariesInfoFromGlibFull is used to convert raw C.GstVideoColorPrimariesInfo pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoColorPrimariesInfoFromGlibFull(p unsafe.Pointer) *VideoColorPrimariesInfo {
 	wrapped := UnsafeVideoColorPrimariesInfoFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -15590,6 +16908,7 @@ func UnsafeVideoColorPrimariesInfoToGlibFull(v *VideoColorPrimariesInfo) unsafe.
 	v.native = nil // VideoColorPrimariesInfo is invalid from here on
 	return _p
 }
+
 // VideoColorimetry wraps GstVideoColorimetry
 //
 // Structure describing the color info.
@@ -15607,7 +16926,7 @@ func UnsafeVideoColorimetryFromGlibBorrow(p unsafe.Pointer) *VideoColorimetry {
 	return &VideoColorimetry{&videoColorimetry{(*C.GstVideoColorimetry)(p)}}
 }
 
-// UnsafeVideoColorimetryFromGlibNone is used to convert raw C.GstVideoColorimetry pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoColorimetryFromGlibNone is used to convert raw C.GstVideoColorimetry pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoColorimetryFromGlibNone(p unsafe.Pointer) *VideoColorimetry {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoColorimetryFromGlibBorrow(p)
@@ -15620,7 +16939,7 @@ func UnsafeVideoColorimetryFromGlibNone(p unsafe.Pointer) *VideoColorimetry {
 	return wrapped
 }
 
-// UnsafeVideoColorimetryFromGlibFull is used to convert raw C.GstVideoColorimetry pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoColorimetryFromGlibFull is used to convert raw C.GstVideoColorimetry pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoColorimetryFromGlibFull(p unsafe.Pointer) *VideoColorimetry {
 	wrapped := UnsafeVideoColorimetryFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -15652,6 +16971,7 @@ func UnsafeVideoColorimetryToGlibFull(v *VideoColorimetry) unsafe.Pointer {
 	v.native = nil // VideoColorimetry is invalid from here on
 	return _p
 }
+
 // FromString wraps gst_video_colorimetry_from_string
 // 
 // The function takes the following parameters:
@@ -15793,6 +17113,7 @@ func (cinfo *VideoColorimetry) Matches(color string) bool {
 }
 
 // ToString wraps gst_video_colorimetry_to_string
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -15834,7 +17155,7 @@ func UnsafeVideoContentLightLevelFromGlibBorrow(p unsafe.Pointer) *VideoContentL
 	return &VideoContentLightLevel{&videoContentLightLevel{(*C.GstVideoContentLightLevel)(p)}}
 }
 
-// UnsafeVideoContentLightLevelFromGlibNone is used to convert raw C.GstVideoContentLightLevel pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoContentLightLevelFromGlibNone is used to convert raw C.GstVideoContentLightLevel pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoContentLightLevelFromGlibNone(p unsafe.Pointer) *VideoContentLightLevel {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoContentLightLevelFromGlibBorrow(p)
@@ -15847,7 +17168,7 @@ func UnsafeVideoContentLightLevelFromGlibNone(p unsafe.Pointer) *VideoContentLig
 	return wrapped
 }
 
-// UnsafeVideoContentLightLevelFromGlibFull is used to convert raw C.GstVideoContentLightLevel pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoContentLightLevelFromGlibFull is used to convert raw C.GstVideoContentLightLevel pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoContentLightLevelFromGlibFull(p unsafe.Pointer) *VideoContentLightLevel {
 	wrapped := UnsafeVideoContentLightLevelFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -15879,6 +17200,7 @@ func UnsafeVideoContentLightLevelToGlibFull(v *VideoContentLightLevel) unsafe.Po
 	v.native = nil // VideoContentLightLevel is invalid from here on
 	return _p
 }
+
 // AddToCaps wraps gst_video_content_light_level_add_to_caps
 // 
 // The function takes the following parameters:
@@ -16022,6 +17344,7 @@ func (linfo *VideoContentLightLevel) IsEqual(other *VideoContentLightLevel) bool
 }
 
 // ToString wraps gst_video_content_light_level_to_string
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -16059,7 +17382,7 @@ func UnsafeVideoConverterFromGlibBorrow(p unsafe.Pointer) *VideoConverter {
 	return &VideoConverter{&videoConverter{(*C.GstVideoConverter)(p)}}
 }
 
-// UnsafeVideoConverterFromGlibNone is used to convert raw C.GstVideoConverter pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoConverterFromGlibNone is used to convert raw C.GstVideoConverter pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoConverterFromGlibNone(p unsafe.Pointer) *VideoConverter {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoConverterFromGlibBorrow(p)
@@ -16072,7 +17395,7 @@ func UnsafeVideoConverterFromGlibNone(p unsafe.Pointer) *VideoConverter {
 	return wrapped
 }
 
-// UnsafeVideoConverterFromGlibFull is used to convert raw C.GstVideoConverter pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoConverterFromGlibFull is used to convert raw C.GstVideoConverter pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoConverterFromGlibFull(p unsafe.Pointer) *VideoConverter {
 	wrapped := UnsafeVideoConverterFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -16104,6 +17427,7 @@ func UnsafeVideoConverterToGlibFull(v *VideoConverter) unsafe.Pointer {
 	v.native = nil // VideoConverter is invalid from here on
 	return _p
 }
+
 // Frame wraps gst_video_converter_frame
 // 
 // The function takes the following parameters:
@@ -16145,6 +17469,7 @@ func (convert *VideoConverter) FrameFinish() {
 }
 
 // GetConfig wraps gst_video_converter_get_config
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Structure 
@@ -16167,6 +17492,7 @@ func (convert *VideoConverter) GetConfig() *gst.Structure {
 }
 
 // GetInInfo wraps gst_video_converter_get_in_info
+// 
 // The function returns the following values:
 // 
 // 	- goret *VideoInfo 
@@ -16189,6 +17515,7 @@ func (convert *VideoConverter) GetInInfo() *VideoInfo {
 }
 
 // GetOutInfo wraps gst_video_converter_get_out_info
+// 
 // The function returns the following values:
 // 
 // 	- goret *VideoInfo 
@@ -16266,7 +17593,7 @@ func UnsafeVideoCropMetaFromGlibBorrow(p unsafe.Pointer) *VideoCropMeta {
 	return &VideoCropMeta{&videoCropMeta{(*C.GstVideoCropMeta)(p)}}
 }
 
-// UnsafeVideoCropMetaFromGlibNone is used to convert raw C.GstVideoCropMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoCropMetaFromGlibNone is used to convert raw C.GstVideoCropMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoCropMetaFromGlibNone(p unsafe.Pointer) *VideoCropMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoCropMetaFromGlibBorrow(p)
@@ -16279,7 +17606,7 @@ func UnsafeVideoCropMetaFromGlibNone(p unsafe.Pointer) *VideoCropMeta {
 	return wrapped
 }
 
-// UnsafeVideoCropMetaFromGlibFull is used to convert raw C.GstVideoCropMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoCropMetaFromGlibFull is used to convert raw C.GstVideoCropMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoCropMetaFromGlibFull(p unsafe.Pointer) *VideoCropMeta {
 	wrapped := UnsafeVideoCropMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -16311,7 +17638,9 @@ func UnsafeVideoCropMetaToGlibFull(v *VideoCropMeta) unsafe.Pointer {
 	v.native = nil // VideoCropMeta is invalid from here on
 	return _p
 }
+
 // VideoCropMetaGetInfo wraps gst_video_crop_meta_get_info
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.MetaInfo 
@@ -16333,6 +17662,8 @@ func VideoCropMetaGetInfo() *gst.MetaInfo {
 // needed. At minimum @handle_frame needs to be overridden, and @set_format
 // and likely as well.  If non-packetized input is supported or expected,
 // @parse needs to be overridden as well.
+// 
+// VideoDecoderClass is the type struct for [VideoDecoder]
 type VideoDecoderClass struct {
 	*videoDecoderClass
 }
@@ -16347,31 +17678,6 @@ func UnsafeVideoDecoderClassFromGlibBorrow(p unsafe.Pointer) *VideoDecoderClass 
 	return &VideoDecoderClass{&videoDecoderClass{(*C.GstVideoDecoderClass)(p)}}
 }
 
-// UnsafeVideoDecoderClassFromGlibNone is used to convert raw C.GstVideoDecoderClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeVideoDecoderClassFromGlibNone(p unsafe.Pointer) *VideoDecoderClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeVideoDecoderClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.videoDecoderClass,
-		func (intern *videoDecoderClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeVideoDecoderClassFromGlibFull is used to convert raw C.GstVideoDecoderClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeVideoDecoderClassFromGlibFull(p unsafe.Pointer) *VideoDecoderClass {
-	wrapped := UnsafeVideoDecoderClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.videoDecoderClass,
-		func (intern *videoDecoderClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeVideoDecoderClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [VideoDecoderClass] is expected to work anymore.
@@ -16384,14 +17690,15 @@ func UnsafeVideoDecoderClassToGlibNone(v *VideoDecoderClass) unsafe.Pointer {
 	return unsafe.Pointer(v.native)
 }
 
-// UnsafeVideoDecoderClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeVideoDecoderClassToGlibFull(v *VideoDecoderClass) unsafe.Pointer {
-	runtime.SetFinalizer(v.videoDecoderClass, nil)
-	_p := unsafe.Pointer(v.native)
-	v.native = nil // VideoDecoderClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (v *VideoDecoderClass) ParentClass() *gst.ElementClass {
+	parent := gst.UnsafeElementClassFromGlibBorrow(UnsafeVideoDecoderClassToGlibNone(v))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *VideoDecoderClass) {}, v)
+	return parent
 }
+
 // VideoDirectionInterface wraps GstVideoDirectionInterface
 //
 // #GstVideoDirectionInterface interface.
@@ -16409,7 +17716,7 @@ func UnsafeVideoDirectionInterfaceFromGlibBorrow(p unsafe.Pointer) *VideoDirecti
 	return &VideoDirectionInterface{&videoDirectionInterface{(*C.GstVideoDirectionInterface)(p)}}
 }
 
-// UnsafeVideoDirectionInterfaceFromGlibNone is used to convert raw C.GstVideoDirectionInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoDirectionInterfaceFromGlibNone is used to convert raw C.GstVideoDirectionInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoDirectionInterfaceFromGlibNone(p unsafe.Pointer) *VideoDirectionInterface {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoDirectionInterfaceFromGlibBorrow(p)
@@ -16422,7 +17729,7 @@ func UnsafeVideoDirectionInterfaceFromGlibNone(p unsafe.Pointer) *VideoDirection
 	return wrapped
 }
 
-// UnsafeVideoDirectionInterfaceFromGlibFull is used to convert raw C.GstVideoDirectionInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoDirectionInterfaceFromGlibFull is used to convert raw C.GstVideoDirectionInterface pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoDirectionInterfaceFromGlibFull(p unsafe.Pointer) *VideoDirectionInterface {
 	wrapped := UnsafeVideoDirectionInterfaceFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -16454,6 +17761,7 @@ func UnsafeVideoDirectionInterfaceToGlibFull(v *VideoDirectionInterface) unsafe.
 	v.native = nil // VideoDirectionInterface is invalid from here on
 	return _p
 }
+
 // VideoDither wraps GstVideoDither
 //
 // GstVideoDither provides implementations of several dithering algorithms
@@ -16472,7 +17780,7 @@ func UnsafeVideoDitherFromGlibBorrow(p unsafe.Pointer) *VideoDither {
 	return &VideoDither{&videoDither{(*C.GstVideoDither)(p)}}
 }
 
-// UnsafeVideoDitherFromGlibNone is used to convert raw C.GstVideoDither pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoDitherFromGlibNone is used to convert raw C.GstVideoDither pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoDitherFromGlibNone(p unsafe.Pointer) *VideoDither {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoDitherFromGlibBorrow(p)
@@ -16485,7 +17793,7 @@ func UnsafeVideoDitherFromGlibNone(p unsafe.Pointer) *VideoDither {
 	return wrapped
 }
 
-// UnsafeVideoDitherFromGlibFull is used to convert raw C.GstVideoDither pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoDitherFromGlibFull is used to convert raw C.GstVideoDither pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoDitherFromGlibFull(p unsafe.Pointer) *VideoDither {
 	wrapped := UnsafeVideoDitherFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -16517,11 +17825,14 @@ func UnsafeVideoDitherToGlibFull(v *VideoDither) unsafe.Pointer {
 	v.native = nil // VideoDither is invalid from here on
 	return _p
 }
+
 // VideoEncoderClass wraps GstVideoEncoderClass
 //
 // Subclasses can override any of the available virtual methods or not, as
 // needed. At minimum @handle_frame needs to be overridden, and @set_format
 // and @get_caps are likely needed as well.
+// 
+// VideoEncoderClass is the type struct for [VideoEncoder]
 type VideoEncoderClass struct {
 	*videoEncoderClass
 }
@@ -16536,31 +17847,6 @@ func UnsafeVideoEncoderClassFromGlibBorrow(p unsafe.Pointer) *VideoEncoderClass 
 	return &VideoEncoderClass{&videoEncoderClass{(*C.GstVideoEncoderClass)(p)}}
 }
 
-// UnsafeVideoEncoderClassFromGlibNone is used to convert raw C.GstVideoEncoderClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeVideoEncoderClassFromGlibNone(p unsafe.Pointer) *VideoEncoderClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeVideoEncoderClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.videoEncoderClass,
-		func (intern *videoEncoderClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeVideoEncoderClassFromGlibFull is used to convert raw C.GstVideoEncoderClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeVideoEncoderClassFromGlibFull(p unsafe.Pointer) *VideoEncoderClass {
-	wrapped := UnsafeVideoEncoderClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.videoEncoderClass,
-		func (intern *videoEncoderClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeVideoEncoderClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [VideoEncoderClass] is expected to work anymore.
@@ -16573,17 +17859,20 @@ func UnsafeVideoEncoderClassToGlibNone(v *VideoEncoderClass) unsafe.Pointer {
 	return unsafe.Pointer(v.native)
 }
 
-// UnsafeVideoEncoderClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeVideoEncoderClassToGlibFull(v *VideoEncoderClass) unsafe.Pointer {
-	runtime.SetFinalizer(v.videoEncoderClass, nil)
-	_p := unsafe.Pointer(v.native)
-	v.native = nil // VideoEncoderClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (v *VideoEncoderClass) ParentClass() *gst.ElementClass {
+	parent := gst.UnsafeElementClassFromGlibBorrow(UnsafeVideoEncoderClassToGlibNone(v))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *VideoEncoderClass) {}, v)
+	return parent
 }
+
 // VideoFilterClass wraps GstVideoFilterClass
 //
 // The video filter class structure.
+// 
+// VideoFilterClass is the type struct for [VideoFilter]
 type VideoFilterClass struct {
 	*videoFilterClass
 }
@@ -16598,31 +17887,6 @@ func UnsafeVideoFilterClassFromGlibBorrow(p unsafe.Pointer) *VideoFilterClass {
 	return &VideoFilterClass{&videoFilterClass{(*C.GstVideoFilterClass)(p)}}
 }
 
-// UnsafeVideoFilterClassFromGlibNone is used to convert raw C.GstVideoFilterClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeVideoFilterClassFromGlibNone(p unsafe.Pointer) *VideoFilterClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeVideoFilterClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.videoFilterClass,
-		func (intern *videoFilterClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeVideoFilterClassFromGlibFull is used to convert raw C.GstVideoFilterClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeVideoFilterClassFromGlibFull(p unsafe.Pointer) *VideoFilterClass {
-	wrapped := UnsafeVideoFilterClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.videoFilterClass,
-		func (intern *videoFilterClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeVideoFilterClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [VideoFilterClass] is expected to work anymore.
@@ -16635,14 +17899,15 @@ func UnsafeVideoFilterClassToGlibNone(v *VideoFilterClass) unsafe.Pointer {
 	return unsafe.Pointer(v.native)
 }
 
-// UnsafeVideoFilterClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeVideoFilterClassToGlibFull(v *VideoFilterClass) unsafe.Pointer {
-	runtime.SetFinalizer(v.videoFilterClass, nil)
-	_p := unsafe.Pointer(v.native)
-	v.native = nil // VideoFilterClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (v *VideoFilterClass) ParentClass() *gstbase.BaseTransformClass {
+	parent := gstbase.UnsafeBaseTransformClassFromGlibBorrow(UnsafeVideoFilterClassToGlibNone(v))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *VideoFilterClass) {}, v)
+	return parent
 }
+
 // VideoFormatInfo wraps GstVideoFormatInfo
 //
 // Information for a video format.
@@ -16660,7 +17925,7 @@ func UnsafeVideoFormatInfoFromGlibBorrow(p unsafe.Pointer) *VideoFormatInfo {
 	return &VideoFormatInfo{&videoFormatInfo{(*C.GstVideoFormatInfo)(p)}}
 }
 
-// UnsafeVideoFormatInfoFromGlibNone is used to convert raw C.GstVideoFormatInfo pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoFormatInfoFromGlibNone is used to convert raw C.GstVideoFormatInfo pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoFormatInfoFromGlibNone(p unsafe.Pointer) *VideoFormatInfo {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoFormatInfoFromGlibBorrow(p)
@@ -16673,7 +17938,7 @@ func UnsafeVideoFormatInfoFromGlibNone(p unsafe.Pointer) *VideoFormatInfo {
 	return wrapped
 }
 
-// UnsafeVideoFormatInfoFromGlibFull is used to convert raw C.GstVideoFormatInfo pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoFormatInfoFromGlibFull is used to convert raw C.GstVideoFormatInfo pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoFormatInfoFromGlibFull(p unsafe.Pointer) *VideoFormatInfo {
 	wrapped := UnsafeVideoFormatInfoFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -16705,6 +17970,7 @@ func UnsafeVideoFormatInfoToGlibFull(v *VideoFormatInfo) unsafe.Pointer {
 	v.native = nil // VideoFormatInfo is invalid from here on
 	return _p
 }
+
 // Component wraps gst_video_format_info_component
 // 
 // The function takes the following parameters:
@@ -16789,7 +18055,7 @@ func UnsafeVideoFrameFromGlibBorrow(p unsafe.Pointer) *VideoFrame {
 	return &VideoFrame{&videoFrame{(*C.GstVideoFrame)(p)}}
 }
 
-// UnsafeVideoFrameFromGlibNone is used to convert raw C.GstVideoFrame pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoFrameFromGlibNone is used to convert raw C.GstVideoFrame pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoFrameFromGlibNone(p unsafe.Pointer) *VideoFrame {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoFrameFromGlibBorrow(p)
@@ -16802,7 +18068,7 @@ func UnsafeVideoFrameFromGlibNone(p unsafe.Pointer) *VideoFrame {
 	return wrapped
 }
 
-// UnsafeVideoFrameFromGlibFull is used to convert raw C.GstVideoFrame pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoFrameFromGlibFull is used to convert raw C.GstVideoFrame pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoFrameFromGlibFull(p unsafe.Pointer) *VideoFrame {
 	wrapped := UnsafeVideoFrameFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -16834,6 +18100,7 @@ func UnsafeVideoFrameToGlibFull(v *VideoFrame) unsafe.Pointer {
 	v.native = nil // VideoFrame is invalid from here on
 	return _p
 }
+
 // VideoFrameMap wraps gst_video_frame_map
 // 
 // The function takes the following parameters:
@@ -17079,7 +18346,7 @@ func UnsafeVideoGLTextureUploadMetaFromGlibBorrow(p unsafe.Pointer) *VideoGLText
 	return &VideoGLTextureUploadMeta{&videoGLTextureUploadMeta{(*C.GstVideoGLTextureUploadMeta)(p)}}
 }
 
-// UnsafeVideoGLTextureUploadMetaFromGlibNone is used to convert raw C.GstVideoGLTextureUploadMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoGLTextureUploadMetaFromGlibNone is used to convert raw C.GstVideoGLTextureUploadMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoGLTextureUploadMetaFromGlibNone(p unsafe.Pointer) *VideoGLTextureUploadMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoGLTextureUploadMetaFromGlibBorrow(p)
@@ -17092,7 +18359,7 @@ func UnsafeVideoGLTextureUploadMetaFromGlibNone(p unsafe.Pointer) *VideoGLTextur
 	return wrapped
 }
 
-// UnsafeVideoGLTextureUploadMetaFromGlibFull is used to convert raw C.GstVideoGLTextureUploadMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoGLTextureUploadMetaFromGlibFull is used to convert raw C.GstVideoGLTextureUploadMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoGLTextureUploadMetaFromGlibFull(p unsafe.Pointer) *VideoGLTextureUploadMeta {
 	wrapped := UnsafeVideoGLTextureUploadMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -17124,7 +18391,9 @@ func UnsafeVideoGLTextureUploadMetaToGlibFull(v *VideoGLTextureUploadMeta) unsaf
 	v.native = nil // VideoGLTextureUploadMeta is invalid from here on
 	return _p
 }
+
 // VideoGLTextureUploadMetaGetInfo wraps gst_video_gl_texture_upload_meta_get_info
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.MetaInfo 
@@ -17208,7 +18477,7 @@ func UnsafeVideoInfoFromGlibBorrow(p unsafe.Pointer) *VideoInfo {
 	return &VideoInfo{&videoInfo{(*C.GstVideoInfo)(p)}}
 }
 
-// UnsafeVideoInfoFromGlibNone is used to convert raw C.GstVideoInfo pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoInfoFromGlibNone is used to convert raw C.GstVideoInfo pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoInfoFromGlibNone(p unsafe.Pointer) *VideoInfo {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoInfoFromGlibBorrow(p)
@@ -17221,7 +18490,7 @@ func UnsafeVideoInfoFromGlibNone(p unsafe.Pointer) *VideoInfo {
 	return wrapped
 }
 
-// UnsafeVideoInfoFromGlibFull is used to convert raw C.GstVideoInfo pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoInfoFromGlibFull is used to convert raw C.GstVideoInfo pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoInfoFromGlibFull(p unsafe.Pointer) *VideoInfo {
 	wrapped := UnsafeVideoInfoFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -17253,7 +18522,9 @@ func UnsafeVideoInfoToGlibFull(v *VideoInfo) unsafe.Pointer {
 	v.native = nil // VideoInfo is invalid from here on
 	return _p
 }
+
 // NewVideoInfo wraps gst_video_info_new
+// 
 // The function returns the following values:
 // 
 // 	- goret *VideoInfo 
@@ -17337,6 +18608,7 @@ func VideoInfoFromCaps(caps *gst.Caps) (VideoInfo, bool) {
 }
 
 // VideoInfoInit wraps gst_video_info_init
+// 
 // The function returns the following values:
 // 
 // 	- info VideoInfo: a #GstVideoInfo 
@@ -17484,6 +18756,7 @@ func (info *VideoInfo) Convert(srcFormat gst.Format, srcValue int64, destFormat 
 }
 
 // Copy wraps gst_video_info_copy
+// 
 // The function returns the following values:
 // 
 // 	- goret *VideoInfo 
@@ -17627,6 +18900,7 @@ func (info *VideoInfo) SetInterlacedFormat(format VideoFormat, mode VideoInterla
 }
 
 // ToCaps wraps gst_video_info_to_caps
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Caps 
@@ -17679,7 +18953,7 @@ func UnsafeVideoInfoDmaDrmFromGlibBorrow(p unsafe.Pointer) *VideoInfoDmaDrm {
 	return &VideoInfoDmaDrm{&videoInfoDmaDrm{(*C.GstVideoInfoDmaDrm)(p)}}
 }
 
-// UnsafeVideoInfoDmaDrmFromGlibNone is used to convert raw C.GstVideoInfoDmaDrm pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoInfoDmaDrmFromGlibNone is used to convert raw C.GstVideoInfoDmaDrm pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoInfoDmaDrmFromGlibNone(p unsafe.Pointer) *VideoInfoDmaDrm {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoInfoDmaDrmFromGlibBorrow(p)
@@ -17692,7 +18966,7 @@ func UnsafeVideoInfoDmaDrmFromGlibNone(p unsafe.Pointer) *VideoInfoDmaDrm {
 	return wrapped
 }
 
-// UnsafeVideoInfoDmaDrmFromGlibFull is used to convert raw C.GstVideoInfoDmaDrm pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoInfoDmaDrmFromGlibFull is used to convert raw C.GstVideoInfoDmaDrm pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoInfoDmaDrmFromGlibFull(p unsafe.Pointer) *VideoInfoDmaDrm {
 	wrapped := UnsafeVideoInfoDmaDrmFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -17724,7 +18998,9 @@ func UnsafeVideoInfoDmaDrmToGlibFull(v *VideoInfoDmaDrm) unsafe.Pointer {
 	v.native = nil // VideoInfoDmaDrm is invalid from here on
 	return _p
 }
+
 // NewVideoInfoDmaDrm wraps gst_video_info_dma_drm_new
+// 
 // The function returns the following values:
 // 
 // 	- goret *VideoInfoDmaDrm 
@@ -17852,6 +19128,7 @@ func VideoInfoDmaDrmFromVideoInfo(info *VideoInfo, modifier uint64) (VideoInfoDm
 }
 
 // VideoInfoDmaDrmInit wraps gst_video_info_dma_drm_init
+// 
 // The function returns the following values:
 // 
 // 	- drmInfo VideoInfoDmaDrm: a #GstVideoInfoDmaDrm 
@@ -17872,6 +19149,7 @@ func VideoInfoDmaDrmInit() VideoInfoDmaDrm {
 }
 
 // ToCaps wraps gst_video_info_dma_drm_to_caps
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Caps (nullable) 
@@ -17899,6 +19177,7 @@ func (drmInfo *VideoInfoDmaDrm) ToCaps() *gst.Caps {
 }
 
 // ToVideoInfo wraps gst_video_info_dma_drm_to_video_info
+// 
 // The function returns the following values:
 // 
 // 	- info VideoInfo: #GstVideoInfo 
@@ -17950,7 +19229,7 @@ func UnsafeVideoMasteringDisplayInfoFromGlibBorrow(p unsafe.Pointer) *VideoMaste
 	return &VideoMasteringDisplayInfo{&videoMasteringDisplayInfo{(*C.GstVideoMasteringDisplayInfo)(p)}}
 }
 
-// UnsafeVideoMasteringDisplayInfoFromGlibNone is used to convert raw C.GstVideoMasteringDisplayInfo pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoMasteringDisplayInfoFromGlibNone is used to convert raw C.GstVideoMasteringDisplayInfo pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoMasteringDisplayInfoFromGlibNone(p unsafe.Pointer) *VideoMasteringDisplayInfo {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoMasteringDisplayInfoFromGlibBorrow(p)
@@ -17963,7 +19242,7 @@ func UnsafeVideoMasteringDisplayInfoFromGlibNone(p unsafe.Pointer) *VideoMasteri
 	return wrapped
 }
 
-// UnsafeVideoMasteringDisplayInfoFromGlibFull is used to convert raw C.GstVideoMasteringDisplayInfo pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoMasteringDisplayInfoFromGlibFull is used to convert raw C.GstVideoMasteringDisplayInfo pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoMasteringDisplayInfoFromGlibFull(p unsafe.Pointer) *VideoMasteringDisplayInfo {
 	wrapped := UnsafeVideoMasteringDisplayInfoFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -17995,6 +19274,7 @@ func UnsafeVideoMasteringDisplayInfoToGlibFull(v *VideoMasteringDisplayInfo) uns
 	v.native = nil // VideoMasteringDisplayInfo is invalid from here on
 	return _p
 }
+
 // VideoMasteringDisplayInfoFromString wraps gst_video_mastering_display_info_from_string
 // 
 // The function takes the following parameters:
@@ -18140,6 +19420,7 @@ func (minfo *VideoMasteringDisplayInfo) IsEqual(other *VideoMasteringDisplayInfo
 }
 
 // ToString wraps gst_video_mastering_display_info_to_string
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -18180,7 +19461,7 @@ func UnsafeVideoMasteringDisplayInfoCoordinatesFromGlibBorrow(p unsafe.Pointer) 
 	return &VideoMasteringDisplayInfoCoordinates{&videoMasteringDisplayInfoCoordinates{(*C.GstVideoMasteringDisplayInfoCoordinates)(p)}}
 }
 
-// UnsafeVideoMasteringDisplayInfoCoordinatesFromGlibNone is used to convert raw C.GstVideoMasteringDisplayInfoCoordinates pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoMasteringDisplayInfoCoordinatesFromGlibNone is used to convert raw C.GstVideoMasteringDisplayInfoCoordinates pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoMasteringDisplayInfoCoordinatesFromGlibNone(p unsafe.Pointer) *VideoMasteringDisplayInfoCoordinates {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoMasteringDisplayInfoCoordinatesFromGlibBorrow(p)
@@ -18193,7 +19474,7 @@ func UnsafeVideoMasteringDisplayInfoCoordinatesFromGlibNone(p unsafe.Pointer) *V
 	return wrapped
 }
 
-// UnsafeVideoMasteringDisplayInfoCoordinatesFromGlibFull is used to convert raw C.GstVideoMasteringDisplayInfoCoordinates pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoMasteringDisplayInfoCoordinatesFromGlibFull is used to convert raw C.GstVideoMasteringDisplayInfoCoordinates pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoMasteringDisplayInfoCoordinatesFromGlibFull(p unsafe.Pointer) *VideoMasteringDisplayInfoCoordinates {
 	wrapped := UnsafeVideoMasteringDisplayInfoCoordinatesFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -18225,6 +19506,7 @@ func UnsafeVideoMasteringDisplayInfoCoordinatesToGlibFull(v *VideoMasteringDispl
 	v.native = nil // VideoMasteringDisplayInfoCoordinates is invalid from here on
 	return _p
 }
+
 // VideoMeta wraps GstVideoMeta
 //
 // Extra buffer metadata describing image properties
@@ -18260,7 +19542,7 @@ func UnsafeVideoMetaFromGlibBorrow(p unsafe.Pointer) *VideoMeta {
 	return &VideoMeta{&videoMeta{(*C.GstVideoMeta)(p)}}
 }
 
-// UnsafeVideoMetaFromGlibNone is used to convert raw C.GstVideoMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoMetaFromGlibNone is used to convert raw C.GstVideoMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoMetaFromGlibNone(p unsafe.Pointer) *VideoMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoMetaFromGlibBorrow(p)
@@ -18273,7 +19555,7 @@ func UnsafeVideoMetaFromGlibNone(p unsafe.Pointer) *VideoMeta {
 	return wrapped
 }
 
-// UnsafeVideoMetaFromGlibFull is used to convert raw C.GstVideoMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoMetaFromGlibFull is used to convert raw C.GstVideoMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoMetaFromGlibFull(p unsafe.Pointer) *VideoMeta {
 	wrapped := UnsafeVideoMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -18305,7 +19587,9 @@ func UnsafeVideoMetaToGlibFull(v *VideoMeta) unsafe.Pointer {
 	v.native = nil // VideoMeta is invalid from here on
 	return _p
 }
+
 // VideoMetaGetInfo wraps gst_video_meta_get_info
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.MetaInfo 
@@ -18375,7 +19659,7 @@ func UnsafeVideoMetaTransformFromGlibBorrow(p unsafe.Pointer) *VideoMetaTransfor
 	return &VideoMetaTransform{&videoMetaTransform{(*C.GstVideoMetaTransform)(p)}}
 }
 
-// UnsafeVideoMetaTransformFromGlibNone is used to convert raw C.GstVideoMetaTransform pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoMetaTransformFromGlibNone is used to convert raw C.GstVideoMetaTransform pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoMetaTransformFromGlibNone(p unsafe.Pointer) *VideoMetaTransform {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoMetaTransformFromGlibBorrow(p)
@@ -18388,7 +19672,7 @@ func UnsafeVideoMetaTransformFromGlibNone(p unsafe.Pointer) *VideoMetaTransform 
 	return wrapped
 }
 
-// UnsafeVideoMetaTransformFromGlibFull is used to convert raw C.GstVideoMetaTransform pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoMetaTransformFromGlibFull is used to convert raw C.GstVideoMetaTransform pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoMetaTransformFromGlibFull(p unsafe.Pointer) *VideoMetaTransform {
 	wrapped := UnsafeVideoMetaTransformFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -18420,7 +19704,9 @@ func UnsafeVideoMetaTransformToGlibFull(v *VideoMetaTransform) unsafe.Pointer {
 	v.native = nil // VideoMetaTransform is invalid from here on
 	return _p
 }
+
 // VideoMetaTransformScaleGetQuark wraps gst_video_meta_transform_scale_get_quark
+// 
 // The function returns the following values:
 // 
 // 	- goret glib.Quark 
@@ -18455,7 +19741,7 @@ func UnsafeVideoOrientationInterfaceFromGlibBorrow(p unsafe.Pointer) *VideoOrien
 	return &VideoOrientationInterface{&videoOrientationInterface{(*C.GstVideoOrientationInterface)(p)}}
 }
 
-// UnsafeVideoOrientationInterfaceFromGlibNone is used to convert raw C.GstVideoOrientationInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoOrientationInterfaceFromGlibNone is used to convert raw C.GstVideoOrientationInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoOrientationInterfaceFromGlibNone(p unsafe.Pointer) *VideoOrientationInterface {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoOrientationInterfaceFromGlibBorrow(p)
@@ -18468,7 +19754,7 @@ func UnsafeVideoOrientationInterfaceFromGlibNone(p unsafe.Pointer) *VideoOrienta
 	return wrapped
 }
 
-// UnsafeVideoOrientationInterfaceFromGlibFull is used to convert raw C.GstVideoOrientationInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoOrientationInterfaceFromGlibFull is used to convert raw C.GstVideoOrientationInterface pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoOrientationInterfaceFromGlibFull(p unsafe.Pointer) *VideoOrientationInterface {
 	wrapped := UnsafeVideoOrientationInterfaceFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -18500,6 +19786,7 @@ func UnsafeVideoOrientationInterfaceToGlibFull(v *VideoOrientationInterface) uns
 	v.native = nil // VideoOrientationInterface is invalid from here on
 	return _p
 }
+
 // VideoOverlayComposition wraps GstVideoOverlayComposition
 //
 // Functions to create and handle overlay compositions on video buffers.
@@ -18550,7 +19837,7 @@ func UnsafeVideoOverlayCompositionFromGlibBorrow(p unsafe.Pointer) *VideoOverlay
 	return &VideoOverlayComposition{&videoOverlayComposition{(*C.GstVideoOverlayComposition)(p)}}
 }
 
-// UnsafeVideoOverlayCompositionFromGlibNone is used to convert raw C.GstVideoOverlayComposition pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoOverlayCompositionFromGlibNone is used to convert raw C.GstVideoOverlayComposition pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoOverlayCompositionFromGlibNone(p unsafe.Pointer) *VideoOverlayComposition {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoOverlayCompositionFromGlibBorrow(p)
@@ -18563,7 +19850,7 @@ func UnsafeVideoOverlayCompositionFromGlibNone(p unsafe.Pointer) *VideoOverlayCo
 	return wrapped
 }
 
-// UnsafeVideoOverlayCompositionFromGlibFull is used to convert raw C.GstVideoOverlayComposition pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoOverlayCompositionFromGlibFull is used to convert raw C.GstVideoOverlayComposition pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoOverlayCompositionFromGlibFull(p unsafe.Pointer) *VideoOverlayComposition {
 	wrapped := UnsafeVideoOverlayCompositionFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -18595,6 +19882,7 @@ func UnsafeVideoOverlayCompositionToGlibFull(v *VideoOverlayComposition) unsafe.
 	v.native = nil // VideoOverlayComposition is invalid from here on
 	return _p
 }
+
 // NewVideoOverlayComposition wraps gst_video_overlay_composition_new
 // 
 // The function takes the following parameters:
@@ -18688,6 +19976,7 @@ func (comp *VideoOverlayComposition) Blend(videoBuf *VideoFrame) bool {
 }
 
 // Copy wraps gst_video_overlay_composition_copy
+// 
 // The function returns the following values:
 // 
 // 	- goret *VideoOverlayComposition 
@@ -18746,6 +20035,7 @@ func (comp *VideoOverlayComposition) GetRectangle(n uint) *VideoOverlayRectangle
 }
 
 // GetSeqnum wraps gst_video_overlay_composition_get_seqnum
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -18771,6 +20061,7 @@ func (comp *VideoOverlayComposition) GetSeqnum() uint {
 }
 
 // MakeWritable wraps gst_video_overlay_composition_make_writable
+// 
 // The function returns the following values:
 // 
 // 	- goret *VideoOverlayComposition 
@@ -18797,6 +20088,7 @@ func (comp *VideoOverlayComposition) MakeWritable() *VideoOverlayComposition {
 }
 
 // NRectangles wraps gst_video_overlay_composition_n_rectangles
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -18835,7 +20127,7 @@ func UnsafeVideoOverlayCompositionMetaFromGlibBorrow(p unsafe.Pointer) *VideoOve
 	return &VideoOverlayCompositionMeta{&videoOverlayCompositionMeta{(*C.GstVideoOverlayCompositionMeta)(p)}}
 }
 
-// UnsafeVideoOverlayCompositionMetaFromGlibNone is used to convert raw C.GstVideoOverlayCompositionMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoOverlayCompositionMetaFromGlibNone is used to convert raw C.GstVideoOverlayCompositionMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoOverlayCompositionMetaFromGlibNone(p unsafe.Pointer) *VideoOverlayCompositionMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoOverlayCompositionMetaFromGlibBorrow(p)
@@ -18848,7 +20140,7 @@ func UnsafeVideoOverlayCompositionMetaFromGlibNone(p unsafe.Pointer) *VideoOverl
 	return wrapped
 }
 
-// UnsafeVideoOverlayCompositionMetaFromGlibFull is used to convert raw C.GstVideoOverlayCompositionMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoOverlayCompositionMetaFromGlibFull is used to convert raw C.GstVideoOverlayCompositionMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoOverlayCompositionMetaFromGlibFull(p unsafe.Pointer) *VideoOverlayCompositionMeta {
 	wrapped := UnsafeVideoOverlayCompositionMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -18880,7 +20172,9 @@ func UnsafeVideoOverlayCompositionMetaToGlibFull(v *VideoOverlayCompositionMeta)
 	v.native = nil // VideoOverlayCompositionMeta is invalid from here on
 	return _p
 }
+
 // VideoOverlayCompositionMetaGetInfo wraps gst_video_overlay_composition_meta_get_info
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.MetaInfo 
@@ -18913,7 +20207,7 @@ func UnsafeVideoOverlayInterfaceFromGlibBorrow(p unsafe.Pointer) *VideoOverlayIn
 	return &VideoOverlayInterface{&videoOverlayInterface{(*C.GstVideoOverlayInterface)(p)}}
 }
 
-// UnsafeVideoOverlayInterfaceFromGlibNone is used to convert raw C.GstVideoOverlayInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoOverlayInterfaceFromGlibNone is used to convert raw C.GstVideoOverlayInterface pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoOverlayInterfaceFromGlibNone(p unsafe.Pointer) *VideoOverlayInterface {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoOverlayInterfaceFromGlibBorrow(p)
@@ -18926,7 +20220,7 @@ func UnsafeVideoOverlayInterfaceFromGlibNone(p unsafe.Pointer) *VideoOverlayInte
 	return wrapped
 }
 
-// UnsafeVideoOverlayInterfaceFromGlibFull is used to convert raw C.GstVideoOverlayInterface pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoOverlayInterfaceFromGlibFull is used to convert raw C.GstVideoOverlayInterface pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoOverlayInterfaceFromGlibFull(p unsafe.Pointer) *VideoOverlayInterface {
 	wrapped := UnsafeVideoOverlayInterfaceFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -18958,6 +20252,7 @@ func UnsafeVideoOverlayInterfaceToGlibFull(v *VideoOverlayInterface) unsafe.Poin
 	v.native = nil // VideoOverlayInterface is invalid from here on
 	return _p
 }
+
 // VideoOverlayRectangle wraps GstVideoOverlayRectangle
 //
 // An opaque video overlay rectangle object. A rectangle contains a single
@@ -18988,7 +20283,7 @@ func UnsafeVideoOverlayRectangleFromGlibBorrow(p unsafe.Pointer) *VideoOverlayRe
 	return &VideoOverlayRectangle{&videoOverlayRectangle{(*C.GstVideoOverlayRectangle)(p)}}
 }
 
-// UnsafeVideoOverlayRectangleFromGlibNone is used to convert raw C.GstVideoOverlayRectangle pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoOverlayRectangleFromGlibNone is used to convert raw C.GstVideoOverlayRectangle pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoOverlayRectangleFromGlibNone(p unsafe.Pointer) *VideoOverlayRectangle {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoOverlayRectangleFromGlibBorrow(p)
@@ -19001,7 +20296,7 @@ func UnsafeVideoOverlayRectangleFromGlibNone(p unsafe.Pointer) *VideoOverlayRect
 	return wrapped
 }
 
-// UnsafeVideoOverlayRectangleFromGlibFull is used to convert raw C.GstVideoOverlayRectangle pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoOverlayRectangleFromGlibFull is used to convert raw C.GstVideoOverlayRectangle pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoOverlayRectangleFromGlibFull(p unsafe.Pointer) *VideoOverlayRectangle {
 	wrapped := UnsafeVideoOverlayRectangleFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -19033,6 +20328,7 @@ func UnsafeVideoOverlayRectangleToGlibFull(v *VideoOverlayRectangle) unsafe.Poin
 	v.native = nil // VideoOverlayRectangle is invalid from here on
 	return _p
 }
+
 // NewVideoOverlayRectangleRaw wraps gst_video_overlay_rectangle_new_raw
 // 
 // The function takes the following parameters:
@@ -19093,6 +20389,7 @@ func NewVideoOverlayRectangleRaw(pixels *gst.Buffer, renderX int, renderY int, r
 }
 
 // Copy wraps gst_video_overlay_rectangle_copy
+// 
 // The function returns the following values:
 // 
 // 	- goret *VideoOverlayRectangle 
@@ -19118,6 +20415,7 @@ func (rectangle *VideoOverlayRectangle) Copy() *VideoOverlayRectangle {
 }
 
 // GetFlags wraps gst_video_overlay_rectangle_get_flags
+// 
 // The function returns the following values:
 // 
 // 	- goret VideoOverlayFormatFlags 
@@ -19144,6 +20442,7 @@ func (rectangle *VideoOverlayRectangle) GetFlags() VideoOverlayFormatFlags {
 }
 
 // GetGlobalAlpha wraps gst_video_overlay_rectangle_get_global_alpha
+// 
 // The function returns the following values:
 // 
 // 	- goret float32 
@@ -19373,6 +20672,7 @@ func (rectangle *VideoOverlayRectangle) GetPixelsUnscaledRaw(flags VideoOverlayF
 }
 
 // GetRenderRectangle wraps gst_video_overlay_rectangle_get_render_rectangle
+// 
 // The function returns the following values:
 // 
 // 	- renderX int: address where to store the X render offset 
@@ -19414,6 +20714,7 @@ func (rectangle *VideoOverlayRectangle) GetRenderRectangle() (int, int, uint, ui
 }
 
 // GetSeqnum wraps gst_video_overlay_rectangle_get_seqnum
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -19530,7 +20831,7 @@ func UnsafeVideoRectangleFromGlibBorrow(p unsafe.Pointer) *VideoRectangle {
 	return &VideoRectangle{&videoRectangle{(*C.GstVideoRectangle)(p)}}
 }
 
-// UnsafeVideoRectangleFromGlibNone is used to convert raw C.GstVideoRectangle pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoRectangleFromGlibNone is used to convert raw C.GstVideoRectangle pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoRectangleFromGlibNone(p unsafe.Pointer) *VideoRectangle {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoRectangleFromGlibBorrow(p)
@@ -19543,7 +20844,7 @@ func UnsafeVideoRectangleFromGlibNone(p unsafe.Pointer) *VideoRectangle {
 	return wrapped
 }
 
-// UnsafeVideoRectangleFromGlibFull is used to convert raw C.GstVideoRectangle pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoRectangleFromGlibFull is used to convert raw C.GstVideoRectangle pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoRectangleFromGlibFull(p unsafe.Pointer) *VideoRectangle {
 	wrapped := UnsafeVideoRectangleFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -19575,6 +20876,7 @@ func UnsafeVideoRectangleToGlibFull(v *VideoRectangle) unsafe.Pointer {
 	v.native = nil // VideoRectangle is invalid from here on
 	return _p
 }
+
 // VideoRegionOfInterestMeta wraps GstVideoRegionOfInterestMeta
 //
 // Extra buffer metadata describing an image region of interest
@@ -19592,7 +20894,7 @@ func UnsafeVideoRegionOfInterestMetaFromGlibBorrow(p unsafe.Pointer) *VideoRegio
 	return &VideoRegionOfInterestMeta{&videoRegionOfInterestMeta{(*C.GstVideoRegionOfInterestMeta)(p)}}
 }
 
-// UnsafeVideoRegionOfInterestMetaFromGlibNone is used to convert raw C.GstVideoRegionOfInterestMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoRegionOfInterestMetaFromGlibNone is used to convert raw C.GstVideoRegionOfInterestMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoRegionOfInterestMetaFromGlibNone(p unsafe.Pointer) *VideoRegionOfInterestMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoRegionOfInterestMetaFromGlibBorrow(p)
@@ -19605,7 +20907,7 @@ func UnsafeVideoRegionOfInterestMetaFromGlibNone(p unsafe.Pointer) *VideoRegionO
 	return wrapped
 }
 
-// UnsafeVideoRegionOfInterestMetaFromGlibFull is used to convert raw C.GstVideoRegionOfInterestMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoRegionOfInterestMetaFromGlibFull is used to convert raw C.GstVideoRegionOfInterestMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoRegionOfInterestMetaFromGlibFull(p unsafe.Pointer) *VideoRegionOfInterestMeta {
 	wrapped := UnsafeVideoRegionOfInterestMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -19637,7 +20939,9 @@ func UnsafeVideoRegionOfInterestMetaToGlibFull(v *VideoRegionOfInterestMeta) uns
 	v.native = nil // VideoRegionOfInterestMeta is invalid from here on
 	return _p
 }
+
 // VideoRegionOfInterestMetaGetInfo wraps gst_video_region_of_interest_meta_get_info
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.MetaInfo 
@@ -19732,7 +21036,7 @@ func UnsafeVideoResamplerFromGlibBorrow(p unsafe.Pointer) *VideoResampler {
 	return &VideoResampler{&videoResampler{(*C.GstVideoResampler)(p)}}
 }
 
-// UnsafeVideoResamplerFromGlibNone is used to convert raw C.GstVideoResampler pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoResamplerFromGlibNone is used to convert raw C.GstVideoResampler pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoResamplerFromGlibNone(p unsafe.Pointer) *VideoResampler {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoResamplerFromGlibBorrow(p)
@@ -19745,7 +21049,7 @@ func UnsafeVideoResamplerFromGlibNone(p unsafe.Pointer) *VideoResampler {
 	return wrapped
 }
 
-// UnsafeVideoResamplerFromGlibFull is used to convert raw C.GstVideoResampler pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoResamplerFromGlibFull is used to convert raw C.GstVideoResampler pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoResamplerFromGlibFull(p unsafe.Pointer) *VideoResampler {
 	wrapped := UnsafeVideoResamplerFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -19777,6 +21081,7 @@ func UnsafeVideoResamplerToGlibFull(v *VideoResampler) unsafe.Pointer {
 	v.native = nil // VideoResampler is invalid from here on
 	return _p
 }
+
 // Clear wraps gst_video_resampler_clear
 //
 // Clear a previously initialized #GstVideoResampler @resampler.
@@ -19864,7 +21169,7 @@ func UnsafeVideoSEIUserDataUnregisteredMetaFromGlibBorrow(p unsafe.Pointer) *Vid
 	return &VideoSEIUserDataUnregisteredMeta{&videoSEIUserDataUnregisteredMeta{(*C.GstVideoSEIUserDataUnregisteredMeta)(p)}}
 }
 
-// UnsafeVideoSEIUserDataUnregisteredMetaFromGlibNone is used to convert raw C.GstVideoSEIUserDataUnregisteredMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoSEIUserDataUnregisteredMetaFromGlibNone is used to convert raw C.GstVideoSEIUserDataUnregisteredMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoSEIUserDataUnregisteredMetaFromGlibNone(p unsafe.Pointer) *VideoSEIUserDataUnregisteredMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoSEIUserDataUnregisteredMetaFromGlibBorrow(p)
@@ -19877,7 +21182,7 @@ func UnsafeVideoSEIUserDataUnregisteredMetaFromGlibNone(p unsafe.Pointer) *Video
 	return wrapped
 }
 
-// UnsafeVideoSEIUserDataUnregisteredMetaFromGlibFull is used to convert raw C.GstVideoSEIUserDataUnregisteredMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoSEIUserDataUnregisteredMetaFromGlibFull is used to convert raw C.GstVideoSEIUserDataUnregisteredMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoSEIUserDataUnregisteredMetaFromGlibFull(p unsafe.Pointer) *VideoSEIUserDataUnregisteredMeta {
 	wrapped := UnsafeVideoSEIUserDataUnregisteredMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -19909,7 +21214,9 @@ func UnsafeVideoSEIUserDataUnregisteredMetaToGlibFull(v *VideoSEIUserDataUnregis
 	v.native = nil // VideoSEIUserDataUnregisteredMeta is invalid from here on
 	return _p
 }
+
 // VideoSEIUserDataUnregisteredMetaGetInfo wraps gst_video_sei_user_data_unregistered_meta_get_info
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.MetaInfo 
@@ -19943,7 +21250,7 @@ func UnsafeVideoScalerFromGlibBorrow(p unsafe.Pointer) *VideoScaler {
 	return &VideoScaler{&videoScaler{(*C.GstVideoScaler)(p)}}
 }
 
-// UnsafeVideoScalerFromGlibNone is used to convert raw C.GstVideoScaler pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoScalerFromGlibNone is used to convert raw C.GstVideoScaler pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoScalerFromGlibNone(p unsafe.Pointer) *VideoScaler {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoScalerFromGlibBorrow(p)
@@ -19956,7 +21263,7 @@ func UnsafeVideoScalerFromGlibNone(p unsafe.Pointer) *VideoScaler {
 	return wrapped
 }
 
-// UnsafeVideoScalerFromGlibFull is used to convert raw C.GstVideoScaler pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoScalerFromGlibFull is used to convert raw C.GstVideoScaler pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoScalerFromGlibFull(p unsafe.Pointer) *VideoScaler {
 	wrapped := UnsafeVideoScalerFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -19988,6 +21295,7 @@ func UnsafeVideoScalerToGlibFull(v *VideoScaler) unsafe.Pointer {
 	v.native = nil // VideoScaler is invalid from here on
 	return _p
 }
+
 // GetCoeff wraps gst_video_scaler_get_coeff
 // 
 // The function takes the following parameters:
@@ -20033,6 +21341,7 @@ func (scale *VideoScaler) GetCoeff(outOffset uint) (uint, uint, *float64) {
 }
 
 // GetMaxTaps wraps gst_video_scaler_get_max_taps
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -20058,6 +21367,8 @@ func (scale *VideoScaler) GetMaxTaps() uint {
 //
 // The video sink class structure. Derived classes should override the
 // @show_frame virtual function.
+// 
+// VideoSinkClass is the type struct for [VideoSink]
 type VideoSinkClass struct {
 	*videoSinkClass
 }
@@ -20072,31 +21383,6 @@ func UnsafeVideoSinkClassFromGlibBorrow(p unsafe.Pointer) *VideoSinkClass {
 	return &VideoSinkClass{&videoSinkClass{(*C.GstVideoSinkClass)(p)}}
 }
 
-// UnsafeVideoSinkClassFromGlibNone is used to convert raw C.GstVideoSinkClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeVideoSinkClassFromGlibNone(p unsafe.Pointer) *VideoSinkClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeVideoSinkClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.videoSinkClass,
-		func (intern *videoSinkClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeVideoSinkClassFromGlibFull is used to convert raw C.GstVideoSinkClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeVideoSinkClassFromGlibFull(p unsafe.Pointer) *VideoSinkClass {
-	wrapped := UnsafeVideoSinkClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.videoSinkClass,
-		func (intern *videoSinkClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeVideoSinkClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [VideoSinkClass] is expected to work anymore.
@@ -20109,14 +21395,15 @@ func UnsafeVideoSinkClassToGlibNone(v *VideoSinkClass) unsafe.Pointer {
 	return unsafe.Pointer(v.native)
 }
 
-// UnsafeVideoSinkClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeVideoSinkClassToGlibFull(v *VideoSinkClass) unsafe.Pointer {
-	runtime.SetFinalizer(v.videoSinkClass, nil)
-	_p := unsafe.Pointer(v.native)
-	v.native = nil // VideoSinkClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (v *VideoSinkClass) ParentClass() *gstbase.BaseSinkClass {
+	parent := gstbase.UnsafeBaseSinkClassFromGlibBorrow(UnsafeVideoSinkClassToGlibNone(v))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *VideoSinkClass) {}, v)
+	return parent
 }
+
 // VideoTileInfo wraps GstVideoTileInfo
 //
 // Description of a tile. This structure allow to describe arbitrary tile
@@ -20135,7 +21422,7 @@ func UnsafeVideoTileInfoFromGlibBorrow(p unsafe.Pointer) *VideoTileInfo {
 	return &VideoTileInfo{&videoTileInfo{(*C.GstVideoTileInfo)(p)}}
 }
 
-// UnsafeVideoTileInfoFromGlibNone is used to convert raw C.GstVideoTileInfo pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoTileInfoFromGlibNone is used to convert raw C.GstVideoTileInfo pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoTileInfoFromGlibNone(p unsafe.Pointer) *VideoTileInfo {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoTileInfoFromGlibBorrow(p)
@@ -20148,7 +21435,7 @@ func UnsafeVideoTileInfoFromGlibNone(p unsafe.Pointer) *VideoTileInfo {
 	return wrapped
 }
 
-// UnsafeVideoTileInfoFromGlibFull is used to convert raw C.GstVideoTileInfo pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoTileInfoFromGlibFull is used to convert raw C.GstVideoTileInfo pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoTileInfoFromGlibFull(p unsafe.Pointer) *VideoTileInfo {
 	wrapped := UnsafeVideoTileInfoFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -20180,6 +21467,7 @@ func UnsafeVideoTileInfoToGlibFull(v *VideoTileInfo) unsafe.Pointer {
 	v.native = nil // VideoTileInfo is invalid from here on
 	return _p
 }
+
 // VideoTimeCode wraps GstVideoTimeCode
 //
 // @field_count must be 0 for progressive video and 1 or 2 for interlaced.
@@ -20204,7 +21492,7 @@ func UnsafeVideoTimeCodeFromGlibBorrow(p unsafe.Pointer) *VideoTimeCode {
 	return &VideoTimeCode{&videoTimeCode{(*C.GstVideoTimeCode)(p)}}
 }
 
-// UnsafeVideoTimeCodeFromGlibNone is used to convert raw C.GstVideoTimeCode pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoTimeCodeFromGlibNone is used to convert raw C.GstVideoTimeCode pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoTimeCodeFromGlibNone(p unsafe.Pointer) *VideoTimeCode {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoTimeCodeFromGlibBorrow(p)
@@ -20217,7 +21505,7 @@ func UnsafeVideoTimeCodeFromGlibNone(p unsafe.Pointer) *VideoTimeCode {
 	return wrapped
 }
 
-// UnsafeVideoTimeCodeFromGlibFull is used to convert raw C.GstVideoTimeCode pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoTimeCodeFromGlibFull is used to convert raw C.GstVideoTimeCode pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoTimeCodeFromGlibFull(p unsafe.Pointer) *VideoTimeCode {
 	wrapped := UnsafeVideoTimeCodeFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -20249,6 +21537,7 @@ func UnsafeVideoTimeCodeToGlibFull(v *VideoTimeCode) unsafe.Pointer {
 	v.native = nil // VideoTimeCode is invalid from here on
 	return _p
 }
+
 // NewVideoTimeCode wraps gst_video_time_code_new
 // 
 // The function takes the following parameters:
@@ -20310,6 +21599,7 @@ func NewVideoTimeCode(fpsN uint, fpsD uint, latestDailyJam *glib.DateTime, flags
 }
 
 // NewVideoTimeCodeEmpty wraps gst_video_time_code_new_empty
+// 
 // The function returns the following values:
 // 
 // 	- goret *VideoTimeCode 
@@ -20554,6 +21844,7 @@ func (tc1 *VideoTimeCode) Compare(tc2 *VideoTimeCode) int {
 }
 
 // Copy wraps gst_video_time_code_copy
+// 
 // The function returns the following values:
 // 
 // 	- goret *VideoTimeCode 
@@ -20574,6 +21865,7 @@ func (tc *VideoTimeCode) Copy() *VideoTimeCode {
 }
 
 // FramesSinceDailyJam wraps gst_video_time_code_frames_since_daily_jam
+// 
 // The function returns the following values:
 // 
 // 	- goret uint64 
@@ -20752,6 +22044,7 @@ func (tc *VideoTimeCode) InitFromDateTimeFull(fpsN uint, fpsD uint, dt *glib.Dat
 }
 
 // IsValid wraps gst_video_time_code_is_valid
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -20774,6 +22067,7 @@ func (tc *VideoTimeCode) IsValid() bool {
 }
 
 // NsecSinceDailyJam wraps gst_video_time_code_nsec_since_daily_jam
+// 
 // The function returns the following values:
 // 
 // 	- goret uint64 
@@ -20794,6 +22088,7 @@ func (tc *VideoTimeCode) NsecSinceDailyJam() uint64 {
 }
 
 // ToDateTime wraps gst_video_time_code_to_date_time
+// 
 // The function returns the following values:
 // 
 // 	- goret *glib.DateTime (nullable) 
@@ -20818,6 +22113,7 @@ func (tc *VideoTimeCode) ToDateTime() *glib.DateTime {
 }
 
 // ToString wraps gst_video_time_code_to_string
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -20858,7 +22154,7 @@ func UnsafeVideoTimeCodeConfigFromGlibBorrow(p unsafe.Pointer) *VideoTimeCodeCon
 	return &VideoTimeCodeConfig{&videoTimeCodeConfig{(*C.GstVideoTimeCodeConfig)(p)}}
 }
 
-// UnsafeVideoTimeCodeConfigFromGlibNone is used to convert raw C.GstVideoTimeCodeConfig pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoTimeCodeConfigFromGlibNone is used to convert raw C.GstVideoTimeCodeConfig pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoTimeCodeConfigFromGlibNone(p unsafe.Pointer) *VideoTimeCodeConfig {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoTimeCodeConfigFromGlibBorrow(p)
@@ -20871,7 +22167,7 @@ func UnsafeVideoTimeCodeConfigFromGlibNone(p unsafe.Pointer) *VideoTimeCodeConfi
 	return wrapped
 }
 
-// UnsafeVideoTimeCodeConfigFromGlibFull is used to convert raw C.GstVideoTimeCodeConfig pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoTimeCodeConfigFromGlibFull is used to convert raw C.GstVideoTimeCodeConfig pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoTimeCodeConfigFromGlibFull(p unsafe.Pointer) *VideoTimeCodeConfig {
 	wrapped := UnsafeVideoTimeCodeConfigFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -20903,6 +22199,7 @@ func UnsafeVideoTimeCodeConfigToGlibFull(v *VideoTimeCodeConfig) unsafe.Pointer 
 	v.native = nil // VideoTimeCodeConfig is invalid from here on
 	return _p
 }
+
 // VideoTimeCodeInterval wraps GstVideoTimeCodeInterval
 //
 // A representation of a difference between two #GstVideoTimeCode instances.
@@ -20933,7 +22230,7 @@ func UnsafeVideoTimeCodeIntervalFromGlibBorrow(p unsafe.Pointer) *VideoTimeCodeI
 	return &VideoTimeCodeInterval{&videoTimeCodeInterval{(*C.GstVideoTimeCodeInterval)(p)}}
 }
 
-// UnsafeVideoTimeCodeIntervalFromGlibNone is used to convert raw C.GstVideoTimeCodeInterval pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoTimeCodeIntervalFromGlibNone is used to convert raw C.GstVideoTimeCodeInterval pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoTimeCodeIntervalFromGlibNone(p unsafe.Pointer) *VideoTimeCodeInterval {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoTimeCodeIntervalFromGlibBorrow(p)
@@ -20946,7 +22243,7 @@ func UnsafeVideoTimeCodeIntervalFromGlibNone(p unsafe.Pointer) *VideoTimeCodeInt
 	return wrapped
 }
 
-// UnsafeVideoTimeCodeIntervalFromGlibFull is used to convert raw C.GstVideoTimeCodeInterval pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoTimeCodeIntervalFromGlibFull is used to convert raw C.GstVideoTimeCodeInterval pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoTimeCodeIntervalFromGlibFull(p unsafe.Pointer) *VideoTimeCodeInterval {
 	wrapped := UnsafeVideoTimeCodeIntervalFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -20978,6 +22275,7 @@ func UnsafeVideoTimeCodeIntervalToGlibFull(v *VideoTimeCodeInterval) unsafe.Poin
 	v.native = nil // VideoTimeCodeInterval is invalid from here on
 	return _p
 }
+
 // NewVideoTimeCodeInterval wraps gst_video_time_code_interval_new
 // 
 // The function takes the following parameters:
@@ -21058,6 +22356,7 @@ func (tc *VideoTimeCodeInterval) Clear() {
 }
 
 // Copy wraps gst_video_time_code_interval_copy
+// 
 // The function returns the following values:
 // 
 // 	- goret *VideoTimeCodeInterval 
@@ -21128,7 +22427,7 @@ func UnsafeVideoTimeCodeMetaFromGlibBorrow(p unsafe.Pointer) *VideoTimeCodeMeta 
 	return &VideoTimeCodeMeta{&videoTimeCodeMeta{(*C.GstVideoTimeCodeMeta)(p)}}
 }
 
-// UnsafeVideoTimeCodeMetaFromGlibNone is used to convert raw C.GstVideoTimeCodeMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoTimeCodeMetaFromGlibNone is used to convert raw C.GstVideoTimeCodeMeta pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoTimeCodeMetaFromGlibNone(p unsafe.Pointer) *VideoTimeCodeMeta {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoTimeCodeMetaFromGlibBorrow(p)
@@ -21141,7 +22440,7 @@ func UnsafeVideoTimeCodeMetaFromGlibNone(p unsafe.Pointer) *VideoTimeCodeMeta {
 	return wrapped
 }
 
-// UnsafeVideoTimeCodeMetaFromGlibFull is used to convert raw C.GstVideoTimeCodeMeta pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoTimeCodeMetaFromGlibFull is used to convert raw C.GstVideoTimeCodeMeta pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoTimeCodeMetaFromGlibFull(p unsafe.Pointer) *VideoTimeCodeMeta {
 	wrapped := UnsafeVideoTimeCodeMetaFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -21173,7 +22472,9 @@ func UnsafeVideoTimeCodeMetaToGlibFull(v *VideoTimeCodeMeta) unsafe.Pointer {
 	v.native = nil // VideoTimeCodeMeta is invalid from here on
 	return _p
 }
+
 // VideoTimeCodeMetaGetInfo wraps gst_video_time_code_meta_get_info
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.MetaInfo 
@@ -21219,7 +22520,7 @@ func UnsafeVideoVBIEncoderFromGlibBorrow(p unsafe.Pointer) *VideoVBIEncoder {
 	return &VideoVBIEncoder{&videoVBIEncoder{(*C.GstVideoVBIEncoder)(p)}}
 }
 
-// UnsafeVideoVBIEncoderFromGlibNone is used to convert raw C.GstVideoVBIEncoder pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoVBIEncoderFromGlibNone is used to convert raw C.GstVideoVBIEncoder pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoVBIEncoderFromGlibNone(p unsafe.Pointer) *VideoVBIEncoder {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoVBIEncoderFromGlibBorrow(p)
@@ -21232,7 +22533,7 @@ func UnsafeVideoVBIEncoderFromGlibNone(p unsafe.Pointer) *VideoVBIEncoder {
 	return wrapped
 }
 
-// UnsafeVideoVBIEncoderFromGlibFull is used to convert raw C.GstVideoVBIEncoder pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoVBIEncoderFromGlibFull is used to convert raw C.GstVideoVBIEncoder pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoVBIEncoderFromGlibFull(p unsafe.Pointer) *VideoVBIEncoder {
 	wrapped := UnsafeVideoVBIEncoderFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -21264,6 +22565,7 @@ func UnsafeVideoVBIEncoderToGlibFull(v *VideoVBIEncoder) unsafe.Pointer {
 	v.native = nil // VideoVBIEncoder is invalid from here on
 	return _p
 }
+
 // NewVideoVBIEncoder wraps gst_video_vbi_encoder_new
 // 
 // The function takes the following parameters:
@@ -21353,6 +22655,7 @@ func (encoder *VideoVBIEncoder) AddAncillary(composite bool, DID uint8, SDIDBloc
 }
 
 // Copy wraps gst_video_vbi_encoder_copy
+// 
 // The function returns the following values:
 // 
 // 	- goret *VideoVBIEncoder 
@@ -21421,7 +22724,7 @@ func UnsafeVideoVBIParserFromGlibBorrow(p unsafe.Pointer) *VideoVBIParser {
 	return &VideoVBIParser{&videoVBIParser{(*C.GstVideoVBIParser)(p)}}
 }
 
-// UnsafeVideoVBIParserFromGlibNone is used to convert raw C.GstVideoVBIParser pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoVBIParserFromGlibNone is used to convert raw C.GstVideoVBIParser pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeVideoVBIParserFromGlibNone(p unsafe.Pointer) *VideoVBIParser {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeVideoVBIParserFromGlibBorrow(p)
@@ -21434,7 +22737,7 @@ func UnsafeVideoVBIParserFromGlibNone(p unsafe.Pointer) *VideoVBIParser {
 	return wrapped
 }
 
-// UnsafeVideoVBIParserFromGlibFull is used to convert raw C.GstVideoVBIParser pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeVideoVBIParserFromGlibFull is used to convert raw C.GstVideoVBIParser pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeVideoVBIParserFromGlibFull(p unsafe.Pointer) *VideoVBIParser {
 	wrapped := UnsafeVideoVBIParserFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -21466,6 +22769,7 @@ func UnsafeVideoVBIParserToGlibFull(v *VideoVBIParser) unsafe.Pointer {
 	v.native = nil // VideoVBIParser is invalid from here on
 	return _p
 }
+
 // NewVideoVBIParser wraps gst_video_vbi_parser_new
 // 
 // The function takes the following parameters:
@@ -21500,6 +22804,7 @@ func NewVideoVBIParser(format VideoFormat, pixelWidth uint32) *VideoVBIParser {
 }
 
 // Copy wraps gst_video_vbi_parser_copy
+// 
 // The function returns the following values:
 // 
 // 	- goret *VideoVBIParser 
@@ -21520,6 +22825,7 @@ func (parser *VideoVBIParser) Copy() *VideoVBIParser {
 }
 
 // GetAncillary wraps gst_video_vbi_parser_get_ancillary
+// 
 // The function returns the following values:
 // 
 // 	- anc VideoAncillary: a #GstVideoAncillary to start the eventual ancillary data 

@@ -198,3 +198,493 @@ func _gotk4_gstbase1_CollectPadsQueryFunction(carg1 *C.GstCollectPads, carg2 *C.
 	return cret
 }
 
+//export _gotk4_gstbase1_Aggregator_aggregate
+func _gotk4_gstbase1_Aggregator_aggregate(carg0 *C.GstAggregator, carg1 C.gboolean) (cret C.GstFlowReturn) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_Aggregator_clip
+func _gotk4_gstbase1_Aggregator_clip(carg0 *C.GstAggregator, carg1 *C.GstAggregatorPad, carg2 *C.GstBuffer) (cret *C.GstBuffer) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_Aggregator_decide_allocation
+func _gotk4_gstbase1_Aggregator_decide_allocation(carg0 *C.GstAggregator, carg1 *C.GstQuery) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_Aggregator_finish_buffer
+func _gotk4_gstbase1_Aggregator_finish_buffer(carg0 *C.GstAggregator, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_Aggregator_finish_buffer_list
+func _gotk4_gstbase1_Aggregator_finish_buffer_list(carg0 *C.GstAggregator, carg1 *C.GstBufferList) (cret C.GstFlowReturn) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_Aggregator_fixate_src_caps
+func _gotk4_gstbase1_Aggregator_fixate_src_caps(carg0 *C.GstAggregator, carg1 *C.GstCaps) (cret *C.GstCaps) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_Aggregator_flush
+func _gotk4_gstbase1_Aggregator_flush(carg0 *C.GstAggregator) (cret C.GstFlowReturn) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_Aggregator_get_next_time
+func _gotk4_gstbase1_Aggregator_get_next_time(carg0 *C.GstAggregator) (cret C.GstClockTime) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_Aggregator_negotiate
+func _gotk4_gstbase1_Aggregator_negotiate(carg0 *C.GstAggregator) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_Aggregator_negotiated_src_caps
+func _gotk4_gstbase1_Aggregator_negotiated_src_caps(carg0 *C.GstAggregator, carg1 *C.GstCaps) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_Aggregator_peek_next_sample
+func _gotk4_gstbase1_Aggregator_peek_next_sample(carg0 *C.GstAggregator, carg1 *C.GstAggregatorPad) (cret *C.GstSample) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_Aggregator_propose_allocation
+func _gotk4_gstbase1_Aggregator_propose_allocation(carg0 *C.GstAggregator, carg1 *C.GstAggregatorPad, carg2 *C.GstQuery, carg3 *C.GstQuery) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_Aggregator_sink_event
+func _gotk4_gstbase1_Aggregator_sink_event(carg0 *C.GstAggregator, carg1 *C.GstAggregatorPad, carg2 *C.GstEvent) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_Aggregator_sink_event_pre_queue
+func _gotk4_gstbase1_Aggregator_sink_event_pre_queue(carg0 *C.GstAggregator, carg1 *C.GstAggregatorPad, carg2 *C.GstEvent) (cret C.GstFlowReturn) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_Aggregator_sink_query
+func _gotk4_gstbase1_Aggregator_sink_query(carg0 *C.GstAggregator, carg1 *C.GstAggregatorPad, carg2 *C.GstQuery) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_Aggregator_sink_query_pre_queue
+func _gotk4_gstbase1_Aggregator_sink_query_pre_queue(carg0 *C.GstAggregator, carg1 *C.GstAggregatorPad, carg2 *C.GstQuery) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_Aggregator_src_activate
+func _gotk4_gstbase1_Aggregator_src_activate(carg0 *C.GstAggregator, carg1 C.GstPadMode, carg2 C.gboolean) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_Aggregator_src_event
+func _gotk4_gstbase1_Aggregator_src_event(carg0 *C.GstAggregator, carg1 *C.GstEvent) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_Aggregator_src_query
+func _gotk4_gstbase1_Aggregator_src_query(carg0 *C.GstAggregator, carg1 *C.GstQuery) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_Aggregator_start
+func _gotk4_gstbase1_Aggregator_start(carg0 *C.GstAggregator) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_Aggregator_stop
+func _gotk4_gstbase1_Aggregator_stop(carg0 *C.GstAggregator) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_Aggregator_update_src_caps
+func _gotk4_gstbase1_Aggregator_update_src_caps(carg0 *C.GstAggregator, carg1 *C.GstCaps, carg2 **C.GstCaps) (cret C.GstFlowReturn) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_AggregatorPad_flush
+func _gotk4_gstbase1_AggregatorPad_flush(carg0 *C.GstAggregatorPad, carg1 *C.GstAggregator) (cret C.GstFlowReturn) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_AggregatorPad_skip_buffer
+func _gotk4_gstbase1_AggregatorPad_skip_buffer(carg0 *C.GstAggregatorPad, carg1 *C.GstAggregator, carg2 *C.GstBuffer) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseParse_convert
+func _gotk4_gstbase1_BaseParse_convert(carg0 *C.GstBaseParse, carg1 C.GstFormat, carg2 C.gint64, carg3 C.GstFormat, carg4 *C.gint64) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseParse_detect
+func _gotk4_gstbase1_BaseParse_detect(carg0 *C.GstBaseParse, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseParse_get_sink_caps
+func _gotk4_gstbase1_BaseParse_get_sink_caps(carg0 *C.GstBaseParse, carg1 *C.GstCaps) (cret *C.GstCaps) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseParse_handle_frame
+func _gotk4_gstbase1_BaseParse_handle_frame(carg0 *C.GstBaseParse, carg1 *C.GstBaseParseFrame, carg2 *C.gint) (cret C.GstFlowReturn) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseParse_pre_push_frame
+func _gotk4_gstbase1_BaseParse_pre_push_frame(carg0 *C.GstBaseParse, carg1 *C.GstBaseParseFrame) (cret C.GstFlowReturn) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseParse_set_sink_caps
+func _gotk4_gstbase1_BaseParse_set_sink_caps(carg0 *C.GstBaseParse, carg1 *C.GstCaps) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseParse_sink_event
+func _gotk4_gstbase1_BaseParse_sink_event(carg0 *C.GstBaseParse, carg1 *C.GstEvent) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseParse_sink_query
+func _gotk4_gstbase1_BaseParse_sink_query(carg0 *C.GstBaseParse, carg1 *C.GstQuery) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseParse_src_event
+func _gotk4_gstbase1_BaseParse_src_event(carg0 *C.GstBaseParse, carg1 *C.GstEvent) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseParse_src_query
+func _gotk4_gstbase1_BaseParse_src_query(carg0 *C.GstBaseParse, carg1 *C.GstQuery) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseParse_start
+func _gotk4_gstbase1_BaseParse_start(carg0 *C.GstBaseParse) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseParse_stop
+func _gotk4_gstbase1_BaseParse_stop(carg0 *C.GstBaseParse) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSink_activate_pull
+func _gotk4_gstbase1_BaseSink_activate_pull(carg0 *C.GstBaseSink, carg1 C.gboolean) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSink_event
+func _gotk4_gstbase1_BaseSink_event(carg0 *C.GstBaseSink, carg1 *C.GstEvent) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSink_fixate
+func _gotk4_gstbase1_BaseSink_fixate(carg0 *C.GstBaseSink, carg1 *C.GstCaps) (cret *C.GstCaps) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSink_get_caps
+func _gotk4_gstbase1_BaseSink_get_caps(carg0 *C.GstBaseSink, carg1 *C.GstCaps) (cret *C.GstCaps) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSink_get_times
+func _gotk4_gstbase1_BaseSink_get_times(carg0 *C.GstBaseSink, carg1 *C.GstBuffer, carg2 *C.GstClockTime, carg3 *C.GstClockTime) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSink_prepare
+func _gotk4_gstbase1_BaseSink_prepare(carg0 *C.GstBaseSink, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSink_prepare_list
+func _gotk4_gstbase1_BaseSink_prepare_list(carg0 *C.GstBaseSink, carg1 *C.GstBufferList) (cret C.GstFlowReturn) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSink_preroll
+func _gotk4_gstbase1_BaseSink_preroll(carg0 *C.GstBaseSink, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSink_propose_allocation
+func _gotk4_gstbase1_BaseSink_propose_allocation(carg0 *C.GstBaseSink, carg1 *C.GstQuery) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSink_query
+func _gotk4_gstbase1_BaseSink_query(carg0 *C.GstBaseSink, carg1 *C.GstQuery) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSink_render
+func _gotk4_gstbase1_BaseSink_render(carg0 *C.GstBaseSink, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSink_render_list
+func _gotk4_gstbase1_BaseSink_render_list(carg0 *C.GstBaseSink, carg1 *C.GstBufferList) (cret C.GstFlowReturn) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSink_set_caps
+func _gotk4_gstbase1_BaseSink_set_caps(carg0 *C.GstBaseSink, carg1 *C.GstCaps) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSink_start
+func _gotk4_gstbase1_BaseSink_start(carg0 *C.GstBaseSink) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSink_stop
+func _gotk4_gstbase1_BaseSink_stop(carg0 *C.GstBaseSink) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSink_unlock
+func _gotk4_gstbase1_BaseSink_unlock(carg0 *C.GstBaseSink) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSink_unlock_stop
+func _gotk4_gstbase1_BaseSink_unlock_stop(carg0 *C.GstBaseSink) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSink_wait_event
+func _gotk4_gstbase1_BaseSink_wait_event(carg0 *C.GstBaseSink, carg1 *C.GstEvent) (cret C.GstFlowReturn) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSrc_alloc
+func _gotk4_gstbase1_BaseSrc_alloc(carg0 *C.GstBaseSrc, carg1 C.guint64, carg2 C.guint, carg3 **C.GstBuffer) (cret C.GstFlowReturn) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSrc_decide_allocation
+func _gotk4_gstbase1_BaseSrc_decide_allocation(carg0 *C.GstBaseSrc, carg1 *C.GstQuery) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSrc_do_seek
+func _gotk4_gstbase1_BaseSrc_do_seek(carg0 *C.GstBaseSrc, carg1 *C.GstSegment) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSrc_event
+func _gotk4_gstbase1_BaseSrc_event(carg0 *C.GstBaseSrc, carg1 *C.GstEvent) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSrc_fill
+func _gotk4_gstbase1_BaseSrc_fill(carg0 *C.GstBaseSrc, carg1 C.guint64, carg2 C.guint, carg3 *C.GstBuffer) (cret C.GstFlowReturn) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSrc_fixate
+func _gotk4_gstbase1_BaseSrc_fixate(carg0 *C.GstBaseSrc, carg1 *C.GstCaps) (cret *C.GstCaps) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSrc_get_caps
+func _gotk4_gstbase1_BaseSrc_get_caps(carg0 *C.GstBaseSrc, carg1 *C.GstCaps) (cret *C.GstCaps) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSrc_get_size
+func _gotk4_gstbase1_BaseSrc_get_size(carg0 *C.GstBaseSrc, carg1 *C.guint64) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSrc_get_times
+func _gotk4_gstbase1_BaseSrc_get_times(carg0 *C.GstBaseSrc, carg1 *C.GstBuffer, carg2 *C.GstClockTime, carg3 *C.GstClockTime) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSrc_is_seekable
+func _gotk4_gstbase1_BaseSrc_is_seekable(carg0 *C.GstBaseSrc) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSrc_negotiate
+func _gotk4_gstbase1_BaseSrc_negotiate(carg0 *C.GstBaseSrc) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSrc_prepare_seek_segment
+func _gotk4_gstbase1_BaseSrc_prepare_seek_segment(carg0 *C.GstBaseSrc, carg1 *C.GstEvent, carg2 *C.GstSegment) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSrc_query
+func _gotk4_gstbase1_BaseSrc_query(carg0 *C.GstBaseSrc, carg1 *C.GstQuery) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSrc_set_caps
+func _gotk4_gstbase1_BaseSrc_set_caps(carg0 *C.GstBaseSrc, carg1 *C.GstCaps) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSrc_start
+func _gotk4_gstbase1_BaseSrc_start(carg0 *C.GstBaseSrc) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSrc_stop
+func _gotk4_gstbase1_BaseSrc_stop(carg0 *C.GstBaseSrc) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSrc_unlock
+func _gotk4_gstbase1_BaseSrc_unlock(carg0 *C.GstBaseSrc) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseSrc_unlock_stop
+func _gotk4_gstbase1_BaseSrc_unlock_stop(carg0 *C.GstBaseSrc) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseTransform_accept_caps
+func _gotk4_gstbase1_BaseTransform_accept_caps(carg0 *C.GstBaseTransform, carg1 C.GstPadDirection, carg2 *C.GstCaps) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseTransform_before_transform
+func _gotk4_gstbase1_BaseTransform_before_transform(carg0 *C.GstBaseTransform, carg1 *C.GstBuffer) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseTransform_copy_metadata
+func _gotk4_gstbase1_BaseTransform_copy_metadata(carg0 *C.GstBaseTransform, carg1 *C.GstBuffer, carg2 *C.GstBuffer) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseTransform_decide_allocation
+func _gotk4_gstbase1_BaseTransform_decide_allocation(carg0 *C.GstBaseTransform, carg1 *C.GstQuery) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseTransform_filter_meta
+func _gotk4_gstbase1_BaseTransform_filter_meta(carg0 *C.GstBaseTransform, carg1 *C.GstQuery, carg2 C.GType, carg3 *C.GstStructure) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseTransform_fixate_caps
+func _gotk4_gstbase1_BaseTransform_fixate_caps(carg0 *C.GstBaseTransform, carg1 C.GstPadDirection, carg2 *C.GstCaps, carg3 *C.GstCaps) (cret *C.GstCaps) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseTransform_generate_output
+func _gotk4_gstbase1_BaseTransform_generate_output(carg0 *C.GstBaseTransform, carg1 **C.GstBuffer) (cret C.GstFlowReturn) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseTransform_get_unit_size
+func _gotk4_gstbase1_BaseTransform_get_unit_size(carg0 *C.GstBaseTransform, carg1 *C.GstCaps, carg2 *C.gsize) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseTransform_prepare_output_buffer
+func _gotk4_gstbase1_BaseTransform_prepare_output_buffer(carg0 *C.GstBaseTransform, carg1 *C.GstBuffer, carg2 **C.GstBuffer) (cret C.GstFlowReturn) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseTransform_propose_allocation
+func _gotk4_gstbase1_BaseTransform_propose_allocation(carg0 *C.GstBaseTransform, carg1 *C.GstQuery, carg2 *C.GstQuery) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseTransform_query
+func _gotk4_gstbase1_BaseTransform_query(carg0 *C.GstBaseTransform, carg1 C.GstPadDirection, carg2 *C.GstQuery) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseTransform_set_caps
+func _gotk4_gstbase1_BaseTransform_set_caps(carg0 *C.GstBaseTransform, carg1 *C.GstCaps, carg2 *C.GstCaps) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseTransform_sink_event
+func _gotk4_gstbase1_BaseTransform_sink_event(carg0 *C.GstBaseTransform, carg1 *C.GstEvent) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseTransform_src_event
+func _gotk4_gstbase1_BaseTransform_src_event(carg0 *C.GstBaseTransform, carg1 *C.GstEvent) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseTransform_start
+func _gotk4_gstbase1_BaseTransform_start(carg0 *C.GstBaseTransform) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseTransform_stop
+func _gotk4_gstbase1_BaseTransform_stop(carg0 *C.GstBaseTransform) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseTransform_submit_input_buffer
+func _gotk4_gstbase1_BaseTransform_submit_input_buffer(carg0 *C.GstBaseTransform, carg1 C.gboolean, carg2 *C.GstBuffer) (cret C.GstFlowReturn) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseTransform_transform
+func _gotk4_gstbase1_BaseTransform_transform(carg0 *C.GstBaseTransform, carg1 *C.GstBuffer, carg2 *C.GstBuffer) (cret C.GstFlowReturn) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseTransform_transform_caps
+func _gotk4_gstbase1_BaseTransform_transform_caps(carg0 *C.GstBaseTransform, carg1 C.GstPadDirection, carg2 *C.GstCaps, carg3 *C.GstCaps) (cret *C.GstCaps) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseTransform_transform_ip
+func _gotk4_gstbase1_BaseTransform_transform_ip(carg0 *C.GstBaseTransform, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseTransform_transform_meta
+func _gotk4_gstbase1_BaseTransform_transform_meta(carg0 *C.GstBaseTransform, carg1 *C.GstBuffer, carg2 *C.GstMeta, carg3 *C.GstBuffer) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_BaseTransform_transform_size
+func _gotk4_gstbase1_BaseTransform_transform_size(carg0 *C.GstBaseTransform, carg1 C.GstPadDirection, carg2 *C.GstCaps, carg3 C.gsize, carg4 *C.GstCaps, carg5 *C.gsize) (cret C.gboolean) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_DataQueue_empty
+func _gotk4_gstbase1_DataQueue_empty(carg0 *C.GstDataQueue) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_DataQueue_full
+func _gotk4_gstbase1_DataQueue_full(carg0 *C.GstDataQueue) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_PushSrc_alloc
+func _gotk4_gstbase1_PushSrc_alloc(carg0 *C.GstPushSrc, carg1 **C.GstBuffer) (cret C.GstFlowReturn) {
+	panic("unimplemented")
+}
+
+//export _gotk4_gstbase1_PushSrc_fill
+func _gotk4_gstbase1_PushSrc_fill(carg0 *C.GstPushSrc, carg1 *C.GstBuffer) (cret C.GstFlowReturn) {
+	panic("unimplemented")
+}
+

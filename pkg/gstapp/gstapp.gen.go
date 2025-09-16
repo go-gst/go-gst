@@ -15,6 +15,62 @@ import (
 // #cgo pkg-config: gstreamer-app-1.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/app/app.h>
+// extern void _gotk4_gstapp1_AppSink_eos(GstAppSink*);
+// extern GstFlowReturn _gotk4_gstapp1_AppSink_new_preroll(GstAppSink*);
+// extern GstFlowReturn _gotk4_gstapp1_AppSink_new_sample(GstAppSink*);
+// extern GstSample* _gotk4_gstapp1_AppSink_pull_preroll(GstAppSink*);
+// extern GstSample* _gotk4_gstapp1_AppSink_pull_sample(GstAppSink*);
+// extern GstSample* _gotk4_gstapp1_AppSink_try_pull_preroll(GstAppSink*, GstClockTime);
+// extern GstSample* _gotk4_gstapp1_AppSink_try_pull_sample(GstAppSink*, GstClockTime);
+// void _gotk4_gstapp1_AppSink_virtual_eos(void* fnptr, GstAppSink* carg0) {
+// 	return ((void (*) (GstAppSink*))(fnptr))(carg0);
+// }
+// GstFlowReturn _gotk4_gstapp1_AppSink_virtual_new_preroll(void* fnptr, GstAppSink* carg0) {
+// 	return ((GstFlowReturn (*) (GstAppSink*))(fnptr))(carg0);
+// }
+// GstFlowReturn _gotk4_gstapp1_AppSink_virtual_new_sample(void* fnptr, GstAppSink* carg0) {
+// 	return ((GstFlowReturn (*) (GstAppSink*))(fnptr))(carg0);
+// }
+// GstSample* _gotk4_gstapp1_AppSink_virtual_pull_preroll(void* fnptr, GstAppSink* carg0) {
+// 	return ((GstSample* (*) (GstAppSink*))(fnptr))(carg0);
+// }
+// GstSample* _gotk4_gstapp1_AppSink_virtual_pull_sample(void* fnptr, GstAppSink* carg0) {
+// 	return ((GstSample* (*) (GstAppSink*))(fnptr))(carg0);
+// }
+// GstSample* _gotk4_gstapp1_AppSink_virtual_try_pull_preroll(void* fnptr, GstAppSink* carg0, GstClockTime carg1) {
+// 	return ((GstSample* (*) (GstAppSink*, GstClockTime))(fnptr))(carg0, carg1);
+// }
+// GstSample* _gotk4_gstapp1_AppSink_virtual_try_pull_sample(void* fnptr, GstAppSink* carg0, GstClockTime carg1) {
+// 	return ((GstSample* (*) (GstAppSink*, GstClockTime))(fnptr))(carg0, carg1);
+// }
+// extern GstFlowReturn _gotk4_gstapp1_AppSrc_end_of_stream(GstAppSrc*);
+// extern void _gotk4_gstapp1_AppSrc_enough_data(GstAppSrc*);
+// extern void _gotk4_gstapp1_AppSrc_need_data(GstAppSrc*, guint);
+// extern GstFlowReturn _gotk4_gstapp1_AppSrc_push_buffer(GstAppSrc*, GstBuffer*);
+// extern GstFlowReturn _gotk4_gstapp1_AppSrc_push_buffer_list(GstAppSrc*, GstBufferList*);
+// extern GstFlowReturn _gotk4_gstapp1_AppSrc_push_sample(GstAppSrc*, GstSample*);
+// extern gboolean _gotk4_gstapp1_AppSrc_seek_data(GstAppSrc*, guint64);
+// GstFlowReturn _gotk4_gstapp1_AppSrc_virtual_end_of_stream(void* fnptr, GstAppSrc* carg0) {
+// 	return ((GstFlowReturn (*) (GstAppSrc*))(fnptr))(carg0);
+// }
+// void _gotk4_gstapp1_AppSrc_virtual_enough_data(void* fnptr, GstAppSrc* carg0) {
+// 	return ((void (*) (GstAppSrc*))(fnptr))(carg0);
+// }
+// void _gotk4_gstapp1_AppSrc_virtual_need_data(void* fnptr, GstAppSrc* carg0, guint carg1) {
+// 	return ((void (*) (GstAppSrc*, guint))(fnptr))(carg0, carg1);
+// }
+// GstFlowReturn _gotk4_gstapp1_AppSrc_virtual_push_buffer(void* fnptr, GstAppSrc* carg0, GstBuffer* carg1) {
+// 	return ((GstFlowReturn (*) (GstAppSrc*, GstBuffer*))(fnptr))(carg0, carg1);
+// }
+// GstFlowReturn _gotk4_gstapp1_AppSrc_virtual_push_buffer_list(void* fnptr, GstAppSrc* carg0, GstBufferList* carg1) {
+// 	return ((GstFlowReturn (*) (GstAppSrc*, GstBufferList*))(fnptr))(carg0, carg1);
+// }
+// GstFlowReturn _gotk4_gstapp1_AppSrc_virtual_push_sample(void* fnptr, GstAppSrc* carg0, GstSample* carg1) {
+// 	return ((GstFlowReturn (*) (GstAppSrc*, GstSample*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstapp1_AppSrc_virtual_seek_data(void* fnptr, GstAppSrc* carg0, guint64 carg1) {
+// 	return ((gboolean (*) (GstAppSrc*, guint64))(fnptr))(carg0, carg1);
+// }
 import "C"
 
 // GType values.
@@ -172,6 +228,7 @@ type AppSink interface {
 	upcastToGstAppSink() *AppSinkInstance
 
 	// GetBufferListSupport wraps gst_app_sink_get_buffer_list_support
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -179,6 +236,7 @@ type AppSink interface {
 	// Check if @appsink supports buffer lists.
 	GetBufferListSupport() bool
 	// GetCaps wraps gst_app_sink_get_caps
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Caps (nullable) 
@@ -186,6 +244,7 @@ type AppSink interface {
 	// Get the configured caps on @appsink.
 	GetCaps() *gst.Caps
 	// GetDrop wraps gst_app_sink_get_drop
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -194,6 +253,7 @@ type AppSink interface {
 	// data is reached (meaning max buffers, time or bytes limit, whichever is hit first).
 	GetDrop() bool
 	// GetEmitSignals wraps gst_app_sink_get_emit_signals
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -201,6 +261,7 @@ type AppSink interface {
 	// Check if appsink will emit the "new-preroll" and "new-sample" signals.
 	GetEmitSignals() bool
 	// GetMaxBuffers wraps gst_app_sink_get_max_buffers
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
@@ -208,6 +269,7 @@ type AppSink interface {
 	// Get the maximum amount of buffers that can be queued in @appsink.
 	GetMaxBuffers() uint
 	// GetMaxBytes wraps gst_app_sink_get_max_bytes
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint64 
@@ -215,6 +277,7 @@ type AppSink interface {
 	// Get the maximum total size, in bytes, that can be queued in @appsink.
 	GetMaxBytes() uint64
 	// GetMaxTime wraps gst_app_sink_get_max_time
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.ClockTime 
@@ -222,6 +285,7 @@ type AppSink interface {
 	// Get the maximum total duration that can be queued in @appsink.
 	GetMaxTime() gst.ClockTime
 	// GetWaitOnEos wraps gst_app_sink_get_wait_on_eos
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -230,6 +294,7 @@ type AppSink interface {
 	// received.
 	GetWaitOnEos() bool
 	// IsEos wraps gst_app_sink_is_eos
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -241,6 +306,7 @@ type AppSink interface {
 	// PLAYING state.
 	IsEos() bool
 	// PullPreroll wraps gst_app_sink_pull_preroll
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Sample (nullable) 
@@ -265,6 +331,7 @@ type AppSink interface {
 	// element is set to the READY/NULL state.
 	PullPreroll() *gst.Sample
 	// PullSample wraps gst_app_sink_pull_sample
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Sample (nullable) 
@@ -627,6 +694,7 @@ func UnsafeAppSinkToGlibFull(c AppSink) unsafe.Pointer {
 }
 
 // GetBufferListSupport wraps gst_app_sink_get_buffer_list_support
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -651,6 +719,7 @@ func (appsink *AppSinkInstance) GetBufferListSupport() bool {
 }
 
 // GetCaps wraps gst_app_sink_get_caps
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Caps (nullable) 
@@ -675,6 +744,7 @@ func (appsink *AppSinkInstance) GetCaps() *gst.Caps {
 }
 
 // GetDrop wraps gst_app_sink_get_drop
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -700,6 +770,7 @@ func (appsink *AppSinkInstance) GetDrop() bool {
 }
 
 // GetEmitSignals wraps gst_app_sink_get_emit_signals
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -724,6 +795,7 @@ func (appsink *AppSinkInstance) GetEmitSignals() bool {
 }
 
 // GetMaxBuffers wraps gst_app_sink_get_max_buffers
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -746,6 +818,7 @@ func (appsink *AppSinkInstance) GetMaxBuffers() uint {
 }
 
 // GetMaxBytes wraps gst_app_sink_get_max_bytes
+// 
 // The function returns the following values:
 // 
 // 	- goret uint64 
@@ -768,6 +841,7 @@ func (appsink *AppSinkInstance) GetMaxBytes() uint64 {
 }
 
 // GetMaxTime wraps gst_app_sink_get_max_time
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ClockTime 
@@ -790,6 +864,7 @@ func (appsink *AppSinkInstance) GetMaxTime() gst.ClockTime {
 }
 
 // GetWaitOnEos wraps gst_app_sink_get_wait_on_eos
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -815,6 +890,7 @@ func (appsink *AppSinkInstance) GetWaitOnEos() bool {
 }
 
 // IsEos wraps gst_app_sink_is_eos
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -843,6 +919,7 @@ func (appsink *AppSinkInstance) IsEos() bool {
 }
 
 // PullPreroll wraps gst_app_sink_pull_preroll
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Sample (nullable) 
@@ -884,6 +961,7 @@ func (appsink *AppSinkInstance) PullPreroll() *gst.Sample {
 }
 
 // PullSample wraps gst_app_sink_pull_sample
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Sample (nullable) 
@@ -1197,6 +1275,7 @@ func (appsink *AppSinkInstance) TryPullSample(timeout gst.ClockTime) *gst.Sample
 func (o *AppSinkInstance) ConnectEos(fn func(AppSink)) gobject.SignalHandle {
 	return o.Connect("eos", fn)
 }
+
 // ConnectNewPreroll connects the provided callback to the "new-preroll" signal
 //
 // Signal that a new preroll sample is available.
@@ -1213,6 +1292,7 @@ func (o *AppSinkInstance) ConnectEos(fn func(AppSink)) gobject.SignalHandle {
 func (o *AppSinkInstance) ConnectNewPreroll(fn func(AppSink) gst.FlowReturn) gobject.SignalHandle {
 	return o.Connect("new-preroll", fn)
 }
+
 // ConnectNewSample connects the provided callback to the "new-sample" signal
 //
 // Signal that a new sample is available.
@@ -1229,6 +1309,7 @@ func (o *AppSinkInstance) ConnectNewPreroll(fn func(AppSink) gst.FlowReturn) gob
 func (o *AppSinkInstance) ConnectNewSample(fn func(AppSink) gst.FlowReturn) gobject.SignalHandle {
 	return o.Connect("new-sample", fn)
 }
+
 // ConnectNewSerializedEvent connects the provided callback to the "new-serialized-event" signal
 //
 // Signal that a new downstream serialized event is available.
@@ -1251,6 +1332,7 @@ func (o *AppSinkInstance) ConnectNewSample(fn func(AppSink) gst.FlowReturn) gobj
 func (o *AppSinkInstance) ConnectNewSerializedEvent(fn func(AppSink) bool) gobject.SignalHandle {
 	return o.Connect("new-serialized-event", fn)
 }
+
 // ConnectProposeAllocation connects the provided callback to the "propose-allocation" signal
 //
 // Signal that a new propose_allocation query is available.
@@ -1260,6 +1342,7 @@ func (o *AppSinkInstance) ConnectNewSerializedEvent(fn func(AppSink) bool) gobje
 func (o *AppSinkInstance) ConnectProposeAllocation(fn func(AppSink, gst.Query) bool) gobject.SignalHandle {
 	return o.Connect("propose-allocation", fn)
 }
+
 // EmitPullPreroll emits the "pull-preroll" signal
 //
 // Get the last preroll sample in @appsink. This was the sample that caused the
@@ -1283,6 +1366,7 @@ func (o *AppSinkInstance) ConnectProposeAllocation(fn func(AppSink, gst.Query) b
 func (o *AppSinkInstance) EmitPullPreroll() gst.Sample {
 	return o.Emit("pull-preroll").(gst.Sample)
 }
+
 // EmitPullSample emits the "pull-sample" signal
 //
 // This function blocks until a sample or EOS becomes available or the appsink
@@ -1302,6 +1386,7 @@ func (o *AppSinkInstance) EmitPullPreroll() gst.Sample {
 func (o *AppSinkInstance) EmitPullSample() gst.Sample {
 	return o.Emit("pull-sample").(gst.Sample)
 }
+
 // EmitTryPullObject emits the "try-pull-object" signal
 //
 // This function blocks until a sample or an event becomes available or the appsink
@@ -1329,6 +1414,7 @@ func (o *AppSinkInstance) EmitPullSample() gst.Sample {
 func (o *AppSinkInstance) EmitTryPullObject(arg0 uint64) gst.MiniObject {
 	return o.Emit("try-pull-object", arg0).(gst.MiniObject)
 }
+
 // EmitTryPullPreroll emits the "try-pull-preroll" signal
 //
 // Get the last preroll sample in @appsink. This was the sample that caused the
@@ -1353,6 +1439,7 @@ func (o *AppSinkInstance) EmitTryPullObject(arg0 uint64) gst.MiniObject {
 func (o *AppSinkInstance) EmitTryPullPreroll(arg0 uint64) gst.Sample {
 	return o.Emit("try-pull-preroll", arg0).(gst.Sample)
 }
+
 // EmitTryPullSample emits the "try-pull-sample" signal
 //
 // This function blocks until a sample or EOS becomes available or the appsink
@@ -1373,6 +1460,91 @@ func (o *AppSinkInstance) EmitTryPullPreroll(arg0 uint64) gst.Sample {
 func (o *AppSinkInstance) EmitTryPullSample(arg0 uint64) gst.Sample {
 	return o.Emit("try-pull-sample", arg0).(gst.Sample)
 }
+
+// AppSinkOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type AppSinkOverrides[Instance AppSink] struct {
+	// gstbase.BaseSinkOverrides allows you to override virtual methods from the parent class gstbase.BaseSink
+	gstbase.BaseSinkOverrides[Instance]
+
+	// Eos allows you to override the implementation of the virtual method eos.
+	Eos func(Instance)
+	// NewPreroll allows you to override the implementation of the virtual method new_preroll.
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	NewPreroll func(Instance) gst.FlowReturn
+	// NewSample allows you to override the implementation of the virtual method new_sample.
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	NewSample func(Instance) gst.FlowReturn
+	// PullPreroll allows you to override the implementation of the virtual method pull_preroll.
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Sample (nullable) 
+	PullPreroll func(Instance) *gst.Sample
+	// PullSample allows you to override the implementation of the virtual method pull_sample.
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Sample (nullable) 
+	PullSample func(Instance) *gst.Sample
+	// TryPullPreroll allows you to override the implementation of the virtual method try_pull_preroll.
+	// The function takes the following parameters:
+	// 
+	// 	- timeout gst.ClockTime: the maximum amount of time to wait for the preroll sample 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Sample (nullable) 
+	TryPullPreroll func(Instance, gst.ClockTime) *gst.Sample
+	// TryPullSample allows you to override the implementation of the virtual method try_pull_sample.
+	// The function takes the following parameters:
+	// 
+	// 	- timeout gst.ClockTime: the maximum amount of time to wait for a sample 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret *gst.Sample (nullable) 
+	TryPullSample func(Instance, gst.ClockTime) *gst.Sample
+}
+
+// UnsafeApplyAppSinkOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyAppSinkOverrides[Instance AppSink](gclass unsafe.Pointer, overrides AppSinkOverrides[Instance]) {
+	gstbase.UnsafeApplyBaseSinkOverrides(gclass, overrides.BaseSinkOverrides)
+
+	pclass := (*C.GstAppSinkClass)(gclass)
+
+	if overrides.Eos != nil {
+		pclass.eos = (*[0]byte)(C._gotk4_gstapp1_AppSink_eos)
+	}
+
+	if overrides.NewPreroll != nil {
+		pclass.new_preroll = (*[0]byte)(C._gotk4_gstapp1_AppSink_new_preroll)
+	}
+
+	if overrides.NewSample != nil {
+		pclass.new_sample = (*[0]byte)(C._gotk4_gstapp1_AppSink_new_sample)
+	}
+
+	if overrides.PullPreroll != nil {
+		pclass.pull_preroll = (*[0]byte)(C._gotk4_gstapp1_AppSink_pull_preroll)
+	}
+
+	if overrides.PullSample != nil {
+		pclass.pull_sample = (*[0]byte)(C._gotk4_gstapp1_AppSink_pull_sample)
+	}
+
+	if overrides.TryPullPreroll != nil {
+		pclass.try_pull_preroll = (*[0]byte)(C._gotk4_gstapp1_AppSink_try_pull_preroll)
+	}
+
+	if overrides.TryPullSample != nil {
+		pclass.try_pull_sample = (*[0]byte)(C._gotk4_gstapp1_AppSink_try_pull_sample)
+	}
+}
+
 // AppSrcInstance is the instance type used by all types extending GstAppSrc. It is used internally by the bindings. Users should use the interface [AppSrc] instead.
 type AppSrcInstance struct {
 	_ [0]func() // equal guard
@@ -1456,6 +1628,7 @@ type AppSrc interface {
 	upcastToGstAppSrc() *AppSrcInstance
 
 	// EndOfStream wraps gst_app_src_end_of_stream
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.FlowReturn 
@@ -1464,6 +1637,7 @@ type AppSrc interface {
 	// element is the last buffer of the stream.
 	EndOfStream() gst.FlowReturn
 	// GetCaps wraps gst_app_src_get_caps
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Caps (nullable) 
@@ -1471,6 +1645,7 @@ type AppSrc interface {
 	// Get the configured caps on @appsrc.
 	GetCaps() *gst.Caps
 	// GetCurrentLevelBuffers wraps gst_app_src_get_current_level_buffers
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint64 
@@ -1478,6 +1653,7 @@ type AppSrc interface {
 	// Get the number of currently queued buffers inside @appsrc.
 	GetCurrentLevelBuffers() uint64
 	// GetCurrentLevelBytes wraps gst_app_src_get_current_level_bytes
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint64 
@@ -1485,6 +1661,7 @@ type AppSrc interface {
 	// Get the number of currently queued bytes inside @appsrc.
 	GetCurrentLevelBytes() uint64
 	// GetCurrentLevelTime wraps gst_app_src_get_current_level_time
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.ClockTime 
@@ -1492,6 +1669,7 @@ type AppSrc interface {
 	// Get the amount of currently queued time inside @appsrc.
 	GetCurrentLevelTime() gst.ClockTime
 	// GetDuration wraps gst_app_src_get_duration
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.ClockTime 
@@ -1500,6 +1678,7 @@ type AppSrc interface {
 	// not known.
 	GetDuration() gst.ClockTime
 	// GetEmitSignals wraps gst_app_src_get_emit_signals
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -1507,6 +1686,7 @@ type AppSrc interface {
 	// Check if appsrc will emit the "new-preroll" and "new-buffer" signals.
 	GetEmitSignals() bool
 	// GetLatency wraps gst_app_src_get_latency
+	// 
 	// The function returns the following values:
 	// 
 	// 	- min uint64: the min latency 
@@ -1515,6 +1695,7 @@ type AppSrc interface {
 	// Retrieve the min and max latencies in @min and @max respectively.
 	GetLatency() (uint64, uint64)
 	// GetLeakyType wraps gst_app_src_get_leaky_type
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret AppLeakyType 
@@ -1523,6 +1704,7 @@ type AppSrc interface {
 	// for more details.
 	GetLeakyType() AppLeakyType
 	// GetMaxBuffers wraps gst_app_src_get_max_buffers
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint64 
@@ -1530,6 +1712,7 @@ type AppSrc interface {
 	// Get the maximum amount of buffers that can be queued in @appsrc.
 	GetMaxBuffers() uint64
 	// GetMaxBytes wraps gst_app_src_get_max_bytes
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint64 
@@ -1537,6 +1720,7 @@ type AppSrc interface {
 	// Get the maximum amount of bytes that can be queued in @appsrc.
 	GetMaxBytes() uint64
 	// GetMaxTime wraps gst_app_src_get_max_time
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.ClockTime 
@@ -1544,6 +1728,7 @@ type AppSrc interface {
 	// Get the maximum amount of time that can be queued in @appsrc.
 	GetMaxTime() gst.ClockTime
 	// GetSize wraps gst_app_src_get_size
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret int64 
@@ -1552,6 +1737,7 @@ type AppSrc interface {
 	// not known.
 	GetSize() int64
 	// GetStreamType wraps gst_app_src_get_stream_type
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret AppStreamType 
@@ -1830,6 +2016,7 @@ func UnsafeAppSrcToGlibFull(c AppSrc) unsafe.Pointer {
 }
 
 // EndOfStream wraps gst_app_src_end_of_stream
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.FlowReturn 
@@ -1853,6 +2040,7 @@ func (appsrc *AppSrcInstance) EndOfStream() gst.FlowReturn {
 }
 
 // GetCaps wraps gst_app_src_get_caps
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Caps (nullable) 
@@ -1877,6 +2065,7 @@ func (appsrc *AppSrcInstance) GetCaps() *gst.Caps {
 }
 
 // GetCurrentLevelBuffers wraps gst_app_src_get_current_level_buffers
+// 
 // The function returns the following values:
 // 
 // 	- goret uint64 
@@ -1899,6 +2088,7 @@ func (appsrc *AppSrcInstance) GetCurrentLevelBuffers() uint64 {
 }
 
 // GetCurrentLevelBytes wraps gst_app_src_get_current_level_bytes
+// 
 // The function returns the following values:
 // 
 // 	- goret uint64 
@@ -1921,6 +2111,7 @@ func (appsrc *AppSrcInstance) GetCurrentLevelBytes() uint64 {
 }
 
 // GetCurrentLevelTime wraps gst_app_src_get_current_level_time
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ClockTime 
@@ -1943,6 +2134,7 @@ func (appsrc *AppSrcInstance) GetCurrentLevelTime() gst.ClockTime {
 }
 
 // GetDuration wraps gst_app_src_get_duration
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ClockTime 
@@ -1966,6 +2158,7 @@ func (appsrc *AppSrcInstance) GetDuration() gst.ClockTime {
 }
 
 // GetEmitSignals wraps gst_app_src_get_emit_signals
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -1990,6 +2183,7 @@ func (appsrc *AppSrcInstance) GetEmitSignals() bool {
 }
 
 // GetLatency wraps gst_app_src_get_latency
+// 
 // The function returns the following values:
 // 
 // 	- min uint64: the min latency 
@@ -2016,6 +2210,7 @@ func (appsrc *AppSrcInstance) GetLatency() (uint64, uint64) {
 }
 
 // GetLeakyType wraps gst_app_src_get_leaky_type
+// 
 // The function returns the following values:
 // 
 // 	- goret AppLeakyType 
@@ -2039,6 +2234,7 @@ func (appsrc *AppSrcInstance) GetLeakyType() AppLeakyType {
 }
 
 // GetMaxBuffers wraps gst_app_src_get_max_buffers
+// 
 // The function returns the following values:
 // 
 // 	- goret uint64 
@@ -2061,6 +2257,7 @@ func (appsrc *AppSrcInstance) GetMaxBuffers() uint64 {
 }
 
 // GetMaxBytes wraps gst_app_src_get_max_bytes
+// 
 // The function returns the following values:
 // 
 // 	- goret uint64 
@@ -2083,6 +2280,7 @@ func (appsrc *AppSrcInstance) GetMaxBytes() uint64 {
 }
 
 // GetMaxTime wraps gst_app_src_get_max_time
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ClockTime 
@@ -2105,6 +2303,7 @@ func (appsrc *AppSrcInstance) GetMaxTime() gst.ClockTime {
 }
 
 // GetSize wraps gst_app_src_get_size
+// 
 // The function returns the following values:
 // 
 // 	- goret int64 
@@ -2128,6 +2327,7 @@ func (appsrc *AppSrcInstance) GetSize() int64 {
 }
 
 // GetStreamType wraps gst_app_src_get_stream_type
+// 
 // The function returns the following values:
 // 
 // 	- goret AppStreamType 
@@ -2483,6 +2683,7 @@ func (appsrc *AppSrcInstance) SetStreamType(typ AppStreamType) {
 func (o *AppSrcInstance) EmitEndOfStream() gst.FlowReturn {
 	return o.Emit("end-of-stream").(gst.FlowReturn)
 }
+
 // ConnectEnoughData connects the provided callback to the "enough-data" signal
 //
 // Signal that the source has enough data. It is recommended that the
@@ -2491,6 +2692,7 @@ func (o *AppSrcInstance) EmitEndOfStream() gst.FlowReturn {
 func (o *AppSrcInstance) ConnectEnoughData(fn func(AppSrc)) gobject.SignalHandle {
 	return o.Connect("enough-data", fn)
 }
+
 // ConnectNeedData connects the provided callback to the "need-data" signal
 //
 // Signal that the source needs more data. In the callback or from another
@@ -2504,6 +2706,7 @@ func (o *AppSrcInstance) ConnectEnoughData(fn func(AppSrc)) gobject.SignalHandle
 func (o *AppSrcInstance) ConnectNeedData(fn func(AppSrc, uint)) gobject.SignalHandle {
 	return o.Connect("need-data", fn)
 }
+
 // EmitPushBuffer emits the "push-buffer" signal
 //
 // Adds a buffer to the queue of buffers that the appsrc element will
@@ -2518,6 +2721,7 @@ func (o *AppSrcInstance) ConnectNeedData(fn func(AppSrc, uint)) gobject.SignalHa
 func (o *AppSrcInstance) EmitPushBuffer(arg0 gst.Buffer) gst.FlowReturn {
 	return o.Emit("push-buffer", arg0).(gst.FlowReturn)
 }
+
 // EmitPushBufferList emits the "push-buffer-list" signal
 //
 // Adds a buffer list to the queue of buffers and buffer lists that the
@@ -2532,6 +2736,7 @@ func (o *AppSrcInstance) EmitPushBuffer(arg0 gst.Buffer) gst.FlowReturn {
 func (o *AppSrcInstance) EmitPushBufferList(arg0 gst.BufferList) gst.FlowReturn {
 	return o.Emit("push-buffer-list", arg0).(gst.FlowReturn)
 }
+
 // EmitPushSample emits the "push-sample" signal
 //
 // Extract a buffer from the provided sample and adds the extracted buffer
@@ -2550,6 +2755,7 @@ func (o *AppSrcInstance) EmitPushBufferList(arg0 gst.BufferList) gst.FlowReturn 
 func (o *AppSrcInstance) EmitPushSample(arg0 gst.Sample) gst.FlowReturn {
 	return o.Emit("push-sample", arg0).(gst.FlowReturn)
 }
+
 // ConnectSeekData connects the provided callback to the "seek-data" signal
 //
 // Seek to the given offset. The next push-buffer should produce buffers from
@@ -2558,7 +2764,103 @@ func (o *AppSrcInstance) EmitPushSample(arg0 gst.Sample) gst.FlowReturn {
 func (o *AppSrcInstance) ConnectSeekData(fn func(AppSrc, uint64) bool) gobject.SignalHandle {
 	return o.Connect("seek-data", fn)
 }
+
+// AppSrcOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type AppSrcOverrides[Instance AppSrc] struct {
+	// gstbase.BaseSrcOverrides allows you to override virtual methods from the parent class gstbase.BaseSrc
+	gstbase.BaseSrcOverrides[Instance]
+
+	// EndOfStream allows you to override the implementation of the virtual method end_of_stream.
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	EndOfStream func(Instance) gst.FlowReturn
+	// EnoughData allows you to override the implementation of the virtual method enough_data.
+	EnoughData func(Instance)
+	// NeedData allows you to override the implementation of the virtual method need_data.
+	// The function takes the following parameters:
+	// 
+	// 	- length uint 
+	NeedData func(Instance, uint)
+	// PushBuffer allows you to override the implementation of the virtual method push_buffer.
+	// The function takes the following parameters:
+	// 
+	// 	- buffer *gst.Buffer: a #GstBuffer to push 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	PushBuffer func(Instance, *gst.Buffer) gst.FlowReturn
+	// PushBufferList allows you to override the implementation of the virtual method push_buffer_list.
+	// The function takes the following parameters:
+	// 
+	// 	- bufferList *gst.BufferList: a #GstBufferList to push 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	PushBufferList func(Instance, *gst.BufferList) gst.FlowReturn
+	// PushSample allows you to override the implementation of the virtual method push_sample.
+	// The function takes the following parameters:
+	// 
+	// 	- sample *gst.Sample: a #GstSample from which buffer and caps may be
+	// extracted 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret gst.FlowReturn 
+	PushSample func(Instance, *gst.Sample) gst.FlowReturn
+	// SeekData allows you to override the implementation of the virtual method seek_data.
+	// The function takes the following parameters:
+	// 
+	// 	- offset uint64 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SeekData func(Instance, uint64) bool
+}
+
+// UnsafeApplyAppSrcOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyAppSrcOverrides[Instance AppSrc](gclass unsafe.Pointer, overrides AppSrcOverrides[Instance]) {
+	gstbase.UnsafeApplyBaseSrcOverrides(gclass, overrides.BaseSrcOverrides)
+
+	pclass := (*C.GstAppSrcClass)(gclass)
+
+	if overrides.EndOfStream != nil {
+		pclass.end_of_stream = (*[0]byte)(C._gotk4_gstapp1_AppSrc_end_of_stream)
+	}
+
+	if overrides.EnoughData != nil {
+		pclass.enough_data = (*[0]byte)(C._gotk4_gstapp1_AppSrc_enough_data)
+	}
+
+	if overrides.NeedData != nil {
+		pclass.need_data = (*[0]byte)(C._gotk4_gstapp1_AppSrc_need_data)
+	}
+
+	if overrides.PushBuffer != nil {
+		pclass.push_buffer = (*[0]byte)(C._gotk4_gstapp1_AppSrc_push_buffer)
+	}
+
+	if overrides.PushBufferList != nil {
+		pclass.push_buffer_list = (*[0]byte)(C._gotk4_gstapp1_AppSrc_push_buffer_list)
+	}
+
+	if overrides.PushSample != nil {
+		pclass.push_sample = (*[0]byte)(C._gotk4_gstapp1_AppSrc_push_sample)
+	}
+
+	if overrides.SeekData != nil {
+		pclass.seek_data = (*[0]byte)(C._gotk4_gstapp1_AppSrc_seek_data)
+	}
+}
+
 // AppSinkClass wraps GstAppSinkClass
+// 
+// AppSinkClass is the type struct for [AppSink]
 type AppSinkClass struct {
 	*appSinkClass
 }
@@ -2573,31 +2875,6 @@ func UnsafeAppSinkClassFromGlibBorrow(p unsafe.Pointer) *AppSinkClass {
 	return &AppSinkClass{&appSinkClass{(*C.GstAppSinkClass)(p)}}
 }
 
-// UnsafeAppSinkClassFromGlibNone is used to convert raw C.GstAppSinkClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAppSinkClassFromGlibNone(p unsafe.Pointer) *AppSinkClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeAppSinkClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.appSinkClass,
-		func (intern *appSinkClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeAppSinkClassFromGlibFull is used to convert raw C.GstAppSinkClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAppSinkClassFromGlibFull(p unsafe.Pointer) *AppSinkClass {
-	wrapped := UnsafeAppSinkClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.appSinkClass,
-		func (intern *appSinkClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeAppSinkClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [AppSinkClass] is expected to work anymore.
@@ -2610,15 +2887,18 @@ func UnsafeAppSinkClassToGlibNone(a *AppSinkClass) unsafe.Pointer {
 	return unsafe.Pointer(a.native)
 }
 
-// UnsafeAppSinkClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeAppSinkClassToGlibFull(a *AppSinkClass) unsafe.Pointer {
-	runtime.SetFinalizer(a.appSinkClass, nil)
-	_p := unsafe.Pointer(a.native)
-	a.native = nil // AppSinkClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (a *AppSinkClass) ParentClass() *gstbase.BaseSinkClass {
+	parent := gstbase.UnsafeBaseSinkClassFromGlibBorrow(UnsafeAppSinkClassToGlibNone(a))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *AppSinkClass) {}, a)
+	return parent
 }
+
 // AppSrcClass wraps GstAppSrcClass
+// 
+// AppSrcClass is the type struct for [AppSrc]
 type AppSrcClass struct {
 	*appSrcClass
 }
@@ -2633,31 +2913,6 @@ func UnsafeAppSrcClassFromGlibBorrow(p unsafe.Pointer) *AppSrcClass {
 	return &AppSrcClass{&appSrcClass{(*C.GstAppSrcClass)(p)}}
 }
 
-// UnsafeAppSrcClassFromGlibNone is used to convert raw C.GstAppSrcClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAppSrcClassFromGlibNone(p unsafe.Pointer) *AppSrcClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeAppSrcClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.appSrcClass,
-		func (intern *appSrcClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeAppSrcClassFromGlibFull is used to convert raw C.GstAppSrcClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAppSrcClassFromGlibFull(p unsafe.Pointer) *AppSrcClass {
-	wrapped := UnsafeAppSrcClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.appSrcClass,
-		func (intern *appSrcClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeAppSrcClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [AppSrcClass] is expected to work anymore.
@@ -2670,11 +2925,12 @@ func UnsafeAppSrcClassToGlibNone(a *AppSrcClass) unsafe.Pointer {
 	return unsafe.Pointer(a.native)
 }
 
-// UnsafeAppSrcClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeAppSrcClassToGlibFull(a *AppSrcClass) unsafe.Pointer {
-	runtime.SetFinalizer(a.appSrcClass, nil)
-	_p := unsafe.Pointer(a.native)
-	a.native = nil // AppSrcClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (a *AppSrcClass) ParentClass() *gstbase.BaseSrcClass {
+	parent := gstbase.UnsafeBaseSrcClassFromGlibBorrow(UnsafeAppSrcClassToGlibNone(a))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *AppSrcClass) {}, a)
+	return parent
 }
+

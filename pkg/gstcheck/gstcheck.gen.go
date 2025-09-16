@@ -1027,6 +1027,7 @@ type TestClock interface {
 	// MT safe.
 	AdvanceTime(gst.ClockTimeDiff)
 	// Crank wraps gst_test_clock_crank
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -1040,6 +1041,7 @@ type TestClock interface {
 	// manually driving the clock forward to its next logical step.
 	Crank() bool
 	// GetNextEntryTime wraps gst_test_clock_get_next_entry_time
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.ClockTime 
@@ -1064,6 +1066,7 @@ type TestClock interface {
 	// MT safe.
 	HasID(gst.ClockID) bool
 	// PeekIDCount wraps gst_test_clock_peek_id_count
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
@@ -1074,6 +1077,7 @@ type TestClock interface {
 	// MT safe.
 	PeekIDCount() uint
 	// PeekNextPendingID wraps gst_test_clock_peek_next_pending_id
+	// 
 	// The function returns the following values:
 	// 
 	// 	- pendingId gst.ClockID: a #GstClockID clock
@@ -1100,6 +1104,7 @@ type TestClock interface {
 	// MT safe.
 	ProcessID(gst.ClockID) bool
 	// ProcessNextClockID wraps gst_test_clock_process_next_clock_id
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.ClockID (nullable) 
@@ -1120,6 +1125,7 @@ type TestClock interface {
 	// MT safe.
 	SetTime(gst.ClockTime)
 	// WaitForNextPendingID wraps gst_test_clock_wait_for_next_pending_id
+	// 
 	// The function returns the following values:
 	// 
 	// 	- pendingId gst.ClockID: #GstClockID
@@ -1186,6 +1192,7 @@ func UnsafeTestClockToGlibFull(c TestClock) unsafe.Pointer {
 }
 
 // NewTestClock wraps gst_test_clock_new
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.Clock 
@@ -1258,6 +1265,7 @@ func (testClock *TestClockInstance) AdvanceTime(delta gst.ClockTimeDiff) {
 }
 
 // Crank wraps gst_test_clock_crank
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -1288,6 +1296,7 @@ func (testClock *TestClockInstance) Crank() bool {
 }
 
 // GetNextEntryTime wraps gst_test_clock_get_next_entry_time
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ClockTime 
@@ -1347,6 +1356,7 @@ func (testClock *TestClockInstance) HasID(id gst.ClockID) bool {
 }
 
 // PeekIDCount wraps gst_test_clock_peek_id_count
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -1372,6 +1382,7 @@ func (testClock *TestClockInstance) PeekIDCount() uint {
 }
 
 // PeekNextPendingID wraps gst_test_clock_peek_next_pending_id
+// 
 // The function returns the following values:
 // 
 // 	- pendingId gst.ClockID: a #GstClockID clock
@@ -1438,6 +1449,7 @@ func (testClock *TestClockInstance) ProcessID(pendingId gst.ClockID) bool {
 }
 
 // ProcessNextClockID wraps gst_test_clock_process_next_clock_id
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ClockID (nullable) 
@@ -1486,6 +1498,7 @@ func (testClock *TestClockInstance) SetTime(newTime gst.ClockTime) {
 }
 
 // WaitForNextPendingID wraps gst_test_clock_wait_for_next_pending_id
+// 
 // The function returns the following values:
 // 
 // 	- pendingId gst.ClockID: #GstClockID
@@ -1535,6 +1548,20 @@ func (testClock *TestClockInstance) WaitForPendingIDCount(count uint) {
 	runtime.KeepAlive(count)
 }
 
+// TestClockOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type TestClockOverrides[Instance TestClock] struct {
+	// gst.ClockOverrides allows you to override virtual methods from the parent class gst.Clock
+	gst.ClockOverrides[Instance]
+
+}
+
+// UnsafeApplyTestClockOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyTestClockOverrides[Instance TestClock](gclass unsafe.Pointer, overrides TestClockOverrides[Instance]) {
+	gst.UnsafeApplyClockOverrides(gclass, overrides.ClockOverrides)
+}
+
 // CheckABIStruct wraps GstCheckABIStruct
 type CheckABIStruct struct {
 	*checkABIStruct
@@ -1550,7 +1577,7 @@ func UnsafeCheckABIStructFromGlibBorrow(p unsafe.Pointer) *CheckABIStruct {
 	return &CheckABIStruct{&checkABIStruct{(*C.GstCheckABIStruct)(p)}}
 }
 
-// UnsafeCheckABIStructFromGlibNone is used to convert raw C.GstCheckABIStruct pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeCheckABIStructFromGlibNone is used to convert raw C.GstCheckABIStruct pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeCheckABIStructFromGlibNone(p unsafe.Pointer) *CheckABIStruct {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeCheckABIStructFromGlibBorrow(p)
@@ -1563,7 +1590,7 @@ func UnsafeCheckABIStructFromGlibNone(p unsafe.Pointer) *CheckABIStruct {
 	return wrapped
 }
 
-// UnsafeCheckABIStructFromGlibFull is used to convert raw C.GstCheckABIStruct pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeCheckABIStructFromGlibFull is used to convert raw C.GstCheckABIStruct pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeCheckABIStructFromGlibFull(p unsafe.Pointer) *CheckABIStruct {
 	wrapped := UnsafeCheckABIStructFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -1595,6 +1622,7 @@ func UnsafeCheckABIStructToGlibFull(c *CheckABIStruct) unsafe.Pointer {
 	c.native = nil // CheckABIStruct is invalid from here on
 	return _p
 }
+
 // CheckLogFilter wraps GstCheckLogFilter
 //
 // Opaque structure containing data about a log filter
@@ -1613,7 +1641,7 @@ func UnsafeCheckLogFilterFromGlibBorrow(p unsafe.Pointer) *CheckLogFilter {
 	return &CheckLogFilter{&checkLogFilter{(*C.GstCheckLogFilter)(p)}}
 }
 
-// UnsafeCheckLogFilterFromGlibNone is used to convert raw C.GstCheckLogFilter pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeCheckLogFilterFromGlibNone is used to convert raw C.GstCheckLogFilter pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeCheckLogFilterFromGlibNone(p unsafe.Pointer) *CheckLogFilter {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeCheckLogFilterFromGlibBorrow(p)
@@ -1626,7 +1654,7 @@ func UnsafeCheckLogFilterFromGlibNone(p unsafe.Pointer) *CheckLogFilter {
 	return wrapped
 }
 
-// UnsafeCheckLogFilterFromGlibFull is used to convert raw C.GstCheckLogFilter pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeCheckLogFilterFromGlibFull is used to convert raw C.GstCheckLogFilter pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeCheckLogFilterFromGlibFull(p unsafe.Pointer) *CheckLogFilter {
 	wrapped := UnsafeCheckLogFilterFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -1658,6 +1686,7 @@ func UnsafeCheckLogFilterToGlibFull(c *CheckLogFilter) unsafe.Pointer {
 	c.native = nil // CheckLogFilter is invalid from here on
 	return _p
 }
+
 // Harness wraps GstHarness
 //
 // #GstHarness is meant to make writing unit test for GStreamer much easier.
@@ -1764,7 +1793,7 @@ func UnsafeHarnessFromGlibBorrow(p unsafe.Pointer) *Harness {
 	return &Harness{&harness{(*C.GstHarness)(p)}}
 }
 
-// UnsafeHarnessFromGlibNone is used to convert raw C.GstHarness pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeHarnessFromGlibNone is used to convert raw C.GstHarness pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeHarnessFromGlibNone(p unsafe.Pointer) *Harness {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeHarnessFromGlibBorrow(p)
@@ -1777,7 +1806,7 @@ func UnsafeHarnessFromGlibNone(p unsafe.Pointer) *Harness {
 	return wrapped
 }
 
-// UnsafeHarnessFromGlibFull is used to convert raw C.GstHarness pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeHarnessFromGlibFull is used to convert raw C.GstHarness pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeHarnessFromGlibFull(p unsafe.Pointer) *Harness {
 	wrapped := UnsafeHarnessFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -1809,6 +1838,7 @@ func UnsafeHarnessToGlibFull(h *Harness) unsafe.Pointer {
 	h.native = nil // Harness is invalid from here on
 	return _p
 }
+
 // HarnessStressThreadStop wraps gst_harness_stress_thread_stop
 // 
 // The function takes the following parameters:
@@ -2125,6 +2155,7 @@ func (h *Harness) AddSrcParse(launchline string, hasClockWait bool) {
 }
 
 // BuffersInQueue wraps gst_harness_buffers_in_queue
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -2149,6 +2180,7 @@ func (h *Harness) BuffersInQueue() uint {
 }
 
 // BuffersReceived wraps gst_harness_buffers_received
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -2214,6 +2246,7 @@ func (h *Harness) CrankMultipleClockWaits(waits uint) bool {
 }
 
 // CrankSingleClockWait wraps gst_harness_crank_single_clock_wait
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -2303,6 +2336,7 @@ func (h *Harness) DumpToFile(filename string) {
 }
 
 // EventsInQueue wraps gst_harness_events_in_queue
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -2327,6 +2361,7 @@ func (h *Harness) EventsInQueue() uint {
 }
 
 // EventsReceived wraps gst_harness_events_received
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -2391,6 +2426,7 @@ func (h *Harness) FindElement(elementName string) gst.Element {
 }
 
 // GetAllocator wraps gst_harness_get_allocator
+// 
 // The function returns the following values:
 // 
 // 	- allocator gst.Allocator (nullable): the #GstAllocator used 
@@ -2425,6 +2461,7 @@ func (h *Harness) GetAllocator() (gst.Allocator, gst.AllocationParams) {
 }
 
 // GetLastPushedTimestamp wraps gst_harness_get_last_pushed_timestamp
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ClockTime 
@@ -2450,6 +2487,7 @@ func (h *Harness) GetLastPushedTimestamp() gst.ClockTime {
 }
 
 // GetTestclock wraps gst_harness_get_testclock
+// 
 // The function returns the following values:
 // 
 // 	- goret TestClock (nullable) 
@@ -2497,6 +2535,7 @@ func (h *Harness) Play() {
 }
 
 // Pull wraps gst_harness_pull
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Buffer (nullable) 
@@ -2525,6 +2564,7 @@ func (h *Harness) Pull() *gst.Buffer {
 }
 
 // PullEvent wraps gst_harness_pull_event
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Event (nullable) 
@@ -2552,6 +2592,7 @@ func (h *Harness) PullEvent() *gst.Event {
 }
 
 // PullUntilEos wraps gst_harness_pull_until_eos
+// 
 // The function returns the following values:
 // 
 // 	- buf *gst.Buffer (nullable): A #GstBuffer, or %NULL if EOS or timeout occures
@@ -2585,6 +2626,7 @@ func (h *Harness) PullUntilEos() (*gst.Buffer, bool) {
 }
 
 // PullUpstreamEvent wraps gst_harness_pull_upstream_event
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Event (nullable) 
@@ -2715,6 +2757,7 @@ func (h *Harness) PushEvent(event *gst.Event) bool {
 }
 
 // PushFromSrc wraps gst_harness_push_from_src
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.FlowReturn 
@@ -2744,6 +2787,7 @@ func (h *Harness) PushFromSrc() gst.FlowReturn {
 }
 
 // PushToSink wraps gst_harness_push_to_sink
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.FlowReturn 
@@ -2803,6 +2847,7 @@ func (h *Harness) PushUpstreamEvent(event *gst.Event) bool {
 }
 
 // QueryLatency wraps gst_harness_query_latency
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ClockTime 
@@ -3222,6 +3267,7 @@ func (h *Harness) SrcCrankAndPushMany(cranks int, pushes int) gst.FlowReturn {
 }
 
 // SrcPushEvent wraps gst_harness_src_push_event
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -3251,6 +3297,7 @@ func (h *Harness) SrcPushEvent() bool {
 }
 
 // TakeAllDataAsBuffer wraps gst_harness_take_all_data_as_buffer
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Buffer 
@@ -3273,6 +3320,7 @@ func (h *Harness) TakeAllDataAsBuffer() *gst.Buffer {
 }
 
 // TakeAllDataAsBytes wraps gst_harness_take_all_data_as_bytes
+// 
 // The function returns the following values:
 // 
 // 	- goret *glib.Bytes 
@@ -3309,6 +3357,7 @@ func (h *Harness) Teardown() {
 }
 
 // TryPull wraps gst_harness_try_pull
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Buffer (nullable) 
@@ -3337,6 +3386,7 @@ func (h *Harness) TryPull() *gst.Buffer {
 }
 
 // TryPullEvent wraps gst_harness_try_pull_event
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Event (nullable) 
@@ -3364,6 +3414,7 @@ func (h *Harness) TryPullEvent() *gst.Event {
 }
 
 // TryPullUpstreamEvent wraps gst_harness_try_pull_upstream_event
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Event (nullable) 
@@ -3391,6 +3442,7 @@ func (h *Harness) TryPullUpstreamEvent() *gst.Event {
 }
 
 // UpstreamEventsInQueue wraps gst_harness_upstream_events_in_queue
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -3415,6 +3467,7 @@ func (h *Harness) UpstreamEventsInQueue() uint {
 }
 
 // UpstreamEventsReceived wraps gst_harness_upstream_events_received
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -3527,7 +3580,7 @@ func UnsafeHarnessThreadFromGlibBorrow(p unsafe.Pointer) *HarnessThread {
 	return &HarnessThread{&harnessThread{(*C.GstHarnessThread)(p)}}
 }
 
-// UnsafeHarnessThreadFromGlibNone is used to convert raw C.GstHarnessThread pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeHarnessThreadFromGlibNone is used to convert raw C.GstHarnessThread pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeHarnessThreadFromGlibNone(p unsafe.Pointer) *HarnessThread {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeHarnessThreadFromGlibBorrow(p)
@@ -3540,7 +3593,7 @@ func UnsafeHarnessThreadFromGlibNone(p unsafe.Pointer) *HarnessThread {
 	return wrapped
 }
 
-// UnsafeHarnessThreadFromGlibFull is used to convert raw C.GstHarnessThread pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeHarnessThreadFromGlibFull is used to convert raw C.GstHarnessThread pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeHarnessThreadFromGlibFull(p unsafe.Pointer) *HarnessThread {
 	wrapped := UnsafeHarnessThreadFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -3572,6 +3625,7 @@ func UnsafeHarnessThreadToGlibFull(h *HarnessThread) unsafe.Pointer {
 	h.native = nil // HarnessThread is invalid from here on
 	return _p
 }
+
 // StreamConsistency wraps GstStreamConsistency
 //
 // Opaque consistency checker handle.
@@ -3589,7 +3643,7 @@ func UnsafeStreamConsistencyFromGlibBorrow(p unsafe.Pointer) *StreamConsistency 
 	return &StreamConsistency{&streamConsistency{(*C.GstStreamConsistency)(p)}}
 }
 
-// UnsafeStreamConsistencyFromGlibNone is used to convert raw C.GstStreamConsistency pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeStreamConsistencyFromGlibNone is used to convert raw C.GstStreamConsistency pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeStreamConsistencyFromGlibNone(p unsafe.Pointer) *StreamConsistency {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeStreamConsistencyFromGlibBorrow(p)
@@ -3602,7 +3656,7 @@ func UnsafeStreamConsistencyFromGlibNone(p unsafe.Pointer) *StreamConsistency {
 	return wrapped
 }
 
-// UnsafeStreamConsistencyFromGlibFull is used to convert raw C.GstStreamConsistency pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeStreamConsistencyFromGlibFull is used to convert raw C.GstStreamConsistency pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeStreamConsistencyFromGlibFull(p unsafe.Pointer) *StreamConsistency {
 	wrapped := UnsafeStreamConsistencyFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -3634,9 +3688,12 @@ func UnsafeStreamConsistencyToGlibFull(s *StreamConsistency) unsafe.Pointer {
 	s.native = nil // StreamConsistency is invalid from here on
 	return _p
 }
+
 // TestClockClass wraps GstTestClockClass
 //
 // The class of a #GstTestClock, which has no virtual methods to override.
+// 
+// TestClockClass is the type struct for [TestClock]
 type TestClockClass struct {
 	*testClockClass
 }
@@ -3651,31 +3708,6 @@ func UnsafeTestClockClassFromGlibBorrow(p unsafe.Pointer) *TestClockClass {
 	return &TestClockClass{&testClockClass{(*C.GstTestClockClass)(p)}}
 }
 
-// UnsafeTestClockClassFromGlibNone is used to convert raw C.GstTestClockClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeTestClockClassFromGlibNone(p unsafe.Pointer) *TestClockClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeTestClockClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.testClockClass,
-		func (intern *testClockClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeTestClockClassFromGlibFull is used to convert raw C.GstTestClockClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeTestClockClassFromGlibFull(p unsafe.Pointer) *TestClockClass {
-	wrapped := UnsafeTestClockClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.testClockClass,
-		func (intern *testClockClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeTestClockClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [TestClockClass] is expected to work anymore.
@@ -3688,11 +3720,12 @@ func UnsafeTestClockClassToGlibNone(t *TestClockClass) unsafe.Pointer {
 	return unsafe.Pointer(t.native)
 }
 
-// UnsafeTestClockClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeTestClockClassToGlibFull(t *TestClockClass) unsafe.Pointer {
-	runtime.SetFinalizer(t.testClockClass, nil)
-	_p := unsafe.Pointer(t.native)
-	t.native = nil // TestClockClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (t *TestClockClass) ParentClass() *gst.ClockClass {
+	parent := gst.UnsafeClockClassFromGlibBorrow(UnsafeTestClockClassToGlibNone(t))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *TestClockClass) {}, t)
+	return parent
 }
+

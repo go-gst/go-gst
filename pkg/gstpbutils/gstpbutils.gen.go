@@ -18,6 +18,38 @@ import (
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gst/pbutils/pbutils.h>
 // extern void _gotk4_gstpbutils1_InstallPluginsResultFunc(GstInstallPluginsReturn, gpointer);
+// extern gboolean _gotk4_gstpbutils1_AudioVisualizer_decide_allocation(GstAudioVisualizer*, GstQuery*);
+// extern gboolean _gotk4_gstpbutils1_AudioVisualizer_render(GstAudioVisualizer*, GstBuffer*, GstVideoFrame*);
+// extern gboolean _gotk4_gstpbutils1_AudioVisualizer_setup(GstAudioVisualizer*);
+// gboolean _gotk4_gstpbutils1_AudioVisualizer_virtual_decide_allocation(void* fnptr, GstAudioVisualizer* carg0, GstQuery* carg1) {
+// 	return ((gboolean (*) (GstAudioVisualizer*, GstQuery*))(fnptr))(carg0, carg1);
+// }
+// gboolean _gotk4_gstpbutils1_AudioVisualizer_virtual_render(void* fnptr, GstAudioVisualizer* carg0, GstBuffer* carg1, GstVideoFrame* carg2) {
+// 	return ((gboolean (*) (GstAudioVisualizer*, GstBuffer*, GstVideoFrame*))(fnptr))(carg0, carg1, carg2);
+// }
+// gboolean _gotk4_gstpbutils1_AudioVisualizer_virtual_setup(void* fnptr, GstAudioVisualizer* carg0) {
+// 	return ((gboolean (*) (GstAudioVisualizer*))(fnptr))(carg0);
+// }
+// extern void _gotk4_gstpbutils1_Discoverer_discovered(GstDiscoverer*, GstDiscovererInfo*, GError*);
+// extern void _gotk4_gstpbutils1_Discoverer_finished(GstDiscoverer*);
+// extern GstDiscovererInfo* _gotk4_gstpbutils1_Discoverer_load_serialize_info(GstDiscoverer*, gchar*);
+// extern void _gotk4_gstpbutils1_Discoverer_source_setup(GstDiscoverer*, GstElement*);
+// extern void _gotk4_gstpbutils1_Discoverer_starting(GstDiscoverer*);
+// void _gotk4_gstpbutils1_Discoverer_virtual_discovered(void* fnptr, GstDiscoverer* carg0, GstDiscovererInfo* carg1, GError* carg2) {
+// 	return ((void (*) (GstDiscoverer*, GstDiscovererInfo*, GError*))(fnptr))(carg0, carg1, carg2);
+// }
+// void _gotk4_gstpbutils1_Discoverer_virtual_finished(void* fnptr, GstDiscoverer* carg0) {
+// 	return ((void (*) (GstDiscoverer*))(fnptr))(carg0);
+// }
+// GstDiscovererInfo* _gotk4_gstpbutils1_Discoverer_virtual_load_serialize_info(void* fnptr, GstDiscoverer* carg0, gchar* carg1) {
+// 	return ((GstDiscovererInfo* (*) (GstDiscoverer*, gchar*))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gstpbutils1_Discoverer_virtual_source_setup(void* fnptr, GstDiscoverer* carg0, GstElement* carg1) {
+// 	return ((void (*) (GstDiscoverer*, GstElement*))(fnptr))(carg0, carg1);
+// }
+// void _gotk4_gstpbutils1_Discoverer_virtual_starting(void* fnptr, GstDiscoverer* carg0) {
+// 	return ((void (*) (GstDiscoverer*))(fnptr))(carg0);
+// }
 import "C"
 
 // GType values.
@@ -1412,6 +1444,7 @@ func EncodingListAllTargets(categoryname string) []EncodingTarget {
 }
 
 // EncodingListAvailableCategories wraps gst_encoding_list_available_categories
+// 
 // The function returns the following values:
 // 
 // 	- goret []string 
@@ -1495,6 +1528,7 @@ func InstallPluginsAsync(details []string, ctx *InstallPluginsContext, fn Instal
 }
 
 // InstallPluginsInstallationInProgress wraps gst_install_plugins_installation_in_progress
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -1516,6 +1550,7 @@ func InstallPluginsInstallationInProgress() bool {
 }
 
 // InstallPluginsSupported wraps gst_install_plugins_supported
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -2350,6 +2385,7 @@ func PbUtilsInit() {
 }
 
 // PluginsBaseVersion wraps gst_plugins_base_version
+// 
 // The function returns the following values:
 // 
 // 	- major uint: pointer to a guint to store the major version number, or %NULL 
@@ -2380,6 +2416,7 @@ func PluginsBaseVersion() (uint, uint, uint, uint) {
 }
 
 // PluginsBaseVersionString wraps gst_plugins_base_version_string
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -2460,6 +2497,58 @@ func UnsafeAudioVisualizerToGlibNone(c AudioVisualizer) unsafe.Pointer {
 // UnsafeAudioVisualizerToGlibFull is used to convert the instance to it's C value GstAudioVisualizer, while removeing the finalizer. This is used by the bindings internally.
 func UnsafeAudioVisualizerToGlibFull(c AudioVisualizer) unsafe.Pointer {
 	return gobject.UnsafeObjectToGlibFull(c)
+}
+
+// AudioVisualizerOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type AudioVisualizerOverrides[Instance AudioVisualizer] struct {
+	// gst.ElementOverrides allows you to override virtual methods from the parent class gst.Element
+	gst.ElementOverrides[Instance]
+
+	// DecideAllocation allows you to override the implementation of the virtual method decide_allocation.
+	// The function takes the following parameters:
+	// 
+	// 	- query *gst.Query 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	DecideAllocation func(Instance, *gst.Query) bool
+	// Render allows you to override the implementation of the virtual method render.
+	// The function takes the following parameters:
+	// 
+	// 	- audio *gst.Buffer 
+	// 	- video *gstvideo.VideoFrame 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Render func(Instance, *gst.Buffer, *gstvideo.VideoFrame) bool
+	// Setup allows you to override the implementation of the virtual method setup.
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	Setup func(Instance) bool
+}
+
+// UnsafeApplyAudioVisualizerOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyAudioVisualizerOverrides[Instance AudioVisualizer](gclass unsafe.Pointer, overrides AudioVisualizerOverrides[Instance]) {
+	gst.UnsafeApplyElementOverrides(gclass, overrides.ElementOverrides)
+
+	pclass := (*C.GstAudioVisualizerClass)(gclass)
+
+	if overrides.DecideAllocation != nil {
+		pclass.decide_allocation = (*[0]byte)(C._gotk4_gstpbutils1_AudioVisualizer_decide_allocation)
+	}
+
+	if overrides.Render != nil {
+		pclass.render = (*[0]byte)(C._gotk4_gstpbutils1_AudioVisualizer_render)
+	}
+
+	if overrides.Setup != nil {
+		pclass.setup = (*[0]byte)(C._gotk4_gstpbutils1_AudioVisualizer_setup)
+	}
 }
 
 // DiscovererInstance is the instance type used by all types extending GstDiscoverer. It is used internally by the bindings. Users should use the interface [Discoverer] instead.
@@ -2753,12 +2842,14 @@ func (discoverer *DiscovererInstance) Stop() {
 func (o *DiscovererInstance) ConnectDiscovered(fn func(Discoverer, DiscovererInfo, error)) gobject.SignalHandle {
 	return o.Connect("discovered", fn)
 }
+
 // ConnectFinished connects the provided callback to the "finished" signal
 //
 // Will be emitted in async mode when all pending URIs have been processed.
 func (o *DiscovererInstance) ConnectFinished(fn func(Discoverer)) gobject.SignalHandle {
 	return o.Connect("finished", fn)
 }
+
 // ConnectLoadSerializedInfo connects the provided callback to the "load-serialized-info" signal
 //
 // Retrieves information about a URI from and external source of information,
@@ -2767,6 +2858,7 @@ func (o *DiscovererInstance) ConnectFinished(fn func(Discoverer)) gobject.Signal
 func (o *DiscovererInstance) ConnectLoadSerializedInfo(fn func(Discoverer, string) DiscovererInfoInstance) gobject.SignalHandle {
 	return o.Connect("load-serialized-info", fn)
 }
+
 // ConnectSourceSetup connects the provided callback to the "source-setup" signal
 //
 // This signal is emitted after the source element has been created for, so
@@ -2779,12 +2871,74 @@ func (o *DiscovererInstance) ConnectLoadSerializedInfo(fn func(Discoverer, strin
 func (o *DiscovererInstance) ConnectSourceSetup(fn func(Discoverer, gst.Element)) gobject.SignalHandle {
 	return o.Connect("source-setup", fn)
 }
+
 // ConnectStarting connects the provided callback to the "starting" signal
 //
 // Will be emitted when the discover starts analyzing the pending URIs
 func (o *DiscovererInstance) ConnectStarting(fn func(Discoverer)) gobject.SignalHandle {
 	return o.Connect("starting", fn)
 }
+
+// DiscovererOverrides is the struct used to override the default implementation of virtual methods.
+// it is generic over the extending instance type.
+type DiscovererOverrides[Instance Discoverer] struct {
+	// gobject.ObjectOverrides allows you to override virtual methods from the parent class gobject.Object
+	gobject.ObjectOverrides[Instance]
+
+	// Discovered allows you to override the implementation of the virtual method discovered.
+	// The function takes the following parameters:
+	// 
+	// 	- info DiscovererInfo 
+	// 	- err error 
+	Discovered func(Instance, DiscovererInfo, error)
+	// Finished allows you to override the implementation of the virtual method finished.
+	Finished func(Instance)
+	// LoadSerializeInfo allows you to override the implementation of the virtual method load_serialize_info.
+	// The function takes the following parameters:
+	// 
+	// 	- uri string: the uri to load the info from 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret DiscovererInfo 
+	LoadSerializeInfo func(Instance, string) DiscovererInfo
+	// SourceSetup allows you to override the implementation of the virtual method source_setup.
+	// The function takes the following parameters:
+	// 
+	// 	- source gst.Element 
+	SourceSetup func(Instance, gst.Element)
+	// Starting allows you to override the implementation of the virtual method starting.
+	Starting func(Instance)
+}
+
+// UnsafeApplyDiscovererOverrides applies the overrides to init the gclass by setting the trampoline functions.
+// This is used by the bindings internally and only exported for visibility to other bindings code.
+func UnsafeApplyDiscovererOverrides[Instance Discoverer](gclass unsafe.Pointer, overrides DiscovererOverrides[Instance]) {
+	gobject.UnsafeApplyObjectOverrides(gclass, overrides.ObjectOverrides)
+
+	pclass := (*C.GstDiscovererClass)(gclass)
+
+	if overrides.Discovered != nil {
+		pclass.discovered = (*[0]byte)(C._gotk4_gstpbutils1_Discoverer_discovered)
+	}
+
+	if overrides.Finished != nil {
+		pclass.finished = (*[0]byte)(C._gotk4_gstpbutils1_Discoverer_finished)
+	}
+
+	if overrides.LoadSerializeInfo != nil {
+		pclass.load_serialize_info = (*[0]byte)(C._gotk4_gstpbutils1_Discoverer_load_serialize_info)
+	}
+
+	if overrides.SourceSetup != nil {
+		pclass.source_setup = (*[0]byte)(C._gotk4_gstpbutils1_Discoverer_source_setup)
+	}
+
+	if overrides.Starting != nil {
+		pclass.starting = (*[0]byte)(C._gotk4_gstpbutils1_Discoverer_starting)
+	}
+}
+
 // DiscovererInfoInstance is the instance type used by all types extending GstDiscovererInfo. It is used internally by the bindings. Users should use the interface [DiscovererInfo] instead.
 type DiscovererInfoInstance struct {
 	_ [0]func() // equal guard
@@ -2801,11 +2955,13 @@ type DiscovererInfo interface {
 	upcastToGstDiscovererInfo() *DiscovererInfoInstance
 
 	// Copy wraps gst_discoverer_info_copy
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret DiscovererInfo 
 	Copy() DiscovererInfo
 	// GetAudioStreams wraps gst_discoverer_info_get_audio_streams
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []DiscovererAudioInfo 
@@ -2813,6 +2969,7 @@ type DiscovererInfo interface {
 	// Finds all the #GstDiscovererAudioInfo contained in @info
 	GetAudioStreams() []DiscovererAudioInfo
 	// GetContainerStreams wraps gst_discoverer_info_get_container_streams
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []DiscovererContainerInfo 
@@ -2820,16 +2977,19 @@ type DiscovererInfo interface {
 	// Finds all the #GstDiscovererContainerInfo contained in @info
 	GetContainerStreams() []DiscovererContainerInfo
 	// GetDuration wraps gst_discoverer_info_get_duration
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret gst.ClockTime 
 	GetDuration() gst.ClockTime
 	// GetLive wraps gst_discoverer_info_get_live
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	GetLive() bool
 	// GetMisc wraps gst_discoverer_info_get_misc
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Structure (nullable) 
@@ -2839,6 +2999,7 @@ type DiscovererInfo interface {
 	// #gst_discoverer_info_get_missing_elements_installer_details
 	GetMisc() *gst.Structure
 	// GetMissingElementsInstallerDetails wraps gst_discoverer_info_get_missing_elements_installer_details
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []string 
@@ -2846,21 +3007,25 @@ type DiscovererInfo interface {
 	// Get the installer details for missing elements
 	GetMissingElementsInstallerDetails() []string
 	// GetResult wraps gst_discoverer_info_get_result
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret DiscovererResult 
 	GetResult() DiscovererResult
 	// GetSeekable wraps gst_discoverer_info_get_seekable
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	GetSeekable() bool
 	// GetStreamInfo wraps gst_discoverer_info_get_stream_info
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret DiscovererStreamInfo (nullable) 
 	GetStreamInfo() DiscovererStreamInfo
 	// GetStreamList wraps gst_discoverer_info_get_stream_list
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []DiscovererStreamInfo 
@@ -2879,6 +3044,7 @@ type DiscovererInfo interface {
 	// given @streamtype.
 	GetStreams(gobject.Type) []DiscovererStreamInfo
 	// GetSubtitleStreams wraps gst_discoverer_info_get_subtitle_streams
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []DiscovererSubtitleInfo 
@@ -2886,6 +3052,7 @@ type DiscovererInfo interface {
 	// Finds all the #GstDiscovererSubtitleInfo contained in @info
 	GetSubtitleStreams() []DiscovererSubtitleInfo
 	// GetTags wraps gst_discoverer_info_get_tags
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.TagList (nullable) 
@@ -2894,16 +3061,19 @@ type DiscovererInfo interface {
 	// Deprecated: (since 1.20.0) Use gst_discoverer_{container,stream}_info_get_tags() instead.
 	GetTags() *gst.TagList
 	// GetToc wraps gst_discoverer_info_get_toc
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Toc (nullable) 
 	GetToc() *gst.Toc
 	// GetURI wraps gst_discoverer_info_get_uri
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string 
 	GetURI() string
 	// GetVideoStreams wraps gst_discoverer_info_get_video_streams
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []DiscovererVideoInfo 
@@ -2947,6 +3117,7 @@ func UnsafeDiscovererInfoToGlibFull(c DiscovererInfo) unsafe.Pointer {
 }
 
 // Copy wraps gst_discoverer_info_copy
+// 
 // The function returns the following values:
 // 
 // 	- goret DiscovererInfo 
@@ -2967,6 +3138,7 @@ func (ptr *DiscovererInfoInstance) Copy() DiscovererInfo {
 }
 
 // GetAudioStreams wraps gst_discoverer_info_get_audio_streams
+// 
 // The function returns the following values:
 // 
 // 	- goret []DiscovererAudioInfo 
@@ -2996,6 +3168,7 @@ func (info *DiscovererInfoInstance) GetAudioStreams() []DiscovererAudioInfo {
 }
 
 // GetContainerStreams wraps gst_discoverer_info_get_container_streams
+// 
 // The function returns the following values:
 // 
 // 	- goret []DiscovererContainerInfo 
@@ -3025,6 +3198,7 @@ func (info *DiscovererInfoInstance) GetContainerStreams() []DiscovererContainerI
 }
 
 // GetDuration wraps gst_discoverer_info_get_duration
+// 
 // The function returns the following values:
 // 
 // 	- goret gst.ClockTime 
@@ -3045,6 +3219,7 @@ func (info *DiscovererInfoInstance) GetDuration() gst.ClockTime {
 }
 
 // GetLive wraps gst_discoverer_info_get_live
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -3067,6 +3242,7 @@ func (info *DiscovererInfoInstance) GetLive() bool {
 }
 
 // GetMisc wraps gst_discoverer_info_get_misc
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Structure (nullable) 
@@ -3093,6 +3269,7 @@ func (info *DiscovererInfoInstance) GetMisc() *gst.Structure {
 }
 
 // GetMissingElementsInstallerDetails wraps gst_discoverer_info_get_missing_elements_installer_details
+// 
 // The function returns the following values:
 // 
 // 	- goret []string 
@@ -3117,6 +3294,7 @@ func (info *DiscovererInfoInstance) GetMissingElementsInstallerDetails() []strin
 }
 
 // GetResult wraps gst_discoverer_info_get_result
+// 
 // The function returns the following values:
 // 
 // 	- goret DiscovererResult 
@@ -3137,6 +3315,7 @@ func (info *DiscovererInfoInstance) GetResult() DiscovererResult {
 }
 
 // GetSeekable wraps gst_discoverer_info_get_seekable
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -3159,6 +3338,7 @@ func (info *DiscovererInfoInstance) GetSeekable() bool {
 }
 
 // GetStreamInfo wraps gst_discoverer_info_get_stream_info
+// 
 // The function returns the following values:
 // 
 // 	- goret DiscovererStreamInfo (nullable) 
@@ -3181,6 +3361,7 @@ func (info *DiscovererInfoInstance) GetStreamInfo() DiscovererStreamInfo {
 }
 
 // GetStreamList wraps gst_discoverer_info_get_stream_list
+// 
 // The function returns the following values:
 // 
 // 	- goret []DiscovererStreamInfo 
@@ -3246,6 +3427,7 @@ func (info *DiscovererInfoInstance) GetStreams(streamtype gobject.Type) []Discov
 }
 
 // GetSubtitleStreams wraps gst_discoverer_info_get_subtitle_streams
+// 
 // The function returns the following values:
 // 
 // 	- goret []DiscovererSubtitleInfo 
@@ -3275,6 +3457,7 @@ func (info *DiscovererInfoInstance) GetSubtitleStreams() []DiscovererSubtitleInf
 }
 
 // GetTags wraps gst_discoverer_info_get_tags
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.TagList (nullable) 
@@ -3300,6 +3483,7 @@ func (info *DiscovererInfoInstance) GetTags() *gst.TagList {
 }
 
 // GetToc wraps gst_discoverer_info_get_toc
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Toc (nullable) 
@@ -3322,6 +3506,7 @@ func (info *DiscovererInfoInstance) GetToc() *gst.Toc {
 }
 
 // GetURI wraps gst_discoverer_info_get_uri
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -3342,6 +3527,7 @@ func (info *DiscovererInfoInstance) GetURI() string {
 }
 
 // GetVideoStreams wraps gst_discoverer_info_get_video_streams
+// 
 // The function returns the following values:
 // 
 // 	- goret []DiscovererVideoInfo 
@@ -3400,11 +3586,13 @@ type DiscovererStreamInfo interface {
 	upcastToGstDiscovererStreamInfo() *DiscovererStreamInfoInstance
 
 	// GetCaps wraps gst_discoverer_stream_info_get_caps
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Caps (nullable) 
 	GetCaps() *gst.Caps
 	// GetMisc wraps gst_discoverer_stream_info_get_misc
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Structure (nullable) 
@@ -3414,36 +3602,43 @@ type DiscovererStreamInfo interface {
 	// #gst_discoverer_info_get_missing_elements_installer_details
 	GetMisc() *gst.Structure
 	// GetNext wraps gst_discoverer_stream_info_get_next
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret DiscovererStreamInfo (nullable) 
 	GetNext() DiscovererStreamInfo
 	// GetPrevious wraps gst_discoverer_stream_info_get_previous
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret DiscovererStreamInfo (nullable) 
 	GetPrevious() DiscovererStreamInfo
 	// GetStreamID wraps gst_discoverer_stream_info_get_stream_id
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
 	GetStreamID() string
 	// GetStreamNumber wraps gst_discoverer_stream_info_get_stream_number
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret int 
 	GetStreamNumber() int
 	// GetStreamTypeNick wraps gst_discoverer_stream_info_get_stream_type_nick
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string 
 	GetStreamTypeNick() string
 	// GetTags wraps gst_discoverer_stream_info_get_tags
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.TagList (nullable) 
 	GetTags() *gst.TagList
 	// GetToc wraps gst_discoverer_stream_info_get_toc
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Toc (nullable) 
@@ -3485,6 +3680,7 @@ func UnsafeDiscovererStreamInfoToGlibFull(c DiscovererStreamInfo) unsafe.Pointer
 }
 
 // GetCaps wraps gst_discoverer_stream_info_get_caps
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Caps (nullable) 
@@ -3507,6 +3703,7 @@ func (info *DiscovererStreamInfoInstance) GetCaps() *gst.Caps {
 }
 
 // GetMisc wraps gst_discoverer_stream_info_get_misc
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Structure (nullable) 
@@ -3533,6 +3730,7 @@ func (info *DiscovererStreamInfoInstance) GetMisc() *gst.Structure {
 }
 
 // GetNext wraps gst_discoverer_stream_info_get_next
+// 
 // The function returns the following values:
 // 
 // 	- goret DiscovererStreamInfo (nullable) 
@@ -3555,6 +3753,7 @@ func (info *DiscovererStreamInfoInstance) GetNext() DiscovererStreamInfo {
 }
 
 // GetPrevious wraps gst_discoverer_stream_info_get_previous
+// 
 // The function returns the following values:
 // 
 // 	- goret DiscovererStreamInfo (nullable) 
@@ -3577,6 +3776,7 @@ func (info *DiscovererStreamInfoInstance) GetPrevious() DiscovererStreamInfo {
 }
 
 // GetStreamID wraps gst_discoverer_stream_info_get_stream_id
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -3599,6 +3799,7 @@ func (info *DiscovererStreamInfoInstance) GetStreamID() string {
 }
 
 // GetStreamNumber wraps gst_discoverer_stream_info_get_stream_number
+// 
 // The function returns the following values:
 // 
 // 	- goret int 
@@ -3619,6 +3820,7 @@ func (info *DiscovererStreamInfoInstance) GetStreamNumber() int {
 }
 
 // GetStreamTypeNick wraps gst_discoverer_stream_info_get_stream_type_nick
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -3639,6 +3841,7 @@ func (info *DiscovererStreamInfoInstance) GetStreamTypeNick() string {
 }
 
 // GetTags wraps gst_discoverer_stream_info_get_tags
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.TagList (nullable) 
@@ -3661,6 +3864,7 @@ func (info *DiscovererStreamInfoInstance) GetTags() *gst.TagList {
 }
 
 // GetToc wraps gst_discoverer_stream_info_get_toc
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Toc (nullable) 
@@ -3699,6 +3903,7 @@ type DiscovererSubtitleInfo interface {
 	upcastToGstDiscovererSubtitleInfo() *DiscovererSubtitleInfoInstance
 
 	// GetLanguage wraps gst_discoverer_subtitle_info_get_language
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
@@ -3742,6 +3947,7 @@ func UnsafeDiscovererSubtitleInfoToGlibFull(c DiscovererSubtitleInfo) unsafe.Poi
 }
 
 // GetLanguage wraps gst_discoverer_subtitle_info_get_language
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -3779,56 +3985,67 @@ type DiscovererVideoInfo interface {
 	upcastToGstDiscovererVideoInfo() *DiscovererVideoInfoInstance
 
 	// GetBitrate wraps gst_discoverer_video_info_get_bitrate
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
 	GetBitrate() uint
 	// GetDepth wraps gst_discoverer_video_info_get_depth
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
 	GetDepth() uint
 	// GetFramerateDenom wraps gst_discoverer_video_info_get_framerate_denom
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
 	GetFramerateDenom() uint
 	// GetFramerateNum wraps gst_discoverer_video_info_get_framerate_num
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
 	GetFramerateNum() uint
 	// GetHeight wraps gst_discoverer_video_info_get_height
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
 	GetHeight() uint
 	// GetMaxBitrate wraps gst_discoverer_video_info_get_max_bitrate
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
 	GetMaxBitrate() uint
 	// GetParDenom wraps gst_discoverer_video_info_get_par_denom
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
 	GetParDenom() uint
 	// GetParNum wraps gst_discoverer_video_info_get_par_num
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
 	GetParNum() uint
 	// GetWidth wraps gst_discoverer_video_info_get_width
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
 	GetWidth() uint
 	// IsImage wraps gst_discoverer_video_info_is_image
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	IsImage() bool
 	// IsInterlaced wraps gst_discoverer_video_info_is_interlaced
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -3872,6 +4089,7 @@ func UnsafeDiscovererVideoInfoToGlibFull(c DiscovererVideoInfo) unsafe.Pointer {
 }
 
 // GetBitrate wraps gst_discoverer_video_info_get_bitrate
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -3892,6 +4110,7 @@ func (info *DiscovererVideoInfoInstance) GetBitrate() uint {
 }
 
 // GetDepth wraps gst_discoverer_video_info_get_depth
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -3912,6 +4131,7 @@ func (info *DiscovererVideoInfoInstance) GetDepth() uint {
 }
 
 // GetFramerateDenom wraps gst_discoverer_video_info_get_framerate_denom
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -3932,6 +4152,7 @@ func (info *DiscovererVideoInfoInstance) GetFramerateDenom() uint {
 }
 
 // GetFramerateNum wraps gst_discoverer_video_info_get_framerate_num
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -3952,6 +4173,7 @@ func (info *DiscovererVideoInfoInstance) GetFramerateNum() uint {
 }
 
 // GetHeight wraps gst_discoverer_video_info_get_height
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -3972,6 +4194,7 @@ func (info *DiscovererVideoInfoInstance) GetHeight() uint {
 }
 
 // GetMaxBitrate wraps gst_discoverer_video_info_get_max_bitrate
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -3992,6 +4215,7 @@ func (info *DiscovererVideoInfoInstance) GetMaxBitrate() uint {
 }
 
 // GetParDenom wraps gst_discoverer_video_info_get_par_denom
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -4012,6 +4236,7 @@ func (info *DiscovererVideoInfoInstance) GetParDenom() uint {
 }
 
 // GetParNum wraps gst_discoverer_video_info_get_par_num
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -4032,6 +4257,7 @@ func (info *DiscovererVideoInfoInstance) GetParNum() uint {
 }
 
 // GetWidth wraps gst_discoverer_video_info_get_width
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -4052,6 +4278,7 @@ func (info *DiscovererVideoInfoInstance) GetWidth() uint {
 }
 
 // IsImage wraps gst_discoverer_video_info_is_image
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -4074,6 +4301,7 @@ func (info *DiscovererVideoInfoInstance) IsImage() bool {
 }
 
 // IsInterlaced wraps gst_discoverer_video_info_is_interlaced
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -4112,6 +4340,7 @@ type EncodingProfile interface {
 	upcastToGstEncodingProfile() *EncodingProfileInstance
 
 	// Copy wraps gst_encoding_profile_copy
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret EncodingProfile 
@@ -4119,6 +4348,7 @@ type EncodingProfile interface {
 	// Makes a deep copy of @self
 	Copy() EncodingProfile
 	// GetAllowDynamicOutput wraps gst_encoding_profile_get_allow_dynamic_output
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -4127,26 +4357,31 @@ type EncodingProfile interface {
 	// later during the encoding.
 	GetAllowDynamicOutput() bool
 	// GetDescription wraps gst_encoding_profile_get_description
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
 	GetDescription() string
 	// GetElementProperties wraps gst_encoding_profile_get_element_properties
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Structure (nullable) 
 	GetElementProperties() *gst.Structure
 	// GetFileExtension wraps gst_encoding_profile_get_file_extension
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
 	GetFileExtension() string
 	// GetFormat wraps gst_encoding_profile_get_format
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Caps 
 	GetFormat() *gst.Caps
 	// GetInputCaps wraps gst_encoding_profile_get_input_caps
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Caps 
@@ -4154,41 +4389,49 @@ type EncodingProfile interface {
 	// Computes the full output caps that this @profile will be able to consume.
 	GetInputCaps() *gst.Caps
 	// GetName wraps gst_encoding_profile_get_name
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
 	GetName() string
 	// GetPresence wraps gst_encoding_profile_get_presence
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
 	GetPresence() uint
 	// GetPreset wraps gst_encoding_profile_get_preset
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
 	GetPreset() string
 	// GetPresetName wraps gst_encoding_profile_get_preset_name
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
 	GetPresetName() string
 	// GetRestriction wraps gst_encoding_profile_get_restriction
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Caps (nullable) 
 	GetRestriction() *gst.Caps
 	// GetSingleSegment wraps gst_encoding_profile_get_single_segment
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
 	GetSingleSegment() bool
 	// GetTypeNick wraps gst_encoding_profile_get_type_nick
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string 
 	GetTypeNick() string
 	// IsEnabled wraps gst_encoding_profile_is_enabled
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -4436,6 +4679,7 @@ func EncodingProfileFromDiscoverer(info DiscovererInfo) EncodingProfile {
 }
 
 // Copy wraps gst_encoding_profile_copy
+// 
 // The function returns the following values:
 // 
 // 	- goret EncodingProfile 
@@ -4458,6 +4702,7 @@ func (self *EncodingProfileInstance) Copy() EncodingProfile {
 }
 
 // GetAllowDynamicOutput wraps gst_encoding_profile_get_allow_dynamic_output
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -4483,6 +4728,7 @@ func (profile *EncodingProfileInstance) GetAllowDynamicOutput() bool {
 }
 
 // GetDescription wraps gst_encoding_profile_get_description
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -4505,6 +4751,7 @@ func (profile *EncodingProfileInstance) GetDescription() string {
 }
 
 // GetElementProperties wraps gst_encoding_profile_get_element_properties
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Structure (nullable) 
@@ -4527,6 +4774,7 @@ func (self *EncodingProfileInstance) GetElementProperties() *gst.Structure {
 }
 
 // GetFileExtension wraps gst_encoding_profile_get_file_extension
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -4549,6 +4797,7 @@ func (profile *EncodingProfileInstance) GetFileExtension() string {
 }
 
 // GetFormat wraps gst_encoding_profile_get_format
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Caps 
@@ -4569,6 +4818,7 @@ func (profile *EncodingProfileInstance) GetFormat() *gst.Caps {
 }
 
 // GetInputCaps wraps gst_encoding_profile_get_input_caps
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Caps 
@@ -4591,6 +4841,7 @@ func (profile *EncodingProfileInstance) GetInputCaps() *gst.Caps {
 }
 
 // GetName wraps gst_encoding_profile_get_name
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -4613,6 +4864,7 @@ func (profile *EncodingProfileInstance) GetName() string {
 }
 
 // GetPresence wraps gst_encoding_profile_get_presence
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -4633,6 +4885,7 @@ func (profile *EncodingProfileInstance) GetPresence() uint {
 }
 
 // GetPreset wraps gst_encoding_profile_get_preset
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -4655,6 +4908,7 @@ func (profile *EncodingProfileInstance) GetPreset() string {
 }
 
 // GetPresetName wraps gst_encoding_profile_get_preset_name
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -4677,6 +4931,7 @@ func (profile *EncodingProfileInstance) GetPresetName() string {
 }
 
 // GetRestriction wraps gst_encoding_profile_get_restriction
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.Caps (nullable) 
@@ -4699,6 +4954,7 @@ func (profile *EncodingProfileInstance) GetRestriction() *gst.Caps {
 }
 
 // GetSingleSegment wraps gst_encoding_profile_get_single_segment
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -4721,6 +4977,7 @@ func (profile *EncodingProfileInstance) GetSingleSegment() bool {
 }
 
 // GetTypeNick wraps gst_encoding_profile_get_type_nick
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -4741,6 +4998,7 @@ func (profile *EncodingProfileInstance) GetTypeNick() string {
 }
 
 // IsEnabled wraps gst_encoding_profile_is_enabled
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -5089,21 +5347,25 @@ type EncodingTarget interface {
 	// count.
 	AddProfile(EncodingProfile) bool
 	// GetCategory wraps gst_encoding_target_get_category
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string 
 	GetCategory() string
 	// GetDescription wraps gst_encoding_target_get_description
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string 
 	GetDescription() string
 	// GetName wraps gst_encoding_target_get_name
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string 
 	GetName() string
 	// GetPath wraps gst_encoding_target_get_path
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
@@ -5119,11 +5381,13 @@ type EncodingTarget interface {
 	// 	- goret EncodingProfile (nullable) 
 	GetProfile(string) EncodingProfile
 	// GetProfiles wraps gst_encoding_target_get_profiles
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []EncodingProfile 
 	GetProfiles() []EncodingProfile
 	// Save wraps gst_encoding_target_save
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -5300,6 +5564,7 @@ func (target *EncodingTargetInstance) AddProfile(profile EncodingProfile) bool {
 }
 
 // GetCategory wraps gst_encoding_target_get_category
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -5320,6 +5585,7 @@ func (target *EncodingTargetInstance) GetCategory() string {
 }
 
 // GetDescription wraps gst_encoding_target_get_description
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -5340,6 +5606,7 @@ func (target *EncodingTargetInstance) GetDescription() string {
 }
 
 // GetName wraps gst_encoding_target_get_name
+// 
 // The function returns the following values:
 // 
 // 	- goret string 
@@ -5360,6 +5627,7 @@ func (target *EncodingTargetInstance) GetName() string {
 }
 
 // GetPath wraps gst_encoding_target_get_path
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -5413,6 +5681,7 @@ func (target *EncodingTargetInstance) GetProfile(name string) EncodingProfile {
 }
 
 // GetProfiles wraps gst_encoding_target_get_profiles
+// 
 // The function returns the following values:
 // 
 // 	- goret []EncodingProfile 
@@ -5440,6 +5709,7 @@ func (target *EncodingTargetInstance) GetProfiles() []EncodingProfile {
 }
 
 // Save wraps gst_encoding_target_save
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -5524,6 +5794,7 @@ type EncodingVideoProfile interface {
 	upcastToGstEncodingVideoProfile() *EncodingVideoProfileInstance
 
 	// GetPass wraps gst_encoding_video_profile_get_pass
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
@@ -5531,6 +5802,7 @@ type EncodingVideoProfile interface {
 	// Get the pass number if this is part of a multi-pass profile.
 	GetPass() uint
 	// GetVariableframerate wraps gst_encoding_video_profile_get_variableframerate
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
@@ -5653,6 +5925,7 @@ func NewEncodingVideoProfile(format *gst.Caps, preset string, restriction *gst.C
 }
 
 // GetPass wraps gst_encoding_video_profile_get_pass
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -5675,6 +5948,7 @@ func (prof *EncodingVideoProfileInstance) GetPass() uint {
 }
 
 // GetVariableframerate wraps gst_encoding_video_profile_get_variableframerate
+// 
 // The function returns the following values:
 // 
 // 	- goret bool 
@@ -5760,36 +6034,43 @@ type DiscovererAudioInfo interface {
 	upcastToGstDiscovererAudioInfo() *DiscovererAudioInfoInstance
 
 	// GetBitrate wraps gst_discoverer_audio_info_get_bitrate
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
 	GetBitrate() uint
 	// GetChannelMask wraps gst_discoverer_audio_info_get_channel_mask
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint64 
 	GetChannelMask() uint64
 	// GetChannels wraps gst_discoverer_audio_info_get_channels
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
 	GetChannels() uint
 	// GetDepth wraps gst_discoverer_audio_info_get_depth
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
 	GetDepth() uint
 	// GetLanguage wraps gst_discoverer_audio_info_get_language
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret string (nullable) 
 	GetLanguage() string
 	// GetMaxBitrate wraps gst_discoverer_audio_info_get_max_bitrate
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
 	GetMaxBitrate() uint
 	// GetSampleRate wraps gst_discoverer_audio_info_get_sample_rate
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret uint 
@@ -5833,6 +6114,7 @@ func UnsafeDiscovererAudioInfoToGlibFull(c DiscovererAudioInfo) unsafe.Pointer {
 }
 
 // GetBitrate wraps gst_discoverer_audio_info_get_bitrate
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -5853,6 +6135,7 @@ func (info *DiscovererAudioInfoInstance) GetBitrate() uint {
 }
 
 // GetChannelMask wraps gst_discoverer_audio_info_get_channel_mask
+// 
 // The function returns the following values:
 // 
 // 	- goret uint64 
@@ -5873,6 +6156,7 @@ func (info *DiscovererAudioInfoInstance) GetChannelMask() uint64 {
 }
 
 // GetChannels wraps gst_discoverer_audio_info_get_channels
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -5893,6 +6177,7 @@ func (info *DiscovererAudioInfoInstance) GetChannels() uint {
 }
 
 // GetDepth wraps gst_discoverer_audio_info_get_depth
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -5913,6 +6198,7 @@ func (info *DiscovererAudioInfoInstance) GetDepth() uint {
 }
 
 // GetLanguage wraps gst_discoverer_audio_info_get_language
+// 
 // The function returns the following values:
 // 
 // 	- goret string (nullable) 
@@ -5935,6 +6221,7 @@ func (info *DiscovererAudioInfoInstance) GetLanguage() string {
 }
 
 // GetMaxBitrate wraps gst_discoverer_audio_info_get_max_bitrate
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -5955,6 +6242,7 @@ func (info *DiscovererAudioInfoInstance) GetMaxBitrate() uint {
 }
 
 // GetSampleRate wraps gst_discoverer_audio_info_get_sample_rate
+// 
 // The function returns the following values:
 // 
 // 	- goret uint 
@@ -5990,11 +6278,13 @@ type DiscovererContainerInfo interface {
 	upcastToGstDiscovererContainerInfo() *DiscovererContainerInfoInstance
 
 	// GetStreams wraps gst_discoverer_container_info_get_streams
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []DiscovererStreamInfo 
 	GetStreams() []DiscovererStreamInfo
 	// GetTags wraps gst_discoverer_container_info_get_tags
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.TagList (nullable) 
@@ -6038,6 +6328,7 @@ func UnsafeDiscovererContainerInfoToGlibFull(c DiscovererContainerInfo) unsafe.P
 }
 
 // GetStreams wraps gst_discoverer_container_info_get_streams
+// 
 // The function returns the following values:
 // 
 // 	- goret []DiscovererStreamInfo 
@@ -6065,6 +6356,7 @@ func (info *DiscovererContainerInfoInstance) GetStreams() []DiscovererStreamInfo
 }
 
 // GetTags wraps gst_discoverer_container_info_get_tags
+// 
 // The function returns the following values:
 // 
 // 	- goret *gst.TagList (nullable) 
@@ -6231,6 +6523,7 @@ type EncodingContainerProfile interface {
 	// @profile.
 	ContainsProfile(EncodingProfile) bool
 	// GetProfiles wraps gst_encoding_container_profile_get_profiles
+	// 
 	// The function returns the following values:
 	// 
 	// 	- goret []EncodingProfile 
@@ -6391,6 +6684,7 @@ func (container *EncodingContainerProfileInstance) ContainsProfile(profile Encod
 }
 
 // GetProfiles wraps gst_encoding_container_profile_get_profiles
+// 
 // The function returns the following values:
 // 
 // 	- goret []EncodingProfile 
@@ -6418,6 +6712,8 @@ func (profile *EncodingContainerProfileInstance) GetProfiles() []EncodingProfile
 }
 
 // AudioVisualizerClass wraps GstAudioVisualizerClass
+// 
+// AudioVisualizerClass is the type struct for [AudioVisualizer]
 type AudioVisualizerClass struct {
 	*audioVisualizerClass
 }
@@ -6432,31 +6728,6 @@ func UnsafeAudioVisualizerClassFromGlibBorrow(p unsafe.Pointer) *AudioVisualizer
 	return &AudioVisualizerClass{&audioVisualizerClass{(*C.GstAudioVisualizerClass)(p)}}
 }
 
-// UnsafeAudioVisualizerClassFromGlibNone is used to convert raw C.GstAudioVisualizerClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAudioVisualizerClassFromGlibNone(p unsafe.Pointer) *AudioVisualizerClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeAudioVisualizerClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.audioVisualizerClass,
-		func (intern *audioVisualizerClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeAudioVisualizerClassFromGlibFull is used to convert raw C.GstAudioVisualizerClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeAudioVisualizerClassFromGlibFull(p unsafe.Pointer) *AudioVisualizerClass {
-	wrapped := UnsafeAudioVisualizerClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.audioVisualizerClass,
-		func (intern *audioVisualizerClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeAudioVisualizerClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [AudioVisualizerClass] is expected to work anymore.
@@ -6469,15 +6740,18 @@ func UnsafeAudioVisualizerClassToGlibNone(a *AudioVisualizerClass) unsafe.Pointe
 	return unsafe.Pointer(a.native)
 }
 
-// UnsafeAudioVisualizerClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeAudioVisualizerClassToGlibFull(a *AudioVisualizerClass) unsafe.Pointer {
-	runtime.SetFinalizer(a.audioVisualizerClass, nil)
-	_p := unsafe.Pointer(a.native)
-	a.native = nil // AudioVisualizerClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (a *AudioVisualizerClass) ParentClass() *gst.ElementClass {
+	parent := gst.UnsafeElementClassFromGlibBorrow(UnsafeAudioVisualizerClassToGlibNone(a))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *AudioVisualizerClass) {}, a)
+	return parent
 }
+
 // DiscovererClass wraps GstDiscovererClass
+// 
+// DiscovererClass is the type struct for [Discoverer]
 type DiscovererClass struct {
 	*discovererClass
 }
@@ -6492,31 +6766,6 @@ func UnsafeDiscovererClassFromGlibBorrow(p unsafe.Pointer) *DiscovererClass {
 	return &DiscovererClass{&discovererClass{(*C.GstDiscovererClass)(p)}}
 }
 
-// UnsafeDiscovererClassFromGlibNone is used to convert raw C.GstDiscovererClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeDiscovererClassFromGlibNone(p unsafe.Pointer) *DiscovererClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeDiscovererClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.discovererClass,
-		func (intern *discovererClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeDiscovererClassFromGlibFull is used to convert raw C.GstDiscovererClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeDiscovererClassFromGlibFull(p unsafe.Pointer) *DiscovererClass {
-	wrapped := UnsafeDiscovererClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.discovererClass,
-		func (intern *discovererClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeDiscovererClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [DiscovererClass] is expected to work anymore.
@@ -6529,15 +6778,18 @@ func UnsafeDiscovererClassToGlibNone(d *DiscovererClass) unsafe.Pointer {
 	return unsafe.Pointer(d.native)
 }
 
-// UnsafeDiscovererClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeDiscovererClassToGlibFull(d *DiscovererClass) unsafe.Pointer {
-	runtime.SetFinalizer(d.discovererClass, nil)
-	_p := unsafe.Pointer(d.native)
-	d.native = nil // DiscovererClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (d *DiscovererClass) ParentClass() *gobject.ObjectClass {
+	parent := gobject.UnsafeObjectClassFromGlibBorrow(UnsafeDiscovererClassToGlibNone(d))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *DiscovererClass) {}, d)
+	return parent
 }
+
 // EncodingAudioProfileClass wraps GstEncodingAudioProfileClass
+// 
+// EncodingAudioProfileClass is the type struct for [EncodingAudioProfile]
 type EncodingAudioProfileClass struct {
 	*encodingAudioProfileClass
 }
@@ -6552,31 +6804,6 @@ func UnsafeEncodingAudioProfileClassFromGlibBorrow(p unsafe.Pointer) *EncodingAu
 	return &EncodingAudioProfileClass{&encodingAudioProfileClass{(*C.GstEncodingAudioProfileClass)(p)}}
 }
 
-// UnsafeEncodingAudioProfileClassFromGlibNone is used to convert raw C.GstEncodingAudioProfileClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeEncodingAudioProfileClassFromGlibNone(p unsafe.Pointer) *EncodingAudioProfileClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeEncodingAudioProfileClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.encodingAudioProfileClass,
-		func (intern *encodingAudioProfileClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeEncodingAudioProfileClassFromGlibFull is used to convert raw C.GstEncodingAudioProfileClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeEncodingAudioProfileClassFromGlibFull(p unsafe.Pointer) *EncodingAudioProfileClass {
-	wrapped := UnsafeEncodingAudioProfileClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.encodingAudioProfileClass,
-		func (intern *encodingAudioProfileClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeEncodingAudioProfileClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [EncodingAudioProfileClass] is expected to work anymore.
@@ -6589,15 +6816,18 @@ func UnsafeEncodingAudioProfileClassToGlibNone(e *EncodingAudioProfileClass) uns
 	return unsafe.Pointer(e.native)
 }
 
-// UnsafeEncodingAudioProfileClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeEncodingAudioProfileClassToGlibFull(e *EncodingAudioProfileClass) unsafe.Pointer {
-	runtime.SetFinalizer(e.encodingAudioProfileClass, nil)
-	_p := unsafe.Pointer(e.native)
-	e.native = nil // EncodingAudioProfileClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (e *EncodingAudioProfileClass) ParentClass() *EncodingProfileClass {
+	parent := UnsafeEncodingProfileClassFromGlibBorrow(UnsafeEncodingAudioProfileClassToGlibNone(e))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *EncodingAudioProfileClass) {}, e)
+	return parent
 }
+
 // EncodingContainerProfileClass wraps GstEncodingContainerProfileClass
+// 
+// EncodingContainerProfileClass is the type struct for [EncodingContainerProfile]
 type EncodingContainerProfileClass struct {
 	*encodingContainerProfileClass
 }
@@ -6612,31 +6842,6 @@ func UnsafeEncodingContainerProfileClassFromGlibBorrow(p unsafe.Pointer) *Encodi
 	return &EncodingContainerProfileClass{&encodingContainerProfileClass{(*C.GstEncodingContainerProfileClass)(p)}}
 }
 
-// UnsafeEncodingContainerProfileClassFromGlibNone is used to convert raw C.GstEncodingContainerProfileClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeEncodingContainerProfileClassFromGlibNone(p unsafe.Pointer) *EncodingContainerProfileClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeEncodingContainerProfileClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.encodingContainerProfileClass,
-		func (intern *encodingContainerProfileClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeEncodingContainerProfileClassFromGlibFull is used to convert raw C.GstEncodingContainerProfileClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeEncodingContainerProfileClassFromGlibFull(p unsafe.Pointer) *EncodingContainerProfileClass {
-	wrapped := UnsafeEncodingContainerProfileClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.encodingContainerProfileClass,
-		func (intern *encodingContainerProfileClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeEncodingContainerProfileClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [EncodingContainerProfileClass] is expected to work anymore.
@@ -6649,15 +6854,18 @@ func UnsafeEncodingContainerProfileClassToGlibNone(e *EncodingContainerProfileCl
 	return unsafe.Pointer(e.native)
 }
 
-// UnsafeEncodingContainerProfileClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeEncodingContainerProfileClassToGlibFull(e *EncodingContainerProfileClass) unsafe.Pointer {
-	runtime.SetFinalizer(e.encodingContainerProfileClass, nil)
-	_p := unsafe.Pointer(e.native)
-	e.native = nil // EncodingContainerProfileClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (e *EncodingContainerProfileClass) ParentClass() *EncodingProfileClass {
+	parent := UnsafeEncodingProfileClassFromGlibBorrow(UnsafeEncodingContainerProfileClassToGlibNone(e))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *EncodingContainerProfileClass) {}, e)
+	return parent
 }
+
 // EncodingProfileClass wraps GstEncodingProfileClass
+// 
+// EncodingProfileClass is the type struct for [EncodingProfile]
 type EncodingProfileClass struct {
 	*encodingProfileClass
 }
@@ -6672,31 +6880,6 @@ func UnsafeEncodingProfileClassFromGlibBorrow(p unsafe.Pointer) *EncodingProfile
 	return &EncodingProfileClass{&encodingProfileClass{(*C.GstEncodingProfileClass)(p)}}
 }
 
-// UnsafeEncodingProfileClassFromGlibNone is used to convert raw C.GstEncodingProfileClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeEncodingProfileClassFromGlibNone(p unsafe.Pointer) *EncodingProfileClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeEncodingProfileClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.encodingProfileClass,
-		func (intern *encodingProfileClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeEncodingProfileClassFromGlibFull is used to convert raw C.GstEncodingProfileClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeEncodingProfileClassFromGlibFull(p unsafe.Pointer) *EncodingProfileClass {
-	wrapped := UnsafeEncodingProfileClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.encodingProfileClass,
-		func (intern *encodingProfileClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeEncodingProfileClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [EncodingProfileClass] is expected to work anymore.
@@ -6709,15 +6892,18 @@ func UnsafeEncodingProfileClassToGlibNone(e *EncodingProfileClass) unsafe.Pointe
 	return unsafe.Pointer(e.native)
 }
 
-// UnsafeEncodingProfileClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeEncodingProfileClassToGlibFull(e *EncodingProfileClass) unsafe.Pointer {
-	runtime.SetFinalizer(e.encodingProfileClass, nil)
-	_p := unsafe.Pointer(e.native)
-	e.native = nil // EncodingProfileClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (e *EncodingProfileClass) ParentClass() *gobject.ObjectClass {
+	parent := gobject.UnsafeObjectClassFromGlibBorrow(UnsafeEncodingProfileClassToGlibNone(e))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *EncodingProfileClass) {}, e)
+	return parent
 }
+
 // EncodingVideoProfileClass wraps GstEncodingVideoProfileClass
+// 
+// EncodingVideoProfileClass is the type struct for [EncodingVideoProfile]
 type EncodingVideoProfileClass struct {
 	*encodingVideoProfileClass
 }
@@ -6732,31 +6918,6 @@ func UnsafeEncodingVideoProfileClassFromGlibBorrow(p unsafe.Pointer) *EncodingVi
 	return &EncodingVideoProfileClass{&encodingVideoProfileClass{(*C.GstEncodingVideoProfileClass)(p)}}
 }
 
-// UnsafeEncodingVideoProfileClassFromGlibNone is used to convert raw C.GstEncodingVideoProfileClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeEncodingVideoProfileClassFromGlibNone(p unsafe.Pointer) *EncodingVideoProfileClass {
-	// FIXME: this has no ref function, what should we do here?
-	wrapped := UnsafeEncodingVideoProfileClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.encodingVideoProfileClass,
-		func (intern *encodingVideoProfileClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
-// UnsafeEncodingVideoProfileClassFromGlibFull is used to convert raw C.GstEncodingVideoProfileClass pointers to go while taking a reference. This is used by the bindings internally.
-func UnsafeEncodingVideoProfileClassFromGlibFull(p unsafe.Pointer) *EncodingVideoProfileClass {
-	wrapped := UnsafeEncodingVideoProfileClassFromGlibBorrow(p)
-	runtime.SetFinalizer(
-		wrapped.encodingVideoProfileClass,
-		func (intern *encodingVideoProfileClass) {
-			C.free(unsafe.Pointer(intern.native))
-		},
-	)
-	return wrapped
-}
-
 // UnsafeEncodingVideoProfileClassFree unrefs/frees the underlying resource. This is used by the bindings internally.
 // 
 // After this is called, no other method on [EncodingVideoProfileClass] is expected to work anymore.
@@ -6769,14 +6930,15 @@ func UnsafeEncodingVideoProfileClassToGlibNone(e *EncodingVideoProfileClass) uns
 	return unsafe.Pointer(e.native)
 }
 
-// UnsafeEncodingVideoProfileClassToGlibFull returns the underlying C pointer and gives up ownership.
-// This is used by the bindings internally.
-func UnsafeEncodingVideoProfileClassToGlibFull(e *EncodingVideoProfileClass) unsafe.Pointer {
-	runtime.SetFinalizer(e.encodingVideoProfileClass, nil)
-	_p := unsafe.Pointer(e.native)
-	e.native = nil // EncodingVideoProfileClass is invalid from here on
-	return _p
+// ParentClass returns the type struct of the parent class of this type struct.
+// This essentially casts the underlying c pointer.
+func (e *EncodingVideoProfileClass) ParentClass() *EncodingProfileClass {
+	parent := UnsafeEncodingProfileClassFromGlibBorrow(UnsafeEncodingVideoProfileClassToGlibNone(e))
+	// attach a cleanup to keep the instance alive as long as the parent is referenced
+	runtime.AddCleanup(parent, func(_ *EncodingVideoProfileClass) {}, e)
+	return parent
 }
+
 // InstallPluginsContext wraps GstInstallPluginsContext
 //
 // Opaque context structure for the plugin installation. Use the provided
@@ -6807,7 +6969,7 @@ func UnsafeInstallPluginsContextFromGlibBorrow(p unsafe.Pointer) *InstallPlugins
 	return &InstallPluginsContext{&installPluginsContext{(*C.GstInstallPluginsContext)(p)}}
 }
 
-// UnsafeInstallPluginsContextFromGlibNone is used to convert raw C.GstInstallPluginsContext pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeInstallPluginsContextFromGlibNone is used to convert raw C.GstInstallPluginsContext pointers to go without transferring ownership. This is used by the bindings internally.
 func UnsafeInstallPluginsContextFromGlibNone(p unsafe.Pointer) *InstallPluginsContext {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeInstallPluginsContextFromGlibBorrow(p)
@@ -6820,7 +6982,7 @@ func UnsafeInstallPluginsContextFromGlibNone(p unsafe.Pointer) *InstallPluginsCo
 	return wrapped
 }
 
-// UnsafeInstallPluginsContextFromGlibFull is used to convert raw C.GstInstallPluginsContext pointers to go while taking a reference. This is used by the bindings internally.
+// UnsafeInstallPluginsContextFromGlibFull is used to convert raw C.GstInstallPluginsContext pointers to go while taking ownership. This is used by the bindings internally.
 func UnsafeInstallPluginsContextFromGlibFull(p unsafe.Pointer) *InstallPluginsContext {
 	wrapped := UnsafeInstallPluginsContextFromGlibBorrow(p)
 	runtime.SetFinalizer(
@@ -6852,7 +7014,9 @@ func UnsafeInstallPluginsContextToGlibFull(i *InstallPluginsContext) unsafe.Poin
 	i.native = nil // InstallPluginsContext is invalid from here on
 	return _p
 }
+
 // NewInstallPluginsContext wraps gst_install_plugins_context_new
+// 
 // The function returns the following values:
 // 
 // 	- goret *InstallPluginsContext 
@@ -6871,6 +7035,7 @@ func NewInstallPluginsContext() *InstallPluginsContext {
 }
 
 // Copy wraps gst_install_plugins_context_copy
+// 
 // The function returns the following values:
 // 
 // 	- goret *InstallPluginsContext 
