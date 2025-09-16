@@ -157,7 +157,7 @@ func (m *Message) String() string {
 	case MessageBuffering:
 		mode, avgIn, avgOut, bufferingLeft := m.ParseBufferingStats()
 		msg += fmt.Sprintf(
-			"Buffering %s - %d%% complete (avg in %d/sec, avg out %d/sec, time left %s)",
+			"Buffering %s - %d%% complete (avg in %d/sec, avg out %d/sec, time left %d)",
 			mode,
 			m.ParseBuffering(),
 			avgIn,
