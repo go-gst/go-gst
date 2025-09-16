@@ -7982,7 +7982,7 @@ func ParseBinFromDescription(binDescription string, ghostUnlinkedPads bool) (Bin
 // 	- binDescription string: command line describing the bin 
 // 	- ghostUnlinkedPads bool: whether to automatically create ghost pads
 //     for unlinked source or sink pads within the bin 
-// 	- context *ParseContext (nullable): a parse context allocated with
+// 	- _context *ParseContext (nullable): a parse context allocated with
 //     gst_parse_context_new(), or %NULL 
 // 	- flags ParseFlags: parsing options, or #GST_PARSE_FLAG_NONE 
 // 
@@ -8000,7 +8000,7 @@ func ParseBinFromDescription(binDescription string, ghostUnlinkedPads bool) (Bin
 // multiple unlinked source pads or multiple unlinked sink pads
 // and want them all ghosted, you will have to create the ghost pads
 // yourself).
-func ParseBinFromDescriptionFull(binDescription string, ghostUnlinkedPads bool, context *ParseContext, flags ParseFlags) (Element, error) {
+func ParseBinFromDescriptionFull(binDescription string, ghostUnlinkedPads bool, _context *ParseContext, flags ParseFlags) (Element, error) {
 	var carg1 *C.gchar           // in, none, string, casted *C.gchar
 	var carg2 C.gboolean         // in
 	var carg3 *C.GstParseContext // in, none, converted, nullable
@@ -8013,15 +8013,15 @@ func ParseBinFromDescriptionFull(binDescription string, ghostUnlinkedPads bool, 
 	if ghostUnlinkedPads {
 		carg2 = C.TRUE
 	}
-	if context != nil {
-		carg3 = (*C.GstParseContext)(UnsafeParseContextToGlibNone(context))
+	if _context != nil {
+		carg3 = (*C.GstParseContext)(UnsafeParseContextToGlibNone(_context))
 	}
 	carg4 = C.GstParseFlags(flags)
 
 	cret = C.gst_parse_bin_from_description_full(carg1, carg2, carg3, carg4, &_cerr)
 	runtime.KeepAlive(binDescription)
 	runtime.KeepAlive(ghostUnlinkedPads)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(flags)
 
 	var goret  Element
@@ -8080,7 +8080,7 @@ func ParseLaunch(pipelineDescription string) (Element, error) {
 // The function takes the following parameters:
 // 
 // 	- pipelineDescription string: the command line describing the pipeline 
-// 	- context *ParseContext (nullable): a parse context allocated with
+// 	- _context *ParseContext (nullable): a parse context allocated with
 //      gst_parse_context_new(), or %NULL 
 // 	- flags ParseFlags: parsing options, or #GST_PARSE_FLAG_NONE 
 // 
@@ -8096,7 +8096,7 @@ func ParseLaunch(pipelineDescription string) (Element, error) {
 // 
 // To create a sub-pipeline (bin) for embedding into an existing pipeline
 // use gst_parse_bin_from_description_full().
-func ParseLaunchFull(pipelineDescription string, context *ParseContext, flags ParseFlags) (Element, error) {
+func ParseLaunchFull(pipelineDescription string, _context *ParseContext, flags ParseFlags) (Element, error) {
 	var carg1 *C.gchar           // in, none, string, casted *C.gchar
 	var carg2 *C.GstParseContext // in, none, converted, nullable
 	var carg3 C.GstParseFlags    // in, none, casted
@@ -8105,14 +8105,14 @@ func ParseLaunchFull(pipelineDescription string, context *ParseContext, flags Pa
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(pipelineDescription)))
 	defer C.free(unsafe.Pointer(carg1))
-	if context != nil {
-		carg2 = (*C.GstParseContext)(UnsafeParseContextToGlibNone(context))
+	if _context != nil {
+		carg2 = (*C.GstParseContext)(UnsafeParseContextToGlibNone(_context))
 	}
 	carg3 = C.GstParseFlags(flags)
 
 	cret = C.gst_parse_launch_full(carg1, carg2, carg3, &_cerr)
 	runtime.KeepAlive(pipelineDescription)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(flags)
 
 	var goret  Element
@@ -28209,7 +28209,7 @@ type Element interface {
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- context *Context: the #GstContext to set. 
+	// 	- _context *Context: the #GstContext to set. 
 	//
 	// Sets the context of the element. Increases the refcount of the context.
 	// 
@@ -30629,21 +30629,21 @@ func (element *ElementInstance) SetClock(clock Clock) bool {
 // 
 // The function takes the following parameters:
 // 
-// 	- context *Context: the #GstContext to set. 
+// 	- _context *Context: the #GstContext to set. 
 //
 // Sets the context of the element. Increases the refcount of the context.
 // 
 // MT safe.
-func (element *ElementInstance) SetContext(context *Context) {
+func (element *ElementInstance) SetContext(_context *Context) {
 	var carg0 *C.GstElement // in, none, converted
 	var carg1 *C.GstContext // in, none, converted
 
 	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
-	carg1 = (*C.GstContext)(UnsafeContextToGlibNone(context))
+	carg1 = (*C.GstContext)(UnsafeContextToGlibNone(_context))
 
 	C.gst_element_set_context(carg0, carg1)
 	runtime.KeepAlive(element)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 }
 
 // SetLockedState wraps gst_element_set_locked_state
@@ -38711,11 +38711,11 @@ func UnsafeClockEntryToGlibFull(c *ClockEntry) unsafe.Pointer {
 // Also, a non-persistent context won't override a previous persistent
 // context set to an element.
 type Context struct {
-	*context
+	*_context
 }
 
-// context is the struct that's finalized
-type context struct {
+// _context is the struct that's finalized
+type _context struct {
 	native *C.GstContext
 }
 
@@ -38733,7 +38733,7 @@ func (r *Context) InitGoValue(v *gobject.Value) {
 
 // UnsafeContextFromGlibBorrow is used to convert raw C.GstContext pointers to go. This is used by the bindings internally.
 func UnsafeContextFromGlibBorrow(p unsafe.Pointer) *Context {
-	return &Context{&context{(*C.GstContext)(p)}}
+	return &Context{&_context{(*C.GstContext)(p)}}
 }
 
 // UnsafeContextFromGlibNone is used to convert raw C.GstContext pointers to go while taking a reference. This is used by the bindings internally.
@@ -38741,8 +38741,8 @@ func UnsafeContextFromGlibNone(p unsafe.Pointer) *Context {
 	// FIXME: this has no ref function, what should we do here?
 	wrapped := UnsafeContextFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.context,
-		func (intern *context) {
+		wrapped._context,
+		func (intern *_context) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -38753,8 +38753,8 @@ func UnsafeContextFromGlibNone(p unsafe.Pointer) *Context {
 func UnsafeContextFromGlibFull(p unsafe.Pointer) *Context {
 	wrapped := UnsafeContextFromGlibBorrow(p)
 	runtime.SetFinalizer(
-		wrapped.context,
-		func (intern *context) {
+		wrapped._context,
+		func (intern *_context) {
 			C.free(unsafe.Pointer(intern.native))
 		},
 	)
@@ -38776,7 +38776,7 @@ func UnsafeContextToGlibNone(c *Context) unsafe.Pointer {
 // UnsafeContextToGlibFull returns the underlying C pointer and gives up ownership.
 // This is used by the bindings internally.
 func UnsafeContextToGlibFull(c *Context) unsafe.Pointer {
-	runtime.SetFinalizer(c.context, nil)
+	runtime.SetFinalizer(c._context, nil)
 	_p := unsafe.Pointer(c.native)
 	c.native = nil // Context is invalid from here on
 	return _p
@@ -38821,14 +38821,14 @@ func NewContext(contextType string, persistent bool) *Context {
 // 	- goret string 
 //
 // Gets the type of @context.
-func (context *Context) GetContextType() string {
+func (_context *Context) GetContextType() string {
 	var carg0 *C.GstContext // in, none, converted
 	var cret  *C.gchar      // return, none, string, casted *C.gchar
 
-	carg0 = (*C.GstContext)(UnsafeContextToGlibNone(context))
+	carg0 = (*C.GstContext)(UnsafeContextToGlibNone(_context))
 
 	cret = C.gst_context_get_context_type(carg0)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var goret string
 
@@ -38843,14 +38843,14 @@ func (context *Context) GetContextType() string {
 // 	- goret *Structure 
 //
 // Accesses the structure of the context.
-func (context *Context) GetStructure() *Structure {
+func (_context *Context) GetStructure() *Structure {
 	var carg0 *C.GstContext   // in, none, converted
 	var cret  *C.GstStructure // return, none, converted
 
-	carg0 = (*C.GstContext)(UnsafeContextToGlibNone(context))
+	carg0 = (*C.GstContext)(UnsafeContextToGlibNone(_context))
 
 	cret = C.gst_context_get_structure(carg0)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var goret *Structure
 
@@ -38870,17 +38870,17 @@ func (context *Context) GetStructure() *Structure {
 // 	- goret bool 
 //
 // Checks if @context has @context_type.
-func (context *Context) HasContextType(contextType string) bool {
+func (_context *Context) HasContextType(contextType string) bool {
 	var carg0 *C.GstContext // in, none, converted
 	var carg1 *C.gchar      // in, none, string, casted *C.gchar
 	var cret  C.gboolean    // return
 
-	carg0 = (*C.GstContext)(UnsafeContextToGlibNone(context))
+	carg0 = (*C.GstContext)(UnsafeContextToGlibNone(_context))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(contextType)))
 	defer C.free(unsafe.Pointer(carg1))
 
 	cret = C.gst_context_has_context_type(carg0, carg1)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(contextType)
 
 	var goret bool
@@ -38898,14 +38898,14 @@ func (context *Context) HasContextType(contextType string) bool {
 // 	- goret bool 
 //
 // Checks if @context is persistent.
-func (context *Context) IsPersistent() bool {
+func (_context *Context) IsPersistent() bool {
 	var carg0 *C.GstContext // in, none, converted
 	var cret  C.gboolean    // return
 
-	carg0 = (*C.GstContext)(UnsafeContextToGlibNone(context))
+	carg0 = (*C.GstContext)(UnsafeContextToGlibNone(_context))
 
 	cret = C.gst_context_is_persistent(carg0)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var goret bool
 
@@ -38922,14 +38922,14 @@ func (context *Context) IsPersistent() bool {
 // 	- goret *Structure 
 //
 // Gets a writable version of the structure.
-func (context *Context) WritableStructure() *Structure {
+func (_context *Context) WritableStructure() *Structure {
 	var carg0 *C.GstContext   // in, none, converted
 	var cret  *C.GstStructure // return, none, converted
 
-	carg0 = (*C.GstContext)(UnsafeContextToGlibNone(context))
+	carg0 = (*C.GstContext)(UnsafeContextToGlibNone(_context))
 
 	cret = C.gst_context_writable_structure(carg0)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var goret *Structure
 
@@ -45000,14 +45000,14 @@ func NewMessageErrorWithDetails(src Object, debug string, details *Structure, er
 // The function takes the following parameters:
 // 
 // 	- src Object (nullable): The object originating the message. 
-// 	- context *Context: the context 
+// 	- _context *Context: the context 
 // 
 // The function returns the following values:
 // 
 // 	- goret *Message 
 //
 // This message is posted when an element has a new local #GstContext.
-func NewMessageHaveContext(src Object, context *Context) *Message {
+func NewMessageHaveContext(src Object, _context *Context) *Message {
 	var carg1 *C.GstObject  // in, none, converted, nullable
 	var carg2 *C.GstContext // in, full, converted
 	var cret  *C.GstMessage // return, full, converted
@@ -45015,11 +45015,11 @@ func NewMessageHaveContext(src Object, context *Context) *Message {
 	if src != nil {
 		carg1 = (*C.GstObject)(UnsafeObjectToGlibNone(src))
 	}
-	carg2 = (*C.GstContext)(UnsafeContextToGlibFull(context))
+	carg2 = (*C.GstContext)(UnsafeContextToGlibFull(_context))
 
 	cret = C.gst_message_new_have_context(carg1, carg2)
 	runtime.KeepAlive(src)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var goret *Message
 
@@ -46663,7 +46663,7 @@ func (message *Message) ParseGroupID() (uint, bool) {
 // ParseHaveContext wraps gst_message_parse_have_context
 // The function returns the following values:
 // 
-// 	- context *Context: Result location for the
+// 	- _context *Context: Result location for the
 //      context or %NULL 
 //
 // Extract the context from the HAVE_CONTEXT message.
@@ -46678,11 +46678,11 @@ func (message *Message) ParseHaveContext() *Context {
 	C.gst_message_parse_have_context(carg0, &carg1)
 	runtime.KeepAlive(message)
 
-	var context *Context
+	var _context *Context
 
-	context = UnsafeContextFromGlibFull(unsafe.Pointer(carg1))
+	_context = UnsafeContextFromGlibFull(unsafe.Pointer(carg1))
 
-	return context
+	return _context
 }
 
 // ParseInfo wraps gst_message_parse_info
@@ -49034,14 +49034,14 @@ func NewParseContext() *ParseContext {
 // 	- goret *ParseContext 
 //
 // Copies the @context.
-func (context *ParseContext) Copy() *ParseContext {
+func (_context *ParseContext) Copy() *ParseContext {
 	var carg0 *C.GstParseContext // in, none, converted
 	var cret  *C.GstParseContext // return, full, converted
 
-	carg0 = (*C.GstParseContext)(UnsafeParseContextToGlibNone(context))
+	carg0 = (*C.GstParseContext)(UnsafeParseContextToGlibNone(_context))
 
 	cret = C.gst_parse_context_copy(carg0)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var goret *ParseContext
 
@@ -49058,14 +49058,14 @@ func (context *ParseContext) Copy() *ParseContext {
 // Retrieve missing elements from a previous run of gst_parse_launch_full()
 // or gst_parse_launchv_full(). Will only return results if an error code
 // of %GST_PARSE_ERROR_NO_SUCH_ELEMENT was returned.
-func (context *ParseContext) GetMissingElements() []string {
+func (_context *ParseContext) GetMissingElements() []string {
 	var carg0 *C.GstParseContext // in, none, converted
 	var cret  **C.gchar          // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , array (inner: *typesystem.StringPrimitive, zero-terminated)
 
-	carg0 = (*C.GstParseContext)(UnsafeParseContextToGlibNone(context))
+	carg0 = (*C.GstParseContext)(UnsafeParseContextToGlibNone(_context))
 
 	cret = C.gst_parse_context_get_missing_elements(carg0)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var goret []string
 
@@ -51783,7 +51783,7 @@ func (query *Query) ParseCapsResult() *Caps {
 // ParseContext wraps gst_query_parse_context
 // The function returns the following values:
 // 
-// 	- context *Context (nullable): A pointer to store the #GstContext 
+// 	- _context *Context (nullable): A pointer to store the #GstContext 
 //
 // Get the context from the context @query. The context remains valid as long as
 // @query remains valid.
@@ -51796,13 +51796,13 @@ func (query *Query) ParseContext() *Context {
 	C.gst_query_parse_context(carg0, &carg1)
 	runtime.KeepAlive(query)
 
-	var context *Context
+	var _context *Context
 
 	if carg1 != nil {
-		context = UnsafeContextFromGlibNone(unsafe.Pointer(carg1))
+		_context = UnsafeContextFromGlibNone(unsafe.Pointer(carg1))
 	}
 
-	return context
+	return _context
 }
 
 // ParseContextType wraps gst_query_parse_context_type
@@ -52637,21 +52637,21 @@ func (query *Query) SetCapsResult(caps *Caps) {
 // 
 // The function takes the following parameters:
 // 
-// 	- context *Context (nullable): the requested #GstContext 
+// 	- _context *Context (nullable): the requested #GstContext 
 //
 // Answer a context query by setting the requested context.
-func (query *Query) SetContext(context *Context) {
+func (query *Query) SetContext(_context *Context) {
 	var carg0 *C.GstQuery   // in, none, converted
 	var carg1 *C.GstContext // in, none, converted, nullable
 
 	carg0 = (*C.GstQuery)(UnsafeQueryToGlibNone(query))
-	if context != nil {
-		carg1 = (*C.GstContext)(UnsafeContextToGlibNone(context))
+	if _context != nil {
+		carg1 = (*C.GstContext)(UnsafeContextToGlibNone(_context))
 	}
 
 	C.gst_query_set_context(carg0, carg1)
 	runtime.KeepAlive(query)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 }
 
 // SetConvert wraps gst_query_set_convert

@@ -3300,7 +3300,7 @@ type BaseParse interface {
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- fmt gst.Format: #GstFormat. 
+	// 	- _fmt gst.Format: #GstFormat. 
 	// 	- duration int64: duration value. 
 	// 	- interval int: how often to update the duration estimate based on bitrate, or 0. 
 	//
@@ -3713,7 +3713,7 @@ func (parse *BaseParseInstance) SetAverageBitrate(bitrate uint) {
 // 
 // The function takes the following parameters:
 // 
-// 	- fmt gst.Format: #GstFormat. 
+// 	- _fmt gst.Format: #GstFormat. 
 // 	- duration int64: duration value. 
 // 	- interval int: how often to update the duration estimate based on bitrate, or 0. 
 //
@@ -3722,20 +3722,20 @@ func (parse *BaseParseInstance) SetAverageBitrate(bitrate uint) {
 // duration.  Alternatively, if @interval is non-zero (default), then stream
 // duration is determined based on estimated bitrate, and updated every @interval
 // frames.
-func (parse *BaseParseInstance) SetDuration(fmt gst.Format, duration int64, interval int) {
+func (parse *BaseParseInstance) SetDuration(_fmt gst.Format, duration int64, interval int) {
 	var carg0 *C.GstBaseParse // in, none, converted
 	var carg1 C.GstFormat     // in, none, casted
 	var carg2 C.gint64        // in, none, casted
 	var carg3 C.gint          // in, none, casted
 
 	carg0 = (*C.GstBaseParse)(UnsafeBaseParseToGlibNone(parse))
-	carg1 = C.GstFormat(fmt)
+	carg1 = C.GstFormat(_fmt)
 	carg2 = C.gint64(duration)
 	carg3 = C.gint(interval)
 
 	C.gst_base_parse_set_duration(carg0, carg1, carg2, carg3)
 	runtime.KeepAlive(parse)
-	runtime.KeepAlive(fmt)
+	runtime.KeepAlive(_fmt)
 	runtime.KeepAlive(duration)
 	runtime.KeepAlive(interval)
 }

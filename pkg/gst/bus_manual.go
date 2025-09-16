@@ -1,6 +1,9 @@
 package gst
 
-import "iter"
+import (
+	"context"
+	"iter"
+)
 
 type BusExtManual interface {
 	// Messages adds a watch to the bus. This is a convenience function that
@@ -9,10 +12,10 @@ type BusExtManual interface {
 	//
 	// Since this is a sync handler, make sure to handle the messages as fast as
 	// possible. Otherwise your pipeline may block.
-	Messages() iter.Seq[*Message]
+	Messages(context.Context) iter.Seq[*Message]
 }
 
-func (bus *BusInstance) Messages() iter.Seq[*Message] {
+func (bus *BusInstance) Messages(ctx context.Context) iter.Seq[*Message] {
 	messages := make(chan *Message, 20) // arbitrary cap to not block instantly
 
 	bus.SetSyncHandler(func(bus Bus, message *Message) BusSyncReply {
@@ -21,11 +24,19 @@ func (bus *BusInstance) Messages() iter.Seq[*Message] {
 	})
 
 	return func(yield func(*Message) bool) {
-		for message := range messages {
-			if !yield(message) {
-				bus.SetSyncHandler(nil)
-				close(messages)
+		defer func() {
+			bus.SetSyncHandler(nil)
+			close(messages)
+		}()
+
+		for {
+			select {
+			case <-ctx.Done():
 				return
+			case message := <-messages:
+				if !yield(message) {
+					return
+				}
 			}
 		}
 	}

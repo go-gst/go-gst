@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"time"
 
@@ -21,21 +22,23 @@ func main() {
 	// Start the pipeline
 	pipeline.SetState(gst.StatePlaying)
 
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
 	// handle messages
-	messages:
-	for msg := range pipeline.GetBus().Messages() {
+	for msg := range pipeline.GetBus().Messages(ctx) {
 		switch msg.Type() {
 		case gst.MessageEos: // When end-of-stream is received stop
 			fmt.Println("End-of-stream reached")
 			bin.BlockSetState(gst.StateNull, gst.ClockTime(time.Second))
-			break messages
+			cancel()
 		case gst.MessageError: // Error messages are always fatal
 			debug, err := msg.ParseError()
 			fmt.Println("ERROR:", err.Error())
 			if debug != "" {
 				fmt.Println("DEBUG:", debug)
 			}
-			break messages
+			cancel()
 		default:
 			// All messages implement a Stringer. However, this is
 			// typically an expensive thing to do and should be avoided.

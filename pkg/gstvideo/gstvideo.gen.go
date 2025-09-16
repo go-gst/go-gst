@@ -10433,7 +10433,7 @@ type VideoDecoder interface {
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- fmt VideoFormat: a #GstVideoFormat 
+	// 	- _fmt VideoFormat: a #GstVideoFormat 
 	// 	- interlaceMode VideoInterlaceMode: A #GstVideoInterlaceMode 
 	// 	- width uint: The width in pixels 
 	// 	- height uint: The height in pixels 
@@ -10502,7 +10502,7 @@ type VideoDecoder interface {
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- fmt VideoFormat: a #GstVideoFormat 
+	// 	- _fmt VideoFormat: a #GstVideoFormat 
 	// 	- width uint: The width in pixels 
 	// 	- height uint: The height in pixels 
 	// 	- reference *VideoCodecState (nullable): An optional reference #GstVideoCodecState 
@@ -11543,7 +11543,7 @@ func (dec *VideoDecoderInstance) SetEstimateRate(enabled bool) {
 // 
 // The function takes the following parameters:
 // 
-// 	- fmt VideoFormat: a #GstVideoFormat 
+// 	- _fmt VideoFormat: a #GstVideoFormat 
 // 	- interlaceMode VideoInterlaceMode: A #GstVideoInterlaceMode 
 // 	- width uint: The width in pixels 
 // 	- height uint: The height in pixels 
@@ -11555,7 +11555,7 @@ func (dec *VideoDecoderInstance) SetEstimateRate(enabled bool) {
 //
 // Same as #gst_video_decoder_set_output_state() but also allows you to also set
 // the interlacing mode.
-func (decoder *VideoDecoderInstance) SetInterlacedOutputState(fmt VideoFormat, interlaceMode VideoInterlaceMode, width uint, height uint, reference *VideoCodecState) *VideoCodecState {
+func (decoder *VideoDecoderInstance) SetInterlacedOutputState(_fmt VideoFormat, interlaceMode VideoInterlaceMode, width uint, height uint, reference *VideoCodecState) *VideoCodecState {
 	var carg0 *C.GstVideoDecoder      // in, none, converted
 	var carg1 C.GstVideoFormat        // in, none, casted
 	var carg2 C.GstVideoInterlaceMode // in, none, casted
@@ -11565,7 +11565,7 @@ func (decoder *VideoDecoderInstance) SetInterlacedOutputState(fmt VideoFormat, i
 	var cret  *C.GstVideoCodecState   // return, full, converted
 
 	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
-	carg1 = C.GstVideoFormat(fmt)
+	carg1 = C.GstVideoFormat(_fmt)
 	carg2 = C.GstVideoInterlaceMode(interlaceMode)
 	carg3 = C.guint(width)
 	carg4 = C.guint(height)
@@ -11575,7 +11575,7 @@ func (decoder *VideoDecoderInstance) SetInterlacedOutputState(fmt VideoFormat, i
 
 	cret = C.gst_video_decoder_set_interlaced_output_state(carg0, carg1, carg2, carg3, carg4, carg5)
 	runtime.KeepAlive(decoder)
-	runtime.KeepAlive(fmt)
+	runtime.KeepAlive(_fmt)
 	runtime.KeepAlive(interlaceMode)
 	runtime.KeepAlive(width)
 	runtime.KeepAlive(height)
@@ -11695,7 +11695,7 @@ func (dec *VideoDecoderInstance) SetNeedsSyncPoint(enabled bool) {
 // 
 // The function takes the following parameters:
 // 
-// 	- fmt VideoFormat: a #GstVideoFormat 
+// 	- _fmt VideoFormat: a #GstVideoFormat 
 // 	- width uint: The width in pixels 
 // 	- height uint: The height in pixels 
 // 	- reference *VideoCodecState (nullable): An optional reference #GstVideoCodecState 
@@ -11718,7 +11718,7 @@ func (dec *VideoDecoderInstance) SetNeedsSyncPoint(enabled bool) {
 // 
 // The new output state will only take effect (set on pads and buffers) starting
 // from the next call to #gst_video_decoder_finish_frame().
-func (decoder *VideoDecoderInstance) SetOutputState(fmt VideoFormat, width uint, height uint, reference *VideoCodecState) *VideoCodecState {
+func (decoder *VideoDecoderInstance) SetOutputState(_fmt VideoFormat, width uint, height uint, reference *VideoCodecState) *VideoCodecState {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var carg1 C.GstVideoFormat      // in, none, casted
 	var carg2 C.guint               // in, none, casted
@@ -11727,7 +11727,7 @@ func (decoder *VideoDecoderInstance) SetOutputState(fmt VideoFormat, width uint,
 	var cret  *C.GstVideoCodecState // return, full, converted
 
 	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
-	carg1 = C.GstVideoFormat(fmt)
+	carg1 = C.GstVideoFormat(_fmt)
 	carg2 = C.guint(width)
 	carg3 = C.guint(height)
 	if reference != nil {
@@ -11736,7 +11736,7 @@ func (decoder *VideoDecoderInstance) SetOutputState(fmt VideoFormat, width uint,
 
 	cret = C.gst_video_decoder_set_output_state(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(decoder)
-	runtime.KeepAlive(fmt)
+	runtime.KeepAlive(_fmt)
 	runtime.KeepAlive(width)
 	runtime.KeepAlive(height)
 	runtime.KeepAlive(reference)

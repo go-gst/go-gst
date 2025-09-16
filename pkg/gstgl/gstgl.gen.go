@@ -1254,22 +1254,22 @@ type GLFilterRenderFunc func(filter GLFilter, inTex *GLMemory) (goret bool)
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: a #GstGLContext 
+// 	- _context GLContext: a #GstGLContext 
 // 	- buffer *gst.Buffer: a #GstBuffer 
 // 
 // The function returns the following values:
 // 
 // 	- goret *GLSyncMeta 
-func BufferAddGLSyncMeta(context GLContext, buffer *gst.Buffer) *GLSyncMeta {
+func BufferAddGLSyncMeta(_context GLContext, buffer *gst.Buffer) *GLSyncMeta {
 	var carg1 *C.GstGLContext  // in, none, converted
 	var carg2 *C.GstBuffer     // in, none, converted
 	var cret  *C.GstGLSyncMeta // return, none, converted
 
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
 	cret = C.gst_buffer_add_gl_sync_meta(carg1, carg2)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(buffer)
 
 	var goret *GLSyncMeta
@@ -1283,27 +1283,27 @@ func BufferAddGLSyncMeta(context GLContext, buffer *gst.Buffer) *GLSyncMeta {
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: a #GstGLContext 
+// 	- _context GLContext: a #GstGLContext 
 // 	- buffer *gst.Buffer: a #GstBuffer 
 // 	- data unsafe.Pointer (nullable): sync data to hold 
 // 
 // The function returns the following values:
 // 
 // 	- goret *GLSyncMeta 
-func BufferAddGLSyncMetaFull(context GLContext, buffer *gst.Buffer, data unsafe.Pointer) *GLSyncMeta {
+func BufferAddGLSyncMetaFull(_context GLContext, buffer *gst.Buffer, data unsafe.Pointer) *GLSyncMeta {
 	var carg1 *C.GstGLContext  // in, none, converted
 	var carg2 *C.GstBuffer     // in, none, converted
 	var carg3 C.gpointer       // in, none, casted, nullable
 	var cret  *C.GstGLSyncMeta // return, none, converted
 
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	carg2 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 	if data != nil {
 		carg3 = C.gpointer(data)
 	}
 
 	cret = C.gst_buffer_add_gl_sync_meta_full(carg1, carg2, carg3)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(buffer)
 	runtime.KeepAlive(data)
 
@@ -1422,21 +1422,21 @@ func BufferPoolConfigSetGLMinFreeQueueSize(config *gst.Structure, queueSize uint
 // 
 // The function takes the following parameters:
 // 
-// 	- context *gst.Context: a #GstContext 
+// 	- _context *gst.Context: a #GstContext 
 // 
 // The function returns the following values:
 // 
 // 	- display GLDisplay (nullable): resulting #GstGLDisplay 
 // 	- goret bool 
-func ContextGetGLDisplay(context *gst.Context) (GLDisplay, bool) {
+func ContextGetGLDisplay(_context *gst.Context) (GLDisplay, bool) {
 	var carg1 *C.GstContext   // in, none, converted
 	var carg2 *C.GstGLDisplay // out, full, converted, nullable
 	var cret  C.gboolean      // return
 
-	carg1 = (*C.GstContext)(gst.UnsafeContextToGlibNone(context))
+	carg1 = (*C.GstContext)(gst.UnsafeContextToGlibNone(_context))
 
 	cret = C.gst_context_get_gl_display(carg1, &carg2)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var display GLDisplay
 	var goret   bool
@@ -1455,21 +1455,21 @@ func ContextGetGLDisplay(context *gst.Context) (GLDisplay, bool) {
 // 
 // The function takes the following parameters:
 // 
-// 	- context *gst.Context: a #GstContext 
+// 	- _context *gst.Context: a #GstContext 
 // 	- display GLDisplay (nullable): resulting #GstGLDisplay 
 //
 // Sets @display on @context
-func ContextSetGLDisplay(context *gst.Context, display GLDisplay) {
+func ContextSetGLDisplay(_context *gst.Context, display GLDisplay) {
 	var carg1 *C.GstContext   // in, none, converted
 	var carg2 *C.GstGLDisplay // in, none, converted, nullable
 
-	carg1 = (*C.GstContext)(gst.UnsafeContextToGlibNone(context))
+	carg1 = (*C.GstContext)(gst.UnsafeContextToGlibNone(_context))
 	if display != nil {
 		carg2 = (*C.GstGLDisplay)(UnsafeGLDisplayToGlibNone(display))
 	}
 
 	C.gst_context_set_gl_display(carg1, carg2)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(display)
 }
 
@@ -1599,13 +1599,13 @@ func GLGetPlaneStart(info *gstvideo.VideoInfo, valign *gstvideo.VideoAlignment, 
 // 	- element gst.Element: a #GstElement 
 // 	- query *gst.Query: a #GstQuery of type %GST_QUERY_CONTEXT 
 // 	- display GLDisplay (nullable): a #GstGLDisplay 
-// 	- context GLContext (nullable): a #GstGLContext 
+// 	- _context GLContext (nullable): a #GstGLContext 
 // 	- otherContext GLContext (nullable): application provided #GstGLContext 
 // 
 // The function returns the following values:
 // 
 // 	- goret bool 
-func GLHandleContextQuery(element gst.Element, query *gst.Query, display GLDisplay, context GLContext, otherContext GLContext) bool {
+func GLHandleContextQuery(element gst.Element, query *gst.Query, display GLDisplay, _context GLContext, otherContext GLContext) bool {
 	var carg1 *C.GstElement   // in, none, converted
 	var carg2 *C.GstQuery     // in, none, converted
 	var carg3 *C.GstGLDisplay // in, none, converted, nullable
@@ -1618,8 +1618,8 @@ func GLHandleContextQuery(element gst.Element, query *gst.Query, display GLDispl
 	if display != nil {
 		carg3 = (*C.GstGLDisplay)(UnsafeGLDisplayToGlibNone(display))
 	}
-	if context != nil {
-		carg4 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	if _context != nil {
+		carg4 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	}
 	if otherContext != nil {
 		carg5 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(otherContext))
@@ -1629,7 +1629,7 @@ func GLHandleContextQuery(element gst.Element, query *gst.Query, display GLDispl
 	runtime.KeepAlive(element)
 	runtime.KeepAlive(query)
 	runtime.KeepAlive(display)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(otherContext)
 
 	var goret bool
@@ -1646,7 +1646,7 @@ func GLHandleContextQuery(element gst.Element, query *gst.Query, display GLDispl
 // The function takes the following parameters:
 // 
 // 	- element gst.Element: a #GstElement 
-// 	- context *gst.Context: a #GstContext 
+// 	- _context *gst.Context: a #GstContext 
 // 
 // The function returns the following values:
 // 
@@ -1659,7 +1659,7 @@ func GLHandleContextQuery(element gst.Element, query *gst.Query, display GLDispl
 // 
 // Retrieve's the #GstGLDisplay or #GstGLContext in @context and places the
 // result in @display or @other_context respectively.
-func GLHandleSetContext(element gst.Element, context *gst.Context) (GLDisplay, GLContext, bool) {
+func GLHandleSetContext(element gst.Element, _context *gst.Context) (GLDisplay, GLContext, bool) {
 	var carg1 *C.GstElement   // in, none, converted
 	var carg2 *C.GstContext   // in, none, converted
 	var carg3 *C.GstGLDisplay // out, full, converted
@@ -1667,11 +1667,11 @@ func GLHandleSetContext(element gst.Element, context *gst.Context) (GLDisplay, G
 	var cret  C.gboolean      // return
 
 	carg1 = (*C.GstElement)(gst.UnsafeElementToGlibNone(element))
-	carg2 = (*C.GstContext)(gst.UnsafeContextToGlibNone(context))
+	carg2 = (*C.GstContext)(gst.UnsafeContextToGlibNone(_context))
 
 	cret = C.gst_gl_handle_set_context(carg1, carg2, &carg3, &carg4)
 	runtime.KeepAlive(element)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var display      GLDisplay
 	var otherContext GLContext
@@ -1713,25 +1713,25 @@ func GLSetAffineTransformationMetaFromNdc(meta *gstvideo.VideoAffineTransformati
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: a #GstGLContext 
+// 	- _context GLContext: a #GstGLContext 
 // 	- format uint: an OpenGL format, `GL_RGBA`, `GL_LUMINANCE`, etc 
 // 	- typ uint: an OpenGL type, `GL_UNSIGNED_BYTE`, `GL_FLOAT`, etc 
 // 
 // The function returns the following values:
 // 
 // 	- goret uint 
-func GLSizedGLFormatFromGLFormatType(context GLContext, format uint, typ uint) uint {
+func GLSizedGLFormatFromGLFormatType(_context GLContext, format uint, typ uint) uint {
 	var carg1 *C.GstGLContext // in, none, converted
 	var carg2 C.guint         // in, none, casted
 	var carg3 C.guint         // in, none, casted
 	var cret  C.guint         // return, none, casted
 
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	carg2 = C.guint(format)
 	carg3 = C.guint(typ)
 
 	cret = C.gst_gl_sized_gl_format_from_gl_format_type(carg1, carg2, carg3)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(format)
 	runtime.KeepAlive(typ)
 
@@ -2588,19 +2588,19 @@ func UnsafeGLBufferPoolToGlibFull(c GLBufferPool) unsafe.Pointer {
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: the #GstGLContext to use 
+// 	- _context GLContext: the #GstGLContext to use 
 // 
 // The function returns the following values:
 // 
 // 	- goret gst.BufferPool 
-func NewGLBufferPool(context GLContext) gst.BufferPool {
+func NewGLBufferPool(_context GLContext) gst.BufferPool {
 	var carg1 *C.GstGLContext  // in, none, converted
 	var cret  *C.GstBufferPool // return, none, converted
 
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	cret = C.gst_gl_buffer_pool_new(carg1)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var goret gst.BufferPool
 
@@ -2739,19 +2739,19 @@ func UnsafeGLColorConvertToGlibFull(c GLColorConvert) unsafe.Pointer {
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: a #GstGLContext 
+// 	- _context GLContext: a #GstGLContext 
 // 
 // The function returns the following values:
 // 
 // 	- goret GLColorConvert 
-func NewGLColorConvert(context GLContext) GLColorConvert {
+func NewGLColorConvert(_context GLContext) GLColorConvert {
 	var carg1 *C.GstGLContext      // in, none, converted
 	var cret  *C.GstGLColorConvert // return, full, converted
 
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	cret = C.gst_gl_color_convert_new(carg1)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var goret GLColorConvert
 
@@ -2764,7 +2764,7 @@ func NewGLColorConvert(context GLContext) GLColorConvert {
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: a #GstGLContext to use for transforming @caps 
+// 	- _context GLContext: a #GstGLContext to use for transforming @caps 
 // 	- direction gst.PadDirection: a #GstPadDirection 
 // 	- caps *gst.Caps: the #GstCaps of @direction 
 // 	- other *gst.Caps: the #GstCaps to fixate 
@@ -2774,20 +2774,20 @@ func NewGLColorConvert(context GLContext) GLColorConvert {
 // 	- goret *gst.Caps 
 //
 // Provides an implementation of #GstBaseTransformClass.fixate_caps()
-func GLColorConvertFixateCaps(context GLContext, direction gst.PadDirection, caps *gst.Caps, other *gst.Caps) *gst.Caps {
+func GLColorConvertFixateCaps(_context GLContext, direction gst.PadDirection, caps *gst.Caps, other *gst.Caps) *gst.Caps {
 	var carg1 *C.GstGLContext   // in, none, converted
 	var carg2 C.GstPadDirection // in, none, casted
 	var carg3 *C.GstCaps        // in, none, converted
 	var carg4 *C.GstCaps        // in, full, converted
 	var cret  *C.GstCaps        // return, full, converted
 
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	carg2 = C.GstPadDirection(direction)
 	carg3 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 	carg4 = (*C.GstCaps)(gst.UnsafeCapsToGlibFull(other))
 
 	cret = C.gst_gl_color_convert_fixate_caps(carg1, carg2, carg3, carg4)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(direction)
 	runtime.KeepAlive(caps)
 	runtime.KeepAlive(other)
@@ -2803,19 +2803,19 @@ func GLColorConvertFixateCaps(context GLContext, direction gst.PadDirection, cap
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: a #GstGLContext 
+// 	- _context GLContext: a #GstGLContext 
 // 
 // The function returns the following values:
 // 
 // 	- goret string 
-func GLColorConvertSwizzleShaderString(context GLContext) string {
+func GLColorConvertSwizzleShaderString(_context GLContext) string {
 	var carg1 *C.GstGLContext // in, none, converted
 	var cret  *C.gchar        // return, full, string, casted *C.gchar
 
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	cret = C.gst_gl_color_convert_swizzle_shader_string(carg1)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var goret string
 
@@ -2829,7 +2829,7 @@ func GLColorConvertSwizzleShaderString(context GLContext) string {
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: a #GstGLContext to use for transforming @caps 
+// 	- _context GLContext: a #GstGLContext to use for transforming @caps 
 // 	- direction gst.PadDirection: a #GstPadDirection 
 // 	- caps *gst.Caps: the #GstCaps to transform 
 // 	- filter *gst.Caps: a set of filter #GstCaps 
@@ -2839,20 +2839,20 @@ func GLColorConvertSwizzleShaderString(context GLContext) string {
 // 	- goret *gst.Caps 
 //
 // Provides an implementation of #GstBaseTransformClass.transform_caps()
-func GLColorConvertTransformCaps(context GLContext, direction gst.PadDirection, caps *gst.Caps, filter *gst.Caps) *gst.Caps {
+func GLColorConvertTransformCaps(_context GLContext, direction gst.PadDirection, caps *gst.Caps, filter *gst.Caps) *gst.Caps {
 	var carg1 *C.GstGLContext   // in, none, converted
 	var carg2 C.GstPadDirection // in, none, casted
 	var carg3 *C.GstCaps        // in, none, converted
 	var carg4 *C.GstCaps        // in, none, converted
 	var cret  *C.GstCaps        // return, full, converted
 
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	carg2 = C.GstPadDirection(direction)
 	carg3 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 	carg4 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filter))
 
 	cret = C.gst_gl_color_convert_transform_caps(carg1, carg2, carg3, carg4)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(direction)
 	runtime.KeepAlive(caps)
 	runtime.KeepAlive(filter)
@@ -2868,7 +2868,7 @@ func GLColorConvertTransformCaps(context GLContext, direction gst.PadDirection, 
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: a #GstGLContext 
+// 	- _context GLContext: a #GstGLContext 
 // 
 // The function returns the following values:
 // 
@@ -2881,14 +2881,14 @@ func GLColorConvertTransformCaps(context GLContext, direction gst.PadDirection, 
 // The Y component is placed in the 0th index of the returned value, The U component in the
 // 1st, and the V component in the 2nd.  offset, ycoeff, ucoeff, and vcoeff are the
 // specific coefficients and offset used for the conversion.
-func GLColorConvertYuvToRGBShaderString(context GLContext) string {
+func GLColorConvertYuvToRGBShaderString(_context GLContext) string {
 	var carg1 *C.GstGLContext // in, none, converted
 	var cret  *C.gchar        // return, full, string, casted *C.gchar
 
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	cret = C.gst_gl_color_convert_yuv_to_rgb_shader_string(carg1)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var goret string
 
@@ -3620,18 +3620,18 @@ func GLContextGetProcAddressWithPlatform(contextType GLPlatform, glApi GLAPI, na
 // 
 // In OpenGL terms, calls eglMakeCurrent or similar with this context and the
 // currently set window.  See gst_gl_context_set_window() for details.
-func (context *GLContextInstance) Activate(activate bool) bool {
+func (_context *GLContextInstance) Activate(activate bool) bool {
 	var carg0 *C.GstGLContext // in, none, converted
 	var carg1 C.gboolean      // in
 	var cret  C.gboolean      // return
 
-	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	if activate {
 		carg1 = C.TRUE
 	}
 
 	cret = C.gst_gl_context_activate(carg0, carg1)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(activate)
 
 	var goret bool
@@ -3654,16 +3654,16 @@ func (context *GLContextInstance) Activate(activate bool) bool {
 // 	- goret bool 
 //
 // Note: This will always fail for two wrapped #GstGLContext's
-func (context *GLContextInstance) CanShare(otherContext GLContext) bool {
+func (_context *GLContextInstance) CanShare(otherContext GLContext) bool {
 	var carg0 *C.GstGLContext // in, none, converted
 	var carg1 *C.GstGLContext // in, none, converted
 	var cret  C.gboolean      // return
 
-	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(otherContext))
 
 	cret = C.gst_gl_context_can_share(carg0, carg1)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(otherContext)
 
 	var goret bool
@@ -3690,17 +3690,17 @@ func (context *GLContextInstance) CanShare(otherContext GLContext) bool {
 // Note: Most features require that the context be created before it is
 // possible to determine their existence and so will fail if that is not the
 // case.
-func (context *GLContextInstance) CheckFeature(feature string) bool {
+func (_context *GLContextInstance) CheckFeature(feature string) bool {
 	var carg0 *C.GstGLContext // in, none, converted
 	var carg1 *C.gchar        // in, none, string, casted *C.gchar
 	var cret  C.gboolean      // return
 
-	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(feature)))
 	defer C.free(unsafe.Pointer(carg1))
 
 	cret = C.gst_gl_context_check_feature(carg0, carg1)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(feature)
 
 	var goret bool
@@ -3724,16 +3724,16 @@ func (context *GLContextInstance) CheckFeature(feature string) bool {
 // 	- goret bool 
 //
 // Must be called with @context current.
-func (context *GLContextInstance) CheckFramebufferStatus(fboTarget uint) bool {
+func (_context *GLContextInstance) CheckFramebufferStatus(fboTarget uint) bool {
 	var carg0 *C.GstGLContext // in, none, converted
 	var carg1 C.guint         // in, none, casted
 	var cret  C.gboolean      // return
 
-	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	carg1 = C.guint(fboTarget)
 
 	cret = C.gst_gl_context_check_framebuffer_status(carg0, carg1)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(fboTarget)
 
 	var goret bool
@@ -3756,20 +3756,20 @@ func (context *GLContextInstance) CheckFramebufferStatus(fboTarget uint) bool {
 // The function returns the following values:
 // 
 // 	- goret bool 
-func (context *GLContextInstance) CheckGLVersion(api GLAPI, maj int, min int) bool {
+func (_context *GLContextInstance) CheckGLVersion(api GLAPI, maj int, min int) bool {
 	var carg0 *C.GstGLContext // in, none, converted
 	var carg1 C.GstGLAPI      // in, none, casted
 	var carg2 C.gint          // in, none, casted
 	var carg3 C.gint          // in, none, casted
 	var cret  C.gboolean      // return
 
-	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	carg1 = C.GstGLAPI(api)
 	carg2 = C.gint(maj)
 	carg3 = C.gint(min)
 
 	cret = C.gst_gl_context_check_gl_version(carg0, carg1, carg2, carg3)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(api)
 	runtime.KeepAlive(maj)
 	runtime.KeepAlive(min)
@@ -3786,13 +3786,13 @@ func (context *GLContextInstance) CheckGLVersion(api GLAPI, maj int, min int) bo
 // ClearFramebuffer wraps gst_gl_context_clear_framebuffer
 //
 // Unbind the current framebuffer
-func (context *GLContextInstance) ClearFramebuffer() {
+func (_context *GLContextInstance) ClearFramebuffer() {
 	var carg0 *C.GstGLContext // in, none, converted
 
-	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	C.gst_gl_context_clear_framebuffer(carg0)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 }
 
 // ClearShader wraps gst_gl_context_clear_shader
@@ -3800,13 +3800,13 @@ func (context *GLContextInstance) ClearFramebuffer() {
 // Clear's the currently set shader from the GL state machine.
 // 
 // Note: must be called in the GL thread.
-func (context *GLContextInstance) ClearShader() {
+func (_context *GLContextInstance) ClearShader() {
 	var carg0 *C.GstGLContext // in, none, converted
 
-	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	C.gst_gl_context_clear_shader(carg0)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 }
 
 // Create wraps gst_gl_context_create
@@ -3839,19 +3839,19 @@ func (context *GLContextInstance) ClearShader() {
 // details of the error and %FALSE will be returned.
 // 
 // Should only be called once.
-func (context *GLContextInstance) Create(otherContext GLContext) (bool, error) {
+func (_context *GLContextInstance) Create(otherContext GLContext) (bool, error) {
 	var carg0 *C.GstGLContext // in, none, converted
 	var carg1 *C.GstGLContext // in, none, converted, nullable
 	var cret  C.gboolean      // return
 	var _cerr *C.GError       // out, full, converted, nullable
 
-	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	if otherContext != nil {
 		carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(otherContext))
 	}
 
 	cret = C.gst_gl_context_create(carg0, carg1, &_cerr)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(otherContext)
 
 	var goret  bool
@@ -3873,13 +3873,13 @@ func (context *GLContextInstance) Create(otherContext GLContext) (bool, error) {
 // 
 // Should only be called after gst_gl_context_create() has been successfully
 // called for this context.
-func (context *GLContextInstance) Destroy() {
+func (_context *GLContextInstance) Destroy() {
 	var carg0 *C.GstGLContext // in, none, converted
 
-	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	C.gst_gl_context_destroy(carg0)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 }
 
 // FillInfo wraps gst_gl_context_fill_info
@@ -3891,15 +3891,15 @@ func (context *GLContextInstance) Destroy() {
 // Fills @context's info (version, extensions, vtable, etc) from the GL
 // context in the current thread.  Typically used with wrapped contexts to
 // allow wrapped contexts to be used as regular #GstGLContext's.
-func (context *GLContextInstance) FillInfo() (bool, error) {
+func (_context *GLContextInstance) FillInfo() (bool, error) {
 	var carg0 *C.GstGLContext // in, none, converted
 	var cret  C.gboolean      // return
 	var _cerr *C.GError       // out, full, converted, nullable
 
-	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	cret = C.gst_gl_context_fill_info(carg0, &_cerr)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var goret  bool
 	var _goerr error
@@ -3924,14 +3924,14 @@ func (context *GLContextInstance) FillInfo() (bool, error) {
 // 
 // Not all implementations currently support retrieving the config and will
 // return %NULL when not supported.
-func (context *GLContextInstance) GetConfig() *gst.Structure {
+func (_context *GLContextInstance) GetConfig() *gst.Structure {
 	var carg0 *C.GstGLContext // in, none, converted
 	var cret  *C.GstStructure // return, full, converted
 
-	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	cret = C.gst_gl_context_get_config(carg0)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var goret *gst.Structure
 
@@ -3944,14 +3944,14 @@ func (context *GLContextInstance) GetConfig() *gst.Structure {
 // The function returns the following values:
 // 
 // 	- goret GLDisplay 
-func (context *GLContextInstance) GetDisplay() GLDisplay {
+func (_context *GLContextInstance) GetDisplay() GLDisplay {
 	var carg0 *C.GstGLContext // in, none, converted
 	var cret  *C.GstGLDisplay // return, full, converted
 
-	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	cret = C.gst_gl_context_get_display(carg0)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var goret GLDisplay
 
@@ -3969,14 +3969,14 @@ func (context *GLContextInstance) GetDisplay() GLDisplay {
 // 
 // The currently available API may be limited by the #GstGLDisplay in use and/or
 // the #GstGLWindow chosen.
-func (context *GLContextInstance) GetGLApi() GLAPI {
+func (_context *GLContextInstance) GetGLApi() GLAPI {
 	var carg0 *C.GstGLContext // in, none, converted
 	var cret  C.GstGLAPI      // return, none, casted
 
-	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	cret = C.gst_gl_context_get_gl_api(carg0)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var goret GLAPI
 
@@ -3991,14 +3991,14 @@ func (context *GLContextInstance) GetGLApi() GLAPI {
 // 	- goret uintptr 
 //
 // Gets the backing OpenGL context used by @context.
-func (context *GLContextInstance) GetGLContext() uintptr {
+func (_context *GLContextInstance) GetGLContext() uintptr {
 	var carg0 *C.GstGLContext // in, none, converted
 	var cret  C.guintptr      // return, none, casted
 
-	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	cret = C.gst_gl_context_get_gl_context(carg0)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var goret uintptr
 
@@ -4013,14 +4013,14 @@ func (context *GLContextInstance) GetGLContext() uintptr {
 // 	- goret GLPlatform 
 //
 // Gets the OpenGL platform that used by @context.
-func (context *GLContextInstance) GetGLPlatform() GLPlatform {
+func (_context *GLContextInstance) GetGLPlatform() GLPlatform {
 	var carg0 *C.GstGLContext // in, none, converted
 	var cret  C.GstGLPlatform // return, none, casted
 
-	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	cret = C.gst_gl_context_get_gl_platform(carg0)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var goret GLPlatform
 
@@ -4037,15 +4037,15 @@ func (context *GLContextInstance) GetGLPlatform() GLPlatform {
 //
 // Get the version of the OpenGL platform (GLX, EGL, etc) used.  Only valid
 // after a call to gst_gl_context_create().
-func (context *GLContextInstance) GetGLPlatformVersion() (int, int) {
+func (_context *GLContextInstance) GetGLPlatformVersion() (int, int) {
 	var carg0 *C.GstGLContext // in, none, converted
 	var carg1 C.gint          // out, full, casted
 	var carg2 C.gint          // out, full, casted
 
-	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	C.gst_gl_context_get_gl_platform_version(carg0, &carg1, &carg2)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var major int
 	var minor int
@@ -4065,15 +4065,15 @@ func (context *GLContextInstance) GetGLPlatformVersion() (int, int) {
 // Returns the OpenGL version implemented by @context.  See
 // gst_gl_context_get_gl_api() for retrieving the OpenGL api implemented by
 // @context.
-func (context *GLContextInstance) GetGLVersion() (int, int) {
+func (_context *GLContextInstance) GetGLVersion() (int, int) {
 	var carg0 *C.GstGLContext // in, none, converted
 	var carg1 C.gint          // out, full, casted
 	var carg2 C.gint          // out, full, casted
 
-	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	C.gst_gl_context_get_gl_version(carg0, &carg1, &carg2)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var maj int
 	var min int
@@ -4113,17 +4113,17 @@ func (context *GLContextInstance) GetGLVersion() (int, int) {
 // |[&lt;!-- language="C" --&gt;
 // void (GSTGLAPI *PFN_glGetIntegerv) (GLenum name, GLint * ret)
 // ]|
-func (context *GLContextInstance) GetProcAddress(name string) unsafe.Pointer {
+func (_context *GLContextInstance) GetProcAddress(name string) unsafe.Pointer {
 	var carg0 *C.GstGLContext // in, none, converted
 	var carg1 *C.gchar        // in, none, string, casted *C.gchar
 	var cret  C.gpointer      // return, none, casted
 
-	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(carg1))
 
 	cret = C.gst_gl_context_get_proc_address(carg0, carg1)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(name)
 
 	var goret unsafe.Pointer
@@ -4137,14 +4137,14 @@ func (context *GLContextInstance) GetProcAddress(name string) unsafe.Pointer {
 // The function returns the following values:
 // 
 // 	- goret GLWindow 
-func (context *GLContextInstance) GetWindow() GLWindow {
+func (_context *GLContextInstance) GetWindow() GLWindow {
 	var carg0 *C.GstGLContext // in, none, converted
 	var cret  *C.GstGLWindow  // return, full, converted
 
-	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	cret = C.gst_gl_context_get_window(carg0)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var goret GLWindow
 
@@ -4157,14 +4157,14 @@ func (context *GLContextInstance) GetWindow() GLWindow {
 // The function returns the following values:
 // 
 // 	- goret bool 
-func (context *GLContextInstance) IsShared() bool {
+func (_context *GLContextInstance) IsShared() bool {
 	var carg0 *C.GstGLContext // in, none, converted
 	var cret  C.gboolean      // return
 
-	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	cret = C.gst_gl_context_is_shared(carg0)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var goret bool
 
@@ -4198,18 +4198,18 @@ func (context *GLContextInstance) IsShared() bool {
 // the platform-specific configuration.
 // 
 // Note that the actual config used may be differ from the requested values.
-func (context *GLContextInstance) RequestConfig(glConfig *gst.Structure) bool {
+func (_context *GLContextInstance) RequestConfig(glConfig *gst.Structure) bool {
 	var carg0 *C.GstGLContext // in, none, converted
 	var carg1 *C.GstStructure // in, full, converted, nullable
 	var cret  C.gboolean      // return
 
-	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	if glConfig != nil {
 		carg1 = (*C.GstStructure)(gst.UnsafeStructureToGlibFull(glConfig))
 	}
 
 	cret = C.gst_gl_context_request_config(carg0, carg1)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(glConfig)
 
 	var goret bool
@@ -4228,15 +4228,15 @@ func (context *GLContextInstance) RequestConfig(glConfig *gst.Structure) bool {
 // 	- share GLContext: another #GstGLContext 
 //
 // Will internally set @context as shared with @share
-func (context *GLContextInstance) SetSharedWith(share GLContext) {
+func (_context *GLContextInstance) SetSharedWith(share GLContext) {
 	var carg0 *C.GstGLContext // in, none, converted
 	var carg1 *C.GstGLContext // in, none, converted
 
-	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(share))
 
 	C.gst_gl_context_set_shared_with(carg0, carg1)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(share)
 }
 
@@ -4253,16 +4253,16 @@ func (context *GLContextInstance) SetSharedWith(share GLContext) {
 // Set's the current window on @context to @window.  The window can only be
 // changed before gst_gl_context_create() has been called and the @window is not
 // already running.
-func (context *GLContextInstance) SetWindow(window GLWindow) bool {
+func (_context *GLContextInstance) SetWindow(window GLWindow) bool {
 	var carg0 *C.GstGLContext // in, none, converted
 	var carg1 *C.GstGLWindow  // in, full, converted
 	var cret  C.gboolean      // return
 
-	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	carg1 = (*C.GstGLWindow)(UnsafeGLWindowToGlibFull(window))
 
 	cret = C.gst_gl_context_set_window(carg0, carg1)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(window)
 
 	var goret bool
@@ -4284,18 +4284,18 @@ func (context *GLContextInstance) SetWindow(window GLWindow) bool {
 // The function returns the following values:
 // 
 // 	- goret bool 
-func (context *GLContextInstance) SupportsGlslProfileVersion(version GLSLVersion, profile GLSLProfile) bool {
+func (_context *GLContextInstance) SupportsGlslProfileVersion(version GLSLVersion, profile GLSLProfile) bool {
 	var carg0 *C.GstGLContext  // in, none, converted
 	var carg1 C.GstGLSLVersion // in, none, casted
 	var carg2 C.GstGLSLProfile // in, none, casted
 	var cret  C.gboolean       // return
 
-	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	carg1 = C.GstGLSLVersion(version)
 	carg2 = C.GstGLSLProfile(profile)
 
 	cret = C.gst_gl_context_supports_glsl_profile_version(carg0, carg1, carg2)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(version)
 	runtime.KeepAlive(profile)
 
@@ -4318,18 +4318,18 @@ func (context *GLContextInstance) SupportsGlslProfileVersion(version GLSLVersion
 // The function returns the following values:
 // 
 // 	- goret bool 
-func (context *GLContextInstance) SupportsPrecision(version GLSLVersion, profile GLSLProfile) bool {
+func (_context *GLContextInstance) SupportsPrecision(version GLSLVersion, profile GLSLProfile) bool {
 	var carg0 *C.GstGLContext  // in, none, converted
 	var carg1 C.GstGLSLVersion // in, none, casted
 	var carg2 C.GstGLSLProfile // in, none, casted
 	var cret  C.gboolean       // return
 
-	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	carg1 = C.GstGLSLVersion(version)
 	carg2 = C.GstGLSLProfile(profile)
 
 	cret = C.gst_gl_context_supports_precision(carg0, carg1, carg2)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(version)
 	runtime.KeepAlive(profile)
 
@@ -4352,18 +4352,18 @@ func (context *GLContextInstance) SupportsPrecision(version GLSLVersion, profile
 // The function returns the following values:
 // 
 // 	- goret bool 
-func (context *GLContextInstance) SupportsPrecisionHighp(version GLSLVersion, profile GLSLProfile) bool {
+func (_context *GLContextInstance) SupportsPrecisionHighp(version GLSLVersion, profile GLSLProfile) bool {
 	var carg0 *C.GstGLContext  // in, none, converted
 	var carg1 C.GstGLSLVersion // in, none, casted
 	var carg2 C.GstGLSLProfile // in, none, casted
 	var cret  C.gboolean       // return
 
-	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	carg1 = C.GstGLSLVersion(version)
 	carg2 = C.GstGLSLProfile(profile)
 
 	cret = C.gst_gl_context_supports_precision_highp(carg0, carg1, carg2)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(version)
 	runtime.KeepAlive(profile)
 
@@ -4380,13 +4380,13 @@ func (context *GLContextInstance) SupportsPrecisionHighp(version GLSLVersion, pr
 //
 // Swap the front and back buffers on the window attached to @context.
 // This will display the frame on the next refresh cycle.
-func (context *GLContextInstance) SwapBuffers() {
+func (_context *GLContextInstance) SwapBuffers() {
 	var carg0 *C.GstGLContext // in, none, converted
 
-	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	C.gst_gl_context_swap_buffers(carg0)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 }
 
 // GLDisplayInstance is the instance type used by all types extending GstGLDisplay. It is used internally by the bindings. Users should use the interface [GLDisplay] instead.
@@ -4427,7 +4427,7 @@ type GLDisplay interface {
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- context GLContext: a #GstGLContext 
+	// 	- _context GLContext: a #GstGLContext 
 	// 
 	// The function returns the following values:
 	// 
@@ -4489,7 +4489,7 @@ type GLDisplay interface {
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- context GLContext: the #GstGLContext to remove 
+	// 	- _context GLContext: the #GstGLContext to remove 
 	//
 	// Must be called with the object lock held.
 	RemoveContext(GLContext)
@@ -4593,22 +4593,22 @@ func NewGLDisplayWithType(typ GLDisplayType) GLDisplay {
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: a #GstGLContext 
+// 	- _context GLContext: a #GstGLContext 
 // 
 // The function returns the following values:
 // 
 // 	- goret bool 
-func (display *GLDisplayInstance) AddContext(context GLContext) bool {
+func (display *GLDisplayInstance) AddContext(_context GLContext) bool {
 	var carg0 *C.GstGLDisplay // in, none, converted
 	var carg1 *C.GstGLContext // in, none, converted
 	var cret  C.gboolean      // return
 
 	carg0 = (*C.GstGLDisplay)(UnsafeGLDisplayToGlibNone(display))
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	cret = C.gst_gl_display_add_context(carg0, carg1)
 	runtime.KeepAlive(display)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var goret bool
 
@@ -4791,19 +4791,19 @@ func (display *GLDisplayInstance) GetHandleType() GLDisplayType {
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: the #GstGLContext to remove 
+// 	- _context GLContext: the #GstGLContext to remove 
 //
 // Must be called with the object lock held.
-func (display *GLDisplayInstance) RemoveContext(context GLContext) {
+func (display *GLDisplayInstance) RemoveContext(_context GLContext) {
 	var carg0 *C.GstGLDisplay // in, none, converted
 	var carg1 *C.GstGLContext // in, none, converted
 
 	carg0 = (*C.GstGLDisplay)(UnsafeGLDisplayToGlibNone(display))
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	C.gst_gl_display_remove_context(carg0, carg1)
 	runtime.KeepAlive(display)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 }
 
 // RemoveWindow wraps gst_gl_display_remove_window
@@ -5182,7 +5182,7 @@ func UnsafeGLFramebufferToGlibFull(c GLFramebuffer) unsafe.Pointer {
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: a #GstGLContext 
+// 	- _context GLContext: a #GstGLContext 
 // 
 // The function returns the following values:
 // 
@@ -5190,14 +5190,14 @@ func UnsafeGLFramebufferToGlibFull(c GLFramebuffer) unsafe.Pointer {
 //
 // This function will internally create an OpenGL framebuffer object and must
 // be called on @context's OpenGL thread.
-func NewGLFramebuffer(context GLContext) GLFramebuffer {
+func NewGLFramebuffer(_context GLContext) GLFramebuffer {
 	var carg1 *C.GstGLContext     // in, none, converted
 	var cret  *C.GstGLFramebuffer // return, full, converted
 
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	cret = C.gst_gl_framebuffer_new(carg1)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var goret GLFramebuffer
 
@@ -5210,7 +5210,7 @@ func NewGLFramebuffer(context GLContext) GLFramebuffer {
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: a #GstGLContext 
+// 	- _context GLContext: a #GstGLContext 
 // 	- width uint: width for the depth buffer 
 // 	- height uint: for the depth buffer 
 // 
@@ -5220,18 +5220,18 @@ func NewGLFramebuffer(context GLContext) GLFramebuffer {
 //
 // This function will internally create an OpenGL framebuffer object and must
 // be called on @context's OpenGL thread.
-func NewGLFramebufferWithDefaultDepth(context GLContext, width uint, height uint) GLFramebuffer {
+func NewGLFramebufferWithDefaultDepth(_context GLContext, width uint, height uint) GLFramebuffer {
 	var carg1 *C.GstGLContext     // in, none, converted
 	var carg2 C.guint             // in, none, casted
 	var carg3 C.guint             // in, none, casted
 	var cret  *C.GstGLFramebuffer // return, none, converted
 
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	carg2 = C.guint(width)
 	carg3 = C.guint(height)
 
 	cret = C.gst_gl_framebuffer_new_with_default_depth(carg1, carg2, carg3)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(width)
 	runtime.KeepAlive(height)
 
@@ -5392,19 +5392,19 @@ func UnsafeGLMemoryAllocatorToGlibFull(c GLMemoryAllocator) unsafe.Pointer {
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: a #GstGLContext 
+// 	- _context GLContext: a #GstGLContext 
 // 
 // The function returns the following values:
 // 
 // 	- goret GLMemoryAllocator 
-func GLMemoryAllocatorGetDefault(context GLContext) GLMemoryAllocator {
+func GLMemoryAllocatorGetDefault(_context GLContext) GLMemoryAllocator {
 	var carg1 *C.GstGLContext         // in, none, converted
 	var cret  *C.GstGLMemoryAllocator // return, full, converted
 
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	cret = C.gst_gl_memory_allocator_get_default(carg1)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var goret GLMemoryAllocator
 
@@ -5738,19 +5738,19 @@ func UnsafeGLOverlayCompositorToGlibFull(c GLOverlayCompositor) unsafe.Pointer {
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext 
+// 	- _context GLContext 
 // 
 // The function returns the following values:
 // 
 // 	- goret GLOverlayCompositor 
-func NewGLOverlayCompositor(context GLContext) GLOverlayCompositor {
+func NewGLOverlayCompositor(_context GLContext) GLOverlayCompositor {
 	var carg1 *C.GstGLContext           // in, none, converted
 	var cret  *C.GstGLOverlayCompositor // return, none, converted
 
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	cret = C.gst_gl_overlay_compositor_new(carg1)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var goret GLOverlayCompositor
 
@@ -5978,22 +5978,22 @@ func UnsafeGLSLStageToGlibFull(c GLSLStage) unsafe.Pointer {
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: a #GstGLContext 
+// 	- _context GLContext: a #GstGLContext 
 // 	- typ uint: the GL enum shader stage type 
 // 
 // The function returns the following values:
 // 
 // 	- goret GLSLStage 
-func NewGLSLStage(context GLContext, typ uint) GLSLStage {
+func NewGLSLStage(_context GLContext, typ uint) GLSLStage {
 	var carg1 *C.GstGLContext // in, none, converted
 	var carg2 C.guint         // in, none, casted
 	var cret  *C.GstGLSLStage // return, none, converted
 
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	carg2 = C.guint(typ)
 
 	cret = C.gst_glsl_stage_new(carg1, carg2)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(typ)
 
 	var goret GLSLStage
@@ -6007,19 +6007,19 @@ func NewGLSLStage(context GLContext, typ uint) GLSLStage {
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: a #GstGLContext 
+// 	- _context GLContext: a #GstGLContext 
 // 
 // The function returns the following values:
 // 
 // 	- goret GLSLStage 
-func NewGLSLStageDefaultFragment(context GLContext) GLSLStage {
+func NewGLSLStageDefaultFragment(_context GLContext) GLSLStage {
 	var carg1 *C.GstGLContext // in, none, converted
 	var cret  *C.GstGLSLStage // return, none, converted
 
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	cret = C.gst_glsl_stage_new_default_fragment(carg1)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var goret GLSLStage
 
@@ -6032,19 +6032,19 @@ func NewGLSLStageDefaultFragment(context GLContext) GLSLStage {
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: a #GstGLContext 
+// 	- _context GLContext: a #GstGLContext 
 // 
 // The function returns the following values:
 // 
 // 	- goret GLSLStage 
-func NewGLSLStageDefaultVertex(context GLContext) GLSLStage {
+func NewGLSLStageDefaultVertex(_context GLContext) GLSLStage {
 	var carg1 *C.GstGLContext // in, none, converted
 	var cret  *C.GstGLSLStage // return, none, converted
 
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	cret = C.gst_glsl_stage_new_default_vertex(carg1)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var goret GLSLStage
 
@@ -6057,7 +6057,7 @@ func NewGLSLStageDefaultVertex(context GLContext) GLSLStage {
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: a #GstGLContext 
+// 	- _context GLContext: a #GstGLContext 
 // 	- typ uint: the GL enum shader stage type 
 // 	- version GLSLVersion: the #GstGLSLVersion 
 // 	- profile GLSLProfile: the #GstGLSLProfile 
@@ -6066,7 +6066,7 @@ func NewGLSLStageDefaultVertex(context GLContext) GLSLStage {
 // The function returns the following values:
 // 
 // 	- goret GLSLStage 
-func NewGLSLStageWithString(context GLContext, typ uint, version GLSLVersion, profile GLSLProfile, str string) GLSLStage {
+func NewGLSLStageWithString(_context GLContext, typ uint, version GLSLVersion, profile GLSLProfile, str string) GLSLStage {
 	var carg1 *C.GstGLContext  // in, none, converted
 	var carg2 C.guint          // in, none, casted
 	var carg3 C.GstGLSLVersion // in, none, casted
@@ -6074,7 +6074,7 @@ func NewGLSLStageWithString(context GLContext, typ uint, version GLSLVersion, pr
 	var carg5 *C.gchar         // in, none, string, casted *C.gchar
 	var cret  *C.GstGLSLStage  // return, none, converted
 
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	carg2 = C.guint(typ)
 	carg3 = C.GstGLSLVersion(version)
 	carg4 = C.GstGLSLProfile(profile)
@@ -6082,7 +6082,7 @@ func NewGLSLStageWithString(context GLContext, typ uint, version GLSLVersion, pr
 	defer C.free(unsafe.Pointer(carg5))
 
 	cret = C.gst_glsl_stage_new_with_string(carg1, carg2, carg3, carg4, carg5)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(typ)
 	runtime.KeepAlive(version)
 	runtime.KeepAlive(profile)
@@ -6099,7 +6099,7 @@ func NewGLSLStageWithString(context GLContext, typ uint, version GLSLVersion, pr
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: a #GstGLContext 
+// 	- _context GLContext: a #GstGLContext 
 // 	- typ uint: the GL enum shader stage type 
 // 	- version GLSLVersion: the #GstGLSLVersion 
 // 	- profile GLSLProfile: the #GstGLSLProfile 
@@ -6109,7 +6109,7 @@ func NewGLSLStageWithString(context GLContext, typ uint, version GLSLVersion, pr
 // The function returns the following values:
 // 
 // 	- goret GLSLStage 
-func NewGLSLStageWithStrings(context GLContext, typ uint, version GLSLVersion, profile GLSLProfile, str []string) GLSLStage {
+func NewGLSLStageWithStrings(_context GLContext, typ uint, version GLSLVersion, profile GLSLProfile, str []string) GLSLStage {
 	var carg1 *C.GstGLContext  // in, none, converted
 	var carg2 C.guint          // in, none, casted
 	var carg3 C.GstGLSLVersion // in, none, casted
@@ -6118,7 +6118,7 @@ func NewGLSLStageWithStrings(context GLContext, typ uint, version GLSLVersion, p
 	var carg6 **C.gchar        // in, transfer: none, C Pointers: 2, Name: array[utf8], array (inner: *typesystem.StringPrimitive, length-by: carg5)
 	var cret  *C.GstGLSLStage  // return, none, converted
 
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	carg2 = C.guint(typ)
 	carg3 = C.GstGLSLVersion(version)
 	carg4 = C.GstGLSLProfile(profile)
@@ -6128,7 +6128,7 @@ func NewGLSLStageWithStrings(context GLContext, typ uint, version GLSLVersion, p
 	panic("unimplemented conversion of []string (const gchar**)")
 
 	cret = C.gst_glsl_stage_new_with_strings(carg1, carg2, carg3, carg4, carg5, carg6)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(typ)
 	runtime.KeepAlive(version)
 	runtime.KeepAlive(profile)
@@ -6742,21 +6742,21 @@ func UnsafeGLShaderToGlibFull(c GLShader) unsafe.Pointer {
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: a #GstGLContext 
+// 	- _context GLContext: a #GstGLContext 
 // 
 // The function returns the following values:
 // 
 // 	- goret GLShader 
 //
 // Note: must be called in the GL thread
-func NewGLShader(context GLContext) GLShader {
+func NewGLShader(_context GLContext) GLShader {
 	var carg1 *C.GstGLContext // in, none, converted
 	var cret  *C.GstGLShader  // return, full, converted
 
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	cret = C.gst_gl_shader_new(carg1)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var goret GLShader
 
@@ -6769,7 +6769,7 @@ func NewGLShader(context GLContext) GLShader {
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: a #GstGLContext 
+// 	- _context GLContext: a #GstGLContext 
 // 
 // The function returns the following values:
 // 
@@ -6777,15 +6777,15 @@ func NewGLShader(context GLContext) GLShader {
 // 	- _goerr error (nullable): an error 
 //
 // Note: must be called in the GL thread
-func NewGLShaderDefault(context GLContext) (GLShader, error) {
+func NewGLShaderDefault(_context GLContext) (GLShader, error) {
 	var carg1 *C.GstGLContext // in, none, converted
 	var cret  *C.GstGLShader  // return, full, converted
 	var _cerr *C.GError       // out, full, converted, nullable
 
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	cret = C.gst_gl_shader_new_default(carg1, &_cerr)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var goret  GLShader
 	var _goerr error
@@ -6802,25 +6802,25 @@ func NewGLShaderDefault(context GLContext) (GLShader, error) {
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: a #GstGLContext 
+// 	- _context GLContext: a #GstGLContext 
 // 	- version GLSLVersion: a #GstGLSLVersion 
 // 	- profile GLSLProfile: a #GstGLSLProfile 
 // 
 // The function returns the following values:
 // 
 // 	- goret string 
-func GLShaderStringFragmentExternalOesGetDefault(context GLContext, version GLSLVersion, profile GLSLProfile) string {
+func GLShaderStringFragmentExternalOesGetDefault(_context GLContext, version GLSLVersion, profile GLSLProfile) string {
 	var carg1 *C.GstGLContext  // in, none, converted
 	var carg2 C.GstGLSLVersion // in, none, casted
 	var carg3 C.GstGLSLProfile // in, none, casted
 	var cret  *C.gchar         // return, full, string, casted *C.gchar
 
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	carg2 = C.GstGLSLVersion(version)
 	carg3 = C.GstGLSLProfile(profile)
 
 	cret = C.gst_gl_shader_string_fragment_external_oes_get_default(carg1, carg2, carg3)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(version)
 	runtime.KeepAlive(profile)
 
@@ -6836,25 +6836,25 @@ func GLShaderStringFragmentExternalOesGetDefault(context GLContext, version GLSL
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: a #GstGLContext 
+// 	- _context GLContext: a #GstGLContext 
 // 	- version GLSLVersion: a #GstGLSLVersion 
 // 	- profile GLSLProfile: a #GstGLSLProfile 
 // 
 // The function returns the following values:
 // 
 // 	- goret string 
-func GLShaderStringFragmentGetDefault(context GLContext, version GLSLVersion, profile GLSLProfile) string {
+func GLShaderStringFragmentGetDefault(_context GLContext, version GLSLVersion, profile GLSLProfile) string {
 	var carg1 *C.GstGLContext  // in, none, converted
 	var carg2 C.GstGLSLVersion // in, none, casted
 	var carg3 C.GstGLSLProfile // in, none, casted
 	var cret  *C.gchar         // return, full, string, casted *C.gchar
 
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	carg2 = C.GstGLSLVersion(version)
 	carg3 = C.GstGLSLProfile(profile)
 
 	cret = C.gst_gl_shader_string_fragment_get_default(carg1, carg2, carg3)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(version)
 	runtime.KeepAlive(profile)
 
@@ -6870,7 +6870,7 @@ func GLShaderStringFragmentGetDefault(context GLContext, version GLSLVersion, pr
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: a #GstGLContext 
+// 	- _context GLContext: a #GstGLContext 
 // 	- version GLSLVersion: a #GstGLSLVersion 
 // 	- profile GLSLProfile: a #GstGLSLProfile 
 // 
@@ -6885,18 +6885,18 @@ func GLShaderStringFragmentGetDefault(context GLContext, version GLSLVersion, pr
 // Practically, this will return the string 'precision mediump float'
 // or 'precision highp float' depending on if high precision floats are
 // determined to be supported.
-func GLShaderStringGetHighestPrecision(context GLContext, version GLSLVersion, profile GLSLProfile) string {
+func GLShaderStringGetHighestPrecision(_context GLContext, version GLSLVersion, profile GLSLProfile) string {
 	var carg1 *C.GstGLContext  // in, none, converted
 	var carg2 C.GstGLSLVersion // in, none, casted
 	var carg3 C.GstGLSLProfile // in, none, casted
 	var cret  *C.gchar         // return, none, string, casted *C.gchar
 
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	carg2 = C.GstGLSLVersion(version)
 	carg3 = C.GstGLSLProfile(profile)
 
 	cret = C.gst_gl_shader_string_get_highest_precision(carg1, carg2, carg3)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(version)
 	runtime.KeepAlive(profile)
 
@@ -8123,13 +8123,13 @@ type GLUpload interface {
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- context GLContext 
+	// 	- _context GLContext 
 	SetContext(GLContext)
 	// TransformCaps wraps gst_gl_upload_transform_caps
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- context GLContext 
+	// 	- _context GLContext 
 	// 	- direction gst.PadDirection 
 	// 	- caps *gst.Caps 
 	// 	- filter *gst.Caps 
@@ -8182,19 +8182,19 @@ func UnsafeGLUploadToGlibFull(c GLUpload) unsafe.Pointer {
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: a #GstGLContext 
+// 	- _context GLContext: a #GstGLContext 
 // 
 // The function returns the following values:
 // 
 // 	- goret GLUpload 
-func NewGLUpload(context GLContext) GLUpload {
+func NewGLUpload(_context GLContext) GLUpload {
 	var carg1 *C.GstGLContext // in, none, converted
 	var cret  *C.GstGLUpload  // return, full, converted
 
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	cret = C.gst_gl_upload_new(carg1)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var goret GLUpload
 
@@ -8381,24 +8381,24 @@ func (upload *GLUploadInstance) SetCaps(inCaps *gst.Caps, outCaps *gst.Caps) boo
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext 
-func (upload *GLUploadInstance) SetContext(context GLContext) {
+// 	- _context GLContext 
+func (upload *GLUploadInstance) SetContext(_context GLContext) {
 	var carg0 *C.GstGLUpload  // in, none, converted
 	var carg1 *C.GstGLContext // in, none, converted
 
 	carg0 = (*C.GstGLUpload)(UnsafeGLUploadToGlibNone(upload))
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	C.gst_gl_upload_set_context(carg0, carg1)
 	runtime.KeepAlive(upload)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 }
 
 // TransformCaps wraps gst_gl_upload_transform_caps
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext 
+// 	- _context GLContext 
 // 	- direction gst.PadDirection 
 // 	- caps *gst.Caps 
 // 	- filter *gst.Caps 
@@ -8406,7 +8406,7 @@ func (upload *GLUploadInstance) SetContext(context GLContext) {
 // The function returns the following values:
 // 
 // 	- goret *gst.Caps 
-func (upload *GLUploadInstance) TransformCaps(context GLContext, direction gst.PadDirection, caps *gst.Caps, filter *gst.Caps) *gst.Caps {
+func (upload *GLUploadInstance) TransformCaps(_context GLContext, direction gst.PadDirection, caps *gst.Caps, filter *gst.Caps) *gst.Caps {
 	var carg0 *C.GstGLUpload    // in, none, converted
 	var carg1 *C.GstGLContext   // in, none, converted
 	var carg2 C.GstPadDirection // in, none, casted
@@ -8415,14 +8415,14 @@ func (upload *GLUploadInstance) TransformCaps(context GLContext, direction gst.P
 	var cret  *C.GstCaps        // return, full, converted
 
 	carg0 = (*C.GstGLUpload)(UnsafeGLUploadToGlibNone(upload))
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	carg2 = C.GstPadDirection(direction)
 	carg3 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 	carg4 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(filter))
 
 	cret = C.gst_gl_upload_transform_caps(carg0, carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(upload)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(direction)
 	runtime.KeepAlive(caps)
 	runtime.KeepAlive(filter)
@@ -8506,7 +8506,7 @@ type GLViewConvert interface {
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- context GLContext: the #GstGLContext to set 
+	// 	- _context GLContext: the #GstGLContext to set 
 	//
 	// Set @context on @viewconvert
 	SetContext(GLContext)
@@ -8741,19 +8741,19 @@ func (viewconvert *GLViewConvertInstance) SetCaps(inCaps *gst.Caps, outCaps *gst
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: the #GstGLContext to set 
+// 	- _context GLContext: the #GstGLContext to set 
 //
 // Set @context on @viewconvert
-func (viewconvert *GLViewConvertInstance) SetContext(context GLContext) {
+func (viewconvert *GLViewConvertInstance) SetContext(_context GLContext) {
 	var carg0 *C.GstGLViewConvert // in, none, converted
 	var carg1 *C.GstGLContext     // in, none, converted
 
 	carg0 = (*C.GstGLViewConvert)(UnsafeGLViewConvertToGlibNone(viewconvert))
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	C.gst_gl_view_convert_set_context(carg0, carg1)
 	runtime.KeepAlive(viewconvert)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 }
 
 // SubmitInputBuffer wraps gst_gl_view_convert_submit_input_buffer
@@ -10315,7 +10315,7 @@ func UnsafeGLBufferAllocationParamsToGlibFull(g *GLBufferAllocationParams) unsaf
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: a #GstGLContext 
+// 	- _context GLContext: a #GstGLContext 
 // 	- allocSize uint: the size in bytes to allocate 
 // 	- allocParams *gst.AllocationParams (nullable): the #GstAllocationParams for @tex_id 
 // 	- glTarget uint: the OpenGL target to allocate 
@@ -10324,7 +10324,7 @@ func UnsafeGLBufferAllocationParamsToGlibFull(g *GLBufferAllocationParams) unsaf
 // The function returns the following values:
 // 
 // 	- goret *GLBufferAllocationParams 
-func NewGLBufferAllocationParams(context GLContext, allocSize uint, allocParams *gst.AllocationParams, glTarget uint, glUsage uint) *GLBufferAllocationParams {
+func NewGLBufferAllocationParams(_context GLContext, allocSize uint, allocParams *gst.AllocationParams, glTarget uint, glUsage uint) *GLBufferAllocationParams {
 	var carg1 *C.GstGLContext                // in, none, converted
 	var carg2 C.gsize                        // in, none, casted
 	var carg3 *C.GstAllocationParams         // in, none, converted, nullable
@@ -10332,7 +10332,7 @@ func NewGLBufferAllocationParams(context GLContext, allocSize uint, allocParams 
 	var carg5 C.guint                        // in, none, casted
 	var cret  *C.GstGLBufferAllocationParams // return, full, converted
 
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	carg2 = C.gsize(allocSize)
 	if allocParams != nil {
 		carg3 = (*C.GstAllocationParams)(gst.UnsafeAllocationParamsToGlibNone(allocParams))
@@ -10341,7 +10341,7 @@ func NewGLBufferAllocationParams(context GLContext, allocSize uint, allocParams 
 	carg5 = C.guint(glUsage)
 
 	cret = C.gst_gl_buffer_allocation_params_new(carg1, carg2, carg3, carg4, carg5)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(allocSize)
 	runtime.KeepAlive(allocParams)
 	runtime.KeepAlive(glTarget)
@@ -11771,20 +11771,20 @@ func (query *GLQuery) End() {
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: a #GstGLContext 
+// 	- _context GLContext: a #GstGLContext 
 // 	- queryType GLQueryType: the #GstGLQueryType 
-func (query *GLQuery) Init(context GLContext, queryType GLQueryType) {
+func (query *GLQuery) Init(_context GLContext, queryType GLQueryType) {
 	var carg0 *C.GstGLQuery    // in, none, converted
 	var carg1 *C.GstGLContext  // in, none, converted
 	var carg2 C.GstGLQueryType // in, none, casted
 
 	carg0 = (*C.GstGLQuery)(UnsafeGLQueryToGlibNone(query))
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	carg2 = C.GstGLQueryType(queryType)
 
 	C.gst_gl_query_init(carg0, carg1, carg2)
 	runtime.KeepAlive(query)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(queryType)
 }
 
@@ -12068,7 +12068,7 @@ func UnsafeGLRenderbufferAllocationParamsToGlibFull(g *GLRenderbufferAllocationP
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: a #GstGLContext 
+// 	- _context GLContext: a #GstGLContext 
 // 	- allocParams *gst.AllocationParams (nullable): the #GstAllocationParams for sysmem mappings of the texture 
 // 	- renderbufferFormat GLFormat: the #GstGLFormat for the created textures 
 // 	- width uint: the width of the renderbuffer 
@@ -12077,7 +12077,7 @@ func UnsafeGLRenderbufferAllocationParamsToGlibFull(g *GLRenderbufferAllocationP
 // The function returns the following values:
 // 
 // 	- goret *GLRenderbufferAllocationParams 
-func NewGLRenderbufferAllocationParams(context GLContext, allocParams *gst.AllocationParams, renderbufferFormat GLFormat, width uint, height uint) *GLRenderbufferAllocationParams {
+func NewGLRenderbufferAllocationParams(_context GLContext, allocParams *gst.AllocationParams, renderbufferFormat GLFormat, width uint, height uint) *GLRenderbufferAllocationParams {
 	var carg1 *C.GstGLContext                      // in, none, converted
 	var carg2 *C.GstAllocationParams               // in, none, converted, nullable
 	var carg3 C.GstGLFormat                        // in, none, casted
@@ -12085,7 +12085,7 @@ func NewGLRenderbufferAllocationParams(context GLContext, allocParams *gst.Alloc
 	var carg5 C.guint                              // in, none, casted
 	var cret  *C.GstGLRenderbufferAllocationParams // return, full, converted
 
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	if allocParams != nil {
 		carg2 = (*C.GstAllocationParams)(gst.UnsafeAllocationParamsToGlibNone(allocParams))
 	}
@@ -12094,7 +12094,7 @@ func NewGLRenderbufferAllocationParams(context GLContext, allocParams *gst.Alloc
 	carg5 = C.guint(height)
 
 	cret = C.gst_gl_renderbuffer_allocation_params_new(carg1, carg2, carg3, carg4, carg5)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(allocParams)
 	runtime.KeepAlive(renderbufferFormat)
 	runtime.KeepAlive(width)
@@ -12358,60 +12358,60 @@ func UnsafeGLSyncMetaToGlibFull(g *GLSyncMeta) unsafe.Pointer {
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: a #GstGLContext 
+// 	- _context GLContext: a #GstGLContext 
 //
 // Set a sync point to possibly wait on at a later time.
-func (syncMeta *GLSyncMeta) SetSyncPoint(context GLContext) {
+func (syncMeta *GLSyncMeta) SetSyncPoint(_context GLContext) {
 	var carg0 *C.GstGLSyncMeta // in, none, converted
 	var carg1 *C.GstGLContext  // in, none, converted
 
 	carg0 = (*C.GstGLSyncMeta)(UnsafeGLSyncMetaToGlibNone(syncMeta))
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	C.gst_gl_sync_meta_set_sync_point(carg0, carg1)
 	runtime.KeepAlive(syncMeta)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 }
 
 // Wait wraps gst_gl_sync_meta_wait
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: a #GstGLContext 
+// 	- _context GLContext: a #GstGLContext 
 //
 // Insert a wait into @context's command stream ensuring all previous OpenGL
 // commands before @sync_meta have completed.
-func (syncMeta *GLSyncMeta) Wait(context GLContext) {
+func (syncMeta *GLSyncMeta) Wait(_context GLContext) {
 	var carg0 *C.GstGLSyncMeta // in, none, converted
 	var carg1 *C.GstGLContext  // in, none, converted
 
 	carg0 = (*C.GstGLSyncMeta)(UnsafeGLSyncMetaToGlibNone(syncMeta))
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	C.gst_gl_sync_meta_wait(carg0, carg1)
 	runtime.KeepAlive(syncMeta)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 }
 
 // WaitCpu wraps gst_gl_sync_meta_wait_cpu
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: a #GstGLContext 
+// 	- _context GLContext: a #GstGLContext 
 //
 // Perform a wait so that the sync point has passed from the CPU's perspective
 // What that means, is that all GL operations changing CPU-visible data before
 // the sync point are now visible.
-func (syncMeta *GLSyncMeta) WaitCpu(context GLContext) {
+func (syncMeta *GLSyncMeta) WaitCpu(_context GLContext) {
 	var carg0 *C.GstGLSyncMeta // in, none, converted
 	var carg1 *C.GstGLContext  // in, none, converted
 
 	carg0 = (*C.GstGLSyncMeta)(UnsafeGLSyncMetaToGlibNone(syncMeta))
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
 	C.gst_gl_sync_meta_wait_cpu(carg0, carg1)
 	runtime.KeepAlive(syncMeta)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 }
 
 // GLUploadClass wraps GstGLUploadClass
@@ -12552,7 +12552,7 @@ func UnsafeGLVideoAllocationParamsToGlibFull(g *GLVideoAllocationParams) unsafe.
 // 
 // The function takes the following parameters:
 // 
-// 	- context GLContext: a #GstGLContext 
+// 	- _context GLContext: a #GstGLContext 
 // 	- allocParams *gst.AllocationParams (nullable): the #GstAllocationParams for sysmem mappings of the texture 
 // 	- vInfo *gstvideo.VideoInfo: the #GstVideoInfo for the texture 
 // 	- plane uint: the video plane of @v_info to allocate 
@@ -12563,7 +12563,7 @@ func UnsafeGLVideoAllocationParamsToGlibFull(g *GLVideoAllocationParams) unsafe.
 // The function returns the following values:
 // 
 // 	- goret *GLVideoAllocationParams 
-func NewGLVideoAllocationParams(context GLContext, allocParams *gst.AllocationParams, vInfo *gstvideo.VideoInfo, plane uint, valign *gstvideo.VideoAlignment, target GLTextureTarget, texFormat GLFormat) *GLVideoAllocationParams {
+func NewGLVideoAllocationParams(_context GLContext, allocParams *gst.AllocationParams, vInfo *gstvideo.VideoInfo, plane uint, valign *gstvideo.VideoAlignment, target GLTextureTarget, texFormat GLFormat) *GLVideoAllocationParams {
 	var carg1 *C.GstGLContext               // in, none, converted
 	var carg2 *C.GstAllocationParams        // in, none, converted, nullable
 	var carg3 *C.GstVideoInfo               // in, none, converted
@@ -12573,7 +12573,7 @@ func NewGLVideoAllocationParams(context GLContext, allocParams *gst.AllocationPa
 	var carg7 C.GstGLFormat                 // in, none, casted
 	var cret  *C.GstGLVideoAllocationParams // return, full, converted
 
-	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(context))
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 	if allocParams != nil {
 		carg2 = (*C.GstAllocationParams)(gst.UnsafeAllocationParamsToGlibNone(allocParams))
 	}
@@ -12586,7 +12586,7 @@ func NewGLVideoAllocationParams(context GLContext, allocParams *gst.AllocationPa
 	carg7 = C.GstGLFormat(texFormat)
 
 	cret = C.gst_gl_video_allocation_params_new(carg1, carg2, carg3, carg4, carg5, carg6, carg7)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 	runtime.KeepAlive(allocParams)
 	runtime.KeepAlive(vInfo)
 	runtime.KeepAlive(plane)

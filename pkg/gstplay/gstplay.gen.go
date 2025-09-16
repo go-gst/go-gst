@@ -2593,7 +2593,7 @@ func NewPlaySignalAdapterSyncEmit(play Play) PlaySignalAdapter {
 // The function takes the following parameters:
 // 
 // 	- play Play: #GstPlay instance to emit signals for. 
-// 	- context *glib.MainContext: A #GMainContext on which the main-loop will process play bus messages on. 
+// 	- _context *glib.MainContext: A #GMainContext on which the main-loop will process play bus messages on. 
 // 
 // The function returns the following values:
 // 
@@ -2603,17 +2603,17 @@ func NewPlaySignalAdapterSyncEmit(play Play) PlaySignalAdapter {
 // attached callback will emit the corresponding signal for the message
 // received. Matching signals for play messages from the bus will be emitted by
 // it on the created adapter object.
-func NewPlaySignalAdapterWithMainContext(play Play, context *glib.MainContext) PlaySignalAdapter {
+func NewPlaySignalAdapterWithMainContext(play Play, _context *glib.MainContext) PlaySignalAdapter {
 	var carg1 *C.GstPlay              // in, none, converted
 	var carg2 *C.GMainContext         // in, none, converted
 	var cret  *C.GstPlaySignalAdapter // return, full, converted
 
 	carg1 = (*C.GstPlay)(UnsafePlayToGlibNone(play))
-	carg2 = (*C.GMainContext)(glib.UnsafeMainContextToGlibNone(context))
+	carg2 = (*C.GMainContext)(glib.UnsafeMainContextToGlibNone(_context))
 
 	cret = C.gst_play_signal_adapter_new_with_main_context(carg1, carg2)
 	runtime.KeepAlive(play)
-	runtime.KeepAlive(context)
+	runtime.KeepAlive(_context)
 
 	var goret PlaySignalAdapter
 
