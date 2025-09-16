@@ -1,8 +1,10 @@
 package gst
 
 import (
+	"encoding/binary"
 	"fmt"
 	"io"
+	"math"
 	"runtime"
 	"unsafe"
 )
@@ -206,12 +208,152 @@ func (info *MapInfo) Length() int {
 	return int(info.mapInfo.native.size)
 }
 
-// Length returns the length of the mapped memory.
-func (info *MapInfo) Data() []byte {
-	return unsafe.Slice((*byte)(info.mapInfo.native.data), info.mapInfo.native.size)
-}
-
 // Flags returns the flags of the mapped memory.
 func (info *MapInfo) Flags() MapFlags {
 	return MapFlags(info.mapInfo.native.flags)
+}
+
+// Data returns the mapped memory as a byte slice.
+func (info *MapInfo) Data() []byte {
+	if info.mapInfo == nil {
+		return nil
+	}
+	if !info.Flags().Has(MapRead) {
+		return nil
+	}
+
+	return unsafe.Slice((*byte)(info.mapInfo.native.data), info.mapInfo.native.size)
+}
+
+// Float32Data returns a copy of the data as a slice of float32 with the given byte order (endianess).
+func (info *MapInfo) Float32Data(byteOrder binary.ByteOrder) []float32 {
+
+	floats := make([]float32, info.Length()/4)
+
+	for i := range floats {
+		bits := byteOrder.Uint32(info.Data()[i*4 : (i+1)*4])
+		floats[i] = math.Float32frombits(bits)
+	}
+
+	return floats
+}
+
+// Float64Data returns a copy of the data as a slice of float64 with the given byte order (endianess).
+func (info *MapInfo) Float64Data(byteOrder binary.ByteOrder) []float64 {
+
+	floats := make([]float64, info.Length()/8)
+
+	for i := range floats {
+		bits := byteOrder.Uint64(info.Data()[i*8 : (i+1)*8])
+		floats[i] = math.Float64frombits(bits)
+	}
+
+	return floats
+}
+
+// unsafeData is used to save on a cast to unsafe.Pointer in the ...Data() functions
+func (info *MapInfo) unsafeData() unsafe.Pointer {
+	return unsafe.Pointer(info.mapInfo.native.data)
+}
+
+// Int8Data returns the mapped data as a slice of int8.
+func (info *MapInfo) Int8Data() []int8 {
+	if info.mapInfo == nil {
+		return nil
+	}
+	if !info.Flags().Has(MapRead) {
+		return nil
+	}
+
+	return unsafe.Slice((*int8)(info.unsafeData()), info.mapInfo.native.size)
+}
+
+// Uint8Data returns the mapped data as a slice of uint8.
+func (info *MapInfo) Uint8Data() []uint8 {
+	if info.mapInfo == nil {
+		return nil
+	}
+	if !info.Flags().Has(MapRead) {
+		return nil
+	}
+
+	return unsafe.Slice((*uint8)(info.unsafeData()), info.mapInfo.native.size)
+}
+
+// Uint16Data returns a copy of the data as a slice of uint16 with the given byte order (endianess).
+func (info *MapInfo) Uint16Data(byteOrder binary.ByteOrder) []uint16 {
+	data := info.Data()
+	ints := make([]uint16, len(data)/2)
+
+	for i := range ints {
+		bits := byteOrder.Uint16(data[i*2 : (i+1)*2])
+		ints[i] = bits
+	}
+
+	return ints
+}
+
+// Int16Data returns a copy of the data as a slice of int16 with the given byte order (endianess).
+func (info *MapInfo) Int16Data(byteOrder binary.ByteOrder) []int16 {
+	data := info.Data()
+	ints := make([]int16, len(data)/2)
+
+	for i := range ints {
+		bits := byteOrder.Uint16(data[i*2 : (i+1)*2])
+		ints[i] = int16(bits)
+	}
+
+	return ints
+}
+
+// Uint32Data returns a copy of the data as a slice of uint32 with the given byte order (endianess).
+func (info *MapInfo) Uint32Data(byteOrder binary.ByteOrder) []uint32 {
+	data := info.Data()
+	ints := make([]uint32, len(data)/4)
+
+	for i := range ints {
+		bits := byteOrder.Uint32(data[i*4 : (i+1)*4])
+		ints[i] = bits
+	}
+
+	return ints
+}
+
+// Int32Data returns a copy of the data as a slice of int32 with the given byte order (endianess).
+func (info *MapInfo) Int32Data(byteOrder binary.ByteOrder) []int32 {
+	data := info.Data()
+	ints := make([]int32, len(data)/4)
+
+	for i := range ints {
+		bits := byteOrder.Uint32(data[i*4 : (i+1)*4])
+		ints[i] = int32(bits)
+	}
+
+	return ints
+}
+
+// Uint64Data returns a copy of the data as a slice of uint64 with the given byte order (endianess).
+func (info *MapInfo) Uint64Data(byteOrder binary.ByteOrder) []uint64 {
+	data := info.Data()
+	ints := make([]uint64, len(data)/8)
+
+	for i := range ints {
+		bits := byteOrder.Uint64(data[i*8 : (i+1)*8])
+		ints[i] = bits
+	}
+
+	return ints
+}
+
+// Int64Data returns a copy of the data as a slice of int64 with the given byte order (endianess).
+func (info *MapInfo) Int64Data(byteOrder binary.ByteOrder) []int64 {
+	data := info.Data()
+	ints := make([]int64, len(data)/8)
+
+	for i := range ints {
+		bits := byteOrder.Uint64(data[i*8 : (i+1)*8])
+		ints[i] = int64(bits)
+	}
+
+	return ints
 }
