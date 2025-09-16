@@ -1,4 +1,6 @@
 // This example shows how to use the appsrc element.
+//
+// Also see: https://gstreamer.freedesktop.org/documentation/tutorials/basic/short-cutting-the-pipeline.html?gi-language=c
 package main
 
 import (
