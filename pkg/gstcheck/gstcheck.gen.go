@@ -1102,7 +1102,7 @@ type TestClock interface {
 	// ProcessNextClockID wraps gst_test_clock_process_next_clock_id
 	// The function returns the following values:
 	// 
-	// 	- goret gst.ClockID 
+	// 	- goret gst.ClockID (nullable) 
 	//
 	// MT safe.
 	ProcessNextClockID() gst.ClockID
@@ -1440,12 +1440,12 @@ func (testClock *TestClockInstance) ProcessID(pendingId gst.ClockID) bool {
 // ProcessNextClockID wraps gst_test_clock_process_next_clock_id
 // The function returns the following values:
 // 
-// 	- goret gst.ClockID 
+// 	- goret gst.ClockID (nullable) 
 //
 // MT safe.
 func (testClock *TestClockInstance) ProcessNextClockID() gst.ClockID {
 	var carg0 *C.GstTestClock // in, none, converted
-	var cret  C.GstClockID    // return, full, casted, alias
+	var cret  C.GstClockID    // return, full, casted, alias, nullable
 
 	carg0 = (*C.GstTestClock)(UnsafeTestClockToGlibNone(testClock))
 
@@ -1454,7 +1454,9 @@ func (testClock *TestClockInstance) ProcessNextClockID() gst.ClockID {
 
 	var goret gst.ClockID
 
-	goret = gst.ClockID(cret)
+	if cret != nil {
+		goret = gst.ClockID(cret)
+	}
 
 	return goret
 }
@@ -2358,7 +2360,7 @@ func (h *Harness) EventsReceived() uint {
 // 
 // The function returns the following values:
 // 
-// 	- goret gst.Element 
+// 	- goret gst.Element (nullable) 
 //
 // Most useful in conjunction with gst_harness_new_parse, this will scan the
 // #GstElements inside the #GstHarness, and check if any of them matches
@@ -2369,7 +2371,7 @@ func (h *Harness) EventsReceived() uint {
 func (h *Harness) FindElement(elementName string) gst.Element {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 *C.gchar      // in, none, string
-	var cret  *C.GstElement // return, full, converted
+	var cret  *C.GstElement // return, full, converted, nullable
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(elementName)))
@@ -2381,7 +2383,9 @@ func (h *Harness) FindElement(elementName string) gst.Element {
 
 	var goret gst.Element
 
-	goret = gst.UnsafeElementFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeElementFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -2448,7 +2452,7 @@ func (h *Harness) GetLastPushedTimestamp() gst.ClockTime {
 // GetTestclock wraps gst_harness_get_testclock
 // The function returns the following values:
 // 
-// 	- goret TestClock 
+// 	- goret TestClock (nullable) 
 //
 // Get the #GstTestClock. Useful if specific operations on the testclock is
 // needed.
@@ -2456,7 +2460,7 @@ func (h *Harness) GetLastPushedTimestamp() gst.ClockTime {
 // MT safe.
 func (h *Harness) GetTestclock() TestClock {
 	var carg0 *C.GstHarness   // in, none, converted
-	var cret  *C.GstTestClock // return, full, converted
+	var cret  *C.GstTestClock // return, full, converted, nullable
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 
@@ -2465,7 +2469,9 @@ func (h *Harness) GetTestclock() TestClock {
 
 	var goret TestClock
 
-	goret = UnsafeTestClockFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeTestClockFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -2493,7 +2499,7 @@ func (h *Harness) Play() {
 // Pull wraps gst_harness_pull
 // The function returns the following values:
 // 
-// 	- goret *gst.Buffer 
+// 	- goret *gst.Buffer (nullable) 
 //
 // Pulls a #GstBuffer from the #GAsyncQueue on the #GstHarness sinkpad. The pull
 // will timeout in 60 seconds. This is the standard way of getting a buffer
@@ -2502,7 +2508,7 @@ func (h *Harness) Play() {
 // MT safe.
 func (h *Harness) Pull() *gst.Buffer {
 	var carg0 *C.GstHarness // in, none, converted
-	var cret  *C.GstBuffer  // return, full, converted
+	var cret  *C.GstBuffer  // return, full, converted, nullable
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 
@@ -2511,7 +2517,9 @@ func (h *Harness) Pull() *gst.Buffer {
 
 	var goret *gst.Buffer
 
-	goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -2519,7 +2527,7 @@ func (h *Harness) Pull() *gst.Buffer {
 // PullEvent wraps gst_harness_pull_event
 // The function returns the following values:
 // 
-// 	- goret *gst.Event 
+// 	- goret *gst.Event (nullable) 
 //
 // Pulls an #GstEvent from the #GAsyncQueue on the #GstHarness sinkpad.
 // Timeouts after 60 seconds similar to gst_harness_pull.
@@ -2527,7 +2535,7 @@ func (h *Harness) Pull() *gst.Buffer {
 // MT safe.
 func (h *Harness) PullEvent() *gst.Event {
 	var carg0 *C.GstHarness // in, none, converted
-	var cret  *C.GstEvent   // return, full, converted
+	var cret  *C.GstEvent   // return, full, converted, nullable
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 
@@ -2536,7 +2544,9 @@ func (h *Harness) PullEvent() *gst.Event {
 
 	var goret *gst.Event
 
-	goret = gst.UnsafeEventFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeEventFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -2577,7 +2587,7 @@ func (h *Harness) PullUntilEos() (*gst.Buffer, bool) {
 // PullUpstreamEvent wraps gst_harness_pull_upstream_event
 // The function returns the following values:
 // 
-// 	- goret *gst.Event 
+// 	- goret *gst.Event (nullable) 
 //
 // Pulls an #GstEvent from the #GAsyncQueue on the #GstHarness srcpad.
 // Timeouts after 60 seconds similar to gst_harness_pull.
@@ -2585,7 +2595,7 @@ func (h *Harness) PullUntilEos() (*gst.Buffer, bool) {
 // MT safe.
 func (h *Harness) PullUpstreamEvent() *gst.Event {
 	var carg0 *C.GstHarness // in, none, converted
-	var cret  *C.GstEvent   // return, full, converted
+	var cret  *C.GstEvent   // return, full, converted, nullable
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 
@@ -2594,7 +2604,9 @@ func (h *Harness) PullUpstreamEvent() *gst.Event {
 
 	var goret *gst.Event
 
-	goret = gst.UnsafeEventFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeEventFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -2640,7 +2652,7 @@ func (h *Harness) Push(buffer *gst.Buffer) gst.FlowReturn {
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.Buffer 
+// 	- goret *gst.Buffer (nullable) 
 //
 // Basically a gst_harness_push and a gst_harness_pull in one line. Reflects
 // the fact that you often want to do exactly this in your test: Push one buffer
@@ -2650,7 +2662,7 @@ func (h *Harness) Push(buffer *gst.Buffer) gst.FlowReturn {
 func (h *Harness) PushAndPull(buffer *gst.Buffer) *gst.Buffer {
 	var carg0 *C.GstHarness // in, none, converted
 	var carg1 *C.GstBuffer  // in, full, converted
-	var cret  *C.GstBuffer  // return, full, converted
+	var cret  *C.GstBuffer  // return, full, converted, nullable
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibFull(buffer))
@@ -2661,7 +2673,9 @@ func (h *Harness) PushAndPull(buffer *gst.Buffer) *gst.Buffer {
 
 	var goret *gst.Buffer
 
-	goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -3297,7 +3311,7 @@ func (h *Harness) Teardown() {
 // TryPull wraps gst_harness_try_pull
 // The function returns the following values:
 // 
-// 	- goret *gst.Buffer 
+// 	- goret *gst.Buffer (nullable) 
 //
 // Pulls a #GstBuffer from the #GAsyncQueue on the #GstHarness sinkpad. Unlike
 // gst_harness_pull this will not wait for any buffers if not any are present,
@@ -3306,7 +3320,7 @@ func (h *Harness) Teardown() {
 // MT safe.
 func (h *Harness) TryPull() *gst.Buffer {
 	var carg0 *C.GstHarness // in, none, converted
-	var cret  *C.GstBuffer  // return, full, converted
+	var cret  *C.GstBuffer  // return, full, converted, nullable
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 
@@ -3315,7 +3329,9 @@ func (h *Harness) TryPull() *gst.Buffer {
 
 	var goret *gst.Buffer
 
-	goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -3323,7 +3339,7 @@ func (h *Harness) TryPull() *gst.Buffer {
 // TryPullEvent wraps gst_harness_try_pull_event
 // The function returns the following values:
 // 
-// 	- goret *gst.Event 
+// 	- goret *gst.Event (nullable) 
 //
 // Pulls an #GstEvent from the #GAsyncQueue on the #GstHarness sinkpad.
 // See gst_harness_try_pull for details.
@@ -3331,7 +3347,7 @@ func (h *Harness) TryPull() *gst.Buffer {
 // MT safe.
 func (h *Harness) TryPullEvent() *gst.Event {
 	var carg0 *C.GstHarness // in, none, converted
-	var cret  *C.GstEvent   // return, full, converted
+	var cret  *C.GstEvent   // return, full, converted, nullable
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 
@@ -3340,7 +3356,9 @@ func (h *Harness) TryPullEvent() *gst.Event {
 
 	var goret *gst.Event
 
-	goret = gst.UnsafeEventFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeEventFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -3348,7 +3366,7 @@ func (h *Harness) TryPullEvent() *gst.Event {
 // TryPullUpstreamEvent wraps gst_harness_try_pull_upstream_event
 // The function returns the following values:
 // 
-// 	- goret *gst.Event 
+// 	- goret *gst.Event (nullable) 
 //
 // Pulls an #GstEvent from the #GAsyncQueue on the #GstHarness srcpad.
 // See gst_harness_try_pull for details.
@@ -3356,7 +3374,7 @@ func (h *Harness) TryPullEvent() *gst.Event {
 // MT safe.
 func (h *Harness) TryPullUpstreamEvent() *gst.Event {
 	var carg0 *C.GstHarness // in, none, converted
-	var cret  *C.GstEvent   // return, full, converted
+	var cret  *C.GstEvent   // return, full, converted, nullable
 
 	carg0 = (*C.GstHarness)(UnsafeHarnessToGlibNone(h))
 
@@ -3365,7 +3383,9 @@ func (h *Harness) TryPullUpstreamEvent() *gst.Event {
 
 	var goret *gst.Event
 
-	goret = gst.UnsafeEventFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeEventFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }

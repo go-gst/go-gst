@@ -886,6 +886,22 @@ func (e CoreError) String() string {
 	}
 }
 
+// CoreErrorQuark wraps gst_core_error_quark
+// The function returns the following values:
+// 
+// 	- goret glib.Quark 
+func CoreErrorQuark() glib.Quark {
+	var cret C.GQuark // return, none, casted, alias
+
+	cret = C.gst_core_error_quark()
+
+	var goret glib.Quark
+
+	goret = glib.Quark(cret)
+
+	return goret
+}
+
 // DebugColorMode wraps GstDebugColorMode
 type DebugColorMode C.int
 
@@ -1026,6 +1042,33 @@ func (e DebugLevel) String() string {
 		case LevelWarning: return "LevelWarning"
 		default: return fmt.Sprintf("DebugLevel(%d)", e)
 	}
+}
+
+// DebugLevelGetName wraps gst_debug_level_get_name
+// 
+// The function takes the following parameters:
+// 
+// 	- level DebugLevel: the level to get the name for 
+// 
+// The function returns the following values:
+// 
+// 	- goret string 
+//
+// Get the string representation of a debugging level
+func DebugLevelGetName(level DebugLevel) string {
+	var carg1 C.GstDebugLevel // in, none, casted
+	var cret  *C.gchar        // return, none, string
+
+	carg1 = C.GstDebugLevel(level)
+
+	cret = C.gst_debug_level_get_name(carg1)
+	runtime.KeepAlive(level)
+
+	var goret string
+
+	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+
+	return goret
 }
 
 // EventType wraps GstEventType
@@ -1247,6 +1290,116 @@ func (e EventType) String() string {
 	}
 }
 
+// EventTypeGetFlags wraps gst_event_type_get_flags
+// 
+// The function takes the following parameters:
+// 
+// 	- typ EventType: a #GstEventType 
+// 
+// The function returns the following values:
+// 
+// 	- goret EventTypeFlags 
+//
+// Gets the #GstEventTypeFlags associated with @type.
+func EventTypeGetFlags(typ EventType) EventTypeFlags {
+	var carg1 C.GstEventType      // in, none, casted
+	var cret  C.GstEventTypeFlags // return, none, casted
+
+	carg1 = C.GstEventType(typ)
+
+	cret = C.gst_event_type_get_flags(carg1)
+	runtime.KeepAlive(typ)
+
+	var goret EventTypeFlags
+
+	goret = EventTypeFlags(cret)
+
+	return goret
+}
+
+// EventTypeGetName wraps gst_event_type_get_name
+// 
+// The function takes the following parameters:
+// 
+// 	- typ EventType: the event type 
+// 
+// The function returns the following values:
+// 
+// 	- goret string 
+//
+// Get a printable name for the given event type. Do not modify or free.
+func EventTypeGetName(typ EventType) string {
+	var carg1 C.GstEventType // in, none, casted
+	var cret  *C.gchar       // return, none, string
+
+	carg1 = C.GstEventType(typ)
+
+	cret = C.gst_event_type_get_name(carg1)
+	runtime.KeepAlive(typ)
+
+	var goret string
+
+	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+
+	return goret
+}
+
+// EventTypeToQuark wraps gst_event_type_to_quark
+// 
+// The function takes the following parameters:
+// 
+// 	- typ EventType: the event type 
+// 
+// The function returns the following values:
+// 
+// 	- goret glib.Quark 
+//
+// Get the unique quark for the given event type.
+func EventTypeToQuark(typ EventType) glib.Quark {
+	var carg1 C.GstEventType // in, none, casted
+	var cret  C.GQuark       // return, none, casted, alias
+
+	carg1 = C.GstEventType(typ)
+
+	cret = C.gst_event_type_to_quark(carg1)
+	runtime.KeepAlive(typ)
+
+	var goret glib.Quark
+
+	goret = glib.Quark(cret)
+
+	return goret
+}
+
+// EventTypeToStickyOrdering wraps gst_event_type_to_sticky_ordering
+// 
+// The function takes the following parameters:
+// 
+// 	- typ EventType: a #GstEventType 
+// 
+// The function returns the following values:
+// 
+// 	- goret uint 
+//
+// Converts the #GstEventType to an unsigned integer that
+// represents the ordering of sticky events when re-sending them.
+// A lower value represents a higher-priority event.
+func EventTypeToStickyOrdering(typ EventType) uint {
+	var carg1 C.GstEventType // in, none, casted
+	var cret  C.guint        // return, none, casted
+
+	carg1 = C.GstEventType(typ)
+
+	cret = C.gst_event_type_to_sticky_ordering(carg1)
+	runtime.KeepAlive(typ)
+
+	var goret uint
+
+	goret = uint(cret)
+
+	return goret
+}
+
 // FlowReturn wraps GstFlowReturn
 //
 // The result of passing data to a pad.
@@ -1409,6 +1562,172 @@ func (e Format) String() string {
 	}
 }
 
+// FormatGetByNick wraps gst_format_get_by_nick
+// 
+// The function takes the following parameters:
+// 
+// 	- nick string: The nick of the format 
+// 
+// The function returns the following values:
+// 
+// 	- goret Format 
+//
+// Return the format registered with the given nick.
+func FormatGetByNick(nick string) Format {
+	var carg1 *C.gchar    // in, none, string
+	var cret  C.GstFormat // return, none, casted
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(nick)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	cret = C.gst_format_get_by_nick(carg1)
+	runtime.KeepAlive(nick)
+
+	var goret Format
+
+	goret = Format(cret)
+
+	return goret
+}
+
+// FormatGetDetails wraps gst_format_get_details
+// 
+// The function takes the following parameters:
+// 
+// 	- format Format: The format to get details of 
+// 
+// The function returns the following values:
+// 
+// 	- goret *FormatDefinition (nullable) 
+//
+// Get details about the given format.
+func FormatGetDetails(format Format) *FormatDefinition {
+	var carg1 C.GstFormat            // in, none, casted
+	var cret  *C.GstFormatDefinition // return, none, converted, nullable
+
+	carg1 = C.GstFormat(format)
+
+	cret = C.gst_format_get_details(carg1)
+	runtime.KeepAlive(format)
+
+	var goret *FormatDefinition
+
+	if cret != nil {
+		goret = UnsafeFormatDefinitionFromGlibNone(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
+// FormatGetName wraps gst_format_get_name
+// 
+// The function takes the following parameters:
+// 
+// 	- format Format: a #GstFormat 
+// 
+// The function returns the following values:
+// 
+// 	- goret string (nullable) 
+//
+// Get a printable name for the given format. Do not modify or free.
+func FormatGetName(format Format) string {
+	var carg1 C.GstFormat // in, none, casted
+	var cret  *C.gchar    // return, none, string, nullable-string
+
+	carg1 = C.GstFormat(format)
+
+	cret = C.gst_format_get_name(carg1)
+	runtime.KeepAlive(format)
+
+	var goret string
+
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
+
+	return goret
+}
+
+// FormatIterateDefinitions wraps gst_format_iterate_definitions
+// The function returns the following values:
+// 
+// 	- goret *Iterator 
+//
+// Iterate all the registered formats. The format definition is read
+// only.
+func FormatIterateDefinitions() *Iterator {
+	var cret *C.GstIterator // return, full, converted
+
+	cret = C.gst_format_iterate_definitions()
+
+	var goret *Iterator
+
+	goret = UnsafeIteratorFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// FormatRegister wraps gst_format_register
+// 
+// The function takes the following parameters:
+// 
+// 	- nick string: The nick of the new format 
+// 	- description string: The description of the new format 
+// 
+// The function returns the following values:
+// 
+// 	- goret Format 
+//
+// Create a new GstFormat based on the nick or return an
+// already registered format with that nick.
+func FormatRegister(nick string, description string) Format {
+	var carg1 *C.gchar    // in, none, string
+	var carg2 *C.gchar    // in, none, string
+	var cret  C.GstFormat // return, none, casted
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(nick)))
+	defer C.free(unsafe.Pointer(carg1))
+	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(description)))
+	defer C.free(unsafe.Pointer(carg2))
+
+	cret = C.gst_format_register(carg1, carg2)
+	runtime.KeepAlive(nick)
+	runtime.KeepAlive(description)
+
+	var goret Format
+
+	goret = Format(cret)
+
+	return goret
+}
+
+// FormatToQuark wraps gst_format_to_quark
+// 
+// The function takes the following parameters:
+// 
+// 	- format Format: a #GstFormat 
+// 
+// The function returns the following values:
+// 
+// 	- goret glib.Quark 
+//
+// Get the unique quark for the given format.
+func FormatToQuark(format Format) glib.Quark {
+	var carg1 C.GstFormat // in, none, casted
+	var cret  C.GQuark    // return, none, casted, alias
+
+	carg1 = C.GstFormat(format)
+
+	cret = C.gst_format_to_quark(carg1)
+	runtime.KeepAlive(format)
+
+	var goret glib.Quark
+
+	goret = glib.Quark(cret)
+
+	return goret
+}
+
 // IteratorItem wraps GstIteratorItem
 //
 // The result of a #GstIteratorItemFunction.
@@ -1557,6 +1876,22 @@ func (e LibraryError) String() string {
 	}
 }
 
+// LibraryErrorQuark wraps gst_library_error_quark
+// The function returns the following values:
+// 
+// 	- goret glib.Quark 
+func LibraryErrorQuark() glib.Quark {
+	var cret C.GQuark // return, none, casted, alias
+
+	cret = C.gst_library_error_quark()
+
+	var goret glib.Quark
+
+	goret = glib.Quark(cret)
+
+	return goret
+}
+
 // PadDirection wraps GstPadDirection
 //
 // The direction of a pad.
@@ -1697,6 +2032,33 @@ func (e PadMode) String() string {
 		case PadModePush: return "PadModePush"
 		default: return fmt.Sprintf("PadMode(%d)", e)
 	}
+}
+
+// PadModeGetName wraps gst_pad_mode_get_name
+// 
+// The function takes the following parameters:
+// 
+// 	- mode PadMode: the pad mode 
+// 
+// The function returns the following values:
+// 
+// 	- goret string 
+//
+// Return the name of a pad mode, for use in debug messages mostly.
+func PadModeGetName(mode PadMode) string {
+	var carg1 C.GstPadMode // in, none, casted
+	var cret  *C.gchar     // return, none, string
+
+	carg1 = C.GstPadMode(mode)
+
+	cret = C.gst_pad_mode_get_name(carg1)
+	runtime.KeepAlive(mode)
+
+	var goret string
+
+	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+
+	return goret
 }
 
 // PadPresence wraps GstPadPresence
@@ -1874,6 +2236,24 @@ func (e ParseError) String() string {
 	}
 }
 
+// ParseErrorQuark wraps gst_parse_error_quark
+// The function returns the following values:
+// 
+// 	- goret glib.Quark 
+//
+// Get the error quark used by the parsing subsystem.
+func ParseErrorQuark() glib.Quark {
+	var cret C.GQuark // return, none, casted, alias
+
+	cret = C.gst_parse_error_quark()
+
+	var goret glib.Quark
+
+	goret = glib.Quark(cret)
+
+	return goret
+}
+
 // PluginError wraps GstPluginError
 //
 // The plugin loading errors
@@ -1912,6 +2292,24 @@ func (e PluginError) String() string {
 		case PluginErrorNameMismatch: return "PluginErrorNameMismatch"
 		default: return fmt.Sprintf("PluginError(%d)", e)
 	}
+}
+
+// PluginErrorQuark wraps gst_plugin_error_quark
+// The function returns the following values:
+// 
+// 	- goret glib.Quark 
+//
+// Get the error quark.
+func PluginErrorQuark() glib.Quark {
+	var cret C.GQuark // return, none, casted, alias
+
+	cret = C.gst_plugin_error_quark()
+
+	var goret glib.Quark
+
+	goret = glib.Quark(cret)
+
+	return goret
 }
 
 // ProgressType wraps GstProgressType
@@ -2192,6 +2590,87 @@ func (e QueryType) String() string {
 	}
 }
 
+// QueryTypeGetFlags wraps gst_query_type_get_flags
+// 
+// The function takes the following parameters:
+// 
+// 	- typ QueryType: a #GstQueryType 
+// 
+// The function returns the following values:
+// 
+// 	- goret QueryTypeFlags 
+//
+// Gets the #GstQueryTypeFlags associated with @type.
+func QueryTypeGetFlags(typ QueryType) QueryTypeFlags {
+	var carg1 C.GstQueryType      // in, none, casted
+	var cret  C.GstQueryTypeFlags // return, none, casted
+
+	carg1 = C.GstQueryType(typ)
+
+	cret = C.gst_query_type_get_flags(carg1)
+	runtime.KeepAlive(typ)
+
+	var goret QueryTypeFlags
+
+	goret = QueryTypeFlags(cret)
+
+	return goret
+}
+
+// QueryTypeGetName wraps gst_query_type_get_name
+// 
+// The function takes the following parameters:
+// 
+// 	- typ QueryType: the query type 
+// 
+// The function returns the following values:
+// 
+// 	- goret string 
+//
+// Get a printable name for the given query type. Do not modify or free.
+func QueryTypeGetName(typ QueryType) string {
+	var carg1 C.GstQueryType // in, none, casted
+	var cret  *C.gchar       // return, none, string
+
+	carg1 = C.GstQueryType(typ)
+
+	cret = C.gst_query_type_get_name(carg1)
+	runtime.KeepAlive(typ)
+
+	var goret string
+
+	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+
+	return goret
+}
+
+// QueryTypeToQuark wraps gst_query_type_to_quark
+// 
+// The function takes the following parameters:
+// 
+// 	- typ QueryType: the query type 
+// 
+// The function returns the following values:
+// 
+// 	- goret glib.Quark 
+//
+// Get the unique quark for the given query type.
+func QueryTypeToQuark(typ QueryType) glib.Quark {
+	var carg1 C.GstQueryType // in, none, casted
+	var cret  C.GQuark       // return, none, casted, alias
+
+	carg1 = C.GstQueryType(typ)
+
+	cret = C.gst_query_type_to_quark(carg1)
+	runtime.KeepAlive(typ)
+
+	var goret glib.Quark
+
+	goret = glib.Quark(cret)
+
+	return goret
+}
+
 // Rank wraps GstRank
 //
 // Element priority ranks. Defines the order in which the autoplugger (or
@@ -2353,6 +2832,22 @@ func (e ResourceError) String() string {
 		case ResourceErrorWrite: return "ResourceErrorWrite"
 		default: return fmt.Sprintf("ResourceError(%d)", e)
 	}
+}
+
+// ResourceErrorQuark wraps gst_resource_error_quark
+// The function returns the following values:
+// 
+// 	- goret glib.Quark 
+func ResourceErrorQuark() glib.Quark {
+	var cret C.GQuark // return, none, casted, alias
+
+	cret = C.gst_resource_error_quark()
+
+	var goret glib.Quark
+
+	goret = glib.Quark(cret)
+
+	return goret
 }
 
 // SearchMode wraps GstSearchMode
@@ -2619,6 +3114,33 @@ func (e StateChange) String() string {
 	}
 }
 
+// StateChangeGetName wraps gst_state_change_get_name
+// 
+// The function takes the following parameters:
+// 
+// 	- transition StateChange: a #GstStateChange to get the name of. 
+// 
+// The function returns the following values:
+// 
+// 	- goret string 
+//
+// Gets a string representing the given state transition.
+func StateChangeGetName(transition StateChange) string {
+	var carg1 C.GstStateChange // in, none, casted
+	var cret  *C.gchar         // return, none, string
+
+	carg1 = C.GstStateChange(transition)
+
+	cret = C.gst_state_change_get_name(carg1)
+	runtime.KeepAlive(transition)
+
+	var goret string
+
+	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+
+	return goret
+}
+
 // StateChangeReturn wraps GstStateChangeReturn
 //
 // The possible return values from a state change function such as
@@ -2771,6 +3293,22 @@ func (e StreamError) String() string {
 		case StreamErrorWrongType: return "StreamErrorWrongType"
 		default: return fmt.Sprintf("StreamError(%d)", e)
 	}
+}
+
+// StreamErrorQuark wraps gst_stream_error_quark
+// The function returns the following values:
+// 
+// 	- goret glib.Quark 
+func StreamErrorQuark() glib.Quark {
+	var cret C.GQuark // return, none, casted, alias
+
+	cret = C.gst_stream_error_quark()
+
+	var goret glib.Quark
+
+	goret = glib.Quark(cret)
+
+	return goret
 }
 
 // StreamStatusType wraps GstStreamStatusType
@@ -3137,6 +3675,33 @@ func (e TocEntryType) String() string {
 	}
 }
 
+// TocEntryTypeGetNick wraps gst_toc_entry_type_get_nick
+// 
+// The function takes the following parameters:
+// 
+// 	- typ TocEntryType: a #GstTocEntryType. 
+// 
+// The function returns the following values:
+// 
+// 	- goret string 
+//
+// Converts @type to a string representation.
+func TocEntryTypeGetNick(typ TocEntryType) string {
+	var carg1 C.GstTocEntryType // in, none, casted
+	var cret  *C.gchar          // return, none, string
+
+	carg1 = C.GstTocEntryType(typ)
+
+	cret = C.gst_toc_entry_type_get_nick(carg1)
+	runtime.KeepAlive(typ)
+
+	var goret string
+
+	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+
+	return goret
+}
+
 // TocLoopType wraps GstTocLoopType
 //
 // How a #GstTocEntry should be repeated. By default, entries are played a
@@ -3374,6 +3939,22 @@ func (e URIError) String() string {
 		case URIErrorUnsupportedProtocol: return "URIErrorUnsupportedProtocol"
 		default: return fmt.Sprintf("URIError(%d)", e)
 	}
+}
+
+// URIErrorQuark wraps gst_uri_error_quark
+// The function returns the following values:
+// 
+// 	- goret glib.Quark 
+func URIErrorQuark() glib.Quark {
+	var cret C.GQuark // return, none, casted, alias
+
+	cret = C.gst_uri_error_quark()
+
+	var goret glib.Quark
+
+	goret = glib.Quark(cret)
+
+	return goret
 }
 
 // URIType wraps GstURIType
@@ -5039,6 +5620,60 @@ func (f MessageType) String() string {
 	return "MessageType(" + strings.Join(parts, "|") + ")"
 }
 
+// MessageTypeGetName wraps gst_message_type_get_name
+// 
+// The function takes the following parameters:
+// 
+// 	- typ MessageType: the message type 
+// 
+// The function returns the following values:
+// 
+// 	- goret string 
+//
+// Get a printable name for the given message type. Do not modify or free.
+func MessageTypeGetName(typ MessageType) string {
+	var carg1 C.GstMessageType // in, none, casted
+	var cret  *C.gchar         // return, none, string
+
+	carg1 = C.GstMessageType(typ)
+
+	cret = C.gst_message_type_get_name(carg1)
+	runtime.KeepAlive(typ)
+
+	var goret string
+
+	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+
+	return goret
+}
+
+// MessageTypeToQuark wraps gst_message_type_to_quark
+// 
+// The function takes the following parameters:
+// 
+// 	- typ MessageType: the message type 
+// 
+// The function returns the following values:
+// 
+// 	- goret glib.Quark 
+//
+// Get the unique quark for the given message type.
+func MessageTypeToQuark(typ MessageType) glib.Quark {
+	var carg1 C.GstMessageType // in, none, casted
+	var cret  C.GQuark         // return, none, casted, alias
+
+	carg1 = C.GstMessageType(typ)
+
+	cret = C.gst_message_type_to_quark(carg1)
+	runtime.KeepAlive(typ)
+
+	var goret glib.Quark
+
+	goret = glib.Quark(cret)
+
+	return goret
+}
+
 // MetaFlags wraps GstMetaFlags
 //
 // Extra metadata flags.
@@ -6618,6 +7253,33 @@ func (f StreamType) String() string {
 	return "StreamType(" + strings.Join(parts, "|") + ")"
 }
 
+// StreamTypeGetName wraps gst_stream_type_get_name
+// 
+// The function takes the following parameters:
+// 
+// 	- stype StreamType: a #GstStreamType 
+// 
+// The function returns the following values:
+// 
+// 	- goret string 
+//
+// Get a descriptive string for a given #GstStreamType
+func StreamTypeGetName(stype StreamType) string {
+	var carg1 C.GstStreamType // in, none, casted
+	var cret  *C.gchar        // return, none, string
+
+	carg1 = C.GstStreamType(stype)
+
+	cret = C.gst_stream_type_get_name(carg1)
+	runtime.KeepAlive(stype)
+
+	var goret string
+
+	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+
+	return goret
+}
+
 // TracerValueFlags wraps GstTracerValueFlags
 //
 // Flag that describe the value. These flags help applications processing the
@@ -7134,10 +7796,10 @@ func DebugGetDefaultThreshold() DebugLevel {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 func DebugGetStackTrace(flags StackTraceFlags) string {
 	var carg1 C.GstStackTraceFlags // in, none, casted
-	var cret  *C.gchar             // return, full, string
+	var cret  *C.gchar             // return, full, string, nullable-string
 
 	carg1 = C.GstStackTraceFlags(flags)
 
@@ -7146,8 +7808,10 @@ func DebugGetStackTrace(flags StackTraceFlags) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -7642,7 +8306,7 @@ func ErrorGetMessage(domain glib.Quark, code int) string {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 // 	- _goerr error (nullable): an error 
 //
 // Similar to g_filename_to_uri(), but attempts to handle relative file paths
@@ -7653,7 +8317,7 @@ func ErrorGetMessage(domain glib.Quark, code int) string {
 // On Windows @filename should be in UTF-8 encoding.
 func FilenameToURI(filename string) (string, error) {
 	var carg1 *C.gchar  // in, none, string
-	var cret  *C.gchar  // return, full, string
+	var cret  *C.gchar  // return, full, string, nullable-string
 	var _cerr *C.GError // out, full, converted, nullable
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(filename)))
@@ -7665,8 +8329,10 @@ func FilenameToURI(filename string) (string, error) {
 	var goret  string
 	var _goerr error
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
 	if _cerr != nil {
 		_goerr = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(_cerr))
 	}
@@ -7766,7 +8432,7 @@ func FormatsContains(formats []Format, format Format) bool {
 // GetMainExecutablePath wraps gst_get_main_executable_path
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // This helper is mostly helpful for plugins that need to
 // inspect the folder of the main executable to determine
@@ -7776,13 +8442,15 @@ func FormatsContains(formats []Format, format Format) bool {
 // external process, the returned path will be the same as from the
 // parent process.
 func GetMainExecutablePath() string {
-	var cret *C.gchar // return, none, string
+	var cret *C.gchar // return, none, string, nullable-string
 
 	cret = C.gst_get_main_executable_path()
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -8065,13 +8733,13 @@ func ParseLaunchFull(pipelineDescription string, _context *ParseContext, flags P
 // 
 // The function returns the following values:
 // 
-// 	- goret []string 
+// 	- goret []string (nullable) 
 //
 // Iterates the supplied list of UUIDs and checks the GstRegistry for
 // all the decryptors supporting one of the supplied UUIDs.
 func ProtectionFilterSystemsByAvailableDecryptors(systemIdentifiers []string) []string {
 	var carg1 **C.gchar // in, transfer: none, C Pointers: 2, Name: array[utf8], array (inner: *typesystem.StringPrimitive, zero-terminated)
-	var cret  **C.gchar // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , array (inner: *typesystem.StringPrimitive, zero-terminated)
+	var cret  **C.gchar // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , nullable, array (inner: *typesystem.StringPrimitive, zero-terminated)
 
 	_ = systemIdentifiers
 	_ = carg1
@@ -8115,14 +8783,14 @@ func ProtectionMetaApiGetType() gobject.Type {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Iterates the supplied list of UUIDs and checks the GstRegistry for
 // an element that supports one of the supplied UUIDs. If more than one
 // element matches, the system ID of the highest ranked element is selected.
 func ProtectionSelectSystem(systemIdentifiers []string) string {
 	var carg1 **C.gchar // in, transfer: none, C Pointers: 2, Name: array[utf8], array (inner: *typesystem.StringPrimitive, zero-terminated)
-	var cret  *C.gchar  // return, none, string
+	var cret  *C.gchar  // return, none, string, nullable-string
 
 	_ = systemIdentifiers
 	_ = carg1
@@ -8133,7 +8801,9 @@ func ProtectionSelectSystem(systemIdentifiers []string) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -9947,12 +10617,12 @@ func ValueGetFractionNumerator(value *gobject.Value) int {
 // 
 // The function returns the following values:
 // 
-// 	- goret *gobject.Value 
+// 	- goret *gobject.Value (nullable) 
 //
 // Gets the maximum of the range specified by @value.
 func ValueGetFractionRangeMax(value *gobject.Value) *gobject.Value {
 	var carg1 *C.GValue // in, none, converted
-	var cret  *C.GValue // return, none, converted
+	var cret  *C.GValue // return, none, converted, nullable
 
 	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
@@ -9961,7 +10631,9 @@ func ValueGetFractionRangeMax(value *gobject.Value) *gobject.Value {
 
 	var goret *gobject.Value
 
-	goret = gobject.UnsafeValueFromGlibUseAnyInstead(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gobject.UnsafeValueFromGlibUseAnyInstead(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -9974,12 +10646,12 @@ func ValueGetFractionRangeMax(value *gobject.Value) *gobject.Value {
 // 
 // The function returns the following values:
 // 
-// 	- goret *gobject.Value 
+// 	- goret *gobject.Value (nullable) 
 //
 // Gets the minimum of the range specified by @value.
 func ValueGetFractionRangeMin(value *gobject.Value) *gobject.Value {
 	var carg1 *C.GValue // in, none, converted
-	var cret  *C.GValue // return, none, converted
+	var cret  *C.GValue // return, none, converted, nullable
 
 	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
@@ -9988,7 +10660,9 @@ func ValueGetFractionRangeMin(value *gobject.Value) *gobject.Value {
 
 	var goret *gobject.Value
 
-	goret = gobject.UnsafeValueFromGlibUseAnyInstead(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gobject.UnsafeValueFromGlibUseAnyInstead(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -10347,7 +11021,7 @@ func ValueRegister(table *ValueTable) {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // tries to transform the given @value into a string representation that allows
 // getting back this string later on using gst_value_deserialize().
@@ -10355,7 +11029,7 @@ func ValueRegister(table *ValueTable) {
 // Free-function: g_free
 func ValueSerialize(value *gobject.Value) string {
 	var carg1 *C.GValue // in, none, converted
-	var cret  *C.gchar  // return, full, string
+	var cret  *C.gchar  // return, full, string, nullable-string
 
 	carg1 = (*C.GValue)(gobject.UnsafeValueToGlibUseAnyInstead(value))
 
@@ -10364,8 +11038,10 @@ func ValueSerialize(value *gobject.Value) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -10873,7 +11549,7 @@ type ChildProxy interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret gobject.Object 
+	// 	- goret gobject.Object (nullable) 
 	//
 	// Fetches a child by its number.
 	GetChildByIndex(uint) gobject.Object
@@ -10885,7 +11561,7 @@ type ChildProxy interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret gobject.Object 
+	// 	- goret gobject.Object (nullable) 
 	//
 	// Looks up a child element by the given name.
 	// 
@@ -10901,7 +11577,7 @@ type ChildProxy interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret gobject.Object 
+	// 	- goret gobject.Object (nullable) 
 	//
 	// Looks up a child element by the given full-path name.
 	// 
@@ -11023,13 +11699,13 @@ func (parent *ChildProxyInstance) ChildRemoved(child gobject.Object, name string
 // 
 // The function returns the following values:
 // 
-// 	- goret gobject.Object 
+// 	- goret gobject.Object (nullable) 
 //
 // Fetches a child by its number.
 func (parent *ChildProxyInstance) GetChildByIndex(index uint) gobject.Object {
 	var carg0 *C.GstChildProxy // in, none, converted
 	var carg1 C.guint          // in, none, casted
-	var cret  *C.GObject       // return, full, converted
+	var cret  *C.GObject       // return, full, converted, nullable
 
 	carg0 = (*C.GstChildProxy)(UnsafeChildProxyToGlibNone(parent))
 	carg1 = C.guint(index)
@@ -11040,7 +11716,9 @@ func (parent *ChildProxyInstance) GetChildByIndex(index uint) gobject.Object {
 
 	var goret gobject.Object
 
-	goret = gobject.UnsafeObjectFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gobject.UnsafeObjectFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -11053,7 +11731,7 @@ func (parent *ChildProxyInstance) GetChildByIndex(index uint) gobject.Object {
 // 
 // The function returns the following values:
 // 
-// 	- goret gobject.Object 
+// 	- goret gobject.Object (nullable) 
 //
 // Looks up a child element by the given name.
 // 
@@ -11063,7 +11741,7 @@ func (parent *ChildProxyInstance) GetChildByIndex(index uint) gobject.Object {
 func (parent *ChildProxyInstance) GetChildByName(name string) gobject.Object {
 	var carg0 *C.GstChildProxy // in, none, converted
 	var carg1 *C.gchar         // in, none, string
-	var cret  *C.GObject       // return, full, converted
+	var cret  *C.GObject       // return, full, converted, nullable
 
 	carg0 = (*C.GstChildProxy)(UnsafeChildProxyToGlibNone(parent))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
@@ -11075,7 +11753,9 @@ func (parent *ChildProxyInstance) GetChildByName(name string) gobject.Object {
 
 	var goret gobject.Object
 
-	goret = gobject.UnsafeObjectFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gobject.UnsafeObjectFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -11088,7 +11768,7 @@ func (parent *ChildProxyInstance) GetChildByName(name string) gobject.Object {
 // 
 // The function returns the following values:
 // 
-// 	- goret gobject.Object 
+// 	- goret gobject.Object (nullable) 
 //
 // Looks up a child element by the given full-path name.
 // 
@@ -11101,7 +11781,7 @@ func (parent *ChildProxyInstance) GetChildByName(name string) gobject.Object {
 func (childProxy *ChildProxyInstance) GetChildByNameRecurse(name string) gobject.Object {
 	var carg0 *C.GstChildProxy // in, none, converted
 	var carg1 *C.gchar         // in, none, string
-	var cret  *C.GObject       // return, full, converted
+	var cret  *C.GObject       // return, full, converted, nullable
 
 	carg0 = (*C.GstChildProxy)(UnsafeChildProxyToGlibNone(childProxy))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
@@ -11113,7 +11793,9 @@ func (childProxy *ChildProxyInstance) GetChildByNameRecurse(name string) gobject
 
 	var goret gobject.Object
 
-	goret = gobject.UnsafeObjectFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gobject.UnsafeObjectFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -11334,18 +12016,20 @@ func UnsafePresetToGlibFull(c Preset) unsafe.Pointer {
 // PresetGetAppDir wraps gst_preset_get_app_dir
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Gets the directory for application specific presets if set by the
 // application.
 func PresetGetAppDir() string {
-	var cret *C.gchar // return, none, string
+	var cret *C.gchar // return, none, string, nullable
 
 	cret = C.gst_preset_get_app_dir()
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -11708,7 +12392,7 @@ type URIHandler interface {
 	// GetProtocols wraps gst_uri_handler_get_protocols
 	// The function returns the following values:
 	// 
-	// 	- goret []string 
+	// 	- goret []string (nullable) 
 	//
 	// Gets the list of protocols supported by @handler. This list may not be
 	// modified.
@@ -11716,7 +12400,7 @@ type URIHandler interface {
 	// GetURI wraps gst_uri_handler_get_uri
 	// The function returns the following values:
 	// 
-	// 	- goret string 
+	// 	- goret string (nullable) 
 	//
 	// Gets the currently handled URI.
 	GetURI() string
@@ -11783,13 +12467,13 @@ func UnsafeURIHandlerToGlibFull(c URIHandler) unsafe.Pointer {
 // GetProtocols wraps gst_uri_handler_get_protocols
 // The function returns the following values:
 // 
-// 	- goret []string 
+// 	- goret []string (nullable) 
 //
 // Gets the list of protocols supported by @handler. This list may not be
 // modified.
 func (handler *URIHandlerInstance) GetProtocols() []string {
 	var carg0 *C.GstURIHandler // in, none, converted
-	var cret  **C.gchar        // return, transfer: none, C Pointers: 2, Name: array[utf8], scope: , array (inner: *typesystem.StringPrimitive, zero-terminated)
+	var cret  **C.gchar        // return, transfer: none, C Pointers: 2, Name: array[utf8], scope: , nullable, array (inner: *typesystem.StringPrimitive, zero-terminated)
 
 	carg0 = (*C.GstURIHandler)(UnsafeURIHandlerToGlibNone(handler))
 
@@ -11808,12 +12492,12 @@ func (handler *URIHandlerInstance) GetProtocols() []string {
 // GetURI wraps gst_uri_handler_get_uri
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Gets the currently handled URI.
 func (handler *URIHandlerInstance) GetURI() string {
 	var carg0 *C.GstURIHandler // in, none, converted
-	var cret  *C.gchar         // return, full, string
+	var cret  *C.gchar         // return, full, string, nullable-string
 
 	carg0 = (*C.GstURIHandler)(UnsafeURIHandlerToGlibNone(handler))
 
@@ -11822,8 +12506,10 @@ func (handler *URIHandlerInstance) GetURI() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -11946,7 +12632,7 @@ type TagSetter interface {
 	// GetTagList wraps gst_tag_setter_get_tag_list
 	// The function returns the following values:
 	// 
-	// 	- goret *TagList 
+	// 	- goret *TagList (nullable) 
 	//
 	// Returns the current list of tags the setter uses.  The list should not be
 	// modified or freed.
@@ -12028,7 +12714,7 @@ func UnsafeTagSetterToGlibFull(c TagSetter) unsafe.Pointer {
 // GetTagList wraps gst_tag_setter_get_tag_list
 // The function returns the following values:
 // 
-// 	- goret *TagList 
+// 	- goret *TagList (nullable) 
 //
 // Returns the current list of tags the setter uses.  The list should not be
 // modified or freed.
@@ -12036,7 +12722,7 @@ func UnsafeTagSetterToGlibFull(c TagSetter) unsafe.Pointer {
 // This function is not thread-safe.
 func (setter *TagSetterInstance) GetTagList() *TagList {
 	var carg0 *C.GstTagSetter // in, none, converted
-	var cret  *C.GstTagList   // return, none, converted
+	var cret  *C.GstTagList   // return, none, converted, nullable
 
 	carg0 = (*C.GstTagSetter)(UnsafeTagSetterToGlibNone(setter))
 
@@ -12045,7 +12731,9 @@ func (setter *TagSetterInstance) GetTagList() *TagList {
 
 	var goret *TagList
 
-	goret = UnsafeTagListFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeTagListFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -12160,7 +12848,7 @@ type TocSetter interface {
 	// GetToc wraps gst_toc_setter_get_toc
 	// The function returns the following values:
 	// 
-	// 	- goret *Toc 
+	// 	- goret *Toc (nullable) 
 	//
 	// Return current TOC the setter uses. The TOC should not be
 	// modified without making it writable first.
@@ -12222,13 +12910,13 @@ func UnsafeTocSetterToGlibFull(c TocSetter) unsafe.Pointer {
 // GetToc wraps gst_toc_setter_get_toc
 // The function returns the following values:
 // 
-// 	- goret *Toc 
+// 	- goret *Toc (nullable) 
 //
 // Return current TOC the setter uses. The TOC should not be
 // modified without making it writable first.
 func (setter *TocSetterInstance) GetToc() *Toc {
 	var carg0 *C.GstTocSetter // in, none, converted
-	var cret  *C.GstToc       // return, full, converted
+	var cret  *C.GstToc       // return, full, converted, nullable
 
 	carg0 = (*C.GstTocSetter)(UnsafeTocSetterToGlibNone(setter))
 
@@ -12237,7 +12925,9 @@ func (setter *TocSetterInstance) GetToc() *Toc {
 
 	var goret *Toc
 
-	goret = UnsafeTocFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeTocFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -12377,7 +13067,7 @@ type Object interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret ControlBinding 
+	// 	- goret ControlBinding (nullable) 
 	//
 	// Gets the corresponding #GstControlBinding for the property. This should be
 	// unreferenced again after use.
@@ -12401,7 +13091,7 @@ type Object interface {
 	// GetName wraps gst_object_get_name
 	// The function returns the following values:
 	// 
-	// 	- goret string 
+	// 	- goret string (nullable) 
 	//
 	// Returns a copy of the name of @object.
 	// Caller should g_free() the return value after usage.
@@ -12413,7 +13103,7 @@ type Object interface {
 	// GetParent wraps gst_object_get_parent
 	// The function returns the following values:
 	// 
-	// 	- goret Object 
+	// 	- goret Object (nullable) 
 	//
 	// Returns the parent of @object. This function increases the refcount
 	// of the parent object so you should gst_object_unref() it after usage.
@@ -12697,14 +13387,14 @@ func (source *ObjectInstance) DefaultError(debug string, err error) {
 // 
 // The function returns the following values:
 // 
-// 	- goret ControlBinding 
+// 	- goret ControlBinding (nullable) 
 //
 // Gets the corresponding #GstControlBinding for the property. This should be
 // unreferenced again after use.
 func (object *ObjectInstance) CurrentControlBinding(propertyName string) ControlBinding {
 	var carg0 *C.GstObject         // in, none, converted
 	var carg1 *C.gchar             // in, none, string
-	var cret  *C.GstControlBinding // return, full, converted
+	var cret  *C.GstControlBinding // return, full, converted, nullable
 
 	carg0 = (*C.GstObject)(UnsafeObjectToGlibNone(object))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(propertyName)))
@@ -12716,7 +13406,9 @@ func (object *ObjectInstance) CurrentControlBinding(propertyName string) Control
 
 	var goret ControlBinding
 
-	goret = UnsafeControlBindingFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeControlBindingFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -12755,7 +13447,7 @@ func (object *ObjectInstance) GetControlRate() ClockTime {
 // GetName wraps gst_object_get_name
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Returns a copy of the name of @object.
 // Caller should g_free() the return value after usage.
@@ -12765,7 +13457,7 @@ func (object *ObjectInstance) GetControlRate() ClockTime {
 // Free-function: g_free
 func (object *ObjectInstance) GetName() string {
 	var carg0 *C.GstObject // in, none, converted
-	var cret  *C.gchar     // return, full, string
+	var cret  *C.gchar     // return, full, string, nullable-string
 
 	carg0 = (*C.GstObject)(UnsafeObjectToGlibNone(object))
 
@@ -12774,8 +13466,10 @@ func (object *ObjectInstance) GetName() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -12783,13 +13477,13 @@ func (object *ObjectInstance) GetName() string {
 // GetParent wraps gst_object_get_parent
 // The function returns the following values:
 // 
-// 	- goret Object 
+// 	- goret Object (nullable) 
 //
 // Returns the parent of @object. This function increases the refcount
 // of the parent object so you should gst_object_unref() it after usage.
 func (object *ObjectInstance) GetParent() Object {
 	var carg0 *C.GstObject // in, none, converted
-	var cret  *C.GstObject // return, full, converted
+	var cret  *C.GstObject // return, full, converted, nullable
 
 	carg0 = (*C.GstObject)(UnsafeObjectToGlibNone(object))
 
@@ -12798,7 +13492,9 @@ func (object *ObjectInstance) GetParent() Object {
 
 	var goret Object
 
-	goret = UnsafeObjectFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeObjectFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -13465,7 +14161,7 @@ type Pad interface {
 	// GetAllowedCaps wraps gst_pad_get_allowed_caps
 	// The function returns the following values:
 	// 
-	// 	- goret *Caps 
+	// 	- goret *Caps (nullable) 
 	//
 	// Gets the capabilities of the allowed media types that can flow through
 	// @pad and its peer.
@@ -13477,7 +14173,7 @@ type Pad interface {
 	// GetCurrentCaps wraps gst_pad_get_current_caps
 	// The function returns the following values:
 	// 
-	// 	- goret *Caps 
+	// 	- goret *Caps (nullable) 
 	//
 	// Gets the capabilities currently configured on @pad with the last
 	// #GST_EVENT_CAPS event.
@@ -13509,7 +14205,7 @@ type Pad interface {
 	// GetPadTemplate wraps gst_pad_get_pad_template
 	// The function returns the following values:
 	// 
-	// 	- goret PadTemplate 
+	// 	- goret PadTemplate (nullable) 
 	//
 	// Gets the template for @pad.
 	GetPadTemplate() PadTemplate
@@ -13523,7 +14219,7 @@ type Pad interface {
 	// GetParentElement wraps gst_pad_get_parent_element
 	// The function returns the following values:
 	// 
-	// 	- goret Element 
+	// 	- goret Element (nullable) 
 	//
 	// Gets the parent of @pad, cast to a #GstElement. If a @pad has no parent or
 	// its parent is not an element, return %NULL.
@@ -13531,7 +14227,7 @@ type Pad interface {
 	// GetPeer wraps gst_pad_get_peer
 	// The function returns the following values:
 	// 
-	// 	- goret Pad 
+	// 	- goret Pad (nullable) 
 	//
 	// Gets the peer of @pad. This function refs the peer pad so
 	// you need to unref it after use.
@@ -13579,7 +14275,7 @@ type Pad interface {
 	// GetSingleInternalLink wraps gst_pad_get_single_internal_link
 	// The function returns the following values:
 	// 
-	// 	- goret Pad 
+	// 	- goret Pad (nullable) 
 	//
 	// If there is a single internal link of the given pad, this function will
 	// return it. Otherwise, it will return NULL.
@@ -13593,7 +14289,7 @@ type Pad interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *Event 
+	// 	- goret *Event (nullable) 
 	//
 	// Returns a new reference of the sticky event of type @event_type
 	// from the event.
@@ -13601,7 +14297,7 @@ type Pad interface {
 	// GetStream wraps gst_pad_get_stream
 	// The function returns the following values:
 	// 
-	// 	- goret Stream 
+	// 	- goret Stream (nullable) 
 	//
 	// Returns the current #GstStream for the @pad, or %NULL if none has been
 	// set yet, i.e. the pad has not received a stream-start event yet.
@@ -13612,7 +14308,7 @@ type Pad interface {
 	// GetStreamID wraps gst_pad_get_stream_id
 	// The function returns the following values:
 	// 
-	// 	- goret string 
+	// 	- goret string (nullable) 
 	//
 	// Returns the current stream-id for the @pad, or %NULL if none has been
 	// set yet, i.e. the pad has not received a stream-start event yet.
@@ -13672,7 +14368,7 @@ type Pad interface {
 	// IterateInternalLinks wraps gst_pad_iterate_internal_links
 	// The function returns the following values:
 	// 
-	// 	- goret *Iterator 
+	// 	- goret *Iterator (nullable) 
 	//
 	// Gets an iterator for the pads to which the given pad is linked to inside
 	// of the parent element.
@@ -13690,7 +14386,7 @@ type Pad interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *Iterator 
+	// 	- goret *Iterator (nullable) 
 	//
 	// Iterate the list of pads to which the given pad is linked to inside of
 	// the parent element.
@@ -14837,7 +15533,7 @@ func (pad *PadInstance) Forward(forward PadForwardFunction) bool {
 // GetAllowedCaps wraps gst_pad_get_allowed_caps
 // The function returns the following values:
 // 
-// 	- goret *Caps 
+// 	- goret *Caps (nullable) 
 //
 // Gets the capabilities of the allowed media types that can flow through
 // @pad and its peer.
@@ -14847,7 +15543,7 @@ func (pad *PadInstance) Forward(forward PadForwardFunction) bool {
 // on the resulting caps.
 func (pad *PadInstance) GetAllowedCaps() *Caps {
 	var carg0 *C.GstPad  // in, none, converted
-	var cret  *C.GstCaps // return, full, converted
+	var cret  *C.GstCaps // return, full, converted, nullable
 
 	carg0 = (*C.GstPad)(UnsafePadToGlibNone(pad))
 
@@ -14856,7 +15552,9 @@ func (pad *PadInstance) GetAllowedCaps() *Caps {
 
 	var goret *Caps
 
-	goret = UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -14864,13 +15562,13 @@ func (pad *PadInstance) GetAllowedCaps() *Caps {
 // GetCurrentCaps wraps gst_pad_get_current_caps
 // The function returns the following values:
 // 
-// 	- goret *Caps 
+// 	- goret *Caps (nullable) 
 //
 // Gets the capabilities currently configured on @pad with the last
 // #GST_EVENT_CAPS event.
 func (pad *PadInstance) GetCurrentCaps() *Caps {
 	var carg0 *C.GstPad  // in, none, converted
-	var cret  *C.GstCaps // return, full, converted
+	var cret  *C.GstCaps // return, full, converted, nullable
 
 	carg0 = (*C.GstPad)(UnsafePadToGlibNone(pad))
 
@@ -14879,7 +15577,9 @@ func (pad *PadInstance) GetCurrentCaps() *Caps {
 
 	var goret *Caps
 
-	goret = UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -14956,12 +15656,12 @@ func (pad *PadInstance) GetOffset() int64 {
 // GetPadTemplate wraps gst_pad_get_pad_template
 // The function returns the following values:
 // 
-// 	- goret PadTemplate 
+// 	- goret PadTemplate (nullable) 
 //
 // Gets the template for @pad.
 func (pad *PadInstance) GetPadTemplate() PadTemplate {
 	var carg0 *C.GstPad         // in, none, converted
-	var cret  *C.GstPadTemplate // return, full, converted
+	var cret  *C.GstPadTemplate // return, full, converted, nullable
 
 	carg0 = (*C.GstPad)(UnsafePadToGlibNone(pad))
 
@@ -14970,7 +15670,9 @@ func (pad *PadInstance) GetPadTemplate() PadTemplate {
 
 	var goret PadTemplate
 
-	goret = UnsafePadTemplateFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePadTemplateFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -15000,13 +15702,13 @@ func (pad *PadInstance) GetPadTemplateCaps() *Caps {
 // GetParentElement wraps gst_pad_get_parent_element
 // The function returns the following values:
 // 
-// 	- goret Element 
+// 	- goret Element (nullable) 
 //
 // Gets the parent of @pad, cast to a #GstElement. If a @pad has no parent or
 // its parent is not an element, return %NULL.
 func (pad *PadInstance) GetParentElement() Element {
 	var carg0 *C.GstPad     // in, none, converted
-	var cret  *C.GstElement // return, full, converted
+	var cret  *C.GstElement // return, full, converted, nullable
 
 	carg0 = (*C.GstPad)(UnsafePadToGlibNone(pad))
 
@@ -15015,7 +15717,9 @@ func (pad *PadInstance) GetParentElement() Element {
 
 	var goret Element
 
-	goret = UnsafeElementFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeElementFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -15023,13 +15727,13 @@ func (pad *PadInstance) GetParentElement() Element {
 // GetPeer wraps gst_pad_get_peer
 // The function returns the following values:
 // 
-// 	- goret Pad 
+// 	- goret Pad (nullable) 
 //
 // Gets the peer of @pad. This function refs the peer pad so
 // you need to unref it after use.
 func (pad *PadInstance) GetPeer() Pad {
 	var carg0 *C.GstPad // in, none, converted
-	var cret  *C.GstPad // return, full, converted
+	var cret  *C.GstPad // return, full, converted, nullable
 
 	carg0 = (*C.GstPad)(UnsafePadToGlibNone(pad))
 
@@ -15038,7 +15742,9 @@ func (pad *PadInstance) GetPeer() Pad {
 
 	var goret Pad
 
-	goret = UnsafePadFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePadFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -15110,13 +15816,13 @@ func (pad *PadInstance) GetRange(offset uint64, size uint) (*Buffer, FlowReturn)
 // GetSingleInternalLink wraps gst_pad_get_single_internal_link
 // The function returns the following values:
 // 
-// 	- goret Pad 
+// 	- goret Pad (nullable) 
 //
 // If there is a single internal link of the given pad, this function will
 // return it. Otherwise, it will return NULL.
 func (pad *PadInstance) GetSingleInternalLink() Pad {
 	var carg0 *C.GstPad // in, none, converted
-	var cret  *C.GstPad // return, full, converted
+	var cret  *C.GstPad // return, full, converted, nullable
 
 	carg0 = (*C.GstPad)(UnsafePadToGlibNone(pad))
 
@@ -15125,7 +15831,9 @@ func (pad *PadInstance) GetSingleInternalLink() Pad {
 
 	var goret Pad
 
-	goret = UnsafePadFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePadFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -15139,7 +15847,7 @@ func (pad *PadInstance) GetSingleInternalLink() Pad {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Event 
+// 	- goret *Event (nullable) 
 //
 // Returns a new reference of the sticky event of type @event_type
 // from the event.
@@ -15147,7 +15855,7 @@ func (pad *PadInstance) GetStickyEvent(eventType EventType, idx uint) *Event {
 	var carg0 *C.GstPad      // in, none, converted
 	var carg1 C.GstEventType // in, none, casted
 	var carg2 C.guint        // in, none, casted
-	var cret  *C.GstEvent    // return, full, converted
+	var cret  *C.GstEvent    // return, full, converted, nullable
 
 	carg0 = (*C.GstPad)(UnsafePadToGlibNone(pad))
 	carg1 = C.GstEventType(eventType)
@@ -15160,7 +15868,9 @@ func (pad *PadInstance) GetStickyEvent(eventType EventType, idx uint) *Event {
 
 	var goret *Event
 
-	goret = UnsafeEventFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeEventFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -15168,7 +15878,7 @@ func (pad *PadInstance) GetStickyEvent(eventType EventType, idx uint) *Event {
 // GetStream wraps gst_pad_get_stream
 // The function returns the following values:
 // 
-// 	- goret Stream 
+// 	- goret Stream (nullable) 
 //
 // Returns the current #GstStream for the @pad, or %NULL if none has been
 // set yet, i.e. the pad has not received a stream-start event yet.
@@ -15177,7 +15887,7 @@ func (pad *PadInstance) GetStickyEvent(eventType EventType, idx uint) *Event {
 // gst_event_parse_stream().
 func (pad *PadInstance) GetStream() Stream {
 	var carg0 *C.GstPad    // in, none, converted
-	var cret  *C.GstStream // return, full, converted
+	var cret  *C.GstStream // return, full, converted, nullable
 
 	carg0 = (*C.GstPad)(UnsafePadToGlibNone(pad))
 
@@ -15186,7 +15896,9 @@ func (pad *PadInstance) GetStream() Stream {
 
 	var goret Stream
 
-	goret = UnsafeStreamFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeStreamFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -15194,7 +15906,7 @@ func (pad *PadInstance) GetStream() Stream {
 // GetStreamID wraps gst_pad_get_stream_id
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Returns the current stream-id for the @pad, or %NULL if none has been
 // set yet, i.e. the pad has not received a stream-start event yet.
@@ -15206,7 +15918,7 @@ func (pad *PadInstance) GetStream() Stream {
 // contents should not be interpreted.
 func (pad *PadInstance) GetStreamID() string {
 	var carg0 *C.GstPad // in, none, converted
-	var cret  *C.gchar  // return, full, string
+	var cret  *C.gchar  // return, full, string, nullable-string
 
 	carg0 = (*C.GstPad)(UnsafePadToGlibNone(pad))
 
@@ -15215,8 +15927,10 @@ func (pad *PadInstance) GetStreamID() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -15370,7 +16084,7 @@ func (pad *PadInstance) IsLinked() bool {
 // IterateInternalLinks wraps gst_pad_iterate_internal_links
 // The function returns the following values:
 // 
-// 	- goret *Iterator 
+// 	- goret *Iterator (nullable) 
 //
 // Gets an iterator for the pads to which the given pad is linked to inside
 // of the parent element.
@@ -15381,7 +16095,7 @@ func (pad *PadInstance) IsLinked() bool {
 // Free-function: gst_iterator_free
 func (pad *PadInstance) IterateInternalLinks() *Iterator {
 	var carg0 *C.GstPad      // in, none, converted
-	var cret  *C.GstIterator // return, full, converted
+	var cret  *C.GstIterator // return, full, converted, nullable
 
 	carg0 = (*C.GstPad)(UnsafePadToGlibNone(pad))
 
@@ -15390,7 +16104,9 @@ func (pad *PadInstance) IterateInternalLinks() *Iterator {
 
 	var goret *Iterator
 
-	goret = UnsafeIteratorFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeIteratorFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -15403,7 +16119,7 @@ func (pad *PadInstance) IterateInternalLinks() *Iterator {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Iterator 
+// 	- goret *Iterator (nullable) 
 //
 // Iterate the list of pads to which the given pad is linked to inside of
 // the parent element.
@@ -15414,7 +16130,7 @@ func (pad *PadInstance) IterateInternalLinks() *Iterator {
 func (pad *PadInstance) IterateInternalLinksDefault(parent Object) *Iterator {
 	var carg0 *C.GstPad      // in, none, converted
 	var carg1 *C.GstObject   // in, none, converted, nullable
-	var cret  *C.GstIterator // return, full, converted
+	var cret  *C.GstIterator // return, full, converted, nullable
 
 	carg0 = (*C.GstPad)(UnsafePadToGlibNone(pad))
 	if parent != nil {
@@ -15427,7 +16143,9 @@ func (pad *PadInstance) IterateInternalLinksDefault(parent Object) *Iterator {
 
 	var goret *Iterator
 
-	goret = UnsafeIteratorFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeIteratorFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -16873,7 +17591,7 @@ func UnsafePadTemplateToGlibFull(c PadTemplate) unsafe.Pointer {
 // 
 // The function returns the following values:
 // 
-// 	- goret PadTemplate 
+// 	- goret PadTemplate (nullable) 
 //
 // Creates a new pad template with a name according to the given template
 // and with the given arguments.
@@ -16882,7 +17600,7 @@ func NewPadTemplate(nameTemplate string, direction PadDirection, presence PadPre
 	var carg2 C.GstPadDirection // in, none, casted
 	var carg3 C.GstPadPresence  // in, none, casted
 	var carg4 *C.GstCaps        // in, none, converted
-	var cret  *C.GstPadTemplate // return, none, converted
+	var cret  *C.GstPadTemplate // return, none, converted, nullable
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(nameTemplate)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -16898,7 +17616,9 @@ func NewPadTemplate(nameTemplate string, direction PadDirection, presence PadPre
 
 	var goret PadTemplate
 
-	goret = UnsafePadTemplateFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePadTemplateFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -16912,13 +17632,13 @@ func NewPadTemplate(nameTemplate string, direction PadDirection, presence PadPre
 // 
 // The function returns the following values:
 // 
-// 	- goret PadTemplate 
+// 	- goret PadTemplate (nullable) 
 //
 // Converts a #GstStaticPadTemplate into a #GstPadTemplate with a type.
 func NewPadTemplateFromStaticPadTemplateWithGType(padTemplate *StaticPadTemplate, padType gobject.Type) PadTemplate {
 	var carg1 *C.GstStaticPadTemplate // in, none, converted
 	var carg2 C.GType                 // in, none, casted, alias
-	var cret  *C.GstPadTemplate       // return, none, converted
+	var cret  *C.GstPadTemplate       // return, none, converted, nullable
 
 	carg1 = (*C.GstStaticPadTemplate)(UnsafeStaticPadTemplateToGlibNone(padTemplate))
 	carg2 = C.GType(padType)
@@ -16929,7 +17649,9 @@ func NewPadTemplateFromStaticPadTemplateWithGType(padTemplate *StaticPadTemplate
 
 	var goret PadTemplate
 
-	goret = UnsafePadTemplateFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePadTemplateFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -16946,7 +17668,7 @@ func NewPadTemplateFromStaticPadTemplateWithGType(padTemplate *StaticPadTemplate
 // 
 // The function returns the following values:
 // 
-// 	- goret PadTemplate 
+// 	- goret PadTemplate (nullable) 
 //
 // Creates a new pad template with a name according to the given template
 // and with the given arguments.
@@ -16956,7 +17678,7 @@ func NewPadTemplateWithGType(nameTemplate string, direction PadDirection, presen
 	var carg3 C.GstPadPresence  // in, none, casted
 	var carg4 *C.GstCaps        // in, none, converted
 	var carg5 C.GType           // in, none, casted, alias
-	var cret  *C.GstPadTemplate // return, none, converted
+	var cret  *C.GstPadTemplate // return, none, converted, nullable
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(nameTemplate)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -16974,7 +17696,9 @@ func NewPadTemplateWithGType(nameTemplate string, direction PadDirection, presen
 
 	var goret PadTemplate
 
-	goret = UnsafePadTemplateFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePadTemplateFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -17180,7 +17904,7 @@ type Plugin interface {
 	// GetCacheData wraps gst_plugin_get_cache_data
 	// The function returns the following values:
 	// 
-	// 	- goret *Structure 
+	// 	- goret *Structure (nullable) 
 	//
 	// Gets the plugin specific data cache. If it is %NULL there is no cached data
 	// stored. This is the case when the registry is getting rebuilt.
@@ -17195,7 +17919,7 @@ type Plugin interface {
 	// GetFilename wraps gst_plugin_get_filename
 	// The function returns the following values:
 	// 
-	// 	- goret string 
+	// 	- goret string (nullable) 
 	//
 	// get the filename of the plugin
 	GetFilename() string
@@ -17230,7 +17954,7 @@ type Plugin interface {
 	// GetReleaseDateString wraps gst_plugin_get_release_date_string
 	// The function returns the following values:
 	// 
-	// 	- goret string 
+	// 	- goret string (nullable) 
 	//
 	// Get the release date (and possibly time) in form of a string, if available.
 	// 
@@ -17251,17 +17975,17 @@ type Plugin interface {
 	// GetStatusErrors wraps gst_plugin_get_status_errors
 	// The function returns the following values:
 	// 
-	// 	- goret []string 
+	// 	- goret []string (nullable) 
 	GetStatusErrors() []string
 	// GetStatusInfos wraps gst_plugin_get_status_infos
 	// The function returns the following values:
 	// 
-	// 	- goret []string 
+	// 	- goret []string (nullable) 
 	GetStatusInfos() []string
 	// GetStatusWarnings wraps gst_plugin_get_status_warnings
 	// The function returns the following values:
 	// 
-	// 	- goret []string 
+	// 	- goret []string (nullable) 
 	GetStatusWarnings() []string
 	// GetVersion wraps gst_plugin_get_version
 	// The function returns the following values:
@@ -17280,7 +18004,7 @@ type Plugin interface {
 	// Load wraps gst_plugin_load
 	// The function returns the following values:
 	// 
-	// 	- goret Plugin 
+	// 	- goret Plugin (nullable) 
 	//
 	// Loads @plugin. Note that the *return value* is the loaded plugin; @plugin is
 	// untouched. The normal use pattern of this function goes like this:
@@ -17352,12 +18076,12 @@ func UnsafePluginToGlibFull(c Plugin) unsafe.Pointer {
 // 
 // The function returns the following values:
 // 
-// 	- goret Plugin 
+// 	- goret Plugin (nullable) 
 //
 // Load the named plugin. Refs the plugin.
 func PluginLoadByName(name string) Plugin {
 	var carg1 *C.gchar     // in, none, string
-	var cret  *C.GstPlugin // return, full, converted
+	var cret  *C.GstPlugin // return, full, converted, nullable
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -17367,7 +18091,9 @@ func PluginLoadByName(name string) Plugin {
 
 	var goret Plugin
 
-	goret = UnsafePluginFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePluginFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -17662,13 +18388,13 @@ func (plugin *PluginInstance) AddStatusWarning(message string) {
 // GetCacheData wraps gst_plugin_get_cache_data
 // The function returns the following values:
 // 
-// 	- goret *Structure 
+// 	- goret *Structure (nullable) 
 //
 // Gets the plugin specific data cache. If it is %NULL there is no cached data
 // stored. This is the case when the registry is getting rebuilt.
 func (plugin *PluginInstance) GetCacheData() *Structure {
 	var carg0 *C.GstPlugin    // in, none, converted
-	var cret  *C.GstStructure // return, none, converted
+	var cret  *C.GstStructure // return, none, converted, nullable
 
 	carg0 = (*C.GstPlugin)(UnsafePluginToGlibNone(plugin))
 
@@ -17677,7 +18403,9 @@ func (plugin *PluginInstance) GetCacheData() *Structure {
 
 	var goret *Structure
 
-	goret = UnsafeStructureFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeStructureFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -17707,12 +18435,12 @@ func (plugin *PluginInstance) GetDescription() string {
 // GetFilename wraps gst_plugin_get_filename
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // get the filename of the plugin
 func (plugin *PluginInstance) GetFilename() string {
 	var carg0 *C.GstPlugin // in, none, converted
-	var cret  *C.gchar     // return, none, string
+	var cret  *C.gchar     // return, none, string, nullable
 
 	carg0 = (*C.GstPlugin)(UnsafePluginToGlibNone(plugin))
 
@@ -17721,7 +18449,9 @@ func (plugin *PluginInstance) GetFilename() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -17817,7 +18547,7 @@ func (plugin *PluginInstance) GetPackage() string {
 // GetReleaseDateString wraps gst_plugin_get_release_date_string
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Get the release date (and possibly time) in form of a string, if available.
 // 
@@ -17829,7 +18559,7 @@ func (plugin *PluginInstance) GetPackage() string {
 // There may be plugins that do not have a valid release date set on them.
 func (plugin *PluginInstance) GetReleaseDateString() string {
 	var carg0 *C.GstPlugin // in, none, converted
-	var cret  *C.gchar     // return, none, string
+	var cret  *C.gchar     // return, none, string, nullable-string
 
 	carg0 = (*C.GstPlugin)(UnsafePluginToGlibNone(plugin))
 
@@ -17838,7 +18568,9 @@ func (plugin *PluginInstance) GetReleaseDateString() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -17868,10 +18600,10 @@ func (plugin *PluginInstance) GetSource() string {
 // GetStatusErrors wraps gst_plugin_get_status_errors
 // The function returns the following values:
 // 
-// 	- goret []string 
+// 	- goret []string (nullable) 
 func (plugin *PluginInstance) GetStatusErrors() []string {
 	var carg0 *C.GstPlugin // in, none, converted
-	var cret  **C.gchar    // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , array (inner: *typesystem.StringPrimitive, zero-terminated)
+	var cret  **C.gchar    // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , nullable, array (inner: *typesystem.StringPrimitive, zero-terminated)
 
 	carg0 = (*C.GstPlugin)(UnsafePluginToGlibNone(plugin))
 
@@ -17890,10 +18622,10 @@ func (plugin *PluginInstance) GetStatusErrors() []string {
 // GetStatusInfos wraps gst_plugin_get_status_infos
 // The function returns the following values:
 // 
-// 	- goret []string 
+// 	- goret []string (nullable) 
 func (plugin *PluginInstance) GetStatusInfos() []string {
 	var carg0 *C.GstPlugin // in, none, converted
-	var cret  **C.gchar    // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , array (inner: *typesystem.StringPrimitive, zero-terminated)
+	var cret  **C.gchar    // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , nullable, array (inner: *typesystem.StringPrimitive, zero-terminated)
 
 	carg0 = (*C.GstPlugin)(UnsafePluginToGlibNone(plugin))
 
@@ -17912,10 +18644,10 @@ func (plugin *PluginInstance) GetStatusInfos() []string {
 // GetStatusWarnings wraps gst_plugin_get_status_warnings
 // The function returns the following values:
 // 
-// 	- goret []string 
+// 	- goret []string (nullable) 
 func (plugin *PluginInstance) GetStatusWarnings() []string {
 	var carg0 *C.GstPlugin // in, none, converted
-	var cret  **C.gchar    // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , array (inner: *typesystem.StringPrimitive, zero-terminated)
+	var cret  **C.gchar    // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , nullable, array (inner: *typesystem.StringPrimitive, zero-terminated)
 
 	carg0 = (*C.GstPlugin)(UnsafePluginToGlibNone(plugin))
 
@@ -17980,7 +18712,7 @@ func (plugin *PluginInstance) IsLoaded() bool {
 // Load wraps gst_plugin_load
 // The function returns the following values:
 // 
-// 	- goret Plugin 
+// 	- goret Plugin (nullable) 
 //
 // Loads @plugin. Note that the *return value* is the loaded plugin; @plugin is
 // untouched. The normal use pattern of this function goes like this:
@@ -17994,7 +18726,7 @@ func (plugin *PluginInstance) IsLoaded() bool {
 // ]|
 func (plugin *PluginInstance) Load() Plugin {
 	var carg0 *C.GstPlugin // in, none, converted
-	var cret  *C.GstPlugin // return, full, converted
+	var cret  *C.GstPlugin // return, full, converted, nullable
 
 	carg0 = (*C.GstPlugin)(UnsafePluginToGlibNone(plugin))
 
@@ -18003,7 +18735,9 @@ func (plugin *PluginInstance) Load() Plugin {
 
 	var goret Plugin
 
-	goret = UnsafePluginFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePluginFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -18068,14 +18802,14 @@ type PluginFeature interface {
 	// GetPlugin wraps gst_plugin_feature_get_plugin
 	// The function returns the following values:
 	// 
-	// 	- goret Plugin 
+	// 	- goret Plugin (nullable) 
 	//
 	// Get the plugin that provides this feature.
 	GetPlugin() Plugin
 	// GetPluginName wraps gst_plugin_feature_get_plugin_name
 	// The function returns the following values:
 	// 
-	// 	- goret string 
+	// 	- goret string (nullable) 
 	//
 	// Get the name of the plugin that provides this feature.
 	GetPluginName() string
@@ -18089,7 +18823,7 @@ type PluginFeature interface {
 	// Load wraps gst_plugin_feature_load
 	// The function returns the following values:
 	// 
-	// 	- goret PluginFeature 
+	// 	- goret PluginFeature (nullable) 
 	//
 	// Loads the plugin containing @feature if it's not already loaded. @feature is
 	// unaffected; use the return value instead.
@@ -18238,12 +18972,12 @@ func (feature *PluginFeatureInstance) CheckVersion(minMajor uint, minMinor uint,
 // GetPlugin wraps gst_plugin_feature_get_plugin
 // The function returns the following values:
 // 
-// 	- goret Plugin 
+// 	- goret Plugin (nullable) 
 //
 // Get the plugin that provides this feature.
 func (feature *PluginFeatureInstance) GetPlugin() Plugin {
 	var carg0 *C.GstPluginFeature // in, none, converted
-	var cret  *C.GstPlugin        // return, full, converted
+	var cret  *C.GstPlugin        // return, full, converted, nullable
 
 	carg0 = (*C.GstPluginFeature)(UnsafePluginFeatureToGlibNone(feature))
 
@@ -18252,7 +18986,9 @@ func (feature *PluginFeatureInstance) GetPlugin() Plugin {
 
 	var goret Plugin
 
-	goret = UnsafePluginFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePluginFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -18260,12 +18996,12 @@ func (feature *PluginFeatureInstance) GetPlugin() Plugin {
 // GetPluginName wraps gst_plugin_feature_get_plugin_name
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Get the name of the plugin that provides this feature.
 func (feature *PluginFeatureInstance) GetPluginName() string {
 	var carg0 *C.GstPluginFeature // in, none, converted
-	var cret  *C.gchar            // return, none, string
+	var cret  *C.gchar            // return, none, string, nullable-string
 
 	carg0 = (*C.GstPluginFeature)(UnsafePluginFeatureToGlibNone(feature))
 
@@ -18274,7 +19010,9 @@ func (feature *PluginFeatureInstance) GetPluginName() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -18304,7 +19042,7 @@ func (feature *PluginFeatureInstance) GetRank() uint {
 // Load wraps gst_plugin_feature_load
 // The function returns the following values:
 // 
-// 	- goret PluginFeature 
+// 	- goret PluginFeature (nullable) 
 //
 // Loads the plugin containing @feature if it's not already loaded. @feature is
 // unaffected; use the return value instead.
@@ -18320,7 +19058,7 @@ func (feature *PluginFeatureInstance) GetRank() uint {
 // ]|
 func (feature *PluginFeatureInstance) Load() PluginFeature {
 	var carg0 *C.GstPluginFeature // in, none, converted
-	var cret  *C.GstPluginFeature // return, full, converted
+	var cret  *C.GstPluginFeature // return, full, converted, nullable
 
 	carg0 = (*C.GstPluginFeature)(UnsafePluginFeatureToGlibNone(feature))
 
@@ -18329,7 +19067,9 @@ func (feature *PluginFeatureInstance) Load() PluginFeature {
 
 	var goret PluginFeature
 
-	goret = UnsafePluginFeatureFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePluginFeatureFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -18370,7 +19110,7 @@ type ProxyPad interface {
 	// GetInternal wraps gst_proxy_pad_get_internal
 	// The function returns the following values:
 	// 
-	// 	- goret ProxyPad 
+	// 	- goret ProxyPad (nullable) 
 	//
 	// Get the internal pad of @pad. Unref target pad after usage.
 	// 
@@ -18548,13 +19288,13 @@ func ProxyPadGetrangeDefault(pad Pad, parent Object, offset uint64, size uint) (
 // 
 // The function returns the following values:
 // 
-// 	- goret *Iterator 
+// 	- goret *Iterator (nullable) 
 //
 // Invoke the default iterate internal links function of the proxy pad.
 func ProxyPadIterateInternalLinksDefault(pad Pad, parent Object) *Iterator {
 	var carg1 *C.GstPad      // in, none, converted
 	var carg2 *C.GstObject   // in, none, converted, nullable
-	var cret  *C.GstIterator // return, full, converted
+	var cret  *C.GstIterator // return, full, converted, nullable
 
 	carg1 = (*C.GstPad)(UnsafePadToGlibNone(pad))
 	if parent != nil {
@@ -18567,7 +19307,9 @@ func ProxyPadIterateInternalLinksDefault(pad Pad, parent Object) *Iterator {
 
 	var goret *Iterator
 
-	goret = UnsafeIteratorFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeIteratorFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -18575,7 +19317,7 @@ func ProxyPadIterateInternalLinksDefault(pad Pad, parent Object) *Iterator {
 // GetInternal wraps gst_proxy_pad_get_internal
 // The function returns the following values:
 // 
-// 	- goret ProxyPad 
+// 	- goret ProxyPad (nullable) 
 //
 // Get the internal pad of @pad. Unref target pad after usage.
 // 
@@ -18583,7 +19325,7 @@ func ProxyPadIterateInternalLinksDefault(pad Pad, parent Object) *Iterator {
 // pad of opposite direction, which is used to link to the target.
 func (pad *ProxyPadInstance) GetInternal() ProxyPad {
 	var carg0 *C.GstProxyPad // in, none, converted
-	var cret  *C.GstProxyPad // return, full, converted
+	var cret  *C.GstProxyPad // return, full, converted, nullable
 
 	carg0 = (*C.GstProxyPad)(UnsafeProxyPadToGlibNone(pad))
 
@@ -18592,7 +19334,9 @@ func (pad *ProxyPadInstance) GetInternal() ProxyPad {
 
 	var goret ProxyPad
 
-	goret = UnsafeProxyPadFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeProxyPadFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -18741,7 +19485,7 @@ type Registry interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret PluginFeature 
+	// 	- goret PluginFeature (nullable) 
 	//
 	// Find the pluginfeature with the given name and type in the registry.
 	FindFeature(string, gobject.Type) PluginFeature
@@ -18753,7 +19497,7 @@ type Registry interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret Plugin 
+	// 	- goret Plugin (nullable) 
 	//
 	// Find the plugin with the given name in the registry.
 	// The plugin will be reffed; caller is responsible for unreffing.
@@ -18806,7 +19550,7 @@ type Registry interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret Plugin 
+	// 	- goret Plugin (nullable) 
 	//
 	// Look up a plugin in the given registry with the given filename.
 	// If found, plugin is reffed.
@@ -18819,7 +19563,7 @@ type Registry interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret PluginFeature 
+	// 	- goret PluginFeature (nullable) 
 	//
 	// Find a #GstPluginFeature with @name in @registry.
 	LookupFeature(string) PluginFeature
@@ -19163,14 +19907,14 @@ func (registry *RegistryInstance) FeatureFilter(filter PluginFeatureFilter, firs
 // 
 // The function returns the following values:
 // 
-// 	- goret PluginFeature 
+// 	- goret PluginFeature (nullable) 
 //
 // Find the pluginfeature with the given name and type in the registry.
 func (registry *RegistryInstance) FindFeature(name string, typ gobject.Type) PluginFeature {
 	var carg0 *C.GstRegistry      // in, none, converted
 	var carg1 *C.gchar            // in, none, string
 	var carg2 C.GType             // in, none, casted, alias
-	var cret  *C.GstPluginFeature // return, full, converted
+	var cret  *C.GstPluginFeature // return, full, converted, nullable
 
 	carg0 = (*C.GstRegistry)(UnsafeRegistryToGlibNone(registry))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
@@ -19184,7 +19928,9 @@ func (registry *RegistryInstance) FindFeature(name string, typ gobject.Type) Plu
 
 	var goret PluginFeature
 
-	goret = UnsafePluginFeatureFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePluginFeatureFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -19197,14 +19943,14 @@ func (registry *RegistryInstance) FindFeature(name string, typ gobject.Type) Plu
 // 
 // The function returns the following values:
 // 
-// 	- goret Plugin 
+// 	- goret Plugin (nullable) 
 //
 // Find the plugin with the given name in the registry.
 // The plugin will be reffed; caller is responsible for unreffing.
 func (registry *RegistryInstance) FindPlugin(name string) Plugin {
 	var carg0 *C.GstRegistry // in, none, converted
 	var carg1 *C.gchar       // in, none, string
-	var cret  *C.GstPlugin   // return, full, converted
+	var cret  *C.GstPlugin   // return, full, converted, nullable
 
 	carg0 = (*C.GstRegistry)(UnsafeRegistryToGlibNone(registry))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
@@ -19216,7 +19962,9 @@ func (registry *RegistryInstance) FindPlugin(name string) Plugin {
 
 	var goret Plugin
 
-	goret = UnsafePluginFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePluginFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -19357,14 +20105,14 @@ func (registry *RegistryInstance) GetPluginList() []Plugin {
 // 
 // The function returns the following values:
 // 
-// 	- goret Plugin 
+// 	- goret Plugin (nullable) 
 //
 // Look up a plugin in the given registry with the given filename.
 // If found, plugin is reffed.
 func (registry *RegistryInstance) Lookup(filename string) Plugin {
 	var carg0 *C.GstRegistry // in, none, converted
 	var carg1 *C.char        // in, none, string, casted *C.gchar
-	var cret  *C.GstPlugin   // return, full, converted
+	var cret  *C.GstPlugin   // return, full, converted, nullable
 
 	carg0 = (*C.GstRegistry)(UnsafeRegistryToGlibNone(registry))
 	carg1 = (*C.char)(unsafe.Pointer(C.CString(filename)))
@@ -19376,7 +20124,9 @@ func (registry *RegistryInstance) Lookup(filename string) Plugin {
 
 	var goret Plugin
 
-	goret = UnsafePluginFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePluginFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -19389,13 +20139,13 @@ func (registry *RegistryInstance) Lookup(filename string) Plugin {
 // 
 // The function returns the following values:
 // 
-// 	- goret PluginFeature 
+// 	- goret PluginFeature (nullable) 
 //
 // Find a #GstPluginFeature with @name in @registry.
 func (registry *RegistryInstance) LookupFeature(name string) PluginFeature {
 	var carg0 *C.GstRegistry      // in, none, converted
 	var carg1 *C.char             // in, none, string, casted *C.gchar
-	var cret  *C.GstPluginFeature // return, full, converted
+	var cret  *C.GstPluginFeature // return, full, converted, nullable
 
 	carg0 = (*C.GstRegistry)(UnsafeRegistryToGlibNone(registry))
 	carg1 = (*C.char)(unsafe.Pointer(C.CString(name)))
@@ -19407,7 +20157,9 @@ func (registry *RegistryInstance) LookupFeature(name string) PluginFeature {
 
 	var goret PluginFeature
 
-	goret = UnsafePluginFeatureFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePluginFeatureFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -19581,7 +20333,7 @@ type Stream interface {
 	// GetCaps wraps gst_stream_get_caps
 	// The function returns the following values:
 	// 
-	// 	- goret *Caps 
+	// 	- goret *Caps (nullable) 
 	//
 	// Retrieve the caps for @stream, if any
 	GetCaps() *Caps
@@ -19595,7 +20347,7 @@ type Stream interface {
 	// GetStreamID wraps gst_stream_get_stream_id
 	// The function returns the following values:
 	// 
-	// 	- goret string 
+	// 	- goret string (nullable) 
 	//
 	// Returns the stream ID of @stream.
 	GetStreamID() string
@@ -19609,7 +20361,7 @@ type Stream interface {
 	// GetTags wraps gst_stream_get_tags
 	// The function returns the following values:
 	// 
-	// 	- goret *TagList 
+	// 	- goret *TagList (nullable) 
 	//
 	// Retrieve the tags for @stream, if any
 	GetTags() *TagList
@@ -19734,12 +20486,12 @@ func NewStream(streamId string, caps *Caps, typ StreamType, flags StreamFlags) S
 // GetCaps wraps gst_stream_get_caps
 // The function returns the following values:
 // 
-// 	- goret *Caps 
+// 	- goret *Caps (nullable) 
 //
 // Retrieve the caps for @stream, if any
 func (stream *StreamInstance) GetCaps() *Caps {
 	var carg0 *C.GstStream // in, none, converted
-	var cret  *C.GstCaps   // return, full, converted
+	var cret  *C.GstCaps   // return, full, converted, nullable
 
 	carg0 = (*C.GstStream)(UnsafeStreamToGlibNone(stream))
 
@@ -19748,7 +20500,9 @@ func (stream *StreamInstance) GetCaps() *Caps {
 
 	var goret *Caps
 
-	goret = UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -19778,12 +20532,12 @@ func (stream *StreamInstance) GetStreamFlags() StreamFlags {
 // GetStreamID wraps gst_stream_get_stream_id
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Returns the stream ID of @stream.
 func (stream *StreamInstance) GetStreamID() string {
 	var carg0 *C.GstStream // in, none, converted
-	var cret  *C.gchar     // return, none, string
+	var cret  *C.gchar     // return, none, string, nullable-string
 
 	carg0 = (*C.GstStream)(UnsafeStreamToGlibNone(stream))
 
@@ -19792,7 +20546,9 @@ func (stream *StreamInstance) GetStreamID() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -19822,12 +20578,12 @@ func (stream *StreamInstance) GetStreamType() StreamType {
 // GetTags wraps gst_stream_get_tags
 // The function returns the following values:
 // 
-// 	- goret *TagList 
+// 	- goret *TagList (nullable) 
 //
 // Retrieve the tags for @stream, if any
 func (stream *StreamInstance) GetTags() *TagList {
 	var carg0 *C.GstStream  // in, none, converted
-	var cret  *C.GstTagList // return, full, converted
+	var cret  *C.GstTagList // return, full, converted, nullable
 
 	carg0 = (*C.GstStream)(UnsafeStreamToGlibNone(stream))
 
@@ -19836,7 +20592,9 @@ func (stream *StreamInstance) GetTags() *TagList {
 
 	var goret *TagList
 
-	goret = UnsafeTagListFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeTagListFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -19978,7 +20736,7 @@ type StreamCollection interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret Stream 
+	// 	- goret Stream (nullable) 
 	//
 	// Retrieve the #GstStream with index @index from the collection.
 	// 
@@ -19987,7 +20745,7 @@ type StreamCollection interface {
 	// GetUpstreamID wraps gst_stream_collection_get_upstream_id
 	// The function returns the following values:
 	// 
-	// 	- goret string 
+	// 	- goret string (nullable) 
 	//
 	// Returns the upstream id of the @collection.
 	GetUpstreamID() string
@@ -20123,7 +20881,7 @@ func (collection *StreamCollectionInstance) GetSize() uint {
 // 
 // The function returns the following values:
 // 
-// 	- goret Stream 
+// 	- goret Stream (nullable) 
 //
 // Retrieve the #GstStream with index @index from the collection.
 // 
@@ -20131,7 +20889,7 @@ func (collection *StreamCollectionInstance) GetSize() uint {
 func (collection *StreamCollectionInstance) GetStream(index uint) Stream {
 	var carg0 *C.GstStreamCollection // in, none, converted
 	var carg1 C.guint                // in, none, casted
-	var cret  *C.GstStream           // return, none, converted
+	var cret  *C.GstStream           // return, none, converted, nullable
 
 	carg0 = (*C.GstStreamCollection)(UnsafeStreamCollectionToGlibNone(collection))
 	carg1 = C.guint(index)
@@ -20142,7 +20900,9 @@ func (collection *StreamCollectionInstance) GetStream(index uint) Stream {
 
 	var goret Stream
 
-	goret = UnsafeStreamFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeStreamFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -20150,12 +20910,12 @@ func (collection *StreamCollectionInstance) GetStream(index uint) Stream {
 // GetUpstreamID wraps gst_stream_collection_get_upstream_id
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Returns the upstream id of the @collection.
 func (collection *StreamCollectionInstance) GetUpstreamID() string {
 	var carg0 *C.GstStreamCollection // in, none, converted
-	var cret  *C.gchar               // return, none, string
+	var cret  *C.gchar               // return, none, string, nullable-string
 
 	carg0 = (*C.GstStreamCollection)(UnsafeStreamCollectionToGlibNone(collection))
 
@@ -20164,7 +20924,9 @@ func (collection *StreamCollectionInstance) GetUpstreamID() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -21135,14 +21897,14 @@ type TypeFindFactory interface {
 	// GetCaps wraps gst_type_find_factory_get_caps
 	// The function returns the following values:
 	// 
-	// 	- goret *Caps 
+	// 	- goret *Caps (nullable) 
 	//
 	// Gets the #GstCaps associated with a typefind factory.
 	GetCaps() *Caps
 	// GetExtensions wraps gst_type_find_factory_get_extensions
 	// The function returns the following values:
 	// 
-	// 	- goret []string 
+	// 	- goret []string (nullable) 
 	//
 	// Gets the extensions associated with a #GstTypeFindFactory. The returned
 	// array should not be changed. If you need to change stuff in it, you should
@@ -21254,12 +22016,12 @@ func (factory *TypeFindFactoryInstance) CallFunction(find *TypeFind) {
 // GetCaps wraps gst_type_find_factory_get_caps
 // The function returns the following values:
 // 
-// 	- goret *Caps 
+// 	- goret *Caps (nullable) 
 //
 // Gets the #GstCaps associated with a typefind factory.
 func (factory *TypeFindFactoryInstance) GetCaps() *Caps {
 	var carg0 *C.GstTypeFindFactory // in, none, converted
-	var cret  *C.GstCaps            // return, none, converted
+	var cret  *C.GstCaps            // return, none, converted, nullable
 
 	carg0 = (*C.GstTypeFindFactory)(UnsafeTypeFindFactoryToGlibNone(factory))
 
@@ -21268,7 +22030,9 @@ func (factory *TypeFindFactoryInstance) GetCaps() *Caps {
 
 	var goret *Caps
 
-	goret = UnsafeCapsFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeCapsFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -21276,7 +22040,7 @@ func (factory *TypeFindFactoryInstance) GetCaps() *Caps {
 // GetExtensions wraps gst_type_find_factory_get_extensions
 // The function returns the following values:
 // 
-// 	- goret []string 
+// 	- goret []string (nullable) 
 //
 // Gets the extensions associated with a #GstTypeFindFactory. The returned
 // array should not be changed. If you need to change stuff in it, you should
@@ -21284,7 +22048,7 @@ func (factory *TypeFindFactoryInstance) GetCaps() *Caps {
 // a 0-length list.
 func (factory *TypeFindFactoryInstance) GetExtensions() []string {
 	var carg0 *C.GstTypeFindFactory // in, none, converted
-	var cret  **C.gchar             // return, transfer: none, C Pointers: 2, Name: array[utf8], scope: , array (inner: *typesystem.StringPrimitive, zero-terminated)
+	var cret  **C.gchar             // return, transfer: none, C Pointers: 2, Name: array[utf8], scope: , nullable, array (inner: *typesystem.StringPrimitive, zero-terminated)
 
 	carg0 = (*C.GstTypeFindFactory)(UnsafeTypeFindFactoryToGlibNone(factory))
 
@@ -21360,7 +22124,7 @@ type Allocator interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *Memory 
+	// 	- goret *Memory (nullable) 
 	//
 	// Use @allocator to allocate a new memory block with memory that is at least
 	// @size big.
@@ -21438,13 +22202,13 @@ func UnsafeAllocatorToGlibFull(c Allocator) unsafe.Pointer {
 // 
 // The function returns the following values:
 // 
-// 	- goret Allocator 
+// 	- goret Allocator (nullable) 
 //
 // Find a previously registered allocator with @name. When @name is %NULL, the
 // default allocator will be returned.
 func AllocatorFind(name string) Allocator {
 	var carg1 *C.gchar        // in, none, string, nullable-string
-	var cret  *C.GstAllocator // return, full, converted
+	var cret  *C.GstAllocator // return, full, converted, nullable
 
 	if name != "" {
 		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
@@ -21456,7 +22220,9 @@ func AllocatorFind(name string) Allocator {
 
 	var goret Allocator
 
-	goret = UnsafeAllocatorFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeAllocatorFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -21491,7 +22257,7 @@ func AllocatorRegister(name string, allocator Allocator) {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Memory 
+// 	- goret *Memory (nullable) 
 //
 // Use @allocator to allocate a new memory block with memory that is at least
 // @size big.
@@ -21512,7 +22278,7 @@ func (allocator *AllocatorInstance) Alloc(size uint, params *AllocationParams) *
 	var carg0 *C.GstAllocator        // in, none, converted
 	var carg1 C.gsize                // in, none, casted
 	var carg2 *C.GstAllocationParams // in, none, converted, nullable
-	var cret  *C.GstMemory           // return, full, converted
+	var cret  *C.GstMemory           // return, full, converted, nullable
 
 	carg0 = (*C.GstAllocator)(UnsafeAllocatorToGlibNone(allocator))
 	carg1 = C.gsize(size)
@@ -21527,7 +22293,9 @@ func (allocator *AllocatorInstance) Alloc(size uint, params *AllocationParams) *
 
 	var goret *Memory
 
-	goret = UnsafeMemoryFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeMemoryFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -21866,14 +22634,14 @@ func BufferPoolConfigGetAllocator(config *Structure) (Allocator, AllocationParam
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Parses an available @config and gets the option at @index of the options API
 // array.
 func BufferPoolConfigGetOption(config *Structure, index uint) string {
 	var carg1 *C.GstStructure // in, none, converted
 	var carg2 C.guint         // in, none, casted
-	var cret  *C.gchar        // return, none, string
+	var cret  *C.gchar        // return, none, string, nullable-string
 
 	carg1 = (*C.GstStructure)(UnsafeStructureToGlibNone(config))
 	carg2 = C.guint(index)
@@ -21884,7 +22652,9 @@ func BufferPoolConfigGetOption(config *Structure, index uint) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -22536,7 +23306,7 @@ type Bus interface {
 	// CreateWatch wraps gst_bus_create_watch
 	// The function returns the following values:
 	// 
-	// 	- goret *glib.Source 
+	// 	- goret *glib.Source (nullable) 
 	//
 	// Create watch for this bus. The #GSource will be dispatched whenever
 	// a message is on the bus. After the GSource is dispatched, the
@@ -22600,7 +23370,7 @@ type Bus interface {
 	// Peek wraps gst_bus_peek
 	// The function returns the following values:
 	// 
-	// 	- goret *Message 
+	// 	- goret *Message (nullable) 
 	//
 	// Peeks the message on the top of the bus' queue. The message will remain
 	// on the bus' message queue.
@@ -22616,7 +23386,7 @@ type Bus interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *Message 
+	// 	- goret *Message (nullable) 
 	//
 	// Polls the bus for messages. Will block while waiting for messages to come.
 	// You can specify a maximum time to poll with the @timeout parameter. If
@@ -22655,7 +23425,7 @@ type Bus interface {
 	// Pop wraps gst_bus_pop
 	// The function returns the following values:
 	// 
-	// 	- goret *Message 
+	// 	- goret *Message (nullable) 
 	//
 	// Gets a message from the bus.
 	Pop() *Message
@@ -22667,7 +23437,7 @@ type Bus interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *Message 
+	// 	- goret *Message (nullable) 
 	//
 	// Gets a message matching @type from the bus.  Will discard all messages on
 	// the bus that do not match @type and that have been posted before the first
@@ -22733,7 +23503,7 @@ type Bus interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *Message 
+	// 	- goret *Message (nullable) 
 	//
 	// Gets a message from the bus, waiting up to the specified timeout.
 	// 
@@ -22750,7 +23520,7 @@ type Bus interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *Message 
+	// 	- goret *Message (nullable) 
 	//
 	// Gets a message from the bus whose type matches the message type mask @types,
 	// waiting up to the specified timeout (and discarding any messages that do not
@@ -22949,7 +23719,7 @@ func (bus *BusInstance) AddWatchFull(priority int, fn BusFunc) uint {
 // CreateWatch wraps gst_bus_create_watch
 // The function returns the following values:
 // 
-// 	- goret *glib.Source 
+// 	- goret *glib.Source (nullable) 
 //
 // Create watch for this bus. The #GSource will be dispatched whenever
 // a message is on the bus. After the GSource is dispatched, the
@@ -22959,7 +23729,7 @@ func (bus *BusInstance) AddWatchFull(priority int, fn BusFunc) uint {
 // any signal watch added with #gst_bus_add_signal_watch.
 func (bus *BusInstance) CreateWatch() *glib.Source {
 	var carg0 *C.GstBus  // in, none, converted
-	var cret  *C.GSource // return, full, converted
+	var cret  *C.GSource // return, full, converted, nullable
 
 	carg0 = (*C.GstBus)(UnsafeBusToGlibNone(bus))
 
@@ -22968,7 +23738,9 @@ func (bus *BusInstance) CreateWatch() *glib.Source {
 
 	var goret *glib.Source
 
-	goret = glib.UnsafeSourceFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = glib.UnsafeSourceFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -23078,13 +23850,13 @@ func (bus *BusInstance) HavePending() bool {
 // Peek wraps gst_bus_peek
 // The function returns the following values:
 // 
-// 	- goret *Message 
+// 	- goret *Message (nullable) 
 //
 // Peeks the message on the top of the bus' queue. The message will remain
 // on the bus' message queue.
 func (bus *BusInstance) Peek() *Message {
 	var carg0 *C.GstBus     // in, none, converted
-	var cret  *C.GstMessage // return, full, converted
+	var cret  *C.GstMessage // return, full, converted, nullable
 
 	carg0 = (*C.GstBus)(UnsafeBusToGlibNone(bus))
 
@@ -23093,7 +23865,9 @@ func (bus *BusInstance) Peek() *Message {
 
 	var goret *Message
 
-	goret = UnsafeMessageFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeMessageFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -23109,7 +23883,7 @@ func (bus *BusInstance) Peek() *Message {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Message 
+// 	- goret *Message (nullable) 
 //
 // Polls the bus for messages. Will block while waiting for messages to come.
 // You can specify a maximum time to poll with the @timeout parameter. If
@@ -23148,7 +23922,7 @@ func (bus *BusInstance) Poll(events MessageType, timeout ClockTime) *Message {
 	var carg0 *C.GstBus        // in, none, converted
 	var carg1 C.GstMessageType // in, none, casted
 	var carg2 C.GstClockTime   // in, none, casted, alias
-	var cret  *C.GstMessage    // return, full, converted
+	var cret  *C.GstMessage    // return, full, converted, nullable
 
 	carg0 = (*C.GstBus)(UnsafeBusToGlibNone(bus))
 	carg1 = C.GstMessageType(events)
@@ -23161,7 +23935,9 @@ func (bus *BusInstance) Poll(events MessageType, timeout ClockTime) *Message {
 
 	var goret *Message
 
-	goret = UnsafeMessageFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeMessageFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -23169,12 +23945,12 @@ func (bus *BusInstance) Poll(events MessageType, timeout ClockTime) *Message {
 // Pop wraps gst_bus_pop
 // The function returns the following values:
 // 
-// 	- goret *Message 
+// 	- goret *Message (nullable) 
 //
 // Gets a message from the bus.
 func (bus *BusInstance) Pop() *Message {
 	var carg0 *C.GstBus     // in, none, converted
-	var cret  *C.GstMessage // return, full, converted
+	var cret  *C.GstMessage // return, full, converted, nullable
 
 	carg0 = (*C.GstBus)(UnsafeBusToGlibNone(bus))
 
@@ -23183,7 +23959,9 @@ func (bus *BusInstance) Pop() *Message {
 
 	var goret *Message
 
-	goret = UnsafeMessageFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeMessageFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -23196,7 +23974,7 @@ func (bus *BusInstance) Pop() *Message {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Message 
+// 	- goret *Message (nullable) 
 //
 // Gets a message matching @type from the bus.  Will discard all messages on
 // the bus that do not match @type and that have been posted before the first
@@ -23206,7 +23984,7 @@ func (bus *BusInstance) Pop() *Message {
 func (bus *BusInstance) PopFiltered(types MessageType) *Message {
 	var carg0 *C.GstBus        // in, none, converted
 	var carg1 C.GstMessageType // in, none, casted
-	var cret  *C.GstMessage    // return, full, converted
+	var cret  *C.GstMessage    // return, full, converted, nullable
 
 	carg0 = (*C.GstBus)(UnsafeBusToGlibNone(bus))
 	carg1 = C.GstMessageType(types)
@@ -23217,7 +23995,9 @@ func (bus *BusInstance) PopFiltered(types MessageType) *Message {
 
 	var goret *Message
 
-	goret = UnsafeMessageFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeMessageFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -23355,7 +24135,7 @@ func (bus *BusInstance) SetSyncHandler(fn BusSyncHandler) {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Message 
+// 	- goret *Message (nullable) 
 //
 // Gets a message from the bus, waiting up to the specified timeout.
 // 
@@ -23365,7 +24145,7 @@ func (bus *BusInstance) SetSyncHandler(fn BusSyncHandler) {
 func (bus *BusInstance) TimedPop(timeout ClockTime) *Message {
 	var carg0 *C.GstBus      // in, none, converted
 	var carg1 C.GstClockTime // in, none, casted, alias
-	var cret  *C.GstMessage  // return, full, converted
+	var cret  *C.GstMessage  // return, full, converted, nullable
 
 	carg0 = (*C.GstBus)(UnsafeBusToGlibNone(bus))
 	carg1 = C.GstClockTime(timeout)
@@ -23376,7 +24156,9 @@ func (bus *BusInstance) TimedPop(timeout ClockTime) *Message {
 
 	var goret *Message
 
-	goret = UnsafeMessageFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeMessageFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -23390,7 +24172,7 @@ func (bus *BusInstance) TimedPop(timeout ClockTime) *Message {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Message 
+// 	- goret *Message (nullable) 
 //
 // Gets a message from the bus whose type matches the message type mask @types,
 // waiting up to the specified timeout (and discarding any messages that do not
@@ -23403,7 +24185,7 @@ func (bus *BusInstance) TimedPopFiltered(timeout ClockTime, types MessageType) *
 	var carg0 *C.GstBus        // in, none, converted
 	var carg1 C.GstClockTime   // in, none, casted, alias
 	var carg2 C.GstMessageType // in, none, casted
-	var cret  *C.GstMessage    // return, full, converted
+	var cret  *C.GstMessage    // return, full, converted, nullable
 
 	carg0 = (*C.GstBus)(UnsafeBusToGlibNone(bus))
 	carg1 = C.GstClockTime(timeout)
@@ -23416,7 +24198,9 @@ func (bus *BusInstance) TimedPopFiltered(timeout ClockTime, types MessageType) *
 
 	var goret *Message
 
-	goret = UnsafeMessageFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeMessageFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -23636,7 +24420,7 @@ type Clock interface {
 	// GetMaster wraps gst_clock_get_master
 	// The function returns the following values:
 	// 
-	// 	- goret Clock 
+	// 	- goret Clock (nullable) 
 	//
 	// Gets the master clock that @clock is slaved to or %NULL when the clock is
 	// not slaved to any master clock.
@@ -23971,12 +24755,12 @@ func ClockIDCompareFunc(id1 unsafe.Pointer, id2 unsafe.Pointer) int {
 // 
 // The function returns the following values:
 // 
-// 	- goret Clock 
+// 	- goret Clock (nullable) 
 //
 // This function returns the underlying clock.
 func ClockIDGetClock(id ClockID) Clock {
 	var carg1 C.GstClockID // in, none, casted, alias
-	var cret  *C.GstClock  // return, full, converted
+	var cret  *C.GstClock  // return, full, converted, nullable
 
 	carg1 = C.GstClockID(id)
 
@@ -23985,7 +24769,9 @@ func ClockIDGetClock(id ClockID) Clock {
 
 	var goret Clock
 
-	goret = UnsafeClockFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeClockFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -24464,13 +25250,13 @@ func (clock *ClockInstance) GetInternalTime() ClockTime {
 // GetMaster wraps gst_clock_get_master
 // The function returns the following values:
 // 
-// 	- goret Clock 
+// 	- goret Clock (nullable) 
 //
 // Gets the master clock that @clock is slaved to or %NULL when the clock is
 // not slaved to any master clock.
 func (clock *ClockInstance) GetMaster() Clock {
 	var carg0 *C.GstClock // in, none, converted
-	var cret  *C.GstClock // return, full, converted
+	var cret  *C.GstClock // return, full, converted, nullable
 
 	carg0 = (*C.GstClock)(UnsafeClockToGlibNone(clock))
 
@@ -24479,7 +25265,9 @@ func (clock *ClockInstance) GetMaster() Clock {
 
 	var goret Clock
 
-	goret = UnsafeClockFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeClockFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -25423,7 +26211,7 @@ type Device interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret Element 
+	// 	- goret Element (nullable) 
 	//
 	// Creates the element with all of the required parameters set to use
 	// this device.
@@ -25431,7 +26219,7 @@ type Device interface {
 	// GetCaps wraps gst_device_get_caps
 	// The function returns the following values:
 	// 
-	// 	- goret *Caps 
+	// 	- goret *Caps (nullable) 
 	//
 	// Getter for the #GstCaps that this device supports.
 	GetCaps() *Caps
@@ -25454,7 +26242,7 @@ type Device interface {
 	// GetProperties wraps gst_device_get_properties
 	// The function returns the following values:
 	// 
-	// 	- goret *Structure 
+	// 	- goret *Structure (nullable) 
 	//
 	// Gets the extra properties of a device.
 	GetProperties() *Structure
@@ -25552,14 +26340,14 @@ func UnsafeDeviceToGlibFull(c Device) unsafe.Pointer {
 // 
 // The function returns the following values:
 // 
-// 	- goret Element 
+// 	- goret Element (nullable) 
 //
 // Creates the element with all of the required parameters set to use
 // this device.
 func (device *DeviceInstance) CreateElement(name string) Element {
 	var carg0 *C.GstDevice  // in, none, converted
 	var carg1 *C.gchar      // in, none, string, nullable-string
-	var cret  *C.GstElement // return, none, converted
+	var cret  *C.GstElement // return, none, converted, nullable
 
 	carg0 = (*C.GstDevice)(UnsafeDeviceToGlibNone(device))
 	if name != "" {
@@ -25573,7 +26361,9 @@ func (device *DeviceInstance) CreateElement(name string) Element {
 
 	var goret Element
 
-	goret = UnsafeElementFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeElementFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -25581,12 +26371,12 @@ func (device *DeviceInstance) CreateElement(name string) Element {
 // GetCaps wraps gst_device_get_caps
 // The function returns the following values:
 // 
-// 	- goret *Caps 
+// 	- goret *Caps (nullable) 
 //
 // Getter for the #GstCaps that this device supports.
 func (device *DeviceInstance) GetCaps() *Caps {
 	var carg0 *C.GstDevice // in, none, converted
-	var cret  *C.GstCaps   // return, full, converted
+	var cret  *C.GstCaps   // return, full, converted, nullable
 
 	carg0 = (*C.GstDevice)(UnsafeDeviceToGlibNone(device))
 
@@ -25595,7 +26385,9 @@ func (device *DeviceInstance) GetCaps() *Caps {
 
 	var goret *Caps
 
-	goret = UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -25651,12 +26443,12 @@ func (device *DeviceInstance) GetDisplayName() string {
 // GetProperties wraps gst_device_get_properties
 // The function returns the following values:
 // 
-// 	- goret *Structure 
+// 	- goret *Structure (nullable) 
 //
 // Gets the extra properties of a device.
 func (device *DeviceInstance) GetProperties() *Structure {
 	var carg0 *C.GstDevice    // in, none, converted
-	var cret  *C.GstStructure // return, full, converted
+	var cret  *C.GstStructure // return, full, converted, nullable
 
 	carg0 = (*C.GstDevice)(UnsafeDeviceToGlibNone(device))
 
@@ -25665,7 +26457,9 @@ func (device *DeviceInstance) GetProperties() *Structure {
 
 	var goret *Structure
 
-	goret = UnsafeStructureFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeStructureFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -25888,7 +26682,7 @@ type DeviceMonitor interface {
 	// GetDevices wraps gst_device_monitor_get_devices
 	// The function returns the following values:
 	// 
-	// 	- goret []Device 
+	// 	- goret []Device (nullable) 
 	//
 	// Gets a list of devices from all of the relevant monitors. This may actually
 	// probe the hardware if the monitor is not currently started.
@@ -26077,7 +26871,7 @@ func (monitor *DeviceMonitorInstance) GetBus() Bus {
 // GetDevices wraps gst_device_monitor_get_devices
 // The function returns the following values:
 // 
-// 	- goret []Device 
+// 	- goret []Device (nullable) 
 //
 // Gets a list of devices from all of the relevant monitors. This may actually
 // probe the hardware if the monitor is not currently started.
@@ -26335,7 +27129,7 @@ type DeviceProvider interface {
 	// GetFactory wraps gst_device_provider_get_factory
 	// The function returns the following values:
 	// 
-	// 	- goret DeviceProviderFactory 
+	// 	- goret DeviceProviderFactory (nullable) 
 	//
 	// Retrieves the factory that was used to create this device provider.
 	GetFactory() DeviceProviderFactory
@@ -26659,12 +27453,12 @@ func (provider *DeviceProviderInstance) GetDevices() []Device {
 // GetFactory wraps gst_device_provider_get_factory
 // The function returns the following values:
 // 
-// 	- goret DeviceProviderFactory 
+// 	- goret DeviceProviderFactory (nullable) 
 //
 // Retrieves the factory that was used to create this device provider.
 func (provider *DeviceProviderInstance) GetFactory() DeviceProviderFactory {
 	var carg0 *C.GstDeviceProvider        // in, none, converted
-	var cret  *C.GstDeviceProviderFactory // return, none, converted
+	var cret  *C.GstDeviceProviderFactory // return, none, converted, nullable
 
 	carg0 = (*C.GstDeviceProvider)(UnsafeDeviceProviderToGlibNone(provider))
 
@@ -26673,7 +27467,9 @@ func (provider *DeviceProviderInstance) GetFactory() DeviceProviderFactory {
 
 	var goret DeviceProviderFactory
 
-	goret = UnsafeDeviceProviderFactoryFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeDeviceProviderFactoryFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -26889,7 +27685,7 @@ type DeviceProviderFactory interface {
 	// Get wraps gst_device_provider_factory_get
 	// The function returns the following values:
 	// 
-	// 	- goret DeviceProvider 
+	// 	- goret DeviceProvider (nullable) 
 	//
 	// Returns the device provider of the type defined by the given device
 	// providerfactory.
@@ -26911,14 +27707,14 @@ type DeviceProviderFactory interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret string 
+	// 	- goret string (nullable) 
 	//
 	// Get the metadata on @factory with @key.
 	GetMetadata(string) string
 	// GetMetadataKeys wraps gst_device_provider_factory_get_metadata_keys
 	// The function returns the following values:
 	// 
-	// 	- goret []string 
+	// 	- goret []string (nullable) 
 	//
 	// Get the available keys for the metadata on @factory.
 	GetMetadataKeys() []string
@@ -26998,13 +27794,13 @@ func UnsafeDeviceProviderFactoryToGlibFull(c DeviceProviderFactory) unsafe.Point
 // 
 // The function returns the following values:
 // 
-// 	- goret DeviceProviderFactory 
+// 	- goret DeviceProviderFactory (nullable) 
 //
 // Search for an device provider factory of the given name. Refs the returned
 // device provider factory; caller is responsible for unreffing.
 func DeviceProviderFactoryFind(name string) DeviceProviderFactory {
 	var carg1 *C.gchar                    // in, none, string
-	var cret  *C.GstDeviceProviderFactory // return, full, converted
+	var cret  *C.GstDeviceProviderFactory // return, full, converted, nullable
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -27014,7 +27810,9 @@ func DeviceProviderFactoryFind(name string) DeviceProviderFactory {
 
 	var goret DeviceProviderFactory
 
-	goret = UnsafeDeviceProviderFactoryFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeDeviceProviderFactoryFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -27027,13 +27825,13 @@ func DeviceProviderFactoryFind(name string) DeviceProviderFactory {
 // 
 // The function returns the following values:
 // 
-// 	- goret DeviceProvider 
+// 	- goret DeviceProvider (nullable) 
 //
 // Returns the device provider of the type defined by the given device
 // provider factory.
 func DeviceProviderFactoryGetByName(factoryname string) DeviceProvider {
 	var carg1 *C.gchar             // in, none, string
-	var cret  *C.GstDeviceProvider // return, full, converted
+	var cret  *C.GstDeviceProvider // return, full, converted, nullable
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(factoryname)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -27043,7 +27841,9 @@ func DeviceProviderFactoryGetByName(factoryname string) DeviceProvider {
 
 	var goret DeviceProvider
 
-	goret = UnsafeDeviceProviderFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeDeviceProviderFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -27086,13 +27886,13 @@ func DeviceProviderFactoryListGetDeviceProviders(minrank Rank) []DeviceProviderF
 // Get wraps gst_device_provider_factory_get
 // The function returns the following values:
 // 
-// 	- goret DeviceProvider 
+// 	- goret DeviceProvider (nullable) 
 //
 // Returns the device provider of the type defined by the given device
 // providerfactory.
 func (factory *DeviceProviderFactoryInstance) Get() DeviceProvider {
 	var carg0 *C.GstDeviceProviderFactory // in, none, converted
-	var cret  *C.GstDeviceProvider        // return, full, converted
+	var cret  *C.GstDeviceProvider        // return, full, converted, nullable
 
 	carg0 = (*C.GstDeviceProviderFactory)(UnsafeDeviceProviderFactoryToGlibNone(factory))
 
@@ -27101,7 +27901,9 @@ func (factory *DeviceProviderFactoryInstance) Get() DeviceProvider {
 
 	var goret DeviceProvider
 
-	goret = UnsafeDeviceProviderFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeDeviceProviderFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -27138,13 +27940,13 @@ func (factory *DeviceProviderFactoryInstance) GetDeviceProviderType() gobject.Ty
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Get the metadata on @factory with @key.
 func (factory *DeviceProviderFactoryInstance) GetMetadata(key string) string {
 	var carg0 *C.GstDeviceProviderFactory // in, none, converted
 	var carg1 *C.gchar                    // in, none, string
-	var cret  *C.gchar                    // return, none, string
+	var cret  *C.gchar                    // return, none, string, nullable-string
 
 	carg0 = (*C.GstDeviceProviderFactory)(UnsafeDeviceProviderFactoryToGlibNone(factory))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(key)))
@@ -27156,7 +27958,9 @@ func (factory *DeviceProviderFactoryInstance) GetMetadata(key string) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -27164,12 +27968,12 @@ func (factory *DeviceProviderFactoryInstance) GetMetadata(key string) string {
 // GetMetadataKeys wraps gst_device_provider_factory_get_metadata_keys
 // The function returns the following values:
 // 
-// 	- goret []string 
+// 	- goret []string (nullable) 
 //
 // Get the available keys for the metadata on @factory.
 func (factory *DeviceProviderFactoryInstance) GetMetadataKeys() []string {
 	var carg0 *C.GstDeviceProviderFactory // in, none, converted
-	var cret  **C.gchar                   // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , array (inner: *typesystem.StringPrimitive, zero-terminated)
+	var cret  **C.gchar                   // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , nullable, array (inner: *typesystem.StringPrimitive, zero-terminated)
 
 	carg0 = (*C.GstDeviceProviderFactory)(UnsafeDeviceProviderFactoryToGlibNone(factory))
 
@@ -27624,7 +28428,7 @@ type Element interface {
 	// GetBus wraps gst_element_get_bus
 	// The function returns the following values:
 	// 
-	// 	- goret Bus 
+	// 	- goret Bus (nullable) 
 	//
 	// Returns the bus of the element. Note that only a #GstPipeline will provide a
 	// bus for the application.
@@ -27632,7 +28436,7 @@ type Element interface {
 	// GetClock wraps gst_element_get_clock
 	// The function returns the following values:
 	// 
-	// 	- goret Clock 
+	// 	- goret Clock (nullable) 
 	//
 	// Gets the currently configured clock of the element. This is the clock as was
 	// last set with gst_element_set_clock().
@@ -27649,7 +28453,7 @@ type Element interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret Pad 
+	// 	- goret Pad (nullable) 
 	//
 	// Looks for an unlinked pad to which the given pad can link. It is not
 	// guaranteed that linking the pads will work, though it should work in most
@@ -27668,7 +28472,7 @@ type Element interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret PadTemplate 
+	// 	- goret PadTemplate (nullable) 
 	//
 	// Retrieves a pad template from @element that is compatible with @compattempl.
 	// Pads from compatible templates can be linked together.
@@ -27681,7 +28485,7 @@ type Element interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *Context 
+	// 	- goret *Context (nullable) 
 	//
 	// Gets the context with @context_type set on the element or NULL.
 	// 
@@ -27695,7 +28499,7 @@ type Element interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *Context 
+	// 	- goret *Context (nullable) 
 	//
 	// Gets the context with @context_type set on the element or NULL.
 	GetContextUnlocked(string) *Context
@@ -27728,7 +28532,7 @@ type Element interface {
 	// GetFactory wraps gst_element_get_factory
 	// The function returns the following values:
 	// 
-	// 	- goret ElementFactory 
+	// 	- goret ElementFactory (nullable) 
 	//
 	// Retrieves the factory that was used to create this element.
 	GetFactory() ElementFactory
@@ -27752,7 +28556,7 @@ type Element interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret PadTemplate 
+	// 	- goret PadTemplate (nullable) 
 	//
 	// Retrieves a padtemplate from @element with the given name.
 	GetPadTemplate(string) PadTemplate
@@ -27772,7 +28576,7 @@ type Element interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret Pad 
+	// 	- goret Pad (nullable) 
 	//
 	// The name of this function is confusing to people learning GStreamer.
 	// gst_element_request_pad_simple() aims at making it more explicit it is
@@ -27838,7 +28642,7 @@ type Element interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret Pad 
+	// 	- goret Pad (nullable) 
 	//
 	// Retrieves a pad from @element by name. This version only retrieves
 	// already-existing (i.e. 'static') pads.
@@ -28089,7 +28893,7 @@ type Element interface {
 	// ProvidedClock wraps gst_element_provide_clock
 	// The function returns the following values:
 	// 
-	// 	- goret Clock 
+	// 	- goret Clock (nullable) 
 	//
 	// Get the clock provided by the given element.
 	// &gt; An element is only required to provide a clock in the PAUSED
@@ -28230,7 +29034,7 @@ type Element interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret Pad 
+	// 	- goret Pad (nullable) 
 	//
 	// Retrieves a request pad from the element according to the provided template.
 	// Pad templates can be looked up using
@@ -28246,7 +29050,7 @@ type Element interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret Pad 
+	// 	- goret Pad (nullable) 
 	//
 	// Retrieves a pad from the element by name (e.g. "src_\%d"). This version only
 	// retrieves request pads. The pad should be released with
@@ -29154,13 +29958,13 @@ func (element *ElementInstance) GetBaseTime() ClockTime {
 // GetBus wraps gst_element_get_bus
 // The function returns the following values:
 // 
-// 	- goret Bus 
+// 	- goret Bus (nullable) 
 //
 // Returns the bus of the element. Note that only a #GstPipeline will provide a
 // bus for the application.
 func (element *ElementInstance) GetBus() Bus {
 	var carg0 *C.GstElement // in, none, converted
-	var cret  *C.GstBus     // return, full, converted
+	var cret  *C.GstBus     // return, full, converted, nullable
 
 	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 
@@ -29169,7 +29973,9 @@ func (element *ElementInstance) GetBus() Bus {
 
 	var goret Bus
 
-	goret = UnsafeBusFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeBusFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -29177,7 +29983,7 @@ func (element *ElementInstance) GetBus() Bus {
 // GetClock wraps gst_element_get_clock
 // The function returns the following values:
 // 
-// 	- goret Clock 
+// 	- goret Clock (nullable) 
 //
 // Gets the currently configured clock of the element. This is the clock as was
 // last set with gst_element_set_clock().
@@ -29186,7 +29992,7 @@ func (element *ElementInstance) GetBus() Bus {
 // pipeline is in the PLAYING state.
 func (element *ElementInstance) GetClock() Clock {
 	var carg0 *C.GstElement // in, none, converted
-	var cret  *C.GstClock   // return, full, converted
+	var cret  *C.GstClock   // return, full, converted, nullable
 
 	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 
@@ -29195,7 +30001,9 @@ func (element *ElementInstance) GetClock() Clock {
 
 	var goret Clock
 
-	goret = UnsafeClockFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeClockFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -29209,7 +30017,7 @@ func (element *ElementInstance) GetClock() Clock {
 // 
 // The function returns the following values:
 // 
-// 	- goret Pad 
+// 	- goret Pad (nullable) 
 //
 // Looks for an unlinked pad to which the given pad can link. It is not
 // guaranteed that linking the pads will work, though it should work in most
@@ -29222,7 +30030,7 @@ func (element *ElementInstance) GetCompatiblePad(pad Pad, caps *Caps) Pad {
 	var carg0 *C.GstElement // in, none, converted
 	var carg1 *C.GstPad     // in, none, converted
 	var carg2 *C.GstCaps    // in, none, converted, nullable
-	var cret  *C.GstPad     // return, full, converted
+	var cret  *C.GstPad     // return, full, converted, nullable
 
 	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 	carg1 = (*C.GstPad)(UnsafePadToGlibNone(pad))
@@ -29237,7 +30045,9 @@ func (element *ElementInstance) GetCompatiblePad(pad Pad, caps *Caps) Pad {
 
 	var goret Pad
 
-	goret = UnsafePadFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePadFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -29251,14 +30061,14 @@ func (element *ElementInstance) GetCompatiblePad(pad Pad, caps *Caps) Pad {
 // 
 // The function returns the following values:
 // 
-// 	- goret PadTemplate 
+// 	- goret PadTemplate (nullable) 
 //
 // Retrieves a pad template from @element that is compatible with @compattempl.
 // Pads from compatible templates can be linked together.
 func (element *ElementInstance) GetCompatiblePadTemplate(compattempl PadTemplate) PadTemplate {
 	var carg0 *C.GstElement     // in, none, converted
 	var carg1 *C.GstPadTemplate // in, none, converted
-	var cret  *C.GstPadTemplate // return, none, converted
+	var cret  *C.GstPadTemplate // return, none, converted, nullable
 
 	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 	carg1 = (*C.GstPadTemplate)(UnsafePadTemplateToGlibNone(compattempl))
@@ -29269,7 +30079,9 @@ func (element *ElementInstance) GetCompatiblePadTemplate(compattempl PadTemplate
 
 	var goret PadTemplate
 
-	goret = UnsafePadTemplateFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePadTemplateFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -29282,7 +30094,7 @@ func (element *ElementInstance) GetCompatiblePadTemplate(compattempl PadTemplate
 // 
 // The function returns the following values:
 // 
-// 	- goret *Context 
+// 	- goret *Context (nullable) 
 //
 // Gets the context with @context_type set on the element or NULL.
 // 
@@ -29290,7 +30102,7 @@ func (element *ElementInstance) GetCompatiblePadTemplate(compattempl PadTemplate
 func (element *ElementInstance) GetContext(contextType string) *Context {
 	var carg0 *C.GstElement // in, none, converted
 	var carg1 *C.gchar      // in, none, string
-	var cret  *C.GstContext // return, full, converted
+	var cret  *C.GstContext // return, full, converted, nullable
 
 	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(contextType)))
@@ -29302,7 +30114,9 @@ func (element *ElementInstance) GetContext(contextType string) *Context {
 
 	var goret *Context
 
-	goret = UnsafeContextFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeContextFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -29315,13 +30129,13 @@ func (element *ElementInstance) GetContext(contextType string) *Context {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Context 
+// 	- goret *Context (nullable) 
 //
 // Gets the context with @context_type set on the element or NULL.
 func (element *ElementInstance) GetContextUnlocked(contextType string) *Context {
 	var carg0 *C.GstElement // in, none, converted
 	var carg1 *C.gchar      // in, none, string
-	var cret  *C.GstContext // return, full, converted
+	var cret  *C.GstContext // return, full, converted, nullable
 
 	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(contextType)))
@@ -29333,7 +30147,9 @@ func (element *ElementInstance) GetContextUnlocked(contextType string) *Context 
 
 	var goret *Context
 
-	goret = UnsafeContextFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeContextFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -29419,12 +30235,12 @@ func (element *ElementInstance) GetCurrentRunningTime() ClockTime {
 // GetFactory wraps gst_element_get_factory
 // The function returns the following values:
 // 
-// 	- goret ElementFactory 
+// 	- goret ElementFactory (nullable) 
 //
 // Retrieves the factory that was used to create this element.
 func (element *ElementInstance) GetFactory() ElementFactory {
 	var carg0 *C.GstElement        // in, none, converted
-	var cret  *C.GstElementFactory // return, none, converted
+	var cret  *C.GstElementFactory // return, none, converted, nullable
 
 	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 
@@ -29433,7 +30249,9 @@ func (element *ElementInstance) GetFactory() ElementFactory {
 
 	var goret ElementFactory
 
-	goret = UnsafeElementFactoryFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeElementFactoryFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -29477,13 +30295,13 @@ func (element *ElementInstance) GetMetadata(key string) string {
 // 
 // The function returns the following values:
 // 
-// 	- goret PadTemplate 
+// 	- goret PadTemplate (nullable) 
 //
 // Retrieves a padtemplate from @element with the given name.
 func (element *ElementInstance) GetPadTemplate(name string) PadTemplate {
 	var carg0 *C.GstElement     // in, none, converted
 	var carg1 *C.gchar          // in, none, string
-	var cret  *C.GstPadTemplate // return, none, converted
+	var cret  *C.GstPadTemplate // return, none, converted, nullable
 
 	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
@@ -29495,7 +30313,9 @@ func (element *ElementInstance) GetPadTemplate(name string) PadTemplate {
 
 	var goret PadTemplate
 
-	goret = UnsafePadTemplateFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePadTemplateFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -29538,7 +30358,7 @@ func (element *ElementInstance) GetPadTemplateList() []PadTemplate {
 // 
 // The function returns the following values:
 // 
-// 	- goret Pad 
+// 	- goret Pad (nullable) 
 //
 // The name of this function is confusing to people learning GStreamer.
 // gst_element_request_pad_simple() aims at making it more explicit it is
@@ -29549,7 +30369,7 @@ func (element *ElementInstance) GetPadTemplateList() []PadTemplate {
 func (element *ElementInstance) GetRequestPad(name string) Pad {
 	var carg0 *C.GstElement // in, none, converted
 	var carg1 *C.gchar      // in, none, string
-	var cret  *C.GstPad     // return, full, converted
+	var cret  *C.GstPad     // return, full, converted, nullable
 
 	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
@@ -29561,7 +30381,9 @@ func (element *ElementInstance) GetRequestPad(name string) Pad {
 
 	var goret Pad
 
-	goret = UnsafePadFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePadFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -29662,14 +30484,14 @@ func (element *ElementInstance) GetState(timeout ClockTime) (State, State, State
 // 
 // The function returns the following values:
 // 
-// 	- goret Pad 
+// 	- goret Pad (nullable) 
 //
 // Retrieves a pad from @element by name. This version only retrieves
 // already-existing (i.e. 'static') pads.
 func (element *ElementInstance) GetStaticPad(name string) Pad {
 	var carg0 *C.GstElement // in, none, converted
 	var carg1 *C.gchar      // in, none, string
-	var cret  *C.GstPad     // return, full, converted
+	var cret  *C.GstPad     // return, full, converted, nullable
 
 	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
@@ -29681,7 +30503,9 @@ func (element *ElementInstance) GetStaticPad(name string) Pad {
 
 	var goret Pad
 
-	goret = UnsafePadFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePadFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -30258,14 +31082,14 @@ func (element *ElementInstance) PostMessage(message *Message) bool {
 // ProvidedClock wraps gst_element_provide_clock
 // The function returns the following values:
 // 
-// 	- goret Clock 
+// 	- goret Clock (nullable) 
 //
 // Get the clock provided by the given element.
 // &gt; An element is only required to provide a clock in the PAUSED
 // &gt; state. Some elements can provide a clock in other states.
 func (element *ElementInstance) ProvidedClock() Clock {
 	var carg0 *C.GstElement // in, none, converted
-	var cret  *C.GstClock   // return, full, converted
+	var cret  *C.GstClock   // return, full, converted, nullable
 
 	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 
@@ -30274,7 +31098,9 @@ func (element *ElementInstance) ProvidedClock() Clock {
 
 	var goret Clock
 
-	goret = UnsafeClockFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeClockFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -30551,7 +31377,7 @@ func (element *ElementInstance) RemovePropertyNotifyWatch(watchId uint32) {
 // 
 // The function returns the following values:
 // 
-// 	- goret Pad 
+// 	- goret Pad (nullable) 
 //
 // Retrieves a request pad from the element according to the provided template.
 // Pad templates can be looked up using
@@ -30563,7 +31389,7 @@ func (element *ElementInstance) RequestPad(templ PadTemplate, name string, caps 
 	var carg1 *C.GstPadTemplate // in, none, converted
 	var carg2 *C.gchar          // in, none, string, nullable-string
 	var carg3 *C.GstCaps        // in, none, converted, nullable
-	var cret  *C.GstPad         // return, full, converted
+	var cret  *C.GstPad         // return, full, converted, nullable
 
 	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 	carg1 = (*C.GstPadTemplate)(UnsafePadTemplateToGlibNone(templ))
@@ -30583,7 +31409,9 @@ func (element *ElementInstance) RequestPad(templ PadTemplate, name string, caps 
 
 	var goret Pad
 
-	goret = UnsafePadFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePadFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -30596,7 +31424,7 @@ func (element *ElementInstance) RequestPad(templ PadTemplate, name string, caps 
 // 
 // The function returns the following values:
 // 
-// 	- goret Pad 
+// 	- goret Pad (nullable) 
 //
 // Retrieves a pad from the element by name (e.g. "src_\%d"). This version only
 // retrieves request pads. The pad should be released with
@@ -30613,7 +31441,7 @@ func (element *ElementInstance) RequestPad(templ PadTemplate, name string, caps 
 func (element *ElementInstance) RequestPadSimple(name string) Pad {
 	var carg0 *C.GstElement // in, none, converted
 	var carg1 *C.gchar      // in, none, string
-	var cret  *C.GstPad     // return, full, converted
+	var cret  *C.GstPad     // return, full, converted, nullable
 
 	carg0 = (*C.GstElement)(UnsafeElementToGlibNone(element))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
@@ -30625,7 +31453,9 @@ func (element *ElementInstance) RequestPadSimple(name string) Pad {
 
 	var goret Pad
 
-	goret = UnsafePadFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePadFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -31200,7 +32030,7 @@ type ElementFactory interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret Element 
+	// 	- goret Element (nullable) 
 	//
 	// Create a new element of the type defined by the given elementfactory.
 	// It will be given the name supplied, since all elements require a name as
@@ -31215,7 +32045,7 @@ type ElementFactory interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret Element 
+	// 	- goret Element (nullable) 
 	//
 	// Create a new element of the type defined by the given elementfactory.
 	// The supplied list of properties, will be passed at object construction.
@@ -31237,14 +32067,14 @@ type ElementFactory interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret string 
+	// 	- goret string (nullable) 
 	//
 	// Get the metadata on @factory with @key.
 	GetMetadata(string) string
 	// GetMetadataKeys wraps gst_element_factory_get_metadata_keys
 	// The function returns the following values:
 	// 
-	// 	- goret []string 
+	// 	- goret []string (nullable) 
 	//
 	// Get the available keys for the metadata on @factory.
 	GetMetadataKeys() []string
@@ -31361,13 +32191,13 @@ func UnsafeElementFactoryToGlibFull(c ElementFactory) unsafe.Pointer {
 // 
 // The function returns the following values:
 // 
-// 	- goret ElementFactory 
+// 	- goret ElementFactory (nullable) 
 //
 // Search for an element factory of the given name. Refs the returned
 // element factory; caller is responsible for unreffing.
 func ElementFactoryFind(name string) ElementFactory {
 	var carg1 *C.gchar             // in, none, string
-	var cret  *C.GstElementFactory // return, full, converted
+	var cret  *C.GstElementFactory // return, full, converted, nullable
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -31377,7 +32207,9 @@ func ElementFactoryFind(name string) ElementFactory {
 
 	var goret ElementFactory
 
-	goret = UnsafeElementFactoryFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeElementFactoryFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -31432,7 +32264,7 @@ func ElementFactoryListGetElements(typ ElementFactoryListType, minrank Rank) []E
 // 
 // The function returns the following values:
 // 
-// 	- goret Element 
+// 	- goret Element (nullable) 
 //
 // Create a new element of the type defined by the given element factory.
 // If name is %NULL, then the element will receive a guaranteed unique name,
@@ -31441,7 +32273,7 @@ func ElementFactoryListGetElements(typ ElementFactoryListType, minrank Rank) []E
 func ElementFactoryMake(factoryname string, name string) Element {
 	var carg1 *C.gchar      // in, none, string
 	var carg2 *C.gchar      // in, none, string, nullable-string
-	var cret  *C.GstElement // return, none, converted
+	var cret  *C.GstElement // return, none, converted, nullable
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(factoryname)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -31456,7 +32288,9 @@ func ElementFactoryMake(factoryname string, name string) Element {
 
 	var goret Element
 
-	goret = UnsafeElementFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeElementFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -31598,7 +32432,7 @@ func (factory *ElementFactoryInstance) CanSrcAnyCaps(caps *Caps) bool {
 // 
 // The function returns the following values:
 // 
-// 	- goret Element 
+// 	- goret Element (nullable) 
 //
 // Create a new element of the type defined by the given elementfactory.
 // It will be given the name supplied, since all elements require a name as
@@ -31606,7 +32440,7 @@ func (factory *ElementFactoryInstance) CanSrcAnyCaps(caps *Caps) bool {
 func (factory *ElementFactoryInstance) Create(name string) Element {
 	var carg0 *C.GstElementFactory // in, none, converted
 	var carg1 *C.gchar             // in, none, string, nullable-string
-	var cret  *C.GstElement        // return, none, converted
+	var cret  *C.GstElement        // return, none, converted, nullable
 
 	carg0 = (*C.GstElementFactory)(UnsafeElementFactoryToGlibNone(factory))
 	if name != "" {
@@ -31620,7 +32454,9 @@ func (factory *ElementFactoryInstance) Create(name string) Element {
 
 	var goret Element
 
-	goret = UnsafeElementFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeElementFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -31634,7 +32470,7 @@ func (factory *ElementFactoryInstance) Create(name string) Element {
 // 
 // The function returns the following values:
 // 
-// 	- goret Element 
+// 	- goret Element (nullable) 
 //
 // Create a new element of the type defined by the given elementfactory.
 // The supplied list of properties, will be passed at object construction.
@@ -31643,7 +32479,7 @@ func (factory *ElementFactoryInstance) CreateWithProperties(names []string, valu
 	var carg1 C.guint              // implicit
 	var carg2 **C.gchar            // in, transfer: none, C Pointers: 2, Name: array[utf8], nullable, array (inner: *typesystem.StringPrimitive, length-by: carg1)
 	var carg3 *C.GValue            // in, transfer: none, C Pointers: 1, Name: array[Value], nullable, array (inner: *typesystem.Record, length-by: carg1)
-	var cret  *C.GstElement        // return, none, converted
+	var cret  *C.GstElement        // return, none, converted, nullable
 
 	carg0 = (*C.GstElementFactory)(UnsafeElementFactoryToGlibNone(factory))
 	_ = names
@@ -31662,7 +32498,9 @@ func (factory *ElementFactoryInstance) CreateWithProperties(names []string, valu
 
 	var goret Element
 
-	goret = UnsafeElementFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeElementFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -31699,13 +32537,13 @@ func (factory *ElementFactoryInstance) GetElementType() gobject.Type {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Get the metadata on @factory with @key.
 func (factory *ElementFactoryInstance) GetMetadata(key string) string {
 	var carg0 *C.GstElementFactory // in, none, converted
 	var carg1 *C.gchar             // in, none, string
-	var cret  *C.gchar             // return, none, string
+	var cret  *C.gchar             // return, none, string, nullable-string
 
 	carg0 = (*C.GstElementFactory)(UnsafeElementFactoryToGlibNone(factory))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(key)))
@@ -31717,7 +32555,9 @@ func (factory *ElementFactoryInstance) GetMetadata(key string) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -31725,12 +32565,12 @@ func (factory *ElementFactoryInstance) GetMetadata(key string) string {
 // GetMetadataKeys wraps gst_element_factory_get_metadata_keys
 // The function returns the following values:
 // 
-// 	- goret []string 
+// 	- goret []string (nullable) 
 //
 // Get the available keys for the metadata on @factory.
 func (factory *ElementFactoryInstance) GetMetadataKeys() []string {
 	var carg0 *C.GstElementFactory // in, none, converted
-	var cret  **C.gchar            // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , array (inner: *typesystem.StringPrimitive, zero-terminated)
+	var cret  **C.gchar            // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , nullable, array (inner: *typesystem.StringPrimitive, zero-terminated)
 
 	carg0 = (*C.GstElementFactory)(UnsafeElementFactoryToGlibNone(factory))
 
@@ -31981,7 +32821,7 @@ type GhostPad interface {
 	// GetTarget wraps gst_ghost_pad_get_target
 	// The function returns the following values:
 	// 
-	// 	- goret Pad 
+	// 	- goret Pad (nullable) 
 	//
 	// Get the target pad of @gpad. Unref target pad after usage.
 	GetTarget() Pad
@@ -32052,7 +32892,7 @@ func UnsafeGhostPadToGlibFull(c GhostPad) unsafe.Pointer {
 // 
 // The function returns the following values:
 // 
-// 	- goret Pad 
+// 	- goret Pad (nullable) 
 //
 // Create a new ghostpad with @target as the target. The direction will be taken
 // from the target pad. @target must be unlinked.
@@ -32061,7 +32901,7 @@ func UnsafeGhostPadToGlibFull(c GhostPad) unsafe.Pointer {
 func NewGhostPad(name string, target Pad) Pad {
 	var carg1 *C.gchar  // in, none, string, nullable-string
 	var carg2 *C.GstPad // in, none, converted
-	var cret  *C.GstPad // return, none, converted
+	var cret  *C.GstPad // return, none, converted, nullable
 
 	if name != "" {
 		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
@@ -32075,7 +32915,9 @@ func NewGhostPad(name string, target Pad) Pad {
 
 	var goret Pad
 
-	goret = UnsafePadFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePadFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -32090,7 +32932,7 @@ func NewGhostPad(name string, target Pad) Pad {
 // 
 // The function returns the following values:
 // 
-// 	- goret Pad 
+// 	- goret Pad (nullable) 
 //
 // Create a new ghostpad with @target as the target. The direction will be taken
 // from the target pad. The template used on the ghostpad will be @template.
@@ -32100,7 +32942,7 @@ func NewGhostPadFromTemplate(name string, target Pad, templ PadTemplate) Pad {
 	var carg1 *C.gchar          // in, none, string, nullable-string
 	var carg2 *C.GstPad         // in, none, converted
 	var carg3 *C.GstPadTemplate // in, none, converted
-	var cret  *C.GstPad         // return, none, converted
+	var cret  *C.GstPad         // return, none, converted, nullable
 
 	if name != "" {
 		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
@@ -32116,7 +32958,9 @@ func NewGhostPadFromTemplate(name string, target Pad, templ PadTemplate) Pad {
 
 	var goret Pad
 
-	goret = UnsafePadFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePadFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -32130,7 +32974,7 @@ func NewGhostPadFromTemplate(name string, target Pad, templ PadTemplate) Pad {
 // 
 // The function returns the following values:
 // 
-// 	- goret Pad 
+// 	- goret Pad (nullable) 
 //
 // Create a new ghostpad without a target with the given direction.
 // A target can be set on the ghostpad later with the
@@ -32140,7 +32984,7 @@ func NewGhostPadFromTemplate(name string, target Pad, templ PadTemplate) Pad {
 func NewGhostPadNoTarget(name string, dir PadDirection) Pad {
 	var carg1 *C.gchar          // in, none, string, nullable-string
 	var carg2 C.GstPadDirection // in, none, casted
-	var cret  *C.GstPad         // return, none, converted
+	var cret  *C.GstPad         // return, none, converted, nullable
 
 	if name != "" {
 		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
@@ -32154,7 +32998,9 @@ func NewGhostPadNoTarget(name string, dir PadDirection) Pad {
 
 	var goret Pad
 
-	goret = UnsafePadFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePadFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -32168,14 +33014,14 @@ func NewGhostPadNoTarget(name string, dir PadDirection) Pad {
 // 
 // The function returns the following values:
 // 
-// 	- goret Pad 
+// 	- goret Pad (nullable) 
 //
 // Create a new ghostpad based on @templ, without setting a target. The
 // direction will be taken from the @templ.
 func NewGhostPadNoTargetFromTemplate(name string, templ PadTemplate) Pad {
 	var carg1 *C.gchar          // in, none, string, nullable-string
 	var carg2 *C.GstPadTemplate // in, none, converted
-	var cret  *C.GstPad         // return, none, converted
+	var cret  *C.GstPad         // return, none, converted, nullable
 
 	if name != "" {
 		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
@@ -32189,7 +33035,9 @@ func NewGhostPadNoTargetFromTemplate(name string, templ PadTemplate) Pad {
 
 	var goret Pad
 
-	goret = UnsafePadFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePadFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -32320,12 +33168,12 @@ func (gpad *GhostPadInstance) Construct() bool {
 // GetTarget wraps gst_ghost_pad_get_target
 // The function returns the following values:
 // 
-// 	- goret Pad 
+// 	- goret Pad (nullable) 
 //
 // Get the target pad of @gpad. Unref target pad after usage.
 func (gpad *GhostPadInstance) GetTarget() Pad {
 	var carg0 *C.GstGhostPad // in, none, converted
-	var cret  *C.GstPad      // return, full, converted
+	var cret  *C.GstPad      // return, full, converted, nullable
 
 	carg0 = (*C.GstGhostPad)(UnsafeGhostPadToGlibNone(gpad))
 
@@ -32334,7 +33182,9 @@ func (gpad *GhostPadInstance) GetTarget() Pad {
 
 	var goret Pad
 
-	goret = UnsafePadFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePadFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -32776,7 +33626,7 @@ type Bin interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret Pad 
+	// 	- goret Pad (nullable) 
 	//
 	// Recursively looks for elements with an unlinked pad of the given
 	// direction within the specified bin and returns an unlinked pad
@@ -32792,7 +33642,7 @@ type Bin interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret Element 
+	// 	- goret Element (nullable) 
 	//
 	// Looks for an element inside the bin that implements the given
 	// interface. If such an element is found, it returns the element.
@@ -32808,7 +33658,7 @@ type Bin interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret Element 
+	// 	- goret Element (nullable) 
 	//
 	// Gets the element with the given name from a bin. This
 	// function recurses into child bins.
@@ -32821,7 +33671,7 @@ type Bin interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret Element 
+	// 	- goret Element (nullable) 
 	//
 	// Gets the element with the given name from this bin. If the
 	// element is not found, a recursion is performed on the parent bin.
@@ -32839,7 +33689,7 @@ type Bin interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *Iterator 
+	// 	- goret *Iterator (nullable) 
 	//
 	// Looks for all elements inside the bin with the given element factory name.
 	// The function recurses inside child bins. The iterator will yield a series of
@@ -32853,7 +33703,7 @@ type Bin interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *Iterator 
+	// 	- goret *Iterator (nullable) 
 	//
 	// Looks for all elements inside the bin that implements the given
 	// interface. You can safely cast all returned elements to the given interface.
@@ -32863,14 +33713,14 @@ type Bin interface {
 	// IterateElements wraps gst_bin_iterate_elements
 	// The function returns the following values:
 	// 
-	// 	- goret *Iterator 
+	// 	- goret *Iterator (nullable) 
 	//
 	// Gets an iterator for the elements in this bin.
 	IterateElements() *Iterator
 	// IterateRecurse wraps gst_bin_iterate_recurse
 	// The function returns the following values:
 	// 
-	// 	- goret *Iterator 
+	// 	- goret *Iterator (nullable) 
 	//
 	// Gets an iterator for the elements in this bin.
 	// This iterator recurses into GstBin children.
@@ -32878,7 +33728,7 @@ type Bin interface {
 	// IterateSinks wraps gst_bin_iterate_sinks
 	// The function returns the following values:
 	// 
-	// 	- goret *Iterator 
+	// 	- goret *Iterator (nullable) 
 	//
 	// Gets an iterator for all elements in the bin that have the
 	// #GST_ELEMENT_FLAG_SINK flag set.
@@ -32886,7 +33736,7 @@ type Bin interface {
 	// IterateSorted wraps gst_bin_iterate_sorted
 	// The function returns the following values:
 	// 
-	// 	- goret *Iterator 
+	// 	- goret *Iterator (nullable) 
 	//
 	// Gets an iterator for the elements in this bin in topologically
 	// sorted order. This means that the elements are returned from
@@ -32898,7 +33748,7 @@ type Bin interface {
 	// IterateSources wraps gst_bin_iterate_sources
 	// The function returns the following values:
 	// 
-	// 	- goret *Iterator 
+	// 	- goret *Iterator (nullable) 
 	//
 	// Gets an iterator for all elements in the bin that have the
 	// #GST_ELEMENT_FLAG_SOURCE flag set.
@@ -33111,7 +33961,7 @@ func (bin *BinInstance) Add(element Element) bool {
 // 
 // The function returns the following values:
 // 
-// 	- goret Pad 
+// 	- goret Pad (nullable) 
 //
 // Recursively looks for elements with an unlinked pad of the given
 // direction within the specified bin and returns an unlinked pad
@@ -33121,7 +33971,7 @@ func (bin *BinInstance) Add(element Element) bool {
 func (bin *BinInstance) FindUnlinkedPad(direction PadDirection) Pad {
 	var carg0 *C.GstBin         // in, none, converted
 	var carg1 C.GstPadDirection // in, none, casted
-	var cret  *C.GstPad         // return, full, converted
+	var cret  *C.GstPad         // return, full, converted, nullable
 
 	carg0 = (*C.GstBin)(UnsafeBinToGlibNone(bin))
 	carg1 = C.GstPadDirection(direction)
@@ -33132,7 +33982,9 @@ func (bin *BinInstance) FindUnlinkedPad(direction PadDirection) Pad {
 
 	var goret Pad
 
-	goret = UnsafePadFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePadFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -33145,7 +33997,7 @@ func (bin *BinInstance) FindUnlinkedPad(direction PadDirection) Pad {
 // 
 // The function returns the following values:
 // 
-// 	- goret Element 
+// 	- goret Element (nullable) 
 //
 // Looks for an element inside the bin that implements the given
 // interface. If such an element is found, it returns the element.
@@ -33155,7 +34007,7 @@ func (bin *BinInstance) FindUnlinkedPad(direction PadDirection) Pad {
 func (bin *BinInstance) GetByInterface(iface gobject.Type) Element {
 	var carg0 *C.GstBin     // in, none, converted
 	var carg1 C.GType       // in, none, casted, alias
-	var cret  *C.GstElement // return, full, converted
+	var cret  *C.GstElement // return, full, converted, nullable
 
 	carg0 = (*C.GstBin)(UnsafeBinToGlibNone(bin))
 	carg1 = C.GType(iface)
@@ -33166,7 +34018,9 @@ func (bin *BinInstance) GetByInterface(iface gobject.Type) Element {
 
 	var goret Element
 
-	goret = UnsafeElementFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeElementFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -33179,14 +34033,14 @@ func (bin *BinInstance) GetByInterface(iface gobject.Type) Element {
 // 
 // The function returns the following values:
 // 
-// 	- goret Element 
+// 	- goret Element (nullable) 
 //
 // Gets the element with the given name from a bin. This
 // function recurses into child bins.
 func (bin *BinInstance) GetByName(name string) Element {
 	var carg0 *C.GstBin     // in, none, converted
 	var carg1 *C.gchar      // in, none, string
-	var cret  *C.GstElement // return, full, converted
+	var cret  *C.GstElement // return, full, converted, nullable
 
 	carg0 = (*C.GstBin)(UnsafeBinToGlibNone(bin))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
@@ -33198,7 +34052,9 @@ func (bin *BinInstance) GetByName(name string) Element {
 
 	var goret Element
 
-	goret = UnsafeElementFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeElementFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -33211,14 +34067,14 @@ func (bin *BinInstance) GetByName(name string) Element {
 // 
 // The function returns the following values:
 // 
-// 	- goret Element 
+// 	- goret Element (nullable) 
 //
 // Gets the element with the given name from this bin. If the
 // element is not found, a recursion is performed on the parent bin.
 func (bin *BinInstance) GetByNameRecurseUp(name string) Element {
 	var carg0 *C.GstBin     // in, none, converted
 	var carg1 *C.gchar      // in, none, string
-	var cret  *C.GstElement // return, full, converted
+	var cret  *C.GstElement // return, full, converted, nullable
 
 	carg0 = (*C.GstBin)(UnsafeBinToGlibNone(bin))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
@@ -33230,7 +34086,9 @@ func (bin *BinInstance) GetByNameRecurseUp(name string) Element {
 
 	var goret Element
 
-	goret = UnsafeElementFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeElementFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -33263,7 +34121,7 @@ func (bin *BinInstance) GetSuppressedFlags() ElementFlags {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Iterator 
+// 	- goret *Iterator (nullable) 
 //
 // Looks for all elements inside the bin with the given element factory name.
 // The function recurses inside child bins. The iterator will yield a series of
@@ -33271,7 +34129,7 @@ func (bin *BinInstance) GetSuppressedFlags() ElementFlags {
 func (bin *BinInstance) IterateAllByElementFactoryName(factoryName string) *Iterator {
 	var carg0 *C.GstBin      // in, none, converted
 	var carg1 *C.gchar       // in, none, string
-	var cret  *C.GstIterator // return, full, converted
+	var cret  *C.GstIterator // return, full, converted, nullable
 
 	carg0 = (*C.GstBin)(UnsafeBinToGlibNone(bin))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(factoryName)))
@@ -33283,7 +34141,9 @@ func (bin *BinInstance) IterateAllByElementFactoryName(factoryName string) *Iter
 
 	var goret *Iterator
 
-	goret = UnsafeIteratorFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeIteratorFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -33296,7 +34156,7 @@ func (bin *BinInstance) IterateAllByElementFactoryName(factoryName string) *Iter
 // 
 // The function returns the following values:
 // 
-// 	- goret *Iterator 
+// 	- goret *Iterator (nullable) 
 //
 // Looks for all elements inside the bin that implements the given
 // interface. You can safely cast all returned elements to the given interface.
@@ -33305,7 +34165,7 @@ func (bin *BinInstance) IterateAllByElementFactoryName(factoryName string) *Iter
 func (bin *BinInstance) IterateAllByInterface(iface gobject.Type) *Iterator {
 	var carg0 *C.GstBin      // in, none, converted
 	var carg1 C.GType        // in, none, casted, alias
-	var cret  *C.GstIterator // return, full, converted
+	var cret  *C.GstIterator // return, full, converted, nullable
 
 	carg0 = (*C.GstBin)(UnsafeBinToGlibNone(bin))
 	carg1 = C.GType(iface)
@@ -33316,7 +34176,9 @@ func (bin *BinInstance) IterateAllByInterface(iface gobject.Type) *Iterator {
 
 	var goret *Iterator
 
-	goret = UnsafeIteratorFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeIteratorFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -33324,12 +34186,12 @@ func (bin *BinInstance) IterateAllByInterface(iface gobject.Type) *Iterator {
 // IterateElements wraps gst_bin_iterate_elements
 // The function returns the following values:
 // 
-// 	- goret *Iterator 
+// 	- goret *Iterator (nullable) 
 //
 // Gets an iterator for the elements in this bin.
 func (bin *BinInstance) IterateElements() *Iterator {
 	var carg0 *C.GstBin      // in, none, converted
-	var cret  *C.GstIterator // return, full, converted
+	var cret  *C.GstIterator // return, full, converted, nullable
 
 	carg0 = (*C.GstBin)(UnsafeBinToGlibNone(bin))
 
@@ -33338,7 +34200,9 @@ func (bin *BinInstance) IterateElements() *Iterator {
 
 	var goret *Iterator
 
-	goret = UnsafeIteratorFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeIteratorFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -33346,13 +34210,13 @@ func (bin *BinInstance) IterateElements() *Iterator {
 // IterateRecurse wraps gst_bin_iterate_recurse
 // The function returns the following values:
 // 
-// 	- goret *Iterator 
+// 	- goret *Iterator (nullable) 
 //
 // Gets an iterator for the elements in this bin.
 // This iterator recurses into GstBin children.
 func (bin *BinInstance) IterateRecurse() *Iterator {
 	var carg0 *C.GstBin      // in, none, converted
-	var cret  *C.GstIterator // return, full, converted
+	var cret  *C.GstIterator // return, full, converted, nullable
 
 	carg0 = (*C.GstBin)(UnsafeBinToGlibNone(bin))
 
@@ -33361,7 +34225,9 @@ func (bin *BinInstance) IterateRecurse() *Iterator {
 
 	var goret *Iterator
 
-	goret = UnsafeIteratorFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeIteratorFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -33369,13 +34235,13 @@ func (bin *BinInstance) IterateRecurse() *Iterator {
 // IterateSinks wraps gst_bin_iterate_sinks
 // The function returns the following values:
 // 
-// 	- goret *Iterator 
+// 	- goret *Iterator (nullable) 
 //
 // Gets an iterator for all elements in the bin that have the
 // #GST_ELEMENT_FLAG_SINK flag set.
 func (bin *BinInstance) IterateSinks() *Iterator {
 	var carg0 *C.GstBin      // in, none, converted
-	var cret  *C.GstIterator // return, full, converted
+	var cret  *C.GstIterator // return, full, converted, nullable
 
 	carg0 = (*C.GstBin)(UnsafeBinToGlibNone(bin))
 
@@ -33384,7 +34250,9 @@ func (bin *BinInstance) IterateSinks() *Iterator {
 
 	var goret *Iterator
 
-	goret = UnsafeIteratorFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeIteratorFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -33392,7 +34260,7 @@ func (bin *BinInstance) IterateSinks() *Iterator {
 // IterateSorted wraps gst_bin_iterate_sorted
 // The function returns the following values:
 // 
-// 	- goret *Iterator 
+// 	- goret *Iterator (nullable) 
 //
 // Gets an iterator for the elements in this bin in topologically
 // sorted order. This means that the elements are returned from
@@ -33402,7 +34270,7 @@ func (bin *BinInstance) IterateSinks() *Iterator {
 // of the bin elements and for clock selection.
 func (bin *BinInstance) IterateSorted() *Iterator {
 	var carg0 *C.GstBin      // in, none, converted
-	var cret  *C.GstIterator // return, full, converted
+	var cret  *C.GstIterator // return, full, converted, nullable
 
 	carg0 = (*C.GstBin)(UnsafeBinToGlibNone(bin))
 
@@ -33411,7 +34279,9 @@ func (bin *BinInstance) IterateSorted() *Iterator {
 
 	var goret *Iterator
 
-	goret = UnsafeIteratorFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeIteratorFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -33419,13 +34289,13 @@ func (bin *BinInstance) IterateSorted() *Iterator {
 // IterateSources wraps gst_bin_iterate_sources
 // The function returns the following values:
 // 
-// 	- goret *Iterator 
+// 	- goret *Iterator (nullable) 
 //
 // Gets an iterator for all elements in the bin that have the
 // #GST_ELEMENT_FLAG_SOURCE flag set.
 func (bin *BinInstance) IterateSources() *Iterator {
 	var carg0 *C.GstBin      // in, none, converted
-	var cret  *C.GstIterator // return, full, converted
+	var cret  *C.GstIterator // return, full, converted, nullable
 
 	carg0 = (*C.GstBin)(UnsafeBinToGlibNone(bin))
 
@@ -33434,7 +34304,9 @@ func (bin *BinInstance) IterateSources() *Iterator {
 
 	var goret *Iterator
 
-	goret = UnsafeIteratorFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeIteratorFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -34271,12 +35143,12 @@ func NewAllocationParams() *AllocationParams {
 // Copy wraps gst_allocation_params_copy
 // The function returns the following values:
 // 
-// 	- goret *AllocationParams 
+// 	- goret *AllocationParams (nullable) 
 //
 // Create a copy of @params.
 func (params *AllocationParams) Copy() *AllocationParams {
 	var carg0 *C.GstAllocationParams // in, none, converted
-	var cret  *C.GstAllocationParams // return, full, converted
+	var cret  *C.GstAllocationParams // return, full, converted, nullable
 
 	carg0 = (*C.GstAllocationParams)(UnsafeAllocationParamsToGlibNone(params))
 
@@ -34285,7 +35157,9 @@ func (params *AllocationParams) Copy() *AllocationParams {
 
 	var goret *AllocationParams
 
-	goret = UnsafeAllocationParamsFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeAllocationParamsFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -34759,7 +35633,7 @@ func NewBuffer() *Buffer {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Buffer 
+// 	- goret *Buffer (nullable) 
 //
 // Tries to create a newly allocated buffer with data of the given size and
 // extra parameters from @allocator. If the requested amount of memory can't be
@@ -34772,7 +35646,7 @@ func NewBufferAllocate(allocator Allocator, size uint, params *AllocationParams)
 	var carg1 *C.GstAllocator        // in, none, converted, nullable
 	var carg2 C.gsize                // in, none, casted
 	var carg3 *C.GstAllocationParams // in, none, converted, nullable
-	var cret  *C.GstBuffer           // return, full, converted
+	var cret  *C.GstBuffer           // return, full, converted, nullable
 
 	if allocator != nil {
 		carg1 = (*C.GstAllocator)(UnsafeAllocatorToGlibNone(allocator))
@@ -34789,7 +35663,9 @@ func NewBufferAllocate(allocator Allocator, size uint, params *AllocationParams)
 
 	var goret *Buffer
 
-	goret = UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -34852,14 +35728,14 @@ func BufferGetMaxMemory() uint {
 // 
 // The function returns the following values:
 // 
-// 	- goret *CustomMeta 
+// 	- goret *CustomMeta (nullable) 
 //
 // Creates and adds a #GstCustomMeta for the desired @name. @name must have
 // been successfully registered with gst_meta_register_custom().
 func (buffer *Buffer) AddCustomMeta(name string) *CustomMeta {
 	var carg0 *C.GstBuffer     // in, none, converted
 	var carg1 *C.gchar         // in, none, string
-	var cret  *C.GstCustomMeta // return, none, converted
+	var cret  *C.GstCustomMeta // return, none, converted, nullable
 
 	carg0 = (*C.GstBuffer)(UnsafeBufferToGlibNone(buffer))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
@@ -34871,7 +35747,9 @@ func (buffer *Buffer) AddCustomMeta(name string) *CustomMeta {
 
 	var goret *CustomMeta
 
-	goret = UnsafeCustomMetaFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeCustomMetaFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -34884,14 +35762,14 @@ func (buffer *Buffer) AddCustomMeta(name string) *CustomMeta {
 // 
 // The function returns the following values:
 // 
-// 	- goret *ParentBufferMeta 
+// 	- goret *ParentBufferMeta (nullable) 
 //
 // Adds a #GstParentBufferMeta to @buffer that holds a reference on
 // @ref until the buffer is freed.
 func (buffer *Buffer) AddParentBufferMeta(ref *Buffer) *ParentBufferMeta {
 	var carg0 *C.GstBuffer           // in, none, converted
 	var carg1 *C.GstBuffer           // in, none, converted
-	var cret  *C.GstParentBufferMeta // return, none, converted
+	var cret  *C.GstParentBufferMeta // return, none, converted, nullable
 
 	carg0 = (*C.GstBuffer)(UnsafeBufferToGlibNone(buffer))
 	carg1 = (*C.GstBuffer)(UnsafeBufferToGlibNone(ref))
@@ -34902,7 +35780,9 @@ func (buffer *Buffer) AddParentBufferMeta(ref *Buffer) *ParentBufferMeta {
 
 	var goret *ParentBufferMeta
 
-	goret = UnsafeParentBufferMetaFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeParentBufferMetaFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -34949,7 +35829,7 @@ func (buffer *Buffer) AddProtectionMeta(info *Structure) *ProtectionMeta {
 // 
 // The function returns the following values:
 // 
-// 	- goret *ReferenceTimestampMeta 
+// 	- goret *ReferenceTimestampMeta (nullable) 
 //
 // Adds a #GstReferenceTimestampMeta to @buffer that holds a @timestamp and
 // optionally @duration based on a specific timestamp @reference. See the
@@ -34959,7 +35839,7 @@ func (buffer *Buffer) AddReferenceTimestampMeta(reference *Caps, timestamp Clock
 	var carg1 *C.GstCaps                   // in, none, converted
 	var carg2 C.GstClockTime               // in, none, casted, alias
 	var carg3 C.GstClockTime               // in, none, casted, alias
-	var cret  *C.GstReferenceTimestampMeta // return, none, converted
+	var cret  *C.GstReferenceTimestampMeta // return, none, converted, nullable
 
 	carg0 = (*C.GstBuffer)(UnsafeBufferToGlibNone(buffer))
 	carg1 = (*C.GstCaps)(UnsafeCapsToGlibNone(reference))
@@ -34974,7 +35854,9 @@ func (buffer *Buffer) AddReferenceTimestampMeta(reference *Caps, timestamp Clock
 
 	var goret *ReferenceTimestampMeta
 
-	goret = UnsafeReferenceTimestampMetaFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeReferenceTimestampMetaFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -35076,13 +35958,13 @@ func (buf1 *Buffer) AppendRegion(buf2 *Buffer, offset int, size int) *Buffer {
 // CopyDeep wraps gst_buffer_copy_deep
 // The function returns the following values:
 // 
-// 	- goret *Buffer 
+// 	- goret *Buffer (nullable) 
 //
 // Creates a copy of the given buffer. This will make a newly allocated
 // copy of the data the source buffer contains.
 func (buf *Buffer) CopyDeep() *Buffer {
 	var carg0 *C.GstBuffer // in, none, converted
-	var cret  *C.GstBuffer // return, full, converted
+	var cret  *C.GstBuffer // return, full, converted, nullable
 
 	carg0 = (*C.GstBuffer)(UnsafeBufferToGlibNone(buf))
 
@@ -35091,7 +35973,9 @@ func (buf *Buffer) CopyDeep() *Buffer {
 
 	var goret *Buffer
 
-	goret = UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -35157,7 +36041,7 @@ func (dest *Buffer) CopyInto(src *Buffer, flags BufferCopyFlagsType, offset uint
 // 
 // The function returns the following values:
 // 
-// 	- goret *Buffer 
+// 	- goret *Buffer (nullable) 
 //
 // Creates a sub-buffer from @parent at @offset and @size.
 // This sub-buffer uses the actual memory space of the parent buffer.
@@ -35172,7 +36056,7 @@ func (parent *Buffer) CopyRegion(flags BufferCopyFlagsType, offset uint, size ui
 	var carg1 C.GstBufferCopyFlags // in, none, casted
 	var carg2 C.gsize              // in, none, casted
 	var carg3 C.gsize              // in, none, casted
-	var cret  *C.GstBuffer         // return, full, converted
+	var cret  *C.GstBuffer         // return, full, converted, nullable
 
 	carg0 = (*C.GstBuffer)(UnsafeBufferToGlibNone(parent))
 	carg1 = C.GstBufferCopyFlags(flags)
@@ -35187,7 +36071,9 @@ func (parent *Buffer) CopyRegion(flags BufferCopyFlagsType, offset uint, size ui
 
 	var goret *Buffer
 
-	goret = UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -35291,13 +36177,13 @@ func (buffer *Buffer) ForEachMeta(fn BufferForEachMetaFunc) bool {
 // GetAllMemory wraps gst_buffer_get_all_memory
 // The function returns the following values:
 // 
-// 	- goret *Memory 
+// 	- goret *Memory (nullable) 
 //
 // Gets all the memory blocks in @buffer. The memory blocks will be merged
 // into one large #GstMemory.
 func (buffer *Buffer) GetAllMemory() *Memory {
 	var carg0 *C.GstBuffer // in, none, converted
-	var cret  *C.GstMemory // return, full, converted
+	var cret  *C.GstMemory // return, full, converted, nullable
 
 	carg0 = (*C.GstBuffer)(UnsafeBufferToGlibNone(buffer))
 
@@ -35306,7 +36192,9 @@ func (buffer *Buffer) GetAllMemory() *Memory {
 
 	var goret *Memory
 
-	goret = UnsafeMemoryFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeMemoryFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -35319,13 +36207,13 @@ func (buffer *Buffer) GetAllMemory() *Memory {
 // 
 // The function returns the following values:
 // 
-// 	- goret *CustomMeta 
+// 	- goret *CustomMeta (nullable) 
 //
 // Finds the first #GstCustomMeta on @buffer for the desired @name.
 func (buffer *Buffer) GetCustomMeta(name string) *CustomMeta {
 	var carg0 *C.GstBuffer     // in, none, converted
 	var carg1 *C.gchar         // in, none, string
-	var cret  *C.GstCustomMeta // return, none, converted
+	var cret  *C.GstCustomMeta // return, none, converted, nullable
 
 	carg0 = (*C.GstBuffer)(UnsafeBufferToGlibNone(buffer))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
@@ -35337,7 +36225,9 @@ func (buffer *Buffer) GetCustomMeta(name string) *CustomMeta {
 
 	var goret *CustomMeta
 
-	goret = UnsafeCustomMetaFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeCustomMetaFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -35372,13 +36262,13 @@ func (buffer *Buffer) GetFlags() BufferFlags {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Memory 
+// 	- goret *Memory (nullable) 
 //
 // Gets the memory block at index @idx in @buffer.
 func (buffer *Buffer) GetMemory(idx uint) *Memory {
 	var carg0 *C.GstBuffer // in, none, converted
 	var carg1 C.guint      // in, none, casted
-	var cret  *C.GstMemory // return, full, converted
+	var cret  *C.GstMemory // return, full, converted, nullable
 
 	carg0 = (*C.GstBuffer)(UnsafeBufferToGlibNone(buffer))
 	carg1 = C.guint(idx)
@@ -35389,7 +36279,9 @@ func (buffer *Buffer) GetMemory(idx uint) *Memory {
 
 	var goret *Memory
 
-	goret = UnsafeMemoryFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeMemoryFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -35403,7 +36295,7 @@ func (buffer *Buffer) GetMemory(idx uint) *Memory {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Memory 
+// 	- goret *Memory (nullable) 
 //
 // Gets @length memory blocks in @buffer starting at @idx. The memory blocks will
 // be merged into one large #GstMemory.
@@ -35413,7 +36305,7 @@ func (buffer *Buffer) GetMemoryRange(idx uint, length int) *Memory {
 	var carg0 *C.GstBuffer // in, none, converted
 	var carg1 C.guint      // in, none, casted
 	var carg2 C.gint       // in, none, casted
-	var cret  *C.GstMemory // return, full, converted
+	var cret  *C.GstMemory // return, full, converted, nullable
 
 	carg0 = (*C.GstBuffer)(UnsafeBufferToGlibNone(buffer))
 	carg1 = C.guint(idx)
@@ -35426,7 +36318,9 @@ func (buffer *Buffer) GetMemoryRange(idx uint, length int) *Memory {
 
 	var goret *Memory
 
-	goret = UnsafeMemoryFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeMemoryFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -35439,7 +36333,7 @@ func (buffer *Buffer) GetMemoryRange(idx uint, length int) *Memory {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Meta 
+// 	- goret *Meta (nullable) 
 //
 // Gets the metadata for @api on buffer. When there is no such metadata, %NULL is
 // returned. If multiple metadata with the given @api are attached to this
@@ -35449,7 +36343,7 @@ func (buffer *Buffer) GetMemoryRange(idx uint, length int) *Memory {
 func (buffer *Buffer) GetMeta(api gobject.Type) *Meta {
 	var carg0 *C.GstBuffer // in, none, converted
 	var carg1 C.GType      // in, none, casted, alias
-	var cret  *C.GstMeta   // return, none, converted
+	var cret  *C.GstMeta   // return, none, converted, nullable
 
 	carg0 = (*C.GstBuffer)(UnsafeBufferToGlibNone(buffer))
 	carg1 = C.GType(api)
@@ -35460,7 +36354,9 @@ func (buffer *Buffer) GetMeta(api gobject.Type) *Meta {
 
 	var goret *Meta
 
-	goret = UnsafeMetaFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeMetaFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -35501,7 +36397,7 @@ func (buffer *Buffer) GetNMeta(apiType gobject.Type) uint {
 // 
 // The function returns the following values:
 // 
-// 	- goret *ReferenceTimestampMeta 
+// 	- goret *ReferenceTimestampMeta (nullable) 
 //
 // Finds the first #GstReferenceTimestampMeta on @buffer that conforms to
 // @reference. Conformance is tested by checking if the meta's reference is a
@@ -35511,7 +36407,7 @@ func (buffer *Buffer) GetNMeta(apiType gobject.Type) uint {
 func (buffer *Buffer) GetReferenceTimestampMeta(reference *Caps) *ReferenceTimestampMeta {
 	var carg0 *C.GstBuffer                 // in, none, converted
 	var carg1 *C.GstCaps                   // in, none, converted, nullable
-	var cret  *C.GstReferenceTimestampMeta // return, none, converted
+	var cret  *C.GstReferenceTimestampMeta // return, none, converted, nullable
 
 	carg0 = (*C.GstBuffer)(UnsafeBufferToGlibNone(buffer))
 	if reference != nil {
@@ -35524,7 +36420,9 @@ func (buffer *Buffer) GetReferenceTimestampMeta(reference *Caps) *ReferenceTimes
 
 	var goret *ReferenceTimestampMeta
 
-	goret = UnsafeReferenceTimestampMetaFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeReferenceTimestampMetaFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -35833,7 +36731,7 @@ func (buffer *Buffer) NMemory() uint {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Memory 
+// 	- goret *Memory (nullable) 
 //
 // Gets the memory block at @idx in @buffer. The memory block stays valid until
 // the memory block in @buffer is removed, replaced or merged, typically with
@@ -35841,7 +36739,7 @@ func (buffer *Buffer) NMemory() uint {
 func (buffer *Buffer) PeekMemory(idx uint) *Memory {
 	var carg0 *C.GstBuffer // in, none, converted
 	var carg1 C.guint      // in, none, casted
-	var cret  *C.GstMemory // return, borrow, converted
+	var cret  *C.GstMemory // return, borrow, converted, nullable
 
 	carg0 = (*C.GstBuffer)(UnsafeBufferToGlibNone(buffer))
 	carg1 = C.guint(idx)
@@ -35852,8 +36750,10 @@ func (buffer *Buffer) PeekMemory(idx uint) *Memory {
 
 	var goret *Memory
 
-	goret = UnsafeMemoryFromGlibBorrow(unsafe.Pointer(cret))
-	runtime.AddCleanup(goret, func(_ *Buffer) {}, buffer)
+	if cret != nil {
+		goret = UnsafeMemoryFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *Buffer) {}, buffer)
+	}
 
 	return goret
 }
@@ -36414,7 +37314,7 @@ func (list *BufferList) ForEach(fn BufferListFunc) bool {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Buffer 
+// 	- goret *Buffer (nullable) 
 //
 // Gets the buffer at @idx.
 // 
@@ -36423,7 +37323,7 @@ func (list *BufferList) ForEach(fn BufferListFunc) bool {
 func (list *BufferList) Get(idx uint) *Buffer {
 	var carg0 *C.GstBufferList // in, none, converted
 	var carg1 C.guint          // in, none, casted
-	var cret  *C.GstBuffer     // return, borrow, converted
+	var cret  *C.GstBuffer     // return, borrow, converted, nullable
 
 	carg0 = (*C.GstBufferList)(UnsafeBufferListToGlibNone(list))
 	carg1 = C.guint(idx)
@@ -36434,8 +37334,10 @@ func (list *BufferList) Get(idx uint) *Buffer {
 
 	var goret *Buffer
 
-	goret = UnsafeBufferFromGlibBorrow(unsafe.Pointer(cret))
-	runtime.AddCleanup(goret, func(_ *BufferList) {}, list)
+	if cret != nil {
+		goret = UnsafeBufferFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *BufferList) {}, list)
+	}
 
 	return goret
 }
@@ -36448,7 +37350,7 @@ func (list *BufferList) Get(idx uint) *Buffer {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Buffer 
+// 	- goret *Buffer (nullable) 
 //
 // Gets the buffer at @idx, ensuring it is a writable buffer.
 // 
@@ -36457,7 +37359,7 @@ func (list *BufferList) Get(idx uint) *Buffer {
 func (list *BufferList) GetWritable(idx uint) *Buffer {
 	var carg0 *C.GstBufferList // in, none, converted
 	var carg1 C.guint          // in, none, casted
-	var cret  *C.GstBuffer     // return, borrow, converted
+	var cret  *C.GstBuffer     // return, borrow, converted, nullable
 
 	carg0 = (*C.GstBufferList)(UnsafeBufferListToGlibNone(list))
 	carg1 = C.guint(idx)
@@ -36468,8 +37370,10 @@ func (list *BufferList) GetWritable(idx uint) *Buffer {
 
 	var goret *Buffer
 
-	goret = UnsafeBufferFromGlibBorrow(unsafe.Pointer(cret))
-	runtime.AddCleanup(goret, func(_ *BufferList) {}, list)
+	if cret != nil {
+		goret = UnsafeBufferFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *BufferList) {}, list)
+	}
 
 	return goret
 }
@@ -36989,7 +37893,7 @@ func NewCapsEmptySimple(mediaType string) *Caps {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Caps 
+// 	- goret *Caps (nullable) 
 //
 // Converts @caps from a string representation.
 // 
@@ -36997,7 +37901,7 @@ func NewCapsEmptySimple(mediaType string) *Caps {
 // when there were nested #GstCaps / #GstStructure deeper than one level.
 func CapsFromString(str string) *Caps {
 	var carg1 *C.gchar   // in, none, string
-	var cret  *C.GstCaps // return, full, converted
+	var cret  *C.GstCaps // return, full, converted, nullable
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(str)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -37007,7 +37911,9 @@ func CapsFromString(str string) *Caps {
 
 	var goret *Caps
 
-	goret = UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -37275,7 +38181,7 @@ func (caps *Caps) ForEach(fn CapsForEachFunc) bool {
 // 
 // The function returns the following values:
 // 
-// 	- goret *CapsFeatures 
+// 	- goret *CapsFeatures (nullable) 
 //
 // Finds the features in @caps at @index, and returns it.
 // 
@@ -37290,7 +38196,7 @@ func (caps *Caps) ForEach(fn CapsForEachFunc) bool {
 func (caps *Caps) GetFeatures(index uint) *CapsFeatures {
 	var carg0 *C.GstCaps         // in, none, converted
 	var carg1 C.guint            // in, none, casted
-	var cret  *C.GstCapsFeatures // return, none, converted
+	var cret  *C.GstCapsFeatures // return, none, converted, nullable
 
 	carg0 = (*C.GstCaps)(UnsafeCapsToGlibNone(caps))
 	carg1 = C.guint(index)
@@ -37301,7 +38207,9 @@ func (caps *Caps) GetFeatures(index uint) *CapsFeatures {
 
 	var goret *CapsFeatures
 
-	goret = UnsafeCapsFeaturesFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeCapsFeaturesFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -38078,14 +38986,14 @@ func (caps *Caps) Simplify() *Caps {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Structure 
+// 	- goret *Structure (nullable) 
 //
 // Retrieves the structure with the given index from the list of structures
 // contained in @caps. The caller becomes the owner of the returned structure.
 func (caps *Caps) StealStructure(index uint) *Structure {
 	var carg0 *C.GstCaps      // in, none, converted
 	var carg1 C.guint         // in, none, casted
-	var cret  *C.GstStructure // return, full, converted
+	var cret  *C.GstStructure // return, full, converted, nullable
 
 	carg0 = (*C.GstCaps)(UnsafeCapsToGlibNone(caps))
 	carg1 = C.guint(index)
@@ -38096,7 +39004,9 @@ func (caps *Caps) StealStructure(index uint) *Structure {
 
 	var goret *Structure
 
-	goret = UnsafeStructureFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeStructureFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -38364,12 +39274,12 @@ func NewCapsFeaturesSingle(feature string) *CapsFeatures {
 // 
 // The function returns the following values:
 // 
-// 	- goret *CapsFeatures 
+// 	- goret *CapsFeatures (nullable) 
 //
 // Creates a #GstCapsFeatures from a string representation.
 func CapsFeaturesFromString(features string) *CapsFeatures {
 	var carg1 *C.gchar           // in, none, string
-	var cret  *C.GstCapsFeatures // return, full, converted
+	var cret  *C.GstCapsFeatures // return, full, converted, nullable
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(features)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -38379,7 +39289,9 @@ func CapsFeaturesFromString(features string) *CapsFeatures {
 
 	var goret *CapsFeatures
 
-	goret = UnsafeCapsFeaturesFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeCapsFeaturesFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -38518,13 +39430,13 @@ func (features *CapsFeatures) Copy() *CapsFeatures {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Returns the @i-th feature of @features.
 func (features *CapsFeatures) GetNth(i uint) string {
 	var carg0 *C.GstCapsFeatures // in, none, converted
 	var carg1 C.guint            // in, none, casted
-	var cret  *C.gchar           // return, none, string
+	var cret  *C.gchar           // return, none, string, nullable-string
 
 	carg0 = (*C.GstCapsFeatures)(UnsafeCapsFeaturesToGlibNone(features))
 	carg1 = C.guint(i)
@@ -38535,7 +39447,9 @@ func (features *CapsFeatures) GetNth(i uint) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -39553,7 +40467,7 @@ func UnsafeDateTimeToGlibFull(d *DateTime) unsafe.Pointer {
 // 
 // The function returns the following values:
 // 
-// 	- goret *DateTime 
+// 	- goret *DateTime (nullable) 
 //
 // Creates a new #GstDateTime using the date and times in the gregorian calendar
 // in the supplied timezone.
@@ -39577,7 +40491,7 @@ func NewDateTime(tzoffset float32, year int, month int, day int, hour int, minut
 	var carg5 C.gint         // in, none, casted
 	var carg6 C.gint         // in, none, casted
 	var carg7 C.gdouble      // in, none, casted
-	var cret  *C.GstDateTime // return, full, converted
+	var cret  *C.GstDateTime // return, full, converted, nullable
 
 	carg1 = C.gfloat(tzoffset)
 	carg2 = C.gint(year)
@@ -39598,7 +40512,9 @@ func NewDateTime(tzoffset float32, year int, month int, day int, hour int, minut
 
 	var goret *DateTime
 
-	goret = UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -39611,12 +40527,12 @@ func NewDateTime(tzoffset float32, year int, month int, day int, hour int, minut
 // 
 // The function returns the following values:
 // 
-// 	- goret *DateTime 
+// 	- goret *DateTime (nullable) 
 //
 // Creates a new #GstDateTime from a #GDateTime object.
 func NewDateTimeFromGDateTime(dt *glib.DateTime) *DateTime {
 	var carg1 *C.GDateTime   // in, full, converted, nullable
-	var cret  *C.GstDateTime // return, full, converted
+	var cret  *C.GstDateTime // return, full, converted, nullable
 
 	if dt != nil {
 		carg1 = (*C.GDateTime)(glib.UnsafeDateTimeToGlibFull(dt))
@@ -39627,7 +40543,9 @@ func NewDateTimeFromGDateTime(dt *glib.DateTime) *DateTime {
 
 	var goret *DateTime
 
-	goret = UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -39640,7 +40558,7 @@ func NewDateTimeFromGDateTime(dt *glib.DateTime) *DateTime {
 // 
 // The function returns the following values:
 // 
-// 	- goret *DateTime 
+// 	- goret *DateTime (nullable) 
 //
 // Tries to parse common variants of ISO-8601 datetime strings into a
 // #GstDateTime. Possible input formats are (for example):
@@ -39652,7 +40570,7 @@ func NewDateTimeFromGDateTime(dt *glib.DateTime) *DateTime {
 // provided (if any), otherwise UTC.
 func NewDateTimeFromISO8601String(str string) *DateTime {
 	var carg1 *C.gchar       // in, none, string
-	var cret  *C.GstDateTime // return, full, converted
+	var cret  *C.GstDateTime // return, full, converted, nullable
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(str)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -39662,7 +40580,9 @@ func NewDateTimeFromISO8601String(str string) *DateTime {
 
 	var goret *DateTime
 
-	goret = UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -39675,13 +40595,13 @@ func NewDateTimeFromISO8601String(str string) *DateTime {
 // 
 // The function returns the following values:
 // 
-// 	- goret *DateTime 
+// 	- goret *DateTime (nullable) 
 //
 // Creates a new #GstDateTime using the time since Jan 1, 1970 specified by
 // @secs. The #GstDateTime is in the local timezone.
 func NewDateTimeFromUnixEpochLocalTime(secs int64) *DateTime {
 	var carg1 C.gint64       // in, none, casted
-	var cret  *C.GstDateTime // return, full, converted
+	var cret  *C.GstDateTime // return, full, converted, nullable
 
 	carg1 = C.gint64(secs)
 
@@ -39690,7 +40610,9 @@ func NewDateTimeFromUnixEpochLocalTime(secs int64) *DateTime {
 
 	var goret *DateTime
 
-	goret = UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -39703,13 +40625,13 @@ func NewDateTimeFromUnixEpochLocalTime(secs int64) *DateTime {
 // 
 // The function returns the following values:
 // 
-// 	- goret *DateTime 
+// 	- goret *DateTime (nullable) 
 //
 // Creates a new #GstDateTime using the time since Jan 1, 1970 specified by
 // @usecs. The #GstDateTime is in the local timezone.
 func NewDateTimeFromUnixEpochLocalTimeUsecs(usecs int64) *DateTime {
 	var carg1 C.gint64       // in, none, casted
-	var cret  *C.GstDateTime // return, full, converted
+	var cret  *C.GstDateTime // return, full, converted, nullable
 
 	carg1 = C.gint64(usecs)
 
@@ -39718,7 +40640,9 @@ func NewDateTimeFromUnixEpochLocalTimeUsecs(usecs int64) *DateTime {
 
 	var goret *DateTime
 
-	goret = UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -39731,13 +40655,13 @@ func NewDateTimeFromUnixEpochLocalTimeUsecs(usecs int64) *DateTime {
 // 
 // The function returns the following values:
 // 
-// 	- goret *DateTime 
+// 	- goret *DateTime (nullable) 
 //
 // Creates a new #GstDateTime using the time since Jan 1, 1970 specified by
 // @secs. The #GstDateTime is in the UTC timezone.
 func NewDateTimeFromUnixEpochUTC(secs int64) *DateTime {
 	var carg1 C.gint64       // in, none, casted
-	var cret  *C.GstDateTime // return, full, converted
+	var cret  *C.GstDateTime // return, full, converted, nullable
 
 	carg1 = C.gint64(secs)
 
@@ -39746,7 +40670,9 @@ func NewDateTimeFromUnixEpochUTC(secs int64) *DateTime {
 
 	var goret *DateTime
 
-	goret = UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -39759,13 +40685,13 @@ func NewDateTimeFromUnixEpochUTC(secs int64) *DateTime {
 // 
 // The function returns the following values:
 // 
-// 	- goret *DateTime 
+// 	- goret *DateTime (nullable) 
 //
 // Creates a new #GstDateTime using the time since Jan 1, 1970 specified by
 // @usecs. The #GstDateTime is in UTC.
 func NewDateTimeFromUnixEpochUTCUsecs(usecs int64) *DateTime {
 	var carg1 C.gint64       // in, none, casted
-	var cret  *C.GstDateTime // return, full, converted
+	var cret  *C.GstDateTime // return, full, converted, nullable
 
 	carg1 = C.gint64(usecs)
 
@@ -39774,7 +40700,9 @@ func NewDateTimeFromUnixEpochUTCUsecs(usecs int64) *DateTime {
 
 	var goret *DateTime
 
-	goret = UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -39792,7 +40720,7 @@ func NewDateTimeFromUnixEpochUTCUsecs(usecs int64) *DateTime {
 // 
 // The function returns the following values:
 // 
-// 	- goret *DateTime 
+// 	- goret *DateTime (nullable) 
 //
 // Creates a new #GstDateTime using the date and times in the gregorian calendar
 // in the local timezone.
@@ -39816,7 +40744,7 @@ func NewDateTimeLocalTime(year int, month int, day int, hour int, minute int, se
 	var carg4 C.gint         // in, none, casted
 	var carg5 C.gint         // in, none, casted
 	var carg6 C.gdouble      // in, none, casted
-	var cret  *C.GstDateTime // return, full, converted
+	var cret  *C.GstDateTime // return, full, converted, nullable
 
 	carg1 = C.gint(year)
 	carg2 = C.gint(month)
@@ -39835,7 +40763,9 @@ func NewDateTimeLocalTime(year int, month int, day int, hour int, minute int, se
 
 	var goret *DateTime
 
-	goret = UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -39843,17 +40773,19 @@ func NewDateTimeLocalTime(year int, month int, day int, hour int, minute int, se
 // NewDateTimeNowLocalTime wraps gst_date_time_new_now_local_time
 // The function returns the following values:
 // 
-// 	- goret *DateTime 
+// 	- goret *DateTime (nullable) 
 //
 // Creates a new #GstDateTime representing the current date and time.
 func NewDateTimeNowLocalTime() *DateTime {
-	var cret *C.GstDateTime // return, full, converted
+	var cret *C.GstDateTime // return, full, converted, nullable
 
 	cret = C.gst_date_time_new_now_local_time()
 
 	var goret *DateTime
 
-	goret = UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -39861,18 +40793,20 @@ func NewDateTimeNowLocalTime() *DateTime {
 // NewDateTimeNowUTC wraps gst_date_time_new_now_utc
 // The function returns the following values:
 // 
-// 	- goret *DateTime 
+// 	- goret *DateTime (nullable) 
 //
 // Creates a new #GstDateTime that represents the current instant at Universal
 // coordinated time.
 func NewDateTimeNowUTC() *DateTime {
-	var cret *C.GstDateTime // return, full, converted
+	var cret *C.GstDateTime // return, full, converted, nullable
 
 	cret = C.gst_date_time_new_now_utc()
 
 	var goret *DateTime
 
-	goret = UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -39885,7 +40819,7 @@ func NewDateTimeNowUTC() *DateTime {
 // 
 // The function returns the following values:
 // 
-// 	- goret *DateTime 
+// 	- goret *DateTime (nullable) 
 //
 // Creates a new #GstDateTime using the date and times in the gregorian calendar
 // in the local timezone.
@@ -39893,7 +40827,7 @@ func NewDateTimeNowUTC() *DateTime {
 // @year should be from 1 to 9999.
 func NewDateTimeY(year int) *DateTime {
 	var carg1 C.gint         // in, none, casted
-	var cret  *C.GstDateTime // return, full, converted
+	var cret  *C.GstDateTime // return, full, converted, nullable
 
 	carg1 = C.gint(year)
 
@@ -39902,7 +40836,9 @@ func NewDateTimeY(year int) *DateTime {
 
 	var goret *DateTime
 
-	goret = UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -39916,7 +40852,7 @@ func NewDateTimeY(year int) *DateTime {
 // 
 // The function returns the following values:
 // 
-// 	- goret *DateTime 
+// 	- goret *DateTime (nullable) 
 //
 // Creates a new #GstDateTime using the date and times in the gregorian calendar
 // in the local timezone.
@@ -39928,7 +40864,7 @@ func NewDateTimeY(year int) *DateTime {
 func NewDateTimeYM(year int, month int) *DateTime {
 	var carg1 C.gint         // in, none, casted
 	var carg2 C.gint         // in, none, casted
-	var cret  *C.GstDateTime // return, full, converted
+	var cret  *C.GstDateTime // return, full, converted, nullable
 
 	carg1 = C.gint(year)
 	carg2 = C.gint(month)
@@ -39939,7 +40875,9 @@ func NewDateTimeYM(year int, month int) *DateTime {
 
 	var goret *DateTime
 
-	goret = UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -39954,7 +40892,7 @@ func NewDateTimeYM(year int, month int) *DateTime {
 // 
 // The function returns the following values:
 // 
-// 	- goret *DateTime 
+// 	- goret *DateTime (nullable) 
 //
 // Creates a new #GstDateTime using the date and times in the gregorian calendar
 // in the local timezone.
@@ -39970,7 +40908,7 @@ func NewDateTimeYmd(year int, month int, day int) *DateTime {
 	var carg1 C.gint         // in, none, casted
 	var carg2 C.gint         // in, none, casted
 	var carg3 C.gint         // in, none, casted
-	var cret  *C.GstDateTime // return, full, converted
+	var cret  *C.GstDateTime // return, full, converted, nullable
 
 	carg1 = C.gint(year)
 	carg2 = C.gint(month)
@@ -39983,7 +40921,9 @@ func NewDateTimeYmd(year int, month int, day int) *DateTime {
 
 	var goret *DateTime
 
-	goret = UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -40285,12 +41225,12 @@ func (datetime *DateTime) HasYear() bool {
 // ToGDateTime wraps gst_date_time_to_g_date_time
 // The function returns the following values:
 // 
-// 	- goret *glib.DateTime 
+// 	- goret *glib.DateTime (nullable) 
 //
 // Creates a new #GDateTime from a fully defined #GstDateTime object.
 func (datetime *DateTime) ToGDateTime() *glib.DateTime {
 	var carg0 *C.GstDateTime // in, none, converted
-	var cret  *C.GDateTime   // return, full, converted
+	var cret  *C.GDateTime   // return, full, converted, nullable
 
 	carg0 = (*C.GstDateTime)(UnsafeDateTimeToGlibNone(datetime))
 
@@ -40299,7 +41239,9 @@ func (datetime *DateTime) ToGDateTime() *glib.DateTime {
 
 	var goret *glib.DateTime
 
-	goret = glib.UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = glib.UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -40307,14 +41249,14 @@ func (datetime *DateTime) ToGDateTime() *glib.DateTime {
 // ToISO8601String wraps gst_date_time_to_iso8601_string
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Create a minimal string compatible with ISO-8601. Possible output formats
 // are (for example): `2012`, `2012-06`, `2012-06-23`, `2012-06-23T23:30Z`,
 // `2012-06-23T23:30+0100`, `2012-06-23T23:30:59Z`, `2012-06-23T23:30:59+0100`
 func (datetime *DateTime) ToISO8601String() string {
 	var carg0 *C.GstDateTime // in, none, converted
-	var cret  *C.gchar       // return, full, string
+	var cret  *C.gchar       // return, full, string, nullable-string
 
 	carg0 = (*C.GstDateTime)(UnsafeDateTimeToGlibNone(datetime))
 
@@ -40323,8 +41265,10 @@ func (datetime *DateTime) ToISO8601String() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -40584,13 +41528,13 @@ func UnsafeDebugMessageToGlibFull(d *DebugMessage) unsafe.Pointer {
 // Get wraps gst_debug_message_get
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Gets the string representation of a #GstDebugMessage. This function is used
 // in debug handlers to extract the message.
 func (message *DebugMessage) Get() string {
 	var carg0 *C.GstDebugMessage // in, none, converted
-	var cret  *C.gchar           // return, none, string
+	var cret  *C.gchar           // return, none, string, nullable-string
 
 	carg0 = (*C.GstDebugMessage)(UnsafeDebugMessageToGlibNone(message))
 
@@ -40599,7 +41543,9 @@ func (message *DebugMessage) Get() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -40607,13 +41553,13 @@ func (message *DebugMessage) Get() string {
 // GetID wraps gst_debug_message_get_id
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Get the id of the object that emitted this message. This function is used in
 // debug handlers. Can be empty.
 func (message *DebugMessage) GetID() string {
 	var carg0 *C.GstDebugMessage // in, none, converted
-	var cret  *C.gchar           // return, none, string
+	var cret  *C.gchar           // return, none, string, nullable-string
 
 	carg0 = (*C.GstDebugMessage)(UnsafeDebugMessageToGlibNone(message))
 
@@ -40622,7 +41568,9 @@ func (message *DebugMessage) GetID() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -40875,13 +41823,13 @@ func (klass *DeviceProviderClass) AddStaticMetadata(key string, value string) {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Get metadata with @key in @klass.
 func (klass *DeviceProviderClass) GetMetadata(key string) string {
 	var carg0 *C.GstDeviceProviderClass // in, none, converted
 	var carg1 *C.gchar                  // in, none, string
-	var cret  *C.gchar                  // return, none, string
+	var cret  *C.gchar                  // return, none, string, nullable-string
 
 	carg0 = (*C.GstDeviceProviderClass)(UnsafeDeviceProviderClassToGlibNone(klass))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(key)))
@@ -40893,7 +41841,9 @@ func (klass *DeviceProviderClass) GetMetadata(key string) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -41334,7 +42284,7 @@ func (klass *ElementClass) GetMetadata(key string) string {
 // 
 // The function returns the following values:
 // 
-// 	- goret PadTemplate 
+// 	- goret PadTemplate (nullable) 
 //
 // Retrieves a padtemplate from @element_class with the given name.
 // &gt; If you use this function in the GInstanceInitFunc of an object class
@@ -41343,7 +42293,7 @@ func (klass *ElementClass) GetMetadata(key string) string {
 func (elementClass *ElementClass) GetPadTemplate(name string) PadTemplate {
 	var carg0 *C.GstElementClass // in, none, converted
 	var carg1 *C.gchar           // in, none, string
-	var cret  *C.GstPadTemplate  // return, none, converted
+	var cret  *C.GstPadTemplate  // return, none, converted, nullable
 
 	carg0 = (*C.GstElementClass)(UnsafeElementClassToGlibNone(elementClass))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
@@ -41355,7 +42305,9 @@ func (elementClass *ElementClass) GetPadTemplate(name string) PadTemplate {
 
 	var goret PadTemplate
 
-	goret = UnsafePadTemplateFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePadTemplateFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -42784,12 +43736,12 @@ func (event *Event) GetSeqnum() uint32 {
 // GetStructure wraps gst_event_get_structure
 // The function returns the following values:
 // 
-// 	- goret *Structure 
+// 	- goret *Structure (nullable) 
 //
 // Access the structure of the event.
 func (event *Event) GetStructure() *Structure {
 	var carg0 *C.GstEvent     // in, none, converted
-	var cret  *C.GstStructure // return, none, converted
+	var cret  *C.GstStructure // return, none, converted, nullable
 
 	carg0 = (*C.GstEvent)(UnsafeEventToGlibNone(event))
 
@@ -42798,7 +43750,9 @@ func (event *Event) GetStructure() *Structure {
 
 	var goret *Structure
 
-	goret = UnsafeStructureFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeStructureFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -44268,7 +45222,7 @@ func UnsafeMemoryToGlibFull(m *Memory) unsafe.Pointer {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Memory 
+// 	- goret *Memory (nullable) 
 //
 // Return a copy of @size bytes from @mem starting from @offset. This copy is
 // guaranteed to be writable. @size can be set to -1 to return a copy
@@ -44277,7 +45231,7 @@ func (mem *Memory) Copy(offset int, size int) *Memory {
 	var carg0 *C.GstMemory // in, none, converted
 	var carg1 C.gssize     // in, none, casted
 	var carg2 C.gssize     // in, none, casted
-	var cret  *C.GstMemory // return, full, converted
+	var cret  *C.GstMemory // return, full, converted, nullable
 
 	carg0 = (*C.GstMemory)(UnsafeMemoryToGlibNone(mem))
 	carg1 = C.gssize(offset)
@@ -44290,7 +45244,9 @@ func (mem *Memory) Copy(offset int, size int) *Memory {
 
 	var goret *Memory
 
-	goret = UnsafeMemoryFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeMemoryFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -46371,12 +47327,12 @@ func (message *Message) GetSeqnum() uint32 {
 // GetStructure wraps gst_message_get_structure
 // The function returns the following values:
 // 
-// 	- goret *Structure 
+// 	- goret *Structure (nullable) 
 //
 // Access the structure of the message.
 func (message *Message) GetStructure() *Structure {
 	var carg0 *C.GstMessage   // in, none, converted
-	var cret  *C.GstStructure // return, borrow, converted
+	var cret  *C.GstStructure // return, borrow, converted, nullable
 
 	carg0 = (*C.GstMessage)(UnsafeMessageToGlibNone(message))
 
@@ -46385,8 +47341,10 @@ func (message *Message) GetStructure() *Structure {
 
 	var goret *Structure
 
-	goret = UnsafeStructureFromGlibBorrow(unsafe.Pointer(cret))
-	runtime.AddCleanup(goret, func(_ *Message) {}, message)
+	if cret != nil {
+		goret = UnsafeStructureFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *Message) {}, message)
+	}
 
 	return goret
 }
@@ -47845,13 +48803,13 @@ func (message *Message) StreamsSelectedGetSize() uint {
 // 
 // The function returns the following values:
 // 
-// 	- goret Stream 
+// 	- goret Stream (nullable) 
 //
 // Retrieves the #GstStream with index @index from the @message.
 func (message *Message) StreamsSelectedGetStream(idx uint) Stream {
 	var carg0 *C.GstMessage // in, none, converted
 	var carg1 C.guint       // in, none, casted
-	var cret  *C.GstStream  // return, full, converted
+	var cret  *C.GstStream  // return, full, converted, nullable
 
 	carg0 = (*C.GstMessage)(UnsafeMessageToGlibNone(message))
 	carg1 = C.guint(idx)
@@ -47862,7 +48820,9 @@ func (message *Message) StreamsSelectedGetStream(idx uint) Stream {
 
 	var goret Stream
 
-	goret = UnsafeStreamFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeStreamFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -48076,7 +49036,7 @@ func MetaApiTypeRegister(api string, tags []string) gobject.Type {
 // The function returns the following values:
 // 
 // 	- consumed uint32: total size used by this meta, could be less than @size 
-// 	- goret *Meta 
+// 	- goret *Meta (nullable) 
 //
 // Recreate a #GstMeta from serialized data returned by
 // gst_meta_serialize() and add it to @buffer.
@@ -48092,7 +49052,7 @@ func MetaDeserialize(buffer *Buffer, data *uint8, size uint) (uint32, *Meta) {
 	var carg2 *C.guint8    // in, transfer: none, C Pointers: 1, Name: guint8
 	var carg3 C.gsize      // in, none, casted
 	var carg4 C.guint32    // out, full, casted
-	var cret  *C.GstMeta   // return, none, converted
+	var cret  *C.GstMeta   // return, none, converted, nullable
 
 	carg1 = (*C.GstBuffer)(UnsafeBufferToGlibNone(buffer))
 	_ = data
@@ -48109,7 +49069,9 @@ func MetaDeserialize(buffer *Buffer, data *uint8, size uint) (uint32, *Meta) {
 	var goret    *Meta
 
 	consumed = uint32(carg4)
-	goret = UnsafeMetaFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeMetaFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return consumed, goret
 }
@@ -48122,13 +49084,13 @@ func MetaDeserialize(buffer *Buffer, data *uint8, size uint) (uint32, *Meta) {
 // 
 // The function returns the following values:
 // 
-// 	- goret *MetaInfo 
+// 	- goret *MetaInfo (nullable) 
 //
 // Lookup a previously registered meta info structure by its implementation name
 // @impl.
 func MetaGetInfo(impl string) *MetaInfo {
 	var carg1 *C.gchar       // in, none, string
-	var cret  *C.GstMetaInfo // return, none, converted
+	var cret  *C.GstMetaInfo // return, none, converted, nullable
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(impl)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -48138,7 +49100,9 @@ func MetaGetInfo(impl string) *MetaInfo {
 
 	var goret *MetaInfo
 
-	goret = UnsafeMetaInfoFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeMetaInfoFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -48864,10 +49828,10 @@ func UnsafePadProbeInfoToGlibFull(p *PadProbeInfo) unsafe.Pointer {
 // GetBuffer wraps gst_pad_probe_info_get_buffer
 // The function returns the following values:
 // 
-// 	- goret *Buffer 
+// 	- goret *Buffer (nullable) 
 func (info *PadProbeInfo) GetBuffer() *Buffer {
 	var carg0 *C.GstPadProbeInfo // in, none, converted
-	var cret  *C.GstBuffer       // return, none, converted
+	var cret  *C.GstBuffer       // return, none, converted, nullable
 
 	carg0 = (*C.GstPadProbeInfo)(UnsafePadProbeInfoToGlibNone(info))
 
@@ -48876,7 +49840,9 @@ func (info *PadProbeInfo) GetBuffer() *Buffer {
 
 	var goret *Buffer
 
-	goret = UnsafeBufferFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeBufferFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -48884,10 +49850,10 @@ func (info *PadProbeInfo) GetBuffer() *Buffer {
 // GetBufferList wraps gst_pad_probe_info_get_buffer_list
 // The function returns the following values:
 // 
-// 	- goret *BufferList 
+// 	- goret *BufferList (nullable) 
 func (info *PadProbeInfo) GetBufferList() *BufferList {
 	var carg0 *C.GstPadProbeInfo // in, none, converted
-	var cret  *C.GstBufferList   // return, none, converted
+	var cret  *C.GstBufferList   // return, none, converted, nullable
 
 	carg0 = (*C.GstPadProbeInfo)(UnsafePadProbeInfoToGlibNone(info))
 
@@ -48896,7 +49862,9 @@ func (info *PadProbeInfo) GetBufferList() *BufferList {
 
 	var goret *BufferList
 
-	goret = UnsafeBufferListFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeBufferListFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -48904,10 +49872,10 @@ func (info *PadProbeInfo) GetBufferList() *BufferList {
 // GetEvent wraps gst_pad_probe_info_get_event
 // The function returns the following values:
 // 
-// 	- goret *Event 
+// 	- goret *Event (nullable) 
 func (info *PadProbeInfo) GetEvent() *Event {
 	var carg0 *C.GstPadProbeInfo // in, none, converted
-	var cret  *C.GstEvent        // return, none, converted
+	var cret  *C.GstEvent        // return, none, converted, nullable
 
 	carg0 = (*C.GstPadProbeInfo)(UnsafePadProbeInfoToGlibNone(info))
 
@@ -48916,7 +49884,9 @@ func (info *PadProbeInfo) GetEvent() *Event {
 
 	var goret *Event
 
-	goret = UnsafeEventFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeEventFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -48924,10 +49894,10 @@ func (info *PadProbeInfo) GetEvent() *Event {
 // GetQuery wraps gst_pad_probe_info_get_query
 // The function returns the following values:
 // 
-// 	- goret *Query 
+// 	- goret *Query (nullable) 
 func (info *PadProbeInfo) GetQuery() *Query {
 	var carg0 *C.GstPadProbeInfo // in, none, converted
-	var cret  *C.GstQuery        // return, none, converted
+	var cret  *C.GstQuery        // return, none, converted, nullable
 
 	carg0 = (*C.GstPadProbeInfo)(UnsafePadProbeInfoToGlibNone(info))
 
@@ -48936,7 +49906,9 @@ func (info *PadProbeInfo) GetQuery() *Query {
 
 	var goret *Query
 
-	goret = UnsafeQueryFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeQueryFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -49290,20 +50262,22 @@ func UnsafeParseContextToGlibFull(p *ParseContext) unsafe.Pointer {
 // NewParseContext wraps gst_parse_context_new
 // The function returns the following values:
 // 
-// 	- goret *ParseContext 
+// 	- goret *ParseContext (nullable) 
 //
 // Allocates a parse context for use with gst_parse_launch_full() or
 // gst_parse_launchv_full().
 // 
 // Free-function: gst_parse_context_free
 func NewParseContext() *ParseContext {
-	var cret *C.GstParseContext // return, full, converted
+	var cret *C.GstParseContext // return, full, converted, nullable
 
 	cret = C.gst_parse_context_new()
 
 	var goret *ParseContext
 
-	goret = UnsafeParseContextFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeParseContextFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -49311,12 +50285,12 @@ func NewParseContext() *ParseContext {
 // Copy wraps gst_parse_context_copy
 // The function returns the following values:
 // 
-// 	- goret *ParseContext 
+// 	- goret *ParseContext (nullable) 
 //
 // Copies the @context.
 func (_context *ParseContext) Copy() *ParseContext {
 	var carg0 *C.GstParseContext // in, none, converted
-	var cret  *C.GstParseContext // return, full, converted
+	var cret  *C.GstParseContext // return, full, converted, nullable
 
 	carg0 = (*C.GstParseContext)(UnsafeParseContextToGlibNone(_context))
 
@@ -49325,7 +50299,9 @@ func (_context *ParseContext) Copy() *ParseContext {
 
 	var goret *ParseContext
 
-	goret = UnsafeParseContextFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeParseContextFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -49333,14 +50309,14 @@ func (_context *ParseContext) Copy() *ParseContext {
 // GetMissingElements wraps gst_parse_context_get_missing_elements
 // The function returns the following values:
 // 
-// 	- goret []string 
+// 	- goret []string (nullable) 
 //
 // Retrieve missing elements from a previous run of gst_parse_launch_full()
 // or gst_parse_launchv_full(). Will only return results if an error code
 // of %GST_PARSE_ERROR_NO_SUCH_ELEMENT was returned.
 func (_context *ParseContext) GetMissingElements() []string {
 	var carg0 *C.GstParseContext // in, none, converted
-	var cret  **C.gchar          // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , array (inner: *typesystem.StringPrimitive, zero-terminated)
+	var cret  **C.gchar          // return, transfer: full, C Pointers: 2, Name: array[utf8], scope: , nullable, array (inner: *typesystem.StringPrimitive, zero-terminated)
 
 	carg0 = (*C.GstParseContext)(UnsafeParseContextToGlibNone(_context))
 
@@ -50590,13 +51566,13 @@ func (promise *Promise) Expire() {
 // GetReply wraps gst_promise_get_reply
 // The function returns the following values:
 // 
-// 	- goret *Structure 
+// 	- goret *Structure (nullable) 
 //
 // Retrieve the reply set on @promise.  @promise must be in
 // %GST_PROMISE_RESULT_REPLIED and the returned structure is owned by @promise
 func (promise *Promise) GetReply() *Structure {
 	var carg0 *C.GstPromise   // in, none, converted
-	var cret  *C.GstStructure // return, none, converted
+	var cret  *C.GstStructure // return, none, converted, nullable
 
 	carg0 = (*C.GstPromise)(UnsafePromiseToGlibNone(promise))
 
@@ -50605,7 +51581,9 @@ func (promise *Promise) GetReply() *Structure {
 
 	var goret *Structure
 
-	goret = UnsafeStructureFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeStructureFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -51727,12 +52705,12 @@ func (query *Query) GetNSchedulingModes() uint {
 // GetStructure wraps gst_query_get_structure
 // The function returns the following values:
 // 
-// 	- goret *Structure 
+// 	- goret *Structure (nullable) 
 //
 // Get the structure of a query.
 func (query *Query) GetStructure() *Structure {
 	var carg0 *C.GstQuery     // in, none, converted
-	var cret  *C.GstStructure // return, borrow, converted
+	var cret  *C.GstStructure // return, borrow, converted, nullable
 
 	carg0 = (*C.GstQuery)(UnsafeQueryToGlibNone(query))
 
@@ -51741,8 +52719,10 @@ func (query *Query) GetStructure() *Structure {
 
 	var goret *Structure
 
-	goret = UnsafeStructureFromGlibBorrow(unsafe.Pointer(cret))
-	runtime.AddCleanup(goret, func(_ *Query) {}, query)
+	if cret != nil {
+		goret = UnsafeStructureFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *Query) {}, query)
+	}
 
 	return goret
 }
@@ -53654,12 +54634,12 @@ func NewSample(buffer *Buffer, caps *Caps, segment *Segment, info *Structure) *S
 // GetBuffer wraps gst_sample_get_buffer
 // The function returns the following values:
 // 
-// 	- goret *Buffer 
+// 	- goret *Buffer (nullable) 
 //
 // Get the buffer associated with @sample
 func (sample *Sample) GetBuffer() *Buffer {
 	var carg0 *C.GstSample // in, none, converted
-	var cret  *C.GstBuffer // return, borrow, converted
+	var cret  *C.GstBuffer // return, borrow, converted, nullable
 
 	carg0 = (*C.GstSample)(UnsafeSampleToGlibNone(sample))
 
@@ -53668,8 +54648,10 @@ func (sample *Sample) GetBuffer() *Buffer {
 
 	var goret *Buffer
 
-	goret = UnsafeBufferFromGlibBorrow(unsafe.Pointer(cret))
-	runtime.AddCleanup(goret, func(_ *Sample) {}, sample)
+	if cret != nil {
+		goret = UnsafeBufferFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *Sample) {}, sample)
+	}
 
 	return goret
 }
@@ -53677,12 +54659,12 @@ func (sample *Sample) GetBuffer() *Buffer {
 // GetBufferList wraps gst_sample_get_buffer_list
 // The function returns the following values:
 // 
-// 	- goret *BufferList 
+// 	- goret *BufferList (nullable) 
 //
 // Get the buffer list associated with @sample
 func (sample *Sample) GetBufferList() *BufferList {
 	var carg0 *C.GstSample     // in, none, converted
-	var cret  *C.GstBufferList // return, borrow, converted
+	var cret  *C.GstBufferList // return, borrow, converted, nullable
 
 	carg0 = (*C.GstSample)(UnsafeSampleToGlibNone(sample))
 
@@ -53691,8 +54673,10 @@ func (sample *Sample) GetBufferList() *BufferList {
 
 	var goret *BufferList
 
-	goret = UnsafeBufferListFromGlibBorrow(unsafe.Pointer(cret))
-	runtime.AddCleanup(goret, func(_ *Sample) {}, sample)
+	if cret != nil {
+		goret = UnsafeBufferListFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *Sample) {}, sample)
+	}
 
 	return goret
 }
@@ -53700,12 +54684,12 @@ func (sample *Sample) GetBufferList() *BufferList {
 // GetCaps wraps gst_sample_get_caps
 // The function returns the following values:
 // 
-// 	- goret *Caps 
+// 	- goret *Caps (nullable) 
 //
 // Get the caps associated with @sample
 func (sample *Sample) GetCaps() *Caps {
 	var carg0 *C.GstSample // in, none, converted
-	var cret  *C.GstCaps   // return, borrow, converted
+	var cret  *C.GstCaps   // return, borrow, converted, nullable
 
 	carg0 = (*C.GstSample)(UnsafeSampleToGlibNone(sample))
 
@@ -53714,8 +54698,10 @@ func (sample *Sample) GetCaps() *Caps {
 
 	var goret *Caps
 
-	goret = UnsafeCapsFromGlibBorrow(unsafe.Pointer(cret))
-	runtime.AddCleanup(goret, func(_ *Sample) {}, sample)
+	if cret != nil {
+		goret = UnsafeCapsFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *Sample) {}, sample)
+	}
 
 	return goret
 }
@@ -53723,12 +54709,12 @@ func (sample *Sample) GetCaps() *Caps {
 // GetInfo wraps gst_sample_get_info
 // The function returns the following values:
 // 
-// 	- goret *Structure 
+// 	- goret *Structure (nullable) 
 //
 // Get extra information associated with @sample.
 func (sample *Sample) GetInfo() *Structure {
 	var carg0 *C.GstSample    // in, none, converted
-	var cret  *C.GstStructure // return, borrow, converted
+	var cret  *C.GstStructure // return, borrow, converted, nullable
 
 	carg0 = (*C.GstSample)(UnsafeSampleToGlibNone(sample))
 
@@ -53737,8 +54723,10 @@ func (sample *Sample) GetInfo() *Structure {
 
 	var goret *Structure
 
-	goret = UnsafeStructureFromGlibBorrow(unsafe.Pointer(cret))
-	runtime.AddCleanup(goret, func(_ *Sample) {}, sample)
+	if cret != nil {
+		goret = UnsafeStructureFromGlibBorrow(unsafe.Pointer(cret))
+		runtime.AddCleanup(goret, func(_ *Sample) {}, sample)
+	}
 
 	return goret
 }
@@ -54889,12 +55877,12 @@ func (staticCaps *StaticCaps) Cleanup() {
 // Get wraps gst_static_caps_get
 // The function returns the following values:
 // 
-// 	- goret *Caps 
+// 	- goret *Caps (nullable) 
 //
 // Converts a #GstStaticCaps to a #GstCaps.
 func (staticCaps *StaticCaps) Get() *Caps {
 	var carg0 *C.GstStaticCaps // in, none, converted
-	var cret  *C.GstCaps       // return, full, converted
+	var cret  *C.GstCaps       // return, full, converted, nullable
 
 	carg0 = (*C.GstStaticCaps)(UnsafeStaticCapsToGlibNone(staticCaps))
 
@@ -54903,7 +55891,9 @@ func (staticCaps *StaticCaps) Get() *Caps {
 
 	var goret *Caps
 
-	goret = UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -54985,12 +55975,12 @@ func UnsafeStaticPadTemplateToGlibFull(s *StaticPadTemplate) unsafe.Pointer {
 // Get wraps gst_static_pad_template_get
 // The function returns the following values:
 // 
-// 	- goret PadTemplate 
+// 	- goret PadTemplate (nullable) 
 //
 // Converts a #GstStaticPadTemplate into a #GstPadTemplate.
 func (padTemplate *StaticPadTemplate) Get() PadTemplate {
 	var carg0 *C.GstStaticPadTemplate // in, none, converted
-	var cret  *C.GstPadTemplate       // return, none, converted
+	var cret  *C.GstPadTemplate       // return, none, converted, nullable
 
 	carg0 = (*C.GstStaticPadTemplate)(UnsafeStaticPadTemplateToGlibNone(padTemplate))
 
@@ -54999,7 +55989,9 @@ func (padTemplate *StaticPadTemplate) Get() PadTemplate {
 
 	var goret PadTemplate
 
-	goret = UnsafePadTemplateFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePadTemplateFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -55335,7 +56327,7 @@ func UnsafeStructureToGlibFull(s *Structure) unsafe.Pointer {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Structure 
+// 	- goret *Structure (nullable) 
 //
 // Creates a #GstStructure from a string representation.
 // If end is not %NULL, a pointer to the place inside the given string
@@ -55345,7 +56337,7 @@ func UnsafeStructureToGlibFull(s *Structure) unsafe.Pointer {
 func StructureFromString(str string) *Structure {
 	var carg1 *C.gchar        // in, none, string
 	var carg2 *C.gchar        // skipped
-	var cret  *C.GstStructure // return, full, converted
+	var cret  *C.GstStructure // return, full, converted, nullable
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(str)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -55355,7 +56347,9 @@ func StructureFromString(str string) *Structure {
 
 	var goret *Structure
 
-	goret = UnsafeStructureFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeStructureFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -55400,7 +56394,7 @@ func NewStructureEmpty(name string) *Structure {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Structure 
+// 	- goret *Structure (nullable) 
 //
 // Creates a #GstStructure from a string representation.
 // If end is not %NULL, a pointer to the place inside the given string
@@ -55414,7 +56408,7 @@ func NewStructureEmpty(name string) *Structure {
 // Free-function: gst_structure_free
 func NewStructureFromString(str string) *Structure {
 	var carg1 *C.gchar        // in, none, string
-	var cret  *C.GstStructure // return, full, converted
+	var cret  *C.GstStructure // return, full, converted, nullable
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(str)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -55424,7 +56418,9 @@ func NewStructureFromString(str string) *Structure {
 
 	var goret *Structure
 
-	goret = UnsafeStructureFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeStructureFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -56319,7 +57315,7 @@ func (structure *Structure) GetNameID() glib.Quark {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Finds the field corresponding to @fieldname, and returns the string
 // contained in the field's value.  Caller is responsible for making
@@ -56330,7 +57326,7 @@ func (structure *Structure) GetNameID() glib.Quark {
 func (structure *Structure) GetString(fieldname string) string {
 	var carg0 *C.GstStructure // in, none, converted
 	var carg1 *C.gchar        // in, none, string
-	var cret  *C.gchar        // return, none, string
+	var cret  *C.gchar        // return, none, string, nullable-string
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(fieldname)))
@@ -56342,7 +57338,9 @@ func (structure *Structure) GetString(fieldname string) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -56629,13 +57627,13 @@ func (structure *Structure) IDSetValue(field glib.Quark, value *gobject.Value) {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Structure 
+// 	- goret *Structure (nullable) 
 //
 // Intersects @struct1 and @struct2 and returns the intersection.
 func (struct1 *Structure) Intersect(struct2 *Structure) *Structure {
 	var carg0 *C.GstStructure // in, none, converted
 	var carg1 *C.GstStructure // in, none, converted
-	var cret  *C.GstStructure // return, full, converted
+	var cret  *C.GstStructure // return, full, converted, nullable
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(struct1))
 	carg1 = (*C.GstStructure)(UnsafeStructureToGlibNone(struct2))
@@ -56646,7 +57644,9 @@ func (struct1 *Structure) Intersect(struct2 *Structure) *Structure {
 
 	var goret *Structure
 
-	goret = UnsafeStructureFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeStructureFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -56891,14 +57891,14 @@ func (structure *Structure) Serialize(flags SerializeFlags) string {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Alias for gst_structure_serialize() but with nullable annotation because it
 // can return %NULL when %GST_SERIALIZE_FLAG_STRICT flag is set.
 func (structure *Structure) SerializeFull(flags SerializeFlags) string {
 	var carg0 *C.GstStructure     // in, none, converted
 	var carg1 C.GstSerializeFlags // in, none, casted
-	var cret  *C.gchar            // return, full, string
+	var cret  *C.gchar            // return, full, string, nullable-string
 
 	carg0 = (*C.GstStructure)(UnsafeStructureToGlibNone(structure))
 	carg1 = C.GstSerializeFlags(flags)
@@ -56909,8 +57909,10 @@ func (structure *Structure) SerializeFull(flags SerializeFlags) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -57173,12 +58175,12 @@ func NewTagListEmpty() *TagList {
 // 
 // The function returns the following values:
 // 
-// 	- goret *TagList 
+// 	- goret *TagList (nullable) 
 //
 // Deserializes a tag list.
 func NewTagListFromString(str string) *TagList {
 	var carg1 *C.gchar      // in, none, string
-	var cret  *C.GstTagList // return, full, converted
+	var cret  *C.GstTagList // return, full, converted, nullable
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(str)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -57188,7 +58190,9 @@ func NewTagListFromString(str string) *TagList {
 
 	var goret *TagList
 
-	goret = UnsafeTagListFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeTagListFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -58298,7 +59302,7 @@ func (list1 *TagList) IsEqual(list2 *TagList) bool {
 // 
 // The function returns the following values:
 // 
-// 	- goret *TagList 
+// 	- goret *TagList (nullable) 
 //
 // Merges the two given lists into a new list. If one of the lists is %NULL, a
 // copy of the other is returned. If both lists are %NULL, %NULL is returned.
@@ -58308,7 +59312,7 @@ func (list1 *TagList) Merge(list2 *TagList, mode TagMergeMode) *TagList {
 	var carg0 *C.GstTagList     // in, none, converted
 	var carg1 *C.GstTagList     // in, none, converted, nullable
 	var carg2 C.GstTagMergeMode // in, none, casted
-	var cret  *C.GstTagList     // return, full, converted
+	var cret  *C.GstTagList     // return, full, converted, nullable
 
 	carg0 = (*C.GstTagList)(UnsafeTagListToGlibNone(list1))
 	if list2 != nil {
@@ -58323,7 +59327,9 @@ func (list1 *TagList) Merge(list2 *TagList, mode TagMergeMode) *TagList {
 
 	var goret *TagList
 
-	goret = UnsafeTagListFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeTagListFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -58917,13 +59923,13 @@ func (toc *Toc) Dump() {
 // 
 // The function returns the following values:
 // 
-// 	- goret *TocEntry 
+// 	- goret *TocEntry (nullable) 
 //
 // Find #GstTocEntry with given @uid in the @toc.
 func (toc *Toc) FindEntry(uid string) *TocEntry {
 	var carg0 *C.GstToc      // in, none, converted
 	var carg1 *C.gchar       // in, none, string
-	var cret  *C.GstTocEntry // return, none, converted
+	var cret  *C.GstTocEntry // return, none, converted, nullable
 
 	carg0 = (*C.GstToc)(UnsafeTocToGlibNone(toc))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uid)))
@@ -58935,7 +59941,9 @@ func (toc *Toc) FindEntry(uid string) *TocEntry {
 
 	var goret *TocEntry
 
-	goret = UnsafeTocEntryFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeTocEntryFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -58992,12 +60000,12 @@ func (toc *Toc) GetScope() TocScope {
 // GetTags wraps gst_toc_get_tags
 // The function returns the following values:
 // 
-// 	- goret *TagList 
+// 	- goret *TagList (nullable) 
 //
 // Gets the tags for @toc.
 func (toc *Toc) GetTags() *TagList {
 	var carg0 *C.GstToc     // in, none, converted
-	var cret  *C.GstTagList // return, none, converted
+	var cret  *C.GstTagList // return, none, converted, nullable
 
 	carg0 = (*C.GstToc)(UnsafeTocToGlibNone(toc))
 
@@ -59006,7 +60014,9 @@ func (toc *Toc) GetTags() *TagList {
 
 	var goret *TagList
 
-	goret = UnsafeTagListFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeTagListFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -59240,12 +60250,12 @@ func (entry *TocEntry) GetLoop() (TocLoopType, int, bool) {
 // GetParent wraps gst_toc_entry_get_parent
 // The function returns the following values:
 // 
-// 	- goret *TocEntry 
+// 	- goret *TocEntry (nullable) 
 //
 // Gets the parent #GstTocEntry of @entry.
 func (entry *TocEntry) GetParent() *TocEntry {
 	var carg0 *C.GstTocEntry // in, none, converted
-	var cret  *C.GstTocEntry // return, none, converted
+	var cret  *C.GstTocEntry // return, none, converted, nullable
 
 	carg0 = (*C.GstTocEntry)(UnsafeTocEntryToGlibNone(entry))
 
@@ -59254,7 +60264,9 @@ func (entry *TocEntry) GetParent() *TocEntry {
 
 	var goret *TocEntry
 
-	goret = UnsafeTocEntryFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeTocEntryFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -59326,12 +60338,12 @@ func (entry *TocEntry) GetSubEntries() []*TocEntry {
 // GetTags wraps gst_toc_entry_get_tags
 // The function returns the following values:
 // 
-// 	- goret *TagList 
+// 	- goret *TagList (nullable) 
 //
 // Gets the tags for @entry.
 func (entry *TocEntry) GetTags() *TagList {
 	var carg0 *C.GstTocEntry // in, none, converted
-	var cret  *C.GstTagList  // return, none, converted
+	var cret  *C.GstTagList  // return, none, converted, nullable
 
 	carg0 = (*C.GstTocEntry)(UnsafeTocEntryToGlibNone(entry))
 
@@ -59340,7 +60352,9 @@ func (entry *TocEntry) GetTags() *TagList {
 
 	var goret *TagList
 
-	goret = UnsafeTagListFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeTagListFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -59348,12 +60362,12 @@ func (entry *TocEntry) GetTags() *TagList {
 // GetToc wraps gst_toc_entry_get_toc
 // The function returns the following values:
 // 
-// 	- goret *Toc 
+// 	- goret *Toc (nullable) 
 //
 // Gets the parent #GstToc of @entry.
 func (entry *TocEntry) GetToc() *Toc {
 	var carg0 *C.GstTocEntry // in, none, converted
-	var cret  *C.GstToc      // return, none, converted
+	var cret  *C.GstToc      // return, none, converted, nullable
 
 	carg0 = (*C.GstTocEntry)(UnsafeTocEntryToGlibNone(entry))
 
@@ -59362,7 +60376,9 @@ func (entry *TocEntry) GetToc() *Toc {
 
 	var goret *Toc
 
-	goret = UnsafeTocFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeTocFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -59938,7 +60954,7 @@ func (find *TypeFind) GetLength() uint64 {
 // 
 // The function returns the following values:
 // 
-// 	- goret *uint8 
+// 	- goret *uint8 (nullable) 
 //
 // Returns the @size bytes of the stream to identify beginning at offset. If
 // offset is a positive number, the offset is relative to the beginning of the
@@ -59949,7 +60965,7 @@ func (find *TypeFind) Peek(offset int64, size uint) *uint8 {
 	var carg0 *C.GstTypeFind // in, none, converted
 	var carg1 C.gint64       // in, none, casted
 	var carg2 C.guint        // in, none, casted
-	var cret  *C.guint8      // return, transfer: none, C Pointers: 1, Name: guint8, scope: 
+	var cret  *C.guint8      // return, transfer: none, C Pointers: 1, Name: guint8, scope: , nullable, nullable
 
 	carg0 = (*C.GstTypeFind)(UnsafeTypeFindToGlibNone(find))
 	carg1 = C.gint64(offset)
@@ -59962,9 +60978,11 @@ func (find *TypeFind) Peek(offset int64, size uint) *uint8 {
 
 	var goret *uint8
 
-	_ = goret
-	_ = cret
-	panic("unimplemented conversion of *uint8 (guint8*)")
+	if cret != nil {
+		_ = goret
+		_ = cret
+		panic("unimplemented conversion of *uint8 (guint8*)")
+	}
 
 	return goret
 }
@@ -60341,13 +61359,13 @@ func UriConstruct(protocol string, location string) string {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Uri 
+// 	- goret *Uri (nullable) 
 //
 // Parses a URI string into a new #GstUri object. Will return NULL if the URI
 // cannot be parsed.
 func UriFromString(uri string) *Uri {
 	var carg1 *C.gchar  // in, none, string
-	var cret  *C.GstUri // return, full, converted
+	var cret  *C.GstUri // return, full, converted, nullable
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -60357,7 +61375,9 @@ func UriFromString(uri string) *Uri {
 
 	var goret *Uri
 
-	goret = UnsafeUriFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeUriFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -60370,7 +61390,7 @@ func UriFromString(uri string) *Uri {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Uri 
+// 	- goret *Uri (nullable) 
 //
 // Parses a URI string into a new #GstUri object. Will return NULL if the URI
 // cannot be parsed. This is identical to gst_uri_from_string() except that
@@ -60387,7 +61407,7 @@ func UriFromString(uri string) *Uri {
 // https://example.com/path#fragment which may contain a URI-escaped '#'.
 func UriFromStringEscaped(uri string) *Uri {
 	var carg1 *C.gchar  // in, none, string
-	var cret  *C.GstUri // return, full, converted
+	var cret  *C.GstUri // return, full, converted, nullable
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -60397,7 +61417,9 @@ func UriFromStringEscaped(uri string) *Uri {
 
 	var goret *Uri
 
-	goret = UnsafeUriFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeUriFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -60410,7 +61432,7 @@ func UriFromStringEscaped(uri string) *Uri {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Extracts the location out of a given valid URI, ie. the protocol and "://"
 // are stripped from the URI, which means that the location returned includes
@@ -60420,7 +61442,7 @@ func UriFromStringEscaped(uri string) *Uri {
 // Free-function: g_free
 func UriGetLocation(uri string) string {
 	var carg1 *C.gchar // in, none, string
-	var cret  *C.gchar // return, full, string
+	var cret  *C.gchar // return, full, string, nullable-string
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -60430,8 +61452,10 @@ func UriGetLocation(uri string) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -60444,13 +61468,13 @@ func UriGetLocation(uri string) string {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Extracts the protocol out of a given valid URI. The returned string must be
 // freed using g_free().
 func UriGetProtocol(uri string) string {
 	var carg1 *C.gchar // in, none, string
-	var cret  *C.gchar // return, full, string
+	var cret  *C.gchar // return, full, string, nullable-string
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -60460,8 +61484,10 @@ func UriGetProtocol(uri string) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -60541,14 +61567,14 @@ func UriIsValid(uri string) bool {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // This is a convenience function to join two URI strings and return the result.
 // The returned string should be g_free()'d after use.
 func UriJoinStrings(baseUri string, refUri string) string {
 	var carg1 *C.gchar // in, none, string
 	var carg2 *C.gchar // in, none, string
-	var cret  *C.gchar // return, full, string
+	var cret  *C.gchar // return, full, string, nullable-string
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(baseUri)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -60561,8 +61587,10 @@ func UriJoinStrings(baseUri string, refUri string) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -60747,13 +61775,13 @@ func (first *Uri) Equal(second *Uri) bool {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Uri 
+// 	- goret *Uri (nullable) 
 //
 // Like gst_uri_from_string() but also joins with a base URI.
 func (base *Uri) FromStringWithBase(uri string) *Uri {
 	var carg0 *C.GstUri // in, none, converted
 	var carg1 *C.gchar  // in, none, string
-	var cret  *C.GstUri // return, full, converted
+	var cret  *C.GstUri // return, full, converted, nullable
 
 	carg0 = (*C.GstUri)(UnsafeUriToGlibNone(base))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
@@ -60765,7 +61793,9 @@ func (base *Uri) FromStringWithBase(uri string) *Uri {
 
 	var goret *Uri
 
-	goret = UnsafeUriFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeUriFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -60773,13 +61803,13 @@ func (base *Uri) FromStringWithBase(uri string) *Uri {
 // GetFragment wraps gst_uri_get_fragment
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Get the fragment name from the URI or %NULL if it doesn't exist.
 // If @uri is %NULL then returns %NULL.
 func (uri *Uri) GetFragment() string {
 	var carg0 *C.GstUri // in, none, converted
-	var cret  *C.gchar  // return, none, string
+	var cret  *C.gchar  // return, none, string, nullable-string
 
 	carg0 = (*C.GstUri)(UnsafeUriToGlibNone(uri))
 
@@ -60788,7 +61818,9 @@ func (uri *Uri) GetFragment() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -60796,13 +61828,13 @@ func (uri *Uri) GetFragment() string {
 // GetHost wraps gst_uri_get_host
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Get the host name from the URI or %NULL if it doesn't exist.
 // If @uri is %NULL then returns %NULL.
 func (uri *Uri) GetHost() string {
 	var carg0 *C.GstUri // in, none, converted
-	var cret  *C.gchar  // return, none, string
+	var cret  *C.gchar  // return, none, string, nullable-string
 
 	carg0 = (*C.GstUri)(UnsafeUriToGlibNone(uri))
 
@@ -60811,7 +61843,9 @@ func (uri *Uri) GetHost() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -60819,12 +61853,12 @@ func (uri *Uri) GetHost() string {
 // GetPath wraps gst_uri_get_path
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Extract the path string from the URI object.
 func (uri *Uri) GetPath() string {
 	var carg0 *C.GstUri // in, none, converted
-	var cret  *C.gchar  // return, full, string
+	var cret  *C.gchar  // return, full, string, nullable-string
 
 	carg0 = (*C.GstUri)(UnsafeUriToGlibNone(uri))
 
@@ -60833,8 +61867,10 @@ func (uri *Uri) GetPath() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -60872,12 +61908,12 @@ func (uri *Uri) GetPathSegments() []string {
 // GetPathString wraps gst_uri_get_path_string
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Extract the path string from the URI object as a percent encoded URI path.
 func (uri *Uri) GetPathString() string {
 	var carg0 *C.GstUri // in, none, converted
-	var cret  *C.gchar  // return, full, string
+	var cret  *C.gchar  // return, full, string, nullable-string
 
 	carg0 = (*C.GstUri)(UnsafeUriToGlibNone(uri))
 
@@ -60886,8 +61922,10 @@ func (uri *Uri) GetPathString() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -60947,12 +61985,12 @@ func (uri *Uri) GetQueryKeys() []string {
 // GetQueryString wraps gst_uri_get_query_string
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Get a percent encoded URI query string from the @uri.
 func (uri *Uri) GetQueryString() string {
 	var carg0 *C.GstUri // in, none, converted
-	var cret  *C.gchar  // return, full, string
+	var cret  *C.gchar  // return, full, string, nullable-string
 
 	carg0 = (*C.GstUri)(UnsafeUriToGlibNone(uri))
 
@@ -60961,8 +61999,10 @@ func (uri *Uri) GetQueryString() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -60975,7 +62015,7 @@ func (uri *Uri) GetQueryString() string {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Get the value associated with the @query_key key. Will return %NULL if the
 // key has no value or if the key does not exist in the URI query table. Because
@@ -60985,7 +62025,7 @@ func (uri *Uri) GetQueryString() string {
 func (uri *Uri) GetQueryValue(queryKey string) string {
 	var carg0 *C.GstUri // in, none, converted
 	var carg1 *C.gchar  // in, none, string
-	var cret  *C.gchar  // return, none, string
+	var cret  *C.gchar  // return, none, string, nullable-string
 
 	carg0 = (*C.GstUri)(UnsafeUriToGlibNone(uri))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(queryKey)))
@@ -60997,7 +62037,9 @@ func (uri *Uri) GetQueryValue(queryKey string) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -61005,13 +62047,13 @@ func (uri *Uri) GetQueryValue(queryKey string) string {
 // GetScheme wraps gst_uri_get_scheme
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Get the scheme name from the URI or %NULL if it doesn't exist.
 // If @uri is %NULL then returns %NULL.
 func (uri *Uri) GetScheme() string {
 	var carg0 *C.GstUri // in, none, converted
-	var cret  *C.gchar  // return, none, string
+	var cret  *C.gchar  // return, none, string, nullable-string
 
 	carg0 = (*C.GstUri)(UnsafeUriToGlibNone(uri))
 
@@ -61020,7 +62062,9 @@ func (uri *Uri) GetScheme() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -61028,13 +62072,13 @@ func (uri *Uri) GetScheme() string {
 // GetUserinfo wraps gst_uri_get_userinfo
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Get the userinfo (usually in the form "username:password") from the URI
 // or %NULL if it doesn't exist. If @uri is %NULL then returns %NULL.
 func (uri *Uri) GetUserinfo() string {
 	var carg0 *C.GstUri // in, none, converted
-	var cret  *C.gchar  // return, none, string
+	var cret  *C.gchar  // return, none, string, nullable-string
 
 	carg0 = (*C.GstUri)(UnsafeUriToGlibNone(uri))
 
@@ -61043,7 +62087,9 @@ func (uri *Uri) GetUserinfo() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -61112,7 +62158,7 @@ func (uri *Uri) IsWritable() bool {
 // 
 // The function returns the following values:
 // 
-// 	- goret *Uri 
+// 	- goret *Uri (nullable) 
 //
 // Join a reference URI onto a base URI using the method from RFC 3986.
 // If either URI is %NULL then the other URI will be returned with the ref count
@@ -61120,7 +62166,7 @@ func (uri *Uri) IsWritable() bool {
 func (baseUri *Uri) Join(refUri *Uri) *Uri {
 	var carg0 *C.GstUri // in, none, converted
 	var carg1 *C.GstUri // in, none, converted, nullable
-	var cret  *C.GstUri // return, full, converted
+	var cret  *C.GstUri // return, full, converted, nullable
 
 	carg0 = (*C.GstUri)(UnsafeUriToGlibNone(baseUri))
 	if refUri != nil {
@@ -61133,7 +62179,9 @@ func (baseUri *Uri) Join(refUri *Uri) *Uri {
 
 	var goret *Uri
 
-	goret = UnsafeUriFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeUriFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }

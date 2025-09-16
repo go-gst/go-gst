@@ -1000,6 +1000,33 @@ func (e RTSPVersion) String() string {
 	}
 }
 
+// RTSPVersionAsText wraps gst_rtsp_version_as_text
+// 
+// The function takes the following parameters:
+// 
+// 	- version RTSPVersion: a #GstRTSPVersion 
+// 
+// The function returns the following values:
+// 
+// 	- goret string 
+//
+// Convert @version to a string.
+func RTSPVersionAsText(version RTSPVersion) string {
+	var carg1 C.GstRTSPVersion // in, none, casted
+	var cret  *C.gchar         // return, none, string
+
+	carg1 = C.GstRTSPVersion(version)
+
+	cret = C.gst_rtsp_version_as_text(carg1)
+	runtime.KeepAlive(version)
+
+	var goret string
+
+	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+
+	return goret
+}
+
 // RTSPEvent wraps GstRTSPEvent
 //
 // The possible events for the connection.
@@ -1250,6 +1277,35 @@ func (f RTSPMethod) String() string {
 	return "RTSPMethod(" + strings.Join(parts, "|") + ")"
 }
 
+// RTSPMethodAsText wraps gst_rtsp_method_as_text
+// 
+// The function takes the following parameters:
+// 
+// 	- method RTSPMethod: a #GstRTSPMethod 
+// 
+// The function returns the following values:
+// 
+// 	- goret string (nullable) 
+//
+// Convert @method to a string.
+func RTSPMethodAsText(method RTSPMethod) string {
+	var carg1 C.GstRTSPMethod // in, none, casted
+	var cret  *C.gchar        // return, none, string, nullable-string
+
+	carg1 = C.GstRTSPMethod(method)
+
+	cret = C.gst_rtsp_method_as_text(carg1)
+	runtime.KeepAlive(method)
+
+	var goret string
+
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
+
+	return goret
+}
+
 // RTSPProfile wraps GstRTSPProfile
 //
 // The transfer profile to use.
@@ -1443,7 +1499,7 @@ func RtspFindMethod(method string) RTSPMethod {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Calculates the digest auth response from the values given by the server and
 // the username and password. See RFC2069 for details.
@@ -1457,7 +1513,7 @@ func RtspGenerateDigestAuthResponse(algorithm string, method string, realm strin
 	var carg5 *C.gchar // in, none, string
 	var carg6 *C.gchar // in, none, string
 	var carg7 *C.gchar // in, none, string
-	var cret  *C.gchar // return, full, string
+	var cret  *C.gchar // return, full, string, nullable-string
 
 	if algorithm != "" {
 		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(algorithm)))
@@ -1487,8 +1543,10 @@ func RtspGenerateDigestAuthResponse(algorithm string, method string, realm strin
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -1505,7 +1563,7 @@ func RtspGenerateDigestAuthResponse(algorithm string, method string, realm strin
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Calculates the digest auth response from the values given by the server and
 // the md5sum. See RFC2069 for details.
@@ -1520,7 +1578,7 @@ func RtspGenerateDigestAuthResponseFromMD5(algorithm string, method string, md5 
 	var carg3 *C.gchar // in, none, string
 	var carg4 *C.gchar // in, none, string
 	var carg5 *C.gchar // in, none, string
-	var cret  *C.gchar // return, full, string
+	var cret  *C.gchar // return, full, string, nullable-string
 
 	if algorithm != "" {
 		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(algorithm)))
@@ -1544,8 +1602,10 @@ func RtspGenerateDigestAuthResponseFromMD5(algorithm string, method string, md5 
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -1587,12 +1647,12 @@ func RtspHeaderAllowMultiple(field RTSPHeaderField) bool {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Convert @field to a string.
 func RtspHeaderAsText(field RTSPHeaderField) string {
 	var carg1 C.GstRTSPHeaderField // in, none, casted
-	var cret  *C.gchar             // return, none, string
+	var cret  *C.gchar             // return, none, string, nullable-string
 
 	carg1 = C.GstRTSPHeaderField(field)
 
@@ -1601,7 +1661,9 @@ func RtspHeaderAsText(field RTSPHeaderField) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -2897,12 +2959,12 @@ func (conn *RTSPConnection) GetIP() string {
 // GetReadSocket wraps gst_rtsp_connection_get_read_socket
 // The function returns the following values:
 // 
-// 	- goret gio.Socket 
+// 	- goret gio.Socket (nullable) 
 //
 // Get the file descriptor for reading.
 func (conn *RTSPConnection) GetReadSocket() gio.Socket {
 	var carg0 *C.GstRTSPConnection // in, none, converted
-	var cret  *C.GSocket           // return, none, converted
+	var cret  *C.GSocket           // return, none, converted, nullable
 
 	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
 
@@ -2911,7 +2973,9 @@ func (conn *RTSPConnection) GetReadSocket() gio.Socket {
 
 	var goret gio.Socket
 
-	goret = gio.UnsafeSocketFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gio.UnsafeSocketFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -2976,14 +3040,14 @@ func (conn *RTSPConnection) GetTLS() (gio.TlsConnection, error) {
 // GetTLSDatabase wraps gst_rtsp_connection_get_tls_database
 // The function returns the following values:
 // 
-// 	- goret gio.TlsDatabase 
+// 	- goret gio.TlsDatabase (nullable) 
 //
 // Gets the anchor certificate authorities database that will be used
 // after a server certificate can't be verified with the default
 // certificate database.
 func (conn *RTSPConnection) GetTLSDatabase() gio.TlsDatabase {
 	var carg0 *C.GstRTSPConnection // in, none, converted
-	var cret  *C.GTlsDatabase      // return, full, converted
+	var cret  *C.GTlsDatabase      // return, full, converted, nullable
 
 	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
 
@@ -2992,7 +3056,9 @@ func (conn *RTSPConnection) GetTLSDatabase() gio.TlsDatabase {
 
 	var goret gio.TlsDatabase
 
-	goret = gio.UnsafeTlsDatabaseFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gio.UnsafeTlsDatabaseFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -3000,14 +3066,14 @@ func (conn *RTSPConnection) GetTLSDatabase() gio.TlsDatabase {
 // GetTLSInteraction wraps gst_rtsp_connection_get_tls_interaction
 // The function returns the following values:
 // 
-// 	- goret gio.TlsInteraction 
+// 	- goret gio.TlsInteraction (nullable) 
 //
 // Gets a #GTlsInteraction object to be used when the connection or certificate
 // database need to interact with the user. This will be used to prompt the
 // user for passwords where necessary.
 func (conn *RTSPConnection) GetTLSInteraction() gio.TlsInteraction {
 	var carg0 *C.GstRTSPConnection // in, none, converted
-	var cret  *C.GTlsInteraction   // return, full, converted
+	var cret  *C.GTlsInteraction   // return, full, converted, nullable
 
 	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
 
@@ -3016,7 +3082,9 @@ func (conn *RTSPConnection) GetTLSInteraction() gio.TlsInteraction {
 
 	var goret gio.TlsInteraction
 
-	goret = gio.UnsafeTlsInteractionFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gio.UnsafeTlsInteractionFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -3056,12 +3124,12 @@ func (conn *RTSPConnection) GetTLSValidationFlags() gio.TLSCertificateFlags {
 // GetTunnelid wraps gst_rtsp_connection_get_tunnelid
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Get the tunnel session id the connection.
 func (conn *RTSPConnection) GetTunnelid() string {
 	var carg0 *C.GstRTSPConnection // in, none, converted
-	var cret  *C.gchar             // return, none, string
+	var cret  *C.gchar             // return, none, string, nullable-string
 
 	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
 
@@ -3070,7 +3138,9 @@ func (conn *RTSPConnection) GetTunnelid() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -3100,12 +3170,12 @@ func (conn *RTSPConnection) GetURL() *RTSPUrl {
 // GetWriteSocket wraps gst_rtsp_connection_get_write_socket
 // The function returns the following values:
 // 
-// 	- goret gio.Socket 
+// 	- goret gio.Socket (nullable) 
 //
 // Get the file descriptor for writing.
 func (conn *RTSPConnection) GetWriteSocket() gio.Socket {
 	var carg0 *C.GstRTSPConnection // in, none, converted
-	var cret  *C.GSocket           // return, none, converted
+	var cret  *C.GSocket           // return, none, converted, nullable
 
 	carg0 = (*C.GstRTSPConnection)(UnsafeRTSPConnectionToGlibNone(conn))
 
@@ -3114,7 +3184,9 @@ func (conn *RTSPConnection) GetWriteSocket() gio.Socket {
 
 	var goret gio.Socket
 
-	goret = gio.UnsafeSocketFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gio.UnsafeSocketFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -5468,13 +5540,13 @@ func RTSPTransportParse(str string) (RTSPTransport, RTSPResult) {
 // AsText wraps gst_rtsp_transport_as_text
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Convert @transport into a string that can be used to signal the transport in
 // an RTSP SETUP response.
 func (transport *RTSPTransport) AsText() string {
 	var carg0 *C.GstRTSPTransport // in, none, converted
-	var cret  *C.gchar            // return, full, string
+	var cret  *C.gchar            // return, full, string, nullable-string
 
 	carg0 = (*C.GstRTSPTransport)(UnsafeRTSPTransportToGlibNone(transport))
 
@@ -5483,8 +5555,10 @@ func (transport *RTSPTransport) AsText() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
 
 	return goret
 }

@@ -355,6 +355,22 @@ func (e WebRTCError) String() string {
 	}
 }
 
+// WebRTCErrorQuark wraps gst_webrtc_error_quark
+// The function returns the following values:
+// 
+// 	- goret glib.Quark 
+func WebRTCErrorQuark() glib.Quark {
+	var cret C.GQuark // return, none, casted, alias
+
+	cret = C.gst_webrtc_error_quark()
+
+	var goret glib.Quark
+
+	goret = glib.Quark(cret)
+
+	return goret
+}
+
 // WebRTCFECType wraps GstWebRTCFECType
 type WebRTCFECType C.int
 
@@ -866,6 +882,31 @@ func (e WebRTCSDPType) String() string {
 		case WebrtcSdpTypeRollback: return "WebrtcSdpTypeRollback"
 		default: return fmt.Sprintf("WebRTCSDPType(%d)", e)
 	}
+}
+
+// WebRTCSDPTypeToString wraps gst_webrtc_sdp_type_to_string
+// 
+// The function takes the following parameters:
+// 
+// 	- typ WebRTCSDPType: a #GstWebRTCSDPType 
+// 
+// The function returns the following values:
+// 
+// 	- goret string 
+func WebRTCSDPTypeToString(typ WebRTCSDPType) string {
+	var carg1 C.GstWebRTCSDPType // in, none, casted
+	var cret  *C.gchar           // return, none, string
+
+	carg1 = C.GstWebRTCSDPType(typ)
+
+	cret = C.gst_webrtc_sdp_type_to_string(carg1)
+	runtime.KeepAlive(typ)
+
+	var goret string
+
+	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+
+	return goret
 }
 
 // WebRTCSignalingState wraps GstWebRTCSignalingState
@@ -1393,7 +1434,7 @@ type WebRTCICE interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret WebRTCICEStream 
+	// 	- goret WebRTCICEStream (nullable) 
 	AddStream(uint) WebRTCICEStream
 	// AddTurnServer wraps gst_webrtc_ice_add_turn_server
 	// 
@@ -1414,7 +1455,7 @@ type WebRTCICE interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret WebRTCICETransport 
+	// 	- goret WebRTCICETransport (nullable) 
 	FindTransport(WebRTCICEStream, WebRTCICEComponent) WebRTCICETransport
 	// GatherCandidates wraps gst_webrtc_ice_gather_candidates
 	// 
@@ -1471,12 +1512,12 @@ type WebRTCICE interface {
 	// GetStunServer wraps gst_webrtc_ice_get_stun_server
 	// The function returns the following values:
 	// 
-	// 	- goret string 
+	// 	- goret string (nullable) 
 	GetStunServer() string
 	// GetTurnServer wraps gst_webrtc_ice_get_turn_server
 	// The function returns the following values:
 	// 
-	// 	- goret string 
+	// 	- goret string (nullable) 
 	GetTurnServer() string
 	// SetForceRelay wraps gst_webrtc_ice_set_force_relay
 	// 
@@ -1630,11 +1671,11 @@ func (ice *WebRTCICEInstance) AddCandidate(stream WebRTCICEStream, candidate str
 // 
 // The function returns the following values:
 // 
-// 	- goret WebRTCICEStream 
+// 	- goret WebRTCICEStream (nullable) 
 func (ice *WebRTCICEInstance) AddStream(sessionId uint) WebRTCICEStream {
 	var carg0 *C.GstWebRTCICE       // in, none, converted
 	var carg1 C.guint               // in, none, casted
-	var cret  *C.GstWebRTCICEStream // return, full, converted
+	var cret  *C.GstWebRTCICEStream // return, full, converted, nullable
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = C.guint(sessionId)
@@ -1645,7 +1686,9 @@ func (ice *WebRTCICEInstance) AddStream(sessionId uint) WebRTCICEStream {
 
 	var goret WebRTCICEStream
 
-	goret = UnsafeWebRTCICEStreamFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeWebRTCICEStreamFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -1690,12 +1733,12 @@ func (ice *WebRTCICEInstance) AddTurnServer(uri string) bool {
 // 
 // The function returns the following values:
 // 
-// 	- goret WebRTCICETransport 
+// 	- goret WebRTCICETransport (nullable) 
 func (ice *WebRTCICEInstance) FindTransport(stream WebRTCICEStream, component WebRTCICEComponent) WebRTCICETransport {
 	var carg0 *C.GstWebRTCICE          // in, none, converted
 	var carg1 *C.GstWebRTCICEStream    // in, none, converted
 	var carg2 C.GstWebRTCICEComponent  // in, none, casted
-	var cret  *C.GstWebRTCICETransport // return, full, converted
+	var cret  *C.GstWebRTCICETransport // return, full, converted, nullable
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 	carg1 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
@@ -1708,7 +1751,9 @@ func (ice *WebRTCICEInstance) FindTransport(stream WebRTCICEStream, component We
 
 	var goret WebRTCICETransport
 
-	goret = UnsafeWebRTCICETransportFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeWebRTCICETransportFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -1887,10 +1932,10 @@ func (ice *WebRTCICEInstance) GetSelectedPair(stream WebRTCICEStream) (*WebRTCIC
 // GetStunServer wraps gst_webrtc_ice_get_stun_server
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 func (ice *WebRTCICEInstance) GetStunServer() string {
 	var carg0 *C.GstWebRTCICE // in, none, converted
-	var cret  *C.gchar        // return, full, string
+	var cret  *C.gchar        // return, full, string, nullable-string
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 
@@ -1899,8 +1944,10 @@ func (ice *WebRTCICEInstance) GetStunServer() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -1908,10 +1955,10 @@ func (ice *WebRTCICEInstance) GetStunServer() string {
 // GetTurnServer wraps gst_webrtc_ice_get_turn_server
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 func (ice *WebRTCICEInstance) GetTurnServer() string {
 	var carg0 *C.GstWebRTCICE // in, none, converted
-	var cret  *C.gchar        // return, full, string
+	var cret  *C.gchar        // return, full, string, nullable-string
 
 	carg0 = (*C.GstWebRTCICE)(UnsafeWebRTCICEToGlibNone(ice))
 
@@ -1920,8 +1967,10 @@ func (ice *WebRTCICEInstance) GetTurnServer() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -2176,7 +2225,7 @@ type WebRTCICEStream interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret WebRTCICETransport 
+	// 	- goret WebRTCICETransport (nullable) 
 	FindTransport(WebRTCICEComponent) WebRTCICETransport
 	// GatherCandidates wraps gst_webrtc_ice_stream_gather_candidates
 	// The function returns the following values:
@@ -2231,11 +2280,11 @@ func UnsafeWebRTCICEStreamToGlibFull(c WebRTCICEStream) unsafe.Pointer {
 // 
 // The function returns the following values:
 // 
-// 	- goret WebRTCICETransport 
+// 	- goret WebRTCICETransport (nullable) 
 func (stream *WebRTCICEStreamInstance) FindTransport(component WebRTCICEComponent) WebRTCICETransport {
 	var carg0 *C.GstWebRTCICEStream    // in, none, converted
 	var carg1 C.GstWebRTCICEComponent  // in, none, casted
-	var cret  *C.GstWebRTCICETransport // return, full, converted
+	var cret  *C.GstWebRTCICETransport // return, full, converted, nullable
 
 	carg0 = (*C.GstWebRTCICEStream)(UnsafeWebRTCICEStreamToGlibNone(stream))
 	carg1 = C.GstWebRTCICEComponent(component)
@@ -2246,7 +2295,9 @@ func (stream *WebRTCICEStreamInstance) FindTransport(component WebRTCICEComponen
 
 	var goret WebRTCICETransport
 
-	goret = UnsafeWebRTCICETransportFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeWebRTCICETransportFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }

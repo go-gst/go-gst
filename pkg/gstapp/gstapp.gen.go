@@ -181,7 +181,7 @@ type AppSink interface {
 	// GetCaps wraps gst_app_sink_get_caps
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Caps 
+	// 	- goret *gst.Caps (nullable) 
 	//
 	// Get the configured caps on @appsink.
 	GetCaps() *gst.Caps
@@ -243,7 +243,7 @@ type AppSink interface {
 	// PullPreroll wraps gst_app_sink_pull_preroll
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Sample 
+	// 	- goret *gst.Sample (nullable) 
 	//
 	// Get the last preroll sample in @appsink. This was the sample that caused the
 	// appsink to preroll in the PAUSED state.
@@ -267,7 +267,7 @@ type AppSink interface {
 	// PullSample wraps gst_app_sink_pull_sample
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Sample 
+	// 	- goret *gst.Sample (nullable) 
 	//
 	// This function blocks until a sample or EOS becomes available or the appsink
 	// element is set to the READY/NULL state.
@@ -371,7 +371,7 @@ type AppSink interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Sample 
+	// 	- goret *gst.Sample (nullable) 
 	//
 	// Get the last preroll sample in @appsink. This was the sample that caused the
 	// appsink to preroll in the PAUSED state.
@@ -401,7 +401,7 @@ type AppSink interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Sample 
+	// 	- goret *gst.Sample (nullable) 
 	//
 	// This function blocks until a sample or EOS becomes available or the appsink
 	// element is set to the READY/NULL state or the timeout expires.
@@ -653,12 +653,12 @@ func (appsink *AppSinkInstance) GetBufferListSupport() bool {
 // GetCaps wraps gst_app_sink_get_caps
 // The function returns the following values:
 // 
-// 	- goret *gst.Caps 
+// 	- goret *gst.Caps (nullable) 
 //
 // Get the configured caps on @appsink.
 func (appsink *AppSinkInstance) GetCaps() *gst.Caps {
 	var carg0 *C.GstAppSink // in, none, converted
-	var cret  *C.GstCaps    // return, full, converted
+	var cret  *C.GstCaps    // return, full, converted, nullable
 
 	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 
@@ -667,7 +667,9 @@ func (appsink *AppSinkInstance) GetCaps() *gst.Caps {
 
 	var goret *gst.Caps
 
-	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -843,7 +845,7 @@ func (appsink *AppSinkInstance) IsEos() bool {
 // PullPreroll wraps gst_app_sink_pull_preroll
 // The function returns the following values:
 // 
-// 	- goret *gst.Sample 
+// 	- goret *gst.Sample (nullable) 
 //
 // Get the last preroll sample in @appsink. This was the sample that caused the
 // appsink to preroll in the PAUSED state.
@@ -865,7 +867,7 @@ func (appsink *AppSinkInstance) IsEos() bool {
 // element is set to the READY/NULL state.
 func (appsink *AppSinkInstance) PullPreroll() *gst.Sample {
 	var carg0 *C.GstAppSink // in, none, converted
-	var cret  *C.GstSample  // return, full, converted
+	var cret  *C.GstSample  // return, full, converted, nullable
 
 	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 
@@ -874,7 +876,9 @@ func (appsink *AppSinkInstance) PullPreroll() *gst.Sample {
 
 	var goret *gst.Sample
 
-	goret = gst.UnsafeSampleFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeSampleFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -882,7 +886,7 @@ func (appsink *AppSinkInstance) PullPreroll() *gst.Sample {
 // PullSample wraps gst_app_sink_pull_sample
 // The function returns the following values:
 // 
-// 	- goret *gst.Sample 
+// 	- goret *gst.Sample (nullable) 
 //
 // This function blocks until a sample or EOS becomes available or the appsink
 // element is set to the READY/NULL state.
@@ -897,7 +901,7 @@ func (appsink *AppSinkInstance) PullPreroll() *gst.Sample {
 // %NULL. Use gst_app_sink_is_eos () to check for the EOS condition.
 func (appsink *AppSinkInstance) PullSample() *gst.Sample {
 	var carg0 *C.GstAppSink // in, none, converted
-	var cret  *C.GstSample  // return, full, converted
+	var cret  *C.GstSample  // return, full, converted, nullable
 
 	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 
@@ -906,7 +910,9 @@ func (appsink *AppSinkInstance) PullSample() *gst.Sample {
 
 	var goret *gst.Sample
 
-	goret = gst.UnsafeSampleFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeSampleFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -1099,7 +1105,7 @@ func (appsink *AppSinkInstance) SetWaitOnEos(wait bool) {
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.Sample 
+// 	- goret *gst.Sample (nullable) 
 //
 // Get the last preroll sample in @appsink. This was the sample that caused the
 // appsink to preroll in the PAUSED state.
@@ -1123,7 +1129,7 @@ func (appsink *AppSinkInstance) SetWaitOnEos(wait bool) {
 func (appsink *AppSinkInstance) TryPullPreroll(timeout gst.ClockTime) *gst.Sample {
 	var carg0 *C.GstAppSink  // in, none, converted
 	var carg1 C.GstClockTime // in, none, casted, alias
-	var cret  *C.GstSample   // return, full, converted
+	var cret  *C.GstSample   // return, full, converted, nullable
 
 	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 	carg1 = C.GstClockTime(timeout)
@@ -1134,7 +1140,9 @@ func (appsink *AppSinkInstance) TryPullPreroll(timeout gst.ClockTime) *gst.Sampl
 
 	var goret *gst.Sample
 
-	goret = gst.UnsafeSampleFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeSampleFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -1147,7 +1155,7 @@ func (appsink *AppSinkInstance) TryPullPreroll(timeout gst.ClockTime) *gst.Sampl
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.Sample 
+// 	- goret *gst.Sample (nullable) 
 //
 // This function blocks until a sample or EOS becomes available or the appsink
 // element is set to the READY/NULL state or the timeout expires.
@@ -1164,7 +1172,7 @@ func (appsink *AppSinkInstance) TryPullPreroll(timeout gst.ClockTime) *gst.Sampl
 func (appsink *AppSinkInstance) TryPullSample(timeout gst.ClockTime) *gst.Sample {
 	var carg0 *C.GstAppSink  // in, none, converted
 	var carg1 C.GstClockTime // in, none, casted, alias
-	var cret  *C.GstSample   // return, full, converted
+	var cret  *C.GstSample   // return, full, converted, nullable
 
 	carg0 = (*C.GstAppSink)(UnsafeAppSinkToGlibNone(appsink))
 	carg1 = C.GstClockTime(timeout)
@@ -1175,7 +1183,9 @@ func (appsink *AppSinkInstance) TryPullSample(timeout gst.ClockTime) *gst.Sample
 
 	var goret *gst.Sample
 
-	goret = gst.UnsafeSampleFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeSampleFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -1456,7 +1466,7 @@ type AppSrc interface {
 	// GetCaps wraps gst_app_src_get_caps
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Caps 
+	// 	- goret *gst.Caps (nullable) 
 	//
 	// Get the configured caps on @appsrc.
 	GetCaps() *gst.Caps
@@ -1845,12 +1855,12 @@ func (appsrc *AppSrcInstance) EndOfStream() gst.FlowReturn {
 // GetCaps wraps gst_app_src_get_caps
 // The function returns the following values:
 // 
-// 	- goret *gst.Caps 
+// 	- goret *gst.Caps (nullable) 
 //
 // Get the configured caps on @appsrc.
 func (appsrc *AppSrcInstance) GetCaps() *gst.Caps {
 	var carg0 *C.GstAppSrc // in, none, converted
-	var cret  *C.GstCaps   // return, full, converted
+	var cret  *C.GstCaps   // return, full, converted, nullable
 
 	carg0 = (*C.GstAppSrc)(UnsafeAppSrcToGlibNone(appsrc))
 
@@ -1859,7 +1869,9 @@ func (appsrc *AppSrcInstance) GetCaps() *gst.Caps {
 
 	var goret *gst.Caps
 
-	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }

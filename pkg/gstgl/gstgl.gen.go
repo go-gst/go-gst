@@ -202,6 +202,22 @@ func (e GLBaseMemoryError) String() string {
 	}
 }
 
+// GLBaseMemoryErrorQuark wraps gst_gl_base_memory_error_quark
+// The function returns the following values:
+// 
+// 	- goret glib.Quark 
+func GLBaseMemoryErrorQuark() glib.Quark {
+	var cret C.GQuark // return, none, casted, alias
+
+	cret = C.gst_gl_base_memory_error_quark()
+
+	var goret glib.Quark
+
+	goret = glib.Quark(cret)
+
+	return goret
+}
+
 // GLConfigCaveat wraps GstGLConfigCaveat
 type GLConfigCaveat C.int
 
@@ -238,6 +254,33 @@ func (e GLConfigCaveat) String() string {
 		case GLConfigCaveatSlow: return "GLConfigCaveatSlow"
 		default: return fmt.Sprintf("GLConfigCaveat(%d)", e)
 	}
+}
+
+// GLConfigCaveatToString wraps gst_gl_config_caveat_to_string
+// 
+// The function takes the following parameters:
+// 
+// 	- caveat GLConfigCaveat: the #GstGLConfigCaveat 
+// 
+// The function returns the following values:
+// 
+// 	- goret string (nullable) 
+func GLConfigCaveatToString(caveat GLConfigCaveat) string {
+	var carg1 C.GstGLConfigCaveat // in, none, casted
+	var cret  *C.gchar            // return, none, string, nullable-string
+
+	carg1 = C.GstGLConfigCaveat(caveat)
+
+	cret = C.gst_gl_config_caveat_to_string(carg1)
+	runtime.KeepAlive(caveat)
+
+	var goret string
+
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
+
+	return goret
 }
 
 // GLContextError wraps GstGLContextError
@@ -293,6 +336,22 @@ func (e GLContextError) String() string {
 		case GLContextErrorWrongConfig: return "GLContextErrorWrongConfig"
 		default: return fmt.Sprintf("GLContextError(%d)", e)
 	}
+}
+
+// GLContextErrorQuark wraps gst_gl_context_error_quark
+// The function returns the following values:
+// 
+// 	- goret glib.Quark 
+func GLContextErrorQuark() glib.Quark {
+	var cret C.GQuark // return, none, casted, alias
+
+	cret = C.gst_gl_context_error_quark()
+
+	var goret glib.Quark
+
+	goret = glib.Quark(cret)
+
+	return goret
 }
 
 // GLFormat wraps GstGLFormat
@@ -419,6 +478,156 @@ func (e GLFormat) String() string {
 	}
 }
 
+// GLFormatFromVideoInfo wraps gst_gl_format_from_video_info
+// 
+// The function takes the following parameters:
+// 
+// 	- _context GLContext: a #GstGLContext 
+// 	- vinfo *gstvideo.VideoInfo: a #GstVideoInfo 
+// 	- plane uint: the plane number in @vinfo 
+// 
+// The function returns the following values:
+// 
+// 	- goret GLFormat 
+func GLFormatFromVideoInfo(_context GLContext, vinfo *gstvideo.VideoInfo, plane uint) GLFormat {
+	var carg1 *C.GstGLContext // in, none, converted
+	var carg2 *C.GstVideoInfo // in, none, converted
+	var carg3 C.guint         // in, none, casted
+	var cret  C.GstGLFormat   // return, none, casted
+
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
+	carg2 = (*C.GstVideoInfo)(gstvideo.UnsafeVideoInfoToGlibNone(vinfo))
+	carg3 = C.guint(plane)
+
+	cret = C.gst_gl_format_from_video_info(carg1, carg2, carg3)
+	runtime.KeepAlive(_context)
+	runtime.KeepAlive(vinfo)
+	runtime.KeepAlive(plane)
+
+	var goret GLFormat
+
+	goret = GLFormat(cret)
+
+	return goret
+}
+
+// GLFormatIsSupported wraps gst_gl_format_is_supported
+// 
+// The function takes the following parameters:
+// 
+// 	- _context GLContext: a #GstGLContext 
+// 	- format GLFormat: the #GstGLFormat to check is supported by @context 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+func GLFormatIsSupported(_context GLContext, format GLFormat) bool {
+	var carg1 *C.GstGLContext // in, none, converted
+	var carg2 C.GstGLFormat   // in, none, casted
+	var cret  C.gboolean      // return
+
+	carg1 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
+	carg2 = C.GstGLFormat(format)
+
+	cret = C.gst_gl_format_is_supported(carg1, carg2)
+	runtime.KeepAlive(_context)
+	runtime.KeepAlive(format)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// GLFormatNComponents wraps gst_gl_format_n_components
+// 
+// The function takes the following parameters:
+// 
+// 	- glFormat GLFormat: the #GstGLFormat 
+// 
+// The function returns the following values:
+// 
+// 	- goret uint 
+func GLFormatNComponents(glFormat GLFormat) uint {
+	var carg1 C.GstGLFormat // in, none, casted
+	var cret  C.guint       // return, none, casted
+
+	carg1 = C.GstGLFormat(glFormat)
+
+	cret = C.gst_gl_format_n_components(carg1)
+	runtime.KeepAlive(glFormat)
+
+	var goret uint
+
+	goret = uint(cret)
+
+	return goret
+}
+
+// GLFormatTypeFromSizedGLFormat wraps gst_gl_format_type_from_sized_gl_format
+// 
+// The function takes the following parameters:
+// 
+// 	- format GLFormat: the sized internal #GstGLFormat 
+// 
+// The function returns the following values:
+// 
+// 	- unsizedFormat GLFormat: location for the resulting unsized #GstGLFormat 
+// 	- glType uint: location for the resulting GL type 
+//
+// Get the unsized format and type from @format for usage in glReadPixels,
+// glTex{Sub}Image*, glTexImage* and similar functions.
+func GLFormatTypeFromSizedGLFormat(format GLFormat) (GLFormat, uint) {
+	var carg1 C.GstGLFormat // in, none, casted
+	var carg2 C.GstGLFormat // out, full, casted
+	var carg3 C.guint       // out, full, casted
+
+	carg1 = C.GstGLFormat(format)
+
+	C.gst_gl_format_type_from_sized_gl_format(carg1, &carg2, &carg3)
+	runtime.KeepAlive(format)
+
+	var unsizedFormat GLFormat
+	var glType        uint
+
+	unsizedFormat = GLFormat(carg2)
+	glType = uint(carg3)
+
+	return unsizedFormat, glType
+}
+
+// GLFormatTypeNBytes wraps gst_gl_format_type_n_bytes
+// 
+// The function takes the following parameters:
+// 
+// 	- format uint: the OpenGL format, `GL_RGBA`, `GL_LUMINANCE`, etc 
+// 	- typ uint: the OpenGL type, `GL_UNSIGNED_BYTE`, `GL_FLOAT`, etc 
+// 
+// The function returns the following values:
+// 
+// 	- goret uint 
+func GLFormatTypeNBytes(format uint, typ uint) uint {
+	var carg1 C.guint // in, none, casted
+	var carg2 C.guint // in, none, casted
+	var cret  C.guint // return, none, casted
+
+	carg1 = C.guint(format)
+	carg2 = C.guint(typ)
+
+	cret = C.gst_gl_format_type_n_bytes(carg1, carg2)
+	runtime.KeepAlive(format)
+	runtime.KeepAlive(typ)
+
+	var goret uint
+
+	goret = uint(cret)
+
+	return goret
+}
+
 // GLQueryType wraps GstGLQueryType
 type GLQueryType C.int
 
@@ -495,6 +704,22 @@ func (e GLSLError) String() string {
 		case GlslErrorProgram: return "GlslErrorProgram"
 		default: return fmt.Sprintf("GLSLError(%d)", e)
 	}
+}
+
+// GLSLErrorQuark wraps gst_glsl_error_quark
+// The function returns the following values:
+// 
+// 	- goret glib.Quark 
+func GLSLErrorQuark() glib.Quark {
+	var cret C.GQuark // return, none, casted, alias
+
+	cret = C.gst_glsl_error_quark()
+
+	var goret glib.Quark
+
+	goret = glib.Quark(cret)
+
+	return goret
 }
 
 // GLSLVersion wraps GstGLSLVersion
@@ -607,6 +832,130 @@ func (e GLSLVersion) String() string {
 	}
 }
 
+// GLSLVersionFromString wraps gst_glsl_version_from_string
+// 
+// The function takes the following parameters:
+// 
+// 	- str string: a GLSL version string 
+// 
+// The function returns the following values:
+// 
+// 	- goret GLSLVersion 
+func GLSLVersionFromString(str string) GLSLVersion {
+	var carg1 *C.gchar         // in, none, string
+	var cret  C.GstGLSLVersion // return, none, casted
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(str)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	cret = C.gst_glsl_version_from_string(carg1)
+	runtime.KeepAlive(str)
+
+	var goret GLSLVersion
+
+	goret = GLSLVersion(cret)
+
+	return goret
+}
+
+// GLSLVersionProfileFromString wraps gst_glsl_version_profile_from_string
+// 
+// The function takes the following parameters:
+// 
+// 	- str string: a valid GLSL `#version` string 
+// 
+// The function returns the following values:
+// 
+// 	- versionRet GLSLVersion: resulting #GstGLSLVersion 
+// 	- profileRet GLSLProfile: resulting #GstGLSLVersion 
+// 	- goret bool 
+//
+// Note: this function expects either a `#version` GLSL preprocesser directive
+// or a valid GLSL version and/or profile.
+func GLSLVersionProfileFromString(str string) (GLSLVersion, GLSLProfile, bool) {
+	var carg1 *C.gchar         // in, none, string
+	var carg2 C.GstGLSLVersion // out, full, casted
+	var carg3 C.GstGLSLProfile // out, full, casted
+	var cret  C.gboolean       // return
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(str)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	cret = C.gst_glsl_version_profile_from_string(carg1, &carg2, &carg3)
+	runtime.KeepAlive(str)
+
+	var versionRet GLSLVersion
+	var profileRet GLSLProfile
+	var goret      bool
+
+	versionRet = GLSLVersion(carg2)
+	profileRet = GLSLProfile(carg3)
+	if cret != 0 {
+		goret = true
+	}
+
+	return versionRet, profileRet, goret
+}
+
+// GLSLVersionProfileToString wraps gst_glsl_version_profile_to_string
+// 
+// The function takes the following parameters:
+// 
+// 	- version GLSLVersion: a #GstGLSLVersion 
+// 	- profile GLSLProfile: a #GstGLSLVersion 
+// 
+// The function returns the following values:
+// 
+// 	- goret string (nullable) 
+func GLSLVersionProfileToString(version GLSLVersion, profile GLSLProfile) string {
+	var carg1 C.GstGLSLVersion // in, none, casted
+	var carg2 C.GstGLSLProfile // in, none, casted
+	var cret  *C.gchar         // return, full, string, nullable-string
+
+	carg1 = C.GstGLSLVersion(version)
+	carg2 = C.GstGLSLProfile(profile)
+
+	cret = C.gst_glsl_version_profile_to_string(carg1, carg2)
+	runtime.KeepAlive(version)
+	runtime.KeepAlive(profile)
+
+	var goret string
+
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
+// GLSLVersionToString wraps gst_glsl_version_to_string
+// 
+// The function takes the following parameters:
+// 
+// 	- version GLSLVersion: a #GstGLSLVersion 
+// 
+// The function returns the following values:
+// 
+// 	- goret string (nullable) 
+func GLSLVersionToString(version GLSLVersion) string {
+	var carg1 C.GstGLSLVersion // in, none, casted
+	var cret  *C.gchar         // return, none, string, nullable-string
+
+	carg1 = C.GstGLSLVersion(version)
+
+	cret = C.gst_glsl_version_to_string(carg1)
+	runtime.KeepAlive(version)
+
+	var goret string
+
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
+
+	return goret
+}
+
 // GLStereoDownmix wraps GstGLStereoDownmix
 //
 // Output anaglyph type to generate when downmixing to mono
@@ -698,6 +1047,136 @@ func (e GLTextureTarget) String() string {
 	}
 }
 
+// GLTextureTargetFromGL wraps gst_gl_texture_target_from_gl
+// 
+// The function takes the following parameters:
+// 
+// 	- target uint: an OpenGL texture binding target 
+// 
+// The function returns the following values:
+// 
+// 	- goret GLTextureTarget 
+func GLTextureTargetFromGL(target uint) GLTextureTarget {
+	var carg1 C.guint              // in, none, casted
+	var cret  C.GstGLTextureTarget // return, none, casted
+
+	carg1 = C.guint(target)
+
+	cret = C.gst_gl_texture_target_from_gl(carg1)
+	runtime.KeepAlive(target)
+
+	var goret GLTextureTarget
+
+	goret = GLTextureTarget(cret)
+
+	return goret
+}
+
+// GLTextureTargetFromString wraps gst_gl_texture_target_from_string
+// 
+// The function takes the following parameters:
+// 
+// 	- str string: a string equivalent to one of the GST_GL_TEXTURE_TARGET_*_STR values 
+// 
+// The function returns the following values:
+// 
+// 	- goret GLTextureTarget 
+func GLTextureTargetFromString(str string) GLTextureTarget {
+	var carg1 *C.gchar             // in, none, string
+	var cret  C.GstGLTextureTarget // return, none, casted
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(str)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	cret = C.gst_gl_texture_target_from_string(carg1)
+	runtime.KeepAlive(str)
+
+	var goret GLTextureTarget
+
+	goret = GLTextureTarget(cret)
+
+	return goret
+}
+
+// GLTextureTargetToBufferPoolOption wraps gst_gl_texture_target_to_buffer_pool_option
+// 
+// The function takes the following parameters:
+// 
+// 	- target GLTextureTarget: a #GstGLTextureTarget 
+// 
+// The function returns the following values:
+// 
+// 	- goret string (nullable) 
+func GLTextureTargetToBufferPoolOption(target GLTextureTarget) string {
+	var carg1 C.GstGLTextureTarget // in, none, casted
+	var cret  *C.gchar             // return, none, string, nullable-string
+
+	carg1 = C.GstGLTextureTarget(target)
+
+	cret = C.gst_gl_texture_target_to_buffer_pool_option(carg1)
+	runtime.KeepAlive(target)
+
+	var goret string
+
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
+
+	return goret
+}
+
+// GLTextureTargetToGL wraps gst_gl_texture_target_to_gl
+// 
+// The function takes the following parameters:
+// 
+// 	- target GLTextureTarget: a #GstGLTextureTarget 
+// 
+// The function returns the following values:
+// 
+// 	- goret uint 
+func GLTextureTargetToGL(target GLTextureTarget) uint {
+	var carg1 C.GstGLTextureTarget // in, none, casted
+	var cret  C.guint              // return, none, casted
+
+	carg1 = C.GstGLTextureTarget(target)
+
+	cret = C.gst_gl_texture_target_to_gl(carg1)
+	runtime.KeepAlive(target)
+
+	var goret uint
+
+	goret = uint(cret)
+
+	return goret
+}
+
+// GLTextureTargetToString wraps gst_gl_texture_target_to_string
+// 
+// The function takes the following parameters:
+// 
+// 	- target GLTextureTarget: a #GstGLTextureTarget 
+// 
+// The function returns the following values:
+// 
+// 	- goret string (nullable) 
+func GLTextureTargetToString(target GLTextureTarget) string {
+	var carg1 C.GstGLTextureTarget // in, none, casted
+	var cret  *C.gchar             // return, none, string, nullable-string
+
+	carg1 = C.GstGLTextureTarget(target)
+
+	cret = C.gst_gl_texture_target_to_string(carg1)
+	runtime.KeepAlive(target)
+
+	var goret string
+
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
+
+	return goret
+}
+
 // GLUploadReturn wraps GstGLUploadReturn
 type GLUploadReturn C.int
 
@@ -784,6 +1263,22 @@ func (e GLWindowError) String() string {
 	}
 }
 
+// GLWindowErrorQuark wraps gst_gl_window_error_quark
+// The function returns the following values:
+// 
+// 	- goret glib.Quark 
+func GLWindowErrorQuark() glib.Quark {
+	var cret C.GQuark // return, none, casted, alias
+
+	cret = C.gst_gl_window_error_quark()
+
+	var goret glib.Quark
+
+	goret = glib.Quark(cret)
+
+	return goret
+}
+
 // GLAPI wraps GstGLAPI
 type GLAPI C.gint
 
@@ -855,6 +1350,58 @@ func (f GLAPI) String() string {
 		parts = append(parts, "GLApiAny")
 	}
 	return "GLAPI(" + strings.Join(parts, "|") + ")"
+}
+
+// GLAPIFromString wraps gst_gl_api_from_string
+// 
+// The function takes the following parameters:
+// 
+// 	- apiS string: a space separated string of OpenGL apis 
+// 
+// The function returns the following values:
+// 
+// 	- goret GLAPI 
+func GLAPIFromString(apiS string) GLAPI {
+	var carg1 *C.gchar   // in, none, string
+	var cret  C.GstGLAPI // return, none, casted
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(apiS)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	cret = C.gst_gl_api_from_string(carg1)
+	runtime.KeepAlive(apiS)
+
+	var goret GLAPI
+
+	goret = GLAPI(cret)
+
+	return goret
+}
+
+// GLAPIToString wraps gst_gl_api_to_string
+// 
+// The function takes the following parameters:
+// 
+// 	- api GLAPI: a #GstGLAPI to stringify 
+// 
+// The function returns the following values:
+// 
+// 	- goret string 
+func GLAPIToString(api GLAPI) string {
+	var carg1 C.GstGLAPI // in, none, casted
+	var cret  *C.gchar   // return, full, string
+
+	carg1 = C.GstGLAPI(api)
+
+	cret = C.gst_gl_api_to_string(carg1)
+	runtime.KeepAlive(api)
+
+	var goret string
+
+	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	defer C.free(unsafe.Pointer(cret))
+
+	return goret
 }
 
 // GLBaseMemoryTransfer wraps GstGLBaseMemoryTransfer
@@ -959,6 +1506,33 @@ func (f GLConfigSurfaceType) String() string {
 		parts = append(parts, "GLConfigSurfaceTypePixmap")
 	}
 	return "GLConfigSurfaceType(" + strings.Join(parts, "|") + ")"
+}
+
+// GLConfigSurfaceTypeToString wraps gst_gl_config_surface_type_to_string
+// 
+// The function takes the following parameters:
+// 
+// 	- surfaceType GLConfigSurfaceType: the #GstGLConfigSurfaceType 
+// 
+// The function returns the following values:
+// 
+// 	- goret string (nullable) 
+func GLConfigSurfaceTypeToString(surfaceType GLConfigSurfaceType) string {
+	var carg1 C.GstGLConfigSurfaceType // in, none, casted
+	var cret  *C.gchar                 // return, none, string, nullable-string
+
+	carg1 = C.GstGLConfigSurfaceType(surfaceType)
+
+	cret = C.gst_gl_config_surface_type_to_string(carg1)
+	runtime.KeepAlive(surfaceType)
+
+	var goret string
+
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
+
+	return goret
 }
 
 // GLDisplayType wraps GstGLDisplayType
@@ -1177,6 +1751,58 @@ func (f GLPlatform) String() string {
 	return "GLPlatform(" + strings.Join(parts, "|") + ")"
 }
 
+// GLPlatformFromString wraps gst_gl_platform_from_string
+// 
+// The function takes the following parameters:
+// 
+// 	- platformS string: a space separated string of OpenGL platformss 
+// 
+// The function returns the following values:
+// 
+// 	- goret GLPlatform 
+func GLPlatformFromString(platformS string) GLPlatform {
+	var carg1 *C.gchar        // in, none, string
+	var cret  C.GstGLPlatform // return, none, casted
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(platformS)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	cret = C.gst_gl_platform_from_string(carg1)
+	runtime.KeepAlive(platformS)
+
+	var goret GLPlatform
+
+	goret = GLPlatform(cret)
+
+	return goret
+}
+
+// GLPlatformToString wraps gst_gl_platform_to_string
+// 
+// The function takes the following parameters:
+// 
+// 	- platform GLPlatform: a #GstGLPlatform to stringify 
+// 
+// The function returns the following values:
+// 
+// 	- goret string 
+func GLPlatformToString(platform GLPlatform) string {
+	var carg1 C.GstGLPlatform // in, none, casted
+	var cret  *C.gchar        // return, full, string
+
+	carg1 = C.GstGLPlatform(platform)
+
+	cret = C.gst_gl_platform_to_string(carg1)
+	runtime.KeepAlive(platform)
+
+	var goret string
+
+	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	defer C.free(unsafe.Pointer(cret))
+
+	return goret
+}
+
 // GLSLProfile wraps GstGLSLProfile
 //
 // GLSL profiles
@@ -1244,6 +1870,59 @@ func (f GLSLProfile) String() string {
 	return "GLSLProfile(" + strings.Join(parts, "|") + ")"
 }
 
+// GLSLProfileFromString wraps gst_glsl_profile_from_string
+// 
+// The function takes the following parameters:
+// 
+// 	- str string: a GLSL version string 
+// 
+// The function returns the following values:
+// 
+// 	- goret GLSLProfile 
+func GLSLProfileFromString(str string) GLSLProfile {
+	var carg1 *C.gchar         // in, none, string
+	var cret  C.GstGLSLProfile // return, none, casted
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(str)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	cret = C.gst_glsl_profile_from_string(carg1)
+	runtime.KeepAlive(str)
+
+	var goret GLSLProfile
+
+	goret = GLSLProfile(cret)
+
+	return goret
+}
+
+// GLSLProfileToString wraps gst_glsl_profile_to_string
+// 
+// The function takes the following parameters:
+// 
+// 	- profile GLSLProfile: a #GstGLSLProfile 
+// 
+// The function returns the following values:
+// 
+// 	- goret string (nullable) 
+func GLSLProfileToString(profile GLSLProfile) string {
+	var carg1 C.GstGLSLProfile // in, none, casted
+	var cret  *C.gchar         // return, none, string, nullable-string
+
+	carg1 = C.GstGLSLProfile(profile)
+
+	cret = C.gst_glsl_profile_to_string(carg1)
+	runtime.KeepAlive(profile)
+
+	var goret string
+
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
+
+	return goret
+}
+
 // GLAsyncDebugLogGetMessage wraps GstGLAsyncDebugLogGetMessage
 type GLAsyncDebugLogGetMessage func() (goret string)
 
@@ -1287,10 +1966,10 @@ func BufferAddGLSyncMeta(_context GLContext, buffer *gst.Buffer) *GLSyncMeta {
 // 
 // The function returns the following values:
 // 
-// 	- goret *GLAllocationParams 
+// 	- goret *GLAllocationParams (nullable) 
 func BufferPoolConfigGetGLAllocationParams(config *gst.Structure) *GLAllocationParams {
 	var carg1 *C.GstStructure          // in, none, converted
-	var cret  *C.GstGLAllocationParams // return, full, converted
+	var cret  *C.GstGLAllocationParams // return, full, converted, nullable
 
 	carg1 = (*C.GstStructure)(gst.UnsafeStructureToGlibNone(config))
 
@@ -1299,7 +1978,9 @@ func BufferPoolConfigGetGLAllocationParams(config *gst.Structure) *GLAllocationP
 
 	var goret *GLAllocationParams
 
-	goret = UnsafeGLAllocationParamsFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeGLAllocationParamsFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -2064,7 +2745,7 @@ type GLBaseFilter interface {
 	// GetGLContext wraps gst_gl_base_filter_get_gl_context
 	// The function returns the following values:
 	// 
-	// 	- goret GLContext 
+	// 	- goret GLContext (nullable) 
 	GetGLContext() GLContext
 }
 
@@ -2135,10 +2816,10 @@ func (filter *GLBaseFilterInstance) FindGLContext() bool {
 // GetGLContext wraps gst_gl_base_filter_get_gl_context
 // The function returns the following values:
 // 
-// 	- goret GLContext 
+// 	- goret GLContext (nullable) 
 func (filter *GLBaseFilterInstance) GetGLContext() GLContext {
 	var carg0 *C.GstGLBaseFilter // in, none, converted
-	var cret  *C.GstGLContext    // return, full, converted
+	var cret  *C.GstGLContext    // return, full, converted, nullable
 
 	carg0 = (*C.GstGLBaseFilter)(UnsafeGLBaseFilterToGlibNone(filter))
 
@@ -2147,7 +2828,9 @@ func (filter *GLBaseFilterInstance) GetGLContext() GLContext {
 
 	var goret GLContext
 
-	goret = UnsafeGLContextFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeGLContextFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -2228,7 +2911,7 @@ type GLBaseMixer interface {
 	// GetGLContext wraps gst_gl_base_mixer_get_gl_context
 	// The function returns the following values:
 	// 
-	// 	- goret GLContext 
+	// 	- goret GLContext (nullable) 
 	GetGLContext() GLContext
 }
 
@@ -2279,10 +2962,10 @@ func UnsafeGLBaseMixerToGlibFull(c GLBaseMixer) unsafe.Pointer {
 // GetGLContext wraps gst_gl_base_mixer_get_gl_context
 // The function returns the following values:
 // 
-// 	- goret GLContext 
+// 	- goret GLContext (nullable) 
 func (mix *GLBaseMixerInstance) GetGLContext() GLContext {
 	var carg0 *C.GstGLBaseMixer // in, none, converted
-	var cret  *C.GstGLContext   // return, full, converted
+	var cret  *C.GstGLContext   // return, full, converted, nullable
 
 	carg0 = (*C.GstGLBaseMixer)(UnsafeGLBaseMixerToGlibNone(mix))
 
@@ -2291,7 +2974,9 @@ func (mix *GLBaseMixerInstance) GetGLContext() GLContext {
 
 	var goret GLContext
 
-	goret = UnsafeGLContextFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeGLContextFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -2500,7 +3185,7 @@ type GLBufferPool interface {
 	// GetGLAllocationParams wraps gst_gl_buffer_pool_get_gl_allocation_params
 	// The function returns the following values:
 	// 
-	// 	- goret *GLAllocationParams 
+	// 	- goret *GLAllocationParams (nullable) 
 	//
 	// The returned #GstGLAllocationParams will by %NULL before the first successful
 	// call to gst_buffer_pool_set_config().  Subsequent successful calls to
@@ -2577,7 +3262,7 @@ func NewGLBufferPool(_context GLContext) gst.BufferPool {
 // GetGLAllocationParams wraps gst_gl_buffer_pool_get_gl_allocation_params
 // The function returns the following values:
 // 
-// 	- goret *GLAllocationParams 
+// 	- goret *GLAllocationParams (nullable) 
 //
 // The returned #GstGLAllocationParams will by %NULL before the first successful
 // call to gst_buffer_pool_set_config().  Subsequent successful calls to
@@ -2585,7 +3270,7 @@ func NewGLBufferPool(_context GLContext) gst.BufferPool {
 // #GstGLAllocationParams which may or may not contain the same information.
 func (pool *GLBufferPoolInstance) GetGLAllocationParams() *GLAllocationParams {
 	var carg0 *C.GstGLBufferPool       // in, none, converted
-	var cret  *C.GstGLAllocationParams // return, full, converted
+	var cret  *C.GstGLAllocationParams // return, full, converted, nullable
 
 	carg0 = (*C.GstGLBufferPool)(UnsafeGLBufferPoolToGlibNone(pool))
 
@@ -2594,7 +3279,9 @@ func (pool *GLBufferPoolInstance) GetGLAllocationParams() *GLAllocationParams {
 
 	var goret *GLAllocationParams
 
-	goret = UnsafeGLAllocationParamsFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeGLAllocationParamsFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -2642,7 +3329,7 @@ type GLColorConvert interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Buffer 
+	// 	- goret *gst.Buffer (nullable) 
 	//
 	// Converts the data contained by @inbuf using the formats specified by the
 	// #GstCaps passed to gst_gl_color_convert_set_caps()
@@ -2903,14 +3590,14 @@ func (convert *GLColorConvertInstance) DecideAllocation(query *gst.Query) bool {
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.Buffer 
+// 	- goret *gst.Buffer (nullable) 
 //
 // Converts the data contained by @inbuf using the formats specified by the
 // #GstCaps passed to gst_gl_color_convert_set_caps()
 func (convert *GLColorConvertInstance) Perform(inbuf *gst.Buffer) *gst.Buffer {
 	var carg0 *C.GstGLColorConvert // in, none, converted
 	var carg1 *C.GstBuffer         // in, none, converted
-	var cret  *C.GstBuffer         // return, full, converted
+	var cret  *C.GstBuffer         // return, full, converted, nullable
 
 	carg0 = (*C.GstGLColorConvert)(UnsafeGLColorConvertToGlibNone(convert))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(inbuf))
@@ -2921,7 +3608,9 @@ func (convert *GLColorConvertInstance) Perform(inbuf *gst.Buffer) *gst.Buffer {
 
 	var goret *gst.Buffer
 
-	goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -3124,7 +3813,7 @@ type GLContext interface {
 	// GetConfig wraps gst_gl_context_get_config
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Structure 
+	// 	- goret *gst.Structure (nullable) 
 	//
 	// Retrieve the OpenGL configuration for this context.  The context must
 	// have been successfully created for this function to return a valid value.
@@ -3176,7 +3865,7 @@ type GLContext interface {
 	// GetWindow wraps gst_gl_context_get_window
 	// The function returns the following values:
 	// 
-	// 	- goret GLWindow 
+	// 	- goret GLWindow (nullable) 
 	GetWindow() GLWindow
 	// IsShared wraps gst_gl_context_is_shared
 	// The function returns the following values:
@@ -3337,17 +4026,19 @@ func NewGLContext(display GLDisplay) GLContext {
 // GLContextGetCurrent wraps gst_gl_context_get_current
 // The function returns the following values:
 // 
-// 	- goret GLContext 
+// 	- goret GLContext (nullable) 
 //
 // See also gst_gl_context_activate().
 func GLContextGetCurrent() GLContext {
-	var cret *C.GstGLContext // return, none, converted
+	var cret *C.GstGLContext // return, none, converted, nullable
 
 	cret = C.gst_gl_context_get_current()
 
 	var goret GLContext
 
-	goret = UnsafeGLContextFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeGLContextFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -3699,7 +4390,7 @@ func (_context *GLContextInstance) FillInfo() (bool, error) {
 // GetConfig wraps gst_gl_context_get_config
 // The function returns the following values:
 // 
-// 	- goret *gst.Structure 
+// 	- goret *gst.Structure (nullable) 
 //
 // Retrieve the OpenGL configuration for this context.  The context must
 // have been successfully created for this function to return a valid value.
@@ -3708,7 +4399,7 @@ func (_context *GLContextInstance) FillInfo() (bool, error) {
 // return %NULL when not supported.
 func (_context *GLContextInstance) GetConfig() *gst.Structure {
 	var carg0 *C.GstGLContext // in, none, converted
-	var cret  *C.GstStructure // return, full, converted
+	var cret  *C.GstStructure // return, full, converted, nullable
 
 	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
@@ -3717,7 +4408,9 @@ func (_context *GLContextInstance) GetConfig() *gst.Structure {
 
 	var goret *gst.Structure
 
-	goret = gst.UnsafeStructureFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeStructureFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -3847,10 +4540,10 @@ func (_context *GLContextInstance) GetGLVersion() (int, int) {
 // GetWindow wraps gst_gl_context_get_window
 // The function returns the following values:
 // 
-// 	- goret GLWindow 
+// 	- goret GLWindow (nullable) 
 func (_context *GLContextInstance) GetWindow() GLWindow {
 	var carg0 *C.GstGLContext // in, none, converted
-	var cret  *C.GstGLWindow  // return, full, converted
+	var cret  *C.GstGLWindow  // return, full, converted, nullable
 
 	carg0 = (*C.GstGLContext)(UnsafeGLContextToGlibNone(_context))
 
@@ -3859,7 +4552,9 @@ func (_context *GLContextInstance) GetWindow() GLWindow {
 
 	var goret GLWindow
 
-	goret = UnsafeGLWindowFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeGLWindowFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -4161,7 +4856,7 @@ type GLDisplay interface {
 	// CreateWindow wraps gst_gl_display_create_window
 	// The function returns the following values:
 	// 
-	// 	- goret GLWindow 
+	// 	- goret GLWindow (nullable) 
 	CreateWindow() GLWindow
 	// FilterGLApi wraps gst_gl_display_filter_gl_api
 	// 
@@ -4279,7 +4974,7 @@ func NewGLDisplay() GLDisplay {
 // 
 // The function returns the following values:
 // 
-// 	- goret GLDisplay 
+// 	- goret GLDisplay (nullable) 
 //
 // Will always return a #GstGLDisplay of a single type.  This differs from
 // gst_gl_display_new() and the seemingly equivalent call
@@ -4287,7 +4982,7 @@ func NewGLDisplay() GLDisplay {
 // may return NULL.
 func NewGLDisplayWithType(typ GLDisplayType) GLDisplay {
 	var carg1 C.GstGLDisplayType // in, none, casted
-	var cret  *C.GstGLDisplay    // return, full, converted
+	var cret  *C.GstGLDisplay    // return, full, converted, nullable
 
 	carg1 = C.GstGLDisplayType(typ)
 
@@ -4296,7 +4991,9 @@ func NewGLDisplayWithType(typ GLDisplayType) GLDisplay {
 
 	var goret GLDisplay
 
-	goret = UnsafeGLDisplayFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeGLDisplayFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -4378,10 +5075,10 @@ func (display *GLDisplayInstance) CreateContext(otherContext GLContext) (GLConte
 // CreateWindow wraps gst_gl_display_create_window
 // The function returns the following values:
 // 
-// 	- goret GLWindow 
+// 	- goret GLWindow (nullable) 
 func (display *GLDisplayInstance) CreateWindow() GLWindow {
 	var carg0 *C.GstGLDisplay // in, none, converted
-	var cret  *C.GstGLWindow  // return, full, converted
+	var cret  *C.GstGLWindow  // return, full, converted, nullable
 
 	carg0 = (*C.GstGLDisplay)(UnsafeGLDisplayToGlibNone(display))
 
@@ -4390,7 +5087,9 @@ func (display *GLDisplayInstance) CreateWindow() GLWindow {
 
 	var goret GLWindow
 
-	goret = UnsafeGLWindowFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeGLWindowFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -8179,7 +8878,7 @@ type GLViewConvert interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Buffer 
+	// 	- goret *gst.Buffer (nullable) 
 	//
 	// Converts the data contained by @inbuf using the formats specified by the
 	// #GstCaps passed to gst_gl_view_convert_set_caps()
@@ -8365,14 +9064,14 @@ func (viewconvert *GLViewConvertInstance) GetOutput() (*gst.Buffer, gst.FlowRetu
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.Buffer 
+// 	- goret *gst.Buffer (nullable) 
 //
 // Converts the data contained by @inbuf using the formats specified by the
 // #GstCaps passed to gst_gl_view_convert_set_caps()
 func (viewconvert *GLViewConvertInstance) Perform(inbuf *gst.Buffer) *gst.Buffer {
 	var carg0 *C.GstGLViewConvert // in, none, converted
 	var carg1 *C.GstBuffer        // in, none, converted
-	var cret  *C.GstBuffer        // return, full, converted
+	var cret  *C.GstBuffer        // return, full, converted, nullable
 
 	carg0 = (*C.GstGLViewConvert)(UnsafeGLViewConvertToGlibNone(viewconvert))
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(inbuf))
@@ -8383,7 +9082,9 @@ func (viewconvert *GLViewConvertInstance) Perform(inbuf *gst.Buffer) *gst.Buffer
 
 	var goret *gst.Buffer
 
-	goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -9532,11 +10233,11 @@ func UnsafeGLBaseMemoryToGlibFull(g *GLBaseMemory) unsafe.Pointer {
 // 
 // The function returns the following values:
 // 
-// 	- goret *GLBaseMemory 
+// 	- goret *GLBaseMemory (nullable) 
 func GLBaseMemoryAlloc(allocator GLBaseMemoryAllocator, params *GLAllocationParams) *GLBaseMemory {
 	var carg1 *C.GstGLBaseMemoryAllocator // in, none, converted
 	var carg2 *C.GstGLAllocationParams    // in, none, converted
-	var cret  *C.GstGLBaseMemory          // return, full, converted
+	var cret  *C.GstGLBaseMemory          // return, full, converted, nullable
 
 	carg1 = (*C.GstGLBaseMemoryAllocator)(UnsafeGLBaseMemoryAllocatorToGlibNone(allocator))
 	carg2 = (*C.GstGLAllocationParams)(UnsafeGLAllocationParamsToGlibNone(params))
@@ -9547,7 +10248,9 @@ func GLBaseMemoryAlloc(allocator GLBaseMemoryAllocator, params *GLAllocationPara
 
 	var goret *GLBaseMemory
 
-	goret = UnsafeGLBaseMemoryFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeGLBaseMemoryFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }

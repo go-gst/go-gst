@@ -14,61 +14,6 @@ import (
 // #include <gst/gst.h>
 import "C"
 
-// Map wraps gst_buffer_map
-//
-// The function takes the following parameters:
-//
-//   - flags MapFlags: flags for the mapping
-//
-// The function returns the following values:
-//
-//   - info MapInfo: info about the mapping
-//   - goret bool
-//
-// Fills @info with the #GstMapInfo of all merged memory blocks in @buffer.
-//
-// @flags describe the desired access of the memory. When @flags is
-// #GST_MAP_WRITE, @buffer should be writable (as returned from
-// gst_buffer_is_writable()).
-//
-// When @buffer is writable but the memory isn't, a writable copy will
-// automatically be created and returned. The readonly copy of the
-// buffer memory will then also be replaced with this writable copy.
-//
-// The memory in @info should be unmapped with gst_buffer_unmap() after
-// usage.
-func (buffer *Buffer) Map(flags MapFlags) (*MapInfo, bool) {
-	var carg0 *C.GstBuffer  // in, none, converted
-	var carg2 C.GstMapFlags // in, none, casted
-	var carg1 C.GstMapInfo  // out, transfer: none, C Pointers: 0, Name: MapInfo, caller-allocates
-	var cret C.gboolean     // return
-
-	carg0 = (*C.GstBuffer)(UnsafeBufferToGlibNone(buffer))
-	carg2 = C.GstMapFlags(flags)
-
-	cret = C.gst_buffer_map(carg0, &carg1, carg2)
-	runtime.KeepAlive(buffer)
-	runtime.KeepAlive(flags)
-
-	var info *MapInfo
-	var goret bool
-
-	info = &MapInfo{
-		mapInfo: &mapInfo{
-			native: &carg1,
-			buffer: buffer,
-		},
-	}
-
-	info.autoCleanup()
-
-	if cret != 0 {
-		goret = true
-	}
-
-	return info, goret
-}
-
 // MapInfo is a wrapper around the C struct GstMapInfo
 // and implements the io.ReaderAt, io.WriterAt, io.Reader, and io.WriteCloser interfaces.
 //
@@ -80,6 +25,11 @@ type MapInfo struct {
 
 	writeOffset int64
 	readOffset  int64
+}
+
+// clearAutoCleanup clears the finalizer to prevent automatic unmapping
+func (m *MapInfo) clearAutoCleanup() {
+	runtime.SetFinalizer(m.mapInfo, nil)
 }
 
 func (m *MapInfo) autoCleanup() {
@@ -196,11 +146,18 @@ func (info *mapInfo) unmap() {
 	}
 }
 
+// Reset resets the read/write offsets to 0.
+func (info *MapInfo) Reset() {
+	info.readOffset = 0
+	info.writeOffset = 0
+}
+
 // Unmap Releases the memory previously mapped.
+// The MapInfo is invalid after this call.
 func (info *MapInfo) Unmap() {
+	info.clearAutoCleanup()
 	info.mapInfo.unmap()
 	info.mapInfo = nil
-	runtime.SetFinalizer(info, nil)
 }
 
 // Length returns the length of the mapped memory.
@@ -216,9 +173,6 @@ func (info *MapInfo) Flags() MapFlags {
 // Data returns the mapped memory as a byte slice.
 func (info *MapInfo) Data() []byte {
 	if info.mapInfo == nil {
-		return nil
-	}
-	if !info.Flags().Has(MapRead) {
 		return nil
 	}
 

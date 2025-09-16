@@ -4,7 +4,6 @@ package main
 import (
 	"context"
 	"fmt"
-	"runtime"
 	"time"
 
 	"github.com/go-gst/go-gst/pkg/gst"
@@ -88,20 +87,9 @@ func createPipeline() (gst.Pipeline, error) {
 
 func runPipeline(pipeline gst.Pipeline) {
 
-	go func() {
-		for msg := range pipeline.GetBus().Messages(context.Background()) {
-			switch msg.Type() {
-			case gst.MessageEos:
-				fmt.Println("Got EOS message")
-				return
-			default:
-				fmt.Println(msg)
-			}
-		}
-	}()
-
 	// Start the pipeline
 	pipeline.SetState(gst.StatePlaying)
+	defer pipeline.SetState(gst.StateNull)
 
 	go func() {
 		// Loop and on the third iteration send the custom event.
@@ -126,14 +114,15 @@ func runPipeline(pipeline gst.Pipeline) {
 		}
 	}()
 
-	// When passing an object created by the bindings between scopes, there is a posibility
-	// the finalizer will leak and destroy your object before you are done with it.  One way
-	// of dealing with this is by taking an additional Ref and disposing of it when you are
-	// done with the new scope. An alternative is to declare Keep() *after* where you know
-	// you will be done with the object. This instructs the runtime to defer the finalizer
-	// until after this point is passed in the code execution.
-
-	runtime.KeepAlive(pipeline)
+	for msg := range pipeline.GetBus().Messages(context.Background()) {
+		switch msg.Type() {
+		case gst.MessageEos:
+			fmt.Println("Got EOS message")
+			return
+		default:
+			fmt.Println(msg)
+		}
+	}
 }
 
 func main() {

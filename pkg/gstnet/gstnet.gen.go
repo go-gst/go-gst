@@ -158,12 +158,12 @@ func BufferAddNetControlMessageMeta(buffer *gst.Buffer, message gio.SocketContro
 // 
 // The function returns the following values:
 // 
-// 	- goret *NetAddressMeta 
+// 	- goret *NetAddressMeta (nullable) 
 //
 // Find the #GstNetAddressMeta on @buffer.
 func BufferGetNetAddressMeta(buffer *gst.Buffer) *NetAddressMeta {
 	var carg1 *C.GstBuffer         // in, none, converted
-	var cret  *C.GstNetAddressMeta // return, none, converted
+	var cret  *C.GstNetAddressMeta // return, none, converted, nullable
 
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
@@ -172,7 +172,9 @@ func BufferGetNetAddressMeta(buffer *gst.Buffer) *NetAddressMeta {
 
 	var goret *NetAddressMeta
 
-	goret = UnsafeNetAddressMetaFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeNetAddressMetaFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -631,14 +633,14 @@ func UnsafeNetTimeProviderToGlibFull(c NetTimeProvider) unsafe.Pointer {
 // 
 // The function returns the following values:
 // 
-// 	- goret NetTimeProvider 
+// 	- goret NetTimeProvider (nullable) 
 //
 // Allows network clients to get the current time of @clock.
 func NewNetTimeProvider(clock gst.Clock, address string, port int) NetTimeProvider {
 	var carg1 *C.GstClock           // in, none, converted
 	var carg2 *C.gchar              // in, none, string, nullable-string
 	var carg3 C.gint                // in, none, casted
-	var cret  *C.GstNetTimeProvider // return, full, converted
+	var cret  *C.GstNetTimeProvider // return, full, converted, nullable
 
 	carg1 = (*C.GstClock)(gst.UnsafeClockToGlibNone(clock))
 	if address != "" {
@@ -654,7 +656,9 @@ func NewNetTimeProvider(clock gst.Clock, address string, port int) NetTimeProvid
 
 	var goret NetTimeProvider
 
-	goret = UnsafeNetTimeProviderFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeNetTimeProviderFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }

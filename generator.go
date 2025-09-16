@@ -95,6 +95,14 @@ var Data = genmain.Overlay(
 
 			// Collides with method of the same name
 			types.TypeRenamer("GstVideo-1.VideoChromaResample", "VideoChromaResampler"),
+
+			types.PreprocessorFunc(func(r gir.Repositories) {
+				t := r.FindFullType("GstVideo-1.VideoTimeCode").Type.(*gir.Record)
+
+				// FIXME: the get_type function requires gst_init(), thus crashes if called
+				// during init
+				t.GLibGetType = ""
+			}),
 		},
 		Config: typesystem.Config{
 			Namespaces: map[string]typesystem.NamespaceConfig{
@@ -163,6 +171,8 @@ var Data = genmain.Overlay(
 						// must be implemented manually
 						typesystem.IgnoreMatching("VideoCodecFrame.set_user_data"),
 						typesystem.IgnoreMatching("VideoCodecFrame.get_user_data"),
+						// returns a gconstpointer to an array, manually implemented instead
+						typesystem.IgnoreMatching("VideoFormat.get_palette"),
 					},
 				},
 				"GstPbutils-1": {

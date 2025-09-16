@@ -99,6 +99,33 @@ func (e PlayerColorBalanceType) String() string {
 	}
 }
 
+// PlayerColorBalanceTypeGetName wraps gst_player_color_balance_type_get_name
+// 
+// The function takes the following parameters:
+// 
+// 	- typ PlayerColorBalanceType: a #GstPlayerColorBalanceType 
+// 
+// The function returns the following values:
+// 
+// 	- goret string 
+//
+// Gets a string representing the given color balance type.
+func PlayerColorBalanceTypeGetName(typ PlayerColorBalanceType) string {
+	var carg1 C.GstPlayerColorBalanceType // in, none, casted
+	var cret  *C.gchar                    // return, none, string
+
+	carg1 = C.GstPlayerColorBalanceType(typ)
+
+	cret = C.gst_player_color_balance_type_get_name(carg1)
+	runtime.KeepAlive(typ)
+
+	var goret string
+
+	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+
+	return goret
+}
+
 // PlayerError wraps GstPlayerError
 type PlayerError C.int
 
@@ -125,6 +152,49 @@ func (e PlayerError) String() string {
 		case PlayerErrorFailed: return "PlayerErrorFailed"
 		default: return fmt.Sprintf("PlayerError(%d)", e)
 	}
+}
+
+// PlayerErrorGetName wraps gst_player_error_get_name
+// 
+// The function takes the following parameters:
+// 
+// 	- err PlayerError: a #GstPlayerError 
+// 
+// The function returns the following values:
+// 
+// 	- goret string 
+//
+// Gets a string representing the given error.
+func PlayerErrorGetName(err PlayerError) string {
+	var carg1 C.GstPlayerError // in, none, casted
+	var cret  *C.gchar         // return, none, string
+
+	carg1 = C.GstPlayerError(err)
+
+	cret = C.gst_player_error_get_name(carg1)
+	runtime.KeepAlive(err)
+
+	var goret string
+
+	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+
+	return goret
+}
+
+// PlayerErrorQuark wraps gst_player_error_quark
+// The function returns the following values:
+// 
+// 	- goret glib.Quark 
+func PlayerErrorQuark() glib.Quark {
+	var cret C.GQuark // return, none, casted, alias
+
+	cret = C.gst_player_error_quark()
+
+	var goret glib.Quark
+
+	goret = glib.Quark(cret)
+
+	return goret
 }
 
 // PlayerSnapshotFormat wraps GstPlayerSnapshotFormat
@@ -197,6 +267,33 @@ func (e PlayerState) String() string {
 		case PlayerStateStopped: return "PlayerStateStopped"
 		default: return fmt.Sprintf("PlayerState(%d)", e)
 	}
+}
+
+// PlayerStateGetName wraps gst_player_state_get_name
+// 
+// The function takes the following parameters:
+// 
+// 	- state PlayerState: a #GstPlayerState 
+// 
+// The function returns the following values:
+// 
+// 	- goret string 
+//
+// Gets a string representing the given state.
+func PlayerStateGetName(state PlayerState) string {
+	var carg1 C.GstPlayerState // in, none, casted
+	var cret  *C.gchar         // return, none, string
+
+	carg1 = C.GstPlayerState(state)
+
+	cret = C.gst_player_state_get_name(carg1)
+	runtime.KeepAlive(state)
+
+	var goret string
+
+	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+
+	return goret
 }
 
 // PlayerSignalDispatcherInstance is the instance type used by all types implementing GstPlayerSignalDispatcher. It is used internally by the bindings. Users should use the interface [PlayerSignalDispatcher] instead.
@@ -348,28 +445,28 @@ type Player interface {
 	// GetCurrentAudioTrack wraps gst_player_get_current_audio_track
 	// The function returns the following values:
 	// 
-	// 	- goret PlayerAudioInfo 
+	// 	- goret PlayerAudioInfo (nullable) 
 	//
 	// A Function to get current audio #GstPlayerAudioInfo instance.
 	GetCurrentAudioTrack() PlayerAudioInfo
 	// GetCurrentSubtitleTrack wraps gst_player_get_current_subtitle_track
 	// The function returns the following values:
 	// 
-	// 	- goret PlayerSubtitleInfo 
+	// 	- goret PlayerSubtitleInfo (nullable) 
 	//
 	// A Function to get current subtitle #GstPlayerSubtitleInfo instance.
 	GetCurrentSubtitleTrack() PlayerSubtitleInfo
 	// GetCurrentVideoTrack wraps gst_player_get_current_video_track
 	// The function returns the following values:
 	// 
-	// 	- goret PlayerVideoInfo 
+	// 	- goret PlayerVideoInfo (nullable) 
 	//
 	// A Function to get current video #GstPlayerVideoInfo instance.
 	GetCurrentVideoTrack() PlayerVideoInfo
 	// GetCurrentVisualization wraps gst_player_get_current_visualization
 	// The function returns the following values:
 	// 
-	// 	- goret string 
+	// 	- goret string (nullable) 
 	GetCurrentVisualization() string
 	// GetDuration wraps gst_player_get_duration
 	// The function returns the following values:
@@ -381,7 +478,7 @@ type Player interface {
 	// GetMediaInfo wraps gst_player_get_media_info
 	// The function returns the following values:
 	// 
-	// 	- goret PlayerMediaInfo 
+	// 	- goret PlayerMediaInfo (nullable) 
 	//
 	// A Function to get the current media info #GstPlayerMediaInfo instance.
 	GetMediaInfo() PlayerMediaInfo
@@ -422,7 +519,7 @@ type Player interface {
 	// GetSubtitleURI wraps gst_player_get_subtitle_uri
 	// The function returns the following values:
 	// 
-	// 	- goret string 
+	// 	- goret string (nullable) 
 	//
 	// current subtitle URI
 	GetSubtitleURI() string
@@ -436,7 +533,7 @@ type Player interface {
 	// GetURI wraps gst_player_get_uri
 	// The function returns the following values:
 	// 
-	// 	- goret string 
+	// 	- goret string (nullable) 
 	//
 	// Gets the URI of the currently-playing stream.
 	GetURI() string
@@ -449,7 +546,7 @@ type Player interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Sample 
+	// 	- goret *gst.Sample (nullable) 
 	//
 	// Get a snapshot of the currently selected video stream, if any. The format can be
 	// selected with @format and optional configuration is possible with @config
@@ -847,13 +944,13 @@ func PlayerConfigGetSeekAccurate(config *gst.Structure) bool {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Return the user agent which has been configured using
 // gst_player_config_set_user_agent() if any.
 func PlayerConfigGetUserAgent(config *gst.Structure) string {
 	var carg1 *C.GstStructure // in, none, converted
-	var cret  *C.gchar        // return, full, string
+	var cret  *C.gchar        // return, full, string, nullable-string
 
 	carg1 = (*C.GstStructure)(gst.UnsafeStructureToGlibNone(config))
 
@@ -862,8 +959,10 @@ func PlayerConfigGetUserAgent(config *gst.Structure) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -1119,12 +1218,12 @@ func (player *PlayerInstance) GetConfig() *gst.Structure {
 // GetCurrentAudioTrack wraps gst_player_get_current_audio_track
 // The function returns the following values:
 // 
-// 	- goret PlayerAudioInfo 
+// 	- goret PlayerAudioInfo (nullable) 
 //
 // A Function to get current audio #GstPlayerAudioInfo instance.
 func (player *PlayerInstance) GetCurrentAudioTrack() PlayerAudioInfo {
 	var carg0 *C.GstPlayer          // in, none, converted
-	var cret  *C.GstPlayerAudioInfo // return, full, converted
+	var cret  *C.GstPlayerAudioInfo // return, full, converted, nullable
 
 	carg0 = (*C.GstPlayer)(UnsafePlayerToGlibNone(player))
 
@@ -1133,7 +1232,9 @@ func (player *PlayerInstance) GetCurrentAudioTrack() PlayerAudioInfo {
 
 	var goret PlayerAudioInfo
 
-	goret = UnsafePlayerAudioInfoFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePlayerAudioInfoFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -1141,12 +1242,12 @@ func (player *PlayerInstance) GetCurrentAudioTrack() PlayerAudioInfo {
 // GetCurrentSubtitleTrack wraps gst_player_get_current_subtitle_track
 // The function returns the following values:
 // 
-// 	- goret PlayerSubtitleInfo 
+// 	- goret PlayerSubtitleInfo (nullable) 
 //
 // A Function to get current subtitle #GstPlayerSubtitleInfo instance.
 func (player *PlayerInstance) GetCurrentSubtitleTrack() PlayerSubtitleInfo {
 	var carg0 *C.GstPlayer             // in, none, converted
-	var cret  *C.GstPlayerSubtitleInfo // return, full, converted
+	var cret  *C.GstPlayerSubtitleInfo // return, full, converted, nullable
 
 	carg0 = (*C.GstPlayer)(UnsafePlayerToGlibNone(player))
 
@@ -1155,7 +1256,9 @@ func (player *PlayerInstance) GetCurrentSubtitleTrack() PlayerSubtitleInfo {
 
 	var goret PlayerSubtitleInfo
 
-	goret = UnsafePlayerSubtitleInfoFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePlayerSubtitleInfoFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -1163,12 +1266,12 @@ func (player *PlayerInstance) GetCurrentSubtitleTrack() PlayerSubtitleInfo {
 // GetCurrentVideoTrack wraps gst_player_get_current_video_track
 // The function returns the following values:
 // 
-// 	- goret PlayerVideoInfo 
+// 	- goret PlayerVideoInfo (nullable) 
 //
 // A Function to get current video #GstPlayerVideoInfo instance.
 func (player *PlayerInstance) GetCurrentVideoTrack() PlayerVideoInfo {
 	var carg0 *C.GstPlayer          // in, none, converted
-	var cret  *C.GstPlayerVideoInfo // return, full, converted
+	var cret  *C.GstPlayerVideoInfo // return, full, converted, nullable
 
 	carg0 = (*C.GstPlayer)(UnsafePlayerToGlibNone(player))
 
@@ -1177,7 +1280,9 @@ func (player *PlayerInstance) GetCurrentVideoTrack() PlayerVideoInfo {
 
 	var goret PlayerVideoInfo
 
-	goret = UnsafePlayerVideoInfoFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePlayerVideoInfoFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -1185,10 +1290,10 @@ func (player *PlayerInstance) GetCurrentVideoTrack() PlayerVideoInfo {
 // GetCurrentVisualization wraps gst_player_get_current_visualization
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 func (player *PlayerInstance) GetCurrentVisualization() string {
 	var carg0 *C.GstPlayer // in, none, converted
-	var cret  *C.gchar     // return, full, string
+	var cret  *C.gchar     // return, full, string, nullable-string
 
 	carg0 = (*C.GstPlayer)(UnsafePlayerToGlibNone(player))
 
@@ -1197,8 +1302,10 @@ func (player *PlayerInstance) GetCurrentVisualization() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -1228,12 +1335,12 @@ func (player *PlayerInstance) GetDuration() gst.ClockTime {
 // GetMediaInfo wraps gst_player_get_media_info
 // The function returns the following values:
 // 
-// 	- goret PlayerMediaInfo 
+// 	- goret PlayerMediaInfo (nullable) 
 //
 // A Function to get the current media info #GstPlayerMediaInfo instance.
 func (player *PlayerInstance) GetMediaInfo() PlayerMediaInfo {
 	var carg0 *C.GstPlayer          // in, none, converted
-	var cret  *C.GstPlayerMediaInfo // return, full, converted
+	var cret  *C.GstPlayerMediaInfo // return, full, converted, nullable
 
 	carg0 = (*C.GstPlayer)(UnsafePlayerToGlibNone(player))
 
@@ -1242,7 +1349,9 @@ func (player *PlayerInstance) GetMediaInfo() PlayerMediaInfo {
 
 	var goret PlayerMediaInfo
 
-	goret = UnsafePlayerMediaInfoFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafePlayerMediaInfoFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -1376,12 +1485,12 @@ func (player *PlayerInstance) GetRate() float64 {
 // GetSubtitleURI wraps gst_player_get_subtitle_uri
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // current subtitle URI
 func (player *PlayerInstance) GetSubtitleURI() string {
 	var carg0 *C.GstPlayer // in, none, converted
-	var cret  *C.gchar     // return, full, string
+	var cret  *C.gchar     // return, full, string, nullable-string
 
 	carg0 = (*C.GstPlayer)(UnsafePlayerToGlibNone(player))
 
@@ -1390,8 +1499,10 @@ func (player *PlayerInstance) GetSubtitleURI() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -1421,12 +1532,12 @@ func (player *PlayerInstance) GetSubtitleVideoOffset() int64 {
 // GetURI wraps gst_player_get_uri
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Gets the URI of the currently-playing stream.
 func (player *PlayerInstance) GetURI() string {
 	var carg0 *C.GstPlayer // in, none, converted
-	var cret  *C.gchar     // return, full, string
+	var cret  *C.gchar     // return, full, string, nullable-string
 
 	carg0 = (*C.GstPlayer)(UnsafePlayerToGlibNone(player))
 
@@ -1435,8 +1546,10 @@ func (player *PlayerInstance) GetURI() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -1450,7 +1563,7 @@ func (player *PlayerInstance) GetURI() string {
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.Sample 
+// 	- goret *gst.Sample (nullable) 
 //
 // Get a snapshot of the currently selected video stream, if any. The format can be
 // selected with @format and optional configuration is possible with @config
@@ -1462,7 +1575,7 @@ func (player *PlayerInstance) GetVideoSnapshot(format PlayerSnapshotFormat, conf
 	var carg0 *C.GstPlayer              // in, none, converted
 	var carg1 C.GstPlayerSnapshotFormat // in, none, casted
 	var carg2 *C.GstStructure           // in, none, converted, nullable
-	var cret  *C.GstSample              // return, full, converted
+	var cret  *C.GstSample              // return, full, converted, nullable
 
 	carg0 = (*C.GstPlayer)(UnsafePlayerToGlibNone(player))
 	carg1 = C.GstPlayerSnapshotFormat(format)
@@ -1477,7 +1590,9 @@ func (player *PlayerInstance) GetVideoSnapshot(format PlayerSnapshotFormat, conf
 
 	var goret *gst.Sample
 
-	goret = gst.UnsafeSampleFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeSampleFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -2197,7 +2312,7 @@ type PlayerMediaInfo interface {
 	// GetContainerFormat wraps gst_player_media_info_get_container_format
 	// The function returns the following values:
 	// 
-	// 	- goret string 
+	// 	- goret string (nullable) 
 	GetContainerFormat() string
 	// GetDuration wraps gst_player_media_info_get_duration
 	// The function returns the following values:
@@ -2207,7 +2322,7 @@ type PlayerMediaInfo interface {
 	// GetImageSample wraps gst_player_media_info_get_image_sample
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Sample 
+	// 	- goret *gst.Sample (nullable) 
 	//
 	// Function to get the image (or preview-image) stored in taglist.
 	// Application can use `gst_sample_*_()` API's to get caps, buffer etc.
@@ -2245,12 +2360,12 @@ type PlayerMediaInfo interface {
 	// GetTags wraps gst_player_media_info_get_tags
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.TagList 
+	// 	- goret *gst.TagList (nullable) 
 	GetTags() *gst.TagList
 	// GetTitle wraps gst_player_media_info_get_title
 	// The function returns the following values:
 	// 
-	// 	- goret string 
+	// 	- goret string (nullable) 
 	GetTitle() string
 	// GetURI wraps gst_player_media_info_get_uri
 	// The function returns the following values:
@@ -2338,10 +2453,10 @@ func (info *PlayerMediaInfoInstance) GetAudioStreams() []PlayerAudioInfo {
 // GetContainerFormat wraps gst_player_media_info_get_container_format
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 func (info *PlayerMediaInfoInstance) GetContainerFormat() string {
 	var carg0 *C.GstPlayerMediaInfo // in, none, converted
-	var cret  *C.gchar              // return, none, string
+	var cret  *C.gchar              // return, none, string, nullable-string
 
 	carg0 = (*C.GstPlayerMediaInfo)(UnsafePlayerMediaInfoToGlibNone(info))
 
@@ -2350,7 +2465,9 @@ func (info *PlayerMediaInfoInstance) GetContainerFormat() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -2378,13 +2495,13 @@ func (info *PlayerMediaInfoInstance) GetDuration() gst.ClockTime {
 // GetImageSample wraps gst_player_media_info_get_image_sample
 // The function returns the following values:
 // 
-// 	- goret *gst.Sample 
+// 	- goret *gst.Sample (nullable) 
 //
 // Function to get the image (or preview-image) stored in taglist.
 // Application can use `gst_sample_*_()` API's to get caps, buffer etc.
 func (info *PlayerMediaInfoInstance) GetImageSample() *gst.Sample {
 	var carg0 *C.GstPlayerMediaInfo // in, none, converted
-	var cret  *C.GstSample          // return, none, converted
+	var cret  *C.GstSample          // return, none, converted, nullable
 
 	carg0 = (*C.GstPlayerMediaInfo)(UnsafePlayerMediaInfoToGlibNone(info))
 
@@ -2393,7 +2510,9 @@ func (info *PlayerMediaInfoInstance) GetImageSample() *gst.Sample {
 
 	var goret *gst.Sample
 
-	goret = gst.UnsafeSampleFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeSampleFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -2535,10 +2654,10 @@ func (info *PlayerMediaInfoInstance) GetSubtitleStreams() []PlayerSubtitleInfo {
 // GetTags wraps gst_player_media_info_get_tags
 // The function returns the following values:
 // 
-// 	- goret *gst.TagList 
+// 	- goret *gst.TagList (nullable) 
 func (info *PlayerMediaInfoInstance) GetTags() *gst.TagList {
 	var carg0 *C.GstPlayerMediaInfo // in, none, converted
-	var cret  *C.GstTagList         // return, none, converted
+	var cret  *C.GstTagList         // return, none, converted, nullable
 
 	carg0 = (*C.GstPlayerMediaInfo)(UnsafePlayerMediaInfoToGlibNone(info))
 
@@ -2547,7 +2666,9 @@ func (info *PlayerMediaInfoInstance) GetTags() *gst.TagList {
 
 	var goret *gst.TagList
 
-	goret = gst.UnsafeTagListFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeTagListFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -2555,10 +2676,10 @@ func (info *PlayerMediaInfoInstance) GetTags() *gst.TagList {
 // GetTitle wraps gst_player_media_info_get_title
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 func (info *PlayerMediaInfoInstance) GetTitle() string {
 	var carg0 *C.GstPlayerMediaInfo // in, none, converted
-	var cret  *C.gchar              // return, none, string
+	var cret  *C.gchar              // return, none, string, nullable-string
 
 	carg0 = (*C.GstPlayerMediaInfo)(UnsafePlayerMediaInfoToGlibNone(info))
 
@@ -2567,7 +2688,9 @@ func (info *PlayerMediaInfoInstance) GetTitle() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -2683,12 +2806,12 @@ type PlayerStreamInfo interface {
 	// GetCaps wraps gst_player_stream_info_get_caps
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Caps 
+	// 	- goret *gst.Caps (nullable) 
 	GetCaps() *gst.Caps
 	// GetCodec wraps gst_player_stream_info_get_codec
 	// The function returns the following values:
 	// 
-	// 	- goret string 
+	// 	- goret string (nullable) 
 	//
 	// A string describing codec used in #GstPlayerStreamInfo.
 	GetCodec() string
@@ -2711,7 +2834,7 @@ type PlayerStreamInfo interface {
 	// GetTags wraps gst_player_stream_info_get_tags
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.TagList 
+	// 	- goret *gst.TagList (nullable) 
 	GetTags() *gst.TagList
 }
 
@@ -2752,10 +2875,10 @@ func UnsafePlayerStreamInfoToGlibFull(c PlayerStreamInfo) unsafe.Pointer {
 // GetCaps wraps gst_player_stream_info_get_caps
 // The function returns the following values:
 // 
-// 	- goret *gst.Caps 
+// 	- goret *gst.Caps (nullable) 
 func (info *PlayerStreamInfoInstance) GetCaps() *gst.Caps {
 	var carg0 *C.GstPlayerStreamInfo // in, none, converted
-	var cret  *C.GstCaps             // return, none, converted
+	var cret  *C.GstCaps             // return, none, converted, nullable
 
 	carg0 = (*C.GstPlayerStreamInfo)(UnsafePlayerStreamInfoToGlibNone(info))
 
@@ -2764,7 +2887,9 @@ func (info *PlayerStreamInfoInstance) GetCaps() *gst.Caps {
 
 	var goret *gst.Caps
 
-	goret = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -2772,12 +2897,12 @@ func (info *PlayerStreamInfoInstance) GetCaps() *gst.Caps {
 // GetCodec wraps gst_player_stream_info_get_codec
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // A string describing codec used in #GstPlayerStreamInfo.
 func (info *PlayerStreamInfoInstance) GetCodec() string {
 	var carg0 *C.GstPlayerStreamInfo // in, none, converted
-	var cret  *C.gchar               // return, none, string
+	var cret  *C.gchar               // return, none, string, nullable-string
 
 	carg0 = (*C.GstPlayerStreamInfo)(UnsafePlayerStreamInfoToGlibNone(info))
 
@@ -2786,7 +2911,9 @@ func (info *PlayerStreamInfoInstance) GetCodec() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -2840,10 +2967,10 @@ func (info *PlayerStreamInfoInstance) GetStreamType() string {
 // GetTags wraps gst_player_stream_info_get_tags
 // The function returns the following values:
 // 
-// 	- goret *gst.TagList 
+// 	- goret *gst.TagList (nullable) 
 func (info *PlayerStreamInfoInstance) GetTags() *gst.TagList {
 	var carg0 *C.GstPlayerStreamInfo // in, none, converted
-	var cret  *C.GstTagList          // return, none, converted
+	var cret  *C.GstTagList          // return, none, converted, nullable
 
 	carg0 = (*C.GstPlayerStreamInfo)(UnsafePlayerStreamInfoToGlibNone(info))
 
@@ -2852,7 +2979,9 @@ func (info *PlayerStreamInfoInstance) GetTags() *gst.TagList {
 
 	var goret *gst.TagList
 
-	goret = gst.UnsafeTagListFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeTagListFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -2875,7 +3004,7 @@ type PlayerSubtitleInfo interface {
 	// GetLanguage wraps gst_player_subtitle_info_get_language
 	// The function returns the following values:
 	// 
-	// 	- goret string 
+	// 	- goret string (nullable) 
 	GetLanguage() string
 }
 
@@ -2918,10 +3047,10 @@ func UnsafePlayerSubtitleInfoToGlibFull(c PlayerSubtitleInfo) unsafe.Pointer {
 // GetLanguage wraps gst_player_subtitle_info_get_language
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 func (info *PlayerSubtitleInfoInstance) GetLanguage() string {
 	var carg0 *C.GstPlayerSubtitleInfo // in, none, converted
-	var cret  *C.gchar                 // return, none, string
+	var cret  *C.gchar                 // return, none, string, nullable-string
 
 	carg0 = (*C.GstPlayerSubtitleInfo)(UnsafePlayerSubtitleInfoToGlibNone(info))
 
@@ -2930,7 +3059,9 @@ func (info *PlayerSubtitleInfoInstance) GetLanguage() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -3353,7 +3484,7 @@ type PlayerAudioInfo interface {
 	// GetLanguage wraps gst_player_audio_info_get_language
 	// The function returns the following values:
 	// 
-	// 	- goret string 
+	// 	- goret string (nullable) 
 	GetLanguage() string
 	// GetMaxBitrate wraps gst_player_audio_info_get_max_bitrate
 	// The function returns the following values:
@@ -3446,10 +3577,10 @@ func (info *PlayerAudioInfoInstance) GetChannels() int {
 // GetLanguage wraps gst_player_audio_info_get_language
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 func (info *PlayerAudioInfoInstance) GetLanguage() string {
 	var carg0 *C.GstPlayerAudioInfo // in, none, converted
-	var cret  *C.gchar              // return, none, string
+	var cret  *C.gchar              // return, none, string, nullable-string
 
 	carg0 = (*C.GstPlayerAudioInfo)(UnsafePlayerAudioInfoToGlibNone(info))
 
@@ -3458,7 +3589,9 @@ func (info *PlayerAudioInfoInstance) GetLanguage() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
