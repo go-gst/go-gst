@@ -451,14 +451,14 @@ func UnsafeDRMDumbAllocatorToGlibFull(c DRMDumbAllocator) unsafe.Pointer {
 // 
 // The function returns the following values:
 // 
-// 	- goret gst.Allocator 
+// 	- goret gst.Allocator (nullable) 
 //
 // Creates a new #GstDRMDumbAllocator for the specific device path. This
 // function can fail if the path does not exist, is not a DRM device or if
 // the DRM device doesnot support DUMB allocation.
 func NewDRMDumbAllocatorWithDevicePath(drmDevicePath string) gst.Allocator {
 	var carg1 *C.gchar        // in, none, string
-	var cret  *C.GstAllocator // return, full, converted
+	var cret  *C.GstAllocator // return, full, converted, nullable
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(drmDevicePath)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -468,7 +468,9 @@ func NewDRMDumbAllocatorWithDevicePath(drmDevicePath string) gst.Allocator {
 
 	var goret gst.Allocator
 
-	goret = gst.UnsafeAllocatorFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeAllocatorFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -481,14 +483,14 @@ func NewDRMDumbAllocatorWithDevicePath(drmDevicePath string) gst.Allocator {
 // 
 // The function returns the following values:
 // 
-// 	- goret gst.Allocator 
+// 	- goret gst.Allocator (nullable) 
 //
 // Creates a new #GstDRMDumbAllocator for the specific file desciptor. This
 // function can fail if the file descriptor is not a DRM device or if
 // the DRM device does not support DUMB allocation.
 func NewDRMDumbAllocatorWithFd(drmFd int) gst.Allocator {
 	var carg1 C.gint          // in, none, casted
-	var cret  *C.GstAllocator // return, full, converted
+	var cret  *C.GstAllocator // return, full, converted, nullable
 
 	carg1 = C.gint(drmFd)
 
@@ -497,7 +499,9 @@ func NewDRMDumbAllocatorWithFd(drmFd int) gst.Allocator {
 
 	var goret gst.Allocator
 
-	goret = gst.UnsafeAllocatorFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeAllocatorFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -656,7 +660,7 @@ func NewFdAllocator() gst.Allocator {
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.Memory 
+// 	- goret *gst.Memory (nullable) 
 //
 // Return a %GstMemory that wraps a generic file descriptor.
 func FdAllocatorAlloc(allocator gst.Allocator, fd int, size uint, flags FdMemoryFlags) *gst.Memory {
@@ -664,7 +668,7 @@ func FdAllocatorAlloc(allocator gst.Allocator, fd int, size uint, flags FdMemory
 	var carg2 C.gint             // in, none, casted
 	var carg3 C.gsize            // in, none, casted
 	var carg4 C.GstFdMemoryFlags // in, none, casted
-	var cret  *C.GstMemory       // return, full, converted
+	var cret  *C.GstMemory       // return, full, converted, nullable
 
 	carg1 = (*C.GstAllocator)(gst.UnsafeAllocatorToGlibNone(allocator))
 	carg2 = C.gint(fd)
@@ -679,7 +683,9 @@ func FdAllocatorAlloc(allocator gst.Allocator, fd int, size uint, flags FdMemory
 
 	var goret *gst.Memory
 
-	goret = gst.UnsafeMemoryFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeMemoryFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -753,18 +759,20 @@ func UnsafeShmAllocatorToGlibFull(c ShmAllocator) unsafe.Pointer {
 // ShmAllocatorGet wraps gst_shm_allocator_get
 // The function returns the following values:
 // 
-// 	- goret gst.Allocator 
+// 	- goret gst.Allocator (nullable) 
 //
 // Get the #GstShmAllocator singleton previously registered with
 // gst_shm_allocator_init_once().
 func ShmAllocatorGet() gst.Allocator {
-	var cret *C.GstAllocator // return, full, converted
+	var cret *C.GstAllocator // return, full, converted, nullable
 
 	cret = C.gst_shm_allocator_get()
 
 	var goret gst.Allocator
 
-	goret = gst.UnsafeAllocatorFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeAllocatorFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -864,14 +872,14 @@ func NewDmaBufAllocator() gst.Allocator {
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.Memory 
+// 	- goret *gst.Memory (nullable) 
 //
 // Return a %GstMemory that wraps a dmabuf file descriptor.
 func DmaBufAllocatorAlloc(allocator gst.Allocator, fd int, size uint) *gst.Memory {
 	var carg1 *C.GstAllocator // in, none, converted
 	var carg2 C.gint          // in, none, casted
 	var carg3 C.gsize         // in, none, casted
-	var cret  *C.GstMemory    // return, full, converted
+	var cret  *C.GstMemory    // return, full, converted, nullable
 
 	carg1 = (*C.GstAllocator)(gst.UnsafeAllocatorToGlibNone(allocator))
 	carg2 = C.gint(fd)
@@ -884,7 +892,9 @@ func DmaBufAllocatorAlloc(allocator gst.Allocator, fd int, size uint) *gst.Memor
 
 	var goret *gst.Memory
 
-	goret = gst.UnsafeMemoryFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeMemoryFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -900,7 +910,7 @@ func DmaBufAllocatorAlloc(allocator gst.Allocator, fd int, size uint) *gst.Memor
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.Memory 
+// 	- goret *gst.Memory (nullable) 
 //
 // Return a %GstMemory that wraps a dmabuf file descriptor.
 func DmaBufAllocatorAllocWithFlags(allocator gst.Allocator, fd int, size uint, flags FdMemoryFlags) *gst.Memory {
@@ -908,7 +918,7 @@ func DmaBufAllocatorAllocWithFlags(allocator gst.Allocator, fd int, size uint, f
 	var carg2 C.gint             // in, none, casted
 	var carg3 C.gsize            // in, none, casted
 	var carg4 C.GstFdMemoryFlags // in, none, casted
-	var cret  *C.GstMemory       // return, full, converted
+	var cret  *C.GstMemory       // return, full, converted, nullable
 
 	carg1 = (*C.GstAllocator)(gst.UnsafeAllocatorToGlibNone(allocator))
 	carg2 = C.gint(fd)
@@ -923,7 +933,9 @@ func DmaBufAllocatorAllocWithFlags(allocator gst.Allocator, fd int, size uint, f
 
 	var goret *gst.Memory
 
-	goret = gst.UnsafeMemoryFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeMemoryFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }

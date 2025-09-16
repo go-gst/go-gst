@@ -820,6 +820,127 @@ func (e AudioFormat) String() string {
 	}
 }
 
+// AudioFormatBuildInteger wraps gst_audio_format_build_integer
+// 
+// The function takes the following parameters:
+// 
+// 	- sign bool: signed or unsigned format 
+// 	- endianness int: G_LITTLE_ENDIAN or G_BIG_ENDIAN 
+// 	- width int: amount of bits used per sample 
+// 	- depth int: amount of used bits in @width 
+// 
+// The function returns the following values:
+// 
+// 	- goret AudioFormat 
+//
+// Construct a #GstAudioFormat with given parameters.
+func AudioFormatBuildInteger(sign bool, endianness int, width int, depth int) AudioFormat {
+	var carg1 C.gboolean       // in
+	var carg2 C.gint           // in, none, casted
+	var carg3 C.gint           // in, none, casted
+	var carg4 C.gint           // in, none, casted
+	var cret  C.GstAudioFormat // return, none, casted
+
+	if sign {
+		carg1 = C.TRUE
+	}
+	carg2 = C.gint(endianness)
+	carg3 = C.gint(width)
+	carg4 = C.gint(depth)
+
+	cret = C.gst_audio_format_build_integer(carg1, carg2, carg3, carg4)
+	runtime.KeepAlive(sign)
+	runtime.KeepAlive(endianness)
+	runtime.KeepAlive(width)
+	runtime.KeepAlive(depth)
+
+	var goret AudioFormat
+
+	goret = AudioFormat(cret)
+
+	return goret
+}
+
+// AudioFormatFromString wraps gst_audio_format_from_string
+// 
+// The function takes the following parameters:
+// 
+// 	- format string: a format string 
+// 
+// The function returns the following values:
+// 
+// 	- goret AudioFormat 
+//
+// Convert the @format string to its #GstAudioFormat.
+func AudioFormatFromString(format string) AudioFormat {
+	var carg1 *C.gchar         // in, none, string
+	var cret  C.GstAudioFormat // return, none, casted
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(format)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	cret = C.gst_audio_format_from_string(carg1)
+	runtime.KeepAlive(format)
+
+	var goret AudioFormat
+
+	goret = AudioFormat(cret)
+
+	return goret
+}
+
+// AudioFormatGetInfo wraps gst_audio_format_get_info
+// 
+// The function takes the following parameters:
+// 
+// 	- format AudioFormat: a #GstAudioFormat 
+// 
+// The function returns the following values:
+// 
+// 	- goret *AudioFormatInfo 
+//
+// Get the #GstAudioFormatInfo for @format
+func AudioFormatGetInfo(format AudioFormat) *AudioFormatInfo {
+	var carg1 C.GstAudioFormat      // in, none, casted
+	var cret  *C.GstAudioFormatInfo // return, none, converted
+
+	carg1 = C.GstAudioFormat(format)
+
+	cret = C.gst_audio_format_get_info(carg1)
+	runtime.KeepAlive(format)
+
+	var goret *AudioFormatInfo
+
+	goret = UnsafeAudioFormatInfoFromGlibNone(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// AudioFormatToString wraps gst_audio_format_to_string
+// 
+// The function takes the following parameters:
+// 
+// 	- format AudioFormat 
+// 
+// The function returns the following values:
+// 
+// 	- goret string 
+func AudioFormatToString(format AudioFormat) string {
+	var carg1 C.GstAudioFormat // in, none, casted
+	var cret  *C.gchar         // return, none, string
+
+	carg1 = C.GstAudioFormat(format)
+
+	cret = C.gst_audio_format_to_string(carg1)
+	runtime.KeepAlive(format)
+
+	var goret string
+
+	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+
+	return goret
+}
+
 // AudioLayout wraps GstAudioLayout
 //
 // Layout of the audio samples for the different channels.
@@ -1261,6 +1382,87 @@ func (e DsdFormat) String() string {
 		case NumDsdFormats: return "NumDsdFormats"
 		default: return fmt.Sprintf("DsdFormat(%d)", e)
 	}
+}
+
+// DsdFormatFromString wraps gst_dsd_format_from_string
+// 
+// The function takes the following parameters:
+// 
+// 	- str string: a DSD format string 
+// 
+// The function returns the following values:
+// 
+// 	- goret DsdFormat 
+//
+// Convert the DSD format string @str to its #GstDsdFormat.
+func DsdFormatFromString(str string) DsdFormat {
+	var carg1 *C.gchar       // in, none, string
+	var cret  C.GstDsdFormat // return, none, casted
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(str)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	cret = C.gst_dsd_format_from_string(carg1)
+	runtime.KeepAlive(str)
+
+	var goret DsdFormat
+
+	goret = DsdFormat(cret)
+
+	return goret
+}
+
+// DsdFormatGetWidth wraps gst_dsd_format_get_width
+// 
+// The function takes the following parameters:
+// 
+// 	- format DsdFormat: a #GstDsdFormat 
+// 
+// The function returns the following values:
+// 
+// 	- goret uint 
+func DsdFormatGetWidth(format DsdFormat) uint {
+	var carg1 C.GstDsdFormat // in, none, casted
+	var cret  C.guint        // return, none, casted
+
+	carg1 = C.GstDsdFormat(format)
+
+	cret = C.gst_dsd_format_get_width(carg1)
+	runtime.KeepAlive(format)
+
+	var goret uint
+
+	goret = uint(cret)
+
+	return goret
+}
+
+// DsdFormatToString wraps gst_dsd_format_to_string
+// 
+// The function takes the following parameters:
+// 
+// 	- format DsdFormat: a #GstDsdFormat 
+// 
+// The function returns the following values:
+// 
+// 	- goret string 
+//
+// Returns a string containing a descriptive name for
+// the #GstDsdFormat if there is one, or NULL otherwise.
+func DsdFormatToString(format DsdFormat) string {
+	var carg1 C.GstDsdFormat // in, none, casted
+	var cret  *C.gchar       // return, none, string
+
+	carg1 = C.GstDsdFormat(format)
+
+	cret = C.gst_dsd_format_to_string(carg1)
+	runtime.KeepAlive(format)
+
+	var goret string
+
+	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+
+	return goret
 }
 
 // StreamVolumeFormat wraps GstStreamVolumeFormat
@@ -2332,14 +2534,14 @@ func BufferAddAudioDownmixMeta(buffer *gst.Buffer, fromPosition []AudioChannelPo
 // 
 // The function returns the following values:
 // 
-// 	- goret *AudioLevelMeta 
+// 	- goret *AudioLevelMeta (nullable) 
 //
 // Attaches audio level information to @buffer. (RFC 6464)
 func BufferAddAudioLevelMeta(buffer *gst.Buffer, level uint8, voiceActivity bool) *AudioLevelMeta {
 	var carg1 *C.GstBuffer         // in, none, converted
 	var carg2 C.guint8             // in, none, casted
 	var carg3 C.gboolean           // in
-	var cret  *C.GstAudioLevelMeta // return, none, converted
+	var cret  *C.GstAudioLevelMeta // return, none, converted, nullable
 
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 	carg2 = C.guint8(level)
@@ -2354,7 +2556,9 @@ func BufferAddAudioLevelMeta(buffer *gst.Buffer, level uint8, voiceActivity bool
 
 	var goret *AudioLevelMeta
 
-	goret = UnsafeAudioLevelMetaFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeAudioLevelMetaFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -2530,12 +2734,12 @@ func BufferGetAudioDownmixMetaForChannels(buffer *gst.Buffer, toPosition []Audio
 // 
 // The function returns the following values:
 // 
-// 	- goret *AudioLevelMeta 
+// 	- goret *AudioLevelMeta (nullable) 
 //
 // Find the #GstAudioLevelMeta on @buffer.
 func BufferGetAudioLevelMeta(buffer *gst.Buffer) *AudioLevelMeta {
 	var carg1 *C.GstBuffer         // in, none, converted
-	var cret  *C.GstAudioLevelMeta // return, none, converted
+	var cret  *C.GstAudioLevelMeta // return, none, converted, nullable
 
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
@@ -2544,7 +2748,9 @@ func BufferGetAudioLevelMeta(buffer *gst.Buffer) *AudioLevelMeta {
 
 	var goret *AudioLevelMeta
 
-	goret = UnsafeAudioLevelMetaFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeAudioLevelMetaFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -3075,7 +3281,7 @@ type AudioBaseSink interface {
 	// CreateRingbuffer wraps gst_audio_base_sink_create_ringbuffer
 	// The function returns the following values:
 	// 
-	// 	- goret AudioRingBuffer 
+	// 	- goret AudioRingBuffer (nullable) 
 	//
 	// Create and return the #GstAudioRingBuffer for @sink. This function will
 	// call the ::create_ringbuffer vmethod and will set @sink as the parent of
@@ -3230,14 +3436,14 @@ func UnsafeAudioBaseSinkToGlibFull(c AudioBaseSink) unsafe.Pointer {
 // CreateRingbuffer wraps gst_audio_base_sink_create_ringbuffer
 // The function returns the following values:
 // 
-// 	- goret AudioRingBuffer 
+// 	- goret AudioRingBuffer (nullable) 
 //
 // Create and return the #GstAudioRingBuffer for @sink. This function will
 // call the ::create_ringbuffer vmethod and will set @sink as the parent of
 // the returned buffer (see gst_object_set_parent()).
 func (sink *AudioBaseSinkInstance) CreateRingbuffer() AudioRingBuffer {
 	var carg0 *C.GstAudioBaseSink   // in, none, converted
-	var cret  *C.GstAudioRingBuffer // return, none, converted
+	var cret  *C.GstAudioRingBuffer // return, none, converted, nullable
 
 	carg0 = (*C.GstAudioBaseSink)(UnsafeAudioBaseSinkToGlibNone(sink))
 
@@ -3246,7 +3452,9 @@ func (sink *AudioBaseSinkInstance) CreateRingbuffer() AudioRingBuffer {
 
 	var goret AudioRingBuffer
 
-	goret = UnsafeAudioRingBufferFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeAudioRingBufferFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -3530,7 +3738,7 @@ type AudioBaseSrc interface {
 	// CreateRingbuffer wraps gst_audio_base_src_create_ringbuffer
 	// The function returns the following values:
 	// 
-	// 	- goret AudioRingBuffer 
+	// 	- goret AudioRingBuffer (nullable) 
 	//
 	// Create and return the #GstAudioRingBuffer for @src. This function will call
 	// the ::create_ringbuffer vmethod and will set @src as the parent of the
@@ -3618,14 +3826,14 @@ func UnsafeAudioBaseSrcToGlibFull(c AudioBaseSrc) unsafe.Pointer {
 // CreateRingbuffer wraps gst_audio_base_src_create_ringbuffer
 // The function returns the following values:
 // 
-// 	- goret AudioRingBuffer 
+// 	- goret AudioRingBuffer (nullable) 
 //
 // Create and return the #GstAudioRingBuffer for @src. This function will call
 // the ::create_ringbuffer vmethod and will set @src as the parent of the
 // returned buffer (see gst_object_set_parent()).
 func (src *AudioBaseSrcInstance) CreateRingbuffer() AudioRingBuffer {
 	var carg0 *C.GstAudioBaseSrc    // in, none, converted
-	var cret  *C.GstAudioRingBuffer // return, none, converted
+	var cret  *C.GstAudioRingBuffer // return, none, converted, nullable
 
 	carg0 = (*C.GstAudioBaseSrc)(UnsafeAudioBaseSrcToGlibNone(src))
 
@@ -3634,7 +3842,9 @@ func (src *AudioBaseSrcInstance) CreateRingbuffer() AudioRingBuffer {
 
 	var goret AudioRingBuffer
 
-	goret = UnsafeAudioRingBufferFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeAudioRingBufferFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -8427,7 +8637,7 @@ func UnsafeAudioBufferToGlibFull(a *AudioBuffer) unsafe.Pointer {
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.Buffer 
+// 	- goret *gst.Buffer (nullable) 
 //
 // Clip the buffer to the given %GstSegment.
 // 
@@ -8438,7 +8648,7 @@ func AudioBufferClip(buffer *gst.Buffer, segment *gst.Segment, rate int, bpf int
 	var carg2 *C.GstSegment // in, none, converted
 	var carg3 C.gint        // in, none, casted
 	var carg4 C.gint        // in, none, casted
-	var cret  *C.GstBuffer  // return, full, converted
+	var cret  *C.GstBuffer  // return, full, converted, nullable
 
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibFull(buffer))
 	carg2 = (*C.GstSegment)(gst.UnsafeSegmentToGlibNone(segment))
@@ -8453,7 +8663,9 @@ func AudioBufferClip(buffer *gst.Buffer, segment *gst.Segment, rate int, bpf int
 
 	var goret *gst.Buffer
 
-	goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -9105,7 +9317,7 @@ func UnsafeAudioConverterToGlibFull(a *AudioConverter) unsafe.Pointer {
 // 
 // The function returns the following values:
 // 
-// 	- goret *AudioConverter 
+// 	- goret *AudioConverter (nullable) 
 //
 // Create a new #GstAudioConverter that is able to convert between @in and @out
 // audio formats.
@@ -9117,7 +9329,7 @@ func NewAudioConverter(flags AudioConverterFlags, inInfo *AudioInfo, outInfo *Au
 	var carg2 *C.GstAudioInfo          // in, none, converted
 	var carg3 *C.GstAudioInfo          // in, none, converted
 	var carg4 *C.GstStructure          // in, full, converted, nullable
-	var cret  *C.GstAudioConverter     // return, full, converted
+	var cret  *C.GstAudioConverter     // return, full, converted, nullable
 
 	carg1 = C.GstAudioConverterFlags(flags)
 	carg2 = (*C.GstAudioInfo)(UnsafeAudioInfoToGlibNone(inInfo))
@@ -9134,7 +9346,9 @@ func NewAudioConverter(flags AudioConverterFlags, inInfo *AudioInfo, outInfo *Au
 
 	var goret *AudioConverter
 
-	goret = UnsafeAudioConverterFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeAudioConverterFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -9848,12 +10062,12 @@ func NewAudioInfo() *AudioInfo {
 // 
 // The function returns the following values:
 // 
-// 	- goret *AudioInfo 
+// 	- goret *AudioInfo (nullable) 
 //
 // Parse @caps to generate a #GstAudioInfo.
 func NewAudioInfoFromCaps(caps *gst.Caps) *AudioInfo {
 	var carg1 *C.GstCaps      // in, none, converted
-	var cret  *C.GstAudioInfo // return, full, converted
+	var cret  *C.GstAudioInfo // return, full, converted, nullable
 
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
@@ -9862,7 +10076,9 @@ func NewAudioInfoFromCaps(caps *gst.Caps) *AudioInfo {
 
 	var goret *AudioInfo
 
-	goret = UnsafeAudioInfoFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeAudioInfoFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }

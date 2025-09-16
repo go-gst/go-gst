@@ -312,6 +312,36 @@ func (e InstallPluginsReturn) String() string {
 	}
 }
 
+// InstallPluginsReturnGetName wraps gst_install_plugins_return_get_name
+// 
+// The function takes the following parameters:
+// 
+// 	- ret InstallPluginsReturn: the return status code 
+// 
+// The function returns the following values:
+// 
+// 	- goret string 
+//
+// Convenience function to return the descriptive string associated
+// with a status code.  This function returns English strings and
+// should not be used for user messages. It is here only to assist
+// in debugging.
+func InstallPluginsReturnGetName(ret InstallPluginsReturn) string {
+	var carg1 C.GstInstallPluginsReturn // in, none, casted
+	var cret  *C.gchar                  // return, none, string
+
+	carg1 = C.GstInstallPluginsReturn(ret)
+
+	cret = C.gst_install_plugins_return_get_name(carg1)
+	runtime.KeepAlive(ret)
+
+	var goret string
+
+	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+
+	return goret
+}
+
 // DiscovererSerializeFlags wraps GstDiscovererSerializeFlags
 //
 // You can use these flags to control what is serialized by
@@ -597,7 +627,7 @@ func CodecUtilsAacGetIndexFromSampleRate(rate uint) int {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Determines the level of a stream as defined in ISO/IEC 14496-3. For AAC LC
 // streams, the constraints from the AAC audio profile are applied. For AAC
@@ -615,7 +645,7 @@ func CodecUtilsAacGetIndexFromSampleRate(rate uint) int {
 func CodecUtilsAacGetLevel(audioConfig []uint8) string {
 	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
 	var carg2 C.guint   // implicit
-	var cret  *C.gchar  // return, none, string
+	var cret  *C.gchar  // return, none, string, nullable-string
 
 	_ = audioConfig
 	_ = carg1
@@ -627,7 +657,9 @@ func CodecUtilsAacGetLevel(audioConfig []uint8) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -642,7 +674,7 @@ func CodecUtilsAacGetLevel(audioConfig []uint8) string {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Returns the profile of the given AAC stream as a string. The profile is
 // normally determined using the AudioObjectType field which is in the first
@@ -650,7 +682,7 @@ func CodecUtilsAacGetLevel(audioConfig []uint8) string {
 func CodecUtilsAacGetProfile(audioConfig []uint8) string {
 	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
 	var carg2 C.guint   // implicit
-	var cret  *C.gchar  // return, none, string
+	var cret  *C.gchar  // return, none, string, nullable-string
 
 	_ = audioConfig
 	_ = carg1
@@ -662,7 +694,9 @@ func CodecUtilsAacGetProfile(audioConfig []uint8) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -738,7 +772,7 @@ func CodecUtilsAacGetSampleRateFromIndex(srIdx uint) uint {
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.Caps 
+// 	- goret *gst.Caps (nullable) 
 //
 // Converts a RFC 6381 compatible codec string to #GstCaps. More than one codec
 // string can be present (separated by `,`).
@@ -746,7 +780,7 @@ func CodecUtilsAacGetSampleRateFromIndex(srIdx uint) uint {
 // Registered codecs can be found at http://mp4ra.org/#/codecs
 func CodecUtilsCapsFromMIMECodec(codecsField string) *gst.Caps {
 	var carg1 *C.gchar   // in, none, string
-	var cret  *C.GstCaps // return, full, converted
+	var cret  *C.GstCaps // return, full, converted, nullable
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(codecsField)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -756,7 +790,9 @@ func CodecUtilsCapsFromMIMECodec(codecsField string) *gst.Caps {
 
 	var goret *gst.Caps
 
-	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -769,7 +805,7 @@ func CodecUtilsCapsFromMIMECodec(codecsField string) *gst.Caps {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Converts @caps to a RFC 6381 compatible codec string if possible.
 // 
@@ -779,7 +815,7 @@ func CodecUtilsCapsFromMIMECodec(codecsField string) *gst.Caps {
 // Registered codecs can be found at http://mp4ra.org/#/codecs
 func CodecUtilsCapsGetMIMECodec(caps *gst.Caps) string {
 	var carg1 *C.GstCaps // in, none, converted
-	var cret  *C.gchar   // return, full, string
+	var cret  *C.gchar   // return, full, string, nullable-string
 
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
@@ -788,8 +824,10 @@ func CodecUtilsCapsGetMIMECodec(caps *gst.Caps) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -841,7 +879,7 @@ func CodecUtilsH264CapsSetLevelAndProfile(caps *gst.Caps, sps []uint8) bool {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Converts the level indication (level_idc) in the stream's
 // sequence parameter set into a string. The SPS is expected to have the
@@ -849,7 +887,7 @@ func CodecUtilsH264CapsSetLevelAndProfile(caps *gst.Caps, sps []uint8) bool {
 func CodecUtilsH264GetLevel(sps []uint8) string {
 	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
 	var carg2 C.guint   // implicit
-	var cret  *C.gchar  // return, none, string
+	var cret  *C.gchar  // return, none, string, nullable-string
 
 	_ = sps
 	_ = carg1
@@ -861,7 +899,9 @@ func CodecUtilsH264GetLevel(sps []uint8) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -902,7 +942,7 @@ func CodecUtilsH264GetLevelIdc(level string) uint8 {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Converts the profile indication (profile_idc) in the stream's
 // sequence parameter set into a string. The SPS is expected to have the
@@ -921,7 +961,7 @@ func CodecUtilsH264GetLevelIdc(level string) uint8 {
 func CodecUtilsH264GetProfile(sps []uint8) string {
 	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
 	var carg2 C.guint   // implicit
-	var cret  *C.gchar  // return, none, string
+	var cret  *C.gchar  // return, none, string, nullable-string
 
 	_ = sps
 	_ = carg1
@@ -933,7 +973,9 @@ func CodecUtilsH264GetProfile(sps []uint8) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -1039,7 +1081,7 @@ func CodecUtilsH265CapsSetLevelTierAndProfile(caps *gst.Caps, profileTierLevel [
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Converts the level indication (general_level_idc) in the stream's
 // profile_tier_level structure into a string. The profiel_tier_level is
@@ -1047,7 +1089,7 @@ func CodecUtilsH265CapsSetLevelTierAndProfile(caps *gst.Caps, profileTierLevel [
 func CodecUtilsH265GetLevel(profileTierLevel []uint8) string {
 	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
 	var carg2 C.guint   // implicit
-	var cret  *C.gchar  // return, none, string
+	var cret  *C.gchar  // return, none, string, nullable-string
 
 	_ = profileTierLevel
 	_ = carg1
@@ -1059,7 +1101,9 @@ func CodecUtilsH265GetLevel(profileTierLevel []uint8) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -1101,7 +1145,7 @@ func CodecUtilsH265GetLevelIdc(level string) uint8 {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Converts the profile indication (general_profile_idc) in the stream's
 // profile_level_tier structure into a string. The profile_tier_level is
@@ -1122,7 +1166,7 @@ func CodecUtilsH265GetLevelIdc(level string) uint8 {
 func CodecUtilsH265GetProfile(profileTierLevel []uint8) string {
 	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
 	var carg2 C.guint   // implicit
-	var cret  *C.gchar  // return, none, string
+	var cret  *C.gchar  // return, none, string, nullable-string
 
 	_ = profileTierLevel
 	_ = carg1
@@ -1134,7 +1178,9 @@ func CodecUtilsH265GetProfile(profileTierLevel []uint8) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -1148,7 +1194,7 @@ func CodecUtilsH265GetProfile(profileTierLevel []uint8) string {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Converts the tier indication (general_tier_flag) in the stream's
 // profile_tier_level structure into a string. The profile_tier_level
@@ -1156,7 +1202,7 @@ func CodecUtilsH265GetProfile(profileTierLevel []uint8) string {
 func CodecUtilsH265GetTier(profileTierLevel []uint8) string {
 	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
 	var carg2 C.guint   // implicit
-	var cret  *C.gchar  // return, none, string
+	var cret  *C.gchar  // return, none, string, nullable-string
 
 	_ = profileTierLevel
 	_ = carg1
@@ -1168,7 +1214,9 @@ func CodecUtilsH265GetTier(profileTierLevel []uint8) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -1223,7 +1271,7 @@ func CodecUtilsMpeg4VideoCapsSetLevelAndProfile(caps *gst.Caps, visObjSeq []uint
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Converts the level indication in the stream's visual object sequence into
 // a string. @vis_obj_seq is expected to be the data following the visual
@@ -1232,7 +1280,7 @@ func CodecUtilsMpeg4VideoCapsSetLevelAndProfile(caps *gst.Caps, visObjSeq []uint
 func CodecUtilsMpeg4VideoGetLevel(visObjSeq []uint8) string {
 	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
 	var carg2 C.guint   // implicit
-	var cret  *C.gchar  // return, none, string
+	var cret  *C.gchar  // return, none, string, nullable-string
 
 	_ = visObjSeq
 	_ = carg1
@@ -1244,7 +1292,9 @@ func CodecUtilsMpeg4VideoGetLevel(visObjSeq []uint8) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -1258,7 +1308,7 @@ func CodecUtilsMpeg4VideoGetLevel(visObjSeq []uint8) string {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Converts the profile indication in the stream's visual object sequence into
 // a string. @vis_obj_seq is expected to be the data following the visual
@@ -1267,7 +1317,7 @@ func CodecUtilsMpeg4VideoGetLevel(visObjSeq []uint8) string {
 func CodecUtilsMpeg4VideoGetProfile(visObjSeq []uint8) string {
 	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
 	var carg2 C.guint   // implicit
-	var cret  *C.gchar  // return, none, string
+	var cret  *C.gchar  // return, none, string, nullable-string
 
 	_ = visObjSeq
 	_ = carg1
@@ -1279,7 +1329,9 @@ func CodecUtilsMpeg4VideoGetProfile(visObjSeq []uint8) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -1293,14 +1345,14 @@ func CodecUtilsMpeg4VideoGetProfile(visObjSeq []uint8) string {
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.Caps 
+// 	- goret *gst.Caps (nullable) 
 //
 // Creates Opus caps from the given OpusHead @header and comment header
 // @comments.
 func CodecUtilsOpusCreateCapsFromHeader(header *gst.Buffer, comments *gst.Buffer) *gst.Caps {
 	var carg1 *C.GstBuffer // in, none, converted
 	var carg2 *C.GstBuffer // in, none, converted, nullable
-	var cret  *C.GstCaps   // return, full, converted
+	var cret  *C.GstCaps   // return, full, converted, nullable
 
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(header))
 	if comments != nil {
@@ -1313,7 +1365,9 @@ func CodecUtilsOpusCreateCapsFromHeader(header *gst.Buffer, comments *gst.Buffer
 
 	var goret *gst.Caps
 
-	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -1806,7 +1860,7 @@ func MissingPluginMessageGetDescription(msg *gst.Message) string {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Returns an opaque string containing all the details about the missing
 // element to be passed to an external installer called via
@@ -1816,7 +1870,7 @@ func MissingPluginMessageGetDescription(msg *gst.Message) string {
 // installation mechanisms using one of the two above-mentioned functions.
 func MissingPluginMessageGetInstallerDetail(msg *gst.Message) string {
 	var carg1 *C.GstMessage // in, none, converted
-	var cret  *C.gchar      // return, full, string
+	var cret  *C.gchar      // return, full, string, nullable-string
 
 	carg1 = (*C.GstMessage)(gst.UnsafeMessageToGlibNone(msg))
 
@@ -1825,8 +1879,10 @@ func MissingPluginMessageGetInstallerDetail(msg *gst.Message) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -2053,7 +2109,7 @@ func PbUtilsGetCapsDescriptionFlags(caps *gst.Caps) PbUtilsCapsDescriptionFlags 
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Returns a localised (as far as this is possible) string describing the
 // media format specified in @caps, for use in error dialogs or other messages
@@ -2063,7 +2119,7 @@ func PbUtilsGetCapsDescriptionFlags(caps *gst.Caps) PbUtilsCapsDescriptionFlags 
 // gst_pb_utils_add_codec_description_to_tag_list().
 func PbUtilsGetCodecDescription(caps *gst.Caps) string {
 	var carg1 *C.GstCaps // in, none, converted
-	var cret  *C.gchar   // return, full, string
+	var cret  *C.gchar   // return, full, string, nullable-string
 
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
@@ -2072,8 +2128,10 @@ func PbUtilsGetCodecDescription(caps *gst.Caps) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -2186,12 +2244,12 @@ func PbUtilsGetEncoderDescription(caps *gst.Caps) string {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Returns a possible file extension for the given caps, if known.
 func PbUtilsGetFileExtensionFromCaps(caps *gst.Caps) string {
 	var carg1 *C.GstCaps // in, none, converted
-	var cret  *C.gchar   // return, full, string
+	var cret  *C.gchar   // return, full, string, nullable-string
 
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
@@ -2200,8 +2258,10 @@ func PbUtilsGetFileExtensionFromCaps(caps *gst.Caps) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -2772,7 +2832,7 @@ type DiscovererInfo interface {
 	// GetMisc wraps gst_discoverer_info_get_misc
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Structure 
+	// 	- goret *gst.Structure (nullable) 
 	//
 	//
 	// Deprecated: This functions is deprecated since version 1.4, use
@@ -2798,7 +2858,7 @@ type DiscovererInfo interface {
 	// GetStreamInfo wraps gst_discoverer_info_get_stream_info
 	// The function returns the following values:
 	// 
-	// 	- goret DiscovererStreamInfo 
+	// 	- goret DiscovererStreamInfo (nullable) 
 	GetStreamInfo() DiscovererStreamInfo
 	// GetStreamList wraps gst_discoverer_info_get_stream_list
 	// The function returns the following values:
@@ -2828,7 +2888,7 @@ type DiscovererInfo interface {
 	// GetTags wraps gst_discoverer_info_get_tags
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.TagList 
+	// 	- goret *gst.TagList (nullable) 
 	//
 	//
 	// Deprecated: (since 1.20.0) Use gst_discoverer_{container,stream}_info_get_tags() instead.
@@ -2836,7 +2896,7 @@ type DiscovererInfo interface {
 	// GetToc wraps gst_discoverer_info_get_toc
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Toc 
+	// 	- goret *gst.Toc (nullable) 
 	GetToc() *gst.Toc
 	// GetURI wraps gst_discoverer_info_get_uri
 	// The function returns the following values:
@@ -3009,14 +3069,14 @@ func (info *DiscovererInfoInstance) GetLive() bool {
 // GetMisc wraps gst_discoverer_info_get_misc
 // The function returns the following values:
 // 
-// 	- goret *gst.Structure 
+// 	- goret *gst.Structure (nullable) 
 //
 //
 // Deprecated: This functions is deprecated since version 1.4, use
 // #gst_discoverer_info_get_missing_elements_installer_details
 func (info *DiscovererInfoInstance) GetMisc() *gst.Structure {
 	var carg0 *C.GstDiscovererInfo // in, none, converted
-	var cret  *C.GstStructure      // return, none, converted
+	var cret  *C.GstStructure      // return, none, converted, nullable
 
 	carg0 = (*C.GstDiscovererInfo)(UnsafeDiscovererInfoToGlibNone(info))
 
@@ -3025,7 +3085,9 @@ func (info *DiscovererInfoInstance) GetMisc() *gst.Structure {
 
 	var goret *gst.Structure
 
-	goret = gst.UnsafeStructureFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeStructureFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -3099,10 +3161,10 @@ func (info *DiscovererInfoInstance) GetSeekable() bool {
 // GetStreamInfo wraps gst_discoverer_info_get_stream_info
 // The function returns the following values:
 // 
-// 	- goret DiscovererStreamInfo 
+// 	- goret DiscovererStreamInfo (nullable) 
 func (info *DiscovererInfoInstance) GetStreamInfo() DiscovererStreamInfo {
 	var carg0 *C.GstDiscovererInfo       // in, none, converted
-	var cret  *C.GstDiscovererStreamInfo // return, full, converted
+	var cret  *C.GstDiscovererStreamInfo // return, full, converted, nullable
 
 	carg0 = (*C.GstDiscovererInfo)(UnsafeDiscovererInfoToGlibNone(info))
 
@@ -3111,7 +3173,9 @@ func (info *DiscovererInfoInstance) GetStreamInfo() DiscovererStreamInfo {
 
 	var goret DiscovererStreamInfo
 
-	goret = UnsafeDiscovererStreamInfoFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeDiscovererStreamInfoFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -3213,13 +3277,13 @@ func (info *DiscovererInfoInstance) GetSubtitleStreams() []DiscovererSubtitleInf
 // GetTags wraps gst_discoverer_info_get_tags
 // The function returns the following values:
 // 
-// 	- goret *gst.TagList 
+// 	- goret *gst.TagList (nullable) 
 //
 //
 // Deprecated: (since 1.20.0) Use gst_discoverer_{container,stream}_info_get_tags() instead.
 func (info *DiscovererInfoInstance) GetTags() *gst.TagList {
 	var carg0 *C.GstDiscovererInfo // in, none, converted
-	var cret  *C.GstTagList        // return, none, converted
+	var cret  *C.GstTagList        // return, none, converted, nullable
 
 	carg0 = (*C.GstDiscovererInfo)(UnsafeDiscovererInfoToGlibNone(info))
 
@@ -3228,7 +3292,9 @@ func (info *DiscovererInfoInstance) GetTags() *gst.TagList {
 
 	var goret *gst.TagList
 
-	goret = gst.UnsafeTagListFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeTagListFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -3236,10 +3302,10 @@ func (info *DiscovererInfoInstance) GetTags() *gst.TagList {
 // GetToc wraps gst_discoverer_info_get_toc
 // The function returns the following values:
 // 
-// 	- goret *gst.Toc 
+// 	- goret *gst.Toc (nullable) 
 func (info *DiscovererInfoInstance) GetToc() *gst.Toc {
 	var carg0 *C.GstDiscovererInfo // in, none, converted
-	var cret  *C.GstToc            // return, none, converted
+	var cret  *C.GstToc            // return, none, converted, nullable
 
 	carg0 = (*C.GstDiscovererInfo)(UnsafeDiscovererInfoToGlibNone(info))
 
@@ -3248,7 +3314,9 @@ func (info *DiscovererInfoInstance) GetToc() *gst.Toc {
 
 	var goret *gst.Toc
 
-	goret = gst.UnsafeTocFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeTocFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -3334,12 +3402,12 @@ type DiscovererStreamInfo interface {
 	// GetCaps wraps gst_discoverer_stream_info_get_caps
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Caps 
+	// 	- goret *gst.Caps (nullable) 
 	GetCaps() *gst.Caps
 	// GetMisc wraps gst_discoverer_stream_info_get_misc
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Structure 
+	// 	- goret *gst.Structure (nullable) 
 	//
 	//
 	// Deprecated: This functions is deprecated since version 1.4, use
@@ -3348,17 +3416,17 @@ type DiscovererStreamInfo interface {
 	// GetNext wraps gst_discoverer_stream_info_get_next
 	// The function returns the following values:
 	// 
-	// 	- goret DiscovererStreamInfo 
+	// 	- goret DiscovererStreamInfo (nullable) 
 	GetNext() DiscovererStreamInfo
 	// GetPrevious wraps gst_discoverer_stream_info_get_previous
 	// The function returns the following values:
 	// 
-	// 	- goret DiscovererStreamInfo 
+	// 	- goret DiscovererStreamInfo (nullable) 
 	GetPrevious() DiscovererStreamInfo
 	// GetStreamID wraps gst_discoverer_stream_info_get_stream_id
 	// The function returns the following values:
 	// 
-	// 	- goret string 
+	// 	- goret string (nullable) 
 	GetStreamID() string
 	// GetStreamNumber wraps gst_discoverer_stream_info_get_stream_number
 	// The function returns the following values:
@@ -3373,12 +3441,12 @@ type DiscovererStreamInfo interface {
 	// GetTags wraps gst_discoverer_stream_info_get_tags
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.TagList 
+	// 	- goret *gst.TagList (nullable) 
 	GetTags() *gst.TagList
 	// GetToc wraps gst_discoverer_stream_info_get_toc
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Toc 
+	// 	- goret *gst.Toc (nullable) 
 	GetToc() *gst.Toc
 }
 
@@ -3419,10 +3487,10 @@ func UnsafeDiscovererStreamInfoToGlibFull(c DiscovererStreamInfo) unsafe.Pointer
 // GetCaps wraps gst_discoverer_stream_info_get_caps
 // The function returns the following values:
 // 
-// 	- goret *gst.Caps 
+// 	- goret *gst.Caps (nullable) 
 func (info *DiscovererStreamInfoInstance) GetCaps() *gst.Caps {
 	var carg0 *C.GstDiscovererStreamInfo // in, none, converted
-	var cret  *C.GstCaps                 // return, full, converted
+	var cret  *C.GstCaps                 // return, full, converted, nullable
 
 	carg0 = (*C.GstDiscovererStreamInfo)(UnsafeDiscovererStreamInfoToGlibNone(info))
 
@@ -3431,7 +3499,9 @@ func (info *DiscovererStreamInfoInstance) GetCaps() *gst.Caps {
 
 	var goret *gst.Caps
 
-	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -3439,14 +3509,14 @@ func (info *DiscovererStreamInfoInstance) GetCaps() *gst.Caps {
 // GetMisc wraps gst_discoverer_stream_info_get_misc
 // The function returns the following values:
 // 
-// 	- goret *gst.Structure 
+// 	- goret *gst.Structure (nullable) 
 //
 //
 // Deprecated: This functions is deprecated since version 1.4, use
 // #gst_discoverer_info_get_missing_elements_installer_details
 func (info *DiscovererStreamInfoInstance) GetMisc() *gst.Structure {
 	var carg0 *C.GstDiscovererStreamInfo // in, none, converted
-	var cret  *C.GstStructure            // return, none, converted
+	var cret  *C.GstStructure            // return, none, converted, nullable
 
 	carg0 = (*C.GstDiscovererStreamInfo)(UnsafeDiscovererStreamInfoToGlibNone(info))
 
@@ -3455,7 +3525,9 @@ func (info *DiscovererStreamInfoInstance) GetMisc() *gst.Structure {
 
 	var goret *gst.Structure
 
-	goret = gst.UnsafeStructureFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeStructureFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -3463,10 +3535,10 @@ func (info *DiscovererStreamInfoInstance) GetMisc() *gst.Structure {
 // GetNext wraps gst_discoverer_stream_info_get_next
 // The function returns the following values:
 // 
-// 	- goret DiscovererStreamInfo 
+// 	- goret DiscovererStreamInfo (nullable) 
 func (info *DiscovererStreamInfoInstance) GetNext() DiscovererStreamInfo {
 	var carg0 *C.GstDiscovererStreamInfo // in, none, converted
-	var cret  *C.GstDiscovererStreamInfo // return, full, converted
+	var cret  *C.GstDiscovererStreamInfo // return, full, converted, nullable
 
 	carg0 = (*C.GstDiscovererStreamInfo)(UnsafeDiscovererStreamInfoToGlibNone(info))
 
@@ -3475,7 +3547,9 @@ func (info *DiscovererStreamInfoInstance) GetNext() DiscovererStreamInfo {
 
 	var goret DiscovererStreamInfo
 
-	goret = UnsafeDiscovererStreamInfoFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeDiscovererStreamInfoFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -3483,10 +3557,10 @@ func (info *DiscovererStreamInfoInstance) GetNext() DiscovererStreamInfo {
 // GetPrevious wraps gst_discoverer_stream_info_get_previous
 // The function returns the following values:
 // 
-// 	- goret DiscovererStreamInfo 
+// 	- goret DiscovererStreamInfo (nullable) 
 func (info *DiscovererStreamInfoInstance) GetPrevious() DiscovererStreamInfo {
 	var carg0 *C.GstDiscovererStreamInfo // in, none, converted
-	var cret  *C.GstDiscovererStreamInfo // return, full, converted
+	var cret  *C.GstDiscovererStreamInfo // return, full, converted, nullable
 
 	carg0 = (*C.GstDiscovererStreamInfo)(UnsafeDiscovererStreamInfoToGlibNone(info))
 
@@ -3495,7 +3569,9 @@ func (info *DiscovererStreamInfoInstance) GetPrevious() DiscovererStreamInfo {
 
 	var goret DiscovererStreamInfo
 
-	goret = UnsafeDiscovererStreamInfoFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeDiscovererStreamInfoFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -3503,10 +3579,10 @@ func (info *DiscovererStreamInfoInstance) GetPrevious() DiscovererStreamInfo {
 // GetStreamID wraps gst_discoverer_stream_info_get_stream_id
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 func (info *DiscovererStreamInfoInstance) GetStreamID() string {
 	var carg0 *C.GstDiscovererStreamInfo // in, none, converted
-	var cret  *C.gchar                   // return, none, string
+	var cret  *C.gchar                   // return, none, string, nullable-string
 
 	carg0 = (*C.GstDiscovererStreamInfo)(UnsafeDiscovererStreamInfoToGlibNone(info))
 
@@ -3515,7 +3591,9 @@ func (info *DiscovererStreamInfoInstance) GetStreamID() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -3563,10 +3641,10 @@ func (info *DiscovererStreamInfoInstance) GetStreamTypeNick() string {
 // GetTags wraps gst_discoverer_stream_info_get_tags
 // The function returns the following values:
 // 
-// 	- goret *gst.TagList 
+// 	- goret *gst.TagList (nullable) 
 func (info *DiscovererStreamInfoInstance) GetTags() *gst.TagList {
 	var carg0 *C.GstDiscovererStreamInfo // in, none, converted
-	var cret  *C.GstTagList              // return, none, converted
+	var cret  *C.GstTagList              // return, none, converted, nullable
 
 	carg0 = (*C.GstDiscovererStreamInfo)(UnsafeDiscovererStreamInfoToGlibNone(info))
 
@@ -3575,7 +3653,9 @@ func (info *DiscovererStreamInfoInstance) GetTags() *gst.TagList {
 
 	var goret *gst.TagList
 
-	goret = gst.UnsafeTagListFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeTagListFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -3583,10 +3663,10 @@ func (info *DiscovererStreamInfoInstance) GetTags() *gst.TagList {
 // GetToc wraps gst_discoverer_stream_info_get_toc
 // The function returns the following values:
 // 
-// 	- goret *gst.Toc 
+// 	- goret *gst.Toc (nullable) 
 func (info *DiscovererStreamInfoInstance) GetToc() *gst.Toc {
 	var carg0 *C.GstDiscovererStreamInfo // in, none, converted
-	var cret  *C.GstToc                  // return, none, converted
+	var cret  *C.GstToc                  // return, none, converted, nullable
 
 	carg0 = (*C.GstDiscovererStreamInfo)(UnsafeDiscovererStreamInfoToGlibNone(info))
 
@@ -3595,7 +3675,9 @@ func (info *DiscovererStreamInfoInstance) GetToc() *gst.Toc {
 
 	var goret *gst.Toc
 
-	goret = gst.UnsafeTocFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeTocFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -3619,7 +3701,7 @@ type DiscovererSubtitleInfo interface {
 	// GetLanguage wraps gst_discoverer_subtitle_info_get_language
 	// The function returns the following values:
 	// 
-	// 	- goret string 
+	// 	- goret string (nullable) 
 	GetLanguage() string
 }
 
@@ -3662,10 +3744,10 @@ func UnsafeDiscovererSubtitleInfoToGlibFull(c DiscovererSubtitleInfo) unsafe.Poi
 // GetLanguage wraps gst_discoverer_subtitle_info_get_language
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 func (info *DiscovererSubtitleInfoInstance) GetLanguage() string {
 	var carg0 *C.GstDiscovererSubtitleInfo // in, none, converted
-	var cret  *C.gchar                     // return, none, string
+	var cret  *C.gchar                     // return, none, string, nullable-string
 
 	carg0 = (*C.GstDiscovererSubtitleInfo)(UnsafeDiscovererSubtitleInfoToGlibNone(info))
 
@@ -3674,7 +3756,9 @@ func (info *DiscovererSubtitleInfoInstance) GetLanguage() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -4045,17 +4129,17 @@ type EncodingProfile interface {
 	// GetDescription wraps gst_encoding_profile_get_description
 	// The function returns the following values:
 	// 
-	// 	- goret string 
+	// 	- goret string (nullable) 
 	GetDescription() string
 	// GetElementProperties wraps gst_encoding_profile_get_element_properties
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Structure 
+	// 	- goret *gst.Structure (nullable) 
 	GetElementProperties() *gst.Structure
 	// GetFileExtension wraps gst_encoding_profile_get_file_extension
 	// The function returns the following values:
 	// 
-	// 	- goret string 
+	// 	- goret string (nullable) 
 	GetFileExtension() string
 	// GetFormat wraps gst_encoding_profile_get_format
 	// The function returns the following values:
@@ -4072,7 +4156,7 @@ type EncodingProfile interface {
 	// GetName wraps gst_encoding_profile_get_name
 	// The function returns the following values:
 	// 
-	// 	- goret string 
+	// 	- goret string (nullable) 
 	GetName() string
 	// GetPresence wraps gst_encoding_profile_get_presence
 	// The function returns the following values:
@@ -4082,17 +4166,17 @@ type EncodingProfile interface {
 	// GetPreset wraps gst_encoding_profile_get_preset
 	// The function returns the following values:
 	// 
-	// 	- goret string 
+	// 	- goret string (nullable) 
 	GetPreset() string
 	// GetPresetName wraps gst_encoding_profile_get_preset_name
 	// The function returns the following values:
 	// 
-	// 	- goret string 
+	// 	- goret string (nullable) 
 	GetPresetName() string
 	// GetRestriction wraps gst_encoding_profile_get_restriction
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Caps 
+	// 	- goret *gst.Caps (nullable) 
 	GetRestriction() *gst.Caps
 	// GetSingleSegment wraps gst_encoding_profile_get_single_segment
 	// The function returns the following values:
@@ -4286,14 +4370,14 @@ func UnsafeEncodingProfileToGlibFull(c EncodingProfile) unsafe.Pointer {
 // 
 // The function returns the following values:
 // 
-// 	- goret EncodingProfile 
+// 	- goret EncodingProfile (nullable) 
 //
 // Find the #GstEncodingProfile with the specified name and category.
 func EncodingProfileFind(targetname string, profilename string, category string) EncodingProfile {
 	var carg1 *C.gchar              // in, none, string
 	var carg2 *C.gchar              // in, none, string, nullable-string
 	var carg3 *C.gchar              // in, none, string, nullable-string
-	var cret  *C.GstEncodingProfile // return, full, converted
+	var cret  *C.GstEncodingProfile // return, full, converted, nullable
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(targetname)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -4313,7 +4397,9 @@ func EncodingProfileFind(targetname string, profilename string, category string)
 
 	var goret EncodingProfile
 
-	goret = UnsafeEncodingProfileFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeEncodingProfileFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -4326,14 +4412,14 @@ func EncodingProfileFind(targetname string, profilename string, category string)
 // 
 // The function returns the following values:
 // 
-// 	- goret EncodingProfile 
+// 	- goret EncodingProfile (nullable) 
 //
 // Creates a #GstEncodingProfile matching the formats from the given
 // #GstDiscovererInfo. Streams other than audio or video (eg,
 // subtitles), are currently ignored.
 func EncodingProfileFromDiscoverer(info DiscovererInfo) EncodingProfile {
 	var carg1 *C.GstDiscovererInfo  // in, none, converted
-	var cret  *C.GstEncodingProfile // return, full, converted
+	var cret  *C.GstEncodingProfile // return, full, converted, nullable
 
 	carg1 = (*C.GstDiscovererInfo)(UnsafeDiscovererInfoToGlibNone(info))
 
@@ -4342,7 +4428,9 @@ func EncodingProfileFromDiscoverer(info DiscovererInfo) EncodingProfile {
 
 	var goret EncodingProfile
 
-	goret = UnsafeEncodingProfileFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeEncodingProfileFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -4397,10 +4485,10 @@ func (profile *EncodingProfileInstance) GetAllowDynamicOutput() bool {
 // GetDescription wraps gst_encoding_profile_get_description
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 func (profile *EncodingProfileInstance) GetDescription() string {
 	var carg0 *C.GstEncodingProfile // in, none, converted
-	var cret  *C.gchar              // return, none, string
+	var cret  *C.gchar              // return, none, string, nullable-string
 
 	carg0 = (*C.GstEncodingProfile)(UnsafeEncodingProfileToGlibNone(profile))
 
@@ -4409,7 +4497,9 @@ func (profile *EncodingProfileInstance) GetDescription() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -4417,10 +4507,10 @@ func (profile *EncodingProfileInstance) GetDescription() string {
 // GetElementProperties wraps gst_encoding_profile_get_element_properties
 // The function returns the following values:
 // 
-// 	- goret *gst.Structure 
+// 	- goret *gst.Structure (nullable) 
 func (self *EncodingProfileInstance) GetElementProperties() *gst.Structure {
 	var carg0 *C.GstEncodingProfile // in, none, converted
-	var cret  *C.GstStructure       // return, full, converted
+	var cret  *C.GstStructure       // return, full, converted, nullable
 
 	carg0 = (*C.GstEncodingProfile)(UnsafeEncodingProfileToGlibNone(self))
 
@@ -4429,7 +4519,9 @@ func (self *EncodingProfileInstance) GetElementProperties() *gst.Structure {
 
 	var goret *gst.Structure
 
-	goret = gst.UnsafeStructureFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeStructureFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -4437,10 +4529,10 @@ func (self *EncodingProfileInstance) GetElementProperties() *gst.Structure {
 // GetFileExtension wraps gst_encoding_profile_get_file_extension
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 func (profile *EncodingProfileInstance) GetFileExtension() string {
 	var carg0 *C.GstEncodingProfile // in, none, converted
-	var cret  *C.gchar              // return, none, string
+	var cret  *C.gchar              // return, none, string, nullable-string
 
 	carg0 = (*C.GstEncodingProfile)(UnsafeEncodingProfileToGlibNone(profile))
 
@@ -4449,7 +4541,9 @@ func (profile *EncodingProfileInstance) GetFileExtension() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -4499,10 +4593,10 @@ func (profile *EncodingProfileInstance) GetInputCaps() *gst.Caps {
 // GetName wraps gst_encoding_profile_get_name
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 func (profile *EncodingProfileInstance) GetName() string {
 	var carg0 *C.GstEncodingProfile // in, none, converted
-	var cret  *C.gchar              // return, none, string
+	var cret  *C.gchar              // return, none, string, nullable-string
 
 	carg0 = (*C.GstEncodingProfile)(UnsafeEncodingProfileToGlibNone(profile))
 
@@ -4511,7 +4605,9 @@ func (profile *EncodingProfileInstance) GetName() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -4539,10 +4635,10 @@ func (profile *EncodingProfileInstance) GetPresence() uint {
 // GetPreset wraps gst_encoding_profile_get_preset
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 func (profile *EncodingProfileInstance) GetPreset() string {
 	var carg0 *C.GstEncodingProfile // in, none, converted
-	var cret  *C.gchar              // return, none, string
+	var cret  *C.gchar              // return, none, string, nullable-string
 
 	carg0 = (*C.GstEncodingProfile)(UnsafeEncodingProfileToGlibNone(profile))
 
@@ -4551,7 +4647,9 @@ func (profile *EncodingProfileInstance) GetPreset() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -4559,10 +4657,10 @@ func (profile *EncodingProfileInstance) GetPreset() string {
 // GetPresetName wraps gst_encoding_profile_get_preset_name
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 func (profile *EncodingProfileInstance) GetPresetName() string {
 	var carg0 *C.GstEncodingProfile // in, none, converted
-	var cret  *C.gchar              // return, none, string
+	var cret  *C.gchar              // return, none, string, nullable-string
 
 	carg0 = (*C.GstEncodingProfile)(UnsafeEncodingProfileToGlibNone(profile))
 
@@ -4571,7 +4669,9 @@ func (profile *EncodingProfileInstance) GetPresetName() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -4579,10 +4679,10 @@ func (profile *EncodingProfileInstance) GetPresetName() string {
 // GetRestriction wraps gst_encoding_profile_get_restriction
 // The function returns the following values:
 // 
-// 	- goret *gst.Caps 
+// 	- goret *gst.Caps (nullable) 
 func (profile *EncodingProfileInstance) GetRestriction() *gst.Caps {
 	var carg0 *C.GstEncodingProfile // in, none, converted
-	var cret  *C.GstCaps            // return, full, converted
+	var cret  *C.GstCaps            // return, full, converted, nullable
 
 	carg0 = (*C.GstEncodingProfile)(UnsafeEncodingProfileToGlibNone(profile))
 
@@ -4591,7 +4691,9 @@ func (profile *EncodingProfileInstance) GetRestriction() *gst.Caps {
 
 	var goret *gst.Caps
 
-	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -5004,7 +5106,7 @@ type EncodingTarget interface {
 	// GetPath wraps gst_encoding_target_get_path
 	// The function returns the following values:
 	// 
-	// 	- goret string 
+	// 	- goret string (nullable) 
 	GetPath() string
 	// GetProfile wraps gst_encoding_target_get_profile
 	// 
@@ -5014,7 +5116,7 @@ type EncodingTarget interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret EncodingProfile 
+	// 	- goret EncodingProfile (nullable) 
 	GetProfile(string) EncodingProfile
 	// GetProfiles wraps gst_encoding_target_get_profiles
 	// The function returns the following values:
@@ -5260,10 +5362,10 @@ func (target *EncodingTargetInstance) GetName() string {
 // GetPath wraps gst_encoding_target_get_path
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 func (target *EncodingTargetInstance) GetPath() string {
 	var carg0 *C.GstEncodingTarget // in, none, converted
-	var cret  *C.gchar             // return, none, string
+	var cret  *C.gchar             // return, none, string, nullable
 
 	carg0 = (*C.GstEncodingTarget)(UnsafeEncodingTargetToGlibNone(target))
 
@@ -5272,7 +5374,9 @@ func (target *EncodingTargetInstance) GetPath() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -5285,11 +5389,11 @@ func (target *EncodingTargetInstance) GetPath() string {
 // 
 // The function returns the following values:
 // 
-// 	- goret EncodingProfile 
+// 	- goret EncodingProfile (nullable) 
 func (target *EncodingTargetInstance) GetProfile(name string) EncodingProfile {
 	var carg0 *C.GstEncodingTarget  // in, none, converted
 	var carg1 *C.gchar              // in, none, string
-	var cret  *C.GstEncodingProfile // return, full, converted
+	var cret  *C.GstEncodingProfile // return, full, converted, nullable
 
 	carg0 = (*C.GstEncodingTarget)(UnsafeEncodingTargetToGlibNone(target))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
@@ -5301,7 +5405,9 @@ func (target *EncodingTargetInstance) GetProfile(name string) EncodingProfile {
 
 	var goret EncodingProfile
 
-	goret = UnsafeEncodingProfileFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeEncodingProfileFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -5676,7 +5782,7 @@ type DiscovererAudioInfo interface {
 	// GetLanguage wraps gst_discoverer_audio_info_get_language
 	// The function returns the following values:
 	// 
-	// 	- goret string 
+	// 	- goret string (nullable) 
 	GetLanguage() string
 	// GetMaxBitrate wraps gst_discoverer_audio_info_get_max_bitrate
 	// The function returns the following values:
@@ -5809,10 +5915,10 @@ func (info *DiscovererAudioInfoInstance) GetDepth() uint {
 // GetLanguage wraps gst_discoverer_audio_info_get_language
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 func (info *DiscovererAudioInfoInstance) GetLanguage() string {
 	var carg0 *C.GstDiscovererAudioInfo // in, none, converted
-	var cret  *C.gchar                  // return, none, string
+	var cret  *C.gchar                  // return, none, string, nullable-string
 
 	carg0 = (*C.GstDiscovererAudioInfo)(UnsafeDiscovererAudioInfoToGlibNone(info))
 
@@ -5821,7 +5927,9 @@ func (info *DiscovererAudioInfoInstance) GetLanguage() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -5889,7 +5997,7 @@ type DiscovererContainerInfo interface {
 	// GetTags wraps gst_discoverer_container_info_get_tags
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.TagList 
+	// 	- goret *gst.TagList (nullable) 
 	GetTags() *gst.TagList
 }
 
@@ -5959,10 +6067,10 @@ func (info *DiscovererContainerInfoInstance) GetStreams() []DiscovererStreamInfo
 // GetTags wraps gst_discoverer_container_info_get_tags
 // The function returns the following values:
 // 
-// 	- goret *gst.TagList 
+// 	- goret *gst.TagList (nullable) 
 func (info *DiscovererContainerInfoInstance) GetTags() *gst.TagList {
 	var carg0 *C.GstDiscovererContainerInfo // in, none, converted
-	var cret  *C.GstTagList                 // return, none, converted
+	var cret  *C.GstTagList                 // return, none, converted, nullable
 
 	carg0 = (*C.GstDiscovererContainerInfo)(UnsafeDiscovererContainerInfoToGlibNone(info))
 
@@ -5971,7 +6079,9 @@ func (info *DiscovererContainerInfoInstance) GetTags() *gst.TagList {
 
 	var goret *gst.TagList
 
-	goret = gst.UnsafeTagListFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeTagListFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }

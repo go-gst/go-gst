@@ -921,7 +921,7 @@ func NewMIKEYMessageFromBytes(bytes *glib.Bytes, info *MIKEYDecryptInfo) (*MIKEY
 // 
 // The function returns the following values:
 // 
-// 	- goret *MIKEYMessage 
+// 	- goret *MIKEYMessage (nullable) 
 //
 // Makes mikey message including:
 //  - Security Policy Payload
@@ -929,7 +929,7 @@ func NewMIKEYMessageFromBytes(bytes *glib.Bytes, info *MIKEYDecryptInfo) (*MIKEY
 //  - Key Data Sub-Payload
 func NewMIKEYMessageFromCaps(caps *gst.Caps) *MIKEYMessage {
 	var carg1 *C.GstCaps         // in, none, converted
-	var cret  *C.GstMIKEYMessage // return, full, converted
+	var cret  *C.GstMIKEYMessage // return, full, converted, nullable
 
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
@@ -938,7 +938,9 @@ func NewMIKEYMessageFromCaps(caps *gst.Caps) *MIKEYMessage {
 
 	var goret *MIKEYMessage
 
-	goret = UnsafeMIKEYMessageFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeMIKEYMessageFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -1178,14 +1180,14 @@ func (msg *MIKEYMessage) Base64Encode() string {
 // 
 // The function returns the following values:
 // 
-// 	- goret *MIKEYPayload 
+// 	- goret *MIKEYPayload (nullable) 
 //
 // Find the @nth occurrence of the payload with @type in @msg.
 func (msg *MIKEYMessage) FindPayload(typ MIKEYPayloadType, nth uint) *MIKEYPayload {
 	var carg0 *C.GstMIKEYMessage    // in, none, converted
 	var carg1 C.GstMIKEYPayloadType // in, none, casted
 	var carg2 C.guint               // in, none, casted
-	var cret  *C.GstMIKEYPayload    // return, none, converted
+	var cret  *C.GstMIKEYPayload    // return, none, converted, nullable
 
 	carg0 = (*C.GstMIKEYMessage)(UnsafeMIKEYMessageToGlibNone(msg))
 	carg1 = C.GstMIKEYPayloadType(typ)
@@ -1198,7 +1200,9 @@ func (msg *MIKEYMessage) FindPayload(typ MIKEYPayloadType, nth uint) *MIKEYPaylo
 
 	var goret *MIKEYPayload
 
-	goret = UnsafeMIKEYPayloadFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeMIKEYPayloadFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -1211,13 +1215,13 @@ func (msg *MIKEYMessage) FindPayload(typ MIKEYPayloadType, nth uint) *MIKEYPaylo
 // 
 // The function returns the following values:
 // 
-// 	- goret *MIKEYMapSRTP 
+// 	- goret *MIKEYMapSRTP (nullable) 
 //
 // Get the policy information of @msg at @idx.
 func (msg *MIKEYMessage) GetCsSrtp(idx uint) *MIKEYMapSRTP {
 	var carg0 *C.GstMIKEYMessage // in, none, converted
 	var carg1 C.guint            // in, none, casted
-	var cret  *C.GstMIKEYMapSRTP // return, none, converted
+	var cret  *C.GstMIKEYMapSRTP // return, none, converted, nullable
 
 	carg0 = (*C.GstMIKEYMessage)(UnsafeMIKEYMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -1228,7 +1232,9 @@ func (msg *MIKEYMessage) GetCsSrtp(idx uint) *MIKEYMapSRTP {
 
 	var goret *MIKEYMapSRTP
 
-	goret = UnsafeMIKEYMapSRTPFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeMIKEYMapSRTPFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -1285,13 +1291,13 @@ func (msg *MIKEYMessage) GetNPayloads() uint {
 // 
 // The function returns the following values:
 // 
-// 	- goret *MIKEYPayload 
+// 	- goret *MIKEYPayload (nullable) 
 //
 // Get the #GstMIKEYPayload at @idx in @msg
 func (msg *MIKEYMessage) GetPayload(idx uint) *MIKEYPayload {
 	var carg0 *C.GstMIKEYMessage // in, none, converted
 	var carg1 C.guint            // in, none, casted
-	var cret  *C.GstMIKEYPayload // return, none, converted
+	var cret  *C.GstMIKEYPayload // return, none, converted, nullable
 
 	carg0 = (*C.GstMIKEYMessage)(UnsafeMIKEYMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -1302,7 +1308,9 @@ func (msg *MIKEYMessage) GetPayload(idx uint) *MIKEYPayload {
 
 	var goret *MIKEYPayload
 
-	goret = UnsafeMIKEYPayloadFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeMIKEYPayloadFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -1720,12 +1728,12 @@ func UnsafeMIKEYPayloadToGlibFull(m *MIKEYPayload) unsafe.Pointer {
 // 
 // The function returns the following values:
 // 
-// 	- goret *MIKEYPayload 
+// 	- goret *MIKEYPayload (nullable) 
 //
 // Make a new #GstMIKEYPayload with @type.
 func NewMIKEYPayload(typ MIKEYPayloadType) *MIKEYPayload {
 	var carg1 C.GstMIKEYPayloadType // in, none, casted
-	var cret  *C.GstMIKEYPayload    // return, full, converted
+	var cret  *C.GstMIKEYPayload    // return, full, converted, nullable
 
 	carg1 = C.GstMIKEYPayloadType(typ)
 
@@ -1734,7 +1742,9 @@ func NewMIKEYPayload(typ MIKEYPayloadType) *MIKEYPayload {
 
 	var goret *MIKEYPayload
 
-	goret = UnsafeMIKEYPayloadFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeMIKEYPayloadFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -1802,14 +1812,14 @@ func (payload *MIKEYPayload) KemacGetNSub() uint {
 // 
 // The function returns the following values:
 // 
-// 	- goret *MIKEYPayload 
+// 	- goret *MIKEYPayload (nullable) 
 //
 // Get the sub payload of @payload at @idx. @payload should be of type
 // %GST_MIKEY_PT_KEMAC.
 func (payload *MIKEYPayload) KemacGetSub(idx uint) *MIKEYPayload {
 	var carg0 *C.GstMIKEYPayload // in, none, converted
 	var carg1 C.guint            // in, none, casted
-	var cret  *C.GstMIKEYPayload // return, none, converted
+	var cret  *C.GstMIKEYPayload // return, none, converted, nullable
 
 	carg0 = (*C.GstMIKEYPayload)(UnsafeMIKEYPayloadToGlibNone(payload))
 	carg1 = C.guint(idx)
@@ -1820,7 +1830,9 @@ func (payload *MIKEYPayload) KemacGetSub(idx uint) *MIKEYPayload {
 
 	var goret *MIKEYPayload
 
-	goret = UnsafeMIKEYPayloadFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeMIKEYPayloadFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -2201,14 +2213,14 @@ func (payload *MIKEYPayload) SpGetNParams() uint {
 // 
 // The function returns the following values:
 // 
-// 	- goret *MIKEYPayloadSPParam 
+// 	- goret *MIKEYPayloadSPParam (nullable) 
 //
 // Get the Security Policy parameter in a %GST_MIKEY_PT_SP @payload
 // at @idx.
 func (payload *MIKEYPayload) SpGetParam(idx uint) *MIKEYPayloadSPParam {
 	var carg0 *C.GstMIKEYPayload        // in, none, converted
 	var carg1 C.guint                   // in, none, casted
-	var cret  *C.GstMIKEYPayloadSPParam // return, none, converted
+	var cret  *C.GstMIKEYPayloadSPParam // return, none, converted, nullable
 
 	carg0 = (*C.GstMIKEYPayload)(UnsafeMIKEYPayloadToGlibNone(payload))
 	carg1 = C.guint(idx)
@@ -2219,7 +2231,9 @@ func (payload *MIKEYPayload) SpGetParam(idx uint) *MIKEYPayloadSPParam {
 
 	var goret *MIKEYPayloadSPParam
 
-	goret = UnsafeMIKEYPayloadSPParamFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeMIKEYPayloadSPParamFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -3687,13 +3701,13 @@ func (media *SDPMedia) GetAttribute(idx uint) *SDPAttribute {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Get the first attribute value for @key in @media.
 func (media *SDPMedia) GetAttributeVal(key string) string {
 	var carg0 *C.GstSDPMedia // in, none, converted
 	var carg1 *C.gchar       // in, none, string
-	var cret  *C.gchar       // return, none, string
+	var cret  *C.gchar       // return, none, string, nullable-string
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(key)))
@@ -3705,7 +3719,9 @@ func (media *SDPMedia) GetAttributeVal(key string) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -3719,14 +3735,14 @@ func (media *SDPMedia) GetAttributeVal(key string) string {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Get the @nth attribute value for @key in @media.
 func (media *SDPMedia) GetAttributeValN(key string, nth uint) string {
 	var carg0 *C.GstSDPMedia // in, none, converted
 	var carg1 *C.gchar       // in, none, string
 	var carg2 C.guint        // in, none, casted
-	var cret  *C.gchar       // return, none, string
+	var cret  *C.gchar       // return, none, string, nullable-string
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(key)))
@@ -3740,7 +3756,9 @@ func (media *SDPMedia) GetAttributeValN(key string, nth uint) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -3783,7 +3801,7 @@ func (media *SDPMedia) GetBandwidth(idx uint) *SDPBandwidth {
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.Caps 
+// 	- goret *gst.Caps (nullable) 
 //
 // Mapping of caps from SDP fields:
 // 
@@ -3797,7 +3815,7 @@ func (media *SDPMedia) GetBandwidth(idx uint) *SDPBandwidth {
 func (media *SDPMedia) GetCapsFromMedia(pt int) *gst.Caps {
 	var carg0 *C.GstSDPMedia // in, none, converted
 	var carg1 C.gint         // in, none, casted
-	var cret  *C.GstCaps     // return, full, converted
+	var cret  *C.GstCaps     // return, full, converted, nullable
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = C.gint(pt)
@@ -3808,7 +3826,9 @@ func (media *SDPMedia) GetCapsFromMedia(pt int) *gst.Caps {
 
 	var goret *gst.Caps
 
-	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -5339,13 +5359,13 @@ func (msg *SDPMessage) GetAttribute(idx uint) *SDPAttribute {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Get the first attribute with key @key in @msg.
 func (msg *SDPMessage) GetAttributeVal(key string) string {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 *C.gchar         // in, none, string
-	var cret  *C.gchar         // return, none, string
+	var cret  *C.gchar         // return, none, string, nullable-string
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(key)))
@@ -5357,7 +5377,9 @@ func (msg *SDPMessage) GetAttributeVal(key string) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -5371,14 +5393,14 @@ func (msg *SDPMessage) GetAttributeVal(key string) string {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Get the @nth attribute with key @key in @msg.
 func (msg *SDPMessage) GetAttributeValN(key string, nth uint) string {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 *C.gchar         // in, none, string
 	var carg2 C.guint          // in, none, casted
-	var cret  *C.gchar         // return, none, string
+	var cret  *C.gchar         // return, none, string, nullable-string
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(key)))
@@ -5392,7 +5414,9 @@ func (msg *SDPMessage) GetAttributeValN(key string, nth uint) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }

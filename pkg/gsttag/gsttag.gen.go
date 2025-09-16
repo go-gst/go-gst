@@ -405,7 +405,7 @@ func TagCheckLanguageCode(langCode string) bool {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Convenience function to read a string with unknown character encoding. If
 // the string is already in UTF-8 encoding, it will be returned right away.
@@ -419,7 +419,7 @@ func TagFreeformStringToUTF8(data string, envVars []string) string {
 	var carg1 *C.gchar  // in, transfer: none, C Pointers: 1, Name: array[unknown], array (inner: <nil>, length-by: carg2)
 	var carg2 C.gint    // implicit
 	var carg3 **C.gchar // in, transfer: none, C Pointers: 2, Name: array[utf8], array (inner: *typesystem.StringPrimitive, zero-terminated)
-	var cret  *C.gchar  // return, full, string
+	var cret  *C.gchar  // return, full, string, nullable-string
 
 	_ = data
 	_ = carg1
@@ -435,8 +435,10 @@ func TagFreeformStringToUTF8(data string, envVars []string) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -449,12 +451,12 @@ func TagFreeformStringToUTF8(data string, envVars []string) string {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Looks up the GStreamer tag for a ID3v2 tag.
 func TagFromID3Tag(id3Tag string) string {
 	var carg1 *C.gchar // in, none, string
-	var cret  *C.gchar // return, none, string
+	var cret  *C.gchar // return, none, string, nullable-string
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(id3Tag)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -464,7 +466,9 @@ func TagFromID3Tag(id3Tag string) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -478,14 +482,14 @@ func TagFromID3Tag(id3Tag string) string {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Looks up the GStreamer tag for an ID3v2 user tag (e.g. description in
 // TXXX frame or owner in UFID frame).
 func TagFromID3UserTag(typ string, id3UserTag string) string {
 	var carg1 *C.gchar // in, none, string
 	var carg2 *C.gchar // in, none, string
-	var cret  *C.gchar // return, none, string
+	var cret  *C.gchar // return, none, string, nullable-string
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(typ)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -498,7 +502,9 @@ func TagFromID3UserTag(typ string, id3UserTag string) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -511,12 +517,12 @@ func TagFromID3UserTag(typ string, id3UserTag string) string {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Looks up the GStreamer tag for a vorbiscomment tag.
 func TagFromVorbisTag(vorbisTag string) string {
 	var carg1 *C.gchar // in, none, string
-	var cret  *C.gchar // return, none, string
+	var cret  *C.gchar // return, none, string, nullable-string
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(vorbisTag)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -526,7 +532,9 @@ func TagFromVorbisTag(vorbisTag string) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -567,7 +575,7 @@ func TagGetID3V2TagSize(buffer *gst.Buffer) uint {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Returns two-letter ISO-639-1 language code given a three-letter ISO-639-2
 // language code or two-letter ISO-639-1 language code (both are accepted for
@@ -576,7 +584,7 @@ func TagGetID3V2TagSize(buffer *gst.Buffer) uint {
 // Language codes are case-sensitive and expected to be lower case.
 func TagGetLanguageCodeISO6391(langCode string) string {
 	var carg1 *C.gchar // in, none, string
-	var cret  *C.gchar // return, none, string
+	var cret  *C.gchar // return, none, string, nullable-string
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(langCode)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -586,7 +594,9 @@ func TagGetLanguageCodeISO6391(langCode string) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -599,7 +609,7 @@ func TagGetLanguageCodeISO6391(langCode string) string {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Returns three-letter ISO-639-2 "bibliographic" language code given a
 // two-letter ISO-639-1 language code or a three-letter ISO-639-2 language
@@ -612,7 +622,7 @@ func TagGetLanguageCodeISO6391(langCode string) string {
 // Language codes are case-sensitive and expected to be lower case.
 func TagGetLanguageCodeISO6392B(langCode string) string {
 	var carg1 *C.gchar // in, none, string
-	var cret  *C.gchar // return, none, string
+	var cret  *C.gchar // return, none, string, nullable-string
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(langCode)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -622,7 +632,9 @@ func TagGetLanguageCodeISO6392B(langCode string) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -635,7 +647,7 @@ func TagGetLanguageCodeISO6392B(langCode string) string {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Returns three-letter ISO-639-2 "terminological" language code given a
 // two-letter ISO-639-1 language code or a three-letter ISO-639-2 language
@@ -648,7 +660,7 @@ func TagGetLanguageCodeISO6392B(langCode string) string {
 // Language codes are case-sensitive and expected to be lower case.
 func TagGetLanguageCodeISO6392T(langCode string) string {
 	var carg1 *C.gchar // in, none, string
-	var cret  *C.gchar // return, none, string
+	var cret  *C.gchar // return, none, string, nullable-string
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(langCode)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -658,7 +670,9 @@ func TagGetLanguageCodeISO6392T(langCode string) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -694,7 +708,7 @@ func TagGetLanguageCodes() []string {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Returns the name of the language given an ISO-639 language code as
 // found in a GST_TAG_LANGUAGE_CODE tag. The name will be translated
@@ -704,7 +718,7 @@ func TagGetLanguageCodes() []string {
 // Language codes are case-sensitive and expected to be lower case.
 func TagGetLanguageName(languageCode string) string {
 	var carg1 *C.gchar // in, none, string
-	var cret  *C.gchar // return, none, string
+	var cret  *C.gchar // return, none, string, nullable-string
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(languageCode)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -714,7 +728,9 @@ func TagGetLanguageName(languageCode string) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -728,13 +744,13 @@ func TagGetLanguageName(languageCode string) string {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Get the description of a license, which is a translated description
 // of the license's main features.
 func TagGetLicenseDescription(licenseRef string) string {
 	var carg1 *C.gchar // in, none, string
-	var cret  *C.gchar // return, none, string
+	var cret  *C.gchar // return, none, string, nullable-string
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(licenseRef)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -744,7 +760,9 @@ func TagGetLicenseDescription(licenseRef string) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -788,7 +806,7 @@ func TagGetLicenseFlags(licenseRef string) TagLicenseFlags {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Get the jurisdiction code of a license. This is usually a two-letter
 // ISO 3166-1 alpha-2 code, but there is also the special case of Scotland,
@@ -799,7 +817,7 @@ func TagGetLicenseFlags(licenseRef string) TagLicenseFlags {
 // pt, scotland, se, si, tw, uk, us, za.
 func TagGetLicenseJurisdiction(licenseRef string) string {
 	var carg1 *C.gchar // in, none, string
-	var cret  *C.gchar // return, none, string
+	var cret  *C.gchar // return, none, string, nullable-string
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(licenseRef)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -809,7 +827,9 @@ func TagGetLicenseJurisdiction(licenseRef string) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -823,13 +843,13 @@ func TagGetLicenseJurisdiction(licenseRef string) string {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Get the nick name of a license, which is a short (untranslated) string
 // such as e.g. "CC BY-NC-ND 2.0 UK".
 func TagGetLicenseNick(licenseRef string) string {
 	var carg1 *C.gchar // in, none, string
-	var cret  *C.gchar // return, none, string
+	var cret  *C.gchar // return, none, string, nullable-string
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(licenseRef)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -839,7 +859,9 @@ func TagGetLicenseNick(licenseRef string) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -853,13 +875,13 @@ func TagGetLicenseNick(licenseRef string) string {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Get the title of a license, which is a short translated description
 // of the license's features (generally not very pretty though).
 func TagGetLicenseTitle(licenseRef string) string {
 	var carg1 *C.gchar // in, none, string
-	var cret  *C.gchar // return, none, string
+	var cret  *C.gchar // return, none, string, nullable-string
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(licenseRef)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -869,7 +891,9 @@ func TagGetLicenseTitle(licenseRef string) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -883,12 +907,12 @@ func TagGetLicenseTitle(licenseRef string) string {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Get the version of a license.
 func TagGetLicenseVersion(licenseRef string) string {
 	var carg1 *C.gchar // in, none, string
-	var cret  *C.gchar // return, none, string
+	var cret  *C.gchar // return, none, string, nullable-string
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(licenseRef)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -898,7 +922,9 @@ func TagGetLicenseVersion(licenseRef string) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -953,12 +979,12 @@ func TagID3GenreCount() uint {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Gets the ID3v1 genre name for a given ID.
 func TagID3GenreGet(id uint) string {
 	var carg1 C.guint  // in, none, casted
-	var cret  *C.gchar // return, none, string
+	var cret  *C.gchar // return, none, string, nullable-string
 
 	carg1 = C.guint(id)
 
@@ -967,7 +993,9 @@ func TagID3GenreGet(id uint) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -983,7 +1011,7 @@ func TagID3GenreGet(id uint) string {
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.Sample 
+// 	- goret *gst.Sample (nullable) 
 //
 // Helper function for tag-reading plugins to create a #GstSample suitable to
 // add to a #GstTagList as an image tag (such as #GST_TAG_IMAGE or
@@ -1011,7 +1039,7 @@ func TagImageDataToImageSample(imageData []uint8, imageType TagImageType) *gst.S
 	var carg1 *C.guint8         // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
 	var carg2 C.guint           // implicit
 	var carg3 C.GstTagImageType // in, none, casted
-	var cret  *C.GstSample      // return, full, converted
+	var cret  *C.GstSample      // return, full, converted, nullable
 
 	_ = imageData
 	_ = carg1
@@ -1025,7 +1053,9 @@ func TagImageDataToImageSample(imageData []uint8, imageType TagImageType) *gst.S
 
 	var goret *gst.Sample
 
-	goret = gst.UnsafeSampleFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeSampleFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -1147,13 +1177,13 @@ func TagListFromExifBufferWithTIFFHeader(buffer *gst.Buffer) *gst.TagList {
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.TagList 
+// 	- goret *gst.TagList (nullable) 
 //
 // Creates a new tag list that contains the information parsed out of a
 // ID3 tag.
 func TagListFromID3V2Tag(buffer *gst.Buffer) *gst.TagList {
 	var carg1 *C.GstBuffer  // in, none, converted
-	var cret  *C.GstTagList // return, full, converted
+	var cret  *C.GstTagList // return, full, converted, nullable
 
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
@@ -1162,7 +1192,9 @@ func TagListFromID3V2Tag(buffer *gst.Buffer) *gst.TagList {
 
 	var goret *gst.TagList
 
-	goret = gst.UnsafeTagListFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeTagListFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -1178,7 +1210,7 @@ func TagListFromID3V2Tag(buffer *gst.Buffer) *gst.TagList {
 // 
 // 	- vendorString string: pointer to a string that should take the
 //     vendor string of this vorbis comment or NULL if you don't need it. 
-// 	- goret *gst.TagList 
+// 	- goret *gst.TagList (nullable) 
 //
 // Creates a new tag list that contains the information parsed out of a
 // vorbiscomment packet.
@@ -1188,7 +1220,7 @@ func TagListFromVorbiscomment(data []uint8, idData []uint8) (string, *gst.TagLis
 	var carg3 *C.guint8     // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg4)
 	var carg4 C.guint       // implicit
 	var carg5 *C.gchar      // out, full, string
-	var cret  *C.GstTagList // return, full, converted
+	var cret  *C.GstTagList // return, full, converted, nullable
 
 	_ = data
 	_ = carg1
@@ -1208,7 +1240,9 @@ func TagListFromVorbiscomment(data []uint8, idData []uint8) (string, *gst.TagLis
 
 	vendorString = C.GoString((*C.char)(unsafe.Pointer(carg5)))
 	defer C.free(unsafe.Pointer(carg5))
-	goret = gst.UnsafeTagListFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeTagListFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return vendorString, goret
 }
@@ -1224,7 +1258,7 @@ func TagListFromVorbiscomment(data []uint8, idData []uint8) (string, *gst.TagLis
 // 
 // 	- vendorString string: pointer to a string that should take the
 //     vendor string of this vorbis comment or NULL if you don't need it. 
-// 	- goret *gst.TagList 
+// 	- goret *gst.TagList (nullable) 
 //
 // Creates a new tag list that contains the information parsed out of a
 // vorbiscomment packet.
@@ -1233,7 +1267,7 @@ func TagListFromVorbiscommentBuffer(buffer *gst.Buffer, idData []uint8) (string,
 	var carg2 *C.guint8     // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg3)
 	var carg3 C.guint       // implicit
 	var carg4 *C.gchar      // out, full, string
-	var cret  *C.GstTagList // return, full, converted
+	var cret  *C.GstTagList // return, full, converted, nullable
 
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 	_ = idData
@@ -1250,7 +1284,9 @@ func TagListFromVorbiscommentBuffer(buffer *gst.Buffer, idData []uint8) (string,
 
 	vendorString = C.GoString((*C.char)(unsafe.Pointer(carg4)))
 	defer C.free(unsafe.Pointer(carg4))
-	goret = gst.UnsafeTagListFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeTagListFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return vendorString, goret
 }
@@ -1263,12 +1299,12 @@ func TagListFromVorbiscommentBuffer(buffer *gst.Buffer, idData []uint8) (string,
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.TagList 
+// 	- goret *gst.TagList (nullable) 
 //
 // Parse a xmp packet into a taglist.
 func TagListFromXmpBuffer(buffer *gst.Buffer) *gst.TagList {
 	var carg1 *C.GstBuffer  // in, none, converted
-	var cret  *C.GstTagList // return, full, converted
+	var cret  *C.GstTagList // return, full, converted, nullable
 
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
@@ -1277,7 +1313,9 @@ func TagListFromXmpBuffer(buffer *gst.Buffer) *gst.TagList {
 
 	var goret *gst.TagList
 
-	goret = gst.UnsafeTagListFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeTagListFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -1290,13 +1328,13 @@ func TagListFromXmpBuffer(buffer *gst.Buffer) *gst.TagList {
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.TagList 
+// 	- goret *gst.TagList (nullable) 
 //
 // Parses the data containing an ID3v1 tag and returns a #GstTagList from the
 // parsed data.
 func TagListNewFromID3V1(data [128]uint8) *gst.TagList {
 	var carg1 *C.guint8     // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, fixed-size: 128)
-	var cret  *C.GstTagList // return, full, converted
+	var cret  *C.GstTagList // return, full, converted, nullable
 
 	_ = data
 	_ = carg1
@@ -1307,7 +1345,9 @@ func TagListNewFromID3V1(data [128]uint8) *gst.TagList {
 
 	var goret *gst.TagList
 
-	goret = gst.UnsafeTagListFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeTagListFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -1429,7 +1469,7 @@ func TagListToVorbiscommentBuffer(list *gst.TagList, idData []uint8, vendorStrin
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.Buffer 
+// 	- goret *gst.Buffer (nullable) 
 //
 // Formats a taglist as a xmp packet using only the selected
 // schemas. An empty list (%NULL) means that all schemas should
@@ -1438,7 +1478,7 @@ func TagListToXmpBuffer(list *gst.TagList, readOnly bool, schemas []string) *gst
 	var carg1 *C.GstTagList // in, none, converted
 	var carg2 C.gboolean    // in
 	var carg3 **C.gchar     // in, transfer: none, C Pointers: 2, Name: array[utf8], array (inner: *typesystem.StringPrimitive, zero-terminated)
-	var cret  *C.GstBuffer  // return, full, converted
+	var cret  *C.GstBuffer  // return, full, converted, nullable
 
 	carg1 = (*C.GstTagList)(gst.UnsafeTagListToGlibNone(list))
 	if readOnly {
@@ -1455,7 +1495,9 @@ func TagListToXmpBuffer(list *gst.TagList, readOnly bool, schemas []string) *gst
 
 	var goret *gst.Buffer
 
-	goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -1541,12 +1583,12 @@ func TagRegisterMusicbrainzTags() {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Looks up the ID3v2 tag for a GStreamer tag.
 func TagToID3Tag(gstTag string) string {
 	var carg1 *C.gchar // in, none, string
-	var cret  *C.gchar // return, none, string
+	var cret  *C.gchar // return, none, string, nullable-string
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(gstTag)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -1556,7 +1598,9 @@ func TagToID3Tag(gstTag string) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -1610,12 +1654,12 @@ func TagToVorbisComments(list *gst.TagList, tag string) []string {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Looks up the vorbiscomment tag for a GStreamer tag.
 func TagToVorbisTag(gstTag string) string {
 	var carg1 *C.gchar // in, none, string
-	var cret  *C.gchar // return, none, string
+	var cret  *C.gchar // return, none, string, nullable-string
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(gstTag)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -1625,7 +1669,9 @@ func TagToVorbisTag(gstTag string) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }

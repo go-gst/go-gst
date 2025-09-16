@@ -96,7 +96,6 @@ var (
 	TypeVideoInfoDmaDrm                   = gobject.Type(C.gst_video_info_dma_drm_get_type())
 	TypeVideoOverlayComposition           = gobject.Type(C.gst_video_overlay_composition_get_type())
 	TypeVideoOverlayRectangle             = gobject.Type(C.gst_video_overlay_rectangle_get_type())
-	TypeVideoTimeCode                     = gobject.Type(C.gst_video_time_code_get_type())
 	TypeVideoTimeCodeInterval             = gobject.Type(C.gst_video_time_code_interval_get_type())
 	TypeVideoVBIEncoder                   = gobject.Type(C.gst_video_vbi_encoder_get_type())
 	TypeVideoVBIParser                    = gobject.Type(C.gst_video_vbi_parser_get_type())
@@ -176,7 +175,6 @@ func init() {
 		gobject.TypeMarshaler{T: TypeVideoInfoDmaDrm, F: marshalVideoInfoDmaDrm},
 		gobject.TypeMarshaler{T: TypeVideoOverlayComposition, F: marshalVideoOverlayComposition},
 		gobject.TypeMarshaler{T: TypeVideoOverlayRectangle, F: marshalVideoOverlayRectangle},
-		gobject.TypeMarshaler{T: TypeVideoTimeCode, F: marshalVideoTimeCode},
 		gobject.TypeMarshaler{T: TypeVideoTimeCodeInterval, F: marshalVideoTimeCodeInterval},
 		gobject.TypeMarshaler{T: TypeVideoVBIEncoder, F: marshalVideoVBIEncoder},
 		gobject.TypeMarshaler{T: TypeVideoVBIParser, F: marshalVideoVBIParser},
@@ -1017,6 +1015,61 @@ func (e VideoCaptionType) String() string {
 	}
 }
 
+// VideoCaptionTypeFromCaps wraps gst_video_caption_type_from_caps
+// 
+// The function takes the following parameters:
+// 
+// 	- caps *gst.Caps: Fixed #GstCaps to parse 
+// 
+// The function returns the following values:
+// 
+// 	- goret VideoCaptionType 
+//
+// Parses fixed Closed Caption #GstCaps and returns the corresponding caption
+// type, or %GST_VIDEO_CAPTION_TYPE_UNKNOWN.
+func VideoCaptionTypeFromCaps(caps *gst.Caps) VideoCaptionType {
+	var carg1 *C.GstCaps            // in, none, converted
+	var cret  C.GstVideoCaptionType // return, none, casted
+
+	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
+
+	cret = C.gst_video_caption_type_from_caps(carg1)
+	runtime.KeepAlive(caps)
+
+	var goret VideoCaptionType
+
+	goret = VideoCaptionType(cret)
+
+	return goret
+}
+
+// VideoCaptionTypeToCaps wraps gst_video_caption_type_to_caps
+// 
+// The function takes the following parameters:
+// 
+// 	- typ VideoCaptionType: #GstVideoCaptionType 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.Caps 
+//
+// Creates new caps corresponding to @type.
+func VideoCaptionTypeToCaps(typ VideoCaptionType) *gst.Caps {
+	var carg1 C.GstVideoCaptionType // in, none, casted
+	var cret  *C.GstCaps            // return, full, converted
+
+	carg1 = C.GstVideoCaptionType(typ)
+
+	cret = C.gst_video_caption_type_to_caps(carg1)
+	runtime.KeepAlive(typ)
+
+	var goret *gst.Caps
+
+	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+
+	return goret
+}
+
 // VideoChromaMethod wraps GstVideoChromaMethod
 //
 // Different subsampling and upsampling methods
@@ -1162,6 +1215,127 @@ func (e VideoColorMatrix) String() string {
 	}
 }
 
+// VideoColorMatrixFromISO wraps gst_video_color_matrix_from_iso
+// 
+// The function takes the following parameters:
+// 
+// 	- value uint: a ITU-T H.273 matrix coefficients value 
+// 
+// The function returns the following values:
+// 
+// 	- goret VideoColorMatrix 
+//
+// Converts the @value to the #GstVideoColorMatrix
+// The matrix coefficients (MatrixCoefficients) value is
+// defined by "ISO/IEC 23001-8 Section 7.3 Table 4"
+// and "ITU-T H.273 Table 4".
+// "H.264 Table E-5" and "H.265 Table E.5" share the identical values.
+func VideoColorMatrixFromISO(value uint) VideoColorMatrix {
+	var carg1 C.guint               // in, none, casted
+	var cret  C.GstVideoColorMatrix // return, none, casted
+
+	carg1 = C.guint(value)
+
+	cret = C.gst_video_color_matrix_from_iso(carg1)
+	runtime.KeepAlive(value)
+
+	var goret VideoColorMatrix
+
+	goret = VideoColorMatrix(cret)
+
+	return goret
+}
+
+// VideoColorMatrixGetKrKb wraps gst_video_color_matrix_get_Kr_Kb
+// 
+// The function takes the following parameters:
+// 
+// 	- matrix VideoColorMatrix: a #GstVideoColorMatrix 
+// 
+// The function returns the following values:
+// 
+// 	- Kr float64: result red channel coefficient 
+// 	- Kb float64: result blue channel coefficient 
+// 	- goret bool 
+//
+// Get the coefficients used to convert between Y'PbPr and R'G'B' using @matrix.
+// 
+// When:
+// 
+// |[
+//   0.0 &lt;= [Y',R',G',B'] &lt;= 1.0)
+//   (-0.5 &lt;= [Pb,Pr] &lt;= 0.5)
+// ]|
+// 
+// the general conversion is given by:
+// 
+// |[
+//   Y' = Kr*R' + (1-Kr-Kb)*G' + Kb*B'
+//   Pb = (B'-Y')/(2*(1-Kb))
+//   Pr = (R'-Y')/(2*(1-Kr))
+// ]|
+// 
+// and the other way around:
+// 
+// |[
+//   R' = Y' + Cr*2*(1-Kr)
+//   G' = Y' - Cb*2*(1-Kb)*Kb/(1-Kr-Kb) - Cr*2*(1-Kr)*Kr/(1-Kr-Kb)
+//   B' = Y' + Cb*2*(1-Kb)
+// ]|
+func VideoColorMatrixGetKrKb(matrix VideoColorMatrix) (float64, float64, bool) {
+	var carg1 C.GstVideoColorMatrix // in, none, casted
+	var carg2 C.gdouble             // out, full, casted
+	var carg3 C.gdouble             // out, full, casted
+	var cret  C.gboolean            // return
+
+	carg1 = C.GstVideoColorMatrix(matrix)
+
+	cret = C.gst_video_color_matrix_get_Kr_Kb(carg1, &carg2, &carg3)
+	runtime.KeepAlive(matrix)
+
+	var Kr    float64
+	var Kb    float64
+	var goret bool
+
+	Kr = float64(carg2)
+	Kb = float64(carg3)
+	if cret != 0 {
+		goret = true
+	}
+
+	return Kr, Kb, goret
+}
+
+// VideoColorMatrixToISO wraps gst_video_color_matrix_to_iso
+// 
+// The function takes the following parameters:
+// 
+// 	- matrix VideoColorMatrix: a #GstVideoColorMatrix 
+// 
+// The function returns the following values:
+// 
+// 	- goret uint 
+//
+// Converts #GstVideoColorMatrix to the "matrix coefficients"
+// (MatrixCoefficients) value defined by "ISO/IEC 23001-8 Section 7.3 Table 4"
+// and "ITU-T H.273 Table 4".
+// "H.264 Table E-5" and "H.265 Table E.5" share the identical values.
+func VideoColorMatrixToISO(matrix VideoColorMatrix) uint {
+	var carg1 C.GstVideoColorMatrix // in, none, casted
+	var cret  C.guint               // return, none, casted
+
+	carg1 = C.GstVideoColorMatrix(matrix)
+
+	cret = C.gst_video_color_matrix_to_iso(carg1)
+	runtime.KeepAlive(matrix)
+
+	var goret uint
+
+	goret = uint(cret)
+
+	return goret
+}
+
 // VideoColorPrimaries wraps GstVideoColorPrimaries
 //
 // The color primaries define the how to transform linear RGB values to and from
@@ -1260,6 +1434,126 @@ func (e VideoColorPrimaries) String() string {
 		case VideoColorPrimariesUnknown: return "VideoColorPrimariesUnknown"
 		default: return fmt.Sprintf("VideoColorPrimaries(%d)", e)
 	}
+}
+
+// VideoColorPrimariesFromISO wraps gst_video_color_primaries_from_iso
+// 
+// The function takes the following parameters:
+// 
+// 	- value uint: a ITU-T H.273 colour primaries value 
+// 
+// The function returns the following values:
+// 
+// 	- goret VideoColorPrimaries 
+//
+// Converts the @value to the #GstVideoColorPrimaries
+// The colour primaries (ColourPrimaries) value is
+// defined by "ISO/IEC 23001-8 Section 7.1 Table 2" and "ITU-T H.273 Table 2".
+// "H.264 Table E-3" and "H.265 Table E.3" share the identical values.
+func VideoColorPrimariesFromISO(value uint) VideoColorPrimaries {
+	var carg1 C.guint                  // in, none, casted
+	var cret  C.GstVideoColorPrimaries // return, none, casted
+
+	carg1 = C.guint(value)
+
+	cret = C.gst_video_color_primaries_from_iso(carg1)
+	runtime.KeepAlive(value)
+
+	var goret VideoColorPrimaries
+
+	goret = VideoColorPrimaries(cret)
+
+	return goret
+}
+
+// VideoColorPrimariesGetInfo wraps gst_video_color_primaries_get_info
+// 
+// The function takes the following parameters:
+// 
+// 	- primaries VideoColorPrimaries: a #GstVideoColorPrimaries 
+// 
+// The function returns the following values:
+// 
+// 	- goret *VideoColorPrimariesInfo 
+//
+// Get information about the chromaticity coordinates of @primaries.
+func VideoColorPrimariesGetInfo(primaries VideoColorPrimaries) *VideoColorPrimariesInfo {
+	var carg1 C.GstVideoColorPrimaries      // in, none, casted
+	var cret  *C.GstVideoColorPrimariesInfo // return, none, converted
+
+	carg1 = C.GstVideoColorPrimaries(primaries)
+
+	cret = C.gst_video_color_primaries_get_info(carg1)
+	runtime.KeepAlive(primaries)
+
+	var goret *VideoColorPrimariesInfo
+
+	goret = UnsafeVideoColorPrimariesInfoFromGlibNone(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// VideoColorPrimariesIsEquivalent wraps gst_video_color_primaries_is_equivalent
+// 
+// The function takes the following parameters:
+// 
+// 	- primaries VideoColorPrimaries: a #GstVideoColorPrimaries 
+// 	- other VideoColorPrimaries: another #GstVideoColorPrimaries 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Checks whether @primaries and @other are functionally equivalent
+func VideoColorPrimariesIsEquivalent(primaries VideoColorPrimaries, other VideoColorPrimaries) bool {
+	var carg1 C.GstVideoColorPrimaries // in, none, casted
+	var carg2 C.GstVideoColorPrimaries // in, none, casted
+	var cret  C.gboolean               // return
+
+	carg1 = C.GstVideoColorPrimaries(primaries)
+	carg2 = C.GstVideoColorPrimaries(other)
+
+	cret = C.gst_video_color_primaries_is_equivalent(carg1, carg2)
+	runtime.KeepAlive(primaries)
+	runtime.KeepAlive(other)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// VideoColorPrimariesToISO wraps gst_video_color_primaries_to_iso
+// 
+// The function takes the following parameters:
+// 
+// 	- primaries VideoColorPrimaries: a #GstVideoColorPrimaries 
+// 
+// The function returns the following values:
+// 
+// 	- goret uint 
+//
+// Converts #GstVideoColorPrimaries to the "colour primaries" (ColourPrimaries)
+// value defined by "ISO/IEC 23001-8 Section 7.1 Table 2"
+// and "ITU-T H.273 Table 2".
+// "H.264 Table E-3" and "H.265 Table E.3" share the identical values.
+func VideoColorPrimariesToISO(primaries VideoColorPrimaries) uint {
+	var carg1 C.GstVideoColorPrimaries // in, none, casted
+	var cret  C.guint                  // return, none, casted
+
+	carg1 = C.GstVideoColorPrimaries(primaries)
+
+	cret = C.gst_video_color_primaries_to_iso(carg1)
+	runtime.KeepAlive(primaries)
+
+	var goret uint
+
+	goret = uint(cret)
+
+	return goret
 }
 
 // VideoColorRange wraps GstVideoColorRange
@@ -1396,6 +1690,61 @@ func (e VideoFieldOrder) String() string {
 		case VideoFieldOrderUnknown: return "VideoFieldOrderUnknown"
 		default: return fmt.Sprintf("VideoFieldOrder(%d)", e)
 	}
+}
+
+// VideoFieldOrderFromString wraps gst_video_field_order_from_string
+// 
+// The function takes the following parameters:
+// 
+// 	- order string: a field order 
+// 
+// The function returns the following values:
+// 
+// 	- goret VideoFieldOrder 
+//
+// Convert @order to a #GstVideoFieldOrder
+func VideoFieldOrderFromString(order string) VideoFieldOrder {
+	var carg1 *C.gchar             // in, none, string
+	var cret  C.GstVideoFieldOrder // return, none, casted
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(order)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	cret = C.gst_video_field_order_from_string(carg1)
+	runtime.KeepAlive(order)
+
+	var goret VideoFieldOrder
+
+	goret = VideoFieldOrder(cret)
+
+	return goret
+}
+
+// VideoFieldOrderToString wraps gst_video_field_order_to_string
+// 
+// The function takes the following parameters:
+// 
+// 	- order VideoFieldOrder: a #GstVideoFieldOrder 
+// 
+// The function returns the following values:
+// 
+// 	- goret string 
+//
+// Convert @order to its string representation.
+func VideoFieldOrderToString(order VideoFieldOrder) string {
+	var carg1 C.GstVideoFieldOrder // in, none, casted
+	var cret  *C.gchar             // return, none, string
+
+	carg1 = C.GstVideoFieldOrder(order)
+
+	cret = C.gst_video_field_order_to_string(carg1)
+	runtime.KeepAlive(order)
+
+	var goret string
+
+	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+
+	return goret
 }
 
 // VideoFormat wraps GstVideoFormat
@@ -2114,6 +2463,199 @@ func (e VideoFormat) String() string {
 	}
 }
 
+// VideoFormatFromFourcc wraps gst_video_format_from_fourcc
+// 
+// The function takes the following parameters:
+// 
+// 	- fourcc uint32: a FOURCC value representing raw YUV video 
+// 
+// The function returns the following values:
+// 
+// 	- goret VideoFormat 
+//
+// Converts a FOURCC value into the corresponding #GstVideoFormat.
+// If the FOURCC cannot be represented by #GstVideoFormat,
+// #GST_VIDEO_FORMAT_UNKNOWN is returned.
+func VideoFormatFromFourcc(fourcc uint32) VideoFormat {
+	var carg1 C.guint32        // in, none, casted
+	var cret  C.GstVideoFormat // return, none, casted
+
+	carg1 = C.guint32(fourcc)
+
+	cret = C.gst_video_format_from_fourcc(carg1)
+	runtime.KeepAlive(fourcc)
+
+	var goret VideoFormat
+
+	goret = VideoFormat(cret)
+
+	return goret
+}
+
+// VideoFormatFromMasks wraps gst_video_format_from_masks
+// 
+// The function takes the following parameters:
+// 
+// 	- depth int: the amount of bits used for a pixel 
+// 	- bpp int: the amount of bits used to store a pixel. This value is bigger than
+//   @depth 
+// 	- endianness int: the endianness of the masks, #G_LITTLE_ENDIAN or #G_BIG_ENDIAN 
+// 	- redMask uint: the red mask 
+// 	- greenMask uint: the green mask 
+// 	- blueMask uint: the blue mask 
+// 	- alphaMask uint: the alpha mask, or 0 if no alpha mask 
+// 
+// The function returns the following values:
+// 
+// 	- goret VideoFormat 
+//
+// Find the #GstVideoFormat for the given parameters.
+func VideoFormatFromMasks(depth int, bpp int, endianness int, redMask uint, greenMask uint, blueMask uint, alphaMask uint) VideoFormat {
+	var carg1 C.gint           // in, none, casted
+	var carg2 C.gint           // in, none, casted
+	var carg3 C.gint           // in, none, casted
+	var carg4 C.guint          // in, none, casted
+	var carg5 C.guint          // in, none, casted
+	var carg6 C.guint          // in, none, casted
+	var carg7 C.guint          // in, none, casted
+	var cret  C.GstVideoFormat // return, none, casted
+
+	carg1 = C.gint(depth)
+	carg2 = C.gint(bpp)
+	carg3 = C.gint(endianness)
+	carg4 = C.guint(redMask)
+	carg5 = C.guint(greenMask)
+	carg6 = C.guint(blueMask)
+	carg7 = C.guint(alphaMask)
+
+	cret = C.gst_video_format_from_masks(carg1, carg2, carg3, carg4, carg5, carg6, carg7)
+	runtime.KeepAlive(depth)
+	runtime.KeepAlive(bpp)
+	runtime.KeepAlive(endianness)
+	runtime.KeepAlive(redMask)
+	runtime.KeepAlive(greenMask)
+	runtime.KeepAlive(blueMask)
+	runtime.KeepAlive(alphaMask)
+
+	var goret VideoFormat
+
+	goret = VideoFormat(cret)
+
+	return goret
+}
+
+// VideoFormatFromString wraps gst_video_format_from_string
+// 
+// The function takes the following parameters:
+// 
+// 	- format string: a format string 
+// 
+// The function returns the following values:
+// 
+// 	- goret VideoFormat 
+//
+// Convert the @format string to its #GstVideoFormat.
+func VideoFormatFromString(format string) VideoFormat {
+	var carg1 *C.gchar         // in, none, string
+	var cret  C.GstVideoFormat // return, none, casted
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(format)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	cret = C.gst_video_format_from_string(carg1)
+	runtime.KeepAlive(format)
+
+	var goret VideoFormat
+
+	goret = VideoFormat(cret)
+
+	return goret
+}
+
+// VideoFormatGetInfo wraps gst_video_format_get_info
+// 
+// The function takes the following parameters:
+// 
+// 	- format VideoFormat: a #GstVideoFormat 
+// 
+// The function returns the following values:
+// 
+// 	- goret *VideoFormatInfo 
+//
+// Get the #GstVideoFormatInfo for @format
+func VideoFormatGetInfo(format VideoFormat) *VideoFormatInfo {
+	var carg1 C.GstVideoFormat      // in, none, casted
+	var cret  *C.GstVideoFormatInfo // return, none, converted
+
+	carg1 = C.GstVideoFormat(format)
+
+	cret = C.gst_video_format_get_info(carg1)
+	runtime.KeepAlive(format)
+
+	var goret *VideoFormatInfo
+
+	goret = UnsafeVideoFormatInfoFromGlibNone(unsafe.Pointer(cret))
+
+	return goret
+}
+
+// VideoFormatToFourcc wraps gst_video_format_to_fourcc
+// 
+// The function takes the following parameters:
+// 
+// 	- format VideoFormat: a #GstVideoFormat video format 
+// 
+// The function returns the following values:
+// 
+// 	- goret uint32 
+//
+// Converts a #GstVideoFormat value into the corresponding FOURCC.  Only
+// a few YUV formats have corresponding FOURCC values.  If @format has
+// no corresponding FOURCC value, 0 is returned.
+func VideoFormatToFourcc(format VideoFormat) uint32 {
+	var carg1 C.GstVideoFormat // in, none, casted
+	var cret  C.guint32        // return, none, casted
+
+	carg1 = C.GstVideoFormat(format)
+
+	cret = C.gst_video_format_to_fourcc(carg1)
+	runtime.KeepAlive(format)
+
+	var goret uint32
+
+	goret = uint32(cret)
+
+	return goret
+}
+
+// VideoFormatToString wraps gst_video_format_to_string
+// 
+// The function takes the following parameters:
+// 
+// 	- format VideoFormat: a #GstVideoFormat video format 
+// 
+// The function returns the following values:
+// 
+// 	- goret string 
+//
+// Returns a string containing a descriptive name for
+// the #GstVideoFormat if there is one, or NULL otherwise.
+func VideoFormatToString(format VideoFormat) string {
+	var carg1 C.GstVideoFormat // in, none, casted
+	var cret  *C.gchar         // return, none, string
+
+	carg1 = C.GstVideoFormat(format)
+
+	cret = C.gst_video_format_to_string(carg1)
+	runtime.KeepAlive(format)
+
+	var goret string
+
+	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+
+	return goret
+}
+
 // VideoGLTextureOrientation wraps GstVideoGLTextureOrientation
 //
 // The orientation of the GL texture.
@@ -2314,6 +2856,61 @@ func (e VideoInterlaceMode) String() string {
 		case VideoInterlaceModeProgressive: return "VideoInterlaceModeProgressive"
 		default: return fmt.Sprintf("VideoInterlaceMode(%d)", e)
 	}
+}
+
+// VideoInterlaceModeFromString wraps gst_video_interlace_mode_from_string
+// 
+// The function takes the following parameters:
+// 
+// 	- mode string: a mode 
+// 
+// The function returns the following values:
+// 
+// 	- goret VideoInterlaceMode 
+//
+// Convert @mode to a #GstVideoInterlaceMode
+func VideoInterlaceModeFromString(mode string) VideoInterlaceMode {
+	var carg1 *C.gchar                // in, none, string
+	var cret  C.GstVideoInterlaceMode // return, none, casted
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(mode)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	cret = C.gst_video_interlace_mode_from_string(carg1)
+	runtime.KeepAlive(mode)
+
+	var goret VideoInterlaceMode
+
+	goret = VideoInterlaceMode(cret)
+
+	return goret
+}
+
+// VideoInterlaceModeToString wraps gst_video_interlace_mode_to_string
+// 
+// The function takes the following parameters:
+// 
+// 	- mode VideoInterlaceMode: a #GstVideoInterlaceMode 
+// 
+// The function returns the following values:
+// 
+// 	- goret string 
+//
+// Convert @mode to its string representation.
+func VideoInterlaceModeToString(mode VideoInterlaceMode) string {
+	var carg1 C.GstVideoInterlaceMode // in, none, casted
+	var cret  *C.gchar                // return, none, string
+
+	carg1 = C.GstVideoInterlaceMode(mode)
+
+	cret = C.gst_video_interlace_mode_to_string(carg1)
+	runtime.KeepAlive(mode)
+
+	var goret string
+
+	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+
+	return goret
 }
 
 // VideoMatrixMode wraps GstVideoMatrixMode
@@ -2566,6 +3163,62 @@ func (e VideoMultiviewMode) String() string {
 		case VideoMultiviewModeTopBottom: return "VideoMultiviewModeTopBottom"
 		default: return fmt.Sprintf("VideoMultiviewMode(%d)", e)
 	}
+}
+
+// VideoMultiviewModeFromCapsString wraps gst_video_multiview_mode_from_caps_string
+// 
+// The function takes the following parameters:
+// 
+// 	- capsMviewMode string: multiview-mode field string from caps 
+// 
+// The function returns the following values:
+// 
+// 	- goret VideoMultiviewMode 
+func VideoMultiviewModeFromCapsString(capsMviewMode string) VideoMultiviewMode {
+	var carg1 *C.gchar                // in, none, string
+	var cret  C.GstVideoMultiviewMode // return, none, casted
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(capsMviewMode)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	cret = C.gst_video_multiview_mode_from_caps_string(carg1)
+	runtime.KeepAlive(capsMviewMode)
+
+	var goret VideoMultiviewMode
+
+	goret = VideoMultiviewMode(cret)
+
+	return goret
+}
+
+// VideoMultiviewModeToCapsString wraps gst_video_multiview_mode_to_caps_string
+// 
+// The function takes the following parameters:
+// 
+// 	- mviewMode VideoMultiviewMode: A #GstVideoMultiviewMode value 
+// 
+// The function returns the following values:
+// 
+// 	- goret string (nullable) 
+//
+// Given a #GstVideoMultiviewMode returns the multiview-mode caps string
+// for insertion into a caps structure
+func VideoMultiviewModeToCapsString(mviewMode VideoMultiviewMode) string {
+	var carg1 C.GstVideoMultiviewMode // in, none, casted
+	var cret  *C.gchar                // return, none, string, nullable-string
+
+	carg1 = C.GstVideoMultiviewMode(mviewMode)
+
+	cret = C.gst_video_multiview_mode_to_caps_string(carg1)
+	runtime.KeepAlive(mviewMode)
+
+	var goret string
+
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
+
+	return goret
 }
 
 // VideoOrientationMethod wraps GstVideoOrientationMethod
@@ -2935,6 +3588,195 @@ func (e VideoTransferFunction) String() string {
 		case VideoTransferUnknown: return "VideoTransferUnknown"
 		default: return fmt.Sprintf("VideoTransferFunction(%d)", e)
 	}
+}
+
+// VideoTransferFunctionDecode wraps gst_video_transfer_function_decode
+// 
+// The function takes the following parameters:
+// 
+// 	- fn VideoTransferFunction: a #GstVideoTransferFunction 
+// 	- val float64: a value 
+// 
+// The function returns the following values:
+// 
+// 	- goret float64 
+//
+// Convert @val to its gamma decoded value. This is the inverse operation of
+// gst_video_color_transfer_encode().
+// 
+// For a non-linear value L' in the range [0..1], conversion to the linear
+// L is in general performed with a power function like:
+// 
+// |[
+//    L = L' ^ gamma
+// ]|
+// 
+// Depending on @func, different formulas might be applied. Some formulas
+// encode a linear segment in the lower range.
+func VideoTransferFunctionDecode(fn VideoTransferFunction, val float64) float64 {
+	var carg1 C.GstVideoTransferFunction // in, none, casted
+	var carg2 C.gdouble                  // in, none, casted
+	var cret  C.gdouble                  // return, none, casted
+
+	carg1 = C.GstVideoTransferFunction(fn)
+	carg2 = C.gdouble(val)
+
+	cret = C.gst_video_transfer_function_decode(carg1, carg2)
+	runtime.KeepAlive(fn)
+	runtime.KeepAlive(val)
+
+	var goret float64
+
+	goret = float64(cret)
+
+	return goret
+}
+
+// VideoTransferFunctionEncode wraps gst_video_transfer_function_encode
+// 
+// The function takes the following parameters:
+// 
+// 	- fn VideoTransferFunction: a #GstVideoTransferFunction 
+// 	- val float64: a value 
+// 
+// The function returns the following values:
+// 
+// 	- goret float64 
+//
+// Convert @val to its gamma encoded value.
+// 
+// For a linear value L in the range [0..1], conversion to the non-linear
+// (gamma encoded) L' is in general performed with a power function like:
+// 
+// |[
+//    L' = L ^ (1 / gamma)
+// ]|
+// 
+// Depending on @func, different formulas might be applied. Some formulas
+// encode a linear segment in the lower range.
+func VideoTransferFunctionEncode(fn VideoTransferFunction, val float64) float64 {
+	var carg1 C.GstVideoTransferFunction // in, none, casted
+	var carg2 C.gdouble                  // in, none, casted
+	var cret  C.gdouble                  // return, none, casted
+
+	carg1 = C.GstVideoTransferFunction(fn)
+	carg2 = C.gdouble(val)
+
+	cret = C.gst_video_transfer_function_encode(carg1, carg2)
+	runtime.KeepAlive(fn)
+	runtime.KeepAlive(val)
+
+	var goret float64
+
+	goret = float64(cret)
+
+	return goret
+}
+
+// VideoTransferFunctionFromISO wraps gst_video_transfer_function_from_iso
+// 
+// The function takes the following parameters:
+// 
+// 	- value uint: a ITU-T H.273 transfer characteristics value 
+// 
+// The function returns the following values:
+// 
+// 	- goret VideoTransferFunction 
+//
+// Converts the @value to the #GstVideoTransferFunction
+// The transfer characteristics (TransferCharacteristics) value is
+// defined by "ISO/IEC 23001-8 Section 7.2 Table 3"
+// and "ITU-T H.273 Table 3".
+// "H.264 Table E-4" and "H.265 Table E.4" share the identical values.
+func VideoTransferFunctionFromISO(value uint) VideoTransferFunction {
+	var carg1 C.guint                    // in, none, casted
+	var cret  C.GstVideoTransferFunction // return, none, casted
+
+	carg1 = C.guint(value)
+
+	cret = C.gst_video_transfer_function_from_iso(carg1)
+	runtime.KeepAlive(value)
+
+	var goret VideoTransferFunction
+
+	goret = VideoTransferFunction(cret)
+
+	return goret
+}
+
+// VideoTransferFunctionIsEquivalent wraps gst_video_transfer_function_is_equivalent
+// 
+// The function takes the following parameters:
+// 
+// 	- fromFunc VideoTransferFunction: #GstVideoTransferFunction to convert from 
+// 	- fromBpp uint: bits per pixel to convert from 
+// 	- toFunc VideoTransferFunction: #GstVideoTransferFunction to convert into 
+// 	- toBpp uint: bits per pixel to convert into 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Returns whether @from_func and @to_func are equivalent. There are cases
+// (e.g. BT601, BT709, and BT2020_10) where several functions are functionally
+// identical. In these cases, when doing conversion, we should consider them
+// as equivalent. Also, BT2020_12 is the same as the aforementioned three for
+// less than 12 bits per pixel.
+func VideoTransferFunctionIsEquivalent(fromFunc VideoTransferFunction, fromBpp uint, toFunc VideoTransferFunction, toBpp uint) bool {
+	var carg1 C.GstVideoTransferFunction // in, none, casted
+	var carg2 C.guint                    // in, none, casted
+	var carg3 C.GstVideoTransferFunction // in, none, casted
+	var carg4 C.guint                    // in, none, casted
+	var cret  C.gboolean                 // return
+
+	carg1 = C.GstVideoTransferFunction(fromFunc)
+	carg2 = C.guint(fromBpp)
+	carg3 = C.GstVideoTransferFunction(toFunc)
+	carg4 = C.guint(toBpp)
+
+	cret = C.gst_video_transfer_function_is_equivalent(carg1, carg2, carg3, carg4)
+	runtime.KeepAlive(fromFunc)
+	runtime.KeepAlive(fromBpp)
+	runtime.KeepAlive(toFunc)
+	runtime.KeepAlive(toBpp)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// VideoTransferFunctionToISO wraps gst_video_transfer_function_to_iso
+// 
+// The function takes the following parameters:
+// 
+// 	- fn VideoTransferFunction: a #GstVideoTransferFunction 
+// 
+// The function returns the following values:
+// 
+// 	- goret uint 
+//
+// Converts #GstVideoTransferFunction to the "transfer characteristics"
+// (TransferCharacteristics) value defined by "ISO/IEC 23001-8 Section 7.2 Table 3"
+// and "ITU-T H.273 Table 3".
+// "H.264 Table E-4" and "H.265 Table E.4" share the identical values.
+func VideoTransferFunctionToISO(fn VideoTransferFunction) uint {
+	var carg1 C.GstVideoTransferFunction // in, none, casted
+	var cret  C.guint                    // return, none, casted
+
+	carg1 = C.GstVideoTransferFunction(fn)
+
+	cret = C.gst_video_transfer_function_to_iso(carg1)
+	runtime.KeepAlive(fn)
+
+	var goret uint
+
+	goret = uint(cret)
+
+	return goret
 }
 
 // VideoVBIParserResult wraps GstVideoVBIParserResult
@@ -3402,6 +4244,64 @@ func (f VideoChromaSite) String() string {
 		parts = append(parts, "VideoChromaSiteDv")
 	}
 	return "VideoChromaSite(" + strings.Join(parts, "|") + ")"
+}
+
+// VideoChromaSiteFromString wraps gst_video_chroma_site_from_string
+// 
+// The function takes the following parameters:
+// 
+// 	- s string: a chromasite string 
+// 
+// The function returns the following values:
+// 
+// 	- goret VideoChromaSite 
+//
+// Convert @s to a #GstVideoChromaSite
+func VideoChromaSiteFromString(s string) VideoChromaSite {
+	var carg1 *C.gchar             // in, none, string
+	var cret  C.GstVideoChromaSite // return, none, casted
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(s)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	cret = C.gst_video_chroma_site_from_string(carg1)
+	runtime.KeepAlive(s)
+
+	var goret VideoChromaSite
+
+	goret = VideoChromaSite(cret)
+
+	return goret
+}
+
+// VideoChromaSiteToString wraps gst_video_chroma_site_to_string
+// 
+// The function takes the following parameters:
+// 
+// 	- site VideoChromaSite: a #GstVideoChromaSite 
+// 
+// The function returns the following values:
+// 
+// 	- goret string (nullable) 
+//
+// Converts @site to its string representation.
+func VideoChromaSiteToString(site VideoChromaSite) string {
+	var carg1 C.GstVideoChromaSite // in, none, casted
+	var cret  *C.gchar             // return, full, string, nullable-string
+
+	carg1 = C.GstVideoChromaSite(site)
+
+	cret = C.gst_video_chroma_site_to_string(carg1)
+	runtime.KeepAlive(site)
+
+	var goret string
+
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
+
+	return goret
 }
 
 // VideoCodecFrameFlags wraps GstVideoCodecFrameFlags
@@ -4787,14 +5687,14 @@ func BufferAddVideoSeiUserDataUnregisteredMeta(buffer *gst.Buffer, uuid *uint8, 
 // 
 // The function returns the following values:
 // 
-// 	- goret *VideoTimeCodeMeta 
+// 	- goret *VideoTimeCodeMeta (nullable) 
 //
 // Attaches #GstVideoTimeCodeMeta metadata to @buffer with the given
 // parameters.
 func BufferAddVideoTimeCodeMeta(buffer *gst.Buffer, tc *VideoTimeCode) *VideoTimeCodeMeta {
 	var carg1 *C.GstBuffer            // in, none, converted
 	var carg2 *C.GstVideoTimeCode     // in, none, converted
-	var cret  *C.GstVideoTimeCodeMeta // return, none, converted
+	var cret  *C.GstVideoTimeCodeMeta // return, none, converted, nullable
 
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 	carg2 = (*C.GstVideoTimeCode)(UnsafeVideoTimeCodeToGlibNone(tc))
@@ -4805,7 +5705,9 @@ func BufferAddVideoTimeCodeMeta(buffer *gst.Buffer, tc *VideoTimeCode) *VideoTim
 
 	var goret *VideoTimeCodeMeta
 
-	goret = UnsafeVideoTimeCodeMetaFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeVideoTimeCodeMetaFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -4827,7 +5729,7 @@ func BufferAddVideoTimeCodeMeta(buffer *gst.Buffer, tc *VideoTimeCode) *VideoTim
 // 
 // The function returns the following values:
 // 
-// 	- goret *VideoTimeCodeMeta 
+// 	- goret *VideoTimeCodeMeta (nullable) 
 //
 // Attaches #GstVideoTimeCodeMeta metadata to @buffer with the given
 // parameters.
@@ -4842,7 +5744,7 @@ func BufferAddVideoTimeCodeMetaFull(buffer *gst.Buffer, fpsN uint, fpsD uint, la
 	var carg8  C.guint                 // in, none, casted
 	var carg9  C.guint                 // in, none, casted
 	var carg10 C.guint                 // in, none, casted
-	var cret   *C.GstVideoTimeCodeMeta // return, none, converted
+	var cret   *C.GstVideoTimeCodeMeta // return, none, converted, nullable
 
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 	carg2 = C.guint(fpsN)
@@ -4869,7 +5771,9 @@ func BufferAddVideoTimeCodeMetaFull(buffer *gst.Buffer, fpsN uint, fpsD uint, la
 
 	var goret *VideoTimeCodeMeta
 
-	goret = UnsafeVideoTimeCodeMetaFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeVideoTimeCodeMetaFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -4882,7 +5786,7 @@ func BufferAddVideoTimeCodeMetaFull(buffer *gst.Buffer, fpsN uint, fpsD uint, la
 // 
 // The function returns the following values:
 // 
-// 	- goret *VideoMeta 
+// 	- goret *VideoMeta (nullable) 
 //
 // Find the #GstVideoMeta on @buffer with the lowest @id.
 // 
@@ -4890,7 +5794,7 @@ func BufferAddVideoTimeCodeMetaFull(buffer *gst.Buffer, fpsN uint, fpsD uint, la
 // multiview buffers.
 func BufferGetVideoMeta(buffer *gst.Buffer) *VideoMeta {
 	var carg1 *C.GstBuffer    // in, none, converted
-	var cret  *C.GstVideoMeta // return, none, converted
+	var cret  *C.GstVideoMeta // return, none, converted, nullable
 
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
@@ -4899,7 +5803,9 @@ func BufferGetVideoMeta(buffer *gst.Buffer) *VideoMeta {
 
 	var goret *VideoMeta
 
-	goret = UnsafeVideoMetaFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeVideoMetaFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -4913,7 +5819,7 @@ func BufferGetVideoMeta(buffer *gst.Buffer) *VideoMeta {
 // 
 // The function returns the following values:
 // 
-// 	- goret *VideoMeta 
+// 	- goret *VideoMeta (nullable) 
 //
 // Find the #GstVideoMeta on @buffer with the given @id.
 // 
@@ -4922,7 +5828,7 @@ func BufferGetVideoMeta(buffer *gst.Buffer) *VideoMeta {
 func BufferGetVideoMetaID(buffer *gst.Buffer, id int) *VideoMeta {
 	var carg1 *C.GstBuffer    // in, none, converted
 	var carg2 C.gint          // in, none, casted
-	var cret  *C.GstVideoMeta // return, none, converted
+	var cret  *C.GstVideoMeta // return, none, converted, nullable
 
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 	carg2 = C.gint(id)
@@ -4933,7 +5839,9 @@ func BufferGetVideoMetaID(buffer *gst.Buffer, id int) *VideoMeta {
 
 	var goret *VideoMeta
 
-	goret = UnsafeVideoMetaFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeVideoMetaFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -4947,7 +5855,7 @@ func BufferGetVideoMetaID(buffer *gst.Buffer, id int) *VideoMeta {
 // 
 // The function returns the following values:
 // 
-// 	- goret *VideoRegionOfInterestMeta 
+// 	- goret *VideoRegionOfInterestMeta (nullable) 
 //
 // Find the #GstVideoRegionOfInterestMeta on @buffer with the given @id.
 // 
@@ -4956,7 +5864,7 @@ func BufferGetVideoMetaID(buffer *gst.Buffer, id int) *VideoMeta {
 func BufferGetVideoRegionOfInterestMetaID(buffer *gst.Buffer, id int) *VideoRegionOfInterestMeta {
 	var carg1 *C.GstBuffer                    // in, none, converted
 	var carg2 C.gint                          // in, none, casted
-	var cret  *C.GstVideoRegionOfInterestMeta // return, none, converted
+	var cret  *C.GstVideoRegionOfInterestMeta // return, none, converted, nullable
 
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 	carg2 = C.gint(id)
@@ -4967,7 +5875,9 @@ func BufferGetVideoRegionOfInterestMetaID(buffer *gst.Buffer, id int) *VideoRegi
 
 	var goret *VideoRegionOfInterestMeta
 
-	goret = UnsafeVideoRegionOfInterestMetaFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeVideoRegionOfInterestMetaFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -5466,7 +6376,7 @@ func VideoColorTransferEncode(fn VideoTransferFunction, val float64) float64 {
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.Sample 
+// 	- goret *gst.Sample (nullable) 
 // 	- _goerr error (nullable): an error 
 //
 // Converts a raw video buffer into the specified output caps.
@@ -5478,7 +6388,7 @@ func VideoConvertSample(sample *gst.Sample, toCaps *gst.Caps, timeout gst.ClockT
 	var carg1 *C.GstSample   // in, none, converted
 	var carg2 *C.GstCaps     // in, none, converted
 	var carg3 C.GstClockTime // in, none, casted, alias
-	var cret  *C.GstSample   // return, full, converted
+	var cret  *C.GstSample   // return, full, converted, nullable
 	var _cerr *C.GError      // out, full, converted, nullable
 
 	carg1 = (*C.GstSample)(gst.UnsafeSampleToGlibNone(sample))
@@ -5493,7 +6403,9 @@ func VideoConvertSample(sample *gst.Sample, toCaps *gst.Caps, timeout gst.ClockT
 	var goret  *gst.Sample
 	var _goerr error
 
-	goret = gst.UnsafeSampleFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeSampleFromGlibFull(unsafe.Pointer(cret))
+	}
 	if _cerr != nil {
 		_goerr = glib.UnsafeErrorFromGlibFull(unsafe.Pointer(_cerr))
 	}
@@ -5661,14 +6573,14 @@ func VideoDmaDRMFourccToFormat(fourcc uint32) VideoFormat {
 // 
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Returns a string containing drm kind format, such as
 // NV12:0x0100000000000002, or NULL otherwise.
 func VideoDmaDRMFourccToString(fourcc uint32, modifier uint64) string {
 	var carg1 C.guint32 // in, none, casted
 	var carg2 C.guint64 // in, none, casted
-	var cret  *C.gchar  // return, full, string
+	var cret  *C.gchar  // return, full, string, nullable-string
 
 	carg1 = C.guint32(fourcc)
 	carg2 = C.guint64(modifier)
@@ -5679,8 +6591,10 @@ func VideoDmaDRMFourccToString(fourcc uint32, modifier uint64) string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -10057,7 +10971,7 @@ type VideoDecoder interface {
 	// AllocateOutputBuffer wraps gst_video_decoder_allocate_output_buffer
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Buffer 
+	// 	- goret *gst.Buffer (nullable) 
 	//
 	// Helper function that allocates a buffer to hold a video frame for @decoder's
 	// current #GstVideoCodecState.
@@ -10174,7 +11088,7 @@ type VideoDecoder interface {
 	// GetBufferPool wraps gst_video_decoder_get_buffer_pool
 	// The function returns the following values:
 	// 
-	// 	- goret gst.BufferPool 
+	// 	- goret gst.BufferPool (nullable) 
 	GetBufferPool() gst.BufferPool
 	// GetEstimateRate wraps gst_video_decoder_get_estimate_rate
 	// The function returns the following values:
@@ -10189,7 +11103,7 @@ type VideoDecoder interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *VideoCodecFrame 
+	// 	- goret *VideoCodecFrame (nullable) 
 	//
 	// Get a pending unfinished #GstVideoCodecFrame
 	GetFrame(int) *VideoCodecFrame
@@ -10262,14 +11176,14 @@ type VideoDecoder interface {
 	// GetOldestFrame wraps gst_video_decoder_get_oldest_frame
 	// The function returns the following values:
 	// 
-	// 	- goret *VideoCodecFrame 
+	// 	- goret *VideoCodecFrame (nullable) 
 	//
 	// Get the oldest pending unfinished #GstVideoCodecFrame
 	GetOldestFrame() *VideoCodecFrame
 	// GetOutputState wraps gst_video_decoder_get_output_state
 	// The function returns the following values:
 	// 
-	// 	- goret *VideoCodecState 
+	// 	- goret *VideoCodecState (nullable) 
 	//
 	// Get the #GstVideoCodecState currently describing the output stream.
 	GetOutputState() *VideoCodecState
@@ -10441,7 +11355,7 @@ type VideoDecoder interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *VideoCodecState 
+	// 	- goret *VideoCodecState (nullable) 
 	//
 	// Same as #gst_video_decoder_set_output_state() but also allows you to also set
 	// the interlacing mode.
@@ -10509,7 +11423,7 @@ type VideoDecoder interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *VideoCodecState 
+	// 	- goret *VideoCodecState (nullable) 
 	//
 	// Creates a new #GstVideoCodecState with the specified @fmt, @width and @height
 	// as the output state for the decoder.
@@ -10634,7 +11548,7 @@ func (decoder *VideoDecoderInstance) AddToFrame(nBytes int) {
 // AllocateOutputBuffer wraps gst_video_decoder_allocate_output_buffer
 // The function returns the following values:
 // 
-// 	- goret *gst.Buffer 
+// 	- goret *gst.Buffer (nullable) 
 //
 // Helper function that allocates a buffer to hold a video frame for @decoder's
 // current #GstVideoCodecState.
@@ -10643,7 +11557,7 @@ func (decoder *VideoDecoderInstance) AddToFrame(nBytes int) {
 // function, if possible at all.
 func (decoder *VideoDecoderInstance) AllocateOutputBuffer() *gst.Buffer {
 	var carg0 *C.GstVideoDecoder // in, none, converted
-	var cret  *C.GstBuffer       // return, full, converted
+	var cret  *C.GstBuffer       // return, full, converted, nullable
 
 	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 
@@ -10652,7 +11566,9 @@ func (decoder *VideoDecoderInstance) AllocateOutputBuffer() *gst.Buffer {
 
 	var goret *gst.Buffer
 
-	goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -10899,10 +11815,10 @@ func (decoder *VideoDecoderInstance) GetAllocator() (gst.Allocator, gst.Allocati
 // GetBufferPool wraps gst_video_decoder_get_buffer_pool
 // The function returns the following values:
 // 
-// 	- goret gst.BufferPool 
+// 	- goret gst.BufferPool (nullable) 
 func (decoder *VideoDecoderInstance) GetBufferPool() gst.BufferPool {
 	var carg0 *C.GstVideoDecoder // in, none, converted
-	var cret  *C.GstBufferPool   // return, full, converted
+	var cret  *C.GstBufferPool   // return, full, converted, nullable
 
 	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 
@@ -10911,7 +11827,9 @@ func (decoder *VideoDecoderInstance) GetBufferPool() gst.BufferPool {
 
 	var goret gst.BufferPool
 
-	goret = gst.UnsafeBufferPoolFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeBufferPoolFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -10944,13 +11862,13 @@ func (dec *VideoDecoderInstance) GetEstimateRate() int {
 // 
 // The function returns the following values:
 // 
-// 	- goret *VideoCodecFrame 
+// 	- goret *VideoCodecFrame (nullable) 
 //
 // Get a pending unfinished #GstVideoCodecFrame
 func (decoder *VideoDecoderInstance) GetFrame(frameNumber int) *VideoCodecFrame {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
 	var carg1 C.int                 // in, none, casted, casted C.gint
-	var cret  *C.GstVideoCodecFrame // return, full, converted
+	var cret  *C.GstVideoCodecFrame // return, full, converted, nullable
 
 	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 	carg1 = C.int(frameNumber)
@@ -10961,7 +11879,9 @@ func (decoder *VideoDecoderInstance) GetFrame(frameNumber int) *VideoCodecFrame 
 
 	var goret *VideoCodecFrame
 
-	goret = UnsafeVideoCodecFrameFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeVideoCodecFrameFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -11160,12 +12080,12 @@ func (dec *VideoDecoderInstance) GetNeedsSyncPoint() bool {
 // GetOldestFrame wraps gst_video_decoder_get_oldest_frame
 // The function returns the following values:
 // 
-// 	- goret *VideoCodecFrame 
+// 	- goret *VideoCodecFrame (nullable) 
 //
 // Get the oldest pending unfinished #GstVideoCodecFrame
 func (decoder *VideoDecoderInstance) GetOldestFrame() *VideoCodecFrame {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
-	var cret  *C.GstVideoCodecFrame // return, full, converted
+	var cret  *C.GstVideoCodecFrame // return, full, converted, nullable
 
 	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 
@@ -11174,7 +12094,9 @@ func (decoder *VideoDecoderInstance) GetOldestFrame() *VideoCodecFrame {
 
 	var goret *VideoCodecFrame
 
-	goret = UnsafeVideoCodecFrameFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeVideoCodecFrameFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -11182,12 +12104,12 @@ func (decoder *VideoDecoderInstance) GetOldestFrame() *VideoCodecFrame {
 // GetOutputState wraps gst_video_decoder_get_output_state
 // The function returns the following values:
 // 
-// 	- goret *VideoCodecState 
+// 	- goret *VideoCodecState (nullable) 
 //
 // Get the #GstVideoCodecState currently describing the output stream.
 func (decoder *VideoDecoderInstance) GetOutputState() *VideoCodecState {
 	var carg0 *C.GstVideoDecoder    // in, none, converted
-	var cret  *C.GstVideoCodecState // return, full, converted
+	var cret  *C.GstVideoCodecState // return, full, converted, nullable
 
 	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 
@@ -11196,7 +12118,9 @@ func (decoder *VideoDecoderInstance) GetOutputState() *VideoCodecState {
 
 	var goret *VideoCodecState
 
-	goret = UnsafeVideoCodecStateFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeVideoCodecStateFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -11580,7 +12504,7 @@ func (dec *VideoDecoderInstance) SetEstimateRate(enabled bool) {
 // 
 // The function returns the following values:
 // 
-// 	- goret *VideoCodecState 
+// 	- goret *VideoCodecState (nullable) 
 //
 // Same as #gst_video_decoder_set_output_state() but also allows you to also set
 // the interlacing mode.
@@ -11591,7 +12515,7 @@ func (decoder *VideoDecoderInstance) SetInterlacedOutputState(_fmt VideoFormat, 
 	var carg3 C.guint                 // in, none, casted
 	var carg4 C.guint                 // in, none, casted
 	var carg5 *C.GstVideoCodecState   // in, none, converted, nullable
-	var cret  *C.GstVideoCodecState   // return, full, converted
+	var cret  *C.GstVideoCodecState   // return, full, converted, nullable
 
 	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 	carg1 = C.GstVideoFormat(_fmt)
@@ -11612,7 +12536,9 @@ func (decoder *VideoDecoderInstance) SetInterlacedOutputState(_fmt VideoFormat, 
 
 	var goret *VideoCodecState
 
-	goret = UnsafeVideoCodecStateFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeVideoCodecStateFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -11731,7 +12657,7 @@ func (dec *VideoDecoderInstance) SetNeedsSyncPoint(enabled bool) {
 // 
 // The function returns the following values:
 // 
-// 	- goret *VideoCodecState 
+// 	- goret *VideoCodecState (nullable) 
 //
 // Creates a new #GstVideoCodecState with the specified @fmt, @width and @height
 // as the output state for the decoder.
@@ -11753,7 +12679,7 @@ func (decoder *VideoDecoderInstance) SetOutputState(_fmt VideoFormat, width uint
 	var carg2 C.guint               // in, none, casted
 	var carg3 C.guint               // in, none, casted
 	var carg4 *C.GstVideoCodecState // in, none, converted, nullable
-	var cret  *C.GstVideoCodecState // return, full, converted
+	var cret  *C.GstVideoCodecState // return, full, converted, nullable
 
 	carg0 = (*C.GstVideoDecoder)(UnsafeVideoDecoderToGlibNone(decoder))
 	carg1 = C.GstVideoFormat(_fmt)
@@ -11772,7 +12698,9 @@ func (decoder *VideoDecoderInstance) SetOutputState(_fmt VideoFormat, width uint
 
 	var goret *VideoCodecState
 
-	goret = UnsafeVideoCodecStateFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeVideoCodecStateFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -12027,7 +12955,7 @@ type VideoEncoder interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *VideoCodecFrame 
+	// 	- goret *VideoCodecFrame (nullable) 
 	//
 	// Get a pending unfinished #GstVideoCodecFrame
 	GetFrame(int) *VideoCodecFrame
@@ -12078,14 +13006,14 @@ type VideoEncoder interface {
 	// GetOldestFrame wraps gst_video_encoder_get_oldest_frame
 	// The function returns the following values:
 	// 
-	// 	- goret *VideoCodecFrame 
+	// 	- goret *VideoCodecFrame (nullable) 
 	//
 	// Get the oldest unfinished pending #GstVideoCodecFrame
 	GetOldestFrame() *VideoCodecFrame
 	// GetOutputState wraps gst_video_encoder_get_output_state
 	// The function returns the following values:
 	// 
-	// 	- goret *VideoCodecState 
+	// 	- goret *VideoCodecState (nullable) 
 	//
 	// Get the current #GstVideoCodecState
 	GetOutputState() *VideoCodecState
@@ -12179,7 +13107,7 @@ type VideoEncoder interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *VideoCodecState 
+	// 	- goret *VideoCodecState (nullable) 
 	//
 	// Creates a new #GstVideoCodecState with the specified caps as the output state
 	// for the encoder.
@@ -12442,13 +13370,13 @@ func (encoder *VideoEncoderInstance) GetAllocator() (gst.Allocator, gst.Allocati
 // 
 // The function returns the following values:
 // 
-// 	- goret *VideoCodecFrame 
+// 	- goret *VideoCodecFrame (nullable) 
 //
 // Get a pending unfinished #GstVideoCodecFrame
 func (encoder *VideoEncoderInstance) GetFrame(frameNumber int) *VideoCodecFrame {
 	var carg0 *C.GstVideoEncoder    // in, none, converted
 	var carg1 C.int                 // in, none, casted, casted C.gint
-	var cret  *C.GstVideoCodecFrame // return, full, converted
+	var cret  *C.GstVideoCodecFrame // return, full, converted, nullable
 
 	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 	carg1 = C.int(frameNumber)
@@ -12459,7 +13387,9 @@ func (encoder *VideoEncoderInstance) GetFrame(frameNumber int) *VideoCodecFrame 
 
 	var goret *VideoCodecFrame
 
-	goret = UnsafeVideoCodecFrameFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeVideoCodecFrameFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -12584,12 +13514,12 @@ func (encoder *VideoEncoderInstance) GetMinForceKeyUnitInterval() gst.ClockTime 
 // GetOldestFrame wraps gst_video_encoder_get_oldest_frame
 // The function returns the following values:
 // 
-// 	- goret *VideoCodecFrame 
+// 	- goret *VideoCodecFrame (nullable) 
 //
 // Get the oldest unfinished pending #GstVideoCodecFrame
 func (encoder *VideoEncoderInstance) GetOldestFrame() *VideoCodecFrame {
 	var carg0 *C.GstVideoEncoder    // in, none, converted
-	var cret  *C.GstVideoCodecFrame // return, full, converted
+	var cret  *C.GstVideoCodecFrame // return, full, converted, nullable
 
 	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 
@@ -12598,7 +13528,9 @@ func (encoder *VideoEncoderInstance) GetOldestFrame() *VideoCodecFrame {
 
 	var goret *VideoCodecFrame
 
-	goret = UnsafeVideoCodecFrameFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeVideoCodecFrameFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -12606,12 +13538,12 @@ func (encoder *VideoEncoderInstance) GetOldestFrame() *VideoCodecFrame {
 // GetOutputState wraps gst_video_encoder_get_output_state
 // The function returns the following values:
 // 
-// 	- goret *VideoCodecState 
+// 	- goret *VideoCodecState (nullable) 
 //
 // Get the current #GstVideoCodecState
 func (encoder *VideoEncoderInstance) GetOutputState() *VideoCodecState {
 	var carg0 *C.GstVideoEncoder    // in, none, converted
-	var cret  *C.GstVideoCodecState // return, full, converted
+	var cret  *C.GstVideoCodecState // return, full, converted, nullable
 
 	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 
@@ -12620,7 +13552,9 @@ func (encoder *VideoEncoderInstance) GetOutputState() *VideoCodecState {
 
 	var goret *VideoCodecState
 
-	goret = UnsafeVideoCodecStateFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeVideoCodecStateFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -12826,7 +13760,7 @@ func (encoder *VideoEncoderInstance) SetMinPts(minPts gst.ClockTime) {
 // 
 // The function returns the following values:
 // 
-// 	- goret *VideoCodecState 
+// 	- goret *VideoCodecState (nullable) 
 //
 // Creates a new #GstVideoCodecState with the specified caps as the output state
 // for the encoder.
@@ -12850,7 +13784,7 @@ func (encoder *VideoEncoderInstance) SetOutputState(caps *gst.Caps, reference *V
 	var carg0 *C.GstVideoEncoder    // in, none, converted
 	var carg1 *C.GstCaps            // in, full, converted
 	var carg2 *C.GstVideoCodecState // in, none, converted, nullable
-	var cret  *C.GstVideoCodecState // return, full, converted
+	var cret  *C.GstVideoCodecState // return, full, converted, nullable
 
 	carg0 = (*C.GstVideoEncoder)(UnsafeVideoEncoderToGlibNone(encoder))
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibFull(caps))
@@ -12865,7 +13799,9 @@ func (encoder *VideoEncoderInstance) SetOutputState(caps *gst.Caps, reference *V
 
 	var goret *VideoCodecState
 
-	goret = UnsafeVideoCodecStateFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeVideoCodecStateFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -14859,12 +15795,12 @@ func (cinfo *VideoColorimetry) Matches(color string) bool {
 // ToString wraps gst_video_colorimetry_to_string
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Make a string representation of @cinfo.
 func (cinfo *VideoColorimetry) ToString() string {
 	var carg0 *C.GstVideoColorimetry // in, none, converted
-	var cret  *C.gchar               // return, full, string
+	var cret  *C.gchar               // return, full, string, nullable-string
 
 	carg0 = (*C.GstVideoColorimetry)(UnsafeVideoColorimetryToGlibNone(cinfo))
 
@@ -14873,8 +15809,10 @@ func (cinfo *VideoColorimetry) ToString() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -16342,12 +17280,12 @@ func NewVideoInfo() *VideoInfo {
 // 
 // The function returns the following values:
 // 
-// 	- goret *VideoInfo 
+// 	- goret *VideoInfo (nullable) 
 //
 // Parse @caps to generate a #GstVideoInfo.
 func NewVideoInfoFromCaps(caps *gst.Caps) *VideoInfo {
 	var carg1 *C.GstCaps      // in, none, converted
-	var cret  *C.GstVideoInfo // return, full, converted
+	var cret  *C.GstVideoInfo // return, full, converted, nullable
 
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
@@ -16356,7 +17294,9 @@ func NewVideoInfoFromCaps(caps *gst.Caps) *VideoInfo {
 
 	var goret *VideoInfo
 
-	goret = UnsafeVideoInfoFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeVideoInfoFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -16811,14 +17751,14 @@ func NewVideoInfoDmaDrm() *VideoInfoDmaDrm {
 // 
 // The function returns the following values:
 // 
-// 	- goret *VideoInfoDmaDrm 
+// 	- goret *VideoInfoDmaDrm (nullable) 
 //
 // Parse @caps to generate a #GstVideoInfoDmaDrm. Please note that the
 // @caps should be a dma drm caps. The gst_video_is_dma_drm_caps() can
 // be used to verify it before calling this function.
 func NewVideoInfoDmaDrmFromCaps(caps *gst.Caps) *VideoInfoDmaDrm {
 	var carg1 *C.GstCaps            // in, none, converted
-	var cret  *C.GstVideoInfoDmaDrm // return, full, converted
+	var cret  *C.GstVideoInfoDmaDrm // return, full, converted, nullable
 
 	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
 
@@ -16827,7 +17767,9 @@ func NewVideoInfoDmaDrmFromCaps(caps *gst.Caps) *VideoInfoDmaDrm {
 
 	var goret *VideoInfoDmaDrm
 
-	goret = UnsafeVideoInfoDmaDrmFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeVideoInfoDmaDrmFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -16932,7 +17874,7 @@ func VideoInfoDmaDrmInit() VideoInfoDmaDrm {
 // ToCaps wraps gst_video_info_dma_drm_to_caps
 // The function returns the following values:
 // 
-// 	- goret *gst.Caps 
+// 	- goret *gst.Caps (nullable) 
 //
 // Convert the values of @drm_info into a #GstCaps. Please note that the
 // @caps returned will be a dma drm caps which sets format field to DMA_DRM,
@@ -16940,7 +17882,7 @@ func VideoInfoDmaDrmInit() VideoInfoDmaDrm {
 // composed of a drm fourcc and a modifier, such as NV12:0x0100000000000002.
 func (drmInfo *VideoInfoDmaDrm) ToCaps() *gst.Caps {
 	var carg0 *C.GstVideoInfoDmaDrm // in, none, converted
-	var cret  *C.GstCaps            // return, full, converted
+	var cret  *C.GstCaps            // return, full, converted, nullable
 
 	carg0 = (*C.GstVideoInfoDmaDrm)(UnsafeVideoInfoDmaDrmToGlibNone(drmInfo))
 
@@ -16949,7 +17891,9 @@ func (drmInfo *VideoInfoDmaDrm) ToCaps() *gst.Caps {
 
 	var goret *gst.Caps
 
-	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -17777,13 +18721,13 @@ func (comp *VideoOverlayComposition) Copy() *VideoOverlayComposition {
 // 
 // The function returns the following values:
 // 
-// 	- goret *VideoOverlayRectangle 
+// 	- goret *VideoOverlayRectangle (nullable) 
 //
 // Returns the @n-th #GstVideoOverlayRectangle contained in @comp.
 func (comp *VideoOverlayComposition) GetRectangle(n uint) *VideoOverlayRectangle {
 	var carg0 *C.GstVideoOverlayComposition // in, none, converted
 	var carg1 C.guint                       // in, none, casted
-	var cret  *C.GstVideoOverlayRectangle   // return, none, converted
+	var cret  *C.GstVideoOverlayRectangle   // return, none, converted, nullable
 
 	carg0 = (*C.GstVideoOverlayComposition)(UnsafeVideoOverlayCompositionToGlibNone(comp))
 	carg1 = C.guint(n)
@@ -17794,7 +18738,9 @@ func (comp *VideoOverlayComposition) GetRectangle(n uint) *VideoOverlayRectangle
 
 	var goret *VideoOverlayRectangle
 
-	goret = UnsafeVideoOverlayRectangleFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeVideoOverlayRectangleFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -18742,14 +19688,14 @@ func (meta *VideoRegionOfInterestMeta) AddParam(s *gst.Structure) {
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.Structure 
+// 	- goret *gst.Structure (nullable) 
 //
 // Retrieve the parameter for @meta having @name as structure name,
 // or %NULL if there is none.
 func (meta *VideoRegionOfInterestMeta) GetParam(name string) *gst.Structure {
 	var carg0 *C.GstVideoRegionOfInterestMeta // in, none, converted
 	var carg1 *C.gchar                        // in, none, string
-	var cret  *C.GstStructure                 // return, none, converted
+	var cret  *C.GstStructure                 // return, none, converted, nullable
 
 	carg0 = (*C.GstVideoRegionOfInterestMeta)(UnsafeVideoRegionOfInterestMetaToGlibNone(meta))
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(name)))
@@ -18761,7 +19707,9 @@ func (meta *VideoRegionOfInterestMeta) GetParam(name string) *gst.Structure {
 
 	var goret *gst.Structure
 
-	goret = gst.UnsafeStructureFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeStructureFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -19251,18 +20199,6 @@ type videoTimeCode struct {
 	native *C.GstVideoTimeCode
 }
 
-var _ gobject.GoValueInitializer = (*VideoTimeCode)(nil)
-
-func marshalVideoTimeCode(p unsafe.Pointer) (interface{}, error) {
-	b := gobject.ValueFromNative(p).Boxed()
-	return UnsafeVideoTimeCodeFromGlibBorrow(b), nil
-}
-
-func (r *VideoTimeCode) InitGoValue(v *gobject.Value) {
-	v.Init(TypeVideoTimeCode)
-	v.SetBoxed(unsafe.Pointer(r.native))
-}
-
 // UnsafeVideoTimeCodeFromGlibBorrow is used to convert raw C.GstVideoTimeCode pointers to go. This is used by the bindings internally.
 func UnsafeVideoTimeCodeFromGlibBorrow(p unsafe.Pointer) *VideoTimeCode {
 	return &VideoTimeCode{&videoTimeCode{(*C.GstVideoTimeCode)(p)}}
@@ -19449,7 +20385,7 @@ func NewVideoTimeCodeFromDateTime(fpsN uint, fpsD uint, dt *glib.DateTime, flags
 // 
 // The function returns the following values:
 // 
-// 	- goret *VideoTimeCode 
+// 	- goret *VideoTimeCode (nullable) 
 //
 // The resulting config-&gt;latest_daily_jam is set to
 // midnight, and timecode is set to the given time.
@@ -19459,7 +20395,7 @@ func NewVideoTimeCodeFromDateTimeFull(fpsN uint, fpsD uint, dt *glib.DateTime, f
 	var carg3 *C.GDateTime            // in, none, converted
 	var carg4 C.GstVideoTimeCodeFlags // in, none, casted
 	var carg5 C.guint                 // in, none, casted
-	var cret  *C.GstVideoTimeCode     // return, full, converted
+	var cret  *C.GstVideoTimeCode     // return, full, converted, nullable
 
 	carg1 = C.guint(fpsN)
 	carg2 = C.guint(fpsD)
@@ -19476,7 +20412,9 @@ func NewVideoTimeCodeFromDateTimeFull(fpsN uint, fpsD uint, dt *glib.DateTime, f
 
 	var goret *VideoTimeCode
 
-	goret = UnsafeVideoTimeCodeFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeVideoTimeCodeFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -19489,10 +20427,10 @@ func NewVideoTimeCodeFromDateTimeFull(fpsN uint, fpsD uint, dt *glib.DateTime, f
 // 
 // The function returns the following values:
 // 
-// 	- goret *VideoTimeCode 
+// 	- goret *VideoTimeCode (nullable) 
 func NewVideoTimeCodeFromString(tcStr string) *VideoTimeCode {
 	var carg1 *C.gchar            // in, none, string
-	var cret  *C.GstVideoTimeCode // return, full, converted
+	var cret  *C.GstVideoTimeCode // return, full, converted, nullable
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tcStr)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -19502,7 +20440,9 @@ func NewVideoTimeCodeFromString(tcStr string) *VideoTimeCode {
 
 	var goret *VideoTimeCode
 
-	goret = UnsafeVideoTimeCodeFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeVideoTimeCodeFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -19538,7 +20478,7 @@ func (tc *VideoTimeCode) AddFrames(frames int64) {
 // 
 // The function returns the following values:
 // 
-// 	- goret *VideoTimeCode 
+// 	- goret *VideoTimeCode (nullable) 
 //
 // This makes a component-wise addition of @tc_inter to @tc. For example,
 // adding ("01:02:03:04", "00:01:00:00") will return "01:03:03:04".
@@ -19550,7 +20490,7 @@ func (tc *VideoTimeCode) AddFrames(frames int64) {
 func (tc *VideoTimeCode) AddInterval(tcInter *VideoTimeCodeInterval) *VideoTimeCode {
 	var carg0 *C.GstVideoTimeCode         // in, none, converted
 	var carg1 *C.GstVideoTimeCodeInterval // in, none, converted
-	var cret  *C.GstVideoTimeCode         // return, full, converted
+	var cret  *C.GstVideoTimeCode         // return, full, converted, nullable
 
 	carg0 = (*C.GstVideoTimeCode)(UnsafeVideoTimeCodeToGlibNone(tc))
 	carg1 = (*C.GstVideoTimeCodeInterval)(UnsafeVideoTimeCodeIntervalToGlibNone(tcInter))
@@ -19561,7 +20501,9 @@ func (tc *VideoTimeCode) AddInterval(tcInter *VideoTimeCodeInterval) *VideoTimeC
 
 	var goret *VideoTimeCode
 
-	goret = UnsafeVideoTimeCodeFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeVideoTimeCodeFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -19854,12 +20796,12 @@ func (tc *VideoTimeCode) NsecSinceDailyJam() uint64 {
 // ToDateTime wraps gst_video_time_code_to_date_time
 // The function returns the following values:
 // 
-// 	- goret *glib.DateTime 
+// 	- goret *glib.DateTime (nullable) 
 //
 // The @tc.config-&gt;latest_daily_jam is required to be non-NULL.
 func (tc *VideoTimeCode) ToDateTime() *glib.DateTime {
 	var carg0 *C.GstVideoTimeCode // in, none, converted
-	var cret  *C.GDateTime        // return, full, converted
+	var cret  *C.GDateTime        // return, full, converted, nullable
 
 	carg0 = (*C.GstVideoTimeCode)(UnsafeVideoTimeCodeToGlibNone(tc))
 
@@ -19868,7 +20810,9 @@ func (tc *VideoTimeCode) ToDateTime() *glib.DateTime {
 
 	var goret *glib.DateTime
 
-	goret = glib.UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = glib.UnsafeDateTimeFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -20079,12 +21023,12 @@ func NewVideoTimeCodeInterval(hours uint, minutes uint, seconds uint, frames uin
 // 
 // The function returns the following values:
 // 
-// 	- goret *VideoTimeCodeInterval 
+// 	- goret *VideoTimeCodeInterval (nullable) 
 //
 // @tc_inter_str must only have ":" as separators.
 func NewVideoTimeCodeIntervalFromString(tcInterStr string) *VideoTimeCodeInterval {
 	var carg1 *C.gchar                    // in, none, string
-	var cret  *C.GstVideoTimeCodeInterval // return, full, converted
+	var cret  *C.GstVideoTimeCodeInterval // return, full, converted, nullable
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(tcInterStr)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -20094,7 +21038,9 @@ func NewVideoTimeCodeIntervalFromString(tcInterStr string) *VideoTimeCodeInterva
 
 	var goret *VideoTimeCodeInterval
 
-	goret = UnsafeVideoTimeCodeIntervalFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeVideoTimeCodeIntervalFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -20327,13 +21273,13 @@ func UnsafeVideoVBIEncoderToGlibFull(v *VideoVBIEncoder) unsafe.Pointer {
 // 
 // The function returns the following values:
 // 
-// 	- goret *VideoVBIEncoder 
+// 	- goret *VideoVBIEncoder (nullable) 
 //
 // Create a new #GstVideoVBIEncoder for the specified @format and @pixel_width.
 func NewVideoVBIEncoder(format VideoFormat, pixelWidth uint32) *VideoVBIEncoder {
 	var carg1 C.GstVideoFormat      // in, none, casted
 	var carg2 C.guint32             // in, none, casted
-	var cret  *C.GstVideoVBIEncoder // return, full, converted
+	var cret  *C.GstVideoVBIEncoder // return, full, converted, nullable
 
 	carg1 = C.GstVideoFormat(format)
 	carg2 = C.guint32(pixelWidth)
@@ -20344,7 +21290,9 @@ func NewVideoVBIEncoder(format VideoFormat, pixelWidth uint32) *VideoVBIEncoder 
 
 	var goret *VideoVBIEncoder
 
-	goret = UnsafeVideoVBIEncoderFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeVideoVBIEncoderFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -20527,13 +21475,13 @@ func UnsafeVideoVBIParserToGlibFull(v *VideoVBIParser) unsafe.Pointer {
 // 
 // The function returns the following values:
 // 
-// 	- goret *VideoVBIParser 
+// 	- goret *VideoVBIParser (nullable) 
 //
 // Create a new #GstVideoVBIParser for the specified @format and @pixel_width.
 func NewVideoVBIParser(format VideoFormat, pixelWidth uint32) *VideoVBIParser {
 	var carg1 C.GstVideoFormat     // in, none, casted
 	var carg2 C.guint32            // in, none, casted
-	var cret  *C.GstVideoVBIParser // return, full, converted
+	var cret  *C.GstVideoVBIParser // return, full, converted, nullable
 
 	carg1 = C.GstVideoFormat(format)
 	carg2 = C.guint32(pixelWidth)
@@ -20544,7 +21492,9 @@ func NewVideoVBIParser(format VideoFormat, pixelWidth uint32) *VideoVBIParser {
 
 	var goret *VideoVBIParser
 
-	goret = UnsafeVideoVBIParserFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeVideoVBIParserFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }

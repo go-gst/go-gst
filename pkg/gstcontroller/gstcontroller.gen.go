@@ -613,7 +613,7 @@ type TimedValueControlSource interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *glib.SequenceIter 
+	// 	- goret *glib.SequenceIter (nullable) 
 	//
 	// Find last value before given timestamp in control point list.
 	// If all values in the control point list come after the given
@@ -728,7 +728,7 @@ func UnsafeTimedValueControlSourceToGlibFull(c TimedValueControlSource) unsafe.P
 // 
 // The function returns the following values:
 // 
-// 	- goret *glib.SequenceIter 
+// 	- goret *glib.SequenceIter (nullable) 
 //
 // Find last value before given timestamp in control point list.
 // If all values in the control point list come after the given
@@ -738,7 +738,7 @@ func UnsafeTimedValueControlSourceToGlibFull(c TimedValueControlSource) unsafe.P
 func (self *TimedValueControlSourceInstance) FindControlPointIter(timestamp gst.ClockTime) *glib.SequenceIter {
 	var carg0 *C.GstTimedValueControlSource // in, none, converted
 	var carg1 C.GstClockTime                // in, none, casted, alias
-	var cret  *C.GSequenceIter              // return, none, converted
+	var cret  *C.GSequenceIter              // return, none, converted, nullable
 
 	carg0 = (*C.GstTimedValueControlSource)(UnsafeTimedValueControlSourceToGlibNone(self))
 	carg1 = C.GstClockTime(timestamp)
@@ -749,7 +749,9 @@ func (self *TimedValueControlSourceInstance) FindControlPointIter(timestamp gst.
 
 	var goret *glib.SequenceIter
 
-	goret = glib.UnsafeSequenceIterFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = glib.UnsafeSequenceIterFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }

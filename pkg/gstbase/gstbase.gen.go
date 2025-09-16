@@ -344,7 +344,7 @@ type CollectPadsQueryFunction func(pads CollectPads, pad *CollectData, query *gs
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.Caps 
+// 	- goret *gst.Caps (nullable) 
 //
 // Tries to find what type of data is flowing from the given source #GstPad.
 // 
@@ -352,7 +352,7 @@ type CollectPadsQueryFunction func(pads CollectPads, pad *CollectData, query *gs
 func TypeFindHelper(src gst.Pad, size uint64) *gst.Caps {
 	var carg1 *C.GstPad  // in, none, converted
 	var carg2 C.guint64  // in, none, casted
-	var cret  *C.GstCaps // return, full, converted
+	var cret  *C.GstCaps // return, full, converted, nullable
 
 	carg1 = (*C.GstPad)(gst.UnsafePadToGlibNone(src))
 	carg2 = C.guint64(size)
@@ -363,7 +363,9 @@ func TypeFindHelper(src gst.Pad, size uint64) *gst.Caps {
 
 	var goret *gst.Caps
 
-	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -379,7 +381,7 @@ func TypeFindHelper(src gst.Pad, size uint64) *gst.Caps {
 // 
 // 	- prob gst.TypeFindProbability: location to store the probability of the found
 //     caps, or %NULL 
-// 	- goret *gst.Caps 
+// 	- goret *gst.Caps (nullable) 
 //
 // Tries to find what type of data is contained in the given #GstBuffer, the
 // assumption being that the buffer represents the beginning of the stream or
@@ -397,7 +399,7 @@ func TypeFindHelperForBuffer(obj gst.Object, buf *gst.Buffer) (gst.TypeFindProba
 	var carg1 *C.GstObject             // in, none, converted, nullable
 	var carg2 *C.GstBuffer             // in, none, converted
 	var carg3 C.GstTypeFindProbability // out, full, casted
-	var cret  *C.GstCaps               // return, full, converted
+	var cret  *C.GstCaps               // return, full, converted, nullable
 
 	if obj != nil {
 		carg1 = (*C.GstObject)(gst.UnsafeObjectToGlibNone(obj))
@@ -412,7 +414,9 @@ func TypeFindHelperForBuffer(obj gst.Object, buf *gst.Buffer) (gst.TypeFindProba
 	var goret *gst.Caps
 
 	prob = gst.TypeFindProbability(carg3)
-	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return prob, goret
 }
@@ -429,7 +433,7 @@ func TypeFindHelperForBuffer(obj gst.Object, buf *gst.Buffer) (gst.TypeFindProba
 // 
 // 	- prob gst.TypeFindProbability: location to store the probability of the found
 //     caps, or %NULL 
-// 	- goret *gst.Caps 
+// 	- goret *gst.Caps (nullable) 
 //
 // Tries to find if type of media contained in the given #GstBuffer, matches
 // @caps specified, assumption being that the buffer represents the beginning
@@ -449,7 +453,7 @@ func TypeFindHelperForBufferWithCaps(obj gst.Object, buf *gst.Buffer, caps *gst.
 	var carg2 *C.GstBuffer             // in, none, converted
 	var carg3 *C.GstCaps               // in, none, converted
 	var carg4 C.GstTypeFindProbability // out, full, casted
-	var cret  *C.GstCaps               // return, full, converted
+	var cret  *C.GstCaps               // return, full, converted, nullable
 
 	if obj != nil {
 		carg1 = (*C.GstObject)(gst.UnsafeObjectToGlibNone(obj))
@@ -466,7 +470,9 @@ func TypeFindHelperForBufferWithCaps(obj gst.Object, buf *gst.Buffer, caps *gst.
 	var goret *gst.Caps
 
 	prob = gst.TypeFindProbability(carg4)
-	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return prob, goret
 }
@@ -483,7 +489,7 @@ func TypeFindHelperForBufferWithCaps(obj gst.Object, buf *gst.Buffer, caps *gst.
 // 
 // 	- prob gst.TypeFindProbability: location to store the probability of the found
 //     caps, or %NULL 
-// 	- goret *gst.Caps 
+// 	- goret *gst.Caps (nullable) 
 //
 // Tries to find what type of data is contained in the given #GstBuffer, the
 // assumption being that the buffer represents the beginning of the stream or
@@ -506,7 +512,7 @@ func TypeFindHelperForBufferWithExtension(obj gst.Object, buf *gst.Buffer, exten
 	var carg2 *C.GstBuffer             // in, none, converted
 	var carg3 *C.gchar                 // in, none, string, nullable-string
 	var carg4 C.GstTypeFindProbability // out, full, casted
-	var cret  *C.GstCaps               // return, full, converted
+	var cret  *C.GstCaps               // return, full, converted, nullable
 
 	if obj != nil {
 		carg1 = (*C.GstObject)(gst.UnsafeObjectToGlibNone(obj))
@@ -526,7 +532,9 @@ func TypeFindHelperForBufferWithExtension(obj gst.Object, buf *gst.Buffer, exten
 	var goret *gst.Caps
 
 	prob = gst.TypeFindProbability(carg4)
-	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return prob, goret
 }
@@ -542,7 +550,7 @@ func TypeFindHelperForBufferWithExtension(obj gst.Object, buf *gst.Buffer, exten
 // 
 // 	- prob gst.TypeFindProbability: location to store the probability of the found
 //     caps, or %NULL 
-// 	- goret *gst.Caps 
+// 	- goret *gst.Caps (nullable) 
 //
 // Tries to find what type of data is contained in the given @data, the
 // assumption being that the data represents the beginning of the stream or
@@ -561,7 +569,7 @@ func TypeFindHelperForData(obj gst.Object, data []uint8) (gst.TypeFindProbabilit
 	var carg2 *C.guint8                // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg3)
 	var carg3 C.gsize                  // implicit
 	var carg4 C.GstTypeFindProbability // out, full, casted
-	var cret  *C.GstCaps               // return, full, converted
+	var cret  *C.GstCaps               // return, full, converted, nullable
 
 	if obj != nil {
 		carg1 = (*C.GstObject)(gst.UnsafeObjectToGlibNone(obj))
@@ -579,7 +587,9 @@ func TypeFindHelperForData(obj gst.Object, data []uint8) (gst.TypeFindProbabilit
 	var goret *gst.Caps
 
 	prob = gst.TypeFindProbability(carg4)
-	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return prob, goret
 }
@@ -596,7 +606,7 @@ func TypeFindHelperForData(obj gst.Object, data []uint8) (gst.TypeFindProbabilit
 // 
 // 	- prob gst.TypeFindProbability: location to store the probability of the found
 //     caps, or %NULL 
-// 	- goret *gst.Caps 
+// 	- goret *gst.Caps (nullable) 
 //
 // Tries to find if type of media contained in the given @data, matches the
 // @caps specified, assumption being that the data represents the beginning
@@ -613,7 +623,7 @@ func TypeFindHelperForDataWithCaps(obj gst.Object, data []uint8, caps *gst.Caps)
 	var carg3 C.gsize                  // implicit
 	var carg4 *C.GstCaps               // in, none, converted
 	var carg5 C.GstTypeFindProbability // out, full, casted
-	var cret  *C.GstCaps               // return, full, converted
+	var cret  *C.GstCaps               // return, full, converted, nullable
 
 	if obj != nil {
 		carg1 = (*C.GstObject)(gst.UnsafeObjectToGlibNone(obj))
@@ -633,7 +643,9 @@ func TypeFindHelperForDataWithCaps(obj gst.Object, data []uint8, caps *gst.Caps)
 	var goret *gst.Caps
 
 	prob = gst.TypeFindProbability(carg5)
-	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return prob, goret
 }
@@ -650,7 +662,7 @@ func TypeFindHelperForDataWithCaps(obj gst.Object, data []uint8, caps *gst.Caps)
 // 
 // 	- prob gst.TypeFindProbability: location to store the probability of the found
 //     caps, or %NULL 
-// 	- goret *gst.Caps 
+// 	- goret *gst.Caps (nullable) 
 //
 // Tries to find what type of data is contained in the given @data, the
 // assumption being that the data represents the beginning of the stream or
@@ -674,7 +686,7 @@ func TypeFindHelperForDataWithExtension(obj gst.Object, data []uint8, extension 
 	var carg3 C.gsize                  // implicit
 	var carg4 *C.gchar                 // in, none, string, nullable-string
 	var carg5 C.GstTypeFindProbability // out, full, casted
-	var cret  *C.GstCaps               // return, full, converted
+	var cret  *C.GstCaps               // return, full, converted, nullable
 
 	if obj != nil {
 		carg1 = (*C.GstObject)(gst.UnsafeObjectToGlibNone(obj))
@@ -697,7 +709,9 @@ func TypeFindHelperForDataWithExtension(obj gst.Object, data []uint8, extension 
 	var goret *gst.Caps
 
 	prob = gst.TypeFindProbability(carg5)
-	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return prob, goret
 }
@@ -711,7 +725,7 @@ func TypeFindHelperForDataWithExtension(obj gst.Object, data []uint8, extension 
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.Caps 
+// 	- goret *gst.Caps (nullable) 
 //
 // Tries to find the best #GstCaps associated with @extension.
 // 
@@ -723,7 +737,7 @@ func TypeFindHelperForDataWithExtension(obj gst.Object, data []uint8, extension 
 func TypeFindHelperForExtension(obj gst.Object, extension string) *gst.Caps {
 	var carg1 *C.GstObject // in, none, converted, nullable
 	var carg2 *C.gchar     // in, none, string
-	var cret  *C.GstCaps   // return, full, converted
+	var cret  *C.GstCaps   // return, full, converted, nullable
 
 	if obj != nil {
 		carg1 = (*C.GstObject)(gst.UnsafeObjectToGlibNone(obj))
@@ -737,7 +751,9 @@ func TypeFindHelperForExtension(obj gst.Object, extension string) *gst.Caps {
 
 	var goret *gst.Caps
 
-	goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -751,7 +767,7 @@ func TypeFindHelperForExtension(obj gst.Object, extension string) *gst.Caps {
 // 
 // The function returns the following values:
 // 
-// 	- goret []gst.TypeFindFactory 
+// 	- goret []gst.TypeFindFactory (nullable) 
 //
 // Tries to find the best #GstTypeFindFactory associated with @caps.
 // 
@@ -976,7 +992,7 @@ type Adapter interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Buffer 
+	// 	- goret *gst.Buffer (nullable) 
 	//
 	// Returns a #GstBuffer containing the first @nbytes of the @adapter, but
 	// does not flush them from the adapter. See gst_adapter_take_buffer()
@@ -995,7 +1011,7 @@ type Adapter interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Buffer 
+	// 	- goret *gst.Buffer (nullable) 
 	//
 	// Returns a #GstBuffer containing the first @nbytes of the @adapter, but
 	// does not flush them from the adapter. See gst_adapter_take_buffer_fast()
@@ -1014,7 +1030,7 @@ type Adapter interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.BufferList 
+	// 	- goret *gst.BufferList (nullable) 
 	//
 	// Returns a #GstBufferList of buffers containing the first @nbytes bytes of
 	// the @adapter but does not flush them from the adapter. See
@@ -1031,7 +1047,7 @@ type Adapter interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret []*gst.Buffer 
+	// 	- goret []*gst.Buffer (nullable) 
 	//
 	// Returns a #GList of buffers containing the first @nbytes bytes of the
 	// @adapter, but does not flush them from the adapter. See
@@ -1211,7 +1227,7 @@ type Adapter interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Buffer 
+	// 	- goret *gst.Buffer (nullable) 
 	//
 	// Returns a #GstBuffer containing the first @nbytes bytes of the
 	// @adapter. The returned bytes will be flushed from the adapter.
@@ -1241,7 +1257,7 @@ type Adapter interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Buffer 
+	// 	- goret *gst.Buffer (nullable) 
 	//
 	// Returns a #GstBuffer containing the first @nbytes of the @adapter.
 	// The returned bytes will be flushed from the adapter.  This function
@@ -1275,7 +1291,7 @@ type Adapter interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.BufferList 
+	// 	- goret *gst.BufferList (nullable) 
 	//
 	// Returns a #GstBufferList of buffers containing the first @nbytes bytes of
 	// the @adapter. The returned bytes will be flushed from the adapter.
@@ -1293,7 +1309,7 @@ type Adapter interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret []*gst.Buffer 
+	// 	- goret []*gst.Buffer (nullable) 
 	//
 	// Returns a #GList of buffers containing the first @nbytes bytes of the
 	// @adapter. The returned bytes will be flushed from the adapter.
@@ -1538,7 +1554,7 @@ func (adapter *AdapterInstance) Flush(flush uint) {
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.Buffer 
+// 	- goret *gst.Buffer (nullable) 
 //
 // Returns a #GstBuffer containing the first @nbytes of the @adapter, but
 // does not flush them from the adapter. See gst_adapter_take_buffer()
@@ -1551,7 +1567,7 @@ func (adapter *AdapterInstance) Flush(flush uint) {
 func (adapter *AdapterInstance) GetBuffer(nbytes uint) *gst.Buffer {
 	var carg0 *C.GstAdapter // in, none, converted
 	var carg1 C.gsize       // in, none, casted
-	var cret  *C.GstBuffer  // return, full, converted
+	var cret  *C.GstBuffer  // return, full, converted, nullable
 
 	carg0 = (*C.GstAdapter)(UnsafeAdapterToGlibNone(adapter))
 	carg1 = C.gsize(nbytes)
@@ -1562,7 +1578,9 @@ func (adapter *AdapterInstance) GetBuffer(nbytes uint) *gst.Buffer {
 
 	var goret *gst.Buffer
 
-	goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -1575,7 +1593,7 @@ func (adapter *AdapterInstance) GetBuffer(nbytes uint) *gst.Buffer {
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.Buffer 
+// 	- goret *gst.Buffer (nullable) 
 //
 // Returns a #GstBuffer containing the first @nbytes of the @adapter, but
 // does not flush them from the adapter. See gst_adapter_take_buffer_fast()
@@ -1588,7 +1606,7 @@ func (adapter *AdapterInstance) GetBuffer(nbytes uint) *gst.Buffer {
 func (adapter *AdapterInstance) GetBufferFast(nbytes uint) *gst.Buffer {
 	var carg0 *C.GstAdapter // in, none, converted
 	var carg1 C.gsize       // in, none, casted
-	var cret  *C.GstBuffer  // return, full, converted
+	var cret  *C.GstBuffer  // return, full, converted, nullable
 
 	carg0 = (*C.GstAdapter)(UnsafeAdapterToGlibNone(adapter))
 	carg1 = C.gsize(nbytes)
@@ -1599,7 +1617,9 @@ func (adapter *AdapterInstance) GetBufferFast(nbytes uint) *gst.Buffer {
 
 	var goret *gst.Buffer
 
-	goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -1612,7 +1632,7 @@ func (adapter *AdapterInstance) GetBufferFast(nbytes uint) *gst.Buffer {
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.BufferList 
+// 	- goret *gst.BufferList (nullable) 
 //
 // Returns a #GstBufferList of buffers containing the first @nbytes bytes of
 // the @adapter but does not flush them from the adapter. See
@@ -1623,7 +1643,7 @@ func (adapter *AdapterInstance) GetBufferFast(nbytes uint) *gst.Buffer {
 func (adapter *AdapterInstance) GetBufferList(nbytes uint) *gst.BufferList {
 	var carg0 *C.GstAdapter    // in, none, converted
 	var carg1 C.gsize          // in, none, casted
-	var cret  *C.GstBufferList // return, full, converted
+	var cret  *C.GstBufferList // return, full, converted, nullable
 
 	carg0 = (*C.GstAdapter)(UnsafeAdapterToGlibNone(adapter))
 	carg1 = C.gsize(nbytes)
@@ -1634,7 +1654,9 @@ func (adapter *AdapterInstance) GetBufferList(nbytes uint) *gst.BufferList {
 
 	var goret *gst.BufferList
 
-	goret = gst.UnsafeBufferListFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeBufferListFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -1647,7 +1669,7 @@ func (adapter *AdapterInstance) GetBufferList(nbytes uint) *gst.BufferList {
 // 
 // The function returns the following values:
 // 
-// 	- goret []*gst.Buffer 
+// 	- goret []*gst.Buffer (nullable) 
 //
 // Returns a #GList of buffers containing the first @nbytes bytes of the
 // @adapter, but does not flush them from the adapter. See
@@ -2046,7 +2068,7 @@ func (adapter *AdapterInstance) Push(buf *gst.Buffer) {
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.Buffer 
+// 	- goret *gst.Buffer (nullable) 
 //
 // Returns a #GstBuffer containing the first @nbytes bytes of the
 // @adapter. The returned bytes will be flushed from the adapter.
@@ -2070,7 +2092,7 @@ func (adapter *AdapterInstance) Push(buf *gst.Buffer) {
 func (adapter *AdapterInstance) TakeBuffer(nbytes uint) *gst.Buffer {
 	var carg0 *C.GstAdapter // in, none, converted
 	var carg1 C.gsize       // in, none, casted
-	var cret  *C.GstBuffer  // return, full, converted
+	var cret  *C.GstBuffer  // return, full, converted, nullable
 
 	carg0 = (*C.GstAdapter)(UnsafeAdapterToGlibNone(adapter))
 	carg1 = C.gsize(nbytes)
@@ -2081,7 +2103,9 @@ func (adapter *AdapterInstance) TakeBuffer(nbytes uint) *gst.Buffer {
 
 	var goret *gst.Buffer
 
-	goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -2094,7 +2118,7 @@ func (adapter *AdapterInstance) TakeBuffer(nbytes uint) *gst.Buffer {
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.Buffer 
+// 	- goret *gst.Buffer (nullable) 
 //
 // Returns a #GstBuffer containing the first @nbytes of the @adapter.
 // The returned bytes will be flushed from the adapter.  This function
@@ -2122,7 +2146,7 @@ func (adapter *AdapterInstance) TakeBuffer(nbytes uint) *gst.Buffer {
 func (adapter *AdapterInstance) TakeBufferFast(nbytes uint) *gst.Buffer {
 	var carg0 *C.GstAdapter // in, none, converted
 	var carg1 C.gsize       // in, none, casted
-	var cret  *C.GstBuffer  // return, full, converted
+	var cret  *C.GstBuffer  // return, full, converted, nullable
 
 	carg0 = (*C.GstAdapter)(UnsafeAdapterToGlibNone(adapter))
 	carg1 = C.gsize(nbytes)
@@ -2133,7 +2157,9 @@ func (adapter *AdapterInstance) TakeBufferFast(nbytes uint) *gst.Buffer {
 
 	var goret *gst.Buffer
 
-	goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -2146,7 +2172,7 @@ func (adapter *AdapterInstance) TakeBufferFast(nbytes uint) *gst.Buffer {
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.BufferList 
+// 	- goret *gst.BufferList (nullable) 
 //
 // Returns a #GstBufferList of buffers containing the first @nbytes bytes of
 // the @adapter. The returned bytes will be flushed from the adapter.
@@ -2158,7 +2184,7 @@ func (adapter *AdapterInstance) TakeBufferFast(nbytes uint) *gst.Buffer {
 func (adapter *AdapterInstance) TakeBufferList(nbytes uint) *gst.BufferList {
 	var carg0 *C.GstAdapter    // in, none, converted
 	var carg1 C.gsize          // in, none, casted
-	var cret  *C.GstBufferList // return, full, converted
+	var cret  *C.GstBufferList // return, full, converted, nullable
 
 	carg0 = (*C.GstAdapter)(UnsafeAdapterToGlibNone(adapter))
 	carg1 = C.gsize(nbytes)
@@ -2169,7 +2195,9 @@ func (adapter *AdapterInstance) TakeBufferList(nbytes uint) *gst.BufferList {
 
 	var goret *gst.BufferList
 
-	goret = gst.UnsafeBufferListFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeBufferListFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -2182,7 +2210,7 @@ func (adapter *AdapterInstance) TakeBufferList(nbytes uint) *gst.BufferList {
 // 
 // The function returns the following values:
 // 
-// 	- goret []*gst.Buffer 
+// 	- goret []*gst.Buffer (nullable) 
 //
 // Returns a #GList of buffers containing the first @nbytes bytes of the
 // @adapter. The returned bytes will be flushed from the adapter.
@@ -2348,7 +2376,7 @@ type Aggregator interface {
 	// GetBufferPool wraps gst_aggregator_get_buffer_pool
 	// The function returns the following values:
 	// 
-	// 	- goret gst.BufferPool 
+	// 	- goret gst.BufferPool (nullable) 
 	GetBufferPool() gst.BufferPool
 	// GetForceLive wraps gst_aggregator_get_force_live
 	// The function returns the following values:
@@ -2391,7 +2419,7 @@ type Aggregator interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Sample 
+	// 	- goret *gst.Sample (nullable) 
 	//
 	// Use this function to determine what input buffers will be aggregated
 	// to produce the next output buffer. This should only be called from
@@ -2635,10 +2663,10 @@ func (self *AggregatorInstance) GetAllocator() (gst.Allocator, gst.AllocationPar
 // GetBufferPool wraps gst_aggregator_get_buffer_pool
 // The function returns the following values:
 // 
-// 	- goret gst.BufferPool 
+// 	- goret gst.BufferPool (nullable) 
 func (self *AggregatorInstance) GetBufferPool() gst.BufferPool {
 	var carg0 *C.GstAggregator // in, none, converted
-	var cret  *C.GstBufferPool // return, full, converted
+	var cret  *C.GstBufferPool // return, full, converted, nullable
 
 	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(self))
 
@@ -2647,7 +2675,9 @@ func (self *AggregatorInstance) GetBufferPool() gst.BufferPool {
 
 	var goret gst.BufferPool
 
-	goret = gst.UnsafeBufferPoolFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeBufferPoolFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -2759,7 +2789,7 @@ func (self *AggregatorInstance) Negotiate() bool {
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.Sample 
+// 	- goret *gst.Sample (nullable) 
 //
 // Use this function to determine what input buffers will be aggregated
 // to produce the next output buffer. This should only be called from
@@ -2768,7 +2798,7 @@ func (self *AggregatorInstance) Negotiate() bool {
 func (self *AggregatorInstance) PeekNextSample(pad AggregatorPad) *gst.Sample {
 	var carg0 *C.GstAggregator    // in, none, converted
 	var carg1 *C.GstAggregatorPad // in, none, converted
-	var cret  *C.GstSample        // return, full, converted
+	var cret  *C.GstSample        // return, full, converted, nullable
 
 	carg0 = (*C.GstAggregator)(UnsafeAggregatorToGlibNone(self))
 	carg1 = (*C.GstAggregatorPad)(UnsafeAggregatorPadToGlibNone(pad))
@@ -2779,7 +2809,9 @@ func (self *AggregatorInstance) PeekNextSample(pad AggregatorPad) *gst.Sample {
 
 	var goret *gst.Sample
 
-	goret = gst.UnsafeSampleFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeSampleFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -3026,12 +3058,12 @@ type AggregatorPad interface {
 	// PeekBuffer wraps gst_aggregator_pad_peek_buffer
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Buffer 
+	// 	- goret *gst.Buffer (nullable) 
 	PeekBuffer() *gst.Buffer
 	// PopBuffer wraps gst_aggregator_pad_pop_buffer
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Buffer 
+	// 	- goret *gst.Buffer (nullable) 
 	//
 	// Steal the ref to the buffer currently queued in @pad.
 	PopBuffer() *gst.Buffer
@@ -3178,10 +3210,10 @@ func (pad *AggregatorPadInstance) IsInactive() bool {
 // PeekBuffer wraps gst_aggregator_pad_peek_buffer
 // The function returns the following values:
 // 
-// 	- goret *gst.Buffer 
+// 	- goret *gst.Buffer (nullable) 
 func (pad *AggregatorPadInstance) PeekBuffer() *gst.Buffer {
 	var carg0 *C.GstAggregatorPad // in, none, converted
-	var cret  *C.GstBuffer        // return, full, converted
+	var cret  *C.GstBuffer        // return, full, converted, nullable
 
 	carg0 = (*C.GstAggregatorPad)(UnsafeAggregatorPadToGlibNone(pad))
 
@@ -3190,7 +3222,9 @@ func (pad *AggregatorPadInstance) PeekBuffer() *gst.Buffer {
 
 	var goret *gst.Buffer
 
-	goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -3198,12 +3232,12 @@ func (pad *AggregatorPadInstance) PeekBuffer() *gst.Buffer {
 // PopBuffer wraps gst_aggregator_pad_pop_buffer
 // The function returns the following values:
 // 
-// 	- goret *gst.Buffer 
+// 	- goret *gst.Buffer (nullable) 
 //
 // Steal the ref to the buffer currently queued in @pad.
 func (pad *AggregatorPadInstance) PopBuffer() *gst.Buffer {
 	var carg0 *C.GstAggregatorPad // in, none, converted
-	var cret  *C.GstBuffer        // return, full, converted
+	var cret  *C.GstBuffer        // return, full, converted, nullable
 
 	carg0 = (*C.GstAggregatorPad)(UnsafeAggregatorPadToGlibNone(pad))
 
@@ -3212,7 +3246,9 @@ func (pad *AggregatorPadInstance) PopBuffer() *gst.Buffer {
 
 	var goret *gst.Buffer
 
-	goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -4319,7 +4355,7 @@ type BaseSink interface {
 	// GetLastSample wraps gst_base_sink_get_last_sample
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Sample 
+	// 	- goret *gst.Sample (nullable) 
 	//
 	// Get the last sample that arrived in the sink and was used for preroll or for
 	// rendering. This property can be used to generate thumbnails.
@@ -4773,7 +4809,7 @@ func (sink *BaseSinkInstance) GetDropOutOfSegment() bool {
 // GetLastSample wraps gst_base_sink_get_last_sample
 // The function returns the following values:
 // 
-// 	- goret *gst.Sample 
+// 	- goret *gst.Sample (nullable) 
 //
 // Get the last sample that arrived in the sink and was used for preroll or for
 // rendering. This property can be used to generate thumbnails.
@@ -4783,7 +4819,7 @@ func (sink *BaseSinkInstance) GetDropOutOfSegment() bool {
 // Free-function: gst_sample_unref
 func (sink *BaseSinkInstance) GetLastSample() *gst.Sample {
 	var carg0 *C.GstBaseSink // in, none, converted
-	var cret  *C.GstSample   // return, full, converted
+	var cret  *C.GstSample   // return, full, converted, nullable
 
 	carg0 = (*C.GstBaseSink)(UnsafeBaseSinkToGlibNone(sink))
 
@@ -4792,7 +4828,9 @@ func (sink *BaseSinkInstance) GetLastSample() *gst.Sample {
 
 	var goret *gst.Sample
 
-	goret = gst.UnsafeSampleFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeSampleFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -5682,7 +5720,7 @@ type BaseSrc interface {
 	// GetBufferPool wraps gst_base_src_get_buffer_pool
 	// The function returns the following values:
 	// 
-	// 	- goret gst.BufferPool 
+	// 	- goret gst.BufferPool (nullable) 
 	GetBufferPool() gst.BufferPool
 	// GetDoTimestamp wraps gst_base_src_get_do_timestamp
 	// The function returns the following values:
@@ -6053,10 +6091,10 @@ func (src *BaseSrcInstance) GetBlocksize() uint {
 // GetBufferPool wraps gst_base_src_get_buffer_pool
 // The function returns the following values:
 // 
-// 	- goret gst.BufferPool 
+// 	- goret gst.BufferPool (nullable) 
 func (src *BaseSrcInstance) GetBufferPool() gst.BufferPool {
 	var carg0 *C.GstBaseSrc    // in, none, converted
-	var cret  *C.GstBufferPool // return, full, converted
+	var cret  *C.GstBufferPool // return, full, converted, nullable
 
 	carg0 = (*C.GstBaseSrc)(UnsafeBaseSrcToGlibNone(src))
 
@@ -6065,7 +6103,9 @@ func (src *BaseSrcInstance) GetBufferPool() gst.BufferPool {
 
 	var goret gst.BufferPool
 
-	goret = gst.UnsafeBufferPoolFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeBufferPoolFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -6792,7 +6832,7 @@ type BaseTransform interface {
 	// GetBufferPool wraps gst_base_transform_get_buffer_pool
 	// The function returns the following values:
 	// 
-	// 	- goret gst.BufferPool 
+	// 	- goret gst.BufferPool (nullable) 
 	GetBufferPool() gst.BufferPool
 	// IsInPlace wraps gst_base_transform_is_in_place
 	// The function returns the following values:
@@ -7030,10 +7070,10 @@ func (trans *BaseTransformInstance) GetAllocator() (gst.Allocator, gst.Allocatio
 // GetBufferPool wraps gst_base_transform_get_buffer_pool
 // The function returns the following values:
 // 
-// 	- goret gst.BufferPool 
+// 	- goret gst.BufferPool (nullable) 
 func (trans *BaseTransformInstance) GetBufferPool() gst.BufferPool {
 	var carg0 *C.GstBaseTransform // in, none, converted
-	var cret  *C.GstBufferPool    // return, full, converted
+	var cret  *C.GstBufferPool    // return, full, converted, nullable
 
 	carg0 = (*C.GstBaseTransform)(UnsafeBaseTransformToGlibNone(trans))
 
@@ -7042,7 +7082,9 @@ func (trans *BaseTransformInstance) GetBufferPool() gst.BufferPool {
 
 	var goret gst.BufferPool
 
-	goret = gst.UnsafeBufferPoolFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeBufferPoolFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -7496,7 +7538,7 @@ type CollectPads interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Buffer 
+	// 	- goret *gst.Buffer (nullable) 
 	//
 	// Peek at the buffer currently queued in @data. This function
 	// should be called with the @pads STREAM_LOCK held, such as in the callback
@@ -7512,7 +7554,7 @@ type CollectPads interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Buffer 
+	// 	- goret *gst.Buffer (nullable) 
 	//
 	// Pop the buffer currently queued in @data. This function
 	// should be called with the @pads STREAM_LOCK held, such as in the callback
@@ -7545,7 +7587,7 @@ type CollectPads interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Buffer 
+	// 	- goret *gst.Buffer (nullable) 
 	//
 	// Get a subbuffer of @size bytes from the given pad @data.
 	// 
@@ -7730,7 +7772,7 @@ type CollectPads interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret *gst.Buffer 
+	// 	- goret *gst.Buffer (nullable) 
 	//
 	// Get a subbuffer of @size bytes from the given pad @data. Flushes the amount
 	// of read bytes.
@@ -7920,7 +7962,7 @@ func (pads *CollectPadsInstance) Flush(data *CollectData, size uint) uint {
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.Buffer 
+// 	- goret *gst.Buffer (nullable) 
 //
 // Peek at the buffer currently queued in @data. This function
 // should be called with the @pads STREAM_LOCK held, such as in the callback
@@ -7930,7 +7972,7 @@ func (pads *CollectPadsInstance) Flush(data *CollectData, size uint) uint {
 func (pads *CollectPadsInstance) Peek(data *CollectData) *gst.Buffer {
 	var carg0 *C.GstCollectPads // in, none, converted
 	var carg1 *C.GstCollectData // in, none, converted
-	var cret  *C.GstBuffer      // return, full, converted
+	var cret  *C.GstBuffer      // return, full, converted, nullable
 
 	carg0 = (*C.GstCollectPads)(UnsafeCollectPadsToGlibNone(pads))
 	carg1 = (*C.GstCollectData)(UnsafeCollectDataToGlibNone(data))
@@ -7941,7 +7983,9 @@ func (pads *CollectPadsInstance) Peek(data *CollectData) *gst.Buffer {
 
 	var goret *gst.Buffer
 
-	goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -7954,7 +7998,7 @@ func (pads *CollectPadsInstance) Peek(data *CollectData) *gst.Buffer {
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.Buffer 
+// 	- goret *gst.Buffer (nullable) 
 //
 // Pop the buffer currently queued in @data. This function
 // should be called with the @pads STREAM_LOCK held, such as in the callback
@@ -7964,7 +8008,7 @@ func (pads *CollectPadsInstance) Peek(data *CollectData) *gst.Buffer {
 func (pads *CollectPadsInstance) Pop(data *CollectData) *gst.Buffer {
 	var carg0 *C.GstCollectPads // in, none, converted
 	var carg1 *C.GstCollectData // in, none, converted
-	var cret  *C.GstBuffer      // return, full, converted
+	var cret  *C.GstBuffer      // return, full, converted, nullable
 
 	carg0 = (*C.GstCollectPads)(UnsafeCollectPadsToGlibNone(pads))
 	carg1 = (*C.GstCollectData)(UnsafeCollectDataToGlibNone(data))
@@ -7975,7 +8019,9 @@ func (pads *CollectPadsInstance) Pop(data *CollectData) *gst.Buffer {
 
 	var goret *gst.Buffer
 
-	goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -8033,7 +8079,7 @@ func (pads *CollectPadsInstance) QueryDefault(data *CollectData, query *gst.Quer
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.Buffer 
+// 	- goret *gst.Buffer (nullable) 
 //
 // Get a subbuffer of @size bytes from the given pad @data.
 // 
@@ -8045,7 +8091,7 @@ func (pads *CollectPadsInstance) ReadBuffer(data *CollectData, size uint) *gst.B
 	var carg0 *C.GstCollectPads // in, none, converted
 	var carg1 *C.GstCollectData // in, none, converted
 	var carg2 C.guint           // in, none, casted
-	var cret  *C.GstBuffer      // return, full, converted
+	var cret  *C.GstBuffer      // return, full, converted, nullable
 
 	carg0 = (*C.GstCollectPads)(UnsafeCollectPadsToGlibNone(pads))
 	carg1 = (*C.GstCollectData)(UnsafeCollectDataToGlibNone(data))
@@ -8058,7 +8104,9 @@ func (pads *CollectPadsInstance) ReadBuffer(data *CollectData, size uint) *gst.B
 
 	var goret *gst.Buffer
 
-	goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -8425,7 +8473,7 @@ func (pads *CollectPadsInstance) Stop() {
 // 
 // The function returns the following values:
 // 
-// 	- goret *gst.Buffer 
+// 	- goret *gst.Buffer (nullable) 
 //
 // Get a subbuffer of @size bytes from the given pad @data. Flushes the amount
 // of read bytes.
@@ -8438,7 +8486,7 @@ func (pads *CollectPadsInstance) TakeBuffer(data *CollectData, size uint) *gst.B
 	var carg0 *C.GstCollectPads // in, none, converted
 	var carg1 *C.GstCollectData // in, none, converted
 	var carg2 C.guint           // in, none, casted
-	var cret  *C.GstBuffer      // return, full, converted
+	var cret  *C.GstBuffer      // return, full, converted, nullable
 
 	carg0 = (*C.GstCollectPads)(UnsafeCollectPadsToGlibNone(pads))
 	carg1 = (*C.GstCollectData)(UnsafeCollectDataToGlibNone(data))
@@ -8451,7 +8499,9 @@ func (pads *CollectPadsInstance) TakeBuffer(data *CollectData, size uint) *gst.B
 
 	var goret *gst.Buffer
 
-	goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }

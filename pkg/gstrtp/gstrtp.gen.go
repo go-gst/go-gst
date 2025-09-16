@@ -940,12 +940,12 @@ func BufferAddRtpSourceMeta(buffer *gst.Buffer, ssrc *uint32, csrc []uint32) *RT
 // 
 // The function returns the following values:
 // 
-// 	- goret *RTPSourceMeta 
+// 	- goret *RTPSourceMeta (nullable) 
 //
 // Find the #GstRTPSourceMeta on @buffer.
 func BufferGetRtpSourceMeta(buffer *gst.Buffer) *RTPSourceMeta {
 	var carg1 *C.GstBuffer        // in, none, converted
-	var cret  *C.GstRTPSourceMeta // return, none, converted
+	var cret  *C.GstRTPSourceMeta // return, none, converted, nullable
 
 	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
 
@@ -954,7 +954,9 @@ func BufferGetRtpSourceMeta(buffer *gst.Buffer) *RTPSourceMeta {
 
 	var goret *RTPSourceMeta
 
-	goret = UnsafeRTPSourceMetaFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeRTPSourceMetaFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -2151,7 +2153,7 @@ type RTPHeaderExtension interface {
 	// GetURI wraps gst_rtp_header_extension_get_uri
 	// The function returns the following values:
 	// 
-	// 	- goret string 
+	// 	- goret string (nullable) 
 	GetURI() string
 	// Read wraps gst_rtp_header_extension_read
 	// 
@@ -2353,10 +2355,10 @@ func UnsafeRTPHeaderExtensionToGlibFull(c RTPHeaderExtension) unsafe.Pointer {
 // 
 // The function returns the following values:
 // 
-// 	- goret RTPHeaderExtension 
+// 	- goret RTPHeaderExtension (nullable) 
 func RTPHeaderExtensionCreateFromURI(uri string) RTPHeaderExtension {
 	var carg1 *C.gchar                 // in, none, string
-	var cret  *C.GstRTPHeaderExtension // return, full, converted
+	var cret  *C.GstRTPHeaderExtension // return, full, converted, nullable
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(uri)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -2366,7 +2368,9 @@ func RTPHeaderExtensionCreateFromURI(uri string) RTPHeaderExtension {
 
 	var goret RTPHeaderExtension
 
-	goret = UnsafeRTPHeaderExtensionFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeRTPHeaderExtensionFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -2492,10 +2496,10 @@ func (ext *RTPHeaderExtensionInstance) GetSupportedFlags() RTPHeaderExtensionFla
 // GetURI wraps gst_rtp_header_extension_get_uri
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 func (ext *RTPHeaderExtensionInstance) GetURI() string {
 	var carg0 *C.GstRTPHeaderExtension // in, none, converted
-	var cret  *C.gchar                 // return, none, string
+	var cret  *C.gchar                 // return, none, string, nullable-string
 
 	carg0 = (*C.GstRTPHeaderExtension)(UnsafeRTPHeaderExtensionToGlibNone(ext))
 
@@ -2504,7 +2508,9 @@ func (ext *RTPHeaderExtensionInstance) GetURI() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
 
 	return goret
 }
@@ -4079,12 +4085,12 @@ func (packet *RTCPPacket) ByeGetNthSsrc(nth uint) uint32 {
 // ByeGetReason wraps gst_rtcp_packet_bye_get_reason
 // The function returns the following values:
 // 
-// 	- goret string 
+// 	- goret string (nullable) 
 //
 // Get the reason in @packet.
 func (packet *RTCPPacket) ByeGetReason() string {
 	var carg0 *C.GstRTCPPacket // in, none, converted
-	var cret  *C.gchar         // return, full, string
+	var cret  *C.gchar         // return, full, string, nullable-string
 
 	carg0 = (*C.GstRTCPPacket)(UnsafeRTCPPacketToGlibNone(packet))
 
@@ -4093,8 +4099,10 @@ func (packet *RTCPPacket) ByeGetReason() string {
 
 	var goret string
 
-	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
-	defer C.free(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+		defer C.free(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -6544,7 +6552,7 @@ func (rtp *RTPBuffer) GetExtension() bool {
 // The function returns the following values:
 // 
 // 	- bits uint16: location for header bits 
-// 	- goret *glib.Bytes 
+// 	- goret *glib.Bytes (nullable) 
 //
 // Similar to gst_rtp_buffer_get_extension_data, but more suitable for language
 // bindings usage. @bits will contain the extension 16 bits of custom data and
@@ -6557,7 +6565,7 @@ func (rtp *RTPBuffer) GetExtension() bool {
 func (rtp *RTPBuffer) GetExtensionBytes() (uint16, *glib.Bytes) {
 	var carg0 *C.GstRTPBuffer // in, none, converted
 	var carg1 C.guint16       // out, full, casted
-	var cret  *C.GBytes       // return, full, converted
+	var cret  *C.GBytes       // return, full, converted, nullable
 
 	carg0 = (*C.GstRTPBuffer)(UnsafeRTPBufferToGlibNone(rtp))
 
@@ -6568,7 +6576,9 @@ func (rtp *RTPBuffer) GetExtensionBytes() (uint16, *glib.Bytes) {
 	var goret *glib.Bytes
 
 	bits = uint16(carg1)
-	goret = glib.UnsafeBytesFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = glib.UnsafeBytesFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return bits, goret
 }
@@ -6693,14 +6703,14 @@ func (rtp *RTPBuffer) GetPayloadBuffer() *gst.Buffer {
 // GetPayloadBytes wraps gst_rtp_buffer_get_payload_bytes
 // The function returns the following values:
 // 
-// 	- goret *glib.Bytes 
+// 	- goret *glib.Bytes (nullable) 
 //
 // Similar to gst_rtp_buffer_get_payload, but more suitable for language
 // bindings usage. The return value is a pointer to a #GBytes structure
 // containing the payload data in @rtp.
 func (rtp *RTPBuffer) GetPayloadBytes() *glib.Bytes {
 	var carg0 *C.GstRTPBuffer // in, none, converted
-	var cret  *C.GBytes       // return, full, converted
+	var cret  *C.GBytes       // return, full, converted, nullable
 
 	carg0 = (*C.GstRTPBuffer)(UnsafeRTPBufferToGlibNone(rtp))
 
@@ -6709,7 +6719,9 @@ func (rtp *RTPBuffer) GetPayloadBytes() *glib.Bytes {
 
 	var goret *glib.Bytes
 
-	goret = glib.UnsafeBytesFromGlibFull(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = glib.UnsafeBytesFromGlibFull(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -7328,7 +7340,7 @@ func UnsafeRTPPayloadInfoToGlibFull(r *RTPPayloadInfo) unsafe.Pointer {
 // 
 // The function returns the following values:
 // 
-// 	- goret *RTPPayloadInfo 
+// 	- goret *RTPPayloadInfo (nullable) 
 //
 // Get the #GstRTPPayloadInfo for @media and @encoding_name. This function is
 // mostly used to get the default clock-rate and bandwidth for dynamic payload
@@ -7338,7 +7350,7 @@ func UnsafeRTPPayloadInfoToGlibFull(r *RTPPayloadInfo) unsafe.Pointer {
 func RTPPayloadInfoForName(media string, encodingName string) *RTPPayloadInfo {
 	var carg1 *C.gchar             // in, none, string
 	var carg2 *C.gchar             // in, none, string
-	var cret  *C.GstRTPPayloadInfo // return, none, converted
+	var cret  *C.GstRTPPayloadInfo // return, none, converted, nullable
 
 	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(media)))
 	defer C.free(unsafe.Pointer(carg1))
@@ -7351,7 +7363,9 @@ func RTPPayloadInfoForName(media string, encodingName string) *RTPPayloadInfo {
 
 	var goret *RTPPayloadInfo
 
-	goret = UnsafeRTPPayloadInfoFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeRTPPayloadInfoFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
@@ -7364,14 +7378,14 @@ func RTPPayloadInfoForName(media string, encodingName string) *RTPPayloadInfo {
 // 
 // The function returns the following values:
 // 
-// 	- goret *RTPPayloadInfo 
+// 	- goret *RTPPayloadInfo (nullable) 
 //
 // Get the #GstRTPPayloadInfo for @payload_type. This function is
 // mostly used to get the default clock-rate and bandwidth for static payload
 // types specified with @payload_type.
 func RTPPayloadInfoForPt(payloadType uint8) *RTPPayloadInfo {
 	var carg1 C.guint8             // in, none, casted
-	var cret  *C.GstRTPPayloadInfo // return, none, converted
+	var cret  *C.GstRTPPayloadInfo // return, none, converted, nullable
 
 	carg1 = C.guint8(payloadType)
 
@@ -7380,7 +7394,9 @@ func RTPPayloadInfoForPt(payloadType uint8) *RTPPayloadInfo {
 
 	var goret *RTPPayloadInfo
 
-	goret = UnsafeRTPPayloadInfoFromGlibNone(unsafe.Pointer(cret))
+	if cret != nil {
+		goret = UnsafeRTPPayloadInfoFromGlibNone(unsafe.Pointer(cret))
+	}
 
 	return goret
 }
