@@ -118,13 +118,8 @@ func (message *Message) Type() MessageType {
 
 // Source returns the source object of the message.
 func (message *Message) Source() Object {
-	// a ref on the message means we already have a ref on the source object. This means we only
-	// need to borrow the source object from the message.
-	obj := UnsafeObjectFromGlibBorrow(unsafe.Pointer(message.message.native.src))
-
-	// keep the message alive until the object is finalized.
-	obj.BorrowFrom(message.message)
-
+	obj := UnsafeObjectFromGlibNone(unsafe.Pointer(message.message.native.src))
+	runtime.KeepAlive(message)
 	return obj
 }
 
