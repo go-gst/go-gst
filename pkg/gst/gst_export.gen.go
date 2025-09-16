@@ -279,11 +279,12 @@ func _gotk4_gst1_PadProbeCallback(carg1 *C.GstPad, carg2 *C.GstPadProbeInfo, car
 	}
 
 	var pad   Pad            // in, none, converted
-	var info  *PadProbeInfo  // in, none, converted
+	var info  *PadProbeInfo  // in, borrow, converted
 	var goret PadProbeReturn // return, none, casted
 
 	pad = UnsafePadFromGlibNone(unsafe.Pointer(carg1))
-	info = UnsafePadProbeInfoFromGlibNone(unsafe.Pointer(carg2))
+	info = UnsafePadProbeInfoFromGlibBorrow(unsafe.Pointer(carg2))
+	// borrow not bound to another value, this requires correct handling by the user
 
 	goret = fn(pad, info)
 
