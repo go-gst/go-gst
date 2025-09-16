@@ -10096,6 +10096,12 @@ func ValueGetCaps(value *coreglib.Value) *Caps {
 	var _caps *Caps // out
 
 	_caps = (*Caps)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_cret)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_caps)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _caps
 }
@@ -10502,6 +10508,12 @@ func ValueGetStructure(value *coreglib.Value) *Structure {
 	var _structure *Structure // out
 
 	_structure = (*Structure)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_cret)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_structure)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _structure
 }
@@ -13019,9 +13031,8 @@ func (allocator *Allocator) Alloc(size uint, params *AllocationParams) *Memory {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_memory)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _memory
@@ -13091,9 +13102,8 @@ func (allocator *Allocator) alloc(size uint, params *AllocationParams) *Memory {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_memory)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _memory
@@ -14583,9 +14593,8 @@ func (pool *BufferPool) AcquireBuffer(params *BufferPoolAcquireParams) (*Buffer,
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_buffer)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 	_flowReturn = FlowReturn(_cret)
 
@@ -14614,9 +14623,8 @@ func (pool *BufferPool) Config() *Structure {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_structure)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.gst_structure_free((*C.GstStructure)(intern.C))
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _structure
 }
@@ -14881,9 +14889,8 @@ func (pool *BufferPool) acquireBuffer(params *BufferPoolAcquireParams) (*Buffer,
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_buffer)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 	_flowReturn = FlowReturn(_cret)
 
@@ -14931,9 +14938,8 @@ func (pool *BufferPool) allocBuffer(params *BufferPoolAcquireParams) (*Buffer, F
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_buffer)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 	_flowReturn = FlowReturn(_cret)
 
@@ -15319,6 +15325,12 @@ func BufferPoolConfigGetParams(config *Structure) (caps *Caps, size, minBuffers,
 
 	if _arg2 != nil {
 		_caps = (*Caps)(gextras.NewStructNative(unsafe.Pointer(_arg2)))
+		C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_arg2)))
+		runtime.SetFinalizer(
+			gextras.StructIntern(unsafe.Pointer(_caps)),
+			func(intern *struct{ C unsafe.Pointer }) {
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 	_size = uint(_arg3)
 	_minBuffers = uint(_arg4)
@@ -15920,9 +15932,8 @@ func (bus *Bus) Peek() *Message {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_message)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _message
@@ -15992,9 +16003,8 @@ func (bus *Bus) Poll(events MessageType, timeout ClockTime) *Message {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_message)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _message
@@ -16021,9 +16031,8 @@ func (bus *Bus) Pop() *Message {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_message)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _message
@@ -16062,9 +16071,8 @@ func (bus *Bus) PopFiltered(types MessageType) *Message {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_message)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _message
@@ -16254,9 +16262,8 @@ func (bus *Bus) TimedPop(timeout ClockTime) *Message {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_message)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _message
@@ -16301,9 +16308,8 @@ func (bus *Bus) TimedPopFiltered(timeout ClockTime, types MessageType) *Message 
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_message)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _message
@@ -18591,9 +18597,8 @@ func (device *Device) Caps() *Caps {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_caps)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _caps
@@ -18667,9 +18672,8 @@ func (device *Device) Properties() *Structure {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_structure)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.gst_structure_free((*C.GstStructure)(intern.C))
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _structure
@@ -26609,9 +26613,8 @@ func (pad *Pad) AllowedCaps() *Caps {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_caps)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _caps
@@ -26640,9 +26643,8 @@ func (pad *Pad) CurrentCaps() *Caps {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_caps)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _caps
@@ -26778,9 +26780,8 @@ func (pad *Pad) PadTemplateCaps() *Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_caps)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _caps
 }
@@ -26911,9 +26912,8 @@ func (pad *Pad) Range(offset uint64, size uint) (*Buffer, FlowReturn) {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_flowReturn = FlowReturn(_cret)
 
 	return _buffer, _flowReturn
@@ -27590,9 +27590,8 @@ func (pad *Pad) PeerQueryCaps(filter *Caps) *Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_caps)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _caps
 }
@@ -27840,9 +27839,8 @@ func (pad *Pad) PullRange(offset uint64, size uint) (*Buffer, FlowReturn) {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_flowReturn = FlowReturn(_cret)
 
 	return _buffer, _flowReturn
@@ -28080,9 +28078,8 @@ func (pad *Pad) QueryCaps(filter *Caps) *Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_caps)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _caps
 }
@@ -28850,9 +28847,8 @@ func (templ *PadTemplate) Caps() *Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_caps)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _caps
 }
@@ -28878,9 +28874,8 @@ func (templ *PadTemplate) DocumentationCaps() *Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_caps)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _caps
 }
@@ -29629,6 +29624,12 @@ func (plugin *Plugin) CacheData() *Structure {
 
 	if _cret != nil {
 		_structure = (*Structure)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+		C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_cret)))
+		runtime.SetFinalizer(
+			gextras.StructIntern(unsafe.Pointer(_structure)),
+			func(intern *struct{ C unsafe.Pointer }) {
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _structure
@@ -30681,9 +30682,8 @@ func ProxyPadGetrangeDefault(pad *Pad, parent GstObjector, offset uint64, size u
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_flowReturn = FlowReturn(_cret)
 
 	return _buffer, _flowReturn
@@ -31654,9 +31654,8 @@ func (stream *Stream) Caps() *Caps {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_caps)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _caps
@@ -32799,6 +32798,12 @@ func (factory *TypeFindFactory) Caps() *Caps {
 
 	if _cret != nil {
 		_caps = (*Caps)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+		C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_cret)))
+		runtime.SetFinalizer(
+			gextras.StructIntern(unsafe.Pointer(_caps)),
+			func(intern *struct{ C unsafe.Pointer }) {
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _caps
@@ -33686,9 +33691,8 @@ func NewBuffer() *Buffer {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _buffer
 }
@@ -33720,9 +33724,8 @@ func NewBufferAllocate(allocator Allocatorrer, size uint, params *AllocationPara
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_buffer)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _buffer
@@ -33748,9 +33751,8 @@ func NewBufferMemdup(data []byte) *Buffer {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _buffer
 }
@@ -33774,9 +33776,8 @@ func NewBufferWrapped(data []byte) *Buffer {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _buffer
 }
@@ -33797,9 +33798,8 @@ func NewBufferWrappedBytes(bytes *glib.Bytes) *Buffer {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _buffer
 }
@@ -33809,6 +33809,11 @@ func (b *Buffer) MiniObject() *MiniObject {
 	valptr := &b.native.mini_object
 	var _v *MiniObject // out
 	_v = (*MiniObject)(gextras.NewStructNative(unsafe.Pointer(valptr)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_v)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	return _v
 }
 
@@ -34082,9 +34087,8 @@ func (buf1 *Buffer) Append(buf2 *Buffer) *Buffer {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _buffer
 }
@@ -34150,9 +34154,8 @@ func (buf1 *Buffer) AppendRegion(buf2 *Buffer, offset int, size int) *Buffer {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _buffer
 }
@@ -34179,9 +34182,8 @@ func (buf *Buffer) CopyDeep() *Buffer {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_buffer)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _buffer
@@ -34276,9 +34278,8 @@ func (parent *Buffer) CopyRegion(flags BufferCopyFlagsType, offset uint, size ui
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_buffer)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _buffer
@@ -34473,9 +34474,8 @@ func (buffer *Buffer) AllMemory() *Memory {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_memory)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _memory
@@ -34561,9 +34561,8 @@ func (buffer *Buffer) Memory(idx uint) *Memory {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_memory)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _memory
@@ -34605,9 +34604,8 @@ func (buffer *Buffer) MemoryRange(idx uint, length int) *Memory {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_memory)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _memory
@@ -35154,6 +35152,12 @@ func (buffer *Buffer) PeekMemory(idx uint) *Memory {
 
 	if _cret != nil {
 		_memory = (*Memory)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+		runtime.SetFinalizer( // value is borrowed, don't clean up the receiver until dropped
+			gextras.StructIntern(unsafe.Pointer(_memory)),
+			func(_ *struct{ C unsafe.Pointer }) {
+				runtime.KeepAlive(buffer)
+			},
+		)
 	}
 
 	return _memory
@@ -35549,9 +35553,8 @@ func NewBufferList() *BufferList {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_bufferList)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _bufferList
 }
@@ -35572,9 +35575,8 @@ func NewBufferListSized(size uint) *BufferList {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_bufferList)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _bufferList
 }
@@ -35622,9 +35624,8 @@ func (list *BufferList) CopyDeep() *BufferList {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_bufferList)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _bufferList
 }
@@ -35696,6 +35697,12 @@ func (list *BufferList) Get(idx uint) *Buffer {
 
 	if _cret != nil {
 		_buffer = (*Buffer)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+		runtime.SetFinalizer( // value is borrowed, don't clean up the receiver until dropped
+			gextras.StructIntern(unsafe.Pointer(_buffer)),
+			func(_ *struct{ C unsafe.Pointer }) {
+				runtime.KeepAlive(list)
+			},
+		)
 	}
 
 	return _buffer
@@ -35729,6 +35736,12 @@ func (list *BufferList) Writable(idx uint) *Buffer {
 
 	if _cret != nil {
 		_buffer = (*Buffer)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+		runtime.SetFinalizer( // value is borrowed, don't clean up the receiver until dropped
+			gextras.StructIntern(unsafe.Pointer(_buffer)),
+			func(_ *struct{ C unsafe.Pointer }) {
+				runtime.KeepAlive(list)
+			},
+		)
 	}
 
 	return _buffer
@@ -36000,9 +36013,8 @@ func NewCapsAny() *Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_caps)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _caps
 }
@@ -36019,9 +36031,8 @@ func NewCapsEmpty() *Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_caps)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _caps
 }
@@ -36043,9 +36054,8 @@ func NewCapsEmptySimple(mediaType string) *Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_caps)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _caps
 }
@@ -36055,6 +36065,11 @@ func (c *Caps) MiniObject() *MiniObject {
 	valptr := &c.native.mini_object
 	var _v *MiniObject // out
 	_v = (*MiniObject)(gextras.NewStructNative(unsafe.Pointer(valptr)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_v)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	return _v
 }
 
@@ -36179,9 +36194,8 @@ func (caps *Caps) Copy() *Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_ret)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _ret
 }
@@ -36214,9 +36228,8 @@ func (caps *Caps) CopyNth(nth uint) *Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_ret)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _ret
 }
@@ -36278,9 +36291,8 @@ func (caps *Caps) Fixate() *Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_ret)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _ret
 }
@@ -36413,6 +36425,12 @@ func (caps *Caps) Structure(index uint) *Structure {
 	var _structure *Structure // out
 
 	_structure = (*Structure)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+	runtime.SetFinalizer( // value is borrowed, don't clean up the receiver until dropped
+		gextras.StructIntern(unsafe.Pointer(_structure)),
+		func(_ *struct{ C unsafe.Pointer }) {
+			runtime.KeepAlive(caps)
+		},
+	)
 
 	return _structure
 }
@@ -36445,9 +36463,8 @@ func (caps1 *Caps) Intersect(caps2 *Caps) *Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_caps)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _caps
 }
@@ -36485,9 +36502,8 @@ func (caps1 *Caps) IntersectFull(caps2 *Caps, mode CapsIntersectMode) *Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_caps)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _caps
 }
@@ -36853,9 +36869,8 @@ func (caps1 *Caps) Merge(caps2 *Caps) *Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_caps)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _caps
 }
@@ -36890,9 +36905,8 @@ func (caps *Caps) MergeStructure(structure *Structure) *Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_ret)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _ret
 }
@@ -36934,9 +36948,8 @@ func (caps *Caps) MergeStructureFull(structure *Structure, features *CapsFeature
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_ret)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _ret
 }
@@ -36967,9 +36980,8 @@ func (caps *Caps) Normalize() *Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_ret)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _ret
 }
@@ -37127,9 +37139,8 @@ func (caps *Caps) Simplify() *Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_ret)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _ret
 }
@@ -37164,9 +37175,8 @@ func (caps *Caps) StealStructure(index uint) *Structure {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_structure)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.gst_structure_free((*C.GstStructure)(intern.C))
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _structure
@@ -37201,9 +37211,8 @@ func (minuend *Caps) Subtract(subtrahend *Caps) *Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_caps)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _caps
 }
@@ -37270,9 +37279,8 @@ func (caps *Caps) Truncate() *Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_ret)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _ret
 }
@@ -37306,9 +37314,8 @@ func CapsFromString(str string) *Caps {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_caps)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _caps
@@ -37969,6 +37976,12 @@ func (context *Context) Structure() *Structure {
 	var _structure *Structure // out
 
 	_structure = (*Structure)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_cret)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_structure)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _structure
 }
@@ -38047,6 +38060,12 @@ func (context *Context) WritableStructure() *Structure {
 	var _structure *Structure // out
 
 	_structure = (*Structure)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_cret)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_structure)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _structure
 }
@@ -38135,6 +38154,12 @@ func (meta *CustomMeta) Structure() *Structure {
 	var _structure *Structure // out
 
 	_structure = (*Structure)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_cret)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_structure)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _structure
 }
@@ -40344,6 +40369,11 @@ func (e *Event) MiniObject() *MiniObject {
 	valptr := &e.native.mini_object
 	var _v *MiniObject // out
 	_v = (*MiniObject)(gextras.NewStructNative(unsafe.Pointer(valptr)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_v)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	return _v
 }
 
@@ -40473,6 +40503,12 @@ func (event *Event) Structure() *Structure {
 
 	if _cret != nil {
 		_structure = (*Structure)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+		C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_cret)))
+		runtime.SetFinalizer(
+			gextras.StructIntern(unsafe.Pointer(_structure)),
+			func(intern *struct{ C unsafe.Pointer }) {
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _structure
@@ -40596,6 +40632,12 @@ func (event *Event) ParseCaps() *Caps {
 
 	if _arg1 != nil {
 		_caps = (*Caps)(gextras.NewStructNative(unsafe.Pointer(_arg1)))
+		C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_arg1)))
+		runtime.SetFinalizer(
+			gextras.StructIntern(unsafe.Pointer(_caps)),
+			func(intern *struct{ C unsafe.Pointer }) {
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _caps
@@ -40814,6 +40856,12 @@ func (event *Event) ParseProtection() (systemId string, data *Buffer, origin str
 	}
 	if _arg2 != nil {
 		_data = (*Buffer)(gextras.NewStructNative(unsafe.Pointer(_arg2)))
+		C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_arg2)))
+		runtime.SetFinalizer(
+			gextras.StructIntern(unsafe.Pointer(_data)),
+			func(intern *struct{ C unsafe.Pointer }) {
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 	if _arg3 != nil {
 		_origin = C.GoString((*C.gchar)(unsafe.Pointer(_arg3)))
@@ -41034,9 +41082,8 @@ func (event *Event) ParseSinkMessage() *Message {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_msg)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _msg
@@ -41437,6 +41484,12 @@ func (event *Event) WritableStructure() *Structure {
 	var _structure *Structure // out
 
 	_structure = (*Structure)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_cret)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_structure)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _structure
 }
@@ -41852,6 +41905,11 @@ func (m *Memory) MiniObject() *MiniObject {
 	valptr := &m.native.mini_object
 	var _v *MiniObject // out
 	_v = (*MiniObject)(gextras.NewStructNative(unsafe.Pointer(valptr)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_v)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	return _v
 }
 
@@ -41884,6 +41942,11 @@ func (m *Memory) Parent() *Memory {
 	valptr := &m.native.parent
 	var _v *Memory // out
 	_v = (*Memory)(gextras.NewStructNative(unsafe.Pointer(*valptr)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_v)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	return _v
 }
 
@@ -41977,9 +42040,8 @@ func (mem *Memory) Copy(offset int, size int) *Memory {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_memory)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _memory
@@ -42122,9 +42184,8 @@ func (mem *Memory) MakeMapped(flags MapFlags) (*MapInfo, *Memory) {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_memory)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _info, _memory
@@ -42236,9 +42297,8 @@ func (mem *Memory) Share(offset int, size int) *Memory {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_memory)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _memory
 }
@@ -42312,9 +42372,8 @@ func NewMessageApplication(src GstObjector, structure *Structure) *Message {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -42340,9 +42399,8 @@ func NewMessageAsyncDone(src GstObjector, runningTime ClockTime) *Message {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -42365,9 +42423,8 @@ func NewMessageAsyncStart(src GstObjector) *Message {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -42393,9 +42450,8 @@ func NewMessageBuffering(src GstObjector, percent int) *Message {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -42421,9 +42477,8 @@ func NewMessageClockLost(src GstObjector, clock Clocker) *Message {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -42454,9 +42509,8 @@ func NewMessageClockProvide(src GstObjector, clock Clocker, ready bool) *Message
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -42488,9 +42542,8 @@ func NewMessageCustom(typ MessageType, src GstObjector, structure *Structure) *M
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -42516,9 +42569,8 @@ func NewMessageDeviceAdded(src GstObjector, device Devicer) *Message {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -42547,9 +42599,8 @@ func NewMessageDeviceChanged(src GstObjector, device Devicer, changedDevice Devi
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -42575,9 +42626,8 @@ func NewMessageDeviceRemoved(src GstObjector, device Devicer) *Message {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -42600,9 +42650,8 @@ func NewMessageDurationChanged(src GstObjector) *Message {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -42629,9 +42678,8 @@ func NewMessageElement(src GstObjector, structure *Structure) *Message {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -42654,9 +42702,8 @@ func NewMessageEos(src GstObjector) *Message {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -42688,9 +42735,8 @@ func NewMessageError(src GstObjector, err error, debug string) *Message {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -42728,9 +42774,8 @@ func NewMessageErrorWithDetails(src GstObjector, err error, debug string, detail
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -42757,9 +42802,8 @@ func NewMessageHaveContext(src GstObjector, context *Context) *Message {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -42791,9 +42835,8 @@ func NewMessageInfo(src GstObjector, err error, debug string) *Message {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -42831,9 +42874,8 @@ func NewMessageInfoWithDetails(src GstObjector, err error, debug string, details
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -42859,9 +42901,8 @@ func NewMessageInstantRateRequest(src GstObjector, rateMultiplier float64) *Mess
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -42884,9 +42925,8 @@ func NewMessageLatency(src GstObjector) *Message {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -42913,9 +42953,8 @@ func NewMessageNeedContext(src GstObjector, contextType string) *Message {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -42941,9 +42980,8 @@ func NewMessageNewClock(src GstObjector, clock Clocker) *Message {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -42977,9 +43015,8 @@ func NewMessageProgress(src GstObjector, typ ProgressType, code string, text str
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -43009,9 +43046,8 @@ func NewMessagePropertyNotify(src GstObjector, propertyName string, val *coregli
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -43051,9 +43087,8 @@ func NewMessageQos(src GstObjector, live bool, runningTime uint64, streamTime ui
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -43092,9 +43127,8 @@ func NewMessageRedirect(src GstObjector, location string, tagList *TagList, entr
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -43120,9 +43154,8 @@ func NewMessageRequestState(src GstObjector, state State) *Message {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -43148,9 +43181,8 @@ func NewMessageResetTime(src GstObjector, runningTime ClockTime) *Message {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -43179,9 +43211,8 @@ func NewMessageSegmentDone(src GstObjector, format Format, position int64) *Mess
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -43210,9 +43241,8 @@ func NewMessageSegmentStart(src GstObjector, format Format, position int64) *Mes
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -43244,9 +43274,8 @@ func NewMessageStateChanged(src GstObjector, oldstate State, newstate State, pen
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -43269,9 +43298,8 @@ func NewMessageStateDirty(src GstObjector) *Message {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -43321,9 +43349,8 @@ func NewMessageStepDone(src GstObjector, format Format, amount uint64, rate floa
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -43370,9 +43397,8 @@ func NewMessageStepStart(src GstObjector, active bool, format Format, amount uin
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -43398,9 +43424,8 @@ func NewMessageStreamCollection(src GstObjector, collection *StreamCollection) *
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -43423,9 +43448,8 @@ func NewMessageStreamStart(src GstObjector) *Message {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -43454,9 +43478,8 @@ func NewMessageStreamStatus(src GstObjector, typ StreamStatusType, owner Element
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -43482,9 +43505,8 @@ func NewMessageStreamsSelected(src GstObjector, collection *StreamCollection) *M
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -43518,9 +43540,8 @@ func NewMessageStructureChange(src GstObjector, typ StructureChangeType, owner E
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -43547,9 +43568,8 @@ func NewMessageTag(src GstObjector, tagList *TagList) *Message {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -43580,9 +43600,8 @@ func NewMessageToc(src GstObjector, toc *Toc, updated bool) *Message {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -43614,9 +43633,8 @@ func NewMessageWarning(src GstObjector, err error, debug string) *Message {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -43654,9 +43672,8 @@ func NewMessageWarningWithDetails(src GstObjector, err error, debug string, deta
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_message)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _message
 }
@@ -43666,6 +43683,11 @@ func (m *Message) MiniObject() *MiniObject {
 	valptr := &m.native.mini_object
 	var _v *MiniObject // out
 	_v = (*MiniObject)(gextras.NewStructNative(unsafe.Pointer(valptr)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_v)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	return _v
 }
 
@@ -43852,6 +43874,12 @@ func (message *Message) Structure() *Structure {
 
 	if _cret != nil {
 		_structure = (*Structure)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+		runtime.SetFinalizer( // value is borrowed, don't clean up the receiver until dropped
+			gextras.StructIntern(unsafe.Pointer(_structure)),
+			func(_ *struct{ C unsafe.Pointer }) {
+				runtime.KeepAlive(message)
+			},
+		)
 	}
 
 	return _structure
@@ -44295,6 +44323,12 @@ func (message *Message) ParseErrorDetails() *Structure {
 
 	if _arg1 != nil {
 		_structure = (*Structure)(gextras.NewStructNative(unsafe.Pointer(_arg1)))
+		C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_arg1)))
+		runtime.SetFinalizer(
+			gextras.StructIntern(unsafe.Pointer(_structure)),
+			func(intern *struct{ C unsafe.Pointer }) {
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _structure
@@ -44414,6 +44448,12 @@ func (message *Message) ParseInfoDetails() *Structure {
 
 	if _arg1 != nil {
 		_structure = (*Structure)(gextras.NewStructNative(unsafe.Pointer(_arg1)))
+		C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_arg1)))
+		runtime.SetFinalizer(
+			gextras.StructIntern(unsafe.Pointer(_structure)),
+			func(intern *struct{ C unsafe.Pointer }) {
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _structure
@@ -44733,6 +44773,12 @@ func (message *Message) ParseRedirectEntry(entryIndex uint) (string, *TagList, *
 	}
 	if _arg4 != nil {
 		_entryStruct = (*Structure)(gextras.NewStructNative(unsafe.Pointer(_arg4)))
+		C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_arg4)))
+		runtime.SetFinalizer(
+			gextras.StructIntern(unsafe.Pointer(_entryStruct)),
+			func(intern *struct{ C unsafe.Pointer }) {
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _location, _tagList, _entryStruct
@@ -45271,6 +45317,12 @@ func (message *Message) ParseWarningDetails() *Structure {
 
 	if _arg1 != nil {
 		_structure = (*Structure)(gextras.NewStructNative(unsafe.Pointer(_arg1)))
+		C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_arg1)))
+		runtime.SetFinalizer(
+			gextras.StructIntern(unsafe.Pointer(_structure)),
+			func(intern *struct{ C unsafe.Pointer }) {
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _structure
@@ -45529,6 +45581,12 @@ func (message *Message) WritableStructure() *Structure {
 	var _structure *Structure // out
 
 	_structure = (*Structure)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+	runtime.SetFinalizer( // value is borrowed, don't clean up the receiver until dropped
+		gextras.StructIntern(unsafe.Pointer(_structure)),
+		func(_ *struct{ C unsafe.Pointer }) {
+			runtime.KeepAlive(message)
+		},
+	)
 
 	return _structure
 }
@@ -46470,6 +46528,12 @@ func (info *PadProbeInfo) Buffer() *Buffer {
 
 	if _cret != nil {
 		_buffer = (*Buffer)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+		C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_cret)))
+		runtime.SetFinalizer(
+			gextras.StructIntern(unsafe.Pointer(_buffer)),
+			func(intern *struct{ C unsafe.Pointer }) {
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _buffer
@@ -46491,6 +46555,12 @@ func (info *PadProbeInfo) BufferList() *BufferList {
 
 	if _cret != nil {
 		_bufferList = (*BufferList)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+		C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_cret)))
+		runtime.SetFinalizer(
+			gextras.StructIntern(unsafe.Pointer(_bufferList)),
+			func(intern *struct{ C unsafe.Pointer }) {
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _bufferList
@@ -46533,6 +46603,12 @@ func (info *PadProbeInfo) Query() *Query {
 
 	if _cret != nil {
 		_query = (*Query)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+		C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_cret)))
+		runtime.SetFinalizer(
+			gextras.StructIntern(unsafe.Pointer(_query)),
+			func(intern *struct{ C unsafe.Pointer }) {
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _query
@@ -46695,6 +46771,11 @@ func (p *ParentBufferMeta) Buffer() *Buffer {
 	valptr := &p.native.buffer
 	var _v *Buffer // out
 	_v = (*Buffer)(gextras.NewStructNative(unsafe.Pointer(*valptr)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_v)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	return _v
 }
 
@@ -47018,6 +47099,11 @@ func (p *Promise) Parent() *MiniObject {
 	valptr := &p.native.parent
 	var _v *MiniObject // out
 	_v = (*MiniObject)(gextras.NewStructNative(unsafe.Pointer(valptr)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_v)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	return _v
 }
 
@@ -47052,6 +47138,12 @@ func (promise *Promise) GetReply() *Structure {
 
 	if _cret != nil {
 		_structure = (*Structure)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+		C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_cret)))
+		runtime.SetFinalizer(
+			gextras.StructIntern(unsafe.Pointer(_structure)),
+			func(intern *struct{ C unsafe.Pointer }) {
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _structure
@@ -47146,6 +47238,11 @@ func (p *ProtectionMeta) Info() *Structure {
 	valptr := &p.native.info
 	var _v *Structure // out
 	_v = (*Structure)(gextras.NewStructNative(unsafe.Pointer(*valptr)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_v)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	return _v
 }
 
@@ -47232,9 +47329,8 @@ func NewQueryAcceptCaps(caps *Caps) *Query {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_query)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _query
 }
@@ -47262,9 +47358,8 @@ func NewQueryAllocation(caps *Caps, needPool bool) *Query {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_query)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _query
 }
@@ -47281,9 +47376,8 @@ func NewQueryBitrate() *Query {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_query)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _query
 }
@@ -47304,9 +47398,8 @@ func NewQueryBuffering(format Format) *Query {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_query)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _query
 }
@@ -47327,9 +47420,8 @@ func NewQueryCaps(filter *Caps) *Query {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_query)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _query
 }
@@ -47351,9 +47443,8 @@ func NewQueryContext(contextType string) *Query {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_query)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _query
 }
@@ -47380,9 +47471,8 @@ func NewQueryConvert(srcFormat Format, value int64, destFormat Format) *Query {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_query)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _query
 }
@@ -47409,9 +47499,8 @@ func NewQueryCustom(typ QueryType, structure *Structure) *Query {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_query)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _query
 }
@@ -47428,9 +47517,8 @@ func NewQueryDrain() *Query {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_query)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _query
 }
@@ -47451,9 +47539,8 @@ func NewQueryDuration(format Format) *Query {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_query)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _query
 }
@@ -47470,9 +47557,8 @@ func NewQueryFormats() *Query {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_query)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _query
 }
@@ -47489,9 +47575,8 @@ func NewQueryLatency() *Query {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_query)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _query
 }
@@ -47512,9 +47597,8 @@ func NewQueryPosition(format Format) *Query {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_query)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _query
 }
@@ -47531,9 +47615,8 @@ func NewQueryScheduling() *Query {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_query)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _query
 }
@@ -47554,9 +47637,8 @@ func NewQuerySeeking(format Format) *Query {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_query)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _query
 }
@@ -47577,9 +47659,8 @@ func NewQuerySegment(format Format) *Query {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_query)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _query
 }
@@ -47596,9 +47677,8 @@ func NewQuerySelectable() *Query {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_query)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _query
 }
@@ -47615,9 +47695,8 @@ func NewQueryURI() *Query {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_query)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _query
 }
@@ -47627,6 +47706,11 @@ func (q *Query) MiniObject() *MiniObject {
 	valptr := &q.native.mini_object
 	var _v *MiniObject // out
 	_v = (*MiniObject)(gextras.NewStructNative(unsafe.Pointer(valptr)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_v)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	return _v
 }
 
@@ -47942,6 +48026,12 @@ func (query *Query) Structure() *Structure {
 
 	if _cret != nil {
 		_structure = (*Structure)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+		runtime.SetFinalizer( // value is borrowed, don't clean up the receiver until dropped
+			gextras.StructIntern(unsafe.Pointer(_structure)),
+			func(_ *struct{ C unsafe.Pointer }) {
+				runtime.KeepAlive(query)
+			},
+		)
 	}
 
 	return _structure
@@ -48037,6 +48127,12 @@ func (query *Query) ParseAcceptCaps() *Caps {
 	var _caps *Caps // out
 
 	_caps = (*Caps)(gextras.NewStructNative(unsafe.Pointer(_arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_caps)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _caps
 }
@@ -48090,6 +48186,12 @@ func (query *Query) ParseAllocation() (*Caps, bool) {
 
 	if _arg1 != nil {
 		_caps = (*Caps)(gextras.NewStructNative(unsafe.Pointer(_arg1)))
+		C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_arg1)))
+		runtime.SetFinalizer(
+			gextras.StructIntern(unsafe.Pointer(_caps)),
+			func(intern *struct{ C unsafe.Pointer }) {
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 	if _arg2 != 0 {
 		_needPool = true
@@ -48238,6 +48340,12 @@ func (query *Query) ParseCaps() *Caps {
 	var _filter *Caps // out
 
 	_filter = (*Caps)(gextras.NewStructNative(unsafe.Pointer(_arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_filter)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _filter
 }
@@ -48261,6 +48369,12 @@ func (query *Query) ParseCapsResult() *Caps {
 
 	if _arg1 != nil {
 		_caps = (*Caps)(gextras.NewStructNative(unsafe.Pointer(_arg1)))
+		C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_arg1)))
+		runtime.SetFinalizer(
+			gextras.StructIntern(unsafe.Pointer(_caps)),
+			func(intern *struct{ C unsafe.Pointer }) {
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _caps
@@ -48464,6 +48578,12 @@ func (query *Query) ParseNthAllocationMeta(index uint) (*Structure, coreglib.Typ
 
 	if _arg2 != nil {
 		_params = (*Structure)(gextras.NewStructNative(unsafe.Pointer(_arg2)))
+		C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_arg2)))
+		runtime.SetFinalizer(
+			gextras.StructIntern(unsafe.Pointer(_params)),
+			func(intern *struct{ C unsafe.Pointer }) {
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 	_gType = coreglib.Type(_cret)
 
@@ -49499,6 +49619,12 @@ func (query *Query) WritableStructure() *Structure {
 	var _structure *Structure // out
 
 	_structure = (*Structure)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+	runtime.SetFinalizer( // value is borrowed, don't clean up the receiver until dropped
+		gextras.StructIntern(unsafe.Pointer(_structure)),
+		func(_ *struct{ C unsafe.Pointer }) {
+			runtime.KeepAlive(query)
+		},
+	)
 
 	return _structure
 }
@@ -49548,6 +49674,11 @@ func (r *ReferenceTimestampMeta) Reference() *Caps {
 	valptr := &r.native.reference
 	var _v *Caps // out
 	_v = (*Caps)(gextras.NewStructNative(unsafe.Pointer(*valptr)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_v)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	return _v
 }
 
@@ -49654,9 +49785,8 @@ func NewSample(buffer *Buffer, caps *Caps, segment *Segment, info *Structure) *S
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_sample)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _sample
 }
@@ -49681,6 +49811,12 @@ func (sample *Sample) Buffer() *Buffer {
 
 	if _cret != nil {
 		_buffer = (*Buffer)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+		runtime.SetFinalizer( // value is borrowed, don't clean up the receiver until dropped
+			gextras.StructIntern(unsafe.Pointer(_buffer)),
+			func(_ *struct{ C unsafe.Pointer }) {
+				runtime.KeepAlive(sample)
+			},
+		)
 	}
 
 	return _buffer
@@ -49707,6 +49843,12 @@ func (sample *Sample) BufferList() *BufferList {
 
 	if _cret != nil {
 		_bufferList = (*BufferList)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+		runtime.SetFinalizer( // value is borrowed, don't clean up the receiver until dropped
+			gextras.StructIntern(unsafe.Pointer(_bufferList)),
+			func(_ *struct{ C unsafe.Pointer }) {
+				runtime.KeepAlive(sample)
+			},
+		)
 	}
 
 	return _bufferList
@@ -49732,6 +49874,12 @@ func (sample *Sample) Caps() *Caps {
 
 	if _cret != nil {
 		_caps = (*Caps)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+		runtime.SetFinalizer( // value is borrowed, don't clean up the receiver until dropped
+			gextras.StructIntern(unsafe.Pointer(_caps)),
+			func(_ *struct{ C unsafe.Pointer }) {
+				runtime.KeepAlive(sample)
+			},
+		)
 	}
 
 	return _caps
@@ -49756,6 +49904,12 @@ func (sample *Sample) Info() *Structure {
 
 	if _cret != nil {
 		_structure = (*Structure)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+		runtime.SetFinalizer( // value is borrowed, don't clean up the receiver until dropped
+			gextras.StructIntern(unsafe.Pointer(_structure)),
+			func(_ *struct{ C unsafe.Pointer }) {
+				runtime.KeepAlive(sample)
+			},
+		)
 	}
 
 	return _structure
@@ -50908,6 +51062,11 @@ func (s *StaticCaps) Caps() *Caps {
 	valptr := &s.native.caps
 	var _v *Caps // out
 	_v = (*Caps)(gextras.NewStructNative(unsafe.Pointer(*valptr)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_v)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	return _v
 }
 
@@ -50952,9 +51111,8 @@ func (staticCaps *StaticCaps) Get() *Caps {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_caps)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _caps
@@ -51054,9 +51212,8 @@ func (templ *StaticPadTemplate) Caps() *Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_caps)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _caps
 }
@@ -51230,9 +51387,8 @@ func NewStructureEmpty(name string) *Structure {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_structure)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.gst_structure_free((*C.GstStructure)(intern.C))
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _structure
 }
@@ -51253,9 +51409,8 @@ func NewStructureIDEmpty(quark glib.Quark) *Structure {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_structure)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.gst_structure_free((*C.GstStructure)(intern.C))
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _structure
 }
@@ -51321,9 +51476,8 @@ func (structure *Structure) Copy() *Structure {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_ret)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.gst_structure_free((*C.GstStructure)(intern.C))
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _ret
 }
@@ -52523,9 +52677,8 @@ func (struct1 *Structure) Intersect(struct2 *Structure) *Structure {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_structure)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.gst_structure_free((*C.GstStructure)(intern.C))
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _structure
@@ -53004,6 +53157,11 @@ func (t *TagList) MiniObject() *MiniObject {
 	valptr := &t.native.mini_object
 	var _v *MiniObject // out
 	_v = (*MiniObject)(gextras.NewStructNative(unsafe.Pointer(valptr)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_v)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	return _v
 }
 
@@ -53694,9 +53852,8 @@ func (list *TagList) Sample(tag string) (*Sample, bool) {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_sample)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	if _cret != 0 {
 		_ok = true
 	}
@@ -53746,9 +53903,8 @@ func (list *TagList) SampleIndex(tag string, index uint) (*Sample, bool) {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_sample)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	if _cret != 0 {
 		_ok = true
 	}

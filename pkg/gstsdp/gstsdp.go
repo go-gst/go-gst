@@ -3153,9 +3153,8 @@ func (media *SDPMedia) CapsFromMedia(pt int) *gst.Caps {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_caps)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _caps

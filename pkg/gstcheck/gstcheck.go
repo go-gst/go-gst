@@ -73,9 +73,8 @@ func BufferStrawGetBuffer(bin gst.Elementer, pad *gst.Pad) *gst.Buffer {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _buffer
 }
@@ -2058,9 +2057,8 @@ func (h *Harness) CreateBuffer(size uint) *gst.Buffer {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _buffer
 }
@@ -2319,9 +2317,8 @@ func (h *Harness) Pull() *gst.Buffer {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_buffer)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _buffer
@@ -2384,9 +2381,8 @@ func (h *Harness) PullUntilEos() (*gst.Buffer, bool) {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_buf)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 	if _cret != 0 {
 		_ok = true
@@ -2492,9 +2488,8 @@ func (h *Harness) PushAndPull(buffer *gst.Buffer) *gst.Buffer {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_ret)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _ret
@@ -3065,9 +3060,8 @@ func (h *Harness) TakeAllDataAsBuffer() *gst.Buffer {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _buffer
 }
@@ -3138,9 +3132,8 @@ func (h *Harness) TryPull() *gst.Buffer {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_buffer)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _buffer

@@ -3,6 +3,9 @@ package main
 //go:generate go run . -o ./pkg/
 
 import (
+	"encoding/xml"
+	"log"
+	"slices"
 	"strings"
 
 	"github.com/diamondburned/gotk4/gir"
@@ -113,6 +116,8 @@ var Data = genmain.Overlay(
 			types.RemoveRecordFields("GstSdp-1.MIKEYMessage", "map_info", "payloads"),
 			types.RemoveRecordFields("GstSdp-1.MIKEYPayloadKEMAC", "subpayloads"),
 			types.RemoveRecordFields("GstSdp-1.MIKEYPayloadSP", "params"),
+
+			MiniObjectExtenderBorrows(),
 		},
 		Postprocessors: map[string][]girgen.Postprocessor{},
 		Filters: []types.FilterMatcher{
@@ -133,6 +138,42 @@ var Data = genmain.Overlay(
 
 func main() {
 	genmain.Run(Data)
+}
+
+var borrowedTypes = []string{
+	"Gst-1.MiniObject", "Gst-1.Structure", "Gst-1.Caps", "Gst-1.Buffer", "Gst-1.BufferList", "Gst-1.Memory", "Gst-1.Message", "Gst-1.Query", "Gst-1.Sample",
+}
+
+// gst.MiniObject extenders must not take a ref on these methods, or they are made readonly
+func MiniObjectExtenderBorrows() types.Preprocessor {
+	return types.PreprocessorFunc(func(repos gir.Repositories) {
+		for _, fulltype := range borrowedTypes {
+			res := repos.FindFullType(fulltype)
+			if res == nil {
+				log.Fatalf("fulltype %s not found", fulltype)
+			}
+
+			switch typ := res.Type.(type) {
+			case *gir.Record:
+				for i, m := range typ.Methods {
+					if m.ReturnValue.TransferOwnership.TransferOwnership == "none" && slices.ContainsFunc(borrowedTypes, func(typ string) bool {
+						return strings.SplitN(typ, ".", 2)[1] == m.ReturnValue.Type.Name
+					}) {
+						log.Printf("marking function as borrowing: %s", m.Name)
+						typ.Methods[i].ReturnValue.TransferOwnership.TransferOwnership = "borrow"
+					}
+				}
+			default:
+				log.Fatalf("unhandled type for %s", fulltype)
+			}
+		}
+	})
+}
+
+func MarkReturnAsBorrowed(fulltype string) types.Preprocessor {
+	return types.ModifyCallable(fulltype, func(c *gir.CallableAttrs) {
+		c.ReturnValue.TransferOwnership.TransferOwnership = "borrow"
+	})
 }
 
 func DedupBitfieldMembers(fulltype string) types.Preprocessor {
@@ -159,20 +200,20 @@ func DedupBitfieldMembers(fulltype string) types.Preprocessor {
 
 // FixCutoffEnumMemberNames adds a namespace prefix, that will later be cut off by FormatMember. It also regenerates the name from the C identifier
 func FixCutoffEnumMemberNames(fulltype string) types.Preprocessor {
-	return types.PreprocessorFunc(func(repos gir.Repositories) {
-		bf := repos.FindFullType(fulltype).Type.(*gir.Enum)
+	return types.MapMembers(fulltype, func(member gir.Member) gir.Member {
+		newname := strcases.SnakeToGo(true, strings.ToLower(member.CIdentifier))
 
-		oldmembers := bf.Members
+		nameAttr := xml.Name{Local: "name"}
+		for i, attr := range member.Names {
+			if attr.Name == nameAttr {
+				attr.Value = newname
+			}
 
-		bf.Members = nil
-
-		for _, m := range oldmembers {
-			m.SetName(strcases.SnakeToGo(true, strings.ToLower(m.CIdentifier)))
-
-			m.CIdentifier = "gst_" + m.CIdentifier
-
-			bf.Members = append(bf.Members, m)
+			member.Names[i] = attr
 		}
 
+		member.CIdentifier = "gst_" + member.CIdentifier
+
+		return member
 	})
 }

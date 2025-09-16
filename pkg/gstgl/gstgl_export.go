@@ -77,7 +77,19 @@ func _gotk4_gstgl1_GLBaseFilterClass_gl_set_caps(arg0 *C.GstGLBaseFilter, arg1 *
 	var _outcaps *gst.Caps // out
 
 	_incaps = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_incaps)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_outcaps = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg2)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg2)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_outcaps)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.GLSetCaps(_incaps, _outcaps)
 
@@ -449,9 +461,8 @@ func _gotk4_gstgl1_GLContextClass_request_config(arg0 *C.GstGLContext, arg1 *C.G
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_glConfig)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.gst_structure_free((*C.GstStructure)(intern.C))
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	ok := overrides.RequestConfig(_glConfig)
@@ -570,7 +581,19 @@ func _gotk4_gstgl1_GLFilterClass_filter(arg0 *C.GstGLFilter, arg1 *C.GstBuffer, 
 	var _outbuf *gst.Buffer // out
 
 	_inbuf = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_inbuf)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_outbuf = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg2)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg2)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_outbuf)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.Filter(_inbuf, _outbuf)
 
@@ -639,7 +662,19 @@ func _gotk4_gstgl1_GLFilterClass_set_caps(arg0 *C.GstGLFilter, arg1 *C.GstCaps, 
 	var _outcaps *gst.Caps // out
 
 	_incaps = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_incaps)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_outcaps = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg2)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg2)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_outcaps)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.SetCaps(_incaps, _outcaps)
 
@@ -666,7 +701,19 @@ func _gotk4_gstgl1_GLFilterClass_transform_internal_caps(arg0 *C.GstGLFilter, ar
 
 	_direction = gst.PadDirection(arg1)
 	_caps = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg2)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg2)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_caps)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	_filterCaps = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(arg3)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg3)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_filterCaps)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ret := overrides.TransformInternalCaps(_direction, _caps, _filterCaps)
 
@@ -689,6 +736,12 @@ func _gotk4_gstgl1_GLMixerClass_process_buffers(arg0 *C.GstGLMixer, arg1 *C.GstB
 	var _outbuf *gst.Buffer // out
 
 	_outbuf = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_outbuf)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := overrides.ProcessBuffers(_outbuf)
 

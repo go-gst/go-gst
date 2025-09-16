@@ -28,6 +28,12 @@ func _gotk4_gsttag1_TagDemuxClass_identify_tag(arg0 *C.GstTagDemux, arg1 *C.GstB
 	var _tagSize *uint      // out
 
 	_buffer = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_buffer)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	if arg2 != 0 {
 		_startTag = true
 	}

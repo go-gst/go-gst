@@ -369,9 +369,8 @@ func PlayMessageParseError(msg *gst.Message) (error, *gst.Structure) {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_details)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.gst_structure_free((*C.GstStructure)(intern.C))
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _err, _details
@@ -598,9 +597,8 @@ func PlayMessageParseWarning(msg *gst.Message) (error, *gst.Structure) {
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_details)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.gst_structure_free((*C.GstStructure)(intern.C))
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _err, _details
@@ -906,9 +904,8 @@ func (play *Play) Config() *gst.Structure {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_structure)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.gst_structure_free((*C.GstStructure)(intern.C))
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _structure
 }
@@ -1353,9 +1350,8 @@ func (play *Play) VideoSnapshot(format PlaySnapshotFormat, config *gst.Structure
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_sample)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _sample
@@ -2447,6 +2443,12 @@ func (info *PlayMediaInfo) ImageSample() *gst.Sample {
 
 	if _cret != nil {
 		_sample = (*gst.Sample)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+		C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_cret)))
+		runtime.SetFinalizer(
+			gextras.StructIntern(unsafe.Pointer(_sample)),
+			func(intern *struct{ C unsafe.Pointer }) {
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _sample
@@ -2958,6 +2960,12 @@ func (info *PlayStreamInfo) Caps() *gst.Caps {
 
 	if _cret != nil {
 		_caps = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+		C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_cret)))
+		runtime.SetFinalizer(
+			gextras.StructIntern(unsafe.Pointer(_caps)),
+			func(intern *struct{ C unsafe.Pointer }) {
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _caps

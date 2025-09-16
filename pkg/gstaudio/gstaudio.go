@@ -2563,9 +2563,8 @@ func AudioMakeRawCaps(formats []AudioFormat, layout AudioLayout) *gst.Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_caps)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _caps
 }
@@ -3437,9 +3436,8 @@ func (aagg *AudioAggregator) createOutputBuffer(numFrames uint) *gst.Buffer {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _buffer
 }
@@ -3612,9 +3610,8 @@ func (pad *AudioAggregatorPad) convertBuffer(inInfo, outInfo *AudioInfo, buffer 
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_ret)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _ret
 }
@@ -4058,9 +4055,8 @@ func (sink *AudioBaseSink) payload(buffer *gst.Buffer) *gst.Buffer {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_ret)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _ret
 }
@@ -4519,9 +4515,8 @@ func (src *AudioCdSrc) readSector(sector int) *gst.Buffer {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _buffer
 }
@@ -5054,9 +5049,8 @@ func (dec *AudioDecoder) AllocateOutputBuffer(size uint) *gst.Buffer {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _buffer
 }
@@ -5557,9 +5551,8 @@ func (decoder *AudioDecoder) ProxyGetcaps(caps, filter *gst.Caps) *gst.Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_ret)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _ret
 }
@@ -5960,9 +5953,8 @@ func (dec *AudioDecoder) caps(filter *gst.Caps) *gst.Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_caps)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _caps
 }
@@ -6667,9 +6659,8 @@ func (enc *AudioEncoder) AllocateOutputBuffer(size uint) *gst.Buffer {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _buffer
 }
@@ -7121,9 +7112,8 @@ func (enc *AudioEncoder) ProxyGetcaps(caps, filter *gst.Caps) *gst.Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_ret)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _ret
 }
@@ -7530,9 +7520,8 @@ func (enc *AudioEncoder) caps(filter *gst.Caps) *gst.Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_caps)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _caps
 }
@@ -10073,6 +10062,11 @@ func (a *AudioBuffer) Buffer() *gst.Buffer {
 	valptr := &a.native.buffer
 	var _v *gst.Buffer // out
 	_v = (*gst.Buffer)(gextras.NewStructNative(unsafe.Pointer(*valptr)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_v)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	return _v
 }
 
@@ -10146,9 +10140,8 @@ func AudioBufferClip(buffer *gst.Buffer, segment *gst.Segment, rate, bpf int) *g
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_ret)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _ret
@@ -10315,9 +10308,8 @@ func AudioBufferTruncate(buffer *gst.Buffer, bpf int, trim, samples uint) *gst.B
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_ret)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _ret
 }
@@ -10658,6 +10650,12 @@ func (convert *AudioConverter) Config() (inRate int, outRate int, structure *gst
 	_inRate = int(_arg1)
 	_outRate = int(_arg2)
 	_structure = (*gst.Structure)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_cret)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_structure)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _inRate, _outRate, _structure
 }
@@ -11431,9 +11429,8 @@ func (info *AudioInfo) ToCaps() *gst.Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_caps)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _caps
 }
@@ -11665,6 +11662,11 @@ func (a *AudioRingBufferSpec) Caps() *gst.Caps {
 	valptr := &a.native.caps
 	var _v *gst.Caps // out
 	_v = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(*valptr)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_v)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 	return _v
 }
 
@@ -12424,9 +12426,8 @@ func (info *DsdInfo) ToCaps() *gst.Caps {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_caps)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _caps
 }

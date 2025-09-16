@@ -248,6 +248,12 @@ func _gotk4_gstapp1_AppSink_ConnectProposeAllocation(arg0 C.gpointer, arg1 *C.Gs
 	var _query *gst.Query // out
 
 	_query = (*gst.Query)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_query)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	ok := f(_query)
 
@@ -317,9 +323,8 @@ func _gotk4_gstapp1_AppSrcClass_push_buffer(arg0 *C.GstAppSrc, arg1 *C.GstBuffer
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_buffer)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	flowReturn := overrides.PushBuffer(_buffer)
 
@@ -344,9 +349,8 @@ func _gotk4_gstapp1_AppSrcClass_push_buffer_list(arg0 *C.GstAppSrc, arg1 *C.GstB
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_bufferList)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.free(intern.C)
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	flowReturn := overrides.PushBufferList(_bufferList)
 
@@ -368,6 +372,12 @@ func _gotk4_gstapp1_AppSrcClass_push_sample(arg0 *C.GstAppSrc, arg1 *C.GstSample
 	var _sample *gst.Sample // out
 
 	_sample = (*gst.Sample)(gextras.NewStructNative(unsafe.Pointer(arg1)))
+	C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(arg1)))
+	runtime.SetFinalizer(
+		gextras.StructIntern(unsafe.Pointer(_sample)),
+		func(intern *struct{ C unsafe.Pointer }) {
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	flowReturn := overrides.PushSample(_sample)
 

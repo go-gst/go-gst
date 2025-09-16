@@ -564,9 +564,8 @@ func (player *Player) Config() *gst.Structure {
 	runtime.SetFinalizer(
 		gextras.StructIntern(unsafe.Pointer(_structure)),
 		func(intern *struct{ C unsafe.Pointer }) {
-			C.gst_structure_free((*C.GstStructure)(intern.C))
-		},
-	)
+			C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+		})
 
 	return _structure
 }
@@ -970,9 +969,8 @@ func (player *Player) VideoSnapshot(format PlayerSnapshotFormat, config *gst.Str
 		runtime.SetFinalizer(
 			gextras.StructIntern(unsafe.Pointer(_sample)),
 			func(intern *struct{ C unsafe.Pointer }) {
-				C.free(intern.C)
-			},
-		)
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _sample
@@ -2047,6 +2045,12 @@ func (info *PlayerMediaInfo) ImageSample() *gst.Sample {
 
 	if _cret != nil {
 		_sample = (*gst.Sample)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+		C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_cret)))
+		runtime.SetFinalizer(
+			gextras.StructIntern(unsafe.Pointer(_sample)),
+			func(intern *struct{ C unsafe.Pointer }) {
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _sample
@@ -2380,6 +2384,12 @@ func (info *PlayerStreamInfo) Caps() *gst.Caps {
 
 	if _cret != nil {
 		_caps = (*gst.Caps)(gextras.NewStructNative(unsafe.Pointer(_cret)))
+		C.gst_mini_object_ref((*C.GstMiniObject)(unsafe.Pointer(_cret)))
+		runtime.SetFinalizer(
+			gextras.StructIntern(unsafe.Pointer(_caps)),
+			func(intern *struct{ C unsafe.Pointer }) {
+				C.gst_mini_object_unref((*C.GstMiniObject)(intern.C))
+			})
 	}
 
 	return _caps
