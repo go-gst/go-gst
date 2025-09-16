@@ -123,7 +123,4 @@ func (bus *BusInstance) SetSyncHandler(fn BusSyncHandler) {
 // Handler will be invoked synchronously, when a new message has been injected
 // into the bus. This function is mostly used internally. Only one sync handler
 // can be attached to a given bus.
-//
-// If the handler returns %GST_BUS_DROP, it should unref the message, else the
-// message should not be unreffed by the sync handler.
 type BusSyncHandler func(bus Bus, message *Message) (goret BusSyncReply)
