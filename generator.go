@@ -86,6 +86,8 @@ var Data = genmain.Data{
 
 			panic("PadProbeCallback does not have an info parameter")
 		}),
+
+		MarkSDPMessageGettersAsBorrowed(),
 	},
 	Config: typesystem.Config{
 		Namespaces: map[string]typesystem.NamespaceConfig{
@@ -310,6 +312,35 @@ func MiniObjectExtenderBorrows() gir.Preprocessor {
 			default:
 				log.Fatalf("unhandled type for %s", fulltype)
 			}
+		}
+	})
+}
+
+// gstsdp.SDPMessage and family have getters that return borrowed values, so we mark the return value as borrowed
+func MarkSDPMessageGettersAsBorrowed() gir.Preprocessor {
+	return gir.PreprocessorFunc(func(r gir.Repositories) {
+		funcs := []string{
+			// message:
+			// "GstSdp-1.SDPMessage.get_email", // returns string, not borrowed
+			// "GstSdp-1.SDPMessage.get_phone", // returns string, not borrowed
+			"GstSdp-1.SDPMessage.get_bandwidth",
+			"GstSdp-1.SDPMessage.get_time",
+			"GstSdp-1.SDPMessage.get_zone",
+			"GstSdp-1.SDPMessage.get_attribute",
+			"GstSdp-1.SDPMessage.get_media",
+
+			// media:
+			"GstSdp-1.SDPMedia.get_connection",
+			"GstSdp-1.SDPMedia.get_bandwidth",
+			"GstSdp-1.SDPMedia.get_attribute",
+			// "GstSdp-1.SDPMedia.get_format", // returns string, not borrowed
+		}
+
+		for _, fullfunc := range funcs {
+			f := r.FindFullType(fullfunc).(*gir.Method)
+
+			f.ReturnValue.TransferOwnership.TransferOwnership = "borrow"
+
 		}
 	})
 }
