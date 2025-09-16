@@ -4109,7 +4109,7 @@ func (media *SDPMedia) FormatsLen() uint {
 func (media *SDPMedia) GetAttribute(idx uint) *SDPAttribute {
 	var carg0 *C.GstSDPMedia     // in, none, converted
 	var carg1 C.guint            // in, none, casted
-	var cret  *C.GstSDPAttribute // return, none, converted
+	var cret  *C.GstSDPAttribute // return, borrow, converted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = C.guint(idx)
@@ -4120,7 +4120,8 @@ func (media *SDPMedia) GetAttribute(idx uint) *SDPAttribute {
 
 	var goret *SDPAttribute
 
-	goret = UnsafeSDPAttributeFromGlibNone(unsafe.Pointer(cret))
+	goret = UnsafeSDPAttributeFromGlibBorrow(unsafe.Pointer(cret))
+	runtime.AddCleanup(goret, func(_ *SDPMedia) {}, media)
 
 	return goret
 }
@@ -4209,7 +4210,7 @@ func (media *SDPMedia) GetAttributeValN(key string, nth uint) string {
 func (media *SDPMedia) GetBandwidth(idx uint) *SDPBandwidth {
 	var carg0 *C.GstSDPMedia     // in, none, converted
 	var carg1 C.guint            // in, none, casted
-	var cret  *C.GstSDPBandwidth // return, none, converted
+	var cret  *C.GstSDPBandwidth // return, borrow, converted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = C.guint(idx)
@@ -4220,7 +4221,8 @@ func (media *SDPMedia) GetBandwidth(idx uint) *SDPBandwidth {
 
 	var goret *SDPBandwidth
 
-	goret = UnsafeSDPBandwidthFromGlibNone(unsafe.Pointer(cret))
+	goret = UnsafeSDPBandwidthFromGlibBorrow(unsafe.Pointer(cret))
+	runtime.AddCleanup(goret, func(_ *SDPMedia) {}, media)
 
 	return goret
 }
@@ -4279,7 +4281,7 @@ func (media *SDPMedia) GetCapsFromMedia(pt int32) *gst.Caps {
 func (media *SDPMedia) GetConnection(idx uint) *SDPConnection {
 	var carg0 *C.GstSDPMedia      // in, none, converted
 	var carg1 C.guint             // in, none, casted
-	var cret  *C.GstSDPConnection // return, none, converted
+	var cret  *C.GstSDPConnection // return, borrow, converted
 
 	carg0 = (*C.GstSDPMedia)(UnsafeSDPMediaToGlibNone(media))
 	carg1 = C.guint(idx)
@@ -4290,7 +4292,8 @@ func (media *SDPMedia) GetConnection(idx uint) *SDPConnection {
 
 	var goret *SDPConnection
 
-	goret = UnsafeSDPConnectionFromGlibNone(unsafe.Pointer(cret))
+	goret = UnsafeSDPConnectionFromGlibBorrow(unsafe.Pointer(cret))
+	runtime.AddCleanup(goret, func(_ *SDPMedia) {}, media)
 
 	return goret
 }
@@ -5810,7 +5813,7 @@ func (msg *SDPMessage) EmailsLen() uint {
 func (msg *SDPMessage) GetAttribute(idx uint) *SDPAttribute {
 	var carg0 *C.GstSDPMessage   // in, none, converted
 	var carg1 C.guint            // in, none, casted
-	var cret  *C.GstSDPAttribute // return, none, converted
+	var cret  *C.GstSDPAttribute // return, borrow, converted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -5821,7 +5824,8 @@ func (msg *SDPMessage) GetAttribute(idx uint) *SDPAttribute {
 
 	var goret *SDPAttribute
 
-	goret = UnsafeSDPAttributeFromGlibNone(unsafe.Pointer(cret))
+	goret = UnsafeSDPAttributeFromGlibBorrow(unsafe.Pointer(cret))
+	runtime.AddCleanup(goret, func(_ *SDPMessage) {}, msg)
 
 	return goret
 }
@@ -5910,7 +5914,7 @@ func (msg *SDPMessage) GetAttributeValN(key string, nth uint) string {
 func (msg *SDPMessage) GetBandwidth(idx uint) *SDPBandwidth {
 	var carg0 *C.GstSDPMessage   // in, none, converted
 	var carg1 C.guint            // in, none, casted
-	var cret  *C.GstSDPBandwidth // return, none, converted
+	var cret  *C.GstSDPBandwidth // return, borrow, converted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -5921,7 +5925,8 @@ func (msg *SDPMessage) GetBandwidth(idx uint) *SDPBandwidth {
 
 	var goret *SDPBandwidth
 
-	goret = UnsafeSDPBandwidthFromGlibNone(unsafe.Pointer(cret))
+	goret = UnsafeSDPBandwidthFromGlibBorrow(unsafe.Pointer(cret))
+	runtime.AddCleanup(goret, func(_ *SDPMessage) {}, msg)
 
 	return goret
 }
@@ -6039,7 +6044,7 @@ func (msg *SDPMessage) GetKey() *SDPKey {
 func (msg *SDPMessage) GetMedia(idx uint) *SDPMedia {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 C.guint          // in, none, casted
-	var cret  *C.GstSDPMedia   // return, none, converted
+	var cret  *C.GstSDPMedia   // return, borrow, converted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -6050,7 +6055,8 @@ func (msg *SDPMessage) GetMedia(idx uint) *SDPMedia {
 
 	var goret *SDPMedia
 
-	goret = UnsafeSDPMediaFromGlibNone(unsafe.Pointer(cret))
+	goret = UnsafeSDPMediaFromGlibBorrow(unsafe.Pointer(cret))
+	runtime.AddCleanup(goret, func(_ *SDPMessage) {}, msg)
 
 	return goret
 }
@@ -6145,7 +6151,7 @@ func (msg *SDPMessage) GetSessionName() string {
 func (msg *SDPMessage) GetTime(idx uint) *SDPTime {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 C.guint          // in, none, casted
-	var cret  *C.GstSDPTime    // return, none, converted
+	var cret  *C.GstSDPTime    // return, borrow, converted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -6156,7 +6162,8 @@ func (msg *SDPMessage) GetTime(idx uint) *SDPTime {
 
 	var goret *SDPTime
 
-	goret = UnsafeSDPTimeFromGlibNone(unsafe.Pointer(cret))
+	goret = UnsafeSDPTimeFromGlibBorrow(unsafe.Pointer(cret))
+	runtime.AddCleanup(goret, func(_ *SDPMessage) {}, msg)
 
 	return goret
 }
@@ -6221,7 +6228,7 @@ func (msg *SDPMessage) GetVersion() string {
 func (msg *SDPMessage) GetZone(idx uint) *SDPZone {
 	var carg0 *C.GstSDPMessage // in, none, converted
 	var carg1 C.guint          // in, none, casted
-	var cret  *C.GstSDPZone    // return, none, converted
+	var cret  *C.GstSDPZone    // return, borrow, converted
 
 	carg0 = (*C.GstSDPMessage)(UnsafeSDPMessageToGlibNone(msg))
 	carg1 = C.guint(idx)
@@ -6232,7 +6239,8 @@ func (msg *SDPMessage) GetZone(idx uint) *SDPZone {
 
 	var goret *SDPZone
 
-	goret = UnsafeSDPZoneFromGlibNone(unsafe.Pointer(cret))
+	goret = UnsafeSDPZoneFromGlibBorrow(unsafe.Pointer(cret))
+	runtime.AddCleanup(goret, func(_ *SDPMessage) {}, msg)
 
 	return goret
 }
