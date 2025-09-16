@@ -230,6 +230,16 @@ var Data = genmain.Data{
 
 			return nil
 		},
+		// Virtual methods of GLBaseMemoryAllocator collide with gst.Allocator
+		func(r *typesystem.Registry) error {
+			gl := r.FindNamespaceByName("GstGL-1")
+
+			glBaseMemoryAllocator := gl.FindLocalTypeByGIRName("GLBaseMemoryAllocator").(*typesystem.Class)
+
+			glBaseMemoryAllocator.FindVirtualMethod("alloc").ParentName = "ParentAllocGLBaseMemoryAllocator"
+
+			return nil
+		},
 		// Virtual methods of AudioSink collide with BaseSink
 		func(r *typesystem.Registry) error {
 			audio := r.FindNamespaceByName("GstAudio-1")
