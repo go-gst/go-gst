@@ -15,8 +15,8 @@ const samplerate = 48000
 type customSrc struct {
 	gst.Bin // parent must be embedded as the first field
 
-	source gst.Elementer
-	volume gst.Elementer
+	source gst.Element
+	volume gst.Element
 
 	Duration time.Duration `glib:"duration"`
 }
@@ -31,16 +31,16 @@ func (bin *customSrc) init() {
 		bin.volume,
 	)
 
-	srcpad := bin.volume.StaticPad("src")
+	srcpad := bin.volume.GetStaticPad("src")
 
-	ghostpad := gst.NewGhostPadFromTemplate("src", srcpad, bin.PadTemplate("src"))
+	ghostpad := gst.NewGhostPadFromTemplate("src", srcpad, bin.GetPadTemplate("src"))
 
 	gst.LinkMany(
 		bin.source,
 		bin.volume,
 	)
 
-	bin.AddPad(&ghostpad.Pad)
+	bin.AddPad(ghostpad)
 
 	bin.updateSource()
 }

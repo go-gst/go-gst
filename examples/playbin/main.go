@@ -12,24 +12,20 @@
 package main
 
 import (
+	"context"
 	"errors"
 	"fmt"
 	"os"
 
-	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/go-gst/go-gst/pkg/gst"
 )
 
 func playbin() error {
 	gst.Init()
 
-	mainLoop := glib.NewMainLoop(glib.MainContextDefault(), false)
-
 	if len(os.Args) < 2 {
 		return errors.New("usage: playbin <uri>")
 	}
-
-	gst.Init()
 
 	// Create a new playbin and set the URI on it
 	ret := gst.ElementFactoryMake("playbin", "")
@@ -37,35 +33,36 @@ func playbin() error {
 		return fmt.Errorf("could not create playbin")
 	}
 
-	playbin := ret.(*gst.Pipeline)
+	playbin := ret.(gst.Pipeline)
 
 	playbin.SetObjectProperty("uri", os.Args[1])
 
 	// The playbin element itself is a pipeline, so it can be used as one, despite being
 	// created from an element factory.
-	bus := playbin.Bus()
+	bus := playbin.GetBus()
 
 	playbin.SetState(gst.StatePlaying)
 
-	bus.AddWatch(0, func(bus *gst.Bus, msg *gst.Message) bool {
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	for msg := range bus.Messages(ctx) {
 		switch msg.Type() {
 		case gst.MessageEos:
-			mainLoop.Quit()
-			return false
+			return nil
 		case gst.MessageError:
-			err, debug := msg.ParseError()
+			debug, err := msg.ParseError()
 			fmt.Println("ERROR:", err.Error())
 			if debug != "" {
 				fmt.Println("DEBUG")
 				fmt.Println(debug)
 			}
-			mainLoop.Quit()
-			return false
+			return nil
 		// Watch state change events
 		case gst.MessageStateChanged:
 			if _, newState, _ := msg.ParseStateChanged(); newState == gst.StatePlaying {
 				// Generate a dot graph of the pipeline to GST_DEBUG_DUMP_DOT_DIR if defined
-				gst.DebugBinToDotFile(&playbin.Bin, gst.DebugGraphShowAll, "PLAYING")
+				playbin.DebugBinToDotFile(gst.DebugGraphShowAll, "PLAYING")
 			}
 
 		// Tag messages contain changes to tags on the stream. This can include metadata about
@@ -73,20 +70,18 @@ func playbin() error {
 		case gst.MessageTag:
 			tags := msg.ParseTag()
 			fmt.Println("Tags:")
-			if artist, ok := tags.String(gst.TAG_ARTIST); ok {
+			if artist, ok := tags.GetString(gst.TAG_ARTIST); ok {
 				fmt.Println("  Artist:", artist)
 			}
-			if album, ok := tags.String(gst.TAG_ALBUM); ok {
+			if album, ok := tags.GetString(gst.TAG_ALBUM); ok {
 				fmt.Println("  Album:", album)
 			}
-			if title, ok := tags.String(gst.TAG_TITLE); ok {
+			if title, ok := tags.GetString(gst.TAG_TITLE); ok {
 				fmt.Println("  Title:", title)
 			}
 		}
-		return true
-	})
-
-	mainLoop.Run()
+		return nil
+	}
 
 	return nil
 }

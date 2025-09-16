@@ -14,18 +14,10 @@ func main() {
 
 	higherThanHighRank := uint(258)
 
-	pluginf := registry.LookupFeature("vtdec_hw")
-
-	if pluginf == nil {
-		fmt.Printf("codec vtdec_hw not found")
-
-		return
-	}
-
-	plugin := gst.BasePluginFeature(pluginf)
+	plugin := registry.LookupFeature("vtdec_hw")
 
 	plugin.SetRank(higherThanHighRank)
 
-	rank := plugin.Rank()
+	rank := plugin.GetRank()
 	fmt.Println("vtdec_hw rank is:", rank)
 }

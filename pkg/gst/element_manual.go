@@ -14,3 +14,17 @@ func (el *ElementInstance) BlockSetState(state State, timeout ClockTime) StateCh
 
 	return ret
 }
+
+func LinkMany(elements ...Element) bool {
+	if len(elements) < 2 {
+		return false
+	}
+
+	for i := 0; i < len(elements)-1; i++ {
+		if !elements[i].Link(elements[i+1]) {
+			return false
+		}
+	}
+
+	return true
+}

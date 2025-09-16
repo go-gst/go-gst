@@ -142,6 +142,20 @@ var Data = genmain.Overlay(
 
 						// gobject.NewValue handles this already.
 						typesystem.IgnoreMatching("util_set_value_from_string"),
+
+						// Buffer mapping is manually implemented:
+						typesystem.IgnoreMatching("Buffer.map"),
+						typesystem.IgnoreMatching("Buffer.unmap"),
+						typesystem.IgnoreMatching("MapInfo"),
+
+						// Requires a gvalue arg, manually implemented:
+						typesystem.IgnoreMatching("TagSetter.add_tag_value"),
+					},
+				},
+				"GstBase-1": {
+					IgnoredDefinitions: []typesystem.IgnoreFunc{
+						// has unexported free function that crashes the linker when compiling the examples:
+						typesystem.IgnoreMatching("TypeFindData"),
 					},
 				},
 				"GstVideo-1": {
@@ -171,6 +185,7 @@ var Data = genmain.Overlay(
 			typesystem.MarkAsManuallyExtended("Gst-1", "Bin"),
 			typesystem.MarkAsManuallyExtended("Gst-1", "Bus"),
 			typesystem.MarkAsManuallyExtended("Gst-1", "ChildProxy"),
+			typesystem.MarkAsManuallyExtended("Gst-1", "TagSetter"),
 			func(r *typesystem.Registry) error {
 				// this is needed to fix gstreamer <= 1.24.10. Remove once upgraded in the flake
 				webrtc := r.FindNamespaceByName("GstWebRTC-1")

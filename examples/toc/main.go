@@ -27,7 +27,7 @@ func tagsetter() error {
 		return errors.New("usage: toc <file>")
 	}
 
-	pipeline := gst.NewPipeline("")
+	pipeline := gst.NewPipeline("").(gst.Pipeline)
 
 	src := gst.ElementFactoryMake("filesrc", "")
 
@@ -40,7 +40,7 @@ func tagsetter() error {
 
 	// Connect to decodebin's pad-added signal, that is emitted whenever it found another stream
 	// from the input file and found a way to decode it to its raw format.
-	decodebin.ConnectPadAdded(func(srcPad *gst.Pad) {
+	decodebin.ConnectPadAdded(func(self gst.Element, srcPad gst.Pad) {
 
 		// In this example, we are only interested about parsing the ToC, so
 		// we simply pipe every encountered stream into a fakesink, essentially
@@ -53,7 +53,7 @@ func tagsetter() error {
 		queue.SyncStateWithParent()
 		fakesink.SyncStateWithParent()
 
-		sinkPad := queue.StaticPad("sink")
+		sinkPad := queue.GetStaticPad("sink")
 		if sinkPad == nil {
 			fmt.Println("Could not get static pad from sink")
 			return
@@ -73,7 +73,7 @@ func tagsetter() error {
 	// timed_pop on the bus with the desired timeout for when to stop waiting for new messages.
 	// (-1 = Wait forever)
 	for {
-		msg := pipeline.Bus().TimedPop(gst.ClockTimeNone)
+		msg := pipeline.GetBus().TimedPop(gst.ClockTimeNone)
 		switch msg.Type() {
 
 		// When we use this method of popping from the bus (instead of a Watch), we own a
@@ -85,7 +85,7 @@ func tagsetter() error {
 		case gst.MessageEos:
 			// Errors from any elements
 		case gst.MessageError:
-			gerr, debug := msg.ParseError()
+			debug, gerr := msg.ParseError()
 			if debug != "" {
 				fmt.Println("go-gst-debug:", debug)
 			}
@@ -96,9 +96,9 @@ func tagsetter() error {
 		case gst.MessageToc:
 			// Parse the toc from the message
 			toc, updated := msg.ParseToc()
-			fmt.Printf("Received toc: %s - updated %v\n", toc.Scope().String(), updated)
+			fmt.Printf("Received toc: %s - updated %v\n", toc.GetScope().String(), updated)
 			// Get a list of tags that are ToC specific.
-			if tags := toc.Tags(); tags != nil {
+			if tags := toc.GetTags(); tags != nil {
 				fmt.Println("- tags:", tags)
 			}
 			// ToCs do not have a fixed structure. Depending on the format that
@@ -108,33 +108,33 @@ func tagsetter() error {
 			// interpreting the ToC manually.
 			// In this example, we simply want to print the ToC structure, so
 			// we iterate everything and don't try to interpret anything.
-			for _, entry := range toc.Entries() {
+			for _, entry := range toc.GetEntries() {
 				// Every entry in a ToC has its own type. One type could for
 				// example be Chapter.
-				fmt.Printf("\t%s - %s\n", entry.EntryType().String(), entry.Uid())
+				fmt.Printf("\t%s - %s\n", entry.GetEntryType().String(), entry.GetUid())
 
 				// Every ToC entry can have a set of timestamps (start, stop).
-				if start, stop, ok := entry.StartStopTimes(); ok {
+				if start, stop, ok := entry.GetStartStopTimes(); ok {
 					startDur := time.Duration(start) * time.Nanosecond
 					stopDur := time.Duration(stop) * time.Nanosecond
 					fmt.Printf("\t- start: %s, stop: %s\n", startDur, stopDur)
 				}
 
 				// Every ToC entry can have tags to it.
-				if tags := entry.Tags(); tags != nil {
+				if tags := entry.GetTags(); tags != nil {
 					fmt.Println("\t- tags:", tags)
 				}
 
 				// Every ToC entry can have a set of child entries.
 				// With this structure, you can create trees of arbitrary depth.
-				for _, subEntry := range entry.SubEntries() {
-					fmt.Printf("\n\t\t%s - %s\n", subEntry.EntryType().String(), subEntry.Uid())
-					if start, stop, ok := entry.StartStopTimes(); ok {
+				for _, subEntry := range entry.GetSubEntries() {
+					fmt.Printf("\n\t\t%s - %s\n", subEntry.GetEntryType().String(), subEntry.GetUid())
+					if start, stop, ok := entry.GetStartStopTimes(); ok {
 						startDur := time.Duration(start) * time.Nanosecond
 						stopDur := time.Duration(stop) * time.Nanosecond
 						fmt.Printf("\t\t- start: %s, stop: %s\n", startDur, stopDur)
 					}
-					if tags := entry.Tags(); tags != nil {
+					if tags := entry.GetTags(); tags != nil {
 						fmt.Println("\t\t- tags:", tags)
 					}
 				}

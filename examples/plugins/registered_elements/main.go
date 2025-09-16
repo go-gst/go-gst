@@ -8,7 +8,6 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/diamondburned/gotk4/pkg/glib/v2"
 	"github.com/go-gst/go-gst/examples/plugins/registered_elements/internal/custombin"
 	"github.com/go-gst/go-gst/examples/plugins/registered_elements/internal/customsrc"
 	"github.com/go-gst/go-gst/pkg/gst"
@@ -37,53 +36,49 @@ func run(ctx context.Context) error {
 		return err
 	}
 
-	pipeline := ret.(*gst.Pipeline)
+	pipeline := ret.(gst.Pipeline)
 
 	pipeline.UseClock(systemclock)
 
-	bus := pipeline.Bus()
-
-	mainloop := glib.NewMainLoop(glib.MainContextDefault(), false)
+	bus := pipeline.GetBus()
 
 	pipeline.SetState(gst.StatePlaying)
 
-	bus.AddWatch(0, func(bus *gst.Bus, msg *gst.Message) bool {
-		switch msg.Type() {
-		case gst.MessageStateChanged:
-			old, new, _ := msg.ParseStateChanged()
-			dot := gst.DebugBinToDotData(&pipeline.Bin, gst.DebugGraphShowVerbose)
+	go func() {
+		for msg := range bus.Messages(ctx) {
+			switch msg.Type() {
+			case gst.MessageStateChanged:
+				old, new, _ := msg.ParseStateChanged()
+				dot := pipeline.DebugBinToDotData(gst.DebugGraphShowVerbose)
 
-			f, err := os.OpenFile(filepath.Join(wd, fmt.Sprintf("pipeline-%s-to-%s.dot", old, new)), os.O_TRUNC|os.O_CREATE|os.O_RDWR, 0600)
+				f, err := os.OpenFile(filepath.Join(wd, fmt.Sprintf("pipeline-%s-to-%s.dot", old, new)), os.O_TRUNC|os.O_CREATE|os.O_RDWR, 0600)
 
-			if err != nil {
+				if err != nil {
+					cancel()
+					return
+				}
+
+				defer f.Close()
+
+				_, err = f.Write([]byte(dot))
+
+				if err != nil {
+					fmt.Println(err)
+					cancel()
+					return
+				}
+
+			case gst.MessageEos:
+				fmt.Println("reached EOS")
 				cancel()
-				return false
+				return
 			}
 
-			defer f.Close()
-
-			_, err = f.Write([]byte(dot))
-
-			if err != nil {
-				fmt.Println(err)
-				cancel()
-				return false
-			}
-
-		case gst.MessageEos:
-			fmt.Println("reached EOS")
-			cancel()
-			return false
+			return
 		}
-
-		return true
-	})
-
-	go mainloop.Run()
+	}()
 
 	<-ctx.Done()
-
-	mainloop.Quit()
 
 	pipeline.BlockSetState(gst.StateNull, gst.ClockTime(time.Second))
 
