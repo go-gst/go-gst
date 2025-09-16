@@ -6,10 +6,10 @@ package gstvideo
 import "C"
 
 // SetFramerate sets the framerate of the video info as a fraction of
-// denom/num in frames per second.
-func (info *VideoInfo) SetFramerate(denom, num int) {
-	info.videoInfo.native.fps_d = C.gint(denom)
+// num/denom in frames per second.
+func (info *VideoInfo) SetFramerate(num, denom int) {
 	info.videoInfo.native.fps_n = C.gint(num)
+	info.videoInfo.native.fps_d = C.gint(denom)
 }
 
 // SetFramerate sets the framerate of the video info as a fraction of
