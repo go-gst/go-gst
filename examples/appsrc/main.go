@@ -37,7 +37,7 @@ func createPipeline() (gst.Pipeline, error) {
 	// by creating a video info with the given format and creating caps from it for the appsrc element.
 	videoInfo := gstvideo.NewVideoInfo()
 
-	ok := videoInfo.SetFormat(gstvideo.VideoFormatRGBA, width, height)
+	ok := videoInfo.SetFormat(gstvideo.VideoFormatRgba, width, height)
 
 	if !ok {
 		return nil, fmt.Errorf("failed to set video format")
@@ -56,7 +56,7 @@ func createPipeline() (gst.Pipeline, error) {
 	var i int
 
 	// Get all 256 colors in the RGB8P palette.
-	palette := gstvideo.VideoFormatGetPalette(gstvideo.VideoFormatRGB8P)
+	palette := gstvideo.VideoFormatGetPalette(gstvideo.VideoFormatRgb8p)
 
 	// Since our appsrc element operates in pull mode (it asks us to provide data),
 	// we add a handler for the need-data callback and provide new data from there.

@@ -90,7 +90,7 @@ func encodeGif() error {
 		pipeline.Add(appSink)
 		jpegenc.Link(appSink)
 		appSink.SyncStateWithParent()
-		appSink.SetWaitOnEos(false)
+		appSink.SetWaitOnEOS(false)
 
 		// We can query the decodebin for the duration of the video it received. We can then
 		// use this value to calculate the total number of frames we expect to produce.
@@ -111,7 +111,7 @@ func encodeGif() error {
 		// will be a new jpeg image from the pipeline.
 		var frameNum int
 
-		appSink.ConnectEos(func(self gstapp.AppSink) {
+		appSink.ConnectEOS(func(self gstapp.AppSink) {
 			fmt.Println("\nWriting the results of the gif to", outFile)
 			file, err := os.Create(outFile)
 			if err != nil {
@@ -136,7 +136,7 @@ func encodeGif() error {
 				// signal the main loop to quit.
 				// This needs to be done from a goroutine to not block the app sink
 				// callback.
-				return gst.FlowEos
+				return gst.FlowEOS
 			}
 
 			// Pull the sample from the sink
@@ -164,7 +164,7 @@ func encodeGif() error {
 			}
 
 			// Create a new paletted image with the same bounds as the pulled one
-			frame := image.NewPaletted(img.Bounds(), gstvideo.VideoFormatGetPalette(gstvideo.VideoFormatRGB8P))
+			frame := image.NewPaletted(img.Bounds(), gstvideo.VideoFormatGetPalette(gstvideo.VideoFormatRgb8p))
 
 			// Iterate the bounds of the image and set the pixels in their correct place.
 			for x := 1; x <= img.Bounds().Dx(); x++ {
