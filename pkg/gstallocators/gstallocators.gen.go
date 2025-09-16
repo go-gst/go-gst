@@ -96,10 +96,10 @@ func (f FdMemoryFlags) String() string {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
+// 	- goret int32 
 //
 // Return the file descriptor associated with @mem.
-func DmabufMemoryGetFd(mem *gst.Memory) int {
+func DmabufMemoryGetFd(mem *gst.Memory) int32 {
 	var carg1 *C.GstMemory // in, none, converted
 	var cret  C.gint       // return, none, casted
 
@@ -108,9 +108,9 @@ func DmabufMemoryGetFd(mem *gst.Memory) int {
 	cret = C.gst_dmabuf_memory_get_fd(carg1)
 	runtime.KeepAlive(mem)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -178,11 +178,11 @@ func DRMDumbMemoryGetHandle(mem *gst.Memory) uint32 {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
+// 	- goret int32 
 //
 // Get the fd from @mem. Call gst_is_fd_memory() to check if @mem has
 // an fd.
-func FdMemoryGetFd(mem *gst.Memory) int {
+func FdMemoryGetFd(mem *gst.Memory) int32 {
 	var carg1 *C.GstMemory // in, none, converted
 	var cret  C.gint       // return, none, casted
 
@@ -191,9 +191,9 @@ func FdMemoryGetFd(mem *gst.Memory) int {
 	cret = C.gst_fd_memory_get_fd(carg1)
 	runtime.KeepAlive(mem)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -349,6 +349,11 @@ func UnsafePhysMemoryAllocatorFromGlibFull(c unsafe.Pointer) PhysMemoryAllocator
 	return gobject.UnsafeObjectFromGlibFull(c).(PhysMemoryAllocator)
 }
 
+// UnsafePhysMemoryAllocatorFromGlibBorrow is used to convert raw GstPhysMemoryAllocator pointers to go without touching any references. This is used by the bindings internally.
+func UnsafePhysMemoryAllocatorFromGlibBorrow(c unsafe.Pointer) PhysMemoryAllocator {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(PhysMemoryAllocator)
+}
+
 // UnsafePhysMemoryAllocatorToGlibNone is used to convert the instance to it's C value GstPhysMemoryAllocator. This is used by the bindings internally.
 func UnsafePhysMemoryAllocatorToGlibNone(c PhysMemoryAllocator) unsafe.Pointer {
 	i := c.upcastToGstPhysMemoryAllocator()
@@ -440,6 +445,11 @@ func UnsafeDRMDumbAllocatorFromGlibFull(c unsafe.Pointer) DRMDumbAllocator {
 	return gobject.UnsafeObjectFromGlibFull(c).(DRMDumbAllocator)
 }
 
+// UnsafeDRMDumbAllocatorFromGlibBorrow is used to convert raw GstDRMDumbAllocator pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeDRMDumbAllocatorFromGlibBorrow(c unsafe.Pointer) DRMDumbAllocator {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(DRMDumbAllocator)
+}
+
 func (d *DRMDumbAllocatorInstance) upcastToGstDRMDumbAllocator() *DRMDumbAllocatorInstance {
 	return d
 }
@@ -490,7 +500,7 @@ func NewDRMDumbAllocatorWithDevicePath(drmDevicePath string) gst.Allocator {
 // 
 // The function takes the following parameters:
 // 
-// 	- drmFd int: file descriptor of the DRM device 
+// 	- drmFd int32: file descriptor of the DRM device 
 // 
 // The function returns the following values:
 // 
@@ -499,7 +509,7 @@ func NewDRMDumbAllocatorWithDevicePath(drmDevicePath string) gst.Allocator {
 // Creates a new #GstDRMDumbAllocator for the specific file desciptor. This
 // function can fail if the file descriptor is not a DRM device or if
 // the DRM device does not support DUMB allocation.
-func NewDRMDumbAllocatorWithFd(drmFd int) gst.Allocator {
+func NewDRMDumbAllocatorWithFd(drmFd int32) gst.Allocator {
 	var carg1 C.gint          // in, none, casted
 	var cret  *C.GstAllocator // return, full, converted, nullable
 
@@ -669,6 +679,11 @@ func UnsafeFdAllocatorFromGlibFull(c unsafe.Pointer) FdAllocator {
 	return gobject.UnsafeObjectFromGlibFull(c).(FdAllocator)
 }
 
+// UnsafeFdAllocatorFromGlibBorrow is used to convert raw GstFdAllocator pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeFdAllocatorFromGlibBorrow(c unsafe.Pointer) FdAllocator {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(FdAllocator)
+}
+
 func (f *FdAllocatorInstance) upcastToGstFdAllocator() *FdAllocatorInstance {
 	return f
 }
@@ -707,7 +722,7 @@ func NewFdAllocator() gst.Allocator {
 // The function takes the following parameters:
 // 
 // 	- allocator gst.Allocator: allocator to be used for this memory 
-// 	- fd int: file descriptor 
+// 	- fd int32: file descriptor 
 // 	- size uint: memory size 
 // 	- flags FdMemoryFlags: extra #GstFdMemoryFlags 
 // 
@@ -716,7 +731,7 @@ func NewFdAllocator() gst.Allocator {
 // 	- goret *gst.Memory (nullable) 
 //
 // Return a %GstMemory that wraps a generic file descriptor.
-func FdAllocatorAlloc(allocator gst.Allocator, fd int, size uint, flags FdMemoryFlags) *gst.Memory {
+func FdAllocatorAlloc(allocator gst.Allocator, fd int32, size uint, flags FdMemoryFlags) *gst.Memory {
 	var carg1 *C.GstAllocator    // in, none, converted
 	var carg2 C.gint             // in, none, casted
 	var carg3 C.gsize            // in, none, casted
@@ -833,6 +848,11 @@ func UnsafeShmAllocatorFromGlibNone(c unsafe.Pointer) ShmAllocator {
 // UnsafeShmAllocatorFromGlibFull is used to convert raw GstShmAllocator pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeShmAllocatorFromGlibFull(c unsafe.Pointer) ShmAllocator {
 	return gobject.UnsafeObjectFromGlibFull(c).(ShmAllocator)
+}
+
+// UnsafeShmAllocatorFromGlibBorrow is used to convert raw GstShmAllocator pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeShmAllocatorFromGlibBorrow(c unsafe.Pointer) ShmAllocator {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(ShmAllocator)
 }
 
 func (s *ShmAllocatorInstance) upcastToGstShmAllocator() *ShmAllocatorInstance {
@@ -964,6 +984,11 @@ func UnsafeDmaBufAllocatorFromGlibFull(c unsafe.Pointer) DmaBufAllocator {
 	return gobject.UnsafeObjectFromGlibFull(c).(DmaBufAllocator)
 }
 
+// UnsafeDmaBufAllocatorFromGlibBorrow is used to convert raw GstDmaBufAllocator pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeDmaBufAllocatorFromGlibBorrow(c unsafe.Pointer) DmaBufAllocator {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(DmaBufAllocator)
+}
+
 func (d *DmaBufAllocatorInstance) upcastToGstDmaBufAllocator() *DmaBufAllocatorInstance {
 	return d
 }
@@ -1002,7 +1027,7 @@ func NewDmaBufAllocator() gst.Allocator {
 // The function takes the following parameters:
 // 
 // 	- allocator gst.Allocator: allocator to be used for this memory 
-// 	- fd int: dmabuf file descriptor 
+// 	- fd int32: dmabuf file descriptor 
 // 	- size uint: memory size 
 // 
 // The function returns the following values:
@@ -1010,7 +1035,7 @@ func NewDmaBufAllocator() gst.Allocator {
 // 	- goret *gst.Memory (nullable) 
 //
 // Return a %GstMemory that wraps a dmabuf file descriptor.
-func DmaBufAllocatorAlloc(allocator gst.Allocator, fd int, size uint) *gst.Memory {
+func DmaBufAllocatorAlloc(allocator gst.Allocator, fd int32, size uint) *gst.Memory {
 	var carg1 *C.GstAllocator // in, none, converted
 	var carg2 C.gint          // in, none, casted
 	var carg3 C.gsize         // in, none, casted
@@ -1039,7 +1064,7 @@ func DmaBufAllocatorAlloc(allocator gst.Allocator, fd int, size uint) *gst.Memor
 // The function takes the following parameters:
 // 
 // 	- allocator gst.Allocator: allocator to be used for this memory 
-// 	- fd int: dmabuf file descriptor 
+// 	- fd int32: dmabuf file descriptor 
 // 	- size uint: memory size 
 // 	- flags FdMemoryFlags: extra #GstFdMemoryFlags 
 // 
@@ -1048,7 +1073,7 @@ func DmaBufAllocatorAlloc(allocator gst.Allocator, fd int, size uint) *gst.Memor
 // 	- goret *gst.Memory (nullable) 
 //
 // Return a %GstMemory that wraps a dmabuf file descriptor.
-func DmaBufAllocatorAllocWithFlags(allocator gst.Allocator, fd int, size uint, flags FdMemoryFlags) *gst.Memory {
+func DmaBufAllocatorAllocWithFlags(allocator gst.Allocator, fd int32, size uint, flags FdMemoryFlags) *gst.Memory {
 	var carg1 *C.GstAllocator    // in, none, converted
 	var carg2 C.gint             // in, none, casted
 	var carg3 C.gsize            // in, none, casted

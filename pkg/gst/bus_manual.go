@@ -3,6 +3,7 @@ package gst
 import (
 	"context"
 	"iter"
+	"sync/atomic"
 )
 
 type BusExtManual interface {
@@ -18,15 +19,23 @@ type BusExtManual interface {
 func (bus *BusInstance) Messages(ctx context.Context) iter.Seq[*Message] {
 	messages := make(chan *Message, 20) // arbitrary cap to not block instantly
 
+	c := atomic.Pointer[chan *Message]{}
+	c.Store(&messages)
+
 	bus.SetSyncHandler(func(bus Bus, message *Message) BusSyncReply {
-		messages <- message.Copy()
+		messages := c.Load()
+		if messages == nil {
+			return BusDrop
+		}
+		*messages <- message.Copy()
 		return BusDrop
 	})
 
 	return func(yield func(*Message) bool) {
+
 		defer func() {
 			bus.SetSyncHandler(nil)
-			close(messages)
+			c.Store(nil)
 		}()
 
 		for {

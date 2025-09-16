@@ -118,8 +118,11 @@ func marshalAppLeakyType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = AppLeakyType(0)
 
-func (e AppLeakyType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAppLeakyType)
+func (e AppLeakyType) GoValueType() gobject.Type {
+	return TypeAppLeakyType
+}
+
+func (e AppLeakyType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -161,8 +164,11 @@ func marshalAppStreamType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = AppStreamType(0)
 
-func (e AppStreamType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAppStreamType)
+func (e AppStreamType) GoValueType() gobject.Type {
+	return TypeAppStreamType
+}
+
+func (e AppStreamType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -678,6 +684,11 @@ func UnsafeAppSinkFromGlibNone(c unsafe.Pointer) AppSink {
 // UnsafeAppSinkFromGlibFull is used to convert raw GstAppSink pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeAppSinkFromGlibFull(c unsafe.Pointer) AppSink {
 	return gobject.UnsafeObjectFromGlibFull(c).(AppSink)
+}
+
+// UnsafeAppSinkFromGlibBorrow is used to convert raw GstAppSink pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeAppSinkFromGlibBorrow(c unsafe.Pointer) AppSink {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(AppSink)
 }
 
 func (a *AppSinkInstance) upcastToGstAppSink() *AppSinkInstance {
@@ -1525,7 +1536,7 @@ func UnsafeApplyAppSinkOverrides[Instance AppSink](gclass unsafe.Pointer, overri
 			func(carg0 *C.GstAppSink) {
 				var appsink Instance // go GstAppSink subclass
 
-				appsink = UnsafeAppSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				appsink = UnsafeAppSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				overrides.Eos(appsink)
 			},
@@ -1541,7 +1552,7 @@ func UnsafeApplyAppSinkOverrides[Instance AppSink](gclass unsafe.Pointer, overri
 				var appsink Instance       // go GstAppSink subclass
 				var goret   gst.FlowReturn // return, none, casted
 
-				appsink = UnsafeAppSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				appsink = UnsafeAppSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.NewPreroll(appsink)
 
@@ -1561,7 +1572,7 @@ func UnsafeApplyAppSinkOverrides[Instance AppSink](gclass unsafe.Pointer, overri
 				var appsink Instance       // go GstAppSink subclass
 				var goret   gst.FlowReturn // return, none, casted
 
-				appsink = UnsafeAppSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				appsink = UnsafeAppSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.NewSample(appsink)
 
@@ -1581,7 +1592,7 @@ func UnsafeApplyAppSinkOverrides[Instance AppSink](gclass unsafe.Pointer, overri
 				var appsink Instance    // go GstAppSink subclass
 				var goret   *gst.Sample // return, full, converted, nullable
 
-				appsink = UnsafeAppSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				appsink = UnsafeAppSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.PullPreroll(appsink)
 
@@ -1603,7 +1614,7 @@ func UnsafeApplyAppSinkOverrides[Instance AppSink](gclass unsafe.Pointer, overri
 				var appsink Instance    // go GstAppSink subclass
 				var goret   *gst.Sample // return, full, converted, nullable
 
-				appsink = UnsafeAppSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				appsink = UnsafeAppSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.PullSample(appsink)
 
@@ -1626,7 +1637,7 @@ func UnsafeApplyAppSinkOverrides[Instance AppSink](gclass unsafe.Pointer, overri
 				var timeout gst.ClockTime // in, none, casted, alias
 				var goret   *gst.Sample   // return, full, converted, nullable
 
-				appsink = UnsafeAppSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				appsink = UnsafeAppSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				timeout = gst.ClockTime(carg1)
 
 				goret = overrides.TryPullPreroll(appsink, timeout)
@@ -1650,7 +1661,7 @@ func UnsafeApplyAppSinkOverrides[Instance AppSink](gclass unsafe.Pointer, overri
 				var timeout gst.ClockTime // in, none, casted, alias
 				var goret   *gst.Sample   // return, full, converted, nullable
 
-				appsink = UnsafeAppSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				appsink = UnsafeAppSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				timeout = gst.ClockTime(carg1)
 
 				goret = overrides.TryPullSample(appsink, timeout)
@@ -2145,6 +2156,11 @@ func UnsafeAppSrcFromGlibNone(c unsafe.Pointer) AppSrc {
 // UnsafeAppSrcFromGlibFull is used to convert raw GstAppSrc pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeAppSrcFromGlibFull(c unsafe.Pointer) AppSrc {
 	return gobject.UnsafeObjectFromGlibFull(c).(AppSrc)
+}
+
+// UnsafeAppSrcFromGlibBorrow is used to convert raw GstAppSrc pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeAppSrcFromGlibBorrow(c unsafe.Pointer) AppSrc {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(AppSrc)
 }
 
 func (a *AppSrcInstance) upcastToGstAppSrc() *AppSrcInstance {
@@ -2984,7 +3000,7 @@ func UnsafeApplyAppSrcOverrides[Instance AppSrc](gclass unsafe.Pointer, override
 				var appsrc Instance       // go GstAppSrc subclass
 				var goret  gst.FlowReturn // return, none, casted
 
-				appsrc = UnsafeAppSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				appsrc = UnsafeAppSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.EndOfStream(appsrc)
 
@@ -3003,7 +3019,7 @@ func UnsafeApplyAppSrcOverrides[Instance AppSrc](gclass unsafe.Pointer, override
 			func(carg0 *C.GstAppSrc) {
 				var appsrc Instance // go GstAppSrc subclass
 
-				appsrc = UnsafeAppSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				appsrc = UnsafeAppSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				overrides.EnoughData(appsrc)
 			},
@@ -3019,7 +3035,7 @@ func UnsafeApplyAppSrcOverrides[Instance AppSrc](gclass unsafe.Pointer, override
 				var appsrc Instance // go GstAppSrc subclass
 				var length uint     // in, none, casted
 
-				appsrc = UnsafeAppSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				appsrc = UnsafeAppSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				length = uint(carg1)
 
 				overrides.NeedData(appsrc, length)
@@ -3037,7 +3053,7 @@ func UnsafeApplyAppSrcOverrides[Instance AppSrc](gclass unsafe.Pointer, override
 				var buffer *gst.Buffer    // in, full, converted
 				var goret  gst.FlowReturn // return, none, casted
 
-				appsrc = UnsafeAppSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				appsrc = UnsafeAppSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				buffer = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(carg1))
 
 				goret = overrides.PushBuffer(appsrc, buffer)
@@ -3059,7 +3075,7 @@ func UnsafeApplyAppSrcOverrides[Instance AppSrc](gclass unsafe.Pointer, override
 				var bufferList *gst.BufferList // in, full, converted
 				var goret      gst.FlowReturn  // return, none, casted
 
-				appsrc = UnsafeAppSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				appsrc = UnsafeAppSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				bufferList = gst.UnsafeBufferListFromGlibFull(unsafe.Pointer(carg1))
 
 				goret = overrides.PushBufferList(appsrc, bufferList)
@@ -3081,7 +3097,7 @@ func UnsafeApplyAppSrcOverrides[Instance AppSrc](gclass unsafe.Pointer, override
 				var sample *gst.Sample    // in, none, converted
 				var goret  gst.FlowReturn // return, none, casted
 
-				appsrc = UnsafeAppSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				appsrc = UnsafeAppSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				sample = gst.UnsafeSampleFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.PushSample(appsrc, sample)
@@ -3103,7 +3119,7 @@ func UnsafeApplyAppSrcOverrides[Instance AppSrc](gclass unsafe.Pointer, override
 				var offset uint64   // in, none, casted
 				var goret  bool     // return
 
-				appsrc = UnsafeAppSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				appsrc = UnsafeAppSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				offset = uint64(carg1)
 
 				goret = overrides.SeekData(appsrc, offset)

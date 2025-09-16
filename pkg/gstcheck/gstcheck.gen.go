@@ -155,32 +155,6 @@ func CheckAbiList(list *CheckABIStruct, haveAbiSizes bool) {
 	runtime.KeepAlive(haveAbiSizes)
 }
 
-// CheckBufferData wraps gst_check_buffer_data
-// 
-// The function takes the following parameters:
-// 
-// 	- buffer *gst.Buffer: buffer to compare 
-// 	- data unsafe.Pointer (nullable): data to compare to 
-// 	- size uint: size of data to compare 
-//
-// Compare the buffer contents with @data and @size.
-func CheckBufferData(buffer *gst.Buffer, data unsafe.Pointer, size uint) {
-	var carg1 *C.GstBuffer    // in, none, converted
-	var carg2 C.gconstpointer // in, none, casted, nullable
-	var carg3 C.gsize         // in, none, casted
-
-	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(buffer))
-	if data != nil {
-		carg2 = C.gconstpointer(data)
-	}
-	carg3 = C.gsize(size)
-
-	C.gst_check_buffer_data(carg1, carg2, carg3)
-	runtime.KeepAlive(buffer)
-	runtime.KeepAlive(data)
-	runtime.KeepAlive(size)
-}
-
 // CheckCapsEqual wraps gst_check_caps_equal
 // 
 // The function takes the following parameters:
@@ -300,8 +274,8 @@ func CheckElementPushBuffer(elementName string, bufferIn *gst.Buffer, capsIn *gs
 // 	- message *gst.Message 
 // 	- typ gst.MessageType 
 // 	- domain glib.Quark 
-// 	- code int 
-func CheckMessageError(message *gst.Message, typ gst.MessageType, domain glib.Quark, code int) {
+// 	- code int32 
+func CheckMessageError(message *gst.Message, typ gst.MessageType, domain glib.Quark, code int32) {
 	var carg1 *C.GstMessage    // in, none, converted
 	var carg2 C.GstMessageType // in, none, casted
 	var carg3 C.GQuark         // in, none, casted, alias
@@ -1175,6 +1149,11 @@ func UnsafeTestClockFromGlibNone(c unsafe.Pointer) TestClock {
 // UnsafeTestClockFromGlibFull is used to convert raw GstTestClock pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeTestClockFromGlibFull(c unsafe.Pointer) TestClock {
 	return gobject.UnsafeObjectFromGlibFull(c).(TestClock)
+}
+
+// UnsafeTestClockFromGlibBorrow is used to convert raw GstTestClock pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeTestClockFromGlibBorrow(c unsafe.Pointer) TestClock {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(TestClock)
 }
 
 func (t *TestClockInstance) upcastToGstTestClock() *TestClockInstance {
@@ -3223,7 +3202,7 @@ func (h *Harness) SetUpstreamLatency(latency gst.ClockTime) {
 // 
 // The function takes the following parameters:
 // 
-// 	- pushes int: a #gint with the number of calls to gst_harness_push_to_sink 
+// 	- pushes int32: a #gint with the number of calls to gst_harness_push_to_sink 
 // 
 // The function returns the following values:
 // 
@@ -3233,7 +3212,7 @@ func (h *Harness) SetUpstreamLatency(latency gst.ClockTime) {
 // Will abort the pushing if any one push fails.
 // 
 // MT safe.
-func (h *Harness) SinkPushMany(pushes int) gst.FlowReturn {
+func (h *Harness) SinkPushMany(pushes int32) gst.FlowReturn {
 	var carg0 *C.GstHarness   // in, none, converted
 	var carg1 C.gint          // in, none, casted
 	var cret  C.GstFlowReturn // return, none, casted
@@ -3256,8 +3235,8 @@ func (h *Harness) SinkPushMany(pushes int) gst.FlowReturn {
 // 
 // The function takes the following parameters:
 // 
-// 	- cranks int: a #gint with the number of calls to gst_harness_crank_single_clock_wait 
-// 	- pushes int: a #gint with the number of calls to gst_harness_push 
+// 	- cranks int32: a #gint with the number of calls to gst_harness_crank_single_clock_wait 
+// 	- pushes int32: a #gint with the number of calls to gst_harness_push 
 // 
 // The function returns the following values:
 // 
@@ -3270,7 +3249,7 @@ func (h *Harness) SinkPushMany(pushes int) gst.FlowReturn {
 // buffer to push and v.v.
 // 
 // MT safe.
-func (h *Harness) SrcCrankAndPushMany(cranks int, pushes int) gst.FlowReturn {
+func (h *Harness) SrcCrankAndPushMany(cranks int32, pushes int32) gst.FlowReturn {
 	var carg0 *C.GstHarness   // in, none, converted
 	var carg1 C.gint          // in, none, casted
 	var carg2 C.gint          // in, none, casted

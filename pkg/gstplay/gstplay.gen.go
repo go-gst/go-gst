@@ -84,8 +84,11 @@ func marshalPlayColorBalanceType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = PlayColorBalanceType(0)
 
-func (e PlayColorBalanceType) InitGoValue(v *gobject.Value) {
-	v.Init(TypePlayColorBalanceType)
+func (e PlayColorBalanceType) GoValueType() gobject.Type {
+	return TypePlayColorBalanceType
+}
+
+func (e PlayColorBalanceType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -142,8 +145,11 @@ func marshalPlayError(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = PlayError(0)
 
-func (e PlayError) InitGoValue(v *gobject.Value) {
-	v.Init(TypePlayError)
+func (e PlayError) GoValueType() gobject.Type {
+	return TypePlayError
+}
+
+func (e PlayError) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -262,8 +268,11 @@ func marshalPlayMessage(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = PlayMessage(0)
 
-func (e PlayMessage) InitGoValue(v *gobject.Value) {
-	v.Init(TypePlayMessage)
+func (e PlayMessage) GoValueType() gobject.Type {
+	return TypePlayMessage
+}
+
+func (e PlayMessage) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -311,6 +320,89 @@ func PlayMessageGetName(messageType PlayMessage) string {
 	return goret
 }
 
+// PlayMessageGetStreamID wraps gst_play_message_get_stream_id
+// 
+// The function takes the following parameters:
+// 
+// 	- msg *gst.Message: A #GstMessage 
+// 
+// The function returns the following values:
+// 
+// 	- goret string (nullable) 
+//
+// Reads the stream ID the play message @msg applies to, if any.
+func PlayMessageGetStreamID(msg *gst.Message) string {
+	var carg1 *C.GstMessage // in, none, converted
+	var cret  *C.gchar      // return, none, string, nullable-string
+
+	carg1 = (*C.GstMessage)(gst.UnsafeMessageToGlibNone(msg))
+
+	cret = C.gst_play_message_get_stream_id(carg1)
+	runtime.KeepAlive(msg)
+
+	var goret string
+
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
+
+	return goret
+}
+
+// PlayMessageGetURI wraps gst_play_message_get_uri
+// 
+// The function takes the following parameters:
+// 
+// 	- msg *gst.Message: A #GstMessage 
+// 
+// The function returns the following values:
+// 
+// 	- goret string 
+//
+// Reads the URI the play message @msg applies to.
+func PlayMessageGetURI(msg *gst.Message) string {
+	var carg1 *C.GstMessage // in, none, converted
+	var cret  *C.gchar      // return, none, string
+
+	carg1 = (*C.GstMessage)(gst.UnsafeMessageToGlibNone(msg))
+
+	cret = C.gst_play_message_get_uri(carg1)
+	runtime.KeepAlive(msg)
+
+	var goret string
+
+	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+
+	return goret
+}
+
+// PlayMessageParseBuffering wraps gst_play_message_parse_buffering
+// 
+// The function takes the following parameters:
+// 
+// 	- msg *gst.Message: A #GstMessage 
+// 
+// The function returns the following values:
+// 
+// 	- percent uint: the resulting buffering percent 
+//
+// Parse the given buffering @msg and extract the corresponding value
+func PlayMessageParseBuffering(msg *gst.Message) uint {
+	var carg1 *C.GstMessage // in, none, converted
+	var carg2 C.guint       // out, full, casted
+
+	carg1 = (*C.GstMessage)(gst.UnsafeMessageToGlibNone(msg))
+
+	C.gst_play_message_parse_buffering(carg1, &carg2)
+	runtime.KeepAlive(msg)
+
+	var percent uint
+
+	percent = uint(carg2)
+
+	return percent
+}
+
 // PlayMessageParseBufferingPercent wraps gst_play_message_parse_buffering_percent
 // 
 // The function takes the following parameters:
@@ -322,6 +414,8 @@ func PlayMessageGetName(messageType PlayMessage) string {
 // 	- percent uint: the resulting buffering percent 
 //
 // Parse the given buffering @msg and extract the corresponding value
+//
+// Deprecated: (since 1.26.0) Use gst_play_message_parse_buffering().
 func PlayMessageParseBufferingPercent(msg *gst.Message) uint {
 	var carg1 *C.GstMessage // in, none, converted
 	var carg2 C.guint       // out, full, casted
@@ -338,6 +432,33 @@ func PlayMessageParseBufferingPercent(msg *gst.Message) uint {
 	return percent
 }
 
+// PlayMessageParseDurationChanged wraps gst_play_message_parse_duration_changed
+// 
+// The function takes the following parameters:
+// 
+// 	- msg *gst.Message: A #GstMessage 
+// 
+// The function returns the following values:
+// 
+// 	- duration gst.ClockTime: the resulting duration 
+//
+// Parse the given duration-changed @msg and extract the corresponding #GstClockTime
+func PlayMessageParseDurationChanged(msg *gst.Message) gst.ClockTime {
+	var carg1 *C.GstMessage  // in, none, converted
+	var carg2 C.GstClockTime // out, full, casted, alias
+
+	carg1 = (*C.GstMessage)(gst.UnsafeMessageToGlibNone(msg))
+
+	C.gst_play_message_parse_duration_changed(carg1, &carg2)
+	runtime.KeepAlive(msg)
+
+	var duration gst.ClockTime
+
+	duration = gst.ClockTime(carg2)
+
+	return duration
+}
+
 // PlayMessageParseDurationUpdated wraps gst_play_message_parse_duration_updated
 // 
 // The function takes the following parameters:
@@ -349,6 +470,8 @@ func PlayMessageParseBufferingPercent(msg *gst.Message) uint {
 // 	- duration gst.ClockTime: the resulting duration 
 //
 // Parse the given duration-changed @msg and extract the corresponding #GstClockTime
+//
+// Deprecated: (since 1.26.0) Use gst_play_message_parse_duration_changed().
 func PlayMessageParseDurationUpdated(msg *gst.Message) gst.ClockTime {
 	var carg1 *C.GstMessage  // in, none, converted
 	var carg2 C.GstClockTime // out, full, casted, alias
@@ -376,7 +499,11 @@ func PlayMessageParseDurationUpdated(msg *gst.Message) gst.ClockTime {
 // 	- details *gst.Structure (nullable): A #GstStructure containing additional details about the error 
 // 	- err error: the resulting error 
 //
-// Parse the given error @msg and extract the corresponding #GError
+// Parse the given error @msg and extract the corresponding #GError.
+// 
+// Since 1.26 the details will always contain the URI this refers to in an
+// "uri" field of type string, and (if known) the string "stream-id" it is
+// referring to.
 func PlayMessageParseError(msg *gst.Message) (*gst.Structure, error) {
 	var carg1 *C.GstMessage   // in, none, converted
 	var carg3 *C.GstStructure // out, full, converted, nullable
@@ -481,6 +608,33 @@ func PlayMessageParsePositionUpdated(msg *gst.Message) gst.ClockTime {
 	return position
 }
 
+// PlayMessageParseSeekDone wraps gst_play_message_parse_seek_done
+// 
+// The function takes the following parameters:
+// 
+// 	- msg *gst.Message: A #GstMessage 
+// 
+// The function returns the following values:
+// 
+// 	- position gst.ClockTime: the resulting position 
+//
+// Parse the given seek-done @msg and extract the corresponding #GstClockTime
+func PlayMessageParseSeekDone(msg *gst.Message) gst.ClockTime {
+	var carg1 *C.GstMessage  // in, none, converted
+	var carg2 C.GstClockTime // out, full, casted, alias
+
+	carg1 = (*C.GstMessage)(gst.UnsafeMessageToGlibNone(msg))
+
+	C.gst_play_message_parse_seek_done(carg1, &carg2)
+	runtime.KeepAlive(msg)
+
+	var position gst.ClockTime
+
+	position = gst.ClockTime(carg2)
+
+	return position
+}
+
 // PlayMessageParseStateChanged wraps gst_play_message_parse_state_changed
 // 
 // The function takes the following parameters:
@@ -533,6 +687,34 @@ func PlayMessageParseType(msg *gst.Message) PlayMessage {
 	typ = PlayMessage(carg2)
 
 	return typ
+}
+
+// PlayMessageParseURILoaded wraps gst_play_message_parse_uri_loaded
+// 
+// The function takes the following parameters:
+// 
+// 	- msg *gst.Message: A #GstMessage 
+// 
+// The function returns the following values:
+// 
+// 	- uri string: the resulting URI 
+//
+// Parse the given uri-loaded @msg and extract the corresponding value
+func PlayMessageParseURILoaded(msg *gst.Message) string {
+	var carg1 *C.GstMessage // in, none, converted
+	var carg2 *C.gchar      // out, full, string
+
+	carg1 = (*C.GstMessage)(gst.UnsafeMessageToGlibNone(msg))
+
+	C.gst_play_message_parse_uri_loaded(carg1, &carg2)
+	runtime.KeepAlive(msg)
+
+	var uri string
+
+	uri = C.GoString((*C.char)(unsafe.Pointer(carg2)))
+	defer C.free(unsafe.Pointer(carg2))
+
+	return uri
 }
 
 // PlayMessageParseVideoDimensionsChanged wraps gst_play_message_parse_video_dimensions_changed
@@ -604,7 +786,11 @@ func PlayMessageParseVolumeChanged(msg *gst.Message) float64 {
 // 	- details *gst.Structure (nullable): A #GstStructure containing additional details about the warning 
 // 	- err error: the resulting warning 
 //
-// Parse the given warning @msg and extract the corresponding #GError
+// Parse the given warning @msg and extract the corresponding #GError.
+// 
+// Since 1.26 the details will always contain the URI this refers to in an
+// "uri" field of type string, and (if known) the string "stream-id" it is
+// referring to.
 func PlayMessageParseWarning(msg *gst.Message) (*gst.Structure, error) {
 	var carg1 *C.GstMessage   // in, none, converted
 	var carg3 *C.GstStructure // out, full, converted, nullable
@@ -693,8 +879,11 @@ func marshalPlayState(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = PlayState(0)
 
-func (e PlayState) InitGoValue(v *gobject.Value) {
-	v.Init(TypePlayState)
+func (e PlayState) GoValueType() gobject.Type {
+	return TypePlayState
+}
+
+func (e PlayState) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -772,6 +961,11 @@ func UnsafePlayVideoRendererFromGlibNone(c unsafe.Pointer) PlayVideoRenderer {
 // UnsafePlayVideoRendererFromGlibFull is used to convert raw GstPlayVideoRenderer pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafePlayVideoRendererFromGlibFull(c unsafe.Pointer) PlayVideoRenderer {
 	return gobject.UnsafeObjectFromGlibFull(c).(PlayVideoRenderer)
+}
+
+// UnsafePlayVideoRendererFromGlibBorrow is used to convert raw GstPlayVideoRenderer pointers to go without touching any references. This is used by the bindings internally.
+func UnsafePlayVideoRendererFromGlibBorrow(c unsafe.Pointer) PlayVideoRenderer {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(PlayVideoRenderer)
 }
 
 // UnsafePlayVideoRendererToGlibNone is used to convert the instance to it's C value GstPlayVideoRenderer. This is used by the bindings internally.
@@ -1057,12 +1251,15 @@ type Play interface {
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- streamIndex int: stream index 
+	// 	- streamIndex int32: stream index 
 	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
-	SetAudioTrack(int) bool
+	//
+	//
+	// Deprecated: (since 1.26.0) Use gst_play_set_audio_track_id() instead.
+	SetAudioTrack(int32) bool
 	// SetAudioTrackEnabled wraps gst_play_set_audio_track_enabled
 	// 
 	// The function takes the following parameters:
@@ -1071,6 +1268,16 @@ type Play interface {
 	//
 	// Enable or disable the current audio track.
 	SetAudioTrackEnabled(bool)
+	// SetAudioTrackID wraps gst_play_set_audio_track_id
+	// 
+	// The function takes the following parameters:
+	// 
+	// 	- streamId string (nullable): stream id 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SetAudioTrackID(string) bool
 	// SetAudioVideoOffset wraps gst_play_set_audio_video_offset
 	// 
 	// The function takes the following parameters:
@@ -1147,12 +1354,15 @@ type Play interface {
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- streamIndex int: stream index 
+	// 	- streamIndex int32: stream index 
 	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
-	SetSubtitleTrack(int) bool
+	//
+	//
+	// Deprecated: (since 1.26.0) Use gst_play_set_subtitle_track_id() instead.
+	SetSubtitleTrack(int32) bool
 	// SetSubtitleTrackEnabled wraps gst_play_set_subtitle_track_enabled
 	// 
 	// The function takes the following parameters:
@@ -1161,6 +1371,16 @@ type Play interface {
 	//
 	// Enable or disable the current subtitle track.
 	SetSubtitleTrackEnabled(bool)
+	// SetSubtitleTrackID wraps gst_play_set_subtitle_track_id
+	// 
+	// The function takes the following parameters:
+	// 
+	// 	- streamId string (nullable): stream id 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SetSubtitleTrackID(string) bool
 	// SetSubtitleURI wraps gst_play_set_subtitle_uri
 	// 
 	// The function takes the following parameters:
@@ -1179,6 +1399,18 @@ type Play interface {
 	//
 	// Sets subtitle-video-offset property by value of @offset
 	SetSubtitleVideoOffset(int64)
+	// SetTrackIDs wraps gst_play_set_track_ids
+	// 
+	// The function takes the following parameters:
+	// 
+	// 	- audioStreamId string (nullable): audio stream id 
+	// 	- videoStreamId string (nullable): video stream id 
+	// 	- subtitleStreamId string (nullable): subtitle stream id 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SetTrackIDs(string, string, string) bool
 	// SetURI wraps gst_play_set_uri
 	// 
 	// The function takes the following parameters:
@@ -1191,12 +1423,15 @@ type Play interface {
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- streamIndex int: stream index 
+	// 	- streamIndex int32: stream index 
 	// 
 	// The function returns the following values:
 	// 
 	// 	- goret bool 
-	SetVideoTrack(int) bool
+	//
+	//
+	// Deprecated: (since 1.26.0) Use gst_play_set_video_track_id() instead.
+	SetVideoTrack(int32) bool
 	// SetVideoTrackEnabled wraps gst_play_set_video_track_enabled
 	// 
 	// The function takes the following parameters:
@@ -1205,6 +1440,16 @@ type Play interface {
 	//
 	// Enable or disable the current video track.
 	SetVideoTrackEnabled(bool)
+	// SetVideoTrackID wraps gst_play_set_video_track_id
+	// 
+	// The function takes the following parameters:
+	// 
+	// 	- streamId string (nullable): stream id 
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret bool 
+	SetVideoTrackID(string) bool
 	// SetVisualization wraps gst_play_set_visualization
 	// 
 	// The function takes the following parameters:
@@ -1261,6 +1506,11 @@ func UnsafePlayFromGlibNone(c unsafe.Pointer) Play {
 // UnsafePlayFromGlibFull is used to convert raw GstPlay pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafePlayFromGlibFull(c unsafe.Pointer) Play {
 	return gobject.UnsafeObjectFromGlibFull(c).(Play)
+}
+
+// UnsafePlayFromGlibBorrow is used to convert raw GstPlay pointers to go without touching any references. This is used by the bindings internally.
+func UnsafePlayFromGlibBorrow(c unsafe.Pointer) Play {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(Play)
 }
 
 func (p *PlayInstance) upcastToGstPlay() *PlayInstance {
@@ -2253,12 +2503,15 @@ func (play *PlayInstance) Seek(position gst.ClockTime) {
 // 
 // The function takes the following parameters:
 // 
-// 	- streamIndex int: stream index 
+// 	- streamIndex int32: stream index 
 // 
 // The function returns the following values:
 // 
 // 	- goret bool 
-func (play *PlayInstance) SetAudioTrack(streamIndex int) bool {
+//
+//
+// Deprecated: (since 1.26.0) Use gst_play_set_audio_track_id() instead.
+func (play *PlayInstance) SetAudioTrack(streamIndex int32) bool {
 	var carg0 *C.GstPlay // in, none, converted
 	var carg1 C.gint     // in, none, casted
 	var cret  C.gboolean // return
@@ -2298,6 +2551,39 @@ func (play *PlayInstance) SetAudioTrackEnabled(enabled bool) {
 	C.gst_play_set_audio_track_enabled(carg0, carg1)
 	runtime.KeepAlive(play)
 	runtime.KeepAlive(enabled)
+}
+
+// SetAudioTrackID wraps gst_play_set_audio_track_id
+// 
+// The function takes the following parameters:
+// 
+// 	- streamId string (nullable): stream id 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+func (play *PlayInstance) SetAudioTrackID(streamId string) bool {
+	var carg0 *C.GstPlay // in, none, converted
+	var carg1 *C.gchar   // in, none, string, nullable-string
+	var cret  C.gboolean // return
+
+	carg0 = (*C.GstPlay)(UnsafePlayToGlibNone(play))
+	if streamId != "" {
+		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(streamId)))
+		defer C.free(unsafe.Pointer(carg1))
+	}
+
+	cret = C.gst_play_set_audio_track_id(carg0, carg1)
+	runtime.KeepAlive(play)
+	runtime.KeepAlive(streamId)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
 }
 
 // SetAudioVideoOffset wraps gst_play_set_audio_video_offset
@@ -2467,12 +2753,15 @@ func (play *PlayInstance) SetRate(rate float64) {
 // 
 // The function takes the following parameters:
 // 
-// 	- streamIndex int: stream index 
+// 	- streamIndex int32: stream index 
 // 
 // The function returns the following values:
 // 
 // 	- goret bool 
-func (play *PlayInstance) SetSubtitleTrack(streamIndex int) bool {
+//
+//
+// Deprecated: (since 1.26.0) Use gst_play_set_subtitle_track_id() instead.
+func (play *PlayInstance) SetSubtitleTrack(streamIndex int32) bool {
 	var carg0 *C.GstPlay // in, none, converted
 	var carg1 C.gint     // in, none, casted
 	var cret  C.gboolean // return
@@ -2512,6 +2801,39 @@ func (play *PlayInstance) SetSubtitleTrackEnabled(enabled bool) {
 	C.gst_play_set_subtitle_track_enabled(carg0, carg1)
 	runtime.KeepAlive(play)
 	runtime.KeepAlive(enabled)
+}
+
+// SetSubtitleTrackID wraps gst_play_set_subtitle_track_id
+// 
+// The function takes the following parameters:
+// 
+// 	- streamId string (nullable): stream id 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+func (play *PlayInstance) SetSubtitleTrackID(streamId string) bool {
+	var carg0 *C.GstPlay // in, none, converted
+	var carg1 *C.gchar   // in, none, string, nullable-string
+	var cret  C.gboolean // return
+
+	carg0 = (*C.GstPlay)(UnsafePlayToGlibNone(play))
+	if streamId != "" {
+		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(streamId)))
+		defer C.free(unsafe.Pointer(carg1))
+	}
+
+	cret = C.gst_play_set_subtitle_track_id(carg0, carg1)
+	runtime.KeepAlive(play)
+	runtime.KeepAlive(streamId)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
 }
 
 // SetSubtitleURI wraps gst_play_set_subtitle_uri
@@ -2557,6 +2879,53 @@ func (play *PlayInstance) SetSubtitleVideoOffset(offset int64) {
 	runtime.KeepAlive(offset)
 }
 
+// SetTrackIDs wraps gst_play_set_track_ids
+// 
+// The function takes the following parameters:
+// 
+// 	- audioStreamId string (nullable): audio stream id 
+// 	- videoStreamId string (nullable): video stream id 
+// 	- subtitleStreamId string (nullable): subtitle stream id 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+func (play *PlayInstance) SetTrackIDs(audioStreamId string, videoStreamId string, subtitleStreamId string) bool {
+	var carg0 *C.GstPlay // in, none, converted
+	var carg1 *C.gchar   // in, none, string, nullable-string
+	var carg2 *C.gchar   // in, none, string, nullable-string
+	var carg3 *C.gchar   // in, none, string, nullable-string
+	var cret  C.gboolean // return
+
+	carg0 = (*C.GstPlay)(UnsafePlayToGlibNone(play))
+	if audioStreamId != "" {
+		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(audioStreamId)))
+		defer C.free(unsafe.Pointer(carg1))
+	}
+	if videoStreamId != "" {
+		carg2 = (*C.gchar)(unsafe.Pointer(C.CString(videoStreamId)))
+		defer C.free(unsafe.Pointer(carg2))
+	}
+	if subtitleStreamId != "" {
+		carg3 = (*C.gchar)(unsafe.Pointer(C.CString(subtitleStreamId)))
+		defer C.free(unsafe.Pointer(carg3))
+	}
+
+	cret = C.gst_play_set_track_ids(carg0, carg1, carg2, carg3)
+	runtime.KeepAlive(play)
+	runtime.KeepAlive(audioStreamId)
+	runtime.KeepAlive(videoStreamId)
+	runtime.KeepAlive(subtitleStreamId)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
 // SetURI wraps gst_play_set_uri
 // 
 // The function takes the following parameters:
@@ -2583,12 +2952,15 @@ func (play *PlayInstance) SetURI(uri string) {
 // 
 // The function takes the following parameters:
 // 
-// 	- streamIndex int: stream index 
+// 	- streamIndex int32: stream index 
 // 
 // The function returns the following values:
 // 
 // 	- goret bool 
-func (play *PlayInstance) SetVideoTrack(streamIndex int) bool {
+//
+//
+// Deprecated: (since 1.26.0) Use gst_play_set_video_track_id() instead.
+func (play *PlayInstance) SetVideoTrack(streamIndex int32) bool {
 	var carg0 *C.GstPlay // in, none, converted
 	var carg1 C.gint     // in, none, casted
 	var cret  C.gboolean // return
@@ -2628,6 +3000,39 @@ func (play *PlayInstance) SetVideoTrackEnabled(enabled bool) {
 	C.gst_play_set_video_track_enabled(carg0, carg1)
 	runtime.KeepAlive(play)
 	runtime.KeepAlive(enabled)
+}
+
+// SetVideoTrackID wraps gst_play_set_video_track_id
+// 
+// The function takes the following parameters:
+// 
+// 	- streamId string (nullable): stream id 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+func (play *PlayInstance) SetVideoTrackID(streamId string) bool {
+	var carg0 *C.GstPlay // in, none, converted
+	var carg1 *C.gchar   // in, none, string, nullable-string
+	var cret  C.gboolean // return
+
+	carg0 = (*C.GstPlay)(UnsafePlayToGlibNone(play))
+	if streamId != "" {
+		carg1 = (*C.gchar)(unsafe.Pointer(C.CString(streamId)))
+		defer C.free(unsafe.Pointer(carg1))
+	}
+
+	cret = C.gst_play_set_video_track_id(carg0, carg1)
+	runtime.KeepAlive(play)
+	runtime.KeepAlive(streamId)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
 }
 
 // SetVisualization wraps gst_play_set_visualization
@@ -2851,6 +3256,11 @@ func UnsafePlayMediaInfoFromGlibNone(c unsafe.Pointer) PlayMediaInfo {
 // UnsafePlayMediaInfoFromGlibFull is used to convert raw GstPlayMediaInfo pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafePlayMediaInfoFromGlibFull(c unsafe.Pointer) PlayMediaInfo {
 	return gobject.UnsafeObjectFromGlibFull(c).(PlayMediaInfo)
+}
+
+// UnsafePlayMediaInfoFromGlibBorrow is used to convert raw GstPlayMediaInfo pointers to go without touching any references. This is used by the bindings internally.
+func UnsafePlayMediaInfoFromGlibBorrow(c unsafe.Pointer) PlayMediaInfo {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(PlayMediaInfo)
 }
 
 func (p *PlayMediaInfoInstance) upcastToGstPlayMediaInfo() *PlayMediaInfoInstance {
@@ -3266,7 +3676,7 @@ type PlaySignalAdapter interface {
 	// 	- goret Play 
 	GetPlay() Play
 	// ConnectBuffering connects the provided callback to the "buffering" signal
-	ConnectBuffering(func(PlaySignalAdapter, int)) gobject.SignalHandle
+	ConnectBuffering(func(PlaySignalAdapter, int32)) gobject.SignalHandle
 	// ConnectDurationChanged connects the provided callback to the "duration-changed" signal
 	ConnectDurationChanged(func(PlaySignalAdapter, uint64)) gobject.SignalHandle
 	// ConnectEndOfStream connects the provided callback to the "end-of-stream" signal
@@ -3315,6 +3725,11 @@ func UnsafePlaySignalAdapterFromGlibNone(c unsafe.Pointer) PlaySignalAdapter {
 // UnsafePlaySignalAdapterFromGlibFull is used to convert raw GstPlaySignalAdapter pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafePlaySignalAdapterFromGlibFull(c unsafe.Pointer) PlaySignalAdapter {
 	return gobject.UnsafeObjectFromGlibFull(c).(PlaySignalAdapter)
+}
+
+// UnsafePlaySignalAdapterFromGlibBorrow is used to convert raw GstPlaySignalAdapter pointers to go without touching any references. This is used by the bindings internally.
+func UnsafePlaySignalAdapterFromGlibBorrow(c unsafe.Pointer) PlaySignalAdapter {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(PlaySignalAdapter)
 }
 
 func (p *PlaySignalAdapterInstance) upcastToGstPlaySignalAdapter() *PlaySignalAdapterInstance {
@@ -3445,7 +3860,7 @@ func (adapter *PlaySignalAdapterInstance) GetPlay() Play {
 }
 
 // ConnectBuffering connects the provided callback to the "buffering" signal
-func (o *PlaySignalAdapterInstance) ConnectBuffering(fn func(PlaySignalAdapter, int)) gobject.SignalHandle {
+func (o *PlaySignalAdapterInstance) ConnectBuffering(fn func(PlaySignalAdapter, int32)) gobject.SignalHandle {
 	return o.Connect("buffering", fn)
 }
 
@@ -3548,11 +3963,21 @@ type PlayStreamInfo interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret int 
+	// 	- goret int32 
 	//
 	// Function to get stream index from #GstPlayStreamInfo instance or -1 if
 	// unknown.
-	GetIndex() int
+	//
+	// Deprecated: (since 1.26.0) Use gst_play_stream_info_get_stream_id().
+	GetIndex() int32
+	// GetStreamID wraps gst_play_stream_info_get_stream_id
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret string 
+	//
+	// A string stream id identifying this #GstPlayStreamInfo.
+	GetStreamID() string
 	// GetStreamType wraps gst_play_stream_info_get_stream_type
 	// 
 	// The function returns the following values:
@@ -3588,6 +4013,11 @@ func UnsafePlayStreamInfoFromGlibNone(c unsafe.Pointer) PlayStreamInfo {
 // UnsafePlayStreamInfoFromGlibFull is used to convert raw GstPlayStreamInfo pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafePlayStreamInfoFromGlibFull(c unsafe.Pointer) PlayStreamInfo {
 	return gobject.UnsafeObjectFromGlibFull(c).(PlayStreamInfo)
+}
+
+// UnsafePlayStreamInfoFromGlibBorrow is used to convert raw GstPlayStreamInfo pointers to go without touching any references. This is used by the bindings internally.
+func UnsafePlayStreamInfoFromGlibBorrow(c unsafe.Pointer) PlayStreamInfo {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(PlayStreamInfo)
 }
 
 func (p *PlayStreamInfoInstance) upcastToGstPlayStreamInfo() *PlayStreamInfoInstance {
@@ -3656,11 +4086,13 @@ func (info *PlayStreamInfoInstance) GetCodec() string {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
+// 	- goret int32 
 //
 // Function to get stream index from #GstPlayStreamInfo instance or -1 if
 // unknown.
-func (info *PlayStreamInfoInstance) GetIndex() int {
+//
+// Deprecated: (since 1.26.0) Use gst_play_stream_info_get_stream_id().
+func (info *PlayStreamInfoInstance) GetIndex() int32 {
 	var carg0 *C.GstPlayStreamInfo // in, none, converted
 	var cret  C.gint               // return, none, casted
 
@@ -3669,9 +4101,32 @@ func (info *PlayStreamInfoInstance) GetIndex() int {
 	cret = C.gst_play_stream_info_get_index(carg0)
 	runtime.KeepAlive(info)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
+
+	return goret
+}
+
+// GetStreamID wraps gst_play_stream_info_get_stream_id
+// 
+// The function returns the following values:
+// 
+// 	- goret string 
+//
+// A string stream id identifying this #GstPlayStreamInfo.
+func (info *PlayStreamInfoInstance) GetStreamID() string {
+	var carg0 *C.GstPlayStreamInfo // in, none, converted
+	var cret  *C.gchar             // return, none, string
+
+	carg0 = (*C.GstPlayStreamInfo)(UnsafePlayStreamInfoToGlibNone(info))
+
+	cret = C.gst_play_stream_info_get_stream_id(carg0)
+	runtime.KeepAlive(info)
+
+	var goret string
+
+	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
 
 	return goret
 }
@@ -3768,6 +4223,11 @@ func UnsafePlaySubtitleInfoFromGlibFull(c unsafe.Pointer) PlaySubtitleInfo {
 	return gobject.UnsafeObjectFromGlibFull(c).(PlaySubtitleInfo)
 }
 
+// UnsafePlaySubtitleInfoFromGlibBorrow is used to convert raw GstPlaySubtitleInfo pointers to go without touching any references. This is used by the bindings internally.
+func UnsafePlaySubtitleInfoFromGlibBorrow(c unsafe.Pointer) PlaySubtitleInfo {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(PlaySubtitleInfo)
+}
+
 func (p *PlaySubtitleInfoInstance) upcastToGstPlaySubtitleInfo() *PlaySubtitleInfoInstance {
 	return p
 }
@@ -3824,27 +4284,27 @@ type PlayVideoInfo interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret int 
-	GetBitrate() int
+	// 	- goret int32 
+	GetBitrate() int32
 	// GetFramerate wraps gst_play_video_info_get_framerate
 	// 
 	// The function returns the following values:
 	// 
-	// 	- fpsN int: Numerator of frame rate 
-	// 	- fpsD int: Denominator of frame rate 
-	GetFramerate() (int, int)
+	// 	- fpsN int32: Numerator of frame rate 
+	// 	- fpsD int32: Denominator of frame rate 
+	GetFramerate() (int32, int32)
 	// GetHeight wraps gst_play_video_info_get_height
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret int 
-	GetHeight() int
+	// 	- goret int32 
+	GetHeight() int32
 	// GetMaxBitrate wraps gst_play_video_info_get_max_bitrate
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret int 
-	GetMaxBitrate() int
+	// 	- goret int32 
+	GetMaxBitrate() int32
 	// GetPixelAspectRatio wraps gst_play_video_info_get_pixel_aspect_ratio
 	// 
 	// The function returns the following values:
@@ -3858,8 +4318,8 @@ type PlayVideoInfo interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret int 
-	GetWidth() int
+	// 	- goret int32 
+	GetWidth() int32
 }
 
 func unsafeWrapPlayVideoInfo(base *gobject.ObjectInstance) *PlayVideoInfoInstance {
@@ -3884,6 +4344,11 @@ func UnsafePlayVideoInfoFromGlibFull(c unsafe.Pointer) PlayVideoInfo {
 	return gobject.UnsafeObjectFromGlibFull(c).(PlayVideoInfo)
 }
 
+// UnsafePlayVideoInfoFromGlibBorrow is used to convert raw GstPlayVideoInfo pointers to go without touching any references. This is used by the bindings internally.
+func UnsafePlayVideoInfoFromGlibBorrow(c unsafe.Pointer) PlayVideoInfo {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(PlayVideoInfo)
+}
+
 func (p *PlayVideoInfoInstance) upcastToGstPlayVideoInfo() *PlayVideoInfoInstance {
 	return p
 }
@@ -3902,8 +4367,8 @@ func UnsafePlayVideoInfoToGlibFull(c PlayVideoInfo) unsafe.Pointer {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
-func (info *PlayVideoInfoInstance) GetBitrate() int {
+// 	- goret int32 
+func (info *PlayVideoInfoInstance) GetBitrate() int32 {
 	var carg0 *C.GstPlayVideoInfo // in, none, converted
 	var cret  C.gint              // return, none, casted
 
@@ -3912,9 +4377,9 @@ func (info *PlayVideoInfoInstance) GetBitrate() int {
 	cret = C.gst_play_video_info_get_bitrate(carg0)
 	runtime.KeepAlive(info)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -3923,9 +4388,9 @@ func (info *PlayVideoInfoInstance) GetBitrate() int {
 // 
 // The function returns the following values:
 // 
-// 	- fpsN int: Numerator of frame rate 
-// 	- fpsD int: Denominator of frame rate 
-func (info *PlayVideoInfoInstance) GetFramerate() (int, int) {
+// 	- fpsN int32: Numerator of frame rate 
+// 	- fpsD int32: Denominator of frame rate 
+func (info *PlayVideoInfoInstance) GetFramerate() (int32, int32) {
 	var carg0 *C.GstPlayVideoInfo // in, none, converted
 	var carg1 C.gint              // out, full, casted
 	var carg2 C.gint              // out, full, casted
@@ -3935,11 +4400,11 @@ func (info *PlayVideoInfoInstance) GetFramerate() (int, int) {
 	C.gst_play_video_info_get_framerate(carg0, &carg1, &carg2)
 	runtime.KeepAlive(info)
 
-	var fpsN int
-	var fpsD int
+	var fpsN int32
+	var fpsD int32
 
-	fpsN = int(carg1)
-	fpsD = int(carg2)
+	fpsN = int32(carg1)
+	fpsD = int32(carg2)
 
 	return fpsN, fpsD
 }
@@ -3948,8 +4413,8 @@ func (info *PlayVideoInfoInstance) GetFramerate() (int, int) {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
-func (info *PlayVideoInfoInstance) GetHeight() int {
+// 	- goret int32 
+func (info *PlayVideoInfoInstance) GetHeight() int32 {
 	var carg0 *C.GstPlayVideoInfo // in, none, converted
 	var cret  C.gint              // return, none, casted
 
@@ -3958,9 +4423,9 @@ func (info *PlayVideoInfoInstance) GetHeight() int {
 	cret = C.gst_play_video_info_get_height(carg0)
 	runtime.KeepAlive(info)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -3969,8 +4434,8 @@ func (info *PlayVideoInfoInstance) GetHeight() int {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
-func (info *PlayVideoInfoInstance) GetMaxBitrate() int {
+// 	- goret int32 
+func (info *PlayVideoInfoInstance) GetMaxBitrate() int32 {
 	var carg0 *C.GstPlayVideoInfo // in, none, converted
 	var cret  C.gint              // return, none, casted
 
@@ -3979,9 +4444,9 @@ func (info *PlayVideoInfoInstance) GetMaxBitrate() int {
 	cret = C.gst_play_video_info_get_max_bitrate(carg0)
 	runtime.KeepAlive(info)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -4017,8 +4482,8 @@ func (info *PlayVideoInfoInstance) GetPixelAspectRatio() (uint, uint) {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
-func (info *PlayVideoInfoInstance) GetWidth() int {
+// 	- goret int32 
+func (info *PlayVideoInfoInstance) GetWidth() int32 {
 	var carg0 *C.GstPlayVideoInfo // in, none, converted
 	var cret  C.gint              // return, none, casted
 
@@ -4027,9 +4492,9 @@ func (info *PlayVideoInfoInstance) GetWidth() int {
 	cret = C.gst_play_video_info_get_width(carg0)
 	runtime.KeepAlive(info)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -4056,22 +4521,22 @@ type PlayVideoOverlayVideoRenderer interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- x int: the horizontal offset of the render area inside the window 
-	// 	- y int: the vertical offset of the render area inside the window 
-	// 	- width int: the width of the render area inside the window 
-	// 	- height int: the height of the render area inside the window 
+	// 	- x int32: the horizontal offset of the render area inside the window 
+	// 	- y int32: the vertical offset of the render area inside the window 
+	// 	- width int32: the width of the render area inside the window 
+	// 	- height int32: the height of the render area inside the window 
 	//
 	// Return the currently configured render rectangle. See gst_play_video_overlay_video_renderer_set_render_rectangle()
 	// for details.
-	GetRenderRectangle() (int, int, int, int)
+	GetRenderRectangle() (int32, int32, int32, int32)
 	// SetRenderRectangle wraps gst_play_video_overlay_video_renderer_set_render_rectangle
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- x int: the horizontal offset of the render area inside the window 
-	// 	- y int: the vertical offset of the render area inside the window 
-	// 	- width int: the width of the render area inside the window 
-	// 	- height int: the height of the render area inside the window 
+	// 	- x int32: the horizontal offset of the render area inside the window 
+	// 	- y int32: the vertical offset of the render area inside the window 
+	// 	- width int32: the width of the render area inside the window 
+	// 	- height int32: the height of the render area inside the window 
 	//
 	// Configure a subregion as a video target within the window set by
 	// gst_play_video_overlay_video_renderer_set_window_handle(). If this is not
@@ -4083,7 +4548,7 @@ type PlayVideoOverlayVideoRenderer interface {
 	// 
 	// This method is needed for non fullscreen video overlay in UI toolkits that
 	// do not support subwindows.
-	SetRenderRectangle(int, int, int, int)
+	SetRenderRectangle(int32, int32, int32, int32)
 }
 
 func unsafeWrapPlayVideoOverlayVideoRenderer(base *gobject.ObjectInstance) *PlayVideoOverlayVideoRendererInstance {
@@ -4104,6 +4569,11 @@ func UnsafePlayVideoOverlayVideoRendererFromGlibNone(c unsafe.Pointer) PlayVideo
 // UnsafePlayVideoOverlayVideoRendererFromGlibFull is used to convert raw GstPlayVideoOverlayVideoRenderer pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafePlayVideoOverlayVideoRendererFromGlibFull(c unsafe.Pointer) PlayVideoOverlayVideoRenderer {
 	return gobject.UnsafeObjectFromGlibFull(c).(PlayVideoOverlayVideoRenderer)
+}
+
+// UnsafePlayVideoOverlayVideoRendererFromGlibBorrow is used to convert raw GstPlayVideoOverlayVideoRenderer pointers to go without touching any references. This is used by the bindings internally.
+func UnsafePlayVideoOverlayVideoRendererFromGlibBorrow(c unsafe.Pointer) PlayVideoOverlayVideoRenderer {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(PlayVideoOverlayVideoRenderer)
 }
 
 func (p *PlayVideoOverlayVideoRendererInstance) upcastToGstPlayVideoOverlayVideoRenderer() *PlayVideoOverlayVideoRendererInstance {
@@ -4137,14 +4607,14 @@ func (self *PlayVideoOverlayVideoRendererInstance) Expose() {
 // 
 // The function returns the following values:
 // 
-// 	- x int: the horizontal offset of the render area inside the window 
-// 	- y int: the vertical offset of the render area inside the window 
-// 	- width int: the width of the render area inside the window 
-// 	- height int: the height of the render area inside the window 
+// 	- x int32: the horizontal offset of the render area inside the window 
+// 	- y int32: the vertical offset of the render area inside the window 
+// 	- width int32: the width of the render area inside the window 
+// 	- height int32: the height of the render area inside the window 
 //
 // Return the currently configured render rectangle. See gst_play_video_overlay_video_renderer_set_render_rectangle()
 // for details.
-func (self *PlayVideoOverlayVideoRendererInstance) GetRenderRectangle() (int, int, int, int) {
+func (self *PlayVideoOverlayVideoRendererInstance) GetRenderRectangle() (int32, int32, int32, int32) {
 	var carg0 *C.GstPlayVideoOverlayVideoRenderer // in, none, converted
 	var carg1 C.gint                              // out, full, casted
 	var carg2 C.gint                              // out, full, casted
@@ -4156,15 +4626,15 @@ func (self *PlayVideoOverlayVideoRendererInstance) GetRenderRectangle() (int, in
 	C.gst_play_video_overlay_video_renderer_get_render_rectangle(carg0, &carg1, &carg2, &carg3, &carg4)
 	runtime.KeepAlive(self)
 
-	var x      int
-	var y      int
-	var width  int
-	var height int
+	var x      int32
+	var y      int32
+	var width  int32
+	var height int32
 
-	x = int(carg1)
-	y = int(carg2)
-	width = int(carg3)
-	height = int(carg4)
+	x = int32(carg1)
+	y = int32(carg2)
+	width = int32(carg3)
+	height = int32(carg4)
 
 	return x, y, width, height
 }
@@ -4173,10 +4643,10 @@ func (self *PlayVideoOverlayVideoRendererInstance) GetRenderRectangle() (int, in
 // 
 // The function takes the following parameters:
 // 
-// 	- x int: the horizontal offset of the render area inside the window 
-// 	- y int: the vertical offset of the render area inside the window 
-// 	- width int: the width of the render area inside the window 
-// 	- height int: the height of the render area inside the window 
+// 	- x int32: the horizontal offset of the render area inside the window 
+// 	- y int32: the vertical offset of the render area inside the window 
+// 	- width int32: the width of the render area inside the window 
+// 	- height int32: the height of the render area inside the window 
 //
 // Configure a subregion as a video target within the window set by
 // gst_play_video_overlay_video_renderer_set_window_handle(). If this is not
@@ -4188,7 +4658,7 @@ func (self *PlayVideoOverlayVideoRendererInstance) GetRenderRectangle() (int, in
 // 
 // This method is needed for non fullscreen video overlay in UI toolkits that
 // do not support subwindows.
-func (self *PlayVideoOverlayVideoRendererInstance) SetRenderRectangle(x int, y int, width int, height int) {
+func (self *PlayVideoOverlayVideoRendererInstance) SetRenderRectangle(x int32, y int32, width int32, height int32) {
 	var carg0 *C.GstPlayVideoOverlayVideoRenderer // in, none, converted
 	var carg1 C.gint                              // in, none, casted
 	var carg2 C.gint                              // in, none, casted
@@ -4228,14 +4698,14 @@ type PlayAudioInfo interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret int 
-	GetBitrate() int
+	// 	- goret int32 
+	GetBitrate() int32
 	// GetChannels wraps gst_play_audio_info_get_channels
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret int 
-	GetChannels() int
+	// 	- goret int32 
+	GetChannels() int32
 	// GetLanguage wraps gst_play_audio_info_get_language
 	// 
 	// The function returns the following values:
@@ -4246,14 +4716,14 @@ type PlayAudioInfo interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret int 
-	GetMaxBitrate() int
+	// 	- goret int32 
+	GetMaxBitrate() int32
 	// GetSampleRate wraps gst_play_audio_info_get_sample_rate
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret int 
-	GetSampleRate() int
+	// 	- goret int32 
+	GetSampleRate() int32
 }
 
 func unsafeWrapPlayAudioInfo(base *gobject.ObjectInstance) *PlayAudioInfoInstance {
@@ -4278,6 +4748,11 @@ func UnsafePlayAudioInfoFromGlibFull(c unsafe.Pointer) PlayAudioInfo {
 	return gobject.UnsafeObjectFromGlibFull(c).(PlayAudioInfo)
 }
 
+// UnsafePlayAudioInfoFromGlibBorrow is used to convert raw GstPlayAudioInfo pointers to go without touching any references. This is used by the bindings internally.
+func UnsafePlayAudioInfoFromGlibBorrow(c unsafe.Pointer) PlayAudioInfo {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(PlayAudioInfo)
+}
+
 func (p *PlayAudioInfoInstance) upcastToGstPlayAudioInfo() *PlayAudioInfoInstance {
 	return p
 }
@@ -4296,8 +4771,8 @@ func UnsafePlayAudioInfoToGlibFull(c PlayAudioInfo) unsafe.Pointer {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
-func (info *PlayAudioInfoInstance) GetBitrate() int {
+// 	- goret int32 
+func (info *PlayAudioInfoInstance) GetBitrate() int32 {
 	var carg0 *C.GstPlayAudioInfo // in, none, converted
 	var cret  C.gint              // return, none, casted
 
@@ -4306,9 +4781,9 @@ func (info *PlayAudioInfoInstance) GetBitrate() int {
 	cret = C.gst_play_audio_info_get_bitrate(carg0)
 	runtime.KeepAlive(info)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -4317,8 +4792,8 @@ func (info *PlayAudioInfoInstance) GetBitrate() int {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
-func (info *PlayAudioInfoInstance) GetChannels() int {
+// 	- goret int32 
+func (info *PlayAudioInfoInstance) GetChannels() int32 {
 	var carg0 *C.GstPlayAudioInfo // in, none, converted
 	var cret  C.gint              // return, none, casted
 
@@ -4327,9 +4802,9 @@ func (info *PlayAudioInfoInstance) GetChannels() int {
 	cret = C.gst_play_audio_info_get_channels(carg0)
 	runtime.KeepAlive(info)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -4361,8 +4836,8 @@ func (info *PlayAudioInfoInstance) GetLanguage() string {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
-func (info *PlayAudioInfoInstance) GetMaxBitrate() int {
+// 	- goret int32 
+func (info *PlayAudioInfoInstance) GetMaxBitrate() int32 {
 	var carg0 *C.GstPlayAudioInfo // in, none, converted
 	var cret  C.gint              // return, none, casted
 
@@ -4371,9 +4846,9 @@ func (info *PlayAudioInfoInstance) GetMaxBitrate() int {
 	cret = C.gst_play_audio_info_get_max_bitrate(carg0)
 	runtime.KeepAlive(info)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -4382,8 +4857,8 @@ func (info *PlayAudioInfoInstance) GetMaxBitrate() int {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
-func (info *PlayAudioInfoInstance) GetSampleRate() int {
+// 	- goret int32 
+func (info *PlayAudioInfoInstance) GetSampleRate() int32 {
 	var carg0 *C.GstPlayAudioInfo // in, none, converted
 	var cret  C.gint              // return, none, casted
 
@@ -4392,9 +4867,9 @@ func (info *PlayAudioInfoInstance) GetSampleRate() int {
 	cret = C.gst_play_audio_info_get_sample_rate(carg0)
 	runtime.KeepAlive(info)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -4783,8 +5258,11 @@ func marshalPlayVisualization(p unsafe.Pointer) (interface{}, error) {
 	return UnsafePlayVisualizationFromGlibBorrow(b), nil
 }
 
-func (r *PlayVisualization) InitGoValue(v *gobject.Value) {
-	v.Init(TypePlayVisualization)
+func (r *PlayVisualization) GoValueType() gobject.Type {
+	return TypePlayVisualization
+}
+
+func (r *PlayVisualization) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 

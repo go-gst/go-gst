@@ -194,7 +194,8 @@ func (m *Message) String() string {
 		msg += "Lost a clock"
 
 	case MessageNewClock:
-		msg += "Got a new clock"
+		clock := m.ParseNewClock()
+		msg += fmt.Sprintf("New clock: %s (%s)", clock.GetName(), clock.GoValueType())
 
 	case MessageStructureChange:
 		chgType, elem, busy := m.ParseStructureChange()

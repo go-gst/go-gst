@@ -162,7 +162,7 @@ const RTCP_VALID_MASK = 57598
 //
 // Valid value for the first two bytes of an RTCP packet after applying
 // #GST_RTCP_VALID_MASK to them.
-const RTCP_VALID_VALUE = 200
+const RTCP_VALID_VALUE = 32968
 // RTCP_VERSION wraps GST_RTCP_VERSION
 //
 // The supported RTCP version 2.
@@ -255,8 +255,11 @@ func marshalRTCPFBType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = RTCPFBType(0)
 
-func (e RTCPFBType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeRTCPFBType)
+func (e RTCPFBType) GoValueType() gobject.Type {
+	return TypeRTCPFBType
+}
+
+func (e RTCPFBType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -357,8 +360,11 @@ func marshalRTCPSDESType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = RTCPSDESType(0)
 
-func (e RTCPSDESType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeRTCPSDESType)
+func (e RTCPSDESType) GoValueType() gobject.Type {
+	return TypeRTCPSDESType
+}
+
+func (e RTCPSDESType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -435,8 +441,11 @@ func marshalRTCPType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = RTCPType(0)
 
-func (e RTCPType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeRTCPType)
+func (e RTCPType) GoValueType() gobject.Type {
+	return TypeRTCPType
+}
+
+func (e RTCPType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -502,8 +511,11 @@ func marshalRTCPXRType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = RTCPXRType(0)
 
-func (e RTCPXRType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeRTCPXRType)
+func (e RTCPXRType) GoValueType() gobject.Type {
+	return TypeRTCPXRType
+}
+
+func (e RTCPXRType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -650,8 +662,11 @@ func marshalRTPPayload(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = RTPPayload(0)
 
-func (e RTPPayload) InitGoValue(v *gobject.Value) {
-	v.Init(TypeRTPPayload)
+func (e RTPPayload) GoValueType() gobject.Type {
+	return TypeRTPPayload
+}
+
+func (e RTPPayload) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -721,8 +736,11 @@ func marshalRTPProfile(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = RTPProfile(0)
 
-func (e RTPProfile) InitGoValue(v *gobject.Value) {
-	v.Init(TypeRTPProfile)
+func (e RTPProfile) GoValueType() gobject.Type {
+	return TypeRTPProfile
+}
+
+func (e RTPProfile) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -775,8 +793,11 @@ func (r RTPBufferFlags) Has(other RTPBufferFlags) bool {
 
 var _ gobject.GoValueInitializer = RTPBufferFlags(0)
 
-func (f RTPBufferFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeRTPBufferFlags)
+func (f RTPBufferFlags) GoValueType() gobject.Type {
+	return TypeRTPBufferFlags
+}
+
+func (f RTPBufferFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -826,8 +847,11 @@ func (r RTPBufferMapFlags) Has(other RTPBufferMapFlags) bool {
 
 var _ gobject.GoValueInitializer = RTPBufferMapFlags(0)
 
-func (f RTPBufferMapFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeRTPBufferMapFlags)
+func (f RTPBufferMapFlags) GoValueType() gobject.Type {
+	return TypeRTPBufferMapFlags
+}
+
+func (f RTPBufferMapFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -887,8 +911,11 @@ func (r RTPHeaderExtensionDirection) Has(other RTPHeaderExtensionDirection) bool
 
 var _ gobject.GoValueInitializer = RTPHeaderExtensionDirection(0)
 
-func (f RTPHeaderExtensionDirection) InitGoValue(v *gobject.Value) {
-	v.Init(TypeRTPHeaderExtensionDirection)
+func (f RTPHeaderExtensionDirection) GoValueType() gobject.Type {
+	return TypeRTPHeaderExtensionDirection
+}
+
+func (f RTPHeaderExtensionDirection) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -946,8 +973,11 @@ func (r RTPHeaderExtensionFlags) Has(other RTPHeaderExtensionFlags) bool {
 
 var _ gobject.GoValueInitializer = RTPHeaderExtensionFlags(0)
 
-func (f RTPHeaderExtensionFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeRTPHeaderExtensionFlags)
+func (f RTPHeaderExtensionFlags) GoValueType() gobject.Type {
+	return TypeRTPHeaderExtensionFlags
+}
+
+func (f RTPHeaderExtensionFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -1404,6 +1434,11 @@ func UnsafeRTPBaseDepayloadFromGlibFull(c unsafe.Pointer) RTPBaseDepayload {
 	return gobject.UnsafeObjectFromGlibFull(c).(RTPBaseDepayload)
 }
 
+// UnsafeRTPBaseDepayloadFromGlibBorrow is used to convert raw GstRTPBaseDepayload pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeRTPBaseDepayloadFromGlibBorrow(c unsafe.Pointer) RTPBaseDepayload {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(RTPBaseDepayload)
+}
+
 func (r *RTPBaseDepayloadInstance) upcastToGstRTPBaseDepayload() *RTPBaseDepayloadInstance {
 	return r
 }
@@ -1750,7 +1785,7 @@ func UnsafeApplyRTPBaseDepayloadOverrides[Instance RTPBaseDepayload](gclass unsa
 				var event  *gst.Event // in, none, converted
 				var goret  bool       // return
 
-				filter = UnsafeRTPBaseDepayloadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				filter = UnsafeRTPBaseDepayloadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.HandleEvent(filter, event)
@@ -1774,7 +1809,7 @@ func UnsafeApplyRTPBaseDepayloadOverrides[Instance RTPBaseDepayload](gclass unsa
 				var event  *gst.Event // in, none, converted
 				var goret  bool       // return
 
-				filter = UnsafeRTPBaseDepayloadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				filter = UnsafeRTPBaseDepayloadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.PacketLost(filter, event)
@@ -1798,7 +1833,7 @@ func UnsafeApplyRTPBaseDepayloadOverrides[Instance RTPBaseDepayload](gclass unsa
 				var in    *gst.Buffer // in, none, converted
 				var goret *gst.Buffer // return, full, converted
 
-				base = UnsafeRTPBaseDepayloadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				base = UnsafeRTPBaseDepayloadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				in = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Process(base, in)
@@ -1820,7 +1855,7 @@ func UnsafeApplyRTPBaseDepayloadOverrides[Instance RTPBaseDepayload](gclass unsa
 				var rtpBuffer *RTPBuffer  // in, none, converted
 				var goret     *gst.Buffer // return, full, converted
 
-				base = UnsafeRTPBaseDepayloadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				base = UnsafeRTPBaseDepayloadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				rtpBuffer = UnsafeRTPBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.ProcessRtpPacket(base, rtpBuffer)
@@ -1842,7 +1877,7 @@ func UnsafeApplyRTPBaseDepayloadOverrides[Instance RTPBaseDepayload](gclass unsa
 				var caps   *gst.Caps // in, none, converted
 				var goret  bool      // return
 
-				filter = UnsafeRTPBaseDepayloadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				filter = UnsafeRTPBaseDepayloadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SetCaps(filter, caps)
@@ -2056,6 +2091,11 @@ func UnsafeRTPBasePayloadFromGlibNone(c unsafe.Pointer) RTPBasePayload {
 // UnsafeRTPBasePayloadFromGlibFull is used to convert raw GstRTPBasePayload pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeRTPBasePayloadFromGlibFull(c unsafe.Pointer) RTPBasePayload {
 	return gobject.UnsafeObjectFromGlibFull(c).(RTPBasePayload)
+}
+
+// UnsafeRTPBasePayloadFromGlibBorrow is used to convert raw GstRTPBasePayload pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeRTPBasePayloadFromGlibBorrow(c unsafe.Pointer) RTPBasePayload {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(RTPBasePayload)
 }
 
 func (r *RTPBasePayloadInstance) upcastToGstRTPBasePayload() *RTPBasePayloadInstance {
@@ -2472,7 +2512,7 @@ func UnsafeApplyRTPBasePayloadOverrides[Instance RTPBasePayload](gclass unsafe.P
 				var filter  *gst.Caps // in, none, converted
 				var goret   *gst.Caps // return, full, converted
 
-				payload = UnsafeRTPBasePayloadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				payload = UnsafeRTPBasePayloadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				pad = gst.UnsafePadFromGlibNone(unsafe.Pointer(carg1))
 				filter = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg2))
 
@@ -2495,7 +2535,7 @@ func UnsafeApplyRTPBasePayloadOverrides[Instance RTPBasePayload](gclass unsafe.P
 				var buffer  *gst.Buffer    // in, none, converted
 				var goret   gst.FlowReturn // return, none, casted
 
-				payload = UnsafeRTPBasePayloadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				payload = UnsafeRTPBasePayloadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.HandleBuffer(payload, buffer)
@@ -2518,7 +2558,7 @@ func UnsafeApplyRTPBasePayloadOverrides[Instance RTPBasePayload](gclass unsafe.P
 				var query   *gst.Query // in, none, converted
 				var goret   bool       // return
 
-				payload = UnsafeRTPBasePayloadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				payload = UnsafeRTPBasePayloadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				pad = gst.UnsafePadFromGlibNone(unsafe.Pointer(carg1))
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg2))
 
@@ -2543,7 +2583,7 @@ func UnsafeApplyRTPBasePayloadOverrides[Instance RTPBasePayload](gclass unsafe.P
 				var caps    *gst.Caps // in, none, converted
 				var goret   bool      // return
 
-				payload = UnsafeRTPBasePayloadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				payload = UnsafeRTPBasePayloadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SetCaps(payload, caps)
@@ -2567,7 +2607,7 @@ func UnsafeApplyRTPBasePayloadOverrides[Instance RTPBasePayload](gclass unsafe.P
 				var event   *gst.Event // in, none, converted
 				var goret   bool       // return
 
-				payload = UnsafeRTPBasePayloadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				payload = UnsafeRTPBasePayloadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SinkEvent(payload, event)
@@ -2591,7 +2631,7 @@ func UnsafeApplyRTPBasePayloadOverrides[Instance RTPBasePayload](gclass unsafe.P
 				var event   *gst.Event // in, none, converted
 				var goret   bool       // return
 
-				payload = UnsafeRTPBasePayloadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				payload = UnsafeRTPBasePayloadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SrcEvent(payload, event)
@@ -2873,6 +2913,11 @@ func UnsafeRTPHeaderExtensionFromGlibNone(c unsafe.Pointer) RTPHeaderExtension {
 // UnsafeRTPHeaderExtensionFromGlibFull is used to convert raw GstRTPHeaderExtension pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeRTPHeaderExtensionFromGlibFull(c unsafe.Pointer) RTPHeaderExtension {
 	return gobject.UnsafeObjectFromGlibFull(c).(RTPHeaderExtension)
+}
+
+// UnsafeRTPHeaderExtensionFromGlibBorrow is used to convert raw GstRTPHeaderExtension pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeRTPHeaderExtensionFromGlibBorrow(c unsafe.Pointer) RTPHeaderExtension {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(RTPHeaderExtension)
 }
 
 func (r *RTPHeaderExtensionInstance) upcastToGstRTPHeaderExtension() *RTPHeaderExtensionInstance {
@@ -3531,7 +3576,7 @@ func UnsafeApplyRTPHeaderExtensionOverrides[Instance RTPHeaderExtension](gclass 
 				var inputMeta *gst.Buffer // in, none, converted
 				var goret     uint        // return, none, casted
 
-				ext = UnsafeRTPHeaderExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ext = UnsafeRTPHeaderExtensionFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				inputMeta = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.GetMaxSize(ext, inputMeta)
@@ -3552,7 +3597,7 @@ func UnsafeApplyRTPHeaderExtensionOverrides[Instance RTPHeaderExtension](gclass 
 				var ext   Instance                // go GstRTPHeaderExtension subclass
 				var goret RTPHeaderExtensionFlags // return, none, casted
 
-				ext = UnsafeRTPHeaderExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ext = UnsafeRTPHeaderExtensionFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.GetSupportedFlags(ext)
 
@@ -3575,7 +3620,7 @@ func UnsafeApplyRTPHeaderExtensionOverrides[Instance RTPHeaderExtension](gclass 
 				var buffer    *gst.Buffer             // in, none, converted
 				var goret     bool                    // return
 
-				ext = UnsafeRTPHeaderExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ext = UnsafeRTPHeaderExtensionFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				readFlags = RTPHeaderExtensionFlags(carg1)
 				_ = data
 				_ = carg2
@@ -3605,7 +3650,7 @@ func UnsafeApplyRTPHeaderExtensionOverrides[Instance RTPHeaderExtension](gclass 
 				var attributes string                      // in, none, string
 				var goret      bool                        // return
 
-				ext = UnsafeRTPHeaderExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ext = UnsafeRTPHeaderExtensionFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				direction = RTPHeaderExtensionDirection(carg1)
 				attributes = C.GoString((*C.char)(unsafe.Pointer(carg2)))
 
@@ -3630,7 +3675,7 @@ func UnsafeApplyRTPHeaderExtensionOverrides[Instance RTPHeaderExtension](gclass 
 				var caps  *gst.Caps // in, none, converted
 				var goret bool      // return
 
-				ext = UnsafeRTPHeaderExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ext = UnsafeRTPHeaderExtensionFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SetCapsFromAttributes(ext, caps)
@@ -3654,7 +3699,7 @@ func UnsafeApplyRTPHeaderExtensionOverrides[Instance RTPHeaderExtension](gclass 
 				var caps  *gst.Caps // in, none, converted
 				var goret bool      // return
 
-				ext = UnsafeRTPHeaderExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ext = UnsafeRTPHeaderExtensionFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SetNonRtpSinkCaps(ext, caps)
@@ -3678,7 +3723,7 @@ func UnsafeApplyRTPHeaderExtensionOverrides[Instance RTPHeaderExtension](gclass 
 				var caps  *gst.Caps // in, none, converted
 				var goret bool      // return
 
-				ext = UnsafeRTPHeaderExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ext = UnsafeRTPHeaderExtensionFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.UpdateNonRtpSrcCaps(ext, caps)
@@ -3705,7 +3750,7 @@ func UnsafeApplyRTPHeaderExtensionOverrides[Instance RTPHeaderExtension](gclass 
 				var data       []uint8                 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg5)
 				var goret      int                     // return, none, casted
 
-				ext = UnsafeRTPHeaderExtensionFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				ext = UnsafeRTPHeaderExtensionFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				inputMeta = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 				writeFlags = RTPHeaderExtensionFlags(carg2)
 				output = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg3))
@@ -3842,11 +3887,11 @@ type RTPBaseAudioPayload interface {
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- frameDuration int: The duraction of an audio frame in milliseconds. 
-	// 	- frameSize int: The size of an audio frame in bytes. 
+	// 	- frameDuration int32: The duraction of an audio frame in milliseconds. 
+	// 	- frameSize int32: The size of an audio frame in bytes. 
 	//
 	// Sets the options for frame based audio codecs.
-	SetFrameOptions(int, int)
+	SetFrameOptions(int32, int32)
 	// SetSampleBased wraps gst_rtp_base_audio_payload_set_sample_based
 	//
 	// Tells #GstRTPBaseAudioPayload that the child element is for a sample based
@@ -3856,18 +3901,18 @@ type RTPBaseAudioPayload interface {
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- sampleSize int: Size per sample in bytes. 
+	// 	- sampleSize int32: Size per sample in bytes. 
 	//
 	// Sets the options for sample based audio codecs.
-	SetSampleOptions(int)
+	SetSampleOptions(int32)
 	// SetSamplebitsOptions wraps gst_rtp_base_audio_payload_set_samplebits_options
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- sampleSize int: Size per sample in bits. 
+	// 	- sampleSize int32: Size per sample in bits. 
 	//
 	// Sets the options for sample based audio codecs.
-	SetSamplebitsOptions(int)
+	SetSamplebitsOptions(int32)
 }
 
 func unsafeWrapRTPBaseAudioPayload(base *gobject.ObjectInstance) *RTPBaseAudioPayloadInstance {
@@ -3896,6 +3941,11 @@ func UnsafeRTPBaseAudioPayloadFromGlibNone(c unsafe.Pointer) RTPBaseAudioPayload
 // UnsafeRTPBaseAudioPayloadFromGlibFull is used to convert raw GstRTPBaseAudioPayload pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeRTPBaseAudioPayloadFromGlibFull(c unsafe.Pointer) RTPBaseAudioPayload {
 	return gobject.UnsafeObjectFromGlibFull(c).(RTPBaseAudioPayload)
+}
+
+// UnsafeRTPBaseAudioPayloadFromGlibBorrow is used to convert raw GstRTPBaseAudioPayload pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeRTPBaseAudioPayloadFromGlibBorrow(c unsafe.Pointer) RTPBaseAudioPayload {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(RTPBaseAudioPayload)
 }
 
 func (r *RTPBaseAudioPayloadInstance) upcastToGstRTPBaseAudioPayload() *RTPBaseAudioPayloadInstance {
@@ -4031,11 +4081,11 @@ func (rtpbaseaudiopayload *RTPBaseAudioPayloadInstance) SetFrameBased() {
 // 
 // The function takes the following parameters:
 // 
-// 	- frameDuration int: The duraction of an audio frame in milliseconds. 
-// 	- frameSize int: The size of an audio frame in bytes. 
+// 	- frameDuration int32: The duraction of an audio frame in milliseconds. 
+// 	- frameSize int32: The size of an audio frame in bytes. 
 //
 // Sets the options for frame based audio codecs.
-func (rtpbaseaudiopayload *RTPBaseAudioPayloadInstance) SetFrameOptions(frameDuration int, frameSize int) {
+func (rtpbaseaudiopayload *RTPBaseAudioPayloadInstance) SetFrameOptions(frameDuration int32, frameSize int32) {
 	var carg0 *C.GstRTPBaseAudioPayload // in, none, converted
 	var carg1 C.gint                    // in, none, casted
 	var carg2 C.gint                    // in, none, casted
@@ -4067,10 +4117,10 @@ func (rtpbaseaudiopayload *RTPBaseAudioPayloadInstance) SetSampleBased() {
 // 
 // The function takes the following parameters:
 // 
-// 	- sampleSize int: Size per sample in bytes. 
+// 	- sampleSize int32: Size per sample in bytes. 
 //
 // Sets the options for sample based audio codecs.
-func (rtpbaseaudiopayload *RTPBaseAudioPayloadInstance) SetSampleOptions(sampleSize int) {
+func (rtpbaseaudiopayload *RTPBaseAudioPayloadInstance) SetSampleOptions(sampleSize int32) {
 	var carg0 *C.GstRTPBaseAudioPayload // in, none, converted
 	var carg1 C.gint                    // in, none, casted
 
@@ -4086,10 +4136,10 @@ func (rtpbaseaudiopayload *RTPBaseAudioPayloadInstance) SetSampleOptions(sampleS
 // 
 // The function takes the following parameters:
 // 
-// 	- sampleSize int: Size per sample in bits. 
+// 	- sampleSize int32: Size per sample in bits. 
 //
 // Sets the options for sample based audio codecs.
-func (rtpbaseaudiopayload *RTPBaseAudioPayloadInstance) SetSamplebitsOptions(sampleSize int) {
+func (rtpbaseaudiopayload *RTPBaseAudioPayloadInstance) SetSamplebitsOptions(sampleSize int32) {
 	var carg0 *C.GstRTPBaseAudioPayload // in, none, converted
 	var carg1 C.gint                    // in, none, casted
 
@@ -7191,11 +7241,11 @@ func RTPBufferCalcPayloadLen(packetLen uint, padLen uint8, csrcCount uint8) uint
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
+// 	- goret int32 
 //
 // Compare two sequence numbers, taking care of wraparounds. This function
 // returns the difference between @seqnum1 and @seqnum2.
-func RTPBufferCompareSeqnum(seqnum1 uint16, seqnum2 uint16) int {
+func RTPBufferCompareSeqnum(seqnum1 uint16, seqnum2 uint16) int32 {
 	var carg1 C.guint16 // in, none, casted
 	var carg2 C.guint16 // in, none, casted
 	var cret  C.gint    // return, none, casted
@@ -7207,9 +7257,9 @@ func RTPBufferCompareSeqnum(seqnum1 uint16, seqnum2 uint16) int {
 	runtime.KeepAlive(seqnum1)
 	runtime.KeepAlive(seqnum2)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }

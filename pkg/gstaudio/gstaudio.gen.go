@@ -407,6 +407,10 @@ const AUDIO_DEF_CHANNELS = 2
 //
 // Standard sampling rate used in consumer audio.
 const AUDIO_DEF_RATE = 44100
+// AUDIO_FORMAT_LAST wraps GST_AUDIO_FORMAT_LAST
+//
+// Number of audio formats in #GstAudioFormat.
+const AUDIO_FORMAT_LAST = 32
 // AUDIO_RESAMPLER_QUALITY_DEFAULT wraps GST_AUDIO_RESAMPLER_QUALITY_DEFAULT
 const AUDIO_RESAMPLER_QUALITY_DEFAULT = 4
 // AUDIO_RESAMPLER_QUALITY_MAX wraps GST_AUDIO_RESAMPLER_QUALITY_MAX
@@ -461,8 +465,11 @@ func marshalAudioBaseSinkDiscontReason(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = AudioBaseSinkDiscontReason(0)
 
-func (e AudioBaseSinkDiscontReason) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAudioBaseSinkDiscontReason)
+func (e AudioBaseSinkDiscontReason) GoValueType() gobject.Type {
+	return TypeAudioBaseSinkDiscontReason
+}
+
+func (e AudioBaseSinkDiscontReason) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -510,8 +517,11 @@ func marshalAudioBaseSinkSlaveMethod(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = AudioBaseSinkSlaveMethod(0)
 
-func (e AudioBaseSinkSlaveMethod) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAudioBaseSinkSlaveMethod)
+func (e AudioBaseSinkSlaveMethod) GoValueType() gobject.Type {
+	return TypeAudioBaseSinkSlaveMethod
+}
+
+func (e AudioBaseSinkSlaveMethod) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -558,8 +568,11 @@ func marshalAudioBaseSrcSlaveMethod(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = AudioBaseSrcSlaveMethod(0)
 
-func (e AudioBaseSrcSlaveMethod) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAudioBaseSrcSlaveMethod)
+func (e AudioBaseSrcSlaveMethod) GoValueType() gobject.Type {
+	return TypeAudioBaseSrcSlaveMethod
+}
+
+func (e AudioBaseSrcSlaveMethod) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -596,8 +609,11 @@ func marshalAudioCdSrcMode(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = AudioCdSrcMode(0)
 
-func (e AudioCdSrcMode) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAudioCdSrcMode)
+func (e AudioCdSrcMode) GoValueType() gobject.Type {
+	return TypeAudioCdSrcMode
+}
+
+func (e AudioCdSrcMode) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -765,6 +781,14 @@ const (
 	//
 	// Surround right (between rear right and side right)
 	AudioChannelPositionSurroundRight AudioChannelPosition = 27
+	// AudioChannelPositionTopSurroundLeft wraps GST_AUDIO_CHANNEL_POSITION_TOP_SURROUND_LEFT
+	//
+	// Top surround left (between rear left and side left).
+	AudioChannelPositionTopSurroundLeft AudioChannelPosition = 28
+	// AudioChannelPositionTopSurroundRight wraps GST_AUDIO_CHANNEL_POSITION_TOP_SURROUND_RIGHT
+	//
+	// Top surround right (between rear right and side right).
+	AudioChannelPositionTopSurroundRight AudioChannelPosition = 29
 )
 
 func marshalAudioChannelPosition(p unsafe.Pointer) (any, error) {
@@ -773,8 +797,11 @@ func marshalAudioChannelPosition(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = AudioChannelPosition(0)
 
-func (e AudioChannelPosition) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAudioChannelPosition)
+func (e AudioChannelPosition) GoValueType() gobject.Type {
+	return TypeAudioChannelPosition
+}
+
+func (e AudioChannelPosition) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -809,6 +836,8 @@ func (e AudioChannelPosition) String() string {
 		case AudioChannelPositionTopRearRight: return "AudioChannelPositionTopRearRight"
 		case AudioChannelPositionTopSideLeft: return "AudioChannelPositionTopSideLeft"
 		case AudioChannelPositionTopSideRight: return "AudioChannelPositionTopSideRight"
+		case AudioChannelPositionTopSurroundLeft: return "AudioChannelPositionTopSurroundLeft"
+		case AudioChannelPositionTopSurroundRight: return "AudioChannelPositionTopSurroundRight"
 		case AudioChannelPositionWideLeft: return "AudioChannelPositionWideLeft"
 		case AudioChannelPositionWideRight: return "AudioChannelPositionWideRight"
 		default: return fmt.Sprintf("AudioChannelPosition(%d)", e)
@@ -845,8 +874,11 @@ func marshalAudioDitherMethod(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = AudioDitherMethod(0)
 
-func (e AudioDitherMethod) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAudioDitherMethod)
+func (e AudioDitherMethod) GoValueType() gobject.Type {
+	return TypeAudioDitherMethod
+}
+
+func (e AudioDitherMethod) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1058,8 +1090,11 @@ func marshalAudioFormat(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = AudioFormat(0)
 
-func (e AudioFormat) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAudioFormat)
+func (e AudioFormat) GoValueType() gobject.Type {
+	return TypeAudioFormat
+}
+
+func (e AudioFormat) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1106,16 +1141,16 @@ func (e AudioFormat) String() string {
 // The function takes the following parameters:
 // 
 // 	- sign bool: signed or unsigned format 
-// 	- endianness int: G_LITTLE_ENDIAN or G_BIG_ENDIAN 
-// 	- width int: amount of bits used per sample 
-// 	- depth int: amount of used bits in @width 
+// 	- endianness int32: G_LITTLE_ENDIAN or G_BIG_ENDIAN 
+// 	- width int32: amount of bits used per sample 
+// 	- depth int32: amount of used bits in @width 
 // 
 // The function returns the following values:
 // 
 // 	- goret AudioFormat 
 //
 // Construct a #GstAudioFormat with given parameters.
-func AudioFormatBuildInteger(sign bool, endianness int, width int, depth int) AudioFormat {
+func AudioFormatBuildInteger(sign bool, endianness int32, width int32, depth int32) AudioFormat {
 	var carg1 C.gboolean       // in
 	var carg2 C.gint           // in, none, casted
 	var carg3 C.gint           // in, none, casted
@@ -1201,11 +1236,16 @@ func AudioFormatGetInfo(format AudioFormat) *AudioFormatInfo {
 // 
 // The function takes the following parameters:
 // 
-// 	- format AudioFormat 
+// 	- format AudioFormat: a #GstAudioFormat audio format 
 // 
 // The function returns the following values:
 // 
 // 	- goret string 
+//
+// Returns a string containing a descriptive name for the #GstAudioFormat.
+// 
+// Since 1.26 this can also be used with %GST_AUDIO_FORMAT_UNKNOWN, previous
+// versions were printing a critical warning and returned %NULL.
 func AudioFormatToString(format AudioFormat) string {
 	var carg1 C.GstAudioFormat // in, none, casted
 	var cret  *C.gchar         // return, none, string
@@ -1244,8 +1284,11 @@ func marshalAudioLayout(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = AudioLayout(0)
 
-func (e AudioLayout) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAudioLayout)
+func (e AudioLayout) GoValueType() gobject.Type {
+	return TypeAudioLayout
+}
+
+func (e AudioLayout) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1291,8 +1334,11 @@ func marshalAudioNoiseShapingMethod(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = AudioNoiseShapingMethod(0)
 
-func (e AudioNoiseShapingMethod) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAudioNoiseShapingMethod)
+func (e AudioNoiseShapingMethod) GoValueType() gobject.Type {
+	return TypeAudioNoiseShapingMethod
+}
+
+func (e AudioNoiseShapingMethod) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1335,8 +1381,11 @@ func marshalAudioResamplerFilterInterpolation(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = AudioResamplerFilterInterpolation(0)
 
-func (e AudioResamplerFilterInterpolation) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAudioResamplerFilterInterpolation)
+func (e AudioResamplerFilterInterpolation) GoValueType() gobject.Type {
+	return TypeAudioResamplerFilterInterpolation
+}
+
+func (e AudioResamplerFilterInterpolation) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1379,8 +1428,11 @@ func marshalAudioResamplerFilterMode(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = AudioResamplerFilterMode(0)
 
-func (e AudioResamplerFilterMode) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAudioResamplerFilterMode)
+func (e AudioResamplerFilterMode) GoValueType() gobject.Type {
+	return TypeAudioResamplerFilterMode
+}
+
+func (e AudioResamplerFilterMode) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1429,8 +1481,11 @@ func marshalAudioResamplerMethod(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = AudioResamplerMethod(0)
 
-func (e AudioResamplerMethod) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAudioResamplerMethod)
+func (e AudioResamplerMethod) GoValueType() gobject.Type {
+	return TypeAudioResamplerMethod
+}
+
+func (e AudioResamplerMethod) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1523,8 +1578,11 @@ func marshalAudioRingBufferFormatType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = AudioRingBufferFormatType(0)
 
-func (e AudioRingBufferFormatType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAudioRingBufferFormatType)
+func (e AudioRingBufferFormatType) GoValueType() gobject.Type {
+	return TypeAudioRingBufferFormatType
+}
+
+func (e AudioRingBufferFormatType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1582,8 +1640,11 @@ func marshalAudioRingBufferState(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = AudioRingBufferState(0)
 
-func (e AudioRingBufferState) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAudioRingBufferState)
+func (e AudioRingBufferState) GoValueType() gobject.Type {
+	return TypeAudioRingBufferState
+}
+
+func (e AudioRingBufferState) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1647,8 +1708,11 @@ func marshalDsdFormat(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = DsdFormat(0)
 
-func (e DsdFormat) InitGoValue(v *gobject.Value) {
-	v.Init(TypeDsdFormat)
+func (e DsdFormat) GoValueType() gobject.Type {
+	return TypeDsdFormat
+}
+
+func (e DsdFormat) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -1818,8 +1882,11 @@ func (a AudioChannelMixerFlags) Has(other AudioChannelMixerFlags) bool {
 
 var _ gobject.GoValueInitializer = AudioChannelMixerFlags(0)
 
-func (f AudioChannelMixerFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAudioChannelMixerFlags)
+func (f AudioChannelMixerFlags) GoValueType() gobject.Type {
+	return TypeAudioChannelMixerFlags
+}
+
+func (f AudioChannelMixerFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -1879,8 +1946,11 @@ func (a AudioConverterFlags) Has(other AudioConverterFlags) bool {
 
 var _ gobject.GoValueInitializer = AudioConverterFlags(0)
 
-func (f AudioConverterFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAudioConverterFlags)
+func (f AudioConverterFlags) GoValueType() gobject.Type {
+	return TypeAudioConverterFlags
+}
+
+func (f AudioConverterFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -1929,8 +1999,11 @@ func (a AudioFlags) Has(other AudioFlags) bool {
 
 var _ gobject.GoValueInitializer = AudioFlags(0)
 
-func (f AudioFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAudioFlags)
+func (f AudioFlags) GoValueType() gobject.Type {
+	return TypeAudioFlags
+}
+
+func (f AudioFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -1988,8 +2061,11 @@ func (a AudioFormatFlags) Has(other AudioFormatFlags) bool {
 
 var _ gobject.GoValueInitializer = AudioFormatFlags(0)
 
-func (f AudioFormatFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAudioFormatFlags)
+func (f AudioFormatFlags) GoValueType() gobject.Type {
+	return TypeAudioFormatFlags
+}
+
+func (f AudioFormatFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -2047,8 +2123,11 @@ func (a AudioPackFlags) Has(other AudioPackFlags) bool {
 
 var _ gobject.GoValueInitializer = AudioPackFlags(0)
 
-func (f AudioPackFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAudioPackFlags)
+func (f AudioPackFlags) GoValueType() gobject.Type {
+	return TypeAudioPackFlags
+}
+
+func (f AudioPackFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -2093,8 +2172,11 @@ func (a AudioQuantizeFlags) Has(other AudioQuantizeFlags) bool {
 
 var _ gobject.GoValueInitializer = AudioQuantizeFlags(0)
 
-func (f AudioQuantizeFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAudioQuantizeFlags)
+func (f AudioQuantizeFlags) GoValueType() gobject.Type {
+	return TypeAudioQuantizeFlags
+}
+
+func (f AudioQuantizeFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -2153,8 +2235,11 @@ func (a AudioResamplerFlags) Has(other AudioResamplerFlags) bool {
 
 var _ gobject.GoValueInitializer = AudioResamplerFlags(0)
 
-func (f AudioResamplerFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAudioResamplerFlags)
+func (f AudioResamplerFlags) GoValueType() gobject.Type {
+	return TypeAudioResamplerFlags
+}
+
+func (f AudioResamplerFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -2223,7 +2308,7 @@ type AudioRingBufferCallback func(rbuf AudioRingBuffer, data []uint8)
 // 
 // The function takes the following parameters:
 // 
-// 	- channels int: the number of channels 
+// 	- channels int32: the number of channels 
 // 
 // The function returns the following values:
 // 
@@ -2233,7 +2318,7 @@ type AudioRingBufferCallback func(rbuf AudioRingBuffer, data []uint8)
 // 
 // This function returns a reasonable fallback channel-mask and should be
 // called as a last resort when the specific channel map is unknown.
-func AudioChannelGetFallbackMask(channels int) uint64 {
+func AudioChannelGetFallbackMask(channels int32) uint64 {
 	var carg1 C.gint    // in, none, casted
 	var cret  C.guint64 // return, none, casted
 
@@ -2514,7 +2599,7 @@ func AudioFormatsRaw() (uint, []AudioFormat) {
 // 
 // 	- from []AudioChannelPosition: The channel positions to reorder from. 
 // 	- to []AudioChannelPosition: The channel positions to reorder to. 
-// 	- reorderMap []int: Pointer to the reorder map. 
+// 	- reorderMap []int32: Pointer to the reorder map. 
 // 
 // The function returns the following values:
 // 
@@ -2528,7 +2613,7 @@ func AudioFormatsRaw() (uint, []AudioFormat) {
 // 
 // The resulting @reorder_map can be used for reordering by assigning
 // channel i of the input to channel reorder_map[i] of the output.
-func AudioGetChannelReorderMap(from []AudioChannelPosition, to []AudioChannelPosition, reorderMap []int) bool {
+func AudioGetChannelReorderMap(from []AudioChannelPosition, to []AudioChannelPosition, reorderMap []int32) bool {
 	var carg1 C.gint                     // implicit
 	var carg2 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner: *typesystem.Enum, length-by: carg1)
 	var carg3 *C.GstAudioChannelPosition // in, transfer: none, C Pointers: 1, Name: array[AudioChannelPosition], array (inner: *typesystem.Enum, length-by: carg1)
@@ -2546,7 +2631,7 @@ func AudioGetChannelReorderMap(from []AudioChannelPosition, to []AudioChannelPos
 	_ = reorderMap
 	_ = carg4
 	_ = carg1
-	panic("unimplemented conversion of []int (gint*)")
+	panic("unimplemented conversion of []int32 (gint*)")
 
 	cret = C.gst_audio_get_channel_reorder_map(carg1, carg2, carg3, carg4)
 	runtime.KeepAlive(from)
@@ -2598,7 +2683,7 @@ func AudioIec61937FrameSize(spec *AudioRingBufferSpec) uint {
 // 	- dst []uint8: the destination buffer to store the
 //       payloaded contents in. Should not overlap with @src 
 // 	- spec *AudioRingBufferSpec: the ringbufer spec for @src 
-// 	- endianness int: the expected byte order of the payloaded data 
+// 	- endianness int32: the expected byte order of the payloaded data 
 // 
 // The function returns the following values:
 // 
@@ -2607,7 +2692,7 @@ func AudioIec61937FrameSize(spec *AudioRingBufferSpec) uint {
 // Payloads @src in the form specified by IEC 61937 for the type from @spec and
 // stores the result in @dst. @src must contain exactly one frame of data and
 // the frame is not checked for errors.
-func AudioIec61937Payload(src []uint8, dst []uint8, spec *AudioRingBufferSpec, endianness int) bool {
+func AudioIec61937Payload(src []uint8, dst []uint8, spec *AudioRingBufferSpec, endianness int32) bool {
 	var carg1 *C.guint8                 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
 	var carg2 C.guint                   // implicit
 	var carg3 *C.guint8                 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg4)
@@ -2916,7 +3001,7 @@ func BufferAddAudioMeta(buffer *gst.Buffer, info *AudioInfo, samples uint, offse
 // The function takes the following parameters:
 // 
 // 	- buffer *gst.Buffer: a #GstBuffer 
-// 	- numChannels int: Number of channels in the DSD data 
+// 	- numChannels int32: Number of channels in the DSD data 
 // 	- numBytesPerChannel uint: Number of bytes per channel 
 // 	- offsets *uint (nullable): the offsets (in bytes) where each channel plane starts
 //   in the buffer 
@@ -2946,7 +3031,7 @@ func BufferAddAudioMeta(buffer *gst.Buffer, info *AudioInfo, samples uint, offse
 // that you must add enough memory on the @buffer before adding this meta.
 // 
 // This meta is only needed for non-interleaved (= planar) DSD data.
-func BufferAddDsdPlaneOffsetMeta(buffer *gst.Buffer, numChannels int, numBytesPerChannel uint, offsets *uint) *DsdPlaneOffsetMeta {
+func BufferAddDsdPlaneOffsetMeta(buffer *gst.Buffer, numChannels int32, numBytesPerChannel uint, offsets *uint) *DsdPlaneOffsetMeta {
 	var carg1 *C.GstBuffer             // in, none, converted
 	var carg2 C.gint                   // in, none, casted
 	var carg3 C.gsize                  // in, none, casted
@@ -3054,7 +3139,7 @@ func BufferGetAudioLevelMeta(buffer *gst.Buffer) *AudioLevelMeta {
 // 	- inputPlaneOffsets *uint: Plane offsets for non-interleaved input data 
 // 	- outputPlaneOffsets *uint: Plane offsets for non-interleaved output data 
 // 	- numDsdBytes uint: How many bytes with DSD data to convert 
-// 	- numChannels int: Number of channels (must be at least 1) 
+// 	- numChannels int32: Number of channels (must be at least 1) 
 // 	- reverseByteBits bool: If TRUE, reverse the bits in each DSD byte 
 //
 // Converts DSD data from one layout and grouping format to another.
@@ -3074,7 +3159,7 @@ func BufferGetAudioLevelMeta(buffer *gst.Buffer) *AudioLevelMeta {
 // exactly one plane per channel) within @input_data and @output_data
 // respectively. If GST_AUDIO_LAYOUT_INTERLEAVED is used, the plane offsets
 // are ignored.
-func DsdConvert(inputData *uint8, outputData *uint8, inputFormat DsdFormat, outputFormat DsdFormat, inputLayout AudioLayout, outputLayout AudioLayout, inputPlaneOffsets *uint, outputPlaneOffsets *uint, numDsdBytes uint, numChannels int, reverseByteBits bool) {
+func DsdConvert(inputData *uint8, outputData *uint8, inputFormat DsdFormat, outputFormat DsdFormat, inputLayout AudioLayout, outputLayout AudioLayout, inputPlaneOffsets *uint, outputPlaneOffsets *uint, numDsdBytes uint, numChannels int32, reverseByteBits bool) {
 	var carg1  *C.guint8        // in, transfer: none, C Pointers: 1, Name: guint8
 	var carg2  *C.guint8        // in, transfer: none, C Pointers: 1, Name: guint8
 	var carg3  C.GstDsdFormat   // in, none, casted
@@ -3224,6 +3309,11 @@ func UnsafeStreamVolumeFromGlibNone(c unsafe.Pointer) StreamVolume {
 // UnsafeStreamVolumeFromGlibFull is used to convert raw GstStreamVolume pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeStreamVolumeFromGlibFull(c unsafe.Pointer) StreamVolume {
 	return gobject.UnsafeObjectFromGlibFull(c).(StreamVolume)
+}
+
+// UnsafeStreamVolumeFromGlibBorrow is used to convert raw GstStreamVolume pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeStreamVolumeFromGlibBorrow(c unsafe.Pointer) StreamVolume {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(StreamVolume)
 }
 
 // UnsafeStreamVolumeToGlibNone is used to convert the instance to it's C value GstStreamVolume. This is used by the bindings internally.
@@ -3467,6 +3557,11 @@ func UnsafeAudioAggregatorFromGlibFull(c unsafe.Pointer) AudioAggregator {
 	return gobject.UnsafeObjectFromGlibFull(c).(AudioAggregator)
 }
 
+// UnsafeAudioAggregatorFromGlibBorrow is used to convert raw GstAudioAggregator pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeAudioAggregatorFromGlibBorrow(c unsafe.Pointer) AudioAggregator {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(AudioAggregator)
+}
+
 func (a *AudioAggregatorInstance) upcastToGstAudioAggregator() *AudioAggregatorInstance {
 	return a
 }
@@ -3555,7 +3650,7 @@ func UnsafeApplyAudioAggregatorOverrides[Instance AudioAggregator](gclass unsafe
 				var numFrames uint               // in, none, casted
 				var goret     bool               // return
 
-				aagg = UnsafeAudioAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				aagg = UnsafeAudioAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				pad = UnsafeAudioAggregatorPadFromGlibNone(unsafe.Pointer(carg1))
 				inbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg2))
 				inOffset = uint(carg3)
@@ -3584,7 +3679,7 @@ func UnsafeApplyAudioAggregatorOverrides[Instance AudioAggregator](gclass unsafe
 				var numFrames uint        // in, none, casted
 				var goret     *gst.Buffer // return, full, converted
 
-				aagg = UnsafeAudioAggregatorFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				aagg = UnsafeAudioAggregatorFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				numFrames = uint(carg1)
 
 				goret = overrides.CreateOutputBuffer(aagg, numFrames)
@@ -3667,6 +3762,11 @@ func UnsafeAudioAggregatorPadFromGlibFull(c unsafe.Pointer) AudioAggregatorPad {
 	return gobject.UnsafeObjectFromGlibFull(c).(AudioAggregatorPad)
 }
 
+// UnsafeAudioAggregatorPadFromGlibBorrow is used to convert raw GstAudioAggregatorPad pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeAudioAggregatorPadFromGlibBorrow(c unsafe.Pointer) AudioAggregatorPad {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(AudioAggregatorPad)
+}
+
 func (a *AudioAggregatorPadInstance) upcastToGstAudioAggregatorPad() *AudioAggregatorPadInstance {
 	return a
 }
@@ -3721,7 +3821,7 @@ func UnsafeApplyAudioAggregatorPadOverrides[Instance AudioAggregatorPad](gclass 
 				var buffer  *gst.Buffer // in, none, converted
 				var goret   *gst.Buffer // return, full, converted
 
-				pad = UnsafeAudioAggregatorPadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				pad = UnsafeAudioAggregatorPadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				inInfo = UnsafeAudioInfoFromGlibNone(unsafe.Pointer(carg1))
 				outInfo = UnsafeAudioInfoFromGlibNone(unsafe.Pointer(carg2))
 				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg3))
@@ -3743,7 +3843,7 @@ func UnsafeApplyAudioAggregatorPadOverrides[Instance AudioAggregatorPad](gclass 
 			func(carg0 *C.GstAudioAggregatorPad) {
 				var pad Instance // go GstAudioAggregatorPad subclass
 
-				pad = UnsafeAudioAggregatorPadFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				pad = UnsafeAudioAggregatorPadFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				overrides.UpdateConversionInfo(pad)
 			},
@@ -3939,6 +4039,11 @@ func UnsafeAudioBaseSinkFromGlibNone(c unsafe.Pointer) AudioBaseSink {
 // UnsafeAudioBaseSinkFromGlibFull is used to convert raw GstAudioBaseSink pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeAudioBaseSinkFromGlibFull(c unsafe.Pointer) AudioBaseSink {
 	return gobject.UnsafeObjectFromGlibFull(c).(AudioBaseSink)
+}
+
+// UnsafeAudioBaseSinkFromGlibBorrow is used to convert raw GstAudioBaseSink pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeAudioBaseSinkFromGlibBorrow(c unsafe.Pointer) AudioBaseSink {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(AudioBaseSink)
 }
 
 func (a *AudioBaseSinkInstance) upcastToGstAudioBaseSink() *AudioBaseSinkInstance {
@@ -4284,7 +4389,7 @@ func UnsafeApplyAudioBaseSinkOverrides[Instance AudioBaseSink](gclass unsafe.Poi
 				var sink  Instance        // go GstAudioBaseSink subclass
 				var goret AudioRingBuffer // return, none, converted, nullable
 
-				sink = UnsafeAudioBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeAudioBaseSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.CreateRingbuffer(sink)
 
@@ -4307,7 +4412,7 @@ func UnsafeApplyAudioBaseSinkOverrides[Instance AudioBaseSink](gclass unsafe.Poi
 				var buffer *gst.Buffer // in, none, converted
 				var goret  *gst.Buffer // return, full, converted
 
-				sink = UnsafeAudioBaseSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeAudioBaseSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Payload(sink, buffer)
@@ -4438,6 +4543,11 @@ func UnsafeAudioBaseSrcFromGlibNone(c unsafe.Pointer) AudioBaseSrc {
 // UnsafeAudioBaseSrcFromGlibFull is used to convert raw GstAudioBaseSrc pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeAudioBaseSrcFromGlibFull(c unsafe.Pointer) AudioBaseSrc {
 	return gobject.UnsafeObjectFromGlibFull(c).(AudioBaseSrc)
+}
+
+// UnsafeAudioBaseSrcFromGlibBorrow is used to convert raw GstAudioBaseSrc pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeAudioBaseSrcFromGlibBorrow(c unsafe.Pointer) AudioBaseSrc {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(AudioBaseSrc)
 }
 
 func (a *AudioBaseSrcInstance) upcastToGstAudioBaseSrc() *AudioBaseSrcInstance {
@@ -4601,7 +4711,7 @@ func UnsafeApplyAudioBaseSrcOverrides[Instance AudioBaseSrc](gclass unsafe.Point
 				var src   Instance        // go GstAudioBaseSrc subclass
 				var goret AudioRingBuffer // return, none, converted, nullable
 
-				src = UnsafeAudioBaseSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeAudioBaseSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.CreateRingbuffer(src)
 
@@ -4751,6 +4861,11 @@ func UnsafeAudioCdSrcFromGlibFull(c unsafe.Pointer) AudioCdSrc {
 	return gobject.UnsafeObjectFromGlibFull(c).(AudioCdSrc)
 }
 
+// UnsafeAudioCdSrcFromGlibBorrow is used to convert raw GstAudioCdSrc pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeAudioCdSrcFromGlibBorrow(c unsafe.Pointer) AudioCdSrc {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(AudioCdSrc)
+}
+
 func (a *AudioCdSrcInstance) upcastToGstAudioCdSrc() *AudioCdSrcInstance {
 	return a
 }
@@ -4820,12 +4935,12 @@ type AudioCdSrcOverrides[Instance AudioCdSrc] struct {
 	// ReadSector allows you to override the implementation of the virtual method read_sector.
 	// The function takes the following parameters:
 	// 
-	// 	- sector int 
+	// 	- sector int32 
 	// 
 	// The function returns the following values:
 	// 
 	// 	- goret *gst.Buffer 
-	ReadSector func(Instance, int) *gst.Buffer
+	ReadSector func(Instance, int32) *gst.Buffer
 }
 
 // UnsafeApplyAudioCdSrcOverrides applies the overrides to init the gclass by setting the trampoline functions.
@@ -4843,7 +4958,7 @@ func UnsafeApplyAudioCdSrcOverrides[Instance AudioCdSrc](gclass unsafe.Pointer, 
 			func(carg0 *C.GstAudioCdSrc) {
 				var src Instance // go GstAudioCdSrc subclass
 
-				src = UnsafeAudioCdSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeAudioCdSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				overrides.Close(src)
 			},
@@ -4860,7 +4975,7 @@ func UnsafeApplyAudioCdSrcOverrides[Instance AudioCdSrc](gclass unsafe.Pointer, 
 				var device string   // in, none, string
 				var goret  bool     // return
 
-				src = UnsafeAudioCdSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeAudioCdSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				device = C.GoString((*C.char)(unsafe.Pointer(carg1)))
 
 				goret = overrides.Open(src, device)
@@ -4881,11 +4996,11 @@ func UnsafeApplyAudioCdSrcOverrides[Instance AudioCdSrc](gclass unsafe.Pointer, 
 			"_gotk4_gstaudio1_AudioCdSrc_read_sector",
 			func(carg0 *C.GstAudioCdSrc, carg1 C.gint) (cret *C.GstBuffer) {
 				var src    Instance    // go GstAudioCdSrc subclass
-				var sector int         // in, none, casted
+				var sector int32       // in, none, casted
 				var goret  *gst.Buffer // return, full, converted
 
-				src = UnsafeAudioCdSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
-				sector = int(carg1)
+				src = UnsafeAudioCdSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
+				sector = int32(carg1)
 
 				goret = overrides.ReadSector(src, sector)
 
@@ -5010,6 +5125,11 @@ func UnsafeAudioClockFromGlibNone(c unsafe.Pointer) AudioClock {
 // UnsafeAudioClockFromGlibFull is used to convert raw GstAudioClock pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeAudioClockFromGlibFull(c unsafe.Pointer) AudioClock {
 	return gobject.UnsafeObjectFromGlibFull(c).(AudioClock)
+}
+
+// UnsafeAudioClockFromGlibBorrow is used to convert raw GstAudioClock pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeAudioClockFromGlibBorrow(c unsafe.Pointer) AudioClock {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(AudioClock)
 }
 
 func (a *AudioClockInstance) upcastToGstAudioClock() *AudioClockInstance {
@@ -5318,7 +5438,7 @@ type AudioDecoder interface {
 	// The function takes the following parameters:
 	// 
 	// 	- buf *gst.Buffer (nullable): decoded data 
-	// 	- frames int: number of decoded frames represented by decoded data 
+	// 	- frames int32: number of decoded frames represented by decoded data 
 	// 
 	// The function returns the following values:
 	// 
@@ -5334,7 +5454,7 @@ type AudioDecoder interface {
 	// 
 	// Note that a frame received in #GstAudioDecoderClass.handle_frame() may be
 	// invalidated by a call to this function.
-	FinishFrame(*gst.Buffer, int) gst.FlowReturn
+	FinishFrame(*gst.Buffer, int32) gst.FlowReturn
 	// FinishSubframe wraps gst_audio_decoder_finish_subframe
 	// 
 	// The function takes the following parameters:
@@ -5383,8 +5503,8 @@ type AudioDecoder interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret int 
-	GetDelay() int
+	// 	- goret int32 
+	GetDelay() int32
 	// GetDrainable wraps gst_audio_decoder_get_drainable
 	// 
 	// The function returns the following values:
@@ -5397,8 +5517,8 @@ type AudioDecoder interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret int 
-	GetEstimateRate() int
+	// 	- goret int32 
+	GetEstimateRate() int32
 	// GetLatency wraps gst_audio_decoder_get_latency
 	// 
 	// The function returns the following values:
@@ -5413,8 +5533,8 @@ type AudioDecoder interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret int 
-	GetMaxErrors() int
+	// 	- goret int32 
+	GetMaxErrors() int32
 	// GetMinLatency wraps gst_audio_decoder_get_min_latency
 	// 
 	// The function returns the following values:
@@ -5452,8 +5572,8 @@ type AudioDecoder interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret int 
-	GetPlcAware() int
+	// 	- goret int32 
+	GetPlcAware() int32
 	// GetTolerance wraps gst_audio_decoder_get_tolerance
 	// 
 	// The function returns the following values:
@@ -5548,13 +5668,13 @@ type AudioDecoder interface {
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- num int: max tolerated errors 
+	// 	- num int32: max tolerated errors 
 	//
 	// Sets numbers of tolerated decoder errors, where a tolerated one is then only
 	// warned about, but more than tolerated will lead to fatal error. You can set
 	// -1 for never returning fatal errors. Default is set to
 	// GST_AUDIO_DECODER_MAX_ERRORS.
-	SetMaxErrors(int)
+	SetMaxErrors(int32)
 	// SetMinLatency wraps gst_audio_decoder_set_min_latency
 	// 
 	// The function takes the following parameters:
@@ -5677,6 +5797,11 @@ func UnsafeAudioDecoderFromGlibFull(c unsafe.Pointer) AudioDecoder {
 	return gobject.UnsafeObjectFromGlibFull(c).(AudioDecoder)
 }
 
+// UnsafeAudioDecoderFromGlibBorrow is used to convert raw GstAudioDecoder pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeAudioDecoderFromGlibBorrow(c unsafe.Pointer) AudioDecoder {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(AudioDecoder)
+}
+
 func (a *AudioDecoderInstance) upcastToGstAudioDecoder() *AudioDecoderInstance {
 	return a
 }
@@ -5727,7 +5852,7 @@ func (dec *AudioDecoderInstance) AllocateOutputBuffer(size uint) *gst.Buffer {
 // The function takes the following parameters:
 // 
 // 	- buf *gst.Buffer (nullable): decoded data 
-// 	- frames int: number of decoded frames represented by decoded data 
+// 	- frames int32: number of decoded frames represented by decoded data 
 // 
 // The function returns the following values:
 // 
@@ -5743,7 +5868,7 @@ func (dec *AudioDecoderInstance) AllocateOutputBuffer(size uint) *gst.Buffer {
 // 
 // Note that a frame received in #GstAudioDecoderClass.handle_frame() may be
 // invalidated by a call to this function.
-func (dec *AudioDecoderInstance) FinishFrame(buf *gst.Buffer, frames int) gst.FlowReturn {
+func (dec *AudioDecoderInstance) FinishFrame(buf *gst.Buffer, frames int32) gst.FlowReturn {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 *C.GstBuffer       // in, full, converted, nullable
 	var carg2 C.gint             // in, none, casted
@@ -5872,8 +5997,8 @@ func (dec *AudioDecoderInstance) GetAudioInfo() *AudioInfo {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
-func (dec *AudioDecoderInstance) GetDelay() int {
+// 	- goret int32 
+func (dec *AudioDecoderInstance) GetDelay() int32 {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var cret  C.gint             // return, none, casted
 
@@ -5882,9 +6007,9 @@ func (dec *AudioDecoderInstance) GetDelay() int {
 	cret = C.gst_audio_decoder_get_delay(carg0)
 	runtime.KeepAlive(dec)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -5918,8 +6043,8 @@ func (dec *AudioDecoderInstance) GetDrainable() bool {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
-func (dec *AudioDecoderInstance) GetEstimateRate() int {
+// 	- goret int32 
+func (dec *AudioDecoderInstance) GetEstimateRate() int32 {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var cret  C.gint             // return, none, casted
 
@@ -5928,9 +6053,9 @@ func (dec *AudioDecoderInstance) GetEstimateRate() int {
 	cret = C.gst_audio_decoder_get_estimate_rate(carg0)
 	runtime.KeepAlive(dec)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -5967,8 +6092,8 @@ func (dec *AudioDecoderInstance) GetLatency() (gst.ClockTime, gst.ClockTime) {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
-func (dec *AudioDecoderInstance) GetMaxErrors() int {
+// 	- goret int32 
+func (dec *AudioDecoderInstance) GetMaxErrors() int32 {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var cret  C.gint             // return, none, casted
 
@@ -5977,9 +6102,9 @@ func (dec *AudioDecoderInstance) GetMaxErrors() int {
 	cret = C.gst_audio_decoder_get_max_errors(carg0)
 	runtime.KeepAlive(dec)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -6092,8 +6217,8 @@ func (dec *AudioDecoderInstance) GetPlc() bool {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
-func (dec *AudioDecoderInstance) GetPlcAware() int {
+// 	- goret int32 
+func (dec *AudioDecoderInstance) GetPlcAware() int32 {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var cret  C.gint             // return, none, casted
 
@@ -6102,9 +6227,9 @@ func (dec *AudioDecoderInstance) GetPlcAware() int {
 	cret = C.gst_audio_decoder_get_plc_aware(carg0)
 	runtime.KeepAlive(dec)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -6329,13 +6454,13 @@ func (dec *AudioDecoderInstance) SetLatency(min gst.ClockTime, max gst.ClockTime
 // 
 // The function takes the following parameters:
 // 
-// 	- num int: max tolerated errors 
+// 	- num int32: max tolerated errors 
 //
 // Sets numbers of tolerated decoder errors, where a tolerated one is then only
 // warned about, but more than tolerated will lead to fatal error. You can set
 // -1 for never returning fatal errors. Default is set to
 // GST_AUDIO_DECODER_MAX_ERRORS.
-func (dec *AudioDecoderInstance) SetMaxErrors(num int) {
+func (dec *AudioDecoderInstance) SetMaxErrors(num int32) {
 	var carg0 *C.GstAudioDecoder // in, none, converted
 	var carg1 C.gint             // in, none, casted
 
@@ -6615,10 +6740,10 @@ type AudioDecoderOverrides[Instance AudioDecoder] struct {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- offset int 
-	// 	- length int 
+	// 	- offset int32 
+	// 	- length int32 
 	// 	- goret gst.FlowReturn 
-	Parse func(Instance, gstbase.Adapter) (int, int, gst.FlowReturn)
+	Parse func(Instance, gstbase.Adapter) (int32, int32, gst.FlowReturn)
 	// ProposeAllocation allows you to override the implementation of the virtual method propose_allocation.
 	// The function takes the following parameters:
 	// 
@@ -6712,7 +6837,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var dec   Instance // go GstAudioDecoder subclass
 				var goret bool     // return
 
-				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Close(dec)
 
@@ -6735,7 +6860,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var query *gst.Query // in, none, converted
 				var goret bool       // return
 
-				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.DecideAllocation(dec, query)
@@ -6758,7 +6883,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var dec  Instance // go GstAudioDecoder subclass
 				var hard bool     // in
 
-				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				if carg1 != 0 {
 					hard = true
 				}
@@ -6778,7 +6903,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var filter *gst.Caps // in, none, converted
 				var goret  *gst.Caps // return, full, converted
 
-				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				filter = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Getcaps(dec, filter)
@@ -6800,7 +6925,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var buffer *gst.Buffer    // in, none, converted
 				var goret  gst.FlowReturn // return, none, casted
 
-				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.HandleFrame(dec, buffer)
@@ -6821,7 +6946,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var dec   Instance // go GstAudioDecoder subclass
 				var goret bool     // return
 
-				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Negotiate(dec)
 
@@ -6843,7 +6968,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var dec   Instance // go GstAudioDecoder subclass
 				var goret bool     // return
 
-				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Open(dec)
 
@@ -6864,11 +6989,11 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 			func(carg0 *C.GstAudioDecoder, carg1 *C.GstAdapter, carg2 *C.gint, carg3 *C.gint) (cret C.GstFlowReturn) {
 				var dec     Instance        // go GstAudioDecoder subclass
 				var adapter gstbase.Adapter // in, none, converted
-				var offset  int             // out, full, casted
-				var length  int             // out, full, casted
+				var offset  int32           // out, full, casted
+				var length  int32           // out, full, casted
 				var goret   gst.FlowReturn  // return, none, casted
 
-				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				adapter = gstbase.UnsafeAdapterFromGlibNone(unsafe.Pointer(carg1))
 
 				offset, length, goret = overrides.Parse(dec, adapter)
@@ -6892,7 +7017,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var query *gst.Query // in, none, converted
 				var goret bool       // return
 
-				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.ProposeAllocation(dec, query)
@@ -6916,7 +7041,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var caps  *gst.Caps // in, none, converted
 				var goret bool      // return
 
-				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				caps = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SetFormat(dec, caps)
@@ -6940,7 +7065,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var event *gst.Event // in, none, converted
 				var goret bool       // return
 
-				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SinkEvent(dec, event)
@@ -6964,7 +7089,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var query *gst.Query // in, none, converted
 				var goret bool       // return
 
-				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SinkQuery(dec, query)
@@ -6988,7 +7113,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var event *gst.Event // in, none, converted
 				var goret bool       // return
 
-				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SrcEvent(dec, event)
@@ -7012,7 +7137,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var query *gst.Query // in, none, converted
 				var goret bool       // return
 
-				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SrcQuery(dec, query)
@@ -7035,7 +7160,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var dec   Instance // go GstAudioDecoder subclass
 				var goret bool     // return
 
-				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Start(dec)
 
@@ -7057,7 +7182,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var dec   Instance // go GstAudioDecoder subclass
 				var goret bool     // return
 
-				dec = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				dec = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Stop(dec)
 
@@ -7082,7 +7207,7 @@ func UnsafeApplyAudioDecoderOverrides[Instance AudioDecoder](gclass unsafe.Point
 				var inbuf  *gst.Buffer // in, none, converted
 				var goret  bool        // return
 
-				enc = UnsafeAudioDecoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeAudioDecoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				outbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 				meta = gst.UnsafeMetaFromGlibNone(unsafe.Pointer(carg2))
 				inbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg3))
@@ -7252,7 +7377,7 @@ type AudioEncoder interface {
 	// The function takes the following parameters:
 	// 
 	// 	- buffer *gst.Buffer (nullable): encoded data 
-	// 	- samples int: number of samples (per channel) represented by encoded data 
+	// 	- samples int32: number of samples (per channel) represented by encoded data 
 	// 
 	// The function returns the following values:
 	// 
@@ -7268,7 +7393,7 @@ type AudioEncoder interface {
 	// 
 	// Note that samples received in #GstAudioEncoderClass.handle_frame()
 	// may be invalidated by a call to this function.
-	FinishFrame(*gst.Buffer, int) gst.FlowReturn
+	FinishFrame(*gst.Buffer, int32) gst.FlowReturn
 	// GetAllocator wraps gst_audio_encoder_get_allocator
 	// 
 	// The function returns the following values:
@@ -7301,20 +7426,20 @@ type AudioEncoder interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret int 
-	GetFrameMax() int
+	// 	- goret int32 
+	GetFrameMax() int32
 	// GetFrameSamplesMax wraps gst_audio_encoder_get_frame_samples_max
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret int 
-	GetFrameSamplesMax() int
+	// 	- goret int32 
+	GetFrameSamplesMax() int32
 	// GetFrameSamplesMin wraps gst_audio_encoder_get_frame_samples_min
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret int 
-	GetFrameSamplesMin() int
+	// 	- goret int32 
+	GetFrameSamplesMin() int32
 	// GetHardMin wraps gst_audio_encoder_get_hard_min
 	// 
 	// The function returns the following values:
@@ -7343,8 +7468,8 @@ type AudioEncoder interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret int 
-	GetLookahead() int
+	// 	- goret int32 
+	GetLookahead() int32
 	// GetMarkGranule wraps gst_audio_encoder_get_mark_granule
 	// 
 	// The function returns the following values:
@@ -7439,19 +7564,19 @@ type AudioEncoder interface {
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- num int: number of frames 
+	// 	- num int32: number of frames 
 	//
 	// Sets max number of frames accepted at once (assumed minimally 1).
 	// Requires @frame_samples_min and @frame_samples_max to be the equal.
 	// 
 	// Note: This value will be reset to 0 every time before
 	// #GstAudioEncoderClass.set_format() is called.
-	SetFrameMax(int)
+	SetFrameMax(int32)
 	// SetFrameSamplesMax wraps gst_audio_encoder_set_frame_samples_max
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- num int: number of samples per frame 
+	// 	- num int32: number of samples per frame 
 	//
 	// Sets number of samples (per channel) subclass needs to be handed,
 	// at most or will be handed all available if 0.
@@ -7461,12 +7586,12 @@ type AudioEncoder interface {
 	// 
 	// Note: This value will be reset to 0 every time before
 	// #GstAudioEncoderClass.set_format() is called.
-	SetFrameSamplesMax(int)
+	SetFrameSamplesMax(int32)
 	// SetFrameSamplesMin wraps gst_audio_encoder_set_frame_samples_min
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- num int: number of samples per frame 
+	// 	- num int32: number of samples per frame 
 	//
 	// Sets number of samples (per channel) subclass needs to be handed,
 	// at least or will be handed all available if 0.
@@ -7476,7 +7601,7 @@ type AudioEncoder interface {
 	// 
 	// Note: This value will be reset to 0 every time before
 	// #GstAudioEncoderClass.set_format() is called.
-	SetFrameSamplesMin(int)
+	SetFrameSamplesMin(int32)
 	// SetHardMin wraps gst_audio_encoder_set_hard_min
 	// 
 	// The function takes the following parameters:
@@ -7511,13 +7636,13 @@ type AudioEncoder interface {
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- num int: lookahead 
+	// 	- num int32: lookahead 
 	//
 	// Sets encoder lookahead (in units of input rate samples)
 	// 
 	// Note: This value will be reset to 0 every time before
 	// #GstAudioEncoderClass.set_format() is called.
-	SetLookahead(int)
+	SetLookahead(int32)
 	// SetMarkGranule wraps gst_audio_encoder_set_mark_granule
 	// 
 	// The function takes the following parameters:
@@ -7591,6 +7716,11 @@ func UnsafeAudioEncoderFromGlibFull(c unsafe.Pointer) AudioEncoder {
 	return gobject.UnsafeObjectFromGlibFull(c).(AudioEncoder)
 }
 
+// UnsafeAudioEncoderFromGlibBorrow is used to convert raw GstAudioEncoder pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeAudioEncoderFromGlibBorrow(c unsafe.Pointer) AudioEncoder {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(AudioEncoder)
+}
+
 func (a *AudioEncoderInstance) upcastToGstAudioEncoder() *AudioEncoderInstance {
 	return a
 }
@@ -7641,7 +7771,7 @@ func (enc *AudioEncoderInstance) AllocateOutputBuffer(size uint) *gst.Buffer {
 // The function takes the following parameters:
 // 
 // 	- buffer *gst.Buffer (nullable): encoded data 
-// 	- samples int: number of samples (per channel) represented by encoded data 
+// 	- samples int32: number of samples (per channel) represented by encoded data 
 // 
 // The function returns the following values:
 // 
@@ -7657,7 +7787,7 @@ func (enc *AudioEncoderInstance) AllocateOutputBuffer(size uint) *gst.Buffer {
 // 
 // Note that samples received in #GstAudioEncoderClass.handle_frame()
 // may be invalidated by a call to this function.
-func (enc *AudioEncoderInstance) FinishFrame(buffer *gst.Buffer, samples int) gst.FlowReturn {
+func (enc *AudioEncoderInstance) FinishFrame(buffer *gst.Buffer, samples int32) gst.FlowReturn {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 *C.GstBuffer       // in, full, converted, nullable
 	var carg2 C.gint             // in, none, casted
@@ -7767,8 +7897,8 @@ func (enc *AudioEncoderInstance) GetDrainable() bool {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
-func (enc *AudioEncoderInstance) GetFrameMax() int {
+// 	- goret int32 
+func (enc *AudioEncoderInstance) GetFrameMax() int32 {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var cret  C.gint             // return, none, casted
 
@@ -7777,9 +7907,9 @@ func (enc *AudioEncoderInstance) GetFrameMax() int {
 	cret = C.gst_audio_encoder_get_frame_max(carg0)
 	runtime.KeepAlive(enc)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -7788,8 +7918,8 @@ func (enc *AudioEncoderInstance) GetFrameMax() int {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
-func (enc *AudioEncoderInstance) GetFrameSamplesMax() int {
+// 	- goret int32 
+func (enc *AudioEncoderInstance) GetFrameSamplesMax() int32 {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var cret  C.gint             // return, none, casted
 
@@ -7798,9 +7928,9 @@ func (enc *AudioEncoderInstance) GetFrameSamplesMax() int {
 	cret = C.gst_audio_encoder_get_frame_samples_max(carg0)
 	runtime.KeepAlive(enc)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -7809,8 +7939,8 @@ func (enc *AudioEncoderInstance) GetFrameSamplesMax() int {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
-func (enc *AudioEncoderInstance) GetFrameSamplesMin() int {
+// 	- goret int32 
+func (enc *AudioEncoderInstance) GetFrameSamplesMin() int32 {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var cret  C.gint             // return, none, casted
 
@@ -7819,9 +7949,9 @@ func (enc *AudioEncoderInstance) GetFrameSamplesMin() int {
 	cret = C.gst_audio_encoder_get_frame_samples_min(carg0)
 	runtime.KeepAlive(enc)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -7906,8 +8036,8 @@ func (enc *AudioEncoderInstance) GetLatency() (gst.ClockTime, gst.ClockTime) {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
-func (enc *AudioEncoderInstance) GetLookahead() int {
+// 	- goret int32 
+func (enc *AudioEncoderInstance) GetLookahead() int32 {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var cret  C.gint             // return, none, casted
 
@@ -7916,9 +8046,9 @@ func (enc *AudioEncoderInstance) GetLookahead() int {
 	cret = C.gst_audio_encoder_get_lookahead(carg0)
 	runtime.KeepAlive(enc)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -8150,14 +8280,14 @@ func (enc *AudioEncoderInstance) SetDrainable(enabled bool) {
 // 
 // The function takes the following parameters:
 // 
-// 	- num int: number of frames 
+// 	- num int32: number of frames 
 //
 // Sets max number of frames accepted at once (assumed minimally 1).
 // Requires @frame_samples_min and @frame_samples_max to be the equal.
 // 
 // Note: This value will be reset to 0 every time before
 // #GstAudioEncoderClass.set_format() is called.
-func (enc *AudioEncoderInstance) SetFrameMax(num int) {
+func (enc *AudioEncoderInstance) SetFrameMax(num int32) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 C.gint             // in, none, casted
 
@@ -8173,7 +8303,7 @@ func (enc *AudioEncoderInstance) SetFrameMax(num int) {
 // 
 // The function takes the following parameters:
 // 
-// 	- num int: number of samples per frame 
+// 	- num int32: number of samples per frame 
 //
 // Sets number of samples (per channel) subclass needs to be handed,
 // at most or will be handed all available if 0.
@@ -8183,7 +8313,7 @@ func (enc *AudioEncoderInstance) SetFrameMax(num int) {
 // 
 // Note: This value will be reset to 0 every time before
 // #GstAudioEncoderClass.set_format() is called.
-func (enc *AudioEncoderInstance) SetFrameSamplesMax(num int) {
+func (enc *AudioEncoderInstance) SetFrameSamplesMax(num int32) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 C.gint             // in, none, casted
 
@@ -8199,7 +8329,7 @@ func (enc *AudioEncoderInstance) SetFrameSamplesMax(num int) {
 // 
 // The function takes the following parameters:
 // 
-// 	- num int: number of samples per frame 
+// 	- num int32: number of samples per frame 
 //
 // Sets number of samples (per channel) subclass needs to be handed,
 // at least or will be handed all available if 0.
@@ -8209,7 +8339,7 @@ func (enc *AudioEncoderInstance) SetFrameSamplesMax(num int) {
 // 
 // Note: This value will be reset to 0 every time before
 // #GstAudioEncoderClass.set_format() is called.
-func (enc *AudioEncoderInstance) SetFrameSamplesMin(num int) {
+func (enc *AudioEncoderInstance) SetFrameSamplesMin(num int32) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 C.gint             // in, none, casted
 
@@ -8295,13 +8425,13 @@ func (enc *AudioEncoderInstance) SetLatency(min gst.ClockTime, max gst.ClockTime
 // 
 // The function takes the following parameters:
 // 
-// 	- num int: lookahead 
+// 	- num int32: lookahead 
 //
 // Sets encoder lookahead (in units of input rate samples)
 // 
 // Note: This value will be reset to 0 every time before
 // #GstAudioEncoderClass.set_format() is called.
-func (enc *AudioEncoderInstance) SetLookahead(num int) {
+func (enc *AudioEncoderInstance) SetLookahead(num int32) {
 	var carg0 *C.GstAudioEncoder // in, none, converted
 	var carg1 C.gint             // in, none, casted
 
@@ -8555,7 +8685,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 				var enc   Instance // go GstAudioEncoder subclass
 				var goret bool     // return
 
-				enc = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Close(enc)
 
@@ -8578,7 +8708,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 				var query *gst.Query // in, none, converted
 				var goret bool       // return
 
-				enc = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.DecideAllocation(enc, query)
@@ -8600,7 +8730,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 			func(carg0 *C.GstAudioEncoder) {
 				var enc Instance // go GstAudioEncoder subclass
 
-				enc = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				overrides.Flush(enc)
 			},
@@ -8617,7 +8747,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 				var filter *gst.Caps // in, none, converted
 				var goret  *gst.Caps // return, full, converted
 
-				enc = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				filter = gst.UnsafeCapsFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Getcaps(enc, filter)
@@ -8639,7 +8769,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 				var buffer *gst.Buffer    // in, none, converted
 				var goret  gst.FlowReturn // return, none, casted
 
-				enc = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.HandleFrame(enc, buffer)
@@ -8660,7 +8790,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 				var enc   Instance // go GstAudioEncoder subclass
 				var goret bool     // return
 
-				enc = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Negotiate(enc)
 
@@ -8682,7 +8812,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 				var enc   Instance // go GstAudioEncoder subclass
 				var goret bool     // return
 
-				enc = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Open(enc)
 
@@ -8705,7 +8835,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 				var query *gst.Query // in, none, converted
 				var goret bool       // return
 
-				enc = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.ProposeAllocation(enc, query)
@@ -8729,7 +8859,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 				var info  *AudioInfo // in, none, converted
 				var goret bool       // return
 
-				enc = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				info = UnsafeAudioInfoFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SetFormat(enc, info)
@@ -8753,7 +8883,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 				var event *gst.Event // in, none, converted
 				var goret bool       // return
 
-				enc = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SinkEvent(enc, event)
@@ -8777,7 +8907,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 				var query   *gst.Query // in, none, converted
 				var goret   bool       // return
 
-				encoder = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SinkQuery(encoder, query)
@@ -8801,7 +8931,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 				var event *gst.Event // in, none, converted
 				var goret bool       // return
 
-				enc = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				event = gst.UnsafeEventFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SrcEvent(enc, event)
@@ -8825,7 +8955,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 				var query   *gst.Query // in, none, converted
 				var goret   bool       // return
 
-				encoder = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				encoder = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.SrcQuery(encoder, query)
@@ -8848,7 +8978,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 				var enc   Instance // go GstAudioEncoder subclass
 				var goret bool     // return
 
-				enc = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Start(enc)
 
@@ -8870,7 +9000,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 				var enc   Instance // go GstAudioEncoder subclass
 				var goret bool     // return
 
-				enc = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Stop(enc)
 
@@ -8895,7 +9025,7 @@ func UnsafeApplyAudioEncoderOverrides[Instance AudioEncoder](gclass unsafe.Point
 				var inbuf  *gst.Buffer // in, none, converted
 				var goret  bool        // return
 
-				enc = UnsafeAudioEncoderFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				enc = UnsafeAudioEncoderFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				outbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 				meta = gst.UnsafeMetaFromGlibNone(unsafe.Pointer(carg2))
 				inbuf = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg3))
@@ -8994,6 +9124,11 @@ func UnsafeAudioFilterFromGlibFull(c unsafe.Pointer) AudioFilter {
 	return gobject.UnsafeObjectFromGlibFull(c).(AudioFilter)
 }
 
+// UnsafeAudioFilterFromGlibBorrow is used to convert raw GstAudioFilter pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeAudioFilterFromGlibBorrow(c unsafe.Pointer) AudioFilter {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(AudioFilter)
+}
+
 func (a *AudioFilterInstance) upcastToGstAudioFilter() *AudioFilterInstance {
 	return a
 }
@@ -9042,7 +9177,7 @@ func UnsafeApplyAudioFilterOverrides[Instance AudioFilter](gclass unsafe.Pointer
 				var info   *AudioInfo // in, none, converted
 				var goret  bool       // return
 
-				filter = UnsafeAudioFilterFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				filter = UnsafeAudioFilterFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				info = UnsafeAudioInfoFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Setup(filter, info)
@@ -9148,13 +9283,13 @@ type AudioRingBuffer interface {
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- segment int: the segment to clear 
+	// 	- segment int32: the segment to clear 
 	//
 	// Clear the given segment of the buffer with silence samples.
 	// This function is used by subclasses.
 	// 
 	// MT safe.
-	Clear(int)
+	Clear(int32)
 	// ClearAll wraps gst_audio_ring_buffer_clear_all
 	//
 	// Clear all samples from the ringbuffer.
@@ -9211,6 +9346,26 @@ type AudioRingBuffer interface {
 	//
 	// Checks the status of the device associated with the ring buffer.
 	DeviceIsOpen() bool
+	// GetSegbase wraps gst_audio_ring_buffer_get_segbase
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret uint64 
+	//
+	// Gets the current segment base number of the ringbuffer.
+	// 
+	// MT safe.
+	GetSegbase() uint64
+	// GetSegdone wraps gst_audio_ring_buffer_get_segdone
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret uint64 
+	//
+	// Gets the current segment number of the ringbuffer.
+	// 
+	// MT safe.
+	GetSegdone() uint64
 	// IsAcquired wraps gst_audio_ring_buffer_is_acquired
 	// 
 	// The function returns the following values:
@@ -9350,13 +9505,23 @@ type AudioRingBuffer interface {
 	// 
 	// MT safe.
 	SetSample(uint64)
+	// SetSegdone wraps gst_audio_ring_buffer_set_segdone
+	// 
+	// The function takes the following parameters:
+	// 
+	// 	- segdone uint64: the segment number to set 
+	//
+	// Sets the current segment number of the ringbuffer.
+	// 
+	// MT safe.
+	SetSegdone(uint64)
 	// SetTimestamp wraps gst_audio_ring_buffer_set_timestamp
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- readseg int 
+	// 	- readseg int32 
 	// 	- timestamp gst.ClockTime 
-	SetTimestamp(int, gst.ClockTime)
+	SetTimestamp(int32, gst.ClockTime)
 	// Start wraps gst_audio_ring_buffer_start
 	// 
 	// The function returns the following values:
@@ -9397,6 +9562,11 @@ func UnsafeAudioRingBufferFromGlibNone(c unsafe.Pointer) AudioRingBuffer {
 // UnsafeAudioRingBufferFromGlibFull is used to convert raw GstAudioRingBuffer pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeAudioRingBufferFromGlibFull(c unsafe.Pointer) AudioRingBuffer {
 	return gobject.UnsafeObjectFromGlibFull(c).(AudioRingBuffer)
+}
+
+// UnsafeAudioRingBufferFromGlibBorrow is used to convert raw GstAudioRingBuffer pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeAudioRingBufferFromGlibBorrow(c unsafe.Pointer) AudioRingBuffer {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(AudioRingBuffer)
 }
 
 func (a *AudioRingBufferInstance) upcastToGstAudioRingBuffer() *AudioRingBufferInstance {
@@ -9574,13 +9744,13 @@ func (buf *AudioRingBufferInstance) Advance(advance uint) {
 // 
 // The function takes the following parameters:
 // 
-// 	- segment int: the segment to clear 
+// 	- segment int32: the segment to clear 
 //
 // Clear the given segment of the buffer with silence samples.
 // This function is used by subclasses.
 // 
 // MT safe.
-func (buf *AudioRingBufferInstance) Clear(segment int) {
+func (buf *AudioRingBufferInstance) Clear(segment int32) {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var carg1 C.gint                // in, none, casted
 
@@ -9730,6 +9900,56 @@ func (buf *AudioRingBufferInstance) DeviceIsOpen() bool {
 	if cret != 0 {
 		goret = true
 	}
+
+	return goret
+}
+
+// GetSegbase wraps gst_audio_ring_buffer_get_segbase
+// 
+// The function returns the following values:
+// 
+// 	- goret uint64 
+//
+// Gets the current segment base number of the ringbuffer.
+// 
+// MT safe.
+func (buf *AudioRingBufferInstance) GetSegbase() uint64 {
+	var carg0 *C.GstAudioRingBuffer // in, none, converted
+	var cret  C.guint64             // return, none, casted
+
+	carg0 = (*C.GstAudioRingBuffer)(UnsafeAudioRingBufferToGlibNone(buf))
+
+	cret = C.gst_audio_ring_buffer_get_segbase(carg0)
+	runtime.KeepAlive(buf)
+
+	var goret uint64
+
+	goret = uint64(cret)
+
+	return goret
+}
+
+// GetSegdone wraps gst_audio_ring_buffer_get_segdone
+// 
+// The function returns the following values:
+// 
+// 	- goret uint64 
+//
+// Gets the current segment number of the ringbuffer.
+// 
+// MT safe.
+func (buf *AudioRingBufferInstance) GetSegdone() uint64 {
+	var carg0 *C.GstAudioRingBuffer // in, none, converted
+	var cret  C.guint64             // return, none, casted
+
+	carg0 = (*C.GstAudioRingBuffer)(UnsafeAudioRingBufferToGlibNone(buf))
+
+	cret = C.gst_audio_ring_buffer_get_segdone(carg0)
+	runtime.KeepAlive(buf)
+
+	var goret uint64
+
+	goret = uint64(cret)
 
 	return goret
 }
@@ -10080,13 +10300,34 @@ func (buf *AudioRingBufferInstance) SetSample(sample uint64) {
 	runtime.KeepAlive(sample)
 }
 
+// SetSegdone wraps gst_audio_ring_buffer_set_segdone
+// 
+// The function takes the following parameters:
+// 
+// 	- segdone uint64: the segment number to set 
+//
+// Sets the current segment number of the ringbuffer.
+// 
+// MT safe.
+func (buf *AudioRingBufferInstance) SetSegdone(segdone uint64) {
+	var carg0 *C.GstAudioRingBuffer // in, none, converted
+	var carg1 C.guint64             // in, none, casted
+
+	carg0 = (*C.GstAudioRingBuffer)(UnsafeAudioRingBufferToGlibNone(buf))
+	carg1 = C.guint64(segdone)
+
+	C.gst_audio_ring_buffer_set_segdone(carg0, carg1)
+	runtime.KeepAlive(buf)
+	runtime.KeepAlive(segdone)
+}
+
 // SetTimestamp wraps gst_audio_ring_buffer_set_timestamp
 // 
 // The function takes the following parameters:
 // 
-// 	- readseg int 
+// 	- readseg int32 
 // 	- timestamp gst.ClockTime 
-func (buf *AudioRingBufferInstance) SetTimestamp(readseg int, timestamp gst.ClockTime) {
+func (buf *AudioRingBufferInstance) SetTimestamp(readseg int32, timestamp gst.ClockTime) {
 	var carg0 *C.GstAudioRingBuffer // in, none, converted
 	var carg1 C.gint                // in, none, casted
 	var carg2 C.GstClockTime        // in, none, casted, alias
@@ -10236,7 +10477,7 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 				var spec  *AudioRingBufferSpec // in, none, converted
 				var goret bool                 // return
 
-				buf = UnsafeAudioRingBufferFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				spec = UnsafeAudioRingBufferSpecFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Acquire(buf, spec)
@@ -10260,7 +10501,7 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 				var active bool     // in
 				var goret  bool     // return
 
-				buf = UnsafeAudioRingBufferFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				if carg1 != 0 {
 					active = true
 				}
@@ -10284,7 +10525,7 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 			func(carg0 *C.GstAudioRingBuffer) {
 				var buf Instance // go GstAudioRingBuffer subclass
 
-				buf = UnsafeAudioRingBufferFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				overrides.ClearAll(buf)
 			},
@@ -10300,7 +10541,7 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 				var buf   Instance // go GstAudioRingBuffer subclass
 				var goret bool     // return
 
-				buf = UnsafeAudioRingBufferFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.CloseDevice(buf)
 
@@ -10322,7 +10563,7 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 				var buf   Instance // go GstAudioRingBuffer subclass
 				var goret uint     // return, none, casted
 
-				buf = UnsafeAudioRingBufferFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Delay(buf)
 
@@ -10342,7 +10583,7 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 				var buf   Instance // go GstAudioRingBuffer subclass
 				var goret bool     // return
 
-				buf = UnsafeAudioRingBufferFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.OpenDevice(buf)
 
@@ -10364,7 +10605,7 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 				var buf   Instance // go GstAudioRingBuffer subclass
 				var goret bool     // return
 
-				buf = UnsafeAudioRingBufferFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Pause(buf)
 
@@ -10386,7 +10627,7 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 				var buf   Instance // go GstAudioRingBuffer subclass
 				var goret bool     // return
 
-				buf = UnsafeAudioRingBufferFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Release(buf)
 
@@ -10408,7 +10649,7 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 				var buf   Instance // go GstAudioRingBuffer subclass
 				var goret bool     // return
 
-				buf = UnsafeAudioRingBufferFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Resume(buf)
 
@@ -10430,7 +10671,7 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 				var buf   Instance // go GstAudioRingBuffer subclass
 				var goret bool     // return
 
-				buf = UnsafeAudioRingBufferFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Start(buf)
 
@@ -10452,7 +10693,7 @@ func UnsafeApplyAudioRingBufferOverrides[Instance AudioRingBuffer](gclass unsafe
 				var buf   Instance // go GstAudioRingBuffer subclass
 				var goret bool     // return
 
-				buf = UnsafeAudioRingBufferFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				buf = UnsafeAudioRingBufferFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Stop(buf)
 
@@ -10558,6 +10799,11 @@ func UnsafeAudioSinkFromGlibFull(c unsafe.Pointer) AudioSink {
 	return gobject.UnsafeObjectFromGlibFull(c).(AudioSink)
 }
 
+// UnsafeAudioSinkFromGlibBorrow is used to convert raw GstAudioSink pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeAudioSinkFromGlibBorrow(c unsafe.Pointer) AudioSink {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(AudioSink)
+}
+
 func (a *AudioSinkInstance) upcastToGstAudioSink() *AudioSinkInstance {
 	return a
 }
@@ -10633,7 +10879,7 @@ func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, ov
 				var sink  Instance // go GstAudioSink subclass
 				var goret bool     // return
 
-				sink = UnsafeAudioSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeAudioSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Close(sink)
 
@@ -10655,7 +10901,7 @@ func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, ov
 				var sink  Instance // go GstAudioSink subclass
 				var goret uint     // return, none, casted
 
-				sink = UnsafeAudioSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeAudioSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Delay(sink)
 
@@ -10675,7 +10921,7 @@ func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, ov
 				var sink  Instance // go GstAudioSink subclass
 				var goret bool     // return
 
-				sink = UnsafeAudioSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeAudioSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Open(sink)
 
@@ -10696,7 +10942,7 @@ func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, ov
 			func(carg0 *C.GstAudioSink) {
 				var sink Instance // go GstAudioSink subclass
 
-				sink = UnsafeAudioSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeAudioSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				overrides.Pause(sink)
 			},
@@ -10713,7 +10959,7 @@ func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, ov
 				var spec  *AudioRingBufferSpec // in, none, converted
 				var goret bool                 // return
 
-				sink = UnsafeAudioSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeAudioSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				spec = UnsafeAudioRingBufferSpecFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Prepare(sink, spec)
@@ -10735,7 +10981,7 @@ func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, ov
 			func(carg0 *C.GstAudioSink) {
 				var sink Instance // go GstAudioSink subclass
 
-				sink = UnsafeAudioSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeAudioSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				overrides.Reset(sink)
 			},
@@ -10750,7 +10996,7 @@ func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, ov
 			func(carg0 *C.GstAudioSink) {
 				var sink Instance // go GstAudioSink subclass
 
-				sink = UnsafeAudioSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeAudioSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				overrides.Resume(sink)
 			},
@@ -10765,7 +11011,7 @@ func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, ov
 			func(carg0 *C.GstAudioSink) {
 				var sink Instance // go GstAudioSink subclass
 
-				sink = UnsafeAudioSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeAudioSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				overrides.Stop(sink)
 			},
@@ -10781,7 +11027,7 @@ func UnsafeApplyAudioSinkOverrides[Instance AudioSink](gclass unsafe.Pointer, ov
 				var sink  Instance // go GstAudioSink subclass
 				var goret bool     // return
 
-				sink = UnsafeAudioSinkFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				sink = UnsafeAudioSinkFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Unprepare(sink)
 
@@ -10882,6 +11128,11 @@ func UnsafeAudioSrcFromGlibFull(c unsafe.Pointer) AudioSrc {
 	return gobject.UnsafeObjectFromGlibFull(c).(AudioSrc)
 }
 
+// UnsafeAudioSrcFromGlibBorrow is used to convert raw GstAudioSrc pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeAudioSrcFromGlibBorrow(c unsafe.Pointer) AudioSrc {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(AudioSrc)
+}
+
 func (a *AudioSrcInstance) upcastToGstAudioSrc() *AudioSrcInstance {
 	return a
 }
@@ -10951,7 +11202,7 @@ func UnsafeApplyAudioSrcOverrides[Instance AudioSrc](gclass unsafe.Pointer, over
 				var src   Instance // go GstAudioSrc subclass
 				var goret bool     // return
 
-				src = UnsafeAudioSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeAudioSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Close(src)
 
@@ -10973,7 +11224,7 @@ func UnsafeApplyAudioSrcOverrides[Instance AudioSrc](gclass unsafe.Pointer, over
 				var src   Instance // go GstAudioSrc subclass
 				var goret uint     // return, none, casted
 
-				src = UnsafeAudioSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeAudioSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Delay(src)
 
@@ -10993,7 +11244,7 @@ func UnsafeApplyAudioSrcOverrides[Instance AudioSrc](gclass unsafe.Pointer, over
 				var src   Instance // go GstAudioSrc subclass
 				var goret bool     // return
 
-				src = UnsafeAudioSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeAudioSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Open(src)
 
@@ -11016,7 +11267,7 @@ func UnsafeApplyAudioSrcOverrides[Instance AudioSrc](gclass unsafe.Pointer, over
 				var spec  *AudioRingBufferSpec // in, none, converted
 				var goret bool                 // return
 
-				src = UnsafeAudioSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeAudioSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				spec = UnsafeAudioRingBufferSpecFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.Prepare(src, spec)
@@ -11038,7 +11289,7 @@ func UnsafeApplyAudioSrcOverrides[Instance AudioSrc](gclass unsafe.Pointer, over
 			func(carg0 *C.GstAudioSrc) {
 				var src Instance // go GstAudioSrc subclass
 
-				src = UnsafeAudioSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeAudioSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				overrides.Reset(src)
 			},
@@ -11054,7 +11305,7 @@ func UnsafeApplyAudioSrcOverrides[Instance AudioSrc](gclass unsafe.Pointer, over
 				var src   Instance // go GstAudioSrc subclass
 				var goret bool     // return
 
-				src = UnsafeAudioSrcFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				src = UnsafeAudioSrcFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Unprepare(src)
 
@@ -11140,6 +11391,11 @@ func UnsafeAudioAggregatorConvertPadFromGlibNone(c unsafe.Pointer) AudioAggregat
 // UnsafeAudioAggregatorConvertPadFromGlibFull is used to convert raw GstAudioAggregatorConvertPad pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeAudioAggregatorConvertPadFromGlibFull(c unsafe.Pointer) AudioAggregatorConvertPad {
 	return gobject.UnsafeObjectFromGlibFull(c).(AudioAggregatorConvertPad)
+}
+
+// UnsafeAudioAggregatorConvertPadFromGlibBorrow is used to convert raw GstAudioAggregatorConvertPad pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeAudioAggregatorConvertPadFromGlibBorrow(c unsafe.Pointer) AudioAggregatorConvertPad {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(AudioAggregatorConvertPad)
 }
 
 func (a *AudioAggregatorConvertPadInstance) upcastToGstAudioAggregatorConvertPad() *AudioAggregatorConvertPadInstance {
@@ -11469,8 +11725,8 @@ func UnsafeAudioBufferToGlibFull(a *AudioBuffer) unsafe.Pointer {
 // 	- buffer *gst.Buffer: The buffer to clip. 
 // 	- segment *gst.Segment: Segment in %GST_FORMAT_TIME or %GST_FORMAT_DEFAULT to which
 //           the buffer should be clipped. 
-// 	- rate int: sample rate. 
-// 	- bpf int: size of one audio frame in bytes. This is the size of one sample *
+// 	- rate int32: sample rate. 
+// 	- bpf int32: size of one audio frame in bytes. This is the size of one sample *
 // number of channels. 
 // 
 // The function returns the following values:
@@ -11481,7 +11737,7 @@ func UnsafeAudioBufferToGlibFull(a *AudioBuffer) unsafe.Pointer {
 // 
 // After calling this function the caller does not own a reference to
 // @buffer anymore.
-func AudioBufferClip(buffer *gst.Buffer, segment *gst.Segment, rate int, bpf int) *gst.Buffer {
+func AudioBufferClip(buffer *gst.Buffer, segment *gst.Segment, rate int32, bpf int32) *gst.Buffer {
 	var carg1 *C.GstBuffer  // in, full, converted
 	var carg2 *C.GstSegment // in, none, converted
 	var carg3 C.gint        // in, none, casted
@@ -11630,7 +11886,7 @@ func AudioBufferReorderChannels(buffer *gst.Buffer, format AudioFormat, from []A
 // The function takes the following parameters:
 // 
 // 	- buffer *gst.Buffer: The buffer to truncate. 
-// 	- bpf int: size of one audio frame in bytes. This is the size of one sample *
+// 	- bpf int32: size of one audio frame in bytes. This is the size of one sample *
 // number of channels. 
 // 	- trim uint: the number of samples to remove from the beginning of the buffer 
 // 	- samples uint: the final number of samples that should exist in this buffer or -1
@@ -11653,7 +11909,7 @@ func AudioBufferReorderChannels(buffer *gst.Buffer, format AudioFormat, from []A
 // 
 // After calling this function the caller does not own a reference to
 // @buffer anymore.
-func AudioBufferTruncate(buffer *gst.Buffer, bpf int, trim uint, samples uint) *gst.Buffer {
+func AudioBufferTruncate(buffer *gst.Buffer, bpf int32, trim uint, samples uint) *gst.Buffer {
 	var carg1 *C.GstBuffer // in, full, converted
 	var carg2 C.gint       // in, none, casted
 	var carg3 C.gsize      // in, none, casted
@@ -12050,8 +12306,11 @@ func marshalAudioConverter(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeAudioConverterFromGlibBorrow(b), nil
 }
 
-func (r *AudioConverter) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAudioConverter)
+func (r *AudioConverter) GoValueType() gobject.Type {
+	return TypeAudioConverter
+}
+
+func (r *AudioConverter) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -12157,12 +12416,12 @@ func NewAudioConverter(flags AudioConverterFlags, inInfo *AudioInfo, outInfo *Au
 // 
 // The function returns the following values:
 // 
-// 	- inRate int: result input rate 
-// 	- outRate int: result output rate 
+// 	- inRate int32: result input rate 
+// 	- outRate int32: result output rate 
 // 	- goret *gst.Structure 
 //
 // Get the current configuration of @convert.
-func (convert *AudioConverter) GetConfig() (int, int, *gst.Structure) {
+func (convert *AudioConverter) GetConfig() (int32, int32, *gst.Structure) {
 	var carg0 *C.GstAudioConverter // in, none, converted
 	var carg1 C.gint               // out, full, casted
 	var carg2 C.gint               // out, full, casted
@@ -12173,12 +12432,12 @@ func (convert *AudioConverter) GetConfig() (int, int, *gst.Structure) {
 	cret = C.gst_audio_converter_get_config(carg0, &carg1, &carg2)
 	runtime.KeepAlive(convert)
 
-	var inRate  int
-	var outRate int
+	var inRate  int32
+	var outRate int32
 	var goret   *gst.Structure
 
-	inRate = int(carg1)
-	outRate = int(carg2)
+	inRate = int32(carg1)
+	outRate = int32(carg2)
 	goret = gst.UnsafeStructureFromGlibNone(unsafe.Pointer(cret))
 
 	return inRate, outRate, goret
@@ -12339,8 +12598,8 @@ func (convert *AudioConverter) SupportsInplace() bool {
 // 
 // The function takes the following parameters:
 // 
-// 	- inRate int: input rate 
-// 	- outRate int: output rate 
+// 	- inRate int32: input rate 
+// 	- outRate int32: output rate 
 // 	- config *gst.Structure (nullable): a #GstStructure or %NULL 
 // 
 // The function returns the following values:
@@ -12361,7 +12620,7 @@ func (convert *AudioConverter) SupportsInplace() bool {
 // 
 // Look at the `GST_AUDIO_CONVERTER_OPT_*` fields to check valid configuration
 // option and values.
-func (convert *AudioConverter) UpdateConfig(inRate int, outRate int, config *gst.Structure) bool {
+func (convert *AudioConverter) UpdateConfig(inRate int32, outRate int32, config *gst.Structure) bool {
 	var carg0 *C.GstAudioConverter // in, none, converted
 	var carg1 C.gint               // in, none, casted
 	var carg2 C.gint               // in, none, casted
@@ -12643,8 +12902,11 @@ func marshalAudioFormatInfo(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeAudioFormatInfoFromGlibBorrow(b), nil
 }
 
-func (r *AudioFormatInfo) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAudioFormatInfo)
+func (r *AudioFormatInfo) GoValueType() gobject.Type {
+	return TypeAudioFormatInfo
+}
+
+func (r *AudioFormatInfo) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -12721,8 +12983,11 @@ func marshalAudioInfo(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeAudioInfoFromGlibBorrow(b), nil
 }
 
-func (r *AudioInfo) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAudioInfo)
+func (r *AudioInfo) GoValueType() gobject.Type {
+	return TypeAudioInfo
+}
+
+func (r *AudioInfo) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -12989,14 +13254,14 @@ func (info *AudioInfo) IsEqual(other *AudioInfo) bool {
 // The function takes the following parameters:
 // 
 // 	- format AudioFormat: the format 
-// 	- rate int: the samplerate 
-// 	- channels int: the number of channels 
+// 	- rate int32: the samplerate 
+// 	- channels int32: the number of channels 
 // 	- position [64]AudioChannelPosition (nullable): the channel positions 
 //
 // Set the default info for the audio info of @format and @rate and @channels.
 // 
 // Note: This initializes @info first, no values are preserved.
-func (info *AudioInfo) SetFormat(format AudioFormat, rate int, channels int, position [64]AudioChannelPosition) {
+func (info *AudioInfo) SetFormat(format AudioFormat, rate int32, channels int32, position [64]AudioChannelPosition) {
 	var carg0 *C.GstAudioInfo            // in, none, converted
 	var carg1 C.GstAudioFormat           // in, none, casted
 	var carg2 C.gint                     // in, none, casted
@@ -13351,9 +13616,9 @@ func UnsafeAudioResamplerToGlibFull(a *AudioResampler) unsafe.Pointer {
 // 	- method AudioResamplerMethod: a #GstAudioResamplerMethod 
 // 	- flags AudioResamplerFlags: #GstAudioResamplerFlags 
 // 	- format AudioFormat: the #GstAudioFormat 
-// 	- channels int: the number of channels 
-// 	- inRate int: input rate 
-// 	- outRate int: output rate 
+// 	- channels int32: the number of channels 
+// 	- inRate int32: input rate 
+// 	- outRate int32: output rate 
 // 	- options *gst.Structure: extra options 
 // 
 // The function returns the following values:
@@ -13361,7 +13626,7 @@ func UnsafeAudioResamplerToGlibFull(a *AudioResampler) unsafe.Pointer {
 // 	- goret *AudioResampler 
 //
 // Make a new resampler.
-func NewAudioResampler(method AudioResamplerMethod, flags AudioResamplerFlags, format AudioFormat, channels int, inRate int, outRate int, options *gst.Structure) *AudioResampler {
+func NewAudioResampler(method AudioResamplerMethod, flags AudioResamplerFlags, format AudioFormat, channels int32, inRate int32, outRate int32, options *gst.Structure) *AudioResampler {
 	var carg1 C.GstAudioResamplerMethod // in, none, casted
 	var carg2 C.GstAudioResamplerFlags  // in, none, casted
 	var carg3 C.GstAudioFormat          // in, none, casted
@@ -13401,13 +13666,13 @@ func NewAudioResampler(method AudioResamplerMethod, flags AudioResamplerFlags, f
 // 
 // 	- method AudioResamplerMethod: a #GstAudioResamplerMethod 
 // 	- quality uint: the quality 
-// 	- inRate int: the input rate 
-// 	- outRate int: the output rate 
+// 	- inRate int32: the input rate 
+// 	- outRate int32: the output rate 
 // 	- options *gst.Structure: a #GstStructure 
 //
 // Set the parameters for resampling from @in_rate to @out_rate using @method
 // for @quality in @options.
-func AudioResamplerOptionsSetQuality(method AudioResamplerMethod, quality uint, inRate int, outRate int, options *gst.Structure) {
+func AudioResamplerOptionsSetQuality(method AudioResamplerMethod, quality uint, inRate int32, outRate int32, options *gst.Structure) {
 	var carg1 C.GstAudioResamplerMethod // in, none, casted
 	var carg2 C.guint                   // in, none, casted
 	var carg3 C.gint                    // in, none, casted
@@ -13531,8 +13796,8 @@ func (resampler *AudioResampler) Reset() {
 // 
 // The function takes the following parameters:
 // 
-// 	- inRate int: new input rate 
-// 	- outRate int: new output rate 
+// 	- inRate int32: new input rate 
+// 	- outRate int32: new output rate 
 // 	- options *gst.Structure: new options or %NULL 
 // 
 // The function returns the following values:
@@ -13545,7 +13810,7 @@ func (resampler *AudioResampler) Reset() {
 // When @in_rate or @out_rate is 0, its value is unchanged.
 // 
 // When @options is %NULL, the previously configured options are reused.
-func (resampler *AudioResampler) Update(inRate int, outRate int, options *gst.Structure) bool {
+func (resampler *AudioResampler) Update(inRate int32, outRate int32, options *gst.Structure) bool {
 	var carg0 *C.GstAudioResampler // in, none, converted
 	var carg1 C.gint               // in, none, casted
 	var carg2 C.gint               // in, none, casted
@@ -13843,8 +14108,11 @@ func marshalAudioStreamAlign(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeAudioStreamAlignFromGlibBorrow(b), nil
 }
 
-func (r *AudioStreamAlign) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAudioStreamAlign)
+func (r *AudioStreamAlign) GoValueType() gobject.Type {
+	return TypeAudioStreamAlign
+}
+
+func (r *AudioStreamAlign) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -13903,7 +14171,7 @@ func UnsafeAudioStreamAlignToGlibFull(a *AudioStreamAlign) unsafe.Pointer {
 // 
 // The function takes the following parameters:
 // 
-// 	- rate int: a sample rate 
+// 	- rate int32: a sample rate 
 // 	- alignmentThreshold gst.ClockTime: a alignment threshold in nanoseconds 
 // 	- discontWait gst.ClockTime: discont wait in nanoseconds 
 // 
@@ -13922,7 +14190,7 @@ func UnsafeAudioStreamAlignToGlibFull(a *AudioStreamAlign) unsafe.Pointer {
 // again until the output buffer is marked as a discontinuity. These can later
 // be re-configured with gst_audio_stream_align_set_alignment_threshold() and
 // gst_audio_stream_align_set_discont_wait().
-func NewAudioStreamAlign(rate int, alignmentThreshold gst.ClockTime, discontWait gst.ClockTime) *AudioStreamAlign {
+func NewAudioStreamAlign(rate int32, alignmentThreshold gst.ClockTime, discontWait gst.ClockTime) *AudioStreamAlign {
 	var carg1 C.gint                 // in, none, casted
 	var carg2 C.GstClockTime         // in, none, casted, alias
 	var carg3 C.GstClockTime         // in, none, casted, alias
@@ -14017,10 +14285,10 @@ func (align *AudioStreamAlign) GetDiscontWait() gst.ClockTime {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
+// 	- goret int32 
 //
 // Gets the currently configured sample rate.
-func (align *AudioStreamAlign) GetRate() int {
+func (align *AudioStreamAlign) GetRate() int32 {
 	var carg0 *C.GstAudioStreamAlign // in, none, converted
 	var cret  C.gint                 // return, none, casted
 
@@ -14029,9 +14297,9 @@ func (align *AudioStreamAlign) GetRate() int {
 	cret = C.gst_audio_stream_align_get_rate(carg0)
 	runtime.KeepAlive(align)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -14207,11 +14475,11 @@ func (align *AudioStreamAlign) SetDiscontWait(discontWait gst.ClockTime) {
 // 
 // The function takes the following parameters:
 // 
-// 	- rate int: a new sample rate 
+// 	- rate int32: a new sample rate 
 //
 // Sets @rate as new sample rate for the following processing. If the sample
 // rate differs this implicitly marks the next data as discontinuous.
-func (align *AudioStreamAlign) SetRate(rate int) {
+func (align *AudioStreamAlign) SetRate(rate int32) {
 	var carg0 *C.GstAudioStreamAlign // in, none, converted
 	var carg1 C.gint                 // in, none, casted
 
@@ -14292,8 +14560,11 @@ func marshalDsdInfo(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeDsdInfoFromGlibBorrow(b), nil
 }
 
-func (r *DsdInfo) InitGoValue(v *gobject.Value) {
-	v.Init(TypeDsdInfo)
+func (r *DsdInfo) GoValueType() gobject.Type {
+	return TypeDsdInfo
+}
+
+func (r *DsdInfo) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
@@ -14511,14 +14782,14 @@ func (info *DsdInfo) IsEqual(other *DsdInfo) bool {
 // The function takes the following parameters:
 // 
 // 	- format DsdFormat: the format 
-// 	- rate int: the DSD rate 
-// 	- channels int: the number of channels 
+// 	- rate int32: the DSD rate 
+// 	- channels int32: the number of channels 
 // 	- positions [64]AudioChannelPosition (nullable): the channel positions 
 //
 // Set the default info for the DSD info of @format and @rate and @channels.
 // 
 // Note: This initializes @info first, no values are preserved.
-func (info *DsdInfo) SetFormat(format DsdFormat, rate int, channels int, positions [64]AudioChannelPosition) {
+func (info *DsdInfo) SetFormat(format DsdFormat, rate int32, channels int32, positions [64]AudioChannelPosition) {
 	var carg0 *C.GstDsdInfo              // in, none, converted
 	var carg1 C.GstDsdFormat             // in, none, casted
 	var carg2 C.gint                     // in, none, casted

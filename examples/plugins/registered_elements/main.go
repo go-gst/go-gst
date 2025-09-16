@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
 	"os"
 	"os/signal"
 	"path/filepath"
@@ -30,6 +31,10 @@ func run(ctx context.Context) error {
 
 	systemclock := gst.SystemClockObtain()
 
+	log.Printf("using system clock: %s", systemclock.GetName())
+
+	// After registering the elements, we can use them in the parsed pipeline strings as if they were
+	// provided by a plugin.
 	ret, err := gst.ParseLaunch("gocustombin ! fakesink sync=true")
 
 	if err != nil {
@@ -41,8 +46,6 @@ func run(ctx context.Context) error {
 	pipeline.UseClock(systemclock)
 
 	bus := pipeline.GetBus()
-
-	pipeline.SetState(gst.StatePlaying)
 
 	go func() {
 		for msg := range bus.Messages(ctx) {
@@ -75,10 +78,10 @@ func run(ctx context.Context) error {
 			default:
 				fmt.Println("got message:", msg.String())
 			}
-
-			return
 		}
 	}()
+
+	pipeline.SetState(gst.StatePlaying)
 
 	<-ctx.Done()
 

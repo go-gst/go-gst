@@ -87,8 +87,11 @@ func marshalTagDemuxResult(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = TagDemuxResult(0)
 
-func (e TagDemuxResult) InitGoValue(v *gobject.Value) {
-	v.Init(TypeTagDemuxResult)
+func (e TagDemuxResult) GoValueType() gobject.Type {
+	return TypeTagDemuxResult
+}
+
+func (e TagDemuxResult) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -198,8 +201,11 @@ func marshalTagImageType(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = TagImageType(0)
 
-func (e TagImageType) InitGoValue(v *gobject.Value) {
-	v.Init(TypeTagImageType)
+func (e TagImageType) GoValueType() gobject.Type {
+	return TypeTagImageType
+}
+
+func (e TagImageType) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -321,8 +327,11 @@ func (t TagLicenseFlags) Has(other TagLicenseFlags) bool {
 
 var _ gobject.GoValueInitializer = TagLicenseFlags(0)
 
-func (f TagLicenseFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeTagLicenseFlags)
+func (f TagLicenseFlags) GoValueType() gobject.Type {
+	return TypeTagLicenseFlags
+}
+
+func (f TagLicenseFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -1129,7 +1138,7 @@ func TagListAddID3Image(tagList *gst.TagList, imageData []uint8, id3PictureType 
 // The function takes the following parameters:
 // 
 // 	- buffer *gst.Buffer: The exif buffer 
-// 	- byteOrder int: byte order of the data 
+// 	- byteOrder int32: byte order of the data 
 // 	- baseOffset uint32: Offset from the tiff header to this buffer 
 // 
 // The function returns the following values:
@@ -1140,7 +1149,7 @@ func TagListAddID3Image(tagList *gst.TagList, imageData []uint8, id3PictureType 
 // on a taglist. The base_offset is used to subtract from the offset in
 // the tag entries and be able to get the offset relative to the buffer
 // start
-func TagListFromExifBuffer(buffer *gst.Buffer, byteOrder int, baseOffset uint32) *gst.TagList {
+func TagListFromExifBuffer(buffer *gst.Buffer, byteOrder int32, baseOffset uint32) *gst.TagList {
 	var carg1 *C.GstBuffer  // in, none, converted
 	var carg2 C.gint        // in, none, casted
 	var carg3 C.guint32     // in, none, casted
@@ -1377,7 +1386,7 @@ func TagListNewFromID3V1(data [128]uint8) *gst.TagList {
 // The function takes the following parameters:
 // 
 // 	- taglist *gst.TagList: The taglist 
-// 	- byteOrder int: byte order used in writing (G_LITTLE_ENDIAN or G_BIG_ENDIAN) 
+// 	- byteOrder int32: byte order used in writing (G_LITTLE_ENDIAN or G_BIG_ENDIAN) 
 // 	- baseOffset uint32: Offset from the tiff header first byte 
 // 
 // The function returns the following values:
@@ -1386,7 +1395,7 @@ func TagListNewFromID3V1(data [128]uint8) *gst.TagList {
 //
 // Formats the tags in taglist on exif format. The resulting buffer contains
 // the tags IFD and is followed by the data pointed by the tag entries.
-func TagListToExifBuffer(taglist *gst.TagList, byteOrder int, baseOffset uint32) *gst.Buffer {
+func TagListToExifBuffer(taglist *gst.TagList, byteOrder int32, baseOffset uint32) *gst.Buffer {
 	var carg1 *C.GstTagList // in, none, converted
 	var carg2 C.gint        // in, none, casted
 	var carg3 C.guint32     // in, none, casted
@@ -1845,6 +1854,11 @@ func UnsafeTagXmpWriterFromGlibFull(c unsafe.Pointer) TagXmpWriter {
 	return gobject.UnsafeObjectFromGlibFull(c).(TagXmpWriter)
 }
 
+// UnsafeTagXmpWriterFromGlibBorrow is used to convert raw GstTagXmpWriter pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeTagXmpWriterFromGlibBorrow(c unsafe.Pointer) TagXmpWriter {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(TagXmpWriter)
+}
+
 // UnsafeTagXmpWriterToGlibNone is used to convert the instance to it's C value GstTagXmpWriter. This is used by the bindings internally.
 func UnsafeTagXmpWriterToGlibNone(c TagXmpWriter) unsafe.Pointer {
 	i := c.upcastToGstTagXmpWriter()
@@ -2071,6 +2085,11 @@ func UnsafeTagDemuxFromGlibFull(c unsafe.Pointer) TagDemux {
 	return gobject.UnsafeObjectFromGlibFull(c).(TagDemux)
 }
 
+// UnsafeTagDemuxFromGlibBorrow is used to convert raw GstTagDemux pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeTagDemuxFromGlibBorrow(c unsafe.Pointer) TagDemux {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(TagDemux)
+}
+
 func (t *TagDemuxInstance) upcastToGstTagDemux() *TagDemuxInstance {
 	return t
 }
@@ -2133,7 +2152,7 @@ func UnsafeApplyTagDemuxOverrides[Instance TagDemux](gclass unsafe.Pointer, over
 				var tagSize  *uint       // in, transfer: none, C Pointers: 1, Name: guint
 				var goret    bool        // return
 
-				demux = UnsafeTagDemuxFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				demux = UnsafeTagDemuxFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				buffer = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 				if carg2 != 0 {
 					startTag = true
@@ -2164,7 +2183,7 @@ func UnsafeApplyTagDemuxOverrides[Instance TagDemux](gclass unsafe.Pointer, over
 				var endTags   *gst.TagList // in, none, converted
 				var goret     *gst.TagList // return, full, converted
 
-				demux = UnsafeTagDemuxFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				demux = UnsafeTagDemuxFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				startTags = gst.UnsafeTagListFromGlibNone(unsafe.Pointer(carg1))
 				endTags = gst.UnsafeTagListFromGlibNone(unsafe.Pointer(carg2))
 
@@ -2265,6 +2284,11 @@ func UnsafeTagMuxFromGlibFull(c unsafe.Pointer) TagMux {
 	return gobject.UnsafeObjectFromGlibFull(c).(TagMux)
 }
 
+// UnsafeTagMuxFromGlibBorrow is used to convert raw GstTagMux pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeTagMuxFromGlibBorrow(c unsafe.Pointer) TagMux {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(TagMux)
+}
+
 func (t *TagMuxInstance) upcastToGstTagMux() *TagMuxInstance {
 	return t
 }
@@ -2322,7 +2346,7 @@ func UnsafeApplyTagMuxOverrides[Instance TagMux](gclass unsafe.Pointer, override
 				var tagList *gst.TagList // in, none, converted
 				var goret   *gst.Buffer  // return, full, converted
 
-				mux = UnsafeTagMuxFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				mux = UnsafeTagMuxFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				tagList = gst.UnsafeTagListFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.RenderEndTag(mux, tagList)
@@ -2344,7 +2368,7 @@ func UnsafeApplyTagMuxOverrides[Instance TagMux](gclass unsafe.Pointer, override
 				var tagList *gst.TagList // in, none, converted
 				var goret   *gst.Buffer  // return, full, converted
 
-				mux = UnsafeTagMuxFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				mux = UnsafeTagMuxFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				tagList = gst.UnsafeTagListFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.RenderStartTag(mux, tagList)

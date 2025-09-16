@@ -108,11 +108,11 @@ const PLUGINS_BASE_VERSION_MAJOR = 1
 // PLUGINS_BASE_VERSION_MICRO wraps GST_PLUGINS_BASE_VERSION_MICRO
 //
 // The micro version of GStreamer's gst-plugins-base libraries at compile time.
-const PLUGINS_BASE_VERSION_MICRO = 10
+const PLUGINS_BASE_VERSION_MICRO = 0
 // PLUGINS_BASE_VERSION_MINOR wraps GST_PLUGINS_BASE_VERSION_MINOR
 //
 // The minor version of GStreamer's gst-plugins-base libraries at compile time.
-const PLUGINS_BASE_VERSION_MINOR = 24
+const PLUGINS_BASE_VERSION_MINOR = 26
 // PLUGINS_BASE_VERSION_NANO wraps GST_PLUGINS_BASE_VERSION_NANO
 //
 // The nano version of GStreamer's gst-plugins-base libraries at compile time.
@@ -172,8 +172,11 @@ func marshalAudioVisualizerShader(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = AudioVisualizerShader(0)
 
-func (e AudioVisualizerShader) InitGoValue(v *gobject.Value) {
-	v.Init(TypeAudioVisualizerShader)
+func (e AudioVisualizerShader) GoValueType() gobject.Type {
+	return TypeAudioVisualizerShader
+}
+
+func (e AudioVisualizerShader) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -231,8 +234,11 @@ func marshalDiscovererResult(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = DiscovererResult(0)
 
-func (e DiscovererResult) InitGoValue(v *gobject.Value) {
-	v.Init(TypeDiscovererResult)
+func (e DiscovererResult) GoValueType() gobject.Type {
+	return TypeDiscovererResult
+}
+
+func (e DiscovererResult) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -324,8 +330,11 @@ func marshalInstallPluginsReturn(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = InstallPluginsReturn(0)
 
-func (e InstallPluginsReturn) InitGoValue(v *gobject.Value) {
-	v.Init(TypeInstallPluginsReturn)
+func (e InstallPluginsReturn) GoValueType() gobject.Type {
+	return TypeInstallPluginsReturn
+}
+
+func (e InstallPluginsReturn) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -417,8 +426,11 @@ func (d DiscovererSerializeFlags) Has(other DiscovererSerializeFlags) bool {
 
 var _ gobject.GoValueInitializer = DiscovererSerializeFlags(0)
 
-func (f DiscovererSerializeFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypeDiscovererSerializeFlags)
+func (f DiscovererSerializeFlags) GoValueType() gobject.Type {
+	return TypeDiscovererSerializeFlags
+}
+
+func (f DiscovererSerializeFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -503,8 +515,11 @@ func (p PbUtilsCapsDescriptionFlags) Has(other PbUtilsCapsDescriptionFlags) bool
 
 var _ gobject.GoValueInitializer = PbUtilsCapsDescriptionFlags(0)
 
-func (f PbUtilsCapsDescriptionFlags) InitGoValue(v *gobject.Value) {
-	v.Init(TypePbUtilsCapsDescriptionFlags)
+func (f PbUtilsCapsDescriptionFlags) GoValueType() gobject.Type {
+	return TypePbUtilsCapsDescriptionFlags
+}
+
+func (f PbUtilsCapsDescriptionFlags) SetGoValue(v *gobject.Value) {
 	v.SetFlags(int(f))
 }
 
@@ -632,10 +647,10 @@ func CodecUtilsAacGetChannels(audioConfig []uint8) uint {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
+// 	- goret int32 
 //
 // Translates the sample rate to the index corresponding to it in AAC spec.
-func CodecUtilsAacGetIndexFromSampleRate(rate uint) int {
+func CodecUtilsAacGetIndexFromSampleRate(rate uint) int32 {
 	var carg1 C.guint // in, none, casted
 	var cret  C.gint  // return, none, casted
 
@@ -644,9 +659,9 @@ func CodecUtilsAacGetIndexFromSampleRate(rate uint) int {
 	cret = C.gst_codec_utils_aac_get_index_from_sample_rate(carg1)
 	runtime.KeepAlive(rate)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -794,6 +809,121 @@ func CodecUtilsAacGetSampleRateFromIndex(srIdx uint) uint {
 	var goret uint
 
 	goret = uint(cret)
+
+	return goret
+}
+
+// CodecUtilsAv1CreateAv1CFromCaps wraps gst_codec_utils_av1_create_av1c_from_caps
+// 
+// The function takes the following parameters:
+// 
+// 	- caps *gst.Caps: a video/x-av1 #GstCaps 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.Buffer (nullable) 
+//
+// Creates the corresponding AV1 Codec Configuration Record
+func CodecUtilsAv1CreateAv1CFromCaps(caps *gst.Caps) *gst.Buffer {
+	var carg1 *C.GstCaps   // in, none, converted
+	var cret  *C.GstBuffer // return, full, converted, nullable
+
+	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
+
+	cret = C.gst_codec_utils_av1_create_av1c_from_caps(carg1)
+	runtime.KeepAlive(caps)
+
+	var goret *gst.Buffer
+
+	if cret != nil {
+		goret = gst.UnsafeBufferFromGlibFull(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
+// CodecUtilsAv1CreateCapsFromAv1C wraps gst_codec_utils_av1_create_caps_from_av1c
+// 
+// The function takes the following parameters:
+// 
+// 	- av1C *gst.Buffer: a #GstBuffer containing a AV1CodecConfigurationRecord 
+// 
+// The function returns the following values:
+// 
+// 	- goret *gst.Caps (nullable) 
+//
+// Parses the provided @av1c and returns the corresponding caps
+func CodecUtilsAv1CreateCapsFromAv1C(av1C *gst.Buffer) *gst.Caps {
+	var carg1 *C.GstBuffer // in, none, converted
+	var cret  *C.GstCaps   // return, full, converted, nullable
+
+	carg1 = (*C.GstBuffer)(gst.UnsafeBufferToGlibNone(av1C))
+
+	cret = C.gst_codec_utils_av1_create_caps_from_av1c(carg1)
+	runtime.KeepAlive(av1C)
+
+	var goret *gst.Caps
+
+	if cret != nil {
+		goret = gst.UnsafeCapsFromGlibFull(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
+// CodecUtilsAv1GetLevel wraps gst_codec_utils_av1_get_level
+// 
+// The function takes the following parameters:
+// 
+// 	- seqLevelIdx uint8: A seq_level_idx 
+// 
+// The function returns the following values:
+// 
+// 	- goret string (nullable) 
+//
+// Transform a seq_level_idx into the level string
+func CodecUtilsAv1GetLevel(seqLevelIdx uint8) string {
+	var carg1 C.guint8 // in, none, casted
+	var cret  *C.gchar // return, none, string, nullable-string
+
+	carg1 = C.guint8(seqLevelIdx)
+
+	cret = C.gst_codec_utils_av1_get_level(carg1)
+	runtime.KeepAlive(seqLevelIdx)
+
+	var goret string
+
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
+
+	return goret
+}
+
+// CodecUtilsAv1GetSeqLevelIdx wraps gst_codec_utils_av1_get_seq_level_idx
+// 
+// The function takes the following parameters:
+// 
+// 	- level string: A level string from caps 
+// 
+// The function returns the following values:
+// 
+// 	- goret uint8 
+//
+// Transform a level string from the caps into the seq_level_idx
+func CodecUtilsAv1GetSeqLevelIdx(level string) uint8 {
+	var carg1 *C.gchar // in, none, string
+	var cret  C.guint8 // return, none, casted
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(level)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	cret = C.gst_codec_utils_av1_get_seq_level_idx(carg1)
+	runtime.KeepAlive(level)
+
+	var goret uint8
+
+	goret = uint8(cret)
 
 	return goret
 }
@@ -1255,6 +1385,176 @@ func CodecUtilsH265GetTier(profileTierLevel []uint8) string {
 	return goret
 }
 
+// CodecUtilsH266CapsSetLevelTierAndProfile wraps gst_codec_utils_h266_caps_set_level_tier_and_profile
+// 
+// The function takes the following parameters:
+// 
+// 	- caps *gst.Caps: the #GstCaps to which the level, tier and profile are to be added 
+// 	- decoderConfiguration []uint8: Pointer to the VvcDecoderConfigurationRecord struct as defined in ISO/IEC 14496-15 
+// 
+// The function returns the following values:
+// 
+// 	- goret bool 
+//
+// Sets the level, tier and profile in @caps if it can be determined from
+// @decoder_configuration. See gst_codec_utils_h266_get_level(),
+// gst_codec_utils_h266_get_tier() and gst_codec_utils_h266_get_profile()
+// for more details on the parameters.
+func CodecUtilsH266CapsSetLevelTierAndProfile(caps *gst.Caps, decoderConfiguration []uint8) bool {
+	var carg1 *C.GstCaps // in, none, converted
+	var carg2 *C.guint8  // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg3)
+	var carg3 C.guint    // implicit
+	var cret  C.gboolean // return
+
+	carg1 = (*C.GstCaps)(gst.UnsafeCapsToGlibNone(caps))
+	_ = decoderConfiguration
+	_ = carg2
+	_ = carg3
+	panic("unimplemented conversion of []uint8 (const guint8*)")
+
+	cret = C.gst_codec_utils_h266_caps_set_level_tier_and_profile(carg1, carg2, carg3)
+	runtime.KeepAlive(caps)
+	runtime.KeepAlive(decoderConfiguration)
+
+	var goret bool
+
+	if cret != 0 {
+		goret = true
+	}
+
+	return goret
+}
+
+// CodecUtilsH266GetLevel wraps gst_codec_utils_h266_get_level
+// 
+// The function takes the following parameters:
+// 
+// 	- ptlRecord []uint8: Pointer to the VvcPTLRecord structure as defined in ISO/IEC 14496-15. 
+// 
+// The function returns the following values:
+// 
+// 	- goret string (nullable) 
+//
+// Converts the level indication (general_level_idc) in the stream's
+// ptl_record structure into a string.
+func CodecUtilsH266GetLevel(ptlRecord []uint8) string {
+	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg2 C.guint   // implicit
+	var cret  *C.gchar  // return, none, string, nullable-string
+
+	_ = ptlRecord
+	_ = carg1
+	_ = carg2
+	panic("unimplemented conversion of []uint8 (const guint8*)")
+
+	cret = C.gst_codec_utils_h266_get_level(carg1, carg2)
+	runtime.KeepAlive(ptlRecord)
+
+	var goret string
+
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
+
+	return goret
+}
+
+// CodecUtilsH266GetLevelIdc wraps gst_codec_utils_h266_get_level_idc
+// 
+// The function takes the following parameters:
+// 
+// 	- level string: A level string from caps 
+// 
+// The function returns the following values:
+// 
+// 	- goret uint8 
+//
+// Transform a level string from the caps into the level_idc
+func CodecUtilsH266GetLevelIdc(level string) uint8 {
+	var carg1 *C.gchar // in, none, string
+	var cret  C.guint8 // return, none, casted
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(level)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	cret = C.gst_codec_utils_h266_get_level_idc(carg1)
+	runtime.KeepAlive(level)
+
+	var goret uint8
+
+	goret = uint8(cret)
+
+	return goret
+}
+
+// CodecUtilsH266GetProfile wraps gst_codec_utils_h266_get_profile
+// 
+// The function takes the following parameters:
+// 
+// 	- ptlRecord []uint8: Pointer to the VvcPTLRecord structure as defined in ISO/IEC 14496-15. 
+// 
+// The function returns the following values:
+// 
+// 	- goret string (nullable) 
+//
+// Converts the profile indication (general_profile_idc) in the stream's
+// ptl_record structure into a string.
+func CodecUtilsH266GetProfile(ptlRecord []uint8) string {
+	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg2 C.guint   // implicit
+	var cret  *C.gchar  // return, none, string, nullable-string
+
+	_ = ptlRecord
+	_ = carg1
+	_ = carg2
+	panic("unimplemented conversion of []uint8 (const guint8*)")
+
+	cret = C.gst_codec_utils_h266_get_profile(carg1, carg2)
+	runtime.KeepAlive(ptlRecord)
+
+	var goret string
+
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
+
+	return goret
+}
+
+// CodecUtilsH266GetTier wraps gst_codec_utils_h266_get_tier
+// 
+// The function takes the following parameters:
+// 
+// 	- ptlRecord []uint8: Pointer to the VvcPTLRecord structure as defined in ISO/IEC 14496-15. 
+// 
+// The function returns the following values:
+// 
+// 	- goret string (nullable) 
+//
+// Converts the tier indication (general_tier_flag) in the stream's
+// ptl_record structure into a string.
+func CodecUtilsH266GetTier(ptlRecord []uint8) string {
+	var carg1 *C.guint8 // in, transfer: none, C Pointers: 1, Name: array[guint8], array (inner: *typesystem.CastablePrimitive, length-by: carg2)
+	var carg2 C.guint   // implicit
+	var cret  *C.gchar  // return, none, string, nullable-string
+
+	_ = ptlRecord
+	_ = carg1
+	_ = carg2
+	panic("unimplemented conversion of []uint8 (const guint8*)")
+
+	cret = C.gst_codec_utils_h266_get_tier(carg1, carg2)
+	runtime.KeepAlive(ptlRecord)
+
+	var goret string
+
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
+
+	return goret
+}
+
 // CodecUtilsMpeg4VideoCapsSetLevelAndProfile wraps gst_codec_utils_mpeg4video_caps_set_level_and_profile
 // 
 // The function takes the following parameters:
@@ -1479,7 +1779,8 @@ func EncodingListAvailableCategories() []string {
 // 	- details []string: NULL-terminated array
 //     of installer string details (see below) 
 // 	- ctx *InstallPluginsContext (nullable): a #GstInstallPluginsContext, or NULL 
-// 	- fn InstallPluginsResultFunc: the function to call when the installer program returns 
+// 	- fn InstallPluginsResultFunc: the function to call when the
+//     installer program returns 
 // 
 // The function returns the following values:
 // 
@@ -1922,6 +2223,56 @@ func MissingPluginMessageGetInstallerDetail(msg *gst.Message) string {
 	}
 
 	return goret
+}
+
+// MissingPluginMessageGetStreamID wraps gst_missing_plugin_message_get_stream_id
+// 
+// The function takes the following parameters:
+// 
+// 	- msg *gst.Message: A missing-plugin #GstMessage of type #GST_MESSAGE_ELEMENT 
+// 
+// The function returns the following values:
+// 
+// 	- goret string (nullable) 
+//
+// Get the stream-id of the stream for which an element is missing.
+func MissingPluginMessageGetStreamID(msg *gst.Message) string {
+	var carg1 *C.GstMessage // in, none, converted
+	var cret  *C.gchar      // return, none, string, nullable-string
+
+	carg1 = (*C.GstMessage)(gst.UnsafeMessageToGlibNone(msg))
+
+	cret = C.gst_missing_plugin_message_get_stream_id(carg1)
+	runtime.KeepAlive(msg)
+
+	var goret string
+
+	if cret != nil {
+		goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	}
+
+	return goret
+}
+
+// MissingPluginMessageSetStreamID wraps gst_missing_plugin_message_set_stream_id
+// 
+// The function takes the following parameters:
+// 
+// 	- msg *gst.Message: A missing-plugin #GstMessage of type #GST_MESSAGE_ELEMENT 
+// 	- streamId string: The stream id for which an element is missing 
+//
+// Set the stream-id of the stream for which an element is missing.
+func MissingPluginMessageSetStreamID(msg *gst.Message, streamId string) {
+	var carg1 *C.GstMessage // in, none, converted
+	var carg2 *C.gchar      // in, none, string
+
+	carg1 = (*C.GstMessage)(gst.UnsafeMessageToGlibNone(msg))
+	carg2 = (*C.gchar)(unsafe.Pointer(C.CString(streamId)))
+	defer C.free(unsafe.Pointer(carg2))
+
+	C.gst_missing_plugin_message_set_stream_id(carg1, carg2)
+	runtime.KeepAlive(msg)
+	runtime.KeepAlive(streamId)
 }
 
 // NewMissingURISinkInstallerDetail wraps gst_missing_uri_sink_installer_detail_new
@@ -2487,6 +2838,11 @@ func UnsafeAudioVisualizerFromGlibFull(c unsafe.Pointer) AudioVisualizer {
 	return gobject.UnsafeObjectFromGlibFull(c).(AudioVisualizer)
 }
 
+// UnsafeAudioVisualizerFromGlibBorrow is used to convert raw GstAudioVisualizer pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeAudioVisualizerFromGlibBorrow(c unsafe.Pointer) AudioVisualizer {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(AudioVisualizer)
+}
+
 func (a *AudioVisualizerInstance) upcastToGstAudioVisualizer() *AudioVisualizerInstance {
 	return a
 }
@@ -2550,7 +2906,7 @@ func UnsafeApplyAudioVisualizerOverrides[Instance AudioVisualizer](gclass unsafe
 				var query *gst.Query // in, none, converted
 				var goret bool       // return
 
-				scope = UnsafeAudioVisualizerFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				scope = UnsafeAudioVisualizerFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				query = gst.UnsafeQueryFromGlibNone(unsafe.Pointer(carg1))
 
 				goret = overrides.DecideAllocation(scope, query)
@@ -2575,7 +2931,7 @@ func UnsafeApplyAudioVisualizerOverrides[Instance AudioVisualizer](gclass unsafe
 				var video *gstvideo.VideoFrame // in, none, converted
 				var goret bool                 // return
 
-				scope = UnsafeAudioVisualizerFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				scope = UnsafeAudioVisualizerFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				audio = gst.UnsafeBufferFromGlibNone(unsafe.Pointer(carg1))
 				video = gstvideo.UnsafeVideoFrameFromGlibNone(unsafe.Pointer(carg2))
 
@@ -2599,7 +2955,7 @@ func UnsafeApplyAudioVisualizerOverrides[Instance AudioVisualizer](gclass unsafe
 				var scope Instance // go GstAudioVisualizer subclass
 				var goret bool     // return
 
-				scope = UnsafeAudioVisualizerFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				scope = UnsafeAudioVisualizerFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				goret = overrides.Setup(scope)
 
@@ -2765,6 +3121,11 @@ func UnsafeDiscovererFromGlibNone(c unsafe.Pointer) Discoverer {
 // UnsafeDiscovererFromGlibFull is used to convert raw GstDiscoverer pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeDiscovererFromGlibFull(c unsafe.Pointer) Discoverer {
 	return gobject.UnsafeObjectFromGlibFull(c).(Discoverer)
+}
+
+// UnsafeDiscovererFromGlibBorrow is used to convert raw GstDiscoverer pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeDiscovererFromGlibBorrow(c unsafe.Pointer) Discoverer {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(Discoverer)
 }
 
 func (d *DiscovererInstance) upcastToGstDiscoverer() *DiscovererInstance {
@@ -3016,7 +3377,7 @@ func UnsafeApplyDiscovererOverrides[Instance Discoverer](gclass unsafe.Pointer, 
 				var info       DiscovererInfo // in, none, converted
 				var err        error          // in, none, converted
 
-				discoverer = UnsafeDiscovererFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				discoverer = UnsafeDiscovererFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				info = UnsafeDiscovererInfoFromGlibNone(unsafe.Pointer(carg1))
 				err = glib.UnsafeErrorFromGlibNone(unsafe.Pointer(carg2))
 
@@ -3033,7 +3394,7 @@ func UnsafeApplyDiscovererOverrides[Instance Discoverer](gclass unsafe.Pointer, 
 			func(carg0 *C.GstDiscoverer) {
 				var discoverer Instance // go GstDiscoverer subclass
 
-				discoverer = UnsafeDiscovererFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				discoverer = UnsafeDiscovererFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				overrides.Finished(discoverer)
 			},
@@ -3050,7 +3411,7 @@ func UnsafeApplyDiscovererOverrides[Instance Discoverer](gclass unsafe.Pointer, 
 				var uri   string         // in, none, string
 				var goret DiscovererInfo // return, full, converted
 
-				dc = UnsafeDiscovererFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				dc = UnsafeDiscovererFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				uri = C.GoString((*C.char)(unsafe.Pointer(carg1)))
 
 				goret = overrides.LoadSerializeInfo(dc, uri)
@@ -3071,7 +3432,7 @@ func UnsafeApplyDiscovererOverrides[Instance Discoverer](gclass unsafe.Pointer, 
 				var discoverer Instance    // go GstDiscoverer subclass
 				var source     gst.Element // in, none, converted
 
-				discoverer = UnsafeDiscovererFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				discoverer = UnsafeDiscovererFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 				source = gst.UnsafeElementFromGlibNone(unsafe.Pointer(carg1))
 
 				overrides.SourceSetup(discoverer, source)
@@ -3087,7 +3448,7 @@ func UnsafeApplyDiscovererOverrides[Instance Discoverer](gclass unsafe.Pointer, 
 			func(carg0 *C.GstDiscoverer) {
 				var discoverer Instance // go GstDiscoverer subclass
 
-				discoverer = UnsafeDiscovererFromGlibNone(unsafe.Pointer(carg0)).(Instance)
+				discoverer = UnsafeDiscovererFromGlibBorrow(unsafe.Pointer(carg0)).(Instance)
 
 				overrides.Starting(discoverer)
 			},
@@ -3282,6 +3643,11 @@ func UnsafeDiscovererInfoFromGlibNone(c unsafe.Pointer) DiscovererInfo {
 // UnsafeDiscovererInfoFromGlibFull is used to convert raw GstDiscovererInfo pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeDiscovererInfoFromGlibFull(c unsafe.Pointer) DiscovererInfo {
 	return gobject.UnsafeObjectFromGlibFull(c).(DiscovererInfo)
+}
+
+// UnsafeDiscovererInfoFromGlibBorrow is used to convert raw GstDiscovererInfo pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeDiscovererInfoFromGlibBorrow(c unsafe.Pointer) DiscovererInfo {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(DiscovererInfo)
 }
 
 func (d *DiscovererInfoInstance) upcastToGstDiscovererInfo() *DiscovererInfoInstance {
@@ -3805,8 +4171,8 @@ type DiscovererStreamInfo interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret int 
-	GetStreamNumber() int
+	// 	- goret int32 
+	GetStreamNumber() int32
 	// GetStreamTypeNick wraps gst_discoverer_stream_info_get_stream_type_nick
 	// 
 	// The function returns the following values:
@@ -3845,6 +4211,11 @@ func UnsafeDiscovererStreamInfoFromGlibNone(c unsafe.Pointer) DiscovererStreamIn
 // UnsafeDiscovererStreamInfoFromGlibFull is used to convert raw GstDiscovererStreamInfo pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeDiscovererStreamInfoFromGlibFull(c unsafe.Pointer) DiscovererStreamInfo {
 	return gobject.UnsafeObjectFromGlibFull(c).(DiscovererStreamInfo)
+}
+
+// UnsafeDiscovererStreamInfoFromGlibBorrow is used to convert raw GstDiscovererStreamInfo pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeDiscovererStreamInfoFromGlibBorrow(c unsafe.Pointer) DiscovererStreamInfo {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(DiscovererStreamInfo)
 }
 
 func (d *DiscovererStreamInfoInstance) upcastToGstDiscovererStreamInfo() *DiscovererStreamInfoInstance {
@@ -3984,8 +4355,8 @@ func (info *DiscovererStreamInfoInstance) GetStreamID() string {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
-func (info *DiscovererStreamInfoInstance) GetStreamNumber() int {
+// 	- goret int32 
+func (info *DiscovererStreamInfoInstance) GetStreamNumber() int32 {
 	var carg0 *C.GstDiscovererStreamInfo // in, none, converted
 	var cret  C.gint                     // return, none, casted
 
@@ -3994,9 +4365,9 @@ func (info *DiscovererStreamInfoInstance) GetStreamNumber() int {
 	cret = C.gst_discoverer_stream_info_get_stream_number(carg0)
 	runtime.KeepAlive(info)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -4112,6 +4483,11 @@ func UnsafeDiscovererSubtitleInfoFromGlibNone(c unsafe.Pointer) DiscovererSubtit
 // UnsafeDiscovererSubtitleInfoFromGlibFull is used to convert raw GstDiscovererSubtitleInfo pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeDiscovererSubtitleInfoFromGlibFull(c unsafe.Pointer) DiscovererSubtitleInfo {
 	return gobject.UnsafeObjectFromGlibFull(c).(DiscovererSubtitleInfo)
+}
+
+// UnsafeDiscovererSubtitleInfoFromGlibBorrow is used to convert raw GstDiscovererSubtitleInfo pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeDiscovererSubtitleInfoFromGlibBorrow(c unsafe.Pointer) DiscovererSubtitleInfo {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(DiscovererSubtitleInfo)
 }
 
 func (d *DiscovererSubtitleInfoInstance) upcastToGstDiscovererSubtitleInfo() *DiscovererSubtitleInfoInstance {
@@ -4254,6 +4630,11 @@ func UnsafeDiscovererVideoInfoFromGlibNone(c unsafe.Pointer) DiscovererVideoInfo
 // UnsafeDiscovererVideoInfoFromGlibFull is used to convert raw GstDiscovererVideoInfo pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeDiscovererVideoInfoFromGlibFull(c unsafe.Pointer) DiscovererVideoInfo {
 	return gobject.UnsafeObjectFromGlibFull(c).(DiscovererVideoInfo)
+}
+
+// UnsafeDiscovererVideoInfoFromGlibBorrow is used to convert raw GstDiscovererVideoInfo pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeDiscovererVideoInfoFromGlibBorrow(c unsafe.Pointer) DiscovererVideoInfo {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(DiscovererVideoInfo)
 }
 
 func (d *DiscovererVideoInfoInstance) upcastToGstDiscovererVideoInfo() *DiscovererVideoInfoInstance {
@@ -4713,17 +5094,36 @@ type EncodingProfile interface {
 	// 
 	// 	- preset string (nullable): the element preset to use 
 	//
-	// Sets the name of the #GstElement that implements the #GstPreset interface
-	// to use for the profile.
+	// Sets the name of the preset to be used in the profile.
 	// This is the name that has been set when saving the preset.
+	// You can list the available presets for a specific element factory
+	// using  `$ gst-inspect-1.0 element-factory-name`, for example for
+	// `x264enc`:
+	// 
+	// ``` bash
+	// $ gst-inspect-1.0 x264enc
+	// ...
+	// Presets:
+	//  "Profile Baseline": Baseline Profile
+	//  "Profile High": High Profile
+	//  "Profile Main": Main Profile
+	//  "Profile YouTube": YouTube recommended settings (https://support.google.com/youtube/answer/1722171)
+	//  "Quality High": High quality
+	//  "Quality Low": Low quality
+	//  "Quality Normal": Normal quality
+	//  "Zero Latency"
+	// ```
+	//  }
 	SetPreset(string)
 	// SetPresetName wraps gst_encoding_profile_set_preset_name
 	// 
 	// The function takes the following parameters:
 	// 
-	// 	- presetName string (nullable): The name of the preset to use in this @profile. 
+	// 	- presetName string (nullable): The name of the element factory to use in this @profile. 
 	//
-	// Sets the name of the #GstPreset's factory to be used in the profile.
+	// Sets the name of the #GstPreset's factory to be used in the profile. This
+	// is the name of the **element factory** that implements the #GstPreset interface not
+	// the name of the preset itself (see #gst_encoding_profile_set_preset).
 	SetPresetName(string)
 	// SetRestriction wraps gst_encoding_profile_set_restriction
 	// 
@@ -4748,6 +5148,15 @@ type EncodingProfile interface {
 	// &gt; *NOTE*: Single segment is not property supported when using
 	// &gt; #encodebin:avoid-reencoding
 	SetSingleSegment(bool)
+	// ToString wraps gst_encoding_profile_to_string
+	// 
+	// The function returns the following values:
+	// 
+	// 	- goret string 
+	//
+	// Converts a GstEncodingProfile to a string in the "Encoding Profile
+	// serialization format".
+	ToString() string
 }
 
 func unsafeWrapEncodingProfile(base *gobject.ObjectInstance) *EncodingProfileInstance {
@@ -4768,6 +5177,11 @@ func UnsafeEncodingProfileFromGlibNone(c unsafe.Pointer) EncodingProfile {
 // UnsafeEncodingProfileFromGlibFull is used to convert raw GstEncodingProfile pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeEncodingProfileFromGlibFull(c unsafe.Pointer) EncodingProfile {
 	return gobject.UnsafeObjectFromGlibFull(c).(EncodingProfile)
+}
+
+// UnsafeEncodingProfileFromGlibBorrow is used to convert raw GstEncodingProfile pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeEncodingProfileFromGlibBorrow(c unsafe.Pointer) EncodingProfile {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(EncodingProfile)
 }
 
 func (e *EncodingProfileInstance) upcastToGstEncodingProfile() *EncodingProfileInstance {
@@ -4850,6 +5264,38 @@ func EncodingProfileFromDiscoverer(info DiscovererInfo) EncodingProfile {
 
 	cret = C.gst_encoding_profile_from_discoverer(carg1)
 	runtime.KeepAlive(info)
+
+	var goret EncodingProfile
+
+	if cret != nil {
+		goret = UnsafeEncodingProfileFromGlibFull(unsafe.Pointer(cret))
+	}
+
+	return goret
+}
+
+// EncodingProfileFromString wraps gst_encoding_profile_from_string
+// 
+// The function takes the following parameters:
+// 
+// 	- str string: The string to convert into a GstEncodingProfile. 
+// 
+// The function returns the following values:
+// 
+// 	- goret EncodingProfile (nullable) 
+//
+// Converts a string in the "encoding profile serialization format" into a
+// GstEncodingProfile. Refer to the encoding-profile documentation for details
+// on the format.
+func EncodingProfileFromString(str string) EncodingProfile {
+	var carg1 *C.gchar              // in, none, string
+	var cret  *C.GstEncodingProfile // return, full, converted, nullable
+
+	carg1 = (*C.gchar)(unsafe.Pointer(C.CString(str)))
+	defer C.free(unsafe.Pointer(carg1))
+
+	cret = C.gst_encoding_profile_from_string(carg1)
+	runtime.KeepAlive(str)
 
 	var goret EncodingProfile
 
@@ -5404,9 +5850,26 @@ func (profile *EncodingProfileInstance) SetPresence(presence uint) {
 // 
 // 	- preset string (nullable): the element preset to use 
 //
-// Sets the name of the #GstElement that implements the #GstPreset interface
-// to use for the profile.
+// Sets the name of the preset to be used in the profile.
 // This is the name that has been set when saving the preset.
+// You can list the available presets for a specific element factory
+// using  `$ gst-inspect-1.0 element-factory-name`, for example for
+// `x264enc`:
+// 
+// ``` bash
+// $ gst-inspect-1.0 x264enc
+// ...
+// Presets:
+//  "Profile Baseline": Baseline Profile
+//  "Profile High": High Profile
+//  "Profile Main": Main Profile
+//  "Profile YouTube": YouTube recommended settings (https://support.google.com/youtube/answer/1722171)
+//  "Quality High": High quality
+//  "Quality Low": Low quality
+//  "Quality Normal": Normal quality
+//  "Zero Latency"
+// ```
+//  }
 func (profile *EncodingProfileInstance) SetPreset(preset string) {
 	var carg0 *C.GstEncodingProfile // in, none, converted
 	var carg1 *C.gchar              // in, none, string, nullable-string
@@ -5426,9 +5889,11 @@ func (profile *EncodingProfileInstance) SetPreset(preset string) {
 // 
 // The function takes the following parameters:
 // 
-// 	- presetName string (nullable): The name of the preset to use in this @profile. 
+// 	- presetName string (nullable): The name of the element factory to use in this @profile. 
 //
-// Sets the name of the #GstPreset's factory to be used in the profile.
+// Sets the name of the #GstPreset's factory to be used in the profile. This
+// is the name of the **element factory** that implements the #GstPreset interface not
+// the name of the preset itself (see #gst_encoding_profile_set_preset).
 func (profile *EncodingProfileInstance) SetPresetName(presetName string) {
 	var carg0 *C.GstEncodingProfile // in, none, converted
 	var carg1 *C.gchar              // in, none, string, nullable-string
@@ -5491,6 +5956,31 @@ func (profile *EncodingProfileInstance) SetSingleSegment(singleSegment bool) {
 	C.gst_encoding_profile_set_single_segment(carg0, carg1)
 	runtime.KeepAlive(profile)
 	runtime.KeepAlive(singleSegment)
+}
+
+// ToString wraps gst_encoding_profile_to_string
+// 
+// The function returns the following values:
+// 
+// 	- goret string 
+//
+// Converts a GstEncodingProfile to a string in the "Encoding Profile
+// serialization format".
+func (profile *EncodingProfileInstance) ToString() string {
+	var carg0 *C.GstEncodingProfile // in, none, converted
+	var cret  *C.gchar              // return, full, string
+
+	carg0 = (*C.GstEncodingProfile)(UnsafeEncodingProfileToGlibNone(profile))
+
+	cret = C.gst_encoding_profile_to_string(carg0)
+	runtime.KeepAlive(profile)
+
+	var goret string
+
+	goret = C.GoString((*C.char)(unsafe.Pointer(cret)))
+	defer C.free(unsafe.Pointer(cret))
+
+	return goret
 }
 
 // EncodingTargetInstance is the instance type used by all types extending GstEncodingTarget. It is used internally by the bindings. Users should use the interface [EncodingTarget] instead.
@@ -5610,6 +6100,11 @@ func UnsafeEncodingTargetFromGlibNone(c unsafe.Pointer) EncodingTarget {
 // UnsafeEncodingTargetFromGlibFull is used to convert raw GstEncodingTarget pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeEncodingTargetFromGlibFull(c unsafe.Pointer) EncodingTarget {
 	return gobject.UnsafeObjectFromGlibFull(c).(EncodingTarget)
+}
+
+// UnsafeEncodingTargetFromGlibBorrow is used to convert raw GstEncodingTarget pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeEncodingTargetFromGlibBorrow(c unsafe.Pointer) EncodingTarget {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(EncodingTarget)
 }
 
 func (e *EncodingTargetInstance) upcastToGstEncodingTarget() *EncodingTargetInstance {
@@ -6037,6 +6532,11 @@ func UnsafeEncodingVideoProfileFromGlibFull(c unsafe.Pointer) EncodingVideoProfi
 	return gobject.UnsafeObjectFromGlibFull(c).(EncodingVideoProfile)
 }
 
+// UnsafeEncodingVideoProfileFromGlibBorrow is used to convert raw GstEncodingVideoProfile pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeEncodingVideoProfileFromGlibBorrow(c unsafe.Pointer) EncodingVideoProfile {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(EncodingVideoProfile)
+}
+
 func (e *EncodingVideoProfileInstance) upcastToGstEncodingVideoProfile() *EncodingVideoProfileInstance {
 	return e
 }
@@ -6281,6 +6781,11 @@ func UnsafeDiscovererAudioInfoFromGlibFull(c unsafe.Pointer) DiscovererAudioInfo
 	return gobject.UnsafeObjectFromGlibFull(c).(DiscovererAudioInfo)
 }
 
+// UnsafeDiscovererAudioInfoFromGlibBorrow is used to convert raw GstDiscovererAudioInfo pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeDiscovererAudioInfoFromGlibBorrow(c unsafe.Pointer) DiscovererAudioInfo {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(DiscovererAudioInfo)
+}
+
 func (d *DiscovererAudioInfoInstance) upcastToGstDiscovererAudioInfo() *DiscovererAudioInfoInstance {
 	return d
 }
@@ -6495,6 +7000,11 @@ func UnsafeDiscovererContainerInfoFromGlibFull(c unsafe.Pointer) DiscovererConta
 	return gobject.UnsafeObjectFromGlibFull(c).(DiscovererContainerInfo)
 }
 
+// UnsafeDiscovererContainerInfoFromGlibBorrow is used to convert raw GstDiscovererContainerInfo pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeDiscovererContainerInfoFromGlibBorrow(c unsafe.Pointer) DiscovererContainerInfo {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(DiscovererContainerInfo)
+}
+
 func (d *DiscovererContainerInfoInstance) upcastToGstDiscovererContainerInfo() *DiscovererContainerInfoInstance {
 	return d
 }
@@ -6596,6 +7106,11 @@ func UnsafeEncodingAudioProfileFromGlibNone(c unsafe.Pointer) EncodingAudioProfi
 // UnsafeEncodingAudioProfileFromGlibFull is used to convert raw GstEncodingAudioProfile pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeEncodingAudioProfileFromGlibFull(c unsafe.Pointer) EncodingAudioProfile {
 	return gobject.UnsafeObjectFromGlibFull(c).(EncodingAudioProfile)
+}
+
+// UnsafeEncodingAudioProfileFromGlibBorrow is used to convert raw GstEncodingAudioProfile pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeEncodingAudioProfileFromGlibBorrow(c unsafe.Pointer) EncodingAudioProfile {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(EncodingAudioProfile)
 }
 
 func (e *EncodingAudioProfileInstance) upcastToGstEncodingAudioProfile() *EncodingAudioProfileInstance {
@@ -6732,6 +7247,11 @@ func UnsafeEncodingContainerProfileFromGlibNone(c unsafe.Pointer) EncodingContai
 // UnsafeEncodingContainerProfileFromGlibFull is used to convert raw GstEncodingContainerProfile pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeEncodingContainerProfileFromGlibFull(c unsafe.Pointer) EncodingContainerProfile {
 	return gobject.UnsafeObjectFromGlibFull(c).(EncodingContainerProfile)
+}
+
+// UnsafeEncodingContainerProfileFromGlibBorrow is used to convert raw GstEncodingContainerProfile pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeEncodingContainerProfileFromGlibBorrow(c unsafe.Pointer) EncodingContainerProfile {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(EncodingContainerProfile)
 }
 
 func (e *EncodingContainerProfileInstance) upcastToGstEncodingContainerProfile() *EncodingContainerProfileInstance {
@@ -7141,8 +7661,11 @@ func marshalInstallPluginsContext(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeInstallPluginsContextFromGlibBorrow(b), nil
 }
 
-func (r *InstallPluginsContext) InitGoValue(v *gobject.Value) {
-	v.Init(TypeInstallPluginsContext)
+func (r *InstallPluginsContext) GoValueType() gobject.Type {
+	return TypeInstallPluginsContext
+}
+
+func (r *InstallPluginsContext) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 

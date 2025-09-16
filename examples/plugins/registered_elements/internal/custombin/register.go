@@ -10,14 +10,7 @@ import (
 func Register() bool {
 	registered := gst.RegisterBinSubClass[*customBin](
 		"gocustombin",
-		func(class *gst.BinClass) {
-			class.ParentClass().SetStaticMetadata(
-				"custom test source",
-				"Src/Test",
-				"Demo source bin with volume",
-				"Wilhelm Bartel <bartel.wilhelm@gmail.com>",
-			)
-		},
+		classInit,
 		nil,
 		gst.BinOverrides[*customBin]{
 			ElementOverrides: gst.ElementOverrides[*customBin]{

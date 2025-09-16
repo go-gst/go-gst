@@ -8,14 +8,14 @@ import (
 )
 
 type ElementExtManual interface {
-	// BlockSetState is a convenience wrapper around calling SetState and State to wait for async state changes. See [Element.State] for more info.
+	// BlockSetState is a convenience wrapper around calling [Element.SetState] and [Element.GetState] to wait for async state changes. See [Element.State] for more info.
 	BlockSetState(state State, timeout ClockTime) StateChangeReturn
 
 	// MessageError is a convenience wrapper for posting an error message from inside an element. See [Element.MessageFull] for more info.
-	MessageError(domain glib.Quark, code int, text, debug string)
+	MessageError(domain glib.Quark, code int32, text, debug string)
 }
 
-// BlockSetState is a convenience wrapper around calling SetState and State to wait for async state changes. See State for more info.
+// BlockSetState is a convenience wrapper around calling [Element.SetState] and [Element.GetState] to wait for async state changes. See State for more info.
 func (el *ElementInstance) BlockSetState(state State, timeout ClockTime) StateChangeReturn {
 	ret := el.SetState(state)
 
@@ -27,9 +27,9 @@ func (el *ElementInstance) BlockSetState(state State, timeout ClockTime) StateCh
 }
 
 // MessageError is a convenience wrapper for posting an error message from inside an element. See [Element.MessageFull] for more info.
-func (e *ElementInstance) MessageError(domain glib.Quark, code int, text, debug string) {
+func (e *ElementInstance) MessageError(domain glib.Quark, code int32, text, debug string) {
 	function, file, line, _ := runtime.Caller(1)
-	e.MessageFull(MessageError, domain, code, text, debug, path.Base(file), runtime.FuncForPC(function).Name(), line)
+	e.MessageFull(MessageError, domain, code, text, debug, path.Base(file), runtime.FuncForPC(function).Name(), int32(line))
 }
 
 func LinkMany(elements ...Element) bool {

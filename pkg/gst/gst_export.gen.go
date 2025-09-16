@@ -209,7 +209,7 @@ func _gotk4_gst1_LogFunction(carg1 *C.GstDebugCategory, carg2 C.GstDebugLevel, c
 	var level    DebugLevel     // in, none, casted
 	var file     string         // in, none, string
 	var function string         // in, none, string
-	var line     int            // in, none, casted
+	var line     int32          // in, none, casted
 	var object   gobject.Object // in, none, converted
 	var message  *DebugMessage  // in, none, converted
 
@@ -217,7 +217,7 @@ func _gotk4_gst1_LogFunction(carg1 *C.GstDebugCategory, carg2 C.GstDebugLevel, c
 	level = DebugLevel(carg2)
 	file = C.GoString((*C.char)(unsafe.Pointer(carg3)))
 	function = C.GoString((*C.char)(unsafe.Pointer(carg4)))
-	line = int(carg5)
+	line = int32(carg5)
 	object = gobject.UnsafeObjectFromGlibNone(unsafe.Pointer(carg6))
 	message = UnsafeDebugMessageFromGlibNone(unsafe.Pointer(carg7))
 
@@ -412,6 +412,33 @@ func _gotk4_gst1_StructureFilterMapFunc(carg1 C.GQuark, carg2 *C.GValue, carg3 C
 	return cret
 }
 
+//export _gotk4_gst1_StructureFilterMapIDStrFunc
+func _gotk4_gst1_StructureFilterMapIDStrFunc(carg1 *C.GstIdStr, carg2 *C.GValue, carg3 C.gpointer) (cret C.gboolean) {
+	var fn StructureFilterMapIDStrFunc
+	{
+		v := userdata.Load(unsafe.Pointer(carg3))
+		if v == nil {
+			panic(`callback not found`)
+		}
+		fn = v.(StructureFilterMapIDStrFunc)
+	}
+
+	var fieldname *IdStr         // in, none, converted
+	var value     *gobject.Value // in, none, converted
+	var goret     bool           // return
+
+	fieldname = UnsafeIdStrFromGlibNone(unsafe.Pointer(carg1))
+	value = gobject.UnsafeValueFromGlibUseAnyInstead(unsafe.Pointer(carg2))
+
+	goret = fn(fieldname, value)
+
+	if goret {
+		cret = C.TRUE
+	}
+
+	return cret
+}
+
 //export _gotk4_gst1_StructureForEachFunc
 func _gotk4_gst1_StructureForEachFunc(carg1 C.GQuark, carg2 *C.GValue, carg3 C.gpointer) (cret C.gboolean) {
 	var fn StructureForEachFunc
@@ -439,6 +466,33 @@ func _gotk4_gst1_StructureForEachFunc(carg1 C.GQuark, carg2 *C.GValue, carg3 C.g
 	return cret
 }
 
+//export _gotk4_gst1_StructureForEachIDStrFunc
+func _gotk4_gst1_StructureForEachIDStrFunc(carg1 *C.GstIdStr, carg2 *C.GValue, carg3 C.gpointer) (cret C.gboolean) {
+	var fn StructureForEachIDStrFunc
+	{
+		v := userdata.Load(unsafe.Pointer(carg3))
+		if v == nil {
+			panic(`callback not found`)
+		}
+		fn = v.(StructureForEachIDStrFunc)
+	}
+
+	var fieldname *IdStr         // in, none, converted
+	var value     *gobject.Value // in, none, converted
+	var goret     bool           // return
+
+	fieldname = UnsafeIdStrFromGlibNone(unsafe.Pointer(carg1))
+	value = gobject.UnsafeValueFromGlibUseAnyInstead(unsafe.Pointer(carg2))
+
+	goret = fn(fieldname, value)
+
+	if goret {
+		cret = C.TRUE
+	}
+
+	return cret
+}
+
 //export _gotk4_gst1_StructureMapFunc
 func _gotk4_gst1_StructureMapFunc(carg1 C.GQuark, carg2 *C.GValue, carg3 C.gpointer) (cret C.gboolean) {
 	var fn StructureMapFunc
@@ -458,6 +512,33 @@ func _gotk4_gst1_StructureMapFunc(carg1 C.GQuark, carg2 *C.GValue, carg3 C.gpoin
 	value = gobject.UnsafeValueFromGlibUseAnyInstead(unsafe.Pointer(carg2))
 
 	goret = fn(fieldId, value)
+
+	if goret {
+		cret = C.TRUE
+	}
+
+	return cret
+}
+
+//export _gotk4_gst1_StructureMapIDStrFunc
+func _gotk4_gst1_StructureMapIDStrFunc(carg1 *C.GstIdStr, carg2 *C.GValue, carg3 C.gpointer) (cret C.gboolean) {
+	var fn StructureMapIDStrFunc
+	{
+		v := userdata.Load(unsafe.Pointer(carg3))
+		if v == nil {
+			panic(`callback not found`)
+		}
+		fn = v.(StructureMapIDStrFunc)
+	}
+
+	var fieldname *IdStr         // in, none, converted
+	var value     *gobject.Value // in, none, converted
+	var goret     bool           // return
+
+	fieldname = UnsafeIdStrFromGlibNone(unsafe.Pointer(carg1))
+	value = gobject.UnsafeValueFromGlibUseAnyInstead(unsafe.Pointer(carg2))
+
+	goret = fn(fieldname, value)
 
 	if goret {
 		cret = C.TRUE

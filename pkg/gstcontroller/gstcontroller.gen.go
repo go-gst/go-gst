@@ -79,8 +79,11 @@ func marshalInterpolationMode(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = InterpolationMode(0)
 
-func (e InterpolationMode) InitGoValue(v *gobject.Value) {
-	v.Init(TypeInterpolationMode)
+func (e InterpolationMode) GoValueType() gobject.Type {
+	return TypeInterpolationMode
+}
+
+func (e InterpolationMode) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -128,8 +131,11 @@ func marshalLFOWaveform(p unsafe.Pointer) (any, error) {
 
 var _ gobject.GoValueInitializer = LFOWaveform(0)
 
-func (e LFOWaveform) InitGoValue(v *gobject.Value) {
-	v.Init(TypeLFOWaveform)
+func (e LFOWaveform) GoValueType() gobject.Type {
+	return TypeLFOWaveform
+}
+
+func (e LFOWaveform) SetGoValue(v *gobject.Value) {
 	v.SetEnum(int(e))
 }
 
@@ -202,6 +208,11 @@ func UnsafeARGBControlBindingFromGlibNone(c unsafe.Pointer) ARGBControlBinding {
 // UnsafeARGBControlBindingFromGlibFull is used to convert raw GstARGBControlBinding pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeARGBControlBindingFromGlibFull(c unsafe.Pointer) ARGBControlBinding {
 	return gobject.UnsafeObjectFromGlibFull(c).(ARGBControlBinding)
+}
+
+// UnsafeARGBControlBindingFromGlibBorrow is used to convert raw GstARGBControlBinding pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeARGBControlBindingFromGlibBorrow(c unsafe.Pointer) ARGBControlBinding {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(ARGBControlBinding)
 }
 
 func (a *ARGBControlBindingInstance) upcastToGstARGBControlBinding() *ARGBControlBindingInstance {
@@ -352,6 +363,11 @@ func UnsafeDirectControlBindingFromGlibNone(c unsafe.Pointer) DirectControlBindi
 // UnsafeDirectControlBindingFromGlibFull is used to convert raw GstDirectControlBinding pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeDirectControlBindingFromGlibFull(c unsafe.Pointer) DirectControlBinding {
 	return gobject.UnsafeObjectFromGlibFull(c).(DirectControlBinding)
+}
+
+// UnsafeDirectControlBindingFromGlibBorrow is used to convert raw GstDirectControlBinding pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeDirectControlBindingFromGlibBorrow(c unsafe.Pointer) DirectControlBinding {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(DirectControlBinding)
 }
 
 func (d *DirectControlBindingInstance) upcastToGstDirectControlBinding() *DirectControlBindingInstance {
@@ -533,6 +549,11 @@ func UnsafeLFOControlSourceFromGlibFull(c unsafe.Pointer) LFOControlSource {
 	return gobject.UnsafeObjectFromGlibFull(c).(LFOControlSource)
 }
 
+// UnsafeLFOControlSourceFromGlibBorrow is used to convert raw GstLFOControlSource pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeLFOControlSourceFromGlibBorrow(c unsafe.Pointer) LFOControlSource {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(LFOControlSource)
+}
+
 func (l *LFOControlSourceInstance) upcastToGstLFOControlSource() *LFOControlSourceInstance {
 	return l
 }
@@ -646,6 +667,11 @@ func UnsafeProxyControlBindingFromGlibNone(c unsafe.Pointer) ProxyControlBinding
 // UnsafeProxyControlBindingFromGlibFull is used to convert raw GstProxyControlBinding pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeProxyControlBindingFromGlibFull(c unsafe.Pointer) ProxyControlBinding {
 	return gobject.UnsafeObjectFromGlibFull(c).(ProxyControlBinding)
+}
+
+// UnsafeProxyControlBindingFromGlibBorrow is used to convert raw GstProxyControlBinding pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeProxyControlBindingFromGlibBorrow(c unsafe.Pointer) ProxyControlBinding {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(ProxyControlBinding)
 }
 
 func (p *ProxyControlBindingInstance) upcastToGstProxyControlBinding() *ProxyControlBindingInstance {
@@ -795,10 +821,10 @@ type TimedValueControlSource interface {
 	// 
 	// The function returns the following values:
 	// 
-	// 	- goret int 
+	// 	- goret int32 
 	//
 	// Get the number of control points that are set.
-	GetCount() int
+	GetCount() int32
 	// Set wraps gst_timed_value_control_source_set
 	// 
 	// The function takes the following parameters:
@@ -867,6 +893,11 @@ func UnsafeTimedValueControlSourceFromGlibNone(c unsafe.Pointer) TimedValueContr
 // UnsafeTimedValueControlSourceFromGlibFull is used to convert raw GstTimedValueControlSource pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeTimedValueControlSourceFromGlibFull(c unsafe.Pointer) TimedValueControlSource {
 	return gobject.UnsafeObjectFromGlibFull(c).(TimedValueControlSource)
+}
+
+// UnsafeTimedValueControlSourceFromGlibBorrow is used to convert raw GstTimedValueControlSource pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeTimedValueControlSourceFromGlibBorrow(c unsafe.Pointer) TimedValueControlSource {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(TimedValueControlSource)
 }
 
 func (t *TimedValueControlSourceInstance) upcastToGstTimedValueControlSource() *TimedValueControlSourceInstance {
@@ -954,10 +985,10 @@ func (self *TimedValueControlSourceInstance) GetAll() []*gst.TimedValue {
 // 
 // The function returns the following values:
 // 
-// 	- goret int 
+// 	- goret int32 
 //
 // Get the number of control points that are set.
-func (self *TimedValueControlSourceInstance) GetCount() int {
+func (self *TimedValueControlSourceInstance) GetCount() int32 {
 	var carg0 *C.GstTimedValueControlSource // in, none, converted
 	var cret  C.gint                        // return, none, casted
 
@@ -966,9 +997,9 @@ func (self *TimedValueControlSourceInstance) GetCount() int {
 	cret = C.gst_timed_value_control_source_get_count(carg0)
 	runtime.KeepAlive(self)
 
-	var goret int
+	var goret int32
 
-	goret = int(cret)
+	goret = int32(cret)
 
 	return goret
 }
@@ -1166,6 +1197,11 @@ func UnsafeTriggerControlSourceFromGlibFull(c unsafe.Pointer) TriggerControlSour
 	return gobject.UnsafeObjectFromGlibFull(c).(TriggerControlSource)
 }
 
+// UnsafeTriggerControlSourceFromGlibBorrow is used to convert raw GstTriggerControlSource pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeTriggerControlSourceFromGlibBorrow(c unsafe.Pointer) TriggerControlSource {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(TriggerControlSource)
+}
+
 func (t *TriggerControlSourceInstance) upcastToGstTriggerControlSource() *TriggerControlSourceInstance {
 	return t
 }
@@ -1288,6 +1324,11 @@ func UnsafeInterpolationControlSourceFromGlibNone(c unsafe.Pointer) Interpolatio
 // UnsafeInterpolationControlSourceFromGlibFull is used to convert raw GstInterpolationControlSource pointers to go while attaching a finalizer. This is used by the bindings internally.
 func UnsafeInterpolationControlSourceFromGlibFull(c unsafe.Pointer) InterpolationControlSource {
 	return gobject.UnsafeObjectFromGlibFull(c).(InterpolationControlSource)
+}
+
+// UnsafeInterpolationControlSourceFromGlibBorrow is used to convert raw GstInterpolationControlSource pointers to go without touching any references. This is used by the bindings internally.
+func UnsafeInterpolationControlSourceFromGlibBorrow(c unsafe.Pointer) InterpolationControlSource {
+	return gobject.UnsafeObjectFromGlibBorrow(c).(InterpolationControlSource)
 }
 
 func (i *InterpolationControlSourceInstance) upcastToGstInterpolationControlSource() *InterpolationControlSourceInstance {
@@ -1424,8 +1465,11 @@ func marshalControlPoint(p unsafe.Pointer) (interface{}, error) {
 	return UnsafeControlPointFromGlibBorrow(b), nil
 }
 
-func (r *ControlPoint) InitGoValue(v *gobject.Value) {
-	v.Init(TypeControlPoint)
+func (r *ControlPoint) GoValueType() gobject.Type {
+	return TypeControlPoint
+}
+
+func (r *ControlPoint) SetGoValue(v *gobject.Value) {
 	v.SetBoxed(unsafe.Pointer(r.native))
 }
 
